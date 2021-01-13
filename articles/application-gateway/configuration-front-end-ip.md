@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 09/09/2020
 ms.author: surmb
-ms.openlocfilehash: dc5efd6ad478710ba839634a49f041211756af71
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 732054ae2cd8f93d17694e9ea1bdd85680e9c314
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93397670"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98058649"
 ---
 # <a name="application-gateway-front-end-ip-address-configuration"></a>Konfigurieren der Front-End-IP-Adresse für Application Gateway
 
@@ -25,10 +25,10 @@ Application Gateway v2 unterstützt derzeit nicht den rein privaten IP-Modus. E
 * Private IP-Adresse und öffentliche IP-Adresse
 * Nur öffentliche IP-Adresse
 
-Weitere Informationen finden Sie in den [häufig gestellten Fragen zu Application Gateway](application-gateway-faq.md#how-do-i-use-application-gateway-v2-with-only-private-frontend-ip-address).
+Weitere Informationen finden Sie in den [häufig gestellten Fragen zu Application Gateway](application-gateway-faq.yml#how-do-i-use-application-gateway-v2-with-only-private-frontend-ip-address).
 
 
-Eine öffentliche IP-Adresse ist nicht für einen internen Endpunkt erforderlich, auf den kein Zugriff über das Internet erfolgt. Dieser wird als *Interner Lastenausgleich* -Endpunkt (Internal Load-Balancer, ILB) oder private Front-End-IP bezeichnet. Ein ILB-Application Gateway ist für interne Branchenanwendungen nützlich, die nicht für das Internet verfügbar gemacht werden. Es ist auch hilfreich für Dienste und Ebenen in einer Anwendung mit mehreren Ebenen innerhalb einer Sicherheitsgrenze, die nicht für das Internet verfügbar gemacht werden, aber eine Roundrobin-Lastverteilung, Sitzungspersistenz oder TLS-Beendigung erfordern.
+Eine öffentliche IP-Adresse ist nicht für einen internen Endpunkt erforderlich, auf den kein Zugriff über das Internet erfolgt. Dieser wird als *Interner Lastenausgleich*-Endpunkt (Internal Load-Balancer, ILB) oder private Front-End-IP bezeichnet. Ein ILB-Application Gateway ist für interne Branchenanwendungen nützlich, die nicht für das Internet verfügbar gemacht werden. Es ist auch hilfreich für Dienste und Ebenen in einer Anwendung mit mehreren Ebenen innerhalb einer Sicherheitsgrenze, die nicht für das Internet verfügbar gemacht werden, aber eine Roundrobin-Lastverteilung, Sitzungspersistenz oder TLS-Beendigung erfordern.
 
 Es werden nur jeweils eine öffentliche oder private IP-Adresse unterstützt. Sie wählen die Front-End-IP beim Erstellen des Application Gateways aus.
 

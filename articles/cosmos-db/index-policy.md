@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 12/07/2020
 ms.author: tisande
-ms.openlocfilehash: 2d99e0e2b65f7131e564e6ab64e454d2947c58a6
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 00c80fa311837918a78f26e941f00cb17f1dc279
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96903019"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98019175"
 ---
 # <a name="indexing-policies-in-azure-cosmos-db"></a>Indizierungsrichtlinien in Azure Cosmos DB
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -135,7 +135,7 @@ Azure Cosmos DB erstellt standardmäßig keine räumlichen Indizes. Wenn Sie in
 
 ## <a name="composite-indexes"></a>Zusammengesetzte Indizes
 
-Für Abfragen, die eine `ORDER BY`-Klausel mit zwei oder mehr Eigenschaften besitzen, ist ein zusammengesetzter Index erforderlich. Ein zusammengesetzter Index kann auch definiert werden, um die Leistung vieler Gleichheits- und Bereichsabfragen zu verbessern. Standardmäßig sind keine zusammengesetzten Indizes definiert, weshalb Sie [zusammengesetzte Indizes ](how-to-manage-indexing-policy.md#composite-indexing-policy-examples) je nach Bedarf hinzufügen müssen.
+Für Abfragen, die eine `ORDER BY`-Klausel mit zwei oder mehr Eigenschaften besitzen, ist ein zusammengesetzter Index erforderlich. Ein zusammengesetzter Index kann auch definiert werden, um die Leistung vieler Gleichheits- und Bereichsabfragen zu verbessern. Standardmäßig sind keine zusammengesetzten Indizes definiert, weshalb Sie [zusammengesetzte Indizes ](how-to-manage-indexing-policy.md#composite-index) je nach Bedarf hinzufügen müssen.
 
 Im Gegensatz zu eingeschlossenen oder ausgeschlossenen Pfaden können Sie keinen Pfad mit dem `/*`-Platzhalter erstellen. Jeder zusammengesetzte Pfad muss am Ende des Pfads implizit `/?` aufweisen, was nicht angegeben werden muss. Zusammengesetzte Pfade führen zu einem Skalarwert, und dieser ist der einzige Wert, der im zusammengesetzten Index eingeschlossen wird.
 

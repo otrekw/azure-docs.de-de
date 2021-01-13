@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 10/26/2020
+ms.date: 12/18/2020
 ms.author: alkohli
-ms.openlocfilehash: ac3f2cc1c68ea552b2858d932217a28055fee0fd
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 627196c0a76f1de23f7e5421c47a33356a73967f
+ms.sourcegitcommit: d488a97dc11038d9cef77a0235d034677212c8b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96465661"
+ms.lasthandoff: 12/21/2020
+ms.locfileid: "97709436"
 ---
 # <a name="azure-stack-edge-pro-r-safety-instructions"></a>Sicherheitsanweisungen für Azure Stack Edge Pro R
 
@@ -86,6 +86,7 @@ Beim Einrichten und Ausführen des Azure Stack Edge Pro R-Geräts sind die folg
   * Isoliert von starken elektromagnetischen Feldern, die von elektrischen Geräten erzeugt werden.
   * Ausgestattet mit ordnungsgemäß geerdeten Steckdosen.
   * Ausreichend Platz für den Zugang zu den Netzkabeln, da diese als Haupttrennschalter für das Produkt dienen.
+* Ethernet-Kabel sind nicht im Lieferumfang des Produkts enthalten. Um elektromagnetische Störungen zu verringern, wird empfohlen, eine STP-Verkabelung (Shielded Twisted Pair) der Kategorie 6 zu verwenden.
 * Stellen Sie das Gerät in einem Arbeitsbereich auf, der eine ausreichende Luftzirkulation um das Gerät ermöglicht. Stellen Sie sicher, dass die vordere und hintere Abdeckung vollständig entfernt wird, während das Gerät in Betrieb ist.
 * Installieren Sie das Gerät in einem klimatisierten Bereich ohne leitfähige Verunreinigungen, und sorgen Sie für ausreichende Luftzirkulation um das Gerät.
 * Halten Sie das Gerät von Flüssigkeitsquellen und übermäßig feuchten Umgebungen fern.
@@ -115,6 +116,11 @@ Beim Einrichten und Ausführen des Azure Stack Edge Pro R-Geräts sind die folg
   * Das Gerät wurde fallen gelassen und das Gerätegehäuse beschädigt.
   * Sie vermuten, dass das Gerät gewartet oder repariert werden muss.
 * Trennen Sie die Einheit dauerhaft von der Stromzufuhr, bevor Sie sie bewegen oder wenn Sie glauben, dass sie in irgendeiner Weise beschädigt wurde.
+* Um hohe Ableitströme zu vermeiden, wird bei einer einzelnen Transportbox mit mehreren unterbrechungsfreien Stromversorgungen (USV) empfohlen, jede USV an eine unabhängige Verzweigungsleitung anzuschließen. Falls jedoch eine Stromverteilungseinheit (Power Distribution Unit, PDU) oder ein anderes Gerät verwendet wird, bei dem die Sicherheitserdung jeder USV von einem einzelnen Erdungsleiter an der Zuleitung der PDU abhängt, muss die Erdungsklemme an der Außenseite jeder USV auch mit einem zusätzlichen Erdungsleiter des Gebäudes verwendet werden.
+
+  > [!NOTE]
+  > Wird eine PDU verwendet, die bereits über einen zusätzlichen Erdungsleiter verfügt, ist die Verwendung der zusätzlichen Erdungsklemme an der USV nicht erforderlich.
+
 * Stellen Sie eine geeignete Stromquelle mit elektrischem Überlastschutz bereit, um die folgenden Leistungsvorgaben zu erfüllen:
 
   * Spannung: 100–240 V (Wechselstrom, AC)
@@ -157,7 +163,7 @@ Das Gerät wurde für den Betrieb in folgenden Umgebungen konzipiert:
 |:--- |:--- |
 |Temperaturspezifikationen | <ul><li>Lagertemperatur: –33&deg;C–63&deg;C (–28&deg;F-145&deg;F) </li><li>Dauerbetrieb: 5&deg;C–43&deg;C (41&deg;F–110&deg;F)</li><li>Maximaler Temperaturverlauf (Betrieb und Lagerung): 20&deg;C/Std. (68&deg;F/Std.)</li></ul> |
 |Spezifikationen zur relativen Luftfeuchtigkeit | <ul><li>Speicher: 5 % bis 95 % relative Luftfeuchtigkeit mit 33&deg;C (91&deg;F) maximalem Taupunkt. Die Atmosphäre darf zu keiner Zeit kondensierend sein.</li><li>In Betrieb: 5 % bis 85 % relative Feuchtigkeit mit einem maximalen Taupunkt von 29&deg;C (84,2&deg;F)</li></ul> |
-| Spezifikationen für die maximale Höhe | <ul><li>Betrieb (ohne USV): 4.572 m</li><li>Betrieb (mit USV): 2.000 m</li><li>Speicher: 12.192 m</li></ul> |
+| Spezifikationen für die maximale Höhe | <ul><li>Betrieb (ohne USV): 4.572 m</li><li>Betrieb (mit USV): 3.048 m</li><li>Speicher: 12.192 m</li></ul> |
 
 <!--|Standard operating temperature specifications | <ul>Continuous operation (for altitude less than 950 m or 3117 ft): +5&deg;C–45&deg;C (41&deg;F–113&deg;F) with no direct sunlight on the equipment</ui>
 |Expanded operating temperature specifications | <ul><li>Continuous operation: 5&deg;C to 45&deg;C at 5% to 85% RH with 29&deg;C dew point.</li><li></= 1% of annual operating hours: –5&deg;C to 55&deg;C at 5% to 90% RH with 29&deg;C dew point. |

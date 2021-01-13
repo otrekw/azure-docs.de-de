@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
 ms.date: 10/27/2020
-ms.openlocfilehash: bb146f03000f17d94d3d2ffc93b55c42eea20dac
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 1152c8b72bcb830a7ba4efa053d3ffff667f9dc8
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92736259"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98034168"
 ---
 # <a name="authenticate-access-to-azure-resources-by-using-managed-identities-in-azure-logic-apps"></a>Authentifizieren des Zugriffs auf Azure-Ressourcen mithilfe verwalteter Identitäten in Azure Logic Apps
 
@@ -313,7 +313,7 @@ Bevor Sie die verwaltete Identität Ihrer Logik-App für die Authentifizierung v
 
    * **Systemseitig zugewiesene Identität**
 
-     1. Wählen Sie im Feld **Zugriff zuweisen zu** die Option **Logik-App** aus. Wenn die **Subscription** -Eigenschaft angezeigt wird, wählen Sie das Azure-Abonnement aus, das Ihrer Identität zugeordnet ist.
+     1. Wählen Sie im Feld **Zugriff zuweisen zu** die Option **Logik-App** aus. Wenn die **Subscription**-Eigenschaft angezeigt wird, wählen Sie das Azure-Abonnement aus, das Ihrer Identität zugeordnet ist.
 
         ![Auswählen des Zugriffs für die systemseitig zugewiesene Identität](./media/create-managed-service-identity/assign-access-system.png)
 
@@ -323,7 +323,7 @@ Bevor Sie die verwaltete Identität Ihrer Logik-App für die Authentifizierung v
 
    * **Benutzerseitig zugewiesene Identität**
 
-     1. Wählen Sie im Feld **Zugriff zuweisen zu** die Option **Benutzerseitig zugewiesene verwaltete Identität** aus. Wenn die **Subscription** -Eigenschaft angezeigt wird, wählen Sie das Azure-Abonnement aus, das Ihrer Identität zugeordnet ist.
+     1. Wählen Sie im Feld **Zugriff zuweisen zu** die Option **Benutzerseitig zugewiesene verwaltete Identität** aus. Wenn die **Subscription**-Eigenschaft angezeigt wird, wählen Sie das Azure-Abonnement aus, das Ihrer Identität zugeordnet ist.
 
         ![Auswählen des Zugriffs für die benutzerseitig zugewiesene Identität](./media/create-managed-service-identity/assign-access-user.png)
 
@@ -331,7 +331,7 @@ Bevor Sie die verwaltete Identität Ihrer Logik-App für die Authentifizierung v
 
         ![Auswählen Ihrer benutzerseitig zugewiesenen Identität](./media/create-managed-service-identity/add-permissions-select-user-assigned-identity.png)
 
-1. Klicken Sie auf **Speichern** , wenn Sie fertig sind.
+1. Klicken Sie auf **Speichern**, wenn Sie fertig sind.
 
    In der Liste der Rollenzuweisungen der Zielressource werden nun die ausgewählte verwaltete Identität und die ausgewählte Rolle angezeigt. Dieses Beispiel zeigt, wie Sie die vom System zugewiesene Identität für eine Logik-App und eine vom Benutzer zugewiesene Identität für eine Gruppe von anderen Logik-Apps verwenden können.
 
@@ -348,7 +348,7 @@ Bevor Sie die verwaltete Identität Ihrer Logik-App für die Authentifizierung v
 Nachdem Sie [die verwaltete Identität für die Logik-App aktiviert](#azure-portal-system-logic-app) und [dieser Identität Zugriff auf die Zielressource oder Zielentität gewährt](#access-other-resources) haben, können Sie diese Identität in [Triggern und Aktionen verwenden, die verwaltete Identitäten unterstützen](logic-apps-securing-a-logic-app.md#managed-identity-authentication).
 
 > [!IMPORTANT]
-> Für eine Azure-Funktion, für die die systemseitig zugewiesene Identität verwendet werden soll, müssen Sie zunächst [die Authentifizierung für Azure-Funktionen aktivieren](../logic-apps/logic-apps-azure-functions.md#enable-authentication-for-azure-functions).
+> Für eine Azure-Funktion, für die die systemseitig zugewiesene Identität verwendet werden soll, müssen Sie zunächst [die Authentifizierung für Azure-Funktionen aktivieren](../logic-apps/logic-apps-azure-functions.md#enable-authentication-for-functions).
 
 Die folgenden Schritte veranschaulichen, wie Sie die verwaltete Identität über das Azure-Portal mit einem Trigger oder einer Aktion verwenden. Informationen zum Angeben der verwalteten Identität in der zugrunde liegenden JSON-Definition eines Triggers oder einer Aktion finden Sie unter [Authentifizierung der verwalteten Identität](../logic-apps/logic-apps-securing-a-logic-app.md#managed-identity-authentication).
 
@@ -378,7 +378,7 @@ Die folgenden Schritte veranschaulichen, wie Sie die verwaltete Identität über
    |----------|----------|---------------|-------------|
    | **Methode** | Ja | `PUT`| Die im Snapshot Blob-Vorgang verwendete HTTP-Methode |
    | **URI** | Ja | `https://{storage-account-name}.blob.core.windows.net/{blob-container-name}/{folder-name-if-any}/{blob-file-name-with-extension}` | Die Ressourcen-ID für eine Azure Blob Storage-Datei in der globalen (öffentlichen) Azure-Umgebung, in der diese Syntax verwendet wird. |
-   | **Headers** | Für Azure Storage | `x-ms-blob-type` = `BlockBlob` <p>`x-ms-version` = `2019-02-02` <p>`x-ms-date` = `@{formatDateTime(utcNow(),'r'}` | Die Headerwerte `x-ms-blob-type`, `x-ms-version` und `x-ms-date`, die für Azure Storage-Vorgänge erforderlich sind. <p><p>**Wichtig** : In ausgehenden Anforderungen für HTTP-Trigger und HTTP-Aktionen für Azure Storage sind für den Header die `x-ms-version`-Eigenschaft und die API-Version für den auszuführenden Vorgang erforderlich. `x-ms-date` muss das aktuelle Datum sein. Andernfalls tritt bei Ihrer Logik-App ein `403 FORBIDDEN`-Fehler auf. Um das aktuelle Datum im erforderlichen Format abzurufen, können Sie den Ausdruck im Beispielwert verwenden. <p>Weitere Informationen finden Sie in den folgenden Themen: <p><p>- [Anforderungsheader: Snapshot Blob](/rest/api/storageservices/snapshot-blob#request) <br>- [Versionsverwaltung für Azure Storage-Dienste](/rest/api/storageservices/versioning-for-the-azure-storage-services#specifying-service-versions-in-requests) |
+   | **Headers** | Für Azure Storage | `x-ms-blob-type` = `BlockBlob` <p>`x-ms-version` = `2019-02-02` <p>`x-ms-date` = `@{formatDateTime(utcNow(),'r'}` | Die Headerwerte `x-ms-blob-type`, `x-ms-version` und `x-ms-date`, die für Azure Storage-Vorgänge erforderlich sind. <p><p>**Wichtig**: In ausgehenden Anforderungen für HTTP-Trigger und HTTP-Aktionen für Azure Storage sind für den Header die `x-ms-version`-Eigenschaft und die API-Version für den auszuführenden Vorgang erforderlich. `x-ms-date` muss das aktuelle Datum sein. Andernfalls tritt bei Ihrer Logik-App ein `403 FORBIDDEN`-Fehler auf. Um das aktuelle Datum im erforderlichen Format abzurufen, können Sie den Ausdruck im Beispielwert verwenden. <p>Weitere Informationen finden Sie in den folgenden Themen: <p><p>- [Anforderungsheader: Snapshot Blob](/rest/api/storageservices/snapshot-blob#request) <br>- [Versionsverwaltung für Azure Storage-Dienste](/rest/api/storageservices/versioning-for-the-azure-storage-services#specifying-service-versions-in-requests) |
    | **Abfragen** | Nur für den Vorgang für den Momentaufnahmeblob | `comp` = `snapshot` | Der Name und der Wert des Abfrageparameters für den Vorgang. |
    |||||
 
@@ -386,7 +386,7 @@ Die folgenden Schritte veranschaulichen, wie Sie die verwaltete Identität über
 
    ![Hinzufügen einer HTTP-Aktion zum Zugreifen auf eine Azure-Ressource](./media/create-managed-service-identity/http-action-example.png)
 
-1. Fügen Sie nun der HTTP-Aktion die **Authentication** -Eigenschaft hinzu. Wählen Sie in der Liste **Neuen Parameter hinzufügen** die Option **Authentifizierung** aus.
+1. Fügen Sie nun der HTTP-Aktion die **Authentication**-Eigenschaft hinzu. Wählen Sie in der Liste **Neuen Parameter hinzufügen** die Option **Authentifizierung** aus.
 
    ![Hinzufügen der Authentication-Eigenschaft zur HTTP-Aktion](./media/create-managed-service-identity/add-authentication-property.png)
 
@@ -409,12 +409,12 @@ Die folgenden Schritte veranschaulichen, wie Sie die verwaltete Identität über
 
    In diesem Beispiel wird weiterhin die **Systemseitig zugewiesene verwaltete Identität** verwendet.
 
-1. Bei einigen Triggern und Aktionen wird die **Audience** -Eigenschaft auch angezeigt, damit Sie die Zielressourcen-ID festlegen können. Legen Sie den Wert der **Audience** -Eigenschaft auf die [Ressourcen-ID für die Zielressource oder den Zieldienst](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication) fest. Andernfalls wird für die **Audience** -Eigenschaft standardmäßig die Ressourcen-ID `https://management.azure.com/` verwendet, bei der es sich um die Ressourcen-ID für Azure Resource Manager handelt.
+1. Bei einigen Triggern und Aktionen wird die **Audience**-Eigenschaft auch angezeigt, damit Sie die Zielressourcen-ID festlegen können. Legen Sie den Wert der **Audience**-Eigenschaft auf die [Ressourcen-ID für die Zielressource oder den Zieldienst](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication) fest. Andernfalls wird für die **Audience**-Eigenschaft standardmäßig die Ressourcen-ID `https://management.azure.com/` verwendet, bei der es sich um die Ressourcen-ID für Azure Resource Manager handelt.
 
    > [!IMPORTANT]
-   > Vergewissern Sie sich, dass die Zielressourcen-ID *genau dem Wert entspricht* , der in Azure Active Directory (AD) erwartet wird, einschließlich aller erforderlichen nachgestellten Schrägstriche. Die Ressourcen-ID für alle Azure Blob Storage-Konten erfordert z. B. einen nachgestellten Schrägstrich. Allerdings erfordert die Ressourcen-ID für ein bestimmtes Speicherkonto keinen nachgestellten Schrägstrich. [Hier](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication) finden Sie die Ressourcen-IDs für die Azure-Dienste, die die Azure AD-Authentifizierung unterstützen.
+   > Vergewissern Sie sich, dass die Zielressourcen-ID *genau dem Wert entspricht*, der in Azure Active Directory (AD) erwartet wird, einschließlich aller erforderlichen nachgestellten Schrägstriche. Die Ressourcen-ID für alle Azure Blob Storage-Konten erfordert z. B. einen nachgestellten Schrägstrich. Allerdings erfordert die Ressourcen-ID für ein bestimmtes Speicherkonto keinen nachgestellten Schrägstrich. [Hier](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication) finden Sie die Ressourcen-IDs für die Azure-Dienste, die die Azure AD-Authentifizierung unterstützen.
 
-   In diesem Beispiel wird die **Audience** -Eigenschaft auf `https://storage.azure.com/` festgelegt, sodass die für die Authentifizierung verwendeten Zugriffstoken für alle Speicherkonten gültig sind. Sie können jedoch auch die Stammdienst-URL für ein bestimmtes Speicherkonto angeben, z. B. `https://fabrikamstorageaccount.blob.core.windows.net`.
+   In diesem Beispiel wird die **Audience**-Eigenschaft auf `https://storage.azure.com/` festgelegt, sodass die für die Authentifizierung verwendeten Zugriffstoken für alle Speicherkonten gültig sind. Sie können jedoch auch die Stammdienst-URL für ein bestimmtes Speicherkonto angeben, z. B. `https://fabrikamstorageaccount.blob.core.windows.net`.
 
    ![Festlegen der Zielressourcen-ID in der Audience-Eigenschaft](./media/create-managed-service-identity/specify-audience-url-target-resource.png)
 
@@ -478,7 +478,7 @@ Die verwaltete Identität ist damit entfernt und hat keinen Zugriff mehr auf die
 
      ![Deaktivieren der systemseitig zugewiesenen Identität](./media/create-managed-service-identity/disable-system-assigned-identity.png)
 
-   * Wählen Sie **Vom Benutzer zugewiesen** , die verwaltete Identität und dann **Entfernen** aus. Wenn Sie von Azure zur Bestätigung aufgefordert werden, wählen Sie **Ja** aus.
+   * Wählen Sie **Vom Benutzer zugewiesen**, die verwaltete Identität und dann **Entfernen** aus. Wenn Sie von Azure zur Bestätigung aufgefordert werden, wählen Sie **Ja** aus.
 
      ![Entfernen der benutzerseitig zugewiesenen Identität](./media/create-managed-service-identity/remove-user-assigned-identity.png)
 

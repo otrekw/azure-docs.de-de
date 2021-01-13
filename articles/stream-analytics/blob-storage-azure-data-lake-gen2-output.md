@@ -1,18 +1,17 @@
 ---
 title: Blobspeicher- und Azure Data Lake Gen2-Ausgabe von Azure Stream Analytics
 description: In diesem Artikel werden Blobspeicher und Azure Data Lake Gen 2 als Ausgabe für Azure Stream Analytics beschrieben.
-author: mamccrea
-ms.author: mamccrea
-ms.reviewer: mamccrea
+author: enkrumah
+ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/25/2020
-ms.openlocfilehash: ba64f5972d77637ec830fe6b872af66363d6c1bd
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: 8f8fa524a69d0431fe98cdcd4d1f12addc576e86
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97740044"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98019583"
 ---
 # <a name="blob-storage-and-azure-data-lake-gen2-output-from-azure-stream-analytics"></a>Blobspeicher- und Azure Data Lake Gen2-Ausgabe von Azure Stream Analytics
 

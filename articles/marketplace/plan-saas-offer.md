@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/30/2020
-ms.openlocfilehash: 5b39ccc365575853a4a74a471023989f34ebc577
-ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
+ms.openlocfilehash: e188c74c6eba5e4182f7b72277db8dd8e08db8d4
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97821484"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97913929"
 ---
 # <a name="how-to-plan-a-saas-offer-for-the-commercial-marketplace"></a>Planen eines SaaS-Angebots im kommerziellen Marketplace
 
@@ -156,7 +156,7 @@ Wenn Sie ein [neues SaaS-Angebot](create-new-saas-offer.md) im Partner Center er
 
 Das folgende Beispiel zeigt eine Angebotsauflistung im Azure-Portal.
 
-![Veranschaulicht ein im Azure-Portal aufgelistetes Angebot.](./media/example-managed-services.png)
+![Veranschaulicht ein im Azure-Portal aufgelistetes Angebot.](./media/example-managed-service-azure-portal.png)
 
 **Beschreibungen**
 

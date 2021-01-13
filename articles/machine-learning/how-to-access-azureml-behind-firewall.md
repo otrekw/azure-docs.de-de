@@ -11,12 +11,12 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 11/18/2020
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 0fa3492555b2870ae7b95abec08bbd3280cdc985
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: 8ffbe5debaa980385a2c6dc0078de5f1cc2e9bde
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97705063"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98045511"
 ---
 # <a name="use-workspace-behind-a-firewall-for-azure-machine-learning"></a>Verwenden des Arbeitsbereichs hinter einer Firewall für Azure Machine Learning
 
@@ -27,7 +27,7 @@ In diesem Artikel erfahren Sie, wie Sie Azure Firewall konfigurieren, um den Zu
 
 ## <a name="azure-firewall"></a>Azure Firewall
 
-Wenn Sie Azure Firewall verwenden, erstellen Sie mithilfe der __Ziel-Netzwerkadressübersetzung__ (Destination Network Address Translation, DNAT) NAT-Regeln für eingehenden Datenverkehr. Für ausgehenden Datenverkehr erstellen Sie __Netzwerkregeln__ und/oder __Anwendungsregeln__. Diese Regelsammlungen werden unter [Wie lauten einige der Azure Firewall-Konzepte?](../firewall/firewall-faq.md#what-are-some-azure-firewall-concepts) ausführlicher beschrieben.
+Wenn Sie Azure Firewall verwenden, erstellen Sie mithilfe der __Ziel-Netzwerkadressübersetzung__ (Destination Network Address Translation, DNAT) NAT-Regeln für eingehenden Datenverkehr. Für ausgehenden Datenverkehr erstellen Sie __Netzwerkregeln__ und/oder __Anwendungsregeln__. Diese Regelsammlungen werden unter [Wie lauten einige der Azure Firewall-Konzepte?](../firewall/firewall-faq.yml#what-are-some-azure-firewall-concepts) ausführlicher beschrieben.
 
 ### <a name="inbound-configuration"></a>Konfiguration für eingehenden Datenverkehr
 

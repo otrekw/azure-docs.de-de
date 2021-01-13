@@ -3,12 +3,12 @@ title: Onboarding als Azure Event Grid-Partner im Azure-Portal
 description: Verwenden Sie das Azure-Portal, um das Onboarding eines Azure Event Grid-Partners durchzuführen.
 ms.topic: conceptual
 ms.date: 10/29/2020
-ms.openlocfilehash: 8344fcd822bfcdc67e2c27b200d97fa70dfefdf2
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 44dece4d46a6d702d48fa49983818986fcd59f7b
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96349385"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98050951"
 ---
 # <a name="onboard-as-an-azure-event-grid-partner-using-the-azure-portal"></a>Onboarding als Azure Event Grid-Partner im Azure-Portal
 In diesem Artikel wird beschrieben, wie das Onboarding für SaaS-Drittanbieter (auch als Ereignisherausgeber oder Partner bezeichnet) in Event Grid durchgeführt wird, damit Ereignisse aus den zugehörigen Diensten veröffentlicht werden können, und wie diese Ereignisse von Endbenutzern genutzt werden.
@@ -112,7 +112,6 @@ Vergewissern Sie sich für die weiteren Schritte, dass Sie über Folgendes verf�
     1. Führen Sie im Abschnitt **Kanaldetails** die folgenden Schritte aus:
         1. Geben Sie unter **Name des Ereigniskanals** einen Namen für den Ereigniskanal ein. 
         1. Geben Sie die **Quelle** ein. Informationen zu einem geeigneten Wert für die Quelle finden Sie in den [Spezifikationen für CloudEvents 1.0](https://github.com/cloudevents/spec/blob/v1.0/spec.md#source-1). Weitere Informationen finden Sie unter [diesem Beispiel für ein CloudEvents-Schema](cloud-event-schema.md#sample-event-using-cloudevents-schema).
-        1. Geben Sie die Quelle ein (Worum handelt es sich?).
     1. Geben Sie im Abschnitt **Zieldetails** Details zum Zielpartnerthema ein, das für diesen Ereigniskanal erstellt wird. 
         1. Geben Sie die **ID des Abonnements** ein, in dem das Partnerthema erstellt wird. 
         1. Geben Sie den **Namen der Ressourcengruppe** ein, in der das Partnerthema erstellt wird. 

@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie eine Containergruppe in einem neuen oder vorh
 ms.topic: article
 ms.date: 07/02/2020
 ms.custom: devx-track-js, devx-track-azurecli
-ms.openlocfilehash: 02cf514e6c19387e3a9e2f1c78b65f346fff764e
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: b791d3f37809c2eca53f5a3cd34f7c44dd11ce40
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92746900"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98028878"
 ---
 # <a name="deploy-container-instances-into-an-azure-virtual-network"></a>Bereitstellen von Containerinstanzen in einem virtuellen Azure-Netzwerk
 
@@ -20,7 +20,7 @@ In diesem Artikel wird gezeigt, wie Sie den Befehl [az container create][az-cont
 Netzwerkszenarien und Einschränkungen finden Sie unter [Virtuelle Netzwerkszenarien und -ressourcen für Azure Container Instances](container-instances-virtual-network-concepts.md).
 
 > [!IMPORTANT]
-> Die Bereitstellung von Containergruppen in einem virtuellen Netzwerk ist in den meisten Regionen, in denen Azure Container Instances verfügbar ist, für Linux-Container allgemein verfügbar. Details hierzu finden Sie unter [Verfügbarkeit von Regionen und Ressourcen](container-instances-virtual-network-concepts.md#where-to-deploy). 
+> Die Bereitstellung von Containergruppen in einem virtuellen Netzwerk ist in den meisten Regionen, in denen Azure Container Instances verfügbar ist, für Linux-Container allgemein verfügbar. Details hierzu finden Sie unter [Verfügbarkeit von Regionen und Ressourcen][container-regions]. 
 
 Beispiele in diesem Artikel sind für die Ausführung in der Bash-Shell formatiert. Wenn Sie eine andere Shell, wie PowerShell oder die Eingabeaufforderung bevorzugen, passen Sie die Zeilenfortsetzungszeichen entsprechend an.
 
@@ -69,7 +69,7 @@ Um eine Containergruppe in einem vorhandenen virtuellen Netzwerk bereitzustellen
 
 Im folgenden Beispiel wird eine zweite Containergruppe im selben zuvor erstellten Subnetz bereitgestellt und die Kommunikation zwischen den beiden Containerinstanzen überprüft.
 
-Rufen Sie zuerst die IP-Adresse der ersten Containergruppe ab, die Sie bereitgestellt haben, d.h. von *appcontainer* :
+Rufen Sie zuerst die IP-Adresse der ersten Containergruppe ab, die Sie bereitgestellt haben, d.h. von *appcontainer*:
 
 ```azurecli
 az container show --resource-group myResourceGroup \
@@ -204,7 +204,7 @@ Für diese Funktion sind zurzeit mehrere zusätzliche Befehle notwendig, um die 
 Legen Sie vor der Ausführung des Skripts die Variable `RES_GROUP` auf den Namen der Ressourcengruppe fest, die das virtuelle Netzwerk und Subnetz enthält, die gelöscht werden sollen. Aktualisieren Sie den Namen des virtuellen Netzwerks, wenn Sie nicht den zuvor vorgeschlagenen Namen `aci-vnet` verwendet haben. Das Skript ist für die Bash-Shell formatiert. Wenn Sie eine andere Shell, wie PowerShell oder Eingabeaufforderung bevorzugen, müssen Sie die Variablenzuweisung und die Zugriffsmethoden entsprechend anpassen.
 
 > [!WARNING]
-> Dieses Skript löscht Ressourcen! Es löscht das virtuelle Netzwerk und alle darin enthaltenen Subnetze. Vergewissern Sie sich daher vor der Ausführung dieses Skripts unbedingt, dass Sie die Ressourcen im virtuellen Netzwerk *tatsächlich* nicht mehr benötigen, einschließlich der darin enthaltenen Subnetze. Einmal gelöscht, **können diese Ressourcen nicht mehr wiederhergestellt werden** .
+> Dieses Skript löscht Ressourcen! Es löscht das virtuelle Netzwerk und alle darin enthaltenen Subnetze. Vergewissern Sie sich daher vor der Ausführung dieses Skripts unbedingt, dass Sie die Ressourcen im virtuellen Netzwerk *tatsächlich* nicht mehr benötigen, einschließlich der darin enthaltenen Subnetze. Einmal gelöscht, **können diese Ressourcen nicht mehr wiederhergestellt werden**.
 
 ```azurecli
 # Replace <my-resource-group> with the name of your resource group
@@ -238,3 +238,4 @@ Informationen zum Bereitstellen eines neuen virtuellen Netzwerks, eines Subnetze
 [az-container-show]: /cli/azure/container#az-container-show
 [az-network-vnet-create]: /cli/azure/network/vnet#az-network-vnet-create
 [az-network-profile-list]: /cli/azure/network/profile#az-network-profile-list
+[container-regions]: container-instances-region-availability.md

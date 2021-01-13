@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 05/06/2020
-ms.openlocfilehash: 9ee804f7bed01ca0c7f365a04e6108afd9598157
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 40f4845ecc21d05ca5e8394dccba080f8a1f8936
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87066393"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98049710"
 ---
 # <a name="set-up-a-single-ip-address-for-one-or-more-integration-service-environments-in-azure-logic-apps"></a>Einrichten einer einzelnen IP-Adresse für eine oder mehrere Integrationsdienstumgebungen in Azure Logic Apps
 
@@ -76,7 +76,7 @@ In diesem Artikel wird erläutert, wie Sie ausgehenden Datenverkehr über eine A
    | Eigenschaft | Wert | BESCHREIBUNG |
    |----------|-------|-------------|
    | **Name** | <*network-rule-collection-name*> | Der Name Ihrer Netzwerkregelsammlung |
-   | **Priority** | <*priority-level*> | Die Prioritätsstufe für die Ausführung der Regelsammlung. Weitere Informationen finden Sie unter [Wie lauten einige der Azure Firewall-Konzepte?](../firewall/firewall-faq.md#what-are-some-azure-firewall-concepts) |
+   | **Priority** | <*priority-level*> | Die Prioritätsstufe für die Ausführung der Regelsammlung. Weitere Informationen finden Sie unter [Wie lauten einige der Azure Firewall-Konzepte?](../firewall/firewall-faq.yml#what-are-some-azure-firewall-concepts) |
    | **Aktion** | **Zulassen** | Der Aktionstyp, der für diese Regel ausgeführt werden soll |
    |||
 
@@ -95,7 +95,7 @@ In diesem Artikel wird erläutert, wie Sie ausgehenden Datenverkehr über eine A
 
    * [Konfigurieren einer Netzwerkregel](../firewall/tutorial-firewall-deploy-portal.md#configure-a-network-rule)
    * [Logik für die Azure Firewall-Regelverarbeitung](../firewall/rule-processing.md#network-rules-and-applications-rules)
-   * [Häufig gestellte Fragen zu Azure Firewall](../firewall/firewall-faq.md)
+   * [Häufig gestellte Fragen zu Azure Firewall](../firewall/firewall-faq.yml)
    * [Azure PowerShell: New-AzFirewallNetworkRule](/powershell/module/az.network/new-azfirewallnetworkrule)
    * [Azure CLI: az network firewall network-rule](/cli/azure/ext/azure-firewall/network/firewall/network-rule?view=azure-cli-latest#ext-azure-firewall-az-network-firewall-network-rule-create)
 

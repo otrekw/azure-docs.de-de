@@ -3,16 +3,15 @@ title: Lokales Debuggen von Azure Stream Analytics-Abfragen mithilfe eines Auftr
 description: Dieser Artikel beschreibt, wie Abfragen mithilfe eines Auftragsdiagramms in der Azure Stream Analytics-Erweiterung für Visual Studio Code lokal debuggt werden.
 author: su-jie
 ms.author: sujie
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 06/23/2020
-ms.openlocfilehash: 766d3f8d4d4c03fb4fe173dbb12eb85bb09cd71a
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 25ad696ad345fbf672f6bf26eb3f35a13fb03ea5
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93124168"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98019498"
 ---
 # <a name="debug-azure-stream-analytics-queries-locally-using-job-diagram-in-visual-studio-code"></a>Lokales Debuggen von Azure Stream Analytics-Abfragen mithilfe eines Auftragsdiagramms in Visual Studio Code
 
@@ -31,7 +30,7 @@ Verwenden Sie diesen [Schnellstart](quick-create-visual-studio-code.md), um zu e
 
 Wenn Sie die Abfrage mit lokalen Eingabedaten testen möchten, befolgen Sie diese [Anweisungen](visual-studio-code-local-run.md). Wenn Sie mit Liveeingaben testen möchten, [konfigurieren Sie Ihre Eingabe](stream-analytics-add-inputs.md), und fahren Sie mit dem nächsten Schritt fort. 
 
-Öffnen Sie die Skriptdatei *\.asaql* , und wählen Sie **Lokal ausführen** aus. Wählen Sie dann **Lokale Eingabe verwenden** oder **Liveeingabe verwenden** aus. Das Auftragsdiagramm wird auf der rechten Seite des Fensters angezeigt.
+Öffnen Sie die Skriptdatei *\.asaql*, und wählen Sie **Lokal ausführen** aus. Wählen Sie dann **Lokale Eingabe verwenden** oder **Liveeingabe verwenden** aus. Das Auftragsdiagramm wird auf der rechten Seite des Fensters angezeigt.
 
 ### <a name="view-the-output-and-intermediate-result-set"></a>Anzeigen der Ausgabe und des Zwischenresultsets  
 

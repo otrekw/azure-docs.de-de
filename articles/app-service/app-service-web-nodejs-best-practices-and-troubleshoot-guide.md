@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 11/09/2017
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 370b84f451e22c20c798018951a7a801e0bba826
-ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
+ms.openlocfilehash: 9763835142e66bbbce51cd5c863dff87f261c270
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96763943"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98060159"
 ---
 # <a name="best-practices-and-troubleshooting-guide-for-node-applications-on-azure-app-service-windows"></a>Bewährte Methoden und Problembehandlungsschritte für Node-Anwendungen in Azure App Service unter Windows
 
@@ -245,9 +245,8 @@ Ihre Anwendung löst nicht abgefangene Ausnahmen aus. Suchen Sie in der Datei `d
 Die häufigste Ursache für lange Startzeiten der Anwendung ist eine hohe Anzahl von Dateien im Verzeichnis „node\_modules“. Die Anwendung versucht, die meisten dieser Dateien beim Starten zu laden. Da Ihre Dateien auf der Netzwerkfreigabe in Azure App Service gespeichert werden, kann das Laden vieler Dateien standardmäßig lange dauern.
 Beispiele für Lösungen, um diesen Prozess zu beschleunigen:
 
-1. Stellen Sie sicher, dass Sie über eine flache Abhängigkeitsstruktur verfügen und doppelte Abhängigkeiten vermeiden, indem Sie npm3 zum Installieren der Module verwenden.
-2. Versuchen Sie, Ihre node\_modules nach und nach und nicht auf einmal beim Starten der Anwendung zu laden. Um Module verzögert zu laden, sollte der Aufruf von „require(‚module‘)“ vor der ersten Ausführung des Modulcodes erfolgen, wenn Sie das Modul tatsächlich innerhalb der Funktion benötigen.
-3. Azure App Service bietet ein Feature mit dem Namen „Lokaler Cache“. Bei diesem Feature wird Ihr Inhalt von der Netzwerkfreigabe auf den lokalen Datenträger auf der VM kopiert. Da die Dateien lokal vorhanden sind, geht das Laden von node\_modules deutlich schneller.
+1. Versuchen Sie, Ihre node\_modules nach und nach und nicht auf einmal beim Starten der Anwendung zu laden. Um Module verzögert zu laden, sollte der Aufruf von „require(‚module‘)“ vor der ersten Ausführung des Modulcodes erfolgen, wenn Sie das Modul tatsächlich innerhalb der Funktion benötigen.
+2. Azure App Service bietet ein Feature mit dem Namen „Lokaler Cache“. Bei diesem Feature wird Ihr Inhalt von der Netzwerkfreigabe auf den lokalen Datenträger auf der VM kopiert. Da die Dateien lokal vorhanden sind, geht das Laden von node\_modules deutlich schneller.
 
 ## <a name="iisnode-http-status-and-substatus"></a>IISNODE-http-Status und -Unterstatus
 

@@ -13,12 +13,12 @@ ms.date: 11/15/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: marsma, aragra, lenalepa, sureshja
-ms.openlocfilehash: 94a7f4d9ce1471aa1dd6aef3165562a2abc02816
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 1d30d1e6c9cc60af96336cfdc7bea7126b4df7a8
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96453256"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98017628"
 ---
 # <a name="how-to-modify-the-accounts-supported-by-an-application"></a>Ändern der von einer Anwendung unterstützten Konten
 
@@ -34,7 +34,7 @@ In den folgenden Abschnitten erfahren Sie, wie Sie die Registrierung Ihrer App i
 
 So geben Sie eine andere Einstellung für die Kontotypen an, die von einer vorhandenen App-Registrierung unterstützt werden:
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
+1. Melden Sie sich beim <a href="https://portal.azure.com/" target="_blank">Azure-Portal<span class="docon docon-navigate-external x-hidden-focus"></span></a> an.
 1. Wenn Sie Zugriff auf mehrere Mandanten haben, verwenden Sie im Menü am oberen Rand den Filter **Verzeichnis + Abonnement** :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::, um den Mandanten auszuwählen, für den Sie eine Anwendung registrieren möchten.
 1. Suchen Sie nach **Azure Active Directory**, und wählen Sie diese Option aus.
 1. Wählen Sie unter **Verwalten** die Option **App-Registrierungen** und dann Ihre Anwendung aus.

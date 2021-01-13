@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mariadb
 ms.topic: how-to
 ms.date: 9/29/2020
-ms.openlocfilehash: fe7e02cc34dc9c97e540d7b8d96c48ee8d5cfe09
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 3ed0fea4846b969c2af80aa525f7da64e7700bb5
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94535366"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97587926"
 ---
 # <a name="configure-data-in-replication-in-azure-database-for-mariadb"></a>Konfigurieren der Datenreplikation in Azure Database for MariaDB
 
@@ -52,7 +52,7 @@ Bei der [Datenreplikation](concepts-data-in-replication.md) werden Daten von ein
 
 Mit den folgenden Schritten wird der MariaDB-Server, der lokal, auf einer VM oder in einem Cloud-Datenbankdienst gehostet wird, für die Datenreplikation vorbereitet und konfiguriert. Der MariaDB-Server ist bei der Datenreplikation die Quelle.
 
-1. Überprüfen Sie die [Anforderungen für den Masterserver](concepts-data-in-replication.md#requirements), bevor Sie fortfahren. 
+1. Überprüfen Sie die [Anforderungen für den primären Server](concepts-data-in-replication.md#requirements), bevor Sie fortfahren. 
 
 2. Stellen Sie sicher, dass der Quellserver sowohl eingehenden als auch ausgehenden Datenverkehr an Port 3306 zulässt und über eine **öffentliche IP-Adresse** verfügt und dass der DNS öffentlich zugänglich ist oder über einen vollqualifizierten Domänennamen (Fully Qualified Domain Name, FQDN) verfügt. 
    
@@ -284,7 +284,7 @@ Mit den folgenden Schritten wird der MariaDB-Server, der lokal, auf einer VM ode
     
     Aufgrund einer nativen Replikationseinschränkung in MariaDB müssen Sie bei der Replikation ohne GTID-Szenario die Variablen [`sync_master_info`](https://mariadb.com/kb/en/library/replication-and-binary-log-system-variables/#sync_master_info) und [`sync_relay_log_info`](https://mariadb.com/kb/en/library/replication-and-binary-log-system-variables/#sync_relay_log_info) festlegen.
 
-    Überprüfen Sie die Variablen `sync_master_info` und `sync_relay_log_info` Ihres Slaveservers, um sicherzustellen, dass die Datenreplikation stabil ist, und legen Sie die Variablen auf `1` fest.
+    Überprüfen Sie die Variablen `sync_master_info` und `sync_relay_log_info` Ihres Replikatservers, um sicherzustellen, dass die Datenreplikation stabil ist, und legen Sie die Variablen auf `1` fest.
     
 ## <a name="other-stored-procedures"></a>Andere gespeicherte Prozeduren
 

@@ -4,15 +4,15 @@ description: In dieser Anleitung werden häufig verwendete Horizon-Methoden besc
 author: shhazam-ms
 manager: rkarlin
 ms.author: shhazam
-ms.date: 11/19/2020
+ms.date: 1/7/2020
 ms.topic: article
 ms.service: azure
-ms.openlocfilehash: 3266517b9ddc8fc7ac7b06a137286c05ea9a28fa
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 6d2e3fccd6a61fe129050faa29cb7bb77674ccfe
+ms.sourcegitcommit: 8f0803d3336d8c47654e119f1edd747180fe67aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97836029"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97976900"
 ---
 # <a name="horizon-api"></a>Horizon-API 
 
@@ -23,8 +23,8 @@ In dieser Anleitung werden häufig verwendete Horizon-Methoden beschrieben.
 Weitere Informationen zum Arbeiten mit Horizon und der CyberX-Plattform finden Sie an folgenden Stellen:
 
 - Informationen zum Horizon ODE-SDK (Open Development Environment) erhalten Sie von Ihrem CyberX-Vertriebsmitarbeiter.
-- Informationen zu Support und Problembehandlung erhalten Sie bei <support@cyberx-labs.com>.
-- Wenn Sie über die CyberX-Konsole auf das CyberX-Benutzerhandbuch zugreifen möchten, wählen Sie :::image type="icon" source="media/references-horizon-api//image3.png"::: und anschließend **Benutzerhandbuch herunterladen** aus.
+- Informationen zum Support und zur Problembehandlung erhalten Sie vom <support@cyberx-labs.com>.
+- Wenn Sie über die CyberX-Konsole auf das CyberX-Benutzerhandbuch zugreifen möchten, wählen Sie :::image type="icon" source="media/references-horizon-api/profile-icon.png"::: und anschließend **Benutzerhandbuch herunterladen** aus.
 
 ## `horizon::protocol::BaseParser`
 

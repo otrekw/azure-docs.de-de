@@ -11,12 +11,13 @@ ms.topic: reference
 ms.date: 10/15/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: e4463b932c95e224981b74093effbb355de24f6b
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.custom: fasttrack-edit
+ms.openlocfilehash: fed1e31380381b864530b3fa0b9e8c0886737d04
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97509817"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98033607"
 ---
 # <a name="microsoft-graph-operations-available-for-azure-ad-b2c"></a>Microsoft Graph-Vorgänge, die für Azure AD B2C verfügbar sind
 
@@ -57,10 +58,10 @@ Verwalten Sie die Identitätsanbieter, die für die Benutzerflows in Ihrem Azure
 
 Konfigurieren Sie vordefinierte Richtlinien für Registrierung, Anmeldung, kombinierte Registrierung und Anmeldung, Kennwortzurücksetzung und Profilaktualisierung.
 
-- [Auflisten von Benutzerflows](/graph/api/identityuserflow-list)
-- [Erstellen eines Benutzerflows](/graph/api/identityuserflow-post-userflows)
-- [Abrufen eines Benutzerflows](/graph/api/identityuserflow-get)
-- [Löschen eines Benutzerflows](/graph/api/identityuserflow-delete)
+- [Auflisten von Benutzerflows](/graph/api/identitycontainer-list-b2cuserflows)
+- [Erstellen eines Benutzerflows](/graph/api/identitycontainer-post-b2cuserflows)
+- [Abrufen eines Benutzerflows](/graph/api/b2cidentityuserflow-get)
+- [Löschen eines Benutzerflows](/graph/api/b2cidentityuserflow-delete)
 
 ## <a name="custom-policies"></a>Benutzerdefinierte Richtlinien
 

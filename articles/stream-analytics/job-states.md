@@ -1,18 +1,17 @@
 ---
 title: Zustände von Azure Stream Analytics-Aufträgen
 description: 'In diesem Artikel werden die vier verschiedenen Zustände eines Stream Analytics-Auftrags beschrieben: „Wird ausgeführt“, „Beendet“, „Beeinträchtigt“ und „Fehler“.'
-author: sidram
+author: sidramadoss
 ms.author: sidram
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/21/2019
-ms.openlocfilehash: 008493c6eb8840752be3815d30a5df5bad42aff2
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: dd298fae148b9e1e51072e98a4e0e5ece10967f3
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96023856"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98020450"
 ---
 # <a name="azure-stream-analytics-job-states"></a>Zustände von Azure Stream Analytics-Aufträgen
 

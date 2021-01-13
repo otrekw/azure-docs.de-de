@@ -8,12 +8,12 @@ author: emuench
 ms.author: mingshen
 ms.date: 10/15/2020
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: aeee13152364c31d82f674df784a27114035a041
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: d8cb5179583dd23ea2bd4baf5ebe7d84b0ae9cbf
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97028545"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97814430"
 ---
 # <a name="azure-consumption-commitment-benefit"></a>Vorteil eines Prepaidtarifs für den Azure-Verbrauch
 
@@ -31,7 +31,7 @@ Um den Vorteil zu nutzen, erwerben Sie im Azure Marketplace unter Verwendung ein
 
 ## <a name="determine-if-your-organization-has-an-azure-consumption-commitment-maccctc"></a>Ermitteln, ob Ihre Organisation einen Azure Consumption Commitment (MACC/CtC)-Vorteil nutzt
 
-Wenn Sie sich nicht sicher sind, ob Ihre Organisation einen entsprechenden Vertrag abgeschlossen hat, melden Sie sich beim Marketplace unter einem mit Ihrer Organisation verbundenen Mandanten im [Azure-Portal](https://ms.portal.azure.com/#blade/Microsoft_Azure_Marketplace/MarketplaceOffersBlade/selectedMenuItemId/home) an. Wenn Sie die Option **Für Azure-Vorteil berechtigt** innerhalb des Preisfilters sehen, verfügen Sie über einen berechtigenden Prepaidtarif für den Azure-Verbrauch. Qualifizierte Azure Marketplace-Käufe tragen zum Azure-Vorteil für Ihre Organisation bei, wenn der Prepaidtarif direkt über den Azure Marketplace erworben wird.
+Wenn Sie sich nicht sicher sind, ob Ihre Organisation einen entsprechenden Vertrag abgeschlossen hat, melden Sie sich beim Marketplace unter einem mit Ihrer Organisation verbundenen Mandanten im [Azure-Portal](https://ms.portal.azure.com/#blade/Microsoft_Azure_Marketplace/MarketplaceOffersBlade/selectedMenuItemId/home) an. Wenn Ihnen die Option **Nur für Azure-Vorteil berechtigt** zur Auswahl als Filteroption bereitsteht, verfügen Sie über einen berechtigenden Prepaidtarif für den Azure-Verbrauch. Qualifizierte Azure Marketplace-Käufe tragen zum Azure-Vorteil für Ihre Organisation bei, wenn der Prepaidtarif direkt über den Azure Marketplace erworben wird.
 
 [![Menüoption „Für Azure-Vorteil berechtigt“.](media/azure-benefit/azure-benefit-eligible.png)](media/azure-benefit/azure-benefit-eligible.png#lightbox)
 

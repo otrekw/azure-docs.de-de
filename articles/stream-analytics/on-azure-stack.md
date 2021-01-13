@@ -2,18 +2,17 @@
 title: Ausführen von Azure Stream Analytics auf Azure Stack (Vorschau)
 description: Erstellen Sie einen Azure Stream Analytics-Edgeauftrag, und stellen Sie ihn über die IoT Edge-Runtime auf dem Azure Stack Hub bereit.
 ms.service: stream-analytics
-author: raan
+author: an-emma
 ms.author: raan
-ms.reviewer: mamccrea
 ms.topic: how-to
 ms.date: 08/21/2020
 ms.custom: seodec18
-ms.openlocfilehash: 21cf432576829b575d70a94227f28df373a4d899
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 3463b3eae96c0a65206023ed0f21efe44294d4eb
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93126157"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98020127"
 ---
 # <a name="run-azure-stream-analytics-on-azure-stack-preview"></a>Ausführen von Azure Stream Analytics auf Azure Stack (Vorschau)
 
@@ -96,7 +95,7 @@ Nachdem Ihr Stream Analytics-Auftrag im Azure-Portal erstellt wurde, können Sie
    > [!div class="mx-imgBorder"]
    > [ ![Einstellung des Auftragsspeicherkontos](media/on-azure-stack/storage-account-settings.png) ](media/on-azure-stack/storage-account-settings.png#lightbox)
 3. Wählen Sie unter **Auftragstopologie** die Option **Eingaben** und dann **Datenstromeingabe hinzufügen.**
-4. Wählen Sie **IoT Hub** , **Event Hub** oder **Edge Hub** aus der Dropdownliste aus. 
+4. Wählen Sie **IoT Hub**, **Event Hub** oder **Edge Hub** aus der Dropdownliste aus. 
 5. Wenn es sich bei der Eingabe um einen Event Hub oder IoT Hub in einem Azure Stack Hub-Abonnement handelt, geben Sie die Informationen wie unten dargestellt manuell ein.
 
    #### <a name="event-hub"></a>Event Hub
@@ -104,7 +103,7 @@ Nachdem Ihr Stream Analytics-Auftrag im Azure-Portal erstellt wurde, können Sie
    | Feld | Wert |
    | --- | --- |
    | Eingabealias | Ein Anzeigename, der in der Auftragsabfrage verwendet wird, um auf diese Eingabe zu verweisen. |
-   | Service Bus-Namespace | Der Namespace ist ein Container für einen Satz mit Nachrichtenentitäten. Sie haben bei der Erstellung einer neuen Event Hub-Instanz auch den Namespace erstellt. (Beispiel: *sb://<Event Hub Name>.eventhub.shanghai.azurestack.corp.microsoft.com* ) |
+   | Service Bus-Namespace | Der Namespace ist ein Container für einen Satz mit Nachrichtenentitäten. Sie haben bei der Erstellung einer neuen Event Hub-Instanz auch den Namespace erstellt. (Beispiel: *sb://<Event Hub Name>.eventhub.shanghai.azurestack.corp.microsoft.com*) |
    | Event Hub-Name | Der Name des Event Hubs, der als Eingabe verwendet wird. |
    | Event Hub-Richtlinienname | Die SAS-Richtlinie, die Zugriff auf den Event Hub ermöglicht. Jede SAS-Richtlinie umfasst einen Namen, die von Ihnen festgelegten Berechtigungen und Zugriffsschlüssel. Diese Option wird automatisch ausgefüllt, sofern Sie nicht die Option zum manuellen Festlegen der Event-Hub-Einstellungen wählen. |
    | Event Hub-Richtlinienschlüssel | Der Schlüssel für den gemeinsamen Zugriff, der für die Autorisierung des Zugriffs auf Event Hub verwendet wird. Diese Option wird automatisch ausgefüllt, es sei denn, Sie wählen die Option zum manuellen Festlegen der Event-Hub-Einstellungen. Sie finden sie in den Event Hub-Einstellungen. |
@@ -119,7 +118,7 @@ Nachdem Ihr Stream Analytics-Auftrag im Azure-Portal erstellt wurde, können Sie
    | Feld | Wert |
    | --- | --- |
    | Eingabealias | Ein Anzeigename, der in der Auftragsabfrage verwendet wird, um auf diese Eingabe zu verweisen. |
-   | IoT Hub | Der Name von IoT Hub, der als Eingabe verwendet wird. (Beispiel: *<IoT Hub Name>.shanghai.azurestack.corp.microsoft.com* ) |
+   | IoT Hub | Der Name von IoT Hub, der als Eingabe verwendet wird. (Beispiel: *<IoT Hub Name>.shanghai.azurestack.corp.microsoft.com*) |
    | Name der SAS-Richtlinie | Die SAS-Richtlinie, die Zugriff auf IoT Hub ermöglicht. Jede SAS-Richtlinie umfasst einen Namen, die von Ihnen festgelegten Berechtigungen und Zugriffsschlüssel. |
    | Schlüssel für SAS-Richtlinie | Der Schlüssel für den gemeinsamen Zugriff, der für die Autorisierung des Zugriffs auf IoT Hub verwendet wird. Diese Option wird automatisch ausgefüllt, es sei denn, Sie wählen die Option zum manuellen Festlegen der IoT Hub-Einstellungen. |
    | Consumergruppe (optional) | Es wird dringend empfohlen, für jeden Stream Analytics-Auftrag eine andere Consumergruppe zu verwenden. Die Consumergruppe, die zum Erfassen von Daten aus IoT Hub verwendet werden soll. Stream Analytics verwendet die $Default-Consumergruppe, sofern nicht anders angegeben. |
@@ -138,7 +137,7 @@ Nachdem Ihr Stream Analytics-Auftrag im Azure-Portal erstellt wurde, können Sie
    | Feld | value |
    | --- | --- |
    | Ausgabealias | Ein Anzeigename, der in Abfragen verwendet wird, um die Abfrageausgabe an diesen Event Hub weiterzuleiten. |
-   | Service Bus-Namespace | Ein Container für einen Satz von Nachrichtenentitäten. Beim Erstellen eines neuen Event Hub haben Sie auch einen Service Bus-Namespace erstellt (Beispiel: *sb://<Event Hub Name>.eventhub.shanghai.azurestack.corp.microsoft.com* ) |
+   | Service Bus-Namespace | Ein Container für einen Satz von Nachrichtenentitäten. Beim Erstellen eines neuen Event Hub haben Sie auch einen Service Bus-Namespace erstellt (Beispiel: *sb://<Event Hub Name>.eventhub.shanghai.azurestack.corp.microsoft.com*) |
    | Event Hub-Name | Der Name Ihrer Event Hub-Ausgabe. |
    | Event Hub-Richtlinienname | Die Richtlinie für den gemeinsamen Zugriff, die Sie auf der Registerkarte Konfigurieren des Event Hubs erstellen können. Jede SAS-Richtlinie umfasst einen Namen, die von Ihnen festgelegten Berechtigungen und Zugriffsschlüssel. |
    | Event Hub-Richtlinienschlüssel | Der Schlüssel für den gemeinsamen Zugriff, der für die Authentifizierung des Zugriffs auf den Event Hub-Namespace verwendet wird. |
@@ -151,7 +150,7 @@ Nachdem Ihr Stream Analytics-Auftrag im Azure-Portal erstellt wurde, können Sie
    | Feld | value |
    | --- | --- |
    | Ausgabealias | Ein Anzeigename, der in Abfragen verwendet wird, um die Abfrageausgabe an diesen Blobspeicher weiterzuleiten. |
-   | Speicherkonto | Der Name des Speicherkontos, an das Sie Ihre Ausgabe senden (Beispiel: *<Storage Account Name>.blob.shanghai.azurestack.corp.microsoft.com* ) |
+   | Speicherkonto | Der Name des Speicherkontos, an das Sie Ihre Ausgabe senden (Beispiel: *<Storage Account Name>.blob.shanghai.azurestack.corp.microsoft.com*) |
    | Speicherkontoschlüssel | Der geheime Schlüssel, der dem Speicherkonto zugeordnet ist. Diese Option wird automatisch ausgefüllt, es sei denn, Sie wählen die Option zum manuellen Festlegen der Blob Storage-Einstellungen. |
 
 > [!NOTE]
@@ -160,9 +159,9 @@ Nachdem Ihr Stream Analytics-Auftrag im Azure-Portal erstellt wurde, können Sie
 
 ## <a name="deploy-stream-analytics-on-a-vm-or-device-connected-to-azure-stack"></a>Bereitstellen von Stream Analytics auf einer VM oder einem Gerät, das mit Azure Stack verbunden ist
 
-1. Öffnen Sie IoT Hub im Azure-Portal. Navigieren Sie zu **IoT Edge** , und klicken Sie auf das Gerät (VM), auf das Sie diese Bereitstellung ausrichten möchten.
+1. Öffnen Sie IoT Hub im Azure-Portal. Navigieren Sie zu **IoT Edge**, und klicken Sie auf das Gerät (VM), auf das Sie diese Bereitstellung ausrichten möchten.
 2. Wählen Sie **Module festlegen** aus. Wählen Sie dann **+ Hinzufügen** und anschließend **Azure Stream Analytics-Modul** aus. 
-3. Wählen Sie das Abonnement und den erstellten Stream Analytics Edge-Auftrag aus. Klicken Sie auf **Speichern** , und wählen Sie **Weiter:Routen** aus.
+3. Wählen Sie das Abonnement und den erstellten Stream Analytics Edge-Auftrag aus. Klicken Sie auf **Speichern**, und wählen Sie **Weiter:Routen** aus.
 
    > [!div class="mx-imgBorder"]
    > [ ![Hinzufügen von Modulen](media/on-azure-stack/edge-modules.png) ](media/on-azure-stack/edge-modules.png#lightbox)

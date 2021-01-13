@@ -6,16 +6,16 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: how-to
-ms.date: 11/23/2020
+ms.date: 12/18/2020
 ms.author: alkohli
-ms.openlocfilehash: b132368982e0013bfe6f3ffd52e7aacb7b1274eb
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: e822a2be200f701d65ab2080804d252f99589680
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "96003179"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97680784"
 ---
-# <a name="tutorial-create-export-order-for-azure-data-box-preview"></a>Tutorial: Erstellen eines Exportauftrags für Azure Data Box (Vorschau)
+# <a name="tutorial-create-export-order-for-azure-data-box"></a>Tutorial: Erstellen eines Exportauftrags für Azure Data Box
 
 Azure Data Box ist eine Hybridlösung, mit der Sie Daten aus Azure in ihren Standort verschieben können. In diesem Tutorial wird beschrieben, wie Sie einen Exportauftrag für Azure Data Box erstellen. Der Hauptgrund für die Erstellung eines Exportauftrags ist die Notfallwiederherstellung, falls der lokale Speicher kompromittiert wird und eine Sicherungskopie wiederhergestellt werden muss.
 
@@ -27,8 +27,6 @@ In diesem Tutorial lernen Sie Folgendes kennen:
 > * Bestellen einer Data Box für den Export
 > * Nachverfolgen des Exportauftrags
 > * Stornieren des Exportauftrags
-
-[!INCLUDE [Data Box feature is in preview](../../includes/data-box-feature-is-preview-info.md)]
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -72,7 +70,7 @@ Führen Sie die folgenden Schritte im Azure-Portal aus, um ein Gerät zu bestell
     |Subscription     | Wählen Sie ein EA-, CSP- oder Azure Sponsorship-Abonnement für den Data Box-Dienst aus. <br> Das Abonnement ist mit Ihrem Abrechnungskonto verknüpft.       |
     |Resource group     |    Wählen Sie eine vorhandene Ressourcengruppe aus. <br> Eine Ressourcengruppe ist ein logischer Container für die Ressourcen, die zusammen verwaltet oder bereitgestellt werden können.         |
     |Azure-Quellregion    |    Wählen Sie die Azure-Region aus, in der sich Ihre Daten zurzeit befinden.         |
-    |Zielland     |     Wählen Sie das Land/die Region aus, in das/die das Gerät versendet werden soll.        |
+    |Zielland     |     Wählen Sie das Land aus, wohin Sie das Gerät versenden möchten.        |
 
    ![Auswählen Ihrer Data Box-Einstellungen](media/data-box-deploy-export-ordered/azure-data-box-export-order-data-box-settings.png)
 

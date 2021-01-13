@@ -1,17 +1,17 @@
 ---
 title: Vergleich der Features von Azure Stream Analytics
 description: Dieser Artikel vergleicht die für die Azure Stream Analytics-Cloud und IoT Edge-Aufträge in Azure-Portal, Visual Studio und Visual Studio Code unterstützten Features.
-author: mamccrea
-ms.author: mamccrea
+author: an-emma
+ms.author: raan
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/27/2019
-ms.openlocfilehash: 2fbaaac0095622f14d5bc0033b7787bec8ec2fa2
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 037bd8bc823cd8c77241d0ca25174e29d25149b9
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92018286"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98020535"
 ---
 # <a name="azure-stream-analytics-feature-comparison"></a>Vergleich der Features von Azure Stream Analytics
 

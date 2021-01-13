@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/07/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 6540b5f93bebfe39253a88dc495a3613568f8926
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: e5fa4bde316f4b1677f78c65e913a6303a9f4735
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97836037"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98019141"
 ---
 # <a name="about-high-availability"></a>Informationen zur Hochverfügbarkeit
 
@@ -52,7 +52,7 @@ Die Installations- und Konfigurationsverfahren lassen sich in vier Hauptphasen u
 
 3. Installieren einer lokalen Verwaltungskonsole als sekundäre Appliance. Weitere Informationen finden Sie unter [Informationen zur Installation von Defender für IoT](how-to-install-software.md).
 
-4. Koppeln Sie, wie [hier](/create-the-primary-and-secondary-pair.md)beschrieben, die primäre und sekundäre Verwaltungskonsolen-Appliance. Von der primären lokalen Verwaltungskonsole müssen mindestens zwei Sensoren verwaltet werden, damit Sie die Einrichtung vornehmen können.
+4. Koppeln Sie, wie [hier](https://infrascale.secure.force.com/pkb/articles/Support_Article/How-to-access-your-Appliance-Management-Console)beschrieben, die primäre und sekundäre Verwaltungskonsolen-Appliance. Von der primären lokalen Verwaltungskonsole müssen mindestens zwei Sensoren verwaltet werden, damit Sie die Einrichtung vornehmen können.
 
 ## <a name="high-availability-requirements"></a>Anforderungen für die Hochverfügbarkeit
 

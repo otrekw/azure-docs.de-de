@@ -3,16 +3,15 @@ title: Datengesteuertes Debuggen in Azure Stream Analytics
 description: Dieser Artikel beschreibt die Behandlung von Problemen in Azure Stream Analytics-Aufträgen mithilfe von Auftragsdiagrammen und Metriken im Azure-Portal.
 author: jseb225
 ms.author: jeanb
-ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 05/01/2017
-ms.openlocfilehash: e4ee868125ee30d40ef0d9ca5a42881ad003e9a8
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 6d20454515088ccca87665d9b3b27c0d82c3cdf9
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93123981"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98020399"
 ---
 # <a name="data-driven-debugging-by-using-the-job-diagram"></a>Datengesteuertes Debuggen mithilfe des Auftragsdiagramms
 
@@ -20,7 +19,7 @@ Mithilfe des Auftragsdiagramms auf dem Blatt **Überwachung** im Azure-Portal k�
 
 ## <a name="using-the-job-diagram"></a>Verwendung des Auftragsdiagramms
 
-Wählen Sie im Azure-Portal bei geöffnetem Stream Analytics-Auftrag unter **SUPPORT + PROBLEMBEHANDLUNG** die Option **Auftragsdiagramm** :
+Wählen Sie im Azure-Portal bei geöffnetem Stream Analytics-Auftrag unter **SUPPORT + PROBLEMBEHANDLUNG** die Option **Auftragsdiagramm**:
 
 ![Auftragsdiagramm mit Metriken – Speicherort](./media/stream-analytics-job-diagram-with-metrics/stream-analytics-job-diagram-with-metrics-portal-1.png)
 

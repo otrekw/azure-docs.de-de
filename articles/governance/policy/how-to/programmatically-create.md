@@ -3,12 +3,12 @@ title: Programmgesteuertes Erstellen von Richtlinien
 description: In diesem Artikel wird Schritt für Schritt das programmgesteuerte Erstellen und Verwalten von Richtlinien für Azure Policy per Azure-Befehlszeilenschnittstelle, Azure PowerShell und REST-API beschrieben.
 ms.date: 08/17/2020
 ms.topic: how-to
-ms.openlocfilehash: 86c1b60608780cba4d8ae27e3c82ace458f09a26
-ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
+ms.openlocfilehash: 4c3a503e8d48573441093879511490608437b1e1
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94920014"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98033862"
 ---
 # <a name="programmatically-create-policies"></a>Programmgesteuertes Erstellen von Richtlinien
 
@@ -95,7 +95,7 @@ Im ersten Schritt zur besseren Sichtbarkeit Ihrer Ressourcen werden Richtlinien 
    - Abonnement: `/subscriptions/{subId}`
    - Verwaltungsgruppe: `/providers/Microsoft.Management/managementGroups/{mgName}`
 
-Weitere Informationen zum Verwalten von Ressourcenrichtlinien unter Verwendung des Resource Manager-PowerShell-Moduls finden Sie unter [Az.Resources](/powershell/module/az.resources/#policies).
+Weitere Informationen zum Verwalten von Ressourcenrichtlinien unter Verwendung des Resource Manager-PowerShell-Moduls finden Sie unter [Az.Resources](/powershell/module/az.resources/#policy).
 
 ### <a name="create-and-assign-a-policy-definition-using-armclient"></a>Erstellen und Zuweisen einer Richtliniendefinition per ARMClient
 
@@ -242,7 +242,7 @@ Weitere Informationen zum Verwalten von Ressourcenrichtlinien mit der Azure-Befe
 Weitere Informationen zu den in diesem Artikel verwendeten Befehlen und Abfragen finden Sie in den folgenden Artikeln.
 
 - [Azure-REST-API-Ressourcen](/rest/api/resources/)
-- [Azure PowerShell-Module](/powershell/module/az.resources/#policies)
+- [Azure PowerShell-Module](/powershell/module/az.resources/#policy)
 - [Befehle für Azure CLI-Richtlinien](/cli/azure/policy)
 - [Azure-Ressourcenanbieter „Policy Insights“ – REST-API-Referenz](/rest/api/policy-insights)
 - [Organisieren Ihrer Ressourcen mit Azure-Verwaltungsgruppen](../../management-groups/overview.md)

@@ -3,12 +3,12 @@ title: Bereitstellen von Ressourcen mit dem Azure-Portal
 description: Verwenden Sie das Azure-Portal und Azure Resource Manager zum Bereitstellen Ihrer Ressourcen in einer Ressourcengruppe in Ihrem Abonnement.
 ms.topic: conceptual
 ms.date: 10/22/2020
-ms.openlocfilehash: b87ac48bbaec7f94d5e75939cf5ec17df0ff2d2f
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: d8467bb4e51fc4e6ba89a84f1260a8d2743758d2
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92668760"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98028674"
 ---
 # <a name="deploy-resources-with-arm-templates-and-azure-portal"></a>Bereitstellen von Ressourcen mit ARM-Vorlagen und dem Azure-Portal
 
@@ -35,9 +35,9 @@ In diesem Artikel werden beide Methoden beschrieben.
 
 1. Wählen Sie die folgenden Eigenschaftswerte aus, bzw. geben Sie sie ein:
 
-    - **Abonnement** : Wählen Sie ein Azure-Abonnement aus.
-    - **Ressourcengruppe** : Geben Sie der Ressourcengruppe einen Namen.
-    - **Region** : Geben Sie einen Azure-Standort an. An diesem Standort speichert die Ressourcengruppe Metadaten zu den Ressourcen. Aus Compliance-Gründen sollten Sie angeben, wo diese Metadaten gespeichert werden. Im Allgemeinen wird die Angabe eines Standorts empfohlen, an dem sich der Großteil Ihrer Ressourcen befindet. Durch die Verwendung des gleichen Standorts können Sie die Vorlage vereinfachen.
+    - **Abonnement**: Wählen Sie ein Azure-Abonnement aus.
+    - **Ressourcengruppe**: Geben Sie der Ressourcengruppe einen Namen.
+    - **Region**: Geben Sie einen Azure-Standort an. An diesem Standort speichert die Ressourcengruppe Metadaten zu den Ressourcen. Aus Compliance-Gründen sollten Sie angeben, wo diese Metadaten gespeichert werden. Im Allgemeinen wird die Angabe eines Standorts empfohlen, an dem sich der Großteil Ihrer Ressourcen befindet. Durch die Verwendung des gleichen Standorts können Sie die Vorlage vereinfachen.
 
    ![Festlegen von Gruppenwerten](./media/deploy-portal/set-group-properties.png)
 
@@ -88,7 +88,7 @@ Wenn Sie eine Bereitstellung ausführen möchten, ohne eine der Vorlagen im Mark
 1. Zum Erstellen einer Vorlage werden verschiedene Optionen angezeigt:
 
     - **Erstellen einer eigenen Vorlage im Editor:** Erstellen Sie eine eigene Vorlage im Vorlagen-Editor im Portal.
-    - **Gängige Vorlagen** : Wählen Sie eine der gängigen Lösungen aus.
+    - **Gängige Vorlagen**: Wählen Sie eine der gängigen Lösungen aus.
     - **Laden einer Schnellstartvorlage von GitHub:** Wählen Sie eine der [Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/) aus.
 
    ![Anzeigen der Optionen](./media/deploy-portal/see-options.png)
@@ -99,14 +99,14 @@ Wenn Sie eine Bereitstellung ausführen möchten, ohne eine der Vorlagen im Mark
 
     Sie haben zwei Möglichkeiten:
 
-    - **Vorlage auswählen** : Stellen Sie die Vorlage bereit.
-    - **Vorlage bearbeiten** : Bearbeiten Sie die Schnellstartvorlage, bevor Sie sie bereitstellen.
+    - **Vorlage auswählen**: Stellen Sie die Vorlage bereit.
+    - **Vorlage bearbeiten**: Bearbeiten Sie die Schnellstartvorlage, bevor Sie sie bereitstellen.
 
-1. Wählen Sie **Vorlage bearbeiten** aus, um sich den Vorlageneditor des Portals anzusehen. Die Vorlage wird in den Editor geladen. Beachten Sie, dass es zwei Parameter gibt: **storageAccountType** und **location**.
+1. Wählen Sie **Vorlage bearbeiten** aus, um sich den Vorlageneditor des Portals anzusehen. Die Vorlage wird in den Editor geladen. Beachten Sie, dass es zwei Parameter gibt: `storageAccountType` und `location`.
 
    ![Erstellen der Vorlage](./media/deploy-portal/show-json.png)
 
-1. Nehmen Sie eine geringfügige Änderung an der Vorlage vor. Aktualisieren Sie beispielsweise die Variable **storageAccountName** wie folgt:
+1. Nehmen Sie eine geringfügige Änderung an der Vorlage vor. Aktualisieren Sie beispielsweise die Variable `storageAccountName` wie folgt:
 
     ```json
     "storageAccountName": "[concat('azstore', uniquestring(resourceGroup().id))]"
@@ -115,12 +115,12 @@ Wenn Sie eine Bereitstellung ausführen möchten, ohne eine der Vorlagen im Mark
 1. Wählen Sie **Speichern** aus. Nun wird die Oberfläche für die Vorlagenbereitstellung im Portal angezeigt. Sie sehen außerdem die zwei Parameter, die Sie in der Vorlage definiert haben.
 1. Geben Sie die Eigenschaftswerte ein oder wählen Sie sie aus:
 
-    - **Abonnement** : Wählen Sie ein Azure-Abonnement aus.
-    - **Ressourcengruppe** : Wählen Sie **Neu erstellen** aus, und geben Sie einen Namen ein.
-    - **Standort** : Wählen Sie einen Azure-Standort aus.
-    - **Speicherkontotyp** : Verwenden Sie den Standardwert.
-    - **Standort** : Verwenden Sie den Standardwert.
-    - **Ich stimme den oben genannten Geschäftsbedingungen zu** : Aktivieren Sie dieses Kontrollkästchen.
+    - **Abonnement**: Wählen Sie ein Azure-Abonnement aus.
+    - **Ressourcengruppe**: Wählen Sie **Neu erstellen** aus, und geben Sie einen Namen ein.
+    - **Standort**: Wählen Sie einen Azure-Standort aus.
+    - **Speicherkontotyp**: Verwenden Sie den Standardwert.
+    - **Standort**: Verwenden Sie den Standardwert.
+    - **Ich stimme den oben genannten Geschäftsbedingungen zu**: Aktivieren Sie dieses Kontrollkästchen.
 
 1. Wählen Sie die Option **Kaufen**.
 

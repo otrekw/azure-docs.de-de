@@ -1,18 +1,17 @@
 ---
 title: Grundlegendes zur Behandlung von Zeitangaben in Azure Stream Analytics
 description: Erfahren Sie, wie Sie in Azure Stream Analytics die beste Startzeit auswählen, verspätete und zu früh eintreffende Ereignisse verarbeiten, und informieren Sie sich über Metriken zur Behandlung von Zeitangaben.
-author: mamccrea
-ms.author: mamccrea
-ms.reviewer: mamccrea
+author: sidramadoss
+ms.author: sidram
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/11/2020
-ms.openlocfilehash: c8f40808834c64ad74673f1c5f0c19892607fdcc
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: f9dbdb3907b376df8de988730c6c48ed01bfccd0
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93127472"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98019940"
 ---
 # <a name="understand-time-handling-in-azure-stream-analytics"></a>Grundlegendes zur Behandlung von Zeitangaben in Azure Stream Analytics
 
