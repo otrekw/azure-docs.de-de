@@ -1,419 +1,365 @@
 ---
-title: Verwalten des Zugriffs auf Azure-Ressourcen mit RBAC und der Azure CLI | Microsoft-Dokumentation
-description: Hier erfahren Sie, wie Sie den Zugriff auf Azure-Ressourcen für Benutzer, Gruppen und Anwendungen mit der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) und der Azure CLI verwalten. Dazu gehören das Auflisten, Erteilen und Entfernen des Zugriffs.
+title: Hinzufügen oder Entfernen von Azure-Rollenzuweisungen mithilfe der Azure-Befehlszeilenschnittstelle – Azure RBAC
+description: Erfahren Sie, wie Sie den Zugriff auf Azure-Ressourcen für Benutzer, Gruppen, Dienstprinzipale und verwaltete Identitäten mit der Azure CLI und der rollenbasierten Zugriffssteuerung in Azure (Azure RBAC) erteilen.
 services: active-directory
-documentationcenter: ''
 author: rolyon
 manager: mtillman
-ms.assetid: 3483ee01-8177-49e7-b337-4d5cb14f5e32
 ms.service: role-based-access-control
-ms.devlang: na
-ms.topic: conceptual
-ms.tgt_pltfrm: na
+ms.topic: how-to
 ms.workload: identity
-ms.date: 09/11/2019
+ms.date: 09/28/2020
 ms.author: rolyon
-ms.reviewer: bagovind
-ms.openlocfilehash: 3420374e90790bd1ffe4c845c19de1bfed317302
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.custom: contperf-fy21q1, devx-track-azurecli
+ms.openlocfilehash: 10060e0dc6595a4d59f3968fa324ca40c91a7a39
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71173734"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97033798"
 ---
-# <a name="manage-access-to-azure-resources-using-rbac-and-azure-cli"></a>Verwalten des Zugriffs auf Azure-Ressourcen mit RBAC und der Azure CLI
+# <a name="add-or-remove-azure-role-assignments-using-azure-cli"></a>Hinzufügen oder Entfernen von Azure-Rollenzuweisungen mithilfe der Azure-Befehlszeilenschnittstelle
 
-Der Zugriff auf Azure-Ressourcen wird mithilfe der [rollenbasierten Zugriffssteuerung (RBAC)](overview.md) verwaltet. In diesem Artikel wird beschrieben, wie Sie den Zugriff für Benutzer, Gruppen und Anwendungen mit der RBAC und der Azure-Befehlszeilenschnittstelle verwalten.
+[!INCLUDE [Azure RBAC definition grant access](../../includes/role-based-access-control-definition-grant.md)] In diesem Artikel wird das Zuweisen von Rollen mithilfe der Azure-Befehlszeilenschnittstelle beschrieben.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Für die Zugriffsverwaltung benötigen Sie Folgendes:
+Sie benötigen Folgendes, um Rollenzuweisungen hinzufügen oder entfernen zu können:
 
-* [Bash in Azure Cloud Shell](/azure/cloud-shell/overview)
-* [Azure-Befehlszeilenschnittstelle](/cli/azure)
+- `Microsoft.Authorization/roleAssignments/write`- und `Microsoft.Authorization/roleAssignments/delete`-Berechtigungen, wie z.B. [Benutzerzugriffsadministrator](built-in-roles.md#user-access-administrator) oder [Besitzer](built-in-roles.md#owner)
+- [Bash in der Azure Cloud Shell](../cloud-shell/overview.md) oder [Azure-Befehlszeilenschnittstelle](/cli/azure)
 
-## <a name="list-roles"></a>Auflisten der Rollen
+## <a name="steps-to-add-a-role-assignment"></a>Schritte zum Hinzufügen einer Rollenzuweisung
 
-Zum Auflisten aller verfügbaren Rollendefinitionen verwenden Sie [az role definition list](/cli/azure/role/definition#az-role-definition-list):
+In Azure RBAC fügen Sie zum Gewähren des Zugriffs eine Rollenzuweisung hinzu. Eine Rollenzuweisung besteht aus drei Elementen: Sicherheitsprinzipal, Rollendefinition und Bereich. Führen Sie die folgenden Schritte aus, um eine Rollenzuweisung hinzuzufügen.
 
-```azurecli
-az role definition list
-```
+### <a name="step-1-determine-who-needs-access"></a>Schritt 1: Ermitteln, wer Zugriff benötigt
 
-Im folgenden Beispiel werden der Name und die Beschreibung aller verfügbaren Rollendefinitionen aufgelistet:
+Sie können eine Rolle einem Benutzer, einer Gruppe, einem Dienstprinzipal oder einer verwalteten Identität zuweisen. Sie müssen eventuell die eindeutige ID des Objekts angeben, um Rollenzuweisungen hinzufügen zu können. Die ID weist dieses Format auf: `11111111-1111-1111-1111-111111111111`. Sie können die ID über das Azure-Portal oder die Azure-Befehlszeilenschnittstelle (Azure CLI) abrufen.
 
-```azurecli
-az role definition list --output json | jq '.[] | {"roleName":.roleName, "description":.description}'
-```
+**Benutzer**
 
-```Output
-{
-  "roleName": "API Management Service Contributor",
-  "description": "Can manage service and the APIs"
-}
-{
-  "roleName": "API Management Service Operator Role",
-  "description": "Can manage service but not the APIs"
-}
-{
-  "roleName": "API Management Service Reader Role",
-  "description": "Read-only access to service and APIs"
-}
-
-...
-```
-
-Im folgenden Beispiel werden alle integrierten Rollendefinitionen aufgelistet:
+Bei einem Azure AD-Benutzer rufen Sie den Benutzerprinzipalnamen (z. B. *patlong\@contoso.com*) oder die Benutzerobjekt-ID ab. Zum Abrufen der Objekt-ID können Sie [az ad user show](/cli/azure/ad/user#az_ad_user_show) verwenden.
 
 ```azurecli
-az role definition list --custom-role-only false --output json | jq '.[] | {"roleName":.roleName, "description":.description, "roleType":.roleType}'
+az ad user show --id "{principalName}" --query "objectId" --output tsv
 ```
 
-```Output
-{
-  "roleName": "API Management Service Contributor",
-  "description": "Can manage service and the APIs",
-  "roleType": "BuiltInRole"
-}
-{
-  "roleName": "API Management Service Operator Role",
-  "description": "Can manage service but not the APIs",
-  "roleType": "BuiltInRole"
-}
-{
-  "roleName": "API Management Service Reader Role",
-  "description": "Read-only access to service and APIs",
-  "roleType": "BuiltInRole"
-}
+**Gruppieren**
 
-...
-```
-
-## <a name="list-a-role-definition"></a>Auflisten einer Rollendefinition
-
-Zum Auflisten einer Rollendefinition verwenden Sie [az role definition list](/cli/azure/role/definition#az-role-definition-list):
+Bei einer Azure AD-Gruppe benötigen Sie die Gruppenobjekt-ID. Zum Abrufen der Objekt-ID können Sie [az ad group show](/cli/azure/ad/group#az_ad_group_show) oder [az ad group list](/cli/azure/ad/group#az_ad_group_list) verwenden.
 
 ```azurecli
-az role definition list --name <role_name>
+az ad group show --group "{groupName}" --query "objectId" --output tsv
 ```
 
-Im folgenden Beispiel wird die Rollendefinition für *Contributor* (Mitwirkender) aufgelistet:
+**Dienstprinzipal**
+
+Bei einem Azure AD-Dienstprinzipal (einer von einer Anwendung verwendeten Identität) benötigen Sie die Objekt-ID des Dienstprinzipals. Zum Abrufen der Objekt-ID können Sie [az ad sp list](/cli/azure/ad/sp#az_ad_sp_list) verwenden. Verwenden Sie für einen Dienstprinzipal die Objekt-ID und **nicht** die Anwendungs-ID.
 
 ```azurecli
-az role definition list --name "Contributor"
+az ad sp list --all --query "[].{displayName:displayName, objectId:objectId}" --output tsv
+az ad sp list --display-name "{displayName}"
 ```
 
-```Output
-[
-  {
-    "additionalProperties": {},
-    "assignableScopes": [
-      "/"
-    ],
-    "description": "Lets you manage everything except access to resources.",
-    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c",
-    "name": "b24988ac-6180-42a0-ab88-20f7382dd24c",
-    "permissions": [
-      {
-        "actions": [
-          "*"
-        ],
-        "additionalProperties": {},
-        "dataActions": [],
-        "notActions": [
-          "Microsoft.Authorization/*/Delete",
-          "Microsoft.Authorization/*/Write",
-          "Microsoft.Authorization/elevateAccess/Action"
-        ],
-        "notDataActions": []
-      }
-    ],
-    "roleName": "Contributor",
-    "roleType": "BuiltInRole",
-    "type": "Microsoft.Authorization/roleDefinitions"
-  }
-]
-```
+**Verwaltete Identität**
 
-### <a name="list-actions-of-a-role"></a>Auflisten der Aktionen einer Rolle
-
-Im folgenden Beispiel werden einfach *actions* (Aktionen) und *notActions* (Keine Aktionen) der Rolle *Mitwirkender* aufgelistet:
+Bei einer systemseitig oder benutzerseitig zugewiesenen verwalteten Identität benötigen Sie die Objekt-ID. Zum Abrufen der Objekt-ID können Sie [az ad sp list](/cli/azure/ad/sp#az_ad_sp_list) verwenden.
 
 ```azurecli
-az role definition list --name "Contributor" --output json | jq '.[] | {"actions":.permissions[0].actions, "notActions":.permissions[0].notActions}'
+az ad sp list --all --filter "servicePrincipalType eq 'ManagedIdentity'"
 ```
 
-```Output
+Sie können auch [az identity list](/cli/azure/identity#az_identity_list) verwenden, um nur benutzerseitig zugewiesene verwaltete Identitäten aufzulisten.
+
+```azurecli
+az identity list
+```
+    
+### <a name="step-2-find-the-appropriate-role"></a>Schritt 2: Suchen der gewünschten Rolle
+
+Berechtigungen sind in Rollen zusammengefasst. Sie können aus einer Liste von verschiedenen [in Azure integrierten Rollen](built-in-roles.md) auswählen oder eigene benutzerdefinierte Rollen verwenden. Es hat sich bewährt, den Zugriff mit den minimal erforderlichen Berechtigungen zu gewähren. Daher sollten Sie keine allgemeine Rolle zuweisen.
+
+Zum Auflisten der Rollen und Abrufen der eindeutigen Rollen-ID können Sie [az role definition list](/cli/azure/role/definition#az_role_definition_list) verwenden.
+
+```azurecli
+az role definition list --query "[].{name:name, roleType:roleType, roleName:roleName}" --output tsv
+```
+
+Im Folgenden wird gezeigt, wie Sie die Details einer bestimmten Rolle auflisten.
+
+```azurecli
+az role definition list --name "{roleName}"
+```
+
+Weitere Informationen finden Sie unter [Auflisten von Azure-Rollendefinitionen](role-definitions-list.md#azure-cli).
+ 
+### <a name="step-3-identify-the-needed-scope"></a>Schritt 3: Ermitteln des erforderlichen Bereichs
+
+Azure bietet vier Bereichsebenen: Ressource, [Ressourcengruppe](../azure-resource-manager/management/overview.md#resource-groups), Abonnement und [Verwaltungsgruppe](../governance/management-groups/overview.md). Es hat sich bewährt, den Zugriff mit den minimal erforderlichen Berechtigungen zu gewähren. Daher sollten Sie Rollen nicht für einen allgemeinen Bereich zuweisen. Weitere Informationen zum Begriff „Bereich“ finden Sie unter [Grundlegendes zum Begriff „Bereich“](scope-overview.md).
+
+**Ressourcenumfang**
+
+Für den Ressourcenbereich benötigen Sie die Ressourcen-ID der Ressource. Die Ressourcen-ID finden Sie unter den Eigenschaften der Ressource im Azure-Portal. Ressourcen-IDs weisen folgendes Format auf:
+
+```
+/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{providerName}/{resourceType}/{resourceSubType}/{resourceName}
+```
+
+**Ressourcengruppenbereich**
+
+Für den Bereich der Ressourcengruppe benötigen Sie den Namen der Ressourcengruppe. Sie finden den Namen im Azure-Portal auf der Seite **Ressourcengruppen** oder mithilfe von [az group list](/cli/azure/group#az_group_list).
+
+```azurecli
+az group list --query "[].{name:name}" --output tsv
+```
+
+**Abonnementbereich** 
+
+Für den Abonnementbereich benötigen Sie die Abonnement-ID. Sie finden die Abonnement-ID im Azure-Portal auf der Seite **Abonnements** oder durch Ausführen von [az account list](/cli/azure/account#az_account_list).
+
+```azurecli
+az account list --query "[].{name:name, id:id}" --output tsv
+```
+
+**Verwaltungsgruppenbereich** 
+
+Für den Verwaltungsgruppenbereich benötigen Sie den Namen der Verwaltungsgruppe. Sie finden den Namen im Azure-Portal auf der Seite **Verwaltungsgruppen** oder durch Ausführen von [az account management-group list](/cli/azure/account/management-group#az_account_management_group_list).
+
+```azurecli
+az account management-group list --query "[].{name:name, id:id}" --output tsv
+```
+    
+### <a name="step-4-add-role-assignment"></a>Schritt 4: Rollenzuweisung hinzufügen
+
+Verwenden Sie zum Hinzufügen einer Rollenzuweisung den Befehl [az role assignment create](/cli/azure/role/assignment#az_role_assignment_create). Abhängig vom Bereich weist der Befehl in der Regel eines der folgenden Formate auf.
+
+**Ressourcenumfang**
+
+```azurecli
+az role assignment create --assignee "{assignee}" \
+--role "{roleNameOrId}" \
+--scope "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{providerName}/{resourceType}/{resourceSubType}/{resourceName}"
+```
+
+**Ressourcengruppenbereich**
+
+```azurecli
+az role assignment create --assignee "{assignee}" \
+--role "{roleNameOrId}" \
+--resource-group "{resourceGroupName}"
+```
+
+**Abonnementbereich** 
+
+```azurecli
+az role assignment create --assignee "{assignee}" \
+--role "{roleNameOrId}" \
+--subscription "{subscriptionNameOrId}"
+```
+
+**Verwaltungsgruppenbereich** 
+
+```azurecli
+az role assignment create --assignee "{assignee}" \
+--role "{roleNameOrId}" \
+--scope "/providers/Microsoft.Management/managementGroups/{managementGroupName}"
+``` 
+
+Im Folgenden finden Sie eine Beispielausgabe, wenn Sie einem Benutzer die Rolle [Mitwirkender für virtuelle Computer](built-in-roles.md#virtual-machine-contributor) in einem Ressourcengruppenbereich zuweisen.
+
+```azurecli
 {
-  "actions": [
-    "*"
-  ],
-  "notActions": [
-    "Microsoft.Authorization/*/Delete",
-    "Microsoft.Authorization/*/Write",
-    "Microsoft.Authorization/elevateAccess/Action"
-  ]
-}
-```
-
-Im folgenden Beispiel werden die Aktionen der Rolle *Mitwirkender für virtuelle Computer* aufgelistet:
-
-```azurecli
-az role definition list --name "Virtual Machine Contributor" --output json | jq '.[] | .permissions[0].actions'
-```
-
-```Output
-[
-  "Microsoft.Authorization/*/read",
-  "Microsoft.Compute/availabilitySets/*",
-  "Microsoft.Compute/locations/*",
-  "Microsoft.Compute/virtualMachines/*",
-  "Microsoft.Compute/virtualMachineScaleSets/*",
-  "Microsoft.Insights/alertRules/*",
-  "Microsoft.Network/applicationGateways/backendAddressPools/join/action",
-  "Microsoft.Network/loadBalancers/backendAddressPools/join/action",
-
-  ...
-
-  "Microsoft.Storage/storageAccounts/listKeys/action",
-  "Microsoft.Storage/storageAccounts/read"
-]
-```
-
-## <a name="list-access"></a>Auflisten des Zugriffs
-
-Zum Auflisten des Zugriffs in RBAC führen Sie die Rollenzuweisungen auf.
-
-### <a name="list-role-assignments-for-a-user"></a>Liste von Rollenzuweisungen für einen Benutzer
-
-Zum Auflisten der Rollenzuweisungen für einen bestimmten Benutzer verwenden Sie [az role assignment list](/cli/azure/role/assignment#az-role-assignment-list):
-
-```azurecli
-az role assignment list --assignee <assignee>
-```
-
-Standardmäßig werden nur direkte Zuweisungen im Abonnementkontext angezeigt. Verwenden Sie `--all` zum Anzeigen von Zuweisungen im Ressourcen- oder Gruppenkontext und `--include-inherited` zum Anzeigen von geerbten Zuweisungen.
-
-Im folgenden Beispiel werden die Rollenzuweisungen aufgelistet, die dem Benutzer *\@contoso.com* direkt zugewiesen sind:
-
-```azurecli
-az role assignment list --all --assignee patlong@contoso.com --output json | jq '.[] | {"principalName":.principalName, "roleDefinitionName":.roleDefinitionName, "scope":.scope}'
-```
-
-```Output
-{
-  "principalName": "patlong@contoso.com",
-  "roleDefinitionName": "Backup Operator",
-  "scope": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/pharma-sales"
-}
-{
-  "principalName": "patlong@contoso.com",
-  "roleDefinitionName": "Virtual Machine Contributor",
-  "scope": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/pharma-sales"
+  "canDelegate": null,
+  "id": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Authorization/roleAssignments/{roleAssignmentId}",
+  "name": "{roleAssignmentId}",
+  "principalId": "{principalId}",
+  "principalType": "User",
+  "resourceGroup": "{resourceGroupName}",
+  "roleDefinitionId": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/9980e02c-c2be-4d73-94e8-173b1dc7cf3c",
+  "scope": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}",
+  "type": "Microsoft.Authorization/roleAssignments"
 }
 ```
+    
+## <a name="add-role-assignment-examples"></a>Beispiele für das Hinzufügen von Rollenzuweisungen
 
-### <a name="list-role-assignments-at-a-resource-group-scope"></a>Auflisten von Rollenzuweisungen in einem Ressourcengruppenbereich
+#### <a name="add-role-assignment-for-all-blob-containers-in-a-storage-account-resource-scope"></a>Hinzufügen einer Rollenzuweisung für alle Blobcontainer in einem Speicherkonto-Ressourcenbereich
 
-Zum Auflisten der Rollenzuweisungen, die für einen Ressourcengruppenbereich vorhanden sind, verwenden Sie [az role assignment list](/cli/azure/role/assignment#az-role-assignment-list):
-
-```azurecli
-az role assignment list --resource-group <resource_group>
-```
-
-Im folgenden Beispiel werden die Rollenzuweisungen für die Ressourcengruppe *pharma-sales* aufgelistet:
+Weist einem Dienstprinzipal mit der Objekt-ID *55555555-5555-5555-5555-555555555555* die Rolle [Mitwirkender an Speicherblobdaten](built-in-roles.md#storage-blob-data-contributor) im Ressourcenbereich für das Speicherkonto *storage12345* zu.
 
 ```azurecli
-az role assignment list --resource-group pharma-sales --output json | jq '.[] | {"principalName":.principalName, "roleDefinitionName":.roleDefinitionName, "scope":.scope}'
+az role assignment create --assignee "55555555-5555-5555-5555-555555555555" \
+--role "Storage Blob Data Contributor" \
+--scope "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/Example-Storage-rg/providers/Microsoft.Storage/storageAccounts/storage12345"
 ```
 
-```Output
-{
-  "principalName": "patlong@contoso.com",
-  "roleDefinitionName": "Backup Operator",
-  "scope": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/pharma-sales"
-}
-{
-  "principalName": "patlong@contoso.com",
-  "roleDefinitionName": "Virtual Machine Contributor",
-  "scope": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/pharma-sales"
-}
+#### <a name="add-role-assignment-for-a-specific-blob-container-resource-scope"></a>Hinzufügen einer Rollenzuweisung für einen bestimmten Blobcontainer-Ressourcenbereich
 
-...
-```
-
-### <a name="list-role-assignments-at-a-subscription-scope"></a>Auflisten von Rollenzuweisungen in einem Abonnementbereich
-
-Um alle Rollenzuweisungen in einem Abonnementbereich aufzulisten, verwenden Sie [az role assignment list](/cli/azure/role/assignment#az-role-assignment-list). Die Abonnement-ID können Sie über das Blatt **Abonnements** im Azure-Portal oder durch Verwenden von [az account list](/cli/azure/account#az-account-list) abrufen.
+Weist einem Dienstprinzipal mit der Objekt-ID *55555555-5555-5555-5555-555555555555* die Rolle [Mitwirkender an Speicherblobdaten](built-in-roles.md#storage-blob-data-contributor) im Ressourcenbereich für den Blobcontainer *blob-container-01* zu.
 
 ```azurecli
-az role assignment list --subscription <subscription_name_or_id>
+az role assignment create --assignee "55555555-5555-5555-5555-555555555555" \
+--role "Storage Blob Data Contributor" \
+--scope "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/Example-Storage-rg/providers/Microsoft.Storage/storageAccounts/storage12345/blobServices/default/containers/blob-container-01"
 ```
 
-```Example
-az role assignment list --subscription 00000000-0000-0000-0000-000000000000 --output json | jq '.[] | {"principalName":.principalName, "roleDefinitionName":.roleDefinitionName, "scope":.scope}'
-```
+#### <a name="add-role-assignment-for-a-group-in-a-specific-virtual-network-resource-scope"></a>Hinzufügen einer Rollenzuweisung für eine Gruppe im Ressourcenbereich eines bestimmten virtuellen Netzwerks
 
-### <a name="list-role-assignments-at-a-management-group-scope"></a>Auflisten von Rollenzuweisungen in einem Verwaltungsgruppenbereich
-
-Um alle Rollenzuweisungen in einem Verwaltungsgruppenbereich aufzulisten, verwenden Sie [az role assignment list](/cli/azure/role/assignment#az-role-assignment-list). Die Verwaltungsgruppen-ID befindet sich auf dem Blatt **Verwaltungsgruppen** im Azure-Portal, oder Sie können zum Abrufen auch [az account management-group list](/cli/azure/ext/managementgroups/account/management-group#ext-managementgroups-az-account-management-group-list) verwenden.
+Weist der Gruppe *Ann Mack Team* mit der ID „22222222-2222-2222-2222-222222222222“ die Rolle [Mitwirkender für virtuelle Computer](built-in-roles.md#virtual-machine-contributor) im Ressourcenbereich für das virtuelle Netzwerk *pharma-sales-project-network* zu.
 
 ```azurecli
-az role assignment list --scope /providers/Microsoft.Management/managementGroups/<group_id>
+az role assignment create --assignee "22222222-2222-2222-2222-222222222222" \
+--role "Virtual Machine Contributor" \
+--scope "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/pharma-sales/providers/Microsoft.Network/virtualNetworks/pharma-sales-project-network"
 ```
 
-```Example
-az role assignment list --scope /providers/Microsoft.Management/managementGroups/marketing-group --output json | jq '.[] | {"principalName":.principalName, "roleDefinitionName":.roleDefinitionName, "scope":.scope}'
-```
+#### <a name="add-role-assignment-for-a-user-at-a-resource-group-scope"></a>Hinzufügen einer Rollenzuweisung für einen Benutzer in einem Ressourcengruppenbereich
 
-## <a name="grant-access"></a>Gewähren von Zugriff
-
-In RBAC erstellen Sie zum Gewähren des Zugriffs eine Rollenzuweisung.
-
-### <a name="create-a-role-assignment-for-a-user-at-a-resource-group-scope"></a>Erstellen einer Rollenzuweisung für einen Benutzer in einem Ressourcengruppenbereich
-
-Um einem Benutzer Zugriff in einem Ressourcengruppenbereich zu gewähren, verwenden Sie [az role assignment create](/cli/azure/role/assignment#az-role-assignment-create).
+Weist dem Benutzer *patlong\@contoso.com* die Rolle [Mitwirkender für virtuelle Computer](built-in-roles.md#virtual-machine-contributor) im Ressourcengruppenbereich *pharma-sales* zu.
 
 ```azurecli
-az role assignment create --role <role_name_or_id> --assignee <assignee> --resource-group <resource_group>
+az role assignment create --assignee "patlong@contoso.com" \
+--role "Virtual Machine Contributor" \
+--resource-group "pharma-sales"
 ```
 
-Im folgenden Beispiel wird dem Benutzer *patlong\@contoso.com* im Ressourcengruppenkontext *pharma-sales* die Rolle *Mitwirkender für virtuelle Computer* zugewiesen:
-
-```azurecli
-az role assignment create --role "Virtual Machine Contributor" --assignee patlong@contoso.com --resource-group pharma-sales
-```
-
-### <a name="create-a-role-assignment-using-the-unique-role-id"></a>Erstellen einer Rollenzuweisung anhand der eindeutigen Rollen-ID
+#### <a name="add-role-assignment-for-a-user-using-the-unique-role-id-at-a-resource-group-scope"></a>Hinzufügen einer Rollenzuweisung für einen Benutzer mithilfe der eindeutigen Rollen-ID in einem Ressourcengruppenbereich
 
 In bestimmten Fällen kann sich ein Rollenname ändern, z. B.:
 
 - Sie verwenden eine eigene benutzerdefinierte Rolle und beschließen, den Namen zu ändern.
 - Sie verwenden eine als Vorschauversion verfügbare Rolle, deren Name den Zusatz **(Vorschauversion)** enthält. Beim Veröffentlichen wird die Rolle umbenannt.
 
-> [!IMPORTANT]
-> Eine Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar.
-> Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
 Auch wenn eine Rolle umbenannt wird, ändert sich die Rollen-ID nicht. Wenn Sie Ihre Rollenzuweisungen mithilfe von Skripts oder mittels Automatisierung erstellen, wird empfohlen, die eindeutige Rollen-ID anstelle des Rollennamens zu verwenden. Wird eine Rolle umbenannt, ist auf diese Weise die Wahrscheinlichkeit größer, dass Ihre Skripts funktionieren.
 
-Verwenden Sie [az role assignment create](/cli/azure/role/assignment#az-role-assignment-create), um eine Rollenzuweisung anstelle des Rollennamens mit der eindeutigen Rollen-ID zu erstellen.
+Im folgenden Beispiel wird dem Benutzer *patlong\@contoso.com* im Ressourcengruppenkontext *pharma-sales* die Rolle [Mitwirkender für virtuelle Computer](built-in-roles.md#virtual-machine-contributor) zugewiesen.
 
 ```azurecli
-az role assignment create --role <role_id> --assignee <assignee> --resource-group <resource_group>
+az role assignment create --assignee "patlong@contoso.com" \
+--role "9980e02c-c2be-4d73-94e8-173b1dc7cf3c" \
+--resource-group "pharma-sales"
 ```
 
-Im folgenden Beispiel wird dem Benutzer *patlong\@contoso.com* im Ressourcengruppenkontext *pharma-sales* die Rolle [Mitwirkender für virtuelle Computer](built-in-roles.md#virtual-machine-contributor) zugewiesen. Zum Abrufen der eindeutigen Rollen-ID können Sie [az role definition list](/cli/azure/role/definition#az-role-definition-list) verwenden. Weitere Informationen finden Sie unter [Integrierte Rollen für Azure-Ressourcen](built-in-roles.md).
+#### <a name="add-role-assignment-for-all-blob-containers-at-a-resource-group-scope"></a>Hinzufügen einer Rollenzuweisung für alle Blobcontainer in einem Ressourcengruppenbereich
+
+Weist einem Dienstprinzipal mit der Objekt-ID *55555555-5555-5555-5555-555555555555* die Rolle [Mitwirkender an Speicherblobdaten](built-in-roles.md#storage-blob-data-contributor) im Ressourcengruppenbereich *Example-Storage-rg* zu.
 
 ```azurecli
-az role assignment create --role 9980e02c-c2be-4d73-94e8-173b1dc7cf3c --assignee patlong@contoso.com --resource-group pharma-sales
+az role assignment create --assignee "55555555-5555-5555-5555-555555555555" \
+--role "Storage Blob Data Contributor" \
+--resource-group "Example-Storage-rg"
 ```
 
-### <a name="create-a-role-assignment-for-a-group"></a>Erstellen einer Rollenzuweisung für eine Gruppe
-
-Zum Erteilen des Zugriffs für eine Gruppe verwenden Sie [az role assignment create](/cli/azure/role/assignment#az-role-assignment-create). Zum Abrufen der ID der Gruppe können Sie [az ad group list](/cli/azure/ad/group#az-ad-group-list) oder [az ad group show](/cli/azure/ad/group#az-ad-group-show) verwenden.
+Alternativ kann die vollqualifizierte Ressourcengruppe auch mithilfe des Parameters `--scope` angegeben werden:
 
 ```azurecli
-az role assignment create --role <role_name_or_id> --assignee-object-id <assignee_object_id> --resource-group <resource_group> --scope </subscriptions/subscription_id>
+az role assignment create --assignee "55555555-5555-5555-5555-555555555555" \
+--role "Storage Blob Data Contributor" \
+--scope "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/Example-Storage-rg"
 ```
 
-Im folgenden Beispiel wird der Gruppe *Ann Mack Team* mit der ID 22222222-2222-2222-2222-222222222222 im Abonnementbereich die Rolle *Reader* zugewiesen.
+#### <a name="add-role-assignment-for-an-application-at-a-resource-group-scope"></a>Hinzufügen einer Rollenzuweisung für eine Anwendung in einem Ressourcengruppenbereich
+
+Weist einer Anwendung mit der Objekt-ID „44444444-4444-4444-4444-444444444444“ des Dienstprinzipals die Rolle [Mitwirkender für virtuelle Computer](built-in-roles.md#virtual-machine-contributor) im Ressourcengruppenbereich *pharma-sales* zu.
 
 ```azurecli
-az role assignment create --role Reader --assignee-object-id 22222222-2222-2222-2222-222222222222 --scope /subscriptions/00000000-0000-0000-0000-000000000000
+az role assignment create --assignee "44444444-4444-4444-4444-444444444444" \
+--role "Virtual Machine Contributor" \
+--resource-group "pharma-sales"
 ```
 
-Im folgenden Beispiel wird die Rolle *Mitwirkender für virtuelle Computer* der Gruppe *Ann Mack Team* mit der ID 22222222-2222-2222-2222-222222222222 im Ressourcenbereich für ein virtuelles Netzwerk mit dem Namen *pharma-sales-project-network* zugewiesen.
-
-```azurecli
-az role assignment create --role "Virtual Machine Contributor" --assignee-object-id 22222222-2222-2222-2222-222222222222 --scope /subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/pharma-sales/providers/Microsoft.Network/virtualNetworks/pharma-sales-project-network
-```
-
-### <a name="create-a-role-assignment-for-an-application-at-a-resource-group-scope"></a>Erstellen einer Rollenzuweisung für eine Anwendung in einem Ressourcengruppenbereich
-
-Zum Erteilen des Zugriffs für eine Anwendung verwenden Sie [az role assignment create](/cli/azure/role/assignment#az-role-assignment-create). Zum Abrufen der Objekt-ID der Anwendung können Sie [az ad app list](/cli/azure/ad/app#az-ad-app-list) oder [az ad app show](/cli/azure/ad/app#az-ad-app-show) verwenden.
-
-```azurecli
-az role assignment create --role <role_name_or_id> --assignee-object-id <assignee_object_id> --resource-group <resource_group>
-```
-
-Im folgenden Beispiel wird einer Anwendung mit der Objekt-ID 44444444-4444-4444-4444-444444444444 im Ressourcengruppenkontext *pharma-sales* die Rolle *Virtual Machine Contributor* zugewiesen.
-
-```azurecli
-az role assignment create --role "Virtual Machine Contributor" --assignee-object-id 44444444-4444-4444-4444-444444444444 --resource-group pharma-sales
-```
-
-### <a name="create-a-role-assignment-for-a-user-at-a-subscription-scope"></a>Erstellen einer Rollenzuweisung für einen Benutzer im Abonnementbereich
-
-Um einem Benutzer Zugriff in einem Abonnementbereich zu gewähren, verwenden Sie [az role assignment create](/cli/azure/role/assignment#az-role-assignment-create). Die Abonnement-ID können Sie über das Blatt **Abonnements** im Azure-Portal oder durch Verwenden von [az account list](/cli/azure/account#az-account-list) abrufen.
-
-```azurecli
-az role assignment create --role <role_name_or_id> --assignee <assignee> --subscription <subscription_name_or_id>
-```
-
-Im folgenden Beispiel wird dem Benutzer *annm\@example.com* im Abonnementbereich die Rolle *Reader* zugewiesen.
-
-```azurecli
-az role assignment create --role "Reader" --assignee annm@example.com --subscription 00000000-0000-0000-0000-000000000000
-```
-
-### <a name="create-a-role-assignment-for-a-user-at-a-management-group-scope"></a>Erstellen einer Rollenzuweisung für einen Benutzer in einem Verwaltungsgruppenbereich
-
-Um einem Benutzer Zugriff in einem Verwaltungsgruppenbereich zu gewähren, verwenden Sie [az role assignment create](/cli/azure/role/assignment#az-role-assignment-create). Die Verwaltungsgruppen-ID befindet sich auf dem Blatt **Verwaltungsgruppen** im Azure-Portal, oder Sie können zum Abrufen auch [az account management-group list](/cli/azure/ext/managementgroups/account/management-group#ext-managementgroups-az-account-management-group-list) verwenden.
-
-```azurecli
-az role assignment create --role <role_name_or_id> --assignee <assignee> --scope /providers/Microsoft.Management/managementGroups/<group_id>
-```
-
-Im folgenden Beispiel wird dem Benutzer *alain\@example.com* im Verwaltungsgruppenbereich die Rolle *Abrechnungsleser* zugewiesen.
-
-```azurecli
-az role assignment create --role "Billing Reader" --assignee alain@example.com --scope /providers/Microsoft.Management/managementGroups/marketing-group
-```
-
-### <a name="create-a-role-assignment-for-a-new-service-principal"></a>Erstellt eine Rollenzuweisung für einen neuen Dienstprinzipal.
+#### <a name="add-role-assignment-for-a-new-service-principal-at-a-resource-group-scope"></a>Hinzufügen einer Rollenzuweisung für einen neuen Dienstprinzipal in einem Ressourcengruppenbereich
 
 Wenn Sie einen neuen Dienstprinzipal erstellen und sofort versuchen, diesem eine Rolle zuzuweisen, kann die Rollenzuweisung in einigen Fällen fehlschlagen. Wenn Sie z.B. ein Skript verwenden, um eine neue verwaltete Identität zu erstellen, und dann versuchen, dem Dienstprinzipal eine Rolle zuzuweisen, kann die Rollenzuweisung fehlschlagen. Der Grund für diesen Fehler ist wahrscheinlich eine Replikationsverzögerung. Der Dienstprinzipal wird in einer Region erstellt, die Rollenzuweisung kann aber in einer anderen Region stattfinden, in die der Dienstprinzipal noch nicht repliziert wurde. Um dieses Szenario zu beheben, sollten Sie beim Erstellen der Rollenzuweisung den Prinzipaltyp angeben.
 
-Um eine Rollenzuweisung zu erstellen, verwenden Sie [az role assignment create](/cli/azure/role/assignment#az-role-assignment-create), geben Sie einen Wert für `--assignee-object-id` an, und legen Sie `--assignee-principal-type` dann auf `ServicePrincipal` fest.
+Verwenden Sie [az role assignment create](/cli/azure/role/assignment#az_role_assignment_create) zum Hinzufügen einer Rollenzuweisung, geben Sie einen Wert für `--assignee-object-id` an, und legen Sie `--assignee-principal-type` dann auf `ServicePrincipal` fest.
 
 ```azurecli
-az role assignment create --role <role_name_or_id> --assignee-object-id <assignee_object_id> --assignee-principal-type <assignee_principal_type> --resource-group <resource_group> --scope </subscriptions/subscription_id>
+az role assignment create --assignee-object-id "{assigneeObjectId}" \
+--assignee-principal-type "{assigneePrincipalType}" \
+--role "{roleNameOrId}" \
+--resource-group "{resourceGroupName}" \
+--scope "/subscriptions/{subscriptionId}"
 ```
 
-Im folgenden Beispiel wird der verwalteten Identität *msi-test* im Ressourcengruppenkontext *pharma-sales* die Rolle *Mitwirkender für virtuelle Computer* zugewiesen:
+Im folgenden Beispiel wird der verwalteten Identität *msi-test* im Ressourcengruppenkontext *pharma-sales* die Rolle [Mitwirkender für virtuelle Computer](built-in-roles.md#virtual-machine-contributor) zugewiesen:
 
 ```azurecli
-az role assignment create --role "Virtual Machine Contributor" --assignee-object-id 33333333-3333-3333-3333-333333333333 --assignee-principal-type ServicePrincipal --resource-group pharma-sales
+az role assignment create --assignee-object-id "33333333-3333-3333-3333-333333333333" \
+--assignee-principal-type "ServicePrincipal" \
+--role "Virtual Machine Contributor" \
+--resource-group "pharma-sales"
 ```
 
-## <a name="remove-access"></a>Zugriff entfernen
+#### <a name="add-role-assignment-for-a-user-at-a-subscription-scope"></a>Hinzufügen einer Rollenzuweisung für einen Benutzer im Abonnementbereich
 
-In RBAC entfernen Sie mit [az role assignment delete](/cli/azure/role/assignment#az-role-assignment-delete) eine Rollenzuweisung, um den Zugriff zu entfernen:
+Weist dem Benutzer *annm\@example.com* die Rolle [Leser](built-in-roles.md#reader) im Abonnementbereich zu.
 
 ```azurecli
-az role assignment delete --assignee <assignee> --role <role_name_or_id> --resource-group <resource_group>
+az role assignment create --assignee "annm@example.com" \
+--role "Reader" \
+--subscription "00000000-0000-0000-0000-000000000000"
 ```
 
-Im folgenden Beispiel wird die Zuweisung der Rolle *Mitwirkender für virtuelle Computer* von Benutzer *patlong\@contoso.com* für die Ressourcengruppe *pharma-sales* entfernt:
+#### <a name="add-role-assignment-for-a-group-at-a-subscription-scope"></a>Hinzufügen einer Rollenzuweisung für eine Gruppe im Abonnementbereich
+
+Weist der Gruppe *Ann Mack Team* mit der ID „22222222-2222-2222-2222-222222222222“ die Rolle [Leser](built-in-roles.md#reader) im Abonnementbereich zu.
 
 ```azurecli
-az role assignment delete --assignee patlong@contoso.com --role "Virtual Machine Contributor" --resource-group pharma-sales
+az role assignment create --assignee "22222222-2222-2222-2222-222222222222" \
+--role "Reader" \
+--subscription "00000000-0000-0000-0000-000000000000"
 ```
 
-Im folgenden Beispiel wird die Rolle *Reader* von der Gruppe *Ann Mack Team* mit der ID 22222222-2222-2222-2222-222222222222 im Abonnementbereich entfernt. Zum Abrufen der ID der Gruppe können Sie [az ad group list](/cli/azure/ad/group#az-ad-group-list) oder [az ad group show](/cli/azure/ad/group#az-ad-group-show) verwenden.
+#### <a name="add-role-assignment-for-all-blob-containers-at-a-subscription-scope"></a>Hinzufügen einer Rollenzuweisung für alle Blobcontainer im Abonnementbereich
+
+Weist dem Benutzer *alain\@example.com* die Rolle [Leser von Speicherblobdaten](built-in-roles.md#storage-blob-data-reader) im Abonnementbereich zu.
 
 ```azurecli
-az role assignment delete --assignee 22222222-2222-2222-2222-222222222222 --role "Reader" --subscription 00000000-0000-0000-0000-000000000000
+az role assignment create --assignee "alain@example.com" \
+--role "Storage Blob Data Reader" \
+--scope "/subscriptions/00000000-0000-0000-0000-000000000000"
 ```
 
-Im folgenden Beispiel wird dem Benutzer *alain\@example.com* im Verwaltungsgruppenbereich die Rolle *Abrechnungsleser* entfernt. Um die ID der Verwaltungsgruppe zu erhalten, können Sie [az account management-group list](/cli/azure/ext/managementgroups/account/management-group#ext-managementgroups-az-account-management-group-list) verwenden.
+#### <a name="add-role-assignment-for-a-user-at-a-management-group-scope"></a>Hinzufügen einer Rollenzuweisung für einen Benutzer in einem Verwaltungsgruppenbereich
+
+Weist dem Benutzer *alain\@example.com* die Rolle [Abrechnungsleser](built-in-roles.md#billing-reader) im Verwaltungsgruppenbereich zu.
 
 ```azurecli
-az role assignment delete --assignee alain@example.com --role "Billing Reader" --scope /providers/Microsoft.Management/managementGroups/marketing-group
+az role assignment create --assignee "alain@example.com" \
+--role "Billing Reader" \
+--scope "/providers/Microsoft.Management/managementGroups/marketing-group"
+```
+
+## <a name="remove-a-role-assignment"></a>Entfernen einer Rollenzuweisung
+
+In Azure RBAC entfernen Sie mit [az role assignment delete](/cli/azure/role/assignment#az_role_assignment_delete) eine Rollenzuweisung und heben damit den Zugriff auf.
+
+Im folgenden Beispiel wird die Zuweisung der Rolle [Mitwirkender für virtuelle Computer](built-in-roles.md#virtual-machine-contributor) von Benutzer *patlong\@contoso.com* für die Ressourcengruppe *pharma-sales* entfernt:
+
+```azurecli
+az role assignment delete --assignee "patlong@contoso.com" \
+--role "Virtual Machine Contributor" \
+--resource-group "pharma-sales"
+```
+
+Entfernt die Rolle [Leser](built-in-roles.md#reader) von der Gruppe *Ann Mack Team* mit der ID „22222222-2222-2222-2222-222222222222“ im Abonnementbereich.
+
+```azurecli
+az role assignment delete --assignee "22222222-2222-2222-2222-222222222222" \
+--role "Reader" \
+--subscription "00000000-0000-0000-0000-000000000000"
+```
+
+Entfernt die Rolle [Abrechnungsleser](built-in-roles.md#billing-reader) vom Benutzer *alain\@example.com* im Verwaltungsgruppenbereich.
+
+```azurecli
+az role assignment delete --assignee "alain@example.com" \
+--role "Billing Reader" \
+--scope "/providers/Microsoft.Management/managementGroups/marketing-group"
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Tutorial: Erstellen einer benutzerdefinierten Rolle für Azure-Ressourcen mithilfe der Azure CLI](tutorial-custom-role-cli.md)
-- [Verwalten von Azure-Ressourcen und -Ressourcengruppen mithilfe der Azure-Befehlszeilenschnittstelle](../azure-resource-manager/cli-azure-resource-manager.md)
+- [Auflisten von Azure-Rollenzuweisungen mithilfe der Azure-Befehlszeilenschnittstelle](role-assignments-list-cli.md)
+- [Verwalten von Azure-Ressourcen und -Ressourcengruppen mithilfe der Azure-Befehlszeilenschnittstelle](../azure-resource-manager/management/manage-resources-cli.md)

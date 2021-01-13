@@ -1,22 +1,29 @@
 ---
-title: Verwenden der BulkExecutor-.NET-Bibliothek zum Ausführen von Massenimport- und -aktualisierungsvorgängen in Azure Cosmos DB
+title: Verwenden der .NET-Bibliothek „BulkExecutor“ für Massenimports und Updatevorgänge in Azure Cosmos DB
 description: Führen Sie Massenimport und -aktualisierung der Azure Cosmos DB-Dokumente mithilfe der BulkExecutor-.NET-Bibliothek durch.
 author: tknandu
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
-ms.topic: conceptual
-ms.date: 09/01/2019
+ms.topic: how-to
+ms.date: 03/23/2020
 ms.author: ramkris
 ms.reviewer: sngun
-ms.openlocfilehash: d76426e738d78391b92b008e821672017520b7d2
-ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 6f6994717ff4c730fb27bd26c40d199fb198e528
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71218400"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96019955"
 ---
 # <a name="use-the-bulk-executor-net-library-to-perform-bulk-operations-in-azure-cosmos-db"></a>Verwenden der BulkExecutor-.NET-Bibliothek zum Ausführen von Massenvorgängen in Azure Cosmos DB
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
+
+> [!NOTE]
+> Die in diesem Artikel beschriebene BulkExecutor-Bibliothek wird für Anwendungen verwaltet, die das .NET SDK 2.x verwenden. Für neue Anwendungen können Sie die **Massenunterstützung** verwenden, die direkt mit dem [.NET SDK 3.x](tutorial-sql-api-dotnet-bulk-import.md) verfügbar ist und keine externe Bibliothek erfordert. 
+
+> Wenn Sie derzeit die BulkExecutor-Bibliothek verwenden und eine Migration zur Massenunterstützung für das neuere SDK planen, führen Sie die Schritte im [Migrationsleitfaden](how-to-migrate-from-bulk-executor-library.md) aus, um Ihre Anwendung zu migrieren.
 
 Dieses Tutorial enthält Anleitungen zum Verwenden der BulkExecutor-.NET-Bibliothek zum Importieren und Aktualisieren von Dokumenten in einem Azure Cosmos-Container. Informationen zur BulkExecutor-Bibliothek und dazu, wie Sie damit massiven Durchsatz und riesige Speichermengen nutzen können, finden Sie im Artikel [BulkExecutor-Bibliothek – Übersicht](bulk-executor-overview.md). In diesem Tutorial wird eine .NET-Beispielanwendung vorgestellt, die zufällig generierte Dokumente in einen Azure Cosmos-Container massenimportiert. Nach dem Import wird erläutert, wie Sie die importierten Daten per Massenvorgang aktualisieren, indem Sie Patches als Vorgänge angeben, die für bestimmte Dokumentfelder ausgeführt werden sollen.
 
@@ -24,11 +31,11 @@ Zurzeit wird die BulkExecutor-Bibliothek nur von den SQL-API- und Gremlin-API-Ko
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Falls Sie Visual Studio 2019 noch nicht installiert haben, können Sie die [Visual Studio 2019 Community-Edition](https://www.visualstudio.com/downloads/) herunterladen und verwenden. Aktivieren Sie beim Setup von Visual Studio die Option „Azure-Entwicklung“.
+* Falls Sie Visual Studio 2019 noch nicht installiert haben, können Sie [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/) herunterladen und verwenden. Aktivieren Sie beim Setup von Visual Studio die Option „Azure-Entwicklung“.
 
 * Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) erstellen, bevor Sie beginnen.
 
-* Sie können [Azure Cosmos DB ohne ein Azure-Abonnement testen](https://azure.microsoft.com/try/cosmosdb/) – kostenlos und ohne Verpflichtungen. Alternativ dazu können Sie den [Azure Cosmos DB-Emulator](https://docs.microsoft.com/azure/cosmos-db/local-emulator) mit dem Endpunkt `https://localhost:8081` verwenden. Den Primärschlüssel finden Sie unter [Authentifizieren von Anforderungen](local-emulator.md#authenticating-requests).
+* Sie können [Azure Cosmos DB ohne ein Azure-Abonnement testen](https://azure.microsoft.com/try/cosmosdb/) – kostenlos und ohne Verpflichtungen. Alternativ dazu können Sie den [Azure Cosmos DB-Emulator](./local-emulator.md) mit dem Endpunkt `https://localhost:8081` verwenden. Den Primärschlüssel finden Sie unter [Authentifizieren von Anforderungen](local-emulator.md#authenticate-requests).
 
 * Erstellen Sie ein Azure Cosmos DB-SQL-API-Konto mithilfe der Schritte, die im Abschnitt [Erstellen eines Datenbankkontos](create-sql-api-dotnet.md#create-account) des .NET-Schnellstarttutorials beschrieben werden.
 
@@ -36,11 +43,11 @@ Zurzeit wird die BulkExecutor-Bibliothek nur von den SQL-API- und Gremlin-API-Ko
 
 Beginnen Sie jetzt mit der Arbeit mit Code, indem Sie eine .NET-Beispielanwendung von GitHub herunterladen. Diese Anwendung führt Massenvorgänge für die in Ihrem Azure Cosmos-Konto gespeicherten Daten aus. Um die Anwendung zu klonen, öffnen Sie eine Eingabeaufforderung, navigieren Sie zu dem Verzeichnis, in das Sie die Anwendung kopieren möchten, und führen Sie den folgenden Befehl aus:
 
-```
+```bash
 git clone https://github.com/Azure/azure-cosmosdb-bulkexecutor-dotnet-getting-started.git
 ```
 
-Das geklonte Repository enthält zwei Beispiele: BulkImportSample und BulkUpdateSample. Sie können jede der Beispielanwendungen öffnen, die Verbindungszeichenfolgen in der App.config-Datei auf die Verbindungszeichenfolgen Ihres Azure Cosmos DB-Kontos aktualisieren, die Lösung erstellen und sie ausführen.
+Das geklonte Repository enthält zwei Beispiele: BulkImportSample und BulkUpdateSample. Sie können jede der Beispielanwendungen öffnen, die Verbindungszeichenfolgen in der Datei „App.config“ auf die Verbindungszeichenfolgen Ihres Azure Cosmos DB-Kontos aktualisieren, die Lösung erstellen und sie ausführen.
 
 Die Anwendung BulkImportSample generiert zufällig Dokumente und importiert sie per Massenvorgang in Ihr Azure Cosmos-Konto. Die Anwendung BulkUpdateSample aktualisiert die importierten Dokumente per Massenvorgang, indem sie Patches als Vorgänge angibt, die für bestimmte Dokumentfelder ausgeführt werden sollen. In den nächsten Abschnitten sehen wir uns den Code in jeder dieser Beispiel-Apps an.
 
@@ -48,7 +55,7 @@ Die Anwendung BulkImportSample generiert zufällig Dokumente und importiert sie 
 
 1. Navigieren Sie zum Ordner „BulkImportSample“, und öffnen Sie die Datei „BulkImportSample.sln“.  
 
-2. Die Verbindungszeichenfolgen von Azure Cosmos DB werden aus der App.config-Datei abgerufen, wie im folgenden Code gezeigt:  
+2. Die Verbindungszeichenfolgen von Azure Cosmos DB werden aus der Datei „App.config“ abgerufen, wie im folgenden Code gezeigt:  
 
    ```csharp
    private static readonly string EndpointUrl = ConfigurationManager.AppSettings["EndPointUrl"];
@@ -87,7 +94,7 @@ Die Anwendung BulkImportSample generiert zufällig Dokumente und importiert sie 
    client.ConnectionPolicy.RetryOptions.MaxRetryAttemptsOnThrottledRequests = 0;
    ```
 
-5. Die Anwendung ruft die BulkImportAsync-API auf. Die .NET-Bibliothek stellt zwei Überladungen der Massenimport-API bereit: Die eine akzeptiert eine Liste von serialisierten JSON-Dokumenten, die andere akzeptiert eine Liste von deserialisierten POCO-Dokumenten. Weitere Informationen zu den Definitionen jeder dieser überladenen Methoden finden Sie in der [API-Dokumentation](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.bulkexecutor.bulkimportasync?view=azure-dotnet).
+5. Die Anwendung ruft die BulkImportAsync-API auf. Die .NET-Bibliothek stellt zwei Überladungen der Massenimport-API bereit: Die eine akzeptiert eine Liste von serialisierten JSON-Dokumenten, die andere akzeptiert eine Liste von deserialisierten POCO-Dokumenten. Weitere Informationen zu den Definitionen jeder dieser überladenen Methoden finden Sie in der [API-Dokumentation](/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.bulkexecutor.bulkimportasync?view=azure-dotnet&preserve-view=true).
 
    ```csharp
    BulkImportResponse bulkImportResponse = await bulkExecutor.BulkImportAsync(
@@ -115,15 +122,15 @@ Die Anwendung BulkImportSample generiert zufällig Dokumente und importiert sie 
    |NumberOfDocumentsImported (long)   |  Die Gesamtanzahl von Dokumenten, die von allen an den Massenimport-API-Aufruf gesendeten Dokumenten erfolgreich importiert wurden.       |
    |TotalRequestUnitsConsumed (double)   |   Die Gesamtanzahl von Anforderungseinheiten, die vom Massenimport-API-Aufruf verbraucht wurden.      |
    |TotalTimeTaken (TimeSpan)    |   Die Gesamtzeit, die der Massenimport-API-Aufruf benötigt, um die Ausführung abzuschließen.      |
-   |BadInputDocuments (List\<Objekt>)   |     Die Liste der Dokumente mit ungültigem Format, die im Massenimport-API-Aufruf nicht erfolgreich importiert wurden. Korrigieren Sie die zurückgegebenen Dokumente, und wiederholen Sie den Import. Zu Dokumenten mit ungültigem Format gehören auch Dokumente, deren ID-Wert keine Zeichenfolge ist (NULL-Werte oder andere Datentypen werden als ungültig betrachtet).    |
+   |BadInputDocuments (List\<object>)   |     Die Liste der Dokumente mit ungültigem Format, die im Massenimport-API-Aufruf nicht erfolgreich importiert wurden. Korrigieren Sie die zurückgegebenen Dokumente, und wiederholen Sie den Import. Zu Dokumenten mit ungültigem Format gehören auch Dokumente, deren ID-Wert keine Zeichenfolge ist (NULL-Werte oder andere Datentypen werden als ungültig betrachtet).    |
 
 ## <a name="bulk-update-data-in-your-azure-cosmos-account"></a>Massenaktualisierung von Daten in Ihrem Azure Cosmos-Konto
 
-Sie können vorhandene Dokumente mithilfe der BulkUpdateAsync-API aktualisieren. In diesem Beispiel legen Sie das Feld `Name` auf einen neuen Wert fest und entfernen das Feld `Description` aus den vorhandenen Dokumenten. Alle unterstützten Aktualisierungsvorgänge finden Sie in der [API-Dokumentation](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.bulkupdate?view=azure-dotnet).
+Sie können vorhandene Dokumente mithilfe der BulkUpdateAsync-API aktualisieren. In diesem Beispiel legen Sie das Feld `Name` auf einen neuen Wert fest und entfernen das Feld `Description` aus den vorhandenen Dokumenten. Alle unterstützten Aktualisierungsvorgänge finden Sie in der [API-Dokumentation](/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.bulkupdate?view=azure-dotnet&preserve-view=true).
 
 1. Navigieren Sie zum Ordner „BulkUpdateSample“, und öffnen Sie die Datei „BulkUpdateSample.sln“.  
 
-2. Definieren Sie die Aktualisierungselemente zusammen mit den entsprechenden Vorgängen zum Aktualisieren von Feldern. In diesem Beispiel verwenden Sie `SetUpdateOperation`, um das Feld `Name` zu aktualisieren, und `UnsetUpdateOperation`, um das Feld `Description` aus allen Dokumenten zu entfernen. Sie können auch andere Vorgänge ausführen, wie z.B. das inkrementelle Erhöhen eines Dokumentfelds um einen bestimmten Wert, das Verschieben bestimmter Werte in ein Arrayfeld oder das Entfernen eines bestimmten Werts aus einem Arrayfeld. Informationen zu den verschiedenen Methoden, die von der API für die Massenaktualisierung bereitgestellt werden, finden Sie in der [API-Dokumentation](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.bulkupdate?view=azure-dotnet).
+2. Definieren Sie die Aktualisierungselemente zusammen mit den entsprechenden Vorgängen zum Aktualisieren von Feldern. In diesem Beispiel verwenden Sie `SetUpdateOperation`, um das Feld `Name` zu aktualisieren, und `UnsetUpdateOperation`, um das Feld `Description` aus allen Dokumenten zu entfernen. Sie können auch andere Vorgänge ausführen, wie z.B. das inkrementelle Erhöhen eines Dokumentfelds um einen bestimmten Wert, das Verschieben bestimmter Werte in ein Arrayfeld oder das Entfernen eines bestimmten Werts aus einem Arrayfeld. Informationen zu den verschiedenen Methoden, die von der API für die Massenaktualisierung bereitgestellt werden, finden Sie in der [API-Dokumentation](/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.bulkupdate?view=azure-dotnet&preserve-view=true).
 
    ```csharp
    SetUpdateOperation<string> nameUpdate = new SetUpdateOperation<string>("Name", "UpdatedDoc");
@@ -140,7 +147,7 @@ Sie können vorhandene Dokumente mithilfe der BulkUpdateAsync-API aktualisieren.
    }
    ```
 
-3. Die Anwendung ruft die BulkUpdateAsync-API auf. Informationen zur Definition der BulkUpdateAsync-Methode finden Sie in der [API-Dokumentation](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.ibulkexecutor.bulkupdateasync?view=azure-dotnet).  
+3. Die Anwendung ruft die BulkUpdateAsync-API auf. Informationen zur Definition der BulkUpdateAsync-Methode finden Sie in der [API-Dokumentation](/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.ibulkexecutor.bulkupdateasync?view=azure-dotnet&preserve-view=true).  
 
    ```csharp
    BulkUpdateResponse bulkUpdateResponse = await bulkExecutor.BulkUpdateAsync(
@@ -198,4 +205,4 @@ Berücksichtigen Sie bei der Verwendung der BulkExecutor-Bibliothek die folgende
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Informationen zu den NuGet-Paketen und Versionshinweise finden Sie unter den [Details zum BulkExecutor SDK](sql-api-sdk-bulk-executor-dot-net.md).
+* Informationen zu NuGet-Paketen und Versionshinweise finden Sie unter den [Details zum BulkExecutor-SDK](sql-api-sdk-bulk-executor-dot-net.md).

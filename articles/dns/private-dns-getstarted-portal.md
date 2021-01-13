@@ -2,35 +2,25 @@
 title: 'Schnellstart: Erstellen einer privaten Azure DNS-Zone im Azure-Portal'
 description: In diesem Schnellstart erstellen und testen Sie eine private DNS-Zone und einen Eintrag in Azure DNS. Dies ist eine ausführliche Anleitung zum Erstellen und Verwalten Ihrer ersten privaten DNS-Zone und Ihres ersten DNS-Eintrags im Azure-Portal.
 services: dns
-author: vhorne
+author: rohinkoul
 ms.service: dns
 ms.topic: quickstart
-ms.date: 09/20/2019
-ms.author: victorh
-ms.openlocfilehash: 1f13a56941a137397fbb849093feaeb19b897131
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.date: 10/20/2020
+ms.author: rohink
+ms.openlocfilehash: d298dfd5f3ad0beb56a511c124bab056ca25fd27
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71155770"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92310049"
 ---
 # <a name="quickstart-create-an-azure-private-dns-zone-using-the-azure-portal"></a>Schnellstart: Erstellen einer privaten Azure DNS-Zone im Azure-Portal
 
 In diesem Schnellstart wird Schritt für Schritt gezeigt, wie Sie im Azure-Portal Ihre erste private DNS-Zone und Ihren ersten DNS-Eintrag erstellen.
 
-[!INCLUDE [private-dns-public-preview-notice](../../includes/private-dns-public-preview-notice.md)]
-
 Eine DNS-Zone wird zum Hosten der DNS-Einträge für eine bestimmte Domäne verwendet. Wenn Sie eine Domäne in Azure DNS hosten möchten, müssen Sie eine DNS-Zone für diesen Domänennamen erstellen. Jeder DNS-Eintrag für Ihre Domäne wird dann in dieser DNS-Zone erstellt. Um eine private DNS-Zone in Ihrem virtuellen Netzwerk zu veröffentlichen, geben Sie die Liste mit den virtuellen Netzwerken an, für die das Auflösen von Einträgen in der Zone zulässig ist.  Diese werden als *verknüpfte* virtuelle Netzwerke bezeichnet. Wenn die automatische Registrierung aktiviert ist, aktualisiert Azure DNS auch die Zoneneinträge, sobald ein virtueller Computer erstellt, seine IP-Adresse geändert oder der virtuelle Computer gelöscht wird.
 
-In dieser Schnellstartanleitung wird Folgendes vermittelt:
-
-> [!div class="checklist"]
-> * Erstellen einer privaten DNS-Zone
-> * Erstellen eines virtuellen Netzwerks
-> * Verknüpfen des virtuellen Networks
-> * Erstellen von virtuellen Testcomputern
-> * Erstellen eines zusätzlichen DNS-Eintrags
-> * Testen der privaten Zone
+## <a name="prerequisites"></a>Voraussetzungen
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
@@ -50,7 +40,7 @@ Eine DNS-Zone enthält die DNS-Einträge für eine Domäne. Wenn Sie eine Domän
 
 1. Geben Sie auf der Seite **Create Private DNS zone** (Private DNS-Zone erstellen) die folgenden Werte ein (bzw. wählen Sie sie aus):
 
-   - **Ressourcengruppe**: Wählen Sie **Neue erstellen** aus, geben Sie *MyAzureResourceGroup* ein, und wählen Sie **OK** aus. Der Name der Ressourcengruppe muss innerhalb des Azure-Abonnements eindeutig sein. 
+   - **Ressourcengruppe**: Wählen Sie **Neue erstellen** aus, geben Sie *MyAzureResourceGroup* ein, und wählen Sie **OK** aus. Der Name der Ressourcengruppe muss innerhalb des Azure-Abonnements eindeutig sein.
    -  **Name**: Geben Sie *private.contoso.com* für dieses Beispiel ein.
 1. Wählen Sie als **Ressourcengruppenstandort** die Option **USA, Westen-Mitte** aus.
 
@@ -60,17 +50,25 @@ Eine DNS-Zone enthält die DNS-Einträge für eine Domäne. Wenn Sie eine Domän
 
 Die Erstellung der Zone kann einige Minuten dauern.
 
-## <a name="create-a-virtual-network"></a>Erstellen eines virtuellen Netzwerks
+## <a name="virtual-network-and-parameters"></a>Virtuelles Netzwerk und Parameter
 
-1. Wählen Sie links oben auf der Portalseite die Option **Ressource erstellen**, anschließend **Netzwerk** und dann **Virtuelles Netzwerk** aus.
-2. Geben Sie in **Name** den Namen **myAzureVNet** ein.
-3. Wählen Sie für **Ressourcengruppe** den Wert **MyAzureResourceGroup** aus.
-4. Wählen Sie **USA, Westen-Mitte** als **Standort** aus.
-5. Übernehmen Sie die anderen Standardwerte, und wählen Sie **Erstellen** aus.
+In den Schritten dieses Abschnitts müssen die folgenden Parameter wie folgt ersetzt werden:
+
+| Parameter                   | Wert                |
+|-----------------------------|----------------------|
+| **\<resource-group-name>**  | MyAzureResourceGroup (Wählen Sie die vorhandene Ressourcengruppe aus.) |
+| **\<virtual-network-name>** | MyAzureVNet          |
+| **\<region-name>**          | USA, Westen-Mitte      |
+| **\<IPv4-address-space>**   | 10.2.0.0\16          |
+| **\<subnet-name>**          | MyAzureSubnet        |
+| **\<subnet-address-range>** | 10.2.0.0\24          |
+
+
+[!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 
 ## <a name="link-the-virtual-network"></a>Verknüpfen des virtuellen Networks
 
-Um die private DNS-Zone mit einem virtuellen Netzwerk zu verknüpfen, erstellen Sie eine virtuelle Netzwerkverknüpfung.
+Wenn Sie die private DNS-Zone mit einem virtuellen Netzwerk verknüpfen möchten, erstellen Sie eine VNET-Verknüpfung.
 
 ![Hinzufügen einer virtuellen Netzwerkverknüpfung](media/private-dns-portal/dns-add-virtual-network-link.png)
 
@@ -90,9 +88,8 @@ Erstellen Sie nun zwei virtuelle Computer, um die private DNS-Zone zu testen:
 1. Wählen Sie **MyAzureResourceGroup** als Ressourcengruppe aus.
 1. Geben Sie **myVM01** als Namen des virtuellen Computers ein.
 1. Wählen Sie **USA, Westen-Mitte** für die **Region** aus.
-1. Geben Sie **azureadmin** als Namen des Administratorbenutzers ein.
-2. Geben Sie **Azure12345678** als Kennwort ein, und bestätigen Sie das Kennwort.
-
+1. Geben Sie einen Benutzernamen für den Administrator ein.
+2. Geben Sie ein Kennwort ein, und bestätigen Sie es.
 5. Wählen Sie für **Öffentliche Eingangsports** die Option **Ausgewählte Ports zulassen** und dann für **Eingangsports auswählen** die Option **RDP (3389)** aus.
 10. Übernehmen Sie die anderen Standardwerte auf der Seite, und klicken Sie auf **Weiter: Datenträger >** .
 11. Übernehmen Sie die Standardwerte auf der Seite **Datenträger**, und klicken Sie dann auf **Weiter: Netzwerk >** .
@@ -110,7 +107,7 @@ Die Erstellung der beiden virtuellen Computer dauert einige Minuten.
  Im folgenden Beispiel wird ein Eintrag mit dem relativen Namen **db** in der DNS-Zone **private.contoso.com** in der Ressourcengruppe **MyAzureResourceGroup** erstellt. Der vollqualifizierte Name des Ressourceneintragssatzes lautet **db.private.contoso.com**. Der Eintragstyp lautet „A“ mit der IP-Adresse von **myVM01**.
 
 1. Öffnen Sie die Ressourcengruppe **MyAzureResourceGroup**, und wählen Sie die private Zone **private.contoso.com** aus.
-2. Wählen Sie **+ Ressourceneintragssatz**.
+2. Klicken Sie auf **+ Datensatzgruppe**.
 3. Geben Sie für **Name** den Wert **db** ein.
 4. Geben Sie unter **IP-Adresse** die IP-Adresse ein, die für **myVM01** angezeigt wird. Diese sollte beim Start des virtuellen Computers automatisch registriert worden sein.
 5. Klicken Sie auf **OK**.
@@ -127,7 +124,7 @@ Sie können den Ping-Befehl zum Testen der Namensauflösung verwenden. Konfiguri
 2. Führen Sie den folgenden Befehl aus:
 
    ```powershell
-   New-NetFirewallRule –DisplayName “Allow ICMPv4-In” –Protocol ICMPv4
+   New-NetFirewallRule –DisplayName "Allow ICMPv4-In" –Protocol ICMPv4
    ```
 
 Wiederholen Sie den Schritt für „myVM02“.
@@ -138,7 +135,7 @@ Wiederholen Sie den Schritt für „myVM02“.
    ```
    ping myVM01.private.contoso.com
    ```
-   Eine ähnliche Ausgabe wie die folgende sollte angezeigt werden:
+   Die angezeigte Ausgabe sollte so ähnlich aussehen wie die folgende:
    ```
    PS C:\> ping myvm01.private.contoso.com
 
@@ -158,7 +155,7 @@ Wiederholen Sie den Schritt für „myVM02“.
    ```
    ping db.private.contoso.com
    ```
-   Eine ähnliche Ausgabe wie die folgende sollte angezeigt werden:
+   Die angezeigte Ausgabe sollte so ähnlich aussehen wie die folgende:
    ```
    PS C:\> ping db.private.contoso.com
 
@@ -175,7 +172,7 @@ Wiederholen Sie den Schritt für „myVM02“.
    PS C:\>
    ```
 
-## <a name="delete-all-resources"></a>Löschen aller Ressourcen
+## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
 Löschen Sie die Ressourcengruppe **MyAzureResourceGroup**, um die in diesem Schnellstart erstellten Ressourcen zu löschen, wenn Sie sie nicht mehr benötigen.
 

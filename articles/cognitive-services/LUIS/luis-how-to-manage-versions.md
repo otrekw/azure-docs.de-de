@@ -3,55 +3,53 @@ title: 'Verwalten von Versionen: LUIS'
 titleSuffix: Azure Cognitive Services
 description: Mithilfe von Versionen können Sie verschiedene Modelle erstellen und veröffentlichen. Es ist eine bewährte Methode, das aktuell aktive Modell in eine andere Version der App zu klonen, bevor Änderungen am Modell vorgenommen werden.
 services: cognitive-services
-author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: conceptual
-ms.date: 07/29/2019
-ms.author: diberry
-ms.openlocfilehash: 982dbf3555648c6a7c82da90a62740a584473c1e
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.topic: how-to
+ms.date: 05/17/2020
+ms.openlocfilehash: b93e9fd4047ee3731ef6fe4652bb92ce5145987d
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932845"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95018819"
 ---
 # <a name="use-versions-to-edit-and-test-without-impacting-staging-or-production-apps"></a>Verwenden von Versionen, um Staging- und Produktions-Apps nicht durch Bearbeitungsschritte oder Tests zu beeinträchtigen
 
-Mithilfe von Versionen können Sie verschiedene Modelle erstellen und veröffentlichen. Es ist eine bewährte Methode, das aktuell aktive Modell in eine andere [Version](luis-concept-version.md) der App zu klonen, bevor Änderungen am Modell vorgenommen werden. 
+Mithilfe von Versionen können Sie verschiedene Modelle erstellen und veröffentlichen. Es ist eine bewährte Methode, das aktuell aktive Modell in eine andere [Version](./luis-concept-app-iteration.md) der App zu klonen, bevor Änderungen am Modell vorgenommen werden.
 
-Öffnen Sie zum Arbeiten mit Versionen Ihre App, indem Sie den jeweiligen Namen auf der Seite **Meine Apps**, dann in der oberen Leiste **Verwalten** und anschließend im linken Navigationsbereich **Versionen** auswählen. 
+Die aktive Version ist die Version, die Sie im LUIS-Portal im Abschnitt **Erstellen** mit Absichten, Entitäten, Features und Mustern bearbeiten. Bei Verwendung der Erstellungs-APIs muss die aktive Version nicht festgelegt werden, da die versionsspezifischen REST-API-Aufrufe die Version in der Route enthalten.
 
-Aus der Liste der Versionen geht hervor, welche Versionen veröffentlicht wurden, wo sie veröffentlicht wurden und welche Version aktuell aktiv ist. 
+Öffnen Sie zum Arbeiten mit Versionen Ihre App, indem Sie den jeweiligen Namen auf der Seite **Meine Apps**, dann in der oberen Leiste **Verwalten** und anschließend im linken Navigationsbereich **Versionen** auswählen.
 
-[![Abschnitt „Verwalten“, Seite „Versionen“](./media/luis-how-to-manage-versions/versions-import.png "Abschnitt „Verwalten“, Seite „Versionen“")](./media/luis-how-to-manage-versions/versions-import.png#lightbox)
+Aus der Liste der Versionen geht hervor, welche Versionen veröffentlicht wurden, wo sie veröffentlicht wurden und welche Version aktuell aktiv ist.
 
 ## <a name="clone-a-version"></a>Klonen einer Version
 
-1. Wählen Sie die Version aus, die Sie klonen möchten, und wählen Sie dann auf der Symbolleiste **Klonen** aus. 
+1. Wählen Sie die Version aus, die Sie klonen möchten, und wählen Sie dann auf der Symbolleiste **Klonen** aus.
 
 2. Geben Sie im Dialogfeld **Version klonen** einen Namen für die neue Version ein, z.B. „0.2“.
 
    ![Dialogfeld „Version klonen“](./media/luis-how-to-manage-versions/version-clone-version-dialog.png)
- 
+
      > [!NOTE]
      > Die Versions-ID darf nur Zeichen, Ziffern oder „.“ enthalten und nicht länger als 10 Zeichen sein.
- 
+
    Eine neue Version mit dem angegebenen Namen wird erstellt und als aktive Version festgelegt.
 
 ## <a name="set-active-version"></a>Festlegen der aktiven Version
 
-Wählen Sie in der Liste eine Version und dann auf der Symbolleiste **Aktivieren** aus. 
-
-[![Abschnitt „Verwalten“, Seite „Versionen“, Durchführen einer Versionsaktion](./media/luis-how-to-manage-versions/versions-other.png "Abschnitt „Verwalten“, Seite „Versionen“, Durchführen einer Versionsaktion")](./media/luis-how-to-manage-versions/versions-other.png#lightbox)
+Wählen Sie in der Liste eine Version und dann auf der Symbolleiste **Aktivieren** aus.
 
 ## <a name="import-version"></a>Importversion
 
-1. Wählen Sie auf der Symbolleiste **Version importieren** aus. 
+Sie können eine `.json`- oder eine `.lu`-Version Ihrer Anwendung importieren.
 
-2. Geben Sie im Popupfenster **Neue Version importieren** den neuen, aus zehn Zeichen bestehenden Namen der Version ein. Wenn die Version in der JSON-Datei in der App bereits vorhanden ist, müssen Sie lediglich eine Versions-ID festlegen.
+1. Wählen Sie auf der Symbolleiste die Option **Importieren** und dann das Format aus.
+
+2. Geben Sie im Popupfenster **Neue Version importieren** den neuen, aus zehn Zeichen bestehenden Namen der Version ein. Wenn die Version in der Datei in der App bereits vorhanden ist, müssen Sie lediglich eine Versions-ID festlegen.
 
     ![Abschnitt „Verwalten“, Seite „Versionen“, Importieren einer neuen Version](./media/luis-how-to-manage-versions/versions-import-pop-up.png)
 
@@ -65,7 +63,6 @@ Wählen Sie in der Liste eine Version und dann auf der Symbolleiste **Aktivieren
 
 ## <a name="other-actions"></a>Andere Aktionen
 
-* Um eine Version zu **löschen**, wählen Sie eine Version in der Liste und dann auf der Symbolleiste **Löschen** aus. Klicken Sie auf **OK**. 
-* Um eine Version **umzubenennen**, wählen Sie eine Version in der Liste und dann auf der Symbolleiste **Umbenennen** aus. Geben Sie den neuen Namen ein, und wählen Sie **Fertig** aus. 
-* Um eine Version zu **exportieren**, wählen Sie eine Version in der Liste und dann auf der Symbolleiste **Exportieren** aus. Wählen Sie JSON aus, um einen Export für die Sicherung durchzuführen. Wählen Sie **Export for container** (Für Container exportieren) aus, um [diese App in einem LUIS-Container zu verwenden](luis-container-howto.md).  
-
+* Um eine Version zu **löschen**, wählen Sie eine Version in der Liste und dann auf der Symbolleiste **Löschen** aus. Klicken Sie auf **OK**.
+* Um eine Version **umzubenennen**, wählen Sie eine Version in der Liste und dann auf der Symbolleiste **Umbenennen** aus. Geben Sie den neuen Namen ein, und wählen Sie **Fertig** aus.
+* Um eine Version zu **exportieren**, wählen Sie eine Version in der Liste und dann auf der Symbolleiste **Exportieren** aus. Wählen Sie JSON oder LU zum Durchführen eines Exports für die Sicherung oder zum Speichern in der Quellcodeverwaltung aus; wählen Sie **Export for container** (Für Container exportieren) aus, um [diese App in einem LUIS-Container zu verwenden](luis-container-howto.md).

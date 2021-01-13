@@ -1,41 +1,35 @@
 ---
-title: Diagnostizieren von Fehlern und Ausnahmen in Web-Apps mit Azure Application Insights | Microsoft Docs
+title: Diagnostizieren von Fehlern und Ausnahmen mit Azure Application Insights
 description: Erfassen von Ausnahmen von ASP.NET-Apps zusammen mit der Anforderungstelemetrie.
-services: application-insights
-documentationcenter: .net
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: d1e98390-3ce4-4d04-9351-144314a42aa2
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
+ms.custom: devx-track-csharp
 ms.date: 07/11/2019
-ms.author: mbullwin
-ms.openlocfilehash: c8d46ddc834cb12aa63720673c83d745ab53ab4d
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: 36e916eabfca8e997fc3d46ff10f6201203457cd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68226877"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88936502"
 ---
 # <a name="diagnose-exceptions-in-your-web-apps-with-application-insights"></a>Diagnostizieren von Ausnahmen in Ihren Web-Apps mit Application Insights
-Ausnahmen in Ihrer Live-Web-App werden von [Application Insights](../../azure-monitor/app/app-insights-overview.md) gemeldet. Auf diese Weise können Sie Anforderungsfehler mit Ausnahmen und anderen Ereignissen auf dem Client und auf dem Server zueinander in Beziehung setzen und dadurch die Ursachen schnell diagnostizieren.
+Ausnahmen in Ihrer Live-Web-App werden von [Application Insights](./app-insights-overview.md) gemeldet. Auf diese Weise können Sie Anforderungsfehler mit Ausnahmen und anderen Ereignissen auf dem Client und auf dem Server zueinander in Beziehung setzen und dadurch die Ursachen schnell diagnostizieren.
 
 ## <a name="set-up-exception-reporting"></a>Einrichten der Ausnahmeerfassung
 * So werden Ausnahmen von Ihrer Server-App gemeldet:
-  * Azure-Web-Apps: Fügen Sie die [Application Insights-Erweiterung](../../azure-monitor/app/azure-web-apps.md) hinzu.
-  * Azure-VMs und Azure-VM-Skalierungsgruppen – in IIS gehostete Apps: Fügen Sie die [Erweiterung zur Anwendungsüberwachung](../../azure-monitor/app/azure-vm-vmss-apps.md) hinzu.
-  * Installieren Sie das [Application Insights SDK](../../azure-monitor/app/asp-net.md) in Ihrer App.
-  * IIS-Webserver: Führen Sie den [Application Insights-Agent](../../azure-monitor/app/monitor-performance-live-website-now.md) aus, oder
-  * Java-Web-Apps: Installieren Sie den [Java-Agent](../../azure-monitor/app/java-agent.md).
-* Installieren Sie den [JavaScript-Codeausschnitt](../../azure-monitor/app/javascript.md) in Ihren Webseiten, um Browserausnahmen zu erfassen.
+  * Azure-Web-Apps: Fügen Sie die [Application Insights-Erweiterung](./azure-web-apps.md) hinzu.
+  * Azure-VMs und Azure-VM-Skalierungsgruppen – in IIS gehostete Apps: Fügen Sie die [Erweiterung zur Anwendungsüberwachung](./azure-vm-vmss-apps.md) hinzu.
+  * Installieren Sie das [Application Insights SDK](./asp-net.md) in Ihrer App.
+  * IIS-Webserver: Führen Sie den [Application Insights-Agent](./monitor-performance-live-website-now.md) aus, oder
+  * Java-Web-Apps: Aktivieren Sie den [Java-Agent](./java-in-process-agent.md).
+* Installieren Sie den [JavaScript-Codeausschnitt](./javascript.md) in Ihren Webseiten, um Browserausnahmen zu erfassen.
 * In einigen Anwendungsframeworks oder bei bestimmten Einstellungen müssen Sie einige zusätzliche Schritte ausführen, um weitere Ausnahmen zu erfassen:
   * [Webformulare](#web-forms)
   * [MVC](#mvc)
   * [Web-API 1.*](#web-api-1x)
   * [Web-API 2.*](#web-api-2x)
   * [WCF](#wcf)
+
+  Dieser Artikel konzentriert sich speziell auf .NET Framework-Apps aus Codebeispielperspektive. Einige der Methoden, die für .NET Framework eingesetzt werden, sind im .NET Core SDK veraltet. Wenn Sie eine .NET Core-App besitzen, nutzen Sie die Informationen in der [.NET Core SDK-Dokumentation](./asp-net-core.md).
 
 ## <a name="diagnosing-exceptions-using-visual-studio"></a>Diagnostizieren von Ausnahmen mithilfe von Visual Studio
 Öffnen Sie für das Debuggen die App-Projektmappe in Visual Studio.
@@ -77,29 +71,29 @@ Um spezifische Diagnosedaten für Ihre App zu erhalten, können Sie Code zum Sen
 
 Sie haben mehrere Möglichkeiten:
 
-* [TrackEvent()](../../azure-monitor/app/api-custom-events-metrics.md#trackevent) wird normalerweise zum Überwachen von Verwendungsmustern verwendet, jedoch werden die damit gesendeten Daten auch unter den benutzerdefinierten Ereignissen in der Diagnosesuche angezeigt. Ereignisse werden benannt und können Zeichenfolgeneigenschaften und numerische Metriken aufweisen, nach denen Sie [Ihre Diagnosesuchvorgänge filtern](../../azure-monitor/app/diagnostic-search.md) können.
-* [TrackTrace()](../../azure-monitor/app/api-custom-events-metrics.md#tracktrace) können Sie längere Daten wie POST-Informationen senden.
+* [TrackEvent()](./api-custom-events-metrics.md#trackevent) wird normalerweise zum Überwachen von Verwendungsmustern verwendet, jedoch werden die damit gesendeten Daten auch unter den benutzerdefinierten Ereignissen in der Diagnosesuche angezeigt. Ereignisse werden benannt und können Zeichenfolgeneigenschaften und numerische Metriken aufweisen, nach denen Sie [Ihre Diagnosesuchvorgänge filtern](./diagnostic-search.md) können.
+* [TrackTrace()](./api-custom-events-metrics.md#tracktrace) können Sie längere Daten wie POST-Informationen senden.
 * [TrackException()](#exceptions) sendet Stapelüberwachungen. [Weitere Informationen über Ausnahmen](#exceptions).
 * Wenn Sie bereits ein Protokollierungsframework wie Log4Net oder NLog verwenden, können Sie [diese Protokolle erfassen](asp-net-trace-logs.md) und in der Diagnosesuche neben Anforderungs- und Ausnahmedaten anzeigen.
 
-Um diese Ereignisse anzuzeigen, öffnen Sie im Menü links die [Suche](../../azure-monitor/app/diagnostic-search.md), wählen Sie das Dropdownmenü **Ereignistypen** aus, und wählen Sie dann „Benutzerdefiniertes Ereignis“, „Ablaufverfolgung“ oder „Ausnahme“ aus.
+Um diese Ereignisse anzuzeigen, öffnen Sie im Menü links die [Suche](./diagnostic-search.md), wählen Sie das Dropdownmenü **Ereignistypen** aus, und wählen Sie dann „Benutzerdefiniertes Ereignis“, „Ablaufverfolgung“ oder „Ausnahme“ aus.
 
 ![Drillthrough](./media/asp-net-exceptions/customevents.png)
 
 > [!NOTE]
-> Wenn die Anwendung viele Telemetriedaten generiert, reduziert das adaptive Stichprobenmodul automatisch die an das Verwaltungsportal gesendete Datenmenge, indem nur ein repräsentativer Bruchteil der Ereignisse gesendet wird. Ereignisse, die Teil des gleichen Vorgangs sind, werden als Gruppe aus- oder abgewählt, sodass Sie zwischen verwandten Ereignissen navigieren können. [Erfahren Sie mehr über das Erstellen von Stichproben.](../../azure-monitor/app/sampling.md)
+> Wenn die Anwendung viele Telemetriedaten generiert, reduziert das adaptive Stichprobenmodul automatisch die an das Verwaltungsportal gesendete Datenmenge, indem nur ein repräsentativer Bruchteil der Ereignisse gesendet wird. Ereignisse, die Teil des gleichen Vorgangs sind, werden als Gruppe aus- oder abgewählt, sodass Sie zwischen verwandten Ereignissen navigieren können. [Erfahren Sie mehr über das Erstellen von Stichproben.](./sampling.md)
 >
 >
 
 ### <a name="how-to-see-request-post-data"></a>Anzeigen von POST-Daten von Anforderungen
 Anforderungsdetails enthalten nicht die Daten, die in einem POST-Aufruf an Ihre App gesendet wurden. So werden diese Daten gemeldet:
 
-* [Installieren Sie das SDK](../../azure-monitor/app/asp-net.md) in Ihrem Anwendungsprojekt.
-* Fügen Sie Code in die Anwendung ein, um [Microsoft.ApplicationInsights.TrackTrace()](../../azure-monitor/app/api-custom-events-metrics.md#tracktrace) aufzurufen. Senden Sie die POST-Daten im "message"-Parameter. Es gibt eine Größenbeschränkung, daher sollten Sie versuchen, nur die notwendigen Daten zu senden.
+* [Installieren Sie das SDK](./asp-net.md) in Ihrem Anwendungsprojekt.
+* Fügen Sie Code in die Anwendung ein, um [Microsoft.ApplicationInsights.TrackTrace()](./api-custom-events-metrics.md#tracktrace) aufzurufen. Senden Sie die POST-Daten im "message"-Parameter. Es gibt eine Größenbeschränkung, daher sollten Sie versuchen, nur die notwendigen Daten zu senden.
 * Wenn Sie eine fehlerhafte Anforderung untersuchen, suchen Sie die zugehörigen Ablaufverfolgungen.
 
-## <a name="exceptions"></a> Erfassen von Ausnahmen und zugehörigen Diagnosedaten
-Zunächst werden im Portal nicht alle Ausnahmen angezeigt, die in Ihrer App zu Fehlern führen. Sie sehen alle Browserausnahmen (bei Verwendung des [JavaScript-SDK](../../azure-monitor/app/javascript.md) in Ihren Webseiten). Die meisten Serverausnahmen werden jedoch von IIS abgefangen, und Sie müssen ein wenig Code schreiben, um sie anzuzeigen.
+## <a name="capturing-exceptions-and-related-diagnostic-data"></a><a name="exceptions"></a> Erfassen von Ausnahmen und zugehörigen Diagnosedaten
+Zunächst werden im Portal nicht alle Ausnahmen angezeigt, die in Ihrer App zu Fehlern führen. Sie sehen alle Browserausnahmen (bei Verwendung des [JavaScript-SDK](./javascript.md) in Ihren Webseiten). Die meisten Serverausnahmen werden jedoch von IIS abgefangen, und Sie müssen ein wenig Code schreiben, um sie anzuzeigen.
 
 Ihre Möglichkeiten:
 
@@ -159,7 +153,7 @@ Am einfachsten ist es, in einem Ausnahmehandler einen Aufruf in TrackException()
     End Try
 ```
 
-Die Eigenschaften und Messparameter sind optional, aber hilfreich zum [Filtern und Hinzufügen](../../azure-monitor/app/diagnostic-search.md) zusätzlicher Informationen. Wenn Sie z. B. eine Anwendung haben, die mehrere Spiele ausführen kann, können Sie alle im Zusammenhang mit einem bestimmten Spiel stehenden Ausnahmeberichte ermitteln. Sie können jedem Wörterbuch beliebig viele Elemente hinzufügen.
+Die Eigenschaften und Messparameter sind optional, aber hilfreich zum [Filtern und Hinzufügen](./diagnostic-search.md) zusätzlicher Informationen. Wenn Sie z. B. eine Anwendung haben, die mehrere Spiele ausführen kann, können Sie alle im Zusammenhang mit einem bestimmten Spiel stehenden Ausnahmeberichte ermitteln. Sie können jedem Wörterbuch beliebig viele Elemente hinzufügen.
 
 ## <a name="browser-exceptions"></a>Browserausnahmen
 Die meisten Browserausnahmen werden gemeldet.
@@ -221,7 +215,7 @@ Ausnahmefehler, die von Controllern ausgehen, führen normalerweise zu folgender
 ### <a name="prior-versions-support"></a>Unterstützung von früheren Versionen
 Wenn Sie MVC 4 (und früher) des Application Insights Web SDK 2.5 (und früher) verwenden, sind die folgenden Beispiele zum Nachverfolgen von Ausnahmen hilfreich.
 
-Wenn die [CustomErrors](https://msdn.microsoft.com/library/h0hfz6fc.aspx)-Konfiguration `Off` lautet, stehen für das zu erfassende [HTTP-Modul](https://msdn.microsoft.com/library/ms178468.aspx) Ausnahmen zur Verfügung. Lautet sie allerdings `RemoteOnly` (Standardeinstellung) oder `On`, wird die Ausnahme gelöscht und steht für die automatische Erfassung durch Application Insights nicht zur Verfügung. Diesen Umstand können Sie beheben, indem Sie die [System.Web.Mvc.HandleErrorAttribute-Klasse](https://msdn.microsoft.com/library/system.web.mvc.handleerrorattribute.aspx) außer Kraft setzen und die außer Kraft gesetzte Klasse wie unten gezeigt für die verschiedenen MVC-Versionen anwenden ([GitHub-Quelle](https://github.com/AppInsightsSamples/Mvc2UnhandledExceptions/blob/master/MVC2App/Controllers/AiHandleErrorAttribute.cs)):
+Wenn die [CustomErrors](/previous-versions/dotnet/netframework-4.0/h0hfz6fc(v=vs.100))-Konfiguration `Off` lautet, stehen für das zu erfassende [HTTP-Modul](/previous-versions/dotnet/netframework-3.0/ms178468(v=vs.85)) Ausnahmen zur Verfügung. Lautet sie allerdings `RemoteOnly` (Standardeinstellung) oder `On`, wird die Ausnahme gelöscht und steht für die automatische Erfassung durch Application Insights nicht zur Verfügung. Diesen Umstand können Sie beheben, indem Sie die [System.Web.Mvc.HandleErrorAttribute-Klasse](/dotnet/api/system.web.mvc.handleerrorattribute?view=aspnet-mvc-5.2) außer Kraft setzen und die außer Kraft gesetzte Klasse wie unten gezeigt für die verschiedenen MVC-Versionen anwenden ([GitHub-Quelle](https://github.com/AppInsightsSamples/Mvc2UnhandledExceptions/blob/master/MVC2App/Controllers/AiHandleErrorAttribute.cs)):
 
 ```csharp
     using System;
@@ -489,7 +483,7 @@ Add the attribute to the service implementations:
 [Beispiel](https://github.com/AppInsightsSamples/WCFUnhandledExceptions)
 
 ## <a name="exception-performance-counters"></a>Ausnahmeleistungsindikatoren
-Wenn Sie den [Application Insights-Agent auf Ihrem Server installiert haben](../../azure-monitor/app/monitor-performance-live-website-now.md), können Sie ein Diagramm mit der von .NET gemessenen Ausnahmenrate abrufen. Dies enthält sowohl behandelte als auch nicht behandelte .NET-Ausnahmen.
+Wenn Sie den [Application Insights-Agent auf Ihrem Server installiert haben](./monitor-performance-live-website-now.md), können Sie ein Diagramm mit der von .NET gemessenen Ausnahmenrate abrufen. Dies enthält sowohl behandelte als auch nicht behandelte .NET-Ausnahmen.
 
 Öffnen Sie eine Metrik-Explorer-Registerkarte, fügen Sie ein neues Diagramm hinzu, und wählen Sie in den Leistungsindikatoren **Ausnahmerate** aus.
 
@@ -498,6 +492,7 @@ Wenn Sie den [Application Insights-Agent auf Ihrem Server installiert haben](../
 Dieser Wert unterscheidet sich von der Anzahl der „Ausnahmen“, die vom Application Insights-Portal durch Zählen von TrackException-Meldungen berechnet wird. Die Samplingintervalle sind unterschiedlich, und das SDK sendet keine TrackException-Meldungen für alle behandelten und nicht behandelten Ausnahmen.
 
 ## <a name="next-steps"></a>Nächste Schritte
-* [Überwachen von REST, SQL und anderen Aufrufen von Abhängigkeiten](../../azure-monitor/app/asp-net-dependencies.md)
-* [Überwachen von Seitenladezeiten, Browserausnahmen und AJAX-Aufrufen](../../azure-monitor/app/javascript.md)
-* [Überwachen von Leistungsindikatoren](../../azure-monitor/app/performance-counters.md)
+* [Überwachen von REST, SQL und anderen Aufrufen von Abhängigkeiten](./asp-net-dependencies.md)
+* [Überwachen von Seitenladezeiten, Browserausnahmen und AJAX-Aufrufen](./javascript.md)
+* [Überwachen von Leistungsindikatoren](./performance-counters.md)
+

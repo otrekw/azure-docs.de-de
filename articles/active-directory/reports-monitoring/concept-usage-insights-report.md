@@ -1,9 +1,9 @@
 ---
-title: Bericht „Nutzung & Erkenntnisse“ im Azure Active Directory-Portal | Microsoft-Dokumentation
+title: Nutzungs- und Insights-Bericht | Microsoft-Dokumentation
 description: Einführung in den Bericht „Nutzung & Erkenntnisse“ im Azure Active Directory-Portal
 services: active-directory
 documentationcenter: ''
-author: cawrites
+author: MarkusVi
 manager: daveba
 editor: ''
 ms.assetid: 3fba300d-18fc-4355-9924-d8662f563a1f
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
 ms.date: 05/13/2019
-ms.author: chadam
+ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 0c6723c28bf6ab8af112763a6485bc89b46409c6
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 2c7cc68c84cc9f137ba5b51206526ff96111fe9a
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68989859"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93122740"
 ---
 # <a name="usage-and-insights-report-in-the-azure-active-directory-portal"></a>Bericht „Nutzung & Erkenntnisse“ im Azure Active Directory-Portal
 
@@ -43,9 +43,9 @@ Sie benötigen Folgendes, um auf die Daten des Berichts „Nutzung & Erkenntni
 
 1. Navigieren Sie zum [Azure-Portal](https://portal.azure.com).
 2. Wählen Sie das richtige Verzeichnis aus, und wählen Sie dann auf **Azure Active Directory** gefolgt von **Unternehmensanwendungen** aus.
-3. Klicken Sie im Abschnitt **Aktivität** auf **Nutzung & Erkenntnisse**, um den Bericht zu öffnen. 
+3. Klicken Sie im Abschnitt **Aktivität** auf **Nutzung & Erkenntnisse** , um den Bericht zu öffnen. 
 
-![Nutzungs- und Insights-Bericht](./media/concept-usage-insights-report/main-menu.png)
+![Screenshot der im Abschnitt „Aktivität“ ausgewählten Option „Nutzung & Erkenntnisse“](./media/concept-usage-insights-report/main-menu.png)
                                      
 
 ## <a name="use-the-report"></a>Verwenden des Berichts
@@ -54,11 +54,11 @@ Der Bericht „Nutzung & Erkenntnisse“ zeigt eine Liste der Anwendungen mit 
 
 Sie können weitere Anwendungen auf der Seite anzeigen, indem Sie unten in der Liste auf „Weitere laden“ klicken. Sie können den Zeitraum auswählen, um alle Anwendungen anzuzeigen, die in diesem Zeitraum verwendet wurden.
 
-Sie können den Fokus auch auf eine bestimmte Anwendung festlegen. Klicken Sie auf **Anmeldeaktivität anzeigen**, um die Anmeldeaktivität im Laufe der Zeit und die häufigsten Fehler der Anwendung anzuzeigen.  
+Sie können den Fokus auch auf eine bestimmte Anwendung festlegen. Klicken Sie auf **Anmeldeaktivität anzeigen** , um die Anmeldeaktivität im Laufe der Zeit und die häufigsten Fehler der Anwendung anzuzeigen.  
 
 Wenn Sie einen Tag im Anwendungsnutzungsgraph auswählen, wird eine ausführliche Liste der Anmeldeaktivitäten für die Anwendung angezeigt.  
 
-![Nutzungs- und Insights-Bericht](./media/concept-usage-insights-report/usage-and-insights-report.png)
+![Screenshot der Seite „Nutzung & Erkenntnisse“ für eine Anwendungsaktivität, auf dem Sie einen Datumsbereich auswählen und Anmeldeaktivitäten für verschiedene Apps anzeigen können](./media/concept-usage-insights-report/usage-and-insights-report.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

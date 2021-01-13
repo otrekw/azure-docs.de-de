@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 03/08/2019
 ms.author: troyhop
-ms.openlocfilehash: 09a6920e0d3a50da1bdacbf2bc7a80396c885897
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: e0d7310c4863c8dd431b991a2c249f2d8e257aeb
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58180703"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96852352"
 ---
 # <a name="tutorial-create-and-run-an-iot-device-simulation"></a>Tutorial: Erstellen und Ausführen einer IoT-Gerätesimulation
 
@@ -28,21 +28,13 @@ In diesem Tutorial führen Sie Folgendes durch:
 > * Anzeigen von Metriken für eine Simulation
 > * Beenden einer Simulation
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+Wenn Sie kein Azure-Abonnement besitzen, erstellen Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), bevor Sie beginnen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Für dieses Tutorial benötigen Sie eine in Ihrem Azure-Abonnement bereitgestellte Instanz der Gerätesimulation.
 
-Falls Sie die Gerätesimulation noch nicht bereitgestellt haben, absolvieren Sie zunächst die [Schnellstartanleitung zum Bereitstellen und Ausführen einer IoT-Gerätesimulation in Azure](quickstart-device-simulation-deploy.md) aus.
-
-## <a name="open-device-simulation"></a>Öffnen der Gerätesimulation
-
-Um die Gerätesimulation in Ihrem Browser auszuführen, navigieren Sie zunächst zu [Azure IoT solution accelerators](https://www.azureiotsolutions.com) (Solution Accelerators für Azure IoT). 
-
-Sie werden unter Umständen aufgefordert, sich mit den Anmeldeinformationen Ihres Azure-Abonnements anzumelden.
-
-Klicken Sie anschließend auf der Kachel für die Gerätesimulation, die Sie im Rahmen der [Schnellstartanleitung](quickstart-device-simulation-deploy.md) bereitgestellt haben, auf **Starten**.
+Wenn Sie die Gerätesimulation noch nicht bereitgestellt haben, finden Sie weitere Informationen auf GitHub unter [Bereitstellen der Gerätesimulation](https://github.com/Azure/device-simulation-dotnet/blob/master/README.md).
 
 ## <a name="view-simulations"></a>Anzeigen von Simulationen
 

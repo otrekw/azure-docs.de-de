@@ -1,55 +1,67 @@
 ---
-title: 'Schnellstart: Erstellen eines Lastenausgleichs im Tarif „Standard“: Azure Resource Manager-Vorlage'
-titlesuffix: Azure Load Balancer
-description: In diesem Schnellstart wird gezeigt, wie Sie mithilfe einer Azure Resource Manager-Vorlage einen Lastenausgleich im Tarif „Standard“ erstellen.
+title: 'Schnellstart: Erstellen eines öffentlichen Lastenausgleichs – Azure-Vorlage'
+titleSuffix: Azure Load Balancer
+description: In dieser Schnellstartanleitung erfahren Sie, wie Sie einen Lastenausgleich per Azure Resource Manager-Vorlage erstellen.
 services: load-balancer
 documentationcenter: na
 author: asudbring
-manager: twooley
-Customer intent: I want to create a Standard load balancer by using an Azure Resource Manager template so that I can load balance internet traffic to VMs.
+manager: KumudD
+Customer intent: I want to create a load balancer by using an Azure Resource Manager template so that I can load balance internet traffic to VMs.
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/20/2019
+ms.date: 12/09/2020
 ms.author: allensu
-ms.custom: mvc
-ms.openlocfilehash: ab55583d72297f2a1c72bac21e4414919f31b91b
-ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
+ms.custom: mvc,subject-armqs
+ms.openlocfilehash: 378ab88f4dee0c725e89f77cc6b2ffe049ff877a
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71161381"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97008434"
 ---
-# <a name="quickstart-create-a-standard-load-balancer-to-load-balance-vms-by-using-azure-resource-manager-template"></a>Schnellstart: Erstellen einer Load Balancer Standard-Instanz für den Lastenausgleich virtueller Computer mithilfe einer Azure Resource Manager-Vorlage
+# <a name="quickstart-create-a-public-load-balancer-to-load-balance-vms-by-using-an-arm-template"></a>Schnellstart: Erstellen eines öffentlichen Lastenausgleichs für den Lastenausgleich virtueller Computer mithilfe einer ARM-Vorlage
 
-Durch die Verteilung der eingehenden Anforderungen auf mehrere virtuelle Computer (VMs) bietet ein Lastenausgleich ein höheres Maß an Verfügbarkeit und Skalierbarkeit. Dieser Schnellstart zeigt Ihnen, wie Sie eine Azure Resource Manager-Vorlage bereitstellen, die einen Lastenausgleich im Tarif „Standard“ für VMs erstellt. Bei Verwendung der Resource Manager-Vorlage werden im Vergleich zu anderen Bereitstellungsmethoden weniger Schritte benötigt.
+Durch die Verteilung der eingehenden Anforderungen auf mehrere virtuelle Computer (VMs) bietet ein Lastenausgleich ein höheres Maß an Verfügbarkeit und Skalierbarkeit. 
 
-Die [Resource Manager-Vorlage](../azure-resource-manager/template-deployment-overview.md) ist eine JSON-Datei (JavaScript Object Notation), in der die Infrastruktur und die Konfiguration für Ihr Projekt definiert sind. Für die Vorlage wird deklarative Syntax verwendet. Hiermit können Sie angeben, was Sie bereitstellen möchten, ohne dass Sie die Folge der Programmierbefehle für die Erstellung schreiben müssen. Weitere Informationen zur Entwicklung von Resource Manager-Vorlagen finden Sie in der [Resource Manager-Dokumentation](/azure/azure-resource-manager/) und der [Vorlagenreferenz](/azure/templates/microsoft.network/loadbalancers).
+In dieser Schnellstartanleitung erfahren Sie, wie Sie für den Lastenausgleich virtueller Computer einen Lastenausgleich im Tarif „Standard“ bereitstellen.
+
+Bei Verwendung einer ARM-Vorlage werden im Vergleich zu anderen Bereitstellungsmethoden weniger Schritte benötigt.
+
+[!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
+
+Wenn Ihre Umgebung die Voraussetzungen erfüllt und Sie mit der Verwendung von ARM-Vorlagen vertraut sind, klicken Sie auf die Schaltfläche **In Azure bereitstellen**. Die Vorlage wird im Azure-Portal geöffnet.
+
+[![In Azure bereitstellen](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-load-balancer-standard-create%2Fazuredeploy.json)
+
+## <a name="prerequisites"></a>Voraussetzungen
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
-## <a name="create-a-standard-load-balancer"></a>Erstellen eines Load Balancers im Tarif „Standard“
+## <a name="review-the-template"></a>Überprüfen der Vorlage
 
-Ein Lastenausgleich im Tarif „Standard“ unterstützt nur eine öffentliche Standard-IP-Adresse. Wenn Sie einen Lastenausgleich im Tarif „Standard“ erstellen, müssen Sie auch eine neue öffentliche Standard-IP-Adresse erstellen, die für diesen Lastenausgleich als Front-End konfiguriert ist.
+Die in dieser Schnellstartanleitung verwendete Vorlage stammt von der Seite mit den [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/101-load-balancer-standard-create/).
 
-Die in dieser Schnellstartanleitung verwendete Vorlage ist eine [Schnellstartvorlage](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-load-balancer-standard-create/azuredeploy.json).
+Die Lastenausgleichs-SKU und die SKU für öffentliche IP-Adressen müssen übereinstimmen. Wenn Sie einen Lastenausgleich im Tarif „Standard“ erstellen, müssen Sie auch eine neue öffentliche Standard-IP-Adresse erstellen, die als Front-End für diesen Standard-Lastenausgleich konfiguriert ist. Wenn Sie einen Lastenausgleich im Tarif „Basic“ erstellen möchten, verwenden Sie [diese Vorlage](https://azure.microsoft.com/resources/templates/201-2-vms-loadbalancer-natrules/). Microsoft empfiehlt für Produktionsworkloads die Verwendung der Standard-SKU.
 
-[!code-json[<Azure Resource Manager template create standard load balancer>](~/quickstart-templates/101-load-balancer-standard-create/azuredeploy.json)]
+:::code language="json" source="~/quickstart-templates/101-load-balancer-standard-create/azuredeploy.json":::
 
 In der Vorlage wurden mehrere Azure-Ressourcen definiert:
 
-- **Microsoft.Network/loadBalancers**
-- **Microsoft.Network/publicIPAddresses**: Gilt für den Lastenausgleich.
-- **Microsoft.Network/networkSecurityGroups**
-- **Microsoft.Network/virtualNetworks**
-- **Microsoft.Compute/virutalMachines** (3)
-- **Microsoft.Network/publicIPAddresses** (3): Eine für jeden der drei virtuellen Computer.
-- **Microsoft.Network/networkInterfaces** (3)
-- **Microsoft.Compute/virtualMachine/extensions** (3): Dient zur IIS-Konfiguration und für die Webseiten.
+- [**Microsoft.Network/loadBalancers**](/azure/templates/microsoft.network/loadbalancers)
+- [**Microsoft.Network/publicIPAddresses**](/azure/templates/microsoft.network/publicipaddresses): Für den Lastenausgleich, den Bastionhost und jeweils die drei virtuellen Computer.
+- [**Microsoft.Network/bastionHosts**](/azure/templates/microsoft.network/bastionhosts)
+- [**Microsoft.Network/networkSecurityGroups**](/azure/templates/microsoft.network/networksecuritygroups)
+- [**Microsoft.Network/virtualNetworks**](/azure/templates/microsoft.network/virtualnetworks)
+- [**Microsoft.Compute/virutalMachines**](/azure/templates/microsoft.compute/virtualmachines) (3).
+- [**Microsoft.Network/networkInterfaces**](/azure/templates/microsoft.network/networkinterfaces) (3).
+- [**Microsoft.Compute/virtualMachine/extensions**](/azure/templates/microsoft.compute/virtualmachines/extensions) (3): Für die Konfiguration von IIS (Internet Information Server) und der Webseiten.
 
 Weitere Vorlagen zum Azure Load Balancer finden Sie unter [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Network&pageNumber=1&sort=Popular).
+
+## <a name="deploy-the-template"></a>Bereitstellen der Vorlage
 
 1. Wählen Sie **Try it** (Ausprobieren) im folgenden Codeblock aus, um Azure Cloud Shell zu öffnen. Folgen Sie dann den Anweisungen, um sich bei Azure anzumelden.
 
@@ -84,9 +96,9 @@ Das Bereitstellen der Vorlage dauert ungefähr 10 Minuten. Nach Abschluss des Vo
 
 ![Azure Load Balancer Standard – Resource Manager-Vorlage: PowerShell-Bereitstellungsausgabe](./media/quickstart-load-balancer-standard-public-template/azure-standard-load-balancer-resource-manager-template-powershell-output.png)
 
-Azure PowerShell wird verwendet, um die Vorlage bereitzustellen. Neben Azure PowerShell können Sie auch das Azure-Portal, die Azure-CLI und die REST-API verwenden. Informationen zu anderen Bereitstellungsmethoden finden Sie unter [Bereitstellen von Vorlagen](../azure-resource-manager/resource-group-template-deploy-portal.md).
+Azure PowerShell wird verwendet, um die Vorlage bereitzustellen. Sie können auch das Azure-Portal, die Azure CLI und die REST-API verwenden. Informationen zu anderen Bereitstellungsmethoden finden Sie unter [Bereitstellen von Vorlagen](../azure-resource-manager/templates/deploy-portal.md).
 
-## <a name="test-the-load-balancer"></a>Testen des Lastenausgleichs
+## <a name="review-deployed-resources"></a>Überprüfen der bereitgestellten Ressourcen
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
@@ -108,13 +120,25 @@ Sie können vom Clientcomputer aus eine erzwungene Aktualisierung Ihres Webbrows
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Sie können die Ressourcengruppe, den Lastenausgleich und alle dazugehörigen Ressourcen löschen, wenn Sie sie nicht mehr benötigen. Wählen Sie hierzu im Azure-Portal die Ressourcengruppe aus, die den Lastenausgleich enthält, und wählen Sie anschließend **Ressourcengruppe löschen** aus.
+Löschen Sie die Ressourcen, wenn Sie sie nicht mehr benötigen: 
+
+* Resource group
+* Load Balancer
+* Verwandte Ressourcen
+
+Wählen Sie im Azure-Portal die Ressourcengruppe aus, die den Lastenausgleich enthält, und wählen Sie anschließend **Ressourcengruppe löschen** aus.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Schnellstart haben Sie einen Lastenausgleich im Tarif „Standard“ erstellt, virtuelle Computer angefügt, die Datenverkehrsregel für den Lastenausgleich konfiguriert, einen Integritätstest durchgeführt und den Lastenausgleich getestet.
+In dieser Schnellstartanleitung führen Sie die folgenden Schritte aus:
 
-Weitere Informationen zum Lastenausgleich finden Sie in den Tutorials.
+* Erstellen eines virtuellen Netzwerks für Lastenausgleich und virtuelle Computer.
+* Erstellen eines Azure-Bastionhosts für die Verwaltung.
+* Erstellen eines Lastenausgleichs im Tarif „Standard“ und Anfügen von virtuellen Computern an diesen
+* Konfigurieren der Datenverkehrsregel für den Lastenausgleich sowie des Integritätstests
+* Testen des Lastenausgleichs
+
+Weitere Informationen zum Lastenausgleich finden Sie in den Tutorials zum Azure Load Balancer.
 
 > [!div class="nextstepaction"]
 > [Azure Load Balancer-Tutorials](tutorial-load-balancer-standard-public-zone-redundant-portal.md)

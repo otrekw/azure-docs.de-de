@@ -9,10 +9,10 @@ ms.date: 04/04/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 272dbf75f68eff73b360cde7d36776c8303e5064
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 11/14/2020
 ms.locfileid: "67177939"
 ---
 **So laden Sie VPN-Gerätekonfigurationsskripts herunter:**

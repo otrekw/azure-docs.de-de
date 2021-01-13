@@ -1,19 +1,19 @@
 ---
-title: Auflisten von Azure Storage-Ressourcen mit der Speicherclientbibliothek für C++ | Microsoft-Dokumentation
+title: Auflisten von Azure Storage-Ressourcen mit der C++-Clientbibliothek
 description: Erfahren Sie, wie Sie die Auflistungs-APIs in Microsoft Azure Storage Client Library for C++ verwenden können, um Container, BLOBs, Warteschlangen, Tabellen und Entitäten aufzuzählen.
 author: mhopkins-msft
 ms.author: mhopkins
 ms.date: 01/23/2017
 ms.service: storage
 ms.subservice: common
-ms.topic: conceptual
+ms.topic: how-to
 ms.reviewer: dineshm
-ms.openlocfilehash: 3a87e39c9435ba02357b4b655e95e96666242b71
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 8c8e2d2ddf6899e62bc95bc1e52c84eccdc3a91e
+ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68721915"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92784097"
 ---
 # <a name="list-azure-storage-resources-in-c"></a>Auflisten von Azure Storage-Ressourcen in C++
 
@@ -59,10 +59,10 @@ Daher ist es unpraktisch, alle Objekte in einer einzigen Antwort aufzulisten. St
 
 Die Antwort für einen Vorgang mit segmentierter Auflistung enthält Folgendes:
 
-* *_segment*, das die Ergebnisse enthält, die für einen einzelnen Aufruf der Auflistungs-API zurückgegeben wurden.
-* *continuation_token*, das an den nächsten Aufruf übergeben wird, damit die nächste Seite mit Ergebnissen abgerufen wird. Gibt es keine weiteren zurückzugebenden Ergebnisse, ist das Fortsetzungstoken (continuation_token) gleich NULL.
+* *_segment* , das die Ergebnisse enthält, die für einen einzelnen Aufruf der Auflistungs-API zurückgegeben wurden.
+* *continuation_token* , das an den nächsten Aufruf übergeben wird, damit die nächste Seite mit Ergebnissen abgerufen wird. Gibt es keine weiteren zurückzugebenden Ergebnisse, ist das Fortsetzungstoken (continuation_token) gleich NULL.
 
-Ein typischer Aufruf zum Auflisten alle BLOBs in einem Container könnte beispielsweise wie der folgende Codeausschnitt aussehen. Der Code ist in unseren [Beispielen](https://github.com/Azure/azure-storage-cpp/blob/master/Microsoft.WindowsAzure.Storage/samples/BlobsGettingStarted/Application.cpp)verfügbar:
+Ein typischer Aufruf zum Auflisten alle BLOBs in einem Container könnte beispielsweise wie der folgende Codeausschnitt aussehen. Der Code ist in unseren [Beispielen](https://github.com/Azure/azure-storage-cpp/blob/master/Microsoft.WindowsAzure.Storage/samples/BlobsGettingStarted.cpp)verfügbar:
 
 ```cpp
 // List blobs in the blob container
@@ -95,9 +95,9 @@ list_blob_item_segment list_blobs_segmented(const utility::string_t& prefix, boo
     const blob_request_options& options, operation_context context)
 ```
 
-Wenn Sie den *max_results*-Parameter nicht angeben, wird in einer einzelnen Seite der standardmäßige maximale Wert von bis zu 5.000 Ergebnissen zurückgegeben.
+Wenn Sie den *max_results* -Parameter nicht angeben, wird in einer einzelnen Seite der standardmäßige maximale Wert von bis zu 5.000 Ergebnissen zurückgegeben.
 
-Beachten Sie außerdem, dass eine Abfrage für den Azure-Tabellenspeicher möglicherweise keine Datensätze oder weniger Datensätze zurückgibt, als der Wert des von Ihnen angegebenen *max_results*-Parameters festlegt. Dies gilt selbst dann, wenn das Fortsetzungstoken nicht leer ist. Ein Grund hierfür ist möglicherweise, dass die Abfrage nicht in fünf Sekunden abgeschlossen werden konnte. Solange das Fortsetzungstoken nicht leer ist, sollte die Abfrage fortgesetzt werden, und Ihr Code sollte die Größe der Segmentergebnisse nicht voraussetzen.
+Beachten Sie außerdem, dass eine Abfrage für den Azure-Tabellenspeicher möglicherweise keine Datensätze oder weniger Datensätze zurückgibt, als der Wert des von Ihnen angegebenen *max_results* -Parameters festlegt. Dies gilt selbst dann, wenn das Fortsetzungstoken nicht leer ist. Ein Grund hierfür ist möglicherweise, dass die Abfrage nicht in fünf Sekunden abgeschlossen werden konnte. Solange das Fortsetzungstoken nicht leer ist, sollte die Abfrage fortgesetzt werden, und Ihr Code sollte die Größe der Segmentergebnisse nicht voraussetzen.
 
 Das empfohlene Codierungsmuster für die meisten Szenarios ist segmentiertes Auflisten, das expliziten Fortschritt für Auflisten oder Abfragen bereitstellt und festlegt, wie der Dienst auf jede Anforderungen reagiert. Insbesondere für C++-Anwendungen oder -Dienste kann eine auf niedrigerer Ebene erfolgende Steuerung des Auflistungsfortschritts hilfreich sein, den Arbeitsspeicher und die Leistung zu kontrollieren.
 
@@ -143,7 +143,7 @@ do
 } while (!token.empty());
 ```
 
-Durch Angeben des *max_results*-Parameters des Segments können Sie zwischen der Anzahl von Anforderungen und der Arbeitsspeichernutzung abwägen, um den Leistungsanforderungen Ihrer Anwendung gerecht zu werden.
+Durch Angeben des *max_results* -Parameters des Segments können Sie zwischen der Anzahl von Anforderungen und der Arbeitsspeichernutzung abwägen, um den Leistungsanforderungen Ihrer Anwendung gerecht zu werden.
 
 Außerdem sollten Sie, wenn Sie APIs für segmentiertes Auflisten verwenden, die Daten aber in einer lokalen Sammlung in einem „gierigen“ Stil speichern, Ihren Code so ändern, dass das Speichern von Daten in einer lokalen Sammlung sorgfältig entsprechend dem Umfang erfolgt.
 
@@ -198,7 +198,7 @@ Weitere Informationen zu Azure Storage und zur Client Library for C++ finden Sie
 
 * [Verwenden des Blob-Speichers mit C++](../blobs/storage-c-plus-plus-how-to-use-blobs.md)
 * [Verwenden des Tabellenspeichers mit C++](../../cosmos-db/table-storage-how-to-use-c-plus.md)
-* [Verwenden des Warteschlangenspeichers in C++](../storage-c-plus-plus-how-to-use-queues.md)
+* [Verwenden des Warteschlangenspeichers in C++](../queues/storage-c-plus-plus-how-to-use-queues.md)
 * [Azure Storage Client Library for C++ API Documentation.](https://azure.github.io/azure-storage-cpp/)
-* [Azure Storage-Teamblog](https://blogs.msdn.com/b/windowsazurestorage/)
+* [Azure Storage-Teamblog](/archive/blogs/windowsazurestorage/)
 * [Azure Storage-Dokumentation](https://azure.microsoft.com/documentation/services/storage/)

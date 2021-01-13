@@ -3,17 +3,20 @@ title: Migrieren von der Änderungsfeed-Verarbeitungsbibliothek zum Azure Cosmos
 description: Hier erfahren Sie, wie Sie Ihre Anwendung von der Verwendung der Änderungsfeed-Verarbeitungsbibliothek zum Azure Cosmos DB SDK V3 migrieren.
 author: ealsur
 ms.service: cosmos-db
-ms.topic: conceptual
+ms.subservice: cosmosdb-sql
+ms.topic: how-to
 ms.date: 09/17/2019
 ms.author: maquaran
-ms.openlocfilehash: 9570a8512e3437b12ecce2ef0c708a74a8806482
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.custom: devx-track-dotnet
+ms.openlocfilehash: ce2d4d3ad3ae349718f01584ec077b18e11e4f8d
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71077922"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93341262"
 ---
 # <a name="migrate-from-the-change-feed-processor-library-to-the-azure-cosmos-db-net-v3-sdk"></a>Migrieren von der Änderungsfeed-Verarbeitungsbibliothek zum Azure Cosmos DB .NET V3 SDK
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 In diesem Artikel werden die erforderlichen Schritte zum Migrieren eines vorhandenen Anwendungscodes, der die [Änderungsfeed-Verarbeitungsbibliothek](https://github.com/Azure/azure-documentdb-changefeedprocessor-dotnet) verwendet, zum [Änderungsfeed](change-feed.md)-Feature in der neuesten Version des .NET SDK (auch als .NET V3 SDK bezeichnet) beschrieben.
 
@@ -22,7 +25,7 @@ In diesem Artikel werden die erforderlichen Schritte zum Migrieren eines vorhand
 Das .NET V3 SDK weist mehrere wichtige Änderungen auf. Nachfolgend sind die wichtigsten Schritte zum Migrieren Ihrer Anwendung aufgeführt:
 
 1. Wandeln Sie die `DocumentCollectionInfo`-Instanzen in `Container`-Verweise für die überwachten Container und Leasescontainer um.
-1. Anpassungen, die `WithProcessorOptions` verwenden, sollten für die Verwendung von `WithLeaseConfiguration` und `WithPollInterval` für Intervalle, `WithStartTime` [für die Startzeit](how-to-configure-change-feed-start-time.md) und `WithMaxItems` zum Definieren der maximalen Anzahl von Elementen aktualisiert werden.
+1. Anpassungen, die `WithProcessorOptions` verwenden, sollten für die Verwendung von `WithLeaseConfiguration` und `WithPollInterval` für Intervalle, `WithStartTime` [für die Startzeit](./change-feed-processor.md#starting-time) und `WithMaxItems` zum Definieren der maximalen Anzahl von Elementen aktualisiert werden.
 1. Legen Sie `processorName` für `GetChangeFeedProcessorBuilder` entsprechend dem für `ChangeFeedProcessorOptions.LeasePrefix` konfigurierten Wert fest, oder verwenden Sie andernfalls `string.Empty`.
 1. Die Änderungen werden nicht mehr als `IReadOnlyList<Document>` übermittelt, sondern es handelt sich um eine `IReadOnlyCollection<T>`, wobei `T` für einen von Ihnen zu definierenden Typ steht. Es gibt keine Basiselementklasse mehr.
 1. Zum Handhaben der Änderungen ist keine Implementierung mehr erforderlich, sondern Sie müssen einen [Delegaten definieren](change-feed-processor.md#implementing-the-change-feed-processor). Der Delegat kann eine statische Funktion sein, oder Sie können eine eigene Klasse erstellen und eine Instanzmethode als Delegat übergeben, wenn Sie den Status über mehrere Ausführungen hinweg beibehalten müssen.
@@ -47,10 +50,6 @@ Der SDK V3-Änderungsfeedprozessor erkennt jeden alten Bibliotheksstatus und mig
 
 Sie können die Anwendung mithilfe des alten Codes gefahrlos beenden, den Code zur neuen Version migrieren und die migrierte Anwendung starten. Alle Änderungen, die während des Beendens der Anwendung auftraten, werden von der neuen Version übernommen und verarbeitet.
 
-> [!NOTE]
-> Migrationen von Anwendungen, die die Bibliothek verwenden, zum .NET V3 SDK sind unidirektional, da der Status (Leases) in das neue Schema migriert wird. Die Migration ist nicht abwärtskompatibel.
-
-
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
 * [Azure Cosmos DB SDK](sql-api-sdk-dotnet.md)
@@ -63,4 +62,4 @@ In den folgenden Artikeln erfahren Sie mehr über den Änderungsfeedprozessor:
 
 * [Änderungsfeedprozessor in Azure Cosmos DB](change-feed-processor.md)
 * [Use the change feed estimator](how-to-use-change-feed-estimator.md) (Verwenden des Änderungsfeed-Estimators)
-* [Startzeit des Änderungsfeedprozessors](how-to-configure-change-feed-start-time.md)
+* [Konfigurieren der Startzeit des Änderungsfeedprozessors](./change-feed-processor.md#starting-time)

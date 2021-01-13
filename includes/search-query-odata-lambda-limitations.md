@@ -1,15 +1,15 @@
 ---
 author: brjohnstmsft
-ms.service: search
+ms.service: cognitive-search
 ms.topic: include
 ms.date: 06/13/2018
 ms.author: brjohnst
-ms.openlocfilehash: b4d0bc73e652a1cd6ef59589318b92f63727c7f5
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 998d0f1a84dc9cb2a07fb55286c1089787a263e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67081831"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "80272957"
 ---
 | Datentyp | Features, die in Lambdaausdrücken mit `any` zulässig sind | Features, die in Lambdaausdrücken mit `all` zulässig sind |
 |---|---|---|

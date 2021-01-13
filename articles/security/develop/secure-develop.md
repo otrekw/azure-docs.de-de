@@ -13,15 +13,15 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: c1c7dd0bd017852144139a841ff609dabf0f1a27
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 421fb7b0c91171756f55ad25c918955870054e3e
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68928071"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97511279"
 ---
 # <a name="develop-secure-applications-on-azure"></a>Entwickeln sicherer Anwendungen in Azure
-In diesem Artikel werden Sicherheitsaktivitäten und -kontrollen vorgestellt, die Sie berücksichtigen sollten, wenn Sie Anwendungen für die Cloud entwickeln. Es werden Sicherheitsfragen und -konzepten behandelt, die Sie während der Implementierungs- und Überprüfungsphase von Microsoft [Security Development Lifecycle (SDL)](https://msdn.microsoft.com/library/windows/desktop/84aed186-1d75-4366-8e61-8d258746bopq.aspx) berücksichtigen müssen. Das Ziel ist, Ihnen das Festlegen von Aktivitäten und Azure-Diensten zu ermöglichen, mit denen Sie eine sicherere Anwendung entwickeln können.
+In diesem Artikel werden Sicherheitsaktivitäten und -kontrollen vorgestellt, die Sie berücksichtigen sollten, wenn Sie Anwendungen für die Cloud entwickeln. Es werden Sicherheitsfragen und -konzepten behandelt, die Sie während der Implementierungs- und Überprüfungsphase von Microsoft [Security Development Lifecycle (SDL)](/previous-versions/windows/desktop/cc307891(v=msdn.10)) berücksichtigen müssen. Das Ziel ist, Ihnen das Festlegen von Aktivitäten und Azure-Diensten zu ermöglichen, mit denen Sie eine sicherere Anwendung entwickeln können.
 
 In diesem Artikel werden die folgenden SDL-Phasen behandelt:
 
@@ -34,35 +34,35 @@ Angenommen, Ihre Anwendung wird auf Arten verwendet, für die sie nicht beabsich
 
 ### <a name="perform-code-reviews"></a>Ausführen von Code Reviews
 
-Führen Sie vor dem Einchecken von Code [Code Reviews](https://docs.microsoft.com/azure/devops/learn/devops-at-microsoft/code-reviews-not-primarily-finding-bugs) durch, um die Gesamtqualität des Codes zu erhöhen und das Risiko für die Erzeugung von Fehlern zu verringern. Sie können [Visual Studio](https://docs.microsoft.com/azure/devops/repos/tfvc/get-code-reviewed-vs?view=vsts) verwenden, um den Code Review-Prozess zu verwalten.
+Führen Sie vor dem Einchecken von Code [Code Reviews](/azure/devops/learn/devops-at-microsoft/code-reviews-not-primarily-finding-bugs) durch, um die Gesamtqualität des Codes zu erhöhen und das Risiko für die Erzeugung von Fehlern zu verringern. Sie können [Visual Studio](/azure/devops/repos/tfvc/get-code-reviewed-vs?view=vsts) verwenden, um den Code Review-Prozess zu verwalten.
 
 ### <a name="perform-static-code-analysis"></a>Ausführen statischer Codeanalysen
 
-[Statische Codeanalysen](https://www.owasp.org/index.php/Static_Code_Analysis) (auch bekannt als *Quellcodeanalyse*) werden in der Regel als Teil eines Code Reviews durchgeführt. Die statische Codeanalyse verwendet herkömmlicherweise Tools zur Analyse von ausgeführtem Code, um potenzielle Sicherheitslücken in nicht ausgeführtem Code zu finden, indem Methoden wie [Taint-Prüfung](https://en.wikipedia.org/wiki/Taint_checking) und [Datenflussanalyse](https://en.wikipedia.org/wiki/Data-flow_analysis) eingesetzt werden.
+[Statische Codeanalysen](https://owasp.org/www-community/controls/Static_Code_Analysis) (auch bekannt als *Quellcodeanalyse*) werden in der Regel als Teil eines Code Reviews durchgeführt. Die statische Codeanalyse verwendet herkömmlicherweise Tools zur Analyse von ausgeführtem Code, um potenzielle Sicherheitslücken in nicht ausgeführtem Code zu finden, indem Methoden wie [Taint-Prüfung](https://en.wikipedia.org/wiki/Taint_checking) und [Datenflussanalyse](https://en.wikipedia.org/wiki/Data-flow_analysis) eingesetzt werden.
 
 Azure Marketplace bietet [Entwicklertools](https://azuremarketplace.microsoft.com/marketplace/apps/category/developer-tools?page=1&search=code%20review), die statische Codeanalyse ausführen und bei Code Reviews helfen.
 
 ### <a name="validate-and-sanitize-every-input-for-your-application"></a>Überprüfen und Bereinigen aller Eingaben für Ihre Anwendung
 
-Behandeln Sie alle Eingaben als nicht vertrauenswürdig, um Ihre Anwendung vor den häufigsten Sicherheitsrisiken für Webanwendungen zu schützen. Nicht vertrauenswürdige Daten sind ein Transportmittel für Einschleusungsangriffe. Eingaben für Ihre Anwendung umfassen Parameter in der URL, Eingaben des Benutzers, Daten aus der Datenbank oder von einer API sowie alles, das als Eingabe übergeben wird, das ein Benutzer möglicherweise manipulieren könnte. Eine Anwendung sollte [überprüfen](https://www.owasp.org/index.php/OWASP_Proactive_Controls_2016#4:_Validate_All_Inputs), ob Daten syntaktisch und semantisch gültig sind, bevor die Anwendung die Daten in irgendeiner Weise (einschließlich der Anzeige für den Benutzer) verwendet.
+Behandeln Sie alle Eingaben als nicht vertrauenswürdig, um Ihre Anwendung vor den häufigsten Sicherheitsrisiken für Webanwendungen zu schützen. Nicht vertrauenswürdige Daten sind ein Transportmittel für Einschleusungsangriffe. Eingaben für Ihre Anwendung umfassen Parameter in der URL, Eingaben des Benutzers, Daten aus der Datenbank oder von einer API sowie alles, das als Eingabe übergeben wird, das ein Benutzer möglicherweise manipulieren könnte. Eine Anwendung sollte [überprüfen](https://owasp.org/www-project-proactive-controls/v3/en/c5-validate-inputs), ob Daten syntaktisch und semantisch gültig sind, bevor die Anwendung die Daten in irgendeiner Weise (einschließlich der Anzeige für den Benutzer) verwendet.
 
-Überprüfen Sie Eingaben zu einem frühen Zeitpunkt im Datenfluss, um sicherzustellen, dass nur ordnungsgemäß formatierte Daten in den Workflow gelangen. Sie möchten keine falsch formatierten Daten dauerhaft in Ihrer Datenbank speichern oder eine Fehlfunktion in einer Downstreamkomponente auslösen.
+Überprüfen Sie Eingaben zu einem frühen Zeitpunkt im Datenfluss, um sicherzustellen, dass nur ordnungsgemäß formatierte Daten in den Workflow gelangen. Sie möchten vermeiden, dass falsch formatierte Daten dauerhaft in Ihrer Datenbank gespeichert werden oder eine Fehlfunktion in einer Downstreamkomponente auslösen.
 
-Blacklisting und Whitelisting sind zwei allgemeine Ansätze zur Durchführung einer Syntaxüberprüfung der Eingabe:
+Aufnehmen in die Sperrliste und Setzen auf die Positivliste sind zwei allgemeine Ansätze zur Durchführung einer Syntaxüberprüfung der Eingabe:
 
-  - Blacklisting versucht, zu überprüfen, ob eine bestimmte Benutzereingabe keinen Inhalt enthält, von dem „bekannt ist, dass er bösartig ist“.
+  - Beim Aufnehmen in die Sperrliste wird versucht, zu bestätigen, dass eine bestimmte Benutzereingabe keinen „bekannt bösartigen“ Inhalt aufweist.
 
-  - Whitelisting versucht, zu überprüfen, ob eine bestimmte Benutzereingabe einem Satz „bekannter gutartiger“ Eingaben entspricht. Zeichenbasiertes Whitelisting ist eine Form des Whitelistings, bei der eine Anwendung überprüft, ob die Benutzereingabe nur als „gutartig bekannte“ Zeichen enthält, bzw. ob die Eingabe ein bekanntes Format hat.
+  - Beim Setzen auf die Positivliste wird versucht, zu bestätigen, dass eine bestimmte Benutzereingabe einem Satz „bekannt gutartiger“ Eingaben entspricht. Zeichenbasiertes Setzen auf die Positivliste ist eine Form des Setzens auf die Positivliste, bei der eine Anwendung überprüft, ob die Benutzereingabe nur „bekannt gutartige“ Zeichen enthält bzw. ob die Eingabe einem bekannten Format entspricht.
     Dies kann beispielsweise die Überprüfung umfassen, ob ein Benutzername nur alphanumerische Zeichen enthält, oder ob er genau zwei Zahlen enthält.
 
-Whitelisting ist der zu bevorzugende Ansatz zum Erstellen sicherer Software.
-Blacklisting ist anfällig für Fehler, da es nicht möglich ist, eine vollständige Liste potenziell schädlicher Eingaben aufzustellen.
+Setzen auf die Positivliste ist der zu bevorzugende Ansatz zum Erstellen sicherer Software.
+Aufnehmen in die Sperrliste ist anfällig für Fehler, da es nicht möglich ist, eine vollständige Liste potenziell schädlicher Eingaben aufzustellen.
 
 Führen Sie diese Arbeit auf dem Server aus, nicht auf dem Client (oder auf dem Server und auf dem Client).
 
 ### <a name="verify-your-applications-outputs"></a>Überprüfen der Ausgaben Ihrer Anwendung
 
-Jede Ausgabe, die Sie entweder visuell oder innerhalb eines Dokuments darstellen, sollte immer codiert und mit Escapezeichen versehen sein. Das [Versehen mit Escapezeichen](https://www.owasp.org/index.php/Injection_Theory#Escaping_.28aka_Output_Encoding.29), auch bekannt als *Ausgabecodierung*, wird verwendet, um sicherzustellen, dass nicht vertrauenswürdige Daten kein Transportmittel für einen Einschleusungsangriff sind. Das Versehen mit Escapezeichen in Kombination mit Datenüberprüfung bietet Verteidigungsebenen, um die Sicherheit des Systems als Ganzes zu erhöhen.
+Jede Ausgabe, die Sie entweder visuell oder innerhalb eines Dokuments darstellen, sollte immer codiert und mit Escapezeichen versehen sein. Das [Versehen mit Escapezeichen](https://owasp.org/www-community/Injection_Theory#Escaping_.28aka_Output_Encoding.29), auch bekannt als *Ausgabecodierung*, wird verwendet, um sicherzustellen, dass nicht vertrauenswürdige Daten kein Transportmittel für einen Einschleusungsangriff sind. Das Versehen mit Escapezeichen in Kombination mit Datenüberprüfung bietet Verteidigungsebenen, um die Sicherheit des Systems als Ganzes zu erhöhen.
 
 Das Versehen mit Escapezeichen stellt sicher, dass alles als *Ausgabe* angezeigt wird. Das Versehen mit Escapezeichen teilt außerdem dem Interpreter mit, dass die Daten nicht zur Ausführung bestimmt sind, und dies verhindert, dass Angriffe funktionieren können. Dies ist eine weitere gängige Angriffstechnik namens *Cross-Site Scripting* (XSS).
 
@@ -89,7 +89,7 @@ Dies bedeutet, dass weniger Personen Zugriff auf Ihre echten Daten haben, wodurc
 
 Zur Abwehr von Brute-Force- und wörterbuchbasierten Angriffen muss eine Richtlinie für sichere Kennwörter implementiert werden, um sicherzustellen, dass Benutzer komplexe Kennwörter erstellen (beispielsweise mit einer Mindestlänge von 12 Zeichen und einer verpflichtenden Kombination aus alphanumerischen Zeichen und Sonderzeichen).
 
-Sie können ein Identitätsframework verwenden, um Kennwortrichtlinien zu erstellen und zu erzwingen. Azure AD B2C hilft Ihnen bei der Kennwortverwaltung durch die Bereitstellung von [integrierten Richtlinien](../../active-directory-b2c/tutorial-create-user-flows.md#create-a-password-reset-user-flow), [Self-service-Kennwortzurücksetzung](../../active-directory-b2c/active-directory-b2c-reference-sspr.md) und vielem mehr.
+Sie können ein Identitätsframework verwenden, um Kennwortrichtlinien zu erstellen und zu erzwingen. Azure AD B2C hilft Ihnen bei der Kennwortverwaltung durch die Bereitstellung von [integrierten Richtlinien](../../active-directory-b2c/tutorial-create-user-flows.md#create-a-password-reset-user-flow), [Self-service-Kennwortzurücksetzung](../../active-directory-b2c/user-flow-self-service-password-reset.md) und vielem mehr.
 
 Vergewissern Sie sich zur Abwehr von Angriffen auf Standardkonten, dass alle Schlüssel und Kennwörter ersetzbar sind und nach der Installation von Ressourcen generiert oder ersetzt werden.
 
@@ -97,15 +97,15 @@ Falls die Anwendung Kennwörter automatisch generieren muss, stellen Sie sicher,
 
 ### <a name="validate-file-uploads"></a>Überprüfen von Dateiuploads
 
-Wenn Ihre Anwendung [Dateiuploads](https://www.owasp.org/index.php/Unrestricted_File_Upload) zulässt, erwägen Sie Vorsichtsmaßnahmen, die Sie für diese riskante Aktivität ergreifen können. Bei vielen Angriffen besteht der erste Schritt darin, bösartigen Code in ein System einzuschleusen, das angegriffen wird. Die Verwendung eines Dateiuploads hilft dem Angreifer, dies zu erreichen. OWASP bietet Lösungen zum Überprüfen einer Datei, um sicherzustellen, dass die Datei, die Sie hochladen, sicher ist.
+Wenn Ihre Anwendung [Dateiuploads](https://owasp.org/www-community/vulnerabilities/Unrestricted_File_Upload) zulässt, erwägen Sie Vorsichtsmaßnahmen, die Sie für diese riskante Aktivität ergreifen können. Bei vielen Angriffen besteht der erste Schritt darin, bösartigen Code in ein System einzuschleusen, das angegriffen wird. Die Verwendung eines Dateiuploads hilft dem Angreifer, dies zu erreichen. OWASP bietet Lösungen zum Überprüfen einer Datei, um sicherzustellen, dass die Datei, die Sie hochladen, sicher ist.
 
-Antischadsoftware-Schutz hilft dabei, Viren, Spyware und andere Schadsoftware zu erkennen und zu entfernen. Sie können [Microsoft Antimalware](../fundamentals/antimalware.md) oder die Endpunktschutz-Lösung eines Microsoft-Partners ([Trend Micro](https://www.trendmicro.com/azure/), [Symantec](https://www.symantec.com/products), [McAfee](https://www.mcafee.com/us/products.aspx), [Windows Defender](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-in-windows-10) und [System Center Endpoint Protection](https://docs.microsoft.com/sccm/protect/deploy-use/endpoint-protection)) installieren.
+Antischadsoftware-Schutz hilft dabei, Viren, Spyware und andere Schadsoftware zu erkennen und zu entfernen. Sie können [Microsoft Antimalware](../fundamentals/antimalware.md) oder die Endpunktschutz-Lösung eines Microsoft-Partners ([Trend Micro](https://www.trendmicro.com/azure/), [Broadcom](https://www.broadcom.com/products), [McAfee](https://www.mcafee.com/us/products.aspx), [Windows Defender](/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-in-windows-10) und [Endpoint Protection](/configmgr/protect/deploy-use/endpoint-protection)) installieren.
 
 [Microsoft Antimalware](../fundamentals/antimalware.md) umfasst Features wie Echtzeitschutz, geplante Überprüfungen, Schadsoftwarebehandlung, Signaturupdates, Engine-Updates, Beispielberichte und Sammlung von Ausschlussereignissen. Sie können Microsoft Antimalware und Partnerlösungen zur Vereinfachung der Bereitstellung und für integrierte Erkennungen (Warnungen und Vorfälle) in [Azure Security Center](../../security-center/security-center-partner-integration.md) integrieren.
 
 ### <a name="dont-cache-sensitive-content"></a>Speichern Sie keine vertraulichen Inhalte zwischen.
 
-Speichern Sie keine vertraulichen Inhalte im Browser zwischen. Browser können Informationen für die Zwischenspeicherung und den Verlauf/die Chronik speichern. Zwischengespeicherte Dateien werden in einem Ordner abgelegt, z. B. dem Ordner „Temporäre Internetdateien“ bei Internet Explorer. Wenn auf diese Seite erneut zugegriffen wird, zeigt der Browser diese Seiten aus dem Cache an. Falls dem Benutzer vertrauliche Informationen (z. B. Adresse, Kreditkartendaten, Sozialversicherungsnummer oder Benutzername) angezeigt werden, werden diese Informationen möglicherweise im Cache des Browsers gespeichert. Sie können dann abgerufen werden, indem der Cache des Browsers untersucht wird, oder indem im Browser einfach auf die Schaltfläche **Zurück** geklickt wird.
+Speichern Sie keine vertraulichen Inhalte im Browser zwischen. Browser können Informationen für die Zwischenspeicherung und den Verlauf/die Chronik speichern. Zwischengespeicherte Dateien werden in einem Ordner abgelegt, z. B. dem Ordner „Temporäre Internetdateien“ bei Internet Explorer. Wenn auf diese Seite erneut zugegriffen wird, zeigt der Browser diese Seiten aus dem Cache an. Falls dem Benutzer vertrauliche Informationen (z. B. Adresse, Kreditkartendaten, Sozialversicherungsnummer oder Benutzername) angezeigt werden, können diese Informationen im Cache des Browsers gespeichert werden und abrufbar sein, indem der Cache des Browsers untersucht wird oder im Browser einfach auf die Schaltfläche **Zurück** geklickt wird.
 
 ## <a name="verification"></a>Überprüfung
 Die Überprüfungsphase beinhaltet umfassende Bemühungen, um sicherzustellen, dass der Code die Grundsätze für Sicherheit und Datenschutz erfüllt, die in den vorangehenden Phasen festgelegt wurden.
@@ -128,13 +128,13 @@ Dynamische Anwendungssicherheitstests (DAST) sind ein Prozess des Testens einer 
 
 DAST unterscheidet sich von statischen Anwendungssicherheitstests (SAST). SAST-Tools analysieren Quellcode oder kompilierte Versionen von Code, wenn der Code nicht ausgeführt wird, um Sicherheitslücken zu finden.
 
-Führen Sie DAST aus, vorzugsweise mit Unterstützung eines Sicherheitsexperten (einem [Penetrationtester](../fundamentals/pen-testing.md) oder Sicherheitsrisikobewerter). Wenn kein Sicherheitsexperte verfügbar ist, können Sie DAST selber mit einem Webproxyscanner und ein wenig Schulung und Übung ausführen. Binden Sie einen DAST-Scanner zu einem möglichst führen Zeitpunkt ein, um sicherzustellen, dass Sie keine offensichtlichen Sicherheitsprobleme in Ihren Code einführen. Eine Liste von Scannern für Sicherheitsrisiken in Webanwendungen finden Sie auf der [OWASP](https://www.owasp.org/index.php/Category:Vulnerability_Scanning_Tools)-Site.
+Führen Sie DAST aus, vorzugsweise mit Unterstützung eines Sicherheitsexperten (einem [Penetrationtester](../fundamentals/pen-testing.md) oder Sicherheitsrisikobewerter). Wenn kein Sicherheitsexperte verfügbar ist, können Sie DAST selber mit einem Webproxyscanner und ein wenig Schulung und Übung ausführen. Binden Sie früh einen DAST-Scanner ein, um sicherzustellen, dass Sie keine offensichtlichen Sicherheitsprobleme in Ihren Code einführen. Eine Liste von Scannern für Sicherheitsrisiken in Webanwendungen finden Sie auf der [OWASP](https://owasp.org/www-community/Vulnerability_Scanning_Tools)-Site.
 
 ### <a name="perform-fuzz-testing"></a>Durchführen von Fuzzing
 
 Beim [Fuzzing](https://cloudblogs.microsoft.com/microsoftsecure/2007/09/20/fuzz-testing-at-microsoft-and-the-triage-process/) lösen Sie Programmfehler aus, indem Sie absichtlich falsch formatierte oder zufällige Daten in eine Anwendung einführen. Das Auslösen eines Programmfehlers hilft dabei, potenzielle Sicherheitsprobleme aufzudecken, bevor die Anwendung veröffentlicht wird.
 
-[Erkennung von Sicherheitsrisiken](https://docs.microsoft.com/security-risk-detection/) ist der einzigartige Fuzzing-Dienst von Microsoft zum Auffinden sicherheitskritischer Fehler in Software.
+[Erkennung von Sicherheitsrisiken](https://www.microsoft.com/en-us/security-risk-detection/) ist der einzigartige Fuzzing-Dienst von Microsoft zum Auffinden sicherheitskritischer Fehler in Software.
 
 ### <a name="conduct-attack-surface-review"></a>Durchführen einer Überprüfung der Angriffsfläche
 

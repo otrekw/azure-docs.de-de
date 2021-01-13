@@ -1,19 +1,20 @@
 ---
 title: Azure Cloud Services – Netzwerkkonfigurationsschema | Microsoft-Dokumentation
+description: Hier erfahren Sie mehr über die untergeordneten Elemente des NetworkConfiguration-Elements der Dienstkonfigurationsdatei, die Virtual Network- und DNS-Werte angibt.
 ms.custom: ''
 ms.date: 12/07/2016
 services: cloud-services
 ms.service: cloud-services
 ms.topic: reference
 caps.latest.revision: 28
-author: georgewallace
-ms.author: gwallace
-ms.openlocfilehash: c5a6501c71420ca5b43c4c08c2a29ae5f27b4af5
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+author: tgore03
+ms.author: tagore
+ms.openlocfilehash: a3f62bb33332e818cc40c5195a1cc2f667f819b4
+ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68945921"
+ms.lasthandoff: 10/15/2020
+ms.locfileid: "92072576"
 ---
 # <a name="azure-cloud-services-config-networkconfiguration-schema"></a>Azure Cloud Services – Netzwerkkonfigurationsschema
 
@@ -23,7 +24,7 @@ Sie können die folgenden Ressourcen verwenden, um mehr über virtuelle Netzwerk
 
 - [Azure Cloud Services Config Schema (.cscfg File)](schema-cscfg-file.md) (Azure Cloud Services-Konfigurationsschema (CSCFG-Datei))
 - [Clouddienst-Definitionsschema (klassisch)](schema-csdef-file.md)
-- [Erstellen eines virtuellen Netzwerks (klassisch)](../virtual-network/virtual-networks-create-vnet-classic-pportal.md)
+- [Erstellen eines virtuellen Netzwerks (klassisch)](/previous-versions/azure/virtual-network/virtual-networks-create-vnet-classic-pportal)
 
 ## <a name="networkconfiguration-element"></a>NetworkConfiguration-Element
 Das folgende Beispiel zeigt das `NetworkConfiguration`-Element und seine untergeordneten Elemente.
@@ -72,5 +73,5 @@ Die folgende Tabelle beschreibt die untergeordneten Elemente des `NetworkConfigu
 | Subnet | Optional. Gibt das Subnetz an, das dem Subnetznamen in der Netzwerkkonfigurationsdatei entspricht. Der Name des Subnetzes wird durch eine Zeichenfolge für das `name`-Attribut definiert.|
 | ReservedIP | Optional. Gibt die reservierte IP-Adresse an, die der Bereitstellung zugeordnet werden soll. Sie müssen mit „Reservierte IP-Adresse erstellen“ die reservierte IP-Adresse erstellen. Jede Bereitstellung in einem Clouddienst kann einer reservierten IP-Adresse zugeordnet werden. Der Name der reservierten IP-Adresse wird durch eine Zeichenfolge für das `name`-Attribut definiert.|
 
-## <a name="see-also"></a>Siehe auch
+## <a name="see-also"></a>Weitere Informationen
 [Azure Cloud Services Config Schema (.cscfg File)](schema-cscfg-file.md) (Azure Cloud Services-Konfigurationsschema (CSCFG-Datei))

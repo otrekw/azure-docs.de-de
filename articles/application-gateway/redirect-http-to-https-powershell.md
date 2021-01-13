@@ -1,45 +1,40 @@
 ---
-title: Erstellen eines Anwendungsgateways mit Umleitung von HTTP zu HTTPS – Azure PowerShell | Microsoft-Dokumentation
+title: HTTP-zu-HTTPS-Umleitung mit PowerShell – Azure Application Gateway
 description: Erfahren Sie, wie Sie mithilfe von Azure PowerShell ein Anwendungsgateway Datenverkehr erstellen, der von HTTP zu HTTPS umgeleitet wird.
 services: application-gateway
 author: vhorne
-manager: jpconnock
-editor: tysonn
-tags: azure-resource-manager
 ms.service: application-gateway
-ms.topic: article
-ms.workload: infrastructure-services
-ms.date: 7/13/2018
+ms.topic: how-to
+ms.date: 09/28/2020
 ms.author: victorh
-ms.openlocfilehash: 123b3991e2cfe5b41f9d75cd8902609d73e92a91
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 86eaa645cd6a81b9180d1241695240a71aa8202d
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65202823"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397262"
 ---
 # <a name="create-an-application-gateway-with-http-to-https-redirection-using-azure-powershell"></a>Erstellen eines Anwendungsgateways mit Umleitung von HTTP zu HTTPS mithilfe von Azure PowerShell
 
-Sie können Azure PowerShell verwenden, um ein [Anwendungsgateway](overview.md) mit einem Zertifikat für die SSL-Terminierung zu erstellen. Zum Umleiten des HTTP-Datenverkehrs an den HTTPS-Port in Ihrem Anwendungsgateway wird eine Routingregel verwendet. In diesem Beispiel erstellen Sie auch eine [VM-Skalierungsgruppe](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) für den Back-End-Pool des Anwendungsgateways, die zwei virtuelle Computerinstanzen enthält. 
+Sie können Azure PowerShell verwenden, um ein [Anwendungsgateway](overview.md) mit einem Zertifikat für die TLS/SSL-Terminierung zu erstellen. Zum Umleiten des HTTP-Datenverkehrs an den HTTPS-Port in Ihrem Anwendungsgateway wird eine Routingregel verwendet. In diesem Beispiel erstellen Sie auch eine [VM-Skalierungsgruppe](../virtual-machine-scale-sets/overview.md) für den Back-End-Pool des Anwendungsgateways, die zwei virtuelle Computerinstanzen enthält. 
 
 In diesem Artikel werden folgende Vorgehensweisen behandelt:
 
-> [!div class="checklist"]
-> * Erstellen eines selbstsignierten Zertifikats
-> * Einrichten eines Netzwerks
-> * Erstellen eines Anwendungsgateways mit dem Zertifikat
-> * Hinzufügen eines Listeners und einer Umleitungsregel
-> * Erstellen einer VM-Skalierungsgruppe mit dem standardmäßigen Back-End-Pool
+* Erstellen eines selbstsignierten Zertifikats
+* Einrichten eines Netzwerks
+* Erstellen eines Anwendungsgateways mit dem Zertifikat
+* Hinzufügen eines Listeners und einer Umleitungsregel
+* Erstellen einer VM-Skalierungsgruppe mit dem standardmäßigen Back-End-Pool
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Für dieses Tutorial ist das Azure PowerShell-Modul Version 1.0.0 oder höher erforderlich. Führen Sie `Get-Module -ListAvailable Az` aus, um die Version zu finden. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-az-ps) Informationen dazu. Um die Befehle in diesem Tutorial auszuführen, müssen Sie auch `Login-AzAccount` ausführen, um eine Verbindung mit Azure herzustellen.
+Für dieses Tutorial ist das Azure PowerShell-Modul Version 1.0.0 oder höher erforderlich. Führen Sie `Get-Module -ListAvailable Az` aus, um die Version zu ermitteln. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-az-ps) Informationen dazu. Um die Befehle in diesem Tutorial auszuführen, müssen Sie auch `Login-AzAccount` ausführen, um eine Verbindung mit Azure herzustellen.
 
 ## <a name="create-a-self-signed-certificate"></a>Erstellen eines selbstsignierten Zertifikats
 
-Für den Einsatz in einer Produktionsumgebung sollten Sie ein gültiges, von einem vertrauenswürdigen Anbieter signiertes Zertifikat importieren. Für dieses Tutorial erstellen Sie mit [New-SelfSignedCertificate](https://docs.microsoft.com/powershell/module/pkiclient/new-selfsignedcertificate) ein selbstsigniertes Zertifikat. Sie können [Export-PfxCertificate](https://docs.microsoft.com/powershell/module/pkiclient/export-pfxcertificate) mit dem zurückgegebenen Fingerabdruck verwenden, um eine PFX-Datei aus dem Zertifikat zu exportieren.
+Für den Einsatz in einer Produktionsumgebung sollten Sie ein gültiges, von einem vertrauenswürdigen Anbieter signiertes Zertifikat importieren. Für dieses Tutorial erstellen Sie mit [New-SelfSignedCertificate](/powershell/module/pkiclient/new-selfsignedcertificate) ein selbstsigniertes Zertifikat. Sie können [Export-PfxCertificate](/powershell/module/pkiclient/export-pfxcertificate) mit dem zurückgegebenen Fingerabdruck verwenden, um eine PFX-Datei aus dem Zertifikat zu exportieren.
 
 ```powershell
 New-SelfSignedCertificate `
@@ -138,7 +133,7 @@ $poolSettings = New-AzApplicationGatewayBackendHttpSettings `
 
 ### <a name="create-the-default-listener-and-rule"></a>Erstellen des Standardlisteners und einer Regel
 
-Ein Listener ist erforderlich, damit das Anwendungsgateway Datenverkehr entsprechend an den Back-End-Pool weiterleiten kann. In diesem Beispiel erstellen Sie einen grundlegenden Listener, der an der Stamm-URL auf HTTPS-Datenverkehr lauscht. 
+Ein Listener ist erforderlich, damit das Anwendungsgateway Datenverkehr in geeigneter Weise an den Back-End-Pool weiterleiten kann. In diesem Beispiel erstellen Sie einen grundlegenden Listener, der an der Stamm-URL auf HTTPS-Datenverkehr lauscht. 
 
 Erstellen Sie mit [New-AzApplicationGatewaySslCertificate](/powershell/module/az.network/new-azapplicationgatewaysslcertificate) ein Zertifikatobjekt und anschließend mit [New-AzApplicationGatewayHttpListener](/powershell/module/az.network/new-azapplicationgatewayhttplistener) und der Front-End-Konfiguration, dem Front-End-Port und dem zuvor erstellten Zertifikat einen Listener mit dem Namen *appGatewayHttpListener*. Für den Listener ist eine Regel erforderlich, damit bekannt ist, welcher Back-End-Pool für eingehenden Datenverkehr verwendet werden soll. Erstellen Sie mit [New-AzApplicationGatewayRequestRoutingRule](/powershell/module/az.network/new-azapplicationgatewayrequestroutingrule) eine grundlegende Regel namens *rule1*.
 
@@ -287,7 +282,7 @@ Set-AzVmssStorageProfile $vmssConfig `
   -ImageReferencePublisher MicrosoftWindowsServer `
   -ImageReferenceOffer WindowsServer `
   -ImageReferenceSku 2016-Datacenter `
-  -ImageReferenceVersion latest
+  -ImageReferenceVersion latest `
   -OsDiskCreateOption FromImage
 Set-AzVmssOsProfile $vmssConfig `
   -AdminUsername azureuser `
@@ -338,11 +333,4 @@ Wenn Sie ein selbstsigniertes Zertifikat verwendet haben und die Sicherheitswarn
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie Folgendes gelernt:
-
-> [!div class="checklist"]
-> * Erstellen eines selbstsignierten Zertifikats
-> * Einrichten eines Netzwerks
-> * Erstellen eines Anwendungsgateways mit dem Zertifikat
-> * Hinzufügen eines Listeners und einer Umleitungsregel
-> * Erstellen einer VM-Skalierungsgruppe mit dem standardmäßigen Back-End-Pool
+- [Umschreiben von HTTP-Headern und einer URL mithilfe von Application Gateway](rewrite-http-headers-url.md)

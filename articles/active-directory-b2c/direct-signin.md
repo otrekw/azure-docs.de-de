@@ -2,22 +2,26 @@
 title: Einrichten einer direkten Anmeldung mit Azure Active Directory B2C | Microsoft-Dokumentation
 description: Erfahren Sie, wie der Anmeldename aufgefüllt oder direkt zu einem sozialen Netzwerk als Identitätsanbieter umgeleitet wird.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
-ms.date: 06/18/2018
-ms.author: marsma
+ms.topic: how-to
+ms.date: 12/14/2020
+ms.custom: project-no-code
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 8c0f3d8f3f49001e1326688ccc794e19d1148e5d
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+zone_pivot_groups: b2c-policy-type
+ms.openlocfilehash: b2342ed978204284bee4d2be0f1c983aa10ade36
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67846886"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97585036"
 ---
 # <a name="set-up-direct-sign-in-using-azure-active-directory-b2c"></a>Einrichten einer direkten Anmeldung mit Azure Active Directory B2C
+
+[!INCLUDE [active-directory-b2c-choose-user-flow-or-custom-policy](../../includes/active-directory-b2c-choose-user-flow-or-custom-policy.md)]
 
 Beim Einrichten der Anmeldung für Ihre Anwendung mithilfe von Azure Active Directory (AD) B2C können Sie den Anmeldenamen auffüllen oder sich direkt bei einem bestimmten sozialen Netzwerk als Identitätsanbieter anmelden, wie z.B. bei einem Facebook-, LinkedIn- oder Microsoft-Konto.
 
@@ -29,7 +33,9 @@ Während einer User Journey zur Anmeldung kann eine Anwendung der vertrauenden S
 
 Der Benutzer kann den Wert im Textfeld für die Anmeldung ändern.
 
-Wenn Sie eine benutzerdefinierte Richtlinie verwenden, überschreiben Sie das technische Profil von `SelfAsserted-LocalAccountSignin-Email`. Legen Sie im Abschnitt `<InputClaims>` den „DefaultValue“ des „signInName“-Anspruchs auf `{OIDC:LoginHint}` fest. Die Variable `{OIDC:LoginHint}` enthält den Wert des Parameters `login_hint`. Azure AD B2C liest den Wert des „signInName“-Anspruchs und füllt das Textfeld „signInName“ auf.
+::: zone pivot="b2c-custom-policy"
+
+Um einen Parameter für Anmeldehinweise zu unterstützen, überschreiben Sie das technische `SelfAsserted-LocalAccountSignin-Email`-Profil. Legen Sie im Abschnitt `<InputClaims>` den „DefaultValue“ des „signInName“-Anspruchs auf `{OIDC:LoginHint}` fest. Die Variable `{OIDC:LoginHint}` enthält den Wert des Parameters `login_hint`. Azure AD B2C liest den Wert des „signInName“-Anspruchs und füllt das Textfeld „signInName“ auf.
 
 ```xml
 <ClaimsProvider>
@@ -45,13 +51,35 @@ Wenn Sie eine benutzerdefinierte Richtlinie verwenden, überschreiben Sie das te
 </ClaimsProvider>
 ```
 
+::: zone-end
+
 ## <a name="redirect-sign-in-to-a-social-provider"></a>Umleiten einer Anmeldung zu einem Anbieter sozialer Netzwerke
 
 Wenn Sie die User Journey für die Anmeldung bei Ihrer Anwendung so konfiguriert haben, dass Konten für soziale Netzwerke inbegriffen sind, wie z.B. Facebook, LinkedIn oder Google, können Sie den Parameter `domain_hint` angeben. Dieser Abfrageparameter enthält einen Hinweis für Azure AD B2C zu dem sozialen Netzwerk als Identitätsanbieter, das für die Anmeldung verwendet werden sollte. Wenn in der Anwendung beispielsweise `domain_hint=facebook.com` angegeben ist,erfolgt die Anmeldung direkt auf der Anmeldeseite von Facebook.
 
 ![Seite für Anmeldung/Registrierung mit hervorgehobenem Abfrageparameter „domain_hint“ in der URL](./media/direct-signin/domain-hint.png)
 
-Wenn Sie eine benutzerdefinierte Richtlinie verwenden, können Sie den Domänennamen mit dem XML-Element `<Domain>domain name</Domain>` von `<ClaimsProvider>` konfigurieren.
+::: zone pivot="b2c-user-flow"
+
+Der Parameter für den Domänenhinweis in der Abfragezeichenfolge kann auf eine der folgenden Domänen festgelegt werden:
+
+- amazon.com
+- facebook.com
+- github.com
+- google.com
+- linkedin.com
+- microsoft.com
+- qq.com
+- twitter.com
+- wechat.com
+- weibo.com 
+- Informationen zu [OpenID Connect für generische Identitätsanbieter](identity-provider-generic-openid-connect.md) finden Sie unter [Domänenhinweis](identity-provider-generic-openid-connect.md#response-mode).
+
+::: zone-end
+
+::: zone pivot="b2c-custom-policy"
+
+Um einen Parameter für den Domänenhinweis zu unterstützen, können Sie den Domänennamen mit dem XML-Element `<Domain>domain name</Domain>` von einem beliebigen `<ClaimsProvider>` konfigurieren.
 
 ```xml
 <ClaimsProvider>
@@ -62,4 +90,5 @@ Wenn Sie eine benutzerdefinierte Richtlinie verwenden, können Sie den Domänenn
     ...
 ```
 
+::: zone-end
 

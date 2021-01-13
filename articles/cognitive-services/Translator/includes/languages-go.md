@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 05355ad37183d4c14cb8f6598141292ded0386d9
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: edde734409d064f1bff0212a1cbaecf136206772
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69906958"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83586861"
 ---
 [!INCLUDE [Prerequisites](prerequisites-go.md)]
 
@@ -34,9 +34,9 @@ import (
 
 ## <a name="create-the-main-function"></a>Erstellen der main-Funktion
 
-Erstellen Sie nun die main-Funktion für die Anwendung. Wie Sie sehen werden, ist dafür nur eine einzige Zeile Code erforderlich. Dies liegt daran, dass wir eine einzelne Funktion zum Abrufen und Ausgeben der Liste der unterstützten Sprachen für die Textübersetzung erstellen.
+Erstellen Sie nun die main-Funktion für die Anwendung. Wie Sie sehen werden, ist dafür nur eine einzige Zeile Code erforderlich. Dies liegt daran, dass wir eine einzelne Funktion zum Abrufen und Ausgeben der Liste der unterstützten Sprachen für Translator erstellen.
 
-Dieses Beispiel liest den Textübersetzungs-Endpunkt aus der Umgebungsvariablen `TRANSLATOR_TEXT_ENDPOINT`. Wenn Sie mit Umgebungsvariablen nicht vertraut sind, können Sie `endpoint` als Zeichenfolge festlegen und die Bedingungsanweisung auskommentieren.
+In diesem Beispiel wird versucht, Ihren Translator-Endpunkt aus der Umgebungsvariablen `TRANSLATOR_TEXT_ENDPOINT` zu lesen. Wenn Sie mit Umgebungsvariablen nicht vertraut sind, können Sie `endpoint` als Zeichenfolge festlegen und die Bedingungsanweisung auskommentieren.
 
 Kopieren Sie diesen Code in Ihr Projekt:
 
@@ -76,11 +76,11 @@ u.RawQuery = q.Encode()
 ```
 
 >[!NOTE]
-> Weitere Informationen zu Endpunkten, Routen und Anforderungsparametern finden Sie unter [Textübersetzungs-API 3.0: Languages](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-languages).
+> Weitere Informationen zu Endpunkten, Routen und Anforderungsparametern finden Sie unter [Translator 3.0: Sprachen](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-languages).
 
 ## <a name="build-the-request"></a>Erstellen der Anforderung
 
-Nachdem Sie nun den Anforderungstext im JSON-Format codiert haben, können Sie Ihre POST-Anforderung erstellen und die Textübersetzungs-API aufrufen.
+Nachdem Sie nun den Anforderungstext im JSON-Format codiert haben, können Sie Ihre POST-Anforderung erstellen und Translator aufrufen.
 
 ```go
 // Build the HTTP GET request
@@ -91,7 +91,7 @@ if err != nil {
 // Add required headers
 req.Header.Add("Content-Type", "application/json")
 
-// Call the Translator Text API
+// Call the Translator
 res, err := http.DefaultClient.Do(req)
 if err != nil {
     log.Fatal(err)
@@ -117,7 +117,7 @@ fmt.Printf("%s\n", prettyJSON)
 
 ## <a name="put-it-all-together"></a>Korrektes Zusammenfügen
 
-Das war's: Sie haben ein einfaches Programm erstellt, das die Textübersetzungs-API aufruft und eine JSON-Antwort zurückgibt. Führen Sie das Programm jetzt aus:
+Das war's: Sie haben ein einfaches Programm erstellt, das Translator aufruft und eine JSON-Antwort zurückgibt. Führen Sie das Programm jetzt aus:
 
 ```console
 go run get-languages.go
@@ -217,7 +217,7 @@ Es wird eine erfolgreiche Antwort im JSON-Format zurückgegeben, wie im folgende
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sehen Sie sich die API-Referenz an, um zu erfahren, welche Möglichkeiten die Textübersetzungs-API bietet.
+Machen Sie sich anhand der API-Referenz mit den Möglichkeiten von Translator vertraut.
 
 > [!div class="nextstepaction"]
 > [API-Referenz](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)

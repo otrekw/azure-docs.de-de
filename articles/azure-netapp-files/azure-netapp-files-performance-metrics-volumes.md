@@ -1,25 +1,18 @@
 ---
-title: Testempfehlungen von Leistungsbenchmarks für Azure NetApp Files | Microsoft-Dokumentation
-description: Bietet Benchmarktestempfehlungen für Volumeleistung und -metriken mit Azure NetApp Files.
-services: azure-netapp-files
-documentationcenter: ''
+title: 'Empfohlene Leistungsbenchmarktests: Azure NetApp Files'
+description: Hier finden Sie Informationen zu Benchmarktestempfehlungen für Volumeleistung und -metriken mit Azure NetApp Files.
 author: b-juche
-manager: ''
-editor: ''
-ms.assetid: ''
+ms.author: b-juche
 ms.service: azure-netapp-files
 ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/07/2019
-ms.author: b-juche
-ms.openlocfilehash: 1969b3c237a4133df6f53bd6426ca4d50581cbcb
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: b41575208d0793a33864556ec4313ae1a71f2db5
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68881735"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96184466"
 ---
 # <a name="performance-benchmark-test-recommendations-for-azure-netapp-files"></a>Testempfehlungen von Leistungsbenchmarks für Azure NetApp Files
 
@@ -31,7 +24,7 @@ Um die Leistungsmerkmale eines Azure NetApp Files-Volumes zu verstehen, können 
 
 ### <a name="vm-instance-sizing"></a>Dimensionierung einer VM-Instanz
 
-Um die besten Ergebnisse zu erzielen, stellen Sie sicher, dass Sie eine VM-Instanz (virtueller Computer) verwenden, die für die Durchführung der Tests angemessen dimensioniert ist. Die folgenden Beispiele verwenden eine Standard_D32s_v3-Instanz. Weitere Informationen zu VM-Instanzengrößen finden Sie für Windows-basierte virtuelle Computer unter [Größen für virtuelle Windows-Computer in Azure](https://docs.microsoft.com/azure/virtual-machines/windows/sizes?toc=%2fazure%2fvirtual-network%2ftoc.json) und für virtuelle Linux-Computer unter [Größen für virtuelle Linux-Computer in Azure](https://docs.microsoft.com/azure/virtual-machines/linux/sizes?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Um die besten Ergebnisse zu erzielen, stellen Sie sicher, dass Sie eine VM-Instanz (virtueller Computer) verwenden, die für die Durchführung der Tests angemessen dimensioniert ist. Die folgenden Beispiele verwenden eine Standard_D32s_v3-Instanz. Weitere Informationen zu VM-Instanzengrößen finden Sie für Windows-basierte virtuelle Computer unter [Größen für virtuelle Windows-Computer in Azure](../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) und für virtuelle Linux-Computer unter [Größen für virtuelle Linux-Computer in Azure](../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
 ### <a name="azure-netapp-files-volume-sizing"></a>Volumegrößenanpassung in Azure NetApp Files
 
@@ -120,7 +113,7 @@ Sie können auch in Azure Monitor ein Dashboard für Azure NetApp Files erstelle
 
 ### <a name="azure-monitor-api-access"></a>API-Zugriff in Azure Monitor
 
-Sie können mit REST-API-Aufrufen auf die Leistungsindikatoren für Azure NetApp Files zugreifen. Unter [Unterstützte Metriken von Azure Monitor: Microsoft.NetApp/netAppAccounts/capacityPools/Volumes](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported#microsoftnetappnetappaccountscapacitypoolsvolumes) finden Sie Leistungsindikatoren für Kapazitätspools und Volumes.
+Sie können mit REST-API-Aufrufen auf die Leistungsindikatoren für Azure NetApp Files zugreifen. Unter [Unterstützte Metriken von Azure Monitor: Microsoft.NetApp/netAppAccounts/capacityPools/Volumes](../azure-monitor/platform/metrics-supported.md#microsoftnetappnetappaccountscapacitypoolsvolumes) finden Sie Leistungsindikatoren für Kapazitätspools und Volumes.
 
 Das folgende Beispiel zeigt eine GET-URL zur Anzeige der Größe logischer Volumes:
 
@@ -131,4 +124,4 @@ Das folgende Beispiel zeigt eine GET-URL zur Anzeige der Größe logischer Volum
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Dienstebenen für Azure NetApp Files](azure-netapp-files-service-levels.md)
-- [Leistungsbenchmarks für Azure NetApp Files](azure-netapp-files-performance-benchmarks.md)
+- [Leistungsbenchmarks für Linux](performance-benchmarks-linux.md)

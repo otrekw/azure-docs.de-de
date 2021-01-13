@@ -2,21 +2,18 @@
 title: Zugreifen per SSH auf Azure Kubernetes Service-Clusterknoten (AKS)
 description: Erfahren Sie, wie Sie eine SSH-Verbindung mit Azure Kubernetes Service-Clusterknoten (AKS) zur Problembehandlung und für Wartungsaufgaben erstellen.
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: article
 ms.date: 07/31/2019
-ms.author: mlearned
-ms.openlocfilehash: e0b7154e3c4d6a6f493aac93ffcbcc424a67c300
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 50a52584618e505aa2ae7bd9ed7e0a9f6bc330a9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932313"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87015611"
 ---
 # <a name="connect-with-ssh-to-azure-kubernetes-service-aks-cluster-nodes-for-maintenance-or-troubleshooting"></a>Herstellen einer SSH-Verbindung mit Azure Kubernetes Service-Clusterknoten (AKS) zur Wartung oder Problembehandlung
 
-Während des Lebenszyklus des Azure Kubernetes Service-Clusters (AKS) müssen Sie möglicherweise auf einen AKS-Knoten zugreifen. Dieser Zugriff kann zur Wartung, Protokollsammlung oder für andere Vorgänge der Problembehandlung erforderlich sein. Sie können mithilfe von SSH (Secure Shell) auf AKS-Knoten zugreifen, einschließlich Windows Server-Knoten (zurzeit in der Vorschauversion in AKS). Außerdem können Sie [RDP-Verbindungen (Remotedesktopprotokoll) zum Herstellen einer Verbindung mit Windows Server-Knoten verwenden][aks-windows-rdp]. Aus Sicherheitsgründen werden die AKS-Knoten nicht im Internet verfügbar gemacht. Zum Herstellen einer SSH-Verbindung mit den AKS-Knoten verwenden Sie die private IP-Adresse.
+Während des Lebenszyklus des Azure Kubernetes Service-Clusters (AKS) müssen Sie möglicherweise auf einen AKS-Knoten zugreifen. Dieser Zugriff kann zur Wartung, Protokollsammlung oder für andere Vorgänge der Problembehandlung erforderlich sein. Sie können mithilfe von SSH (Secure Shell) auf AKS-Knoten zugreifen, einschließlich Windows Server-Knoten. Außerdem können Sie [RDP-Verbindungen (Remotedesktopprotokoll) zum Herstellen einer Verbindung mit Windows Server-Knoten verwenden][aks-windows-rdp]. Aus Sicherheitsgründen werden die AKS-Knoten nicht im Internet verfügbar gemacht. Zum Herstellen einer SSH-Verbindung mit den AKS-Knoten verwenden Sie die private IP-Adresse.
 
 In diesem Artikel wird gezeigt, wie Sie eine SSH-Verbindung mit einem AKS-Knoten über die privaten IP-Adressen erstellen.
 
@@ -28,7 +25,7 @@ Standardmäßig werden SSH-Schlüssel abgerufen oder generiert und dann beim Ers
 
 In diesem Artikel wird auch vorausgesetzt, dass Sie über einen SSH-Schlüssel verfügen. Sie können einen SSH-Schlüssel mit [macOS oder Linux][ssh-nix] bzw. [Windows][ssh-windows] erstellen. Speichern Sie das Schlüsselpaar in einem OpenSSH-Format anstelle des PuTTY-Standardformats für private Schlüssel, wenn Sie PuttyGen zum Erstellen des Schlüsselpaars verwenden.
 
-Außerdem muss mindestens die Version 2.0.64 der Azure-Befehlszeilenschnittstelle installiert und konfiguriert sein. Führen Sie  `az --version` aus, um die Version zu ermitteln. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie weitere Informationen unter [„Installieren der Azure-Befehlszeilenschnittstelle“][install-azure-cli].
+Außerdem muss mindestens die Version 2.0.64 der Azure-Befehlszeilenschnittstelle installiert und konfiguriert sein. Führen Sie  `az --version` aus, um die Version zu ermitteln. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie weitere Informationen unter  [Installieren der Azure CLI][install-azure-cli].
 
 ## <a name="configure-virtual-machine-scale-set-based-aks-clusters-for-ssh-access"></a>Konfigurieren von auf VM-Skalierungsgruppen basierenden AKS-Clustern für SSH-Zugriff
 
@@ -37,14 +34,16 @@ Suchen Sie nach dem Namen der VM-Skalierungsgruppe Ihres Clusters, und fügen Si
 Verwenden Sie den Befehl [az aks show][az-aks-show], um den Ressourcengruppennamen Ihres AKS-Clusters abzurufen, und anschließend den Befehl [az vmss list][az-vmss-list], um den Namen Ihrer Skalierungsgruppe abzurufen.
 
 ```azurecli-interactive
-$CLUSTER_RESOURCE_GROUP=$(az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv)
+CLUSTER_RESOURCE_GROUP=$(az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv)
 SCALE_SET_NAME=$(az vmss list --resource-group $CLUSTER_RESOURCE_GROUP --query [0].name -o tsv)
 ```
 
-Im obigen Beispiel wird der Name der Clusterressourcengruppe für *myAKSCluster* in *myResourceGroup* dem Element *CLUSTER_RESOURCE_GROUP* zugewiesen. Im Beispiel wird *CLUSTER_RESOURCE_GROUP* dann verwendet, um den Namen der Skalierungsgruppe aufzulisten und *SCALE_SET_NAME* zuzuweisen.  
+Im obigen Beispiel wird der Name der Clusterressourcengruppe für *myAKSCluster* in *myResourceGroup* dem Element *CLUSTER_RESOURCE_GROUP* zugewiesen. Im Beispiel wird *CLUSTER_RESOURCE_GROUP* dann verwendet, um den Namen der Skalierungsgruppe aufzulisten und *SCALE_SET_NAME* zuzuweisen.
 
-> [!NOTE]
-> Derzeit können SSH-Schlüssel Linux-Knoten nur mithilfe der Azure-Befehlszeilenschnittstelle (Azure CLI) hinzugefügt werden. Wenn Sie per SSH eine Verbindung mit einem Windows Server-Knoten herstellen möchten, verwenden Sie die SSH-Schlüssel, die Sie beim Erstellen des AKS-Clusters bereitgestellt haben. Überspringen Sie dann die nächsten Befehle zum Hinzufügen Ihres öffentlichen SSH-Schlüssels. Sie benötigen trotzdem noch die IP-Adresse des Knotens, für den Sie die Problembehandlung durchführen möchten. Sie ist im letzten Befehl dieses Abschnitts angegeben. Alternativ können Sie eine [Verbindung mit Windows Server-Knoten über RDP-Verbindungen (Remotedesktopprotokoll) herstellen][aks-windows-rdp], anstatt über SSH.
+> [!IMPORTANT]
+> Zu diesem Zeitpunkt sollten Sie nur Ihre SSH-Schlüssel für Ihre auf VM-Skalierungsgruppen basierenden AKS-Cluster mithilfe der Azure CLI aktualisieren.
+> 
+> Für Linux-Knoten können SSH-Schlüssel derzeit nur mithilfe der Azure-Befehlszeilenschnittstelle (Azure CLI) hinzugefügt werden. Wenn Sie per SSH eine Verbindung mit einem Windows Server-Knoten herstellen möchten, verwenden Sie die SSH-Schlüssel, die Sie beim Erstellen des AKS-Clusters bereitgestellt haben. Überspringen Sie dann die nächsten Befehle zum Hinzufügen Ihres öffentlichen SSH-Schlüssels. Sie benötigen trotzdem noch die IP-Adresse des Knotens, für den Sie die Problembehandlung durchführen möchten. Sie ist im letzten Befehl dieses Abschnitts angegeben. Alternativ können Sie eine [Verbindung mit Windows Server-Knoten über RDP-Verbindungen (Remotedesktopprotokoll) herstellen][aks-windows-rdp], anstatt über SSH.
 
 Verwenden Sie die Befehle [az vmss extension set][az-vmss-extension-set] und [az vmss update-instances][az-vmss-update-instances], um Ihre SSH-Schlüssel den Knoten in einer VM-Skalierungsgruppe hinzuzufügen.
 
@@ -94,11 +93,11 @@ Suchen Sie nach dem Namen des Linux-Knotens Ihres Clusters, und fügen Sie diese
 Verwenden Sie den Befehl [az aks show][az-aks-show], um den Ressourcengruppennamen Ihres AKS-Clusters abzurufen, und dann den Befehl [az vm list][az-vm-list], um den VM-Namen des Linux-Knotens Ihres Clusters aufzulisten.
 
 ```azurecli-interactive
-$CLUSTER_RESOURCE_GROUP=$(az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv)
+CLUSTER_RESOURCE_GROUP=$(az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv)
 az vm list --resource-group $CLUSTER_RESOURCE_GROUP -o table
 ```
 
-Im obigen Beispiel wird der Name der Clusterressourcengruppe für *myAKSCluster* in *myResourceGroup* dem Element *CLUSTER_RESOURCE_GROUP* zugewiesen. Im Beispiel wird *CLUSTER_RESOURCE_GROUP* dann verwendet, um den Namen des virtuellen Computers aufzulisten. In der Beispielausgabe wird der Name des virtuellen Computers angezeigt: 
+Im obigen Beispiel wird der Name der Clusterressourcengruppe für *myAKSCluster* in *myResourceGroup* dem Element *CLUSTER_RESOURCE_GROUP* zugewiesen. Im Beispiel wird *CLUSTER_RESOURCE_GROUP* dann verwendet, um den Namen des virtuellen Computers aufzulisten. In der Beispielausgabe wird der Name des virtuellen Computers angezeigt:
 
 ```
 Name                      ResourceGroup                                  Location
@@ -146,9 +145,11 @@ Zum Erstellen einer SSH-Verbindung mit einem AKS-Knoten führen Sie einen Hilfsp
     ```
 
     > [!TIP]
-    > Wenn Sie Windows Server-Knoten verwenden (derzeit als Vorschauversion in AKS), müssen Sie dem Befehl einen Knotenselektor hinzufügen, um die Ausführung eines Debian-Containers auf einem Linux-Knoten zu planen:
+    > Wenn Sie Windows Server-Knoten verwenden, müssen Sie dem Befehl einen Knotenselektor hinzufügen, um die Ausführung eines Debian-Containers auf einem Linux-Knoten zu planen:
     >
-    > `kubectl run -it --rm aks-ssh --image=debian --overrides='{"apiVersion":"apps/v1","spec":{"template":{"spec":{"nodeSelector":{"beta.kubernetes.io/os":"linux"}}}}}'`
+    > ```console
+    > kubectl run -it --rm aks-ssh --image=debian --overrides='{"apiVersion":"v1","spec":{"nodeSelector":{"beta.kubernetes.io/os":"linux"}}}'
+    > ```
 
 1. Installieren Sie mit `apt-get` einen SSH-Client, sobald die Terminalsitzung mit dem Container verbunden ist:
 
@@ -156,21 +157,12 @@ Zum Erstellen einer SSH-Verbindung mit einem AKS-Knoten führen Sie einen Hilfsp
     apt-get update && apt-get install openssh-client -y
     ```
 
-1. Öffnen Sie ein neues Terminalfenster, für das keine Verbindung mit Ihrem Container besteht, und listen Sie die Pods Ihres AKS-Clusters mit dem Befehl [kubectl get pods][kubectl-get] auf. Der im vorherigen Schritt erstellte Pod beginnt mit dem Namen *aks-ssh*, wie es im folgenden Beispiel gezeigt wird:
+1. Öffnen Sie ein neues Terminalfenster, das nicht mit Ihrem Container verbunden ist, und kopieren Sie Ihren privaten SSH-Schlüssel in den Hilfspod. Dieser private Schlüssel wird verwendet, um die SSH-Verbindung mit dem AKS-Knoten herzustellen. 
 
-    ```
-    $ kubectl get pods
-    
-    NAME                       READY     STATUS    RESTARTS   AGE
-    aks-ssh-554b746bcf-kbwvf   1/1       Running   0          1m
-    ```
-
-1. In einem vorherigen Schritt haben Sie Ihren öffentlichen SSH-Schlüssel dem AKS-Knoten hinzugefügt, für den Sie die Problembehandlung durchführen möchten. Kopieren Sie Ihren privaten SSH-Schlüssel jetzt auf den Hilfspod. Dieser private Schlüssel wird verwendet, um die SSH-Verbindung mit dem AKS-Knoten herzustellen.
-
-    Geben Sie Ihren eigenen *aks-ssh*-Podnamen an, den Sie im vorherigen Schritt erhalten haben. Ändern Sie bei Bedarf *~/.ssh/id_rsa* in den Speicherort Ihres privaten SSH-Schlüssels:
+   Ändern Sie bei Bedarf *~/.ssh/id_rsa* in den Speicherort Ihres privaten SSH-Schlüssels:
 
     ```console
-    kubectl cp ~/.ssh/id_rsa aks-ssh-554b746bcf-kbwvf:/id_rsa
+    kubectl cp ~/.ssh/id_rsa $(kubectl get pod -l run=aks-ssh -o jsonpath='{.items[0].metadata.name}'):/id_rsa
     ```
 
 1. Wechseln Sie zurück zur Terminalsitzung für Ihren Container, und aktualisieren Sie die Berechtigungen für den kopierten privaten SSH-Schlüssel `id_rsa`, damit er für Benutzer schreibgeschützt ist:
@@ -183,22 +175,22 @@ Zum Erstellen einer SSH-Verbindung mit einem AKS-Knoten führen Sie einen Hilfsp
 
     ```console
     $ ssh -i id_rsa azureuser@10.240.0.4
-    
+
     ECDSA key fingerprint is SHA256:A6rnRkfpG21TaZ8XmQCCgdi9G/MYIMc+gFAuY9RUY70.
     Are you sure you want to continue connecting (yes/no)? yes
     Warning: Permanently added '10.240.0.4' (ECDSA) to the list of known hosts.
-    
+
     Welcome to Ubuntu 16.04.5 LTS (GNU/Linux 4.15.0-1018-azure x86_64)
-    
+
      * Documentation:  https://help.ubuntu.com
      * Management:     https://landscape.canonical.com
      * Support:        https://ubuntu.com/advantage
-    
+
       Get cloud support with Ubuntu Advantage Cloud Guest:
         https://www.ubuntu.com/business/services/cloud
-    
+
     [...]
-    
+
     azureuser@aks-nodepool1-79590246-0:~$
     ```
 

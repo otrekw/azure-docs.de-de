@@ -1,19 +1,19 @@
 ---
 title: 'Azure CLI-Skriptbeispiel: Erstellen einer SignalR-Instanz'
-description: 'Azure CLI-Skriptbeispiel: Erstellen eines SignalR-Diensts'
+description: Erfahren Sie mit diesem Beispielskript, wie Sie eine neue Azure SignalR Service-Ressource in einer neuen Ressourcengruppe mit einem zufälligen Namen erstellen.
 author: sffamily
 ms.service: signalr
 ms.devlang: azurecli
 ms.topic: sample
-ms.date: 04/20/2018
+ms.date: 11/13/2018
 ms.author: zhshang
-ms.custom: mvc
-ms.openlocfilehash: 93674574bceb24b75b9af36708ddfe7e77ebf0fe
-ms.sourcegitcommit: d2785f020e134c3680ca1c8500aa2c0211aa1e24
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: 17b8df919c5059da3f3abd7a4f06aca1eadd0817
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/04/2019
-ms.locfileid: "67565831"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94563969"
 ---
 # <a name="create-a-signalr-service"></a>Erstellen eines SignalR-Diensts 
 
@@ -21,21 +21,43 @@ In diesem Beispielskript wird eine neue Azure-SignalR-Dienstressource in einer n
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../../includes/azure-cli-prepare-your-environment.md)]
 
-Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für diesen Artikel die Azure CLI-Version 2.0 oder höher ausführen. Führen Sie `az --version` aus, um die Version zu finden. Installations- und Upgradeinformationen finden Sie bei Bedarf unter [Installieren von Azure CLI]( /cli/azure/install-azure-cli). 
+ - Für dieses Tutorial ist mindestens Version 2.0 der Azure CLI erforderlich. Bei Verwendung von Azure Cloud Shell ist die aktuelle Version bereits installiert. 
 
 ## <a name="sample-script"></a>Beispielskript
 
-In diesem Skript wird die *signalr*-Erweiterung für die Azure CLI verwendet. Führen Sie den folgenden Befehl zum Installieren der *signalr*-Erweiterung für die Azure CLI aus, bevor Sie dieses Beispielskript verwenden:
-
-```azurecli-interactive
-az extension add -n signalr
-```
-
 Dieses Skript erstellt eine neue SignalR-Dienstressource und eine neue Ressourcengruppe. 
 
-[!code-azurecli-interactive[main](../../../cli_scripts/azure-signalr/create-signalr-service-and-group/create-signalr-service-and-group.sh "Creates a new Azure SignalR Service resource and resource group")]
+```azurecli-interactive
+#!/bin/bash
+
+# Generate a unique suffix for the service name
+let randomNum=$RANDOM*$RANDOM
+
+# Generate a unique service and group name with the suffix
+SignalRName=SignalRTestSvc$randomNum
+#resource name must be lowercase
+mySignalRSvcName=${SignalRName,,}
+myResourceGroupName=$SignalRName"Group"
+
+# Create resource group 
+az group create --name $myResourceGroupName --location eastus
+
+# Create the Azure SignalR Service resource
+az signalr create \
+  --name $mySignalRSvcName \
+  --resource-group $myResourceGroupName \
+  --sku Standard_S1 \
+  --unit-count 1 \
+  --service-mode Default
+
+# Get the SignalR primary connection string 
+primaryConnectionString=$(az signalr key list --name $mySignalRSvcName \
+  --resource-group $myResourceGroupName --query primaryConnectionString -o tsv)
+
+echo "$primaryConnectionString"
+```
 
 Notieren Sie den tatsächlichen Namen, der für die neue Ressourcengruppe generiert wurde. Dieser Ressourcengruppenname wird verwendet, wenn Sie alle Gruppenressourcen löschen möchten.
 

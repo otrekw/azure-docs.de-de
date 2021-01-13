@@ -1,20 +1,18 @@
 ---
 title: Senden von Warnungen aus Application Insights nach SQL | Microsoft-Dokumentation
 description: Tutorial zum Senden von Warnungen als Reaktion auf Fehler in der Anwendung mithilfe von Azure Application Insights
-keywords: ''
+ms.subservice: application-insights
+ms.topic: tutorial
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 04/10/2019
-ms.service: application-insights
 ms.custom: mvc
-ms.topic: tutorial
-manager: carmonm
-ms.openlocfilehash: 05285a177827cd0dd1e0e39e779a395ccfdfc0cd
-ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
+ms.openlocfilehash: c1aa3ae5be3e9f3fb50909cb5311d167bbeee647
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59578763"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96904226"
 ---
 # <a name="monitor-and-alert-on-application-health-with-azure-application-insights"></a>Überwachen der Anwendungsintegrität und Senden entsprechender Warnungen mit Azure Application Insights
 
@@ -30,7 +28,7 @@ Folgendes wird vermittelt:
 
 Für dieses Tutorial benötigen Sie Folgendes:
 
-Erstellen Sie eine [Application Insights-Ressource](https://docs.microsoft.com/azure/azure-monitor/learn/dotnetcore-quick-start#enable-application-insights).
+Erstellen Sie eine [Application Insights-Ressource](../app/create-new-resource.md).
 
 ## <a name="sign-in-to-azure"></a>Anmelden bei Azure
 
@@ -58,7 +56,7 @@ Verfügbarkeitstests in Application Insights ermöglichen Ihnen das automatische
 
     ![Warnung bearbeiten](media/tutorial-alert/edit-alert-001.png)
 
-6. Legen Sie „Fehlgeschlagene Standorte“ auf einen Wert größer oder gleich 3 fest. Erstellen Sie eine [Aktionsgruppe](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups), um zu konfigurieren, wer benachrichtigt wird, wenn Ihr Warnungsschwellenwert überschritten wird.
+6. Legen Sie „Fehlgeschlagene Standorte“ auf einen Wert größer oder gleich 3 fest. Erstellen Sie eine [Aktionsgruppe](../platform/action-groups.md), um zu konfigurieren, wer benachrichtigt wird, wenn Ihr Warnungsschwellenwert überschritten wird.
 
     ![Benutzeroberfläche zum Speichern der Warnung](media/tutorial-alert/save-alert-001.png)
 
@@ -75,4 +73,5 @@ Verfügbarkeitstests in Application Insights ermöglichen Ihnen das automatische
 Nachdem Sie sich nun mit dem Erstellen von Warnungen bei Problemen vertraut gemacht haben, erfahren Sie im nächsten Tutorial, wie die Interaktion von Benutzern mit Ihrer Anwendung analysiert wird.
 
 > [!div class="nextstepaction"]
-> [Grundlegendes zu Benutzern](../../azure-monitor/learn/tutorial-users.md)
+> [Grundlegendes zu Benutzern](./tutorial-users.md)
+

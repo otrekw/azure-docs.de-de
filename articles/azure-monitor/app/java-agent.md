@@ -1,28 +1,24 @@
 ---
-title: Leistungsüberwachung für Java-Web-Apps in Azure Application Insights | Microsoft-Dokumentation
+title: Leistungsüberwachung für Java-Web-Apps – Azure Application Insights
 description: Erweiterte Leistungs- und Nutzungsüberwachung Ihrer Java-Website mit Application Insights.
-services: application-insights
-documentationcenter: java
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: 84017a48-1cb3-40c8-aab1-ff68d65e2128
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 01/10/2019
-ms.author: mbullwin
-ms.openlocfilehash: af157204ad1e1b28639ae2d8f192b3122afa8147
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+author: MS-jgol
+ms.custom: devx-track-java
+ms.author: jgol
+ms.openlocfilehash: 299e9010b74c8363cacd1c20044d183dc1def6a6
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71299240"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96601287"
 ---
 # <a name="monitor-dependencies-caught-exceptions-and-method-execution-times-in-java-web-apps"></a>Überwachen von Abhängigkeiten, abgefangene Ausnahmen und Methodenausführungszeiten in Java-Web-Apps
 
+> [!IMPORTANT]
+> Der empfohlene Ansatz zur Überwachung von Java-Anwendungen ist die automatische Instrumentierung ohne Änderung des Codes. Befolgen Sie die Leitlinien für den [Application Insights Java 3.0-Agent](./java-in-process-agent.md).
 
-Wenn Sie [Ihre Java-Web-App mit Application Insights instrumentiert haben][java], können Sie den Java-Agent ohne Codeänderungen verwenden, um detailliertere Informationen zu erhalten:
+Wenn Sie [Ihre Java-Web-App mit dem Application Insights SDK instrumentiert haben][java], können Sie den Java-Agent ohne Codeänderungen verwenden, um tiefer gehende Erkenntnisse zu erhalten:
 
 * **Abhängigkeiten**: Daten über Aufrufe der Anwendung an andere Komponenten, einschließlich:
   * **Ausgehende HTTP-Aufrufe** über Apache HttpClient, OkHttp und `java.net.HttpURLConnection` werden erfasst.
@@ -122,26 +118,27 @@ Fügen Sie der Datei „AI-Agent.xml“ Folgendes hinzu:
 
 Idealerweise wäre dies der Fall, wenn alle Dienste auf neuere Versionen der SDKs aktualisiert wurden, die das W3C-Protokoll unterstützen. Es wird dringend empfohlen, so bald wie möglich auf neuere Versionen der SDKs mit W3C-Unterstützung umzustellen.
 
-Stellen Sie sicher, dass die **Konfigurationen für [eingehende](correlation.md#w3c-distributed-tracing) und ausgehende Vorgänge (Agent)** exakt gleich sind.
+Stellen Sie sicher, dass die **Konfigurationen für [eingehende](correlation.md#enable-w3c-distributed-tracing-support-for-java-apps) und ausgehende Vorgänge (Agent)** exakt gleich sind.
 
 ## <a name="view-the-data"></a>Anzeigen der Daten
 In der Application Insights-Ressource werden aggregierte Remoteabhängigkeiten und Methodenausführungszeiten [auf der Kachel „Leistung“][metrics] angezeigt.
 
 Um nach den einzelnen Instanzen der Abhängigkeits-, Ausnahmen- und Methodenberichte zu suchen, öffnen Sie die [Suche][diagnostic].
 
-[Diagnostizieren von Problemen mit Abhängigkeiten – weitere Informationen](../../azure-monitor/app/asp-net-dependencies.md#diagnosis).
+[Diagnostizieren von Problemen mit Abhängigkeiten – weitere Informationen](./asp-net-dependencies.md#diagnosis).
 
 ## <a name="questions-problems"></a>Fragen? Probleme?
-* Sie sehen keine Daten? [Festlegen von Firewallausnahmen](../../azure-monitor/app/ip-addresses.md)
+* Sie sehen keine Daten? [Festlegen von Firewallausnahmen](./ip-addresses.md)
 * [Problembehandlung für Java](java-troubleshoot.md)
 
 <!--Link references-->
 
-[api]: ../../azure-monitor/app/api-custom-events-metrics.md
-[apiexceptions]: ../../azure-monitor/app/api-custom-events-metrics.md#track-exception
-[availability]: ../../azure-monitor/app/monitor-web-app-availability.md
-[diagnostic]: ../../azure-monitor/app/diagnostic-search.md
+[api]: ./api-custom-events-metrics.md
+[apiexceptions]: ./api-custom-events-metrics.md#track-exception
+[availability]: ./monitor-web-app-availability.md
+[diagnostic]: ./diagnostic-search.md
 [eclipse]: app-insights-java-eclipse.md
 [java]: java-get-started.md
 [javalogs]: java-trace-logs.md
-[metrics]: ../../azure-monitor/app/metrics-explorer.md
+[metrics]: ../platform/metrics-charts.md
+

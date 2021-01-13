@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm
 ms.workload: infrastructure-services
-ms.date: 8/30/2019
+ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: 2ae1f3769254575e33eaa5b4e3a24c47b9eb1aff
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: 28c5a3085d84b25deb7c5ee09a9c9cc4d7a06819
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70194160"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87374064"
 ---
 # <a name="azure-serial-console"></a>Serielle Azure-Konsole
 
@@ -27,18 +27,18 @@ Die serielle Konsole im Azure-Portal ermöglicht den Zugriff auf eine textbasier
 
 Die serielle Konsole funktioniert auf die gleiche Weise für VMs und VM-Skalierungsgruppeninstanzen. Deshalb beziehen sich alle Äußerungen bezüglich VMs in dieser Dokumentation, sofern nicht anders angegeben, implizit auch auf VM-Skalierungsgruppeninstanzen.
 
-> [!NOTE]
-> Die serielle Konsole ist in den globalen Azure-Regionen allgemein verfügbar. Sie ist noch nicht in den Clouds „Azure Government“ und „Azure China“ verfügbar.
+Die serielle Konsole ist in den globalen Azure-Regionen allgemein und in Azure Government als Public Preview verfügbar. Sie ist noch nicht in der Cloud „Azure China“ verfügbar.
 
 ## <a name="prerequisites-to-access-the-azure-serial-console"></a>Voraussetzungen für den Zugriff auf die serielle Azure-Konsole
 Für den Zugriff auf die serielle Konsole auf dem virtuellen Computer oder in der VM-Skalierungsgruppeninstanz gelten folgende Voraussetzungen:
 
 - Die Startdiagnose muss für den virtuellen Computer aktiviert sein.
-- Auf dem virtuellen Computer muss ein Benutzerkonto vorhanden sein, bei dem die Kennwortauthentifizierung verwendet wird. Einen kennwortbasierten Benutzer können Sie mit der Funktion [Kennwort zurücksetzen](https://docs.microsoft.com/azure/virtual-machines/extensions/vmaccess#reset-password) der Erweiterung für den Zugriff auf virtuelle Computer erstellen. Wählen Sie im Abschnitt **Support + Problembehandlung** **Kennwort zurücksetzen** aus.
+- Auf dem virtuellen Computer muss ein Benutzerkonto vorhanden sein, bei dem die Kennwortauthentifizierung verwendet wird. Einen kennwortbasierten Benutzer können Sie mit der Funktion [Kennwort zurücksetzen](../extensions/vmaccess.md#reset-password) der Erweiterung für den Zugriff auf virtuelle Computer erstellen. Wählen Sie im Abschnitt **Support + Problembehandlung** **Kennwort zurücksetzen** aus.
 - Das Azure-Konto, über das auf die serielle Konsole zugegriffen wird, muss die Rolle [Mitwirkender für virtuelle Computer](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) für den virtuellen Computer sowie für das Speicherkonto der [Startdiagnose](boot-diagnostics.md) aufweisen.
+- Klassische Bereitstellungen werden nicht unterstützt. Der virtuelle Computer oder die VM-Skalierungsgruppeninstanz muss das Azure Resource Manager-Bereitstellungsmodell verwenden.
 
 > [!NOTE]
-> - Klassische Bereitstellungen werden nicht unterstützt. Der virtuelle Computer oder die VM-Skalierungsgruppeninstanz muss das Azure Resource Manager-Bereitstellungsmodell verwenden.
+> Zurzeit ist die serielle Konsole nicht mit verwalteten Speicherkonten für die Startdiagnose kompatibel. Stellen Sie zum Verwenden der seriellen Konsole sicher, dass Sie ein benutzerdefiniertes Speicherkonto verwenden.
 
 ## <a name="get-started-with-the-serial-console"></a>Erste Schritte mit der seriellen Konsole
 Auf die serielle Konsole für VMs und VM-Skalierungsgruppen kann nur über das Azure-Portal zugegriffen werden:
@@ -66,6 +66,10 @@ Die serielle Konsole ist für VM-Skalierungsgruppen verfügbar und in jeder Inst
   1. Klicken Sie im Abschnitt **Support + Problembehandlung** auf **Serielle Konsole**. Ein neuer Bereich mit der seriellen Konsole wird geöffnet, und die Verbindung wird hergestellt.
 
      ![Serielle Konsole für Linux-VM-Skalierungsgruppe](./media/virtual-machines-serial-console/vmss-start-console.gif)
+
+
+### <a name="tls-12-in-serial-console"></a>TLS 1.2 in der seriellen Konsole
+Die serielle Konsole verwendet an jedem Punkt TLS 1.2, um die gesamte Kommunikation im Dienst abzusichern. Die serielle Konsole weist eine Abhängigkeit von einem vom Benutzer verwalteten Speicherkonto zur Startdiagnose auf. Außerdem muss TLS 1.2 für das Speicherkonto separat konfiguriert werden. Anweisungen dazu finden Sie [hier](../../storage/common/transport-layer-security-configure-minimum-version.md).
 
 ## <a name="advanced-uses-for-serial-console"></a>Erweiterte Nutzung der seriellen Konsole
 Neben dem Konsolenzugriff auf Ihren virtuellen Computer können Sie die serielle Azure-Konsole für Folgendes verwenden:

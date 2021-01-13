@@ -2,33 +2,28 @@
 title: 'Tutorial: Konfigurieren von MerchLogix für die automatische Benutzerbereitstellung in Azure Active Directory | Microsoft-Dokumentation'
 description: Erfahren Sie, wie Sie Azure Active Directory für das automatische Bereitstellen und Aufheben der Bereitstellung von Benutzerkonten in MerchLogix konfigurieren.
 services: active-directory
-documentationcenter: ''
 author: zhchia
 writer: zhchia
-manager: beatrizd-msft
-ms.assetid: 9df4c7c5-9a58-478e-93b7-2f77aae12807
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: zhchia
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: c8fecc5232b26c98c4027174454cf29b81b0ee41
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4d0a52f06a751fba57a00615e2d57485ff740d04
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67060315"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94359696"
 ---
 # <a name="tutorial-configure-merchlogix-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von MerchLogix für die automatische Benutzerbereitstellung
 
 In diesem Tutorial werden die Schritte erläutert, die in MerchLogix und Azure Active Directory (Azure AD) ausgeführt werden müssen, um Azure AD zum automatischen Bereitstellen und Aufheben der Bereitstellung von Benutzern und/oder Gruppen in MerchLogix zu konfigurieren.
 
 > [!NOTE]
-> In diesem Tutorial wird ein Connector beschrieben, der auf dem Benutzerbereitstellungsdienst von Azure AD basiert. Wichtige Details zum Zweck und zur Funktionsweise dieses Diensts sowie häufig gestellte Fragen finden Sie unter [Automatisieren der Bereitstellung und Bereitstellungsaufhebung von Benutzern für SaaS-Anwendungen mit Azure Active Directory](../manage-apps/user-provisioning.md).
+> In diesem Tutorial wird ein Connector beschrieben, der auf dem Benutzerbereitstellungsdienst von Azure AD basiert. Wichtige Details zum Zweck und zur Funktionsweise dieses Diensts sowie häufig gestellte Fragen finden Sie unter [Automatisieren der Bereitstellung und Bereitstellungsaufhebung von Benutzern für SaaS-Anwendungen mit Azure Active Directory](../app-provisioning/user-provisioning.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -52,15 +47,15 @@ Bevor Sie MerchLogix für die automatische Benutzerbereitstellung mit Azure AD k
 
     ![Der Abschnitt „Unternehmensanwendungen“][2]
 
-3. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung**, um MerchLogix hinzuzufügen.
+3. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung** , um MerchLogix hinzuzufügen.
 
     ![Schaltfläche „Neue Anwendung“][3]
 
 4. Geben Sie im Suchfeld als Suchbegriff **MerchLogix** ein.
 
-5. Wählen Sie im Ergebnisbereich **MerchLogix** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um MerchLogix der Liste der SaaS-Anwendungen hinzuzufügen.
+5. Wählen Sie im Ergebnisbereich **MerchLogix** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen** , um MerchLogix der Liste der SaaS-Anwendungen hinzuzufügen.
 
-    ![Screenshot: Bereitstellung von MerchLogix][4]
+    ![Screenshot des Abschnitts „Aus dem Katalog hinzufügen“ mit dem aufgerufenen Textfeld „Name eingeben“][4]
 
 ## <a name="assigning-users-to-merchlogix"></a>Zuweisen von Benutzern zu MerchLogix
 
@@ -93,7 +88,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 4. Legen Sie den **Bereitstellungsmodus** auf **Automatisch** fest.
 
-    ![Screenshot: Bereitstellung von MerchLogix](./media/merchlogix-provisioning-tutorial/Merchlogix1.png)
+    ![Screenshot des Abschnitts „Bereitstellung“ für MerchLogix mit aufgerufener Option „Bereitstellung“. Der Bereitstellungsmodus ist auf „Automatisch“ festgelegt, und die Option „Verbindung testen“ wurde aufgerufen.](./media/merchlogix-provisioning-tutorial/Merchlogix1.png)
 
 5. Führen Sie im Abschnitt **Administratoranmeldeinformationen** folgende Aktionen aus:
 
@@ -101,7 +96,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
     * Geben Sie im Feld **Geheimes Token** das geheime Token ein, das Ihnen von der technischen Kontaktperson bei MerchLogix zur Verfügung gestellt wurde.
 
-6. Klicken Sie nach dem Auffüllen der in Schritt 5 gezeigten Felder auf **Verbindung testen**, um sicherzustellen, dass Azure AD eine Verbindung mit MerchLogix herstellen kann. Wenn die Verbindung nicht möglich ist, stellen Sie sicher, dass Ihr MerchLogix-Konto über Administratorberechtigungen verfügt, und wiederholen Sie den Vorgang.
+6. Klicken Sie nach dem Auffüllen der in Schritt 5 gezeigten Felder auf **Verbindung testen** , um sicherzustellen, dass Azure AD eine Verbindung mit MerchLogix herstellen kann. Wenn die Verbindung nicht möglich ist, stellen Sie sicher, dass Ihr MerchLogix-Konto über Administratorberechtigungen verfügt, und wiederholen Sie den Vorgang.
 
 7. Geben Sie im Feld **Benachrichtigungs-E-Mail** die E-Mail-Adresse einer Person oder einer Gruppe ein, die Benachrichtigungen zu Bereitstellungsfehlern erhalten soll, und aktivieren Sie das Kontrollkästchen **Bei Fehler E-Mail-Benachrichtigung senden**.
 
@@ -109,11 +104,11 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 9. Wählen Sie im Abschnitt **Zuordnungen** die Option **Synchronize Azure Active Directory Users to MerchLogix** (Azure Active Directory-Benutzer mit MerchLogix synchronisieren) aus.
 
-10. Überprüfen Sie im Abschnitt **Attributzuordnung** die Benutzerattribute, die von Azure AD mit MerchLogix synchronisiert werden. Die als **übereinstimmende** Eigenschaften ausgewählten Attribute werden für den Abgleich der Benutzerkonten in MerchLogix für Updatevorgänge verwendet. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
+10. Überprüfen Sie im Abschnitt **Attributzuordnung** die Benutzerattribute, die von Azure AD mit MerchLogix synchronisiert werden. Die als **übereinstimmende** Eigenschaften ausgewählten Attribute werden für den Abgleich der Benutzerkonten in MerchLogix für Updatevorgänge verwendet. Wählen Sie die Schaltfläche **Speichern** , um alle Änderungen zu übernehmen.
 
 11. Wählen Sie im Abschnitt **Zuordnungen** die Option **Synchronize Azure Active Directory Groups to MerchLogix** (Azure Active Directory-Gruppen mit MerchLogix synchronisieren) aus.
 
-12. Überprüfen Sie im Abschnitt **Attributzuordnung** die Gruppenattribute, die von Azure AD mit MerchLogix synchronisiert werden. Die als **übereinstimmende** Eigenschaften ausgewählten Attribute werden für den Abgleich der Gruppen in MerchLogix für Updatevorgänge verwendet. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
+12. Überprüfen Sie im Abschnitt **Attributzuordnung** die Gruppenattribute, die von Azure AD mit MerchLogix synchronisiert werden. Die als **übereinstimmende** Eigenschaften ausgewählten Attribute werden für den Abgleich der Gruppen in MerchLogix für Updatevorgänge verwendet. Wählen Sie die Schaltfläche **Speichern** , um alle Änderungen zu übernehmen.
 
 13. Wenn Sie den Azure AD-Bereitstellungsdienst für MerchLogix aktivieren möchten, ändern Sie im Abschnitt **Einstellungen** den **Bereitstellungsstatus** in **Ein**.
 
@@ -121,16 +116,16 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 Dadurch wird die Erstsynchronisierung aller Benutzer und/oder Gruppen gestartet, die im Abschnitt **Einstellungen** unter **Bereich** definiert sind. Die Erstsynchronisierung dauert länger als nachfolgende Synchronisierungen, die ungefähr alle 40 Minuten erfolgen, solange der Azure AD-Bereitstellungsdienst ausgeführt wird. Im Abschnitt **Synchronisierungsdetails** können Sie den Fortschritt überwachen und Links zu Berichten zur Bereitstellungsaktivität aufrufen. Darin sind alle Aktionen aufgeführt, die vom Azure AD-Bereitstellungsdienst in MerchLogix ausgeführt werden.
 
-Weitere Informationen zum Lesen von Azure AD-Bereitstellungsprotokollen finden Sie unter [Tutorial: Meldung zur automatischen Benutzerkontobereitstellung](../manage-apps/check-status-user-account-provisioning.md).
+Weitere Informationen zum Lesen von Azure AD-Bereitstellungsprotokollen finden Sie unter [Tutorial: Meldung zur automatischen Benutzerkontobereitstellung](../app-provisioning/check-status-user-account-provisioning.md).
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
-* [Verwalten der Benutzerkontobereitstellung für Unternehmens-Apps](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [Verwalten der Benutzerkontobereitstellung für Unternehmens-Apps](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Erfahren Sie, wie Sie Protokolle überprüfen und Berichte zu Bereitstellungsaktivitäten abrufen.](../manage-apps/check-status-user-account-provisioning.md)
+* [Erfahren Sie, wie Sie Protokolle überprüfen und Berichte zu Bereitstellungsaktivitäten abrufen.](../app-provisioning/check-status-user-account-provisioning.md)
 
 <!--Image references-->
 [1]: common/select-azuread.png

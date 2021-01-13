@@ -1,25 +1,14 @@
 ---
-title: Herstellen einer Remoteverbindung mit einem Azure Service Fabric-Clusterknoten | Microsoft-Dokumentation
+title: Herstellen einer Remoteverbindung mit einem Azure Service Fabric-Clusterknoten
 description: Hier erfahren Sie, wie Sie eine Remoteverbindung mit einer Skalierungsgruppeninstanz (Service Fabric-Clusterknoten) herstellen.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: 5441e7e0-d842-4398-b060-8c9d34b07c48
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 03/23/2018
-ms.author: atsenthi
-ms.openlocfilehash: 12508fd5297691f06bce46e056527672083c3a91
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 98d573af4fc2026134e75d4caf24a09e57e52c87
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599929"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96012543"
 ---
 # <a name="remote-connect-to-a-virtual-machine-scale-set-instance-or-a-cluster-node"></a>Herstellen einer Remoteverbindung mit einer VM-Skalierungsgruppeninstanz oder einem Clusterknoten
 In einem Service Fabric-Cluster unter Azure richtet jeder Clusterknotentyp, den Sie definieren, [eine separate VM-Skalierungsgruppe](service-fabric-cluster-nodetypes.md) ein.  Sie können eine Remoteverbindung mit bestimmten Skalierungsgruppeninstanzen (Clusterknoten) herstellen.  Im Gegensatz zu Einzelinstanz-VMs besitzen Skalierungsgruppeninstanzen keine eigenen virtuellen IP-Adressen. Daher kann es schwierig sein, nach einer IP-Adresse und einem Port zum Herstellen einer Remoteverbindung mit einer bestimmten Instanz zu suchen.
@@ -28,15 +17,15 @@ Um eine IP-Adresse und einen Port für eine Remoteverbindung mit einer bestimmte
 
 1. Rufen Sie die NAT-Eingangsregeln für das Remotedesktopprotokoll (RDP) ab.
 
-    Normalerweise hat jeder Knotentyp, der in Ihrem Cluster definiert ist, eine eigene virtuelle IP-Adresse und einen dedizierten Lastenausgleich. Standardmäßig wird der Lastenausgleich für einen Knotentyp im folgenden Format benannt: *LB-{Clustername}-{Knotentyp}* , z.B. *LB-mycluster-FrontEnd*. 
+    Normalerweise hat jeder Knotentyp, der in Ihrem Cluster definiert ist, eine eigene virtuelle IP-Adresse und einen dedizierten Lastenausgleich. Standardmäßig wird der Lastenausgleich für einen Knotentyp anhand des folgenden Formats benannt: *LB-{Clustername}-{Knotentyp}* , also z.B. *LB-meinCluster-FrontEnd*. 
     
     Wählen Sie im Azure-Portal auf der Seite für den Lastenausgleich **Einstellungen** > **NAT-Eingangsregeln** aus: 
 
-    ![NAT-Eingangsregeln für den Lastenausgleich](./media/service-fabric-cluster-remote-connect-to-azure-cluster-node/lb-window.png)
+    ![Screenshot einer Lastenausgleichsseite im Azure-Portal. Im Menü auf der linken Seite unter EINSTELLUNGEN ist „NAT-Regeln für eingehenden Datenverkehr“ ausgewählt.](./media/service-fabric-cluster-remote-connect-to-azure-cluster-node/lb-window.png)
 
     Der folgende Screenshot zeigt die NAT-Eingangsregeln für den Knotentyp „FrontEnd“: 
 
-    ![NAT-Eingangsregeln für den Lastenausgleich](./media/service-fabric-cluster-remote-connect-to-azure-cluster-node/nat-rules.png)
+    ![Screenshot, der die NAT-Regeln für eingehenden Datenverkehr für ein Lastenausgleichsmodul zeigt. Name, IP-Version, Ziel und Dienst werden für jede Regel aufgeführt.](./media/service-fabric-cluster-remote-connect-to-azure-cluster-node/nat-rules.png)
 
     Für jeden Knoten wird die IP-Adresse in der Spalte **DESTINATION** angezeigt. Die Spalte **TARGET** gibt die Instanz der Skalierungsgruppe an, und die Spalte **SERVICE** enthält die Portnummer. Für Remoteverbindungen werden die Ports den einzelnen Knoten in aufsteigender Reihenfolge beginnend mit Port 3389 zugeordnet.
 

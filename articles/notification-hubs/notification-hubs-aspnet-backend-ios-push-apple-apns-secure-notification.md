@@ -1,27 +1,25 @@
 ---
-title: Azure Notification Hubs – Sichere Pushbenachrichtigungen
+title: 'Azure Notification Hubs: Sichere Pushbenachrichtigungen für iOS'
 description: Erfahren Sie mehr über das Senden sicherer Pushbenachrichtigungen an eine iOS-App von Azure. Die Codebeispiele wurden in Objekctive-C und C# geschrieben.
 documentationcenter: ios
 author: sethmanheim
 manager: femila
-editor: jwargo
 services: notification-hubs
-ms.assetid: 17d42b0a-2c80-4e35-a1ed-ed510d19f4b4
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: ios
 ms.devlang: objective-c
 ms.topic: article
-ms.date: 01/04/2019
+ms.date: 08/17/2020
 ms.author: sethm
-ms.reviewer: jowargo
+ms.reviewer: thsomasu
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 4a175b14d44ef7ba019c28fbd03bac98ada7a2a3
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: a6c85ba017656bd312ddfe3d5f6d98014a3dc89a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71212148"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90090345"
 ---
 # <a name="azure-notification-hubs-secure-push"></a>Azure Notification Hubs – Sichere Pushbenachrichtigungen
 
@@ -50,7 +48,7 @@ Beachten Sie, dass im obigen Ablauf (und in diesem Tutorial) angenommen wird, da
 Dieses Lernprogramm zu sicheren Pushbenachrichtigungen veranschaulicht das sichere Senden einer Pushbenachrichtigung. Es baut auf dem Lernprogramm [Benachrichtigen von Benutzern](notification-hubs-aspnet-backend-ios-apple-apns-notification.md) auf, daher sollten Sie die Schritte in diesem Lernprogramm zuerst durchführen.
 
 > [!NOTE]
-> In diesem Lernprogramm wird davon ausgegangen, dass Sie Ihren Notification Hub wie unter [Erste Schritte mit Notification Hubs (iOS)](notification-hubs-ios-apple-push-notification-apns-get-started.md)beschrieben erstellt und konfiguriert haben.
+> In diesem Tutorial wird davon ausgegangen, dass Sie Ihren Notification Hub wie unter [Tutorial: Senden von Pushbenachrichtigungen an iOS-Apps mit Azure Notification Hubs](ios-sdk-get-started.md) beschrieben erstellt und konfiguriert haben.
 
 [!INCLUDE [notification-hubs-aspnet-backend-securepush](../../includes/notification-hubs-aspnet-backend-securepush.md)]
 
@@ -121,10 +119,10 @@ Hierzu müssen wir die Logik zum Abrufen des sicheren Inhalts aus dem App-Back-E
 
     Diese Methode ruft Ihr Back-End auf, um den Benachrichtigungsinhalt unter Verwendung der in den freigegebenen Einstellungen gespeicherten Anmeldeinformationen abzurufen.
 
-4. Nun müssen wird die eingehende Benachrichtigung verarbeiten und den anzuzeigenden Inhalt mit der vorstehenden Methode abrufen. Zunächst müssen festlegen, dass die iOS-App im Hintergrund ausgeführt werden kann, wenn eine Pushbenachrichtigung empfangen wird. Wählen Sie in **XCode** Ihr App-Projekt im linken Bereich aus, und klicken Sie dann im Abschnitt **Targets** des mittleren Fensters auf Ihr Haupt-App-Ziel.
+4. Nun wird die eingehende Benachrichtigung verarbeitet und der anzuzeigende Inhalt mit der vorstehenden Methode abgerufen. Zunächst müssen Sie festlegen, dass die iOS-App im Hintergrund ausgeführt werden kann, wenn eine Pushbenachrichtigung empfangen wird. Wählen Sie in **XCode** Ihr App-Projekt im linken Bereich aus, und klicken Sie dann im Abschnitt **Targets** des mittleren Fensters auf Ihr Haupt-App-Ziel.
 5. Klicken Sie dann oben im mittleren Fenster auf die Registerkarte **Capabilities**, und aktivieren Sie das Kontrollkästchen **Remote Notifications**.
 
-    ![][IOS1]
+    ![Screenshot von XCode, bei dem das App-Projekt ausgewählt und die Registerkarte „Capabilities“ geöffnet ist. Das Kontrollkästchen „Remote Notifications“ ist ausgewählt.][IOS1]
 
 6. Fügen Sie in `AppDelegate.m` die folgende Methode zur Verarbeitung von Pushbenachrichtigungen hinzu:
 

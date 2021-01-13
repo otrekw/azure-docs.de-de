@@ -10,14 +10,19 @@ ms.subservice: bing-autosuggest
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: scottwhi
-ms.openlocfilehash: 6fe2e78501024983544b399762fb936d86e5c9d5
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 90946b10bbc7717aa12566c4a25686f8471fb6e7
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60547335"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353356"
 ---
 # <a name="language-and-region-support-for-the-bing-autosuggest-api"></a>Sprach- und Regionsunterstützung für die Bing-Vorschlagssuche-API
+
+> [!WARNING]
+> Die APIs der Bing-Suche werden von Cognitive Services auf Bing-Suchdienste umgestellt. Ab dem **30. Oktober 2020** müssen alle neuen Instanzen der Bing-Suche mit dem [hier](/bing/search-apis/bing-web-search/create-bing-search-service-resource) dokumentierten Prozess bereitgestellt werden.
+> APIs der Bing-Suche, die mit Cognitive Services bereitgestellt wurden, werden noch drei Jahre lang bzw. bis zum Ablauf Ihres Enterprise Agreement unterstützt (je nachdem, was zuerst eintritt).
+> Eine Anleitung zur Migration finden Sie unter [Bing-Suchdienste](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
 
 Nachfolgend sind die von der Bing-Vorschlagssuche-API unterstützten Sprachen aufgeführt.
 
@@ -38,7 +43,7 @@ Nachfolgend sind die von der Bing-Vorschlagssuche-API unterstützten Sprachen au
 | Englisch (Neuseeland)    | `en-NZ`          |
 | Englisch (Philippinen)     | `en-PH`          |
 | Englisch (Südafrika)    | `en-ZA`          |
-| Englisch (Vereinigtes Königreich)    | `en-GB`          |
+| Walisisch (Großbritannien)    | `en-GB`          |
 | Englisch (USA)    | `en-US`          |
 | Finnisch     | `fi`          |
 | Französisch (Belgien)     | `fr-BE`          |
@@ -60,11 +65,11 @@ Nachfolgend sind die von der Bing-Vorschlagssuche-API unterstützten Sprachen au
 | Spanisch (Chile)     | `es-CL`          |
 | Spanisch (Mexiko)    | `es-MX`          |
 | Spanisch (Spanien)    | `es-ES`          |
-| Spanisch (Vereinigte Staaten)    | `es-US`          |
+| Spanisch (USA)    | `es-US`          |
 | Schwedisch     | `sv`          |
 | Türkisch     | `tr`          |
 
 ## <a name="see-also"></a>Weitere Informationen
 
-- [Dokumentationsseite zu Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/)
+- [Dokumentationsseite zu Azure Cognitive Services](../index.yml)
 - [Produktseite zu Azure Cognitive Services](https://azure.microsoft.com/services/cognitive-services/)

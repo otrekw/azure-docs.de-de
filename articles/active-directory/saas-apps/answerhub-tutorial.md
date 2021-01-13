@@ -1,28 +1,24 @@
 ---
-title: 'Tutorial: Azure Active Directory-Integration mit AnswerHub | Microsoft-Dokumentation'
+title: 'Tutorial: Azure Active Directory-Integration mit AnswerHub | Microsoft Docs'
 description: In diesem Artikel erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und AnswerHub konfigurieren.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 818b91d7-01df-4b36-9706-f167c710a73c
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: ccf3894daf71be0defe4271a08ec5e8d963e0d34
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: 284ec65955de60f41d7bb0f97bf608faba3d4b79
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68227498"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97672586"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-answerhub"></a>Tutorial: Azure Active Directory-Integration mit AnswerHub
+# <a name="tutorial-azure-active-directory-integration-with-answerhub"></a>Lernprogramm: Azure Active Directory-Integration mit AnswerHub
 
 In diesem Tutorial erfahren Sie, wie Sie Azure Active Directory (Azure AD) in AnswerHub integrieren.
 Die Integration von AnswerHub in Azure AD hat die folgenden Vorteile:
@@ -31,7 +27,7 @@ Die Integration von AnswerHub in Azure AD hat die folgenden Vorteile:
 * Sie können für Ihre Benutzer die automatische Anmeldung an AnswerHub mit ihren Azure AD-Konten ermöglichen (einmaliges Anmelden, Single Sign-On, SSO).
 * Sie haben die Möglichkeit, Ihre Konten an einem zentralen Ort zu verwalten: über das Azure-Portal.
 
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Einmaliges Anmelden bei Anwendungen in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Einmaliges Anmelden bei Anwendungen in Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -67,7 +63,7 @@ Zum Einrichten der Integration von AnswerHub in Azure AD müssen Sie AnswerHub a
 
 4. Geben Sie im Suchfeld **AnswerHub** ein. Wählen Sie in der Ergebnisliste den Eintrag **AnswerHub** und dann **Hinzufügen**.
 
-     ![AnswerHub in der Ergebnisliste](common/search-new-app.png)
+    ![AnswerHub in der Ergebnisliste](common/search-new-app.png)
 
 ## <a name="set-up-and-test-azure-ad-single-sign-on"></a>Einrichten des einmaligen Anmeldens in Azure AD und Testen
 
@@ -144,22 +140,22 @@ In diesem Abschnitt richten Sie einmaliges Anmelden für AnswerHub ein.
 
 4. Führen Sie auf der Registerkarte **IDP Config** (IDP-Konfiguration) die folgenden Schritte aus:
 
-    ![Registerkarte „Benutzer und Gruppen“](./media/answerhub-tutorial/ic785172.png "SAML-Setup")  
-  
+    ![Screenshot der AnswerHub-Seite, auf der die Registerkarte „Benutzer und Gruppen“ ausgewählt ist](./media/answerhub-tutorial/ic785172.png "SAML-Setup")  
+
     a. Fügen Sie im Feld **IDP Login Url** (IDP-Anmelde-URL) die **Anmelde-URL** ein, die Sie aus dem Azure-Portal kopiert haben.
-  
+
     b. Fügen Sie im Feld **IDP Logout URL** (IDP-Abmelde-URL) die **Abmelde-URL** ein, die Sie aus dem Azure-Portal kopiert haben.
 
     c. Geben Sie im Feld **IDP Name Identifier Format** (IDP-Namensbezeichnerformat) den Wert für den **Bezeichner** ein, den Sie im Azure-Portal im Abschnitt **Benutzerattribute** ausgewählt haben.
-  
+
     d. Wählen Sie **Keys and Certificates** (Schlüssel und Zertifikate).
 
 5. Führen Sie im Abschnitt **Keys and Certificates** (Schlüssel und Zertifikate) die folgenden Schritte aus:
 
-    ![Abschnitt „Keys and Certificates“ (Schlüssel und Zertifikate)](./media/answerhub-tutorial/ic785173.png "Keys and Certificates (Schlüssel und Zertifikate)")  
+    ![Abschnitt „Keys and Certificates“ (Schlüssel und Zertifikate)](./media/answerhub-tutorial/ic785173.png "Keys and Certificates")  
 
     a. Öffnen Sie das Base64-codierte Zertifikat, das Sie über das Azure-Portal heruntergeladen haben, im Editor, und kopieren Sie seinen Inhalt. Fügen Sie den Inhalt dann in das Feld **IDP Public Key (x509 Format)** (Öffentlicher IDP-Schlüssel (X.509-Format)) ein.
-  
+
     b. Wählen Sie **Speichern** aus.
 
 6. Wählen Sie auf der Registerkarte **IDP Config** (IDP-Konfiguration) die Option **Speichern**.
@@ -183,7 +179,7 @@ In diesem Abschnitt erstellen Sie im Azure-Portal eine Testbenutzerin mit dem Na
     ![Benutzereigenschaften](common/user-properties.png)
 
     a. Geben Sie in das Feld **Name** den Namen **BrittaSimon** ein.
-  
+
     b. Geben Sie im Feld **Benutzername** die Zeichenfolge **brittasimon\@<Ihreunternehmensdomäne.erweiterung>** ein.  
     Beispiel: BrittaSimon@contoso.com.
 
@@ -235,7 +231,7 @@ Damit sich Azure AD-Benutzer an AnswerHub anmelden können, müssen Sie diese in
 
 4. Wählen Sie im linken Bereich im Abschnitt **Benutzer verwalten** die Option **Create or import users** (Benutzer erstellen oder importieren) und dann **Benutzer und Gruppen**.
 
-   ![Registerkarte „Benutzer und Gruppen“](./media/answerhub-tutorial/ic785175.png "Benutzer und Gruppen")
+    ![Screenshot der AnswerHub-Seite, auf der die Registerkarte „Benutzer und Gruppen“ ausgewählt und der Link „Create or import users“ (Benutzer erstellen oder importieren) hervorgehoben ist](./media/answerhub-tutorial/ic785175.png "Benutzer und Gruppen")
 
 5. Geben Sie in den entsprechenden Feldern die **E-Mail-Adresse**, den **Benutzernamen** und das **Kennwort** eines gültigen Azure AD-Kontos ein, das Sie hinzufügen möchten, und wählen Sie anschließend **Speichern**.
 
@@ -246,13 +242,12 @@ Damit sich Azure AD-Benutzer an AnswerHub anmelden können, müssen Sie diese in
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
-Wenn Sie im Zugriffsbereich die Kachel „AnswerHub“ wählen, sollten Sie automatisch bei der AnswerHub-Anwendung angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Wenn Sie im Zugriffsbereich die Kachel „AnswerHub“ wählen, sollten Sie automatisch bei der AnswerHub-Anwendung angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
-- [Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Tutorials zur Integration von SaaS-Apps in Azure Active Directory](./tutorial-list.md)
 
-- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Was ist bedingter Zugriff?](../conditional-access/overview.md)

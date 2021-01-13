@@ -1,34 +1,33 @@
 ---
-title: 'Schnellstart: Erstellen eines Apache Spark-Clusters in Azure HDInsight mit der Azure-Befehlszeilenschnittstelle'
+title: 'Schnellstart: Apache Spark-Cluster mit Azure CLI: Azure HDInsight'
 description: Dieser Schnellstart zeigt, wie Sie mit der Azure-Befehlszeilenschnittstelle einen Apache Spark-Cluster in Azure HDInsight erstellen.
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: quickstart
-ms.date: 06/12/2019
-ms.author: hrasheed
-ms.openlocfilehash: 72bdab9d7fb5c3019d97ffc4c92257c49ec2b8e5
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 02/03/2020
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 7ccfec516abc17d4cb6dd338574721c6afb2508e
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67066243"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94657566"
 ---
 # <a name="quickstart-create-apache-spark-cluster-in-azure-hdinsight-using-azure-cli"></a>Schnellstart: Erstellen eines Apache Spark-Clusters in Azure HDInsight mithilfe der Azure CLI
 
-In diesem Schnellstart erfahren Sie, wie Sie mithilfe der Azure-Befehlszeilenschnittstelle einen Apache Spark-Cluster in Azure HDInsight erstellen. Apache Spark ermöglicht schnelle Datenanalysen und Clustercomputing mit In-Memory-Verarbeitung. Die [Azure-Befehlszeilenschnittstelle (CLI)](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) ist die plattformübergreifende Befehlszeilenumgebung von Microsoft zum Verwalten von Azure-Ressourcen.
+In dieser Schnellstartanleitung erfahren Sie, wie Sie mithilfe der Azure-Befehlszeilenschnittstelle (Command-Line Interface, CLI) einen Apache Spark-Cluster in Azure HDInsight erstellen. Azure HDInsight ist ein umfassender, verwalteter Open-Source-Analysedienst für Unternehmen. Das Apache Spark-Framework für HDInsight ermöglicht schnelle Datenanalysen und Clustercomputing mit In-Memory-Verarbeitung. Die Azure CLI ist die plattformübergreifende Befehlszeilenumgebung von Microsoft zum Verwalten von Azure-Ressourcen.
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+Bei gemeinsamer Verwendung mehrerer Cluster empfiehlt sich die Erstellung eines virtuellen Netzwerks. Bei Verwendung eines Spark-Clusters sollten Sie den Hive Warehouse Connector verwenden. Weitere Informationen finden Sie unter [Planen eines virtuellen Netzwerks für Azure HDInsight](../hdinsight-plan-virtual-network-deployment.md) sowie unter [Integrieren von Apache Spark und Apache Hive per Hive Warehouse Connector](../interactive-query/apache-hive-warehouse-connector.md).
 
-## <a name="prerequisites"></a>Voraussetzungen
+[!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-Azure-Befehlszeilenschnittstelle. Die Schritte zum Installieren der Azure-Befehlszeilenschnittstelle finden Sie bei Bedarf unter [Installieren der Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure/install-azure-cli).
-
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../../includes/azure-cli-prepare-your-environment.md)]
 
 ## <a name="create-an-apache-spark-cluster"></a>Erstellen eines Apache Spark-Clusters
 
-1. Melden Sie sich bei Ihrem Azure-Abonnement an. Wenn Sie Azure Cloud Shell verwenden möchten, wählen Sie einfach in der rechten oberen Ecke des Codeblocks die Option **Ausprobieren** aus. Geben Sie andernfalls den nachstehenden Befehl ein:
+1. Melden Sie sich bei Ihrem Azure-Abonnement an. Wenn Sie Azure Cloud Shell verwenden möchten, wählen Sie in der rechten oberen Ecke des folgenden Codeblocks die Option **Jetzt testen** aus. Geben Sie andernfalls den folgenden Befehl ein:
 
     ```azurecli-interactive
     az login
@@ -103,18 +102,18 @@ Azure-Befehlszeilenschnittstelle. Die Schritte zum Installieren der Azure-Befehl
         --http-password $httpCredential \
         --http-user admin \
         --location $location \
-        --size $clusterSizeInNodes \
+        --workernode-count $clusterSizeInNodes \
         --ssh-password $sshCredentials \
         --ssh-user sshuser \
         --storage-account $AZURE_STORAGE_ACCOUNT \
         --storage-account-key $AZURE_STORAGE_KEY \
-        --storage-default-container $AZURE_STORAGE_CONTAINER \
+        --storage-container $AZURE_STORAGE_CONTAINER \
         --version $clusterVersion
     ```
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Nachdem Sie den Schnellstart abgeschlossen haben, können Sie den Cluster löschen. Mit HDInsight werden Ihre Daten im Azure-Speicher gespeichert, sodass Sie einen Cluster problemlos löschen können, wenn er nicht verwendet wird. Für einen HDInsight-Cluster fallen auch dann Gebühren an, wenn er nicht verwendet wird. Da die Gebühren für den Cluster erheblich höher sind als die Kosten für den Speicher, ist es sinnvoll, nicht verwendete Cluster zu löschen.
+Nachdem Sie den Schnellstart abgeschlossen haben, können Sie den Cluster löschen. Mit HDInsight werden Ihre Daten in Azure Storage gespeichert, sodass Sie einen Cluster problemlos löschen können, wenn er nicht verwendet wird. Für einen HDInsight-Cluster fallen auch dann Gebühren an, wenn er nicht verwendet wird. Da die Gebühren für den Cluster erheblich höher sind als die Kosten für den Speicher, ist es sinnvoll, nicht verwendete Cluster zu löschen.
 
 Geben Sie die folgenden Befehle oder einige von ihnen ein, um Ressourcen zu entfernen:
 
@@ -141,7 +140,7 @@ az group delete \
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Schnellstart haben Sie erfahren, wie Sie mithilfe der Azure-Befehlszeilenschnittstelle einen Apache Spark-Cluster in Azure HDInsight erstellen.  Im nächsten Tutorial erfahren Sie, wie Sie mithilfe eines HDInsight Spark-Clusters interaktive Abfragen für Beispieldaten ausführen.
+In diesem Schnellstart haben Sie erfahren, wie Sie mithilfe der Azure-Befehlszeilenschnittstelle einen Apache Spark-Cluster in Azure HDInsight erstellen.  Im nächsten Tutorial erfahren Sie, wie Sie mithilfe eines HDInsight-Clusters interaktive Abfragen für Beispieldaten ausführen.
 
 > [!div class="nextstepaction"]
 > [Ausführen von interaktiven Abfragen für Apache Spark](./apache-spark-load-data-run-query.md)

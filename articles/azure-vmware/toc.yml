@@ -1,0 +1,114 @@
+- name: Azure VMware Solution
+  href: index.yml
+- name: Übersicht
+  items:
+    - name: Informationen zu Azure VMware Solution
+      href: introduction.md
+- name: Schnellstart
+  items:
+    - name: 0. Planen der Bereitstellung
+      href: production-ready-deployment-steps.md
+    - name: 1. Bereitstellen von Azure VMware Solution
+      href: deploy-azure-vmware-solution.md
+    - name: 2. Herstellen einer Verbindung mit lokalen Ressourcen
+      href: azure-vmware-solution-on-premises.md
+    - name: "3. Bereitstellen und Konfigurieren von VMware\_HCX"
+      href: tutorial-deploy-vmware-hcx.md
+- name: Tutorials
+  items:
+    - name: 1. Checkliste für die Netzwerkplanung
+      href: tutorial-network-checklist.md
+    - name: 2. Erstellen einer privaten Cloud
+      href: tutorial-create-private-cloud.md
+    - name: 3. Zugreifen auf eine private Cloud
+      href: tutorial-access-private-cloud.md
+    - name: 4. Konfigurieren des Netzwerks
+      href: tutorial-configure-networking.md
+    - name: 5. Erstellen eines NSX-T-Netzwerksegments
+      href: tutorial-nsx-t-network-segment.md
+    - name: 6. Peering zwischen lokaler Umgebung und privater Cloud
+      href: tutorial-expressroute-global-reach-private-cloud.md
+    - name: "7. Bereitstellen und Konfigurieren von VMware\_HCX"
+      href: tutorial-deploy-vmware-hcx.md
+    - name: 8. Skalieren einer privaten Cloud
+      href: tutorial-scale-private-cloud.md
+- name: Konzepte
+  items:
+    - name: Private Clouds und Cluster
+      href: concepts-private-clouds-clusters.md
+    - name: Private Cloudnetzwerke und Konnektivität
+      href: concepts-networking.md
+    - name: Speicher in privaten Clouds
+      href: concepts-storage.md
+    - name: Zugriff und Identität für private Clouds
+      href: concepts-identity.md
+    - name: Rollenbasierte Zugriffssteuerung (vSphere)
+      href: concepts-role-based-access-control.md
+    - name: Überwachen und Reparieren von privaten Clouds
+      href: concepts-monitor-repair-private-cloud.md
+    - name: Upgrades für private Clouds
+      href: concepts-upgrades.md
+- name: Anleitungen
+  items:
+    - name: Aktivieren von Azure VMware Solution
+      href: enable-azure-vmware-solution.md
+    - name: Einsparen von Kosten mit einer reservierten Instanz
+      href: reserved-instance.md
+    - name: Migrationsbewertung
+      href: ../migrate/how-to-create-azure-vmware-solution-assessment.md?context=/azure/migrate/context/migrate-context.json
+    - name: Verwalten von DHCP
+      href: manage-dhcp.md
+    - name: Bereitstellen der Notfallwiederherstellung für virtuelle Computer
+      href: disaster-recovery-for-virtual-machines.md
+    - name: Bereitstellen einer VM über die Inhaltsbibliothek
+      href: ./deploy-vm-content-library.md
+    - name: Einrichten des GitHub Enterprise-Servers
+      href: github-enterprise-server.md
+    - name: Nutzung öffentlicher IP-Adressen
+      href: public-ip-usage.md
+    - name: Erstellen eines IPsec-Tunnels
+      href: create-ipsec-tunnel.md
+    - name: Native Azure-Integration
+      items:
+        - name: API Management
+          href: concepts-api-management.md
+        - name: Hub-and-Spoke-Modell
+          href: concepts-hub-and-spoke.md
+        - name: Azure Security Center
+          href: azure-security-integration.md
+        - name: Azure Backup Server
+          items:
+            - name: Einrichten von Backup Server
+              href: set-up-backup-server-for-azure-vmware-solution.md
+            - name: Sichern von VMs in der privaten Cloud mit Backup Server
+              href: backup-azure-vmware-solution-virtual-machines.md
+        - name: Lebenszyklusverwaltung von virtuellen Computern
+          href: lifecycle-management-of-azure-vmware-solution-vms.md
+        - name: Application Gateway
+          href: protect-azure-vmware-solution-with-application-gateway.md
+        - name: Traffic Manager
+          href: deploy-traffic-manager-balance-workloads.md
+    - name: VMware Solutions
+      items:
+        - name: Einrichten von vRealize-Vorgängen
+          href: vrealize-operations-for-azure-vmware-solution.md
+        - name: Bereitstellen von VMware Horizon
+          href: azure-vmware-solution-horizon.md
+    - name: VMware-Ökosystem
+      items:
+        - name: Sicherungslösungen für virtuelle Computer
+          href: ecosystem-back-up-vms.md
+- name: Ressourcen
+  items:
+    - name: Problembehandlung
+      items:
+        - name: Öffnen einer Supportanfrage für Bereitstellungsfehler
+          href: fix-deployment-provisioning-failures.md
+    - name: Häufig gestellte Fragen
+      href: faq.md
+- name: Verweis
+  items:
+    - name: Azure CLI
+      href: /cli/azure/ext/vmware/vmware
+    - name: Azure PowerShell
+      href: /powershell/module/az.vmware/

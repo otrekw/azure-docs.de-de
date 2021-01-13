@@ -1,34 +1,34 @@
 ---
-title: Transformieren von Daten mit dem U-SQL-Skript – Azure | Microsoft-Dokumentation
-description: Erläutert die Datenverarbeitung oder -transformation durch Ausführen von U-SQL-Skripts für einen Azure Data Lake Analytics-Computedienst.
+title: 'Transformieren von Daten mit dem U-SQL-Skript: Azure'
+description: Hier wird die Datenverarbeitung oder -transformation durch Ausführen von U-SQL-Skripts für einen Azure Data Lake Analytics-Computedienst (Version 1) erläutert.
 services: data-factory
 documentationcenter: ''
 ms.assetid: e17c1255-62c2-4e2e-bb60-d25274903e80
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/01/2017
 author: nabhishek
 ms.author: abnarain
-manager: craigg
+ms.custom: devx-track-csharp
+manager: anandsub
 robots: noindex
-ms.openlocfilehash: 5835c37363c7e9d2dd3253c08ab97f17852725f5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a5e53cab30f1adca05652a3b3b7541e12ebebbdb
+ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61248146"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92631460"
 ---
 # <a name="transform-data-by-running-u-sql-scripts-on-azure-data-lake-analytics"></a>Transformieren von Daten durch Ausführen von U-SQL-Skripts für Azure Data Lake Analytics 
-> [!div class="op_single_selector" title1="Wählen Sie die von Ihren verwendete Version des Data Factory-Diensts aus:"]
+> [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version des Data Factory-Diensts aus:"]
 > * [Version 1](data-factory-usql-activity.md)
 > * [Version 2 (aktuelle Version)](../transform-data-using-data-lake-analytics.md)
 
 > [!NOTE]
 > Dieser Artikel gilt für Version 1 von Data Factory. Wenn Sie die aktuelle Version des Data Factory-Diensts verwenden, finden Sie weitere Informationen unter [U-SQL-Aktivität in V2](../transform-data-using-data-lake-analytics.md).
 
-Eine Pipeline in einer Azure Data Factory verarbeitet Daten in verknüpften Speicherdiensten mithilfe verknüpfter Compute Services. Sie enthält eine Abfolge von Aktivitäten, wobei jede Aktivität einen bestimmten Verarbeitungsvorgang ausführt. In diesem Kapitel wird die **U-SQL-Aktivität von Data Lake Analytics** beschrieben, die ein **U-SQL**-Skript auf einem mit **Azure Data Lake Analytics** verknüpften Computedienst ausführt. 
+Eine Pipeline in einer Azure Data Factory verarbeitet Daten in verknüpften Speicherdiensten mithilfe verknüpfter Compute Services. Sie enthält eine Abfolge von Aktivitäten, wobei jede Aktivität einen bestimmten Verarbeitungsvorgang ausführt. In diesem Kapitel wird die **U-SQL-Aktivität von Data Lake Analytics** beschrieben, die ein **U-SQL** -Skript auf einem mit **Azure Data Lake Analytics** verknüpften Computedienst ausführt. 
 
 Erstellen Sie ein Azure Data Lake Analytics-Konto, bevor Sie mit einer U-SQL-Aktivität von Data Lake Analytics eine Pipeline erstellen. Weitere Informationen zu Azure Data Lake Analytics finden Sie unter [Erste Schritte mit Azure Data Lake Analytics](../../data-lake-analytics/data-lake-analytics-get-started-portal.md).
 
@@ -48,14 +48,14 @@ Die folgende Tabelle enthält Beschreibungen der allgemeinen Eigenschaften, die 
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 | --- | --- | --- |
-| **type** |Legen Sie die type-Eigenschaft auf **AzureDataLakeAnalytics** fest. |Ja |
+| **type** |Legen Sie die Typeigenschaft auf **AzureDataLakeAnalytics** fest. |Ja |
 | **accountName** |Name des Azure Data Lake Analytics-Kontos. |Ja |
 | **dataLakeAnalyticsUri** |URI des Azure Data Lake Analytics-Kontos. |Nein |
 | **subscriptionId** |Azure-Abonnement-ID |Nein (falls nicht angegeben, wird das Abonnement der Data Factory verwendet). |
 | **resourceGroupName** |Azure-Ressourcengruppenname |Nein (falls nicht angegeben, wird die Ressourcengruppe der Data Factory verwendet). |
 
 ### <a name="service-principal-authentication-recommended"></a>Dienstprinzipalauthentifizierung (empfohlen)
-Wenn Sie die Dienstprinzipalauthentifizierung verwenden möchten, registrieren Sie in Azure Active Directory (Azure AD) eine Anwendungsentität und gewähren ihr Zugriff auf Data Lake Store. Eine ausführliche Anleitung finden Sie unter [Dienst-zu-Dienst-Authentifizierung](../../data-lake-store/data-lake-store-authenticate-using-active-directory.md). Notieren Sie sich die folgenden Werte, die Sie zum Definieren des verknüpften Diensts verwenden:
+Wenn Sie die Dienstprinzipalauthentifizierung verwenden möchten, registrieren Sie in Azure Active Directory (Azure AD) eine Anwendungsentität und gewähren ihr Zugriff auf Data Lake Store. Eine ausführliche Anleitung finden Sie unter [Dienst-zu-Dienst-Authentifizierung](../../data-lake-store/data-lake-store-service-to-service-authenticate-using-active-directory.md). Notieren Sie sich die folgenden Werte, die Sie zum Definieren des verknüpften Diensts verwenden:
 * Anwendungs-ID
 * Anwendungsschlüssel 
 * Mandanten-ID
@@ -92,7 +92,7 @@ Alternativ können Sie die Authentifizierung mit Benutzeranmeldeinformationen f�
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| **authorization** | Klicken Sie im Data Factory-Editor auf die Schaltfläche **Autorisieren**, und geben Sie Ihre Anmeldeinformationen ein. Hierdurch wird die automatisch generierte Autorisierungs-URL dieser Eigenschaft zugewiesen. | Ja |
+| **Autorisierung** | Klicken Sie im Data Factory-Editor auf die Schaltfläche **Autorisieren** , und geben Sie Ihre Anmeldeinformationen ein. Hierdurch wird die automatisch generierte Autorisierungs-URL dieser Eigenschaft zugewiesen. | Ja |
 | **sessionId** | OAuth-Sitzungs-ID aus der OAuth-Autorisierungssitzung. Jede Sitzungs-ID ist eindeutig und darf nur einmal verwendet werden. Diese Einstellung wird automatisch generiert, wenn Sie den Data Factory-Editor verwenden. | Ja |
 
 **Beispiel: Authentifizierung mit Benutzeranmeldeinformationen**
@@ -114,14 +114,14 @@ Alternativ können Sie die Authentifizierung mit Benutzeranmeldeinformationen f�
 ```
 
 #### <a name="token-expiration"></a>Tokenablauf
-Der von Ihnen mithilfe der Schaltfläche **Autorisieren** generierte Autorisierungscode läuft nach einer gewissen Zeit ab. Die Zeiten bis zum Ablaufen der Autorisierungscodes für die verschiedenen Benutzerkonten finden Sie in der folgenden Tabelle. Möglicherweise wird folgende Fehlermeldung angezeigt, wenn das **Authentifizierungstoken abläuft**: Fehler beim Anmeldevorgang: invalid_grant – AADSTS70002: Fehler beim Überprüfen der Anmeldeinformationen. AADSTS70008: Die angegebene Zugriffserteilung ist abgelaufen oder wurde widerrufen. Ablaufverfolgungs-ID: d18629e8-af88-43c5-88e3-d8419eb1fca1 Korrelations-ID: fac30a0c-6be6-4e02-8d69-a776d2ffefd7 Zeitstempel: 2015-12-15 21:09:31Z
+Der von Ihnen mithilfe der Schaltfläche **Autorisieren** generierte Autorisierungscode läuft nach einer gewissen Zeit ab. Die Zeiten bis zum Ablaufen der Autorisierungscodes für die verschiedenen Benutzerkonten finden Sie in der folgenden Tabelle. Unter Umständen wird Ihnen nach dem **Ablauf des Tokens** folgende Fehlermeldung angezeigt: „Fehler beim Anmeldevorgang: invalid_grant – AADSTS70002: Fehler beim Überprüfen der Anmeldeinformationen. AADSTS70008: Die angegebene Zugriffserteilung ist abgelaufen oder wurde widerrufen. Ablaufverfolgungs-ID: d18629e8-af88-43c5-88e3-d8419eb1fca1 Korrelations-ID: fac30a0c-6be6-4e02-8d69-a776d2ffefd7 Zeitstempel: 2015-12-15 21:09:31Z“
 
 | Benutzertyp | Läuft ab nach |
 |:--- |:--- |
 | Benutzerkonten, die NICHT von Azure Active Directory verwaltet werden (@hotmail.com, @live.com usw.) |12 Stunden |
 | Benutzerkonten, die von Azure Active Directory (AAD) verwaltet werden |14 Tage nach der letzten Sliceausführung. <br/><br/>90 Tage, wenn ein Slice, das auf einem verknüpften OAuth-Dienst basiert, mindestens einmal alle 14 Tage ausgeführt wird. |
 
-Um diesen Fehler zu vermeiden oder zu beheben, autorisieren Sie sich durch Klicken auf die Schaltfläche **Autorisieren** erneut, wenn das **Token abläuft**, und stellen den verknüpften Dienst anschließend erneut bereit. Sie können auch Werte für die Eigenschaften **sessionId** und **authorization** programmgesteuert mit folgendem Code generieren:
+Um diesen Fehler zu vermeiden oder zu beheben, autorisieren Sie sich durch Klicken auf die Schaltfläche **Autorisieren** erneut, wenn das **Token abläuft** , und stellen den verknüpften Dienst anschließend erneut bereit. Sie können auch Werte für die Eigenschaften **sessionId** und **authorization** programmgesteuert mit folgendem Code generieren:
 
 ```csharp
 if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService ||
@@ -148,7 +148,7 @@ if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService |
 }
 ```
 
-Nähere Informationen zu den im Code verwendeten Data Factory-Klassen finden Sie in den Themen [AzureDataLakeStoreLinkedService-Klasse](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakestorelinkedservice.aspx), [AzureDataLakeAnalyticsLinkedService-Klasse](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakeanalyticslinkedservice.aspx) und [AuthorizationSessionGetResponse-Klasse](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.authorizationsessiongetresponse.aspx). Fügen Sie einen Verweis auf Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll für die WindowsFormsWebAuthenticationDialog-Klasse hinzu. 
+Nähere Informationen zu den im Code verwendeten Data Factory-Klassen finden Sie in den Themen [AzureDataLakeStoreLinkedService-Klasse](/dotnet/api/microsoft.azure.management.datafactories.models.azuredatalakestorelinkedservice), [AzureDataLakeAnalyticsLinkedService-Klasse](/dotnet/api/microsoft.azure.management.datafactories.models.azuredatalakeanalyticslinkedservice) und [AuthorizationSessionGetResponse-Klasse](/dotnet/api/microsoft.azure.management.datafactories.models.authorizationsessiongetresponse). Fügen Sie für die WindowsFormsWebAuthenticationDialog-Klasse einen Verweis auf Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll hinzu. 
 
 ## <a name="data-lake-analytics-u-sql-activity"></a>U-SQL-Aktivität für Data Lake Analytics
 Der folgende JSON-Ausschnitt definiert eine Pipeline mit einer U-SQL-Aktivität für Data Lake Analytics. Die Aktivitätsdefinition verwendet einen Verweis auf den zuvor erstellten mit Azure Data Lake Analytics verknüpften Dienst.   
@@ -208,7 +208,7 @@ Die folgende Tabelle beschreibt die Namen und Eigenschaften, die für diese Akti
 
 | Eigenschaft            | BESCHREIBUNG                              | Erforderlich                                 |
 | :------------------ | :--------------------------------------- | :--------------------------------------- |
-| type                | Die type-Eigenschaft muss auf **DataLakeAnalyticsU-SQL**festgelegt werden. | Ja                                      |
+| type                | Die type-Eigenschaft muss auf **DataLakeAnalyticsU-SQL** festgelegt werden. | Ja                                      |
 | linkedServiceName   | Verweis auf den Azure Data Lake Analytics-Dienst, der als verknüpfter Dienst in Data Factory registriert ist | Ja                                      |
 | scriptPath          | Der Pfad zum Ordner, der das U-SQL-Skript enthält. Beim Dateinamen wird Groß-/Kleinschreibung unterschieden. | Nein (wenn script verwendet wird)                   |
 | scriptLinkedService | Verknüpfter Dienst, der den Speicher, der das Skript enthält, mit der Data Factory verknüpft. | Nein (wenn script verwendet wird)                   |
@@ -217,7 +217,7 @@ Die folgende Tabelle beschreibt die Namen und Eigenschaften, die für diese Akti
 | priority            | Bestimmt, welche der in der Warteschlange befindlichen Aufträge als erstes ausgeführt werden. Je niedriger die Zahl, desto höher die Priorität. | Nein                                       |
 | parameters          | Parameter für das U-SQL-Skript          | Nein                                       |
 | runtimeVersion      | Die Runtime-Version der zu verwendenden U-SQL-Engine | Nein                                       |
-| compilationMode     | <p>Der Kompilierungsmodus von U-SQL. Muss einen der folgenden Werte aufweisen:</p> <ul><li>**Semantic:** Es werden nur Semantiküberprüfungen und erforderliche Integritätsprüfungen durchgeführt.</li><li>**Full:** Es wird die vollständige Kompilierung durchgeführt, einschließlich Syntaxprüfung, Optimierung, Codegenerierung usw.</li><li>**SingleBox:** Es wird die vollständige Kompilierung durchgeführt, wobei die TargetType-Einstellung auf „SingleBox“ festgelegt ist.</li></ul><p>Wenn Sie für diese Eigenschaft keinen Wert angeben, bestimmt der Server den optimalen Kompilierungsmodus. </p> | Nein                                       |
+| compilationMode     | <p>Der Kompilierungsmodus von U-SQL. Muss einen der folgenden Werte aufweisen:</p> <ul><li>**Semantic:** Es werden nur Semantiküberprüfungen und erforderliche Integritätsprüfungen ausgeführt.</li><li>**Full:** Es wird die vollständige Kompilierung ausgeführt, einschließlich Syntaxprüfung, Optimierung, Codegenerierung usw.</li><li>**SingleBox:** Es wird die vollständige Kompilierung ausgeführt, wobei die „TargetType“-Einstellung auf „SingleBox“ festgelegt ist.</li></ul><p>Wenn Sie für diese Eigenschaft keinen Wert angeben, bestimmt der Server den optimalen Kompilierungsmodus. </p> | Nein                                       |
 
 Die Skriptdefinition finden Sie unter [Skriptdefinition „SearchLogProcessing.txt“](#sample-u-sql-script) . 
 
@@ -340,6 +340,4 @@ Anstelle von hartcodierten Werten können dynamische Parameter verwendet werden.
 }
 ```
 
-In diesem Fall werden die Eingabedateien weiterhin aus dem Ordner „/datalake/input“ abgerufen und die Ausgabedateien im Ordner „datalake/output“ generiert. Die Dateinamen sind dynamisch und basieren auf der Startzeit des Slices.  
-
-
+In diesem Fall werden die Eingabedateien weiterhin aus dem Ordner „/datalake/input“ abgerufen und die Ausgabedateien im Ordner „datalake/output“ generiert. Die Dateinamen sind dynamisch und basieren auf der Startzeit des Slices.

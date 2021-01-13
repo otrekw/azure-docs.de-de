@@ -1,20 +1,18 @@
 ---
-title: Verwenden einer statischen IP-Adresse mit dem Lastenausgleich von Azure Kubernetes Service (AKS)
+title: Verwenden der statischen IP-Adresse mit dem Lastenausgleich
+titleSuffix: Azure Kubernetes Service
 description: Informationen zum Erstellen und Verwenden einer statischen IP-Adresse mit dem Lastenausgleich von Azure Kubernetes Service (AKS)
 services: container-service
-author: mlearned
-ms.service: container-service
 ms.topic: article
-ms.date: 03/04/2019
-ms.author: mlearned
-ms.openlocfilehash: 9e32715766734bcbb150d70aeed2dc5b06a4bcbb
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.date: 11/14/2020
+ms.openlocfilehash: 22fd099633556fa9ddce575c2ac238b4950667cb
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "67614471"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94651888"
 ---
-# <a name="use-a-static-public-ip-address-with-the-azure-kubernetes-service-aks-load-balancer"></a>Verwenden einer statischen öffentlichen IP-Adresse mit dem Lastenausgleich von Azure Kubernetes Service (AKS)
+# <a name="use-a-static-public-ip-address-and-dns-label-with-the-azure-kubernetes-service-aks-load-balancer"></a>Verwenden einer statischen öffentlichen IP-Adresse und einer DNS-Bezeichnung mit dem Lastenausgleich von Azure Kubernetes Service (AKS)
 
 Standardmäßig ist die öffentliche IP-Adresse, die einer Lastenausgleichsressource zugeordnet ist, die von einem AKS-Cluster erstellt wurde, nur gültig solange die Ressource existiert. Wenn Sie den Kubernetes-Dienst löschen, werden auch der zugehörige Lastenausgleich und die zugehörige IP-Adresse gelöscht. Wenn Sie eine bestimmte IP-Adresse für einen Kubernetes-Dienst zuweisen oder beibehalten möchten, können Sie eine statische öffentliche IP-Adresse erstellen und verwenden.
 
@@ -24,42 +22,33 @@ In diesem Artikel wird erläutert, wie Sie eine statische öffentliche IP-Adress
 
 Es wird vorausgesetzt, dass Sie über ein AKS-Cluster verfügen. Wenn Sie einen AKS-Cluster benötigen, erhalten Sie weitere Informationen im AKS-Schnellstart. Verwenden Sie dafür entweder die [Azure CLI][aks-quickstart-cli] oder das [Azure-Portal][aks-quickstart-portal].
 
-Außerdem muss mindestens die Version 2.0.59 der Azure CLI installiert und konfiguriert sein. Führen Sie  `az --version` aus, um die Version zu ermitteln. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie weitere Informationen unter  [Installieren der Azure CLI][install-azure-cli].
+Außerdem muss mindestens die Version 2.0.59 der Azure CLI installiert und konfiguriert sein. Führen Sie `az --version` aus, um die Version zu ermitteln. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sei bei Bedarf unter [Installieren der Azure CLI][install-azure-cli].
 
-Derzeit wird nur die *SKU „Basic IP“* unterstützt. Unterstützung der Ressourcen-SKU *Standard IP* ist in Vorbereitung. Weitere Informationen finden Sie unter [IP-Adresstypen und Zuordnungsmethoden in Azure][ip-sku].
+In diesem Artikel wird die Verwendung einer IP-Adresse der SKU *Standard* mit einem Lastenausgleich der SKU *Standard* behandelt. Weitere Informationen finden Sie unter [IP-Adresstypen und Zuordnungsmethoden in Azure][ip-sku].
 
 ## <a name="create-a-static-ip-address"></a>Erstellen einer statischen IP-Adresse
 
-Wenn Sie eine statische öffentliche IP-Adresse zur Verwendung mit AKS erstellen, sollte die Ressource der IP-Adresse im **Knoten** „Ressourcengruppe“ erstellt werden. Wenn Sie die Ressourcen trennen möchten, beachten Sie im folgenden Abschnitt die Informationen unter [Verwenden einer statischen IP-Adresse außerhalb der Knotenressourcengruppe](#use-a-static-ip-address-outside-of-the-node-resource-group).
-
-Rufen Sie zuerst den Namen der Knotenressourcengruppe mit dem Befehl [az aks show][az-aks-show] ab, und fügen Sie den Abfrageparameter `--query nodeResourceGroup` hinzu. Im folgenden Beispiel wird der Knoten „Ressourcengruppe“ für den AKS-Clusternamen *myAKSCluster* in der Ressourcengruppe *myResourceGroup* abgerufen:
-
-```azurecli-interactive
-$ az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv
-
-MC_myResourceGroup_myAKSCluster_eastus
-```
-
-Erstellen Sie dann über den Befehl [az network public-ip create][az-network-public-ip-create] eine statische öffentliche IP-Adresse. Geben Sie den Knoten „Ressourcengruppe“ an, den Sie über den vorherigen Befehl erhalten haben, und fügen Sie anschließend einen Namen für die Ressource der IP-Adresse hinzu, z.B. *myAKSPublicIP*:
+Erstellen Sie mithilfe des Befehls [az network public-ip create][az-network-public-ip-create] eine statische öffentliche IP-Adresse. Im folgenden Beispiel wird eine statische IP-Adressressource namens *myAKSPublicIP* in der Ressourcengruppe *myResourceGroup* erstellt:
 
 ```azurecli-interactive
 az network public-ip create \
-    --resource-group MC_myResourceGroup_myAKSCluster_eastus \
+    --resource-group myResourceGroup \
     --name myAKSPublicIP \
+    --sku Standard \
     --allocation-method static
 ```
+
+> [!NOTE]
+> Falls Sie in Ihrem AKS-Cluster einen Lastenausgleich der SKU *Basic* verwenden, geben Sie für den Parameter *sku* die Option *Basic* an, wenn Sie eine öffentliche IP-Adresse definieren. Mit dem Lastenausgleich der SKU *Basic* können nur IP-Adressen der SKU *Basic* verwendet werden. Analog dazu können mit einem Lastenausgleich der SKU *Standard* nur IP-Adressen der SKU *Standard* verwendet werden. 
 
 Die IP-Adresse wird ähnlich wie in der folgenden gekürzten Beispielausgabe angezeigt:
 
 ```json
 {
   "publicIp": {
-    "dnsSettings": null,
-    "etag": "W/\"6b6fb15c-5281-4f64-b332-8f68f46e1358\"",
-    "id": "/subscriptions/<SubscriptionID>/resourceGroups/MC_myResourceGroup_myAKSCluster_eastus/providers/Microsoft.Network/publicIPAddresses/myAKSPublicIP",
-    "idleTimeoutInMinutes": 4,
+    ...
     "ipAddress": "40.121.183.52",
-    [...]
+    ...
   }
 }
 ```
@@ -67,47 +56,28 @@ Die IP-Adresse wird ähnlich wie in der folgenden gekürzten Beispielausgabe ang
 Anschließend können Sie die öffentliche IP-Adresse über den Befehl [az network public-ip list][az-network-public-ip-list] abrufen. Geben Sie den Namen der erstellten Knotenressourcengruppe und die öffentliche IP-Adresse an, und fragen Sie anschließend wie im folgenden Beispiel gezeigt den Wert von *ipAddress* ab:
 
 ```azurecli-interactive
-$ az network public-ip show --resource-group MC_myResourceGroup_myAKSCluster_eastus --name myAKSPublicIP --query ipAddress --output tsv
+$ az network public-ip show --resource-group myResourceGroup --name myAKSPublicIP --query ipAddress --output tsv
 
 40.121.183.52
 ```
 
 ## <a name="create-a-service-using-the-static-ip-address"></a>Erstellen eines Diensts mithilfe der statischen IP-Adresse
 
-Fügen Sie die `loadBalancerIP`-Eigenschaft und den Wert der öffentlichen statischen IP-Adresse dem YAML-Manifest hinzu, um mit der statischen öffentlichen IP-Adresse einen Dienst zu erstellen. Erstellen Sie eine Datei namens „`load-balancer-service.yaml`“, und fügen Sie den folgenden YAML-Code ein. Geben Sie Ihre eigene öffentliche IP-Adresse an, die Sie im vorherigen Schritt erstellt haben:
-
-```yaml
-apiVersion: v1
-kind: Service
-metadata:
-  name: azure-load-balancer
-spec:
-  loadBalancerIP: 40.121.183.52
-  type: LoadBalancer
-  ports:
-  - port: 80
-  selector:
-    app: azure-load-balancer
-```
-
-Erstellen Sie den Dienst und die Bereitstellung mit dem Befehl `kubectl apply`.
-
-```console
-kubectl apply -f load-balancer-service.yaml
-```
-
-## <a name="use-a-static-ip-address-outside-of-the-node-resource-group"></a>Verwenden einer statischen IP-Adresse außerhalb der Knotenressourcengruppe
-
-Mit Kubernetes 1.10 oder höher können Sie eine statische IP-Adresse verwenden, die außerhalb der Knotenressourcengruppe erstellt wurde. Der vom AKS-Cluster verwendete Dienstprinzipal muss delegierte Berechtigungen für die anderen Ressourcengruppe aufweisen, wie im folgenden Beispiel gezeigt:
+Vergewissern Sie sich vor dem Erstellen eines Diensts, dass der vom AKS-Cluster verwendete Dienstprinzipal über delegierte Berechtigungen für die andere Ressourcengruppe verfügt. Beispiel:
 
 ```azurecli-interactive
-az role assignment create\
+az role assignment create \
     --assignee <SP Client ID> \
     --role "Network Contributor" \
     --scope /subscriptions/<subscription id>/resourceGroups/<resource group name>
 ```
 
-Um eine IP-Adresse außerhalb der Knotenressourcengruppe zu verwenden, fügen Sie der Dienstdefinition eine Anmerkung hinzu. Im folgenden Beispiel wird die Anmerkung für die Ressourcengruppe *myResourceGroup* festgelegt. Geben Sie Ihren eigenen Ressourcengruppennamen an:
+Alternativ können Sie für Berechtigungen die vom System zugewiesene verwaltete Identität anstelle des Dienstprinzipals verwenden. Weitere Informationen finden Sie unter [Verwenden verwalteter Identitäten](use-managed-identity.md).
+
+> [!IMPORTANT]
+> Wenn Sie Ihre Ausgangs-IP-Adresse angepasst haben, stellen Sie sicher, dass Ihre Clusteridentität sowohl über Berechtigungen für die öffentliche Ausgangs-IP-Adresse als auch die öffentliche Eingangs-IP-Adresse verfügt.
+
+Fügen Sie die Eigenschaft `loadBalancerIP` und den Wert der statischen öffentlichen IP-Adresse dem YAML-Manifest hinzu, um einen Dienst vom Typ *LoadBalancer* mit der statischen öffentlichen IP-Adresse zu erstellen. Erstellen Sie eine Datei namens „`load-balancer-service.yaml`“, und fügen Sie den folgenden YAML-Code ein. Geben Sie Ihre eigene öffentliche IP-Adresse an, die Sie im vorherigen Schritt erstellt haben: Im folgenden Beispiel wird auch die Anmerkung auf die Ressourcengruppe *myResourceGroup* festgelegt. Geben Sie Ihren eigenen Ressourcengruppennamen an.
 
 ```yaml
 apiVersion: v1
@@ -124,6 +94,36 @@ spec:
   selector:
     app: azure-load-balancer
 ```
+
+Erstellen Sie den Dienst und die Bereitstellung mit dem Befehl `kubectl apply`.
+
+```console
+kubectl apply -f load-balancer-service.yaml
+```
+
+## <a name="apply-a-dns-label-to-the-service"></a>Anwenden einer DNS-Bezeichnung auf den Dienst
+
+Wenn Ihr Dienst eine dynamische oder statische öffentliche IP-Adresse verwendet, können Sie die Dienstanmerkung `service.beta.kubernetes.io/azure-dns-label-name` verwenden, um eine öffentliche DNS-Bezeichnung festzulegen. Damit wird ein vollqualifizierter Domänenname für Ihren Dienst veröffentlicht, der die öffentlichen DNS-Server und die Domäne der obersten Ebene von Azure verwendet. Weil der Anmerkungswert innerhalb des Azure-Standorts eindeutig sein muss, wird die Verwendung einer ausreichend qualifizierten Bezeichnung empfohlen.   
+
+Azure fügt dann automatisch ein Standardsubnetz wie `<location>.cloudapp.azure.com` (wobei der Standort die von Ihnen ausgewählte Region ist) an den von Ihnen angegebenen Namen an, um den vollqualifizierten DNS-Namen zu erstellen. Beispiel:
+
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    service.beta.kubernetes.io/azure-dns-label-name: myserviceuniquelabel
+  name: azure-load-balancer
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 80
+  selector:
+    app: azure-load-balancer
+```
+
+> [!NOTE] 
+> Informationen zum Veröffentlichen des Diensts in Ihrer eigenen Domäne finden Sie unter [Azure DNS][azure-dns-zone] und dem Projekt [external-dns][external-dns].
 
 ## <a name="troubleshoot"></a>Problembehandlung
 
@@ -163,6 +163,8 @@ Wenn Sie mehr Kontrolle über den Netzwerkdatenverkehr benötigen, der an Ihre A
 
 <!-- LINKS - External -->
 [kubectl-describe]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#describe
+[azure-dns-zone]: https://azure.microsoft.com/services/dns/
+[external-dns]: https://github.com/kubernetes-sigs/external-dns
 
 <!-- LINKS - Internal -->
 [aks-faq-resource-group]: faq.md#why-are-two-resource-groups-created-with-aks
@@ -174,4 +176,4 @@ Wenn Sie mehr Kontrolle über den Netzwerkdatenverkehr benötigen, der an Ihre A
 [aks-quickstart-cli]: kubernetes-walkthrough.md
 [aks-quickstart-portal]: kubernetes-walkthrough-portal.md
 [install-azure-cli]: /cli/azure/install-azure-cli
-[ip-sku]: ../virtual-network/virtual-network-ip-addresses-overview-arm.md#sku
+[ip-sku]: ../virtual-network/public-ip-addresses.md#sku

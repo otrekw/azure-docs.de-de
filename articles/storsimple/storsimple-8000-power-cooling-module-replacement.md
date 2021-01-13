@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
-ms.topic: article
+ms.topic: troubleshooting
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/02/2017
 ms.author: alkohli
-ms.openlocfilehash: 42561570e24aec5edd33248ef1738e53175e480e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 045cec85174a88d1d608a4adc679461008852768
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60632464"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "85514585"
 ---
 # <a name="replace-a-power-and-cooling-module-on-your-storsimple-device"></a>Austauschen eines Moduls für Stromversorgung und Kühlung eines StorSimple-Geräts
 ## <a name="overview"></a>Übersicht

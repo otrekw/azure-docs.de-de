@@ -1,25 +1,21 @@
 ---
-title: Azure Resource Manager-Vorlagen für Azure Backup
+title: Azure-Ressourcen-Manager-Vorlagen
 description: Azure Resource Manager-Vorlagen für die Verwendung mit Recovery Services-Tresoren und Azure Backup-Features
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: sample
 ms.date: 01/31/2019
-ms.author: dacurwin
 ms.custom: mvc
-ms.openlocfilehash: eac7f0050dd819a8ab8d8d453307c7d1ab190fb7
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.openlocfilehash: a4c2f444cb821f7979571b9d777895a59450e7c2
+ms.sourcegitcommit: ac7029597b54419ca13238f36f48c053a4492cb6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68737098"
+ms.lasthandoff: 11/29/2020
+ms.locfileid: "96309578"
 ---
 # <a name="azure-resource-manager-templates-for-azure-backup"></a>Azure Resource Manager-Vorlagen für Azure Backup
 
 Die folgende Tabelle enthält Links zu Azure Resource Manager-Vorlagen für die Verwendung mit Recovery Services-Tresoren und Azure Backup-Features. Weitere Informationen zur JSON-Syntax und zu Eigenschaften finden Sie unter [Microsoft.RecoveryServices resource types](/azure/templates/microsoft.recoveryservices/allversions) (Microsoft.RecoveryServices-Ressourcentypen).
 
-|   |   |
+| Vorlage | BESCHREIBUNG |
 |---|---|
 |**Recovery Services-Tresor** | |
 | [Erstellen eines Recovery Services-Tresors](https://github.com/Azure/azure-quickstart-templates/tree/master/101-recovery-services-vault-create)| Erstellen Sie einen Recovery Services-Tresor. Der Tresor kann für Azure Backup und für Azure Site Recovery verwendet werden. |
@@ -32,5 +28,7 @@ Die folgende Tabelle enthält Links zu Azure Resource Manager-Vorlagen für die 
 |**Überwachen von Sicherungsaufträgen** |  |
 | [Verwenden von Azure Monitor-Protokollen mit Azure Backup](https://github.com/Azure/azure-quickstart-templates/tree/master/101-backup-oms-monitoring) | Vorlage zum Bereitstellen von Azure Monitor-Protokollen für Azure Backup zur Überwachung von Sicherungs- und Wiederherstellungsaufträgen, Sicherungswarnungen sowie zur Überwachung des Cloudspeichers, der in Ihren Recovery Services-Tresoren verwendet wird|  
 |**Sichern von SQL Server auf einem virtuellen Azure-Computer** |  |
-| [Sichern von SQL Server auf einem virtuellen Azure-Computer](https://github.com/Azure/azure-quickstart-templates/tree/master/101-recovery-services-vm-workload-backup) | Vorlage zum Erstellen eines Recovery Services-Tresors und einer Workload-spezifischen Sicherungsrichtlinie. Der virtuelle Computer wird beim Azure Backup-Dienst registriert, und der Schutz wird auf diesem virtuellen Computer konfiguriert. Gegenwärtig können nur SQL-Katalogimages verwendet werden. |
+| [Sichern von SQL Server auf einem virtuellen Azure-Computer](https://github.com/Azure/azure-quickstart-templates/tree/master/101-recovery-services-vm-workload-backup) | Vorlage zum Erstellen eines Recovery Services-Tresors und einer workloadspezifischen Sicherungsrichtlinie. Der virtuelle Computer wird beim Azure Backup-Dienst registriert, und der Schutz wird auf diesem virtuellen Computer konfiguriert. Gegenwärtig können nur SQL-Katalogimages verwendet werden. |
+|**Sichern von Azure-Dateifreigaben** |  |
+| [Sichern von Azure-Dateifreigaben](https://github.com/Azure/azure-quickstart-templates/tree/master/101-recovery-services-backup-file-share) | Mit dieser Vorlage wird der Schutz für eine vorhandene Azure-Dateifreigabe konfiguriert, indem entsprechende Details für den Recovery Services-Tresor und die Sicherungsrichtlinie angegeben werden. Optional erstellt sie einen neuen Recovery Services-Tresor und eine neue Sicherungsrichtlinie und registriert das Speicherkonto, das die Dateifreigabe enthält, im Recovery Services-Tresor. |
 |   |   |

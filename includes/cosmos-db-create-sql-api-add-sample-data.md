@@ -9,10 +9,10 @@ ms.date: 08/07/2019
 ms.author: sngun
 ms.custom: include file
 ms.openlocfilehash: f80efbac256871af073354f23317c447d6a85f1e
-ms.sourcegitcommit: 80dff35a6ded18fa15bba633bf5b768aa2284fa8
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2019
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "70020167"
 ---
 Sie können jetzt mithilfe des Daten-Explorers Daten zu Ihrem neuen Container hinzufügen.

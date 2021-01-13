@@ -1,25 +1,15 @@
 ---
-title: Paketieren einer Azure Service Fabric-Anwendung | Microsoft-Dokumentation
-description: Es wird beschrieben, wie Sie eine Service Fabric-Anwendung vor der Bereitstellung in einem Cluster paketieren.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: mani-ramaswamy
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
+title: Verpacken einer Azure Service Fabric-App
+description: Erfahren Sie mehr über das Verpacken einer Azure Service Fabric-Anwendung und die Vorbereitung für die Bereitstellung in einem Cluster.
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 2/23/2018
-ms.author: atsenthi
-ms.openlocfilehash: b8e66a9d5bba0c48f15b1ccd3f2d47e5405db792
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 11a3fdd5dbaef53af321342952f786ed8119689c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60718366"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96021060"
 ---
 # <a name="package-an-application"></a>Packen einer Anwendung
 
@@ -67,9 +57,9 @@ Weitere Informationen zum Konfigurieren von **SetupEntryPoint** finden Sie unter
 
 ### <a name="build-a-package-by-using-visual-studio"></a>Erstellen eines Pakets mit Visual Studio
 
-Wenn Sie Ihre Anwendung mithilfe von Visual Studio 2015 erstellen, können Sie über den Befehl "Paket" automatisch ein Paket erstellen, das dem oben beschriebenen Layout entspricht.
+Wenn Sie Ihre Anwendung mithilfe von Visual Studio erstellt haben, können Sie über die Option *Paket* automatisch ein Paket erstellen, das dem oben beschriebenen Layout entspricht.
 
-Klicken Sie zum Erstellen eines Pakets im Projektmappen-Explorer mit der rechten Maustaste auf das Anwendungsprojekt, und wählen Sie wie unten gezeigt den Befehl „Paket“ aus:
+Klicken Sie zum Erstellen eines Pakets im *Projektmappen-Explorer* mit der rechten Maustaste auf das Anwendungsprojekt, und wählen Sie **Paket** aus:
 
 ![Paketieren einer Anwendung mit Visual Studio][vs-package-command]
 
@@ -222,7 +212,7 @@ Bei dieser Option muss das Anwendungspaket nicht in den Imagespeicher kopiert we
 Die `sfpkg`-Datei ist eine ZIP-Datei, die das ursprüngliche Anwendungspaket enthält und die Erweiterung „.sfpkg“ aufweist.
 Das Anwendungspaket innerhalb der ZIP-Datei kann komprimiert oder unkomprimiert sein. Die Komprimierung des Anwendungspakets innerhalb der ZIP-Datei erfolgt wie [zuvor erwähnt](service-fabric-package-apps.md#compress-a-package) auf Code-, Konfigurations- und Datenpaketebene.
 
-Um eine `sfpkg` zu erstellen, beginnen Sie mit einem Ordner, der das ursprüngliche (komprimierte oder unkomprimierte) Anwendungspaket enthält. Verwenden Sie anschließend ein beliebiges Hilfsprogramm, um den Ordner mit der Erweiterung „.sfpkg“ zu zippen. Verwenden Sie z. B. [ZipFile.CreateFromDirectory](https://msdn.microsoft.com/library/hh485721(v=vs.110).aspx).
+Um eine `sfpkg` zu erstellen, beginnen Sie mit einem Ordner, der das ursprüngliche (komprimierte oder unkomprimierte) Anwendungspaket enthält. Verwenden Sie anschließend ein beliebiges Hilfsprogramm, um den Ordner mit der Erweiterung „.sfpkg“ zu zippen. Verwenden Sie z. B. [ZipFile.CreateFromDirectory](/dotnet/api/system.io.compression.zipfile.createfromdirectory?view=netcore-3.1#System_IO_Compression_ZipFile_CreateFromDirectory_System_String_System_String_System_IO_Compression_CompressionLevel_System_Boolean_).
 
 ```csharp
 ZipFile.CreateFromDirectory(appPackageDirectoryPath, sfpkgFilePath);

@@ -3,21 +3,20 @@ title: Traffic Manager-Endpunkttypen | Microsoft Docs
 description: In diesem Artikel werden die unterschiedlichen Arten von Endpunkten beschrieben, die mit Azure Traffic Manager verwendet werden können.
 services: traffic-manager
 documentationcenter: ''
-author: asudbring
-manager: twooley
+author: duongau
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/29/2017
-ms.author: allensu
-ms.openlocfilehash: 9de5b161c6bb1897058898dddd620ad093f148be
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.author: duau
+ms.openlocfilehash: 692c63849bc9e92ded43db3bf22ce14384f2b68d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69981049"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89401281"
 ---
 # <a name="traffic-manager-endpoints"></a>Traffic Manager-Endpunkte
 

@@ -1,27 +1,22 @@
 ---
 title: Anzeigen von Dienstintegritätsbenachrichtigungen im Azure-Portal
-description: Mit Dienstintegritätsbenachrichtigungen können Sie von Microsoft Azure veröffentlichte Dienstintegritätsmeldungen anzeigen.
-author: stephbaron
-ms.author: stbaron
-services: monitoring
-ms.service: service-health
+description: Sehen Sie sich Ihre Dienstintegritätsbenachrichtigungen im Azure-Portal an. Benachrichtigungen zur Dienstintegrität werden von der Azure-Infrastruktur im Azure-Aktivitätsprotokoll veröffentlicht.
 ms.topic: conceptual
 ms.date: 6/27/2019
-ms.subservice: ''
-ms.openlocfilehash: d2e18ae28e79590cb04ee0045341ea817be4a3bc
-ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
+ms.openlocfilehash: 615d08b6a04aef9e8ef2033154da8ff8caeebe04
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67538142"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90967772"
 ---
 # <a name="view-service-health-notifications-by-using-the-azure-portal"></a>Anzeigen von Dienstintegritätsbenachrichtigungen im Azure-Portal
 
-Integritätsbenachrichtigungen werden von der Azure-Infrastruktur in das [Azure Activity Log](../azure-monitor/platform/activity-logs-overview.md) veröffentlicht.  Die Benachrichtigungen enthalten Informationen über die Ressourcen in Ihrem Abonnement. Angesichts der möglicherweise großen Menge an Informationen, die im Aktivitätsprotokoll gespeichert sind, gibt es eine separate Benutzeroberfläche, um die Anzeige und Einrichtung von Warnmeldungen zu Servicezustandsmeldungen zu erleichtern. 
+Benachrichtigungen zur Dienstintegrität werden von der Azure-Infrastruktur im [Azure-Aktivitätsprotokoll](../azure-monitor/platform/platform-logs-overview.md) veröffentlicht.  Die Benachrichtigungen enthalten Informationen über die Ressourcen in Ihrem Abonnement. Angesichts der möglicherweise großen Menge an Informationen, die im Aktivitätsprotokoll gespeichert werden, ist eine separate Benutzeroberfläche vorhanden, um die Anzeige und Einrichtung von Benachrichtigungen zur Dienstintegrität zu erleichtern. 
 
 Dienstintegritätsbenachrichtigungen können je nach Klasse informativ oder handlungsrelevant sein.
 
-Weitere Informationen zu den verschiedenen Klassen von Integritätsbenachrichtigungen finden Sie unter [Eigenschaften von Integritätsbenachrichtigungen](service-health-notifications-properties.md).
+Weitere Informationen zu den verschiedenen Klassen von Dienstintegritätsbenachrichtigungen finden Sie unter [Eigenschaften von Dienstintegritätsbenachrichtigungen](service-health-notifications-properties.md).
 
 ## <a name="view-your-service-health-notifications-in-the-azure-portal"></a>Anzeigen Ihrer Dienstintegritätsbenachrichtigungen im Azure-Portal
 
@@ -35,7 +30,7 @@ Weitere Informationen zu den verschiedenen Klassen von Integritätsbenachrichtig
 
     ![Screenshot des Überwachungsaktivitätsprotokolls mit ausgewählten Warnungen](./media/service-notifications/service-health-summary.png)
 
-1. Wählen Sie **+ Aktivitätsprotokollwarnung hinzufügen** aus, und richten Sie eine Warnung ein, um sicherzustellen, dass Sie zukünftige Dienstbenachrichtigungen erhalten. Weitere Informationen finden Sie unter [Erstellen von Aktivitätsprotokollwarnungen zu Dienstbenachrichtigungen](../azure-monitor/platform/alerts-activity-log-service-notifications.md).
+1. Wählen Sie **+ Aktivitätsprotokollwarnung hinzufügen** aus, und richten Sie eine Warnung ein, um sicherzustellen, dass Sie zukünftige Dienstbenachrichtigungen erhalten. Weitere Informationen finden Sie unter [Erstellen von Aktivitätsprotokollwarnungen zu Dienstbenachrichtigungen](./alerts-activity-log-service-notifications-portal.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

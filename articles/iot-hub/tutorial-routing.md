@@ -1,5 +1,5 @@
 ---
-title: Konfigurieren des Nachrichtenroutings für Azure IoT Hub mit der Azure CLI und dem Azure-Portal | Microsoft-Dokumentation
+title: Konfigurieren des Nachrichtenroutings für Azure IoT Hub über die Azure-Befehlszeilenschnittstelle
 description: Konfigurieren des Nachrichtenroutings für Azure IoT Hub mit der Azure CLI und dem Azure-Portal
 author: robinsh
 manager: philmea
@@ -8,13 +8,17 @@ services: iot-hub
 ms.topic: tutorial
 ms.date: 03/12/2019
 ms.author: robinsh
-ms.custom: mvc
-ms.openlocfilehash: 5019951ca9628bc3beb849bdb2b148b575bc8618
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.custom:
+- mvc
+- 'Role: Cloud Development'
+- 'Role: Data Analytics'
+- devx-track-azurecli
+ms.openlocfilehash: 892dad3963e9da3560acc2c782c3d14db246ea78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69535122"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87500588"
 ---
 # <a name="tutorial-use-the-azure-cli-and-azure-portal-to-configure-iot-hub-message-routing"></a>Tutorial: Verwenden der Azure CLI und des Azure-Portals zum Konfigurieren des IoT Hub-Nachrichtenroutings
 
@@ -26,11 +30,13 @@ ms.locfileid: "69535122"
 
 In diesem Tutorial wird die Azure CLI zum Erstellen der grundlegenden Ressourcen und anschließend das [Azure-Portal](https://portal.azure.com) verwendet, um zu veranschaulichen, wie Sie das Nachrichtenrouting konfigurieren und das virtuelle Gerät für das Testen einrichten.
 
-Einige Ressourcennamen müssen global eindeutig sein. Hierzu zählen beispielsweise der IoT Hub-Name und der Name des Speicherkontos. Zur Vereinfachung wird an diese Ressourcennamen ein alphanumerischer Zufallswert namens *randomValue* angefügt. Der Zufallswert wird einmalig zu Beginn des Skripts generiert und innerhalb des gesamten Skripts nach Bedarf an die Ressourcennamen angefügt. Falls Sie keinen Zufallswert verwenden möchten, können Sie den Wert auf eine leere Zeichenfolge oder auf einen bestimmten Wert festlegen.
-
 Kopieren Sie das folgende Skript, fügen Sie es in Cloud Shell ein, und drücken Sie die EINGABETASTE. Daraufhin wird das Skript Zeile für Zeile ausgeführt. Hiermit werden die grundlegenden Ressourcen für dieses Tutorial erstellt, z. B. Speicherkonto, IoT Hub, Service Bus-Namespace und Service Bus-Warteschlange.
 
-Ein Hinweis zum Debuggen: In diesem Skript wird das Fortsetzungssymbol (umgekehrter Schrägstrich: `\`) verwendet, um die Lesbarkeit des Skripts zu verbessern. Falls beim Ausführen des Skripts ein Problem auftritt, sollten Sie sich vergewissern, dass nach den umgekehrten Schrägstrichen keine Leerzeichen stehen.
+Einige Ressourcennamen müssen global eindeutig sein. Hierzu zählen beispielsweise der IoT Hub-Name und der Name des Speicherkontos. Zur Vereinfachung wird an diese Ressourcennamen ein alphanumerischer Zufallswert namens *randomValue* angefügt. Der Zufallswert wird einmalig zu Beginn des Skripts generiert und innerhalb des gesamten Skripts nach Bedarf an die Ressourcennamen angefügt. Falls Sie keinen Zufallswert verwenden möchten, können Sie den Wert auf eine leere Zeichenfolge oder auf einen bestimmten Wert festlegen.
+
+> [!TIP]
+> Ein Tipp zum Debuggen: Dieses Skript verwendet das Fortsetzungssymbol (umgekehrter Schrägstrich: `\`), um die Lesbarkeit des Skripts zu verbessern. Falls beim Ausführen des Skripts ein Problem auftritt, sollten Sie sich vergewissern, dass in Ihrer Cloud Shell-Sitzung `bash` ausgeführt wird und dass nach keinem der umgekehrten Schrägstriche ein Leerzeichen steht.
+>
 
 ```azurecli-interactive
 # This retrieves the subscription id of the account 

@@ -1,6 +1,6 @@
 ---
-title: Senden von Azure Blob Storage-Ereignissen an einen Webendpunkt – PowerShell | Microsoft-Dokumentation
-description: Abonnieren Sie Blob Storage-Ereignisse mit Azure Event Grid.
+title: Senden von Azure Blob Storage-Ereignissen an einen Webendpunkt – PowerShell | Microsoft-Dokumentation
+description: Mithilfe von Azure Event Grid können Sie Blob Storage-Ereignisse abonnieren, ein Ereignis auslösen und das Ergebnis anzeigen. Mithilfe von Azure PowerShell können Sie Speicherereignisse an einen Webendpunkt weiterleiten.
 author: normesta
 ms.author: normesta
 ms.reviewer: dastanfo
@@ -8,12 +8,13 @@ ms.date: 08/23/2018
 ms.topic: article
 ms.service: storage
 ms.subservice: blobs
-ms.openlocfilehash: f0dae5ae79234ea29e6b17627fc07abcb3b5dfcb
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 06be168ff9dfd55a56578b3afcdab8d984416756
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68847156"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89078009"
 ---
 # <a name="quickstart-route-storage-events-to-web-endpoint-with-powershell"></a>Schnellstart: Weiterleiten von Speicherereignissen an einen Webendpunkt per PowerShell
 
@@ -25,7 +26,7 @@ Am Ende sehen Sie, dass die Ereignisdaten an die Web-App gesendet wurden.
 
 ![Anzeigen der Ergebnisse](./media/storage-blob-event-quickstart-powershell/view-results.png)
 
-## <a name="setup"></a>Einrichtung
+## <a name="setup"></a>Einrichten
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -58,7 +59,7 @@ $resourceGroup = "gridResourceGroup"
 New-AzResourceGroup -Name $resourceGroup -Location $location
 ```
 
-## <a name="create-a-storage-account"></a>Speicherkonto erstellen
+## <a name="create-a-storage-account"></a>Erstellen eines Speicherkontos
 
 Blob Storage-Ereignisse stehen in Speicherkonten vom Typ „Allgemein v2“ und in Blob Storage-Konten zur Verfügung. Speicherkonten vom Typ **Allgemein v2** unterstützen alle Features für alle Speicherdienste – einschließlich Blobs, Dateien, Warteschlangen und Tabellen. **Blob Storage-Konten** sind spezielle Speicherkonten und dienen dazu, unstrukturierte Daten als Blobs (Objekte) in Azure Storage zu speichern. BLOB-Speicherkonten sind wie allgemeine Speicherkonten und besitzen die gleichen Haltbarkeits-, Verfügbarkeits-, Skalierbarkeits- und Leistungseigenschaften, die Sie schon heute verwenden – einschließlich vollständiger API-Konsistenz für Blockblobs und Anfügeblobs. Weitere Informationen finden Sie unter [Azure-Speicherkonto – Übersicht](../common/storage-account-overview.md).
 

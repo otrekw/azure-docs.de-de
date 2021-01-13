@@ -1,52 +1,45 @@
 ---
-title: 'Tutorial: Verwenden der Azure Batch-Clientbibliothek für Node.js | Microsoft-Dokumentation'
+title: Verwenden der Azure Batch-Clientbibliothek für Node.js
 description: Erfahren Sie mehr über die grundlegenden Konzepte von Azure Batch, und erstellen Sie eine einfache Lösung mit Node.js.
-services: batch
-author: shwetams
-manager: gwallace
-ms.assetid: ''
-ms.service: batch
-ms.devlang: nodejs
-ms.topic: conceptual
-ms.workload: big-compute
-ms.date: 05/22/2017
-ms.author: shg
-ms.openlocfilehash: a6895773e0109aa0fb643e4fadf8a31ac5b1a33a
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.topic: how-to
+ms.date: 10/08/2020
+ms.openlocfilehash: 8d34d5bbb302e3781aabdd697de11d3d492b879a
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68323402"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97106698"
 ---
 # <a name="get-started-with-batch-sdk-for-nodejs"></a>Erste Schritte mit dem Batch SDK für Node.js
 
-Hier werden die Grundlagen für die Erstellung eines Batch-Clients in Node.js mit dem [Node.js SDK für Azure Batch](/javascript/api/overview/azure/batch) vermittelt. Zum besseren Verständnis gehen wir ein Szenario für eine Batch-Anwendung Schritt für Schritt durch und richten sie dann mithilfe eines Node.js-Clients ein.  
+Hier werden die Grundlagen für die Erstellung eines Batch-Clients in Node.js mit dem [Node.js SDK für Azure Batch](/javascript/api/overview/azure/batch) vermittelt. Zum besseren Verständnis gehen wir ein Szenario für eine Batch-Anwendung Schritt für Schritt durch und richten sie dann mithilfe eines Node.js-Clients ein.
 
 ## <a name="prerequisites"></a>Voraussetzungen
+
 In diesem Artikel wird davon ausgegangen, dass Sie über Node.js-Kenntnisse verfügen und mit Linux vertraut sind. Außerdem wird davon ausgegangen, dass Sie über ein Azure-Konto mit Zugriffsrechten für die Erstellung von Batches und Speicherdiensten verfügen.
 
 Sehen Sie sich am besten zuerst die [technische Übersicht zu Azure Batch](batch-technical-overview.md) an, bevor Sie sich mit den Schritten in diesem Artikel beschäftigen.
 
-## <a name="the-tutorial-scenario"></a>Das Tutorialszenario
-Das Batch-Workflowszenario sieht wie folgt aus: Wir haben ein einfaches, in Python geschriebenes Skript, das alle CSV-Dateien aus einem Azure Blob Storage-Container herunterlädt und sie in das JSON-Format konvertiert. Zur parallelen Verarbeitung mehrerer Speicherkontocontainer stellen wir das Skript als Azure Batch-Auftrag bereit.
+## <a name="understand-the-scenario"></a>Das Szenario
+
+Wir verwenden hier ein einfaches, in Python geschriebenes Skript, das alle CSV-Dateien aus einem Azure Blob Storage-Container herunterlädt und sie in das JSON-Format konvertiert. Zur parallelen Verarbeitung mehrerer Speicherkontocontainer stellen wir das Skript als Azure Batch-Auftrag bereit.
 
 ## <a name="azure-batch-architecture"></a>Azure Batch-Architektur
+
 Das folgende Diagramm zeigt, wie sich das Python-Skript mit Azure Batch und einem Node.js-Client skalieren lässt.
 
-![Azure Batch-Szenario](./media/batch-nodejs-get-started/BatchScenario.png)
+![Abbildung der Szenarioarchitektur.](./media/batch-nodejs-get-started/BatchScenario.png)
 
 Der Node.js-Client stellt einen Batchauftrag mit einer Vorbereitungsaufgabe (wird weiter unten noch ausführlicher erläutert) und einer Reihe von Aufgaben (abhängig von der Containeranzahl im Speicherkonto) bereit. Die Skripts können aus dem GitHub-Repository heruntergeladen werden.
 
-* [Node.js-Client](https://github.com/Azure/azure-batch-samples/blob/master/Node.js/GettingStarted/nodejs_batch_client_sample.js)
-* [Shellskripts für die Vorbereitungsaufgabe](https://github.com/Azure/azure-batch-samples/blob/master/Node.js/GettingStarted/startup_prereq.sh)
-* [Python-Prozessor für die Konvertierung von CSV in JSON](https://github.com/Azure/azure-batch-samples/blob/master/Node.js/GettingStarted/processcsv.py)
+- [Node.js-Client](https://github.com/Azure/azure-batch-samples/blob/master/Node.js/GettingStarted/nodejs_batch_client_sample.js)
+- [Shellskripts für die Vorbereitungsaufgabe](https://github.com/Azure/azure-batch-samples/blob/master/Node.js/GettingStarted/startup_prereq.sh)
+- [Python-Prozessor für die Konvertierung von CSV in JSON](https://github.com/Azure/azure-batch-samples/blob/master/Node.js/GettingStarted/processcsv.py)
 
 > [!TIP]
 > Der Node.js-Client unter dem angegebenen Link enthält keinen spezifischen Code für die Bereitstellung als Azure-Funktionen-App. Erstellungsanweisungen für eine solche App finden Sie unter folgenden Links:
 > - [Erstellen Ihrer ersten Funktion im Azure-Portal](../azure-functions/functions-create-first-azure-function.md)
 > - [Planen der Ausführung von Code mit Azure Functions](../azure-functions/functions-bindings-timer.md)
->
->
 
 ## <a name="build-the-application"></a>Erstellen der Anwendung
 
@@ -62,8 +55,6 @@ Dieser Befehl installiert die neueste Version des Azure Batch SDKs für Node.js.
 
 >[!Tip]
 > In einer Azure-Funktionen-App können auf der Registerkarte „Einstellungen“ der Azure-Funktion zur Kudu-Konsole navigieren, um Befehle vom Typ „npm install“ auszuführen. In diesem Fall installieren Sie so das Azure Batch SDK für Node.js.
->
->
 
 ### <a name="step-2-create-an-azure-batch-account"></a>Schritt 2: Erstellen eines Azure Batch-Kontos
 
@@ -86,6 +77,7 @@ Jedes Batch-Konto verfügt über entsprechende Zugriffsschlüssel. Diese Schlüs
 Kopieren Sie den Schlüssel, und speichern Sie ihn für die späteren Schritte.
 
 ### <a name="step-3-create-an-azure-batch-service-client"></a>Schritt 3: Erstellen eines Azure Batch-Dienstclients
+
 Der folgende Codeausschnitt importiert zunächst das Node.js-Modul „azure-batch“ und erstellt anschließend einen Batch-Dienstclient. Sie müssen zuerst ein SharedKeyCredentials-Objekt mit dem Batch-Kontoschlüssel erstellen, den Sie im vorherigen Schritt kopiert haben.
 
 ```nodejs
@@ -117,19 +109,16 @@ Screenshot:
 
 ![Azure Batch-URI](./media/batch-nodejs-get-started/azurebatchuri.png)
 
-
-
 ### <a name="step-4-create-an-azure-batch-pool"></a>Schritt 4: Erstellen eines Azure Batch-Pools
+
 Ein Azure Batch-Pool besteht aus mehreren virtuellen Computern (auch Batch-Knoten genannt). Der Azure Batch-Dienst stellt die Aufgaben auf diesen Knoten bereit und verwaltet sie. Sie können für Ihren Pool folgende Konfigurationsparameter definieren:
 
-* Art des VM-Images
-* Größe des VM-Images
-* Anzahl von VM-Knoten
+- Art des VM-Images
+- Größe des VM-Images
+- Anzahl von VM-Knoten
 
-> [!Tip]
+> [!TIP]
 > Größe und Anzahl der VM-Knoten hängen größtenteils von der Anzahl von Aufgaben ab, die parallel ausgeführt werden sollen, sowie von der Aufgabe selbst. Die optimale Anzahl und Größe können Sie mithilfe von Tests ermitteln.
->
->
 
 Der folgende Codeausschnitt erstellt die Konfigurationsparameterobjekte:
 
@@ -147,10 +136,8 @@ var vmSize = "STANDARD_F4"
 var numVMs = 4
 ```
 
-> [!Tip]
+> [!TIP]
 > Eine Liste mit den für Azure Batch verfügbaren Linux-VM-Images und ihren SKU-IDs finden Sie unter [Liste mit VM-Images](batch-linux-nodes.md#list-of-virtual-machine-images).
->
->
 
 Nach dem Definieren der Poolkonfiguration können Sie den Azure Batch-Pool erstellen. Der Batch-Poolbefehl erstellt die Azure-VM-Knoten und bereitet sie für den Empfang auszuführender Aufgaben vor. Jeder Pool muss über eine eindeutige ID verfügen, damit in späteren Schritten auf ihn verwiesen werden kann.
 
@@ -182,7 +169,7 @@ var cloudPool = batch_client.pool.get(poolid,function(error,result,request,respo
         {
             if(error.statusCode==404)
             {
-                console.log("Pool not found yet returned 404...");    
+                console.log("Pool not found yet returned 404...");
 
             }
             else
@@ -249,44 +236,41 @@ Im Anschluss sehen Sie ein Beispielergebnisobjekt, das von der Funktion „pool.
   targetDedicated: 4,
   enableAutoScale: false,
   enableInterNodeCommunication: false,
-  maxTasksPerNode: 1,
+  taskSlotsPerNode: 1,
   taskSchedulingPolicy: { nodeFillType: 'Spread' } }
 ```
 
-
 ### <a name="step-4-submit-an-azure-batch-job"></a>Schritt 4: Übermitteln eines Azure Batch-Auftrags
+
 Ein Azure Batch-Auftrag ist eine logische Gruppe ähnlicher Aufgaben. In diesem Szenario handelt es sich dabei um die Aufgabe „CSV in JSON konvertieren“. Jede dieser Aufgabe kann CSV-Dateien aus den einzelnen Azure Storage-Containern verarbeiten.
 
 Diese Aufgaben werden parallel ausgeführt, über mehrere Knoten hinweg bereitgestellt und vom Azure Batch-Dienst koordiniert.
 
-> [!Tip]
-> Mit der Eigenschaft [maxTasksPerNode](https://azure.github.io/azure-sdk-for-node/azure-batch/latest/Pool.html#add) können Sie die maximale Anzahl von Aufgaben angeben, die auf einem einzelnen Knoten gleichzeitig ausgeführt werden können.
->
->
+> [!TIP]
+> Mit der Eigenschaft [taskSlotsPerNode](https://azure.github.io/azure-sdk-for-node/azure-batch/latest/Pool.html#add) können Sie die maximale Anzahl von Aufgaben angeben, die auf einem einzelnen Knoten gleichzeitig ausgeführt werden können.
 
 #### <a name="preparation-task"></a>Vorbereitungsaufgabe
 
 Bei den erstellten VM-Knoten handelt es sich um leere Ubuntu-Knoten. Oftmals müssen zur Vorbereitung bestimmte Programme installiert werden.
 Für Linux-Knoten können Sie in der Regel ein Shellskript verwenden, das vor der Ausführung der eigentlichen Aufgaben die erforderlichen Komponenten installiert. Sie können jedoch auch eine andere programmierbare ausführbare Datei verwenden.
+
 Das [Shellskript](https://github.com/shwetams/azure-batchclient-sample-nodejs/blob/master/startup_prereq.sh) in diesem Beispiel installiert „python-pip“ und das Azure Storage SDK für Python.
 
 Sie können das Skript in ein Azure Storage-Konto hochladen und einen SAS-URI für den Zugriff auf das Skript generieren. Dieser Prozess kann mit dem Azure Storage SDK für Node.js auch automatisiert werden.
 
-> [!Tip]
+> [!TIP]
 > Eine Vorbereitungsaufgabe für einen Auftrag wird nur auf den VM-Knoten ausgeführt, auf denen diese spezielle Aufgabe ausgeführt werden muss. Falls erforderliche Komponenten unabhängig von den ausgeführten Aufgaben auf allen Knoten installiert werden sollen, können Sie beim Hinzufügen eines Pools die Eigenschaft [startTask](https://azure.github.io/azure-sdk-for-node/azure-batch/latest/Pool.html#add) verwenden. Verwenden Sie bei Bedarf die folgende Vorbereitungsaufgabendefinition als Referenz.
->
->
 
 Eine Vorbereitungsaufgabe wird im Rahmen der Azure Batch-Auftragsübermittlung angegeben. Für die Vorbereitungsaufgabe stehen folgende Konfigurationsparameter zur Verfügung:
 
-* **ID**: Ein eindeutiger Bezeichner für die Vorbereitungsaufgabe.
-* **commandLine**: Befehlszeile zum Ausführen der ausführbaren Aufgabendatei.
-* **resourceFiles**: Array mit Objekten, die Details zu Dateien angeben, welche zum Ausführen dieser Aufgabe heruntergeladen werden müssen.  Verfügbare Optionen:
-    - blobSource: Der SAS-URI der Datei.
-    - filePath: Lokaler Pfad zum Herunterladen und Speichern der Datei.
-    - fileMode: Nur relevant für Linux-Knoten. „fileMode“ wird im Oktalformat mit dem Standardwert „0770“ angegeben.
-* **waitForSuccess**: Wird dieser Parameter auf „true“ festgelegt, wird die Aufgabe nicht ausgeführt, wenn bei der Vorbereitungsaufgabe ein Fehler auftritt.
-* **runElevated**: Legen Sie diesen Parameter auf „true“ fest, falls für die Aufgabenausführung erhöhte Rechte erforderlich sind.
+- **ID:** Ein eindeutiger Bezeichner für die Vorbereitungsaufgabe.
+- **commandLine**: Befehlszeile zum Ausführen der ausführbaren Aufgabendatei.
+- **resourceFiles**: Array mit Objekten, die Details zu Dateien angeben, welche zum Ausführen dieser Aufgabe heruntergeladen werden müssen.  Verfügbare Optionen:
+  - blobSource: Der SAS-URI der Datei.
+  - filePath: Lokaler Pfad zum Herunterladen und Speichern der Datei.
+  - fileMode: Nur relevant für Linux-Knoten. „fileMode“ wird im Oktalformat mit dem Standardwert „0770“ angegeben.
+- **waitForSuccess**: Wird dieser Parameter auf „true“ festgelegt, wird die Aufgabe nicht ausgeführt, wenn bei der Vorbereitungsaufgabe ein Fehler auftritt.
+- **runElevated**: Legen Sie diesen Parameter auf „true“ fest, falls für die Aufgabenausführung erhöhte Rechte erforderlich sind.
 
 Der folgende Codeausschnitt zeigt das Skriptkonfigurationsbeispiel für die Vorbereitungsaufgabe:
 
@@ -310,22 +294,21 @@ Wenn zur Ausführung Ihrer Aufgaben keine erforderlichen Komponenten installiert
      }});
 ```
 
-
 ### <a name="step-5-submit-azure-batch-tasks-for-a-job"></a>Schritt 5: Übermitteln von Azure Batch-Aufgaben für einen Auftrag
 
 Nach der Erstellung des CSV-Verarbeitungsauftrags können wir nun Aufgaben für diesen Auftrag erstellen. Wenn wir beispielsweise über vier Container verfügen, müssen wir vier Aufgaben erstellen (jeweils eine pro Container).
 
 Das [Python-Skript](https://github.com/shwetams/azure-batchclient-sample-nodejs/blob/master/processcsv.py) akzeptiert zwei Parameter:
 
-* container_name: Der Storage-Container zum Herunterladen von Dateien.
-* pattern: Ein optionaler Parameter für das Dateinamensmuster.
+- container_name: Der Storage-Container zum Herunterladen von Dateien.
+- pattern: Ein optionaler Parameter für das Dateinamensmuster.
 
 Der folgende Code zeigt die Übermittlung von Aufgaben an den zuvor erstellten Azure Batch-Auftrag „process csv“ für vier Container („con1“, „con2“, „con3“ und „con4“):
 
 ```nodejs
 // storing container names in an array
 var container_list = ["con1","con2","con3","con4"]
-    container_list.forEach(function(val,index){           
+    container_list.forEach(function(val,index){
 
            var container_name = val;
            var taskID = container_name + "_process";
@@ -333,7 +316,7 @@ var container_list = ["con1","con2","con3","con4"]
            var task = batch_client.task.add(poolid,task_config,function(error,result){
                 if(error != null)
                 {
-                    console.log(error.response);     
+                    console.log(error.response);
                 }
                 else
                 {
@@ -347,12 +330,11 @@ var container_list = ["con1","con2","con3","con4"]
     });
 ```
 
-Der Code fügt dem Pool mehrere Aufgaben hinzu. Jede dieser Aufgaben wird auf einem Knoten im Pool mit erstellten virtuellen Computern ausgeführt. Falls die Anzahl von Aufgaben die Anzahl virtueller Computer in einem Pool oder den Wert der Eigenschaft „maxTasksPerNode“ übersteigt, wird gewartet, bis ein Knoten verfügbar gemacht wird. Diese Orchestrierung wird von Azure Batch automatisch durchgeführt.
+Der Code fügt dem Pool mehrere Aufgaben hinzu. Jede dieser Aufgaben wird auf einem Knoten im Pool mit erstellten virtuellen Computern ausgeführt. Falls die Anzahl von Aufgaben die Anzahl virtueller Computer in einem Pool oder den Wert der Eigenschaft „taskSlotsPerNode“ übersteigt, wird gewartet, bis ein Knoten verfügbar gemacht wird. Diese Orchestrierung wird von Azure Batch automatisch durchgeführt.
 
 Im Portal stehen detaillierte Ansichten für den Aufgaben- und Auftragsstatus zur Verfügung. Sie können aber auch die list- und get-Funktionen im Azure Node SDK verwenden. Ausführliche Informationen finden Sie in der [Dokumentation](https://azure.github.io/azure-sdk-for-node/azure-batch/latest/Job.html).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Falls Sie noch keine Erfahrung mit dem Dienst haben, helfen Ihnen die Informationen im Artikel [Übersicht über Azure Batch-Features](batch-api-basics.md) weiter.
+- Erfahren Sie mehr über den [Workflow des Batch-Diensts und primäre Ressourcen](batch-service-workflow-features.md) wie Pools, Knoten, Aufträge und Aufgaben.
 - Informationen zur Batch-API finden Sie in der [Batch-Referenz für Node.js](/javascript/api/overview/azure/batch).
-

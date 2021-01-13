@@ -1,26 +1,25 @@
 ---
-title: 'PowerShell-Skript: Massenkopieren von Daten mithilfe von Azure Data Factory | Microsoft-Dokumentation'
+title: Massenkopieren von Daten mithilfe von PowerShell
 description: Dieses PowerShell-Skript zeigt, wie Sie Azure Data Factory zum Massenkopieren von Daten aus einem Quelldatenspeicher in einen Zieldatenspeicher verwenden.
 services: data-factory
+ms.author: jingwang
 author: linda33wj
-manager: craigg
-editor: ''
+manager: shwang
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: article
+ms.custom: seo-lt-2019
 ms.date: 10/31/2017
-ms.author: jingwang
-ms.openlocfilehash: d2db5bced78a00c8acabc150752fe65e9515dff1
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 3b06cc68a4de50ae95d8946f32b241d38b4781ea
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60480637"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96460963"
 ---
 # <a name="powershell-script---copy-multiple-tables-in-bulk-by-using-azure-data-factory"></a>PowerShell-Skript: Massenkopieren von mehreren Tabellen mithilfe von Azure Data Factory
 
-Dieses PowerShell-Beispielskript kopiert Daten aus mehreren Tabellen in einer Azure SQL-Datenbank in eine Azure SQL Data Warehouse-Instanz.
+Dieses PowerShell-Beispielskript kopiert Daten aus mehreren Tabellen in Azure SQL-Datenbank in Azure Synapse Analytics.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -33,7 +32,7 @@ Die Voraussetzungen für das Ausführen dieses Beispiels finden Sie unter [Tutor
 > [!IMPORTANT]
 > Dieses Skript erstellt JSON-Dateien, die Data Factory-Entitäten (verknüpften Dienst, Dataset und Pipeline) auf der Festplatte im Ordner „c:\“ definieren.
 
-[!code-powershell[main](../../../powershell_scripts/data-factory/bulk-copy-from-sql-databse-to-sql-data-warehouse/bulk-copy-from-sql-database-to-sql-data-warehouse.ps1 "Bulk copy from Azure SQL Database => Azure SQL Data Warehouse")]
+[!code-powershell[main](../../../powershell_scripts/data-factory/bulk-copy-from-sql-databse-to-sql-data-warehouse/bulk-copy-from-sql-database-to-sql-data-warehouse.ps1 "Bulk copy from Azure SQL Database => Azure Synapse Analytics")]
 
 ## <a name="clean-up-deployment"></a>Bereinigen der Bereitstellung
 
@@ -66,6 +65,6 @@ Das Skript verwendet die folgenden Befehle:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zu Azure PowerShell finden Sie in der [Azure PowerShell-Dokumentation](https://docs.microsoft.com/powershell/).
+Weitere Informationen zu Azure PowerShell finden Sie in der [Azure PowerShell-Dokumentation](/powershell/).
 
 Zusätzliche PowerShell-Skriptbeispiele für Azure Data Factory finden Sie unter [PowerShell-Beispiele für Azure Data Factory](../samples-powershell.md).

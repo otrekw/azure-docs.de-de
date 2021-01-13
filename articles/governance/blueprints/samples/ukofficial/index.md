@@ -1,19 +1,14 @@
 ---
-title: 'Beispiele: Blaupause für UK OFFICIAL und UK NHS – Übersicht'
-description: Übersicht und Architektur der UK OFFICIAL- und UK NHS-Blaupausenbeispiele
-services: blueprints
-author: DCtheGeek
-ms.author: dacoulte
-ms.date: 06/26/2019
-ms.topic: conceptual
-ms.service: blueprints
-manager: carmonm
-ms.openlocfilehash: 21264947756510f139a9c99f23b4a3f28088b2eb
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+title: 'Blaupausenbeispiele für UK OFFICIAL und UK NHS: Übersicht'
+description: Übersicht und Architektur der UK OFFICIAL- und UK NHS-Blaupausenbeispiele Dieses Blaupausenbeispiel unterstützt Kunden bei der Bewertung spezifischer Kontrollen.
+ms.date: 11/02/2020
+ms.topic: sample
+ms.openlocfilehash: 8f68af5f61c0ae89e7ad55abec1fe235fa807d56
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70231599"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93420295"
 ---
 # <a name="overview-of-the-uk-official-and-uk-nhs-blueprint-samples"></a>Übersicht der UK OFFICIAL- und UK NHS-Blaupausenbeispiele
 

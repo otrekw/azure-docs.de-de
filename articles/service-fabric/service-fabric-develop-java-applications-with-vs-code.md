@@ -1,25 +1,17 @@
 ---
-title: Entwickeln von Java Azure Service Fabric-Anwendungen mit Visual Studio Code | Microsoft-Dokumentation
+title: Entwickeln von Java-Anwendungen mit Visual Studio Code
 description: In diesem Artikel wird das Erstellen, Bereitstellen und Debuggen von Java Service Fabric-Anwendungen mit Visual Studio Code beschrieben.
-services: service-fabric
-documentationcenter: .net
 author: peterpogorski
-manager: chackdan
-editor: ''
-ms.assetid: 96176149-69bb-4b06-a72e-ebbfea84454b
-ms.service: service-fabric
-ms.devlang: java
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 06/29/2018
+ms.custom: devx-track-java
 ms.author: pepogors
-ms.openlocfilehash: 7f60371fb533526ef5bdb154d0c08dface9c0d1f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: cc65deb924a9f3367c2ea1d7c71544743ccf2697
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60393955"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87327360"
 ---
 # <a name="develop-java-service-fabric-applications-with-visual-studio-code"></a>Entwickeln von Java Service Fabric-Anwendungen mit Visual Studio Code
 
@@ -62,7 +54,7 @@ Nachdem Sie die Anwendung erstellt haben, können Sie sie im lokalen Cluster ber
 > [!IMPORTANT]
 > Die Bereitstellung von Java-Anwendungen im lokalen Cluster wird auf Windows-Computern nicht unterstützt.
 
-1. Wählen Sie in der **Befehlspalette** den Befehl **Service Fabric: Anwendung bereitstellen (Localhost)** aus. Die Ausgabe des Installationsvorgangs wird an das integrierte Terminal gesendet.
+1. Klicken Sie in der **Befehlspalette** auf den Befehl **Service Fabric: Anwendung bereitstellen (Localhost)** . Die Ausgabe des Installationsvorgangs wird an das integrierte Terminal gesendet.
 
    ![Befehl „Anwendung bereitstellen“ in VS Code](./media/service-fabric-develop-java-applications-with-vs-code/sf-deploy-application.png)
 
@@ -74,7 +66,7 @@ Nachdem Sie die Anwendung erstellt haben, können Sie sie im lokalen Cluster ber
 
    ![Anwendung Voting im Browser](./media/service-fabric-develop-java-applications-with-vs-code/voting-sample-in-browser.png)
 
-5. Um eine Anwendung aus einem Cluster zu entfernen, wählen Sie den Befehl **Service Fabric: Anwendung entfernen** aus der **Befehlspalette** aus. Die Ausgabe des Deinstallationsvorgangs wird an das integrierte Terminal gesendet. Mithilfe von Service Fabric Explorer können Sie überprüfen, ob die Anwendung aus dem lokalen Cluster entfernt wurde.
+5. Wählen Sie in der **Befehlspalette** den Befehl **Service Fabric: Anwendung entfernen** aus, um die Anwendung aus dem Cluster zu entfernen. Die Ausgabe des Deinstallationsvorgangs wird an das integrierte Terminal gesendet. Mithilfe von Service Fabric Explorer können Sie überprüfen, ob die Anwendung aus dem lokalen Cluster entfernt wurde.
 
 ## <a name="debug-the-application"></a>Debuggen der Anwendung
 Beim Debuggen von Anwendungen in VS Code muss die Anwendung in einem lokalen Cluster ausgeführt werden. Dem Code können Haltepunkte hinzugefügt werden.
@@ -127,7 +119,7 @@ Gehen Sie wie folgt vor, um einen Haltepunkt festzulegen:
    
    ![Trennen vom Debugger](./media/service-fabric-develop-java-applications-with-vs-code/debug-bar-disconnect.png)
        
-5. Wenn Sie das Debuggen abgeschlossen haben, können Sie die CounterService-Anwendung mit dem Befehl **Service Fabric: Anwendung entfernen** verwenden, um die Voting-Anwendung aus Ihrem lokalen Cluster zu entfernen. 
+5. Wenn Sie mit dem Debuggen fertig sind, können Sie die Anwendung Voting mit dem Befehl **Service Fabric: Anwendung entfernen** aus Ihrem lokalen Cluster entfernen. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

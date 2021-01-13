@@ -1,5 +1,5 @@
 ---
-title: Problembehandlung bei einem langsamen oder fehlerhaften Auftrag auf einem HDInsight-Cluster – Azure HDInsight
+title: Problembehandlung bei einem langsamen oder fehlerhaften Auftrag auf einem Azure HDInsight-Cluster
 description: Diagnose und Problembehandlung bei einem langsamen oder nicht gelingenden Auftrag auf einem Azure HDInsight-Cluster.
 author: hrasheed-msft
 ms.author: hrasheed
@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: troubleshooting
 ms.date: 08/15/2019
-ms.openlocfilehash: efb2ac4be074508107bb31ae321c27a3d1263d9e
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.openlocfilehash: 4fea7719d0aa375aad3d2795d240006222b6486c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71105345"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96022699"
 ---
 # <a name="troubleshoot-a-slow-or-failing-job-on-a-hdinsight-cluster"></a>Problembehandlung bei einem langsamen oder fehlerhaften Auftrag auf einem HDInsight-Cluster
 
@@ -47,7 +47,7 @@ Beantworten Sie die folgenden Fragen zur Identifizierung des Problems:
 
 Wichtige Clusterinformationen sind:
 
-* Clustername
+* Clustername.
 * Clusterregion – Prüfung auf [Regionsausfälle](https://azure.microsoft.com/status/) durchführen
 * Typ und Version des HDInsight-Clusters
 * Typ und Anzahl von HDInsight-Instanzen, die für die Haupt- und Workerknoten angegeben wurden
@@ -56,7 +56,7 @@ Im Azure-Portal können diese Informationen bereitgestellt werden:
 
 ![Informationen zu HDInsight im Azure-Portal](./media/hdinsight-troubleshoot-failed-cluster/hdi-azure-portal-info.png)
 
-Sie können auch die [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) verwenden:
+Sie können auch die [Azure CLI](/cli/azure/) verwenden:
 
 ```azurecli
 az hdinsight list --resource-group <ResourceGroup>
@@ -90,8 +90,8 @@ HDInsight basiert auf mehreren Azure-Diensten. Virtuelle Server werden in Azure 
 
 #### <a name="check-azure-service-usage-limits"></a>Überprüfen der Nutzungseinschränkungen von Azure-Diensten
 
-Wenn Sie einen großen Cluster starten oder viele Cluster gleichzeitig gestartet haben, kann es für einen Cluster zu einem Fehler kommen, wenn Sie eine Azure-Diensteinschränkung überschritten haben. Diensteinschränkungen variieren je nach Azure-Abonnement. Weitere Informationen finden Sie unter [Grenzwerte für Azure-Abonnements, -Dienste und -Kontingente sowie allgemeine Beschränkungen](https://docs.microsoft.com/azure/azure-subscription-service-limits).
-Sie können anfordern, dass Microsoft die Anzahl von verfügbaren HDInsight-Ressourcen erhöht (z.B. VM-Kerne und VM-Instanzen), indem Sie eine [Anforderung zur Erhöhung des Resource Manager-Kernkontingents](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request) erstellen.
+Wenn Sie einen großen Cluster starten oder viele Cluster gleichzeitig gestartet haben, kann es für einen Cluster zu einem Fehler kommen, wenn Sie eine Azure-Diensteinschränkung überschritten haben. Diensteinschränkungen variieren je nach Azure-Abonnement. Weitere Informationen finden Sie unter [Grenzwerte für Azure-Abonnements, -Dienste und -Kontingente sowie allgemeine Beschränkungen](../azure-resource-manager/management/azure-subscription-service-limits.md).
+Sie können anfordern, dass Microsoft die Anzahl von verfügbaren HDInsight-Ressourcen erhöht (z.B. VM-Kerne und VM-Instanzen), indem Sie eine [Anforderung zur Erhöhung des Resource Manager-Kernkontingents](../azure-portal/supportability/resource-manager-core-quotas-request.md) erstellen.
 
 #### <a name="check-the-release-version"></a>Überprüfen der Releaseversion
 
@@ -262,7 +262,7 @@ Als Hilfe beim Diagnostizieren der Quelle eines Clusterfehlers können Sie einen
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Verwalten von HDInsight-Clustern mithilfe der Apache Ambari-Webbenutzeroberfläche](hdinsight-hadoop-manage-ambari.md)
-* [Analysieren von HDInsight-Protokollen](hdinsight-debug-jobs.md)
+* [Analysieren von HDInsight-Protokollen](./hdinsight-troubleshoot-guide.md)
 * [Zugreifen auf die Apache Hadoop YARN-Anwendungsanmeldung unter Linux-basiertem HDInsight](hdinsight-hadoop-access-yarn-app-logs-linux.md)
 * [Aktivieren von Heapdumps für Apache Hadoop-Dienste in Linux-basiertem HDInsight](hdinsight-hadoop-collect-debug-heap-dump-linux.md)
-* [Bekannte Probleme bei Apache Spark-Clustern unter HDInsight](hdinsight-apache-spark-known-issues.md)
+* [Bekannte Probleme bei Apache Spark-Clustern unter HDInsight](./spark/apache-spark-known-issues.md)

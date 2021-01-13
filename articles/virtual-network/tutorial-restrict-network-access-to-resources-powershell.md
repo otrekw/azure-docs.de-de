@@ -1,28 +1,28 @@
 ---
-title: 'Einschränken des Netzwerkzugriffs auf PaaS-Ressourcen: Azure PowerShell | Microsoft-Dokumentation'
+title: Einschränken des Netzwerkzugriffs auf PaaS-Ressourcen – Azure PowerShell
 description: In diesem Artikel erfahren Sie, wie Sie mithilfe von Azure PowerShell den Netzwerkzugriff auf Azure-Ressourcen wie Azure Storage und Azure SQL-Datenbank mit VNET-Dienstendpunkten einschränken können.
 services: virtual-network
 documentationcenter: virtual-network
 author: KumudD
-manager: twooley
+manager: mtillman
 editor: ''
 tags: azure-resource-manager
 Customer intent: I want only resources in a virtual network subnet to access an Azure PaaS resource, such as an Azure Storage account.
 ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: ''
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/14/2018
 ms.author: kumud
-ms.custom: ''
-ms.openlocfilehash: b76256ef70b85df0c504427179518d175f08b645
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 92a5ce539cdd61feb57722756ec8722916f346de
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66727669"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89072382"
 ---
 # <a name="restrict-network-access-to-paas-resources-with-virtual-network-service-endpoints-using-powershell"></a>Einschränken des Netzwerkzugriffs auf PaaS-Ressourcen mit VNET-Dienstendpunkten mithilfe von PowerShell
 
@@ -364,7 +364,7 @@ Get-AzStorageFile `
   -Context $storageContext
 ```
 
-Der Zugriff wird verweigert, und Sie erhalten den Fehler: *Get-AzStorageFile: Der Remoteserver hat einen Fehler zurückgegeben: (403) Verboten. HTTP-Statuscode: 403 – HTTP-Fehlermeldung: Diese Anforderung ist nicht berechtigt, diesen Vorgang auszuführen*, da sich Ihr Computer nicht im Subnetz *Private* des virtuellen Netzwerks *MyVirtualNetwork* befindet.
+Der Zugriff wird verweigert, und Sie erhalten den Fehler: *Get-AzStorageFile: The remote server returned an error: (403) Verboten. HTTP-Statuscode: 403 – HTTP-Fehlermeldung: Diese Anforderung ist nicht berechtigt, diesen Vorgang auszuführen*, da sich Ihr Computer nicht im Subnetz *Private* des virtuellen Netzwerks *MyVirtualNetwork* befindet.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

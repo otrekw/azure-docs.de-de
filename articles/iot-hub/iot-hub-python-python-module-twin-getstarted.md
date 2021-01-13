@@ -1,180 +1,268 @@
 ---
-title: Erste Schritte mit der Modulidentität und dem Modulzwilling von Azure IoT Hub (Python) | Microsoft-Dokumentation
+title: Modulidentität und Modulzwilling von Azure IoT Hub (Python)
 description: Hier erfahren Sie, wie Sie mit IoT-SDKs für Python eine Modulidentität erstellen und den Modulzwilling aktualisieren.
 author: chrissie926
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: python
 ms.topic: conceptual
-ms.date: 07/30/2019
+ms.date: 04/03/2020
 ms.author: menchi
-ms.openlocfilehash: d9aeb5130f565c5fc24e2d0ced9c7ce16d2927ef
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.custom: devx-track-python
+ms.openlocfilehash: 665281adc892e6b3655c0b1d0533cb3148e62940
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71001160"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92139398"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-python"></a>Erste Schritte mit der Modulidentität und dem Modulzwilling von IoT Hub (Python)
 
 [!INCLUDE [iot-hub-selector-module-twin-getstarted](../../includes/iot-hub-selector-module-twin-getstarted.md)]
 
 > [!NOTE]
-> [Modulidentitäten und Modulzwillinge](iot-hub-devguide-module-twins.md) ähneln den Geräteidentitäten und Gerätezwillingen von Azure IoT Hub, ermöglichen jedoch eine feinere Granularität. Azure IoT Hub-Geräteidentitäten und -Gerätezwillinge ermöglichen der Back-End-Anwendung die Konfiguration eines Geräts und geben Aufschluss über den Gerätezustand. Modulidentitäten und Modulzwillinge bieten diese Funktionalität hingegen für einzelne Komponenten eines Geräts. Auf Geräten mit mehreren Komponenten (etwa auf betriebssystembasierten Geräten oder Firmwaregeräten) ermöglichen sie isolierte Konfigurationen und Zustände für die einzelnen Komponenten.
+> [Modulidentitäten und Modulzwillinge](iot-hub-devguide-module-twins.md) ähneln den Geräteidentitäten und Gerätezwillingen von Azure IoT Hub, ermöglichen jedoch eine feinere Granularität. Azure IoT Hub-Geräteidentitäten und -Gerätezwillinge ermöglichen der Back-End-Anwendung die Konfiguration eines Geräts. Außerdem geben sie Aufschluss über den Gerätezustand. Modulidentitäten und Modulzwillinge bieten diese Funktionalität hingegen für einzelne Komponenten eines Geräts. Auf Geräten mit mehreren Komponenten (etwa auf betriebssystembasierten Geräten oder Firmwaregeräten) ermöglichen sie isolierte Konfigurationen und Zustände für die einzelnen Komponenten.
 >
 
-Am Ende dieses Tutorials verfügen Sie über zwei Python-Apps:
+Am Ende dieses Tutorials verfügen Sie über drei Python-Apps:
 
-* **CreateIdentities**: Hiermit werden eine Geräteidentität, eine Modulidentität und ein zugehöriger Sicherheitsschlüssel zum Verbinden Ihrer Geräte- und Modulclients erstellt.
+* **CreateModule**: Hiermit werden eine Geräteidentität, eine Modulidentität und zugehörige Sicherheitsschlüssel zum Verbinden Ihrer Geräte- und Modulclients erstellt.
 
-* **UpdateModuleTwinReportedProperties**: Hiermit werden aktualisierte vom Modulzwilling gemeldete Eigenschaften an Ihren IoT Hub sendet.
+* **UpdateModuleTwinReportedProperties**: Hiermit werden aktualisierte gewünschte Eigenschaften für den Modulzwilling an Ihren IoT Hub gesendet.
+
+* **ReceiveModuleTwinDesiredPropertiesPatch**: Empfangen des Patchs mit den gewünschten Eigenschaften für den Modulzwilling auf Ihrem Gerät.
 
 [!INCLUDE [iot-hub-include-python-sdk-note](../../includes/iot-hub-include-python-sdk-note.md)]
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-[!INCLUDE [iot-hub-include-python-installation-notes](../../includes/iot-hub-include-python-installation-notes.md)]
+[!INCLUDE [iot-hub-include-python-v2-installation-notes](../../includes/iot-hub-include-python-v2-installation-notes.md)]
 
-## <a name="create-an-iot-hub"></a>Erstellen eines IoT Hubs
+## <a name="create-an-iot-hub"></a>Erstellen eines IoT-Hubs
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
 ## <a name="get-the-iot-hub-connection-string"></a>Abrufen der IoT-Hub-Verbindungszeichenfolge
 
-[!INCLUDE [iot-hub-howto-module-twin-shared-access-policy-text](../../includes/iot-hub-howto-module-twin-shared-access-policy-text.md)]
+In diesem Artikel erstellen Sie einen Back-End-Dienst, der ein Gerät in der Identitätsregistrierung hinzufügt und dann diesem Gerät ein Modul. Dieser Dienst erfordert die Berechtigung **Schreibvorgänge in Registrierung** (die auch **Lesevorgänge in Registrierung** umfasst). Außerdem erstellen Sie einen Dienst, der dem Modulzwilling für das neu erstellte Modul gewünschte Eigenschaften hinzufügt. Dieser Dienst erfordert die Berechtigung **Dienstverbindung**. Obwohl es standardmäßige SAS-Richtlinien gibt, mit denen diese Berechtigungen einzeln erteilt werden, erstellen Sie in diesem Abschnitt eine benutzerdefinierte SAS-Richtlinie, die beide Berechtigungen enthält.
 
-[!INCLUDE [iot-hub-include-find-registryrw-connection-string](../../includes/iot-hub-include-find-registryrw-connection-string.md)]
+[!INCLUDE [iot-hub-include-find-service-regrw-connection-string](../../includes/iot-hub-include-find-service-regrw-connection-string.md)]
 
 ## <a name="create-a-device-identity-and-a-module-identity-in-iot-hub"></a>Erstellen einer Geräteidentität und einer Modulidentität in IoT Hub
 
-In diesem Abschnitt erstellen Sie eine Python-App, mit der eine Geräte- und eine Modulidentität in der Identitätsregistrierung Ihrer IoT Hub-Identität erstellt werden. Ein Gerät oder Modul kann nur eine Verbindung mit IoT Hub herstellen, wenn in der Identitätsregistrierung ein Eintrag für dieses Gerät vorhanden ist. Weitere Informationen finden Sie im Abschnitt zur Identitätsregistrierung des [IoT Hub-Entwicklerhandbuchs](iot-hub-devguide-identity-registry.md). Wenn Sie diese Konsolen-App ausführen, generiert sie eine eindeutige ID und einen eindeutigen Schlüssel für das Gerät und das Modul. Ihr Gerät und Ihr Modul verwenden diese Werte, um sich beim Senden von D2C-Nachrichten an IoT Hub zu identifizieren. Bei den IDs gilt Groß-/Kleinschreibung.
+In diesem Abschnitt erstellen Sie eine Python-Dienst-App, mit der eine Geräte- und eine Modulidentität in der Identitätsregistrierung Ihrer IoT Hub-Identität erstellt werden. Ein Gerät oder Modul kann nur eine Verbindung mit IoT Hub herstellen, wenn in der Identitätsregistrierung ein Eintrag für dieses Gerät vorhanden ist. Weitere Informationen finden Sie unter [Grundlegendes zur Identitätsregistrierung in Ihrer IoT Hub-Instanz](iot-hub-devguide-identity-registry.md). Wenn Sie diese Konsolen-App ausführen, generiert sie eine eindeutige ID und einen eindeutigen Schlüssel für das Gerät und das Modul. Ihr Gerät und Ihr Modul verwenden diese Werte, um sich beim Senden von D2C-Nachrichten an IoT Hub zu identifizieren. Bei den IDs gilt Groß-/Kleinschreibung.
 
-Fügen Sie Ihrer Python-Datei den folgenden Code hinzu:
+1. Führen Sie an der Eingabeaufforderung den folgenden Befehl aus, um das Paket **azure-iot-hub** zu installieren:
 
-```python
-import sys
-import iothub_service_client
-from iothub_service_client import IoTHubRegistryManager, IoTHubRegistryManagerAuthMethod, IoTHubError
+    ```cmd/sh
+    pip install azure-iot-hub
+    ```
 
-CONNECTION_STRING = "YourConnString"
-DEVICE_ID = "myFirstDevice"
-MODULE_ID = "myFirstModule"
+1. Führen Sie an der Eingabeaufforderung den folgenden Befehl aus, um das Paket **msrest** zu installieren. Sie benötigen dieses Paket, um **HTTPOperationError**-Ausnahmen abzufangen.
 
-try:
-    # RegistryManager
-    iothub_registry_manager = IoTHubRegistryManager(CONNECTION_STRING)
+    ```cmd/sh
+    pip install msrest
+    ```
 
-    # CreateDevice
-    primary_key = ""
-    secondary_key = ""
-    auth_method = IoTHubRegistryManagerAuthMethod.SHARED_PRIVATE_KEY
-    new_device = iothub_registry_manager.create_device(
-        DEVICE_ID, primary_key, secondary_key, auth_method)
-    print("new_device <" + DEVICE_ID +
-          "> has primary key = " + new_device.primaryKey)
+1. Erstellen Sie mit einem Text-Editor in Ihrem Arbeitsverzeichnis eine Datei mit dem Namen **CreateModule.py**.
 
-    # CreateModule
-    new_module = iothub_registry_manager.create_module(
-        DEVICE_ID, primary_key, secondary_key, MODULE_ID, auth_method)
-    print("device/new_module <" + DEVICE_ID + "/" + MODULE_ID +
-          "> has primary key = " + new_module.primaryKey)
-
-except IoTHubError as iothub_error:
-    print("Unexpected error {0}".format(iothub_error))
-except KeyboardInterrupt:
-    print("IoTHubRegistryManager sample stopped")
-```
-
-Diese App erstellt eine Geräteidentität mit der ID **myFirstDevice** und ein Identitätsmodul mit der ID **myFirstModule** unter dem Gerät **myFirstDevice**. (Falls diese Modul-ID in der Identitätsregistrierung bereits vorhanden ist, werden mit dem Code lediglich die vorhandenen Modulinformationen abgerufen.) Anschließend zeigt die App den Primärschlüssel für diese Identität an. Sie verwenden diesen Schlüssel in der simulierten Modul-App, um eine Verbindung mit Ihrem IoT Hub herzustellen.
-
-> [!NOTE]
-> Die Identitätsregistrierung in IoT Hub speichert nur Geräte- und Modulidentitäten, um einen sicheren Zugriff auf IoT Hub zu ermöglichen. In der Identitätsregistrierung werden Geräte-IDs und -schlüssel für die Verwendung als Sicherheitsanmeldeinformationen gespeichert. Darüber hinaus wird in der Identitätsregistrierung ein Flag für den Aktivierungszustand des jeweiligen Geräts gespeichert, mit dem Sie den Zugriff für das betreffende Gerät deaktivieren können. Wenn Ihre Anwendung das Speichern weiterer gerätespezifischer Metadaten erfordert, sollte dafür ein anwendungsspezifischer Speicher verwendet werden. Es gibt keinen Flag „Aktiviert/deaktiviert“ für Modulidentitäten. Weitere Informationen finden Sie im [IoT Hub-Entwicklerhandbuch](iot-hub-devguide-identity-registry.md).
->
-
-## <a name="update-the-module-twin-using-python-device-sdk"></a>Aktualisieren des Modulzwillings mithilfe des Python-Geräte-SDKs
-
-In diesem Abschnitt erstellen Sie auf Ihrem simulierten Gerät eine Python-App, die die vom Modulzwilling gemeldeten Eigenschaften aktualisiert.
-
-1. **Abrufen der Modulverbindungszeichenfolge**: Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an. Navigieren Sie zu Ihrer IoT Hub-Instanz, und klicken Sie auf „IoT-Geräte“. Suchen Sie nach „myFirstDevice“, und öffnen Sie den Eintrag. Sie sehen, dass „myFirstModule“ erfolgreich erstellt wurde. Kopieren Sie die Modulverbindungszeichenfolge. Sie wird im nächsten Schritt benötigt.
-
-   ![Moduldetails im Azure-Portal](./media/iot-hub-python-python-module-twin-getstarted/module-detail.png)
-
-2. **Erstellen der App „UpdateModuleTwinReportedProperties“**
-
-   Fügen Sie am Anfang der Datei **Program.cs** die folgenden `using`-Anweisungen hinzu:
+1. Fügen Sie der Python-Datei den folgenden Code hinzu. Ersetzen Sie *YourIoTHubConnectionString* durch die Verbindungszeichenfolge, die Sie unter [Abrufen der IoT-Hub-Verbindungszeichenfolge](#get-the-iot-hub-connection-string) kopiert haben.
 
     ```python
     import sys
-    import iothub_service_client
-    from iothub_service_client import IoTHubRegistryManager, IoTHubRegistryManagerAuthMethod, IoTHubDeviceTwin, IoTHubError
+    from msrest.exceptions import HttpOperationError
+    from azure.iot.hub import IoTHubRegistryManager
 
-    CONNECTION_STRING = "FILL IN CONNECTION STRING"
-    DEVICE_ID = "MyFirstDevice"
-    MODULE_ID = "MyFirstModule"
-
-    UPDATE_JSON = "{\"properties\":{\"desired\":{\"telemetryInterval\":122}}}"
+    CONNECTION_STRING = "YourIotHubConnectionString"
+    DEVICE_ID = "myFirstDevice"
+    MODULE_ID = "myFirstModule"
 
     try:
-        iothub_twin = IoTHubDeviceTwin(CONNECTION_STRING)
+        # RegistryManager
+        iothub_registry_manager = IoTHubRegistryManager(CONNECTION_STRING)
 
-        twin_info = iothub_twin.get_twin(DEVICE_ID, MODULE_ID)
+        try:
+            # CreateDevice - let IoT Hub assign keys
+            primary_key = ""
+            secondary_key = ""
+            device_state = "enabled"
+            new_device = iothub_registry_manager.create_device_with_sas(
+                DEVICE_ID, primary_key, secondary_key, device_state
+            )
+        except HttpOperationError as ex:
+            if ex.response.status_code == 409:
+                # 409 indicates a conflict. This happens because the device already exists.
+                new_device = iothub_registry_manager.get_device(DEVICE_ID)
+            else:
+                raise
+
+        print("device <" + DEVICE_ID +
+              "> has primary key = " + new_device.authentication.symmetric_key.primary_key)
+
+        try:
+            # CreateModule - let IoT Hub assign keys
+            primary_key = ""
+            secondary_key = ""
+            managed_by = ""
+            new_module = iothub_registry_manager.create_module_with_sas(
+                DEVICE_ID, MODULE_ID, managed_by, primary_key, secondary_key
+            )
+        except HttpOperationError as ex:
+            if ex.response.status_code == 409:
+                # 409 indicates a conflict. This happens because the module already exists.
+                new_module = iothub_registry_manager.get_module(DEVICE_ID, MODULE_ID)
+            else:
+                raise
+
+        print("device/module <" + DEVICE_ID + "/" + MODULE_ID +
+              "> has primary key = " + new_module.authentication.symmetric_key.primary_key)
+
+    except Exception as ex:
+        print("Unexpected error {0}".format(ex))
+    except KeyboardInterrupt:
+        print("IoTHubRegistryManager sample stopped")
+    ```
+
+1. Führen Sie an der Eingabeaufforderung den folgenden Befehl aus:
+
+    ```cmd/sh
+    python CreateModule.py
+    ```
+
+Diese App erstellt eine Geräteidentität mit der ID **myFirstDevice** und ein Identitätsmodul mit der ID **myFirstModule** unter dem Gerät **myFirstDevice**. (Falls die Geräte- oder Modul-ID in der Identitätsregistrierung bereits vorhanden ist, werden mit dem Code lediglich die vorhandenen Geräte- bzw. Modulinformationen abgerufen.) Die App zeigt die ID und den Primärschlüssel für jede Identität an.
+
+> [!NOTE]
+> Die Identitätsregistrierung in IoT Hub speichert nur Geräte- und Modulidentitäten, um einen sicheren Zugriff auf IoT Hub zu ermöglichen. In der Identitätsregistrierung werden Geräte-IDs und -schlüssel für die Verwendung als Sicherheitsanmeldeinformationen gespeichert. Darüber hinaus wird in der Identitätsregistrierung ein Flag für den Aktivierungszustand des jeweiligen Geräts gespeichert, mit dem Sie den Zugriff für das betreffende Gerät deaktivieren können. Wenn Ihre Anwendung das Speichern weiterer gerätespezifischer Metadaten erfordert, sollte dafür ein anwendungsspezifischer Speicher verwendet werden. Es gibt keinen Flag „Aktiviert/deaktiviert“ für Modulidentitäten. Weitere Informationen finden Sie unter [Grundlegendes zur Identitätsregistrierung in Ihrer IoT Hub-Instanz](iot-hub-devguide-identity-registry.md).
+>
+
+## <a name="update-the-module-twin-using-python-service-sdk"></a>Aktualisieren des Modulzwillings mithilfe des Python-Dienst-SDK
+
+In diesem Abschnitt erstellen Sie eine Python-Dienst-App, die die gewünschten Eigenschaften für den Modulzwilling aktualisiert.
+
+1. Führen Sie an der Eingabeaufforderung den folgenden Befehl aus, um das Paket **azure-iot-hub** zu installieren. Sie können diesen Schritt überspringen, wenn Sie im vorherigen Abschnitt das Paket **azure-iot-hub** installiert haben.
+
+    ```cmd/sh
+    pip install azure-iot-hub
+    ```
+
+1. Erstellen Sie mit einem Text-Editor in Ihrem Arbeitsverzeichnis eine Datei mit dem Namen **UpdateModuleTwinDesiredProperties.py**.
+
+1. Fügen Sie der Python-Datei den folgenden Code hinzu. Ersetzen Sie *YourIoTHubConnectionString* durch die Verbindungszeichenfolge, die Sie unter [Abrufen der IoT-Hub-Verbindungszeichenfolge](#get-the-iot-hub-connection-string) kopiert haben.
+
+    ```python
+    import sys
+    from azure.iot.hub import IoTHubRegistryManager
+    from azure.iot.hub.models import Twin, TwinProperties
+
+    CONNECTION_STRING = "YourIoTHubConnectionString"
+    DEVICE_ID = "myFirstDevice"
+    MODULE_ID = "myFirstModule"
+
+    try:
+        # RegistryManager
+        iothub_registry_manager = IoTHubRegistryManager(CONNECTION_STRING)
+
+        module_twin = iothub_registry_manager.get_module_twin(DEVICE_ID, MODULE_ID)
         print ( "" )
-        print ( "Twin before update    :" )
-        print ( "{0}".format(twin_info) )
+        print ( "Module twin properties before update    :" )
+        print ( "{0}".format(module_twin.properties) )
 
-        twin_info_updated = iothub_twin.update_twin(DEVICE_ID, MODULE_ID, UPDATE_JSON)
+        # Update twin
+        twin_patch = Twin()
+        twin_patch.properties = TwinProperties(desired={"telemetryInterval": 122})
+        updated_module_twin = iothub_registry_manager.update_module_twin(
+            DEVICE_ID, MODULE_ID, twin_patch, module_twin.etag
+        )
         print ( "" )
-        print ( "Twin after update     :" )
-        print ( "{0}".format(twin_info_updated) )
+        print ( "Module twin properties after update     :" )
+        print ( "{0}".format(updated_module_twin.properties) )
 
-    except IoTHubError as iothub_error:
-        print ( "Unexpected error {0}".format(iothub_error) )
+    except Exception as ex:
+        print ( "Unexpected error {0}".format(ex) )
     except KeyboardInterrupt:
         print ( "IoTHubRegistryManager sample stopped" )
     ```
 
-In diesem Codebeispiel wird gezeigt, wie Sie den Modulzwilling abrufen und die gemeldeten Eigenschaften mit dem AMQP-Protokoll aktualisieren.
-
 ## <a name="get-updates-on-the-device-side"></a>Abrufen von Updates auf Geräteseite
 
-Neben dem oben aufgeführten Code können Sie den nachstehenden Codeblock hinzufügen, um die Updatenachricht des Gerätezwillings auf Ihrem Gerät abzurufen.
+In diesem Abschnitt erstellen Sie eine Python-App, mit der die aktualisierten gewünschten Eigenschaften für den Modulzwilling auf Ihr Gerät abgerufen werden.
 
-```python
-import time
-import threading
-from azure.iot.device import IoTHubModuleClient
+1. Rufen Sie die Modulverbindungszeichenfolge ab. Navigieren Sie im [Azure-Portal](https://portal.azure.com/) zu Ihrem IoT-Hub, und wählen Sie im linken Bereich **IoT-Geräte** aus. Wählen Sie in der Liste der Geräte **myFirstDevice** aus, und öffnen Sie es. Wählen Sie unter **Modulidentitäten** den Namen **myFirstModule** aus. Kopieren Sie die Modulverbindungszeichenfolge. Sie benötigen dieses Modul in einem folgenden Schritt.
 
-CONNECTION_STRING = "{deviceConnectionString}"
+   ![Moduldetails im Azure-Portal](./media/iot-hub-python-python-module-twin-getstarted/module-detail.png)
+
+1. Führen Sie an der Eingabeaufforderung den folgenden Befehl aus, um das Paket **azure-iot-device** zu installieren:
+
+    ```cmd/sh
+    pip install azure-iot-device
+    ```
+
+1. Erstellen Sie mit einem Text-Editor in Ihrem Arbeitsverzeichnis eine Datei mit dem Namen **ReceiveModuleTwinDesiredPropertiesPatch.py**.
+
+1. Fügen Sie der Python-Datei den folgenden Code hinzu. Ersetzen Sie *YourModuleConnectionString* durch die Modulverbindungszeichenfolge, die Sie in Schritt 1 kopiert haben.
+
+    ```python
+    import time
+    import threading
+    from azure.iot.device import IoTHubModuleClient
+
+    CONNECTION_STRING = "YourModuleConnectionString"
 
 
-def twin_update_listener(client):
-    while True:
-        patch = client.receive_twin_desired_properties_patch()  # blocking call
-        print("")
-        print("Twin desired properties patch received:")
-        print(patch)
-
-def iothub_client_sample_run():
-    try:
-        module_client = IoTHubModuleClient.create_from_connection_string(CONNECTION_STRING)
-
-        twin_update_listener_thread = threading.Thread(target=twin_update_listener, args=(module_client,))
-        twin_update_listener_thread.daemon = True
-        twin_update_listener_thread.start()
-
+    def twin_update_listener(client):
         while True:
-            time.sleep(1000000)
+            patch = client.receive_twin_desired_properties_patch()  # blocking call
+            print("")
+            print("Twin desired properties patch received:")
+            print(patch)
 
-    except KeyboardInterrupt:
-        print("IoTHubModuleClient sample stopped")
+    def iothub_client_sample_run():
+        try:
+            module_client = IoTHubModuleClient.create_from_connection_string(CONNECTION_STRING)
+
+            twin_update_listener_thread = threading.Thread(target=twin_update_listener, args=(module_client,))
+            twin_update_listener_thread.daemon = True
+            twin_update_listener_thread.start()
+
+            while True:
+                time.sleep(1000000)
+
+        except KeyboardInterrupt:
+            print("IoTHubModuleClient sample stopped")
 
 
-if __name__ == '__main__':
-    print ( "Starting the IoT Hub Python sample..." )
-    print ( "IoTHubModuleClient waiting for commands, press Ctrl-C to exit" )
+    if __name__ == '__main__':
+        print ( "Starting the IoT Hub Python sample..." )
+        print ( "IoTHubModuleClient waiting for commands, press Ctrl-C to exit" )
 
-    iothub_client_sample_run()
-```
+        iothub_client_sample_run()
+    ```
+
+## <a name="run-the-apps"></a>Ausführen der Apps
+
+In diesem Abschnitt führen Sie die Geräte-App **ReceiveModuleTwinDesiredPropertiesPatch** und dann die Dienst-App **UpdateModuleTwinDesiredProperties** aus, um die gewünschten Eigenschaften des Moduls zu aktualisieren.
+
+1. Öffnen Sie eine Eingabeaufforderung, und führen Sie die Geräte-App aus:
+
+    ```cmd/sh
+    python ReceiveModuleTwinDesiredPropertiesPatch.py
+    ```
+
+   ![Anfängliche Ausgabe der Geräte-App](./media/iot-hub-python-python-module-twin-getstarted/device-1.png)
+
+1. Öffnen Sie eine andere Eingabeaufforderung, und führen Sie die Dienst-App aus:
+
+    ```cmd/sh
+    python UpdateModuleTwinDesiredProperties.py
+    ```
+
+    Beachten Sie, dass in der Ausgabe der Dienst-App die gewünschte **TelemetryInterval**-Eigenschaft im aktualisierten Modulzwilling angezeigt wird:
+
+   ![Ausgabe der Dienst-App](./media/iot-hub-python-python-module-twin-getstarted/service.png)
+
+    In der Ausgabe der Geräte-App wird im empfangenen Patch für gewünschte Eigenschaften die gleiche Eigenschaft angezeigt:
+
+   ![In der Ausgabe der Geräte-App wird der Patch für gewünschte Eigenschaften angezeigt.](./media/iot-hub-python-python-module-twin-getstarted/device-2.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -182,4 +270,4 @@ Informationen zu den weiteren ersten Schritten mit IoT Hub und zum Kennenlernen 
 
 * [Erste Schritte mit der Geräteverwaltung](iot-hub-node-node-device-management-get-started.md)
 
-* [Erste Schritte mit IoT Edge](../iot-edge/tutorial-simulate-device-linux.md)
+* [Erste Schritte mit IoT Edge](../iot-edge/quickstart-linux.md)

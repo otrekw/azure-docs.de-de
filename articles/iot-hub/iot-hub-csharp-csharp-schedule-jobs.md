@@ -8,12 +8,13 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/20/2019
 ms.author: robinsh
-ms.openlocfilehash: db4824203f63fa2fe0d4256a475d18a501b17e0e
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.custom: mqtt, devx-track-csharp
+ms.openlocfilehash: 0391afe5562238f488fde7e50d914c46a5c32944
+ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70147735"
+ms.lasthandoff: 10/17/2020
+ms.locfileid: "92142462"
 ---
 # <a name="schedule-and-broadcast-jobs-net"></a>Planen und Übertragen von Aufträgen (.NET)
 
@@ -55,7 +56,9 @@ Am Ende dieses Tutorials verfügen Sie über zwei .NET-Konsolen-Apps (C#):
 
 * Ein aktives Azure-Konto. Wenn Sie nicht über ein Konto verfügen, können Sie in nur wenigen Minuten ein [kostenloses Konto](https://azure.microsoft.com/pricing/free-trial/) erstellen.
 
-## <a name="create-an-iot-hub"></a>Erstellen eines IoT Hubs
+* Stellen Sie sicher, dass der Port 8883 in Ihrer Firewall geöffnet ist. Das Beispielgerät in diesem Artikel verwendet das MQTT-Protokoll, das über Port 8883 kommuniziert. In einigen Netzwerkumgebungen von Unternehmen oder Bildungseinrichtungen ist dieser Port unter Umständen blockiert. Weitere Informationen und Problemumgehungen finden Sie unter [Herstellen einer Verbindung mit IoT Hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
+
+## <a name="create-an-iot-hub"></a>Erstellen eines IoT-Hubs
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
@@ -258,7 +261,7 @@ In diesem Abschnitt erstellen Sie eine .NET-Konsolen-App (mithilfe von C#), die 
     ```
 
     > [!NOTE]
-    > Weitere Informationen zur Abfragesyntax finden Sie unter [IoT Hub-Abfragesprache](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-query-language).
+    > Weitere Informationen zur Abfragesyntax finden Sie unter [IoT Hub-Abfragesprache](./iot-hub-devguide-query-language.md).
     >
 
 1. Fügen Sie abschließend der **Main** -Methode die folgenden Zeilen hinzu:
@@ -308,4 +311,4 @@ In diesem Tutorial haben Sie einen Auftrag zum Planen einer direkten Methode fü
 
 * Informationen zu den weiteren ersten Schritten mit IoT Hub und Geräteverwaltungsmustern, z.B. drahtloses Firmware-Remoteupdate, finden Sie im [Tutorial: Durchführen eines Firmwareupdates](tutorial-firmware-update.md).
 
-* Informationen zum Bereitstellen von KI auf Edge-Geräten mit Azure IoT Edge finden Sie unter [Schnellstart: Bereitstellen des ersten IoT Edge-Moduls auf einem Linux-basierten x64-Gerät](../iot-edge/tutorial-simulate-device-linux.md).
+* Informationen zum Bereitstellen von KI auf Edge-Geräten mit Azure IoT Edge finden Sie unter [Schnellstart: Bereitstellen des ersten IoT Edge-Moduls auf einem Linux-basierten x64-Gerät](../iot-edge/quickstart-linux.md).

@@ -3,18 +3,18 @@ author: garyericson
 ms.service: sql-database
 ms.subservice: machine-learning
 ms.topic: include
-ms.date: 04/10/2019
+ms.date: 05/27/2020
 ms.author: garye
-ms.openlocfilehash: 841157d92b4b9564a74dfbfee8de6edf83e75d3c
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 235aa6b50ef413dacb461320e50dceac7cce460d
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67608187"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "84014195"
 ---
 > [!IMPORTANT]
-> Die Machine Learning Services von Azure SQL-Datenbank werden derzeit in einer öffentlichen Vorschauversion bereitgestellt.
-> Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar.
-> Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Machine Learning Services von Azure SQL-Datenbank befinden sich derzeit in der Vorschauphase. Die Registrierung für die Vorschauversion ist zurzeit **geschlossen**.
 >
-> [Registrieren für die Vorschauversion](../articles/sql-database/sql-database-machine-learning-services-overview.md#signup)
+> Ab dem 30. Juni 2020 wird der Support eingestellt, und die Vorschauversion wird nicht für die allgemeine Verfügbarkeit freigegeben. R-Skripts, die nach dem 30. Juni 2020 verwendet werden, funktionieren nicht.
+>
+> Wenn Sie weiterhin maschinelles Lernen in Azure SQL nutzen möchten, lesen Sie die Informationen unter [**Machine Learning Services in Azure SQL Managed Instance** (Vorschauversion)](../articles/azure-sql/managed-instance/machine-learning-services-overview.md).

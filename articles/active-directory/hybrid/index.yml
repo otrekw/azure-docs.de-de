@@ -3,7 +3,7 @@ title: Dokumentation zur Hybrid-Identität
 summary: Die Identitätslösungen von Microsoft decken sowohl lokale als auch cloudbasierte Funktionen ab, und es wird eine einzelne Benutzeridentität für die standortunabhängige Authentifizierung und Autorisierung gegenüber allen Ressourcen erstellt. Wir bezeichnen dies als Hybrididentität.
 metadata:
   author: billmath
-  description: Azure AD Connect integriert Ihre lokalen Verzeichnisse in Azure Active Directory. Dadurch können Sie für Ihre Benutzer eine einzige Identität für in Azure AD integrierte in Office 365-, Azure- und SaaS-Anwendungen bereitstellen.
+  description: Azure AD Connect integriert Ihre lokalen Verzeichnisse in Azure Active Directory. Dadurch können Sie für Ihre Benutzer eine gemeinsame Identität für in Azure AD integrierte Microsoft 365-, Azure- und SaaS-Anwendungen bereitstellen.
   manager: daveba
   ms.author: billmath
   ms.collection: na
@@ -12,12 +12,12 @@ metadata:
   ms.subservice: na
   ms.topic: landing-page
   services: active-directory
-  ms.openlocfilehash: fa9007d0e9ad59ee0ffb29fe1c5c74c8530d84fa
-  ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+  ms.openlocfilehash: b23c57561a866318a6dbf38dc2d669f0e9d13d32
+  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 08/29/2019
-  ms.locfileid: "70162198"
+  ms.lasthandoff: 10/09/2020
+  ms.locfileid: "89661125"
 landingContent:
 - title: Informationen zur Hybrididentität
   linkLists:
@@ -54,7 +54,7 @@ landingContent:
   - linkListType: concept
     links:
     - text: Ermitteln der für Sie geeigneten Authentifizierungsmethode
-      url: /azure/security/fundamentals/choose-ad-authn
+      url: ./choose-ad-authn.md
 - title: Erste Schritte mit der Hybrididentität
   linkLists:
   - linkListType: how-to-guide

@@ -2,26 +2,21 @@
 title: 'Tutorial: Azure Active Directory-Integration mit Clear Review | Microsoft-Dokumentation'
 description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und Clear Review konfigurieren.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 8264159a-11a2-4a8c-8285-4efea0adac8c
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/16/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0f2a0560163f9806053f49944cbec0db2b1a9de8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e971b02fb87440d4833c2eeba8897143f97a20dd
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67105457"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97670502"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clear-review"></a>Tutorial: Azure Active Directory-Integration mit Clear Review
 
@@ -32,7 +27,7 @@ Die Integration von Clear Review in Azure AD bietet die folgenden Vorteile:
 * Sie können es Ihren Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei Clear Review anzumelden (einmaliges Anmelden; Single Sign-On, SSO).
 * Sie können Ihre Konten über das Azure-Portal an einem zentralen Ort verwalten.
 
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md).
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -41,6 +36,9 @@ Um die Azure AD-Integration mit Clear Review konfigurieren zu können, benötige
 
 * Ein Azure AD-Abonnement Sollten Sie über keine Azure AD-Umgebung verfügen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) verwenden.
 * Ein Clear Review-Abonnement, für das einmaliges Anmelden aktiviert ist
+
+> [!NOTE]
+> Diese Integration kann auch über die Azure AD-Umgebung für die US Government-Cloud verwendet werden. Sie finden diese Anwendung im Azure AD-Katalog für US Government-Cloudanwendungen und konfigurieren sie auf die gleiche Weise wie in der öffentlichen Cloud.
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
 
@@ -68,7 +66,7 @@ Zum Konfigurieren der Integration von Clear Review in Azure AD müssen Sie Clear
 
 4. Geben Sie im Suchfeld **Clear Review** ein, wählen Sie im Ergebnisbereich **Clear Review** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
 
-     ![Clear Review in der Ergebnisliste](common/search-new-app.png)
+    ![Clear Review in der Ergebnisliste](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurieren und Testen des einmaligen Anmeldens in Azure AD
 
@@ -104,7 +102,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Clear Re
 
 4. Führen Sie im Abschnitt **Grundlegende SAML-Konfiguration** die folgenden Schritte aus, wenn Sie die Anwendung im **IDP-initiierten** Modus konfigurieren möchten:
 
-    ![SSO-Informationen zur Domäne und zu den URLs für Clear Review](common/idp-intiated.png)
+    ![Screenshot: Seite „Grundlegende SAML-Konfiguration“ zum Eingeben des Bezeichners und einer Antwort-URL sowie zum Klicken auf „Speichern“](common/idp-intiated.png)
 
     a. Geben Sie im Textfeld **Bezeichner** eine URL im folgenden Format ein: `https://<customer name>.clearreview.com/sso/metadata/`
 
@@ -112,7 +110,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Clear Re
 
 5. Klicken Sie auf **Zusätzliche URLs festlegen**, und führen Sie den folgenden Schritt aus, wenn Sie die Anwendung im **SP-initiierten Modus** konfigurieren möchten:
 
-    ![SSO-Informationen zur Domäne und zu den URLs für Clear Review](common/metadata-upload-additional-signon.png)
+    ![Screenshot: Option „Zusätzliche URLs festlegen“ zum Eingeben einer Anmelde-URL](common/metadata-upload-additional-signon.png)
 
     Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<customer name>.clearreview.com`
 
@@ -121,15 +119,15 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Clear Re
 
 6. Die Clear Review-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Daher müssen Sie Ihrer Konfiguration der SAML-Tokenattribute benutzerdefinierte Attributzuordnungen hinzufügen. Der folgende Screenshot zeigt die Liste der Standardattribute. **nameidentifier** ist hier **user.userprincipalname** zugeordnet. Die Clear Review-Anwendung erwartet, dass **nameidentifier** der Wert **user.mail** zugeordnet ist. Sie müssen die Attributzuordnung daher entsprechend ändern, indem Sie auf das Symbol **Bearbeiten** klicken.
 
-    ![image](common/edit-attribute.png)
+    ![Screenshot der Benutzerattribute mit ausgewähltem Symbol „Bearbeiten“](common/edit-attribute.png)
 
 7. Führen Sie im Dialogfeld **Benutzerattribute und Ansprüche** die folgenden Schritte aus:
 
     a. Klicken Sie auf das **Symbol „Bearbeiten“** rechts vom **Namensbezeichnerwert**.
 
-    ![image](./media/clearreview-tutorial/attribute02.png)
+    ![Screenshot von „Benutzerattribute und Ansprüche“, bei dem das Bearbeitungssymbol ausgewählt ist](./media/clearreview-tutorial/attribute02.png)
 
-    ![image](./media/clearreview-tutorial/attribute01.png)
+    ![Screenshot des Dialogfelds „Benutzeransprüche verwalten“, in dem Sie die hier beschriebenen Werte eingeben können](./media/clearreview-tutorial/attribute01.png)
 
     b. Wählen Sie in der Liste **Quellattribut** den Attributwert **user.mail** für diese Zeile aus.
 
@@ -155,15 +153,15 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Clear Re
 
 2. Wählen Sie **Admin** aus dem linken Navigationsbereich aus.
 
-    ![Schaltfläche „Speichern“ beim Konfigurieren des einmaligen Anmeldens](./media/clearreview-tutorial/tutorial_clearreview_app_admin1.png)
+    ![Screenshot des Clear Review-Portals, in dem „Admin“ ausgewählt ist](./media/clearreview-tutorial/tutorial_clearreview_app_admin1.png)
 
 3. Klicken Sie im Abschnitt **Integrationen** am unteren Rand der Seite auf die Schaltfläche **Änderung** rechts neben **Einstellungen für einmaliges Anmelden**.
 
-    ![Schaltfläche „Speichern“ beim Konfigurieren des einmaligen Anmeldens](./media/clearreview-tutorial/tutorial_clearreview_app_admin2.png)
+    ![Screenshot der Schaltfläche „Ändern“ für einmaliges Anmelden](./media/clearreview-tutorial/tutorial_clearreview_app_admin2.png)
 
 4. Führen Sie im Dialogfeld **Einzelanmeldungseinstellungen** die folgenden Schritte aus:
 
-    ![Schaltfläche „Speichern“ beim Konfigurieren des einmaligen Anmeldens](./media/clearreview-tutorial/tutorial_clearreview_app_admin3.png)
+    ![Screenshot des Abschnitts „Einstellungen für einmaliges Anmelden“ zum Eingeben der Informationen in diesem Schritt](./media/clearreview-tutorial/tutorial_clearreview_app_admin3.png)
 
     a. Fügen Sie in das Textfeld **Issuer URL** (Aussteller-URL) den Wert des **Azure AD-Bezeichners** ein, den Sie aus dem Azure-Portal kopiert haben.
 
@@ -192,13 +190,13 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
     ![Dialogfeld „Benutzer“](common/user-properties.png)
 
     a. Geben Sie im Feld **Name** den Namen **BrittaSimon** ein.
-  
+
     b. Geben Sie im Feld **Benutzername** Folgendes ein: **brittasimon\@ihreunternehmensdomäne.erweiterung**.  
     Zum Beispiel, BrittaSimon@contoso.com
 
     c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.
 
-    d. Klicken Sie auf **Create**.
+    d. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
@@ -208,7 +206,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
     ![Blatt „Unternehmensanwendungen“](common/enterprise-applications.png)
 
-2. Wählen Sie in der Anwendungsliste die Option **Clear Review**aus.
+2. Wählen Sie in der Anwendungsliste die Option **Clear Review** aus.
 
     ![Clear Review-Link in der Anwendungsliste](common/all-applications.png)
 
@@ -234,13 +232,12 @@ In diesem Abschnitt erstellen Sie in Clear Review einen Benutzer namens Britta S
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
-Wenn Sie im Zugriffsbereich auf die Kachel „Clear Review“ klicken, sollten Sie automatisch bei der Clear Review-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Wenn Sie im Zugriffsbereich auf die Kachel „Clear Review“ klicken, sollten Sie automatisch bei der Clear Review-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>Weitere Ressourcen
 
-- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](./tutorial-list.md)
 
-- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Was ist bedingter Zugriff?](../conditional-access/overview.md)

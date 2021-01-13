@@ -1,22 +1,17 @@
 ---
-title: Anleitung zur Bereitstellung von Apps mit Vorlagen – Azure App Service | Microsoft-Dokumentation
-description: Empfehlungen zum Erstellen von Azure Resource Manager-Vorlagen zum Bereitstellen von Web-Apps
-services: app-service
-documentationcenter: app-service
+title: Aktualisieren von Apps mit Vorlagen
+description: Hier finden Sie Anleitungen zum Erstellen von Azure Resource Manager-Vorlagen zum Bereitstellen von App Service-Apps.
 author: tfitzmac
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/03/2019
 ms.author: tomfitz
 ms.custom: seodec18
-ms.openlocfilehash: 196aeb69a1948a44afb8170fa5f48d42b978854d
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 1146b5979d81b91c6c6894aa54b2e0ca50c896c1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70070454"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88961617"
 ---
 # <a name="guidance-on-deploying-web-apps-by-using-azure-resource-manager-templates"></a>Anleitung zum Bereitstellen von Web-Apps mit Azure Resource Manager-Vorlagen
 
@@ -46,10 +41,10 @@ Sie stellen Ressourcen in der folgenden Reihenfolge bereit:
 **Ebene 3**
 * Quellcodeverwaltung: Hängt von der Web-App ab.
 * MSDeploy-Websiteerweiterung: Hängt von der Web-App ab.
-* Application Insights-Instanz, die auf die Serverfarm ausgerichtet ist: Hängt von der Web-App ab.
+* Azure Application Insights-Instanz, die auf die Web-App ausgerichtet ist: Hängt von der Web-App ab.
 
 **Ebene 4**
-* App Service Certificate: Hängt von der Quellcodeverwaltung oder MSDeploy ab, falls vorhanden. Hängt andernfalls von der Web-App ab.
+* App Service Certificate: Hängt von der Quellcodeverwaltung oder MSDeploy ab, falls vorhanden. Hängen andernfalls von der Web-App ab.
 * Konfigurationseinstellungen (Verbindungszeichenfolgen, Werte in „web.config“, App-Einstellungen): Hängen von der Quellcodeverwaltung oder von MSDeploy ab, falls vorhanden. Hängen andernfalls von der Web-App ab.
 
 **Ebene 5**
@@ -95,11 +90,11 @@ Wenn Ihre Resource Manager-Vorlage MS Deploy verwendet, sind die Bereitstellungs
 
 1. Wechseln Sie zur [Kudu-Konsole](https://github.com/projectkudu/kudu/wiki/Kudu-console) der Website.
 2. Navigieren Sie zum Ordner „D:\home\LogFiles\SiteExtensions\MSDeploy“.
-3. Suchen Sie nach den Dateien „appManagerStatus.xml“ und „appManagerLog.xml“. Die erste Datei protokolliert den Status. Die zweite Datei protokolliert Informationen zum Fehler. Wenn Ihnen der Fehler nicht klar ist, können Sie die Informationen bei Nachfragen im Forum einfügen.
+3. Suchen Sie nach den Dateien „appManagerStatus.xml“ und „appManagerLog.xml“. Die erste Datei protokolliert den Status. Die zweite Datei protokolliert Informationen zum Fehler. Wenn Ihnen der Fehler nicht klar ist, können Sie die Informationen bei Nachfragen im [Forum](/answers/topics/azure-webapps.html) einfügen.
 
 ## <a name="choose-a-unique-web-app-name"></a>Auswählen eines eindeutigen Web-App-Namens
 
-Der Name Ihrer Web-App muss global eindeutig sein. Sie können eine Namenskonvention verwenden, die höchstwahrscheinlich eindeutig ist, oder Sie können beim Erstellen eines eindeutigen Namens die [uniqueString-Funktion](../azure-resource-manager/resource-group-template-functions-string.md#uniquestring) verwenden.
+Der Name Ihrer Web-App muss global eindeutig sein. Sie können eine Namenskonvention verwenden, die höchstwahrscheinlich eindeutig ist, oder Sie können beim Erstellen eines eindeutigen Namens die [uniqueString-Funktion](../azure-resource-manager/templates/template-functions-string.md#uniquestring) verwenden.
 
 ```json
 {
@@ -114,7 +109,7 @@ Der Name Ihrer Web-App muss global eindeutig sein. Sie können eine Namenskonven
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Wenn Ihre Vorlage eine [Microsoft.Web/certificates](/azure/templates/microsoft.web/certificates)-Ressource für die SSL-Bindung enthält und das Zertifikat in einer Key Vault-Instanz gespeichert ist, müssen Sie sicherstellen, dass die App Service-Identität auf das Zertifikat zugreifen kann.
+Wenn Ihre Vorlage eine [Microsoft.Web/certificates](/azure/templates/microsoft.web/certificates)-Ressource für die TLS/SSL-Bindung enthält und das Zertifikat in einer Key Vault-Instanz gespeichert ist, müssen Sie sicherstellen, dass die App Service-Identität auf das Zertifikat zugreifen kann.
 
 In der globalen Azure-Umgebung hat der App Service-Dienstprinzipal die ID **abfa0a7c-a6b6-4736-8310-5855508787cd**. Verwenden Sie Folgendes, um für den App Service-Dienstprinzipal den Zugriff auf Key Vault zu gewähren:
 

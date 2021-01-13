@@ -1,21 +1,24 @@
 ---
-title: Erstellen, Anzeigen und Verwalten von klassischen Metrikwarnungen mit Azure Monitor
+title: Erstellen und Verwalten von klassischen Metrikwarnungen mit Azure Monitor
 description: Erfahren Sie, wie Sie mit dem Azure-Portal, der CLI oder PowerShell klassische Metrikwarnungsregeln erstellen, anzeigen und verwalten können.
-author: snehithm
-ms.service: azure-monitor
+author: yanivlavi
+ms.author: yalavi
 ms.topic: conceptual
 ms.date: 09/18/2018
-ms.author: snmuvva
-ms.openlocfilehash: 4a225dbc8e84d65a6ea25f63627599e5bb7d2ced
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 613620ddf4889efb7cf3df95150be97f79724a98
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66129752"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96013104"
 ---
 # <a name="create-view-and-manage-classic-metric-alerts-using-azure-monitor"></a>Erstellen, Anzeigen und Verwalten von klassischen Metrikwarnungen mit Azure Monitor
 
-Klassische Metrikwarnungen in Azure Monitor bieten eine Möglichkeit, benachrichtigt zu werden, wenn eine Ihrer Metriken einen Schwellenwert überschreitet. Klassische Metrikwarnungen sind eine ältere Funktionalität, die es ermöglicht, nur bei nichtdimensionalen Metriken zu warnen. Es gibt eine neuere Funktionalität namens Metrikwarnungen, die die Funktionalität gegenüber klassischen Metrikwarnungen verbessert hat. Weitere Informationen zur Funktionsweise von neuen Metrikwarnungen finden Sie in der [Übersicht zu Metrikwarnungen](../../azure-monitor/platform/alerts-metric-overview.md). In diesem Artikel wird beschrieben, wie Sie klassische Metrikwarnungsregeln über das Azure-Portal, die Azure CLI und PowerShell erstellen, anzeigen und verwalten können.
+> [!WARNING]
+> In diesem Artikel erfahren Sie, wie Sie ältere klassische Metrikwarnungen erstellen. Azure Monitor unterstützt nun [neuere Metrikwarnungen, die nahezu in Echtzeit stattfinden, und eine neue Oberfläche für Warnungen](./alerts-overview.md). Klassische Warnungen werden [eingestellt](./monitoring-classic-retirement.md), sind jedoch weiterhin für Ressourcen, die die neuen Warnungen noch nicht unterstützen, beschränkt im Einsatz.
+>
+
+Klassische Metrikwarnungen in Azure Monitor bieten eine Möglichkeit, benachrichtigt zu werden, wenn eine Ihrer Metriken einen Schwellenwert überschreitet. Klassische Metrikwarnungen sind eine ältere Funktionalität, die es ermöglicht, nur bei nichtdimensionalen Metriken zu warnen. Es gibt eine neuere Funktionalität namens Metrikwarnungen, die die Funktionalität gegenüber klassischen Metrikwarnungen verbessert hat. Weitere Informationen zur Funktionsweise von neuen Metrikwarnungen finden Sie in der [Übersicht zu Metrikwarnungen](./alerts-metric-overview.md). In diesem Artikel wird beschrieben, wie Sie klassische Metrikwarnungsregeln über das Azure-Portal, die Azure CLI und PowerShell erstellen, anzeigen und verwalten können.
 
 ## <a name="with-azure-portal"></a>Mit dem Azure-Portal
 
@@ -53,7 +56,7 @@ Nachdem Sie eine Warnung erstellt haben, können Sie sie auswählen und eine der
 
 ## <a name="with-azure-cli"></a>Mit der Azure-Befehlszeilenschnittstelle
 
-In den vorangegangenen Abschnitten wurde beschrieben, wie Sie über das Azure-Portal Metrikwarnungsregeln erstellen, anzeigen und verwalten. In diesem Abschnitt wird beschrieben, wie Sie dasselbe mit der plattformübergreifenden [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest) (Azure CLI) erreichen können. Die schnellste Möglichkeit, mit der Verwendung der Azure CLI zu beginnen, ist über [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview?view=azure-cli-latest).
+In den vorangegangenen Abschnitten wurde beschrieben, wie Sie über das Azure-Portal Metrikwarnungsregeln erstellen, anzeigen und verwalten. In diesem Abschnitt wird beschrieben, wie Sie dasselbe mit der plattformübergreifenden [Azure-Befehlszeilenschnittstelle](/cli/azure/get-started-with-azure-cli?view=azure-cli-latest) (Azure CLI) erreichen können. Die schnellste Möglichkeit, mit der Verwendung der Azure CLI zu beginnen, ist über [Azure Cloud Shell](../../cloud-shell/overview.md?view=azure-cli-latest).
 
 ### <a name="get-all-classic-metric-alert-rules-in-a-resource-group"></a>Abrufen aller klassischen Metrikwarnungsregeln in einer Ressourcengruppe
 
@@ -89,7 +92,7 @@ az monitor alert delete --name <alert name> --resource-group <group name>
 
 In diesem Abschnitt wird gezeigt, wie Sie mit PowerShell-Befehlen klassische Metrikwarnungen erstellen, anzeigen und verwalten können. Die Beispiele im Artikel veranschaulichen, wie Sie Azure Monitor-Cmdlets für klassische Metrikwarnungen verwenden können.
 
-1. Sofern dies noch nicht geschehen ist, richten Sie PowerShell auf Ihrem Computer ein. Weitere Informationen finden Sie unter [Vorgehensweise zum Installieren und Konfigurieren von PowerShell](/powershell/azure/overview). Die vollständige Liste der PowerShell-Cmdlets für Azure Monitor finden Sie unter [Azure Monitor-Cmdlets (Insights)](https://docs.microsoft.com/powershell/module/az.applicationinsights).
+1. Sofern dies noch nicht geschehen ist, richten Sie PowerShell auf Ihrem Computer ein. Weitere Informationen finden Sie unter [Vorgehensweise zum Installieren und Konfigurieren von PowerShell](/powershell/azure/). Die vollständige Liste der PowerShell-Cmdlets für Azure Monitor finden Sie unter [Azure Monitor-Cmdlets (Insights)](/powershell/module/az.applicationinsights).
 
 2. Melden sich zuerst bei Ihrem Azure-Abonnement an.
 
@@ -131,5 +134,6 @@ In diesem Abschnitt wird gezeigt, wie Sie mit PowerShell-Befehlen klassische Met
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Erstellen einer klassischen Metrikwarnung anhand einer Resource Manager-Vorlage](../../azure-monitor/platform/alerts-enable-template.md)
-- [Benachrichtigung eines nicht unter Azure ausgeführten Systems durch eine klassische Metrikwarnung mithilfe eines Webhooks](../../azure-monitor/platform/alerts-webhooks.md)
+- [Erstellen einer klassischen Metrikwarnung anhand einer Resource Manager-Vorlage](./alerts-enable-template.md)
+- [Benachrichtigung eines nicht unter Azure ausgeführten Systems durch eine klassische Metrikwarnung mithilfe eines Webhooks](./alerts-webhooks.md)
+

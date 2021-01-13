@@ -1,7 +1,8 @@
 ---
-title: Übersicht über die dynamische Paketerstellung mit Azure Media Services | Microsoft-Dokumentation
+title: Dynamische Paketerstellung in Azure Media Services v3
+titleSuffix: Azure Media Services
 description: Dieser Artikel bietet eine Übersicht über die dynamische Paketerstellung in Azure Media Services.
-author: Juliako
+author: myoungerman
 manager: femila
 editor: ''
 services: media-services
@@ -10,72 +11,108 @@ ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: overview
-ms.date: 09/10/2019
-ms.author: juliako
-ms.openlocfilehash: 152a767ad1aa2494579f15dd8051c6bc1f718a92
-ms.sourcegitcommit: d70c74e11fa95f70077620b4613bb35d9bf78484
+ms.topic: conceptual
+ms.date: 09/30/2020
+ms.author: inhenkel
+ms.openlocfilehash: 7941d542ca2cab1637b9edaef057f740a9a1b7ef
+ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70910248"
+ms.lasthandoff: 10/14/2020
+ms.locfileid: "92016824"
 ---
-# <a name="dynamic-packaging"></a>Dynamische Paketerstellung
+# <a name="dynamic-packaging-in-media-services-v3"></a>Dynamische Paketerstellung in Media Services v3
 
-Mit Microsoft Azure Media Services können verschiedenste Medien-Quelldateiformate codiert und über verschiedene Streamingprotokolle mit oder ohne Content Protection bereitgestellt werden, um alle gängigen Geräte (etwa mit iOS und Android) zu erreichen. Diese Clients benötigen verschiedene Protokolle. So müssen Streams für iOS beispielsweise im HLS-Format (HTTP Live Streaming) vorliegen, während Android-Geräte neben HLS auch MPEG-DASH unterstützen. 
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
-In Media Services stellt ein [Streamingendpunkt](streaming-endpoint-concept.md) einen dynamischen (Just-In-Time-)Paketerstellungs- und Ursprungsdienst dar, der Ihre Live- und On-Demand-Inhalte direkt in einer Clientplayeranwendung bereitstellen kann und dabei eines der allgemeinen Streamingmedienprotokolle verwendet, die im folgenden Abschnitt erwähnt werden. Die dynamische Paketerstellung ist ein Feature, das standardmäßig auf allen Streamingendpunkten (Standard oder Premium) vorhanden ist. 
+Mit Microsoft Azure Media Services können zahlreiche Medienquelldateiformate codiert und über verschiedene Streamingprotokolle mit oder ohne Inhaltsschutz bereitgestellt werden, um alle gängigen Geräte (etwa mit iOS und Android) abzudecken. Diese Clients benötigen verschiedene Protokolle. So müssen Streams für iOS beispielsweise im HLS-Format (HTTP Live Streaming) vorliegen, während Android-Geräte neben HLS auch MPEG-DASH unterstützen.
 
-## <a name="a-iddelivery-protocolsto-prepare-your-source-files-for-delivery"></a><a id="delivery-protocols"/>Vorbereiten der Quelldateien für die Lieferung
+In Media Services repräsentiert ein [Streamingendpunkt](streaming-endpoint-concept.md) (Ursprung) einen dynamischen Just-In-Time-Paketerstellungs- und Ursprungsdienst, der Ihre Live- und On-Demand-Inhalte direkt in einer Clientplayer-App bereitstellen kann. Der Streamingendpunkt verwendet hierbei eines der im nächsten Abschnitt beschriebenen allgemeinen Streamingmedienprotokolle. Die Funktion für die *dynamische Paketerstellung* ist standardmäßig auf allen Streamingendpunkten vorhanden.
 
-Um die dynamische Paketerstellung nutzen zu können, müssen Sie Ihre Zwischendatei (Quelldatei) in einen Satz von MP4-Dateien (ISO Base Media 14496-12) mit mehreren Bitraten [codieren](encoding-concept.md). Sie benötigen ein [Medienobjekt](assets-concept.md) mit den codierten MP4-Dateien sowie Streamingkonfigurationsdateien, die für die dynamische Paketerstellung von Media Services erforderlich sind. Aus diesem Satz von MP4-Dateien können Sie mithilfe der dynamischen Paketerstellung über die folgenden Streamingmedienprotokolle Videos bereitstellen:
+> [!NOTE]
+> Sie können das [Azure-Portal](https://portal.azure.com/) für Folgendes nutzen: Verwalten von v3-[Liveereignissen](live-events-outputs-concept.md), Anzeigen von v3-[Objekten](assets-concept.md) und Abrufen von Informationen zum Zugreifen auf APIs. Verwenden Sie für alle anderen Verwaltungsaufgaben (etwa für Transformationen und Aufträge) die [REST-API](/rest/api/media/), die [CLI](/cli/azure/ams) oder eins der unterstützten [SDKs](media-services-apis-overview.md#sdks).
 
-|Protocol|Beispiel|
-|---|---|
-|HLS V4 |`https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=m3u8-aapl)`|
-|HLS V3 |`https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=m3u8-aapl-v3)`|
-|HLS CMAF| `https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=m3u8-cmaf)`|
-|MPEG-DASH CSF| `https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=mpd-time-csf)` |
-|MPEG-DASH CMAF|`https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=mpd-time-cmaf)` |
-|Smooth Streaming| `https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest`|
+## <a name="to-prepare-your-source-files-for-delivery"></a>So bereiten Sie die Quelldateien für die Bereitstellung vor
 
-Wenn Sie Ihre Inhalte mit der dynamischen Verschlüsselung von Media Services schützen möchten, finden Sie unter [Streamingprotokolle und Verschlüsselungstypen](content-protection-overview.md#streaming-protocols-and-encryption-types) weitere Informationen.
+Um die dynamische Paketerstellung nutzen zu können, müssen Sie Ihre Eingabedatei (Quelldatei) in einen Satz von MP4-Dateien (ISO Base Media 14496-12) mit mehreren Bitraten [codieren](encoding-concept.md). Sie müssen über ein [Medienobjekt](assets-concept.md) mit den codierten MP4- und Streamingkonfigurationsdateien verfügen, die für die dynamische Paketerstellung von Media Services erforderlich sind. Aus diesem Satz von MP4-Dateien können Sie mithilfe der dynamischen Paketerstellung über die im Anschluss beschriebenen Streamingmedienprotokolle Videos bereitstellen.
+
+Die dynamische Paketerstellung von Azure Media Services unterstützt nur Video- und Audiodateien im MP4-Containerformat. Audiodateien müssen ebenfalls in einen MP4-Container codiert werden, wenn alternative Codecs wie Dolby verwendet werden.  
 
 > [!TIP]
 > Zum Abrufen der MP4-Dateien und Streamingkonfigurationsdateien können Sie beispielsweise [Ihre Zwischendatei (Quelldatei) mit Media Services codieren](#encode-to-adaptive-bitrate-mp4s). 
 
-Um Videos in dem codierten Medienobjekt für die Clientwiedergabe verfügbar zu machen, müssen Sie einen [Streaminglocator](streaming-locators-concept.md) sowie Streaming-URLs erstellen. Daraufhin erhalten Sie den Stream abhängig vom im Streamingclientmanifest angegebenen Format (HLS, MPEG-DASH oder Smooth Streaming) in dem Protokoll, das Sie gewählt haben.
+Um Videos in dem codierten Medienobjekt für die Clientwiedergabe verfügbar zu machen, müssen Sie einen [Streaminglocator](streaming-locators-concept.md) sowie Streaming-URLs erstellen. Daraufhin erhalten Sie den Stream abhängig vom im Streamingclientmanifest angegebenen Format (HLS, MPEG-DASH oder Smooth Streaming) in dem Protokoll, das Sie ausgewählt haben.
 
-So müssen Sie die Dateien nur in einem Speicherformat speichern und bezahlen. Die entsprechende Antwort wird von Media Services basierend auf Clientanforderungen erstellt und verfügbar gemacht. 
+So müssen Sie die Dateien nur in einem Speicherformat speichern und bezahlen. Die entsprechende Antwort wird von Media Services basierend auf Clientanforderungen erstellt und verfügbar gemacht.
+
+Wenn Sie Ihre Inhalte mit der dynamischen Verschlüsselung von Media Services schützen möchten, finden Sie unter [Streamingprotokolle und Verschlüsselungstypen](content-protection-overview.md#streaming-protocols-and-encryption-types) weitere Informationen.
+
+### <a name="hls-protocol"></a>HLS-Protokoll
+
+Ihr Streamingclient kann folgende HLS-Formate angeben:
+
+|Protocol|Beispiel|
+|---|---|
+|HLS V4 |`https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=m3u8-aapl)`||
+|HLS V3 |`https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=m3u8-aapl-v3)`||
+|HLS CMAF| `https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=m3u8-cmaf)`||
+
+> [!NOTE]
+> In früheren Richtlinien von Apple wurde als Fallback für Netzwerke mit geringer Bandbreite ein reiner Audiodatenstrom empfohlen.  Der Media Services-Encoder generiert derzeit automatisch eine reine Audiospur.  Jetzt besagen die Apple-Richtlinien, dass die reine Audiospur *nicht* enthalten sein soll, insbesondere bei der Distribution für Apple TV.  Damit der Player nicht auf als Standard auf eine reine Audiospur zurückgreift, wird empfohlen, das Tag „audio-only=false“ in der URL anzugeben. Dadurch wird die reine Audiowiedergabe in HLS entfernt. Sie können auch einfach HLS-V3 verwenden. Beispiel: `http://host/locator/asset.ism/manifest(format=m3u8-aapl,audio-only=false)`.
+
+### <a name="mpeg-dash-protocol"></a>MPEG-DASH-Protokoll
+
+Ihr Streamingclient kann folgende MPEG-DASH-Formate angeben:
+
+|Protocol|Beispiel|
+|---|---|
+|MPEG-DASH CSF| `https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=mpd-time-csf)` ||
+|MPEG-DASH CMAF|`https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=mpd-time-cmaf)` ||
+
+### <a name="smooth-streaming-protocol"></a>Smooth Streaming-Protokoll
+
+Ihr Streamingclient kann folgende Smooth Streaming-Formate angeben:
+
+|Protocol|Hinweise/Beispiele| 
+|---|---|
+|Smooth Streaming| `https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest`||
+|Smooth Streaming 2.0 (Legacymanifest)|Das Smooth Streaming-Manifestformat enthält standardmäßig das Wiederholungstag (r-Tag). Einige Player unterstützen `r-tag` jedoch nicht. Clients mit diesen Playern können ein Format verwenden, das das r-Tag deaktiviert:<br/><br/>`https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=fmp4-v20)`|
+
+> [!NOTE]
+> Smooth Streaming erfordert, dass Ihr Stream sowohl Audio- als auch Videodaten enthält.
 
 ## <a name="on-demand-streaming-workflow"></a>Workflow für das On-Demand-Streaming
 
-In diesem Abschnitt wird ein allgemeiner Media Services-Streamingworkflow mit dynamischer Paketerstellung und dem Standard-Encoder in Azure Media Services beschrieben.
+Die folgenden Schritte zeigen einen allgemeinen Media Services-Streamingworkflow mit dynamischer Paketerstellung und dem Standard-Encoder in Azure Media Services.
 
-1. Laden Sie eine Eingabedatei (beispielsweise eine QuickTime/MOV- oder MXF-Datei) hoch. Eine Liste unterstützter Formate finden Sie unter [Von Media Encoder Standard unterstützte Formate](media-encoder-standard-formats.md). Diese Datei wird auch als Mezzanine- oder Quelldatei bezeichnet.
-1. [Codieren](#encode-to-adaptive-bitrate-mp4s) Sie Ihre Mezzaninedatei als H.264/AAC-MP4-Satz mit adaptiver Bitrate. 
-1. Veröffentlichen Sie das Ausgabemedienobjekt, das den MP4-Satz mit adaptiver Bitrate enthält. Zur Veröffentlichung wird ein Streaminglocator erstellt.
-1. Erstellen Sie URLs für unterschiedliche Formate (HLS, MPEG-DASH und Smooth Streaming). Der **Streamingendpunkt** sorgt dafür, dass das korrekte Manifest bereitgestellt wird und die Anforderungen für alle diese Formate korrekt verarbeitet werden.
+1. [Laden Sie eine Eingabedatei hoch](job-input-from-http-how-to.md), etwa eine MP4-, QuickTime- oder MOV-Datei oder ein anderes unterstütztes Dateiformat. Diese Datei wird auch als Mezzanine- oder Quelldatei bezeichnet. Eine Liste der unterstützten Formate finden Sie unter [Media Encoder Standard-Formate und -Codecs](media-encoder-standard-formats.md).
+1. [Codieren](#encode-to-adaptive-bitrate-mp4s) Sie Ihre Mezzaninedatei als H.264/AAC-MP4-Satz mit adaptiver Bitrate.
 
-Das folgende Diagramm zeigt den Workflow für das On-Demand-Streaming mit dynamischer Paketerstellung.
+    Falls Sie bereits codierte Dateien besitzen und die Dateien nur kopieren und streamen möchten, verwenden Sie Folgendes: APIs [CopyVideo](/rest/api/media/transforms/createorupdate#copyvideo) und [CopyAudio](/rest/api/media/transforms/createorupdate#copyaudio). Daraufhin wird eine neue MP4-Datei mit einem Streamingmanifest (ISM-Datei) erstellt.
+1. Veröffentlichen Sie das Ausgabemedienobjekt, das den MP4-Satz mit adaptiver Bitrate enthält. Zur Veröffentlichung wird ein [Streaminglocator](streaming-locators-concept.md) erstellt.
+1. Erstellen Sie URLs für unterschiedliche Formate (HLS, MPEG-DASH und Smooth Streaming). Der *Streamingendpunkt* sorgt dafür, dass das korrekte Manifest bereitgestellt wird und die Anforderungen für alle diese Formate korrekt verarbeitet werden.
+    
+Das folgende Diagramm zeigt das On-Demand-Streaming mit dem Workflow der dynamischen Paketerstellung.
 
 ![Diagramm eines Workflows für das On-Demand-Streaming mit dynamischer Paketerstellung](./media/dynamic-packaging-overview/media-services-dynamic-packaging.svg)
+
+Der Downloadpfad in der obigen Abbildung ist nur angegeben, um zu veranschaulichen, dass Sie eine MP4-Datei direkt über den *Streamingendpunkt* (Ursprung) herunterladen können. (Sie geben die herunterladbare [Streamingrichtlinie](streaming-policy-concept.md) im Streaminglocator an.)<br/>Der dynamische Paketerstellungs-Manager verändert die Datei nicht. Optional können Sie die Azure Blob Storage-APIs verwenden, um für den progressiven Download direkt auf eine MP4-Datei zuzugreifen, wenn Sie die Features für den *Streamingendpunkt* (Ursprung) umgehen möchten. 
 
 ### <a name="encode-to-adaptive-bitrate-mp4s"></a>Codieren als MP4-Dateien mit adaptiver Bitrate
 
 Beispiele für die [Codierung mit Media Services](encoding-concept.md) finden Sie in den folgenden Artikeln:
 
-* [Codieren aus einer HTTPS-URL mithilfe von integrierten Voreinstellungen](job-input-from-http-how-to.md)
-* [Codieren einer lokalen Datei mithilfe von integrierten Voreinstellungen](job-input-from-local-file-how-to.md)
+* [Codieren aus einer HTTPS-URL mithilfe integrierter Voreinstellungen](job-input-from-http-how-to.md)
+* [Codieren einer lokalen Datei mithilfe integrierter Voreinstellungen](job-input-from-local-file-how-to.md)
 * [Entwickeln einer benutzerdefinierten Voreinstellung für Ihr spezielles Szenario oder Ihre Geräteanforderungen](customize-encoder-presets-how-to.md)
 
 Sehen Sie sich die Liste der [Media Encoder Standard-Formate und -Codecs](media-encoder-standard-formats.md) an.
 
 ## <a name="live-streaming-workflow"></a>Workflow für das Livestreaming
 
-Für ein Liveereignis ist einer von zwei Typen möglich: Pass-Through oder Livecodierung. 
+Ein Liveereignis kann entweder auf eine *Pass-Through*- (ein lokaler Liveencoder sendet einen Stream mit mehreren Bitraten) oder *Livecodierung* (ein lokaler Liveencoder sendet einen Stream mit Einzelbitrate) festgelegt werden. 
 
-Nachfolgend wird ein allgemeiner Workflow für das Livestreaming mit dynamischer Paketerstellung beschrieben:
+Nachfolgend wird ein allgemeiner Workflow für das Livestreaming mit *dynamischer Paketerstellung* beschrieben:
 
 1. Erstellen Sie ein [Liveereignis](live-events-outputs-concept.md).
 1. Rufen Sie die Erfassungs-URL ab, und konfigurieren Sie Ihren lokalen Encoder so, dass die URL zum Senden des Beitragsfeeds verwendet wird.
@@ -85,9 +122,9 @@ Nachfolgend wird ein allgemeiner Workflow für das Livestreaming mit dynamischer
 1. Erstellen Sie einen Streaminglocator mit den integrierten Typen von Streamingrichtlinien.<br />Wenn Sie beabsichtigen, den Inhalt zu verschlüsseln, lesen Sie [Übersicht über den Inhaltsschutz](content-protection-overview.md).
 1. Listen Sie die Pfade für den Streaminglocator so auf, dass die zu verwendenden URLs abgerufen werden.
 1. Rufen Sie den Hostnamen für den Streamingendpunkt ab, von dem aus Sie streamen möchten.
-1. Erstellen Sie URLs für unterschiedliche Formate (HLS, MPEG-DASH und Smooth Streaming). Der Streamingendpunkt sorgt dafür, dass das korrekte Manifest bereitgestellt wird und die Anforderungen für die verschiedenen Formate korrekt verarbeitet werden.
+1. Erstellen Sie URLs für unterschiedliche Formate (HLS, MPEG-DASH und Smooth Streaming). Der *Streamingendpunkt* sorgt dafür, dass das korrekte Manifest bereitgestellt wird und die Anforderungen für die verschiedenen Formate korrekt verarbeitet werden.
 
-Im folgenden Diagramm ist der Workflow für das Livestreaming mit dynamischer Paketerstellung dargestellt:
+Im folgenden Diagramm ist der Workflow für das Livestreaming mit *dynamischer Paketerstellung* dargestellt:
 
 ![Diagramm eines Workflows für die Pass-Through-Codierung mit dynamischer Paketerstellung](./media/live-streaming/pass-through.svg)
 
@@ -95,20 +132,20 @@ Informationen zum Livestreaming in Media Services v3 finden Sie unter [Übersich
 
 ## <a name="video-codecs-supported-by-dynamic-packaging"></a>Von der dynamischen Paketerstellung unterstützte Videocodecs
 
-Die dynamische Paketerstellung unterstützt MP4-Dateien mit Video, das mit [H.264](https://en.m.wikipedia.org/wiki/H.264/MPEG-4_AVC) (MPEG-4 AVC oder AVC1) oder [H.265](https://en.m.wikipedia.org/wiki/High_Efficiency_Video_Coding) (HEVC, hev1 oder hvc1) codiert wurde.
+Die dynamische Paketerstellung unterstützt Videodateien, die im MP4-Containerdateiformat vorliegen und Videodaten enthalten, die mit [H.264](https://en.m.wikipedia.org/wiki/H.264/MPEG-4_AVC) (MPEG-4 AVC oder AVC1) oder [H.265](https://en.m.wikipedia.org/wiki/High_Efficiency_Video_Coding) (HEVC, hev1 oder hvc1) codiert sind.
 
 > [!NOTE]
-> Auflösungen von bis zu 4K und Frameraten von bis zu 60 Frames/Sekunde wurden mit der dynamischen Paketerstellung getestet. Der [Premium-Encoder](https://docs.microsoft.com/azure/media-services/previous/media-services-encode-asset#media-encoder-premium-workflow) unterstützt die H.265-Codierung über die v2-Legacy-APIs. Sollten Sie Fragen zu diesem Thema haben, wenden Sie sich an amshelp@microsoft.com. 
+> Mit der *dynamischen Paketerstellung* wurden Auflösungen von bis zu 4K und Bildfrequenzen von bis zu 60 Frames/Sekunde getestet.
 
-## <a name="a-idaudio-codecsaudio-codecs-supported-by-dynamic-packaging"></a><a id="audio-codecs"/>Von der dynamischen Paketerstellung unterstützte Audiocodecs
+## <a name="audio-codecs-supported-by-dynamic-packaging"></a>Von der dynamischen Paketerstellung unterstützte Audiocodecs
 
-Die dynamische Paketerstellung unterstützt Audiodaten, die mit den folgenden Protokollen codiert sind:
+Darüber hinaus unterstützt die dynamische Paketerstellung Audiodateien, die im MP4-Dateicontainerformat gespeichert sind und codierte Audiostreams in einem der folgenden Codecs enthalten:
 
-* [AAC](https://en.wikipedia.org/wiki/Advanced_Audio_Coding) (AAC-LC, HE-AAC v1 oder HE-AAC v2)
-* [Dolby Digital Plus](https://en.wikipedia.org/wiki/Dolby_Digital_Plus) (Enhanced AC-3 oder E-AC3)
-* Dolby Atmos<br />
+* [AAC](https://en.wikipedia.org/wiki/Advanced_Audio_Coding) (AAC-LC, HE-AAC v1 oder HE-AAC v2) 
+* [Dolby Digital Plus](https://en.wikipedia.org/wiki/Dolby_Digital_Plus) (Enhanced AC-3 oder E-AC3).  Die codierte Audiodatei muss im MP4-Containerformat gespeichert werden, damit die dynamische Paketerstellung funktioniert.
+* Dolby Atmos
+
    Das Streaming von Dolby Atmos-Inhalten wird für Standards wie das MPEG-DASH-Protokoll mit fragmentiertem CSF- (Common Streaming Format) oder CMAF-MP4 (Common Media Application Format) und über HTTP Live Streaming (HLS) mit CMAF unterstützt.
-
 * [DTS](https://en.wikipedia.org/wiki/DTS_%28sound_system%29)<br />
    Folgende DTS-Codecs werden von den Paketerstellungsformaten DASH-CSF, DASH-CMAF, HLS-M2TS und HLS-CMAF unterstützt:  
 
@@ -117,18 +154,30 @@ Die dynamische Paketerstellung unterstützt Audiodaten, die mit den folgenden Pr
     * DTS Express (dtse)
     * DTS-HD Lossless ohne Core (dtsl)
 
-Die dynamische Paketerstellung unterstützt mehrere Audiospuren mit DASH oder HLS (ab Version 4) für Streaming-Medienobjekte, die mehrere Audiospuren mit mehreren Codecs und Sprachen besitzen.
+Die dynamische Paketerstellung unterstützt mehrere Audiospuren mit DASH oder HLS (ab Version 4) für Streamingmedienobjekte, die mehrere Audiospuren mit mehreren Codecs und Sprachen besitzen.
 
-### <a name="additional-notes"></a>Zusätzliche Hinweise
+Bei allen oben genannten Codecs muss die codierte Audiodatei im MP4-Containerformat gespeichert sein, damit die dynamische Paketerstellung funktioniert. Der Dienst unterstützt keine unformatierten elementaren Datenstrom-Dateiformate im Blobspeicher. (Folgendes wird beispielsweise nicht unterstützt: .dts, .ac3.) 
 
-Dateien mit [Dolby Digital](https://en.wikipedia.org/wiki/Dolby_Digital)-Audio (AC3) werden von der dynamischen Paketerstellung nicht unterstützt, da es sich dabei um einen Legacy-Codec handelt.
+Nur Dateien mit der Erweiterung „.mp4“ oder „.mp4a“ werden für die Audiopaketerstellung unterstützt. 
+
+### <a name="limitations"></a>Einschränkungen
+
+#### <a name="ios-limitation-on-aac-51-audio"></a>Einschränkungen unter iOS für AAC 5.1-Audio
+
+Apple iOS-Geräte unterstützen den 5.1 AAC-Audiocodec nicht. Mehrkanal-Audio muss mit Dolby Digital- oder Dolby Digital Plus-Codecs codiert werden.
+
+Ausführliche Informationen finden Sie unter [HLS-Erstellungsspezifikation für Apple-Geräte](https://developer.apple.com/documentation/http_live_streaming/hls_authoring_specification_for_apple_devices).
 
 > [!NOTE]
-> Der [Premium-Encoder](https://docs.microsoft.com/azure/media-services/previous/media-services-encode-asset#media-encoder-premium-workflow) unterstützt die Dolby Digital Plus-Codierung über die v2-Legacy-APIs. Sollten Sie Fragen zu diesem Thema haben, wenden Sie sich an amshelp@microsoft.com. 
+> Media Services unterstützt nicht die Codierung der Mehrkanal-Audioformate Dolby Digital, Dolby Digital Plus oder Dolby Digital Plus mit Dolby Atmos.
 
-## <a name="manifests"></a>Manifeste 
- 
-Bei der dynamischen Paketerstellung von Media Services werden die Streamingclientmanifeste für HLS, MPEG-DASH und Smooth Streaming dynamisch basierend auf dem Formatselektor in der URL generiert.  
+#### <a name="dolby-digital-audio"></a>Dolby Digital-Audio
+
+Die dynamische Paketerstellung von Media Services unterstützt derzeit keine Dateien, die [Dolby Digital](https://en.wikipedia.org/wiki/Dolby_Digital)-Audio (AC3) enthalten, da dies als Legacy-Codec von Dolby betrachtet wird.
+
+## <a name="manifests"></a>Manifeste
+
+Bei der *dynamischen Paketerstellung* von Media Services werden die Streamingclientmanifeste für HLS, MPEG-DASH und Smooth Streaming dynamisch basierend auf dem Formatselektor in der URL generiert.  
 
 Eine Manifestdatei enthält Streamingmetadaten wie etwa Typ (Audio, Video oder Text), Titelname, Start- und Endzeit, Bitrate (Qualität), Sprachen, Präsentationsfenster (gleitendes Fenster mit fester Dauer) und Videocodec (FourCC). Sie weist den Player zudem zum Abrufen des nächsten Fragments an, indem Informationen zu den nächsten für die Wiedergabe verfügbaren Videofragmenten und den zugehörigen Speicherorten angegeben werden. Fragmente (oder Segmente) sind die eigentlichen „Blöcke“ von Videoinhalten.
 
@@ -236,11 +285,30 @@ Der Player kann das Element `Label` für die Anzeige auf der Benutzeroberfläche
 
 ### <a name="signaling-audio-description-tracks"></a>Kennzeichnen von Spuren für die Audiobeschreibung
 
-Ein Kunde kann eine Audiospur als Audiobeschreibung im Manifest kommentieren. Zu diesem Zweck fügt er die Parameter „accessibility“ und „role“ in der ISM-Datei hinzu. Media Services erkennt die Audiobeschreibung, wenn für eine Audiospur der Parameter „accessibility“ mit dem Wert „description“ und der Parameter „role“ mit dem Wert „alternate“ enthalten ist. Wird von Media Services die Audiobeschreibung in der ISM-Datei erkannt, werden die Informationen der Audiobeschreibung als die Attribute `Accessibility="description"` und `Role="alternate"` im Element `StreamIndex` an das Clientmanifest übergeben.
+Sie können dem Video eine Audiokommentarspur hinzufügen, damit Benutzer mit Sehbehinderung dem Video folgen können, indem sie sich den Audiokommentar anhören. Sie müssen eine Audiospur als Audiobeschreibung im Manifest kommentieren. Fügen Sie dafür in der ISM-Datei die Parameter „accessibility“ und „role“ hinzu. Es liegt in Ihrer Verantwortung, diese Parameter korrekt festzulegen, um eine Audiospur als Audiobeschreibung zu signalisieren. Fügen Sie beispielsweise `<param name="accessibility" value="description" />` und `<param name="role" value="alternate"` zur ISM-Datei für eine bestimmte Audiospur hinzu. 
 
-Wenn die Kombination aus „accessibility“ = „description“ und „role“ = „alternate“ in der ISM-Datei festgelegt wird, enthalten das DASH-Manifest und das Smooth-Manifest die in den Parametern „accessibility“ und „role“ festgelegten Werte. Der Kunde ist dafür verantwortlich, diese beiden Werte richtig festzulegen und eine Audiospur als Audiobeschreibung zu markieren. Gemäß DASH-Spezifikation bedeutet die gleichzeitige Verwendung von „accessibility“ = „description“ und „role“ = „alternate“, dass es sich bei einer Audiospur um eine Audiobeschreibung handelt.
+Weitere Informationen finden Sie im Beispiel [Signalisieren einer beschreibenden Audiospur](signal-descriptive-audio-howto.md).
 
-Bei HLS v7 und höheren Versionen (`format=m3u8-cmaf`) enthält die Wiedergabeliste `CHARACTERISTICS="public.accessibility.describes-video"` nur dann, wenn die Kombination aus „accessibility“ = „description“ und „role“ = „alternate“ in der ISM-Datei festgelegt wird. 
+#### <a name="smooth-streaming-manifest"></a>Smooth Streaming-Manifest
+
+Bei der Wiedergabe eines Smooth Streaming-Streams enthält das Manifest Werte in den `Accessibility`- und `Role`-Attributen für diese Audiospur. Beispielsweise durch Hinzufügen von `Role="alternate" Accessibility="description"` zum `StreamIndex`-Element angegeben werden, dass es sich um eine Audiobeschreibung handelt.
+
+#### <a name="dash-manifest"></a>DASH-Manifest
+
+Für das DASH-Manifest werden die folgenden beiden Elemente hinzugefügt, um die Audiobeschreibung zu signalisieren:
+
+```xml
+<Accessibility schemeIdUri="urn:mpeg:dash:role:2011" value="description"/>
+<Role schemeIdUri="urn:mpeg:dash:role:2011" value="alternate"/>
+```
+
+#### <a name="hls-playlist"></a>HLS-Wiedergabeliste
+
+Bei HLS Version 7 und höher `(format=m3u8-cmaf)` enthält die Wiedergabeliste `AUTOSELECT=YES,CHARACTERISTICS="public.accessibility.describes-video"`, wenn die Audiobeschreibungsspur signalisiert wird.
+
+#### <a name="example"></a>Beispiel
+
+Weitere Informationen finden Sie unter [Signalisieren einer beschreibenden Audiospur](signal-descriptive-audio-howto.md).
 
 ## <a name="dynamic-manifest"></a>Dynamisches Manifest
 
@@ -250,14 +318,17 @@ Zur Steuerung der Anzahl von Spuren sowie der Formate, Bitraten und Präsentatio
 
 Mit der *dynamischen Verschlüsselung* können Sie Ihre Live- oder On-Demand-Inhalte mit AES-128 oder einem der drei hauptsächlichen DRM-Systeme (Digital Rights Management) dynamisch verschlüsseln: Microsoft PlayReady, Google Widevine und Apple FairPlay. Media Services bietet außerdem einen Dienst für die Übermittlung von AES-Schlüsseln und DRM-Lizenzen an autorisierte Clients. Weitere Informationen finden Sie unter [Dynamische Verschlüsselung](content-protection-overview.md).
 
+> [!NOTE]
+> Widevine ist ein von Google Inc. bereitgestellter Dienst, der den Vertragsbedingungen und der Datenschutzrichtlinie von Google, Inc. unterliegt.
+
 ## <a name="more-information"></a>Weitere Informationen
 
 Unter [Azure Media Services-Community](media-services-community.md) finden Sie verschiedene Möglichkeiten, Fragen zu stellen, Feedback zu geben und Updates zu Media Services abzurufen.
 
+## <a name="need-help"></a>Sie brauchen Hilfe?
+
+Sie können ein Supportticket erstellen, indem Sie zu [Neue Supportanfrage](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) navigieren.
+
 ## <a name="next-steps"></a>Nächste Schritte
 
-> [!NOTE]
-> Derzeit können Sie das Azure-Portal nicht für die Verwaltung von v3-Ressourcen verwenden. Verwenden Sie die [REST-API](https://aka.ms/ams-v3-rest-ref), die [Befehlszeilenschnittstelle](https://aka.ms/ams-v3-cli-ref) oder eines der unterstützten [SDKs](media-services-apis-overview.md#sdks).
-
-Informationen zum [Hochladen, Codieren und Streamen von Videos](stream-files-tutorial-with-api.md).
-
+[Hochladen, Codieren und Streamen von Videos](stream-files-tutorial-with-api.md)

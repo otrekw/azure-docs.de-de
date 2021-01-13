@@ -1,25 +1,26 @@
 ---
-title: Verwenden von Azure Data Factory zum Migrieren von Daten aus einem Data Lake und Data Warehouse zu Azure | Microsoft-Dokumentation
+title: Migrieren von Daten aus Data Lake und Data Warehouse zu Azure
 description: Verwenden von Azure Data Factory zum Migrieren von Daten aus einem Data Lake und Data Warehouse zu Azure.
 services: data-factory
-documentationcenter: ''
 author: dearandyxu
 ms.author: yexu
 ms.reviewer: ''
 manager: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
+ms.custom: seo-lt-2019
 ms.date: 7/30/2019
-ms.openlocfilehash: 2d2fc1e2992e379c80a16dee2c1983f9559470c5
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: 4408546c892299e5bbbc22b00a4b334c36eda616
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70931133"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "81416427"
 ---
 # <a name="use-azure-data-factory-to-migrate-data-from-your-data-lake-or-data-warehouse-to-azure"></a>Verwenden von Azure Data Factory zum Migrieren von Daten aus einem Data Lake oder Data Warehouse zu Azure
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 Wenn Sie Ihren Data Lake oder Ihr Enterprise Data Warehouse (EDW) zu Microsoft Azure migrieren möchten, können Sie Azure Data Factory verwenden. Azure Data Factory eignet sich für folgende Szenarien:
 
@@ -30,7 +31,7 @@ Mit Azure Data Factory können bei der Data Lake-Migration Daten im Petabyte-Be
 
 ## <a name="why-azure-data-factory-can-be-used-for-data-migration"></a>Warum Azure Data Factory für die Datenmigration verwendet werden kann
 
-- Mit Azure Data Factory kann die Verarbeitungsleistung problemlos zentral hochskaliert werden, um Daten serverlos mit hoher Leistung, Resilienz und Skalierbarkeit zu verschieben. Sie bezahlen dabei nur für das, was Sie tatsächlich nutzen. Beachten Sie darüber hinaus Folgendes: 
+- Mit Azure Data Factory kann die Verarbeitungsleistung problemlos hochskaliert werden, um Daten serverlos mit hoher Leistung, Resilienz und Skalierbarkeit zu verschieben. Sie bezahlen dabei nur für das, was Sie tatsächlich nutzen. Beachten Sie dabei außerdem Folgendes: 
   - Datenmenge und Dateianzahl sind bei Azure Data Factory unbegrenzt.
   - Azure Data Factory kann Ihre Netzwerk- und Speicherbandbreite vollständig ausnutzen, um in Ihrer Umgebung den höchstmöglichen Datenverschiebungsdurchsatz zu erzielen.
   - Dank des nutzungsbasierten Zahlungsmodells von Azure Data Factory zahlen Sie nur für die Zeit, die tatsächlich für die Datenmigration zu Azure beansprucht wurde.  

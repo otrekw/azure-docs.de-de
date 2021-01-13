@@ -1,27 +1,19 @@
 ---
 title: Azure Application Insights – Automatisches Sammeln von Abhängigkeiten | Microsoft-Dokumentation
 description: Mit Application Insights können Abhängigkeiten automatisch gesammelt und visualisiert werden.
-services: application-insights
-documentationcenter: .net
-author: nikmd23
-manager: carmonm
-ms.service: application-insights
-ms.workload: TBD
-ms.tgt_pltfrm: ibiza
 ms.topic: reference
-ms.date: 04/29/2019
-ms.reviewer: mbullwin
-ms.author: nimolnar
-ms.openlocfilehash: 839ab291a99de646053b638520ce43f459d5c41f
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.custom: devx-track-dotnet
+ms.date: 05/06/2020
+ms.openlocfilehash: 8a4d79e52465e93fb4db2625217cb37a06917218
+ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68297010"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91930865"
 ---
 # <a name="dependency-auto-collection"></a>Automatisches Sammeln von Abhängigkeiten
 
-Unten ist die Liste mit den derzeit unterstützten Abhängigkeitsaufrufen angegeben, die automatisch als Abhängigkeiten erkannt werden, ohne dass am Code Ihrer Anwendung zusätzliche Änderungen erforderlich sind. Diese Abhängigkeiten werden in Application Insights in den Ansichten [Anwendungsübersicht](https://docs.microsoft.com/azure/application-insights/app-insights-app-map) und [Transaktionsdiagnose](https://docs.microsoft.com/azure/application-insights/app-insights-transaction-diagnostics) visualisiert. Falls Ihre Abhängigkeit in der Liste unten nicht angegeben ist, können Sie sie per [TrackDependency-Aufruf](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackdependency) trotzdem manuell nachverfolgen.
+Unten ist die Liste mit den derzeit unterstützten Abhängigkeitsaufrufen angegeben, die automatisch als Abhängigkeiten erkannt werden, ohne dass am Code Ihrer Anwendung zusätzliche Änderungen erforderlich sind. Diese Abhängigkeiten werden in Application Insights in den Ansichten [Anwendungsübersicht](./app-map.md) und [Transaktionsdiagnose](./transaction-diagnostics.md) visualisiert. Falls Ihre Abhängigkeit in der Liste unten nicht angegeben ist, können Sie sie per [TrackDependency-Aufruf](./api-custom-events-metrics.md#trackdependency) trotzdem manuell nachverfolgen.
 
 ## <a name="net"></a>.NET
 
@@ -34,10 +26,15 @@ Unten ist die Liste mit den derzeit unterstützten Abhängigkeitsaufrufen angege
 | <b>Kommunikationsbibliotheken</b> |
 | [HttpClient](https://www.microsoft.com/net/) | 4.5 und höher, .NET Core 1.1 und höher |
 | [SqlClient](https://www.nuget.org/packages/System.Data.SqlClient) | .NET Core 1.0+, NuGet 4.3.0 |
+| [Microsoft.Data.SqlClient](https://www.nuget.org/packages/Microsoft.Data.SqlClient/1.1.2)| 1.1.0 – neueste stabile Version. (Siehe Hinweis unten.)
 | [EventHubs-Client-SDK](https://www.nuget.org/packages/Microsoft.Azure.EventHubs) | 1.1.0 |
 | [ServiceBus-Client-SDK](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus) | 3.0.0 |
 | <b>Speicherclients</b>|  |
 | ADO.NET | 4.5 und höher |
+
+> [!NOTE]
+> Es gibt ein [bekanntes Problem](https://github.com/microsoft/ApplicationInsights-dotnet/issues/1347) mit älteren Versionen von Microsoft.Data.SqlClient. Es wird empfohlen, Version 1.1.0 oder höher zu verwenden, um dieses Problem zu umgehen. Im Lieferumfang von Entity Framework Core ist nicht unbedingt die neueste stabile Version von Microsoft.Data.SqlClient enthalten. Sie sollten sich deshalb vergewissern, dass mindestens Version 1.1.0 vorhanden ist, damit dieses Problem vermieden wird.   
+
 
 ## <a name="java"></a>Java
 | App-Server | Versionen |
@@ -64,7 +61,7 @@ Unten ist die Liste mit den derzeit unterstützten Abhängigkeitsaufrufen angege
 
 > [!NOTE]
 > \* Mit Ausnahme der Unterstützung für reaktive Programmierung.
-> <br>†Installation des [JVM-Agents](https://docs.microsoft.com/azure/application-insights/app-insights-java-agent#install-the-application-insights-agent-for-java) erforderlich.
+> <br>†Installation des [JVM-Agents](./java-agent.md#install-the-application-insights-agent-for-java) erforderlich.
 
 ## <a name="nodejs"></a>Node.js
 
@@ -86,12 +83,14 @@ Unten ist die Liste mit den derzeit unterstützten Abhängigkeitsaufrufen angege
 
 | Kommunikationsbibliotheken | Versionen |
 | ------------------------|----------|
-| [XMLHttpRequest](https://developer.mozilla.org/docs/Web/API/XMLHttpRequest) | Alle |
+| [XMLHttpRequest](https://developer.mozilla.org/docs/Web/API/XMLHttpRequest) | All |
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Einrichten der benutzerdefinierten Abhängigkeitsnachverfolgung für [.NET](../../azure-monitor/app/asp-net-dependencies.md)
-- Einrichten der benutzerdefinierten Abhängigkeitsnachverfolgung für [Java](../../azure-monitor/app/java-agent.md)
-- [Schreiben benutzerdefinierter Telemetriedaten zu Abhängigkeiten](../../azure-monitor/app/api-custom-events-metrics.md#trackdependency)
-- Lesen Sie die Informationen zu den Application Insights-Typen und zum Datenmodell unter [Datenmodell](../../azure-monitor/app/data-model.md).
-- Lesen Sie die Informationen zu den von Application Insights unterstützten [Plattformen](../../azure-monitor/app/platforms.md).
+- Einrichten der benutzerdefinierten Abhängigkeitsnachverfolgung für [.NET](./asp-net-dependencies.md)
+- Einrichten der benutzerdefinierten Abhängigkeitsnachverfolgung für [Java](./java-agent.md)
+- Einrichten der benutzerdefinierten Abhängigkeitsnachverfolgung für [OpenCensus Python](./opencensus-python-dependency.md)
+- [Schreiben benutzerdefinierter Telemetriedaten zu Abhängigkeiten](./api-custom-events-metrics.md#trackdependency)
+- Lesen Sie die Informationen zu den Application Insights-Typen und zum Datenmodell unter [Datenmodell](./data-model.md).
+- Lesen Sie die Informationen zu den von Application Insights unterstützten [Plattformen](./platforms.md).
+

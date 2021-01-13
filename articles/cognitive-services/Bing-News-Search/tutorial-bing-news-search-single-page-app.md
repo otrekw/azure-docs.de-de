@@ -8,17 +8,22 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
 ms.topic: tutorial
-ms.date: 07/12/2019
+ms.date: 06/23/2020
 ms.author: aahi
-ms.custom: seodec2018
-ms.openlocfilehash: 424fdc9fa0f31b3de664945ff49b119939488fed
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.custom: seodec2018, devx-track-js
+ms.openlocfilehash: c3d486a32f4a926ed42f3d67a1fa96d3da397beb
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68423606"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96351213"
 ---
 # <a name="tutorial-create-a-single-page-web-app"></a>Tutorial: Erstellen einer Single-Page-Web-App
+
+> [!WARNING]
+> Die APIs der Bing-Suche werden von Cognitive Services auf Bing-Suchdienste umgestellt. Ab dem **30. Oktober 2020** müssen alle neuen Instanzen der Bing-Suche mit dem [hier](/bing/search-apis/bing-web-search/create-bing-search-service-resource) dokumentierten Prozess bereitgestellt werden.
+> APIs der Bing-Suche, die mit Cognitive Services bereitgestellt wurden, werden noch drei Jahre lang bzw. bis zum Ablauf Ihres Enterprise Agreement unterstützt (je nachdem, was zuerst eintritt).
+> Eine Anleitung zur Migration finden Sie unter [Erstellen einer Ressource für die Bing-Suche über Azure Marketplace](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
 
 Mit der Bing-News-Suche-API können Sie das Web durchsuchen und Ergebnisse für verschiedene Arten von News finden, die für eine Suchabfrage relevant sind. In diesem Tutorial wird eine Single-Page-Web-App erstellt, die unter Verwendung der Bing-News-Suche-API Suchergebnisse auf der Seite anzeigt. Die Anwendung enthält HTML-, CSS- und JavaScript-Komponenten. Den Quellcode des Beispiels finden Sie auf [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/Tutorials/BingNewsSearchApp.html).
 
@@ -39,6 +44,14 @@ In dieser Tutorial-App wird Folgendes veranschaulicht:
 > * Behandeln von möglicherweise auftretenden Fehlern
 
 Die Tutorialseite ist unabhängig von anderen Komponenten und verwendet keine externen Frameworks, Stylesheets oder Bilddateien. Die Seite greift nur auf die am häufigsten unterstützten Features für JavaScript zurück und kann in aktuellen Versionen aller gängigen Webbrowser ausgeführt werden.
+
+
+## <a name="prerequisites"></a>Voraussetzungen
+
+Um dem Tutorial folgen zu können, benötigen Sie Abonnementschlüssel für die Bing-Suche-API. Wenn Sie über diese nicht verfügen, müssen Sie sie erstellen:
+
+* Azure-Abonnement: [Kostenloses Azure-Konto](https://azure.microsoft.com/free/cognitive-services/)
+* Sobald Sie über Ihr Azure-Abonnement verfügen, sollten Sie über <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7"  title="Erstellen einer Ressource für die Bing-Suche"  target="_blank"> im Azure-Portal eine Ressource für die Bing-Suche <span class="docon docon-navigate-external x-hidden-focus"></span></a> erstellen, um Ihren Schlüssel und Endpunkt abzurufen. Klicken Sie nach Abschluss der Bereitstellung auf **Zu Ressource wechseln**.
 
 ## <a name="app-components"></a>App-Komponenten
 Diese Tutorial-App setzt sich ebenso wie alle anderen Single-Page-Web-Apps aus drei Teilen zusammen:
@@ -61,7 +74,7 @@ Der HTML-Teil enthält auch die Bereiche (`<div>`-HTML-Tags), in denen die Suche
 
 Zum Speichern des Schlüssels wird der persistente Browserspeicher verwendet. Auf diese Weise müssen Sie nicht den Abonnementschlüssel der Bing-Suche-API im Code hinterlegen. Vor dem Speichern des Schlüssels wird der Benutzer zur Eingabe des Schlüssels aufgefordert. Wird der Schlüssel zu einem späteren Zeitpunkt von der API zurückgewiesen, wird der gespeicherte Schlüssel für ungültig erklärt, und der Benutzer wird zur erneuten Eingabe aufgefordert.
 
-In den Funktionen `storeValue` und `retrieveValue` wird entweder das `localStorage`-Objekt (nicht von allen Browsern unterstützt) oder ein Cookie verwendet. Diese Funktionen werden in der `getSubscriptionKey()`-Funktion zum Speichern und Abrufen des Benutzerschlüssels verwendet.
+In den Funktionen `storeValue` und `retrieveValue` wird entweder das `localStorage`-Objekt (nicht von allen Browsern unterstützt) oder ein Cookie verwendet. Diese Funktionen werden in der `getSubscriptionKey()`-Funktion zum Speichern und Abrufen des Benutzerschlüssels verwendet. Sie können den unten angegebenen globalen Endpunkt oder den Endpunkt der [benutzerdefinierten Unterdomäne](../../cognitive-services/cognitive-services-custom-subdomains.md) verwenden, der im Azure-Portal für Ihre Ressource angezeigt wird.
 
 ``` javascript
 // Cookie names for data we store
@@ -346,7 +359,7 @@ Für eine Funktion zum Rendern können die folgenden Parameter angegeben werden:
 
 Die Parameter `index` und `count` können beispielsweise zum Nummerieren von Ergebnissen, zum Generieren von speziellem HTML-Code für den Anfang oder das Ende einer Collection oder zum Einfügen von Zeilenumbrüchen nach einer bestimmten Anzahl von Elementen verwendet werden. Wenn ein Renderer diese Funktionalität nicht benötigt, muss er diese beiden Parameter nicht akzeptieren.
 
-Der `news`-Renderer wird im folgenden JavaScript-Auszug gezeigt.
+Der `news`-Renderer wird im folgenden JavaScript-Auszug gezeigt:
 ```javascript
     // render news story
     news: function (item) {
@@ -401,15 +414,18 @@ In der Entwicklungsphase können Sie die Bing-Websuche-API-Anforderung über ein
 
 Die Installation eines CORS-Proxys, mit dem die Tutorial-App auf den Client-ID-Header zugreifen kann, ist schnell und unkompliziert. [Installieren Sie Node.js](https://nodejs.org/en/download/), falls Sie dies noch nicht getan haben. Geben Sie anschließend folgenden Befehl in ein Befehlsfenster ein:
 
-    npm install -g cors-proxy-server
+```console
+npm install -g cors-proxy-server
+```
 
 Passen Sie den Endpunkt der Bing-Websuche-API in der HTML-Datei wie folgt an:
-
-    http://localhost:9090/https://api.cognitive.microsoft.com/bing/v7.0/search
+`http://localhost:9090/https://api.cognitive.microsoft.com/bing/v7.0/search`
 
 Starten Sie abschließend den CORS-Proxy mit folgendem Befehl:
 
-    cors-proxy-server
+```console
+cors-proxy-server
+```
 
 Lassen Sie das Fenster während der Nutzung der Tutorial-App geöffnet. Wenn Sie das Fenster schließen, wird auch die Ausführung des Proxys beendet. Im Bereich mit den erweiterbaren HTTP-Headern unter den Suchergebnissen wird nun u.a. der `X-MSEdge-ClientID`-Header angezeigt. Hier können Sie überprüfen, ob dieser für alle Anforderungen identisch ist.
 

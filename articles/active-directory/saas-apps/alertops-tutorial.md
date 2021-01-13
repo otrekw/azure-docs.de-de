@@ -2,26 +2,21 @@
 title: 'Tutorial: Azure Active Directory-Integration mit AlertOps | Microsoft-Dokumentation'
 description: Hier erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und AlertOps konfigurieren.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: CelesteDG
 ms.reviewer: celested
-ms.assetid: 3db13ed4-35c2-4b1e-bed8-9b5977061f93
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 05/20/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 21b8cb06712e370972e0b8fec518c37d078262e0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 094b1a029c8e10abce3ca282de0cc99be34d313a
+ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67107060"
+ms.lasthandoff: 10/21/2020
+ms.locfileid: "92318859"
 ---
 # <a name="tutorial-integrate-alertops-with-azure-active-directory"></a>Tutorial: Integrieren von AlertOps in Azure Active Directory
 
@@ -31,18 +26,18 @@ In diesem Tutorial erfahren Sie, wie Sie AlertOps in Azure Active Directory (Azu
 * Ermöglichen Sie Ihren Benutzern, sich mit ihren Azure AD-Konten automatisch bei AlertOps anzumelden.
 * Verwalten Sie Ihre Konten zentral im Azure-Portal.
 
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Für die ersten Schritte benötigen Sie Folgendes:
 
-* Ein Azure AD-Abonnement Falls Sie über kein Abonnement verfügen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) verwenden.
+* Ein Azure AD-Abonnement Falls Sie über kein Abonnement verfügen, können Sie ein [kostenloses Azure-Konto](https://azure.microsoft.com/free/) verwenden.
 * AlertOps-Abonnement, für das einmaliges Anmelden (SSO) aktiviert ist.
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
 
-In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung. AlertOps unterstützt **SP- und IDP**-initiiertes einmaliges Anmelden.
+In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung. AlertOps unterstützt **SP- und IDP**-initiiertes einmaliges Anmelden.
 
 ## <a name="adding-alertops-from-the-gallery"></a>Hinzufügen von AlertOps über den Katalog
 
@@ -61,12 +56,12 @@ Konfigurieren und testen Sie das einmalige Anmelden von Azure AD bei AlertOps mi
 
 Zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD bei AlertOps müssen Sie die folgenden Schritte ausführen:
 
-1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-sso)** , um Ihren Benutzern das Verwenden dieses Features zu ermöglichen.
+1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-sso)** , um Ihren Benutzern die Verwendung dieses Features zu ermöglichen
 2. **[Konfigurieren von AlertOps](#configure-alertops)** , um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren.
 3. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)** , um das einmalige Anmelden mit Azure AD mit der Testbenutzerin Britta Simon zu testen.
 4. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)** , um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
 5. **[Erstellen eines AlertOps-Testbenutzers](#create-alertops-test-user)** , um eine Entsprechung von Britta Simon in AlertOps zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
-6. **[Testen des einmaligen Anmeldens](#test-sso)** , um zu überprüfen, ob die Konfiguration funktioniert.
+6. **[Testen des einmaligen Anmeldens](#test-sso)** , um zu überprüfen, ob die Konfiguration funktioniert
 
 ### <a name="configure-azure-ad-sso"></a>Konfigurieren des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD
 
@@ -113,11 +108,11 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
 4. Klicken Sie im linken Navigationsbereich auf **Account settings** (Kontoeinstellungen).
 
-    ![AlertOps-Konfiguration](./media/alertops-tutorial/configure1.png)
+    ![Screenshot: AlertOps-Menü mit hervorgehobener Option „Kontoeinstellungen“](./media/alertops-tutorial/configure1.png)
 
 5. Wählen Sie auf der Seite **Subscription Settings** (Abonnementeinstellungen) die Option **SSO** aus, und führen Sie die folgenden Schritte aus:
 
-    ![AlertOps-Konfiguration](./media/alertops-tutorial/configure2.png)
+    ![Screenshot: Fenster „Abonnementeinstellungen“ für SSO mit den in diesem Schritt beschriebenen Werten](./media/alertops-tutorial/configure2.png)
 
     a. Aktivieren Sie das Kontrollkästchen **Use Single Sign-On (SSO)** (Einmaliges Anmelden (SSO) verwenden).
 
@@ -143,7 +138,7 @@ In diesem Abschnitt erstellen Sie im Azure-Portal eine Testbenutzerin mit dem Na
    1. Geben Sie im Feld **Name** die Zeichenfolge `Britta Simon` ein.  
    1. Geben Sie im Feld **Benutzername** die Zeichenfolge username@companydomain.extension ein. Beispiel: `BrittaSimon@contoso.com`.
    1. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert aus dem Feld **Kennwort**.
-   1. Klicken Sie auf **Create**.
+   1. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
@@ -151,7 +146,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 1. Wählen Sie im Azure-Portal **Unternehmensanwendungen** > **Alle Anwendungen** aus.
 1. Wählen Sie in der Anwendungsliste den Eintrag **AlertOps** aus.
-1. Suchen Sie auf der Übersichtsseite der App den Abschnitt **Verwalten**, und wählen Sie **Benutzer und Gruppen** aus.
+1. Navigieren Sie auf der Übersichtsseite der App zum Abschnitt **Verwalten**, und wählen Sie **Benutzer und Gruppen** aus.
 
    ![Link „Benutzer und Gruppen“](common/users-groups-blade.png)
 
@@ -169,15 +164,15 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 2. Klicken Sie im linken Navigationsbereich auf **Users** (Benutzer).
 
-    ![AlertOps-Konfiguration](./media/alertops-tutorial/user1.png)
+    ![Screenshot: „AlertOps“-Menü mit hervorgehobener Option „Benutzer“](./media/alertops-tutorial/user1.png)
 
 3. Wählen Sie **Add User** (Benutzer hinzufügen) aus.
 
-    ![AlertOps-Konfiguration](./media/alertops-tutorial/user2.png)
+    ![Screenshot: Fenster „Benutzer“ mit der Schaltfläche „Benutzer hinzufügen“](./media/alertops-tutorial/user2.png)
 
 4. Führen Sie im Dialogfeld **Add User** die folgenden Schritte aus:
 
-    ![AlertOps-Konfiguration](./media/alertops-tutorial/user3.png)
+    ![Screenshot: Bereich „Benutzer hinzufügen“ mit den in diesem Schritt beschriebenen Werten](./media/alertops-tutorial/user3.png)
 
     a. Geben Sie im Textfeld **Login User Name** (Benutzername für die Anmeldung) den vollständigen Namen des Benutzers ein (beispielsweise **Brittasimon**).
 
@@ -195,12 +190,12 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 ### <a name="test-sso"></a>Testen des einmaligen Anmeldens
 
-Wenn Sie im Zugriffsbereich auf die Kachel „AlertOps“ klicken, sollten Sie automatisch bei der AlertOps-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Wenn Sie im Zugriffsbereich auf die Kachel „AlertOps“ klicken, sollten Sie automatisch bei der AlertOps-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>Weitere Ressourcen
 
-- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](./tutorial-list.md)
 
-- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Was ist bedingter Zugriff?](../conditional-access/overview.md)

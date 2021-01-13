@@ -1,30 +1,26 @@
 ---
-title: Erstellen einer Windows-VM mithilfe einer Vorlage in Azure | Microsoft Docs
+title: Erstellen einer Windows-VM mithilfe einer Vorlage in Azure
 description: Verwenden Sie eine Resource Manager-Vorlage und PowerShell, um ganz einfach einen neuen virtuellen Windows-Computer zu erstellen.
-services: virtual-machines-windows
-documentationcenter: ''
 author: cynthn
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 19129d61-8c04-4aa9-a01f-361a09466805
 ms.service: virtual-machines-windows
-ms.workload: na
-ms.tgt_pltfrm: vm-windows
-ms.topic: article
+ms.topic: how-to
 ms.date: 03/22/2019
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7e1f50753f155d1583de3a1e8426975e1b0d6aee
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: ddd8166dd29d2210fecdd72d5be446df47a6c5df
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70102518"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89072297"
 ---
 # <a name="create-a-windows-virtual-machine-from-a-resource-manager-template"></a>Erstellen eines virtuellen Windows-Computer mit einer Resource Manager-Vorlage
 
 Es wird beschrieben, wie Sie einen virtuellen Windows-Computer mit einer Azure Resource Manager-Vorlage und mit Azure PowerShell über die Azure Cloud Shell erstellen. Mit der in diesem Artikel verwendeten Vorlage wird ein einzelner virtueller Computer mit Windows Server in einem neuen virtuellen Netzwerk mit nur einem Subnetz bereitgestellt. Informationen zum Erstellen eines virtuellen Linux-Computers finden Sie unter [Erstellen eines virtuellen Linux-Computers mithilfe von Azure Resource Manager-Vorlagen](../linux/create-ssh-secured-vm-from-template.md).
+
+Eine Alternative ist die Bereitstellung der Vorlage vom Azure-Portal aus. Um die Vorlage im Portal zu öffnen, wählen Sie die Schaltfläche **In Azure bereitstellen** aus.
+
+[![In Azure bereitstellen](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-vm-simple-windows%2Fazuredeploy.json)
 
 ## <a name="create-a-virtual-machine"></a>Erstellen eines virtuellen Computers
 
@@ -58,23 +54,23 @@ New-AzResourceGroupDeployment `
 
 ```
 
-Wenn Sie nicht die Azure Cloud Shell verwenden, sondern PowerShell lokal installieren und nutzen möchten, müssen Sie für dieses Tutorial das Azure PowerShell-Modul verwenden. Führen Sie `Get-Module -ListAvailable Az` aus, um die Version zu finden. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-az-ps) Informationen dazu. Wenn Sie PowerShell lokal ausführen, müssen Sie auch `Connect-AzAccount` ausführen, um eine Verbindung mit Azure herzustellen.
+Wenn Sie nicht die Azure Cloud Shell verwenden, sondern PowerShell lokal installieren und nutzen möchten, müssen Sie für dieses Tutorial das Azure PowerShell-Modul verwenden. Führen Sie `Get-Module -ListAvailable Az` aus, um die Version zu ermitteln. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-az-ps) Informationen dazu. Wenn Sie PowerShell lokal ausführen, müssen Sie auch `Connect-AzAccount` ausführen, um eine Verbindung mit Azure herzustellen.
 
 Im vorherigen Beispiel haben Sie eine in GitHub gespeicherte Vorlage angegeben. Sie können eine Vorlage außerdem herunterladen oder erstellen und den lokalen Pfad mit dem Parameter `--template-file` angeben.
 
 Hier sind einige zusätzlichen Ressourcen:
 
-- Informationen zur Entwicklung von Resource Manager-Vorlagen finden Sie in der [Azure Resource Manager-Dokumentation](/azure/azure-resource-manager/).
+- Informationen zur Entwicklung von Resource Manager-Vorlagen finden Sie in der [Azure Resource Manager-Dokumentation](../../azure-resource-manager/index.yml).
 - Die Schemas zu virtuellen Azure-Computern finden Sie in der [Azure-Vorlagenreferenz](/azure/templates/microsoft.compute/allversions).
 - Weitere Beispiele für VM-Vorlagen finden Sie unter [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Compute&pageNumber=1&sort=Popular).
 
-## <a name="connect-to-the-virtual-machine"></a>Herstellen einer Verbindung mit dem virtuellen Computer
+## <a name="connect-to-the-virtual-machine"></a>Verbinden mit dem virtuellen Computer
 
 Im letzten PowerShell-Befehl aus dem vorherigen Skript wird der Name des virtuellen Computers angezeigt. Informationen zum Herstellen einer Verbindung mit dem virtuellen Computer finden Sie unter [Herstellen einer Verbindung mit einem virtuellen Azure-Computer unter Windows und Anmelden auf diesem Computer](./connect-logon.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Falls bei der Bereitstellung Probleme aufgetreten sind, können Sie den Artikel [Beheben gängiger Azure-Bereitstellungsfehler mit Azure Resource Manager](../../resource-manager-common-deployment-errors.md) lesen.
+- Falls bei der Bereitstellung Probleme aufgetreten sind, können Sie den Artikel [Beheben gängiger Azure-Bereitstellungsfehler mit Azure Resource Manager](../../azure-resource-manager/templates/common-deployment-errors.md) lesen.
 - Erfahren Sie, wie Sie einen virtuellen Computer erstellen und verwalten, indem Sie [Erstellen und Verwalten von virtuellen Windows-Computern mit dem Azure PowerShell-Modul](tutorial-manage-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) durcharbeiten.
 
 Wenn Sie weitere Informationen zum Erstellen von Vorlagen benötigen, sehen Sie sich die JSON-Syntax und die Eigenschaften für die von Ihnen bereitgestellten Ressourcentypen an:

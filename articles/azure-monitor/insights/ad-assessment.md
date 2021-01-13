@@ -1,24 +1,17 @@
 ---
 title: Optimieren Ihrer Active Directory-Umgebung mit Azure Monitor | Microsoft-Dokumentation
 description: Sie können die Active Directory-Integritätsüberprüfung-Lösung verwenden, um die Risiken und die Integrität Ihrer Umgebungen in regelmäßigen Abständen zu bewerten.
-services: log-analytics
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: 81eb41b8-eb62-4eb2-9f7b-fde5c89c9b47
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.subservice: logs
 ms.topic: conceptual
+author: bwren
+ms.author: bwren
 ms.date: 09/10/2019
-ms.author: magoedte
-ms.openlocfilehash: a0ffe7b8726ee78ca81751687bebd3c435365576
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 3c86b21c5e0533ab6a1a3c64dc601eb8bb573547
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70883087"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87318095"
 ---
 # <a name="optimize-your-active-directory-environment-with-the-active-directory-health-check-solution-in-azure-monitor"></a>Optimieren Ihrer Active Directory-Umgebung mit der Active Directory-Integritätsüberprüfung-Lösung in Azure Monitor
 
@@ -42,8 +35,8 @@ Nachdem Sie die Lösung hinzugefügt haben und eine Überprüfung durchgeführt 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Für die Active Directory-Integritätsüberprüfung-Lösung muss eine unterstützte Version von .NET Framework 4.5.2 oder höher auf jedem Computer installiert sein, auf dem der Log Analytics-Agent für Windows (auch als Microsoft Monitoring Agent (MMA) bezeichnet) installiert ist.  Der Agent wird von System Center 2016 – Operations Manager, Operations Manager 2012 R2 sowie Azure Monitor verwendet.
-* Die Lösung unterstützt Domänencontroller unter Windows Server 2008 und 2008 R2, Windows Server 2012 und 2012 R2 sowie Windows Server 2016.
+* Für die Active Directory-Integritätsüberprüfung-Lösung muss eine unterstützte Version von .NET Framework 4.6.2 oder höher auf jedem Computer installiert sein, auf dem der Log Analytics-Agent für Windows (auch als Microsoft Monitoring Agent (MMA) bezeichnet) installiert ist.  Der Agent wird von System Center 2016 – Operations Manager, Operations Manager 2012 R2 sowie Azure Monitor verwendet.
+* Die Lösung unterstützt Domänencontroller unter Windows Server 2008 und 2008 R2, Windows Server 2012 und 2012 R2, Windows Server 2016 sowie Windows Server 2019.
 * Ein Log Analytics-Arbeitsbereich zum Hinzufügen der Active Directory-Integritätsüberprüfung-Lösung aus dem Azure Marketplace in das Azure-Portal. Es ist keine zusätzliche Konfiguration erforderlich.
 
   > [!NOTE]
@@ -53,9 +46,9 @@ Nachdem Sie die Lösung hinzugefügt haben und eine Überprüfung durchgeführt 
 
 Um die Integritätsüberprüfung für Ihre Domänencontroller auszuführen, die Mitglieder der zu bewertenden Domäne sind, sind für jeden Domänencontroller in dieser Domäne ein Agent und Konnektivität mit Azure Monitor mithilfe einer der folgenden unterstützten Methoden erforderlich:
 
-1. Installieren Sie den [Log Analytics-Agent für Windows](../../azure-monitor/platform/agent-windows.md), wenn der Domänencontroller nicht bereits durch System Center 2016 – Operations Manager oder Operations Manager 2012 R2 überwacht wird.
+1. Installieren Sie den [Log Analytics-Agent für Windows](../platform/agent-windows.md), wenn der Domänencontroller nicht bereits durch System Center 2016 – Operations Manager oder Operations Manager 2012 R2 überwacht wird.
 2. Wenn er mit System Center 2016 – Operations Manager oder Operations Manager 2012 R2 überwacht wird, und die Verwaltungsgruppe nicht in Azure Monitor integriert ist, kann der Domänencontroller mit Azure Monitor mehrfach vernetzt werden, um Daten zu sammeln und an den Dienst weiterzuleiten, wobei er weiterhin von Operations Manager überwacht wird.  
-3. Wenn Ihre Operations Manager-Verwaltungsgruppe andernfalls in den Dienst integriert ist, müssen Sie die Domänencontroller für die Datensammlung durch den Dienst hinzufügen, indem Sie die Schritte unter [Herstellen einer Verbindung zwischen Operations Manager und OMS](../../azure-monitor/platform/om-agents.md#connecting-operations-manager-to-azure-monitor) nach der Aktivierung der Lösung in Ihrem Arbeitsbereich ausführen.  
+3. Wenn Ihre Operations Manager-Verwaltungsgruppe andernfalls in den Dienst integriert ist, müssen Sie die Domänencontroller für die Datensammlung durch den Dienst hinzufügen, indem Sie die Schritte unter [Herstellen einer Verbindung zwischen Operations Manager und OMS](../platform/om-agents.md#connecting-operations-manager-to-azure-monitor) nach der Aktivierung der Lösung in Ihrem Arbeitsbereich ausführen.  
 
 Der Agent auf Ihrem Domänencontroller, der Berichte an die Operations Manager-Verwaltungsgruppe sendet, sammelt Daten, leitet sie an seinen zugewiesenen Verwaltungsserver weiter, und dann werden sie direkt von einem Verwaltungsserver an Azure Monitor gesendet.  Die Daten werden nicht in die Operations Manager-Datenbanken geschrieben.  
 
@@ -68,9 +61,9 @@ Die Active Directory-Integritätsüberprüfung sammelt mithilfe des von Ihnen ak
 - .NET Framework
 - Ereignisprotokoll
 - Active Directory Service Interfaces (ADSI)
-- Windows PowerShell
+- Windows PowerShell
 - Dateidaten
-- Windows-Verwaltungsinstrumentation (WMI)
+- Windows-Verwaltungsinstrumentation (WMI, Windows Management Instrumentation)
 - API des DCDIAG-Tools
 - API des Dateireplikationsdiensts (NTFRS)
 - Benutzerdefinierter C#-Code
@@ -173,6 +166,17 @@ Nach Ausführung der nächsten geplanten Integritätsüberprüfung (standardmä�
 
 ## <a name="ad-health-check-solutions-faq"></a>AD-Integritätsüberprüfung-Lösungen – häufig gestellte Fragen
 
+*Welche Überprüfungen werden von der AD-Bewertungslösung durchgeführt?*
+
+* Die folgende Abfrage zeigt eine Beschreibung aller Überprüfungen, die derzeit ausgeführt werden:
+
+```Kusto
+ADAssessmentRecommendation
+| distinct RecommendationId, FocusArea, ActionArea, Recommendation, Description
+| sort by FocusArea,ActionArea, Recommendation
+```
+Die Ergebnisse können dann zur weiteren Prüfung in Excel exportiert werden.
+
 *Wie oft wird eine Integritätsüberprüfung ausgeführt?*
 
 * Die Überprüfung wird alle sieben Tage ausgeführt.
@@ -212,3 +216,4 @@ Nach Ausführung der nächsten geplanten Integritätsüberprüfung (standardmä�
 ## <a name="next-steps"></a>Nächste Schritte
 
 Verwenden Sie [Protokollabfragen in Azure Monitor](../log-query/log-query-overview.md), um zu erfahren, wie Sie detaillierte Daten und Empfehlungen der AD-Integritätsüberprüfung analysieren.
+

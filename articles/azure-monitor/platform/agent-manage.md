@@ -1,24 +1,16 @@
 ---
-title: Verwalten des Azure Log Analytics-Agents | Microsoft Dokumentation
+title: Verwalten des Azure Log Analytics-Agents
 description: In diesem Artikel werden die verschiedenen Verwaltungsaufgaben beschrieben, die Sie typischerweise während des Lebenszyklus des Windows- oder Linux-Agents für Log Analytics ausführen, der auf einem Computer bereitgestellt wird.
-services: log-analytics
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: conceptual
+author: bwren
+ms.author: bwren
 ms.date: 06/14/2019
-ms.author: magoedte
-ms.openlocfilehash: 0c128aaf8102b3072b6a63c80ea860ceefbf5124
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 4d0ceacd37748e9761903d02fd7e052d70b10e15
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "67146303"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96011879"
 ---
 # <a name="managing-and-maintaining-the-log-analytics-agent-for-windows-and-linux"></a>Verwalten und Warten des Log Analytics-Agents für Windows und Linux
 
@@ -36,7 +28,7 @@ Der Log Analytics-Agent für Windows und Linux kann manuell oder automatisch auf
 
 ### <a name="upgrade-windows-agent"></a>Aktualisieren des Windows-Agents 
 
-Um den Agent auf einer Windows-VM auf die neueste Version zu aktualisieren, die nicht über die VM-Erweiterung für Log Analytics installiert wurde, erfolgt die Ausführung entweder über die Eingabeaufforderung, das Skript oder eine andere Automatisierungslösung oder über den msi-Setup-Assistenten für die MMASetup-\<Plattform\>.  
+Um den Agent auf einem virtuellen Windows-Computer auf die neueste Version zu aktualisieren, die nicht über die VM-Erweiterung für Log Analytics installiert wurde, erfolgt die Ausführung entweder über die Eingabeaufforderung, das Skript oder eine andere Automatisierungslösung oder über den msi-Setup-Assistenten für MMASetup-\<platform\>.  
 
 Sie können die neueste Version des Windows-Agents aus Ihrem Log Analytics-Arbeitsbereich herunterladen, indem Sie die folgenden Schritte ausführen.
 
@@ -58,7 +50,7 @@ Sie können die neueste Version des Windows-Agents aus Ihrem Log Analytics-Arbei
 
 1. Melden Sie sich auf dem Computer mit einem Konto an, das über Administratorrechte verfügt.
 
-2. Führen Sie die **MMASetup-\<platform\>.exe** aus, um den Setup-Assistenten zu starten.
+2. Führen Sie **MMASetup-\<platform\>.exe** aus, um den Setup-Assistenten zu starten.
 
 3. Klicken Sie auf der ersten Seite des Setup-Assistenten auf **Weiter**.
 
@@ -105,7 +97,7 @@ Die Schritte in diesem Abschnitt sind notwendig, wenn Sie den Windows-Agent nich
 
 5. Wenn Sie einen Arbeitsbereich hinzufügen, klicken Sie auf **Hinzufügen**. Fügen Sie dann im Dialogfeld **Log Analytics-Arbeitsbereich hinzufügen** die Arbeitsbereichs-ID und den Arbeitsbereichsschlüssel (Primärschlüssel) ein. Wenn der Computer in einen Log Analytics-Arbeitsbereich in Azure Government Cloud melden soll, wählen Sie „Azure US-Regierung“ aus der Dropdownliste „Azure Cloud“ aus.
 
-6. Klicken Sie zum Speichern der Änderungen auf **OK** .
+6. Klicken Sie auf **OK** , um die Änderungen zu speichern.
 
 #### <a name="remove-a-workspace-using-powershell"></a>Entfernen eines Arbeitsbereichs mithilfe von PowerShell
 
@@ -244,7 +236,7 @@ Verwenden Sie eines der folgenden Verfahren, um den Windows- oder Linux-Agent ü
 3. Klicken Sie in **Programme und Features** auf die Option **Microsoft Monitoring Agent**, dann auf **Deinstallieren** und anschließend auf **Ja**.
 
 >[!NOTE]
->Der Agent-Setup-Assistent kann auch durch Doppelklicken auf die Datei **MMASetup-\<Plattform\>.exe** ausgeführt werden, die aus einem Arbeitsbereich im Azure-Portal heruntergeladen werden kann.
+>Der Agent-Setup-Assistent kann auch durch Doppelklicken auf die Datei **MMASetup-\<platform\>.exe** ausgeführt werden, die von einem Arbeitsbereich im Azure-Portal heruntergeladen werden kann.
 
 #### <a name="uninstall-from-the-command-line"></a>Deinstallieren über die Befehlszeile
 Die heruntergeladene Datei für den Agent ist ein eigenständiges Installationspaket, das mit IExpress erstellt wurde. Das Setup-Programm für den Agent und die unterstützenden Dateien sind im Paket enthalten und müssen extrahiert werden, um eine ordnungsgemäße Deinstallation mit der im folgenden Beispiel gezeigten Befehlszeile durchführen zu können.
@@ -283,7 +275,7 @@ Führen Sie die folgenden Schritte aus, um den Log Analytics-Agent für Windows 
 
 8. Geben Sie im Feld **Verwaltungsserverport** die TCP-Portnummer ein.
 
-9. Wählen Sie unter **Agentaktionskonto**das lokale Systemkonto oder ein lokales Domänenkonto aus.
+9. Wählen Sie unter **Agentaktionskonto** das lokale Systemkonto oder ein lokales Domänenkonto aus.
 
 10. Klicken Sie zum Schließen des Dialogfelds **Verwaltungsgruppe hinzufügen** auf **OK**. Klicken Sie anschließend zum Schließen des Dialogfelds **Eigenschaften von Microsoft Monitoring Agent** auf **OK**.
 

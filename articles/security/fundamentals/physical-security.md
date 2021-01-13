@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/28/2019
+ms.date: 07/10/2020
 ms.author: terrylan
-ms.openlocfilehash: 634f89b3123902d981ad07dd1404315387104322
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 3eac3c9abda74f0414fc97512f011d235d3991f5
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68726726"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87076324"
 ---
 # <a name="azure-facilities-premises-and-physical-security"></a>Azure-Einrichtungen, Gelände und physische Sicherheit
 In diesem Artikel wird beschrieben, welche Maßnahmen Microsoft zur Sicherung der Azure-Infrastruktur ergreift.
@@ -28,9 +28,9 @@ In diesem Artikel wird beschrieben, welche Maßnahmen Microsoft zur Sicherung de
 ## <a name="datacenter-infrastructure"></a>Infrastruktur der Rechenzentren
 Azure besteht aus einer [global verteilten Rechenzentrumsinfrastruktur](https://azure.microsoft.com/global-infrastructure/), die Tausende von Onlinediensten unterstützt und mehr als 100 höchst sichere Einrichtungen weltweit umfasst.
 
-Die Infrastruktur bringt Anwendungen und Benutzer weltweit näher zusammen, stellt dabei die Datenresidenz sicher und bietet den Kunden umfassende Optionen hinsichtlich Compliance und Ausfallsicherheit. Azure hat 52-Regionen weltweit und ist in 140 Ländern/Regionen verfügbar.
+Die Infrastruktur bringt Anwendungen und Benutzer weltweit näher zusammen, stellt dabei die Datenresidenz sicher und bietet den Kunden umfassende Optionen hinsichtlich Compliance und Ausfallsicherheit. Azure hat 58 Regionen weltweit und ist in 140 Ländern/Regionen verfügbar.
 
-Als Region wird eine Reihe von Rechenzentren bezeichnet, die über ein großes und robustes Netzwerk miteinander verbunden sind. Das Netzwerk umfasst standardmäßig Inhaltsverteilung, Lastenausgleich, Redundanz und Verschlüsselung. Azure verfügt über mehr globale Regionen als jeder andere Cloudanbieter und bietet Ihnen damit die Flexibilität, Ihre Anwendungen genau dort bereitzustellen, wo Sie diese benötigen.
+Als Region wird eine Reihe von Rechenzentren bezeichnet, die über ein großes und robustes Netzwerk miteinander verbunden sind. Standardmäßig sind Inhaltsverteilung, Lastenausgleich, Redundanz und [Verschlüsselung der Sicherungsschicht](encryption-overview.md#encryption-of-data-in-transit) für den gesamten Azure-Datenverkehr innerhalb einer Region oder für Ortswechsel zwischen Regionen im Netzwerk enthalten. Azure verfügt über mehr globale Regionen als jeder andere Cloudanbieter und bietet Ihnen damit die Flexibilität, Ihre Anwendungen genau dort bereitzustellen, wo Sie diese benötigen.
 
 Azure-Regionen sind in Geografien unterteilt. Eine Azure-Geografie sorgt dafür, dass Anforderungen an Datenresidenz, Datenhoheit, Compliance und Ausfallsicherheit innerhalb geografischer Grenzen erfüllt werden.
 

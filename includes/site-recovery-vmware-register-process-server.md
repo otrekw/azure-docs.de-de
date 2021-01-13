@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 04/28/2019
 ms.author: raynew
 ms.openlocfilehash: 088cd5447b1f96dbf172b5918c29e4f3293289a6
-ms.sourcegitcommit: 6cb4dd784dd5a6c72edaff56cf6bcdcd8c579ee7
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67534631"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96008474"
 ---
 1. Richten Sie eine Remotedesktopverbindung mit dem Computer ein, auf dem der Prozessserver ausgeführt wird. 
 2. Führen Sie „cspsconfigtool.exe“ aus, um das Tool für die Konfiguration des Azure Site Recovery-Prozessservers zu starten.

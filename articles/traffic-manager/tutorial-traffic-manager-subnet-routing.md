@@ -1,26 +1,26 @@
 ---
-title: Konfigurieren der Routingmethode für Subnetzdatenverkehr mit dem Azure Traffic Manager
-description: In diesem Artikel wird erläutert, wie Traffic Manager so konfiguriert wird, dass Datenverkehr von Benutzersubnetzen an bestimmte Endpunkte geleitet wird.
+title: 'Tutorial: Konfigurieren des Routings für Subnetzdatenverkehr mit Azure Traffic Manager'
+description: In diesem Artikel Tutorial wird beschrieben, wie Traffic Manager so konfiguriert wird, dass Datenverkehr von Benutzersubnetzen an bestimmte Endpunkte geleitet wird.
 services: traffic-manager
 documentationcenter: ''
-author: asudbring
+author: duongau
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/24/2018
-ms.author: allensu
-ms.openlocfilehash: da2d4816f3f7a99ac2d213d72d7e801cf630e165
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.author: duau
+ms.openlocfilehash: 348f1d779f8ea67860726b8f8b7739921e7ad54a
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66304934"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96003802"
 ---
-# <a name="direct-traffic-to-specific-endpoints-based-on-user-subnet-using-traffic-manager"></a>Weiterleiten von Datenverkehr an bestimmte Endpunkte mit Traffic Manager basierend auf einem Benutzersubnetz
+# <a name="tutorial-direct-traffic-to-specific-endpoints-based-on-user-subnet-using-traffic-manager"></a>Tutorial: Weiterleiten von Datenverkehr an bestimmte Endpunkte mit dem Traffic Manager basierend auf einem Benutzersubnetz
 
-In diesem Artikel wird das Konfigurieren der Routingmethode für Subnetzdatenverkehr beschrieben. Mit der Datenverkehrsrouting-Methode **Subnetz** können Sie IP-Adressbereiche bestimmten Endpunkten zuordnen. Wenn eine Anforderung von Traffic Manager empfangen wird, wird die Quell-IP der Anforderung überprüft und der damit verbundene Endpunkt zurückgegeben.
+In diesem Artikel wird das Konfigurieren der Routingmethode für Subnetzdatenverkehr beschrieben. Mit der Datenverkehrsrouting-Methode **Subnetz** können Sie IP-Adressbereiche bestimmten Endpunkten zuordnen. Wenn eine Anforderung vom Traffic Manager empfangen wird, wird die Quell-IP-Adresse der Anforderung überprüft und der damit verbundene Endpunkt zurückgegeben.
 
 In diesem Tutorial wird abhängig von der IP-Adresse der Benutzerabfrage der Datenverkehr unter Verwendung von Subnetzrouting entweder an eine interne Website oder an eine Produktionswebsite geleitet.
 
@@ -47,7 +47,7 @@ Mit den Test-VMs wird veranschaulicht, wie der Traffic Manager basierend auf dem
 
 ### <a name="sign-in-to-azure"></a>Anmelden bei Azure
 
-Melden Sie sich unter https://portal.azure.com beim Azure-Portal an.
+Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) beim Azure-Portal an.
 
 ### <a name="create-websites"></a>Erstellen von Websites
 
@@ -154,10 +154,10 @@ Erstellen Sie ein Traffic Manager-Profil, mit dem Sie basierend auf der Quell-IP
 
     | Einstellung                 | Wert                                              |
     | ---                     | ---                                                |
-    | NAME                   | Dieser Name muss innerhalb der Zone „trafficmanager.net“ eindeutig sein und ergibt den DNS-Namen „trafficmanager.net“, der für den Zugriff auf Ihr Traffic Manager-Profil verwendet wird.                                   |
+    | Name                   | Dieser Name muss innerhalb der Zone „trafficmanager.net“ eindeutig sein und ergibt den DNS-Namen „trafficmanager.net“, der für den Zugriff auf Ihr Traffic Manager-Profil verwendet wird.                                   |
     | Routingmethode          | Wählen Sie als Routingmethode **Subnetz** aus.                                       |
-    | Abonnement            | Wählen Sie Ihr Abonnement aus.                          |
-    | Ressourcengruppe          | Wählen Sie **Vorhanden** aus, und geben Sie *myResourceGroupTM1* ein. |
+    | Subscription            | Wählen Sie Ihr Abonnement aus.                          |
+    | Resource group          | Wählen Sie **Vorhanden** aus, und geben Sie *myResourceGroupTM1* ein. |
     | |                              |
     |
 
@@ -173,8 +173,8 @@ Fügen Sie die beiden virtuellen Computer mit den IIS-Servern (*myIISVMEastUS* &
 
     | Einstellung                 | Wert                                              |
     | ---                     | ---                                                |
-    | Type                    | Azure-Endpunkt                                   |
-    | NAME           | myInternalWebSiteEndpoint                                        |
+    | type                    | Azure-Endpunkt                                   |
+    | Name           | myInternalWebSiteEndpoint                                        |
     | Zielressourcentyp           | Öffentliche IP-Adresse                          |
     | Zielressource          | **Wählen Sie eine öffentliche IP-Adresse aus**, um die Liste der Ressourcen mit öffentlichen IP-Adressen im gleichen Abonnement anzuzeigen. Wählen Sie in **Ressource** die öffentliche IP-Adresse mit dem Namen *myIISVMEastUS-ip* aus. Dies ist die öffentliche IP-Adresse der IIS-Server-VM in „USA, Osten“.|
     |  Einstellungen für das Subnetzrouting    |   Fügen Sie die IP-Adresse der Test-VM *myVMEastUS* hinzu. Jede Benutzerabfrage von diesem virtuellen Computer wird an *myInternalWebSiteEndpoint* weitergeleitet.    |
@@ -214,12 +214,13 @@ In diesem Abschnitt sehen Sie den Traffic Manager in Aktion.
 
 7. Stellen Sie dann mit den Schritten 1 bis 5 eine Verbindung mit dem virtuellen Computer *myVMWestEurope* her, der sich in **Europa, Westen** befindet, und browsen Sie von diesem virtuellen Computer aus zu dem Domänennamen des Traffic Manager-Profils. Da die IP-Adresse des virtuellen Computers *myVMWestEurope* dem Endpunkt *myProductionWebsiteEndpoint* zugeordnet ist, startet der Webbrowser den Testwebsiteserver *myIISVMWestEurope*.
 
-## <a name="delete-the-traffic-manager-profile"></a>Löschen des Traffic Manager-Profils
+## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
 Wenn Sie die Ressourcengruppen (**ResourceGroupTM1** und **ResourceGroupTM2**) nicht mehr benötigen, löschen Sie sie. Wählen Sie hierzu die Ressourcengruppe aus (**ResourceGroupTM1** oder **ResourceGroupTM2**), und wählen Sie dann **Löschen**.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Informationen zur [gewichteten Routingmethode für Datenverkehr](traffic-manager-configure-weighted-routing-method.md).
-- Informationen zur [prioritätsbasierten Routingmethode](traffic-manager-configure-priority-routing-method.md).
-- Informationen zur [geografischen Routingmethode](traffic-manager-configure-geographic-routing-method.md).
+Hier erfahren Sie mehr zur Subnetz-Routingmethode:
+
+> [!div class="nextstepaction"]
+> [Subnetzdatenverkehrs-Routingmethode](traffic-manager-routing-methods.md#subnet)

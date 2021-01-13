@@ -1,22 +1,22 @@
 ---
-title: Verteilte Daten in Azure Database for PostgreSQL – Hyperscale (Citus)
-description: In der Servergruppe verteilte Tabellen und Shards.
+title: 'Verteilte Daten: Hyperscale (Citus) – Azure Database for PostgreSQL'
+description: Erfahren Sie mehr über verteilte Tabellen, Verweistabellen, lokale Tabellen und Shards in Azure Database for PostgreSQL.
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.openlocfilehash: acc07086f4eaac523cb27e1361cb9cc6d380c695
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.openlocfilehash: 7757fdb4953640597a805c3d74a9e1ef08ef2c07
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69998039"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "86114498"
 ---
 # <a name="distributed-data-in-azure-database-for-postgresql--hyperscale-citus"></a>Verteilte Daten in Azure Database for PostgreSQL – Hyperscale (Citus)
 
-In diesem Artikel werden die drei Tabellentypen in Azure Database for PostgreSQL – Hyperscale (Citus) Vorschau beschrieben.
+In diesem Artikel werden die drei Tabellentypen in Azure Database for PostgreSQL – Hyperscale (Citus) beschrieben.
 Es wird erläutert, wie verteilte Tabellen als Shards gespeichert und Shards auf Knoten platziert werden.
 
 ## <a name="table-types"></a>Tabellentypen
@@ -55,7 +55,7 @@ Die Metadatentabelle `pg_dist_shard` auf dem Koordinatorknoten enthält eine Zei
 
 ```sql
 SELECT * from pg_dist_shard;
- logicalrelid  | shardid | shardstorage | shardminvalue | shardmaxvalue 
+ logicalrelid  | shardid | shardstorage | shardminvalue | shardmaxvalue
 ---------------+---------+--------------+---------------+---------------
  github_events |  102026 | t            | 268435456     | 402653183
  github_events |  102027 | t            | 402653184     | 536870911
@@ -84,11 +84,14 @@ JOIN pg_dist_node node
 WHERE shardid = 102027;
 ```
 
-    ┌─────────┬───────────┬──────────┐
-    │ shardid │ nodename  │ nodeport │
-    ├─────────┼───────────┼──────────┤
-    │  102027 │ localhost │     5433 │
-    └─────────┴───────────┴──────────┘
+```output
+┌─────────┬───────────┬──────────┐
+│ shardid │ nodename  │ nodeport │
+├─────────┼───────────┼──────────┤
+│  102027 │ localhost │     5433 │
+└─────────┴───────────┴──────────┘
+```
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 - Erfahren Sie mehr über das [Auswählen einer Verteilungsspalte](concepts-hyperscale-choose-distribution-column.md) für verteilte Tabellen.

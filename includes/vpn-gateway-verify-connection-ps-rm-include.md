@@ -9,10 +9,10 @@ ms.date: 10/17/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 49f48c2d0bf865cf8c8fde831e7a597f8701d213
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 10/22/2020
 ms.locfileid: "67177919"
 ---
 Sie können überprüfen, ob die Verbindungserstellung erfolgreich war, indem Sie das Cmdlet „Get-AzVirtualNetworkGatewayConnection“ mit oder ohne den Zusatz „-Debug“ verwenden. 

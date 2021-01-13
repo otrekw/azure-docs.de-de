@@ -1,25 +1,24 @@
 ---
-title: Bereitstellen von Geräten für Mehrinstanzenfähigkeit im Azure IoT Hub Device Provisioning Service | Microsoft-Dokumentation
-description: Bereitstellen von Geräten für Mehrinstanzenfähigkeit mit Ihrer Device Provisioning Service-Instanz
+title: Bereitstellen von Geräten für Mehrinstanzenfähigkeit in Azure IoT Hub Device Provisioning Service
+description: Bereitstellen von Geräten für Mehrinstanzenfähigkeit mit Ihrer Device Provisioning Service-Instanz (DPS)
 author: wesmc7777
 ms.author: wesmc
 ms.date: 04/10/2019
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-manager: philmea
-ms.openlocfilehash: 84e1f57175d772ad281c18b67fa1be484c0cac69
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d0c132d1aa7a37dc8e7620352bb7b9a078d79a09
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66116084"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96571605"
 ---
 # <a name="how-to-provision-for-multitenancy"></a>Bereitstellen für Mehrinstanzenfähigkeit 
 
-Für die vom Bereitstellungsdienst definierten Zuordnungsrichtlinien werden verschiedene Zuordnungsszenarien unterstützt. Zwei häufige Szenarien sind:
+In diesem Artikel wird gezeigt, wie Sie mehrere symmetrische Schlüsselgeräte für eine Gruppe von IoT Hubs mithilfe einer [Zuordnungsrichtlinie](concepts-service.md#allocation-policy) auf sichere Weise bereitstellen. Bei den vom Bereitstellungsdienst definierten Zuordnungsrichtlinien werden verschiedene Zuordnungsszenarien unterstützt. Zwei häufige Szenarien sind:
 
-* **Geolocation/Geolatenz**: Wenn ein Gerät von einem Standort an einen anderen verlagert wird, lässt sich die Netzwerklatenz verbessern, indem das Gerät jeweils auf dem IoT Hub bereitgestellt wird, der dem jeweiligen Standort am nächsten liegt. In diesem Szenario wird eine Gruppe mit regionsübergreifenden IoT Hubs für Registrierungen ausgewählt. Für diese Registrierungen wird die Zuordnungsrichtlinie **Niedrigste Latenz** ausgewählt. Diese Richtlinie bewirkt, dass der Device Provisioning Service die Gerätelatenz auswertet und aus der Gruppe mit den IoT Hubs den nächstgelegenen IoT Hub ermittelt. 
+* **Geolocation oder Geolatenz**: Wenn ein Gerät von einem Standort an einen anderen verlagert wird, lässt sich die Netzwerklatenz verbessern, indem das Gerät jeweils auf dem IoT Hub bereitgestellt wird, der dem jeweiligen Standort am nächsten liegt. In diesem Szenario wird eine Gruppe mit regionsübergreifenden IoT Hubs für Registrierungen ausgewählt. Für diese Registrierungen wird die Zuordnungsrichtlinie **Niedrigste Latenz** ausgewählt. Diese Richtlinie bewirkt, dass der Device Provisioning Service die Gerätelatenz auswertet und aus der Gruppe mit den IoT Hubs den nächstgelegenen IoT Hub ermittelt. 
 
 * **Mehrinstanzenfähigkeit**: Geräte, die in einer IoT-Lösung verwendet werden, müssen unter Umständen einem bestimmten IoT Hub oder einer Gruppe mit IoT Hubs zugewiesen werden. Für die Lösung kann es erforderlich sein, dass alle Geräte für einen bestimmten Mandanten mit einer bestimmten Gruppe von IoT Hubs kommunizieren. In einigen Fällen kann auch ein Mandant der Besitzer von IoT Hubs sein und erzwingen, dass Geräte seinen IoT Hubs zugewiesen werden.
 
@@ -39,11 +38,8 @@ In diesem Artikel wird ein Beispiel für ein simuliertes Gerät aus dem [Azure I
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Vollständige Bearbeitung der Schnellstartanleitung [Einrichten des IoT Hub Device Provisioning Service über das Azure-Portal](./quick-setup-auto-provision.md).
-
-
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
+- Vollständige Bearbeitung der Schnellstartanleitung [Einrichten des IoT Hub Device Provisioning Service über das Azure-Portal](./quick-setup-auto-provision.md).
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
 ## <a name="create-two-regional-iot-hubs"></a>Erstellen von zwei regionalen IoT Hubs
 
@@ -84,9 +80,9 @@ In diesem Abschnitt verwenden Sie Azure Cloud Shell, um zwei neue regionale IoT 
 
 In diesem Abschnitt erstellen Sie eine neue Registrierungsgruppe für die Mandantengeräte.  
 
-Der Einfachheit halber wird in diesem Artikel ein [Nachweis des symmetrischen Schlüssels](concepts-symmetric-key-attestation.md) für die Registrierung verwendet. Für eine Lösung mit höherer Sicherheit empfiehlt sich die Verwendung eines [X.509-Zertifikatnachweises](concepts-security.md#x509-certificates) mit einer Kette von Vertrauensstellungen.
+Der Einfachheit halber wird in diesem Artikel ein [Nachweis des symmetrischen Schlüssels](concepts-symmetric-key-attestation.md) für die Registrierung verwendet. Für eine Lösung mit höherer Sicherheit empfiehlt sich die Verwendung eines [X.509-Zertifikatnachweises](concepts-x509-attestation.md) mit einer Kette von Vertrauensstellungen.
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und öffnen Sie die Device Provisioning-Dienstinstanz.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und öffnen Sie die Device Provisioning Service-Instanz.
 
 2. Wählen Sie die Registerkarte **Registrierungen verwalten** aus, und klicken Sie dann oben auf der Seite auf die Schaltfläche **Registrierungsgruppe hinzufügen**. 
 
@@ -98,7 +94,7 @@ Der Einfachheit halber wird in diesem Artikel ein [Nachweis des symmetrischen Sc
 
     **Schlüssel automatisch generieren**: Dieses Kontrollkästchen sollte bereits aktiviert sein.
 
-    **Wählen Sie, wie Geräte den Hubs zugewiesen werden sollen**: Wählen Sie **Niedrigste Latenz**.
+    **Wählen Sie, wie Geräte den Hubs zugewiesen werden sollen**: Wählen Sie die Option **Niedrigste Latenz**.
 
     ![Hinzufügen einer mehrinstanzenfähigen Registrierungsgruppe für den Nachweis des symmetrischen Schlüssels](./media/how-to-provision-multitenant/create-multitenant-enrollment.png)
 
@@ -109,7 +105,7 @@ Der Einfachheit halber wird in diesem Artikel ein [Nachweis des symmetrischen Sc
 
     **IoT Hub**: Wählen Sie einen der regionalen Hubs aus, die Sie erstellt haben.
 
-    **Zugriffsrichtlinie**: Wählen Sie **iothubowner**.
+    **Zugriffsrichtlinie**: Wählen Sie **iothubowner** aus.
 
     ![Verknüpfen der regionalen IoT Hubs mit dem Provisioning Service](./media/how-to-provision-multitenant/link-regional-hubs.png)
 
@@ -192,20 +188,21 @@ Zur Vereinfachung der Bereinigung werden diese VMs derselben Ressourcengruppe hi
 
 In diesem Abschnitt klonen Sie das Azure IoT C SDK auf jedem virtuellen Computer. Das SDK enthält ein Beispiel, mit dem die Gerätebereitstellung eines Mandanten in jeder Region simuliert wird.
 
-
-1. Installieren Sie für jede VM **Cmake**, **g++** , **gcc** und [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git), indem Sie die folgenden Befehle verwenden:
+1. Installieren Sie für jede VM **CMake**, **g++**, **gcc** und [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) mit den folgenden Befehlen:
 
     ```bash
     sudo apt-get update
     sudo apt-get install cmake build-essential libssl-dev libcurl4-openssl-dev uuid-dev git-all
     ```
 
+1. Suchen Sie den Tagnamen für das [aktuelle Release](https://github.com/Azure/azure-iot-sdk-c/releases/latest) des SDK.
 
-1. Klonen Sie das [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) auf beiden VMs.
+1. Klonen Sie das [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) auf beiden VMs.  Verwenden Sie das im vorherigen Schritt gefundene Tag als Wert für den Parameter `-b`:
 
     ```bash
-    cd ~/
-    git clone https://github.com/Azure/azure-iot-sdk-c.git --recursive
+    git clone -b <release-tag> https://github.com/Azure/azure-iot-sdk-c.git
+    cd azure-iot-sdk-c
+    git submodule update --init
     ```
 
     Sie sollten damit rechnen, dass die Ausführung dieses Vorgangs mehrere Minuten in Anspruch nimmt.
@@ -249,7 +246,7 @@ In diesem Abschnitt klonen Sie das Azure IoT C SDK auf jedem virtuellen Computer
 
 Bei Verwendung des Nachweises des symmetrischen Schlüssels mit Gruppenregistrierungen verwenden Sie die Registrierungsgruppenschlüssel nicht direkt. Stattdessen erstellen Sie einen eindeutigen abgeleiteten Schlüssel für jedes Gerät. Hierbei helfen Ihnen die Informationen zu [Gruppenregistrierungen](concepts-symmetric-key-attestation.md#group-enrollments) mit symmetrischen Schlüsseln weiter.
 
-Verwenden Sie für die Generierung des Geräteschlüssels den Gruppenhauptschlüssel, um einen [HMAC-SHA256](https://wikipedia.org/wiki/HMAC) Wert für die eindeutige Registrierungs-ID für das Gerät zu berechnen und das Ergebnis in das Base64-Format zu konvertieren.
+Verwenden Sie für die Generierung des Geräteschlüssels den Gruppenhauptschlüssel, um einen [HMAC-SHA256](https://wikipedia.org/wiki/HMAC)-Wert für die eindeutige Registrierungs-ID für das Gerät zu berechnen und das Ergebnis in das Base64-Format zu konvertieren.
 
 Fügen Sie Ihren Gruppenhauptschlüssel nicht in Ihren Gerätecode ein.
 
@@ -300,7 +297,7 @@ In diesem Abschnitt aktualisieren Sie ein Bereitstellungsbeispiel im Azure IoT C
 
 Der Beispielcode simuliert eine Gerätestartsequenz, über die die Bereitstellungsanforderung an die Instanz des Device Provisioning-Diensts gesendet wird. Die Startsequenz bewirkt, dass das Gerät erkannt und dem IoT Hub zugewiesen wird, der bezogen auf die Latenz am nächsten liegt.
 
-1. Navigieren Sie im Azure-Portal zur Registerkarte **Übersicht** für Ihren Device Provisioning Service, und notieren Sie sich den Wert unter **_ID-Bereich_** .
+1. Navigieren Sie im Azure-Portal zur Registerkarte **Übersicht** für Ihren Device Provisioning Service, und notieren Sie sich den Wert unter **_ID-Bereich_**.
 
     ![Extrahieren von Informationen zum Device Provisioning Service-Endpunkt aus dem Portalblatt](./media/quick-create-simulated-device-x509/extract-dps-endpoints.png) 
 
@@ -408,7 +405,7 @@ Bei dieser Vorgehensweise wird davon ausgegangen, dass Sie alle in diesem Artike
 > Das Löschen einer Ressourcengruppe kann nicht rückgängig gemacht werden. Die Ressourcengruppe und alle darin enthaltenen Ressourcen werden unwiderruflich gelöscht. Achten Sie daher darauf, dass Sie nicht versehentlich die falsche Ressourcengruppe oder die falschen Ressourcen löschen. Wenn Sie die IoT Hub-Ressource in einer bereits vorhandenen Ressourcengruppe erstellt haben, die Ressourcen enthält, die Sie behalten möchten, löschen Sie nicht die Ressourcengruppe, sondern nur die IoT Hub-Ressource.
 >
 
-So löschen Sie die Ressourcengruppen nach Namen:
+Löschen Sie die Ressourcengruppen wie folgt nach Namen:
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und klicken Sie auf **Ressourcengruppen**.
 

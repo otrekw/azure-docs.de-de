@@ -1,26 +1,15 @@
 ---
-title: 'Tutorial: Installieren des eigenständigen Service Fabric-Clients – Azure Service Fabric | Microsoft-Dokumentation'
-description: In diesem Tutorial erfahren Sie, wie Sie in dem Cluster, den Sie im vorherigen Tutorial erstellt haben, den eigenständigen Service Fabric-Client installieren.
-services: service-fabric
-documentationcenter: .net
-author: dkkapur
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
+title: Installieren eines eigenständigen Service Fabric-Clients
+description: In diesem Tutorial erfahren Sie, wie Sie in dem Cluster den eigenständigen Service Fabric-Client installieren.
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 07/22/2019
-ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: 82358f4d5548464f1304d77a846d71863ed9efa1
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: ae0b343be986f4d8d5176c1f39eef6b23ca81278
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68385006"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91840641"
 ---
 # <a name="tutorial-install-and-create-service-fabric-cluster"></a>Tutorial: Installieren und Erstellen eines Service Fabric-Clusters
 
@@ -28,7 +17,7 @@ Mit eigenständigen Service Fabric-Clustern können Sie Ihre eigene Umgebung wä
 
 Dieses Tutorial ist der zweite Teil einer Reihe. Dieses Tutorial führt Sie durch die Schritte zum Erstellen eines eigenständigen Service Fabric-Clusters.
 
-Im zweiten Teil der Reihe lernen Sie Folgendes:
+In diesem Artikel lernen Sie Folgendes:
 
 > [!div class="checklist"]
 > * Herunterladen und Installieren des eigenständigen Service Fabric-Pakets
@@ -86,7 +75,7 @@ cd .\Desktop\Microsoft.Azure.ServiceFabric.WindowsServer.6.2.274.9494\
 .\TestConfiguration.ps1 -ClusterConfigFilePath .\ClusterConfig.Unsecure.MultiMachine.json
 ```
 
-Es sollte eine Ausgabe wie die folgende angezeigt werden. Wenn das untere Feld „Passed“ als `True` zurückgegeben wird, wurden die Integritätsprüfungen erfolgreich abgeschlossen, und der Cluster kann auf der Grundlage der eingegebenen Konfiguration bereitgestellt werden.
+Ihnen sollte eine Ausgabe wie das folgende Beispiel angezeigt werden. Wenn das untere Feld „Passed“ als `True` zurückgegeben wird, wurden die Integritätsprüfungen erfolgreich abgeschlossen, und der Cluster kann auf der Grundlage der eingegebenen Konfiguration bereitgestellt werden.
 
 ```powershell
 Trace folder already exists. Traces will be written to existing trace folder: C:\Users\Administrator\Desktop\Microsoft.Azure.ServiceFabric.WindowsServer.6.2.274.9494\DeploymentTraces
@@ -108,9 +97,9 @@ NoDomainController         : True
 Passed                     : True
 ```
 
-## <a name="create-the-cluster"></a>Erstellen des Clusters
+## <a name="create-the-cluster"></a>Erstellen Sie den Cluster.
 
-Führen Sie nach erfolgreicher Überprüfung Ihrer Clusterkonfiguration das Skript *CreateServiceFabricCluster.ps1* aus, um den Service Fabric-Cluster für die virtuellen Computer in der Konfigurationsdatei bereitzustellen.
+Führen Sie nach erfolgreicher Überprüfung Ihrer Clusterkonfiguration das Skript *CreateServiceFabricCluster.ps1* aus, um den Service Fabric-Cluster für die virtuellen Computer in der Konfigurationsdatei bereitzustellen.
 
 ```powershell
 .\CreateServiceFabricCluster.ps1 -ClusterConfigFilePath .\ClusterConfig.Unsecure.MultiMachine.json -AcceptEULA
@@ -127,7 +116,7 @@ Your cluster is successfully created! You can connect and manage your cluster us
 >
 >
 
-### <a name="bring-up-service-fabric-explorer"></a>Aufrufen von Service Fabric Explorer
+### <a name="open-service-fabric-explorer"></a>Öffnen von Service Fabric Explorer
 
 Jetzt können Sie über Service Fabric Explorer eine Verbindung mit dem Cluster herstellen, und zwar entweder direkt von einem der Computer mit „http:\//localhost:19080/Explorer/index.html“ oder per Remotezugriff mit „http:\//<*IPAddressofaMachine*>:19080/Explorer/index.html“.
 
@@ -137,7 +126,7 @@ Wenn sich Ihre geschäftlichen Anforderungen ändern, können Sie dem eigenstän
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Im zweiten Teil der Reihe haben Sie gelernt, wie Sie große Mengen von Zufallsdaten parallel in ein Speicherkonto hochladen können, wozu Folgendes gehört:
+In diesem Artikel haben Sie gelernt, wie Sie große Mengen von Zufallsdaten parallel in ein Speicherkonto hochladen. Dazu gehört Folgendes:
 
 > [!div class="checklist"]
 > * Konfigurieren der Verbindungszeichenfolge

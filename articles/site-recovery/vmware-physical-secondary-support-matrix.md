@@ -1,19 +1,19 @@
 ---
-title: Unterstützungsmatrix für die Notfallwiederherstellung von VMware-VMs oder physischen Servern in einem sekundären VMware-Standort mit Azure Site Recovery | Microsoft-Dokumentation
+title: Unterstützung für die VMware-/physische Notfallwiederherstellung an einem sekundären Standort mit Azure Site Recovery
 description: Dieser Artikel fasst die Unterstützung der Notfallwiederherstellung für VMware-VMs und physische Server in einem sekundären Standort mit Azure Site Recovery zusammen.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 services: site-recovery
 ms.topic: article
-ms.date: 08/22/2019
+ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: c330afb2c5d315b3d386d1477669f1aab2f6e6f9
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: c6f0f48df32db0beb9c0a57982d9bc87b26538d8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972082"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "86135145"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-vmware-vms-and-physical-servers-to-a-secondary-site"></a>Unterstützungsmatrix für die Notfallwiederherstellung von VMware-VMs und physischen Servern
 
@@ -25,6 +25,17 @@ Dieser Artikel beschreibt, was unterstützt wird, wenn Sie den [Azure Site Recov
 > [!NOTE]
 > Die Replikation von lokalen VMware-VMs und physischen Servern erfolgt durch InMage Scout. InMage Scout ist im Abonnement des Azure Site Recovery-Diensts enthalten.
 
+## <a name="end-of-support-announcement"></a>Ankündigung zum Ende des Supports
+Für das Site Recovery-Szenario für die Replikation zwischen lokalen VMware-Instanzen oder physischen Datencentern rückt das Ende des Supportzeitraums näher.
+
+- Ab August 2018 kann das Szenario im Recovery Services-Tresor nicht mehr konfiguriert werden, und die InMage Scout-Software kann nicht aus dem Tresor heruntergeladen werden. Vorhandene Bereitstellungen werden unterstützt.
+- - Ab dem 31. Dezember 2020 wird das Szenario nicht mehr unterstützt.
+Vorhandene Partner können für das Szenario das Onboarding für neue Kunden bis zum Ende des Supportzeitraums durchführen.
+- In den Jahren 2018 und 2019 werden zwei Updates veröffentlicht:
+
+    - Update 7: Korrektur von Problemen in Bezug auf die Netzwerkkonfiguration und Konformität und Bereitstellung der TLS 1.2-Unterstützung.
+    - Update 8: Support für Linux-Betriebssysteme, RHEL/CentOS 7.3/7.4/7.5 und SUSE 12
+    - Nach Update 8 werden keine weiteren Updates mehr veröffentlicht. Für die in Update 8 hinzugefügten Betriebssysteme ist eingeschränkter Hotfix-Support verfügbar, und Fehlerbehebungen werden auf bestmögliche Weise bereitgestellt.
 
 ## <a name="host-servers"></a>Hostserver
 
@@ -55,7 +66,7 @@ Nur Linux-Computer mit dem folgenden Speicher können repliziert werden:
 
 ## <a name="network-configuration---hostguest-vm"></a>Netzwerkkonfiguration – Host/Gast-VM
 
-**Konfiguration** | **Unterstützt**  
+**Configuration** | **Unterstützt**  
 --- | --- 
 Host – NIC-Teamvorgang | Ja 
 Host – VLAN | Ja 
@@ -81,7 +92,7 @@ Multipfad (MPIO) | Ja
 
 ### <a name="guest-or-physical-server-storage"></a>Gast- oder physischer Serverspeicher
 
-**Konfiguration** | **Unterstützt** 
+**Configuration** | **Unterstützt** 
 --- | --- 
 VMDK | Ja 
 VHD/VHDX | – 
@@ -120,5 +131,5 @@ Der Mobilitätsdienst koordiniert die Replikation zwischen lokalen VMware-Server
 
 Herunterladen des [InMage Scout-Benutzerhandbuchs](https://aka.ms/asr-scout-user-guide).
 
-- [Replizieren von Hyper-V-VMs in VMM-Clouds in einer sekundären Cloud](tutorial-vmm-to-vmm.md)
-- [Replizieren von VMware-VMs und physischen Servern an einem sekundären Standort](tutorial-vmware-to-vmware.md)
+- [Replizieren von Hyper-V-VMs in VMM-Clouds in einer sekundären Cloud](./hyper-v-vmm-disaster-recovery.md)
+- [Replizieren von VMware-VMs und physischen Servern an einem sekundären Standort](./vmware-physical-secondary-disaster-recovery.md)

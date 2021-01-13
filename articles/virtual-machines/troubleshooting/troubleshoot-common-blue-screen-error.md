@@ -12,18 +12,16 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 09/28/2018
 ms.author: genli
-ms.openlocfilehash: 921e97fa393a3005e3ba392502d291301df3d65c
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: b382efc4d283d64ce0f833bde9104fa2e3bc973a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058077"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87088544"
 ---
 # <a name="windows-shows-blue-screen-error-when-booting-an-azure-vm"></a>Windows zeigt Bluescreenfehler beim Starten einer Azure-VM an
 Dieser Artikel beschreibt Bluescreenfehler, die möglicherweise beim Starten eines virtuellen Windows-Computers (VM) in Microsoft Azure angezeigt werden. Er bietet Schritte, mit denen Sie Daten für ein Supportticket sammeln können. 
 
-> [!NOTE] 
-> Azure verfügt über zwei verschiedene Bereitstellungsmodelle für das Erstellen und Verwenden von Ressourcen: [das Resource Manager-Modell und das klassische Bereitstellungsmodell](../../azure-resource-manager/resource-manager-deployment-model.md). Dieser Artikel beschreibt die Verwendung des Resource Manager-Bereitstellungsmodells, das anstelle des klassischen Bereitstellungsmodells für neue Bereitstellungen empfohlen wird.
 
 ## <a name="symptom"></a>Symptom 
 
@@ -49,7 +47,7 @@ Um dieses Problem zu beheben, müssten Sie die erste Sicherungsdatei für den Ab
 ### <a name="attach-the-os-disk-to-a-recovery-vm"></a>Anfügen des Betriebssystemdatenträgers an eine VM für die Wiederherstellung
 
 1. Erstellen Sie eine Momentaufnahme des Betriebssystemdatenträgers des betroffenen virtuellen Computers als Sicherung. Weitere Informationen finden Sie unter [Erstellen einer Momentaufnahme eines Datenträgers](../windows/snapshot-copy-managed-disk.md).
-2. [Fügen Sie den Betriebssystemdatenträger an einen virtuellen Computer für die Wiederherstellung an](../windows/troubleshoot-recovery-disks-portal.md). 
+2. [Fügen Sie den Betriebssystemdatenträger an einen virtuellen Computer für die Wiederherstellung an](./troubleshoot-recovery-disks-portal-windows.md). 
 3. Remotedesktopverbindung mit der Wiederherstellungs-VM.
 
 ### <a name="locate-dump-file-and-submit-a-support-ticket"></a>Suche nach der Sicherungsdatei und Senden eines Supporttickets
@@ -64,7 +62,7 @@ Wenn Sie die Sicherungsdatei nicht finden können, fahren Sie mit dem nächsten 
 Um das Sicherungsprotokoll und die serielle Konsole zu aktivieren, führen Sie das folgende Skript aus.
 
 1. Öffnen Sie die Eingabeaufforderungssitzung mit erhöhten Rechten (Als Administrator ausführen).
-2. Führen Sie das folgende Skript aus:
+2. Führen Sie folgendes Skript aus:
 
     In diesem Skript wird davon ausgegangen, dass der dem angefügten Betriebssystemdatenträger zugewiesene Laufwerkbuchstabe „F“ ist. Ersetzen Sie ihn durch den entsprechenden Wert Ihrer VM.
 
@@ -93,16 +91,15 @@ Um das Sicherungsprotokoll und die serielle Konsole zu aktivieren, führen Sie d
     1. Stellen Sie sicher, dass genügend Speicherplatz auf dem Datenträger vorhanden ist, um genauso viel Arbeitsspeicher wie der RAM zuzuweisen. Dieser hängt von der Größe ab, die Sie für diese VM auswählen.
     2. Wenn nicht genügend Speicherplatz vorhanden ist, oder es sich um eine VM beträchtlicher Größe (der Serie G, GS oder E) handelt, können Sie den Speicherort, in dem diese Datei erstellt wird, ändern und auf einen anderen Datenträger verweisen, der der VM angefügt ist. Hierzu müssen Sie den folgenden Schlüssel ändern:
 
-            reg load HKLM\BROKENSYSTEM F:\windows\system32\config\SYSTEM.hiv
+    ```config-reg
+    reg load HKLM\BROKENSYSTEM F:\windows\system32\config\SYSTEM.hiv
 
-            REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\CrashControl" /v DumpFile /t REG_EXPAND_SZ /d "<DRIVE LETTER OF YOUR DATA DISK>:\MEMORY.DMP" /f
-            REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\CrashControl" /v DumpFile /t REG_EXPAND_SZ /d "<DRIVE LETTER OF YOUR DATA DISK>:\MEMORY.DMP" /f
+    REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\CrashControl" /v DumpFile /t REG_EXPAND_SZ /d "<DRIVE LETTER OF YOUR DATA DISK>:\MEMORY.DMP" /f
+    REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\CrashControl" /v DumpFile /t REG_EXPAND_SZ /d "<DRIVE LETTER OF YOUR DATA DISK>:\MEMORY.DMP" /f
 
-            reg unload HKLM\BROKENSYSTEM
+    reg unload HKLM\BROKENSYSTEM
+    ```
 
-3. [Trennen Sie den Betriebssystemdatenträger, und fügen Sie ihn wieder an die betroffene VM an](../windows/troubleshoot-recovery-disks-portal.md).
+3. [Trennen Sie den Betriebssystemdatenträger, und fügen Sie ihn wieder an die betroffene VM an](./troubleshoot-recovery-disks-portal-windows.md).
 4. Starten Sie die VM, um das Problem zu reproduzieren. Daraufhin wird eine Sicherungsdatei generiert.
 5. Fügen Sie den Betriebssystemdatenträger an eine Wiederherstellungs-VM an, sammeln Sie die Sicherungsdatei, und [senden Sie dann ein Supportticket](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) mit der Sicherungsdatei.
-
-
-

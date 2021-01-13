@@ -1,22 +1,22 @@
 ---
 title: Migrieren von Azure-Computeressourcen von Azure Deutschland zu Azure weltweit
 description: Dieser Artikel enthält Informationen zum Migrieren von Azure-Computeressourcen von Azure Deutschland zu Azure weltweit.
+ms.topic: article
+ms.date: 10/16/2020
 author: gitralf
-services: germany
-cloud: Azure Germany
 ms.author: ralfwi
 ms.service: germany
-ms.date: 8/15/2018
-ms.topic: article
 ms.custom: bfmigrate
-ms.openlocfilehash: 288c661c24896757587580129cd7d46eed2d139d
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 3662039dad5d85c87c2598fb59b7719ab9251090
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71827006"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95018586"
 ---
 # <a name="migrate-compute-resources-to-global-azure"></a>Migrieren von Computeressourcen zu Azure weltweit
+
+[!INCLUDE [closureinfo](../../includes/germany-closure-info.md)]
 
 Dieser Artikel enthält Informationen dazu, wie Sie Azure-Computeressourcen von Azure Deutschland zu Azure weltweit migrieren können.
 
@@ -73,11 +73,11 @@ Es wird eine ZIP-Datei heruntergeladen, die mehrere Dateien enthält. Die PowerS
 
 Weitere Informationen finden Sie unter:
 
-- Frischen Sie Ihre Kenntnisse auf, indem Sie die [Tutorials zu Site Recovery](https://docs.microsoft.com/azure/site-recovery/#step-by-step-tutorials) durcharbeiten.
-- Lesen Sie Informationen, wie Sie [eine Resource Manager-Vorlage exportieren](../azure-resource-manager/manage-resource-groups-portal.md#export-resource-groups-to-templates), oder die Übersicht zu [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md).
+- Frischen Sie Ihre Kenntnisse auf, indem Sie die [Tutorials zu Site Recovery](../site-recovery/index.yml) durcharbeiten.
+- Lesen Sie Informationen, wie Sie [eine Resource Manager-Vorlage exportieren](../azure-resource-manager/templates/export-template-portal.md), oder die Übersicht zu [Azure Resource Manager](../azure-resource-manager/management/overview.md).
 - Erfahren Sie mehr über [Physisch-zu-Azure-Notfallwiederherstellung über Site Recovery](../site-recovery/physical-azure-disaster-recovery.md).
 - Lesen Sie die [Übersicht über Azure-Standorte](https://azure.microsoft.com/global-infrastructure/locations/).
-- Erfahren Sie mehr darüber, wie Sie [eine Vorlage erneut bereitstellen](../azure-resource-manager/resource-group-template-deploy.md).
+- Erfahren Sie mehr darüber, wie Sie [eine Vorlage erneut bereitstellen](../azure-resource-manager/templates/deploy-powershell.md).
 
 ## <a name="cloud-services"></a>Cloud Services
 
@@ -95,20 +95,20 @@ So stellen Sie Clouddienste im Azure-Portal erneut bereit:
 
 So stellen Sie Clouddienste über PowerShell erneut bereit:
 
-1. [Erstellen Sie einen neuen Clouddienst](/powershell/module/servicemanagement/azure/new-azureservice), indem Sie Ihre `.cspkg`- und Ihre `.cscfg`-Definition verwenden.
+1. [Erstellen Sie einen neuen Clouddienst](/powershell/module/servicemanagement/azure.service/new-azureservice), indem Sie Ihre `.cspkg`- und Ihre `.cscfg`-Definition verwenden.
 
     ```powershell
     New-AzureService -ServiceName <yourServiceName> -Label <MyTestService> -Location <westeurope>
     ```
 
-1. [Erstellen Sie eine neuen Bereitstellung](/powershell/module/servicemanagement/azure/new-azuredeployment), indem Sie Ihre `.cspkg`- und Ihre `.cscfg`-Definition verwenden.
+1. [Erstellen Sie eine neuen Bereitstellung](/powershell/module/servicemanagement/azure.service/new-azuredeployment), indem Sie Ihre `.cspkg`- und Ihre `.cscfg`-Definition verwenden.
 
     ```powershell
     New-AzureDeployment -ServiceName <yourServiceName> -Slot <Production> -Package <YourCspkgFile.cspkg> -Configuration <YourConfigFile.cscfg>
     ```
 
 1. Aktualisieren Sie den [CNAME- oder A-Eintrag](../cloud-services/cloud-services-custom-domain-name-portal.md) zur Umleitung des Datenverkehrs an den neuen Clouddienst.
-1. Wenn Datenverkehr auf den neuen Clouddienst verweist, [löschen Sie den alten Clouddienst](/powershell/module/servicemanagement/azure/remove-azureservice) in Azure Deutschland.
+1. Wenn Datenverkehr auf den neuen Clouddienst verweist, [löschen Sie den alten Clouddienst](/powershell/module/servicemanagement/azure.service/remove-azureservice) in Azure Deutschland.
 
     ```powershell
     Remove-AzureService -ServiceName <yourOldServiceName>
@@ -130,7 +130,7 @@ So stellen Sie Clouddienste über die REST-API erneut bereit:
     https://management.core.windows.net/<subscription-id>/services/hostedservices/<cloudservice-name>/deploymentslots/production
     ```
 
-1. Wenn Datenverkehr auf den neuen Clouddienst verweist, [löschen Sie den alten Clouddienst](https://docs.microsoft.com/rest/api/compute/cloudservices/rest-delete-cloud-service) in Azure Deutschland.
+1. Wenn Datenverkehr auf den neuen Clouddienst verweist, [löschen Sie den alten Clouddienst](/rest/api/compute/cloudservices/rest-delete-cloud-service) in Azure Deutschland.
 
     ```http
     https://management.core.cloudapi.de/<subscription-id>/services/hostedservices/<old-cloudservice-name>
@@ -148,7 +148,7 @@ Sie können Informationen zu Ihrer aktuellen Service Fabric-Umgebung abrufen, in
 
 Weitere Informationen finden Sie unter:
 
-- Frischen Sie Ihre Kenntnisse auf, indem Sie die [Tutorials zu Service Fabric](https://docs.microsoft.com/azure/service-fabric/#step-by-step-tutorials) durcharbeiten.
+- Frischen Sie Ihre Kenntnisse auf, indem Sie die [Tutorials zu Service Fabric](../service-fabric/service-fabric-tutorial-create-dotnet-app.md) durcharbeiten.
 - Erfahren Sie, wie Sie [einen neuen Cluster erstellen](../service-fabric/service-fabric-cluster-creation-via-portal.md).
 - Lesen Sie die [Übersicht über Service Fabric](../service-fabric/service-fabric-overview.md).
 
@@ -166,7 +166,7 @@ Stellen Sie Ihre Bereitstellungsskripts, Ihre Vorlagen oder Ihren Code in der ne
 
 Weitere Informationen finden Sie unter:
 
-- Frischen Sie Ihre Kenntnisse auf, indem Sie die [Tutorials zu Batch](https://docs.microsoft.com/azure/batch/#step-by-step-tutorials) durcharbeiten.
+- Frischen Sie Ihre Kenntnisse auf, indem Sie die [Tutorials zu Batch](../batch/tutorial-parallel-dotnet.md) durcharbeiten.
 - Lesen Sie die [Übersicht über Azure Batch](../batch/batch-technical-overview.md).
 
 ## <a name="functions"></a>Functions
@@ -178,11 +178,11 @@ Ein Migrieren von Azure Functions-Ressourcen von Azure Deutschland zu Azure welt
 
 Weitere Informationen finden Sie unter:
 
-- Frischen Sie Ihre Kenntnisse auf, indem Sie die [Functions-Tutorials](https://docs.microsoft.com/azure/azure-functions) durcharbeiten.
-- Erfahren Sie, wie Sie [eine Resource Manager-Vorlage exportieren](../azure-resource-manager/manage-resource-groups-portal.md#export-resource-groups-to-templates), oder lesen Sie die Übersicht zu [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md).
+- Frischen Sie Ihre Kenntnisse auf, indem Sie die [Functions-Tutorials](../azure-functions/index.yml) durcharbeiten.
+- Erfahren Sie, wie Sie [eine Resource Manager-Vorlage exportieren](../azure-resource-manager/templates/export-template-portal.md), oder lesen Sie die Übersicht zu [Azure Resource Manager](../azure-resource-manager/management/overview.md).
 - Lesen Sie die [Übersicht zu Azure Functions](../azure-functions/functions-overview.md).
 - Verschaffen Sie sich einen [Überblick über Azure-Standorte](https://azure.microsoft.com/global-infrastructure/locations/).
-- Erfahren Sie, wie Sie [eine Vorlage erneut bereitstellen](../azure-resource-manager/resource-group-template-deploy.md).
+- Erfahren Sie, wie Sie [eine Vorlage erneut bereitstellen](../azure-resource-manager/templates/deploy-powershell.md).
 
 ## <a name="virtual-machine-scale-sets"></a>VM-Skalierungsgruppen
 
@@ -193,12 +193,12 @@ Um VM-Skalierungsgruppen zu Azure weltweit zu migrieren, exportieren Sie die Res
 
 Weitere Informationen finden Sie unter:
 
-- Frischen Sie Ihre Kenntnisse auf, indem Sie die [Tutorials zu VM-Skalierungsgruppeen](https://docs.microsoft.com/azure/virtual-machine-scale-sets/#step-by-step-tutorials) durcharbeiten.
-- Erfahren Sie, wie Sie eine [Azure Resource Manager-Vorlage exportieren](../azure-resource-manager/manage-resource-groups-portal.md#export-resource-groups-to-templates).
-- Lesen Sie die [Übersicht über Azure Resource Manager](../azure-resource-manager/resource-group-overview.md).
+- Frischen Sie Ihre Kenntnisse auf, indem Sie die [Tutorials zu VM-Skalierungsgruppeen](../virtual-machine-scale-sets/tutorial-create-and-manage-cli.md) durcharbeiten.
+- Erfahren Sie, wie Sie eine [Azure Resource Manager-Vorlage exportieren](../azure-resource-manager/templates/export-template-portal.md).
+- Lesen Sie die [Übersicht über Azure Resource Manager](../azure-resource-manager/management/overview.md).
 - Lesen Sie eine Übersicht zu [VM-Skalierungsgruppen](../virtual-machine-scale-sets/overview.md).
 - Lesen Sie die [Übersicht über Azure-Standorte](https://azure.microsoft.com/global-infrastructure/locations/).
-- Erfahren Sie, wie Sie [eine Vorlage erneut bereitstellen](../azure-resource-manager/resource-group-template-deploy.md).
+- Erfahren Sie, wie Sie [eine Vorlage erneut bereitstellen](../azure-resource-manager/templates/deploy-powershell.md).
 
 ## <a name="web-apps"></a>Web-Apps
 
@@ -209,24 +209,24 @@ Derzeit können Apps, die Sie mit dem Web Apps-Feature von Azure App Service ers
 
 Weitere Informationen finden Sie unter:
 
-- Frischen Sie Ihre Kenntnisse auf, indem Sie die [Tutorials zu App Service](https://docs.microsoft.com/azure/app-service/#step-by-step-tutorials) durcharbeiten.
-- Erfahren Sie, wie Sie [eine Resource Manager-Vorlage exportieren](../azure-resource-manager/manage-resource-groups-portal.md#export-resource-groups-to-templates), oder lesen Sie die Übersicht zu [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md).
+- Frischen Sie Ihre Kenntnisse auf, indem Sie die [Tutorials zu App Service](../app-service/tutorial-dotnetcore-sqldb-app.md) durcharbeiten.
+- Erfahren Sie, wie Sie [eine Resource Manager-Vorlage exportieren](../azure-resource-manager/templates/export-template-portal.md), oder lesen Sie die Übersicht zu [Azure Resource Manager](../azure-resource-manager/management/overview.md).
 - Lesen Sie die [Übersicht über Azure App Service](../app-service/overview.md).
 - Lesen Sie die [Übersicht über Azure-Standorte](https://azure.microsoft.com/global-infrastructure/locations/).
-- Erfahren Sie, wie Sie [eine Vorlage erneut bereitstellen](../azure-resource-manager/resource-group-template-deploy.md).
+- Erfahren Sie, wie Sie [eine Vorlage erneut bereitstellen](../azure-resource-manager/templates/deploy-powershell.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Erfahren Sie mehr über Tools, Techniken und Empfehlungen zum Migrieren von Ressourcen in den folgenden Dienstkategorien:
 
 - [Netzwerk](./germany-migration-networking.md)
-- [Speicher](./germany-migration-storage.md)
+- [Storage](./germany-migration-storage.md)
 - [Web](./germany-migration-web.md)
 - [Datenbanken](./germany-migration-databases.md)
 - [Analyse](./germany-migration-analytics.md)
 - [IoT](./germany-migration-iot.md)
 - [Integration](./germany-migration-integration.md)
 - [Identität](./germany-migration-identity.md)
-- [Sicherheit](./germany-migration-security.md)
+- [Security](./germany-migration-security.md)
 - [Verwaltungstools](./germany-migration-management-tools.md)
 - [Medien](./germany-migration-media.md)

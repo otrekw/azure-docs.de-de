@@ -1,23 +1,23 @@
 ---
 title: Verwenden des HBase .NET SDK – Azure HDInsight
 description: Verwenden Sie das HBase .NET SDK zum Erstellen und Löschen von Tabellen und zum Lesen und Schreiben von Daten.
-author: ashishthaps
+author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
-ms.topic: conceptual
-ms.date: 12/13/2017
-ms.author: ashishth
-ms.openlocfilehash: d998ff44804a2dcd2b3282679a9cb53f893991e3
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.topic: how-to
+ms.custom: hdinsightactive, devx-track-csharp
+ms.date: 12/02/2019
+ms.openlocfilehash: 9b5693ddef5e512b0a95c87a700fd12acd4b5fae
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71077165"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97654641"
 ---
 # <a name="use-the-net-sdk-for-apache-hbase"></a>Verwenden des .NET SDK für Apache HBase
 
-[Apache HBase](apache-hbase-overview.md) bietet zwei primäre Optionen zum Arbeiten mit Ihren Daten: [Apache Hive-Abfragen und Aufrufe der RESTful-API von HBase](apache-hbase-tutorial-get-started-linux.md). Sie können direkt mit der REST-API arbeiten, indem Sie den Befehl `curl` oder ein ähnliches Hilfsprogramm verwenden.
+[Apache HBase](apache-hbase-overview.md) bietet zwei primäre Optionen für die Arbeit mit Ihren Daten: [Apache Hive-Abfragen und Aufrufe der RESTful-API von HBase](apache-hbase-tutorial-get-started-linux.md). Sie können direkt mit der REST-API arbeiten, indem Sie den Befehl `curl` oder ein ähnliches Hilfsprogramm verwenden.
 
 Für C#- und .NET-Anwendungen bietet die [Microsoft HBase REST-Clientbibliothek für .NET](https://www.nuget.org/packages/Microsoft.HBase.Client/) eine Clientbibliothek zusätzlich zu der HBase REST-API.
 
@@ -25,7 +25,9 @@ Für C#- und .NET-Anwendungen bietet die [Microsoft HBase REST-Clientbibliothek 
 
 Das HBase .NET SDK wird als NuGet-Paket bereitgestellt, das mit folgendem Befehl über die **NuGet-Paket-Manager-Konsole** in Visual Studio installiert werden kann:
 
-    Install-Package Microsoft.HBase.Client
+```console
+Install-Package Microsoft.HBase.Client
+```
 
 ## <a name="instantiate-a-new-hbaseclient-object"></a>Instanziieren eines neuen HBaseClient-Objekts
 
@@ -112,7 +114,7 @@ set.rows.Add(row);
 await client.StoreCellsAsync("RestSDKTable", set);
 ```
 
-HBase implementiert [Cloud BigTable](https://cloud.google.com/bigtable/), daher hat das Datenformat folgendes Format:
+HBase implementiert [Cloud BigTable](https://cloud.google.com/bigtable/), daher ähnelt das Datenformat der folgenden Abbildung:
 
 ![Apache HBase – Beispieldatenausgabe](./media/apache-hbase-rest-sdk/hdinsight-table-roles.png)
 
@@ -188,4 +190,4 @@ finally
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Erste Schritte mit einem Apache HBase-Beispiel in HDInsight](apache-hbase-tutorial-get-started-linux.md)
-* Erstellen einer End-to-End-Anwendung mit [Analyse der Twitter-Stimmung in Echtzeit mit Apache HBase](../hdinsight-hbase-analyze-twitter-sentiment.md)
+* Erstellen einer End-to-End-Anwendung mit [Analyse der Twitter-Stimmung in Echtzeit mit Apache HBase](./apache-hbase-tutorial-get-started-linux.md)

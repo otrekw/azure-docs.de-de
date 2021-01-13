@@ -1,37 +1,31 @@
 ---
-title: Profilerstellung für Web-Apps in einer Azure-VM mit Application Insights Profiler | Microsoft-Dokumentation
+title: Profilerstellung für Web-Apps in einer Azure-VM – Application Insights Profiler
 description: Profilerstellung für Web-Apps in einer Azure-VM mit Application Insights Profiler
-services: application-insights
-documentationcenter: ''
-author: cweining
-manager: carmonm
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.reviewer: mbullwin
-ms.date: 08/06/2018
+author: cweining
 ms.author: cweining
-ms.openlocfilehash: ab30351bfff9c5bbf070a1e8a54a4919e4d2231a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 11/08/2019
+ms.reviewer: mbullwin
+ms.openlocfilehash: f514dd7b54ac091535aeab43a8a7d2a645b50a09
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66226263"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87315824"
 ---
 # <a name="profile-web-apps-running-on-an-azure-virtual-machine-or-a-virtual-machine-scale-set-by-using-application-insights-profiler"></a>Profilerstellung von Web-Apps, die auf einem virtuellen Azure-Computer oder in einer VM-Skalierungsgruppe mit Application Insights Profiler ausgeführt werden
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 Azure Application Insights Profiler kann auch für diese Dienste bereitgestellt werden:
-* [Azure App Service](../../azure-monitor/app/profiler.md?toc=/azure/azure-monitor/toc.json)
+* [Azure App Service](./profiler.md?toc=%2fazure%2fazure-monitor%2ftoc.json)
 * [Azure Cloud Services](profiler-cloudservice.md?toc=/azure/azure-monitor/toc.json)
-* [Azure Service Fabric](profiler-vm.md?toc=/azure/azure-monitor/toc.json)
+* [Azure Service Fabric](?toc=%2fazure%2fazure-monitor%2ftoc.json)
 
 ## <a name="deploy-profiler-on-a-virtual-machine-or-a-virtual-machine-scale-set"></a>Bereitstellen von Profiler auf einem virtuellen Computer oder in einer VM-Skalierungsgruppe
 Dieser Artikel zeigt, wie Sie Application Insights Profiler auf einem virtuellen Azure-Computer oder in einer Azure-VM-Skalierungsgruppe ausführen. Profiler wird mit der Azure-Diagnose-Erweiterung für VMs installiert. Konfigurieren Sie die Erweiterung für die Ausführung von Profiler, und integrieren Sie das Application Insights SDK in Ihre Anwendung.
 
-1. Fügen Sie das Application Insights SDK Ihrer [ASP.NET-Anwendung](https://docs.microsoft.com/azure/application-insights/app-insights-asp-net) hinzu.
+1. Fügen Sie das Application Insights SDK Ihrer [ASP.NET-Anwendung](./asp-net.md) hinzu.
 
    Sie müssen Anforderungstelemetriedaten an Application Insights senden, um Profile für Ihre Anforderungen anzuzeigen.
 
@@ -73,12 +67,12 @@ Dieser Artikel zeigt, wie Sie Application Insights Profiler auf einem virtuellen
 
 1. Wenn die betroffene Anwendung über [IIS](https://www.microsoft.com/web/downloads/platform.aspx) ausgeführt wird, aktivieren Sie das Windows-Feature `IIS Http Tracing`.
 
-   a. Richten Sie den Remotezugriff auf die Umgebung ein, und verwenden Sie dann das Fenster [Hinzufügen von Windows-Features]( https://docs.microsoft.com/iis/configuration/system.webserver/tracing/), oder führen Sie den folgenden Befehl in PowerShell (als Administrator) aus:  
+   a. Richten Sie den Remotezugriff auf die Umgebung ein, und verwenden Sie dann das Fenster [Hinzufügen von Windows-Features](/iis/configuration/system.webserver/tracing/), oder führen Sie den folgenden Befehl in PowerShell (als Administrator) aus:  
 
     ```powershell
     Enable-WindowsOptionalFeature -FeatureName IIS-HttpTracing -Online -All
     ```  
-   b. Wenn das Einrichten des Remotezugriffs ein Problem darstellt, können Sie folgenden Befehl über die [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) ausführen:  
+   b. Wenn das Einrichten des Remotezugriffs ein Problem darstellt, können Sie folgenden Befehl über die [Azure-Befehlszeilenschnittstelle](/cli/azure/get-started-with-azure-cli) ausführen:  
 
     ```powershell
     az vm run-command invoke -g MyResourceGroupName -n MyVirtualMachineName --command-id RunPowerShellScript --scripts "Enable-WindowsOptionalFeature -FeatureName IIS-HttpTracing -Online -All"
@@ -93,15 +87,15 @@ Derzeit besteht noch keine Möglichkeit, die Application Insights Profiler-Senke
 
     ![Überprüfen, ob WAD-Erweiterung installiert ist][wadextension]
 
-1. Suchen Sie die VM-Diagnoseerweiterung für Ihren virtuellen Computer. Erweitern Sie Ihre Ressourcengruppe, „Microsoft.Compute“, „virtualMachines“, den Namen des virtuellen Computers und „Erweiterungen“.  
+2. Suchen Sie die VM-Diagnoseerweiterung für Ihren virtuellen Computer. Wechseln Sie zu [https://resources.azure.com](https://resources.azure.com). Erweitern Sie Ihre Ressourcengruppe, „Microsoft.Compute“, „virtualMachines“, den Namen des virtuellen Computers und „Erweiterungen“.  
 
     ![Navigieren zur WAD-Konfiguration im Azure-Ressourcen-Explorer][azureresourceexplorer]
 
-1. Fügen Sie dem Knoten „SinksConfig“ unter „WadCfg“ die Application Insights Profiler-Senke hinzu. Wenn der Abschnitt „SinksConfig“ noch nicht vorhanden ist, müssen Sie ihn hinzufügen. Achten Sie darauf, in den Einstellungen den richtigen Application Insights-iKey anzugeben. Sie müssen in der oberen rechten Ecke in den Explorer-Modus zum Lesen und Schreiben wechseln, klicken Sie dann auf die blaue Schaltfläche „Bearbeiten“.
+3. Fügen Sie dem Knoten „SinksConfig“ unter „WadCfg“ die Application Insights Profiler-Senke hinzu. Wenn der Abschnitt „SinksConfig“ noch nicht vorhanden ist, müssen Sie ihn hinzufügen. Achten Sie darauf, in den Einstellungen den richtigen Application Insights-iKey anzugeben. Sie müssen in der oberen rechten Ecke in den Explorer-Modus zum Lesen und Schreiben wechseln, klicken Sie dann auf die blaue Schaltfläche „Bearbeiten“.
 
     ![Hinzufügen der Application Insights Profiler-Senke][resourceexplorersinksconfig]
 
-1. Klicken Sie auf „Put“, nachdem Sie die Bearbeitung der Konfiguration abgeschlossen haben. Wenn der Put-Vorgang erfolgreich durchgeführt wurde, wird in der Mitte des Bildschirms ein grünes Häkchen angezeigt.
+4. Klicken Sie auf „Put“, nachdem Sie die Bearbeitung der Konfiguration abgeschlossen haben. Wenn der Put-Vorgang erfolgreich durchgeführt wurde, wird in der Mitte des Bildschirms ein grünes Häkchen angezeigt.
 
     ![Senden einer Put-Anforderung zum Übernehmen von Änderungen][resourceexplorerput]
 
@@ -123,3 +117,4 @@ Die Unterstützung von Application Insights Profiler auf lokalen Servern ist nic
 [resourceexplorerput]: ./media/profiler-vm/resource-explorer-put.png
 [resourceexplorersinksconfig]: ./media/profiler-vm/resource-explorer-sinks-config.png
 [wadextension]: ./media/profiler-vm/wad-extension.png
+

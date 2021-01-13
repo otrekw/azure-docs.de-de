@@ -1,8 +1,8 @@
 ---
-title: 'Schnellstart: Anzeigen der Gruppen und Mitglieder – Azure Active Directory | Microsoft-Dokumentation'
+title: 'Schnellstart: Anzeigen von Gruppen und Mitgliedern in Azure AD'
 description: Enthält eine Anleitung dazu, wie Sie nach den Gruppen Ihrer Organisation und den zugewiesenen Mitgliedern suchen und diese anzeigen können.
 services: active-directory
-author: msaburnley
+author: ajburnle
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.custom: it-pro, seodec18, seo-update-azuread-jan
 ms.reviewer: krbain
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9b4f2f6e86ce076e7c0464609252b027499a8307
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: ddedd753eb98a8656006c9dddc412e44330e1a21
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68942884"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95996727"
 ---
 <!--As a brand-new Azure AD administrator, I need to view my organization’s groups along with the assigned members, so I can manage permissions to apps and services for people in my organization-->
 
@@ -72,7 +72,7 @@ Sie haben eine Gruppe und einen Benutzer erstellt und können nun _Alain Charon_
 
 2. Suchen Sie auf der Seite **Gruppen – Alle Gruppen** nach der Gruppe **MDM policy - West** (MDM-Richtlinie – Westen), und wählen Sie sie aus.
 
-3. Wählen Sie auf der Übersichtsseite für **MDM policy - West** (MDM-Richtlinie – Westen) im Bereich **Verwalten** die Option **Mitglieder** aus.
+3. Wählen Sie auf der Übersichtsseite für **MDM policy - West** im Bereich **Verwalten** die Option **Mitglieder** aus.
 
 4. Wählen Sie **Mitglieder hinzufügen**, suchen Sie nach **Alain Charon**, und wählen Sie den Benutzer aus.
 

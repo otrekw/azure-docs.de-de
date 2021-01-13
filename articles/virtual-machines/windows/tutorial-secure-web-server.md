@@ -1,38 +1,34 @@
 ---
-title: Tutorial – Sichern eines Windows-Webservers mit SSL-Zertifikaten in Azure | Microsoft-Dokumentation
-description: In diesem Tutorial erfahren Sie, wie Sie Azure PowerShell zum Sichern eines virtuellen Windows-Computers verwenden, auf dem der IIS-Webserver mit im Azure Key Vault gespeicherten SSL-Zertifikaten ausgeführt wird.
-services: virtual-machines-windows
-documentationcenter: virtual-machines
+title: 'Tutorial: Schützen eines Windows-Webservers mit TLS/SSL-Zertifikaten in Azure'
+description: In diesem Tutorial erfahren Sie, wie Sie Azure PowerShell zum Schützen eines virtuellen Windows-Computers verwenden, auf dem der IIS-Webserver mit im Azure Key Vault gespeicherten TLS/SSL-Zertifikaten ausgeführt wird.
 author: cynthn
-manager: gwallace
-editor: tysonn
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-windows
+ms.subservice: security
 ms.topic: tutorial
-ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 02/09/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 8742700f472f5cedcf5de307f1b151634303a0be
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 7d6c992023eeb4b17fe3c83de20b49c73476a54d
+ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101640"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97912715"
 ---
-# <a name="tutorial-secure-a-web-server-on-a-windows-virtual-machine-in-azure-with-ssl-certificates-stored-in-key-vault"></a>Tutorial: Sichern eines Webservers auf einem virtuellen Windows-Computer in Azure mit in Key Vault gespeicherten SSL-Zertifikaten
+# <a name="tutorial-secure-a-web-server-on-a-windows-virtual-machine-in-azure-with-tlsssl-certificates-stored-in-key-vault"></a>Tutorial: Schützen eines Webservers auf einem virtuellen Windows-Computer in Azure mit in Key Vault gespeicherten TLS/SSL-Zertifikaten
 
-Zum Sichern von Webservern kann ein SSL-Zertifikat (Secure Sockets Layer) zum Verschlüsseln des Webdatenverkehrs verwendet werden. Diese SSL-Zertifikate können in Azure Key Vault gespeichert werden. Sie ermöglichen sichere Bereitstellungen von Zertifikaten auf virtuellen Windows-Computern in Azure. In diesem Tutorial lernen Sie Folgendes:
+> [!NOTE]
+> Derzeit gilt dieses Dokument nur für generalisierte Images. Wenn Sie in diesem Tutorial einen spezialisierten Datenträger verwenden, tritt ein Fehler auf. 
+
+Als Schutz für Webserver kann ein TLS-Zertifikat (Transport Layer Security) verwendet werden, um Webdatenverkehr zu verschlüsseln. „Transport Layer Security“ wurde früher als „Secure Sockets Layer“ (SSL) bezeichnet. Diese TLS/SSL-Zertifikate können in Azure Key Vault gespeichert werden. Sie ermöglichen sichere Bereitstellungen von Zertifikaten auf virtuellen Windows-Computern (VMs) in Azure. In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
 > * Erstellen einer Azure Key Vault-Instanz
 > * Generieren oder Hochladen eines Zertifikats in Key Vault
 > * Erstellen eines virtuellen Computers und Installieren des IIS-Webservers
-> * Einfügen des Zertifikats auf dem virtuellen Computer und Konfigurieren von IIS mit einer SSL-Bindung
+> * Einfügen des Zertifikats auf dem virtuellen Computer und Konfigurieren von IIS mit einer TLS-Bindung
 
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
 ## <a name="launch-azure-cloud-shell"></a>Starten von Azure Cloud Shell
 
@@ -48,7 +44,7 @@ Anstatt ein benutzerdefiniertes VM-Image zu verwenden, in dem die Zertifikate in
 
 
 ## <a name="create-an-azure-key-vault"></a>Erstellen einer Azure Key Vault-Instanz
-Bevor Sie eine Key Vault-Instanz und Zertifikate erstellen, müssen Sie mit [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) eine Ressourcengruppe erstellen. Im folgenden Beispiel wird eine Ressourcengruppe mit dem Namen *myResourceGroupSecureWeb* am Standort *USA, Osten* erstellt:
+Bevor Sie eine Key Vault-Instanz und Zertifikate erstellen, müssen Sie mit [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) eine Ressourcengruppe erstellen. Im folgenden Beispiel wird eine Ressourcengruppe mit dem Namen *myResourceGroupSecureWeb* am Standort *USA, Osten* erstellt:
 
 ```azurepowershell-interactive
 $resourceGroup = "myResourceGroupSecureWeb"
@@ -56,7 +52,7 @@ $location = "East US"
 New-AzResourceGroup -ResourceGroupName $resourceGroup -Location $location
 ```
 
-Erstellen Sie anschließend mit [New-AzKeyVault](https://docs.microsoft.com/powershell/module/az.keyvault/new-azkeyvault) einen Schlüsseltresor. Jede Key Vault-Instanz benötigt einen eindeutigen Namen, der nur aus Kleinbuchstaben besteht. Ersetzen Sie `mykeyvault` im folgenden Beispiel durch Ihren eigenen eindeutigen Key Vault-Namen:
+Erstellen Sie anschließend mit [New-AzKeyVault](/powershell/module/az.keyvault/new-azkeyvault) einen Schlüsseltresor. Jede Key Vault-Instanz benötigt einen eindeutigen Namen, der nur aus Kleinbuchstaben besteht. Ersetzen Sie `mykeyvault` im folgenden Beispiel durch Ihren eigenen eindeutigen Key Vault-Namen:
 
 ```azurepowershell-interactive
 $keyvaultName="mykeyvault"
@@ -67,7 +63,7 @@ New-AzKeyVault -VaultName $keyvaultName `
 ```
 
 ## <a name="generate-a-certificate-and-store-in-key-vault"></a>Generieren eines Zertifikats und Speichern in Key Vault
-Für die Produktion sollten Sie ein gültiges, von einem vertrauenswürdigen Anbieter signiertes Zertifikat mit [Import-AzKeyVaultCertificate](https://docs.microsoft.com/powershell/module/az.keyvault/import-azkeyvaultcertificate) importieren. Für dieses Tutorial zeigt das folgende Beispiel, wie Sie ein selbstsigniertes Zertifikat mit [Add-AzKeyVaultCertificate](https://docs.microsoft.com/powershell/module/az.keyvault/add-azkeyvaultcertificate) generieren können, das die Standardzertifikatrichtlinie von [New-AzKeyVaultCertificatePolicy](https://docs.microsoft.com/powershell/module/az.keyvault/new-azkeyvaultcertificatepolicy) verwendet. 
+Für die Produktion sollten Sie ein gültiges, von einem vertrauenswürdigen Anbieter signiertes Zertifikat mit [Import-AzKeyVaultCertificate](/powershell/module/az.keyvault/import-azkeyvaultcertificate) importieren. Für dieses Tutorial zeigt das folgende Beispiel, wie Sie ein selbstsigniertes Zertifikat mit [Add-AzKeyVaultCertificate](/powershell/module/az.keyvault/add-azkeyvaultcertificate) generieren können, das die Standardzertifikatrichtlinie von [New-AzKeyVaultCertificatePolicy](/powershell/module/az.keyvault/new-azkeyvaultcertificatepolicy) verwendet. 
 
 ```azurepowershell-interactive
 $policy = New-AzKeyVaultCertificatePolicy `
@@ -84,13 +80,13 @@ Add-AzKeyVaultCertificate `
 
 
 ## <a name="create-a-virtual-machine"></a>Erstellen eines virtuellen Computers
-Legen Sie mit [Get-Credential](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.security/Get-Credential) den Benutzernamen und das Kennwort des Administrators des virtuellen Computers fest:
+Legen Sie mit [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential?view=powershell-5.1&preserve-view=true) den Benutzernamen und das Kennwort des Administrators des virtuellen Computers fest:
 
 ```azurepowershell-interactive
 $cred = Get-Credential
 ```
 
-Nun können Sie mit [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) den virtuellen Computer erstellen. Im folgenden Beispiel wird eine VM mit dem Namen *myVM* für den Standort *EastUS* erstellt. Falls sie nicht bereits vorhanden sind, werden die unterstützenden Netzwerkressourcen erstellt. Um sicheren Webdatenverkehr zuzulassen, öffnet das Cmdlet auch Port *443*.
+Nun können Sie mit [New-AzVM](/powershell/module/az.compute/new-azvm) den virtuellen Computer erstellen. Im folgenden Beispiel wird eine VM mit dem Namen *myVM* für den Standort *EastUS* erstellt. Falls sie nicht bereits vorhanden sind, werden die unterstützenden Netzwerkressourcen erstellt. Um sicheren Webdatenverkehr zuzulassen, öffnet das Cmdlet auch Port *443*.
 
 ```azurepowershell-interactive
 # Create a VM
@@ -116,11 +112,11 @@ Set-AzVMExtension -ResourceGroupName $resourceGroup `
     -SettingString '{"commandToExecute":"powershell Add-WindowsFeature Web-Server -IncludeManagementTools"}'
 ```
 
-Die Erstellung des virtuellen Computers dauert einige Minuten. Im letzten Schritt wird die benutzerdefinierte Skripterweiterung von Azure zum Installieren des IIS-Webservers mit [Set-AzVmExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmextension) verwendet.
+Die Erstellung des virtuellen Computers dauert einige Minuten. Im letzten Schritt wird die benutzerdefinierte Skripterweiterung von Azure zum Installieren des IIS-Webservers mit [Set-AzVmExtension](/powershell/module/az.compute/set-azvmextension) verwendet.
 
 
 ## <a name="add-a-certificate-to-vm-from-key-vault"></a>Hinzufügen eines Zertifikats zum virtuellen Computer aus Key Vault
-Um das Zertifikat aus Key Vault zu einem virtuellen Computer hinzuzufügen, rufen Sie die ID des Zertifikats mit [Get-AzKeyVaultSecret](https://docs.microsoft.com/powershell/module/az.keyvault/get-azkeyvaultsecret) ab. Fügen Sie das Zertifikat mit [Add-AzVMSecret](https://docs.microsoft.com/powershell/module/az.compute/add-azvmsecret) dem virtuellen Computer hinzu:
+Um das Zertifikat aus Key Vault zu einem virtuellen Computer hinzuzufügen, rufen Sie die ID des Zertifikats mit [Get-AzKeyVaultSecret](/powershell/module/az.keyvault/get-azkeyvaultsecret) ab. Fügen Sie das Zertifikat mit [Add-AzVMSecret](/powershell/module/az.compute/add-azvmsecret) dem virtuellen Computer hinzu:
 
 ```azurepowershell-interactive
 $certURL=(Get-AzKeyVaultSecret -VaultName $keyvaultName -Name "mycert").id
@@ -134,7 +130,7 @@ Update-AzVM -ResourceGroupName $resourceGroup -VM $vm
 
 
 ## <a name="configure-iis-to-use-the-certificate"></a>Konfigurieren von IIS zur Verwendung des Zertifikats
-Verwenden Sie die benutzerdefinierte Skripterweiterung erneut mit [Set-AzVMExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmextension), um die IIS-Konfiguration zu aktualisieren. Bei dieser Aktualisierung wird das aus Key Vault eingefügte Zertifikat auf IIS angewendet und die Webbindung konfiguriert:
+Verwenden Sie die benutzerdefinierte Skripterweiterung erneut mit [Set-AzVMExtension](/powershell/module/az.compute/set-azvmextension), um die IIS-Konfiguration zu aktualisieren. Bei dieser Aktualisierung wird das aus Key Vault eingefügte Zertifikat auf IIS angewendet und die Webbindung konfiguriert:
 
 ```azurepowershell-interactive
 $PublicSettings = '{
@@ -154,7 +150,7 @@ Set-AzVMExtension -ResourceGroupName $resourceGroup `
 
 
 ### <a name="test-the-secure-web-app"></a>Testen der sicheren Web-App
-Rufen Sie mit [Get-AzPublicIPAddress](https://docs.microsoft.com/powershell/module/az.network/get-azpublicipaddress) die öffentliche IP-Adresse Ihres virtuellen Computers ab. Im folgenden Beispiel wird die IP-Adresse für `myPublicIP` abgerufen, die wir zuvor erstellt haben:
+Rufen Sie mit [Get-AzPublicIPAddress](/powershell/module/az.network/get-azpublicipaddress) die öffentliche IP-Adresse Ihres virtuellen Computers ab. Im folgenden Beispiel wird die IP-Adresse für `myPublicIP` abgerufen, die wir zuvor erstellt haben:
 
 ```azurepowershell-interactive
 Get-AzPublicIPAddress -ResourceGroupName $resourceGroup -Name "myPublicIPAddress" | select "IpAddress"
@@ -170,13 +166,13 @@ Die gesicherte IIS-Website wird dann wie im folgenden Beispiel angezeigt:
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-In diesem Tutorial haben Sie einen IIS-Webserver mit einem in Azure Key Vault gespeicherten SSL-Zertifikat gesichert. Es wurde Folgendes vermittelt:
+In diesem Tutorial haben Sie einen IIS-Webserver mit einem in Azure Key Vault gespeicherten TLS/SSL-Zertifikat geschützt. Sie haben Folgendes gelernt:
 
 > [!div class="checklist"]
 > * Erstellen einer Azure Key Vault-Instanz
 > * Generieren oder Hochladen eines Zertifikats in Key Vault
 > * Erstellen eines virtuellen Computers und Installieren des IIS-Webservers
-> * Einfügen des Zertifikats auf dem virtuellen Computer und Konfigurieren von IIS mit einer SSL-Bindung
+> * Einfügen des Zertifikats auf dem virtuellen Computer und Konfigurieren von IIS mit einer TLS-Bindung
 
 Folgen Sie diesem Link, um sich vordefinierte Skriptbeispiele für virtuelle Computer anzusehen.
 

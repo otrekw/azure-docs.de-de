@@ -2,25 +2,21 @@
 title: 'Tutorial: Azure Active Directory-Integration mit ScreenSteps | Microsoft-Dokumentation'
 description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und ScreenSteps konfigurieren.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 4563fe94-a88f-4895-a07f-79df44889cf9
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 864a9243a9f737506fd4d8cbc3940d7a86711f20
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3816239798290318404980ded388b726d8134395
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67091668"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95999789"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-screensteps"></a>Tutorial: Azure Active Directory-Integration mit ScreenSteps
 
@@ -31,7 +27,7 @@ Die Integration von ScreenSteps in Azure AD bietet die folgenden Vorteile:
 * Sie können Ihren Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei ScreenSteps anzumelden (einmaliges Anmelden; Single Sign-On, SSO).
 * Sie können Ihre Konten über das Azure-Portal an einem zentralen Ort verwalten.
 
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md).
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -130,11 +126,11 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD bei ScreenSt
 
 1. Klicken Sie auf **Kontoeinstellungen**.
 
-    ![Kontoverwaltung](./media/screensteps-tutorial/ic778523.png "Kontoverwaltung")
+    ![Kontoverwaltung](./media/screensteps-tutorial/ic778523.png "Kontenverwaltung")
 
 1. Klicken Sie auf **Einmaliges Anmelden**.
 
-    ![Remoteauthentifizierung](./media/screensteps-tutorial/ic778524.png "Remoteauthentifizierung")
+    ![Screenshot mit ausgewählter Option „Einmaliges Anmelden“](./media/screensteps-tutorial/ic778524.png "Remoteauthentifizierung")
 
 1. Klicken Sie auf **Create Single Sign-on Endpoint** (Endpunkt für einmaliges Anmelden erstellen).
 
@@ -142,13 +138,13 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD bei ScreenSt
 
 1. Führen Sie im Abschnitt **Create Single Sign-on Endpoint** (Endpunkt für einmaliges Anmelden erstellen) die folgenden Schritte aus:
 
-    ![Erstellen eines Authentifizierungsendpunkts](./media/screensteps-tutorial/ic778526.png "Erstellen eines Authentifizierungsendpunkts")
+    ![Authentifizierungsendpunkt erstellen](./media/screensteps-tutorial/ic778526.png "Authentication Endpoint erstellen")
 
     a. Geben Sie in das Textfeld **Titel** einen Titel ein.
 
     b. Wählen Sie in der Liste **Modus** die Option **SAML** aus.
 
-    c. Klicken Sie auf **Create**.
+    c. Klicken Sie auf **Erstellen**.
 
 1. **Bearbeiten** Sie den neuen Endpunkt.
 
@@ -156,7 +152,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD bei ScreenSt
 
 1. Führen Sie im Abschnitt **Edit Single Sign-on Endpoint** (Endpunkt für einmaliges Anmelden bearbeiten) die folgenden Schritte aus:
 
-    ![Remote Authentication Endpoint](./media/screensteps-tutorial/ic778527.png "Remote Authentication Endpoint")
+    ![Endpunkt für Remoteauthentifizierung](./media/screensteps-tutorial/ic778527.png "Remote Authentication Endpoint")
 
     a. Klicken Sie auf **Upload new SAML Certificate file** (Neue SAML-Zertifikatsdatei hochladen), und laden Sie dann das Zertifikat hoch, das Sie aus dem Azure-Portal heruntergeladen haben.
 
@@ -197,7 +193,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.
 
-    d. Klicken Sie auf **Create**.
+    d. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
@@ -227,18 +223,18 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 ### <a name="create-screensteps-test-user"></a>Erstellen eines ScreenSteps-Testbenutzers
 
-In diesem Abschnitt erstellen Sie in ScreenSteps einen Benutzer mit dem Namen Britta Simon. Arbeiten Sie mit dem  [Clientsupportteam von ScreenSteps](https://www.screensteps.com/contact) zusammen, um die Benutzer in der ScreenSteps-Plattform hinzuzufügen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
+In diesem Abschnitt erstellen Sie in ScreenSteps einen Benutzer mit dem Namen Britta Simon. Wenden Sie sich an das [Clientsupportteam von ScreenSteps](https://www.screensteps.com/contact), um die Benutzer in der ScreenSteps-Plattform hinzuzufügen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
 
 ### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
-Wenn Sie im Zugriffsbereich auf die Kachel „ScreenSteps“ klicken, sollten Sie automatisch bei Ihrer ScreenSteps-Anwendung angemeldet werden. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Wenn Sie im Zugriffsbereich auf die Kachel „ScreenSteps“ klicken, sollten Sie automatisch bei Ihrer ScreenSteps-Anwendung angemeldet werden. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>Weitere Ressourcen
 
-- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](./tutorial-list.md)
 
-- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Was ist bedingter Zugriff?](../conditional-access/overview.md)

@@ -2,18 +2,18 @@
 title: include file
 description: include file
 services: lighthouse
-author: DCtheGeek
+author: JnHs
 ms.service: lighthouse
 ms.topic: include
-ms.date: 06/26/2019
-ms.author: dacoulte
+ms.date: 07/07/2020
+ms.author: jenhayes
 ms.custom: include file
-ms.openlocfilehash: a1f3c83919dadfd0f35caaf588cc541917a5e536
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: 7da1a3501d74cc7f46d35597df5a985c3e571388
+ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67807410"
+ms.lasthandoff: 10/23/2020
+ms.locfileid: "86106055"
 ---
 > [!NOTE]
-> Dieser Dienst unterstützt die [delegierte Azure-Ressourcenverwaltung](../articles/lighthouse/concepts/azure-delegated-resource-management.md), mit der Dienstanbieter Ressourcen und Abonnements verwalten können, die Kunden innerhalb des Mandanten des Dienstanbieters delegiert haben. Weitere Informationen finden Sie unter [Azure Lighthouse](../articles/lighthouse/overview.md).
+> Dieser Dienst unterstützt [Azure Lighthouse](../articles/lighthouse/overview.md). Dies ermöglicht es Dienstanbietern, sich bei ihrem eigenen Mandanten anzumelden, um von Kunden delegierte Abonnements und Ressourcengruppen zu verwalten.

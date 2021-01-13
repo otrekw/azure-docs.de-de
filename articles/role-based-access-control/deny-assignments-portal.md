@@ -1,6 +1,6 @@
 ---
-title: Auflisten von Ablehnungszuweisungen für Azure-Ressourcen mit dem Azure-Portal | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie mithilfe des Azure-Portals die Benutzer, Gruppen, Dienstprinzipale und verwalteten Identitäten auflisten können, denen der Zugriff auf bestimmte Aktionen von Azure-Ressourcen in bestimmten Bereichen untersagt wurde.
+title: Auflisten von Azure-Ablehnungszuweisungen mithilfe des Azure-Portals – Azure RBAC
+description: Erfahren Sie, wie Sie mithilfe des Azure-Portals und der rollenbasierten Zugriffssteuerung (Role-based Access Control, RBAC) in Azure die Benutzer, Gruppen, Dienstprinzipale und verwalteten Identitäten auflisten können, denen der Zugriff auf bestimmte Aktionen von Azure-Ressourcen in bestimmten Bereichen untersagt wurde.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -8,31 +8,31 @@ manager: mtillman
 ms.assetid: 8078f366-a2c4-4fbb-a44b-fc39fd89df81
 ms.service: role-based-access-control
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 06/10/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 21ffb1a2539a2e724a91dd3b2818270a5e573ef8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 92046b3a944a747ce76d2426855eec7b6bc2cd70
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67127484"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "84790245"
 ---
-# <a name="list-deny-assignments-for-azure-resources-using-the-azure-portal"></a>Auflisten von Ablehnungszuweisungen für Azure-Ressourcen mit dem Azure-Portal
+# <a name="list-azure-deny-assignments-using-the-azure-portal"></a>Auflisten von Ablehnungszuweisungen über das Azure-Portal
 
-[Ablehnungszuweisungen](deny-assignments.md) blockieren Aktionen von Azure-Ressourcen für bestimmte Benutzer, selbst wenn diesen durch eine Rollenzuweisung Zugriff erteilt wurde. In diesem Artikel wird beschrieben, wie Sie mit dem Azure-Portal Ablehnungszuweisungen auflisten.
+[Azure-Ablehnungszuweisungen](deny-assignments.md) hindern Benutzer an der Ausführung bestimmter Aktionen für Azure-Ressourcen, auch wenn ihnen über eine Rollenzuweisung Zugriff erteilt wird. In diesem Artikel wird beschrieben, wie Sie mit dem Azure-Portal Ablehnungszuweisungen auflisten.
 
 > [!NOTE]
-> Sie können Ihre eigenen Ablehnungszuweisungen nicht direkt erstellen. Weitere Informationen dazu, wie Ablehnungszuweisungen erstellt werden, finden Sie unter [Ablehnungszuweisungen](deny-assignments.md).
+> Sie können Ihre eigenen Ablehnungszuweisungen nicht direkt erstellen. Weitere Informationen dazu, wie Ablehnungszuweisungen erstellt werden, finden Sie unter [Azure-Ablehnungszuweisungen](deny-assignments.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Um Informationen zu einer Ablehnungszuweisung abzurufen, müssen Sie über Folgendes verfügen:
 
-- `Microsoft.Authorization/denyAssignments/read`-Berechtigung, die in den meisten [integrierten Rollen für Azure-Ressourcen](built-in-roles.md) enthalten ist.
+- `Microsoft.Authorization/denyAssignments/read`-Berechtigung, die in den meisten [integrierten Azure-Rollen](built-in-roles.md) enthalten ist
 
 ## <a name="list-deny-assignments"></a>Auflisten von Ablehnungszuweisungen
 

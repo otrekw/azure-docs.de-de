@@ -1,29 +1,19 @@
 ---
 title: 'Erstellen eines Event Hubs, für den Capture aktiviert ist: Azure Event Hubs | Microsoft-Dokumentation'
 description: Erstellen eines Azure Event Hubs-Namespace mit einem Event Hub und Aktivieren der von Capture über eine Azure Resource Manager-Vorlage
-services: event-hubs
-documentationcenter: .net
-author: ShubhaVijayasarathy
-manager: timlt
-editor: ''
-ms.assetid: 8bdda6a2-5ff1-45e3-b696-c553768f1090
-ms.service: event-hubs
-ms.devlang: tbd
 ms.topic: conceptual
-ms.tgt_pltfrm: dotnet
-ms.workload: na
-ms.date: 02/06/2019
-ms.author: shvija
-ms.openlocfilehash: 804ef04f0066a8b8dd9df82aef03fcfc32d7cb43
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 06/23/2020
+ms.custom: devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: 658defcef5c9d145d499eb72ae372d1a7edfb740
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60343727"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97705420"
 ---
 # <a name="create-a-namespace-with-event-hub-and-enable-capture-using-a-template"></a>Erstellen eines Namespace mit Event Hub und Aktivieren von Capture mithilfe einer Vorlage
 
-In diesem Artikel erfahren Sie, wie Sie eine Azure Resource Manager-Vorlage verwenden, die einen [Event Hubs](event-hubs-what-is-event-hubs.md)-Namespace mit einer einzelnen Event Hub-Instanz erstellt und das [Capture-Feature](event-hubs-capture-overview.md) für die Event Hub-Instanz aktiviert. Der Artikel erklärt Ihnen, wie Sie definieren, welche Ressourcen bereitgestellt werden und wie Sie Parameter definieren, die angegeben werden, wenn die Bereitstellung ausgeführt wird. Sie können diese Vorlage für Ihre eigenen Bereitstellungen verwenden oder an Ihre Anforderungen anpassen.
+In diesem Artikel erfahren Sie, wie Sie eine Azure Resource Manager-Vorlage verwenden, die einen [Event Hubs](./event-hubs-about.md)-Namespace mit einer einzelnen Event Hub-Instanz erstellt und das [Capture-Feature](event-hubs-capture-overview.md) für die Event Hub-Instanz aktiviert. Der Artikel erklärt Ihnen, wie Sie definieren, welche Ressourcen bereitgestellt werden und wie Sie Parameter definieren, die angegeben werden, wenn die Bereitstellung ausgeführt wird. Sie können diese Vorlage für Ihre eigenen Bereitstellungen verwenden oder an Ihre Anforderungen anpassen.
 
 Außerdem erfahren Sie in diesem Artikel, wie Sie angeben, dass Ereignisse abhängig vom gewählten Ziel entweder in Azure Storage Blobs oder in einer Azure Data Lake Store-Instanz erfasst werden sollen.
 
@@ -37,7 +27,7 @@ Die vollständigen Vorlagen finden Sie unter den folgenden GitHub-Links:
 - [Event Hub und Aktivierung der Erfassung in Azure Data Lake Store (Vorlage)][Event Hub and enable Capture to Azure Data Lake Store template]
 
 > [!NOTE]
-> Die neuesten Vorlagen finden Sie, indem Sie im Katalog [Azure-Schnellstartvorlagen][Azure Quickstart Templates] nach „Event Hubs“ suchen.
+> Um die neuesten Vorlagen zu finden, rufen Sie den Katalog [Azure-Schnellstartvorlagen][Azure Quickstart Templates] auf, und suchen Sie nach „Event Hubs“.
 > 
 > 
 
@@ -235,7 +225,7 @@ Der BLOB-Container, in dem die Ereignisdaten erfasst werden sollen.
 }
 ```
 
-Wenn Sie Azure Data Lake Store als Ziel wählen, verwenden Sie die folgenden Parameter: Sie müssen Berechtigungen für Ihren Data Lake Store-Pfad festlegen, an dem Sie das Ereignis erfassen möchten. Informationen zum Festlegen von Berechtigungen finden Sie in [diesem Artikel](event-hubs-capture-enable-through-portal.md#capture-data-to-an-azure-data-lake-store-account).
+Wenn Sie Azure Data Lake Store Gen 1 als Ziel wählen, verwenden Sie die folgenden Parameter. Sie müssen Berechtigungen für Ihren Data Lake Store-Pfad festlegen, an dem Sie das Ereignis erfassen möchten. Informationen zum Festlegen von Berechtigungen finden Sie unter [Erfassen von Daten in Azure Data Lake Storage Gen 1](event-hubs-capture-enable-through-portal.md#capture-data-to-azure-data-lake-storage-gen-1).
 
 ### <a name="subscriptionid"></a>subscriptionId
 
@@ -414,17 +404,13 @@ New-AzResourceGroupDeployment -ResourceGroupName \<resource-group-name\> -Templa
 Azure Blob Storage als Ziel:
 
 ```azurecli
-azure config mode arm
-
-azure group deployment create \<my-resource-group\> \<my-deployment-name\> --template-uri [https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/201-eventhubs-create-namespace-and-enable-capture/azuredeploy.json][]
+az deployment group create \<my-resource-group\> \<my-deployment-name\> --template-uri [https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/201-eventhubs-create-namespace-and-enable-capture/azuredeploy.json][]
 ```
 
 Azure Data Lake Store als Ziel:
 
 ```azurecli
-azure config mode arm
-
-azure group deployment create \<my-resource-group\> \<my-deployment-name\> --template-uri [https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/201-eventhubs-create-namespace-and-enable-capture-for-adls/azuredeploy.json][]
+az deployment group create \<my-resource-group\> \<my-deployment-name\> --template-uri [https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/201-eventhubs-create-namespace-and-enable-capture-for-adls/azuredeploy.json][]
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
@@ -433,12 +419,12 @@ Sie können Event Hubs Capture auch über das [Azure-Portal](https://portal.azur
 
 Weitere Informationen zu Event Hubs finden Sie unter den folgenden Links:
 
-* [Übersicht über Event Hubs](event-hubs-what-is-event-hubs.md)
+* [Übersicht über Event Hubs](./event-hubs-about.md)
 * [Erstellen eines Event Hubs](event-hubs-create.md)
 * [Event Hubs – häufig gestellte Fragen](event-hubs-faq.md)
 
-[Authoring Azure Resource Manager templates]: ../azure-resource-manager/resource-group-authoring-templates.md
+[Authoring Azure Resource Manager templates]: ../azure-resource-manager/templates/template-syntax.md
 [Azure Quickstart Templates]:  https://azure.microsoft.com/documentation/templates/?term=event+hubs
-[Azure Resources naming conventions]: https://azure.microsoft.com/documentation/articles/guidance-naming-conventions/
+[Azure Resources naming conventions]: /azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging
 [Event hub and enable Capture to Storage template]: https://github.com/Azure/azure-quickstart-templates/tree/master/201-eventhubs-create-namespace-and-enable-capture
 [Event hub and enable Capture to Azure Data Lake Store template]: https://github.com/Azure/azure-quickstart-templates/tree/master/201-eventhubs-create-namespace-and-enable-capture-for-adls

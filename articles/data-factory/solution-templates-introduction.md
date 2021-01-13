@@ -1,24 +1,26 @@
 ---
-title: Übersicht über Vorlagen für Azure Data Factory | Microsoft-Dokumentation
+title: Übersicht über Vorlagen
 description: Erfahren Sie, wie Sie mithilfe einer vordefinierten Vorlage schnell den Einstieg in Azure Data Factory finden.
 services: data-factory
 documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 01/04/2019
-author: djpmsft
 ms.author: daperlov
-manager: craigg
-ms.openlocfilehash: eb7a7eb8e1bdacae4b74e3a0019a376c440fe4d5
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+author: djpmsft
+manager: anandsub
+ms.custom: seo-lt-2019
+ms.date: 01/04/2019
+ms.openlocfilehash: 2725d498b6fded56ad28235b051b1e8f4fbadadb
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71091978"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96461198"
 ---
 # <a name="templates"></a>Vorlagen
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 Vorlagen sind vordefinierte Azure Data Factory-Pipelines, die Ihnen den schnellen Einstieg in Azure Data Factory ermöglichen. Vorlagen sind nützlich, wenn Sie noch nicht mit Data Factory vertraut sind und schnell die ersten Schritte ausführen möchten. Diese Vorlagen verringern den Entwicklungsaufwand für das Erstellen von Datenintegrationsprojekten und verbessern dadurch die Produktivität der Entwickler.
 
@@ -54,7 +56,7 @@ Data Factory verwendet Azure Resource Manager-Vorlagen für das Speichern von Da
 
     -   [Deltakopie aus Datenbank](solution-template-delta-copy-with-control-table.md)
 
-    -   Kopieren aus \<Quelle\> in \<Ziel\>
+    -   Kopieren von \<source\> nach \<destination\>
 
         -   [Aus Amazon S3 in Azure Data Lake Store Gen 2](solution-template-migration-s3-azure.md)
 
@@ -66,9 +68,9 @@ Data Factory verwendet Azure Resource Manager-Vorlagen für das Speichern von Da
 
         -   Aus einer lokalen SQL Server-Instanz in Azure SQL-Datenbank
 
-        -   Aus einer lokalen SQL Server-Instanz in Azure SQL Data Warehouse
+        -   Aus einer lokalen SQL Server-Instanz in Azure Synapse Analytics
 
-        -   Aus einer lokalen Oracle-Instanz in Azure SQL Data Warehouse
+        -   Aus einer lokalen Oracle-Instanz in Azure Synapse Analytics
 
 -   SSIS-Vorlagen
 

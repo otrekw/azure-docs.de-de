@@ -1,28 +1,24 @@
 ---
 title: Mobile Apps-Bindungen für Azure Functions
 description: Erfahren Sie, wie Azure Mobile Apps-Bindungen in Azure Functions verwendet werden.
-services: functions
-documentationcenter: na
 author: craigshoemaker
-manager: gwallace
-keywords: Azure Functions, Funktionen, Ereignisverarbeitung, dynamisches Compute, serverlose Architektur
-ms.service: azure-functions
 ms.topic: reference
+ms.custom: devx-track-csharp
 ms.date: 11/21/2017
 ms.author: cshoe
-ms.openlocfilehash: 37192a25bff794ac019fd29b47e0e8ad161790c9
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 5ea58cc3d9f3615a74249b36f3f9ffb79caddda1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70097322"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88212248"
 ---
 # <a name="mobile-apps-bindings-for-azure-functions"></a>Mobile Apps-Bindungen für Azure Functions 
 
 > [!NOTE]
-> Azure Mobile Apps-Bindungen sind nur für Azure Functions 1.x verfügbar. In Azure Functions 2.x werden sie nicht unterstützt.
+> Azure Mobile Apps-Bindungen sind nur für Azure Functions 1.x verfügbar. In Azure Functions 2.x und höheren Versionen werden sie nicht unterstützt.
 
-Dieser Artikel erläutert das Arbeiten mit [Azure Mobile Apps](../app-service-mobile/app-service-mobile-value-prop.md)-Bindungen in Azure Functions. Azure Functions unterstützt Eingabe- und Ausgabebindungen für Mobile Apps.
+Dieser Artikel erläutert das Arbeiten mit [Azure Mobile Apps](/previous-versions/azure/app-service-mobile/app-service-mobile-value-prop)-Bindungen in Azure Functions. Azure Functions unterstützt Eingabe- und Ausgabebindungen für Mobile Apps.
 
 Mithilfe von Mobile Apps-Bindungen können Sie Datentabellen in mobilen Apps lesen und aktualisieren.
 
@@ -55,17 +51,17 @@ Bindungsdaten in der Datei *function.json*:
 {
 "bindings": [
     {
-    "name": "myQueueItem",
-    "queueName": "myqueue-items",
-    "connection":"",
-    "type": "queueTrigger",
-    "direction": "in"
+        "name": "myQueueItem",
+        "queueName": "myqueue-items",
+        "connection": "",
+        "type": "queueTrigger",
+        "direction": "in"
     },
     {
         "name": "record",
         "type": "mobileTable",
         "tableName": "MyTable",
-        "id" : "{queueTrigger}",
+        "id": "{queueTrigger}",
         "connection": "My_MobileApp_Url",
         "apiKey": "My_MobileApp_Key",
         "direction": "in"
@@ -100,17 +96,17 @@ Bindungsdaten in der Datei *function.json*:
 {
 "bindings": [
     {
-    "name": "myQueueItem",
-    "queueName": "myqueue-items",
-    "connection":"",
-    "type": "queueTrigger",
-    "direction": "in"
+        "name": "myQueueItem",
+        "queueName": "myqueue-items",
+        "connection": "",
+        "type": "queueTrigger",
+        "direction": "in"
     },
     {
         "name": "record",
         "type": "mobileTable",
         "tableName": "MyTable",
-        "id" : "{queueTrigger}",
+        "id": "{queueTrigger}",
         "connection": "My_MobileApp_Url",
         "apiKey": "My_MobileApp_Key",
         "direction": "in"
@@ -141,12 +137,12 @@ Die folgende Tabelle gibt Aufschluss über die Bindungskonfigurationseigenschaft
 
 |Eigenschaft von „function.json“ | Attributeigenschaft |BESCHREIBUNG|
 |---------|---------|----------------------|
-| **type**|| Muss auf „mobileTable“ festgelegt werden|
-| **direction**||Muss auf „in“ festgelegt werden|
-| **name**|| Der Name des Eingabeparameters in der Funktionssignatur|
+| **type**| – | Muss auf „mobileTable“ festgelegt werden|
+| **direction**| – |Muss auf „in“ festgelegt werden|
+| **name**| – | Der Name des Eingabeparameters in der Funktionssignatur|
 |**tableName** |**TableName**|Der Name der Datentabelle der mobilen App|
 | **id**| **Id** | Der Bezeichner des abzurufenden Datensatzes. Kann statisch sein oder auf dem Trigger, der die Funktion aufruft, basieren. Wenn Sie beispielsweise einen Warteschlangentrigger für Ihre Funktion verwenden, nutzt `"id": "{queueTrigger}"` den Zeichenfolgenwert der Warteschlangennachricht als abzurufende Datensatz-ID.|
-|**Verbindung**|**Connection**|Der Name einer App-Einstellung mit der URL der mobilen App. Die Funktion konstruiert anhand dieser URL die erforderlichen REST-Vorgänge für Ihre mobile App. Erstellen Sie eine App-Einstellung in Ihrer Funktions-App, die die URL Ihrer mobilen App enthält. Anschließend geben Sie den Namen der App-Einstellung in der `connection`-Eigenschaft Ihrer Eingabebindung an. Die URL sieht wie folgt aus: `http://<appname>.azurewebsites.net`.
+|**connection**|**Connection**|Der Name einer App-Einstellung mit der URL der mobilen App. Die Funktion konstruiert anhand dieser URL die erforderlichen REST-Vorgänge für Ihre mobile App. Erstellen Sie eine App-Einstellung in Ihrer Funktions-App, die die URL Ihrer mobilen App enthält. Anschließend geben Sie den Namen der App-Einstellung in der `connection`-Eigenschaft Ihrer Eingabebindung an. Die URL sieht wie folgt aus: `http://<appname>.azurewebsites.net`.
 |**apiKey**|**ApiKey**|Der Name einer App-Einstellung mit dem API-Schlüssel Ihrer mobilen App. Sie müssen den API-Schlüssel angeben, wenn Sie [einen API-Schlüssel in Ihrer mobilen Node.js-App](https://github.com/Azure/azure-mobile-apps-node/tree/master/samples/api-key) oder [einen API-Schlüssel in Ihrer mobilen .NET-App](https://github.com/Azure/azure-mobile-apps-net-server/wiki/Implementing-Application-Key) implementieren. Für die Angabe des Schlüssels erstellen Sie eine App-Einstellung in Ihrer Funktions-App, die den API-Schlüssel enthält, und fügen dann die `apiKey`-Eigenschaft in der Eingabebindung mit dem Namen der App-Einstellung hinzu. |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
@@ -199,19 +195,19 @@ Bindungsdaten in der Datei *function.json*:
 {
 "bindings": [
     {
-    "name": "myQueueItem",
-    "queueName": "myqueue-items",
-    "connection":"",
-    "type": "queueTrigger",
-    "direction": "in"
+        "name": "myQueueItem",
+        "queueName": "myqueue-items",
+        "connection": "",
+        "type": "queueTrigger",
+        "direction": "in"
     },
     {
-    "name": "record",
-    "type": "mobileTable",
-    "tableName": "MyTable",
-    "connection": "My_MobileApp_Url",
-    "apiKey": "My_MobileApp_Key",
-    "direction": "out"
+        "name": "record",
+        "type": "mobileTable",
+        "tableName": "MyTable",
+        "connection": "My_MobileApp_Url",
+        "apiKey": "My_MobileApp_Key",
+        "direction": "out"
     }
 ]
 }
@@ -240,19 +236,19 @@ Bindungsdaten in der Datei *function.json*:
 {
 "bindings": [
     {
-    "name": "myQueueItem",
-    "queueName": "myqueue-items",
-    "connection":"",
-    "type": "queueTrigger",
-    "direction": "in"
+        "name": "myQueueItem",
+        "queueName": "myqueue-items",
+        "connection": "",
+        "type": "queueTrigger",
+        "direction": "in"
     },
     {
-    "name": "record",
-    "type": "mobileTable",
-    "tableName": "MyTable",
-    "connection": "My_MobileApp_Url",
-    "apiKey": "My_MobileApp_Key",
-    "direction": "out"
+        "name": "record",
+        "type": "mobileTable",
+        "tableName": "MyTable",
+        "connection": "My_MobileApp_Url",
+        "apiKey": "My_MobileApp_Key",
+        "direction": "out"
     }
 ],
 "disabled": false
@@ -299,11 +295,11 @@ Die folgende Tabelle gibt Aufschluss über die Bindungskonfigurationseigenschaft
 
 |Eigenschaft von „function.json“ | Attributeigenschaft |BESCHREIBUNG|
 |---------|---------|----------------------|
-| **type**|| Muss auf „mobileTable“ festgelegt werden|
-| **direction**||Muss auf „out“ festgelegt werden|
-| **name**|| Der Name des Ausgabeparameters in der Funktionssignatur|
+| **type**| – | Muss auf „mobileTable“ festgelegt werden|
+| **direction**| – |Muss auf „out“ festgelegt werden|
+| **name**| – | Der Name des Ausgabeparameters in der Funktionssignatur|
 |**tableName** |**TableName**|Der Name der Datentabelle der mobilen App|
-|**Verbindung**|**MobileAppUriSetting**|Der Name einer App-Einstellung mit der URL der mobilen App. Die Funktion konstruiert anhand dieser URL die erforderlichen REST-Vorgänge für Ihre mobile App. Erstellen Sie eine App-Einstellung in Ihrer Funktions-App, die die URL Ihrer mobilen App enthält. Anschließend geben Sie den Namen der App-Einstellung in der `connection`-Eigenschaft Ihrer Eingabebindung an. Die URL sieht wie folgt aus: `http://<appname>.azurewebsites.net`.
+|**connection**|**MobileAppUriSetting**|Der Name einer App-Einstellung mit der URL der mobilen App. Die Funktion konstruiert anhand dieser URL die erforderlichen REST-Vorgänge für Ihre mobile App. Erstellen Sie eine App-Einstellung in Ihrer Funktions-App, die die URL Ihrer mobilen App enthält. Anschließend geben Sie den Namen der App-Einstellung in der `connection`-Eigenschaft Ihrer Eingabebindung an. Die URL sieht wie folgt aus: `http://<appname>.azurewebsites.net`.
 |**apiKey**|**ApiKeySetting**|Der Name einer App-Einstellung mit dem API-Schlüssel Ihrer mobilen App. Sie müssen den API-Schlüssel angeben, wenn Sie [in Ihrem Node.js-Mobile App-Back-End](https://github.com/Azure/azure-mobile-apps-node/tree/master/samples/api-key) oder [in Ihrem .NET-Mobile App-Back-End](https://github.com/Azure/azure-mobile-apps-net-server/wiki/Implementing-Application-Key) einen API-Schlüssel implementieren. Für die Angabe des Schlüssels erstellen Sie eine App-Einstellung in Ihrer Funktions-App, die den API-Schlüssel enthält, und fügen dann die `apiKey`-Eigenschaft in der Eingabebindung mit dem Namen der App-Einstellung hinzu. |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]

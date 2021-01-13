@@ -1,25 +1,15 @@
 ---
-title: Azure Service Fabric-Anwendungsbereitstellung | Microsoft-Dokumentation
+title: Azure Service Fabric-Bereitstellung mit FabricClient
 description: Bereitstellen und Entfernen von Anwendungen in Service Fabric mithilfe der FabricClient-APIs
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-editor: ''
-ms.assetid: b120ffbf-f1e3-4b26-a492-347c29f8f66b
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 01/19/2018
-ms.author: atsenthi
-ms.openlocfilehash: c04306b417c8e68f2e93c0e5e064f5873b00ddd5
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 565e6b8f23f159a5c231295694830917217a3d19
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68599626"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89009299"
 ---
 # <a name="deploy-and-remove-applications-using-fabricclient"></a>Bereitstellen und Entfernen von Anwendungen mithilfe von FabricClient
 > [!div class="op_single_selector"]
@@ -46,7 +36,7 @@ Nachdem Sie eine Anwendung bereitgestellt und eine Instanz im Cluster ausgeführ
 
 Wenn Sie Visual Studio zum Bereitstellen und Debuggen von Anwendungen in Ihrem lokalen Entwicklungscluster verwenden, werden alle vorherigen Schritte automatisch über ein PowerShell-Skript ausgeführt.  Dieses Skript befindet sich im Ordner *Skripts* des Anwendungsprojekts. In diesem Artikel wird die grundlegende Funktionsweise dieses Skripts erläutert, damit Sie die gleichen Vorgänge außerhalb von Visual Studio durchführen können. 
  
-## <a name="connect-to-the-cluster"></a>Verbinden mit dem Cluster
+## <a name="connect-to-the-cluster"></a>Herstellen einer Verbindung mit dem Cluster
 Stellen Sie durch Erstellen einer [FabricClient](/dotnet/api/system.fabric.fabricclient)-Instanz eine Verbindung mit dem Cluster her, bevor Sie die Codebeispiele in diesem Artikel ausführen. Beispiele für das Herstellen einer Verbindung mit einem lokalen Entwicklungscluster oder einem Remotecluster bzw. einem mit Azure Active Directory, X509-Zertifikaten oder Windows Active Directory gesicherten Cluster finden Sie unter [Herstellen einer Verbindung mit einem sicheren Cluster](service-fabric-connect-to-secure-cluster.md#connect-to-a-cluster-using-the-fabricclient-apis). Führen Sie zum Herstellen der Verbindung mit dem lokalen Entwicklungscluster das folgende Beispiel aus:
 
 ```csharp
@@ -73,7 +63,7 @@ Mit der [ProvisionApplicationAsync](/dotnet/api/system.fabric.fabricclient.appli
 Die [GetApplicationTypeListAsync](/dotnet/api/system.fabric.fabricclient.queryclient.getapplicationtypelistasync)-API enthält Informationen über alle erfolgreich registrierten Anwendungstypen. Sie können mithilfe dieser API ermitteln, wann die Registrierung abgeschlossen ist.
 
 ## <a name="remove-an-application-package-from-the-image-store"></a>Entfernen eines Anwendungspakets aus dem Imagespeicher
-Es wird empfohlen, nach erfolgreicher Registrierung der Anwendung das Anwendungspaket zu entfernen.  Sie können Systemressourcen freigeben, indem Sie Anwendungspakete aus dem Imagespeicher löschen.  Nicht verwendete Anwendungspakete nehmen Speicherplatz in Anspruch und führen zu Leistungsproblemen der Anwendung. Löschen Sie das Anwendungspaket aus dem Imagespeicher mithilfe der API [RemoveApplicationPackage](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.removeapplicationpackage).
+Es wird empfohlen, nach erfolgreicher Registrierung der Anwendung das Anwendungspaket zu entfernen.  Sie können Systemressourcen freigeben, indem Sie Anwendungspakete aus dem Imagespeicher löschen.  Die Speicherung nicht verwendeter Anwendungspakete nimmt Speicherplatz in Anspruch und führt zu Leistungsproblemen der Anwendung. Löschen Sie das Anwendungspaket aus dem Imagespeicher mithilfe der API [RemoveApplicationPackage](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.removeapplicationpackage).
 
 ## <a name="create-an-application-instance"></a>Erstellen einer Anwendungsinstanz
 Sie können eine Anwendung mit einem beliebigen Anwendungstyp instanziieren, der mit der [CreateApplicationAsync](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.createapplicationasync)-API erfolgreich registriert wurde. Der Name jeder Anwendung muss mit dem *„fabric:“* -Schema beginnen und für jede Anwendungsinstanz (innerhalb eines Clusters) eindeutig sein. Wenn im Anwendungsmanifest des Zielanwendungstyps Standarddienste festgelegt wurden, werden diese ebenfalls erstellt.

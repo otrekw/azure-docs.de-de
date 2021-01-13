@@ -1,24 +1,23 @@
 ---
-title: Datenverwaltungsgateway für Data Factory | Microsoft Docs
-description: Richten Sie ein Datengateway ein, um Daten zwischen dem lokalen Speicher und der Cloud zu verschieben. Verwenden Sie das Datenverwaltungsgateway in Azure Data Factory zum Verschieben Ihrer Daten.
+title: Datenverwaltungsgateway für Data Factory
+description: Verwenden Sie das Datenverwaltungsgateway in Azure Data Factory zum Verschieben Ihrer Daten.
 services: data-factory
 documentationcenter: ''
 author: nabhishek
-manager: craigg
+manager: anandsub
 ms.assetid: b9084537-2e1c-4e96-b5bc-0e2044388ffd
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 63b9cc26b927f78598422575646c876d90954bed
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 94c1bed8d94f73bc7794037b307618f4c36c4518
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65143299"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96450606"
 ---
 # <a name="data-management-gateway"></a>Gateway zur Datenverwaltung
 > [!NOTE]
@@ -29,9 +28,9 @@ ms.locfileid: "65143299"
 
 Das Datenverwaltungsgateway ist ein Client-Agent, den Sie in Ihrer lokalen Umgebung installieren müssen, um Daten zwischen Ihren Cloudspeichern und lokalen Datenspeichern kopieren zu können. Die lokalen von Data Factory unterstützten Datenspeicher werden im Abschnitt [Unterstützte Datenquellen](data-factory-data-movement-activities.md#supported-data-stores-and-formats) aufgeführt.
 
-Dieser Artikel ergänzt die exemplarische Vorgehensweise im Artikel [Verschieben von Daten zwischen lokalen Datenspeichern und Clouddatenspeichern](data-factory-move-data-between-onprem-and-cloud.md) . In der exemplarischen Vorgehensweise erstellen Sie eine Pipeline, die das Gateway verwendet, um Daten aus einer lokalen SQL Server-Datenbank in einen Azure-Blob zu verschieben. Dieser Artikel enthält ausführliche Informationen zur Verwendung des Datenverwaltungsgateways.
+Dieser Artikel ergänzt die exemplarische Vorgehensweise im Artikel [Verschieben von Daten zwischen lokalen Datenspeichern und Clouddatenspeichern](data-factory-move-data-between-onprem-and-cloud.md) . In der exemplarischen Vorgehensweise erstellen Sie eine Pipeline, die das Gateway verwendet, um Daten aus einer SQL Server-Datenbank in ein Azure-Blob zu verschieben. Dieser Artikel enthält ausführliche Informationen zur Verwendung des Datenverwaltungsgateways.
 
-Sie können ein Datenverwaltungsgateway horizontal hochskalieren, indem Sie ihm mehrere lokale Computer zuordnen. Sie können zentral hochskalieren, indem Sie die Anzahl von Datenverschiebungsaufträgen erhöhen, die auf einem Knoten gleichzeitig ausgeführt werden können. Diese Funktion ist auch für ein logisches Gateway mit einem einzelnen Knoten verfügbar. Ausführliche Informationen hierzu finden Sie im Artikel [Data Management Gateway – high availability and scalability (Preview)](data-factory-data-management-gateway-high-availability-scalability.md) (Datenverwaltungsgateway – Hohe Verfügbarkeit und Skalierbarkeit (Vorschauversion)).
+Sie können ein Datenverwaltungsgateway aufskalieren, indem Sie ihm mehrere lokale Computer zuordnen. Sie können hochskalieren, indem Sie die Anzahl von Datenverschiebungsaufträgen erhöhen, die auf einem Knoten gleichzeitig ausgeführt werden können. Diese Funktion ist auch für ein logisches Gateway mit einem einzelnen Knoten verfügbar. Ausführliche Informationen hierzu finden Sie im Artikel [Data Management Gateway – high availability and scalability (Preview)](data-factory-data-management-gateway-high-availability-scalability.md) (Datenverwaltungsgateway – Hohe Verfügbarkeit und Skalierbarkeit (Vorschauversion)).
 
 > [!NOTE]
 > Das Gateway unterstützt derzeit nur die Kopieraktivität und die Aktivität mit gespeicherten Prozeduren in Data Factory. Das Gateway kann nicht über eine benutzerdefinierte Aktivität verwendet werden, um auf lokale Datenquellen zuzugreifen.
@@ -54,7 +53,7 @@ Wenn Sie Daten mithilfe einer Kopieraktivität zwischen der lokalen Umgebung und
 
 Im Anschluss finden Sie eine Darstellung des allgemeinen Datenflusses sowie eine Zusammenfassung der Schritte für das Kopieren mit dem Datengateway: ![Datenfluss über ein Gateway](./media/data-factory-data-management-gateway/data-flow-using-gateway.png).
 
-1. Der Datenentwickler erstellt entweder über das [Azure-Portal](https://portal.azure.com) oder mit einem [PowerShell-Cmdlet](https://docs.microsoft.com/powershell/module/az.datafactory/) ein Gateway für Azure Data Factory.
+1. Der Datenentwickler erstellt entweder über das [Azure-Portal](https://portal.azure.com) oder mit einem [PowerShell-Cmdlet](/powershell/module/az.datafactory/) ein Gateway für Azure Data Factory.
 2. Der Datenentwickler erstellt durch Angabe des Gateways einen verknüpften Dienst für einen lokalen Datenspeicher. Als Teil der Einrichtung des verknüpften Diensts verwendet der Datenentwickler die Anwendung „Anmeldeinformationen festlegen“, um Authentifizierungstypen und Anmeldeinformationen anzugeben. Die Anwendung „Anmeldeinformationen festlegen“ kommuniziert mit dem Datenspeicher, um die Verbindung zu testen, und mit dem Gateway, um die Anmeldeinformationen zu speichern.
 3. Das Gateway verschlüsselt die Anmeldeinformationen mit dem Zertifikat, das dem Gateway zugeordnet wurde (bereitgestellt vom Datenentwickler), bevor die Anmeldeinformationen in der Cloud gespeichert werden.
 4. Der Data Factory-Dienst kommuniziert für die Planung und Verwaltung von Aufträgen mit dem Gateway. Dazu wird ein Steuerungskanal genutzt, der eine freigegebene Azure Service Bus-Warteschlange verwendet. Wenn ein Auftrag der Kopieraktivität gestartet werden muss, reiht Data Factory die Anforderung zusammen mit Anmeldeinformationen in die Warteschlange ein. Das Gateway startet den Auftrag, nachdem die Warteschlange abgerufen wurde.
@@ -67,14 +66,14 @@ Im Anschluss finden Sie eine Darstellung des allgemeinen Datenflusses sowie eine
 * Das **Gateway muss sich nicht auf dem gleichen Computer befinden wie die Datenquelle**. Wenn Sie das Gateway jedoch in der Nähe der Datenquelle platzieren, verkürzen Sie die Zeit, die das Gateway benötigt, um eine Verbindung mit der Datenquelle herzustellen. Es wird empfohlen, das Gateway auf einem anderen Computer als dem Computer zu installieren, auf dem die lokale Datenquelle gehostet wird. Wenn sich Gateway und Datenquelle auf unterschiedlichen Computern befinden, konkurriert das Gateway nicht mit der Datenquelle um Ressourcen.
 * Sie können über **mehrere Gateways auf verschiedenen Computern verfügen, die eine Verbindung mit der gleichen lokalen Datenquelle herstellen**. Sie können z. B. über zwei Gateways verfügen, die zwei Data Factorys mit Daten versorgen, wobei jedoch die lokale Datenquelle für die beiden Data Factorys registriert ist.
 * Falls Sie auf Ihrem Computer bereits ein Gateway installiert haben, das für ein **Power BI**-Szenario verwendet wird, installieren Sie auf einem anderen Computer ein **separates Gateway für die Azure Data Factory**.
-* Sie müssen das Gateway selbst dann verwenden, wenn Sie **ExpressRoute**einsetzen.
-* Behandeln Sie Ihre Datenquelle wie eine lokale Datenquelle (die sich hinter einer Firewall befindet), selbst wenn Sie **ExpressRoute**verwenden. Verwenden Sie das Gateway, um eine Verbindung zwischen dem Dienst und der Datenquelle herzustellen.
+* Sie müssen das Gateway selbst dann verwenden, wenn Sie **ExpressRoute** einsetzen.
+* Behandeln Sie Ihre Datenquelle wie eine lokale Datenquelle (die sich hinter einer Firewall befindet), selbst wenn Sie **ExpressRoute** verwenden. Verwenden Sie das Gateway, um eine Verbindung zwischen dem Dienst und der Datenquelle herzustellen.
 * Sie müssen auch dann **das Gateway verwenden**, wenn der Datenspeicher sich in der Cloud auf einer **Azure IaaS-VM** befindet.
 
 ## <a name="installation"></a>Installation
 ### <a name="prerequisites"></a>Voraussetzungen
 * Die unterstützten **Betriebssystemversionen** sind Windows 7, Windows 8/8.1, Windows 10, Windows Server 2008 R2, Windows Server 2012 und Windows Server 2012 R2. Die Installation des Datenverwaltungsgateways auf einem Domänencontroller wird derzeit nicht unterstützt.
-* Sie benötigen mindestens .NET Framework 4.5.1. Wenn Sie das Gateway auf einem Windows 7-Computer installieren, installieren Sie mindestens .NET Framework 4.5. Ausführlichere Informationen finden Sie unter [Systemanforderungen für .NET Framework](https://msdn.microsoft.com/library/8z6watww.aspx) .
+* Sie benötigen mindestens .NET Framework 4.5.1. Wenn Sie das Gateway auf einem Windows 7-Computer installieren, installieren Sie mindestens .NET Framework 4.5. Ausführlichere Informationen finden Sie unter [Systemanforderungen für .NET Framework](/dotnet/framework/get-started/system-requirements) .
 * Die empfohlene **Konfiguration** für den Gatewaycomputer lautet: mindestens 2 GHz, 4 Kerne, 8 GB RAM und 80 GB Festplattenspeicher.
 * Wenn sich der Hostcomputer im Ruhezustand befindet, reagiert das Gateway nicht auf Datenanforderungen. Aus diesem Grund sollten Sie vor der Installation des Gateways einen entsprechenden **Energiesparplan** auf dem Computer konfigurieren. Wenn der Computer für den Ruhezustand konfiguriert ist, wird bei der Gatewayinstallation eine Meldung angezeigt.
 * Sie müssen ein Administrator auf dem Computer sein, um das Datenverwaltungsgateway erfolgreich installieren und konfigurieren zu können. Sie können der lokalen Windows-Gruppe **Datenverwaltungsgateway-Benutzer** zusätzliche Benutzer hinzufügen. Die Mitglieder dieser Gruppe können das Gateway mithilfe des Tools **Datenverwaltungsgateway-Konfigurations-Manager** konfigurieren.
@@ -122,7 +121,7 @@ Um im Portal ein Gateway zu erstellen und auf der Seite **Konfigurieren** den Sc
     ![Link zum Herunterladen im Portal](media/data-factory-data-management-gateway/download-and-install-link-on-portal.png)
 4. Klicken Sie auf der Seite **Konfigurieren** auf **Schlüssel neu erstellen**. Klicken Sie in der Warnmeldung auf „Ja“, nachdem Sie sie sorgfältig gelesen haben.
 
-    ![Schlüssel neu erstellen](media/data-factory-data-management-gateway/recreate-key-button.png)
+    ![Schaltfläche „Schlüssel neu erstellen“](media/data-factory-data-management-gateway/recreate-key-button.png)
 5. Klicken Sie neben dem Schlüssel auf die Schaltfläche „Kopieren“. Der Schlüssel wird in die Zwischenablage kopiert.
 
     ![Kopieren des Schlüssels](media/data-factory-data-management-gateway/copy-gateway-key.png)
@@ -151,21 +150,21 @@ Auf Ebene der Unternehmensfirewall müssen Sie die folgenden Domänen und ausgeh
 Auf Ebene der Windows-Firewall sind diese ausgehenden Ports normalerweise aktiviert. Falls nicht, können Sie die Domänen und Ports auf dem Gatewaycomputer entsprechend konfigurieren.
 
 > [!NOTE]
-> 1. Basierend auf Ihrer Datenquelle und den Senken müssen Sie unter Umständen der Whitelist Ihrer Unternehmens-/Windows-Firewall zusätzliche Domänen und ausgehende Ports hinzufügen.
-> 2. Für einige Clouddatenbanken (z.B. [Azure SQL-Datenbank](https://docs.microsoft.com/azure/sql-database/sql-database-configure-firewall-settings), [Azure Data Lake](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-secure-data#set-ip-address-range-for-data-access) usw.) müssen Sie der Whitelist in der Firewallkonfiguration ggf. die IP-Adresse des Gatewaycomputers hinzufügen.
+> 1. Je nach Ihrer Quelle und Ihren Senken müssen Sie unter Umständen in Ihrer Unternehmens-/Windows-Firewall zusätzliche Domänen und ausgehende Ports zulassen.
+> 2. Für einige Clouddatenbanken (z.B. [Azure SQL-Datenbank](../../azure-sql/database/firewall-configure.md), [Azure Data Lake](../../data-lake-store/data-lake-store-secure-data.md#set-ip-address-range-for-data-access) usw.) müssen Sie in der Firewallkonfiguration ggf. die IP-Adresse des Gatewaycomputers zulassen.
 >
 >
 
 #### <a name="copy-data-from-a-source-data-store-to-a-sink-data-store"></a>Kopieren von Daten aus einem Quelldatenspeicher in einen Senkendatenspeicher
 Stellen Sie sicher, dass die Firewallregeln für die Unternehmensfirewall, die Windows-Firewall auf dem Gatewaycomputer und den Datenspeicher selbst richtig aktiviert sind. Indem Sie diese Regeln aktivieren, kann das Gateway sowohl mit der Quelle als auch mit der Senke erfolgreich eine Verbindung herstellen. Aktivieren Sie die Regeln für jeden Datenspeicher, der am Kopiervorgang beteiligt ist.
 
-Führen Sie die folgenden Schritte aus, um z. B. Daten aus **einem lokalen Datenspeicher in eine Azure SQL-Datenbank-Senke oder eine Azure SQL Data Warehouse-Senke** zu kopieren:
+Führen Sie beispielsweise die folgenden Schritte aus, um Daten aus **einem lokalen Datenspeicher in eine Azure SQL-Datenbank-Senke oder eine Azure Synapse Analytics-Senke** zu kopieren:
 
 * Lassen Sie ausgehende **TCP**-Kommunikation an Port **1433** sowohl für die Windows-Firewall als auch die Unternehmensfirewall zu.
-* Konfigurieren Sie die Firewall der Azure SQL Server-Instanz, um die IP-Adresse des Gatewaycomputers zur Liste der zulässigen IP-Adressen hinzuzufügen.
+* Konfigurieren Sie die Firewalleinstellungen der logischen SQL Server-Instanz so, dass die IP-Adresse des Gatewaycomputers in die Liste der zulässigen IP-Adressen aufgenommen wird.
 
 > [!NOTE]
-> Wenn Ihre Firewall den ausgehenden Port 1433 nicht zulässt, kann das Gateway nicht direkt auf Azure SQL zugreifen. In diesem Fall können Sie das [gestaffelte Kopieren](https://docs.microsoft.com/azure/data-factory/data-factory-copy-activity-performance#staged-copy) in Azure SQL-Datenbank oder Azure SQL Data Warehouse verwenden. Sie benötigen in einem solchen Szenario nur HTTPS (Port 443) für das Verschieben der Daten.
+> Wenn Ihre Firewall den ausgehenden Port 1433 nicht zulässt, kann das Gateway nicht direkt auf Azure SQL zugreifen. In diesem Fall können Sie das [gestaffelte Kopieren](./data-factory-copy-activity-performance.md#staged-copy) in SQL-Datenbank/SQL Managed Instance/Azure SQL Data Warehouse verwenden. Sie benötigen in einem solchen Szenario nur HTTPS (Port 443) für das Verschieben der Daten.
 >
 >
 
@@ -176,7 +175,7 @@ Wenn die Netzwerkumgebung Ihres Unternehmens einen Proxyserver für den Internet
 
 Das Gateway verwendet den Proxyserver, um eine Verbindung mit dem Clouddienst herzustellen. Klicken Sie während des Anfangssetups auf **Ändern** . Sie sehen das Dialogfeld **Proxyeinstellung** .
 
-![Einrichten des Proxys mithilfe des Konfigurations-Managers](media/data-factory-data-management-gateway/SetProxySettings.png)
+![Einrichten des Proxys mithilfe des Konfigurations-Managers 1](media/data-factory-data-management-gateway/SetProxySettings.png)
 
 Es gibt drei Konfigurationsoptionen:
 
@@ -195,7 +194,7 @@ Wenn Sie die Proxyeinstellungen nach der erfolgreichen Registrierung des Gateway
 
 Sie können den HTTP-Proxy im Konfigurations-Manager anzeigen und aktualisieren.
 
-![Einrichten des Proxys mithilfe des Konfigurations-Managers](media/data-factory-data-management-gateway/SetProxyConfigManager.png)
+![Einrichten des Proxys mithilfe des Konfigurations-Managers 2](media/data-factory-data-management-gateway/SetProxyConfigManager.png)
 
 > [!NOTE]
 > Wenn Sie einen Proxyserver mit NTLM-Authentifizierung einrichten, wird der Gatewayhostdienst im Domänenkonto ausgeführt. Wenn Sie das Kennwort für das Domänenkonto später ändern, denken Sie daran, die Konfigurationseinstellungen für den Dienst entsprechend zu aktualisieren und neu zu starten. Aufgrund dieser Anforderung empfiehlt es sich, ein dediziertes Domänenkonto für den Zugriff auf den Proxyserver zu verwenden, in dem das Kennwort nicht regelmäßig geändert werden muss.
@@ -224,7 +223,7 @@ Wenn Sie die Einstellung **Systemproxy verwenden** für den HTTP-Proxy auswähle
     </system.net>
     ```
 
-    Zusätzliche Eigenschaften sind im Proxytag zulässig, um die erforderlichen Einstellungen anzugeben, z. B. scriptLocation. Informationen zur Syntax finden Sie unter [-proxy-Element (Netzwerkeinstellungen)](https://msdn.microsoft.com/library/sa91de1e.aspx).
+    Zusätzliche Eigenschaften sind im Proxytag zulässig, um die erforderlichen Einstellungen anzugeben, z. B. scriptLocation. Informationen zur Syntax finden Sie unter [-proxy-Element (Netzwerkeinstellungen)](/dotnet/framework/configure-apps/file-schema/network/proxy-element-network-settings).
 
     ```
     <proxy autoDetect="true|false|unspecified" bypassonlocal="true|false|unspecified" proxyaddress="uriString" scriptLocation="uriString" usesystemdefault="true|false|unspecified "/>
@@ -234,7 +233,7 @@ Wenn Sie die Einstellung **Systemproxy verwenden** für den HTTP-Proxy auswähle
 > [!IMPORTANT]
 > Vergessen Sie nicht, **beide** Dateien („diahost.exe.config“ und „diawp.exe.config“) zu konfigurieren.
 
-Zusätzlich zu diesen Punkten müssen Sie auch sicherstellen, dass Microsoft Azure in der Whitelist Ihres Unternehmens aufgeführt ist. Sie können die Liste mit den gültigen Microsoft Azure-IP-Adressen im [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=41653)herunterladen.
+Zusätzlich zu diesen Punkten müssen Sie auch sicherstellen, dass Microsoft Azure in der Zulassungsliste Ihres Unternehmens aufgeführt ist. Sie können die Liste mit den gültigen Microsoft Azure-IP-Adressen im [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=41653)herunterladen.
 
 #### <a name="possible-symptoms-for-firewall-and-proxy-server-related-issues"></a>Mögliche Symptome für Probleme im Zusammenhang mit der Firewall und dem Proxyserver
 Wenn Sie ähnliche Fehler wie die unten aufgeführten feststellen, liegt dies meist an einer unsachgemäßen Konfiguration der Firewall oder des Proxyservers, die verhindert, dass das Gateway eine Verbindung mit der Data Factory herstellt, um sich zu authentifizieren. Überprüfen Sie den vorherigen Abschnitt, um sicherzustellen, dass die Firewall und der Proxyserver richtig konfiguriert sind.
@@ -248,9 +247,11 @@ Die Anwendung **Anmeldeinformationen festlegen** verwendet den eingehenden Port 
 
 Bei Verwendung einer Drittanbieterfirewall können Sie den Port 8050 manuell öffnen. Falls beim Einrichten des Gateways ein Firewallproblem auftritt, können Sie versuchen, den folgenden Befehl zu verwenden, um das Gateway ohne Konfiguration der Firewall zu installieren.
 
-    msiexec /q /i DataManagementGateway.msi NOFIREWALL=1
+```cmd
+msiexec /q /i DataManagementGateway.msi NOFIREWALL=1
+```
 
-Falls Sie den Port 8050 auf dem Gatewaycomputer nicht öffnen, verwenden Sie andere Verfahren als die Anwendung **Anmeldeinformationen festlegen** , um Anmeldeinformationen für den Datenspeicher zu konfigurieren. Beispielsweise können Sie das PowerShell-Cmdlet [New-AzDataFactoryEncryptValue](https://docs.microsoft.com/powershell/module/az.datafactory/new-azdatafactoryencryptvalue) verwenden. Informationen zum Festlegen von Datenspeicher-Anmeldeinformationen finden Sie unter „Festlegen von Anmeldeinformationen und Sicherheit“.
+Falls Sie den Port 8050 auf dem Gatewaycomputer nicht öffnen, verwenden Sie andere Verfahren als die Anwendung **Anmeldeinformationen festlegen** , um Anmeldeinformationen für den Datenspeicher zu konfigurieren. Beispielsweise können Sie das PowerShell-Cmdlet [New-AzDataFactoryEncryptValue](/powershell/module/az.datafactory/new-azdatafactoryencryptvalue) verwenden. Informationen zum Festlegen von Datenspeicher-Anmeldeinformationen finden Sie unter „Festlegen von Anmeldeinformationen und Sicherheit“.
 
 ## <a name="update"></a>Aktualisieren
 Standardmäßig wird das Datenverwaltungsgateway automatisch aktualisiert, wenn eine neuere Version des Gateways verfügbar ist. Das Gateway wird erst aktualisiert, nachdem alle geplanten Aufgaben erledigt wurden. Vom Gateway werden keine weiteren Aufgaben verarbeitet, bevor der Aktualisierungsvorgang abgeschlossen ist. Wenn die Aktualisierung fehlschlägt, wird für das Gateway ein Rollback auf die alte Version durchgeführt.
@@ -319,7 +320,7 @@ Auf der Startseite können Sie die folgenden Aktionen ausführen:
 * **Registrieren** mithilfe eines Schlüssels aus dem Portal
 * **Beenden** und Starten des **Datenverwaltungsgateway-Hostdiensts** auf dem Gatewaycomputer
 * **Planen von Updates** zu einem bestimmten Zeitpunkt an den Tagen
-* Anzeigen des Datums, zu dem das Gateway **zuletzt aktualisiert**wurde
+* Anzeigen des Datums, zu dem das Gateway **zuletzt aktualisiert** wurde
 
 ### <a name="settings-page"></a>Seite "Einstellungen"
 Auf der Seite „Einstellungen“ können Sie die folgenden Aktionen ausführen:
@@ -327,7 +328,7 @@ Auf der Seite „Einstellungen“ können Sie die folgenden Aktionen ausführen:
 * Anzeigen, Ändern und Exportieren des **Zertifikats**, das vom Gateway verwendet wird Dieses Zertifikat dient zum Verschlüsseln von Anmeldeinformationen für Datenquellen.
 * Ändern des **HTTPS-Ports** für den Endpunkt Das Gateway öffnet einen Port für die Festlegung der Datenquellen-Anmeldeinformationen.
 * **Status** des Endpunkts
-* **SSL-Zertifikat anzeigen** wird für die SSL-Kommunikation zwischen Portal und Gateway zum Festlegen von Anmeldeinformationen für Datenquellen verwendet.
+* Anzeigen des **SSL-Zertifikats** wird für die TLS/SSL-Kommunikation zwischen Portal und Gateway zum Festlegen von Anmeldeinformationen für Datenquellen verwendet.
 
 ### <a name="remote-access-from-intranet"></a>Remotezugriff über das Intranet
 Diese Funktion wird erst später aktiviert. Im Rahmen der nächsten Updates (v3.4 oder höher) wird eine Funktion zum Aktivieren/Deaktivieren von Remoteverbindungen bereitgestellt, die derzeit über Port 8050 (siehe Abschnitt weiter oben) hergestellt werden. Zum Verschlüsseln der Anmeldeinformationen können Sie PowerShell oder die Anwendung für die Anmeldeinformationsverwaltung verwenden.
@@ -365,16 +366,16 @@ Die folgende Tabelle enthält Beschreibungen von Spalten in der Liste **Gatewayk
 
 Überwachungseigenschaft | BESCHREIBUNG
 :------------------ | :----------
-NAME | Name des logischen Gateways und der Knoten, die dem Gateway zugeordnet sind. Der Knoten ist ein lokaler Windows-Computer, auf dem das Gateway installiert ist. Informationen zur Verwendung von mehr als einem Knoten (bis zu vier Knoten) auf einem einzelnen logischen Gateway finden Sie unter [Datenverwaltungsgateway – Hochverfügbarkeit und Skalierbarkeit](data-factory-data-management-gateway-high-availability-scalability.md).
+Name | Name des logischen Gateways und der Knoten, die dem Gateway zugeordnet sind. Der Knoten ist ein lokaler Windows-Computer, auf dem das Gateway installiert ist. Informationen zur Verwendung von mehr als einem Knoten (bis zu vier Knoten) auf einem einzelnen logischen Gateway finden Sie unter [Datenverwaltungsgateway – Hochverfügbarkeit und Skalierbarkeit](data-factory-data-management-gateway-high-availability-scalability.md).
 Status | Status des logischen Gateways und der Gatewayknoten. Beispiel: Online/Offline/Eingeschränkt usw. Informationen zu diesen Status finden Sie im Abschnitt [Gatewaystatus](#gateway-status).
 Version | Zeigt die Version des logischen Gateways und jedes Gatewayknotens an. Die Version des logischen Gateways wird basierend auf der Version bestimmt, die die meisten Knoten der Gruppe aufweisen. Wenn Knoten mit unterschiedlichen Versionen am Setup des logischen Gateways beteiligt sind, funktionieren nur die Knoten mit der gleichen Versionsnummer wie beim logischen Gateway richtig. Andere Knoten befinden sich im eingeschränkten Modus und müssen manuell aktualisiert werden (nur für den Fall, dass die automatische Aktualisierung fehlschlägt).
 Verfügbarer Arbeitsspeicher | Verfügbarer Arbeitsspeicher auf einem Gatewayknoten. Dieser Wert steht für eine Momentaufnahme nahezu in Echtzeit.
 CPU-Auslastung | CPU-Auslastung eines Gatewayknotens. Dieser Wert steht für eine Momentaufnahme nahezu in Echtzeit.
 Netzwerk (Eingang/Ausgang) | Netzwerkauslastung eines Gatewayknotens. Dieser Wert steht für eine Momentaufnahme nahezu in Echtzeit.
-Gleichzeitige Aufträge (ausgeführt/Limit) | Anzahl von Aufträgen oder Aufgaben, die auf den einzelnen Knoten ausgeführt werden. Dieser Wert steht für eine Momentaufnahme nahezu in Echtzeit. Mit „Limit“ wird angegeben, wie viele Aufträge für einen Knoten jeweils gleichzeitig ausgeführt werden können. Dieser Wert wird basierend auf der Größe des Computers definiert. Sie können das Limit erhöhen, um die Ausführung von gleichzeitigen Aufträgen in erweiterten Szenarien zentral hochzuskalieren, in denen CPU, Arbeitsspeicher und Netzwerk nicht voll ausgelastet sind, aber Zeitüberschreitungen für Aktivitäten auftreten. Diese Funktion ist auch für ein Gateway mit nur einem Knoten verfügbar (auch wenn die Skalierbarkeits- und Verfügbarkeitsfunktion nicht aktiviert ist).
-Rolle | Bei einem Gateway mit mehreren Knoten gibt es zwei Arten von Rollen: Dispatcher und Worker. Alle Knoten sind Worker. Dies bedeutet, dass alle Knoten zum Ausführen von Aufträgen verwendet werden können. Es ist nur ein Verteilerknoten vorhanden, der zum Durchführen der Pullvorgänge für Aufgaben bzw. Aufträge von Clouddiensten und Verteilen an die einzelnen Workerknoten (einschließlich sich selbst) genutzt wird.
+Gleichzeitige Aufträge (ausgeführt/Limit) | Anzahl von Aufträgen oder Aufgaben, die auf den einzelnen Knoten ausgeführt werden. Dieser Wert steht für eine Momentaufnahme nahezu in Echtzeit. Mit „Limit“ wird angegeben, wie viele Aufträge für einen Knoten jeweils gleichzeitig ausgeführt werden können. Dieser Wert wird basierend auf der Größe des Computers definiert. Sie können das Limit erhöhen, um die Ausführung von gleichzeitigen Aufträgen in erweiterten Szenarien hochzuskalieren, in denen CPU, Arbeitsspeicher und Netzwerk nicht voll ausgelastet sind, aber Zeitüberschreitungen für Aktivitäten auftreten. Diese Funktion ist auch für ein Gateway mit nur einem Knoten verfügbar (auch wenn die Skalierbarkeits- und Verfügbarkeitsfunktion nicht aktiviert ist).
+Role | Bei einem Gateway mit mehreren Knoten gibt es zwei Arten von Rollen: Dispatcher und Worker. Alle Knoten sind Worker. Dies bedeutet, dass alle Knoten zum Ausführen von Aufträgen verwendet werden können. Es ist nur ein Verteilerknoten vorhanden, der zum Durchführen der Pullvorgänge für Aufgaben bzw. Aufträge von Clouddiensten und Verteilen an die einzelnen Workerknoten (einschließlich sich selbst) genutzt wird.
 
-Auf dieser Seite werden einige Einstellungen angezeigt, die mehr Sinn ergeben, wenn das Gateway mindestens zwei Knoten enthält (Szenario mit horizontalem Hochskalieren). Ausführliche Informationen zum Einrichten eines Gateways mit mehreren Knoten finden Sie unter [Data Management Gateway – high availability and scalability (Preview)](data-factory-data-management-gateway-high-availability-scalability.md) (Datenverwaltungsgateway – Hochverfügbarkeit und Skalierbarkeit (Vorschauversion)).
+Auf dieser Seite werden einige Einstellungen angezeigt, die mehr Sinn ergeben, wenn das Gateway mindestens zwei Knoten enthält (Szenario mit Aufskalieren). Ausführliche Informationen zum Einrichten eines Gateways mit mehreren Knoten finden Sie unter [Data Management Gateway – high availability and scalability (Preview)](data-factory-data-management-gateway-high-availability-scalability.md) (Datenverwaltungsgateway – Hochverfügbarkeit und Skalierbarkeit (Vorschauversion)).
 
 ### <a name="gateway-status"></a>Gatewaystatus
 Die folgende Tabelle enthält die möglichen Status eines **Gatewayknotens**:
@@ -396,10 +397,10 @@ Online | Gatewayknoten sind online.
 Offline | Kein Knoten befindet sich im Onlinestatus.
 Eingeschränkt | Nicht alle Knoten dieses Gateways befinden sich in einem fehlerfreien Zustand. Dieser Status ist eine Warnung, dass ein Knoten unter Umständen ausgefallen ist. <br/><br/>Die Ursache kann ein Problem mit der Synchronisierung von Anmeldeinformationen auf einem Verteiler- oder Workerknoten sein.
 
-## <a name="scale-up-gateway"></a>Zentrales Hochskalieren des Gateways
+## <a name="scale-up-gateway"></a>Hochskalieren des Gateways
 Sie können die Anzahl von **gleichzeitigen Datenverschiebungsaufträgen** konfigurieren, die auf einem Knoten ausgeführt werden können, um die Voraussetzungen zum Verschieben von Daten zwischen lokalen und Clouddatenspeichern zu verbessern.
 
-Wenn die Auslastung des verfügbaren Arbeitsspeichers und der CPU nicht hoch ist, aber die Kapazität im Leerlauf den Wert „0“ hat, sollten Sie zentral hochskalieren. Erhöhen Sie hierfür die Anzahl von gleichzeitigen Aufträgen, die auf einem Knoten ausgeführt werden können. Es kann auch hilfreich sein, das zentrale Hochskalieren durchzuführen, wenn für Aktivitäten eine Zeitüberschreitung auftritt, weil das Gateway überlastet ist. In den erweiterten Einstellungen eines Gatewayknotens können Sie die maximale Kapazität für einen Knoten erhöhen.
+Wenn die Auslastung des verfügbaren Arbeitsspeichers und der CPU nicht hoch ist, aber die Kapazität im Leerlauf den Wert „0“ hat, sollten Sie hochskalieren. Erhöhen Sie hierfür die Anzahl von gleichzeitigen Aufträgen, die auf einem Knoten ausgeführt werden können. Es kann auch hilfreich sein, das Hochskalieren durchzuführen, wenn für Aktivitäten eine Zeitüberschreitung auftritt, weil das Gateway überlastet ist. In den erweiterten Einstellungen eines Gatewayknotens können Sie die maximale Kapazität für einen Knoten erhöhen.
 
 ## <a name="troubleshooting-gateway-issues"></a>Problembehandlung bei Gateways
 Im Artikel [Behandeln von Problemen bei der Verwendung des Datenverwaltungsgateways](data-factory-troubleshoot-gateway-issues.md) finden Sie Informationen/Tipps zur Behandlung von Problemen mit dem Datenverwaltungsgateway.
@@ -424,7 +425,7 @@ Dieser Abschnitt enthält Anweisungen zum Verschieben des Gatewayclients von ein
     ![Konfigurations-Manager](./media/data-factory-data-management-gateway/ConfigurationManager.png)
 6. Klicken Sie im Portal auf der Seite **Konfigurieren** in der Befehlsleiste auf **Schlüssel neu erstellen** und anschließend in der Warnmeldung auf **Ja**. Klicken Sie auf die Schaltfläche **Kopieren** neben dem Schlüsseltext, um den Schlüssel in die Zwischenablage zu kopieren. Sobald Sie den Schlüssel neu erstellen, funktioniert das Gateway auf dem alten Computer nicht mehr.
 
-    ![Schlüssel neu erstellen](./media/data-factory-data-management-gateway/RecreateKey.png)
+    ![Schlüssel neu erstellen 2](./media/data-factory-data-management-gateway/RecreateKey.png)
 7. Fügen Sie auf Ihrem Computer im **Datenverwaltungsgateway-Konfigurations-Manager** auf der Seite **Gateway registrieren** den **Schlüssel** in das Textfeld ein. (Optional) Aktivieren Sie das Kontrollkästchen **Gatewayschlüssel anzeigen**, um den Schlüsseltext anzuzeigen.
 
     ![Schlüssel kopieren und registrieren](./media/data-factory-data-management-gateway/CopyKeyAndRegister.png)
@@ -471,7 +472,7 @@ Zum Verschlüsseln der Anmeldeinformationen im Data Factory-Editor gehen Sie wie
 
 Wenn Sie die Anwendung **Anmeldeinformationen festlegen** verwenden, verschlüsselt das Portal die Anmeldeinformationen mit dem Zertifikat, das Sie auf der Registerkarte **Zertifikat** des **Datenverwaltungsgateway-Konfigurations-Managers** auf dem Gatewaycomputer angegeben haben.
 
-Wenn Sie einen API-basierten Ansatz zum Verschlüsseln der Anmeldeinformationen nutzen möchten, können Sie das PowerShell-Cmdlet [New-AzDataFactoryEncryptValue](https://docs.microsoft.com/powershell/module/az.datafactory/new-azdatafactoryencryptvalue) verwenden, um Anmeldeinformationen zu verschlüsseln. Das Cmdlet verwendet das Zertifikat, für dessen Verwendung dieses Gateway konfiguriert ist, um die Anmeldeinformationen zu verschlüsseln. Sie können dem Element **EncryptedCredential** von **connectionString** in JSON verschlüsselte Anmeldeinformationen hinzufügen. Verwenden Sie JSON mit dem [New-AzDataFactoryLinkedService](https://docs.microsoft.com/powershell/module/az.datafactory/new-azdatafactorylinkedservice)-Cmdlet oder im Data Factory-Editor.
+Wenn Sie einen API-basierten Ansatz zum Verschlüsseln der Anmeldeinformationen nutzen möchten, können Sie das PowerShell-Cmdlet [New-AzDataFactoryEncryptValue](/powershell/module/az.datafactory/new-azdatafactoryencryptvalue) verwenden, um Anmeldeinformationen zu verschlüsseln. Das Cmdlet verwendet das Zertifikat, für dessen Verwendung dieses Gateway konfiguriert ist, um die Anmeldeinformationen zu verschlüsseln. Sie können dem Element **EncryptedCredential** von **connectionString** in JSON verschlüsselte Anmeldeinformationen hinzufügen. Verwenden Sie JSON mit dem [New-AzDataFactoryLinkedService](/powershell/module/az.datafactory/new-azdatafactorylinkedservice)-Cmdlet oder im Data Factory-Editor.
 
 ```JSON
 "connectionString": "Data Source=<servername>;Initial Catalog=<databasename>;Integrated Security=True;EncryptedCredential=<encrypted credential>",
@@ -496,7 +497,7 @@ Dieser Abschnitt beschreibt das Erstellen und Registrieren eines Gateways mit Az
     **Beispiel für eine Befehlszeile und Ausgabe**:
 
     ```
-    PS C:\> $MyDMG = New-AzDataFactoryGateway -Name MyGateway -DataFactoryName $df -ResourceGroupName ADF –Description “gateway for walkthrough”
+    PS C:\> $MyDMG = New-AzDataFactoryGateway -Name MyGateway -DataFactoryName $df -ResourceGroupName ADF –Description "gateway for walkthrough"
 
     Name              : MyGateway
     Description       : gateway for walkthrough
@@ -524,7 +525,7 @@ Dieser Abschnitt beschreibt das Erstellen und Registrieren eines Gateways mit Az
     ```powershell
     .\RegisterGateway.ps1 $MyDMG.Key -IsRegisterOnRemoteMachine true
     ```
-2. Mit dem **Get-AzDataFactoryGateway**-Cmdlet können Sie die Liste mit Gateways in Ihrer Data Factory abrufen. Wenn der **Status** **online**angezeigt wird, bedeutet dies, dass Ihr Gateway einsatzbereit ist.
+2. Mit dem **Get-AzDataFactoryGateway**-Cmdlet können Sie die Liste mit Gateways in Ihrer Data Factory abrufen. Wenn der **Status** **online** angezeigt wird, bedeutet dies, dass Ihr Gateway einsatzbereit ist.
 
     ```powershell        
     Get-AzDataFactoryGateway -DataFactoryName <dataFactoryName> -ResourceGroupName ADF
@@ -544,4 +545,4 @@ Remove-AzDataFactoryGateway -Name JasonHDMG_byPSRemote -ResourceGroupName ADF_Re
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Informationen finden Sie unter [Verschieben von Daten zwischen lokalen Quellen und der Cloud mit dem Datenverwaltungsgateway](data-factory-move-data-between-onprem-and-cloud.md) . In der exemplarischen Vorgehensweise erstellen Sie eine Pipeline, die das Gateway verwendet, um Daten aus einer lokalen SQL Server-Datenbank in einen Azure-Blob zu verschieben.
+* Informationen finden Sie unter [Verschieben von Daten zwischen lokalen Quellen und der Cloud mit dem Datenverwaltungsgateway](data-factory-move-data-between-onprem-and-cloud.md) . In der exemplarischen Vorgehensweise erstellen Sie eine Pipeline, die das Gateway verwendet, um Daten aus einer SQL Server-Datenbank in ein Azure-Blob zu verschieben.

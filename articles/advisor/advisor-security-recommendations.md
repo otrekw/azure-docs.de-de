@@ -1,23 +1,14 @@
 ---
-title: Erhöhen der Sicherheit von Ressourcen mit Azure Advisor | Microsoft-Dokumentation
+title: Erhöhen der Sicherheit von Ressourcen mit Azure Advisor
 description: Mithilfe von Azure Advisor können Sie die Sicherheit Ihrer Azure-Bereitstellungen verbessern.
-services: advisor
-documentationcenter: NA
-author: kasparks
-manager: ''
-ms.assetid: ''
-ms.service: advisor
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 01/29/2019
-ms.author: kasparks
-ms.openlocfilehash: 1e9c3556d904dd961a2b8f99f84983c35ccf5c6a
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: f130135ed53dc2ba87f46cbf6f9faf0f07cc0654
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70772278"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87057663"
 ---
 # <a name="make-resources-more-secure-with-azure-advisor"></a>Erhöhen der Sicherheit von Ressourcen mit Azure Advisor
 
@@ -25,7 +16,7 @@ Der Azure Advisor bietet Ihnen eine einheitliche, konsolidierte Ansicht der Empf
 
 Security Center unterstützt Sie beim Vorbeugen, Erkennen und Beheben von Bedrohungen. Mit dieser Cloudlösung gewinnen Sie mehr Transparenz und bessere Kontrolle über die Sicherheit Ihrer Azure-Ressourcen. Die Sicherheitslösung analysiert in regelmäßigen Abständen den Sicherheitsstatus der Azure-Ressourcen. Wenn Security Center potenzielle Sicherheitsrisiken identifiziert, werden Empfehlungen erstellt. Entsprechend den Empfehlungen werden Sie durch den Prozess der Konfiguration des erforderlichen Sicherheitsmechanismus geführt. 
 
-Weitere Informationen über Empfehlungen zur Sicherheit finden Sie unter [Verwalten von Sicherheitsempfehlungen in Azure Security Center](https://azure.microsoft.com/documentation/articles/security-center-recommendations/).
+Weitere Informationen über Empfehlungen zur Sicherheit finden Sie unter [Verwalten von Sicherheitsempfehlungen in Azure Security Center](../security-center/security-center-recommendations.md).
 
 ## <a name="how-to-access-security-recommendations-in-azure-advisor"></a>Zugreifen auf Sicherheitsempfehlungen im Azure Advisor
 
@@ -38,9 +29,9 @@ Weitere Informationen über Empfehlungen zur Sicherheit finden Sie unter [Verwal
 Hier finden Sie weitere Informationen zu Empfehlungen des Advisor:
 * [Einführung in Advisor](advisor-overview.md)
 * [Erste Schritte mit Advisor](advisor-get-started.md)
-* [Advisor-Empfehlungen zu Kosten](advisor-cost-recommendations.md)
-* [Advisor-Empfehlungen zur Leistung](advisor-performance-recommendations.md)
-* [Advisor-Empfehlungen für Hochverfügbarkeit](advisor-high-availability-recommendations.md)
-
-
+* [Reduzieren der Dienstkosten mithilfe des Azure Advisors](advisor-cost-recommendations.md)
+* [Verbessern der Leistung von Azure-Anwendungen mit dem Azure Advisor](advisor-performance-recommendations.md)
+* [Verbessern der Verfügbarkeit Ihrer Anwendung mit dem Azure Advisor](advisor-high-availability-recommendations.md)
+* [Sicherstellen des optimalen Betriebs mit dem Azure Advisor](advisor-operational-excellence-recommendations.md)
+* [Advisor-REST-API](/rest/api/advisor/)
  

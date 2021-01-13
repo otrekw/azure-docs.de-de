@@ -1,23 +1,20 @@
 ---
-title: Manuelles Beenden oder Starten von Containern in Azure Container Instances
+title: Manuelles Beenden oder Starten von Containergruppen
 description: Hier erfahren Sie, wie Sie eine Containergruppe in Azure Container Instances manuell beenden oder starten.
-services: container-instances
-author: dlepow
-manager: gwallace
-ms.service: container-instances
 ms.topic: article
-ms.date: 04/15/2019
-ms.author: danlep
-ms.openlocfilehash: c7d46ad8d935e28b5a24e48c85ac2464b55b2669
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.date: 08/11/2020
+ms.openlocfilehash: f697f18459959cf40e71d3ca90cd8b42aaa74239
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68325642"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88799076"
 ---
 # <a name="manually-stop-or-start-containers-in-azure-container-instances"></a>Manuelles Beenden oder Starten von Containern in Azure Container Instances
 
 Die Einstellung [Neustartrichtlinie](container-instances-restart-policy.md) einer Containergruppe bestimmt, wie Containerinstanzen standardmäßig gestartet oder beendet werden. Sie können die Standardeinstellung außer Kraft setzen, indem Sie eine Containergruppe manuell beenden oder starten.
+
+[!INCLUDE [container-instances-restart-ip](../../includes/container-instances-restart-ip.md)]
 
 ## <a name="stop"></a>Beenden
 

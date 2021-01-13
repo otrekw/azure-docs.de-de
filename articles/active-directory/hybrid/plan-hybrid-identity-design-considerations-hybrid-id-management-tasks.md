@@ -1,6 +1,6 @@
 ---
 title: Entwerfen von Hybrididentitäten – Verwaltungsaufgaben in Azure | Microsoft-Dokumentation
-description: Mit der bedingten Zugriffssteuerung überprüft Azure Active Directory die besonderen Bedingungen, die Sie beim Authentifizieren des Benutzers und vor dem Gewähren des Zugriffs auf die Anwendung auswählen. Nachdem diese Bedingungen erfüllt sind, wird der Benutzer authentifiziert und erhält Zugriff auf die Anwendung.
+description: Azure AD überprüft die besonderen Bedingungen, die Sie beim Authentifizieren des Benutzers und vor dem Gewähren des Zugriffs auf die Anwendung mit der bedingten Zugriffssteuerung auswählen.
 documentationcenter: ''
 services: active-directory
 author: billmath
@@ -17,12 +17,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8a829d39ff21a1abeafd3b4362747894d196d9d4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c416bf19acb1736eeed679c16dbd87de1cc98537
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67109386"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90986519"
 ---
 # <a name="plan-for-hybrid-identity-lifecycle"></a>Planen des Hybrid-Identitätslebenszyklus
 Die Identität ist eine der Grundlagen Ihrer Strategie für Enterprise Mobility und Anwendungszugriff. Ihre Identität ist der Schlüssel zur Erlangung des allgemeinen Zugriffs – unabhängig davon, ob Sie sich auf Ihrem mobilen Gerät oder an Ihrer SaaS-App anmelden. Auf der höchsten Ebene umfasst eine Lösung für die Identitätsverwaltung die Vereinheitlichung und Synchronisierung zwischen Ihren Identitätsrepositorys, was auch die Automatisierung und Zentralisierung der Ressourcenbereitstellung einschließt. Die Identitätslösung sollte eine zentralisierte Identität für lokale Speicherorte und die Cloud sein und auch eine Form des Identitätsverbunds nutzen, um eine zentralisierte Authentifizierung sowie das sichere Teilen und Zusammenarbeiten mit externen Benutzern und Unternehmen zu ermöglichen. Die Ressourcen reichen von Betriebssystemen und Anwendungen bis zu Personen, die Teil des Unternehmens sind oder über eine Verbindung dazu verfügen. Die Organisationsstruktur kann geändert werden, um die Bereitstellungsrichtlinien und -verfahren abzudecken.
@@ -69,6 +69,6 @@ Eines der Ziele eines Identitäts-Managers besteht darin, alle Identitätsanbiet
 ## <a name="next-steps"></a>Nächste Schritte
 [Ermitteln der Strategie für die Einführung der Hybrid-Identitätsverwaltung](plan-hybrid-identity-design-considerations-lifecycle-adoption-strategy.md)
 
-## <a name="see-also"></a>Siehe auch
+## <a name="see-also"></a>Weitere Informationen
 [Überlegungen zum Entwurf – Übersicht](plan-hybrid-identity-design-considerations-overview.md)
 

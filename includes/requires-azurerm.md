@@ -1,15 +1,15 @@
 ---
-author: sptramer
-ms.author: sttramer
-manager: carmonm
-ms.date: 06/05/2019
 ms.topic: include
-ms.openlocfilehash: 550ace93479278df2a592a87ee34d10f8763d2f6
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.date: 06/05/2019
+author: dbradish-microsoft
+ms.author: dbradish
+manager: barbkess
+ms.openlocfilehash: 083d2ecb973a2c0ffc6cfddb9cdcb387e6025fb2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67133414"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "85378495"
 ---
 > [!IMPORTANT]
 >

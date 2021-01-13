@@ -1,26 +1,27 @@
 ---
-title: Aktivität „Metadaten abrufen“ in Azure Data Factory | Microsoft-Dokumentation
+title: Aktivität „Metadaten abrufen“ in Azure Data Factory
 description: Erfahren Sie, wie Sie die Aktivität „Metadaten abrufen“ in einer Data Factory-Pipeline verwenden.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.reviewer: ''
 ms.assetid: 1c46ed69-4049-44ec-9b46-e90e964a4a8e
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/12/2019
+ms.date: 09/23/2020
 ms.author: jingwang
-ms.openlocfilehash: 081d7219407decac5dd36a06f289436aa0da627b
-ms.sourcegitcommit: 388c8f24434cc96c990f3819d2f38f46ee72c4d8
+ms.openlocfilehash: e32115c590d73f5c93f322d3bd542096f2964a4c
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70061548"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91297605"
 ---
 # <a name="get-metadata-activity-in-azure-data-factory"></a>Aktivität „Metadaten abrufen“ in Azure Data Factory
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Die Aktivität „Metadaten abrufen“ kann zum Abrufen von Metadaten beliebiger Daten in Azure Data Factory verwendet werden. Die Aktivität kann in folgenden Szenarien verwendet werden:
 
@@ -34,7 +35,7 @@ Die folgende Funktionalität ist in der Ablaufsteuerung verfügbar:
 
 ## <a name="capabilities"></a>Funktionen
 
-Die Aktivität „Metadaten abrufen“ nutzt ein Dataset als Eingabe und gibt Metadateninformationen als Ausgabe zurück. Derzeit werden die folgenden Connectors und entsprechenden abrufbaren Metadaten unterstützt. Die maximale Größe der zurückgegebenen Metadaten beträgt 1 MB.
+Die Aktivität „Metadaten abrufen“ nutzt ein Dataset als Eingabe und gibt Metadateninformationen als Ausgabe zurück. Derzeit werden die folgenden Connectors und entsprechenden abrufbaren Metadaten unterstützt. Die maximale Größe der zurückgegebenen Metadaten beträgt ca. 4 MB.
 
 >[!NOTE]
 >Bei der Ausführung der Aktivität „Metadaten abrufen“ in einer selbstgehosteten Integration Runtime werden die aktuellen Funktionen unter Version 3.6 oder höher unterstützt.
@@ -49,22 +50,26 @@ Die Aktivität „Metadaten abrufen“ nutzt ein Dataset als Eingabe und gibt Me
 | [Google Cloud Storage](connector-google-cloud-storage.md) | √/√ | √/√ | √ | x/x | √/√* | √ | x | √ | √ | √/√* |
 | [Azure Blob Storage](connector-azure-blob-storage.md) | √/√ | √/√ | √ | x/x | √/√* | √ | √ | √ | √ | √/√ |
 | [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md) | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
-| [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md) | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
+| [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md) | √/√ | √/√ | √ | x/x | √/√ | √ | √ | √ | √ | √/√ |
 | [Azure Files](connector-azure-file-storage.md) | √/√ | √/√ | √ | √/√ | √/√ | √ | x | √ | √ | √/√ |
 | [Dateisystem](connector-file-system.md) | √/√ | √/√ | √ | √/√ | √/√ | √ | x | √ | √ | √/√ |
 | [SFTP](connector-sftp.md) | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
-| [FTP](connector-ftp.md) | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
+| [FTP](connector-ftp.md) | √/√ | √/√ | √ | x/x | x/x | √ | x | √ | √ | √/√ |
 
+- Wenn Sie die Aktivität „Metadaten abrufen“ für einen Ordner verwenden möchten, vergewissern Sie sich, dass Sie für den angegebenen Ordner über die Berechtigung zum Auflisten/Ausführen (LIST/EXECUTE) verfügen.
 - Für Amazon S3 und Google Cloud Storage gilt `lastModified` für den Bucket und den Schlüssel, aber nicht für den virtuellen Ordner. `exists` gilt für den Bucket und den Schlüssel, aber nicht für das Präfix oder den virtuellen Ordner.
 - Für Azure Blob Storage gilt `lastModified` für den Container und das Blob, aber nicht für den virtuellen Ordner.
+- Der Filter `lastModified` gilt aktuell für untergeordnete Filterelemente, aber nicht für den angegebenen Ordner bzw. die angegebene Datei selbst.
+- Platzhalterfilter für Ordner/Dateien werden für die Aktivität „Metadaten abrufen" nicht unterstützt.
+- `structure` und `columnCount` werden beim Abrufen von Metadaten aus Binär-, JSON- oder XML-Dateien nicht unterstützt.
 
 **Relationale Datenbank**
 
 | Connector/Metadaten | structure | columnCount | exists |
 |:--- |:--- |:--- |:--- |
 | [Azure SQL-Datenbank](connector-azure-sql-database.md) | √ | √ | √ |
-| [Azure SQL-Datenbank – Verwaltete Instanz](connector-azure-sql-database-managed-instance.md) | √ | √ | √ |
-| [Azure SQL Data Warehouse](connector-azure-sql-data-warehouse.md) | √ | √ | √ |
+| [Verwaltete Azure SQL-Datenbank-Instanz](../azure-sql/managed-instance/sql-managed-instance-paas-overview.md) | √ | √ | √ |
+| [Azure Synapse Analytics](connector-azure-sql-data-warehouse.md) | √ | √ | √ |
 | [SQL Server](connector-sql-server.md) | √ | √ | √ |
 
 ### <a name="metadata-options"></a>Metadatenoptionen
@@ -82,7 +87,7 @@ Sie können die folgenden Metadatentypen in der Feldliste der Aktivität „Meta
 | contentMD5 | MD5 der Datei. Gilt nur für Dateien. |
 | structure | Datenstruktur der Datei oder Tabelle in der relationalen Datenbank. Der Rückgabewert ist eine Liste von Spaltennamen und Spaltentypen. |
 | columnCount | Anzahl der Spalten in der Datei oder relationalen Tabelle. |
-| exists| Gibt an, ob eine Datei, ein Ordner oder eine Tabelle vorhanden ist. Beachten Sie Folgendes: Wenn `exists` in der Feldliste der Aktivität „Metadaten abrufen“ angegeben ist, schlägt die Aktivität selbst dann nicht fehl, wenn die Datei, der Ordner oder die Tabelle nicht vorhanden ist. Stattdessen wird `exists: false` in der Ausgabe zurückgegeben. |
+| exists| Gibt an, ob eine Datei, ein Ordner oder eine Tabelle vorhanden ist. Wenn `exists` in der Feldliste der Aktivität „Metadaten abrufen“ angegeben ist, führt die Aktivität selbst dann nicht zu einem Fehler, wenn die Datei, der Ordner oder die Tabelle nicht vorhanden ist. Stattdessen wird `exists: false` in der Ausgabe zurückgegeben. |
 
 >[!TIP]
 >Wenn Sie überprüfen möchten, ob eine Datei, ein Ordner oder eine Tabelle vorhanden ist, geben Sie `exists` in der Feldliste der Aktivität „Metadaten abrufen“ an. Anschließend können Sie das Ergebnis (`exists: true/false`) in der Ausgabe der Aktivität überprüfen. Falls `exists` nicht in der Feldliste angegeben ist, schlägt die Aktivität „Metadaten abrufen“ fehl, wenn das Objekt nicht gefunden wird.
@@ -96,13 +101,36 @@ Sie können die folgenden Metadatentypen in der Feldliste der Aktivität „Meta
 
 ```json
 {
-    "name": "MyActivity",
-    "type": "GetMetadata",
-    "typeProperties": {
-        "fieldList" : ["size", "lastModified", "structure"],
-        "dataset": {
-            "referenceName": "MyDataset",
-            "type": "DatasetReference"
+    "name":"MyActivity",
+    "type":"GetMetadata",
+    "dependsOn":[
+
+    ],
+    "policy":{
+        "timeout":"7.00:00:00",
+        "retry":0,
+        "retryIntervalInSeconds":30,
+        "secureOutput":false,
+        "secureInput":false
+    },
+    "userProperties":[
+
+    ],
+    "typeProperties":{
+        "dataset":{
+            "referenceName":"MyDataset",
+            "type":"DatasetReference"
+        },
+        "fieldList":[
+            "size",
+            "lastModified",
+            "structure"
+        ],
+        "storeSettings":{
+            "type":"AzureBlobStorageReadSettings"
+        },
+        "formatSettings":{
+            "type":"JsonReadSettings"
         }
     }
 }
@@ -112,18 +140,22 @@ Sie können die folgenden Metadatentypen in der Feldliste der Aktivität „Meta
 
 ```json
 {
-    "name": "MyDataset",
-    "properties": {
-    "type": "AzureBlob",
-        "linkedService": {
-            "referenceName": "StorageLinkedService",
-            "type": "LinkedServiceReference"
+    "name":"MyDataset",
+    "properties":{
+        "linkedServiceName":{
+            "referenceName":"AzureStorageLinkedService",
+            "type":"LinkedServiceReference"
         },
-        "typeProperties": {
-            "folderPath":"container/folder",
-            "filename": "file.json",
-            "format":{
-                "type":"JsonFormat"
+        "annotations":[
+
+        ],
+        "type":"Json",
+        "typeProperties":{
+            "location":{
+                "type":"AzureBlobStorageLocation",
+                "fileName":"file.json",
+                "folderPath":"folder",
+                "container":"container"
             }
         }
     }
@@ -134,7 +166,7 @@ Sie können die folgenden Metadatentypen in der Feldliste der Aktivität „Meta
 
 Die Aktivität „Metadaten abrufen“ kann zurzeit die folgenden Arten von Metadateninformationen zurückgeben:
 
-Eigenschaft | BESCHREIBUNG | Erforderlich
+Eigenschaft | Beschreibung | Erforderlich
 -------- | ----------- | --------
 fieldList | Die erforderlichen Arten von Metadateninformationen. Ausführliche Informationen zu unterstützten Metadaten finden Sie im Abschnitt [Metadatenoptionen](#metadata-options) dieses Artikels. | Ja 
 dataset | Das Referenzdataset, dessen Metadaten von der Aktivität „Metadaten abrufen“ abgerufen werden sollen. Weitere Informationen zu unterstützten Connectors finden Sie im Abschnitt [Funktionen](#capabilities). Ausführliche Informationen zur Syntax von Datasets finden Sie in den jeweiligen Connectorthemen. | Ja

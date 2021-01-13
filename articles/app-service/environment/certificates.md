@@ -1,34 +1,28 @@
 ---
-title: Zertifikate und die App Service-Umgebung – Azure
-description: Erläuterung zahlreicher Themen rund um Zertifikate in einer ASE
-services: app-service
-documentationcenter: na
+title: Zertifikatbindungen
+description: Hier werden zahlreiche Themen rund um Zertifikate in einer App Service-Umgebung erläutert. Informieren Sie sich über die Funktionsweise von Zertifikatbindungen auf Apps mit einem einzelnen Mandanten in einer App Service-Umgebung.
 author: ccompy
-manager: stefsch
 ms.assetid: 9e21a7e4-2436-4e81-bb05-4a6ba70eeaf7
-ms.service: app-service
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/29/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: f40043b920fab4cb38f935618c7aaecc6bf40a87
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 306445e26e5b236b49273b9ab8888ecc610bc075
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70069708"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88962042"
 ---
 # <a name="certificates-and-the-app-service-environment"></a>Zertifikate und die App Service-Umgebung 
 
-Die App Service-Umgebung (ASE) ist eine Bereitstellung des Azure App Service, die in Ihrem Azure Virtual Network (VNet) ausgeführt wird. Sie kann mit einem über das Internet zugänglichen Anwendungsendpunkt oder einem Anwendungsendpunkt in Ihrem VNet bereitgestellt werden. Wenn Sie die ASE mit einem über das Internet zugänglichen Endpunkt bereitstellen, wird diese Bereitstellung als externe ASE bezeichnet. Wenn Sie die ASE mit einem Endpunkt in Ihrem VNet bereitstellen, wird diese Bereitstellung als IBL-ASE bezeichnet. Weitere Informationen zur ILB-ASE finden Sie im Dokument [Erstellen und Verwenden einer ILB-ASE](https://docs.microsoft.com/azure/app-service/environment/create-ilb-ase).
+Die App Service-Umgebung (ASE) ist eine Bereitstellung des Azure App Service, die in Ihrem Azure Virtual Network (VNet) ausgeführt wird. Sie kann mit einem über das Internet zugänglichen Anwendungsendpunkt oder einem Anwendungsendpunkt in Ihrem VNet bereitgestellt werden. Wenn Sie die ASE mit einem über das Internet zugänglichen Endpunkt bereitstellen, wird diese Bereitstellung als externe ASE bezeichnet. Wenn Sie die ASE mit einem Endpunkt in Ihrem VNet bereitstellen, wird diese Bereitstellung als IBL-ASE bezeichnet. Weitere Informationen zur ILB-ASE finden Sie im Dokument [Erstellen und Verwenden einer ILB-ASE](./create-ilb-ase.md).
 
 Die ASE ist ein einzelnes Mandantensystem. Da es sich um einen einzelnen Mandanten handelt, gibt es einige Features, die nur mit einer ASE verfügbar sind und die im mehrinstanzenfähigen App Service nicht verfügbar sind. 
 
 ## <a name="ilb-ase-certificates"></a>ILB-ASE-Zertifikate 
 
-Wenn Sie eine externe ASE verwenden, dann sind Ihre Apps unter [app-name].[ase-name].p.azurewebsites.net erreichbar. Standardmäßig werden alle ASEs, auch ILB-ASEs, mit Zertifikaten erstellt, die diesem Format folgen. Wenn Sie über eine ILB ASE verfügen, werden die Apps basierend auf dem Domänennamen erreicht, den Sie beim Erstellen der ILB-ASE angeben. Damit die Apps SSL unterstützen, müssen Sie Zertifikate hochladen. Ein gültiges SSL-Zertifikat können Sie erhalten, indem Sie interne Zertifizierungsstellen verwenden, ein Zertifikat von einem externen Aussteller erwerben oder ein selbstsigniertes Zertifikat verwenden. 
+Wenn Sie eine externe ASE verwenden, dann sind Ihre Apps unter [app-name].[ase-name].p.azurewebsites.net erreichbar. Standardmäßig werden alle ASEs, auch ILB-ASEs, mit Zertifikaten erstellt, die diesem Format folgen. Wenn Sie über eine ILB ASE verfügen, werden die Apps basierend auf dem Domänennamen erreicht, den Sie beim Erstellen der ILB-ASE angeben. Damit die Apps TLS unterstützen, müssen Sie Zertifikate hochladen. Ein gültiges TLS/SSL-Zertifikat können Sie erhalten, indem Sie interne Zertifizierungsstellen verwenden, ein Zertifikat von einem externen Aussteller erwerben oder ein selbstsigniertes Zertifikat verwenden. 
 
 Es gibt zwei Möglichkeiten, Zertifikate mit Ihrer ILB-ASE zu konfigurieren.  Sie können ein Platzhalterzertifikat für die ILB-ASE festlegen oder Zertifikate für die einzelnen Web-Apps in der ASE festlegen.  Unabhängig davon, welche Auswahl Sie treffen, müssen die folgenden Zertifikatsattribute ordnungsgemäß konfiguriert sein:
 
@@ -47,13 +41,16 @@ Sie können die ASE nicht erstellen und das Zertifikat als eine Aktion im Portal
 
 Wenn Sie schnell ein selbstsigniertes Zertifikat zum Testen erstellen möchten, können Sie das folgende Element von PowerShell verwenden:
 
-    $certificate = New-SelfSignedCertificate -certstorelocation cert:\localmachine\my -dnsname "*.internal-contoso.com","*.scm.internal-contoso.com"
+```azurepowershell-interactive
+$certificate = New-SelfSignedCertificate -certstorelocation cert:\localmachine\my -dnsname "*.internal-contoso.com","*.scm.internal-contoso.com"
 
-    $certThumbprint = "cert:\localMachine\my\" + $certificate.Thumbprint
-    $password = ConvertTo-SecureString -String "CHANGETHISPASSWORD" -Force -AsPlainText
+$certThumbprint = "cert:\localMachine\my\" + $certificate.Thumbprint
+$password = ConvertTo-SecureString -String "CHANGETHISPASSWORD" -Force -AsPlainText
 
-    $fileName = "exportedcert.pfx"
-    Export-PfxCertificate -cert $certThumbprint -FilePath $fileName -Password $password     
+$fileName = "exportedcert.pfx"
+Export-PfxCertificate -cert $certThumbprint -FilePath $fileName -Password $password
+```
+
 Wenn Sie ein selbstsigniertes Zertifikat erstellen, müssen Sie sicherstellen, dass der Betreffname das Format CN={ASE_NAME_HERE}_InternalLoadBalancingASE hat.
 
 ## <a name="application-certificates"></a>Anwendungszertifikate 
@@ -64,7 +61,7 @@ In einer ASE gehostete Apps können die anwendungsorientierten Zertifikatsfeatur
 - IP-basiertes SSL, das nur mit einer externen ASE unterstützt wird.  Eine ILB-ASE unterstützt kein IP-basiertes SSL.
 - KeyVault-gehostete Zertifikate 
 
-Die Anweisungen zum Hochladen und Verwalten dieser Zertifikate finden Sie im App Service SSL-Tutorial https://docs.microsoft.com/azure/app-service/app-service-web-tutorial-custom-ssl.  Wenn Sie lediglich Zertifikate so konfigurieren, dass sie mit einem benutzerdefinierten Domänennamen übereinstimmen, den Sie Ihrer Web-App zugewiesen haben, dann reichen diese Anweisungen aus. Wenn Sie das Zertifikat für eine ILB-ASE-Web-App mit dem Standarddomänennamen hochladen, dann geben Sie die SCM-Website im SAN des Zertifikats an, wie bereits erwähnt. 
+Anweisungen zum Hochladen und Verwalten dieser Zertifikate finden Sie unter [Hinzufügen eines TLS/SSL-Zertifikats in Azure App Service](../configure-ssl-certificate.md).  Wenn Sie lediglich Zertifikate so konfigurieren, dass sie mit einem benutzerdefinierten Domänennamen übereinstimmen, den Sie Ihrer Web-App zugewiesen haben, dann reichen diese Anweisungen aus. Wenn Sie das Zertifikat für eine ILB-ASE-Web-App mit dem Standarddomänennamen hochladen, dann geben Sie die SCM-Website im SAN des Zertifikats an, wie bereits erwähnt. 
 
 ## <a name="tls-settings"></a>TLS-Einstellungen 
 
@@ -86,15 +83,18 @@ So laden Sie das Zertifikat in Ihre App in der ASE
 
 Das Zertifikat steht allen Apps im gleichen App Service-Plan zur Verfügung wie die App, die diese Einstellung konfiguriert hat. Wenn es für Apps in einem anderen App Service-Plan verfügbar sein soll, müssen Sie den Vorgang der Anwendungseinstellung in einer App in diesem App Service-Plan wiederholen. Um zu überprüfen, ob das Zertifikat festgelegt ist, wechseln Sie zur Kudu-Konsole, und geben Sie den folgenden Befehl in die PowerShell-Debugkonsole ein:
 
-    dir cert:\localmachine\root
+```azurepowershell-interactive
+dir cert:\localmachine\root
+```
 
 Sie können zum Testen ein selbstsigniertes Zertifikat erstellen und eine *CER*-Datei mit der folgenden PowerShell generieren: 
 
-    $certificate = New-SelfSignedCertificate -certstorelocation cert:\localmachine\my -dnsname "*.internal-contoso.com","*.scm.internal-contoso.com
+```azurepowershell-interactive
+$certificate = New-SelfSignedCertificate -certstorelocation cert:\localmachine\my -dnsname "*.internal-contoso.com","*.scm.internal-contoso.com"
 
-    $certThumbprint = "cert:\localMachine\my\" + $certificate.Thumbprint
-    $password = ConvertTo-SecureString -String "CHANGETHISPASSWORD" -Force -AsPlainText
+$certThumbprint = "cert:\localMachine\my\" + $certificate.Thumbprint
+$password = ConvertTo-SecureString -String "CHANGETHISPASSWORD" -Force -AsPlainText
 
-    $fileName = "exportedcert.cer"
-    export-certificate -Cert $certThumbprint -FilePath $fileName -Type CERT
-
+$fileName = "exportedcert.cer"
+export-certificate -Cert $certThumbprint -FilePath $fileName -Type CERT
+```

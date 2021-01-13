@@ -9,32 +9,47 @@ editor: ''
 ms.assetid: fc813a65-7793-4c17-8bb9-e387838193ae
 ms.service: api-management
 ms.devlang: dotnet
+ms.custom: devx-track-csharp
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/03/2018
 ms.author: apimpm
-ms.openlocfilehash: 467d9cee74567fc0d19031773415675ae7c51818
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: ad1ad622b354215e9837b1154a13bac148d54164
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71066754"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91537343"
 ---
 # <a name="advanced-request-throttling-with-azure-api-management"></a>Erweiterte Anforderungsbegrenzung mit Azure API Management
 Die Fähigkeit, eingehende Anforderungen zu begrenzen oder zu drosseln, ist für Azure API Management von großer Bedeutung. Mit API Management lässt sich entweder die Rate der Anforderungen oder die Gesamtzahl der Anforderungen bzw. die Gesamtmenge der übertragenen Daten steuern. Dies ermöglicht es den API-Anbietern, ihre APIs vor Missbrauch zu schützen und mit verschiedenen API-Produkttarifen Mehrwert zu schaffen.
 
+## <a name="rate-limits-and-quotas"></a>Ratenbegrenzungen und Kontingente
+Ratenbegrenzungen und Kontingente werden für verschiedene Zwecke verwendet.
+
+### <a name="rate-limits"></a>Ratenbegrenzungen
+Ratenbegrenzungen werden in der Regel zum Schutz vor kurzen, hohen Volumenspitzen verwendet. Wenn Sie z. B. wissen, dass es bei der Datenbank des Back-End-Diensts bei einem hohen Aufrufvolumen zu einem Engpass kommt, können Sie mithilfe dieser Einstellung in einer `rate-limit-by-key`-Richtlinie festlegen, dass ein hohes Aufrufvolumen nicht zugelassen wird.
+
+### <a name="quotas"></a>Kontingente
+Kontingente werden in der Regel zum Steuern von Aufrufraten über einen längeren Zeitraum verwendet. Mit ihnen kann z. B. die Gesamtanzahl von Aufrufen durch einen bestimmten Abonnenten in einem bestimmten Monat festgelegt werden. Beim Monetarisieren Ihrer API können Sie bei Abonnements mit mehreren Tarifen auch verschiedene Kontingente festgelegen. Beispielsweise können mit einem Abonnement mit dem Tarif „Basic“möglicherweise nicht mehr als 10.000 Aufrufe pro Monat getätigt werden, mit dem Tarif „Premium“ jedoch bis zu 100.000.000.
+
+In Azure API Management werden Ratenbegrenzungen in der Regel schneller an die Knoten übermittelt, um sie vor Spitzen zu schützen. Nutzungskontingentinformationen werden hingegen über einen längeren Zeitraum verwendet und daher anders implementiert.
+
+> [!CAUTION]
+> Da die Einschränkungsarchitektur verteilt ist, ist die Begrenzung der Rate nie ganz genau. Die Differenz zwischen der konfigurierten und der tatsächlichen Anzahl zugelassener Anforderungen variiert basierend auf Anforderungsvolumen und -rate, Back-End-Latenz und anderen Faktoren.
+
 ## <a name="product-based-throttling"></a>Produktbasierte Drosselung
 Bisher konnte die Rate nur auf der Basis eines bestimmten Produktabonnements gedrosselt werden, das im Azure-Portal definiert wurde. Dies ist nützlich, wenn der API-Anbieter Beschränkungen für Entwickler einführen möchte, die sich für die Nutzung der API registriert haben. Es hilft aber beispielsweise nicht bei der Drosselung einzelner Endbenutzer der API. Daher ist es möglich, dass ein einzelner Benutzer der Anwendung eines Entwicklers das gesamte Kontingent in Anspruch nimmt und dadurch andere Kunden des Entwicklers an der Nutzung der Anwendung hindert. Außerdem können verschiedene Kunden gemeinsam ein so hohes Anforderungsvolumen generieren, dass der Zugriff für gelegentliche Benutzer beschränkt wird.
 
-## <a name="custom-key-based-throttling"></a>Benutzerdefinierte Drosselung auf der Basis von Schlüsseln
+## <a name="custom-key-based-throttling"></a>Benutzerdefinierte schlüsselbasierte Drosselung
 
 > [!NOTE]
 > Im Verbrauchstarif von Azure API Management sind die Richtlinien `rate-limit-by-key` und `quota-by-key` nicht verfügbar. 
 
-Die neuen Richtlinien [rate-limit-by-key](/azure/api-management/api-management-access-restriction-policies#LimitCallRateByKey) und [quota-by-key](/azure/api-management/api-management-access-restriction-policies#SetUsageQuotaByKey) bieten mehr Flexibilität bei der Steuerung des Datenverkehrs. Mit diesen neuen Richtlinien können Sie in selbst definierten Ausdrücken Schlüssel angeben, die zum Nachverfolgen der Datenverkehrsnutzung verwendet werden. Wie das funktioniert, lässt sich am einfachsten anhand eines Beispiels veranschaulichen. 
+Die neuen Richtlinien [rate-limit-by-key](./api-management-access-restriction-policies.md#LimitCallRateByKey) und [quota-by-key](./api-management-access-restriction-policies.md#SetUsageQuotaByKey) bieten mehr Flexibilität bei der Steuerung des Datenverkehrs. Mit diesen neuen Richtlinien können Sie in selbst definierten Ausdrücken Schlüssel angeben, die zum Nachverfolgen der Datenverkehrsnutzung verwendet werden. Wie das funktioniert, lässt sich am einfachsten anhand eines Beispiels veranschaulichen. 
 
-## <a name="ip-address-throttling"></a>Drosselung nach IP-Adresse
+## <a name="ip-address-throttling"></a>Drosselung basierend auf der IP-Adresse
 Die folgenden Richtlinien beschränken eine einzelne Client-IP-Adresse auf nur 10 Aufrufe pro Minute bei einer Gesamtanzahl von 1.000.000 Aufrufen und 10.000 Kilobyte Bandbreite pro Monat. 
 
 ```xml
@@ -62,10 +77,10 @@ Wenn ein Endbenutzer authentifiziert ist, kann auf Basis der eindeutigen Identit
 In diesem Beispiel wird veranschaulicht, wie der „Authorization“-Header extrahiert, in ein `JWT`-Objekt konvertiert und der Antragsteller des Tokens verwendet wird, um den Benutzer zu identifizieren. Diesen verwenden wir als Schlüssel zum Begrenzen der Rate. Wenn die Benutzeridentität in `JWT` als einer der anderen Ansprüche gespeichert ist, kann stattdessen dieser Wert verwendet werden.
 
 ## <a name="combined-policies"></a>Kombinierte Richtlinien
-Obwohl die neuen Drosselungsrichtlinien mehr Steuerungsmöglichkeiten bieten als die bisher vorhandenen, lohnt es sich weiterhin, beide Fähigkeiten zu kombinieren. Die Drosselung nach Produktabonnementschlüssel ([Aufrufrate nach Abonnement einschränken](/azure/api-management/api-management-access-restriction-policies#LimitCallRate) und [Nutzungskontingent nach Abonnement festlegen](/azure/api-management/api-management-access-restriction-policies#SetUsageQuota)) gibt Ihnen die Möglichkeit, nach Nutzungsstufen gestaffelte Gebühren für eine API festzulegen und sie so zu monetarisieren. Die feiner differenzierten Steuerungsmöglichkeiten einer Drosselung nach Benutzer können ergänzend genutzt werden, um zu verhindern, dass das Verhalten eines Benutzers die Erfahrung eines anderen beeinträchtigt. 
+Obwohl die neuen Drosselungsrichtlinien mehr Steuerungsmöglichkeiten bieten als die bisher vorhandenen, lohnt es sich weiterhin, beide Fähigkeiten zu kombinieren. Die Drosselung nach Produktabonnementschlüssel ([Aufrufrate nach Abonnement einschränken](./api-management-access-restriction-policies.md#LimitCallRate) und [Nutzungskontingent nach Abonnement festlegen](./api-management-access-restriction-policies.md#SetUsageQuota)) gibt Ihnen die Möglichkeit, nach Nutzungsstufen gestaffelte Gebühren für eine API festzulegen und sie so zu monetarisieren. Die feiner differenzierten Steuerungsmöglichkeiten einer Drosselung nach Benutzer können ergänzend genutzt werden, um zu verhindern, dass das Verhalten eines Benutzers die Erfahrung eines anderen beeinträchtigt. 
 
 ## <a name="client-driven-throttling"></a>Clientgesteuerte Drosselung
-Wenn der Drosselungsschlüssel mithilfe eines [Richtlinienausdrucks](/azure/api-management/api-management-policy-expressions) definiert wird, legt der API-Anbieter Art und Umfang der Drosselung fest. Ein Entwickler möchte jedoch möglicherweise selbst steuern, wie er die Raten für seine Kunden begrenzt. Der API-Anbieter kann dies einrichten. Dazu führt er einen benutzerdefinierten Header ein, der es der Clientanwendung des Entwicklers ermöglicht, den Schlüssel an die API zu kommunizieren.
+Wenn der Drosselungsschlüssel mithilfe eines [Richtlinienausdrucks](./api-management-policy-expressions.md) definiert wird, legt der API-Anbieter Art und Umfang der Drosselung fest. Ein Entwickler möchte jedoch möglicherweise selbst steuern, wie er die Raten für seine Kunden begrenzt. Der API-Anbieter kann dies einrichten. Dazu führt er einen benutzerdefinierten Header ein, der es der Clientanwendung des Entwicklers ermöglicht, den Schlüssel an die API zu kommunizieren.
 
 ```xml
 <rate-limit-by-key calls="100"
@@ -80,4 +95,3 @@ Azure API Management ermöglicht Drosselungen bzw. Begrenzungen nach Rate und Ko
 
 ## <a name="next-steps"></a>Nächste Schritte
 Bitte geben Sie uns Feedback in Form eines GitHub-Issues zu diesem Thema. Wir würden gern von Ihnen hören, welche anderen möglichen Schlüsselwerte sich in Ihren Szenarien anbieten oder bewährt haben.
-

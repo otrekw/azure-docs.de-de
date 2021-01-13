@@ -1,53 +1,101 @@
 ---
 title: Verwenden einer interaktiven Spark-Shell in Azure HDInsight
 description: Eine interaktive Spark-Shell bietet einen „Lesen-Ausführen-Anzeigen“-Prozesses, um Spark-Befehle nacheinander auszuführen und die Ergebnisse anzuzeigen.
-ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
+ms.service: hdinsight
+ms.topic: how-to
 ms.custom: hdinsightactive
-ms.topic: conceptual
-ms.date: 01/09/2018
-ms.openlocfilehash: 7aac2812787a7c14d99377754a4f85e699ef3f09
-ms.sourcegitcommit: a874064e903f845d755abffdb5eac4868b390de7
+ms.date: 02/10/2020
+ms.openlocfilehash: 84298c9073f00f0388a9bcb7405369d7c60bcce1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68441894"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "86081178"
 ---
 # <a name="run-apache-spark-from-the-spark-shell"></a>Ausführen von Apache Spark aus der Spark-Shell
 
 Eine interaktive [Apache Spark](https://spark.apache.org/)-Shell bietet eine REPL-Umgebung (Read-Execute-Print-Loop, „Lesen-Ausführen-Anzeigen“-Schleife), um Spark-Befehle nacheinander auszuführen und die Ergebnisse anzuzeigen. Dieser Vorgang ist nützlich für Entwicklung und Debuggen. Spark bietet für jede unterstützte Sprache eine Shell: Scala, Python und R.
 
-## <a name="get-to-an-apache-spark-shell-with-ssh"></a>Zugreifen auf eine Apache Spark-Shell mit SSH
-
-Greifen Sie in HDInsight durch Herstellen einer Verbindung mit dem primären Hauptknoten des Clusters über SSH auf eine Apache Spark-Shell zu:
-
-     ssh <sshusername>@<clustername>-ssh.azurehdinsight.net
-
-Sie können den vollständigen SSH-Befehl für Ihren Cluster aus dem Azure-Portal abrufen:
-
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.
-2. Navigieren Sie zu dem Bereich für Ihren HDInsight-Spark-Cluster.
-3. Wählen Sie „Secure Shell (SSH)“.
-
-    ![HDInsight-Bereich im Azure-Portal](./media/apache-spark-shell/hdinsight-spark-blade.png)
-
-4. Kopieren Sie den angezeigten SSH-Befehl, und führen Sie ihn auf Ihrem Terminal aus.
-
-    ![HDInsight-SSH-Bereich im Azure-Portal](./media/apache-spark-shell/hdinsight-spark-ssh-blade.png)
-
-Details zum Verwenden von SSH zum Herstellen einer Verbindung mit HDInsight finden Sie unter [Herstellen einer Verbindung mit HDInsight (Hadoop) per SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
-
 ## <a name="run-an-apache-spark-shell"></a>Ausführen einer Apache Spark-Shell
 
-Spark bietet Shells für Scala (spark-shell), Python (pyspark) und R (sparkR). Geben Sie in der SSH-Sitzung auf dem Hauptknoten des HDInsight-Clusters einen der folgenden Befehle ein:
+1. Verwenden Sie einen [ssh-Befehl](../hdinsight-hadoop-linux-use-ssh-unix.md) zum Herstellen der Verbindung mit dem Cluster. Bearbeiten Sie den folgenden Befehl, indem Sie CLUSTERNAME durch den Namen Ihres Clusters ersetzen, und geben Sie den Befehl dann ein:
 
-    ./bin/spark-shell
-    ./bin/pyspark
-    ./bin/sparkR
+    ```cmd
+    ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
+    ```
 
-Sie können jetzt Spark-Befehle in der entsprechenden Sprache eingeben.
+1. Spark umfasst Shells für Scala (spark-shell) und Python (pyspark). Geben Sie in der SSH-Sitzung *einen* der folgenden Befehle ein:
+
+    ```bash
+    spark-shell
+
+    # Optional configurations
+    # spark-shell --num-executors 4 --executor-memory 4g --executor-cores 2 --driver-memory 8g --driver-cores 4
+    ```
+
+    ```bash
+    pyspark
+
+    # Optional configurations
+    # pyspark --num-executors 4 --executor-memory 4g --executor-cores 2 --driver-memory 8g --driver-cores 4
+    ```
+
+    Wenn Sie beabsichtigen, eine optionale Konfiguration zu verwenden, sollten Sie zunächst die Informationen zur [OutOfMemoryError-Ausnahme für Apache Spark](./apache-spark-troubleshoot-outofmemory.md) lesen.
+
+1. Einige grundlegende Beispielbefehle. Wählen Sie die relevante Sprache aus:
+
+    ```spark-shell
+    val textFile = spark.read.textFile("/example/data/fruits.txt")
+    textFile.first()
+    textFile.filter(line => line.contains("apple")).show()
+    ```
+
+    ```pyspark
+    textFile = spark.read.text("/example/data/fruits.txt")
+    textFile.first()
+    textFile.filter(textFile.value.contains("apple")).show()
+    ```
+
+1. Fragen Sie eine CSV-Datei ab. Beachten Sie, dass die nachstehende Sprache für `spark-shell` und `pyspark` funktioniert.
+
+    ```scala
+    spark.read.csv("/HdiSamples/HdiSamples/SensorSampleData/building/building.csv").show()
+    ```
+
+1. Abfragen einer CSV-Datei und Speichern der Ergebnisse in einer Variable:
+
+    ```spark-shell
+    var data = spark.read.format("csv").option("header", "true").option("inferSchema", "true").load("/HdiSamples/HdiSamples/SensorSampleData/building/building.csv")
+    ```
+
+    ```pyspark
+    data = spark.read.format("csv").option("header", "true").option("inferSchema", "true").load("/HdiSamples/HdiSamples/SensorSampleData/building/building.csv")
+    ```
+
+1. Anzeigen der Ergebnisse:
+
+    ```spark-shell
+    data.show()
+    data.select($"BuildingID", $"Country").show(10)
+    ```
+
+    ```pyspark
+    data.show()
+    data.select("BuildingID", "Country").show(10)
+    ```
+
+1. Beenden
+
+    ```spark-shell
+    :q
+    ```
+
+    ```pyspark
+    exit()
+    ```
 
 ## <a name="sparksession-and-sparkcontext-instances"></a>SparkSession- und SparkContext-Instanzen
 
@@ -57,7 +105,7 @@ Um auf die SparkSession-Instanz zuzugreifen, geben Sie `spark` ein. Um auf die S
 
 ## <a name="important-shell-parameters"></a>Wichtige Shellparameter
 
-Der Spark-Shell-Befehl (`spark-shell`, `pyspark` oder `sparkR`) unterstützt viele Befehlszeilenparameter. Um eine vollständige Liste der Parameter anzuzeigen, starten Sie die Spark-Shell mit dem Schalter `--help`. Beachten Sie, dass einige dieser Parameter möglicherweise nur für `spark-submit` gelten, den die Spark-Shell umhüllt.
+Der Spark-Shell-Befehl (`spark-shell` oder `pyspark`) unterstützt viele Befehlszeilenparameter. Um eine vollständige Liste der Parameter anzuzeigen, starten Sie die Spark-Shell mit dem Schalter `--help`. Einige dieser Parameter gelten möglicherweise nur für `spark-submit`, den die Spark-Shell umschließt.
 
 | Schalter | description | Beispiel |
 | --- | --- | --- |

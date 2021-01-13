@@ -1,30 +1,23 @@
 ---
-title: 'Schnellstart: Erstellen eines virtuellen Linux-Computers mit Azure PowerShell | Microsoft Docs'
+title: 'Schnellstart: Erstellen eines virtuellen Linux-Computers mit Azure PowerShell'
 description: In dieser Schnellstartanleitung erfahren Sie, wie Sie mit Azure PowerShell einen virtuellen Linux-Computer erstellen.
-services: virtual-machines-linux
-documentationcenter: virtual-machines
 author: cynthn
-manager: gwallace
-editor: tysonn
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.topic: quickstart
-ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 10/17/2018
+ms.date: 07/31/2020
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 1d69cb80b105c85640420575f709d8a47629eea0
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: e3d400726bfb65b2548bc773ffb460fe1ad426a0
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70082292"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "87513450"
 ---
 # <a name="quickstart-create-a-linux-virtual-machine-in-azure-with-powershell"></a>Schnellstart: Erstellen einer Linux-VM mit PowerShell in Azure
 
-Das Azure PowerShell-Modul dient zum Erstellen und Verwalten von Azure-Ressourcen über die PowerShell-Befehlszeile oder mit Skripts. Diese Schnellstartanleitung zeigt, wie Sie mit dem Azure PowerShell-Modul einen virtuellen Linux-Computer in Azure bereitstellen. In dieser Schnellstartanleitung wird das Ubuntu 16.04 LTS-Marketplace-Image von Canonical verwendet. Um den virtuellen Computer in Aktion zu sehen, stellen Sie außerdem eine SSH-Verbindung mit dem virtuellen Computer her und installieren den NGINX-Webserver.
+Das Azure PowerShell-Modul dient zum Erstellen und Verwalten von Azure-Ressourcen über die PowerShell-Befehlszeile oder mit Skripts. Diese Schnellstartanleitung zeigt, wie Sie mit dem Azure PowerShell-Modul einen virtuellen Linux-Computer in Azure bereitstellen. In dieser Schnellstartanleitung wird das Ubuntu 18.04 LTS-Marketplace-Image von Canonical verwendet. Um den virtuellen Computer in Aktion zu sehen, stellen Sie außerdem eine SSH-Verbindung mit dem virtuellen Computer her und installieren den NGINX-Webserver.
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
@@ -36,21 +29,22 @@ Wählen Sie zum Öffnen von Cloud Shell oben rechts in einem Codeblock einfach d
 
 ## <a name="create-ssh-key-pair"></a>Erstellen eines SSH-Schlüsselpaars
 
-Für diesen Schnellstart benötigen Sie ein SSH-Schlüsselpaar. Falls Sie bereits über ein SSH-Schlüsselpaar verfügen, können Sie diesen Schritt überspringen.
+Verwenden Sie [ssh-keygen](https://www.ssh.com/ssh/keygen/), um ein SSH-Schlüsselpaar zu erstellen. Falls Sie bereits über ein SSH-Schlüsselpaar verfügen, können Sie diesen Schritt überspringen.
 
-Öffnen Sie eine Bash-Shell, und verwenden [ssh-keygen](https://www.ssh.com/ssh/keygen/), um ein SSH-Schlüsselpaar zu erstellen. Sollte auf Ihrem Computer keine Bash-Shell zur Verfügung stehen, können Sie auch [Azure Cloud Shell](https://shell.azure.com/bash) verwenden.  
 
 ```azurepowershell-interactive
-ssh-keygen -t rsa -b 2048
+ssh-keygen -m PEM -t rsa -b 4096
 ```
 
-Ausführlichere Informationen zum Erstellen von SSH-Schlüsselpaaren, u.a. zur Verwendung von PuTTy, finden Sie unter [Verwenden von SSH-Schlüsseln mit Windows in Azure](ssh-from-windows.md).
+Sie werden aufgefordert, einen Dateinamen für das Schlüsselpaar anzugeben. Alternativ können Sie die **EINGABETASTE** drücken, um den Standardspeicherort `/home/<username>/.ssh/id_rsa` zu verwenden. Sie können bei Bedarf auch ein Kennwort für die Schlüssel erstellen.
 
-Wenn Sie Ihr SSH-Schlüsselpaar mithilfe von Cloud Shell erstellen, wird es in einem Containerimage in einem [automatisch von Cloud Shell erstellten Speicherkonto](https://docs.microsoft.com/azure/cloud-shell/persisting-shell-storage) gespeichert. Wenn Sie das Speicherkonto oder die darin enthaltene Dateifreigabe löschen, bevor Sie Ihre Schlüssel abgerufen haben, können Sie nicht mehr auf den virtuellen Computer zugreifen. 
+Ausführlichere Informationen zum Erstellen von SSH-Schlüsselpaaren finden Sie unter [Verwenden von SSH-Schlüsseln mit Windows in Azure](ssh-from-windows.md).
+
+Wenn Sie Ihr SSH-Schlüsselpaar mithilfe von Cloud Shell erstellen, wird es in einem [automatisch von Cloud Shell erstellten Speicherkonto](../../cloud-shell/persisting-shell-storage.md) gespeichert. Wenn Sie das Speicherkonto oder die darin enthaltene Dateifreigabe löschen, bevor Sie Ihre Schlüssel abgerufen haben, können Sie nicht mehr auf den virtuellen Computer zugreifen. 
 
 ## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 
-Erstellen Sie mit [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) eine Azure-Ressourcengruppe. Eine Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden:
+Erstellen Sie mit [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) eine Azure-Ressourcengruppe. Eine Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden:
 
 ```azurepowershell-interactive
 New-AzResourceGroup -Name "myResourceGroup" -Location "EastUS"
@@ -118,7 +112,7 @@ $nsg = New-AzNetworkSecurityGroup `
   -SecurityRules $nsgRuleSSH,$nsgRuleWeb
 ```
 
-Erstellen Sie mit [New-AzNetworkInterface](https://docs.microsoft.com/powershell/module/az.network/new-aznetworkinterface) eine virtuelle Netzwerkschnittstellenkarte (Network Interface Card, NIC). Die virtuelle NIC verbindet den virtuellen Computer mit einem Subnetz, einer Netzwerksicherheitsgruppe und einer öffentlichen IP-Adresse.
+Erstellen Sie mit [New-AzNetworkInterface](/powershell/module/az.network/new-aznetworkinterface) eine virtuelle Netzwerkschnittstellenkarte (Network Interface Card, NIC). Die virtuelle NIC verbindet den virtuellen Computer mit einem Subnetz, einer Netzwerksicherheitsgruppe und einer öffentlichen IP-Adresse.
 
 ```azurepowershell-interactive
 # Create a virtual network card and associate with public IP address and NSG
@@ -154,7 +148,7 @@ Set-AzVMOperatingSystem `
 Set-AzVMSourceImage `
   -PublisherName "Canonical" `
   -Offer "UbuntuServer" `
-  -Skus "16.04-LTS" `
+  -Skus "18.04-LTS" `
   -Version "latest" | `
 Add-AzVMNetworkInterface `
   -Id $nic.Id
@@ -167,7 +161,7 @@ Add-AzVMSshPublicKey `
   -Path "/home/azureuser/.ssh/authorized_keys"
 ```
 
-Kombinieren Sie jetzt die vorherigen Konfigurationsdefinitionen für die Erstellung mit [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm):
+Kombinieren Sie jetzt die vorherigen Konfigurationsdefinitionen für die Erstellung mit [New-AzVM](/powershell/module/az.compute/new-azvm):
 
 ```azurepowershell-interactive
 New-AzVM `
@@ -179,13 +173,13 @@ Die Bereitstellung des virtuellen Computers dauert ein paar Minuten. Fahren Sie 
 
 ## <a name="connect-to-the-vm"></a>Herstellen der Verbindung zur VM
 
-Erstellen Sie eine SSH-Verbindung mit dem virtuellen Computer unter Verwendung der öffentlichen IP-Adresse. Verwenden Sie zum Anzeigen der öffentlichen IP-Adresse der VM das Cmdlet [Get-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/az.network/get-azpublicipaddress):
+Erstellen Sie eine SSH-Verbindung mit dem virtuellen Computer unter Verwendung der öffentlichen IP-Adresse. Verwenden Sie zum Anzeigen der öffentlichen IP-Adresse der VM das Cmdlet [Get-AzPublicIpAddress](/powershell/module/az.network/get-azpublicipaddress):
 
 ```azurepowershell-interactive
 Get-AzPublicIpAddress -ResourceGroupName "myResourceGroup" | Select "IpAddress"
 ```
 
-Verwenden Sie die gleiche Bash-Shell, die Sie auch zum Erstellen Ihres SSH-Schlüsselpaars verwendet haben (also beispielsweise [Azure Cloud Shell](https://shell.azure.com/bash) oder Ihre lokale Bash-Shell), und fügen Sie den SSH-Verbindungsbefehl ein, um eine SSH-Sitzung zu erstellen.
+Fügen Sie mithilfe der gleichen Shell, die Sie zum Erstellen des SSH-Schlüsselpaars verwendet haben, den folgenden Befehl in die Shell ein, um eine SSH-Sitzung zu erstellen. Ersetzen Sie *10.111.12.123* durch die IP-Adresse Ihres virtuellen Computers.
 
 ```bash
 ssh azureuser@10.111.12.123
@@ -210,11 +204,11 @@ Geben Sie abschließend `exit` ein, um die SSH-Sitzung zu verlassen.
 
 Verwenden Sie einen beliebigen Webbrowser, um die Standardwillkommensseite von NGINX anzuzeigen. Geben Sie die öffentliche IP-Adresse Ihres virtuellen Computers als Webadresse ein. Die öffentliche IP-Adresse finden Sie auf der Übersichtsseite für den virtuellen Computer sowie in der weiter oben verwendeten SSH-Verbindungszeichenfolge.
 
-![NGINX-Standardwebsite](./media/quick-create-cli/nginx.png)
+![NGINX-Standardwillkommensseite](./media/quick-create-cli/nginix-welcome-page.png)
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Wenn die Ressourcengruppe, die VM und alle dazugehörigen Ressourcen nicht mehr benötigt werden, können Sie sie mit dem Cmdlet [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) entfernen:
+Wenn die Ressourcengruppe, die VM und alle dazugehörigen Ressourcen nicht mehr benötigt werden, können Sie sie mit dem Cmdlet [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) entfernen:
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name "myResourceGroup"

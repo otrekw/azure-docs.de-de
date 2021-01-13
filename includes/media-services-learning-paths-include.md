@@ -4,25 +4,25 @@ ms.service: media-services
 ms.topic: include
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 135232e3e9894bcef1ef657e41f5ad3a5e307289
-ms.sourcegitcommit: fe50db9c686d14eec75819f52a8e8d30d8ea725b
+ms.openlocfilehash: bc297be14b1a32cc836686dd25e98a78d3e95d31
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69014660"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96184376"
 ---
 ### <a name="media-services-v3-latest"></a>Media Services v3 (aktuelle Version)
 
 Informieren Sie sich über die neue Version von Azure Media Services. 
 
-* [Übersicht](https://docs.microsoft.com/azure/media-services/latest/media-services-overview)
-* [Konzepte](https://docs.microsoft.com/azure/media-services/latest/concepts-overview)
-* [Beginnen mit der Entwicklung](https://docs.microsoft.com/azure/media-services/latest/developers-guide)
-* [Hinweise zur Migration von v2 zu v3](https://docs.microsoft.com/azure/media-services/latest/migrate-from-v2-to-v3)
+* [Übersicht](../articles/media-services/latest/media-services-overview.md)
+* [Konzepte](../articles/media-services/latest/concepts-overview.md)
+* [Beginnen mit der Entwicklung](../articles/media-services/latest/media-services-apis-overview.md)
+* [Hinweise zur Migration von v2 zu v3](../articles/media-services/latest/migrate-from-v2-to-v3.md)
 
 ### <a name="media-services-v2-legacy"></a>Media Services v2 (Vorgängerversion)
 
-* [Übersicht](https://docs.microsoft.com/azure/media-services/previous/media-services-overview)
-* [Erstellen eines Kontos](https://docs.microsoft.com/azure/media-services/previous/media-services-portal-create-account)
-* [Bedarfsgesteuerte Bereitstellung](https://docs.microsoft.com/azure/media-services/previous/media-services-portal-vod-get-started)
-* [Livebereitstellung](https://docs.microsoft.com/azure/media-services/previous/media-services-portal-live-passthrough-get-started)
+* [Übersicht](../articles/media-services/previous/media-services-overview.md)
+* [Erstellen eines Kontos](../articles/media-services/previous/media-services-portal-create-account.md)
+* [Bedarfsgesteuerte Bereitstellung](../articles/media-services/previous/media-services-portal-vod-get-started.md)
+* [Livebereitstellung](../articles/media-services/previous/media-services-portal-live-passthrough-get-started.md)

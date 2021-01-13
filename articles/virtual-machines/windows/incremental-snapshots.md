@@ -1,24 +1,20 @@
 ---
-title: Verwenden von inkrementellen Momentaufnahmen für Sicherung und Wiederherstellung von nicht verwalteten Azure Windows-VM-Datenträgern | Microsoft-Dokumentation
+title: Verwenden von inkrementellen Momentaufnahmen für Sicherung und Wiederherstellung von nicht verwalteten Azure Windows-VM-Datenträgern
 description: Erstellen Sie eine benutzerdefinierte Lösung für die Sicherung und Wiederherstellung der Datenträger Ihrer virtuellen Azure Windows-Computer mithilfe inkrementeller Momentaufnahmen.
-services: virtual-machines-windows
-documentationcenter: na
 author: roygara
 manager: twooley
-editor: tysonn
-ms.assetid: 3524b987-bd65-4e35-83e7-fbc2136643e5
-ms.service: virtual-machines-windows
-ms.workload: storage
-ms.tgt_pltfrm: vm-windows
-ms.topic: article
+ms.service: virtual-machines
+ms.workload: infrastructure
+ms.topic: how-to
 ms.date: 01/23/2017
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: e14a61d9105792e7dc04be3196dae002aa044fb3
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 5ace6017ce66bbaa8be71e23196823c1c1318902
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70103166"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "81869492"
 ---
+# <a name="back-up-azure-unmanaged-vm-disks-with-incremental-snapshots"></a>Sichern nicht verwalteter Azure-VM-Datenträger mithilfe inkrementeller Momentaufnahmen
 [!INCLUDE [virtual-machines-incremental-snapshots](../../../includes/virtual-machines-incremental-snapshots.md)]

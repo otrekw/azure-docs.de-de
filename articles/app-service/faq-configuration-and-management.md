@@ -1,25 +1,19 @@
 ---
-title: 'Häufig gestellte Fragen zur Konfiguration: Azure App Service | Microsoft-Dokumentation'
-description: Hier erhalten Sie Antworten auf häufig gestellte Fragen zu Konfigurations- und Verwaltungsproblemen bei Azure App Service-Web-Apps.
-services: app-service\web
-documentationcenter: ''
+title: Häufig gestellte Fragen zur Konfiguration
+description: Hier erhalten Sie Antworten auf häufig gestellte Fragen zu Konfigurations- und Verwaltungsproblemen in Azure App Service.
 author: genlin
 manager: dcscontentpm
-editor: ''
 tags: top-support-issue
 ms.assetid: 2fa5ee6b-51a6-4237-805f-518e6c57d11b
-ms.service: app-service-web
-ms.workload: web
-ms.tgt_pltfrm: ibiza
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: 68d0f693d0cc7d8db8e6f697ff8907400a7aca50
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: fb193637525722bf227241a614cd977fbf70c9ac
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71121326"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93074181"
 ---
 # <a name="configuration-and-management-faqs-for-web-apps-in-azure"></a>Häufig gestellte Fragen zur Konfiguration und Verwaltung von Web-Apps in Azure
 
@@ -29,7 +23,7 @@ In diesem Artikel erhalten Sie Antworten auf häufig gestellte Fragen zu Konfigu
 
 ## <a name="are-there-limitations-i-should-be-aware-of-if-i-want-to-move-app-service-resources"></a>Gibt es Einschränkungen, die ich berücksichtigen muss, wenn ich App Service-Ressourcen verschieben möchte?
 
-Wenn Sie App Service-Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement verschieben möchten, sind einige Einschränkungen zu beachten. Weitere Informationen finden Sie unter [App Service-Einschränkungen](../azure-resource-manager/move-limitations/app-service-move-limitations.md).
+Wenn Sie App Service-Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement verschieben möchten, sind einige Einschränkungen zu beachten. Weitere Informationen finden Sie unter [App Service-Einschränkungen](../azure-resource-manager/management/move-limitations/app-service-move-limitations.md).
 
 ## <a name="how-do-i-use-a-custom-domain-name-for-my-web-app"></a>Wie verwende ich einen benutzerdefinierten Domänennamen für meine Web-App?
 
@@ -41,25 +35,25 @@ Antworten auf häufig gestellte Fragen zur Verwendung eines benutzerdefinierten 
 Weitere Informationen zum Kauf und Einrichten einer benutzerdefinierten Domäne für Ihre App Service-Web-App finden Sie unter [Kaufen und Konfigurieren eines benutzerdefinierten Domänennamens in App Service](manage-custom-dns-buy-domain.md).
 
 
-## <a name="how-do-i-upload-and-configure-an-existing-ssl-certificate-for-my-web-app"></a>Wie kann ich ein vorhandenes SSL-Zertifikat für meine Web-App hochladen und konfigurieren?
+## <a name="how-do-i-upload-and-configure-an-existing-tlsssl-certificate-for-my-web-app"></a>Wie kann ich ein vorhandenes TLS-/SSL-Zertifikat für meine Web-App hochladen und konfigurieren?
 
-Informationen zum Hochladen und Einrichten eines vorhandenen benutzerdefinierten SSL-Zertifikats finden Sie unter [Binden eines vorhandenen benutzerdefinierten SSL-Zertifikats an Azure-Web-Apps](app-service-web-tutorial-custom-ssl.md#upload).
+Informationen zum Hochladen und Einrichten eines vorhandenen benutzerdefinierten TLS-/SSL-Zertifikats finden Sie unter [Hinzufügen eines TLS-/SSL-Zertifikats zu Ihrer App Service-App](configure-ssl-certificate.md).
 
 
-## <a name="how-do-i-purchase-and-configure-a-new-ssl-certificate-in-azure-for-my-web-app"></a>Wie kaufe und konfiguriere ich ein neues SSL-Zertifikat für meine Web-App in Azure?
+## <a name="how-do-i-purchase-and-configure-a-new-tlsssl-certificate-in-azure-for-my-web-app"></a>Wie kaufe und konfiguriere ich ein neues TLS-/SSL-Zertifikat für meine Web-App in Azure?
 
-Informationen zum Erwerben und Einrichten eines SSL-Zertifikats für Ihre App Service-Web-App finden Sie unter [Hinzufügen eines SSL-Zertifikats zu Ihrer App Service-App](web-sites-purchase-ssl-web-site.md).
+Informationen zum Erwerben und Einrichten eines TLS-/SSL-Zertifikats für Ihre App Service-Web-App finden Sie unter [Hinzufügen eines TLS-/SSL-Zertifikats zu Ihrer App Service-App](configure-ssl-certificate.md).
 
 
 ## <a name="how-do-i-move-application-insights-resources"></a>Wie verschiebe ich Application Insights-Ressourcen?
 
 Derzeit unterstützt Azure Application Insights keine Verschiebevorgänge. Wenn Ihre ursprüngliche Ressourcengruppe eine Application Insights-Ressource enthält, können Sie diese Ressource nicht verschieben. Wenn Sie die Application Insights-Ressource in den Versuch des Verschiebens einer App Service-App einschließen, misslingt der gesamte Verschiebevorgang. Application Insights und der App Service-Plan müssen sich allerdings nicht in derselben Ressourcengruppe wie die App befinden, damit die App ordnungsgemäß funktioniert.
 
-Weitere Informationen finden Sie unter [App Service-Einschränkungen](../azure-resource-manager/move-limitations/app-service-move-limitations.md).
+Weitere Informationen finden Sie unter [App Service-Einschränkungen](../azure-resource-manager/management/move-limitations/app-service-move-limitations.md).
 
 ## <a name="where-can-i-find-a-guidance-checklist-and-learn-more-about-resource-move-operations"></a>Wo kann ich eine Checkliste finden und mehr über Verschiebevorgänge von Ressourcen erfahren?
 
-Unter [App Service-Einschränkungen](../azure-resource-manager/move-limitations/app-service-move-limitations.md) erfahren Sie, wie Sie Ressourcen in ein neues Abonnement oder eine neue Ressourcengruppe im gleichen Abonnement verschieben. Sie erhalten eine Checkliste für das Verschieben von Ressourcen, erfahren, welche Dienste den Verschiebevorgang unterstützen, und finden weitere Informationen zu App Service-Einschränkungen und anderen Themen.
+Unter [App Service-Einschränkungen](../azure-resource-manager/management/move-limitations/app-service-move-limitations.md) erfahren Sie, wie Sie Ressourcen in ein neues Abonnement oder eine neue Ressourcengruppe im gleichen Abonnement verschieben. Sie erhalten eine Checkliste für das Verschieben von Ressourcen, erfahren, welche Dienste den Verschiebevorgang unterstützen, und finden weitere Informationen zu App Service-Einschränkungen und anderen Themen.
 
 ## <a name="how-do-i-set-the-server-time-zone-for-my-web-app"></a>Wie richte ich die Serverzeitzone für meine Web-App ein?
 
@@ -71,7 +65,9 @@ So richten Sie die Serverzeitzone für Ihre Web-App ein
     * Wert = *Die gewünschte Zeitzone*
 3. Wählen Sie **Speichern** aus.
 
-Akzeptierte Werte für App-Dienste unter Windows finden Sie im Artikel [Standardzeitzonen](https://docs.microsoft.com/windows-hardware/manufacture/desktop/default-time-zones) in der Spalte **Zeitzone**. Legen Sie für App-Dienste, die unter Linux ausgeführt werden, den [Namen der TZ-Datenbank](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones) als Zeitzonenwert fest. Dies ist ein Beispiel für den Namen der TZ-Datenbank: America/Adak.
+Informationen zu den App-Diensten, die unter Windows ausgeführt werden, finden Sie in der Ausgabe des Windows-Befehls `tzutil /L`. Verwenden Sie den Wert aus der zweiten Zeile jedes Eintrags. Beispiel: "Tonga Normalzeit". Einige dieser Werte werden auch im Artikel [Standardzeitzonen](/windows-hardware/manufacture/desktop/default-time-zones) in der Spalte **Zeitzone** aufgeführt.
+
+Legen Sie für die App-Dienste, die unter Linux ausgeführt werden, einen Wert aus der [IANA TZ-Datenbank](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones) fest. Beispiel: „America/Adak“.
 
 ## <a name="why-do-my-continuous-webjobs-sometimes-fail"></a>Warum misslingen meine fortlaufend ausgeführten WebJobs mitunter?
 
@@ -90,7 +86,7 @@ Um mehr darüber zu erfahren, wie Sie die ausgehende IP-Adresse abrufen, wenn Ih
 
 ## <a name="how-do-i-get-a-reserved-or-dedicated-inbound-ip-address-for-my-web-app"></a>Wie kann eine reservierte oder dedizierte eingehende IP-Adresse für meine Web-App abgerufen werden?
 
-Zum Einrichten einer dedizierten oder reservierten IP-Adresse für an die Website Ihrer Azure-App eingehende Aufrufe müssen Sie ein IP-basiertes SSL-Zertifikat installieren und konfigurieren.
+Zum Einrichten einer dedizierten oder reservierten IP-Adresse für an die Website Ihrer Azure-App eingehende Aufrufe müssen Sie ein IP-basiertes TLS-/SSL-Zertifikat installieren und konfigurieren.
 
 Beachten Sie, dass zum Verwenden einer dedizierten oder reservierten IP-Adresse für eingehende Aufrufe Ihr App Service-Plan mindestens den Tarif „Basic“ aufweisen muss.
 
@@ -131,7 +127,7 @@ Weitere Informationen zur Verwendung von Bereitstellungsslots finden Sie unter [
 
 So überprüfen Sie WebJob-Protokolle
 
-1. Melden Sie sich bei Ihrer [Kudu-Website](https://*yourwebsitename*.scm.azurewebsites.net) an.
+1. Melden Sie sich bei Ihrer **Kudu-Website** (`https://*yourwebsitename*.scm.azurewebsites.net`) an.
 2. Wählen Sie den WebJob aus.
 3. Klicken Sie auf die Schaltfläche **Ausgabe umschalten**.
 4. Klicken Sie zum Herunterladen der Ausgabedatei auf den Link **Herunterladen**.
@@ -153,7 +149,7 @@ Die Ausnahme wurde durch ein Problem beim Hybridverbindungs-Manager ausgelöst, 
 
 ## <a name="how-do-i-add-a-url-rewrite-rule"></a>Wie kann ich eine URL-Rewrite-Regel hinzufügen?
 
-Um eine URL-Rewrite-Regel (Regel zum erneuten Schreiben einer URL) hinzuzufügen, erstellen Sie eine „web.config“-Datei mit den entsprechenden Konfigurationseinträgen im Ordner **wwwroot**. Weitere Informationen finden Sie unter [Azure App Services: Understanding URL Re-write](https://blogs.msdn.microsoft.com/madhurabharadwaj/2018/06/01/azure-app-services-understanding-url-re-write/).
+Um eine URL-Rewrite-Regel (Regel zum erneuten Schreiben einer URL) hinzuzufügen, erstellen Sie eine „web.config“-Datei mit den entsprechenden Konfigurationseinträgen im Ordner **wwwroot**. Weitere Informationen finden Sie unter [Azure App Services: Understanding URL Re-write](/archive/blogs/madhurabharadwaj/azure-app-services-understanding-url-re-write).
 
 ## <a name="how-do-i-control-inbound-traffic-to-app-service"></a>Wie steuere ich den in App Service eingehenden Datenverkehr?
 
@@ -189,11 +185,11 @@ Sie haben zwei Optionen zum Aufzeichnen einer F12-Ablaufverfolgung:
 ### <a name="f12-console-output"></a>F12-Konsolenausgabe
 
 1. Klicken Sie auf die Registerkarte **Konsole**.
-2. Für jede Registerkarte, die mehr als 0 Elemente enthält, klicken Sie auf die Registerkarte (**Fehler**, **Warnung** oder **Informationen**). Wenn die Registerkarte nicht ausgewählt ist, ist das Registerkartensymbol grau oder schwarz, sobald Sie den Cursor davon entfernen.
+2. Für jede Registerkarte, die mehr als 0 Elemente enthält, klicken Sie auf die Registerkarte ( **Fehler** , **Warnung** oder **Informationen** ). Wenn die Registerkarte nicht ausgewählt ist, ist das Registerkartensymbol grau oder schwarz, sobald Sie den Cursor davon entfernen.
 3. Klicken Sie im Meldungsabschnitt des Bereichs mit der rechten Maustaste, und wählen Sie dann **Alle kopieren** aus.
 4. Fügen Sie den kopierten Text in eine Datei ein, und speichern Sie dann die Datei.
 
-Eine HAR-Datei können Sie im [HAR Viewer](https://www.softwareishard.com/har/viewer/) anzeigen.
+Eine HAR-Datei können Sie im [HAR Viewer](http://www.softwareishard.com/har/viewer/) anzeigen.
 
 ## <a name="why-do-i-get-an-error-when-i-try-to-connect-an-app-service-web-app-to-a-virtual-network-that-is-connected-to-expressroute"></a>Warum erhalte ich eine Fehlermeldung beim Versuch, eine App Service-Web-App mit einem virtuellen Netzwerk zu verbinden, das mit ExpressRoute verbunden ist?
 
@@ -205,7 +201,7 @@ Derzeit sind keine Punkt-zu-Standort-VPN-Verbindungen mit einem virtuellen Netzw
 
 Derzeit wird das Verbinden einer App Service-Web-App mit einem virtuellen Netzwerk, das ein statisches (richtlinienbasiertes) Routinggateway hat, nicht unterstützt. Wenn Ihr virtuelles Zielnetzwerk bereits vorhanden ist, muss es über ein Punkt-zu-Standort-VPN mit einem dynamischen Routinggateway aktiviert werden, bevor es mit einer App verbunden werden kann. Wenn Ihr Gateway auf statisches Routing festgelegt ist, kann ein Punkt-zu-Standort-VPN nicht aktiviert werden. 
 
-Weitere Informationen finden Sie unter [Integrieren einer App in ein virtuelles Azure-Netzwerk](web-sites-integrate-with-vnet.md#getting-started).
+Weitere Informationen finden Sie unter [Integrieren einer App in ein virtuelles Azure-Netzwerk](web-sites-integrate-with-vnet.md).
 
 ## <a name="in-my-app-service-environment-why-can-i-create-only-one-app-service-plan-even-though-i-have-two-workers-available"></a>Warum kann ich in meiner App Service-Umgebung nur einen App Service-Plan erstellen, obwohl zwei Worker verfügbar sind?
 
@@ -218,7 +214,7 @@ Weitere Informationen finden Sie unter [Erstellen einer App Service-Umgebung](en
 Das Erstellen einer App Service-Umgebung misslingt mitunter. In diesem Fall wird die folgende Fehlermeldung in den Aktivitätsprotokollen angezeigt:
 ```
 ResourceID: /subscriptions/{SubscriptionID}/resourceGroups/Default-Networking/providers/Microsoft.Web/hostingEnvironments/{ASEname}
-Error:{"error":{"code":"ResourceDeploymentFailure","message":"The resource provision operation did not complete within the allowed timeout period.”}}
+Error:{"error":{"code":"ResourceDeploymentFailure","message":"The resource provision operation did not complete within the allowed timeout period."}}
 ```
 
 Stellen Sie zum Beheben dieses Problems sicher, dass keine der folgenden Bedingungen vorliegt:
@@ -228,7 +224,7 @@ Stellen Sie zum Beheben dieses Problems sicher, dass keine der folgenden Bedingu
 * Eine fehlerhafte Netzwerksicherheitsgruppe verhindert das Erfüllen der Anforderungen an die Netzwerkverbindung einer App Service-Umgebung.
 * Erzwungenes Tunneln ist aktiviert.
 
-Weitere Informationen finden Sie unter [Most frequent issues when deploying (creating) a new Azure App Service Environment (ASE)](https://blogs.msdn.microsoft.com/waws/2016/05/13/most-frequent-issues-when-deploying-creating-a-new-azure-app-service-environment-ase/) (Häufig auftretende Probleme beim Bereitstellen [oder Erstellen] einer neuen Azure App Service-Umgebung).
+Weitere Informationen finden Sie unter [Most frequent issues when deploying (creating) a new Azure App Service Environment (ASE)](/archive/blogs/waws/most-frequent-issues-when-deploying-creating-a-new-azure-app-service-environment-ase) (Häufig auftretende Probleme beim Bereitstellen [oder Erstellen] einer neuen Azure App Service-Umgebung).
 
 ## <a name="why-cant-i-delete-my-app-service-plan"></a>Warum kann ich meinen App Service-Plan nicht löschen?
 
@@ -254,7 +250,7 @@ Wenn Sie Penetrationstests ausführen möchten, [übermitteln Sie eine Anforderu
 
 ## <a name="how-do-i-configure-a-custom-domain-name-for-an-app-service-web-app-that-uses-traffic-manager"></a>Wie konfiguriere ich einen benutzerdefinierten Domänennamen für eine Azure App Service-Web-App, die Traffic Manager verwendet?
 
-Informationen dazu, wie Sie einen benutzerdefinierten Domänennamen mit einer App Service-App nutzen, die Azure Traffic Manager für den Lastenausgleich verwendet, finden Sie unter [Konfigurieren eines benutzerdefinierten Domänennamens für eine Web-App in Azure App Services, die Traffic Manager verwendet](web-sites-traffic-manager-custom-domain-name.md).
+Informationen dazu, wie Sie einen benutzerdefinierten Domänennamen mit einer App Service-App nutzen, die Azure Traffic Manager für den Lastenausgleich verwendet, finden Sie unter [Konfigurieren eines benutzerdefinierten Domänennamens für eine Web-App in Azure App Services, die Traffic Manager verwendet](configure-domain-traffic-manager.md).
 
 ## <a name="my-app-service-certificate-is-flagged-for-fraud-how-do-i-resolve-this"></a>Mein App Service-Zertifikat ist mit einer Betrugsmeldung gekennzeichnet. Wie löse ich dieses Problem?
 
@@ -288,11 +284,11 @@ Eine ausführliche Dokumentation der Authentifizierung und Autorisierung in App 
 
 ## <a name="how-do-i-redirect-the-default-azurewebsitesnet-domain-to-my-azure-web-apps-custom-domain"></a>Wie leite ich die Standarddomäne „*.azurewebsites.net“ zur benutzerdefinierten Domäne meiner Azure-Web-App um?
 
-Beim Erstellen einer neuen Website mithilfe von Web-Apps in Azure wird Ihrer Website standardmäßig die Domäne „*Websitename*.azurewebsites.net“ zugewiesen. Wenn Sie Ihrer Website einen benutzerdefinierten Hostnamen hinzufügen und nicht möchten, dass Benutzer auf Ihre Standarddomäne „*.azurewebsites.net“ zugreifen, können Sie die Standard-URL umleiten. Informationen zum Umleiten des gesamten Datenverkehrs von der Standarddomäne Ihrer Website zu Ihrer benutzerdefinierten Domäne finden Sie unter [Redirect the default domain to your custom domain in Azure web apps](https://zainrizvi.io/blog/block-default-azure-websites-domain/) (Umleiten der Standarddomäne zu Ihrer benutzerdefinierten Domäne in Azure-Web-Apps).
+Beim Erstellen einer neuen Website mithilfe von Web-Apps in Azure wird Ihrer Website standardmäßig die Domäne „ *Websitename*.azurewebsites.net“ zugewiesen. Wenn Sie Ihrer Website einen benutzerdefinierten Hostnamen hinzufügen und nicht möchten, dass Benutzer auf Ihre Standarddomäne „*.azurewebsites.net“ zugreifen, können Sie die Standard-URL umleiten. Informationen zum Umleiten des gesamten Datenverkehrs von der Standarddomäne Ihrer Website zu Ihrer benutzerdefinierten Domäne finden Sie unter [Redirect the default domain to your custom domain in Azure web apps](https://zainrizvi.io/blog/block-default-azure-websites-domain/) (Umleiten der Standarddomäne zu Ihrer benutzerdefinierten Domäne in Azure-Web-Apps).
 
 ## <a name="how-do-i-determine-which-version-of-net-version-is-installed-in-app-service"></a>Wie erkenne ich, welche .NET-Version in App Service installiert ist?
 
-Die schnellste Methode, die Version von Microsoft .NET zu bestimmen, die in App Service installiert ist, bietet die Kudu-Konsole. Auf die Kudu-Konsole können Sie +über das Portal oder die URL Ihrer App Service-App zugreifen. Ausführliche Anweisungen finden Sie unter [How to determine the installed .NET version in Azure App Services](https://blogs.msdn.microsoft.com/waws/2016/11/02/how-to-determine-the-installed-net-version-in-azure-app-services/) (Bestimmen der installierten Version von .NET in App Service).
+Die schnellste Methode, die Version von Microsoft .NET zu bestimmen, die in App Service installiert ist, bietet die Kudu-Konsole. Auf die Kudu-Konsole können Sie im Portal oder über die URL Ihrer App Service-App zugreifen. Ausführliche Anweisungen finden Sie unter [How to determine the installed .NET version in Azure App Services](/archive/blogs/waws/how-to-determine-the-installed-net-version-in-azure-app-services) (Bestimmen der installierten Version von .NET in App Service).
 
 ## <a name="why-isnt-autoscale-working-as-expected"></a>Warum funktioniert die automatische Skalierung nicht wie erwartet?
 
@@ -320,4 +316,4 @@ Sie können auch die spezifischen dynamischen und statischen MIME-Typen angeben,
 
 ## <a name="how-do-i-migrate-from-an-on-premises-environment-to-app-service"></a>Wie migriere ich von einer lokalen Umgebung zu App Service?
 
-Um Websites von Windows- und Linux-Webservern zu App Service zu migrieren, können Sie den Azure App Service-Migrations-Assistenten verwenden. Das Migrationstool erstellt Web-Apps und Datenbanken in Azure nach Bedarf und veröffentlicht dann den Inhalt. Weitere Informationen finden Sie unter [Azure App Service-Migrations-Assistent](https://www.migratetoazure.net/).
+Um Websites von Windows- und Linux-Webservern zu App Service zu migrieren, können Sie den Azure App Service-Migrations-Assistenten verwenden. Das Migrationstool erstellt Web-Apps und Datenbanken in Azure nach Bedarf und veröffentlicht dann den Inhalt. Weitere Informationen finden Sie unter [Azure App Service-Migrations-Assistent](https://appmigration.microsoft.com/).

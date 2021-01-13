@@ -1,26 +1,18 @@
 ---
-title: Microsoft Threat Modeling Tool – Azure | Microsoft-Dokumentation
-description: Hauptseite für das Microsoft Threat Modeling Tool mit Informationen zu den ersten Schritten mit dem Tool einschließlich des Prozesses zur Modellierung von Bedrohungen
-services: security
-documentationcenter: na
+title: Übersicht über das Microsoft Threat Modeling Tool – Azure
+description: Übersicht über das Microsoft Threat Modeling Tool mit Informationen zu den ersten Schritten mit dem Tool einschließlich des Verfahrens zur Modellierung von Bedrohungen
 author: jegeib
-manager: jegeib
-editor: jegeib
-ms.assetid: na
+ms.author: jegeib
 ms.service: security
 ms.subservice: security-develop
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 02/16/2017
-ms.author: jegeib
-ms.openlocfilehash: 47ae7661874bec211935315679e6e2c79e6d59ef
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 6a637dc431b0f9cd8c40cfa1c048559a56a6b97f
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68727822"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94518055"
 ---
 # <a name="microsoft-threat-modeling-tool"></a>Microsoft Threat Modeling Tool
 
@@ -43,7 +35,7 @@ Nachfolgend sind einige Funktionen und Innovationen des Tools aufgeführt:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Die folgende Tabelle enthält wichtige Links, um Ihnen den Einstieg in das Threat Modeling Tool zu erleichtern:
+Die folgende Tabelle enthält wichtige Links, um Ihnen den Einstieg in das Threat Modeling Tool zu erleichtern: Weitere Informationen: [Systemanforderungen](threat-modeling-tool-releases.md)
 
 | Schritt  | BESCHREIBUNG                                                                                   |
 | ----- | --------------------------------------------------------------------------------------------- |
@@ -57,7 +49,7 @@ Die folgende Tabelle enthält wichtige Links, um Ihnen den Einstieg in das Threa
 
 Es folgen einige ältere Artikel, die auch heute noch für die Modellierung von Bedrohungen relevant sind:
 
-* [Artikel zur Wichtigkeit der Modellierung von Bedrohungen](https://msdn.microsoft.com/magazine/dd347831.aspx)
+* [Artikel zur Wichtigkeit der Modellierung von Bedrohungen](/archive/msdn-magazine/2009/january/security-briefs-getting-started-with-the-sdl-threat-modeling-tool)
 * [Schulung von Trustworthy Computing veröffentlicht](https://www.microsoft.com/download/details.aspx?id=16420)
 
 Sehen Sie sich an, was einige Threat Modeling Tool-Experten getan haben:

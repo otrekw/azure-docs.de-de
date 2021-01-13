@@ -6,18 +6,39 @@ author: Daya-Patil
 manager: carmonm
 ms.topic: article
 ms.service: site-recovery
-ms.date: 07/29/2019
+ms.date: 6/4/2020
 ms.author: dapatil
-ms.openlocfilehash: acce72a5ddfaab56a7fcce92f0153bb06cb1ae71
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: feb4f6a24653aca8da825af90341c8016255e8b6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68620101"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "86133794"
 ---
 # <a name="azure-site-recovery-deployment-planner-version-history"></a>Versionsverlauf des Azure Site Recovery-Bereitstellungsplaners
 
 Dieser Artikel enthält den Verlauf aller Versionen des Azure Site Recovery-Bereitstellungsplaners zusammen mit den Fehlerbehebungen, den jeweiligen bekannten Einschränkungen und den Veröffentlichungsdaten.
+
+## <a name="version-252"></a>Version 2.52
+
+**Veröffentlichungsdatum: 4. Juni 2020**
+
+**Fehlerbehebungen:**
+
+- Unterstützung für vCenter 7.0 wurde hinzugefügt.
+- Unterstützung für folgende Betriebssysteme wurde hinzugefügt:
+
+    - SUSE Linux Enterprise 15 (mit allen Nebenversionen)
+    - Red Hat Enterprise Linux 8 (mit allen Nebenversionen)
+
+
+## <a name="version-251"></a>Version 2.51
+
+**Veröffentlichungsdatum: 22. August 2019**
+
+**Fehlerbehebungen:**
+
+- Es wurde ein Problem mit der Kostenempfehlung in Bereitstellungsplaner Version 2.5 behoben.
 
 ## <a name="version-25"></a>Version 2.5
 
@@ -148,7 +169,7 @@ Weitere Informationen finden Sie unter [Azure Site Recovery now supports large d
 
 **Bekannte Einschränkungen:**
 
-- Unterstützt nur Notfallwiederherstellungsszenarien des Typs „VMware zu Azure“. Verwenden Sie für Notfallwiederherstellungsszenarien des Typs „Hyper-V zu Azure“ das [Hyper-V Capacity Planner-Tool](./site-recovery-capacity-planning-for-hyper-v-replication.md).
+- Unterstützt nur Notfallwiederherstellungsszenarien des Typs „VMware zu Azure“. Verwenden Sie für Notfallwiederherstellungsszenarien des Typs „Hyper-V zu Azure“ das [Hyper-V Capacity Planner-Tool](./hyper-v-deployment-planner-overview.md).
 - Der GetThroughput-Vorgang wird für die Microsoft Azure-Regionen „US Government“ und „China“ nicht unterstützt.
 - Das Tool kann keine Profile für VMs erstellen, wenn der vCenter-Server über zwei oder mehr VMs mit demselben Namen oder derselben IP-Adresse für verschiedene ESXi-Hosts verfügt.
 In dieser Version überspringt das Tool die Profilerstellung für doppelte Namen und IP-Adressen von VMs in der VMListFile. Die Problemumgehung besteht darin, die Profilerstellung für die VMs nicht mit dem vCenter-Server durchzuführen, sondern mit einem ESXi-Host. Stellen Sie sicher, dass für jeden ESXi-Host eine Instanz ausgeführt wird.

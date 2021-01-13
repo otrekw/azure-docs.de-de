@@ -1,43 +1,37 @@
 ---
-title: Hinzufügen Ihrer persönlichen Microsoft-Konten zur Microsoft Authenticator-App – Azure Active Directory | Microsoft-Dokumentation
-description: Hier finden Sie Informationen zum Hinzufügen Ihrer persönlichen Microsoft-Konten (z.B. für Outlook.com oder Xbox LIVE) zur Microsoft Authenticator-App für die zweistufige Überprüfung.
+title: Hinzufügen eines persönlichen Microsoft-Kontos zur Microsoft Authenticator-App – Azure AD
+description: Fügen Sie der Microsoft Authenticator-App persönliche Microsoft-Konten (z. B. für Outlook.com oder Xbox LIVE) hinzu, um Ihre Identität mit der zweistufigen Überprüfung zu überprüfen.
 services: active-directory
-author: eross-msft
+author: curtand
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
-ms.topic: conceptual
-ms.date: 01/24/2019
-ms.author: lizross
+ms.topic: end-user-help
+ms.date: 04/08/2020
+ms.author: curtand
 ms.reviewer: olhaun
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7cf4629ca97abc5d4ce508f7078f4691467ba249
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: ff83a9a4e4bfd4c27dd3f8d3f212e489c3772eb4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69616082"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "83741627"
 ---
-# <a name="add-your-personal-microsoft-accounts"></a>Hinzufügen Ihrer persönlichen Microsoft-Konten
+# <a name="add-personal-microsoft-accounts-to-the-microsoft-authenticator-app"></a>Hinzufügen persönlicher Microsoft-Konten zur Microsoft Authenticator-App
 
-Fügen Sie Ihre persönlichen Microsoft-Konten (z.B. für Outlook.com oder Xbox LIVE) zur Microsoft Authenticator-App hinzu – sowohl für die standardmäßige zweistufige Überprüfung als auch für die Anmeldung per Telefon ohne Kennwort.
+Fügen Sie Ihre persönlichen Microsoft-Konten (z.B. für Outlook.com oder Xbox LIVE) zur Microsoft Authenticator-App hinzu – sowohl für die standardmäßige zweistufige Überprüfung als auch für die kennwortlose Anmeldung per Telefon.
 
-- **Standardmäßige zweistufige Überprüfung** Geben Sie Ihren Benutzernamen und Ihr Kennwort auf dem Gerät ein, bei dem Sie sich anmelden möchten. Wählen Sie anschließend aus, ob über die Microsoft Authenticator-App eine Benachrichtigung gesendet werden soll, oder ob Sie den zugehörigen Prüfcode aus dem Bildschirm **Konten** der Microsoft Authenticator-App kopieren möchten.
+- **Standardmäßige zweistufige Überprüfung** Geben Sie Ihren Benutzernamen und Ihr Kennwort auf dem Gerät ein, bei dem Sie sich anmelden möchten. Wählen Sie anschließend aus, ob die Microsoft Authenticator-App eine Benachrichtigung senden soll, oder ob Sie den zugehörigen Prüfcode aus dem Bildschirm **Konten** der Microsoft Authenticator-App kopieren möchten.
 
 - **Anmeldung ohne Kennwort** Geben Sie den Benutzernamen Ihres persönlichen Microsoft-Kontos auf dem Gerät ein, bei dem Sie sich anmelden möchten. Verwenden Sie dann Ihr mobiles Gerät, um Ihre Identität per Fingerabdruck, Gesichtserkennung oder PIN zu bestätigen. Bei dieser Methode müssen Sie kein Kennwort eingeben.
 
 >[!Important]
->Bevor Sie Ihr Konto hinzufügen können, müssen Sie die Microsoft Authenticator-App herunterladen und installieren. Falls dies noch nicht geschehen ist, führen Sie die im Artikel [Herunterladen und Installieren der App](user-help-auth-app-download-install.md) aufgeführten Schritte aus.
+>Bevor Sie Ihr Konto hinzufügen können, müssen Sie die Microsoft Authenticator-App herunterladen und installieren. Wenn Sie dies noch nicht getan haben, führen Sie die im Artikel [Herunterladen und Installieren der App](user-help-auth-app-download-install.md) aufgeführten Schritte aus.
 
-## <a name="add-your-personal-microsoft-account"></a>Hinzufügen Ihres persönlichen Microsoft-Kontos
+Sie können Ihr persönliches Microsoft-Konto hinzufügen, indem Sie zunächst die zweistufige Überprüfung aktivieren und dann das Konto zur App hinzufügen. Sie müssen die zweistufige Überprüfung nicht aktivieren, nur um die kennwortlose Anmeldung per Telefon für Ihr Konto zu verwenden. Es wird jedoch dringend empfohlen, die zweistufige Überprüfung für zusätzliche Kontosicherheit zu aktivieren.
 
-Sie können Ihr persönliches Microsoft-Konto hinzufügen, indem Sie zunächst die zweistufige Überprüfung aktivieren und dann das Konto zur App hinzufügen.
-
->[!Note]
->Wenn Sie für Ihr persönliches Microsoft-Konto ausschließlich die Anmeldung per Telefon ohne Kennwort nutzen möchten, ist eine Aktivierung der zweistufigen Überprüfung nicht erforderlich. Zum Erhöhen der Sicherheit wird jedoch empfohlen, die zweistufige Überprüfung zu aktivieren.
-
-### <a name="turn-on-two-factor-verification"></a>Aktivieren der zweistufigen Überprüfung
+## <a name="turn-on-two-factor-verification"></a>Aktivieren der zweistufigen Überprüfung
 
 1. Wechseln Sie auf Ihrem Computer zur Seite [Grundlegendes zur Sicherheit](https://account.microsoft.com/security), und melden Sie sich mit Ihrem persönlichen Microsoft-Konto an. Beispiel: alain@outlook.com.
 
@@ -47,24 +41,30 @@ Sie können Ihr persönliches Microsoft-Konto hinzufügen, indem Sie zunächst d
 
 3. Wechseln Sie zum Abschnitt **Zweistufige Überprüfung**, und aktivieren Sie das Feature, indem Sie es auf **Ein** festlegen. Sie können das Feature hier auch deaktivieren, wenn Sie es nicht mehr mit Ihrem persönlichen Konto verwenden möchten.
 
-### <a name="add-your-microsoft-account-to-the-app"></a>Hinzufügen Ihres Microsoft-Kontos zur App
+## <a name="add-your-microsoft-account-to-the-app"></a>Hinzufügen Ihres Microsoft-Kontos zur App
 
 1. Öffnen Sie die Microsoft Authenticator-App auf Ihrem mobilen Gerät.
 
-2. Wählen Sie über das Symbol **Anpassen und steuern** in der oberen rechten Ecke die Option **Konto auswählen** aus.
+1. Wählen Sie in Android über das Symbol **Anpassen und steuern** in der oberen rechten Ecke die Option **Konto hinzufügen** aus.
 
-    ![Kontoseite mit hervorgehobenem Symbol zum Anpassen und Steuern](./media/user-help-auth-app-add-personal-ms-account/customize-and-control-icon.png)
+    ![Android-Konto – Auswahlseiten](media/user-help-auth-app-add-personal-ms-account/customize-and-control-icon.png)
 
-3. Wählen Sie auf der Seite **Konto hinzufügen** die Option **Persönliches Konto** aus.
+    Wählen Sie in iOS das Pluszeichen oben rechts aus.
 
-4. Melden Sie sich über die geeignete E-Mail-Adresse bei Ihrem persönlichen Konto an (z.B. alain@outlook.com), und klicken Sie dann auf **Weiter**.
+    ![iOS-Version der Kontoauswahlumgebung](media/user-help-auth-app-add-personal-ms-account/customize-and-control-icon-ios.png)
+
+1. Wählen Sie auf der Seite **Konto hinzufügen** die Option **Persönliches Konto** aus.
+
+1. Wählen Sie **Bei Microsoft anmelden** aus, um Ihr Konto hinzuzufügen. Sofern verfügbar, kann auch ein QR-Code verwendet werden. Sie können Ihr Konto aber jederzeit hinzufügen, indem Sie sich mit Ihrem Benutzernamen und Kennwort anmelden.
+
+    ![Wählen Sie entweder ein Microsoft-Konto aus, oder scannen Sie einen QR-Code, sofern ein solcher Code verfügbar ist.](media/user-help-auth-app-add-personal-ms-account/add-account-android.png)
+
+1. Melden Sie sich über die entsprechende E-Mail-Adresse (z.B. alain@outlook.com) bei Ihrem persönlichen Konto an, und wählen Sie dann **Weiter** aus.
 
     >[!Note]
-    >Wenn Sie kein persönliches Microsoft-Konto besitzen, können Sie hier ein Konto erstellen.
+    >Wenn Sie kein persönliches Microsoft-Konto haben, können Sie [hier](https://account.microsoft.com/account/Account?refd=www.bing.com&ru=https%3A%2F%2Faccount.microsoft.com%2F%3Frefd%3Dwww.bing.com&destrt=home-index) ein Konto erstellen.
 
-5. Geben Sie Ihr Kennwort ein, und wählen Sie dann **Anmelden** aus.
-
-    Ihr persönliches Konto wird zur Microsoft Authenticator-App hinzugefügt.
+1. Geben Sie Ihr Kennwort ein, und wählen Sie dann **Anmelden** aus. Ihr persönliches Konto wird zur Microsoft Authenticator-App hinzugefügt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

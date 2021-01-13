@@ -8,12 +8,14 @@ ms.devlang: c
 ms.topic: conceptual
 ms.date: 02/14/2019
 ms.author: wesmc
-ms.openlocfilehash: 94ac75c4165b11e343ce5c31480a511ebf978a36
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.custom:
+- 'Role: Cloud Development'
+ms.openlocfilehash: 52da3c28faa375f8b308e3fe78329fec4f996af9
+ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67838773"
+ms.lasthandoff: 12/29/2020
+ms.locfileid: "97804053"
 ---
 # <a name="connect-raspberry-pi-to-azure-iot-hub-c"></a>Verbinden von Raspberry Pi mit Azure IoT Hub (C)
 
@@ -97,7 +99,7 @@ Bereiten Sie die microSD-Karte für die Installation des Raspbian-Image vor.
 
 1. Laden Sie Raspbian herunter.
 
-   1. [Laden Sie Raspbian Stretch mit Desktop herunter](https://www.raspberrypi.org/downloads/raspbian/) (die ZIP-Datei).
+   1. [Laden Sie Raspbian Stretch mit Desktop herunter](https://www.raspberrypi.org/software/) (die ZIP-Datei).
 
    2. Entpacken Sie das Raspbian-Image in einen Ordner auf Ihrem Computer.
 
@@ -152,7 +154,7 @@ Verwenden Sie für Sensorstifte die folgende Verkabelung:
 | SDI (Stift 23F)            | SPI0 MOSI (Stift 19)     | Grünes Kabel   |
 | CS (Stift 24F)             | SPI0 CS (Stift 24)       | Blaues Kabel    |
 
-Klicken Sie hier, um die [Raspberry Pi 2 und 3-Stiftzuordnungen](https://developer.microsoft.com/windows/iot/docs/pinmappingsrpi) zur Referenz anzuzeigen.
+Klicken Sie hier, um die [Raspberry Pi 2 und 3-Stiftzuordnungen](/windows/iot-core/learn-about-hardware/pinmappings/pinmappingsrpi) zur Referenz anzuzeigen.
 
 Nachdem Sie den BME280 erfolgreich mit Ihrem Raspberry Pi verbunden haben, sollte das Gerät wie in der nachstehenden Abbildung aussehen.
 
@@ -160,7 +162,7 @@ Nachdem Sie den BME280 erfolgreich mit Ihrem Raspberry Pi verbunden haben, sollt
 
 ### <a name="connect-pi-to-the-network"></a>Verbindung zwischen Pi und dem Netzwerk
 
-Verbinden Sie den Raspberry Pi mit dem Micro-USB-Kabel mit der Stromversorgung. Verwenden Sie das Ethernet-Kabel zum Verbinden von Pi mit Ihrem verkabelten Netzwerk, oder befolgen Sie die [Anweisungen der Raspberry Pi Foundation](https://www.raspberrypi.org/learning/software-guide/wifi/), um Pi mit Ihrem WLAN zu verbinden. Notieren Sie sich die [IP-Adresse von Pi](https://learn.adafruit.com/adafruits-raspberry-pi-lesson-3-network-setup/finding-your-pis-ip-address), nachdem es eine Verbindung zum Netzwerk hergestellt hat.
+Verbinden Sie den Raspberry Pi mit dem Micro-USB-Kabel mit der Stromversorgung. Verwenden Sie das Ethernet-Kabel zum Verbinden von Pi mit Ihrem verkabelten Netzwerk, oder befolgen Sie die [Anweisungen der Raspberry Pi Foundation](https://www.raspberrypi.org/documentation/configuration/wireless/), um Pi mit Ihrem WLAN zu verbinden. Notieren Sie sich die [IP-Adresse von Pi](https://www.raspberrypi.org/documentation/remote-access/ip-address.md), nachdem es eine Verbindung zum Netzwerk hergestellt hat.
 
 ![Mit verkabeltem Netzwerk verbunden](./media/iot-hub-raspberry-pi-kit-c-get-started/5-power-on-pi.png)
 

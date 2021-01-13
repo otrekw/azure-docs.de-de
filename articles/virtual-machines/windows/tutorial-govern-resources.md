@@ -1,32 +1,25 @@
 ---
-title: 'Tutorial: Verwalten von virtuellen Azure-Computern mit Azure PowerShell | Microsoft-Dokumentation'
-description: In diesem Tutorial erfahren Sie, wie Sie Azure PowerShell zum Verwalten von virtuellen Azure-Computern durch Anwenden von RBAC, Richtlinien, Sperren und Tags verwenden.
-services: virtual-machines-windows
-documentationcenter: virtual-machines
+title: 'Tutorial: Verwalten virtueller Computer mit PowerShell'
+description: In diesem Tutorial erfahren Sie, wie Sie Azure PowerShell zum Verwalten von virtuellen Azure-Computern durch Anwenden von Azure RBAC, Richtlinien, Sperren und Tags verwenden.
 author: tfitzmac
-manager: gwallace
-editor: tysonn
 ms.service: virtual-machines-windows
 ms.workload: infrastructure
-ms.tgt_pltfrm: vm-windows
 ms.topic: tutorial
 ms.date: 12/05/2018
 ms.author: tomfitz
 ms.custom: mvc
-ms.openlocfilehash: 8c551e5c61c091e46870efcc8bffcb669aa78ea9
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 393606eb4211131b2b530e3900746e5024321aa3
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100330"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94844249"
 ---
 # <a name="tutorial-learn-about-windows-virtual-machine-management-with-azure-powershell"></a>Tutorial: Informationen zur Verwaltung von virtuellen Windows-Computern mit Azure PowerShell
 
 [!INCLUDE [Resource Manager governance introduction](../../../includes/resource-manager-governance-intro.md)]
 
 ## <a name="launch-azure-cloud-shell"></a>Starten von Azure Cloud Shell
-
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 Azure Cloud Shell ist eine kostenlose interaktive Shell, mit der Sie die Schritte in diesem Artikel ausführen können. Sie verfügt über allgemeine vorinstallierte Tools und ist für die Verwendung mit Ihrem Konto konfiguriert. 
 
@@ -46,9 +39,9 @@ New-AzResourceGroup -Name myResourceGroup -Location EastUS
 
 Die Ressourcengruppe ist derzeit leer.
 
-## <a name="role-based-access-control"></a>Rollenbasierte Zugriffssteuerung
+## <a name="azure-role-based-access-control"></a>Rollenbasierte Zugriffssteuerung in Azure
 
-Sie sollten sicherstellen, dass Benutzer in Ihrer Organisation einen geeigneten Zugriff auf diese Ressourcen haben. Den Benutzern sollte kein uneingeschränkter Zugriff erteilt werden, aber Sie müssen auch sicherstellen, dass sie ihre Arbeit erledigen können. Mit der [rollenbasierten Zugriffssteuerung](../../role-based-access-control/overview.md) können Sie verwalten, welche Benutzer die Berechtigung zum Ausführen bestimmter Aktionen in einem Bereich erhalten.
+Sie sollten sicherstellen, dass Benutzer in Ihrer Organisation einen geeigneten Zugriff auf diese Ressourcen haben. Den Benutzern sollte kein uneingeschränkter Zugriff erteilt werden, aber Sie müssen auch sicherstellen, dass sie ihre Arbeit erledigen können. Mit der [rollenbasierten Zugriffssteuerung in Azure (Azure Role-Based Access Control, Azure RBAC)](../../role-based-access-control/overview.md) können Sie verwalten, welche Benutzer die Berechtigung zum Ausführen bestimmter Aktionen in einem Bereich erhalten.
 
 Um Rollenzuweisungen erstellen und entfernen zu können, benötigen Benutzer den Zugriff `Microsoft.Authorization/roleAssignments/*`. Dieser Zugriff wird über die Rolle „Besitzer“oder „Benutzerzugriffsadministrator“ gewährt.
 
@@ -60,7 +53,7 @@ Zum Verwalten virtueller Computerlösungen gibt es drei ressourcenspezifische Ro
 
 Anstatt einzelnen Benutzern Rollen zuzuweisen, ist es häufig einfacher, eine Azure Active Directory-Gruppe mit Benutzern zu verwenden, die ähnliche Aktionen ausführen müssen. Danach weisen Sie diese Gruppe der entsprechenden Rolle zu. Verwenden Sie in diesem Artikel entweder eine vorhandene Gruppe für die VM-Verwaltung, oder [erstellen Sie eine Azure Active Directory-Gruppe](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md) über das Portal.
 
-Nachdem Sie entweder eine neue Gruppe erstellt oder nach einer vorhandenen Gruppe gesucht haben, weisen Sie die Azure Active Directory-Gruppe mithilfe des Befehls [New-AzRoleAssignment](https://docs.microsoft.com/powershell/module/az.resources/new-azroleassignment) der Rolle „Mitwirkender für virtuelle Computer“ für die Ressourcengruppe zu.  
+Nachdem Sie entweder eine neue Gruppe erstellt oder nach einer vorhandenen Gruppe gesucht haben, weisen Sie die Azure Active Directory-Gruppe mithilfe des Befehls [New-AzRoleAssignment](/powershell/module/az.resources/new-azroleassignment) der Rolle „Mitwirkender für virtuelle Computer“ für die Ressourcengruppe zu.  
 
 ```azurepowershell-interactive
 $adgroup = Get-AzADGroup -DisplayName <your-group-name>
@@ -76,7 +69,7 @@ In der Regel müssen Sie den Prozess für die Rollen *Mitwirkender von virtuelle
 
 ## <a name="azure-policy"></a>Azure Policy
 
-[Azure Policy](../../governance/policy/overview.md) hilft Ihnen dabei, sicherzustellen, dass alle Ressourcen im Abonnement die Unternehmensstandards erfüllen. Ihr Abonnement enthält bereits verschiedene Richtliniendefinitionen. Verwenden Sie den Befehl [Get-AzPolicyDefinition](https://docs.microsoft.com/powershell/module/az.resources/Get-AzPolicyDefinition), um die verfügbaren Richtliniendefinitionen anzuzeigen:
+[Azure Policy](../../governance/policy/overview.md) hilft Ihnen dabei, sicherzustellen, dass alle Ressourcen im Abonnement die Unternehmensstandards erfüllen. Ihr Abonnement enthält bereits verschiedene Richtliniendefinitionen. Verwenden Sie den Befehl [Get-AzPolicyDefinition](/powershell/module/az.resources/get-azpolicydefinition), um die verfügbaren Richtliniendefinitionen anzuzeigen:
 
 ```azurepowershell-interactive
 (Get-AzPolicyDefinition).Properties | Format-Table displayName, policyType
@@ -88,7 +81,7 @@ Die vorhandenen Richtliniendefinitionen werden angezeigt. Der Richtlinientyp lau
 * Begrenzen der SKUs für virtuelle Computer
 * Überwachen von virtuellen Computern, die keine verwalteten Datenträger verwenden
 
-Im folgenden Beispiel rufen Sie drei Richtliniendefinitionen anhand des Anzeigenamens ab. Diese Definitionen werden der Ressourcengruppe mithilfe des Befehls [New-AzPolicyAssignment](https://docs.microsoft.com/powershell/module/az.resources/new-azpolicyassignment) zugewiesen. Für einige Richtlinien stellen Sie Parameterwerte bereit, um die zulässigen Werte anzugeben.
+Im folgenden Beispiel rufen Sie drei Richtliniendefinitionen anhand des Anzeigenamens ab. Diese Definitionen werden der Ressourcengruppe mithilfe des Befehls [New-AzPolicyAssignment](/powershell/module/az.resources/new-azpolicyassignment) zugewiesen. Für einige Richtlinien stellen Sie Parameterwerte bereit, um die zulässigen Werte anzugeben.
 
 ```azurepowershell-interactive
 # Values to use for parameters
@@ -100,7 +93,7 @@ $rg = Get-AzResourceGroup -Name myResourceGroup
 
 # Get policy definitions for allowed locations, allowed SKUs, and auditing VMs that don't use managed disks
 $locationDefinition = Get-AzPolicyDefinition | where-object {$_.properties.displayname -eq "Allowed locations"}
-$skuDefinition = Get-AzPolicyDefinition | where-object {$_.properties.displayname -eq "Allowed virtual machine SKUs"}
+$skuDefinition = Get-AzPolicyDefinition | where-object {$_.properties.displayname -eq "Allowed virtual machine size SKUs"}
 $auditDefinition = Get-AzPolicyDefinition | where-object {$_.properties.displayname -eq "Audit VMs that do not use managed disks"}
 
 # Assign policy for allowed locations
@@ -140,9 +133,9 @@ Nach Abschluss der Bereitstellung können Sie weitere Verwaltungseinstellungen a
 
 ## <a name="lock-resources"></a>Sperren von Ressourcen
 
-[Ressourcensperren](../../azure-resource-manager/resource-group-lock-resources.md) verhindern, dass Benutzer in Ihrer Organisation versehentlich wichtige Ressourcen löschen oder ändern. Im Gegensatz zur rollenbasierten Zugriffssteuerung wenden Ressourcensperren eine Einschränkung auf alle Benutzer und Rollen an. Sie können die Sperrebene auf *CanNotDelete* oder *ReadOnly* festlegen.
+[Ressourcensperren](../../azure-resource-manager/management/lock-resources.md) verhindern, dass Benutzer in Ihrer Organisation versehentlich wichtige Ressourcen löschen oder ändern. Im Gegensatz zur rollenbasierten Zugriffssteuerung wenden Ressourcensperren eine Einschränkung auf alle Benutzer und Rollen an. Sie können die Sperrebene auf *CanNotDelete* oder *ReadOnly* festlegen.
 
-Verwenden Sie den Befehl [New-AzResourceLock](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcelock), um den virtuellen Computer und die Netzwerksicherheitsgruppe zu sperren:
+Verwenden Sie den Befehl [New-AzResourceLock](/powershell/module/az.resources/new-azresourcelock), um den virtuellen Computer und die Netzwerksicherheitsgruppe zu sperren:
 
 ```azurepowershell-interactive
 # Add CanNotDelete lock to the VM
@@ -170,11 +163,11 @@ Es wird eine Fehlermeldung mit dem Hinweis angezeigt, dass der Löschvorgang auf
 
 ## <a name="tag-resources"></a>Markieren von Ressourcen
 
-Durch Anwenden von [Tags](../../azure-resource-manager/resource-group-using-tags.md) können Sie Ihre Azure-Ressourcen logisch nach Kategorien organisieren. Jedes Tag besteht aus einem Namen und einem Wert. So können Sie beispielsweise den Namen „Umgebung“ und den Wert „Produktion“ auf alle Ressourcen in der Produktion anwenden.
+Durch Anwenden von [Tags](../../azure-resource-manager/management/tag-resources.md) können Sie Ihre Azure-Ressourcen logisch nach Kategorien organisieren. Jedes Tag besteht aus einem Namen und einem Wert. So können Sie beispielsweise den Namen „Umgebung“ und den Wert „Produktion“ auf alle Ressourcen in der Produktion anwenden.
 
 [!INCLUDE [Resource Manager governance tags Powershell](../../../includes/resource-manager-governance-tags-powershell.md)]
 
-Verwenden Sie den Befehl [Set-AzResource](https://docs.microsoft.com/powershell/module/az.resources/set-azresource), um Tags auf einen virtuellen Computer anzuwenden:
+Verwenden Sie den Befehl [Set-AzResource](/powershell/module/az.resources/set-azresource), um Tags auf einen virtuellen Computer anzuwenden:
 
 ```azurepowershell-interactive
 # Get the virtual machine
@@ -188,7 +181,7 @@ Set-AzResource -Tag @{ Dept="IT"; Environment="Test"; Project="Documentation" } 
 
 ### <a name="find-resources-by-tag"></a>Suchen von Ressourcen nach Tag
 
-Verwenden Sie den Befehl [Get-AzResource](https://docs.microsoft.com/powershell/module/az.resources/get-azresource), um Ressourcen über einen Tagnamen und einen Wert zu suchen:
+Verwenden Sie den Befehl [Get-AzResource](/powershell/module/az.resources/get-azresource), um Ressourcen über einen Tagnamen und einen Wert zu suchen:
 
 ```azurepowershell-interactive
 (Get-AzResource -Tag @{ Environment="Test"}).Name
@@ -206,7 +199,7 @@ Get-AzResource -Tag @{ Environment="Test"} | Where-Object {$_.ResourceType -eq "
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Die gesperrte Netzwerksicherheitsgruppe kann erst gelöscht werden, wenn die Sperre entfernt wird. Verwenden Sie den Befehl [Remove-AzResourceLock](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcelock), um die Sperre zu entfernen:
+Die gesperrte Netzwerksicherheitsgruppe kann erst gelöscht werden, wenn die Sperre entfernt wird. Verwenden Sie den Befehl [Remove-AzResourceLock](/powershell/module/az.resources/remove-azresourcelock), um die Sperre zu entfernen:
 
 ```azurepowershell-interactive
 Remove-AzResourceLock -LockName LockVM `
@@ -219,15 +212,19 @@ Remove-AzResourceLock -LockName LockNSG `
   -ResourceGroupName myResourceGroup
 ```
 
-Wenn Ressourcengruppe, virtueller Computer und alle zugehörigen Ressourcen nicht mehr benötigt werden, können Sie sie mit dem Befehl [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) entfernen.
+Wenn Ressourcengruppe, virtueller Computer und alle zugehörigen Ressourcen nicht mehr benötigt werden, können Sie sie mit dem Befehl [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) entfernen.
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name myResourceGroup
 ```
 
+## <a name="manage-costs"></a>Verwalten von Kosten
+
+[!INCLUDE [cost-management-horizontal](../../../includes/cost-management-horizontal.md)]
+
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie ein benutzerdefiniertes Image eines virtuellen Computers erstellt. Es wurde Folgendes vermittelt:
+In diesem Tutorial haben Sie ein benutzerdefiniertes Image eines virtuellen Computers erstellt. Sie haben Folgendes gelernt:
 
 > [!div class="checklist"]
 > * Zuweisen von Benutzern zu einer Rolle
@@ -235,8 +232,7 @@ In diesem Tutorial haben Sie ein benutzerdefiniertes Image eines virtuellen Comp
 > * Schützen wichtiger Ressourcen mit Sperren
 > * Markieren von Ressourcen mit Tags für die Abrechnung und Verwaltung
 
-Im nächsten Tutorial erhalten Sie Informationen zu hoch verfügbaren virtuellen Computern.
+Im nächsten Tutorial erfahren Sie, wie Sie auf einem virtuellen Linux-Computer Änderungen ermitteln und Paketupdates verwalten.
 
 > [!div class="nextstepaction"]
-> [Überwachen virtueller Computer](tutorial-monitoring.md)
-
+> [Verwalten virtueller Computer](tutorial-config-management.md)

@@ -1,6 +1,6 @@
 ---
-title: Erstellen eines Load Balancers mit Internetzugriff und IPv6 – PowerShell
-titlesuffix: Azure Load Balancer
+title: Erstellen eines Lastenausgleichs mit Internetzugriff und IPv6 – Azure PowerShell
+titleSuffix: Azure Load Balancer
 description: Erfahren Sie, wie Sie einen Load Balancer mit Internetzugriff über IPv6 unter Verwendung von PowerShell für Resource Manager erstellen.
 services: load-balancer
 documentationcenter: na
@@ -9,17 +9,17 @@ keywords: IPv6, Azure Load Balancer, dualer Stapel, öffentliche IP, natives IPv
 ms.service: load-balancer
 ms.custom: seodec18
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: allensu
-ms.openlocfilehash: 12f9b8d3031d3b64e2f39f07763f7a75164aad25
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 43203a756bcb42c7d00de9c11e9223f1d8b9e2a8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68274984"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87001586"
 ---
 # <a name="get-started-creating-an-internet-facing-load-balancer-with-ipv6-using-powershell-for-resource-manager"></a>Erste Schritte zum Erstellen eines Load Balancers mit Internetzugriff über IPv6 unter Verwendung von PowerShell für Resource Manager
 
@@ -28,6 +28,8 @@ ms.locfileid: "68274984"
 > * [Azure-Befehlszeilenschnittstelle](load-balancer-ipv6-internet-cli.md)
 > * [Vorlage](load-balancer-ipv6-internet-template.md)
 
+>[!NOTE] 
+>In diesem Artikel wird eine Einführungsfunktion von IPv6 beschrieben, mit der Lastenausgleichsmodule im Basic-Tarif sowohl IPv4- als auch IPv6-Konnektivität bereitstellen können. Umfassende IPv6-Konnektivität ist jetzt mit [IPv6 für Azure VNETs](../virtual-network/ipv6-overview.md) verfügbar, das IPv6-Konnektivität in Ihre virtuellen Netzwerke integriert und wichtige Funktionen wie Regeln für IPv6-Netzwerksicherheitsgruppen, benutzerdefiniertes IPv6-Routing, IPv6-Lastenausgleich in den Tarifen Standard und Basic und mehr umfasst.  IPv6 für Azure VNETs ist der empfohlene Standard für IPv6-Anwendungen in Azure. Weitere Informationen finden Sie unter [IPv6 für Azure VNET-PowerShell-Bereitstellung](../virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md). 
 
 Ein Azure Load Balancer ist ein Layer-4-Load Balancer (TCP, UDP). Der Load Balancer sorgt für Hochverfügbarkeit, indem er eingehenden Datenverkehr zwischen funktionierenden Dienstinstanzen in Clouddiensten oder auf virtuelle Computer verteilt, die in einer Gruppe für den Lastenausgleich definiert wurden. Der Azure Load Balancer kann diese Dienste auch auf mehreren Ports, mehreren IP-Adressen oder beidem leisten.
 
@@ -53,13 +55,13 @@ Die folgenden Schritte zeigen, wie Sie einen internen Load Balancer mit Internet
 
 Zum Bereitstellen eines Load Balancers erstellen und konfigurieren Sie die folgenden Objekte:
 
-* Front-End-IP-Konfiguration: Enthält öffentliche IP-Adressen für eingehenden Netzwerkdatenverkehr.
-* Back-End-Adresspool: Enthält Netzwerkschnittstellen (NICs), die virtuellen Computern den Empfang von Netzwerkdatenverkehr des Load Balancers ermöglichen.
+* Front-End-IP-Konfiguration: enthält öffentliche IP-Adressen für eingehenden Netzwerkdatenverkehr.
+* Back-End-Adresspool: enthält Netzwerkschnittstellen (NICs), die virtuellen Computern den Empfang von Netzwerkdatenverkehr des Lastenausgleichs ermöglichen.
 * Lastenausgleichsregeln: Enthält Regeln für das Zuordnen eines öffentlichen Ports des Load Balancers zu einem Port im Back-End-Adresspool.
 * NAT-Eingangsregeln: Enthält Regeln für das Zuordnen eines öffentlichen Ports des Load Balancers zu einem Port für einen bestimmten virtuellen Computer im Back-End-Adresspool.
 * Tests: Enthält Integritätstests zum Prüfen der Verfügbarkeit von VM-Instanzen im Back-End-Adresspool.
 
-Weitere Informationen finden Sie unter [Unterstützung des Azure Resource Managers für Load Balancer](load-balancer-arm.md).
+Weitere Informationen finden Sie unter [Azure Load Balancer-Komponenten](./components.md).
 
 ## <a name="set-up-powershell-to-use-resource-manager"></a>Einrichten von PowerShell für die Verwendung des Resource Managers
 
@@ -197,7 +199,7 @@ In diesem Beispiel werden die folgenden Elemente erstellt:
 
 ## <a name="create-virtual-machines-and-assign-the-newly-created-nics"></a>Erstellen von virtuellen Computern und Zuweisen der neu erstellten NICs
 
-Weitere Informationen zum Erstellen eines virtuellen Computers finden Sie unter [Erstellen und Vorkonfigurieren eines virtuellen Windows-Computers mit Resource Manager und Azure PowerShell](../virtual-machines/virtual-machines-windows-ps-create.md?toc=%2fazure%2fload-balancer%2ftoc.json)
+Weitere Informationen zum Erstellen eines virtuellen Computers finden Sie unter [Erstellen und Vorkonfigurieren eines virtuellen Windows-Computers mit Resource Manager und Azure PowerShell](../virtual-machines/windows/quick-create-powershell.md?toc=%2fazure%2fload-balancer%2ftoc.json)
 
 1. Erstellen Sie eine Verfügbarkeitsgruppe und ein Speicherkonto.
 
@@ -230,10 +232,4 @@ Weitere Informationen zum Erstellen eines virtuellen Computers finden Sie unter 
     New-AzVM -ResourceGroupName NRP-RG -Location 'West US' -VM $vm2
     ```
 
-## <a name="next-steps"></a>Nächste Schritte
 
-[Erste Schritte zum Konfigurieren des internen Lastenausgleichs](load-balancer-get-started-ilb-arm-ps.md)
-
-[Konfigurieren eines Lastenausgleichs-Verteilungsmodus](load-balancer-distribution-mode.md)
-
-[Konfigurieren von TCP-Leerlauftimeout-Einstellungen für den Lastenausgleich](load-balancer-tcp-idle-timeout.md)

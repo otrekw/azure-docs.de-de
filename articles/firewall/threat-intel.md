@@ -1,35 +1,33 @@
 ---
 title: Threat Intelligence-gestütztes Filtern für Azure Firewall
-description: Erfahren Sie mehr über das Threat Intelligence-gestützte Filtern für Azure Firewall
+description: Das Filtern auf Basis von Threat Intelligence kann für Ihre Firewall aktiviert werden, damit diese Sie bei Datenverkehr von und zu bekannten schädlichen IP-Adressen oder Domänen warnt und diesen verweigert.
 services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 3/11/2019
+ms.date: 05/12/2020
 ms.author: victorh
-ms.openlocfilehash: 4ef9089c94d9e806cc519c4f8243cdcb7e73953a
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e51cc8905a7b4a88bb7f7dabaf24bb30159ff86c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60194046"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "83655064"
 ---
-# <a name="azure-firewall-threat-intelligence-based-filtering---public-preview"></a>Threat Intelligence-gestütztes Filtern für Azure Firewall – Öffentliche Vorschauversion
+# <a name="azure-firewall-threat-intelligence-based-filtering"></a>Threat Intelligence-gestütztes Filtern für Azure Firewall
 
-Das Filtern auf Basis von Threat Intelligence kann für Ihre Firewall aktiviert werden, damit diese Sie bei Datenverkehr von und zu bekannten schädlichen IP-Adressen oder Domänen warnt und diesen verweigert. Die IP-Adressen und Domänen stammen aus dem Microsoft Threat Intelligence-Feed. Microsoft Threat Intelligence basiert auf [Intelligent Security Graph](https://www.microsoft.com/en-us/security/operations/intelligence) und wird von mehreren Diensten einschließlich Azure Security Center verwendet.
+Das Filtern auf Basis von Threat Intelligence kann für Ihre Firewall aktiviert werden, damit diese Sie bei Datenverkehr von und zu bekannten schädlichen IP-Adressen oder Domänen warnt und diesen verweigert. Die IP-Adressen und Domänen stammen aus dem Microsoft Threat Intelligence-Feed. Microsoft Threat Intelligence basiert auf [Intelligent Security Graph](https://www.microsoft.com/security/operations/intelligence) und wird von mehreren Diensten einschließlich Azure Security Center verwendet.<br>
+<br>
 
-![Threat Intelligence für die Firewall](media/threat-intel/firewall-threat.png)
+:::image type="content" source="media/threat-intel/firewall-threat.png" alt-text="Threat Intelligence für die Firewall" border="false":::
 
-> [!IMPORTANT]
-> Das Filtern auf Basis von Threat Intelligence befindet sich derzeit in der öffentlichen Vorschau und wird mit einer Vorschau-SLA (Vereinbarung zum Servicelevel) bereitgestellt. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar.  Weitere Informationen finden Sie unter [Ergänzende Nutzungsbedingungen für Microsoft Azure-Vorschauversionen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
-Wenn das Threat Intelligence-gestützte Filtern aktiviert ist, werden die zugehörigen Regeln vor allen anderen Regeln (NAT-Regeln, Netzwerkregeln oder Anwendungsregeln) verarbeitet. Während der Vorschauversion sind nur die Datensätze von höchster Zuverlässigkeit enthalten.
+Wenn Sie das Threat Intelligence-gestützte Filtern aktiviert haben, werden die zugehörigen Regeln vor allen anderen Regeln (NAT-Regeln, Netzwerkregeln oder Anwendungsregeln) verarbeitet.
 
 Beim Auslösen einer Regel können Sie wahlweise nur eine Warnung protokollieren oder den Modus „Warnen und Verweigern“ verwenden.
 
 Für das Threat Intelligence-gestützte Filtern ist standardmäßig der Warnmodus aktiviert. Bis die Portalschnittstelle in Ihrer Region verfügbar wird, können Sie diese Funktion nicht deaktivieren oder den Modus ändern.
 
-![Portalschnittstelle für Threat Intelligence-gestütztes Filtern](media/threat-intel/threat-intel-ui.png)
+:::image type="content" source="media/threat-intel/threat-intel-ui.png" alt-text="Threat Intelligence für die Firewall":::
 
 ## <a name="logs"></a>Protokolle
 

@@ -1,19 +1,19 @@
 ---
-title: Verwenden der Azure Data Box Heavy zum Migrieren von Dateifreigabeinhalten zu SharePoint Online | Microsoft-Dokumentation
+title: Verwenden von Azure Data Box Heavy zum Verschieben von Dateifreigabeinhalten zu SharePoint Online
 description: In diesem Tutorial erfahren Sie, wie Sie mit der Azure Data Box Heavy Inhalte von Dateifreigaben zu SharePoint Online migrieren.
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: heavy
-ms.topic: tutorial
+ms.topic: how-to
 ms.date: 07/18/2019
 ms.author: alkohli
-ms.openlocfilehash: 4955b28dff3193a95950912562cc3b6ec789479d
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: b00a944b69b8492d4aa00258154bf00f1c66ad33
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68325267"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92127113"
 ---
 # <a name="use-the-azure-data-box-heavy-to-migrate-your-file-share-content-to-sharepoint-online"></a>Verwenden der Azure Data Box Heavy zum Migrieren von Dateifreigabeinhalten zu SharePoint Online
 
@@ -21,9 +21,9 @@ Verwenden Sie die Azure Data Box Heavy und das SharePoint-Migrationstool (SPMT),
 
 Die Microsoft Azure Data Box ist ein Dienst, mit dem Sie ein Gerät aus dem Microsoft Azure-Portal bestellen können. Anschließend können Sie Terabytes an Daten von Ihren Servern auf das Gerät kopieren. Nach dem Zurücksenden an Microsoft werden die Daten in Azure kopiert. Abhängig von der Größe der Daten, die Sie übertragen möchten, können Sie Folgendes wählen:
 
-- [Data Box Disk](https://docs.microsoft.com/azure/databox/data-box-disk-overview) mit einer nutzbaren Kapazität von 35 TB pro Bestellung für Datasets geringer bis mittlerer Größe.
-- [Data Box](https://docs.microsoft.com/azure/databox/data-box-overview) mit einer nutzbaren Kapazität von 80 TB pro Gerät für Datasets mittlerer Größe bis große Datasets.
-- [Data Box Heavy](https://docs.microsoft.com/azure/databox/data-box-heavy-overview) mit einer nutzbaren Kapazität von 770 TB pro Gerät für große Datasets.
+- [Data Box Disk](./data-box-disk-overview.md) mit einer nutzbaren Kapazität von 35 TB pro Bestellung für Datasets geringer bis mittlerer Größe.
+- [Data Box](./data-box-overview.md) mit einer nutzbaren Kapazität von 80 TB pro Gerät für Datasets mittlerer Größe bis große Datasets.
+- [Data Box Heavy](./data-box-heavy-overview.md) mit einer nutzbaren Kapazität von 770 TB pro Gerät für große Datasets.
 
 In diesem Artikel wird erläutert, wie Data Box Heavy zum Migrieren von Dateifreigabeinhalten zu SharePoint Online verwendet wird.
 
@@ -37,7 +37,7 @@ In diesem Artikel wird erläutert, wie Data Box Heavy zum Migrieren von Dateifre
 
 ### <a name="for-sharepoint-online"></a>Für SharePoint Online
 
-- Lesen Sie die [Mindestanforderungen für das SharePoint-Migrationstool (SPMT)](https://docs.microsoft.com/sharepointmigration/how-to-use-the-sharepoint-migration-tool).
+- Lesen Sie die [Mindestanforderungen für das SharePoint-Migrationstool (SPMT)](/sharepointmigration/how-to-use-the-sharepoint-migration-tool).
 
 ## <a name="workflow-overview"></a>Übersicht über Workflow
 
@@ -82,9 +82,9 @@ Für optimale Leistung und Konnektivität empfehlen wir, einen virtuellen Azure-
 1. Melden Sie sich beim Azure-Portal an, und [erstellen Sie einen virtuellen Computer](../virtual-machines/windows/quick-create-portal.md).
 2. [Stellen Sie die Azure-Dateifreigabe auf dem virtuellen Computer bereit](../storage/files/storage-how-to-use-files-windows.md#mount-the-azure-file-share-with-file-explorer).
 3. [Laden Sie das SharePoint-Migrationstool herunter](https://spmtreleasescus.blob.core.windows.net/install/default.htm), und installieren Sie es auf dem virtuellen Azure-Computer.
-4. Starten Sie die SharePoint-Migrationstool. Klicken Sie auf **Anmelden**, und geben Sie Ihren Benutzernamen und Ihr Kennwort für Office 365 ein.
+4. Starten Sie die SharePoint-Migrationstool. Klicken Sie auf **Anmelden**, und geben Sie den Benutzernamen und das Kennwort für Ihr Geschäfts-, Schul- oder Unikonto ein.
 5. Wenn **Wo sind Ihre Daten?** angezeigt wird, wählen Sie **Dateifreigabe** aus. Geben Sie den Pfad zu der Azure-Dateifreigabe ein, die Ihre Daten enthält.
-6. Befolgen Sie die restlichen Eingabeaufforderungen, einschließlich der Angabe des Zielspeicherorts. Weitere Informationen finden Sie unter [Verwenden des SharePoint-Migrationstools](https://docs.microsoft.com/sharepointmigration/how-to-use-the-sharepoint-migration-tool).
+6. Befolgen Sie die restlichen Eingabeaufforderungen, einschließlich der Angabe des Zielspeicherorts. Weitere Informationen finden Sie unter [Verwenden des SharePoint-Migrationstools](/sharepointmigration/how-to-use-the-sharepoint-migration-tool).
 
 > [!IMPORTANT]
 > - Die Geschwindigkeit, mit der Daten in SharePoint Online erfasst werden, hängt von mehreren Faktoren ab, unabhängig davon, ob sich die Daten bereits in Azure befinden. Die Kenntnis dieser Faktoren hilft Ihnen bei der Planung der Migration und der Erhöhung ihrer Effizienz.  Weitere Informationen finden Sie unter [Best Practices zum Steigern der Migrationsleistung von SharePoint und OneDrive](/sharepointmigration/sharepoint-online-and-onedrive-migration-speed).

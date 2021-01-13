@@ -10,17 +10,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 04/29/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1e56d4d94e38e5095ef2223d0cc2875cbf1dcd46
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 73d4239dd34f2a64aa7b3edbf88bad4348e01291
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64919119"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "85356201"
 ---
 # <a name="troubleshoot-object-synchronization-with-azure-ad-connect-sync"></a>Beheben von Problemen bei der Objektsynchronisierung mit der Azure AD Connect-Synchronisierung
 Dieser Artikel enthält Schritte zum Behandeln von Problemen bei der Objektsynchronisierung mithilfe der Problembehandlungsaufgabe. Die Funktionsweise der Problembehandlung in Azure Active Directory (Azure AD) wird in [diesem kurzen Video](https://aka.ms/AADCTSVideo) veranschaulicht.
@@ -61,11 +61,6 @@ Im restlichen Teil dieses Abschnitts werden bestimmte Ergebnisse beschrieben, di
 Wenn das UPN- (UserPrincipalName) bzw. das alternative Anmelde-ID-Suffix nicht mit dem Azure AD-Mandanten überprüft wird, ersetzt Azure Active Directory die UPN-Suffixe durch den Standarddomänennamen „onmicrosoft.com“.
 
 ![Azure AD ersetzt UPN](media/tshoot-connect-objectsync/objsynch2.png)
-
-### <a name="changing-upn-suffix-from-one-federated-domain-to-another-federated-domain"></a>Ändern des UPN-Suffix von einer Verbunddomäne in eine andere Verbunddomäne
-Azure Active Directory erlaubt nicht die Synchronisierung des UPN- (UserPrincipalName) bzw. des alternativen Anmelde-ID-Suffix von einer Verbunddomäne in eine andere Verbunddomäne. Dies gilt für Domänen, die mit dem Azure AD-Mandanten überprüft werden und den Authentifizierungstyp „Verbund“ aufweisen.
-
-![Kein UPN-Synchronisierung von einer Verbunddomäne mit einer anderen](media/tshoot-connect-objectsync/objsynch3.png) 
 
 ### <a name="azure-ad-tenant-dirsync-feature-synchronizeupnformanagedusers-is-disabled"></a>Das DirSync-Feature „SynchronizeUpnForManagedUsers“ ist für Azure AD-Mandanten deaktiviert.
 Wenn das DirSync-Feature „SynchronizeUpnForManagedUsers“ für Azure AD-Mandanten deaktiviert ist, erlaubt Azure Active Directory keine Synchronisierungsupdates für den Benutzerprinzipalnamen bzw. die alternative Anmelde-ID für lizenzierte Benutzerkonten mit verwalteter Authentifizierung.

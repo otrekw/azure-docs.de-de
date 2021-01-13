@@ -1,25 +1,24 @@
 ---
-title: Einrichten von App-Kennwörtern auf der Seite „Sicherheitsinformationen“ (Vorschau) – Azure Active Directory | Microsoft-Dokumentation
-description: Richten Sie automatisch generierte Kennwörter (App-Kennwörter) ein, die in Ihrer Organisation mit nicht browserbasierten Apps oder mit Apps verwendet werden sollen, die keine zweistufige Überprüfung unterstützen. Dieses App-Kennwort ist kein normales Kennwort und kann auf der Seite „Sicherheitsinformationen“ eingerichtet werden.
+title: Erstellen von App-Kennwörtern auf der Seite „Sicherheitsinformationen“ (Vorschau) – Azure AD
+description: Erstellen Sie automatisch generierte Kennwörter (App-Kennwörter), die in Ihrer Organisation mit nicht browserbasierten Apps oder mit Apps verwendet werden sollen, die keine zweistufige Überprüfung unterstützen. Dieses App-Kennwort ist kein normales Kennwort und kann auf der Seite „Sicherheitsinformationen“ eingerichtet werden.
 services: active-directory
-author: eross-msft
+author: curtand
 manager: daveba
 ms.reviewer: sahenry
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
-ms.topic: conceptual
+ms.topic: end-user-help
 ms.date: 02/13/2018
-ms.author: lizross
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9638893c707757cb520acdf18e8e89a6cdf13f08
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.author: curtand
+ms.openlocfilehash: 84588130788e9be8d3be52a8ea0f3988dce7b952
+ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70915977"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91537003"
 ---
-# <a name="manage-app-passwords-from-your-security-info-preview-page"></a>Verwalten von App-Kennwörtern auf der Seite „Sicherheitsinformationen“ (Vorschau)
+# <a name="create-app-passwords-from-the-security-info-preview-page"></a>Erstellen von App-Kennwörtern auf der Seite „Sicherheitsinformationen“ (Vorschau)
 
 Bestimmte Apps wie z.B. Outlook 2010 unterstützen keine zweistufige Überprüfung. Das bedeutet, dass die App nicht funktioniert, wenn in Ihrer Organisation die zweistufige Überprüfung verwendet wird. Um dieses Problem zu umgehen, können Sie ein automatisch generiertes Kennwort für die Verwendung mit jeder Nicht-Browser-App separat von Ihrem normalen Kennwort erstellen.
 
@@ -46,13 +45,13 @@ Wenn Sie die zweistufige Überprüfung mit Ihrem Geschäfts-, Schul- oder Unikon
 
 ### <a name="to-create-a-new-app-password"></a>So erstellen Sie ein neues App-Kennwort
 
-1. Melden Sie sich bei Ihrem Geschäfts-, Schul- oder Unikonto an, und rufen Sie die Seite https://myprofile.microsoft.com/ auf.
+1. Melden Sie sich bei Ihrem Geschäfts-, Schul- oder Unikonto an, und rufen Sie die Seite https://myaccount.microsoft.com/ auf.
 
     ![Seite „Mein Profil“ mit hervorgehobenen Links zu Sicherheitsinformationen](media/security-info/securityinfo-myprofile-page.png)
 
 2. Wählen Sie im linken Navigationsbereich den Eintrag **Sicherheitsinformation** oder den entsprechenden Link im Block **Sicherheitsinformation** aus, und klicken Sie dann auf der Seite **Sicherheitsinformation** auf **Methode hinzufügen**.
 
-    ![Seite „Sicherheitsinformationen“ mit hervorgehobener Option „Methode hinzufügen“](media/security-info/securityinfo-myprofile-addmethod-page.png)
+    ![Seite „Sicherheitsinformation“ mit hervorgehobener Option „Methode hinzufügen“](media/security-info/securityinfo-myprofile-addmethod-page.png)
 
 3. Wählen Sie auf der Seite **Methode hinzufügen** in der Dropdownliste die Option **App-Kennwort** aus, und klicken Sie dann auf **Hinzufügen**.
 
@@ -60,7 +59,7 @@ Wenn Sie die zweistufige Überprüfung mit Ihrem Geschäfts-, Schul- oder Unikon
 
 4. Geben Sie den Namen der App ein, für die das App-Kennwort benötigt wird, und klicken Sie dann auf **Weiter**.
 
-    ![Seite „App-Kennwort“ mit dem Namen der App](media/security-info/securityinfo-myprofile-password-appname.png)
+    ![Screenshot der Seite „App-Kennwort“ mit eingegebenem Namen der App.](media/security-info/securityinfo-myprofile-password-appname.png)
 
 5. Kopieren Sie den Text aus dem Feld **Kennwort**, fügen Sie ihn in den Bereich „Kennwort“ der App ein (in diesem Beispiel Outlook 2010), und klicken Sie auf **Fertig**.
 
@@ -83,6 +82,6 @@ Wenn Sie eine App, die ein App-Kennwort erfordert, nicht mehr benötigen, könne
 
 2. Klicken Sie im Bestätigungsfeld auf **Ja**, um das **App-Kennwort** zu löschen. Nachdem das App-Kennwort gelöscht wurde, wird es aus den Sicherheitsinformationen entfernt und auf der Seite **Sicherheitsinformationen** nicht mehr angezeigt.
 
-## <a name="for-more-information"></a>Weitere Informationen
+## <a name="for-more-information"></a>Weitere Informationen finden Sie unter
 
-- Weitere Informationen zur Seite **Sicherheitsinformationen** und deren Einrichtung finden Sie unter [Übersicht über die Sicherheitsinformation](user-help-security-info-overview.md).
+- Weitere Informationen zur Seite **Sicherheitsinformationen** und deren Einrichtung finden Sie unter [Übersicht über die Sicherheitsinformation](./security-info-setup-signin.md).

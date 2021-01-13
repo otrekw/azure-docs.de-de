@@ -1,18 +1,16 @@
 ---
-title: Rendern einer Blender-Szene mithilfe von Azure Batch und Batch Explorer
+title: Tutorial – Rendern einer Blender-Szene mithilfe von Azure Batch und Batch Explorer
 description: 'Tutorial: Rendern mehrerer Frames einer Blender-Szene mithilfe von Azure Batch und der Batch Explorer-Clientanwendung'
-services: batch
-ms.service: batch
 author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: tutorial
-ms.openlocfilehash: 8a512676ab0e56f51c0fb9c59f2e530cfcf73333
-ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
+ms.openlocfilehash: 5c015e4e83b0505a45690e92c1d732f74b6f6b0e
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57791425"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97106460"
 ---
 # <a name="tutorial-render-a-blender-scene-using-batch-explorer"></a>Tutorial: Rendern einer Blender-Szene mithilfe von Batch Explorer
 
@@ -29,9 +27,9 @@ In diesem Tutorial lernen Sie Folgendes:
 
 Sie benötigen ein Abonnement mit nutzungsbasierter Bezahlung oder eine andere Azure-Kaufoption, um die Renderinganwendungen in Batch auf nutzungsbasierter Basis zu verwenden. Nutzungsbasierte Lizenzierung wird nicht unterstützt, wenn Sie ein kostenloses Azure-Angebot verwenden, das mit monetären Gutschriften verbunden ist.
 
-Sie benötigen ein Azure Batch-Konto mit einem zugeordneten Speicherkonto.  Informationen zum Erstellen eines Batch-Kontos finden Sie in den Batch-Schnellstartartikeln, etwa [Schnellstart: Ausführen Ihres ersten Batch-Auftrags mit der Azure CLI](https://docs.microsoft.com/azure/batch/quick-create-cli).
+Sie benötigen ein Azure Batch-Konto mit einem zugeordneten Speicherkonto.  Informationen zum Erstellen eines Batch-Kontos finden Sie in den Batch-Schnellstartartikeln, etwa [Schnellstart: Ausführen Ihres ersten Batch-Auftrags mit der Azure CLI](./quick-create-cli.md).
 
-Für die in diesem Tutorial angegebene VM-Größe und -Anzahl ist ein Kernkontingent mit niedriger Priorität von mindestens 50 Kernen erforderlich. Das Standardkontingent kann zwar verwendet werden, Sie benötigen dann aber eine kleinere VM-Größe, was bedeutet, dass das Rendern der Bilder länger dauert. Die Vorgehensweise zum Anfordern eines höheren Kernkontingents wird in [diesem Artikel](https://docs.microsoft.com/azure/batch/batch-quota-limit) ausführlich beschrieben.
+Für die in diesem Tutorial angegebene VM-Größe und -Anzahl ist ein Kernkontingent mit niedriger Priorität von mindestens 50 Kernen erforderlich. Das Standardkontingent kann zwar verwendet werden, Sie benötigen dann aber eine kleinere VM-Größe, was bedeutet, dass das Rendern der Bilder länger dauert. Die Vorgehensweise zum Anfordern eines höheren Kernkontingents wird in [diesem Artikel](./batch-quota-limit.md) ausführlich beschrieben.
 
 Abschließend muss [Batch Explorer](https://azure.github.io/BatchExplorer/) installiert werden. Dieses Hilfsprogramm ist für Windows, OSX und Linux verfügbar. Wenn [Blender](https://www.blender.org/download/) installiert ist, kann die Beispielmodelldatei angezeigt werden. Dies ist jedoch optional.
 
@@ -44,7 +42,7 @@ Laden Sie die ZIP-Demodatei „Class room“ von der [Webseite mit Blender-Demod
 Erstellen Sie einen Speicherkontocontainer für die Dateien mit den Demoszenen:
 
 * Starten Sie Batch Explorer.
-* Klicken Sie im Hauptmenü auf der linken Seite auf das Menüelement „Daten“.
+* Klicken Sie auf der linken Seite im Hauptmenü auf das Menüelement „Daten“.
 * Vergewissern Sie sich, dass in der Dropdownliste die Option „Dateigruppen“ ausgewählt ist.
 * Klicken Sie auf die Schaltfläche mit dem Pluszeichen (+), und erstellen Sie eine neue leere Dateigruppe mit dem Namen „blender-classroom“.
   * Eine Dateigruppe ist einfach ein Azure Storage-Blobcontainer mit dem Präfix „fgrp-“. Mit dieser Konvention werden andere Container im Speicherkonto herausgefiltert.
@@ -95,6 +93,7 @@ Der Status des Pools und der virtuellen Computer kann in der Ansicht „Pools“
 ## <a name="create-a-rendering-job"></a>Erstellen eines Renderingauftrags
 
 Erstellen Sie einen Renderingauftrag, um mithilfe des erstellten Pools einige Frames zu rendern:
+
 * Klicken Sie auf der linken Seite im Hauptmenü auf das Menüelement „Katalog“.
 * Wählen Sie das Element „Blender“, um die Liste der Anwendungselemente anzuzeigen.
 * Wählen Sie die Elemente für das Rendering von Frames unter Windows Server aus.
@@ -139,6 +138,18 @@ Wenn alle Aufgaben abgeschlossen sind, wird der Auftrag als abgeschlossen markie
 * Klicken Sie entweder mit der rechten Maustaste auf „Delete“ (Löschen), oder klicken Sie oberhalb des Pools auf das Papierkorbsymbol.
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Sehen Sie sich im Abschnitt „Gallery“ (Katalog) die über Batch Explorer verfügbaren Renderinganwendungen an.
-* Für jede Anwendung stehen verschiedene Vorlagen zur Verfügung, und die Auswahl wird ständig erweitert.  Für Blender sind beispielsweise Vorlagen verfügbar, die ein einzelnes Bild in Kacheln unterteilen, sodass Teile eines Bilds parallel gerendert werden können.
-* Eine umfassende Beschreibung der Renderingfunktionen finden Sie in [diesen](https://docs.microsoft.com/azure/batch/batch-rendering-service) Artikeln.
+
+In diesem Tutorial haben Sie gelernt, wie die folgenden Aufgaben ausgeführt werden:
+
+> [!div class="checklist"]
+> * Hochladen einer Blender-Szene in Azure-Speicher
+> * Erstellen eines Batch-Pools mit mehreren Knoten zum Ausführen des Renderings
+> * Rendern mehrerer Frames
+> * Anzeigen und Herunterladen der gerenderten Frame-Dateien
+
+Fahren Sie fort, indem Sie die über Batch Explorer verfügbaren Rendering-Anwendungen im Abschnitt **Gallery** (Katalog) erkunden. Für jede Anwendung stehen verschiedene Vorlagen zur Verfügung, und die Auswahl wird ständig erweitert. Für Blender sind beispielsweise Vorlagen verfügbar, die ein einzelnes Bild in Kacheln unterteilen, sodass Teile eines Bilds parallel gerendert werden können.
+
+Weitere Informationen zum Rendering auf Cloudebene finden Sie in den Optionen für den Batch Rendering-Dienst.
+
+> [!div class="nextstepaction"]
+> [Batch Rendering-Dienst](batch-rendering-service.md)

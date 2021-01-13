@@ -1,43 +1,45 @@
 ---
-title: 'Geschützte Web-API: Übersicht | Microsoft Azure'
+title: 'Geschützte Web-API: Übersicht'
+titleSuffix: Microsoft identity platform
 description: Erfahren Sie, wie Sie eine geschützte Web-API erstellen (Übersicht).
 services: active-directory
-documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/07/2019
+ms.date: 07/14/2020
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 02bd4b84cc7542714f6db45c12c4b5b13a7fb449
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: c9cc8e6fcc796cfc7a09cf7bc1431646a6603af0
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68852577"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94442972"
 ---
 # <a name="scenario-protected-web-api"></a>Szenario: Geschützte Web-API
 
-In diesem Szenario lernen Sie, wie Sie eine Web-API verfügbar machen und wie Sie diese schützen können, damit nur authentifizierte Benutzer darauf zugreifen können. Sie sollten authentifizierten Benutzer mit Arbeits- und Uni-/Schulkonten oder Benutzern mit persönlichen Microsoft-Konten erlauben, Ihre Web-API zu verwenden.
+In diesem Szenario erfahren Sie, wie Sie eine Web-API verfügbar machen. Sie erfahren auch, wie Sie die API-App schützen, sodass nur authentifizierte Benutzer darauf zugreifen können.
 
-## <a name="prerequisites"></a>Voraussetzungen
-
-[!INCLUDE [Pre-requisites](../../../includes/active-directory-develop-scenarios-prerequisites.md)]
+Sie müssen entweder authentifizierten Benutzern mit Arbeits-, Schul- und Unikonten oder Benutzern mit persönlichen Microsoft-Konten die Nutzung Ihrer Web-API erlauben.
 
 ## <a name="specifics"></a>Besonderheiten
 
-Beachten Sie die folgenden Besonderheiten beim Schützen Ihrer Web-APIs:
+Beachten Sie beim Schützen Ihrer Web-APIs die folgenden speziellen Informationen:
 
-- Ihre App-Registrierung muss mindestens einen Gültigkeitsbereich verfügbar machen. Die Tokenversion, die von Ihrer Web-API akzeptiert wird, hängt von der Zielgruppe der Anmeldung ab.
-- Die Konfiguration des Codes für die Web-API muss das Token überprüfen, das beim Aufrufen der Web-API verwendet wird.
+- Ihre App-Registrierung muss mindestens einen *Gültigkeitsbereich* oder eine *Anwendungsrolle* verfügbar machen.
+  - Gültigkeitsbereiche werden von Web-APIs verfügbar gemacht, die im Namen eines Benutzers aufgerufen werden.
+  - Anwendungsrollen werden von Web-APIs verfügbar gemacht, die von Daemonanwendungen aufgerufen werden (die Ihre Web-API in ihrem eigenen Auftrag aufrufen).
+- Wenn Sie eine neue Web-API-App-Registrierung erstellen, wählen Sie die [Zugriffstokenversion](reference-app-manifest.md#accesstokenacceptedversion-attribute) aus, die von Ihrer Web-API für `2` akzeptiert wird. Bei älteren Web-APIs kann die akzeptierte Tokenversion `null` lauten, aber dieser Wert schränkt die Anmeldezielgruppe nur auf Organisationen ein, und persönliche Microsoft-Konten (MSA) werden nicht unterstützt.
+- Die Codekonfiguration für die Web-API muss das Token überprüfen, das beim Aufrufen der Web-API verwendet wird.
+- Der Code in den Controlleraktionen muss die Rollen oder Bereiche im Token überprüfen.
+
+## <a name="recommended-reading"></a>Empfohlene Literatur
+
+[!INCLUDE [recommended-topics](../../../includes/active-directory-develop-scenarios-prerequisites.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-> [!div class="nextstepaction"]
-> [App-Registrierung](scenario-protected-web-api-app-registration.md)
+Fahren Sie mit dem nächsten Artikel in diesem Szenario fort: [App-Registrierung](scenario-protected-web-api-app-registration.md).

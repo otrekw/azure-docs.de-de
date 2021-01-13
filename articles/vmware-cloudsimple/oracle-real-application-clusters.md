@@ -1,19 +1,19 @@
 ---
-title: Azure VMware-Lösung von CloudSimple – Optimieren der privaten CloudSimple-Cloud für Oracle RAC
+title: Azure VMware Solution by CloudSimple – Optimieren der privaten CloudSimple-Cloud für Oracle RAC
 description: Erfahren Sie, wie Sie einen neuen Cluster bereitstellen und einen virtuellen Computer für die Installation und Konfiguration von Oracle Real Application Clusters (RAC) optimieren.
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/06/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 733a225c66040cb2ab819f041647120c8b63b6a0
-ms.sourcegitcommit: 47b00a15ef112c8b513046c668a33e20fd3b3119
+ms.openlocfilehash: 3959aae5f490af10c6747cfa67d9960e0c4a203f
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69972425"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97899268"
 ---
 # <a name="optimize-your-cloudsimple-private-cloud-for-installing-oracle-rac"></a>Optimieren der privaten CloudSimple-Cloud für die Installation von Oracle RAC
 
@@ -79,7 +79,7 @@ Jeder virtuelle Oracle-Computer wird mit mehreren Datenträgern für Hostbetrieb
 * Die Freigabe wird auf **Keine Freigabe** festgelegt.
 * Die Redundanz wird im Speicher mithilfe von vSAN-Richtlinien definiert.  
 
-![Konfiguration der Oracle RAC-Datenträgergruppe für Daten](media/oracle-vm-os-disks.png)
+![Diagramm: Physische Konfiguration des Oracle RAC-Betriebssystemdatenträgers](media/oracle-vm-os-disks.png)
 
 ### <a name="data-disk-configuration"></a>Konfiguration der Datenträger für Daten
 
@@ -148,7 +148,7 @@ Der Bereich für schnelle Wiederherstellung (Fast Recovery Area, FRA) ist ein Da
 * Die Datenträger müssen als eine ASM-Datenträgergruppe konfiguriert werden.  
 * ASM-Redundanz ist auf **externe Redundanz** festgelegt.
 
-![Konfiguration der Oracle RAC-Gruppe mit Abstimmungsdatenträgern](media/oracle-vm-fra-disks.png)
+![Diagramm: Konfiguration der Oracle RAC-Gruppe mit Abstimmungsdatenträgern](media/oracle-vm-fra-disks.png)
 
 ## <a name="deploy-cloudsimple-private-cloud-vsphere-cluster"></a>Bereitstellen des vSphere-Clusters für die private CloudSimple-Cloud
 
@@ -169,7 +169,7 @@ Gehen Sie folgendermaßen vor, um einen vSphere-Cluster in der privaten Cloud be
 
 vSAN-Richtlinien definieren Fehlertoleranz und Datenträgerstriping für die auf den VM-Datenträgern gespeicherten Daten.  Die erstellte Speicherrichtlinie muss beim Erstellen des virtuellen Computers auf die VM-Datenträger angewandt werden.
 
-1. [Melden Sie sich beim vSphere-Client](https://docs.azure.cloudsimple.com/vsphere-access) Ihrer privaten Cloud an.
+1. [Melden Sie sich beim vSphere-Client](./vcenter-access.md) Ihrer privaten Cloud an.
 2. Wählen Sie im Menü oben die Option **Policies and Profiles** (Richtlinien und Profile) aus.
 3. Wählen Sie im Menü auf der linken Seite **VM Storage Policies** (VM-Speicherrichtlinien) und dann **Create a VM storage Policy** (VM-Speicherrichtlinie erstellen) aus.
 4. Geben Sie einen aussagekräftigen Namen für die Richtlinie ein, und klicken Sie auf **NEXT** (Weiter).
@@ -220,7 +220,7 @@ Oracle verwendet freigegebene Datenträger zum Speichern der Daten-, Protokoll- 
 9. Geben Sie für die Freigabe **Multi-writer** (Mehrfachschreibvorgänge) an.
 10. Wählen Sie für den Knoten virtueller Gerät den neuen SCSI-Controller aus, der in Schritt 2 erstellt wurde.
 
-    ![Erstellen von Datenträgern auf der ersten VM](media/oracle-rac-new-hard-disk.png)
+    ![Screenshot, auf dem die erforderlichen Felder zum Erstellen von Datenträgern auf dem ersten virtuellen Computer hervorgehoben sind](media/oracle-rac-new-hard-disk.png)
 
 Wiederholen Sie die Schritte 2 bis 10 für alle neuen Datenträger, die für die Oracle-Dateien für Daten, Protokolle und Wiederholungsprotokolle erforderlich sind.
 
@@ -244,7 +244,7 @@ Wiederholen Sie die Schritte 2–7 für alle neuen Datenträger, die für die Or
 Durch VM-zu-Host-Affinitätsregeln wird sichergestellt, dass die VM auf dem gewünschten Host ausgeführt wird.  Sie können Regeln in vCenter definieren, um sicherzustellen, dass der virtuelle Oracle-Computer auf dem Host mit ausreichenden Ressourcen ausgeführt wird und alle Lizenzierungsanforderungen erfüllt.
 
 1. Im CloudSimple-Portal können Sie die Berechtigungen des Benutzers „cloudowner“ [ausweiten](escalate-private-cloud-privileges.md).
-2. [Melden Sie sich beim vSphere-Client](https://docs.azure.cloudsimple.com/vsphere-access) Ihrer privaten Cloud an.
+2. Melden Sie sich beim vSphere-Client Ihrer privaten Cloud an.
 3. Wählen Sie im vSphere-Client den Cluster aus, auf dem Oracle-VMs bereitgestellt werden, und klicken Sie auf **Configure** (Konfigurieren).
 4. Wählen Sie unter „Configure“ (Konfigurieren) die Option **VM/Host Groups** (VM-/Hostgruppen) aus.
 5. Klicken Sie unten auf der Seite auf **+** .
@@ -259,7 +259,7 @@ Durch VM-zu-Host-Affinitätsregeln wird sichergestellt, dass die VM auf dem gew�
 13. Wählen Sie die Hostgruppe aus, die Sie erstellt haben.
 14. Klicken Sie auf **OK** , um die Regel zu erstellen.
 
-## <a name="references"></a>Referenzen
+## <a name="references"></a>References
 
 * [Informationen zu vSAN-Richtlinien](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.virtualsan.doc/GUID-08911FD3-2462-4C1C-AE81-0D4DBC8F7990.html)
 * [VMware-Multi-Writer-Attribut für freigegebene VMDKs](https://docs.vmware.com/en/VMware-Cloud-on-AWS/solutions/VMware-Cloud-on-AWS.df6735f8b729fee463802083d46fdc75/GUID-A7642A82B3D6C5F7806DB40A3F2766D9.html)

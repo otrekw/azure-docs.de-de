@@ -1,25 +1,23 @@
 ---
-title: Visualisieren der Datenflussprotokolle von Netzwerksicherheitsgruppen mit Power BI | Microsoft-Dokumentation
-description: Auf dieser Seite wird beschrieben, wie Sie NSG-Datenflussprotokolle mit Power BI visualisieren.
+title: Visualisieren der Azure-NSG-Flussprotokolle – Power BI
+titleSuffix: Azure Network Watcher
+description: Hier erfahren Sie, wie Sie mit Power BI Datenflussprotokolle für Netzwerksicherheitsgruppen visualisieren, um Informationen zum IP-Datenverkehr in Azure Network Watcher anzeigen zu können.
 services: network-watcher
 documentationcenter: na
-author: mattreatMSFT
-manager: vitinnan
-editor: ''
-ms.assetid: 1e4f95fa-f5f0-4e03-bc25-008fbfc4934c
+author: damendo
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
-ms.author: mareat
-ms.openlocfilehash: 6df49f9cd308f4bb9b1fef6e5860872526ce8bb7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: damendo
+ms.openlocfilehash: a4c97b8baaf5265f984622e2dc47e6c8c714172a
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60860771"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95995725"
 ---
 # <a name="visualizing-network-security-group-flow-logs-with-power-bi"></a>Visualisieren der Datenflussprotokolle von Netzwerksicherheitsgruppen mit Power BI
 
@@ -44,9 +42,9 @@ Anhand der visuellen Elemente der Vorlage können Sie Folgendes untersuchen:
 
 Die bereitgestellte Vorlage kann bearbeitet werden. Sie können sie also ändern, um neue Daten oder visuelle Elemente hinzuzufügen oder Abfragen an Ihre Anforderungen anzupassen.
 
-## <a name="setup"></a>Einrichtung
+## <a name="setup"></a>Einrichten
 
-Bevor Sie beginnen, müssen Sie die NSG-Datenflussprotokollierung für mindestens eine Netzwerksicherheitsgruppe Ihres Kontos aktiviert haben. Eine Anleitung zum Aktivieren von Netzwerksicherheits-Flowprotokollen finden Sie in folgendem Artikel: [Einführung in die Datenflussprotokollierung für Netzwerksicherheitsgruppen](network-watcher-nsg-flow-logging-overview.md).
+Bevor Sie beginnen, müssen Sie die NSG-Datenflussprotokollierung für mindestens eine Netzwerksicherheitsgruppe Ihres Kontos aktiviert haben. Eine Anleitung zum Aktivieren von NSG-Datenflussprotokollen finden Sie im Artikel [Einführung in die Datenflussprotokollierung für Netzwerksicherheitsgruppen](network-watcher-nsg-flow-logging-overview.md).
 
 Außerdem muss der Power BI Desktop-Client auf Ihrem Computer installiert sein, und auf dem Computer muss ausreichend freier Speicherplatz vorhanden sein, um die Protokolldaten, die in Ihrem Speicherkonto vorhanden sind, herunterzuladen und zu laden.
 

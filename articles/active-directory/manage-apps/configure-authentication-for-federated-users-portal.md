@@ -1,26 +1,26 @@
 ---
-title: Konfigurieren der automatischen Anmeldebeschleunigung mit einer Richtlinie für die Startbereichsermittlung | Microsoft-Dokumentation
+title: Konfigurieren der automatischen Anmeldebeschleunigung mit der Startbereichsermittlung
 description: Erfahren Sie, wie Sie eine Richtlinie für die Startbereichsermittlung für die Azure Active Directory-Authentifizierung für Verbundbenutzer konfigurieren, einschließlich automatischer Beschleunigung und Domänenhinweisen.
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/08/2019
-ms.author: mimart
+ms.author: kenwith
 ms.custom: seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8f8f51fcd69a7115879aad97bbf696833e87877b
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: 873a87ed2c75d41e0a249bde4b6a29921b7e5ce5
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68477204"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94648054"
 ---
 # <a name="configure-azure-active-directory-sign-in-behavior-for-an-application-by-using-a-home-realm-discovery-policy"></a>Konfigurieren des Verhaltens der Azure Active Directory-Anmeldung für eine Anwendung mit einer Richtlinie für die Startbereichsermittlung (Home Realm Discovery, HDR)
 
@@ -81,8 +81,8 @@ Weitere Informationen zur automatischen Beschleunigung unter Verwendung der Dom�
 ### <a name="home-realm-discovery-policy-for-auto-acceleration"></a>Richtlinie zur Startbereichsermittlung für die automatische Beschleunigung
 Einige Anwendungen bieten keine Möglichkeit, die von ihnen ausgegebene Authentifizierungsanforderung zu konfigurieren. In diesen Fällen ist es nicht möglich, Domänenhinweise zur Steuerung der automatischen Beschleunigung zu verwenden. Die automatische Beschleunigung kann über Richtlinien konfiguriert werden, um das gleiche Verhalten zu erreichen.  
 
-## <a name="enable-direct-authentication-for-legacy-applications"></a>Aktivieren der direkten Authentifizierung für ältere Anwendungen
-Als bewährte Methode verwenden Anwendungen AAD-Bibliotheken und interaktive Anmeldung zur Authentifizierung von Benutzern. Die Bibliotheken kümmern sich um die Verbundbenutzerflows.  Manche ältere Anwendungen können das Verbundsystem nicht interpretieren. Sie führen keine Startbereichsermittlung durch und interagieren nicht mit dem richtigen Verbundendpunkt, um einen Benutzer zu authentifizieren. Falls gewünscht, können Sie mithilfe einer Richtlinie zur Startbereichsermittlung bestimmten älteren Anwendungen das Übermitteln von Anmeldeinformationen (Benutzername und Kennwort) ermöglichen, um eine direkte Authentifizierung bei Azure Active Directory durchzuführen. Die Kennworthashsynchronisierung muss aktiviert sein. 
+## <a name="enable-direct-ropc-authentication-of-federated-users-for-legacy-applications"></a>Aktivieren der direkten ROPC-Authentifizierung von Verbundbenutzern für Legacyanwendungen
+Als bewährte Methode verwenden Anwendungen AAD-Bibliotheken und interaktive Anmeldung zur Authentifizierung von Benutzern. Die Bibliotheken kümmern sich um die Verbundbenutzerflows.  Manchmal übermitteln Legacyanwendungen Benutzername und Kennwort direkt an Azure AD, insbesondere diejenigen, die ROPC-Zuweisungen verwenden. Sie wurden nicht so geschrieben, dass sie den Verbund verstehen. Sie führen keine Startbereichsermittlung durch und interagieren nicht mit dem richtigen Verbundendpunkt, um einen Benutzer zu authentifizieren. Falls gewünscht, können Sie mithilfe einer Richtlinie zur Startbereichsermittlung (Home Realm Discovery, HRD) bestimmten älteren Anwendungen das Übermitteln von Anmeldeinformationen (Benutzername und Kennwort) mithilfe der ROPC-Zuweisung ermöglichen, um eine direkte Authentifizierung bei Azure Active Directory durchzuführen. Die Kennworthashsynchronisierung muss aktiviert sein. 
 
 > [!IMPORTANT]
 > Aktivieren Sie die direkte Authentifizierung nur dann, wenn die Kennworthashsynchronisierung aktiviert ist und Sie sicher sind, dass diese Anwendung problemlos authentifiziert werden kann, ohne dass Richtlinien von Ihrem lokalen Identitätsanbieter implementiert werden. Wenn Sie die Kennworthashsynchronisierung oder die Verzeichnissynchronisierung mit AD Connect aus irgendeinem Grund deaktivieren, müssen Sie diese Richtlinie entfernen, um die Möglichkeit der direkten Authentifizierung mit einem veralteten Kennworthash zu verhindern.
@@ -100,9 +100,7 @@ Richtlinien treten für eine bestimmte Anwendung nur in Kraft, wenn sie an einen
 
 Es kann immer nur eine Richtlinie zur Startbereichsermittlung auf einem Dienstprinzipal aktiv sein.  
 
-Sie können entweder direkt die Microsoft Azure Active Directory Graph-API oder die Azure Active Directory PowerShell-Cmdlets verwenden, um eine Richtlinie zur Startbereichsermittlung zu erstellen und zu verwalten.
-
-Die Graph-API, die die Richtlinie manipuliert, wird im Artikel [Vorgänge für die Richtlinie](https://msdn.microsoft.com/library/azure/ad/graph/api/policy-operations) auf MSDN beschrieben.
+Sie können eine Richtlinie zur Startbereichsermittlung mit den Azure Active Directory PowerShell-Cmdlets erstellen und verwalten.
 
 Das folgende Beispiel zeigt eine Definition für eine Richtlinie zur Startbereichsermittlung:
     
@@ -112,7 +110,7 @@ Das folgende Beispiel zeigt eine Definition für eine Richtlinie zur Startbereic
     {  
     "AccelerateToFederatedDomain":true,
     "PreferredDomain":"federated.example.edu",
-    "AllowCloudPasswordValidation":true
+    "AllowCloudPasswordValidation":false
     }
    }
 ```
@@ -170,7 +168,7 @@ In den folgenden Beispielen erstellen, aktualisieren, verknüpfen und löschen S
 
 Wenn nichts zurückgegeben wird, bedeutet dies, dass in Ihrem Mandanten keine Richtlinien erstellt wurden.
 
-### <a name="example-set-hrd-policy-for-an-application"></a>Beispiel: Festlegen der Richtlinie zur Startbereichsermittlung für eine Anwendung 
+### <a name="example-set-an-hrd-policy-for-an-application"></a>Beispiel: Festlegen einer Richtlinie zur Startbereichsermittlung für eine Anwendung 
 
 In diesem Beispiel erstellen Sie eine Richtlinie, die eine der folgenden Aktionen durchführt, sobald Sie einer Anwendung zugewiesen wird: 
 - Wenn Ihr Mandant eine einzige Domäne aufweist, werden Benutzer beim Anmelden bei einer Anwendung automatisch beschleunigt zu einem AD FS-Anmeldebildschirm weitergeleitet. 
@@ -209,7 +207,7 @@ Um die Richtlinie zur Startbereichsermittlung nach ihrer Erstellung anzuwenden, 
 #### <a name="step-2-locate-the-service-principal-to-which-to-assign-the-policy"></a>Schritt 2: Ermitteln des Dienstprinzipals, dem die Richtlinie zugewiesen werden soll  
 Sie benötigen die **ObjectID** der Dienstprinzipale, denen Sie die Richtlinie zuweisen möchten. Es gibt mehrere Möglichkeiten, die **ObjectID** von Dienstprinzipalen zu ermitteln.    
 
-Sie können das Portal verwenden, oder Sie können [Microsoft Graph](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#serviceprincipal-entity) abfragen. Sie können auch zum [Graph-Tester](https://developer.microsoft.com/graph/graph-explorer) navigieren und sich bei Ihrem Azure AD-Konto anmelden, um alle Dienstprinzipale Ihrer Organisation anzuzeigen. 
+Sie können das Portal verwenden, oder Sie können [Microsoft Graph](/graph/api/resources/serviceprincipal?view=graph-rest-beta) abfragen. Sie können auch zum [Graph-Tester](https://developer.microsoft.com/graph/graph-explorer) navigieren und sich bei Ihrem Azure AD-Konto anmelden, um alle Dienstprinzipale Ihrer Organisation anzuzeigen. 
 
 Da Sie PowerShell verwenden, können Sie das folgende Cmdlet verwenden, um die Dienstprinzipale sowie deren IDs aufzulisten.
 
@@ -253,14 +251,14 @@ Notieren Sie sich die **ObjectID** der Richtlinie, für die Sie Zuordnungen aufl
 Get-AzureADPolicyAppliedObject -id <ObjectId of the Policy>
 ```
 
-### <a name="example-remove-an-hrd-policy-for-an-application"></a>Beispiel: Entfernen einer Richtlinie zur Startbereichsermittlung für eine Anwendung
+### <a name="example-remove-an-hrd-policy-from-an-application"></a>Beispiel: Entfernen einer Richtlinie zur Startbereichsermittlung aus einer Anwendung
 #### <a name="step-1-get-the-objectid"></a>Schritt 1: Abrufen der ObjectID
 Verwenden Sie das vorherige Beispiel, um die **ObjectID** der Richtlinie und die ObjectID des Anwendungsdienstprinzipals abzurufen, von dem Sie sie entfernen möchten. 
 
 #### <a name="step-2-remove-the-policy-assignment-from-the-application-service-principal"></a>Schritt 2: Entfernen der Richtlinienzuordnung vom Anwendungsdienstprinzipal  
 
 ``` powershell
-Remove-AzureADApplicationPolicy -id <ObjectId of the Service Principal>  -PolicyId <ObjectId of the policy>
+Remove-AzureADServicePrincipalPolicy -id <ObjectId of the Service Principal>  -PolicyId <ObjectId of the policy>
 ```
 
 #### <a name="step-3-check-removal-by-listing-the-service-principals-to-which-the-policy-is-assigned"></a>Schritt 3: Überprüfen der Entfernung durch Auflisten der Dienstprinzipale, denen die Richtlinie zugewiesen ist 
@@ -269,6 +267,6 @@ Remove-AzureADApplicationPolicy -id <ObjectId of the Service Principal>  -Policy
 Get-AzureADPolicyAppliedObject -id <ObjectId of the Policy>
 ```
 ## <a name="next-steps"></a>Nächste Schritte
-- Weitere Informationen zur Funktionsweise der Authentifizierung in Azure AD finden Sie unter [Authentifizierungsszenarien für Azure AD](../develop/authentication-scenarios.md).
+- Weitere Informationen zur Funktionsweise der Authentifizierung in Azure AD finden Sie unter [Authentifizierungsszenarien für Azure AD](../develop/authentication-vs-authorization.md).
 - Weitere Informationen zum einmaligen Anmelden von Benutzern finden Sie unter [Einmaliges Anmelden bei Anwendungen in Azure Active Directory](what-is-single-sign-on.md).
-- Im [Active Directory-Entwicklerhandbuch](../develop/v1-overview.md) finden Sie eine Übersicht über alle für Entwickler relevanten Inhalte.
+- Besuchen Sie die [Microsoft Identity Platform](../develop/v2-overview.md), um eine Übersicht über alle entwicklerbezogenen Inhalte zu erhalten.

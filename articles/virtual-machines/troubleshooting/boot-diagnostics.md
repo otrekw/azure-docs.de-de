@@ -10,12 +10,12 @@ ms.service: virtual-machines
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: delhan
-ms.openlocfilehash: d34182e09bf453dbec1e9592f131cb9b3b78a086
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: fbf8c1987a66cad6d9d9bc9dab829af4b42a224e
+ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71086484"
+ms.lasthandoff: 10/13/2020
+ms.locfileid: "91971556"
 ---
 # <a name="how-to-use-boot-diagnostics-to-troubleshoot-virtual-machines-in-azure"></a>Es wird beschrieben, wie Sie die Startdiagnose zum Beheben von Problemen mit virtuellen Computern in Azure verwenden.
 
@@ -52,7 +52,7 @@ Stellen Sie auf der Registerkarte **Verwaltung** im Bereich **Überwachung** sic
 ![Erstellen eines virtuellen Computers](./media/virtual-machines-common-boot-diagnostics/enable-boot-diagnostics-vm.png)
 
 > [!NOTE]
-> Das Feature „Startdiagnose“ unterstützt keine Storage Premium-Konten. Wenn Sie ein Premium-Speicherkontos für die Startdiagnose verwenden, erhalten Sie beim Starten der VM möglicherweise den Fehler „StorageAccountTypeNotSupported“.
+> Das Feature „Startdiagnose“ unterstützt keine Storage Premium-Konten oder zonenredundanten Speicherkontotypen. Wenn Sie ein Premium-Speicherkontos für die Startdiagnose verwenden, erhalten Sie beim Starten der VM möglicherweise den Fehler „StorageAccountTypeNotSupported“.
 >
 
 ### <a name="deploying-from-an-azure-resource-manager-template"></a>Bereitstellen aus einer Azure Resource Manager-Vorlage
@@ -79,7 +79,7 @@ Das Diagnoseprofil ermöglicht Ihnen die Auswahl des Speicherkontos, in dem dies
 }
 ```
 
-Weitere Informationen zum Bereitstellen von Ressourcen mithilfe von Vorlagen finden Sie unter [Schnellstart: Erstellen und Bereitstellen von Azure Resource Manager-Vorlagen über das Azure-Portal](../../azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal.md).
+Weitere Informationen zum Bereitstellen von Ressourcen mithilfe von Vorlagen finden Sie unter [Schnellstart: Erstellen und Bereitstellen von Azure Resource Manager-Vorlagen über das Azure-Portal](../../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md).
 
 ## <a name="enable-boot-diagnostics-on-existing-virtual-machine"></a>Aktivieren der Startdiagnose auf vorhandenen virtuellen Computern 
 
@@ -87,14 +87,11 @@ Zum Aktivieren von Startdiagnoseeinstellungen auf vorhandenen virtuellen Compute
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und wählen Sie dann den virtuellen Computer aus.
 2. Wählen Sie im Abschnitt **Support + Problembehandlung** die Option **Startdiagnose** und dann die Registerkarte **Einstellungen** aus.
-3. Ändern Sie in den Einstellungen für **Startdiagnose** den Status in **Ein**, und wählen Sie in der Dropdownliste **Speicherkonto** ein Speicherkonto aus. 
+3. Ändern Sie in den Einstellungen für **Startdiagnose** den Status in **Ein** , und wählen Sie in der Dropdownliste **Speicherkonto** ein Speicherkonto aus. 
 4. Speichern Sie die Änderungen.
 
     ![Aktualisieren eines vorhandenen virtuellen Computers](./media/virtual-machines-common-boot-diagnostics/enable-for-existing-vm.png)
 
-Sie müssen den virtuellen Computer neu starten, damit die Änderung wirksam wird.
-
 ### <a name="enable-boot-diagnostics-using-the-azure-cli"></a>Aktivieren der Startdiagnose über die Azure-Befehlszeilenschnittstelle
 
-Sie können die Azure-Befehlszeilenschnittstelle verwenden, um die Startdiagnose auf einem virtuellen Azure-Computer zu aktivieren. Weitere Informationen finden Sie unter [az vm boot-diagnostics](
-https://docs.microsoft.com/cli/azure/vm/boot-diagnostics?view=azure-cli-latest).
+Sie können die Azure-Befehlszeilenschnittstelle verwenden, um die Startdiagnose auf einem virtuellen Azure-Computer zu aktivieren. Weitere Informationen finden Sie unter [az vm boot-diagnostics](/cli/azure/vm/boot-diagnostics?view=azure-cli-latest).

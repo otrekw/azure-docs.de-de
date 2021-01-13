@@ -3,23 +3,23 @@ title: StorSimple Snapshot Manager-Sicherungskatalog | Microsoft Docs
 description: Beschreibt, wie das MMC-Snap-In StorSimple Snapshot Manager zum Anzeigen und Verwalten des Sicherungskatalogs verwendet wird.
 services: storsimple
 documentationcenter: NA
-author: SharS
+author: alkohli
 manager: timlt
 editor: ''
 ms.assetid: 6abdbfd2-22ce-45a5-aa15-38fae4c8f4ec
 ms.service: storsimple
 ms.devlang: NA
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/05/2017
-ms.author: v-sharos
-ms.openlocfilehash: dc24ebd59fd977ef35766c304aec5824e2c7bb4c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: alkohli
+ms.openlocfilehash: 2efc35e65ca1db2b5241e1d3b2798e068880c87e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62127177"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90054992"
 ---
 # <a name="use-storsimple-snapshot-manager-to-manage-the-backup-catalog"></a>Verwenden Sie StorSimple Snapshot Manager zum Verwalten des Sicherungkatalogs
 
@@ -39,9 +39,9 @@ Sie können den Sicherungskatalog anzeigen, indem Sie im Fensterbereich **Bereic
 * Wenn Sie auf den Namen der Volumegruppe klicken, wird im Bereich **Ergebnisse** die Anzahl der lokalen und cloudbasierten Momentaufnahmen angezeigt, die für diese Volumegruppe verfügbar sind. 
 * Wenn Sie auf **Lokale Momentaufnahme** oder **Cloudmomentaufnahme** klicken, werden im Bereich **Ergebnisse** die folgenden Informationen über jede Sicherungsmomentaufnahme angezeigt (je nach Einstellungen in der **Ansicht**):
   
-  * **Name**: Die Zeit, zu der die Momentaufnahme erstellt wurde.
+  * **Name** – die Zeit, zu der die Momentaufnahme erstellt wurde.
   * **Typ**: Gibt an, ob es sich um eine lokale oder eine cloudbasierte Momentaufnahme handelt.
-  * **Besitzer**: Gibt den Besitzer des Inhalts an. 
+  * **Besitzer** – der Besitzer des Inhalts. 
   * **Verfügbar**: Gibt an, ob die Momentaufnahme aktuell verfügbar ist. **True** gibt an, dass die Momentaufnahme verfügbar ist und wiederhergestellt werden kann. **False** gibt an, dass die Momentaufnahme nicht mehr verfügbar ist. 
   * **Importiert**: Gibt an, ob die Sicherung importiert wurde. **True** gibt an, dass die Sicherung zum Zeitpunkt der Konfiguration des Geräts in StorSimple Snapshot Manager aus dem StorSimple-Geräte-Manager-Dienst importiert wurde. **False** gibt an, dass er nicht importiert, sondern vom StorSimple Snapshot Manager erstellt wurde. (Sie können problemlos eine importierte Volumegruppe identifizieren, da ein Suffix hinzugefügt wird, das das Gerät identifiziert, aus dem die Volume-Gruppe importiert wurde.)
     
@@ -93,7 +93,7 @@ Verwenden Sie das folgende Verfahren, um ein Duplikat (Klon) eines Volumes oder 
    1. Geben Sie im Textfeld **Name** einen Namen für das geklonte Volume ein. Dieser Name wird im Knoten **Volumes** angezeigt. 
    2. (Optional) Wählen Sie **Laufwerk**aus, und anschließend einen Laufwerkbuchstaben aus der Dropdown-Liste.
    3. (Optional) Wählen Sie **Ordner (NTFS)** aus, und geben Sie einen Ordnerpfad ein oder klicken Sie auf „Durchsuchen“, und wählen dann einen Speicherort für den Ordner. 
-   4. Klicken Sie auf **Create**.
+   4. Klicken Sie auf **Erstellen**.
 5. Wenn der Klonvorgang abgeschlossen ist, müssen Sie das geklonte Volume initialisieren. Starten Sie den Server-Manager, und starten Sie dann die Datenträgerverwaltung. Ausführliche Anweisungen finden Sie unter [Laden von Volumes](storsimple-snapshot-manager-manage-volumes.md#mount-volumes). Nach der Initialisierung wird das Volume unter dem Knoten **Volumes** im Fensterbereich **Bereich** aufgeführt. Wenn Sie das aufgeführte Volume nicht erscheint, aktualisieren Sie die Liste der Volumes (mit der rechten Maustaste auf den Knoten **Volumes** klicken, und dann auf **Aktualisieren**).
 
 ## <a name="delete-a-backup"></a>Löschen einer Sicherung
@@ -126,7 +126,7 @@ Bevor Sie loslegen, stellen Sie sicher, dass Sie über eine aktuelle Sicherung d
    1. Geben Sie im Textfeld **Name** einen Namen für das geklonte Volume ein. Dieser Name wird im Knoten **Volumes** angezeigt. 
    2. (Optional) Wählen Sie **Laufwerk**aus, und anschließend einen Laufwerkbuchstaben aus der Dropdown-Liste. 
    3. (Optional) Wählen Sie **Ordner (NTFS)** aus, und geben Sie einen Ordnerpfad ein, oder klicken Sie auf **Durchsuchen**, und wählen dann einen Speicherort für den Ordner. 
-   4. Klicken Sie auf **Create**. 
+   4. Klicken Sie auf **Erstellen**. 
 5. Wenn der Klonvorgang abgeschlossen ist, müssen Sie das geklonte Volume initialisieren. Starten Sie den Server-Manager, und starten Sie dann die Datenträgerverwaltung. Ausführliche Anweisungen finden Sie unter [Laden von Volumes](storsimple-snapshot-manager-manage-volumes.md#mount-volumes). Nach der Initialisierung wird das Volume unter dem Knoten **Volumes** im Fensterbereich **Bereich** aufgeführt. 
    
     Wenn Sie das aufgeführte Volume nicht erscheint, aktualisieren Sie die Liste der Volumes (mit der rechten Maustaste auf den Knoten **Volumes** klicken, und dann auf **Aktualisieren**).

@@ -1,31 +1,26 @@
 ---
-title: Problembehandlung für die kombinierte Registrierung für Azure AD-SSPR und mehrstufige Authentifizierung (Vorschau) – Azure Active Directory
-description: Problembehandlung für die MFA (Multi-Factor Authentication, mehrstufige Authentifizierung) von Azure AD und die Self-Service-Kennwortzurücksetzung mit kombinierten Registrierungen (Preview)
+title: Behandeln von Problemen mit der kombinierten Registrierung – Azure Active Directory
+description: Problembehandlung für die MFA (Multi-Factor Authentication, mehrstufige Authentifizierung) von Azure AD und die Self-Service-Kennwortzurücksetzung mit kombinierten Registrierungen
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
-ms.topic: conceptual
-ms.date: 02/20/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.topic: troubleshooting
+ms.date: 04/15/2020
+ms.author: justinha
+author: justinha
 manager: daveba
-ms.reviewer: sahenry
+ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 40918493071fe0dd694c43e2b087a2bf7eb197d8
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 5ba1e280e3c14a24e33246799ca0d7ef8221294f
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60414619"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96741693"
 ---
-# <a name="troubleshooting-combined-security-information-registration-preview"></a>Problembehandlung für die kombinierte Registrierung von Sicherheitsinformationen (Preview)
+# <a name="troubleshooting-combined-security-information-registration"></a>Problembehandlung für die kombinierte Registrierung von Sicherheitsinformationen
 
 Mit den in diesem Artikel bereitgestellten Informationen können Administratoren Probleme von Benutzern mit kombinierten Registrierungen beheben.
-
-|     |
-| --- |
-| Die kombinierte Registrierung von Sicherheitsinformationen für Azure Multi-Factor Authentication und die Azure AD-Self-Service-Kennwortzurücksetzung (Azure Active Directory) ist eine Funktion der öffentlichen Vorschau von Azure AD. Weitere Informationen zu Vorschauversionen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).|
-|     |
 
 ## <a name="audit-logs"></a>Überwachungsprotokolle
 
@@ -37,14 +32,14 @@ In der folgenden Tabelle werden alle Überwachungsereignisse aufgeführt, die mi
 
 | Aktivität | Status | `Reason` | BESCHREIBUNG |
 | --- | --- | --- | --- |
-| User registered all required security info (Der Benutzer hat alle erforderlichen Sicherheitsinformationen registriert) | Erfolgreich | Der Benutzer hat alle erforderlichen Sicherheitsinformationen registriert. | Dieses Ereignis tritt auf, wenn ein Benutzer die Registrierung erfolgreich abgeschlossen hat.|
+| User registered all required security info (Der Benutzer hat alle erforderlichen Sicherheitsinformationen registriert) | Erfolg | Der Benutzer hat alle erforderlichen Sicherheitsinformationen registriert. | Dieses Ereignis tritt auf, wenn ein Benutzer die Registrierung erfolgreich abgeschlossen hat.|
 | User registered all required security info (Der Benutzer hat alle erforderlichen Sicherheitsinformationen registriert) | Fehler | Der Benutzer hat die Registrierung der Sicherheitsinformationen abgebrochen. | Dieses Ereignis tritt auf, wenn ein Benutzer die Registrierung über den Interruptmodus abbricht.|
-| User registered security info (Der Benutzer hat Sicherheitsinformationen registriert) | Erfolgreich | Der Benutzer hat eine *Methode* registriert. | Dieses Ereignis tritt auf, wenn ein Benutzer eine individuelle Methode registriert. Bei der *Methode* kann es sich um eine Authenticator-App, ein Mobilgerät, eine E-Mail, Sicherheitsfragen, ein App-Kennwort, ein alternatives Mobilgerät usw. handeln.| 
-| User reviewed security info (Der Benutzer hat die Sicherheitsinformationen überprüft) | Erfolgreich | Der Benutzer hat die Sicherheitsinformationen erfolgreich überprüft. | Dieses Ereignis tritt ein, wenn ein Benutzer auf der Seite „Sicherheitsinformationen überprüfen“ die Option **Sieht gut aus** auswählt.|
+| User registered security info (Der Benutzer hat Sicherheitsinformationen registriert) | Erfolg | Der Benutzer hat eine *Methode* registriert. | Dieses Ereignis tritt auf, wenn ein Benutzer eine individuelle Methode registriert. Bei der *Methode* kann es sich um eine Authenticator-App, ein Mobilgerät, eine E-Mail, Sicherheitsfragen, ein App-Kennwort, ein alternatives Mobilgerät usw. handeln.| 
+| User reviewed security info (Der Benutzer hat die Sicherheitsinformationen überprüft) | Erfolg | Der Benutzer hat die Sicherheitsinformationen erfolgreich überprüft. | Dieses Ereignis tritt ein, wenn ein Benutzer auf der Seite „Sicherheitsinformationen überprüfen“ die Option **Sieht gut aus** auswählt.|
 | User reviewed security info (Der Benutzer hat die Sicherheitsinformationen überprüft) | Fehler | Die Überprüfung der Sicherheitsinformationen durch den Benutzer ist fehlgeschlagen. | Dieses Ereignis tritt ein, wenn ein Benutzer auf der Seite „Sicherheitsinformationen überprüfen“ die Option **Sieht gut aus** auswählt, jedoch ein Fehler am Back-End auftritt.|
-| User deleted security info (Der Benutzer hat die Sicherheitsinformationen gelöscht) | Erfolgreich | Der Benutzer hat die *Methode* gelöscht. | Dieses Ereignis tritt auf, wenn ein Benutzer eine individuelle Methode löscht. Bei der *Methode* kann es sich um eine Authenticator-App, ein Mobilgerät, eine E-Mail, Sicherheitsfragen, ein App-Kennwort, ein alternatives Mobilgerät usw. handeln.|
+| User deleted security info (Der Benutzer hat die Sicherheitsinformationen gelöscht) | Erfolg | Der Benutzer hat die *Methode* gelöscht. | Dieses Ereignis tritt auf, wenn ein Benutzer eine individuelle Methode löscht. Bei der *Methode* kann es sich um eine Authenticator-App, ein Mobilgerät, eine E-Mail, Sicherheitsfragen, ein App-Kennwort, ein alternatives Mobilgerät usw. handeln.|
 | User deleted security info (Der Benutzer hat die Sicherheitsinformationen gelöscht) | Fehler | Der Benutzer konnte die *Methode* nicht löschen. | Dieses Ereignis tritt ein, wenn der Benutzer versucht eine Methode zu löschen, dies jedoch aus irgendeinem Grund zu einem Fehler führt. Bei der *Methode* kann es sich um eine Authenticator-App, ein Mobilgerät, eine E-Mail, Sicherheitsfragen, ein App-Kennwort, ein alternatives Mobilgerät usw. handeln.|
-| User changed default security info (Der Benutzer hat die Standardsicherheitsinformationen geändert) | Erfolgreich | Der Benutzer hat die Standardsicherheitsinformationen für die *Methode* geändert. | Dieses Ereignis tritt ein, wenn ein Benutzer die Standardmethode ändert. Folgende *Methoden* sind möglich: „Benachrichtigung in Authenticator-App“, „Code aus meiner Authentifikator-App oder Token eingeben“, „+X XXXXXXXXXX anrufen“, „SMS mit Code an +X XXXXXXXXX senden“ usw.|
+| User changed default security info (Der Benutzer hat die Standardsicherheitsinformationen geändert) | Erfolg | Der Benutzer hat die Standardsicherheitsinformationen für die *Methode* geändert. | Dieses Ereignis tritt ein, wenn ein Benutzer die Standardmethode ändert. Folgende *Methoden* sind möglich: „Benachrichtigung in Authenticator-App“, „Code aus meiner Authentifikator-App oder Token eingeben“, „+X XXXXXXXXXX anrufen“, „SMS mit Code an +X XXXXXXXXX senden“ usw.|
 | User changed default security info (Der Benutzer hat die Standardsicherheitsinformationen geändert) | Fehler | Der Benutzer konnte die Standardsicherheitsinformationen für die *Methode* nicht ändern. | Dieses Ereignis tritt ein, wenn der Benutzer versucht, die Standardmethode zu ändern, dies jedoch aus irgendeinem Grund zu einem Fehler führt. Folgende *Methoden* sind möglich: „Benachrichtigung in Authenticator-App“, „Code aus meiner Authentifikator-App oder Token eingeben“, „+X XXXXXXXXXX anrufen“, „SMS mit Code an +X XXXXXXXXX senden“ usw.|
 
 ## <a name="troubleshooting-interrupt-mode"></a>Problembehandlung des Interruptmodus
@@ -150,16 +145,16 @@ Führen Sie in einem PowerShell-Fenster den folgenden Befehl aus, und geben Sie 
 
 `<script location> -path <user file location>`
 
-### <a name="disable-the-preview-experience"></a>Deaktivieren der Oberfläche der Vorschauversion
+### <a name="disable-the-updated-experience"></a>Deaktivieren der aktualisierten Oberfläche
 
-Um die Oberfläche der Vorschauversion für Ihre Benutzer zu deaktivieren, führen Sie die folgenden Schritte aus:
+Um die aktualisierte Oberfläche für Ihre Benutzer zu deaktivieren, führen Sie die folgenden Schritte aus:
 
 1. Melden Sie sich als Benutzeradministrator beim Azure-Portal an.
 2. Navigieren Sie zu **Azure Active Directory** > **Benutzereinstellungen** > **Einstellungen für Zugriffspanel-Vorschaufeatures verwalten**.
 3. Legen Sie für **Benutzer können Vorschaufeatures zum Registrieren und Verwalten von Sicherheitsinformationen verwenden** die Option **Keine** fest, und wählen Sie dann **Speichern** aus.
 
-Benutzer werden nicht mehr aufgefordert, sich bei der Oberfläche der Vorschauversion zu registrieren.
+Benutzer werden nicht mehr aufgefordert, sich bei der aktualisierten Oberfläche zu registrieren.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Erfahren Sie mehr über die Public Preview der kombinierten Registrierung für die Self-Service-Kennwortzurücksetzung und Azure Multi-Factor Authentication.](concept-registration-mfa-sspr-combined.md)
+* [Erfahren Sie mehr über die kombinierte Registrierung für die Self-Service-Kennwortzurücksetzung und Azure AD Multi-Factor Authentication](concept-registration-mfa-sspr-combined.md)

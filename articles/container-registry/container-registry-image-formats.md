@@ -1,19 +1,14 @@
 ---
-title: Inhaltsformate für die Azure Container Registry
-description: Erfahren Sie mehr über die unterstützten Inhaltsformate in Azure Container Registry.
-services: container-registry
-author: dlepow
-manager: gwallace
-ms.service: container-registry
+title: Unterstützte Inhaltsformate
+description: Erfahren Sie mehr über die von Azure Container Registry unterstützten Inhaltsformate, einschließlich Docker-kompatibler Containerimages, Helm-Diagramme, OCI-Images und OCI-Artefakte.
 ms.topic: article
 ms.date: 08/30/2019
-ms.author: danlep
-ms.openlocfilehash: d49aab89c9568f168808c40508b4fe7d3175e902
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: ab915385f46f83c7b655acd1a48d66df84b50653
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70164522"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "84695265"
 ---
 # <a name="content-formats-supported-in-azure-container-registry"></a>In Azure Container Registry unterstützte Inhaltsformate
 
@@ -29,7 +24,7 @@ Die folgenden Formate für Docker-Containerimages werden unterstützt:
 
 ## <a name="oci-images"></a>OCI-Images
 
-Azure Container Registry unterstützt Images, die der [Spezifikation für das Imageformat der Open Container Initiative (OCI)](https://github.com/opencontainers/image-spec/blob/master/spec.md) entsprechen. Zu Verpackungsformaten zählt das Format [Singularity Image Format (SIF)](https://www.sylabs.io/2018/03/sif-containing-your-containers/).
+Azure Container Registry unterstützt Images, die der [Spezifikation für das Imageformat der Open Container Initiative (OCI)](https://github.com/opencontainers/image-spec/blob/master/spec.md) entsprechen. Zu Verpackungsformaten zählt das Format [Singularity Image Format (SIF)](https://github.com/sylabs/sif).
 
 ## <a name="oci-artifacts"></a>OCI-Artefakte
 

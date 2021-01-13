@@ -10,12 +10,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.topic: reference
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 554bb99121190198982f64deb6ee0674aa8831ed
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 2a2126aceba8724b46de094d14db754d704500c6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60381194"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "85850962"
 ---
 # <a name="azure-ad-connect--adsyncconfig-powershell-reference"></a>Azure AD Connect:  PowerShell-Referenz zu ADSyncConfig
 Die folgende Dokumentation enthält Referenzinformationen für das PowerShell-Modul „ADSyncConfig.psm1“, das in Azure AD Connect enthalten ist.
@@ -32,7 +32,7 @@ Ruft den Kontonamen und die Domäne ab, die in jedem AD-Connector konfiguriert s
 Get-ADSyncADConnectorAccount
 ```
 
-### <a name="description"></a>Beschreibung
+### <a name="description"></a>DESCRIPTION
 Diese Funktion verwendet das „Get-ADSyncConnector“-Cmdlet, das in AAD Connect vorhanden ist, um aus Konnektivitätsparametern eine Tabelle mit dem Konto der AD-Connectors abzurufen.
 
 ### <a name="examples"></a>BEISPIELE
@@ -53,33 +53,32 @@ Ruft AD-Objekte mit deaktivierter Berechtigungsvererbung ab.
 Get-ADSyncObjectsWithInheritanceDisabled [-SearchBase] <String> [[-ObjectClass] <String>] [<CommonParameters>]
 ```
 
-### <a name="description"></a>Beschreibung
+### <a name="description"></a>DESCRIPTION
 Sucht in AD, beginnend bei dem Parameter „SearchBase“, und gibt alle Objekte zurück, gefiltert nach dem Parameter „ObjectClass“, für die zurzeit die ACL-Vererbung deaktiviert ist.
 
 ### <a name="examples"></a>BEISPIELE
 
 #### <a name="example-1"></a>BEISPIEL 1
+Suchen von Objekten mit deaktivierter Vererbung in der Domäne „Contoso“ (standardmäßig werden nur die Objekte „organizationalUnit“ zurückgegeben)
 ```
-Find objects with disabled inheritance in 'Contoso' domain (by default returns 'organizationalUnit' objects only)
-```
-
 Get-ADSyncObjectsWithInheritanceDisabled -SearchBase 'Contoso'
+```
 
 #### <a name="example-2"></a>BEISPIEL 2
+Suchen von „User“-Objekten mit deaktivierter Vererbung in der Domäne „Contoso“
 ```
-Find 'user' objects with disabled inheritance in 'Contoso' domain
-```
-
 Get-ADSyncObjectsWithInheritanceDisabled -SearchBase 'Contoso' -ObjectClass 'user'
+```
 
 #### <a name="example-3"></a>BEISPIEL 3
+Suchen aller Objekttypen mit deaktivierter Vererbung in einer Organisationseinheit
 ```
-Find all types of objects with disabled inheritance in a OU
-```
-
 Get-ADSyncObjectsWithInheritanceDisabled -SearchBase OU=AzureAD,DC=Contoso,DC=com -ObjectClass '*'
+```
 
-### <a name="parameters"></a>PARAMETER
+
+
+### <a name="parameters"></a>PARAMETERS
 
 #### <a name="-searchbase"></a>-SearchBase
 Die „SearchBase“ für die LDAP-Abfrage, die der „DistinguishedName“ oder „FQDN“ einer AD-Domäne sein kann.
@@ -134,7 +133,7 @@ Set-ADSyncBasicReadPermissions -ADConnectorAccountDN <String> [-ADobjectDN <Stri
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### <a name="description"></a>Beschreibung
+### <a name="description"></a>DESCRIPTION
 Die Funktion „Set-ADSyncBasicReadPermissions“ gewährt dem AD-Synchronisierungskonto die erforderlichen Berechtigungen, darunter die folgenden:
 1.
 „Eigenschaft lesen“-Zugriff auf alle Attribute für alle Nachfolger-Computerobjekte
@@ -176,7 +175,7 @@ Set-ADSyncBasicReadPermissions -ADConnectorAccountDN 'CN=ADConnector,OU=AzureAD,
 Set-ADSyncBasicReadPermissions -ADConnectorAccountName 'ADConnector' -ADConnectorAccountDomain 'Contoso.com' -ADobjectDN 'OU=AzureAD,DC=Contoso,DC=com'
 ```
 
-### <a name="parameters"></a>PARAMETER
+### <a name="parameters"></a>PARAMETERS
 
 #### <a name="-adconnectoraccountname"></a>-ADConnectorAccountName
 Der Name des Active Directory-Kontos, das von der Azure AD Connect-Synchronisierung zum Verwalten von Objekten im Verzeichnis verwendet wird.
@@ -307,7 +306,7 @@ Set-ADSyncExchangeHybridPermissions -ADConnectorAccountDN <String> [-ADobjectDN 
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### <a name="description"></a>Beschreibung
+### <a name="description"></a>DESCRIPTION
 Die Funktion „Set-ADSyncExchangeHybridPermissions“ gewährt dem AD-Synchronisierungskonto die erforderlichen Berechtigungen, darunter die folgenden:
 1.
 „Eigenschaft lesen/schreiben“-Zugriff auf alle Attribute für alle Nachfolger-Benutzerobjekte
@@ -343,7 +342,7 @@ Set-ADSyncExchangeHybridPermissions -ADConnectorAccountDN 'CN=ADConnector,OU=Azu
 Set-ADSyncExchangeHybridPermissions -ADConnectorAccountName 'ADConnector' -ADConnectorAccountDomain 'Contoso.com' -ADobjectDN 'OU=AzureAD,DC=Contoso,DC=com'
 ```
 
-### <a name="parameters"></a>PARAMETER
+### <a name="parameters"></a>PARAMETERS
 
 #### <a name="-adconnectoraccountname"></a>-ADConnectorAccountName
 Der Name des Active Directory-Kontos, das von der Azure AD Connect-Synchronisierung zum Verwalten von Objekten im Verzeichnis verwendet wird.
@@ -475,7 +474,7 @@ Set-ADSyncExchangeMailPublicFolderPermissions -ADConnectorAccountDN <String> [-A
  [-SkipAdminSdHolders] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### <a name="description"></a>Beschreibung
+### <a name="description"></a>DESCRIPTION
 Die Funktion „Set-ADSyncExchangeMailPublicFolderPermissions“ gewährt dem AD-Synchronisierungskonto die erforderlichen Berechtigungen, darunter die folgenden:
 1.
 „Eigenschaft lesen“-Zugriff auf alle Attribute für alle Nachfolger-publicfolder-Objekte
@@ -505,7 +504,7 @@ Set-ADSyncExchangeMailPublicFolderPermissions -ADConnectorAccountDN 'CN=ADConnec
 Set-ADSyncExchangeMailPublicFolderPermissions -ADConnectorAccountName 'ADConnector' -ADConnectorAccountDomain 'Contoso.com' -ADobjectDN 'OU=AzureAD,DC=Contoso,DC=com'
 ```
 
-### <a name="parameters"></a>PARAMETER
+### <a name="parameters"></a>PARAMETERS
 
 #### <a name="-adconnectoraccountname"></a>-ADConnectorAccountName
 Der Name des Active Directory-Kontos, das von der Azure AD Connect-Synchronisierung zum Verwalten von Objekten im Verzeichnis verwendet wird.
@@ -636,7 +635,7 @@ Set-ADSyncMsDsConsistencyGuidPermissions -ADConnectorAccountDN <String> [-ADobje
  [-SkipAdminSdHolders] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### <a name="description"></a>Beschreibung
+### <a name="description"></a>DESCRIPTION
 Die Funktion „Set-ADSyncMsDsConsistencyGuidPermissions“ gewährt dem AD-Synchronisierungskonto die erforderlichen Berechtigungen, darunter die folgenden:
 1.
 „Eigenschaft lesen/schreiben“-Zugriff auf das mS-DS-ConsistencyGuid-Attribut für alle Nachfolger-Benutzerobjekte
@@ -666,7 +665,7 @@ Set-ADSyncMsDsConsistencyGuidPermissions -ADConnectorAccountDN 'CN=ADConnector,O
 Set-ADSyncMsDsConsistencyGuidPermissions -ADConnectorAccountName 'ADConnector' -ADConnectorAccountDomain 'Contoso.com' -ADobjectDN 'OU=AzureAD,DC=Contoso,DC=com'
 ```
 
-### <a name="parameters"></a>PARAMETER
+### <a name="parameters"></a>PARAMETERS
 
 #### <a name="-adconnectoraccountname"></a>-ADConnectorAccountName
 Der Name des Active Directory-Kontos, das von der Azure AD Connect-Synchronisierung zum Verwalten von Objekten im Verzeichnis verwendet wird.
@@ -796,7 +795,7 @@ Set-ADSyncPasswordHashSyncPermissions -ADConnectorAccountName <String> -ADConnec
 Set-ADSyncPasswordHashSyncPermissions -ADConnectorAccountDN <String> [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### <a name="description"></a>Beschreibung
+### <a name="description"></a>DESCRIPTION
 Die Funktion „Set-ADSyncPasswordHashSyncPermissions“ gewährt dem AD-Synchronisierungskonto die erforderlichen Berechtigungen, darunter die folgenden:
 1.
 Replizieren von Verzeichnisänderungen
@@ -817,7 +816,7 @@ Set-ADSyncPasswordHashSyncPermissions -ADConnectorAccountName 'ADConnector' -ADC
 Set-ADSyncPasswordHashSyncPermissions -ADConnectorAccountDN 'CN=ADConnector,OU=AzureAD,DC=Contoso,DC=com'
 ```
 
-### <a name="parameters"></a>PARAMETER
+### <a name="parameters"></a>PARAMETERS
 
 #### <a name="-adconnectoraccountname"></a>-ADConnectorAccountName
 Der Name des Active Directory-Kontos, das von der Azure AD Connect-Synchronisierung zum Verwalten von Objekten im Verzeichnis verwendet wird.
@@ -918,7 +917,7 @@ Set-ADSyncPasswordWritebackPermissions -ADConnectorAccountDN <String> [-ADobject
  [-SkipAdminSdHolders] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### <a name="description"></a>Beschreibung
+### <a name="description"></a>DESCRIPTION
 Die Funktion „Set-ADSyncPasswordWritebackPermissions“ gewährt dem AD-Synchronisierungskonto die erforderlichen Berechtigungen, darunter die folgenden:
 1.
 „Kennwort zurücksetzen“ für Nachfolger-Benutzerobjekte
@@ -952,7 +951,7 @@ Set-ADSyncPasswordWritebackPermissions -ADConnectorAccountDN 'CN=ADConnector,OU=
 Set-ADSyncPasswordWritebackPermissions -ADConnectorAccountName 'ADConnector' -ADConnectorAccountDomain 'Contoso.com' -ADobjectDN 'OU=AzureAD,DC=Contoso,DC=com'
 ```
 
-### <a name="parameters"></a>PARAMETER
+### <a name="parameters"></a>PARAMETERS
 
 #### <a name="-adconnectoraccountname"></a>-ADConnectorAccountName
 Der Name des Active Directory-Kontos, das von der Azure AD Connect-Synchronisierung zum Verwalten von Objekten im Verzeichnis verwendet wird.
@@ -1078,31 +1077,22 @@ Set-ADSyncRestrictedPermissions [-ADConnectorAccountDN] <String> [-Credential] <
  [-DisableCredentialValidation] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### <a name="description"></a>Beschreibung
+### <a name="description"></a>DESCRIPTION
 Die Funktion „Set-ADSyncRestrictedPermissions“ verschärft die Berechtigungen des bereitgestellten Kontos.
 Das Verschärfen von Berechtigungen umfasst die folgenden Schritte:
-1.
-Deaktivieren der Vererbung für das angegebene Objekt
-2.
-Entfernen aller ACEs für das angegebene Objekt, mit Ausnahme von ACEs für SELF
+1. Deaktivieren der Vererbung für das angegebene Objekt
+2. Entfernen aller ACEs für das angegebene Objekt, mit Ausnahme von ACEs für SELF
 Wir möchten die Standardberechtigungen für SELF beibehalten.
-3.
-Weisen Sie diese speziellen Berechtigungen zu:
+3. Weisen Sie diese speziellen Berechtigungen zu:
 
-        Type    Name                                        Access              Applies To
-        =============================================================================================
-        Allow   SYSTEM                                      Full Control        This object
-        Allow   Enterprise Admins                           Full Control        This object
-        Allow   Domain Admins                               Full Control        This object
-        Allow   Administrators                              Full Control        This object
-
-        Allow   Enterprise Domain Controllers               List Contents
-                                                            Read All Properties
-                                                            Read Permissions    This object
-
-        Allow   Authenticated Users                         List Contents
-                                                            Read All Properties
-                                                            Read Permissions    This object
+   | type | Name | Zugriff | Gilt für |
+   |------|------|--------|------------|
+   | Allow | SYSTEM | Vollzugriff | Dieses Objekt |
+   | Allow | Organisationsadministratoren | Vollzugriff | Dieses Objekt |
+   | Allow | Domänenadministratoren | Vollzugriff | Dieses Objekt | 
+   | Allow | Administratoren | Vollzugriff | Dieses Objekt |
+   | Allow | Domänencontroller des Unternehmens | Inhalt auflisten <br> Alle Eigenschaften lesen <br> Leseberechtigungen | Dieses Objekt |
+   | Allow | Authentifizierte Benutzer | Inhalt auflisten <br> Alle Eigenschaften lesen <br> Leseberechtigungen | Dieses Objekt |
 
 ### <a name="examples"></a>BEISPIELE
 
@@ -1111,7 +1101,7 @@ Weisen Sie diese speziellen Berechtigungen zu:
 Set-ADSyncRestrictedPermissions -ADConnectorAccountDN "CN=TestAccount1,CN=Users,DC=Contoso,DC=com" -Credential $(Get-Credential)
 ```
 
-### <a name="parameters"></a>PARAMETER
+### <a name="parameters"></a>PARAMETERS
 
 #### <a name="-adconnectoraccountdn"></a>-ADConnectorAccountDN
 Der „DistinguishedName“ des Active Directory-Kontos, dessen Berechtigungen verschärft werden müssen.
@@ -1214,7 +1204,7 @@ Set-ADSyncUnifiedGroupWritebackPermissions -ADConnectorAccountDN <String> [-ADob
  [-SkipAdminSdHolders] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### <a name="description"></a>Beschreibung
+### <a name="description"></a>DESCRIPTION
 Die Funktion „Set-ADSyncUnifiedGroupWritebackPermissions“ gewährt dem AD-Synchronisierungskonto die erforderlichen Berechtigungen, darunter die folgenden:
 1.
 „Generisches Lesen/Schreiben“, „Löschen“, „Struktur löschen“ und „Untergeordnetes Objekt erstellen/löschen“ für alle Gruppenobjekttypen und Unterobjekte
@@ -1245,7 +1235,7 @@ Set-ADSyncUnifiedGroupWritebackPermissions -ADConnectorAccountDN 'CN=ADConnector
 Set-ADSyncUnifiedGroupWritebackPermissions -ADConnectorAccountName 'ADConnector' -ADConnectorAccountDomain 'Contoso.com' -ADobjectDN 'OU=AzureAD,DC=Contoso,DC=com'
 ```
 
-### <a name="parameters"></a>PARAMETER
+### <a name="parameters"></a>PARAMETERS
 
 #### <a name="-adconnectoraccountname"></a>-ADConnectorAccountName
 Der Name des Active Directory-Kontos, das von der Azure AD Connect-Synchronisierung zum Verwalten von Objekten im Verzeichnis verwendet wird.
@@ -1368,7 +1358,7 @@ Zeigt Berechtigungen eines angegebenen AD-Objekts an.
 Show-ADSyncADObjectPermissions [-ADobjectDN] <String> [<CommonParameters>]
 ```
 
-### <a name="description"></a>Beschreibung
+### <a name="description"></a>DESCRIPTION
 Diese Funktion gibt alle aktuell für ein bestimmtes, im Parameter „-ADobjectDN“ angegebenes AD-Objekt festgelegten AD-Berechtigungen zurück.
 Der „ADobjectDN“ muss in einem „DistinguishedName“-Format angegeben werden.
 
@@ -1379,7 +1369,7 @@ Der „ADobjectDN“ muss in einem „DistinguishedName“-Format angegeben werd
 Show-ADSyncADObjectPermissions -ADobjectDN 'OU=AzureAD,DC=Contoso,DC=com'
 ```
 
-### <a name="parameters"></a>PARAMETER
+### <a name="parameters"></a>PARAMETERS
 
 #### <a name="-adobjectdn"></a>-ADobjectDN
 {{ADobjectDN-Beschreibung eintragen}}

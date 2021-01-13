@@ -1,29 +1,20 @@
 ---
-title: Intelligente Erkennung – Von Azure Application Insights erkannter potenzieller Arbeitsspeicherverlust | Microsoft Docs
+title: Erkennen von Arbeitsspeicherverlust – Intelligente Erkennung in Azure Application Insights
 description: Überwachen Sie Anwendungen mit Azure Application Insights auf potenzielle Arbeitsspeicherverluste.
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.assetid: ea2a28ed-4cd9-4006-bd5a-d4c76f4ec20b
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 12/12/2017
-ms.author: mbullwin
-ms.openlocfilehash: e430b1e976ac26f7320b28d50dd39923066cfa41
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 3fe58cd7d61246c5565cd89fa782c8a977f09499
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60306342"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "86539889"
 ---
 # <a name="memory-leak-detection-preview"></a>Arbeitsspeicherverlusterkennung (Vorschau)
 
 Application Insights analysiert die Arbeitsspeichernutzung der einzelnen Prozesse in Ihrer Anwendung automatisch und kann Sie vor potenziellen Arbeitsspeicherverlusten oder einer erhöhten Arbeitsspeichernutzung warnen.
 
-Diese Funktion erfordert keine spezielle Einrichtung, abgesehen von der [Konfiguration von Leistungsindikatoren](https://docs.microsoft.com/azure/application-insights/app-insights-performance-counters) für Ihre App. Sie ist aktiv, wenn Ihre App genügend Telemetriedaten für Arbeitsspeicher-Leistungsindikatoren (z. B. Private Bytes) generiert.
+Diese Funktion erfordert keine spezielle Einrichtung, abgesehen von der [Konfiguration von Leistungsindikatoren](./performance-counters.md) für Ihre App. Sie ist aktiv, wenn Ihre App genügend Telemetriedaten für Arbeitsspeicher-Leistungsindikatoren (z. B. Private Bytes) generiert.
 
 ## <a name="when-would-i-get-this-type-of-smart-detection-notification"></a>Wann erhalte ich diese Art von Benachrichtigung der intelligenten Erkennung?
 Eine typische Benachrichtigung folgt auf einen stetigen Anstieg der Arbeitsspeichernutzung über einen längeren Zeitraum eines oder mehrerer Prozesse und/oder eines oder mehrerer Computer, die Teil Ihrer Anwendung sind. Machine Learning-Algorithmen werden für die Erkennung einer erhöhten Arbeitsspeichernutzung verwendet, die dem Muster eines Speicherverlusts entspricht.

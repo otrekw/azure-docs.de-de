@@ -1,21 +1,18 @@
 ---
 title: Analysieren von Kundenverhalten in Azure Application Insights | Microsoft-Dokumentation
 description: 'Tutorial: Verwenden von Azure Application Insights zur Analyse der Kundeninteraktion mit Ihrer Anwendung.'
-keywords: ''
-services: application-insights
+ms.subservice: application-insights
+ms.topic: tutorial
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 09/20/2017
-ms.service: application-insights
 ms.custom: mvc
-ms.topic: tutorial
-manager: carmonm
-ms.openlocfilehash: 90357c13003820a25ee52aab5cda83029c9d85ff
-ms.sourcegitcommit: 6ea7f0a6e9add35547c77eef26f34d2504796565
+ms.openlocfilehash: ce9bf6fe6d130cf8511db2b2351c0de01b753d81
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/14/2019
-ms.locfileid: "65601556"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87318401"
 ---
 # <a name="use-azure-application-insights-to-understand-how-customers-are-using-your-application"></a>Verwenden von Azure Application Insights zur Analyse der Kundeninteraktion mit Ihrer Anwendung
 
@@ -35,13 +32,13 @@ Azure Application Insights sammelt Nutzungsinformationen, mit denen Sie nachvoll
 
 Für dieses Tutorial benötigen Sie Folgendes:
 
-- [Installieren Sie Visual Studio 2019](https://www.visualstudio.com/downloads/) mit den folgenden Workloads:
+- Installieren Sie [Visual Studio 2019](https://www.visualstudio.com/downloads/) mit den folgenden Workloads:
     - ASP.NET und Webentwicklung
     - Azure-Entwicklung
 - Laden Sie den [Visual Studio Snapshot Debugger](https://aka.ms/snapshotdebugger) herunter, und installieren Sie diesen.
-- Stellen Sie eine .NET-Anwendung in Azure bereit, und [aktivieren Sie das Application Insights SDK](../../azure-monitor/app/asp-net.md). 
-- [Senden Sie Telemetriedaten aus Ihrer Anwendung](../../azure-monitor/app/usage-overview.md#send-telemetry-from-your-app) zum Hinzufügen von benutzerdefinierten Ereignis-/Seitenansichten.
-- Senden Sie [Benutzerkontext-IDs](https://docs.microsoft.com/azure/application-insights/app-insights-usage-send-user-context), um Benutzeraktivitäten über einen bestimmten Zeitraum nachzuverfolgen und alle Nutzungsfunktionen zu verwenden.
+- Stellen Sie eine .NET-Anwendung in Azure bereit, und [aktivieren Sie das Application Insights SDK](../app/asp-net.md). 
+- [Senden Sie Telemetriedaten aus Ihrer Anwendung](../app/usage-overview.md#send-telemetry-from-your-app) zum Hinzufügen von benutzerdefinierten Ereignis-/Seitenansichten.
+- Senden Sie [Benutzerkontext-IDs](../app/usage-send-user-context.md), um Benutzeraktivitäten über einen bestimmten Zeitraum nachzuverfolgen und alle Nutzungsfunktionen zu verwenden.
 
 ## <a name="log-in-to-azure"></a>Anmelden an Azure
 Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) beim Azure-Portal an.
@@ -105,16 +102,16 @@ Während der Fokus in den vorherigen Bereichen auf dem tatsächlichen Benutzerve
 
 1. Klicken Sie im Menü zuerst auf **Trichter** und anschließend auf **New** (Neu). 
 
-    ![](media/tutorial-users/funnelsnew.png)
+    ![Screenshot: Erstellen eines neuen Trichters](media/tutorial-users/funnelsnew.png)
 
 2. Geben Sie in das Feld **Trichtername** einen Wert ein.
 3. Erstellen Sie einen Trichter mit mindestens zwei Schritten, indem Sie für jeden Schritt eine Aktion auswählen.  Die Liste der Aktionen basiert auf den von Application Insights gesammelten Nutzungsdaten.
 
-    ![](media/tutorial-users/funnelsedit.png)
+    ![Screenshot: Erstellen von Schritten in einem neuen Trichter](media/tutorial-users/funnelsedit.png)
 
 4. Klicken Sie auf **Save** (Speichern), um den Trichter zu speichern und sich die zugehörigen Ergebnisse anzeigen zu lassen.  Im Fenster rechts neben dem Trichter werden die am häufigsten aufgetretenen Ereignisse vor der ersten und nach der letzten Aktivität angezeigt. So können Sie Benutzertendenzen für eine bestimmte Aktionssequenz nachvollziehen.
 
-    ![](media/tutorial-users/funnelsright.png)
+    ![Screenshot: Ereignisse für einen neu erstellten Trichter](media/tutorial-users/funnelsright.png)
 
 
 ## <a name="learn-which-customers-return"></a>Ermitteln von Kunden, die wiederholt auf Ihre Anwendung zugreifen
@@ -123,11 +120,11 @@ Mit der Option **Retention** (Vermerkdauer) können Sie nachvollziehen, welche B
 1. Klicken Sie im Menü auf **Retention** (Vermerkdauer).
 2. Standardmäßig umfassen die analysierten Informationen Benutzer, die eine Aktion ausgeführt, die Anwendung verlassen und anschließend die Anwendung erneut verwendet haben, um eine weitere Aktion auszuführen.  Sie können diesen Filter z.B. so konfigurieren, dass nur Benutzer erfasst werden, die nach Abschluss eines Kaufvorgangs erneut auf Ihre Anwendung zugegriffen haben.
 
-    ![](media/tutorial-users/retentionquery.png)
+    ![Screenshot: Festlegen eines Filters für die Vermerkdauer](media/tutorial-users/retentionquery.png)
 
 3. Die Anzahl der wiederkehrenden Benutzer, die den Kriterien entsprechen, wird in einem Diagramm und in einer Tabelle für verschiedene Zeiträume angezeigt.  Üblicherweise ergibt sich mit größer werdenden Zeiträumen als Muster ein sukzessiver Abfall von wiederkehrenden Benutzern.  Ein plötzlicher Abfall zwischen Zeiträumen kann unter Umständen Anlass für Bedenken sein. 
 
-    ![](media/tutorial-users/retentiongraph.png)
+    ![Screenshot: Diagramm der Benutzer, die den festgelegten Kriterien für die Vermerkdauer entsprechen](media/tutorial-users/retentiongraph.png)
 
 ## <a name="analyze-user-navigation"></a>Analysieren der Benutzernavigation
 Mit einem **User flow** (Benutzerflow) wird die Navigation von Benutzern zwischen den Seiten und Funktionen Ihrer Anwendung visualisiert.  Dadurch können Sie ermitteln, zu welchem Ziel Benutzer in der Regel von einer bestimmten Seite aus navigieren, wie sie die Anwendung üblicherweise beenden und welche Aktionen wiederholt ausgeführt werden.
@@ -136,15 +133,15 @@ Mit einem **User flow** (Benutzerflow) wird die Navigation von Benutzern zwische
 2.  Klicken Sie zur Erstellung eines neuen Benutzerflows zuerst auf **New** (Neu) und anschließend auf **Bearbeiten**, um die zugehörigen Daten zu bearbeiten.
 3.  Erhöhen Sie den **Zeitbereich** auf sieben Tage, und wählen Sie anschließend ein Ausgangsereignis aus.  Der Flow erfasst nun Benutzersitzungen, die mit diesem Ereignis beginnen.
 
-    ![](media/tutorial-users/flowsedit.png)
+    ![Screenshot: Erstellen eines neuen Benutzerflows](media/tutorial-users/flowsedit.png)
 
 4.  Der Benutzerflow wird angezeigt. In diesem sehen Sie unterschiedliche Benutzerpfade und die Anzahl der Benutzersitzungen.  Blaue Linien stehen für eine Aktion, die der Benutzer nach der aktuellen Aktion ausgeführt hat.  Rote Linien stellen das Ende der Benutzersitzung dar.
 
-    ![](media/tutorial-users/flows.png)
+    ![Screenshot: Anzeige der Benutzerpfade und der Anzahl der Benutzersitzungen für einen Benutzerflow](media/tutorial-users/flows.png)
 
 5.  Klicken Sie zuerst auf das **x** in der Ecke des Aktionsfelds und anschließend auf **Diagramm erstellen**, um ein Ereignis aus dem Flow zu entfernen.  Daraufhin wird jede Instanz des Ereignisses entfernt, und das Diagramm wird neu gezeichnet.  Klicken Sie auf **Bearbeiten**, damit das Ereignis zu der Liste **Ausgeschlossene Ereignisse** hinzugefügt wird.
 
-    ![](media/tutorial-users/flowsexclude.png)
+    ![Screenshot: Liste der ausgeschlossenen Ereignisse für einen Benutzerflow](media/tutorial-users/flowsexclude.png)
 
 ## <a name="consolidate-usage-data"></a>Zusammenfassung von Nutzungsdaten
 In **Workbooks** (Arbeitsmappen) werden Datenvisualisierungen, Analytics-Abfragen und Text in interaktiven Dokumenten zusammengefasst.  Sie können Arbeitsmappen verwenden, um gemeinsame Nutzungsdaten zu gruppieren, Informationen zu einem bestimmten Vorfall zusammenzutragen oder ein Team über die beobachtete Nutzung Ihrer Anwendung zu informieren.
@@ -153,12 +150,12 @@ In **Workbooks** (Arbeitsmappen) werden Datenvisualisierungen, Analytics-Abfrage
 2.  Klicken Sie auf **New** (Neu), um eine neue Arbeitsmappe zu erstellen.
 3.  Eine Abfrage wird bereitgestellt, in der alle Nutzungsdaten des letzten Tags als Balkendiagramm angezeigt werden.  Sie können diese Abfrage verwenden oder manuell bearbeiten. Alternativ können Sie auf **Beispielabfragen** klicken, um weitere relevante Abfragen auszuwählen.
 
-    ![](media/tutorial-users/samplequeries.png)
+    ![Screenshot: Liste der Beispielabfragen, die verwendet werden können](media/tutorial-users/samplequeries.png)
 
 4.  Klicken Sie auf **Bearbeitung abgeschlossen**.
 5.  Klicken Sie im oberen Bereich auf **Bearbeiten**, um den Text oben in der Arbeitsmappe zu bearbeiten.  Dieser ist in Markdown formatiert.
 
-    ![](media/tutorial-users/markdown.png)
+    ![Screenshot: Bearbeiten des Texts oben in der Arbeitsmappe](media/tutorial-users/markdown.png)
 
 6.  Klicken Sie auf **Benutzer hinzufügen**, um ein Diagramm mit Benutzerinformationen hinzuzufügen.  Bearbeiten Sie ggf. die Diagrammdaten, und klicken Sie anschließend auf **Bearbeitung abgeschlossen**, um das Diagramm zu speichern.
 
@@ -167,4 +164,5 @@ In **Workbooks** (Arbeitsmappen) werden Datenvisualisierungen, Analytics-Abfrage
 In diesem Tutorial haben Sie erfahren, wie Sie Benutzerdaten analysieren. Im nächsten Tutorial lernen Sie, benutzerdefinierte Dashboards zu erstellen, die die analysierten Informationen mit anderen nützlichen Daten über Ihre Anwendung verknüpfen.
 
 > [!div class="nextstepaction"]
-> [Erstellen benutzerdefinierter Dashboards](../../azure-monitor/learn/tutorial-app-dashboards.md)
+> [Erstellen benutzerdefinierter Dashboards](./tutorial-app-dashboards.md)
+

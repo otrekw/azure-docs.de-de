@@ -1,51 +1,46 @@
 ---
-title: Web-APIs aufrufende Daemon-App (Aufrufen von Web-APIs) – Microsoft Identity Platform
-description: Erstellen einer Daemon-App, die Web-APIs aufruft (Aufrufen von Web-APIs)
+title: Aufrufen einer Web-API aus einer Daemon-App – Microsoft Identity Platform | Azure
+description: Hier erfahren Sie, wie Sie eine Daemon-App erstellen, die eine Web-API aufruft.
 services: active-directory
-documentationcenter: dev-center-name
 author: jmprieur
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/15/2019
+ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9eacb574f20abeb63a9d0ab8caf534eb7abb9784
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 0dfd729a48b7e81028078fd035b3b900f4d7b9bc
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71056361"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94444114"
 ---
 # <a name="daemon-app-that-calls-web-apis---call-a-web-api-from-the-app"></a>Daemon-App, die Web-APIs aufruft – Aufrufen einer Web-API aus der App
 
-Eine Daemon-App kann eine Web-API aus einer .NET-Daemon-Anwendung oder mehrere vorab genehmigte Web-APIs aufrufen.
+.NET-Daemon-Apps können eine Web-API aufrufen. .NET-Daemon-Apps können auch mehrere vorab genehmigte Web-APIs aufrufen.
 
-## <a name="calling-a-web-api-from-a-net-daemon-application"></a>Aufrufen einer Web-API aus einer .NET-Daemon-Anwendung
+## <a name="calling-a-web-api-from-a-daemon-application"></a>Aufrufen einer Web-API aus einer Daemonanwendung
 
 Gehen Sie wie folgt vor, um eine API unter Verwendung des Tokens aufzurufen:
 
-# <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
+# <a name="net"></a>[.NET](#tab/dotnet)
 
 [!INCLUDE [Call web API in .NET](../../../includes/active-directory-develop-scenarios-call-apis-dotnet.md)]
 
-# <a name="pythontabpython"></a>[Python](#tab/python)
+# <a name="python"></a>[Python](#tab/python)
 
 ```Python
-endpoint = "url to the API" 
+endpoint = "url to the API"
 http_headers = {'Authorization': 'Bearer ' + result['access_token'],
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'}
 data = requests.get(endpoint, headers=http_headers, stream=False).json()
 ```
 
-# <a name="javatabjava"></a>[Java](#tab/java)
+# <a name="java"></a>[Java](#tab/java)
 
 ```Java
 HttpURLConnection conn = (HttpURLConnection) url.openConnection();
@@ -68,9 +63,20 @@ JSONObject responseObject = HttpClientHelper.processResponse(responseCode, respo
 
 ## <a name="calling-several-apis"></a>Aufrufen mehrerer APIs
 
-Für Daemon-Apps müssen die von Ihnen aufgerufenen Web-APIs vorab genehmigt werden. Für Daemon-Apps gibt es keine inkrementelle Einwilligung (keine Benutzerinteraktion). Der Administrator des Mandanten muss vorab die Berechtigungen für die Anwendung und alle APIs erteilen. Wenn Sie mehrere APIs aufrufen möchten, müssen Sie für jede Ressource ein Token abrufen, indem Sie `AcquireTokenForClient` aufrufen. MSAL verwendet den Tokencache der Anwendung, um unnötige Dienstaufrufe zu vermeiden.
+Für Daemon-Apps müssen die von Ihnen aufgerufenen Web-APIs vorab genehmigt werden. Es gibt keine inkrementelle Einwilligung für Daemon-Apps. (Es gibt keine Benutzerinteraktion.) Der Mandantenadministrator muss vorab in die Berechtigungen für die Anwendung und alle APIs einwilligen. Wenn Sie mehrere APIs aufrufen möchten, müssen Sie für jede Ressource ein Token abrufen, indem Sie jedes Mal `AcquireTokenForClient` aufrufen. MSAL verwendet den Tokencache der Anwendung, um unnötige Dienstaufrufe zu vermeiden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-> [!div class="nextstepaction"]
-> [Daemon app - move to production (Daemon-App – Übergang in die Produktion)](./scenario-daemon-production.md)
+# <a name="net"></a>[.NET](#tab/dotnet)
+
+Fahren Sie mit dem nächsten Artikel in diesem Szenario fort: [Überführen in die Produktion](./scenario-daemon-production.md?tabs=dotnet).
+
+# <a name="python"></a>[Python](#tab/python)
+
+Fahren Sie mit dem nächsten Artikel in diesem Szenario fort: [Überführen in die Produktion](./scenario-daemon-production.md?tabs=python).
+
+# <a name="java"></a>[Java](#tab/java)
+
+Fahren Sie mit dem nächsten Artikel in diesem Szenario fort: [Überführen in die Produktion](./scenario-daemon-production.md?tabs=java).
+
+---

@@ -1,18 +1,14 @@
 ---
-title: 'Beispiele: Blaupause „SWIFT CSP-CSCF v2020“ – Übersicht'
-description: Übersicht über das Blaupausenbeispiel „SWIFT CSP-CSCF v2020“
-author: DCtheGeek
-ms.author: dacoulte
-ms.date: 09/24/2019
+title: Übersicht über das Blaupausenbeispiel „SWIFT CSP-CSCF v2020“
+description: Übersicht über das Blaupausenbeispiel „SWIFT CSP-CSCF v2020“ Dieses Blaupausenbeispiel unterstützt Kunden bei der Bewertung spezifischer SWIFT CSP-CSCF-Kontrollen.
+ms.date: 01/08/2021
 ms.topic: sample
-ms.service: blueprints
-manager: carmonm
-ms.openlocfilehash: dd6bc10f762387aec113f20e335058080a976921
-ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+ms.openlocfilehash: 2fc2aa437cc6e69df3c5ae7c3a0acedfba67e636
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71220031"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98048741"
 ---
 # <a name="overview-of-the-swift-csp-cscf-v2020-blueprint-sample"></a>Übersicht über das Blaupausenbeispiel „SWIFT CSP-CSCF v2020“
 

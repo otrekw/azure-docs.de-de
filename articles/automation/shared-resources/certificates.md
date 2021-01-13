@@ -1,78 +1,74 @@
 ---
-title: Zertifikatobjekte in Azure Automation
-description: Zertifikate werden in Azure Automation sicher gespeichert, sodass sie von Runbooks oder DSC-Konfigurationen zur Authentifizierung bei Azure und Drittanbieterressourcen verwendet werden können.  Dieser Artikel stellt eine ausführliche Beschreibung von Zertifikaten bereit und zeigt, wie diese in Textrunbooks und grafischen Runbooks eingesetzt werden.
+title: Verwalten von Zertifikaten in Azure Automation
+description: In diesem Artikel erfahren Sie, wie Sie Zertifikate für den Zugriff durch Runbooks und DSC-Konfigurationen verwenden.
 services: automation
-ms.service: automation
 ms.subservice: shared-capabilities
-author: bobbytreed
-ms.author: robreed
-ms.date: 04/02/2019
+ms.date: 12/22/2020
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: da116dd8c84e4aa96cc3254218f1ab5d14a8bd6b
-ms.sourcegitcommit: f811238c0d732deb1f0892fe7a20a26c993bc4fc
+ms.openlocfilehash: cbf9eb6c97dcceeca5e86e8bef47a39fb685792f
+ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2019
-ms.locfileid: "67478193"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97734809"
 ---
-# <a name="certificate-assets-in-azure-automation"></a>Zertifikatobjekte in Azure Automation
+# <a name="manage-certificates-in-azure-automation"></a>Verwalten von Zertifikaten in Azure Automation
 
-Zertifikate werden in Azure Automation sicher gespeichert, sodass Sie aus Runbooks oder DSC-Konfigurationen mithilfe der Aktivität **Get-AzureRmAutomationCertificate** für Azure Resource Manager-Ressourcen darauf zugreifen können. Mit dieser Funktion können Sie Runbooks und DSC-Konfigurationen erstellen, die Zertifikate für die Authentifizierung verwenden oder diese Azure oder Drittanbieterressourcen hinzufügen.
+Zertifikate werden in Azure Automation sicher gespeichert, sodass Runbooks oder DSC-Konfigurationen über das Cmdlet [Get-AzAutomationCertificate](/powershell/module/Az.Automation/Get-AzAutomationCertificate) für Azure Resource Manager-Ressourcen darauf zugreifen können. Die sichere Speicherung der Zertifikate ermöglicht es Ihnen, Runbooks und DSC-Konfigurationen zu erstellen, die Zertifikate für die Authentifizierung verwenden, oder diese zu Azure- oder Drittanbieterressourcen hinzuzufügen.
 
 >[!NOTE]
->Zu den sicheren Objekten in Azure Automation gehören Anmeldeinformationen, Zertifikate, Verbindungen und verschlüsselte Variablen. Diese Objekte werden mithilfe eines eindeutigen Schlüssels verschlüsselt und in Azure Automation gespeichert, der für jedes Automation-Konto generiert wird. Dieser Schlüssel wird in einem systemseitig verwalteten Schlüsseltresor (Key Vault) gespeichert. Vor dem Speichern eines sicheren Objekts wird der Schlüssel aus Key Vault geladen und dann zum Verschlüsseln des Objekts verwendet. Dieser Prozess wird von Azure Automation verwaltet.
+>Zu den sicheren Objekten in Azure Automation gehören Anmeldeinformationen, Zertifikate, Verbindungen und verschlüsselte Variablen. Diese Objekte werden mithilfe eines eindeutigen Schlüssels, der für jedes Automation-Konto generiert wird, verschlüsselt und in Automation gespeichert. Automation speichert den Schlüssel in dem vom System verwalteten Key Vault-Dienst. Vor dem Speichern eines sicheren Objekts lädt Automation den Schlüssel aus Key Vault und verwendet ihn dann zum Verschlüsseln des Objekts.
 
-## <a name="azurerm-powershell-cmdlets"></a>AzureRM PowerShell-Cmdlets
+## <a name="powershell-cmdlets-to-access-certificates"></a>PowerShell-Cmdlets für den Zugriff auf Zertifikate
 
-Die Cmdlets in der folgenden Tabelle werden für AzureRM zum Erstellen und Verwalten von Automation-Anmeldeinformationsobjekten mit Windows PowerShell verwendet. Sie gehören zum Funktionsumfang des [AzureRM.Automation-Moduls](/powershell/azure/overview), das zur Verwendung in Automation-Runbooks und DSC-Konfigurationen verfügbar ist.
+Über die Cmdlets in der folgenden Tabelle können Sie Zertifikate für Automation mit PowerShell erstellen und verwalten. Diese sind im Lieferumfang der [Az-Module](modules.md#az-modules) enthalten.
 
-|Cmdlets|BESCHREIBUNG|
+|Cmdlet |BESCHREIBUNG|
+| --- | ---|
+|[Get-AzAutomationCertificate](/powershell/module/Az.Automation/Get-AzAutomationCertificate)|Ruft Informationen über ein Zertifikat zur Verwendung in einem Runbook oder einer DSC-Konfiguration ab. Das Zertifikat selbst können Sie nur über das interne Cmdlet `Get-AutomationCertificate` abrufen.|
+|[New-AzAutomationCertificate](/powershell/module/Az.Automation/New-AzAutomationCertificate)|Erstellt ein neues Zertifikat in Automation.|
+|[Remove-AzAutomationCertificate](/powershell/module/Az.Automation/Remove-AzAutomationCertificate)|Entfernt ein Zertifikat aus Automation.|
+|[Set-AzAutomationCertificate](/powershell/module/Az.Automation/Set-AzAutomationCertificate)|Legt die Eigenschaften für ein vorhandenes Zertifikat fest, lädt die Zertifikatdatei hoch und legt das Kennwort für eine **PFX**-Datei fest.|
+
+Das Cmdlet [Add-AzureCertificate](/powershell/module/servicemanagement/azure.service/add-azurecertificate) kann auch verwendet werden, um ein Dienstzertifikat für den angegebenen Clouddienst hochzuladen.
+
+## <a name="internal-cmdlets-to-access-certificates"></a>Interne Cmdlets für den Zugriff auf Zertifikate
+
+Das interne Cmdlet in der folgenden Tabelle wird für den Zugriff auf Zertifikate in Ihren Runbooks verwendet. Dieses Cmdlet ist im globalen Modul `Orchestrator.AssetManagement.Cmdlets` enthalten. Weitere Informationen finden Sie unter [Interne Cmdlets](modules.md#internal-cmdlets).
+
+| Internes Cmdlet | BESCHREIBUNG |
 |:---|:---|
-|[Get-AzureRmAutomationCertificate](/powershell/module/azurerm.automation/get-azurermautomationcertificate)|Ruft Informationen über ein Zertifikat zur Verwendung in einem Runbook oder einer DSC-Konfiguration ab. Sie können mithilfe der Aktivität "Get-AutomationCertificate" nur das Zertifikat selbst abrufen.|
-|[New-AzureRmAutomationCertificate](/powershell/module/azurerm.automation/new-azurermautomationcertificate)|Erstellt ein neues Zertifikat in Azure Automation.|
-[Remove-AzureRmAutomationCertificate](/powershell/module/azurerm.automation/remove-azurermautomationcertificate)|Entfernt ein Zertifikat aus Azure Automation.|
-|[Set-AzureRmAutomationCertificate](/powershell/module/azurerm.automation/set-azurermautomationcertificate)|Legt die Eigenschaften für ein vorhandenes Zertifikat fest, lädt die Zertifikatdatei hoch und legt das Kennwort für eine PFX-Datei fest.|
-|[Add-AzureCertificate](/powershell/module/servicemanagement/azure/add-azurecertificate)|Lädt ein Dienstzertifikat für den angegebenen Clouddienst hoch.|
+|`Get-AutomationCertificate`|Ruft ein Zertifikat zur Verwendung in einem Runbook oder einer DSC-Konfiguration ab. Gibt ein [System.Security.Cryptography.X509Certificates.X509Certificate2](/dotnet/api/system.security.cryptography.x509certificates.x509certificate2)-Objekt zurück.|
 
-## <a name="activities"></a>activities
+> [!NOTE]
+> Vermeiden Sie die Verwendung von Variablen im `Name`-Parameter von `Get-AutomationCertificate` in einem Runbook oder einer DSC-Konfiguration. Solche Variablen können die Ermittlung von Abhängigkeiten zwischen Runbooks oder DSC-Konfigurationen und Automation-Variablen zur Entwurfszeit erschweren.
 
-Die Aktivitäten in der folgenden Tabelle werden für den Zugriff auf Zertifikate in einem Runbook oder DSC-Konfigurationen verwendet.
+## <a name="python-functions-to-access-certificates"></a>Python-Funktionen für den Zugriff auf Zertifikate
 
-| activities | BESCHREIBUNG |
-|:---|:---|
-|Get-AutomationCertificate|Ruft ein Zertifikat zur Verwendung in einem Runbook oder einer DSC-Konfiguration ab. Gibt ein [System.Security.Cryptography.X509Certificates.X509Certificate2](/dotnet/api/system.security.cryptography.x509certificates.x509certificate2)-Objekt zurück.|
-
-> [!NOTE] 
-> Vermeiden Sie die Verwendung von Variablen im Parameter „–Name“ von **Get-AutomationCertificate** in einem Runbook oder einer DSC-Konfiguration, da dies die Ermittlung von Abhängigkeiten zwischen Runbooks bzw. DSC-Konfigurationen und Automation-Variablen zur Entwurfszeit erschwert.
-
-## <a name="python2-functions"></a>Python2-Funktionen
-
-Mit der Funktion in der folgenden Tabelle wird auf Zertifikate in einem Python2-Runbook zugegriffen.
+Verwenden Sie die Funktion in der folgenden Tabelle für den Zugriff auf Zertifikate in einem Python 2- und Python 3-Runbook. Python 3-Runbooks sind derzeit als Vorschau verfügbar.
 
 | Funktion | BESCHREIBUNG |
 |:---|:---|
-| automationassets.get_automation_certificate | Ruft Informationen zu einem Zertifikatasset ab. |
+| `automationassets.get_automation_certificate` | Ruft Informationen zu einem Zertifikatasset ab. |
 
 > [!NOTE]
-> Sie müssen das Modul **automationassets** am Anfang des Python-Runbooks importieren, um auf die Assetfunktionen zugreifen zu können.
+> Sie müssen das Modul `automationassets` am Anfang Ihres Python-Runbooks importieren, um auf die Assetfunktionen zugreifen zu können.
 
-## <a name="creating-a-new-certificate"></a>Erstellen eines neues Zertifikats
+## <a name="create-a-new-certificate"></a>Erstellen eines neuen Zertifikats
 
-Wenn Sie ein neues Zertifikat erstellen, laden Sie eine CER- oder PFX-Datei in Azure Automation hoch. Wenn Sie das Zertifikat als exportierbar kennzeichnen, können Sie es aus dem Azure Automation-Zertifikatspeicher übertragen. Ist das Zertifikat nicht exportierbar, können Sie es nur zum Signieren innerhalb des Runbooks oder der DSC-Konfiguration verwenden. Für Azure Automation ist es erforderlich, dass der Anbieter des Zertifikats wie folgt lautet: **Microsoft Enhanced RSA und AES Cryptographic Provider**.
+Wenn Sie ein neues Zertifikat erstellen, laden Sie eine CER- oder PFX-Datei in Automation hoch. Wenn Sie das Zertifikat als exportierbar kennzeichnen, können Sie es aus dem Automation-Zertifikatspeicher übertragen. Ist das Zertifikat nicht exportierbar, können Sie es nur zum Signieren innerhalb des Runbooks oder der DSC-Konfiguration verwenden. Für Automation muss der Zertifikatanbieter **Microsoft Enhanced RSA and AES Cryptographic Provider** lauten.
 
-### <a name="to-create-a-new-certificate-with-the-azure-portal"></a>So erstellen Sie ein neues Zertifikat mit dem Azure-Portal
+### <a name="create-a-new-certificate-with-the-azure-portal"></a>Erstellen eines neuen Zertifikats im Azure-Portal
 
-1. Klicken Sie in Ihrem Automation-Konto auf die Kachel **Objekte**, um die Seite **Objekte** zu öffnen.
-2. Klicken Sie auf die Kachel **Zertifikate**, um die Seite **Zertifikate** zu öffnen.
-3. Klicken Sie oben auf der Seite auf **Zertifikat hinzufügen**.
-4. Geben Sie im Feld **Name** einen Namen für das Zertifikat ein.
-5. Klicken Sie unterhalb von **Zertifikatdatei hochladen** auf **Datei auswählen**, um nach einer CER- oder PFX-Datei zu suchen. Wenn Sie eine PFX-Datei auswählen, geben Sie ein Kennwort an und legen fest, ob das Zertifikat exportiert werden kann.
-6. Klicken Sie auf **Erstellen** , um das neue Zertifikatobjekt zu speichern.
+1. Wählen Sie in Ihrem Automation-Konto im linken Bereich **Zertifikate** unter **Freigegebene Ressourcen** aus.
+1. Wählen Sie auf der Seite **Zertifikate** die Option **Zertifikat hinzufügen** aus.
+1. Geben Sie im Feld **Name** einen Namen für das Zertifikat ein.
+1. Um nach einer **CER**- oder **PFX**-Datei zu suchen, wählen Sie unter **Zertifikatdatei hochladen** die Option **Datei auswählen** aus. Wenn Sie eine **PFX**-Datei auswählen, geben Sie ein Kennwort an und legen fest, ob das Zertifikat exportiert werden kann.
+1. Wählen Sie **Erstellen** aus, um das neue Zertifikatobjekt zu speichern.
 
-### <a name="to-create-a-new-certificate-with-powershell"></a>So erstellen Sie ein neues Zertifikat mit PowerShell
+### <a name="create-a-new-certificate-with-powershell"></a>Erstellen eines neuen Zertifikats mit PowerShell
 
-Das folgende Beispiel zeigt, wie Sie ein neues Automation-Zertifikat erstellen und es als exportierbar kennzeichnen. In diesem Beispiel wird eine vorhandene PFX-Datei importiert.
+Das folgende Beispiel zeigt, wie Sie ein neues Automation-Zertifikat erstellen und es als exportierbar kennzeichnen. Dieses Beispiel importiert eine vorhandene **PFX**-Datei.
 
 ```powershell-interactive
 $certificateName = 'MyCertificate'
@@ -80,19 +76,19 @@ $PfxCertPath = '.\MyCert.pfx'
 $CertificatePassword = ConvertTo-SecureString -String 'P@$$w0rd' -AsPlainText -Force
 $ResourceGroup = "ResourceGroup01"
 
-New-AzureRmAutomationCertificate -AutomationAccountName "MyAutomationAccount" -Name $certificateName -Path $PfxCertPath –Password $CertificatePassword -Exportable -ResourceGroupName $ResourceGroup
+New-AzAutomationCertificate -AutomationAccountName "MyAutomationAccount" -Name $certificateName -Path $PfxCertPath –Password $CertificatePassword -Exportable -ResourceGroupName $ResourceGroup
 ```
 
-### <a name="create-a-new-certificate-with-resource-manager-template"></a>Erstellen eines neuen Zertifikats mit einer Resource Manager-Vorlage
+### <a name="create-a-new-certificate-with-a-resource-manager-template"></a>Erstellen eines neuen Zertifikats mit einer Resource Manager-Vorlage
 
-Im folgenden Beispiel wird veranschaulicht, wie Sie ein Zertifikat in Ihrem Azure Automation-Konto mithilfe einer Resource Manager-Vorlage über PowerShell bereitstellen:
+Das folgende Beispiel veranschaulicht, wie Sie in PowerShell mithilfe einer Resource Manager-Vorlage ein Zertifikat in Ihrem Automation-Konto bereitstellen:
 
 ```powershell-interactive
 $AutomationAccountName = "<automation account name>"
-$PfxCertPath = '<PFX cert path'
+$PfxCertPath = '<PFX cert path and filename>'
 $CertificatePassword = '<password>'
-$certificateName = '<certificate name>'
-$AutomationAccountName = '<automation account name>'
+$certificateName = '<certificate name>' #A name of your choosing
+$ResourceGroupName = '<resource group name>' #The one that holds your automation account
 $flags = [System.Security.Cryptography.X509Certificates.X509KeyStorageFlags]::Exportable `
     -bor [System.Security.Cryptography.X509Certificates.X509KeyStorageFlags]::PersistKeySet `
     -bor [System.Security.Cryptography.X509Certificates.X509KeyStorageFlags]::MachineKeySet
@@ -123,38 +119,30 @@ $json = @"
 "@
 
 $json | out-file .\template.json
-New-AzureRmResourceGroupDeployment -Name NewCert -ResourceGroupName TestAzureAuto -TemplateFile .\template.json
+New-AzResourceGroupDeployment -Name NewCert -ResourceGroupName $ResourceGroupName -TemplateFile .\template.json
 ```
 
-## <a name="using-a-certificate"></a>Verwenden eines Zertifikats
+## <a name="get-a-certificate"></a>Abrufen eines Zertifikats
 
-Nutzen Sie die Aktivität **Get-AutomationCertificate**, um ein Zertifikat zu verwenden. Eine Verwendung des Cmdlets [Get-AzureRmAutomationCertificate](/powershell/module/azurerm.automation/get-azurermautomationcertificate) ist nicht möglich, da dieses Cmdlet Informationen zum Zertifikatobjekt, aber nicht zum Zertifikat selbst zurückgibt.
+Verwenden Sie das interne Cmdlet `Get-AutomationCertificate`, um ein Zertifikat abzurufen. Sie können das Cmdlet [Get-AzAutomationCertificate](/powershell/module/Az.Automation/Get-AzAutomationCertificate) nicht verwenden, da dieses Cmdlet Informationen zum Zertifikatobjekt zurückgibt, aber nicht das Zertifikat selbst.
 
-### <a name="textual-runbook-sample"></a>Beispiel für ein Textrunbook
+### <a name="textual-runbook-examples"></a>Beispiele für Textrunbooks
 
-Der folgende Beispielcode zeigt, wie Sie ein Zertifikat zu einem Clouddienst in einem Runbook hinzufügen. In diesem Beispiel wird das Kennwort aus einer verschlüsselten Automation-Variable abgerufen.
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+Das folgende Beispiel zeigt, wie Sie ein Zertifikat zu einem Clouddienst in einem Runbook hinzufügen. In diesem Beispiel wird das Kennwort aus einer verschlüsselten Automation-Variable abgerufen.
 
 ```powershell-interactive
 $serviceName = 'MyCloudService'
 $cert = Get-AutomationCertificate -Name 'MyCertificate'
-$certPwd = Get-AzureRmAutomationVariable -ResourceGroupName "ResourceGroup01" `
+$certPwd = Get-AzAutomationVariable -ResourceGroupName "ResourceGroup01" `
 –AutomationAccountName "MyAutomationAccount" –Name 'MyCertPassword'
 Add-AzureCertificate -ServiceName $serviceName -CertToDeploy $cert
 ```
 
-### <a name="graphical-runbook-sample"></a>Beispiel für ein grafisches Runbook
+# <a name="python-2"></a>[Python 2](#tab/python2)
 
-Sie können einem grafischen Runbook **Get-AutomationCertificate** hinzufügen, indem Sie im Bibliotheksbereich mit der rechten Maustaste auf das Zertifikat klicken und **Zum Zeichenbereich hinzufügen** auswählen.
-
-![Hinzufügen eines Zertifikats zum Zeichenbereich](../media/certificates/automation-certificate-add-to-canvas.png)
-
-Die folgende Abbildung zeigt ein Beispiel für die Verwendung eines Zertifikats in einem grafischen Runbook. Dies entspricht dem obigen Beispiel, in dem gezeigt wird, wie Sie ein Zertifikat zu einem Clouddienst aus einem Textrunbook hinzufügen.
-
-![Beispiel für grafische Inhaltserstellung](../media/certificates/graphical-runbook-add-certificate.png)
-
-### <a name="python2-sample"></a>Python2-Beispiel
-
-Das folgende Beispiel zeigt, wie Sie auf Zertifikate in Python2-Runbooks zugreifen:
+Das folgende Beispiel zeigt, wie Sie auf Zertifikate in Python 2-Runbooks zugreifen.
 
 ```python
 # get a reference to the Azure Automation certificate
@@ -164,6 +152,32 @@ cert = automationassets.get_automation_certificate("AzureRunAsCertificate")
 print cert
 ```
 
+# <a name="python-3"></a>[Python 3](#tab/python3)
+
+Das folgende Beispiel zeigt, wie Sie auf Zertifikate in Python 3-Runbooks (Vorschau) zugreifen.
+
+```python
+# get a reference to the Azure Automation certificate
+cert = automationassets.get_automation_certificate("AzureRunAsCertificate")
+
+# returns the binary cert content  
+print (cert)
+```
+
+---
+
+### <a name="graphical-runbook-example"></a>Beispiel für ein grafisches Runbook
+
+Fügen Sie einem grafischen Runbook eine Aktivität für das interne Cmdlet `Get-AutomationCertificate` hinzu, indem Sie im Bibliotheksbereich mit der rechten Maustaste auf das Zertifikat klicken und anschließend **Zur Canvas hinzufügen** auswählen.
+
+![Screenshot: Hinzufügen eines Zertifikats zur Canvas](../media/certificates/automation-certificate-add-to-canvas.png)
+
+Die folgende Abbildung zeigt ein Beispiel für die Verwendung eines Zertifikats in einem grafischen Runbook.
+
+![Screenshot: Beispiel für die grafische Erstellung](../media/certificates/graphical-runbook-add-certificate.png)
+
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Weitere Informationen zum Arbeiten mit Verknüpfungen zum Steuern des logischen Ablaufs von Aktivitäten, die Ihr Runbook ausführen soll, finden Sie unter [Verknüpfungen bei der grafischen Erstellung](../automation-graphical-authoring-intro.md#links-and-workflow). 
+* Weitere Informationen zu den Cmdlets, die für den Zugriff auf Zertifikate verwendet werden, finden Sie unter [Verwalten von Modulen in Azure Automation](modules.md).
+* Allgemeine Informationen zu Runbooks finden Sie unter [Ausführen von Runbooks in Azure Automation](../automation-runbook-execution.md).
+* Ausführliche Informationen zu DSC-Konfigurationen finden Sie in der [Übersicht über die Zustandskonfiguration](../automation-dsc-overview.md).

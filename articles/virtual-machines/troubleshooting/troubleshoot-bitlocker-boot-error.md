@@ -10,24 +10,25 @@ ms.service: virtual-machines-windows
 ms.topic: troubleshooting
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 08/23/2019
+ms.date: 11/20/2020
 ms.author: genli
-ms.openlocfilehash: b0b8528a8eaf5cab22bb2482bd60e760d8bf5e3d
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.custom: has-adal-ref
+ms.openlocfilehash: 00095eed3fe6d143d9ed7a0c748c4702028f4632
+ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058104"
+ms.lasthandoff: 12/31/2020
+ms.locfileid: "97832059"
 ---
 # <a name="bitlocker-boot-errors-on-an-azure-vm"></a>BitLocker-Startfehler auf einer Azure-VM
 
  Dieser Artikel beschreibt BitLocker-Fehler, die beim Starten eines virtuellen Windows-Computers (VM) in Microsoft Azure auftreten können.
 
-[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
+ 
 
 ## <a name="symptom"></a>Symptom
 
- Eine Windows-VM wird nicht gestartet. Beim Überprüfen der Screenshots im Fenster [Startdiagnose](../windows/boot-diagnostics.md) wird eine der folgenden Fehlermeldungen angezeigt:
+ Eine Windows-VM wird nicht gestartet. Beim Überprüfen der Screenshots im Fenster [Startdiagnose](./boot-diagnostics.md) wird eine der folgenden Fehlermeldungen angezeigt:
 
 - Stecken Sie das USB-Laufwerk mit dem BitLocker-Schlüssel ein.
 
@@ -42,19 +43,19 @@ Dieses Problem kann auftreten, wenn der virtuelle Computer die BitLocker-Wiederh
 
 ## <a name="solution"></a>Lösung
 
-Um dieses Problem zu beheben, beenden Sie die VM, heben ihre Zuordnung auf und starten sie dann neu. Durch diesen Vorgang ruft der virtuelle Computer die BEK-Datei aus Azure Key Vault ab und legt sie dann auf dem verschlüsselten Datenträger ab. 
+Um dieses Problem zu beheben, beenden Sie die VM, heben ihre Zuordnung auf und starten sie dann. Durch diesen Vorgang ruft der virtuelle Computer die BEK-Datei aus Azure Key Vault ab und legt sie dann auf dem verschlüsselten Datenträger ab. 
 
 Wenn das Problem mit dieser Methode nicht behoben wird, gehen Sie folgendermaßen vor, um die BEK-Datei manuell wiederherzustellen:
 
 1. Erstellen Sie eine Momentaufnahme des Systemdatenträgers des betroffenen virtuellen Computers als Sicherung. Weitere Informationen finden Sie unter [Erstellen einer Momentaufnahme eines Datenträgers](../windows/snapshot-copy-managed-disk.md).
-2. [Fügen Sie den Systemdatenträger an einen virtuellen Wiederherstellungscomputer an.](troubleshoot-recovery-disks-portal-windows.md) Zum Ausführen des Befehls [manage-bde](https://docs.microsoft.com/windows-server/administration/windows-commands/manage-bde) in Schritt 7 muss das Feature **BitLocker Drive Encryption** auf der Wiederherstellungs-VM aktiviert werden.
+2. [Fügen Sie den Systemdatenträger an einen virtuellen Wiederherstellungscomputer an.](troubleshoot-recovery-disks-portal-windows.md) Zum Ausführen des Befehls [manage-bde](/windows-server/administration/windows-commands/manage-bde) in Schritt 7 muss das Feature **BitLocker Drive Encryption** auf der Wiederherstellungs-VM aktiviert werden.
 
     Wenn Sie einen verwalteten Datenträger anfügen, wird möglicherweise eine Fehlermeldung darüber angezeigt, dass Verschlüsselungseinstellungen enthalten sind und er daher nicht als Datenträger für Daten verwendet werden kann. Führen Sie in diesem Fall das folgende Skript aus, um das Anfügen des Datenträgers erneut zu versuchen:
 
     ```Powershell
     $rgName = "myResourceGroup"
     $osDiskName = "ProblemOsDisk"
-
+    # Set the EncryptionSettingsEnabled property to false, so you can attach the disk to the recovery VM.
     New-AzDiskUpdateConfig -EncryptionSettingsEnabled $false |Update-AzDisk -diskName $osDiskName -ResourceGroupName $rgName
 
     $recoveryVMName = "myRecoveryVM" 
@@ -69,7 +70,7 @@ Wenn das Problem mit dieser Methode nicht behoben wird, gehen Sie folgendermaße
     ```
      Sie können einen verwalteten Datenträger nicht an einen virtuellen Computer anfügen, der aus einem Blobimage wiederhergestellt wurde.
 
-3. Nachdem der Datenträger angefügt wurde, stellen Sie eine Remotedesktopverbindung mit der Wiederherstellungs-VM her, damit Sie einige Azure PowerShell-Skripts ausführen können. Achten Sie darauf, dass die [aktuelle Version von Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview) auf der Wiederherstellungs-VM installiert ist.
+3. Nachdem der Datenträger angefügt wurde, stellen Sie eine Remotedesktopverbindung mit der Wiederherstellungs-VM her, damit Sie einige Azure PowerShell-Skripts ausführen können. Achten Sie darauf, dass die [aktuelle Version von Azure PowerShell](/powershell/azure/) auf der Wiederherstellungs-VM installiert ist.
 
 4. Öffnen Sie eine Azure PowerShell Sitzung mit erhöhten Rechten („Als Administrator ausführen“). Führen Sie die folgenden Befehle aus, um sich beim Azure-Abonnement anzumelden.
 
@@ -86,21 +87,18 @@ Wenn das Problem mit dieser Methode nicht behoben wird, gehen Sie folgendermaße
             | Sort-Object -Property Created `
             | ft  Created, `
                 @{Label="Content Type";Expression={$_.ContentType}}, `
+                @{Label ="MachineName"; Expression = {$_.Tags.MachineName}}, `
                 @{Label ="Volume"; Expression = {$_.Tags.VolumeLetter}}, `
                 @{Label ="DiskEncryptionKeyFileName"; Expression = {$_.Tags.DiskEncryptionKeyFileName}}
     ```
 
-    Nachfolgend sehen Sie ein Beispiel für die Ausgabe: Suchen Sie den Namen der BEK-Datei für den angefügten Datenträger. In diesem Fall wird davon ausgegangen, dass der Laufwerkbuchstabe des angefügten Datenträgers F und der Name der BEK-Datei „EF7B2F5A-50C6-4637-9F13-7F599C12F85C.BEK“ lautet.
+    Nachfolgend sehen Sie ein Beispiel für die Ausgabe: In diesem Fall wird „EF7B2F5A-50C6-4637-0001-7F599C12F85C.BEK“ als Dateiname verwendet.
 
     ```
-    Created             Content Type Volume DiskEncryptionKeyFileName               
-    -------             ------------ ------ -------------------------               
-    4/5/2018 7:14:59 PM Wrapped BEK  C:\    B4B3E070-836C-4AF5-AC5B-66F6FDE6A971.BEK
-    4/7/2018 7:21:16 PM Wrapped BEK  F:\    EF7B2F5A-50C6-4637-9F13-7F599C12F85C.BEK
-    4/7/2018 7:26:23 PM Wrapped BEK  G:\    70148178-6FAE-41EC-A05B-3431E6252539.BEK
-    4/7/2018 7:26:26 PM Wrapped BEK  H:\    5745719F-4886-4940-9B51-C98AFABE5305.BEK
+    Created               Content Type Volume MachineName DiskEncryptionKeyFileName
+    -------               ------------ ------ ----------- -------------------------
+    11/20/2020 7:41:56 AM BEK          C:\    myVM   EF7B2F5A-50C6-4637-0001-7F599C12F85C.BEK
     ```
-
     Wenn zwei doppelte Volumes angezeigt werden, ist das Volume mit dem neueren Zeitstempel die aktuelle BEK-Datei, die von der Wiederherstellungs-VM verwendet wird.
 
     Wenn **Inhaltstyp** den Wert **Wrapped BEK** (Umschlossene BEK-Datei) aufweist, wechseln Sie zu den [Schlüsselverschlüsselungsschlüssel-Szenarien (KEK)](#key-encryption-key-scenario).
@@ -111,9 +109,10 @@ Wenn das Problem mit dieser Methode nicht behoben wird, gehen Sie folgendermaße
 
     ```powershell
     $vault = "myKeyVault"
-    $bek = " EF7B2F5A-50C6-4637-9F13-7F599C12F85C"
+    $bek = "EF7B2F5A-50C6-4637-0001-7F599C12F85C"
     $keyVaultSecret = Get-AzKeyVaultSecret -VaultName $vault -Name $bek
-    $bekSecretBase64 = $keyVaultSecret.SecretValueText
+    $bstr = [Runtime.InteropServices.Marshal]::SecureStringToBSTR($keyVaultSecret.SecretValue)
+    $bekSecretBase64 = [Runtime.InteropServices.Marshal]::PtrToStringAuto($bstr)
     $bekFileBytes = [Convert]::FromBase64String($bekSecretbase64)
     $path = "C:\BEK\DiskEncryptionKeyFileName.BEK"
     [System.IO.File]::WriteAllBytes($path,$bekFileBytes)
@@ -122,7 +121,7 @@ Wenn das Problem mit dieser Methode nicht behoben wird, gehen Sie folgendermaße
 7.  Führen Sie den folgenden Befehl aus, um den angefügten Datenträger mithilfe der BEK-Datei zu entsperren.
 
     ```powershell
-    manage-bde -unlock F: -RecoveryKey "C:\BEK\EF7B2F5A-50C6-4637-9F13-7F599C12F85C.BEK
+    manage-bde -unlock F: -RecoveryKey "C:\BEK\EF7B2F5A-50C6-4637-0001-7F599C12F85C.BEK
     ```
     In diesem Beispiel ist der angefügte Betriebssystemdatenträger das Laufwerk F. Achten Sie darauf, den richtigen Laufwerkbuchstaben zu verwenden. 
 
@@ -135,11 +134,15 @@ Wenn das Problem mit dieser Methode nicht behoben wird, gehen Sie folgendermaße
 
     - Deaktivieren Sie den Schutz, um BitLocker vorübergehend AUSZUSCHALTEN. Führen Sie folgenden Befehl aus:
 
-                    manage-bde -protectors -disable F: -rc 0
-           
+    ```console
+    manage-bde -protectors -disable F: -rc 0
+    ```
+
     - Entschlüsseln Sie das Laufwerk vollständig. Führen Sie zu diesem Zweck den folgenden Befehl aus:
 
-                    manage-bde -off F:
+    ```console
+    manage-bde -off F:
+    ```
 
 ### <a name="key-encryption-key-scenario"></a>Schlüsselverschlüsselungsschlüssel-Szenario
 
@@ -167,11 +170,21 @@ Gehen Sie bei einem Szenario mit Schlüsselverschlüsselungsschlüssel folgender
             [string] 
             $adTenant
             )
-    # Load ADAL Assemblies. The following script assumes that the Azure PowerShell version you installed is 1.0.0. 
-    $adal = "${env:ProgramFiles}\WindowsPowerShell\Modules\Az.Accounts\1.0.0\PreloadAssemblies\Microsoft.IdentityModel.Clients.ActiveDirectory.dll"
-    $adalforms = "${env:ProgramFiles}\WindowsPowerShell\Modules\Az.Accounts\1.0.0\PreloadAssemblies\Microsoft.IdentityModel.Clients.ActiveDirectory.Platform.dll"
+    # Load ADAL Assemblies
+    $adal = "${env:ProgramFiles}\WindowsPowerShell\Modules\Az.Accounts\$(((dir ${env:ProgramFiles}\WindowsPowerShell\Modules\Az.Accounts).name) | select -last 1)\PreloadAssemblies\Microsoft.IdentityModel.Clients.ActiveDirectory.dll"
+    $adalforms = "${env:ProgramFiles}\WindowsPowerShell\Modules\Az.Accounts\$(((dir ${env:ProgramFiles}\WindowsPowerShell\Modules\Az.Accounts).name) | select -last 1)\PreloadAssemblies\Microsoft.IdentityModel.Clients.ActiveDirectory.Platform.dll"
+    If ((Test-Path -Path $adal) -and (Test-Path -Path $adalforms)) { 
+
     [System.Reflection.Assembly]::LoadFrom($adal)
     [System.Reflection.Assembly]::LoadFrom($adalforms)
+     }
+     else
+     {
+    $adal="${env:userprofile}\Documents\WindowsPowerShell\Modules\Az.Accounts\$(((dir ${env:userprofile}\Documents\WindowsPowerShell\Modules\Az.Accounts).name) | select -last 1)\PreloadAssemblies\Microsoft.IdentityModel.Clients.ActiveDirectory.dll"
+    $adalforms ="${env:userprofile}\Documents\WindowsPowerShell\Modules\Az.Accounts\$(((dir ${env:userprofile}\Documents\WindowsPowerShell\Modules\Az.Accounts).name) | select -last 1)\PreloadAssemblies\Microsoft.IdentityModel.Clients.ActiveDirectory.Platform.dll"
+    [System.Reflection.Assembly]::LoadFrom($adal)
+    [System.Reflection.Assembly]::LoadFrom($adalforms)
+     }  
 
     # Set well-known client ID for AzurePowerShell
     $clientId = "1950a258-227b-4e31-a9cf-717495945fc2" 
@@ -200,7 +213,8 @@ Gehen Sie bei einem Szenario mit Schlüsselverschlüsselungsschlüssel folgender
 
     #Get wrapped BEK and place it in JSON object to send to KeyVault REST API
     $keyVaultSecret = Get-AzKeyVaultSecret -VaultName $keyVaultName -Name $secretName
-    $wrappedBekSecretBase64 = $keyVaultSecret.SecretValueText
+    $bstr = [Runtime.InteropServices.Marshal]::SecureStringToBSTR($keyVaultSecret.SecretValue)
+    $wrappedBekSecretBase64 = [Runtime.InteropServices.Marshal]::PtrToStringAuto($bstr)
     $jsonObject = @"
     {
     "alg": "RSA-OAEP",
@@ -231,22 +245,26 @@ Gehen Sie bei einem Szenario mit Schlüsselverschlüsselungsschlüssel folgender
     #Convert base64 string to bytes and write to BEK file
     $bekFileBytes = [System.Convert]::FromBase64String($base64Bek);
     [System.IO.File]::WriteAllBytes($bekFilePath,$bekFileBytes)
+
+    #Delete the key from the memory
+    [Runtime.InteropServices.Marshal]::ZeroFreeBSTR($bstr)
+    clear-variable -name wrappedBekSecretBase64
     ```
 3. Legen Sie die Parameter fest. Das Skript verarbeitet das KEK-Geheimnis, um den BEK-Schlüssel zu erstellen und diesen dann in einem lokalen Ordner auf der Wiederherstellungs-VM zu speichern. Wenn beim Ausführen des Skripts Fehler auftreten, lesen Sie den Abschnitt zur [Problembehandlung bei Skripts](#script-troubleshooting).
 
 4. Beim Start des Skripts wird die folgende Ausgabe angezeigt:
 
-        GAC    Version        Location                                                                              
-        ---    -------        --------                                                                              
-        False  v4.0.30319     C:\Program Files\WindowsPowerShell\Modules\Az.Accounts\...
-        False  v4.0.30319     C:\Program Files\WindowsPowerShell\Modules\Az.Accounts\...
+    GAC    Version        Speicherort                                                                              
+    ---    -------        --------                                                                              
+    False  v4.0.30319     C:\Programme\WindowsPowerShell\Modules\Az.Accounts\...  False  v4.0.30319     C:\Programme\WindowsPowerShell\Modules\Az.Accounts\...
 
     Sobald das Skript abgeschlossen ist, wird die folgende Ausgabe angezeigt:
 
-        VERBOSE: POST https://myvault.vault.azure.net/keys/rondomkey/<KEY-ID>/unwrapkey?api-
-        version=2015-06-01 with -1-byte payload
-        VERBOSE: received 360-byte response of content type application/json; charset=utf-8
-
+    ```output
+    VERBOSE: POST https://myvault.vault.azure.net/keys/rondomkey/<KEY-ID>/unwrapkey?api-
+    version=2015-06-01 with -1-byte payload
+    VERBOSE: received 360-byte response of content type application/json; charset=utf-8
+    ```
 
 5. Um den angefügten Datenträger mithilfe der BEK-Datei zu entsperren, führen Sie den folgenden Befehl aus:
 
@@ -264,18 +282,21 @@ Gehen Sie bei einem Szenario mit Schlüsselverschlüsselungsschlüssel folgender
 
     - Deaktivieren Sie den Schutz, um BitLocker vorübergehend AUSZUSCHALTEN. Führen Sie folgenden Befehl aus:
 
-             manage-bde -protectors -disable F: -rc 0
-           
+    ```console
+    manage-bde -protectors -disable F: -rc 0
+    ```
+
     - Entschlüsseln Sie das Laufwerk vollständig. Führen Sie zu diesem Zweck den folgenden Befehl aus:
 
-                    manage-bde -off F:
+    ```console
+    manage-bde -off F:
+    ```
+
 ## <a name="script-troubleshooting"></a>Problembehandlung bei Skripts
 
 **Error: Datei oder Assembly konnte nicht geladen werden.**
 
-Dieser Fehler tritt auf, weil die Pfade der ADAL-Assemblys falsch sind. Wenn das VZ-Modul nur für den aktuellen Benutzer installiert wird, befinden sich die ADAL-Assemblys in `C:\Users\<username>\Documents\WindowsPowerShell\Modules\Az.Accounts\<version>`.
-
-Sie können auch nach dem Ordner `Az.Accounts` suchen, um den richtigen Pfad zu ermitteln.
+Dieser Fehler tritt auf, weil die Pfade der ADAL-Assemblys falsch sind. Sie können nach dem Ordner `Az.Accounts` suchen, um den richtigen Pfad zu ermitteln.
 
 **Error: Get-AzKeyVaultSecret oder Get-AzKeyVaultSecret wird nicht als Name des Cmdlets erkannt.**
 

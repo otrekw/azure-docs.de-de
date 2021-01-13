@@ -1,20 +1,20 @@
 ---
 title: 'Azure PowerShell-Skriptbeispiel: Herunterladen von Gerätekonfigurationsvorlagen | Microsoft-Dokumentation'
-description: Herunterladen der Gerätekonfigurationsvorlage
+description: Hier erfahren Sie, wie Sie mithilfe eines PowerShell-Skripts die Vorlage zur VPN-Gerätekonfiguration für eine Verbindung herunterladen.
 services: vpn-gateway
 documentationcenter: vpn-gateway
-author: anzaman
+author: yushwang
 ms.service: vpn-gateway
 ms.devlang: powershell
 ms.topic: sample
-ms.date: 04/17/2018
-ms.author: alzam
-ms.openlocfilehash: a4cec6661750935cefd3767be7e10e2674ee8473
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 01/09/2020
+ms.author: yushwang
+ms.openlocfilehash: 283ddb12e497c242f1843840fe1f1ff208712626
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66113667"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88031709"
 ---
 # <a name="download-vpn-device-template-using-powershell"></a>Herunterladen der VPN-Gerätevorlage mithilfe von PowerShell
 
@@ -55,4 +55,4 @@ Dieses Skript verwendet die folgenden Befehle zum Erstellen der Bereitstellung. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zum Azure PowerShell-Modul finden Sie in der [Azure PowerShell-Dokumentation](/powershell/azure/overview).
+Weitere Informationen zum Azure PowerShell-Modul finden Sie in der [Azure PowerShell-Dokumentation](/powershell/azure/).

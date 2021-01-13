@@ -1,17 +1,17 @@
 ---
 title: Gruppieren von Computern für die Bewertung mit Azure Migrate | Microsoft-Dokumentation
 description: Hier wird beschrieben, wie Sie Computer gruppieren, bevor Sie mit dem Azure Migrate-Dienst eine Bewertung ausführen.
-author: rayne-wiselman
-ms.service: azure-migrate
-ms.topic: article
+author: rashi-ms
+ms.author: rajosh
+ms.manager: abhemraj
+ms.topic: how-to
 ms.date: 07/17/2019
-ms.author: hamusa
-ms.openlocfilehash: 13c640d25265b2663520ef7ab203b0b0a33829e2
-ms.sourcegitcommit: af58483a9c574a10edc546f2737939a93af87b73
+ms.openlocfilehash: 364b5949e944a4317aa25f1f1b12545122881cec
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68301714"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96752106"
 ---
 # <a name="create-a-group-for-assessment"></a>Erstellen einer Gruppe für die Bewertung
 
@@ -37,17 +37,17 @@ Gehen Sie wie folgt vor, wenn Sie eine Gruppe unabhängig von der Erstellung ein
 
 1. Klicken Sie im Azure Migrate-Projekt unter **Übersicht** auf **Server bewerten und migrieren**. Klicken Sie in **Azure Migrate: Serverbewertung** auf **Gruppen**.
     - Falls Sie das Tool „Azure Migrate: Server Assessment“ (Azure Migrate-Serverbewertung) noch nicht hinzugefügt haben, können Sie darauf klicken, um dies nachzuholen. [Weitere Informationen](how-to-assess.md)
-    - Lesen Sie [diese Informationen](how-to-add-tool-first-time.md), falls Sie noch kein Azure Migrate-Projekt erstellt haben.
+    - Lesen Sie [diese Informationen](./create-manage-projects.md), falls Sie noch kein Azure Migrate-Projekt erstellt haben.
 
     ![Auswählen von Gruppen](./media/how-to-create-a-group/select-groups.png)
 
 2. Klicken Sie auf das Symbol **Gruppe**.
 3. Geben Sie unter **Gruppe erstellen** einen Gruppennamen an, und wählen Sie unter **Appliancename** die Azure Migrate-Appliance aus, die Sie für die Computerermittlung verwenden.
-1. Wählen Sie in der Liste mit den Computern die Computer aus, die Sie der Gruppe hinzufügen möchten, und wählen Sie **Erstellen**.
+4. Wählen Sie in der Liste mit den Computern die Computer aus, die Sie der Gruppe hinzufügen möchten, und wählen Sie **Erstellen**.
 
     ![Erstellen einer Gruppe](./media/how-to-create-a-group/create-group.png)
 
-Sie können diese Gruppe jetzt beim [Erstellen einer Bewertung](how-to-create-assessment.md) verwenden.
+Sie können diese Gruppe jetzt verwenden, wenn Sie [eine Azure VM-Bewertung](how-to-create-assessment.md) oder [eine Bewertung der VMware-Lösung in Azure (AVS)](how-to-create-azure-vmware-solution-assessment.md) erstellen. Beachten Sie, dass Sie eine AVS-Bewertung für Gruppen erstellen können, die nur VMware-VMs enthalten. 
 
 ## <a name="refine-a-group-with-dependency-mapping"></a>Optimieren einer Gruppe mit Abhängigkeitszuordnung
 
@@ -89,4 +89,3 @@ Gehen Sie wie folgt vor, falls Sie die [Abhängigkeitszuordnung bereits eingeric
 ## <a name="next-steps"></a>Nächste Schritte
 
 Erfahren Sie mehr über das Einrichten und Verwenden der [Abhängigkeitszuordnung](how-to-create-group-machine-dependencies.md) mit dem Ziel, Gruppen mit hoher Vertrauenswürdigkeit zu erstellen.
-

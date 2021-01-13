@@ -3,21 +3,21 @@ title: Erstellen von Moderationsüberprüfungen über die REST-API-Konsole – C
 titleSuffix: Azure Cognitive Services
 description: Verwenden Sie die Überprüfungs-API von Azure Content Moderator, um Bild- oder Textüberprüfungen für die Moderation durch Personen zu erstellen.
 services: cognitive-services
-author: sanjeev3
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 03/18/2019
-ms.author: sajagtap
-ms.openlocfilehash: ec45f182e24f44c2222d64f18e2aa0aeea845727
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.author: pafarley
+ms.openlocfilehash: 479c7c455f07d098edd327196803e85df24dfb6d
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68882346"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905131"
 ---
-# <a name="create-human-reviews-rest"></a>Erstellen von Überprüfungen durch Personen (REST)
+# <a name="create-human-reviews-api-console"></a>Erstellen von Überprüfungen durch Personen (API-Konsole)
 
 In [Überprüfungen](./review-api.md#reviews) werden Inhalte gespeichert und angezeigt, damit Moderatoren auf sie zugreifen können. Wenn ein Benutzer eine Überprüfung abgeschlossen hat, werden die Ergebnisse an einen angegebenen Rückrufendpunkt gesendet. In diesem Artikel erfahren Sie, wie Sie Überprüfungen mithilfe der Überprüfungs-REST-APIs über die API-Konsole einrichten. Nachdem Sie sich mit der Struktur der APIs vertraut gemacht haben, können Sie diese Aufrufe bequem zu jeder REST-kompatiblen Plattform portieren.
 
@@ -129,7 +129,7 @@ Im Standardanforderungstext werden Beispiele für die verschiedenen Überprüfun
 
 ### <a name="submit-your-request"></a>Senden der Anforderung
   
-Wählen Sie **Senden** aus. Wenn der Vorgang erfolgreich ist, lautet der **Antwortstatus** `200 OK`, und im Feld **Antwortinhalt** wird eine ID für die Überprüfung angezeigt. Kopieren Sie diese ID für die folgenden Schritte.
+Wählen Sie **Senden** aus. Wenn der Vorgang erfolgreich ist, lautet der **Antwortstatus**`200 OK`, und im Feld **Antwortinhalt** wird eine ID für die Überprüfung angezeigt. Kopieren Sie diese ID für die folgenden Schritte.
 
 ![Feld „Antwortinhalt“ mit Überprüfungs-ID in der Konsole „Überprüfen – Erstellen“](images/test-drive-review-2.PNG)
 
@@ -149,7 +149,7 @@ Geben Sie die REST-Aufrufparameter wie im obigen Abschnitt ein. In diesem Schrit
 
 ![Abrufergebnisse in der Konsole „Überprüfen – Erstellen“](images/test-drive-review-3.PNG)
   
-Wählen Sie **Senden** aus. Wenn der Vorgang erfolgreich ist, lautet der **Antwortstatus** `200 OK`, und im Feld **Antwortinhalt** werden die Überprüfungsdetails im JSON-Format wie folgt angezeigt:
+Wählen Sie **Senden** aus. Wenn der Vorgang erfolgreich ist, lautet der **Antwortstatus**`200 OK`, und im Feld **Antwortinhalt** werden die Überprüfungsdetails im JSON-Format wie folgt angezeigt:
 
 ```json
 {  

@@ -1,22 +1,22 @@
 ---
-title: 'Löschen eines Gateways für virtuelle Netzwerke über das Portal PowerShell: Azure Resource Manager | Microsoft-Dokumentation'
+title: 'Azure-VPN Gateway: Löschen eines Gateways: PowerShell'
 description: Löschen Sie ein Gateway des virtuellen Netzwerks mit PowerShell im Resource Manager-Bereitstellungsmodell.
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
-ms.date: 02/07/2019
+ms.date: 09/03/2020
 ms.author: cherylmc
-ms.topic: conceptual
-ms.openlocfilehash: 7b9503b2db14d4de6c4c8cf983c42bccd6f9f8fd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.topic: how-to
+ms.openlocfilehash: 48e0998719ea19c0b360b50d8c9171d2b448ad19
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66157435"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89440761"
 ---
 # <a name="delete-a-virtual-network-gateway-using-powershell"></a>Löschen eines Gateways des virtuellen Netzwerks mit PowerShell
 > [!div class="op_single_selector"]
-> * [Azure-Portal](vpn-gateway-delete-vnet-gateway-portal.md)
+> * [Azure portal](vpn-gateway-delete-vnet-gateway-portal.md)
 > * [PowerShell](vpn-gateway-delete-vnet-gateway-powershell.md)
 > * [PowerShell (klassisch)](vpn-gateway-delete-vnet-gateway-classic-powershell.md)
 >
@@ -30,11 +30,11 @@ Sie können zwischen ein paar unterschiedlichen Ansätzen wählen, wenn Sie ein 
 
 ## <a name="before-beginning"></a>Vorbereitungen
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 
 ### <a name="1-download-the-latest-azure-resource-manager-powershell-cmdlets"></a>1. Laden Sie die aktuellen Azure Resource Manager-PowerShell-Cmdlets herunter.
 
-Laden Sie die aktuelle Version der Azure Resource Manager-PowerShell-Cmdlets herunter, und installieren Sie sie. Weitere Informationen zum Herunterladen und Installieren der PowerShell-Cmdlets finden Sie unter [Get started with Azure PowerShell cmdlets](/powershell/azure/overview) (Erste Schritte mit Azure PowerShell-Cmdlets).
+Laden Sie die aktuelle Version der Azure Resource Manager-PowerShell-Cmdlets herunter, und installieren Sie sie. Weitere Informationen zum Herunterladen und Installieren der PowerShell-Cmdlets finden Sie unter [Get started with Azure PowerShell cmdlets](/powershell/azure/) (Erste Schritte mit Azure PowerShell-Cmdlets).
 
 ### <a name="2-connect-to-your-azure-account"></a>2. Stellen Sie eine Verbindung mit Ihrem Azure-Konto her.
 
@@ -56,7 +56,7 @@ Wenn Sie über mehrere Abonnements verfügen, geben Sie das Abonnement an, das S
 Select-AzSubscription -SubscriptionName "Replace_with_your_subscription_name"
 ```
 
-## <a name="S2S"></a>Löschen eines Site-to-Site-VPN-Gateways
+## <a name="delete-a-site-to-site-vpn-gateway"></a><a name="S2S"></a>Löschen eines Site-to-Site-VPN-Gateways
 
 Um ein Gateway des virtuellen Netzwerks für eine S2S-Konfiguration zu löschen, müssen Sie zunächst jede Ressource löschen, die zu dem Gateway des virtuellen Netzwerks gehört. Ressourcen müssen aufgrund von Abhängigkeiten in einer bestimmten Reihenfolge gelöscht werden. Bei der Arbeit mit den folgenden Beispielen müssen einige der Werte angegeben werden, während andere Werte ein Ergebnis der Ausgabe sind. Wir verwenden die folgenden spezifischen Werte in den Beispielen zu Demonstrationszwecken:
 
@@ -139,7 +139,7 @@ $GWSub = Get-AzVirtualNetwork -ResourceGroupName "RG1" -Name "VNet1" | Remove-Az
 Set-AzVirtualNetwork -VirtualNetwork $GWSub
 ```
 
-## <a name="v2v"></a>Löschen eines VNet-to-VNet-VPN-Gateways
+## <a name="delete-a-vnet-to-vnet-vpn-gateway"></a><a name="v2v"></a>Löschen eines VNet-to-VNet-VPN-Gateways
 
 Um ein Gateway des virtuellen Netzwerks für eine V2V-Konfiguration zu löschen, müssen Sie zunächst jede Ressource löschen, die zu dem Gateway des virtuellen Netzwerks gehört. Ressourcen müssen aufgrund von Abhängigkeiten in einer bestimmten Reihenfolge gelöscht werden. Bei der Arbeit mit den folgenden Beispielen müssen einige der Werte angegeben werden, während andere Werte ein Ergebnis der Ausgabe sind. Wir verwenden die folgenden spezifischen Werte in den Beispielen zu Demonstrationszwecken:
 
@@ -227,7 +227,7 @@ $GWSub = Get-AzVirtualNetwork -ResourceGroupName "RG1" -Name "VNet1" | Remove-Az
 Set-AzVirtualNetwork -VirtualNetwork $GWSub
 ```
 
-## <a name="deletep2s"></a>Löschen eines Punkt-zu-Site-VPN-Gateways
+## <a name="delete-a-point-to-site-vpn-gateway"></a><a name="deletep2s"></a>Löschen eines Punkt-zu-Site-VPN-Gateways
 
 Um ein Gateway des virtuellen Netzwerks für eine P2S-Konfiguration zu löschen, müssen Sie zunächst jede Ressource löschen, die zu dem Gateway des virtuellen Netzwerks gehört. Ressourcen müssen aufgrund von Abhängigkeiten in einer bestimmten Reihenfolge gelöscht werden. Bei der Arbeit mit den folgenden Beispielen müssen einige der Werte angegeben werden, während andere Werte ein Ergebnis der Ausgabe sind. Wir verwenden die folgenden spezifischen Werte in den Beispielen zu Demonstrationszwecken:
 
@@ -286,7 +286,7 @@ $GWSub = Get-AzVirtualNetwork -ResourceGroupName "RG1" -Name "VNet1" | Remove-Az
 Set-AzVirtualNetwork -VirtualNetwork $GWSub
 ```
 
-## <a name="delete"></a>Löschen eines VPN-Gateways durch Löschen der Ressourcengruppe
+## <a name="delete-a-vpn-gateway-by-deleting-the-resource-group"></a><a name="delete"></a>Löschen eines VPN-Gateways durch Löschen der Ressourcengruppe
 
 Wenn Sie Ihre bestehenden Ressourcen in der Ressourcengruppe nicht behalten müssen und neu beginnen möchten, können Sie eine gesamte Ressourcengruppe löschen. Sie lernen hier eine schnelle Möglichkeit kennen, alles zu entfernen. Die folgenden Schritte gelten für das Resource Manager-Bereitstellungsmodell.
 

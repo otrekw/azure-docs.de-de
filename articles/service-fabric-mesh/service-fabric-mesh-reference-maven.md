@@ -1,20 +1,17 @@
 ---
-title: 'Azure Service Fabric Mesh: Maven-Referenz | Microsoft-Dokumentation'
+title: 'Azure Service Fabric Mesh: Maven-Referenz'
 description: Enthält die Referenz für die Verwendung des Maven-Plug-Ins für Service Fabric Mesh.
-services: service-fabric-mesh
-keywords: Maven, Java, Cli
 author: suhuruli
 ms.author: suhuruli
 ms.date: 11/26/2018
 ms.topic: reference
-ms.service: service-fabric-mesh
-manager: subramar
-ms.openlocfilehash: 27651d19e276571cf49a0aa1a199ef35c87c3ba4
-ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
+ms.custom: devx-track-java
+ms.openlocfilehash: 3a1aa004f47ba700ef4b96004dfe5b835788dcc7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67537696"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87372466"
 ---
 # <a name="maven-plugin-for-service-fabric-mesh"></a>Maven-Plug-In für Service Fabric Mesh
 

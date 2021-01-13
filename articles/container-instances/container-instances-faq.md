@@ -1,19 +1,16 @@
 ---
-title: Azure Container Instances – Häufig gestellte Fragen
+title: Häufig gestellte Fragen
 description: Antworten auf häufig gestellte Fragen im Zusammenhang mit dem Azure Container Instances-Dienst
-services: container-instances
-author: dkkapur
-manager: gwallace
-ms.service: container-instances
+author: macolso
+ms.author: macolso
 ms.topic: article
-ms.date: 4/25/2019
-ms.author: dekapur
-ms.openlocfilehash: 29d31e2076e0ff5ddf4f84df13ac2eede482c052
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.date: 06/02/2020
+ms.openlocfilehash: e4760463a4d71e4c097b082aa6b93d8b339f94ca
+ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68325995"
+ms.lasthandoff: 10/24/2020
+ms.locfileid: "92516969"
 ---
 # <a name="frequently-asked-questions-about-azure-container-instances"></a>Häufig gestellte Fragen zu Azure Container Instances
 
@@ -31,37 +28,43 @@ Die Größe Ihres Containerimages wirkt sich auf die Dauer des Bereitstellungsvo
 
 Da die Imagegröße einer der wichtigsten Faktoren für die Bereitstellungszeiten ist, suchen Sie nach Möglichkeiten zum Verringern der Größe. Entfernen Sie unnötige Ebenen, oder verringern Sie die Größe der Ebenen im Image (durch Auswahl eines leichteren Basisbetriebssystem-Images). Wenn Sie beispielsweise Linux-Container ausführen, erwägen Sie die Verwendung von Alpine als Basisimage anstelle eines vollständigen Ubuntu-Servers. Ebenso können Sie für Windows-Container nach Möglichkeit ein Nano Server-Basisimage einsetzen. 
 
-Sie sollten auch die Liste der vorab zwischengespeicherten Images in Azure-Containerimages überprüfen, die über die API [List Cached Images](/rest/api/container-instances/listcachedimages) (Zwischengespeicherte Images auflisten) verfügbar ist. Für eines der vorab zwischengespeicherten Images können Sie möglicherweise eine Imageebene deaktivieren. 
+Sie sollten auch die Liste der vorab zwischengespeicherten Images in Azure-Containerimages überprüfen, die über die API [List Cached Images](/rest/api/container-instances/location/listcachedimages) (Zwischengespeicherte Images auflisten) verfügbar ist. Für eines der vorab zwischengespeicherten Images können Sie möglicherweise eine Imageebene deaktivieren. 
 
 Weitere Informationen finden Sie in der [ausführlichen Anleitung](container-instances-troubleshooting.md#container-takes-a-long-time-to-start) zum Verringern der Dauer des Containerstartvorgangs.
 
 ### <a name="what-windows-base-os-images-are-supported"></a>Welche Windows-Basisbetriebssystem-Images werden unterstützt?
 
+> [!NOTE]
+> Aufgrund von Problemen mit der Abwärtskompatibilität nach den Windows-Updates im Jahr 2020 schließen die folgenden Imageversionen die Versionsnummer ein, die für Ihr Basisimage mindestens empfohlen wird. Aktuelle Bereitstellungen, in denen ältere Imageversionen verwendet werden, sind nicht betroffen, in neuen Bereitstellungen sollten jedoch die folgenden Basisimages verwendet werden. 
+
 #### <a name="windows-server-2016-base-images"></a>Windows Server 2016-Basisimages
 
-* [Nano Server](https://hub.docker.com/_/microsoft-windows-nanoserver): `10.0.14393.x`, `sac2016`
-* [Windows Server Core](https://hub.docker.com/_/microsoft-windows-servercore): `ltsc2016`, `10.0.14393.x`
+* [Nano Server](https://hub.docker.com/_/microsoft-windows-nanoserver): `sac2016`, `10.0.14393.3506` oder neuer
+* [Windows Server Core](https://hub.docker.com/_/microsoft-windows-servercore): `ltsc2016`, `10.0.14393.3506` oder neuer
 
 > [!NOTE]
 > Windows-Images, die auf dem halbjährlichen Kanalrelease 1709 oder 1803 basieren, werden nicht unterstützt.
 
 #### <a name="windows-server-2019-and-client-base-images-preview"></a>Windows Server 2019 und Clientbasisimages (Vorschau)
 
-* [Nano Server](https://hub.docker.com/_/microsoft-windows-nanoserver): `1809`, `10.0.17763.x`
-* [Windows Server Core](https://hub.docker.com/_/microsoft-windows-servercore): `ltsc2019`, `1809`, `10.0.17763.x`
-* [Windows](https://hub.docker.com/_/microsoft-windows): `1809`, `10.0.17763.x` 
+* [Nano Server](https://hub.docker.com/_/microsoft-windows-nanoserver): `1809`, `10.0.17763.1040` oder neuer
+* [Windows Server Core](https://hub.docker.com/_/microsoft-windows-servercore): `ltsc2019`, `1809`, `10.0.17763.1040` oder neuer
+* [Windows](https://hub.docker.com/_/microsoft-windows): `1809`, `10.0.17763.1040` oder neuer
 
 ### <a name="what-net-or-net-core-image-layer-should-i-use-in-my-container"></a>Welche .NET oder .NET Core-Imageebene sollte ich in meinem Container verwenden? 
 
-Verwenden Sie das kleinste Image, das Ihre Anforderungen erfüllt. Unter Linux können Sie ein *runtime-alpine*-.NET Core-Image verwenden, das seit der Veröffentlichung von .NET Core 2.1 unterstützt wird. Für Windows müssen Sie bei Verwendung des vollständigen .NET Framework ein Windows Server Core-Image verwenden (reines Laufzeitimage, z.B. *4.7.2-windowsservercore-ltsc2016*). Reine Laufzeitimages sind kleiner, unterstützen jedoch keine Workloads, für die das .NET SDK erforderlich ist.
+Verwenden Sie das kleinste Image, das Ihre Anforderungen erfüllt. Unter Linux können Sie ein *runtime-alpine* -.NET Core-Image verwenden, das seit der Veröffentlichung von .NET Core 2.1 unterstützt wird. Für Windows müssen Sie bei Verwendung des vollständigen .NET Framework ein Windows Server Core-Image verwenden (reines Laufzeitimage, z.B. *4.7.2-windowsservercore-ltsc2016* ). Reine Laufzeitimages sind kleiner, unterstützen jedoch keine Workloads, für die das .NET SDK erforderlich ist.
 
 ## <a name="availability-and-quotas"></a>Verfügbarkeit und Kontingente
 
 ### <a name="how-many-cores-and-memory-should-i-allocate-for-my-containers-or-the-container-group"></a>Wie viele Kerne und Arbeitsspeicher sollte ich für meine Container oder die Containergruppe zuweisen?
 
-Das hängt ganz von Ihrer Workload ab. Fangen Sie klein an, und testen Sie die Leistung, um herauszufinden, ob sie für Ihre Container ausreicht. [Überwachen Sie die Auslastung der CPU- und Arbeitsspeicherressourcen](container-instances-monitor.md), und fügen Sie Kerne oder Arbeitsspeicher je nach Art der Prozesse hinzu, die Sie im Container bereitstellen. 
+Das hängt ganz von Ihrer Workload ab. Fangen Sie klein an, und testen Sie die Leistung, um herauszufinden, ob sie für Ihre Container ausreicht. [Überwachen Sie die Auslastung der CPU- und Arbeitsspeicherressourcen](container-instances-monitor.md), und fügen Sie Kerne oder Arbeitsspeicher je nach Art der Prozesse hinzu, die Sie im Container bereitstellen.
 
-Stellen Sie außerdem sicher, dass Sie die [Ressourcenverfügbarkeit](container-instances-region-availability.md#availability---general) für die Region prüfen, in der die Bereitstellung erfolgt, um die Obergrenzen für CPU-Kerne und Arbeitsspeicher pro Containergruppe zu ermitteln. 
+Stellen Sie außerdem sicher, dass Sie die [Ressourcenverfügbarkeit](container-instances-region-availability.md) für die Region prüfen, in der die Bereitstellung erfolgt, um die Obergrenzen für CPU-Kerne und Arbeitsspeicher pro Containergruppe zu ermitteln. 
+
+> [!NOTE]
+> Ein kleiner Teil der Ressourcen einer Containergruppe wird von der zugrunde liegenden Infrastruktur des Diensts verwendet. Ihre Container können auf die meisten, aber nicht alle Ressourcen zugreifen, die der Gruppe zugeordnet sind. Planen Sie aus diesem Grund einen kleinen Ressourcenpuffer ein, wenn Sie Ressourcen für Container in der Gruppe anfordern.
 
 ### <a name="what-underlying-infrastructure-does-aci-run-on"></a>In welcher zugrunde liegenden Infrastruktur wird ACI ausgeführt?
 
@@ -77,7 +80,7 @@ Bisher nicht. Zurzeit sind dies die Höchstwerte für eine Containergruppe. Wend
 
 ### <a name="when-will-aci-be-in-a-specific-region"></a>Wann wird ACI in einer bestimmten Region verfügbar?
 
-Die aktuelle regionale Verfügbarkeit wird [hier](container-instances-region-availability.md#availability---general) veröffentlicht. Wenn Sie eine Anforderung für eine bestimmte Region haben, wenden Sie sich an den Azure-Support.
+Die aktuelle regionale Verfügbarkeit wird [hier](container-instances-region-availability.md) veröffentlicht. Wenn Sie eine Anforderung für eine bestimmte Region haben, wenden Sie sich an den Azure-Support.
 
 ## <a name="features-and-scenarios"></a>Features und Szenarien
 
@@ -87,7 +90,7 @@ Zurzeit ist die Skalierung für Container und Containergruppen nicht verfügbar.
 
 ### <a name="what-features-are-available-to-instances-running-in-a-custom-vnet"></a>Welche Features sind für Instanzen verfügbar, die in einem benutzerdefinierten VNET ausgeführt werden?
 
-Sie können Containergruppen in einem virtuellen Azure-Netzwerk Ihrer Wahl bereitstellen und private IP-Adressen an die Containergruppen delegieren, um Datenverkehr innerhalb des VNET Azure-Ressourcen-übergreifend weiterzuleiten. Die Bereitstellung einer Containergruppe in einem virtuellen Netzwerk befindet sich derzeit in der Vorschau, und einige Aspekte dieses Features können sich vor der allgemeinen Verfügbarkeit (GA) noch ändern. Aktualisierte Informationen finden Sie unter [Einschränkungen der Vorschau](container-instances-vnet.md#preview-limitations).
+Sie können [Containergruppen in einem virtuellen Azure-Netzwerk Ihrer Wahl bereitstellen](container-instances-vnet.md) und private IP-Adressen an die Containergruppen delegieren, um Datenverkehr innerhalb des VNET Azure-Ressourcen-übergreifend weiterzuleiten. Informationen zu Netzwerkszenarien und -einschränkungen mit Azure Container Instances finden Sie unter [Virtuelle Netzwerkszenarien und -ressourcen](container-instances-virtual-network-concepts.md).
 
 ## <a name="pricing"></a>Preise
 

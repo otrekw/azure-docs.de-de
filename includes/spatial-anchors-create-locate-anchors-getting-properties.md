@@ -1,9 +1,9 @@
 ---
 ms.openlocfilehash: c5ca85c0dfe8d601821a78c02b2230c0909c8003
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "67177802"
 ---
 Sie können den Speicherort eines Ankers nicht aktualisieren, nachdem er für den Dienst erstellt wurde – Sie müssen einen neuen Anker erstellen und den alten löschen, um eine neue Position zu verfolgen.

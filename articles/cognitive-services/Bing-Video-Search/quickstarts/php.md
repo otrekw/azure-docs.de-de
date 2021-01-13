@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart: Suchen nach Videos mithilfe der Bing-Videosuche-REST-API und PHP'
+title: 'Schnellstart: Suchen nach Videos mithilfe der REST-API und PHP – Bing-Videosuche'
 titleSuffix: Azure Cognitive Services
 description: Verwenden Sie diese Schnellstartanleitung zum Senden von Videosuchanforderungen an die Bing-Videosuche-REST-API mit PHP.
 services: cognitive-services
@@ -8,21 +8,25 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-video-search
 ms.topic: quickstart
-ms.date: 06/26/2019
+ms.date: 05/22/2020
 ms.author: aahi
-ms.openlocfilehash: 8ecbba5ef046a284e9b4134f8703580021adb9d8
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: 213dec3498b76f7331f40cb24f0c796175a3fbb3
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68500100"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353849"
 ---
 # <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-php"></a>Schnellstart: Suchen nach Videos mithilfe der Bing-Videosuche-REST-API und PHP
 
-Mit diesem Schnellstart können Sie die Bing-Videosuche-API zum ersten Mal aufrufen und ein Suchergebnis in der JSON-Antwort anzeigen. Diese einfache JavaScript-Anwendung sendet eine HTTP-Videosuchabfrage an die API und zeigt die Antwort an. Diese Anwendung ist zwar in JavaScript geschrieben und verwendet Node.js, an sich ist die API aber ein RESTful-Webdienst, der mit den meisten Programmiersprachen kompatibel ist.
-Der Beispielcode wurde für PHP 5.6 geschrieben.
+> [!WARNING]
+> Die APIs der Bing-Suche werden von Cognitive Services auf Bing-Suchdienste umgestellt. Ab dem **30. Oktober 2020** müssen alle neuen Instanzen der Bing-Suche mit dem [hier](/bing/search-apis/bing-web-search/create-bing-search-service-resource) dokumentierten Prozess bereitgestellt werden.
+> APIs der Bing-Suche, die mit Cognitive Services bereitgestellt wurden, werden noch drei Jahre lang bzw. bis zum Ablauf Ihres Enterprise Agreement unterstützt (je nachdem, was zuerst eintritt).
+> Eine Anleitung zur Migration finden Sie unter [Erstellen einer Ressource für die Bing-Suche über Azure Marketplace](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
 
-Die [API-Referenz](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference) enthält technische Informationen zu den APIs.
+Verwenden Sie diese Schnellstartanleitung, um die Bing-Videosuche-API zum ersten Mal aufzurufen. Diese einfache PHP-Anwendung sendet eine HTTP-Videosuchabfrage an die API und zeigt die JSON-Antwort an. Der Beispielcode wurde für PHP 5.6 geschrieben.
+
+Diese Anwendung ist zwar in PHP geschrieben, an sich ist die API aber ein RESTful-Webdienst, der mit den meisten Programmiersprachen kompatibel ist.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -32,12 +36,12 @@ Die [API-Referenz](https://docs.microsoft.com/rest/api/cognitiveservices-bingsea
 
 ## <a name="running-the-application"></a>Ausführen der Anwendung
 
-Die [Bing-Videosuche-API](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference) gibt Videoergebnisse der Bing-Suchmaschine zurück.
+Die [Bing-Videosuche-API](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference) gibt Videoergebnisse der Bing-Suchmaschine zurück.
 
-1. Achten Sie darauf, dass die Unterstützung des sicheren Hypertext Transfer-Protokolls (HTTP) in Ihrer `php.ini`-Datei aktiviert ist, wie im Codekommentar beschrieben.
-2. Erstellen Sie in Ihrer bevorzugten IDE ein neues PHP-Projekt.
+1. Aktivieren Sie die sichere HTTP-Unterstützung in Ihrer `php.ini`-Datei, indem Sie die Zeile `;extension=php_openssl.dll` auskommentieren, wie im folgenden Code beschrieben.
+2. Erstellen Sie in Ihrer bevorzugten IDE oder Ihrem bevorzugten Editor ein neues PHP-Projekt.
 3. Fügen Sie den unten stehenden Code hinzu.
-4. Ersetzen Sie den `accessKey`-Wert durch einen für Ihr Abonnement gültigen Zugriffsschlüssel.
+4. Ersetzen Sie den `$accessKey`-Wert durch einen für Ihr Abonnement gültigen Zugriffsschlüssel. Für den `$endpoint`-Wert können Sie den globalen Endpunkt im folgenden Code oder den Endpunkt der [benutzerdefinierten Unterdomäne](../../../cognitive-services/cognitive-services-custom-subdomains.md) verwenden, der im Azure-Portal für Ihre Ressource angezeigt wird.
 5. Führen Sie das Programm aus.
 
 ```php
@@ -47,8 +51,8 @@ Die [Bing-Videosuche-API](https://docs.microsoft.com/rest/api/cognitiveservices-
 // ;extension=php_openssl.dll
 
 // **********************************************
-// *** Update or verify the following values. ***
-// **********************************************
+// **_ Update or verify the following values. _*_
+// _*********************************************
 
 // Replace the accessKey string value with your valid access key.
 $accessKey = 'enter key here';

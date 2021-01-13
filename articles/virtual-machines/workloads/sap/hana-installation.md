@@ -4,21 +4,22 @@ description: Vorgehensweise zum Installieren von SAP HANA in Azure (große Insta
 services: virtual-machines-linux
 documentationcenter: ''
 author: hermanndms
-manager: gwallace
+manager: juergent
 editor: ''
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 07/12/2019
+ms.date: 01/16/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ebf4a0f892e65bf96e07e333cf5446d3036108a0
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: a1430b32c0e74be7a0e50fa4c5c183018b2b55e0
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70099790"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96006301"
 ---
 # <a name="how-to-install-and-configure-sap-hana-large-instances-on-azure"></a>Installieren und Konfigurieren von SAP HANA (große Instanzen) in Azure
 
@@ -29,10 +30,7 @@ Für die Installation von SAP HANA sind Sie zuständig. Sie können mit dem Inst
 > [!Note]
 > Gemäß einer SAP-Richtlinie muss die Installation von SAP HANA durch eine Person durchgeführt werden, die die Prüfung „Certified SAP Technology Associate“ oder die Zertifizierungsprüfung „SAP HANA Installation“ bestanden hat oder ein von SAP zertifizierter Systemintegrator (SI) ist.
 
-Wenn Sie planen, HANA 2.0 zu installieren, lesen Sie [SAP Support Note #2235581 – SAP HANA: Supported Operating Systems](https://launchpad.support.sap.com/#/notes/2235581/E) (SAP-Supporthinweis #2235581 – SAP HANA: Unterstützte Betriebssysteme), um sicherzustellen, dass das Betriebssystem von der SAP HANA-Version unterstützt wird, die Sie installieren. Das unterstützte Betriebssystem für HANA 2.0 ist stärker eingeschränkt als das Betriebssystem, das für HANA 1.0 unterstützt wird. 
-
-> [!IMPORTANT] 
-> Derzeit wird für Einheiten vom Typ II nur die Betriebssystemversion SLES 12 SP2 unterstützt. 
+Wenn Sie planen, HANA 2.0 zu installieren, lesen Sie [SAP Support Note #2235581 – SAP HANA: Supported Operating Systems](https://launchpad.support.sap.com/#/notes/2235581/E) (SAP-Supporthinweis #2235581 – SAP HANA: Unterstützte Betriebssysteme), um sicherzustellen, dass das Betriebssystem von der SAP HANA-Version unterstützt wird, die Sie installieren. Das unterstützte Betriebssystem für HANA 2.0 ist stärker eingeschränkt als das Betriebssystem, das für HANA 1.0 unterstützt wird. Außerdem müssen Sie überprüfen, ob die gewünschte Version des Betriebssystems für die jeweilige HLI-Einheit in dieser veröffentlichten [Liste](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure) aufgeführt wird. Klicken Sie auf die Einheit, um die vollständigen Details mit der Liste der unterstützten Betriebssysteme dieser Einheit abzurufen. 
 
 Überprüfen Sie Folgendes, bevor Sie mit der Installation von HANA beginnen:
 - [HLI-Einheit(en)](#validate-the-hana-large-instance-units)
@@ -45,11 +43,11 @@ Wenn Sie planen, HANA 2.0 zu installieren, lesen Sie [SAP Support Note #2235581 
 
 Nachdem Sie die HANA-Einheiten (große Instanzen) von Microsoft erhalten haben, überprüfen Sie die folgenden Einstellungen und passen sie nach Bedarf an.
 
-Nachdem Sie SAP HANA (große Instanzen) erhalten und den Zugriff auf die Instanzen und die Konnektivität mit ihnen hergestellt haben, ist der **erste Schritt**, im Azure-Portal zu überprüfen, ob die Instanzen dort mit den richtigen SKUs und Betriebssystemen angezeigt werden. Lesen Sie [Steuerung von HANA in Azure (große Instanzen) über das Azure-Portal](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-li-portal), um sich über die erforderlichen Schritte zum Durchführen der Überprüfungen zu informieren.
+Nachdem Sie SAP HANA (große Instanzen) erhalten und den Zugriff auf die Instanzen und die Konnektivität mit ihnen hergestellt haben, ist der **erste Schritt**, im Azure-Portal zu überprüfen, ob die Instanzen dort mit den richtigen SKUs und Betriebssystemen angezeigt werden. Lesen Sie [Steuerung von HANA in Azure (große Instanzen) über das Azure-Portal](./hana-li-portal.md), um sich über die erforderlichen Schritte zum Durchführen der Überprüfungen zu informieren.
 
 Der **zweite Schritt** nach dem Erhalt der SAP HANA-Einheiten (große Instanzen) und der Einrichtung des Zugriffs und der Konnektivität besteht darin, das Betriebssystem der Instanz bei Ihrem Betriebssystemanbieter zu registrieren. Zu diesem Schritt gehört das Registrieren Ihres SUSE Linux-Betriebssystems in einer Instanz von SUSE SMT, die auf einer VM in Azure bereitgestellt ist. 
 
-Die HANA-Einheit (große Instanzen) kann eine Verbindung mit dieser SMT-Instanz herstellen. (Weitere Informationen finden Sie unter [Einrichten eines SMT-Servers für SUSE Linux](hana-setup-smt.md).) Alternativ dazu muss Ihr Red Hat-Betriebssystem beim Red Hat Subscription Manager registriert werden, mit dem Sie eine Verbindung herstellen müssen. Weitere Informationen finden Sie unter [Was ist SAP HANA in Azure (große Instanzen)?](https://docs.microsoft.com/azure/virtual-machines/linux/sap-hana-overview-architecture?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). 
+Die HANA-Einheit (große Instanzen) kann eine Verbindung mit dieser SMT-Instanz herstellen. (Weitere Informationen finden Sie unter [Einrichten eines SMT-Servers für SUSE Linux](hana-setup-smt.md).) Alternativ dazu muss Ihr Red Hat-Betriebssystem beim Red Hat Subscription Manager registriert werden, mit dem Sie eine Verbindung herstellen müssen. Weitere Informationen finden Sie unter [Was ist SAP HANA in Azure (große Instanzen)?](./hana-overview-architecture.md?toc=/azure/virtual-machines/linux/toc.json). 
 
 Dieser Schritt ist auch zum Patchen des Betriebssystems notwendig – dies liegt in der Zuständigkeit des Kunden. Für SUSE finden Sie die Dokumentation zur Installation und Konfiguration von SMT auf der Seite zur [SMT-Installation](https://www.suse.com/documentation/sles-12/book_smt/data/smt_installation.html).
 
@@ -84,9 +82,6 @@ Der **sechste Schritt** besteht darin, „etc/hosts“ zu prüfen. Wenn die Blad
 
 ## <a name="operating-system"></a>Betriebssystem
 
-> [!IMPORTANT] 
-> Derzeit wird für Einheiten vom Typ II nur die Betriebssystemversion SLES 12 SP2 unterstützt. 
-
 Der Auslagerungsbereich des bereitgestellten Betriebssystemimage ist gemäß [SAP Support Note #1999997 – FAQ: SAP HANA Memory](https://launchpad.support.sap.com/#/notes/1999997/E) (SAP-Supporthinweis #1999997 – FAQ: SAP HANA-Arbeitsspeicher) auf 2 GB festgelegt. Wenn Sie als Kunde eine andere Einstellung wünschen, müssen Sie diese selbst festlegen.
 
 [SUSE Linux Enterprise Server 12 SP1 for SAP Applications](https://www.suse.com/products/sles-for-sap/download/) ist die Distribution von Linux, die für SAP HANA in Azure (große Instanzen) installiert wird. Diese spezielle Distribution bietet sofort einsatzbereite SAP-spezifische Funktionen (einschließlich vorab festgelegter Parameter für die effektive Ausführung von SAP unter SLES).
@@ -96,18 +91,18 @@ Auf der SUSE-Website unter [Resource Library/White Papers](https://www.suse.com/
 Zusätzliche nützliche Links zu SAP unter SUSE:
 
 - [Website zu SAP HANA unter SUSE Linux](https://wiki.scn.sap.com/wiki/display/ATopics/SAP+on+SUSE) (in englischer Sprache)
-- [Best practices for SAP: Enqueue replication – SAP NetWeaver on SUSE Linux Enterprise 12](https://www.suse.com/docrepcontent/container.jsp?containerId=9113)
+- [Best practices for SAP: Enqueue replication – SAP NetWeaver on SUSE Linux Enterprise 12](https://www.suse.com/media/guide/SLES4SAP-NetWeaver-ha-guide-EnqRepl-12_color_en.pdf)
 - [ClamSAP – SLES Virus Protection for SAP](https://scn.sap.com/community/linux/blog/2014/04/14/clamsap--suse-linux-enterprise-server-integrates-virus-protection-for-sap) (einschließlich SLES 12 für SAP-Anwendungen)
 
 SAP-Supporthinweise zur Implementierung von SAP HANA unter SLES 12:
 
-- [SAP Support Note #1944799 – SAP HANA Guidelines for SLES Operating System Installation](https://go.sap.com/documents/2016/05/e8705aae-717c-0010-82c7-eda71af511fa.html) (SAP-Supporthinweis 1944799 – SAP HANA-Richtlinien für die Installation des SLES-Betriebssystems)
+- [SAP Support Note #1944799 – SAP HANA Guidelines for SLES Operating System Installation](http://service.sap.com/sap/support/notes/1944799) (SAP-Supporthinweis 1944799 – SAP HANA-Richtlinien für die Installation des SLES-Betriebssystems)
 - [SAP Support Note #2205917 – SAP HANA DB Recommended OS Settings for SLES 12 for SAP Applications](https://launchpad.support.sap.com/#/notes/2205917/E) (SAP-Supporthinweis 2205917 – SAP HANA DB: Empfohlene Betriebssystemeinstellungen für SLES 12 für SAP-Anwendungen)
 - [SAP Support Note #1984787 – SUSE Linux Enterprise Server 12: Installation Notes](https://launchpad.support.sap.com/#/notes/1984787) (SAP-Supporthinweis 1984787 – SUSE Linux Enterprise Server 12: Installationshinweise)
 - [SAP Support Note #171356 – SAP Software on Linux:  General Information](https://launchpad.support.sap.com/#/notes/1984787) (SAP-Supporthinweis 171356 – SAP-Software unter Linux: allgemeine Informationen)
 - [SAP Support Note #1391070 – Linux UUID Solutions](https://launchpad.support.sap.com/#/notes/1391070) (SAP-Supporthinweis 1391070 – Linux UUID-Lösungen)
 
-[Red Hat Enterprise Linux für SAP HANA](https://www.redhat.com/en/resources/red-hat-enterprise-linux-sap-hana) ist ein weiteres Angebot zum Ausführen von SAP HANA auf großen SAP HANA-Instanzen. Versionen von RHEL 6.7 und 7.2 sind verfügbar. Beachten Sie, dass im Gegensatz zu nativen virtuellen Azure-Computern, für die nur RHEL 7.2 und neuere Releases unterstützt werden, „große“ HANA-Instanzen auch RHEL 6.7 unterstützen. Wir empfehlen jedoch die Verwendung eines RHEL 7.x-Release.
+[Red Hat Enterprise Linux für SAP HANA](https://www.redhat.com/en/resources/red-hat-enterprise-linux-sap-hana) ist ein weiteres Angebot zum Ausführen von SAP HANA auf großen SAP HANA-Instanzen. Releases von RHEL 7.2 und 7.3 sind verfügbar und werden unterstützt. 
 
 Zusätzliche nützliche Links zu SAP unter Red Hat:
 - [Website zu SAP HANA unter Red Hat](https://wiki.scn.sap.com/wiki/display/ATopics/SAP+on+Red+Hat) (in englischer Sprache)
@@ -116,11 +111,9 @@ SAP-Supporthinweise zur Implementierung von SAP HANA unter Red Hat:
 
 - [SAP Support Note #2009879 – SAP HANA Guidelines for Red Hat Enterprise Linux (RHEL) Operating System](https://launchpad.support.sap.com/#/notes/2009879/E) (SAP-Supporthinweis 2009879 – SAP HANA-Richtlinien für das RHEL-Betriebssystem [Red Hat Enterprise Linux])
 - [SAP support note #2292690 - SAP HANA DB: Recommended OS Settings for RHEL 7](https://launchpad.support.sap.com/#/notes/2292690) (2292690 – SAP HANA DB: empfohlene Betriebssystemeinstellungen für RHEL 7)
-- [SAP Support Note #2247020 - SAP HANA DB: Recommended OS Settings for RHEL 6.7](https://launchpad.support.sap.com/#/notes/2247020) (SAP-Supporthinweis 2247020 – SAP HANA DB: empfohlene Betriebssystemeinstellungen für RHEL 6.7)
 - [SAP Support Note #1391070 – Linux UUID Solutions](https://launchpad.support.sap.com/#/notes/1391070) (SAP-Supporthinweis 1391070 – Linux UUID-Lösungen)
 - [SAP support note #2228351 - Linux: SAP HANA Database SPS 110 revision 6 (or higher) on RHEL 11 or SLES 11](https://launchpad.support.sap.com/#/notes/2228351) (SAP-Supporthinweis 2228351 – Linux: SAP HANA-Datenbank SPS 11 Revision 110 (oder höher) unter RHEL 6 oder SLES 11)
 - [SAP support note #2397039 - FAQ: SAP on RHEL](https://launchpad.support.sap.com/#/notes/2397039) (SAP-Supporthinweis 2397039 – Häufig gestellte Fragen: SAP unter RHEL)
-- [SAP Support Note #1496410 – Red Hat Enterprise Linux 6.x: Installation and Upgrade](https://launchpad.support.sap.com/#/notes/1496410) (SAP-Supporthinweis 1496410 – Red Hat Enterprise Linux 6.x: Installation und Upgrade)
 - [SAP support note #2002167 - Red Hat Enterprise Linux 7.x: Installation and upgrade](https://launchpad.support.sap.com/#/notes/2002167) (SAP-Supporthinweis 2002167 – Red Hat Enterprise Linux 7.x: Installation und Upgrade)
 
 ### <a name="time-synchronization"></a>Zeitsynchronisierung
@@ -135,10 +128,10 @@ Deshalb müssen Sie einen separaten Zeitserver einrichten, der von den auf Azure
 ## <a name="networking"></a>Netzwerk
 Es wird davon ausgegangen, dass Sie beim Entwerfen Ihrer virtuellen Azure-Netzwerke und Verbinden dieser Netzwerke mit den großen HANA-Instanzen den Empfehlungen in den folgenden Dokumenten gefolgt sind:
 
-- [Übersicht und Architektur von SAP HANA in Azure (große Instanzen)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)
+- [Übersicht und Architektur von SAP HANA in Azure (große Instanzen)](./hana-overview-architecture.md)
 - [Infrastruktur und Verbindungen mit SAP HANA in Azure (große Instanzen)](hana-overview-infrastructure-connectivity.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
-Es gibt einige Details zum Netzwerkbetrieb der einzelnen Einheiten, die Sie kennen sollten. Jede HANA-Einheit (große Instanzen) wird mit zwei oder drei IP-Adressen geliefert, die zwei oder drei Netzwerkkartenports zugewiesen sind. Drei IP-Adressen werden in HANA-Konfigurationen für die horizontale Skalierung und im Szenario für die HANA-Systemreplikation verwendet. Eine der IP-Adressen, die der Netzwerkkarte der Einheit zugewiesen sind, stammt aus dem Server-IP-Pool, der in [Übersicht und Architektur von SAP HANA in Azure (große Instanzen)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) beschrieben ist.
+Es gibt einige Details zum Netzwerkbetrieb der einzelnen Einheiten, die Sie kennen sollten. Jede HANA-Einheit (große Instanzen) wird mit zwei oder drei IP-Adressen geliefert, die zwei oder drei Netzwerkkartenports zugewiesen sind. Drei IP-Adressen werden in HANA-Konfigurationen für die horizontale Skalierung und im Szenario für die HANA-Systemreplikation verwendet. Eine der IP-Adressen, die der Netzwerkkarte der Einheit zugewiesen sind, stammt aus dem Server-IP-Pool, der in [Übersicht und Architektur von SAP HANA in Azure (große Instanzen)](./hana-overview-architecture.md) beschrieben ist.
 
 Weitere Informationen zu den Ethernet-Daten für Ihre Architektur finden Sie unter [Unterstützte Szenarien für große HANA-Instanzen](hana-supported-scenario.md).
 
@@ -187,7 +180,7 @@ Diese Mountpunkte werden in „/etc/fstab“ konfiguriert, wie in den folgenden 
 
 Die Ausgabe des Befehls „df -h“ in einer HANA-Einheit S72m (große Instanzen) sieht wie folgt aus:
 
-![fstab von bereitgestellten Volumes in Einheit von HANA (große Instanzen)](./media/hana-installation/image2_df_output.PNG)
+![Der Screenshot zeigt die Ausgabe des Befehls für eine Einheit von HANA (große Instanzen).](./media/hana-installation/image2_df_output.PNG)
 
 
 Der Speichercontroller und die Knoten in den „Große Instanz“-Stapeln werden mit NTP-Servern synchronisiert. Beim Synchronisieren der SAP HANA-Einheiten in Azure (große Instanzen) und Azure-VMs mit einem NTP-Server darf es zwischen der Infrastruktur und den Compute-Einheiten in Azure bzw. Stempeln für große Instanzen keine signifikante Zeitabweichung geben.
@@ -203,7 +196,7 @@ Für SAP HANA 1.0-Versionen bis SPS12 können diese Parameter während der Insta
 
 Sie können die Parameter auch nach der Installation der SAP HANA-Datenbank konfigurieren, indem Sie das hdbparam-Framework verwenden. 
 
-Der in HANA (große Instanzen) genutzte Speicher weist eine Dateigrößenbeschränkung auf. Die [Größenbeschränkung beträgt 16 TB](https://docs.netapp.com/ontap-9/index.jsp?topic=%2Fcom.netapp.doc.dot-cm-vsmg%2FGUID-AA1419CF-50AB-41FF-A73C-C401741C847C.html) pro Datei. Anders als bei den Einschränkungen der Dateigröße in EXT3-Dateisystemen wird die durch HANA (große Instanzen) erzwungene Speichereinschränkung in HANA nicht implizit behandelt. Daher erstellt HANA nicht automatisch eine neue Datendatei, wenn die maximale Dateigröße von 16 TB erreicht wird. Während HANA versucht, die Datei über 16 TB hinaus zu vergrößern, werden Fehler gemeldet, und der Indexserver stürzt am Ende ab.
+Der in HANA (große Instanzen) genutzte Speicher weist eine Dateigrößenbeschränkung auf. Die [Größenbeschränkung beträgt 16 TB](https://docs.netapp.com/ontap-9/index.jsp?topic=%2Fcom.netapp.doc.dot-cm-vsmg%2FGUID-AA1419CF-50AB-41FF-A73C-C401741C847C.html) pro Datei. Anders als bei den Einschränkungen der Dateigröße in EXT3-Dateisystemen wird die durch HANA (große Instanzen) erzwungene Speichereinschränkung in HANA nicht implizit behandelt. Daher erstellt HANA nicht automatisch eine neue Datendatei, wenn die maximale Dateigröße von 16 TB erreicht wird. Während HANA versucht, die Datei über 16 TB hinaus zu vergrößern, werden Fehler gemeldet, und der Indexserver stürzt am Ende ab.
 
 > [!IMPORTANT]
 > Um zu verhindern, dass HANA versucht, Datendateien über die Dateigrößenbeschränkung von 16 TB für den Speicher in HANA (große Instanzen) hinaus zu vergrößern, müssen Sie in der Konfigurationsdatei „global.ini“ von SAP HANA die folgenden Parameter festlegen
@@ -211,7 +204,7 @@ Der in HANA (große Instanzen) genutzte Speicher weist eine Dateigrößenbeschr�
 > - datavolume_striping=true
 > - datavolume_striping_size_gb = 15000
 > - Siehe auch SAP-Hinweis [2400005](https://launchpad.support.sap.com/#/notes/2400005).
-> - Achten Sie auf SAP-Hinweis [2631285](https://launchpad.support.sap.com/#/notes/2631285)
+> - Achten Sie auf SAP-Hinweis [2631285](https://launchpad.support.sap.com/#/notes/2631285).
 
 
 Seit SAP HANA Version 2.0 ist das hdbparam-Framework veraltet. Daher müssen die Parameter mithilfe von SQL-Befehlen festgelegt werden. Weitere Informationen finden Sie in [SAP-Hinweis 2399079: Beseitigung von hdbparam in HANA 2](https://launchpad.support.sap.com/#/notes/2399079).
@@ -273,7 +266,3 @@ Informationen zum Speicherlayout für Ihre Architektur finden Sie unter [Unterst
 
 
  
-
-
-
-

@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/28/2018
+ms.date: 03/09/2020
 ms.author: terrylan
-ms.openlocfilehash: 74b0fa4643907493904e77ce333d1ec1dba01f49
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: e0e7089e7c674f324c2c3d293661c518b41731b9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68727100"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "84021856"
 ---
 # <a name="azure-sql-database-security-features"></a>Sicherheitsfeatures für Azure SQL-Datenbank    
 Azure SQL-Datenbank stellt einen relationalen Datenbankdienst in Azure bereit. Zum Schutz von Kundendaten und zum Bereitstellen verlässlicher Sicherheitsfeatures, die Kunden von einem relationalen Datenbankdienst erwarten, verfügt SQL-Datenbank über eigene Sicherheitsfunktionen. Diese Funktionen bauen auf den Steuerelementen auf, die von Azure geerbt werden.
@@ -31,13 +31,13 @@ Azure SQL-Datenbank stellt einen relationalen Datenbankdienst in Azure bereit. Z
 Azure SQL-Datenbank unterstützt nur das TDS-Protokoll (Tabular Data Stream), das erfordert, dass ausschließlich über den Standardport TCP/1433 auf die Datenbank zugegriffen werden kann.
 
 ### <a name="azure-sql-database-firewall"></a>Firewall von Azure SQL-Datenbank
-Um die Kundendaten zu schützen, bietet Azure SQL-Datenbank eine Firewallfunktion, die standardmäßig jeglichen Zugriff auf den SQL-Datenbank-Server verhindert (wie unten gezeigt).
+Um Kundendaten zu schützen, bietet Azure SQL-Datenbank eine Firewallfunktion, die standardmäßig jeglichen Zugriff auf SQL-Datenbank verhindert (wie unten gezeigt).
 
 ![Firewall von Azure SQL-Datenbank](./media/infrastructure-sql/sql-database-firewall.png)
 
 Die Gatewayfirewall kann Adressen einschränken, wodurch Kunden zulässige IP-Adressbereich differenziert kontrollieren können. Die Firewall gewährt Zugriff basierend auf der Ursprungs-IP-Adresse der jeweiligen Anforderung.
 
-Kunden können die Firewall über ein Verwaltungsportal oder programmgesteuert mithilfe der REST-API für die Azure SQL-Datenbank-Verwaltung konfigurieren. Standardmäßig verweigert die Firewall des Azure SQL-Datenbank-Gateways allen Kunden den TDS-Zugriff auf Azure SQL-Datenbank-Instanzen. Kunden müssen den Zugriff mithilfe von Zugriffssteuerungslisten konfigurieren, um Azure SQL-Datenbank-Verbindungen anhand von Quell- und Zieladressen, Protokollen und Portnummern zuzulassen.
+Kunden können die Firewall über ein Verwaltungsportal oder programmgesteuert mithilfe der REST-API für die Azure SQL-Datenbank-Verwaltung konfigurieren. Standardmäßig verweigert die Firewall des Azure SQL-Datenbank-Gateways allen Kunden den TDS-Zugriff auf Azure SQL-Datenbank. Kunden müssen den Zugriff mithilfe von Zugriffssteuerungslisten konfigurieren, um Azure SQL-Datenbank-Verbindungen anhand von Quell- und Zieladressen, Protokollen und Portnummern zuzulassen.
 
 ### <a name="dosguard"></a>DoSGuard
 DoS-Angriffe (Denial of Service) werden durch einen SQL-Datenbank-Gatewaydienst namens DoSGuard reduziert. DoSGuard überwacht aktiv fehlgeschlagene Anmeldungen von IP-Adressen. Wenn mehrere fehlerhafte Anmeldungen von einer spezifischen IP-Adresse innerhalb eines bestimmten Zeitraums auftreten, wird der IP-Adresse der Zugriff auf alle Ressourcen im Dienst für einen vordefinierten Zeitraum blockiert.
@@ -75,7 +75,7 @@ Die Isolation des Stammbetriebssystem von den Gast-VMs und der Gast-VMs voneinan
 ### <a name="types-of-rules-on-firewalls"></a>Arten von Regeln in Firewalls
 Eine Regel wird wie folgt definiert:
 
-{Security Response Center-IP (SRC), SRC-Port, Ziel-IP, Zielport, Zielprotokoll, Ein/Aus, Zustandsbehaftet/Zustandslos, zustandsbehaftetes Flow Timeout}.
+{SRC-IP, SRC-Port, Ziel-IP, Zielport, Zielprotokoll, Ein/Aus, Zustandsbehaftet/Zustandslos, Zustandsbehaftetes Flow Timeout}.
 
 SYN-Pakete (Synchronous Idle Character) können nur empfangen oder gesendet werden, wenn eine der Regeln dies zulässt. Azure verwendet zustandslose Regeln für TCP, wobei das Prinzip darin besteht, dass nur alle Nicht-SYN-Pakete in einen oder aus einem virtuellen Computer zugelassen werden. Die Voraussetzung für dieses Sicherheitsmodell ist, dass ein beliebiger Host-Stack tolerant gegenüber der Missachtung eines SYN-Pakets kann, wenn zuvor kein SYN-Paket erkannt wurde. Das TCP-Protokoll selbst ist zustandsbehaftet und erreicht in Kombination mit der zustandslosen SYN-basierten Regel das allgemeine Verhalten einer zustandsbehafteten Implementierung.
 
@@ -99,10 +99,8 @@ In den folgenden Artikeln erfahren Sie mehr über die Sicherung der Azure-Infras
 - [Verfügbarkeit der Azure-Infrastruktur](infrastructure-availability.md)
 - [Komponenten und Grenzen des Azure-Informationssystems](infrastructure-components.md)
 - [Azure-Netzwerkarchitektur](infrastructure-network.md)
-- [Azure production network (Azure-Produktionsnetzwerk)](production-network.md)
+- [Azure-Produktionsnetzwerk](production-network.md)
 - [Produktionsvorgänge und Verwaltung von Azure](infrastructure-operations.md)
 - [Azure-Infrastrukturüberwachung](infrastructure-monitoring.md)
 - [Integrität der Azure-Infrastruktur](infrastructure-integrity.md)
 - [Schutz der Azure-Kundendaten](protection-customer-data.md)
-
-

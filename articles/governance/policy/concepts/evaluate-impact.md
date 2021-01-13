@@ -1,22 +1,18 @@
 ---
-title: Auswerten der Auswirkung einer neuen Azure-Richtlinie
-description: Informieren Sie sich über den Prozess, der bei der Einführung einer neuen Richtlinie in Ihre Azure-Umgebung zu befolgen ist.
-author: DCtheGeek
-ms.author: dacoulte
-ms.date: 09/23/2019
+title: Auswerten der Auswirkung einer neuen Azure Policy-Definition
+description: Informieren Sie sich über den Prozess, der bei der Einführung einer neuen Richtliniendefinition in Ihre Azure-Umgebung zu befolgen ist.
+ms.date: 10/05/2020
 ms.topic: conceptual
-ms.service: azure-policy
-manager: carmonm
-ms.openlocfilehash: b24a0e9f3f557ea2ac425db7caeed63959d18dd8
-ms.sourcegitcommit: a19bee057c57cd2c2cd23126ac862bd8f89f50f5
+ms.openlocfilehash: 9d73d703c38dce1335a471bfad9171d8b30a83c5
+ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71181249"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91873866"
 ---
-# <a name="evaluate-the-impact-of-a-new-azure-policy"></a>Auswerten der Auswirkung einer neuen Azure-Richtlinie
+# <a name="evaluate-the-impact-of-a-new-azure-policy-definition"></a>Auswerten der Auswirkung einer neuen Azure Policy-Definition
 
-Azure Policy ist ein leistungsstarkes Tool zur Verwaltung Ihrer Azure-Ressourcen nach geschäftsspezifischen Standards und zur Erfüllung von Complianceanforderungen. Wenn Personen, Prozesse oder Pipelines Ressourcen erstellen oder aktualisieren, überprüft Azure Policy die Anforderung. Wenn die Auswirkung der Richtliniendefinition [Append](./effects.md#deny) oder [DeployIfNotExists](./effects.md#deployifnotexists) lautet, ändert Azure Policy die Anforderung oder ergänzt sie. Wenn die Auswirkung der Richtliniendefinition [Audit](./effects.md#audit) oder [AuditIfNotExists](./effects.md#auditifnotexists) lautet, veranlasst Azure Policy die Erstellung eines Aktivitätsprotokolleintrags. Und wenn die Auswirkung der Richtliniendefinition [Deny](./effects.md#deny) lautet, stoppt Azure Policy die Erstellung oder Änderung der Anforderung.
+Azure Policy ist ein leistungsstarkes Tool zur Verwaltung Ihrer Azure-Ressourcen nach geschäftsspezifischen Standards und zur Erfüllung von Complianceanforderungen. Wenn Personen, Prozesse oder Pipelines Ressourcen erstellen oder aktualisieren, überprüft Azure Policy die Anforderung. Wenn die Auswirkung der Richtliniendefinition [Modify](./effects.md#modify), [Append](./effects.md#deny) oder [DeployIfNotExists](./effects.md#deployifnotexists) lautet, ändert Azure Policy die Anforderung oder ergänzt sie. Wenn die Auswirkung der Richtliniendefinition [Audit](./effects.md#audit) oder [AuditIfNotExists](./effects.md#auditifnotexists) lautet, veranlasst Azure Policy die Erstellung eines Aktivitätsprotokolleintrags für neue und aktualisierte Ressourcen. Und wenn die Auswirkung der Richtliniendefinition [Deny](./effects.md#deny) lautet, stoppt Azure Policy die Erstellung oder Änderung der Anforderung.
 
 Wenn Sie wissen, dass die Richtlinie ordnungsgemäß definiert ist, entsprechen diese Ergebnisse genau den Erwartungen. Es ist jedoch wichtig zu überprüfen, dass eine neue Richtlinie ordnungsgemäß funktioniert, bevor ihr gestattet wird, die Arbeit zu ändern oder zu blockieren. Die Überprüfung muss sicherstellen, dass nur die vorgesehenen Ressourcen als nicht konform eingestuft und keine konformen Ressourcen fälschlicherweise in die Ergebnisse einbezogen werden (bekannt als _False Positive_).
 
@@ -37,8 +33,7 @@ Aus diesem Grund sollten Ihre Richtliniendefinitionen so präzise wie möglich d
 
 ## <a name="audit-existing-resources"></a>Überwachen vorhandener Ressourcen
 
-Bevor Sie mit Ihrer neuen Richtliniendefinition neue oder aktualisierte Ressourcen verwalten, ist es am besten zu prüfen, wie sie eine begrenzte Teilmenge vorhandener Ressourcen, z. B. eine Testressourcengruppe, auswertet. Verwenden Sie den [Erzwingungsmodus](./assignment-structure.md#enforcement-mode)
-_Deaktiviert_ (DoNotEnforce) bei Ihrer Richtlinienzuweisung, um zu verhindern, dass die [Auswirkung](./effects.md) ausgelöst oder Einträge im Aktivitätsprotokoll erstellt werden.
+Bevor Sie mit Ihrer neuen Richtliniendefinition neue oder aktualisierte Ressourcen verwalten, ist es am besten zu prüfen, wie sie eine begrenzte Teilmenge vorhandener Ressourcen, z. B. eine Testressourcengruppe, auswertet. Verwenden Sie den [Erzwingungsmodus](./assignment-structure.md#enforcement-mode) _Deaktiviert_ (DoNotEnforce) bei Ihrer Richtlinienzuweisung, um zu verhindern, dass die [Auswirkung](./effects.md) ausgelöst oder Einträge im Aktivitätsprotokoll erstellt werden.
 
 Dieser Schritt bietet Ihnen die Möglichkeit, die Complianceergebnisse der neuen Richtlinie für vorhandene Ressourcen auszuwerten, ohne den Workflow zu beeinträchtigen. Überprüfen Sie, dass keine konformen Ressourcen als nicht konform gekennzeichnet sind (_False Positive_) und dass alle Ressourcen, von denen Sie erwarten, dass sie nicht konform sind, korrekt gekennzeichnet sind.
 Nachdem die anfängliche Teilmenge der Ressourcen wie erwartet überprüft wurde, erweitern Sie die Auswertung langsam auf alle vorhandenen Ressourcen.
@@ -75,6 +70,6 @@ Die Implementierung und Zuweisung Ihrer Richtliniendefinition ist nicht der letz
 - Erfahren Sie mehr über die [Struktur von Richtliniendefinitionen](./definition-structure.md).
 - Erfahren Sie mehr über die [Struktur von Richtlinienzuweisungen](./assignment-structure.md).
 - Informieren Sie sich über das [programmgesteuerte Erstellen von Richtlinien](../how-to/programmatically-create.md).
-- Informieren Sie sich über das [Abrufen von Konformitätsdaten](../how-to/getting-compliance-data.md).
+- Informieren Sie sich über das [Abrufen von Konformitätsdaten](../how-to/get-compliance-data.md).
 - Erfahren Sie, wie Sie [nicht konforme Ressourcen korrigieren](../how-to/remediate-resources.md) können.
 - Weitere Informationen zu Verwaltungsgruppen finden Sie unter [Organisieren Ihrer Ressourcen mit Azure-Verwaltungsgruppen](../../management-groups/overview.md).

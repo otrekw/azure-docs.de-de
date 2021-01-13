@@ -10,14 +10,20 @@ ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: aahi
-ms.openlocfilehash: 2cc89bf57167db75404c044f58d18ab48edfaf38
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.custom: devx-track-js
+ms.openlocfilehash: ca3f9da681c60608b5b196b17191f0b4d549f305
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68854085"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96338366"
 ---
 # <a name="configure-your-hosted-ui-experience"></a>Konfigurieren der gehosteten Benutzeroberfläche
+
+> [!WARNING]
+> Die APIs der Bing-Suche werden von Cognitive Services auf Bing-Suchdienste umgestellt. Ab dem **30. Oktober 2020** müssen alle neuen Instanzen der Bing-Suche mit dem [hier](/bing/search-apis/bing-web-search/create-bing-search-service-resource) dokumentierten Prozess bereitgestellt werden.
+> APIs der Bing-Suche, die mit Cognitive Services bereitgestellt wurden, werden noch drei Jahre lang bzw. bis zum Ablauf Ihres Enterprise Agreement unterstützt (je nachdem, was zuerst geschieht).
+> Eine Anleitung zur Migration finden Sie unter [Bing-Suchdienste](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
 
 Die benutzerdefinierte Bing-Suche bietet eine gehostete Benutzeroberfläche, die Sie problemlos als JavaScript-Codeausschnitt in Ihre Webseiten und -anwendungen integrieren können. Mithilfe des Portals für die benutzerdefinierte Bing-Suche können Sie das Layout, die Farbe und die Suchoptionen der Benutzeroberfläche konfigurieren.
 
@@ -35,12 +41,10 @@ Gehen Sie folgendermaßen vor, um eine gehostete Benutzeroberfläche für Ihre W
   
 4. Wählen Sie ein Layout aus.
 
-    |  |  |
-    |---------|---------|
-    |Suchleiste und Ergebnisse (Standard)    | Zeigt ein Suchfeld mit Suchergebnissen darunter an.         |
-    |Nur Ergebnisse     | Zeigt nur Suchergebnisse ohne Suchfeld an. Bei Verwendung dieses Layouts müssen Sie die Suchabfrage (`&q=<query string>`) angeben. Fügen Sie den Abfrageparameter der Anforderungs-URL im JavaScript-Codeausschnitt oder im HTML-Endpunktlink hinzu.        |
-    |Einblendung im Vordergrund     | Stellt ein Suchfeld bereit und zeigt die Suchergebnisse in einer eingeblendeten Überlagerung an.        |
-    
+    - Suchleiste und Ergebnisse (Standard): Zeigt ein Suchfeld mit Suchergebnissen darunter an.
+    - Nur Ergebnisse: Zeigt nur Suchergebnisse ohne Suchfeld an. Bei Verwendung dieses Layouts müssen Sie die Suchabfrage (`&q=<query string>`) angeben. Fügen Sie den Abfrageparameter der Anforderungs-URL im JavaScript-Codeausschnitt oder im HTML-Endpunktlink hinzu.
+    - Einblendung im Vordergrund: Stellt ein Suchfeld bereit und zeigt die Suchergebnisse in einer eingeblendeten Überlagerung an.
+
 5. Wählen Sie ein Farbdesign aus. Sie können die Farben durch Klicken auf **Design anpassen** Ihrer Anwendung entsprechend anpassen. Zum Ändern einer Farbe geben Sie entweder den RGB-Hexadezimalwert der Farbe (z.B. `#366eb8`) ein, oder klicken Sie auf die Farbvorschau.
 
    Auf der rechten Seite des Portals können Sie eine Vorschau auf Ihre Änderungen anzeigen. Durch Klicken auf **Auf Standard zurücksetzen** werden wieder die Standardfarben für das ausgewählte Design verwendet.
@@ -50,7 +54,7 @@ Gehen Sie folgendermaßen vor, um eine gehostete Benutzeroberfläche für Ihre W
 
 6. Geben Sie unter **Zusätzliche Konfigurationen** entsprechende Werte für Ihre App an. Diese Einstellungen sind optional. Die Auswirkungen der angewendeten oder entfernten Einstellungen sehen Sie im Vorschaubereich auf der rechten Seite. Folgende Konfigurationsoptionen stehen zur Verfügung:  
 
-7. Geben Sie den Abonnementschlüssel für die Suche ein, oder wählen Sie einen in der Dropdownliste aus. Die Dropdownliste enthält Schlüssel aus den Abonnements Ihres Azure-Kontos. Weitere Informationen finden Sie unter [Create a Cognitive Services APIs account in the Azure portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) (Erstellen eines Cognitive Services-APIs-Kontos im Azure-Portal).  
+7. Geben Sie den Abonnementschlüssel für die Suche ein, oder wählen Sie einen in der Dropdownliste aus. Die Dropdownliste enthält Schlüssel aus den Abonnements Ihres Azure-Kontos. Weitere Informationen finden Sie unter [Create a Cognitive Services APIs account in the Azure portal](../cognitive-services-apis-create-account.md) (Erstellen eines Cognitive Services-APIs-Kontos im Azure-Portal).  
 
 8. Wenn Sie die Vorschlagssuche aktiviert haben, geben Sie den Abonnementschlüssel für die Vorschlagssuche ein, oder wählen Sie einen in der Dropdownliste aus. Die Dropdownliste enthält Schlüssel aus den Abonnements Ihres Azure-Kontos. Für die benutzerdefinierte Vorschlagssuche muss ein bestimmter Abonnementtarif verwendet werden. Weitere Informationen finden Sie unter [Preise](https://azure.microsoft.com/pricing/details/cognitive-services/bing-custom-search/).
 
@@ -78,7 +82,7 @@ Die gehostete Benutzeroberfläche kann auf zwei Arten genutzt werden:
   `https://ui.customsearch.ai/hosted?customConfig=YOUR-CUSTOM-CONFIG-ID`  
   
   > [!NOTE]
-  > Fügen Sie nach Bedarf der URL die folgenden Abfrageparameter hinzu. Weitere Informationen zu diesen Parametern finden Sie in der Referenz zur [API für die benutzerdefinierte Suche](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#query-parameters).
+  > Fügen Sie nach Bedarf der URL die folgenden Abfrageparameter hinzu. Weitere Informationen zu diesen Parametern finden Sie in der Referenz zur [API für die benutzerdefinierte Suche](/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#query-parameters).
   >
   > - q
   > - mkt
@@ -96,55 +100,38 @@ Sie können das Verhalten der gehosteten Benutzeroberfläche konfigurieren, inde
 
 ### <a name="web-search-configurations"></a>Konfigurationen für die Websuche
 
-|  |  |
-|---------|---------|
-|Webergebnisse aktiviert    | Legt fest, ob die Websuche aktiviert ist (am oberen Rand der Seite wird die Registerkarte „Web“ angezeigt).        |
-|Vorschlagssuche aktivieren     | Legt fest, ob die Vorschlagssuche aktiviert ist (die Zusatzkosten finden Sie unter [Preise](https://azure.microsoft.com/pricing/details/cognitive-services/bing-custom-search/)).        |
-|Webergebnisse pro Seite    | Anzahl der gleichzeitig angezeigten Websuchergebnisse (max. 50 Ergebnisse pro Seite).        |
-|Bildtitel   | Bestimmt, ob Bilder mit Suchergebnissen angezeigt werden.|
-
+- Webergebnisse aktiviert: Legt fest, ob die Websuche aktiviert ist (am oberen Rand der Seite wird die Registerkarte „Web“ angezeigt).
+- Vorschlagssuche aktivieren: Legt fest, ob die Vorschlagssuche aktiviert ist (die Zusatzkosten finden Sie unter [Preise](https://azure.microsoft.com/pricing/details/cognitive-services/bing-custom-search/)).
+- Webergebnisse pro Seite: Anzahl der gleichzeitig angezeigten Websuchergebnisse (max. 50 Ergebnisse pro Seite).
+- Bildtitel: Bestimmt, ob Bilder mit Suchergebnissen angezeigt werden.
 
 Die folgenden Konfigurationen werden angezeigt, wenn Sie auf **Erweiterte Konfigurationen anzeigen** klicken:
 
-
-|  | |
-|---------|---------|
-|Wörter hervorheben     | Legt fest, ob Suchbegriffe in den Ergebnissen fett formatiert werden.         |
-|Linkziel    |  Legt fest, ob die Webseite auf einer neuen Browserregisterkarte („blank“) oder auf derselben Registerkarte („self“) geöffnet wird, wenn der Benutzer auf ein Suchergebnis klickt.        |
+- Wörter hervorheben: Legt fest, ob Suchbegriffe in den Ergebnissen fett formatiert werden.
+- Linkziel: Legt fest, ob die Webseite auf einer neuen Browserregisterkarte („blank“) oder auf derselben Registerkarte („self“) geöffnet wird, wenn der Benutzer auf ein Suchergebnis klickt.
 
 ### <a name="image-search-configurations"></a>Konfigurationen für die Bildersuche
 
-| | |
-|---------|---------|
-|Bildergebnisse aktiviert     | Legt fest, ob die Bildersuche aktiviert ist (am oberen Rand der Seite wird die Registerkarte „Bilder“ angezeigt).            |
-|Bildergebnisse pro Seite     | Anzahl der gleichzeitig angezeigten Bildersuchergebnisse (max. 150 Ergebnisse pro Seite).          |
+- Bildergebnisse aktiviert: Legt fest, ob die Bildersuche aktiviert ist (am oberen Rand der Seite wird die Registerkarte „Bilder“ angezeigt).
+- Bildergebnisse pro Seite: Anzahl der gleichzeitig angezeigten Bildersuchergebnisse (max. 150 Ergebnisse pro Seite).
 
 Die folgende Konfiguration wird angezeigt, wenn Sie auf **Erweiterte Konfigurationen anzeigen** klicken.  
   
-| | |
-|---------|---------|
-| Filter aktivieren     | Fügt Filter hinzu, mit denen der Benutzer die von Bing zurückgegebenen Bilder filtern kann. Beispielsweise kann der Benutzer die Ergebnisse nur nach animierten GIF-Dateien filtern.|
+- Filter aktivieren: Fügt Filter hinzu, mit denen der Benutzer die von Bing zurückgegebenen Bilder filtern kann. Beispielsweise kann der Benutzer die Ergebnisse nur nach animierten GIF-Dateien filtern.
 
 ### <a name="video-search-configurations"></a>Konfigurationen für die Videosuche
 
-|  | |
-|---------|---------|
-|Videoergebnisse aktiviert     | Legt fest, ob die Videosuche aktiviert ist (am oberen Rand der Seite wird die Registerkarte „Videos“ angezeigt).           |
-|Videoergebnisse pro Seite   | Anzahl der gleichzeitig angezeigten Videoersuchergebnisse (max. 150 Ergebnisse pro Seite).        |
+- Videoergebnisse aktiviert: Legt fest, ob die Videosuche aktiviert ist (am oberen Rand der Seite wird die Registerkarte „Videos“ angezeigt).
+- Videoergebnisse pro Seite: Anzahl der gleichzeitig angezeigten Videoersuchergebnisse (max. 150 Ergebnisse pro Seite).
 
 Die folgende Konfiguration wird angezeigt, wenn Sie auf **Erweiterte Konfigurationen anzeigen** klicken.  
   
-|  | |
-|---------|---------|
-|Filter aktivieren    | Fügt Filter hinzu, mit denen der Benutzer die von Bing zurückgegebenen Videos filtern kann. Beispielsweise kann der Benutzer die Ergebnisse nach Videos mit einer bestimmten Auflösung oder nach Videos, die in den letzten 24 Stunden gefunden wurden, filtern.          |
+- Filter aktivieren: Fügt Filter hinzu, mit denen der Benutzer die von Bing zurückgegebenen Videos filtern kann. Beispielsweise kann der Benutzer die Ergebnisse nach Videos mit einer bestimmten Auflösung oder nach Videos, die in den letzten 24 Stunden gefunden wurden, filtern.
 
 ### <a name="miscellaneous-configurations"></a>Sonstige Konfigurationen
 
-
-| |  |
-|---------|---------|
-|Seitentitel   | Text, der im Titelbereich der Seite mit den Suchergebnissen (nicht beim Layout mit eingeblendeten Überlagerungen) angezeigt wird.        |
-|Symbolleistendesign    | Legt die Hintergrundfarbe des Titelbereichs der Seite mit den Suchergebnissen fest. |
+- Seitentitel: Text, der im Titelbereich der Seite mit den Suchergebnissen (nicht beim Layout mit eingeblendeten Überlagerungen) angezeigt wird.
+- Symbolleistendesign: Legt die Hintergrundfarbe des Titelbereichs der Seite mit den Suchergebnissen fest.
 
 Die folgenden Konfigurationen werden angezeigt, wenn Sie auf **Erweiterte Konfigurationen anzeigen** klicken.  
 
@@ -166,4 +153,4 @@ Die folgenden Konfigurationen gelten nur, wenn Sie die gehostete Benutzeroberfl�
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Verwenden von Dekorationsmarkierungen zum Hervorheben von Text](../bing-web-search/hit-highlighting.md)
-- [Einteilen von Webseiten](./page-webpages.md)
+- [Einteilen von Webseiten](../bing-web-search/paging-search-results.md)

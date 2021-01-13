@@ -1,24 +1,24 @@
 ---
 title: 'Bearbeiten von Metadaten: Modulreferenz'
-titleSuffix: Azure Machine Learning service
-description: Erfahren Sie, wie Sie Metadaten, die Spalten in einem Dataset zugeordnet sind, mit dem Modul „Metadaten bearbeiten“ im Azure Machine Learning Service ändern können.
+titleSuffix: Azure Machine Learning
+description: Erfahren Sie, wie Sie Metadaten, die Spalten in einem Dataset zugeordnet sind, mit dem Modul „Metadaten bearbeiten“ in Azure Machine Learning ändern können.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
-author: xiaoharper
-ms.author: zhanxia
-ms.date: 05/02/2019
-ms.openlocfilehash: 642b2a038ec434584c8af6dd72d58810e136ed57
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+author: likebupt
+ms.author: keli19
+ms.date: 06/10/2020
+ms.openlocfilehash: e279a7c9f6810ece482b043284f0be0719a3dafe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70128867"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90908038"
 ---
 # <a name="edit-metadata-module"></a>Modul „Metadaten bearbeiten“
 
-In diesem Artikel wird ein Modul der grafischen Benutzeroberfläche (Vorschau) für den Azure Machine Learning Service beschrieben.
+In diesem Artikel wird ein Modul beschrieben, das in Azure Machine Learning-Designer enthalten ist.
 
 Verwenden Sie das Modul „Metadaten bearbeiten“, um Metadaten zu ändern, die Spalten in einem Dataset zugeordnet sind. Nach Verwendung des Moduls „Metadaten bearbeiten“ werden Wert und Datentyp des Datasets geändert.
 
@@ -40,9 +40,9 @@ Typische Metadatenänderungen können Folgendes umfassen:
   
 ## <a name="configure-edit-metadata"></a>Konfigurieren von „Metadaten bearbeiten“
   
-1. Fügen Sie Ihrem Experiment in Azure Machine Learning das Modul „Metadaten bearbeiten“ hinzu, und verknüpfen Sie das Dataset, das Sie aktualisieren möchten. Sie finden das Dataset unter **Datentransformation** in der Kategorie **Bearbeiten**.
+1. Fügen Sie Ihrer Pipeline im Azure Machine Learning-Designer das Modul Edit Metadata hinzu, und verknüpfen Sie das Dataset, das Sie aktualisieren möchten. Das Modul befindet sich in der Kategorie **Data Transformation**.
   
-1. Klicken Sie auf **Spaltenauswahl starten**, und wählen Sie die Spalte oder die Gruppe von Spalten aus, mit denen Sie arbeiten möchten. Sie können Spalten einzeln nach Name oder Index auswählen, oder Sie können eine Gruppe von Spalten nach Typ auswählen.  
+1. Klicken Sie im rechten Bereich des Moduls auf **Spalten bearbeiten**, und wählen Sie die Spalte oder Gruppe von Spalten aus, mit der Sie arbeiten möchten. Sie können Spalten einzeln nach Name oder Index auswählen, oder Sie können eine Gruppe von Spalten nach Typ auswählen.  
   
 1. Wählen Sie die Option **Datentyp** aus, wenn Sie den ausgewählten Spalten einen anderen Datentyp zuweisen müssen. Möglicherweise müssen Sie den Datentyp für bestimmte Vorgänge ändern. Wenn Ihr Quelldataset beispielsweise Zahlen enthält, die wie Text behandelt werden, müssen Sie diese vor der Verwendung von mathematischen Operationen in einen numerischen Datentyp ändern.
 
@@ -55,7 +55,8 @@ Typische Metadatenänderungen können Folgendes umfassen:
     + Der Spaltentyp und die Werte werden geändert, nachdem Sie den Vorgang „Metadaten bearbeiten“ ausgeführt haben. Sie können den ursprünglichen Datentyp jederzeit wiederherstellen, indem Sie „Metadaten bearbeiten“ verwenden, um den Spaltendatentyp zurückzusetzen.  
 
     > [!NOTE]
-    > Wenn Sie einen beliebigen Zahlentyp in den Datentyp **DateTime** ändern, lassen Sie das Feld **Format für „DateTime“** leer. Aktuell ist es nicht möglich, das Zieldatenformat festzulegen.  
+    > Das **DateTime-Format** folgt dem [integrierten DateTime-Format von Python](https://docs.python.org/3/library/datetime.html#strftime-and-strptime-behavior).  
+    > Wenn Sie einen beliebigen Zahlentyp in den Datentyp **DateTime** ändern, lassen Sie das Feld **Format für „DateTime“** leer. Aktuell ist es nicht möglich, das Zieldatenformat festzulegen.
 
 1. Wählen Sie die Option **Kategorie** aus, um festzulegen, dass die Werte in den ausgewählten Spalten als Kategorien behandelt werden sollen.
 
@@ -94,8 +95,8 @@ Typische Metadatenänderungen können Folgendes umfassen:
   
     + Alle ausgewählte Spalten müssen umbenannt werden. Sie dürfen keine Spalten weglassen oder überspringen.  
   
-1. Führen Sie das Experiment aus.  
+1. Übermitteln Sie die Pipeline.  
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sehen Sie sich die [Gruppe der verfügbaren Module](module-reference.md) für den Azure Machine Learning Service an.
+Sehen Sie sich den [Satz der verfügbaren Module](module-reference.md) für Azure Machine Learning an.

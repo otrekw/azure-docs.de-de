@@ -1,0 +1,22 @@
+- name: Azure
+  tocHref: /legal/
+  topicHref: /azure/index
+  items:
+    - name: Maschinelles Sehen
+      tocHref: /legal/computer-vision
+      topicHref: /azure/cognitive-services/Computer-vision/index
+      items:
+        - name: Räumliche Analyse für maschinelles Sehen
+          tocHref: /legal/cognitive-services/computer-vision/
+          topicHref: /azure/cognitive-services/Computer-vision/index
+- name: Azure
+  tocHref: /azure/
+  topicHref: /azure/index
+  items:
+    - name: Cognitive Services
+      tocHref: /azure/cognitive-services/
+      topicHref: /azure/cognitive-services/index
+      items:
+        - name: Maschinelles Sehen
+          tocHref: /azure/cognitive-services/
+          topicHref: /azure/cognitive-services/computer-vision/index

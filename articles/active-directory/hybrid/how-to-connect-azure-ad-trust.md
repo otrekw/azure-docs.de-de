@@ -12,18 +12,18 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/28/2018
 ms.author: billmath
 author: billmath
 ms.custom: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8bd46bb820c7127c4fa6105fcc0be73bb66024c6
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 13d56ec321cd257412c2b0abbe0be655c6cb4dbf
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60245706"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "85360094"
 ---
 # <a name="manage-ad-fs-trust-with-azure-ad-using-azure-ad-connect"></a>Verwalten der AD FS-Vertrauensstellung mit Azure AD und Azure AD Connect
 
@@ -64,7 +64,7 @@ Azure AD Connect aktualisiert nicht alle Einstellungen für die Azure AD-Vertrau
 | WAP-Server hinzufügen | Keine |
 | Geräteoptionen | Ausstellungstransformationsregeln, IWA für die Geräteregistrierung |
 | Verbunddomäne hinzufügen | Wenn die Domäne zum ersten Mal hinzugefügt wird, das Setup also von einem Verbund mit einer einzelnen Domäne in einen Verbund mit mehreren Domänen geändert wird, erstellt Azure AD Connect die Vertrauensstellung von Grund auf neu. Wenn die Vertrauensstellung mit Azure AD bereits für mehrere Domänen konfiguriert ist, werden nur Ausstellungstransformationsregeln geändert. |
-| SSL aktualisieren | Keine |
+| TLS aktualisieren | Keine |
 
 Bei allen Vorgängen, bei denen eine Einstellung geändert wird, erstellt Azure AD Connect in **%ProgramData%\AADConnect\ADFS** eine Sicherung der aktuellen Einstellungen für die Vertrauensstellung.
 

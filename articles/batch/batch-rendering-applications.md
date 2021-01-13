@@ -1,18 +1,14 @@
 ---
-title: Renderinganwendungen – Azure Batch
-description: Vorinstallierte Batch Rendering-Anwendungen
-services: batch
-ms.service: batch
-author: laurenhughes
-ms.author: lahugh
+title: Renderinganwendungen
+description: Mit Azure Batch können beliebige Renderinganwendungen verwendet werden. In Azure Marketplace-VM-Images sind gängige Anwendungen jedoch bereits vorinstalliert.
 ms.date: 09/19/2019
-ms.topic: conceptual
-ms.openlocfilehash: 30a365b36645dfe79f35b4bb889c0a06535a4c73
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.topic: how-to
+ms.openlocfilehash: f876671c6ac16137c2c1cf8d40bd70860c06975b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71212711"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "85960485"
 ---
 # <a name="pre-installed-applications-on-rendering-vm-images"></a>Vorinstallierte Anwendungen in Rendering-VM-Images
 
@@ -91,4 +87,4 @@ Die folgende Liste betrifft Renderingimages von Windows Server 2016, Version 1.3
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Damit Sie die Rendering-VM-Images verwenden können, müssen Sie sie beim Erstellen eines Pools in der Poolkonfiguration angeben. Informationen finden Sie unter [Azure Batch rendering capabilities](https://docs.microsoft.com/azure/batch/batch-rendering-functionality#batch-pools) (Renderingfunktionen von Azure Batch).
+Damit Sie die Rendering-VM-Images verwenden können, müssen Sie sie beim Erstellen eines Pools in der Poolkonfiguration angeben. Informationen finden Sie unter [Azure Batch rendering capabilities](./batch-rendering-functionality.md#batch-pools) (Renderingfunktionen von Azure Batch).

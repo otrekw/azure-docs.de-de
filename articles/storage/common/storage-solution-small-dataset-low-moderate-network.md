@@ -5,15 +5,15 @@ services: storage
 author: alkohli
 ms.service: storage
 ms.subservice: blobs
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/05/2018
 ms.author: alkohli
-ms.openlocfilehash: 3e6f4f3eb312f0d4d96a008c0944a9608d0bf4a7
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f59d1e297ba4d7607d7abd07a78da4784f55d20f
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60397276"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96023226"
 ---
 # <a name="data-transfer-for-small-datasets-with-low-to-moderate-network-bandwidth"></a>Datenübertragung kleiner Datasets mit geringer bis mittlerer Netzwerkbandbreite
  
@@ -49,20 +49,19 @@ Die folgenden Optionen werden in diesem Szenario empfohlen:
 
 In der folgenden Tabelle werden die Unterschiede der Schlüsselfunktionen zusammengefasst.
 
-| Feature | Azure Storage-Explorer | Azure-Portal | AzCopy<br>Azure PowerShell<br>Azure-Befehlszeilenschnittstelle | Azure Storage REST-APIs oder SDKs |
+| Funktion | Azure Storage-Explorer | Azure-Portal | AzCopy<br>Azure PowerShell<br>Azure-Befehlszeilenschnittstelle | Azure Storage REST-APIs oder SDKs |
 |---------|------------------------|--------------|-----------------------------------------|---------------------------------|
 | Verfügbarkeit | Herunterladen und Installieren <br>Eigenständiges Tool | Webbasierte Tools zu Durchsuchen im Azure-Portal | Befehlszeilentool |Programmierbare Schnittstellen in .NET, Java, Python, JavaScript, C++, Go, Ruby und PHP |
 | Grafische Benutzeroberfläche | Ja | Ja | Nein | Nein |
 | Unterstützte Plattformen | Windows, Mac, Linux | Webbasiert |Windows, Mac, Linux |Alle Plattformen |
-| Zulässige Blob Storage-Vorgänge<br>für Blobs und Ordner | Hochladen<br>Download<br>Verwalten | Hochladen<br>Download<br>Verwalten |Hochladen<br>Download<br>Verwalten | Ja, anpassbar |
-| Zulässige Data Lake Gen1-Speichervorgänge<br>für Dateien und Ordner | Hochladen<br>Download<br>Verwalten | Nein |Hochladen<br>Download<br>Verwalten                   | Nein |
-| Zulässige File Storage-Vorgänge<br>für Dateien und Verzeichnisse | Hochladen<br>Download<br>Verwalten | Hochladen<br>Download<br>Verwalten   |Hochladen<br>Download<br>Verwalten | Ja, anpassbar |
+| Zulässige Blob Storage-Vorgänge<br>für Blobs und Ordner | Upload<br>Download<br>Verwalten | Upload<br>Download<br>Verwalten |Upload<br>Download<br>Verwalten | Ja, anpassbar |
+| Zulässige Data Lake Gen1-Speichervorgänge<br>für Dateien und Ordner | Upload<br>Download<br>Verwalten | Nein |Upload<br>Download<br>Verwalten                   | Nein |
+| Zulässige File Storage-Vorgänge<br>für Dateien und Verzeichnisse | Upload<br>Download<br>Verwalten | Upload<br>Download<br>Verwalten   |Upload<br>Download<br>Verwalten | Ja, anpassbar |
 | Zulässige Table Storage-Vorgänge<br>für Tabellen |Verwalten | Nein |Tabellenunterstützung in AzCopy v7 |Ja, anpassbar|
 | Zulässige Queue Storage-Vorgänge | Verwalten | Nein  |Nein | Ja, anpassbar|
 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Informationen zum [Übertragen von Daten mit Azure Storage-Explorer](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/move-data-to-azure-blob-using-azure-storage-explorer).
-- [Übertragen von Daten mit AzCopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10)
-
+- Informationen zum [Übertragen von Daten mit Azure Storage-Explorer](../../machine-learning/team-data-science-process/move-data-to-azure-blob-using-azure-storage-explorer.md).
+- [Übertragen von Daten mit AzCopy](./storage-use-azcopy-v10.md)

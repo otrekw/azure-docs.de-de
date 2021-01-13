@@ -1,6 +1,6 @@
 ---
 title: 'Azure CLI-Skript: Bereitstellungsbeispiel'
-description: Erstellen Sie einen sicheren Service Fabric-Linux-Cluster in Azure mithilfe der Azure CLI.
+description: Hier erfahren Sie, wie Sie mithilfe der Azure-Befehlszeilenschnittstelle (Command Line Interface, CLI) einen sicheren Service Fabric-Linux-Cluster in Azure erstellen.
 services: service-fabric
 documentationcenter: ''
 author: athinanthny
@@ -12,17 +12,17 @@ ms.service: service-fabric
 ms.topic: sample
 ms.date: 01/18/2018
 ms.author: atsenthi
-ms.custom: mvc
-ms.openlocfilehash: 1386be8093cac4f5271886ff736b24acd483d64e
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: a0a17e3f352c9e39f118baec7e045521289f5ed0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69032825"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87502408"
 ---
 # <a name="create-a-secure-service-fabric-linux-cluster-in-azure"></a>Erstellen eines sicheren Service Fabric-Linux-Clusters in Azure
 
-Dieser Befehl erstellt ein selbst signiertes Zertifikat, fügt es zum Schlüsseltresor hinzu und lädt das Zertifikat lokal herunter.  Mit dem neuen Zertifikat wird der Cluster gesichert, wenn er bereitgestellt wird.  Anstelle der Erstellung eines neuen Zertifikats können Sie auch ein vorhandenes Zertifikat verwenden.  Der Name des Antragstellers für das Zertifikat muss in jedem Fall der Domäne entsprechen, über die Sie auf den Service Fabric-Cluster zugreifen. Dies ist erforderlich, damit SSL für die HTTPS-Verwaltungsendpunkte des Clusters und für Service Fabric Explorer bereitgestellt werden kann. Für die Domäne `.cloudapp.azure.com` können Sie kein SSL-Zertifikat von einer Zertifizierungsstelle beziehen. Sie benötigen einen benutzerdefinierten Domänennamen für Ihren Cluster. Wenn Sie ein Zertifikat von einer Zertifizierungsstelle anfordern, muss der Name des Antragstellers für das Zertifikat dem benutzerdefinierten Domänennamen entsprechen, den Sie für Ihren Cluster verwenden.
+Dieser Befehl erstellt ein selbst signiertes Zertifikat, fügt es zum Schlüsseltresor hinzu und lädt das Zertifikat lokal herunter.  Mit dem neuen Zertifikat wird der Cluster gesichert, wenn er bereitgestellt wird.  Anstelle der Erstellung eines neuen Zertifikats können Sie auch ein vorhandenes Zertifikat verwenden.  Der Name des Antragstellers für das Zertifikat muss in jedem Fall der Domäne entsprechen, über die Sie auf den Service Fabric-Cluster zugreifen. Dies ist erforderlich, damit TLS für die HTTPS-Verwaltungsendpunkte des Clusters und für Service Fabric Explorer bereitgestellt werden kann. Für die Domäne `.cloudapp.azure.com` können Sie kein TLS/SSL-Zertifikat von einer Zertifizierungsstelle beziehen. Sie benötigen einen benutzerdefinierten Domänennamen für Ihren Cluster. Wenn Sie ein Zertifikat von einer Zertifizierungsstelle anfordern, muss der Name des Antragstellers für das Zertifikat dem benutzerdefinierten Domänennamen entsprechen, den Sie für Ihren Cluster verwenden.
 
 Installieren Sie ggf. die [Azure-Befehlszeilenschnittstelle](/en-us/cli/azure/install-azure-cli?view=azure-cli-latest).
 
@@ -45,7 +45,7 @@ Das Skript verwendet die folgenden Befehle. Jeder Befehl in der Tabelle ist mit 
 
 | Get-Help | Notizen |
 |---|---|
-| [az sf cluster create](https://docs.microsoft.com/cli/azure/sf/cluster?view=azure-cli-latest) | Erstellt einen neuen Service Fabric-Cluster.  |
+| [az sf cluster create](/cli/azure/sf/cluster?view=azure-cli-latest) | Erstellt einen neuen Service Fabric-Cluster.  |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

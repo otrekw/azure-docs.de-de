@@ -9,13 +9,13 @@ metadata:
   ms.collection: collection
   author: DCtheGeek
   ms.author: dacoulte
-  ms.date: 09/17/2019
-  ms.openlocfilehash: 58e5b078fc337a53193b9c0518ae12437d26fb75
-  ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+  ms.date: 10/26/2020
+  ms.openlocfilehash: 753a2b112929b785526e32df9c9836f48b8675ba
+  ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 10/02/2019
-  ms.locfileid: "71802282"
+  ms.lasthandoff: 01/08/2021
+  ms.locfileid: "98034950"
 landingContent:
 - title: Informationen zu Azure Policy
   linkLists:
@@ -27,8 +27,12 @@ landingContent:
       url: ./concepts/effects.md
     - text: Definitionsstruktur
       url: ./concepts/definition-structure.md
+    - text: Bereich
+      url: ./concepts/scope.md
     - text: Zuweisungsstruktur
       url: ./concepts/assignment-structure.md
+    - text: Ausnahmenstruktur
+      url: ./concepts/exemption-structure.md
   - linkListType: video
     links:
     - text: Azure Policy bei der Build 2018
@@ -39,16 +43,32 @@ landingContent:
     links:
     - text: Zuweisen einer Richtlinie (Portal)
       url: ./assign-policy-portal.md
-    - text: Zuweisen einer Richtlinie (PowerShell)
-      url: ./assign-policy-powershell.md
     - text: Zuweisen einer Richtlinie (Azure CLI)
       url: ./assign-policy-azurecli.md
-    - text: Zuweisen einer Richtlinie (Vorlage)
+    - text: Zuweisen einer Richtlinie (Azure PowerShell)
+      url: ./assign-policy-powershell.md
+    - text: Zuweisen einer Richtlinie (.NET)
+      url: ./assign-policy-dotnet.md
+    - text: Zuweisen einer Richtlinie (JavaScript)
+      url: ./assign-policy-javascript.md
+    - text: Zuweisen einer Richtlinie (Python)
+      url: ./assign-policy-python.md
+    - text: Zuweisen einer Richtlinie (REST)
+      url: ./assign-policy-rest-api.md
+    - text: Zuweisen einer Richtlinie (ARM-Vorlage)
       url: ./assign-policy-template.md
+    - text: Zuweisen einer Richtlinie (Terraform)
+      url: ./assign-policy-terraform.md
   - linkListType: tutorial
     links:
     - text: Erstellen und Verwalten von Richtlinien
       url: ./tutorials/create-and-manage.md
+    - text: Verwenden der VS Code-Erweiterung
+      url: ./how-to/extension-for-vscode.md
+    - text: Entwerfen von Workflows für Azure Policy-as-Code
+      url: ./concepts/policy-as-code.md
+    - text: Implementieren von Azure Policy-as-Code mit GitHub
+      url: ./tutorials/policy-as-code-github.md
   - linkListType: deploy
     links:
     - text: Index der Richtlinienbeispiele
@@ -59,17 +79,23 @@ landingContent:
     links:
     - text: Erstellen einer benutzerdefinierten Richtlinie
       url: ./tutorials/create-custom-policy-definition.md
+    - text: Verwalten der Tag-Governance
+      url: ./tutorials/govern-tags.md
   - linkListType: how-to-guide
     links:
     - text: Erstellen einer Richtlinie mit dem SDK
       url: ./how-to/programmatically-create.md
     - text: Erstellen von Richtlinien für Arrays
       url: ./how-to/author-policies-for-arrays.md
+    - text: Exportieren von Ressourcen
+      url: ./how-to/export-resources.md
   - linkListType: concept
     links:
-    - text: Richtlinie für AKS
-      url: ./concepts/rego-for-aks.md
-    - text: Richtlinie für virtuelle Computer
+    - text: Einhaltung gesetzlicher Bestimmungen
+      url: ./concepts/regulatory-compliance.md
+    - text: Azure Policy für Kubernetes
+      url: ./concepts/policy-for-kubernetes.md
+    - text: Azure Policy für virtuelle Computer
       url: ./concepts/guest-configuration.md
 - title: Überprüfen und Warten von Ressourcen
   linkLists:
@@ -79,39 +105,59 @@ landingContent:
       url: ./how-to/get-compliance-data.md
     - text: Ermitteln der Ursachen für Nichtkonformität
       url: ./how-to/determine-non-compliance.md
+    - text: Ausgenommene Ressourcen
+      url: ./concepts/exemption-structure.md
     - text: Korrigieren nicht konformer Ressourcen
       url: ./how-to/remediate-resources.md
 - title: Beteiligen
   linkLists:
   - linkListType: get-started
     links:
+    - text: Microsoft Q&A (Fragen und Antworten) für Azure Policy
+      url: /answers/topics/azure-policy.html
     - text: YouTube-Kanal zu Azure Governance
       url: https://www.youtube.com/channel/UCZZ3-oMrVI5ssheMzaWC4uQ
     - text: Produktfeature anfordern
-      url: https://feedback.azure.com/forums/915958-azure-governance
+      url: https://feedback.azure.com/forums/915958-azure-governance?category_id=345055
     - text: Tech Community für Azure Governance
       url: https://techcommunity.microsoft.com/t5/Azure-Governance/bd-p/AzureGovernance
 - title: Verweis
   linkLists:
   - linkListType: reference
     links:
-    - text: Azure-Befehlszeilenschnittstelle
+    - text: Azure CLI
       url: /cli/azure/policy
     - text: Azure PowerShell (Richtlinie)
-      url: /powershell/module/az.resources/#policies
+      url: /powershell/module/az.resources/#policy
     - text: Azure PowerShell (Policy Insights)
-      url: /powershell/module/az.policyinsights#policy_insights
-    - text: Azure SDK für .NET (Zuweisungen)
-      url: /dotnet/api/microsoft.azure.management.resourcemanager.models.policyassignment
-    - text: Azure SDK für .NET (Richtliniendefinitionen)
-      url: /dotnet/api/microsoft.azure.management.resourcemanager.models.policydefinition
+      url: /powershell/module/az.policyinsights#policy-insights
     - text: REST (Policy Insights)
       url: /rest/api/policy-insights/
     - text: REST (Zuweisungen)
       url: /rest/api/resources/policyassignments
     - text: REST (Definitionen)
       url: /rest/api/resources/policydefinitions
+    - text: REST (Ausnahmen)
+      url: /rest/api/resources/policyexemptions
     - text: REST (Initiativen)
       url: /rest/api/resources/policysetdefinitions
     - text: Resource Manager-Vorlagen
       url: /azure/templates/microsoft.authorization/allversions
+- title: Verweis (weitere)
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Azure SDK für .NET (Zuweisungen)
+      url: /dotnet/api/microsoft.azure.management.resourcemanager.models.policyassignment
+    - text: Azure SDK für .NET (Richtliniendefinitionen)
+      url: /dotnet/api/microsoft.azure.management.resourcemanager.models.policydefinition
+    - text: Azure SDK für JavaScript (Richtlinie)
+      url: /javascript/api/@azure/arm-policy
+    - text: Azure SDK für JavaScript (Policy Insights)
+      url: /javascript/api/@azure/arm-policyinsights
+    - text: Azure SDK für Python (Richtlinie)
+      url: /python/api/azure-mgmt-resource/azure.mgmt.resource.policy
+    - text: Azure SDK für Python (Richtlinienclient)
+      url: /python/api/azure-mgmt-resource/azure.mgmt.resource.policyclient
+    - text: Azure SDK für Python (Policy Insights)
+      url: /python/api/azure-mgmt-policyinsights/azure.mgmt.policyinsights

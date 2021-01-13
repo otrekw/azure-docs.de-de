@@ -1,57 +1,74 @@
 ---
-title: Worum handelt es sich bei der Textanalyse-API? - Funktionen -
+title: 'Azure Cognitive Services: Textmining und -analyse mit der Textanalyse-API'
 titleSuffix: Azure Cognitive Services
-description: Verwenden Sie die Textanalyse-API von Azure Cognitive Services für Stimmungsanalyse, Schlüsselbegriffserkennung, Sprachenerkennung und Entitätserkennung.
+description: Hier erfahren Sie mehr über Textmining mit der Textanalyse-API. Verwenden Sie es für Stimmungsanalysen, Spracherkennung und andere Arten der Verarbeitung natürlicher Sprache.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: overview
-ms.date: 08/26/2019
+ms.date: 11/17/2020
 ms.author: aahi
-ms.openlocfilehash: 8c5df8461c74d48c0712ab1947e29813e7e1ea3f
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+keywords: Textmining, Stimmungsanalyse, Textanalyse
+ms.custom: cog-serv-seo-aug-2020
+ms.openlocfilehash: 6cef9dc65a72134e0aa70db5f89f4934263c48b4
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70032680"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97563227"
 ---
 # <a name="what-is-the-text-analytics-api"></a>Worum handelt es sich bei der Textanalyse-API?
 
-Die Textanalyse-API ist ein cloudbasierter Dienst für die erweiterte Verarbeitung natürlicher Sprache aus unformatiertem Text. Sie bietet vier Hauptfunktionen: Standpunktanalyse, Schlüsselbegriffserkennung, Sprachenerkennung und Entitätserkennung.
+Die Textanalyse-API ist ein cloudbasierter Dienst für Features zur Verarbeitung natürlicher Sprache, z. B. Textmining und -analyse, einschließlich Stimmungsanalysen, Opinion Mining, Schlüsselbegriffserkennung, Spracherkennung und Erkennung benannter Entitäten.
 
-Die API ist ein Teil von [Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/), einer Sammlung von Algorithmen für maschinelles Lernen und künstliche Intelligenz (KI) in der Cloud, die Sie für Ihre Entwicklungsprojekte verwenden können.
+Die API ist ein Teil von [Azure Cognitive Services](../index.yml), einer Sammlung von Algorithmen für maschinelles Lernen und künstliche Intelligenz (KI) in der Cloud, die Sie für Ihre Entwicklungsprojekte verwenden können. Sie können diese Features mit der [REST-API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/) oder der [Clientbibliothek ](quickstarts/client-libraries-rest-api.md) verwenden.
 
-> [!VIDEO https://channel9.msdn.com/Shows/AI-Show/Understanding-Text-using-Cognitive-Services/player]
+> [!VIDEO https://channel9.msdn.com/Shows/AI-Show/Whats-New-in-Text-Analytics-Opinion-Mining-and-Async-API/player]
 
-Der Begriff „Textanalyse“ hat verschiedene Bedeutungen, in Cognitive Services stellt die Textanalyse-API jedoch vier Analysearten bereit, die nachfolgend beschrieben werden. Sie können diese Features mit der [REST-API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/) oder einer Clientbibliothek für [.NET](quickstarts/csharp.md), [Python](quickstarts/python-sdk.md), [Node.js](quickstarts/nodejs-sdk.md), [Go](quickstarts/go-sdk.md) oder [Ruby](quickstarts/ruby-sdk.md) verwenden.
+## <a name="sentiment-analysis"></a>Stimmungsanalyse
 
-## <a name="sentiment-analysis"></a>Standpunktanalyse
-Ermitteln Sie mithilfe der [Standpunktanalyse](how-tos/text-analytics-how-to-sentiment-analysis.md), was die Kunden von Ihrer Marke oder von Ihrem Thema halten, indem Sie reinen Text auf Hinweise für positive oder negative Stimmung analysieren. Die API gibt für jedes Dokument eine Bewertung des Standpunkts zwischen 0 und 1 zurück. Hierbei entspricht 1 einer positiven Bewertung.<br /> Die Analysemodelle sind mithilfe großer Textmengen und Microsoft-Technologien für natürliche Sprache vortrainiert. Für [ausgewählte Sprachen](text-analytics-supported-languages.md) kann die API jeden bereitgestellten unformatierten Text analysieren und bewerten und der aufrufenden Anwendung direkt Ergebnisse zurückgeben.
+Ermitteln Sie anhand der [Stimmungsanalyse](how-tos/text-analytics-how-to-sentiment-analysis.md), was Menschen von Ihrer Marke oder Ihrem Thema halten, indem Sie unformatierten Text auf Hinweise einer positiven oder negativen Stimmung analysieren. 
+
+Bei diesem Feature werden Stimmungsbezeichnungen (z. B. „negativ“, „neutral“ und „positiv“) basierend auf der höchsten Zuverlässigkeitsbewertung angegeben, die vom Dienst auf Satz- und Dokumentebene gefunden wird. Darüber hinaus werden bei diesem Feature Zuverlässigkeitsbewertungen zwischen 0 und 1 für jedes Dokument und jeden darin enthaltenen Satz zurückgegeben (positive, neutrale und negative Stimmung). Sie können den Dienst auch lokal ausführen, indem Sie [einen Container verwenden](how-tos/text-analytics-how-to-install-containers.md).
+
+Opinion Mining ist ab Version 3.1 Preview ein Feature der Stimmungsanalyse. Dieses Feature wird in der Verarbeitung natürlicher Sprache (Natural Language Processing, NLP) auch als aspektbasierte Standpunktanalyse bezeichnet und bietet feiner abgestufte Informationen zu den Meinungen in Bezug auf Aspekte (z. B. Attribute von Produkten oder Dienstleistungen) in Texten.
 
 ## <a name="key-phrase-extraction"></a>Schlüsselwortextraktion
-[Extrahieren Sie automatisch Schlüsselbegriffe](how-tos/text-analytics-how-to-keyword-extraction.md), um schnell die wichtigsten Punkte zu ermitteln. Wenn der eingegebene Text beispielsweise „Das Essen war köstlich, und es gab hervorragendes Personal“ lautet, gibt die API die Kernpunkte „Essen“ und „hervorragendes Personal“ zurück.
+
+Verwenden Sie die [Schlüsselbegriffserkennung](how-tos/text-analytics-how-to-keyword-extraction.md), um schnell die Hauptkonzepte eines Texts zu identifizieren. Im Text „Das Essen war köstlich, und es gab hervorragendes Personal“ gibt die Schlüsselbegriffserkennung beispielsweise die Kernpunkte „Essen“ und „hervorragendes Personal“ zurück.
 
 ## <a name="language-detection"></a>Spracherkennung
-Sie können für eine Vielzahl von Sprachen, Varianten und Dialekten sowie einige Regional- und Kultursprachen [die Sprache von Eingabetexten erkennen](how-tos/text-analytics-how-to-language-detection.md) und einen einzigen Sprachcode für jedes Dokument melden, das auf Anforderung gesendet wird. Der Sprachcode ist mit einem Wert kombiniert, der die Stärke der Bewertung angibt.
+
+Die Spracherkennung kann eine Vielzahl von Sprachen, Varianten und Dialekten sowie einige Regional- und Kultursprachen [die Sprache von Eingabetexten erkennen](how-tos/text-analytics-how-to-language-detection.md) und einen einzigen Sprachcode für jedes Dokument melden, das auf Anforderung gesendet wird. Der Sprachcode wird mit einer Zuverlässigkeitsbewertung bereitgestellt.
 
 ## <a name="named-entity-recognition"></a>Erkennung benannter Entitäten
-[Identifizieren und kategorisieren Sie Entitäten](how-tos/text-analytics-how-to-entity-linking.md) in Ihrem Text als Personen, Orte, Organisationen, Datums-/Zeitangaben, Mengen, Prozentsätze, Währungen usw. Bekannte Entitäten werden ebenfalls erkannt und mit weiteren Informationen im Internet verknüpft.
 
-## <a name="use-containers"></a>Verwenden von Containern
+Die Erkennung benannter Entitäten (NER) kann in Ihrem Text [Entitäten identifizieren und kategorisieren](how-tos/text-analytics-how-to-entity-linking.md), die als Personen, Orte, Organisationen und Mengen erkannt werden. Bekannte Entitäten werden ebenfalls erkannt, und es werden Links zu weiteren Informationen im Internet bereitgestellt.
 
-[Verwenden Sie die Container für die Textanalyse](how-tos/text-analytics-how-to-install-containers.md), um lokal Schlüsselbegriffe zu extrahieren, die Sprache zu ermitteln and die Stimmung zu analysieren. Installieren Sie dazu standardisierte Dock-Container, die sich näher bei Ihren Daten befinden.
+## <a name="deploy-on-premises-using-docker-containers"></a>Lokales Bereitstellen unter Verwendung von Docker-Containern
+
+[Verwenden Sie Container für die Textanalyse](how-tos/text-analytics-how-to-install-containers.md), um API-Features lokal bereitzustellen. Mithilfe dieser Docker-Container können Sie den Dienst näher an Ihre Daten heranbringen, um Compliance- oder Sicherheitsanforderungen zu erfüllen oder anderen betrieblichen Anforderungen gerecht zu werden. Die Textanalyse bietet folgende Container:
+
+* Stimmungsanalyse
+* Schlüsselbegriffserkennung (Vorschauversion)
+* Sprachenerkennung (Vorschauversion)
+* Textanalyse für Gesundheit (Vorschauversion)
+
+## <a name="asynchronous-operations"></a>Asynchrone Vorgänge
+
+Der Endpunkt `/analyze` ermöglicht die [asynchrone](how-tos/text-analytics-how-to-call-api.md) Verwendung ausgewählter Features der Textanalyse-API. Hierzu zählen beispielsweise die Erkennung benannter Entitäten und die Schlüsselbegriffserkennung.
 
 ## <a name="typical-workflow"></a>Typischer Workflow
 
 Der Workflow ist einfach: Sie übermitteln Daten für die Analyse und verarbeiten Ausgaben in Ihrem Code. Analysetool werden unverändert (d.h. ohne Konfigurationen oder Anpassungen) verwendet.
 
-1. [Erstellen Sie eine Azure-Ressource](../cognitive-services-apis-create-account.md) für die Textanalyse. [Rufen Sie anschließend den Schlüssel ab](../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource), der für Sie zum Authentifizieren Ihrer Anforderungen generiert wurde.
+1. [Erstellen Sie eine Azure-Ressource](how-tos/text-analytics-how-to-call-api.md) für die Textanalyse. [Rufen Sie anschließend den Schlüssel ab](how-tos/text-analytics-how-to-call-api.md), der für Sie zum Authentifizieren Ihrer Anforderungen generiert wurde.
 
 2. [Formulieren Sie eine Anforderung](how-tos/text-analytics-how-to-call-api.md#json-schema), die Ihre Daten als unformatierten, unstrukturierten Text im JSON-Format enthält.
 
-3. Übermitteln Sie die Anforderung an den Endpunkt, der während der Registrierung eingerichtet wurde, und fügen Sie die gewünschten Ressourcen an: Standpunktanalyse, Schlüsselbegriffserkennung, Sprachenerkennung und Entitätsidentifikation.
+3. Übermitteln Sie die Anforderung an den Endpunkt, der im Rahmen der Registrierung eingerichtet wurde, und fügen Sie die gewünschte Ressource an: Standpunktanalyse, Schlüsselbegriffserkennung, Sprachenerkennung oder Erkennung benannter Entitäten.
 
 4. Streamen oder speichern Sie die Antwort lokal. Je nach Anforderung ist das Ergebnis entweder eine Standpunktbewertung, eine Sammlung von extrahierten Schlüsselbegriffen oder ein Sprachcode.
 
@@ -64,56 +81,38 @@ Daten werden nicht in Ihrem Konto gespeichert. Von der Textanalyse-API durchgef�
 Sie können mit der Verwendung der Textanalyse-API in Ihren Prozessen beginnen, auch wenn Sie über wenig Erfahrung bei der Programmierung verfügen. Anhand dieser Tutorials erfahren Sie, wie Sie die API verwenden können, um Text gemäß Ihrem Erfahrungsstand auf verschiedene Weise zu analysieren. 
 
 * Minimaler Programmieraufwand:
-    * [Verwenden der Textanalyse-API und von MS Flow zum Ermitteln der Stimmung in Kommentaren in einer Yammer-Gruppe](https://docs.microsoft.com/Yammer/integrate-yammer-with-other-apps/sentiment-analysis-flow-azure?toc=%2F%2Fazure%2Fcognitive-services%2Ftext-analytics%2Ftoc.json&bc=%2F%2Fazure%2Fbread%2Ftoc.json)
+    * [Extrahieren von Informationen aus Excel mithilfe von Textanalyse und Power Automate](tutorials/extract-excel-information.md)
+    * [Verwenden der Textanalyse-API und von MS Flow zum Ermitteln der Stimmung in Kommentaren in einer Yammer-Gruppe](/Yammer/integrate-yammer-with-other-apps/sentiment-analysis-flow-azure?bc=%2f%2fazure%2fbread%2ftoc.json&toc=%2f%2fazure%2fcognitive-services%2ftext-analytics%2ftoc.json)
     * [Integrieren von Power BI mit der Textanalyse-API zur Analyse von Kundenfeedback](tutorials/tutorial-power-bi-key-phrases.md)
 * Programmiererfahrung empfohlen:
-    * [Standpunktanalyse für Streamingdaten mit Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/databricks-sentiment-analysis-cognitive-services?toc=%2F%2Fazure%2Fcognitive-services%2Ftext-analytics%2Ftoc.json&bc=%2F%2Fazure%2Fbread%2Ftoc.json)
-    * [Erstellen einer Flask-App zum Übersetzen von Text, Analysieren der Stimmung und Synthetisieren von Sprache](https://docs.microsoft.com/azure/cognitive-services/translator/tutorial-build-flask-app-translation-synthesis?toc=%2F%2Fazure%2Fcognitive-services%2Ftext-analytics%2Ftoc.json&bc=%2F%2Fazure%2Fbread%2Ftoc.json)
+    * [Standpunktanalyse für Streamingdaten mit Azure Databricks](/azure/databricks/scenarios/databricks-sentiment-analysis-cognitive-services?bc=%2f%2fazure%2fbread%2ftoc.json&toc=%2f%2fazure%2fcognitive-services%2ftext-analytics%2ftoc.json)
+    * [Erstellen einer Flask-App zum Übersetzen von Text, Analysieren der Stimmung und Synthetisieren von Sprache](../translator/tutorial-build-flask-app-translation-synthesis.md?bc=%2f%2fazure%2fbread%2ftoc.json&toc=%2f%2fazure%2fcognitive-services%2ftext-analytics%2ftoc.json)
 
 
 <a name="supported-languages"></a>
 
 ## <a name="supported-languages"></a>Unterstützte Sprachen
 
-Für eine bessere Auffindbarkeit wurde dieser Abschnitt in einen separaten Artikel verschoben. Diesen Inhalt finden Sie unter [Supported languages in the Text Analytics API](text-analytics-supported-languages.md) (Unterstützte Sprachen in der Textanalyse-API).
+Für eine bessere Auffindbarkeit wurde dieser Abschnitt in einen separaten Artikel verschoben. Diesen Inhalt finden Sie unter [Supported languages in the Text Analytics API](./language-support.md) (Unterstützte Sprachen in der Textanalyse-API).
 
 <a name="data-limits"></a>
 
 ## <a name="data-limits"></a>Datengrenzwerte
 
-Alle Endpunkte der Textanalyse-API akzeptieren unformatierte Textdaten. Der aktuelle Grenzwert liegt bei 5.120 Zeichen für jedes Dokument. Wenn Sie größere Dokumente analysieren müssen, können Sie diese in kleinere Blöcke aufteilen.
-
-| Begrenzung | Wert |
-|------------------------|---------------|
-| Maximale Größe eines einzelnen Dokuments | 5\.120 Zeichen (von [`StringInfo.LengthInTextElements`](https://docs.microsoft.com/dotnet/api/system.globalization.stringinfo.lengthintextelements) gemessen) |
-| Maximale Größe der gesamte Anforderung | 1 MB |
-| Maximale Anzahl von Dokumenten in einer Anforderung | 1\.000 Dokumente |
-
-Ihr Ratenlimit variiert je nach Tarif.
-
-| Tarif          | Anforderungen pro Sekunde | Anforderungen pro Minute |
-|---------------|---------------------|---------------------|
-| S/Mehrere Dienste | 1000                | 1000                |
-| S0/F0         | 100                 | 300                 |
-| S1            | 200                 | 300                 |
-| S2            | 300                 | 300                 |
-| S3            | 500                 | 500                 |
-| S4            | 1000                | 1000                |
-
-Die Anforderungen werden für jede Textanalysefunktion separat gemessen. So können Sie beispielsweise die maximale Anzahl von Anforderungen für Ihren Tarif gleichzeitig an alle Funktionen senden.      
+Alle Endpunkte der Textanalyse-API akzeptieren unformatierte Textdaten. Weitere Informationen finden Sie im Artikel zu den [Datengrenzwerten](concepts/data-limits.md).
 
 ## <a name="unicode-encoding"></a>Unicode-Codierung
 
-Die Textanalyse-API verwendet Unicode-Codierung für die Textdarstellung und die Berechnung der Zeichenanzahl. Anforderungen können in UTF-8 und UTF-16 übermittelt werden, dabei gibt es keine messbaren Unterschiede bei der Zeichenanzahl. Unicode-Codepunkte werden als Heuristik für die Zeichenlänge verwendet und werden für die Grenzwerte der Textanalysedaten als äquivalent betrachtet. Wenn Sie [`StringInfo.LengthInTextElements`](https://docs.microsoft.com/dotnet/api/system.globalization.stringinfo.lengthintextelements) verwenden, um die Zeichenanzahl abzurufen, verwenden Sie die gleiche Methode wie wir, um die Datengröße zu ermitteln.
+Die Textanalyse-API verwendet Unicode-Codierung für die Textdarstellung und die Berechnung der Zeichenanzahl. Anforderungen können in UTF-8 und UTF-16 übermittelt werden, dabei gibt es keine messbaren Unterschiede bei der Zeichenanzahl. Unicode-Codepunkte werden als Heuristik für die Zeichenlänge verwendet und werden für die Grenzwerte der Textanalysedaten als äquivalent betrachtet. Wenn Sie [`StringInfo.LengthInTextElements`](/dotnet/api/system.globalization.stringinfo.lengthintextelements) verwenden, um die Zeichenanzahl abzurufen, verwenden Sie die gleiche Methode wie wir, um die Datengröße zu ermitteln.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 + [Erstellen Sie eine Azure-Ressource](../cognitive-services-apis-create-account.md) für die Textanalyse, um einen Schlüssel und einen Endpunkt für Ihre Anwendungen zu erhalten.
 
-+ Der [Schnellstart](quickstarts/csharp.md) stellt eine exemplarische Vorgehensweise für REST-API-Aufrufe in C# dar. Erfahren Sie, wie Sie mit minimalem Code Text übermitteln, eine Analyse auswählen und Ergebnisse anzeigen. Sie können stattdessen auch mit der [Schnellstartanleitung für Python](quickstarts/python.md) beginnen.
++ Verwenden Sie die [Schnellstartanleitung](quickstarts/client-libraries-rest-api.md), um mit dem Senden von API-Aufrufen zu beginnen. Erfahren Sie, wie Sie mit minimalem Code Text übermitteln, eine Analyse auswählen und Ergebnisse anzeigen.
 
 + Informationen zu neuen Releases und Features finden Sie unter [What's new in the Text Analytics API?](whats-new.md) (Neuigkeiten bei der Textanalyse-API).
 
-+ In [diesem Tutorial zur Standpunktanalyse](https://docs.microsoft.com/azure/azure-databricks/databricks-sentiment-analysis-cognitive-services) mit Azure Databricks erhalten Sie ausführlichere Informationen.
++ In [diesem Tutorial zur Standpunktanalyse](/azure/databricks/scenarios/databricks-sentiment-analysis-cognitive-services) mit Azure Databricks erhalten Sie ausführlichere Informationen.
 
 + Eine Liste von Blogbeiträgen und Videos, in denen die Verwendung der Textanalyse-API mit anderen Tools und Technologien veranschaulicht wird, finden Sie auf der Seite [Externe Inhalte und Community-Inhalte für die Textanalyse in Cognitive Service](text-analytics-resource-external-community.md).

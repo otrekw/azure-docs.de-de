@@ -1,6 +1,7 @@
 ---
-title: Azure-VMware-Lösung von CloudSimple – Übersicht über virtuelle Computer
-description: Informationen zu virtuellen CloudSimple-Computern und deren Vorteilen.
+title: Übersicht über virtuelle Computer
+titleSuffix: Azure VMware Solution by CloudSimple
+description: Informationen zu virtuellen CloudSimple-Computern und deren Vorteilen. Sie können virtuelle VMware-Computer über das Azure-Portal verwalten.
 author: sharaths-cs
 ms.author: dikamath
 ms.date: 08/20/2019
@@ -8,12 +9,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 213ab51dae20d281a1a0e0f8ea18f4bde888e64d
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: 6f9be035978667287b8b88ec1bb64b3882b0f929
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69877900"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88141975"
 ---
 # <a name="cloudsimple-virtual-machines-overview"></a>Übersicht über virtuelle CloudSimple-Computer
 

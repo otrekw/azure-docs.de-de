@@ -1,18 +1,20 @@
 ---
-title: 'Schnellstart: Erstellen einer Azure DNS-Zone und eines -Eintrags mithilfe der Azure CLI'
+title: 'Schnellstart: Erstellen einer Azure DNS-Zone und eines entsprechenden Eintrags – Azure CLI'
+titleSuffix: Azure DNS
 description: 'Schnellstart: Erfahren Sie, wie Sie eine DNS-Zone und einen DNS-Eintrag in Azure DNS erstellen. Dies ist eine schrittweise Anleitung zum Erstellen und Verwalten Ihrer ersten DNS-Zone und Ihres ersten DNS-Eintrags mithilfe der Azure CLI.'
 services: dns
-author: vhorne
+author: rohinkoul
 ms.service: dns
 ms.topic: quickstart
-ms.date: 3/11/2019
-ms.author: victorh
-ms.openlocfilehash: 7a2c300e30050e7e46a2b2c724258539df85e410
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 10/20/2020
+ms.author: rohink
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 1929cd512d18d7fd234aff1f55814c423455e63b
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66111329"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94561368"
 ---
 # <a name="quickstart-create-an-azure-dns-zone-and-record-using-azure-cli"></a>Schnellstart: Erstellen einer Azure DNS-Zone und eines Azure DNS-Eintrags mithilfe der Azure CLI
 
@@ -20,11 +22,13 @@ In diesem Artikel erfahren Sie Schritt für Schritt, wie Sie mithilfe der für W
 
 Eine DNS-Zone wird zum Hosten der DNS-Einträge für eine bestimmte Domäne verwendet. Wenn Sie eine Domäne in Azure DNS hosten möchten, müssen Sie eine DNS-Zone für diesen Domänennamen erstellen. Jeder DNS-Eintrag für Ihre Domäne wird dann in dieser DNS-Zone erstellt. Und schließlich müssen Sie die Namenserver für die Domäne konfigurieren, um Ihre DNS-Zone im Internet zu veröffentlichen. Jeder dieser Schritte wird im Folgenden beschrieben.
 
-Azure DNS unterstützt jetzt auch private DNS-Zonen (zurzeit als öffentliche Vorschauversion verfügbar). Weitere Informationen zu privaten DNS-Zonen finden Sie unter [Using Azure DNS for private domains](private-dns-overview.md) (Verwenden von Azure DNS für private Domänen). Ein Beispiel für die Erstellung einer privaten DNS-Zone finden Sie unter [Erstellen einer privaten Azure DNS-Zone mit der Azure-Befehlszeilenschnittstelle](./private-dns-getstarted-cli.md).
+Azure DNS unterstützt auch private DNS-Zonen. Weitere Informationen zu privaten DNS-Zonen finden Sie unter [Using Azure DNS for private domains](private-dns-overview.md) (Verwenden von Azure DNS für private Domänen). Ein Beispiel für die Erstellung einer privaten DNS-Zone finden Sie unter [Erstellen einer privaten Azure DNS-Zone mit der Azure-Befehlszeilenschnittstelle](./private-dns-getstarted-cli.md).
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
+
+- Für diesen Artikel ist mindestens Version 2.0.4 der Azure CLI erforderlich. Bei Verwendung von Azure Cloud Shell ist die aktuelle Version bereits installiert.
 
 ## <a name="create-the-resource-group"></a>Ressourcengruppe erstellen
 
@@ -90,11 +94,11 @@ Sie besitzen nun eine DNS-Testzone mit einem A-Testeintrag und können die Namen
 
    Es sollte ein Bildschirm angezeigt werden, der in etwa wie folgt aussieht:
 
-   ![nslookup](media/dns-getstarted-portal/nslookup.PNG)
+   ![Screenshot, der ein Eingabeaufforderungsfenster mit einem Namenserver-Suchbefehl und Werten für Server, Adresse, Name und Adresse zeigt.](media/dns-getstarted-portal/nslookup.PNG)
 
 Der Hostname **www\.contoso.xyz** wird gemäß Ihrer Konfiguration zu **10.10.10.10** aufgelöst. Mit diesem Ergebnis wird bestätigt, dass die Namensauflösung richtig funktioniert.
 
-## <a name="delete-all-resources"></a>Löschen aller Ressourcen
+## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
 Wenn sie nicht mehr benötigt werden, können Sie alle in diesem Schnellstart erstellten Ressourcen löschen, indem Sie die Ressourcengruppe löschen:
 

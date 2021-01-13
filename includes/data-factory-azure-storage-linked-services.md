@@ -4,22 +4,22 @@ ms.service: data-factory
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: jingwang
-ms.openlocfilehash: ee368b58195d61a1c6792a3a3655122af7104d58
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 37917e0ed663675677f1d0452b5796120ca2694e
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "69012132"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96001728"
 ---
 ### <a name="azure-storage-linked-service"></a>Mit Azure-Speicher verknüpfter Dienst
 Sie können einen mit **Azure Storage verknüpften Dienst** verwenden, um ein Azure-Speicherkonto mithilfe des **Kontoschlüssels** mit einer Azure Data Factory zu verknüpfen. Dadurch erhält die Data Factory globalen Zugriff auf Azure Storage. Die folgende Tabelle enthält eine Beschreibung der JSON-Elemente, die für den mit Azure Storage verknüpften Dienst spezifisch sind.
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| type |Die type-Eigenschaft muss auf Folgendes festgelegt werden: **AzureStorage** |Ja |
+| type |Die type-Eigenschaft muss auf **AzureStorage** |Ja |
 | connectionString |Geben Sie Informationen, die zur Verbindung mit dem Azure-Speicher erforderlich sind, für die connectionString-Eigenschaft ein. |Ja |
 
-Im folgenden Abschnitt finden Sie die Schritte zum Anzeigen/Kopieren des Kontoschlüssels für eine Azure Storage-Instanz: [Zugriffsschlüssel](../articles/storage/common/storage-account-manage.md#access-keys).
+Informationen zum Abrufen von Speicherkonto-Zugriffsschlüsseln finden Sie unter [Verwalten von Speicherkonto-Zugriffsschlüsseln](../articles/storage/common/storage-account-keys-manage.md).
 
 **Beispiel:**  
 
@@ -49,7 +49,7 @@ Sie können einen mit Azure Storage SAS verknüpften Dienst verwenden, um ein Az
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| type |Die type-Eigenschaft muss auf Folgendes festgelegt werden: **AzureStorageSas**. |Ja |
+| type |Die type-Eigenschaft muss auf **AzureStorageSas** |Ja |
 | sasUri |Geben Sie den Shared Access Signature-URI für Azure-Speicher-Ressourcen wie BLOB, Container oder Tabelle an.  |Ja |
 
 **Beispiel:**
@@ -66,7 +66,7 @@ Sie können einen mit Azure Storage SAS verknüpften Dienst verwenden, um ein Az
 }
 ```
 
-Beim Erstellen eines **SAS-URI**sollten Sie Folgendes berücksichtigen:  
+Beim Erstellen eines **SAS-URI** sollten Sie Folgendes berücksichtigen:  
 
 * Legen Sie für Objekte basierend darauf, wie der verknüpfte Dienst (Lesen, Schreiben, Lesen/Schreiben) in Ihrer Data Factory verwendet wird, geeignete Lese-/Schreib-**Berechtigungen** fest.
 * Legen Sie für **Ablaufzeit** einen geeigneten Wert fest. Stellen Sie sicher, dass der Zugriff auf Azure Storage-Objekte nicht im aktiven Zeitraum der Pipeline abläuft.

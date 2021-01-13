@@ -1,28 +1,24 @@
 ---
-title: 'Tutorial: Azure Active Directory-Integration mit Autotask Endpoint Backup | Microsoft-Dokumentation'
+title: 'Tutorial: Azure Active Directory-Integration in Autotask Endpoint Backup | Microsoft-Dokumentation'
 description: Erfahren Sie, wie Sie das einmalige Anmelden für Azure Active Directory und Autotask Endpoint Backup konfigurieren.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 9f55319e-895b-4130-8460-71713f25ed04
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 1/19/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6e0b14138940c240dc674eb733bfe46b7f5d4c1e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 349a77d2f2cd5e1c492de63919d84efb436a51a3
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67106620"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673697"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-autotask-endpoint-backup"></a>Tutorial: Azure Active Directory-Integration mit Autotask Endpoint Backup
+# <a name="tutorial-azure-active-directory-integration-with-autotask-endpoint-backup"></a>Tutorial: Azure Active Directory-Integration in Autotask Endpoint Backup
 
 In diesem Tutorial erfahren Sie, wie Sie Autotask Endpoint Backup in Azure Active Directory (Azure AD) integrieren.
 Die Integration von Autotask Endpoint Backup in Azure AD bietet die folgenden Vorteile:
@@ -31,7 +27,7 @@ Die Integration von Autotask Endpoint Backup in Azure AD bietet die folgenden Vo
 * Sie können es Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei Autotask Endpoint Backup anzumelden (einmaliges Anmelden; Single Sign-On, SSO).
 * Sie können Ihre Konten über das Azure-Portal an einem zentralen Ort verwalten.
 
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md).
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -67,7 +63,7 @@ Zum Konfigurieren der Integration von Autotask Endpoint Backup in Azure AD müss
 
 4. Geben Sie im Suchfeld **Autotask Endpoint Backup** ein, wählen Sie im Ergebnisbereich **Autotask Endpoint Backup** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
 
-     ![Autotask Endpoint Backup in der Ergebnisliste](common/search-new-app.png)
+    ![Autotask Endpoint Backup in der Ergebnisliste](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurieren und Testen des einmaligen Anmeldens in Azure AD
 
@@ -153,7 +149,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.
 
-    d. Klicken Sie auf **Create**.
+    d. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
@@ -183,18 +179,18 @@ In diesem Abschnitt gewähren Sie Britta Simon Zugriff auf Autotask Endpoint Bac
 
 ### <a name="create-autotask-endpoint-backup-test-user"></a>Erstellen eines Autotask Endpoint Backup-Testbenutzers
 
-In diesem Abschnitt erstellen Sie in Autotask Endpoint Backup eine Benutzerin namens Britta Simon. Das  [Autotask Endpoint Backup-Supportteam](https://backup.autotask.net/help/Content/0_HOME/Support_for_End_Clients.htm) kann Sie dabei unterstützen, Benutzer auf der Autotask Endpoint Backup-Plattform hinzuzufügen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
+In diesem Abschnitt erstellen Sie in Autotask Endpoint Backup eine Benutzerin namens Britta Simon. Das [Autotask Endpoint Backup -Supportteam](https://backup.autotask.net/help/Content/0_HOME/Support_for_End_Clients.htm) kann Sie dabei unterstützen, Benutzer der Autotask Endpoint Backup-Plattform hinzuzufügen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
 
 ### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
-Wenn Sie im Zugriffsbereich auf die Kachel „Autotask Endpoint Backup“ klicken, werden Sie automatisch bei der Autotask Endpoint Backup-Anwendung angemeldet, für die Sie SSO eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Wenn Sie im Zugriffsbereich auf die Kachel „Autotask Endpoint Backup“ klicken, werden Sie automatisch bei der Autotask Endpoint Backup-Anwendung angemeldet, für die Sie SSO eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>Weitere Ressourcen
 
-- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](./tutorial-list.md)
 
-- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Was ist bedingter Zugriff?](../conditional-access/overview.md)

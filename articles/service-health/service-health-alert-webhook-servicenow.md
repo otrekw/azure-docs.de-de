@@ -1,17 +1,15 @@
 ---
-title: Senden von Azure Service-Integritätswarnungen mit ServiceNow mit Webhooks
+title: Senden von Azure Service Health-Warnungen mit ServiceNow
 description: Erhalten Sie personalisierte Benachrichtigungen zu Service Health-Ereignissen an Ihre ServiceNow-Instanz.
-author: stephbaron
-ms.author: stbaron
-ms.topic: article
-ms.service: service-health
+ms.topic: conceptual
 ms.date: 06/10/2019
-ms.openlocfilehash: e32a32e4961043e0cd967247c8c13420ca8a1969
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.custom: devx-track-js
+ms.openlocfilehash: f120e9d950cc349d0331a476dbfbfe9d7e599f0c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67067116"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96000639"
 ---
 # <a name="send-azure-service-health-alerts-with-servicenow-using-webhooks"></a>Senden von Azure Service-Integritätswarnungen mit ServiceNow mit Webhooks
 
@@ -39,7 +37,7 @@ In diesem Artikel erfahren Sie, wie Sie Azure Service Health-Warnungen mit Webho
 
     ![Registerkarte „Resources“ in ServiceNow](./media/webhook-alerts/servicenow-resources-tab.png)
 
-1.  Geben Sie der neuen Ressource den **Namen** `event`, und ändern Sie die **HTTP-Methode** in `POST`.
+1.  Geben Sie der neuen Ressource den **Namen**`event`, und ändern Sie die **HTTP-Methode** in `POST`.
 
 1.  Fügen Sie im Abschnitt **Script** (Skript) den folgenden JavaScript-Code hinzu:
 
@@ -143,13 +141,14 @@ In diesem Artikel erfahren Sie, wie Sie Azure Service Health-Warnungen mit Webho
      ![„Base API Path“ in ServiceNow](./media/webhook-alerts/servicenow-base-api-path.png)
 
 1.  Die vollständige Integrations-URL sieht wie folgt aus:
-        
-         https://<yourInstanceName>.service-now.com/<baseApiPath>?apiKey=<secret>
 
+    ```http
+    https://<yourInstanceName>.service-now.com/<baseApiPath>?apiKey=<secret>
+    ```
 
 ## <a name="create-an-alert-using-servicenow-in-the-azure-portal"></a>Erstellen einer Warnung mithilfe von ServiceNow im Azure-Portal
 ### <a name="for-a-new-action-group"></a>Für eine neue Aktionsgruppe:
-1. Führen Sie die Schritte 1 bis 8 in [diesem Artikel](../azure-monitor/platform/alerts-activity-log-service-notifications.md) aus, um eine Warnung mit einer neuen Aktionsgruppe zu erstellen.
+1. Führen Sie die Schritte 1 bis 8 in [diesem Artikel](./alerts-activity-log-service-notifications-portal.md) aus, um eine Warnung mit einer neuen Aktionsgruppe zu erstellen.
 
 1. Definieren Sie in der Liste der **Aktionen** Folgendes:
 
@@ -197,5 +196,5 @@ In diesem Artikel erfahren Sie, wie Sie Azure Service Health-Warnungen mit Webho
 ## <a name="next-steps"></a>Nächste Schritte
 - Erfahren Sie, wie Sie [Webhookbenachrichtigungen für vorhandene Problemverwaltungssysteme konfigurieren](service-health-alert-webhook-guide.md).
 - Weitere Informationen zum [Webhookschema für Aktivitätsprotokollwarnungen](../azure-monitor/platform/activity-log-alerts-webhook.md). 
-- Weitere Informationen zu [Dienstintegritätsbenachrichtigungen](../azure-monitor/platform/service-notifications.md).
+- Weitere Informationen zu [Dienstintegritätsbenachrichtigungen](./service-notifications.md).
 - Weitere Informationen zu [Aktionsgruppen](../azure-monitor/platform/action-groups.md).

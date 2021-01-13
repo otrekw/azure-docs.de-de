@@ -1,28 +1,24 @@
 ---
-title: 'Tutorial: Azure Active Directory-Integration von ArcGIS Online | Microsoft-Dokumentation'
+title: 'Tutorial: Azure Active Directory-Integration in ArcGIS Online | Microsoft-Dokumentation'
 description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und ArcGIS Online konfigurieren.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: daveba
-ms.reviewer: barbkess
-ms.assetid: a9e132a4-29e7-48bf-beb9-4148e617c8a9
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/19/2018
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: db56cd7551ef8179aeff575fdd1f2578cbee74ee
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b004394d3f0cc1c4d285c9eba9952a43e8cf65f2
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67106710"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97674028"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-arcgis-online"></a>Tutorial: Azure Active Directory-Integration von ArcGIS Online
+# <a name="tutorial-azure-active-directory-integration-with-arcgis-online"></a>Tutorial: Azure Active Directory-Integration in ArcGIS Online
 
 In diesem Tutorial erfahren Sie, wie Sie Azure Active Directory (Azure AD) in ArcGIS Online integrieren.
 Die Integration von Azure AD in ArcGIS Online bietet die folgenden Vorteile:
@@ -31,7 +27,7 @@ Die Integration von Azure AD in ArcGIS Online bietet die folgenden Vorteile:
 * Sie können Ihren Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei ArcGIS Online anzumelden (einmaliges Anmelden; Single Sign-On, SSO).
 * Sie können Ihre Konten über das Azure-Portal an einem zentralen Ort verwalten.
 
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md).
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -40,6 +36,9 @@ Um die Integration von Azure AD in ArcGIS Online konfigurieren zu können, benö
 
 * Ein Azure AD-Abonnement Wenn Sie keine Azure AD-Umgebung besitzen, können Sie [hier](https://azure.microsoft.com/pricing/free-trial/) eine einmonatige Testversion anfordern.
 * ArcGIS Online-Abonnement, für das einmaliges Anmelden aktiviert ist
+
+> [!NOTE]
+> Diese Integration kann auch über die Azure AD-Umgebung für die US Government-Cloud verwendet werden. Sie finden diese Anwendung im Azure AD-Katalog für US Government-Cloudanwendungen und konfigurieren sie auf die gleiche Weise wie in der öffentlichen Cloud.
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
 
@@ -67,7 +66,7 @@ Zum Konfigurieren der Integration von Azure AD in ArcGIS Online müssen Sie Ihre
 
 4. Geben Sie im Suchfeld **ArcGIS Online** ein, wählen Sie im Ergebnisbereich **ArcGIS Online** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
 
-     ![ArcGIS Online in der Ergebnisliste](common/search-new-app.png)
+    ![ArcGIS Online in der Ergebnisliste](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurieren und Testen des einmaligen Anmeldens in Azure AD
 
@@ -128,19 +127,19 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD in ArcGIS On
 
 2. Klicken Sie auf **EINSTELLUNGEN BEARBEITEN**.
 
-    ![Einstellungen bearbeiten](./media/arcgis-tutorial/ic784742.png "Einstellungen bearbeiten")
+    ![Edit Settings (Einstellungen bearbeiten)](./media/arcgis-tutorial/ic784742.png "Edit Settings")
 
 3. Klicken Sie auf **Sicherheit**.
 
-    ![Sicherheit](./media/arcgis-tutorial/ic784743.png "Sicherheit")
+    ![Security](./media/arcgis-tutorial/ic784743.png "Sicherheit")
 
 4. Klicken Sie unter **Unternehmensanmeldungen** auf **IDENTITÄTSANBIETER FESTLEGEN**.
 
-    ![Unternehmensanmeldungen](./media/arcgis-tutorial/ic784744.png "Unternehmensanmeldungen")
+    ![Enterprise Logins (Unternehmensanmeldungen)](./media/arcgis-tutorial/ic784744.png "Enterprise Logins")
 
 5. Führen Sie auf der Konfigurationsseite **Set Identity Provider** die folgenden Schritte aus.
 
-    ![Identitätsanbieter festlegen](./media/arcgis-tutorial/ic784745.png "Identitätsanbieter festlegen")
+    ![Set Identity Provider (Identitätsanbieter festlegen)](./media/arcgis-tutorial/ic784745.png "Set Identity Provider")
 
     a. Geben Sie in das Textfeld **Name** den Namen Ihrer Organisation ein.
 
@@ -167,13 +166,13 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
     ![Dialogfeld „Benutzer“](common/user-properties.png)
 
     a. Geben Sie im Feld **Name** den Namen **BrittaSimon** ein.
-  
+
     b. Geben Sie im Feld **Benutzername** Folgendes ein: **brittasimon\@ihreunternehmensdomäne.erweiterung**.  
     Zum Beispiel, BrittaSimon@contoso.com
 
     c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.
 
-    d. Klicken Sie auf **Create**.
+    d. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
@@ -211,24 +210,24 @@ Im Fall von ArcGIS Online ist die Bereitstellung eine manuelle Aufgabe.
 1. Melden Sie sich bei Ihrem **ArcGIS** -Mandanten an.
 
 2. Klicken Sie auf **MITGLIEDER EINLADEN**.
-   
-    ![Mitglieder einladen](./media/arcgis-tutorial/ic784747.png "Mitglieder einladen")
+
+    ![Invite Members (Mitglieder einladen)](./media/arcgis-tutorial/ic784747.png "Invite Members")
 
 3. Wählen Sie **Mitglieder automatisch hinzufügen, ohne eine E-Mail zu senden** aus, und klicken Sie dann auf **WEITER**.
-   
-    ![Mitglieder automatisch hinzufügen](./media/arcgis-tutorial/ic784748.png "Mitglieder automatisch hinzufügen")
+
+    ![Automatisches Hinzufügen von Mitgliedern](./media/arcgis-tutorial/ic784748.png "Add Members Automatically")
 
 4. Führen Sie auf der Dialogfeldseite **Members** die folgenden Schritte aus:
-   
-     ![Hinzufügen und überprüfen Sie](./media/arcgis-tutorial/ic784749.png "hinzufügen und überprüfen")
-    
-     a. Geben Sie **E-Mail-Adresse**, **Vorname** und **Nachname** eines gültigen AAD-Kontos ein, das Sie bereitstellen möchten.
-  
+
+    ![Hinzufügen und Überprüfen](./media/arcgis-tutorial/ic784749.png "Add And Review")
+
+     a. Geben Sie **E-Mail-Adresse**, **Vorname** und **Nachname** eines gültigen Azure AD-Kontos ein, das Sie bereitstellen möchten.
+
      b. Klicken Sie auf **HINZUFÜGEN UND ÜBERPRÜFEN**.
 5. Überprüfen Sie die eingegebenen Daten, und klicken Sie dann auf **MITGLIEDER HINZUFÜGEN**.
-   
-    ![Mitglied hinzufügen](./media/arcgis-tutorial/ic784750.png "Mitglied hinzufügen")
-        
+
+    ![Hinzufügen eines Mitglieds](./media/arcgis-tutorial/ic784750.png "Add member")
+
     > [!NOTE]
     > Der Besitzer des Azure Active Directory-Kontos erhält eine E-Mail und folgt einem Link zur Bestätigung des Kontos, bevor es aktiv wird.
 
@@ -236,13 +235,12 @@ Im Fall von ArcGIS Online ist die Bereitstellung eine manuelle Aufgabe.
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
-Wenn Sie im Zugriffsbereich auf die Kachel „ArcGIS Online“ klicken, sollten Sie automatisch bei Ihrer ArcGIS Online-Anwendung angemeldet werden. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Wenn Sie im Zugriffsbereich auf die Kachel „ArcGIS Online“ klicken, sollten Sie automatisch bei Ihrer ArcGIS Online-Anwendung angemeldet werden. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>Weitere Ressourcen
 
-- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](./tutorial-list.md)
 
-- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Was ist bedingter Zugriff?](../conditional-access/overview.md)

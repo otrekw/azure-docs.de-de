@@ -1,20 +1,18 @@
 ---
-title: 'PowerShell-Skript: Hinzufügen eines Blobdatasets in Azure Data Share | Microsoft-Dokumentation'
+title: 'PowerShell-Skript: Hinzufügen eines Blobdatasets in Azure Data Share'
 description: Mit diesem PowerShell-Skript wird einer vorhandenen Freigabe ein Blobdataset hinzugefügt.
 services: data-share
 author: joannapea
+ms.author: joanpo
 ms.service: data-share
-ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/07/2019
-ms.author: joanpo
-ms.openlocfilehash: 95a10b112c9f6448c437f20ee95f808632a31d2d
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: 7f2a2dded0b9c817e0700f4f93782d3b5c11ac3f
+ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70307297"
+ms.lasthandoff: 10/20/2020
+ms.locfileid: "92221382"
 ---
 # <a name="use-powershell-to-create-a-data-share-in-azure"></a>Verwenden von PowerShell zum Erstellen einer Datenfreigabe in Azure
 
@@ -44,11 +42,11 @@ Das Skript verwendet die folgenden Befehle:
 
 | Get-Help | Notizen |
 |---|---|
-| [New-AzDataShareDataSet](/powershell/module/az.datashare/new-azdatasharedataset?view=azps-2.6.0) | Fügt einer Datenfreigabe ein Dataset hinzu. |
+| [New-AzDataShareDataSet](/powershell/module/az.datashare/new-azdatasharedataset) | Fügt einer Datenfreigabe ein Dataset hinzu. |
 |||
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zu Azure PowerShell finden Sie in der [Azure PowerShell-Dokumentation](https://docs.microsoft.com/powershell/).
+Weitere Informationen zu Azure PowerShell finden Sie in der [Azure PowerShell-Dokumentation](/powershell/).
 
 Weitere PowerShell-Skriptbeispiele für Azure Data Share finden Sie unter [Azure PowerShell-Beispiele für Azure Data Share](../../samples-powershell.md).

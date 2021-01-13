@@ -1,5 +1,5 @@
 ---
-title: NVIDIA-GPU-Treibererweiterung – Azure-Linux-VMs | Microsoft-Dokumentation
+title: NVIDIA-GPU-Treibererweiterung – Azure-Linux-VMs
 description: Microsoft Azure-Erweiterung für die Installation von NVIDIA-GPU-Treibern auf Compute-VMs der N-Serie unter Linux.
 services: virtual-machines-linux
 documentationcenter: ''
@@ -8,17 +8,18 @@ manager: gwallace
 editor: ''
 ms.assetid: ''
 ms.service: virtual-machines-linux
+ms.subservice: extensions
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/11/2019
 ms.author: akjosh
-ms.openlocfilehash: 83646c0b11bf558f667b29271a27d31e5489c157
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: c06d8e4ab368934182ed67b91dedb9ba9bcfc199
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71174006"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94965322"
 ---
 # <a name="nvidia-gpu-driver-extension-for-linux"></a>NVIDIA-GPU-Treibererweiterung für Linux
 
@@ -26,8 +27,7 @@ ms.locfileid: "71174006"
 
 Diese Erweiterung installiert NVIDIA-GPU-Treiber auf Linux-VMs der N-Serie. Je nach VM-Familie installiert die Erweiterung CUDA- oder GRID-Treiber. Bei der Installation von NVIDIA Treibern mit dieser Erweiterung akzeptieren Sie die Bedingungen des [NVIDIA-Endbenutzer-Lizenzvertrags](https://go.microsoft.com/fwlink/?linkid=874330) und stimmen diesen zu. Während der Installation wird der virtuelle Computer möglicherweise neu gestartet, um die Treibereinrichtung abzuschließen.
 
-Anweisungen zur manuellen Installation der Treiber und der aktuellen unterstützten Versionen sind [hier](
-https://docs.microsoft.com/azure/virtual-machines/linux/n-series-driver-setup) verfügbar.
+Anweisungen zur manuellen Installation der Treiber und der aktuellen unterstützten Versionen sind [hier](../linux/n-series-driver-setup.md) verfügbar.
 Es ist auch eine Erweiterung zum Installieren von NVIDIA-GPU-Treibern auf [Windows-VMs der N-Serie](hpccompute-gpu-windows.md) verfügbar.
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -39,8 +39,8 @@ Diese Erweiterung unterstützt die folgenden Betriebssystem-Distributionen, abh�
 | Distribution | Version |
 |---|---|
 | Linux: Ubuntu | 16.04 LTS, 18.04 LTS |
-| Linux: Red Hat Enterprise Linux | 7.3, 7.4, 7.5, 7.6 |
-| Linux: CentOS | 7.3, 7.4, 7.5, 7.6 |
+| Linux: Red Hat Enterprise Linux | 7.3, 7.4, 7.5, 7.6, 7.7 |
+| Linux: CentOS | 7.3, 7.4, 7.5, 7.6, 7.7 |
 
 ### <a name="internet-connectivity"></a>Internetkonnektivität
 
@@ -62,7 +62,7 @@ Der folgende JSON-Code zeigt das Schema für die Erweiterung.
   "properties": {
     "publisher": "Microsoft.HpcCompute",
     "type": "NvidiaGpuDriverLinux",
-    "typeHandlerVersion": "1.2",
+    "typeHandlerVersion": "1.3",
     "autoUpgradeMinorVersion": true,
     "settings": {
     }
@@ -70,23 +70,23 @@ Der folgende JSON-Code zeigt das Schema für die Erweiterung.
 }
 ```
 
-### <a name="properties"></a>Properties
+### <a name="properties"></a>Eigenschaften
 
-| NAME | Wert/Beispiel | Datentyp |
+| Name | Wert/Beispiel | Datentyp |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
-| publisher | Microsoft.HpcCompute | string |
-| type | NvidiaGpuDriverLinux | string |
-| typeHandlerVersion | 1.2 | int |
+| publisher | Microsoft.HpcCompute | Zeichenfolge |
+| type | NvidiaGpuDriverLinux | Zeichenfolge |
+| typeHandlerVersion | 1.3 | INT |
 
 ### <a name="settings"></a>Einstellungen
 
 Alle Einstellungen sind optional. Das Standardverhalten ist, den Kernel nicht zu aktualisieren, wenn dies für die Treiberinstallation nicht erforderlich ist, den neuesten unterstützten Treiber und das CUDA-Toolkit (falls zutreffend) zu installieren.
 
-| NAME | BESCHREIBUNG | Standardwert | Gültige Werte | Datentyp |
+| Name | BESCHREIBUNG | Standardwert | Gültige Werte | Datentyp |
 | ---- | ---- | ---- | ---- | ---- |
 | updateOS | Aktualisieren des Kernel, auch wenn nicht für die Treiberinstallation erforderlich ist | false | true, false | boolean |
-| driverVersion | NV: GRID-Treiberversion<br> NC/ND: CUDA-Toolkitversion. Die neuesten Treiber für den ausgewählten CUDA werden automatisch installiert. | latest | GRID: „430.30“, „418.70“, „410.92“, „410.71“, „390.75“, „390.57“, „390.42“<br> CUDA: „10.0.130“, „9.2.88“, „9.1.85“ | string |
+| driverVersion | NV: GRID-Treiberversion<br> NC/ND: CUDA-Toolkitversion. Die neuesten Treiber für den ausgewählten CUDA werden automatisch installiert. | latest | GRID: „430.30“, „418.70“, „410.92“, „410.71“, „390.75“, „390.57“, „390.42“<br> CUDA: „10.0.130“, „9.2.88“, „9.1.85“ | Zeichenfolge |
 | installCUDA | UDA-Toolkit installieren. Nur relevant für virtuelle Computer der NC-/ND-Serie. | true | true, false | boolean |
 
 
@@ -97,7 +97,7 @@ Alle Einstellungen sind optional. Das Standardverhalten ist, den Kernel nicht zu
 
 Azure-VM-Erweiterungen können mithilfe von Azure Resource Manager-Vorlagen bereitgestellt werden. Vorlagen sind ideal, wenn Sie virtuelle Computer bereitstellen, die nach der Bereitstellung konfiguriert werden müssen.
 
-Die JSON-Konfiguration für eine VM-Erweiterung kann innerhalb der VM-Ressource geschachtelt oder im Stamm bzw. auf der obersten Ebene einer Resource Manager-JSON-Vorlage platziert werden. Die Platzierung der JSON-Konfiguration wirkt sich auf den Wert von Name und Typ der Ressource aus. Weitere Informationen finden Sie unter [Set name and type for child resources](../../azure-resource-manager/resource-manager-template-child-resource.md) (Festlegen von Name und Typ für untergeordnete Ressourcen). 
+Die JSON-Konfiguration für eine VM-Erweiterung kann innerhalb der VM-Ressource geschachtelt oder im Stamm bzw. auf der obersten Ebene einer Resource Manager-JSON-Vorlage platziert werden. Die Platzierung der JSON-Konfiguration wirkt sich auf den Wert von Name und Typ der Ressource aus. Weitere Informationen finden Sie unter [Set name and type for child resources](../../azure-resource-manager/templates/child-resource-name-type.md) (Festlegen von Name und Typ für untergeordnete Ressourcen). 
 
 Im folgenden Beispiel wird davon ausgegangen, dass die Erweiterung in der VM-Ressource geschachtelt ist. Beim Schachteln der Ressource für die Erweiterung wird der JSON-Code im `"resources": []`-Objekt des virtuellen Computers platziert.
 
@@ -113,7 +113,7 @@ Im folgenden Beispiel wird davon ausgegangen, dass die Erweiterung in der VM-Res
   "properties": {
     "publisher": "Microsoft.HpcCompute",
     "type": "NvidiaGpuDriverLinux",
-    "typeHandlerVersion": "1.2",
+    "typeHandlerVersion": "1.3",
     "autoUpgradeMinorVersion": true,
     "settings": {
     }
@@ -131,25 +131,36 @@ Set-AzVMExtension
     -Publisher "Microsoft.HpcCompute" `
     -ExtensionName "NvidiaGpuDriverLinux" `
     -ExtensionType "NvidiaGpuDriverLinux" `
-    -TypeHandlerVersion 1.2 `
+    -TypeHandlerVersion 1.3 `
     -SettingString '{ `
     }'
 ```
 
-### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
+### <a name="azure-cli"></a>Azure CLI
 
-Im folgenden Beispiel wird das obige Beispiel für Azure Resource Manager und PowerShell gespiegelt, und außerdem werden benutzerdefinierte Einstellungen als Beispiel für die Installation von Nicht-Standard-Treibern hinzugefügt. Insbesondere aktualisiert es den BS-Kernel und installiert einen bestimmten CUDA-Toolkit-Versionstreiber.
+Im folgenden Beispiel wird das obige Beispiel für Azure Resource Manager und PowerShell gespiegelt.
 
 ```azurecli
-az vm extension set `
-  --resource-group myResourceGroup `
-  --vm-name myVM `
-  --name NvidiaGpuDriverLinux `
-  --publisher Microsoft.HpcCompute `
-  --version 1.2 `
-  --settings '{ `
-    "updateOS": true, `
-    "driverVersion": "9.1.85", `
+az vm extension set \
+  --resource-group myResourceGroup \
+  --vm-name myVM \
+  --name NvidiaGpuDriverLinux \
+  --publisher Microsoft.HpcCompute \
+  --version 1.3 
+```
+
+Außerdem werden zwei optionale benutzerdefinierte Einstellungen als Beispiel für die Installation von Nicht-Standard-Treibern hinzugefügt. Insbesondere wird der Betriebssystemkernel auf die neueste Version aktualisiert und ein bestimmter CUDA-Toolkit-Versionstreiber installiert. Auch hier ist zu beachten, dass „--settings“ optional und Standard ist. Beachten Sie, dass die Aktualisierung des Kernels die Installationszeiten für Erweiterungen verlängern kann. Außerdem ist die Auswahl einer bestimmten (älteren) CUDA-Toolkit-Version möglicherweise nicht immer mit neueren Kernels kompatibel.
+
+```azurecli
+az vm extension set \
+  --resource-group myResourceGroup \
+  --vm-name myVM \
+  --name NvidiaGpuDriverLinux \
+  --publisher Microsoft.HpcCompute \
+  --version 1.3 \
+  --settings '{ \
+    "updateOS": true, \
+    "driverVersion": "10.0.130" \
   }'
 ```
 
@@ -167,7 +178,7 @@ Get-AzVMExtension -ResourceGroupName myResourceGroup -VMName myVM -Name myExtens
 az vm extension list --resource-group myResourceGroup --vm-name myVM -o table
 ```
 
-Die Ausgabe der Erweiterungsausführung wird in der folgenden Datei protokolliert:
+Die Ausgabe der Erweiterungsausführung wird in der folgenden Datei protokolliert. In dieser Datei finden Sie Informationen zum Nachverfolgen des Status von Installationen (mit langer Laufzeit) sowie zur Problembehandlung.
 
 ```bash
 /var/log/azure/nvidia-vmext-status
@@ -193,4 +204,4 @@ Sollten Sie beim Lesen dieses Artikels feststellen, dass Sie weitere Hilfe benö
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zu Erweiterungen finden Sie unter [Erweiterungen und Features für virtuelle Computer für Linux](features-linux.md).
 
-Weitere Informationen zu virtuellen Computern der N-Serie finden Sie unter [Für GPU optimierte VM-Größen](../linux/sizes-gpu.md).
+Weitere Informationen zu virtuellen Computern der N-Serie finden Sie unter [Für GPU optimierte VM-Größen](../sizes-gpu.md).

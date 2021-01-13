@@ -1,28 +1,19 @@
 ---
 title: Überwachen eines neuen AKS-Clusters (Azure Kubernetes Service) | Microsoft-Dokumentation
 description: Hier erfahren Sie, wie Sie die Überwachung eines neuen AKS-Clusters (Azure Kubernetes Service) mit Azure Monitor für ein Containerabonnement aktivieren.
-services: azure-monitor
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: ''
-ms.service: azure-monitor
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
 ms.date: 04/25/2019
-ms.author: magoedte
-ms.openlocfilehash: d73ab2d5cca4f20f954a0b0e972111d3f395c3c8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.custom: devx-track-terraform, devx-track-azurecli
+ms.openlocfilehash: 19c4a88cee8776136593b041e94dd14c7c9c28d6
+ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65080452"
+ms.lasthandoff: 10/27/2020
+ms.locfileid: "92735073"
 ---
 # <a name="enable-monitoring-of-a-new-azure-kubernetes-service-aks-cluster"></a>Aktivieren der Überwachung eines neuen AKS-Clusters (Azure Kubernetes Service)
 
-In diesem Artikel erfahren Sie, wie Sie Azure Monitor für Container einrichten, um verwaltete, in [Azure Kubernetes Service](https://docs.microsoft.com/azure/aks/) gehostete Kubernetes-Cluster zu überwachen, die Sie für die Bereitstellung in Ihrem Abonnement vorbereiten.
+In diesem Artikel erfahren Sie, wie Sie Azure Monitor für Container einrichten, um verwaltete, in [Azure Kubernetes Service](../../aks/index.yml) gehostete Kubernetes-Cluster zu überwachen, die Sie für die Bereitstellung in Ihrem Abonnement vorbereiten.
 
 Sie können die Überwachung eines AKS-Clusters mit einer der unterstützten Methoden aktivieren:
 
@@ -34,12 +25,11 @@ Sie können die Überwachung eines AKS-Clusters mit einer der unterstützten Met
 Um die Überwachung eines mit der Azure-Befehlszeilenschnittstelle erstellten neuen AKS-Clusters zu aktivieren, führen Sie die Schritte im Schnellstartartikel im Abschnitt [Erstellen eines AKS-Clusters](../../aks/kubernetes-walkthrough.md#create-aks-cluster) durch.  
 
 >[!NOTE]
->Wenn Sie die Azure CLI verwenden möchten, müssen Sie sie zuerst installieren und lokal verwenden. Sie benötigen Azure CLI 2.0.59 oder höher. Um Ihre Version zu ermitteln, führen Sie `az --version` aus. Informationen zur Installation und zum Upgrade von Azure CLI finden Sie unter [Installieren von Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli). 
->
+>Wenn Sie die Azure CLI verwenden möchten, müssen Sie sie zuerst installieren und lokal verwenden. Sie benötigen Azure CLI 2.0.74 oder höher. Um Ihre Version zu ermitteln, führen Sie `az --version` aus. Informationen zur Installation und zum Upgrade von Azure CLI finden Sie unter [Installieren von Azure CLI](/cli/azure/install-azure-cli). Wenn Sie Version 0.4.12 oder höher der CLI-Erweiterung „aks-preview“ installiert haben, entfernen Sie alle Änderungen, die Sie vorgenommen haben, um eine Vorschauerweiterung zu aktivieren, da diese das Standardverhalten der Azure CLI außer Kraft setzen kann. Der Grund dafür ist, dass AKS-Previewfunktionen in der Azure US Government-Cloud nicht verfügbar sind.
 
 ## <a name="enable-using-terraform"></a>Aktivieren mithilfe von Terraform
 
-Wenn Sie [einen neuen AKS-Cluster mit Terraform](../../terraform/terraform-create-k8s-cluster-with-tf-and-aks.md) bereitstellen, geben Sie die Argumente an, die im Profil [zum Erstellen eines Log Analytics-Arbeitsbereichs](https://www.terraform.io/docs/providers/azurerm/r/log_analytics_workspace.html) erforderlich sind, wenn Sie kein vorhandenes Argument angeben. 
+Wenn Sie [einen neuen AKS-Cluster mit Terraform](/azure/developer/terraform/create-k8s-cluster-with-tf-and-aks) bereitstellen, geben Sie die Argumente an, die im Profil [zum Erstellen eines Log Analytics-Arbeitsbereichs](https://www.terraform.io/docs/providers/azurerm/r/log_analytics_workspace.html) erforderlich sind, wenn Sie kein vorhandenes Argument angeben. 
 
 >[!NOTE]
 >Wenn Sie sich für Terraform entscheiden, müssen Sie den Terraform Azure RM-Anbieter, Version 1.17.0 oder höher, verwenden.
@@ -127,4 +117,5 @@ Nach wenigen Minuten ist die Ausführung des Befehls abgeschlossen, und es werde
 
 * Wenn beim Onboarding der Lösung Probleme auftreten, lesen Sie den [Leitfaden zur Problembehandlung](container-insights-troubleshoot.md)
 
-* Bei aktivierter Überwachung zum Erfassen der Integritätsmetriken für AKS-Clusterknoten wie auch für Pods stehen diese Integritätsmetriken im Azure-Portal zur Verfügung. Informationen zum Erlernen der Verwendung von Azure Monitor für Container finden Sie unter [Anzeigen der Integrität von Azure Kubernetes Service](container-insights-analyze.md).
+* Wenn die Überwachung aktiviert ist, um Integrität und Ressourcennutzung Ihres AKS-Clusters und der darauf ausgeführten Workloads zu erfassen, informieren Sie sich über die [Verwendung](container-insights-analyze.md) von Azure Monitor für Container.
+

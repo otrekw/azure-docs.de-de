@@ -1,57 +1,53 @@
 ---
-title: 'Tutorial: Azure Active Directory-Integration mit BeeLine | Microsoft-Dokumentation'
-description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und BeeLine konfigurieren.
+title: 'Tutorial: Azure Active Directory-Integration mit Beeline | Microsoft-Dokumentation'
+description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und Beeline konfigurieren.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 0726859d-1dac-44a0-810b-da56d89039ee
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/06/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 89c93b4f95817af85477978a2889887aeb0d98e2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4274596f7d53488a2ca5d0e0d3ab3021531907df
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67106375"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97674090"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-beeline"></a>Tutorial: Azure Active Directory-Integration mit BeeLine
+# <a name="tutorial-azure-active-directory-integration-with-beeline"></a>Tutorial: Azure Active Directory-Integration mit Beeline
 
-In diesem Tutorial erfahren Sie, wie Sie BeeLine in Azure Active Directory (Azure AD) integrieren.
-Die Integration von BeeLine in Azure AD bietet die folgenden Vorteile:
+In diesem Tutorial erfahren Sie, wie Sie Beeline in Azure Active Directory (Azure AD) integrieren.
+Die Integration von Beeline in Azure AD bietet die folgenden Vorteile:
 
-* Sie können in Azure AD steuern, wer Zugriff auf BeeLine hat.
-* Sie können es Ihren Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei BeeLine anzumelden (einmaliges Anmelden; Single Sign-On, SSO).
+* Sie können in Azure AD steuern, wer Zugriff auf Beeline hat.
+* Sie können es Ihren Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei Beeline anzumelden (einmaliges Anmelden; Single Sign-On, SSO).
 * Sie können Ihre Konten über das Azure-Portal an einem zentralen Ort verwalten.
 
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md).
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Um die Azure AD-Integration mit BeeLine zu konfigurieren, benötigen Sie Folgendes:
+Um die Azure AD-Integration mit Beeline konfigurieren zu können, benötigen Sie Folgendes:
 
 * Ein Azure AD-Abonnement Wenn Sie keine Azure AD-Umgebung besitzen, können Sie [hier](https://azure.microsoft.com/pricing/free-trial/) eine einmonatige Testversion anfordern.
-* Ein BeeLine-Abonnement, für das einmaliges Anmelden aktiviert ist
+* Ein Beeline-Abonnement, für das einmaliges Anmelden aktiviert ist
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
 
 In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
 
-* BeeLine unterstützt **IDP-initiiertes** SSO.
+* Beeline unterstützt **IDP-initiiertes** einmaliges Anmelden.
 
-## <a name="adding-beeline-from-the-gallery"></a>Hinzufügen von BeeLine aus dem Katalog
+## <a name="adding-beeline-from-the-gallery"></a>Hinzufügen von Beeline aus dem Katalog
 
-Zum Konfigurieren der Integration von BeeLine in Azure AD müssen Sie BeeLine aus dem Katalog zur Liste der verwalteten SaaS-Apps hinzufügen.
+Zum Konfigurieren der Integration von Beeline in Azure AD müssen Sie Beeline aus dem Katalog zur Liste der verwalteten SaaS-Apps hinzufügen.
 
-**Um BeeLine aus dem Katalog hinzuzufügen, führen Sie die folgenden Schritte aus:**
+**Um Beeline aus dem Katalog hinzuzufügen, führen Sie die folgenden Schritte aus:**
 
 1. Klicken Sie im linken Navigationsbereich des **[Azure-Portals](https://portal.azure.com)** auf das Symbol für **Azure Active Directory**.
 
@@ -65,31 +61,31 @@ Zum Konfigurieren der Integration von BeeLine in Azure AD müssen Sie BeeLine au
 
     ![Schaltfläche „Neue Anwendung“](common/add-new-app.png)
 
-4. Geben Sie im Suchfeld **BeeLine** ein, wählen Sie im Ergebnisbereich **BeeLine** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
+4. Geben Sie im Suchfeld **Beeline** ein, wählen Sie im Ergebnisbereich **Beeline** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
 
-     ![BeeLine in der Ergebnisliste](common/search-new-app.png)
+    ![Beeline in der Ergebnisliste](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurieren und Testen des einmaligen Anmeldens in Azure AD
 
-In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit BeeLine basierend auf einem Testbenutzer mit dem Namen **Britta Simon**.
-Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in BeeLine eingerichtet werden.
+In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit Beeline basierend auf einem Testbenutzer mit dem Namen **Britta Simon**.
+Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Beeline eingerichtet werden.
 
-Zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD bei BeeLine müssen Sie die folgenden Bausteine ausführen:
+Zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD bei Beeline müssen Sie die folgenden Bausteine ausführen:
 
 1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-single-sign-on)** , um Ihren Benutzern das Verwenden dieses Features zu ermöglichen.
-2. **[Konfigurieren des einmaligen Anmeldens für BeeLine](#configure-beeline-single-sign-on)** , um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren
+2. **[Konfigurieren des einmaligen Anmeldens für Beeline](#configure-beeline-single-sign-on)** , um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren
 3. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)** , um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
 4. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)** , um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
-5. **[Erstellen eines BeeLine-Testbenutzers](#create-beeline-test-user)** , um ein Gegenstück zu Britta Simon in BeeLine zu erhalten, das mit ihrer Darstellung in Azure AD verknüpft ist
+5. **[Erstellen eines Beeline-Testbenutzers](#create-beeline-test-user)** , um ein Gegenstück zu Britta Simon in Beeline zu erhalten, das mit ihrer Darstellung in Azure AD verknüpft ist
 6. **[Testen der einmaligen Anmeldung](#test-single-sign-on)** , um zu überprüfen, ob die Konfiguration funktioniert.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens in Azure AD
 
 In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-Portal.
 
-Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit BeeLine die folgenden Schritte aus:
+Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Beeline die folgenden Schritte aus:
 
-1. Wählen Sie im [Azure-Portal](https://portal.azure.com/) auf der Anwendungsintegrationsseite für **BeeLine** die Option **Einmaliges Anmelden** aus.
+1. Wählen Sie im [Azure-Portal](https://portal.azure.com/) auf der Anwendungsintegrationsseite für **Beeline** die Option **Einmaliges Anmelden** aus.
 
     ![Konfigurieren des Links für einmaliges Anmelden](common/select-sso.png)
 
@@ -105,19 +101,18 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit BeeLine 
 
     ![SSO-Informationen zur Domäne und zu den URLs für BeeLine](common/idp-intiated.png)
 
-    a. Geben Sie im Textfeld **Bezeichner** eine URL im folgenden Format ein: `https://projects.beeline.net/<instancename>`
+    a. Geben Sie im Textfeld **Bezeichner** eine URL im folgenden Format ein: `https://projects.beeline.com/<ProjInstanceName>`
 
     b. Geben Sie im Textfeld **Antwort-URL** eine URL im folgenden Format ein:
-    
-    | |
-    |--|
-    | `https://projects.beeline.net/<instancename>/SSO_External.ashx`|
-    | `https://projects.beeline.net/<companyname>/SSO_External.ashx` |
+
+    ```https
+    https://projects.beeline.com/<ProjInstanceName>/SSO_External.ashx
+    ```
 
     > [!NOTE]
-    > Hierbei handelt es sich um Beispielwerte. Aktualisieren Sie diese Werte mit dem eigentlichen Bezeichner und der Antwort-URL. Diese Werte erhalten Sie vom [Supportteam für den BeeLine-Client](https://www.beeline.com/contact-us/). Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
+    > Hierbei handelt es sich um Beispielwerte. Aktualisieren Sie diese Werte mit dem eigentlichen Bezeichner und der Antwort-URL. Diese Werte erhalten Sie vom [Supportteam für den Beeline-Client](https://www.beeline.com/support-beeline/). Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
 
-5. Die Beeline-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Wenden Sie sich zunächst an das [BeeLine-Supportteam](https://www.beeline.com/contact-us/), um die korrekte Benutzer-ID zu ermitteln, die in der Anwendung zugeordnet wird. Halten Sie sich zudem in Bezug auf das Attribut, das für diese Zuordnung verwendet werden soll, an die Anweisungen des [BeeLine-Supportteams](https://www.beeline.com/contact-us/). Sie können den Wert dieses Attributs auf der Registerkarte **Benutzerattribute** der Anwendung verwalten. Der folgende Screenshot zeigt ein Beispiel für diese Attributzuordnungen: Hier haben wir dem Anspruch **Benutzer-ID** das Attribut **userprincipalname** zugeordnet, das eine eindeutige Benutzer-ID bereitstellt. Diese wird in jeder erfolgreichen SAML-Antwort an die Beeline-Anwendung gesendet.
+5. Die Beeline-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Wenden Sie sich zunächst an das [Beeline-Supportteam](https://www.beeline.com/support-beeline/), um die korrekte Benutzer-ID zu ermitteln, die in der Anwendung zugeordnet wird. Halten Sie sich zudem in Bezug auf das Attribut, das für diese Zuordnung verwendet werden soll, an die Anweisungen des [Beeline-Supportteams](https://www.beeline.com/support-beeline/). Sie können den Wert dieses Attributs auf der Registerkarte **Benutzerattribute** der Anwendung verwalten. Der folgende Screenshot zeigt ein Beispiel für diese Attributzuordnungen: Hier haben wir dem Anspruch **Benutzer-ID** das Attribut **userprincipalname** zugeordnet, das eine eindeutige Benutzer-ID bereitstellt. Diese wird in jeder erfolgreichen SAML-Antwort an die Beeline-Anwendung gesendet.
 
     ![image](common/edit-attribute.png)
 
@@ -125,19 +120,14 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit BeeLine 
 
     ![Downloadlink für das Zertifikat](common/metadataxml.png)
 
-7. Kopieren Sie im Abschnitt **BeeLine einrichten** die entsprechenden URLs gemäß Ihren Anforderungen.
+7. Wählen Sie im [Azure-Portal](https://portal.azure.com/) auf der Anwendungsintegrationsseite für **Beeline** die Option **Eigenschaften** aus, und kopieren Sie die URL für den Benutzerzugriff.
 
-    ![Kopieren der Konfiguration-URLs](common/copy-configuration-urls.png)
+    ![Kopieren der URL für den Benutzerzugriff](media/beeline-tutorial/client-access-url.png)
 
-    a. Anmelde-URL
 
-    b. Azure AD-Bezeichner
+### <a name="configure-beeline-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens für Beeline
 
-    c. Abmelde-URL
-
-### <a name="configure-beeline-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens für BeeLine
-
-Zum Konfigurieren des einmaligen Anmeldens aufseiten von **BeeLine** müssen Sie die heruntergeladene **Verbundmetadaten-XML** und die kopierten URLs aus dem Azure-Portal an das [Supportteam von BeeLine](https://www.beeline.com/contact-us/) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
+Zum Konfigurieren des einmaligen Anmeldens aufseiten von **Beeline** müssen Sie die heruntergeladene **Verbundmetadaten-XML** und die kopierte URL für den Benutzerzugriff aus dem Azure-Portal an das [Supportteam von Beeline](https://www.beeline.com/support-beeline/) senden. Das Supportteam benötigt die Metadaten und die URL für den Benutzerzugriff, damit die SAML-SSO-Verbindung auf beiden Seiten ordnungsgemäß konfiguriert werden kann.
 
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 
@@ -156,25 +146,25 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
     ![Dialogfeld „Benutzer“](common/user-properties.png)
 
     a. Geben Sie im Feld **Name** den Namen **BrittaSimon** ein.
-  
+
     b. Geben Sie im Feld **Benutzername** Folgendes ein: **brittasimon\@ihreunternehmensdomäne.erweiterung**.  
     Zum Beispiel, BrittaSimon@contoso.com
 
     c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.
 
-    d. Klicken Sie auf **Create**.
+    d. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
-In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie ihr Zugriff auf BeeLine gewähren.
+In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie ihr Zugriff auf Beeline gewähren.
 
-1. Wählen Sie im Azure-Portal die Option **Unternehmensanwendungen** aus, und wählen Sie dann **Alle Anwendungen** und **BeeLine** aus.
+1. Wählen Sie im Azure-Portal die Option **Unternehmensanwendungen** aus, und wählen Sie dann **Alle Anwendungen** und **Beeline** aus.
 
     ![Blatt „Unternehmensanwendungen“](common/enterprise-applications.png)
 
-2. Wählen Sie in der Anwendungsliste den Eintrag **BeeLine**aus.
+2. Wählen Sie in der Anwendungsliste den Eintrag **Beeline** aus.
 
-    ![BeeLine-Link in der Anwendungsliste](common/all-applications.png)
+    ![Beeline-Link in der Anwendungsliste](common/all-applications.png)
 
 3. Wählen Sie im Menü auf der linken Seite **Benutzer und Gruppen** aus.
 
@@ -190,20 +180,20 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 7. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen**.
 
-### <a name="create-beeline-test-user"></a>Erstellen eines BeeLine-Testbenutzers
+### <a name="create-beeline-test-user"></a>Erstellen eines Beeline-Testbenutzers
 
-In diesem Abschnitt erstellen Sie in Beeline einen Benutzer mit dem Namen Britta Simon. In der BeeLine-Anwendung müssen alle Benutzer bereitgestellt werden, bevor das einmalige Anmelden verwendet werden kann. Wenden Sie sich daher an das [Supportteam von BeeLine](https://www.beeline.com/contact-us/), um sämtliche Benutzer in der Anwendung bereitzustellen.
+In diesem Abschnitt erstellen Sie in Beeline einen Benutzer mit dem Namen Britta Simon. In der Beeline-Anwendung müssen alle Benutzer bereitgestellt werden, bevor einmaliges Anmelden verwendet werden kann. Wenden Sie sich daher an das [Supportteam von Beeline](https://www.beeline.com/support-beeline/), um sämtliche Benutzer in der Anwendung bereitzustellen.
 
 ### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
-Wenn Sie im Zugriffsbereich auf die Kachel „BeeLine“ klicken, sollten Sie automatisch bei der BeeLine-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Wenn Sie im Zugriffsbereich auf die Kachel „Beeline“ klicken, sollten Sie automatisch bei der Beeline-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>Weitere Ressourcen
 
-- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](./tutorial-list.md)
 
-- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Was ist bedingter Zugriff?](../conditional-access/overview.md)

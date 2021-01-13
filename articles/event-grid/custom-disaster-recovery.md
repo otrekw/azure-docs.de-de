@@ -1,18 +1,15 @@
 ---
-title: Erstellen einer eigenen Notfallwiederherstellung für benutzerdefinierte Themen in Azure Event Grid | Microsoft-Dokumentation
-description: Aufrechterhalten der Verbindung von Azure Event Grid bei regionalen Ausfällen.
-services: event-grid
-author: banisadr
-ms.service: event-grid
+title: Notfallwiederherstellung für benutzerdefinierte Themen in Azure Event Grid
+description: In diesem Tutorial erfahren Sie Schritt für Schritt, wie Sie Ihre Ereignisarchitektur einrichten, um eine Wiederherstellung durchzuführen, wenn in einer Region Fehler für den Event Grid-Dienst auftreten.
 ms.topic: tutorial
-ms.date: 05/16/2019
-ms.author: babanisa
-ms.openlocfilehash: 4a069db7984a7b0b0bb4bb867dc510f73d8b1f75
-ms.sourcegitcommit: 009334a842d08b1c83ee183b5830092e067f4374
+ms.date: 07/07/2020
+ms.custom: devx-track-csharp
+ms.openlocfilehash: e37cb6a0679ee2e249de4ed8fa31c40d5082ea4a
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2019
-ms.locfileid: "66305075"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96020142"
 ---
 # <a name="build-your-own-disaster-recovery-for-custom-topics-in-event-grid"></a>Erstellen einer eigenen Notfallwiederherstellung für benutzerdefinierte Themen in Event Grid
 Die Notfallwiederherstellung konzentriert sich auf die Wiederherstellung nach einem schwerwiegenden Ausfall der Anwendungsfunktionalität. In diesem Tutorial wird Schritt für Schritt erläutert, wie Sie Ihre Ereignisarchitektur einrichten, um eine Wiederherstellung durchzuführen, wenn in einer bestimmten Region Fehler des Event Grid-Diensts auftreten.
@@ -30,7 +27,7 @@ Um die Tests zu vereinfachen, stellen Sie eine [vorgefertigte Web-App](https://g
 
 1. Wählen Sie **Deploy to Azure** (In Azure bereitstellen), um die Lösung für Ihr Abonnement bereitzustellen. Geben Sie im Azure-Portal Werte für die Parameter an.
 
-   <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"/></a>
+   <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png" alt="Button to Deploy to Aquent." /></a>
 
 1. Die Bereitstellung kann einige Minuten dauern. Nach erfolgreichem Abschluss der Bereitstellung können Sie Ihre Web-App anzeigen und sich vergewissern, dass sie ausgeführt wird. Navigieren Sie hierzu in einem Webbrowser zu `https://<your-site-name>.azurewebsites.net`.
 Notieren Sie diese URL. Sie benötigen sie später noch.
@@ -75,7 +72,7 @@ Erstellen Sie zunächst zwei Event Grid-Themen. Diese Themen dienen als Ihr prim
    * Wählen Sie den Endpunkttyp „Webhook“ aus.
    * Legen Sie den Endpunkt auf die Ereignis-URL Ihres Ereignisempfängers fest. Die URL sollte in etwa wie folgt aussehen: `https://<your-event-reciever>.azurewebsites.net/api/updates`
 
-     ![Primäres Event Grid-Ereignisabonnement](./media/custom-disaster-recovery/create-primary-es.png)
+     ![Screenshot, der die Seite „Ereignisabonnement erstellen: Basic“ mit hervorgehobenen Werten für „Name“, „Endpunkttyp“ und „Endpunkt“ zeigt.](./media/custom-disaster-recovery/create-primary-es.png)
 
 1. Wiederholen Sie die obigen Schritte zum Erstellen des sekundären Themas und Abonnements. Ersetzen Sie dabei das Suffix „-primär“ durch „-sekundär“, um die Nachverfolgung zu erleichtern. Denken Sie daran, für dieses Abonnement eine andere Azure-Region auszuwählen. Sie können eine beliebige Region auswählen, es wird jedoch empfohlen, [Azure-Regionspaare](../best-practices-availability-paired-regions.md) zu verwenden. Durch das Platzieren des sekundären Themas und Abonnements in einer anderen Region wird sichergestellt, dass Ihre neuen Ereignisse auch bei einem Ausfall der primären Region weitergeleitet werden.
 
@@ -211,4 +208,4 @@ Ebenso können Sie basierend auf Ihren spezifischen Anforderungen eine Failbackl
 
 - Erfahren Sie, wie Sie [Ereignisse an einem HTTP-Endpunkt empfangen](./receive-events.md).
 - Entdecken Sie, wie Sie [Ereignisse an Hybrid Connections weiterleiten](./custom-event-to-hybrid-connection.md).
-- Informieren Sie sich über die [Notfallwiederherstellung mit Azure DNS und Traffic Manager](https://docs.microsoft.com/azure/networking/disaster-recovery-dns-traffic-manager).
+- Informieren Sie sich über die [Notfallwiederherstellung mit Azure DNS und Traffic Manager](../networking/disaster-recovery-dns-traffic-manager.md).

@@ -1,33 +1,26 @@
 ---
-title: Einbinden eines virtuellen Dateisystems in einen Pool – Azure Batch | Microsoft-Dokumentation
+title: Einbinden eines virtuellen Dateisystems in einen Pool
 description: Erfahren Sie, wie Sie ein virtuelles Dateisystem in einen Batch-Pool einbinden.
-services: batch
-documentationcenter: ''
-author: laurenhughes
-manager: gwallace
-ms.service: batch
-ms.workload: big-compute
-ms.tgt_pltfrm: na
-ms.topic: article
+ms.topic: how-to
+ms.custom: devx-track-csharp
 ms.date: 08/13/2019
-ms.author: lahugh
-ms.openlocfilehash: 1c990c864f9daa98460832166b31f43fece1ed15
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: df03275fdeea88df1a2f2b6e2cda55021497cdf7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70093853"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89145483"
 ---
 # <a name="mount-a-virtual-file-system-on-a-batch-pool"></a>Einbinden eines virtuellen Dateisystems in einen Batch-Pool
 
 Azure Batch unterstützt jetzt die Einbindung von Cloudspeicher oder eines externen Dateisystems auf Windows- oder Linux-Computeknoten in Ihren Batch-Pools. Wenn ein Computeknoten einem Pool beitritt, wird das virtuelle Dateisystem eingebunden und als lokales Laufwerk auf diesem Knoten behandelt. Sie können Dateisysteme wie Azure Files, Azure Blob Storage, Network File System (NFS) einschließlich eines [Avere vFXT-Caches](../avere-vfxt/avere-vfxt-overview.md) oder Common Internet File System (CIFS) einbinden.
 
-In diesem Artikel erfahren Sie, wie Sie ein virtuelles Dateisystem mithilfe der [Azure Batch-Verwaltungsbibliothek für .NET](https://docs.microsoft.com/dotnet/api/overview/azure/batch?view=azure-dotnet) in einen Pool von Computeknoten einbinden.
+In diesem Artikel erfahren Sie, wie Sie ein virtuelles Dateisystem mithilfe der [Azure Batch-Verwaltungsbibliothek für .NET](/dotnet/api/overview/azure/batch) in einen Pool von Computeknoten einbinden.
 
 > [!NOTE]
 > Das Einbinden eines virtuellen Dateisystems wird in Batch-Pools unterstützt, die am oder nach dem 19.08.2019 erstellt wurden. Von vor dem 19.08.2019 erstellten Batch-Pools wird diese Funktion nicht unterstützt.
 > 
-> Die APIs für die Einbindung von Dateisystemen auf einem Computeknoten sind Teil der [Batch .NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch?view=azure-dotnet)-Bibliothek.
+> Die APIs für die Einbindung von Dateisystemen auf einem Computeknoten sind Teil der [Batch .NET](/dotnet/api/microsoft.azure.batch)-Bibliothek.
 
 ## <a name="benefits-of-mounting-on-a-pool"></a>Vorteile der Einbindung in einen Pool
 
@@ -72,10 +65,10 @@ new PoolAddParameter
         {
             AzureFileShareConfiguration = new AzureFileShareConfiguration
             {
-                AccountName = "AccountName",
-                AzureFileUrl = "AzureFileShareUrl",
-                AccountKey = "StorageAccountKey",
-                RelativeMountPath = "RelativeMountPath",
+                AccountName = "{storage-account-name}",
+                AzureFileUrl = "https://{storage-account-name}.file.core.windows.net/{file-share-name}",
+                AccountKey = "{storage-account-key}",
+                RelativeMountPath = "S",
                 MountOptions = "-o vers=3.0,dir_mode=0777,file_mode=0777,sec=ntlmssp"
             },
         }
@@ -85,12 +78,9 @@ new PoolAddParameter
 
 ### <a name="azure-blob-file-system"></a>Azure-Blobdateisystem
 
-Eine andere Option ist die Verwendung von Azure-Blobspeicher über [blobfuse](../storage/blobs/storage-how-to-mount-container-linux.md). Zum Einbinden eines Blobdateisystems ist ein `AccountKey` oder `SasKey` für Ihr Speicherkonto erforderlich. Weitere Informationen zum Abrufen dieser Schlüssel finden Sie unter [Anzeigen von Kontoschlüsseln](../storage/common/storage-account-manage.md#view-account-keys-and-connection-string) oder [Gewähren von eingeschränktem Zugriff auf Azure Storage-Ressourcen mithilfe von SAS (Shared Access Signature)](../storage/common/storage-dotnet-shared-access-signature-part-1.md). Weitere Informationen zur Verwendung von blobfuse finden Sie in den [häufig gestellten Fragen zur Problembehandlung](https://github.com/Azure/azure-storage-fuse/wiki/3.-Troubleshoot-FAQ) bei blobfuse. Um Standardzugriff auf das über blobfuse eingebundene Verzeichnis zu erhalten, müssen Sie die Aufgabe als **Administrator** ausführen. Blobfuse bindet das Verzeichnis im Benutzerbereich ein, und bei der Poolerstellung wird es als Stamm eingebunden. Unter Linux sind alle **Administratoraufgaben** stammbasiert. Eine Beschreibung aller Optionen für das FUSE-Modul finden Sie auf der [FUSE-Referenzseite](http://manpages.ubuntu.com/manpages/xenial/man8/mount.fuse.8.html).
+Eine andere Option ist die Verwendung von Azure-Blobspeicher über [blobfuse](../storage/blobs/storage-how-to-mount-container-linux.md). Zum Einbinden eines Blobdateisystems ist ein `AccountKey` oder `SasKey` für Ihr Speicherkonto erforderlich. Weitere Informationen zum Abrufen dieser Schlüssel finden Sie unter [Verwalten von Speicherkonto-Zugriffsschlüsseln](../storage/common/storage-account-keys-manage.md) oder [Verwenden von SAS (Shared Access Signatures)](../storage/common/storage-sas-overview.md). Weitere Informationen zur Verwendung von blobfuse finden Sie in den [häufig gestellten Fragen zur Problembehandlung](https://github.com/Azure/azure-storage-fuse/wiki/3.-Troubleshoot-FAQ) bei blobfuse. Um Standardzugriff auf das über blobfuse eingebundene Verzeichnis zu erhalten, müssen Sie die Aufgabe als **Administrator** ausführen. Blobfuse bindet das Verzeichnis im Benutzerbereich ein, und bei der Poolerstellung wird es als Stamm eingebunden. Unter Linux sind alle **Administratoraufgaben** stammbasiert. Eine Beschreibung aller Optionen für das FUSE-Modul finden Sie auf der [FUSE-Referenzseite](https://manpages.ubuntu.com/manpages/xenial/man8/mount.fuse.8.html).
 
 Zusätzlich zum Leitfaden zur Problembehandlung stellen GitHub-Issues im blobfuse-Repository eine hilfreiche Möglichkeit dar, um sich über aktuelle blobfuse-Probleme und -Lösungen zu informieren. Weitere Informationen finden Sie auf der GitHub-Seite zu blobfuse auf der Registerkarte [„Issues“](https://github.com/Azure/azure-storage-fuse/issues).
-
-> [!NOTE]
-> Blobfuse wird unter Debian derzeit nicht unterstützt. Weitere Informationen finden Sie unter [Unterstützte SKUs](#supported-skus).
 
 ```csharp
 new PoolAddParameter
@@ -139,7 +129,7 @@ new PoolAddParameter
 
 ### <a name="common-internet-file-system"></a>Common Internet File System
 
-Common Internet File System (CIFS) kann auch auf Poolknoten eingebunden werden, sodass Azure Batch-Knoten problemlos auf herkömmliche Dateisysteme zugreifen können. CIFS ist ein Dateifreigabeprotokoll, das einen offenen und plattformübergreifenden Mechanismus zum Anfordern von Netzwerkserverdateien und -diensten bietet. CIFS basiert auf der erweiterten Version des Server Message Block-Protokolls (SMB) von Microsoft für die Internet- und Intranetdateifreigabe und wird zum Einbinden externer Dateisysteme auf Windows-Knoten verwendet. Weitere Informationen zu SMB finden Sie unter [Dateiserver und SMB](https://docs.microsoft.com/windows-server/storage/file-server/file-server-smb-overview).
+Common Internet File System (CIFS) kann auch auf Poolknoten eingebunden werden, sodass Azure Batch-Knoten problemlos auf herkömmliche Dateisysteme zugreifen können. CIFS ist ein Dateifreigabeprotokoll, das einen offenen und plattformübergreifenden Mechanismus zum Anfordern von Netzwerkserverdateien und -diensten bietet. CIFS basiert auf der erweiterten Version des Server Message Block-Protokolls (SMB) von Microsoft für die Internet- und Intranetdateifreigabe und wird zum Einbinden externer Dateisysteme auf Windows-Knoten verwendet. Weitere Informationen zu SMB finden Sie unter [Dateiserver und SMB](/windows-server/storage/file-server/file-server-smb-overview).
 
 ```csharp
 new PoolAddParameter
@@ -164,7 +154,7 @@ new PoolAddParameter
 
 ## <a name="diagnose-mount-errors"></a>Diagnostizieren von Einbindungsfehlern
 
-Wenn bei einer Einbindungskonfiguration ein Fehler auftritt, führt dies zu einem Fehler des Computeknotens im Pool, und der Knoten weist dann den Status „Nicht verwendbar“ auf. Überprüfen Sie zum Diagnostizieren eines Einbindungskonfigurationsfehlers die [`ComputeNodeError`](https://docs.microsoft.com/rest/api/batchservice/computenode/get#computenodeerror)-Eigenschaft auf Details zum Fehler.
+Wenn bei einer Einbindungskonfiguration ein Fehler auftritt, führt dies zu einem Fehler des Computeknotens im Pool, und der Knoten weist dann den Status „Nicht verwendbar“ auf. Überprüfen Sie zum Diagnostizieren eines Einbindungskonfigurationsfehlers die [`ComputeNodeError`](/rest/api/batchservice/computenode/get#computenodeerror)-Eigenschaft auf Details zum Fehler.
 
 Wenn Sie die Protokolldateien für das Debuggen erhalten möchten, verwenden Sie [OutputFiles](batch-task-output-files.md), um die Protokolldateien (`*.log`) hochzuladen. Die Protokolldateien (`*.log`) enthalten Informationen zur Dateisystemeinbindung am Speicherort `AZ_BATCH_NODE_MOUNTS_DIR`. Einbindungsprotokolldateien weisen für jede Einbindung das Format `<type>-<mountDirOrDrive>.log` auf. Die zugehörige Einbindungsprotokolldatei einer `cifs`-Einbindung im Einbindungsverzeichnis `test` heißt beispielsweise `cifs-test.log`.
 
@@ -174,7 +164,8 @@ Wenn Sie die Protokolldateien für das Debuggen erhalten möchten, verwenden Sie
 |---|---|---|---|---|---|---|
 | Batch | rendering-centos73 | Rendering | :heavy_check_mark: <br>Hinweis: Kompatibel mit CentOS 7.7</br>| :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | Canonical | UbuntuServer | 16.04-LTS, 18.04-LTS | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| Credativ | Debian | 8, 9 | :heavy_check_mark: | :x: | :heavy_check_mark: | :heavy_check_mark: |
+| Credativ | Debian | 8| :heavy_check_mark: | :x: | :heavy_check_mark: | :heavy_check_mark: |
+| Credativ | Debian | 9 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | microsoft-ads | linux-data-science-vm | linuxdsvm | :heavy_check_mark: <br>Hinweis: Kompatibel mit CentOS 7.4 </br> | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | microsoft-azure-batch | centos-container | 7.6 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | microsoft-azure-batch | centos-container-rdma | 7.4 | :heavy_check_mark: <br>Hinweis: Unterstützt A_8-/9-Speicher</br> | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
@@ -189,5 +180,5 @@ Wenn Sie die Protokolldateien für das Debuggen erhalten möchten, verwenden Sie
 
 - Erfahren Sie mehr über das Einbinden einer Azure Files-Freigabe mit [Windows](../storage/files/storage-how-to-use-files-windows.md) oder [Linux](../storage/files/storage-how-to-use-files-linux.md).
 - Erfahren Sie mehr über das Verwenden und Einbinden virtueller [blobfuse](https://github.com/Azure/azure-storage-fuse)-Dateisysteme.
-- Lesen Sie die [Übersicht über Network File System](https://docs.microsoft.com/windows-server/storage/nfs/nfs-overview), um mehr über NFS und die zugehörigen Anwendungen zu erfahren.
-- Lesen Sie die [Übersicht über das Microsoft-SMB-Protokoll und das CIFS-Protokoll](https://docs.microsoft.com/windows/desktop/fileio/microsoft-smb-protocol-and-cifs-protocol-overview), um mehr über CIFS zu erfahren.
+- Lesen Sie die [Übersicht über Network File System](/windows-server/storage/nfs/nfs-overview), um mehr über NFS und die zugehörigen Anwendungen zu erfahren.
+- Lesen Sie die [Übersicht über das Microsoft-SMB-Protokoll und das CIFS-Protokoll](/windows/desktop/fileio/microsoft-smb-protocol-and-cifs-protocol-overview), um mehr über CIFS zu erfahren.

@@ -1,27 +1,27 @@
 ---
 title: Erstellen und Bereitstellen eines Clouddiensts| Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie einen Clouddienst über das Azure-Portal erstellen und bereitstellen.
+description: Erfahren Sie, wie Sie die Schnellerfassungsmethode zum Erstellen eines Clouddiensts und „Hochladen“ verwenden, um ein Clouddienstpaket in Azure hochzuladen und bereitzustellen.
 services: cloud-services
 documentationcenter: ''
-author: georgewallace
+author: tgore03
 ms.service: cloud-services
 ms.topic: article
 ms.date: 05/18/2017
-ms.author: gwallace
-ms.openlocfilehash: 3d5b3f291eb42edc1f7999f33cf6c0879c33bcf4
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.author: tagore
+ms.openlocfilehash: 66938975784f1de2abdc0ac22e62aaca82279f86
+ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359129"
+ms.lasthandoff: 10/18/2020
+ms.locfileid: "92164163"
 ---
 # <a name="how-to-create-and-deploy-a-cloud-service"></a>Erstellen und Bereitstellen eines Clouddiensts
-Das Azure-Portal bietet zwei Methoden zum Erstellen und Bereitstellen eines Clouddiensts: *Schnellerfassung* und *Benutzerdefiniert erstellen*.
+Das Azure-Portal bietet zwei Methoden zum Erstellen und Bereitstellen eines Clouddiensts: *Schnellerfassung* und *Benutzerdefiniert erstellen* .
 
 In diesem Thema wird erläutert, wie Sie die Schnellerfassungsmethode zum Erstellen eines neuen Clouddiensts und dann **Hochladen** verwenden, um ein Clouddienstpaket in Azure hochzuladen und bereitzustellen. Wenn Sie diese Methode verwenden, werden im Azure-Portal praktische Links zum Erfüllen aller Anforderungen zur Verfügung gestellt. Wenn Sie Ihren Cloud-Dienst bei der Erstellung auch bereitstellen möchten, können Sie beides mithilfe von Benutzerdefinierte Erstellung durchführen.
 
 > [!NOTE]
-> Wenn Sie Ihren Clouddienst aus Azure DevOps veröffentlichen möchten, verwenden Sie die Schnellerstellung. Richten Sie die Azure DevOps-Veröffentlichung dann über den Azure-Schnellstart oder das Dashboard ein. Weitere Informationen finden Sie unter [Continuous Delivery für Azure mithilfe von Azure DevOps][TFSTutorialForCloudService] oder in der Hilfe zur Seite **Schnellstart**.
+> Wenn Sie Ihren Clouddienst aus Azure DevOps veröffentlichen möchten, verwenden Sie die Schnellerstellung. Richten Sie die Azure DevOps-Veröffentlichung dann über den Azure-Schnellstart oder das Dashboard ein. Weitere Informationen finden Sie unter [Continuous Delivery für Azure mithilfe von Azure DevOps][TFSTutorialForCloudService] oder in der Hilfe zur Seite **Schnellstart** .
 >
 >
 
@@ -42,7 +42,7 @@ Bevor Sie einen Clouddienst bereitstellen können, müssen Sie das Clouddienstpa
 
 Drei Clouddienstfunktionen benötigen vor dem Export eines Dienstpakets spezielle Konfigurationen:
 
-* Wenn Sie einen Clouddienst bereitstellen möchten, der Secure Sockets Layer (SSL) für die Datenverschlüsselung verwendet, [konfigurieren Sie die Anwendung für SSL](cloud-services-configure-ssl-certificate-portal.md#modify) .
+* Wenn Sie einen Clouddienst bereitstellen möchten, der Transport Layer Security (TLS) verwendet, das zuvor als „Secure Sockets Layer“ (SSL) bezeichnet wurde, müssen Sie zur Datenverschlüsselung [Ihre Anwendung für TLS konfigurieren](cloud-services-configure-ssl-certificate-portal.md#modify).
 * Wenn Sie Remotedesktopverbindungen zu Rolleninstanzen konfigurieren möchten, [konfigurieren Sie die Rollen](cloud-services-role-enable-remote-desktop-new-portal.md) für Remotedesktop.
 * Wenn Sie die ausführliche Überwachung für den Clouddienst konfigurieren möchten, aktivieren Sie für den Clouddienst die Azure-Diagnose. *Minimale Überwachung* (die Standardüberwachungsstufe) verwendet Leistungsindikatoren, die aus den Hostbetriebssystemen für Rolleninstanzen (virtuelle Computer) erfasst wurden. *ausführlichen Überwachung* werden zusätzliche Kennzahlen basierend auf Leistungsdaten innerhalb der Rolleninstanzen erfasst, um eine genauere Analyse von Problemen zu ermöglichen, die während der Anwendungsverarbeitung auftreten. Informationen zum Aktivieren der Azure-Diagnose finden Sie unter [Aktivieren der Diagnose in Azure](cloud-services-dotnet-diagnostics.md).
 
@@ -54,40 +54,40 @@ Sie müssen das [Dienstpaket erstellen](cloud-services-model-and-package.md#serv
 
 ## <a name="create-and-deploy"></a>Erstellen und Bereitstellen
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)an.
-2. Klicken Sie auf **Ressource erstellen > Compute**, scrollen Sie nach unten zu **Clouddienst**, und klicken Sie darauf.
+2. Klicken Sie auf **Ressource erstellen > Compute** , scrollen Sie nach unten zu **Clouddienst** , und klicken Sie darauf.
 
-    ![Clouddienst veröffentlichen](media/cloud-services-how-to-create-deploy-portal/create-cloud-service.png)
+    ![Screenshot: Hervorgehobene Option „Clouddienst“ unter „Ressource erstellen“ > „Compute“](media/cloud-services-how-to-create-deploy-portal/create-cloud-service.png)
 3. Geben Sie im Bereich für den neuen **Clouddienst** einen Wert für **DNS-Name** ein.
 4. Erstellen Sie eine neue **Ressourcengruppe** , oder wählen Sie eine vorhandene Ressourcengruppe aus.
-5. Wählen Sie einen **Speicherort**aus.
-6. Klicken Sie auf **Paket**. Der Bereich **Paket hochladen** wird geöffnet. Füllen Sie die erforderlichen Felder aus. Wenn eine der Rollen eine einzelne Instanz enthält, stellen Sie sicher, dass **Auch dann bereitstellen, wenn für mindestens eine Rolle nur eine Instanz vorhanden ist.** aktiviert ist.
+5. Wählen Sie einen **Speicherort** aus.
+6. Klicken Sie auf **Paket** . Der Bereich **Paket hochladen** wird geöffnet. Füllen Sie die erforderlichen Felder aus. Wenn eine der Rollen eine einzelne Instanz enthält, stellen Sie sicher, dass **Auch dann bereitstellen, wenn für mindestens eine Rolle nur eine Instanz vorhanden ist.** aktiviert ist.
 7. Stellen Sie sicher, dass **Bereitstellung starten** aktiviert ist.
-8. Klicken Sie auf **OK**, um den Bereich **Paket hochladen** zu schließen.
-9. Wenn Sie keine Zertifikate hinzufügen möchten, klicken Sie auf **Erstellen**.
+8. Klicken Sie auf **OK** , um den Bereich **Paket hochladen** zu schließen.
+9. Wenn Sie keine Zertifikate hinzufügen möchten, klicken Sie auf **Erstellen** .
 
     ![Clouddienst veröffentlichen](media/cloud-services-how-to-create-deploy-portal/select-package.png)
 
 ## <a name="upload-a-certificate"></a>Hochladen eines Zertifikats
 Wenn Ihr Bereitstellungspaket [für die Verwendung von Zertifikaten konfiguriert](cloud-services-configure-ssl-certificate-portal.md#modify)wurde, können Sie das Zertifikat jetzt hochladen.
 
-1. Wählen Sie **Zertifikate** aus. Wählen Sie im Bereich **Zertifikate hinzufügen** die PFX-Datei mit dem SSL-Zertifikat aus, und geben Sie das **Kennwort** für das Zertifikat ein.
-2. Klicken Sie auf **Zertifikat anfügen** und anschließend im Bereich **Zertifikate hinzufügen** auf **OK**.
-3. Klicken Sie im Bereich **Clouddienst** auf **Erstellen**. Wenn sich die Bereitstellung im Status **Ready** befindet, können Sie mit den nächsten Schritten fortfahren.
+1. Wählen Sie **Zertifikate** und im Bereich **Zertifikate hinzufügen** die PFX-Datei mit dem TLS/SSL-Zertifikat aus. Geben Sie dann das **Kennwort** für das Zertifikat ein.
+2. Klicken Sie auf **Zertifikat anfügen** und anschließend im Bereich **Zertifikate hinzufügen** auf **OK** .
+3. Klicken Sie im Bereich **Clouddienst** auf **Erstellen** . Wenn sich die Bereitstellung im Status **Ready** befindet, können Sie mit den nächsten Schritten fortfahren.
 
-    ![Clouddienst veröffentlichen](media/cloud-services-how-to-create-deploy-portal/attach-cert.png)
+    ![Screenshot, auf dem der Vorgang zum Hochladen eines Zertifikats hervorgehoben ist](media/cloud-services-how-to-create-deploy-portal/attach-cert.png)
 
 ## <a name="verify-your-deployment-completed-successfully"></a>Überprüfen, ob Ihre Bereitstellung erfolgreich abgeschlossen wurde
 1. Klicken Sie auf die Instanz des Clouddiensts.
 
-    Der Status sollte anzeigen, dass der Dienst **Ausgeführt**wird.
-2. Klicken Sie unter **Essentials** auf die **Website-URL**, um den Clouddienst in einem Webbrowser zu öffnen.
+    Der Status sollte anzeigen, dass der Dienst **Ausgeführt** wird.
+2. Klicken Sie unter **Essentials** auf die **Website-URL** , um den Clouddienst in einem Webbrowser zu öffnen.
 
     ![CloudServices_QuickGlance](./media/cloud-services-how-to-create-deploy-portal/running.png)
 
-[TFSTutorialForCloudService]: https://go.microsoft.com/fwlink/?LinkID=251796
+[TFSTutorialForCloudService]: ./cloud-services-choose-me.md
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Allgemeine Konfiguration Ihres Clouddiensts](cloud-services-how-to-configure-portal.md)
 * [Konfigurieren eines benutzerdefinierten Domänennamens](cloud-services-custom-domain-name-portal.md)
 * [Verwalten Ihres Clouddiensts](cloud-services-how-to-manage-portal.md)
-* Konfigurieren von [SSL-Zertifikaten](cloud-services-configure-ssl-certificate-portal.md)
+* Konfigurieren von [TLS/SSL-Zertifikaten](cloud-services-configure-ssl-certificate-portal.md)

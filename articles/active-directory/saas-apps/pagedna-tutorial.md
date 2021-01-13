@@ -2,26 +2,21 @@
 title: 'Tutorial: Azure Active Directory-Integration mit PageDNA | Microsoft-Dokumentation'
 description: Hier erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und PageDNA konfigurieren.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: c8765864-45f4-48c2-9d86-986a4aa431e4
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/03/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3c7f8c8efcad0a07a3d3a56925866b10d94f82ed
-ms.sourcegitcommit: 920ad23613a9504212aac2bfbd24a7c3de15d549
+ms.openlocfilehash: e1ccd337851f8242526362675a11280e33584082
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "68227476"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95993923"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-pagedna"></a>Tutorial: Azure Active Directory-Integration mit PageDNA
 
@@ -33,7 +28,7 @@ Die Integration von PageDNA in Azure AD bietet die folgenden Vorteile:
 * Sie können es Ihren Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei PageDNA anzumelden (einmaliges Anmelden; Single Sign-On, SSO).
 * Sie können Ihre Konten an einem zentralen Ort verwalten: im Azure-Portal.
 
-Details zur Integration von SaaS-Apps (Software-as-a-Service) in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Details zur Integration von SaaS-Apps (Software-as-a-Service) in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -110,21 +105,19 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD bei PageDNA 
 
     1. Geben Sie im Feld **Anmelde-URL** eine URL nach einem der folgenden Muster ein:
 
-        ||
-        |--|
-        | `https://stores.pagedna.com/<your site>` |
-        | `https://<your domain>` |
-        | `https://<your domain>/<your site>` |
-        | `https://www.nationsprint.com/<your site>` |
-        | |
+        ```https
+        https://stores.pagedna.com/<your site>
+        https://<your domain>
+        https://<your domain>/<your site>
+        https://www.nationsprint.com/<your site>
+        ```
 
     1. Geben Sie im Feld **Bezeichner (Entitäts-ID)** eine URL nach einem der folgenden Muster ein:
 
-        ||
-        |--|
-        | `https://stores.pagedna.com/<your site>/saml2ep.cgi` |
-        | `https://www.nationsprint.com/<your site>/saml2ep.cgi` |
-        | |
+        ```https
+        https://stores.pagedna.com/<your site>/saml2ep.cgi
+        https://www.nationsprint.com/<your site>/saml2ep.cgi
+        ```
 
     > [!NOTE]
     > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächliche Anmelde-URL und den tatsächlichen Bezeichner. Diese Werte erhalten Sie vom [PageDNA-Supportteam](mailto:success@pagedna.com). Sie können sich auch die Muster im Bereich **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
@@ -163,7 +156,7 @@ In diesem Abschnitt erstellen Sie im Azure-Portal einen Testbenutzer namens Brit
 
     1. Geben Sie in das Feld **Name** den Namen **BrittaSimon** ein.
   
-    1. Geben Sie im Feld **Benutzername** den **brittasimon\@\<ihreunternehmensdomäne>.\<erweiterung>** ein. Beispiel: **BrittaSimon\@contoso.com**.
+    1. Geben Sie in das Feld **Benutzername** den Namen **BrittaSimon@\@\<yourcompanydomain>.\<extension>** ein. Beispiel: **BrittaSimon\@contoso.com**.
 
     1. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert aus dem Feld **Kennwort**.
 
@@ -203,13 +196,12 @@ Eine Benutzerin namens „Britta Simon“ wird jetzt in PageDNA erstellt. Sie m�
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden mithilfe des Portals „Meine Apps“.
 
-Bei der Auswahl von **PageDNA** im Portal „Meine Apps“ sollten Sie automatisch beim PageDNA-Abonnement angemeldet werden, für das Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Portal „Meine Apps“ finden Sie unter [Zugreifen auf und Verwenden von Apps im Portal „Meine Apps“](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Bei der Auswahl von **PageDNA** im Portal „Meine Apps“ sollten Sie automatisch beim PageDNA-Abonnement angemeldet werden, für das Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Portal „Meine Apps“ finden Sie unter [Zugreifen auf und Verwenden von Apps im Portal „Meine Apps“](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
-* [Liste der Tutorials zur Integration von SaaS-Anwendungen in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+* [Liste der Tutorials zur Integration von SaaS-Anwendungen in Azure Active Directory](./tutorial-list.md)
 
-* [Einmaliges Anmelden bei Anwendungen in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+* [Einmaliges Anmelden bei Anwendungen in Azure Active Directory](../manage-apps/what-is-single-sign-on.md)
 
-* [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+* [Was ist bedingter Zugriff?](../conditional-access/overview.md)

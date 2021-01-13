@@ -2,17 +2,17 @@
 title: Deaktivieren von Netzwerkrichtlinien für private Endpunkte in Azure
 description: Erfahren Sie, wie Sie Netzwerkrichtlinien für private Endpunkte deaktivieren.
 services: private-link
-author: KumudD
+author: malopMSFT
 ms.service: private-link
-ms.topic: article
+ms.topic: how-to
 ms.date: 09/16/2019
-ms.author: kumud
-ms.openlocfilehash: b510b697fbf8b53e9e55e96f60b27967f90893f1
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.author: allensu
+ms.openlocfilehash: a4c04033f3fb5ff523f0d80bb6c978955f4c9ec2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71104621"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "84737511"
 ---
 # <a name="disable-network-policies-for-private-endpoints"></a>Deaktivieren von Netzwerkrichtlinien für private Endpunkte
 
@@ -30,9 +30,7 @@ $virtualNetwork= Get-AzVirtualNetwork `
   -Name "myVirtualNetwork" ` 
   -ResourceGroupName "myResourceGroup"  
    
-($virtualNetwork ` 
-  | Select -ExpandProperty subnets ` 
-  | Where-Object  {$_.Name -eq 'default'} ).PrivateEndpointNetworkPolicies = "Disabled" 
+($virtualNetwork | Select -ExpandProperty subnets | Where-Object  {$_.Name -eq 'default'} ).PrivateEndpointNetworkPolicies = "Disabled" 
  
 $virtualNetwork | Set-AzVirtualNetwork 
 ```

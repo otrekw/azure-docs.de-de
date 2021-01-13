@@ -1,39 +1,52 @@
 - name: Dokumentation zum plastischen Reader
   href: index.yml
-- name: Übersicht
+- name: Worum handelt es sich beim plastischen Reader?
+  href: Overview.md
+- name: Schnellstart
+  href: ./quickstarts/client-libraries.md
+- name: Tutorials
   items:
-    - name: Worum handelt es sich beim plastischen Reader?
-      href: Overview.md
-- name: Schnellstarts
-  expanded: true
-  items:
-    - name: 'Verwenden von C#'
-      href: Quickstart.md
-    - name: Verwenden von Swift (iOS)
-      href: ios-quickstart.md
-- name: Lernprogramme
-  items:
-    - name: Starten des plastischen Readers (Node.js)
-      href: tutorial-nodejs.md
+    - name: Starten des plastischen Readers (Android)
+      href: tutorial-android.md
+    - name: Starten des plastischen Readers (iOS)
+      href: tutorial-ios.md
     - name: Starten des plastischen Readers (Python)
       href: tutorial-python.md
-    - name: Bild im plastischen Reader (Swift)
-      href: tutorial-ios-picture-immersive-reader.md
+    - name: Verwenden mehrerer Ressourcen für den plastischen Reader
+      href: tutorial-multiple-resources.md
 - name: Vorgehensweise
   items:
-    - name: Authentifizierung über Azure Active Directory
-      href: azure-active-directory-authentication.md
+    - name: Erstellen einer Ressource für den plastischen Reader
+      href: how-to-create-immersive-reader.md
+    - name: Festlegen der Cookie-Richtlinie
+      href: how-to/set-cookie-policy.md
+    - name: Anzeigemathematik
+      href: how-to/display-math.md
+    - name: Starten des plastischen Readers mit HTML-Inhalt
+      href: how-to-launch-with-html.md
+    - name: Anpassen der Schaltfläche des plastischen Readers
+      href: how-to-customize-launch-button.md
+    - name: Zwischenspeichern des Authentifizierungstokens
+      href: how-to-cache-token.md
+    - name: Konfigurieren des lauten Vorlesens
+      href: how-to-configure-read-aloud.md
+    - name: Konfigurieren der Übersetzung
+      href: how-to-configure-translation.md
+    - name: Speichern der Benutzereinstellungen
+      href: how-to-store-user-preferences.md
 - name: Verweis
   items:
-    - name: SDK-Verweis
+    - name: JavaScript SDK
       href: reference.md
-    - name: iOS SDK-Referenz
-      href: ios-reference.md
+    - name: Versionshinweise
+      href: release-notes.md
 - name: Ressourcen
   items:
+    - name: Support- und Hilfeoptionen
+      href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/immersive-reader/context/context
     - name: Azure-Roadmap
-      href: 'https://azure.microsoft.com/en-us/updates/?product=cognitive-services'
+      href: 'https://azure.microsoft.com/updates/?product=cognitive-services'
     - name: Sprachunterstützung
-      href: 'https://aka.ms/ltlangsupport'
+      href: language-support.md
     - name: Regionale Verfügbarkeit
-      href: 'https://azure.microsoft.com/en-us/global-infrastructure/services/?products=cognitive-services'
+      href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'

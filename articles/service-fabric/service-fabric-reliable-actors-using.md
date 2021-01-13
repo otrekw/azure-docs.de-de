@@ -1,25 +1,15 @@
 ---
-title: Implementieren von Features in Azure Service Fabric-Akteuren | Microsoft-Dokumentation
+title: Implementieren von Features in Azure Service Fabric-Akteuren
 description: Erfahren Sie, wie Sie einen eigenen Akteurdienst schreiben, der Funktionen auf Dienstebene genauso implementiert wie bei der Vererbung von StatefulService.
-services: service-fabric
-documentationcenter: .net
-author: vturecek
-manager: chackdan
-editor: amanbha
-ms.assetid: 45839a7f-0536-46f1-ae2b-8ba3556407fb
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 03/19/2018
-ms.author: vturecek
-ms.openlocfilehash: 57894770ad9d27430d5803c9a93ce6973355878a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.custom: devx-track-csharp
+ms.openlocfilehash: d39ec93e0ad03d6c860bae9d0790e860c95457a5
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62123245"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96575566"
 ---
 # <a name="implement-service-level-features-in-your-actor-service"></a>Implementieren von Features auf Dienstebene in Ihrem Akteurdienst
 
@@ -224,7 +214,7 @@ Für diese Änderung wird ein Upgrade in zwei Schritten ausgeführt. Führen Sie
 
 * [Actor-Zustandsverwaltung](service-fabric-reliable-actors-state-management.md)
 * [Actor-Lebenszyklus und Garbage Collection](service-fabric-reliable-actors-lifecycle.md)
-* [Actors API reference documentation](https://msdn.microsoft.com/library/azure/dn971626.aspx)
+* [Actors API reference documentation](/previous-versions/azure/dn971626(v=azure.100))
 * [.NET-Beispielcode](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
 * [Java-Beispielcode](https://github.com/Azure-Samples/service-fabric-java-getting-started)
 

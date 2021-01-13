@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 36af0eeb43fb209ed65f950576f2dc9e97ec3633
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: afbea39a080e1dd768a14d6e0eacda1bad23c5a4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058640"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87074423"
 ---
 # <a name="redeploy-windows-virtual-machine-to-new-azure-node"></a>Erneutes Bereitstellen von virtuellen Windows-Computern in einem neuen Azure-Knoten
 Wenn Sie Schwierigkeiten mit der Problembehandlung bei der Remotedesktopverbindung (RDP) oder dem Anwendungszugriff auf einen Windows-basierten virtuellen Azure-Computer haben, lassen sich diese u. U. durch das erneute Bereitstellen des virtuellen Computers beseitigen. Wenn Sie eine VM erneut bereitstellen, wird die VM von Azure heruntergefahren. Anschließen wird sie innerhalb der Azure-Infrastruktur auf einen neuen Knoten verschoben und dann wieder eingeschaltet. Dabei bleiben alle Ihre Konfigurationsoptionen und zugehörigen Ressourcen erhalten. In diesem Artikel erfahren Sie, wie ein virtueller Computer mithilfe von Azure PowerShell oder dem Azure-Portal erneut bereitgestellt wird.
@@ -28,7 +28,7 @@ Wenn Sie Schwierigkeiten mit der Problembehandlung bei der Remotedesktopverbindu
 
 
 ## <a name="using-azure-powershell"></a>Verwenden von Azure PowerShell
-Stellen Sie sicher, dass Sie das aktuelle Azure PowerShell 1.x auf Ihrem virtuellen Computer installiert haben. Weitere Informationen finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/overview).
+Stellen Sie sicher, dass Sie das aktuelle Azure PowerShell 1.x auf Ihrem virtuellen Computer installiert haben. Weitere Informationen finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/).
 
 Das folgende Beispiel stellt den virtuellen Computer mit dem Namen `myVM` in der Ressourcengruppe `myResourceGroup` bereit:
 
@@ -39,5 +39,4 @@ Set-AzVM -Redeploy -ResourceGroupName "myResourceGroup" -Name "myVM"
 [!INCLUDE [virtual-machines-common-redeploy-to-new-node](../../../includes/virtual-machines-common-redeploy-to-new-node.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte
-Falls beim Herstellen einer Verbindung mit Ihrem virtuellen Computer Probleme auftreten, finden Sie spezifische Hilfe unter [Problembehandlung bei RDP-Verbindungen](troubleshoot-rdp-connection.md) oder [Ausführliche Schritte zur Problembehandlung bei RDP](detailed-troubleshoot-rdp.md). Sie können auch die Informationen zur [Problembehandlung bei der Anwendung](../windows/troubleshoot-app-connection.md) lesen, wenn Sie auf eine Anwendung, die auf Ihrem virtuellen Computer ausgeführt wird, nicht zugreifen können.
-
+Falls beim Herstellen einer Verbindung mit Ihrem virtuellen Computer Probleme auftreten, finden Sie spezifische Hilfe unter [Problembehandlung bei RDP-Verbindungen](troubleshoot-rdp-connection.md) oder [Ausführliche Schritte zur Problembehandlung bei RDP](detailed-troubleshoot-rdp.md). Sie können auch die Informationen zur [Problembehandlung bei der Anwendung](./troubleshoot-app-connection.md) lesen, wenn Sie auf eine Anwendung, die auf Ihrem virtuellen Computer ausgeführt wird, nicht zugreifen können.

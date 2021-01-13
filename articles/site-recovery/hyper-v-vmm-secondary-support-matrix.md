@@ -1,18 +1,18 @@
 ---
-title: Unterstützungsmatrix für die Notfallwiederherstellung von Hyper-V-VMs in VMM-Clouds in einem sekundären Standort mit Azure Site Recovery
+title: Unterstützungsmatrix für die Hyper-V-Notfallwiederherstellung in einem sekundären VMM-Standort mit Azure Site Recovery
 description: Fasst Informationen zur Unterstützung für die Replikation von virtuellen Hyper-V-Computern in VMM-Clouds an einen sekundären Standort mit Azure Site Recovery zusammen.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 09/09/2019
+ms.date: 11/06/2019
 ms.author: raynew
-ms.openlocfilehash: 9c3a19d44a4ac0fba37f4815b65b17c26d257dbc
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: af7baf413c9054ef3e5bf527851ac06c113cdce7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70813624"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "86131169"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-hyper-v-vms-to-a-secondary-site"></a>Unterstützungsmatrix für die Notfallwiederherstellung von Hyper-V-VMs in einem sekundären Standort
 
@@ -21,7 +21,6 @@ In diesem Artikel wird zusammengefasst, was unterstützt wird, wenn Sie den [Azu
 > [!NOTE]
 > Eine Replikation an einen sekundären Standort ist nur möglich, wenn die Hyper-V-Hosts in VMM-Clouds verwaltet werden.
 
-  
 
 ## <a name="host-servers"></a>Hostserver
 
@@ -37,8 +36,8 @@ In der folgenden Tabelle werden die unterstützten Betriebssysteme für mit Site
 
 **Windows-Version** | **Hyper-V (mit VMM)**
 --- | ---
-Windows Server 2016 | Alle [von Hyper-V unterstützten](https://docs.microsoft.com/windows-server/virtualization/hyper-v/Supported-Windows-guest-operating-systems-for-Hyper-V-on-Windows) Gastbetriebssysteme unter Windows Server 2016 
-Windows Server 2012 R2 | Alle [von Hyper-V unterstützten](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn792027%28v%3dws.11%29) Gastbetriebssysteme unter Windows Server 2012 R2
+Windows Server 2016 | Alle [von Hyper-V unterstützten](/windows-server/virtualization/hyper-v/Supported-Windows-guest-operating-systems-for-Hyper-V-on-Windows) Gastbetriebssysteme unter Windows Server 2016 
+Windows Server 2012 R2 | Alle [von Hyper-V unterstützten](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn792027%28v%3dws.11%29) Gastbetriebssysteme unter Windows Server 2012 R2
 
 ## <a name="linux-machine-storage"></a>Speicher eines Linux-Computers
 
@@ -115,5 +114,4 @@ Der Anbieter koordiniert die Kommunikation zwischen VMM-Servern.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Replizieren von Hyper-V-VMs in VMM-Clouds in einer sekundären Cloud](tutorial-vmm-to-vmm.md)
-
+[Replizieren von Hyper-V-VMs in VMM-Clouds in einer sekundären Cloud](./hyper-v-vmm-disaster-recovery.md)

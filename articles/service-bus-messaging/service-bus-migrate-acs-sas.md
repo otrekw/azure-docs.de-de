@@ -1,28 +1,18 @@
 ---
-title: Migrieren vom Azure Active Directory-Access Control Service zur SAS-Autorisierung | Microsoft-Dokumentation
-description: Migrieren von Anwendungen vom Access Control Service zu SAS
-services: service-bus-messaging
-documentationcenter: ''
-author: axisc
-manager: timlt
-editor: spelluru
-ms.service: service-bus-messaging
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
+title: 'Azure Service Bus: Migrieren zur Shared Access Signature-Autorisierung'
+description: Erfahren Sie, wie Sie vom Azure Active Directory Access Control Service zur SAS-Autorisierung (Shared Access Signature) migrieren.
 ms.topic: article
-ms.date: 09/21/2018
-ms.author: aschhab
-ms.openlocfilehash: 746b19062c3014caa37c6668e6c41df054a47e25
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/23/2020
+ms.openlocfilehash: e8cd12ac97020417f9958beded1fd198dd485fff
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60868161"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88064620"
 ---
-# <a name="migrate-from-azure-active-directory-access-control-service-to-shared-access-signature-authorization"></a>Migrieren vom Azure Active Directory-Access Control Service zur SAS-Autorisierung
+# <a name="service-bus---migrate-from-azure-active-directory-access-control-service-to-shared-access-signature-authorization"></a>Service Bus: Migrieren von Azure Active Directory Access Control Service zur SAS-Autorisierung
 
-Bei Service Bus-Anwendungen standen bisher zwei verschiedene Autorisierungsmodelle zur Wahl: Zum einen gab es das direkt von Service Bus bereitgestellte [SAS-Tokenmodell (Shared Access Signature)](service-bus-sas.md). Zum anderen gab es ein Verbundmodell, bei dem die Verwaltung von Autorisierungsregeln intern vom [Azure Active Directory](/azure/active-directory/)-Access Control Service (ACS) verwaltet wird und vom ACS bezogene Token zur Autorisierung des Zugriffs auf die gewünschten Features an Service Bus übergeben werden.
+Bei Service Bus-Anwendungen standen bisher zwei verschiedene Autorisierungsmodelle zur Wahl: Zum einen gab es das direkt von Service Bus bereitgestellte [SAS-Tokenmodell (Shared Access Signature)](service-bus-sas.md). Zum anderen gab es ein Verbundmodell, bei dem die Verwaltung von Autorisierungsregeln intern vom [Azure Active Directory](../active-directory/index.yml)-Access Control Service (ACS) verwaltet wird und vom ACS bezogene Token zur Autorisierung des Zugriffs auf die gewünschten Features an Service Bus übergeben werden.
 
 Das ACS-Autorisierungsmodell wurde längst von der [SAS-Autorisierung](service-bus-authentication-and-authorization.md) als bevorzugtes Modell abgelöst, und in sämtlichen Dokumentationen, Leitfäden und Beispielen wird heutzutage nur noch SAS verwendet. Außerdem können inzwischen keine neuen Service Bus-Namespaces mit ACS-Koppelung mehr erstellt werden.
 
@@ -30,7 +20,7 @@ Das SAS-Modell hat den Vorteil, dass es nicht direkt auf einen anderen Dienst an
 
 Für alle vorhandenen Anwendungen, die auf den ACS angewiesen sind, empfehlen wir dringend, eine Migration zu SAS durchzuführen.
 
-## <a name="migration-scenarios"></a>Migrationsszenarien
+## <a name="migration-scenarios"></a>Migrationsszenarios
 
 ACS und Service Bus werden durch die gemeinsame Kenntnis eines *Signaturschlüssels* integriert. Der Signaturschlüssel wird von einem ACS-Namespace zum Signieren von Autorisierungstoken verwendet, und Service Bus vergewissert sich anhand des Schlüssels, dass das Token von dem gekoppelten ACS-Namespace ausgestellt wurde. Der ACS-Namespace enthält Dienstidentitäten und Autorisierungsregeln. Die Autorisierungsregeln definieren, welche Dienstidentität oder welches von einem externen Identitätsanbieter ausgestellte Token welche Art von Zugriff auf einen Teil des Service Bus-Namespace-Graphs erhält. Dabei wird das Longest Prefix Match-Verfahren verwendet.
 
@@ -66,4 +56,3 @@ Weitere Informationen zur Service Bus-Authentifizierung finden Sie in den folgen
 
 * [Service Bus-Authentifizierung und -Autorisierung](service-bus-authentication-and-authorization.md)
 * [Service Bus-Authentifizierung mit Shared Access Signatures](service-bus-sas.md)
-

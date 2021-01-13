@@ -1,29 +1,27 @@
 ---
 title: Senden von Pushbenachrichtigungen an bestimmte Benutzer mit Azure Notification Hubs | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie mithilfe von Azure Notification Hubs Pushbenachrichtigungen an bestimmte Benutzer senden.
+description: Erfahren Sie, wie Sie mithilfe von Azure Notification Hubs Pushbenachrichtigungen an bestimmte iOS-Benutzer senden.
 documentationcenter: ios
-author: sethm
+author: sethmanheim
 manager: femila
-editor: jwargo
 services: notification-hubs
-ms.assetid: 1f7d1410-ef93-4c4b-813b-f075eed20082
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: ios
 ms.devlang: objective-c
 ms.topic: article
-ms.date: 01/04/2019
+ms.date: 08/07/2020
 ms.author: sethm
-ms.reviewer: jowargo
+ms.reviewer: thsomasu
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 85461f72d4385805e2aa13691a574a2161036ca5
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 167c666c536ee33531fd069dbd1edb530331a9f3
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71212238"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96016942"
 ---
-# <a name="tutorial-push-notifications-to-specific-users-using-azure-notification-hubs"></a>Tutorial: Senden von Pushbenachrichtigungen an bestimmte Benutzer mit Azure Notification Hubs
+# <a name="tutorial-send-push-notifications-to-specific-users-using-azure-notification-hubs"></a>Tutorial: Senden von Pushbenachrichtigungen an bestimmte Benutzer mit Azure Notification Hubs
 
 [!INCLUDE [notification-hubs-selector-aspnet-backend-notify-users](../../includes/notification-hubs-selector-aspnet-backend-notify-users.md)]
 
@@ -42,17 +40,17 @@ In diesem Tutorial führen Sie die folgenden Schritte aus:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-In diesem Lernprogramm wird davon ausgegangen, dass Sie Ihren Notification Hub wie unter [Erste Schritte mit Notification Hubs (iOS)](notification-hubs-ios-apple-push-notification-apns-get-started.md)beschrieben erstellt und konfiguriert haben. Dieses Lernprogramm ist außerdem die Voraussetzung für das Lernprogramm [Sichere Pushbenachrichtigungen (iOS)](notification-hubs-aspnet-backend-ios-push-apple-apns-secure-notification.md) .
-Wenn Sie Mobile Apps als Back-End-Dienst verwenden möchten, lesen Sie [Mobile Apps: Erste Schritte mit Push](../app-service-mobile/app-service-mobile-ios-get-started-push.md).
+In diesem Tutorial wird davon ausgegangen, dass Sie Ihren Notification Hub wie unter [Tutorial: Senden von Pushbenachrichtigungen an iOS-Apps mit Azure Notification Hubs](ios-sdk-get-started.md) beschrieben erstellt und konfiguriert haben. Dieses Lernprogramm ist außerdem die Voraussetzung für das Lernprogramm [Sichere Pushbenachrichtigungen (iOS)](notification-hubs-aspnet-backend-ios-push-apple-apns-secure-notification.md) .
+Wenn Sie Mobile Apps als Back-End-Dienst verwenden möchten, lesen Sie [Mobile Apps: Erste Schritte mit Push](/previous-versions/azure/app-service-mobile/app-service-mobile-ios-get-started-push).
 
 [!INCLUDE [notification-hubs-aspnet-backend-notifyusers](../../includes/notification-hubs-aspnet-backend-notifyusers.md)]
 
 ## <a name="modify-your-ios-app"></a>Ändern der iOS-App
 
-1. Öffnen Sie die Einzelseitenansicht-App, die Sie im Lernprogramm [Erste Schritte mit Notification Hubs (iOS)](notification-hubs-ios-apple-push-notification-apns-get-started.md) erstellt haben.
+1. Öffnen Sie die Einzelseitenansicht-App, die Sie in [Tutorial: Senden von Pushbenachrichtigungen an iOS-Apps mit Azure Notification Hubs](ios-sdk-get-started.md) erstellt haben.
 
    > [!NOTE]
-   > In diesem Abschnitt wird davon ausgegangen, dass Sie Ihr Projekt mit einem leeren Organisationsnamen konfiguriert haben. Falls nicht, müssen Sie allen Klassennamen Ihren Organisationsnamen voranstellen.
+   > In diesem Abschnitt wird davon ausgegangen, dass Sie Ihr Projekt mit einem leeren Organisationsnamen konfiguriert haben. Falls nicht, stellen Sie allen Klassennamen Ihren Organisationsnamen voran.
 
 2. Fügen Sie in der Datei `Main.storyboard` die im folgenden Screenshot abgebildeten Komponenten aus der Objektbibliothek hinzu.
 
@@ -66,9 +64,9 @@ Wenn Sie Mobile Apps als Back-End-Dienst verwenden möchten, lesen Sie [Mobile A
    * **APNS:** Bezeichnung und Switch, um das Senden der Benachrichtigung an den Apple Platform Notification Service zu aktivieren.
    * **Recipient Username:** ein UITextField mit dem Platzhaltertext *Recipient username tag*, direkt unter der GCM-Bezeichnung und durch den linken und rechten Rand und die Anordnung unter der GCM-Bezeichnung beschränkt.
 
-     Im Lernprogramm [Erste Schritte mit Notification Hubs (iOS)](notification-hubs-ios-apple-push-notification-apns-get-started.md) wurden einige Komponenten hinzugefügt.
+     In [Tutorial: Senden von Pushbenachrichtigungen an iOS-Apps mit Azure Notification Hubs](ios-sdk-get-started.md) wurden einige Komponenten hinzugefügt.
 
-3. Ziehen Sie bei gedrückter **STRG**-Taste die Komponenten in der Ansicht zu `ViewController.h`, und fügen Sie diese neuen Outlets hinzu.
+3. Ziehen Sie bei gedrückter **STRG**-Taste die Komponenten in der Ansicht zu `ViewController.h`, und fügen Sie diese neuen Outlets hinzu:
 
     ```objc
     @property (weak, nonatomic) IBOutlet UITextField *UsernameField;
@@ -88,13 +86,13 @@ Wenn Sie Mobile Apps als Back-End-Dienst verwenden möchten, lesen Sie [Mobile A
     - (IBAction)LogInAction:(id)sender;
     ```
 
-4. Fügen Sie in `ViewController.h` folgende `#define`-Zeile direkt hinter den import-Anweisungen hinzu. Ersetzen Sie den Platzhalter `<Enter Your Backend Endpoint>` durch die Ziel-URL, die Sie im vorherigen Abschnitt zum Bereitstellen Ihres App-Back-Ends verwendet haben. Beispiel: `http://your_backend.azurewebsites.net`.
+4. Fügen Sie in `ViewController.h` folgende `#define`-Zeile direkt hinter den import-Anweisungen hinzu. Ersetzen Sie den Platzhalter `<Your backend endpoint>` durch die Ziel-URL, die Sie im vorherigen Abschnitt zum Bereitstellen Ihres App-Back-Ends verwendet haben. Zum Beispiel `http://your_backend.azurewebsites.net`:
 
     ```objc
-    #define BACKEND_ENDPOINT @"<Enter Your Backend Endpoint>"
+    #define BACKEND_ENDPOINT @"<Your backend endpoint>"
     ```
 
-5. Erstellen Sie in Ihrem Projekt eine neue „Cocoa Touch“-Klasse mit dem Namen `RegisterClient` als Schnittstelle mit dem erstellten ASP.NET-Back-End. Erstellen Sie die Klasse, die von `NSObject`erbt. Fügen Sie anschließend in `RegisterClient.h` den folgenden Code hinzu.
+5. Erstellen Sie in Ihrem Projekt eine neue „Cocoa Touch“-Klasse mit dem Namen `RegisterClient` als Schnittstelle mit dem erstellten ASP.NET-Back-End. Erstellen Sie die Klasse, die von `NSObject`erbt. Fügen Sie anschließend in `RegisterClient.h` den folgenden Code hinzu:
 
     ```objc
     @interface RegisterClient : NSObject
@@ -343,9 +341,9 @@ Wenn Sie Mobile Apps als Back-End-Dienst verwenden möchten, lesen Sie [Mobile A
     }
     ```
 
-    Beachten Sie, dass die Festlegung des Gerätetokens die Schaltfläche „Log in“ (Anmelden) aktiviert. Dies liegt daran, dass sich der Ansichtscontroller bei der Anmeldeaktion für Pushbenachrichtigungen beim App-Back-End registriert. Daher soll erst auf die Anmeldeaktion zugegriffen werden können, wenn das Gerätetoken ordnungsgemäß eingerichtet wurde. Sie können die Anmeldung von der Pushregistrierung entkoppeln, solange die Anmeldung vor der Registrierung erfolgt.
+    Beachten Sie, dass durch Festlegen des Gerätetokens die Schaltfläche **Log in** (Anmelden) aktiviert wird. Dies liegt daran, dass sich der Ansichtscontroller bei der Anmeldeaktion für Pushbenachrichtigungen beim App-Back-End registriert. Daher soll erst auf die Anmeldeaktion (**Log in**) zugegriffen werden können, wenn das Gerätetoken ordnungsgemäß eingerichtet wurde. Sie können die Anmeldung von der Pushregistrierung entkoppeln, solange die Anmeldung vor der Registrierung erfolgt.
 
-11. Verwenden Sie in "ViewController.m" die folgenden Codeausschnitte zum Implementieren der Aktionsmethode für die Schaltfläche **Log In** und einer Methode zum Senden der Benachrichtigungsmeldung mithilfe des ASP.NET-Back-Ends.
+11. Verwenden Sie in „ViewController.m“ die folgenden Codeausschnitte, um die Aktionsmethode für die Schaltfläche **Log in** (Anmelden) und eine Methode zum Senden der Benachrichtigungsmeldung mithilfe des ASP.NET-Back-Ends zu implementieren.
 
     ```objc
     - (IBAction)LogInAction:(id)sender {
@@ -481,7 +479,7 @@ Wenn Sie Mobile Apps als Back-End-Dienst verwenden möchten, lesen Sie [Mobile A
 ## <a name="test-the-application"></a>Testen der Anwendung
 
 1. Unter XCode führen Sie die App auf einem physischen iOS-Gerät aus (im Simulator funktionieren Pushbenachrichtigungen nicht).
-2. Geben Sie in der Benutzeroberfläche der iOS-App denselben Wert für den Benutzernamen und das Kennwort ein. Tippen Sie dann auf **Log In**.
+2. Geben Sie in der Benutzeroberfläche der iOS-App denselben Wert für den Benutzernamen und das Kennwort ein. Klicken Sie dann auf **Log in** (Anmelden).
 
     ![iOS-Testanwendung][2]
 
@@ -489,14 +487,14 @@ Wenn Sie Mobile Apps als Back-End-Dienst verwenden möchten, lesen Sie [Mobile A
 
     ![iOS-Testbenachrichtigung][3]
 
-4. Geben Sie im Textfeld*Recipient username tag* das Benutzernamenstag ein, das bei der Anmeldung von einem anderen Gerät verwendet wird.
+4. Geben Sie im Textfeld *Recipient username tag* das Benutzernamenstag ein, das bei der Anmeldung von einem anderen Gerät verwendet wird.
 5. Geben Sie eine Benachrichtigungsmeldung ein, und klicken Sie auf **Send Notification**. Die Benachrichtigungsmeldung wird nur auf den Geräten empfangen, die für das Empfänger-Benutzernamenstag registriert sind. Sie wird nur an diese Benutzer gesendet.
 
     ![Mit Tag versehene iOS-Testbenachrichtigung][4]
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie gelernt, wie Sie Pushbenachrichtigungen an bestimmte Benutzer senden, deren Registrierungen Tags zugeordnet sind. Um zu erfahren, wie Sie standortbasierte Pushbenachrichtigungen senden, fahren Sie mit dem folgenden Tutorial fort: 
+In diesem Tutorial haben Sie gelernt, wie Sie Pushbenachrichtigungen an bestimmte Benutzer senden, deren Registrierungen Tags zugeordnet sind. Um zu erfahren, wie Sie standortbasierte Pushbenachrichtigungen senden, fahren Sie mit dem folgenden Tutorial fort:
 
 > [!div class="nextstepaction"]
 >[Senden standortbasierter Pushbenachrichtigungen](notification-hubs-push-bing-spatial-data-geofencing-notification.md)

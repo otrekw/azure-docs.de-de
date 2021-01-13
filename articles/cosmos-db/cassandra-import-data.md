@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Migrieren Ihrer Daten zu einem Cassandra-API-Konto in Azure Cosmos DB'
+title: 'Migrieren Ihrer Daten zu einem Cassandra-API-Konto in Azure Cosmos DB: Tutorial'
 description: Hier erfahren Sie, wie Sie den CQL-Kopierbefehl und Spark verwenden, um Daten aus Apache Cassandra in ein Cassandra-API-Konto in Azure Cosmos DB zu kopieren.
 author: kanshiG
 ms.author: govindk
@@ -9,15 +9,15 @@ ms.subservice: cosmosdb-cassandra
 ms.topic: tutorial
 ms.date: 12/03/2018
 ms.custom: seodec18
-Customer intent: As a developer, I want to migrate my existing Cassandra workloads to Azure Cosmos DB so that the overhead to manage resources, clusters, and garbage collection is automatically handled by Azure Cosmos DB.
-ms.openlocfilehash: cc312a707f5ab74967b9d3bc050fec7bfcad9dbc
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: bd2d27addb6860e49ac12eb36d8b625b8bf92001
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58851065"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93100404"
 ---
 # <a name="tutorial-migrate-your-data-to-cassandra-api-account-in-azure-cosmos-db"></a>Tutorial: Migrieren Ihrer Daten zu einem Cassandra-API-Konto in Azure Cosmos DB
+[!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
 
 Entwickler verfügen unter Umständen über lokal oder in der Cloud ausgeführte Cassandra-Workloads, die sie zu Azure migrieren möchten. Solche Workloads können zu einem Cassandra-API-Konto in Azure Cosmos DB migriert werden. Dieses Tutorial enthält Informationen zu verschiedenen Optionen, die für die Migration von Apache Cassandra-Daten zum Cassandra-API-Konto in Azure Cosmos DB zur Verfügung stehen.
 
@@ -65,9 +65,9 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 * **Erstellen von Tabellen im Cassandra-API-Konto:** Bevor Sie mit der Migration von Daten beginnen, erstellen Sie zunächst alle Ihre Tabellen im Azure-Portal oder mit cqlsh. Wenn Sie als Migrationsziel ein Azure Cosmos-Konto mit Durchsatz auf Datenbankebene verwenden, geben Sie beim Erstellen der Azure Cosmos-Container einen Partitionsschlüssel an.
 
-* **Erhöhen des Durchsatzes:** Die Dauer der Datenmigration richtet sich nach der Durchsatzmenge, die Sie für Ihre Tabellen in Azure Cosmos DB bereitstellen. Erhöhen Sie den Durchsatz für die Dauer der Migration. Mit dem höheren Durchsatz können Sie eine Ratenbegrenzung vermeiden und Migrationen in kürzerer Zeit durchführen. Nachdem die Migration abgeschlossen ist, können Sie den Durchsatz wieder verringern, um Kosten zu sparen. Das Azure Cosmos-Konto sollte sich außerdem in der gleichen Region befinden wie Ihre Quelldatenbank. 
+* **Erhöhung des Durchsatzes:** Die Dauer der Datenmigration richtet sich nach der Durchsatzmenge, die Sie für Ihre Tabellen in Azure Cosmos DB bereitstellen. Erhöhen Sie den Durchsatz für die Dauer der Migration. Mit dem höheren Durchsatz können Sie eine Ratenbegrenzung vermeiden und Migrationen in kürzerer Zeit durchführen. Nachdem die Migration abgeschlossen ist, können Sie den Durchsatz wieder verringern, um Kosten zu sparen. Das Azure Cosmos-Konto sollte sich außerdem in der gleichen Region befinden wie Ihre Quelldatenbank. 
 
-* **Aktivieren von SSL:** Für Azure Cosmos DB gelten strenge Sicherheitsanforderungen und -standards. Achten Sie darauf, SSL für die Interaktion mit Ihrem Konto zu aktivieren. Wenn Sie CQL mit SSH verwenden, können Sie SSL-Informationen bereitstellen.
+* **Aktivieren von TLS:** Für Azure Cosmos DB gelten strenge Sicherheitsanforderungen und -standards. Achten Sie darauf, TLS für die Interaktion mit Ihrem Konto zu aktivieren. Wenn Sie CQL mit SSH verwenden, können Sie TLS-Informationen bereitstellen.
 
 ## <a name="options-to-migrate-data"></a>Optionen zum Migrieren von Daten
 

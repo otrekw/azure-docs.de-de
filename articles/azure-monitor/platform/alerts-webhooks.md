@@ -1,21 +1,24 @@
 ---
-title: Benachrichtigung eines nicht unter Azure ausgeführten Systems durch eine klassische Metrikwarnung mithilfe eines Webhooks
+title: Aufrufen eines Webhooks mit einer klassischen Metrikwarnung in Azure Monitor
 description: Erfahren Sie, wie Sie Azure-Metrikwarnungen an andere, Azure-fremde Systeme umleiten.
-author: snehithm
-services: azure-monitor
-ms.service: azure-monitor
+author: harelbr
+ms.author: harelbr
 ms.topic: conceptual
 ms.date: 04/03/2017
-ms.author: snmuvva
 ms.subservice: alerts
-ms.openlocfilehash: 264f3eb042a3c29523ed93df93dfa6d45c00ae87
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 47ed723ecfc544673ac8aa6374c27ae5a7cf166b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60345776"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87852105"
 ---
-# <a name="have-a-classic-metric-alert-notify-a-non-azure-system-using-a-webhook"></a>Benachrichtigung eines nicht unter Azure ausgeführten Systems durch eine klassische Metrikwarnung mithilfe eines Webhooks
+# <a name="call-a-webhook-with-a-classic-metric-alert-in-azure-monitor"></a>Aufrufen eines Webhooks mit einer klassischen Metrikwarnung in Azure Monitor
+
+> [!WARNING]
+> In diesem Artikel erfahren Sie, wie Sie ältere klassische Metrikwarnungen verwenden. Azure Monitor unterstützt nun [neuere Metrikwarnungen, die nahezu in Echtzeit stattfinden, und eine neue Oberfläche für Warnungen](./alerts-overview.md). Klassische Warnungen werden [eingestellt](./monitoring-classic-retirement.md), sind jedoch weiterhin für Ressourcen, die die neuen Warnungen noch nicht unterstützen, beschränkt im Einsatz.
+>
+
 Mithilfe von Webhooks können Benutzer eine Azure-Warnbenachrichtigung zur Nachbearbeitung oder Ausführung benutzerdefinierter Aktionen an andere Systeme weiterleiten. Sie können einen Webhook für eine Warnung verwenden, um sie an Dienste weiterzuleiten, die SMS-Nachrichten versenden, um Fehler zu protokollieren, um ein Team per Chat-/Messagingdienst zu benachrichtigen oder um verschiedene andere Aktionen auszuführen. 
 
 In diesem Artikel wird beschrieben, wie Sie einen Webhook für eine Azure-Metrikwarnung festlegen. Außerdem erfahren Sie, wie die Nutzlast für die HTTP POST-Anforderung an einen Webhook aussieht. Informationen zur Einrichtung und zum Schema einer Azure-Aktivitätsprotokollwarnung (Warnung für Ereignisse) finden Sie unter [Call a webhook on an Azure activity log alert](alerts-log-webhook.md) (Aufrufen eines Webhooks für eine Azure-Aktivitätsprotokollwarnung).
@@ -27,7 +30,7 @@ Sie können den Webhook-URI im [Azure-Portal](https://portal.azure.com/) unter *
 
 ![Hinzufügen eines Warnungsregelbereichs](./media/alerts-webhooks/Alertwebhook.png)
 
-Sie können auch [Azure PowerShell-Cmdlets](../../azure-monitor/platform/powershell-quickstart-samples.md#create-metric-alerts), eine [plattformübergreifende Befehlszeilenschnittstelle](../../azure-monitor/platform/cli-samples.md#work-with-alerts) oder [Azure Monitor-REST-APIs](https://msdn.microsoft.com/library/azure/dn933805.aspx) verwenden, um eine Warnung mit Veröffentlichung an einen Webhook-URI zu konfigurieren.
+Sie können auch [Azure PowerShell-Cmdlets](../samples/powershell-samples.md#create-metric-alerts), eine [plattformübergreifende Befehlszeilenschnittstelle](../samples/cli-samples.md#work-with-alerts) oder [Azure Monitor-REST-APIs](/rest/api/monitor/alertrules) verwenden, um eine Warnung mit Veröffentlichung an einen Webhook-URI zu konfigurieren.
 
 ## <a name="authenticate-the-webhook"></a>Authentifizieren des Webhooks
 Die Authentifizierung des Webhooks kann mithilfe der tokenbasierten Autorisierung erfolgen. Der Webhook-URI wird mit einer Token-ID gespeichert. Beispiel: `https://mysamplealert/webcallback?tokenid=sometokenid&someparameter=somevalue`
@@ -69,7 +72,7 @@ Der POST-Vorgang enthält für alle metrikbasierten Warnungen die folgende JSON-
 ```
 
 
-| Feld | Erforderlich | Feste Gruppe von Werten | Notizen |
+| Feld | Obligatorisch. | Feste Gruppe von Werten | Notizen |
 |:--- |:--- |:--- |:--- |
 | status |J |Activated, Resolved |Der Status der Warnung auf der Grundlage der festgelegten Bedingungen. |
 | context |J | |Der Warnungskontext. |
@@ -80,12 +83,12 @@ Der POST-Vorgang enthält für alle metrikbasierten Warnungen die folgende JSON-
 | conditionType |J |Metric, Event |Zwei Arten von Warnungen werden unterstützt: Metrik- und Ereigniswarnungen. Metrikwarnungen basieren auf einer Metrikbedingung. Ereigniswarnungen basieren auf einem Ereignis im Aktivitätsprotokoll. Überprüfen Sie mithilfe dieses Werts, ob die Warnung auf einer Metrik oder einem Ereignis basiert. |
 | condition |J | |Die spezifischen Felder, die anhand des Werts von **conditionType** überprüft werden. |
 | metricName |Für Metrikwarnungen | |Der Name der Metrik, die definiert, welche Elemente mit der Regel überwacht werden. |
-| metricUnit |Für Metrikwarnungen |Bytes, BytesPerSecond, Count, CountPerSecond, Percent, Seconds |Die in der Metrik zulässige Einheit. Siehe [Zulässige Werte](https://msdn.microsoft.com/library/microsoft.azure.insights.models.unit.aspx). |
+| metricUnit |Für Metrikwarnungen |Bytes, BytesPerSecond, Count, CountPerSecond, Percent, Seconds |Die in der Metrik zulässige Einheit. Siehe [Zulässige Werte](/previous-versions/azure/reference/dn802430(v=azure.100)). |
 | metricValue |Für Metrikwarnungen | |Der tatsächliche Wert der Metrik, die die Warnung ausgelöst hat. |
 | threshold |Für Metrikwarnungen | |Der Schwellenwert, bei dem die Warnung aktiviert wird. |
 | windowSize |Für Metrikwarnungen | |Der Zeitraum, in dem die Aktivität der Warnung basierend auf dem Schwellenwert überwacht wird. Der Wert muss zwischen fünf Minuten und einem Tag liegen. Der Wert muss im Format der Zeitspanne nach ISO 8601 angegeben werden. |
-| timeAggregation |Für Metrikwarnungen |Average, Last, Maximum, Minimum, None, Total |Legt fest, wie die erfassten Daten im Zeitverlauf kombiniert werden sollen. Der Standardwert ist "Average". Siehe [Zulässige Werte](https://msdn.microsoft.com/library/microsoft.azure.insights.models.aggregationtype.aspx). |
-| operator |Für Metrikwarnungen | |Der Operator, der verwendet wird, um die aktuellen Metrikdaten mit dem festgelegten Schwellenwert zu vergleichen. |
+| timeAggregation |Für Metrikwarnungen |Average, Last, Maximum, Minimum, None, Total |Legt fest, wie die erfassten Daten im Zeitverlauf kombiniert werden sollen. Der Standardwert ist "Average". Siehe [Zulässige Werte](/previous-versions/azure/reference/dn802410(v=azure.100)). |
+| Operator |Für Metrikwarnungen | |Der Operator, der verwendet wird, um die aktuellen Metrikdaten mit dem festgelegten Schwellenwert zu vergleichen. |
 | subscriptionId |J | |Die Azure-Abonnement-ID. |
 | resourceGroupName |J | |Der Name der Ressourcengruppe für die betroffene Ressource. |
 | resourceName |J | |Der Ressourcenname der betroffenen Ressource. |
@@ -96,7 +99,7 @@ Der POST-Vorgang enthält für alle metrikbasierten Warnungen die folgende JSON-
 | properties |N |Optional |Ein Satz von Schlüssel-Wert-Paaren mit Details zum Ereignis. Beispiel: `Dictionary<String, String>`. Das Feld "properties" ist optional. Auf einer angepassten Benutzeroberfläche oder in einem Workflow, der auf der Logik-App beruht, können Benutzer Schlüssel-Wert-Paare eingeben, die über die Nutzlast übergeben werden können. Alternativ können benutzerdefinierte Eigenschaften direkt über den Webhook-URI an den Webhook zurückgegeben werden (als Abfrageparameter). |
 
 > [!NOTE]
-> Das Feld **properties** kann nur mithilfe der [Azure Monitor REST-APIs](https://msdn.microsoft.com/library/azure/dn933805.aspx) festgelegt werden.
+> Das Feld **properties** kann nur mithilfe der [Azure Monitor REST-APIs](/rest/api/monitor/alertrules) festgelegt werden.
 >
 >
 
@@ -106,4 +109,3 @@ Der POST-Vorgang enthält für alle metrikbasierten Warnungen die folgende JSON-
 * Informieren Sie sich über das [Senden einer SMS-Nachricht über Twilio auf der Grundlage einer Azure-Warnung mithilfe einer Logik-App](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-text-message-with-logic-app).
 * Informieren Sie sich über das [Senden einer Slack-Nachricht auf der Grundlage einer Azure-Warnung mithilfe einer Logik-App](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-slack-with-logic-app).
 * Informieren Sie sich über das [Senden einer Nachricht an eine Azure-Warteschlange auf der Grundlage einer Azure-Warnung mithilfe einer Logik-App](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-queue-with-logic-app).
-

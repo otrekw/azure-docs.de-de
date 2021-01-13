@@ -1,23 +1,23 @@
 ---
-title: Übersicht über Reverse-DNS in Azure | Microsoft-Dokumentation
-description: Erfahren Sie, wie Reverse-DNS funktioniert und wie dieses Feature in Azure verwendet wird.
+title: 'Azure DNS: Übersicht über Reverse-DNS in Azure'
+description: In diesem Lernpfad erhalten Sie eine Einführung in die Funktionsweise und Verwendung von Reverse-DNS in Azure.
 services: dns
 documentationcenter: na
-author: vhorne
-manager: jeconnoc
+author: rohinkoul
+manager: KumuD
 ms.service: dns
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/29/2017
-ms.author: victorh
-ms.openlocfilehash: 9d3a62ec1c9ede1f25f2b53f800642a792b3aa28
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: rohink
+ms.openlocfilehash: 8af9549efc3e8dab54f55dd404346d87201dee2c
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60192981"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94965611"
 ---
 # <a name="overview-of-reverse-dns-and-support-in-azure"></a>Übersicht über Reverse-DNS und die Unterstützung in Azure
 
@@ -89,7 +89,7 @@ Ein Reverse-Lookup für die IP-Adresse 192.0.2.129 fragt einen PTR-Eintrag mit d
 
 Der Name einer IPv6-Reverse-Lookupzone sollte folgendes Format aufweisen: `<IPv6 network prefix in reverse order>.ip6.arpa`.
 
-Beispiel: Wenn Sie eine Reverse-Lookupzone erstellen, um Einträge für Hosts mit IP-Adressen mit dem Präfix 2001:db8:1000:abdc::/64 zu hosten, wird der Zonenname gebildet, indem das Netzwerkpräfix der Adresse (2001:db8:abdc::) isoliert wird. Erweitern Sie als Nächstes das IPv6-Netzwerkpräfix, sodass die [Nullkomprimierung](https://technet.microsoft.com/library/cc781672(v=ws.10).aspx) entfernt wird, falls diese zum Kürzen des IPv6-Adresspräfix (2001:0db8:abdc:0000::) verwendet wurde. Kehren Sie die Reihenfolge um, und verwenden Sie dabei einen Punkt als Trennzeichen zwischen den einzelnen Hexadezimalzahlen im Präfix, um das umgekehrte Netzwerkpräfix (`0.0.0.0.c.d.b.a.8.b.d.0.1.0.0.2`) zu erstellen, und fügen Sie das Suffix `.ip6.arpa` hinzu.
+Beispiel: Wenn Sie eine Reverse-Lookupzone erstellen, um Einträge für Hosts mit IP-Adressen mit dem Präfix 2001:db8:1000:abdc::/64 zu hosten, wird der Zonenname gebildet, indem das Netzwerkpräfix der Adresse (2001:db8:abdc::) isoliert wird. Erweitern Sie als Nächstes das IPv6-Netzwerkpräfix, sodass die [Nullkomprimierung](/previous-versions/windows/it-pro/windows-server-2003/cc781672(v=ws.10)) entfernt wird, falls diese zum Kürzen des IPv6-Adresspräfix (2001:0db8:abdc:0000::) verwendet wurde. Kehren Sie die Reihenfolge um, und verwenden Sie dabei einen Punkt als Trennzeichen zwischen den einzelnen Hexadezimalzahlen im Präfix, um das umgekehrte Netzwerkpräfix (`0.0.0.0.c.d.b.a.8.b.d.0.1.0.0.2`) zu erstellen, und fügen Sie das Suffix `.ip6.arpa` hinzu.
 
 
 |Netzwerkpräfix  |Erweitertes und umgekehrtes Netzwerkpräfix |Standardsuffix |Name der Reverse-Zone  |
@@ -114,4 +114,3 @@ Weitere Informationen zu Reverse-DNS finden Sie unter [Reverse DNS](https://en.w
 Erfahren Sie, wie [die Reverse-Lookupzone für Ihren vom ISP zugewiesenen IP-Adressbereich in Azure DNS gehostet wird](dns-reverse-dns-for-azure-services.md).
 <br>
 Erfahren Sie, wie Sie [Reverse-DNS-Einträge für Ihre Azure-Dienste verwalten](dns-reverse-dns-for-azure-services.md).
-

@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/18/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5d6cce859aa26935f0b6007fe8e5ff2c2239b210
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ae575aa6544a174a70eb8ea4749566e8660280e2
+ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67109446"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94873266"
 ---
 # <a name="azure-ad-connect-and-azure-ad-connect-health-installation-roadmap"></a>Installationsübersicht: Azure AD Connect und Azure AD Connect Health
 
@@ -45,18 +45,18 @@ Den Download für Azure AD Connect finden Sie im [Microsoft Download Center](htt
 |Azure AD Connect herunterladen | [Azure AD Connect herunterladen](https://go.microsoft.com/fwlink/?LinkId=615771)|
 |Installieren mit den Express-Einstellungen | [Expressinstallation von Azure AD Connect](./how-to-connect-install-express.md)|
 |Installieren mit benutzerdefinierten Einstellungen | [Benutzerdefinierte Installation von Azure AD Connect](./how-to-connect-install-custom.md)|
-|Upgrade von DirSync | [Upgrade von Azure AD-Synchronisierungstools (DirSync)](./how-to-dirsync-upgrade-get-started.md)|
-|Nach der Installation | [Überprüfen der Installation und Zuweisen von Lizenzen ](how-to-connect-post-installation.md)|
+|Upgrade von DirSync | [Upgrade von Azure AD-Synchronisierungstools (DirSync)](./how-to-dirsync-upgrade-get-started.md)|
+|Nach der Installation | [Überprüfen der Installation und Zuweisen von Lizenzen](how-to-connect-post-installation.md)|
 
 ### <a name="learn-more-about-install-azure-ad-connect"></a>Weitere Informationen über die Installation von Azure AD Connect
-Sie sollten sich auch auf [betriebliche](how-to-connect-sync-operations.md) Probleme vorbereiten. Verwenden Sie ggf. einen Standbyserver, um im [Notfall](how-to-connect-sync-staging-server.md#disaster-recovery) problemlos ein Failover ausführen zu können. Wenn Sie häufig Konfigurationsänderungen vornehmen möchten, sollten Sie einen [Stagingmodus](how-to-connect-sync-staging-server.md) -Server einplanen.
+Sie sollten sich auch auf [betriebliche](./how-to-connect-sync-staging-server.md) Probleme vorbereiten. Verwenden Sie ggf. einen Standbyserver, um im [Notfall](how-to-connect-sync-staging-server.md#disaster-recovery) problemlos ein Failover ausführen zu können. Wenn Sie häufig Konfigurationsänderungen vornehmen möchten, sollten Sie einen [Stagingmodus](how-to-connect-sync-staging-server.md) -Server einplanen.
 
 |Thema |Link|  
 | --- | --- |
 |Unterstützte Topologien | [Topologien für Azure AD Connect](plan-connect-topologies.md)|
 |Entwurfskonzepte | [Entwurfskonzepte für Azure AD Connect](plan-connect-design-concepts.md)|
 |Für die Installation verwendete Konten | [Weitere Informationen zu den Anmeldeinformationen und Berechtigungen von Azure AD Connect](reference-connect-accounts-permissions.md)|
-|Operative Planung | [Azure AD Connect-Synchronisierung: Operative Aufgaben und Überlegungen](how-to-connect-sync-operations.md)|
+|Operative Planung | [Azure AD Connect-Synchronisierung: Operative Aufgaben und Überlegungen](./how-to-connect-sync-staging-server.md)|
 |Optionen für die Benutzeranmeldung | [Azure AD Connect-Optionen für die Benutzeranmeldung](plan-connect-user-signin.md)|
 
 ## <a name="configure-sync-features"></a>Konfigurieren der Synchronisierungsfunktionen
@@ -66,7 +66,7 @@ Azure AD Connect verfügt über mehrere Funktionen, die Sie optional aktivieren 
 
 [Kennworthashsynchronisierung](how-to-connect-password-hash-synchronization.md) synchronisiert das Kennworthash in Active Directory mit Azure AD. So kann der Endbenutzer das gleiche Kennwort lokal und in der Cloud verwenden, es jedoch nur an einem Ort verwalten. Da es das lokale Active Directory als Autorität verwendet, können Sie auch Ihre eigene Kennwortrichtlinie verwenden.
 
-[Kennwortrückschreiben](../authentication/quickstart-sspr.md) ermöglicht es den Benutzern, ihre Kennwörter in der Cloud zu ändern und zurückzusetzen und die lokale Kennwortrichtlinie anzuwenden.
+[Kennwortrückschreiben](../authentication/tutorial-enable-sspr.md) ermöglicht es den Benutzern, ihre Kennwörter in der Cloud zu ändern und zurückzusetzen und die lokale Kennwortrichtlinie anzuwenden.
 
 [Geräterückschreiben](how-to-connect-device-writeback.md) ermöglicht es Ihnen, ein in Azure AD registriertes Gerät wieder in das lokale Active Directory zurückzuschreiben, damit es für bedingten Zugriff verwendet werden kann.
 
@@ -80,7 +80,7 @@ Die Funktion zum [Verhindern eines versehentlichen Löschvorgangs](how-to-connec
 |Konfigurieren der Filterung | [Azure AD Connect-Synchronisierung: Konfigurieren der Filterung](how-to-connect-sync-configure-filtering.md)|
 |Kennworthashsynchronisierung | [Kennworthashsynchronisierung](how-to-connect-password-hash-synchronization.md)|
 |Passthrough-Authentifizierung | [Passthrough-Authentifizierung](how-to-connect-pta.md)
-|Kennwortrückschreiben | [Erste Schritte mit der Kennwortverwaltung](../authentication/quickstart-sspr.md)|
+|Kennwortrückschreiben | [Erste Schritte mit der Kennwortverwaltung](../authentication/tutorial-enable-sspr.md)|
 |Geräterückschreiben | [Aktivieren des Geräterückschreibens in Azure AD Connect](how-to-connect-device-writeback.md)|
 |Verhindern eines versehentlichen Löschvorgangs | [Azure AD Connect-Synchronisierung: Verhindern von versehentlichen Löschvorgängen](how-to-connect-sync-feature-prevent-accidental-deletes.md)|
 |automatische Upgrade | [Azure AD Connect: Automatisches Upgrade](how-to-connect-install-automatic-upgrade.md)|
@@ -108,7 +108,7 @@ Das synchronisierte Konfigurationsmodell wird als [deklarative Bereitstellung](c
 
 Azure AD Connect bietet mehrere Features, die die Verbunderstellung mit Azure AD unter Verwendung von AD FS sowie die Verwaltung Ihrer Verbundvertrauensstellung vereinfachen. Azure AD Connect unterstützt AD FS ab Windows Server 2012 R2.
 
-[Aktualisieren Sie das SSL-Zertifikat der AD FS-Farm](how-to-connect-fed-ssl-update.md), auch wenn Sie Azure AD nicht für die Verwaltung Ihrer Verbundvertrauensstellung verwenden.
+[Aktualisieren Sie das TLS/SSL-Zertifikat der AD FS-Farm](how-to-connect-fed-ssl-update.md), auch wenn Sie Azure AD Connect nicht für die Verwaltung Ihrer Verbundvertrauensstellung verwenden.
 
 [Fügen Sie Ihrer Farm einen AD FS-Server hinzu](how-to-connect-fed-management.md#addadfsserver), um die Farm nach Bedarf zu erweitern.
 
@@ -124,7 +124,7 @@ Wenn Ihr AD FS-Server nicht für die automatische Aktualisierung von Zertifikate
 |Alle AD FS-Artikel | [Azure AD Connect und Verbund](how-to-connect-fed-whatis.md)|
 |Konfigurieren von AD FS mit Unterdomänen | [Unterstützung mehrerer Domänen für den Verbund mit Azure AD](how-to-connect-install-multiple-domains.md)|
 |Verwalten der AD FS-Farm | [Verwaltung und Anpassung der Active Directory-Verbunddienste mit Azure AD Connect](how-to-connect-fed-management.md)|
-|Manuelles Aktualisieren von Verbundzertifikaten | [Erneuern von Verbundzertifikaten für Office 365 und Azure AD](how-to-connect-fed-o365-certs.md)|
+|Manuelles Aktualisieren von Verbundzertifikaten | [Erneuern von Verbundzertifikaten für Microsoft 365 und Azure AD](how-to-connect-fed-o365-certs.md)|
 
 
 ## <a name="get-started-with-azure-ad-connect-health"></a>Erste Schritte mit Azure AD Connect Health
@@ -143,12 +143,12 @@ Der Einstieg in Azure AD Connect Health ist einfach:
 * Vergewissern Sie sich, dass Sie [die Anforderungen für Azure AD Connect Health erfüllen](how-to-connect-health-agent-install.md#requirements).
 * Erste Schritte mit Azure AD Connect Health für AD FS
     * [Laden Sie den Azure AD Connect Health-Agent für AD FS herunter.](https://go.microsoft.com/fwlink/?LinkID=518973)
-    * [Zeigen Sie die Installationsanweisungen an](how-to-connect-health-agent-install.md#installing-the-azure-ad-connect-health-agent-for-ad-fs).
+    * [Zeigen Sie die Installationsanweisungen an](how-to-connect-health-agent-install.md#install-the-agent-for-ad-fs).
 * Erste Schritte mit Azure AD Connect Health für die Sychronisierung
     * [Laden Sie die aktuelle Version von Azure AD Connect herunter, und installieren Sie sie](https://go.microsoft.com/fwlink/?linkid=615771). Der Health-Agent für die Synchronisierung wird im Rahmen der Installation von Azure AD Connect installiert (Version 1.0.9125.0 oder höher).
 * Erste Schritte mit Azure AD Connect Health für AD DS
     * [Laden Sie den Azure AD Connect Health-Agent für AD DS herunter](https://go.microsoft.com/fwlink/?LinkID=820540).
-    * [Zeigen Sie die Installationsanweisungen an](how-to-connect-health-agent-install.md#installing-the-azure-ad-connect-health-agent-for-ad-ds).
+    * [Zeigen Sie die Installationsanweisungen an](how-to-connect-health-agent-install.md#install-the-agent-for-azure-ad-ds).
 
 
 ## <a name="azure-ad-connect-health-portal"></a>Azure AD Connect Health-Portal
@@ -162,10 +162,11 @@ Das Azure AD Connect Health-Portal zeigt Warnungen, Leistungsüberwachungsdaten 
 * **Schnellstart**: Wenn Sie diese Option auswählen, wird das Blatt **Schnellstart** geöffnet. Sie können Sie den Azure AD Connect Health-Agent herunterladen, indem Sie **Tools abrufen** auswählen. Sie können auch auf die Dokumentation zugreifen und Feedback geben.
 * **Azure Active Directory Connect (Sync)** : Diese Option zeigt Ihre Azure AD Connect-Server an, die derzeit von Azure AD Connect Health überwacht werden. Der Eintrag **Synchronisierungsfehler** zeigt allgemeine Synchronisierungsfehler des ersten integrierten Synchronisierungsdiensts nach Kategorien. Wenn Sie den Eintrag **Synchronisierungsdienste** auswählen, wird ein Blatt mit Informationen zu Ihren Azure AD Connect-Servern geöffnet. Weitere Informationen zu den Funktionen finden Sie unter [Verwenden von Azure AD Connect Health für die Synchronisierung](how-to-connect-health-sync.md).
 * **Active Directory-Verbunddienste**: Diese Option zeigt alle AD FS-Dienste an, die derzeit von Azure AD Connect Health überwacht werden. Wenn Sie eine Instanz auswählen, wird ein Blatt mit Informationen zu dieser Dienstinstanz geöffnet, darunter beispielsweise eine Übersicht, Eigenschaften, Warnungen, Überwachungsinformationen und eine Nutzungsanalyse. Weitere Informationen zu den Funktionen finden Sie unter [Verwenden von Azure AD Connect Health mit AD FS](how-to-connect-health-adfs.md).
-* **Active Directory Domain Services**: Diese Option zeigt alle AD DS-Gesamtstrukturen an, die derzeit von Azure AD Connect Health überwacht werden. Wenn Sie eine Gesamtstruktur auswählen, wird ein Blatt mit Informationen zu dieser Gesamtstruktur geöffnet. Diese Informationen umfassen eine Übersicht mit den wichtigsten Informationen, das Domänencontroller-Dashboard, das Replikationsstatus-Dashboard, Warnungen und Überwachungsdaten. Weitere Informationen zu den Funktionen finden Sie unter [Verwenden von Azure AD Connect Health mit AD DS](how-to-connect-health-adds.md).
+* **Active Directory Domain Services:** Diese Option zeigt alle AD DS-Gesamtstrukturen an, die derzeit von Azure AD Connect Health überwacht werden. Wenn Sie eine Gesamtstruktur auswählen, wird ein Blatt mit Informationen zu dieser Gesamtstruktur geöffnet. Diese Informationen umfassen eine Übersicht mit den wichtigsten Informationen, das Domänencontroller-Dashboard, das Replikationsstatus-Dashboard, Warnungen und Überwachungsdaten. Weitere Informationen zu den Funktionen finden Sie unter [Verwenden von Azure AD Connect Health mit AD DS](how-to-connect-health-adds.md).
 * **Konfigurieren**: In diesem Abschnitt können Sie folgende Optionen aktivieren oder deaktivieren:
 
-  - Der Eintrag **Einstellungen** umfasst grundlegende Konfigurationen der Agents. Die Einstellung für automatische Upgrades ermöglicht die automatische Aktualisierung des Azure AD Connect Health-Agents auf die aktuelle Version: Eine automatische Aktualisierung auf die aktuelle Version des Azure AD Connect Health-Agents wird durchgeführt, sobald diese verfügbar ist. Diese Einstellung ist standardmäßig aktiviert. Microsoft zu Zwecken der Problembehandlung den Zugriff auf die Integritätsdaten für Azure AD-Verzeichnis erlauben: Wenn Sie diese Einstellung aktivieren, stehen Microsoft die gleichen Daten zur Verfügung wie Ihnen. Diese Informationen können bei der Problembehandlung und zur Unterstützung bei der Fehlerbeseitigung von Nutzen sein. Diese Einstellung ist standardmäßig deaktiviert.
+   - **Automatisches Update** des Azure AD Connect Health-Agents auf die aktuelle Version: Der Azure AD Connect Health-Agent wird automatisch aktualisiert, wenn neue Versionen verfügbar sind. Diese Option ist standardmäßig aktiviert.
+   - **Zugriff auf Daten** vom Azure AD-Verzeichnisintegritätsdienst durch Microsoft nur zur Problembehandlung: Wenn diese Option aktiviert ist, kann Microsoft auf dieselben Daten zugreifen, die vom Benutzer angezeigt werden. Diese Informationen können bei der Problembehandlung hilfreich sein und die nötige Unterstützung bereitstellen. Diese Option ist standardmäßig deaktiviert.
 * Im Abschnitt **Rollenbasierte Zugriffssteuerung (IAM)** wird der Zugriff auf Connect Health-Daten auf Rollenbasis verwaltet. 
 
 ## <a name="next-steps"></a>Nächste Schritte

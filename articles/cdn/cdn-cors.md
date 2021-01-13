@@ -11,21 +11,21 @@ ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 204183fa25203a094eecd8df85a8bfd5dcf271cc
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: f7edf790e526329dd285d03a31137a26220e52ee
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67593971"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96018646"
 ---
 # <a name="using-azure-cdn-with-cors"></a>Verwendung von Azure CDN mit CORS
 ## <a name="what-is-cors"></a>Was ist CORS?
 CORS (Cross Origin Resource Sharing; Ressourcenfreigabe zwischen verschiedenen Ursprüngen) ist eine HTTP-Funktion, die einer Webanwendung, die in einer Domäne ausgeführt wird, den Zugriff auf Ressourcen in einer anderen Domäne ermöglicht. Alle modernen Webbrowser eine Sicherheitseinschränkung, die als [Same Origin Policy](https://www.w3.org/Security/wiki/Same_Origin_Policy)bekannt ist, um die Möglichkeiten für Cross-Site Scripting-Angriffe zu verringern.  Dies hindert eine Website daran, APIs in einer anderen Domäne aufzurufen.  CORS bietet eine sichere Methode, um einem Ursprung (der Ursprungsdomäne) das Aufrufen von APIs in einem anderen Ursprung zu ermöglichen.
 
-## <a name="how-it-works"></a>So funktioniert's
+## <a name="how-it-works"></a>Funktionsweise
 Es gibt zwei Arten von CORS-Anforderungen: *einfache Anforderungen* und *komplexe Anforderungen*.
 
 ### <a name="for-simple-requests"></a>Für einfache Anforderungen gilt Folgendes:
@@ -63,17 +63,28 @@ Wenn Anforderungen schon an CDN gesendet wurden, bevor CORS auf den Ursprung kon
 ## <a name="multiple-origin-scenarios"></a>Szenarien mit mehreren Ursprüngen
 Wenn Sie eine bestimmte Liste von Ursprüngen für CORS zulassen müssen, wird es etwas komplizierter. Das Problem tritt auf, wenn CDN den **Access-Control-Allow-Origin** -Header für den ersten CORS-Ursprung zwischenspeichert.  Bei einer Folgeanforderung durch einen anderen CORS-Ursprung stellt das CDN den zwischengespeicherten **Access-Control-Allow-Origin**-Header bereit, dieser stimmt jedoch nicht überein.  Es gibt mehrere Möglichkeiten, dies zu korrigieren:
 
+### <a name="azure-cdn-standard-profiles"></a>Azure CDN Standard-Profile
+Unter Azure CDN Standard von Microsoft können Sie eine Regel in der [Standardregel-Engine](cdn-standard-rules-engine-reference.md) erstellen, um den **Origin**-Header (Ursprung) in der Anforderung zu überprüfen. Wenn es sich hierbei um einen gültigen Ursprung handelt, legt Ihre Regel den **Access-Control-Allow-Origin**-Header auf den gewünschten Wert fest. In diesem Fall wird der **Access-Control-Allow-Origin**-Header des Ursprungsservers der Datei ignoriert und die CDN-Regel-Engine verwaltet vollständig die zulässigen CORS-Ursprünge.
+
+![Regelbeispiel mit der Standard-Regel-Engine](./media/cdn-cors/cdn-standard-cors.png)
+
+> [!TIP]
+> Sie können Ihrer Regel zusätzliche Aktionen hinzufügen, um zusätzliche Antwortheader zu ändern, z. B. **Access-Control-Allow-Methods**.
+> 
+
+Unter [Azure CDN-Standard von Akamai](cdn-query-string.md) ist der einzige Mechanismus, um mehrere Ursprünge ohne Verwendung des Platzhalterursprungs zuzulassen, die Verwendung der **Zwischenspeicherung von Abfragezeichenfolgen**. Aktivieren Sie Abfragezeichenfolgen für den CDN-Endpunkt, und verwenden Sie anschließend eine eindeutige Abfragezeichenfolge für Anforderungen von den einzelnen zulässigen Domänen. Dadurch speichert das CDN ein separates Objekt für jede eindeutige Abfragezeichenfolge zwischen. Dieser Ansatz ist jedoch nicht ideal, da so mehrere Kopien derselben Datei im CDN zwischengespeichert werden.  
+
 ### <a name="azure-cdn-premium-from-verizon"></a>Azure CDN Premium von Verizon
-Die beste Möglichkeit ist die Verwendung von **Azure CDN Premium von Verizon**, wodurch erweiterte Funktionen geboten werden. 
+Unter Verwendung der Verizon Premium-Regel-Engine müssen Sie [eine Regel erstellen](./cdn-verizon-premium-rules-engine.md), um den **Ursprungsheader** in der Anforderung zu überprüfen.  Wenn es sich hierbei um einen gültigen Ursprung handelt, legt Ihre Regel den **Access-Control-Allow-Origin** -Header mit dem in der Anforderung bereitgestellten Ursprung fest.  Wenn der im Header **Origin** angegebene Ursprung nicht zulässig ist, sollte Ihre Regel den **Access-Control-Allow-Origin**-Header auslassen, der den Browser dazu bringt, die Anforderung abzulehnen. 
 
-Sie müssen [eine Regel erstellen](cdn-rules-engine.md) , um den **Ursprungsheader** in der Anforderung zu überprüfen.  Wenn es sich hierbei um einen gültigen Ursprung handelt, legt Ihre Regel den **Access-Control-Allow-Origin** -Header mit dem in der Anforderung bereitgestellten Ursprung fest.  Wenn der im Header **Origin** angegebene Ursprung nicht zulässig ist, sollte Ihre Regel den **Access-Control-Allow-Origin**-Header auslassen, der den Browser dazu bringt, die Anforderung abzulehnen. 
-
-Es gibt zwei Möglichkeiten, dies mit der Regel-Engine zu tun. In beiden Fällen wird der **Access-Control-Allow-Origin**-Header des Ursprungsservers der Datei ignoriert und die CDN-Regel-Engine verwaltet vollständig die zulässigen CORS-Ursprünge.
+Es gibt zwei Möglichkeiten, dies mit der Premium-Regel-Engine zu tun. In beiden Fällen wird der **Access-Control-Allow-Origin**-Header des Ursprungsservers der Datei ignoriert und die CDN-Regel-Engine verwaltet vollständig die zulässigen CORS-Ursprünge.
 
 #### <a name="one-regular-expression-with-all-valid-origins"></a>Ein regulärer Ausdruck mit allen gültigen Ursprüngen
 In diesem Fall erstellen Sie einen regulären Ausdruck, der alle Ursprünge enthält, die Sie zulassen möchten: 
 
-    https?:\/\/(www\.contoso\.com|contoso\.com|www\.microsoft\.com|microsoft.com\.com)$
+```http
+https?:\/\/(www\.contoso\.com|contoso\.com|www\.microsoft\.com|microsoft.com\.com)$
+```
 
 > [!TIP]
 > **Azure CDN Premium von Verizon** verwendet [Perl Compatible Regular Expressions](https://pcre.org/) als Engine für reguläre Ausdrücke.  Sie können ein Tool wie [Regular Expressions 101](https://regex101.com/) verwenden, um Ihre regulären Ausdrücke zu überprüfen.  Beachten Sie, dass das Zeichen „/“ in regulären Ausdrücken zulässig ist und nicht mit Escapezeichen versehen werden muss. Dieses Zeichen in Escapezeichen zu setzen ist jedoch die beste Methode und wird von einigen RegEx-Validierern erwartet.
@@ -92,8 +103,4 @@ Statt reguläre Ausdrücke können Sie stattdessen eine separate Regel für jede
 > [!TIP]
 > Im obigen Beispiel weist die Verwendung des Platzhalterzeichens „*“ die Regel-Engine an, sowohl HTTP als auch HTTPS abzugleichen.
 > 
-> 
-
-### <a name="azure-cdn-standard-profiles"></a>Azure CDN Standard-Profile
-Bei Azure CDN Standard-Profilen (**Azure CDN Standard von Microsoft**, **Azure CDN Standard von Akamai** und **Azure CDN Standard von Verizon**) besteht die einzige Möglichkeit, mehrere Ursprünge zuzulassen, ohne Platzhalterzeichen zu verwenden, in der Verwendung der [Zwischenspeicherung von Abfragezeichenfolgen](cdn-query-string.md). Aktivieren Sie Abfragezeichenfolgen für den CDN-Endpunkt, und verwenden Sie anschließend eine eindeutige Abfragezeichenfolge für Anforderungen von den einzelnen zulässigen Domänen. Dadurch speichert das CDN ein separates Objekt für jede eindeutige Abfragezeichenfolge zwischen. Dieser Ansatz ist jedoch nicht ideal, da so mehrere Kopien derselben Datei im CDN zwischengespeichert werden.  
-
+>

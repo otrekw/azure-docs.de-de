@@ -1,26 +1,27 @@
 ---
-title: 'Azure-VMware-Lösung von CloudSimple: Erstellen eines CloudSimple-Diensts'
-description: Beschreibt, wie der CloudSimple-Dienst im Azure-Portal erstellt wird
-author: sharaths-cs
-ms.author: b-shsury
+title: 'Azure VMware Solution by CloudSimple: Erstellen eines CloudSimple-Diensts'
+description: Hier erfahren Sie, wie der CloudSimple-Dienst im Azure-Portal erstellt wird. Überprüfen Sie die erforderliche Konfiguration, bevor Sie beginnen.
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/19/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: d6d4af28d79b2375e774da98d4fdb1ad9dc22063
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 53f2d0fc9f73985bd70792c8c3b7607eb4c560fa
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71035720"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97896293"
 ---
-# <a name="create-the-azure-vmware-solution-by-cloudsimple-service"></a>Erstellen der Azure-VMware-Lösung des CloudSimple-Diensts
+# <a name="create-the-azure-vmware-solution-by-cloudsimple-service"></a>Erstellen des Azure VMware Solution by CloudSimple-Diensts
 
-Als ersten Schritt für die Azure-VMware-Lösung von CloudSimple erstellen Sie den Dienst „Azure-VMware-Lösung von CloudSimple“ im Azure-Portal.
+Als ersten Schritt in Azure VMware Solution by CloudSimple erstellen Sie den Dienst „Azure VMware Solution by CloudSimple“ im Azure-Portal.
 
-> [!IMPORTANT]
-> Vor dem Erstellen des CloudSimple-Diensts müssen Sie den Microsoft.VMwareCloudSimple-Ressourcenanbieter in Ihrem Azure-Abonnement registrieren. Führen Sie dazu die Schritte in [Aktivieren des Microsoft.VMwareCloudSimple-Ressourcenanbieters in Ihrem Azure-Abonnement](enable-cloudsimple-service.md) aus.
+## <a name="before-you-begin"></a>Voraussetzungen
+
+Ordnen Sie einen /28-CIDR-Block für das Gatewaysubnetz zu. Ein Gatewaysubnetz ist für jeden CloudSimple-Dienst erforderlich und für die Region spezifisch, in der es erstellt wird. Das Gatewaysubnetz wird für Edge-Netzwerkdienste verwendet und erfordert einen CIDR-Block vom Typ „/28“. Der Adressraum des Gatewaysubnetzes muss eindeutig sein. Er darf sich nicht mit einem Netzwerk überschneiden, das mit der CloudSimple-Umgebung kommuniziert. Zu den Netzwerken, die mit CloudSimple kommunizieren, gehören unter anderem lokale Netzwerke und virtuelle Azure-Netzwerke.
 
 ## <a name="sign-in-to-azure"></a>Anmelden bei Azure
 
@@ -46,5 +47,6 @@ Der Dienst wird erstellt und zur Liste der Dienste hinzugefügt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
+* Erfahren Sie, wie Sie [Knoten bereitstellen](create-nodes.md).
 * Erfahren Sie mehr über das [Erstellen einer privaten Cloud](create-private-cloud.md).
 * Erfahren Sie mehr über das [Konfigurieren einer privaten Cloudumgebung](quickstart-create-private-cloud.md).

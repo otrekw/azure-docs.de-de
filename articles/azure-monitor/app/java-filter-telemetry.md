@@ -1,24 +1,22 @@
 ---
-title: Filtern von Azure Application Insights-Telemetriedaten in einer Java-Web-App | Microsoft Docs
+title: Filtern von Azure Application Insights-Telemetriedaten in einer Java-Web-App
 description: Telemetriedatenverkehr lässt sich reduzieren, indem Sie die Ereignisse herausfiltern, die Sie nicht überwachen müssen.
-services: application-insights
-documentationcenter: ''
-author: mrbullwinkle
-manager: carmonm
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 3/14/2019
-ms.author: mbullwin
-ms.openlocfilehash: 9cf939b241da01be55c1b2ba5f00a5131ab94c06
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+author: MS-jgol
+ms.custom: devx-track-java
+ms.author: jgol
+ms.openlocfilehash: 1e37b38170fb32aa4f9bdb64318ac36767c4bf78
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67061159"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97653145"
 ---
 # <a name="filter-telemetry-in-your-java-web-app"></a>Filtern von Telemetriedaten in einer Java-Web-App
+
+> [!IMPORTANT]
+> Der empfohlene Ansatz zur Überwachung von Java-Anwendungen ist die automatische Instrumentierung ohne Änderung des Codes. Befolgen Sie die Leitlinien für den [Application Insights Java 3.0-Agent](./java-in-process-agent.md).
 
 Filter bieten eine Möglichkeit zur Auswahl der Telemetriedaten, die Ihre [Java-Web-App an Application Insights sendet](java-get-started.md). Es gibt einige Standardfilter, die Sie verwenden können, und Sie können auch eigene benutzerdefinierte Filter erstellen.
 
@@ -31,7 +29,7 @@ Es folgen die Standardfilter:
 
 > [!NOTE]
 > Filter verzerren die Metriken Ihrer App. Wenn Sie z.B. langsame Reaktionszeiten untersuchen möchten, legen Sie einen Filter fest, der schnelle Antwortzeiten ausschließt. Ihnen sollte jedoch klar sein, dass die von Application Insights gemeldeten durchschnittlichen Antwortzeiten langsamer als die tatsächliche Geschwindigkeit sind und dass die Anzahl der Anforderungen kleiner als die tatsächliche Anzahl ist.
-> Wenn dies von Belang ist, arbeiten Sie stattdessen mit [Stichproben](../../azure-monitor/app/sampling.md).
+> Wenn dies von Belang ist, arbeiten Sie stattdessen mit [Stichproben](./sampling.md).
 
 ## <a name="setting-filters"></a>Festlegen von Filtern
 
@@ -85,10 +83,7 @@ Fügen Sie der Datei „ApplicationInsights.xml“ wie in diesem Beispiel den Ab
 
 ```
 
-
-
-
-[Überprüfen des vollständigen Satzes integrierter Prozessoren](https://github.com/Microsoft/ApplicationInsights-Java/tree/master/core/src/main/java/com/microsoft/applicationinsights/internal/processor).
+[Überprüfen des vollständigen Satzes integrierter Prozessoren](https://github.com/Microsoft/ApplicationInsights-Java/tree/master/core/src/main/java/com/microsoft/applicationinsights/internal).
 
 ## <a name="built-in-filters"></a>Integrierte Filter
 
@@ -160,7 +155,7 @@ Filtern Sie Telemetriedaten für bestimmte synthetische Quellen heraus:
 
 ### <a name="telemetry-event-filter"></a>Telemetriefilter „Ereignis“
 
-Filtert benutzerdefinierte (mit [TrackEvent()](../../azure-monitor/app/api-custom-events-metrics.md#trackevent) protokollierte) Ereignisse.
+Filtert benutzerdefinierte (mit [TrackEvent()](./api-custom-events-metrics.md#trackevent) protokollierte) Ereignisse.
 
 
 ```XML
@@ -176,7 +171,7 @@ Filtert benutzerdefinierte (mit [TrackEvent()](../../azure-monitor/app/api-custo
 
 ### <a name="trace-telemetry-filter"></a>Telemetriefilter „Ablaufverfolgung“
 
-Filtert (mit [TrackTrace()](../../azure-monitor/app/api-custom-events-metrics.md#tracktrace) oder einem [Protokollierungsframework-Collector](java-trace-logs.md) protokollierte) Protokollablaufverfolgungen.
+Filtert (mit [TrackTrace()](./api-custom-events-metrics.md#tracktrace) oder einem [Protokollierungsframework-Collector](java-trace-logs.md) protokollierte) Protokollablaufverfolgungen.
 
 ```XML
 
@@ -208,32 +203,31 @@ Erstellen Sie in Ihrem Code eine Klasse, die `TelemetryProcessor` implementiert:
 
     public class SuccessFilter implements TelemetryProcessor {
 
-       /* Any parameters that are required to support the filter.*/
-       private final String successful;
+        /* Any parameters that are required to support the filter.*/
+        private final String successful;
 
-       /* Initializers for the parameters, named "setParameterName" */
-       public void setNotNeeded(String successful)
-       {
-          this.successful = successful;
-       }
-
-       /* This method is called for each item of telemetry to be sent.
-          Return false to discard it.
-          Return true to allow other processors to inspect it. */
-       @Override
-       public boolean process(Telemetry telemetry) {
-        if (telemetry == null) { return true; }
-        if (telemetry instanceof RequestTelemetry)
+        /* Initializers for the parameters, named "setParameterName" */
+        public void setNotNeeded(String successful)
         {
-            RequestTelemetry requestTelemetry = (RequestTelemetry)telemetry;
-            return request.getSuccess() == successful;
+            this.successful = successful;
         }
-        return true;
-       }
+
+        /* This method is called for each item of telemetry to be sent.
+           Return false to discard it.
+           Return true to allow other processors to inspect it. */
+        @Override
+        public boolean process(Telemetry telemetry) {
+            if (telemetry == null) { return true; }
+            if (telemetry instanceof RequestTelemetry)
+            {
+                RequestTelemetry requestTelemetry = (RequestTelemetry)    telemetry;
+                return request.getSuccess() == successful;
+            }
+            return true;
+        }
     }
 
 ```
-
 
 ### <a name="2-invoke-your-filter-in-the-configuration-file"></a>2. Aufrufen des Filters in der Konfigurationsdatei
 
@@ -276,4 +270,5 @@ Sie müssen Ihre eigenen Filterparameter in `application.properties` erstellen u
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Stichproben](../../azure-monitor/app/sampling.md): Erwägen Sie die Stichprobennahme als Alternative, die Ihre Metriken nicht verzerrt.
+* [Stichproben](./sampling.md): Erwägen Sie die Stichprobennahme als Alternative, die Ihre Metriken nicht verzerrt.
+

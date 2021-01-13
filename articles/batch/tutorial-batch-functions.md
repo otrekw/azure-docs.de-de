@@ -1,30 +1,33 @@
 ---
-title: Auslösen eines Batch-Auftrags mithilfe von Azure Functions
+title: Tutorial – Auslösen eines Batch-Auftrags mithilfe von Azure Functions
 description: 'Tutorial: Anwenden von OCR auf gescannte Dokumente beim Hinzufügen zu einem Storage-Blob'
-services: batch
-author: laurenhughes
-manager: jeconnoc
-ms.assetid: ''
-ms.service: batch
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 05/30/2019
 ms.author: peshultz
-ms.custom: mvc
-ms.openlocfilehash: d5a5197227ff62ca0c610e2c4e269480690d3faf
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.custom: mvc, devx-track-csharp
+ms.openlocfilehash: b441b4c4fcbeb089cef24c3a84fa33021e7840de
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67343089"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97106381"
 ---
 # <a name="tutorial-trigger-a-batch-job-using-azure-functions"></a>Tutorial: Auslösen eines Batch-Auftrags mithilfe von Azure Functions
 
-In diesem Tutorial erfahren Sie, wie Sie mithilfe von Azure Functions einen Batch-Auftrag auslösen. Wir sehen uns ein Beispiel an, bei dem die optische Zeichenerkennung (OCR) über Azure Batch auf Dokumente angewandt wird, die einem Azure Storage-Blobcontainer hinzugefügt werden. Zur Optimierung der OCR-Verarbeitung wird eine Azure-Funktion konfiguriert, die bei jedem Hinzufügen einer Datei zum Blobcontainer einen Batch-OCR-Auftrag ausführt.
+In diesem Tutorial erfahren Sie, wie Sie mithilfe von [Azure Functions](../azure-functions/functions-overview.md) einen Batch-Auftrag auslösen. Wir sehen uns ein Beispiel an, bei dem die optische Zeichenerkennung (OCR) über Azure Batch auf Dokumente angewandt wird, die einem Azure Storage-Blobcontainer hinzugefügt werden. Zur Optimierung der OCR-Verarbeitung wird eine Azure-Funktion konfiguriert, die bei jedem Hinzufügen einer Datei zum Blobcontainer einen Batch-OCR-Auftrag ausführt. Folgendes wird vermittelt:
+
+> [!div class="checklist"]
+> * Erstellen von Pools und Aufträgen mithilfe von Batch Explorer
+> * Erstellen von Blobcontainern und einer Shared Access Signature (SAS) mithilfe von Storage-Explorer
+> * Erstellen einer per Blob ausgelösten Azure-Funktion
+> * Hochladen von Eingabedateien in Storage
+> * Überwachen der Aufgabenausführung
+> * Abrufen von Ausgabedateien
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Ein Azure-Abonnement. Wenn Sie keins besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
+* Ein Azure-Abonnement. Sollten Sie kein Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 * Ein Azure Batch-Konto und ein verknüpftes Azure Storage-Konto. Weitere Informationen zum Erstellen und Verknüpfen von Konten finden Sie unter [Erstellen eines Batch-Kontos](quick-create-portal.md#create-a-batch-account).
 * [Batch Explorer](https://azure.github.io/BatchExplorer/)
 * [Azure Storage-Explorer](https://azure.microsoft.com/features/storage-explorer/)
@@ -60,7 +63,7 @@ In diesem Abschnitt erstellen Sie mit Batch Explorer den Batch-Pool und den Batc
 Hier erstellen Sie Blobcontainer, in denen die Eingabe- und Ausgabedateien für den OCR-Batch-Auftrag gespeichert werden.
 
 1. Melden Sie sich mit Ihren Azure-Anmeldeinformationen bei Storage-Explorer an.
-1. Erstellen Sie unter Verwendung des mit Ihrem Batch-Konto verknüpften Speicherkontos entsprechend den unter [Erstellen eines Blobcontainers](https://docs.microsoft.com/azure/vs-azure-tools-storage-explorer-blobs#create-a-blob-container) beschriebenen Schritten zwei Blobcontainer (einen für Eingabedateien und einen für Ausgabedateien).
+1. Erstellen Sie unter Verwendung des mit Ihrem Batch-Konto verknüpften Speicherkontos entsprechend den unter [Erstellen eines Blobcontainers](../vs-azure-tools-storage-explorer-blobs.md#create-a-blob-container) beschriebenen Schritten zwei Blobcontainer (einen für Eingabedateien und einen für Ausgabedateien).
 
 In diesem Beispiel hat der Eingabecontainer den Namen `input` und ist der Speicherort, in den alle Dokumente ohne OCR zunächst zur Verarbeitung hochgeladen werden. In den Ausgabecontainer mit dem Namen `output` schreibt der Batch-Auftrag die mit OCR verarbeiteten Dokumente.  
     * In diesem Beispiel hat der Eingabecontainer den Namen `input`, und der Ausgabecontainer heißt `output`.  
@@ -73,7 +76,7 @@ Erstellen Sie in Storage-Explorer eine Shared Access Signature (SAS) für den Au
 
 In diesem Abschnitt erstellen Sie die Azure-Funktion, die den OCR-Batch-Auftrag auslöst, wenn eine Datei in den Eingabecontainer hochgeladen wird.
 
-1. Führen Sie zum Erstellen der Funktion die Schritte unter [Erstellen einer Funktion, die durch Azure Blob Storage ausgelöst wird](https://docs.microsoft.com/azure/azure-functions/functions-create-storage-blob-triggered-function) aus.
+1. Führen Sie zum Erstellen der Funktion die Schritte unter [Erstellen einer Funktion, die durch Azure Blob Storage ausgelöst wird](../azure-functions/functions-create-storage-blob-triggered-function.md) aus.
     1. Wenn Sie zur Eingabe eines Speicherkontos aufgefordert werden, geben Sie das gleiche Speicherkonto an, das Sie mit Ihrem Batch-Konto verknüpft haben.
     1. Wählen Sie „.NET“ für **Runtimestapel** aus. Wir schreiben die Funktion in C#, um das Batch .NET SDK zu nutzen.
 1. Verwenden Sie nach dem Erstellen der per Blob ausgelösten Funktion die Dateien [`run.csx`](https://github.com/Azure-Samples/batch-functions-tutorial/blob/master/run.csx) und [`function.proj`](https://github.com/Azure-Samples/batch-functions-tutorial/blob/master/function.proj) aus GitHub in der Funktion.
@@ -92,8 +95,8 @@ Zusätzlich können Sie die Protokolldateien unten im Azure Functions-Web-Editor
 2019-05-29T19:45:25.846 [Information] Creating job...
 2019-05-29T19:45:25.847 [Information] Accessing input container <inputContainer>...
 2019-05-29T19:45:25.847 [Information] Adding <fileName> as a resource file...
-2019-06-21T20:02:35.129 [Information] Name of output text file: <outputTxtFile>
-2019-06-21T20:02:35.130 [Information] Name of output PDF file: <outputPdfFile>
+2019-05-29T19:45:25.848 [Information] Name of output text file: <outputTxtFile>
+2019-05-29T19:45:25.848 [Information] Name of output PDF file: <outputPdfFile>
 2019-05-29T19:45:26.200 [Information] Adding OCR task <taskID> for <fileName> <size of fileName>...
 ```
 
@@ -102,9 +105,13 @@ Um die Ausgabedateien von Storage-Explorer auf den lokalen Computer herunterzula
 > [!TIP]
 > Die heruntergeladenen Dateien können durchsucht werden, wenn sie in einem PDF-Reader geöffnet werden.
 
+## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
+
+Ihnen werden während der Ausführung der Knoten auch dann Gebühren für den Pool berechnet, wenn keine Aufträge geplant sind. Es ist ratsam, den Pool zu löschen, wenn Sie ihn nicht mehr benötigen. Klicken Sie in der Kontoansicht auf **Pools** und auf den Namen des Pools. Wählen Sie anschließend die Option **Löschen**. Beim Löschen des Pools werden alle Aufgabenausgaben auf den Knoten gelöscht. Die Ausgabedateien verbleiben aber im Speicherkonto. Wenn Sie nicht mehr benötigt werden, können Sie auch das Batch-Konto und das Speicherkonto löschen.
+
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie Folgendes gelernt: 
+In diesem Tutorial haben Sie gelernt, wie die folgenden Aufgaben ausgeführt werden:
 
 > [!div class="checklist"]
 > * Erstellen von Pools und Aufträgen mithilfe von Batch Explorer
@@ -114,6 +121,10 @@ In diesem Tutorial haben Sie Folgendes gelernt:
 > * Überwachen der Aufgabenausführung
 > * Abrufen von Ausgabedateien
 
-* Weitere Beispiele zur Verwendung der .NET-API zum Planen und Verarbeiten von Batch-Workloads finden Sie in den [Beispielen auf GitHub](https://github.com/Azure-Samples/azure-batch-samples/tree/master/CSharp). 
 
-* Weitere Azure Functions-Auslöser, die Sie zum Ausführen von Batch-Workloads verwenden können, finden Sie in der [Dokumentation zu Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-triggers-bindings).
+Fahren Sie fort, indem Sie die über Batch Explorer verfügbaren Rendering-Anwendungen im Abschnitt **Gallery** (Katalog) erkunden. Für jede Anwendung stehen verschiedene Vorlagen zur Verfügung, und die Auswahl wird ständig erweitert. Für Blender sind beispielsweise Vorlagen verfügbar, die ein einzelnes Bild in Kacheln unterteilen, sodass Teile eines Bilds parallel gerendert werden können.
+
+Weitere Beispiele zur Verwendung der .NET-API zum Planen und Verarbeiten von Batch-Workloads finden Sie in den Beispielen auf GitHub.
+
+> [!div class="nextstepaction"]
+> [C#-Beispiele für Batch](https://github.com/Azure-Samples/azure-batch-samples/tree/master/CSharp)

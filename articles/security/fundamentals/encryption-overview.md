@@ -1,26 +1,20 @@
 ---
 title: Übersicht über die Azure-Verschlüsselung | Microsoft-Dokumentation
-description: Lernen Sie die verschiedenen Verschlüsselungsoptionen in Azure kennen.
+description: Lernen Sie die Verschlüsselungsoptionen in Azure kennen. Lesen Sie die Informationen zur Verschlüsselung ruhender Daten, zur Verschlüsselung in Aktion und zur Schlüsselverwaltung mit Azure Key Vault.
 services: security
-documentationcenter: na
-author: Barclayn
-manager: barbkess
-editor: TomShinder
+author: msmbaldwin
 ms.assetid: ''
 ms.service: security
 ms.subservice: security-fundamentals
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 09/20/2018
-ms.author: barclayn
-ms.openlocfilehash: 408c9fb58b428c1671794c6e4e5cc890a153813f
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.date: 07/20/2020
+ms.author: mbaldwin
+ms.openlocfilehash: ff023ad98c7ffa269223b5d0b4a1cecc5fde1feb
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71003948"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94410214"
 ---
 # <a name="azure-encryption-overview"></a>Übersicht über die Azure-Verschlüsselung
 
@@ -28,7 +22,7 @@ Dieser Artikel bietet eine Übersicht über die Verwendung der Verschlüsselung 
 
 ## <a name="encryption-of-data-at-rest"></a>Verschlüsselung für ruhende Daten
 
-Ruhende Daten umfassen Informationen, die in einem beliebigen digitalen Format im dauerhaften Speicher auf physischen Medien gespeichert sind. Zu den Medien gehören Dateien auf Magnet- oder optischen Datenträgern, archivierte Daten und Datensicherungen. Microsoft Azure bietet eine Reihe von Datenspeicherlösungen für verschiedene Anforderungen, darunter Datei-, Daten-, Blob- und Tabellenspeicher. Microsoft bietet zudem eine Verschlüsselung zum Schutz von [Azure SQL-Datenbank](../../sql-database/sql-database-technical-overview.md), [Azure Cosmos DB](../../data-factory/introduction.md) und Azure Data Lake.
+Ruhende Daten umfassen Informationen, die in einem beliebigen digitalen Format im dauerhaften Speicher auf physischen Medien gespeichert sind. Zu den Medien gehören Dateien auf Magnet- oder optischen Datenträgern, archivierte Daten und Datensicherungen. Microsoft Azure bietet eine Reihe von Datenspeicherlösungen für verschiedene Anforderungen, darunter Datei-, Daten-, Blob- und Tabellenspeicher. Microsoft bietet zudem eine Verschlüsselung zum Schutz von [Azure SQL-Datenbank](../../azure-sql/database/sql-database-paas-overview.md), [Azure Cosmos DB](../../data-factory/introduction.md) und Azure Data Lake.
 
 Die Verschlüsselung ruhender Daten ist für Dienste in allen Software-as-a-Service- (SaaS), Platform-as-a-Service- (PaaS) und Infrastructure-as-a-Service-Cloudmodellen (IaaS) verfügbar. In diesem Artikel werden Ressourcen zusammenfassend beschrieben und bereitgestellt, mit denen Sie die Verschlüsselungsoptionen von Azure nutzen können.
 
@@ -51,17 +45,17 @@ Bei der clientseitigen Verschlüsselung hat der Clouddienstanbieter keinen Zugri
 
 Die drei Modelle für die serverseitige Verschlüsselung bieten unterschiedliche Merkmale der Schlüsselverwaltung, die Sie je nach Ihren Anforderungen auswählen können:
 
-- **Vom Dienst verwaltete Schlüssel**: Bieten eine Kombination aus Kontrolle und Benutzerfreundlichkeit mit geringem Mehraufwand.
+- **Dienstverwaltete Schlüssel:** bieten eine Kombination aus Kontrolle und Benutzerfreundlichkeit mit geringem Mehraufwand
 
-- **Vom Kunden verwaltete Schlüssel**: Bieten Ihnen die Kontrolle über die Schlüssel, einschließlich der Möglichkeit, die BYOK-Funktion (Bring your Own Key) zu verwenden oder neue Schlüssel zu generieren.
+- **Kundenverwaltete Schlüssel:** bieten Ihnen die Kontrolle über die Schlüssel, einschließlich der Möglichkeit, die BYOK-Funktion (Bring your Own Key) zu verwenden oder neue Schlüssel zu generieren
 
-- **Vom Dienst verwaltete Schlüssel auf vom Kunden gesteuerter Hardware**: Ermöglichen Ihnen, Schlüssel in Ihrem eigenen Repository zu verwalten, das sich außerhalb des Einflussbereichs von Microsoft befindet. Dies wird als „Host Your Own Key“ (HYOK) bezeichnet. Die Konfiguration ist jedoch komplex, und die meisten Azure-Dienste unterstützen dieses Modell nicht.
+- **Dienstverwaltete Schlüssel auf vom Kunden gesteuerter Hardware:** ermöglichen es Ihnen, Schlüssel in Ihrem proprietären Repository zu verwalten, das sich außerhalb des Einflussbereichs von Microsoft befindet. Dies wird als „Host Your Own Key“ (HYOK) bezeichnet. Die Konfiguration ist jedoch komplex, und die meisten Azure-Dienste unterstützen dieses Modell nicht.
 
 ### <a name="azure-disk-encryption"></a>Azure Disk Encryption
 
-Sie können virtuelle Windows- und Linux-Computer mithilfe von [Azure Disk Encryption](/azure/security/azure-security-disk-encryption) schützen. Hierbei werden die [Windows BitLocker](https://technet.microsoft.com/library/cc766295(v=ws.10).aspx)-Technologie und Linux [DM-Crypt](https://en.wikipedia.org/wiki/Dm-crypt) verwendet, um Betriebssystemdatenträger sowie Datenträger mit vollständiger Volumeverschlüsselung zu schützen.
+Sie können virtuelle Windows- und Linux-Computer mithilfe von [Azure Disk Encryption](./azure-disk-encryption-vms-vmss.md) schützen. Hierbei werden die [Windows BitLocker](/previous-versions/windows/it-pro/windows-vista/cc766295(v=ws.10))-Technologie und Linux [DM-Crypt](https://en.wikipedia.org/wiki/Dm-crypt) verwendet, um Betriebssystemdatenträger sowie Datenträger mit vollständiger Volumeverschlüsselung zu schützen.
 
-Verschlüsselungsschlüssel und Geheimnisse werden in Ihrem [Azure Key Vault-Abonnement](../../key-vault/key-vault-overview.md) geschützt. Mithilfe des Azure Backup-Diensts können Sie verschlüsselte virtuelle Computer, die mit der KEK-Konfiguration (Key Encryption Key) verschlüsselt sind, sichern und wiederherstellen.
+Verschlüsselungsschlüssel und Geheimnisse werden in Ihrem [Azure Key Vault-Abonnement](../../key-vault/general/overview.md) geschützt. Mithilfe des Azure Backup-Diensts können Sie verschlüsselte virtuelle Computer, die mit der KEK-Konfiguration (Key Encryption Key) verschlüsselt sind, sichern und wiederherstellen.
 
 ### <a name="azure-storage-service-encryption"></a>Azure Storage Service Encryption
 
@@ -79,23 +73,23 @@ Weitere Informationen zum Verwenden und Herunterladen des NuGet-Pakets „Azure 
 
 Bei Verwendung der clientseitigen Verschlüsselung mit Key Vault werden Ihre Daten mit einem einmaligen symmetrischen Inhaltsverschlüsselungsschlüssel (CEK, Content Encryption Key) verschlüsselt, der vom Azure Storage Client SDK generiert wird. Der CEK wird mit einem Schlüsselverschlüsselungsschlüssel (KEK, Key Encryption Key) verschlüsselt, bei dem es sich entweder um ein symmetrisches oder ein asymmetrisches Schlüsselpaar handeln kann. Sie können ihn lokal verwalten oder in Key Vault speichern. Die verschlüsselten Daten werden dann in Azure Storage hochgeladen.
 
-Weitere Informationen zur clientseitigen Verschlüsselung mit Key Vault und den ersten Schritten mit entsprechenden Anweisungen finden Sie unter [Tutorial: Verschlüsseln und Entschlüsseln von Blobs in Azure Storage per Azure Key Vault](../../storage/blobs/storage-encrypt-decrypt-blobs-key-vault.md).
+Weitere Informationen zur clientseitigen Verschlüsselung mit Key Vault und den ersten Schritten mit entsprechenden Anweisungen finden Sie unter [Tutorial: Verschlüsseln und Entschlüsseln von Blobs in Microsoft Azure Storage per Azure Key Vault](../../storage/blobs/storage-encrypt-decrypt-blobs-key-vault.md).
 
 Schließlich können Sie auch die Azure Storage-Clientbibliothek für Java verwenden, um die clientseitige Verschlüsselung vor dem Hochladen von Daten in Azure Storage und die Entschlüsselung der Daten beim Herunterladen auf den Client durchzuführen. Um die Schlüsselverwaltung für Speicherkonten zu ermöglichen, unterstützt diese Bibliothek zudem die Integration in [Key Vault](https://azure.microsoft.com/services/key-vault/).
 
 ### <a name="encryption-of-data-at-rest-with-azure-sql-database"></a>Verschlüsselung ruhender Daten mit Azure SQL-Datenbank
 
-[Azure SQL-Datenbank](../../sql-database/sql-database-technical-overview.md) ist ein relationaler Datenbankdienst in Azure für allgemeine Zwecke, der Strukturen wie relationale Daten, JSON, räumliche Daten und XML unterstützt. SQL-Datenbank unterstützt die serverseitige Verschlüsselung über das TDE-Feature (Transparent Data Encryption) sowie die clientseitige Verschlüsselung über das Always Encrypted-Feature.
+[Azure SQL-Datenbank](../../azure-sql/database/sql-database-paas-overview.md) ist ein relationaler Datenbankdienst in Azure für allgemeine Zwecke, der Strukturen wie relationale Daten, JSON, räumliche Daten und XML unterstützt. SQL-Datenbank unterstützt die serverseitige Verschlüsselung über das TDE-Feature (Transparent Data Encryption) sowie die clientseitige Verschlüsselung über das Always Encrypted-Feature.
 
-#### <a name="transparent-data-encryption"></a>Transparent Data Encryption
+#### <a name="transparent-data-encryption"></a>Transparente Datenverschlüsselung
 
-[TDE](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-tde) wird verwendet, um Datendateien aus [SQL Server](https://www.microsoft.com/sql-server/sql-server-2016), [Azure SQL-Datenbank](../../sql-database/sql-database-technical-overview.md) und [Azure SQL Data Warehouse](../../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) in Echtzeit mit einem Datenbankverschlüsselungsschlüssel (DEK, Database Encryption Key) zu verschlüsseln, der für die Verfügbarkeit während der Wiederherstellung im Datenbank-Startdatensatz gespeichert ist.
+[TDE](/sql/relational-databases/security/encryption/transparent-data-encryption-tde) wird verwendet, um Datendateien aus [SQL Server](https://www.microsoft.com/sql-server/sql-server-2016), [Azure SQL-Datenbank](../../azure-sql/database/sql-database-paas-overview.md) und [Azure Synapse Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) in Echtzeit mit einem Datenbankverschlüsselungsschlüssel (DEK, Database Encryption Key) zu verschlüsseln, der für die Verfügbarkeit während der Wiederherstellung im Datenbank-Startdatensatz gespeichert ist.
 
 TDE schützt die Daten- und Protokolldateien über die Verschlüsselungsalgorithmen AES und Triple Data Encryption Standard (3DES). Die Verschlüsselung der Datenbankdatei erfolgt auf Seitenebene. Die Seiten in einer verschlüsselten Datenbank werden verschlüsselt, bevor sie auf den Datenträger geschrieben werden, und entschlüsselt, bevor sie in den Arbeitsspeicher eingelesen werden. TDE ist jetzt bei neu erstellten Azure SQL-Datenbanken standardmäßig aktiviert.
 
 #### <a name="always-encrypted-feature"></a>Always Encrypted-Feature
 
-Mit dem [Always Encrypted](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine)-Feature in Azure SQL können Sie Daten in Clientanwendungen vor dem Speichern in Azure SQL-Datenbank verschlüsseln. Außerdem können Sie die Delegierung der lokalen Datenbankverwaltung an Drittanbieter aktivieren und die Trennung zwischen den Benutzern, die die Daten besitzen und anzeigen können, und den Benutzern, die die Daten verwalten, jedoch keinen Zugriff darauf haben sollen, aufrechterhalten.
+Mit dem [Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-database-engine)-Feature in Azure SQL können Sie Daten in Clientanwendungen vor dem Speichern in Azure SQL-Datenbank verschlüsseln. Außerdem können Sie die Delegierung der lokalen Datenbankverwaltung an Drittanbieter aktivieren und die Trennung zwischen den Benutzern, die die Daten besitzen und anzeigen können, und den Benutzern, die die Daten verwalten, jedoch keinen Zugriff darauf haben sollen, aufrechterhalten.
 
 #### <a name="cell-level-or-column-level-encryption"></a>Verschlüsselung auf Zellen- oder Spaltenebene
 
@@ -117,9 +111,13 @@ Drei Arten von Schlüsseln werden beim Verschlüsseln und Entschlüsseln von Dat
 
 Azure bietet viele Verfahren zum Schutz von Daten beim Übertragen zwischen verschiedenen Speicherorten.
 
-### <a name="tlsssl-encryption-in-azure"></a>TLS/SSL-Verschlüsselung in Azure
+### <a name="data-link-layer-encryption-in-azure"></a>Verschlüsselung in der Sicherungsschicht in Azure
 
-Microsoft verwendet das [Transport Layer Security](https://en.wikipedia.org/wiki/Transport_Layer_Security)-Protokoll (TLS) zum Schutz von Daten bei der Übertragung zwischen den Clouddiensten und Kunden. Die Microsoft-Rechenzentren verhandeln eine TLS-Verbindung mit Clientsystemen, die eine Verbindung mit Azure-Diensten herstellen. TLS bietet strenge Authentifizierung, Datenschutz von Nachrichten und Integrität (ermöglicht die Erkennung von Manipulation, Abfangen und Fälschung von Nachrichten), Interoperabilität, Algorithmusflexibilität sowie einfache Bereitstellung und Verwendung.
+Immer wenn Datenverkehr von Azure-Kunden zwischen Rechenzentren fließt (außerhalb von physischen Grenzen, die nicht von Microsoft (oder im Auftrag von Microsoft) kontrolliert werden), wird eine Verschlüsselungsmethode für die Sicherungsschicht mit dem [Standard IEEE 802.1AE MAC Security](https://1.ieee802.org/security/802-1ae/) (auch MACsec genannt) von Punkt zu Punkt auf der zugrunde liegenden Netzwerkhardware angewendet. Die Pakete werden auf den Geräten vor dem Senden verschlüsselt und entschlüsselt. Dadurch werden physische Man-in-the-Middle-Angriffe und Spionage-/Abhörangriffe verhindert. Da diese Technologie in die Netzwerkhardware selbst integriert ist, bietet sie Verschlüsselung auf der Netzwerkhardware mit der Leitungsrate ohne eine messbar höhere Verbindungslatenz. Diese MACsec-Verschlüsselung ist standardmäßig für den gesamten Azure-Datenverkehr aktiviert, der innerhalb einer Region oder zwischen Regionen fließt, und der Kunde muss keine Aktion zum Aktivieren ausführen. 
+
+### <a name="tls-encryption-in-azure"></a>TLS-Verschlüsselung in Azure
+
+Microsoft gibt Kunden die Möglichkeit, das [Transport Layer Security-Protokoll](https://en.wikipedia.org/wiki/Transport_Layer_Security) (TLS) zum Schutz von Daten bei der Übertragung zwischen den Clouddiensten und Kunden zu verwenden. Die Microsoft-Rechenzentren verhandeln eine TLS-Verbindung mit Clientsystemen, die eine Verbindung mit Azure-Diensten herstellen. TLS bietet strenge Authentifizierung, Datenschutz von Nachrichten und Integrität (ermöglicht die Erkennung von Manipulation, Abfangen und Fälschung von Nachrichten), Interoperabilität, Algorithmusflexibilität sowie einfache Bereitstellung und Verwendung.
 
 [Perfect Forward Secrecy](https://en.wikipedia.org/wiki/Forward_secrecy) (PFS) schützt Verbindungen zwischen den Clientsystemen von Kunden und den Clouddiensten von Microsoft durch eindeutige Schlüssel. Die Verbindungen verwenden zudem RSA-basierte Verschlüsselungsschlüssellängen von 2.048 Bit. Diese Kombination erschwert das Abfangen von Daten während der Übertragung und den Zugriff darauf.
 
@@ -127,9 +125,9 @@ Microsoft verwendet das [Transport Layer Security](https://en.wikipedia.org/wiki
 
 Wenn Sie mit Azure Storage über das Azure-Portal interagieren, erfolgen alle Transaktionen über HTTPS. Für die Interaktion mit Azure Storage können Sie auch die Storage-REST-API über HTTPS verwenden. Sie können die Verwendung von HTTPS beim Aufruf von REST-APIs für den Zugriff auf Objekte in Speicherkonten erzwingen, indem Sie die Option „Sichere Übertragung erforderlich“ aktivieren.
 
-Mit Shared Access Signatures ([SAS](../../storage/common/storage-dotnet-shared-access-signature-part-1.md)), die zum Delegieren des Zugriffs auf Azure Storage-Objekte verwendet werden können, können Sie festlegen, dass bei Verwendung von Shared Access Signatures nur das HTTPS-Protokoll verwendet werden darf. Mit diesem Ansatz wird sichergestellt, dass jeder, der Links mit SAS-Token sendet, das richtige Protokoll verwendet.
+Mit Shared Access Signatures ([SAS](../../storage/common/storage-sas-overview.md)), die zum Delegieren des Zugriffs auf Azure Storage-Objekte verwendet werden können, können Sie festlegen, dass bei Verwendung von Shared Access Signatures nur das HTTPS-Protokoll verwendet werden darf. Mit diesem Ansatz wird sichergestellt, dass jeder, der Links mit SAS-Token sendet, das richtige Protokoll verwendet.
 
-[SMB 3.0](https://technet.microsoft.com/library/dn551363(v=ws.11).aspx#BKMK_SMBEncryption), das für den Zugriff auf Azure Files-Freigaben verwendet wird, unterstützt die Verschlüsselung und ist in Windows Server 2012 R2, Windows 8, Windows 8.1 und Windows 10 verfügbar. Dies macht einen regionsübergreifenden Zugriff und sogar den Zugriff auf dem Desktop möglich.
+[SMB 3.0](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn551363(v=ws.11)#BKMK_SMBEncryption), das für den Zugriff auf Azure Files-Freigaben verwendet wird, unterstützt die Verschlüsselung und ist in Windows Server 2012 R2, Windows 8, Windows 8.1 und Windows 10 verfügbar. Dies macht einen regionsübergreifenden Zugriff und sogar den Zugriff auf dem Desktop möglich.
 
 Die Daten werden mit der clientseitigen Verschlüsselung verschlüsselt, bevor sie an Ihre Azure Storage-Instanz gesendet werden, sodass sie während der Übertragung im Netzwerk verschlüsselt sind.
 
@@ -141,11 +139,11 @@ Nachdem die SMB-Verschlüsselung für eine Freigabe oder einen Server aktiviert 
 
 ## <a name="in-transit-encryption-in-vms"></a>Verschlüsselung während der Übertragung zwischen virtuellen Computern
 
-Daten, die auf, von und zwischen virtuellen Computern unter Windows übertragen werden, werden je nach Art der Verbindung auf unterschiedliche Weise verschlüsselt.
+Daten, die auf, von und zwischen virtuellen Computern unter Windows übertragen werden, können je nach Art der Verbindung auf unterschiedliche Weise verschlüsselt werden.
 
 ### <a name="rdp-sessions"></a>RDP-Sitzungen
 
-Sie können über das [Remotedesktopprotokoll (RDP)](https://msdn.microsoft.com/library/aa383015(v=vs.85).aspx) über einen Windows-Clientcomputer oder einen Macintosh-Computer mit installiertem RDP-Client eine Verbindung mit einem virtuellen Computer herstellen und sich bei diesem anmelden. Daten während der Übertragung über das Netzwerk in RDP-Sitzungen können durch TLS geschützt werden.
+Sie können über das [Remotedesktopprotokoll (RDP)](/windows/win32/termserv/remote-desktop-protocol) über einen Windows-Clientcomputer oder einen Macintosh-Computer mit installiertem RDP-Client eine Verbindung mit einem virtuellen Computer herstellen und sich bei diesem anmelden. Daten während der Übertragung über das Netzwerk in RDP-Sitzungen können durch TLS geschützt werden.
 
 Sie können auch über Remotedesktop eine Verbindung mit einem virtuellen Linux-Computer in Azure herstellen.
 
@@ -165,7 +163,7 @@ Site-to-Site-VPN-Verbindungen verwenden [IPsec](https://en.wikipedia.org/wiki/IP
 
 ### <a name="point-to-site-vpns"></a>Point-to-Site-VPN-Verbindungen
 
-Über Point-to-Site-VPN-Verbindungen können einzelne Clientcomputer auf ein virtuelles Azure-Netzwerk zugreifen. Das [Secure Socket Tunneling-Protokoll (SSTP)](https://technet.microsoft.com/library/2007.06.cableguy.aspx) wird verwendet, um den VPN-Tunnel zu erstellen. Das Protokoll kann Firewalls durchlaufen (der Tunnel wird als HTTPS-Verbindung angezeigt). Sie können für Point-to-Site-Verbindungen Ihre eigene interne PKI-Stammzertifizierungsstelle (Public Key-Infrastruktur) verwenden.
+Über Point-to-Site-VPN-Verbindungen können einzelne Clientcomputer auf ein virtuelles Azure-Netzwerk zugreifen. Das [Secure Socket Tunneling-Protokoll (SSTP)](/previous-versions/technet-magazine/cc162322(v=msdn.10)) wird verwendet, um den VPN-Tunnel zu erstellen. Das Protokoll kann Firewalls durchlaufen (der Tunnel wird als HTTPS-Verbindung angezeigt). Sie können für Point-to-Site-Verbindungen Ihre eigene interne PKI-Stammzertifizierungsstelle (Public Key-Infrastruktur) verwenden.
 
 Sie können eine Point-to-Site-VPN-Verbindung mit einem virtuellen Netzwerk über das Azure-Portal mit Zertifikatauthentifizierung oder über PowerShell konfigurieren.
 
@@ -203,9 +201,9 @@ Mit Key Vault gehören für Organisationen das Konfigurieren, Patchen und Verwal
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Azure-Sicherheitsübersicht](get-started-overview.md)
+- [Azure-Sicherheitsübersicht](./overview.md)
 - [Die Netzwerksicherheit in Azure in der Übersicht](network-overview.md)
-- [Übersicht über die Sicherheit der Azure-Datenbank](database-security-overview.md)
+- [Übersicht über die Sicherheit der Azure-Datenbank](../../azure-sql/database/security-overview.md)
 - [Virtuelle Azure-Computer – Sicherheitsübersicht](virtual-machines-overview.md)
 - [Datenverschlüsselung ruhender Daten](encryption-atrest.md)
 - [Bewährte Methoden für Datensicherheit und Verschlüsselung](data-encryption-best-practices.md)

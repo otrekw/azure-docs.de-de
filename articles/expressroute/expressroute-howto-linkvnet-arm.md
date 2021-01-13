@@ -1,23 +1,23 @@
 ---
-title: 'Verknüpfen eines virtuellen Netzwerks mit einer ExpressRoute-Verbindung: PowerShell: Azure | Microsoft-Dokumentation'
-description: Dieses Dokument bietet Ihnen eine Übersicht über das Verknüpfen virtueller Netzwerke (VNETs) mit ExpressRoute-Verbindungen über das Resource Manager-Bereitstellungsmodell und PowerShell.
+title: 'Tutorial: Verknüpfen eines virtuellen Netzwerks mit einer ExpressRoute-Leitung: Azure PowerShell'
+description: Dieses Tutorial bietet eine Übersicht über das Verknüpfen virtueller Netzwerke (VNETs) mit ExpressRoute-Leitungen über das Resource Manager-Bereitstellungsmodell und Azure PowerShell.
 services: expressroute
-author: ganesr
+author: duongau
 ms.service: expressroute
-ms.topic: article
-ms.date: 05/20/2018
-ms.author: ganesr
+ms.topic: tutorial
+ms.date: 10/06/2020
+ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: 620eff5468d7d3b4bf8ddeea62fa67b39609fce6
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 69067ca34b231f1b14f8cc854288c3ed4c4ac82a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65950374"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91855989"
 ---
-# <a name="connect-a-virtual-network-to-an-expressroute-circuit"></a>Verbinden eines virtuellen Netzwerks mit einer ExpressRoute-Verbindung
+# <a name="tutorial-connect-a-virtual-network-to-an-expressroute-circuit"></a>Tutorial: Verbinden eines virtuellen Netzwerks mit einer ExpressRoute-Verbindung
 > [!div class="op_single_selector"]
-> * [Azure-Portal](expressroute-howto-linkvnet-portal-resource-manager.md)
+> * [Azure portal](expressroute-howto-linkvnet-portal-resource-manager.md)
 > * [PowerShell](expressroute-howto-linkvnet-arm.md)
 > * [Azure-Befehlszeilenschnittstelle](howto-linkvnet-cli.md)
 > * [Video – Azure-Portal](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-connection-between-your-vpn-gateway-and-expressroute-circuit)
@@ -30,22 +30,28 @@ Dieser Artikel unterstützt Sie beim Verknüpfen virtueller Netzwerke (VNETs) mi
 
 * Ein einzelnes VNET kann mit bis zu vier ExpressRoute-Leitungen verknüpft werden. Erstellen Sie anhand der Schritte in diesem Artikel ein neues Verbindungsobjekt für jede ExpressRoute-Leitung, mit der Sie eine Verbindung herstellen. Die ExpressRoute-Leitungen können sich im gleichen Abonnement, in verschiedenen Abonnements oder in einer Kombination aus beidem befinden.
 
-* Wenn Sie das ExpressRoute Premium-Add-On aktiviert haben, können Sie virtuelle Netzwerke außerhalb der geopolitischen Region der ExpressRoute-Verbindung oder eine größere Anzahl von virtuellen Netzwerken mit der Express Route-Verbindung verknüpfen. Weitere Informationen zum Premium-Add-On finden Sie in den [häufig gestellten Fragen](expressroute-faqs.md) .
+* Wenn Sie das ExpressRoute-Premium-Add-On aktivieren, können Sie virtuelle Netzwerke außerhalb der geopolitischen Region der ExpressRoute-Leitung verknüpfen. Über das Premium-Add-On können Sie – je nach ausgewählter Bandbreite – auch mehr als 10 virtuelle Netzwerke mit Ihrer ExpressRoute-Leitung verbinden. Weitere Informationen zum Premium-Add-On finden Sie in den [häufig gestellten Fragen](expressroute-faqs.md) .
 
+In diesem Tutorial lernen Sie, wie die folgenden Aufgaben ausgeführt werden:
+> [!div class="checklist"]
+> - Herstellen einer Verbindung zwischen einem virtuellen Netzwerk in demselben Abonnement und einer Verbindung
+> - Herstellen einer Verbindung zwischen einem virtuellen Netzwerk in einem anderen Abonnement und einer Verbindung
+> - Ändern einer Verbindung mit einem virtuellen Netzwerk
+> - Konfigurieren von ExpressRoute FastPath
 
-## <a name="before-you-begin"></a>Voraussetzungen
+## <a name="prerequisites"></a>Voraussetzungen
 
 * Lesen Sie, bevor Sie mit der Konfiguration beginnen, die Seiten [Voraussetzungen](expressroute-prerequisites.md), [Routinganforderungen](expressroute-routing.md) und [Workflows](expressroute-workflows.md).
 
 * Sie benötigen eine aktive ExpressRoute-Verbindung. 
   * Führen Sie die Schritte zum [Erstellen einer ExpressRoute-Verbindung](expressroute-howto-circuit-arm.md) aus, und lassen Sie sie vom Konnektivitätsanbieter aktivieren. 
   * Stellen Sie sicher, dass privates Azure-Peering für die Verbindung konfiguriert ist. Informationen zum Routing finden Sie unter [Konfigurieren des Routings](expressroute-howto-routing-arm.md) . 
-  * Vergewissern Sie sich, dass das private Azure-Peering konfiguriert wurde und das BGP-Peering zwischen Ihrem Netzwerk und Microsoft aktiv ist, damit End-to-End-Konnektivität bereitgestellt werden kann.
+  * Stellen Sie sicher, dass das private Azure-Peering konfiguriert wird und das BGP-Peering zwischen Ihrem Netzwerk und Microsoft einrichtet, damit End-to-End-Konnektivität bereitgestellt werden kann.
   * Vergewissern Sie sich, dass ein virtuelles Netzwerk und ein virtuelles Netzwerkgateway erstellt und vollständig bereitgestellt wurden. Befolgen Sie die Anweisungen zum [Erstellen eines virtuellen Netzwerkgateways für ExpressRoute](expressroute-howto-add-gateway-resource-manager.md). Für ein virtuelles Netzwerkgateway für ExpressRoute wird der Gatewaytyp „ExpressRoute“ und nicht „VPN“ verwendet.
 
 ### <a name="working-with-azure-powershell"></a>Arbeiten mit Azure PowerShell
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+[!INCLUDE [updated-for-az](../../includes/hybrid-az-ps.md)]
 
 [!INCLUDE [expressroute-cloudshell](../../includes/expressroute-cloudshell-powershell-about.md)]
 
@@ -61,15 +67,13 @@ $connection = New-AzVirtualNetworkGatewayConnection -Name "ERConnection" -Resour
 ## <a name="connect-a-virtual-network-in-a-different-subscription-to-a-circuit"></a>Herstellen einer Verbindung zwischen einem virtuellen Netzwerk in einem anderen Abonnement und einer Verbindung
 Sie können eine ExpressRoute-Verbindung für mehrere Abonnements freigeben. Die folgende Abbildung zeigt eine einfache schematische Darstellung der Freigabe von Lasten für ExpressRoute-Verbindungen für mehrere Abonnements.
 
-Jede der kleineren Clouds innerhalb der großen Cloud stellt Abonnements dar, die zu verschiedenen Abteilungen innerhalb einer Organisation gehören. Jede der Abteilungen innerhalb der Organisation kann ihr eigenes Abonnement zum Bereitstellen von Diensten verwenden, für die Verbindung mit dem lokalen Netzwerk kann jedoch eine einzelne gemeinsam genutzte ExpressRoute-Verbindung verwendet werden. Eine einzelne Abteilung (in diesem Beispiel: IT) kann die ExpressRoute-Verbindung besitzen. Andere Abonnements innerhalb der Organisation können die ExpressRoute-Verbindung nutzen.
+Jede der kleineren Clouds innerhalb der großen Cloud stellt Abonnements dar, die zu verschiedenen Abteilungen innerhalb einer Organisation gehören. Jede Abteilung in der Organisation verwendet ihr eigenes Abonnement zum Bereitstellen von Diensten. Für die Verbindung mit dem lokalen Netzwerk kann jedoch eine einzelne ExpressRoute-Leitung gemeinsam genutzt werden. Eine einzelne Abteilung (in diesem Beispiel: IT) kann die ExpressRoute-Verbindung besitzen. Andere Abonnements innerhalb der Organisation können die ExpressRoute-Leitung ebenfalls nutzen.
 
 > [!NOTE]
 > Konnektivitäts- und Bandbreitengebühren für die ExpressRoute-Verbindung werden dem Abonnementbesitzer in Rechnung gestellt. Alle virtuellen Netzwerke verwenden gemeinsam dieselbe Bandbreite.
 > 
-> 
 
-![Abonnementübergreifende Konnektivität](./media/expressroute-howto-linkvnet-classic/cross-subscription.png)
-
+:::image type="content" source="./media/expressroute-howto-linkvnet-classic/cross-subscription.png" alt-text="Abonnementübergreifende Konnektivität":::
 
 ### <a name="administration---circuit-owners-and-circuit-users"></a>Verwaltung – Leitungsbesitzer und Leitungsbenutzer
 
@@ -81,7 +85,7 @@ Der Besitzer der Verbindung hat die Möglichkeit, Autorisierungen jederzeit zu �
 
 **So erstellen Sie eine Autorisierung**
 
-Der Verbindungsbesitzer erstellt eine Autorisierung. Dies führt zur Erstellung eines Autorisierungsschlüssels, der von einem Verbindungsbenutzer verwendet werden kann, um dessen virtuelle Netzwerkgateways mit der ExpressRoute-Verbindung zu verbinden. Eine Autorisierung gilt nur für jeweils eine Verbindung.
+Der Leitungsbesitzer erstellt eine Autorisierung, die wiederum einen Autorisierungsschlüssel erstellt. Mit diesem kann ein Leitungsbenutzer seine virtuellen Netzwerkgateways mit der ExpressRoute-Leitung verbinden. Eine Autorisierung gilt nur für jeweils eine Verbindung.
 
 Der folgende Cmdlet-Ausschnitt veranschaulicht das Erstellen einer Autorisierung:
 
@@ -94,17 +98,16 @@ $circuit = Get-AzExpressRouteCircuit -Name "MyCircuit" -ResourceGroupName "MyRG"
 $auth1 = Get-AzExpressRouteCircuitAuthorization -ExpressRouteCircuit $circuit -Name "MyAuthorization1"
 ```
 
+Die Antwort auf die oben genannten Befehle enthält Autorisierungsschlüssel und -status:
 
-Die Antwort auf diese enthält Schlüssel und Zustand für die Autorisierung:
-
-    Name                   : MyAuthorization1
-    Id                     : /subscriptions/&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&/resourceGroups/ERCrossSubTestRG/providers/Microsoft.Network/expressRouteCircuits/CrossSubTest/authorizations/MyAuthorization1
-    Etag                   : &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& 
-    AuthorizationKey       : ####################################
-    AuthorizationUseStatus : Available
-    ProvisioningState      : Succeeded
-
-
+```azurepowershell
+Name                   : MyAuthorization1
+Id                     : /subscriptions/&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&/resourceGroups/ERCrossSubTestRG/providers/Microsoft.Network/expressRouteCircuits/CrossSubTest/authorizations/MyAuthorization1
+Etag                   : &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& 
+AuthorizationKey       : ####################################
+AuthorizationUseStatus : Available
+ProvisioningState      : Succeeded
+```
 
 **So überprüfen Sie Autorisierungen**
 
@@ -177,12 +180,9 @@ Set-AzVirtualNetworkGatewayConnection -VirtualNetworkGatewayConnection $connecti
 Der Bereich von *RoutingWeight* liegt zwischen 0 und 32.000. Der Standardwert ist 0.
 
 ## <a name="configure-expressroute-fastpath"></a>Konfigurieren von ExpressRoute FastPath 
-Sie können [ExpressRoute FastPath](expressroute-about-virtual-network-gateways.md) aktivieren, wenn Ihre ExpressRoute-Leitung auf [ExpressRoute Direct](expressroute-erdirect-about.md) festgelegt ist und Ihr virtuelles Netzwerkgateway den Typ „Höchstleistung“ oder „ErGw3AZ“ hat. FastPath verbessert die Leistung von Datenpfaden (Pakete pro Sekunde und Verbindungen pro Sekunde) zwischen Ihrem lokalen und Ihrem virtuellen Netzwerk. 
+Sie können [ExpressRoute FastPath](expressroute-about-virtual-network-gateways.md) aktivieren, wenn Ihr virtuelles Netzwerkgateway den Typ „Höchstleistung“ oder „ErGw3AZ“ hat. FastPath verbessert die Leistung von Datenpfaden (Pakete pro Sekunde und Verbindungen pro Sekunde) zwischen Ihrem lokalen und Ihrem virtuellen Netzwerk. 
 
-> [!NOTE] 
-> Wenn Sie bereits eine virtuelle Netzwerkverbindung haben, aber FastPath noch nicht aktiviert ist, müssen Sie die virtuelle Netzwerkverbindung löschen und eine neue erstellen. 
-> 
->  
+**Konfigurieren von FastPath für eine neue Verbindung**
 
 ```azurepowershell-interactive 
 $circuit = Get-AzExpressRouteCircuit -Name "MyCircuit" -ResourceGroupName "MyRG" 
@@ -190,5 +190,24 @@ $gw = Get-AzVirtualNetworkGateway -Name "MyGateway" -ResourceGroupName "MyRG"
 $connection = New-AzVirtualNetworkGatewayConnection -Name "MyConnection" -ResourceGroupName "MyRG" -ExpressRouteGatewayBypass -VirtualNetworkGateway1 $gw -PeerId $circuit.Id -ConnectionType ExpressRoute -Location "MyLocation" 
 ``` 
 
+**Aktualisieren einer vorhandenen Verbindung zum Aktivieren von FastPath**
+
+```azurepowershell-interactive 
+$connection = Get-AzVirtualNetworkGatewayConnection -Name "MyConnection" -ResourceGroupName "MyRG" 
+$connection.ExpressRouteGatewayBypass = $True
+Set-AzVirtualNetworkGatewayConnection -VirtualNetworkGatewayConnection $connection
+``` 
+
+## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
+
+Wenn Sie die ExpressRoute-Verbindung nicht mehr benötigen, entfernen Sie die Verknüpfung zwischen dem Gateway und der Leitung, indem Sie in dem Abonnement, in dem sich das Gateway befindet, den Befehl `Remove-AzVirtualNetworkGatewayConnection` verwenden.
+
+```azurepowershell-interactive
+Remove-AzVirtualNetworkGatewayConnection "MyConnection" -ResourceGroupName "MyRG"
+```
+
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Informationen über ExpressRoute finden Sie unter [ExpressRoute – FAQ](expressroute-faqs.md).
+Weitere Informationen über ExpressRoute finden Sie unter ExpressRoute – FAQ.
+
+> [!div class="nextstepaction"]
+> [ExpressRoute – FAQ](expressroute-faqs.md)

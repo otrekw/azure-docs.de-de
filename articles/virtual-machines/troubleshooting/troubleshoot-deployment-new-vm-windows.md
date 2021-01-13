@@ -3,7 +3,7 @@ title: Behandeln von Problemen beim Bereitstellen virtueller Windows-Computer in
 description: Behandeln von Problemen beim Erstellen eines neuen virtuellen Windows-Computers in Azure (Resource Manager-Bereitstellungsmodell)
 services: virtual-machines-windows, azure-resource-manager
 documentationcenter: ''
-author: JiangChen79
+author: DavidCBerry13
 manager: gwallace
 editor: ''
 tags: top-support-issue, azure-resource-manager
@@ -13,14 +13,14 @@ ms.workload: na
 ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 06/15/2018
-ms.author: cjiang
+ms.author: daberry
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6dbe4c1533aecfab4a62ce3ad90b694c0c00f4b6
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 2b2f21cab4740013eb2de1d69f558c95461c493e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70103490"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87028395"
 ---
 # <a name="troubleshoot-deployment-issues-when-creating-a-new-windows-vm-in-azure"></a>Behandeln von Bereitstellungsproblemen beim Erstellen eines neuen virtuellen Windows-Computers in Azure
 [!INCLUDE [virtual-machines-troubleshoot-deployment-new-vm-opening](../../../includes/virtual-machines-troubleshoot-deployment-new-vm-opening-include.md)]
@@ -35,9 +35,9 @@ Weitere VM-Bereitstellungsprobleme und Fragen finden Sie unter [Problembehandlun
 ## <a name="collect-activity-logs"></a>Erfassen von Aktivitätsprotokollen
 Sammeln Sie zur Problembehandlung zunächst die Aktivitätsprotokolle, um den Fehler zu ermitteln, auf den das Problem zurückzuführen ist. Die folgenden Links enthalten detaillierte Informationen zur Vorgehensweise.
 
-[Anzeigen von Bereitstellungsvorgängen](../../azure-resource-manager/resource-manager-deployment-operations.md)
+[Bereitstellungsvorgänge anzeigen](../../azure-resource-manager/templates/deployment-history.md)
 
-[Anzeigen von Aktivitätsprotokollen zum Verwalten von Azure-Ressourcen](../../resource-group-audit.md)
+[Anzeigen von Aktivitätsprotokollen zum Verwalten von Azure-Ressourcen](../../azure-resource-manager/management/view-activity-logs.md)
 
 [!INCLUDE [virtual-machines-troubleshoot-deployment-new-vm-issue1](../../../includes/virtual-machines-troubleshoot-deployment-new-vm-issue1-include.md)]
 
@@ -49,11 +49,11 @@ Sammeln Sie zur Problembehandlung zunächst die Aktivitätsprotokolle, um den Fe
 
 **N<sup>1</sup>:** Wenn ein generalisiertes Windows-Betriebssystem als spezialisiertes Betriebssystem hochgeladen wird, tritt bei der Bereitstellung ein Timeoutfehler auf, und der virtuelle Computer kommt nicht über den OOBE-Bildschirm hinaus.
 
-**N<sup>2</sup>:** Wenn ein spezialisiertes Windows-Betriebssystem als generalisiertes Betriebssystem hochgeladen wird, tritt ein Bereitstellungsfehler auf, und der virtuelle Computer kommt nicht über den OOBE-Bildschirm hinaus, da der neue virtuelle Computer mit dem ursprünglichen Computernamen, Benutzernamen und Kennwort ausgeführt wird.
+**N<sup>2</sup>:** Wenn ein spezialisiertes Windows-Betriebssystem als generalisiertes Betriebssystem hochgeladen wird, tritt ein Bereitstellungsfehler auf, und der virtuelle Computer komm nicht über den OOBE-Bildschirm hinaus, da der neue virtuelle Computer mit dem ursprünglichen Computernamen, Benutzernamen und Kennwort ausgeführt wird.
 
 **Lösung**
 
-Laden Sie zur Behebung dieser Fehler mithilfe von [Add-AzVhd](https://docs.microsoft.com/powershell/module/az.compute/add-azvhd)die ursprüngliche (lokal verfügbare) virtuelle Festplatte mit der gleichen Einstellung (generalisiert/spezialisiert) hoch, die auch für das Betriebssystem verwendet wird. Beim Hochladen als generalisiertes Image muss zuerst „sysprep“ ausgeführt werden.
+Laden Sie zur Behebung dieser Fehler mithilfe von [Add-AzVhd](/powershell/module/az.compute/add-azvhd)die ursprüngliche (lokal verfügbare) virtuelle Festplatte mit der gleichen Einstellung (generalisiert/spezialisiert) hoch, die auch für das Betriebssystem verwendet wird. Beim Hochladen als generalisiertes Image muss zuerst „sysprep“ ausgeführt werden.
 
 **Erfassungsfehler:**
 
@@ -65,7 +65,7 @@ Laden Sie zur Behebung dieser Fehler mithilfe von [Add-AzVhd](https://docs.micro
 
 Löschen Sie zur Behebung dieser Fehler das aktuelle Image über das Portal, und [erfassen Sie es auf der Grundlage der aktuellen VHDs erneut](../windows/create-vm-specialized.md). Verwenden Sie dabei die gleiche Einstellung (generalisiert/spezialisiert), die auch für das Betriebssystem verwendet wird.
 
-## <a name="issue-customgallerymarketplace-image-allocation-failure"></a>Problem: Benutzerdefiniertes Image/Katalogimage/Marketplace-Image; Zuordnungsfehler
+## <a name="issue-customgallerymarketplace-image-allocation-failure"></a>Problem: benutzerdefiniertes Image/Katalogimage/Marketplace-Image; Zuordnungsfehler
 Dieser Fehler tritt auf, wenn die Anforderung für einen neuen virtuellen Computer an einen Cluster gesendet wird, der entweder nicht über genügend Speicherplatz verfügt oder die angeforderte VM-Größe nicht unterstützt.
 
 **Ursache 1:** Der Cluster unterstützt nicht die angeforderte Größe des virtuellen Computers.
@@ -79,7 +79,7 @@ Dieser Fehler tritt auf, wenn die Anforderung für einen neuen virtuellen Comput
   * Nachdem alle virtuellen Computer beendet wurden, erstellen Sie den neuen virtuellen Computer in der gewünschten Größe.
   * Starten Sie zunächst den neuen virtuellen Computer, wählen Sie dann alle angehaltenen virtuellen Computer aus, und klicken Sie auf **Starten**.
 
-**Ursache 2:** Der Cluster verfügt über keine freien Ressourcen.
+**Ursache 2:** Der Cluster besitzt keine freien Ressourcen.
 
 **Lösung 2:**
 
@@ -90,5 +90,3 @@ Dieser Fehler tritt auf, wenn die Anforderung für einen neuen virtuellen Comput
 
 ## <a name="next-steps"></a>Nächste Schritte
 Wenn beim Starten eines beendeten virtuellen Windows-Computers oder beim Ändern der Größe eines vorhandenen virtuellen Windows-Computers in Azure Probleme auftreten, finden Sie Informationen unter [Behandeln von Problemen beim Neustart oder Ändern der Größe eines vorhandenen virtuellen Windows-Computers in Azure (Resource Manager-Bereitstellungsmodell)](restart-resize-error-troubleshooting.md).
-
-

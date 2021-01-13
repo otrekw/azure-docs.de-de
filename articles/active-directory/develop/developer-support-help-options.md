@@ -1,28 +1,23 @@
 ---
-title: Support- und Hilfeoptionen für Entwickler von Azure AD-Apps| Microsoft-Dokumentation
+title: Support- und Hilfeoptionen für Entwickler von Azure AD-Apps
 description: Hier erfahren Sie, wie Sie beim Erstellen einer Anwendung, die mit Microsoft-Identitäten (Azure Active Directory und Microsoft-Konto) integriert wird, Hilfe und Support zu entwicklungsbezogenen Problemen und Fragen erhalten.
 services: active-directory
-documentationcenter: dev-center-name
 author: rwike77
 manager: CelesteDG
-ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/23/2019
 ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: efa14e88eeb8ab43f998a32aaa0c14220acab03a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: af363bb30d6515ce969afe146c780baa4b31cd83
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66235334"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88117208"
 ---
 # <a name="support-and-help-options-for-developers"></a>Support- und Hilfeoptionen für Entwickler
 
@@ -67,7 +62,7 @@ Wenn Sie über die Suche keine Antwort auf Ihre Frage finden können, übermitte
 | ADAL-Bibliothek | [[adal]](https://stackoverflow.com/questions/tagged/adal) |
 | MSAL-Bibliothek     | [[msal]](https://stackoverflow.com/questions/tagged/msal) |
 | OWIN-Middleware  | [[azure-active-directory]](https://stackoverflow.com/questions/tagged/azure-active-directory) |
-| [Azure B2B](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b)  | [[azure-ad-b2b]](https://stackoverflow.com/questions/tagged/azure-ad-b2b) |
+| [Azure B2B](../external-identities/what-is-b2b.md)  | [[azure-ad-b2b]](https://stackoverflow.com/questions/tagged/azure-ad-b2b) |
 | [Azure B2C](https://azure.microsoft.com/services/active-directory-b2c/)  | [[azure-ad-b2c]](https://stackoverflow.com/questions/tagged/azure-ad-b2c) |
 | [Microsoft Graph-API](https://developer.microsoft.com/graph/) | [[microsoft-graph]](https://stackoverflow.com/questions/tagged/microsoft-graph) |
 | Alle anderen Bereiche im Zusammenhang mit Authentifizierungs- oder Autorisierungsthemen | [[azure-active-directory]](https://stackoverflow.com/questions/tagged/azure-active-directory) |
@@ -83,8 +78,8 @@ Wenn Sie einen Fehler oder ein Problem im Zusammenhang mit unseren Bibliotheken 
 
 Die folgenden Ressourcen enthalten eine Liste der Bibliotheken und ihrer GitHub-Repositorys:
 
-* [ADAL](active-directory-authentication-libraries.md)-Bibliotheken und GitHub-Repositorys
-* Bibliotheken [MSAL.NET](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet) [MSAL.js](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angularjs/README.md), [MSAL.Android](https://github.com/AzureAD/microsoft-authentication-library-for-android) und [MSAL.obj_c](https://github.com/AzureAD/microsoft-authentication-library-for-objc) und GitHub-Repositorys
+* [Azure Active Directory-Authentifizierungsbibliothek (Active Directory Authentication Library, ADAL)](../azuread-dev/active-directory-authentication-libraries.md)-Bibliotheken und GitHub-Repositorys.
+* [Microsoft Authentifizierungsbibliothek (Microsoft Authentication Library, MSAL)](reference-v2-libraries.md)-Bibliotheken und GitHub-Repositorys.
 
 ## <a name="open-a-support-request"></a>Stellen einer Supportanfrage
 
@@ -95,9 +90,3 @@ Wenn Sie mit einer Person sprechen müssen, stellen Sie eine Supportanfrage. Wen
 * Wenn Sie kein Azure-Kunde sind, können Sie auch über [unseren kommerziellen Support](https://support.microsoft.com/en-us/gp/contactus81?Audience=Commercial) eine Supportanfrage an Microsoft stellen.
 
 Sie können auch einen [virtuellen Agent](https://support.microsoft.com/contactus/?ws=support) ausprobieren, um Support zu erhalten oder Fragen zu stellen.
-
-### <a name="free-chat-support-for-a-limited-time"></a>Kostenloser Chatsupport für begrenzte Zeit
-
-Sie können auch unseren Chatsupport nutzen, der für Microsoft Partner für einen begrenzten Zeitraum kostenlos ist. Wenn Ihr Unternehmen kein Microsoft Partner ist, können Sie es kostenlos registrieren und erhalten weitere Vorteile – klicken Sie [hier](https://partners.microsoft.com/PartnerProgram/simplifiedenrollment.aspx).
-
-Nach der Registrierung Ihres Unternehmens können Sie die Chatanfrage [hier](https://aka.ms/devchat) starten.

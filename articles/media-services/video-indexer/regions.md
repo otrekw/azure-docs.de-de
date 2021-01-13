@@ -1,21 +1,21 @@
 ---
 title: 'Regionen, in dem Video Indexer verfügbar ist: Azure'
-titlesuffix: Azure Media Services
-description: Dieser Artikel befasst sich mit den Azure-Regionen, in denen Video Indexer verfügbar ist.
+titleSuffix: Azure Media Services
+description: In diesem Artikel werden Azure-Regionen behandelt, in denen Azure Media Services Video Indexer verfügbar ist.
 services: media-services
-author: anikaz
-manager: johndeu
+author: Juliako
+manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 05/15/2019
-ms.author: anzaman
-ms.openlocfilehash: 404aaf91c0cb30df0a83353ef7397987ec3f8e80
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 09/14/2020
+ms.author: juliako
+ms.openlocfilehash: 6ebdb22f50efbefc695f9752c6e6fc333571828c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65799412"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90530935"
 ---
 # <a name="azure-regions-in-which-video-indexer-exists"></a>Azure-Regionen, in denen Video Indexer vorhanden ist
 
@@ -23,9 +23,20 @@ Video Indexer-APIs enthalten einen Parameter **location**, den Sie auf die Azure
 
 ## <a name="locations"></a>Standorte
 
-Dem Parameter **location** muss der Codename der Azure-Region als Wert zugewiesen werden. Wenn Sie Video Indexer im Vorschaumodus verwenden, sollten Sie *„trial“* als Wert verwenden. Andernfalls können Sie die folgende Zeile in der [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) ausführen, um den Codenamen der Azure-Region abzurufen, in der sich Ihr Konto befindet und a die Ihr Aufruf weitergeleitet werden soll:
+Dem Parameter `location` muss der Codename der Azure-Region als Wert zugewiesen werden. Wenn Sie Video Indexer im Vorschaumodus verwenden, sollten Sie `"trial"` als Wert verwenden. `trial` ist der Standardwert für den Parameter `location`. Andernfalls können Sie das Azure-Portal verwenden oder einen [Azure CLI-Befehl](/cli/azure) ausführen, um den Codenamen der Azure-Region abzurufen, in der sich Ihr Konto befindet und an die Ihr Aufruf weitergeleitet werden soll.
 
-```bash
+### <a name="azure-portal"></a>Azure-Portal
+
+1. Melden Sie sich bei der [Video Indexer](https://www.videoindexer.ai/)-Website an.
+1. Klicken Sie rechts oben auf der Seite auf **Benutzerkonten**.
+1. Suchen Sie in der oberen rechten Ecke nach dem Standort Ihres Kontos.  
+
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/location/location1.png" alt-text="Location":::
+    
+###  <a name="cli-command"></a>CLI-Befehl
+
+```azurecli-interactive
 az account list-locations
 ```
 
@@ -36,7 +47,7 @@ Verwenden Sie für die Azure-Region „USA, Westen 2“ (unten angezeigt) beispi
 ```json
    {
       "displayName": "West US 2",
-      "id": "/subscriptions/35c2594a-23da-4fce-b59c-f6fb9513eeeb/locations/westus2",
+      "id": "/subscriptions/00000000-0000-0000-0000-000000000000/locations/westus2",
       "latitude": "47.233",
       "longitude": "-119.852",
       "name": "westus2",

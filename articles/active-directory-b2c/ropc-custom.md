@@ -1,21 +1,22 @@
 ---
-title: Konfigurieren des Flows für Kennwortanmeldeinformationen von Ressourcenbesitzern in Azure Active Directory B2C | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie den Flow für Kennwortanmeldeinformationen von Ressourcenbesitzern in Azure Active Directory B2C konfigurieren.
+title: Konfigurieren des Flows für Kennwortanmeldeinformationen von Ressourcenbesitzern mit benutzerdefinierten Richtlinien
+titleSuffix: Azure AD B2C
+description: Hier erfahren Sie, wie Sie den Flow für Kennwortanmeldeinformationen von Ressourcenbesitzern mithilfe von benutzerdefinierten Richtlinien in Azure Active Directory B2C konfigurieren.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: conceptual
-ms.date: 12/06/2018
-ms.author: marsma
+ms.topic: how-to
+ms.date: 05/12/2020
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 2f3eb2c0071eecb20bbf5616a01c80e55645207a
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 5d6fb23d7325347a1b27165d3e9bc3bf33797682
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71678141"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95994354"
 ---
 # <a name="configure-the-resource-owner-password-credentials-flow-in-azure-active-directory-b2c-using-a-custom-policy"></a>Konfigurieren des Flows für Kennwortanmeldeinformationen von Ressourcenbesitzern in Azure Active Directory B2C mithilfe einer benutzerdefinierten Richtlinie
 
@@ -23,21 +24,11 @@ ms.locfileid: "71678141"
 
 In Azure Active Directory B2C (Azure AD B2C) ist der Flow für Kennwortanmeldeinformationen des Ressourcenbesitzers (Resource Owner Password Credentials, ROPC) ein OAuth-Standardauthentifizierungsflow. Bei diesem Flow tauscht eine Anwendung, die auch als die vertrauende Seite bezeichnet wird, gültige Anmeldeinformationen gegen Token aus. Die Anmeldeinformationen enthalten eine Benutzer-ID und ein Kennwort. Die zurückgegebenen Token sind ein ID-Token, ein Zugriffstoken und ein Aktualisierungstoken.
 
-Die folgenden Optionen werden im ROPC-Flow unterstützt:
-
-- **Nativer Client:** Die Benutzerinteraktion während der Authentifizierung erfolgt, wenn Code auf einem Gerät auf Benutzerseite ausgeführt wird.
-- **Flow für öffentlichen Client:** Im API-Aufruf werden nur die von einer Anwendung gesammelten Benutzeranmeldeinformationen übermittelt. Die Anmeldeinformationen der Anwendung werden nicht gesendet.
-- **Neue Ansprüche hinzuzufügen**: Der Inhalt des ID-Tokens kann geändert werden, um neue Ansprüche hinzuzufügen.
-
-Folgende Flows werden nicht unterstützt:
-
-- **Server-zu-Server:** Das Identitätsschutzsystem benötigt eine zuverlässige IP-Adresse, die vom Aufrufer (dem nativen Client) im Rahmen der Interaktion erfasst wurde. Bei einem serverseitigen API-Aufruf wird nur die IP-Adresse des Servers verwendet. Wenn zu viele Anmeldungen zu Fehlern führen, sieht das Identitätsschutzsystem eine wiederholte IP-Adresse möglicherweise als Angreifer an.
-- **Einzelseitenanwendung:** eine Front-End-Anwendung, die hauptsächlich in JavaScript geschrieben ist. Häufig wird die Anwendung mithilfe eines Frameworks wie AngularJS, Ember.js oder Durandal geschrieben.
-- **Flow für vertraulichen Client:** Die Anwendungsclient-ID wird überprüft, das Anwendungsgeheimnis wird jedoch nicht überprüft.
+[!INCLUDE [active-directory-b2c-ropc-notes](../../includes/active-directory-b2c-ropc-notes.md)]
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Führen Sie die unter [Erste Schritte mit benutzerdefinierten Richtlinien in Azure Active Directory B2C](active-directory-b2c-get-started-custom.md) beschriebenen Schritte aus.
+Führen Sie die unter [Erste Schritte mit benutzerdefinierten Richtlinien in Azure Active Directory B2C](custom-policy-get-started.md) beschriebenen Schritte aus.
 
 ## <a name="register-an-application"></a>Registrieren einer Anwendung
 
@@ -48,7 +39,7 @@ Führen Sie die unter [Erste Schritte mit benutzerdefinierten Richtlinien in Azu
 1. Öffnen Sie die Datei *TrustFrameworkExtensions.xml*.
 2. Falls es nicht bereits vorhanden ist, fügen Sie ein **ClaimsSchema**-Element und seine untergeordneten Elemente als erstes Element unter dem **BuildingBlocks**-Element hinzu:
 
-    ```XML
+    ```xml
     <ClaimsSchema>
       <ClaimType Id="logonIdentifier">
         <DisplayName>User name or email address that the user can use to sign in</DisplayName>
@@ -71,7 +62,7 @@ Führen Sie die unter [Erste Schritte mit benutzerdefinierten Richtlinien in Azu
 
 3. Fügen Sie dem **BuildingBlocks**-Element hinter dem **ClaimsSchema**-Element ein **ClaimsTransformations**-Element und dessen untergeordnete Elemente hinzu:
 
-    ```XML
+    ```xml
     <ClaimsTransformations>
       <ClaimsTransformation Id="CreateSubjectClaimFromObjectID" TransformationMethod="CreateStringClaim">
         <InputParameters>
@@ -97,7 +88,7 @@ Führen Sie die unter [Erste Schritte mit benutzerdefinierten Richtlinien in Azu
 
 4. Suchen Sie das **ClaimsProvider**-Element, bei dem **DisplayName** den Wert `Local Account SignIn` aufweist, und fügen Sie das folgende technische Profil hinzu:
 
-    ```XML
+    ```xml
     <TechnicalProfile Id="ResourceOwnerPasswordCredentials-OAUTH2">
       <DisplayName>Local Account SignIn</DisplayName>
       <Protocol Name="OpenIdConnect" />
@@ -112,6 +103,7 @@ Führen Sie die unter [Erste Schritte mit benutzerdefinierten Richtlinien in Azu
         <Item Key="response_types">id_token</Item>
         <Item Key="response_mode">query</Item>
         <Item Key="scope">email openid</Item>
+        <Item Key="grant_type">password</Item>
       </Metadata>
       <InputClaims>
         <InputClaim ClaimTypeReferenceId="logonIdentifier" PartnerClaimType="username" Required="true" DefaultValue="{OIDC:Username}"/>
@@ -119,8 +111,8 @@ Führen Sie die unter [Erste Schritte mit benutzerdefinierten Richtlinien in Azu
         <InputClaim ClaimTypeReferenceId="grant_type" DefaultValue="password" />
         <InputClaim ClaimTypeReferenceId="scope" DefaultValue="openid" />
         <InputClaim ClaimTypeReferenceId="nca" PartnerClaimType="nca" DefaultValue="1" />
-        <InputClaim ClaimTypeReferenceId="client_id" DefaultValue="00000000-0000-0000-0000-000000000000" />
-        <InputClaim ClaimTypeReferenceId="resource_id" PartnerClaimType="resource" DefaultValue="00000000-0000-0000-0000-000000000000" />
+        <InputClaim ClaimTypeReferenceId="client_id" DefaultValue="ProxyIdentityExperienceFrameworkAppId" />
+        <InputClaim ClaimTypeReferenceId="resource_id" PartnerClaimType="resource" DefaultValue="IdentityExperienceFrameworkAppId" />
       </InputClaims>
       <OutputClaims>
         <OutputClaim ClaimTypeReferenceId="objectId" PartnerClaimType="oid" />
@@ -137,7 +129,7 @@ Führen Sie die unter [Erste Schritte mit benutzerdefinierten Richtlinien in Azu
 
 5. Fügen Sie die folgenden **ClaimsProvider**-Elemente mit ihren technischen Profilen dem **ClaimsProviders**-Element hinzu:
 
-    ```XML
+    ```xml
     <ClaimsProvider>
       <DisplayName>Azure Active Directory</DisplayName>
       <TechnicalProfiles>
@@ -191,7 +183,7 @@ Führen Sie die unter [Erste Schritte mit benutzerdefinierten Richtlinien in Azu
 
 6. Fügen Sie dem **TrustFrameworkPolicy**-Element ein **UserJourneys**-Element und dessen untergeordnete Elemente hinzu:
 
-    ```XML
+    ```xml
     <UserJourney Id="ResourceOwnerPasswordCredentials">
       <PreserveOriginalAssertion>false</PreserveOriginalAssertion>
       <OrchestrationSteps>
@@ -239,7 +231,7 @@ Aktualisieren Sie als Nächstes die Datei der vertrauenden Seite, die die User J
 3. Ändern Sie den Wert des **ReferenceId**-Attributs unter **DefaultUserJourney** in `ResourceOwnerPasswordCredentials`.
 4. Ändern Sie das **OutputClaims**-Element so, dass es nur die folgenden Ansprüche enthält:
 
-    ```XML
+    ```xml
     <OutputClaim ClaimTypeReferenceId="sub" />
     <OutputClaim ClaimTypeReferenceId="objectId" />
     <OutputClaim ClaimTypeReferenceId="displayName" DefaultValue="" />
@@ -255,9 +247,9 @@ Aktualisieren Sie als Nächstes die Datei der vertrauenden Seite, die die User J
 
 Verwenden Sie Ihre bevorzugte API-Entwicklungsanwendung, um einen API-Aufruf zu generieren, und überprüfen Sie die Antwort, um Ihre Richtlinie zu debuggen. Erstellen Sie einen Aufruf wie das folgende Beispiel, und verwenden Sie die folgenden Informationen als Hauptteil der POST-Anforderung:
 
-`https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/v2.0/token?p=B2C_1_ROPC_Auth`
+`https://<tenant-name>.b2clogin.com/<tenant-name>.onmicrosoft.com/B2C_1A_ROPC_Auth/oauth2/v2.0/token`
 
-- Ersetzen Sie `your-tenant-name` durch den Namen des Azure AD B2C-Mandanten.
+- Ersetzen Sie `<tenant-name>` durch den Namen des Azure AD B2C-Mandanten.
 - Ersetzen Sie `B2C_1A_ROPC_Auth` durch den vollständigen Namen der Richtlinie für Kennwortanmeldeinformationen des Ressourcenbesitzers.
 
 | Schlüssel | Wert |
@@ -276,9 +268,9 @@ Verwenden Sie Ihre bevorzugte API-Entwicklungsanwendung, um einen API-Aufruf zu 
 
 Die tatsächliche POST-Anforderung sieht wie im folgenden Beispiel aus:
 
-```HTTPS
-POST /yourtenant.onmicrosoft.com/oauth2/v2.0/token?B2C_1_ROPC_Auth HTTP/1.1
-Host: yourtenant.b2clogin.com
+```https
+POST /<tenant-name>.onmicrosoft.com/oauth2/v2.0/token?B2C_1A_ROPC_Auth HTTP/1.1
+Host: <tenant-name>.b2clogin.com
 Content-Type: application/x-www-form-urlencoded
 
 username=contosouser.outlook.com.ws&password=Passxword1&grant_type=password&scope=openid+bef22d56-552f-4a5b-b90a-1988a7d634ce+offline_access&client_id=bef22d56-552f-4a5b-b90a-1988a7d634ce&response_type=token+id_token
@@ -286,7 +278,7 @@ username=contosouser.outlook.com.ws&password=Passxword1&grant_type=password&scop
 
 Eine erfolgreiche Antwort mit Offlinezugriff ähnelt dem folgenden Beispiel:
 
-```JSON
+```json
 {
     "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ik9YQjNhdTNScWhUQWN6R0RWZDM5djNpTmlyTWhqN2wxMjIySnh6TmgwRlki...",
     "token_type": "Bearer",
@@ -300,9 +292,9 @@ Eine erfolgreiche Antwort mit Offlinezugriff ähnelt dem folgenden Beispiel:
 
 Erstellen Sie einen POST-Aufruf ähnlich dem hier gezeigten. Verwenden Sie die Informationen aus der folgenden Tabelle als Hauptteil der Anforderung:
 
-`https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/v2.0/token?p=B2C_1_ROPC_Auth`
+`https://<tenant-name>.b2clogin.com/<tenant-name>.onmicrosoft.com/B2C_1A_ROPC_Auth/oauth2/v2.0/token`
 
-- Ersetzen Sie `your-tenant-name` durch den Namen des Azure AD B2C-Mandanten.
+- Ersetzen Sie `<tenant-name>` durch den Namen des Azure AD B2C-Mandanten.
 - Ersetzen Sie `B2C_1A_ROPC_Auth` durch den vollständigen Namen der Richtlinie für Kennwortanmeldeinformationen des Ressourcenbesitzers.
 
 | Schlüssel | Wert |
@@ -318,7 +310,7 @@ Erstellen Sie einen POST-Aufruf ähnlich dem hier gezeigten. Verwenden Sie die I
 
 Eine erfolgreiche Antwort ähnelt dem folgenden Beispiel:
 
-```JSON
+```json
 {
     "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ilg1ZVhrNHh5b2pORnVtMWtsMll0djhkbE5QNC1jNTdkTzZRR1RWQndhT...",
     "id_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ilg1ZVhrNHh5b2pORnVtMWtsMll0djhkbE5QNC1jNTdkTzZRR1RWQn...",
@@ -341,4 +333,4 @@ Azure AD B2C entspricht den OAuth 2.0-Standards für Kennwortanmeldeinformatione
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Sehen Sie sich im [Starterpaket für benutzerdefinierte Azure Active Directory B2C-Richtlinien](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/source/aadb2c-ief-ropc) ein vollständiges Beispiel für dieses Szenario an.
-- Weitere Informationen zu den von Azure Active Directory B2C verwendeten Token finden Sie in der [Tokenreferenz](active-directory-b2c-reference-tokens.md).
+- Weitere Informationen zu den von Azure Active Directory B2C verwendeten Token finden Sie in der [Tokenreferenz](tokens-overview.md).

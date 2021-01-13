@@ -2,24 +2,24 @@
 title: Verbinden eines Clouddiensts mit einem benutzerdefinierten Domänencontroller | Microsoft Docs
 description: Hier erfahren Sie, wie Sie mithilfe von PowerShell und der AD-Domänenerweiterung eine Verbindung zwischen Ihren Web-/Workerrollen und einer benutzerdefinierten AD-Domäne herstellen.
 services: cloud-services
-author: georgewallace
+author: tgore03
 ms.service: cloud-services
 ms.topic: article
 ms.date: 07/18/2017
-ms.author: gwallace
-ms.openlocfilehash: 97a24720e65539a68745a5a1bb3f13ce1cafb9be
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.author: tagore
+ms.openlocfilehash: fa918a3a6894205ed36c4b576608e7a71e523a92
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359174"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87092710"
 ---
 # <a name="connecting-azure-cloud-services-roles-to-a-custom-ad-domain-controller-hosted-in-azure"></a>Verbinden von Azure Cloud Services-Rollen mit einem in Azure gehosteten AD-Domänencontroller
 Zunächst richten wir ein Virtual Network (VNet) in Azure ein. Anschließend fügen wir dem VNet einen Active Directory-Domänencontroller (gehostet auf einem virtuellen Azure-Computer) hinzu. Danach fügen wir dem erstellten VNET vorhandene Clouddienstrollen hinzu und verbinden diese mit dem Domänencontroller.
 
 Bedenken Sie vor dem Start Folgendes:
 
-1. In diesem Tutorial wird PowerShell verwendet. Vergewissern Sie sich daher, dass Azure PowerShell installiert und einsatzbereit ist. Unterstützung bei der Einrichtung von Azure PowerShell finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/overview).
+1. In diesem Tutorial wird PowerShell verwendet. Vergewissern Sie sich daher, dass Azure PowerShell installiert und einsatzbereit ist. Unterstützung bei der Einrichtung von Azure PowerShell finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/).
 2. Ihr AD-Domänencontroller und Ihre Web-/Workerrolleninstanzen müssen sich im VNet befinden.
 
 Befolgen Sie diese Schrittanleitung, und fügen Sie am Ende des Artikels einen Kommentar ein, falls Probleme auftreten sollten. Wir werden uns mit Ihnen in Verbindung setzen (wir lesen die Kommentare wirklich).
@@ -149,3 +149,6 @@ Ihre Clouddienste sollten Ihrem benutzerdefinierten Domänencontroller beigetret
 help Set-AzureServiceADDomainExtension
 help New-AzureServiceADDomainExtensionConfig
 ```
+
+
+

@@ -12,19 +12,17 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/08/2018
 ms.author: genli
-ms.openlocfilehash: d1cb34f1666db0e213a41fa8d2e684ba148b7e61
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: bf19a6f77a87f2424f9e7b889e48119d57d1e2e5
+ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71088448"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97820981"
 ---
 #  <a name="cannot-remote-desktop-to-azure-virtual-machines-because-of-static-ip"></a>Remotedesktopverbindung mit Azure Virtual Machines aufgrund einer statischen IP-Adresse nicht möglich
 
 In diesem Artikel wird ein Problem beschrieben, bei dem Sie keine Remotedesktopverbindung mit Azure Windows Virtual Machines (VMs) herstellen können, nachdem auf der VM eine statische IP-Adresse konfiguriert wurde.
 
-> [!NOTE]
-> Azure verfügt über zwei verschiedene Bereitstellungsmodelle für das Erstellen und Verwenden von Ressourcen: [Resource Manager-Bereitstellungen und klassische Bereitstellungen](../../azure-resource-manager/resource-manager-deployment-model.md). Dieser Artikel behandelt die Verwendung des Resource Manager-Bereitstellungsmodells, das anstelle des klassischen Bereitstellungsmodells für neue Bereitstellungen empfohlen wird.
 
 ## <a name="symptoms"></a>Symptome
 
@@ -58,18 +56,27 @@ Verwenden Sie zum Beheben dieses Problems die serielle Konsole, um DHCP zu aktiv
 ). Wenn die serielle Konsole auf Ihrer VM nicht aktiviert ist, helfen Ihnen die Informationen unter [Zurücksetzen der Netzwerkschnittstelle](reset-network-interface.md) weiter.
 2. Überprüfen Sie, ob DHCP für die Netzwerkschnittstelle deaktiviert ist:
 
-        netsh interface ip show config
+    ```console
+    netsh interface ip show config
+    ```
+
 3. Wenn DHCP deaktiviert ist, sollten Sie die Konfiguration Ihrer Netzwerkschnittstelle so ändern, dass DHCP verwendet wird:
 
-        netsh interface ip set address name="<NIC Name>" source=dhc
+    ```console
+    netsh interface ip set address name="<NIC Name>" source=dhcp
+    ```
 
     Führen Sie beispielsweise den folgenden Befehl aus, wenn die Netzwerkschnittstelle den Namen „Ethernet 2“ hat:
 
-        netsh interface ip set address name="Ethernet 2" source=dhc
+    ```console
+    netsh interface ip set address name="Ethernet 2" source=dhcp
+    ```
 
 4. Fragen Sie die IP-Konfiguration erneut ab, um sicherzustellen, dass die Netzwerkschnittstelle jetzt richtig eingerichtet ist. Die neue IP-Adresse sollte mit der IP-Adresse übereinstimmen, die von Azure bereitgestellt wird.
 
-        netsh interface ip show config
+    ```console
+    netsh interface ip show config
+    ```
 
     Sie müssen die VM an diesem Punkt nicht neu starten. Die VM ist jetzt wieder erreichbar.
 

@@ -1,6 +1,6 @@
 ---
-title: Hinzufügen einer Bildebene zu Azure Maps | Microsoft-Dokumentation
-description: Hier erfahren Sie, wie Sie eine Bildebene zum Azure Maps Web SDK hinzufügen.
+title: Hinzufügen einer Bildebene zu einer Karte | Microsoft Azure Maps
+description: Lernen Sie, einer Karte Bilder hinzuzufügen. Erfahren Sie, wie Sie das Azure Maps Web SDK zum Anpassen von Bildebenen und Überlagerungsbildern auf festen Koordinatensätzen verwenden.
 author: rbrundritt
 ms.author: richbrun
 ms.date: 07/29/2019
@@ -8,30 +8,37 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.custom: codepen
-ms.openlocfilehash: 6c43ccaee473eca701d15a5a83f84814d65c6b7c
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.custom: codepen, devx-track-js
+ms.openlocfilehash: 43de832095e2c2dd674a156da914ed26f1e472d0
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68976160"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92892943"
 ---
 # <a name="add-an-image-layer-to-a-map"></a>Hinzufügen einer Bildebene zu einer Karte
 
-In diesem Artikel erfahren Sie, wie Sie einen festen Satz an Koordinaten auf der Karte mit einem Bild überlagern können. Für die Überlagerung der Karte mit einem Bild gibt es viele Szenarios. Hier sind einige Beispiele für Bildtypen, mit denen häufig Karten überlagert werden;
+In diesem Artikel erfahren Sie, wie Sie einen festen Satz an Koordinaten mit einem Bild überlagern. Im Folgenden finden Sie einige Beispiele für verschiedene Bildtypen, die auf Karten überlagert werden können:
 
 * Von Drohnen aufgenommene Bilder
 * Gebäudegrundrisse
-* Historische oder andere spezielle Kartenbilder
+* Bilder von historischen oder anderen Spezialkarten
 * Blaupausen von Auftragsstandorten
 * Wetterradarbilder
 
 > [!TIP]
-> Ein [ImageLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer?view=azure-iot-typescript-latest)-Element (Bildebene) ist eine schnelle und einfache Möglichkeit, eine Karte mit einem Bild zu überlagern. Wenn das Bild jedoch sehr groß ist, hat der Browser möglicherweise Schwierigkeiten damit, es zu laden. In diesem Fall ist die Aufteilung des Bilds in Kacheln sinnvoll, die Sie dann als [TileLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.tilelayer?view=azure-iot-typescript-latest) (Kachelebene) in die Karte laden können.
+> Ein [ImageLayer](/javascript/api/azure-maps-control/atlas.layer.imagelayer)-Element (Bildebene) ist eine einfache Möglichkeit, eine Karte mit einem Bild zu überlagern. Beachten Sie, dass bei Browsern beim Laden großer Bilder Probleme auftreten können. In diesem Fall ist die Aufteilung des Bilds in Kacheln sinnvoll, die Sie dann als [TileLayer](/javascript/api/azure-maps-control/atlas.layer.tilelayer) (Kachelebene) in die Karte laden können.
+
+Die Bildebene unterstützt folgende Bildformate:
+
+- JPEG
+- PNG
+- BMP
+- GIF (keine Animationen)
 
 ## <a name="add-an-image-layer"></a>Hinzufügen einer Bildebene
 
-Der folgende Code legt ein Bild einer [Karte von Newark, New Jersey, von 1922](https://www.lib.utexas.edu/maps/historical/newark_nj_1922.jpg) über die Karte. Ein [ImageLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer?view=azure-iot-typescript-latest)-Element wird erstellt, indem eine URL zu einem Bild und Koordinaten für die vier Ecken im Format `[Top Left Corner, Top Right Corner, Bottom Right Corner, Bottom Left Corner]` übergeben werden.
+Der folgende Code legt ein Bild einer [Karte von Newark, New Jersey, von 1922](https://www.lib.utexas.edu/maps/historical/newark_nj_1922.jpg) über die Karte. Ein [ImageLayer](/javascript/api/azure-maps-control/atlas.layer.imagelayer)-Element wird erstellt, indem eine URL zu einem Bild und Koordinaten für die vier Ecken im Format `[Top Left Corner, Top Right Corner, Bottom Right Corner, Bottom Left Corner]` übergeben werden.
 
 ```javascript
 //Create an image layer and add it to the map.
@@ -46,22 +53,22 @@ map.layers.add(new atlas.layer.ImageLayer({
 }));
 ```
 
-Nachfolgend finden Sie das vollständige ausführbare Codebeispiel für die oben erläuterte Funktionalität.
+Hier finden Sie das vollständige, ausführbare Codebeispiel für den oben erläuterten Code.
 
 <br/>
 
-<iframe height='500' scrolling='no' title='Einfache Bildebene' src='//codepen.io/azuremaps/embed/eQodRo/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Weitere Informationen finden Sie unter dem Pen <a href='https://codepen.io/azuremaps/pen/eQodRo/'>Simple Image Layer</a> (Einfache Bildebene) von Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) auf <a href='https://codepen.io'>CodePen</a>.
+<iframe height='500' scrolling='no' title='Einfache Bildebene' src='//codepen.io/azuremaps/embed/eQodRo/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' loading="lazy" allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Weitere Informationen finden Sie unter dem Pen <a href='https://codepen.io/azuremaps/pen/eQodRo/'>Simple Image Layer</a> (Einfache Bildebene) von Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) auf <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
-## <a name="import-a-kml-ground-overlay"></a>Importieren einer KML-Bodenüberlagerung
+## <a name="import-a-kml-file-as-ground-overlay"></a>Importieren einer KML-Datei als Bodenüberlagerung
 
-In diesem Beispiel sehen Sie, wie die Karte mit einer KML-Bodenüberlagerung als Bildebene überlagert wird. KML-Bodenüberlagerungen verfügen über Nord-, Süd-, Ost- und Westkoordinaten und ermöglichen eine Drehung gegen den Uhrzeigersinn, wohingegen die Bildebene Koordinaten für jede Ecke des Bilds erwartet. Bei der KML-Bodenüberlagerung in diesem Beispiel handelt es sich um die Kathedrale von Chartres (Quelle: [Wikimedia](https://commons.wikimedia.org/wiki/File:Chartres.svg/overlay.kml)).
+In diesem Beispiel sehen Sie, wie KML-Bodenüberlagerungsdaten auf der Karte als Bildebene hinzugefügt werden. KML-Bodenüberlagerungen stellen die Nord-, Süd-, Ost- und Westkoordinaten und eine Drehung gegen den Uhrzeigersinn bereit. Die Bildebene erwartet jedoch für jede Ecke des Bilds Koordinaten. Bei der KML-Bodenüberlagerung in diesem Beispiel handelt es sich um die Kathedrale von Chartres (Quelle: [Wikimedia](https://commons.wikimedia.org/wiki/File:Chartres.svg/overlay.kml)).
 
-Der folgende Code verwendet die statische `getCoordinatesFromEdges`-Funktion der [ImageLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer?view=azure-iot-typescript-latest)-Klasse, um die vier Ecken des Bilds aus den Nord-, Süd-, Ost-, West-Koordinaten sowie den Rotationsinformationen der KML-Bodenüberlagerung zu berechnen.
+Der Code verwendet die statische `getCoordinatesFromEdges`-Funktion der [ImageLayer](/javascript/api/azure-maps-control/atlas.layer.imagelayer)-Klasse. Er berechnet die vier Ecken des Bilds aus den Nord-, Süd-, Ost-, West- und Drehungsinformationen der KML-Bodenüberlagerung.
 
 <br/>
 
-<iframe height='500' scrolling='no' title='KML-Bodenüberlagerung als Bildebene' src='//codepen.io/azuremaps/embed/EOJgpj/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Weitere Informationen finden Sie unter dem Pen <a href='https://codepen.io/azuremaps/pen/EOJgpj/'>KML Ground Overlay as Image Layer</a> (KML-Bodenüberlagerung als Bildebene) von Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) auf <a href='https://codepen.io'>CodePen</a>.
+<iframe height='500' scrolling='no' title='KML-Bodenüberlagerung als Bildebene' src='//codepen.io/azuremaps/embed/EOJgpj/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' loading="lazy" allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Weitere Informationen finden Sie unter dem Pen <a href='https://codepen.io/azuremaps/pen/EOJgpj/'>KML Ground Overlay as Image Layer</a> (KML-Bodenüberlagerung als Bildebene) von Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) auf <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 ## <a name="customize-an-image-layer"></a>Anpassen einer Bildebene
@@ -70,7 +77,7 @@ Die Bildebene bietet zahlreiche Optionen für die Formatierung. Mit dem folgende
 
 <br/>
 
-<iframe height='700' scrolling='no' title='Bildebenenoptionen' src='//codepen.io/azuremaps/embed/RqOGzx/?height=700&theme-id=0&default-tab=result' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Weitere Informationen finden Sie unter dem Pen <a href='https://codepen.io/azuremaps/pen/RqOGzx/'>Image Layer Options</a> (Bildebenenoptionen) von Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) auf <a href='https://codepen.io'>CodePen</a>.
+<iframe height='700' scrolling='no' title='Bildebenenoptionen' src='//codepen.io/azuremaps/embed/RqOGzx/?height=700&theme-id=0&default-tab=result' frameborder='no' loading="lazy" allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Weitere Informationen finden Sie unter dem Pen <a href='https://codepen.io/azuremaps/pen/RqOGzx/'>Image Layer Options</a> (Bildebenenoptionen) von Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) auf <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 ## <a name="next-steps"></a>Nächste Schritte
@@ -78,10 +85,10 @@ Die Bildebene bietet zahlreiche Optionen für die Formatierung. Mit dem folgende
 Erfahren Sie mehr zu den in diesem Artikel verwendeten Klassen und Methoden:
 
 > [!div class="nextstepaction"]
-> [ImageLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.imagelayer?view=azure-iot-typescript-latest)
+> [ImageLayer](/javascript/api/azure-maps-control/atlas.layer.imagelayer)
 
 > [!div class="nextstepaction"]
-> [ImageLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.imagelayeroptions?view=azure-iot-typescript-latest)
+> [ImageLayerOptions](/javascript/api/azure-maps-control/atlas.imagelayeroptions)
 
 In den folgenden Artikeln finden Sie weitere Codebeispiele, die Sie Ihren Karten hinzufügen können:
 

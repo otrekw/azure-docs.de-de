@@ -4,19 +4,19 @@ description: Berichterstellung zu Ereignissen der Self-Service-Kennwortzurückse
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/01/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: justinha
+author: justinha
 manager: daveba
-ms.reviewer: sahenry
+ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 794a99481d9394229e77168e75c48f4110735578
-ms.sourcegitcommit: 084630bb22ae4cf037794923a1ef602d84831c57
+ms.openlocfilehash: 6a764538ebc73927b1d274b2538e123ec90ce60e
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67536926"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96741557"
 ---
 # <a name="reporting-options-for-azure-ad-password-management"></a>Berichterstellungsoptionen für die Kennwortverwaltung von Azure AD
 
@@ -27,7 +27,7 @@ Nach einer Bereitstellung möchten viele Organisationen wissen, wie oder ob Self
 Die folgenden Fragen können mit den Berichten beantwortet werden, die im [Azure-Portal](https://portal.azure.com/) vorhanden sind:
 
 > [!NOTE]
-> Sie müssen [ein globaler Administrator](../users-groups-roles/directory-assign-admin-roles.md) sein, und Sie müssen zustimmen, dass diese Daten im Auftrag Ihres Unternehmens erfasst werden. Um zuzustimmen, müssen Sie die Registerkarte **Berichterstellung** oder die Überwachungsprotokolle mindestens ein Mal öffnen. Bis dahin werden keine Daten für Ihre Organisation erfasst.
+> Sie müssen [ein globaler Administrator](../roles/permissions-reference.md) sein, und Sie müssen zustimmen, dass diese Daten im Auftrag Ihres Unternehmens erfasst werden. Um zuzustimmen, müssen Sie die Registerkarte **Berichterstellung** oder die Überwachungsprotokolle mindestens ein Mal öffnen. Bis dahin werden keine Daten für Ihre Organisation erfasst.
 >
 
 * Wie viele Personen haben sich für die Kennwortzurücksetzung registriert?
@@ -38,10 +38,6 @@ Die folgenden Fragen können mit den Berichten beantwortet werden, die im [Azure
 * Welche Probleme treten häufig für Benutzer oder Administratoren bei dem Versuch auf, das Kennwort zurückzusetzen?
 * Welche Administratoren setzen häufig ihre eigenen Kennwörter zurück?
 * Gibt es verdächtige Aktivitäten beim Zurücksetzen des Kennworts?
-
-## <a name="power-bi-content-pack"></a>Power BI-Inhaltspaket
-
-Wenn Sie Power BI-Benutzer sind, können Sie ein Inhaltspaket für Azure AD verwenden, das eine benutzerfreundliche Berichterstellung für SSPR beinhaltet. Weitere Informationen zum Verwenden und Bereitstellen des Inhaltspakets finden Sie unter [Verwenden des Azure Active Directory-Power BI-Inhaltspakets](../reports-monitoring/howto-power-bi-content-pack.md). Mit dem Inhaltspaket können Sie Ihre eigenen Dashboards erstellen und diese mit anderen Personen in Ihrer Organisation gemeinsam nutzen.
 
 ## <a name="how-to-view-password-management-reports-in-the-azure-portal"></a>Anzeigen von Kennwortverwaltungsberichten im Azure-Portal
 
@@ -55,15 +51,15 @@ Die Art und Weise, wie Aktivitäten zur Kennwortzurücksetzung und zur Registrie
 6. Wählen Sie am oberen Rand des Bereichs im Menü **Filter** die Dropdownliste **Dienst** aus, und ändern Sie den Diensttyp in **Self-Service-Kennwortverwaltung**.
 7. Grenzen Sie die Liste optional weiter ein, indem Sie die spezielle **Aktivität** auswählen, für die Sie sich interessieren.
 
-### <a name="converged-registration-preview"></a>Zusammengeführte Registrierung (Vorschau)
+### <a name="combined-registration"></a>Kombinierte Registrierung
 
-Wenn Sie an der öffentlichen Vorschau der zusammengeführten Registrierung teilnehmen, finden Sie Informationen zur Benutzeraktivität in den Überwachungsprotokollen unter dem Dienst **Authentifizierungsmethoden**.
+Wenn Sie die [kombinierte Registrierung](./concept-registration-mfa-sspr-combined.md) aktiviert haben, finden Sie Informationen zur Benutzeraktivität in den Überwachungsprotokollen unter **Sicherheit** > **Authentifizierungsmethoden**.
 
 ## <a name="description-of-the-report-columns-in-the-azure-portal"></a>Beschreibung der Berichtsspalten im Azure-Portal
 
 In der folgende Liste werden alle Berichtsspalten im Detail beschrieben, die es im Azure-Portal gibt:
 
-* **User:** Der Benutzer, der versucht hat, sich für die Kennwortzurücksetzung zu registrieren
+* **Benutzer:** Der Benutzer, der versucht hat, sich für die Kennwortzurücksetzung zu registrieren
 * **Rolle**: Die Rolle des Benutzers im Verzeichnis
 * **Datum und Uhrzeit**: Datum und Uhrzeit des Versuchs
 * **Registrierte Daten**: Die Authentifizierungsdaten, die vom Benutzer während der Registrierung für die Kennwortzurücksetzung bereitgestellt wurden
@@ -74,7 +70,7 @@ In der folgenden Tabelle sind die verschiedenen Werte beschrieben, die Sie für 
 
 | Column | Zulässige Werte und deren Bedeutung |
 | --- | --- |
-| Registrierte Daten |**Alternative E-Mail-Adresse**: Der Benutzer hat eine alternative E-Mail-Adresse oder eine Authentifizierungs-E-Mail zur Authentifizierung verwendet.<p><p>**Bürotelefon**: Der Benutzer hat eine Bürotelefonnummer zur Authentifizierung verwendet.<p>**Mobiltelefon**: Der Benutzer hat ein Mobiltelefon oder Authentifizierungstelefon zur Authentifizierung verwendet.<p>**Sicherheitsfragen**: Der Benutzer hat Sicherheitsfragen zur Authentifizierung verwendet.<p>**Eine beliebige Kombination der vorherigen Methoden, z.B. alternative E-Mail-Adresse und Mobiltelefon**: Tritt auf, wenn eine Richtlinie für die zweistufige Überprüfung angegeben ist, und zeigt, welche beiden Methoden der Benutzer zur Authentifizierung seiner Anforderung zum Zurücksetzen des Kennworts verwendet hat. |
+| Registrierte Daten |**Alternative E-Mail-Adresse**: Der Benutzer hat eine alternative E-Mail-Adresse oder eine Authentifizierungs-E-Mail zur Authentifizierung verwendet.<p><p>**Bürotelefon:** Der Benutzer hat eine Bürotelefonnummer zur Authentifizierung verwendet.<p>**Mobiltelefon**: Der Benutzer hat ein Mobiltelefon oder Authentifizierungstelefon zur Authentifizierung verwendet.<p>**Sicherheitsfragen**: Der Benutzer hat Sicherheitsfragen zur Authentifizierung verwendet.<p>**Eine beliebige Kombination der vorherigen Methoden, z.B. alternative E-Mail-Adresse und Mobiltelefon**: Tritt auf, wenn eine Richtlinie für die zweistufige Überprüfung angegeben ist, und zeigt, welche beiden Methoden der Benutzer zur Authentifizierung seiner Anforderung zum Zurücksetzen des Kennworts verwendet hat. |
 
 ## <a name="self-service-password-management-activity-types"></a>Aktivitätstypen für die Self-Service-Kennwortverwaltung
 
@@ -183,9 +179,9 @@ In der folgenden Liste werden die Details dieser Aktivität erläutert:
 * [Bereitstellen der Kennwortzurücksetzung ohne erforderliche Endbenutzerregistrierung](howto-sspr-authenticationdata.md)
 * [Authentifizierungsmethoden](concept-sspr-howitworks.md#authentication-methods)
 * [Kennwortrichtlinien und -einschränkungen in Azure Active Directory](concept-sspr-policy.md)
-* [Übersicht über die Kennwortrückschreibung](howto-sspr-writeback.md)
+* [Übersicht über die Kennwortrückschreibung](./tutorial-enable-sspr-writeback.md)
 * [Welche Optionen sind für SSPR verfügbar, und was bedeuten sie?](concept-sspr-howitworks.md)
-* [Anscheinend ist ein Fehler aufgetreten. Wie behebe ich Probleme mit SSPR?](active-directory-passwords-troubleshoot.md)
+* [Anscheinend ist ein Fehler aufgetreten. Wie behebe ich Probleme mit SSPR?](./troubleshoot-sspr.md)
 * [Ich habe eine Frage, die nicht an einer anderen Stelle abgedeckt wurde.](active-directory-passwords-faq.md)
 
 [Reporting]: ./media/howto-sspr-reporting/sspr-reporting.png "Beispiel für Protokolle zur Überwachung der SSPR-Aktivität in Azure AD"

@@ -6,15 +6,19 @@ manager: timlt
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.topic: conceptual
-ms.custom: mvc
 ms.date: 03/18/2019
 ms.author: troyhop
-ms.openlocfilehash: 4401d4b93a27e76554368ce72d256b38de61df4c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.custom:
+- mvc
+- amqp
+- mqtt
+- devx-track-js
+ms.openlocfilehash: 58891bdb4601744129c97454f43202d3ba07b709
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61449022"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96852556"
 ---
 # <a name="create-an-advanced-device-model"></a>Erstellen eines erweiterten Gerätemodells
 
@@ -26,15 +30,11 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 Für die Schritte dieser Schrittanleitung benötigen Sie eine in Ihrem Azure-Abonnement bereitgestellte Instanz der Gerätesimulation.
 
-Falls Sie die Gerätesimulation noch nicht bereitgestellt haben, absolvieren Sie zunächst die [Schnellstartanleitung zum Bereitstellen und Ausführen einer IoT-Gerätesimulation in Azure](quickstart-device-simulation-deploy.md).
+Wenn Sie die Gerätesimulation noch nicht bereitgestellt haben, finden Sie weitere Informationen auf GitHub unter [Device Simulation deployment](https://github.com/Azure/device-simulation-dotnet/blob/master/README.md) (Bereitstellen der Gerätesimulation).
 
 ### <a name="open-device-simulation"></a>Öffnen der Gerätesimulation
 
-Um die Gerätesimulation in Ihrem Browser auszuführen, navigieren Sie zunächst zu [Azure IoT solution accelerators](https://www.azureiotsolutions.com) (Solution Accelerators für Azure IoT).
-
-Sie werden unter Umständen aufgefordert, sich mit den Anmeldeinformationen Ihres Azure-Abonnements anzumelden.
-
-Klicken Sie anschließend auf der Kachel für die Gerätesimulation, die Sie im Rahmen der [Schnellstartanleitung zum Bereitstellen und Ausführen einer IoT-Gerätesimulation in Azure](quickstart-device-simulation-deploy.md) bereitgestellt haben, auf **Starten**.
+Wenn Sie die Gerätesimulation noch nicht bereitgestellt haben, finden Sie weitere Informationen auf GitHub unter [Device Simulation deployment](https://github.com/Azure/device-simulation-dotnet/blob/master/README.md) (Bereitstellen der Gerätesimulation).
 
 ## <a name="device-models"></a>Gerätemodelle
 
@@ -165,7 +165,7 @@ Die im Schema aufgeführten Felder können den folgenden Typen entsprechen:
 * Boolean
 * Integer
 * Double
-* DateTime
+* Datetime
 
 ### <a name="supported-methods"></a>Unterstützte Methoden
 
@@ -504,7 +504,7 @@ Klicken Sie rechts oben auf der Seite auf **+ Add Device Models** (+ Gerätemode
 
 Klicken Sie auf **Advanced** (Erweitert), um die Registerkarte für erweiterte Gerätemodelle zu öffnen:
 
-![Registerkarte „Advanced“ (Erweitert)](media/iot-accelerators-device-simulation-advanced-device/advancedtab.png)
+![Erweitert (Registerkarte)](media/iot-accelerators-device-simulation-advanced-device/advancedtab.png)
 
 Klicken Sie auf **Browse** (Durchsuchen), und wählen Sie die erstellten JSON- und JavaScript-Dateien aus. Sie müssen alle drei Dateien auswählen. Wenn eine Datei fehlt, schlägt die Überprüfung fehl:
 
@@ -516,4 +516,4 @@ Wenn Ihre Dateien die Überprüfung bestanden haben, klicken Sie auf **Save** (S
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In dieser Schrittanleitung haben Sie die Dateien eines Gerätemodells kennengelernt, die in der Gerätesimulation verwendet werden, und haben erfahren, wie ein erweitertes Gerätemodell erstellt wird. Jetzt können Sie das [Verwenden von Time Series Insights zum Visualisieren der Telemetriedaten, die vom Solution Accelerator für Gerätesimulation gesendet wurden](https://docs.microsoft.com/azure/iot-accelerators/iot-accelerators-device-simulation-time-series-insights), untersuchen.
+In dieser Schrittanleitung haben Sie die Dateien eines Gerätemodells kennengelernt, die in der Gerätesimulation verwendet werden, und haben erfahren, wie ein erweitertes Gerätemodell erstellt wird. Jetzt können Sie das [Verwenden von Time Series Insights zum Visualisieren der Telemetriedaten, die vom Solution Accelerator für Gerätesimulation gesendet wurden](./iot-accelerators-device-simulation-time-series-insights.md), untersuchen.

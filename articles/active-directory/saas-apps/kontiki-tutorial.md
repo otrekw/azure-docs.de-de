@@ -1,27 +1,22 @@
 ---
-title: 'Tutorial: Azure Active Directory-Integration mit Kontiki | Microsoft-Dokumentation'
+title: 'Tutorial: Azure Active Directory-Integration mit Kontiki | Microsoft Docs'
 description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und Kontiki konfigurieren.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 8d5e5413-da4c-40d8-b1d0-f03ecfef030b
+manager: CelesteDG
+ms.reviewer: celested
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/14/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: bfb154bce34b2ceda99b82c7ca3534b8a8ee0a1f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9e0b438e0cfa729300099463086248780c69484c
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67098486"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95019839"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kontiki"></a>Tutorial: Azure Active Directory-Integration mit Kontiki
 
@@ -33,7 +28,7 @@ Die Integration von Kontiki in Azure AD bietet die folgenden Vorteile:
 * Benutzer können sich mit ihren Azure AD-Konten automatisch bei Kontiki anmelden (einmaliges Anmelden; Single Sign-On, SSO).
 * Sie können Ihre Konten an einem zentralen Ort, im Azure-Portal, verwalten.
 
-Weitere Informationen zur Integration von SaaS-Apps (Software-as-a-Service) in Azure AD finden Sie unter [Einmaliges Anmelden bei Anwendungen in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Weitere Informationen zur Integration von SaaS-Apps (Software-as-a-Service) in Azure AD finden Sie unter [Einmaliges Anmelden bei Anwendungen in Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -109,7 +104,7 @@ In diesem Abschnitt konfigurieren Sie das einmalige Anmelden von Azure AD bei Ko
     ![Informationen zur Domäne und zu den URLs für Kontiki](common/sp-signonurl.png)
 
     > [!NOTE]
-    > Wenden Sie sich an das [Kundensupportteam von Kontiki](https://customersupport.kontiki.com/enterprise/contactsupport.html), um den richtigen Wert zu erhalten. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
+    > Wenden Sie sich an das [Kundensupportteam von Kontiki](https://kollective.com/support/), um den richtigen Wert zu erhalten. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
 
 1. Wählen Sie im Bereich **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** die Option **Herunterladen** neben **Verbundmetadaten-XML** aus. Wählen Sie eine Option zum Herunterladen entsprechend Ihren Anforderungen aus. Speichern Sie das Zertifikat auf Ihrem Computer.
 
@@ -125,7 +120,7 @@ In diesem Abschnitt konfigurieren Sie das einmalige Anmelden von Azure AD bei Ko
 
 ### <a name="configure-kontiki-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens für Kontiki
 
-Zum Konfigurieren des einmaligen Anmeldens aufseiten von Kontiki senden Sie die heruntergeladene XML-Datei mit den Verbundmetadaten und die kopierten URLs aus dem Azure-Portal an das [Supportteam von Kontiki](https://customersupport.kontiki.com/enterprise/contactsupport.html). Anhand der von Ihnen gesendeten Informationen stellt das Supportteam von Kontiki sicher, dass die SAML-Verbindung für einmaliges Anmelden auf beiden Seiten ordnungsgemäß eingerichtet ist.
+Zum Konfigurieren des einmaligen Anmeldens aufseiten von Kontiki senden Sie die heruntergeladene XML-Datei mit den Verbundmetadaten und die kopierten URLs aus dem Azure-Portal an das [Supportteam von Kontiki](https://kollective.com/support/). Anhand der von Ihnen gesendeten Informationen stellt das Supportteam von Kontiki sicher, dass die SAML-Verbindung für einmaliges Anmelden auf beiden Seiten ordnungsgemäß eingerichtet ist.
 
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers 
 
@@ -143,7 +138,7 @@ In diesem Abschnitt erstellen Sie im Azure-Portal eine Testbenutzerin mit dem Na
 
     1. Geben Sie in das Feld **Name** den Namen **BrittaSimon** ein.
   
-    1. Geben Sie im Feld **Benutzername** die Zeichenfolge **brittasimon\@\<IhreUnternehmensdomäne>.\<Erweiterung** ein. Beispiel: **brittasimon\@contoso.com**
+    1. Geben Sie in das Feld **Benutzername** den Namen **brittasimon\@\<your-company-domain>.\<extension>** ein. Beispiel: **brittasimon\@contoso.com**
 
     1. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**. Notieren Sie sich den Wert, der im Feld **Kennwort** angezeigt wird.
 
@@ -191,6 +186,6 @@ Nachdem Sie einmaliges Anmelden eingerichtet haben, werden Sie bei Auswahl von *
 
 Weitere Informationen finden Sie in den folgenden Artikeln:
 
-- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
-- [Einmaliges Anmelden bei Anwendungen in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](./tutorial-list.md)
+- [Einmaliges Anmelden bei Anwendungen in Azure Active Directory](../manage-apps/what-is-single-sign-on.md)
+- [Was ist bedingter Zugriff?](../conditional-access/overview.md)

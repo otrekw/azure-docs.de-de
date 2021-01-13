@@ -1,30 +1,28 @@
 ---
-title: Kopieren von Daten aus Amazon Marketplace Web Service mit Azure Data Factory (Vorschau) | Microsoft-Dokumentation
+title: Kopieren von Daten aus dem AWS Marketplace
 description: Erfahren Sie, wie Daten aus Amazon Marketplace Web Service mithilfe einer Kopieraktivität in eine Azure Data Factory-Pipeline in unterstützte Senkendatenspeicher kopiert werden.
 services: data-factory
-documentationcenter: ''
-author: linda33wj
-manager: craigg
-ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/01/2018
 ms.author: jingwang
-ms.openlocfilehash: 6396aa727abcb253f3fd728e924a066f1c22f16f
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+author: linda33wj
+manager: shwang
+ms.reviewer: douglasl
+ms.custom: seo-lt-2019
+ms.date: 08/01/2018
+ms.openlocfilehash: 4620ef5b6a72afbe86b0ace33328a769eab31e5e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71092161"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "81418268"
 ---
-# <a name="copy-data-from-amazon-marketplace-web-service-using-azure-data-factory-preview"></a>Kopieren von Daten aus Amazon Marketplace Web Service mit Azure Data Factory (Vorschau)
+# <a name="copy-data-from-amazon-marketplace-web-service-using-azure-data-factory"></a>Kopieren von Daten aus Amazon Marketplace Web Service mit Azure Data Factory
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 In diesem Artikel wird beschrieben, wie Sie die Kopieraktivität in Azure Data Factory verwenden, um Daten aus Amazon Marketplace Web Service zu kopieren. Er baut auf dem Artikel zur [Übersicht über die Kopieraktivität](copy-activity-overview.md) auf, der eine allgemeine Übersicht über die Kopieraktivität enthält.
-
-> [!IMPORTANT]
-> Dieser Connector befindet sich derzeit in der Vorschauversion. Sie können ihn ausprobieren und uns Feedback geben. Wenden Sie sich an den [Azure-Support](https://azure.microsoft.com/support/), wenn Sie in Ihrer Lösung eine Abhängigkeit von Connectors verwenden möchten, die sich in der Vorschauphase befinden.
 
 ## <a name="supported-capabilities"></a>Unterstützte Funktionen
 
@@ -57,8 +55,8 @@ Folgende Eigenschaften werden für den mit Amazon Marketplace Web Service verkn�
 | accessKeyId | Die Zugriffsschlüssel-ID, mit der auf Daten zugegriffen wird.  | Ja |
 | secretKey | Der geheime Schlüssel, mit dem auf Daten zugegriffen wird. Markieren Sie dieses Feld als SecureString, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). | Ja |
 | useEncryptedEndpoints | Gibt an, ob die Endpunkte der Datenquelle mit HTTPS verschlüsselt sind. Der Standardwert lautet „true“.  | Nein |
-| useHostVerification | Gibt an, ob der Hostname im Zertifikat des Servers mit dem Hostnamen des Servers übereinstimmen muss, wenn eine Verbindung über SSL hergestellt wird. Der Standardwert lautet „true“.  | Nein |
-| usePeerVerification | Gibt an, ob die Identität des Servers bei Verbindung über SSL überprüft werden soll. Der Standardwert lautet „true“.  | Nein |
+| useHostVerification | Gibt an, ob der Hostname im Zertifikat des Servers mit dem Hostnamen des Servers übereinstimmen muss, wenn eine Verbindung über TLS hergestellt wird. Der Standardwert lautet „true“.  | Nein |
+| usePeerVerification | Gibt an, ob die Identität des Servers überprüft werden soll, wenn eine Verbindung über TLS hergestellt wird. Der Standardwert lautet „true“.  | Nein |
 
 **Beispiel:**
 
@@ -94,7 +92,7 @@ Legen Sie zum Kopieren von Daten aus Amazon Marketplace Web Service die „type�
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft des Datasets muss auf folgenden Wert festgelegt werden: **AmazonMWSObject** | Ja |
-| tableName | Name der Tabelle. | Nein (wenn „query“ in der Aktivitätsquelle angegeben ist) |
+| tableName | Der Name der Tabelle. | Nein (wenn „query“ in der Aktivitätsquelle angegeben ist) |
 
 **Beispiel**
 
@@ -125,7 +123,7 @@ Legen Sie zum Kopieren von Daten aus Amazon Marketplace Web Service den Quelltyp
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft der Quelle der Kopieraktivität muss auf Folgendes festgelegt werden: **AmazonMWSSource** | Ja |
-| query | Verwendet die benutzerdefinierte SQL-Abfrage zum Lesen von Daten. Beispiel: `"SELECT * FROM Orders where  Amazon_Order_Id = 'xx'"`. | Nein (wenn „tableName“ im Dataset angegeben ist) |
+| Abfrage | Verwendet die benutzerdefinierte SQL-Abfrage zum Lesen von Daten. Beispiel: `"SELECT * FROM Orders where  Amazon_Order_Id = 'xx'"`. | Nein (wenn „tableName“ im Dataset angegeben ist) |
 
 **Beispiel:**
 

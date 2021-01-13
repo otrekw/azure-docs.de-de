@@ -1,22 +1,17 @@
 ---
-title: Leitfaden zur Entwicklung von Azure Functions | Microsoft-Dokumentation
+title: Leitfaden zur Entwicklung von Azure Functions
 description: Lernen Sie die Konzepte und Techniken der Azure Functions kennen, die Sie benötigen, um alle Programmiersprachen und Bindungen übergreifend Funktionen in Azure zu entwickeln.
-author: ggailey777
-manager: gwallace
-keywords: Entwicklerhandbuch, Azure Functions, Funktionen, Ereignisverarbeitung, Webhooks, dynamisches Compute, serverlose Architektur
 ms.assetid: d8efe41a-bef8-4167-ba97-f3e016fcd39e
-ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 10/12/2017
-ms.author: glenga
-ms.openlocfilehash: c60fedfe855cc803ee2f4b1c463e2b0614239c04
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: 54bfd770fba9a1766396d66c0c263111c233c9c2
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69982636"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96167878"
 ---
-# <a name="azure-functions-developers-guide"></a>Azure Functions: Entwicklerhandbuch
+# <a name="azure-functions-developer-guide"></a>Azure Functions: Entwicklerhandbuch
 In Azure Functions nutzen bestimmte Funktionen einige wichtige technische Konzepte und Komponenten gemeinsam, unabhängig von der verwendeten Sprache oder Bindung. Bevor Sie sich mit den spezifischen Details einer bestimmten Sprache oder Bindung beschäftigen, sollten Sie diese Übersicht lesen, die für alle Funktionen gilt.
 
 Dieser Artikel setzt voraus, dass Sie die [Einführung in Azure Functions](functions-overview.md) bereits gelesen haben.
@@ -66,19 +61,19 @@ Oben sehen Sie die standardmäßige (und empfohlene) Ordnerstruktur für eine Fu
 > Wenn Sie ein Paket manuell bereitstellen, müssen die Datei _host.json_ und die Funktionsordner direkt im Ordner `wwwroot` bereitgestellt werden. Schließen Sie den Ordner `wwwroot` nicht in Ihre Bereitstellungen ein. Andernfalls erhalten Sie `wwwroot\wwwroot`-Ordner.
 
 #### <a name="use-local-tools-and-publishing"></a>Verwenden von lokalen Tools und Veröffentlichung
-Funktions-Apps können mit verschiedenen Tools erstellt und veröffentlicht werden, darunter [Visual Studio](./functions-develop-vs.md), [Visual Studio Code](functions-create-first-function-vs-code.md), [IntelliJ](./functions-create-maven-intellij.md), [Eclipse](./functions-create-maven-eclipse.md) und [Azure Functions Core Tools](./functions-develop-local.md). Weitere Informationen finden Sie unter [Lokales Codieren und Testen von Azure Functions](./functions-develop-local.md).
+Funktions-Apps können mit verschiedenen Tools erstellt und veröffentlicht werden, darunter [Visual Studio](./functions-develop-vs.md), [Visual Studio Code](./create-first-function-vs-code-csharp.md), [IntelliJ](./functions-create-maven-intellij.md), [Eclipse](./functions-create-maven-eclipse.md) und [Azure Functions Core Tools](./functions-develop-local.md). Weitere Informationen finden Sie unter [Lokales Codieren und Testen von Azure Functions](./functions-develop-local.md).
 
 <!--NOTE: I've removed documentation on FTP, because it does not sync triggers on the consumption plan --glenga -->
 
-## <a id="fileupdate"></a> Bearbeiten von Funktionen im Azure-Portal
+## <a name="how-to-edit-functions-in-the-azure-portal"></a><a id="fileupdate"></a> Bearbeiten von Funktionen im Azure-Portal
 Mit dem integrierten Functions-Editor im Azure-Portal können Sie Ihren Code und die Datei *function.json* direkt inline aktualisieren. Dies wird nur für kleine Änderungen oder Proof of Concept-Projekte empfohlen. Die bewährte Methode ist die Verwendung eines lokalen Entwicklungstools wie Visual Studio Code.
 
 ## <a name="parallel-execution"></a>Parallele Ausführung
-Wenn die Auslösung mehrerer Ereignisse schneller erfolgt als die Runtime einer Singlethreadfunktion sie verarbeiten kann, kann die Runtime die Funktion mehrmals parallel aufrufen.  Wenn eine Funktionen-App den [verbrauchsbasierten Hostingplan](functions-scale.md#how-the-consumption-and-premium-plans-work) verwendet, kann die App automatisch horizontal hochskaliert werden.  Jede Instanz der Funktionen-App – unabhängig davon, ob die App im verbrauchsbasierten Hostingplan oder einem regulären [App Service-Hostingplan](../app-service/overview-hosting-plans.md) ausgeführt wird – kann gleichzeitige Funktionsaufrufe über mehrere Threads parallel verarbeiten.  Die maximale Anzahl gleichzeitiger Funktionsaufrufe in jeder Funktionen-App-Instanz variiert je nach Art des verwendeten Triggers sowie je nach den Ressourcen, die von anderen Funktionen innerhalb der Funktionen-App verwendet werden.
+Wenn die Auslösung mehrerer Ereignisse schneller erfolgt als die Runtime einer Singlethreadfunktion sie verarbeiten kann, kann die Runtime die Funktion mehrmals parallel aufrufen.  Wenn eine Funktionen-App den [verbrauchsbasierten Hostingplan](functions-scale.md#how-the-consumption-and-premium-plans-work) verwendet, kann die App automatisch aufskaliert werden.  Jede Instanz der Funktionen-App – unabhängig davon, ob die App im verbrauchsbasierten Hostingplan oder einem regulären [App Service-Hostingplan](../app-service/overview-hosting-plans.md) ausgeführt wird – kann gleichzeitige Funktionsaufrufe über mehrere Threads parallel verarbeiten.  Die maximale Anzahl gleichzeitiger Funktionsaufrufe in jeder Funktionen-App-Instanz variiert je nach Art des verwendeten Triggers sowie je nach den Ressourcen, die von anderen Funktionen innerhalb der Funktionen-App verwendet werden.
 
 ## <a name="functions-runtime-versioning"></a>Versionsverwaltung der Functions-Runtime
 
-Sie können die Version der Functions-Runtime mit der App-Einstellung `FUNCTIONS_EXTENSION_VERSION` konfigurieren. Der Wert „~2“ bedeutet beispielsweise, dass für Ihre Funktions-App „2.x“ als deren Hauptversion verwendet wird. Funktionen-Apps werden auf jede neue Nebenversion aktualisiert, wenn sie freigegeben werden. Weitere Informationen finden Sie unter [Einstellen von Runtimeversionen von Azure Functions als Ziel](set-runtime-version.md), einschließlich der Informationen zum Anzeigen der genauen Version Ihrer Funktions-App.
+Sie können die Version der Functions-Runtime mit der App-Einstellung `FUNCTIONS_EXTENSION_VERSION` konfigurieren. Der Wert „~3“ bedeutet beispielsweise, dass für Ihre Funktions-App „3.x“ als Hauptversion verwendet wird. Funktions-Apps werden auf jede neue Nebenversion aktualisiert, wenn sie freigegeben werden. Weitere Informationen finden Sie unter [Einstellen von Runtimeversionen von Azure Functions als Ziel](set-runtime-version.md), einschließlich der Informationen zum Anzeigen der genauen Version Ihrer Funktions-App.
 
 ## <a name="repositories"></a>Repositorys
 Der Code für Azure Functions ist Open Source und in GitHub-Repositorys gespeichert:
@@ -107,4 +102,4 @@ Weitere Informationen finden Sie in den folgenden Ressourcen:
 * [Lokales Codieren und Testen von Azure Functions](./functions-develop-local.md)
 * [Bewährte Methoden für Azure Functions](functions-best-practices.md)
 * [C#-Entwicklerreferenz zu Azure Functions](functions-dotnet-class-library.md)
-* [NodeJS-Entwicklerreferenz zu Azure Functions](functions-reference-node.md)
+* [Node.js-Entwicklerreferenz zu Azure Functions](functions-reference-node.md)

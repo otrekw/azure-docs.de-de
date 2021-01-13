@@ -6,23 +6,24 @@ ms.author: govindk
 ms.reviewer: sngun
 ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/01/2019
-ms.openlocfilehash: cb34ea44c069f067d13a6480531a94a1a515f380
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: d25e168e342e22af9dc41d31dd7e18530aaa22b8
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70241242"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93090510"
 ---
 # <a name="connect-to-azure-cosmos-db-cassandra-api-from-spark"></a>Herstellen einer Verbindung mit der Azure Cosmos DB-Cassandra-API von Spark
+[!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
 
 Dieser Artikel stammt aus einer Reihe von Artikeln zur Integration der Cosmos DB-Cassandra-API von Spark. In den Artikeln werden die Konnektivität, DDL-Vorgänge (Data Definition Language), grundlegende DML-Vorgänge (Data Manipulation Language) und die erweiterte Integration der Azure Cosmos DB-Cassandra-API von Spark behandelt. 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 * [Ein Azure Cosmos DB-Cassandra-API-Konto muss vorhanden sein.](create-cassandra-dotnet.md#create-a-database-account)
 
-* Stellen Sie eine Spark-Umgebung Ihrer Wahl [[Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal) | [Azure HDInsight Spark](https://docs.microsoft.com/azure/hdinsight/spark/apache-spark-jupyter-spark-sql) | Sonstiges] bereit.
+* Stellen Sie eine Spark-Umgebung Ihrer Wahl [[Azure Databricks](/azure/databricks/scenarios/quickstart-create-databricks-workspace-portal) | [Azure HDInsight Spark](../hdinsight/spark/apache-spark-jupyter-spark-sql.md) | Sonstiges] bereit.
 
 ## <a name="dependencies-for-connectivity"></a>Abhängigkeiten für die Konnektivität
 * **Spark-Connector für Cassandra:** Der Spark-Connector wird verwendet, um eine Verbindung mit der Azure Cosmos DB-Cassandra-API herzustellen.  Identifizieren und verwenden Sie die Version des Connectors unter [Maven > Central]( https://mvnrepository.com/artifact/com.datastax.spark/spark-cassandra-connector), die mit den Spark- und Scala-Versionen Ihrer Spark-Umgebung kompatibel ist.
@@ -123,4 +124,4 @@ In den folgenden Artikeln wird die Spark-Integration mit der Azure Cosmos DB-Cas
 * [Upsertvorgänge](cassandra-spark-upsert-ops.md)
 * [Löschvorgänge](cassandra-spark-delete-ops.md)
 * [Aggregationsvorgänge](cassandra-spark-aggregation-ops.md)
-* [Tabellenkopiervorgänge](cassandra-spark-table-copy-ops.md)
+* [Tabellenkopiervorgänge an der Azure Cosmos DB-Cassandra-API von Spark aus](cassandra-spark-table-copy-ops.md)

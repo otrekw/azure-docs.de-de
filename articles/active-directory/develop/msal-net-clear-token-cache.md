@@ -1,28 +1,24 @@
 ---
-title: Löschen des Tokencaches mit der Microsoft Authentication Library für .NET – Azure
+title: Löschen des Tokencaches (MSAL.NET) | Azure
+titleSuffix: Microsoft identity platform
 description: Erfahren Sie, wie Sie den Tokencache mit der Microsoft Authentication Library für .NET (MSAL.NET) löschen.
 services: active-directory
-documentationcenter: dev-center-name
-author: TylerMSFT
+author: mmacy
 manager: CelesteDG
-editor: ''
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
-ms.topic: conceptual
-ms.tgt_pltfrm: na
+ms.topic: how-to
 ms.workload: identity
 ms.date: 05/07/2019
-ms.author: twhitney
+ms.author: marsma
 ms.reviewer: saeeda
-ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1cee6443db0b019f79a80cf5b7c0e2a7a50240f2
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.custom: devx-track-csharp, aaddev
+ms.openlocfilehash: 9a86a535bf429dcc81810c6c39ba415a158b20ec
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69532665"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88166211"
 ---
 # <a name="clear-the-token-cache-using-msalnet"></a>Löschen des Tokencaches mit MSAL.NET
 

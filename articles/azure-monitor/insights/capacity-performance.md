@@ -1,24 +1,17 @@
 ---
 title: Lösung „Kapazität und Leistung“ in Azure Monitor | Microsoft-Dokumentation
 description: Die Lösung „Kapazität und Leistung“ in Monitor hilft Ihnen, die Kapazität Ihrer Hyper-V-Server zu verstehen.
-services: log-analytics
-documentationcenter: ''
-author: mgoedtel
-manager: carmonm
-editor: ''
-ms.assetid: 51617a6f-ffdd-4ed2-8b74-1257149ce3d4
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.subservice: logs
 ms.topic: conceptual
+author: bwren
+ms.author: bwren
 ms.date: 07/13/2017
-ms.author: magoedte
-ms.openlocfilehash: fcf71bf144b559c4867303988d4c1f08b7aa5605
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ee5aec2e483f41c73d57fc1d91427e5657bda3e7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62101913"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87317993"
 ---
 # <a name="plan-hyper-v-virtual-machine-capacity-with-the-capacity-and-performance-solution-deprecated"></a>Planen der Kapazität des virtuellen Hyper-V-Computers mit der Lösung „Kapazität und Leistung“ (veraltet)
 
@@ -48,10 +41,10 @@ In der folgenden Tabelle sind die verbundenen Quellen beschrieben, die von der L
 
 | Verbundene Quelle | Support | BESCHREIBUNG |
 |---|---|---|
-| [Windows-Agents](../../azure-monitor/platform/agent-windows.md) | Ja | Mit der Lösung werden Informationen zu den Kapazitäts- und Leistungsdaten von Windows-Agents gesammelt. |
-| [Linux-Agents](../../azure-monitor/learn/quick-collect-linux-computer.md) | Nein    | Die Lösung sammelt keine Informationen zu den Kapazitäts- und Leistungsdaten von direkten Linux-Agents.|
-| [SCOM-Verwaltungsgruppe](../../azure-monitor/platform/om-agents.md) | Ja |Die Lösung sammelt Informationen zu den Kapazitäts- und Leistungsdaten von Agents in einer verbundenen SCOM-Verwaltungsgruppe. Es ist keine direkte Verbindung vom SCOM-Agent mit Log Analytics erforderlich.|
-| [Azure-Speicherkonto](../../azure-monitor/platform/collect-azure-metrics-logs.md) | Nein | Der Azure-Speicher enthält keine Daten zur Kapazität und Leistung.|
+| [Windows-Agents](../platform/agent-windows.md) | Ja | Mit der Lösung werden Informationen zu den Kapazitäts- und Leistungsdaten von Windows-Agents gesammelt. |
+| [Linux-Agents](../learn/quick-collect-linux-computer.md) | Nein | Die Lösung sammelt keine Informationen zu den Kapazitäts- und Leistungsdaten von direkten Linux-Agents.|
+| [SCOM-Verwaltungsgruppe](../platform/om-agents.md) | Ja |Die Lösung sammelt Informationen zu den Kapazitäts- und Leistungsdaten von Agents in einer verbundenen SCOM-Verwaltungsgruppe. Es ist keine direkte Verbindung vom SCOM-Agent mit Log Analytics erforderlich.|
+| [Azure-Speicherkonto](../platform/resource-logs.md#send-to-log-analytics-workspace) | Nein | Der Azure-Speicher enthält keine Daten zur Kapazität und Leistung.|
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -62,7 +55,7 @@ In der folgenden Tabelle sind die verbundenen Quellen beschrieben, die von der L
 
 Führen Sie den folgenden Schritt aus, um die Lösung „Kapazität und Leistung“ Ihrem Arbeitsbereich hinzuzufügen.
 
-- Fügen Sie die Lösung „Kapazitäts- und Leistungsdiagnose“ mithilfe des unter [Hinzufügen von Log Analytics-Lösungen aus dem Lösungskatalog](../../azure-monitor/insights/solutions.md) beschriebenen Verfahrens Ihrem Log Analytics-Arbeitsbereich hinzu.
+- Fügen Sie die Lösung „Kapazitäts- und Leistungsdiagnose“ mithilfe des unter [Hinzufügen von Log Analytics-Lösungen aus dem Lösungskatalog](./solutions.md) beschriebenen Verfahrens Ihrem Log Analytics-Arbeitsbereich hinzu.
 
 ## <a name="management-packs"></a>Management Packs
 
@@ -79,7 +72,7 @@ New Management Pack with id:"Microsoft.IntelligencePacks.CapacityPerformance", v
 
 Wenn die Lösung „Kapazität und Leistung“ aktualisiert wird, ändert sich die Versionsnummer.
 
-Weitere Informationen zur Aktualisierung von Management Packs finden Sie unter [Herstellen einer Verbindung zwischen Operations Manager und Log Analytics](../../azure-monitor/platform/om-agents.md).
+Weitere Informationen zur Aktualisierung von Management Packs finden Sie unter [Herstellen einer Verbindung zwischen Operations Manager und Log Analytics](../platform/om-agents.md).
 
 ## <a name="using-the-solution"></a>Verwenden der Lösung
 
@@ -116,7 +109,7 @@ Klicken Sie auf die Kachel „Kapazität und Leistung“, um das Dashboard „Ka
 
 Computingumgebungen für die Produktion können sich von einer Organisation zur nächsten stark unterscheiden. Die Workloads in Bezug auf die Kapazität und Leistung richten sich unter Umständen danach, wie Ihre VMs ausgeführt werden und was Sie als normal betrachten. Bestimmte Verfahren, die Ihnen beim Messen der Leistung als Hilfe dienen sollen, treffen für Ihre Umgebung also ggf. nicht zu. Aus diesem Grund ist eine allgemeiner gehaltene Anleitung für Sie hilfreicher. Microsoft veröffentlicht viele verschiedene Artikel mit Anleitungen und Beschreibungen zum Messen der Leistung.
 
-Zusammenfassend lässt sich festhalten, dass mit der Lösung Daten zur Kapazität und Leistung aus verschiedenen Quellen gesammelt werden, z.B. auch von Leistungsindikatoren. Nutzen Sie diese Daten zur Kapazität und Leistung, die auf den einzelnen Oberflächen der Lösung angezeigt werden, und vergleichen Sie Ihre Ergebnisse mit den Ergebnissen im Artikel [Measuring Performance on Hyper-V](https://msdn.microsoft.com/library/cc768535.aspx) (Messen der Leistung in Hyper-V). Der Artikel wurde zwar schon vor einiger Zeit veröffentlicht, aber die Metriken, Aspekte und Richtlinien sind immer noch gültig. Der Artikel enthält auch Links zu anderen nützlichen Ressourcen.
+Zusammenfassend lässt sich festhalten, dass mit der Lösung Daten zur Kapazität und Leistung aus verschiedenen Quellen gesammelt werden, z.B. auch von Leistungsindikatoren. Nutzen Sie diese Daten zur Kapazität und Leistung, die auf den einzelnen Oberflächen der Lösung angezeigt werden, und vergleichen Sie Ihre Ergebnisse mit den Ergebnissen im Artikel [Measuring Performance on Hyper-V](https://www.microsoft.com/en-us/download/details.aspx?id=56495) (Messen der Leistung in Hyper-V). Der Artikel wurde zwar schon vor einiger Zeit veröffentlicht, aber die Metriken, Aspekte und Richtlinien sind immer noch gültig. Der Artikel enthält auch Links zu anderen nützlichen Ressourcen.
 
 
 ## <a name="sample-log-searches"></a>Beispiele für Protokollsuchen
@@ -124,7 +117,7 @@ Zusammenfassend lässt sich festhalten, dass mit der Lösung Daten zur Kapazitä
 Die folgende Tabelle enthält Beispiele für Protokollsuchen nach Daten zur Kapazität und Leistung, die mit dieser Lösung gesammelt und berechnet werden.
 
 
-| Abfragen | BESCHREIBUNG |
+| Abfrage | BESCHREIBUNG |
 |:--- |:--- |
 | Alle Konfigurationen des Hostarbeitsspeichers | Perf &#124; where ObjectName == "Capacity and Performance" and CounterName == "Host Assigned Memory MB" &#124; summarize MB = avg(CounterValue) by InstanceName |
 | Alle Konfigurationen des VM-Arbeitsspeichers | Perf &#124; where ObjectName == "Capacity and Performance" and CounterName == "VM Assigned Memory MB" &#124; summarize MB = avg(CounterValue) by InstanceName |
@@ -136,4 +129,5 @@ Die folgende Tabelle enthält Beispiele für Protokollsuchen nach Daten zur Kapa
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Verwenden Sie die [Protokollsuche in Log Analytics](../../azure-monitor/log-query/log-query-overview.md), um ausführliche Daten zur Kapazität und Leistung anzuzeigen.
+* Verwenden Sie die [Protokollsuche in Log Analytics](../log-query/log-query-overview.md), um ausführliche Daten zur Kapazität und Leistung anzuzeigen.
+

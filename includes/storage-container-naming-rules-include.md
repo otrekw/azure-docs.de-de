@@ -4,17 +4,19 @@ ms.service: storage
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: tamram
-ms.openlocfilehash: aeca3550b5fc58694779e7e54ce6ca547ba30e17
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 3e5afeffa6f47ff79e31f189abc6d5e26d8f2586
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67178706"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "86050363"
 ---
 Jeder Blob im Azure-Speicher muss sich in einem Container befinden. Der Container ist Teil des Blob-Namens. Beispiel: `mycontainer` ist der Name des Containers in diesen Beispiel-Blob-URIs:
 
-    https://storagesample.blob.core.windows.net/mycontainer/blob1.txt
-    https://storagesample.blob.core.windows.net/mycontainer/photos/myphoto.jpg
+```http
+https://storagesample.blob.core.windows.net/mycontainer/blob1.txt
+https://storagesample.blob.core.windows.net/mycontainer/photos/myphoto.jpg
+```
 
 Ein Containername muss ein gültiger DNS-Name sein und den folgenden Benennungsregeln entsprechen:
 

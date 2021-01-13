@@ -1,22 +1,18 @@
 ---
-title: 'Endbenutzerauthentifizierung: .NET SDK mit Azure Data Lake Storage Gen1 mit Azure Active Directory | Microsoft-Dokumentation'
+title: 'Authentifizierung von Endbenutzern: .NET bei Data Lake Storage Gen1 – Azure'
 description: Hier erfahren Sie, wie Sie die Authentifizierung von Endbenutzern bei Azure Data Lake Storage Gen1 mithilfe von Azure Active Directory mit dem .NET SDK umsetzen.
-services: data-lake-store
-documentationcenter: ''
 author: twooley
-manager: cgronlun
-editor: cgronlun
 ms.service: data-lake-store
-ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 215b839c21c2590c08ac2f4250086eaf97914ce1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 67ba4f12aec9e987d79109b7197d03301bf40650
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66243711"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89004781"
 ---
 # <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-net-sdk"></a>Authentifizierung von Endbenutzern bei Azure Data Lake Storage Gen1 mithilfe des .NET SDK
 > [!div class="op_single_selector"]
@@ -39,7 +35,7 @@ In diesem Artikel erfahren Sie, wie Sie mithilfe des .NET SDK die Authentifizier
 ## <a name="create-a-net-application"></a>Erstellen einer .NET-Anwendung
 1. Wählen Sie in Visual Studio das Menü **Datei**, dann die Option **Neu** und anschließend **Projekt** aus.
 2. Wählen Sie **Konsolen-App (.NET Framework)** und dann **Weiter** aus.
-3. Geben Sie unter **Projektname** `CreateADLApplication` ein, und wählen Sie dann **Erstellen** aus.
+3. Geben Sie unter **Projektname**`CreateADLApplication` ein, und wählen Sie dann **Erstellen** aus.
 
 4. Fügen Sie Ihrem Projekt die NuGet-Pakete hinzu.
 
@@ -74,7 +70,7 @@ In diesem Artikel erfahren Sie, wie Sie mithilfe des .NET SDK die Authentifizier
 ## <a name="end-user-authentication"></a>Authentifizierung von Endbenutzern
 Fügen Sie diesen Codeausschnitt der .NET-Clientanwendung hinzu. Ersetzen Sie die Platzhalterwerte mit den aus einer (als Voraussetzung angegebenen) nativen Azure AD-Anwendung abgerufenen Werten. Mit diesem Codeausschnitt können Sie Ihre Anwendung **interaktiv** bei Data Lake Storage Gen1 authentifizieren, d.h., Sie werden aufgefordert, Ihre Azure-Anmeldeinformationen einzugeben.
 
-Zur Vereinfachung werden im folgenden Codeausschnitt Standardwerte für Client-ID und Umleitungs-URI verwendet, die für jedes Azure-Abonnement gültig sind. Im folgenden Codeausschnitt müssen Sie nur den Wert für Ihre Mandanten-ID bereitstellen. Sie können mithilfe der Anweisungen unter [Abrufen der Mandanten-ID](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in) die Mandanten-ID abrufen.
+Zur Vereinfachung werden im folgenden Codeausschnitt Standardwerte für Client-ID und Umleitungs-URI verwendet, die für jedes Azure-Abonnement gültig sind. Im folgenden Codeausschnitt müssen Sie nur den Wert für Ihre Mandanten-ID bereitstellen. Sie können mithilfe der Anweisungen unter [Abrufen der Mandanten-ID](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in) die Mandanten-ID abrufen.
     
 - Ersetzen Sie die Main()-Funktion durch den folgenden Code:
 
@@ -104,6 +100,6 @@ Im Anschluss folgen einige wissenswerte Informationen zu obigem Codeausschnitt:
 ## <a name="next-steps"></a>Nächste Schritte
 In diesem Artikel haben Sie erfahren, wie Sie die Authentifizierung von Endbenutzern verwenden, um sich mithilfe des .NET SDK bei Azure Data Lake Storage Gen1 zu authentifizieren. In den folgenden Artikeln wird erörtert, wie Sie das .NET SDK mit Azure Data Lake Storage Gen1 verwenden.
 
-* [Kontoverwaltungsvorgänge für Azure Data Lake Storage Gen1 mit dem .NET SDK](data-lake-store-get-started-net-sdk.md)
+* [Kontoverwaltungsvorgänge für Data Lake Storage Gen1 mit dem .NET SDK](data-lake-store-get-started-net-sdk.md)
 * [Dateisystemvorgänge in Azure Data Lake Storage Gen1 mit dem .NET SDK](data-lake-store-data-operations-net-sdk.md)
 

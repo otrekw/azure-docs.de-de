@@ -7,12 +7,12 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/14/2019
-ms.openlocfilehash: d994fe1501dedf6a8ea2c3366f6559c7abac0892
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 032c25969bf477e1163b8db2aca631044c457939
+ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71091608"
+ms.lasthandoff: 10/26/2020
+ms.locfileid: "92539971"
 ---
 # <a name="apache-hbase-master-hmaster-fails-to-start-in-azure-hdinsight"></a>Fehler beim Starten von Apache HBase Master (HMaster) in Azure HDInsight
 
@@ -83,7 +83,7 @@ Dieses Problem kann auftreten, wenn viele Tabellen und Regionen vorhanden sind, 
 
 ### <a name="resolution"></a>Lösung
 
-1. Wechseln Sie auf der Apache Ambari-Benutzeroberfläche zu **HBase** > **Configs**. Fügen Sie in der benutzerdefinierten Datei `hbase-site.xml` die folgende Einstellung hinzu:
+1. Wechseln Sie auf der Apache Ambari-Benutzeroberfläche zu **HBase** > **Configs** . Fügen Sie in der benutzerdefinierten Datei `hbase-site.xml` die folgende Einstellung hinzu:
 
     ```
     Key: hbase.master.namespace.init.timeout Value: 2400000  
@@ -115,7 +115,7 @@ Lange Unterbrechung der JVM-GC von `regionserver`. Die Pause führt dazu, dass `
 
 1. Navigieren Sie auf der Ambari-Benutzeroberfläche zu **HBase > Configs > Settings** („HBase“ > „Konfigurationen“ > „Einstellungen“), und ändern Sie im Timeoutabschnitt den Wert des ZooKeeper-Sitzungstimeouts.
 
-1. Navigieren Sie auf der Ambari-Benutzeroberfläche zu **Zookeeper -> Configs -> Custom** `zoo.cfg` (ZooKepper -> Konfigurationen -> Benutzerdefiniert), und fügen Sie die folgende Einstellung hinzu, bzw. ändern Sie sie. Achten Sie darauf, dass der Wert mit dem HBase-Wert für `zookeeper.session.timeout` übereinstimmt.
+1. Navigieren Sie in der Ambari-Benutzeroberfläche zu **Zookeeper -> Configs -> Custom** `zoo.cfg` (Zookeeper -> Konfigurationen -> Benutzerdefiniert), und fügen Sie die folgende Einstellung hinzu, bzw. ändern Sie sie. Achten Sie darauf, dass der Wert mit dem HBase-Wert für `zookeeper.session.timeout` übereinstimmt.
 
     ```
     Key: maxSessionTimeout Value: 120000  
@@ -149,4 +149,4 @@ Wenn Ihr Problem nicht aufgeführt ist oder Sie es nicht lösen können, besuche
 
 * Herstellen einer Verbindung mit [@AzureSupport](https://twitter.com/azuresupport), dem offiziellen Microsoft Azure-Konto zum Verbessern der Kundenfreundlichkeit. Verbinden der Azure-Community mit den richtigen Ressourcen: Antworten, Support und Experten.
 
-* Sollten Sie weitere Unterstützung benötigen, senden Sie eine Supportanfrage über das [Azure-Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Wählen Sie dazu auf der Menüleiste die Option **Support** aus, oder öffnen Sie den Hub **Hilfe und Support**. Ausführlichere Informationen hierzu finden Sie unter [Erstellen einer Azure-Supportanfrage](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request). Zugang zu Abonnementverwaltung und Abrechnungssupport ist in Ihrem Microsoft Azure-Abonnement enthalten. Technischer Support wird über einen [Azure-Supportplan](https://azure.microsoft.com/support/plans/) bereitgestellt.
+* Sollten Sie weitere Unterstützung benötigen, senden Sie eine Supportanfrage über das [Azure-Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Wählen Sie dazu auf der Menüleiste die Option **Support** aus, oder öffnen Sie den Hub **Hilfe und Support** . Ausführlichere Informationen hierzu finden Sie unter [Erstellen einer Azure-Supportanfrage](../../azure-portal/supportability/how-to-create-azure-support-request.md). Zugang zu Abonnementverwaltung und Abrechnungssupport ist in Ihrem Microsoft Azure-Abonnement enthalten. Technischer Support wird über einen [Azure-Supportplan](https://azure.microsoft.com/support/plans/) bereitgestellt.

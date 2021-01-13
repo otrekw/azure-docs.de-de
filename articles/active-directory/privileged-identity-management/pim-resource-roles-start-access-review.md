@@ -1,28 +1,28 @@
 ---
-title: Erstellen einer Zugriffsüberprüfung für Azure-Ressourcenrollen in PIM – Azure Active Directory | Microsoft-Dokumentation
+title: Erstellen einer Zugriffsüberprüfung für Azure-Ressourcenrollen in PIM – Azure AD | Microsoft-Dokumentation
 description: Hier erfahren Sie, wie Sie eine Zugriffsüberprüfung für Azure-Ressourcenrollen in Azure AD Privileged Identity Management (PIM) erstellen.
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: mtillman
+manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.subservice: pim
-ms.date: 04/29/2019
+ms.date: 12/08/2020
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ba674c143cd8d85b9764c8ade776b52dd1d3598d
-ms.sourcegitcommit: 95b180c92673507ccaa06f5d4afe9568b38a92fb
+ms.openlocfilehash: 2a618da7c9a66b8f687c1b75914530080ed56bea
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/08/2019
-ms.locfileid: "70804145"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905824"
 ---
-# <a name="create-an-access-review-of-azure-resource-roles-in-pim"></a>Erstellen einer Zugriffsüberprüfung für Azure-Ressourcenrollen in PIM
+# <a name="create-an-access-review-of-azure-resource-roles-in-privileged-identity-management"></a>Erstellen einer Zugriffsüberprüfung für Azure-Ressourcenrollen in Privileged Identity Management
 
 Für Mitarbeiter kann sich der Zugriff auf privilegierte Azure-Ressourcenrollen im Laufe der Zeit ändern. Daher sollten Sie den Zugriff in regelmäßigen Abständen überprüfen, um das mit veralteten Rollenzuweisungen verbundene Risiko zu verringern. Mit Azure Active Directory (Azure AD) Privileged Identity Management (PIM) können Sie eine Zugriffsüberprüfung für privilegierte Azure-Ressourcenrollen erstellen. Sie können auch wiederholte Zugriffsüberprüfungen konfigurieren, die automatisch ausgeführt werden.
 
@@ -30,7 +30,7 @@ In diesem Artikel wird beschrieben, wie Sie eine oder mehrere Zugriffsüberprüf
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- [Administrator für privilegierte Rollen](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator)
+[Administrator für privilegierte Rollen](../roles/permissions-reference.md#privileged-role-administrator)
 
 ## <a name="open-access-reviews"></a>Öffnen von Zugriffsüberprüfungen
 
@@ -38,17 +38,15 @@ In diesem Artikel wird beschrieben, wie Sie eine oder mehrere Zugriffsüberprüf
 
 1. Öffnen Sie **Azure AD Privileged Identity Management**.
 
-1. Klicken Sie im linken Menü auf **Azure-Ressourcen**.
+1. Wählen Sie im linken Menü die Option **Azure-Ressourcen** aus.
 
-1. Klicken Sie auf die Ressource, die Sie verwalten möchten, z.B. ein Abonnement oder eine Verwaltungsgruppe.
+1. Wählen Sie die Ressource aus, die Sie verwalten möchten, z. B. ein Abonnement.
 
-1. Klicken Sie unter „Verwalten“ auf **Zugriffsüberprüfungen**.
+1. Wählen Sie unter „Verwalten“ die Option **Zugriffsüberprüfungen** aus.
 
     ![Azure-Ressourcen – Liste der Zugriffsüberprüfungen mit dem Status aller Überprüfungen](./media/pim-resource-roles-start-access-review/access-reviews.png)
 
-
 [!INCLUDE [Privileged Identity Management access reviews](../../../includes/active-directory-privileged-identity-management-access-reviews.md)]
-
 
 ## <a name="start-the-access-review"></a>Starten der Zugriffsüberprüfung
 

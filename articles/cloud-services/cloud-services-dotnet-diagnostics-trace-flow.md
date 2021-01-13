@@ -1,20 +1,22 @@
 ---
-title: Verfolgen des Ablaufs einer Cloud Services-Anwendung mit Azure-Diagnose | Microsoft-Dokumentation
+title: Verfolgen des Ablaufs in einer Cloud Services-Anwendung mit der Azure-Diagnose
+titleSuffix: Azure Cloud Services
 description: Fügen Sie in einer Azure-Anwendung Ablaufverfolgungsmeldungen hinzu, um Debuggen, Leistungsmessung, Überwachung, Datenverkehrsanalysen und mehr zu ermöglichen.
 services: cloud-services
 documentationcenter: .net
-author: georgewallace
+author: tgore03
 ms.service: cloud-services
 ms.devlang: dotnet
+ms.custom: devx-track-dotnet
 ms.topic: article
 ms.date: 02/20/2016
-ms.author: gwallace
-ms.openlocfilehash: e3e34ff9b5ce1c3a7b45468d22faddddf0c9a913
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.author: tagore
+ms.openlocfilehash: 8270766413729454181c461d469d49e418a1aa67
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359149"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88932303"
 ---
 # <a name="trace-the-flow-of-a-cloud-services-application-with-azure-diagnostics"></a>Verfolgen des Ablaufs einer Cloud Services-Anwendung mit der Azure-Diagnose
 Die Ablaufverfolgung ist eine Möglichkeit, die Ausführung der Anwendung zu überwachen, während sie ausgeführt wird. Sie können die Klassen [System.Diagnostics.Trace](/dotnet/api/system.diagnostics.trace), [System.Diagnostics.Debug](/dotnet/api/system.diagnostics.debug) und [System.Diagnostics.TraceSource](/dotnet/api/system.diagnostics.tracesource) verwenden, um Informationen zu Fehlern und zur Anwendungsausführung in Protokollen, Textdateien oder auf anderen Geräten zur späteren Analyse aufzuzeichnen. Weitere Informationen zur Ablaufverfolgung finden Sie unter [Ablaufverfolgung und Instrumentation von Anwendungen](/dotnet/framework/debug-trace-profile/tracing-and-instrumenting-applications).
@@ -24,7 +26,7 @@ Implementieren Sie die Ablaufverfolgung in der Cloud Services-Anwendung durch Hi
 
 Informationen zum Platzieren von Ablaufverfolgungsanweisungen finden Sie unter [Vorgehensweise: Hinzufügen von Ablaufverfolgungsanweisungen zu Anwendungscode](/dotnet/framework/debug-trace-profile/how-to-add-trace-statements-to-application-code).
 
-Durch die Platzierung von [Ablaufverfolgungsschaltern](/dotnet/framework/debug-trace-profile/trace-switches) in Ihrem Code können Sie steuern, ob und in welchem Umfang Ablaufverfolgung durchgeführt wird. Auf diese Weise können Sie den Status der Anwendung in einer Produktionsumgebung überwachen. Dies ist besonders wichtig in einer Geschäftsanwendung, die mehrere Komponenten auf mehreren Computern verwendet. Weitere Informationen finden Sie unter [Gewusst wie: Konfigurieren von Ablaufverfolgungsschaltern](/dotnet/framework/debug-trace-profile/how-to-create-initialize-and-configure-trace-switches).
+Durch die Platzierung von [Ablaufverfolgungsschaltern](/dotnet/framework/debug-trace-profile/trace-switches) in Ihrem Code können Sie steuern, ob und in welchem Umfang Ablaufverfolgung durchgeführt wird. Auf diese Weise können Sie den Status der Anwendung in einer Produktionsumgebung überwachen. Dies ist besonders wichtig in einer Geschäftsanwendung, die mehrere Komponenten auf mehreren Computern verwendet. Weitere Informationen finden Sie unter [Vorgehensweise: Konfigurieren von Ablaufverfolgungsschaltern](/dotnet/framework/debug-trace-profile/how-to-create-initialize-and-configure-trace-switches).
 
 ## <a name="configure-the-trace-listener-in-an-azure-application"></a>Konfigurieren des Ablaufverfolgungslisteners in einer Azure-Anwendung
 Für „Trace“, „Debug“ und „TraceSource“ müssen Sie „Listener“ einrichten, die Meldungen sammeln und aufzeichnen, die gesendet werden. Listener sammeln und speichern Ablaufverfolgungsmeldungen und leiten sie weiter. Sie leiten die Ablaufverfolgungsausgabe an ein entsprechendes Ziel weiter, beispielsweise ein Protokoll, ein Fenster oder eine Textdatei. Die Azure-Diagnose verwendet die [DiagnosticMonitorTraceListener](/previous-versions/azure/reference/ee758610(v=azure.100)) -Klasse.
@@ -64,11 +66,14 @@ Weitere Informationen zu Listenern finden Sie unter [Ablaufverfolgungslistener](
 Nachdem Sie die Schritte zum Hinzufügen des Listeners abgeschlossen haben, können Sie Ihrem Code Ablaufverfolgungsanweisungen hinzufügen.
 
 ### <a name="to-add-trace-statement-to-your-code"></a>So fügen Sie dem Code eine Ablaufverfolgungsanweisung hinzu
-1. Öffnen Sie eine Quelldatei für die Anwendung. Beispielsweise die Datei „\<RoleName>.cs“ für die Workerrolle oder die Webrolle.
+1. Öffnen Sie eine Quelldatei für die Anwendung. Beispielsweise die Datei \<RoleName>.cs für die Workerrolle oder die Webrolle.
 2. Fügen Sie die folgende using-Anweisung hinzu, wenn sie noch nicht vorhanden ist:
     ```
         using System.Diagnostics;
     ```
-3. Fügen Sie Ablaufverfolgungsanweisungen überall ein, wo Sie Informationen über den Zustand der Anwendung erfassen möchten. Sie können eine Vielzahl von Methoden zum Formatieren der Ausgabe der Ablaufverfolgungsanweisung verwenden. Weitere Informationen finden Sie unter [Gewusst wie: Hinzufügen von Ablaufverfolgungsanweisungen zu Anwendungscode](/dotnet/framework/debug-trace-profile/how-to-add-trace-statements-to-application-code).
+3. Fügen Sie Ablaufverfolgungsanweisungen überall ein, wo Sie Informationen über den Zustand der Anwendung erfassen möchten. Sie können eine Vielzahl von Methoden zum Formatieren der Ausgabe der Ablaufverfolgungsanweisung verwenden. Weitere Informationen finden Sie unter [Vorgehensweise: Hinzufügen von Ablaufverfolgungsanweisungen zu Anwendungscode](/dotnet/framework/debug-trace-profile/how-to-add-trace-statements-to-application-code).
 4. Speichern Sie die Quelldatei.
+
+
+
 

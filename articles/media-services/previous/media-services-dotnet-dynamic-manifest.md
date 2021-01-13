@@ -1,6 +1,6 @@
 ---
 title: Erstellen von Filtern mit dem Azure Media Services .NET SDK
-description: In diesem Thema wird erläutert, wie Sie Filter erstellen, mit denen Ihre Kunden bestimmte Abschnitte eines Streams streamen können. Media Services erstellt dynamische Manifeste, um dieses selektive Streaming zu erreichen.
+description: In diesem Thema wird erläutert, wie Sie Filter erstellen, mit denen Ihre Kunden bestimmte Abschnitte eines Streams streamen können. Das Media Services .NET SDK erstellt dynamische Manifeste, um dieses selektive Streaming zu erreichen.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -15,14 +15,18 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.reviewer: cenkdin
-ms.openlocfilehash: c60b223f91a151bf63cabc5e95816f2545022503
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 862385d1117e0a1b5d2220c06885e0fd0ecfa4d7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "69016606"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90531626"
 ---
-# <a name="creating-filters-with-media-services-net-sdk"></a>Erstellen von Filtern mit dem Media Services .NET SDK 
+# <a name="creating-filters-with-media-services-net-sdk"></a>Erstellen von Filtern mit dem Media Services .NET SDK
+
+[!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
+
 > [!div class="op_single_selector"]
 > * [.NET](media-services-dotnet-dynamic-manifest.md)
 > * [REST](media-services-rest-dynamic-manifest.md)
@@ -40,10 +44,10 @@ Beachten Sie, dass es beim Aktualisieren eines Filters bis zu zwei Minuten dauer
 ## <a name="types-used-to-create-filters"></a>Verwendete Typen zum Erstellen von Filtern
 Die folgenden Typen werden beim Erstellen von Filtern verwendet: 
 
-* **IStreamingFilter**.  Dieser Typ basiert auf der folgenden REST-API [Filter](https://docs.microsoft.com/rest/api/media/operations/filter)
-* **IStreamingAssetFilter**. Dieser Typ basiert auf der folgenden REST-API [AssetFilter](https://docs.microsoft.com/rest/api/media/operations/assetfilter)
-* **PresentationTimeRange**. Dieser Typ basiert auf der folgenden REST-API [PresentationTimeRange](https://docs.microsoft.com/rest/api/media/operations/presentationtimerange)
-* **FilterTrackSelectStatement** und **IFilterTrackPropertyCondition**. Diese Typen basieren auf den folgenden REST-APIs [FilterTrackSelect und FilterTrackPropertyCondition](https://docs.microsoft.com/rest/api/media/operations/filtertrackselect)
+* **IStreamingFilter**.  Dieser Typ basiert auf der folgenden REST-API [Filter](/rest/api/media/operations/filter)
+* **IStreamingAssetFilter**. Dieser Typ basiert auf der folgenden REST-API [AssetFilter](/rest/api/media/operations/assetfilter)
+* **PresentationTimeRange**. Dieser Typ basiert auf der folgenden REST-API [PresentationTimeRange](/rest/api/media/operations/presentationtimerange)
+* **FilterTrackSelectStatement** und **IFilterTrackPropertyCondition**. Diese Typen basieren auf den folgenden REST-APIs [FilterTrackSelect und FilterTrackPropertyCondition](/rest/api/media/operations/filtertrackselect)
 
 ## <a name="createupdatereaddelete-global-filters"></a>Erstellen/Aktualisieren/Lesen/Löschen globaler Filter
 Der folgende Code zeigt, wie Sie mithilfe von .NET Filter für Medienobjekte erstellen, aktualisieren, lesen und löschen.
@@ -114,19 +118,19 @@ In den folgenden Beispielen sehen Sie, wie Sie Ihren Streaming-URLs Filter hinzu
 
 **MPEG DASH** 
 
-    http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=mpd-time-csf, filter=MyFilter)
+`http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=mpd-time-csf, filter=MyFilter)`
 
 **Apple HTTP Live Streaming (HLS) V4**
 
-    http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=m3u8-aapl, filter=MyFilter)
+`http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=m3u8-aapl, filter=MyFilter)`
 
 **Apple HTTP Live Streaming (HLS) V3**
 
-    http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=m3u8-aapl-v3, filter=MyFilter)
+`http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=m3u8-aapl-v3, filter=MyFilter)`
 
 **Smooth Streaming**
 
-    http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(filter=MyFilter)
+`http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(filter=MyFilter)`
 
 
 ## <a name="media-services-learning-paths"></a>Media Services-Lernpfade
@@ -135,6 +139,5 @@ In den folgenden Beispielen sehen Sie, wie Sie Ihren Streaming-URLs Filter hinzu
 ## <a name="provide-feedback"></a>Feedback geben
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-## <a name="see-also"></a>Siehe auch
+## <a name="see-also"></a>Weitere Informationen
 [Übersicht über dynamische Manifeste](media-services-dynamic-manifest-overview.md)
-

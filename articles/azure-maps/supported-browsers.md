@@ -1,23 +1,23 @@
 ---
-title: Vom Web SDK unterstützte Browser – Azure Maps | Microsoft-Dokumentation
-description: Weitere Informationen zu unterstützten Browsern für das Azure Maps Web SDK
+title: Vom Web SDK unterstützte Browser | Microsoft Azure Maps
+description: Hier erfahren Sie, wie Sie überprüfen, ob das Web-SDK von Azure Maps einen Browser unterstützt. Sie können eine Liste der unterstützten Browser anzeigen. Außerdem wird erläutert, wie Sie Kartendienste mit Legacy-Browsern verwenden.
 author: rbrundritt
 ms.author: richbrun
 ms.date: 03/25/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
-manager: cpendleton
-ms.openlocfilehash: d867e9a1afcb495aee7e8b0e0b3b001104f48a4c
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+manager: cpendle
+ms.openlocfilehash: 43bf70d66c42bc0ecd5e26e4cc724456bd4bf84e
+ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70844826"
+ms.lasthandoff: 10/28/2020
+ms.locfileid: "92896921"
 ---
 # <a name="web-sdk-supported-browsers"></a>Web SDK: unterstützte Browser
 
-Das Web SDK von Azure Maps bietet eine Hilfsfunktion namens [atlas.isSupported](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas?view=azure-iot-typescript-latest#issupported-boolean-). Diese Funktion erkennt, ob ein Webbrowser über den minimalen Satz an WebGL-Funktionen verfügt, die zum Laden und Rendern des Kartensteuerelements erforderlich sind. Im folgenden Ausschnitt wird die Verwendung der Funktion veranschaulicht:
+Das Web SDK von Azure Maps bietet eine Hilfsfunktion namens [atlas.isSupported](/javascript/api/azure-maps-control/atlas#issupported-boolean-). Diese Funktion erkennt, ob ein Webbrowser über den minimalen Satz an WebGL-Funktionen verfügt, die zum Laden und Rendern des Kartensteuerelements erforderlich sind. Im folgenden Ausschnitt wird die Verwendung der Funktion veranschaulicht:
 
 ```JavaScript
 if (!atlas.isSupported()) {
@@ -61,7 +61,7 @@ Die folgenden Web SDK-Module werden auch in Node.js unterstützt:
 
 - Modul „Dienste“ ([Dokumentation](how-to-use-services-module.md) | [npm-Modul](https://www.npmjs.com/package/azure-maps-rest))
 
-## <a name="Target-Legacy-Browsers"></a>Ausrichtung auf Legacy-Browser
+## <a name="target-legacy-browsers"></a><a name="Target-Legacy-Browsers"></a>Ausrichtung auf Legacy-Browser
 
 Möglicherweise möchten Sie ältere Browser als Ziel verwenden, die WebGL nicht oder nur eingeschränkt unterstützen. In solchen Fällen empfehlen wir, die Azure Maps-Dienste zusammen mit einem Open-Source-Kartensteuerelement wie [Leaflet](https://leafletjs.com/) zu verwenden. Hier sehen Sie ein Beispiel:
 
@@ -76,8 +76,6 @@ Weitere Informationen finden Sie unter <a href='https://codepen.io/azuremaps/pen
 
 Erfahren Sie mehr über das Web SDK von Azure Maps:
 
-> [!div class="nextstepaction"]
-> [Kartensteuerelement](how-to-use-map-control.md)
+[Kartensteuerelement](how-to-use-map-control.md)
 
-> [!div class="nextstepaction"]
-> [Services-Modul](how-to-use-services-module.md)
+[Services-Modul](how-to-use-services-module.md)

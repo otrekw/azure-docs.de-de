@@ -1,5 +1,5 @@
 ---
-title: Azure Monitor Dependency-VM-Erweiterung für Linux | Microsoft-Dokumentation
+title: Azure Monitor Dependency-VM-Erweiterung für Linux
 description: Stellen Sie den Azure Monitor Dependency-Agent mithilfe einer VM-Erweiterung auf einem virtuellen Linux-Computer bereit.
 services: virtual-machines-linux
 documentationcenter: ''
@@ -9,17 +9,18 @@ editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-machines-linux
+ms.subservice: extensions
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/29/2019
 ms.author: magoedte
-ms.openlocfilehash: 416b0c89105f97514efdfcc859a630d78f7ba7f5
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: c8427e92f89804f64741ab86aa9903b0de23b3ec
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70084831"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94966852"
 ---
 # <a name="azure-monitor-dependency-virtual-machine-extension-for-linux"></a>Azure Monitor Dependency-VM-Erweiterung für Linux
 
@@ -73,7 +74,7 @@ Das folgende JSON zeigt das Schema für die Azure VM Dependency-Agent-Erweiterun
 
 ### <a name="property-values"></a>Eigenschaftswerte
 
-| NAME | Beispiel/Wert |
+| Name | Beispiel/Wert |
 | ---- | ---- |
 | apiVersion | 2015-01-01 |
 | publisher | Microsoft.Azure.Monitoring.DependencyAgent |
@@ -84,7 +85,7 @@ Das folgende JSON zeigt das Schema für die Azure VM Dependency-Agent-Erweiterun
 
 Sie können Azure-VM-Erweiterungen mithilfe von Azure Resource Manager-Vorlagen bereitstellen. Sie können das im vorherigen Abschnitt erläuterte JSON-Schema in einer Azure Resource Manager-Vorlage verwenden, um die Azure VM Dependency-Agent-Erweiterung im Rahmen einer Azure Resource Manager-Bereitstellung auszuführen.
 
-Der JSON-Code für eine VM-Erweiterung kann innerhalb der VM-Ressource geschachtelt werden. Alternativ können Sie den Code auf der Stamm- bzw. obersten Ebene einer Resource Manager-JSON-Vorlage platzieren. Die Platzierung des JSON-Codes wirkt sich auf den Wert von Name und Typ der Ressource aus. Weitere Informationen finden Sie unter [Set name and type for child resources](../../azure-resource-manager/child-resource-name-type.md) (Festlegen von Name und Typ für untergeordnete Ressourcen).
+Der JSON-Code für eine VM-Erweiterung kann innerhalb der VM-Ressource geschachtelt werden. Alternativ können Sie den Code auf der Stamm- bzw. obersten Ebene einer Resource Manager-JSON-Vorlage platzieren. Die Platzierung des JSON-Codes wirkt sich auf den Wert von Name und Typ der Ressource aus. Weitere Informationen finden Sie unter [Set name and type for child resources](../../azure-resource-manager/templates/child-resource-name-type.md) (Festlegen von Name und Typ für untergeordnete Ressourcen).
 
 Im folgenden Beispiel wird davon ausgegangen, dass die Dependency-Agent-Erweiterung in der VM-Ressource geschachtelt ist. Wenn Sie die Erweiterungsressource schachteln, wird der JSON-Code im `"resources": []`-Objekt des virtuellen Computers platziert.
 
@@ -154,9 +155,9 @@ az vm extension list --resource-group myResourceGroup --vm-name myVM -o table
 Die Ausgabe der Erweiterungsausführung wird in der folgenden Datei protokolliert:
 
 ```
-/opt/microsoft/dependcency-agent/log/install.log 
+/opt/microsoft/dependency-agent/log/install.log 
 ```
 
 ### <a name="support"></a>Support
 
-Wenn Sie beim Lesen dieses Artikels feststellen, dass Sie weitere Hilfe benötigen, stellen Sie Azure-Experten im [MSDN Azure-Forum oder im Stack Overflow-Forum](https://azure.microsoft.com/support/forums/)Fragen. Sie können auch einen Azure-Supportfall erstellen. Rufen Sie die [Azure-Support-Website](https://azure.microsoft.com/support/options/) auf, und wählen Sie **Support erhalten**aus. Informationen darüber, wie Azure-Support genutzt werden kann, finden Sie unter [Häufig gestellte Fragen zum Azure-Support](https://azure.microsoft.com/support/faq/).
+Wenn Sie beim Lesen dieses Artikels feststellen, dass Sie weitere Hilfe benötigen, stellen Sie Azure-Experten im [MSDN Azure-Forum oder im Stack Overflow-Forum](https://azure.microsoft.com/support/forums/)Fragen. Sie können auch einen Azure-Supportfall erstellen. Rufen Sie die [Azure-Support-Website](https://azure.microsoft.com/support/options/) auf, und wählen Sie **Support erhalten** aus. Informationen darüber, wie Azure-Support genutzt werden kann, finden Sie unter [Häufig gestellte Fragen zum Azure-Support](https://azure.microsoft.com/support/faq/).

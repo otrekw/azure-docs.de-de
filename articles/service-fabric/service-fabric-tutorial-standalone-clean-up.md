@@ -1,40 +1,29 @@
 ---
-title: 'Tutorial: Bereinigen des eigenständigen Service Fabric-Clusters – Azure Service Fabric | Microsoft-Dokumentation'
-description: In diesem Tutorial erfahren Sie, wie Sie Ihren eigenständigen Cluster bereinigen.
-services: service-fabric
-documentationcenter: .net
-author: dkkapur
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotNet
+title: Bereinigen eines eigenständigen Clusters
+description: In diesem Tutorial erfahren Sie, wie Sie für Ihren eigenständigen Service Fabric-Cluster AWS- oder Azure-Ressourcen löschen.
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 07/22/2019
-ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: bebe3a2dc83b651e713ee80d7b11068b13096e04
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 0d46e9068a311594f779411c3ccee2b408febb3f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68385166"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91842885"
 ---
 # <a name="tutorial-clean-up-your-standalone-cluster"></a>Tutorial: Bereinigen Ihres eigenständigen Clusters
 
-Mit eigenständigen Service Fabric-Clustern können Sie Ihre eigene Umgebung wählen und einen Cluster im Rahmen des Service Fabric-Konzepts „Jedes Betriebssystem, jede Cloud“ erstellen. In dieser Tutorialreihe erstellen Sie einen eigenständigen, in AWS oder Azure gehosteten Cluster und installieren darin eine Anwendung.
+Eigenständige Service Fabric-Cluster bieten die Möglichkeit, Ihre eigene Umgebung zum Hosten von Service Fabric auszuwählen. In dieser Tutorialreihe erstellen Sie einen in AWS oder Azure gehosteten eigenständigen Cluster und stellen darin eine Anwendung bereit.
 
-Dieses Tutorial ist der vierte Teil einer Serie. In diesem Teil des Tutorials erfahren Sie, wie Sie die AWS- oder Azure-Ressourcen bereinigen, die Sie zum Hosten Ihres Service Fabric-Clusters erstellt haben.
+Dieses Tutorial ist der vierte Teil einer Serie. In diesem Teil des Tutorials erfahren Sie, wie Sie die AWS- oder Azure-Ressourcen löschen, die Sie zum Hosten Ihres Service Fabric-Clusters erstellt haben.
 
-Im vierten Teil der Serie lernen Sie Folgendes:
+In diesem Artikel lernen Sie Folgendes:
 
 > [!div class="checklist"]
-> * Bereinigen des Service Fabric-Clusters
-> * Bereinigen Ihrer AWS- oder Azure-Ressourcen
+> * Entfernen eines Service Fabric-Clusters
+> * Löschen Ihrer AWS- oder Azure-Ressourcen
 
-## <a name="clean-up-service-fabric-cluster"></a>Bereinigen des Service Fabric-Clusters
+## <a name="remove-a-service-fabric-cluster"></a>Entfernen eines Service Fabric-Clusters
 
 1. Stellen Sie eine RDP-Verbindung mit der VM her, die Sie zum Installieren von Service Fabric verwendet haben.
 2. Öffnen Sie PowerShell.
@@ -58,14 +47,14 @@ Im vierten Teil der Serie lernen Sie Folgendes:
   The cluster is successfully removed.
   ```
 
-## <a name="clean-up-aws-resources"></a>Bereinigen der AWS-Ressourcen
+## <a name="delete-aws-resources"></a>Löschen der AWS-Ressourcen
 
 1. Melden Sie sich bei Ihrem AWS-Konto an.
 2. Navigieren Sie zur EC2-Konsole.
 3. Wählen Sie die drei Knoten aus, die Sie im ersten Teil des Tutorials erstellt haben.
-4. Klicken Sie auf **Aktionen** > **Instanzstatus** > **Beenden**.
+4. Wählen Sie **Aktionen** > **Instanzstatus** > **Beenden** aus.
 
-## <a name="clean-up-azure-resources"></a>Bereinigen von Azure-Ressourcen
+## <a name="delete-azure-resources"></a>Löschen von Azure-Ressourcen
 
 1. Melden Sie sich beim Azure-Portal an.
 2. Wechseln Sie zum Abschnitt **Virtuelle Computer**.
@@ -74,7 +63,7 @@ Im vierten Teil der Serie lernen Sie Folgendes:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Im vierten Teil der Reihe haben Sie gelernt, wie Sie die Ressourcen bereinigen, die in den vorherigen Schritten erstellt wurden.
+In diesem Tutorial haben Sie erfahren, wie Sie die in vorherigen Schritten erstellten Ressourcen löschen.
 
 > [!div class="checklist"]
 > * Bereinigen von Ressourcen

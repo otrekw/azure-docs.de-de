@@ -2,18 +2,18 @@
 title: Erstellen von Apache Hadoop-Clustern mithilfe der Azure-REST-API – Azure
 description: Erfahren Sie, wie Sie HDInsight-Cluster erstellen, indem Sie Azure Resource Manager-Vorlagen an die Azure-REST-API senden.
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
-ms.topic: conceptual
-ms.date: 05/02/2018
-ms.author: hrasheed
-ms.openlocfilehash: d771d91feaba942b88a0ddb68f0d997fad4a981e
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.topic: how-to
+ms.custom: hdinsightactive, devx-track-azurecli
+ms.date: 12/10/2019
+ms.openlocfilehash: 3ce104e9340c3e93d64b68dcab6f5bd6d2f62493
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67059417"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96020625"
 ---
 # <a name="create-apache-hadoop-clusters-using-the-azure-rest-api"></a>Erstellen von Apache Hadoop-Clustern mithilfe der Azure-REST-API
 
@@ -145,7 +145,7 @@ Das folgende JSON-Dokument ist eine Kombination aus den Vorlagen- und Parameterd
                                "name": "headnode",
                                "targetInstanceCount": "2",
                                "hardwareProfile": {
-                                   "vmSize": "Standard_D3"
+                                   "vmSize": "{}" 
                                },
                                "osProfile": {
                                    "linuxOperatingSystemProfile": {
@@ -158,7 +158,7 @@ Das folgende JSON-Dokument ist eine Kombination aus den Vorlagen- und Parameterd
                                "name": "workernode",
                                "targetInstanceCount": "[parameters('clusterWorkerNodeCount')]",
                                "hardwareProfile": {
-                                   "vmSize": "Standard_D3"
+                                   "vmSize": "{}"
                                },
                                "osProfile": {
                                    "linuxOperatingSystemProfile": {
@@ -214,16 +214,16 @@ Dieses Beispiel wird in den Schritten im vorliegenden Dokument verwendet. Ersetz
 
 ## <a name="sign-in-to-your-azure-subscription"></a>Melden Sie sich bei Ihrem Azure-Abonnement an.
 
-Führen Sie die in [Erste Schritte mit der Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2) dokumentierten Schritte aus, und stellen Sie mithilfe des Befehls `az login` eine Verbindung mit Ihrem Abonnement her.
+Führen Sie die in [Erste Schritte mit der Azure CLI](/cli/azure/get-started-with-az-cli2) dokumentierten Schritte aus, und stellen Sie mithilfe des Befehls `az login` eine Verbindung mit Ihrem Abonnement her.
 
 ## <a name="create-a-service-principal"></a>Erstellen eines Dienstprinzipals
 
 > [!NOTE]  
-> Diese Schritte stellen eine verkürzte Version des Abschnitts *Erstellen eines Dienstprinzipals mit Kennwort* des Dokuments [Erstellen eines Dienstprinzipals für den Zugriff auf Ressourcen mithilfe von Azure PowerShell](../azure-resource-manager/resource-group-authenticate-service-principal-cli.md) dar. Mit diesen Schritten wird ein Dienstprinzipal erstellt, der verwendet wird, um die Azure-REST-API zu authentifizieren.
+> Diese Schritte stellen eine verkürzte Version des Abschnitts *Erstellen eines Dienstprinzipals mit Kennwort* des Dokuments [Erstellen eines Dienstprinzipals für den Zugriff auf Ressourcen mithilfe von Azure PowerShell](/cli/azure/create-an-azure-service-principal-azure-cli) dar. Mit diesen Schritten wird ein Dienstprinzipal erstellt, der verwendet wird, um die Azure-REST-API zu authentifizieren.
 
 1. Führen Sie an einer Befehlszeile den folgenden Befehl aus, um Ihre Azure-Abonnements aufzulisten.
 
-   ```bash
+   ```azurecli
    az account list --query '[].{Subscription_ID:id,Tenant_ID:tenantId,Name:name}'  --output table
    ```
 
@@ -231,7 +231,7 @@ Führen Sie die in [Erste Schritte mit der Azure CLI](https://docs.microsoft.com
 
 2. Führen Sie den folgenden Befehl zum Erstellen einer Anwendung in Azure Active Directory aus.
 
-   ```bash
+   ```azurecli
    az ad app create --display-name "exampleapp" --homepage "https://www.contoso.org" --identifier-uris "https://www.contoso.org/example" --password <Your password> --query 'appId'
    ```
 
@@ -244,7 +244,7 @@ Führen Sie die in [Erste Schritte mit der Azure CLI](https://docs.microsoft.com
 
 3. Führen Sie den folgenden Befehl aus, um mithilfe der **App-ID** einen Dienstprinzipal zu erstellen.
 
-   ```bash
+   ```azurecli
    az ad sp create --id <App ID> --query 'objectId'
    ```
 
@@ -252,7 +252,7 @@ Führen Sie die in [Erste Schritte mit der Azure CLI](https://docs.microsoft.com
 
 4. Weisen Sie dem Dienstprinzipal mit dem **Objekt-ID**-Wert die Rolle **Besitzer** zu. Verwenden Sie die **Abonnement-ID**, die Sie zuvor erhalten haben.
 
-   ```bash
+   ```azurecli
    az role assignment create --assignee <Object ID> --role Owner --scope /subscriptions/<Subscription ID>/
    ```
 
@@ -292,7 +292,7 @@ Gehen Sie wie folgt vor, um eine Ressourcengruppe zu erstellen.
 
 * Legen Sie `$SUBSCRIPTIONID` auf die Abonnement-ID fest, die Sie während der Erstellung des Dienstprinzipals erhalten haben.
 * Legen Sie`$ACCESSTOKEN` auf das Zugriffstoken fest, das Sie im vorherigen Schritt erhalten haben.
-* Ersetzen Sie `DATACENTERLOCATION` durch das Rechenzentrum, in dem Sie die Ressourcengruppe und die Ressourcen erstellen möchten. Beispiel: "USA, Mitte/Süden".
+* Ersetzen Sie `DATACENTERLOCATION` durch das Rechenzentrum, in dem Sie die Ressourcengruppe und die Ressourcen erstellen möchten. Beispiel: &quot;USA, Süden-Mitte&quot;.
 * Legen Sie `$RESOURCEGROUPNAME` auf den Namen fest, den Sie für diese Gruppe verwenden möchten:
 
 ```bash
@@ -343,7 +343,7 @@ Dieser Befehl gibt ein JSON-Dokument mit Informationen zum Bereitstellungsvorgan
 
 ## <a name="troubleshoot"></a>Problembehandlung
 
-Falls beim Erstellen von HDInsight-Clustern Probleme auftreten, sehen Sie sich die [Voraussetzungen für die Zugriffssteuerung](hdinsight-hadoop-create-linux-clusters-portal.md) an.
+Falls beim Erstellen von HDInsight-Clustern Probleme auftreten, sehen Sie sich die [Voraussetzungen für die Zugriffssteuerung](./hdinsight-hadoop-customize-cluster-linux.md#access-control) an.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -352,7 +352,6 @@ Nachdem Sie einen HDInsight-Cluster erfolgreich erstellt haben, nutzen Sie die f
 ### <a name="apache-hadoop-clusters"></a>Apache Hadoop-Cluster
 
 * [Verwenden von Apache Hive mit HDInsight](hadoop/hdinsight-use-hive.md)
-* [Verwenden von Apache Pig mit HDInsight](hadoop/hdinsight-use-pig.md)
 * [Verwenden von MapReduce mit HDInsight](hadoop/hdinsight-use-mapreduce.md)
 
 ### <a name="apache-hbase-clusters"></a>Apache HBase Cluster

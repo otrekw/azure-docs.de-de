@@ -1,5 +1,5 @@
 ---
-title: Chef-Erweiterung für Azure-VMs | Microsoft-Dokumentation
+title: Chef-Erweiterung für Azure-VMs
 description: Stellen Sie den Chef-Client auf einem virtuellen Computer mithilfe der Chef-VM-Erweiterung bereit.
 services: virtual-machines-linux
 documentationcenter: ''
@@ -8,17 +8,18 @@ manager: gwallace
 editor: ''
 tags: azure-resource-manager
 ms.service: virtual-machines-linux
+ms.subservice: extensions
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 09/21/2018
 ms.author: akjosh
-ms.openlocfilehash: e82a5fefcc7f582df65d945735d9840fc3e49829
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: 8977563c6b19754eda53686baf85f840a7583e77
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71169144"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94968365"
 ---
 # <a name="chef-vm-extension-for-linux-and-windows"></a>Chef-VM-Erweiterung für Linux und Windows
 
@@ -50,7 +51,7 @@ Der folgende JSON-Code zeigt das Schema für die Chef-VM-Erweiterung. Die Erweit
   "properties": {
     "publisher": "Chef.Bootstrap.WindowsAzure",
     "type": "[parameters('chef_vm_extension_type')]",
-    "typeHandlerVersion": "1210.12",
+    "typeHandlerVersion": "1210.13",
     "settings": {
       "bootstrap_options": {
         "chef_server_url": "[parameters('chef_server_url')]",
@@ -67,16 +68,16 @@ Der folgende JSON-Code zeigt das Schema für die Chef-VM-Erweiterung. Die Erweit
 
 ### <a name="core-property-values"></a>Kerneigenschaftswerte
 
-| NAME | Wert/Beispiel | Datentyp
+| Name | Wert/Beispiel | Datentyp
 | ---- | ---- | ----
 | apiVersion | `2017-12-01` | string (date) |
 | publisher | `Chef.Bootstrap.WindowsAzure` | string |
 | type | `LinuxChefClient` (Linux), `ChefClient` (Windows) | string |
-| typeHandlerVersion | `1210.12` | string (double) |
+| typeHandlerVersion | `1210.13` | string (double) |
 
 ### <a name="settings"></a>Einstellungen
 
-| NAME | Wert/Beispiel | Datentyp | Erforderlich?
+| Name | Wert/Beispiel | Datentyp | Erforderlich?
 | ---- | ---- | ---- | ----
 | settings/bootstrap_options/chef_server_url | `https://api.chef.io/organizations/myorg` | string (url) | J |
 | settings/bootstrap_options/validation_client_name | `myorg-validator` | string | J |
@@ -84,7 +85,7 @@ Der folgende JSON-Code zeigt das Schema für die Chef-VM-Erweiterung. Die Erweit
 
 ### <a name="protected-settings"></a>Geschützte Einstellungen
 
-| NAME | Beispiel | Datentyp | Erforderlich?
+| Name | Beispiel | Datentyp | Erforderlich?
 | ---- | ---- | ---- | ---- |
 | protectedSettings/validation_key | `-----BEGIN RSA PRIVATE KEY-----\nKEYDATA\n-----END RSA PRIVATE KEY-----` | string | J |
 
@@ -106,7 +107,7 @@ Azure-VM-Erweiterungen können mithilfe von Azure Resource Manager-Vorlagen bere
 
 Eine Resource Manager-Beispielvorlage mit der Chef-VM-Erweiterung finden Sie im [Azure-Schnellstartkatalog](https://github.com/Azure/azure-quickstart-templates/tree/master/chef-json-parameters-linux-vm).
 
-Die JSON-Konfiguration für eine VM-Erweiterung kann innerhalb der VM-Ressource geschachtelt oder im Stamm bzw. auf der obersten Ebene einer Resource Manager-JSON-Vorlage platziert werden. Die Platzierung der JSON-Konfiguration wirkt sich auf den Wert von Name und Typ der Ressource aus. Weitere Informationen finden Sie unter [Set name and type for child resources](../../azure-resource-manager/resource-manager-template-child-resource.md) (Festlegen von Name und Typ für untergeordnete Ressourcen).
+Die JSON-Konfiguration für eine VM-Erweiterung kann innerhalb der VM-Ressource geschachtelt oder im Stamm bzw. auf der obersten Ebene einer Resource Manager-JSON-Vorlage platziert werden. Die Platzierung der JSON-Konfiguration wirkt sich auf den Wert von Name und Typ der Ressource aus. Weitere Informationen finden Sie unter [Set name and type for child resources](../../azure-resource-manager/templates/child-resource-name-type.md) (Festlegen von Name und Typ für untergeordnete Ressourcen).
 
 ## <a name="azure-cli-deployment"></a>Bereitstellung mithilfe der Azure-Befehlszeilenschnittstelle
 
@@ -118,7 +119,7 @@ az vm extension set \
   --vm-name myExistingVM \
   --name LinuxChefClient \
   --publisher Chef.Bootstrap.WindowsAzure \
-  --version 1210.12 --protected-settings '{"validation_key": "<validation_key>"}' \
+  --version 1210.13 --protected-settings '{"validation_key": "<validation_key>"}' \
   --settings '{ "bootstrap_options": { "chef_server_url": "<chef_server_url>", "validation_client_name": "<validation_client_name>" }, "runlist": "<run_list>" }'
 ```
 
@@ -151,6 +152,9 @@ C:\Packages\Plugins\Chef.Bootstrap.WindowsAzure.ChefClient\
 | 51 | Diese Erweiterung wird vom Betriebssystem der VM nicht unterstützt. | |
 
 Weitere Informationen zur Problembehandlung finden Sie in der [Infodatei zur Chef-VM-Erweiterung](https://github.com/chef-partners/azure-chef-extension).
+
+> [!NOTE]
+> Wenden Sie sich bei allen anderen Chef-Problemen an den [Chef-Support](https://www.chef.io/support/).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

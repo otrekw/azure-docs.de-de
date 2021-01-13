@@ -1,30 +1,33 @@
 ---
-title: LiveEvent-Latenz in Azure Media Services | Microsoft-Dokumentation
-description: Dieses Thema bietet eine Übersicht über die LiveEvent-Latenz und zeigt, wie Sie eine niedrige Latenz festlegen.
+title: LiveEvent-Einstellungen für niedrige Latenz in Azure Media Services | Microsoft-Dokumentation
+description: Dieses Thema bietet eine Übersicht über die LiveEvent-Einstellungen für niedrige Latenz und zeigt, wie Sie eine niedrige Latenz festlegen.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
-ms.topic: article
-ms.date: 04/22/2019
-ms.author: juliako
-ms.openlocfilehash: 393b87aeed759950b946ccb45a008da9af4b7ebe
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.topic: conceptual
+ms.date: 08/31/2020
+ms.author: inhenkel
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 114efe668fba47e9d83741b8fa45e1f396725198
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64702786"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89291516"
 ---
-# <a name="live-event-latency-in-media-services"></a>Liveereignislatenz in Media Services
+# <a name="live-event-low-latency-settings"></a>LiveEvent-Einstellungen für niedrige Latenz
 
-Dieser Artikel zeigt, wie Sie eine niedrige Latenz für ein [Liveereignis](https://docs.microsoft.com/rest/api/media/liveevents) festlegen. Außerdem werden typische Ergebnisse beschrieben, die bei der Verwendung der Einstellungen für geringe Latenz und verschiedenen Playern angezeigt werden. Die Ergebnisse variieren basierend auf dem CDN und der Netzwerklatenz.
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
-Um die neue Funktion **LowLatency** zu nutzen, legen Sie **StreamOptionsFlag** für **LiveEvent** auf **LowLatency** fest. Legen Sie beim Erstellen von [LiveOutput](https://docs.microsoft.com/rest/api/media/liveoutputs) für die HLS-Wiedergabe [LiveOutput.Hls.fragmentsPerTsSegment](https://docs.microsoft.com/rest/api/media/liveoutputs/create#hls) auf „1“ fest. Sobald der Stream bereit ist, können Sie im [Azure Media Player](https://ampdemo.azureedge.net/) (AMP-Demoseite) die Option für die Wiedergabe auf „Low Latency Heuristics Profile“ (Heuristische Profile mit geringer Latenz) festlegen.
+Dieser Artikel zeigt, wie Sie eine niedrige Latenz für ein [Liveereignis](/rest/api/media/liveevents) festlegen. Außerdem werden typische Ergebnisse beschrieben, die bei der Verwendung der Einstellungen für geringe Latenz und verschiedenen Playern angezeigt werden. Die Ergebnisse variieren basierend auf dem CDN und der Netzwerklatenz.
+
+Um die neue Funktion **LowLatency** zu nutzen, legen Sie **StreamOptionsFlag** für **LiveEvent** auf **LowLatency** fest. Legen Sie beim Erstellen von [LiveOutput](/rest/api/media/liveoutputs) für die HLS-Wiedergabe [LiveOutput.Hls.fragmentsPerTsSegment](/rest/api/media/liveoutputs/create#hls) auf „1“ fest. Sobald der Stream bereit ist, können Sie im [Azure Media Player](https://ampdemo.azureedge.net/) (AMP-Demoseite) die Option für die Wiedergabe auf „Low Latency Heuristics Profile“ (Heuristische Profile mit geringer Latenz) festlegen.
 
 > [!NOTE]
 > Derzeit dient das LowLatency HeuristicProfile in Azure Media Player der Wiedergabe von Streams im MPEG-DASH-Protokoll mit dem CSF- oder CMAF-Format (z.B. `format=mdp-time-csf` oder `format=mdp-time-cmaf`). 
@@ -62,15 +65,15 @@ Die folgenden Tabellen zeigen übliche Latenzergebnisse (wenn das Flag „LowLat
 
 ||Niedrige Latenz aktiviert (2 Sek. GOP)|Niedrige Latenz aktiviert (1 Sek. GOP)|
 |---|---|---|
-|DASH in AMP|10 Sek.|8 Sek.|
-|HLS in nativem iOS-Player|14 Sek.|10 Sek.|
+|**DASH in AMP**|10 Sek.|8 Sek.|
+|**HLS in nativem iOS-Player**|14 Sek.|10 Sek.|
 
 ### <a name="live-encoding"></a>Live Encoding
 
 ||Niedrige Latenz aktiviert (2 Sek. GOP)|Niedrige Latenz aktiviert (1 Sek. GOP)|
 |---|---|---|
-|DASH in AMP|14 Sek.|10 Sek.|
-|HLS in nativem iOS-Player|18 Sek.|13 Sek.|
+|**DASH in AMP**|14 Sek.|10 Sek.|
+|**HLS in nativem iOS-Player**|18 Sek.|13 Sek.|
 
 > [!NOTE]
 > Die End-to-End-Latenz hängt vom lokalen Netzwerk ab und kann von einer CDN-Cachingebene beeinträchtigt werden. Testen Sie Ihre genauen Konfigurationen.
@@ -79,4 +82,3 @@ Die folgenden Tabellen zeigen übliche Latenzergebnisse (wenn das Flag „LowLat
 
 - [Übersicht über das Livestreaming](live-streaming-overview.md)
 - [Tutorial zu Livestreaming](stream-live-tutorial-with-api.md)
-

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: troubleshooting
 ms.date: 08/20/2019
 ms.author: delhan
-ms.openlocfilehash: 83751538efe4f3d3af5928caa04b265b6c867442
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.openlocfilehash: c6bfd5b9ff3626593916533f27c5c2755cebcb13
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71153569"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87028480"
 ---
 # <a name="how-to-reset-local-linux-password-on-azure-vms"></a>Zurücksetzen des lokalen Linux-Kennworts auf Azure-VMs
 
@@ -103,10 +103,10 @@ Sie können sich nicht am virtuellen Computer anmelden, und Sie erhalten eine Na
 
 11. Trennen Sie im Azure-Portal den Datenträger von der Problembehandlungs-VM.
 
-12. [Ändern des Betriebssystemdatenträgers für die betroffene VM](troubleshoot-recovery-disks-portal-linux.md#swap-the-os-disk-for-the-vm)
+12. [Wechseln Sie den Betriebssystemdatenträger für die betroffene VM](troubleshoot-recovery-disks-portal-linux.md#swap-the-os-disk-for-the-vm).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Beheben von Problemen bei virtuellen Azure-Computern durch Anfügen von Betriebssystem-Datenträgern an andere Azure-VMs](https://social.technet.microsoft.com/wiki/contents/articles/18710.troubleshoot-azure-vm-by-attaching-os-disk-to-another-azure-vm.aspx)
 
-* [Azure-Befehlszeilenschnittstelle: Löschen und erneutes Bereitstellen virtueller Computer von einer VHD](https://blogs.msdn.microsoft.com/linuxonazure/2016/07/21/azure-cli-how-to-delete-and-re-deploy-a-vm-from-vhd/)
+* [Azure-Befehlszeilenschnittstelle: Löschen und erneutes Bereitstellen virtueller Computer von einer VHD](/archive/blogs/linuxonazure/azure-cli-how-to-delete-and-re-deploy-a-vm-from-vhd)

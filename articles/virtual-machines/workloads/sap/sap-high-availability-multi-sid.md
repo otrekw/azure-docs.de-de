@@ -1,29 +1,30 @@
 ---
-title: Erstellen einer SAP Multi-SID-Konfiguration in Azure | Microsoft Docs
-description: Handbuch zum Thema „Hohe Verfügbarkeit“ für SAP NetWeaver-Multi-SID-Konfiguration auf virtuellen Windows-Computern
+title: Erstellen einer hochverfügbaren SAP Multi-SID-Konfiguration in Azure
+description: Erfahren Sie, wie Sie eine hochverfügbare SAP NetWeaver-Multi-SID-Konfiguration auf virtuellen Windows-Computern erstellen.
 services: virtual-machines-windows, virtual-network, storage
 documentationcenter: saponazure
-author: goraco
-manager: gwallace
+author: rdeltcheva
+manager: juergent
 editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.assetid: 0b89b4f8-6d6c-45d7-8d20-fe93430217ca
 ms.service: virtual-machines-windows
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 05/05/2017
-ms.author: rclaus
+ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 75d4c4e38069cb192917f275245d87bb4c63d502
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 0d9e611ea3bd1243ef93bd5731199c549ed7e431
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70078151"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94951297"
 ---
-# <a name="create-an-sap-netweaver-multi-sid-configuration"></a>Erstellen einer SAP NetWeaver Multi-SID-Konfiguration
+# <a name="create-a-high-availability-sap-netweaver-multi-sid-configuration"></a>Erstellen einer hochverfügbaren SAP NetWeaver Multi-SID-Konfiguration
 
 [load-balancer-multivip-overview]:../../../load-balancer/load-balancer-multivip-overview.md
 [sap-ha-guide]:sap-high-availability-guide.md 
@@ -33,7 +34,7 @@ ms.locfileid: "70078151"
 [sap-ha-guide-figure-6004]:./media/virtual-machines-shared-sap-high-availability-guide/6004-sap-multi-sid-dns.png
 [sap-ha-guide-figure-6005]:./media/virtual-machines-shared-sap-high-availability-guide/6005-sap-multi-sid-azure-portal.png
 [sap-ha-guide-figure-6006]:./media/virtual-machines-shared-sap-high-availability-guide/6006-sap-multi-sid-sios-replication.png
-[networking-limits-azure-resource-manager]:../../../azure-subscription-service-limits.md#azure-resource-manager-virtual-networking-limits
+[networking-limits-azure-resource-manager]:../../../azure-resource-manager/management/azure-subscription-service-limits.md#azure-resource-manager-virtual-networking-limits
 [sap-ha-guide-9.1.1]:sap-high-availability-guide.md#a97ad604-9094-44fe-a364-f89cb39bf097 
 [sap-ha-guide-8.8]:sap-high-availability-guide.md#f19bd997-154d-4583-a46e-7f5a69d0153c
 [sap-ha-guide-8.12.3.3]:sap-high-availability-guide.md#d9c1fc8e-8710-4dff-bec2-1f535db7b006 
@@ -219,7 +220,7 @@ Nach Ausführung des Skripts werden die Ergebnisse im Azure-Portal angezeigt, wi
 
 Sie müssen für jede zusätzliche SAP ASCS/SCS-Instanz einen neuen gemeinsamen Clusterdatenträger hinzufügen. Als gemeinsamer WSFC-Clusterdatenträger für Windows Server 2012 R2 wird aktuell die SIOS DataKeeper-Softwarelösung verwendet.
 
-Gehen Sie wie folgt vor:
+Gehen Sie folgendermaßen vor:
 1. Fügen Sie jedem der Clusterknoten einen weiteren Datenträger oder weitere Datenträger gleicher Größe (als Stripeset) hinzu, und formatieren Sie sie.
 2. Konfigurieren Sie Speicherreplikation mit SIOS DataKeeper.
 

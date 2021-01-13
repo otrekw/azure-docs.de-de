@@ -1,5 +1,5 @@
 ---
-title: 'Azure AD Connect-Synchronisierung: Synchronization Service Manager-Benutzeroberfläche | Microsoft-Dokumentation'
+title: 'Azure AD Connect-Synchronisierung: Synchronization Service Manager-Benutzeroberfläche | Microsoft Docs'
 description: Verstehen Sie Synchronization Service Manager für Azure AD Connect.
 services: active-directory
 documentationcenter: ''
@@ -11,22 +11,22 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c3a03b2320caa7facc04f589993907ab9b3a7703
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 01d3b8a0ffaef1b1f03f6f9f8dab6af04a965ba9
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60381514"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91306020"
 ---
 # <a name="introduction-to-the-azure-ad-connect-synchronization-service-manager-ui"></a>Einführung in die Benutzeroberfläche von Azure AD Connect Synchronization Service Manager
 
-![Synchronization Service Manager](./media/how-to-connect-sync-service-manager-ui/ssmui.png)
+![Screenshot der Benutzeroberfläche von Synchronization Service Manager](./media/how-to-connect-sync-service-manager-ui/ssmui.png)
 
 Mit der Benutzeroberfläche von **Synchronization Service Manager** können erweiterte Aspekte des Synchronisierungsmoduls konfiguriert und die Ausführungsaspekte des Diensts angezeigt werden.
 

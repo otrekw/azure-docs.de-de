@@ -5,15 +5,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: include
-ms.date: 07/11/2019
+ms.date: 01/15/2020
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: d72915cc8a96dd2593f640045da71d4569efa60c
-ms.sourcegitcommit: 5b76581fa8b5eaebcb06d7604a40672e7b557348
+ms.openlocfilehash: 8ca4b1ce6e0470476e9f16ed338b8707d3faf90f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "69011950"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "79128684"
 ---
 ## <a name="resources-for-development-with-net"></a>Ressourcen für die Entwicklung mit .NET
 
@@ -21,16 +21,16 @@ Die folgenden Links bieten nützliche Ressourcen für Entwickler, die die Azure 
 
 ### <a name="azure-storage-common-apis"></a>Allgemeine Azure Storage-APIs
 
-- [API-Referenzdokumentation](/dotnet/api/overview/azure/storage/client)
+- [API-Referenzdokumentation](/dotnet/api/overview/azure/storage)
 - [Quellcode der Bibliothek](https://github.com/Azure/azure-storage-net/tree/master/Common)
 - [Paket (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/)
 
 ### <a name="blob-storage-apis"></a>Blob Storage-APIs
 
-- [API-Referenzdokumentation](/dotnet/api/overview/azure/storage/client)
+- [API-Referenzdokumentation](/dotnet/api/overview/azure/storage)
 - [Quellcode der Bibliothek](https://github.com/Azure/azure-storage-net/tree/master/Blob)
 - [Paket (NuGet) für Version 11.x](https://www.nuget.org/packages/Microsoft.Azure.Storage.Blob/)
-- [Paket (NuGet) für Version 12.x-preview](https://www.nuget.org/packages/Azure.Storage.Blobs)
+- [Paket (NuGet) für Version 12.x](https://www.nuget.org/packages/Azure.Storage.Blobs)
 - [Beispiele](https://azure.microsoft.com/resources/samples/?sort=0&service=storage&platform=dotnet&term=blob)
 
 ### <a name="net-tools"></a>.NET-Tools

@@ -1,52 +1,84 @@
 ---
-title: Single-Page-Webanwendung (App-Registrierung) – Microsoft Identity Platform
-description: Erfahren Sie, wie Sie eine Single-Page-Webanwendung (App-Registrierung) erstellen.
+title: Registrieren von Single-Page-Webanwendungen (Single-Page Applications, SPAs) | Azure
+titleSuffix: Microsoft identity platform
+description: Informieren Sie sich, wie Sie eine Single-Page-Webanwendung (App-Registrierung) erstellen.
 services: active-directory
-documentationcenter: dev-center-name
-author: navyasric
+author: hahamil
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/07/2019
-ms.author: nacanuma
+ms.date: 05/19/2020
+ms.author: hahamil
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: b1faf4669dca2aaaf3f873e66f859473ccd99f10
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e42b6b7ffa39110ce356094de690bb353a3fb10f
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65080094"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97107786"
 ---
-# <a name="single-page-application---app-registration"></a>Single-Page-Webanwendung – App-Registrierung
+# <a name="single-page-application-app-registration"></a>Single-Page-Webanwendung: App-Registrierung
 
-Auf dieser Seite werden die Besonderheiten der App-Registrierung für eine Single-Page-Webanwendung (Single-Page App, SPA) erläutert.
+Führen Sie die folgenden Schritte aus, um eine Single-Page-Webanwendung (Single-Page Application, SPA) auf der Microsoft Identity Platform zu registrieren. Es gelten unterschiedliche Registrierungsschritte für MSAL.js 1.0, die den Flow zur impliziten Genehmigung unterstützt, und MSAL.js 2.0, die den Autorisierungscodeflow mit PKCE unterstützt.
 
-Befolgen Sie die Schritte, um [eine neue Anwendung bei Microsoft Identity Platform zu registrieren](quickstart-register-app.md), und wählen Sie die unterstützten Konten für Ihre Anwendung aus. Das SPA-Szenario kann die Authentifizierung mit Konten in Ihrer Organisation oder in anderen Organisation und persönlichen Microsoft-Konten unterstützen.
+## <a name="create-the-app-registration"></a>Erstellen der App-Registrierung
 
-Erfahren Sie nun mehr zu den Punkten der Anwendungsregistrierung, die für Single-Page-Webanwendungen gelten.
+Führen Sie für MSAL.js 1.0- und für MSAL.js 2.0-basierte Anwendungen zunächst die folgenden Schritte aus, um die App-Erstregistrierung zu erstellen.
 
-## <a name="register-a-redirect-uri"></a>Registrieren eines Umleitungs-URI
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
+1. Wenn Sie Zugriff auf mehrere Mandanten haben, verwenden Sie im Menü am oberen Rand den Filter **Verzeichnis + Abonnement** :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::, um den Mandanten auszuwählen, für den Sie eine Anwendung registrieren möchten.
+1. Suchen Sie nach **Azure Active Directory**, und wählen Sie diese Option aus.
+1. Wählen Sie unter **Verwalten** Folgendes aus: **App-Registrierungen** > **Neue Registrierung**.
+1. Geben Sie einen **Namen** für Ihre Anwendung ein. Benutzern Ihrer App wird wahrscheinlich dieser Namen angezeigt. Sie können ihn später ändern.
+1. Wählen Sie **Unterstützte Kontotypen** für die Anwendung aus. Geben Sie **KEINEN** **Umleitungs-URI** ein. Eine Beschreibung der verschiedenen Kontotypen finden Sie unter [Registrieren einer Anwendung](quickstart-register-app.md).
+1. Wählen Sie **Registrieren** aus, um die App-Registrierung zu erstellen.
 
-Der implizite Fluss sendet die Token in einer Umleitung an die Single-Page-Webanwendung, die in einem Webbrowser ausgeführt wird. Deshalb wird vorausgesetzt, dass Sie einen Umleitungs-URI registrieren, über den Ihre Anwendung die Token empfangen kann. Achten Sie darauf, dass der Umleitungs-URI genau mit dem URI Ihrer Anwendung übereinstimmt.
+Konfigurieren Sie als Nächstes die App-Registrierung mit einem **Umleitungs-URI**, um anzugeben, wohin die Microsoft Identity Platform den Client zusammen mit allen Sicherheitstoken umleiten soll. Führen Sie die Schritte aus, die für die in Ihrer Anwendung verwendete Version von MSAL.js gelten:
 
-Navigieren Sie im [Azure-Portal](https://go.microsoft.com/fwlink/?linkid=2083908) zu Ihrer registrierten Anwendung, wählen Sie auf der Seite **Authentifizierung** **Web** als Plattform aus, und geben Sie im Feld **Umleitungs-URI** den Wert des Umleitungs-URI für Ihre Anwendung ein.
+- [MSAL.js 2.0 mit dem Authentifizierungscodeflow](#redirect-uri-msaljs-20-with-auth-code-flow) (empfohlen)
+- [MSAL.js 1.0 mit dem impliziten Flow](#redirect-uri-msaljs-10-with-implicit-flow)
 
-## <a name="enable-the-implicit-flow"></a>Aktivieren des impliziten Flows
+## <a name="redirect-uri-msaljs-20-with-auth-code-flow"></a>Umleitungs-URI: [MSAL.js 2.0 mit dem Authentifizierungscodeflow](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-browser)
 
-Aktivieren Sie außerdem auf der Seite **Authentifizierung** unter **Erweiterte Einstellungen** die Option **Implizite Genehmigung**. Wenn Ihre Anwendung nur Benutzer anmeldet und ID-Token abruft, reicht es aus, die Option **ID-Token** zu aktivieren.
+Führen Sie die folgenden Schritte aus, um einen Umleitungs-URI für eine App hinzuzufügen, die MSAL.js 2.0 oder höher verwendet. MSAL.js 2.0 (und höher) unterstützt den Autorisierungscodeflow mit PKCE und CORS als Reaktion auf [Einschränkungen bei Browsern, die Cookies von Drittanbietern blockieren](reference-third-party-cookies-spas.md). Der Flow zur impliziten Genehmigung wird von MSAL.js 2.0 und höheren Versionen nicht unterstützt.
 
-Wenn Ihre Anwendung zudem Zugriffstoken zum Aufrufen von APIs benötigt, aktivieren Sie zusätzlich die Option **Zugriffstoken**. Weitere Informationen finden Sie unter [ID-Token](./id-tokens.md) und [Zugriffstoken](./access-tokens.md).
+1. Wählen Sie im Azure-Portal die App-Registrierung aus, die Sie zuvor im Abschnitt [Erstellen der App-Registrierung](#create-the-app-registration) erstellt haben.
+1. Wählen Sie unter **Verwalten** die Optionen **Authentifizierung** > **Plattform hinzufügen** aus.
+1. Wählen Sie unter **Webanwendungen** die Kachel **Single-Page-Webanwendung** aus.
+1. Geben Sie unter **Umleitungs-URIs** einen [Umleitungs-URI](reply-url.md) ein. Aktivieren Sie **KEINES** der beiden Kontrollkästchen unter **Implizite Genehmigung**.
+1. Wählen Sie **Konfigurieren** aus, um den Vorgang zum Hinzufügen des Umleitungs-URIs abzuschließen.
 
-## <a name="api-permissions"></a>API-Berechtigungen
+Sie haben jetzt die Registrierung Ihrer Single-Page-Webanwendung (Single-Page Application, SPA) abgeschlossen und einen Umleitungs-URI konfiguriert, an den der Client umgeleitet wird und alle Sicherheitstoken gesendet werden. Wenn Sie Ihren Umleitungs-URI über die Kachel **Single-Page-Webanwendung** im Bereich **Plattform hinzufügen** konfigurieren, wird Ihre Anwendungsregistrierung für die Unterstützung des Autorisierungscodeflows mit PKCE und CORS konfiguriert.
 
-SPAs können APIs im Namen angemeldeter Benutzer aufrufen. Sie müssen delegierte Berechtigungen anfordern. Weitere Informationen finden Sie unter [Konfigurieren einer Clientanwendung für den Zugriff auf Web-APIs](quickstart-configure-app-access-web-apis.md#add-permissions-to-access-web-apis).
+Befolgen Sie das [Tutorial](tutorial-v2-javascript-auth-code.md), um weitere Anleitungen zu erhalten.
+
+## <a name="redirect-uri-msaljs-10-with-implicit-flow"></a>Umleitungs-URI: [MSAL.js 1.0 mit dem impliziten Flow](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-core)
+
+Führen Sie die folgenden Schritte aus, um einen Umleitungs-URI für eine Single-Page-App hinzuzufügen, die MSAL.js 1.3 (oder eine frühere Version) und den Flow zur impliziten Genehmigung verwendet. Der Autorisierungscodeflow wird von Anwendungen, die MSAL.js 1.3 oder eine frühere Version verwenden, nicht unterstützt.
+
+1. Wählen Sie im Azure-Portal die App-Registrierung aus, die Sie zuvor im Abschnitt [Erstellen der App-Registrierung](#create-the-app-registration) erstellt haben.
+1. Wählen Sie unter **Verwalten** die Optionen **Authentifizierung** > **Plattform hinzufügen** aus.
+1. Wählen Sie unter **Webanwendungen** die Kachel **Single-Page-Webanwendung** aus.
+1. Geben Sie unter **Umleitungs-URIs** einen [Umleitungs-URI](reply-url.md) ein.
+1. Aktivieren Sie den **impliziten Flow**:
+    - Wenn Ihre Anwendung Benutzer anmeldet, wählen Sie **ID-Token** aus.
+    - Wenn Ihre Anwendung auch eine geschützte Web-API aufrufen muss, wählen Sie **Zugriffstoken** aus. Weitere Informationen zu diesen Tokentypen finden Sie unter [ID-Token](id-tokens.md) und [Zugriffstoken](access-tokens.md).
+1. Wählen Sie **Konfigurieren** aus, um den Vorgang zum Hinzufügen des Umleitungs-URIs abzuschließen.
+
+Sie haben jetzt die Registrierung Ihrer Single-Page-Webanwendung (Single-Page Application, SPA) abgeschlossen und einen Umleitungs-URI konfiguriert, an den der Client umgeleitet wird und alle Sicherheitstoken gesendet werden. Wenn Sie einen oder beide Tokentypen (**ID-Token** und **Zugriffstoken**) auswählen, haben Sie den Flow zur impliziten Genehmigung aktiviert.
+
+Befolgen Sie das [Tutorial](tutorial-v2-javascript-spa.md), um weitere Anleitungen zu erhalten.
+
+## <a name="note-about-authorization-flows"></a>Hinweis zu Autorisierungsflows
+
+Bei einer mithilfe der SPA-Plattformkonfiguration erstellten App-Registrierung wird der Autorisierungscodeflow standardmäßig aktiviert. Um diesen Flow nutzen zu können, muss Ihre Anwendung MSAL.js 2.0 oder höher verwenden.
+
+Wie bereits erwähnt, sind Single-Page-Webanwendungen, die MSAL.js 1.3 verwenden, auf den Flow zur impliziten Genehmigung beschränkt. In den aktuellen [bewährten Methoden für OAuth 2.0](v2-oauth2-auth-code-flow.md) wird für SPAs die Verwendung des Autorisierungscodeflows anstelle des impliziten Flows empfohlen. Außerdem tragen Aktualisierungstoken mit begrenzter Lebensdauer zur Anpassung Ihrer Anwendung an die [in Bezug auf die Einschränkungen von Cookies geltenden Datenschutzbestimmungen moderner Browser](reference-third-party-cookies-spas.md) (z. B. an Safari ITP) bei.
+
+Wenn alle von einer App-Registrierung dargestellten Single-Page-Webanwendungen in Ihrer Produktionsumgebung MSAL.js 2.0 und den Autorisierungscodeflow verwenden, deaktivieren Sie im Azure-Portal im Bereich **Authentifizierung** der App-Registrierung die Einstellungen für die implizite Genehmigung. Anwendungen, die MSAL.js 1.x und den impliziten Flow verwenden, funktionieren weiterhin, aber dazu muss der implizite Flow aktiviert bleiben.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-> [!div class="nextstepaction"]
-> [Codekonfiguration der App](scenario-spa-app-configuration.md)
+Konfigurieren Sie den Code Ihrer App, um die in den vorherigen Schritten erstellte App-Registrierung zu verwenden: [Codekonfiguration der App](scenario-spa-app-configuration.md).

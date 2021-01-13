@@ -1,19 +1,14 @@
 ---
 title: Azure Event Grid-Abonnementschema
-description: Beschreibt die Eigenschaften für das Abonnieren eines Ereignisses mit Azure Event Grid.
-services: event-grid
-author: banisadr
-manager: timlt
-ms.service: event-grid
+description: In diesem Artikel werden die Eigenschaften für das Abonnieren eines Ereignisses mit Azure Event Grid beschrieben. Event Grid-Abonnementschema
 ms.topic: reference
-ms.date: 01/02/2019
-ms.author: babanisa
-ms.openlocfilehash: 6129c7f498ce6c52fce4266f693c6a304642f8c3
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.date: 07/07/2020
+ms.openlocfilehash: 21016627e545cc4935b4ac213df675e894c12d95
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70845458"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "86119071"
 ---
 # <a name="event-grid-subscription-schema"></a>Event Grid-Abonnementschema
 
@@ -33,21 +28,21 @@ Der Name des Ereignisabonnements muss 3 bis 64 Zeichen umfassen und darf nur die
  
 ## <a name="event-subscription-properties"></a>Eigenschaften für Ereignisabonnements
 
-| Eigenschaft | Typ | BESCHREIBUNG |
+| Eigenschaft | type | BESCHREIBUNG |
 | -------- | ---- | ----------- |
-| destination | object | Das Objekt, das den Endpunkt definiert. |
-| filter | object | Ein optionales Feld zum Filtern der Ereignistypen. |
+| destination | Objekt (object) | Das Objekt, das den Endpunkt definiert. |
+| filter | Objekt (object) | Ein optionales Feld zum Filtern der Ereignistypen. |
 
 ### <a name="destination-object"></a>destination-Objekt
 
-| Eigenschaft | Typ | BESCHREIBUNG |
+| Eigenschaft | type | BESCHREIBUNG |
 | -------- | ---- | ----------- |
 | endpointType | string | Die Art des Endpunkts für das Abonnement (Webhook/HTTP, Event Hub oder Warteschlange). | 
 | endpointUrl | string | Die Ziel-URL für Ereignisse in diesem Ereignisabonnement. | 
 
 ### <a name="filter-object"></a>filter-Objekt
 
-| Eigenschaft | Typ | BESCHREIBUNG |
+| Eigenschaft | type | BESCHREIBUNG |
 | -------- | ---- | ----------- |
 | includedEventTypes | array | Übereinstimmung, wenn der Ereignistyp in der Ereignisnachricht eine exakte Übereinstimmung für einen der Ereignistypnamen ist. Fehler, wenn der Ereignisname nicht den registrierten Ereignistypnamen für die Ereignisquelle entspricht. Der Standardwert entspricht allen Ereignistypen. |
 | subjectBeginsWith | string | Ein Präfixabgleichfilter für das Betrefffeld in der Ereignisnachricht. Der Standardwert oder eine leere Zeichenfolge entspricht allen Optionen. | 

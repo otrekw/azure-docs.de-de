@@ -1,5 +1,5 @@
 ---
-title: 'Azure AD Connect: Nächste Schritte und Verwalten von Azure AD Connect | Microsoft-Dokumentation'
+title: 'Azure AD Connect: Nächste Schritte und Verwalten von Azure AD Connect | Microsoft Docs'
 description: Erfahren Sie, wie die Standardkonfiguration und Betriebsaufgaben für Azure AD Connect erweitert werden.
 services: active-directory
 documentationcenter: ''
@@ -11,17 +11,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/26/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c204029557a73dc3f02015afb92c0fdbf0d4d50e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7d6689b4b67b8462e983ae9b111e0fbc60c422b7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64571317"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89657114"
 ---
 # <a name="next-steps-and-how-to-manage-azure-ad-connect"></a>Nächste Schritte und Verwalten von Azure AD Connect
 Befolgen Sie die in diesem Artikel beschriebenen Verfahren zum Anpassen von Azure Active Directory (Azure AD) Connect an die Bedürfnisse und Anforderungen Ihrer Organisation.  
@@ -30,7 +30,7 @@ Befolgen Sie die in diesem Artikel beschriebenen Verfahren zum Anpassen von Azur
 Standardmäßig können nur der Benutzer, der die Installation durchgeführt hat, und die lokalen Administratoren das installierte Synchronisierungsmodul verwalten. Damit weitere Personen auf das Synchronisierungsmodul zugreifen und es verwalten können, suchen Sie auf dem lokalen Server die Gruppe „ADSyncAdmins“, und fügen die Personen dieser Gruppe hinzu.
 
 ## <a name="assign-licenses-to-azure-ad-premium-and-enterprise-mobility-suite-users"></a>Zuweisen von Lizenzen zu Benutzern von Azure AD Premium und Enterprise Mobility Suite
-Nachdem Ihre Benutzer in der Cloud synchronisiert wurden, müssen Sie ihnen nun eine Lizenz zuweisen, damit sie Cloudanwendungen wie Office 365 nutzen können.
+Nachdem Ihre Benutzer in der Cloud synchronisiert wurden, müssen Sie ihnen eine Lizenz zuweisen, damit sie Cloudanwendungen wie Microsoft 365 nutzen können.
 
 ### <a name="to-assign-an-azure-ad-premium-or-enterprise-mobility-suite-license"></a>So weisen Sie eine Azure AD Premium- oder Enterprise Mobility Suite-Lizenz zu
 

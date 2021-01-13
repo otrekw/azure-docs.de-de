@@ -1,6 +1,6 @@
 ---
-title: 'Automatisches Identifizieren von gesprochener Sprache mit Video Indexer: Azure'
-titlesuffix: Azure Media Services
+title: 'Verwenden von Video Indexer zum automatischen Identifizieren gesprochener Sprachen: Azure'
+titleSuffix: Azure Media Services
 description: In diesem Artikel wird beschrieben, wie das Modell zur Sprachenerkennung von Video Indexer verwendet wird, um in einem Video automatisch die gesprochene Sprache zu identifizieren.
 services: media-services
 author: juliako
@@ -8,18 +8,22 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 09/12/2019
+ms.date: 04/12/2020
 ms.author: ellbe
-ms.openlocfilehash: 729ac9fc7c8ec6a85b3497c51888d3b5a6fc8558
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.openlocfilehash: 3a71a29fdf4af10162e2f7961fb457d0e99b18e8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71147196"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "81687119"
 ---
 # <a name="automatically-identify-the-spoken-language-with-language-identification-model"></a>Automatisches Identifizieren von gesprochener Sprache mit dem Modell zur Sprachenerkennung
 
-Video Indexer unterstützt die automatische Identifizierung von Sprachen (Language Identification, LID). Bei diesem Prozess wird gesprochene Sprache für Audiodaten automatisch identifiziert, und die Mediendatei wird dann zur Transkription in der vorherrschenden Sprache übermittelt. Dies wird derzeit für Chinesisch (vereinfacht), Deutsch, Englisch, Französisch, Italienisch, Japanisch, Portugiesisch (Brasilien), Russisch und Spanisch unterstützt. 
+Video Indexer unterstützt die automatische Identifizierung von Sprachen (Language Identification, LID). Bei diesem Prozess wird gesprochene Sprache für Audiodaten automatisch identifiziert, und die Mediendatei wird dann zur Transkription in der vorherrschenden Sprache übermittelt. 
+
+LID unterstützt derzeit folgende Sprachen: Chinesisch (Mandarin), Deutsch, Englisch, Französisch, Italienisch, Japanisch, Portugiesisch (Brasilien), Russisch und Spanisch. 
+
+Lesen Sie unbedingt den Abschnitt [Richtlinien und Einschränkungen](#guidelines-and-limitations) weiter unten.
 
 ## <a name="choosing-auto-language-identification-on-indexing"></a>Auswählen der automatischen Sprachidentifizierung bei der Indizierung
 
@@ -49,7 +53,10 @@ Die dominante Sprache für das Modell ist im Insights-JSON-Code als `sourceLangu
 
 ## <a name="guidelines-and-limitations"></a>Richtlinien und Einschränkungen
 
-* Unterstützt werden Chinesisch (vereinfacht), Deutsch, Englisch, Französisch, Italienisch, Japanisch, Portugiesisch (Brasilien), Russisch und Spanisch.
+* Die automatische Identifizierung von Sprachen unterstützt die folgenden Sprachen: 
+
+    Chinesisch (Mandarin), Deutsch, Englisch, Französisch, Italienisch, Japanisch, Portugiesisch (Brasilien), Russisch und Spanisch.
+* Video Indexer unterstützt zwar auch Arabisch (modernes Standard-Arabisch und Levantine), Hindi und Koreanisch, aber diese Sprachen werden in LID nicht unterstützt.
 * Falls die Audiodaten andere Sprachen enthalten, die nicht in der obigen Liste mit den unterstützten Sprachen aufgeführt sind, kommt es zu einem unerwarteten Ergebnis.
 * Falls die Sprache von Video Indexer nicht mit einem ausreichenden Zuverlässigkeitsgrad (`>0.6`) identifiziert werden kann, wird als Fallbacksprache Englisch verwendet.
 * Audiodaten mit einer Mischung von Sprachen werden derzeit nicht unterstützt. Falls die Audiodaten eine Sprachenmischung enthalten, kommt es zu einem unerwarteten Ergebnis. 

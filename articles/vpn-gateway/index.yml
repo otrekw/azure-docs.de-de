@@ -10,12 +10,12 @@ metadata:
   author: cherylmc
   ms.author: cherylmc
   ms.date: 08/28/2019
-  ms.openlocfilehash: 5a75e2ef81c2ea584e7819d278f63e5ae53b9ce9
-  ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+  ms.openlocfilehash: 8619e0948cc08d06d27a09864bbff13ad6ad3791
+  ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 09/11/2019
-  ms.locfileid: "70885622"
+  ms.lasthandoff: 12/07/2020
+  ms.locfileid: "96780330"
 landingContent:
 - title: Informationen zu VPN Gateway
   linkLists:
@@ -35,20 +35,16 @@ landingContent:
       url: vpn-gateway-vpn-faq.md
 - title: Erste Schritte
   linkLists:
-  - linkListType: how-to-guide
-    links:
-    - text: Erstellen eines VPN-Gateways
-      url: create-routebased-vpn-gateway-portal.md
-    - text: Herstellen einer Standort-zu-Standort-Verbindung
-      url: vpn-gateway-howto-site-to-site-resource-manager-portal.md
-    - text: Herstellen einer Point-to-Site-Verbindung
-      url: vpn-gateway-howto-point-to-site-resource-manager-portal.md
   - linkListType: tutorial
     links:
     - text: Erstellen und Verwalten eines VPN-Gateways
-      url: vpn-gateway-tutorial-create-gateway-powershell.md
-    - text: Erstellen und Verwalten einer Site-to-Site-Verbindung
-      url: vpn-gateway-tutorial-vpnconnection-powershell.md
+      url: tutorial-create-gateway-portal.md
+    - text: Erstellen einer Site-to-Site-VPN-Verbindung
+      url: tutorial-site-to-site-portal.md
+  - linkListType: how-to-guide
+    links:
+    - text: Erstellen einer Point-to-Site-VPN-Verbindung
+      url: vpn-gateway-howto-point-to-site-resource-manager-portal.md
 - title: VPN-Geräte
   linkLists:
   - linkListType: concept
@@ -67,10 +63,10 @@ landingContent:
     links:
     - text: Gatewaykonfigurationseinstellungen
       url: vpn-gateway-about-vpn-gateway-settings.md
-    - text: Point-to-Site-Routing
-      url: vpn-gateway-about-point-to-site-routing.md
     - text: Gateway-SKUs
       url: vpn-gateway-about-vpn-gateway-settings.md#gwsku
+    - text: Point-to-Site-Routing
+      url: vpn-gateway-about-point-to-site-routing.md
   - linkListType: how-to-guide
     links:
     - text: Überprüfen eines VPN Gateways
@@ -84,7 +80,7 @@ landingContent:
   - linkListType: concept
     links:
     - text: Sicherheitskontrollen
-      url: vpn-gateway-security-controls.md
+      url: ./security-baseline.md
   - linkListType: how-to-guide
     links:
     - text: Überwachung und Warnungen
@@ -93,7 +89,7 @@ landingContent:
   linkLists:
   - linkListType: reference
     links:
-    - text: Azure-Befehlszeilenschnittstelle
+    - text: Azure CLI
       url: /cli/azure/network/vnet-gateway
     - text: Azure PowerShell
       url: /powershell/module/az.network#vpn

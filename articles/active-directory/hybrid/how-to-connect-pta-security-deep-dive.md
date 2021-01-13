@@ -10,17 +10,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
-ms.date: 04/15/2019
+ms.topic: how-to
+ms.date: 05/27/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7f5e2443a285e065426e3dba0312ef6420097ef1
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 08a73c2b1be4b17136ba19e7efb71c2b21359fdf
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60348064"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89280144"
 ---
 # <a name="azure-active-directory-pass-through-authentication-security-deep-dive"></a>Azure Active Directory-Passthrough-Authentifizierung – ausführliche Informationen zur Sicherheit
 
@@ -38,14 +38,14 @@ Die folgenden Themen werden behandelt:
 Dies sind die wichtigsten Sicherheitsaspekte des Features:
 - Es basiert auf einer sicheren mehrinstanzenfähigen Architektur, die eine Isolation von Anmeldeanforderungen zwischen Mandanten ermöglicht.
 - Lokale Kennwörter werden niemals in irgendeiner Form in der Cloud gespeichert.
-- Lokale Authentifizierungs-Agents, die auf Anforderungen zur Kennwortvalidierung lauschen und darauf antworten, stellen aus Ihrem Netzwerk nur ausgehende Verbindungen her. Es ist nicht erforderlich, diese Authentifizierungs-Agents in einem Umkreisnetzwerk (DMZ) zu installieren. Eine bewährte Methode ist die Behandlung aller Server, auf denen Authentifizierungs-Agents ausgeführt werden, als Ebene-0-Systeme (siehe [Referenz](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)).
+- Lokale Authentifizierungs-Agents, die auf Anforderungen zur Kennwortvalidierung lauschen und darauf antworten, stellen aus Ihrem Netzwerk nur ausgehende Verbindungen her. Es ist nicht erforderlich, diese Authentifizierungs-Agents in einem Umkreisnetzwerk (DMZ) zu installieren. Eine bewährte Methode ist die Behandlung aller Server, auf denen Authentifizierungs-Agents ausgeführt werden, als Ebene-0-Systeme (siehe [Referenz](/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)).
 - Nur Standardports (80 und 443) werden für die ausgehende Kommunikation von den Authentifizierungs-Agents mit Azure AD verwendet. Sie müssen keine eingehenden Ports in Ihrer Firewall öffnen. 
   - Port 443 wird für die gesamte authentifizierte ausgehende Kommunikation verwendet.
   - Port 80 wird nur zum Herunterladen der Zertifikatsperrlisten (Certificate Revocation Lists, CRLs) verwendet, um sicherzustellen, dass keines der von diesem Feature verwendeten Zertifikate widerrufen wurde.
   - Die vollständige Liste der Netzwerkanforderungen finden Sie unter [Azure Active Directory-Passthrough-Authentifizierung: Schnellstart](how-to-connect-pta-quick-start.md#step-1-check-the-prerequisites).
 - Kennwörter, die Benutzer während einer Anmeldung angeben, werden in der Cloud verschlüsselt, bevor sie von den lokalen Authentifizierungs-Agents zur Validierung für Active Directory akzeptiert werden.
 - Der HTTPS-Kanal zwischen Azure AD und dem lokalen Authentifizierungs-Agent wird durch Verwenden von gegenseitiger Authentifizierung geschützt.
-- Ihre Benutzerkonten werden durch die nahtlose Kompatibilität mit [Azure AD-Richtlinien für bedingten Zugriff](../active-directory-conditional-access-azure-portal.md), einschließlich der Multi-Factor Authentication (MFA), durch das [Blockieren der Legacyauthentifizierung](../conditional-access/conditions.md) und durch das [Herausfiltern von Brute-Force-Kennwortangriffen](../authentication/howto-password-smart-lockout.md) geschützt.
+- Ihre Benutzerkonten werden durch die nahtlose Kompatibilität mit [Azure AD-Richtlinien für bedingten Zugriff](../conditional-access/overview.md), einschließlich der Multi-Factor Authentication (MFA), durch das [Blockieren der Legacyauthentifizierung](../conditional-access/concept-conditional-access-conditions.md) und durch das [Herausfiltern von Brute-Force-Kennwortangriffen](../authentication/howto-password-smart-lockout.md) geschützt.
 
 ## <a name="components-involved"></a>Beteiligte Komponenten
 
@@ -59,8 +59,8 @@ Allgemeine Informationen zur Betriebs-, Dienst- und Datensicherheit von Azure AD
 ## <a name="installation-and-registration-of-the-authentication-agents"></a>Installation und Registrierung der Authentifizierungs-Agents
 
 Authentifizierung-Agents werden mit Azure AD installiert und registriert, wenn Sie eine der folgenden Aktionen ausführen:
-   - [Aktivieren von Passthrough-Authentifizierung über Azure AD Connect](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-pass-through-authentication-quick-start#step-2-enable-the-feature)
-   - [Hinzufügen weiterer Authentifizierung-Agents, um die Hochverfügbarkeit von Anmeldeanforderungen sicherzustellen](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-pass-through-authentication-quick-start#step-4-ensure-high-availability) 
+   - [Aktivieren von Passthrough-Authentifizierung über Azure AD Connect](./how-to-connect-pta-quick-start.md#step-2-enable-the-feature)
+   - [Hinzufügen weiterer Authentifizierung-Agents, um die Hochverfügbarkeit von Anmeldeanforderungen sicherzustellen](./how-to-connect-pta-quick-start.md#step-4-ensure-high-availability) 
    
 Es sind drei Phasen erforderlich, um einen Authentifizierungs-Agent in Betrieb zu nehmen:
 
@@ -73,8 +73,11 @@ In den folgenden Abschnitten werden diese Phasen ausführlich erläutert.
 ### <a name="authentication-agent-installation"></a>Installation des Authentifizierungs-Agents
 
 Nur globale Administratoren können einen Authentifizierungs-Agent auf einem lokalen Server installieren (durch Verwenden von Azure AD Connect oder eigenständig). Bei der Installation werden der Liste in **Systemsteuerung** > **Programme** > **Programme und Features** diesen beiden neuen Einträge hinzugefügt:
-- Die eigentliche Authentifizierungs-Agent-Anwendung. Diese Anwendung wird mit [NetworkService](https://msdn.microsoft.com/library/windows/desktop/ms684272.aspx)-Berechtigungen ausgeführt.
-- Die Updater-Anwendung, die zur automatischen Aktualisierung des Authentifizierungs-Agents verwendet wird. Diese Anwendung wird mit [LocalSystem](https://msdn.microsoft.com/library/windows/desktop/ms684190.aspx)-Berechtigungen ausgeführt.
+- Die eigentliche Authentifizierungs-Agent-Anwendung. Diese Anwendung wird mit [NetworkService](/windows/win32/services/networkservice-account)-Berechtigungen ausgeführt.
+- Die Updater-Anwendung, die zur automatischen Aktualisierung des Authentifizierungs-Agents verwendet wird. Diese Anwendung wird mit [LocalSystem](/windows/win32/services/localsystem-account)-Berechtigungen ausgeführt.
+
+>[!IMPORTANT]
+>Vom Sicherheitsstandpunkt aus sollten Administratoren den Server, auf dem der PTA-Agent ausgeführt wird, so behandeln, als sei er ein Domänencontroller.  Die PTA-Agent-Server sollten wie in [Sichern von Domänencontrollern gegen Angriffe](/windows-server/identity/ad-ds/plan/security-best-practices/securing-domain-controllers-against-attack) beschrieben geschützt werden.
 
 ### <a name="authentication-agent-registration"></a>Registrierung des Authentifizierungs-Agents
 
@@ -103,8 +106,8 @@ Die Authentifizierungs-Agents führen die folgenden Schritte aus, um sich bei Az
     - Die Zertifizierungsstelle wird nur von der Passthrough-Authentifizierung verwendet. Die Zertifizierungsstelle wird verwendet, um CSRs während der Registrierung eines Authentifizierungs-Agents zu signieren.
     -  Keiner der anderen Azure AD-Dienste verwendet diese Zertifizierungsstelle.
     - Der Antragsteller des Zertifikats (Distinguished Name, DN) ist auf Ihre Mandanten-ID festgelegt. Dieser DN ist eine GUID, mit der Ihr Mandant eindeutig identifiziert wird. Dieser DN beschränkt die Verwendung des Zertifikats auf Ihren Mandanten.
-6. Azure AD speichert den öffentlichen Schlüssel des Authentifizierungs-Agents in einer Azure SQL-Datenbank, auf die nur Azure AD Zugriff hat.
-7. Das Zertifikat (in Schritt 5 ausgestellt) wird auf dem lokalen Server im Windows-Zertifikatspeicher gespeichert (Speicherort: [CERT_SYSTEM_STORE_LOCAL_MACHINE](https://msdn.microsoft.com/library/windows/desktop/aa388136.aspx#CERT_SYSTEM_STORE_LOCAL_MACHINE)). Es wird sowohl vom Authentifizierungs-Agent als auch von den Updater-Anwendungen verwendet.
+6. Azure AD speichert den öffentlichen Schlüssel des Authentifizierungs-Agents in einer Datenbank in Azure SQL-Datenbank, auf die nur Azure AD Zugriff hat.
+7. Das Zertifikat (in Schritt 5 ausgestellt) wird auf dem lokalen Server im Windows-Zertifikatspeicher gespeichert (Speicherort: [CERT_SYSTEM_STORE_LOCAL_MACHINE](/windows/win32/seccrypto/system-store-locations#CERT_SYSTEM_STORE_LOCAL_MACHINE)). Es wird sowohl vom Authentifizierungs-Agent als auch von den Updater-Anwendungen verwendet.
 
 ### <a name="authentication-agent-initialization"></a>Initialisierung des Authentifizierungs-Agents
 
@@ -136,18 +139,19 @@ Bei der Passthrough-Authentifizierung wird eine Anforderung zur Benutzeranmeldun
 4. Der Benutzer gibt auf der **Benutzeranmeldeseite** seinen Benutzernamen ein und wählt anschließend die Schaltfläche **Weiter** aus.
 5. Der Benutzer gibt auf der **Benutzeranmeldeseite** sein Kennwort ein und wählt anschließend die Schaltfläche **Anmelden** aus.
 6. Der Benutzername und das Kennwort werden in einer HTTPS POST-Anforderung an den Azure AD STS gesendet.
-7. Der Azure AD STS ruft öffentliche Schlüssel für alle Authentifizierungs-Agents, die unter Ihrem Mandanten registriert sind, aus der Azure SQL-Datenbank ab und verwendet diese zum Verschlüsseln des Kennworts.
+7. Der Azure AD  STS ruft öffentliche Schlüssel für alle Authentifizierungs-Agents, die unter Ihrem Mandanten registriert sind, aus Azure SQL-Datenbank ab und verwendet diese zum Verschlüsseln des Kennworts.
     - Der Dienst erstellt „N“ verschlüsselte Kennwortwerte für „N“ Authentifizierungs-Agents, die unter Ihrem Mandanten registriert sind.
 8. Der Azure AD STS reiht die Anforderung zur Kennwortvalidierung, die aus den Benutzername- und den verschlüsselten Kennwortwerten besteht, in die Service Bus-Warteschlange ein, die zu Ihrem Mandanten gehört.
 9. Da die initialisierten Authentifizierungs-Agents eine dauerhafte Verbindung mit der Service Bus-Warteschlange haben, ruft einer der verfügbaren Authentifizierungs-Agents die Anforderung zur Kennwortvalidierung ab.
 10. Der Authentifizierungs-Agent ermittelt durch Verwenden eines Bezeichners den verschlüsselten Kennwortwert, der zu seinem öffentlichen Schlüssel gehört, und entschlüsselt den Wert, indem er seinen privaten Schlüssel verwendet.
-11. Der Authentifizierungs-Agent versucht, den Benutzernamen und das Kennwort für die lokale Active Directory-Instanz zu validieren, indem er die [Win32 LogonUser-API](https://msdn.microsoft.com/library/windows/desktop/aa378184.aspx) verwendet, wobei der Parameter **dwLogonType** auf **LOGON32_LOGON_NETWORK** festgelegt ist. 
+11. Der Authentifizierungs-Agent versucht, den Benutzernamen und das Kennwort für die lokale Active Directory-Instanz zu validieren, indem er die [Win32 LogonUser-API](/windows/win32/api/winbase/nf-winbase-logonusera) verwendet, wobei der Parameter **dwLogonType** auf **LOGON32_LOGON_NETWORK** festgelegt ist. 
     - Diese API ist dieselbe API, die von Active Directory-Verbunddienste (AD FS) verwendet wird, um Benutzer in einem Szenario mit Verbundanmeldung anzumelden.
     - Diese API setzt auf den Standardauflösungsvorgang in Windows Server auf, um den Domänencontroller zu suchen.
 12. Der Authentifizierungs-Agent empfängt das Ergebnis von Active Directory, also z.B. Erfolg, Benutzername oder Kennwort fehlerhaft oder Kennwort abgelaufen.
 
    > [!NOTE]
    > Wenn beim Authentifizierungs-Agent während der Anmeldung ein Fehler auftritt, wird die gesamte Anforderung gelöscht. Es erfolgt keine Weitergabe der Anmeldeanforderungen von einem Authentifizierungs-Agent an einen anderen Authentifizierungs-Agent auf lokaler Ebene. Diese Agents kommunizieren nur mit der Cloud und nicht miteinander.
+   
 13. Der Authentifizierungs-Agent leitet das Ergebnis über einen ausgehenden gegenseitig authentifizierten HTTPS-Kanal (Port 443) zurück an den Azure AD STS. Bei der gegenseitigen Authentifizierung wird das Zertifikat verwendet, das zuvor während der Registrierung für den Authentifizierungs-Agent ausgestellt wurde.
 14. Der Azure AD STS überprüft, ob das Ergebnis mit der jeweiligen Anmeldeanforderung auf Ihrem Mandanten korreliert.
 15. Der Azure AD STS fährt gemäß Konfiguration mit dem Anmeldeverfahren fort. Wenn die Kennwortvalidierung erfolgreich war, kann der Benutzer beispielsweise zum Einrichten von Multi-Factor Authentication aufgefordert oder zurück an die Anwendung geleitet werden.
@@ -174,8 +178,8 @@ So erneuern Sie die Vertrauensstellung eines Authentifizierungs-Agents mit Azure
 6. Falls das vorhandene Zertifikat abgelaufen ist, löscht Azure AD den Authentifizierungs-Agent aus der Liste mit den registrierten Authentifizierungs-Agents Ihres Mandanten. Anschließend muss ein globaler Administrator einen neuen Authentifizierungs-Agent manuell installieren und registrieren.
     - Verwenden Sie die Stamm-CA (Stammzertifizierungsstelle) von Azure AD, um das Zertifikat zu signieren.
     - Legen Sie den Antragsteller des Zertifikats (Distinguished Name oder DN) auf Ihre Mandanten-ID fest. Diese ist eine GUID, mit der Ihr Mandant eindeutig identifiziert wird. Der DN bewirkt, dass das Zertifikat nur für Ihren Mandanten gilt.
-6. Azure AD speichert den neuen öffentlichen Schlüssel des Authentifizierungs-Agents in einer Azure SQL-Datenbank, auf die nur Azure AD selbst Zugriff hat. Außerdem macht Azure AD den alten öffentlichen Schlüssel, der dem Authentifizierungs-Agent zugeordnet ist, ungültig.
-7. Anschließend wird das neue Zertifikat (in Schritt 5 ausgestellt) auf dem Server im Windows-Zertifikatspeicher gespeichert (Speicherort: [CERT_SYSTEM_STORE_CURRENT_USER](https://msdn.microsoft.com/library/windows/desktop/aa388136.aspx#CERT_SYSTEM_STORE_CURRENT_USER)).
+6. Azure AD speichert den neuen öffentlichen Schlüssel des Authentifizierungs-Agents in einer Datenbank in Azure SQL-Datenbank, auf die nur Azure AD Zugriff hat. Außerdem macht Azure AD den alten öffentlichen Schlüssel, der dem Authentifizierungs-Agent zugeordnet ist, ungültig.
+7. Anschließend wird das neue Zertifikat (in Schritt 5 ausgestellt) auf dem Server im Windows-Zertifikatspeicher gespeichert (Speicherort: [CERT_SYSTEM_STORE_CURRENT_USER](/windows/win32/seccrypto/system-store-locations#CERT_SYSTEM_STORE_CURRENT_USER)).
     - Da das Verfahren zur Erneuerung der Vertrauensstellung nicht interaktiv durchgeführt wird (ohne Vorhandensein des globalen Administrators), hat der Authentifizierungs-Agent keinen Zugriff mehr, um das vorhandene Zertifikat im Speicherort CERT_SYSTEM_STORE_LOCAL_MACHINE zu aktualisieren. 
     
    > [!NOTE]
@@ -186,7 +190,7 @@ So erneuern Sie die Vertrauensstellung eines Authentifizierungs-Agents mit Azure
 
 Mit der Updater-Anwendung wird der Authentifizierungs-Agent automatisch aktualisiert, wenn eine neue Version (mit Fehlerbehebungen oder Leistungsverbesserungen) veröffentlicht wird. Die Updater-Anwendung verarbeitet aber keine Anforderungen zur Kennwortvalidierung für Ihren Mandanten.
 
-Azure AD hostet die neue Version der Software als signiertes **Windows Installer-Paket (MSI)** . Das MSI-Paket wird signiert, indem [Microsoft Authenticode](https://msdn.microsoft.com/library/ms537359.aspx) mit SHA256 als Digestalgorithmus verwendet wird. 
+Azure AD hostet die neue Version der Software als signiertes **Windows Installer-Paket (MSI)** . Das MSI-Paket wird signiert, indem [Microsoft Authenticode](/previous-versions/windows/internet-explorer/ie-developer/platform-apis/ms537359(v=vs.85)) mit SHA256 als Digestalgorithmus verwendet wird. 
 
 ![Automatische Aktualisierung](./media/how-to-connect-pta-security-deep-dive/pta5.png)
 
@@ -199,7 +203,7 @@ So wird ein Authentifizierungs-Agent automatisch aktualisiert:
 4. Der Updater führt das MSI-Paket aus. Dieser Vorgang umfasst die folgenden Schritte:
 
    > [!NOTE]
-   > Der Updater wird mit den Berechtigungen von [Lokales System](https://msdn.microsoft.com/library/windows/desktop/ms684190.aspx) ausgeführt.
+   > Der Updater wird mit den Berechtigungen von [Lokales System](/windows/win32/services/localsystem-account) ausgeführt.
 
     - Der Authentifizierungs-Agent-Dienst wird beendet.
     - Die neue Version des Authentifizierungs-Agent wird auf dem Server installiert.

@@ -1,25 +1,16 @@
 ---
-title: Neukonfiguration in Azure Service Fabric | Microsoft-Dokumentation
-description: Grundlegendes zur Neukonfiguration von Partitionen in Service Fabric
-services: service-fabric
-documentationcenter: .net
+title: Neukonfiguration in Azure Service Fabric
+description: Erfahren Sie mehr über Konfigurationen für zustandsbehaftete Dienstreplikate und den Prozess der Neukonfiguration, den Service Fabric verwendet, um Konsistenz und Verfügbarkeit während der Änderung aufrechtzuerhalten.
 author: appi101
-manager: anuragg
-editor: ''
-ms.assetid: d5ab75ff-98b9-4573-a2e5-7f5ab288157a
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 01/10/2018
 ms.author: aprameyr
-ms.openlocfilehash: a24aa6aa1695a3d1166816b7960bdd7b551e1a37
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bd46a7776495624affef77a44fcf68334750ba17
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60882196"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "75609994"
 ---
 # <a name="reconfiguration-in-azure-service-fabric"></a>Neukonfiguration in Azure Service Fabric
 Eine *Konfiguration* ist definiert als die Replikate und ihre Rollen für eine Partition eines zustandsbehafteten Diensts.
@@ -52,7 +43,7 @@ Es gibt mehrere andere Phasen, die nur zur internen Verwendung bestimmt sind.
 Neukonfigurationen können aus einer Vielzahl von Gründen *hängen bleiben*. Einige der häufigsten Gründe sind:
 
 - **Inaktive Replikate**: Einige Neukonfigurationsphasen erfordern, dass eine Mehrheit der Replikate in der Konfiguration aktiv ist.
-- **Netzwerk-oder Kommunikationsprobleme**: Neukonfigurationen erfordern Netzwerkkonnektivität zwischen verschiedenen Knoten.
+- **Netzwerk- oder Kommunikationsprobleme**: Neukonfigurationen erfordern Netzwerkkonnektivität zwischen verschiedenen Knoten.
 - **API-Fehler**: Das Neukonfigurationsprotokoll erfordert, dass Dienstimplementierungen bestimmte APIs beenden. Beispiel: Nichtbeachtung des Abbruchtokens in einem zuverlässigen Dienst führt dazu, dass SwapPrimary-Neukonfigurationen hängen bleiben.
 
 Verwenden Sie Integritätsberichte von Systemkomponenten wie System.FM, System.RA, System.RAP, um zu diagnostizieren, wo eine Neukonfiguration hängen geblieben ist. Unter [Verwenden von Systemintegritätsberichten für die Problembehandlung](service-fabric-understand-and-troubleshoot-with-system-health-reports.md) werden diese Integritätsberichte beschrieben.

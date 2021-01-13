@@ -1,6 +1,6 @@
 ---
 title: Manuelles Failover einer Azure IoT Hub-Instanz | Microsoft-Dokumentation
-description: Hier wird gezeigt, wie Sie ein manuelles Failover für eine Azure IoT Hub-Instanz ausführen.
+description: Es wird beschrieben, wie Sie ein manuelles Failover für Ihren IoT-Hub in eine andere Region ausführen und die Funktionsweise überprüfen und anschließend die Verlagerung zurück in die ursprüngliche Region und eine erneute Überprüfung durchführen.
 author: robinsh
 manager: timlt
 ms.service: iot-hub
@@ -8,17 +8,19 @@ services: iot-hub
 ms.topic: tutorial
 ms.date: 07/24/2019
 ms.author: robinsh
-ms.custom: mvc
-ms.openlocfilehash: 308e452f33ded9be3b88ff370ed34326de54895c
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.custom:
+- mvc
+- mqtt
+ms.openlocfilehash: 69a0795b9c299b5113c39ce2c4556573f730e4b7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69877027"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89013944"
 ---
 # <a name="tutorial-perform-manual-failover-for-an-iot-hub"></a>Tutorial: Ausführen eines manuellen Failovers für eine IoT Hub-Instanz
 
-Das manuelle Failover ist ein Feature des IoT Hub-Diensts, der Kunden die Ausführung eines [Failovers](https://en.wikipedia.org/wiki/Failover) für die Hubvorgänge einer primären Region in der entsprechenden geografisch gekoppelten Azure-Region ermöglicht. Das manuelle Failover kann im Falle eines regionalen Notfalls oder eines längeren Dienstausfalls ausgeführt werden. Sie können auch ein geplantes Failover zum Testen der Notfallwiederherstellungsfunktionen ausführen. Es wird jedoch empfohlen, einen IoT-Testhub anstelle einer in der Produktion ausgeführten Instanz zu verwenden. Das Feature für das manuelle Failover steht Kunden ohne zusätzliche Kosten zur Verfügung.
+Das manuelle Failover ist ein Feature des IoT Hub-Diensts, der Kunden die Ausführung eines [Failovers](https://en.wikipedia.org/wiki/Failover) für die Hubvorgänge einer primären Region in der entsprechenden geografisch gekoppelten Azure-Region ermöglicht. Das manuelle Failover kann im Falle eines regionalen Notfalls oder eines längeren Dienstausfalls ausgeführt werden. Sie können auch ein geplantes Failover zum Testen der Notfallwiederherstellungsfunktionen ausführen. Es wird jedoch empfohlen, einen IoT-Testhub anstelle einer in der Produktion ausgeführten Instanz zu verwenden. Das Feature für das manuelle Failover steht Kunden ohne zusätzliche Kosten für IoT-Hubs zur Verfügung, die nach dem 18. Mai 2017 erstellt wurden.
 
 In diesem Tutorial führen Sie die folgenden Aufgaben aus:
 
@@ -29,11 +31,15 @@ In diesem Tutorial führen Sie die folgenden Aufgaben aus:
 > * Ausführen eines Failbacks, um die Vorgänge des IoT-Hubs am primären Standort wiederherzustellen 
 > * Überprüfen, ob der Hub ordnungsgemäß am richtigen Standort ausgeführt wird
 
+Weitere Informationen zum manuellen Failover und einem von Microsoft initiierten Failover mit IoT Hub finden Sie unter [Regionenübergreifende Notfallwiederherstellung](iot-hub-ha-dr.md#cross-region-dr).
+
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Ein Azure-Abonnement. Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+* Ein Azure-Abonnement. Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
-## <a name="create-an-iot-hub"></a>Erstellen eines IoT Hubs
+* Stellen Sie sicher, dass Port 8883 in Ihrer Firewall geöffnet ist. Für das Beispielgerät in diesem Tutorial wird das MQTT-Protokoll verwendet, das über Port 8883 kommuniziert. In einigen Netzwerkumgebungen von Unternehmen oder Bildungseinrichtungen ist dieser Port unter Umständen blockiert. Weitere Informationen und Problemumgehungen finden Sie unter [Herstellen einer Verbindung mit IoT Hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
+
+## <a name="create-an-iot-hub"></a>Erstellen eines IoT-Hubs
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. 
 
@@ -79,7 +85,7 @@ Beachten Sie, dass für einen IoT-Hub pro Tag maximal zwei Failover und zwei Fai
 
    Die Dauer für die Ausführung des manuellen Failovers ist proportional zur Anzahl von Geräten, die für Ihren Hub registriert sind. Wenn Sie beispielsweise 100.000 Geräte besitzen, dauert die Ausführung vielleicht 15 Minuten. Bei fünf Millionen Geräten kann sie jedoch eine Stunde oder länger dauern.
 
-   ![Screenshot mit dem Bereich „Manuelles Failover“](./media/tutorial-manual-failover/trigger-failover-03-confirm.png)
+   ![Screenshot mit dem Bestätigungsbereich „Manuelles Failover“](./media/tutorial-manual-failover/trigger-failover-03-confirm.png)
 
    Während des manuellen Failovers wird ein Banner mit dem Hinweis angezeigt, dass ein manuelles Failover ausgeführt wird. 
 

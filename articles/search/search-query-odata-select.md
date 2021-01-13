@@ -1,13 +1,13 @@
 ---
-title: OData-Referenz zu „$select“ – Azure Search
-description: OData-Sprachreferenz für die Syntax von „$select“ in Azure Search-Abfragen.
-ms.date: 06/13/2019
-services: search
-ms.service: search
-ms.topic: conceptual
-author: Brjohnstmsft
-ms.author: brjohnst
+title: OData-Referenz zu „$select“
+titleSuffix: Azure Cognitive Search
+description: Syntax und Sprachreferenz für die explizite Auswahl von Feldern, die in den Suchergebnissen von Azure Cognitive Search-Abfragen zurückgegeben werden sollen.
 manager: nitinme
+author: brjohnstmsft
+ms.author: brjohnst
+ms.service: cognitive-search
+ms.topic: conceptual
+ms.date: 11/04/2019
 translation.priority.mt:
 - de-de
 - es-es
@@ -19,16 +19,16 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 64e9ad75d88f595ab5def6fe8b63fee9407ae0fe
-ms.sourcegitcommit: bb8e9f22db4b6f848c7db0ebdfc10e547779cccc
+ms.openlocfilehash: 54b6ae227fc4b3b951717799660543c02874dda0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2019
-ms.locfileid: "69647871"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88919657"
 ---
-# <a name="odata-select-syntax-in-azure-search"></a>OData-Syntax von „$select“ in Azure Search
+# <a name="odata-select-syntax-in-azure-cognitive-search"></a>OData-Syntax von „$select“ in der kognitiven Azure-Suche
 
- Sie können den [OData-Parameter **$select**](query-odata-filter-orderby-syntax.md) verwenden, um die in die Suchergebnisse von Azure Search einzubeziehenden Felder auszuwählen. In diesem Artikel wird die Syntax von **$select** detailliert beschrieben. Weitere allgemeine Informationen zur Verwendung von **$select** beim Darstellen von Suchergebnissen finden Sie unter [Arbeiten mit Suchergebnissen in Azure Search](search-pagination-page-layout.md).
+ Sie können den [OData-Parameter **$select**](query-odata-filter-orderby-syntax.md) verwenden, um die in die Suchergebnisse der kognitiven Azure-Suche einzubeziehenden Felder auszuwählen. In diesem Artikel wird die Syntax von **$select** detailliert beschrieben. Weitere allgemeine Informationen zur Verwendung von **$select** beim Darstellen von Suchergebnissen finden Sie unter [Arbeiten mit Suchergebnissen in der kognitiven Azure-Suche](search-pagination-page-layout.md).
 
 ## <a name="syntax"></a>Syntax
 
@@ -45,10 +45,10 @@ field_path ::= identifier('/'identifier)*
 Ein interaktives Syntaxdiagramm ist ebenfalls verfügbar:
 
 > [!div class="nextstepaction"]
-> [OData-Syntaxdiagramm für Azure Search](https://azuresearch.github.io/odata-syntax-diagram/#select_expression)
+> [OData-Syntaxdiagramm für Azure Cognitive Search](https://azuresearch.github.io/odata-syntax-diagram/#select_expression)
 
 > [!NOTE]
-> Die vollständige EBNF finden Sie unter [Referenz zur OData-Ausdruckssyntax für Azure Search](search-query-odata-syntax-reference.md).
+> Die vollständige EBNF finden Sie in der [Referenz zur OData-Ausdruckssyntax für Azure Cognitive Search](search-query-odata-syntax-reference.md).
 
 Der Parameter **$select** ist in zwei Formen vorhanden:
 
@@ -63,7 +63,9 @@ Wenn Sie ein komplexes Feld auflisten, ohne die zugehörigen Unterfelder explizi
 
 Beziehen Sie die Felder `HotelId`, `HotelName` und `Rating` (Felder der obersten Ebene) sowie das Unterfeld `City` von `Address` in die Ergebnisse ein:
 
+```odata-filter-expr
     $select=HotelId, HotelName, Rating, Address/City
+```
 
 Ein Beispielergebnis könnte wie folgt aussehen:
 
@@ -80,7 +82,9 @@ Ein Beispielergebnis könnte wie folgt aussehen:
 
 Beziehen Sie in die Ergebnisse das Feld `HotelName` (Feld der obersten Ebene) und alle Unterfelder von `Address` sowie die Unterfelder `Type` und `BaseRate` jedes Objekts der Sammlung `Rooms` ein:
 
+```odata-filter-expr
     $select=HotelName, Address, Rooms/Type, Rooms/BaseRate
+```
 
 Ein Beispielergebnis könnte wie folgt aussehen:
 
@@ -110,7 +114,7 @@ Ein Beispielergebnis könnte wie folgt aussehen:
 
 ## <a name="next-steps"></a>Nächste Schritte  
 
-- [Arbeiten mit Suchergebnissen in Azure Search](search-pagination-page-layout.md)
-- [Übersicht über die OData-Ausdruckssprache für Azure Search](query-odata-filter-orderby-syntax.md)
-- [Referenz zur OData-Ausdruckssyntax für Azure Search](search-query-odata-syntax-reference.md)
-- [Search Documents &#40;Azure Search Service REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) (Suchen nach Dokumenten: REST-API für den Azure Search-Dienst)
+- [Arbeiten mit Suchergebnissen in Azure Cognitive Search](search-pagination-page-layout.md)
+- [Übersicht über die OData-Ausdruckssprache für Azure Cognitive Search](query-odata-filter-orderby-syntax.md)
+- [Referenz zur OData-Ausdruckssyntax für Azure Cognitive Search](search-query-odata-syntax-reference.md)
+- [Suchen von Dokumenten &#40;Azure Cognitive Search-REST-API&#41;](/rest/api/searchservice/Search-Documents)

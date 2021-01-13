@@ -1,26 +1,17 @@
 ---
-title: 'Tutorial: Debuggen einer Azure Service Fabric Mesh-Webanwendung, die in Ihrem lokalen Entwicklungscluster ausgeführt wird | Microsoft-Dokumentation'
+title: Debuggen einer lokal ausgeführten Azure Service Fabric Mesh-Web-App
 description: In diesem Tutorial wird eine in Ihrem lokalen Cluster ausgeführte Azure Service Fabric-Mesh-Anwendung debuggt.
-services: service-fabric-mesh
-documentationcenter: .net
-author: dkkapur
-manager: chakdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric-mesh
-ms.devlang: dotNet
+author: georgewallace
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 10/31/2018
-ms.author: dekapur
+ms.author: gwallace
 ms.custom: mvc, devcenter
-ms.openlocfilehash: bef86b189064a82b6605e8b99a374b1ee92682e2
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.openlocfilehash: 56cc8b4010dc17cf2b723a72898034de8d6a7175
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56805119"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91843293"
 ---
 # <a name="tutorial-debug-a-service-fabric-mesh-application-running-in-your-local-development-cluster"></a>Tutorial: Debuggen einer Service Fabric Mesh-Anwendung, die in Ihrem lokalen Entwicklungscluster ausgeführt wird
 
@@ -86,7 +77,7 @@ Derzeit besteht ein Problem, das bewirkt, dass mit dem Aufruf von `using (HttpRe
 
 Sollte der Fehler **No Service Fabric local cluster is running** (Es wird kein lokaler Service Fabric-Cluster ausgeführt.) auftreten, vergewissern Sie sich, dass der LCM (Service Fabric Local Cluster Manager) ausgeführt wird, klicken Sie auf der Taskleiste mit der rechten Maustaste auf das LCM-Symbol, und klicken Sie anschließend auf **Start Local Cluster** (Lokalen Cluster starten). Kehren Sie nach dem Start des Clusters zu Visual Studio zurück, und drücken Sie**F5**.
 
-Sollte beim Start der App ein Fehler vom Typ **404** auftreten, sind möglicherweise die Umgebungsvariablen in **service.yaml** nicht korrekt. Vergewissern Sie sich, dass `ApiHostPort` und `ToDoServiceName` ordnungsgemäß festgelegt sind, wie unter [Tutorial: Erstellen, Debuggen und Bereitstellen einer Webanwendung mit mehreren Diensten in Service Fabric Mesh](https://docs.microsoft.com/azure/service-fabric-mesh/service-fabric-mesh-tutorial-create-dotnetcore#create-environment-variables) beschrieben.
+Sollte beim Start der App ein Fehler vom Typ **404** auftreten, sind möglicherweise die Umgebungsvariablen in **service.yaml** nicht korrekt. Vergewissern Sie sich, dass `ApiHostPort` und `ToDoServiceName` ordnungsgemäß festgelegt sind, wie unter [Tutorial: Erstellen, Debuggen und Bereitstellen einer Webanwendung mit mehreren Diensten in Service Fabric Mesh](./service-fabric-mesh-tutorial-create-dotnetcore.md#create-environment-variables) beschrieben.
 
 Vergewissern Sie sich im Falle von Buildfehlern in **service.yaml**, dass zum Einrücken der Zeilen keine Tabulatoren, sondern Leerzeichen verwendet wurden. Darüber hinaus müssen Sie die App vorerst mit dem englischen Gebietsschema erstellen.
 

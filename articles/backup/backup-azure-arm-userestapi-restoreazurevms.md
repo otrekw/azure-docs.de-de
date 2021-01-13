@@ -1,21 +1,15 @@
 ---
-title: 'Azure Backup: Wiederherstellen virtueller Azure-Computer mithilfe der REST-API'
-description: Verwalten von Wiederherstellungsvorgängen der Azure-VM-Sicherung mit der REST-API
-ms.reviewer: pullabhk
-author: dcurwin
-manager: carmonm
-keywords: REST-API; Azure-VM-Sicherung; Azure-VM-Wiederherstellung;
-ms.service: backup
+title: Wiederherstellen virtueller Azure-Computer mithilfe der REST-API
+description: In diesem Artikel erfahren Sie, wie Sie Wiederherstellungsvorgänge der Sicherung von Azure-VMs mit der REST-API verwalten.
 ms.topic: conceptual
 ms.date: 09/12/2018
-ms.author: dacurwin
 ms.assetid: b8487516-7ac5-4435-9680-674d9ecf5642
-ms.openlocfilehash: bdbceec2f1d0a900ffdb392d8a0505ce11419036
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 260c78af39c46e493ebb79c26ff1c55153a41c1d
+ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "68954906"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92174027"
 ---
 # <a name="restore-azure-virtual-machines-using-rest-api"></a>Wiederherstellen virtueller Azure-Computer mit der REST-API
 
@@ -25,21 +19,21 @@ Für jeden Wiederherstellungsvorgang muss zunächst der entsprechende Wiederhers
 
 ## <a name="select-recovery-point"></a>Auswählen eines Wiederherstellungspunkts
 
-Die verfügbaren Wiederherstellungspunkte eines Sicherungselements können mithilfe der [REST-API zum Auflisten von Wiederherstellungspunkten](https://docs.microsoft.com/rest/api/backup/recoverypoints/list) aufgelistet werden. Dabei handelt es sich um einen einfachen *GET*-Vorgang mit allen relevanten Werten.
+Die verfügbaren Wiederherstellungspunkte eines Sicherungselements können mithilfe der [REST-API zum Auflisten von Wiederherstellungspunkten](/rest/api/backup/recoverypoints/list) aufgelistet werden. Dies ist ein einfacher *GET*-Vorgang mit allen relevanten Werten.
 
 ```http
-GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/recoveryPoints?api-version=2016-12-01
+GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/recoveryPoints?api-version=2019-05-13
 ```
 
-Informationen zur Erstellung von `{containerName}` und `{protectedItemName}` finden Sie [hier](backup-azure-arm-userestapi-backupazurevms.md#example-responses-1). `{fabricName}` ist „Azure“.
+Informationen zur Erstellung von `{containerName}` und `{protectedItemName}` finden Sie [hier](backup-azure-arm-userestapi-backupazurevms.md#example-responses-to-get-operation). `{fabricName}` ist „Azure“.
 
 Der *GET*-URI enthält alle erforderlichen Parameter. Ein zusätzlicher Anforderungstext ist nicht erforderlich.
 
 ### <a name="responses"></a>Antworten
 
-|NAME  |type  |BESCHREIBUNG  |
+|Name  |type  |BESCHREIBUNG  |
 |---------|---------|---------|
-|200 – OK     |   [RecoveryPointResourceList](https://docs.microsoft.com/rest/api/backup/recoverypoints/list#recoverypointresourcelist)      |       OK  |
+|200 – OK     |   [RecoveryPointResourceList](/rest/api/backup/recoverypoints/list#recoverypointresourcelist)      |       OK  |
 
 #### <a name="example-response"></a>Beispielantwort
 
@@ -121,57 +115,36 @@ X-Powered-By: ASP.NET
 
 Der Wiederherstellungspunkt wird durch das Feld `{name}` in der obigen Antwort angegeben.
 
-## <a name="restore-disks"></a>Wiederherstellen von Datenträgern
+## <a name="restore-operations"></a>Wiederherstellungsvorgänge
 
-Muss die Erstellung eines virtuellen Computers auf der Grundlage der Sicherungsdaten angepasst werden, können Sie Datenträger einfach in einem ausgewählten Speicherkonto wiederherstellen und basierend auf diesen Datenträgern einen virtuellen Computer erstellen, der die Anforderungen der virtuellen Datenträger erfüllt. Das Speicherkonto muss sich in derselben Region wie der Recovery Services-Tresor befinden und darf nicht zonenredundant sein. Die Datenträger und die Konfiguration des gesicherten virtuellen Computers (vmconfig.json) werden im angegebenen Speicherkonto gespeichert.
+Nachdem Sie den [relevanten Wiederherstellungspunkt](#select-recovery-point) ausgewählt haben, lösen Sie als Nächstes den Wiederherstellungsvorgang aus.
 
-Das Auslösen der Datenträgerwiederherstellung erfolgt über eine *POST*-Anforderung. Weitere Informationen zum Wiederherstellen von Datenträgern finden Sie im Artikel zur [REST-API zum Auslösen der Wiederherstellung](https://docs.microsoft.com/rest/api/backup/restores/trigger).
+***Alle Wiederherstellungsvorgänge für das Sicherungselement werden mit derselben *POST*-API ausgeführt. Nur der Anforderungstext mit den Wiederherstellungsszenarien wird geändert.***
+
+> [!IMPORTANT]
+> Alle Details zu den verschiedenen Wiederherstellungsoptionen und deren Abhängigkeiten können Sie [hier](./backup-azure-arm-restore-vms.md#restore-options) finden. Sehen Sie dort nach, bevor Sie diese Vorgänge auslösen.
+
+Das Auslösen von Wiederherstellungsvorgängen ist eine *POST*-Anforderung. Weitere Informationen zur API finden Sie in der [REST-API für „Wiederherstellung auslösen“](/rest/api/backup/restores/trigger).
 
 ```http
-POST https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/recoveryPoints/{recoveryPointId}/restore?api-version=2016-12-01
+POST https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}/recoveryPoints/{recoveryPointId}/restore?api-version=2019-05-13
 ```
 
-Informationen zur Erstellung von `{containerName}` und `{protectedItemName}` finden Sie [hier](backup-azure-arm-userestapi-backupazurevms.md#example-responses-1). `{fabricName}` ist „Azure“ und `{recoveryPointId}` ist das Feld `{name}` des [oben](#example-response) erwähnten Wiederherstellungspunkts.
+Informationen zur Erstellung von `{containerName}` und `{protectedItemName}` finden Sie [hier](backup-azure-arm-userestapi-backupazurevms.md#example-responses-to-get-operation). `{fabricName}` ist „Azure“ und `{recoveryPointId}` ist das Feld `{name}` des [oben](#example-response) erwähnten Wiederherstellungspunkts.
 
-### <a name="create-request-body"></a>Erstellen des Anforderungstexts
+Nachdem Sie den Wiederherstellungspunkt abgerufen haben, müssen Sie den Anforderungstext für das relevante Wiederherstellungsszenario erstellen. In den folgenden Abschnitten wird der Anforderungstext für die einzelnen Szenarien erläutert.
 
-Zum Auslösen einer Datenträgerwiederherstellung auf der Grundlage einer Azure-VM-Sicherung werden im Folgenden die Komponenten des Anforderungstexts angegeben.
+- [Datenträger wiederherstellen](#restore-disks)
+- [Datenträger ersetzen](#replace-disks-in-a-backed-up-virtual-machine)
+- [Als neuen virtuellen Computer wiederherstellen](#restore-as-another-virtual-machine)
 
-|NAME  |type  |BESCHREIBUNG  |
-|---------|---------|---------|
-|properties     | [IaaSVMRestoreRequest](https://docs.microsoft.com/rest/api/backup/restores/trigger#iaasvmrestorerequest)        |    RestoreRequestResourceProperties     |
+### <a name="restore-response"></a>Antwort wiederherstellen
 
-Die vollständige Liste mit Definitionen des Anforderungstexts und weitere Einzelheiten finden Sie im [Dokument zur REST-API zum Auslösen der Wiederherstellung](https://docs.microsoft.com/rest/api/backup/restores/trigger#request-body).
-
-#### <a name="example-request"></a>Beispielanforderung
-
-Der folgende Anforderungstext definiert Eigenschaften, die zum Auslösen einer Datenträgerwiederherstellung erforderlich sind.
-
-```json
-{
-  "properties": {
-    "objectType": "IaasVMRestoreRequest",
-    "recoveryPointId": "20982486783671",
-    "recoveryType": "RestoreDisks",
-    "sourceResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testRG/providers/Microsoft.Compute/virtualMachines/testVM",
-    "storageAccountId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testRG/providers/Microsoft.Storage/storageAccounts/testAccount",
-    "region": "westus",
-    "createNewCloudService": false,
-    "originalStorageAccountOption": false,
-    "encryptionDetails": {
-      "encryptionEnabled": false
-    }
-  }
-}
-```
-
-### <a name="response"></a>response
-
-Das Auslösen einer Datenträgerwiederherstellung ist ein [asynchroner Vorgang](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations). Das bedeutet, dass in diesem Vorgang ein anderer Vorgang erstellt wird, der separat nachverfolgt werden muss.
+Das Auslösen eines Wiederherstellungsvorgangs ist ein [asynchroner Vorgang](../azure-resource-manager/management/async-operations.md). Das bedeutet, dass in diesem Vorgang ein anderer Vorgang erstellt wird, der separat nachverfolgt werden muss.
 
 Er gibt zwei Antworten zurück: „202 (Akzeptiert)“, wenn ein anderer Vorgang erstellt wird, und dann „200 (OK)“, wenn dieser Vorgang abgeschlossen ist.
 
-|NAME  |type  |BESCHREIBUNG  |
+|Name  |type  |BESCHREIBUNG  |
 |---------|---------|---------|
 |202 – Akzeptiert     |         |     Zulässig    |
 
@@ -183,7 +156,7 @@ Nachdem Sie den *POST*-URI für das Auslösen der Datenträgerwiederherstellung 
 HTTP/1.1 202 Accepted
 Pragma: no-cache
 Retry-After: 60
-Azure-AsyncOperation: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/microsoft.recoveryservices/vaults/testVault/backupFabrics/Azure/protectionContainers/iaasvmcontainer;iaasvmcontainerv2;testRG;testVM/protectedItems/vm;testRG;testVM/operationsStatus/781a0f18-e250-4d73-b059-5e9ffed4069e?api-version=2016-12-01
+Azure-AsyncOperation: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/microsoft.recoveryservices/vaults/testVault/backupFabrics/Azure/protectionContainers/iaasvmcontainer;iaasvmcontainerv2;testRG;testVM/protectedItems/vm;testRG;testVM/operationsStatus/781a0f18-e250-4d73-b059-5e9ffed4069e?api-version=2019-05-13
 X-Content-Type-Options: nosniff
 x-ms-request-id: 893fe372-8d6c-4c56-b589-45a95eeef95f
 x-ms-client-request-id: a15ce064-25bd-4ac6-87e5-e3bc6ec65c0b; a15ce064-25bd-4ac6-87e5-e3bc6ec65c0b
@@ -193,14 +166,14 @@ x-ms-correlation-request-id: 893fe372-8d6c-4c56-b589-45a95eeef95f
 x-ms-routing-request-id: SOUTHINDIA:20180604T130003Z:893fe372-8d6c-4c56-b589-45a95eeef95f
 Cache-Control: no-cache
 Date: Mon, 04 Jun 2018 13:00:03 GMT
-Location: https://management.azure.com/subscriptions//subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/microsoft.recoveryservices/vaults/testVault/backupFabrics/Azure/protectionContainers/iaasvmcontainer;iaasvmcontainerv2;testRG;testVM/protectedItems/vm;testRG;testVM/operationResults/781a0f18-e250-4d73-b059-5e9ffed4069e?api-version=2016-12-01
+Location: https://management.azure.com/subscriptions//subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/microsoft.recoveryservices/vaults/testVault/backupFabrics/Azure/protectionContainers/iaasvmcontainer;iaasvmcontainerv2;testRG;testVM/protectedItems/vm;testRG;testVM/operationResults/781a0f18-e250-4d73-b059-5e9ffed4069e?api-version=2019-05-13
 X-Powered-By: ASP.NET
 ```
 
 Verfolgen Sie anschließend den resultierenden Vorgang mithilfe des location- oder Azure-AsyncOperation-Headers mit einem einfachen *GET*-Befehl nach.
 
 ```http
-GET https://management.azure.com/subscriptions//subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/microsoft.recoveryservices/vaults/testVault/backupFabrics/Azure/protectionContainers/iaasvmcontainer;iaasvmcontainerv2;testRG;testVM/protectedItems/vm;testRG;testVM/operationResults/781a0f18-e250-4d73-b059-5e9ffed4069e?api-version=2016-12-01
+GET https://management.azure.com/subscriptions//subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/microsoft.recoveryservices/vaults/testVault/backupFabrics/Azure/protectionContainers/iaasvmcontainer;iaasvmcontainerv2;testRG;testVM/protectedItems/vm;testRG;testVM/operationResults/781a0f18-e250-4d73-b059-5e9ffed4069e?api-version=2019-05-13
 ```
 
 Wenn der Vorgang abgeschlossen ist, wird „200 (OK)“ mit der ID des resultierenden Wiederherstellungsauftrags im Antworttext zurückgegeben.
@@ -233,15 +206,114 @@ X-Powered-By: ASP.NET
 }
 ```
 
-Da es sich beim Sicherungsauftrag um einen Vorgang mit langer Ausführungsdauer handelt, muss er gemäß der Erläuterung im [Dokument zur Auftragsüberwachung mit der REST-API](backup-azure-arm-userestapi-managejobs.md#tracking-the-job) nachverfolgt werden.
+Da es sich beim Wiederherstellungsauftrag um einen zeitintensiven Vorgang handelt, sollte er entsprechend der Erläuterung im [Dokument zur Auftragsüberwachung mit der REST-API](backup-azure-arm-userestapi-managejobs.md#tracking-the-job) nachverfolgt werden.
 
-Sobald der Vorgang mit langer Ausführungsdauer abgeschlossen ist, sind die Datenträger und die Konfiguration des gesicherten virtuellen Computers (VMConfig.json) im angegebenen Speicherkonto vorhanden.
+### <a name="restore-disks"></a>Wiederherstellen von Datenträgern
 
-## <a name="restore-as-another-virtual-machine"></a>Wiederherstellen als ein anderer virtueller Computer
+Wenn die Erstellung eines virtuellen Computers anhand der Sicherungsdaten angepasst werden muss, können Sie Datenträger einfach in einem ausgewählten Speicherkonto wiederherstellen und – basierend auf diesen Datenträgern – einen virtuellen Computer erstellen, der deren Anforderungen erfüllt. Das Speicherkonto sollte sich in derselben Region wie der Recovery Services-Tresor befinden und sollte nicht zonenredundant sein. Die Datenträger und die Konfiguration des gesicherten virtuellen Computers („vmconfig.json“) werden im angegebenen Speicherkonto gespeichert. Wie [oben](#restore-operations) erläutert, wird der relevante Anforderungstext für Datenträgerwiederherstellung unten mitgeteilt.
 
-[Wählen Sie den Wiederherstellungspunkt aus](#select-recovery-point), und erstellen Sie den Anforderungstext wie unten angegeben, um einen anderen virtuellen Azure-Computer mit den Daten des Wiederherstellungspunkts zu erstellen.
+#### <a name="create-request-body"></a>Erstellen des Anforderungstexts
 
-Der folgende Anforderungstext definiert Eigenschaften, die zum Auslösen der Wiederherstellung eines virtuellen Computers erforderlich sind.
+Zum Auslösen einer Datenträgerwiederherstellung auf der Grundlage einer Azure-VM-Sicherung werden im Folgenden die Komponenten des Anforderungstexts angegeben.
+
+|Name  |type  |BESCHREIBUNG  |
+|---------|---------|---------|
+|properties     | [IaaSVMRestoreRequest](/rest/api/backup/restores/trigger#iaasvmrestorerequest)        |    RestoreRequestResourceProperties     |
+
+Die vollständige Liste mit Definitionen des Anforderungstexts und weitere Einzelheiten finden Sie im [Dokument zur REST-API zum Auslösen der Wiederherstellung](/rest/api/backup/restores/trigger#request-body).
+
+##### <a name="example-request"></a>Beispielanforderung
+
+Der folgende Anforderungstext definiert Eigenschaften, die zum Auslösen einer Datenträgerwiederherstellung erforderlich sind.
+
+```json
+{
+  "properties": {
+    "objectType": "IaasVMRestoreRequest",
+    "recoveryPointId": "20982486783671",
+    "recoveryType": "RestoreDisks",
+    "sourceResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testRG/providers/Microsoft.Compute/virtualMachines/testVM",
+    "storageAccountId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testRG/providers/Microsoft.Storage/storageAccounts/testAccount",
+    "region": "westus",
+    "createNewCloudService": false,
+    "originalStorageAccountOption": false,
+    "encryptionDetails": {
+      "encryptionEnabled": false
+    }
+  }
+}
+```
+
+### <a name="restore-disks-selectively"></a>Selektives Wiederherstellen von Datenträgern
+
+Wenn Sie [Datenträger selektiv sichern](backup-azure-arm-userestapi-backupazurevms.md#excluding-disks-in-azure-vm-backup), wird die aktuelle Liste der gesicherten Datenträger in der [Wiederherstellungspunktübersicht](#select-recovery-point) und der [ausführlichen Antwort](/rest/api/backup/recoverypoints/get) bereitgestellt. Sie können Datenträger auch selektiv wiederherstellen. Weitere Informationen hierzu finden Sie [hier](selective-disk-backup-restore.md#selective-disk-restore). Wenn Sie einen Datenträger aus der Liste der gesicherten Datenträger selektiv wiederherstellen möchten, suchen Sie die LUN des Datenträgers in der Antwort des Wiederherstellungspunkts, und fügen Sie die **restoreDiskLunList**-Eigenschaft dem [Anforderungstext oben](#example-request) hinzu, wie unten gezeigt.
+
+```json
+{
+    "properties": {
+        "objectType": "IaasVMRestoreRequest",
+        "recoveryPointId": "20982486783671",
+        "recoveryType": "RestoreDisks",
+        "sourceResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testRG/providers/Microsoft.Compute/virtualMachines/testVM",
+        "storageAccountId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testRG/providers/Microsoft.Storage/storageAccounts/testAccount",
+        "region": "westus",
+        "createNewCloudService": false,
+        "originalStorageAccountOption": false,
+        "encryptionDetails": {
+          "encryptionEnabled": false
+        },
+        "restoreDiskLunList" : [0]
+    }
+}
+
+```
+
+Sobald Sie die Antwort wie [oben](#responses) erläutert nachverfolgen und der zeitintensive Vorgang abgeschlossen ist, sind die Datenträger und die Konfiguration des gesicherten virtuellen Computers („VMConfig.json“) im angegebenen Speicherkonto zu finden.
+
+### <a name="replace-disks-in-a-backed-up-virtual-machine"></a>Ersetzen von Datenträgern in einem gesicherten virtuellen Computer
+
+Während mit „Datenträger wiederherstellen“ Datenträger aus dem Wiederherstellungspunkt erstellt werden, werden mit „Datenträger ersetzen“ die aktuellen Datenträger des gesicherten virtuellen Computers durch die Datenträger aus dem Wiederherstellungspunkt ersetzt. Wie [oben](#restore-operations) erläutert, wird der relevante Anforderungstext für Datenträgerersetzung unten mitgeteilt.
+
+#### <a name="create-request-body"></a>Erstellen des Anforderungstexts
+
+Zum Auslösen einer Datenträgerersetzung auf der Grundlage einer Azure-VM-Sicherung werden im Folgenden die Komponenten des Anforderungstexts angegeben.
+
+|Name  |Typ  |BESCHREIBUNG  |
+|---------|---------|---------|
+|properties     | [IaaSVMRestoreRequest](/rest/api/backup/restores/trigger#iaasvmrestorerequest)        |    RestoreRequestResourceProperties     |
+
+Die vollständige Liste mit Definitionen des Anforderungstexts und weitere Einzelheiten finden Sie im [Dokument zur REST-API zum Auslösen der Wiederherstellung](/rest/api/backup/restores/trigger#request-body).
+
+#### <a name="example-request"></a>Beispielanforderung
+
+Der folgende Anforderungstext definiert Eigenschaften, die zum Auslösen einer Datenträgerwiederherstellung erforderlich sind.
+
+```json
+{
+    "properties": {
+        "objectType": "IaasVMRestoreRequest",
+        "recoveryPointId": "20982486783671",
+        "recoveryType": "OriginalLocation",
+        "sourceResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testRG/providers/Microsoft.Compute/virtualMachines/testVM",
+        "storageAccountId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testRG/providers/Microsoft.Storage/storageAccounts/testAccount",  
+        "region": "westus",
+        "createNewCloudService": false,
+        "originalStorageAccountOption": false,
+        "affinityGroup": "",
+        "diskEncryptionSetId": null,
+        "subnetId": null,
+        "targetDomainNameId": null,
+        "targetResourceGroupId": null,
+        "targetVirtualMachineId": null,
+        "virtualNetworkId": null
+     }
+}
+
+```
+
+### <a name="restore-as-another-virtual-machine"></a>Wiederherstellen als ein anderer virtueller Computer
+
+Wie [oben](#restore-operations) erläutert, definiert der folgende Anforderungstext Eigenschaften, die zum Auslösen der Wiederherstellung eines virtuellen Computers erforderlich sind.
 
 ```json
 {
@@ -253,7 +325,7 @@ Der folgende Anforderungstext definiert Eigenschaften, die zum Auslösen der Wie
         "containerName": "IaasVMContainer;iaasvmcontainerv2;testRG;testVM",
         "protectedItemName": "VM;iaasvmcontainerv2;testRG;testVM",
         "recoveryPointId": "348916168024334",
-        "api-version": "2016-12-01",
+        "api-version": "2019-05-13",
       "parameters": {
         "properties": {
           "objectType":  "IaasVMRestoreRequest",
@@ -277,7 +349,7 @@ Der folgende Anforderungstext definiert Eigenschaften, die zum Auslösen der Wie
 }
 ```
 
-Die Antwort muss gemäß der Erläuterung im obigen Abschnitt zum [Wiederherstellen von Datenträgern](#response) verarbeitet werden.
+Die Antwort muss gemäß der Erläuterung im obigen Abschnitt zum [Wiederherstellen von Datenträgern](#responses) verarbeitet werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

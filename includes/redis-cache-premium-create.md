@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: wesmc
 ms.openlocfilehash: 2627554647c6c20cbdedfec53c1028b3edfa9c9c
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
+ms.lasthandoff: 03/28/2020
 ms.locfileid: "67177903"
 ---
 Melden Sie sich zum Erstellen eines Premium-Caches zunächst beim [Azure-Portal](https://portal.azure.com) an, und klicken Sie dann auf **Ressource erstellen** > **Datenbanken** > **Azure Cache for Redis**.

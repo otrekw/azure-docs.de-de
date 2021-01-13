@@ -4,21 +4,21 @@ ms.service: data-factory
 ms.topic: include
 ms.date: 11/19/2018
 ms.author: jingwang
-ms.openlocfilehash: 0c381cc6e2e2957c946207491c666667821184ad
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: e600af10d2393bcd59317b4b918b7458cc63df31
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67178557"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91571913"
 ---
-| Category (Kategorie) | Datenspeicher | Als Quelle unterstützt | Als Senke unterstützt |
+| Category | Datenspeicher | Als Quelle unterstützt | Als Senke unterstützt |
 |:--- |:--- |:--- |:--- |
 | **Azure** |[Azure Blob Storage](../articles/data-factory/v1/data-factory-azure-blob-connector.md) |✓ |✓ |
 | &nbsp; |[Azure Cosmos DB (SQL-API)](../articles/data-factory/v1/data-factory-azure-documentdb-connector.md) |✓ |✓ |
 | &nbsp; |[Azure Data Lake Storage Gen1](../articles/data-factory/v1/data-factory-azure-datalake-connector.md) |✓ |✓ |
 | &nbsp; |[Azure SQL-Datenbank](../articles/data-factory/v1/data-factory-azure-sql-connector.md) |✓ |✓ |
-| &nbsp; |[Azure SQL Data Warehouse](../articles/data-factory/v1/data-factory-azure-sql-data-warehouse-connector.md) |✓ |✓ |
-| &nbsp; |[Azure Search-Index](../articles/data-factory/v1/data-factory-azure-search-connector.md) | |✓ |
+| &nbsp; |[Azure Synapse Analytics](../articles/data-factory/v1/data-factory-azure-sql-data-warehouse-connector.md) |✓ |✓ |
+| &nbsp; |[Azure Cognitive Search-Index](../articles/data-factory/v1/data-factory-azure-search-connector.md) | |✓ |
 | &nbsp; |[Azure Table Storage](../articles/data-factory/v1/data-factory-azure-table-connector.md) |✓ |✓ |
 | **Datenbanken** |[Amazon Redshift](../articles/data-factory/v1/data-factory-amazon-redshift-connector.md) |✓ | |
 | &nbsp; |[DB2](../articles/data-factory/v1/data-factory-onprem-db2-connector.md)* |✓ | |
@@ -32,7 +32,7 @@ ms.locfileid: "67178557"
 | &nbsp; |[Teradata](../articles/data-factory/v1/data-factory-onprem-teradata-connector.md)* |✓ | |
 | **NoSQL** |[Cassandra](../articles/data-factory/v1/data-factory-onprem-cassandra-connector.md)* |✓ | |
 | &nbsp; |[MongoDB](../articles/data-factory/v1/data-factory-on-premises-mongodb-connector.md)* |✓ | |
-| **Datei** |[Amazon S3](../articles/data-factory/v1/data-factory-amazon-simple-storage-service-connector.md) |✓ | |
+| **File** |[Amazon S3](../articles/data-factory/v1/data-factory-amazon-simple-storage-service-connector.md) |✓ | |
 | &nbsp; |[Dateisystem](../articles/data-factory/v1/data-factory-onprem-file-system-connector.md)* |✓ |✓ |
 | &nbsp; |[FTP](../articles/data-factory/v1/data-factory-ftp-connector.md) |✓ | |
 | &nbsp; |[HDFS](../articles/data-factory/v1/data-factory-hdfs-connector.md)* |✓ | |

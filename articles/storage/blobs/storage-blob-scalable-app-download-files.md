@@ -1,5 +1,5 @@
 ---
-title: Herunterladen großer Mengen von Zufallsdaten von Azure Storage | Microsoft Docs
+title: Herunterladen großer Mengen von Zufallsdaten von Azure Storage | Microsoft-Dokumentation
 description: Hier erfahren Sie, wie Sie das Azure-SDK verwenden, um große Mengen von Zufallsdaten aus einem Azure-Speicherkonto herunterzuladen.
 author: roygara
 ms.service: storage
@@ -7,12 +7,13 @@ ms.topic: tutorial
 ms.date: 02/20/2018
 ms.author: rogarana
 ms.subservice: blobs
-ms.openlocfilehash: 8d270485cef9fb6859de056bc364a36c054c0121
-ms.sourcegitcommit: 800f961318021ce920ecd423ff427e69cbe43a54
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 466a61fd27fd9eeb32d004af1ab6bb43503e6233
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68699013"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89020727"
 ---
 # <a name="download-large-amounts-of-random-data-from-azure-storage"></a>Herunterladen großer Mengen von Zufallsdaten von Azure Storage
 

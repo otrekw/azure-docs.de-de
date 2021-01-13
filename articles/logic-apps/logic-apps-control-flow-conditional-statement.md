@@ -1,20 +1,17 @@
 ---
-title: Hinzufügen bedingter Anweisungen zu Workflows – Azure Logic Apps | Microsoft-Dokumentation
+title: Hinzufügen von bedingten Anweisungen zu Workflows
 description: Hier erfahren Sie, wie Sie Bedingungen erstellen, die Aktionen in Workflows in Azure Logic Apps steuern.
 services: logic-apps
-ms.service: logic-apps
 ms.suite: integration
-author: ecfan
-ms.author: estfan
-ms.reviewer: klam, LADocs
+ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/09/2018
-ms.openlocfilehash: 9ee484971e217b0ca4dd7ad855e9e6dc3313e5d4
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 19f42270e37c42cf56bbde04f73c01027a56ff63
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60684757"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89657380"
 ---
 # <a name="create-conditional-statements-that-control-workflow-actions-in-azure-logic-apps"></a>Erstellen bedingter Anweisungen zum Steuern von Workflowaktionen in Azure Logic Apps
 
@@ -31,7 +28,7 @@ Angenommen Sie verfügen über eine Logik-App, die zu viele E-Mails sendet, wenn
 
 * Grundlegende Kenntnisse über die [Erstellung von Logik-Apps](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
-* Um dem Beispiel in diesem Artikel zu folgen, [erstellen Sie diese Beispiel-Logik-App](../logic-apps/quickstart-create-first-logic-app-workflow.md) mit einem Outlook.com- oder Office 365 Outlook-Konto.
+* Um dem Beispiel in diesem Artikel zu folgen, [erstellen Sie diese Beispiel-Logik-App](../logic-apps/quickstart-create-first-logic-app-workflow.md) mit einem Outlook.com- bzw. einem Geschäfts-, Schul- oder Unikonto.
 
 ## <a name="add-condition"></a>Bedingung hinzufügen
 
@@ -43,7 +40,7 @@ Angenommen Sie verfügen über eine Logik-App, die zu viele E-Mails sendet, wenn
 
    ![Hinzufügen einer Aktion zwischen Schritten](./media/logic-apps-control-flow-conditional-statement/add-action.png)
 
-   Wenn Sie eine Bedingung am Ende Ihres Workflows hinzufügen möchten, wählen Sie in Ihrer Logik-App unten die Option **+ Neuer Schritt** > **Aktion hinzufügen** aus.
+   Wenn Sie eine Bedingung am Ende Ihres Workflows hinzufügen möchten, wählen Sie unten in Ihrer Logik-App die Option **+ Neuer Schritt** > **Aktion hinzufügen** aus.
 
 1. Geben Sie im Suchfeld den Begriff „Bedingung“ als Filter ein. Wählen Sie diese Aktion aus: **Bedingung – steuern**
 
@@ -113,7 +110,7 @@ So sieht die allgemeine Codedefinition hinter einer bedingten Anweisung aus:
 
 ## <a name="get-support"></a>Support
 
-* Sollten Sie Fragen haben, besuchen Sie das [Azure Logic Apps-Forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
+* Weitere Informationen finden Sie auf der [Frageseite von Microsoft Q&A (Fragen und Antworten) für Azure Logic Apps](/answers/topics/azure-logic-apps.html).
 * Wenn Sie Featurevorschläge übermitteln oder darüber abstimmen möchten, besuchen Sie die [Website für Azure Logic Apps-Benutzerfeedback](https://aka.ms/logicapps-wish).
 
 ## <a name="next-steps"></a>Nächste Schritte

@@ -1,19 +1,14 @@
 ---
-title: Allgemeine Fragen zur VMware-Notfallwiederherstellung in Azure mit Azure Site Recovery | Microsoft-Dokumentation
+title: Allgemeine Fragen zu VMware-Notfallwiederherstellung mit Azure Site Recovery
 description: Hier erhalten Sie Antworten auf allgemeine Fragen zur Notfallwiederherstellung von lokalen virtuellen VMware-Computern in Azure mithilfe von Azure Site Recovery.
-author: rayne-wiselman
-manager: carmonm
-ms.service: site-recovery
-services: site-recovery
-ms.date: 06/27/2019
+ms.date: 11/14/2019
 ms.topic: conceptual
-ms.author: raynew
-ms.openlocfilehash: c1897b73164b05dfd881729147e6d082be547530
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: a272486eea111ab8c8e489556986f12f382e3f65
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71002276"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97587791"
 ---
 # <a name="common-questions-about-vmware-to-azure-replication"></a>Allgemeine Fragen zur VMware-zu-Azure-Replikation
 
@@ -70,7 +65,7 @@ Site Recovery benötigt Zugriff auf VMware-Server, um folgende Aufgaben durchzuf
 
 ### <a name="is-replication-data-sent-to-site-recovery"></a>Werden Replikationsdaten an Site Recovery gesendet?
 
-Nein. Site Recovery fängt replizierte Daten nicht ab und besitzt keine Informationen dazu, was auf Ihren virtuellen Computern ausgeführt wird. Replikationsdaten werden zwischen VMware-Hypervisoren und Azure Storage ausgetauscht. Site Recovery hat keine Möglichkeit, diese Daten abzufangen. Nur die Metadaten, die zum Orchestrieren von Replikation und Failover erforderlich sind, werden an den Site Recovery-Dienst gesendet.  
+Nein. Site Recovery fängt replizierte Daten nicht ab und besitzt keine Informationen dazu, was auf Ihren virtuellen Computern ausgeführt wird. Replikationsdaten werden zwischen VMware-Hypervisoren und Azure Storage ausgetauscht. Site Recovery hat keine Möglichkeit, diese Daten abzufangen. Nur die Metadaten, die zum Orchestrieren von Replikation und Failover erforderlich sind, werden an den Site Recovery-Dienst gesendet.
 
 Site Recovery ist für ISO 27001:2013 und 27018, HIPAA und DPA zertifiziert. Die Bewertungen für SOC2 und FedRAMP JAB werden gerade durchgeführt.
 
@@ -80,7 +75,7 @@ Site Recovery ist für ISO 27001:2013 und 27018, HIPAA und DPA zertifiziert. Die
 
 Verwenden Sie den [Preisrechner](https://aka.ms/asr_pricing_calculator), um die Kosten für die Verwendung von Site Recovery zu schätzen.
 
-Für eine detaillierte Kostenschätzung können Sie das Bereitstellungsplanertool für [VMware](https://aka.ms/siterecovery_deployment_planner) ausführen und den [Kostenschätzungsbericht](https://aka.ms/asr_DP_costreport) verwenden.
+Für eine detaillierte Kostenschätzung können Sie das Bereitstellungsplanertool für [VMware](./site-recovery-deployment-planner.md) ausführen und den [Kostenschätzungsbericht](./site-recovery-vmware-deployment-planner-cost-estimation.md) verwenden.
 
 ### <a name="is-there-any-difference-in-cost-between-replicating-to-storage-or-directly-to-managed-disks"></a>Besteht ein Unterschied zwischen der Replikation im Speicher und direkt in verwalteten Datenträgern?
 
@@ -101,8 +96,8 @@ Die Installationsprogramme befinden sich auf dem Konfigurationsserver im Ordner 
 Installieren Sie den Dienst auf jedem virtuellen Computer, den Sie replizieren möchten, mit einer der folgenden Methoden:
 
 - [Pushinstallation](vmware-physical-mobility-service-overview.md#push-installation)
-- [Manuelle Installation](vmware-physical-mobility-service-overview.md#install-mobility-agent-through-ui) über die Benutzeroberfläche oder PowerShell.
-- Bereitstellung mithilfe eines Bereitstellungstools wie z.B. [System Center Configuration Manager](vmware-azure-mobility-install-configuration-mgr.md)
+- [Manuelle Installation](vmware-physical-mobility-service-overview.md#install-the-mobility-service-using-ui) über die Benutzeroberfläche oder PowerShell.
+- Bereitstellung mithilfe eines Bereitstellungstools wie z. B. [Configuration Manager](vmware-azure-mobility-install-configuration-mgr.md)
 
 ## <a name="managed-disks"></a>Verwaltete Datenträger
 
@@ -119,7 +114,7 @@ Site Recovery repliziert lokale virtuelle VMware-Computer und physische Server i
 
 Nein. Seit März 2019 können Sie im Azure-Portal die Replikation nur in verwalteten Azure-Datenträgern durchführen.
 
-Die Replikation von neuen virtuellen Computern in einem Speicherkonto ist nur über PowerShell oder die REST-API (Version 2018-01-10 oder 2016-08-10) verfügbar.
+Die Replikation von neuen virtuellen Computern in einem Speicherkonto ist nur über PowerShell ([Version 1.4.5 des Az.RecoveryServices-Moduls](https://www.powershellgallery.com/packages/Az.RecoveryServices/1.4.5)) oder die REST-API (Version 2018-01-10 oder 2016-08-10) verfügbar. [Hier](./vmware-azure-disaster-recovery-powershell.md) erfahren Sie, wie Sie die Replikation mithilfe der PowerShell-Befehle einrichten.
 
 ### <a name="what-are-the-benefits-of-replicating-to-managed-disks"></a>Welche Vorteile hat die Replikation auf verwalteten Datenträgern?
 
@@ -127,7 +122,7 @@ Die Replikation von neuen virtuellen Computern in einem Speicherkonto ist nur ü
 
 ### <a name="can-i-change-the-managed-disk-type-after-a-machine-is-protected"></a>Kann ich den Typ der verwalteten Datenträger ändern, sobald der Computer geschützt wird?
 
-Ja, für laufende Replikationen können Sie mühelos [den Typ des verwalteten Datenträgers ändern](https://docs.microsoft.com/azure/virtual-machines/windows/convert-disk-storage). Bevor Sie den Typ ändern, stellen Sie sicher, dass keine SAS-URL auf dem verwalteten Datenträger generiert wird:
+Ja, für laufende Replikationen können Sie mühelos [den Typ des verwalteten Datenträgers ändern](../virtual-machines/windows/convert-disk-storage.md). Bevor Sie den Typ ändern, stellen Sie sicher, dass keine SAS-URL auf dem verwalteten Datenträger generiert wird:
 
 1. Wechseln Sie zu der Ressource **Verwalteter Datenträger** im Azure-Portal, und überprüfen Sie, ob auf dem Blatt **Übersicht** ein SAS-URL-Banner für Sie angezeigt wird.
 1. Wenn das Banner vorhanden ist, wählen Sie es aus, um den fortlaufenden Export abzubrechen.
@@ -151,6 +146,10 @@ Beim Replizieren von VMware-VMs zu Azure ist die Replikation fortlaufend.
 ### <a name="can-i-extend-replication"></a>Kann ich die Replikation erweitern?
 
 Eine erweiterte oder verkettete Replikation wird nicht unterstützt. Fordern Sie dieses Feature im [Feedbackforum](https://feedback.azure.com/forums/256299-site-recovery/suggestions/6097959).
+
+### <a name="how-can-i-track-progress-of-initial-replicationsynchronization"></a>Wie kann ich den Fortschritt der Erstreplikation/-synchronisierung verfolgen?
+
+Diese Funktion ist seit kurzem in den Site Recovery-Diensten enthalten. Aktualisieren Sie Ihre Site Recovery-Infrastruktur (Konfigurationsserver, horizontal skalierte Prozessserver) und den Mobilitäts-Agent auf Version 9.36 oder höher, um genaue Details zu erhalten. [Hier](vmware-azure-enable-replication.md#monitor-initial-replication) erfahren Sie mehr darüber, wie Sie den Fortschritt verfolgen.
 
 ### <a name="can-i-do-an-offline-initial-replication"></a>Kann ich eine erste Offlinereplikation durchführen?
 
@@ -177,21 +176,25 @@ Ja, Sie können einer vorhandenen Replikationsgruppe neue VMs hinzufügen, wenn 
 
 ### <a name="can-i-modify-vms-that-are-replicating-by-adding-or-resizing-disks"></a>Kann ich replizierende VMs durch Hinzufügen oder Ändern der Datenträgergröße ändern?
 
-Für die VMware-Replikation in Azure können Sie die Datenträgergröße ändern. Wenn Sie neue Datenträger hinzufügen möchten, müssen Sie den Datenträger hinzufügen und den Schutz für die VM erneut aktivieren.
+Für die VMware-Replikation in Azure können Sie die Datenträgergröße der Quell-VMs ändern. Wenn Sie neue Datenträger hinzufügen möchten, müssen Sie den Datenträger hinzufügen und den Schutz für die VM erneut aktivieren.
 
 ### <a name="can-i-migrate-on-premises-machines-to-a-new-vcenter-server-without-impacting-ongoing-replication"></a>Kann ich lokale Computer zu einem neuen vCenter-Server migrieren, ohne die laufende Replikation zu beeinträchtigen?
 
-Nein. Eine Änderung von VMware Vcenter oder der Migration beeinträchtigt die laufende Replikation. Richten Sie Site Recovery mit dem neuen vCenter Server ein, und aktivieren Sie die Replikation für Computer erneut.
+Informationen zum Migrieren von Computern zu einem neuen vCenter-Server finden Sie in unserem [Leitfaden](vmware-azure-manage-vcenter.md#migrate-all-vms-to-a-new-server).
 
 ### <a name="can-i-replicate-to-a-cache-or-target-storage-account-that-has-a-virtual-network-with-azure-firewalls-configured-on-it"></a>Kann ich die Replikation in einem Cache oder einem Zielspeicherkonto durchführen, für den bzw. das ein virtuelles Netzwerk (mit Azure Firewalls) konfiguriert ist?
 
 Nein, Site Recovery unterstützt keine Replikation zu Azure Storage über virtuelle Netzwerke.
 
+### <a name="what-is-the-frequency-of-generation-of-crash-consistent-recovery-points"></a>Wie häufig wird ein absturzkonsistenter Wiederherstellungspunkt generiert?
+
+Site Recovery generiert alle 5 Minuten einen absturzkonsistenten Wiederherstellungspunkt.
+
 ## <a name="component-upgrade"></a>Upgrade von Komponenten
 
 ### <a name="my-version-of-the-mobility-services-agent-or-configuration-server-is-old-and-my-upgrade-failed-what-do-i-do"></a>Meine Version des Mobility Services-Agent oder des Konfigurationsservers ist alt, und beim Upgrade sind Fehler aufgetreten. Wie gehe ich vor?
 
-Für Site Recovery gilt das Supportmodell N-4. [Hier](https://aka.ms/asr_support_statement) finden Sie Informationen zum Upgrade von sehr alten Versionen.
+Für Site Recovery gilt das Supportmodell N-4. [Hier](./service-updates-how-to.md#support-statement-for-azure-site-recovery) finden Sie Informationen zum Upgrade von sehr alten Versionen.
 
 ### <a name="where-can-i-find-the-release-notes-and-update-rollups-for-azure-site-recovery"></a>Wo finde ich die Versionshinweise und Updaterollups für Azure Site Recovery?
 
@@ -199,11 +202,11 @@ Für Site Recovery gilt das Supportmodell N-4. [Hier](https://aka.ms/asr_support
 
 ### <a name="where-can-i-find-upgrade-information-for-disaster-recovery-to-azure"></a>Wo finde ich Informationen zum Upgrade für die Notfallwiederherstellung in Azure?
 
-Informationen zum Durchführen von Upgrades finden Sie [hier](https://aka.ms/asr_vmware_upgrades).
+Informationen zum Durchführen von Upgrades finden Sie [hier](./service-updates-how-to.md#vmware-vmphysical-server-disaster-recovery-to-azure).
 
 ## <a name="do-i-need-to-reboot-source-machines-for-each-upgrade"></a>Muss ich die Quellcomputer für jedes Upgrade neu starten?
 
-Ein Neustart wird zwar empfohlen, ist jedoch nicht für jedes Upgrade erforderlich. [Weitere Informationen](https://aka.ms/asr_vmware_upgrades)
+Ein Neustart wird zwar empfohlen, ist jedoch nicht für jedes Upgrade erforderlich. [Weitere Informationen](./service-updates-how-to.md#reboot-after-mobility-service-upgrade)
 
 ## <a name="configuration-server"></a>Konfigurationsserver
 
@@ -247,7 +250,7 @@ Dies ist zwar möglich, aber die Azure-VM, die den Konfigurationsserver ausführ
 
 - Die neuesten Updateinformationen finden Sie auf der [Seite mit den Azure-Updates](https://azure.microsoft.com/updates/?product=site-recovery).
 - Sie können die neueste Version über das Portal herunterladen. Alternativ können Sie die neueste Version des Konfigurationsservers direkt aus dem [Microsoft Download Center](https://aka.ms/asrconfigurationserver) herunterladen.
-- Wenn zwischen Ihrer Version und der aktuellen Version mehr als vier Versionen liegen, nutzen Sie den [Supporthinweis](https://aka.ms/asr_support_statement) als Upgradeanleitung.
+- Wenn zwischen Ihrer Version und der aktuellen Version mehr als vier Versionen liegen, nutzen Sie den [Supporthinweis](./service-updates-how-to.md#support-statement-for-azure-site-recovery) als Upgradeanleitung.
 
 ### <a name="should-i-back-up-the-configuration-server"></a>Sollte ich den Konfigurationsserver sichern?
 
@@ -291,7 +294,7 @@ Wählen Sie im Recovery Services-Tresor unter **Site Recovery-Infrastruktur** > 
 
 ### <a name="can-a-single-configuration-server-be-used-to-protect-multiple-vcenter-instances"></a>Kann ein einzelner Konfigurationsserver zum Schutz mehrerer vCenter-Instanzen verwendet werden?
 
-Ja, ein einzelner Konfigurationsserver kann virtuelle Computer über mehrere vCenter hinweg schützen.  Es gibt keine Begrenzung, wie viele vCenter-Instanzen dem Konfigurationsserver hinzugefügt werden können, jedoch gelten die Begrenzungen für die Anzahl der virtuellen Computer, die ein einzelner Konfigurationsserver schützen kann.
+Ja, ein einzelner Konfigurationsserver kann virtuelle Computer über mehrere vCenter-Instanzen hinweg schützen.  Es gibt keine Begrenzung, wie viele vCenter-Instanzen dem Konfigurationsserver hinzugefügt werden können, jedoch gelten die Begrenzungen für die Anzahl der virtuellen Computer, die ein einzelner Konfigurationsserver schützen kann.
 
 ### <a name="can-a-single-configuration-server-protect-multiple-clusters-within-vcenter"></a>Kann ein einzelner Konfigurationsserver mehrere Cluster in vCenter schützen?
 
@@ -306,6 +309,10 @@ Updates in den Versionen 9.24 und höher zeigen jetzt die [Integrität des Proze
 ### <a name="how-do-i-update-the-process-server-to-version-924-or-later-for-accurate-health-information"></a>Wie aktualisiere ich den Prozessserver auf Version 9.24 oder höher, um genaue Integritätsinformationen zu erhalten?
 
 Ab [Version 9.24](service-updates-how-to.md#links-to-currently-supported-update-rollups) wurden weitere Warnungen hinzugefügt, um die Integrität des Prozessservers anzuzeigen. [Aktualisieren Sie Ihre Site Recovery-Komponenten auf Version 9.24 oder neuer,](service-updates-how-to.md#links-to-currently-supported-update-rollups) damit alle Warnungen generiert werden.
+
+### <a name="how-can-i-ensure-high-availability-of-the-process-server"></a>Wie kann ich die Hochverfügbarkeit des Prozessservers sicherstellen?
+
+Da das Design bietet durch die Möglichkeit, mehrere Prozessserver zu konfigurieren, die Flexibilität, geschützte Computer von einem fehlerhaften Prozessserver auf einen funktionierenden Prozessserver zu verschieben. Das Verschieben eines Computers von einem Prozessserver auf einen anderen muss explizit/manuell über die hier beschriebenen Schritte initiiert werden: [Verschieben von VMS zwischen Prozessservern](vmware-azure-manage-process-server.md#move-vms-to-balance-the-process-server-load).
 
 ## <a name="failover-and-failback"></a>Failover und Failback
 
@@ -345,9 +352,6 @@ Ja. Wenn Sie ein Failover zu Azure ausgeführt haben, können Sie ein Failback z
 
 Wenn Sie ein Failback von Azure ausführen, werden Daten aus Azure auf Ihren lokalen virtuellen Computer zurückkopiert und privater Zugriff ist erforderlich.
 
-### <a name="can-i-resize-the-azure-vm-after-failover"></a>Kann ich die Größe der Azure-VM nach einem Failover ändern?
-
-Nein, Sie können die Größe oder den Typ der Ziel-VM nach dem Failover nicht ändern.
 
 ## <a name="automation-and-scripting"></a>Automatisierung und Skripterstellung
 

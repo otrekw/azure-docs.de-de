@@ -1,25 +1,26 @@
 ---
-title: Aktivität „Filter“ in Azure Data Factory | Microsoft-Dokumentation
+title: Aktivität „Filter“ in Azure Data Factory
 description: Die Aktivität „Filter“ filtert die Eingaben.
 services: data-factory
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 05/04/2018
-ms.openlocfilehash: c0f5d3264d953498af61c6e8d36dadee7dd61931
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 2026bdd1898df460bfed2ae9d5544f90c532308f
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70915511"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97507437"
 ---
 # <a name="filter-activity-in-azure-data-factory"></a>Aktivität „Filter“ in Azure Data Factory
 Sie können eine Filter-Aktivität in einer Pipeline verwenden, um einen Filterausdruck auf ein Eingabearray anzuwenden. 
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 ## <a name="syntax"></a>Syntax
 
@@ -38,8 +39,8 @@ Sie können eine Filter-Aktivität in einer Pipeline verwenden, um einen Filtera
 
 Eigenschaft | BESCHREIBUNG | Zulässige Werte | Erforderlich
 -------- | ----------- | -------------- | --------
-name | Der Name der `Filter`-Aktivität. | Zeichenfolge | Ja
-type | Muss auf **filter** festgelegt sein. | Zeichenfolge | Ja
+name | Der Name der `Filter`-Aktivität. | String | Ja
+type | Muss auf **filter** festgelegt sein. | String | Ja
 condition | Die Bedingung zum Filtern der Eingaben. | Ausdruck | Ja
 items | Das Eingabearray, auf das der Filter angewendet werden soll. | Ausdruck | Ja
 

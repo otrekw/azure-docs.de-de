@@ -1,0 +1,50 @@
+- name: Dokumentation zu Azure Resource Mover
+  href: index.yml
+- name: Übersicht
+  items:
+    - name: Informationen zu Azure Resource Mover
+      href: overview.md
+    - name: Auswählen eines Tools zum Verschieben von Ressourcen
+      href: select-move-tool.md
+    - name: Häufig gestellte Fragen
+      href: common-questions.md
+- name: Tutorials
+  items:
+    - name: Verschieben virtueller Azure-Computer in eine andere Region
+      href: tutorial-move-region-virtual-machines.md
+    - name: Verschieben von SQL-Ressourcen in eine andere Region
+      href: tutorial-move-region-sql.md
+- name: Konzepte
+  items:
+    - name: Übersicht über die Verschiebung
+      href: about-move-process.md
+    - name: 'Unterstützung: Verschieben von Azure-VMs zwischen Regionen'
+      href: support-matrix-move-region-azure-vm.md
+    - name: "Unterstützung: Verschieben von Azure\_SQL zwischen Regionen"
+      href: support-matrix-move-region-sql.md
+- name: Anleitungen
+  items:
+    - name: Regionsübergreifendes Verschieben
+      items:
+        - name: Regionsübergreifendes Verschieben mit PowerShell
+          href: move-region-powershell.md
+        - name: Verschieben von virtuellen Azure-Computern in Verfügbarkeitszonen
+          href: move-region-availability-zone.md
+        - name: Regionsübergreifendes Verschieben (von Ressourcengruppe)
+          href: move-region-within-resource-group.md
+    - name: Verwalten von Regionsverschiebungen
+      items:
+        - name: Ändern der Zieleinstellungen
+          href: modify-target-settings.md
+        - name: Entfernen von Ressourcen aus einer Sammlung für die Verschiebung
+          href: remove-move-resources.md
+        - name: Verwalten von während der Verschiebung erstellten Ressourcen
+          href: manage-resources-created-move-process.md
+- name: Ressourcen
+  items:
+    - name: Migration im Cloud Adoption Framework
+      href: /azure/cloud-adoption-framework/migrate/
+    - name: Resource Manager-Vorlage
+      href: /azure/templates/microsoft.migrate/allversions
+    - name: Azure-Roadmap
+      href: 'https://azure.microsoft.com/roadmap/'

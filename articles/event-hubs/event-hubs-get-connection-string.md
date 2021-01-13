@@ -1,21 +1,14 @@
 ---
 title: Abrufen einer Verbindungszeichenfolge – Azure Event Hubs | Microsoft-Dokumentation
 description: Dieser Artikel enthält Anweisungen zum Abrufen einer Verbindungszeichenfolge, mit der Clients eine Verbindung mit Azure Event Hubs herstellen können.
-services: event-hubs
-documentationcenter: na
-author: spelluru
-manager: timlt
-ms.service: event-hubs
 ms.topic: article
-ms.custom: seodec18
-ms.date: 02/19/2019
-ms.author: spelluru
-ms.openlocfilehash: edd197fb6d578df064c67a422767e3e70a0c8142
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 06/23/2020
+ms.openlocfilehash: 5ae6c66ddbbf4b9946e7037e1a7723043bf60507
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66158922"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "86537172"
 ---
 # <a name="get-an-event-hubs-connection-string"></a>Abrufen einer Event Hubs-Verbindungszeichenfolge
 
@@ -55,7 +48,7 @@ In diesem Artikel werden verschiedene Möglichkeiten zum Abrufen der Verbindungs
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Mit dem Cmdlet [Get-AzEventHubNamespaceKey](/powershell/module/az.eventhub/get-azeventhubkey) können Sie die Verbindungszeichenfolge für den angegebenen Richtlinien- oder Regelnamen wie unten gezeigt abrufen:
+Mit dem Cmdlet [Get-AzEventHubKey](/powershell/module/az.eventhub/get-azeventhubkey) können Sie die Verbindungszeichenfolge für den angegebenen Richtlinien- oder Regelnamen wie unten gezeigt abrufen:
 
 ```azurepowershell-interactive
 Get-AzEventHubKey -ResourceGroupName dummyresourcegroup -NamespaceName dummynamespace -AuthorizationRuleName RootManageSharedAccessKey
@@ -68,11 +61,17 @@ Die Verbindungszeichenfolge für den Namespace können Sie wie folgt abrufen:
 az eventhubs namespace authorization-rule keys list --resource-group dummyresourcegroup --namespace-name dummynamespace --name RootManageSharedAccessKey
 ```
 
+Sie können auch Folgendes verwenden, um die Verbindungszeichenfolge für eine EventHub-Entität abzurufen:
+
+```azurecli-interactive
+az eventhubs eventhub authorization-rule keys list --resource-group dummyresourcegroup --namespace-name dummynamespace --eventhub-name dummyeventhub --name RootManageSharedAccessKey
+```
+
 Weitere Informationen zu Azure-CLI-Befehlen für Event Hubs finden Sie unter [Azure-Befehlszeilenschnittstelle für Event Hubs](/cli/azure/eventhubs).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Weitere Informationen zu Event Hubs finden Sie unter den folgenden Links:
 
-* [Übersicht über Event Hubs](event-hubs-what-is-event-hubs.md)
+* [Übersicht über Event Hubs](./event-hubs-about.md)
 * [Erstellen eines Event Hubs](event-hubs-create.md)

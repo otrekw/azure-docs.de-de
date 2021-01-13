@@ -1,29 +1,28 @@
 ---
-title: Kopieren von Daten aus Amazon Redshift mithilfe von Azure Data Factory | Microsoft-Dokumentation
+title: Kopieren von Daten aus Amazon Redshift
 description: Hier erfahren Sie, wie Sie mithilfe von Azure Data Factory Daten aus Amazon Redshift in unterstützte Senkendatenspeicher kopieren.
 services: data-factory
-documentationcenter: ''
+ms.author: jingwang
 author: linda33wj
-manager: craigg
+manager: shwang
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 09/04/2018
-ms.author: jingwang
-ms.openlocfilehash: c4f04bf8e1003e33a98c44e6776f8cf887a4645b
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.date: 12/09/2020
+ms.openlocfilehash: b17c567b2e83bef3c37c8f1272091021a1943b15
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71090554"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97008321"
 ---
 # <a name="copy-data-from-amazon-redshift-using-azure-data-factory"></a>Kopieren von Daten aus Amazon Redshift mithilfe von Azure Data Factory
-> [!div class="op_single_selector" title1="Wählen Sie die von Ihren verwendete Version des Data Factory-Diensts aus:"]
+> [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version des Data Factory-Diensts aus:"]
 > * [Version 1](v1/data-factory-amazon-redshift-connector.md)
 > * [Aktuelle Version](connector-amazon-redshift.md)
 
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 In diesem Artikel wird beschrieben, wie Sie die Kopieraktivität in Azure Data Factory verwenden, um Daten aus Amazon Redshift zu kopieren. Er baut auf dem Artikel zur [Übersicht über die Kopieraktivität](copy-activity-overview.md) auf, der eine allgemeine Übersicht über die Kopieraktivität enthält.
 
@@ -102,7 +101,7 @@ Zum Kopieren von Daten aus Amazon Redshift werden die folgenden Eigenschaften un
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft des Datasets muss auf folgenden Wert festgelegt werden: **AmazonRedshiftTable** | Ja |
 | schema | Name des Schemas. |Nein (wenn „query“ in der Aktivitätsquelle angegeben ist)  |
-| table | Name der Tabelle. |Nein (wenn „query“ in der Aktivitätsquelle angegeben ist)  |
+| table | Der Name der Tabelle. |Nein (wenn „query“ in der Aktivitätsquelle angegeben ist)  |
 | tableName | Name der Tabelle mit Schema. Diese Eigenschaft wird aus Gründen der Abwärtskompatibilität weiterhin unterstützt. Verwenden Sie `schema` und `table` für eine neue Workload. | Nein (wenn „query“ in der Aktivitätsquelle angegeben ist) |
 
 **Beispiel**
@@ -136,7 +135,7 @@ Legen Sie zum Kopieren von Daten aus Amazon Redshift den Quelltyp in der Kopiera
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft der Quelle der Kopieraktivität muss auf Folgendes festgelegt werden: **AmazonRedshiftSource** | Ja |
-| query |Verwendet die benutzerdefinierte Abfrage zum Lesen von Daten. Beispiel: select * from MyTable. |Nein (wenn „tableName“ im Dataset angegeben ist) |
+| Abfrage |Verwendet die benutzerdefinierte Abfrage zum Lesen von Daten. Beispiel: select * from MyTable. |Nein (wenn „tableName“ im Dataset angegeben ist) |
 | redshiftUnloadSettings | Eigenschaftengruppe bei Verwendung von Amazon Redshift UNLOAD. | Nein |
 | s3LinkedServiceName | Bezieht sich auf eine Amazon S3-Instanz, die als Zwischenspeicher verwendet wird, indem der Name eines verknüpften Diensts des Typs „AmazonS3“ angegeben wird. | Ja, wenn UNLOAD verwendet wird |
 | bucketName | Gibt den S3-Bucket zum Speichern der vorläufigen Daten an. Bei fehlender Angabe wird der Data Factory-Dienst automatisch generiert.  | Ja, wenn UNLOAD verwendet wird |
@@ -163,11 +162,11 @@ Erfahren Sie mehr darüber, wie Sie mithilfe von UNLOAD effizient Daten aus eine
 
 [UNLOAD](https://docs.aws.amazon.com/redshift/latest/dg/r_UNLOAD.html) ist ein von Amazon Redshift bereitgestellter Mechanismus, mit dem die Ergebnisse einer Abfrage in eine oder mehrere Dateien in Amazon Simple Storage Service (Amazon S3) entladen werden können. Dieser Mechanismus wird von Amazon zum Kopieren großer DataSets aus Redshift empfohlen.
 
-**Beispiel: Kopieren von Daten aus Amazon Redshift in Azure SQL Data Warehouse mithilfe von UNLOAD, gestaffeltem Kopieren und PolyBase**
+**Beispiel: Kopieren von Daten aus Amazon Redshift in Azure Synapse Analytics mithilfe von UNLOAD, gestaffeltem Kopieren und PolyBase**
 
-In diesem Beispielanwendungsfall werden bei der Kopieraktivität Daten entsprechend der Konfiguration in „redshiftUnloadSettings“ aus Amazon Redshift in Amazon S3 entladen, dann entsprechend der Angabe in „stagingSettings“ Daten aus Amazon S3 in Azure Blob kopiert und schließlich Daten mithilfe von PolyBase in SQL Data Warehouse geladen. Die gesamte vorläufige Formatierung wird von der Kopieraktivität ordnungsgemäß verarbeitet.
+In diesem Beispiel für einen Anwendungsfall werden bei der Kopieraktivität Daten entsprechend der Konfiguration in „redshiftUnloadSettings“ aus Amazon Redshift in Amazon S3 entladen, dann entsprechend der Angabe in „stagingSettings“ Daten aus Amazon S3 in Azure Blob kopiert und schließlich Daten mithilfe von PolyBase in Azure Synapse Analytics geladen. Die gesamte vorläufige Formatierung wird von der Kopieraktivität ordnungsgemäß verarbeitet.
 
-![Workflow beim Kopieren aus Redshift in SQL DW](media/copy-data-from-amazon-redshift/redshift-to-sql-dw-copy-workflow.png)
+![Redshift zu Azure Synapse Analytics-Workflow zum Kopieren](media/copy-data-from-amazon-redshift/redshift-to-sql-dw-copy-workflow.png)
 
 ```json
 "activities":[
@@ -219,22 +218,22 @@ Beim Kopieren von Daten aus Amazon Redshift werden die folgenden Zuordnungen von
 
 | Amazon Redshift-Datentyp | Data Factory-Zwischendatentyp |
 |:--- |:--- |
-| BIGINT |Int64 |
+| bigint |Int64 |
 | BOOLEAN |String |
 | CHAR |String |
-| DATE |DateTime |
+| DATE |Datetime |
 | DECIMAL |Decimal |
 | DOUBLE PRECISION |Double |
 | INTEGER |Int32 |
-| REAL |Single |
+| real |Single |
 | SMALLINT |Int16 |
 | TEXT |String |
-| TIMESTAMP |Datetime |
-| VARCHAR |Zeichenfolge |
+| timestamp |Datetime |
+| VARCHAR |String |
 
 ## <a name="lookup-activity-properties"></a>Eigenschaften der Lookup-Aktivität
 
 Ausführliche Informationen zu den Eigenschaften finden Sie unter [Lookup-Aktivität](control-flow-lookup-activity.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
-Eine Liste der Datenspeicher, die als Quellen und Senken für die Kopieraktivität in Azure Data Factory unterstützt werden, finden Sie unter [Unterstützte Datenspeicher](copy-activity-overview.md##supported-data-stores-and-formats).
+Eine Liste der Datenspeicher, die als Quellen und Senken für die Kopieraktivität in Azure Data Factory unterstützt werden, finden Sie unter [Unterstützte Datenspeicher](copy-activity-overview.md#supported-data-stores-and-formats).

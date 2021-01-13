@@ -1,21 +1,21 @@
 ---
-title: 'Kontoverwaltung – Azure VMware-Lösung von CloudSimple: Portal'
-description: Beschreibt, wie Sie Konten in der VMware-Lösung von CloudSimple über das Portal verwalten.
-author: sharaths-cs
-ms.author: b-shsury
+title: Kontoverwaltung – Azure VMware Solution by CloudSimple-Portal
+description: Beschreibt, wie Sie Konten in Azure VMware Solution by CloudSimple über das Portal verwalten.
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/14/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 00348d36c38fdbfdf69a2e4e80a4c720268b40c8
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: 4c26d5accce77ce6fd8c9b6c2b519b93f95013ce
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69563845"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97895171"
 ---
-# <a name="manage-accounts-on-the-azure-vmware-solution-by-cloudsimple-portal"></a>Verwalten von Konten in der VMware-Lösung von CloudSimple über das Portal
+# <a name="manage-accounts-on-the-azure-vmware-solution-by-cloudsimple-portal"></a>Verwalten von Konten über das VMware Solution by CloudSimple-Portal
 
 Wenn Sie Ihren CloudSimple-Dienst erstellen, wird ein Konto bei CloudSimple erstellt. Das Konto wird mit Ihrem Azure-Abonnement verknüpft, in dem sich der Dienst befindet. Alle Benutzer, die im Abonnement die Rollen „Besitzer“ und „Mitwirkender“ ausüben, haben Zugriff auf das CloudSimple-Portal. Die Azure-Abonnement-ID und die Mandanten-ID, die mit dem CloudSimple-Dienst verknüpft sind, finden Sie auf der Seite „Accounts“ (Konten).
 
@@ -33,7 +33,7 @@ Sie können E-Mail-Adressen aller Personen hinzufügen, die Sie über Änderunge
 
 Um einen Eintrag zu entfernen, klicken Sie auf **X**.
 
-## <a name="cloudsimple-operator-access"></a>CloudSimple-Operatorzugriff
+## <a name="cloudsimple-operator-access"></a>CloudSimple-Zugriff für Dienstvorgangspersonal
 
 Mit der Einstellung „Operator Access“ (Operatorzugriff) kann CloudSimple Sie bei der Problembehandlung unterstützen, indem Sie einem Supportmitarbeiter gestatten, sich an Ihrem CloudSimple-Portal anzumelden.  Diese Einstellung ist standardmäßig aktiviert. Alle Aktionen, die vom Supportmitarbeiter bei der Anmeldung bei Ihrem Kundenkonto durchgeführt werden, werden aufgezeichnet und stehen zur Überprüfung auf der Seite **Activity (Aktivität)**  > **Audit (Überwachung)** zur Verfügung.
 

@@ -1,20 +1,20 @@
 ---
-title: 'Schnellstart: Bereitstellen von Docker-Containern in Azure Container Instances – Befehlszeilenschnittstelle'
+title: 'Schnellstart: Bereitstellen von Docker-Containern in einer Containerinstanz – Azure CLI'
 description: In diesem Schnellstart verwenden Sie die Azure-Befehlszeilenschnittstelle, um schnell eine containerbasierte Web-App bereitzustellen, die in einer isolierten Azure-Containerinstanz ausgeführt wird.
-services: container-instances
-author: dlepow
-manager: gwallace
-ms.service: container-instances
 ms.topic: quickstart
 ms.date: 03/21/2019
-ms.author: danlep
-ms.custom: seodec18, mvc
-ms.openlocfilehash: b344e5fefdef6cd25dcafc0577b9fbbd7f0e398d
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.custom:
+- seo-python-october2019
+- seodec18
+- mvc
+- devx-track-js
+- devx-track-azurecli
+ms.openlocfilehash: 1c327fc7fc067948b5022f989e6c86f99573bd1a
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70050628"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93100183"
 ---
 # <a name="quickstart-deploy-a-container-instance-in-azure-using-the-azure-cli"></a>Schnellstart: Bereitstellen einer Containerinstanz in Azure mithilfe der Azure-Befehlszeilenschnittstelle
 
@@ -22,19 +22,19 @@ Führen Sie mithilfe von Azure Container Instances serverlose Docker-Container s
 
 In diesem Schnellstart stellen Sie mithilfe der Azure-Befehlszeilenschnittstelle einen isolierten Docker-Container bereit und machen seine Anwendung über einen vollqualifizierten Domänennamen (Fully Qualified Domain Name, FQDN) verfügbar. Einige Sekunden nach dem Ausführen eines einzigen Bereitstellungsbefehls können Sie zur ausgeführten Anwendung im Container navigieren:
 
-![In Azure Container Instances bereitgestellte App im Browser][aci-app-browser]
+![Anzeigen einer in Azure Container Instances bereitgestellten App im Browser][aci-app-browser]
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto][azure-account] erstellen, bevor Sie beginnen.
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-Sie können Azure Cloud Shell oder eine lokale Installation der Azure CLI für diesen Schnellstart verwenden. Für die lokale Verwendung wird mindestens Version 2.0.55 empfohlen. Führen Sie `az --version` aus, um die Version zu finden. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sei bei Bedarf unter [Installieren der Azure CLI][azure-cli-install].
+- Für diesen Schnellstart ist Version 2.0.55 oder höher der Azure CLI erforderlich. Bei Verwendung von Azure Cloud Shell ist die aktuelle Version bereits installiert.
 
 ## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 
 Azure Container Instances muss wie alle Azure-Ressourcen in einer Ressourcengruppe bereitgestellt werden. Mit Ressourcengruppen können verwandte Azure-Ressourcen organisiert und verwaltet werden.
 
-Erstellen Sie zunächst mit dem folgenden Befehl [az group create][az-group-create] eine Ressourcengruppe namens *myResourceGroup* am Standort *eastus*:
+Erstellen Sie zunächst mit dem folgenden Befehl [az group create][az-group-create] eine Ressourcengruppe namens *myResourceGroup* am Standort *eastus* :
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
@@ -60,8 +60,7 @@ az container show --resource-group myResourceGroup --name mycontainer --query "{
 
 Wenn Sie den Befehl ausführen, werden der vollständig qualifizierte Domänenname (Fully Qualified Domain Name, FQDN) des Containers und der Bereitstellungsstatus angezeigt.
 
-```console
-$ az container show --resource-group myResourceGroup --name mycontainer --query "{FQDN:ipAddress.fqdn,ProvisioningState:provisioningState}" --out table
+```output
 FQDN                               ProvisioningState
 ---------------------------------  -------------------
 aci-demo.eastus.azurecontainer.io  Succeeded
@@ -69,7 +68,7 @@ aci-demo.eastus.azurecontainer.io  Succeeded
 
 Wenn der Wert `ProvisioningState` des Containers **Erfolgreich** lautet, navigieren Sie in Ihrem Browser zu seinem FQDN. Der Vorgang war erfolgreich, wenn in etwa die folgende Webseite angezeigt wird. Sie haben eine in einem Docker-Container ausgeführte Anwendung in Azure bereitgestellt.
 
-![Screenshot eines Browsers mit ausgeführter Anwendung in einer Azure-Containerinstanz][aci-app-browser]
+![Anzeigen einer in Azure Container Instances bereitgestellten App im Browser][aci-app-browser]
 
 Sollte die Anwendung nicht sofort angezeigt werden, warten Sie einige Sekunden, bis die DNS-Auffüllung abgeschlossen ist, und aktualisieren Sie anschließend Ihren Browser.
 
@@ -85,8 +84,7 @@ az container logs --resource-group myResourceGroup --name mycontainer
 
 Die Ausgabe enthält die Protokolle für den Container und sollte die HTTP GET-Anforderungen anzeigen, die beim Betrachten der Anwendung in Ihrem Browser generiert wurden.
 
-```console
-$ az container logs --resource-group myResourceGroup --name mycontainer
+```output
 listening on port 80
 ::ffff:10.240.255.55 - - [21/Mar/2019:17:43:53 +0000] "GET / HTTP/1.1" 304 - "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36"
 ::ffff:10.240.255.55 - - [21/Mar/2019:17:44:36 +0000] "GET / HTTP/1.1" 304 - "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36"
@@ -103,10 +101,9 @@ Führen Sie zunächst den Befehl [az container attach][az-container-attach] aus,
 az container attach --resource-group myResourceGroup --name mycontainer
 ```
 
-Aktualisieren Sie nach dem Anfügen mehrmals Ihren Browser, um zusätzliche Ausgaben zu generieren. Trennen Sie anschließend Ihre Konsole mit `Control+C`. Eine Ausgabe ähnlich der folgenden sollte angezeigt werden:
+Aktualisieren Sie nach dem Anfügen mehrmals Ihren Browser, um zusätzliche Ausgaben zu generieren. Trennen Sie anschließend Ihre Konsole mit `Control+C`. Die Ausgabe sollte etwa folgendermaßen aussehen:
 
-```console
-$ az container attach --resource-group myResourceGroup --name mycontainer
+```output
 Container 'mycontainer' is in state 'Running'...
 (count: 1) (last timestamp: 2019-03-21 17:27:20+00:00) pulling image "mcr.microsoft.com/azuredocs/aci-helloworld"
 (count: 1) (last timestamp: 2019-03-21 17:27:24+00:00) Successfully pulled image "mcr.microsoft.com/azuredocs/aci-helloworld"
@@ -155,7 +152,7 @@ In dieser Schnellstartanleitung haben Sie eine Azure-Containerinstanz aus einem 
 Um Optionen zum Ausführen von Containern in einem Orchestrierungssystem in Azure zu testen, lesen Sie die Schnellstartanleitung für [Azure Kubernetes Service (AKS)][container-service].
 
 <!-- IMAGES -->
-[aci-app-browser]: ./media/container-instances-quickstart/aci-app-browser.png
+[aci-app-browser]: ./media/container-instances-quickstart/view-an-application-running-in-an-azure-container-instance.png
 
 <!-- LINKS - External -->
 [app-github-repo]: https://github.com/Azure-Samples/aci-helloworld.git

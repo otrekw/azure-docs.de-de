@@ -1,34 +1,30 @@
 ---
 title: Erstellen von Ansichten zum Analysieren von Protokolldaten in Azure Monitor | Microsoft-Dokumentation
 description: Mit dem Ansicht-Designer in Azure Monitor können Sie benutzerdefinierte Ansichten erstellen, die im Azure-Portal angezeigt werden und verschiedene Visualisierungen für Daten im Log Analytics-Arbeitsbereich enthalten. Dieser Artikel enthält eine Übersicht über den Ansicht-Designer und die Verfahren zum Erstellen und Bearbeiten von benutzerdefinierten Ansichten.
-services: log-analytics
-documentationcenter: ''
-author: bwren
-manager: carmonm
-editor: ''
-ms.assetid: ce41dc30-e568-43c1-97fa-81e5997c946a
-ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.subservice: logs
 ms.topic: conceptual
-ms.date: 06/22/2018
+author: bwren
 ms.author: bwren
-ms.openlocfilehash: 33930823fbeb42011d8e2a368d17c9a21070a243
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.date: 08/04/2020
+ms.openlocfilehash: f3ae081c8657a3ee6a27b0f9208c3eb4e4e745cc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70035602"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87759732"
 ---
 # <a name="create-custom-views-by-using-view-designer-in-azure-monitor"></a>Erstellen benutzerdefinierter Ansichten mithilfe des Ansicht-Designers in Azure Monitor
 Mithilfe des Ansicht-Designers in Azure Monitor können Sie verschiedene benutzerdefinierten Ansichten im Azure-Portal erstellen, in denen Sie Daten in Ihrem Log Analytics-Arbeitsbereich visualisieren können. Dieser Artikel bietet eine Übersicht über den Ansicht-Designer und die Verfahren zum Erstellen und Bearbeiten von benutzerdefinierten Ansichten.
 
-[!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
+> [!IMPORTANT]
+> Ansichten in Azure Monitor wurden durch [Arbeitsmappen](workbooks-overview.md) ersetzt, die zusätzliche Funktionalität bereitstellen. Ausführliche Informationen zum Umwandeln Ihrer vorhandenen Ansichten in Arbeitsmappen finden Sie im [Handbuch für den Übergang von Azure Monitor-Ansichts-Designer zu Arbeitsmappen](view-designer-conversion-overview.md).
+ 
+
 
 Weitere Informationen zum Ansicht-Designer finden Sie in folgenden Artikeln:
 
-* [Kachelreferenz](view-designer-tiles.md): Referenzleitfaden zu den Einstellungen für die einzelnen verfügbaren Kacheln in den benutzerdefinierten Ansichten.
-* [Referenz zur Visualisierungskomponente](view-designer-parts.md): Bietet einen Referenzleitfaden zu den Einstellungen für die in Ihren benutzerdefinierten Ansichten verfügbaren Visualisierungkomponenten.
+* [Kachelreferenz:](view-designer-tiles.md) Referenzleitfaden zu den Einstellungen für die einzelnen verfügbaren Kacheln in den benutzerdefinierten Ansichten.
+* [Referenz der Visualisierungskomponenten:](view-designer-parts.md) Referenzleitfaden zu den Einstellungen für die in den benutzerdefinierten Ansichten verfügbaren Visualisierungskomponenten.
 
 
 ## <a name="concepts"></a>Konzepte
@@ -58,9 +54,9 @@ Die Optionen sind in der folgenden Tabelle beschrieben:
 | Option | BESCHREIBUNG |
 |:--|:--|
 | Aktualisieren   | Aktualisiert die Ansicht mit den neuesten Daten. | 
-| Protokolle      | Öffnet [Log Analytics](../log-query/portals.md) zum Analysieren von Daten mit Protokollabfragen. |
+| Protokolle      | Öffnet [Log Analytics](../log-query/log-query-overview.md) zum Analysieren von Daten mit Protokollabfragen. |
 | Edit (Bearbeiten)       | Öffnet die Ansicht im Ansicht-Designer zum Bearbeiten der zugehörigen Inhalte und der Konfiguration.  |
-| Klonen      | Erstellt eine neue Ansicht und öffnet sie im Ansicht-Designer. Der Name der neuen Ansicht entspricht dem ursprünglichen Namen, jedoch ist der Zusatz *Kopie* angefügt. |
+| Klon      | Erstellt eine neue Ansicht und öffnet sie im Ansicht-Designer. Der Name der neuen Ansicht entspricht dem ursprünglichen Namen, jedoch ist der Zusatz *Kopie* angefügt. |
 | Datumsbereich | Legt einen Datums- und Uhrzeitfilterbereich für die in der Ansicht enthaltenen Daten fest. Dieser Datumsbereich wird vor allen Datumsbereichen angewendet, die in Abfragen in der Ansicht festgelegt werden.  |
 | +          | Definieren Sie einen benutzerdefinierten, für die Ansicht definierten Filter. |
 
@@ -75,11 +71,11 @@ Sie können eine neue Ansicht im Ansicht-Designer erstellen, indem Sie im Menü 
 Mithilfe des Ansicht-Designers können Sie neue Ansichten erstellen oder vorhandene Ansichten bearbeiten. 
 
 Der Ansicht-Designer verfügt über drei Bereiche: 
-* **Entwurf**: Enthält die benutzerdefinierte Ansicht, die Sie erstellen oder bearbeiten. 
-* **Steuerung**: Enthält die Kacheln und Komponenten, die Sie im Bereich **Entwurf** hinzufügen. 
-* **Eigenschaften**: Zeigt die Eigenschaften der Kacheln oder ausgewählten Komponenten an.
+* **Entwurf:** enthält die benutzerdefinierte Ansicht, die Sie erstellen oder bearbeiten. 
+* **Steuerung:** enthält die Kacheln und Komponenten, die Sie im Bereich **Entwurf** hinzufügen. 
+* **Eigenschaften:** zeigt die Eigenschaften der Kacheln oder ausgewählten Komponenten an.
 
-![Ansicht-Designer](media/view-designer/view-designer-screenshot.png)
+![Sicht-Designer](media/view-designer/view-designer-screenshot.png)
 
 ### <a name="configure-the-view-tile"></a>Konfigurieren der Kachel für die Ansicht
 Eine benutzerdefinierte Ansicht kann nur über eine einzige Kachel verfügen. Wählen Sie die Registerkarte **Kachel** im Bereich **Steuerung** aus, um die aktuelle Kachel anzuzeigen oder eine andere auszuwählen. Im Bereich **Eigenschaften** werden die Eigenschaften der aktuellen Kachel angezeigt. 
@@ -106,9 +102,9 @@ Die Optionen zur Verwendung von Ansichten im Bearbeitungsmodus sind in der folge
 | Speichern        | Speichert die Änderungen und schließt die Ansicht. |
 | Abbrechen      | Verwirft die Änderungen und schließt die Ansicht. |
 | Ansicht löschen | Löscht die Ansicht. |
-| Export      | Exportiert die Ansicht in eine [Azure Resource Manager-Vorlage](../../azure-resource-manager/resource-group-authoring-templates.md), die Sie in einen anderen Arbeitsbereich importieren können. Der Name der Datei entspricht dem Namen der Ansicht mit der Erweiterung *omsview*. |
+| Exportieren      | Exportiert die Ansicht in eine [Azure Resource Manager-Vorlage](../../azure-resource-manager/templates/template-syntax.md), die Sie in einen anderen Arbeitsbereich importieren können. Der Name der Datei entspricht dem Namen der Ansicht mit der Erweiterung *omsview*. |
 | Importieren      | Importiert die *omsview*-Datei, die Sie aus einem anderen Arbeitsbereich exportiert haben. Mit dieser Aktion wird die Konfiguration der vorhandenen Ansicht überschrieben. |
-| Klonen       | Erstellt eine neue Ansicht und öffnet sie im Ansicht-Designer. Der Name der neuen Ansicht entspricht dem ursprünglichen Namen, jedoch ist der Zusatz *Kopie* angefügt. |
+| Klon       | Erstellt eine neue Ansicht und öffnet sie im Ansicht-Designer. Der Name der neuen Ansicht entspricht dem ursprünglichen Namen, jedoch ist der Zusatz *Kopie* angefügt. |
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Fügen Sie [Kacheln](view-designer-tiles.md) zu Ihrer benutzerdefinierten Ansicht hinzu.

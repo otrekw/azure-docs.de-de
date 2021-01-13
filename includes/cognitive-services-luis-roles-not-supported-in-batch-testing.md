@@ -2,22 +2,22 @@
 title: include file
 description: include file
 services: cognitive-services
-author: diberry
-manager: cjgronlund
+author: aahill
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: luis
 ms.topic: include
 ms.custom: include file
-ms.date: 03/29/2019
-ms.author: diberry
-ms.openlocfilehash: edfbd8a803404b32be0624fd14165d25061d14b7
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.date: 12/29/2020
+ms.author: aahi
+ms.openlocfilehash: 4bfa48bf39cf3dc90955bfdd00b165e01b373192
+ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67178401"
+ms.lasthandoff: 12/30/2020
+ms.locfileid: "97820702"
 ---
-## <a name="roles-in-batch-testing"></a>Rollen in Batchtests
+### <a name="roles-in-batch-testing"></a>Rollen in Batchtests
 
 > [!CAUTION]
 > Entitätsrollen werden bei Batchtests nicht unterstützt.

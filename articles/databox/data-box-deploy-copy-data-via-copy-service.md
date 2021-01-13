@@ -1,5 +1,6 @@
 ---
-title: Tutorial zum Kopieren von Daten auf Ihr Azure Data Box-Gerät mithilfe des Datenkopierdiensts | Microsoft-Dokumentation
+title: 'Tutorial: Kopieren auf Ihr Gerät mithilfe des Datenkopierdiensts'
+titleSuffix: Azure Data Box
 description: In diesem Tutorial erfahren Sie, wie Sie mit dem Datenkopierdienst Daten auf Ihr Azure Data Box-Gerät kopieren.
 services: databox
 author: alkohli
@@ -8,12 +9,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 06/18/2019
 ms.author: alkohli
-ms.openlocfilehash: a8a8b9d872860425be721515a7087085acf12065
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: e664055893bbdef0f7090811b8a160a1b8a4a1fd
+ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67206059"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92124047"
 ---
 # <a name="tutorial-use-the-data-copy-service-to-copy-data-into-azure-data-box-preview"></a>Tutorial: Kopieren von Daten in Azure Data Box (Vorschauversion) mithilfe des Datenkopierdiensts
 
@@ -27,6 +28,7 @@ Der Datenkopierdienst eignet sich für Folgendes:
 In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
+>
 > * Kopieren von Daten auf die Data Box
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -36,15 +38,20 @@ Stellen Sie Folgendes sicher, bevor Sie beginnen:
 1. Sie haben das folgende Tutorial abgeschlossen: [Tutorial: Verkabeln und Herstellen einer Verbindung mit der Azure Data Box](data-box-deploy-set-up.md).
 2. Sie haben Ihr Data Box-Gerät erhalten, und die Bestellung wird im Portal mit dem Status **Übermittelt** angezeigt.
 3. Sie verfügen über die Anmeldeinformationen des NAS-Quellgeräts, mit dem Sie eine Verbindung für den Datenkopiervorgang herstellen.
-4. Sie verfügen über eine Verbindung mit einem Hochgeschwindigkeitsnetzwerk. Mindestens eine 10-GbE-Verbindung (Gigabit Ethernet) wird dringend empfohlen. Falls keine 10-GbE-Verbindung verfügbar ist, können Sie eine 1-GbE-Datenverbindung verwenden, die Geschwindigkeit der Kopiervorgänge wird dadurch jedoch beeinträchtigt.
+4. Sie verfügen über eine Verbindung mit einem Hochgeschwindigkeitsnetzwerk. Mindestens eine 10-GbE-Verbindung (10-Gigabit Ethernet) wird dringend empfohlen. Falls keine 10-GbE-Verbindung verfügbar ist, können Sie eine 1-GbE-Datenverbindung verwenden, die Geschwindigkeit der Kopiervorgänge wird dadurch jedoch beeinträchtigt.
 
 ## <a name="copy-data-to-data-box"></a>Kopieren von Daten auf die Data Box
 
 Nachdem Sie die Verbindung mit dem NAS-Gerät hergestellt haben, kopieren Sie im nächsten Schritt Ihre Daten. Bevor Sie mit dem Kopieren der Daten beginnen, sollten Sie folgende Aspekte beachten:
 
-- Stellen Sie beim Kopieren der Daten sicher, dass für die Datengröße die Größenbeschränkungen eingehalten werden, die im Artikel zu den [Grenzwerten für Azure Storage und Data Box](data-box-limits.md) beschrieben sind.
-- Falls von Data Box hochgeladene Daten gleichzeitig von anderen Anwendungen außerhalb von Data Box hochgeladen werden, kann dies zu Fehlern bei Uploadaufträgen und zu Datenbeschädigungen führen.
-- Wenn die Daten geändert werden, während sie gerade vom Datenkopierdienst gelesen werden, kommt es ggf. zu Fehlern oder Datenbeschädigungen.
+* Stellen Sie beim Kopieren der Daten sicher, dass für die Datengröße die Größenbeschränkungen eingehalten werden, die im Artikel zu den [Grenzwerten für Azure Storage und Data Box](data-box-limits.md) beschrieben sind.
+
+* Falls von Data Box hochgeladene Daten gleichzeitig von anderen Anwendungen außerhalb von Data Box hochgeladen werden, kann dies zu Fehlern bei Uploadaufträgen und zu Datenbeschädigungen führen.
+
+* Wenn die Daten geändert werden, während sie gerade vom Datenkopierdienst gelesen werden, kommt es ggf. zu Fehlern oder Datenbeschädigungen.
+
+> [!IMPORTANT]
+> Bevor Sie bestätigen können, dass Data Box Ihre Daten nach Azure Storage übertragen hat, müssen Sie sicherstellen, dass Sie über eine Kopie der Quelldaten verfügen.
 
 Sie müssen einen Auftrag erstellen, um Daten mit dem Datenkopierdienst zu kopieren:
 
@@ -64,7 +71,7 @@ Sie müssen einen Auftrag erstellen, um Daten mit dem Datenkopierdienst zu kopie
     |**Zielspeicherkonto**    |Wählen Sie in der Liste das Zielspeicherkonto aus, in das die Daten hochgeladen werden sollen.         |
     |**Zieltyp**       |Wählen Sie den Zielspeichertyp in der Liste aus: **Blockblob**, **Seitenblob** oder **Azure Files**.        |
     |**Zielcontainer/-freigabe**    |Geben Sie den Namen des Containers oder der Freigabe an, in den bzw. die Daten in Ihrem Zielspeicherkonto hochgeladen werden sollen. Hierbei kann es sich um einen Freigabenamen oder um einen Containernamen handeln. Verwenden Sie beispielsweise `myshare` oder `mycontainer`. Der Name kann auch das Format `sharename\directory_name` oder `containername\virtual_directory_name` haben.        |
-    |**Mit Muster übereinstimmende Dateien kopieren**    | Sie können das gewünschte Dateinamenmuster eingeben. Dabei haben Sie zwei Optionen:<ul><li>**Verwenden von Platzhalterausdrücken:** In Platzhalterausdrücken werden nur `*` und `?` unterstützt. Beispiel: Der Ausdruck `*.vhd` entspricht allen Dateien mit der Erweiterung `.vhd`. Analog dazu entspricht `*.dl?` allen Dateien, die entweder die Erweiterung `.dl` haben oder mit `.dl` beginnen, etwa `.dll`. `*foo` entspricht allen Dateien, deren Name mit `foo` endet.<br>Platzhalterausdrücke können direkt in das Feld eingegeben werden. Der in das Feld eingegebene Wert wird standardmäßig als Platzhalterausdruck behandelt.</li><li>**Verwenden von regulären Ausdrücken:** POSIX-basierte reguläre Ausdrücke werden unterstützt. Der reguläre Ausdruck `.*\.vhd` entspricht beispielsweise allen Dateien mit der Erweiterung `.vhd`. Wenn Sie regulärer Ausdrücke verwenden möchten, geben Sie das Muster (`<pattern>`) direkt als `regex(<pattern>)` an. Weitere Informationen zu regulären Ausdrücken finden Sie unter [Sprachelemente für reguläre Ausdrücke – Kurzübersicht](https://docs.microsoft.com/dotnet/standard/base-types/regular-expression-language-quick-reference).</li><ul>|
+    |**Mit Muster übereinstimmende Dateien kopieren**    | Sie können das gewünschte Dateinamenmuster eingeben. Dabei haben Sie zwei Optionen:<ul><li>**Verwenden von Platzhalterausdrücken:** In Platzhalterausdrücken werden nur `*` und `?` unterstützt. Beispiel: Der Ausdruck `*.vhd` entspricht allen Dateien mit der Erweiterung `.vhd`. Analog dazu entspricht `*.dl?` allen Dateien, die entweder die Erweiterung `.dl` haben oder mit `.dl` beginnen, etwa `.dll`. `*foo` entspricht allen Dateien, deren Name mit `foo` endet.<br>Platzhalterausdrücke können direkt in das Feld eingegeben werden. Der in das Feld eingegebene Wert wird standardmäßig als Platzhalterausdruck behandelt.</li><li>**Verwenden von regulären Ausdrücken:** POSIX-basierte reguläre Ausdrücke werden unterstützt. Der reguläre Ausdruck `.*\.vhd` entspricht beispielsweise allen Dateien mit der Erweiterung `.vhd`. Wenn Sie regulärer Ausdrücke verwenden möchten, geben Sie das Muster (`<pattern>`) direkt als `regex(<pattern>)` an. Weitere Informationen zu regulären Ausdrücken finden Sie unter [Sprachelemente für reguläre Ausdrücke – Kurzübersicht](/dotnet/standard/base-types/regular-expression-language-quick-reference).</li><ul>|
     |**Dateioptimierung**              |Wenn dieses Feature aktiviert ist, werden Dateien, die kleiner als 1 MB sind, während der Erfassung gepackt. Dieses Packen beschleunigt das Kopieren kleiner Dateien. Es spart darüber hinaus viel Zeit, wenn die Anzahl von Dateien deutlich über der Anzahl von Verzeichnissen liegt.        |
  
 4. Wählen Sie **Starten** aus. Die Eingaben werden überprüft. Ist die Überprüfung erfolgreich, wird der Auftrag gestartet. Es dauert möglicherweise ein paar Minuten, bis der Auftrag gestartet wird.
@@ -111,7 +118,7 @@ Sie müssen einen Auftrag erstellen, um Daten mit dem Datenkopierdienst zu kopie
 
 6. Während der Auftragsausführung gilt für die Seite **Daten kopieren** Folgendes:
 
-    - In der Spalte **Status** wird der Status des Kopierauftrags angezeigt. Mögliche Statuswerte:
+    - In der Spalte **Status** wird der Status des Kopierauftrags angezeigt. Der Status kann Folgendes sein:
         - **Wird ausgeführt**
         - **Fehler**
         - **Erfolgreich**
@@ -144,4 +151,3 @@ Fahren Sie mit dem nächsten Tutorial fort, um zu erfahren, wie Sie Ihr Data Box
 
 > [!div class="nextstepaction"]
 > [Tutorial: Zurücksenden der Azure Data Box und Überprüfen des Datenuploads in Azure](./data-box-deploy-picked-up.md)
-

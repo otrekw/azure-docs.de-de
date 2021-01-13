@@ -1,26 +1,19 @@
 ---
 title: Bereitstellen von SAP S/4HANA oder BW/4HANA auf einem virtuellen Azure-Computer | Microsoft-Dokumentation
 description: Bereitstellen von SAP S/4HANA oder BW/4HANA auf einem virtuellen Azure-Computer
-services: virtual-machines-linux
-documentationcenter: ''
 author: hermanndms
-manager: gwallace
-editor: ''
-tags: azure-resource-manager
-keywords: ''
-ms.assetid: 44bbd2b6-a376-4b5c-b824-e76917117fa9
-ms.service: virtual-machines-linux
+ms.service: virtual-machines
+ms.subservice: workloads
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure-services
 ms.date: 09/15/2016
 ms.author: hermannd
-ms.openlocfilehash: 2fa68d9dc3052263b5354086ee802cc31fa35ace
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.reviewer: cynthn
+ms.openlocfilehash: 6492e770479042a5a1b4da6f61917832adad4873
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101440"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96021417"
 ---
 # <a name="deploy-sap-s4hana-or-bw4hana-on-azure"></a>Bereitstellen von SAP S/4HANA oder BW/4HANA in Azure
 In diesem Artikel wird beschrieben, wie Sie S/4HANA über die SAP Cloud Appliance Library (SAP CAL) 3.0 in Azure bereitstellen. Zum Bereitstellen anderer SAP HANA-basierter Lösungen, z.B. BW/4HANA, befolgen Sie dieselben Schritte.
@@ -29,7 +22,7 @@ In diesem Artikel wird beschrieben, wie Sie S/4HANA über die SAP Cloud Applianc
 > Weitere Informationen zur SAP Cloud Appliance Library finden Sie auf der Website [SAP Cloud Appliance Library](https://cal.sap.com/). SAP bietet auch einen Blog zur [SAP Cloud Appliance Library 3.0](https://scn.sap.com/community/cloud-appliance-library/blog/2016/05/27/sap-cloud-appliance-library-30-came-with-a-new-user-experience).
 > 
 > [!NOTE]
-> Ab dem 29. Mai 2017 können Sie das Azure Resource Manager-Bereitstellungsmodell zusätzlich zum weniger bevorzugten klassischen Bereitstellungsmodell zum Bereitstellen der SAP Cloud Appliance Library nutzen. Wir empfehlen allerdings, das neue Ressourcen-Manager-Bereitstellungsmodell zu verwenden und das klassische Bereitstellungsmodell außer Acht zu lassen.
+> Ab dem 29. Mai 2017 können Sie das Azure Resource Manager-Bereitstellungsmodell zusätzlich zum weniger bevorzugten klassischen Bereitstellungsmodell für die Bereitstellung der SAP CAL nutzen. Wir empfehlen allerdings, das neue Resource Manager-Bereitstellungsmodell zu verwenden und das klassische Bereitstellungsmodell außer Acht zu lassen.
 
 ## <a name="step-by-step-process-to-deploy-the-solution"></a>Vorgehensweise zum Bereitstellen der Lösung
 
@@ -49,7 +42,7 @@ Die Seite **Lösungen** zeigt einige der SAP CAL HANA-basierten Lösungen, die i
     c. Erteilen Sie der SAP CAL die Berechtigung zur Bereitstellung in Ihrem Azure-Abonnement.
 
    > [!NOTE]
-   >  Die nächsten Schritte zeigen, wie Sie ein SAP CAL-Konto für Resource Manager-Bereitstellungen erstellen. Wenn Sie bereits über ein SAP CAL-Konto verfügen, das mit dem klassischen Bereitstellungsmodell verknüpft ist, *müssen* Sie folgende Schritte zum Erstellen eines neuen SAP CAL-Kontos ausführen. Das neue SAP CAL-Konto muss im Ressourcen-Manager-Modell bereitgestellt werden.
+   >  Die nächsten Schritte zeigen, wie Sie ein SAP CAL-Konto für Resource Manager-Bereitstellungen erstellen. Wenn Sie bereits über ein SAP CAL-Konto verfügen, das mit dem klassischen Bereitstellungsmodell verknüpft ist, *müssen* Sie folgende Schritte zum Erstellen eines neuen SAP CAL-Kontos ausführen. Das neue SAP CAL-Konto muss im Resource Manager-Modell bereitgestellt werden.
 
 1. Erstellen Sie ein neues SAP CAL-Konto. Die Seite **Konten** zeigt drei Optionen für Azure: 
 
@@ -59,7 +52,7 @@ Die Seite **Lösungen** zeigt einige der SAP CAL HANA-basierten Lösungen, die i
 
     c. **Windows Azure bei Betrieb über 21Vianet** ist eine Option in China, die das klassische Bereitstellungsmodell verwendet.
 
-    Wählen Sie zum Bereitstellen im Ressourcen-Manager-Modell **Microsoft Azure** aus.
+    Wählen Sie zum Bereitstellen im Resource Manager-Modell **Microsoft Azure** aus.
 
     ![SAP CAL-Kontodetails](./media/cal-s4h/s4h-pic-2a.png)
 
@@ -67,7 +60,7 @@ Die Seite **Lösungen** zeigt einige der SAP CAL HANA-basierten Lösungen, die i
 
    ![SAP CAL-Konten](./media/cal-s4h/s4h-pic3c.png)
 
-1. Um die SAP CAL für die Bereitstellung im eingerichteten Azure-Abonnement zu autorisieren, klicken Sie auf **Autorisieren**. Die folgende Seite wird auf der Browserregisterkarte angezeigt:
+1. Um die SAP CAL für die Bereitstellung im angegebenen Azure-Abonnement zu autorisieren, klicken Sie auf **Authorize** (Autorisieren). Die folgende Seite wird auf der Browserregisterkarte angezeigt:
 
    ![Anmeldung beim Clouddienst in Internet Explorer](./media/cal-s4h/s4h-pic4c.png)
 
@@ -83,7 +76,7 @@ Die Seite **Lösungen** zeigt einige der SAP CAL HANA-basierten Lösungen, die i
 
 1. Um Ihr Konto dem Benutzer zuzuordnen, der sich bei der SAP CAL anmeldet, klicken Sie auf **Review** (Überprüfen). 
  
-1. Um die Zuordnung zwischen dem Benutzer und dem neu erstellten SAP CAL-Konto zu erstellen, klicken Sie auf **Erstellen**.
+1. Um die Zuordnung zwischen dem Benutzer und dem neu erstellten SAP CAL-Konto zu erstellen, klicken Sie auf **Create** (Erstellen).
 
    ![Zuordnung des SAP CAL-Kontos zum Benutzer](./media/cal-s4h/s4h-pic9b.png)
 
@@ -119,7 +112,7 @@ Wir veranschaulichen nun die grundlegende Vorgehensweise zur Bereitstellung.
 
     d. Geben Sie für die Lösung ein **Masterkennwort** mit acht oder neun Zeichen ein. Das Kennwort wird von den Administratoren der verschiedenen Komponenten verwendet.
 
-   ![SAP CAL Basic Mode: Create Instance (Instanz erstellen)](./media/cal-s4h/s4h-pic10a.png)
+   ![Einfacher SAP CAL-Modus: Instanz erstellen](./media/cal-s4h/s4h-pic10a.png)
 
 1. Klicken Sie auf **Erstellen** und im angezeigten Meldungsfeld auf **OK**.
 
@@ -143,11 +136,11 @@ Wir veranschaulichen nun die grundlegende Vorgehensweise zur Bereitstellung.
 
    ![SAP CAL-Instanzen](./media/cal-s4h/active_solution.png)
 
-1. Ehe Sie eine der Optionen zum Herstellen von Verbindungen mit den bereitgestellten Systemen nutzen können, klicken Sie auf **Leitfaden für erste Schritte**. 
+1. Bevor Sie eine der Optionen zum Herstellen einer Verbindung mit den bereitgestellten Systemen nutzen können, klicken Sie auf **Getting Started Guide** (Leitfaden für erste Schritte). 
 
    ![Herstellen einer Verbindung mit der Instanz](./media/cal-s4h/connect_to_solution.png)
 
-    Die Dokumentation nennt die Benutzer für jede der Verbindungsmethoden. Die Kennwörter für diese Benutzer sind auf das Masterkennwort festgelegt, das Sie am Anfang des Bereitstellungsprozesses festgelegt haben. In der Dokumentation werden andere funktionsbezogenere Benutzer mit ihren Kennwörtern aufgeführt, die Sie zum Anmelden beim bereitgestellten System verwenden können. 
+    Die Dokumentation nennt die Benutzer für jede der Verbindungsmethoden. Die Kennwörter für diese Benutzer sind auf das Masterkennwort festgelegt, das Sie am Anfang des Bereitstellungsprozesses festgelegt haben. In der Dokumentation werden weitere Funktionsbenutzer mit ihren Kennwörtern aufgeführt, die Sie zum Anmelden beim bereitgestellten System verwenden können. 
 
     Wenn Sie beispielsweise die SAP GUI verwenden, die auf dem Windows-Remotedesktop-Computer vorinstalliert ist, sieht das S/4-System in etwa so aus:
 

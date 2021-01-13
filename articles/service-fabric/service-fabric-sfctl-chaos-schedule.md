@@ -1,24 +1,16 @@
 ---
-title: Azure Service Fabric-CLI – sfctl chaos schedule | Microsoft-Dokumentation
-description: Beschreibt die sfctl chaos-Befehle der Service Fabric-CLI.
-services: service-fabric
-documentationcenter: na
-author: Christina-Kang
-manager: chackdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric
+title: 'Azure Service Fabric-Befehlszeilenschnittstelle: sfctl chaos schedule'
+description: Erfahren Sie mehr über sfctl, die Azure Service Fabric-Befehlszeilenschnittstelle. Enthält eine Liste der Befehle für die Zeitplanung von Chaos.
+author: jeffj6123
 ms.topic: reference
-ms.tgt_pltfrm: na
-ms.workload: multiple
-ms.date: 12/06/2018
-ms.author: bikang
-ms.openlocfilehash: 1664978110b7c700906cbf4e6c80806ac70f1f05
-ms.sourcegitcommit: 18061d0ea18ce2c2ac10652685323c6728fe8d5f
+ms.date: 1/16/2020
+ms.author: jejarry
+ms.openlocfilehash: dd911574cd37c18e3043cfc2482bd1fcd5f3857b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/15/2019
-ms.locfileid: "69036533"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "86260843"
 ---
 # <a name="sfctl-chaos-schedule"></a>sfctl chaos schedule
 Ruft den Zeitplan des Chaostests ab und legt diesen fest.
@@ -39,22 +31,22 @@ Ruft die Version des verwendeten Chaostestzeitplans und den Chaostestzeitplan ab
 
 |Argument|BESCHREIBUNG|
 | --- | --- |
-| --timeout -t | Servertimeout in Sekunden.  Standardwert\: 60. |
+| --timeout -t | Der Servertimeout für die Ausführung des Vorgangs in Sekunden. Dieser Timeout gibt die Zeitdauer an, die der Client bereit ist, auf den Abschluss des angeforderten Vorgangs zu warten. Der Standardwert für diesen Parameter ist 60 Sekunden.  Standardwert\: 60. |
 
 ### <a name="global-arguments"></a>Globale Argumente
 
 |Argument|BESCHREIBUNG|
 | --- | --- |
-| --debug | Erhöht die Protokollierungsausführlichkeit, sodass alle Debugprotokolle angezeigt werden. |
-| --help -h | Zeigt diese Hilfemeldung an und beendet. |
-| --output -o | Das Ausgabeformat.  Zulässige Werte\: „json“, „jsonc“, „table“, „tsv“.  Standardwert\: „json“. |
+| --debug | Ausführlichkeit der Protokollierung erhöhen, um alle Debugprotokolle anzuzeigen. |
+| --help -h | Zeigen Sie diese Hilfemeldung an, und schließen Sie sie. |
+| --output -o | Ausgabeformat.  Zulässige Werte\: „json“, „jsonc“, „table“, „tsv“.  Standardwert\: „json“. |
 | --query | JMESPath-Abfragezeichenfolge. Weitere Informationen und Beispiele finden Sie unter „http\://jmespath.org/“. |
-| --verbose | Erhöht die Protokollierungsausführlichkeit. Verwenden Sie „--debug“, wenn Sie vollständige Debugprotokolle wünschen. |
+| --verbose | Ausführlichkeit der Protokollierung erhöhen. „--debug“ für vollständige Debugprotokolle verwenden. |
 
 ## <a name="sfctl-chaos-schedule-set"></a>sfctl chaos schedule set
 Legt den von Chaos verwendeten Zeitplan fest.
 
-Der Chaostest wird automatisch basierend auf dem Chaostestzeitplan ausgeführt. Die Version im angegebenen Eingabezeitplan muss mit der Version des Chaostestzeitplans auf dem Server übereinstimmen. Wenn die angegebene Version nicht der Version auf dem Server entspricht, wird der Chaostestzeitplan nicht aktualisiert. Wenn die angegebene Version der Version auf dem Server entspricht, wird der Chaostestzeitplan aktualisiert und die Version des Chaostestzeitplans auf dem Server erhöht sich um einen Schritt und springt nach 2.147.483.647 Schritten auf 0 zurück. Wenn der Chaostest während der Durchführung dieses Aufrufs ausgeführt wird, tritt beim Aufruf ein Fehler auf.
+Der Chaostest wird automatisch basierend auf dem Chaostestzeitplan ausgeführt. Der Chaostestzeitplan wird aktualisiert, wenn die angegebene Version mit der Version auf dem Server übereinstimmt. Beim Aktualisieren des Chaostestzeitplans wird die Version auf dem Server um 1 erhöht. Die Version auf dem Server wird nach Erreichen einer großen Zahl auf 0 zurückgesetzt. Wenn der Chaostest während der Durchführung dieses Aufrufs ausgeführt wird, tritt beim Aufruf ein Fehler auf.
 
 ### <a name="arguments"></a>Argumente
 
@@ -64,24 +56,25 @@ Der Chaostest wird automatisch basierend auf dem Chaostestzeitplan ausgeführt. 
 | --expiry-date-utc | Datum und Uhrzeit, wann die Verwendung des Chaostestzeitplans für die Planung des Chaostests beendet werden soll.  Standardwert\: „9999-12-31T23\:59\:59.999Z“. |
 | --jobs | JSON-codierte Liste von ChaosScheduleJobs, die angibt, wann der Chaostest ausgeführt werden soll und welche Parameter beim Chaostest ausgeführt werden sollen. |
 | --start-date-utc | Datum und Uhrzeit, wann der Zeitplan für die Planung des Chaostests gestartet werden soll.  Standardwert\: „1601-01-01T00\:00\:00.000Z“. |
-| --timeout -t | Servertimeout in Sekunden.  Standardwert\: 60. |
+| --timeout -t | Standardwert\: 60. |
 | --version | Die Versionsnummer des Zeitplans. |
 
 ### <a name="global-arguments"></a>Globale Argumente
 
 |Argument|BESCHREIBUNG|
 | --- | --- |
-| --debug | Erhöht die Protokollierungsausführlichkeit, sodass alle Debugprotokolle angezeigt werden. |
-| --help -h | Zeigt diese Hilfemeldung an und beendet. |
-| --output -o | Das Ausgabeformat.  Zulässige Werte\: „json“, „jsonc“, „table“, „tsv“.  Standardwert\: „json“. |
+| --debug | Ausführlichkeit der Protokollierung erhöhen, um alle Debugprotokolle anzuzeigen. |
+| --help -h | Zeigen Sie diese Hilfemeldung an, und schließen Sie sie. |
+| --output -o | Ausgabeformat.  Zulässige Werte\: „json“, „jsonc“, „table“, „tsv“.  Standardwert\: „json“. |
 | --query | JMESPath-Abfragezeichenfolge. Weitere Informationen und Beispiele finden Sie unter „http\://jmespath.org/“. |
-| --verbose | Erhöht die Protokollierungsausführlichkeit. Verwenden Sie „--debug“, wenn Sie vollständige Debugprotokolle wünschen. |
+| --verbose | Ausführlichkeit der Protokollierung erhöhen. „--debug“ für vollständige Debugprotokolle verwenden. |
 
 ### <a name="examples"></a>Beispiele
 
-Der folgende Befehl legt einen Zeitplan fest (vorausgesetzt, dass der aktuelle Zeitplan Version 0 aufweist), der am 01.01.2016 beginnt und am 01.01.2038 abläuft und den Chaostest rund um die Uhr ausführt. Der Chaostest wird auf dem Cluster für diesen Zeitpunkt geplant.
-
-    sfctl chaos schedule set --version 0 --start-date-utc "2016-01-01T00:00:00.000Z" --expiry-date-utc "2038-01-01T00:00:00.000Z"
+Der folgende Befehl legt einen Zeitplan fest (vorausgesetzt, dass der aktuelle Zeitplan Version 0 aufweist), der am 01.01.2016 beginnt und am 01.01.2038 abläuft und den Chaostest rund um die Uhr ausführt.
+Der Chaostest wird auf dem Cluster für diesen Zeitpunkt geplant.
+```
+sfctl chaos schedule set --version 0 --start-date-utc "2016-01-01T00:00:00.000Z" --expiry-date-utc "2038-01-01T00:00:00.000Z"
     --chaos-parameters-dictionary
     [
     {
@@ -142,8 +135,10 @@ Der folgende Befehl legt einen Zeitplan fest (vorausgesetzt, dass der aktuelle Z
         ]
     }
     ]
+```
+
 
 
 ## <a name="next-steps"></a>Nächste Schritte
 - [Einrichten](service-fabric-cli.md) der Service Fabric-Befehlszeilenschnittstelle
-- Informationen zum Verwenden der Service Fabric-Befehlszeilenschnittstelle mit den [Beispielskripts](/azure/service-fabric/scripts/sfctl-upgrade-application)
+- Informationen zum Verwenden der Service Fabric-Befehlszeilenschnittstelle mit den [Beispielskripts](./scripts/sfctl-upgrade-application.md)

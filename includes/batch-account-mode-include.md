@@ -9,10 +9,10 @@ ms.date: 05/04/2018
 ms.author: lahugh
 ms.custom: include file
 ms.openlocfilehash: 51b687dc2a6264eb12362616429746c9b182c3b1
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2019
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "68323892"
 ---
 > [!NOTE]

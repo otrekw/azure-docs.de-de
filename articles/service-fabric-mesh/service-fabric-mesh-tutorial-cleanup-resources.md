@@ -1,28 +1,19 @@
 ---
-title: 'Tutorial: Bereinigen von Azure Service Fabric Mesh-Ressourcen | Microsoft-Dokumentation'
+title: 'Tutorial: Bereinigen von Azure Service Fabric Mesh-Ressourcen'
 description: Hier erfahren Sie, wie Sie Azure Service Fabric Mesh-Ressourcen entfernen, damit keine Gebühren für nicht mehr verwendete Ressourcen anfallen.
-services: service-fabric-mesh
-documentationcenter: .net
-author: dkkapur
-manager: chakdan
-editor: ''
-ms.assetid: ''
-ms.service: service-fabric-mesh
-ms.devlang: dotNet
+author: georgewallace
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 09/18/2018
-ms.author: dekapur
+ms.author: gwallace
 ms.custom: mvc, devcenter
-ms.openlocfilehash: a60c42310f0698b8290e7ba6195eeed44fe0b95e
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 1d594001340f76c6dde9f3e00de2d76ee4e5104b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56815789"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91843327"
 ---
-# <a name="tutorial-remove-azure-resources"></a>Tutorial: Azure-Ressourcen entfernen
+# <a name="tutorial-remove-azure-resources"></a>Tutorial: Entfernen von Azure-Ressourcen
 
 Dieses Tutorial ist der fünfte Teil einer Serie. Hier wird gezeigt, wie Sie die App und ihre Ressourcen löschen, damit sie Ihnen nicht in Rechnung gestellt werden.
 
@@ -62,7 +53,7 @@ az group delete --resource-group sfmeshTutorial1RG
 Remove-AzureRmResourceGroup -Name sfmeshTutorial1RG
 ```
 
-Alternativ können Sie die Ressourcengruppe **sfmeshTutorial1RG** über das [Portal](../azure-resource-manager/manage-resource-groups-portal.md#delete-resource-groups) löschen. 
+Alternativ können Sie die Ressourcengruppe **sfmeshTutorial1RG** über das [Portal](../azure-resource-manager/management/manage-resource-groups-portal.md#delete-resource-groups) löschen. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -71,4 +62,4 @@ Da Sie die Veröffentlichung einer Service Fabric Mesh-Anwendung in Azure nun ab
 * Untersuchen Sie das [Beispiel für eine Abstimmungs-App](https://github.com/Azure-Samples/service-fabric-mesh/tree/master/src/votingapp), um sich mit einem weiteren Beispiel für die Kommunikation zwischen Diensten vertraut zu machen.
 * Weitere Informationen zum Service Fabric-Ressourcenmodell finden Sie unter [Service Fabric Mesh-Ressourcenmodell](service-fabric-mesh-service-fabric-resources.md).
 * In der [Übersicht über Azure Service Fabric Mesh](service-fabric-mesh-overview.md) erfahren Sie mehr über Service Fabric Mesh.
-* Erfahren Sie mehr über die [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview).
+* Erfahren Sie mehr über die [Cloud Shell](../cloud-shell/overview.md).

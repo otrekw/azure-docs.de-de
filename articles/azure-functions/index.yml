@@ -1,20 +1,20 @@
 ### YamlMime:Landing
 title: Dokumentation zu Azure Functions
-summary: Azure Functions ist ein serverloser Computedienst, mit dem Sie ereignisgesteuerten Code ausführen können, ohne eine explizite Infrastruktur bereitstellen oder verwalten zu müssen.
+summary: Azure Functions ist ein bedarfsgesteuerter Clouddienst, der sämtliche ständig aktualisierte Infrastrukturen und Ressourcen bereitstellt, die zum Ausführen Ihrer Anwendungen erforderlich sind. Stattdessen können Sie sich ganz auf die Codeelemente konzentrieren, die für Sie am wichtigsten sind, und Azure Functions kümmert sich um den Rest. Sie können mit Azure Functions Web-APIs erstellen, auf Datenbankänderungen reagieren, IoT-Datenströme verarbeiten, Nachrichtenwarteschlangen verwalten und vieles mehr.
 metadata:
   title: Dokumentation zu Azure Functions
-  description: Azure Functions ist ein serverloser Computedienst, mit dem Sie ereignisgesteuerten Code ausführen können, ohne eine explizite Infrastruktur bereitstellen oder verwalten zu müssen.
+  description: Azure Functions ist ein bedarfsgesteuerter Clouddienst, der sämtliche ständig aktualisierte Infrastrukturen und Ressourcen bereitstellt, die zum Ausführen Ihrer Anwendungen erforderlich sind. Stattdessen können Sie sich ganz auf die Codeelemente konzentrieren, die für Sie am wichtigsten sind, und Azure Functions kümmert sich um den Rest. Sie können mit Azure Functions Web-APIs erstellen, auf Datenbankänderungen reagieren, IoT-Datenströme verarbeiten, Nachrichtenwarteschlangen verwalten und vieles mehr.
   ms.service: azure-functions
   ms.topic: landing-page
   author: ggailey777
   ms.author: azfundocs
   ms.date: 09/17/2019
-  ms.openlocfilehash: fe554b2e7a146ccb3c0b593ffc7e8bef66e55ef2
-  ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+  ms.openlocfilehash: 74acabf21252acfd79520d7f24ff79503734a235
+  ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 09/27/2019
-  ms.locfileid: "71349906"
+  ms.lasthandoff: 01/05/2021
+  ms.locfileid: "97901520"
 landingContent:
 - title: Informationen zu Azure Functions
   linkLists:
@@ -41,15 +41,21 @@ landingContent:
   - linkListType: quickstart
     links:
     - text: Erstellen Ihrer ersten Funktion (C#)
-      url: functions-create-your-first-function-visual-studio.md
+      url: create-first-function-vs-code-csharp.md
+    - text: Erstellen Ihrer ersten Funktion (Go)
+      url: create-first-function-vs-code-other.md?tabs=go
     - text: Erstellen Ihrer ersten Funktion (Java)
-      url: functions-create-first-java-maven.md
+      url: create-first-function-vs-code-java.md
     - text: Erstellen Ihrer ersten Funktion (JavaScript)
-      url: functions-create-first-function-vs-code.md
+      url: create-first-function-vs-code-node.md
     - text: Erstellen Ihrer ersten Funktion (PowerShell)
-      url: functions-create-first-function-powershell.md
+      url: create-first-function-vs-code-powershell.md
     - text: Erstellen Ihrer ersten Funktion (Python)
-      url: functions-create-first-function-python.md
+      url: create-first-function-vs-code-python.md
+    - text: Erstellen Ihrer ersten Funktion (Rust)
+      url: create-first-function-vs-code-other.md?tabs=rust
+    - text: Erstellen Ihrer ersten Funktion (TypeScript)
+      url: create-first-function-vs-code-typescript.md
   - linkListType: learn
     links:
     - text: Erstellen von serverloser Logik
@@ -76,8 +82,10 @@ landingContent:
       url: functions-bindings-error-pages.md
   - linkListType: learn
     links:
-    - text: Entwickeln/Testen/Bereitstellen mit Visual Studio
+    - text: Entwickeln von Funktionen mithilfe von Visual Studio
       url: /learn/modules/develop-test-deploy-azure-functions-with-visual-studio/index
+    - text: Entwickeln von Funktionen über die Befehlszeile
+      url: /learn/modules/develop-test-deploy-azure-functions-with-core-tools/index
   - linkListType: video
     links:
     - text: Entwickeln mit Visual Studio Code
@@ -119,7 +127,7 @@ landingContent:
     - text: Erstellen und Bereitstellen mithilfe von Azure Pipelines
       url: functions-how-to-azure-devops.md
     - text: Bereitstellen des Jenkins-Plug-Ins
-      url: /azure/jenkins/jenkins-azure-functions-deploy
+      url: /azure/developer/jenkins/deploy-to-azure-functions
 - title: Leistung und Überwachung
   linkLists:
   - linkListType: concept

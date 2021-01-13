@@ -11,17 +11,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
-ms.date: 11/14/2018
+ms.topic: how-to
+ms.date: 10/07/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 96d0253e1e656f4bdb5180af0d57824aceb4f0dd
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.openlocfilehash: 9a3e2dd1ac58c89060fc3e09e97617cb2a68d8ac
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71176661"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97094572"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-frequently-asked-questions"></a>Nahtloses einmaliges Anmelden mit Azure Active Directory: Häufig gestellte Fragen
 
@@ -37,7 +37,7 @@ Die nahtlose SSO ist eine kostenlose Funktion, sodass Sie für deren Verwendung 
 
 **F: Ist Seamless SSO in der Cloud [Microsoft Azure Deutschland](https://www.microsoft.de/cloud-deutschland) und der Cloud [Microsoft Azure Government](https://azure.microsoft.com/features/gov/) verfügbar?**
 
-Nein. Das nahtlose einmalige Anmelden ist nur in der weltweiten Instanz von Azure AD verfügbar.
+Nahtloses SSO ist für die Azure Government-Cloud verfügbar. Weitere Informationen finden Sie unter [Überlegungen zur Hybrididentität für Azure Government](./reference-connect-government-cloud.md).
 
 **F: Welche Anwendungen nutzen die `domain_hint`- oder `login_hint`-Parameterfunktion von Seamless SSO?**
 
@@ -62,11 +62,11 @@ Wenn unsere automatische Anmeldung für andere Anwendungen verwenden möchten, t
 
 **F: Unterstützt Seamless SSO `Alternate ID` als Benutzername anstelle von `userPrincipalName`?**
 
-Ja. Die nahtlose SSO unterstützt `Alternate ID` als Benutzername, wenn dies in Azure AD Connect wie [hier](how-to-connect-install-custom.md) beschrieben entsprechend konfiguriert ist. Nicht alle Office 365-Anwendungen unterstützen `Alternate ID`. Angaben zur Supporterklärung finden Sie in der Dokumentation der jeweiligen Anwendung.
+Ja. Die nahtlose SSO unterstützt `Alternate ID` als Benutzername, wenn dies in Azure AD Connect wie [hier](how-to-connect-install-custom.md) beschrieben entsprechend konfiguriert ist. Nicht alle Microsoft 365-Anwendungen unterstützen `Alternate ID`. Angaben zur Supporterklärung finden Sie in der Dokumentation der jeweiligen Anwendung.
 
-**F: Was ist der Unterschied zwischen dem von [Azure AD Join](../active-directory-azureadjoin-overview.md) bereitgestellten einmaligen Anmelden und Seamless SSO?**
+**F: Was ist der Unterschied zwischen dem von [Azure AD Join](../devices/overview.md) bereitgestellten einmaligen Anmelden und Seamless SSO?**
 
-[Azure AD Join](../active-directory-azureadjoin-overview.md) stellt SSO für Benutzer bereit, wenn deren Geräte bei Azure AD registriert sind. Diese Geräte müssen nicht unbedingt in eine Domäne eingebunden sein. SSO wird über *primäre Aktualisierungstoken* oder *PRTs* (Primary Refresh Token) bereitgestellt und nicht per Kerberos. Die Benutzeroberfläche ist für Windows 10-Geräte optimiert. Das einmalige Anmelden erfolgt im Microsoft Edge-Browser automatisch. Es kann mithilfe einer Browsererweiterung auch in Chrome genutzt werden.
+[Azure AD Join](../devices/overview.md) stellt SSO für Benutzer bereit, wenn deren Geräte bei Azure AD registriert sind. Diese Geräte müssen nicht unbedingt in eine Domäne eingebunden sein. SSO wird über *primäre Aktualisierungstoken* oder *PRTs* (Primary Refresh Token) bereitgestellt und nicht per Kerberos. Die Benutzeroberfläche ist für Windows 10-Geräte optimiert. Das einmalige Anmelden erfolgt im Microsoft Edge-Browser automatisch. Es kann mithilfe einer Browsererweiterung auch in Chrome genutzt werden.
 
 Sie können sowohl Azure AD Join als auch das nahtlose einmalige Anmelden für Ihren Mandanten verwenden. Diese beiden Features ergänzen einander. Wenn beide Features aktiviert sind, hat das einmalige Anmelden aus Azure AD Join eine höhere Priorität als das nahtlose einmalige Anmelden.
 
@@ -74,79 +74,94 @@ Sie können sowohl Azure AD Join als auch das nahtlose einmalige Anmelden für I
 
 Ja. Für dieses Szenario benötigen Sie Version 2.1 oder höher des [Clients für die Arbeitsplatzeinbindung](https://www.microsoft.com/download/details.aspx?id=53554).
 
-**F: Wie kann ich ein Rollover des Kerberos-Entschlüsselungsschlüssels des `AZUREADSSOACC`-Computerkontos durchführen?**
+**F: Wie kann ich ein Rollover des Kerberos-Entschlüsselungsschlüssels des `AZUREADSSO`-Computerkontos durchführen?**
 
-Es ist wichtig, häufig ein Rollover des Kerberos-Entschlüsselungsschlüssels des `AZUREADSSOACC`-Computerkontos durchzuführen, das Azure AD repräsentiert und in Ihrer lokalen AD-Gesamtstruktur erstellt wurde.
+Es ist wichtig, häufig ein Rollover des Kerberos-Entschlüsselungsschlüssels des `AZUREADSSO`-Computerkontos durchzuführen, das Azure AD repräsentiert und in Ihrer lokalen AD-Gesamtstruktur erstellt wurde.
 
 >[!IMPORTANT]
 >Es wird dringend empfohlen, das Rollover des Kerberos-Entschlüsselungsschlüssels mindestens alle 30 Tage durchzuführen.
 
 Führen Sie diese Schritte auf dem lokalen Server durch, auf dem Azure AD Connect ausgeführt wird:
 
-    **Step 1. Get list of AD forests where Seamless SSO has been enabled**
+   > [!NOTE]
+   >Sie benötigen die Anmeldeinformationen für den Domänenadministrator und den globalen Administrator, um die folgenden Schritte auszuführen.
 
-    1. Laden Sie zuerst [Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/overview) herunter, und installieren Sie die Software.
-    2. Navigieren Sie zum Ordner `%programfiles%\Microsoft Azure Active Directory Connect`.
-    3. Importieren Sie das PowerShell-Modul „Nahtlose SSO“ mit folgendem Befehl: `Import-Module .\AzureADSSO.psd1`.
-    4. Führen Sie PowerShell als Administrator aus. Rufen Sie in PowerShell `New-AzureADSSOAuthenticationContext` auf. Mit diesem Befehl sollte ein Popupfenster geöffnet werden, in dem Sie die Anmeldeinformationen des globalen Administrators Ihres Mandanten eingeben können.
-    5. Rufen Sie `Get-AzureADSSOStatus | ConvertFrom-Json` auf. Dadurch erhalten Sie die Liste der AD-Gesamtstrukturen (siehe die Liste „Domänen“), in denen diese Funktion aktiviert ist.
+   **Schritt 1. Rufen Sie die Liste der AD-Gesamtstrukturen ab, für die das nahtlose einmalige Anmelden aktiviert wurde.**
 
-    **Schritt 2: Aktualisieren des Kerberos-Entschlüsselungsschlüssels für jede AD-Gesamtstruktur, in der er eingerichtet wurde**
+   1. Laden Sie zuerst [Azure AD PowerShell](/powershell/azure/active-directory/overview) herunter, und installieren Sie die Software.
+   2. Navigieren Sie zum Ordner `%programfiles%\Microsoft Azure Active Directory Connect`.
+   3. Importieren Sie das PowerShell-Modul „Nahtlose SSO“ mit folgendem Befehl: `Import-Module .\AzureADSSO.psd1`.
+   4. Führen Sie PowerShell als Administrator aus. Rufen Sie in PowerShell `New-AzureADSSOAuthenticationContext` auf. Mit diesem Befehl sollte ein Popupfenster geöffnet werden, in dem Sie die Anmeldeinformationen des globalen Administrators Ihres Mandanten eingeben können.
+   5. Rufen Sie `Get-AzureADSSOStatus | ConvertFrom-Json` auf. Dadurch erhalten Sie die Liste der AD-Gesamtstrukturen (siehe die Liste „Domänen“), in denen diese Funktion aktiviert ist.
 
-    1. Rufen Sie `$creds = Get-Credential` auf. Wenn Sie dazu aufgefordert werden, geben Sie die Anmeldeinformationen des Domänenadministrators für die vorgesehene AD-Gesamtstruktur ein.
+   **Schritt 2. Aktualisieren Sie den Kerberos-Entschlüsselungsschlüssel in jeder AD-Gesamtstruktur, in der er eingerichtet wurde.**
 
-    > [!NOTE]
-    > Um die gewünschte AD-Gesamtstruktur zu finden, verwenden wir den Domänenadministrator-Benutzernamen, der im Format der Benutzerprinzipalnamen (User Principal Names, UPN) (johndoe@contoso.com) oder qualifizierten SAM-Kontodomänennamen (contoso\johndoe oder contoso.com\johndoe) bereitgestellt wird. Wenn Sie qualifizierte SAM-Kontodomänennamen verwenden, verwenden wir den Domänenteil des Benutzernamens, um [den Domänencontroller des Domänenadministrators mithilfe des DNS zu suchen](https://social.technet.microsoft.com/wiki/contents/articles/24457.how-domain-controllers-are-located-in-windows.aspx). Wenn Sie stattdessen den UPN verwenden, [übersetzen wir ihn in einen qualifizierten SAM-Kontodomänennamen ](https://docs.microsoft.com/windows/desktop/api/ntdsapi/nf-ntdsapi-dscracknamesa), bevor der entsprechende Domänencontroller gesucht wird.
+   1. Rufen Sie `$creds = Get-Credential` auf. Wenn Sie dazu aufgefordert werden, geben Sie die Anmeldeinformationen des Domänenadministrators für die vorgesehene AD-Gesamtstruktur ein.
 
-    2. Rufen Sie `Update-AzureADSSOForest -OnPremCredentials $creds` auf. Dieser Befehl aktualisiert den Kerberos-Entschlüsselungsschlüssel für das `AZUREADSSOACC`-Computerkonto in dieser bestimmten AD-Gesamtstruktur und in Azure AD.
-    3. Wiederholen Sie die oben stehenden Schritte für jede AD-Gesamtstruktur, für die Sie das Feature eingerichtet haben.
+   > [!NOTE]
+   >Der Benutzername der Anmeldeinformationen des Domänenadministrators muss im Namensformat für das SAM-Konto („contoso\johndoe“ oder „contoso.com\johndoe“) eingegeben werden. Wir verwenden den Domänenteil des Benutzernamens, um den Domänencontroller des Domänenadministrators mithilfe von DNS zu suchen.
 
-    >[!IMPORTANT]
-    >Stellen Sie sicher, dass Sie den `Update-AzureADSSOForest`-Befehl _nur_ einmal ausführen. Andernfalls funktioniert das Feature erst wieder, wenn die Kerberos-Tickets Ihrer Benutzer ablaufen und von Ihrem lokalen Active Directory neu ausgestellt werden.
+   >[!NOTE]
+   >Das verwendete Domänenadministratorkonto darf kein Mitglied der Gruppe „Geschützte Benutzer“ sein. Andernfalls schlägt der Vorgang fehl.
+
+   2. Rufen Sie `Update-AzureADSSOForest -OnPremCredentials $creds` auf. Dieser Befehl aktualisiert den Kerberos-Entschlüsselungsschlüssel für das `AZUREADSSO`-Computerkonto in dieser bestimmten AD-Gesamtstruktur und in Azure AD.
+   
+   >[!NOTE]
+   >Wenn Sie kein Domänenadministrator sind und der Domänenadministrator Ihnen Berechtigungen zugewiesen hat, sollten Sie `Update-AzureADSSOForest -OnPremCredentials $creds -PreserveCustomPermissionsOnDesktopSsoAccount` aufrufen.
+   
+   3. Wiederholen Sie die oben stehenden Schritte für jede AD-Gesamtstruktur, für die Sie das Feature eingerichtet haben.
+   
+  >[!NOTE]
+   >Wenn Sie eine andere Gesamtstruktur als die von Azure AD Connect aktualisieren, stellen Sie sicher, dass Konnektivität zum globalen Katalogserver (TCP 3268 und TCP 3269) gegeben ist.
+
+   >[!IMPORTANT]
+   >Stellen Sie sicher, dass Sie den `Update-AzureADSSOForest`-Befehl _nur_ einmal ausführen. Andernfalls funktioniert das Feature erst wieder, wenn die Kerberos-Tickets Ihrer Benutzer ablaufen und von Ihrem lokalen Active Directory neu ausgestellt werden.
 
 **F: Wie kann ich Seamless SSO deaktivieren?**
 
-    **Step 1. Disable the feature on your tenant**
+   **Schritt 1. Deaktivieren Sie das Feature für Ihren Mandanten.**
 
-        **Option A: Disable using Azure AD Connect**
+   **Option A: Deaktivieren mit Azure AD Connect**
+    
+   1. Führen Sie Azure AD Connect aus, wählen Sie **Benutzeranmeldung ändern** aus, und klicken Sie auf **Weiter**.
+   2. Deaktivieren Sie dann die Option **Einmaliges Anmelden aktivieren**. Setzen Sie den Assistenten fort.
 
-        1. Run Azure AD Connect, choose **Change user sign-in page** and click **Next**.
-        2. Uncheck the **Enable single sign on** option. Continue through the wizard.
+   Nach Abschluss des Assistenten ist die nahtlose SSO für Ihren Mandanten deaktiviert. Allerdings wird auf dem Bildschirm die folgende Meldung angezeigt:
 
-        After completing the wizard, Seamless SSO will be disabled on your tenant. However, you will see a message on screen that reads as follows:
+   „Das einmalige Anmelden (SSO) ist jetzt deaktiviert, aber zur Bereinigung müssen manuell zusätzliche Schritte ausgeführt werden. Weitere Informationen“
 
-        "Single sign-on is now disabled, but there are additional manual steps to perform in order to complete clean-up. Learn more"
+   Um den Bereinigungsprozess abzuschließen, führen Sie die Schritte 2 und 3 auf dem lokalen Server durch, auf dem Azure AD Connect ausgeführt wird.
 
-        To complete the clean-up process, follow steps 2 and 3 on the on-premises server where you are running Azure AD Connect.
+   **Option B: Deaktivieren mit PowerShell**
 
-        **Option B: Disable using PowerShell**
+   Führen Sie die folgenden Schritte auf dem lokalen Server durch, auf dem Azure AD Connect ausgeführt wird:
 
-        Run the following steps on the on-premises server where you are running Azure AD Connect:
+   1. Laden Sie zuerst [Azure AD PowerShell](/powershell/azure/active-directory/overview) herunter, und installieren Sie die Software.
+   2. Navigieren Sie zum Ordner `%programfiles%\Microsoft Azure Active Directory Connect`.
+   3. Importieren Sie das PowerShell-Modul „Nahtlose SSO“ mit folgendem Befehl: `Import-Module .\AzureADSSO.psd1`.
+   4. Führen Sie PowerShell als Administrator aus. Rufen Sie in PowerShell `New-AzureADSSOAuthenticationContext` auf. Mit diesem Befehl sollte ein Popupfenster geöffnet werden, in dem Sie die Anmeldeinformationen des globalen Administrators Ihres Mandanten eingeben können.
+   5. Rufen Sie `Enable-AzureADSSO -Enable $false` auf.
+   
+   Hier wird nahtloses einmaliges Anmelden deaktiviert, die Domänen behalten jedoch ihre Konfiguration, falls Sie das nahtlose einmalige Anmelden später wieder aktivieren möchten. Wenn Sie die Domänen vollständig aus der Konfiguration für nahtloses einmaliges Anmelden entfernen möchten, rufen Sie das folgende Cmdlet auf, nachdem Sie Schritt 5 oben ausgeführt haben: `Disable-AzureADSSOForest -DomainFqdn <fqdn>`.
 
-        1. First, download, and install [Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/overview).
-        2. Navigate to the `%programfiles%\Microsoft Azure Active Directory Connect` folder.
-        3. Import the Seamless SSO PowerShell module using this command: `Import-Module .\AzureADSSO.psd1`.
-        4. Run PowerShell as an Administrator. In PowerShell, call `New-AzureADSSOAuthenticationContext`. This command should give you a popup to enter your tenant's Global Administrator credentials.
-        5. Call `Enable-AzureADSSO -Enable $false`.
+   >[!IMPORTANT]
+   >Das Deaktivieren des nahtlosen SSO mithilfe von PowerShell ändert nicht den Status in Azure AD Connect. Das nahtlose einmalige Anmelden wird auf der Seite **Benutzeranmeldung ändern** als aktiviert angezeigt.
 
-        >[!IMPORTANT]
-        >Disabling Seamless SSO using PowerShell will not change the state in Azure AD Connect. Seamless SSO will show as enabled in the **Change user sign-in** page.
+   **Schritt 2. Rufen Sie die Liste der AD-Gesamtstrukturen ab, für die das nahtlose einmalige Anmelden aktiviert wurde.**
 
-    **Step 2. Get list of AD forests where Seamless SSO has been enabled**
+   Führen Sie die Aufgaben 1 bis 4 unten aus, wenn Sie das nahtlose einmalige Anmelden mit Azure AD Connect deaktiviert haben. Wenn Sie das nahtlose einmalige Anmelden stattdessen mithilfe von PowerShell deaktiviert haben, fahren Sie direkt mit Aufgabe 5 fort.
 
-    Follow tasks 1 through 4 below if you have disabled Seamless SSO using Azure AD Connect. If you have disabled Seamless SSO using PowerShell instead, jump ahead to task 5 below.
+   1. Laden Sie zuerst [Azure AD PowerShell](/powershell/azure/active-directory/overview) herunter, und installieren Sie die Software.
+   2. Navigieren Sie zum Ordner `%programfiles%\Microsoft Azure Active Directory Connect`.
+   3. Importieren Sie das PowerShell-Modul „Nahtlose SSO“ mit folgendem Befehl: `Import-Module .\AzureADSSO.psd1`.
+   4. Führen Sie PowerShell als Administrator aus. Rufen Sie in PowerShell `New-AzureADSSOAuthenticationContext` auf. Mit diesem Befehl sollte ein Popupfenster geöffnet werden, in dem Sie die Anmeldeinformationen des globalen Administrators Ihres Mandanten eingeben können.
+   5. Rufen Sie `Get-AzureADSSOStatus | ConvertFrom-Json` auf. Dadurch erhalten Sie die Liste der AD-Gesamtstrukturen (siehe die Liste „Domänen“), in denen diese Funktion aktiviert ist.
 
-    1. Laden Sie zuerst [Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/overview) herunter, und installieren Sie die Software.
-    2. Navigieren Sie zum Ordner `%programfiles%\Microsoft Azure Active Directory Connect`.
-    3. Importieren Sie das PowerShell-Modul „Nahtlose SSO“ mit folgendem Befehl: `Import-Module .\AzureADSSO.psd1`.
-    4. Führen Sie PowerShell als Administrator aus. Rufen Sie in PowerShell `New-AzureADSSOAuthenticationContext` auf. Mit diesem Befehl sollte ein Popupfenster geöffnet werden, in dem Sie die Anmeldeinformationen des globalen Administrators Ihres Mandanten eingeben können.
-    5. Rufen Sie `Get-AzureADSSOStatus | ConvertFrom-Json` auf. Dadurch erhalten Sie die Liste der AD-Gesamtstrukturen (siehe die Liste „Domänen“), in denen diese Funktion aktiviert ist.
-
-    **Schritt 3: Löschen Sie das Computerkonto `AZUREADSSOACCT` manuell aus jeder in der Liste aufgeführten AD-Gesamtstruktur.**
+   **Schritt 3. Löschen Sie das Computerkonto `AZUREADSSO` manuell aus jeder in der Liste enthaltenen AD-Gesamtstruktur.**
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [**Schnellstart**](how-to-connect-sso-quick-start.md): Einrichten und Ausführen der nahtlosen SSO mit Azure AD
+- [**Schnellstart**](how-to-connect-sso-quick-start.md): Einrichten und Ausführen des nahtlosen einmaligen Anmeldens von Azure AD
 - [**Technische Einzelheiten**](how-to-connect-sso-how-it-works.md) – Funktionsweise dieses Features verstehen
 - [**Problembehandlung**](tshoot-connect-sso.md) – Beheben von häufig auftretenden Problemen mit diesem Feature
-- [**UserVoice:** ](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect) Verfassen neuer Feature-Anforderungen
+- [**UserVoice:**](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect) Verfassen neuer Feature-Anforderungen

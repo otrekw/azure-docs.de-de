@@ -1,19 +1,19 @@
 ---
 title: Sicherstellen der Hochverfügbarkeit von Anwendungen bei Ausführung in VMware in Azure
 description: In diesem Artikel werden CloudSimple-Hochverfügbarkeitsfunktionen für die Behandlung häufiger Anwendungsfehlerszenarien von Anwendungen beschrieben, die in einer privaten CloudSimple-Cloud ausgeführt werden.
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/20/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 5a48a75d70234b06942f5141402070c89c543f18
-ms.sourcegitcommit: d3dced0ff3ba8e78d003060d9dafb56763184d69
+ms.openlocfilehash: 8bb1f8bb2aaeab88e5a9ea19534c8983af8c1626
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69901766"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97895749"
 ---
 # <a name="ensure-application-high-availability-when-running-in-vmware-on-azure"></a>Sicherstellen der Hochverfügbarkeit von Anwendungen bei Ausführung in VMware in Azure
 
@@ -21,21 +21,21 @@ Die CloudSimple-Lösung bietet Hochverfügbarkeit für Ihre Anwendungen, die in 
 
 | Fehlerszenario | Anwendung geschützt? | Hochverfügbarkeitsfunktion für Plattform | Hochverfügbarkeitsfunktion für VMware | Hochverfügbarkeitsfunktion für Azure |
 ------------ | ------------- | ------------ | ------------ | ------------- |
-| Datenträgerfehler | JA | Schnelles Ersetzen des fehlerhaften Knotens | [Informationen zur vSAN-Standardspeicher-Richtlinie](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.virtualsan.doc/GUID-C228168F-6807-4C2A-9D74-E584CAF49A2A.html) |
-| Lüfterausfall | JA | Redundante Lüfter, schnelles Ersetzen des fehlerhaften Knotens |  |  |
-| NIC-Fehler | JA | Redundante NIC, schnelles Ersetzen des fehlerhaften Knotens
-| Stromausfall bei Host | JA | Redundante Stromversorgung |  |  |
-| ESXi-Hostfehler | JA | Schnelles Ersetzen des fehlerhaften Knotens | [VMware vSphere-Hochverfügbarkeit](https://www.vmware.com/products/vsphere/high-availability.html) |  |  |
-| VM-Fehler | JA | [Load Balancer](load-balancers.md)  | [VMware vSphere-Hochverfügbarkeit](https://www.vmware.com/products/vsphere/high-availability.html) | Azure Load Balancer für zustandslose VMware-VMs |
-| Fehler an Blattknoten-Switchport | JA | Redundante NIC |  |  |
-| Fehler an Blattknoten-Switch | JA | Redundante Blattknoten-Switches |  |  |
-| Rack-Fehler | JA | Platzierungsgruppen |  |  |
-| Netzwerkkonnektivität mit lokalem DC | JA  | Redundante Netzwerkdienste |  | Redundante ExpressRoute-Leitungen |
-| Netzwerkkonnektivität mit Azure | JA | |  | Redundante ExpressRoute-Leitungen |
-| Datacenter-Fehler | JA |  |  | Verfügbarkeitszonen |
-| Regionaler Fehler | JA  |  |  | Azure-Regionen |
+| Datenträgerfehler | YES | Schnelles Ersetzen des fehlerhaften Knotens | [Informationen zur vSAN-Standardspeicher-Richtlinie](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.virtualsan.doc/GUID-C228168F-6807-4C2A-9D74-E584CAF49A2A.html) |
+| Lüfterausfall | YES | Redundante Lüfter, schnelles Ersetzen des fehlerhaften Knotens |  |  |
+| NIC-Fehler | YES | Redundante NIC, schnelles Ersetzen des fehlerhaften Knotens
+| Stromausfall bei Host | YES | Redundante Stromversorgung |  |  |
+| ESXi-Hostfehler | YES | Schnelles Ersetzen des fehlerhaften Knotens | [VMware vSphere-Hochverfügbarkeit](https://www.vmware.com/products/vsphere/high-availability.html) |  |  |
+| VM-Fehler | YES | [Load Balancer](load-balancers.md)  | [VMware vSphere-Hochverfügbarkeit](https://www.vmware.com/products/vsphere/high-availability.html) | Azure Load Balancer für zustandslose VMware-VMs |
+| Fehler an Blattknoten-Switchport | YES | Redundante NIC |  |  |
+| Fehler an Blattknoten-Switch | YES | Redundante Blattknoten-Switches |  |  |
+| Rack-Fehler | YES | Platzierungsgruppen |  |  |
+| Netzwerkkonnektivität zum lokalen Rechenzentrum | YES  | Redundante Netzwerkdienste |  | Redundante ExpressRoute-Leitungen |
+| Netzwerkkonnektivität mit Azure | YES | |  | Redundante ExpressRoute-Leitungen |
+| Datacenter-Fehler | YES |  |  | Verfügbarkeitszonen |
+| Regionaler Fehler | YES  |  |  | Azure-Regionen |
 
-Die Azure VMware-Lösung von CloudSimple bietet die folgenden Hochverfügbarkeitsfunktionen.
+Azure VMware Solution by CloudSimple bietet die folgenden Hochverfügbarkeitsfunktionen.
 
 ## <a name="fast-replacement-of-failed-node"></a>Schnelles Ersetzen des fehlerhaften Knotens
 
@@ -47,7 +47,7 @@ Ein Benutzer, der eine private Cloud erstellt, kann eine Azure-Region und eine P
 
 ## <a name="availability-zones"></a>Verfügbarkeitszonen
 
-Verfügbarkeitszonen sind ein Hochverfügbarkeitsangebot, das Anwendungen und Daten vor Ausfällen von Rechenzentren schützt. Bei Verfügbarkeitszonen handelt es sich um spezielle physische Standorte in einer Azure-Region. Jede Zone besteht aus mindestens einem Rechenzentrum, dessen Stromversorgung, Kühlung und Netzwerkbetrieb unabhängig funktionieren. Jede Region verfügt über eine Verfügbarkeitszone. Weitere Informationen finden Sie unter [„Was sind Verfügbarkeitszonen in Azure?“](../availability-zones/az-overview.md).
+Verfügbarkeitszonen sind ein Hochverfügbarkeitsangebot, das Anwendungen und Daten vor Ausfällen von Rechenzentren schützt. Bei Verfügbarkeitszonen handelt es sich um spezielle physische Standorte in einer Azure-Region. Jede Zone besteht aus mindestens einem Rechenzentrum, dessen Stromversorgung, Kühlung und Netzwerkbetrieb unabhängig funktionieren. Jede Region verfügt über eine Verfügbarkeitszone. Weitere Informationen finden Sie unter [Was sind Verfügbarkeitszonen in Azure?](../availability-zones/az-overview.md).
 
 ## <a name="redundant-azure-expressroute-circuits"></a>Redundante Azure ExpressRoute-Leitungen
 

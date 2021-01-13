@@ -1,34 +1,33 @@
 ---
-title: Einrichten der Sicherheitsinformationen (Vorschau) zur Verwendung von SMS-Nachrichten – Azure Active Directory | Microsoft-Dokumentation
-description: Hier finden Sie Informationen dazu, wie Sie Ihre Sicherheitsinformationen einrichten, um Ihre Identität mithilfe von SMS-Nachrichten auf Ihrem Mobilgerät zu bestätigen.
+title: Einrichten von SMS-Nachrichten als Überprüfungsmethode – Azure AD
+description: Erfahren Sie, wie Sie die Seite „Sicherheitsinformationen“ (Vorschau) einrichten, um Ihre Identität mithilfe von SMS-Nachrichten als Überprüfungsmethode zu verifizieren.
 services: active-directory
-author: eross-msft
+author: curtand
 manager: daveba
 ms.reviewer: sahenry
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
-ms.topic: conceptual
+ms.topic: end-user-help
 ms.date: 02/13/2019
-ms.author: lizross
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7c1c6aadcf8fb247a7c2a53cef7d1ed0c85cf374
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.author: curtand
+ms.openlocfilehash: c68e01e0eb7c926f47c99b16efa87d23a10b6711
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68382834"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91537032"
 ---
-# <a name="set-up-security-info-preview-to-use-text-messaging"></a>Einrichten der Sicherheitsinformationen (Vorschau) zur Verwendung von SMS-Nachrichten
+# <a name="set-up-text-messaging-as-your-verification-method"></a>Einrichten von SMS-Nachrichten als Überprüfungsmethode
 
 Mit diesen Schritten können Sie Ihre Methoden für die zweistufige Überprüfung und die Kennwortzurücksetzung hinzufügen. Nachdem Sie die Ersteinrichtung abgeschlossen haben, können Sie zur Seite **Sicherheitsinformation** zurückkehren, um Sicherheitsinformationen hinzuzufügen, zu aktualisieren oder zu löschen.
 
-Wenn Sie direkt nach der Anmeldung mit Ihrem Geschäfts-, Schul- oder Unikonto zur Einrichtung der Sicherheitsinformationen aufgefordert werden, finden Sie weitere Informationen im Artikel [Einrichten Ihrer Sicherheitsinformationen über die Aufforderung auf der Anmeldeseite](security-info-setup-signin.md).
+Wenn Sie direkt nach der Anmeldung mit Ihrem Geschäfts-, Schul- oder Unikonto zur Einrichtung der Sicherheitsinformation aufgefordert werden, finden Sie weitere Informationen im Artikel [Einrichten Ihrer Sicherheitsinformation über die Aufforderung auf der Anmeldeseite](security-info-setup-signin.md).
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-preview-notice-security-info.md)]
 
 >[!Note]
->Wird keine Telefonoption angezeigt, lässt Ihre Organisation unter Umständen die Nutzung einer Telefonnummer für die Überprüfung nicht zu. In diesem Fall müssen Sie eine andere Methode auswählen oder sich an Ihren Administrator wenden, um weitere Unterstützung zu erhalten.
+>Wenn keine Telefonoption angezeigt wird, ist es möglich, dass Ihre Organisation die Verwendung dieser Option für die Überprüfung nicht zulässt. In diesem Fall müssen Sie eine andere Methode auswählen oder sich an den Helpdesk Ihrer Organisation wenden, um weitere Unterstützung zu erhalten.
 
 ## <a name="set-up-text-messages-from-the-security-info-page"></a>Einrichten von SMS-Nachrichten auf der Seite „Sicherheitsinformationen“
 
@@ -39,7 +38,7 @@ Je nach den Einstellungen Ihrer Organisation können Sie SMS-Nachrichten als ein
 
 ### <a name="to-set-up-text-messages"></a>So richten Sie SMS-Nachrichten ein
 
-1. Melden Sie sich bei Ihrem Geschäfts-, Schul- oder Unikonto an, und rufen Sie die Seite https://myprofile.microsoft.com/ auf.
+1. Melden Sie sich bei Ihrem Geschäfts-, Schul- oder Unikonto an, und rufen Sie die Seite https://myaccount.microsoft.com/ auf.
 
     ![Seite „Mein Profil“ mit hervorgehobenen Links zu Sicherheitsinformationen](media/security-info/securityinfo-myprofile-page.png)
 
@@ -53,7 +52,7 @@ Je nach den Einstellungen Ihrer Organisation können Sie SMS-Nachrichten als ein
 
 4. Geben Sie auf der Seite **Telefon** die Telefonnummer für Ihr Mobilgerät ein, wählen Sie **Code per SMS an mich senden** aus, und klicken Sie dann auf **Weiter**.
 
-    ![Telefonnummer hinzufügen und SMS auswählen](media/security-info/securityinfo-myprofile-phonetext-addnumber.png)
+    ![Der Screenshot zeigt die Seite „Telefon“ mit ausgewähltem „Code per SMS an mich senden“.](media/security-info/securityinfo-myprofile-phonetext-addnumber.png)
 
 5. Geben Sie den Code ein, der Ihnen per SMS an Ihr Mobilgerät gesendet wurde, und klicken Sie dann auf **Weiter**.
 
@@ -74,7 +73,7 @@ Wenn Sie SMS-Nachrichten nicht mehr als Methode für Sicherheitsinformationen ve
 
 ### <a name="to-delete-text-messaging"></a>So löschen Sie die SMS-Option
 
-1. Klicken Sie auf der Seite **Sicherheitsinformationen** auf den Link **Löschen** neben der Option **Telefon**.
+1. Klicken Sie auf der Seite **Sicherheitsinformation** auf den Link **Löschen** neben der Option **Telefon**.
 
     ![Link zum Löschen der Methoden für Telefonanrufe und SMS aus den Sicherheitsinformationen](media/security-info/securityinfo-myprofile-phonetext-delete.png)
 
@@ -90,19 +89,19 @@ Wenn Sie die SMS-Option als Standardmethode für das Anmelden bei Ihrem Geschäf
 
     ![Link zum Ändern der Standardanmeldemethode](media/security-info/securityinfo-myprofile-phonetext-defaultchange.png)
 
-2. Wählen Sie aus der Dropdownliste der verfügbaren Methoden die Option **Telefon – SMS ( *_Ihre_Telefonnummer_* )** aus, und klicken Sie dann auf **Bestätigen**.
+2. Wählen Sie aus der Dropdownliste der verfügbaren Methoden die Option **Telefon – SMS (*_Ihre_Telefonnummer_*)** aus, und klicken Sie dann auf **Bestätigen**.
 
     ![Standardmäßige Anmeldemethode auswählen](media/security-info/securityinfo-myprofile-phonetext-changeddefault.png)
 
-    Die Standardmethode für Anmeldungen ändert sich zu **Telefon – SMS ( *_Ihre_Telefonnummer_* )** .
+    Die Standardmethode für Anmeldungen ändert sich zu **Telefon – SMS (*_Ihre_Telefonnummer_*)** .
 
 ## <a name="additional-security-info-methods"></a>Weitere Methoden für Sicherheitsinformationen
 
 Basierend auf der Aktion, die Sie ausführen möchten, stehen zusätzliche Möglichkeiten zur Verfügung, wie Ihre Organisation sich mit Ihnen in Verbindung setzen kann, um Ihre Identität zu überprüfen. Die Optionen lauten:
 
-- **Authentifikator-App:** Sie können eine Authentifikator-App herunterladen und verwenden, um entweder eine Genehmigungsbenachrichtigung oder einen nach dem Zufallsprinzip generierten Genehmigungscode für die zweistufige Überprüfung oder die Kennwortzurücksetzung zu erhalten. Eine Schrittanleitung zum Einrichten und Verwenden der Microsoft Authenticator-App finden Sie unter [Einrichten der Sicherheitsinformationen zur Verwendung einer Authenticator-App](security-info-setup-auth-app.md).
+- **Authentifikator-App:** Sie können eine Authentifikator-App herunterladen und verwenden, um entweder eine Genehmigungsbenachrichtigung oder einen nach dem Zufallsprinzip generierten Genehmigungscode für die zweistufige Überprüfung oder die Kennwortzurücksetzung zu erhalten. Ausführliche Anweisungen zum Einrichten und Verwenden der Microsoft Authenticator-App finden Sie unter [Einrichten der Sicherheitsinformation zur Verwendung einer Authentifikator-App](security-info-setup-auth-app.md).
 
-- **Anruf bei einem mobilen Gerät oder einer geschäftlichen Telefonnummer**. Geben Sie die Nummer Ihres mobilen Geräts an, und erhalten Sie einen Telefonanruf für die zweistufige Überprüfung oder die Kennwortzurücksetzung. Ausführliche Anweisungen dazu, wie Sie Ihre Identität mit einer Telefonnummer bestätigen, finden Sie unter [Einrichten der Sicherheitsinformation zur Verwendung von Telefonanrufen](security-info-setup-phone-number.md).
+- **Anruf bei einem mobilen Gerät oder einer geschäftlichen Telefonnummer:** Geben Sie die Nummer Ihres mobilen Geräts an, und erhalten Sie einen Telefonanruf für die zweistufige Überprüfung oder die Kennwortzurücksetzung. Ausführliche Anweisungen dazu, wie Sie Ihre Identität mit einer Telefonnummer bestätigen, finden Sie unter [Einrichten der Sicherheitsinformation zur Verwendung von Telefonanrufen](security-info-setup-phone-number.md).
 
 - **Sicherheitsschlüssel:** Registrieren Sie Ihren Microsoft-kompatiblen Sicherheitsschlüssel, und verwenden Sie ihn zusammen mit einer PIN für die zweistufige Überprüfung oder die Kennwortzurücksetzung. Unter [Einrichten der Sicherheitsinformationen zur Verwendung eines Sicherheitsschlüssels (Vorschau)](security-info-setup-security-key.md) erfahren Sie Schritt für Schritt, wie Sie Ihre Identität mithilfe eines Sicherheitsschlüssels bestätigen.
 
@@ -115,6 +114,6 @@ Basierend auf der Aktion, die Sie ausführen möchten, stehen zusätzliche Mögl
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Setzen Sie Ihr Kennwort zurück, wenn Sie es verloren oder vergessen haben. Verwenden Sie dazu das [Portal für die Kennwortzurücksetzung](https://passwordreset.microsoftonline.com/), oder führen Sie die Schritte im Artikel [Reset your work or school password](user-help-reset-password.md) (Zurücksetzen des Kennworts eines Geschäfts-, Schul- oder Unikontos) aus.
+- Setzen Sie Ihr Kennwort zurück, wenn Sie es verloren oder vergessen haben. Verwenden Sie dazu das [Portal für die Kennwortzurücksetzung](https://passwordreset.microsoftonline.com/), oder führen Sie die Schritte im Artikel [Reset your work or school password](active-directory-passwords-update-your-own-password.md) (Zurücksetzen des Kennworts eines Geschäfts-, Schul- oder Unikontos) aus.
 
 - Der Artikel [Wenn Sie sich nicht bei Ihrem Microsoft-Konto anmelden können](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant) enthält Tipps zur Problembehandlung bei Anmeldeproblemen.

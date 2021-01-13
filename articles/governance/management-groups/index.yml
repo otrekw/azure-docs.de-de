@@ -9,13 +9,13 @@ metadata:
   ms.collection: collection
   author: DCtheGeek
   ms.author: dacoulte
-  ms.date: 09/26/2019
-  ms.openlocfilehash: 9d91baaec7f1bd0e365f86ea07174d6f9e32725c
-  ms.sourcegitcommit: e1b6a40a9c9341b33df384aa607ae359e4ab0f53
+  ms.date: 09/30/2020
+  ms.openlocfilehash: 120e020a30daf377844ad9933a067def3360a399
+  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 09/27/2019
-  ms.locfileid: "71341044"
+  ms.lasthandoff: 10/09/2020
+  ms.locfileid: "91597770"
 landingContent:
 - title: Informationen zu Azure Governance
   linkLists:
@@ -29,11 +29,43 @@ landingContent:
     links:
     - text: Azure-Verwaltungsgruppen
       url: ./overview.md
-- title: Organisieren Ihrer Ressourcen
+- title: Erste Schritte
   linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Erstellen einer Verwaltungsgruppe (Portal)
+      url: ./create-management-group-portal.md
+    - text: Erstellen einer Verwaltungsgruppe (Azure CLI)
+      url: ./create-management-group-azure-cli.md
+    - text: Erstellen einer Verwaltungsgruppe (Azure PowerShell)
+      url: ./create-management-group-powershell.md
+    - text: Erstellen einer Verwaltungsgruppe (.NET)
+      url: ./create-management-group-dotnet.md
+    - text: Erstellen einer Verwaltungsgruppe (JavaScript)
+      url: ./create-management-group-javascript.md
+    - text: Erstellen einer Verwaltungsgruppe (REST)
+      url: ./create-management-group-rest-api.md
+    - text: Bereitstellen von Ressourcen in einer Verwaltungsgruppe (ARM-Vorlagen)
+      url: ../../azure-resource-manager/templates/deploy-to-management-group.md
   - linkListType: how-to-guide
     links:
-    - text: Erstellen von Verwaltungsgruppen
-      url: ./create.md
-    - text: Verwalten Ihrer Ressourcen
+    - text: Verwalten der Ressourcenhierarchie
       url: ./manage.md
+    - text: Schützen der Ressourcenhierarchie
+      url: ./how-to/protect-resource-hierarchy.md
+- title: Verweis
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Azure CLI
+      url: /cli/azure/account/management-group
+    - text: Azure PowerShell
+      url: /powershell/module/az.resources/#resources
+    - text: Azure SDK für .NET
+      url: /dotnet/api/overview/azure/managementgroups
+    - text: Azure SDK für JavaScript
+      url: /javascript/api/@azure/arm-managementgroups/managementgroups
+    - text: REST
+      url: /rest/api/resources/managementgroups
+    - text: Resource Manager-Vorlagen
+      url: /azure/templates/microsoft.management/managementgroups

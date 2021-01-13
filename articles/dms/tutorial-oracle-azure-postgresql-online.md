@@ -1,26 +1,27 @@
 ---
-title: 'Tutorial: Ausführen einer Onlinemigration von Oracle zu Azure Database for PostgreSQL mit Azure Database Migration Service | Microsoft-Dokumentation'
+title: 'Tutorial: Onlinemigration von Oracle zu Azure Database for PostgreSQL'
+titleSuffix: Azure Database Migration Service
 description: Hier erfahren Sie, wie Sie mit Azure Database Migration Service eine Onlinemigration von einer lokal oder auf virtuellen Computern gehosteten Oracle-Instanz zu Azure Database for PostgreSQL ausführen.
 services: dms
-author: HJToland3
-ms.author: jtoland
+author: arunkumarthiags
+ms.author: arthiaga
 manager: craigg
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
-ms.custom: mvc, tutorial
-ms.topic: article
-ms.date: 09/10/2019
-ms.openlocfilehash: 8944a5adbe1b9e129b4a95c64aaa7a75fb96ac82
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.custom: seo-lt-2019
+ms.topic: tutorial
+ms.date: 01/24/2020
+ms.openlocfilehash: df789161bb9db8d49f069992600b5fcb4f78dd03
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70845544"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96006541"
 ---
 # <a name="tutorial-migrate-oracle-to-azure-database-for-postgresql-online-using-dms-preview"></a>Tutorial: Onlinemigration von Oracle zu Azure Database for PostgreSQL mit DMS (Vorschauversion)
 
-Mit Azure Database Migration Service können Sie die Datenbanken von lokal oder auf virtuellen Computern gehosteten Oracle-Datenbanken mit minimaler Downtime zu [Azure Database for PostgreSQL](https://docs.microsoft.com/azure/postgresql/) migrieren. Das heißt, dass Sie die Migration mit minimaler Downtime für die Anwendung ausführen können. In diesem Tutorial migrieren Sie die **HR**-Beispieldatenbank von einer lokal oder auf virtuellen Computern gehosteten Oracle 11g-Instanz zu Azure Database for PostgreSQL. Zu diesem Zweck verwenden Sie die Onlinemigrationsaktivität in Azure Database Migration Service.
+Mit Azure Database Migration Service können Sie die Datenbanken von lokal oder auf virtuellen Computern gehosteten Oracle-Datenbanken mit minimaler Downtime zu [Azure Database for PostgreSQL](../postgresql/index.yml) migrieren. Das heißt, dass Sie die Migration mit minimaler Downtime für die Anwendung ausführen können. In diesem Tutorial migrieren Sie die **HR**-Beispieldatenbank von einer lokal oder auf virtuellen Computern gehosteten Oracle 11g-Instanz zu Azure Database for PostgreSQL. Zu diesem Zweck verwenden Sie die Onlinemigrationsaktivität in Azure Database Migration Service.
 
 In diesem Tutorial lernen Sie Folgendes:
 > [!div class="checklist"]
@@ -48,24 +49,25 @@ Für dieses Tutorial benötigen Sie Folgendes:
 
 * Sie müssen [Oracle Database 11g Release 2 (Standard Edition, Standard Edition One oder Enterprise Edition)](https://www.oracle.com/technetwork/database/enterprise-edition/downloads/index.html) herunterladen und installieren.
 * Laden Sie die **HR**-Beispieldatenbank [hier](https://docs.oracle.com/database/121/COMSC/installation.htm#COMSC00002) herunter.
-* Laden Sie ora2pg herunter, und installieren Sie das Tool unter [Windows](https://github.com/Microsoft/DataMigrationTeam/blob/master/Whitepapers/Steps%20to%20Install%20ora2pg%20on%20Windows.pdf) oder unter [Linux](https://github.com/Microsoft/DataMigrationTeam/blob/master/Whitepapers/Steps%20to%20Install%20ora2pg%20on%20Linux.pdf).
-* [Erstellen einer Instanz in Azure Database for PostgreSQL](https://docs.microsoft.com/azure/postgresql/quickstart-create-server-database-portal).
-* Stellen Sie eine Verbindung mit der Instanz her, und erstellen Sie eine Datenbank gemäß den Anweisungen in [diesem Dokument](https://docs.microsoft.com/azure/postgresql/tutorial-design-database-using-azure-portal).
-* Erstellen Sie ein virtuelles Azure-Netzwerk (VNET) für Azure Database Migration Service, indem Sie das Azure Resource Manager-Bereitstellungsmodell verwenden, das über [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) oder [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) Site-to-Site-Konnektivität für Ihre lokalen Quellserver bereitstellt. Weitere Informationen zum Erstellen eines VNET finden Sie in der [Dokumentation zu Virtual Network](https://docs.microsoft.com/azure/virtual-network/) und insbesondere in den Schnellstartartikeln mit Schritt-für-Schritt-Anleitungen.
+* Laden Sie ora2pg herunter, und [installieren Sie das Tool unter Windows oder unter Linux](https://github.com/microsoft/DataMigrationTeam/blob/master/Whitepapers/Steps%20to%20Install%20ora2pg%20on%20Windows%20and%20Linux.pdf).
+* [Erstellen einer Instanz in Azure Database for PostgreSQL](../postgresql/quickstart-create-server-database-portal.md).
+* Stellen Sie eine Verbindung mit der Instanz her, und erstellen Sie eine Datenbank gemäß den Anweisungen in [diesem Dokument](../postgresql/tutorial-design-database-using-azure-portal.md).
+* Erstellen Sie ein Microsoft Azure Virtual Network für Azure Database Migration Service, indem Sie das Azure Resource Manager-Bereitstellungsmodell verwenden, das Site-to-Site-Konnektivität für Ihre lokalen Quellserver entweder über [ExpressRoute](../expressroute/expressroute-introduction.md) oder über [VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md) bereitstellt. Weitere Informationen zum Erstellen eines virtuellen Netzwerks finden Sie in der [Dokumentation zu Virtual Network](../virtual-network/index.yml) und insbesondere in den Schnellstartartikeln mit Schritt-für-Schritt-Anleitungen.
 
   > [!NOTE]
-  > Fügen Sie bei Verwendung von ExpressRoute mit Netzwerkpeering zu Microsoft während des VNET-Setups die folgenden [Dienstendpunkte](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview) zu dem Subnetz hinzu, in dem der Dienst bereitgestellt werden soll:
+  > Fügen Sie bei Verwendung von ExpressRoute mit Netzwerkpeering zu Microsoft während des Setups des virtuellen Netzwerks die folgenden [Dienstendpunkte](../virtual-network/virtual-network-service-endpoints-overview.md) zu dem Subnetz hinzu, in dem der Dienst bereitgestellt werden soll:
+  >
   > * Zieldatenbankendpunkt (z. B. SQL-Endpunkt, Cosmos DB-Endpunkt usw.)
   > * Speicherendpunkt
   > * Service Bus-Endpunkt
   >
   > Diese Konfiguration ist erforderlich, weil Azure Database Migration Service über keine Internetverbindung verfügt.
 
-* Stellen Sie sicher, dass die für Ihr VNet geltenden Regeln für Netzwerksicherheitsgruppen (NSG) die folgenden Ports für eingehende Kommunikation in Azure Database Migration Service nicht blockieren: 443, 53, 9354, 445, 12000. Ausführlichere Informationen zur NSG-Datenverkehrsfilterung in einem Azure-VNET finden Sie im Artikel [Filtern des Netzwerkdatenverkehrs mit Netzwerksicherheitsgruppen](https://docs.microsoft.com/azure/virtual-network/virtual-network-vnet-plan-design-arm).
-* Konfigurieren Sie Ihre [Windows-Firewall für Datenbank-Engine-Zugriff](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access).
+* Stellen Sie sicher, dass die Regeln für Netzwerksicherheitsgruppen (NSGs) des virtuellen Netzwerks nicht die folgenden Ports für eingehende Kommunikation in Azure Database Migration Service blockieren: 443, 53, 9354, 445, 12000. Ausführlichere Informationen zur NSG-Datenverkehrsfilterung in einem virtuellen Netzwerk finden Sie im Artikel [Filtern des Netzwerkdatenverkehrs mit Netzwerksicherheitsgruppen](../virtual-network/virtual-network-vnet-plan-design-arm.md).
+* Konfigurieren Sie Ihre [Windows-Firewall für Datenbank-Engine-Zugriff](/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access).
 * Öffnen Sie Ihre Windows-Firewall, damit Azure Database Migration Service auf den Oracle-Quellserver zugreifen kann (standardmäßig TCP-Port 1521).
 * Wenn Sie eine Firewallappliance vor Ihren Quelldatenbanken verwenden, müssen Sie möglicherweise Firewallregeln hinzufügen, um Azure Database Migration Service den Zugriff auf die Quelldatenbanken für die Migration zu ermöglichen.
-* Erstellen Sie für Azure Database for PostgreSQL eine [Firewallregel](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure) auf Serverebene, um Azure Database Migration Service den Zugriff auf die Zieldatenbanken zu ermöglichen. Geben Sie den Subnetzbereich des für Azure Database Migration Service verwendeten VNet an.
+* Erstellen Sie für Azure Database for PostgreSQL eine [Firewallregel](../azure-sql/database/firewall-configure.md) auf Serverebene, um Azure Database Migration Service den Zugriff auf die Zieldatenbanken zu ermöglichen. Geben Sie den Subnetzbereich des für Azure Database Migration Service verwendeten virtuellen Netzwerks an.
 * Aktivieren Sie den Zugriff auf die Oracle-Quelldatenbanken.
 
   > [!NOTE]
@@ -172,7 +174,7 @@ Zum Bewerten des erforderlichen Aufwands für die Migration von Oracle zu Azure 
 
 Die meisten Kunden wenden sehr viel Zeit dafür auf, den Bewertungsbericht zu überprüfen und den Aufwand für die automatische und manuelle Konvertierung zu berücksichtigen.
 
-Wenn Sie ora2pg zum Erstellen eines Bewertungsberichts konfigurieren und ausführen möchten, lesen Sie die Informationen im Abschnitt **Premigration: Assessment** (Prämigration: Bewertung) des Artikels [Oracle to Azure Database for PostgreSQL Cookbook](https://github.com/Microsoft/DataMigrationTeam/blob/master/Whitepapers/Oracle%20to%20Azure%20PostgreSQL%20Migration%20Cookbook.pdf) (Cookbook: Oracle zu Azure Database for PostgreSQL). [Hier](http://ora2pg.darold.net/report.html) finden Sie ein Beispiel für einen ora2pg-Bewertungsbericht zu Referenzzwecken.
+Wenn Sie ora2pg zum Erstellen eines Bewertungsberichts konfigurieren und ausführen möchten, lesen Sie die Informationen im Abschnitt **Premigration: Assessment** (Prämigration: Bewertung) des Artikels [Oracle to Azure Database for PostgreSQL Cookbook](https://github.com/Microsoft/DataMigrationTeam/blob/master/Whitepapers/Oracle%20to%20Azure%20PostgreSQL%20Migration%20Cookbook.pdf) (Cookbook: Oracle zu Azure Database for PostgreSQL). [Hier](https://ora2pg.darold.net/report.html) finden Sie ein Beispiel für einen ora2pg-Bewertungsbericht zu Referenzzwecken.
 
 ## <a name="export-the-oracle-schema"></a>Exportieren des Oracle-Schemas
 
@@ -196,7 +198,7 @@ Informationen zum Konfigurieren und Ausführen von ora2pg für die Schemakonvert
 
 Sie können Oracle-Tabellenschemas, gespeicherte Prozeduren, Pakete und andere Datenbankobjekte mithilfe von ora2pg konvertieren, um sie mit Postgres kompatibel zu machen, bevor Sie eine Migrationspipeline in Azure Database Migration Service starten. Anleitungen für ora2pg finden unter den folgenden Links:
 
-* [Installieren von ora2pg unter Windows](https://github.com/Microsoft/DataMigrationTeam/blob/master/Whitepapers/Steps%20to%20Install%20ora2pg%20on%20Windows.pdf)
+* [Installieren von ora2pg unter Windows](https://github.com/microsoft/DataMigrationTeam/blob/master/Whitepapers/Steps%20to%20Install%20ora2pg%20on%20Windows%20and%20Linux.pdf)
 * [Cookbook für die Migration von Oracle zu Azure PostgreSQL](https://github.com/Microsoft/DataMigrationTeam/blob/master/Whitepapers/Oracle%20to%20Azure%20PostgreSQL%20Migration%20Cookbook.pdf)
 
 Azure Database Migration Service kann auch das PostgreSQL-Tabellenschema erstellen. Der Dienst greift auf das Tabellenschema in der verbundenen Oracle-Quelle zu und erstellt in Azure Database for PostgreSQL ein kompatibles Tabellenschema. Es empfiehlt sich, das Schemaformat in Azure Database for PostgreSQL zu überprüfen, nachdem Azure Database Migration Service das Schema erstellt und die Daten verschoben hat.
@@ -204,7 +206,7 @@ Azure Database Migration Service kann auch das PostgreSQL-Tabellenschema erstell
 > [!IMPORTANT]
 > Azure Database Migration Service erstellt nur das Tabellenschema. Andere Datenbankobjekte wie gespeicherte Prozeduren, Pakete, Indizes und Ähnliches werden nicht erstellt.
 
-Löschen Sie außerdem den Fremdschlüssel in der Zieldatenbank, damit der vollständige Ladevorgang ausgeführt wird. Im Abschnitt **Migrieren des Beispielschemas** des Artikels [Tutorial: Migrieren von PostgreSQL zu Azure Database for PostgreSQL (online) mit DMS](https://docs.microsoft.com/azure/dms/tutorial-postgresql-azure-postgresql-online) finden Sie ein Skript, mit dem Sie den Fremdschlüssel löschen können. Verwenden Sie Azure Database Migration Service, um den vollständigen Ladevorgang und die Synchronisierung auszuführen.
+Löschen Sie außerdem den Fremdschlüssel in der Zieldatenbank, damit der vollständige Ladevorgang ausgeführt wird. Im Abschnitt **Migrieren des Beispielschemas** des Artikels [Tutorial: Migrieren von PostgreSQL zu Azure Database for PostgreSQL (online) mit DMS](./tutorial-postgresql-azure-postgresql-online.md) finden Sie ein Skript, mit dem Sie den Fremdschlüssel löschen können. Verwenden Sie Azure Database Migration Service, um den vollständigen Ladevorgang und die Synchronisierung auszuführen.
 
 ### <a name="when-the-postgresql-table-schema-already-exists"></a>Vorgehensweise bei bereits vorhandenem PostgreSQL-Tabellenschema
 
@@ -212,11 +214,11 @@ Falls Sie mithilfe von Tools wie ora2pg ein PostgreSQL-Schema erstellen, bevor S
 
 1. Wenn Sie ein neues Projekt für die Migration von Oracle zu Azure Database for PostgreSQL erstellen, werden Sie im Schritt „Schemas auswählen“ zum Auswählen von Zieldatenbank und Zielschema aufgefordert. Geben Sie die Zieldatenbank und das Zielschema an.
 
-   ![Abonnements im Portal anzeigen](media/tutorial-oracle-azure-postgresql-online/dms-map-to-target-databases.png)
+   ![Screenshot, der „Den Zieldatenbanken zuordnen“ zeigt.](media/tutorial-oracle-azure-postgresql-online/dms-map-to-target-databases.png)
 
 2. Im Bildschirm **Migrationseinstellungen** wird eine Liste mit Tabellen in der Oracle-Quelle angezeigt. Von Azure Database Migration Service wird versucht, Quell- und Zieltabellen anhand des Tabellennamens abzugleichen. Sind mehrere übereinstimmende Zieltabellen mit unterschiedlicher Groß-/Kleinschreibung vorhanden, können Sie die zuzuordnende Zieltabelle auswählen.
 
-    ![Abonnements im Portal anzeigen](media/tutorial-oracle-azure-postgresql-online/dms-migration-settings.png)
+    ![Screenshot, der „Migrationseinstellungen“ zeigt.](media/tutorial-oracle-azure-postgresql-online/dms-migration-settings.png)
 
 > [!NOTE]
 > Falls Sie Quelltabellennamen Tabellen mit abweichenden Namen zuordnen müssen, wenden Sie sich per E-Mail an [dmsfeedback@microsoft.com](mailto:dmsfeedbac@microsoft.com), um ein Automatisierungsskript für diesen Prozess zu erhalten.
@@ -243,8 +245,8 @@ Erste Schritte:
     | ------------- | ------------- | ------------- |
     | HR | targetHR.public | public.countries.country_id |
     | HR | targetHR.trgthr | trgthr.countries.country_id |
-    | HR | targetHR.TARGETHR | “TARGETHR”.”COUNTRIES”.”COUNTRY_ID” |
-    | HR | targetHR.HR | “HR”.”COUNTRIES”.”COUNTRY_ID” |
+    | HR | targetHR.TARGETHR | "TARGETHR"."COUNTRIES"."COUNTRY_ID" |
+    | HR | targetHR.HR | "HR"."COUNTRIES"."COUNTRY_ID" |
     | HR | targetHR.Hr | *Gemischte Groß-/Kleinschreibung kann nicht zugeordnet werden. |
 
     *Wenden Sie sich an [dmsfeedback@microsoft.com](mailto:dmsfeedback@microsoft.com), wenn Sie Schema- und Tabellennamen im PostgreSQL-Ziel mit gemischter Groß-/Kleinschreibung erstellen möchten. Sie erhalten von uns ein Skript für die Einrichtung eines Tabellenschemas mit gemischter Groß-/Kleinschreibung in der PostgreSQL-Zieldatenbank.
@@ -275,11 +277,11 @@ Erste Schritte:
   
 3. Geben Sie auf dem Bildschirm **Migrationsdienst erstellen** einen Namen für den Dienst, das Abonnement und eine neue oder vorhandene Ressourcengruppe an.
 
-4. Wählen Sie ein vorhandenes VNet aus, oder erstellen Sie ein neues VNet.
+4. Wählen Sie ein vorhandenes virtuelles Netzwerk aus, oder erstellen Sie ein neues.
 
-    Das VNet bietet Azure Database Migration Service Zugriff auf die Oracle-Quellinstanz und die Azure Database for PostgreSQL-Zielinstanz.
+    Das virtuelle Netzwerk bietet Azure Database Migration Service Zugriff auf die Oracle-Quellinstanz und die Azure Database for PostgreSQL-Zielinstanz.
 
-    Weitere Informationen zum Erstellen eines VNet im Azure-Portal finden Sie im Artikel [Erstellen eines virtuellen Netzwerks im Azure Portal](https://aka.ms/DMSVnet).
+    Weitere Informationen zum Erstellen eines virtuellen Netzwerks im Azure-Portal finden Sie im Artikel [Erstellen eines virtuellen Netzwerks im Azure Portal](../virtual-network/quick-create-portal.md).
 
 5. Wählen Sie einen Tarif.
 
@@ -384,5 +386,5 @@ Wenn der erste vollständige Ladevorgang abgeschlossen ist, werden die Datenbank
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Informationen zu bekannten Problemen und Einschränkungen beim Ausführen der Onlinemigration zu Azure Database for PostgreSQL finden Sie im Artikel [Bekannte Probleme/Migrationseinschränkungen bei der Onlinemigration zu Azure Database for PostgreSQL](known-issues-azure-postgresql-online.md).
-* Informationen zu Azure Database Migration Service finden Sie im Artikel [Was ist Azure Database Migration Service?](https://docs.microsoft.com/azure/dms/dms-overview).
-* Weitere Informationen zu Azure Database for PostgreSQL finden Sie im Artikel [Was ist Azure Database for PostgreSQL?](https://docs.microsoft.com/azure/postgresql/overview).
+* Informationen zu Azure Database Migration Service finden Sie im Artikel [Was ist Azure Database Migration Service?](./dms-overview.md).
+* Weitere Informationen zu Azure Database for PostgreSQL finden Sie im Artikel [Was ist Azure Database for PostgreSQL?](../postgresql/overview.md).

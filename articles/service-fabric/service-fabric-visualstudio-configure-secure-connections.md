@@ -1,25 +1,16 @@
 ---
-title: Konfigurieren sicherer Azure Service Fabric-Clusterverbindungen | Microsoft-Dokumentation
+title: Konfigurieren sicherer Azure Service Fabric-Clusterverbindungen
 description: Erfahren Sie, wie Sie mit Visual Studio sichere Verbindungen konfigurieren, die vom Azure Service Fabric-Cluster unterstützt werden.
-services: service-fabric
-documentationcenter: na
 author: cawaMS
-manager: paulyuk
-editor: tglee
-ms.assetid: 80501867-dd7a-4648-8bd6-d4f26b68402d
-ms.service: multiple
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: multiple
 ms.date: 8/04/2017
 ms.author: cawa
-ms.openlocfilehash: 8d76a2144234591792359ed8dd4a0779e6a2fc5c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d4d6b781d97d481793e69cf2ca97cca5b93ce432
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60628295"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96008530"
 ---
 # <a name="configure-secure-connections-to-a-service-fabric-cluster-from-visual-studio"></a>Konfigurieren sicherer Verbindungen mit einem Service Fabric-Cluster aus Visual Studio
 Erfahren Sie, wie Sie Visual Studio verwenden, um auf sichere Weise auf einen Azure Service Fabric-Cluster mit konfigurierten Zugriffsrichtlinien zuzugreifen.
@@ -44,9 +35,9 @@ Das Dialogfeld **Service Fabric-Anwendung veröffentlichen** überprüft automat
 3. Wählen Sie den Befehl **Veröffentlichen...** im Kontextmenü des Projekts aus, um das Dialogfeld **Azure-Anwendung veröffentlichen** zu öffnen, und wählen Sie dann den Zielcluster aus. Das Tool löst die Verbindung automatisch auf und speichert die Parameter für die sichere Verbindung im Veröffentlichungsprofil.
 4. Optional: Sie können das Veröffentlichungsprofil bearbeiten, um eine sichere Clusterverbindung anzugeben.
    
-   Da Sie die Veröffentlichungsprofil-XML-Datei manuell bearbeiten, um Zertifikatsinformationen anzugeben, achten Sie darauf, dass Sie den Namen des Zertifikatspeichers, den Speicherort und den Zertifikatfingerabdruck notieren. Sie müssen diese Werte für den Namen des Zertifikatspeichers und den Speicherort angeben. Informationen finden Sie unter [Gewusst wie: Abrufen des Fingerabdrucks eines Zertifikats](https://msdn.microsoft.com/library/ms734695\(v=vs.110\).aspx).
+   Da Sie die Veröffentlichungsprofil-XML-Datei manuell bearbeiten, um Zertifikatsinformationen anzugeben, achten Sie darauf, dass Sie den Namen des Zertifikatspeichers, den Speicherort und den Zertifikatfingerabdruck notieren. Sie müssen diese Werte für den Namen des Zertifikatspeichers und den Speicherort angeben. Unter [Vorgehensweise: Abrufen des Fingerabdrucks eines Zertifikats](https://techcommunity.microsoft.com/t5/azure-service-fabric/bg-p/Service-Fabric).
    
-   Sie können die *ClusterConnectionParameters* -Parameter verwenden, um die PowerShell-Parameter für die Herstellung der Verbindung mit dem Service Fabric-Cluster anzugeben. Es werden alle Parameter des Cmdlets Connect-ServiceFabricCluster akzeptiert. Eine Liste der verfügbaren Parameter finden Sie unter [Connect-ServiceFabricCluster](https://docs.microsoft.com/powershell/module/servicefabric/connect-servicefabriccluster) .
+   Sie können die *ClusterConnectionParameters* -Parameter verwenden, um die PowerShell-Parameter für die Herstellung der Verbindung mit dem Service Fabric-Cluster anzugeben. Es werden alle Parameter des Cmdlets Connect-ServiceFabricCluster akzeptiert. Eine Liste der verfügbaren Parameter finden Sie unter [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster) .
    
    Wenn Sie auf einem Remotecluster veröffentlichen, müssen Sie die entsprechenden Parameter für diesen Cluster angeben. Im Folgenden finden Sie ein Beispiel zum Herstellen einer Verbindung mit einem unsicheren Cluster:
    

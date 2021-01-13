@@ -1,6 +1,6 @@
 ---
-title: Schützen von HLS-Inhalten mit Apple FairPlay im Offlinemodus – Azure | Microsoft-Dokumentation
-description: Dieses Thema bietet einen Überblick und veranschaulicht, wie Sie Azure Media Services verwenden, um Ihre HLS-Inhalte (HTTP Live Streaming) dynamisch mit Apple FairPlay im Offlinemodus verschlüsseln.
+title: FairPlay-Offlinestreaming für iOS mit Azure Media Services v3
+description: Dieses Thema bietet eine Übersicht und veranschaulicht, wie Sie mit Azure Media Services v3 Ihre HLS-Inhalte (HTTP Live Streaming) dynamisch mit Apple FairPlay im Offlinemodus verschlüsseln.
 services: media-services
 keywords: HLS, DRM, FairPlay Streaming (FPS), Offline, iOS 10
 documentationcenter: ''
@@ -12,22 +12,27 @@ ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 01/08/2019
+ms.topic: how-to
+ms.date: 08/31/2020
 ms.author: willzhan
-ms.openlocfilehash: f2514fff2a3bb292a86c9f4c0e92c37ed2709097
-ms.sourcegitcommit: a12b2c2599134e32a910921861d4805e21320159
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 886a8aa1a6f062b5fe01476e387742f34efc0c56
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67341039"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90532238"
 ---
-# <a name="offline-fairplay-streaming-for-ios"></a>FairPlay-Streaming im Offlinemodus für iOS 
+# <a name="offline-fairplay-streaming-for-ios-with-media-services-v3"></a>FairPlay-Offlinestreaming für iOS mit Media Services v3
+
+[!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
  Azure Media Services bietet eine Reihe von ausgereiften [Content Protection-Diensten](https://azure.microsoft.com/services/media-services/content-protection/), die Folgendes abdecken:
 
 - Microsoft PlayReady
 - Google Widevine
+    
+    Widevine ist ein von Google Inc. bereitgestellter Dienst, der den Vertragsbedingungen und der Datenschutzrichtlinie von Google, Inc. unterliegt.
 - Apple FairPlay
 - AES-128-Verschlüsselung
 
@@ -85,7 +90,7 @@ options.Add(
 
 ## <a name="enable-offline-mode"></a>Aktivieren des Offlinemodus
 
-Um den Offlinemodus zu aktivieren, erstellen Sie eine benutzerdefinierte StreamingPolicy, und verwenden Sie deren Namen beim Erstellen eines StreamingLocator in [CreateStreamingLocatorAsync](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs#L563).
+Um den Offlinemodus zu aktivieren, erstellen Sie eine benutzerdefinierte StreamingPolicy, und verwenden Sie deren Namen beim Erstellen eines StreamingLocator in [CreateStreamingLocatorAsync](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs#L561).
  
 ```csharp
 CommonEncryptionCbcs objStreamingPolicyInput= new CommonEncryptionCbcs()
@@ -94,23 +99,24 @@ CommonEncryptionCbcs objStreamingPolicyInput= new CommonEncryptionCbcs()
     {
         FairPlay = new StreamingPolicyFairPlayConfiguration()
         {
-            AllowPersistentLicense = true  //this enables offline mode
+            AllowPersistentLicense = true // This enables offline mode
         }
     },
     EnabledProtocols = new EnabledProtocols()
     {
         Hls = true,
-        Dash = true //Even though DASH under CBCS is not supported for either CSF or CMAF, HLS-CMAF-CBCS uses DASH-CBCS fragments in its HLS playlist
+        Dash = true // Even though DASH under CBCS is not supported for either CSF or CMAF, HLS-CMAF-CBCS uses DASH-CBCS fragments in its HLS playlist
     },
 
     ContentKeys = new StreamingPolicyContentKeys()
     {
-        //Default key must be specified if keyToTrackMappings is present
+        // Default key must be specified if keyToTrackMappings is present
         DefaultKey = new DefaultKey()
         {
             Label = "CBCS_DefaultKeyLabel"
         }
     }
+}
 
 ```
 
@@ -201,45 +207,7 @@ Mit der Version 3 oder 4 des Beispiels des FPS Server SDK wird nur Audio wiederg
 
 ## <a name="faq"></a>Häufig gestellte Fragen
 
-Die folgenden häufig gestellten Fragen helfen bei der Problembehandlung:
-
-- **Warum wird im Offlinemodus nur Audio, aber kein Video wiedergegeben?** Dieses Verhalten scheint durch den Entwurf der Beispielanwendung bedingt zu sein. Wenn ein alternativer Audiotitel vorhanden ist (was bei HLS der Fall ist), werden sowohl iOS 10 als auch iOS 11 im Offlinemodus standardmäßig den alternativen Audiotitel verwenden. Um dieses Verhalten für den FPS-Offlinemodus zu kompensieren, entfernen Sie den alternativen Audiotitel aus dem Datenstrom. Um dies für Media Services zu erreichen, fügen Sie den dynamischen Manifestfilter „audio-only=false“ hinzu. Eine HLS-URL endet somit mit „.ism/manifest(format=m3u8-aapl,audio-only=false)“. 
-- **Warum wird im Offlinemodus nach dem Hinzufügen von „audio-only=false“ weiterhin nur Audio ohne Video wiedergegeben?** Je nach Cacheschlüsseldesign des Content Delivery Network (CDN) wird der Inhalt möglicherweise zwischengespeichert. Löschen Sie den Cacheinhalt.
-- **Wird der FPS-Offlinemodus zusätzlich zu iOS 10 auch unter iOS 11 unterstützt?** Ja. Der FPS-Offlinemodus wird für iOS 10 und iOS 11 unterstützt.
-- **Warum kann ich das Dokument zur Offlinewiedergabe mit FairPlay Streaming und HTTP Live Streaming nicht im FPS Server SDK finden?** Seit FPS Server SDK Version 4 wurde dieses Dokument in den FairPlay Streaming-Programmierleitfaden integriert.
-- **Wie sieht die Struktur der heruntergeladenen bzw. Offlinedateien auf iOS-Geräten aus?** Die heruntergeladene Dateistruktur auf einem iOS-Gerät sieht aus wie auf dem folgenden Screenshot. Der Ordner `_keys` speichert heruntergeladene FPS-Lizenzen, wobei eine Speicherdatei für jeden Lizenzdiensthost verwendet wird. Der Ordner `.movpkg` speichert Audio- und Videoinhalte. Der erste Ordner mit einem Namen, der mit einem Bindestrich endet, auf den eine Zahl folgt, enthält Videoinhalte. Der numerische Wert ist die Spitzenbandbreite (PeakBandwidth) der Videowiedergabe. Der zweite Ordner mit einem Namen, der mit einem Bindestrich endet, auf den „0“ folgt, enthält Audioinhalte. Der dritte Ordner namens „Data“ enthält die Hauptwiedergabeliste des FPS-Inhalts. Schließlich enthält „boot.xml“ eine vollständige Beschreibung des Inhalts des Ordners `.movpkg`. 
-
-![Dateistruktur der iOS-Beispielanwendung für FairPlay im Offlinemodus](media/offline-fairplay-for-ios/offline-fairplay-file-structure.png)
-
-Beispieldatei für „boot.xml“:
-
-```xml
-<?xml version="1.0" encoding="UTF-8"?>
-<HLSMoviePackage xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xmlns="http://apple.com/IMG/Schemas/HLSMoviePackage" xsi:schemaLocation="http://apple.com/IMG/Schemas/HLSMoviePackage /System/Library/Schemas/HLSMoviePackage.xsd">
-  <Version>1.0</Version>
-  <HLSMoviePackageType>PersistedStore</HLSMoviePackageType>
-  <Streams>
-    <Stream ID="1-4DTFY3A3VDRCNZ53YZ3RJ2NPG2AJHNBD-0" Path="1-4DTFY3A3VDRCNZ53YZ3RJ2NPG2AJHNBD-0" NetworkURL="https://willzhanmswest.streaming.mediaservices.windows.net/e7c76dbb-8e38-44b3-be8c-5c78890c4bb4/MicrosoftElite01.ism/QualityLevels(127000)/Manifest(aac_eng_2_127,format=m3u8-aapl)">
-      <Complete>YES</Complete>
-    </Stream>
-    <Stream ID="0-HC6H5GWC5IU62P4VHE7NWNGO2SZGPKUJ-310656" Path="0-HC6H5GWC5IU62P4VHE7NWNGO2SZGPKUJ-310656" NetworkURL="https://willzhanmswest.streaming.mediaservices.windows.net/e7c76dbb-8e38-44b3-be8c-5c78890c4bb4/MicrosoftElite01.ism/QualityLevels(161000)/Manifest(video,format=m3u8-aapl)">
-      <Complete>YES</Complete>
-    </Stream>
-  </Streams>
-  <MasterPlaylist>
-    <NetworkURL>https://willzhanmswest.streaming.mediaservices.windows.net/e7c76dbb-8e38-44b3-be8c-5c78890c4bb4/MicrosoftElite01.ism/manifest(format=m3u8-aapl,audio-only=false)</NetworkURL>
-  </MasterPlaylist>
-  <DataItems Directory="Data">
-    <DataItem>
-      <ID>CB50F631-8227-477A-BCEC-365BBF12BCC0</ID>
-      <Category>Playlist</Category>
-      <Name>master.m3u8</Name>
-      <DataPath>Playlist-master.m3u8-CB50F631-8227-477A-BCEC-365BBF12BCC0.data</DataPath>
-      <Role>Master</Role>
-    </DataItem>
-  </DataItems>
-</HLSMoviePackage>
-```
+[Die häufig gestellten Fragen helfen bei der Problembehandlung.](frequently-asked-questions.md#why-does-only-audio-play-but-not-video-during-offline-mode)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

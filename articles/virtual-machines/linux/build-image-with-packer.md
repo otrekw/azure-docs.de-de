@@ -1,26 +1,19 @@
 ---
-title: Erstellen von Linux-Azure-VM-Images mit Packer | Microsoft-Dokumentation
+title: Erstellen von Linux-Azure-VM-Images mit Packer
 description: Erfahren Sie, wie Sie mit Packer Images von virtuellen Linux-Computern in Azure erstellen
-services: virtual-machines-linux
-documentationcenter: virtual-machines
 author: cynthn
-manager: gwallace
-editor: tysonn
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-linux
-ms.devlang: azurecli
-ms.topic: article
-ms.tgt_pltfrm: vm-linux
+ms.subservice: imaging
+ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 05/07/2019
 ms.author: cynthn
-ms.openlocfilehash: 4dcf6f2e26a2cc589e350ee2b40c10b85786d4be
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 29a0c47bf24ecd916fb9402ffcb2a3ff13a36a84
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67671769"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96016419"
 ---
 # <a name="how-to-use-packer-to-create-linux-virtual-machine-images-in-azure"></a>Erstellen von Images von virtuellen Linux-Computern in Azure mit Packer
 Jeder virtuelle Computer (VM) in Azure wird anhand eines Images erstellt, das die Linux-Distribution und -Betriebssystemversion bestimmt. Images können vorinstallierte Anwendungen und Konfigurationen enthalten. Azure Marketplace enthält viele Images von Erst- und Drittanbietern für die gängigsten Distributionen und Anwendungsumgebungen. Sie können jedoch auch entsprechend Ihren Anforderungen eigene benutzerdefinierte Images erstellen. In diesem Artikel erläutert, wie Sie mit dem Open-Source-Tool [Packer](https://www.packer.io/) benutzerdefinierte Images in Azure definieren und erstellen.
@@ -50,7 +43,7 @@ az ad sp create-for-rbac --query "{ client_id: appId, client_secret: password, t
 
 Ein Beispiel der Ausgabe der vorherigen Befehle lautet wie folgt:
 
-```azurecli
+```output
 {
     "client_id": "f5b6a5cf-fbdf-4a9f-b3b8-3c2cd00225a4",
     "client_secret": "0e760437-bf34-4aad-9f8d-870be799c55d",
@@ -131,7 +124,7 @@ Diese Vorlage erstellt ein Ubuntu 16.04 LTS-Image, installiert NGINX und hebt di
 
 
 ## <a name="build-packer-image"></a>Erstellen des Packer-Images
-Wenn Packer noch nicht auf dem lokalen Computer installiert sein sollte, [befolgen Sie die Installationsanweisungen für Packer](https://www.packer.io/docs/install/index.html).
+Wenn Packer noch nicht auf dem lokalen Computer installiert sein sollte, [befolgen Sie die Installationsanweisungen für Packer](https://www.packer.io/docs/install).
 
 Erstellen Sie das Image, indem Sie Ihre Packer-Vorlagendatei wie folgt angeben:
 
@@ -141,7 +134,7 @@ Erstellen Sie das Image, indem Sie Ihre Packer-Vorlagendatei wie folgt angeben:
 
 Ein Beispiel der Ausgabe der vorherigen Befehle lautet wie folgt:
 
-```bash
+```output
 azure-arm output will be in this color.
 
 ==> azure-arm: Running builder ...

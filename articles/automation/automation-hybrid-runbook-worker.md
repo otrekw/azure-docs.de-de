@@ -1,159 +1,144 @@
 ---
-title: Azure Automation – Hybrid Runbook Worker
-description: In diesem Artikel werden Informationen zum Installieren und Verwenden des Azure Automation-Features „Hybrid Runbook Worker“ bereitgestellt, mit dem Sie Runbooks auf Computern in Ihrem lokalen Datencenter oder Cloudanbieter ausführen können.
+title: 'Azure Automation: Übersicht über Hybrid Runbook Worker'
+description: Dieser Artikel enthält eine Übersicht über Hybrid Runbook Worker, mit denen Sie Runbooks auf Computern in Ihrem lokalen Rechenzentrum oder beim Cloudanbieter ausführen können.
 services: automation
-ms.service: automation
 ms.subservice: process-automation
-author: bobbytreed
-ms.author: robreed
-ms.date: 04/05/2019
+ms.date: 11/23/2020
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: c10905c283619e6008dbe6ab8c4e721888b8b786
-ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
+ms.openlocfilehash: 7feac3ccb94cd8b4b0fab509477d4dbf772df2ae
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70743802"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97505527"
 ---
-# <a name="automate-resources-in-your-datacenter-or-cloud-by-using-hybrid-runbook-worker"></a>Automatisieren von Ressourcen im Datencenter oder in der Cloud mit Hybrid Runbook Worker
+# <a name="hybrid-runbook-worker-overview"></a>Übersicht über Hybrid Runbook Worker
 
-Runbooks in Azure Automation haben möglicherweise keinen Zugriff auf Ressourcen in anderen Clouds oder in Ihrer lokalen Umgebung, da sie auf der Azure-Cloudplattform ausgeführt werden. Sie können mit dem Azure Automation-Feature „Hybrid Runbook Worker“ Runbooks direkt auf dem Computer ausführen, der die Rolle hostet, und außerhalb für Ressourcen in der Umgebung zur Verwaltung dieser lokalen Ressourcen. Runbooks werden in Azure Automation gespeichert und verwaltet und an einzelne oder mehrere zugewiesene Computer übermittelt.
+Runbooks in Azure Automation haben möglicherweise keinen Zugriff auf Ressourcen in anderen Clouds oder in Ihrer lokalen Umgebung, da sie auf der Azure-Cloudplattform ausgeführt werden. Sie können Runbooks mit dem Azure Automation-Feature „Hybrid Runbook Worker“ direkt auf dem Computer, der die Rolle hostet, und für Ressourcen in der Umgebung ausführen, um diese lokalen Ressourcen zu verwalten. Runbooks werden in Azure Automation gespeichert und verwaltet und an einzelne oder mehrere zugewiesene Computer übermittelt.
 
 Diese Funktionalität wird in der folgenden Abbildung veranschaulicht:
 
 ![Übersicht über Hybrid Runbook Worker](media/automation-hybrid-runbook-worker/automation.png)
 
-Jeder Hybrid-Runbook-Worker ist ein Mitglied einer Hybrid-Runbook-Workergruppe, die Sie beim Installieren des Agents angeben. Eine Gruppe kann einen einzelnen Agent umfassen, aber für Hochverfügbarkeit können Sie mehrere Agents installieren. Jeder Computer kann einen Hybrid Worker hosten, der einem Automation-Konto Bericht erstattet.
+Es gibt zwei Arten von Runbook Workern – System und Benutzer. In der folgenden Tabelle sind die Unterschiede zwischen diesen beschrieben.
 
-Wenn Sie ein Runbook auf einen Hybrid Runbook Worker starten, geben Sie die Gruppe an, in der das Runbook ausgeführt werden soll. Jeder Worker in der Gruppe ruft Azure Automation ab, um festzustellen, ob Aufträge verfügbar sind. Wenn ein Auftrag verfügbar ist, übernimmt ihn der erste verfügbare Worker. Die Verarbeitungszeit der Auftragswarteschlange hängt vom Hybrid Worker-Hardwareprofil und der Auslastung ab. Sie können keinen bestimmten Worker angeben. Für Hybrid Runbook Worker gelten viele der Grenzwerte von Azure-Sandboxes nicht. Sie unterliegen nicht den gleichen Beschränkungen für Speicherplatz, Arbeitsspeicher oder Netzwerksockets. Hybrid Runbook Worker werden nur durch die eigenen Ressourcen beschränkt. Auch das 180-minütige Zeitlimit für die [gleichmäßige Verteilung](automation-runbook-execution.md#fair-share), dem Azure-Sandboxes unterliegen, gilt bei Hybrid Runbook Workern nicht. Weitere Informationen zu den Diensteinschränkungen für Azure-Sandboxes und Hybrid Runbook Worker finden Sie auf der [Seite mit auftragsspezifischen Grenzwerten](../azure-subscription-service-limits.md#automation-limits).
+|type | Beschreibung |
+|-----|-------------|
+|**System** |Unterstützt einen Satz ausgeblendeter Runbooks, die von der Updateverwaltungsfunktion verwendet werden, die für die Installation von benutzerdefinierten Updates auf Windows- und Linux-Computern vorgesehen sind.<br> Diese Art von Hybrid Runbook Worker ist kein Mitglied einer Hybrid Runbook Worker-Gruppe und führt daher keine Runbooks aus, die auf eine Runbook Worker-Gruppe abzielen. |
+|**Benutzer** |Unterstützt benutzerdefinierte Runbooks, die direkt auf dem Windows- und Linux-Computer ausgeführt werden sollen, die Mitglieder einer oder mehrerer Runbook Worker-Gruppen sind. |
 
-## <a name="install-a-hybrid-runbook-worker"></a>Installieren eines Hybrid Runbook Workers
+Ein Hybrid Runbook Worker kann unter dem Betriebssystem Windows oder Linux ausgeführt werden, und diese Rolle basiert darauf, dass der [Log Analytics-Agent](../azure-monitor/platform/log-analytics-agent.md) an einen [Log Analytics-Arbeitsbereich](../azure-monitor/platform/design-logs-deployment.md) von Azure Monitor Bericht erstattet. Der Arbeitsbereich kann nicht nur den Computer für das unterstützte Betriebssystem überwachen, sondern auch die Komponenten herunterladen, die für die Installation des Hybrid Runbook Workers benötigt werden.
 
-Der Vorgang zum Installieren eines Hybrid Runbook Workers ist vom Betriebssystem abhängig. Die folgende Tabelle enthält Links zu den Methoden, die für die Installation verwendet werden können.
+Wenn die Azure Automation-[Updateverwaltung](./update-management/overview.md) aktiviert ist, werden alle mit dem Log Analytics-Arbeitsbereich verbundenen Computer automatisch als System-Hybrid Runbook Worker konfiguriert.
 
-Zum Installieren und Konfigurieren eines Windows Hybrid Runbook Workers können Sie zwei verschiedene Methoden verwenden. Die empfohlene Methode besteht darin, ein Automation-Runbook zu verwenden, um den Prozess zum Konfigurieren eines Windows-Computers vollständig zu automatisieren. Bei der zweiten Methode wird die Rolle Schritt für Schritt manuell installiert und konfiguriert. Bei Linux-Computern führen Sie zur Installation des Agents auf dem Computer ein Python-Skript aus.
+Jeder Benutzer-Hybrid Runbook Worker ist Mitglied einer Hybrid Runbook Worker-Gruppe, die Sie beim Installieren des Workers angeben. Eine Gruppe kann einen einzelnen Worker umfassen, aber für Hochverfügbarkeit können Sie mehrere Worker in eine Gruppe aufnehmen. Jeder Computer kann eine Hybrid Runbook Worker-Berichterstellung an ein Automation-Konto hosten. Sie können den Hybrid Worker nicht bei mehreren Automation-Konten registrieren. Dies liegt daran, dass ein Hybrid Worker nur auf Aufträge eines einzelnen Automation-Kontos lauschen kann. Computer, auf denen der von der Updateverwaltung verwaltete System-Hybrid Runbook Worker gehostet wird, können einer Hybrid Runbook Worker-Gruppe hinzugefügt werden. Sie müssen aber für die Updateverwaltung und die Mitgliedschaft in der Hybrid Runbook Worker-Gruppe dasselbe Automation-Konto verwenden.
 
-|OS  |Bereitstellungstypen  |
+Wenn Sie ein Runbook auf einen Hybrid Runbook Worker starten, geben Sie die Gruppe an, in der das Runbook ausgeführt werden soll. Jeder Worker in der Gruppe ruft Azure Automation ab, um festzustellen, ob Aufträge verfügbar sind. Wenn ein Auftrag verfügbar ist, übernimmt ihn der erste verfügbare Worker. Die Verarbeitungszeit der Auftragswarteschlange hängt vom Hybrid Worker-Hardwareprofil und der Auslastung ab. Sie können keinen bestimmten Worker angeben. Ein Hybrid Worker arbeitet an einem Abrufmechanismus (alle 30 Sekunden) und folgt der Reihenfolge „wer zuerst kommt, wird zuerst bedient“ (first-come, first-serve). Je nachdem, wann ein Auftrag gepusht wurde, wird der Auftrag von dem Hybrid Worker übernommen, der den Automation-Dienst anpingt. Ein einzelner Hybrid Worker kann generell vier Aufträge pro Ping abrufen (d. h. alle 30 Sekunden). Wenn Ihre Rate von Pushaufträgen höher als vier in 30 Sekunden ist, besteht eine hohe Wahrscheinlichkeit, dass ein anderer Hybrid Worker in der Hybrid Runbook Worker-Gruppe den Auftrag übernommen hat.
+
+Um die Verteilung von Runbooks auf Hybrid Runbook Worker zu steuern, und wann oder wie die Aufträge ausgelöst werden, können Sie den Hybrid Worker für verschiedene Hybrid Runbook Worker-Gruppen innerhalb Ihres Automation-Kontos registrieren. Richten Sie die Aufträge auf die jeweilige Gruppe oder die Gruppen aus, um Ihre Ausführungsanordnung zu unterstützen.
+
+Verwenden Sie anstelle einer [Azure-Sandbox](automation-runbook-execution.md#runbook-execution-environment) einen Hybrid Runbook Worker, da für diesen viele der [Grenzwerte](../azure-resource-manager/management/azure-subscription-service-limits.md#automation-limits) für eine Sandbox bei Speicherplatz, Arbeitsspeicher und Netzwerksockets nicht gelten. Die Grenzwerte für einen Hybrid Worker beziehen sich lediglich auf die eigenen Ressourcen des Workers.
+
+> [!NOTE]
+> Hybrid Runbook Worker unterliegen nicht der von der [gleichmäßigen Verteilung](automation-runbook-execution.md#fair-share) in einer Azure-Sandbox vorgegebenen Zeitbeschränkung.
+
+## <a name="hybrid-runbook-worker-installation"></a>Installation von Hybrid Runbook Workern
+
+Der Vorgang zum Installieren eines Benutzer-Hybrid Runbook Workers ist vom Betriebssystem abhängig. In der folgenden Tabelle sind die Bereitstellungstypen definiert.
+
+|Betriebssystem  |Bereitstellungstypen  |
 |---------|---------|
-|Windows     | [PowerShell](automation-windows-hrw-install.md#automated-deployment)<br>[Manuell](automation-windows-hrw-install.md#manual-deployment)        |
-|Linux     | [Python](automation-linux-hrw-install.md#installing-a-linux-hybrid-runbook-worker)        |
+|Windows     | [Automatisiert](automation-windows-hrw-install.md#automated-deployment)<br>[Manuell](automation-windows-hrw-install.md#manual-deployment)        |
+|Linux     | [Manuell](automation-linux-hrw-install.md#install-a-linux-hybrid-runbook-worker)        |
 
-> [!NOTE]
-> Um die Konfiguration der Server zu verwalten, die die Hybrid Runbook Worker-Rolle mit DSC (Desired State Configuration) unterstützen, müssen Sie die Server als DSC-Knoten hinzufügen. Weitere Informationen zu ihrer Integration für die Verwaltung durch DSC finden Sie unter [Integrieren von Computern für die Verwaltung durch Azure Automation DSC](automation-dsc-onboarding.md).
->
->Wenn Sie die [Lösung für die Updateverwaltung](automation-update-management.md) aktivieren, werden alle mit dem Azure Log Analytics-Arbeitsbereich verbundenen Computer automatisch als Hybrid Runbook Worker konfiguriert, um Runbooks zu unterstützen, die in dieser Lösung enthalten sind. Es wird aber keine Registrierung des Computers für Hybrid Worker-Gruppen ausgeführt, die in Ihrem Automation-Konto bereits definiert wurden. Der Computer kann einer Hybrid Runbook Worker-Gruppe in Ihrem Automation-Konto hinzugefügt werden, um Automation-Runbooks zu unterstützen, solange Sie sowohl für die Lösung als auch die Mitgliedschaft in der Hybrid Runbook Worker-Gruppe dasselbe Konto verwenden. Diese Funktionalität wurde in Version 7.2.12024.0 von Hybrid Runbook Worker hinzugefügt.
+Die empfohlene Installationsmethode für einen Windows-Computer besteht darin, mithilfe eines Azure Automation-Runbooks den Konfigurationsprozess vollständig zu automatisieren. Falls dies nicht möglich ist, können Sie die Rolle Schritt für Schritt manuell installieren und konfigurieren. Bei Linux-Computern führen Sie zur Installation des Agents auf dem Computer ein Python-Skript aus.
 
-Bevor Sie mit der Bereitstellung eines Hybrid Runbook Worker beginnen, lesen Sie die [Informationen zum Planen Ihres Netzwerks](#network-planning). Lesen Sie nach dem erfolgreichen Bereitstellen eines Workers [Running runbooks on a Hybrid Runbook Worker (Ausführen von Runbooks auf einem Hybrid Runbook Worker)](automation-hrw-run-runbooks.md), um zu erfahren, wie Sie Ihre Runbooks für die Automatisierung von Prozessen in Ihrem lokalen Datencenter oder in einer anderen Cloudumgebung konfigurieren.
+## <a name="network-planning"></a><a name="network-planning"></a>Netzwerkplanung
 
-Der Computer kann einer Hybrid Runbook Worker-Gruppe in Ihrem Automation-Konto hinzugefügt werden, um Automation-Runbooks zu unterstützen, solange Sie sowohl für die Lösung als auch die Mitgliedschaft in der Hybrid Runbook Worker-Gruppe dasselbe Konto verwenden. Diese Funktionalität wurde Version 7.2.12024.0 des Hybrid Runbook Worker hinzugefügt.
+Sowohl ein System- als auch ein Benutzer-Hybrid Runbook Worker benötigt Zugriff auf die in diesem Abschnitt angegebene Portnummer und die URLs, damit er eine Verbindung mit Azure Automation herstellen und sich bei dem Dienst registrieren kann. Der Worker benötigt zusätzlich Zugriff auf die [für den Log Analytics-Agent erforderlichen Ports und URLs](../azure-monitor/platform/agent-windows.md), um eine Verbindung mit dem Azure Monitor Log Analytics-Arbeitsbereich herstellen zu können.
 
-## <a name="remove-a-hybrid-runbook-worker"></a>Entfernen eines Hybrid Runbook Workers
+Nachfolgend sind der Port und die URLs aufgeführt, die für den Hybrid Runbook Worker erforderlich sind:
 
-Abhängig von Ihren Anforderungen können Sie mindestens einen Hybrid Runbook Worker aus einer Gruppe entfernen, oder Sie können die Gruppe entfernen. Wenn Sie einen Hybrid Runbook Worker von einem lokalen Computer entfernen möchten, führen Sie die folgenden Schritte aus:
+* Port: Für ausgehenden Zugriff auf das Internet ist nur TCP 443 erforderlich
+* Globale URL: `*.azure-automation.net`
+* Globale URL von „US Gov Virginia“: `*.azure-automation.us`
+* Agent-Dienst: `https://<workspaceId>.agentsvc.azure-automation.net`
 
-1. Navigieren Sie im Azure-Portal zu Ihrem Automation-Konto.
-2. Wählen Sie unter **Kontoeinstellungen** die Option **Schlüssel** aus, und notieren Sie sich die Werte für **URL** und **Primärer Zugriffsschlüssel**. Sie benötigen diese Informationen im nächsten Schritt.
+Wenn eines Ihrer Automation-Konten für eine bestimmte Region definiert ist, können Sie die Kommunikation der Hybrid Runbook Worker auf dieses regionale Rechenzentrum einschränken. Informationen zu den erforderlichen DNS-Einträgen finden Sie unter [Von Azure Automation verwendete DNS-Einträge in Azure-Rechenzentren](how-to/automation-region-dns-records.md).
 
-### <a name="windows"></a>Windows
+### <a name="proxy-server-use"></a>Verwenden von Proxyservern
 
-Öffnen Sie eine PowerShell-Sitzung im Administratormodus, und führen Sie den folgenden Befehl aus: Verwenden Sie den Schalter **-Verbose** , um ein ausführliches Protokoll zum Entfernungsvorgang zu erhalten.
+Wenn Sie einen Proxyserver für die Kommunikation zwischen Azure Automation und den Computern verwenden, auf denen der Log Analytics-Agent ausgeführt wird, müssen Sie sicherstellen, dass auf die entsprechenden Ressourcen zugegriffen werden kann. Das Zeitlimit für Anforderungen vom Hybrid Runbook Worker und von den Automation-Diensten beträgt 30 Sekunden. Nach drei Versuchen tritt bei einer Anforderung ein Fehler auf.
 
-```powershell-interactive
-Remove-HybridRunbookWorker -url <URL> -key <PrimaryAccessKey>
+### <a name="firewall-use"></a>Verwenden von Firewalls
+
+Wenn Sie eine Firewall verwenden, um den Zugriff auf das Internet einzuschränken, müssen Sie die Firewall so konfigurieren, dass der Zugriff möglich ist. Wenn Sie das Log Analytics-Gateway als Proxy verwenden, achten Sie darauf, dass es für Hybrid Runbook Worker konfiguriert ist. Weitere Informationen finden Sie unter [Konfigurieren des Log Analytics-Gateways für Automation Hybrid Runbook Worker](../azure-monitor/platform/gateway.md).
+
+### <a name="service-tags"></a>Diensttags
+
+Azure Automation unterstützt Diensttags für virtuelle Azure-Netzwerke, die mit dem Diensttag [GuestAndHybridManagement](../virtual-network/service-tags-overview.md) beginnen. Sie können Diensttags verwenden, um Netzwerkzugriffssteuerungen in [Netzwerksicherheitsgruppen](../virtual-network/network-security-groups-overview.md#security-rules) oder in der [Azure Firewall](../firewall/service-tags.md) zu definieren. Diensttags können anstelle von spezifischen IP-Adressen verwendet werden, wenn Sie Sicherheitsregeln erstellen. Indem Sie den Diensttagnamen **GuestAndHybridManagement** im entsprechenden Quell- oder Zielfeld einer Regel angeben, können Sie den Datenverkehr für den Automation-Dienst zulassen oder verweigern. Dieses Diensttag weist keine Unterstützung für das Zulassen einer präziseren Steuerung durch das Einschränken von IP-Adressbereichen auf eine bestimmte Region auf.
+
+Über das Diensttag für den Azure Automation-Dienst werden nur IP-Adressen für die folgenden Szenarien bereitgestellt:
+
+* Auslösen von Webhooks aus Ihrem virtuellen Netzwerk
+* Zulassen der Kommunikation mit dem Automation-Dienst für Hybrid Runbook Workers oder State Configuration-Agents in Ihrem VNET
+
+>[!NOTE]
+>Das Diensttag **GuestAndHybridManagement** verfügt derzeit nicht über Unterstützung für die Ausführung von Runbookaufträgen in einer Azure-Sandbox, sondern nur direkt auf einem Hybrid Runbook Worker.
+
+## <a name="support-for-impact-level-5-il5"></a>Unterstützungs für Auswirkungsstufe 5 (Impact Level, IL5)
+
+Azure Automation Hybrid Runbook Worker kann in Azure Government verwendet werden, um Auswirkungsstufe 5-Workloads in einer der zwei folgenden Konfigurationen zu unterstützen:
+
+* [Isolierter virtueller Computer](../azure-government/documentation-government-impact-level-5.md#isolated-virtual-machines). Bei der Bereitstellung wird der gesamte physische Host für diesen Computer verwendet, wodurch die Isolationsstufe bereitgestellt wird, die für die Unterstützung von IL5-Workloads erforderlich ist.
+
+* [Azure Dedicated Host](../azure-government/documentation-government-impact-level-5.md#azure-dedicated-host), der physische Server bereitstellt, die einen oder mehrere virtuelle Computer hosten können und ausschließlich für ein Azure-Abonnement reserviert sind.
+
+>[!NOTE]
+>Die Computeisolation durch die Hybrid Runbook Worker-Rolle ist für Azure Commercial- und US Government-Clouds verfügbar. 
+
+### <a name="update-management-addresses-for-hybrid-runbook-worker"></a>Updateverwaltung-Adressen für Hybrid Runbook Worker
+
+Zusätzlich zu den Standardadressen und -ports, die für Hybrid Runbook Worker erforderlich sind, verfügt Updateverwaltung über zusätzliche Anforderungen an die Netzwerkkonfiguration, die im Abschnitt [Netzwerkplanung](./update-management/overview.md#ports) beschrieben werden.
+
+## <a name="azure-automation-state-configuration-on-a-hybrid-runbook-worker"></a>Azure Automation State Configuration auf einem Hybrid Runbook Worker
+
+Sie können [Azure Automation State Configuration](automation-dsc-overview.md) auf einem Hybrid Runbook Worker ausführen. Um die Konfiguration von Servern zu verwalten, die den Hybrid Runbook Worker unterstützen, müssen Sie die Server als DSC-Knoten hinzufügen. Weitere Informationen finden Sie unter [Aktivieren von Computern zur Verwaltung durch Azure Automation State Configuration](automation-dsc-onboarding.md).
+
+## <a name="runbook-worker-limits"></a>Grenzwerte für Runbook Worker
+
+Die maximale Anzahl von Hybrid Worker-Gruppen pro Automation-Konto beträgt 4000 und gilt sowohl für System- als auch für Benutzer-Hybrid Worker. Wenn Sie mehr als 4.000 Computer verwalten müssen, empfiehlt es sich, zusätzliche Automation-Konten zu erstellen.
+
+## <a name="runbooks-on-a-hybrid-runbook-worker"></a>Runbooks auf einem Hybrid Runbook Worker
+
+Unter Umständen verfügen Sie über Runbooks, die Ressourcen auf dem lokalen Computer verwalten oder für Ressourcen in der lokalen Umgebung ausgeführt werden, in der ein Benutzer-Hybrid Runbook Worker bereitgestellt wurde. In diesem Fall können Sie sich entscheiden, Ihre Runbooks auf dem Hybrid Worker statt in einem Automation-Konto auszuführen. Runbooks, die auf einem Hybrid Runbook Worker ausgeführt werden, sind strukturell identisch mit denen, die Sie im Automation-Konto ausführen. Weitere Informationen finden Sie unter [Ausführen von Runbooks auf einem Hybrid Runbook Worker](automation-hrw-run-runbooks.md).
+
+### <a name="hybrid-runbook-worker-jobs"></a>Hybrid-Runbook-Worker-Aufträge
+
+Hybrid Runbook Worker-Aufträge werden unter Windows unter dem lokalen Konto **System** und unter Linux unter dem Konto [nxautomation](automation-runbook-execution.md#log-analytics-agent-for-linux) ausgeführt. Azure Automation behandelt Aufträge in Hybrid Runbook Workern anders als Aufträge, die in Azure-Sandboxes ausgeführt werden. Weitere Informationen finden Sie unter [Ausführungsumgebung für Runbooks](automation-runbook-execution.md#runbook-execution-environment).
+
+Wenn der Hostcomputer des Hybrid Runbook Workers neu gestartet wird, werden alle ausgeführten Runbookaufträge von vorn oder – im Fall von PowerShell-Workflow-Runbooks – beim letzten Prüfpunkt neu gestartet. Nachdem ein Runbookauftrag mehr als dreimal neu gestartet wurde, wird er angehalten.
+
+### <a name="runbook-permissions-for-a-hybrid-runbook-worker"></a>Runbook-Berechtigungen für einen Hybrid Runbook Worker
+
+Da sie auf Nicht-Azure-Ressourcen zugreifen, können Runbooks, die auf einem Benutzer-Hybrid Runbook Worker laufen, nicht den Authentifizierungsmechanismus verwenden, der normalerweise von Runbooks zur Authentifizierung bei Azure-Ressourcen verwendet wird. Ein Runbook stellt entweder eine eigene Authentifizierung für lokale Ressourcen bereit oder konfiguriert die Authentifizierung mithilfe von [verwalteten Identitäten für Azure-Ressourcen](../active-directory/managed-identities-azure-resources/tutorial-windows-vm-access-arm.md#grant-your-vm-access-to-a-resource-group-in-resource-manager). Alternativ hierzu können Sie auch ein ausführendes Konto angeben, um einen Benutzerkontext für alle Runbooks bereitzustellen.
+
+## <a name="view-system-hybrid-runbook-workers"></a>Anzeigen von System-Hybrid Runbook Workern
+
+Nachdem die Updateverwaltungsfunktion auf Windows- oder Linux-Computern aktiviert wurde, können Sie mithilfe der Liste der Hybrid Runbook Worker-Systemgruppe im Azure-Portal einen Bestand erstellen. Sie können im Portal bis zu 2.000 Worker anzeigen, indem Sie im linken Bereich für das ausgewählte Automation-Konto unter **Hybrid worker groups** (Hybrid Worker-Gruppen) die Registerkarte **System hybrid worker groups** (Hybrid Worker-Systemgruppen) auswählen.
+
+:::image type="content" source="./media/automation-hybrid-runbook-worker/system-hybrid-workers-page.png" alt-text="Seite „System hybrid worker groups“ (Hybrid Worker-Systemgruppen) für ein Automation-Konto" border="false" lightbox="./media/automation-hybrid-runbook-worker/system-hybrid-workers-page.png":::
+
+Wenn Sie über mehr als 2.000 Hybrid Worker verfügen und eine vollständige Liste abrufen möchten, können Sie das folgende PowerShell-Skript ausführen:
+
+```powershell
+"Get-AzSubscription -SubscriptionName "<subscriptionName>" | Set-AzContext
+$workersList = (Get-AzAutomationHybridWorkerGroup -ResourceGroupName "<resourceGroupName>" -AutomationAccountName "<automationAccountName>").Runbookworker
+$workersList | export-csv -Path "<Path>\output.csv" -NoClobber -NoTypeInformation"
 ```
-
-Verwenden Sie zum Entfernen veralteter Computer aus Ihrer Hybrid Worker-Gruppe den optionalen Parameter `machineName`.
-
-```powershell-interactive
-Remove-HybridRunbookWorker -url <URL> -key <PrimaryAccessKey> -machineName <ComputerName>
-```
-
-### <a name="linux"></a>Linux
-
-Sie können den Befehl `ls /var/opt/microsoft/omsagent` auf dem Hybrid Runbook Worker verwenden, um die Arbeitsbereichs-ID abzurufen. Es gibt einen Ordner in dem Verzeichnis, in dem der Name des Ordners die Arbeitsbereichs-ID ist.
-
-```bash
-sudo python onboarding.py --deregister --endpoint="<URL>" --key="<PrimaryAccessKey>" --groupname="Example" --workspaceid="<workspaceId>"
-```
-
-> [!NOTE]
-> Dieser Code entfernt nicht Microsoft Monitoring Agent von diesem Computer, sondern nur die Funktionen und die Konfiguration der Hybrid Runbook Worker-Rolle.
-
-## <a name="remove-a-hybrid-worker-group"></a>Entfernen einer Hybrid Worker-Gruppe
-
-Um eine Gruppe zu entfernen, müssen Sie zunächst den Hybrid Runbook Worker von allen Computern entfernen, die Mitglied der Gruppe sind. Verwenden Sie zu diesem Zweck das weiter oben beschriebene Verfahren. Führen Sie dann die folgenden Schritte aus, um die Gruppe zu entfernen:
-
-1. Wählen Sie im Azure-Portal das Automation-Konto aus.
-2. Wählen Sie unter **Prozessautomatisierung** die Option **Hybrid Worker-Gruppen** aus. Wählen Sie die Gruppe aus, die Sie löschen möchten. Die Seite „Eigenschaften“ für diese Gruppe wird angezeigt.
-
-   ![Eigenschaftenseite](media/automation-hybrid-runbook-worker/automation-hybrid-runbook-worker-group-properties.png)
-
-3. Wählen Sie auf der Seite „Eigenschaften“ der ausgewählten Gruppe die Option **Löschen** aus. Eine Meldung fordert Sie zur Bestätigung dieser Aktion auf. Klicken Sie auf **Ja**, wenn Sie den Vorgang wirklich fortsetzen möchten.
-
-   ![Bestätigungsmeldung](media/automation-hybrid-runbook-worker/automation-hybrid-runbook-worker-confirm-delete.png)
-
-   Der Abschluss dieses Vorgangs kann mehrere Sekunden in Anspruch nehmen. Sie können den Fortschritt im Menü unter **Benachrichtigungen** nachverfolgen.
-
-## <a name="network-planning"></a>Konfigurieren des Netzwerks
-
-### <a name="hybrid-worker-role"></a>Hybrid Worker-Rolle
-
-Der Hybrid Runbook Worker benötigt Zugriff auf die in diesem Abschnitt angegebene Portnummer und die URLs, damit er eine Verbindung mit Azure Automation herstellen und sich bei dem Dienst registrieren kann. Dieser Zugriff wird zusätzlich zu den [für Microsoft Monitoring Agent erforderlichen Ports und URLs](../azure-monitor/platform/agent-windows.md) für das Herstellen einer Verbindung mit Azure Monitor-Protokolle benötigt.
-
-[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
-
-Wenn Sie einen Proxyserver für die Kommunikation zwischen dem Agent und dem Azure Automation-Dienst verwenden, müssen Sie sicherstellen, dass auf die entsprechenden Ressourcen zugegriffen werden kann. Das Zeitlimit für Anforderungen vom Hybrid Runbook Worker und von den Automation-Diensten beträgt 30 Sekunden. Nach drei Versuchen schlägt die Anforderung fehl. Wenn Sie eine Firewall verwenden, um den Zugriff auf das Internet einzuschränken, müssen Sie die Firewall so konfigurieren, dass der Zugriff möglich ist. Wenn Sie das Log Analytics-Gateway als Proxy verwenden, achten Sie darauf, dass es für Hybrid Worker konfiguriert ist. Eine entsprechende Anleitung finden Sie unter [Konfigurieren des Log Analytics-Gateways für Automation Hybrid Worker](https://docs.microsoft.com/azure/log-analytics/log-analytics-oms-gateway).
-
-Nachfolgend sind der Port und die URLs aufgeführt, die für die Kommunikation zwischen der Hybrid Runbook Worker-Rolle und Automation erforderlich sind:
-
-* Port: Für ausgehenden Zugriff auf das Internet ist nur TCP 443 erforderlich.
-* Globale URL: *.azure-automation.net
-* Globale URL von „US Gov Virginia“: *.azure-automation.us
-* Agent-Dienst: https://\<Arbeitsbereichs-ID\>.agentsvc.azure-automation.net
-
-Es wird empfohlen, beim Definieren von Ausnahmen die aufgeführten Adressen zu verwenden. Für IP-Adressen können Sie die [IP-Bereiche des Microsoft Azure-Rechenzentrums](https://www.microsoft.com/en-us/download/details.aspx?id=56519) herunterladen. Diese Datei mit den jeweils aktuellen bereitgestellten Bereichen und allen anstehenden Änderungen an den IP-Adressbereichen wird wöchentlich veröffentlicht.
-
-Wenn eines Ihrer Automation-Konten für eine bestimmte Region definiert ist, können Sie die Kommunikation mit diesem regionalen Rechenzentrum einschränken. Die folgende Tabelle enthält den DNS-Eintrag für jede Region:
-
-| **Region** | **DNS-Eintrag** |
-| --- | --- |
-| USA, Westen-Mitte | wcus-jobruntimedata-prod-su1.azure-automation.net</br>wcus-agentservice-prod-1.azure-automation.net |
-| USA Süd Mitte |scus-jobruntimedata-prod-su1.azure-automation.net</br>scus-agentservice-prod-1.azure-automation.net |
-| USA (Ost) 2 |eus2-jobruntimedata-prod-su1.azure-automation.net</br>eus2-agentservice-prod-1.azure-automation.net |
-| USA, Westen 2 |wus2-jobruntimedata-prod-su1.azure-automation.net</br>wus2-agentservice-prod-1.azure-automation.net |
-| Kanada, Mitte |cc-jobruntimedata-prod-su1.azure-automation.net</br>cc-agentservice-prod-1.azure-automation.net |
-| Europa, Westen |we-jobruntimedata-prod-su1.azure-automation.net</br>we-agentservice-prod-1.azure-automation.net |
-| Nordeuropa |ne-jobruntimedata-prod-su1.azure-automation.net</br>ne-agentservice-prod-1.azure-automation.net |
-| Südostasien |sea-jobruntimedata-prod-su1.azure-automation.net</br>sea-agentservice-prod-1.azure-automation.net|
-| Indien, Mitte |cid-jobruntimedata-prod-su1.azure-automation.net</br>cid-agentservice-prod-1.azure-automation.net |
-| Japan, Osten |jpe-jobruntimedata-prod-su1.azure-automation.net</br>jpe-agentservice-prod-1.azure-automation.net |
-| Australien (Osten) |ae-jobruntimedata-prod-su1.azure-automation.net</br>ae-agentservice-prod-1.azure-automation.net |
-| Australien, Südosten |ase-jobruntimedata-prod-su1.azure-automation.net</br>ase-agentservice-prod-1.azure-automation.net |
-| UK, Süden | uks-jobruntimedata-prod-su1.azure-automation.net</br>uks-agentservice-prod-1.azure-automation.net |
-| US Government, Virginia | usge-jobruntimedata-prod-su1.azure-automation.us<br>usge-agentservice-prod-1.azure-automation.us |
-
-Wenn Sie eine Liste mit IP-Adressen der Regionen anstelle ihrer Namen benötigen, können Sie die XML-Datei mit den [IP-Adressen der Azure-Rechenzentren](https://www.microsoft.com/download/details.aspx?id=41653) aus dem Microsoft Download Center herunterladen.
-
-> [!NOTE]
-> Die XML-Datei mit den IP-Adressen der Azure-Rechenzentren enthält die IP-Adressbereiche, die in den Microsoft Azure-Rechenzentren verwendet werden. Die Datei enthält die Bereiche für Compute, SQL und Storage.
->
->Eine aktualisierte Datei wird wöchentlich veröffentlicht. Die Datei enthält die derzeit bereitgestellten Bereichen und alle anstehenden Änderungen an den IP-Adressbereichen. In der Datei enthaltene neue Bereiche werden frühestens nach einer Woche in den Rechenzentren verwendet.
->
-> Sie sollten die neue XML-Datei jede Woche herunterladen. Führen Sie damit dann eine Aktualisierung an Ihrem Standort durch, um in Azure ausgeführte Dienste ordnungsgemäß zu identifizieren. Benutzer von Azure ExpressRoute sollten beachten, dass diese Datei zum Aktualisieren der BGP-Ankündigung (Border Gateway Protocol) von Azure-Bereichen jeweils in der ersten Woche des Monats verwendet wird.
-
-### <a name="update-management"></a>Updateverwaltung
-
-Neben den Standardadressen und -ports, die der Hybrid Runbook Worker erfordert, sind folgende Adressen speziell für die Updateverwaltung erforderlich. Die Kommunikation mit diesen Adressen erfolgt über Port 443.
-
-|Azure – Öffentlich  |Azure Government  |
-|---------|---------|
-|*.ods.opinsights.azure.com     |*.ods.opinsights.azure.us         |
-|*.oms.opinsights.azure.com     | *.oms.opinsights.azure.us        |
-|*.blob.core.windows.net|*.blob.core.usgovcloudapi.net|
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Um zu erfahren, wie Sie Ihre Runbooks für die Automatisierung von Prozessen in Ihrem lokalen Rechenzentrum oder in einer anderen Cloudumgebung konfigurieren, lesen Sie sich [Ausführen von Runbooks auf einem Hybrid Runbook Worker](automation-hrw-run-runbooks.md) durch.
-* Informationen zur Problembehandlung Ihrer Hybrid Runbook Worker finden Sie unter [Problembehandlung von Hybrid Runbook Workers](troubleshoot/hybrid-runbook-worker.md#general).
 
+* Informationen zum Behandeln von Problemen mit Ihren Hybrid Runbook Workern finden Sie unter [Problembehandlung von Hybrid Runbook Workern](troubleshoot/hybrid-runbook-worker.md#general).

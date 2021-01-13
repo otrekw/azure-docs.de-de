@@ -1,45 +1,45 @@
 ---
-title: Verwenden von Azure Data Box zum Migrieren von Daten aus einem lokalen Hadoop Distributed File System-Speicher zu Azure Storage
-description: Migrieren von Daten aus einem lokalen Hadoop Distributed File System-Speicher zu Azure Storage
+title: Migrieren von lokalem HDFS-Speicher zu Azure Storage mit Azure Data Box
+description: Migrieren Sie Daten aus einem lokalen HDFS-Speicher (Hadoop Distributed File System) zu Azure Storage (Blobspeicher oder Data Lake Storage Gen2), indem Sie ein Data Box-Gerät verwenden.
 author: normesta
 ms.service: storage
-ms.date: 06/11/2019
+ms.date: 02/14/2019
 ms.author: normesta
-ms.topic: conceptual
+ms.topic: how-to
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: jamesbak
-ms.openlocfilehash: ff23b27b73918734e10a481cbe9b1f77519b8764
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: e58137dd680ff9a2be2bd657f0969304b526873f
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68847261"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95913112"
 ---
-# <a name="use-azure-data-box-to-migrate-data-from-an-on-premises-hdfs-store-to-azure-storage"></a>Verwenden von Azure Data Box zum Migrieren von Daten aus einem lokalen Hadoop Distributed File System-Speicher zu Azure Storage
+# <a name="migrate-from-on-prem-hdfs-store-to-azure-storage-with-azure-data-box"></a>Migrieren von lokalem HDFS-Speicher zu Azure Storage mit Azure Data Box
 
-Sie können Daten aus einem lokalen HDFS-Speicher (Hadoop Distributed File System) Ihres Hadoop-Clusters zu Azure Storage (Blobspeicher oder Data Lake Storage Gen2) migrieren, indem Sie ein Data Box-Gerät verwenden. Sie können zwischen einer Data Box mit 80 TB oder einer Data Box Heavy mit 770 TB wählen.
+Sie können Daten aus einem lokalen HDFS-Speicher (Hadoop Distributed File System) Ihres Hadoop-Clusters zu Azure Storage (Blobspeicher oder Data Lake Storage Gen2) migrieren, indem Sie ein Data Box-Gerät verwenden. Sie können zwischen einer Data Box Disk, einer Data Box mit 80 TB oder einer Data Box Heavy mit 770 TB wählen.
 
 Dieser Artikel enthält Informationen zur Durchführung dieser Aufgaben:
 
 > [!div class="checklist"]
 > * Bereiten Sie das Migrieren Ihrer Daten vor.
-> * Kopieren Sie Ihre Daten auf ein Data Box- oder Data Box Heavy-Gerät.
+> * Kopieren Sie Ihre Daten auf ein Data Box Disk-, Data Box- oder Data Box Heavy-Gerät.
 > * Senden Sie das Gerät an Microsoft zurück.
-> * Verschieben Sie die Daten in Data Lake Storage Gen2.
+> * Anwenden von Zugriffsberechtigungen auf Dateien und Verzeichnisse (nur Azure Data Lake Storage Gen2)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Sie benötigen Folgendes, um die Migration durchführen zu können:
 
-* Zwei Speicherkonten; ein Konto, für das ein hierarchischer Namespace aktiviert ist, und ein Konto ohne aktivierten Namespace.
+* Azure Storage-Konto
 
 * Einen lokalen Hadoop-Cluster, in dem Ihre Quelldaten enthalten sind.
 
 * Ein [Azure Data Box-Gerät](https://azure.microsoft.com/services/storage/databox/).
 
-  * [Bestellen Sie die Data Box](https://docs.microsoft.com/azure/databox/data-box-deploy-ordered) oder [Data Box Heavy](https://docs.microsoft.com/azure/databox/data-box-heavy-deploy-ordered). Beachten Sie beim Bestellen Ihres Geräts, dass Sie ein Speicherkonto wählen, für das hierarchische Namespaces **nicht** aktiviert sind. Der Grund ist, dass für Data Box-Geräte die direkte Erfassung in Azure Data Lake Storage Gen2 noch nicht unterstützt wird. Sie müssen den Kopiervorgang in ein Speicherkonto und dann einen zweiten Kopiervorgang in das ADLS Gen2-Konto durchführen. Die unten angegebenen Schritte enthalten hierzu eine Anleitung.
+  * [Bestellen Sie die Data Box](../../databox/data-box-deploy-ordered.md) oder [Data Box Heavy](../../databox/data-box-heavy-deploy-ordered.md). 
 
-  * Verkabeln und verbinden Sie die [Data Box](https://docs.microsoft.com/azure/databox/data-box-deploy-set-up) oder [Data Box Heavy](https://docs.microsoft.com/azure/databox/data-box-heavy-deploy-set-up) mit einem lokalen Netzwerk.
+  * Verkabeln und verbinden Sie die [Data Box](../../databox/data-box-deploy-set-up.md) oder [Data Box Heavy](../../databox/data-box-heavy-deploy-set-up.md) mit einem lokalen Netzwerk.
 
 Wenn Sie bereit sind, können wir beginnen.
 
@@ -59,7 +59,7 @@ Führen Sie diese Schritte aus, um Daten über die REST-APIs des Blob-/Objektspe
 
 2. Kopieren Sie im Dialogfeld „Auf Speicherkonto zugreifen und Daten hochladen“ den **Blob-Dienstendpunkt** und den **Speicherkontoschlüssel**. Lassen Sie beim Blob-Dienstendpunkt den Teil `https://` und den nachgestellten Schrägstrich weg.
 
-    Der Endpunkt ist in diesem Fall: `https://mystorageaccount.blob.mydataboxno.microsoftdatabox.com/`. Der Hostteil des verwendeten URI ist: `mystorageaccount.blob.mydataboxno.microsoftdatabox.com`. Ein Beispiel hierfür finden Sie in der Beschreibung der [Verbindungsherstellung mit REST per http](/azure/databox/data-box-deploy-copy-data-via-rest). 
+    Der Endpunkt ist in diesem Fall: `https://mystorageaccount.blob.mydataboxno.microsoftdatabox.com/`. Der Hostteil des verwendeten URI ist: `mystorageaccount.blob.mydataboxno.microsoftdatabox.com`. Ein Beispiel hierfür finden Sie in der Beschreibung der [Verbindungsherstellung mit REST per http](../../databox/data-box-deploy-copy-data-via-rest.md). 
 
      ![Dialogfeld „Auf Speicherkonto zugreifen und Daten hochladen“](media/data-lake-storage-migrate-on-premises-HDFS-cluster/data-box-connection-string-http.png)
 
@@ -77,7 +77,7 @@ Führen Sie diese Schritte aus, um Daten über die REST-APIs des Blob-/Objektspe
 
     Beispiele:
 
-    `azjars=$hadoop_install_dir/share/hadoop/tools/lib/hadoop-azure-2.6.0-cdh5.14.0.jar``azjars=$azjars,$hadoop_install_dir/share/hadoop/tools/lib/microsoft-windowsazure-storage-sdk-0.6.0.jar`
+    `azjars=$hadoop_install_dir/share/hadoop/tools/lib/hadoop-azure-2.6.0-cdh5.14.0.jar` `azjars=$azjars,$hadoop_install_dir/share/hadoop/tools/lib/microsoft-windowsazure-storage-sdk-0.6.0.jar`
 
 5. Erstellen Sie den Speichercontainer, den Sie beim Kopieren von Daten verwenden möchten. Sie müssen auch ein Zielverzeichnis als Teil dieses Befehls angeben. Dies kann zu diesem Zeitpunkt ein Dummyzielverzeichnis sein.
 
@@ -161,7 +161,7 @@ Führen Sie diese Schritte aus, um Daten über die REST-APIs des Blob-/Objektspe
 
 Führen Sie diese Schritte aus, um das Data Box-Gerät vorzubereiten und an Microsoft zu senden.
 
-1. [Bereiten Sie den Versand der Data Box oder Data Box Heavy vor.](https://docs.microsoft.com/azure/databox/data-box-deploy-copy-data-via-rest)
+1. [Bereiten Sie den Versand der Data Box oder Data Box Heavy vor.](../../databox/data-box-deploy-copy-data-via-rest.md)
 
 2. Laden Sie die BOM-Dateien herunter, nachdem die Vorbereitung des Geräts abgeschlossen ist. Sie verwenden diese BOM- bzw. Manifestdateien später, um sich zu vergewissern, dass die Daten in Azure hochgeladen wurden.
 
@@ -169,48 +169,26 @@ Führen Sie diese Schritte aus, um das Data Box-Gerät vorzubereiten und an Micr
 
 4. Planen Sie eine Abholung durch UPS.
 
-    * Die entsprechenden Informationen für Data Box-Geräte finden Sie unter [Zurücksenden der Azure Data Box](https://docs.microsoft.com/azure/databox/data-box-deploy-picked-up).
+    * Die entsprechenden Informationen für Data Box-Geräte finden Sie unter [Zurücksenden der Azure Data Box](../../databox/data-box-deploy-picked-up.md).
 
-    * Die entsprechenden Informationen für Data Box Heavy-Geräte finden Sie unter [Zurücksenden von Azure Data Box Heavy](https://docs.microsoft.com/azure/databox/data-box-heavy-deploy-picked-up).
+    * Die entsprechenden Informationen für Data Box Heavy-Geräte finden Sie unter [Zurücksenden von Azure Data Box Heavy](../../databox/data-box-heavy-deploy-picked-up.md).
 
-5. Nachdem Ihr Gerät von Microsoft empfangen wurde, wird es mit dem Netzwerk des Rechenzentrums verbunden, und die Daten werden in das Speicherkonto hochgeladen (mit deaktivierten hierarchischen Namespaces), das Sie bei der Bestellung des Geräts angegeben haben. Überprüfen Sie anhand der BOM-Dateien, ob Ihre gesamten Daten in Azure hochgeladen wurden. Sie können diese Daten jetzt in ein Data Lake Storage Gen2-Speicherkonto verschieben.
+5. Nachdem Ihr Gerät von Microsoft empfangen wurde, wird es mit dem Netzwerk des Rechenzentrums verbunden, und die Daten werden in das Speicherkonto hochgeladen, das Sie bei der Bestellung des Geräts angegeben haben. Überprüfen Sie anhand der BOM-Dateien, ob Ihre gesamten Daten in Azure hochgeladen wurden. 
 
-## <a name="move-the-data-into-azure-data-lake-storage-gen2"></a>Verschieben der Daten in Azure Data Lake Storage Gen2
+## <a name="apply-access-permissions-to-files-and-directories-data-lake-storage-gen2-only"></a>Anwenden von Zugriffsberechtigungen auf Dateien und Verzeichnisse (nur Azure Data Lake Storage Gen2)
 
-Die Daten befinden sich bereits in Ihrem Azure Storage-Konto. Sie kopieren die Daten nun in Ihr Azure Data Lake Storage-Konto, und Sie wenden Zugriffsberechtigungen auf Dateien und Verzeichnisse an.
+Die Daten befinden sich bereits in Ihrem Azure Storage-Konto. Jetzt wenden Sie Zugriffsberechtigungen auf Dateien und Verzeichnisse an.
 
 > [!NOTE]
-> Dieser Schritt ist erforderlich, wenn Sie Azure Data Lake Storage Gen2 als Datenspeicher verwenden. Falls Sie nur ein Blobspeicherkonto ohne hierarchischen Namespace als Datenspeicher nutzen, können Sie diesen Abschnitt überspringen.
-
-### <a name="copy-data-to-the-azure-data-lake-storage-gen-2-account"></a>Kopieren von Daten in das Azure Data Lake Storage Gen2-Konto
-
-Sie können Daten kopieren, indem Sie Azure Data Factory oder Ihren Azure-basierten Hadoop-Cluster verwenden.
-
-* Informationen zum Verwenden von Azure Data Factory finden Sie unter [Laden von Daten in Azure Data Lake Storage Gen2 mit Azure Data Factory](https://docs.microsoft.com/azure/data-factory/load-azure-data-lake-storage-gen2). Geben Sie **Azure Blob Storage** als Quelle an.
-
-* Um Ihren Azure-basierten Hadoop-Cluster zu verwenden, führen Sie diesen DistCp-Befehl aus:
-
-    ```bash
-    hadoop distcp -Dfs.azure.account.key.<source_account>.dfs.windows.net=<source_account_key> abfs://<source_container> @<source_account>.dfs.windows.net/<source_path> abfs://<dest_container>@<dest_account>.dfs.windows.net/<dest_path>
-    ```
-
-    * Ersetzen Sie die Platzhalter `<source_account>` und `<dest_account>` durch den Namen des Quell- bzw. den Namen des Zielspeicherkontos.
-
-    * Ersetzen Sie die Platzhalter `<source_container>` und `<dest_container>` durch den Namen des Quell- bzw. den Namen des Zielcontainers.
-
-    * Ersetzen Sie die Platzhalter `<source_path>` und `<dest_path>` durch den Namen des Quell- bzw. den Namen des Zielverzeichnispfads.
-
-    * Ersetzen Sie den Platzhalter `<source_account_key>` durch den Zugriffsschlüssel des Speicherkontos, das die Daten enthält.
-
-    Mit diesem Befehl werden sowohl Daten als auch Metadaten aus Ihrem Speicherkonto in Ihr Data Lake Storage Gen2-Speicherkonto kopiert.
+> Dieser Schritt ist nur erforderlich, wenn Sie Azure Data Lake Storage Gen2 als Datenspeicher verwenden. Falls Sie nur ein Blobspeicherkonto ohne hierarchischen Namespace als Datenspeicher nutzen, können Sie diesen Abschnitt überspringen.
 
 ### <a name="create-a-service-principal-for-your-azure-data-lake-storage-gen2-account"></a>Erstellen eines Dienstprinzipals für Ihr Azure Data Lake Storage Gen2-Konto
 
-Informationen, wie ein Dienstprinzipal erstellt wird, finden Sie unter [Gewusst wie: Erstellen einer Azure AD-Anwendung und eines Dienstprinzipals mit Ressourcenzugriff über das Portal](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal).
+Informationen, wie ein Dienstprinzipal erstellt wird, finden Sie unter [Gewusst wie: Erstellen einer Azure AD-Anwendung und eines Dienstprinzipals mit Ressourcenzugriff über das Portal](../../active-directory/develop/howto-create-service-principal-portal.md).
 
-* Achten Sie beim Ausführen der Schritte im Abschnitt [Zuweisen der Anwendung zu einer Rolle](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role) des Artikels darauf, dem Dienstprinzipal die Rolle **Mitwirkender an Storage-Blobdaten** zuzuweisen.
+* Achten Sie beim Ausführen der Schritte im Abschnitt [Zuweisen der Anwendung zu einer Rolle](../../active-directory/develop/howto-create-service-principal-portal.md#assign-a-role-to-the-application) des Artikels darauf, dem Dienstprinzipal die Rolle **Mitwirkender an Storage-Blobdaten** zuzuweisen.
 
-* Fügen Sie, wenn Sie Schritte ausführen, die im Abschnitt [Abrufen von Werten für die Anmeldung](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) des Artikels aufgeführt sind, die Werte für die Anwendungs-ID, die Mandanten-ID und den geheimen Clientschlüssel in eine Textdatei ein. Sie benötigen sie in Kürze.
+* Wenn Sie die im Abschnitt [Abrufen von Werten für die Anmeldung](../../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in) des Artikels aufgeführten Schritte ausführen, speichern Sie die Werte für Anwendungs-ID und Clientgeheimnis in einer Textdatei. Sie benötigen sie in Kürze.
 
 ### <a name="generate-a-list-of-copied-files-with-their-permissions"></a>Generieren einer Liste der kopierten Dateien mit deren Berechtigungen
 
@@ -261,7 +239,7 @@ Führen Sie den folgenden Befehl aus, um Berechtigungen auf die Daten anzuwenden
 
 Bevor Sie Ihre Daten auf ein Data Box-Gerät verschieben, müssen Sie einige Hilfsskripts herunterladen, müssen Sie sicherstellen, dass Ihre Daten so organisiert sind, dass sie auf ein Data Box-Gerät passen, und müssen Sie alle nicht benötigten Dateien ausschließen.
 
-<a id="download-helper-scripts" />
+<a id="download-helper-scripts"></a>
 
 ### <a name="download-helper-scripts-and-set-up-your-edge-node-to-run-them"></a>Herunterladen von Hilfsskripts und Einrichten Ihres Edgeknotens, um sie auszuführen
 
@@ -282,7 +260,7 @@ Bevor Sie Ihre Daten auf ein Data Box-Gerät verschieben, müssen Sie einige Hil
    sudo apt-get install jq
    ```
 
-3. Installieren Sie das Python-Paket [Requests](http://docs.python-requests.org/en/master/).
+3. Installieren Sie das Python-Paket [Requests](https://2.python-requests.org/en/master/).
 
    ```bash
    

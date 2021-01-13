@@ -1,67 +1,72 @@
 ---
-title: Registrieren für die Self-Service-Kennwortzurücksetzung – Azure Active Directory | Microsoft-Dokumentation
-description: Registrieren von Authentifizierungsdaten für die Self-Service-Kennwortzurücksetzung von Azure AD
+title: 'Azure AD: Registrieren von Authentifizierungsinformationen zum Zurücksetzen Ihres Kennworts'
+description: Registrieren Sie Ihre Überprüfungsmethodeninformationen für die Self-Service-Kennwortzurücksetzung in Azure AD, damit Sie Ihr Kennwort ohne Administratorhilfe zurücksetzen können.
 services: active-directory
-author: eross-msft
+author: curtand
 manager: daveba
 ms.reviewer: sahenry
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
-ms.topic: conceptual
-ms.date: 01/11/2018
-ms.author: lizross
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: f113c42ff45811f31eb77a92873fb187dd51ea6b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.topic: end-user-help
+ms.date: 05/28/2020
+ms.author: curtand
+ms.openlocfilehash: e460f3fd383286b1e61a979b87a9dfa09f272313
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60530895"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "88799025"
 ---
-# <a name="register-for-self-service-password-reset"></a>Registrieren für die Self-Service-Kennwortzurücksetzung
+# <a name="register-your-verification-method-info-to-reset-your-own-password"></a>Registrieren Ihrer Überprüfungsmethode zum Zurücksetzen Ihres Kennworts
 
-> [!IMPORTANT]
-> Haben Sie Probleme bei der Anmeldung? Dann lesen Sie unter [Zurücksetzen des Kennworts eines Geschäfts-, Schul- oder Unikontos](active-directory-passwords-update-your-own-password.md) weiter.
+Wenn Sie das Kennwort für Ihr Geschäfts-, Schul -oder Unikonto vergessen haben, von Ihrem Unternehmen keines erhalten haben oder aus Ihrem Konto ausgesperrt wurden, können Sie Ihre Sicherheitsinformation und Ihr mobiles Gerät verwenden, um das Kennwort Ihres Geschäfts-, Schul -oder Unikontos zurückzusetzen.
 
-Endbenutzer können ihr Kennwort mithilfe der Self-Service-Kennwortzurücksetzung (Self-Service Password Reset, SSPR) von Azure Active Directory (Azure AD) selbstständig zurücksetzen oder ihr Konto entsperren. Um diese Funktion verwenden zu können, müssen Sie zunächst Ihre Authentifizierungsmethoden registrieren oder die vordefinierten Authentifizierungsmethoden bestätigen, die Ihr Administrator angegeben hat.
+Ihr Administrator muss dieses Feature aktivieren, damit Sie Ihre Informationen registrieren und Ihr Kennwort zurücksetzen können. Wenn die Option **Kennwort vergessen** nicht angezeigt wird, bedeutet dies, dass Ihr Administrator das Feature für Ihre Organisation nicht aktiviert hat. Ist dies Ihrer Meinung nach nicht richtig, wenden Sie sich an den Helpdesk.
 
-## <a name="register-or-confirm-authentication-data-with-sspr"></a>Registrieren oder Bestätigen von Authentifizierungsdaten für die Self-Service-Kennwortzurücksetzung
+>[!Important]
+>Dieser Artikel richtet sich an Benutzer, die versuchen, sich für die Self-Service-Kennwortzurücksetzung zu registrieren. Dies bedeutet, dass Sie das Kennwort für Ihr Geschäfts-, Schul- oder Unikonto (z. B. alain@contoso.com) ohne die Hilfe Ihres Administrators zurücksetzen können. Wenn Sie ein Administrator sind und nach Informationen zum Aktivieren der Self-Service-Kennwortzurücksetzung für Ihre Mitarbeiter oder andere Benutzer suchen, lesen Sie [Bereitstellen von Self-Service-Kennwortzurücksetzung in Azure AD](../authentication/howto-sspr-deployment.md) und weitere Artikel zu diesem Thema.
 
-1. Öffnen Sie auf Ihrem Gerät den Webbrowser, und rufen Sie die [Registrierungsseite für die Kennwortzurücksetzung](https://aka.ms/ssprsetup) auf.
-2. Geben Sie Ihren vom Administrator bereitgestellten Benutzernamen und das dazugehörige Kennwort ein.
-3. Abhängig von der Konfiguration durch Ihr IT-Team können einige der folgenden Optionen konfiguriert und überprüft werden. Wenn der Administrator von Ihnen zur Verwendung Ihrer Informationen autorisiert wurde, kann er einige der Informationen für Sie auffüllen.
-    * **Bürotelefon**: Diese Option kann nur vom Administrator festgelegt werden.
-    * **Authentifizierungstelefon**: Legen Sie diese Option auf eine andere Telefonnummer fest, unter der Sie erreichbar sind. Ein Beispiel wäre ein Mobiltelefon, das Textnachrichten oder Anrufe empfangen kann.
-    * **E-Mail für Authentifizierung**: Legen Sie diese Option auf eine alternative E-Mail-Adresse fest, auf die Sie zugreifen können, ohne das zurückzusetzende Kennwort zu verwenden.
-    * **Sicherheitsfragen**: Diese Liste mit Fragen wurde vom Administrator zur Beantwortung freigegeben. Fragen und Antworten dürfen nicht mehrmals verwendet werden.
-4. Geben Sie die vom Administrator angeforderten Informationen an, und überprüfen Sie sie. Sollten mehrere Optionen verfügbar sein, empfiehlt es sich, mehrere Methoden zu registrieren. Dadurch sind Sie flexibel, falls eine der Methoden nicht verfügbar ist – beispielsweise, wenn Sie unterwegs und nicht über Ihr Bürotelefon erreichbar sind.
+## <a name="set-up-your-password-reset-verification-method"></a>Einrichten Ihrer Überprüfungsmethode für die Kennwortzurücksetzung
 
-    ![Registrieren von Authentifizierungsmethoden und Klicken auf „Fertig stellen“][Register]
+1. Öffnen Sie auf Ihrem Gerät den Webbrowser, und navigieren Sie zur [Seite für die Sicherheitsinformationen](https://account.activedirectory.windowsazure.com/PasswordReset/Register.aspx?regref=ssprsetup).
 
-5. Klicken Sie auf **Fertig stellen**. SSPR steht Ihnen nun bei Bedarf zur Verfügung.
+2. Abhängig davon, wie Ihr Administrator Ihre Organisation eingerichtet hat, steht Ihnen mindestens eine der folgenden Optionen zur Verfügung, die Sie als Sicherheitsüberprüfungsmethode einrichten können. Wenn mehrere Optionen verfügbar sind, wird dringend empfohlen, mehr als eine als Sicherheitsüberprüfungsmethode zu verwenden, falls eine Ihrer Methoden nicht mehr verfügbar ist.
 
-Für **Authentifizierungstelefon** oder **E-Mail für Authentifizierung** eingegebene Daten werden im globalen Verzeichnis nicht angezeigt. Diese Daten sind nur für Sie selbst und für Ihre Administratoren sichtbar. Die Antworten auf Ihre Sicherheitsfragen sind nur für Sie selbst sichtbar.
+    - **Authentifizierungs-App:** Wählen Sie diese Option aus, um die Microsoft Authenticator-App oder eine andere Authentifikator-App als Sicherheitsüberprüfungsmethode zu verwenden. Weitere Informationen zum Einrichten der App finden Sie unter [Einrichten der Microsoft Authenticator-App als Überprüfungsmethode](security-info-setup-auth-app.md).
 
-Unter Umständen werden Sie von den Administratoren nach einer Weile zur Bestätigung Ihrer Authentifizierungsmethoden aufgefordert, um sicherzustellen, dass die registrierten Methoden immer noch angemessen sind.
+    - **SMS-Nachrichten:** Wählen Sie diese Option aus, um SMS-Nachrichten an Ihr mobiles Gerät zu senden. Weitere Informationen zum Einrichten von SMS finden Sie unter [Einrichten von SMS-Nachrichten als Überprüfungsmethode](security-info-setup-text-msg.md).
+
+    - **Telefonanrufe:** Wählen Sie diese Option aus, um einen Telefonanruf an Ihre registrierte Telefonnummer zu erhalten. Weitere Informationen zum Einrichten von Telefonanrufen finden Sie unter [Einrichten einer Telefonnummer als Überprüfungsmethode](security-info-setup-phone-number.md).
+
+    - **Sicherheitsschlüssel:** Wählen Sie diese Option aus, um einen Microsoft-kompatiblen Sicherheitsschlüssel zu verwenden. Weitere Informationen finden Sie unter [Einrichten eines Sicherheitsschlüssels als Überprüfungsmethode](security-info-setup-security-key.md).
+
+    - **E-Mail-Adresse:** Wählen Sie diese Option aus, um eine alternative E-Mail-Adresse anzugeben, die ohne Eingabe eines Kennworts verwendet werden kann. Diese Option funktioniert nur für die Kennwortzurücksetzung und nicht als Sicherheitsüberprüfungsmethode. Weitere Informationen zum Einrichten einer E-Mail-Adresse finden Sie unter [Einrichten einer E-Mail-Adresse als Überprüfungsmethode](security-info-setup-email.md).
+
+    - **Sicherheitsfragen:** Wählen Sie diese Option aus, um von Ihrem Administrator festgelegte vordefinierte Sicherheitsfragen einzurichten und zu beantworten. Diese Option funktioniert nur für die Kennwortzurücksetzung und nicht als Sicherheitsüberprüfungsmethode. Weitere Informationen zu Sicherheitsfragen finden Sie unter [Einrichten von Sicherheitsfragen als Überprüfungsmethode](security-info-setup-questions.md).
+
+3. Wählen Sie nach dem Auswählen und Einrichten Ihrer Methoden die Option **Fertig stellen** aus, um den Vorgang abzuschließen.
+
+    > [!Note]
+    > Für Ihre Telefonnummer oder E-Mail-Adresse hinzugefügte Informationen werden nicht für das globale Verzeichnis Ihrer Organisation freigegeben. Diese Informationen sind nur für Sie und Ihren Administrator sichtbar. Die Antworten auf Ihre Sicherheitsfragen sind nur für Sie selbst sichtbar.
 
 ## <a name="common-problems-and-their-solutions"></a>Häufige Probleme und Lösungen
 
  Hier finden Sie einige häufige Fehler und die passenden Lösungen:
 
-| Fehlerbeschreibung| Welcher Fehler wird angezeigt?| Lösung |
+| Fehlermeldung |  Mögliche Lösung |
 | --- | --- | --- |
-| Nach der Eingabe meiner Benutzer-ID wird mir die Seite „Wenden Sie sich an Ihren Administrator“ angezeigt. | Wenden Sie sich an Ihren Administrator. <br> <br> Es wurde ermittelt, dass das Kennwort Ihres Benutzerkontos nicht von Microsoft verwaltet wird. Ihr Kennwort kann daher nicht automatisch zurückgesetzt werden. <br> <br> Weitere Unterstützung erhalten Sie vom IT-Team. | Diese Meldung wird angezeigt, weil Ihr IT-Team Ihr Kennwort in Ihrer lokalen Umgebung verwaltet und das Zurücksetzen des Kennworts über den Link **Zugriff auf Ihr Konto nicht möglich** nicht gestattet ist. <br> <br> Wenn Sie Ihr Kennwort zurücksetzen möchten, wenden Sie sich direkt an das IT-Team, um Unterstützung zu erhalten. Teilen Sie dem Team mit, dass Sie Ihr Kennwort zurücksetzen möchten, damit es dieses Feature für Sie aktivieren kann.|
-| Nach dem Eingeben meiner Benutzer-ID erhalte ich die Fehlermeldung „Ihr Konto ist für ein Zurücksetzen des Kennworts nicht aktiviert“. | Ihr Konto ist nicht für die Kennwortzurücksetzung aktiviert. <br> <br> Ihr IT-Team hat Ihr Konto nicht zur Verwendung mit diesem Dienst eingerichtet. <br> <br> Wenn Sie möchten, können wir einen Administrator in Ihrer Organisation kontaktieren, um Ihr Kennwort für Sie zurückzusetzen. | Diese Meldung wird angezeigt, weil Ihr IT-Team die Kennwortzurücksetzung über den Link **Zugriff auf Ihr Konto nicht möglich** für Ihre Organisation nicht aktiviert oder Ihnen keine Berechtigung für die Nutzung dieses Features erteilt hat. <br> <br> Klicken Sie zum Zurücksetzen Ihres Kennworts auf den Link zur **Kontaktaufnahme mit einem Administrator**. Daraufhin wird eine E-Mail an das IT-Team Ihres Unternehmens gesendet. Die E-Mail informiert das Team darüber, dass Sie Ihr Kennwort zurücksetzen möchten, damit es dieses Feature für Sie aktivieren kann. |
-| Nach dem Eingeben meiner Benutzer-ID erhalte ich die Fehlermeldung „Das Konto konnte nicht überprüft werden“. | Das Konto konnte nicht überprüft werden. <br> <br> Wenn Sie möchten, können wir einen Administrator in Ihrer Organisation kontaktieren, um Ihr Kennwort für Sie zurückzusetzen. | Diese Meldung wird angezeigt, weil die Kennwortzurücksetzung für Sie zwar aktiviert ist, Sie sich aber nicht für die Nutzung dieses Diensts registriert haben. Wenn Sie sich für die Kennwortzurücksetzung registrieren möchten, rufen Sie die [Registrierungsseite für die Kennwortzurücksetzung](https://aka.ms/ssprsetup) auf, sobald Sie wieder auf Ihr Konto zugreifen können. <br> <br> Klicken Sie zum Zurücksetzen Ihres Kennworts auf den Link zur **Kontaktaufnahme mit einem Administrator**, um eine E-Mail an das IT-Team Ihres Unternehmens zu senden. |
+| Wenden Sie sich an Ihren Administrator.<br>Es wurde ermittelt, dass das Kennwort Ihres Benutzerkontos nicht von Microsoft verwaltet wird. Ihr Kennwort kann daher nicht automatisch zurückgesetzt werden.<br>Weitere Unterstützung erhalten Sie vom IT-Team.| Wenn Sie diese Fehlermeldung nach der Eingabe Ihrer Benutzer-ID erhalten, bedeutet dies, dass Ihre Organisation Ihr Kennwort intern verwaltet und Sie Ihr Kennwort nicht über den Link **Sie können nicht auf Ihr Konto zugreifen?** zurücksetzen können. Wenn Ihr Kennwort in dieser Situation zurückgesetzt werden soll, müssen Sie den Helpdesk oder Administrator Ihrer Organisation um Hilfe bitten. |
+| Ihr Konto ist nicht für die Kennwortzurücksetzung aktiviert.<br>Ihr IT-Team hat Ihr Konto nicht zur Verwendung mit diesem Dienst eingerichtet.<br>Wenn Sie möchten, können wir einen Administrator in Ihrer Organisation kontaktieren, um Ihr Kennwort für Sie zurückzusetzen. | Wenn Sie diese Fehlermeldung nach der Eingabe Ihrer Benutzer-ID erhalten, bedeutet dies, dass Ihre Organisation die Kennwortzurücksetzungsfunktion nicht aktiviert hat oder Sie die Funktion nicht verwenden dürfen. Wenn Ihr Kennwort in dieser Situation zurückgesetzt werden soll, müssen Sie den Link zur **Kontaktaufnahme mit einem Administrator** auswählen. Nachdem Sie auf den Link geklickt haben, wird eine E-Mail an den Helpdesk oder Administrator Ihrer Organisation gesendet, in der er darüber informiert wird, dass Sie Ihr Kennwort zurücksetzen möchten. |
+| Das Konto konnte nicht überprüft werden.<br>Wenn Sie möchten, können wir einen Administrator in Ihrer Organisation kontaktieren, um Ihr Kennwort für Sie zurückzusetzen. | Wenn Sie diese Fehlermeldung nach der Eingabe Ihrer Benutzer-ID erhalten, bedeutet dies, dass Ihre Organisation die Kennwortzurücksetzung aktiviert hat und Sie die Funktion zwar verwenden können, sich aber nicht für den Dienst registriert haben. In diesem Fall müssen Sie sich an den Helpdesk oder Administrator Ihrer Organisation wenden, damit Ihr Kennwort zurückgesetzt werden kann. Informationen dazu, wie Sie sich für die Kennwortzurücksetzung registrieren, nachdem Sie Ihr Gerät wieder verwenden können, finden Sie im obigen Prozess in diesem Artikel. |
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Ändern Ihres Kennworts mithilfe der Self-Service-Kennwortzurücksetzung](active-directory-passwords-update-your-own-password.md)
-* [Registrierungsseite für die Kennwortzurücksetzung](https://aka.ms/ssprsetup)
-* [Kennwortzurücksetzungsportal](https://passwordreset.microsoftonline.com/)
-* Falls Sie sich nicht bei Ihrem Microsoft-Konto anmelden können, klicken Sie [hier](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant).
+- [Ändern Ihres Kennworts mithilfe der Self-Service-Kennwortzurücksetzung](active-directory-passwords-update-your-own-password.md)
 
-[Register]: ./media/active-directory-passwords-reset-register/register-2-methods.png "Registrierungsseite für die Kennwortzurücksetzung mit registrierten Methoden und der Schaltfläche „Fertig stellen“"
+- [Seite für Sicherheitsinformationen](https://mysignins.microsoft.com/security-info)
 
+- [Kennwortzurücksetzungsportal](https://passwordreset.microsoftonline.com/)
+
+- Falls Sie sich nicht bei Ihrem Microsoft-Konto anmelden können, klicken Sie [hier](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant).

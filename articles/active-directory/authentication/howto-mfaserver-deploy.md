@@ -1,22 +1,22 @@
 ---
-title: Erste Schritte mit Azure Multi-Factor Authentication-Server – Azure Active Directory
+title: Erste Schritte mit Azure MFA-Server – Azure Active Directory
 description: Erste Schritte mit lokalen Azure MFA-Servern
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
-ms.topic: conceptual
-ms.date: 05/20/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.topic: how-to
+ms.date: 11/21/2019
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 15900758945fd5c97198caf47ff01fcfb5a6a794
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d7bd9913cccbe077a4deed9a7c5bfdc601f3dd5e
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67057406"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96742339"
 ---
 # <a name="getting-started-with-the-azure-multi-factor-authentication-server"></a>Erste Schritte mit Azure Multi-Factor Authentication-Server
 
@@ -27,12 +27,13 @@ ms.locfileid: "67057406"
 Auf dieser Seite werden eine Neuinstallation des Servers und die Einrichtung mit einer lokalen Active Directory-Instanz behandelt. Falls Sie den MFA-Server bereits installiert haben und ein Upgrade vornehmen möchten, lesen Sie unter [Upgrade to the latest Azure Multi-Factor Authentication Server](howto-mfaserver-deploy-upgrade.md) (Upgraden auf den neuesten Azure Multi-Factor Authentication-Server) weiter. Falls Sie nur den Webdienst installieren möchten, lesen Sie unter [Aktivieren der Mobile App-Authentifizierung mit dem Azure Multi-Factor Authentication-Server](howto-mfaserver-deploy-mobileapp.md) weiter.
 
 > [!IMPORTANT]
-> Ab dem 1. Juli 2019 bietet Microsoft keine MFA-Server mehr für neue Bereitstellungen an. Neue Kunden, die eine Multi-Factor Authentication für ihre Benutzer einrichten möchten, können stattdessen die cloudbasierte Multi-Factor Authentication von Azure verwenden. Bestehende Kunden, die ihren MFA-Server vor dem 1. Juli aktiviert haben, können weiterhin die neusten Versionen und zukünftige Updates herunterladen sowie Anmeldedaten zur Aktivierung generieren.
+> Seit dem 1. Juli 2019 bietet Microsoft für neue Bereitstellungen keine MFA-Server mehr an. Neue Kunden, die bei Benutzeranmeldeereignissen eine mehrstufige Authentifizierung (Multi-Factor Authentication, MFA) verlangen möchten, sollten cloudbasierte Azure AD Multi-Factor Authentication verwenden.
+>
+> Informationen zu den ersten Schritten mit der cloudbasierten MFA finden Sie im [Tutorial: Schützen von Benutzeranmeldeereignissen mit Azure AD Multi-Factor Authentication](tutorial-enable-azure-mfa.md).
+>
+> Bestandskunden, die ihren MFA-Server vor dem 1. Juli 2019 aktiviert haben, können weiterhin die neuesten Versionen und zukünftige Updates herunterladen sowie Anmeldedaten zur Aktivierung generieren.
 
 ## <a name="plan-your-deployment"></a>Planen der Bereitstellung
-
-> [!WARNING]
-> Ab März 2019 sind Downloads von MFA-Server nur für kostenpflichtige Mandanten verfügbar. Kostenlose bzw. Testversionen von Mandanten können den Server nicht mehr herunterladen und auch keine Anmeldeinformationen für die Aktivierung generieren und verwenden.
 
 Bevor Sie den Azure Multi-Factor Authentication-Server herunterladen, sollten Sie überlegen, wie Ihre Last- und Hochverfügbarkeitsanforderungen sind. Verwenden Sie diese Informationen, um zu entscheiden, wie und wo Sie bereitstellen möchten.
 
@@ -41,7 +42,7 @@ Ein guter Anhaltspunkt für den benötigten Speicherplatz ist die Anzahl der Ben
 | Benutzer | RAM |
 | ----- | --- |
 | 1-10,000 | 4 GB |
-| 10,001-50,000 | 8 GB |
+| 10,001-50,000 | 8 GB |
 | 50,001-100,000 | 12 GB |
 | 100,000-200,001 | 16 GB |
 | 200,001+ | 32 GB |
@@ -57,7 +58,7 @@ Stellen Sie sicher, dass der Server, den Sie für Azure Multi-Factor Authenticat
 | Anforderungen an den Azure Multi-Factor Authentication-Server | BESCHREIBUNG |
 |:--- |:--- |
 | Hardware |<li>200 MB Festplattenspeicher</li><li>x32- oder x64-fähiger Prozessor</li><li>1 GB oder mehr RAM</li> |
-| Software |<li>Windows Server 2016</li><li>Windows Server 2012 R2</li><li>Windows Server 2012</li><li>Windows Server 2008 R2</li><li>Windows Server 2008, SP1, SP2</li><li>Windows Server 2003 R2</li><li>Windows Server 2003, SP1, SP2</li><li>Windows 10</li><li>Windows 8.1, alle Editionen</li><li>Windows 8, alle Editionen</li><li>Windows 7, alle Editionen</li><li>Windows Vista, alle Editionen, SP1, SP2</li><li>Microsoft .NET 4.0 Framework</li><li>IIS 7.0 oder höher bei Installation des Benutzerportals oder des Webdienst-SDK</li> |
+| Software |<li>Windows Server 2016</li><li>Windows Server 2012 R2</li><li>Windows Server 2012</li><li>Windows Server 2008/R2 (nur mit [ESU](/lifecycle/faq/extended-security-updates))</li><li>Windows 10</li><li>Windows 8.1, alle Editionen</li><li>Windows 8, alle Editionen</li><li>Windows 7, alle Editionen (nur mit [ESU](/lifecycle/faq/extended-security-updates) )</li><li>Microsoft .NET 4.0 Framework</li><li>IIS 7.0 oder höher bei Installation des Benutzerportals oder des Webdienst-SDK</li> |
 | Berechtigungen | Domänenadministrator- oder Unternehmensadministratorkonto zum Registrieren in Active Directory |
 
 ### <a name="azure-mfa-server-components"></a>Komponenten des Azure MFA-Servers
@@ -84,26 +85,42 @@ Für jeden MFA-Server muss die Kommunikation über den ausgehenden Port 443 zu f
 |:---: |:---: |:---: |
 | 134.170.116.0/25 |255.255.255.128 |134.170.116.1–134.170.116.126 |
 | 134.170.165.0/25 |255.255.255.128 |134.170.165.1–134.170.165.126 |
-| 70.37.154.128/25 |255.255.255.128 |70.37.154.129–70.37.154.254 |
+| 70.37.154.128/25 |255.255.255.128 |70.37.154.129–70.37.154.254   |
+| 52.251.8.48/28   | 255.255.255.240 | 52.251.8.48 - 52.251.8.63     |
+| 52.247.73.160/28 | 255.255.255.240 | 52.247.73.160 - 52.247.73.175 |
+| 52.159.5.240/28  | 255.255.255.240 | 52.159.5.240 - 52.159.5.255   |
+| 52.159.7.16/28   | 255.255.255.240 | 52.159.7.16 - 52.159.7.31     |
+| 52.250.84.176/28 | 255.255.255.240 | 52.250.84.176 - 52.250.84.191 |
+| 52.250.85.96/28  | 255.255.255.240 | 52.250.85.96 - 52.250.85.111  |
 
 Wenn Sie das Ereignisbestätigungsfeature nicht verwenden und Ihre Benutzer keine mobilen Apps nutzen, um eine Verifizierung über Geräte im Unternehmensnetzwerk durchzuführen, benötigen Sie lediglich folgende Bereiche:
 
 | IP-Subnetz | Netzmaske | IP-Bereich |
 |:---: |:---: |:---: |
-| 134.170.116.72/29 |255.255.255.248 |134.170.116.72–134.170.116.79 |
-| 134.170.165.72/29 |255.255.255.248 |134.170.165.72–134.170.165.79 |
-| 70.37.154.200/29 |255.255.255.248 |70.37.154.201–70.37.154.206 |
+| 134.170.116.72/29 |255.255.255.248 |134.170.116.72–134.170.116.79|
+| 134.170.165.72/29 |255.255.255.248 |134.170.165.72–134.170.165.79|
+| 70.37.154.200/29 |255.255.255.248  |70.37.154.201–70.37.154.206  |
+| 52.251.8.48/28   | 255.255.255.240 | 52.251.8.48 - 52.251.8.63     |
+| 52.247.73.160/28 | 255.255.255.240 | 52.247.73.160 - 52.247.73.175 |
+| 52.159.5.240/28  | 255.255.255.240 | 52.159.5.240 - 52.159.5.255   |
+| 52.159.7.16/28   | 255.255.255.240 | 52.159.7.16 - 52.159.7.31     |
+| 52.250.84.176/28 | 255.255.255.240 | 52.250.84.176 - 52.250.84.191 |
+| 52.250.85.96/28  | 255.255.255.240 | 52.250.85.96 - 52.250.85.111  |
 
 ## <a name="download-the-mfa-server"></a>Herunterladen des MFA-Servers
 
-> [!WARNING]
-> Ab März 2019 sind Downloads von MFA-Server nur für kostenpflichtige Mandanten verfügbar. Kostenlose bzw. Testversionen von Mandanten können den Server nicht mehr herunterladen und auch keine Anmeldeinformationen für die Aktivierung generieren und verwenden.
-
 Führen Sie die folgenden Schritte aus, um den Azure Multi-Factor Authentication-Server im Azure-Portal herunterzuladen:
 
+> [!IMPORTANT]
+> Seit dem 1. Juli 2019 bietet Microsoft für neue Bereitstellungen keine MFA-Server mehr an. Neue Kunden, die eine mehrstufige Authentifizierung für ihre Benutzer einrichten möchten, können die cloudbasierte Azure AD Multi-Factor Authentication verwenden.
+>
+> Informationen zu den ersten Schritten mit der cloudbasierten MFA finden Sie im [Tutorial: Schützen von Benutzeranmeldeereignissen mit Azure AD Multi-Factor Authentication](tutorial-enable-azure-mfa.md).
+>
+> Bestandskunden, die ihren MFA-Server vor dem 1. Juli 2019 aktiviert haben, können weiterhin die neuesten Versionen und zukünftige Updates herunterladen sowie Anmeldedaten zur Aktivierung generieren. Die folgenden Schritte können nur bei vorhandenen MFA Server-Kunden angewandt werden.
+
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) als Administrator an.
-2. Klicken Sie auf **Azure Active Directory** > **MFA-Server**.
-3. Wählen Sie **Servereinstellungen** aus.
+2. Suchen Sie nach *Azure Active Directory*, und wählen Sie diese Option aus. Wählen Sie **Sicherheit** > **MFA** aus.
+3. Wählen Sie unter **MFA-Server verwalten** die Option **Servereinstellungen** aus.
 4. Wählen Sie **Herunterladen** aus, und befolgen Sie die Anweisungen auf der Downloadseite, um das Installationsprogramm zu speichern. 
 
    ![Herunterladen von MFA-Server aus dem Azure-Portal](./media/howto-mfaserver-deploy/downloadportal.png)
@@ -122,6 +139,9 @@ Nachdem Sie den Server heruntergeladen haben, können Sie ihn installieren und k
    ![Verwendung des Authentifizierungskonfigurations-Assistenten überspringen](./media/howto-mfaserver-deploy/skip2.png)
 
 5. Wechseln Sie zurück zu der Seite, von der Sie den Server heruntergeladen haben, und klicken Sie auf die Schaltfläche **Anmeldeinformationen für Aktivierung generieren**. Kopieren Sie diese Informationen auf dem Azure MFA-Server in die angezeigten Felder, und klicken Sie auf **Aktivieren**.
+
+> [!NOTE]
+> Nur globale Administratoren können Aktivierungsanmeldeinformationen im Azure-Portal generieren.
 
 ## <a name="send-users-an-email"></a>Senden einer E-Mail an Benutzer
 
@@ -147,8 +167,8 @@ Nach Abschluss der Serverinstallation können Sie Benutzer hinzufügen. Sie kön
 
 ### <a name="manual-import-from-active-directory"></a>Manuelles Importieren aus Active Directory
 
-1. Wählen Sie auf dem Azure MFA-Server auf der linken Seite **Benutzer**aus.
-2. Wählen Sie unten **Aus Active Directory importieren**aus.
+1. Wählen Sie auf dem Azure MFA-Server auf der linken Seite **Benutzer** aus.
+2. Wählen Sie unten **Aus Active Directory importieren** aus.
 3. Sie können jetzt entweder nach einzelnen Benutzern suchen oder im AD-Verzeichnis nach Organisationseinheiten suchen, die die gewünschten Benutzer enthalten. In diesem Beispiel wird die Benutzer-Organisationseinheit angegeben.
 4. Markieren Sie alle Benutzer auf der rechten Seite, und klicken Sie auf **Importieren**. Es wird ein Popupfenster angezeigt, wenn der Vorgang erfolgreich ausgeführt wurde. Schließen Sie das Fenster "Importieren".
 
@@ -200,7 +220,7 @@ Der neue Server ist nun aktiv und wird mit den ursprünglichen Konfigurations- u
 
 ## <a name="managing-the-tlsssl-protocols-and-cipher-suites"></a>Verwalten von TLS/SSL-Protokollen und Verschlüsselungssammlungen
 
-Nachdem Sie MFA Server Version 8.x oder höher installiert bzw. das Upgrade darauf durchgeführt haben, ist es ratsam, ältere und weniger leistungsstarke Verschlüsselungssammlungen zu deaktivieren oder zu entfernen, sofern diese nicht von Ihrer Organisation benötigt werden. Informationen zur Durchführung dieser Aufgabe finden Sie im Artikel [Verwalten von SSL/TLS-Protokollen und Verschlüsselungssammlungen für AD FS](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/manage-ssl-protocols-in-ad-fs).
+Nachdem Sie MFA Server Version 8.x oder höher installiert bzw. das Upgrade darauf durchgeführt haben, ist es ratsam, ältere und weniger leistungsstarke Verschlüsselungssammlungen zu deaktivieren oder zu entfernen, sofern diese nicht von Ihrer Organisation benötigt werden. Informationen zur Durchführung dieser Aufgabe finden Sie im Artikel [Verwalten von SSL/TLS-Protokollen und Verschlüsselungssammlungen für AD FS](/windows-server/identity/ad-fs/operations/manage-ssl-protocols-in-ad-fs).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

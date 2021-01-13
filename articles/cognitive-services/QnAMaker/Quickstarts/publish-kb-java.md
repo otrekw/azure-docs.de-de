@@ -1,47 +1,43 @@
 ---
 title: 'Schnellstart: Veröffentlichen einer Wissensdatenbank, REST, Java – QnA Maker'
-titleSuffix: Azure Cognitive Services
-description: In diesem Java-REST-basierten Schnellstart wird Schritt für Schritt erläutert, wie Sie Ihre Wissensdatenbank veröffentlichen. Durch das Veröffentlichen wird die aktuelle Version der getesteten Wissensdatenbank in einen dedizierten Azure Search-Index gepusht, der die veröffentlichte Wissensdatenbank darstellt. Außerdem wird ein Endpunkt erstellt, der in Ihrer Anwendung oder Ihrem Chatbot aufgerufen werden kann.
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.custom: seodec18
+description: Diese auf Java REST basierende Schnellstartanleitung veröffentlicht Ihre Wissensdatenbank und erstellt einen Endpunkt, der in Ihrer Anwendung oder Ihrem Chatbot aufgerufen werden kann.
 ms.service: cognitive-services
 ms.subservice: qna-maker
-ms.topic: quickstart
-ms.date: 09/03/2019
-ms.author: diberry
-ms.openlocfilehash: eeea0cff1d6445abd45715eda707b97843107341
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.date: 02/08/2020
+ROBOTS: NOINDEX,NOFOLLOW
+ms.custom: RESTCURL2020FEB27, devx-track-java
+ms.topic: how-to
+ms.openlocfilehash: 8e2e902e0563e0f4ae8c0c3d0dc795a8260c62db
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70308103"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96351162"
 ---
 # <a name="quickstart-publish-a-knowledge-base-in-qna-maker-using-java"></a>Schnellstart: Veröffentlichen einer Wissensdatenbank in QnA Maker mit Java
 
-In diesem REST-basierten Schnellstart wird das programmgesteuerte Veröffentlichen Ihrer Wissensdatenbank (Knowledge Base, KB) Schritt für Schritt beschrieben. Bei der Veröffentlichung wird die aktuelle Version der Wissensdatenbank per Pushvorgang an einen dedizierten Azure Search-Index übertragen und ein Endpunkt erstellt, der in Ihrer Anwendung oder Ihrem Chatbot aufgerufen werden kann.
+In diesem REST-basierten Schnellstart wird das programmgesteuerte Veröffentlichen Ihrer Wissensdatenbank (Knowledge Base, KB) Schritt für Schritt beschrieben. Bei der Veröffentlichung wird die aktuelle Version der Wissensdatenbank per Pushvorgang an einen dedizierten Azure Cognitive Search-Index übertragen und ein Endpunkt erstellt, der in Ihrer Anwendung oder Ihrem Chatbot aufgerufen werden kann.
 
 In dieser Schnellstartanleitung werden QnA Maker-APIs aufgerufen:
-* [Veröffentlichen](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/publish): Für diese API sind keine Informationen im Text der Anforderung erforderlich.
+* [Veröffentlichen](/rest/api/cognitiveservices/qnamaker/knowledgebase/publish): Für diese API sind keine Informationen im Text der Anforderung erforderlich.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* [JDK SE](https://aka.ms/azure-jdks) (Java Development Kit, Standard Edition)
-* In diesem Beispiel wird der Apache-[HTTP-Client](https://hc.apache.org/httpcomponents-client-ga/) von HTTP Components verwendet. Sie müssen Ihrem Projekt die folgenden Apache-HTTP-Clientbibliotheken hinzufügen: 
+* [JDK SE](/azure/developer/java/fundamentals/java-jdk-long-term-support) (Java Development Kit, Standard Edition)
+* In diesem Beispiel wird der Apache-[HTTP-Client](https://hc.apache.org/httpcomponents-client-ga/) von HTTP Components verwendet. Sie müssen Ihrem Projekt die folgenden Apache-HTTP-Clientbibliotheken hinzufügen:
     * httpclient-4.5.3.jar
     * httpcore-4.4.6.jar
     * commons-logging-1.2.jar
 * [Visual Studio Code](https://code.visualstudio.com/)
-* Sie benötigen einen [QnA Maker-Dienst](../How-To/set-up-qnamaker-service-azure.md). Wählen Sie zum Abrufen Ihres Schlüssels im Azure-Dashboard für Ihre QnA Maker-Ressource unter **Ressourcenverwaltung** die Option **Schlüssel** aus. . 
-* ID der QnA Maker-Wissensdatenbank, die in der URL des Abfragezeichenfolgenparameters „kbid“ enthalten ist, wie nachfolgend gezeigt:
+* Sie benötigen einen [QnA Maker-Dienst](../How-To/set-up-qnamaker-service-azure.md). Wählen Sie für Ihre Ressource im Azure-Portal die Option **Schnellstart** aus, um den Schlüssel und den Endpunkt (der den Ressourcennamen enthält) abzurufen.
+* ID der QnA Maker-Wissensdatenbank, die in der URL des Abfragezeichenfolgenparameters `kbid` enthalten ist, wie nachfolgend gezeigt.
 
     ![ID der QnA Maker-Wissensdatenbank](../media/qnamaker-quickstart-kb/qna-maker-id.png)
 
-    Falls Sie noch keine Wissensdatenbank besitzen, können Sie für diese Schnellstartanleitung eine Beispieldatenbank erstellen: [Erstellen Sie eine Wissensdatenbank](create-new-kb-csharp.md).
+    Falls Sie noch keine Wissensdatenbank besitzen, können Sie für diese Schnellstartanleitung eine Beispieldatenbank erstellen: [Erstellen einer neuen Wissensdatenbank](create-new-kb-csharp.md).
 
-> [!NOTE] 
-> Die vollständigen Projektmappendateien sind über das [Github-Repository **Azure-Samples/cognitive-services-qnamaker-java**](https://github.com/Azure-Samples/cognitive-services-qnamaker-java/tree/master/documentation-samples/quickstarts/publish-knowledge-base) verfügbar.
+> [!NOTE]
+> Die vollständigen Projektmappendateien sind im GitHub-Repository [**Azure-Samples/cognitive-services-qnamaker-java** verfügbar](https://github.com/Azure-Samples/cognitive-services-qnamaker-java/tree/master/documentation-samples/quickstarts/publish-knowledge-base).
 
 ## <a name="create-a-java-file"></a>Erstellen einer Java-Datei
 
@@ -51,7 +47,7 @@ In dieser Schnellstartanleitung werden QnA Maker-APIs aufgerufen:
 
 Fügen Sie oben in der Datei `PublishKB.java` oberhalb der Klasse die folgenden Zeilen hinzu, um dem Projekt die erforderlichen Abhängigkeiten hinzuzufügen:
 
-[!code-java[Add the required dependencies](~/samples-qnamaker-java/documentation-samples/quickstarts/publish-knowledge-base/PublishKB.java?range=1-13 "Add the required dependencies")]
+:::code language="java" source="~/cognitive-services-quickstart-code/java/QnAMaker/rest/PublishKB.java" id="dependencies":::
 
 ## <a name="create-publishkb-class-with-main-method"></a>Erstellen einer PublishKB-Klasse mit der main-Methode
 
@@ -60,7 +56,7 @@ Fügen Sie nach den Abhängigkeiten die folgende Klasse hinzu:
 ```Go
 public class PublishKB {
 
-    public static void main(String[] args) 
+    public static void main(String[] args)
     {
     }
 }
@@ -70,13 +66,13 @@ public class PublishKB {
 
 Fügen Sie in der Methode **main** die erforderlichen Konstanten für den Zugriff auf QnA Maker hinzu. Ersetzen Sie die Werte dabei durch Ihre eigenen Werte.
 
-[!code-java[Add the required constants](~/samples-qnamaker-java/documentation-samples/quickstarts/publish-knowledge-base/PublishKB.java?range=27-30 "Add the required constants")]
+:::code language="java" source="~/cognitive-services-quickstart-code/java/QnAMaker/rest/PublishKB.java" id="constants":::
 
 ## <a name="add-post-request-to-publish-knowledge-base"></a>Hinzufügen einer POST-Anforderung zur Veröffentlichung der Wissensdatenbank
 
 Fügen Sie nach den erforderlichen Konstanten den folgenden Code hinzu, der eine HTTPS-Anforderung an die QnA Maker-API sendet, um eine Wissensdatenbank zu veröffentlichen, und die Antwort empfängt:
 
-[!code-java[Add a POST request to publish knowledge base](~/samples-qnamaker-java/documentation-samples/quickstarts/publish-knowledge-base/PublishKB.java?range=32-44 "Add a POST request to publish knowledge base")]
+:::code language="java" source="~/cognitive-services-quickstart-code/java/QnAMaker/rest/PublishKB.java" id="post":::
 
 Der API-Aufruf gibt den Status 204 für eine erfolgreiche Veröffentlichung ohne Inhalt im Text der Antwort zurück. Mit dem Code wird Inhalt für Antworten vom Typ 204 hinzugefügt.
 
@@ -98,11 +94,11 @@ Verwenden Sie die Befehlszeile, um das Programm zu erstellen und auszuführen. D
     java -cp ".;lib/*" PublishKB
     ```
 
-[!INCLUDE [Clean up files and knowledge base](../../../../includes/cognitive-services-qnamaker-quickstart-cleanup-resources.md)] 
+[!INCLUDE [Clean up files and knowledge base](../../../../includes/cognitive-services-qnamaker-quickstart-cleanup-resources.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nachdem die Wissensdatenbank veröffentlicht wurde, benötigen Sie die [Endpunkt-URL, um eine Antwort zu generieren](../Tutorials/create-publish-answer.md#generating-an-answer).  
+Nachdem die Wissensdatenbank veröffentlicht wurde, benötigen Sie die [Endpunkt-URL, um eine Antwort zu generieren](./get-answer-from-knowledge-base-java.md).
 
 > [!div class="nextstepaction"]
-> [REST-API-Referenz für QnA Maker (V4)](https://go.microsoft.com/fwlink/?linkid=2092179)
+> [REST-API-Referenz für QnA Maker (V4)](/rest/api/cognitiveservices/qnamaker4.0/knowledgebase)

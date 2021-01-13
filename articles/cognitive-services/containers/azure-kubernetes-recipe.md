@@ -1,23 +1,23 @@
 ---
-title: Ausführen von Kubernetes Service
+title: Ausführen des Spracherkennungscontainers in Kubernetes Service
 titleSuffix: Text Analytics -  Azure Cognitive Services
 description: Stellen Sie den Sprachenerkennungscontainer mit einem ausgeführten Beispiel in Azure Kubernetes Service bereit, und testen Sie ihn in einem Webbrowser.
 services: cognitive-services
-author: IEvangelist
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 06/26/2019
-ms.author: dapine
-ms.openlocfilehash: 852530910f7a8c6c815493d0dbcc57f67695d6de
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.date: 04/01/2020
+ms.author: aahi
+ms.openlocfilehash: 2a6e7ee125cac66b48e666a766c39813aa38fb1a
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70066104"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94968501"
 ---
-# <a name="deploy-the-language-detection-container-to-azure-kubernetes-service"></a>Bereitstellen des Sprachenerkennungscontainers in Azure Kubernetes Service
+# <a name="deploy-the-text-analytics-language-detection-container-to-azure-kubernetes-service"></a>Bereitstellen des Spracherkennungscontainers der Textanalyse in Azure Kubernetes Service
 
 Hier erfahren Sie, wie Sie den Sprachenerkennungscontainer bereitstellen. In dem Verfahren wird gezeigt, wie Sie die lokalen Docker-Container erstellen, Container per Push in Ihre eigene private Containerregistrierung übertragen, den Container in einem Kubernetes-Cluster ausführen und ihn in einem Webbrowser testen.
 
@@ -25,9 +25,9 @@ Hier erfahren Sie, wie Sie den Sprachenerkennungscontainer bereitstellen. In dem
 
 Für dieses Verfahren müssen mehrere Tools lokal installiert und ausgeführt werden. Verwenden Sie nicht Azure Cloud Shell.
 
-* Verwenden Sie ein Azure-Abonnement. Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
+* Verwenden Sie ein Azure-Abonnement. Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/cognitive-services) erstellen, bevor Sie beginnen.
 * [Git](https://git-scm.com/downloads) für Ihr Betriebssystem, um das in diesem Verfahren verwendete [Beispiel](https://github.com/Azure-Samples/cognitive-services-containers-samples) klonen zu können.
-* [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+* [Azure-Befehlszeilenschnittstelle](/cli/azure/install-azure-cli?view=azure-cli-latest).
 * [Docker-Engine](https://www.docker.com/products/docker-engine). (Vergewissern Sie sich, dass die Docker-Befehlszeilenschnittstelle in einem Konsolenfenster funktioniert.)
 * [kubectl](https://storage.googleapis.com/kubernetes-release/release/v1.13.1/bin/windows/amd64/kubectl.exe).
 * Eine Azure-Ressource mit dem korrekten Tarif. Nicht alle Tarife können mit diesem Container verwendet werden:
@@ -36,7 +36,7 @@ Für dieses Verfahren müssen mehrere Tools lokal installiert und ausgeführt we
 
 ## <a name="running-the-sample"></a>Ausführen des Beispiels
 
-Im Rahmen dieses Verfahrens wird das Cognitive Services-Containerbeispiel für die Sprachenerkennung geladen und ausgeführt. Das Beispiel enthält zwei Container: einen für die Clientanwendung und einen für den Cognitive Services-Container. Beide Images müssen per Push in Ihre eigene Azure Container Registry übertragen werden. Nachdem sie sich in Ihrer eigenen Registrierung befinden, erstellen Sie eine Azure Kubernetes Service-Instanz, um auf diese Images zuzugreifen und die Container auszuführen. Wenn die Container ausgeführt werden, verwenden Sie die Befehlszeilenschnittstelle **kubectl**, um die Leistung der Container zu überwachen. Greifen Sie über eine HTTP-Anforderung auf die Clientanwendung zu, und sehen Sie sich die Ergebnisse an.
+Im Rahmen dieses Verfahrens wird das Cognitive Services-Containerbeispiel für die Sprachenerkennung geladen und ausgeführt. Das Beispiel enthält zwei Container: einen für die Clientanwendung und einen für den Cognitive Services-Container. Wir übertragen beide Images per Push in die Azure Container Registry. Nachdem sie sich in Ihrer eigenen Registrierung befinden, erstellen Sie eine Azure Kubernetes Service-Instanz, um auf diese Images zuzugreifen und die Container auszuführen. Wenn die Container ausgeführt werden, verwenden Sie die Befehlszeilenschnittstelle **kubectl**, um die Leistung der Container zu überwachen. Greifen Sie über eine HTTP-Anforderung auf die Clientanwendung zu, und sehen Sie sich die Ergebnisse an.
 
 ![Konzeptidee zum Ausführen von Beispielcontainern](../text-analytics/media/how-tos/container-instance-sample/containers.png)
 
@@ -80,8 +80,11 @@ Damit der Container in Azure Kubernetes Service bereitgestellt werden kann, muss
 
     Speichern Sie die Ergebnisse, um die Eigenschaft **loginServer** zu erhalten. Sie wird später in der Datei `language.yml` als Teil der Adresse des gehosteten Containers verwendet.
 
-    ```console
-    > az acr create --resource-group cogserv-container-rg --name pattyregistry --sku Basic
+    ```azurecli-interactive
+    az acr create --resource-group cogserv-container-rg --name pattyregistry --sku Basic
+    ```
+
+    ```output
     {
         "adminUserEnabled": false,
         "creationDate": "2019-01-02T23:49:53.783549+00:00",
@@ -136,8 +139,7 @@ Damit der Container in Azure Kubernetes Service bereitgestellt werden kann, muss
 
     Nach Abschluss des Prozesses sollten die Ergebnisse in etwa wie folgt aussehen:
 
-    ```console
-    > docker push pattyregistry.azurecr.io/language-frontend:v1
+    ```output
     The push refers to repository [pattyregistry.azurecr.io/language-frontend]
     82ff52ee6c73: Pushed
     07599c047227: Pushed
@@ -180,8 +182,7 @@ Die folgenden Schritte sind erforderlich, um die erforderlichen Informationen f�
 
     Speichern Sie den `appId`-Ergebniswert für den assignee-Parameter in Schritt 3 (`<appId>`). Speichern Sie das Kennwort (`password`) für den client-secret-Parameter im nächsten Abschnitt (`<client-secret>`).
 
-    ```console
-    > az ad sp create-for-rbac --skip-assignment
+    ```output
     {
       "appId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
       "displayName": "azure-cli-2018-12-31-18-39-32",
@@ -199,8 +200,7 @@ Die folgenden Schritte sind erforderlich, um die erforderlichen Informationen f�
 
     Speichern Sie die Ausgabe für den scope-Parameterwert (`<acrId>`) im nächsten Schritt. Er sieht wie folgt aus:
 
-    ```console
-    > az acr show --resource-group cogserv-container-rg --name pattyregistry --query "id" --o table
+    ```output
     /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/cogserv-container-rg/providers/Microsoft.ContainerRegistry/registries/pattyregistry
     ```
 
@@ -222,8 +222,7 @@ Die folgenden Schritte sind erforderlich, um die erforderlichen Informationen f�
 
     Dieser Schritt kann einige Minuten dauern. Es wird folgendes Ergebnis ausgegeben:
 
-    ```console
-    > az aks create --resource-group cogserv-container-rg --name patty-kube --node-count 2  --service-principal <appId>  --client-secret <client-secret>  --generate-ssh-keys
+    ```output
     {
       "aadProfile": null,
       "addonProfiles": null,
@@ -300,8 +299,7 @@ In diesem Abschnitt wird die Befehlszeilenschnittstelle **kubectl** verwendet, u
 
     Die Antwort sieht wie folgt aus:
 
-    ```console
-    > kubectl get nodes
+    ```output
     NAME                       STATUS    ROLES     AGE       VERSION
     aks-nodepool1-13756812-0   Ready     agent     6m        v1.9.11
     aks-nodepool1-13756812-1   Ready     agent     6m        v1.9.11
@@ -337,8 +335,7 @@ In diesem Abschnitt wird die Befehlszeilenschnittstelle **kubectl** verwendet, u
 
     Die Antwort lautet:
 
-    ```console
-    > kubectl apply -f language.yml
+    ```output
     service "language-frontend" created
     deployment.apps "language-frontend" created
     service "language" created
@@ -353,8 +350,7 @@ Vergewissern Sie sich für die beiden Container, dass die Dienste `language-fron
 kubectl get all
 ```
 
-```console
-> kubectl get all
+```output
 NAME                                     READY     STATUS    RESTARTS   AGE
 pod/language-586849d8dc-7zvz5            1/1       Running   0          13h
 pod/language-frontend-68b9969969-bz9bg   1/1       Running   1          13h
@@ -408,16 +404,4 @@ az group delete --name cogserv-container-rg
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Cognitive Services-Container](../cognitive-services-container-support.md)
-
-<!--
-kubectl get secrets
-
->az aks browse --resource-group diberry-cogserv-container-rg --name diberry-kubernetes-languagedetection
-
-kubectl proxy
-
-http://localhost:8001/api/v1/namespaces/kube-system/services/kubernetes-dashboard/proxy/#!/pod/default/language-frontend-6d65bdb77c-8f4qv?namespace=default
-
-kubectl describe pod language-frontend-6d65bdb77c
--->
+> [Containerunterstützung in Azure Cognitive Services](../cognitive-services-container-support.md)

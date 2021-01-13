@@ -1,19 +1,18 @@
 ---
-title: Informationen zu ExpressRoute Direct – Azure | Microsoft-Dokumentation
-description: Diese Seite enthält eine Übersicht über ExpressRoute Direct
+title: Informationen zu Azure ExpressRoute Direct
+description: Erfahren Sie mehr über die wichtigsten Features von Azure ExpressRoute Direct und die Informationen, die Sie für das Onboarding für ExpressRoute Direct benötigen, z. B. verfügbare SKUs und technische Anforderungen.
 services: expressroute
-author: jaredr80
+author: duongau
 ms.service: expressroute
 ms.topic: conceptual
 ms.date: 08/12/2019
-ms.author: jaredro
-ms.custom: seodec18
-ms.openlocfilehash: 916175401cd993392094b2bb16f8fc8746a4d2a8
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.author: duau
+ms.openlocfilehash: 0365fd8d0d04b7d144ca6826d3d5eff976558eb3
+ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71123398"
+ms.lasthandoff: 10/19/2020
+ms.locfileid: "92202151"
 ---
 # <a name="about-expressroute-direct"></a>Informationen zu ExpressRoute Direct
 
@@ -22,7 +21,7 @@ ExpressRoute Direct bietet Ihnen die Möglichkeit, sich direkt mit dem globalen 
 ExpressRoute Direct bietet u.a. folgende Leistungsmerkmale:
 
 * Umfangreiche Datenerfassung in Diensten wie Azure Storage und Cosmos DB
-* Physische Isolierung für Branchen, die Regulierung sowie dedizierte und isolierte Konnektivität erfordern, z. B. Bankwesen, Behörden und Einzelhandel
+* Physische Isolierung für Branchen, die Regulierung sowie dedizierte und isolierte Konnektivität erfordern, z. B. das Bankwesen, Behörden und der Einzelhandel.
 * Präzise Steuerung der Leitungsverteilung basierend auf Unternehmensbereichen
 
 ## <a name="onboard-to-expressroute-direct"></a>Onboarding für ExpressRoute Direct
@@ -45,7 +44,7 @@ Bevor Sie ExpressRoute Direct nutzen können, müssen Sie zunächst Ihr Abonneme
 
 ## <a name="expressroute-direct-circuits"></a>ExpressRoute Direct-Leitungen
 
-Mit Microsoft Azure ExpressRoute können Sie Ihre lokalen Netzwerke über eine private Verbindung, die von einem Konnektivitätsanbieter bereitgestellt wird, in die Microsoft Cloud erweitern. Mit ExpressRoute können Sie Verbindungen zu Microsoft-Clouddiensten herstellen, z.B. Microsoft Azure und Office 365.
+Mit Microsoft Azure ExpressRoute können Sie Ihre lokalen Netzwerke über eine private Verbindung, die von einem Konnektivitätsanbieter bereitgestellt wird, in die Microsoft Cloud erweitern. Mit ExpressRoute können Sie Verbindungen mit Microsoft-Clouddiensten wie Microsoft Azure und Microsoft 365 herstellen.
 
 Jeder Peeringstandort hat Zugriff auf das globale Netzwerk von Microsoft und kann standardmäßig auf jede Region in einer geopolitischen Zone sowie über eine Premium-Leitung auf alle globalen Regionen zugreifen.  
 
@@ -74,7 +73,7 @@ ExpressRoute Direct unterstützt Szenarien zur Erfassung umfangreicher Datenmeng
     * Muss das äußere VLAN-Tag (STAG), basierend auf der von Microsoft angegebenen VLAN-ID, hinzufügen – *gilt nur für QinQ*.
     * Muss mehrere BGP-Sitzungen (VLANs) pro Port und Gerät unterstützen.
     * IPv4- und IPv6-Konnektivität. *Für IPv6 wird keine zusätzliche Unterschnittstelle erstellt. Eine IPv6-Adresse wird der vorhandenen Unterschnittstelle hinzugefügt*. 
-    * Optional: Unterstützung der [bidirektionalen Weiterleitungserkennung (Bidirectional Forwarding Detection, BFD)](https://docs.microsoft.com/azure/expressroute/expressroute-bfd), die für alle privaten Peerings in ExpressRoute-Leitungen standardmäßig konfiguriert ist
+    * Optional: Unterstützung der [bidirektionalen Weiterleitungserkennung (Bidirectional Forwarding Detection, BFD)](./expressroute-bfd.md), die für alle privaten Peerings in ExpressRoute-Leitungen standardmäßig konfiguriert ist
 
 ## <a name="vlan-tagging"></a>VLAN-Kennzeichnung
 

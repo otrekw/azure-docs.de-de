@@ -1,39 +1,47 @@
 ---
 title: Optimieren von Hive-Abfragen in Azure HDInsight
-description: In diesem Artikel wird beschrieben, wie Sie Ihre Hive-Abfragen für Apache Hadoop in HDInsight optimieren.
+description: In diesem Artikel wird beschrieben, wie Sie Ihre Apache Hive-Abfragen in HDInsight optimieren.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 03/21/2019
-ms.openlocfilehash: 7624f15e878e13a93b5b5f395ef9cf9af48c95e4
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.custom: hdinsightactive
+ms.date: 10/28/2020
+ms.openlocfilehash: 840c481a54451e1f8374aec4799df10b96fb2e4d
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71104514"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92910881"
 ---
 # <a name="optimize-apache-hive-queries-in-azure-hdinsight"></a>Optimieren von Apache Hive-Abfragen in Azure HDInsight
 
-In Azure HDInsight gibt es verschiedene Clustertypen und -technologien, auf denen Apache Hive-Abfragen ausgeführt werden können. Wenn Sie einen HDInsight-Cluster erstellen, wählen Sie den geeigneten Clustertyp zum Optimieren der Leistung für Ihre Workloadanforderungen aus.
+In diesem Artikel werden einige der gängigsten Leistungsoptimierungen beschrieben, mit denen Sie die Leistung Ihrer Apache Hive-Abfragen verbessern können.
 
-Wählen Sie z. B. den Clustertyp **Interactive Query** zur Optimierung für interaktive Ad-hoc-Abfragen aus. Wählen Sie den Apache **Hadoop**-Clustertyp zur Optimierung für Hive-Abfragen zur Batchverarbeitung aus. Auf den Clustertypen **Spark** und **HBase** können auch Hive-Abfragen ausgeführt werden. Weitere Informationen zum Ausführen von Hive-Abfragen auf verschiedenen Typen von HDInsight-Clustern finden Sie unter [Was sind Apache Hive und HiveQL in Azure HDInsight?](hadoop/hdinsight-use-hive.md).
+## <a name="cluster-type-selection"></a>Auswahl des Clustertyps
 
-HDInsight-Cluster Des Clustertyps Hadoop sind standardmäßig nicht für Leistung optimiert. In diesem Artikel werden einige der gängigsten Methoden für die Optimierung der Leistung von Hive beschrieben, die Sie auf Ihre Abfragen anwenden können.
+In Azure HDInsight können Sie Apache Hive-Abfragen auf verschiedene Clustertypen anwenden. 
 
-## <a name="scale-out-worker-nodes"></a>Horizontales Skalieren der Worker-Knoten
+Wählen Sie den geeigneten Clustertyp zum Optimieren der Leistung für Ihre Workloadanforderungen aus:
 
-In einem HDInsight-Cluster, dem mehr Worker-Knoten zur Verfügung stehen, können für die Arbeit mehr Mapper und Reducer parallel ausgeführt werden. In HDInsight können Sie die horizontale Skalierung auf zwei Weisen erhöhen:
+* Wählen Sie z. B. den Clustertyp **Interaktive Abfrage** für die Optimierung interaktiver `ad hoc`-Abfragen aus. 
+* Wählen Sie den Apache **Hadoop** -Clustertyp zur Optimierung für Hive-Abfragen zur Batchverarbeitung aus. 
+* Die Clustertypen **Spark** und **HBase** können auch Hive-Abfragen ausführen und sind möglicherweise geeignet, wenn Sie diese Workloads ausführen. 
 
-* Bei der Bereitstellung eines Clusters können Sie die Anzahl der Workerknoten im Azure-Portal, in Azure PowerShell oder über die Befehlszeilenschnittstelle angeben.  Weitere Informationen finden Sie unter [Erstellen von HDInsight-Clustern](hdinsight-hadoop-provision-linux-clusters.md). Der folgende Screenshot zeigt die Konfiguration der Workerknoten im Azure-Portal:
+Weitere Informationen zum Ausführen von Hive-Abfragen auf verschiedenen Typen von HDInsight-Clustern finden Sie unter [Was sind Apache Hive und HiveQL in Azure HDInsight?](hadoop/hdinsight-use-hive.md).
+
+## <a name="scale-out-worker-nodes"></a>Aufskalieren der Workerknoten
+
+In einem HDInsight-Cluster, dem mehr Workerknoten zur Verfügung stehen, können für die Arbeit mehr Mapper und Reducer parallel ausgeführt werden. In HDInsight können Sie die Aufskalierung auf zwei Weisen erhöhen:
+
+* Beim Bereitstellen eines Clusters können Sie die Anzahl der Workerknoten im Azure-Portal, in Azure PowerShell oder über die Befehlszeilenschnittstelle angeben.  Weitere Informationen finden Sie unter [Erstellen von HDInsight-Clustern](hdinsight-hadoop-provision-linux-clusters.md). Der folgende Screenshot zeigt die Konfiguration der Workerknoten im Azure-Portal:
   
-    ![Clustergrößenknoten im Azure-Portal](./media/hdinsight-hadoop-optimize-hive-query/hdinsight-scaleout-1.png "scaleout_1")
+    ![Clustergrößenknoten im Azure-Portal](./media/hdinsight-hadoop-optimize-hive-query/azure-portal-cluster-configuration.png "scaleout_1")
 
-* Nach dem Erstellen können Sie auch die Anzahl der Workerknoten zum weiteren horizontalen Hochskalieren eines Clusters bearbeiten, ohne die Erstellung zu wiederholen:
+* Nach dem Erstellen können Sie auch die Anzahl der Workerknoten zum weiteren Aufskalieren eines Clusters bearbeiten, ohne die Erstellung zu wiederholen:
 
-    ![Clustergrößenknoten im Azure-Portal](./media/hdinsight-hadoop-optimize-hive-query/hdinsight-scaleout-2.png "scaleout_2")
+    ![Skalieren von Clustergrößen in Azure-Portal](./media/hdinsight-hadoop-optimize-hive-query/azure-portal-settings-nodes.png "scaleout_2")
 
 Weitere Informationen zum Skalieren von HDInsight finden Sie unter [Skalieren von HDInsight-Clustern](hdinsight-scaling-best-practices.md).
 
@@ -45,7 +53,7 @@ Weitere Informationen zum Skalieren von HDInsight finden Sie unter [Skalieren vo
 
 Tez ist jedoch aus folgenden Gründen schneller:
 
-* **Ausführen eines gerichteten azyklischen Graphen als einzelnen Auftrag in der MapReduce-Engine**. Der gerichtete azyklische Graph erfordert, dass auf jede Gruppe von Mappern eine Gruppe von Reducern folgt. Dadurch müssen für jede Hive-Abfrage mehrere MapReduce-Aufträge gestartet werden. Für Tez gilt diese Einschränkung nicht. Es kann auch ein komplexes DAG in einem Auftrag verarbeiten, so dass weniger Aufträge gestartet werden müssen.
+* **Ausführen eines gerichteten azyklischen Graphen als einzelnen Auftrag in der MapReduce-Engine**. Der gerichtete azyklische Graph erfordert, dass auf jede Gruppe von Mappern eine Gruppe von Reducern folgt. Aufgrund dieser Anforderung werden für jede Hive-Abfrage mehrere MapReduce-Aufträge gestartet. Für Tez gilt diese Einschränkung nicht. Tez kann auch einen komplexen gerichteten azyklischen Graphen in einem Auftrag verarbeiten, sodass weniger Aufträge gestartet werden müssen.
 * **Vermeiden unnötiger Schreibvorgänge**. Es werden mehrere Aufträge verwendet, um die Hive-Abfrage in der MapReduce-Engine zu verarbeiten. Die Ausgabe der einzelnen MapReduce-Aufträge wird in HDFS-Zwischenspeicher geschrieben. Tez hingegen minimiert die Anzahl der Aufträge für jede Hive-Abfrage und vermeidet so unnötige Schreibvorgänge.
 * **Minimierung von Startverzögerungen**. Tez minimiert Startverzögerungen durch Reduzierung der Anzahl der für den Start erforderlichen Mapper sowie durch eine insgesamt bessere Optimierung.
 * **Wiederverwendung von Containern**. Tez versucht, Container möglichst wiederzuverwenden, und verringert so Latenzzeiten aufgrund von Containerstarts.
@@ -69,18 +77,18 @@ Die Hive-Partitionierung wird durch Neuorganisation der Rohdaten in neue Verzeic
 
 Überlegungen zur Partitionierung:
 
-* **Partitionieren Sie großzügig**: Wenn Sie die Partitionierung für Spalten mit nur wenigen Werte durchführen, erhalten Sie nur wenige Partitionen. Partitionieren Sie zum Beispiel nach dem Geschlecht, so erhalten Sie nur zwei Partitionen (männlich, weiblich), sodass sich die Latenzzeit also höchstens halbiert.
-* **Aber nicht zu großzügig**: Im anderen Extremfall werden bei Erstellung einer Partition anhand einer Spalte mit einem eindeutigen Wert (z.B. userid) mehrere Partitionen erzeugt. Eine zu großzügige Partitionierung verursacht eine große Belastung für den NameNode des Clusters, da dieser mit einer großen Anzahl von Verzeichnissen zurechtkommen muss.
+* **Partitionieren Sie großzügig** : Wenn Sie die Partitionierung für Spalten mit nur wenigen Werte durchführen, erhalten Sie nur wenige Partitionen. Partitionieren Sie zum Beispiel nach dem Geschlecht, so erhalten Sie nur zwei Partitionen (männlich, weiblich), sodass sich die Latenzzeit also höchstens halbiert.
+* **Aber nicht zu großzügig** : Im anderen Extremfall werden bei Erstellung einer Partition anhand einer Spalte mit einem eindeutigen Wert (z. B. userid) mehrere Partitionen erzeugt. Eine zu großzügige Partitionierung verursacht eine große Belastung für den NameNode des Clusters, da dieser mit einer großen Anzahl von Verzeichnissen zurechtkommen muss.
 * **Vermeiden Sie zu unterschiedliche Partitionsgrößen** – Wählen Sie Ihren Partitionsschlüssel so, dass sich etwa gleich große Partitionen ergeben. Beispielsweise kann die Partitionierung nach der Spalte *State* möglicherweise die Verteilung der Daten verzerren. Da der Bundesstaat Kalifornien eine Bevölkerung von fast dem 30-Fachen von Vermont aufweist, ist die Größe der Partition möglicherweise verzerrt und die Leistung kann erheblich schwanken.
 
-Zum Erstellen einer Partitionstabelle verwenden Sie die Klausel *Partitioned By*:
+Zum Erstellen einer Partitionstabelle verwenden Sie die Klausel *Partitioned By* :
 
 ```sql
 CREATE TABLE lineitem_part
       (L_ORDERKEY INT, L_PARTKEY INT, L_SUPPKEY INT,L_LINENUMBER INT,
       L_QUANTITY DOUBLE, L_EXTENDEDPRICE DOUBLE, L_DISCOUNT DOUBLE,
       L_TAX DOUBLE, L_RETURNFLAG STRING, L_LINESTATUS STRING,
-      L_SHIPDATE_PS STRING, L_COMMITDATE STRING, L_RECEIPTDATE STRING, 
+      L_SHIPDATE_PS STRING, L_COMMITDATE STRING, L_RECEIPTDATE STRING,
       L_SHIPINSTRUCT STRING, L_SHIPMODE STRING, L_COMMENT STRING)
 PARTITIONED BY(L_SHIPDATE STRING)
 ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t'
@@ -93,12 +101,12 @@ Für die erstellte Partitionstabelle können Sie eine statische oder eine dynami
   
    ```sql
    INSERT OVERWRITE TABLE lineitem_part
-   PARTITION (L_SHIPDATE = ‘5/23/1996 12:00:00 AM’)
-   SELECT * FROM lineitem 
-   WHERE lineitem.L_SHIPDATE = ‘5/23/1996 12:00:00 AM’
+   PARTITION (L_SHIPDATE = '5/23/1996 12:00:00 AM')
+   SELECT * FROM lineitem
+   WHERE lineitem.L_SHIPDATE = '5/23/1996 12:00:00 AM'
 
-   ALTER TABLE lineitem_part ADD PARTITION (L_SHIPDATE = ‘5/23/1996 12:00:00 AM’))
-   LOCATION ‘wasb://sampledata@ignitedemo.blob.core.windows.net/partitions/5_23_1996/'
+   ALTER TABLE lineitem_part ADD PARTITION (L_SHIPDATE = '5/23/1996 12:00:00 AM')
+   LOCATION 'wasb://sampledata@ignitedemo.blob.core.windows.net/partitions/5_23_1996/'
    ```
 
 * **Dynamische Partitionierung** bedeutet, dass Hive die Partitionen automatisch erstellen und anpassen soll. Da Sie die Partitionstabelle bereits anhand der Stagingtabelle erstellt haben, müssen Sie die Tabelle nun nur noch mit Daten füllen:
@@ -108,24 +116,25 @@ Für die erstellte Partitionstabelle können Sie eine statische oder eine dynami
    SET hive.exec.dynamic.partition.mode = nonstrict;
    INSERT INTO TABLE lineitem_part
    PARTITION (L_SHIPDATE)
-   SELECT L_ORDERKEY as L_ORDERKEY, L_PARTKEY as L_PARTKEY , 
+   SELECT L_ORDERKEY as L_ORDERKEY, L_PARTKEY as L_PARTKEY,
        L_SUPPKEY as L_SUPPKEY, L_LINENUMBER as L_LINENUMBER,
        L_QUANTITY as L_QUANTITY, L_EXTENDEDPRICE as L_EXTENDEDPRICE,
        L_DISCOUNT as L_DISCOUNT, L_TAX as L_TAX, L_RETURNFLAG as L_RETURNFLAG,
        L_LINESTATUS as L_LINESTATUS, L_SHIPDATE as L_SHIPDATE_PS,
        L_COMMITDATE as L_COMMITDATE, L_RECEIPTDATE as L_RECEIPTDATE,
-       L_SHIPINSTRUCT as L_SHIPINSTRUCT, L_SHIPMODE as L_SHIPMODE, 
+       L_SHIPINSTRUCT as L_SHIPINSTRUCT, L_SHIPMODE as L_SHIPMODE,
        L_COMMENT as L_COMMENT, L_SHIPDATE as L_SHIPDATE FROM lineitem;
    ```
 
 Weitere Informationen finden Sie unter [Partitionierte Tabellen](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+DDL#LanguageManualDDL-PartitionedTables).
 
 ## <a name="use-the-orcfile-format"></a>Verwenden des Dateiformats ORC
+
 Hive unterstützt verschiedene Dateiformate. Beispiel:
 
-* **Text**: Das Standarddateiformat, das in den meisten Szenarien funktioniert.
-* **Avro**: Dieses Dateiformat eignet sich besonders für Interoperabilitätsszenarien.
-* **ORC/Parquet**: Dieses Dateiformat ist leistungsorientiert.
+* **Text** : Das Standarddateiformat, das in den meisten Szenarien funktioniert.
+* **Avro** : Dieses Dateiformat eignet sich besonders für Interoperabilitätsszenarien.
+* **ORC/Parquet** : Dieses Dateiformat ist leistungsorientiert.
 
 Das ORC-Format (Optimized Row Columnar) ist eine sehr effiziente Speichermethode für Hive-Daten. Gegenüber anderen Formaten hat ORC die folgenden Vorteile:
 
@@ -134,7 +143,7 @@ Das ORC-Format (Optimized Row Columnar) ist eine sehr effiziente Speichermethode
 * Indizierung aller 10.000 Zeilen, wodurch das Überspringen von Zeilen möglich wird
 * Wesentlich schnellere Laufzeitausführung
 
-Zum Aktivieren von ORC erstellen Sie zunächst eine Tabelle mit der Klausel *Stored as ORC*:
+Zum Aktivieren von ORC erstellen Sie zunächst eine Tabelle mit der Klausel *Stored as ORC* :
 
 ```sql
 CREATE TABLE lineitem_orc_part
@@ -151,11 +160,11 @@ Danach fügen Sie der ORC-Tabelle Daten aus der Stagingtabelle hinzu. Beispiel:
 
 ```sql
 INSERT INTO TABLE lineitem_orc
-SELECT L_ORDERKEY as L_ORDERKEY, 
-         L_PARTKEY as L_PARTKEY , 
+SELECT L_ORDERKEY as L_ORDERKEY,
+         L_PARTKEY as L_PARTKEY ,
          L_SUPPKEY as L_SUPPKEY,
          L_LINENUMBER as L_LINENUMBER,
-         L_QUANTITY as L_QUANTITY, 
+         L_QUANTITY as L_QUANTITY,
          L_EXTENDEDPRICE as L_EXTENDEDPRICE,
          L_DISCOUNT as L_DISCOUNT,
          L_TAX as L_TAX,
@@ -163,7 +172,7 @@ SELECT L_ORDERKEY as L_ORDERKEY,
          L_LINESTATUS as L_LINESTATUS,
          L_SHIPDATE as L_SHIPDATE,
          L_COMMITDATE as L_COMMITDATE,
-         L_RECEIPTDATE as L_RECEIPTDATE, 
+         L_RECEIPTDATE as L_RECEIPTDATE,
          L_SHIPINSTRUCT as L_SHIPINSTRUCT,
          L_SHIPMODE as L_SHIPMODE,
          L_COMMENT as L_COMMENT
@@ -188,14 +197,14 @@ Weitere Informationen finden Sie unter [Vektorisierte Abfrageausführung](https:
 
 Es gibt noch weitere Optimierungsmethoden, die durchaus erwägenswert sind, zum Beispiel die folgenden:
 
-* **Hive-Bucketing**: Ein Verfahren, mit dem große Datenmengen zur Optimierung der Abfrageleistung zusammengefasst bzw. segmentiert werden.
-* **Join-Optimierung**: Optimierung des Hive-Abfrageausführungsplans zur Steigerung der Effizienz von Joins. Außerdem sollen dadurch Benutzerhinweise weitgehend unnötig werden. Weitere Informationen finden Sie unter [Join-Optimierung](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+JoinOptimization#LanguageManualJoinOptimization-JoinOptimization).
+* **Hive-Bucketing** : Ein Verfahren, mit dem große Datenmengen zur Optimierung der Abfrageleistung zusammengefasst bzw. segmentiert werden.
+* **Join-Optimierung** : Optimierung des Hive-Abfrageausführungsplans zur Steigerung der Effizienz von Joins. Außerdem sollen dadurch Benutzerhinweise weitgehend unnötig werden. Weitere Informationen finden Sie unter [Join-Optimierung](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+JoinOptimization#LanguageManualJoinOptimization-JoinOptimization).
 * **Reducer erhöhen**.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Artikel haben Sie mehrere allgemeine Hive-Methoden zur Optimierung von Abfragen kennengelernt. Weitere Informationen finden Sie in den folgenden Artikeln:
+In diesem Artikel haben Sie mehrere allgemeine Hive-Methoden zur Optimierung von Abfragen kennengelernt. Weitere Informationen erhalten Sie in den folgenden Artikeln:
 
-* [Verwenden von Apache Hive in HDInsight](hadoop/hdinsight-use-hive.md)
-* [Tutorial: Extrahieren, Transformieren und Laden von Daten mithilfe von Interactive Query in Azure HDInsight](/azure/hdinsight/interactive-query/interactive-query-tutorial-analyze-flight-data)
+* [Optimieren von Apache Hive](./optimize-hive-ambari.md)
+* [Tutorial: Extrahieren, Transformieren und Laden von Daten mithilfe von Interactive Query in Azure HDInsight](./interactive-query/interactive-query-tutorial-analyze-flight-data.md)
 * [Analysieren von Twitter-Daten mit Apache Hive in HDInsight](hdinsight-analyze-twitter-data-linux.md)

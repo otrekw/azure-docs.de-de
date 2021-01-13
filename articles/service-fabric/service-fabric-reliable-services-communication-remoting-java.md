@@ -1,24 +1,17 @@
 ---
-title: Dienstremoting mit Java in Azure Service Fabric | Microsoft-Dokumentation
+title: Dienstremoting mit Java in Azure Service Fabric
 description: Service Fabric-Remoting ermöglicht Clients und Diensten die Kommunikation mit Java-Diensten über einen Remoteprozeduraufruf.
-services: service-fabric
-documentationcenter: java
 author: PavanKunapareddyMSFT
-manager: chackdan
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: java
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: required
 ms.date: 06/30/2017
+ms.custom: devx-track-java
 ms.author: pakunapa
-ms.openlocfilehash: 51c8c689bd3fe3e8967bab77e776ad02f9cb59f1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d53d20510db70d81aab796efab48de40c880bb3a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62123634"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "87316123"
 ---
 # <a name="service-remoting-in-java-with-reliable-services"></a>Dienstremoting in Java mit Reliable Services
 > [!div class="op_single_selector"]
@@ -91,8 +84,8 @@ Das Remotingframework gibt beim Dienst aufgetretene Ausnahmen an den Client weit
 Die Erstellung von Dienstproxys ist ein einfacher Vorgang, der sehr wenige Ressourcen verbraucht, sodass Sie so viele erstellen können, wie Sie benötigen. Dienstproxyinstanzen können erneut verwendet werden, solange sie benötigt werden. Wenn ein Remoteprozeduraufruf eine Ausnahme auslöst, können Sie weiterhin dieselbe Proxyinstanz wiederverwenden. Jeder Dienstproxy enthält einen Kommunikationsclient zum Senden von Nachrichten im Netzwerk. Beim Aufruf von Remoteaufrufen wird intern geprüft, ob der Kommunikationsclient gültig ist. Basierend auf den Ergebnissen dieser Überprüfungen wird der Kommunikationsclient bei Bedarf neu erstellt. Darum müssen Sie im Falle einer Ausnahme `ServiceProxy` nicht neu erstellen.
 
 ### <a name="serviceproxyfactory-lifetime"></a>Gültigkeitsdauer von „ServiceProxyFactory“
-[FabricServiceProxyFactory](https://docs.microsoft.com/java/api/microsoft.servicefabric.services.remoting.client.fabricserviceproxyfactory) ist eine Factory, die einen Proxy für verschiedene Remotingschnittstellen erstellt. Wenn Sie die API `ServiceProxyBase.create` verwenden, um Proxys zu erstellen, erstellt das Framework eine `FabricServiceProxyFactory`.
-Es ist sinnvoll, eine Factory manuell zu erstellen, wenn Sie [IServiceRemotingClientFactory](https://docs.microsoft.com/java/api/microsoft.servicefabric.services.remoting.client.serviceremotingclientfactory)-Eigenschaften überschreiben müssen.
+[FabricServiceProxyFactory](/java/api/microsoft.servicefabric.services.remoting.client.fabricserviceproxyfactory) ist eine Factory, die einen Proxy für verschiedene Remotingschnittstellen erstellt. Wenn Sie die API `ServiceProxyBase.create` verwenden, um Proxys zu erstellen, erstellt das Framework eine `FabricServiceProxyFactory`.
+Es ist sinnvoll, eine Factory manuell zu erstellen, wenn Sie [IServiceRemotingClientFactory](/java/api/microsoft.servicefabric.services.remoting.client.serviceremotingclientfactory)-Eigenschaften überschreiben müssen.
 „Factory“ ist ein aufwendiger Vorgang. `FabricServiceProxyFactory` verwaltet den Cache von Kommunikationsclients.
 Eine bewährte Methode besteht darin, `FabricServiceProxyFactory` solange wie möglich zwischenzuspeichern.
 
@@ -102,7 +95,7 @@ Alle von der Dienstverwaltungs-API ausgelösten remoten Ausnahmen werden entwede
 „ServiceProxy“ verarbeitet sämtliche Failoverausnahmen für die Dienstpartition, für die seine Erstellung erfolgt ist. Dieser Proxy löst die Endpunkte erneut auf, falls Failoverausnahmen (nicht vorübergehende Ausnahmen) vorliegen, und wiederholt den Aufruf mit dem richtigen Endpunkt. Die Anzahl der Wiederholungen bei Failoverausnahmen ist unbegrenzt.
 Im Falle vorübergehender Ausnahmen wird nur der Aufruf wiederholt.
 
-Standardparameter für die Wiederholung werden von [OperationRetrySettings](https://docs.microsoft.com/java/api/microsoft.servicefabric.services.communication.client.operationretrysettings) angegeben.
+Standardparameter für die Wiederholung werden von [OperationRetrySettings](/java/api/microsoft.servicefabric.services.communication.client.operationretrysettings) angegeben.
 Sie können diese Werte jetzt konfigurieren, indem Sie das OperationRetrySettings-Objekt an den ServiceProxyFactory-Konstruktor übergeben.
 
 ## <a name="next-steps"></a>Nächste Schritte

@@ -1,30 +1,31 @@
 ---
-title: Aktualisieren der Anforderungseinheiten pro Sekunde (RU/s) für eine Tabellen-API-Tabelle für Azure Cosmos DB
-description: Aktualisieren der Anforderungseinheiten pro Sekunde (RU/s) für eine Tabellen-API-Tabelle für Azure Cosmos DB
+title: 'Azure CLI-Skripts für Durchsatzvorgänge (RU/s): Ressourcen der Tabellen-API für Azure Cosmos DB'
+description: 'Azure CLI-Skripts für Durchsatzvorgänge (RU/s): Ressourcen der Tabellen-API für Azure Cosmos DB'
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.topic: sample
-ms.date: 9/25/2019
-ms.openlocfilehash: 8cc04b766ba63fb522417310177a539ea04fcdd6
-ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
+ms.date: 10/07/2020
+ms.openlocfilehash: 6e76da71cb14122817090e64354babf5a618db8b
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71274867"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94562660"
 ---
-# <a name="update-rus-for-a-table-api-table-for-azure-cosmos-db-azure-cli"></a>Aktualisieren der Anforderungseinheiten pro Sekunde (RU/s) für eine Tabellen-API-Tabelle für Azure Cosmos DB mit der Azure-Befehlszeilenschnittstelle (Azure CLI)
+# <a name="throughput-rus-operations-with-azure-cli-for-a-table-for-azure-cosmos-db-table-api"></a>Durchsatzvorgänge (RU/s) mit der Azure CLI für eine Tabelle der Azure Cosmos DB-Tabellen-API
+[!INCLUDE[appliesto-table-api](../../../includes/appliesto-table-api.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../../../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../../../../includes/azure-cli-prepare-your-environment.md)]
 
-Wenn Sie die CLI lokal installieren und verwenden möchten, ist es für dieses Thema erforderlich, die Azure CLI-Version 2.0.73 oder höher auszuführen. Führen Sie `az --version` aus, um die Version zu finden. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sei bei Bedarf unter [Installieren der Azure CLI](/cli/azure/install-azure-cli).
+- Für diesen Artikel ist mindestens Version 2.12.1 der Azure CLI erforderlich. Bei Verwendung von Azure Cloud Shell ist die aktuelle Version bereits installiert.
 
 ## <a name="sample-script"></a>Beispielskript
 
-Dieses Skript erstellt eine Tabellen-API-Tabelle und aktualisiert dann den Durchsatz der Tabelle.
+Dieses Skript erstellt eine Tabellen-API-Tabelle und aktualisiert dann den Durchsatz der Tabelle. Anschließend führt das Skript die Migration vom standardmäßigen zum automatisch skalierten Durchsatz durch, und nach Abschluss der Migration wird dann der Wert des automatisch skalierten Durchsatzes gelesen.
 
-[!code-azurecli-interactive[main](../../../../../cli_scripts/cosmosdb/table/throughput.sh "Update RU/s for a Table API table.")]
+[!code-azurecli-interactive[main](../../../../../cli_scripts/cosmosdb/table/throughput.sh "Throughput operations for Table API.")]
 
 ## <a name="clean-up-deployment"></a>Bereinigen der Bereitstellung
 
@@ -43,7 +44,8 @@ Das Skript verwendet die folgenden Befehle. Jeder Befehl in der Tabelle ist mit 
 | [az group create](/cli/azure/group#az-group-create) | Erstellt eine Ressourcengruppe, in der alle Ressourcen gespeichert sind. |
 | [az cosmosdb create](/cli/azure/cosmosdb#az-cosmosdb-create) | Erstellt ein Konto für Azure Cosmos DB. |
 | [az cosmosdb table create](/cli/azure/cosmosdb/table#az-cosmosdb-table-create) | Erstellt eine Azure Cosmos-Tabellen-API-Tabelle. |
-| [az cosmosdb table throughput update](/cli/azure/cosmosdb/table/throughput#az-cosmosdb-table-throughput-update) | Aktualisiert die Anforderungseinheiten pro Sekunde (RU/s) für eine Azure Cosmos-Tabellen-API-Tabelle. |
+| [az cosmosdb table throughput update](/cli/azure/cosmosdb/table/throughput#az-cosmosdb-table-throughput-update) | Aktualisiert den Durchsatz für eine Tabelle der Azure Cosmos-Tabellen-API. |
+| [az cosmosdb table throughput migrate](/cli/azure/cosmosdb/table/throughput#az-cosmosdb-table-throughput-migrate) | Migriert den Durchsatz für eine Tabelle der Azure Cosmos-Tabellen-API. |
 | [az group delete](/cli/azure/resource#az-resource-delete) | Löscht eine Ressourcengruppe einschließlich aller geschachtelten Ressourcen. |
 
 ## <a name="next-steps"></a>Nächste Schritte

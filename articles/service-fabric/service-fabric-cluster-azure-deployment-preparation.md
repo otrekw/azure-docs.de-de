@@ -1,24 +1,14 @@
 ---
-title: Planen der Bereitstellung eines Azure Service Fabric-Clusters | Microsoft-Dokumentation
+title: Planen der Bereitstellung eines Azure Service Fabric-Clusters
 description: Erfahren Sie in diesem Artikel, wie Sie die Bereitstellung von Service Fabric-Clusters für eine Produktionsumgebung in Azure planen und vorbereiten.
-services: service-fabric
-documentationcenter: .net
-author: athinanthny
-manager: chackdan
-ms.assetid: ''
-ms.service: service-fabric
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 03/20/2019
-ms.author: atsenthi
-ms.openlocfilehash: a130e9bc8859360704c9be1c0a7fe066d2ed4567
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 9de59811397eb47809c6d71f608e43beae5bfadb
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68600002"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97109622"
 ---
 # <a name="plan-and-prepare-for-a-cluster-deployment"></a>Planen und Vorbereiten der Clusterbereitstellung
 
@@ -38,7 +28,7 @@ Die Kapazitätsplanung ist ein wichtiger Schritt bei jeder Produktionsbereitstel
 * Die Zuverlässigkeits- und Dauerhaftigkeitsmerkmale des Clusters
 
 ### <a name="select-the-initial-number-of-node-types"></a>Auswählen der anfänglichen Anzahl von Knotentypen
-Zuerst müssen Sie ermitteln, für welche Zwecke der von Ihnen erstellte Cluster verwendet werden soll. Welche Arten von Anwendungen sollen in diesem Cluster bereitgestellt werden? Weist Ihre Anwendung mehrere Dienste auf, und müssen einige dieser Dienste öffentlich sein oder über Internetzugriff verfügen? Haben Ihre Dienste (aus denen sich Ihre Anwendung zusammensetzt) unterschiedliche Infrastrukturanforderungen, z. B. höhere RAM-Anforderungen oder längere CPU-Zyklen? Ein Service Fabric-Cluster kann aus mehreren Knotentypen bestehen: einem primären Knotentyp und einem oder mehreren nicht primären Knotentypen. Jeder Knotentyp wird einer VM-Skalierungsgruppe zugeordnet. Jeden Knotentyp kann dann unabhängig zentral hoch- oder herunterskaliert werden, bei jedem Typ können unterschiedliche Portgruppen geöffnet sein, und die Typen können verschiedene Kapazitätsmetriken aufweisen. Es können [Knoteneigenschaften und Platzierungseinschränkungen][placementconstraints] festgelegt werden, um bestimmte Dienste auf bestimmte Knotentypen zu beschränken.  Weitere Informationen hierzu finden Sie im Abschnitt [Die Anzahl von Knotentypen, über die Ihr Cluster anfänglich verfügen muss](service-fabric-cluster-capacity.md#the-number-of-node-types-your-cluster-needs-to-start-out-with).
+Zuerst müssen Sie ermitteln, für welche Zwecke der von Ihnen erstellte Cluster verwendet werden soll. Welche Arten von Anwendungen sollen in diesem Cluster bereitgestellt werden? Weist Ihre Anwendung mehrere Dienste auf, und müssen einige dieser Dienste öffentlich sein oder über Internetzugriff verfügen? Haben Ihre Dienste (aus denen sich Ihre Anwendung zusammensetzt) unterschiedliche Infrastrukturanforderungen, z. B. höhere RAM-Anforderungen oder längere CPU-Zyklen? Ein Service Fabric-Cluster kann aus mehreren Knotentypen bestehen: einem primären Knotentyp und einem oder mehreren nicht primären Knotentypen. Jeder Knotentyp wird einer VM-Skalierungsgruppe zugeordnet. Jeden Knotentyp kann dann unabhängig zentral hoch- oder herunterskaliert werden, bei jedem Typ können unterschiedliche Portgruppen geöffnet sein, und die Typen können verschiedene Kapazitätsmetriken aufweisen. Es können [Knoteneigenschaften und Platzierungseinschränkungen][placementconstraints] festgelegt werden, um bestimmte Dienste auf bestimmte Knotentypen zu beschränken.  Weitere Informationen finden Sie unter [Kapazitätsplanung für Service Fabric-Cluster](service-fabric-cluster-capacity.md).
 
 ### <a name="select-node-properties-for-each-node-type"></a>Auswählen der Knoteneigenschaften für die einzelnen Knotentypen
 Knotentypen definieren die VM-SKU, die Anzahl und die Eigenschaften der virtuellen Computer in der zugehörigen Skalierungsgruppe.
@@ -47,9 +37,66 @@ Die Mindestgröße der VMs für jeden Knotentyp hängt von der [Dauerhaftigkeits
 
 Die Mindestanzahl der VMs für den primären Knotentyp hängt von der von Ihnen ausgewählten [Zuverlässigkeitsstufe][reliability] ab.
 
-Beachten Sie die Mindestempfehlungen für [primäre Knotentypen](service-fabric-cluster-capacity.md#primary-node-type---capacity-guidance), [zustandsbehaftete Workloads für nicht primäre Knotentypen](service-fabric-cluster-capacity.md#non-primary-node-type---capacity-guidance-for-stateful-workloads) und [zustandslose Workloads für nicht primäre Knotentypen](service-fabric-cluster-capacity.md#non-primary-node-type---capacity-guidance-for-stateless-workloads). 
+Beachten Sie die Mindestempfehlungen für [primäre Knotentypen](service-fabric-cluster-capacity.md#primary-node-type), [zustandsbehaftete Workloads für nicht primäre Knotentypen](service-fabric-cluster-capacity.md#stateful-workloads) und [zustandslose Workloads für nicht primäre Knotentypen](service-fabric-cluster-capacity.md#stateless-workloads).
 
 Eine die Mindestanzahl von Knoten überschreitende Anzahl sollte auf der Anzahl der Replikate der Anwendung/Dienste basieren, die mit diesem Knotentyp ausgeführt werden sollen.  Die [Kapazitätsplanung für Service Fabric-Anwendungen](service-fabric-capacity-planning.md) hilft Ihnen, die Ressourcen abzuschätzen, die Sie für die Ausführung Ihrer Anwendungen benötigen. Sie können den Cluster später jederzeit vergrößern oder verkleinern, um ihn an eine sich ändernde Workload von Anwendungen anzupassen. 
+
+#### <a name="use-ephemeral-os-disks-for-virtual-machine-scale-sets"></a>Verwenden kurzlebiger Betriebssystemdatenträger für VM-Skalierungsgruppen
+
+Bei *kurzlebigen Betriebssystemdatenträgern* handelt es sich um Speicher, der auf dem lokalen virtuellen Computer erstellt und nicht in der externen Azure Storage-Instanz gespeichert wird. Sie werden für alle Service Fabric-Knotentypen (primär und sekundär) empfohlen, da kurzlebige Betriebssystemdatenträger im Vergleich zu herkömmlichen persistenten Betriebssystemdatenträgern Folgendes ermöglichen:
+
+* Reduzieren der Lese-/Schreibwartezeit auf dem Betriebssystemdatenträger
+* Schnellere Vorgänge zum Zurücksetzen/Durchführen eines Reimagings für die Knotenverwaltung
+* Senken der Gesamtkosten (Die Datenträger sind kostenlos, und es fallen keine zusätzlichen Speicherkosten an.)
+
+Kurzlebige Betriebssystemdatenträger sind kein spezifisches Feature von Service Fabric, sondern ein Feature der *VM-Skalierungsgruppen* von Azure, die Service Fabric-Knotentypen zugeordnet sind. Wenn Sie sie mit Service Fabric verwenden, ist in der Azure Resource Manager-Vorlage Ihres Clusters Folgendes erforderlich:
+
+1. Stellen Sie sicher, das die Knotentypen [unterstützte Azure-VM-Größen](../virtual-machines/ephemeral-os-disks.md) für kurzlebige Betriebssystemdatenträger angeben und dass der Cache der VM-Größe für die Größe des Betriebssystemdatenträgers ausreichend dimensioniert ist (siehe *Hinweis* weiter unten). Beispiel:
+
+    ```xml
+    "vmNodeType1Size": {
+        "type": "string",
+        "defaultValue": "Standard_DS3_v2"
+    ```
+
+    > [!NOTE]
+    > Wählen Sie unbedingt eine VM-Größe mit einer Cachegröße aus, die mindestens der Größe des Betriebssystemdatenträgers des virtuellen Computers selbst entspricht. Andernfalls tritt bei der Azure-Bereitstellung unter Umständen ein Fehler auf (auch wenn sie zunächst angenommen wurde).
+
+2. Geben Sie mindestens Version `2018-06-01` für VM-Skalierungsgruppen (`vmssApiVersion`) an:
+
+    ```xml
+    "variables": {
+        "vmssApiVersion": "2018-06-01",
+    ```
+
+3. Geben Sie im Abschnitt „VM-Skalierungsgruppe“ der Bereitstellungsvorlage die Option `Local` für `diffDiskSettings` an:
+
+    ```xml
+    "apiVersion": "[variables('vmssApiVersion')]",
+    "type": "Microsoft.Compute/virtualMachineScaleSets",
+        "virtualMachineProfile": {
+            "storageProfile": {
+                "osDisk": {
+                        "caching": "ReadOnly",
+                        "createOption": "FromImage",
+                        "diffDiskSettings": {
+                            "option": "Local"
+                        },
+                }
+            }
+        }
+    ```
+
+> [!NOTE]
+> Benutzeranwendungen sollten auf dem Betriebssystemdatenträger keine Abhängigkeit, keine Datei und kein Artefakt aufweisen, da der Betriebssystemdatenträger im Falle eines Betriebssystemupgrades verloren gehen würde.
+
+> [!NOTE]
+> Vorhandene nicht kurzlebige VMSS können nicht direkt aktualisiert werden, um kurzlebige Datenträger zu verwenden.
+> Zum Migrieren müssen Benutzer einen neuen nodeType mit kurzlebigen Datenträgern [hinzufügen](./virtual-machine-scale-set-scale-node-type-scale-out.md), die Workloads in den neuen nodeType verschieben und den vorhandenen nodeType [entfernen](./service-fabric-how-to-remove-node-type.md).
+>
+
+Weitere Informationen und Konfigurationsoptionen finden Sie unter [Kurzlebige Betriebssystemdatenträger für virtuelle Azure-Computer](../virtual-machines/ephemeral-os-disks.md). 
+
 
 ### <a name="select-the-durability-and-reliability-levels-for-the-cluster"></a>Auswählen der Dauerhaftigkeits- und der Zuverlässigkeitsstufe für den Cluster
 Über die Dauerhaftigkeitsstufe wird dem System angezeigt, über welche Berechtigungen Ihre VMs für die zugrunde liegende Azure-Infrastruktur verfügen. Auf dem primären Knotentyp kann Service Fabric mit dieser Berechtigung Infrastrukturanforderungen auf VM-Ebene anhalten (z. B. einen VM-Neustart, ein VM-Reimaging oder eine VM-Migration), die sich auf die Quorumanforderungen für die Systemdienste und Ihre zustandsbehafteten Dienste auswirken. Auf den nicht primären Knotentypen kann Service Fabric mit dieser Berechtigung Infrastrukturanforderungen auf VM-Ebene (z.B. einen VM-Neustart, ein VM-Reimaging und eine VM-Migration) anhalten, die sich auf die Quorumanforderungen für Ihre zustandsbehafteten Dienste auswirken.  Ausführungen zu den Vorteilen der verschiedenen Stufen sowie Empfehlungen dazu, welche Stufe wann verwendet werden sollte, finden Sie unter [Die Dauerhaftigkeitsmerkmale des Clusters][durability].
@@ -74,5 +121,5 @@ Sind Ihre Anwendung und Ihr Cluster bereit für den Produktionsdatenverkehr? Geh
 * [Create a Service Fabric cluster running Linux (Erstellen eines Service Fabric-Clusters unter Linux)](service-fabric-tutorial-create-vnet-and-linux-cluster.md)
 
 [placementconstraints]: service-fabric-cluster-resource-manager-cluster-description.md#node-properties-and-placement-constraints
-[durability]: service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster
-[reliability]: service-fabric-cluster-capacity.md#the-reliability-characteristics-of-the-cluster
+[durability]: service-fabric-cluster-capacity.md#durability-characteristics-of-the-cluster
+[reliability]: service-fabric-cluster-capacity.md#reliability-characteristics-of-the-cluster

@@ -1,73 +1,95 @@
 ---
 title: Testen von Apps im LUIS-Portal
-titleSuffix: Azure Cognitive Services
 description: Verwenden Sie LUIS (Language Understanding Intelligent Service), um Ihre Anwendung fortlaufend zu optimieren und ihr Sprachverständnis zu verbessern.
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 07/29/2019
-ms.author: diberry
-ms.openlocfilehash: 5736667acfa510d89e549afd4d0f5c61a833dd1c
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.date: 06/02/2020
+ms.openlocfilehash: b6fcc294c2b8c131d9a4a058c653ae1f64652ccf
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932734"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91324857"
 ---
-<a name="train-your-app"></a>
-
 # <a name="test-your-luis-app-in-the-luis-portal"></a>Testen Ihrer LUIS-App im LUIS-Portal
 
-Das [Testen](luis-concept-test.md) einer App ist ein iterativer Vorgang. Testen Sie Ihre LUIS-App nach dem Trainieren mit Beispieläußerungen, um festzustellen, ob die Absichten und Entitäten ordnungsgemäß erkannt werden. Ist das nicht der Fall, aktualisieren Sie die LUIS-App, und trainieren und testen Sie sie erneut. 
+Das [Testen](luis-concept-test.md) einer App ist ein iterativer Vorgang. Testen Sie Ihre LUIS-App nach dem Trainieren mit Beispieläußerungen, um festzustellen, ob die Absichten und Entitäten ordnungsgemäß erkannt werden. Ist das nicht der Fall, aktualisieren Sie die LUIS-App, und trainieren und testen Sie sie erneut.
 
 <!-- anchors for H2 name changes -->
+<a name="train-your-app"></a>
 <a name="test-your-app"></a>
 <a name="access-the-test-page"></a>
 <a name="luis-interactive-testing"></a>
 
+## <a name="train-before-testing"></a>Vor dem Testen trainieren
+
+1. Melden Sie sich beim [LUIS-Portal](https://www.luis.ai) an, und wählen Sie Ihr **Abonnement** und Ihre **Erstellungsressource** aus, um die Apps anzuzeigen, die dieser Erstellungsressource zugewiesen sind.
+1. Öffnen Sie Ihre App, indem Sie auf der Seite **Meine Apps** den Namen der App auswählen.
+1. Um die aktuellste Version der aktiven App zu testen, wählen Sie vor dem Testen im oberen Menü **Train** (Trainieren) aus.
+
 ## <a name="test-an-utterance"></a>Testen einer Äußerung
 
-1. Greifen Sie auf Ihre App zu, indem Sie ihren Namen auf der Seite **Meine Apps** auswählen. 
+Die Testäußerung sollte nicht exakt mit einer der Beispieläußerungen in der App übereinstimmen. Die Testäußerung sollte die Wortwahl, Satzlänge und Entitätsverwendung aufweisen, die Sie von einem Benutzer erwarten.
+
+1. Melden Sie sich beim [LUIS-Portal](https://www.luis.ai) an, und wählen Sie Ihr **Abonnement** und Ihre **Erstellungsressource** aus, um die Apps anzuzeigen, die dieser Erstellungsressource zugewiesen sind.
+1. Öffnen Sie Ihre App, indem Sie auf der Seite **Meine Apps** den Namen der App auswählen.
 
 1. Um auf den Einblendbereich **Test** zuzugreifen, wählen Sie im oberen Bereich Ihrer Anwendung **Test** aus.
 
-    ![Seite „Train & Test App“ (App trainieren und testen)](./media/luis-how-to-interactive-test/test.png)
+    > [!div class="mx-imgBorder"]
+    > ![Seite „Train & Test App“](./media/luis-how-to-interactive-test/test.png) (App trainieren und testen)
 
 1. Geben Sie eine Äußerung in das Textfeld ein, und drücken Sie die EINGABETASTE. Sie können im **Test** beliebig viele Äußerungen eingeben, aber immer nur einzeln.
 
 1. Die Äußerung, die am höchsten bewertete Absicht und ihre Bewertung werden der Liste der Äußerungen unter dem Textfeld hinzugefügt.
 
-    ![Erkennen einer falschen Absicht in interaktiven Tests](./media/luis-how-to-interactive-test/test-weather-1.png)
+    > [!div class="mx-imgBorder"]
+    > ![Erkennen einer falschen Absicht in interaktiven Tests](./media/luis-how-to-interactive-test/test-weather-1.png)
 
-## <a name="inspect-score"></a>Überprüfen der Bewertung
+## <a name="inspect-the-prediction"></a>Untersuchen der Vorhersage
 
-Sie überprüfen die Details des Testergebnisses im Bereich **Überprüfen**. 
- 
-1. Wählen Sie bei geöffnetem Einblendbereich **Test** die Option **Überprüfen** für eine Äußerung aus, die verglichen werden soll. 
+Sie überprüfen die Details des Testergebnisses im Bereich **Überprüfen**.
 
-    ![Auswählen der Schaltfläche „Überprüfen“, um weitere Details zu den Testergebnissen anzuzeigen](./media/luis-how-to-interactive-test/inspect.png)
+1. Wählen Sie bei geöffnetem Einblendbereich **Test** die Option **Überprüfen** für eine Äußerung aus, die verglichen werden soll.
 
-1. Der Bereich **Überprüfung** wird angezeigt. Dieser Bereich enthält die Absicht mit der höchsten Bewertung sowie alle identifizierten Entitäten. Das Ergebnis der ausgewählten Äußerung wird im Bereich angezeigt.
+    > [!div class="mx-imgBorder"]
+    > ![Auswählen der Schaltfläche „Überprüfen“, um weitere Details zu den Testergebnissen anzuzeigen](./media/luis-how-to-interactive-test/inspect.png)
 
-    ![Dieser Bereich enthält die Absicht mit der höchsten Bewertung sowie alle identifizierten Entitäten. Das Ergebnis der ausgewählten Äußerung wird im Bereich angezeigt.](./media/luis-how-to-interactive-test/inspect-panel.png)
+1. Der Bereich **Überprüfung** wird angezeigt. Dieser Bereich enthält die Absicht mit der höchsten Bewertung sowie alle identifizierten Entitäten. Die Vorhersage der ausgewählten Äußerung wird im Bereich angezeigt.
 
-## <a name="correct-top-scoring-intent"></a>Korrigieren der Absicht mit der höchsten Bewertung
+    > [!div class="mx-imgBorder"]
+    > ![Ausschnitt aus einem Screenshot des Testüberprüfungsbereichs](./media/luis-how-to-interactive-test/inspect-panel.png)
 
-1. Wenn die Absicht mit der höchsten Bewertung falsch ist, wählen Sie die Schaltfläche **Bearbeiten** aus.
+## <a name="add-to-example-utterances"></a>Hinzufügen zu Beispieläußerungen
 
-1.  Wählen Sie in der Dropdownliste die richtige Absicht für die Äußerung aus.
+Im Überprüfungsbereich können Sie die Testäußerung einer Absicht hinzufügen, indem Sie **Add to example utterances** (Zu Beispieläußerungen hinzufügen) auswählen.
 
-    ![Auswählen der richtigen Absicht](./media/luis-how-to-interactive-test/intent-select.png)
+## <a name="disable-required-features"></a>Deaktivieren erforderlicher Features
+
+So können Sie feststellen, ob die trainierte App Ihre Entitäten basierend auf den erforderlichen Features richtig vorhersagt. Die Standardeinstellung besteht in der Anwendung des Features bei Bedarf während der Vorhersage. Mit diesem Umschalter können Sie anzeigen, wie die Vorhersage lauten würde, wenn das Feature der Unterentität nicht erforderlich wäre.
+
+### <a name="when-to-disable-required-features"></a>Wann sollte man erforderliche Features deaktivieren
+
+Die trainierte App kann eine durch maschinelles Lernen erworbene Entität auf Grundlage eines der folgenden Aspekte falsch vorhersagen:
+* Fehlerhafte Bezeichnung von Beispieläußerungen.
+* Das erforderliche Feature stimmt nicht mit dem Text überein.
+
+Eine Beispiel ist eine durch maschinelles Lernen erworbene Entität mit den Namen einer Person als Unterentität.
+
+:::image type="content" source="media/luis-how-to-interactive-test/disable-required-feature.png" alt-text="Screenshot des durch maschinelles Lernen erworbenen Entitätsschemas im LUIS-Portal mit erforderlichem Feature":::
+
+Eine Beispieläußerung für diese durch maschinelles Lernen erworbene Entität ist: `Assign Bob Jones to work on the new security feature`.
+
+Die Extraktion sollte `security feature` als Ticketbeschreibung und `Bob Jones` als Techniker sein, beides Unterentitäten der Entität `Assign ticket`.
+
+Um der Unterentität bei einer erfolgreichen Vorhersage zu helfen, fügen Sie die vorgefertigte Entität[PersonName](luis-reference-prebuilt-person.md) der Unterentität `engineer` als Feature hinzu. Wenn Sie das Feature erforderlich machen, bedeutet dies, dass die Unterentität nur extrahiert wird, wenn die vorgefertigte Entität „PersonName“ für den Text vorhergesagt wird. Dies bedeutet, dass ein beliebiger Name im Text, der nicht mit der Unterentität „PersonName“ vorhergesagt wird, nicht als bezeichnete Unterentität `engineer` zurückgegeben wird.
+
+Wenn Sie den interaktiven Testbereich verwenden und feststellen, dass eine untergeordnete Entität mit einem erforderlichen Feature nicht vorhersagt, schalten Sie diese Einstellung um, um festzustellen, ob die Unterentität vorhergesagt würde, wenn das Feature nicht erforderlich wäre. Die Unterentität kann wegen der korrekten Bezeichnung von Beispieläußerungen möglicherweise ohne das erforderliche Feature ordnungsgemäß vorhergesagt werden.
 
 ## <a name="view-sentiment-results"></a>Anzeigen von Standpunktergebnissen
 
-Wenn die **Standpunktanalyse** auf der Seite **[Publish](luis-how-to-publish-app.md#enable-sentiment-analysis)** (Veröffentlichen) konfiguriert wird, schließen die Testergebnisse den in der Äußerung gefundenen Standpunkt ein. 
-
-![Abbildung des Testbereichs mit Standpunktanalyse](./media/luis-how-to-interactive-test/sentiment.png)
+Wenn die **Standpunktanalyse** auf der Seite **[Publish](luis-how-to-publish-app.md#enable-sentiment-analysis)** (Veröffentlichen) konfiguriert wird, schließen die Testergebnisse den in der Äußerung gefundenen Standpunkt ein.
 
 ## <a name="correct-matched-patterns-intent"></a>Korrigieren der Absicht des übereinstimmenden Musters
 
@@ -75,62 +97,33 @@ Wenn Sie [Muster](luis-concept-patterns.md) verwenden und die Äußerung mit ein
 
 ## <a name="compare-with-published-version"></a>Vergleichen mit der veröffentlichten Version
 
-Sie können die aktive Version Ihrer App mit der veröffentlichten [Endpunktversion](luis-glossary.md#endpoint) testen. Wählen Sie im Bereich **Überprüfen** die Option **Compare with published** (Mit veröffentlichtem Element vergleichen) aus. Tests mit dem veröffentlichten Modell werden mit dem Kontingent Ihres Azure-Abonnements verrechnet. 
+Sie können die aktive Version Ihrer App mit der veröffentlichten [Endpunktversion](luis-glossary.md#endpoint) testen. Wählen Sie im Bereich **Überprüfen** die Option **Compare with published** (Mit veröffentlichtem Element vergleichen) aus. Tests mit dem veröffentlichten Modell werden mit dem Kontingent Ihres Azure-Abonnements verrechnet.
 
-![Compare with published (Mit veröffentlichtem Element vergleichen)](./media/luis-how-to-interactive-test/inspect-panel-compare.png)
+> [!div class="mx-imgBorder"]
+> ![Vergleichen mit veröffentlichtem Element](./media/luis-how-to-interactive-test/inspect-panel-compare.png)
 
 ## <a name="view-endpoint-json-in-test-panel"></a>Anzeigen des Endpunkt-JSON-Codes im Testbereich
 Sie können den für den Vergleich zurückgegebenen JSON-Code des Endpunkts anzeigen, indem Sie die Ansicht **JSON anzeigen** auswählen.
 
-![Veröffentlichte JSON-Antwort](./media/luis-how-to-interactive-test/inspect-panel-compare-json.png)
+> [!div class="mx-imgBorder"]
+> ![Veröffentlichte JSON-Antwort](./media/luis-how-to-interactive-test/inspect-panel-compare-json.png)
 
-<!--Service name is 'Bing Spell Check v7 API' in the portal-->
 ## <a name="additional-settings-in-test-panel"></a>Zusätzliche Einstellungen im Testbereich
 
 ### <a name="luis-endpoint"></a>LUIS-Endpunkt
 
-Wenn Sie mehrere LUIS-Endpunkte haben, können Sie den für Tests verwendeten Endpunkt über den Link **Zusätzliche Einstellungen** im Bereich „Veröffentlicht“ des Tests ändern. Wenn Sie nicht sicher sind, welchen Endpunkt Sie verwenden sollten, wählen Sie den Standard **Starter_Key** aus. 
+Wenn Sie mehrere LUIS-Endpunkte haben, können Sie den für Tests verwendeten Endpunkt über den Link **Zusätzliche Einstellungen** im Bereich „Veröffentlicht“ des Tests ändern. Wenn Sie nicht sicher sind, welchen Endpunkt Sie verwenden sollten, wählen Sie den Standard **Starter_Key** aus.
 
-![Testbereich mit hervorgehobenem Link „Zusätzliche Einstellungen“](./media/luis-how-to-interactive-test/interactive-with-spell-check-service-key.png)
+> [!div class="mx-imgBorder"]
+> ![Testbereich mit hervorgehobenem Link „Zusätzliche Einstellungen“](media/luis-how-to-interactive-test/additional-settings-v3-settings.png)
 
-
-### <a name="view-bing-spell-check-corrections-in-test-panel"></a>Anzeigen von Korrekturen der Bing-Rechtschreibprüfung im Testbereich
-
-Anforderungen zum Anzeigen der Rechtschreibkorrekturen: 
-
-* Veröffentlichte App
-* [Dienstschlüssel](https://azure.microsoft.com/try/cognitive-services/?api=spellcheck-api) für die Bing-Rechtschreibprüfung. Der Dienstschlüssel wird nicht gespeichert und muss für jede Browsersitzung zurückgesetzt werden. 
-
-Verwenden Sie das folgende Verfahren, um den Dienst [Bing-Rechtschreibprüfung v7](https://azure.microsoft.com/services/cognitive-services/spell-check/) in die Ergebnisse im Testbereich einzuschließen. 
-
-1. Geben Sie im Bereich **Test** eine Äußerung ein. Wenn die Äußerung vorhergesagt wird, wählen Sie unter der eingegebenen Äußerung **[Überprüfen](#inspect-score)** aus. 
-
-1. Wenn der Bereich **Überprüfen** geöffnet wird, wählen Sie **[Compare with Published](#compare-with-published-version)** (Mit veröffentlichtem Element vergleichen) aus. 
-
-1. Wenn der Bereich **Veröffentlicht** geöffnet wird, wählen Sie **[Zusätzliche Einstellungen](#additional-settings-in-test-panel)** aus.
-
-1. Aktivieren Sie im Popupdialogfenster die Option **Bing-Rechtschreibprüfung aktivieren** , geben Sie den Schlüssel ein, und wählen Sie **Fertig** aus. 
-    ![Eingeben des Dienstschlüssels für die Bing-Rechtschreibprüfung](./media/luis-how-to-interactive-test/interactive-with-spell-check-service-key-text.png)
-
-1. Geben Sie eine Abfrage in falscher Schreibweise ein, z.B. `book flite to seattle`, und drücken Sie die EINGABETASTE. Die falsche Schreibweise des Worts `flite` wird in der an LUIS gesendeten Abfrage ersetzt, und der resultierende JSON-Code enthält sowohl die ursprüngliche Abfrage als `query` als auch die korrigierte Schreibweise in der Abfrage als `alteredQuery`.
-
-<a name="json-file-with-no-duplicates"></a>
-<a name="import-a-dataset-file-for-batch-testing"></a>
-<a name="export-rename-delete-or-download-dataset"></a>
-<a name="run-a-batch-test-on-your-trained-app"></a>
-<a name="access-batch-test-result-details-in-a-visualized-view"></a>
-<a name="filter-chart-results-by-intent-or-entity"></a>
-<a name="investigate-false-sections"></a>
-<a name="view single-point utterance data"></a>
-<a name="relabel-utterances-and-retrain"></a>
-<a name="false-test-results"></a>
 
 ## <a name="batch-testing"></a>Testen in Batches
 Weitere Informationen finden Sie in den [Konzepten](luis-concept-batch-test.md) zu Batchtests und im Artikel zum [Testen eines Batches von Äußerungen](luis-how-to-batch-test.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Wenn sich in Tests herausstellt, dass Ihre LUIS-App nicht die richtigen Absichten und Entitäten erkennt, können Sie die Genauigkeit Ihrer LUIS-App verbessern, indem Sie aktiv weitere Äußerungen bezeichnen oder Features hinzufügen. 
+Wenn sich in Tests herausstellt, dass Ihre LUIS-App nicht die richtigen Absichten und Entitäten erkennt, können Sie die Genauigkeit Ihrer LUIS-App verbessern, indem Sie aktiv weitere Äußerungen bezeichnen oder Features hinzufügen.
 
-* [Bezeichnen von vorgeschlagenen Äußerungen mit LUIS](luis-how-to-review-endpoint-utterances.md) 
-* [Verwenden von Features zum Verbessern der Leistung Ihrer LUIS-App](luis-how-to-add-features.md) 
+* [Bezeichnen von vorgeschlagenen Äußerungen mit LUIS](luis-how-to-review-endpoint-utterances.md)
+* [Verwenden von Features zum Verbessern der Leistung Ihrer LUIS-App](luis-how-to-add-features.md)

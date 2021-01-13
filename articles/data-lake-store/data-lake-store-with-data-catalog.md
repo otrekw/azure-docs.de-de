@@ -1,26 +1,20 @@
 ---
-title: Registrieren von Daten aus Azure Data Lake Storage Gen1 in Azure Data Catalog | Microsoft Docs
-description: Registrieren von Daten aus Azure Data Lake Storage Gen1 in Azure Data Catalog
-services: data-lake-store,data-catalog
-documentationcenter: ''
+title: Integrieren von Data Lake Storage Gen1 in Azure Data Catalog
+description: Hier erfahren Sie, wie Sie Daten aus Azure Data Lake Storage Gen1 in Azure Data Catalog integrieren, um Daten in Ihrer Organisation auffindbar zu machen.
 author: twooley
-manager: mtillman
-editor: cgronlun
-ms.assetid: 3294d91e-a723-41b5-9eca-ace0ee408a4b
 ms.service: data-lake-store
-ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: fd887560c0011fb1ec2141e33f02f7e3d8a39c81
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 02544489816f5711ca6e599c2bce03737c747934
+ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60196536"
+ms.lasthandoff: 10/16/2020
+ms.locfileid: "92106619"
 ---
 # <a name="register-data-from-azure-data-lake-storage-gen1-in-azure-data-catalog"></a>Registrieren von Daten aus Azure Data Lake Storage Gen1 in Azure Data Catalog
-In diesem Artikel erfahren Sie, wie Sie Azure Data Lake Storage Gen1 in Azure Data Catalog integrieren, um Ihre Daten mittels Integration in Data Catalog innerhalb einer Organisation auffindbar zu machen. Weitere Informationen zum Katalogisieren von Daten finden Sie unter [Azure Data Catalog](../data-catalog/data-catalog-what-is-data-catalog.md). Informationen zu den Szenarien, in denen Sie Data Catalog verwenden können, finden Sie unter [Häufige Szenarien mit Azure Data Catalog](../data-catalog/data-catalog-common-scenarios.md).
+In diesem Artikel erfahren Sie, wie Sie Azure Data Lake Storage Gen1 in Azure Data Catalog integrieren, um Ihre Daten mittels Integration in Data Catalog innerhalb einer Organisation auffindbar zu machen. Weitere Informationen zum Katalogisieren von Daten finden Sie unter [Azure Data Catalog](../data-catalog/overview.md). Informationen zu den Szenarien, in denen Sie Data Catalog verwenden können, finden Sie unter [Häufige Szenarien mit Azure Data Catalog](../data-catalog/data-catalog-common-scenarios.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 Bevor Sie mit diesem Tutorial beginnen können, benötigen Sie Folgendes:
@@ -43,13 +37,13 @@ Bevor Sie mit diesem Tutorial beginnen können, benötigen Sie Folgendes:
 1. Klicken Sie auf der nächsten Seite auf **Anwendung starten**. Dadurch wird die Manifestdatei der Anwendung auf Ihren Computer heruntergeladen. Doppelklicken Sie auf die Manifestdatei, um die Anwendung zu starten.
 1. Klicken Sie auf der Seite „Willkommen“ auf **Anmelden**, und geben Sie Ihre Anmeldeinformationen ein.
 
-    ![Begrüßungsbildschirm](./media/data-lake-store-with-data-catalog/welcome.screen.png "Begrüßungsbildschirm")
+    ![Bildschirm „Willkommen“](./media/data-lake-store-with-data-catalog/welcome.screen.png "Bildschirm „Willkommen“")
 1. Wählen Sie auf der Seite „Datenquelle auswählen“ die Option **Azure Data Lake Store** aus, und klicken Sie dann auf **Weiter**.
 
     ![Auswählen einer Datenquelle](./media/data-lake-store-with-data-catalog/select-source.png "Auswählen einer Datenquelle")
 1. Geben Sie auf der nächsten Seite den Namen des Data Lake Storage Gen1-Kontos an, das Sie in Data Catalog registrieren möchten. Behalten Sie für die anderen Optionen die Standardwerte bei, und klicken Sie dann auf **Verbinden**.
 
-    ![Herstellen einer Verbindung mit der Datenquelle](./media/data-lake-store-with-data-catalog/connect-to-source.png "Herstellen einer Verbindung mit der Datenquelle")
+    ![Verbinden mit einer Datenquelle](./media/data-lake-store-with-data-catalog/connect-to-source.png "Verbinden mit einer Datenquelle")
 1. Die nächste Seite kann in die folgenden Segmente aufgeteilt werden.
 
     a. Das Feld **Serverhierarchie** stellt die Ordnerstruktur des Data Lake Storage Gen1-Kontos dar. **$Root** stellt den Stamm des Data Lake Storage Gen1-Kontos dar, und **AmbulanceData** steht für den Ordner, der im Stamm des Data Lake Storage Gen1-Kontos erstellt wurde.
@@ -58,12 +52,12 @@ Bevor Sie mit diesem Tutorial beginnen können, benötigen Sie Folgendes:
 
     c. Im Feld **Zu registrierende Objekte** werden die Dateien und Ordner aufgeführt, die Sie in Azure Data Catalog registrieren möchten.
 
-    ![Anzeigen der Datenstruktur](./media/data-lake-store-with-data-catalog/view-data-structure.png "Anzeigen der Datenstruktur")
-1. Für dieses Tutorial sollten Sie alle Dateien im Verzeichnis registrieren. Klicken Sie auf die Schaltfläche (![Objekte verschieben](./media/data-lake-store-with-data-catalog/move-objects.png "Objekte verschieben")), um alle Dateien in das Feld **Zu registrierende Objekte** zu verschieben.
+    ![Screenshot des Dialogfelds für das Speicherkonto in Microsoft Azure Data Catalog](./media/data-lake-store-with-data-catalog/view-data-structure.png "Anzeigen der Datenstruktur")
+1. Für dieses Tutorial sollten Sie alle Dateien im Verzeichnis registrieren. Klicken Sie auf die Schaltfläche![Verschieben von Objekten](./media/data-lake-store-with-data-catalog/move-objects.png "Verschieben von Objekten"), um alle Dateien in das Feld **Zu registrierende Objekte** zu verschieben.
 
     Da die Daten in einem organisationsweiten Datenkatalog registriert werden, empfiehlt es sich, einige Metadaten hinzuzufügen, die Sie später verwenden können, um die Daten schnell zu finden. Sie können z.B. eine E-Mail-Adresse für den Besitzer der Daten (z.B. der, der die Daten hochlädt) oder ein Tag zum Identifizieren der Daten hinzufügen. Der folgende Screenshot zeigt ein Tag, das Sie den Daten hinzufügen.
 
-    ![Anzeigen der Datenstruktur](./media/data-lake-store-with-data-catalog/view-selected-data-structure.png "Anzeigen der Datenstruktur")
+    ![Screenshot des Dialogfelds für das Speicherkonto in Microsoft Azure Data Catalog mit dem Tag, das den hervorgehobenen Daten hinzugefügt wurde](./media/data-lake-store-with-data-catalog/view-selected-data-structure.png "Anzeigen der Datenstruktur")
 
     Klicken Sie auf **Registrieren**.
 1. Die folgende Screenshot gibt an, dass die Daten erfolgreich in Data Catalog registriert wurden.

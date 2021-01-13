@@ -1,19 +1,19 @@
 ---
-title: 'Azure-VMware-Lösung von CloudSimple: Verwalten von VMs in der privaten Cloud in Azure'
+title: 'Azure VMware Solution by CloudSimple: Verwalten von VMs in der privaten Cloud in Azure'
 description: Enthält Informationen zum Verwalten von VMs in der privaten CloudSimple-Cloud im Azure-Portal, einschließlich Hinzufügen von Datenträgern, Ändern der VM-Kapazität und Hinzufügen von Netzwerkschnittstellen.
-author: sharaths-cs
-ms.author: b-shsury
+author: Ajayan1008
+ms.author: v-hborys
 ms.date: 08/16/2019
 ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 44a0b8fe56477620c0ac47d5c5de8830dac46214
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 090b7711ab061b989eae13113fe7048e8dd875ee
+ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71037467"
+ms.lasthandoff: 01/05/2021
+ms.locfileid: "97895188"
 ---
 # <a name="manage-your-cloudsimple-private-cloud-virtual-machines-in-azure"></a>Verwalten Ihrer virtuellen Computer in der privaten CloudSimple-Cloud in Azure
 
@@ -23,13 +23,13 @@ Um die virtuellen Computer zu verwalten, die Sie für die [private CloudSimple-C
 
 Die folgenden Steuerelemente sind auf der Seite **Übersicht** für den ausgewählten virtuellen Computer verfügbar.
 
-| Kontrolle | BESCHREIBUNG |
+| Control | BESCHREIBUNG |
 | ------------ | ------------- |
 | Verbinden | Herstellen einer Verbindung mit dem angegebenen virtuellen Computer.  |
 | Start | Starten des angegebenen virtuellen Computers.  |
 | Neu starten | Herunterfahren und anschließendes Einschalten des angegebenen virtuellen Computers.  |
 | Beenden | Herunterfahren des jeweiligen virtuellen Computers.  |
-| Erfassen | Erfassen eines Images der angegebenen VM, damit es als Image zum Erstellen anderer VMs verwendet werden kann. Weitere Informationen finden Sie unter [Erstellen eines verwalteten Images eines generalisierten virtuellen Computers in Azure](../virtual-machines/windows/classic/capture-image.md).   |
+| Erfassung | Erfassen eines Images der angegebenen VM, damit es als Image zum Erstellen anderer VMs verwendet werden kann. Weitere Informationen finden Sie unter [Erstellen eines verwalteten Images eines generalisierten virtuellen Computers in Azure](../virtual-machines/windows/capture-image-resource.md).   |
 | Move | Verschieben des angegebenen virtuellen Computers.  |
 | Löschen | Entfernen des angegebenen virtuellen Computers.  |
 | Aktualisieren | Aktualisieren der Daten in der Anzeige.  |
@@ -40,7 +40,7 @@ In den Diagrammen im unteren Bereich der Seite **Übersicht** werden die Leistun
 
 Die folgenden Diagramme werden angezeigt.
 
-| Item | BESCHREIBUNG |
+| Element | BESCHREIBUNG |
 | ------------ | ------------- |
 | CPU (Durchschnitt) | Durchschnittliche CPU-Auslastung in Prozent während des ausgewählten Intervalls.   |
 | Netzwerk | Datenverkehr in das und aus dem Netzwerk (MB) im ausgewählten Intervall.  |
@@ -51,9 +51,9 @@ Die folgenden Diagramme werden angezeigt.
 
 Um einen VM-Datenträger hinzuzufügen, öffnen Sie die Seite **Datenträger** für den ausgewählten virtuellen Computer. Klicken Sie zum Hinzufügen eines Datenträgers auf **Datenträger hinzufügen**. Konfigurieren Sie jede der folgenden Einstellungen, indem Sie eine Inlineoption eingeben oder auswählen. Klicken Sie auf **Speichern**.
 
-   | Item | BESCHREIBUNG |
+   | Element | BESCHREIBUNG |
    | ------------ | ------------- |
-   | NAME | Geben Sie einen Namen zur Identifizierung des Datenträgers ein.  |
+   | Name | Geben Sie einen Namen zur Identifizierung des Datenträgers ein.  |
    | Size | Wählen Sie eine der verfügbaren Größen aus.  |
    | SCSI-Controller | Wählen Sie einen SCSI-Controller aus. Die verfügbaren Controller sind für die unterstützten Betriebssysteme unterschiedlich.  |
    | Mode | Bestimmt, wie der Datenträger in Momentaufnahmen beteiligt ist. Wählen Sie eine der Optionen aus: <br> - Unabhängig dauerhaft: Alle Daten, die auf den Datenträger geschrieben werden, werden dauerhaft geschrieben.<br> - Unabhängig, nicht persistent: Auf dem Datenträger geschriebene Änderungen werden verworfen, wenn Sie den Computer ausschalten oder zurücksetzen.  Dieser Modus ermöglicht es Ihnen, die VM immer im gleichen Zustand neu zu starten. Weitere Informationen finden Sie in der [VMware-Dokumentation](https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.vm_admin.doc/GUID-8B6174E6-36A8-42DA-ACF7-0DA4D8C5B084.html). |
@@ -64,7 +64,7 @@ Zum Löschen eines Datenträgers wählen Sie ihn aus und klicken dann auf **Lös
 
 Um die Kapazität des virtuellen Computers zu ändern, öffnen Sie die Seite **Größe** für den ausgewählten virtuellen Computer. Geben Sie eine der folgenden Angaben an, und klicken Sie dann auf **Speichern**.
 
-| Item | BESCHREIBUNG |
+| Element | BESCHREIBUNG |
 | ------------ | ------------- |
 | Anzahl von Kernen | Anzahl der Kerne, die der VM zugewiesen sind.  |
 | Hardwarevirtualisierung | Aktivieren Sie das Kontrollkästchen, um die Hardwarevirtualisierung für das Gastbetriebssystem bereitzustellen. Weitere Informationen finden Sie im VMware-Artikel [Verfügbarmachen der hardwareunterstützten VMware-Virtualisierung](https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.vm_admin.doc/GUID-2A98801C-68E8-47AF-99ED-00C63E4857F6.html). |
@@ -74,9 +74,9 @@ Um die Kapazität des virtuellen Computers zu ändern, öffnen Sie die Seite **G
 
 Klicken Sie zum Hinzufügen einer Schnittstelle auf **Netzwerkschnittstelle hinzufügen**. Konfigurieren Sie jede der folgenden Einstellungen, indem Sie eine Inlineoption eingeben oder auswählen. Klicken Sie auf **Speichern**.
 
-   | Kontrolle | BESCHREIBUNG |
+   | Control | BESCHREIBUNG |
    | ------------ | ------------- |
-   | NAME | Geben Sie einen Namen zur Identifizierung der Schnittstelle ein.  |
+   | Name | Geben Sie einen Namen zur Identifizierung der Schnittstelle ein.  |
    | Netzwerk | Treffen Sie eine Auswahl in der Liste der konfigurierten Netzwerke für die vSphere-Instanz Ihrer privaten Cloud.  |
    | Adapter | Wählen Sie einen vSphere-Adapter aus der Liste der verfügbaren Typen, die für die VM konfiguriert sind. Weitere Informationen finden Sie im VMware-Knowledge Base-Artikel [Auswählen eines Netzwerkadapters für Ihren virtuellen Computer](https://kb.vmware.com/s/article/1001805). |
    | Einschalten beim Starten | Wählen Sie, ob die NIC-Hardware beim Booten der VM aktiviert werden soll. Die Standardeinstellung ist **Aktiviert**. |

@@ -1,25 +1,24 @@
 ---
-title: Registrieren von persönlichen Geräten in einem Organisationsnetzwerk – Azure Active Directory | Microsoft-Dokumentation
+title: Registrieren von persönlichen Geräten in einem Organisationsnetzwerk – Azure AD
 description: Erfahren Sie, wie Sie Ihr persönliches Gerät im Netzwerk Ihrer Organisation registrieren, sodass Sie auf die geschützten Ressourcen Ihrer Organisation zugreifen können.
 services: active-directory
-author: eross-msft
+author: curtand
 manager: daveba
 ms.assetid: 54e1b01b-03ee-4c46-bcf0-e01affc0419d
 ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
-ms.topic: conceptual
-ms.date: 01/04/2019
-ms.author: lizross
+ms.topic: end-user-help
+ms.date: 08/31/2020
+ms.author: curtand
 ms.reviewer: jairoc
 ms.custom: user-help, seo-update-azuread-jan
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 041c8bb6b4de2bbe2cbeb4c1a89e452239ae57bd
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 0435b99525c34eb72d7cc5315ccb4359859cd528
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60473681"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "90033046"
 ---
 # <a name="register-your-personal-device-on-your-organizations-network"></a>Registrieren Ihres persönlichen Geräts im Netzwerk Ihrer Organisation
 Registrieren Sie Ihr persönliches Gerät (in der Regel ein Smartphone oder Tablet) im Netzwerk Ihrer Organisation. Nachdem Ihr Gerät registriert wurde, können Sie damit auf die geschützten Ressourcen Ihrer Organisation zugreifen.
@@ -32,9 +31,9 @@ Wenn Sie Ihr Gerät im Netzwerk Ihrer Organisation registrieren, geschieht Folge
 
 - Windows registriert Ihr Gerät im Netzwerk Ihrer Organisation.
 
-- Abhängig von der Entscheidung Ihrer Organisation werden Sie möglicherweise dazu aufgefordert, eine zweistufige Überprüfung entweder durch [Multi-Factor Authentication](multi-factor-authentication-end-user-first-time.md) oder [Sicherheitsinformation](user-help-security-info-overview.md) einzurichten.
+- Abhängig von der Entscheidung Ihrer Organisation werden Sie möglicherweise dazu aufgefordert, eine zweistufige Überprüfung entweder durch [zweistufige Authentifizierung](multi-factor-authentication-end-user-first-time.md) oder [Sicherheitsinformation](./security-info-setup-signin.md) einzurichten.
 
-- Optional, basierend auf der Entscheidung Ihrer Organisation, werden Sie automatisch in der Verwaltung mobiler Geräte, wie z.B. bei Microsoft Intune, registriert. Weitere Informationen zum Registrieren in Microsoft Intune finden Sie unter [Registrieren Ihres Geräts bei Intune](https://docs.microsoft.com/intune-user-help/enroll-your-device-in-intune-all).
+- Optional, basierend auf der Entscheidung Ihrer Organisation, werden Sie automatisch in der Verwaltung mobiler Geräte, wie z.B. bei Microsoft Intune, registriert. Weitere Informationen zum Registrieren in Microsoft Intune finden Sie unter [Registrieren Ihres Geräts bei Intune](/intune-user-help/enroll-your-device-in-intune-all).
 
 - Verwenden Sie für den Anmeldeprozess den Benutzernamen und das Kennwort für Ihr Geschäfts-, Schul- oder Unikonto.
 
@@ -71,6 +70,3 @@ Um sicherzustellen, dass Sie registriert wurden, können Sie Ihre Einstellungen 
 Nach der Registrierung Ihres persönlichen Geräts im Netzwerk Ihrer Organisation sollten Sie auf die meisten Ihrer Ressourcen zugreifen können.
 
 - Weitere Informationen zur Verknüpfung Ihres Arbeitsgeräts finden Sie im Artikel [Join your work device to your organization's network (Verknüpfen Ihres Arbeitsgeräts mit dem Netzwerk Ihrer Organisation)](user-help-join-device-on-network.md).
-
-
-

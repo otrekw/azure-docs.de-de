@@ -1,25 +1,23 @@
 ---
-title: Problembehandlung bei Virtual Network-Gateways und -Verbindungen mit REST in Azure Network Watcher | Microsoft-Dokumentation
+title: Problembehandlung von VNET Gateway und Verbindungen – Azure-REST-API
+titleSuffix: Azure Network Watcher
 description: Auf dieser Seite wird beschrieben, wie Sie für Virtual Network-Gateways und -Verbindungen per REST in Azure Network Watcher die Problembehandlung durchführen.
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
-ms.assetid: e4d5f195-b839-4394-94ef-a04192766e55
+author: damendo
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2017
-ms.author: kumud
-ms.openlocfilehash: 0f10b9b45f63485417685a0826c047725a264772
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: damendo
+ms.openlocfilehash: ad89ac04d753fbe3203851af268aed29813fa587
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64686120"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94960392"
 ---
 # <a name="troubleshoot-virtual-network-gateway-and-connections-using-azure-network-watcher"></a>Problembehandlung bei Virtual Network-Gateways und -Verbindungen in Azure Network Watcher
 
@@ -325,7 +323,7 @@ is a transient state while the Azure platform is being updated.",
 
 Der Aktionstext enthält allgemeine Richtlinien zur Behebung des Problems. Wenn eine Aktion für das Problem ausgeführt werden kann, wird ein Link mit weiteren Anleitungen bereitgestellt. Falls es keine weitere Anleitungen gibt, enthält die Antwort die URL zum Öffnen einer Supportanfrage.  Weitere Informationen zu den Eigenschaften der Antwort und zu deren Inhalt finden Sie unter [Übersicht über die Network Watcher-Problembehandlung](network-watcher-troubleshoot-overview.md).
 
-Anweisungen zum Herunterladen von Dateien von Azure-Speicherkonten finden Sie unter [Erste Schritte mit Azure Blob Storage mit .NET](../storage/blobs/storage-dotnet-how-to-use-blobs.md). Ein weiteres Tool, das verwendet werden kann, ist der Storage-Explorer. Weitere Informationen zum Storage-Explorer finden Sie unter dem folgenden Link: [Storage-Explorer](https://storageexplorer.com/)
+Anweisungen zum Herunterladen von Dateien von Azure-Speicherkonten finden Sie unter [Erste Schritte mit Azure Blob Storage mit .NET](../storage/blobs/storage-quickstart-blobs-dotnet.md). Ein weiteres Tool, das verwendet werden kann, ist der Storage-Explorer. Weitere Informationen zum Storage-Explorer finden Sie unter [Storage-Explorer](https://storageexplorer.com/).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

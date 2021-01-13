@@ -1,18 +1,18 @@
 ---
-title: Einrichten der Notfallwiederherstellung in Azure für eine hohe Anzahl von VMware-VMs oder physischen Servern mit Azure Site Recovery | Microsoft-Dokumentation
+title: Skalieren der VMware- oder physischen Notfallwiederherstellung mit Azure Site Recovery
 description: Hier erfahren Sie, wie Sie mit Azure Site Recovery die Notfallwiederherstellung in Azure für eine hohe Anzahl von lokalen VMware-VMs oder physischen Servern einrichten.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 08/05/2019
+ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: 7ef4a9d5f63282736b010e67b467f82474bcf409
-ms.sourcegitcommit: f7998db5e6ba35cbf2a133174027dc8ccf8ce957
+ms.openlocfilehash: 101e42263e46c5a21f26b0fa9cdeed798525fee9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68782655"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "89047078"
 ---
 # <a name="set-up-disaster-recovery-at-scale-for-vmware-vmsphysical-servers"></a>Einrichten der skalierbaren Notfallwiederherstellung für VMware-VMs/physische Server
 
@@ -85,7 +85,7 @@ Wir möchten sicherstellen, dass die verfügbaren Kontingente im Zielabonnement 
 
 **Aufgabe** | **Details** | **Aktion**
 --- | --- | ---
-**Überprüfen der Kerne** | Wenn die Kerne im verfügbaren Kontingent zum Zeitpunkt des Failovers die Gesamtzielanzahl nicht erreichen oder übersteigen, schlagen die Failover fehl. | Überprüfen Sie für VMware-VMs, ob im Zielabonnement genügend Kerne verfügbar sind, um die Empfehlung des Bereitstellungsplaners für Kerne zu erfüllen.<br/><br/> Überprüfen Sie bei physischen Servern, ob die Azure-Kerne die manuellen Schätzungen erfüllen.<br/><br/> Klicken Sie zum Überprüfen von Kontingenten im Azure-Portal unter **Abonnement** auf **Nutzung + Kontingente**.<br/><br/> [Erfahren Sie mehr](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request) über das Erhöhen von Kontingenten.
+**Überprüfen der Kerne** | Wenn die Kerne im verfügbaren Kontingent zum Zeitpunkt des Failovers die Gesamtzielanzahl nicht erreichen oder übersteigen, schlagen die Failover fehl. | Überprüfen Sie für VMware-VMs, ob im Zielabonnement genügend Kerne verfügbar sind, um die Empfehlung des Bereitstellungsplaners für Kerne zu erfüllen.<br/><br/> Überprüfen Sie bei physischen Servern, ob die Azure-Kerne die manuellen Schätzungen erfüllen.<br/><br/> Klicken Sie zum Überprüfen von Kontingenten im Azure-Portal unter **Abonnement** auf **Nutzung + Kontingente**.<br/><br/> [Erfahren Sie mehr](../azure-portal/supportability/resource-manager-core-quotas-request.md) über das Erhöhen von Kontingenten.
 **Überprüfen von Failover-Grenzwerten** | Die Anzahl von Failovern darf die Failover-Grenzwerte von Site Recovery nicht überschreiten. |  Wenn die Failover die Grenzwerte überschreiten, können Sie Abonnements hinzufügen und Failover für mehrere Abonnements durchführen oder das Kontingent für ein Abonnement erhöhen. 
 
 
@@ -188,7 +188,7 @@ Nachdem Sie die Replikation für den ersten Batch von virtuellen Computern gesta
 1. Weisen Sie einen Administrator für die Notfallwiederherstellung zu, der den Integritätsstatus der replizierten Computer überwacht.
 2. [Überwachen Sie Ereignisse](site-recovery-monitor-and-troubleshoot.md) für replizierte Elemente und die Infrastruktur.
 3. [Überwachen Sie die Integrität](vmware-physical-azure-monitor-process-server.md) der Prozessserver für horizontales Skalieren.
-4. Registrieren Sie sich für den Erhalt von [E-Mail-Benachrichtigungen](https://docs.microsoft.com/azure/site-recovery/site-recovery-monitor-and-troubleshoot#subscribe-to-email-notifications) über Ereignisse, um die Überwachung zu erleichtern.
+4. Registrieren Sie sich für den Erhalt von [E-Mail-Benachrichtigungen](./site-recovery-monitor-and-troubleshoot.md#subscribe-to-email-notifications) über Ereignisse, um die Überwachung zu erleichtern.
 5. Führen Sie regelmäßige [Übungen zur Notfallwiederherstellung](site-recovery-test-failover-to-azure.md) durch, um sicherzustellen, dass alles wie erwartet funktioniert.
 
 
@@ -205,16 +205,16 @@ Sie können sich wie folgt im Voraus für Failover vorbereiten:
     - Schätzen des End-to-End-RTOs für Ihre Apps
     - Schätzen des End-to-End-RPOs für Ihre Workloads
     - Identifizieren von Konflikten mit dem IP-Adressbereich
-    - Beim Ausführen von Übungen wird empfohlen, keine Produktionsnetzwerke sowie nicht dieselben Subnetznamen wie in den Produktions- und Testnetzwerken zu verwenden und die Testfailover nach jeder Übung zu bereinigen.
+    - Beim Ausführen von Drills wird empfohlen, keine Produktionsnetzwerke zu verwenden und die Testfailover nach jedem Drillvorgang zu bereinigen.
 
 Für das Ausführen eines umfangreichen Failovers wird Folgendes empfohlen:
 
 1. Erstellen Sie Wiederherstellungspläne für Workloadfailover.
-    - Jeder Wiederherstellungsplan kann einen Failover von bis zu 50 Computern auslösen.
+    - Jeder Wiederherstellungsplan kann ein Failover von bis zu 100 Computern auslösen.
     - [hier](recovery-plan-overview.md) .
 2. Fügen Sie Wiederherstellungsplänen Azure Automation-Runbookskripts hinzu, um alle manuellen Aufgaben in Azure zu automatisieren. Zu den typischen Aufgaben gehören die Konfiguration von Lastenausgleichsmodulen, das Aktualisieren von DNS usw. [Weitere Informationen](site-recovery-runbook-automation.md)
 2. Bereiten Sie Windows-Computer vor dem Failover vor, sodass sie der Azure-Umgebung entsprechen. [Failover-Grenzwerte](#plan-azure-subscriptions-and-quotas) sind für Computer höher, die die Vorgaben einhalten. [Erfahren Sie mehr](site-recovery-failover-to-azure-troubleshoot.md#failover-failed-with-error-id-170010) über Runbooks.
-4.  Lösen Sie einen Failover mit dem PowerShell-Cmdlet [Start-AzRecoveryServicesAsrPlannedFailoverJob](https://docs.microsoft.com/powershell/module/az.recoveryservices/start-azrecoveryservicesasrplannedfailoverjob?view=azps-2.0.0&viewFallbackFrom=azps-1.1.0) zusammen mit einem Wiederherstellungsplan aus.
+4.  Lösen Sie einen Failover mit dem PowerShell-Cmdlet [Start-AzRecoveryServicesAsrPlannedFailoverJob](/powershell/module/az.recoveryservices/start-azrecoveryservicesasrplannedfailoverjob?view=azps-2.0.0&viewFallbackFrom=azps-1.1.0) zusammen mit einem Wiederherstellungsplan aus.
 
 
 

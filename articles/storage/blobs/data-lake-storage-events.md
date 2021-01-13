@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Verwenden von Azure Data Lake Storage Gen2-Ereignissen zum Aktualisieren einer Databricks Delta-Tabelle | Microsoft-Dokumentation'
+title: 'Tutorial: Implementieren des Data Lake-Erfassungsmusters zum Aktualisieren einer Azure Databricks Delta-Tabelle | Microsoft-Dokumentation'
 description: In diesem Tutorial wird veranschaulicht, wie Sie ein Event Grid-Abonnement, eine Azure-Funktion und einen Azure Databricks-Auftrag verwenden, um Zeilen mit Daten in eine Tabelle einzufügen, die in Azure DataLake Storage Gen2 gespeichert ist.
 author: normesta
 ms.subservice: data-lake-storage-gen2
@@ -8,14 +8,15 @@ ms.topic: tutorial
 ms.date: 08/20/2019
 ms.author: normesta
 ms.reviewer: sumameh
-ms.openlocfilehash: 5a85e3b16a5a93fedd6a2257f5601b0673f825ad
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.custom: devx-track-csharp
+ms.openlocfilehash: 738ed3b819a62760408341184daca8a8ba555029
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69904659"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95913673"
 ---
-# <a name="tutorial-use-azure-data-lake-storage-gen2-events-to-update-a-databricks-delta-table"></a>Tutorial: Verwenden von Azure Data Lake Storage Gen2-Ereignissen zum Aktualisieren einer Databricks Delta-Tabelle
+# <a name="tutorial-implement-the-data-lake-capture-pattern-to-update-a-databricks-delta-table"></a>Tutorial: Implementieren des Data Lake-Erfassungsmusters zum Aktualisieren einer Databricks Delta-Tabelle
 
 In diesem Tutorial wird veranschaulicht, wie Sie Ereignisse in einem Speicherkonto mit einem hierarchischen Namespace verarbeiten.
 
@@ -34,20 +35,20 @@ Wir erstellen diese Lösung in umgekehrter Reihenfolge, indem wir mit dem Azure 
 
 * Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
-* Erstellen Sie ein Speicherkonto mit einem hierarchischen Namespace (Azure Data Lake Storage Gen2). In diesem Tutorial wird ein Speicherkonto mit dem Namen `contosoorders` verwendet. Vergewissern Sie sich, dass Ihrem Benutzerkonto die Rolle [Mitwirkender an Storage-Blobdaten](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac) zugewiesen ist.
+* Erstellen Sie ein Speicherkonto mit einem hierarchischen Namespace (Azure Data Lake Storage Gen2). In diesem Tutorial wird ein Speicherkonto mit dem Namen `contosoorders` verwendet. Vergewissern Sie sich, dass Ihrem Benutzerkonto die Rolle [Mitwirkender an Storage-Blobdaten](../common/storage-auth-aad-rbac-portal.md) zugewiesen ist.
 
-  Siehe [Schnellstart: Erstellen eines Azure Data Lake Storage Gen2-Speicherkontos](data-lake-storage-quickstart-create-account.md).
+   Lesen Sie die Informationen unter [Erstellen eines Speicherkontos für die Verwendung mit Azure Data Lake Storage Gen2](create-data-lake-storage-account.md).
 
-* Erstellen eines Dienstprinzipals Informationen finden Sie unter [Gewusst wie: Erstellen einer Azure AD-Anwendung und eines Dienstprinzipals mit Ressourcenzugriff über das Portal](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal).
+* Erstellen eines Dienstprinzipals Unter [Vorgehensweise: Erstellen einer Azure AD-Anwendung und eines Dienstprinzipals mit Ressourcenzugriff über das Portal](../../active-directory/develop/howto-create-service-principal-portal.md).
 
   Bei den Schritten in diesem Artikel müssen einige bestimmte Aktionen ausgeführt werden.
 
-  :heavy_check_mark: Achten Sie beim Ausführen der Schritte im Abschnitt [Zuweisen der Anwendung zu einer Rolle](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role) des Artikels darauf, dem Dienstprinzipal die Rolle **Mitwirkender an Storage-Blobdaten** zuzuweisen.
+  :heavy_check_mark: Achten Sie beim Ausführen der Schritte im Abschnitt [Zuweisen der Anwendung zu einer Rolle](../../active-directory/develop/howto-create-service-principal-portal.md#assign-a-role-to-the-application) des Artikels darauf, dem Dienstprinzipal die Rolle **Mitwirkender an Storage-Blobdaten** zuzuweisen.
 
   > [!IMPORTANT]
   > Achten Sie darauf, die Rolle im Kontext des Data Lake Storage Gen2-Kontos zuzuweisen. Sie können eine Rolle der übergeordneten Ressourcengruppe oder dem übergeordneten Abonnement zuweisen. In diesem Fall tritt jedoch ein Berechtigungsfehler auf, bis die Rollenzuweisungen an das Speicherkonto weitergegeben wurden.
 
-  :heavy_check_mark: Fügen Sie beim Ausführen der Schritte im Abschnitt [Abrufen von Werten für die Anmeldung](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) des Artikels die Werte für Mandanten-ID, App-ID und Kennwort in eine Textdatei ein. Sie benötigen diese Werte später noch.
+  :heavy_check_mark: Fügen Sie beim Ausführen der Schritte im Abschnitt [Abrufen von Werten für die Anmeldung](../../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in) des Artikels die Werte für Mandanten-ID, App-ID und Kennwort in eine Textdatei ein. Sie benötigen diese Werte später noch.
 
 ## <a name="create-a-sales-order"></a>Erstellen eines Verkaufsauftrags
 
@@ -106,7 +107,7 @@ In diesem Abschnitt erstellen Sie einen Azure Databricks-Arbeitsbereich über da
 
 3. Geben Sie auf der Seite **Neuer Cluster** die erforderlichen Werte an, um einen Cluster zu erstellen.
 
-    ![Erstellen eines Databricks-Spark-Clusters in Azure](./media/data-lake-storage-events/create-databricks-spark-cluster.png "Erstellen eines Databricks-Spark-Clusters in Azure")
+    ![Erstellen eines Databricks Spark-Clusters in Azure](./media/data-lake-storage-events/create-databricks-spark-cluster.png "Erstellen eines Databricks Spark-Clusters in Azure")
 
     Übernehmen Sie alle anderen Standardwerte bis auf Folgendes:
 
@@ -121,11 +122,11 @@ Weitere Informationen zum Erstellen von Clustern in Azure Databricks finden Sie 
 
 1. Klicken Sie im linken Bereich auf **Arbeitsbereich**. Wählen Sie in der Dropdownliste **Arbeitsbereich** die Option **Erstellen** > **Notebook** aus.
 
-    ![Erstellen eines Notizbuchs in Databricks](./media/data-lake-storage-quickstart-create-databricks-account/databricks-create-notebook.png "Erstellen eines Notizbuchs in Databricks")
+    ![Erstellen eines Notebooks in Databricks](./media/data-lake-storage-quickstart-create-databricks-account/databricks-create-notebook.png "Erstellen eines Notebooks in Databricks")
 
 2. Geben Sie im Dialogfeld **Notizbuch erstellen** einen Namen für das Notebook ein. Wählen Sie **Python** als Sprache und anschließend den zuvor erstellten Spark-Cluster aus.
 
-    ![Erstellen eines Notizbuchs in Databricks](./media/data-lake-storage-events/new-databricks-notebook.png "Erstellen eines Notizbuchs in Databricks")
+    ![Der Screenshot zeigt das Dialogfeld „Notebook erstellen“ und die Auswahl von Python als Sprache.](./media/data-lake-storage-events/new-databricks-notebook.png "Erstellen eines Notebooks in Databricks")
 
     Klicken Sie auf **Erstellen**.
 
@@ -251,7 +252,7 @@ Erstellen Sie eine Azure-Funktion, die den Auftrag ausführt.
 
 1. Wählen Sie in der oberen Ecke des Databricks-Arbeitsbereichs das Symbol „Personen“, und wählen Sie dann **Benutzereinstellungen**.
 
-   ![Konto verwalten](./media/data-lake-storage-events/generate-token.png "Benutzereinstellungen")
+   ![Verwalten eines Kontos](./media/data-lake-storage-events/generate-token.png "Benutzereinstellungen")
 
 2. Klicken Sie auf die Schaltfläche **Neues Token generieren** und dann auf die Schaltfläche **Generieren**.
 
@@ -259,7 +260,7 @@ Erstellen Sie eine Azure-Funktion, die den Auftrag ausführt.
   
 3. Wählen Sie in der linken oberen Ecke des Azure-Portals die Schaltfläche **Ressource erstellen** und dann **Compute > Funktions-App**.
 
-   ![Erstellen einer Azure-Funktion](./media/data-lake-storage-events/function-app-create-flow.png "Erstellen einer Azure-Funktion")
+   ![Erstellen einer Azure-Funktion](./media/data-lake-storage-events/function-app-create-flow.png "Azure-Funktion erstellen")
 
 4. Stellen Sie auf der Seite **Erstellen** der Funktions-App sicher, dass Sie **.NET Core** für den Laufzeitstapel auswählen und eine Application Insights-Instanz konfigurieren.
 
@@ -267,11 +268,11 @@ Erstellen Sie eine Azure-Funktion, die den Auftrag ausführt.
 
 5. Klicken Sie auf der Seite **Übersicht** der Funktions-App auf **Konfiguration**.
 
-   ![Konfigurieren der Funktions-App](./media/data-lake-storage-events/configure-function-app.png "Konfigurieren der Funktions-App")
+   ![Der Screenshot hebt die Option „Konfiguration“ unter den konfigurierten Features hervor.](./media/data-lake-storage-events/configure-function-app.png "Konfigurieren der Funktions-App")
 
 6. Wählen Sie auf der Seite **Anwendungseinstellungen** die Schaltfläche **Neue Anwendungseinstellung**, um die einzelnen Einstellungen hinzuzufügen.
 
-   ![Hinzufügen der Konfigurationseinstellung](./media/data-lake-storage-events/add-application-setting.png "Hinzufügen der Konfigurationseinstellung")
+   ![Hinzufügen der Konfigurationseinstellungen](./media/data-lake-storage-events/add-application-setting.png "Hinzufügen der Konfigurationseinstellungen")
 
    Fügen Sie die folgenden Einstellungen hinzu:
 
@@ -344,7 +345,7 @@ In diesem Abschnitt erstellen Sie ein Event Grid-Abonnement, mit dem die Azure-F
 
 1. Klicken Sie auf der Seite mit dem Funktionscode auf die Schaltfläche **Event Grid-Abonnement hinzufügen**.
 
-   ![Neues Ereignisabonnement](./media/data-lake-storage-events/new-event-subscription.png "Neues Ereignisabonnement")
+   ![Der Screenshot hebt die Schaltfläche „Event Grid-Abonnement hinzufügen“ hervor.](./media/data-lake-storage-events/new-event-subscription.png "Neues Ereignisabonnement")
 
 2. Geben Sie dem Abonnement auf der Seite **Ereignisabonnement erstellen** einen Namen, und verwenden Sie dann die Felder auf der Seite, um Ihr Speicherkonto auszuwählen.
 
@@ -373,7 +374,7 @@ In diesem Abschnitt erstellen Sie ein Event Grid-Abonnement, mit dem die Azure-F
 
    Nachdem der Auftrag abgeschlossen ist, wird der Fertigstellungsstatus angezeigt.
 
-   ![Auftrag erfolgreich abgeschlossen](./media/data-lake-storage-events/spark-job-completed.png "Auftrag erfolgreich abgeschlossen")
+   ![Erfolgreich abgeschlossener Auftrag](./media/data-lake-storage-events/spark-job-completed.png "Erfolgreich abgeschlossener Auftrag")
 
 5. Führen Sie in einer neuen Arbeitsmappenzelle diese Abfrage in einer Zelle aus, um die aktualisierte Deltatabelle anzuzeigen.
 
@@ -383,7 +384,7 @@ In diesem Abschnitt erstellen Sie ein Event Grid-Abonnement, mit dem die Azure-F
 
    In der zurückgegebenen Tabelle wird der aktuelle Datensatz angezeigt.
 
-   ![Aktueller Datensatz in Tabelle](./media/data-lake-storage-events/final_query.png "Aktueller Datensatz in Tabelle")
+   ![Der aktuelle Datensatz wird in Tabelle angezeigt](./media/data-lake-storage-events/final_query.png "Der aktuelle Datensatz wird in Tabelle angezeigt")
 
 6. Erstellen Sie zum Aktualisieren dieses Datensatzes eine Datei mit dem Namen `customer-order-update.csv`, fügen Sie die folgenden Informationen in diese Datei ein, und speichern Sie sie auf Ihrem lokalen Computer.
 
@@ -404,7 +405,7 @@ In diesem Abschnitt erstellen Sie ein Event Grid-Abonnement, mit dem die Azure-F
 
    In der zurückgegebenen Tabelle wird der aktualisierte Datensatz angezeigt.
 
-   ![Aktualisierter Datensatz in Tabelle](./media/data-lake-storage-events/final_query-2.png "Aktualisierter Datensatz in Tabelle")
+   ![Der aktualisierte Datensatz wird in Tabelle angezeigt](./media/data-lake-storage-events/final_query-2.png "Der aktualisierte Datensatz wird in Tabelle angezeigt")
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

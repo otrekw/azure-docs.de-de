@@ -4,23 +4,24 @@ ms.service: data-factory
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: jingwang
-ms.openlocfilehash: 7ee269651662496e211e1861bf4a80f6ba4d27d1
-ms.sourcegitcommit: cd70273f0845cd39b435bd5978ca0df4ac4d7b2c
+ms.openlocfilehash: baa48e4f7193e2f71534e25827e953f0ccf9cb3a
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "67048570"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96003656"
 ---
 <!--
     Separate the generic "Get started" paragraph from each connector-* article in azure-docs-pr/articles/data-factory/ to ease future central update.
 -->
-Sie können eines der folgenden Tools oder SDKs verwenden, um die Kopieraktivität mit einer Pipeline zu verwenden. Wählen Sie einen Link für eine schrittweise Anleitung aus:
 
-- [Tool zum Kopieren von Daten](../articles/data-factory/quickstart-create-data-factory-copy-data-tool.md)
+Sie können eines der folgenden Tools oder SDKs verwenden, um die Kopieraktivität mit einer Pipeline zu verwenden:
+
+- [Das Tool „Daten kopieren“](../articles/data-factory/quickstart-create-data-factory-copy-data-tool.md)
 - [Azure-Portal](../articles/data-factory/quickstart-create-data-factory-portal.md)
-- [.NET SDK](../articles/data-factory/quickstart-create-data-factory-dot-net.md)
-- [Python SDK](../articles/data-factory/quickstart-create-data-factory-python.md)
+- [Das .NET SDK](../articles/data-factory/quickstart-create-data-factory-dot-net.md)
+- [Das Python SDK](../articles/data-factory/quickstart-create-data-factory-python.md)
 - [Azure PowerShell](../articles/data-factory/quickstart-create-data-factory-powershell.md)
-- [REST-API](../articles/data-factory/quickstart-create-data-factory-rest-api.md)
-- [Azure Resource Manager-Vorlage](../articles/data-factory/quickstart-create-data-factory-resource-manager-template.md)
+- [Die REST-API](../articles/data-factory/quickstart-create-data-factory-rest-api.md)
+- [Die Azure Resource Manager-Vorlage](../articles/data-factory/quickstart-create-data-factory-resource-manager-template.md)
 

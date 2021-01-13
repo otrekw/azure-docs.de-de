@@ -2,20 +2,20 @@
 title: 'Azure Active Directory B2C: RelyingParty | Microsoft-Dokumentation'
 description: Erfahren Sie, wie Sie das RelyingParty-Element einer benutzerdefinierten Richtlinie in Azure Active Directory B2C angeben.
 services: active-directory-b2c
-author: mmacy
+author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 01/25/2019
-ms.author: marsma
+ms.date: 12/14/2020
+ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: b1bfa945843d185a46f1f1d79fd4dab0e991c769
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 0f0f3b6ffcb7ee12a692470b922cf23a3f0f40f0
+ms.sourcegitcommit: 89c0482c16bfec316a79caa3667c256ee40b163f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71063811"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97858433"
 ---
 # <a name="relyingparty"></a>RelyingParty
 
@@ -25,7 +25,7 @@ Das **RelyingParty**-Element legt die User Journey fest, die für die aktuelle A
 
 Im folgenden Beispiel wird ein **RelyingParty**-Element in der Richtliniendatei *B2C_1A_signup_signin* gezeigt:
 
-```XML
+```xml
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <TrustFrameworkPolicy
   xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance"
@@ -44,7 +44,7 @@ Im folgenden Beispiel wird ein **RelyingParty**-Element in der Richtliniendatei 
   <RelyingParty>
     <DefaultUserJourney ReferenceId="SignUpOrSignIn" />
     <UserJourneyBehaviors>
-      <SingleSignOn Scope="TrustFramework" KeepAliveInDays="7"/>
+      <SingleSignOn Scope="Tenant" KeepAliveInDays="7"/>
       <SessionExpiryType>Rolling</SessionExpiryType>
       <SessionExpiryInSeconds>300</SessionExpiryInSeconds>
       <JourneyInsights TelemetryEngine="ApplicationInsights" InstrumentationKey="your-application-insights-key" DeveloperMode="true" ClientEnabled="false" ServerEnabled="true" TelemetryVersion="1.0.0" />
@@ -77,8 +77,35 @@ Das optionale **RelyingParty**-Element enthält die folgenden Elemente:
 | Element | Vorkommen | BESCHREIBUNG |
 | ------- | ----------- | ----------- |
 | DefaultUserJourney | 1:1 | Die standardmäßige User Journey für die Anwendung der vertrauenden Seite. |
+| Endpunkte | 0:1 | Eine Liste mit Endpunkten. Weitere Informationen finden Sie unter [UserInfo-Endpunkt](userinfo-endpoint.md). |
 | UserJourneyBehaviors | 0:1 | Der Bereich für die Verhalten der User Journey. |
 | TechnicalProfile | 1:1 | Ein technisches Profil, das von der Anwendung der vertrauenden Seite unterstützt wird. Das technische Profil stellt einen Vertrag für das Kontaktieren von Azure AD B2C durch die Anwendung der vertrauenden Seite bereit. |
+
+## <a name="endpoints"></a>Endpunkte
+
+Das Element **Endpoints** enthält das folgende Element:
+
+| Element | Vorkommen | BESCHREIBUNG |
+| ------- | ----------- | ----------- |
+| Endpunkt | 1:1 | Ein Verweis auf einen Endpunkt.|
+
+Das Element **Endpoint** enthält die folgenden Attribute:
+
+| attribute | Erforderlich | BESCHREIBUNG |
+| --------- | -------- | ----------- |
+| Id | Ja | Ein eindeutiger Bezeichner des Endpunkts|
+| UserJourneyReferenceId | Ja | Ein Bezeichner der User Journey in der Richtlinie. Weitere Informationen finden Sie unter [User Journeys](userjourneys.md).  | 
+
+Das folgende Beispiel zeigt eine vertrauende Seite mit [UserInfo-Endpunkt](userinfo-endpoint.md):
+
+```xml
+<RelyingParty>
+  <DefaultUserJourney ReferenceId="SignUpOrSignIn" />
+  <Endpoints>
+    <Endpoint Id="UserInfo" UserJourneyReferenceId="UserInfoJourney" />
+  </Endpoints>
+  ...
+```
 
 ## <a name="defaultuserjourney"></a>DefaultUserJourney
 
@@ -86,7 +113,7 @@ Das `DefaultUserJourney`-Element gibt einen Verweis auf den Bezeichner der User 
 
 *B2C_1A_signup_signin*-Richtlinie:
 
-```XML
+```xml
 <RelyingParty>
   <DefaultUserJourney ReferenceId="SignUpOrSignIn">
   ...
@@ -94,7 +121,7 @@ Das `DefaultUserJourney`-Element gibt einen Verweis auf den Bezeichner der User 
 
 *B2C_1A_TrustFrameWorkBase* oder *B2C_1A_TrustFrameworkExtensionPolicy*:
 
-```XML
+```xml
 <UserJourneys>
   <UserJourney Id="SignUpOrSignIn">
   ...
@@ -102,7 +129,7 @@ Das `DefaultUserJourney`-Element gibt einen Verweis auf den Bezeichner der User 
 
 Das **DefaultUserJourney**-Element enthält das folgende Attribut:
 
-| Attribut | Erforderlich | BESCHREIBUNG |
+| attribute | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
 | ReferenceId | Ja | Ein Bezeichner der User Journey in der Richtlinie. Weitere Informationen finden Sie unter [User Journeys](userjourneys.md). |
 
@@ -117,30 +144,33 @@ Das **UserJourneyBehaviors**-Element enthält die folgenden Elemente:
 | SessionExpiryInSeconds | 0:1 | Die Lebensdauer des als Integer angegebenen Azure AD B2C-Sitzungscookies, das bei erfolgreicher Authentifizierung im Benutzerbrowser gespeichert wird. |
 | JourneyInsights | 0:1 | Kopieren des Azure Application Insights-Instrumentierungsschlüssels, der verwendet werden soll. |
 | ContentDefinitionParameters | 0:1 | Die Liste von Schlüssel-Wert-Paaren, die an der LoadUri-Parameter der ContentDefinition angefügt wird. |
+|ScriptExecution| 0:1| Die unterstützten [JavaScript](javascript-and-page-layout.md)-Ausführungsmodi. Mögliche Werte: `Allow` und `Disallow` (Standardwert).
 
 ### <a name="singlesignon"></a>SingleSignOn
 
 Das **SingleSignOn**-Element enthält das folgende Attribut:
 
-| Attribut | Erforderlich | BESCHREIBUNG |
+| attribute | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
-| `Scope` | Ja | Der Bereich des SSO-Verhaltens. Mögliche Werte: `Suppressed`, `Tenant`, `Application` oder `Policy`. Der Wert `Suppressed` gibt an, dass das Verhalten unterdrückt wird. Bei einer SSO-Sitzung wird beispielsweise keine Sitzung für den Benutzer beibehalten, und er wird immer dazu aufgefordert, einen Identitätsanbieter auszuwählen. Der Wert `TrustFramework` gibt an, dass das Verhalten für alle Richtlinien im Vertrauensframework angewendet wird. Beispielsweise wird ein Benutzer, der durch zwei User Journeys für Richtlinien eines Vertrauensframeworks navigiert, nicht dazu aufgefordert, einen Identitätsanbieter auszuwählen. Der Wert `Tenant` gibt an, dass das Verhalten auf alle Richtlinien im Mandanten angewendet wird. Beispielsweise wird ein Benutzer, der durch zwei User Journeys für Richtlinien eines Mandanten navigiert nicht, dazu aufgefordert, einen Identitätsanbieter auszuwählen. Der Wert `Application` gibt an, dass das Verhalten auf alle Richtlinien für die Anwendung angewendet wird, die die Anforderung stellt. Beispielsweise wird ein Benutzer, der durch zwei User Journeys für Richtlinien einer Anwendung navigiert, nicht dazu aufgefordert, einen Identitätsanbieter auszuwählen. Der Wert `Policy` gibt an, dass das Verhalten nur auf eine Richtlinie angewendet wird. Beispielsweise wird ein Benutzer, der durch zwei User Journeys für Richtlinien eines Vertrauensframeworks navigiert, dazu aufgefordert, einen Identitätsanbieter auszuwählen, wenn er zwischen Richtlinien wechselt. |
-| KeepAliveInDays | Ja | Steuert, wie lange der Benutzer angemeldet bleibt. Durch Festlegen des Werts auf 0 wird die Funktion „Angemeldet bleiben“ deaktiviert. Weitere Informationen finden Sie unter [Angemeldet bleiben](active-directory-b2c-reference-kmsi-custom.md). |
+| `Scope` | Ja | Der Bereich des SSO-Verhaltens. Mögliche Werte: `Suppressed`, `Tenant`, `Application` oder `Policy`. Der Wert `Suppressed` gibt an, dass das Verhalten unterdrückt wird, und der Benutzer wird immer aufgefordert, einen Identitätsanbieter auszuwählen.  Der Wert `Tenant` gibt an, dass das Verhalten auf alle Richtlinien im Mandanten angewendet wird. Beispielsweise wird ein Benutzer, der durch zwei User Journeys für Richtlinien eines Mandanten navigiert nicht, dazu aufgefordert, einen Identitätsanbieter auszuwählen. Der Wert `Application` gibt an, dass das Verhalten auf alle Richtlinien für die Anwendung angewendet wird, die die Anforderung stellt. Beispielsweise wird ein Benutzer, der durch zwei User Journeys für Richtlinien einer Anwendung navigiert, nicht dazu aufgefordert, einen Identitätsanbieter auszuwählen. Der Wert `Policy` gibt an, dass das Verhalten nur auf eine Richtlinie angewendet wird. Beispielsweise wird ein Benutzer, der durch zwei User Journeys für Richtlinien eines Vertrauensframeworks navigiert, dazu aufgefordert, einen Identitätsanbieter auszuwählen, wenn er zwischen Richtlinien wechselt. |
+| KeepAliveInDays | Ja | Steuert, wie lange der Benutzer angemeldet bleibt. Durch Festlegen des Werts auf 0 wird die Funktion „Angemeldet bleiben“ deaktiviert. Weitere Informationen finden Sie unter [Angemeldet bleiben](session-behavior.md?pivots=b2c-custom-policy#enable-keep-me-signed-in-kmsi). |
+|EnforceIdTokenHintOnLogout| Nein|  Erzwingt, dass ein zuvor ausgestelltes ID-Token als Hinweis bezüglich der aktuellen authentifizierten Sitzung des Endbenutzers mit dem Client an den Abmeldeendpunkt übergeben wird. Mögliche Werte: `false` (Standard) oder `true`. Weitere Informationen finden Sie unter [Webanmeldung mit OpenID Connect](openid-connect.md).  |
+
 
 ## <a name="journeyinsights"></a>JourneyInsights
 
 Das **JourneyInsights**-Element enthält die folgenden Attribute:
 
-| Attribut | Erforderlich | BESCHREIBUNG |
+| attribute | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
 | TelemetryEngine | Ja | Der Wert muss `ApplicationInsights` sein. |
 | InstrumentationKey | Ja | Die Zeichenfolge, die den Instrumentierungsschlüssel für das Application Insights-Element enthält. |
-| DeveloperMode | Ja | Mögliche Werte: `true` oder `false`. Wenn `true`, beschleunigt Application Insights die Telemetriedaten durch die Verarbeitungspipeline. Diese Einstellung eignet sich für die Entwicklung, bei höheren Volumen ist sie jedoch eingeschränkt. Die detaillierten Aktivitätsprotokolle sind lediglich zur Unterstützung bei der Entwicklung benutzerdefinierter Richtlinien konzipiert. Verwenden Sie den Entwicklungsmodus nicht in der Produktion. Protokolle erfassen alle Ansprüche, die während der Entwicklung an die Identitätsanbieter und von Ihnen gesendet werden. Bei Verwendung in der Produktion übernehmen Entwickler die Verantwortung für PII (Privately Identifiable Information, privat identifizierbare Informationen), die in dem App Insights-Protokoll gesammelt werden, das sie besitzen. Diese detaillierten Protokolle werden nur gesammelt, wenn dieser Wert auf `true` festgelegt ist.|
+| DeveloperMode | Ja | Mögliche Werte: `true` oder `false`. Wenn `true`, beschleunigt Application Insights die Telemetriedaten durch die Verarbeitungspipeline. Diese Einstellung eignet sich gut für die Entwicklung, bei hohem Datenvolumen jedoch nur eingeschränkt. Die ausführlichen Aktivitätsprotokolle dienen lediglich zur Entwicklung von benutzerdefinierten Richtlinien. Verwenden Sie den Entwicklungsmodus nicht in der Produktion. Protokolle erfassen alle Ansprüche, die während der Entwicklung an die Identitätsanbieter und von Ihnen gesendet werden. Bei Verwendung in der Produktion übernehmen Entwickler die Verantwortung für PII (Privately Identifiable Information, privat identifizierbare Informationen), die in dem App Insights-Protokoll gesammelt werden, das sie besitzen. Diese detaillierten Protokolle werden nur gesammelt, wenn dieser Wert auf `true` festgelegt ist.|
 | ClientEnabled | Ja | Mögliche Werte: `true` oder `false`. Wenn `true`, wird das clientseitige Application Insights-Skript zum Nachverfolgen der Seitenansicht und von clientseitigen Fehlern gesendet. |
 | ServerEnabled | Ja | Mögliche Werte: `true` oder `false`. Wenn `true`, wird die vorhandene JSON-Datei „UserJourneyRecorder“ als benutzerdefiniertes Ereignis an Application Insights übermittelt. |
 | TelemetryVersion | Ja | Der Wert muss `1.0.0` sein. |
 
-Weitere Informationen finden Sie unter [Erfassen von Protokollen](active-directory-b2c-troubleshoot-custom.md).
+Weitere Informationen finden Sie unter [Erfassen von Protokollen](troubleshoot-with-application-insights.md).
 
 ## <a name="contentdefinitionparameters"></a>ContentDefinitionParameters
 
@@ -158,17 +188,17 @@ Das **ContentDefinitionParameters**-Element enthält das folgende Element:
 
 Das **ContentDefinitionParameter**-Element enthält das folgende Attribut:
 
-| Attribut | Erforderlich | BESCHREIBUNG |
+| attribute | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
 | Name | Ja | Der Name des Schlüssel-Wert-Paars. |
 
-Weitere Informationen finden Sie unter [Konfigurieren der Benutzeroberfläche mit dynamischen Inhalten mithilfe von benutzerdefinierten Richtlinien](active-directory-b2c-ui-customization-custom-dynamic.md).
+Weitere Informationen finden Sie unter [Konfigurieren der Benutzeroberfläche mit dynamischen Inhalten mithilfe von benutzerdefinierten Richtlinien](customize-ui-with-html.md#configure-dynamic-custom-page-content-uri).
 
 ## <a name="technicalprofile"></a>TechnicalProfile
 
 Das **TechnicalProfile**-Element enthält die folgenden Attribute:
 
-| Attribut | Erforderlich | BESCHREIBUNG |
+| attribute | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
 | Id | Ja | Der Wert muss `PolicyProfile` sein. |
 
@@ -176,20 +206,34 @@ Das **TechnicalProfile**-Element enthält die folgenden Attribute:
 
 | Element | Vorkommen | BESCHREIBUNG |
 | ------- | ----------- | ----------- |
-| DisplayName | 0:1 | Die Zeichenfolge, die den Namen des technischen Profils enthält, der Benutzern angezeigt wird. |
-| BESCHREIBUNG | 0:1 | Die Zeichenfolge, die die Beschreibung des technischen Profils enthält, die Benutzern angezeigt wird. |
+| DisplayName | 1:1 | Die Zeichenfolge, die den Namen des technischen Profils enthält. |
+| BESCHREIBUNG | 0:1 | Die Zeichenfolge, die die Beschreibung des technischen Profils enthält. |
 | Protocol | 1:1 | Das Protokoll, das für den Verbund verwendet wird. |
 | Metadaten | 0:1 | Die Sammlung von *Elementen* von Schlüssel-Wert-Paaren, die vom Protokoll für die Kommunikation mit dem Endpunkt im Verlauf einer Transaktion verwendet wird, um die Interaktion zwischen der vertrauenden Seite und anderen Teilnehmern der Community zu konfigurieren. |
-| OutputClaims | 0:1 | Eine Liste von Anspruchstypen, die im technischen Profil als Ausgabe verwendet werden. Jedes dieser Elemente enthält einen Verweis auf ein **ClaimType**-Element, das bereits im **ClaimsSchema**-Abschnitt oder in einer Richtlinie, die diese Richtliniendatei erbt, definiert wurde. |
-| SubjectNamingInfo | 0:1 | Der Antragstellername, der in Tokens verwendet wird. |
+| OutputClaims | 1:1 | Eine Liste von Anspruchstypen, die im technischen Profil als Ausgabe verwendet werden. Jedes dieser Elemente enthält einen Verweis auf ein **ClaimType**-Element, das bereits im **ClaimsSchema**-Abschnitt oder in einer Richtlinie, die diese Richtliniendatei erbt, definiert wurde. |
+| SubjectNamingInfo | 1:1 | Der Antragstellername, der in Tokens verwendet wird. |
 
 Das **Protocol**-Element enthält die folgenden Attribute:
 
-| Attribut | Erforderlich | BESCHREIBUNG |
+| attribute | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
-| Name | Ja | Der Name eines gültigen Protokolls, das von Azure AD B2C unterstützt und als Teil des technischen Profils verwendet wird. Mögliche Werte: `OpenIdConnect` oder `SAML2`. Der Wert `OpenIdConnect` stellt den Protokollstandard „OpenID Connect 1.0“ gemäß der Vorgaben der OpenID Foundation dar. Der Wert `SAML2` stellt den Protokollstandard „SAML 2.0“ gemäß der Vorgaben von OASIS dar. Verwenden Sie in der Produktion keine SAML-Token. |
+| Name | Ja | Der Name eines gültigen Protokolls, das von Azure AD B2C unterstützt und als Teil des technischen Profils verwendet wird. Mögliche Werte: `OpenIdConnect` oder `SAML2`. Der Wert `OpenIdConnect` stellt den Protokollstandard „OpenID Connect 1.0“ gemäß der Vorgaben der OpenID Foundation dar. Der Wert `SAML2` stellt den Protokollstandard „SAML 2.0“ gemäß der Vorgaben von OASIS dar. |
 
-## <a name="outputclaims"></a>OutputClaims
+### <a name="metadata"></a>Metadaten
+
+Wenn `SAML` das Protokoll ist, enthält ein Metadatenelement die folgenden Elemente:
+
+| attribute | Erforderlich | Beschreibung |
+| --------- | -------- | ----------- |
+| IdpInitiatedProfileEnabled | Nein | Gibt an, ob der IdP-initiierte Fluss unterstützt wird. Mögliche Werte: `true` und `false` (Standardwert). | 
+| XmlSignatureAlgorithm | Nein | Die Methode, die Azure AD B2C zur Signierung der SAML-Antwort verwendet. Mögliche Werte: `Sha256`, `Sha384`, `Sha512` oder `Sha1`. Vergewissern Sie sich, dass Sie den Signaturalgorithmus auf beiden Seiten mit demselben Wert konfigurieren. Verwenden Sie nur den Algorithmus, den Ihr Zertifikat unterstützt. Informationen zum Konfigurieren der SAML-Assertion finden Sie unter [Metadaten für das technische Profil des SAML-Ausstellers](saml-issuer-technical-profile.md#metadata). |
+| DataEncryptionMethod | Nein | Gibt die Methode an, die von Azure AD B2C zum Verschlüsseln der Daten mit dem AES-Algorithmus (Advanced Encryption Standard) verwendet wird. Die Metadaten bestimmen den Wert des `<EncryptedData>`-Elements in der SAML-Antwort. Mögliche Werte: `Aes256` (Standard), `Aes192`, `Sha512` oder ` Aes128`. |
+| KeyEncryptionMethod| Nein | Gibt die Methode an, die von Azure AD B2C zum Verschlüsseln der Kopie des Schlüssels verwendet wird, der zum Verschlüsseln der Daten verwendet wurde. Die Metadaten bestimmen den Wert des `<EncryptedKey>`-Elements in der SAML-Antwort. Mögliche Werte: ` Rsa15` (Standardwert) – RSA PKCS-Algorithmus (Public Key Cryptography Standard), Version 1.5, ` RsaOaep` – RSA OAEP-Verschlüsselungsalgorithmus (Optimal Asymmetric Encryption Padding). |
+| UseDetachedKeys | Nein |  Mögliche Werte sind `true` oder `false` (Standardwert). Wenn der Wert auf `true` festgelegt wird, wird das Format der verschlüsselten Assertionen von Azure AD B2C geändert. Durch die Verwendung von getrennten Schlüsseln wird die verschlüsselte Assertion als untergeordnetes Element der EncrytedAssertion und nicht den EncryptedData hinzugefügt. |
+| WantsSignedResponses| Nein | Gibt an, ob Azure AD B2C den Abschnitt `Response` der SAML-Antwort signiert. Mögliche Werte: `true` (Standard) oder `false`.  |
+| RemoveMillisecondsFromDateTime| Nein | Gibt an, ob die Millisekunden aus DateTime-Werten in der SAML-Antwort entfernt werden (dazu gehören IssueInstant, NotBefore, NotOnOrAfter und AuthnInstant). Mögliche Werte: `false` (Standard) oder `true`.  |
+
+### <a name="outputclaims"></a>OutputClaims
 
 Das **OutputClaims**-Element enthält das folgende Element:
 
@@ -199,7 +243,7 @@ Das **OutputClaims**-Element enthält das folgende Element:
 
 Das **OutputClaim**-Element enthält die folgenden Attribute:
 
-| Attribut | Erforderlich | BESCHREIBUNG |
+| attribute | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
 | ClaimTypeReferenceId | Ja | Ein Verweis auf ein **ClaimType**-Element, das bereits im **ClaimsSchema**-Abschnitt der Richtliniendatei definiert wurde. |
 | DefaultValue | Nein | Ein Standardwert, der verwendet werden kann, wenn der Wert des Anspruchs leer ist. |
@@ -208,18 +252,19 @@ Das **OutputClaim**-Element enthält die folgenden Attribute:
 ### <a name="subjectnaminginfo"></a>SubjectNamingInfo
 
 Mit dem **SubjectNameingInfo**-Element steuern Sie den Wert des Tokenantragstellers:
-- **JWT-Token:** Der `sub`-Anspruch. Dies ist ein Prinzipal, für den das Token Informationen zusichert, z.B. der Benutzer einer Anwendung. Dieser Wert ist unveränderlich und kann nicht erneut zugewiesen oder wiederverwendet werden. Er kann für die Durchführung von sicheren Autorisierungsüberprüfungen verwendet werden, z.B. wenn das Token verwendet wird, um auf eine Ressource zuzugreifen. Der Anspruch „Antragsteller“ wird standardmäßig mit der Objekt-ID des Benutzers im Verzeichnis aufgefüllt. Weitere Informationen finden Sie unter [Token, Sitzung und einmaliges Anmelden – Konfiguration](active-directory-b2c-token-session-sso.md).
-- **SAML-Token:** Das `<Subject><NameID>`-Element, das das Subject-Element identifiziert.
+- **JWT-Token:** Der `sub`-Anspruch. Dies ist ein Prinzipal, für den das Token Informationen zusichert, z.B. der Benutzer einer Anwendung. Dieser Wert ist unveränderlich und kann nicht erneut zugewiesen oder wiederverwendet werden. Er kann für die Durchführung von sicheren Autorisierungsüberprüfungen verwendet werden, z.B. wenn das Token verwendet wird, um auf eine Ressource zuzugreifen. Der Anspruch „Antragsteller“ wird standardmäßig mit der Objekt-ID des Benutzers im Verzeichnis aufgefüllt. Weitere Informationen finden Sie unter [Token, Sitzung und einmaliges Anmelden – Konfiguration](session-behavior.md).
+- **SAML-Token:** Das `<Subject><NameID>`-Element, das das Subject-Element identifiziert. Das NameID-Format kann geändert werden.
 
 Das **SubjectNamingInfo**-Element enthält das folgende Attribut:
 
-| Attribut | Erforderlich | BESCHREIBUNG |
+| attribute | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
 | ClaimType | Ja | Ein Verweis auf das **PartnerClaimType**-Element eines Ausgabeanspruchs. Die Ausgabeansprüche müssen in der Richtlinie der **OutputClaims**-Sammlung der vertrauenden Seite definiert werden. |
+| Format | Nein | Wird bei vertrauenden SAML-Seiten zum Festlegen des **NameID-Formats** verwendet, das in der SAML-Assertion zurückgegeben wird. |
 
 Im folgenden Beispiel wird gezeigt, wie eine vertrauende OpenID Connect-Seite definiert wird. Die Informationen zum Namen des Antragstellers werden als `objectId` konfiguriert:
 
-```XML
+```xml
 <RelyingParty>
   <DefaultUserJourney ReferenceId="SignUpOrSignIn" />
   <TechnicalProfile Id="PolicyProfile">
@@ -239,7 +284,7 @@ Im folgenden Beispiel wird gezeigt, wie eine vertrauende OpenID Connect-Seite d
 ```
 Das JWT-Token enthält den `sub`-Anspruch mit der Objekt-ID des Benutzers:
 
-```JSON
+```json
 {
   ...
   "sub": "6fbbd70d-262b-4b50-804c-257ae1706ef2",
@@ -247,4 +292,23 @@ Das JWT-Token enthält den `sub`-Anspruch mit der Objekt-ID des Benutzers:
 }
 ```
 
+Im folgenden Beispiel wird gezeigt, wie eine vertrauende SAML-Seite definiert wird. Die Informationen zum Namen des Antragstellers werden als `objectId` konfiguriert, und die „NameID“ `format` wurde angegeben:
 
+```xml
+<RelyingParty>
+  <DefaultUserJourney ReferenceId="SignUpOrSignIn" />
+  <TechnicalProfile Id="PolicyProfile">
+    <DisplayName>PolicyProfile</DisplayName>
+    <Protocol Name="SAML2" />
+    <OutputClaims>
+      <OutputClaim ClaimTypeReferenceId="displayName" />
+      <OutputClaim ClaimTypeReferenceId="givenName" />
+      <OutputClaim ClaimTypeReferenceId="surname" />
+      <OutputClaim ClaimTypeReferenceId="email" />
+      <OutputClaim ClaimTypeReferenceId="objectId" PartnerClaimType="sub"/>
+      <OutputClaim ClaimTypeReferenceId="identityProvider" />
+    </OutputClaims>
+    <SubjectNamingInfo ClaimType="sub" Format="urn:oasis:names:tc:SAML:2.0:nameid-format:transient"/>
+  </TechnicalProfile>
+</RelyingParty>
+```

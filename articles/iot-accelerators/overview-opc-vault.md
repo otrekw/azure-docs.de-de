@@ -1,6 +1,6 @@
 ---
 title: Was ist OPC Vault? – Azure | Microsoft-Dokumentation
-description: Übersicht über OPC Vault
+description: Dieser Artikel bietet eine Übersicht zu OPC Vault. OPC Vault kann den Zertifikatlebenszyklus für OPC UA-Anwendungen in der Cloud konfigurieren, registrieren und verwalten.
 author: dominicbetts
 ms.author: dobett
 ms.date: 11/26/2018
@@ -8,16 +8,19 @@ ms.topic: overview
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 44315790116545dd888aed533731bbf01abe801d
-ms.sourcegitcommit: 4b8a69b920ade815d095236c16175124a6a34996
+ms.openlocfilehash: 715ed204e28d6260c28fa099b40fc78aa12de44d
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69997309"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91281540"
 ---
 # <a name="what-is-opc-vault"></a>Was ist OPC Vault?
 
-OPC Vault ist ein Microservice, mit dem der Zertifikatlebenszyklus für OPC UA-Server- und -Clientanwendungen in der Cloud konfiguriert, registriert und verwaltet werden kann. In diesem Artikel werden einfache Anwendungsfälle für OPC Vault beschrieben.
+> [!IMPORTANT]
+> Während wir diesen Artikel aktualisieren, können Sie unter [Azure Industrial IoT](https://azure.github.io/Industrial-IoT/) den derzeit aktuellen Inhalt lesen.
+
+OPC Vault ist ein Microservice, mit dem der Zertifikatlebenszyklus für OPC UA-Server- und -Clientanwendungen in der Cloud konfiguriert, registriert und verwaltet werden kann. In diesem Artikel werden einfache Anwendungsfälle für OPC Vault beschrieben.
 
 ## <a name="certificate-management"></a>Zertifikatverwaltung
 
@@ -35,5 +38,4 @@ Im folgenden Diagramm ist die gesamte OPC Vault-Architektur dargestellt.
 
 Nachdem Sie sich hier über OPC Vault und entsprechende Verwendungsmöglichkeiten informiert haben, können Sie mit dem nächsten Thema fortfahren:
 
-> [!div class="nextstepaction"]
-> [OPC Vault-Architektur](overview-opc-vault-architecture.md)
+[OPC Vault-Architektur](overview-opc-vault-architecture.md)

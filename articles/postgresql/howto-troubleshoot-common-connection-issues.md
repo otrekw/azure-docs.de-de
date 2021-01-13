@@ -1,18 +1,18 @@
 ---
-title: Beheben von Verbindungsproblemen mit Azure Database for PostgreSQL – Einzelserver
+title: Beheben von Verbindungsproblemen – Azure Database for PostgreSQL – Einzelserver
 description: Erfahren Sie, wie Sie Verbindungsprobleme mit einem Azure Database for PostgreSQL-Einzelserver beheben.
 keywords: PostgreSQL-Verbindung, Verbindungszeichenfolge, Verbindungsprobleme, vorübergehender Fehler, Verbindungsfehler
-author: jan-eng
-ms.author: janeng
+author: niklarin
+ms.author: nlarin
 ms.service: postgresql
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 5/6/2019
-ms.openlocfilehash: 8a0fe87703c9fb471174c761a6e8296e6e7a37ec
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bff930153dc8941fbfe561edf963d5b1c1e7811f
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65952110"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96014617"
 ---
 # <a name="troubleshoot-connection-issues-to-azure-database-for-postgresql---single-server"></a>Beheben von Verbindungsproblemen mit Azure Database for PostgreSQL – Einzelserver
 
@@ -49,6 +49,8 @@ Wenn die Anwendung dauerhaft keine Verbindung mit Azure Database for PostgreSQL 
 * Konfiguration der Serverfirewall: Stellen Sie sicher, dass die Firewall auf dem Azure Database for PostgreSQL-Server so konfiguriert ist, dass Verbindungen von Ihrem Client zulässig sind, einschließlich Proxyserver und Gateways.
 * Konfiguration der Clientfirewall: Die Firewall auf dem Client muss Verbindungen mit Ihrem Datenbankserver zulassen. IP-Adressen und Ports des Servers, mit dem Sie eine Verbindung herstellen, sowie Anwendungsnamen wie PostgreSQL müssen in einigen Firewalls zugelassen sein.
 * Benutzerfehler: Sie haben möglicherweise Verbindungsparameter wie den Servernamen in der Verbindungszeichenfolge falsch geschrieben, oder es fehlt das Suffix *\@Servername* im Benutzernamen.
+* Sollte ein Fehler mit dem Hinweis angezeigt werden, dass der _Server nicht für das Zulassen von IPv6-Verbindungen konfiguriert ist_, beachten Sie, dass im Basic-Tarif keine VNET-Dienstendpunkte unterstützt werden. Entfernen Sie den Endpunkt „Microsoft.Sql“ aus dem Subnetz, das mit dem Basic-Server verbunden werden soll.
+* Wenn der Verbindungsfehler _sslmode value „***“ invalid when SSL support is not compiled in_ (sslmode-Wert „***“ ungültig, wenn keine SSL-Unterstützung mitkompiliert wurde) angezeigt wird, bedeutet das, dass der PostgreSQL-Client SSL nicht unterstützt. Höchstwahrscheinlich wurde die clientseitige libpq nicht mit dem Flag „--with-openssl“ kompiliert. Versuchen Sie, eine Verbindung mit einem PostgreSQL-Client herzustellen, der SSL unterstützt. 
 
 ### <a name="steps-to-resolve-persistent-connectivity-issues"></a>Schritte zum Beheben dauerhafter Verbindungsprobleme
 
