@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/12/2020
 ms.topic: article
 ms.service: azure
-ms.openlocfilehash: 34efef4a01b58cc26fd1567336184837a703ade2
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 7bbac0d8593d47c3162a8ea43e928343a88f2de4
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97836077"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97861448"
 ---
 # <a name="manage-the-on-premises-management-console"></a>Verwalten der lokalen Verwaltungskonsole
 
@@ -299,7 +299,27 @@ So setzen Sie Ihr Kennwort zurück:
 > [!NOTE]
 > Der Sensor ist mit dem Abonnement verknüpft, mit dem er ursprünglich verbunden war. Sie können das Kennwort nur wiederherstellen, wenn Sie dasselbe Abonnement verwenden, zu dem es gehört.
 
-## <a name="see-also"></a>Weitere Informationen
+## <a name="update-the-software-version"></a>Aktualisieren der Softwareversion
+
+Im folgenden Verfahren wird beschrieben, wie Sie die Softwareversion der lokalen Verwaltungskonsole aktualisieren. Der Aktualisierungsvorgang dauert ungefähr 30 Minuten.
+
+1. Öffnen Sie das [Azure-Portal](https://portal.azure.com/).
+
+1. Wechseln Sie zu Defender für IoT.
+
+1. Navigieren Sie zur Seite **Updates**.
+
+1. Wählen Sie im Abschnitt für die lokale Verwaltungskonsole eine Version aus.
+
+1. Wählen Sie **Herunterladen** aus, und speichern Sie die Datei.
+
+1. Melden Sie sich bei der lokalen Verwaltungskonsole an, und wählen Sie im seitlichen Menü die Option **Systemeinstellungen** aus.
+
+1. Wählen Sie im Bereich **Versionsupdate** die Option **Update** aus.
+
+1. Wählen Sie die Datei aus, die Sie von der Seite **Updates** in Defender für IoT heruntergeladen haben.
+
+## <a name="see-also"></a>Siehe auch
 
 [Verwalten von Sensoren über die Verwaltungskonsole](how-to-manage-sensors-from-the-on-premises-management-console.md)
 
