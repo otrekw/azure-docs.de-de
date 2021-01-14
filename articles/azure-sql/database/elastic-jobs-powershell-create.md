@@ -11,12 +11,12 @@ author: johnpaulkee
 ms.author: joke
 ms.reviwer: sstein
 ms.date: 10/21/2020
-ms.openlocfilehash: 27cd35eba7320022ea9b137a7b8bb079a1226751
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 1fc5653f08f8fc7916257dfdba570f451c0afa75
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92427284"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98131932"
 ---
 # <a name="create-an-elastic-job-agent-using-powershell-preview"></a>Erstellen eines Agents für elastische Aufträge über PowerShell (Vorschau)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -43,7 +43,7 @@ Die Upgradeversion der Aufträge für die elastische Datenbank umfasst neue Powe
 
 Wenn Sie noch kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
-Installieren Sie das Modul **Az.Sql** , um die aktuellen Cmdlets für elastische Aufträge zu erhalten. Führen Sie die folgenden Befehle in PowerShell mit Administratorzugriff aus.
+Installieren Sie das Modul **Az.Sql**, um die aktuellen Cmdlets für elastische Aufträge zu erhalten. Führen Sie die folgenden Befehle in PowerShell mit Administratorzugriff aus.
 
 ```powershell
 # installs the latest PackageManagement and PowerShellGet packages
@@ -123,19 +123,11 @@ $db2 = New-AzSqlDatabase -ResourceGroupName $resourceGroupName -ServerName $targ
 $db2
 ```
 
-## <a name="use-elastic-jobs"></a>Verwenden elastischer Aufträge
-
-Wenn Sie elastische Aufträge verwenden möchten, führen Sie den folgenden Befehl aus, um das Feature in Ihrem Azure-Abonnement zu registrieren. Führen Sie diesen Befehl einmal für das Abonnement aus, in dem Sie den Agent für elastische Aufträge bereitstellen möchten. Abonnements, die nur Datenbanken enthalten, die als Auftragsziele fungieren, müssen nicht registriert werden.
-
-```powershell
-Register-AzProviderFeature -FeatureName sqldb-JobAccounts -ProviderNamespace Microsoft.Sql
-```
-
 ### <a name="create-the-elastic-job-agent"></a>Erstellen des Agents für elastische Aufträge
 
 Bei einem Agent für elastische Aufträge handelt es sich um eine Azure-Ressource zum Erstellen, Ausführen und Verwalten von Aufträgen. Der Agent führt Aufträge gemäß einem Zeitplan oder einmalig aus.
 
-Für das Cmdlet **New-AzSqlElasticJobAgent** muss bereits eine Datenbank in Azure SQL-Datenbank vorhanden sein. Die Parameter *resourceGroupName* , *serverName* und *databaseName* müssen daher auf vorhandene Ressourcen verweisen.
+Für das Cmdlet **New-AzSqlElasticJobAgent** muss bereits eine Datenbank in Azure SQL-Datenbank vorhanden sein. Die Parameter *resourceGroupName*, *serverName* und *databaseName* müssen daher auf vorhandene Ressourcen verweisen.
 
 ```powershell
 Write-Output "Creating job agent..."
@@ -205,7 +197,7 @@ $jobCred = $jobAgent | New-AzSqlElasticJobCredential -Name "jobuser" -Credential
 
 Eine [Zielgruppe](job-automation-overview.md#target-group) definiert mindestens eine Gruppe von Datenbanken, für die ein Auftragsschritt ausgeführt wird.
 
-Der folgende Codeausschnitt erstellt zwei Zielgruppen: *serverGroup* und *serverGroupExcludingDb2* . *serverGroup* ist auf alle Datenbanken ausgerichtet, die zum Zeitpunkt der Ausführung auf dem Server vorhanden sind. *serverGroupExcludingDb2* ist ebenfalls auf alle Datenbanken auf dem Server ausgerichtet, schließt allerdings *targetDb2* aus:
+Der folgende Codeausschnitt erstellt zwei Zielgruppen: *serverGroup* und *serverGroupExcludingDb2*. *serverGroup* ist auf alle Datenbanken ausgerichtet, die zum Zeitpunkt der Ausführung auf dem Server vorhanden sind. *serverGroupExcludingDb2* ist ebenfalls auf alle Datenbanken auf dem Server ausgerichtet, schließt allerdings *targetDb2* aus:
 
 ```powershell
 Write-Output "Creating test target groups..."
@@ -221,7 +213,7 @@ $serverGroupExcludingDb2 | Add-AzSqlElasticJobTarget -ServerName $targetServerNa
 
 ### <a name="create-a-job-and-steps"></a>Erstellen eines Auftrags und von Schritten
 
-In diesem Beispiel werden ein Auftrag und zwei Auftragsschritte definiert, die durch den Auftrag ausgeführt werden sollen. Der erste Auftragsschritt ( *step1* ) erstellt in jeder Datenbank aus der Zielgruppe *ServerGroup* eine neue Tabelle ( *Step1Table* ). Der zweite Auftragsschritt ( *step2* ) erstellt in jeder Datenbank (mit Ausnahme von *TargetDb2* , da die zuvor definierte Zielgruppe diese Datenbank ausschließt) eine neue Tabelle ( *Step2Table* ).
+In diesem Beispiel werden ein Auftrag und zwei Auftragsschritte definiert, die durch den Auftrag ausgeführt werden sollen. Der erste Auftragsschritt (*step1*) erstellt in jeder Datenbank aus der Zielgruppe *ServerGroup* eine neue Tabelle (*Step1Table*). Der zweite Auftragsschritt (*step2*) erstellt in jeder Datenbank (mit Ausnahme von *TargetDb2*, da die zuvor definierte Zielgruppe diese Datenbank ausschließt) eine neue Tabelle (*Step2Table*).
 
 ```powershell
 Write-Output "Creating a new job..."

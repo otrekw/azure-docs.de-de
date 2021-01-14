@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/17/2020
 ms.author: victorh
 customer intent: As an administrator, I want to control network access from an on-premises network to an Azure virtual network.
-ms.openlocfilehash: 78e934a90b8d4e8feccf18a5cada3ec4920e1642
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: 86e27c190b269763d8dd2f562a207b3f2020da29
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94734451"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98051070"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-in-a-hybrid-network-using-the-azure-portal"></a>Tutorial: Bereitstellen und Konfigurieren von Azure Firewall in einem Hybridnetzwerk über das Azure-Portal
 
@@ -84,7 +84,7 @@ Erstellen Sie zunächst die Ressourcengruppe für die in diesem Tutorial verwend
 Erstellen Sie nun das VNET:
 
 > [!NOTE]
-> Die Größe des Subnetzes „AzureFirewallSubnet“ beträgt /26. Weitere Informationen zur Subnetzgröße finden Sie unter [Azure Firewall – Häufig gestellte Fragen](firewall-faq.md#why-does-azure-firewall-need-a-26-subnet-size).
+> Die Größe des Subnetzes „AzureFirewallSubnet“ beträgt /26. Weitere Informationen zur Subnetzgröße finden Sie unter [Azure Firewall – Häufig gestellte Fragen](firewall-faq.yml#why-does-azure-firewall-need-a--26-subnet-size).
 
 1. Wählen Sie auf der Startseite des Azure-Portals **Ressource erstellen** aus.
 2. Wählen Sie unter **Netzwerk** die Option **Virtuelles Netzwerk** aus.

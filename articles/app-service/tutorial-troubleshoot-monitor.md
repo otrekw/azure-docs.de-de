@@ -5,12 +5,12 @@ author: msangapu-msft
 ms.author: msangapu
 ms.topic: tutorial
 ms.date: 06/20/2020
-ms.openlocfilehash: 049adac5521efd68ae8aa77af2d1007f9dfe0c0e
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: af2711a3d219bb472334ad61bad0b87f6c691dab
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97586991"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98183199"
 ---
 # <a name="tutorial-troubleshoot-an-app-service-app-with-azure-monitor"></a>Tutorial: Problembehandlung für eine App Service-App mit Azure Monitor
 
@@ -171,11 +171,11 @@ where ResultDescription  contains "error"
 
 In der Spalte `ResultDescription` wird der folgende Fehler angezeigt:
 
-<pre>
+```output
 PHP Fatal error:  Allowed memory size of 134217728 bytes exhausted 
 (tried to allocate 16384 bytes) in /home/site/wwwroot/process.php on line 20, 
 referer: http://<app-name>.azurewebsites.net/
-</pre>
+```
 
 ### <a name="join-appservicehttplogs-and-appserviceconsolelogs"></a>Verknüpfen von „AppServiceHTTPLogs“ und „AppServiceConsoleLogs“
 
@@ -201,11 +201,11 @@ myHttp | join myConsole on TimeGen | project TimeGen, CsUriStem, ScStatus, Resul
 
 In der Spalte `ResultDescription` wird der folgende Fehler zusammen mit Webserverfehlern angezeigt:
 
-<pre>
+```output
 PHP Fatal error:  Allowed memory size of 134217728 bytes exhausted 
 (tried to allocate 16384 bytes) in /home/site/wwwroot/process.php on line 20, 
 referer: http://<app-name>.azurewebsites.net/
-</pre>
+```
 
 Der Meldungszustandspeicher in Zeile 20 von `process.php` ist voll ausgelastet. Sie haben nun bestätigt, dass von der Anwendung beim Auftreten des HTTP 500-Fehlers ein Fehler generiert wurde. Wir sehen uns den Code an, um das Problem zu identifizieren.
 

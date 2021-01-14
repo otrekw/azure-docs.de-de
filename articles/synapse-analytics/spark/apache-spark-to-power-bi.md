@@ -9,12 +9,12 @@ ms.service: synapse-analytics
 ms.subservice: spark
 ms.topic: tutorial
 ms.date: 11/16/2020
-ms.openlocfilehash: 791cab369dcbf9cab8d1256377cfee4a433c21b9
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 53fb256d3a0fba1cc10cafb239ff7f7bb21ac4eb
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96450891"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98121072"
 ---
 # <a name="tutorial-create-a-power-bi-report-using-apache-spark-and-azure-synapse-analytics"></a>Tutorial: Erstellen eines Power BI-Berichts mit Apache Spark und Azure Synapse Analytics
 
@@ -22,7 +22,7 @@ Unternehmen müssen häufig große Datenmengen verarbeiten, bevor sie diese den 
 
 ## <a name="before-you-begin"></a>Vorbereitung
 - Als Standardspeicher konfigurierter [Azure Synapse Analytics-Arbeitsbereich](../quickstart-create-workspace.md) mit einem ADLS Gen2-Speicherkonto. 
-- Power BI-Arbeitsbereich und Power BI Desktop, um Daten zu visualisieren. Ausführliche Informationen finden Sie unter [Erstellen der neuen Arbeitsbereiche in Power BI](https://docs.microsoft.com/power-bi/service-create-the-new-workspaces) und [Installieren von Power BI Desktop](https://powerbi.microsoft.com/downloads/).
+- Power BI-Arbeitsbereich und Power BI Desktop, um Daten zu visualisieren. Ausführliche Informationen finden Sie unter [Erstellen der neuen Arbeitsbereiche in Power BI](/power-bi/service-create-the-new-workspaces) und [Installieren von Power BI Desktop](https://powerbi.microsoft.com/downloads/).
 - Verknüpfter Dienst, um Verbindungen mit Ihrer Azure Synapse Analytics-Instanz und Ihren Power BI-Arbeitsbereichen herzustellen. Ausführliche Informationen finden Sie unter [Schnellstart: Verknüpfen eines Power BI-Arbeitsbereichs mit einem Synapse-Arbeitsbereich](../quickstart-power-bi.md).
 - Serverloser Apache Spark-Pool in Ihrem Synapse Analytics-Arbeitsbereich. Ausführliche Informationen finden Sie unter [Erstellen eines serverlosen Apache Spark-Pools](../quickstart-create-apache-spark-pool-studio.md).
   
@@ -89,7 +89,7 @@ So fragen Sie Ihre Apache Spark-Tabelle über Ihren serverlosen SQL-Pool ab:
 Im nächsten Schritt verbinden Sie Ihren serverlosen SQL-Pool mit Ihrem Power BI-Arbeitsbereich. Sobald Sie eine Verbindung mit Ihrem Arbeitsbereich hergestellt haben, können Sie Power BI-Berichte sowohl direkt aus Azure Synapse Analytics als auch aus Power BI Desktop erstellen.
 
 >[!Note]
-> Bevor Sie beginnen, müssen Sie einen verknüpften Dienst für Ihren [Power BI-Arbeitsbereich](../quickstart-power-bi.md) einrichten und [Power BI Desktop](https://docs.microsoft.com/power-bi/service-create-the-new-workspaces) herunterladen.  
+> Bevor Sie beginnen, müssen Sie einen verknüpften Dienst für Ihren [Power BI-Arbeitsbereich](../quickstart-power-bi.md) einrichten und [Power BI Desktop](/power-bi/service-create-the-new-workspaces) herunterladen.  
 
 So verbinden Sie Ihren serverlosen SQL-Pool mit Ihrem Power BI-Arbeitsbereich:
 
