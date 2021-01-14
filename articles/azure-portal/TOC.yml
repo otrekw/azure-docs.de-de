@@ -70,8 +70,6 @@
       items:
         - name: Wiederherstellen eines gelöschten Dashboards
           href: recover-shared-deleted-dashboard.md
-        - name: Beheben von Abonnementproblemen im Zusammenhang mit Region oder SKU
-          href: supportability/sku-series-unavailable.md
         - name: Erfassen einer Browserablaufverfolgung zur Problembehandlung
           href: capture-browser-trace.md
 - name: Verweis
