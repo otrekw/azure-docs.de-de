@@ -12,12 +12,12 @@ ms.date: 09/30/2020
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: bilderkennung, bilderkennungs-app, custom vision
-ms.openlocfilehash: 8274ddd0e492d1a27ebc1579fc6efdcc8cc84955
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: b27864fc1fd1f94f99fccacd90a66120e6d044c4
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97912983"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98132578"
 ---
 # <a name="quickstart-build-an-object-detector-with-the-custom-vision-website"></a>Schnellstart: Erstellen einer Objekterkennung mit der Custom Vision-Website
 
@@ -107,6 +107,10 @@ Nach Abschluss des Trainings wird die Leistung des Modells berechnet und angezei
 ### <a name="probability-threshold"></a>Wahrscheinlichkeitsschwellenwert
 
 [!INCLUDE [probability threshold](includes/probability-threshold.md)]
+
+### <a name="overlap-threshold"></a>Überlappungsschwellenwert
+
+Mit dem Schieberegler für den Ü **berlappungsschwellenwert** wird gesteuert, wie korrekt eine Objektvorhersage sein muss, damit sie beim Trainieren als korrekt betrachtet wird. Er legt die kleinstmögliche Überlappung zwischen dem vorhergesagten Objektbegrenzungsrahmen und dem tatsächlich vom Benutzer eingegebenen Begrenzungsrahmen fest. Wenn die Begrenzungsrahmen nicht in diesem Maße überlappen, wird die Vorhersage nicht als korrekt betrachtet.
 
 ## <a name="manage-training-iterations"></a>Verwalten von Trainingsiterationen
 
