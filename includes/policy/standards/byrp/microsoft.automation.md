@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 12/01/2020
+ms.date: 01/08/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: c2385d07ccb81041bd340a8bec0412a8f14cef56
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 69e9240a107856f620235191cda8660cc0164e55
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96476676"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98048271"
 ---
 ## <a name="azure-security-benchmark"></a>Vergleichstest für die Azure-Sicherheit
 
@@ -22,5 +22,3 @@ Weitere Informationen dazu, wie die verfügbaren Azure Policy-Build-Ins für all
 |---|---|---|---|---|
 |Datenschutz |4.8 |Verschlüsseln vertraulicher, ruhender Informationen |[Automation-Kontovariablen sollten verschlüsselt werden](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F3657f5a0-770e-44a3-b44e-9431ba1e9735) |[1.1.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Automation/Automation_AuditUnencryptedVars_Audit.json) |
 
-> [!NOTE]
-> Wenn Sie eine Automation-Kontovariable erstellen, können Sie deren Verschlüsselung und Speicherung durch Azure Automation als sichere Ressource angeben. Nachdem Sie die Variable erstellt haben, können Sie ihren Verschlüsselungsstatus nicht ändern, ohne die Variable neu erstellen zu müssen. Wenn Sie über Automation-Kontovariablen verfügen, die vertrauliche Daten speichern und noch nicht verschlüsselt sind, müssen Sie sie löschen und als verschlüsselte Variablen neu erstellen. Eine Azure Security Center-Empfehlung ist, alle Azure Automation-Variablen wie unter [Automation-Kontovariablen sollten verschlüsselt werden](../../../../articles/security-center/recommendations-reference.md#recs-computeapp) beschrieben zu verschlüsseln. Wenn Sie über unverschlüsselte Variablen verfügen, die aus dieser Sicherheitsempfehlung ausgeschlossen werden sollen, erfahren Sie unter [Ausschließen einer Ressource aus Empfehlungen und der Sicherheitsbewertung](../../../../articles/security-center/exempt-resource.md), wie Sie eine Ausnahmeregel erstellen.

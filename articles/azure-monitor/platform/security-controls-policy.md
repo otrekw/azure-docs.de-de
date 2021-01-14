@@ -1,18 +1,18 @@
 ---
 title: Kontrollen zur Einhaltung gesetzlicher Bestimmungen in Azure Policy für Azure Monitor
 description: Listet Kontrollen zur Einhaltung gesetzlicher Bestimmungen in Azure Policy auf, die für Azure Monitor verfügbar sind. Diese integrierten Richtliniendefinitionen bieten allgemeine Ansätze für die Verwaltung der Compliance Ihrer Azure-Ressourcen.
-ms.date: 11/20/2020
+ms.date: 01/08/2021
 ms.topic: sample
 author: rboucher
 ms.author: robb
 ms.service: azure-monitor
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: 26acdcd72826a2693a7aeaf1ff223fea402d1546
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: 1340aca36d3ca8c9fc54ec925dbf81c7c95b993b
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94990539"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98044073"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-monitor"></a>Kontrollen zur Einhaltung gesetzlicher Bestimmungen in Azure Policy für Azure Monitor
 

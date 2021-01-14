@@ -1,14 +1,14 @@
 ---
 title: Blaupausenbeispiel „DoD-Auswirkungsstufe 5“
 description: Bereitstellungsschritte für das Blaupausenbeispiel „DoD-Auswirkungsstufe 5“, einschließlich Details zum Blaupausenartefaktparameter
-ms.date: 09/17/2020
+ms.date: 01/08/2021
 ms.topic: sample
-ms.openlocfilehash: deb6ffa0f886cc6a4a9bea10a38d7cd82e7df8f1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6136136eef5d405ae0849e5ce8c8faede138fb00
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90978225"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98034899"
 ---
 # <a name="deploy-the-dod-impact-level-5-blueprint-sample"></a>Bereitstellen des Blaupausenbeispiels „DoD-Auswirkungsstufe 5“
 

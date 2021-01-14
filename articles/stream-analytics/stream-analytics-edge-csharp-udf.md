@@ -1,19 +1,18 @@
 ---
 title: 'Tutorial: Schreiben benutzerdefinierter C#-Funktionen für Azure Stream Analytics-Aufträge in Visual Studio (Vorschauversion)'
 description: In diesem Tutorial wird beschrieben, wie Sie benutzerdefinierte C#-Funktionen für Stream Analytics-Aufträge in Visual Studio schreiben.
-author: mamccrea
-ms.author: mamccrea
-ms.reviewer: mamccrea
+author: sidramadoss
+ms.author: sidram
 ms.service: stream-analytics
 ms.topic: tutorial
 ms.date: 12/06/2018
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: d53f13cb740b3feb39dc64ce012ff320afbb1db5
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 851229e441aa2fbdf7b6eec05390c0ce2b149da2
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93130492"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98020467"
 ---
 # <a name="tutorial-write-a-c-user-defined-function-for-azure-stream-analytics-job-preview"></a>Tutorial: Schreiben einer benutzerdefinierten C#-Funktion für einen Azure Stream Analytics-Auftrag (Vorschauversion)
 
@@ -46,7 +45,7 @@ Der von Ihnen erstellte Container wird zum Speichern des kompilierten C#-Pakets 
 
 3. Wählen Sie in der Vorlagenliste links die Option **Stream Analytics** und dann **Azure Stream Analytics Edge Application** (Azure Stream Analytics-Edge-Anwendung) oder **Azure Stream Analytics Application** (Azure Stream Analytics-Anwendung) aus.
 
-4.  Geben Sie **Name** , **Speicherort** und **Projektmappenname** für Ihr Projekt ein, und klicken Sie auf **OK**.
+4.  Geben Sie **Name**, **Speicherort** und **Projektmappenname** für Ihr Projekt ein, und klicken Sie auf **OK**.
 
     ![Erstellen eines Azure Stream Analytics-Edge-Projekts in Visual Studio](./media/stream-analytics-edge-csharp-udf/stream-analytics-create-edge-app.png)
 
@@ -56,7 +55,7 @@ Der von Ihnen erstellte Container wird zum Speichern des kompilierten C#-Pakets 
 
 2. Doppelklicken Sie auf die Datei `EdgeJobConfig.json` für die Auftragskonfiguration.
 
-3. Erweitern Sie den Abschnitt mit der **benutzerdefinierten Codekonfiguration** , und geben Sie die folgenden vorgeschlagenen Werte für die Konfiguration an:
+3. Erweitern Sie den Abschnitt mit der **benutzerdefinierten Codekonfiguration**, und geben Sie die folgenden vorgeschlagenen Werte für die Konfiguration an:
 
    |**Einstellung**|**Empfohlener Wert**|
    |-------|---------------|
@@ -71,7 +70,7 @@ Der von Ihnen erstellte Container wird zum Speichern des kompilierten C#-Pakets 
 ## <a name="write-a-c-udf-with-codebehind"></a>Schreiben einer benutzerdefinierten C#-Datei mit CodeBehind
 Eine CodeBehind-Datei ist eine C#-Datei, die einem einzelnen ASA-Abfrageskript zugeordnet ist. Visual Studio-Tools führen für die CodeBehind-Datei automatisch das Zippen durch und laden sie nach der Übermittlung in Ihr Azure-Speicherkonto hoch. Alle Klassen müssen als *öffentlich* und alle Objekte als *statisch öffentlich* definiert werden.
 
-1. Erweitern Sie im **Projektmappen-Explorer** den Eintrag **Script.asql** , um auf die CodeBehind-Datei **Script.asaql.cs** zuzugreifen.
+1. Erweitern Sie im **Projektmappen-Explorer** den Eintrag **Script.asql**, um auf die CodeBehind-Datei **Script.asaql.cs** zuzugreifen.
 
 2. Ersetzen Sie den Code durch das folgende Beispiel:
 
@@ -111,7 +110,7 @@ Eine CodeBehind-Datei ist eine C#-Datei, die einem einzelnen ASA-Abfrageskript z
 
 1. Laden Sie die [Datei mit den Beispieldaten für den Temperatursimulator](https://raw.githubusercontent.com/Azure/azure-stream-analytics/master/Sample%20Data/TemperatureSampleData.json) herunter.
 
-2. Erweitern Sie im **Projektmappen-Explorer** den Eintrag **Eingaben** , klicken Sie mit der rechten Maustaste auf **Input.json** , und wählen Sie **Lokale Eingabe hinzufügen**.
+2. Erweitern Sie im **Projektmappen-Explorer** den Eintrag **Eingaben**, klicken Sie mit der rechten Maustaste auf **Input.json**, und wählen Sie **Lokale Eingabe hinzufügen**.
 
    ![Hinzufügen einer lokalen Eingabe zu einem Stream Analytics-Auftrag in Visual Studio](./media/stream-analytics-edge-csharp-udf/stream-analytics-add-local-input.png)
 
@@ -134,7 +133,7 @@ Sie können Ihre benutzerdefinierte C#-Funktion lokal genauso wie C#-Standardcod
 
     ![Hinzufügen von Breakpoints zu einer benutzerdefinierten Stream Analytics-Funktion in Visual Studio](./media/stream-analytics-edge-csharp-udf/stream-analytics-udf-breakpoints.png)
 
-2. Drücken Sie **F5** , um das Debuggen zu starten. Das Programm hält wie erwartet an den von Ihnen festgelegten Breakpoints an.
+2. Drücken Sie **F5**, um das Debuggen zu starten. Das Programm hält wie erwartet an den von Ihnen festgelegten Breakpoints an.
 
     ![Anzeigen der Ergebnisse des Debuggens einer benutzerdefinierten Stream Analytics-Funktion](./media/stream-analytics-edge-csharp-udf/stream-analytics-udf-debug.png)
 

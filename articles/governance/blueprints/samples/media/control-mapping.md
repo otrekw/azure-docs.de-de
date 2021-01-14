@@ -1,14 +1,14 @@
 ---
 title: Steuerungen des Medien-Blaupausenbeispiels
 description: Steuerungszuordnung der Medien-Blaupausenbeispiele Jede Steuerung wird mindestens einer Azure Policy-Definition zugeordnet, die Sie bei der Bewertung unterstützt.
-ms.date: 08/13/2020
+ms.date: 01/08/2021
 ms.topic: sample
-ms.openlocfilehash: ec4850b4e3061d267610bfd9c2c0e33c670472b4
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: e1356acfd7b6b9693322000077b221781b58681f
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91931868"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98035035"
 ---
 # <a name="control-mapping-of-the-media-blueprint-sample"></a>Steuerungszuordnung des Medien-Blaupausenbeispiels
 
