@@ -6,12 +6,12 @@ ms.date: 04/04/2020
 ms.topic: include
 ms.author: trbye
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: d1fab57adfb675e8cc4ea604980e6f04a3f4a89f
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 08679bac77121ee2d276f3d2854e0b119c769582
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94425460"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98109394"
 ---
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -76,6 +76,13 @@ Fügen Sie diesen Code unterhalb von `IntentRecognizer` ein. Stellen Sie sicher,
 
 In diesem Beispiel wird die Funktion `AddIntent()` verwendet, um Absichten individuell hinzuzufügen. Wenn Sie alle Absichten aus einem Modell hinzufügen möchten, verwenden Sie `AddAllIntents(model)`, und übergeben Sie das Modell.
 
+> [!NOTE]
+> Vom Speech SDK werden nur LUIS-v2.0-Endpunkte unterstützt.
+> Die v3.0-Endpunkt-URL im Beispielabfragefeld muss manuell geändert werden, um ein v2.0-URL-Muster zu verwenden.
+> Von LUIS-v2.0-Endpunkten wird immer eines der beiden folgenden Muster verwendet:
+> * `https://{AzureResourceName}.cognitiveservices.azure.com/luis/v2.0/apps/{app-id}?subscription-key={subkey}&verbose=true&q=`
+> * `https://{Region}.api.cognitive.microsoft.com/luis/v2.0/apps/{app-id}?subscription-key={subkey}&verbose=true&q=`
+
 ## <a name="recognize-an-intent"></a>Erkennen einer Absicht
 
 Rufen Sie die Methode `RecognizeOnceAsync()` über das Objekt `IntentRecognizer` auf. Diese Methode teilt dem Spracherkennungsdienst mit, dass Sie einen einzelnen Ausdruck zur Erkennung senden, und dass die Spracherkennung beendet werden soll, sobald der Ausdruck ermittelt wurde. Der Einfachheit halber warten wir auf die kommende Rückgabe, um fortzufahren.
@@ -105,9 +112,9 @@ Ihr Code sollte nun wie folgt aussehen:
 
 Sie können nun Ihre App erstellen und die Spracherkennung mit dem Speech-Dienst testen.
 
-1. **Kompilieren des Codes** : Wählen Sie auf der Menüleiste von Visual Studio **Build** > **Projektmappe erstellen** aus.
-2. **Starten der App** : Wählen Sie auf der Menüleiste **Debuggen** > **Debuggen starten** aus, oder drücken Sie <kbd>F5</kbd>.
-3. **Starten der Erkennung** : Sie werden aufgefordert, etwas auf Englisch zu sagen. Ihre Spracheingabe wird an den Speech-Dienst gesendet, in Text transkribiert und in der Konsole ausgegeben.
+1. **Kompilieren des Codes**: Wählen Sie auf der Menüleiste von Visual Studio **Build** > **Projektmappe erstellen** aus.
+2. **Starten der App**: Wählen Sie auf der Menüleiste **Debuggen** > **Debuggen starten** aus, oder drücken Sie <kbd>F5</kbd>.
+3. **Starten der Erkennung**: Sie werden aufgefordert, etwas auf Englisch zu sagen. Ihre Spracheingabe wird an den Speech-Dienst gesendet, in Text transkribiert und in der Konsole ausgegeben.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -10,12 +10,12 @@ ms.topic: include
 ms.date: 09/21/2020
 ms.custom: devx-track-java
 ms.author: pafarley
-ms.openlocfilehash: 6768f46f39920c975e7eccef72563fc0bb7e5180
-ms.sourcegitcommit: 02ed9acd4390b86c8432cad29075e2204f6b1bc3
+ms.openlocfilehash: 93552d203508fb893bd2e85d27a3a991fc539472
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97808588"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98132326"
 ---
 > [!IMPORTANT]
 > Im Code dieses Artikels werden der Einfachheit halber synchrone Methoden und ein ungeschützter Anmeldeinformationsspeicher verwendet.
@@ -156,8 +156,8 @@ Mit der Formularerkennung können Sie zwei verschiedene Clienttypen erstellen. D
 `FormRecognizerClient` stellt Vorgänge für Folgendes bereit:
 
 - Erkennen von Formularfeldern und -inhalten mithilfe von benutzerdefinierten Modellen, die zur Erkennung Ihrer benutzerdefinierten Formulare trainiert wurden.  Diese Werte werden in einer Sammlung von `RecognizedForm`-Objekten zurückgegeben. Sehen Sie sich das Beispiel zum [Analysieren benutzerdefinierter Formulare](#analyze-forms-with-a-custom-model) an.
-- Erkennen von Formularinhalten (einschließlich Tabellen, Zeilen und Wörtern), ohne dass ein Modell trainiert werden muss.  Der Formularinhalt wird in einer Sammlung von `FormPage`-Objekten zurückgegeben. Sehen Sie sich das Beispiel zum [Erkennen von Formularinhalten](#recognize-form-content) an.
-- Erkennen allgemeiner Felder in US-amerikanischen Belegen unter Verwendung eines vorab trainierten Belegmodells für den Formularerkennungsdienst.  Diese Felder und Metadaten werden in einer Sammlung von `RecognizedForm`-Objekten zurückgegeben. Sehen Sie sich das Beispiel zum [Erkennen von Belegen](#recognize-receipts) an.
+- Erkennen von Formularinhalten (einschließlich Tabellen, Zeilen und Wörtern), ohne dass ein Modell trainiert werden muss.  Der Formularinhalt wird in einer Sammlung von `FormPage`-Objekten zurückgegeben. Weitere Informationen finden Sie im Beispiel zum [Analysieren des Layouts](#analyze-layout).
+- Erkennen allgemeiner Felder in US-amerikanischen Belegen unter Verwendung eines vorab trainierten Belegmodells für den Formularerkennungsdienst.  Diese Felder und Metadaten werden in einer Sammlung von `RecognizedForm`-Objekten zurückgegeben. Weitere Informationen finden Sie im Beispiel zum [Analysieren von Belegen](#analyze-receipts).
 
 ### <a name="formtrainingclient"></a>FormTrainingClient
 
@@ -177,17 +177,17 @@ Diese Codeausschnitte veranschaulichen, wie die folgenden Aufgaben mit der Formu
 
 #### <a name="version-20"></a>[Version 2.0](#tab/ga)
 * [Authentifizieren des Clients](#authenticate-the-client)
-* [Erkennen von Formularinhalten](#recognize-form-content)
-* [Erkennen von Belegen](#recognize-receipts)
+* [Analysieren des Layouts](#analyze-layout)
+* [Analysieren von Belegen](#analyze-receipts)
 * [Trainieren eines benutzerdefinierten Modells](#train-a-custom-model)
 * [Analysieren von Formularen mit einem benutzerdefinierten Modell](#analyze-forms-with-a-custom-model)
 * [Verwalten von benutzerdefinierten Modellen](#manage-your-custom-models)
 #### <a name="version-21-preview"></a>[Version 2.1 (Vorschau)](#tab/preview)
 * [Authentifizieren des Clients](#authenticate-the-client)
-* [Erkennen von Formularinhalten](#recognize-form-content)
-* [Erkennen von Belegen](#recognize-receipts)
-* [Erkennen von Visitenkarten](#recognize-business-cards)
-* [Erkennen von Rechnungen](#recognize-invoices)
+* [Analysieren des Layouts](#analyze-layout)
+* [Analysieren von Belegen](#analyze-receipts)
+* [Analysieren von Visitenkarten](#analyze-business-cards)
+* [Analysieren von Rechnungen](#analyze-invoices)
 * [Trainieren eines benutzerdefinierten Modells](#train-a-custom-model)
 * [Analysieren von Formularen mit einem benutzerdefinierten Modell](#analyze-forms-with-a-custom-model)
 * [Verwalten von benutzerdefinierten Modellen](#manage-your-custom-models)
@@ -200,7 +200,7 @@ Fügen Sie oben in Ihrer **main**-Methode den folgenden Code hinzu. Hier authent
 
 [!code-java[](~/cognitive-services-quickstart-code/java/FormRecognizer/FormRecognizer.java?name=snippet_auth)]
 
-## <a name="recognize-form-content"></a>Erkennen von Formularinhalten
+## <a name="analyze-layout"></a>Analysieren des Layouts
 
 Mit der Formularerkennung können Sie Tabellen, Zeilen und Wörter in Dokumenten erkennen, ohne ein Modell trainieren zu müssen.
 
@@ -233,7 +233,7 @@ Cell has text $89,024.34.
 Cell has text ET.
 ```
 
-## <a name="recognize-receipts"></a>Erkennen von Belegen
+## <a name="analyze-receipts"></a>Analysieren von Belegen
 
 In diesem Abschnitt wird veranschaulicht, wie Sie mithilfe eines vorab trainierten Belegmodells gebräuchliche Felder in US-Belegen erkennen und extrahieren.
 
@@ -269,7 +269,7 @@ Quantity: null, confidence: 0.927s]
 Total Price: null, confidence: 0.93
 ```
 
-## <a name="recognize-business-cards"></a>Erkennen von Visitenkarten
+## <a name="analyze-business-cards"></a>Analysieren von Visitenkarten
 
 #### <a name="version-20"></a>[Version 2.0](#tab/ga)
 
@@ -293,7 +293,7 @@ Der zurückgegebene Wert ist eine Sammlung mit Objekten vom Typ **RecognizedForm
 
 ---
 
-## <a name="recognize-invoices"></a>Erkennen von Rechnungen
+## <a name="analyze-invoices"></a>Analysieren von Rechnungen
 
 #### <a name="version-20"></a>[Version 2.0](#tab/ga)
 

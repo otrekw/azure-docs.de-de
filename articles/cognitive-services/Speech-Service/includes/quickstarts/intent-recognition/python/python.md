@@ -6,12 +6,12 @@ ms.date: 04/04/2020
 ms.topic: include
 ms.author: trbye
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 44c4427540e1b94ebcaf00e6875723e0a654e9ef
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 0cb27a8dc5685ce295c2ce30820734c4301e9dc6
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94425419"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98109272"
 ---
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -70,6 +70,13 @@ Fügen Sie diesen Code unterhalb von `IntentRecognizer` ein. Stellen Sie sicher,
 [!code-python[](~/samples-cognitive-services-speech-sdk/quickstart/python/intent-recognition/quickstart.py?range=19-27)]
 
 In diesem Beispiel wird die Funktion `add_intents()` verwendet, um eine Liste explizit definierter Absichten hinzuzufügen. Wenn Sie alle Absichten aus einem Modell hinzufügen möchten, verwenden Sie `add_all_intents(model)`, und übergeben Sie das Modell.
+
+> [!NOTE]
+> Vom Speech SDK werden nur LUIS-v2.0-Endpunkte unterstützt.
+> Die v3.0-Endpunkt-URL im Beispielabfragefeld muss manuell geändert werden, um ein v2.0-URL-Muster zu verwenden.
+> Von LUIS-v2.0-Endpunkten wird immer eines der beiden folgenden Muster verwendet:
+> * `https://{AzureResourceName}.cognitiveservices.azure.com/luis/v2.0/apps/{app-id}?subscription-key={subkey}&verbose=true&q=`
+> * `https://{Region}.api.cognitive.microsoft.com/luis/v2.0/apps/{app-id}?subscription-key={subkey}&verbose=true&q=`
 
 ## <a name="recognize-an-intent"></a>Erkennen einer Absicht
 

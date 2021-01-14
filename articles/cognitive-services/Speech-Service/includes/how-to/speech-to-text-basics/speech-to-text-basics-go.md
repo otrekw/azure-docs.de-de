@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 09/15/2020
 ms.author: trbye
-ms.openlocfilehash: f87db54b43f0ece49b940521bea34737da676a31
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 7603a5aa138e719d7ffe3db7a4c4484466efc1e3
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96912325"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98147690"
 ---
 Die Funktion zum Erkennen und Transkribieren von menschlicher Sprache (Spracherkennung) ist eines der zentralen Features des Speech-Diensts. In diesem Schnellstart erfahren Sie, wie Sie das Speech SDK in Ihren Apps und Produkten verwenden, um hochwertige Spracherkennungen durchzuführen.
 
@@ -99,6 +99,20 @@ func main() {
 }
 ```
 
+Führen Sie die folgenden Befehle aus, um eine Datei namens „go.mod“ zu erstellen, die mit auf GitHub gehosteten Komponenten verknüpft ist.
+
+```cmd
+go mod init quickstart
+go get github.com/Microsoft/cognitive-services-speech-sdk-go
+```
+
+Erstellen Sie als Nächstes den Code, und führen Sie ihn aus.
+
+```cmd
+go build
+go run quickstart
+```
+
 Ausführliche Informationen zu den Klassen [`SpeechConfig`](https://pkg.go.dev/github.com/Microsoft/cognitive-services-speech-sdk-go@v1.14.0/speech#SpeechConfig) und [`SpeechRecognizer`](https://pkg.go.dev/github.com/Microsoft/cognitive-services-speech-sdk-go@v1.14.0/speech#SpeechRecognizer) finden Sie in der Referenzdokumentation.
 
 ## <a name="speech-to-text-from-audio-file"></a>Spracherkennung über eine Audiodatei
@@ -163,6 +177,20 @@ func main() {
     fmt.Println("Got a recognition!")
     fmt.Println(outcome.Result.Text)
 }
+```
+
+Führen Sie die folgenden Befehle aus, um eine Datei namens „go.mod“ zu erstellen, die mit auf GitHub gehosteten Komponenten verknüpft ist.
+
+```cmd
+go mod init quickstart
+go get github.com/Microsoft/cognitive-services-speech-sdk-go
+```
+
+Erstellen Sie als Nächstes den Code, und führen Sie ihn aus.
+
+```cmd
+go build
+go run quickstart
 ```
 
 Ausführliche Informationen zu den Klassen [`SpeechConfig`](https://pkg.go.dev/github.com/Microsoft/cognitive-services-speech-sdk-go@v1.14.0/speech#SpeechConfig) und [`SpeechRecognizer`](https://pkg.go.dev/github.com/Microsoft/cognitive-services-speech-sdk-go@v1.14.0/speech#SpeechRecognizer) finden Sie in der Referenzdokumentation.

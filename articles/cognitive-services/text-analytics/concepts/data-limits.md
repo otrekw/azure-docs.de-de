@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 11/19/2020
 ms.author: aahi
 ms.reviewer: chtufts
-ms.openlocfilehash: c60adb09da05ba945bcf6ccb55e71c395f064211
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 2adca03a820d02731bca252dee99c76debc85e2e
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94965101"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98028130"
 ---
 # <a name="data-and-rate-limits-for-the-text-analytics-api"></a>Datengrenzwerte und Ratenbegrenzungen für die Textanalyse-API
 <a name="data-limits"></a>
@@ -35,7 +35,15 @@ In diesem Artikel finden Sie die Grenzwerte für die Datengröße und -rate, die
 | Maximale Größe eines einzelnen Dokuments (Endpunkt: `/analyze`)  | 125.000 Zeichen (gemessen durch [StringInfo.LengthInTextElements](/dotnet/api/system.globalization.stringinfo.lengthintextelements)). Gilt nicht für die Textanalyse für Gesundheit. |
 | Maximale Größe der gesamte Anforderung | 1 MB. Gilt auch für die Textanalyse für Gesundheit. |
 
-Die maximale Anzahl von Dokumenten, die Sie in einer einzelnen Anforderung senden können, hängt von der API-Version und -Funktion ab, die Sie verwenden. Sollte ein Dokument die maximal zulässige Größe von 125.000 Zeichen überschreiten, wird die gesamte Anforderungen vom Endpunkt `/analyze` abgelehnt.
+
+Wenn bei einem Dokument das Zeichenlimit überschritten wird, verhält sich die API abhängig vom verwendeten Endpunkt unterschiedlich:
+
+* `/analyze`-Endpunkt:
+  * Die API lehnt die gesamte Anforderung ab und gibt einen Fehler vom Typ `400 bad request` zurück, wenn ein enthaltenes Dokument die maximal zulässige Größe überschreitet.
+* Alle anderen Endpunkte:  
+  * Dokumente, die die maximal zulässige Größe überschreiten, werden von der API nicht verarbeitet, und es wird jeweils ein Fehler mit einem Hinweis auf ein ungültiges Dokument zurückgegeben. Wenn eine API-Anforderung mehrere Dokumente umfasst, fährt die API mit deren Verarbeitung fort, sofern sie sich innerhalb des Zeichenlimits befinden.
+
+Die maximale Anzahl von Dokumenten, die Sie in einer einzelnen Anforderung senden können, hängt von der verwendeten API-Version und dem verwendeten Feature ab, wie in der folgenden Tabelle beschrieben:
 
 #### <a name="version-3"></a>[Version 3](#tab/version-3)
 

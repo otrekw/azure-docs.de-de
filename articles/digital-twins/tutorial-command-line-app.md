@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 5/8/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: a9d8c42432d619ab120afd0bd5734f6fa269b514
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: db85bf19c1b040fea1ed2f5d6dcf904288366c7f
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96458103"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98050237"
 ---
 # <a name="tutorial-explore-azure-digital-twins-with-a-sample-client-app"></a>Tutorial: Erkunden von Azure Digital Twins mit einer Beispielclient-App
 
@@ -51,27 +51,15 @@ Wählen Sie die Datei *Room.json* aus, um sie im Bearbeitungsfenster zu öffnen,
 1. **Bearbeiten Sie eine Eigenschaft.** Ändern Sie den Namen der `Humidity`-Eigenschaft in *HumidityLevel* (oder einen anderen Wert. Wenn Sie einen anderen Wert als *HumidityLevel* verwenden, merken Sie sich diesen, und nutzen Sie ihn anstelle von *HumidityLevel* in diesem Tutorial).
 1. **Fügen Sie eine Eigenschaft hinzu.** Fügen Sie unterhalb der Eigenschaft `HumidityLevel`, die in Zeile 15 endet, den folgenden Code ein, um dem Raum eine Eigenschaft vom Typ `RoomName` hinzuzufügen:
 
-    ```json
-    ,
-    {
-      "@type": "Property",
-      "name": "RoomName",
-      "schema": "string"
-    }
-    ```
+    :::code language="json" source="~/digital-twins-docs-samples/models/Room.json" range="16-20":::
+
 1. **Fügen Sie eine Beziehung hinzu.** Fügen Sie unterhalb der soeben hinzugefügten Eigenschaft `RoomName` den folgenden Code ein, um dieser Art von Zwilling die Möglichkeit zu geben, Beziehungen vom Typ *contains* mit anderen Zwillingen zu erstellen:
 
-    ```json
-    ,
-    {
-      "@type": "Relationship",
-      "name": "contains"
-    }
-    ```
+    :::code language="json" source="~/digital-twins-docs-samples/models/Room.json" range="21-24":::
 
 Wenn Sie fertig sind, sollte das aktualisierte Modell wie folgt aussehen:
 
-:::image type="content" source="media/tutorial-command-line-app/room-model.png" alt-text="Bearbeitete Datei „Room.json“ mit der aktualisierten Versionsnummer, den Eigenschaften „HumidityLevel“ und „RoomName“ und einer Beziehung vom Typ „contains“" border="false":::
+:::code language="json" source="~/digital-twins-docs-samples/models/Room.json":::
 
 Achten Sie darauf, die Datei vor dem Fortfahren zu speichern.
 

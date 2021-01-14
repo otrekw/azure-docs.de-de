@@ -11,12 +11,12 @@ ms.date: 11/23/2020
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: automatisierte Datenverarbeitung, Dokumentverarbeitung, automatisierte Dateneingabe, Formularverarbeitung
-ms.openlocfilehash: ed940622f72271ef3e606c5068babcb6366c31b6
-ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
+ms.openlocfilehash: e1e5a4abf8eab96af62b160e28f98d95cf527eaf
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/01/2021
-ms.locfileid: "97845529"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98044763"
 ---
 # <a name="what-is-form-recognizer"></a>Was ist die Formularerkennung?
 
@@ -42,11 +42,11 @@ Wenn Sie den Formularerkennungsdienst ausprobieren möchten, wechseln Sie zum Be
 
 # <a name="v20"></a>[v2.0](#tab/v2-0)
 > [!div class="nextstepaction"]
-> [Vordefinierte Modelle ausprobieren](https://fott.azurewebsites.net/)
+> [Formularerkennung ausprobieren](https://fott.azurewebsites.net/)
 
 # <a name="v21-preview"></a>[Vorschauversion v2.1](#tab/v2-1)
 > [!div class="nextstepaction"]
-> [Vordefinierte Modelle ausprobieren](https://fott-preview.azurewebsites.net/)
+> [Formularerkennung ausprobieren](https://fott-preview.azurewebsites.net/)
 
 ---
 
@@ -152,7 +152,18 @@ Sehen Sie sich die [Referenzdokumentation zur REST-API](https://westus2.dev.cogn
 
 ## <a name="deploy-on-premises-using-docker-containers"></a>Lokales Bereitstellen unter Verwendung von Docker-Containern
 
-[Verwenden Sie Container für die Formularerkennung (Vorschauversion)](form-recognizer-container-howto.md), um API-Features lokal bereitzustellen. Mithilfe dieses Docker-Containers können Sie den Dienst näher an Ihre Daten heranbringen, um Compliance- oder Sicherheitsanforderungen zu erfüllen oder anderen betrieblichen Anforderungen gerecht zu werden.
+[Verwenden Sie Container für die Formularerkennung (Vorschauversion)](form-recognizer-container-howto.md), um API-Features lokal bereitzustellen. Mithilfe dieses Docker-Containers können Sie den Dienst näher an Ihre Daten heranbringen, um Compliance- oder Sicherheitsanforderungen zu erfüllen oder anderen betrieblichen Anforderungen gerecht zu werden. 
+
+## <a name="service-availability-and-redundancy"></a>Dienstverfügbarkeit und Redundanz
+
+### <a name="is-form-recognizer-service-zone-resilient"></a>Ist der Formularerkennungsdienst zonenresilient?
+
+Ja. Der Formularerkennungsdienst ist standardmäßig zonenresilient.
+
+### <a name="how-do-i-configure-the-form-recognizer-service-to-be-zone-resilient"></a>Wie konfiguriere ich den Formularerkennungsdienst für Zonenresilienz?
+
+Es ist keine Kundenkonfiguration erforderlich, um Zonenresilienz zu ermöglichen. Zonenresilienz für Formularerkennungsressourcen ist standardmäßig verfügbar und wird vom Dienst selbst verwaltet.
+
 
 ## <a name="data-privacy-and-security"></a>Datenschutz und Sicherheit
 

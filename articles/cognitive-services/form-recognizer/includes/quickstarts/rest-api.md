@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 12/15/2020
 ms.author: pafarley
-ms.openlocfilehash: a677623c030ff26567f14a4526f6d07bc6631a37
-ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
+ms.openlocfilehash: 31e1a0d912c6623f57d4ea256968102604ce42ff
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/01/2021
-ms.locfileid: "97853723"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98132347"
 ---
 > [!NOTE]
 > In diesem Leitfaden wird cURL genutzt, um REST-API-Aufrufe auszuführen. Im [Beispielcode auf GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/python/FormRecognizer/rest) wird veranschaulicht, wie die REST-APIs mit Python aufgerufen werden.
@@ -32,7 +32,7 @@ ms.locfileid: "97853723"
 * Eine URL für ein Bild einer Rechnung. Für diese Schnellstartanleitung können Sie ein [Beispieldokument](https://raw.githubusercontent.com/Azure/azure-sdk-for-python/master/sdk/formrecognizer/azure-ai-formrecognizer/samples/sample_forms/forms/Invoice_1.pdf) verwenden.
 
 
-## <a name="recognize-form-content"></a>Erkennen von Formularinhalten
+## <a name="analyze-layout"></a>Analysieren des Layouts
 
 Mit der Formularerkennung können Sie Tabellen, Zeilen und Wörter in Dokumenten erkennen und extrahieren, ohne ein Modell trainieren zu müssen. Nehmen Sie die folgenden Änderungen vor, bevor Sie den Befehl ausführen:
 
@@ -319,7 +319,7 @@ Vergleichen Sie das folgende Bild einer Rechnung mit der entsprechenden JSON-Aus
 
 ---
 
-## <a name="recognize-receipts"></a>Erkennen von Belegen
+## <a name="analyze-receipts"></a>Analysieren von Belegen
 
 Rufen Sie die **[Analyze Receipt](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/AnalyzeReceiptAsync)** -API mit dem unten angegebenen cURL-Befehl auf, um mit der Analyse eines Verkaufsbelegs zu beginnen. Nehmen Sie die folgenden Änderungen vor, bevor Sie den Befehl ausführen:
 
@@ -699,7 +699,7 @@ Der Knoten `"readResults"` enthält den gesamten erkannten Text (wenn Sie den op
 }
 ```
 
-## <a name="recognize-business-cards"></a>Erkennen von Visitenkarten
+## <a name="analyze-business-cards"></a>Analysieren von Visitenkarten
 
 # <a name="v20"></a>[v2.0](#tab/v2-0)  
 
@@ -861,7 +861,7 @@ Das Skript gibt Antworten in der Konsole aus, bis der **Analyze Business Card**-
 
 ---
 
-## <a name="recognize-invoices"></a>Erkennen von Rechnungen
+## <a name="analyze-invoices"></a>Analysieren von Rechnungen
 
 # <a name="version-20"></a>[Version 2.0](#tab/v2-0)
 

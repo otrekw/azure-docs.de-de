@@ -7,16 +7,16 @@ ms.topic: overview
 ms.date: 08/27/2020
 ms.custom: cog-serv-seo-aug-2020
 keywords: Personalisierung, Azure Personalisierung, Machine Learning
-ms.openlocfilehash: 28aae130d062eaf57a66a9b90a6602c3874f1494
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 33c1770c5c8722a55d8f1df4aff9b1637d903977
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97094147"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98028776"
 ---
 # <a name="what-is-personalizer"></a>Was ist die Personalisierung?
 
-Die Azure-Personalisierung ist ein cloudbasierter Dienst, mit dessen Hilfe Ihre Anwendungen für Benutzer den am besten geeigneten Inhalt anzeigen kann. Mit dem Personalisierungsdienst können Sie festlegen, welches Produkt Kunden vorgeschlagen werden soll, oder die optimale Position für eine Anzeige ermitteln. Nachdem der Inhalt für den Benutzer angezeigt wurde, überwacht das System das Echtzeitbenutzerverhalten und meldet dem Personalisierungsdienst eine Relevanzbewertung. Dies trägt zur kontinuierlichen Verbesserung des ML-Modells bei und unterstützt die Personalisierung bei der Wahl des besten Inhaltselements auf der Grundlage der empfangenen Kontextinformationen.
+Die Azure-Personalisierung ist ein cloudbasierter Dienst, mit dessen Hilfe Ihre Anwendungen für Benutzer den am besten geeigneten Inhalt anzeigen kann. Mit dem Personalisierungsdienst können Sie festlegen, welches Produkt Kunden vorgeschlagen werden soll, oder die optimale Position für eine Anzeige ermitteln. Nachdem der Inhalt für den Benutzer angezeigt wurde, überwacht Ihre Anwendung die Reaktion des Benutzers und gibt eine Relevanzbewertung an den Personalisierungsdienst zurück. Dies trägt zur kontinuierlichen Verbesserung des ML-Modells bei und unterstützt die Personalisierung bei der Wahl des besten Inhaltselements auf der Grundlage der empfangenen Kontextinformationen.
 
 > [!TIP]
 > Der Inhalt ist eine beliebige Informationseinheit, z. B. Text, Bilder, URLs, E-Mails oder andere Elemente, die zum Treffen einer Auswahl zum Anzeigen für Ihre Benutzer genutzt werden soll.
@@ -65,7 +65,7 @@ Die **Relevanz**-[API](https://westus2.dev.cognitive.microsoft.com/docs/services
 
 Verwenden Sie die Personalisierung, wenn für Ihren Inhalt Folgendes gilt:
 
-* Verfügt über eine begrenzte Anzahl von Elementen (max. 50), die ausgewählt werden können. Bei einer längeren Liste sollten Sie eine [Empfehlungs-Engine verwenden](where-can-you-use-personalizer.md#how-to-use-personalizer-with-a-recommendation-solution), um die Liste auf 50 Elemente zu reduzieren.
+* Er verfügt über eine begrenzte Anzahl von Aktionen oder Elementen (maximal ~50), die in jedem Personalisierungsereignis zur Auswahl stehen. Bei einer längeren Liste sollten Sie eine [Empfehlungs-Engine verwenden](where-can-you-use-personalizer.md#how-to-use-personalizer-with-a-recommendation-solution), um die Liste auf 50 Elemente zu reduzieren, wenn Sie die Rangfolge-API für den Personalisierungsdienst aufrufen.
 * Enthält Informationen zur Beschreibung des Inhalts, für den die Rangfolge nach Relevanz erstellt werden soll: _Aktionen mit Features_ und _Kontextfeatures_.
 * Verfügt über mindestens 1.000 inhaltsbezogene Ereignisse pro Tag, damit die Personalisierung effektiv ist. Wenn die Personalisierung nicht den mindestens benötigten Datenverkehr erhält, dauert es länger, bis der Dienst das beste Inhaltselement ermittelt hat.
 

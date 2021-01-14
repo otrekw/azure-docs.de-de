@@ -63,19 +63,8 @@
         - name: "Verwenden von Azure Lab\_Services in Teams"
           items:
             - name: Übersicht
+              displayName: labs within Teams
               href: lab-services-within-teams-overview.md
-            - name: Erstellen eines Labs über Teams
-              href: how-to-get-started-create-lab-within-teams.md
-            - name: Verwalten von Benutzerlisten
-              href: how-to-manage-user-lists-within-teams.md
-            - name: Verwalten eines VM-Pools
-              href: how-to-manage-vm-pool-within-teams.md
-            - name: Löschen von Labs
-              href: how-to-delete-lab-within-teams.md
-            - name: Zeitpläne und Einstellungen
-              href: how-to-create-schedules-within-teams.md
-            - name: Zugreifen auf einen virtuellen Computer (Ansicht des Kursteilnehmers)
-              href: how-to-access-vm-for-students-within-teams.md
 - name: Anleitungen
   items:
     - name: Administratorhandbuch
@@ -164,6 +153,20 @@
           href: how-to-set-virtual-machine-passwords-student.md
         - name: Anzeigen von Supportinformationen (Kursteilnehmer)
           href: lab-user-support-information.md
+    - name: Verwenden von Labs in Teams
+      items:
+        - name: Erstellen eines Labs über Teams
+          href: how-to-get-started-create-lab-within-teams.md
+        - name: Verwalten von Benutzerlisten
+          href: how-to-manage-user-lists-within-teams.md
+        - name: Verwalten eines VM-Pools
+          href: how-to-manage-vm-pool-within-teams.md
+        - name: Löschen von Labs
+          href: how-to-delete-lab-within-teams.md
+        - name: Zeitpläne und Einstellungen
+          href: how-to-create-schedules-within-teams.md
+        - name: Zugreifen auf einen virtuellen Computer (Ansicht des Kursteilnehmers)
+          href: how-to-access-vm-for-students-within-teams.md
 - name: Verweis
   items:
     - name: REST-API

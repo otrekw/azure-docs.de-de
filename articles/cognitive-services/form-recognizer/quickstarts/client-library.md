@@ -1,7 +1,7 @@
 ---
-title: 'Schnellstart: Clientbibliothek der Formularerkennung'
+title: 'Schnellstart: Clientbibliothek oder REST-API für die Formularerkennung'
 titleSuffix: Azure Cognitive Services
-description: Verwenden Sie die Clientbibliothek der Formularerkennung, um eine Formularverarbeitungs-App zu erstellen, die Schlüssel-Wert-Paare und Tabellendaten aus Ihren benutzerdefinierten Dokumenten extrahiert.
+description: Verwenden Sie die Clientbibliothek oder die REST-API für die Formularerkennung, um eine Formularverarbeitungs-App zu erstellen, die Schlüssel-Wert-Paare und Tabellendaten aus Ihren benutzerdefinierten Dokumenten extrahiert.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -13,23 +13,23 @@ ms.author: pafarley
 zone_pivot_groups: programming-languages-set-formre
 ms.custom: devx-track-js, devx-track-csharp, cog-serv-seo-aug-2020
 keywords: Formularverarbeitung, automatisierte Datenverarbeitung
-ms.openlocfilehash: f01adc472f94d679366af50c136ddc020b79b811
-ms.sourcegitcommit: 02ed9acd4390b86c8432cad29075e2204f6b1bc3
+ms.openlocfilehash: c915e7753487eba284d89dbb480f9848e90c1ef1
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97808571"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98132282"
 ---
-# <a name="quickstart-use-the-form-recognizer-client-library"></a>Schnellstart: Verwenden der Clientbibliothek für die Formularerkennung
+# <a name="quickstart-use-the-form-recognizer-client-library-or-rest-api"></a>Schnellstart: Verwenden der Clientbibliothek oder REST-API für die Formularerkennung
 
-Enthält Informationen zu den ersten Schritten mit der Formularerkennung in der Sprache Ihrer Wahl. Die Azure-Formularerkennung ist ein kognitiver Dienst, mit dem Sie unter Verwendung von Technologie für maschinelles Lernen Software für die automatisierte Datenverarbeitung entwickeln können. Identifizieren und extrahieren Sie Schlüssel-Wert-Paare und Tabellendaten aus Formulardokumenten: Der Dienst gibt strukturierte Daten aus, die auch die Beziehungen in der ursprünglichen Datei umfassen. Führen Sie die nachfolgenden Schritte zum Installieren des SDK-Pakets aus, und testen Sie den Beispielcode für grundlegende Aufgaben. Die Clientbibliothek für die Formularerkennung ist derzeit auf v2.0 des Formularerkennungsdiensts ausgerichtet.
+Enthält Informationen zu den ersten Schritten mit der Formularerkennung in der Sprache Ihrer Wahl. Die Azure-Formularerkennung ist ein kognitiver Dienst, mit dem Sie unter Verwendung von Technologie für maschinelles Lernen Software für die automatisierte Datenverarbeitung entwickeln können. Identifizieren und extrahieren Sie Schlüssel-Wert-Paare, Auswahlmarkierungen, Tabellendaten und Ähnliches aus Formulardokumenten. Der Dienst gibt strukturierte Daten aus, die auch die Beziehungen in der ursprünglichen Datei umfassen. Die Formularerkennung kann per REST-API oder per SDK verwendet werden. Führen Sie die nachfolgenden Schritte zum Installieren des SDK-Pakets aus, und testen Sie den Beispielcode für grundlegende Aufgaben. 
 
-Verwenden Sie die Clientbibliothek für die Formularerkennung für Folgendes:
+Verwenden Sie die Formularerkennung für Folgendes:
 
-* [Erkennen von Formularinhalten](#recognize-form-content)
-* [Erkennen von Belegen](#recognize-receipts)
-* [Erkennen von Visitenkarten](#recognize-business-cards)
-* [Erkennen von Rechnungen](#recognize-invoices)
+* [Analysieren des Layouts](#analyze-layout)
+* [Analysieren von Belegen](#analyze-receipts)
+* [Analysieren von Visitenkarten](#analyze-business-cards)
+* [Analysieren von Rechnungen](#analyze-invoices)
 * [Trainieren eines benutzerdefinierten Modells](#train-a-custom-model)
 * [Analysieren von Formularen mit einem benutzerdefinierten Modell](#analyze-forms-with-a-custom-model)
 * [Verwalten von benutzerdefinierten Modellen](#manage-your-custom-models)

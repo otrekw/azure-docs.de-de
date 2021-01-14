@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 10/26/2020
 ms.author: pafarley
-ms.openlocfilehash: 9762ca79f73b3333045d1c11376ab315aac2d55e
-ms.sourcegitcommit: 02ed9acd4390b86c8432cad29075e2204f6b1bc3
+ms.openlocfilehash: fb9d74da6030c430cce4a2a3c4c5e4299183ca15
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97808656"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98132304"
 ---
 > [!IMPORTANT]
 > * Im Code dieses Artikels werden der Einfachheit halber synchrone Methoden und ein ungeschützter Anmeldeinformationsspeicher verwendet. Informationen finden Sie in der Referenzdokumentation weiter unten. 
@@ -100,8 +100,8 @@ Diese Codeausschnitte veranschaulichen, wie die folgenden Aufgaben mit der Formu
 #### <a name="version-20"></a>[Version 2.0](#tab/ga)
 
 * [Authentifizieren des Clients](#authenticate-the-client)
-* [Erkennen von Formularinhalten](#recognize-form-content)
-* [Erkennen von Belegen](#recognize-receipts)
+* [Analysieren des Layouts](#analyze-layout)
+* [Analysieren von Belegen](#analyze-receipts)
 * [Trainieren eines benutzerdefinierten Modells](#train-a-custom-model)
 * [Analysieren von Formularen mit einem benutzerdefinierten Modell](#analyze-forms-with-a-custom-model)
 * [Verwalten von benutzerdefinierten Modellen](#manage-your-custom-models)
@@ -109,10 +109,10 @@ Diese Codeausschnitte veranschaulichen, wie die folgenden Aufgaben mit der Formu
 #### <a name="version-21-preview"></a>[Version 2.1 (Vorschau)](#tab/preview)
 
 * [Authentifizieren des Clients](#authenticate-the-client)
-* [Erkennen von Formularinhalten](#recognize-form-content)
-* [Erkennen von Belegen](#recognize-receipts)
-* [Erkennen von Visitenkarten](#recognize-business-cards)
-* [Erkennen von Rechnungen](#recognize-invoices)
+* [Analysieren des Layouts](#analyze-layout)
+* [Analysieren von Belegen](#analyze-receipts)
+* [Analysieren von Visitenkarten](#analyze-business-cards)
+* [Analysieren von Rechnungen](#analyze-invoices)
 * [Trainieren eines benutzerdefinierten Modells](#train-a-custom-model)
 * [Analysieren von Formularen mit einem benutzerdefinierten Modell](#analyze-forms-with-a-custom-model)
 * [Verwalten von benutzerdefinierten Modellen](#manage-your-custom-models)
@@ -137,7 +137,7 @@ Sie müssen Verweise auf die URLs für Ihre Trainings- und Testdaten hinzufügen
 > [!NOTE]
 > Die Codeausschnitte in dieser Anleitung verwenden Remoteformulare, auf die über URLs zugegriffen wird. Wenn Sie stattdessen lokale Formulardokumente verarbeiten möchten, finden Sie weitere Informationen unter den entsprechenden Methoden in der [Referenzdokumentation](/python/api/azure-ai-formrecognizer) und den [Beispielen](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/samples).
 
-## <a name="recognize-form-content"></a>Erkennen von Formularinhalten
+## <a name="analyze-layout"></a>Analysieren des Layouts
 
 Mit der Formularerkennung können Sie Tabellen, Zeilen und Wörter in Dokumenten erkennen, ohne ein Modell trainieren zu müssen.
 
@@ -171,7 +171,7 @@ Confidence score: 1.0
 
 ```
 
-## <a name="recognize-receipts"></a>Erkennen von Belegen
+## <a name="analyze-receipts"></a>Analysieren von Belegen
 
 In diesem Abschnitt wird veranschaulicht, wie Sie mithilfe eines vorab trainierten Belegmodells gebräuchliche Felder in US-Belegen erkennen und extrahieren. Um Belege von einer URL zu erkennen, verwenden Sie die `begin_recognize_receipts_from_url`-Methode. 
 
@@ -203,7 +203,7 @@ Total: 1203.39 has confidence 0.774
 ```
 
 
-## <a name="recognize-business-cards"></a>Erkennen von Visitenkarten
+## <a name="analyze-business-cards"></a>Analysieren von Visitenkarten
 
 #### <a name="version-20"></a>[Version 2.0](#tab/ga)
 
@@ -221,7 +221,7 @@ In diesem Abschnitt wird veranschaulicht, wie Sie mithilfe eines vorab trainiert
 
 ---
 
-## <a name="recognize-invoices"></a>Erkennen von Rechnungen
+## <a name="analyze-invoices"></a>Analysieren von Rechnungen
 
 #### <a name="version-20"></a>[Version 2.0](#tab/ga)
 

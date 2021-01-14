@@ -4,15 +4,15 @@ description: Erfahren Sie mehr über Lösungsarchitektur, Netzwerkvorbereitung, 
 author: shhazam-ms
 manager: rkarlin
 ms.author: shhazam
-ms.date: 12/06/2020
+ms.date: 01/03/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 3e9380f067b091c4473b8c29bda3d31bb93cbc6d
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: b5cb7d0e421657b84c365d8dca536191cafd4e72
+ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97836315"
+ms.lasthandoff: 01/04/2021
+ms.locfileid: "97861960"
 ---
 # <a name="about-azure-defender-for-iot-network-setup"></a>Azure Defender für IoT: Netzwerkeinrichtung
 
@@ -54,7 +54,7 @@ Erfassen Sie Standortinformationen wie:
 
 - Konfigurations-Arbeitsstation.
 
-- SSL-Zertifikate (optional).
+- SSL-Zertifikate (optional, aber empfohlen).
 
 - SMTP-Authentifizierung (optional). Zum Verwenden des SMTP-Servers mit Authentifizierung bereiten Sie die für Ihren Server erforderlichen Anmeldeinformationen vor.
 
@@ -494,9 +494,9 @@ Verwenden Sie diese Abschnitte zum Beheben von Problemen:
 
     1. Zum Ändern der IP-Adresse des Verwaltungsnetzwerks wählen Sie **Y** aus.
 
-    1. Zum Ändern der Subnetzmaske wählen Sie **Y** aus.
+    1. Wählen Sie zum Ändern der Subnetzmaske **Y** aus.
 
-    1. Zum Ändern der DNS wählen Sie **Y** aus.
+    1. Wählen Sie zum Ändern des DNS **Y** aus.
 
     1. Zum Ändern der IP-Adresse des Standardgateways wählen Sie **Y** aus.
 
@@ -562,14 +562,14 @@ Gehen Sie diese Liste vor der Bereitstellung durch:
 
 Mithilfe einer Übersicht des Industrienetzwerkdiagramms können Sie den richtigen Standort für die Defender für IoT-Ausrüstung bestimmen.
 
-1.  Sehen Sie sich ein globales Netzwerkdiagramm der industriellen OT-Umgebung an. Beispiel:
+1.  Sehen Sie sich ein globales Netzwerkdiagramm der industriellen OT-Umgebung an. Zum Beispiel:
 
     :::image type="content" source="media/how-to-set-up-your-network/ot-global-network-diagram.png" alt-text="Diagramm der industriellen OT-Umgebung für das globale Netzwerk.":::
 
     > [!NOTE]
     > Die Defender für IoT-Appliance sollte mit einem Switch auf niedrigerer Ebene verbunden sein, der den Datenverkehr zwischen den Ports auf dem Switch sehen kann.  
 
-2. Geben Sie die ungefähre Anzahl der Geräte im Netzwerk an (optional).
+2. Geben Sie die ungefähre Anzahl von Netzwerkgeräten an, die überwacht werden. Sie benötigen diese Information, wenn Sie für Ihr Abonnement das Onboarding im Portal für Azure Defender für IoT durchführen. Während des Onboardingprozesses werden Sie aufgefordert, die Geräteanzahl in Inkrementen von 1.000 einzugeben.
 
 3. Geben Sie eine Subnetzliste für die Produktionsnetzwerke und eine Beschreibung an (optional). 
 
@@ -604,7 +604,7 @@ Mithilfe einer Übersicht des Industrienetzwerkdiagramms können Sie den richtig
 
     Wie lautet die Richtlinie des Anbieters? __________________________________ 
 
-    Beispiel:
+    Zum Beispiel:
 
     - Siemens
 
@@ -694,6 +694,6 @@ Wenden Sie sich an einen Active Directory-Administrator, um eine Active Director
 | Kamera | |
 | Röntgengerät | |
 
-## <a name="see-also"></a>Weitere Informationen
+## <a name="see-also"></a>Siehe auch
 
 [Informationen zur Installation von Defender für IoT](how-to-install-software.md)
