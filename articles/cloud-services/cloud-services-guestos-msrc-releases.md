@@ -366,8 +366,8 @@ Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MS
 |  Rel 20-06  |  [4561608]  |  Letztes kumulatives Update  |  [6.20]  |  9\. Juni 2020  |
 |  Rel 20-06  |  [4562030]  |  Wartungsstapelaktualisierung  |  [2,99]  |  9\. Juni 2020  |
 |  Rel 20-06  |  [4561643]  |  Monatlicher Rollup  |  [2,99]  |  9\. Juni 2020  |
-|  Rel 20-06  |  [4562252]  |  Wartungsstapelaktualisierung  |  [3,86]  |  9\. Juni 2020  |
-|  Rel 20-06  |  [4561612]  |  Monatlicher Rollup  |  [3,86]  |  9\. Juni 2020  |
+|  Rel 20-06  |  [4562252]  |  Wartungsstapelaktualisierung  |  [3.86]  |  9\. Juni 2020  |
+|  Rel 20-06  |  [4561612]  |  Monatlicher Rollup  |  [3.86]  |  9\. Juni 2020  |
 |  Rel 20-06  |  [4561600]  |  Blinken  |  [3.86], [4.79], [5.44], [6.20]  |  9\. Juni 2020  |
 |  Rel 20-06  |  [4562253]  |  Wartungsstapelaktualisierung  |  [4,79]  |  9\. Juni 2020  |
 |  Rel 20-06  |  [4561666]  |  Monatlicher Rollup  |  [4,79]  |  9\. Juni 2020  |
