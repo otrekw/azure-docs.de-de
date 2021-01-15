@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 09/24/2020
 ms.author: justinha
-ms.openlocfilehash: 1fcd46870a4f85d1b88d22d77de5c201404c3a09
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 694ed5304e838057141b7df043565d58188fc870
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96619367"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98013038"
 ---
 # <a name="migrate-azure-active-directory-domain-services-from-the-classic-virtual-network-model-to-resource-manager"></a>Migrieren von Azure Active Directory Domain Services vom klassischen virtuellen Netzwerkmodell zu Resource Manager
 
@@ -155,8 +155,8 @@ Die Migration zum Resource Manager-Bereitstellungsmodell und virtuellen Netzwerk
 |---------|--------------------|-----------------|-----------|-------------------|
 | [Schritt 1: Aktualisieren und Ermitteln des neuen virtuellen Netzwerks](#update-and-verify-virtual-network-settings) | Azure-Portal | 15 Minuten | Keine Ausfallzeit erforderlich | – |
 | [Schritt 2: Vorbereiten der verwalteten Domäne für die Migration](#prepare-the-managed-domain-for-migration) | PowerShell | 15 bis 30 Minuten (Durchschnittswert) | Die Ausfallzeit von Azure AD DS beginnt, nachdem dieser Befehl abgeschlossen wurde. | Rollback und Wiederherstellung sind verfügbar. |
-| [Schritt 3: Verschieben der verwalteten Domäne in ein vorhandenes virtuelles Netzwerk](#migrate-the-managed-domain) | PowerShell | 1 bis 3 Stunden (Durchschnittswert) | Ein Domänencontroller ist verfügbar, sobald dieser Befehl abgeschlossen ist. Damit endet die Ausfallzeit. | Bei einem Ausfall stehen sowohl der Rollback (Self Service) als auch die Wiederherstellung zur Verfügung. |
-| [Schritt 4: Durchführen eines Tests und Warten auf den Replikatdomänencontroller](#test-and-verify-connectivity-after-the-migration)| PowerShell und Azure-Portal | 1 Stunde oder mehr, je nach Testanzahl | Beide Domänencontroller sind verfügbar und sollten normal funktionieren. | N/V. Nachdem die Migration des ersten virtuellen Computers erfolgreich abgeschlossen wurde, ist keine Option für ein Rollback oder eine Wiederherstellung mehr verfügbar. |
+| [Schritt 3: Verschieben der verwalteten Domäne in ein vorhandenes virtuelles Netzwerk](#migrate-the-managed-domain) | PowerShell | 1 bis 3 Stunden (Durchschnittswert) | Ein Domänencontroller ist verfügbar, sobald dieser Befehl abgeschlossen wurde. | Bei einem Ausfall stehen sowohl der Rollback (Self Service) als auch die Wiederherstellung zur Verfügung. |
+| [Schritt 4: Durchführen eines Tests und Warten auf den Replikatdomänencontroller](#test-and-verify-connectivity-after-the-migration)| PowerShell und Azure-Portal | 1 Stunde oder mehr, je nach Testanzahl | Beide Domänencontroller sind verfügbar und sollten normal funktionieren. Damit endet die Downtime. | N/V. Nachdem die Migration des ersten virtuellen Computers erfolgreich abgeschlossen wurde, ist keine Option für ein Rollback oder eine Wiederherstellung mehr verfügbar. |
 | [Schritt 5: Optionale Konfigurationsschritte](#optional-post-migration-configuration-steps) | Azure-Portal und VMs | – | Keine Ausfallzeit erforderlich | – |
 
 > [!IMPORTANT]
@@ -262,16 +262,14 @@ In dieser Phase können Sie optional andere vorhandene Ressourcen aus dem klassi
 
 ## <a name="test-and-verify-connectivity-after-the-migration"></a>Testen und Überprüfen der Konnektivität nach der Migration
 
-Es kann einige Zeit dauern, bis der zweite Domänencontroller erfolgreich bereitgestellt wurde und zur Verwendung in der verwalteten Domäne verfügbar ist.
+Es kann einige Zeit dauern, bis der zweite Domänencontroller erfolgreich bereitgestellt wurde und zur Verwendung in der verwalteten Domäne verfügbar ist. Der zweite Domänencontroller sollte ein bis zwei Stunden nach Abschluss des Cmdlets für die Migration verfügbar sein. Beim Resource Manager-Bereitstellungsmodell werden die Netzwerkressourcen für die verwaltete Domäne im Azure-Portal oder in Azure PowerShell angezeigt. Sehen Sie sich im Azure-Portal auf der Seite **Eigenschaften** für die verwaltete Domäne die entsprechenden Angaben an, um zu überprüfen, ob der zweite Domänencontroller verfügbar ist. Wenn zwei IP-Adressen angezeigt werden, ist der zweite Domänencontroller bereit.
 
-Beim Resource Manager-Bereitstellungsmodell werden die Netzwerkressourcen für die verwaltete Domäne im Azure-Portal oder in Azure PowerShell angezeigt. Weitere Informationen zur Beschaffenheit und zum Zweck dieser Netzwerkressourcen finden Sie unter [Von Azure AD DS verwendete Netzwerkressourcen][network-resources].
-
-Führen Sie die folgenden Konfigurationsschritte aus, um die Netzwerkkonnektivität mit VMs herzustellen, wenn mindestens ein Domänencontroller verfügbar ist.
+Wenn der zweite Domänencontroller verfügbar ist, führen Sie die folgenden Konfigurationsschritte aus, um die Netzwerkkonnektivität mit VMs herzustellen:
 
 * **Aktualisieren von DNS-Servereinstellungen**: Aktualisieren Sie die DNS-Einstellungen mit den IP-Adressen der neuen Domänencontroller, damit andere Ressourcen im virtuellen Resource Manager-Netzwerk die verwaltete Domäne auflösen und verwenden können. Diese Einstellungen können im Azure-Portal automatisch für Sie konfiguriert werden.
 
     Weitere Informationen zum Konfigurieren des virtuellen Resource Manager-Netzwerks finden Sie unter [Aktualisieren der DNS-Einstellungen für das virtuelle Azure-Netzwerk][update-dns].
-* **Neustarten von in die Domäne eingebundenen VMs**: Wenn sich die IP-Adressen des DNS-Servers für die Azure AD DS-Domänencontroller ändern, sollten Sie alle in die Domäne eingebundenen VMs neu starten, damit diese dann die neuen DNS-Servereinstellungen verwenden. Falls Anwendungen oder VMs über manuell konfigurierte DNS-Einstellungen verfügen, müssen Sie diese manuell mit den neuen DNS-Server-IP-Adressen der Domänencontroller aktualisieren, die im Azure-Portal angezeigt werden.
+* **Neustarten von in die Domäne eingebundenen VMs (optional)** : Wenn sich die IP-Adressen des DNS-Servers für die Azure AD DS-Domänencontroller ändern, können Sie alle in die Domäne eingebundenen VMs neu starten, damit diese dann die neuen DNS-Servereinstellungen verwenden. Falls Anwendungen oder VMs über manuell konfigurierte DNS-Einstellungen verfügen, müssen Sie diese manuell mit den neuen DNS-Server-IP-Adressen der Domänencontroller aktualisieren, die im Azure-Portal angezeigt werden. Durch den Neustart von in die Domäne eingebundenen VMs werden Verbindungsprobleme verhindert, die durch nicht aktualisierte IP-Adressen entstehen.
 
 Testen Sie jetzt die Verbindung und Namensauflösung für das virtuelle Netzwerk. Führen Sie auf einer VM, die mit dem virtuellen Resource Manager-Netzwerk verbunden oder per Peering damit verknüpft ist, die folgenden Tests zur Netzwerkkommunikation durch:
 
@@ -280,7 +278,7 @@ Testen Sie jetzt die Verbindung und Namensauflösung für das virtuelle Netzwerk
 1. Überprüfen Sie die Namensauflösung der verwalteten Domäne, z. B. `nslookup aaddscontoso.com`.
     * Geben Sie den DNS-Namen für Ihre eigene verwaltete Domäne an, um sicherzustellen, dass die DNS-Einstellungen korrekt sind und die Auflösung richtig erfolgt.
 
-Der zweite Domänencontroller sollte ein bis zwei Stunden nach Abschluss des Cmdlets für die Migration verfügbar sein. Sehen Sie sich im Azure-Portal auf der Seite **Eigenschaften** für die verwaltete Domäne die entsprechenden Angaben an, um zu überprüfen, ob der zweite Domänencontroller verfügbar ist. Wenn zwei IP-Adressen angezeigt werden, ist der zweite Domänencontroller bereit.
+Weitere Informationen zu anderen Netzwerkressourcen finden Sie unter [Von Azure AD DS verwendete Netzwerkressourcen][network-resources].
 
 ## <a name="optional-post-migration-configuration-steps"></a>Optionale Konfigurationsschritte nach der Migration
 

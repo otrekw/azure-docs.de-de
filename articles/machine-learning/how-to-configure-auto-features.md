@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to,automl,contperf-fy21q2
 ms.date: 12/18/2020
-ms.openlocfilehash: b26b0d9086f464556cbca2c70773374c3cccbd52
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 5fcb57d1ef909d7c15e21b34c3f584c6615a6a44
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97915860"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98134414"
 ---
 # <a name="data-featurization-in-automated-machine-learning"></a>Datenfeaturisierung mit automatisiertem maschinellem Lernen
 
@@ -122,6 +122,9 @@ Unterstützte Anpassungen umfassen:
 |**Aktualisierung von Transformationsparametern** |Aktualisieren der Parameter für den angegebenen Transformator. Unterstützt derzeit *Imputer* (Mittelwert, häufigster Wert und medianer Wert) und *HashOneHotEncoder*.|
 |**Löschen von Spalten** |Gibt Spalten an, die aus der Featureverwendung gelöscht werden sollen.|
 |**Blockieren von Transformatoren**| Gibt Blockiertransformatoren an, die für die Featurebereitstellung verwendet werden.|
+
+>[!NOTE]
+> Die Funktion **drop columns** wird ab Version 1.19 des SDK eingestellt. Löschen Sie Spalten im Rahmen der Datenbereinigung aus Ihrem Dataset, bevor Sie es in Ihrem automatisierten ML-Experiment nutzen. 
 
 Erstellen Sie das `FeaturizationConfig`-Objekt mithilfe von API-Aufrufen:
 

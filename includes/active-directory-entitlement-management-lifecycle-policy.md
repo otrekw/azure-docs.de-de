@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/15/2019
 ms.author: ajburnle
 ms.custom: include file
-ms.openlocfilehash: e971af5d415ea788f97ab11b58541e629c7eb0ed
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: db13884e3deed8e990d21d82e215a1e837371275
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "76694297"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98052999"
 ---
 ## <a name="lifecycle"></a>Lebenszyklus
 
@@ -33,7 +33,7 @@ Auf der Registerkarte **Lebenszyklus** geben Sie an, wann die Zuweisung eines Be
 
 1. Um Benutzern zu erlauben, ihre Zuweisungen zu erweitern, setzen Sie **Benutzern die Verlängerung des Zugriffs erlauben** auf **Ja**.
 
-    Wenn Verlängerungen in der Richtlinie zulässig sind, erhält der Benutzer 14 Tage und auch 1 Tag vor Ablauf seiner Zugriffspaketzuweisung eine E-Mail, die ihn auffordert, die Zuweisung verlängern zu lassen. Wenn der Benutzer eine Anforderung zum Erweitern des Zugriffs sendet, muss das Verlängerungsdatum vor oder nach dem Ablauf der Zuweisungen liegen, wie in der Richtlinie definiert wurde, mit der dem Benutzer Zugriff auf das Zugriffspaket gewährt wurde. Wenn die Richtlinie beispielsweise angibt, dass Zuweisungen am 30. Juni ablaufen sollen, ist die maximale Verlängerung, die ein Benutzer anfordern kann, der 30. Juni.
+    Wenn Verlängerungen in der Richtlinie zulässig sind, erhält der Benutzer 14 Tage und auch einen Tag vor Ablauf seiner Zugriffspaketzuweisung eine E-Mail, die ihn auffordert, die Zuweisung verlängern zu lassen. Der Benutzer muss sich noch immer im Gültigkeitsbereich der Richtlinie befinden, wenn er eine Verlängerung anfordert. Wenn die Richtlinie ein explizites Enddatum für Zuweisungen umfasst und der Benutzer eine Anforderung zum Verlängern des Zugriffs sendet, muss das Verlängerungsdatum in der Anforderung vor dem Ablauf der Zuweisungen liegen, der in der Richtlinie definiert ist, durch die dem Benutzer Zugriff auf das Zugriffspaket gewährt wurde. Wenn die Richtlinie beispielsweise angibt, dass Zuweisungen am 30. Juni ablaufen sollen, ist die maximale Verlängerung, die ein Benutzer anfordern kann, der 30. Juni.
 
     Wenn der Zugriff eines Benutzers verlängert wird, kann er das Zugriffspaket nach dem angegebenen Verlängerungsdatum (Datum, das in der Zeitzone des Benutzers festgelegt ist, der die Richtlinie erstellt hat) nicht mehr anfordern.
 

@@ -10,12 +10,12 @@ ms.author: justinha
 author: justinha
 manager: daveba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c9d3a00491bc0628244a5a7907f0dee03a5f8d3c
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: fdff7e62753e75a14d6711b77dd451603353dae5
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96744192"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98012834"
 ---
 # <a name="authentication-methods-in-azure-active-directory---phone-options"></a>Authentifizierungsmethoden in Azure Active Directory – Telefonoptionen
 
@@ -58,6 +58,8 @@ Wenn bei der telefonischen Authentifizierung für Azure AD Probleme auftreten, �
 
 * Fehlermeldungen „Sie haben das Limit für Verifizierungsanrufe erreicht“ oder „Sie haben das Limit für Textprüfcodes erreicht“ während Anmeldungen
    * Microsoft begrenzt möglicherweise wiederholte Authentifizierungsversuche vom selben Benutzer innerhalb eines kurzen Zeitraums. Diese Einschränkung gilt nicht für die Verifizierung per Microsoft Authenticator oder Prüfcode. Wenn diese Grenzwerte erreicht sind, können Sie die Authenticator-App oder einen Prüfcode verwenden oder nach einigen Minuten erneut versuchen sich anzumelden.
+* Fehlermeldung „Die Überprüfung Ihres Kontos konnte nicht vorgenommen werden“ bei der Anmeldung
+   * Microsoft kann Authentifizierungsversuche per Anruf oder SMS von demselben Benutzer, derselben Telefonnummer oder derselben Organisation aufgrund einer hohen Anzahl fehlerhafter Anruf- oder SMS-Authentifizierungsversuche einschränken oder blockieren. Wenn dieser Fehler auftritt, können Sie eine andere Methode ausprobieren, z. B. eine Authentifikator-App oder einen Prüfcode. Ansonsten bitten Sie Ihren Administrator um Unterstützung.
 * Gesperrte Anrufer-ID auf einem einzelnen Gerät.
    * Überprüfen Sie alle gesperrten Telefonnummern, die auf dem Gerät konfiguriert sind.
 * Falsche Telefonnummer oder falsche Landes-/Ortsvorwahl oder Verwechslung von persönlicher und geschäftlicher Telefonnummer.

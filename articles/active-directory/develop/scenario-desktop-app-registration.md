@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 09/09/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 7c0623d58bf88b8bcc5f19665a081ce012b560b6
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: 08e07ac3a8079d725611f9b072e8d21dabb32867
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97614869"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98011559"
 ---
 # <a name="desktop-app-that-calls-web-apis-app-registration"></a>Desktop-App, die Web-APIs aufruft: App-Registrierung
 
@@ -48,7 +48,7 @@ Die in einer Desktopanwendung zu verwendenden Umleitungs-URIs hängen von dem Fl
 - Wenn Ihre App nur die integrierte Windows-Authentifizierung oder Benutzername und Kennwort verwendet, müssen Sie für Ihre Anwendung keinen Umleitungs-URI registrieren. Diese Flows führen einen Roundtrip zum Microsoft Identity Platform v 2.0-Endpunkt aus. Ihre Anwendung wird nicht über einen bestimmten URI zurückgerufen.
 - Um [Gerätecodeflow](scenario-desktop-acquire-token.md#device-code-flow), [integrierte Windows-Authentifizierung](scenario-desktop-acquire-token.md#integrated-windows-authentication) sowie [Benutzername und Kennwort](scenario-desktop-acquire-token.md#username-and-password) von einer vertraulichen Clientanwendung mit einem vertraulichen Clientanwendungsflow, der in [Daemonanwendungen](scenario-daemon-overview.md) verwendet wird, zu unterscheiden (alle benötigen keinen Umleitungs-URI), müssen Sie Ihre Anwendung als öffentliche Clientanwendung konfigurieren. Gehen Sie für diese Konfiguration wie folgt vor:
 
-    1. Wählen Sie im [Azure-Portal](https://portal.azure.com) unter **App-Registrierungen** Ihre App aus, und wählen Sie dann **Authentifizierung** aus.
+    1. Wählen Sie im <a href="https://portal.azure.com/" target="_blank">Azure-Portal <span class="docon docon-navigate-external x-hidden-focus"></span></a> unter **App-Registrierungen** Ihre App aus, und klicken Sie dann auf **Authentifizierung**.
     1. Wählen Sie unter **Erweiterte Einstellungen** > **Öffentliche Clientflows zulassen** > **Folgende Flows für Mobilgerät und Desktop aktivieren:** die Option **Ja** aus.
 
         :::image type="content" source="media/scenarios/default-client-type.png" alt-text="Aktivieren der Einstellung für die Behandlung als öffentlicher Client im Bereich „Authentifizierung“ im Azure-Portal":::

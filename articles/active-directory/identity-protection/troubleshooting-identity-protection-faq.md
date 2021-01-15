@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: troubleshooting
-ms.date: 10/07/2020
+ms.date: 01/07/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6eb63a4a0b7b7fdefd636d3460b182f8d907dd36
-ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
+ms.openlocfilehash: 0d80b8f41e11f2fffa86dc7597fdf44dd27825fc
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96558928"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98028895"
 ---
 # <a name="frequently-asked-questions-identity-protection-in-azure-active-directory"></a>Häufig gestellte Fragen zu Identity Protection in Azure Active Directory
 
@@ -35,7 +35,7 @@ Derzeit verursacht ein bekanntes Problem Wartezeit beim Ablauf des Schließvorga
 
 Wenn Sie ein Azure AD Identity Protection-Kunde sind, wechseln Sie zur Ansicht [Riskante Benutzer](howto-identity-protection-investigate-risk.md#risky-users), und klicken Sie auf einen risikobehafteten Benutzer. In der Taskleiste am unteren Rand wird die Registerkarte „Risikoverlauf“ angezeigt. Sie enthält alle Ereignisse, die zu einer Änderung des Benutzerrisikos geführt haben. Um alle risikobehafteten Anmeldungen für den Benutzer anzuzeigen, klicken Sie auf „Riskante Anmeldungen“ des Benutzers. Klicken Sie auf „Risikoerkennungen“, um alle Risikoerkennungen für den Benutzer anzuzeigen.
 
-## <a name="why-was-my-sign-in-blocked-but-identity-protection-didnt-generate-a-risk-detection"></a>Warum wurde meine Anmeldung blockiert, ohne dass Identity Protection eine Risikoerkennung generiert?
+### <a name="why-was-my-sign-in-blocked-but-identity-protection-didnt-generate-a-risk-detection"></a>Warum wurde meine Anmeldung blockiert, ohne dass Identity Protection eine Risikoerkennung generiert?
 Anmeldungen können aus verschiedenen Gründen blockiert werden. Hierbei ist Folgendes wichtig: Identity Protection generiert nur dann eine Risikoerkennung, wenn bei der Authentifizierungsanforderung korrekte Anmeldeinformationen verwendet werden. Wenn ein Benutzer falsche Anmeldeinformationen verwendet, wird dies von Identity Protection nicht gekennzeichnet, da kein Risiko einer Kompromittierung von Anmeldeinformationen besteht. Ein solches entsteht nur, wenn ein böswilliger Akteur die richtigen Informationen verwendet. Im Folgenden finden Sie einige Gründe, aus denen die Anmeldung eines Benutzers blockiert werden kann, ohne dass Identity Protection eine Erkennung generiert:
 * Eine **IP-Adresse kann blockiert werden**, wenn schädliche Aktivitäten von dieser Adresse erkannt werden. In der Meldung zur Blockierung der IP-Adresse wird nicht unterschieden, ob die Anmeldeinformationen richtig waren oder nicht. Wenn eine IP-Adresse blockiert ist und keine richtigen Anmeldeinformationen verwendet werden, wird keine Identity Protection-Erkennung generiert.
 * **[Smart Lockout](../authentication/howto-password-smart-lockout.md)** kann nach mehreren Fehlversuchen die Anmeldung eines Kontos blockieren.
@@ -96,3 +96,7 @@ Da das Benutzerrisiko naturgemäß kumulativ zunimmt und nicht abläuft, kann f�
 ### <a name="why-does-a-sign-in-have-a-sign-in-risk-aggregate-score-of-high-when-the-detections-associated-with-it-are-of-low-or-medium-risk"></a>Warum liegt die Bewertung „Hoch“ für „Anmelderisiko (aggregiert)“ vor, wenn die zugehörigen Erkennungen ein niedriges oder mittleres Risiko aufweisen?
 
 Die hohe aggregierte Risikobewertung könnte auf anderen Faktoren der Anmeldung oder darauf basieren, dass für diese Anmeldung mehrere Erkennungen ausgelöst wurden. Umgekehrt kann die aggregierte Risikobewertung „Mittel“ vorliegen, obwohl die mit der Anmeldung verknüpften Erkennungen ein hohes Risiko aufweisen.
+
+### <a name="what-is-the-difference-between-the-activity-from-anonymous-ip-address-and-anonymous-ip-address-detections"></a>Worin besteht der Unterschied zwischen den Erkennungen „Aktivität über anonyme IP-Adresse“ und „Anonyme IP-Adresse“?
+
+Die Quelle der Erkennung „Anonyme IP-Adresse“ ist Azure AD Identity Protection, während die Erkennung „Aktivität über anonyme IP-Adresse“ aus MCAS (Microsoft Cloud App Security) integriert wird. Auch wenn sich die Namen sehr ähneln und Sie möglicherweise Überschneidungen in deren Signalen feststellen, beruhen sie auf unterschiedlichen Back-End-Erkennungen.

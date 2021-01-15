@@ -3,7 +3,7 @@ title: Azure AD Connect Health – Diagnostizieren von Synchronisierungsfehlern 
 description: In diesem Dokument werden der Diagnoseprozess für Synchronisierungsfehler aufgrund doppelter Attribute und die potenzielle Behebung von Szenarien mit verwaisten Objekten direkt über das Azure-Portal beschrieben.
 services: active-directory
 documentationcenter: ''
-author: zhiweiwangmsft
+author: billmath
 manager: maheshu
 editor: billmath
 ms.service: active-directory
@@ -15,12 +15,12 @@ ms.topic: how-to
 ms.date: 05/11/2018
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c2bd2e72b05cc01b1a351880d565323662635364
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5942d208fa3859d0a4a80de5f072f2e798fe040f
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89278682"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98028929"
 ---
 # <a name="diagnose-and-remediate-duplicated-attribute-sync-errors"></a>Diagnose und Behebung von Synchronisierungsfehlern aufgrund doppelter Attribute
 
@@ -137,6 +137,9 @@ Der Benutzer mit dem konfliktverursachenden Attribut in Azure AD muss bereinigt 
 
 **Die Aktualisierung des Quellankers für cloudbasierte Benutzer in Ihrem Mandanten wird nicht unterstützt.**  
 Cloudbasierte Benutzer in Azure AD dürfen keinen Quellanker besitzen. Die Aktualisierung des Quellankers wird in diesem Fall nicht unterstützt. Ein manueller Fix aus der lokalen Umgebung ist erforderlich. 
+
+**Die Werte konnten durch den Korrekturprozess nicht aktualisiert werden.**
+Die spezifischen Einstellungen wie [UserWriteback in Azure AD Connect](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-preview#user-writeback) werden nicht unterstützt. Deaktivieren Sie sie in den Einstellungen. 
 
 ## <a name="faq"></a>Häufig gestellte Fragen
 **F.** Was passiert, wenn beim Anwenden der Änderung über **Fix anwenden** ein Fehler auftritt?  

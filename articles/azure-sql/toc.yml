@@ -179,6 +179,8 @@
               href: database/performance-guidance.md
             - name: Überwachen der Leistung mithilfe von DMVs
               href: database/monitoring-with-dmvs.md
+            - name: Verstehen und Beheben von Blockierungen
+              href: database/understand-resolve-blocking.md
             - name: Protokollieren der Diagnosetelemetrie
               href: database/metrics-diagnostic-telemetry-logging-streaming-export-configure.md
             - name: In-Memory-OLTP

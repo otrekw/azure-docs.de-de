@@ -4,14 +4,14 @@ description: Bedarfsorientierte Warnung mithilfe einer einzelnen Warnungsregel f
 author: harelbr
 ms.author: harelbr
 ms.topic: conceptual
-ms.date: 11/12/2020
+ms.date: 01/11/2021
 ms.subservice: alerts
-ms.openlocfilehash: 66987a28acc8a2c9ae71d89ff5760fa508e32963
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 47a2fb9240f6826ed862f7a857264c09b79de9bc
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94566502"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98071084"
 ---
 # <a name="monitor-multiple-time-series-in-a-single-metric-alert-rule"></a>Überwachen mehrerer Zeitreihen in einer einzelnen Metrikwarnungsregel
 
@@ -162,7 +162,7 @@ Für diese Warnungsregel werden sechs metrische Zeitreihen separat überwacht:
 
 1.  **Auswählen aller aktuellen und zukünftigen Dimensionen**: Sie können die Überwachung aller möglichen Werte einer Dimension auswählen, einschließlich zukünftiger Werte. Eine solche Warnungsregel wird automatisch skaliert, um alle Werte der Dimension zu überwachen, ohne dass Sie die Warnungsregel jedes Mal ändern müssen, wenn ein Dimensionswert hinzugefügt oder entfernt wird.
 2.  **Ausschließen von Dimensionen**: Wenn Sie den Operator zum Ausschließen (≠) für einen Dimensionswert auswählen, entspricht dies der Auswahl aller anderen Werte dieser Dimension, einschließlich zukünftiger Werte.
-3.  **Neue und benutzerdefinierte Dimensionen**: Die im Azure-Portal angezeigten Dimensionswerte basieren auf Metrikdaten, die in den letzten drei Tagen gesammelt wurden. Wenn der gesuchte Dimensionswert noch nicht ausgegeben wird, können Sie einen benutzerdefinierten Dimensionswert hinzuzufügen.
+3.  **Neue und benutzerdefinierte Dimensionen**: Die im Azure-Portal angezeigten Dimensionswerte basieren auf Metrikdaten, die am vergangenen Tag gesammelt wurden. Wenn der gesuchte Dimensionswert noch nicht ausgegeben wird, können Sie einen benutzerdefinierten Dimensionswert hinzuzufügen.
 4. **Vergleichen von Dimensionen mit einem Präfix**: Sie können alle Dimensionswerte überwachen, die mit einem bestimmten Muster beginnen, indem Sie den Operator „Starts with“ (Beginnt mit) auswählen und ein benutzerdefiniertes Präfix eingeben.
 
 ![Erweiterte Funktionen für mehrere Dimensionen](media/alerts-metric-multiple-time-series-single-rule/advanced-features.png)

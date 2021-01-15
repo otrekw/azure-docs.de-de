@@ -6,12 +6,12 @@ ms.author: anvar
 ms.manager: bsiva
 ms.topic: troubleshooting
 ms.date: 08/17/2020
-ms.openlocfilehash: e19c5064dd69538dfc025b0d244baf4fa74706b2
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 33e2bf641b75a5dd360498478f1ea70c7614fb38
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96753534"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98071373"
 ---
 # <a name="troubleshooting-replication-issues-in-agentless-vmware-vm-migration"></a>Behandeln von Replikationsproblemen bei der Migration virtueller VMware-Computer ohne Agent
 
@@ -297,6 +297,24 @@ Dies ist ein bekanntes VMware-Problem, bei dem die für die Momentaufnahme angeg
 ### <a name="error-message-an-internal-error-occurred-memory-allocation-failed-out-of-memory"></a>Fehlermeldung: Ein interner Fehler ist aufgetreten. [Memory allocation failed. Out of memory] (Fehler bei der Speicherbelegung. Nicht genügend Arbeitsspeicher).
 
 Dies geschieht, wenn der NFC-Hostpuffer nicht über genügend Arbeitsspeicher verfügt. Um dieses Problem zu beheben, müssen Sie den virtuellen Computer (Compute vMotion) auf einen anderen Host mit freien Ressourcen verlagern.
+
+## <a name="replication-cycle-failed"></a>Fehler bei Replikationszyklus
+
+**Fehler-ID:** 181008
+
+**Fehlermeldung:** VM: „VMName“. Error: Keine Datenträger-Momentaufnahmen gefunden für die Momentaufnahmereplikation mit der Momentaufnahme-ID: „SnapshotID“.
+
+**Mögliche Ursachen:**
+
+Mögliche Gründe:
+1. Der Pfad von mindestens einem eingeschlossenen Datenträger wurde aufgrund von Storage VMotion geändert.
+2. Mindestens ein enthaltener Datenträger ist nicht mehr an die VM angefügt.
+      
+**Empfehlung:**
+
+Folgendes wird empfohlen:
+1. Stellen Sie die enthaltenen Datenträger mithilfe von Storage VMotion im ursprünglichen Pfad wieder her, und deaktivieren Sie dann Storage VMotion.
+2. Deaktivieren Sie Storage VMotion ggf., beenden Sie die Replikation auf der VM, und replizieren Sie die VM erneut. Wenden Sie sich an den Support, wenn das Problem weiterhin besteht.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

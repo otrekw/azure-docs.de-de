@@ -12,25 +12,25 @@ ms.workload: identity
 ms.date: 07/17/2020
 ms.author: hahamil
 ms.custom: aaddev, devx-track-js
-ms.openlocfilehash: 05258e201c65138e53e861f0631eb33e08c9c199
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 2c03e6940d392e3e2c03bf6508de41a7a19aef3b
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92673598"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98063772"
 ---
 # <a name="migrate-a-javascript-single-page-app-from-implicit-grant-to-auth-code-flow"></a>Migrieren von JavaScript-Single-Page-Webanwendungen vom impliziten Genehmigungsflow zum Autorisierungscodeflow
 
-Mit Version 2.0 von Microsoft Authentication Library for JavaScript (MSAL.js) wird die Unterstützung des Autorisierungscodeflows mit PKCE und CORS für Single-Page-Webanwendungen auf der Microsoft Identity-Plattform eingeführt. Führen Sie die Schritte in den folgenden Abschnitten aus, um Ihre MSAL.js 1.x-Anwendung mit impliziter Genehmigung zu MSAL.js 2.0 und höher (im folgenden *2.x* genannt) und dem Autorisierungscodeflow zu migrieren.
+Mit Version 2.0 der Microsoft Authentication Library für JavaScript (MSAL.js) wird die Unterstützung des Autorisierungscodeflows mit PKCE und CORS für Single-Page-Webanwendungen auf Microsoft Identity Platform eingeführt. Führen Sie die Schritte in den folgenden Abschnitten aus, um Ihre MSAL.js 1.x-Anwendung mit impliziter Genehmigung zu MSAL.js 2.0 und höher (im folgenden *2.x* genannt) und dem Autorisierungscodeflow zu migrieren.
 
-MSAL.js 2.x bringt Verbesserungen gegenüber MSAL.js 1.x mit sich und unterstützt jetzt anstelle des impliziten Genehmigungsflows den Autorisierungscodeflow. MSAL.js 2.x unterstützt den impliziten Genehmigungsflow **NICHT** .
+MSAL.js 2.x bringt Verbesserungen gegenüber MSAL.js 1.x mit sich und unterstützt jetzt anstelle des impliziten Genehmigungsflows den Autorisierungscodeflow. MSAL.js 2.x unterstützt den impliziten Genehmigungsflow **NICHT**.
 
 ## <a name="migration-steps"></a>Schritte bei der Migration
 
 Das Aktualisieren der Anwendung auf MSAL.js 2.x und den Autorisierungscodeflow gliedert sich in drei Hauptschritte:
 
-1. Ändern Sie bei Ihre(n) Umleitungs-URI(s) der [App-Registrierung](#switch-redirect-uris-to-spa-platform) die Plattform **Web** in die Plattform **Single-Page-Webanwendung** .
-1. Aktualisieren Sie Ihren [Code](#switch-redirect-uris-to-spa-platform) von MSAL.js 1.x auf **2.x** .
+1. Ändern Sie bei Ihre(n) Umleitungs-URI(s) der [App-Registrierung](#switch-redirect-uris-to-spa-platform) die Plattform **Web** in die Plattform **Single-Page-Webanwendung**.
+1. Aktualisieren Sie Ihren [Code](#switch-redirect-uris-to-spa-platform) von MSAL.js 1.x auf **2.x**.
 1. Deaktivieren Sie die [implizite Genehmigung](#disable-implicit-grant-settings) in Ihrer App-Registrierung, wenn alle Anwendungen, die die Registrierung gemeinsam nutzen, auf MSAL.js 2.x und den Autorisierungscodeflow aktualisiert wurden.
 
 In den folgenden Abschnitten wird jeder Schritt ausführlich beschrieben.
@@ -41,18 +41,18 @@ Wenn Sie die vorhandene App-Registrierung für Ihre Anwendungen weiter verwenden
 
 Führen Sie für App-Registrierungen, die derzeit mit Umleitungs URIs für die Plattform **Web** konfiguriert sind, die folgenden Schritte aus:
 
-1. Melden Sie sich im [Azure-Portal](https://portal.azure.com) an, und wählen Sie **Azure Active Directory** aus.
+1. Melden Sie sich beim <a href="https://portal.azure.com/" target="_blank">Azure-Portal <span class="docon docon-navigate-external x-hidden-focus"></span></a> an, und wählen Sie Ihren **Azure Active Directory**-Mandanten aus.
 1. Wählen Sie unter **App-Registrierungen** Ihre Anwendung aus, und wählen Sie dann **Authentifizierung** aus.
 1. Wählen Sie auf der Kachel für die Plattform **Web** unter **Umleitungs-URIs** das Warnbanner aus, das angibt, dass Sie Ihre URIs migrieren sollten.
 
     :::image type="content" source="media/migrate-spa-implicit-to-auth-code/portal-01-implicit-warning-banner.png" alt-text="Warnbanner für den impliziten Genehmigungsflow auf der Web-App-Kachel im Azure-Portal":::
 1. Wählen Sie *nur* die Umleitungs-URIs für die Anwendungen aus, die MSAL.js 2.x verwenden sollen, und wählen Sie dann **Konfigurieren** aus.
 
-    :::image type="content" source="media/migrate-spa-implicit-to-auth-code/portal-02-select-redirect-uri.png" alt-text="Warnbanner für den impliziten Genehmigungsflow auf der Web-App-Kachel im Azure-Portal":::
+    :::image type="content" source="media/migrate-spa-implicit-to-auth-code/portal-02-select-redirect-uri.png" alt-text="Auswählen des Bereichs „Umleitungs-URI“ im Bereich „Single-Page-Webanwendung“ im Azure-Portal":::
 
 Diese Umleitungs-URIs sollten jetzt auf der Kachel für die Plattform **Single-Page-Webanwendung** angezeigt werden. Ebenfalls wird angezeigt, dass CORS-Unterstützung mit dem Autorisierungscodeflow und PKCE für diese URIs aktiviert ist.
 
-:::image type="content" source="media/migrate-spa-implicit-to-auth-code/portal-03-spa-redirect-uri-tile.png" alt-text="Warnbanner für den impliziten Genehmigungsflow auf der Web-App-Kachel im Azure-Portal":::
+:::image type="content" source="media/migrate-spa-implicit-to-auth-code/portal-03-spa-redirect-uri-tile.png" alt-text="Kachel „Single-Page-Webanwendung“ bei der App-Registrierung im Azure-Portal":::
 
 Sie können auch [eine neue App-Registrierung erstellen](scenario-spa-app-registration.md), anstatt die Umleitungs-URIs in der vorhandenen Registrierung zu aktualisieren.
 
@@ -86,7 +86,7 @@ Wenn Sie alle Produktionsanwendungen, die diese App-Registrierung verwenden, und
 
 Wenn Sie die Einstellungen für die implizite Genehmigung in der App-Registrierung deaktivieren, wird der implizite Genehmigungsflow für alle Anwendungen, die die Registrierung verwenden, und die zugehörige Client-ID deaktiviert.
 
-Deaktivieren Sie den impliziten Genehmigungsflow **nicht** , bevor Sie alle Anwendungen auf MSAL.js 2.x und [PublicClientApplication][msal-js-publicclientapplication] aktualisiert haben.
+Deaktivieren Sie den impliziten Genehmigungsflow **nicht**, bevor Sie alle Anwendungen auf MSAL.js 2.x und [PublicClientApplication][msal-js-publicclientapplication] aktualisiert haben.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

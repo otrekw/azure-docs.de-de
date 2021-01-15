@@ -12,12 +12,12 @@ ms.date: 05/08/2020
 ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja, jesakowi
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: 47c3c091e767cac63bb814469397ef1a0aeca3a4
-ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
+ms.openlocfilehash: 011acdf98c8430bfb7ba1b02ec24a170f829e48f
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97516499"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98063789"
 ---
 # <a name="microsoft-identity-platform-best-practices-and-recommendations"></a>Bewährte Methoden und Empfehlungen für Microsoft Identity Platform
 
@@ -70,7 +70,7 @@ Stellen Sie anhand der folgenden Checkliste sicher, dass Ihre Anwendung effektiv
 
 ![Kontrollkästchen](./media/active-directory-integration-checklist/checkbox-two.svg) Programmieren Sie nicht direkt für Protokolle wie OAuth 2.0 und OpenID. Nutzen Sie stattdessen die [Microsoft-Authentifizierungsbibliothek (Microsoft Authentication Library, MSAL)](msal-overview.md). Die MSAL-Bibliotheken schließen Sicherheitsprotokolle sicher in eine benutzerfreundliche Bibliothek ein und bieten integrierte Unterstützung für Szenarien mit [bedingtem Zugriff](../conditional-access/overview.md), geräteweites [einmaliges Anmelden (Single Sign-On, SSO)](../manage-apps/what-is-single-sign-on.md) sowie integrierte Unterstützung für die Tokenzwischenspeicherung. Weitere Informationen finden Sie in der Liste mit den von Microsoft unterstützten [Clientbibliotheken](reference-v2-libraries.md#microsoft-supported-client-libraries) und [Middlewarebibliotheken](reference-v2-libraries.md#microsoft-supported-server-middleware-libraries) sowie in der Liste mit den [kompatiblen Drittanbieter-Clientbibliotheken](reference-v2-libraries.md#compatible-client-libraries).<br/><br/>Wenn Sie Code für die Authentifizierungsprotokolle schreiben müssen, verwenden Sie eine Methodik wie [Microsoft SDL](https://www.microsoft.com/sdl/default.aspx). Achten Sie auf die Sicherheitsüberlegungen in den Standardspezifikationen für jedes Protokoll.
 
-![Kontrollkästchen](./media/active-directory-integration-checklist/checkbox-two.svg) Migrieren Sie bereits vorhandene Apps von [Azure Active Directory Authentication Library (ADAL)](../azuread-dev/active-directory-authentication-libraries.md) zu [Microsoft Authentication Library (MSAL)](msal-overview.md). MSAL ist die neueste Identity Platform-Lösung von Microsoft und ADAL vorzuziehen. Sie ist für .NET, JavaScript, Android, iOS und macOS verfügbar und befindet sich für Python und Java momentan in der öffentlichen Vorschau. Ausführlichere Informationen zur App-Migration finden Sie in den Artikeln für [ADAL.NET](msal-net-migration.md), [ADAL.js](msal-compare-msal-js-and-adal-js.md) und [ADAL.NET/iOS-Broker](msal-net-migration-ios-broker.md).
+![Kontrollkästchen](./media/active-directory-integration-checklist/checkbox-two.svg) Migrieren Sie bereits vorhandene Apps von der [Azure Active Directory-Authentifizierungsbibliothek (ADAL)](../azuread-dev/active-directory-authentication-libraries.md) zur [Microsoft Authentication Library (MSAL)](msal-overview.md). MSAL ist die neueste Identity Platform-Lösung von Microsoft und ADAL vorzuziehen. Sie ist für .NET, JavaScript, Android, iOS und macOS verfügbar und befindet sich für Python und Java momentan in der öffentlichen Vorschau. Ausführlichere Informationen zur App-Migration finden Sie in den Artikeln für [ADAL.NET](msal-net-migration.md), [ADAL.js](msal-compare-msal-js-and-adal-js.md) und [ADAL.NET/iOS-Broker](msal-net-migration-ios-broker.md).
 
 ![Kontrollkästchen](./media/active-directory-integration-checklist/checkbox-two.svg) Konfigurieren Sie für mobile Apps jede Plattform unter Verwendung der Anwendungsregistrierung. Für Ihre App muss ein Broker-Umleitungs-URI konfiguriert werden, damit sie Microsoft Authenticator oder das Microsoft-Unternehmensportal für einmaliges Anmelden nutzen kann. Dadurch kann Microsoft nach der Authentifizierung die Kontrolle an Ihre Anwendung zurückgeben. Beim Konfigurieren der einzelnen Plattformen führt Sie die App-Registrierung durch den Prozess. Verwenden Sie die Schnellstartanleitung, um ein Beispiel herunterzuladen. Verwenden Sie unter iOS nach Möglichkeit Broker und System WebView.
 
