@@ -248,7 +248,7 @@
             - name: HTTP-Trigger
               items:
                 - name: Azure-Portal
-                  href: functions-create-first-azure-function.md
+                  href: functions-create-function-app-portal.md
                 - name: Befehlszeile
                   href: ./create-first-function-cli-csharp.md
                 - name: Visual Studio

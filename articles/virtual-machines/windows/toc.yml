@@ -182,7 +182,7 @@
             - name: Vorauszahlung für virtuelle Computer
               href: ../prepay-reserved-vm-instances.md
             - name: Vorauszahlung für Dedicated Host-Instanzen
-              href: ../prepay-dedicated-hosts-reserved-instances.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
+              href: ../prepay-dedicated-hosts-reserved-instances.md
             - name: Was sind Azure-Reservierungen?
               href: ../../cost-management-billing/reservations/save-compute-costs-reservations.md?toc=/azure/virtual-machines/windows/toc.json
             - name: Flexibilität bei der VM-Instanzgröße
@@ -226,7 +226,7 @@
         - name: Verschlüsselung
           href: ../disk-encryption.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: Disk Storage-Reservierungen
-          href: ../../cost-management-billing/reservations/understand-disk-reservations.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
+          href: ../../cost-management-billing/reservations/understand-disk-reservations.md
         - name: Leistung von virtuellen Computern und Datenträgern
           href: disk-performance-windows.md
         - name: Entwerfen für hohe Leistung
@@ -290,14 +290,14 @@
         - name: Bereitstellen von Spot-VMs
           items:
             - name: Portal
-              href: ../spot-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
+              href: ../spot-portal.md
             - name: PowerShell
               href: spot-powershell.md
             - name: ARM-Vorlage
               displayName: Azure Resource Manager
-              href: ../linux/spot-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
+              href: ../linux/spot-template.md
             - name: Fehlercodes
-              href: ../error-codes-spot.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
+              href: ../error-codes-spot.md
         - name: Verwenden von C#
           href: ../../azure-resource-manager/templates/deploy-rest.md
         - name: Verwenden eines speziellen Datenträgers
@@ -478,7 +478,7 @@
             - name: Erstellen eines Bastion-Hosts
               items:
                 - name: Portal
-                  href: ../../bastion/tutorial-create-host-portal.md?bc=%2fazure%2fvirtual-machines%2fwindows%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
+                  href: ../../bastion/tutorial-create-host-portal.md
                 - name: PowerShell
                   href: ../../bastion/bastion-create-host-powershell.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
                 - name: Befehlszeilenschnittstelle (CLI)
@@ -654,7 +654,7 @@
                     - name: Versionsverlauf
                       href: ../../azure-monitor/platform/diagnostics-extension-versions.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
                     - name: JSON-Zeilenformat für Ressourcenprotokolle
-                      href: ../../azure-monitor/platform/resource-logs-blob-format.md?bc=%2fazure%2fvirtual-machines%2fwindows%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
+                      href: ../../azure-monitor/platform/resource-logs-blob-format.md
                     - name: Problembehandlung
                       href: ../../azure-monitor/platform/diagnostics-extension-troubleshooting.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
             - name: Log Analytics-Agent
@@ -712,13 +712,13 @@
                 - name: 'Aktivieren der Überwachung: Übersicht'
                   href: ../../azure-monitor/insights/vminsights-enable-overview.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
                 - name: Aktivieren für einen einzelnen virtuellen Azure-Computer
-                  href: ../../azure-monitor/insights/vminsights-enable-portal.md?bc=%2fazure%2fvirtual-machines%2fwindows%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
+                  href: ../../azure-monitor/insights/vminsights-enable-portal.md
                 - name: Aktivieren mithilfe von Azure Policy
-                  href: ../../azure-monitor/insights/vminsights-enable-policy.md?bc=%2fazure%2fvirtual-machines%2fwindows%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
+                  href: ../../azure-monitor/insights/vminsights-enable-policy.md
                 - name: Aktivieren mithilfe von Azure PowerShell
-                  href: ../../azure-monitor/insights/vminsights-enable-powershell.md?bc=%2fazure%2fvirtual-machines%2fwindows%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
+                  href: ../../azure-monitor/insights/vminsights-enable-powershell.md
                 - name: Aktivieren für Hybridumgebungen
-                  href: ../../azure-monitor/insights/vminsights-enable-hybrid.md?bc=%2fazure%2fvirtual-machines%2fwindows%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
+                  href: ../../azure-monitor/insights/vminsights-enable-hybrid.md
             - name: Zuordnen von Abhängigkeiten
               href: ../../azure-monitor/insights/vminsights-maps.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
             - name: Überwachen der Leistung

@@ -11,6 +11,10 @@
       href: quickstart-template.md
     - name: PowerShell
       href: quickstart-powershell.md
+    - name: Portal
+      href: quickstart-portal.md
+    - name: Befehlszeilenschnittstelle (CLI)
+      href: quickstart-azure-cli.md
 - name: Tutorials
   items:
     - name: Erstellen einer Nachweisrichtlinie
@@ -39,7 +43,7 @@
       href: workflow.md
     - name: Anzeigen von Überwachungsprotokollen
       href: audit-logs.md
-- name: Verweise
+- name: Referenzen
   items:
     - name: Regionale Verfügbarkeit
       href: 'https://azure.microsoft.com/global-infrastructure/services/?products=azure-attestation'

@@ -65,7 +65,7 @@
               href: relay-hybrid-connections-node-ws-api-overview.md
     - name: Sicher
       items:
-        - name: Konfigurieren der IP-Firewall (Vorschau)
+        - name: Konfigurieren der IP-Firewall
           href: ip-firewall-virtual-networks.md
         - name: Konfigurieren privater Endpunkte
           href: private-link-service.md
