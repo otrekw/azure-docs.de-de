@@ -3,16 +3,16 @@ title: Herstellen einer Verbindung mit SQL Server, Azure SQL-Datenbank oder Azur
 description: Automatisieren von Aufgaben für SQL-Datenbanken lokal oder in der Cloud mithilfe von Azure Logic Apps
 services: logic-apps
 ms.suite: integration
-ms.reviewer: estfan, jonfan, logicappspm
+ms.reviewer: estfan, logicappspm, azla
 ms.topic: conceptual
-ms.date: 10/22/2020
+ms.date: 01/07/2021
 tags: connectors
-ms.openlocfilehash: ce7679fff86d2c96588cf2b704d44238535963b3
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 75c657236b6e06a7e0f6c717d746bcc8c034d423
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93130934"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98013446"
 ---
 # <a name="automate-workflows-for-a-sql-database-by-using-azure-logic-apps"></a>Automatisieren von Workflows für eine SQL-Datenbank mithilfe von Azure Logic Apps
 
@@ -142,7 +142,7 @@ Wenn Sie zum ersten Mal entweder einen [SQL-Trigger](#add-sql-trigger) oder eine
    | **Benutzername** | Ja | Ihr Benutzername für SQL Server und -Datenbank. |
    | **Kennwort** | Ja | Ihr Kennwort für SQL Server und -Datenbank. |
    | **Abonnement** |  Ja, für Windows-Authentifizierung. | Das Azure-Abonnement für die Datengatewayressource, das Sie zuvor in Azure erstellt haben. |
-   | **Verbindungsgateway** | Ja, für Windows-Authentifizierung. | Der Name für die Datengatewayressource, die Sie zuvor in Azure erstellt haben. <p><p>**Tipp** : Wenn Ihr Gateway nicht in der Liste angezeigt wird, überprüfen Sie, ob Sie das [Gateway richtig eingerichtet](../logic-apps/logic-apps-gateway-connection.md) haben. |
+   | **Verbindungsgateway** | Ja, für Windows-Authentifizierung. | Der Name für die Datengatewayressource, die Sie zuvor in Azure erstellt haben. <p><p>**Tipp**: Wenn Ihr Gateway nicht in der Liste angezeigt wird, überprüfen Sie, ob Sie das [Gateway richtig eingerichtet](../logic-apps/logic-apps-gateway-connection.md) haben. |
    |||
 
    > [!TIP]
@@ -175,15 +175,21 @@ Wenn Sie zum ersten Mal entweder einen [SQL-Trigger](#add-sql-trigger) oder eine
 
 1. Geben Sie im Trigger das Intervall und die Häufigkeit dafür an, wie oft der Trigger die Tabelle überprüfen soll.
 
-1. Öffnen Sie die Liste **Neuen Parameter hinzufügen** , um weitere verfügbare Eigenschaften für diesen Trigger hinzuzufügen.
+1. Öffnen Sie die Liste **Neuen Parameter hinzufügen**, um weitere verfügbare Eigenschaften für diesen Trigger hinzuzufügen.
 
    Mit diesem Trigger wird nur eine Zeile aus der ausgewählten Tabelle zurückgegeben, sonst nichts. Um andere Aufgaben auszuführen, fahren Sie fort, indem Sie entweder eine [SQL-Connector-Aktion ](#add-sql-action) oder [eine weitere Aktions](../connectors/apis-list.md) hinzufügen, die die nächste Aufgabe ausführt, die Sie in Ihrem Logik-App-Workflow ausführen möchten.
-   
+
    Wenn Sie z.B. die Daten in dieser Zeile anzeigen möchten, können Sie weitere Aktionen hinzufügen, die eine Datei erstellen, die die Felder aus der zurückgegebenen Zeile enthält, und dann E-Mail-Benachrichtigungen senden. Informationen zu anderen verfügbaren Aktionen für diesen Connector finden Sie auf der [Referenzseite zum Connector](/connectors/sql/).
 
 1. Wählen Sie auf der Symbolleiste des Designers **Speichern** aus.
 
    Obwohl dieser Schritt ihre Logik-App automatisch in Azure aktiviert und live veröffentlicht, besteht die einzige Aktion, die ihre Logik-App derzeit ausführt, darin, Ihre Datenbank auf Grundlage des von Ihnen angegebenen Intervalls und der Häufigkeit zu überprüfen.
+
+<a name="trigger-recurrence-shift-drift"></a>
+
+### <a name="trigger-recurrence-shift-and-drift"></a>Verschiebung und Drift von Triggerwiederholungen
+
+Verbindungsbasierte Trigger, bei denen Sie zuerst eine Verbindung erstellen müssen, wie z. B. der SQL-Trigger, unterscheiden sich von integrierten Triggern, die in Azure Logic Apps nativ ausgeführt werden, wie z. B der [Wiederholungstrigger](../connectors/connectors-native-recurrence.md). Bei wiederkehrenden, verbindungsbasierten Triggern ist der Wiederholungszeitplan nicht der einzige Faktor, der die Ausführung steuert, und die Zeitzone bestimmt nur die anfängliche Startzeit. Nachfolgende Ausführungen richten sich nach dem Wiederholungszeitplan, der letzten Triggerausführung, *und* anderen Faktoren, die zur Drift der Ausführungszeiten oder zu unerwartetem Verhalten führen können, z. B. Nichteinhaltung des angegebenen Zeitplans, wenn die Sommerzeit beginnt und endet. Um sicherzustellen, dass sich die Wiederholungszeit nicht verschiebt, wenn die Sommerzeit wirksam wird, passen Sie die Wiederholung manuell so an, dass Ihre Logik-App weiterhin zum erwarteten Zeitpunkt ausgeführt wird. Andernfalls verschiebt sich die Startzeit um eine Stunde nach vorn, wenn die Sommerzeit beginnt, und eine Stunde rückwärts, wenn die Sommerzeit endet. Weitere Informationen finden Sie unter [Wiederholung für verbindungsbasierte Trigger](../connectors/apis-list.md#recurrence-connection-based).
 
 <a name="add-sql-action"></a>
 
@@ -221,13 +227,13 @@ In diesem Beispiel beginnt die Logik-App mit dem [Wiederholungstrigger](../conne
 
 Gelegentlich müssen Sie mit Resultsets arbeiten, die so groß sind, dass der Connector nicht alle Ergebnisse gleichzeitig zurückgibt. Oder Sie wünschen sich eine bessere Kontrolle über die Größe und Struktur Ihrer Resultsets. Hier sind einige Möglichkeiten, wie Sie derartig große Resultsets verarbeiten können:
 
-* Aktivieren Sie *Paginierung* , um die Ergebnisse in kleineren Gruppen zu verwalten. Weitere Informationen finden Sie unter [Abrufen von Massendaten, Datensätzen und Elementen mithilfe der Paginierung](../logic-apps/logic-apps-exceed-default-page-size-with-pagination.md). Weitere Informationen finden Sie unter [SQL-Paginierung für die Massendatenübertragung mit Logic Apps](https://social.technet.microsoft.com/wiki/contents/articles/40060.sql-pagination-for-bulk-data-transfer-with-logic-apps.aspx).
+* Aktivieren Sie *Paginierung*, um die Ergebnisse in kleineren Gruppen zu verwalten. Weitere Informationen finden Sie unter [Abrufen von Massendaten, Datensätzen und Elementen mithilfe der Paginierung](../logic-apps/logic-apps-exceed-default-page-size-with-pagination.md). Weitere Informationen finden Sie unter [SQL-Paginierung für die Massendatenübertragung mit Logic Apps](https://social.technet.microsoft.com/wiki/contents/articles/40060.sql-pagination-for-bulk-data-transfer-with-logic-apps.aspx).
 
 * Erstellen Sie eine [*gespeicherte Prozedur*](/sql/relational-databases/stored-procedures/stored-procedures-database-engine), die die Ergebnisse nach Ihren Vorstellungen organisiert. Der SQL-Connector bietet viele Back-End-Funktionen, auf die Sie über Azure Logic Apps zugreifen können, sodass Sie Geschäftsaufgaben, die mit SQL-Datenbanktabellen arbeiten, einfacher automatisieren können.
 
   Beim Abrufen oder Einfügen mehrerer Zeilen kann Ihre Logik-App diese Zeilen mithilfe einer [*Until-Schleife*](../logic-apps/logic-apps-control-flow-loops.md#until-loop) innerhalb dieser [Grenzwerte](../logic-apps/logic-apps-limits-and-config.md) durchlaufen. Wenn Ihre Logik-App jedoch mit so großen Datensatzgruppen arbeiten muss, die z. B. Tausende oder Millionen von Zeilen umfassen, dass Sie die Kosten für Aufrufe der Datenbank minimieren möchten.
 
-  Um die Ergebnisse in der von Ihnen gewünschten Weise zu organisieren, können Sie eine gespeicherte Prozedur erstellen, die in Ihrer SQL-Instanz ausgeführt wird und die **SELECT - ORDER BY** -Anweisung verwendet. Diese Lösung bietet Ihnen mehr Kontrolle über die Größe und Struktur Ihrer Ergebnisse. Ihre Logik-App ruft die gespeicherte Prozedur mithilfe der Aktion **Gespeicherte Prozedur ausführen** des SQL Server-Connectors auf. Weitere Informationen finden Sie unter [SELECT – ORDER BY-Klausel](/sql/t-sql/queries/select-order-by-clause-transact-sql).
+  Um die Ergebnisse in der von Ihnen gewünschten Weise zu organisieren, können Sie eine gespeicherte Prozedur erstellen, die in Ihrer SQL-Instanz ausgeführt wird und die **SELECT - ORDER BY**-Anweisung verwendet. Diese Lösung bietet Ihnen mehr Kontrolle über die Größe und Struktur Ihrer Ergebnisse. Ihre Logik-App ruft die gespeicherte Prozedur mithilfe der Aktion **Gespeicherte Prozedur ausführen** des SQL Server-Connectors auf. Weitere Informationen finden Sie unter [SELECT – ORDER BY-Klausel](/sql/t-sql/queries/select-order-by-clause-transact-sql).
 
   > [!NOTE]
   > Beim SQL-Connector gilt für gespeicherte Prozeduren ein Timeoutlimit von [unter zwei Minuten](/connectors/sql/#known-issues-and-limitations). Einige gespeicherte Prozeduren dauern möglicherweise länger, was einen Fehler vom Typ `504 Timeout` zur Folge hat. Sie können dieses Problem umgehen, indem Sie einen SQL-Abschlussauslöser, eine native SQL-Pass-Through-Abfrage, eine Zustandstabelle und serverseitiger Aufträge verwenden.
@@ -259,13 +265,17 @@ Wenn Sie eine gespeicherte Prozedur mit dem SQL Server-Connector aufzurufen, ist
 
 ## <a name="troubleshoot-problems"></a>Behandeln von Problemen
 
-* Verbindungsprobleme können häufig auftreten. Informationen zur Behebung dieser Probleme finden Sie unter [Beheben von Fehlern bei der Konnektivität mit SQL Server](https://support.microsoft.com/help/4009936/solving-connectivity-errors-to-sql-server). Hier einige Beispiele:
+<a name="connection-problems"></a>
 
-  * `A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections.`
+### <a name="connection-problems"></a>Verbindungsprobleme
 
-  * `(provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server) (Microsoft SQL Server, Error: 53)`
+Verbindungsprobleme können häufig auftreten. Informationen zur Behebung dieser Probleme finden Sie unter [Beheben von Fehlern bei der Konnektivität mit SQL Server](https://support.microsoft.com/help/4009936/solving-connectivity-errors-to-sql-server). Im Folgenden finden Sie einige Beispiele:
 
-  * `(provider: TCP Provider, error: 0 - No such host is known.) (Microsoft SQL Server, Error: 11001)`
+* `A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections.`
+
+* `(provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server) (Microsoft SQL Server, Error: 53)`
+
+* `(provider: TCP Provider, error: 0 - No such host is known.) (Microsoft SQL Server, Error: 11001)`
 
 ## <a name="connector-specific-details"></a>Connectorspezifische Details
 

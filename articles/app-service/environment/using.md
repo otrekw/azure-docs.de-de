@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 11/16/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 3679bf9d55ddccefddb4bf3b2a96ec1b427315af
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: c0ceae8727681c045c3bbf3e6626937633b38997
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94663249"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98013531"
 ---
 # <a name="using-an-app-service-environment"></a>Verwenden einer App Service-Umgebung
 
@@ -78,13 +78,20 @@ Die SCM-URL wird verwendet, um auf die Kudu-Konsole zuzugreifen oder Ihre App pe
 
 ### <a name="dns-configuration"></a>DNS-Konfiguration 
 
-Die ASE verwendet private Endpunkte für eingehenden Datenverkehr und wird automatisch mit Azure DNS Private Zones konfiguriert. Wenn Sie einen eigenen DNS-Server verwenden möchten, müssen die folgenden Einträge hinzugefügt werden:
+Die ASE verwendet private Endpunkte für eingehenden Datenverkehr. Sie wird nicht automatisch mit privaten Azure DNS-Zonen konfiguriert. Wenn Sie einen eigenen DNS-Server verwenden möchten, müssen die folgenden Einträge hinzugefügt werden:
 
 1. Erstellen Sie eine Zone für „&lt;ASE-Name&gt;.appserviceenvironment.net“.
 1. Erstellen Sie in dieser Zone einen A-Eintrag, durch den „*“ auf die vom privaten ASE-Endpunkt verwendete IP-Adresse für eingehenden Datenverkehr verwiesen wird.
 1. Erstellen Sie in dieser Zone einen A-Eintrag, durch den „@“ auf die vom privaten ASE-Endpunkt verwendete IP-Adresse für eingehenden Datenverkehr verwiesen wird.
 1. Erstellen Sie eine Zone namens „scm“ in „&lt;ASE-Name&gt;.appserviceenvironment.net“.
 1. Erstellen Sie in der Zone „scm“ einen A-Eintrag, durch den „*“ auf die vom privaten ASE-Endpunkt verwendete IP-Adresse verwiesen wird.
+
+So konfigurieren Sie DNS in privaten Azure DNS-Zonen
+
+1. Erstellen Sie eine private Azure DNS-Zone namens <ASE name>.appserviceenvironment.net.
+1. Erstellen Sie einen A-Eintrag in dieser Zone, der * auf die ILB-IP-Adresse verweist.
+1. Erstellen Sie einen A-Eintrag in dieser Zone, der @ auf die ILB-IP-Adresse verweist.
+1. Erstellen Sie einen A-Eintrag in dieser Zone, der *.scm auf die ILB-IP-Adresse verweist.
 
 Die DNS-Einstellungen für Ihr ASE-Standarddomänensuffix schränken Ihre Apps nicht dahingehend ein, dass sie nur über diese Namen zugänglich sind. Sie können einen benutzerdefinierten Domänennamen ohne jegliche Validierung für Ihre Apps in einer ASE festlegen. Wenn Sie dann eine Zone namens *contoso.net* erstellen möchten, können Sie dies tun und auf die IP-Adresse für eingehenden Datenverkehr verweisen. Der benutzerdefinierte Domänenname funktioniert für App-Anforderungen, aber nicht für die SCM-Site. Die SCM-Site ist nur unter *&lt;appname&gt;.scm.&lt;asename&gt;.appserviceenvironment.net* verfügbar. 
 

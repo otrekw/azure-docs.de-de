@@ -9,16 +9,16 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 09/30/2020
 ms.author: rolyon
-ms.openlocfilehash: 56b6638462acaf43b6353787495e5b7993acb413
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: e746c7d09bb568d457ab1037b56c7c2973b29ad7
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94648275"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98117247"
 ---
 # <a name="steps-to-add-a-role-assignment"></a>Schritte zum Hinzufügen einer Rollenzuweisung
 
-[!INCLUDE [Azure RBAC definition grant access](../../includes/role-based-access-control-definition-grant.md)] In diesem Artikel werden die allgemeinen Schritte zum Hinzufügen einer Rollenzuweisung mit [Azure-Portal](role-assignments-portal.md), [Azure PowerShell](role-assignments-powershell.md), [Azure CLI](role-assignments-cli.md) oder [REST-API](role-assignments-rest.md) beschrieben.
+[!INCLUDE [Azure RBAC definition grant access](../../includes/role-based-access-control/definition-grant.md)] In diesem Artikel werden die allgemeinen Schritte zum Hinzufügen einer Rollenzuweisung mit [Azure-Portal](role-assignments-portal.md), [Azure PowerShell](role-assignments-powershell.md), [Azure CLI](role-assignments-cli.md) oder [REST-API](role-assignments-rest.md) beschrieben.
 
 ## <a name="step-1-determine-who-needs-access"></a>Schritt 1: Ermitteln, wer Zugriff benötigt
 
@@ -31,7 +31,7 @@ Zuerst müssen Sie feststellen, wer Zugriff benötigt. Sie können eine Rolle ei
 - Dienstprinzipal: eine Sicherheitsidentität, die von Anwendungen oder Diensten für den Zugriff auf bestimmte Azure-Ressourcen verwendet wird. Sie können sich diesen als *Benutzeridentität* (Benutzername und Kennwort oder Zertifikat) für eine Anwendung vorstellen.
 - Verwaltete Identität: Eine Identität in Azure Active Directory, die automatisch von Azure verwaltet wird. In der Regel verwenden Sie [verwaltete Identitäten](../active-directory/managed-identities-azure-resources/overview.md) bei der Entwicklung von Cloudanwendungen, um die Anmeldeinformationen für die Authentifizierung bei Azure-Diensten zu verwalten.
 
-## <a name="step-2-find-the-appropriate-role"></a>Schritt 2: Suchen der gewünschten Rolle
+## <a name="step-2-select-the-appropriate-role"></a>Schritt 2: Auswählen der geeigneten Rolle
 
 Berechtigungen sind in einer *Rollendefinition* zusammengefasst. Sie wird in der Regel einfach *Rolle* genannt. Sie können aus einer Liste von verschiedene vordefinierten Rollen auswählen. Wenn die integrierten Rollen den besonderen Ansprüchen Ihrer Organisation nicht genügen, können Sie Ihre eigenen benutzerdefinierten Rollen erstellen.
 

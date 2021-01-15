@@ -1,14 +1,14 @@
 ---
 title: Registrierungstarife und -funktionen
-description: Erfahren Sie mehr über die Features und Beschränkungen der Diensttarife (SKUs) Basic, Standard und Premium von Azure Container Registry.
+description: Erfahren Sie mehr über die Features und Beschränkungen (Kontingente) der Diensttarife (SKUs) „Basic“, „Standard“ und „Premium“ von Azure Container Registry.
 ms.topic: article
 ms.date: 05/18/2020
-ms.openlocfilehash: e2a5ad52775e9000aa0beb0a926d809da1c5a0e0
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: b55fc16dcd6dcb544ed4597ce4bdc6ba17b52646
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92048473"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98015662"
 ---
 # <a name="azure-container-registry-service-tiers"></a>Azure Container Registry-Tarife
 
@@ -31,6 +31,8 @@ Die folgende Tabelle enthält die Features und Registrierungsgrenzwerte der Dien
 ## <a name="changing-tiers"></a>Wechseln von Tarifen
 
 Sie können den Tarif einer Registrierung über die Azure CLI oder im Azure-Portal wechseln. Zwischen den Tarifen können Sie sich frei bewegen, solange der Tarif, zu dem Sie wechseln, über die erforderliche maximale Speicherkapazität verfügt. 
+
+Wenn Sie zwischen den Tarifen wechseln, treten keine Registrierungsausfälle oder Auswirkungen auf Registrierungsvorgänge auf.
 
 ### <a name="azure-cli"></a>Azure CLI
 

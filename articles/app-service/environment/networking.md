@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 11/16/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 61059c3e0f9737df6ace338f4252a338ea1f200c
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 680b1f3b6af186eba27a4dd926016a04cd863760
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94663330"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98013486"
 ---
 # <a name="app-service-environment-networking"></a>Netzwerk in der App Service-Umgebung
 
@@ -34,7 +34,11 @@ Die ASE verfügt bei der Erstellung über die folgenden Adressen:
 | Windows-Adresse für ausgehenden Datenverkehr | Die Windows-Apps in dieser ASE verwenden diese Adresse standardmäßig, wenn sie ausgehende Aufrufe an das Internet vornehmen. |
 | Linux-Adresse für ausgehenden Datenverkehr | Die Linux-Apps in dieser ASE verwenden diese Adresse standardmäßig, wenn sie ausgehende Aufrufe an das Internet vornehmen. |
 
-Wenn Sie den privaten Endpunkt löschen, der von der ASE verwendet wird, können Sie die Apps in Ihrer ASE nicht mehr erreichen. Löschen Sie die private Azure DNS-Zone nicht, die mit Ihrer ASE verknüpft ist.  
+Die ASEv3 enthält Details zu den Adressen, die von der ASE im Teil **IP-Adressen** des ASE-Portals verwendet werden.
+
+![ASE-Adressen-Benutzeroberfläche](./media/networking/networking-ip-addresses.png)
+
+Wenn Sie den privaten Endpunkt löschen, der von der ASE verwendet wird, können Sie die Apps in Ihrer ASE nicht mehr erreichen.  
 
 Die ASE verwendet Adressen im ausgehenden Subnetz, um die von der ASE verwendete Infrastruktur zu unterstützen. Wenn Sie Ihre App Service-Pläne in Ihrer ASE hochskalieren, werden Sie mehr Adressen verwenden. Apps in der ASE verfügen über keine dedizierten Adressen im ausgehenden Subnetz. Die Adressen, die von einer App im ausgehenden Subnetz verwendet werden, ändern sich im Laufe der Zeit.
 
@@ -48,7 +52,7 @@ Im Gegensatz zu ASEv2 können Sie mit ASEv3 Netzwerksicherheitsgruppen (NSGs) un
 
 ## <a name="dns"></a>DNS
 
-Die Apps in Ihrer ASE verwenden das DNS, mit dem Ihr VNet konfiguriert ist. Wenn Sie möchten, dass einige Apps einen anderen DNS-Server verwenden, können Sie diesen mit den App-Einstellungen WEBSITE_DNS_SERVER und WEBSITE_DNS_ALT_SERVER manuell pro App festlegen. Die App-Einstellung WEBSITE_DNS_ALT_SERVER konfiguriert den sekundären DNS-Server. Der sekundäre DNS-Server wird nur verwendet, wenn keine Antwort vom primären DNS-Server vorliegt. 
+Die Apps in Ihrer ASE verwenden das DNS, mit dem Ihr VNet konfiguriert ist. Befolgen Sie die Anweisungen in [verwenden einer App Service-Umgebung](https://docs.microsoft.com/azure/app-service/environment/using#dns-configuration), um Ihren DNS-Server so zu konfigurieren, dass er auf Ihre ASE verweist. Wenn Sie möchten, dass einige Apps einen anderen DNS-Server als den, mit dem Ihr VNet konfiguriert ist, verwenden, können Sie diesen mit den App-Einstellungen WEBSITE_DNS_SERVER und WEBSITE_DNS_ALT_SERVER manuell pro App festlegen. Die App-Einstellung WEBSITE_DNS_ALT_SERVER konfiguriert den sekundären DNS-Server. Der sekundäre DNS-Server wird nur verwendet, wenn keine Antwort vom primären DNS-Server vorliegt. 
 
 ## <a name="preview-limitation"></a>Einschränkungen der Vorschauversion
 

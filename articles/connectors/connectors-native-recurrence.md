@@ -3,19 +3,19 @@ title: Planen von wiederkehrenden Aufgaben und Workflows
 description: Planen und Ausführen von wiederkehrenden automatisierten Aufgaben und Workflows mit dem Serientrigger in Azure Logic Apps
 services: logic-apps
 ms.suite: integration
-ms.reviewer: deli, logicappspm
+ms.reviewer: estfan, logicappspm, azla
 ms.topic: conceptual
-ms.date: 11/03/2020
-ms.openlocfilehash: a9c6017ed46853b9dec991fc02097ee88c67a7cb
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.date: 12/18/2020
+ms.openlocfilehash: 9565ad1efc5ae3dc03b94c78ce8ce52e8dd48c65
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93342180"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98019192"
 ---
 # <a name="create-schedule-and-run-recurring-tasks-and-workflows-with-the-recurrence-trigger-in-azure-logic-apps"></a>Erstellen, Planen und Ausführen von wiederkehrenden Aufgaben und Workflows mit dem Serientrigger in Azure Logic Apps
 
-Um Aufgaben, Prozesse oder Aufträge nach einem bestimmten Zeitplan regelmäßig auszuführen, können Sie Ihren Logik-App-Workflow mit dem integrierten Trigger **Serie – Zeitplan starten**. Sie können ein Datum, eine Uhrzeit und eine Zeitzone zum Starten des Workflows sowie eine Serie zum Wiederholen dieses Workflows festlegen. Wenn Wiederholungen nicht ausgeführt werden, beispielsweise aufgrund von Unterbrechungen oder deaktivierten Workflows, verarbeitet dieser Trigger die fehlenden Wiederholungen nicht, startet die Verarbeitung von Wiederholungen aber im nächsten geplanten Intervall neu. Weitere Informationen zu den integrierten Zeitplantriggern und -aktionen finden Sie unter [Planen und Ausführen von wiederkehrenden automatisierten Aufgaben und Workflows mit Azure Logic Apps](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md).
+Um Aufgaben, Prozesse oder Aufträge nach einem bestimmten Zeitplan regelmäßig auszuführen, können Sie Ihren Logik-App-Workflow mit dem integrierten Trigger **Wiederholungs** trigger starten, der nativ in Azure Logic Apps ausgeführt wird. Sie können ein Datum, eine Uhrzeit und eine Zeitzone zum Starten des Workflows sowie eine Serie zum Wiederholen dieses Workflows festlegen. Wenn der Trigger Wiederholungen auslässt, beispielsweise aufgrund von Unterbrechungen oder deaktivierten Workflows, verarbeitet dieser Trigger die fehlenden Wiederholungen nicht, startet die Verarbeitung von Wiederholungen aber im nächsten geplanten Intervall neu. Weitere Informationen zu den integrierten Zeitplantriggern und -aktionen finden Sie unter [Planen und Ausführen von wiederkehrenden automatisierten Aufgaben und Workflows mit Azure Logic Apps](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md).
 
 Im Folgenden finden Sie einige Muster, die dieser Trigger neben erweiterten Serien und komplexen Zeitplänen unterstützt:
 
@@ -40,7 +40,7 @@ Die Unterschiede zwischen diesem Trigger und dem Trigger „Gleitendes Fenster�
 
 * Grundlegende Kenntnisse zu [Logik-Apps](../logic-apps/logic-apps-overview.md). Falls Sie noch nicht mit Logik-Apps gearbeitet haben, sollten Sie zunächst die Schnellstartanleitung zum [Erstellen Ihrer ersten Logik-App](../logic-apps/quickstart-create-first-logic-app-workflow.md) lesen.
 
-## <a name="add-recurrence-trigger"></a>Hinzufügen eines Serientriggers
+## <a name="add-the-recurrence-trigger"></a>Hinzufügen des Serientriggers
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. Erstellen einer leeren Logik-App
 
@@ -55,7 +55,7 @@ Die Unterschiede zwischen diesem Trigger und dem Trigger „Gleitendes Fenster�
    | Eigenschaft | JSON-Name | Erforderlich | type | BESCHREIBUNG |
    |----------|-----------|----------|------|-------------|
    | **Intervall** | `interval` | Ja | Integer | Eine positive ganze Zahl, die beschreibt, wie oft der Workflow basierend auf der Häufigkeit ausgeführt wird. Zulässige Mindest- und Maximalintervalle: <p>– Monat: 1–16 Monate <br>– Woche: 1–71 Wochen <br>– Tag: 1–500 Tage <br>– Stunde: 1–12.000 Stunden <br>– Minute: 1–72.000 Minuten <br>- Sekunde: 1–9.999.999 Sekunden<p>Wenn das Intervall also beispielsweise auf „6“ und die Häufigkeit auf „Month“ festgelegt ist, erfolgt die Wiederholung alle sechs Monate. |
-   | **Frequency** | `frequency` | Ja | String | Die Zeiteinheit für die Wiederholung: **Sekunde** , **Minute** , **Stunde** , **Tag** , **Woche** oder **Monat** |
+   | **Frequency** | `frequency` | Ja | String | Die Zeiteinheit für die Wiederholung: **Sekunde**, **Minute**, **Stunde**, **Tag**, **Woche** oder **Monat** |
    ||||||
 
    > [!IMPORTANT]
@@ -64,7 +64,7 @@ Die Unterschiede zwischen diesem Trigger und dem Trigger „Gleitendes Fenster�
    > 
    > * Geben Sie eine Startzeit für die Wiederholung an.
    > 
-   > * Geben Sie die Stunden und Minuten an, zu denen die Wiederholung ausgeführt werden soll, indem Sie die Eigenschaften **Zu diesen Stunden** und **Zu diesen Minuten** verwenden.
+   > * Geben Sie die Stunden und Minuten an, zu denen die Wiederholung ausgeführt werden soll, indem Sie die Eigenschaften namens **Zu diesen Stunden** und **Zu diesen Minuten** verwenden.
    > 
    > * Verwenden Sie den Trigger [Gleitendes Fenster](../connectors/connectors-native-sliding-window.md) anstelle des Triggers „Wiederholung“.
 
@@ -75,10 +75,10 @@ Die Unterschiede zwischen diesem Trigger und dem Trigger „Gleitendes Fenster�
    | Eigenschaft | JSON-Name | Erforderlich | type | BESCHREIBUNG |
    |----------|-----------|----------|------|-------------|
    | **Zeitzone** | `timeZone` | Nein | String | Nur relevant, wenn Sie eine Startzeit angeben, da dieser Trigger keine [UTC-Abweichung](https://en.wikipedia.org/wiki/UTC_offset) akzeptiert. Wählen Sie die anzuwendende Zeitzone aus. |
-   | **Startzeit** | `startTime` | Nein | String | Geben Sie ein Startdatum und eine Startzeit an, die maximal 49 Jahre in der Zukunft liegen kann und dem [ISO 8601-Format für Datums-/Uhrzeitangaben](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) entsprechen und im [UTC-Datums-/Zeitformat](https://en.wikipedia.org/wiki/Coordinated_Universal_Time) angegeben werden muss, jedoch ohne [UTC-Abweichung](https://en.wikipedia.org/wiki/UTC_offset): <p><p>JJJJ-MM-TTThh:mm:ss (bei Auswahl einer Zeitzone) <p>Oder <p>JJJJ-MM-TTThh:mm:ssZ (wenn keine Zeitzone ausgewählt wird) <p>Für den 18. September 2020 um 14:00 Uhr würden Sie also „2020-09-18T14:00:00“ angeben und eine Zeitzone (z. B. „Pacific Standard Time“) auswählen. Alternativ können Sie „2020-09-18T14:00:00Z“ ohne Zeitzone angeben. <p><p>**Wichtig:** Wenn Sie keine Zeitzone auswählen, müssen Sie den Buchstaben „Z“ ohne Leerzeichen anhängen. „Z“ bezieht sich auf die entsprechende [nautische Zeit](https://en.wikipedia.org/wiki/Nautical_time). Wenn Sie einen Zeitzonenwert auswählen, müssen Sie kein „Z“ am Ende Ihres **Startzeit** -Werts hinzufügen. Wenn Sie dies tun, ignoriert Logic Apps den Zeitzonenwert, weil „Z“ ein UTC-Zeitformat kennzeichnet. <p><p>Bei einfachen Zeitpläne ist die Startzeit das erste Vorkommen. Bei komplexeren Zeitplänen wird der Trigger nicht vor der Startzeit ausgelöst. [*Wie kann ich Startdatum und -uhrzeit verwenden?*](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md#start-time) |
-   | **An diesen Tagen** | `weekDays` | Nein | Zeichenfolge oder Zeichenfolgenarray | Wenn Sie „Woche“ auswählen, können Sie einen oder mehrere Tage auswählen, an denen der Workflow ausgeführt werden soll: **Montag** , **Dienstag** , **Mittwoch** , **Donnerst** , **Freitag** , **Samstag** und **Sonntag** |
-   | **Zu diesen Stunden** | `hours` | Nein | Ganze Zahl oder Ganzzahlarray | Bei Auswahl von „Tag“ oder „Woche“ können Sie eine oder mehrere ganze Zahlen zwischen 0 und 23 als Stunden des Tages angeben, zu denen der Workflow ausgeführt werden soll. <p><p>Wenn Sie z.B. „10“, „12“ und „14“ angeben, erhalten Sie 10 Uhr, 12 Uhr bzw. 14 Uhr als Stundenangabe. Die Minuten werden jedoch basierend auf dem Start der Wiederholung berechnet. Wenn Sie eine minutengenaue Uhrzeit festlegen möchten, z. B. 10:00 Uhr, 12:00 Uhr oder 14:00 Uhr, verwenden Sie die Eigenschaft **Zu diesen Minuten** , um diese Werte anzugeben. |
-   | **Zu diesen Minuten** | `minutes` | Nein | Ganze Zahl oder Ganzzahlarray | Bei Auswahl von „Day“ (Tag) oder „Week“ (Woche) können Sie eine oder mehrere ganze Zahlen zwischen 0 und 59 als Minuten der Stunden angeben, in denen der Workflow ausgeführt werden soll. <p>Wenn Sie also beispielsweise „30“ als Minutenwert angeben und das vorherige Beispiel für Stunden des Tages verwenden, erhalten Sie „10:30 Uhr“, „12:30 Uhr“ und „14:30 Uhr“. <p>**Hinweis** : Manchmal kann der Zeitstempel für die ausgelöste Ausführung bis zu 1 Minute von der geplanten Zeit abweichen. Wenn Sie den Zeitstempel exakt wie geplant an nachfolgende Aktionen übergeben müssen, können Vorlagenausdrücke verwenden, um den Zeitstempel entsprechend zu ändern. Weitere Informationen finden Sie unter [Datums- und Uhrzeitfunktionen für Ausdrücke](../logic-apps/workflow-definition-language-functions-reference.md#date-time-functions). |
+   | **Startzeit** | `startTime` | Nein | String | Geben Sie ein Startdatum und eine Startzeit an, die maximal 49 Jahre in der Zukunft liegen kann und dem [ISO 8601-Format für Datums-/Uhrzeitangaben](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) entsprechen und im [UTC-Datums-/Zeitformat](https://en.wikipedia.org/wiki/Coordinated_Universal_Time) angegeben werden muss, jedoch ohne [UTC-Abweichung](https://en.wikipedia.org/wiki/UTC_offset): <p><p>JJJJ-MM-TTThh:mm:ss (bei Auswahl einer Zeitzone) <p>Oder <p>JJJJ-MM-TTThh:mm:ssZ (wenn keine Zeitzone ausgewählt wird) <p>Für den 18. September 2020 um 14:00 Uhr würden Sie also „2020-09-18T14:00:00“ angeben und eine Zeitzone (z. B. „Pacific Standard Time“) auswählen. Alternativ können Sie „2020-09-18T14:00:00Z“ ohne Zeitzone angeben. <p><p>**Wichtig:** Wenn Sie keine Zeitzone auswählen, müssen Sie den Buchstaben „Z“ ohne Leerzeichen anhängen. „Z“ bezieht sich auf die entsprechende [nautische Zeit](https://en.wikipedia.org/wiki/Nautical_time). Wenn Sie einen Zeitzonenwert auswählen, müssen Sie kein „Z“ am Ende Ihres **Startzeit**-Werts hinzufügen. Wenn Sie dies tun, ignoriert Logic Apps den Zeitzonenwert, weil „Z“ ein UTC-Zeitformat kennzeichnet. <p><p>Bei einfachen Zeitpläne ist die Startzeit das erste Vorkommen. Bei komplexeren Zeitplänen wird der Trigger nicht vor der Startzeit ausgelöst. [*Wie kann ich Startdatum und -uhrzeit verwenden?*](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md#start-time) |
+   | **An diesen Tagen** | `weekDays` | Nein | Zeichenfolge oder Zeichenfolgenarray | Wenn Sie „Woche“ auswählen, können Sie einen oder mehrere Tage auswählen, an denen der Workflow ausgeführt werden soll: **Montag**, **Dienstag**, **Mittwoch**, **Donnerst**, **Freitag**, **Samstag** und **Sonntag** |
+   | **Zu diesen Stunden** | `hours` | Nein | Ganze Zahl oder Ganzzahlarray | Bei Auswahl von „Tag“ oder „Woche“ können Sie eine oder mehrere ganze Zahlen zwischen 0 und 23 als Stunden des Tages angeben, zu denen der Workflow ausgeführt werden soll. <p><p>Wenn Sie z.B. „10“, „12“ und „14“ angeben, erhalten Sie 10 Uhr, 12 Uhr bzw. 14 Uhr als Stundenangabe. Die Minuten werden jedoch basierend auf dem Start der Wiederholung berechnet. Wenn Sie eine minutengenaue Uhrzeit festlegen möchten, z. B. 10:00 Uhr, 12:00 Uhr oder 14:00 Uhr, verwenden Sie die Eigenschaft namens **Zu diesen Minuten**, um diese Werte anzugeben. |
+   | **Zu diesen Minuten** | `minutes` | Nein | Ganze Zahl oder Ganzzahlarray | Bei Auswahl von „Day“ (Tag) oder „Week“ (Woche) können Sie eine oder mehrere ganze Zahlen zwischen 0 und 59 als Minuten der Stunden angeben, in denen der Workflow ausgeführt werden soll. <p>Wenn Sie also beispielsweise „30“ als Minutenwert angeben und das vorherige Beispiel für Stunden des Tages verwenden, erhalten Sie „10:30 Uhr“, „12:30 Uhr“ und „14:30 Uhr“. <p>**Hinweis**: Manchmal kann der Zeitstempel für die ausgelöste Ausführung bis zu 1 Minute von der geplanten Zeit abweichen. Wenn Sie den Zeitstempel exakt wie geplant an nachfolgende Aktionen übergeben müssen, können Vorlagenausdrücke verwenden, um den Zeitstempel entsprechend zu ändern. Weitere Informationen finden Sie unter [Datums- und Uhrzeitfunktionen für Ausdrücke](../logic-apps/workflow-definition-language-functions-reference.md#date-time-functions). |
    |||||
 
    Angenommen, heute ist Freitag, der 4. September 2020. Der folgende Serientrigger wird *frühestens* am festgelegten Startdatum zur festgelegten Startzeit ausgelöst, also am Freitag, den 18. September 2020, um 8:00 Uhr (PST). Der Wiederholungszeitplan ist aber für die Uhrzeiten 10:30, 12:30 und 14:30 ausschließlich an Montagen festgelegt. Also wird der Trigger am Montag um 10:30 Uhr zum ersten Mal ausgelöst und eine Instanz des Logik-App-Workflows erstellt. Weitere Informationen zur Funktionsweise von Startzeiten finden Sie in diesen [Beispielen zu Startzeiten](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md#start-time).
@@ -124,6 +124,14 @@ Dieses Beispiel zeigt, wie die Definition eines Serientriggers in einer zugrunde
    }
 }
 ```
+
+<a name="daylight-saving-standard-time"></a>
+
+## <a name="trigger-recurrence-shift-between-daylight-saving-time-and-standard-time"></a>Verschiebung der Triggerwiederholung zwischen Sommerzeit und Normalzeit
+
+Wiederkehrende, integrierte Trigger berücksichtigen den von Ihnen festgelegten Zeitplan, einschließlich der von Ihnen angegebenen Zeitzone. Wenn Sie keine Zeitzone auswählen, könnte sich die Sommerzeit darauf auswirken, wann Trigger ausgeführt werden, z. B. ein Verschieben der Startzeit um eine Stunde vorwärts, wenn die Sommerzeit beginnt, und eine Stunde rückwärts, wenn die Sommerzeit endet.
+
+Um diese Verschiebung zu vermeiden, damit Ihre Logik-App zu Ihrer angegebenen Startzeit ausgeführt wird, stellen Sie sicher, dass Sie eine Zeitzone auswählen. Auf diese Weise wird auch die UTC-Zeit für Ihre Logik-App verschoben, um die Sommerzeitumstellung zu berücksichtigen. Einige Zeitfenster können jedoch Probleme verursachen, wenn sich die Zeit verschiebt. Weitere Informationen und Beispiele finden Sie unter [Wiederholung für Sommerzeit und Standardzeit](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md#daylight-saving-standard-time).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

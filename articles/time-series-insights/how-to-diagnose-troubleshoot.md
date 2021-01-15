@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 10/01/2020
 ms.custom: seodec18
-ms.openlocfilehash: eca2009ee0470dec9c9ce60d8754f8f7a71619d3
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: d9dd07e3a35d83ff6bd9c7c493768d1197667c39
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97740537"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98108788"
 ---
 # <a name="diagnose-and-troubleshoot-an-azure-time-series-insights-gen2-environment"></a>Diagnose und Problembehandlung in einer Azure Time Series Insights Gen2-Umgebung
 
@@ -71,7 +71,7 @@ Möglicherweise werden Sie Daten ohne die Time Series-ID.
 - Dieses Problem kann auftreten, weil Ihre Umgebung gedrosselt wird.
 
     > [!NOTE]
-    > Zurzeit unterstützt Time Series Insights eine maximale Datenerfassungsrate von 6 Mbit/s.
+    > Zurzeit unterstützt Time Series Insights eine maximale Datenerfassungsrate von 1 Mbit/s.
 
 ## <a name="problem-data-was-showing-but-now-ingestion-has-stopped"></a>Problem: Es wurden Daten angezeigt, aber die Erfassung wurde nun beendet.
 

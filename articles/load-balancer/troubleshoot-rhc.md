@@ -11,16 +11,28 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/14/2020
 ms.author: errobin
-ms.openlocfilehash: dcfce06bb158888b56483a73ededd354c229a99b
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 3acaaba86c9a546a0bd45b5386287908168d50d0
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94696318"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97955619"
 ---
-# <a name="troubleshoot-resource-health-frontend-and-backend-availability-issues"></a>Behandeln von Problemen im Zusammenhang mit der Ressourcenintegrität sowie mit der Front-End- und Back-End-Verfügbarkeit 
+# <a name="troubleshoot-resource-health-and-inbound-availability-issues"></a>Beheben von Problemen mit Ressourcenintegrität und eingehender Verfügbarkeit 
 
 In diesem Artikel werden die Schritte zum Untersuchen von Problemen beschrieben, die sich auf die Verfügbarkeit der Front-End-IP-Adresse und Back-End-Ressourcen Ihrer Load Balancer-Instanz auswirken. 
+
+Der Resource Health Check (RHC) für den Load Balancer wird verwendet, um die Integrität Ihres Load Balancers zu ermitteln. Er analysiert die Datenpfadverfügbarkeits-Metrik über ein Intervall von **2 Minuten**, um zu bestimmen, ob die Lastenausgleichs-Endpunkte, die Kombinationen aus Front-End-IP-Adressen und Front-End-Ports mit Lastenausgleichsregeln verfügbar sind.
+
+In der folgenden Tabelle wird die zum Ermitteln des Integritätszustands des Load Balancers verwendete RHC-Logik beschrieben.
+
+| Ressourcenintegritätsstatus | BESCHREIBUNG |
+| --- | --- |
+| Verfügbar | Ihre Load Balancer Standard-Ressource ist fehlerfrei und verfügbar. |
+| Heruntergestuft | Für die Load Balancer Standard-Instanz liegen plattform- oder benutzerseitig initiierte Ereignisse vor, die sich auf die Leistung auswirken. Die Metrik für die Datenpfadverfügbarkeit hat mindestens zwei Minuten lang weniger als 90 %, aber mehr als 25 %Integrität gemeldet. Es treten mittlere bis schwerwiegende Leistungsbeeinträchtigungen auf. 
+| Nicht verfügbar | Ihre Load Balancer Standard-Ressource ist nicht fehlerfrei. Die Metrik für die Datenpfadverfügbarkeit hat mindestens zwei Minuten lang weniger als 25 % Integrität gemeldet. Leistung und Verfügbarkeit für eingehende Verbindungen sind erheblich beeinträchtigt. Möglicherweise liegen Benutzer- oder Plattformereignisse vor, die eine Nichtverfügbarkeit verursachen. |
+| Unbekannt | Der Ressourcenintegritätsstatus Ihrer Load Balancer Standard-Ressource wurde noch nicht aktualisiert oder hat in den letzten 10 Minuten keine Informationen zur Datenpfadverfügbarkeit empfangen. Dieser Zustand sollte vorübergehend sein. Der korrekte Status wird angegeben, sobald Daten empfangen werden. |
+
 
 ## <a name="about-the-metrics-well-use"></a>Informationen zu den verwendeten Metriken
 Für die Schritte dieses Artikels werden die beiden Metriken *Datenpfadverfügbarkeit* und *Integritätsteststatus* verwendet. Um die richtigen Rückschlüsse zu ziehen, sollten Sie mit diesen beiden Metriken vertraut sein. 

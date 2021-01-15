@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 11/25/2020
 ms.author: anvang
 ms.reviewer: jrasnick
-ms.openlocfilehash: a1fbc6eede6c82020b765185602c672c1162fdf8
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 769ca4cf0ecbdba5fd80d977eb69c8a4f58df55f
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96548187"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98071186"
 ---
 # <a name="enabling-synapse-workspace-features-for-a-dedicated-sql-pool-formerly-sql-dw"></a>Aktivieren von Synapse-Arbeitsbereichsfunktionen für einen dedizierten SQL-Pool (ehemals SQL DW)
 
@@ -57,6 +57,9 @@ Die folgenden Schritte müssen ausgeführt werden, um sicherzustellen, dass auf 
 4. Wählen Sie eine Instanz des dedizierten SQL-Pools (ehemals SQL DW) aus, die auf dem logischen Server gehostet wird. Wählen Sie auf der Seite Übersicht **Synapse Studio starten** aus, oder navigieren Sie zu [Sign in to the Synapse Studio](https://web.azuresynapse.net) (Bei Synapse Studio anmelden), und melden Sie sich bei Ihrem Arbeitsbereich an.
 
 5. Öffnen Sie den **Datenhub**, und erweitern Sie den dedizierten SQL-Pool im Objekt-Explorer. Damit überprüfen Sie, ob Sie auf Ihr Data Warehouse zugreifen und es abfragen können.
+
+    > [!NOTE] 
+    > Ein verbundener Arbeitsbereich kann jederzeit gelöscht werden. Beim Löschen des Arbeitsbereichs wird der verbundene dedizierte SQL-Pool (früher SQL DW) nicht gelöscht. Die Arbeitsbereichsfunktion kann für den dedizierten SQL-Pool (früher SQL DW) erneut aktiviert werden, wenn der Löschvorgang abgeschlossen ist.
 
 ## <a name="next-steps"></a>Nächste Schritte
 Machen Sie sich mit [Synapse-Arbeitsbereich und Studio](../get-started.md) vertraut.
