@@ -5,16 +5,16 @@ services: data-factory
 author: linda33wj
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 12/30/2020
+ms.date: 01/07/2021
 ms.author: jingwang
 ms.reviewer: craigg
 ms.custom: has-adal-ref
-ms.openlocfilehash: e6591762ed6a7e2b462a209730276f3198d86ae8
-ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
+ms.openlocfilehash: 68547b8fb673cd54b7c21963ede122553bbbc390
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97821467"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97967122"
 ---
 # <a name="troubleshoot-azure-data-factory-connectors"></a>Problembehandlung für Azure Data Factory-Connectors
 
@@ -458,34 +458,15 @@ In diesem Artikel werden die gängigen Problembehandlungsmethoden für Connector
 - **Ursache:** Für Azure Synapse Analytics ist beim Abfragen der externen Tabelle in Azure Storage ein Fehler aufgetreten.
 
 - **Lösung:** Führen Sie die gleiche Abfrage in SSMS aus, und überprüfen Sie, ob das gleiche Ergebnis angezeigt wird. Wenn ja: Erstellen Sie ein Supportticket für Azure Synapse Analytics, und geben Sie für die weitere Problembehandlung den Namen Ihres Azure Synapse Analytics-Servers und der Datenbank an.
-            
-
-### <a name="low-performance-when-load-data-into-azure-sql"></a>Geringe Leistung beim Laden von Daten in Azure SQL
-
-- **Symptome:** Das Kopieren von Daten in Azure SQL ist langsam.
-
-- **Ursache:** Die Grundursache dieses Problems ist meistens ein Engpass auf Azure SQL-Seite. Folgende Ursachen kommen in Betracht:
-
-    - Die Azure-Datenbankebene ist nicht hoch genug.
-
-    - Der DTU-Verbrauch der Azure-Datenbank liegt bei fast 100 %. Sie können [die Leistung überwachen](https://docs.microsoft.com/azure/azure-sql/database/monitor-tune-overview) und ein Upgrade der Datenbankebene in Erwägung ziehen.
-
-    - Die Indizes sind nicht ordnungsgemäß festgelegt. Entfernen Sie alle Indizes vor dem Laden der Daten, und erstellen Sie sie nach Abschluss des Ladevorgangs neu.
-
-    - WriteBatchSize ist nicht groß genug für die Zeilengröße des Schemas. Versuchen Sie, den Wert der Eigenschaft zu erhöhen, um das Problem zu beheben.
-
-    - Anstelle einer Masseneinfügung wird eine gespeicherte Prozedur verwendet, bei der eine geringere Leistung zu erwarten ist. 
-
-- **Lösung:** Weitere Informationen finden Sie im Leitfaden zur Problembehandlung für die [Leistung der Kopieraktivität](https://docs.microsoft.com/azure/data-factory/copy-activity-performance-troubleshooting).
 
 
 ### <a name="performance-tier-is-low-and-leads-to-copy-failure"></a>Die Leistungsstufe ist niedrig und führt zu einem Kopierfehler
 
-- **Symptome:** Folgende Fehlermeldung ist beim Kopieren von Daten in Azure SQL aufgetreten: `Database operation failed. Error message from database execution : ExecuteNonQuery requires an open and available Connection. The connection's current state is closed.`
+- **Symptome:** Folgende Fehlermeldung wurde beim Kopieren von Daten in Azure SQL-Datenbank angezeigt: `Database operation failed. Error message from database execution : ExecuteNonQuery requires an open and available Connection. The connection's current state is closed.`
 
-- **Ursache:** Azure SQL S1 wird verwendet. Dabei können in einem solchen Fall die E/A-Grenzwerte erreicht werden.
+- **Ursache:** Azure SQL-Datenbank S1 wird gerade verwendet. Dabei können in einem solchen Fall die E/A-Grenzwerte erreicht werden.
 
-- **Lösung:** Führen Sie ein Upgrade der Azure SQL-Leistungsstufe durch, um das Problem zu beheben. 
+- **Lösung:** Führen Sie ein Upgrade der Azure SQL-Datenbank-Leistungsstufe durch, um das Problem zu beheben. 
 
 
 ### <a name="sql-table-cannot-be-found"></a>SQL-Tabelle kann nicht gefunden werden 
@@ -619,31 +600,6 @@ In diesem Artikel werden die gängigen Problembehandlungsmethoden für Connector
 - **Ursache:** Der Dynamics-Server ist instabil, es kann nicht darauf zugegriffen werden oder im Netzwerk treten Probleme auf.
 
 - **Empfehlung**:  Überprüfen Sie die Netzwerkkonnektivität, oder suchen Sie im Dynamics-Serverprotokoll nach weiteren Details. Wenden Sie sich an den Dynamics-Support, um weitere Unterstützung zu erhalten.
-
-
-## <a name="excel-format"></a>Excel-Format
-
-### <a name="timeout-or-slow-performance-when-parsing-large-excel-file"></a>Timeout oder geringe Leistung beim Analysieren einer großen Excel-Datei
-
-- **Symptome:**
-
-    - Wenn Sie ein Excel-Dataset erstellen und Schemas über „Aus Verbindung/Speicher“ importieren, die Vorschau für Daten anzeigen, eine Auflistung vornehmen oder Arbeitsblätter aktualisieren, tritt ggf. ein Timeoutfehler auf, falls die Excel-Datei sehr groß ist.
-
-    - Wenn Sie die Kopieraktivität zum Kopieren von Daten aus einer großen Excel-Datei (>= 100 MB) in einen anderen Datenspeicher verwenden, ist der Vorgang unter Umständen sehr langsam, oder es tritt ein Fehler vom Typ „Nicht genügend Arbeitsspeicher“ auf.
-
-- **Ursache**: 
-
-    - Für Vorgänge wie das Importieren von Schemas, das Anzeigen der Vorschau für Daten und das Auflisten von Arbeitsblättern eines Excel-Datasets beträgt der Timeoutzeitraum 100 Sekunden(statischer Vorgang). Bei sehr umfangreichen Excel-Dateien können diese Vorgänge unter Umständen nicht innerhalb des Timeoutzeitraums abgeschlossen werden.
-
-    - Bei der ADF-Kopieraktivität wird die gesamte Excel-Datei in den Arbeitsspeicher eingelesen. Anschließend wird das angegebene Arbeitsblatt ermittelt, und die Daten werden aus den Zellen ausgelesen. Dieses Verhalten basiert auf dem zugrunde liegenden SDK, das von ADF verwendet wird.
-
-- **Lösung:** 
-
-    - Zum Importieren von Schemas können Sie eine kleinere Beispieldatei generieren, bei der es sich um eine Teilmenge der Originaldatei handelt, und anstelle von „Schema aus Verbindung/Speicher importieren“ die Option „Schema aus Beispieldatei importieren“ auswählen.
-
-    - Zum Auflisten von Arbeitsblättern können Sie in der Dropdownliste „Arbeitsblatt“ auf „Bearbeiten“ klicken und stattdessen den Arbeitsblattnamen bzw. den Index eingeben.
-
-    - Zum Kopieren von großen Excel-Dateien (> 100 MB) in einen anderen Speicher können Sie den Datenfluss für Excel-Quellen verwenden, der über Unterstützung von Streaminglesevorgängen und eine bessere Leistung verfügt.
     
 
 ## <a name="ftp"></a>FTP

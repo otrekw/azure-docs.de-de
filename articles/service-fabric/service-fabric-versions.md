@@ -3,12 +3,12 @@ title: Unterstützte Clusterversionen in Azure Service Fabric
 description: Erfahren Sie mehr über Clusterversionen in Azure Service Fabric, einschließlich eines Links zu den neuesten Releases des Service Fabric-Teamblogs.
 ms.topic: troubleshooting
 ms.date: 06/15/2020
-ms.openlocfilehash: 5770aa072666f89a574da9d1f2584ab33b612330
-ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
+ms.openlocfilehash: abf9900e9749a1b21d927e0315076b38848bea10
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97862170"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98132646"
 ---
 # <a name="supported-service-fabric-versions"></a>Unterstützte Service Fabric-Versionen
 
@@ -25,25 +25,57 @@ In den folgenden Dokumenten finden Sie Details dazu, wie Sie sicherstellen könn
 ## <a name="unsupported-versions"></a>Nicht unterstützte Versionen
 
 ### <a name="upgrade-alert-for-versions-between-57-and-below-6363"></a>Upgradewarnung für Versionen zwischen 5.7 und 6.3.63.*
+Um die Sicherheit und Verfügbarkeit zu verbessern, nimmt die Azure-Infrastruktur eine Änderung vor, die sich ggf. auf Service Fabric-Kunden auswirkt. **Alle Service Fabric-Cluster in nicht unterstützten Versionen zwischen 5.7 und 6.3 sind betroffen**. Die Adressierung der Änderung erfordert ein Update der Service-Fabric-Laufzeit, das bereits für alle unterstützten Service-Fabric-Versionen in allen Regionen verfügbar ist.
 
-***Alle Service Fabric-Cluster in nicht unterstützten Versionen zwischen 5.7 und 6.3.63* sind von einer Breaking Change für die Sicherheit betroffen, die am 7. Januar 2021 in Azure eingeführt wird***.
- 
- Um schwerwiegende Dienstunterbrechungen zu vermeiden (einschließlich nicht erstellter Cluster), müssen Sie die Cluster so bald wie möglich auf eine der unten genannten unterstützten Versionen von Service Fabric Runtime aktualisieren, in der das Sicherheitsproblem behoben ist. Wir haben mit den betroffenen Kunden Kontakt aufgenommen und eine Anleitung für sie bereitgestellt. Wenn Sie über einen Supportplan verfügen und technische Hilfe benötigen, wenden Sie sich über [Azure-Supportkanäle](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request) an uns, indem Sie eine Supportanfrage öffnen und im Supportticket diesen Kontext erwähnen. 
- 
-  #### <a name="supported-service-fabric-runtime-versions-including-the-fix-for-the-security-breaking-change"></a>Unterstützte Versionen von Service Fabric Runtime, in denen das Problem bezüglich der Breaking Change für die Sicherheit behoben ist. 
-   Führen Sie ein Upgrade der Service Fabric Cluster, auf denen ältere, nicht unterstützte Versionen ausgeführt werden und die von der Breaking Change für die Sicherheit betroffen sind, auf eine der folgenden unterstützten Versionen durch.
+Wir verlangen und empfehlen, Maßnahmen zu ergreifen, um bis zum **19. Januar 2021** ein Upgrade auf die neuesten unterstützten Versionen durchzuführen, um Dienstunterbrechungen zu vermeiden. Wenn Sie einen Supportplan nutzen und technische Hilfe benötigen, wenden Sie sich über die Azure-Supportkanäle an uns, indem Sie eine Supportanfrage für Azure Service Fabric öffnen und diesen Kontext im Supportticket erwähnen.
 
+#### <a name="impact-if-not-upgraded-to-supported-versions"></a>Auswirkungen, wenn kein Upgrade auf unterstützte Versionen durchgeführt wird
+
+**Azure Service Fabric-Cluster, die unter nicht unterstützten Versionen zwischen 5.7 und 6.3.63 ausgeführt werden\*, können nicht gestartet werden und sind nicht verfügbar**, wenn Sie bis zum 19. Januar 2021 kein Upgrade auf eine der unten aufgeführten unterstützten Versionen durchgeführt haben.
+
+#### <a name="required-action"></a>Erforderliche Aktion
+Führen Sie ein Upgrade auf die unten aufgeführten unterstützten Service Fabric-Versionen aus, um Ausfallzeiten oder Funktionsverluste zu vermeiden. Stellen Sie sicher, dass auf Ihren Clustern mindestens diese Versionen ausgeführt werden, um Probleme in Ihrer Umgebung zu vermeiden.
+
+  ###### <a name="supported-service-fabric-runtime-versions"></a>Unterstützte Service Fabric-Laufzeitversion
+   Wenn Sie NICHT über die unten aufgeführten unterstützten Versionen von Service Fabric verfügen, führen Sie ein Upgrade auf eine dieser Versionen durch, die bereits die erforderlichen Änderungen enthalten, um Ausfallzeiten der Cluster zu verhindern.  
+  
   | OS | Aktuelle Service Fabric-Runtime im Cluster | CU/Patchrelease  | 
   | --- | --- |--- | 
   | Windows | 7.0.* | 7.0.478.9590 |
   | Windows | 7.1.* | 7.1.503.9590 |
   | Windows | 7.2.* | 7.2.445.9590 |
   | Ubuntu 16 | 7.0.* | 7.0.472.1  |
-  | Ubuntu 16 | 7.1.* | 7.1.455.1  |
-  | Ubuntu 1804 | 7.1.* | 7.1.455.1804 |
-  | Ubuntu 16 | 7.2.* | 7.2.447.1 |
-  | Ubuntu 1804 | 7.2.* | 7.2.447.1804 |
+  | Linux Ubuntu 16.04 | 7.1.* | 7.1.455.1  |
+  | Linux Ubuntu 18.04 | 7.1.* | 7.1.455.1804 |
+  | Linux Ubuntu 16.04 | 7.2.* | 7.2.447.1 |
+  | Linux Ubuntu 18.04 | 7.2.* | 7.2.447.1804 |
  
+### <a name="upgrade-alert-for-versions-greater-than-63"></a>Upgradewarnung für höhere Versionen als 6.3 
+Um die Sicherheit und Verfügbarkeit zu verbessern, nimmt die Azure-Infrastruktur eine Änderung vor, die sich ggf. auf Service Fabric-Kunden auswirkt. **Alle Service Fabric-Cluster, die das [Open Networking-Feature für Container](https://docs.microsoft.com/azure/service-fabric/service-fabric-networking-modes#set-up-open-networking-mode) verwenden, werden unter nicht unterstützten Versionen ausgeführt, die größer als 6.3 und kleiner als 7.0 sind, und inkompatible unterstützte Versionen ab 7.0 sind betroffen**. Die Adressierung der Änderung erfordert ein Update der Service-Fabric-Laufzeit, das bereits für alle unterstützten Service-Fabric-Versionen in allen Regionen verfügbar ist.
+
+ #### <a name="impact-if-not-upgraded-to-supported-versions"></a>Auswirkungen, wenn kein Upgrade auf unterstützte Versionen durchgeführt wird
+  Bei Azure Service Fabric-Clustern, die das [Open Networking-Feature für Container](https://docs.microsoft.com/azure/service-fabric/service-fabric-networking-modes#set-up-open-networking-mode) **verwenden und unter Versionen größer als 6.3** ausgeführt werden, die keine Änderungen enthalten, kommt es zu Funktionsverlusten oder Dienstunterbrechungen, wenn bis zum **19. Januar 2021** KEIN Upgrade auf eine der unten aufgeführten unterstützten Versionen durchgeführt wird.
+ 
+  - **Bei Clustern, die eine höhere Version von Service Fabric als 6.3 ausführen und das Open Networking-Feature NICHT verwenden**, bleibt der Cluster in Betrieb, das Open Networking-Feature für Containercluster funktioniert jedoch nicht mehr, was zu Dienstunterbrechungen für Ihre Workloads führen kann.
+
+ - **Bei Clustern, die eine höhere Version von Service Fabric als 6.3 ausführen und das [Open Networking-Feature für Container](https://docs.microsoft.com/azure/service-fabric/service-fabric-networking-modes#set-up-open-networking-mode)** verwenden, bleibt der Cluster in Betrieb, funktioniert jedoch nicht mehr, was zu Dienstunterbrechungen für Ihre Workloads führen kann.
+  
+#### <a name="required-action"></a>Erforderliche Aktion
+Führen Sie ein Upgrade auf die unten aufgeführten unterstützten Service Fabric-Versionen aus, um Ausfallzeiten oder Funktionsverluste zu vermeiden. Stellen Sie sicher, dass auf Ihren Clustern mindestens diese Versionen ausgeführt werden, um Probleme in Ihrer Umgebung zu vermeiden. 
+ 
+ ###### <a name="supported-service-fabric-runtime-versions"></a>Unterstützte Service Fabric-Laufzeitversion
+ Wenn Sie NICHT über die unten aufgeführten unterstützten Versionen von Service Fabric verfügen, führen Sie ein Upgrade auf eine dieser Versionen durch, die bereits die erforderlichen Änderungen enthalten, um Funktionsverluste zu verhindern.  
+ 
+  | OS | Aktuelle Service Fabric-Runtime im Cluster | CU/Patchrelease  | 
+  | --- | --- |--- | 
+  | Windows | 7.0.* | 7.0.478.9590 |
+  | Windows | 7.1.* | 7.1.503.9590 |
+  | Windows | 7.2.* | 7.2.445.9590 |
+  | Linux Ubuntu 16.04 | 7.0.* | 7.0.472.1  |
+  | Linux Ubuntu 16.04 | 7.1.* | 7.1.455.1  |
+  | Linux Ubuntu 18.04 | 7.1.* | 7.1.455.1804 |
+  | Linux Ubuntu 16.04 | 7.2.* | 7.2.447.1 |
+  | Linux Ubuntu 18.04 | 7.2.* | 7.2.447.1804 |
 
 ## <a name="supported-versions"></a>Unterstützte Versionen
 Die folgende Tabelle enthält die Versionen von Service Fabric und das jeweilige Datum des Ablaufs des Supports.

@@ -11,12 +11,12 @@ ms.reviewer: ''
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/02/2020
-ms.openlocfilehash: e839b8a22da50ce172043f57a4467219a1771175
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 27f14834e45dd32bdf3a26d22d38ab250aa1bcbe
+ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97584200"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98127735"
 ---
 # <a name="source-control-in-azure-data-factory"></a>Quellcodeverwaltung in Azure Data Factory
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
@@ -25,6 +25,7 @@ Standardmäßig erfolgt die Erstellung mit der Azure Data Factory-Benutzeroberfl
 
 - Der Data Factory-Dienst umfasst kein Repository zum Speichern der JSON-Entitäten für Ihre Änderungen. Änderungen können nur über die Schaltfläche **Alle veröffentlichen** gespeichert werden, und sämtliche Änderungen werden direkt im Data Factory-Dienst veröffentlicht.
 - Der Data Factory-Dienst ist nicht für Kollaboration oder Versionskontrolle optimiert.
+- Die für die Bereitstellung von Data Factory selbst erforderliche Azure Resource Manager-Vorlage ist nicht darin enthalten.
 
 Um eine bessere Erstellung zu ermöglichen, können Sie mit Azure Data Factory ein Git-Repository mit Azure Repos oder GitHub konfigurieren. Git ist ein Versionskontrollsystem, das eine einfachere Änderungsnachverfolgung und Kollaboration ermöglicht. In diesem Artikel wird erläutert, wie Sie ein Git-Repository konfigurieren und in diesem arbeiten. Außerdem finden Sie hier Best Practices und eine Anleitung zur Problembehandlung.
 
@@ -96,7 +97,7 @@ Das visuelle Erstellen mit der Azure Repos Git-Integration unterstützt die Quel
 
 Im Konfigurationsbereich werden die folgenden Einstellungen für das Coderepository für Azure Repos angezeigt:
 
-| Einstellung | Beschreibung | Wert |
+| Einstellung | BESCHREIBUNG | Wert |
 |:--- |:--- |:--- |
 | **Repositorytyp** | Der Typ des Coderepositorys für Azure Repos.<br/> | Azure DevOps Git oder GitHub |
 | **Azure Active Directory** | Ihr Name des Azure AD-Mandanten. | `<your tenant name>` |

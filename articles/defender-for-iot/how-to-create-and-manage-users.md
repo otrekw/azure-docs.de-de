@@ -4,15 +4,15 @@ description: Erfahren Sie, wie Sie Benutzer von Sensoren und der lokalen Verwalt
 author: shhazam-ms
 manager: rkarlin
 ms.author: shhazam
-ms.date: 12/21/2020
+ms.date: 1/3/2021
 ms.topic: article
 ms.service: azure
-ms.openlocfilehash: c3a9e1c7e96d0392e1f94b71549f612738622dea
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: c33b3e5fee19edc5d4ac85284e507b53e96234a0
+ms.sourcegitcommit: 8f0803d3336d8c47654e119f1edd747180fe67aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97836345"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97977012"
 ---
 # <a name="about-defender-for-iot-console-users"></a>Grundlegendes zu Benutzern der Defender für IoT-Konsole
 
@@ -89,8 +89,8 @@ In diesem Abschnitt wird das Definieren von Benutzern beschrieben. Die Benutzer 
 So definieren Sie einen Benutzer
 
 1. Wählen Sie im linken Bereich des Sensors oder der lokalen Verwaltungskonsole **Benutzer** aus.
-2. Wählen Sie im Fenster **Benutzer** die Option **Benutzer erstellen** aus.
-3. Legen Sie im Bereich **Benutzer erstellen** die folgenden Parameter fest:
+1. Wählen Sie im Fenster **Benutzer** die Option **Benutzer erstellen** aus.
+1. Legen Sie im Bereich **Benutzer erstellen** die folgenden Parameter fest:
 
    - **Benutzername**: Geben Sie einen Benutzernamen ein.
    - **E-Mail**: Geben Sie die E-Mail-Adresse des Benutzers ein.
@@ -122,7 +122,7 @@ So greifen Sie auf den Befehl zu
 
 1. Melden Sie sich bei der Befehlszeilenschnittstelle für den Sensor oder die lokale Verwaltungskonsole an, und verwenden Sie dabei Administratoranmeldeinformationen für Defender für IoT.
 
-2. Geben Sie `sudo nano /var/cyberx/properties/authentication` ein.
+1. Geben Sie `sudo nano /var/cyberx/properties/authentication` ein.
 
 ```azurecli-interactive
     infinity_session_expiration = true
@@ -138,7 +138,6 @@ So greifen Sie auf den Befehl zu
 Ändern Sie `infinity_session_expiration = true` in `infinity_session_expiration = false`, um die Funktion zu deaktivieren.
 
 Um die Abmeldezeiten zu aktualisieren, ändern Sie den Wert von `= <number>` in die erforderliche Zeit.
-
 
 ## <a name="track-user-activity"></a>Nachverfolgen der Benutzeraktivität 
 
@@ -171,11 +170,11 @@ So konfigurieren Sie Active Directory
 
     :::image type="content" source="media/how-to-setup-active-directory/ad-system-settings-v2.png" alt-text="Anzeigen Ihrer Active Directory-Systemeinstellungen":::
 
-2. Wählen Sie im Bereich **Systemeinstellungen** die Option **Active Directory** aus.
+1. Wählen Sie im Bereich **Systemeinstellungen** die Option **Active Directory** aus.
 
     :::image type="content" source="media/how-to-setup-active-directory/ad-configurations-v2.png" alt-text="Bearbeiten Ihrer Active Directory-Konfigurationen":::
 
-3. Wählen Sie im Dialogfeld **Edit Active Directory Configuration** (Active Directory Konfiguration bearbeiten) die Option **Active Directory Integration Enabled (Active Directory-Integration aktiviert)**  > **Speichern** aus. Das Dialogfeld **Edit Active Directory Configuration** (Active Directory Konfiguration bearbeiten) wird erweitert, sodass Sie nun die Parameter zum Konfigurieren von Active Directory eingeben können.
+1. Wählen Sie im Dialogfeld **Edit Active Directory Configuration** (Active Directory Konfiguration bearbeiten) die Option **Active Directory Integration Enabled (Active Directory-Integration aktiviert)**  > **Speichern** aus. Das Dialogfeld **Edit Active Directory Configuration** (Active Directory Konfiguration bearbeiten) wird erweitert, sodass Sie nun die Parameter zum Konfigurieren von Active Directory eingeben können.
 
     :::image type="content" source="media/how-to-setup-active-directory/ad-integration-enabled-v2.png" alt-text="Eingeben der Parameter zum Konfigurieren von Active Directory":::
 
@@ -184,7 +183,7 @@ So konfigurieren Sie Active Directory
     > - Verwenden Sie für alle Active Directory-Parameter nur Kleinbuchstaben. Verwenden Sie selbst dann Kleinbuchstaben, wenn bei den Konfigurationen in Active Directory Großbuchstaben verwendet werden.
     > - Es ist nicht möglich, sowohl LDAP als auch LDAPS für dieselbe Domäne zu konfigurieren. Sie können jedoch beide gleichzeitig für verschiedene Domänen verwenden.
 
-4. Legen Sie die Parameter für Active Directory-Server wie folgt fest:
+1. Legen Sie die Parameter für Active Directory-Server wie folgt fest:
 
    | Serverparameter | BESCHREIBUNG |
    |--|--|
@@ -194,9 +193,77 @@ So konfigurieren Sie Active Directory
    | Active Directory-Gruppen | Geben Sie die Gruppennamen ein, die in der Active Directory-Konfiguration auf dem LDAP-Server definiert sind. |
    | Vertrauenswürdige Domänen | Wenn Sie vertrauenswürdige Domänen hinzufügen möchten, geben Sie den Domänennamen und den Verbindungstyp an. <br />Vertrauenswürdige Domänen können nur für Benutzer konfiguriert werden, die unter „Benutzer“ definiert wurden. |
 
-5. Wählen Sie **Speichern** aus.
+1. Wählen Sie **Speichern** aus.
 
-6. Wählen Sie zum Hinzufügen eines vertrauenswürdigen Servers **Server hinzufügen** aus, und konfigurieren Sie einen weiteren Server.
+1. Wählen Sie zum Hinzufügen eines vertrauenswürdigen Servers **Server hinzufügen** aus, und konfigurieren Sie einen weiteren Server.
+
+## <a name="resetting-a-users-password-for-the-sensor-or-on-premises-management-console"></a>Zurücksetzen des Kennworts eines Benutzers für den Sensor oder eine lokale Verwaltungskonsole
+
+### <a name="cyberx-or-support-user"></a>Benutzer „CyberX“ und „Support“
+
+Nur die Benutzer **CyberX** und **Support** besitzen Zugriff auf das Feature **Password Recovery** (Kennwortwiederherstellung). Wenn der Benutzer **CyberX** oder **Support** sein Kennwort vergessen hat, kann er das Kennwort über die Option **Password Recovery** (Kennwortwiederherstellung) auf der Anmeldeseite „Defender für IoT“ zurücksetzen.
+
+So setzen Sie das Kennwort für einen Benutzer „CyberX“ oder „Support“ zurück:
+
+1. Wählen Sie auf dem Anmeldebildschirm von Defender für IoT **Password Recovery** (Kennwortwiederherstellung) aus. Der Bildschirm **Password Recovery** (Kennwortwiederherstellung) wird geöffnet.
+
+1. Wählen Sie entweder **CyberX** oder **Support** aus, und kopieren Sie den eindeutigen Bezeichner.
+
+1. Navigieren Sie zum Azure-Portal, und wählen Sie **Sites und Sensoren** aus.  
+
+1. Wählen Sie in der oberen Symbolleiste das Symbol **Abonnementfilter** :::image type="icon" source="media/password-recovery-images/subscription-icon.png" border="false"::: aus, und wählen Sie das Abonnement aus, mit dem Ihr Sensor verbunden ist.
+
+1. Klicken Sie auf die Registerkarte **Recover on-premises management console password** (Kennwort der lokalen Verwaltungskonsole wiederherstellen).
+
+   :::image type="content" source="media/password-recovery-images/recover-button.png" alt-text="Wählen Sie die Schaltfläche „Recover on-premises management“ (Lokale Verwaltung wiederherstellen) aus, um die Wiederherstellungsdatei herunterzuladen.":::
+
+1. Geben Sie den eindeutigen Bezeichner ein, der auf dem Bildschirm **Password Recovery** (Kennwortwiederherstellung) angezeigt wurde, und wählen Sie **Recover** (Wiederherstellen) aus. Die Datei `password_recovery.zip` wird heruntergeladen.
+
+    > [!NOTE]
+    > Ändern Sie die Kennwortwiederherstellungsdatei nicht. Es handelt sich um eine signierte Datei, die nicht funktioniert, wenn Sie sie ändern.
+
+1. Wählen Sie auf dem Bildschirm **Password Recovery** (Kennwortwiederherstellung) die Option **Upload** (Hochladen) aus. Das Fenster **Upload Password Recovery File** (Kennwortwiederherstellungsdatei hochladen) wird geöffnet.
+
+1. Wählen Sie **Durchsuchen** aus, um nach Ihrer Datei `password_recovery.zip` zu suchen, oder ziehen Sie die Datei `password_recovery.zip` in das Fenster.
+
+    > [!NOTE]
+    > Möglicherweise wird eine Fehlermeldung angezeigt, die besagt, dass die Datei ungültig ist. Um diese Fehlermeldung zu beheben, stellen Sie sicher, dass Sie das richtige Abonnement ausgewählt haben, bevor Sie die Datei `password_recovery.zip` herunterladen, und laden Sie sie dann erneut herunter.  
+
+1. Wählen Sie **Weiter** aus. Ihr Benutzer und das vom System generierte Kennwort für Ihre Verwaltungskonsole werden angezeigt.
+
+### <a name="administrator-security-analyst-and-read-only-user"></a>„Administrator“, „Sicherheitsanalyst“ und „Benutzer mit Lesezugriff“
+
+Benutzer mit Lesezugriff und Sicherheitsanalysten können ihr eigenes Kennwort nicht zurücksetzen und müssen sich mit einem Benutzer mit der Rolle „Administrator“, „Support“ oder „CyberX“ in Verbindung setzen, um ihr Kennwort zurückzusetzen. Ein Benutzer „Administrator“ muss sich an den Benutzer **CyberX** oder **Support** wenden, um sein Kennwort zurückzusetzen.
+
+So setzen Sie das Kennwort eines Benutzers für den Sensor zurück:
+
+1. Ein Benutzer mit der Rolle „Administrator“, „Support“ oder „CyberX“ muss sich am Sensor anmelden.
+
+1. Wählen Sie **Benutzer** im linken Bereich aus.
+
+   :::image type="content" source="media/password-recovery-images/sensor-page.png" alt-text="Wählen Sie im Bereich auf der linken Seite die Option „Benutzer“ aus.":::
+
+1. Suchen Sie den Benutzer, und wählen Sie **Bearbeiten** im Dropdownmenü **Aktionen** aus.
+
+   :::image type="content" source="media/password-recovery-images/edit.png" alt-text="Wählen Sie im Dropdownmenü „Aktionen“ die Option „Bearbeiten“ aus.":::
+
+1. Geben Sie das neue Kennwort in die Felder **Neues Kennwort** und **Neues Kennwort bestätigen** ein.
+
+1. Wählen Sie **Aktualisieren** aus.
+
+So setzen Sie das Kennwort eines Benutzers für die lokale Verwaltungskonsole zurück:
+
+1. Ein Benutzer mit der Rolle „Administrator“, „Support“ oder „CyberX“ muss sich am Sensor anmelden.
+
+1. Wählen Sie **Benutzer** im linken Bereich aus.
+
+   :::image type="content" source="media/password-recovery-images/console-page.png" alt-text="Wählen Sie im linken Bereich die Benutzeroption aus.":::
+
+1. Suchen Sie den Benutzer, und wählen Sie das Bearbeitungssymbol :::image type="icon" source="media/password-recovery-images/edit-icon.png" border="false"::: aus.
+
+1. Geben Sie das neue Kennwort in die Felder **Neues Kennwort** und **Neues Kennwort bestätigen** ein.
+
+1. Wählen Sie **Aktualisieren** aus.
 
 ## <a name="see-also"></a>Weitere Informationen
 

@@ -5,12 +5,12 @@ ms.assetid: d20743e3-aab6-442c-a836-9bcea09bfd32
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 708478f50078276245a7dfab7d185dd50d597407
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: dbb380dca231f75f6d6e77676c9059ef3762dac5
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97589796"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98050934"
 ---
 # <a name="automate-resource-deployment-for-your-function-app-in-azure-functions"></a>Automatisieren der Ressourcenbereitstellung für Ihre Funktions-App in Azure Functions
 
@@ -140,7 +140,7 @@ Eine Funktions-App muss diese Anwendungseinstellungen enthalten:
 | Einstellungsname                 | BESCHREIBUNG                                                                               | Beispielwerte                        |
 |------------------------------|-------------------------------------------------------------------------------------------|---------------------------------------|
 | AzureWebJobsStorage          | Eine Verbindungszeichenfolge für eine Verbindung mit einem Speicherkonto, das die Functions-Runtime für die interne Warteschlange verwendet | Siehe [Speicherkonto](#storage)       |
-| FUNCTIONS_EXTENSION_VERSION  | Die Version der Azure Functions-Runtime                                                | `~2`                                  |
+| FUNCTIONS_EXTENSION_VERSION  | Die Version der Azure Functions-Runtime                                                | `~3`                                  |
 | FUNCTIONS_WORKER_RUNTIME     | Der Sprachstapel für Funktionen in dieser App                                   | `dotnet`, `node`, `java`, `python` oder `powershell` |
 | WEBSITE_NODE_DEFAULT_VERSION | Nur erforderlich, wenn Sie den `node`-Sprachstapel verwenden, gibt die zu verwendende Version an              | `10.14.1`                             |
 
@@ -164,7 +164,7 @@ Diese Eigenschaften werden in der `appSettings`-Sammlung in der `siteConfig`-Eig
             },
             {
                 "name": "FUNCTIONS_EXTENSION_VERSION",
-                "value": "~2"
+                "value": "~3"
             }
         ]
     }
@@ -175,7 +175,7 @@ Diese Eigenschaften werden in der `appSettings`-Sammlung in der `siteConfig`-Eig
 
 ## <a name="deploy-on-consumption-plan"></a>Bereitstellen im Verbrauchsplan
 
-Der Verbrauchsplan weist automatisch Computeleistung zu, wenn Ihr Code ausgeführt wird, und skaliert diese bei Bedarf horizontal hoch, um die Last zu verarbeiten. Wenn der Code nicht mehr ausgeführt wird, wird die Leistung wieder horizontal herunterskaliert. Sie müssen für VMs im Leerlauf nicht bezahlen und auch keine Kapazitäten im Voraus reservieren. Weitere Informationen finden Sie unter [Skalierung und Hosting von Azure Functions](functions-scale.md#consumption-plan).
+Der Verbrauchsplan weist automatisch Computeleistung zu, wenn Ihr Code ausgeführt wird, und skaliert diese bei Bedarf horizontal hoch, um die Last zu verarbeiten. Wenn der Code nicht mehr ausgeführt wird, wird die Leistung wieder horizontal herunterskaliert. Sie müssen für VMs im Leerlauf nicht bezahlen und auch keine Kapazitäten im Voraus reservieren. Weitere Informationen finden Sie unter [Skalierung und Hosting von Azure Functions](consumption-plan.md).
 
 Eine Beispielvorlage für den Azure Resource Manager finden Sie unter [Funktions-App im Verbrauchsplan].
 
@@ -251,7 +251,7 @@ Unter Windows erfordert ein Verbrauchsplan zwei zusätzliche Einstellungen in de
                 },
                 {
                     "name": "FUNCTIONS_EXTENSION_VERSION",
-                    "value": "~2"
+                    "value": "~3"
                 }
             ]
         }
@@ -290,7 +290,7 @@ Unter Linux muss `kind` der Funktions-App auf `functionapp,linux` festgelegt wer
                 },
                 {
                     "name": "FUNCTIONS_EXTENSION_VERSION",
-                    "value": "~2"
+                    "value": "~3"
                 }
             ]
         },
@@ -371,7 +371,7 @@ Für die `serverFarmId`-Eigenschaft einer Funktions-App in einem Premium-Plan mu
                 },
                 {
                     "name": "FUNCTIONS_EXTENSION_VERSION",
-                    "value": "~2"
+                    "value": "~3"
                 }
             ]
         }
@@ -459,7 +459,7 @@ Für die `serverFarmId`-Eigenschaft einer Funktions-App in einem App Service-Pla
                 },
                 {
                     "name": "FUNCTIONS_EXTENSION_VERSION",
-                    "value": "~2"
+                    "value": "~3"
                 }
             ]
         }
@@ -467,13 +467,13 @@ Für die `serverFarmId`-Eigenschaft einer Funktions-App in einem App Service-Pla
 }
 ```
 
-Linux-Apps sollten auch eine `linuxFxVersion`-Eigenschaft unter `siteConfig` enthalten. Wenn Sie nur Code bereitstellen, wird der Wert hierfür durch Ihren gewünschten Runtimestapel bestimmt:
+Linux-Apps sollten auch eine `linuxFxVersion`-Eigenschaft unter `siteConfig` enthalten. Wenn Sie nur Code bereitstellen, wird der Wert hierfür durch Ihren gewünschten Runtimestapel im Format ```runtime|runtimeVersion``` bestimmt:
 
 | Stapel            | Beispielwert                                         |
 |------------------|-------------------------------------------------------|
-| Python           | `DOCKER|microsoft/azure-functions-python3.6:2.0`      |
-| JavaScript       | `DOCKER|microsoft/azure-functions-node8:2.0`          |
-| .NET             | `DOCKER|microsoft/azure-functions-dotnet-core2.0:2.0` |
+| Python           | `python|3.7`      |
+| JavaScript       | `node|12`          |
+| .NET             | `dotnet|3.0` |
 
 ```json
 {
@@ -504,10 +504,10 @@ Linux-Apps sollten auch eine `linuxFxVersion`-Eigenschaft unter `siteConfig` ent
                 },
                 {
                     "name": "FUNCTIONS_EXTENSION_VERSION",
-                    "value": "~2"
+                    "value": "~3"
                 }
             ],
-            "linuxFxVersion": "DOCKER|microsoft/azure-functions-node8:2.0"
+            "linuxFxVersion": "node|12"
         }
     }
 }
@@ -544,7 +544,7 @@ Wenn Sie [ein benutzerdefiniertes Containerimage bereitstellen](./functions-crea
                 },
                 {
                     "name": "FUNCTIONS_EXTENSION_VERSION",
-                    "value": "~2"
+                    "value": "~3"
                 },
                 {
                     "name": "DOCKER_REGISTRY_SERVER_URL",
@@ -594,7 +594,7 @@ Eine Funktions-App verfügt über viele untergeordnete Ressourcen, die Sie in Ih
         "appSettings": [
             {
                 "name": "FUNCTIONS_EXTENSION_VERSION",
-                "value": "~2"
+                "value": "~3"
             },
             {
                 "name": "Project",
@@ -616,7 +616,7 @@ Eine Funktions-App verfügt über viele untergeordnete Ressourcen, die Sie in Ih
         "properties": {
           "AzureWebJobsStorage": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountid'),'2019-06-01').keys[0].value)]",
           "AzureWebJobsDashboard": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountid'),'2019-06-01').keys[0].value)]",
-          "FUNCTIONS_EXTENSION_VERSION": "~2",
+          "FUNCTIONS_EXTENSION_VERSION": "~3",
           "FUNCTIONS_WORKER_RUNTIME": "dotnet",
           "Project": "src"
         }

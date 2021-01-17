@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: jingwang
-ms.openlocfilehash: 2b54ee29b1b03bab5af8410a3fae06438180299d
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: ce7c0cba4a231fbdb33679f8cdac7d57c79845f5
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97507522"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97968873"
 ---
 # <a name="schema-and-data-type-mapping-in-copy-activity"></a>Schema- und Datentypzuordnung in Kopieraktivität
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -66,7 +66,7 @@ Die folgenden Eigenschaften werden unter `translator` und unter `mappings` unter
 
 Beispielsweise zum Kopieren von Daten aus Salesforce in Azure SQL-Datenbank und zum expliziten Zuordnen von drei Spalten:
 
-1. Klicken Sie in der Kopieraktivität auf der Registerkarte „Zuordnung“ auf die Schaltfläche **Schema importieren**, um das Quell- und das Senkenschema zu importieren.
+1. Klicken Sie in der Kopieraktivität auf der Registerkarte „Zuordnung“ auf die Schaltfläche **Schemas importieren**, um das Quell- und das Senkenschema zu importieren.
 
 2. Ordnen Sie die erforderlichen Felder zu, und schließen Sie die restlichen Felder aus bzw. löschen Sie sie.
 
@@ -180,7 +180,7 @@ Wenn Sie es in eine Textdatei im folgenden Format mit Kopfzeile kopieren möchte
 
 Sie können eine Zuordnung dieser Art über die Data Factory-Benutzeroberfläche für die Erstellung definieren:
 
-1. Klicken Sie in der Kopieraktivität auf der Registerkarte „Zuordnung“ auf die Schaltfläche **Schema importieren**, um das Quell- und das Senkenschema zu importieren. Da Data Factory beim Importieren eines Schemas die obersten Objekte abfragt, können Sie, falls ein Feld nicht angezeigt wird, das Feld der entsprechenden Ebene in der Hierarchie hinzufügen. Zeigen Sie hierzu auf einen vorhandenen Feldnamen, und geben Sie an, dass Sie einen Knoten, ein Objekt oder ein Array hinzufügen möchten.
+1. Klicken Sie in der Kopieraktivität auf der Registerkarte „Zuordnung“ auf die Schaltfläche **Schemas importieren**, um das Quell- und das Senkenschema zu importieren. Da Data Factory beim Importieren eines Schemas die obersten Objekte abfragt, können Sie, falls ein Feld nicht angezeigt wird, das Feld der entsprechenden Ebene in der Hierarchie hinzufügen. Zeigen Sie hierzu auf einen vorhandenen Feldnamen, und geben Sie an, dass Sie einen Knoten, ein Objekt oder ein Array hinzufügen möchten.
 
 2. Wählen Sie das Array aus, in dem Sie Daten durchlaufen und aus dem Sie Daten extrahieren möchten. Das Feld wird automatisch als **Auflistungsverweis** ausgefüllt. Bei diesem Vorgang wird nur ein einzelnes Array unterstützt.
 

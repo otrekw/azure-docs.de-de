@@ -3,22 +3,75 @@ title: Verwenden einer verwalteten Identität mit einer Anwendung
 description: Verwenden von verwalteten Identitäten in Azure Service Fabric-Anwendungscode für den Zugriff auf Azure-Dienste.
 ms.topic: article
 ms.date: 10/09/2019
-ms.openlocfilehash: 07f960c01367ab42a434a8c2e1e276d9c5f7bd11
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c89f7bd064e643b978253f2e083c449d904d2cad
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86253642"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98108516"
 ---
 # <a name="how-to-leverage-a-service-fabric-applications-managed-identity-to-access-azure-services"></a>Nutzen der verwalteten Identität einer Service Fabric-Anwendung für den Zugriff auf Azure-Dienste
 
 Service Fabric-Anwendungen können verwaltete Identitäten für den Zugriff auf andere Azure-Ressourcen verwenden, die die Azure Active Directory-basierte Authentifizierung unterstützen. Eine Anwendung kann ein [Zugriffstoken](../active-directory/develop/developer-glossary.md#access-token) abrufen, das ihre system- oder benutzerseitig zugewiesene Identität repräsentiert. Die Anwendung kann dieses Token als Bearertoken verwenden, um sich bei einem anderen Dienst zu authentifizieren – dieser wird auch als [geschützter Ressourcenserver](../active-directory/develop/developer-glossary.md#resource-server) bezeichnet. Das Token repräsentiert die Identität, die der Service Fabric-Anwendung zugewiesen wurde, und wird nur für Azure-Ressourcen (einschließlich Service Fabric-Anwendungen) ausgestellt, die diese Identität gemeinsam nutzen. Eine detaillierte Beschreibung verwalteter Identitäten sowie Informationen zur Unterscheidung zwischen system- und benutzerseitig zugewiesenen Identitäten finden Sie in der [Übersicht über verwaltete Identitäten](../active-directory/managed-identities-azure-resources/overview.md). Im vorliegenden Artikel wird eine Service Fabric-Anwendung, die verwaltete Identitäten nutzen kann, als [Clientanwendung](../active-directory/develop/developer-glossary.md#client-application) bezeichnet.
+
+Sehen Sie sich eine begleitende Beispielanwendung an, die die Verwendung von durch das System und Benutzer zugewiesenen [verwalteten Service Fabric-Anwendungsidentitäten](https://github.com/Azure-Samples/service-fabric-managed-identity) mit Reliable Services und Containern zeigt.
 
 > [!IMPORTANT]
 > Eine verwaltete Identität stellt die Zuordnung zwischen einer Azure-Ressource und einem Dienstprinzipal im entsprechenden Azure AD-Mandanten dar, der dem Abonnement zugeordnet ist, das die Ressource enthält. Im Kontext von Service Fabric werden verwaltete Identitäten daher nur für Anwendungen unterstützt, die als Azure-Ressourcen bereitgestellt wurden. 
 
 > [!IMPORTANT]
 > Der Clientanwendung muss Zugriff auf die geschützte Ressource gewährt werden, bevor diese Anwendung die verwaltete Identität einer Service Fabric-Anwendung nutzen kann. Informationen zur Unterstützung finden Sie in der Liste der [Azure-Dienste, die die Azure AD-Authentifizierung unterstützen](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-managed-identities-for-azure-resources). In der Dokumentation des jeweiligen Diensts finden Sie dann die spezifischen Schritte, um einer Identität Zugriff auf relevante Ressourcen zu gewähren. 
+ 
+
+## <a name="leverage-a-managed-identity-using-azureidentity"></a>Nutzen einer verwalteten Identität mit Azure.Identity
+
+Das Azure Identity SDK unterstützt jetzt Service Fabric. Durch die Verwendung von Azure.Identity wird das Schreiben von Code für die Verwendung verwalteter Identitäten der Service Fabric-App vereinfacht, da das SDK das Abrufen von Token, das Zwischenspeichern von Token sowie die Serverauthentifizierung verarbeitet. Beim Zugriff auf die meisten Azure-Ressourcen wird das Konzept eines Tokens verborgen.
+
+Service Fabric-Unterstützung ist in den folgenden Versionen für diese Sprachen verfügbar: 
+- [C# in Version 1.3.0](https://www.nuget.org/packages/Azure.Identity). Ein [C#-Beispiel finden Sie hier](https://github.com/Azure-Samples/service-fabric-managed-identity).
+- [Python in Version 1.5.0](https://pypi.org/project/azure-identity/). Ein [Python-Beispiel finden Sie hier](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/identity/azure-identity/tests/managed-identity-live/service-fabric/service_fabric.md).
+- [Java in Version 1.2.0](https://docs.microsoft.com/java/api/overview/azure/identity-readme?view=azure-java-stable).
+
+C#-Beispiel für das Initialisieren von Anmeldeinformationen und Verwenden der Anmeldeinformationen zum Abrufen eines Geheimnisses aus Azure Key Vault:
+
+```csharp
+using Azure.Identity;
+using Azure.Security.KeyVault.Secrets;
+
+namespace MyMIService
+{
+    internal sealed class MyMIService : StatelessService
+    {
+        protected override async Task RunAsync(CancellationToken cancellationToken)
+        {
+            try
+            {
+                // Load the service fabric application managed identity assigned to the service
+                ManagedIdentityCredential creds = new ManagedIdentityCredential();
+
+                // Create a client to keyvault using that identity
+                SecretClient client = new SecretClient(new Uri("https://mykv.vault.azure.net/"), creds);
+
+                // Fetch a secret
+                KeyVaultSecret secret = (await client.GetSecretAsync("mysecret", cancellationToken: cancellationToken)).Value;
+            }
+            catch (CredentialUnavailableException e)
+            {
+                // Handle errors with loading the Managed Identity
+            }
+            catch (RequestFailedException)
+            {
+                // Handle errors with fetching the secret
+            }
+            catch (Exception e)
+            {
+                // Handle generic errors
+            }
+        }
+    }
+}
+
+```
 
 ## <a name="acquiring-an-access-token-using-rest-api"></a>Abrufen eines Zugriffstokens mithilfe der REST-API
 In Clustern, die für die Nutzung verwalteter Identitäten eingerichtet wurden, macht die Service Fabric-Runtime einen Localhost-Endpunkt verfügbar, den Anwendungen zum Abrufen von Zugriffstoken verwenden können. Der Endpunkt ist auf jedem Knoten im Cluster verfügbar, und alle Entitäten auf den Knoten können darauf zugreifen. Autorisierte Aufrufer können Zugriffstoken durch Aufrufen dieses Endpunkts und Bereitstellen eines Authentifizierungscodes abrufen. Der Code wird von der Service Fabric-Runtime für jede einzelne Aktivierung eines Dienstcodepakets generiert und ist an die Lebensdauer des Prozesses gebunden, der dieses Dienstcodepaket hostet.
@@ -377,3 +430,4 @@ Eine Liste mit Ressourcen, die Azure AD unterstützen, und den dazugehörigen R
 * [Bereitstellen einer Azure Service Fabric-Anwendung mit einer systemseitig zugewiesenen verwalteten Identität](./how-to-deploy-service-fabric-application-system-assigned-managed-identity.md)
 * [Bereitstellen einer Azure Service Fabric-Anwendung mit einer benutzerseitig zugewiesenen verwalteten Identität](./how-to-deploy-service-fabric-application-user-assigned-managed-identity.md)
 * [Gewähren des Zugriffs auf andere Azure-Ressourcen für eine Azure Service Fabric-Anwendung](./how-to-grant-access-other-resources.md)
+* [Untersuchen einer Beispielanwendung mit der verwalteten Service Fabric-Identität](https://github.com/Azure-Samples/service-fabric-managed-identity)

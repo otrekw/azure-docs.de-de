@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.custom: device-developer
-ms.openlocfilehash: c29af68433f29d7bdd363bedfa6d36316b952f4c
-ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
+ms.openlocfilehash: 5a9f6fa79da59425e4972dddd21ffdea15af73e7
+ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/28/2020
-ms.locfileid: "97795342"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98127905"
 ---
 # <a name="telemetry-property-and-command-payloads"></a>Telemetrie-, Eigenschaften- und Befehlsnutzlasten
 
@@ -187,6 +187,9 @@ Der folgende Codeausschnitt aus einem Gerätemodell zeigt die Definition einer T
   "schema": "geopoint"
 }
 ```
+
+> [!NOTE]
+> Der Schematyp **geopoint** gehört nicht zur [Digital Twins Definition Language (DTDL)-Spezifikation](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md). IoT Central unterstützt zurzeit den Schematyp **geopoint** und den semantischen Typ **location** aus Gründen der Abwärtskompatibilität.
 
 Ein Geräteclient sollte die Telemetriedaten als JSON-Code senden, der wie im folgenden Beispiel aussieht. IoT Central zeigt den Wert als Stecknadel auf einer Karte an:
 
@@ -576,6 +579,9 @@ Der folgende Codeausschnitt aus einem Gerätemodell zeigt die Definition eines `
 }
 ```
 
+> [!NOTE]
+> Der Schematyp **geopoint** gehört nicht zur [Digital Twins Definition Language (DTDL)-Spezifikation](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md). IoT Central unterstützt zurzeit den Schematyp **geopoint** und den semantischen Typ **location** aus Gründen der Abwärtskompatibilität.
+
 Ein Geräteclient sollte eine JSON-Nutzlast, die wie im folgenden Beispiel aussieht, als gemeldete Eigenschaft im Gerätezwilling senden:
 
 ```json
@@ -721,7 +727,7 @@ IoT Central erwartet vom Gerät eine Antwort zu Aktualisierungen von schreibbare
 | ----- | ----- | ----------- |
 | `'ac': 200` | Abgeschlossen | Der Vorgang einer Eigenschaftsänderung wurde erfolgreich abgeschlossen. |
 | `'ac': 202` oder `'ac': 201` | Ausstehend | Der Vorgang einer Eigenschaftsänderung ist ausstehend oder in Bearbeitung. |
-| `'ac': 4xx` | Fehler | Die angeforderte Eigenschaftsänderung war ungültig oder fehlerhaft. |
+| `'ac': 4xx` | Fehler | Die angeforderte Eigenschaftsänderung war ungültig oder fehlerhaft |
 | `'ac': 5xx` | Fehler | Beim Verarbeiten der angeforderten Änderung ist auf dem Gerät ein unerwarteter Fehler aufgetreten. |
 
 `av` ist die an das Gerät gesendete Versionsnummer.
@@ -828,9 +834,6 @@ Das Gerät sollte nach Verarbeitung des Updates die folgende JSON-Nutzlast an Io
 ```
 
 ## <a name="commands"></a>Befehle
-
-> [!NOTE]
-> In der IOT Central-Webbenutzeroberfläche können Sie die Option **Warteschlange (falls offline)** für einen Befehl auswählen. Diese Einstellung ist nicht enthalten, wenn Sie ein Modell oder eine Schnittstelle aus der Gerätevorlage exportieren.
 
 Der folgende Codeausschnitt aus einem Gerätemodell zeigt die Definition eines Befehls, der weder Parameter aufweist noch eine Rückgabe vom Gerät erwartet:
 
@@ -1000,6 +1003,91 @@ Wenn das Gerät die Verarbeitung der Anforderung abgeschlossen hat, sollte es ei
 }
 ```
 
+### <a name="offline-commands"></a>Offlinebefehle
+
+In der IOT Central-Webbenutzeroberfläche können Sie die Option **Warteschlange (falls offline)** für einen Befehl auswählen. Offlinebefehle sind unidirektionale Benachrichtigungen von Ihrer Lösung an ein Gerät, die übermittelt werden, sobald das Gerät eine Verbindung herstellt. Offlinebefehle können Anforderungsparameter aufweisen, geben aber keine Antwort zurück.
+
+Die Einstellung **Warteschlange (falls offline)** wird nicht einbezogen, wenn Sie ein Modell oder eine Schnittstelle aus der Gerätevorlage exportieren. Wenn Sie sich ein exportiertes Modell oder ein Interface-JSON anschauen, können Sie nicht erkennen, ob ein Befehl ein Offline-Befehl ist.
+
+Offline Befehle verwenden [Cloud-zu-Gerät-Nachrichten von IoT Hub](../../iot-hub/iot-hub-devguide-messages-c2d.md), um den Befehl und die Nutzlast an das Gerät zu senden.
+
+Der folgende Codeausschnitt aus einem Gerätemodell zeigt die Definition eines Befehls. Der Befehl enthält einen Objektparameter mit einem „DateTime“-Feld und einer Enumeration:
+
+```json
+{
+  "@type": "Command",
+  "displayName": {
+    "en": "Generate Diagnostics"
+  },
+  "name": "GenerateDiagnostics",
+  "request": {
+    "@type": "CommandPayload",
+    "displayName": {
+      "en": "Payload"
+    },
+    "name": "Payload",
+    "schema": {
+      "@type": "Object",
+      "displayName": {
+        "en": "Object"
+      },
+      "fields": [
+        {
+          "displayName": {
+            "en": "StartTime"
+          },
+          "name": "StartTime",
+          "schema": "dateTime"
+        },
+        {
+          "displayName": {
+            "en": "Bank"
+          },
+          "name": "Bank",
+          "schema": {
+            "@type": "Enum",
+            "displayName": {
+              "en": "Enum"
+            },
+            "enumValues": [
+              {
+                "displayName": {
+                  "en": "Bank 1"
+                },
+                "enumValue": 1,
+                "name": "Bank1"
+              },
+              {
+                "displayName": {
+                  "en": "Bank2"
+                },
+                "enumValue": 2,
+                "name": "Bank2"
+              },
+              {
+                "displayName": {
+                  "en": "Bank3"
+                },
+                "enumValue": 2,
+                "name": "Bank3"
+              }
+            ],
+            "valueSchema": "integer"
+          }
+        }
+      ]
+    }
+  }
+}
+```
+
+Wenn Sie die Option **Warteschlange (falls offline)** in der Benutzeroberfläche der Gerätevorlage für den Befehl im vorherigen Codeausschnitt aktivieren, enthält die vom Gerät empfangene Meldung die folgenden Eigenschaften:
+
+| Eigenschaftenname | Beispielwert |
+| ---------- | ----- |
+| `custom_properties` | `{'method-name': 'GenerateDiagnostics'}` |
+| `data` | `{"StartTime":"2021-01-05T08:00:00.000Z","Bank":2}` |
+
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nachdem Sie sich als Geräteentwickler mit Gerätevorlagen vertraut gemacht haben, finden Sie unter [Herstellen einer Verbindung mit Azure IoT Central](./concepts-get-connected.md) weitere Informationen dazu, wie Sie Geräte bei IoT Central registrieren und wie IoT Central Geräteverbindungen schützt.
+Nachdem Sie sich als Geräteentwickler mit Gerätevorlagen vertraut gemacht haben, finden Sie unter [Herstellen einer Verbindung mit Azure IoT Central](./concepts-get-connected.md) weitere Informationen dazu, wie Sie Geräte bei IoT Central registrieren und wie IoT Central Geräteverbindungen schützt.

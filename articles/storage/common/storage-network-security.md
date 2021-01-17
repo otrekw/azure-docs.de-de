@@ -9,12 +9,12 @@ ms.date: 12/08/2020
 ms.author: tamram
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: c2074402225c8134329e00003e4fbdfd95b5dba6
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: 13d1ad0b1b5e32ea2ca86e7556dd910c542bcbe2
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96938408"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98070557"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Konfigurieren von Azure Storage-Firewalls und virtuellen Netzwerken
 
@@ -33,13 +33,13 @@ Eine Anwendung, die bei aktivierten Netzwerkregeln auf ein Speicherkonto zugreif
 
 ## <a name="scenarios"></a>Szenarien
 
-Zum Sichern Ihres Speicherkontos sollten Sie zuerst eine Regel so konfigurieren, dass der Zugriff auf Datenverkehr aus allen Netzwerken (einschließlich Internetdatenverkehr) auf dem öffentlichen Endpunkt standardmäßig verweigert wird. Anschließend sollten Sie Regeln konfigurieren, die den Zugriff auf Datenverkehr aus bestimmten VNETs gewähren. Darüber hinaus können Sie Regeln konfigurieren, um den Zugriff auf Datenverkehr aus ausgewählten öffentlichen Internet-IP-Adressbereichen zu gewähren und so Verbindungen von bestimmten Internetclients oder lokalen Clients zu ermöglichen. Mit dieser Konfiguration können Sie eine sichere Netzwerkgrenze für Ihre Anwendungen erstellen.
+Zum Sichern Ihres Speicherkontos sollten Sie zuerst eine Regel so konfigurieren, dass der Zugriff auf Datenverkehr aus allen Netzwerken (einschließlich Internetdatenverkehr) auf dem öffentlichen Endpunkt standardmäßig verweigert wird. Anschließend sollten Sie Regeln konfigurieren, die den Zugriff auf Datenverkehr aus bestimmten VNETs gewähren. Sie können auch Regeln konfigurieren, um den Zugriff auf Datenverkehr aus ausgewählten öffentlichen Internet-IP-Adressbereichen zu gewähren und so Verbindungen von bestimmten Internetclients oder lokalen Clients zu ermöglichen. Mit dieser Konfiguration können Sie eine sichere Netzwerkgrenze für Ihre Anwendungen erstellen.
 
 Sie können Firewallregeln kombinieren, die den Zugriff aus bestimmten virtuellen Netzwerken und aus öffentlichen IP-Adressbereichen in demselben Speicherkonto zulassen. Storage-Firewallregeln können auf vorhandene Speicherkonten oder bei der Erstellung neuer Speicherkonten angewendet werden.
 
 Storage-Firewallregeln gelten für den öffentlichen Endpunkt eines Speicherkontos. Sie benötigen keine Firewallzugriffsregeln, um Datenverkehr für private Endpunkte eines Speicherkontos zuzulassen. Der Vorgang zur Genehmigung der Erstellung eines privaten Endpunkts gewährt impliziten Zugriff auf Datenverkehr aus dem Subnetz, das den privaten Endpunkt hostet.
 
-Netzwerkregeln werden für alle Netzwerkprotokolle in Azure Storage, einschließlich REST und SMB, erzwungen. Für den Zugriff auf Daten mithilfe von Tools wie Azure-Portal, Storage-Explorer und AZCopy müssen explizite Netzwerkregeln konfiguriert werden.
+Netzwerkregeln werden für alle Netzwerkprotokolle für Azure Storage, einschließlich REST und SMB, erzwungen. Für den Zugriff auf Daten mithilfe von Tools wie Azure-Portal, Storage-Explorer und AZCopy müssen explizite Netzwerkregeln konfiguriert werden.
 
 Angewendete Netzwerkregeln werden für alle Anforderungen erzwungen. SAS-Token, die Zugriff auf eine bestimmte IP-Adresse gewähren, beschränken den Zugriff des Tokeninhabers, gewähren jedoch keinen neuen Zugriff außerhalb der konfigurierten Netzwerkregeln.
 

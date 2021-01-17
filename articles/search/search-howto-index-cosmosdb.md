@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/11/2020
-ms.openlocfilehash: be7c6ec9dbc577143e6c7219580f42c876f536bc
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 563edae0292062e1ed7f216c69aeeb84ef0fa7a8
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96499967"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98119474"
 ---
 # <a name="how-to-index-cosmos-db-data-using-an-indexer-in-azure-cognitive-search"></a>Indizieren von Cosmos DB-Daten mithilfe eines Indexers in der kognitiven Azure-Suche 
 
@@ -137,7 +137,7 @@ Wie bereits weiter oben in diesem Artikel erwähnt, sind [Azure Cosmos DB-Indi
 
 ### <a name="1---assemble-inputs-for-the-request"></a>1 – Zusammenstellen der Eingaben für die Anforderung
 
-Für jede Anforderung müssen Sie den Dienstnamen und den Administratorschlüssel für die kognitive Azure-Suche (im POST-Header) sowie den Namen des Speicherkontos und den Schlüssel für Blob Storage angeben. Sie können [Postman oder Visual Studio Code](search-get-started-rest.md) zum Senden von HTTP-Anforderungen an Azure Cognitive Search verwenden.
+Für jede Anforderung müssen Sie den Dienstnamen und den Administratorschlüssel für die kognitive Azure-Suche (im POST-Header) sowie den Namen des Speicherkontos und den Schlüssel für Blob Storage angeben. Sie können [Postman](search-get-started-rest.md) oder [Visual Studio Code](search-get-started-vs-code.md) zum Senden von HTTP-Anforderungen an Azure Cognitive Search verwenden.
 
 Kopieren Sie die folgenden vier Werten in den Editor, sodass Sie sie in eine Anforderung einfügen können:
 
@@ -181,7 +181,7 @@ Formulieren Sie zum Erstellen einer Datenquelle eine POST-Anforderung:
 
 Der Anforderungstext umfasst die Datenquellendefinition, welche die folgenden Felder enthalten sollte:
 
-| Feld   | Beschreibung |
+| Feld   | BESCHREIBUNG |
 |---------|-------------|
 | **name** | Erforderlich. Wählen Sie für Ihr Datenquellenobjekt einen beliebigen Namen aus. |
 |**type**| Erforderlich. Muss `cosmosdb`lauten. |

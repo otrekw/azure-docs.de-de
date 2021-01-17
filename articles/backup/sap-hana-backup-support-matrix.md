@@ -4,12 +4,12 @@ description: Dieser Artikel enthält Informationen zu den unterstützten Szenari
 ms.topic: conceptual
 ms.date: 11/7/2019
 ms.custom: references_regions
-ms.openlocfilehash: cb7f31986b9ebd91c631d2b896600039c93084de
-ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
+ms.openlocfilehash: 7f287206c40e4556db2ee4b38bb46ef8e5352102
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96607091"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98072189"
 ---
 # <a name="support-matrix-for-backup-of-sap-hana-databases-on-azure-vms"></a>Unterstützungsmatrix für die Sicherung von SAP HANA-Datenbanken auf virtuellen Azure-Computern
 
@@ -27,7 +27,7 @@ Azure Backup unterstützt die Sicherung von SAP HANA-Datenbanken in Azure. In d
 | **Betriebssystemversionen**            | SLES 12 mit SP2, SP3, SP4 und SP5; SLES 15 mit SP0, SP1, SP2 <br><br>  Seit dem 1. August 2020 sind SAP HANA-Sicherungen für RHEL (7.4, 7.6, 7.7 und 8.1) allgemein verfügbar.                |                                             |
 | **HANA-Versionen**          | SDC unter HANA 1.x, MDC unter HANA 2.x <= SPS04 Rev 48, SPS05 (für Szenarien mit Verschlüsselung noch nicht überprüft)      |                                                            |
 | **HANA-Bereitstellungen**       | SAP HANA auf einem einzelnen virtuellen Azure-Computer: nur zentrales Hochskalieren. <br><br> Bei Bereitstellungen mit hoher Verfügbarkeit werden beide Knoten auf den beiden verschiedenen Computern als einzelne Knoten mit separaten Datenketten behandelt.               | Horizontales Skalieren <br><br> Bei Bereitstellungen mit hoher Verfügbarkeit wird kein automatisches Failover der Sicherung auf den sekundären Knoten ausgeführt. Das Konfigurieren der Sicherung sollte für jeden Knoten separat durchgeführt werden.                                           |
-| **HANA-Instanzen**         | Eine einzelne SAP HANA-Instanz auf einem einzelnen virtuellen Azure-Computer: nur Hochskalieren | Mehrere SAP HANA-Instanzen auf einem einzelnen virtuellen Computer                  |
+| **HANA-Instanzen**         | Eine einzelne SAP HANA-Instanz auf einem einzelnen virtuellen Azure-Computer: nur Hochskalieren | Mehrere SAP HANA-Instanzen auf einem einzelnen virtuellen Computer. Sie können nur eine dieser mehreren Instanzen gleichzeitig schützen.                  |
 | **HANA-Datenbanktypen**    | Container mit Einzeldatenbank (Single Database Container, SDC) unter 1.x, Container mit mehreren Datenbanken (Multi-Database Container, MDC) unter 2.x | MDC unter HANA 1.x                                              |
 | **HANA-Datenbankgröße**     | HANA-Datenbanken mit einer Größe von <= 2 TB (dies ist nicht die Arbeitsspeichergröße des HANA-Systems)               |                                                              |
 | **Sicherungstypen**           | Vollständig, Differenziell, Inkrementell (Vorschau) und Protokollsicherungen                          |  Momentaufnahmen                                       |

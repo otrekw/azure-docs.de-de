@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/15/2020
-ms.openlocfilehash: aa7c06c3bad59bad11fa288631042cca86109706
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 3d5663177bb087e936a49dd7289659b684d85860
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94701132"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98116193"
 ---
 # <a name="create-a-basic-search-index-in-azure-cognitive-search"></a>Erstellen eines einfachen Suchindex in Azure Cognitive Search
 
@@ -70,7 +70,7 @@ Das Vervollständigen bis zu einem endgültigen Indexentwurf ist ein iterativer 
 Planen Sie während der Entwicklung häufige Neuerstellungen ein. Da physische Strukturen im Dienst erstellt werden, ist das [Löschen und Neuerstellen von Indizes](search-howto-reindex.md) bei den meisten Änderungen an einer vorhandenen Felddefinition erforderlich. Sie sollten erwägen, mit einer Teilmenge Ihrer Daten zu arbeiten, damit Neuerstellungen schneller gehen. 
 
 > [!Tip]
-> Anstelle des Portals empfiehlt es sich, im Code zu arbeiten, wenn Sie den Indexentwurf und den Datenimport gleichzeitig bearbeiten möchten. Als Alternative sind Tools wie [Postman und Visual Studio Code](search-get-started-rest.md) hilfreich zum Testen eines Proof of Concept, wenn Entwicklungsprojekte sich noch in frühen Phasen befinden. Sie können inkrementelle Änderungen an einer Indexdefinition im Anforderungstext vornehmen und dann die Anforderung an Ihren Dienst senden, um einen Index mit einem aktualisierten Schema neu zu erstellen.
+> Anstelle des Portals empfiehlt es sich, im Code zu arbeiten, wenn Sie den Indexentwurf und den Datenimport gleichzeitig bearbeiten möchten. Als Alternative sind Tools wie [Postman](search-get-started-rest.md) und [Visual Studio Code](search-get-started-vs-code.md) hilfreich zum Testen eines Proof of Concept, wenn sich Entwicklungsprojekte noch in frühen Phasen befinden. Sie können inkrementelle Änderungen an einer Indexdefinition im Anforderungstext vornehmen und dann die Anforderung an Ihren Dienst senden, um einen Index mit einem aktualisierten Schema neu zu erstellen.
 
 ## <a name="index-schema"></a>Indexschema
 

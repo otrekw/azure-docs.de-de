@@ -3,12 +3,12 @@ title: Bewährte Methoden
 description: Erfahren Sie, welche bewährten Methoden und nützlichen Tipps es für das Entwickeln Ihrer Azure Batch-Lösungen gibt.
 ms.date: 12/18/2020
 ms.topic: conceptual
-ms.openlocfilehash: 5c3521a3b5fe0dd9c2d1534f6e2a6864647f5da3
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.openlocfilehash: 7e2a49c8307af89fb3898f5f2513fb493d0f5d90
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/19/2020
-ms.locfileid: "97694170"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934287"
 ---
 # <a name="azure-batch-best-practices"></a>Azure Batch: bewährte Methoden
 
@@ -24,6 +24,9 @@ In diesem Artikel werden bewährte Methoden und nützliche Tipps für die effekt
 ### <a name="pool-configuration-and-naming"></a>Poolkonfiguration und Benennung
 
 - **Poolzuordnungsmodus**: Beim Erstellen eines Batch-Kontos können Sie zwischen zwei Modi der Poolzuordnung wählen: **Batch-Dienst** und **Benutzerabonnement**. In den meisten Fällen sollten Sie den standardmäßigen Batchdienstmodus wählen, in dem Pools im Hintergrund von Batch verwalteten Abonnements zugeordnet werden. Im alternativen Benutzerabonnementmodus werden virtuelle Batchcomputer und andere Ressourcen direkt in Ihrem Abonnement erstellt, wenn ein Pool erstellt wird. Benutzerabonnementkonten werden hauptsächlich zum Ermöglichen einer wichtigen, aber kleinen Teilmenge von Szenarien verwendet. Weitere Informationen zum Benutzerabonnementmodus finden Sie unter [Zusätzliche Konfiguration für den Benutzerabonnementmodus](batch-account-create-portal.md#additional-configuration-for-user-subscription-mode).
+
+- **‚cloudServiceConfiguration‘ oder ‚virtualMachineConfiguration‘.**
+    ‚virtualMachineConfiguration‘ sollte verwendet werden. Alle Batch-Funktionen werden von den ‚virtualMachineConfiguration‘-Pools unterstützt. Nicht alle Funktionen werden für ‚cloudServiceConfiguration‘-Pools unterstützt, und es werden keine neuen Funktionen geplant.
 
 - **Berücksichtigen Sie die Ausführungszeit von Aufträgen und Aufgaben beim Festlegen der Zuordnung von Aufträgen zum Pool.**
     Wenn Sie Aufträge haben, die hauptsächlich aus kurzen Aufgaben bestehen, und wenn die erwartete Gesamtzahl der Aufgaben gering ist, sodass auch die insgesamt zu erwartende Ausführungszeit des Auftrags nicht lang ist, sollten Sie nicht für jeden Auftrag einen neuen Pool zuordnen. Die Zuordnungszeit der Knoten verringert die Laufzeit des Auftrags.

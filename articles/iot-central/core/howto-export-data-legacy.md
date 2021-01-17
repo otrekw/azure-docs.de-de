@@ -7,19 +7,19 @@ ms.author: viviali
 ms.date: 06/25/2020
 ms.topic: how-to
 ms.service: iot-central
-ms.openlocfilehash: 9e5f4fd14f56f0a2dff45dd2650ea552b07fecd7
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: d4c099d29a843b4c354ffb218887dc7ffab51771
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94987353"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98065438"
 ---
 # <a name="export-iot-data-to-cloud-destinations-using-data-export-legacy"></a>Exportieren von IoT-Daten zu Cloudzielen mithilfe des Datenexports (Legacy)
 
 > [!Note]
 > In diesem Artikel werden die Features für den Legacy-Datenexport in IoT Central beschrieben.
 >
-> - Informationen zu den neuen Datenexportfeatures (Vorschauversion) finden Sie unter [Exportieren von IoT-Daten zu Cloudzielen mithilfe des Datenexports](./howto-export-data.md).
+> - Informationen zu den neuesten Datenexportfeatures finden Sie unter [Exportieren von IoT-Daten zu Cloudzielen mithilfe des Datenexports](./howto-export-data.md).
 > - Wenn Sie etwas über die Unterschiede zwischen den Features für den Datenexport (Vorschauversion) und dem Legacy-Datenexport erfahren möchten, sehen Sie sich die [Vergleichstabelle](./howto-export-data.md#comparison-of-legacy-data-export-and-data-export) an.
 
 In diesem Artikel wird beschrieben, wie Sie das Datenexportfeature in Azure IoT Central verwenden. Mit diesem Feature können Sie Ihre Daten fortlaufend in **Azure Event Hubs**, **Azure Service Bus** oder **Azure Blob Storage**-Instanzen exportieren. Beim Datenexport wird das JSON-Format verwendet, und im Export können Telemetriedaten, Geräteinformationen und Gerätevorlageninformationen enthalten sein. Verwenden Sie die exportierten Daten für folgende Zwecke:

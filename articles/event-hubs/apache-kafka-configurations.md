@@ -2,13 +2,13 @@
 title: 'Empfohlene Konfigurationen für Apache Kafka-Clients: Azure Event Hubs'
 description: Dieser Artikel enthält empfohlene Apache Kafka-Konfigurationen für Clients, die mit Azure Event Hubs für Apache Kafka interagieren.
 ms.topic: reference
-ms.date: 07/20/2020
-ms.openlocfilehash: f9a03d1d3433461a575b32cd69893408a8b0ef97
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 01/07/2021
+ms.openlocfilehash: 713900a3cc7e2b9f6f176edb21455faa577098d6
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87094340"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98028827"
 ---
 # <a name="recommended-configurations-for-apache-kafka-clients"></a>Empfohlene Konfigurationen für Apache Kafka-Clients
 Hier finden Sie die empfohlenen Konfigurationen für die Verwendung von Azure Event Hubs aus Apache Kafka-Clientanwendungen. 
@@ -79,7 +79,7 @@ Eigenschaft | Empfohlene Werte | Zulässiger Bereich | Notizen
 
 Symptome | Problem | Lösung
 ----|---|-----
-Offsetcommitfehler aufgrund eines erneuten Ausgleichs | Der Consumer wartet zu lange zwischen Aufrufen von poll(), und der Dienst entfernt den Consumer aus der Gruppe. | Sie haben mehrere Möglichkeiten: <ul><li>Erhöhen des Sitzungstimeouts</li><li>Verkleinern der Nachrichtenbatchgröße, um die Verarbeitung zu beschleunigen</li><li>Verbessern der Verarbeitungsparallelisierung, um das Blockieren von consumer.poll() zu vermeiden</li></ul> Das Anwenden einer Kombination dieser drei Optionen ist wahrscheinlich am sinnvollsten.
+Offsetcommitfehler aufgrund eines erneuten Ausgleichs | Der Consumer wartet zu lange zwischen Aufrufen von poll(), und der Dienst entfernt den Consumer aus der Gruppe. | Sie haben mehrere Möglichkeiten: <ul><li>Erhöhen des Timeouts für die Abrufverarbeitung (`max.poll.interval.ms`)</li><li>Verkleinern der Nachrichtenbatchgröße, um die Verarbeitung zu beschleunigen</li><li>Verbessern der Verarbeitungsparallelisierung, um das Blockieren von consumer.poll() zu vermeiden</li></ul> Das Anwenden einer Kombination dieser drei Optionen ist wahrscheinlich am sinnvollsten.
 Netzwerkausnahmen bei hohem Producerdurchsatz | Verwenden Sie einen Java-Client und den Standardwert von max.request.size?  Ihre Anforderungen sind möglicherweise zu groß. | Weitere Informationen finden Sie oben unter den Java-Konfigurationen.
 
 ## <a name="next-steps"></a>Nächste Schritte

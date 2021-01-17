@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/17/2020
-ms.openlocfilehash: dc6412a85beba67551e7683c8127a65730f9218f
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 4c703fc1ddac4af2e3cf8716764a21da7e870b19
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92535466"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98048673"
 ---
 # <a name="configure-outbound-network-traffic-for-azure-hdinsight-clusters-using-firewall"></a>Konfigurieren des ausgehenden Netzwerkdatenverkehrs für Azure HDInsight-Cluster mittels Firewall
 
@@ -53,7 +53,7 @@ Erstellen Sie eine Anwendungsregelsammlung, die dem Cluster ermöglicht, wichtig
 
 1. Wählen Sie die neue Firewall **Test-FW01** über das Azure-Portal aus.
 
-1. Navigieren Sie zu **Einstellungen** > **Regeln** > **Anwendungsregelsammlung** >  **+ Anwendungsregelsammlung hinzufügen** .
+1. Navigieren Sie zu **Einstellungen** > **Regeln** > **Anwendungsregelsammlung** >  **+ Anwendungsregelsammlung hinzufügen**.
 
     ![Titel: Hinzufügen einer Anwendungsregelsammlung](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-app-rule-collection.png)
 
@@ -83,13 +83,13 @@ Erstellen Sie eine Anwendungsregelsammlung, die dem Cluster ermöglicht, wichtig
 
    ![Titel: Eingeben der Details der Anwendungsregelsammlung](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-app-rule-collection-details.png)
 
-1. Wählen Sie **Hinzufügen** .
+1. Wählen Sie **Hinzufügen**.
 
 ### <a name="configure-the-firewall-with-network-rules"></a>Konfigurieren der Firewall mit Netzwerkregeln
 
 Erstellen Sie die Netzwerkregeln, um Ihren HDInsight-Cluster ordnungsgemäß zu konfigurieren.
 
-1. Navigieren Sie im Anschluss an den vorherigen Schritt zu **Netzwerkregelsammlung** >  **+ Netzwerkregelsammlung hinzufügen** .
+1. Navigieren Sie im Anschluss an den vorherigen Schritt zu **Netzwerkregelsammlung** >  **+ Netzwerkregelsammlung hinzufügen**.
 
 1. Geben Sie im Bildschirm **Netzwerkregelsammlung hinzufügen** Folgendes an:
 
@@ -110,7 +110,7 @@ Erstellen Sie die Netzwerkregeln, um Ihren HDInsight-Cluster ordnungsgemäß zu 
     
    ![Titel: Eingeben einer Anwendungsregelsammlung](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-network-rule-collection.png)
 
-1. Wählen Sie **Hinzufügen** .
+1. Wählen Sie **Hinzufügen**.
 
 ### <a name="create-and-configure-a-route-table"></a>Erstellen und Konfigurieren einer Routingtabelle
 
@@ -122,11 +122,11 @@ Erstellen Sie eine Routingtabelle mit den folgenden Einträgen:
 
 Gehen Sie beispielsweise wie folgt vor, um die Routingtabelle für einen in der US-Region „USA, Osten“ erstellten Cluster zu konfigurieren:
 
-1. Wählen Sie Ihre Azure Firewall-Instanz **Test-FW01** aus. Kopieren Sie die auf dem Blatt **Übersicht** aufgelistete **Private IP-Adresse** . In diesem Beispiel verwenden wir die **Beispieladresse 10.0.2.4** .
+1. Wählen Sie Ihre Azure Firewall-Instanz **Test-FW01** aus. Kopieren Sie die auf dem Blatt **Übersicht** aufgelistete **Private IP-Adresse**. In diesem Beispiel verwenden wir die **Beispieladresse 10.0.2.4**.
 
-1. Navigieren Sie anschließend zu **Alle Dienste** > **Netzwerk** > **Routingtabellen** , und wählen Sie **Routingtabelle erstellen** aus.
+1. Navigieren Sie anschließend zu **Alle Dienste** > **Netzwerk** > **Routingtabellen**, und wählen Sie **Routingtabelle erstellen** aus.
 
-1. Navigieren Sie unter Ihrer neuen Route zu **Einstellungen** > **Routen** >  **+ Hinzufügen** . Fügen Sie folgende Routen hinzu:
+1. Navigieren Sie unter Ihrer neuen Route zu **Einstellungen** > **Routen** >  **+ Hinzufügen**. Fügen Sie folgende Routen hinzu:
 
 | Routenname | Adresspräfix | Typ des nächsten Hops | Adresse des nächsten Hops |
 |---|---|---|---|
@@ -140,13 +140,13 @@ Gehen Sie beispielsweise wie folgt vor, um die Routingtabelle für einen in der 
 
 Schließen Sie die Konfiguration der Routingtabelle ab:
 
-1. Weisen Sie die erstellte Routingtabelle durch Auswählen von **Subnetze** (unter **Einstellungen** ) Ihrem HDInsight-Subnetz zu.
+1. Weisen Sie die erstellte Routingtabelle durch Auswählen von **Subnetze** (unter **Einstellungen**) Ihrem HDInsight-Subnetz zu.
 
 1. Wählen Sie **+ Zuordnen** aus.
 
 1. Wählen Sie im Bildschirm **Subnetz zuordnen** das virtuelle Netzwerk aus, in dem Ihr Cluster erstellt wurde. Geben Sie außerdem das **Subnetz** an, das Sie für Ihren HDInsight-Cluster verwendet haben.
 
-1. Klicken Sie auf **OK** .
+1. Klicken Sie auf **OK**.
 
 ## <a name="edge-node-or-custom-application-traffic"></a>Datenverkehr für Edgeknoten- oder benutzerdefinierte Anwendung
 
@@ -170,7 +170,7 @@ AzureDiagnostics | where msg_s contains "Deny" | where TimeGenerated >= ago(1h)
 
 Die Integration von Azure Firewall und Azure Monitor-Protokollen ist nützlich, wenn Sie eine Anwendung erstmalig einrichten. Dies gilt insbesondere dann, wenn Sie nicht alle Anwendungsabhängigkeiten kennen. Weitere Informationen zu Azure Monitor-Protokollen finden Sie unter [Analysieren von Protokolldaten in Azure Monitor](../azure-monitor/log-query/log-query-overview.md).
 
-Weitere Informationen zu den Skalierungsgrenzwerten von Azure Firewall und zu Anforderungssteigerungen finden Sie in [diesem](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-firewall-limits) Dokument sowie in den [Häufig gestellten Fragen](../firewall/firewall-faq.md).
+Weitere Informationen zu den Skalierungsgrenzwerten von Azure Firewall und zu Anforderungssteigerungen finden Sie in [diesem](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-firewall-limits) Dokument sowie in den [Häufig gestellten Fragen](../firewall/firewall-faq.yml).
 
 ## <a name="access-to-the-cluster"></a>Zugriff auf den Cluster
 

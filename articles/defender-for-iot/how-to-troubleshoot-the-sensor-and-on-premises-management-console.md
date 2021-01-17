@@ -4,15 +4,15 @@ description: Beheben Sie Probleme mit dem Sensor und der lokalen Verwaltungskons
 author: shhazam-ms
 manager: rkarlin
 ms.author: shhazam
-ms.date: 12/12/2020
+ms.date: 1/3/2021
 ms.topic: article
 ms.service: azure
-ms.openlocfilehash: a57db4f88de4a3b32b4fb315fb331500f955d501
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: b91827fc0a6fb8380c9f8aa87a3def3bc1819523
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97836278"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97955432"
 ---
 # <a name="troubleshoot-the-sensor-and-on-premises-management-console"></a>Behandeln von Problemen mit dem Sensor und der lokalen Verwaltungskonsole
 
@@ -28,22 +28,33 @@ In diesem Artikel werden die grundlegenden Tools zur Problembehandlung für den 
 
 ### <a name="investigate-password-failure-at-initial-sign-in"></a>Untersuchen von Kennwortfehlern bei der anfänglichen Anmeldung
 
-Wenn Sie sich zum ersten Mal bei einem vorkonfigurierten Pfeilsensor anmelden, müssen Sie die folgende Kennwortwiederherstellung durchführen:
+Wenn Sie sich zum ersten Mal bei einem vorkonfigurierten Pfeilsensor anmelden, müssen Sie eine Kennwortwiederherstellung ausführen.
 
-1. Wählen Sie auf dem Anmeldebildschirm von Defender für IOT die Option **Password Recovery** (Kennwortwiederherstellung) aus. 
+So stellen Sie Ihr Kennwort wieder her:
 
-   Der Bildschirm **Password Recovery** (Kennwortwiederherstellung) wird geöffnet. Dort werden Sie aufgefordert, den Benutzer und das Abonnement auszuwählen, und Sie erhalten einen eindeutigen Bezeichner.
+1. Wählen Sie auf dem Anmeldebildschirm von Defender für IoT **Password Recovery** (Kennwortwiederherstellung) aus. Der Bildschirm **Password Recovery** (Kennwortwiederherstellung) wird geöffnet.
 
-1. Wechseln Sie zur Seite Defender für IOT **Sites and Sensors** (Websites und Sensoren), und wählen Sie die Registerkarte **Recover my password** (Kennwort wiederherstellen) aus.
+1. Wählen Sie entweder **CyberX** oder **Support** aus, und kopieren Sie den eindeutigen Bezeichner.
+
+1. Navigieren Sie zum Azure-Portal, und wählen Sie **Sites und Sensoren** aus.  
+
+1. Klicken Sie auf die Registerkarte **Recover on-premises management console password** (Kennwort der lokalen Verwaltungskonsole wiederherstellen).
+
+   :::image type="content" source="media/password-recovery-images/recover-button.png" alt-text="Wählen Sie die Schaltfläche „Recover on-premises management“ (Lokale Verwaltung wiederherstellen) aus, um die Wiederherstellungsdatei herunterzuladen.":::
 
 1. Geben Sie den eindeutigen Bezeichner ein, der auf dem Bildschirm **Password Recovery** (Kennwortwiederherstellung) angezeigt wurde, und wählen Sie **Recover** (Wiederherstellen) aus. Die Datei `password_recovery.zip` wird heruntergeladen.
 
-   > [!NOTE]
-   > Ändern Sie die Aktivierungsdatei nicht. Es handelt sich um eine signierte Datei, die nicht funktioniert, wenn Sie sie ändern.
+    > [!NOTE]
+    > Ändern Sie die Kennwortwiederherstellungsdatei nicht. Es handelt sich um eine signierte Datei, die nicht funktioniert, wenn Sie sie ändern.
 
-1. Laden Sie auf dem Bildschirm **Kennwortwiederherstellung** die Datei `password_recovery.zip` hoch, und wählen Sie **Weiter** aus.
+1. Wählen Sie auf dem Bildschirm **Password Recovery** (Kennwortwiederherstellung) die Option **Upload** (Hochladen) aus. Das Fenster **Upload Password Recovery File** (Kennwortwiederherstellungsdatei hochladen) wird geöffnet.
 
-Anschließend erhalten Sie Ihr automatisch generiertes Kennwort für die Verwaltungskonsole. 
+1. Wählen Sie **Durchsuchen** aus, um nach Ihrer Datei `password_recovery.zip` zu suchen, oder ziehen Sie die Datei `password_recovery.zip` in das Fenster.
+
+1. Wählen Sie **Weiter** aus. Ihr Benutzer und das vom System generierte Kennwort für Ihre Verwaltungskonsole werden angezeigt.
+
+    > [!NOTE]
+    > Wenn Sie sich zum ersten Mal bei einem Sensor oder einer lokalen Verwaltungskonsole anmelden, wird er bzw. sie mit dem Abonnement verknüpft, mit dem Sie eine Verbindung hergestellt haben. Wenn Sie das Kennwort für das den Benutzer „CyberX“ oder „Support“ zurücksetzen müssen, müssen Sie dieses Abonnement auswählen. Weitere Informationen zum Wiederherstellen eines CyberX- oder Support-Kennworts finden Sie unter [Zurücksetzen eines Benutzerkennworts für den Sensor oder die lokale Verwaltungskonsole](how-to-create-and-manage-users.md#resetting-a-users-password-for-the-sensor-or-on-premises-management-console).
 
 ### <a name="investigate-a-lack-of-traffic"></a>Untersuchen eines fehlenden Datenverkehrs
 
@@ -65,35 +76,35 @@ So überprüfen Sie die Systemleistung:
 
    :::image type="content" source="media/how-to-troubleshoot-the-sensor-and-on-premises-management-console/dashboard-view-v2.png" alt-text="Screenshot eines Beispieldashboards."::: 
 
-2. Wählen Sie im Seitenmenü **Geräte** aus.
+1. Wählen Sie im Seitenmenü **Geräte** aus.
 
-3. Überprüfen Sie im Fenster **Geräte**, ob Geräte erkannt werden.
+1. Überprüfen Sie im Fenster **Geräte**, ob Geräte erkannt werden.
 
     :::image type="content" source="media/how-to-troubleshoot-the-sensor-and-on-premises-management-console/discovered-devices.png" alt-text="Sicherstellen, dass Geräte erkannt werden.":::
 
-4. Wählen Sie im Seitenmenü **Data Mining** aus.
+1. Wählen Sie im Seitenmenü **Data Mining** aus.
 
-5. Wählen Sie im Fenster **Data Mining** die Option **ALLE** aus, und generieren Sie einen Bericht.
+1. Wählen Sie im Fenster **Data Mining** die Option **ALLE** aus, und generieren Sie einen Bericht.
 
     :::image type="content" source="media/how-to-troubleshoot-the-sensor-and-on-premises-management-console/new-report-generated.png" alt-text="Generieren eines neuen Berichts mithilfe von Data Mining.":::
 
-6. Stellen Sie sicher, dass der Bericht Daten enthält.
+1. Stellen Sie sicher, dass der Bericht Daten enthält.
 
     :::image type="content" source="media/how-to-troubleshoot-the-sensor-and-on-premises-management-console/new-report-generated.png" alt-text="Sicherstellen, dass der Bericht Daten enthält.":::
 
-7. Wählen Sie im Seitenmenü die Option **Trends & Statistics** (Trends und Statistik) aus.
+1. Wählen Sie im Seitenmenü die Option **Trends & Statistics** (Trends und Statistik) aus.
 
-8. Wählen Sie im Fenster **Trends & Statistics** (Trends und Statistik) die Option **Widget hinzufügen** aus.
+1. Wählen Sie im Fenster **Trends & Statistics** (Trends und Statistik) die Option **Widget hinzufügen** aus.
 
     :::image type="content" source="media/how-to-troubleshoot-the-sensor-and-on-premises-management-console/add-widget.png" alt-text="Hinzufügen eines Widgets durch Auswahl.":::
 
-9. Fügen Sie ein Widget hinzu, und stellen Sie sicher, dass es Daten anzeigt.
+1. Fügen Sie ein Widget hinzu, und stellen Sie sicher, dass es Daten anzeigt.
 
     :::image type="content" source="media/how-to-troubleshoot-the-sensor-and-on-premises-management-console/widget-data.png" alt-text="Sicherstellen, dass im Widget Daten angezeigt werden.":::
 
-10. Wählen Sie im Seitenmenü **Warnungen** aus. Das Fenster **Warnungen** wird angezeigt.
+1. Wählen Sie im Seitenmenü **Warnungen** aus. Das Fenster **Warnungen** wird angezeigt.
 
-11. Stellen Sie sicher, dass die Warnungen erstellt wurden.
+1. Stellen Sie sicher, dass die Warnungen erstellt wurden.
 
     :::image type="content" source="media/how-to-troubleshoot-the-sensor-and-on-premises-management-console/alerts-created.png" alt-text="Sicherstellen, dass die Warnungen erstellt wurden.":::
 
@@ -154,9 +165,9 @@ So beheben Sie den Konfigurationsfehler:
 
 1. Klicken Sie in der Gerätezuordnung mit der rechten Maustaste auf das Cloudsymbol, und wählen Sie **IP-Adressen exportieren** aus. Kopieren Sie die öffentlichen Bereiche, die privat sind, und fügen Sie sie der Subnetzliste hinzu. Weitere Informationen finden Sie unter [Configure subnets](how-to-control-what-traffic-is-monitored.md#configure-subnets) (Konfigurieren von Subnetzen).
 
-2. Generieren Sie einen neuen Data Mining-Bericht für Internetverbindungen.
+1. Generieren Sie einen neuen Data Mining-Bericht für Internetverbindungen.
 
-3. Wählen Sie im Data Mining-Bericht :::image type="icon" source="media/how-to-troubleshoot-the-sensor-and-on-premises-management-console/administrator-mode.png" border="false"::: aus, um in den Administratormodus zu wechseln und die IP-Adressen der ICS-Geräte zu löschen.
+1. Wählen Sie im Data Mining-Bericht :::image type="icon" source="media/how-to-troubleshoot-the-sensor-and-on-premises-management-console/administrator-mode.png" border="false"::: aus, um in den Administratormodus zu wechseln und die IP-Adressen der ICS-Geräte zu löschen.
 
 ### <a name="tweak-the-sensors-quality-of-service"></a>Optimieren der Dienstqualität des Sensors
 
@@ -179,7 +190,7 @@ So optimieren Sie die Dienstqualität:
    > [!NOTE]
    > Verwenden Sie für ein physisches Gerät die em1-Schnittstelle.
 
-2. Geben Sie `sudo cyberx-xsense-limit-interface -i eth0 -l 1mbps -c` ein, um die Schnittstelleneinschränkung zu löschen.
+1. Geben Sie `sudo cyberx-xsense-limit-interface -i eth0 -l 1mbps -c` ein, um die Schnittstelleneinschränkung zu löschen.
 
 ## <a name="on-premises-management-console-troubleshooting-tools"></a>Tools zur Problembehandlung für die lokale Verwaltungskonsole
 
@@ -203,7 +214,7 @@ So optimieren Sie die Dienstqualität:
 
 1. Melden Sie sich als Defender für IoT-Benutzer an. 
 
-2. Überprüfen Sie die Standardwerte:
+1. Überprüfen Sie die Standardwerte:
 
    ```bash
    grep \"notifications\" /var/cyberx/properties/management.properties
@@ -216,20 +227,20 @@ So optimieren Sie die Dienstqualität:
    notifications.max_time_to_report=10 (seconds)
    ```
 
-3. Ändern Sie die Standardeinstellungen:
+1. Ändern Sie die Standardeinstellungen:
 
    ```bash
    sudo nano /var/cyberx/properties/management.properties
    ```
 
-4. Ändern Sie die Einstellungen der folgenden Zeilen:
+1. Ändern Sie die Einstellungen der folgenden Zeilen:
 
    ```bash
    notifications.max_number_to_report=50
    notifications.max_time_to_report=10 (seconds)
    ```
 
-5. Speichern Sie die Änderungen. Es ist kein Neustart erforderlich.
+1. Speichern Sie die Änderungen. Es ist kein Neustart erforderlich.
 
 ## <a name="export-information-for-troubleshooting"></a>Exportieren von Informationen zur Problembehandlung
 
@@ -239,13 +250,13 @@ So exportieren Sie Protokolle:
 
 1. Wählen Sie im linken Bereich **Systemeinstellungen** aus.
 
-2. Wählen Sie **Protokolle exportieren**.
+1. Wählen Sie **Protokolle exportieren**.
 
     :::image type="content" source="media/how-to-export-information-for-troubleshooting/export-a-log.png" alt-text="Exportieren Sie ein Protokoll für den Systemsupport.":::
 
-3. Geben Sie im Feld **Dateiname** den Dateinamen ein, den Sie für den Protokollexport verwenden möchten. Als Standardeinstellung wird das aktuelle Datum festgelegt.
+1. Geben Sie im Feld **Dateiname** den Dateinamen ein, den Sie für den Protokollexport verwenden möchten. Als Standardeinstellung wird das aktuelle Datum festgelegt.
 
-4. Wählen Sie die Datenkategorien aus, um festzulegen, welche Daten Sie exportieren möchten:  
+1. Wählen Sie die Datenkategorien aus, um festzulegen, welche Daten Sie exportieren möchten:  
 
     | Exportkategorie | BESCHREIBUNG |
     |--|--|
@@ -264,9 +275,9 @@ So exportieren Sie Protokolle:
     | **Datenbankprotokolle** | Wählen Sie diese Option aus, um Protokolle aus der Systemdatenbank zu exportieren. Die Untersuchung von Systemprotokollen hilft bei der Identifizierung von Systemproblemen. |
     | **Configuration** | Wählen Sie diese Option aus, um Informationen zu allen konfigurierbaren Parametern zu exportieren und sicherzustellen, dass alles ordnungsgemäß konfiguriert wurde. |
 
-5. Wenn Sie alle Optionen auswählen möchten, wählen Sie neben **Kategorien auswählen** die Option **Alle auswählen** aus.
+1. Wenn Sie alle Optionen auswählen möchten, wählen Sie neben **Kategorien auswählen** die Option **Alle auswählen** aus.
 
-6. Wählen Sie **Protokolle exportieren**.
+1. Wählen Sie **Protokolle exportieren**.
 
 Die exportierten Protokolle werden der Liste **Archived Logs** (Archivierte Protokolle) hinzugefügt. Senden Sie das Einmalkennwort in einer separaten Nachricht und einem Medium aus den exportierten Protokollen an das Supportteam. Das Supportteam kann exportierte Protokolle nur mithilfe des eindeutigen Einmalkennworts extrahieren, das zum Verschlüsseln der Protokolle verwendet wird.
 

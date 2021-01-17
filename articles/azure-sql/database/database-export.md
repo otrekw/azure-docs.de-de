@@ -9,14 +9,14 @@ author: stevestein
 ms.custom: sqldbrb=2
 ms.author: sstein
 ms.reviewer: ''
-ms.date: 07/16/2019
+ms.date: 01/11/2021
 ms.topic: how-to
-ms.openlocfilehash: 7dc6cd580687544226b61a29ca9ccf2d1b8dff42
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: f874803e0ae361255754477ca68184255f35b91f
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92671536"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98107377"
 ---
 # <a name="export-to-a-bacpac-file---azure-sql-database-and-azure-sql-managed-instance"></a>Exportieren in eine BACPAC-Datei – Azure SQL-Datenbank und Azure SQL Managed Instance
 
@@ -30,6 +30,7 @@ Wenn Sie eine Datenbank zur Archivierung oder zum Verschieben auf eine andere Pl
 - Beim Exportieren in Blobspeicher beträgt die maximale Größe einer BACPAC-Datei 200 GB. Führen Sie zum Archivieren einer größeren BACPAC-Datei einen Export in lokalen Speicher durch.
 - Das Exportieren einer BACPAC-Datei in Azure Storage Premium mit den in diesem Artikel erläuterten Methoden wird nicht unterstützt.
 - Speicher hinter einer Firewall wird derzeit nicht unterstützt.
+- Der Speicherdateiname oder der Eingabewert für StorageURI sollte weniger als 128 Zeichen lang sein, darf nicht auf „.“ enden und darf keine Sonderzeichen wie Leerzeichen oder „<,>,*,%,&,:,\,/,?“ enthalten. 
 - Falls der Exportvorgang länger als 20 Stunden dauert, wird er unter Umständen abgebrochen. Um die Leistung während des Exports zu erhöhen, können Sie Folgendes tun:
 
   - Erhöhen Sie vorübergehend Ihre Computegröße.
@@ -46,7 +47,7 @@ Das Exportieren einer BACPAC-Datei einer Datenbank aus [Azure SQL Managed Instan
 > [!NOTE]
 > Computer, die über das Azure-Portal oder PowerShell übermittelte Import-/Exportanforderungen verarbeiten, müssen die BACPAC-Datei sowie die von Data-Tier Application Framework (DacFX) generierten temporären Dateien speichern. Der erforderliche Speicherplatz variiert bei Datenbanken mit derselben Größe enorm. Der erforderliche Speicherplatz kann bis zum Dreifachen der Größe der Datenbank betragen. Der lokale Speicherplatz von Computern, die die Import-/Exportanforderung ausführen, beträgt nur 450 GB. Daher kann bei einigen Anforderungen der Fehler `There is not enough space on the disk` auftreten. In diesem Fall besteht die Problemumgehung darin, „sqlpackage.exe“ auf einem Computer mit ausreichend Speicherplatz auszuführen. Es wird empfohlen, [SqlPackage](#sqlpackage-utility) zum Importieren oder Exportieren von Datenbanken zu verwenden, die größer als 150GB sind, um dieses Problem zu vermeiden.
 
-1. Um eine Datenbank über das [Azure-Portal](https://portal.azure.com) zu exportieren, öffnen Sie die Seite für Ihre Datenbank, und klicken Sie auf der Symbolleiste auf **Exportieren** .
+1. Um eine Datenbank über das [Azure-Portal](https://portal.azure.com) zu exportieren, öffnen Sie die Seite für Ihre Datenbank, und klicken Sie auf der Symbolleiste auf **Exportieren**.
 
    ![Screenshot mit hervorgehobener Schaltfläche „Exportieren“](./media/database-export/database-export1.png)
 
@@ -54,9 +55,9 @@ Das Exportieren einer BACPAC-Datei einer Datenbank aus [Azure SQL Managed Instan
 
     ![Datenbankexport](./media/database-export/database-export2.png)
 
-3. Klicken Sie auf **OK** .
+3. Klicken Sie auf **OK**.
 
-4. Um den Status des Exportvorgangs zu überwachen, öffnen Sie die Seite für den Server mit der zu exportierenden Datenbank. Klicken Sie unter **Einstellungen** auf **Import-/Exportverlauf** .
+4. Um den Status des Exportvorgangs zu überwachen, öffnen Sie die Seite für den Server mit der zu exportierenden Datenbank. Klicken Sie unter **Einstellungen** auf **Import-/Exportverlauf**.
 
    ![Exportverlauf](./media/database-export/export-history.png)
 

@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/26/2020
-ms.openlocfilehash: 5a666d265550de6e24d791db6daa954d50ddde38
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: cefbdce88d49598998e8f985821088778eee3ae8
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97094181"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98117655"
 ---
 #  <a name="security-considerations-for-data-movement-in-azure-data-factory"></a>Sicherheitsüberlegungen für Datenverschiebung in Azure Data Factory
 > [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version des Data Factory-Diensts aus:"]
@@ -32,9 +32,9 @@ In einer Data Factory-Lösung erstellen Sie mindestens eine [Pipeline](concepts-
 
 Obwohl Data Factory nur in einigen Regionen verfügbar ist, ist der Datenverschiebungsdienst [weltweit verfügbar](concepts-integration-runtime.md#integration-runtime-location), um Datenkonformität, Effizienz und niedrigere Kosten für ausgehenden Netzwerkdatenverkehr sicherzustellen. 
 
-Azure Data Factory einschließlich Integration Runtime speichert keine Daten außer verknüpften Dienstanmeldeinformationen für Clouddatenspeicher, die mit Zertifikaten verschlüsselt sind. Mit Data Factory können Sie datengesteuerte Workflows erstellen, um die Verschiebung von Daten zwischen [unterstützten Datenspeichern](copy-activity-overview.md#supported-data-stores-and-formats) und die Verarbeitung von Daten mithilfe von [Computediensten](compute-linked-services.md) in anderen Regionen oder in einer lokalen Umgebung zu orchestrieren. Außerdem haben Sie die Möglichkeit, mithilfe von SDKs und Azure Monitor Workflows zu überwachen und zu verwalten.
+Azure Data Factory, einschließlich Azure Integration Runtime und der selbstgehosteten Integration Runtime, speichert temporäre Daten, Cachedaten oder Protokolle außer den Anmeldeinformationen des verknüpften Diensts für Clouddatenspeicher, die mithilfe von Zertifikaten verschlüsselt werden. Mit Data Factory können Sie datengesteuerte Workflows erstellen, um die Verschiebung von Daten zwischen [unterstützten Datenspeichern](copy-activity-overview.md#supported-data-stores-and-formats) und die Verarbeitung von Daten mithilfe von [Computediensten](compute-linked-services.md) in anderen Regionen oder in einer lokalen Umgebung zu orchestrieren. Außerdem haben Sie die Möglichkeit, mithilfe von SDKs und Azure Monitor Workflows zu überwachen und zu verwalten.
 
-Data Factory ist zertifiziert für:
+Data Factory ist zertifiziert für: 
 
 | **[CSA STAR-Zertifizierung](https://www.microsoft.com/trustcenter/compliance/csa-star-certification)** |
 | :----------------------------------------------------------- |

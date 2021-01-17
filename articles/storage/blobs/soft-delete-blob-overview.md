@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 07/15/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: bb90c5776e67c1ba8fecdbf394a8098e96ca0652
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: a2c26c3e41f64a1593a2d3386c76427c0b9682e9
+ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "96022376"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98127480"
 ---
 # <a name="soft-delete-for-blobs"></a>Vorläufiges Löschen für Blobs
 
@@ -79,7 +79,7 @@ Wenn **Delete Blob** für ein Basisblob (alle Blobs, die nicht selbst eine Momen
 > [!NOTE]  
 > Wenn ein vorläufig gelöschtes Blob überschrieben wird, wird automatisch eine vorläufig gelöschte Momentaufnahme des Blobzustands vor dem Schreibvorgang generiert. Das neue Blob erbt die Ebene des überschriebenen Blobs.
 
-Vorläufiges Löschen speichert Ihre Daten nicht, wenn Container oder Konten gelöscht oder Blobmetadaten und Blobeigenschaften überschrieben werden. Um ein Speicherkonto vor versehentlichem Löschen zu schützen, können Sie mit Azure Resource Manager eine Sperre konfigurieren. Weitere Informationen finden Sie im Azure Resource Manager-Artikel [Sperren von Ressourcen, um unerwartete Änderungen zu verhindern](../../azure-resource-manager/management/lock-resources.md).
+Vorläufiges Löschen speichert Ihre Daten nicht, wenn Container oder Konten gelöscht oder aber Blobmetadaten und Blobeigenschaften überschrieben werden. Wenn Sie ein Speicherkonto vor dem Löschen schützen möchten, können Sie mit Azure Resource Manager eine Sperre konfigurieren. Weitere Informationen dazu finden Sie im Azure Resource Manager-Artikel [Sperren von Ressourcen, um unerwartete Änderungen zu verhindern](../../azure-resource-manager/management/lock-resources.md).
 
 Die folgende Tabelle beschreibt das erwartete Verhalten, wenn vorläufiges Löschen aktiviert ist:
 
@@ -171,7 +171,7 @@ Nein, vorläufig gelöschte Momentaufnahmen werden für diesen Grenzwert nicht b
 
 ### <a name="if-i-delete-an-entire-account-or-container-with-soft-delete-turned-on-will-all-associated-blobs-be-saved"></a>Wenn ich ein gesamtes Konto oder einen Container lösche, bei dem vorläufiges Löschen aktiviert ist, werden dann alle zugehörigen Blobs gesichert?
 
-Nein, wenn Sie ein gesamtes Konto oder einen Container löschen, werden alle zugehörigen Blobs dauerhaft gelöscht. Weitere Informationen zum Schutz eines Speicherkontos vor versehentlichem Löschen finden Sie unter [Sperren von Ressourcen, um unerwartete Änderungen zu verhindern](../../azure-resource-manager/management/lock-resources.md).
+Nein, wenn Sie ein gesamtes Konto oder einen Container löschen, werden alle zugehörigen Blobs dauerhaft gelöscht. Weitere Informationen zum Schützen eines Speicherkontos vor versehentlichem Löschen finden Sie unter [Sperren von Ressourcen, um unerwartete Änderungen zu verhindern](../../azure-resource-manager/management/lock-resources.md).
 
 ### <a name="can-i-view-capacity-metrics-for-deleted-data"></a>Kann ich Kapazitätsmetriken für gelöschte Daten anzeigen?
 

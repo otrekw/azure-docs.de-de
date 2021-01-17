@@ -7,21 +7,21 @@ author: tamram
 ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
-ms.date: 06/17/2020
+ms.date: 01/12/2021
 ms.author: tamram
 ms.custom: security-recommendations
-ms.openlocfilehash: 5be3652d7fca62a0740888ad458f8564f555169e
-ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
+ms.openlocfilehash: 55c4fa00cfd20a83e65a3d57c6020991734f9d9f
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96518905"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98132476"
 ---
 # <a name="security-recommendations-for-blob-storage"></a>Sicherheitsempfehlungen für Blob Storage
 
-Dieser Artikel enthält Sicherheitsempfehlungen für Blob Storage. Die Umsetzung dieser Empfehlungen erleichtert es Ihnen, Ihre Sicherheitspflichten zu erfüllen, die in unserem Modell der gemeinsamen Verantwortung beschrieben werden. Weitere Informationen dazu, wie Microsoft seiner Verantwortung als Dienstanbieter nachkommt, finden Sie unter [Gemeinsame Verantwortung für das Cloud Computing](https://gallery.technet.microsoft.com/Shared-Responsibilities-81d0ff91/file/225366/1/Shared%20Responsibility%20for%20Cloud%20Computing-2019-10-25.pdf).
+Dieser Artikel enthält Sicherheitsempfehlungen für Blob Storage. Die Umsetzung dieser Empfehlungen erleichtert es Ihnen, Ihre Sicherheitspflichten zu erfüllen, die in unserem Modell der gemeinsamen Verantwortung beschrieben werden. Wenn Sie sich darüber informieren möchten, wie Microsoft seiner Verantwortung als Dienstanbieter nachkommt, lesen Sie [Gemeinsame Verantwortung für das Cloud Computing](https://gallery.technet.microsoft.com/Shared-Responsibilities-81d0ff91/file/225366/1/Shared%20Responsibility%20for%20Cloud%20Computing-2019-10-25.pdf).
 
-Einige der in diesem Artikel enthaltenen Empfehlungen können automatisch durch Azure Security Center überwacht werden. Azure Security Center ist die erste Verteidigungslinie zum Schutz Ihrer Ressourcen in Azure. Informationen zu Azure Security Center finden Sie unter [Was ist Azure Security Center?](../../security-center/security-center-introduction.md)
+Einige der in diesem Artikel enthaltenen Empfehlungen können automatisch durch Azure Security Center überwacht werden. Azure Security Center ist die erste Verteidigungslinie zum Schutz Ihrer Ressourcen in Azure. Informationen zu Azure Security Center finden Sie unter [Was ist Azure Security Center?](../../security-center/security-center-introduction.md).
 
 Azure Security Center analysiert in regelmäßigen Abständen den Sicherheitsstatus der Azure-Ressourcen, um mögliche Sicherheitsrisiken zu erkennen. Anschließend erhalten Sie Empfehlungen dazu, wie damit umgegangen werden kann. Weitere Informationen zu Empfehlungen von Azure Security Center finden Sie unter [Sicherheitsempfehlungen in Azure Security Center](../../security-center/security-center-recommendations.md).
 
@@ -31,9 +31,11 @@ Azure Security Center analysiert in regelmäßigen Abständen den Sicherheitssta
 |-|----|--|
 | Verwenden des Azure Resource Manager-Bereitstellungsmodells | Erstellen Sie neue Speicherkonten mit dem Azure Resource Manager-Bereitstellungsmodell, um von wichtigen Sicherheitsverbesserungen zu profitieren. Dazu gehören eine differenzierte rollenbasierte Zugriffssteuerung (Azure RBAC) und Überwachung in Azure, Resource Manager-basierte Bereitstellung und Governance, Zugriff auf verwaltete Identitäten, Zugriff auf Azure Key Vault für Geheimnisse sowie Azure AD-basierte Authentifizierung und Autorisierung für den Zugriff auf Azure Storage-Daten und -Ressourcen. Migrieren Sie nach Möglichkeit vorhandene Speicherkonten, die das klassische Bereitstellungsmodell verwenden, zu Azure Resource Manager. Weitere Informationen zu Azure Resource Manager finden Sie unter [Übersicht über Azure Resource Manager](../../azure-resource-manager/management/overview.md). | - |
 | Aktivieren von Azure Defender für alle Speicherkonten | Azure Defender für Azure Storage bietet zusätzliche Sicherheitsanalysen für Daten zur Erkennung von ungewöhnlichen und möglicherweise schädlichen Versuchen, auf Speicherkonten zuzugreifen oder diese unbefugt zu nutzen. Sicherheitswarnungen werden in Azure Security Center bei Auftreten von Anomalien in Bezug auf Aktivitäten ausgelöst und werden mit Informationen zu verdächtigen Aktivitäten und Empfehlungen zur Untersuchung und Beseitigung von Bedrohungen auch per E-Mail an Abonnementadministratoren gesendet. Weitere Informationen finden Sie unter [Konfigurieren von Azure Defender für Azure Storage](../common/azure-defender-storage-configure.md). | [Ja](../../security-center/security-center-sql-service-recommendations.md) |
-| Aktivieren des vorläufigen Löschens für Blobdaten | Das vorläufige Löschen ermöglicht es Ihnen, Blobdaten nach dem Löschen wiederherzustellen. Weitere Informationen zum vorläufigen Löschen finden Sie unter [Vorläufiges Löschen für Azure Storage-Blobs](./soft-delete-blob-overview.md). | - |
-| Sperren eines Speicherkontos, um versehentliches Löschen zu verhindern | Sie können ein Abonnement, eine Ressourcengruppe oder eine Ressource sperren, um zu verhindern, dass andere Benutzer in Ihrer Organisation diese versehentlich löschen oder ändern. Weitere Informationen finden Sie unter [Sperren von Ressourcen, um unerwartete Änderungen zu verhindern](../../azure-resource-manager/management/lock-resources.md).
+| Aktivieren des vorläufigen Löschens für Blobs | Das vorläufige Löschen für Blobs ermöglicht es Ihnen, Blobdaten nach dem Löschen wiederherzustellen. Weitere Informationen zum vorläufigen Löschen für Blobs finden Sie unter [Vorläufiges Löschen für Azure Storage-Blobs](./soft-delete-blob-overview.md). | - |
+| Aktivieren des vorläufigen Löschens für Container | Das vorläufige Löschen für Container ermöglicht es Ihnen, einen Container nach dem Löschen wiederherzustellen. Weitere Informationen zum vorläufigen Löschen für Container finden Sie unter [Vorläufiges Löschen für Container (Vorschau)](./soft-delete-container-overview.md). | - |
+| Sperren eines Speicherkontos, um eine versehentliche Kontolöschung zu verhindern | Sie können eine Azure Resource Manager-Ressource (z. B. ein Abonnement, eine Ressourcengruppe oder ein Speicherkonto) sperren, um zu verhindern, dass andere Benutzer in Ihrer Organisation sie versehentlich löschen oder ändern. Durch das Sperren eines Speicherkontos wird nicht verhindert, dass Daten in diesem Konto gelöscht werden. Dadurch wird nur verhindert, dass das Konto selbst gelöscht wird. Weitere Informationen finden Sie unter [Sperren von Ressourcen, um unerwartete Änderungen zu verhindern](../../azure-resource-manager/management/lock-resources.md).
 | Speichern unternehmenskritischer Daten in unveränderlichen Blobs | Konfigurieren Sie Richtlinien zur gesetzlichen Aufbewahrungspflicht und zeitbasierten Aufbewahrung für das Speichern von Blobdaten in einem WORM-Zustand (Write Once, Read Many). Unveränderlich gespeicherte Blobs können während des Aufbewahrungszeitraums gelesen, aber nicht geändert oder gelöscht werden. Weitere Informationen finden Sie unter [Speichern unternehmenskritischer Blobdaten mit unveränderlichem Speicher](storage-blob-immutable-storage.md). | - |
+| Vorschreiben einer sicheren Übertragung (HTTPS) in das Speicherkonto | ??? | - |
 | Beschränken von SAS-Token (Shared Access Signature) auf HTTPS-Verbindungen | Durch das verbindliche Verwenden von HTTPS, wenn ein Client ein SAS-Token für den Zugriff auf Blobdaten nutzt, kann das Risiko eines Lauschangriffs reduziert werden. Weitere Informationen finden Sie unter [Gewähren von eingeschränktem Zugriff auf Azure Storage-Ressourcen mithilfe von SAS (Shared Access Signature)](../common/storage-sas-overview.md). | - |
 
 ## <a name="identity-and-access-management"></a>Identitäts- und Zugriffsverwaltung

@@ -3,12 +3,12 @@ title: Vorlagenstruktur und -syntax
 description: Beschreibt die Struktur und die Eigenschaften der Azure Resource Manager-Vorlagen (ARM-Vorlagen) mithilfe deklarativer JSON-Syntax.
 ms.topic: conceptual
 ms.date: 12/17/2020
-ms.openlocfilehash: 698309c5aa0817c4b758ec81133d4c98061aa355
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 4c08612325d2776f8f1a7fe4486e6f592ca474a0
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97653128"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934695"
 ---
 # <a name="understand-the-structure-and-syntax-of-arm-templates"></a>Verstehen der Struktur und Syntax von ARM-Vorlagen
 
@@ -35,7 +35,7 @@ In der einfachsten Struktur weist eine Vorlage die folgenden Elemente auf:
 
 | Elementname | Erforderlich | BESCHREIBUNG |
 |:--- |:--- |:--- |
-| $schema |Ja |Speicherort der JSON-Schemadatei, die die Version der Vorlagensprache beschreibt. Die von Ihnen verwendete Versionsnummer hängt vom Umfang der Bereitstellung und vom JSON-Editor ab.<br><br>Wenn Sie [VS Code mit der Erweiterung für Azure Resource Manager-Tools](quickstart-create-templates-use-visual-studio-code.md) nutzen, verwenden Sie die aktuelle Version für Bereitstellungen von Ressourcengruppen:<br>`https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#`<br><br>Andere Editoren (einschließlich Visual Studio) können dieses Schema unter Umständen nicht verarbeiten. Verwenden Sie für diese Editoren Folgendes:<br>`https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#`<br><br>Verwenden Sie Folgendes für Bereitstellungen von Abonnements:<br>`https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#`<br><br>Verwenden Sie für Bereitstellungen von Verwaltungsgruppen Folgendes:<br>`https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeploymentTemplate.json#`<br><br>Verwenden Sie für Bereitstellungen von Mandanten Folgendes:<br>`https://schema.management.azure.com/schemas/2019-08-01/tenantDeploymentTemplate.json#` |
+| $schema |Ja |Speicherort der JSON-Schemadatei (JavaScript Object Notation), die die Version der Vorlagensprache beschreibt. Die von Ihnen verwendete Versionsnummer hängt vom Umfang der Bereitstellung und vom JSON-Editor ab.<br><br>Wenn Sie [Visual Studio Code mit der Erweiterung für Azure Resource Manager-Tools](quickstart-create-templates-use-visual-studio-code.md) nutzen, verwenden Sie die aktuelle Version für Bereitstellungen von Ressourcengruppen:<br>`https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#`<br><br>Andere Editoren (einschließlich Visual Studio) können dieses Schema unter Umständen nicht verarbeiten. Verwenden Sie für diese Editoren Folgendes:<br>`https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#`<br><br>Verwenden Sie Folgendes für Bereitstellungen von Abonnements:<br>`https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#`<br><br>Verwenden Sie für Bereitstellungen von Verwaltungsgruppen Folgendes:<br>`https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeploymentTemplate.json#`<br><br>Verwenden Sie für Bereitstellungen von Mandanten Folgendes:<br>`https://schema.management.azure.com/schemas/2019-08-01/tenantDeploymentTemplate.json#` |
 | contentVersion |Ja |Version der Vorlage (z. B. 1.0.0.0). Sie können einen beliebigen Wert für dieses Element resources. Mit diesem Wert können Sie wichtige Änderungen in der Vorlage dokumentieren. Bei der Bereitstellung von Ressourcen mithilfe der Vorlage kann mit diesem Wert sichergestellt werden, dass die richtige Vorlage verwendet wird. |
 | apiProfile |Nein | Eine API-Version, die als Sammlung von API-Versionen für Ressourcentypen dient. Verwenden Sie diesen Wert, um zu vermeiden, dass Sie API-Versionen für jede Ressource in der Vorlage angeben müssen. Wenn Sie eine API-Profilversion aber keine API-Version für den Ressourcentyp angeben, verwendet Resource Manager die API-Version für diesen Ressourcentyp, der im Profil bestimmt wurde.<br><br>Die API-Profileigenschaft ist besonders hilfreich, wenn Sie eine Vorlage in verschiedenen Umgebungen wie Azure Stack und der globalen Azure-Umgebung bereitstellen. Verwenden Sie die API-Profilversion, um sicherzustellen, dass Ihre Vorlage automatisch Versionen verwendet, die in beiden Umgebungen unterstützt werden. Eine Liste der im Profil definierten aktuellen API-Profilversionen und Ressourcen-API-Versionen finden Sie unter [API Profile (API-Profil)](https://github.com/Azure/azure-rest-api-specs/tree/master/profile).<br><br>Weitere Informationen finden Sie unter [Nachverfolgen von Versionen mithilfe von API-Profilen](templates-cloud-consistency.md#track-versions-using-api-profiles). |
 | [parameters](#parameters) |Nein |Werte, die bei der Bereitstellung angegeben werden, um die Bereitstellung der Ressourcen anpassen. |
@@ -98,13 +98,13 @@ Die sichere Zeichenfolge verwendet das gleiche Format wie die Zeichenfolge, und 
 
 Für Integer, die als Inlineparameter übergeben werden, ist der Wertebereich möglicherweise durch das SDK oder Befehlszeilentool, das Sie zur Bereitstellung verwenden, eingeschränkt. Wenn Sie beispielsweise PowerShell zum Bereitstellen einer Vorlage verwenden, können Integertypen im Bereich von -2147483648 bis 2147483647 liegen. Um diese Einschränkung zu vermeiden, geben Sie große Werte in einer [Parameterdatei](parameter-files.md) an. Ressourcentypen wenden ihre eigenen Grenzwerte für Integereigenschaften an.
 
-Schließen Sie Boolesche und Integerwerte in Ihrer Vorlage nicht in Anführungszeichen ein. Beginnen und beenden Sie Zeichenfolgenwerte mit doppelten Anführungszeichen.
+Schließen Sie Boolesche und Integerwerte in Ihrer Vorlage nicht in Anführungszeichen ein. Beginnen und beenden Sie Zeichenfolgenwerte mit doppelten Anführungszeichen (`"string value"`).
 
-Objekte beginnen mit einer linken geschweiften Klammer und enden mit einer rechten geschweiften Klammer. Arrays beginnen mit einer linken eckigen Klammer und enden mit einer rechten eckigen Klammer.
+Objekte beginnen mit einer linken geschweiften Klammer (`{`) und enden mit einer rechten geschweiften Klammer (`}`). Arrays beginnen mit einer linken eckigen Klammer (`[`) und enden mit einer rechten eckigen Klammer (`]`).
 
 ## <a name="parameters"></a>Parameter
 
-Im Abschnitt „Parameter“ der Vorlage geben Sie an, welche Werte Sie beim Bereitstellen der Ressourcen eingeben können. Die Anzahl der Parameter in einer Vorlage ist auf 256 beschränkt. Sie können die Anzahl der Parameter verringern, indem Sie Objekte verwenden, die mehrere Eigenschaften enthalten.
+Im Abschnitt `parameters` der Vorlage geben Sie an, welche Werte Sie beim Bereitstellen der Ressourcen eingeben können. Die Anzahl der Parameter in einer Vorlage ist auf 256 beschränkt. Sie können die Anzahl der Parameter verringern, indem Sie Objekte verwenden, die mehrere Eigenschaften enthalten.
 
 Folgende Eigenschaften sind für einen Parameter verfügbar:
 
@@ -141,7 +141,7 @@ Beispiele für die Verwendung von Parametern finden Sie unter [Parameter in ARM-
 
 ## <a name="variables"></a>Variables
 
-Im Abschnitt „variables“ erstellen Sie Werte, die in der ganzen Vorlage verwendet werden können. Sie müssen nicht unbedingt Variablen definieren, aber häufig bewirken sie eine Vereinfachung Ihrer Vorlage, indem komplexe Ausdrücke reduziert werden. Das Format der einzelnen Variablen entspricht einem der [Datentypen](#data-types).
+Im Abschnitt `variables` erstellen Sie Werte, die in der gesamten Vorlage verwendet werden können. Sie müssen nicht unbedingt Variablen definieren, aber häufig bewirken sie eine Vereinfachung Ihrer Vorlage, indem komplexe Ausdrücke reduziert werden. Das Format der einzelnen Variablen entspricht einem der [Datentypen](#data-types).
 
 Im folgenden Beispiel werden die verfügbaren Optionen zum Definieren einer Variable angezeigt:
 
@@ -211,7 +211,7 @@ Beim Definieren einer benutzerdefinierten Funktion gelten einige Einschränkunge
 | Elementname | Erforderlich | BESCHREIBUNG |
 |:--- |:--- |:--- |
 | Namespace |Ja |Namespace für die benutzerdefinierten Funktionen. Damit können Sie Namenskonflikte mit Vorlagenfunktionen vermeiden. |
-| function-name |Ja |Name der benutzerdefinierten Funktion. Wenn Sie die Funktion aufrufen, kombinieren Sie den Funktionsnamen mit dem Namespace. Verwenden Sie z. B. `"[contoso.uniqueName()]"`, um die Funktion „uniqueName“ im Namespace „contoso“ aufzurufen. |
+| function-name |Ja |Name der benutzerdefinierten Funktion. Wenn Sie die Funktion aufrufen, kombinieren Sie den Funktionsnamen mit dem Namespace. Verwenden Sie z. B. `"[contoso.uniqueName()]"`, um eine Funktion namens `uniqueName` im Namespace „contoso“ aufzurufen. |
 | parameter-name |Nein |Name des Parameters, der in der benutzerdefinierten Funktion verwendet werden soll |
 | parameter-value |Nein |Der Typ des Parameterwerts. Die zulässigen Typen und Werte sind **string**, **securestring**, **int**, **bool**, **object**, **secureObject** und **array**. |
 | output-type |Ja |Der Typ des Ausgabewerts. Ausgabewerte unterstützen dieselben Typen wie die Eingabeparameter der Funktion. |
@@ -221,7 +221,7 @@ Beispiele für die Verwendung von benutzerdefinierten Funktionen finden Sie unte
 
 ## <a name="resources"></a>Ressourcen
 
-Im Ressourcenabschnitt definieren Sie die Ressourcen, die bereitgestellt oder aktualisiert werden.
+Im Abschnitt `resources` definieren Sie die Ressourcen, die bereitgestellt oder aktualisiert werden.
 
 Sie definieren Ressourcen mit der folgenden Struktur:
 
@@ -282,7 +282,7 @@ Sie definieren Ressourcen mit der folgenden Struktur:
 | Elementname | Erforderlich | BESCHREIBUNG |
 |:--- |:--- |:--- |
 | condition | Nein | Boolescher Wert, der angibt, ob die Ressource während dieser Bereitstellung bereitgestellt wird. Wenn der Wert `true` lautet, wird die Ressource während der Bereitstellung erstellt. Wenn der Wert `false` lautet, wird die Ressource für diese Bereitstellung ausgelassen. Weitere Informationen finden Sie unter [Bedingung](conditional-resource-deployment.md). |
-| type |Ja |Der Typ der Ressource. Dieser Wert ist eine Kombination aus dem Namespace des Ressourcenanbieters und dem Ressourcentyp (z.B. **Microsoft.Storage/storageAccounts**). Informationen zum Bestimmen verfügbarer Werte finden Sie in der [Vorlagenreferenz](/azure/templates/). Für eine untergeordnete Ressource hängt das Format des Typs davon ab, ob sie innerhalb der übergeordneten Ressource geschachtelt oder außerhalb der übergeordneten Ressource definiert ist. Weitere Informationen finden Sie unter [Festlegen von Name und Typ für untergeordnete Ressourcen](child-resource-name-type.md). |
+| type |Ja |Der Typ der Ressource. Dieser Wert ist eine Kombination aus dem Namespace des Ressourcenanbieters und dem Ressourcentyp (z. B. `Microsoft.Storage/storageAccounts`). Informationen zum Bestimmen verfügbarer Werte finden Sie in der [Vorlagenreferenz](/azure/templates/). Für eine untergeordnete Ressource hängt das Format des Typs davon ab, ob sie innerhalb der übergeordneten Ressource geschachtelt oder außerhalb der übergeordneten Ressource definiert ist. Weitere Informationen finden Sie unter [Festlegen von Name und Typ für untergeordnete Ressourcen](child-resource-name-type.md). |
 | apiVersion |Ja |Version der REST-API zum Erstellen der Ressource. Wenn Sie eine neue Vorlage erstellen, legen Sie diesen Wert auf die neueste Version der Ressource fest, die Sie bereitstellen. Solange die Vorlage wie erforderlich funktioniert, verwenden Sie weiterhin dieselbe API-Version. Indem Sie weiterhin dieselbe API-Version verwenden, minimieren Sie das Risiko, dass eine neue API-Version die Funktionsweise Ihrer Vorlage verändert. Ziehen Sie eine Aktualisierung der API-Version nur dann in Betracht, wenn Sie ein neues Feature verwenden möchten, das in einer späteren Version eingeführt wird. Informationen zum Bestimmen verfügbarer Werte finden Sie in der [Vorlagenreferenz](/azure/templates/). |
 | name |Ja |Der Name der Ressource. Der Name muss die Einschränkungen für URI-Komponenten laut Definition in RFC3986 erfüllen. Azure-Dienste, die externen Parteien den Ressourcennamen verfügbar machen, überprüfen den Namen, um sicherzustellen, dass es sich nicht um einen Versuch handelt, eine andere Identität vorzutäuschen. Für eine untergeordnete Ressource hängt das Format des Namens davon ab, ob sie innerhalb der übergeordneten Ressource geschachtelt oder außerhalb der übergeordneten Ressource definiert ist. Weitere Informationen finden Sie unter [Festlegen von Name und Typ für untergeordnete Ressourcen](child-resource-name-type.md). |
 | comments |Nein |Ihre Notizen zur Dokumentierung der Ressourcen in Ihrer Vorlage. Weitere Informationen finden Sie unter [Kommentare in Vorlagen](template-syntax.md#comments). |
@@ -298,7 +298,7 @@ Sie definieren Ressourcen mit der folgenden Struktur:
 
 ## <a name="outputs"></a>Ausgaben
 
-Im Ausgabenabschnitt legen Sie Werte fest, die von der Bereitstellung zurückgegeben werden. In der Regel geben Sie Werte aus bereitgestellten Ressourcen zurück.
+Im Abschnitt `outputs` legen Sie Werte fest, die von der Bereitstellung zurückgegeben werden. In der Regel geben Sie Werte aus bereitgestellten Ressourcen zurück.
 
 Das folgende Beispiel zeigt die Struktur einer Ausgabedefinition:
 
@@ -351,7 +351,7 @@ Für Inlinekommentare können Sie entweder `//` oder `/* ... */` verwenden, aber
   ],
 ```
 
-In Visual Studio Code kann die [Azure Resource Manager-Tools-Erweiterung](quickstart-create-templates-use-visual-studio-code.md) automatisch eine ARM-Vorlage erkennen und den Sprachmodus ändern. Wenn in der rechten unteren Ecke von VS Code **Azure Resource Manager-Vorlage** angezeigt wird, können Sie die Inline-Kommentare verwenden. Die Inlinekommentare werden nicht mehr als ungültig markiert.
+In Visual Studio Code kann die [Azure Resource Manager-Tools-Erweiterung](quickstart-create-templates-use-visual-studio-code.md) automatisch eine ARM-Vorlage erkennen und den Sprachmodus ändern. Wenn in der rechten unteren Ecke von Visual Studio Code **Azure Resource Manager-Vorlage** angezeigt wird, können Sie die Inlinekommentare verwenden. Die Inlinekommentare werden nicht mehr als ungültig markiert.
 
 ![Azure Resource Manager-Vorlagenmodus in Visual Studio Code](./media/template-syntax/resource-manager-template-editor-mode.png)
 
@@ -369,7 +369,7 @@ Sie können ein `metadata`-Objekt fast überall in Ihrer Vorlage hinzufügen. Re
   },
 ```
 
-Fügen Sie für **Parameter** ein `metadata`-Objekt mit einer `description`-Eigenschaft hinzu.
+Fügen Sie für `parameters` ein `metadata`-Objekt mit einer `description`-Eigenschaft hinzu.
 
 ```json
 "parameters": {
@@ -385,7 +385,7 @@ Wenn Sie die Vorlage über das Portal bereitstellen, wird der Text, den Sie in d
 
 ![Parametertipp anzeigen](./media/template-syntax/show-parameter-tip.png)
 
-Fügen Sie für **Ressourcen** ein `comments`-Element oder ein Metadatenobjekt hinzu. Das folgende Beispiel zeigt sowohl ein Kommentarelement als auch ein Metadatenobjekt.
+Fügen Sie für `resources` ein `comments`-Element oder ein `metadata`-Objekt hinzu. Das folgende Beispiel zeigt sowohl ein `comments`-Element als auch ein `metadata`-Objekt.
 
 ```json
 "resources": [
@@ -411,7 +411,7 @@ Fügen Sie für **Ressourcen** ein `comments`-Element oder ein Metadatenobjekt h
 ]
 ```
 
-Fügen Sie für **Ausgaben** dem Ausgabewert ein Metadatenobjekt hinzu.
+Fügen Sie für `outputs` dem Ausgabewert ein `metadata`-Objekt hinzu.
 
 ```json
 "outputs": {
@@ -424,11 +424,11 @@ Fügen Sie für **Ausgaben** dem Ausgabewert ein Metadatenobjekt hinzu.
   },
 ```
 
-Sie können ein Metadatenobjekt nicht zu benutzerdefinierten Funktionen hinzufügen.
+Sie können benutzerdefinierten Funktionen kein `metadata`-Objekt hinzufügen.
 
 ## <a name="multi-line-strings"></a>Mehrzeilige Zeichenfolgen
 
-Sie können eine Zeichenfolge in mehrere Zeilen unterteilen. Sehen Sie sich beispielsweise die Standorteigenschaft und einen der Kommentare im folgenden JSON-Beispiel an.
+Sie können eine Zeichenfolge in mehrere Zeilen unterteilen. Sehen Sie sich beispielsweise die `location`-Eigenschaft und einen der Kommentare im folgenden JSON-Beispiel an.
 
 ```json
 {
@@ -448,7 +448,8 @@ Sie können eine Zeichenfolge in mehrere Zeilen unterteilen. Sehen Sie sich beis
   ],
 ```
 
-Wenn Sie Vorlagen mit mehrzeiligen Zeichenfolgen mithilfe der Azure CLI, Version 2.3.0oder niedriger, bereitstellen möchten, müssen Sie den Switch `--handle-extended-json-format` verwenden.
+> [!NOTE]
+> Wenn Sie Vorlagen mit mehrzeiligen Zeichenfolgen mithilfe der Azure CLI, Version 2.3.0oder niedriger, bereitstellen möchten, müssen Sie den Switch `--handle-extended-json-format` verwenden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

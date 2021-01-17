@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.author: ramamill
 ms.date: 04/03/2020
-ms.openlocfilehash: 8ee6449f357a578b30809bb03723ac1556e4f459
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 62c8240a4d2e50aa3b584f322baf7d2ee217c6d3
+ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88816170"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98127871"
 ---
 # <a name="troubleshoot-mobility-service-push-installation"></a>Beheben von Problemen bei Pushinstallationen von Mobility Service
 
@@ -106,7 +106,22 @@ Der Konfigurationsserver/Prozessserver für horizontales Hochskalieren versucht,
 
 So beheben Sie den Fehler
 
+* Vergewissern Sie sich, dass das Benutzerkonto über Administratorzugriff auf dem Quellcomputer mit einem lokalen Konto oder einem Domänenkonto verfügt. Wenn Sie kein Domänenkonto verwenden, müssen Sie die Remote-Benutzerzugriffssteuerung auf dem lokalen Computer deaktivieren.
+  * So fügen Sie manuell einen Registrierungsschlüssel hinzu, der die Remote-Benutzerzugriffssteuerung deaktiviert:
+    * `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System`
+    * Fügen Sie einen neuen `DWORD`-Wert hinzu: `LocalAccountTokenFilterPolicy`
+    * Legen Sie den Wert auf `1` fest.
+  * Geben Sie in der Eingabeaufforderung den folgenden Befehl ein, um den Registrierungsschlüssel hinzuzufügen:
+
+    `REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v LocalAccountTokenFilterPolicy /t REG_DWORD /d 1`
+
 * Stellen Sie sicher, dass Sie Ihren Quellcomputer über den Konfigurationsserver pingen können. Wenn Sie beim Aktivieren der Replikation einen Prozessserver für horizontales Skalieren ausgewählt haben, stellen Sie sicher, dass Sie Ihren Quellcomputer über den Prozessserver pingen können.
+
+* Stellen Sie sicher, dass der Datei- und Druckerfreigabedienst auf Ihrem virtuellen Computer aktiviert ist. Überprüfen Sie die Schritte [hier](vmware-azure-troubleshoot-push-install.md#file-and-printer-sharing-services-check-errorid-95105--95106).
+
+* Stellen Sie sicher, dass der WMI-Dienst auf Ihrem virtuellen Computer aktiviert ist. Überprüfen Sie die Schritte [hier](vmware-azure-troubleshoot-push-install.md#windows-management-instrumentation-wmi-configuration-check-error-code-95103).
+
+* Stellen Sie sicher, dass der Prozessserver auf die freigegebenen Netzwerkordner auf dem virtuellen Computer zugreifen kann. Überprüfen Sie die Schritte [hier](vmware-azure-troubleshoot-push-install.md#check-access-for-network-shared-folders-on-source-machine-errorid-9510595523).
 
 * Verwenden Sie in der Befehlszeile des Quellservercomputers `Telnet`, um den Konfigurationsserver oder den Prozessserver für horizontales Hochskalieren an HTTPS-Port 135 zu pingen, wie im folgenden Befehl gezeigt. Mit diesem Befehl wird überprüft, ob Probleme mit der Netzwerkkonnektivität oder Blockierungsproblem mit dem Firewallport auftreten.
 

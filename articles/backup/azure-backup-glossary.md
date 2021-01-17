@@ -3,12 +3,12 @@ title: Azure Backup-Glossar
 description: In diesem Artikel werden Begriffe vorgestellt, die bei Nutzung von Azure Backup hilfreich sind.
 ms.topic: conceptual
 ms.date: 12/21/2020
-ms.openlocfilehash: 8baa47667e86b99ebbbf273610809814e768c077
-ms.sourcegitcommit: a89a517622a3886b3a44ed42839d41a301c786e0
+ms.openlocfilehash: 1e28f0c2ad5d14ea2a8dc6ce8d5fa2b21c7e65ac
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97733229"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97935069"
 ---
 # <a name="azure-backup-glossary"></a>Azure Backup-Glossar
 
@@ -172,7 +172,7 @@ Bei inkrementellen Sicherungen werden nur die Blöcke gespeichert, die sich seit
 
 ## <a name="instant-restore"></a>Sofortige Wiederherstellung
 
-Bei der sofortigen Wiederherstellung wird ein Computer direkt aus der Momentaufnahme der Sicherung und nicht aus der Kopie der Momentaufnahme im Tresor wiederhergestellt. Sofortige Wiederherstellungen sind schneller als Wiederherstellungen aus einem Tresor. Die Anzahl der verfügbaren Sofortwiederherstellungspunkte hängt von der für Momentaufnahmen konfigurierten Aufbewahrungsdauer ab.
+(Workloadspezifischer Begriff) Bei der sofortigen Wiederherstellung wird ein Computer direkt aus seiner Momentaufnahme der Sicherung und nicht aus der Kopie der Momentaufnahme im Tresor wiederhergestellt. Sofortige Wiederherstellungen sind schneller als Wiederherstellungen aus einem Tresor. Die Anzahl der verfügbaren Sofortwiederherstellungspunkte hängt von der für Momentaufnahmen konfigurierten Aufbewahrungsdauer ab. Dies gilt zurzeit nur für die Azure-VM-Sicherung.
 
 ## <a name="iops"></a>IOPS
 
@@ -226,23 +226,19 @@ Eine Wiederherstellung, die vom Wiederherstellungspunkt zum Quellspeicherort, an
 
 Eine Passphrase wird zum Verschlüsseln und Entschlüsseln von Daten während der Sicherung oder Wiederherstellung Ihres lokalen Computers mithilfe des MARS-Agents nach oder aus Azure verwendet.
 
-## <a name="point-in-time-restore"></a>Point-in-Time-Wiederherstellung
-
-Die Wiederherstellung eines Elements in seinem Zustand zu einem bestimmten Zeitpunkt.
-
 ## <a name="private-endpoint"></a>Privater Endpunkt
 
 Weitere Informationen finden Sie in der [Dokumentation zu privaten Endpunkten](https://docs.microsoft.com/azure/private-link/private-endpoint-overview).
 
 ## <a name="protected-instance"></a>Geschützte Instanz
 
-Bezieht sich auf den Computer, physischen oder virtuellen Server, den Sie zum Konfigurieren der Sicherung in Azure verwenden.  Aus Sicht der **Abrechnung** ist die Anzahl der geschützten Instanzen für einen Computer abhängig von seiner Front-End-Größe. [Weitere Informationen](https://azure.microsoft.com/pricing/details/backup/)
+Bezieht sich auf den Computer, physischen oder virtuellen Server, den Sie zum Konfigurieren der Sicherung in Azure verwenden.  Aus Sicht der **Abrechnung** ist die Anzahl der geschützten Instanzen für einen Computer abhängig von seiner Front-End-Größe. Daher kann eine einzelne Sicherungsinstanz (z. B. eine in Azure gesicherte VM) je nach deren Front-End-Größe mehreren geschützten Instanzen entsprechen. [Weitere Informationen](https://azure.microsoft.com/pricing/details/backup/)
 
 ## <a name="rbac-role-based-access-control"></a>Rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC)
 
 Weitere Informationen finden Sie in der [Dokumentation zu RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview).
 
-## <a name="recovery-point-restore-point-retention-point"></a>Wiederherstellungspunkt/Aufbewahrungspunkt
+## <a name="recovery-point-restore-point-retention-point--point-in-time-pit"></a>Wiederherstellungspunkt/Aufbewahrungspunkt/Zeitpunkt (Point-in-time, PIT)
 
 Eine Kopie der ursprünglichen Daten, die gesichert wurden. Ein Aufbewahrungspunkt ist mit einem Zeitstempel verknüpft, sodass Sie damit ein Element zu einem bestimmten Zeitpunkt wiederherstellen können.
 
@@ -264,11 +260,11 @@ Eine benutzerdefinierte Regel, die angibt, wie lange Sicherungen aufbewahrt werd
 
 ## <a name="rpo-recovery-point-objective"></a>RPO (Recovery Point Objective)
 
-RPO gibt den maximalen Datenverlust an, der in einem Datenverlustszenario akzeptabel ist. Dieser Wert wird von der Sicherungshäufigkeit bestimmt.
+RPO gibt den maximalen Datenverlust an, der in einem Datenverlustszenario möglich ist. Dieser Wert wird von der Sicherungshäufigkeit bestimmt.
 
 ## <a name="rto-recovery-time-objective"></a>RTO (Recovery Time Objective)
 
-RTO gibt die maximal akzeptable Zeit an, in der Daten nach einem Datenverlust zum letzten verfügbaren Zeitpunkt wiederhergestellt werden können.
+RTO gibt die maximal mögliche Zeitspanne an, in der Daten nach einem Datenverlust zum letzten verfügbaren Zeitpunkt wiederhergestellt werden können.
 
 ## <a name="scheduled-backup"></a>Geplante Sicherung
 
@@ -284,7 +280,7 @@ Die Funktion „Vorläufiges Löschen“ schützt vor versehentlichem Löschen v
 
 ## <a name="snapshot"></a>Momentaufnahme
 
-Eine Momentaufnahme ist eine vollständige, schreibgeschützte Kopie einer virtuellen Festplatte (Virtual Hard Drive, VHD). [Weitere Informationen](https://docs.microsoft.com/azure/virtual-machines/windows/snapshot-copy-managed-disk)
+Eine Momentaufnahme ist eine vollständige, schreibgeschützte Kopie einer virtuellen Festplatte (Virtual Hard Drive, VHD) oder einer Azure-Dateifreigabe. Informieren Sie sich ausführlicher über [Datenträger-Momentaufnahmen](https://docs.microsoft.com/azure/virtual-machines/windows/snapshot-copy-managed-disk) und [Dateimomentaufnahmen](https://docs.microsoft.com/azure/storage/files/storage-snapshots-files).
 
 ## <a name="storage-account"></a>Speicherkonto
 
@@ -314,7 +310,7 @@ Eine Speicherentität in Azure, die Sicherungsdaten enthält. Außerdem handelt 
 
 ## <a name="vault-credentials"></a>Tresoranmeldeinformationen
 
-Die Datei mit Tresoranmeldeinformationen ist ein Zertifikat, das vom Portal für jeden Tresor generiert wird. Es wird beim Registrieren eines Servers beim Tresor verwendet. [Weitere Informationen](backup-azure-dpm-introduction.md)
+Die Datei mit Tresoranmeldeinformationen ist ein Zertifikat, das vom Portal für jeden Tresor generiert wird. Es wird während der Registrierung eines lokalen Servers beim Tresor verwendet. [Weitere Informationen](backup-azure-dpm-introduction.md)
 
 ## <a name="vnet-virtual-network"></a>Virtuelles Netzwerk (VNET)
 
