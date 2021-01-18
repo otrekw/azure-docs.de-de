@@ -33,4 +33,4 @@ Azure Purview unterstützt die folgenden Browser. Es wird empfohlen, den neueste
 
 Chromium Edge im InPrivate-Modus und mit strenger Verhinderung der Nachverfolgung (Strict Tracking Prevention) muss deaktiviert werden, damit Purview Studio funktioniert.
 
-:::image type="content" source="./media/supported-browsers/incognito-edge.png" alt-text="Screenshot von Edge":::
+:::image type="content" source="./media/supported-browsers/incognito-edge.png" alt-text="Screenshot von Microsoft Edge":::

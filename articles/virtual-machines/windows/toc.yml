@@ -228,7 +228,7 @@
         - name: Disk Storage-Reservierungen
           href: ../../cost-management-billing/reservations/understand-disk-reservations.md
         - name: Leistung von virtuellen Computern und Datenträgern
-          href: disk-performance-windows.md
+          href: ../disks-performance.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: Entwerfen für hohe Leistung
           href: ../premium-storage-performance.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: Datenträgerbursting
@@ -814,10 +814,8 @@
           href: snapshot-copy-managed-disk.md
         - name: Reservieren von Datenträgerspeicher
           href: ../disks-reserved-capacity.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
-        - name: 'Erstellen einer inkrementellen Momentaufnahme: PowerShell'
-          href: disks-incremental-snapshots.md
-        - name: 'Erstellen einer inkrementellen Momentaufnahme: Portal'
-          href: disks-incremental-snapshots-portal.md
+        - name: Erstellen einer inkrementellen Momentaufnahme
+          href: ../disks-incremental-snapshots.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: Sichern nicht verwalteter Datenträger
           href: incremental-snapshots.md
         - name: Verschlüsselung
@@ -851,7 +849,7 @@
             - name: Verwenden von Ultra Disks
               href: ../disks-enable-ultra-ssd.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
             - name: Durchführen von Vergleichstest für einen Datenträger
-              href: disks-benchmarks.md
+              href: ../disks-benchmarks.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: 'Ermitteln nicht angefügter Datenträger: PowerShell'
           href: find-unattached-disks.md
         - name: 'Ermitteln nicht angefügter Datenträger: Portal'

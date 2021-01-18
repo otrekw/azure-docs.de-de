@@ -1091,28 +1091,29 @@
       items:
         - name: Trainieren von Modellen
           href: ./spark/apache-spark-machine-learning-training.md
-    - name: Tutorials
+    - name: Lernprogramme
       items:
         - name: Visualisieren von Daten mit Apache Spark
+          displayname: machine learning
           href: ./spark/apache-spark-data-visualization-tutorial.md
-          displayname: machine learning
         - name: Verwenden des Bewertungsassistenten für dedizierte SQL-Pools
-          href: machine-learning/tutorial-sql-pool-model-scoring-wizard.md
           displayname: machine learning
+          href: machine-learning/tutorial-sql-pool-model-scoring-wizard.md
         - name: Trainieren eines Modells mit automatisiertem maschinellem Lernen ohne Code
+          displayname: machine learning
           href: ./machine-learning/tutorial-automl.md
         - name: Trainieren eines Modells in Python mit automatisiertem maschinellem Lernen
+          displayname: machine learning
           href: ./spark/apache-spark-azure-machine-learning-tutorial.md
-          displayname: machine learning
         - name: Erstellen eines Modells mit Apache Spark MLlib
-          href: ./spark/apache-spark-machine-learning-mllib-notebook.md
           displayname: machine learning
+          href: ./spark/apache-spark-machine-learning-mllib-notebook.md
+        - name: Konfigurieren von Cognitive Services für Azure Synapse
+          href: ./machine-learning/tutorial-configure-cognitive-services-synapse.md
         - name: Stimmungsanalyse mit Cognitive Services
           href: ./machine-learning/tutorial-cognitive-services-sentiment.md
         - name: Anomalieerkennung mit Cognitive Services
           href: ./machine-learning/tutorial-cognitive-services-anomaly.md
-        - name: Konfigurieren von Cognitive Services für Azure Synapse
-          href: ./machine-learning/tutorial-configure-cognitive-services-synapse.md
 - name: Data Catalog und Governance
   items:
     - name: Schnellstarts
