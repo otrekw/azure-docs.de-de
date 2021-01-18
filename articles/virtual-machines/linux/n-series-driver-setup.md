@@ -8,18 +8,18 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 01/09/2019
 ms.author: vikancha
-ms.openlocfilehash: c3443abaa1157122f7bcd43277a0ae00a2cd4407
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.openlocfilehash: 7af13147804fd1e50a033635985c08b9c62f76ba
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2021
-ms.locfileid: "98059091"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98200990"
 ---
 # <a name="install-nvidia-gpu-drivers-on-n-series-vms-running-linux"></a>Installieren von NVIDIA GPU-Treibern für virtuelle Computer der Serie N mit Linux
 
 Wenn Sie die GPU-Funktionen von Azure-VMs der N-Serie nutzen möchten, die von NVIDIA-GPUs unterstützt werden, müssen Sie NVIDIA GPU-Treiber installieren. Mit der [NVIDIA-GPU-Treibererweiterung](../extensions/hpccompute-gpu-linux.md) werden entsprechende NVIDIA-CUDA- oder GRID-Treiber auf einem virtuellen Computer der N-Serie installiert. Installieren oder verwalten Sie die Erweiterung mithilfe des Azure-Portals oder mit Tools wie der Azure-Befehlszeilenschnittstelle oder Azure Resource Manager-Vorlagen. Informationen zu unterstützten Distributionen und Bereitstellungsschritten finden Sie in der [Dokumentation zur NVIDIA-GPU-Treibererweiterung](../extensions/hpccompute-gpu-linux.md).
 
-Wenn Sie NVIDIA-GPU-Treiber manuell installieren möchten, finden Sie in diesem Artikel Informationen zu unterstützten Distributionen und Treibern sowie Schritte zur Installation und Überprüfung. Informationen zur manuellen Einrichtung von Treibern stehen auch für [Windows-VMs](../windows/n-series-driver-setup.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) zur Verfügung.
+Wenn Sie NVIDIA-GPU-Treiber manuell installieren möchten, finden Sie in diesem Artikel Informationen zu unterstützten Distributionen und Treibern sowie Schritte zur Installation und Überprüfung. Informationen zur manuellen Einrichtung von Treibern stehen auch für [Windows-VMs](../windows/n-series-driver-setup.md) zur Verfügung.
 
 Informationen zu Spezifikationen von virtuellen Computern der N-Serie, Speicherkapazitäten und Details zu den Datenträgern finden Sie unter [GPU-optimierte Größen von virtuellen Linux-Computern](../sizes-gpu.md?toc=/azure/virtual-machines/linux/toc.json). 
 
@@ -388,4 +388,4 @@ Erstellen Sie dann einen Eintrag für Ihr Updateskript in `/etc/rc.d/rc3.d`, dam
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Wenn Sie ein Linux-VM-Image mit den installierten NVIDIA-Treibern erfassen möchten, lesen Sie [Generalisieren und Erfassen eines virtuellen Linux-Computers](capture-image.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+* Wenn Sie ein Linux-VM-Image mit den installierten NVIDIA-Treibern erfassen möchten, lesen Sie [Generalisieren und Erfassen eines virtuellen Linux-Computers](capture-image.md).
