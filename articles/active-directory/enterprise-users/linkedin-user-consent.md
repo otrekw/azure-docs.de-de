@@ -78,7 +78,7 @@ Wenn Sie Ihre Microsoft- und LinkedIn-Konten verbinden, gestatten Sie Microsoft,
 
 Daten, auf die von Microsoft zugegriffen wird, werden nicht dauerhaft in LinkedIn gespeichert, außer Kontakten. Microsoft-Kontakte werden in LinkedIn gespeichert, bis Benutzer sie entfernen. Weitere Informationen zum [Löschen importierter Kontakte aus LinkedIn](https://www.linkedin.com/help/linkedin/answer/43377).
 
-Weitere Informationen zur Verwendung persönlicher Daten durch LinkedIn finden Sie in den [Datenschutzbestimmungen von LinkedIn](https://www.linkedin.com/legal/privacy-policy). Bei Diensten, Datenübertragungen und Speicherung von LinkedInkönnen Daten aus der Europäischen Union in die Vereinigten Staaten und zurück fließen, wobei Ihr Datenschutz wie in Datenübertragungen in der Europäischen Union beschrieben gewährleistet wird.
+Weitere Informationen zur Verwendung persönlicher Daten durch LinkedIn finden Sie in den [Datenschutzbestimmungen von LinkedIn](https://www.linkedin.com/legal/privacy-policy). Bei Diensten, Datenübertragungen und Speicherung von LinkedInkönnen Daten aus der Europäischen Union in die Vereinigten Staaten und zurück fließen, wobei Ihr Datenschutz wie in [Datenübertragungen in der Europäischen Union beschrieben gewährleistet wird](https://www.linkedin.com/help/linkedin/answer/62533).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

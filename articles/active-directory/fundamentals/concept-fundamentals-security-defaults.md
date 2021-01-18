@@ -125,7 +125,7 @@ Diese kostenlosen Sicherheitsstandards ermöglichen die Registrierung für und V
 | Methode | Standardwerte für die Sicherheit | Bedingter Zugriff |
 | --- | --- | --- |
 | Benachrichtigung über mobile App | X | X |
-| Prüfcode aus mobiler App oder Hardwaretoken | X** | X |
+| Prüfcode aus mobiler App oder Hardwaretoken | X* | X |
 | Textnachricht an Telefon |   | X |
 | Auf Telefon anrufen |   | X |
 | App-Kennwörter |   | X**_ |
