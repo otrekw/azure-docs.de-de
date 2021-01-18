@@ -8,6 +8,8 @@
       href: faq.md
     - name: Neuigkeiten
       href: whats-new.md
+    - name: Migrieren von Operations Manager
+      href: azure-monitor-operations-manager.md
 - name: Schnellstarts
   items:
     - name: Überwachen einer Azure-Ressource
@@ -127,7 +129,7 @@
           href: platform/personal-data-mgmt.md
         - name: 'Anwendungsdatensammlung, -vermerkdauer und -speicherung'
           href: app/data-retention-privacy.md
-    - name: Alerts
+    - name: Warnungen
       items:
         - name: Übersicht
           href: platform/alerts-overview.md
@@ -196,6 +198,8 @@
               href: platform/metric-chart-samples.md
             - name: Problembehandlung für Metrikdiagramme
               href: platform/metrics-troubleshoot.md
+            - name: Grundlegendes zur Metrikaggregation
+              href: platform/metrics-aggregation-explained.md
     - name: Azure Monitor-Protokolle
       items:
         - name: Übersicht
@@ -664,6 +668,8 @@
                       href: app/javascript-react-native-plugin.md
                     - name: Angular-Plug-in
                       href: app/javascript-angular-plugin.md
+                    - name: Plug-In für die automatische Erfassung von Klickanalysen
+                      href: app/javascript-click-analytics-plugin.md
                 - name: Problembehandlung
                   items:
                     - name: SDK-Ladefehler

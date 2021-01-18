@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 11/09/2020
 author: sayantanroy83
 ms.author: sroy
-ms.openlocfilehash: 943f1361a2a9d6bf8d891f8b4f2137b8738f0836
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 31216db98cc02724ac3625eb1a8fa18b0f75c6ee
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96450766"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97955024"
 ---
 # <a name="orders-dashboard-in-commercial-marketplace-analytics"></a>Dashboard „Aufträge“ in Analysen für den kommerziellen Marketplace
 
@@ -109,14 +109,13 @@ In der Tabelle „Auftragsdetails“ wird eine nummerierte Liste der 1.000 beste
 - Die Daten können in eine CSV- oder TSV-Datei extrahiert werden, wenn die Anzahl weniger als 1.000 Einträge beträgt.
 - Liegt die Anzahl der Datensätze über 1.000, werden die exportierten Daten für die nächsten 30 Tage asynchron auf einer Downloadseite abgelegt.
 - Wenden Sie Filter auf die Tabelle **Auftragsdetails** an, um nur die Daten anzuzeigen, die für Sie von Interesse sind. Filtern Sie nach Land/Region, Azure-Lizenztyp, Lizenztyp im kommerziellen Marketplace, Angebotstyp, Bestellstatus, kostenlosen Testversionen, Abonnement-ID im kommerziellen Marketplace, Kunden-ID und Unternehmensname.
-- Da für SaaS-Angebote, die über den Azure Marketplace oder Microsoft AppSource erworben werden, kein Azure-Abonnement erforderlich ist, wird im Abschnitt **Detaillierte Auftragsdaten** die Marketplace-Abonnement-ID in der Form „00000000-0000-0000-0000-000000000000“ angezeigt.
 - Wenn ein Auftrag von einem geschützten Kunden erworben wird, werden die Informationen in **Detaillierte Auftragsdaten** maskiert (************).
 
 **_Tabelle 1: Wörterbuch mit Datenbegriffen_* _
 
 | Spaltenname | Attributname | Definition |
 | ------------ | ------------- | ------------- |
-| Marketplace Subscription Id | Marketplace-Abonnement-ID | Der eindeutige Bezeichner (ID), der mit dem Azure-Abonnement verknüpft ist, über das der Kunde Ihr Angebot im kommerziellen Marketplace erworben hat. Früher war ID die Azure-Abonnement-GUID. |
+| Marketplace Subscription Id | Marketplace-Abonnement-ID | Der eindeutige Bezeichner (ID), der mit dem Azure-Abonnement verknüpft ist, über das der Kunde Ihr Angebot im kommerziellen Marketplace erworben hat. Bei Infrastrukturangeboten ist dies die Azure-Abonnement-GUID des Kunden. Bei SaaS-Angeboten werden hier Nullen angezeigt, da für die SaaS-Käufe kein Azure-Abonnement erforderlich ist. |
 | MonthStartDate | Monatsstartdatum | Das Monatsstartdatum steht für den Monat des Kaufs. |
 | Angebotstyp | Angebotstyp | Der Typ des Angebots im kommerziellen Marketplace |
 | Azure-Lizenztyp | Azure-Lizenztyp | Die Art der Lizenzvereinbarung, über die Kunden Azure erwerben. Wird auch als Kanal bezeichnet. Mögliche Werte sind:<ul><li>Cloud Solution Provider</li><li>Enterprise</li><li>Enterprise über Handelspartner</li><li>Nutzungsbasierte Bezahlung</li></ul> |

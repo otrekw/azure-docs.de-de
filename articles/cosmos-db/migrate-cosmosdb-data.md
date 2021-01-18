@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 10/23/2019
-ms.openlocfilehash: c45445415f3eaa7cb0f9069dd5f64b57c19e5836
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: b24ea79737c9e1f64abb7f62807352dbd9573695
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96437149"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98018070"
 ---
 # <a name="migrate-hundreds-of-terabytes-of-data-into-azure-cosmos-db"></a>Migrieren Hunderter Terabytes von Daten zu Azure Cosmos DB 
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -43,7 +43,7 @@ Die im obigen Abschnitt beschriebenen Herausforderungen können durch die Verwen
 
 Das benutzerdefinierte Tool verwendet die BulkExecutor-Bibliothek und unterstützt das horizontale Skalieren auf mehreren Clients sowie das Nachverfolgen von Fehlern während des Erfassungsvorgangs. Um dieses Tool zu verwenden, sollten die Quelldaten in verschiedene Dateien in Azure Data Lake Storage (ADLS) unterteilt werden, sodass verschiedene Migrationsworker jede Datei verwenden und in Azure Cosmos DB erfassen können. Das benutzerdefinierte Tool verwendet eine separate Sammlung, in der Metadaten zum Migrationsfortschritt für jede einzelne Quelldatei in ADLS gespeichert und alle damit verbundenen Fehler nachverfolgt werden.  
 
-In der folgenden Abbildung wird der Migrationsprozess mithilfe dieses benutzerdefinierten Tools beschrieben. Das Tool wird auf einer Reihe von virtuellen Computern ausgeführt, und jeder virtuelle Computer fragt die Nachverfolgungssammlung in Azure Cosmos DB ab, um eine Lease für eine der Quelldatenpartitionen zu erhalten. Nachdem dies geschehen ist, wird die Quelldatenpartition vom Tool gelesen und mithilfe der BulkExecutor-Bibliothek in Azure Cosmos DB erfasst. Anschließend wird die Nachverfolgungssammlung aktualisiert, um den Fortschritt der Datenerfassung und die aufgetretenen Fehler aufzuzeichnen. Nachdem eine Datenpartition verarbeitet wurde, versucht das Tool, die nächste verfügbare Quellpartition abzufragen. Die Verarbeitung der nächsten Quellpartition wird fortgesetzt, bis alle Daten migriert wurden. Der Quellcode für das Tool ist [hier](https://github.com/Azure-Samples/azure-cosmosdb-bulkingestion) verfügbar.  
+In der folgenden Abbildung wird der Migrationsprozess mithilfe dieses benutzerdefinierten Tools beschrieben. Das Tool wird auf einer Reihe von virtuellen Computern ausgeführt, und jeder virtuelle Computer fragt die Nachverfolgungssammlung in Azure Cosmos DB ab, um eine Lease für eine der Quelldatenpartitionen zu erhalten. Nachdem dies geschehen ist, wird die Quelldatenpartition vom Tool gelesen und mithilfe der BulkExecutor-Bibliothek in Azure Cosmos DB erfasst. Anschließend wird die Nachverfolgungssammlung aktualisiert, um den Fortschritt der Datenerfassung und die aufgetretenen Fehler aufzuzeichnen. Nachdem eine Datenpartition verarbeitet wurde, versucht das Tool, die nächste verfügbare Quellpartition abzufragen. Die Verarbeitung der nächsten Quellpartition wird fortgesetzt, bis alle Daten migriert wurden. Der Quellcode für das Tool ist im Repository für die [Massenerfassung in Azure Cosmos DB](https://github.com/Azure-Samples/azure-cosmosdb-bulkingestion) verfügbar.  
 
  
 :::image type="content" source="./media/migrate-cosmosdb-data/migrationsetup.png" alt-text="Einrichten des Migrationstools" border="false":::

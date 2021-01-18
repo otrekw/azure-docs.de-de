@@ -308,10 +308,10 @@
       items:
         - name: 'Wählen Sie eine Ebene aus:'
           href: search-sku-tier.md
-        - name: Schätzen von Kapazität und Kosten
-          href: search-sku-manage-costs.md
-        - name: Anpassen der Kapazität
+        - name: Schätzen und Verwalten der Kapazität
           href: search-capacity-planning.md
+        - name: Schätzen der Kosten
+          href: search-sku-manage-costs.md
         - name: Diensteinschränkungen
           href: search-limits-quotas-capacity.md
         - name: Skalieren zur Verbesserung der Leistung

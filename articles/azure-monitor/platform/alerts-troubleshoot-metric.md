@@ -4,14 +4,14 @@ description: In diesem Artikel werden gängige Probleme mit Azure Monitor-Metrik
 author: harelbr
 ms.author: harelbr
 ms.topic: troubleshooting
-ms.date: 01/03/2021
+ms.date: 01/11/2021
 ms.subservice: alerts
-ms.openlocfilehash: 9a05fe509e032681a0bf5ed989595a25f66d33c6
-ms.sourcegitcommit: 697638c20ceaf51ec4ebd8f929c719c1e630f06f
+ms.openlocfilehash: e4e876b58c82605df0c005b225dcf2cdbcda1b34
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97857340"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98070728"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-metric-alerts"></a>Behandeln von Problemen mit Azure Monitor-Metrikwarnungen 
 
@@ -91,9 +91,9 @@ Wenn Sie für eine bestimmte Metrik eine Warnung anzeigen möchten, diese aber b
 Wenn Sie Warnungen für [spezifische Dimensionswerte einer Metrik](./alerts-metric-overview.md#using-dimensions) ausgeben möchten und diese nicht finden können, sollten Sie den folgenden Hinweis beachten:
 
 1. Es kann einige Minuten dauern, bis die Dimensionswerte in der Liste **Dimensionswerte** angezeigt werden.
-1. Die angezeigten Dimensionswerte basieren auf Metrikdaten, die in den letzten drei Tagen erfasst wurden.
-1. Wenn der Dimensionswert noch nicht ausgegeben wurde, klicken Sie auf „+“, um einen benutzerdefinierten Wert hinzuzufügen.
-1. Wenn Sie für alle möglichen Werte einer Dimension (einschließlich zukünftiger Werte) eine Warnung ausgeben möchten, aktivieren Sie das Kontrollkästchen „Auswählen *“.
+1. Die angezeigten Dimensionswerte basieren auf Metrikdaten, die am letzten Tag erfasst wurden.
+1. Wenn der Dimensionswert noch nicht ausgegeben wurde oder nicht angezeigt wird, können Sie mithilfe der Option „Benutzerdefinierten Wert hinzufügen“ einen benutzerdefinierten Dimensionswert hinzufügen.
+1. Wenn Sie für alle möglichen Werte einer Dimension (einschließlich zukünftiger Werte) eine Warnung ausgeben möchten, wählen Sie die Option „Alle aktuellen und zukünftigen Werte auswählen“ aus.
 
 ## <a name="metric-alert-rules-still-defined-on-a-deleted-resource"></a>Metrikwarnungsregeln sind für eine gelöschte Ressource weiterhin definiert 
 

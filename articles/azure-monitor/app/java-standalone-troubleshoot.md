@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie Probleme mit dem Java-Agent für Azure Monito
 ms.topic: conceptual
 ms.date: 11/30/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 14644f76b7de53b2b6ee3f04131daaf59267a5ff
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 54bf2440dff20fc757f37e3f31a53c57ebd59120
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97507641"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98133190"
 ---
 # <a name="troubleshooting-guide-azure-monitor-application-insights-for-java"></a>Handbuch zur Problembehandlung: Azure Monitor Application Insights für Java
 
@@ -20,6 +20,10 @@ In diesem Artikel werden einige der häufigsten Probleme behandelt, die beim Ins
 Standardmäßig wird vom Java 3.0-Agent für Application Insights eine Protokolldatei mit dem Namen `applicationinsights.log` in dem Verzeichnis erstellt, in dem sich auch die Datei `applicationinsights-agent-3.0.0.jar` befindet.
 
 Diese Protokolldatei sollten Sie als Erstes auf Hinweise auf aufgetretene Probleme untersuchen.
+
+## <a name="jvm-fails-to-start"></a>Fehler beim Starten der JVM
+
+Wenn beim Starten der JVM die Fehlermeldung „Fehler beim Öffnen der ZIP-Datei oder JAR-Manifest fehlt“ angezeigt wird, versuchen Sie erneut, die JAR-Datei des Agents herunterzuladen, da sie möglicherweise während der Dateiübertragung beschädigt wurde.
 
 ## <a name="upgrade-from-the-application-insights-java-2x-sdk"></a>Durchführen eines Upgrades vom Application Insights SDK für Java 2.x
 

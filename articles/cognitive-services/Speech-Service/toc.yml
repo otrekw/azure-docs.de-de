@@ -467,11 +467,19 @@
       displayName: SPX
       items:
         - name: Übersicht über die Speech-Befehlszeilenschnittstelle
-          displayName: What is SPX?
+          displayName: 'What is SPX?, spx, spx overview'
           href: spx-overview.md
-        - name: Grundlagen der Speech-Befehlszeilenschnittstelle
-          displayName: SPX basics
+        - name: Schnellstartanleitung zur Speech-Befehlszeilenschnittstelle
+          displayName: 'spx basics, spx quickstart, spx get started, speech cli get started'
           href: spx-basics.md
+        - name: Exemplarische Vorgehensweisen
+          items:
+            - name: Konfigurationsoptionen für die Speech-Befehlszeilenschnittstelle
+              displayName: 'SPX configuration options, speech cli config, speech cli data store, data store, datastore, speech cli datastore'
+              href: spx-data-store-configuration.md
+            - name: Batchvorgänge für die Speech-Befehlszeilenschnittstelle
+              displayName: 'spx batch, spx batch operations, speech batch, speech cli speech to text batch, speech cli tex to speech batch'
+              href: spx-batch-operations.md
     - name: Speech Studio
       items:
         - name: Übersicht über Speech Studio

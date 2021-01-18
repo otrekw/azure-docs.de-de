@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-mongo
 ms.topic: conceptual
 ms.date: 04/28/2020
 ms.author: sngun
-ms.openlocfilehash: 4c93aea5a37fb286b49dabfb97522bf40c8f5429
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 08899018d03209dab09f61d4dd74feceee03b246
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93333170"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98019010"
 ---
 # <a name="frequently-asked-questions-about-the-azure-cosmos-dbs-api-for-mongodb"></a>Häufig gestellte Fragen zur Azure Cosmos DB-API für MongoDB
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -29,12 +29,7 @@ Weitere Informationen finden Sie unter [Verbinden einer MongoDB-Anwendung mit Az
 
 ## <a name="error-codes-while-using-azure-cosmos-dbs-api-for-mongodb"></a>Welche Fehlercodes können bei Verwenden der Azure Cosmos DB-API für MongoDB angezeigt werden?
 
-Neben den allgemeinen MongoDB-Fehlercodes verfügt die Azure Cosmos DB-API für MongoDB über eigene, spezifische Fehlercodes:
-
-| Fehler               | Code  | BESCHREIBUNG  | Lösung  |
-|---------------------|-------|--------------|-----------|
-| TooManyRequests     | 16500 | Die Gesamtanzahl der verbrauchten Anforderungseinheiten hat die bereitgestellte Anforderungseinheitenrate für den Container überschritten und wurde gedrosselt. | Erwägen Sie eine Skalierung des einem Container oder mehreren Containern zugewiesenen Durchsatzes über das Azure-Portal oder eine Wiederholung des Vorgangs. |
-| ExceededMemoryLimit | 16501 | Der Vorgang ist ein mehrinstanzenfähiger Dienst und hat die Speicherzuweisung des Clients überschritten. | Verringern Sie den Umfang des Vorgangs mithilfe restriktiverer Abfragekriterien, oder wenden Sie sich im [Azure-Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) an den Support. <br><br> Beispiel: `db.getCollection('users').aggregate([{$match: {name: "Andy"}}, {$sort: {age: -1}}]))` |
+Neben den allgemeinen MongoDB-Fehlercodes verfügt die Azure Cosmos DB-API für MongoDB über eigene, spezifische Fehlercodes. Diese finden Sie im [Leitfaden zur Problembehandlung](mongodb-troubleshoot.md).
 
 ## <a name="supported-drivers"></a>Unterstützte Treiber
 

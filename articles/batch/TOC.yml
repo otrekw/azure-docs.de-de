@@ -223,14 +223,12 @@
           items:
             - name: Rendern mit Azure
               href: batch-rendering-service.md
-            - name: Rendern von VM-Images
+            - name: Batch-Rendering von VM-Images
               href: batch-rendering-applications.md
             - name: Batch-Renderingfunktionen
               href: batch-rendering-functionality.md
             - name: Verwenden von Batch-Rendering
               href: batch-rendering-using.md
-            - name: Verwenden von Render-Managern
-              href: batch-rendering-render-managers.md
             - name: Rendering-Anwendungsverweis
               href: batch-rendering-application-reference.md
             - name: Speicher und Datenverschiebung
@@ -241,7 +239,7 @@
           href: ../data-factory/transform-data-using-dotnet-custom-activity.md?toc=%2fazure%2fbatch%2ftoc.json
 - name: Verweis
   items:
-    - name: Azure-Befehlszeilenschnittstelle
+    - name: Azure CLI
       href: /cli/azure/batch
     - name: Azure PowerShell
       href: /powershell/module/az.batch

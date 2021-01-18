@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: trkeya
 ms.author: trkeya
-ms.date: 11/16/2020
-ms.openlocfilehash: aaf0374bcafdb91f316b7133de1c2d019b12b285
-ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
+ms.date: 12/18/2020
+ms.openlocfilehash: 091af70383eb3cab32a0453d7f7542d8a4395d0b
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96302857"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98107394"
 ---
 # <a name="introduction-to-listing-options"></a>Einführung in Auflistungsoptionen
 
@@ -26,21 +26,23 @@ Wenn Sie einen Angebotstyp erstellen, wählen Sie mindestens eine Auflistungsopt
 
 In dieser Tabelle ist aufgeführt, welche Auflistungsoptionen für die einzelnen Angebotstypen verfügbar sind.
 
-| Angebotstyp | Kostenlose Testversion | Testversion | Kontaktformular | Jetzt abrufen (transaktionsfähig) |
+| Angebotstyp | Kostenlose Testversion | Testversion | Kontaktformular | Jetzt abrufen `*` |
 | ------------ | ------------- | ------------- | ------------- | ------------- |
 | Azure-Anwendung (verwaltete Anwendung) |   | &#10004; |   | &#10004; |
-| Azure-Anwendung (Lösungsvorlage) |  |  |  |  |
+| Azure-Anwendung (Lösungsvorlage) |  |  |  | &#10004; |
 | Beratungsdienst |  |  | &#10004; |  |
-| Azure-Container |  |  |  |  |
-| Dynamics 365 Business Central | &#10004; | &#10004; | &#10004; |  |
-| Dynamics 365 Customer Engagement & PowerApps | &#10004; | &#10004; | &#10004; |  |
-| Dynamics 365 for Operations | &#10004; | &#10004; | &#10004; |  |
-| IoT Edge-Modul |  |  |  |  |
-| Verwalteter Dienst |  |  |  |  |
-| Power BI-App |  |  |  |  |
+| Azure-Container |  |  |  | &#10004; |
+| Dynamics 365 Business Central | &#10004; | &#10004; | &#10004; | &#10004; |
+| Dynamics 365 Customer Engagement & PowerApps | &#10004; | &#10004; | &#10004; | &#10004; |
+| Dynamics 365 for Operations | &#10004; | &#10004; | &#10004; | &#10004; |
+| IoT Edge-Modul |  |  |  | &#10004; |
+| Verwalteter Dienst |  |  |  | &#10004; |
+| Power BI-App |  |  |  | &#10004; |
 | Virtueller Azure-Computer | &#10004; | &#10004; |  | &#10004; |
 | Software-as-a-Service | &#10004; | &#10004; | &#10004; | &#10004; |
 ||||||
+
+`*` Die Auflistungsoption „Jetzt abrufen“ umfasst die Optionen „Jetzt abrufen (kostenlos)“, „BYOL“ (Bring Your Own License), „Abonnement“ und „Nutzungsbasierte Preise“. Ausführliche Informationen finden Sie unter [Jetzt abrufen](#get-it-now).
 
 ### <a name="free-trial"></a>Kostenlose Testversion
 

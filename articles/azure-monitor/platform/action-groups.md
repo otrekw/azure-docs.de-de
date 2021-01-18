@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 07/28/2020
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: b5b6a697e6a5cae064a6a48419246dc12e8d048c
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.openlocfilehash: 72caeb60fc058b88158979d211a0bc38985975c7
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/19/2020
-ms.locfileid: "97695832"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97968856"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Erstellen und Verwalten von Aktionsgruppen im Azure-Portal
 Eine Aktionsgruppe ist eine Sammlung von Benachrichtigungseinstellungen, die vom Besitzer eines Azure-Abonnements definiert wurden. Azure Monitor- und Service Health-Warnungen verwenden Aktionsgruppen, um Benutzer zu benachrichtigen, dass eine Warnung ausgelöst wurde. Verschiedene Warnungen können je nach den Bedürfnissen des Benutzers die gleiche Aktionsgruppe oder verschiedene Aktionsgruppen verwenden. 
@@ -318,7 +318,11 @@ Die Preise für unterstützte Länder/Regionen sind auf der [Seite mit der Preis
 ### <a name="webhook"></a>Webhook
 
 > [!NOTE]
-> Zur Verwendung der Webhookaktion ist es erforderlich, dass der Webhookendpunkt des Ziels entweder keine Details der Warnung zum erfolgreichen Funktionieren benötigt oder die Warnungskontextinformationen, die als Teil des POST-Vorgangs bereitgestellt werden, analysieren kann. Wenn der Webhookendpunkt die Warnungskontextinformationen nicht selbst verarbeiten kann, können Sie eine Lösung wie eine [Logik-App-Aktion](./action-groups-logic-app.md) zur benutzerdefinierten Bearbeitung der Warnungskontextinformationen verwenden, um sie an das erwartete Datenformat des Webhooks anzupassen.
+> Zur Verwendung der Webhookaktion ist es erforderlich, dass der Webhookendpunkt des Ziels entweder keine Details der Warnung zum erfolgreichen Funktionieren benötigt oder die Warnungskontextinformationen, die als Teil des POST-Vorgangs bereitgestellt werden, analysieren kann. 
+
+> Der Benutzer sollte der **Besitzer** des Webhook-Dienstprinzipals sein, um sicherzustellen, dass die Sicherheit nicht verletzt wird. Da jeder Azure-Kunde über das Portal auf alle Objekt-IDs zugreifen kann, ohne den Besitzer zu überprüfen, kann jeder den sicheren Webhook zur eigenen Aktionsgruppe für Azure Monitor-Warnungsbenachrichtigung hinzufügen, wodurch die Sicherheit verletzt wird.
+
+> Wenn der Webhookendpunkt die Warnungskontextinformationen nicht selbst verarbeiten kann, können Sie eine Lösung wie eine [Logik-App-Aktion](./action-groups-logic-app.md) zur benutzerdefinierten Bearbeitung der Warnungskontextinformationen verwenden, um sie an das erwartete Datenformat des Webhooks anzupassen.
 
 Webhooks werden mithilfe der folgenden Regeln verarbeitet:
 - Ein Webhookaufruf wird maximal dreimal versucht.

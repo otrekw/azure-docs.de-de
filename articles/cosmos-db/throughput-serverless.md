@@ -5,13 +5,13 @@ author: ThomasWeiss
 ms.author: thweiss
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 12/23/2020
-ms.openlocfilehash: a6f8b79ecc8dcac71dc8f5d1be2bb58a0288a307
-ms.sourcegitcommit: 6cca6698e98e61c1eea2afea681442bd306487a4
+ms.date: 01/08/2021
+ms.openlocfilehash: 3f5c3400f319a3f9d5f1544457b009f90d479634
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97760247"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98049829"
 ---
 # <a name="how-to-choose-between-provisioned-throughput-and-serverless"></a>Wählen zwischen bereitgestelltem Durchsatz und serverlos
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -25,11 +25,11 @@ Azure Cosmos DB ist in zwei verschiedenen Kapazitätsmodi verfügbar: [bereitges
 | Kriterien | Bereitgestellter Durchsatz | Serverlos |
 | --- | --- | --- |
 | Status | Allgemein verfügbar | In der Vorschau |
-| Am besten geeignet für | Unternehmenswichtige Workloads, die vorhersagbare Leistung erfordern | Kleine bis mittlere Workloads mit geringem und zeitweiligem Datenverkehr, der schwer vorhergesagt werden kann |
+| Am besten geeignet für | Workloads mit anhaltendem Datenverkehr, die vorhersagbare Leistung erfordern | Workloads mit zeitweiligem oder unvorhersehbarem Datenverkehr und einem geringen Verhältnis zwischen durchschnittlichem und hohem Datenverkehrsaufkommen |
 | Funktionsweise | Für jeden Ihrer Container stellen Sie eine gewisse Durchsatzmenge bereit, ausgedrückt in [Anforderungseinheiten](request-units.md) pro Sekunde. Jede Sekunde steht diese Menge von Anforderungseinheiten für Ihre Datenbankvorgänge zur Verfügung. Bereitgestellter Durchsatz kann manuell aktualisiert oder automatisch mit [Autoskalierung](provision-throughput-autoscale.md) angepasst werden. | Sie führen die Datenbankvorgänge für Ihre Container aus, ohne Kapazität bereitstellen zu müssen. |
 | Geografische Verteilung | Verfügbar (unbegrenzte Anzahl von Azure-Regionen) | Nicht verfügbar (serverlose Konten können nur in einer einzigen Azure-Region ausgeführt werden) |
 | Maximale Speicherkapazität pro Container | Unbegrenzt | 50 GB |
-| Leistung | 99,99 % bis 99,999 % Verfügbarkeit abgedeckt durch SLA<br>< 10 ms Latenz für Punktlese- und Schreibvorgänge abgedeckt durch SLA<br>99,99 % garantierter, durch SLA abgedeckter Durchsatz | 99,9 % bis 99,99 % Verfügbarkeit abgedeckt durch SLA<br>< 10 ms Latenz für Punktlese- und < 30 ms für Schreibvorgänge abgedeckt durch SLA<br>95 % durch SLO abgedeckte Burstfähigkeit |
+| Leistung | < 10 ms Latenz für Punktlese- und Schreibvorgänge abgedeckt durch SLA | < 10 ms Latenz für Punktlese- und < 30 ms für Schreibvorgänge abgedeckt durch SLA |
 | Abrechnungsmodell | Die Abrechnung erfolgt auf Stundenbasis für die bereitgestellten RU/s und unabhängig davon, wie viele RUs verbraucht wurden. | Die Abrechnung erfolgt auf Stundenbasis für die Menge an RUs, die von den Datenbankvorgängen beansprucht werden. |
 
 > [!IMPORTANT]
