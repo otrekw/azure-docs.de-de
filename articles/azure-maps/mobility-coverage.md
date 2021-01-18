@@ -65,7 +65,7 @@ Die folgende Tabelle enthält Informationen dazu, welche Abdeckung die Mobilitä
 |--------|---------|
 | Australien | <p>Adelaide, Alice Springs, Bowen, Brisbane, Bundaberg QLD, Burnie, Cairns, Canberra, Darwin, Gladstone, Hobart, Innisfail, Launceston, Mackay, Magnetic Island, Maryborough-Hervey Bay, Melbourne, New South Wales, Perth, RockHampton, South East Queensland, Sydney, Toowoomba, Townsville, Victoria, Warwick, Yeppoon</p> |
 | Brunei | Bandar Seri Begawan |
-| China | <p> Changchun, Changsha, Chengdu, Chongqing, Dalian, Datong, Dongguan, Hangzhou, Harbin, Jiangyin, Jinan, Nanjing, Nantong, Ningbo, Peking, Pingdingshan, Qingdao, Shenyang, Suzhou, Tangshan, Tianjin, Weifang, Wuhan, Wuxi, Yantai, Yixing, Zhuhai, Shanghai, Guangzhou, Shenzhen, Zhengzhou</P>|
+| China | <p> Changchun, Changsha, Chengdu, Chongqing, Dalian, Datong, Dongguan, Hangzhou, Harbin, Jiangyin, Jinan, Nanjing, Nantong, Ningbo, Peking (Beijing), Pingdingshan, Qingdao, Shenyang, Suzhou, Tangshan, Tianjin, Weifang, Wuhan, Wuxi, Yantai, Yixing, Zhuhai, Shanghai, Guangzhou, Shenzhen, Zhengzhou</P>|
 | Hongkong (SAR) | Hongkong (SAR)*|
 | Macau (SAR) | Macau (SAR)*|
 | Malediven | Male |
@@ -117,7 +117,7 @@ Die folgende Tabelle enthält Informationen dazu, welche Abdeckung die Mobilitä
 | Montenegro | Podgorica |
 | Niederlande | Niederlande* |
 | Norwegen | Norwegen* |
-| Polen | <p>Białystok, Breslau, Bydgoszcz, Elbląg, Elk, Gorzow, Kętrzyna, Krakau, Leszno, Lodz, Lublin, Mrągowo, Olsztyn, Posen, Rzeszów, Sanok, Starachowice, Świnoujście, Stettin, Dreistadt, Warschau, Wodzisław Śląski, Zakopane</p> |
+| Polen | <p>Białystok, Breslau (Wroclaw), Bydgoszcz, Elbląg, Elk, Gorzow, Kętrzyna, Krakau, Leszno, Lodz, Lublin, Mrągowo, Olsztyn, Posen, Rzeszów, Sanok, Starachowice, Świnoujście, Stettin, Dreistadt, Warschau, Wodzisław Śląski, Zakopane</p> |
 | Portugal | Bragança, Coimbra, Funchal, Leiria, Lissabon, Portimao, Porto|
 | Malta | Malta* |
 | Rumänien | <p>Alba Iulia, Arad, Bistrița, Brăila, Braşov, Bukarest, Buzau, Cluj Napoca, Constanța, Craiova, Deva, Focșani, Galati, Iaşi, Miercurea Ciuc, Oradea, Piatra Neamt, Pitești, Ploieşti, Reșița, Satu Mare, Sibiu, Suceava, Targu Mures, Timisoara, Tulcea, Zalau</p> | 

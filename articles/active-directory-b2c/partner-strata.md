@@ -115,7 +115,7 @@ Sie können Ihre Orchestrator-Instanz auf jedem beliebigen Server – lokal oder
 
 ### <a name="install-maverics-identity-orchestrator"></a>Installieren von Maverics Identity Orchestrator
 
-1. Besorgen Sie sich das aktuelle Maverics-RPM-Paket. Speichern Sie das Paket auf dem System, auf dem Sie Maverics installieren möchten. Wenn Sie die Datei auf einen Remotehost kopieren, stellt [SCP](https://www.ssh.com/ssh/scp/) ein nützliches Tool dar.
+1. Rufen Sie das aktuelle Maverics-RPM-Paket ab. Speichern Sie das Paket auf dem System, auf dem Sie Maverics installieren möchten. Wenn Sie die Datei auf einen Remotehost kopieren, stellt [SCP](https://www.ssh.com/ssh/scp/) ein nützliches Tool dar.
 
 2. Führen Sie zum Installieren des Maverics-Pakets den folgenden Befehl aus, und ersetzen Sie dabei `maverics.rpm` durch Ihren Dateinamen.
 
