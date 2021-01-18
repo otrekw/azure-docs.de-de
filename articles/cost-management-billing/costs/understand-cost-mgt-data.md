@@ -3,18 +3,18 @@ title: Grundlegendes zu Azure Cost Management-Daten
 description: In diesem Artikel erfahren Sie mehr über die Daten, die in Azure Cost Management enthalten sind, und wie häufig diese verarbeitet, gesammelt, angezeigt und geschlossen werden.
 author: bandersmsft
 ms.author: banders
-ms.date: 10/26/2020
+ms.date: 01/06/2021
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: micflan
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 97ae2ba26818bbc306da71af814d9b4f95858b6a
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: e6096c259ec1870a711a515bf02d5d00b4f75345
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97032574"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97964149"
 ---
 # <a name="understand-cost-management-data"></a>Grundlegendes zu Cost Management-Daten
 
@@ -101,7 +101,7 @@ Die folgenden Tabellen zeigen Daten, die in Cost Management enthalten sind oder 
 
 _<sup>**5**</sup> Die Nutzung des Azure-Diensts basiert auf Reservierungen und ausgehandelten Preisen._
 
-_<sup>**6**</sup> Marketplace-Käufe sind für MSDN- und Visual Studio-Angebote derzeit nicht verfügbar._
+_<sup>**6**</sup> Marketplace-Käufe sind für MSDN- und Visual Studio-Angebote derzeit nicht verfügbar._
 
 _<sup>**7**</sup> Reservierungskäufe sind zurzeit nur für EA-Konten (Enterprise Agreement) und Konten mit Microsoft-Kundenvereinbarung verfügbar._
 
@@ -114,7 +114,7 @@ Azure Cost Management empfängt Tags mit jedem Nutzungsdatensatz, der von den ei
 - Es ist möglich, dass einige bereitgestellte Ressourcen keine Tags unterstützen oder keine Tags in Nutzungsdaten einschließen.
 - Ressourcentags werden nur in Nutzungsdaten eingeschlossen, während das Tag angewendet ist. Tags werden nicht auf historische Daten angewendet.
 - Ressourcentags stehen in Cost Management erst zur Verfügung, nachdem die Daten aktualisiert wurden.
-- Ressourcentags sind nur in Cost Management verfügbar, wenn die Ressource aktiv ist/ausgeführt wird und Nutzungsdatensätze generiert (also beispielsweise nicht, wenn die Zuordnung eines virtuellen Computers aufgehoben wurde).
+- Ressourcentags sind nur in Cost Management verfügbar, wenn die Ressource aktiv ist/ausgeführt wird und Nutzungsdatensätze generiert. Dies ist beispielsweise der Fall, wenn die Zuordnung eines virtuellen Computers aufgehoben wird.
 - Für die Tagverwaltung ist Zugriff vom Typ „Mitwirkender“ auf die einzelnen Ressourcen erforderlich.
 - Für die Verwaltung von Tagrichtlinien ist Zugriff vom Typ „Besitzer“ oder „Mitwirkender an Richtlinien“ auf eine Verwaltungsgruppe, ein Abonnement oder eine Ressourcengruppe erforderlich.
     
@@ -141,7 +141,6 @@ Im Anschluss finden Sie einige Tipps zur Verwendung von Tags:
 - Verwenden Sie Azure Policy, um Ressourcengruppentags für einzelne Ressourcen zu kopieren und Ihre Taggingstrategie umzusetzen.
 - Verwenden Sie die Tags-API zusammen mit „Query“ oder „UsageDetails“, um alle Kosten auf der Grundlage der aktuellen Tags zu erhalten.
 
-
 ## <a name="cost-and-usage-data-updates-and-retention"></a>Aktualisierung und Aufbewahrung von Kosten- und Nutzungsdaten
 
 Kosten- und Nutzungsdaten sind in Kostenverwaltung + Abrechnung im Azure-Portal und in den unterstützenden APIs innerhalb von 8–24 Stunden verfügbar. Beachten Sie beim Überprüfen der Kosten folgende Punkte:
@@ -151,13 +150,14 @@ Kosten- und Nutzungsdaten sind in Kostenverwaltung + Abrechnung im Azure-Portal 
 - Die geschätzten Gebühren für den aktuellen Abrechnungszeitraum können sich mit zunehmender Nutzung ändern.
 - Jede Aktualisierung ist kumulativ und enthält alle Einzelposten und Informationen der vorherigen Aktualisierung.
 - Azure finalisiert oder _schließt_ den aktuellen Abrechnungszeitraum bis zu 72 Stunden (drei Kalendertage) nach Ablauf des Abrechnungszeitraums.
+- Während des offenen (noch nicht abgerechneten) Monats dürfen die Kostenverwaltungsdaten lediglich als Schätzung betrachtet werden. Es kann vorkommen, dass Gebühren verzögert (also nach der tatsächlichen Nutzung) beim System eingehen.
 
 Die folgenden Beispiele veranschaulichen, wie Abrechnungszeiträume enden können:
 
 * Abonnements mit Enterprise Agreement (EA) – Wenn der Abrechnungsmonat am 31. März endet, werden die geschätzten Gebühren bis zu 72 Stunden später aktualisiert. In diesem Beispiel bis Mitternacht am (UTC) 4. April.
 * Abonnements mit nutzungsbasierter Bezahlung – Wenn der Abrechnungsmonat am 15. Mai endet, können die geschätzten Gebühren bis zu 72 Stunden später aktualisiert werden. In diesem Beispiel bis Mitternacht am (UTC) 19. April.
 
-Wenn die Kosten- und Nutzungsdaten in Kostenverwaltung + Abrechnung verfügbar sind, werden sie mindestens 7 Jahre lang aufbewahrt.
+Wenn die Kosten- und Nutzungsdaten in Cost Management and Billing verfügbar sind, werden sie mindestens sieben Jahre lang aufbewahrt.
 
 ### <a name="rerated-data"></a>Neu bewertete Daten
 
@@ -184,6 +184,6 @@ Verlaufsdaten für Angebote, die auf Guthaben oder Vorauszahlung basieren, stimm
 - MSDN (MS-AZR-0062P)
 - Visual Studio (MS-AZR-0029P, MS-AZR-0059P, MS-AZR-0060P, MS-AZR-0063P, MS-AZR-0064P)
 
-## <a name="see-also"></a>Weitere Informationen
+## <a name="next-steps"></a>Nächste Schritte
 
 - Falls Sie den ersten Schnellstart für Cost Management noch nicht abgeschlossen haben, lesen Sie ihn unter [Erste Schritte in der Analyse von Kosten](./quick-acm-cost-analysis.md).

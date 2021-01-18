@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: a236cf99d3131e83619cfab06e8ec028938a87ba
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: cc54ae66cda6bf8ecde07d1830448ec39a15cc29
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96454601"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98120222"
 ---
 # <a name="cheat-sheet-for-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytic"></a>Cheatsheet für dedizierte SQL-Pools (ehemals SQL DW) in Azure Synapse Analytics
 
@@ -37,7 +37,7 @@ Wenn Sie im Voraus wissen, welche Arten von Vorgängen vorhanden sind, können S
 
 ## <a name="data-migration"></a>Datenmigration
 
-Laden Sie zunächst Ihre Daten in [Azure Data Lake Storage](../../data-factory/connector-azure-data-lake-store.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) oder Azure Blob Storage. Verwenden Sie als Nächstes die [COPY-Anweisung](/sql/t-sql/statements/copy-into-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) (Vorschau), um Ihre Daten in Stagingtabellen zu laden. Verwenden Sie die folgende Konfiguration:
+Laden Sie zunächst Ihre Daten in [Azure Data Lake Storage](../../data-factory/connector-azure-data-lake-store.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) oder Azure Blob Storage. Verwenden Sie als Nächstes die [COPY-Anweisung](/sql/t-sql/statements/copy-into-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true), um Ihre Daten in Stagingtabellen zu laden. Verwenden Sie die folgende Konfiguration:
 
 | Entwurf | Empfehlung |
 |:--- |:--- |
@@ -46,7 +46,7 @@ Laden Sie zunächst Ihre Daten in [Azure Data Lake Storage](../../data-factory/c
 | Partitionierung | Keine |
 | Ressourcenklasse | largerc oder xlargerc |
 
-Weitere Informationen hierzu finden Sie unter [Datenmigration](https://blogs.msdn.microsoft.com/sqlcat/20../../migrating-data-to-azure-sql-data-warehouse-in-practice/), [Laden von Daten](design-elt-data-loading.md) und [Entwerfen von ELT-Prozessen für Azure SQL Data Warehouse](design-elt-data-loading.md).
+Weitere Informationen hierzu finden Sie unter [Datenmigration](/archive/blogs/sqlcat/migrating-data-to-azure-sql-data-warehouse-in-practice), [Laden von Daten](design-elt-data-loading.md) und [Entwerfen von ELT-Prozessen für Azure SQL Data Warehouse](design-elt-data-loading.md).
 
 ## <a name="distributed-or-replicated-tables"></a>Verteilte oder replizierte Tabellen
 
@@ -137,7 +137,7 @@ Mit Azure Functions können Sie nun jederzeit eine automatische Skalierung veran
 
 Es empfiehlt sich, SQL-Datenbank und Azure Analysis Services in einer Hub-and-Spoke-Architektur (Nabe-Speiche-Architektur) zu implementieren. Diese Lösung kann Workloadisolation zwischen unterschiedlichen Benutzergruppen bereitstellen, während gleichzeitig erweiterte Sicherheitsfeatures von SQL-Datenbank sowie Azure Analysis Services verwendet werden. Darüber hinaus bietet eine derartige Lösung grenzenlose Parallelität für Ihre Benutzer.
 
-Weiter Informationen zu typischen Architekturen, die den dedizierten SQL-Pool (ehemals SQL DW) in Azure Synapse Analytics nutzen, finden Sie [hier](https://blogs.msdn.microsoft.com/sqlcat/20../../common-isv-application-patterns-using-azure-sql-data-warehouse/).
+Weiter Informationen zu typischen Architekturen, die den dedizierten SQL-Pool (ehemals SQL DW) in Azure Synapse Analytics nutzen, finden Sie [hier](/archive/blogs/sqlcat/common-isv-application-patterns-using-azure-sql-data-warehouse).
 
 Stellen Sie mit nur einem Klick Ihre Spokes in SQL-Datenbanken aus dem dedizierten SQL-Pool (ehemals SQL DW) bereit:
 

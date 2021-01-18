@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 08/07/2020
 author: sivethe
 ms.author: sivethe
-ms.openlocfilehash: bb9efa3fde0ed840589b66db7b28392de67ee8dd
-ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
+ms.openlocfilehash: 0ca1f1222881a2b4ca640fa31192bd1c151ebd9f
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94635591"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98028844"
 ---
 # <a name="azure-cosmos-dbs-api-for-mongodb-36-version-supported-features-and-syntax"></a>Azure Cosmos DB-API für MongoDB (Version 3.6): unterstützte Features und Syntax
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -27,7 +27,10 @@ Die API für MongoDB von Azure Cosmos DB ist bei neuen Konten standardmäßig mi
 
 ## <a name="query-language-support"></a>Unterstützung der Abfragesprache
 
-Die API für MongoDB von Azure Cosmos DB bietet umfassende Unterstützung für MongoDB-Abfragesprachkonstrukte. Im Anschluss finden Sie eine detaillierte Aufstellung der aktuell unterstützten Vorgänge, Operatoren, Phasen, Befehle und Optionen:
+Die API für MongoDB von Azure Cosmos DB bietet umfassende Unterstützung für MongoDB-Abfragesprachkonstrukte. Die folgenden Abschnitte enthalten ausführliche Listen mit den Servervorgängen, Operatoren, Stufen, Befehlen und Optionen, die von Azure Cosmos DB derzeit unterstützt werden.
+
+> [!NOTE]
+> Dieser Artikel enthält nur die unterstützten Serverbefehle und keine clientseitigen Wrapperfunktionen. Für clientseitige Wrapperfunktionen, z. B. `deleteMany()` und `updateMany()`, werden intern die Serverbefehle `delete()` und `update()` genutzt. Funktionen, für die unterstützte Serverbefehle genutzt werden, sind mit der API für MongoDB von Azure Cosmos DB kompatibel.
 
 ## <a name="database-commands"></a>Datenbankbefehle
 
@@ -496,10 +499,10 @@ $nearSphere |  Ja |
 $geometry |  Ja |
 $minDistance | Ja |
 $maxDistance | Ja |
-$center | Nein  |
-$centerSphere | Nein  |
-$box | Nein  |
-$polygon |  Nein  |
+$center | Nein |
+$centerSphere | Nein |
+$box | Nein |
+$polygon |  Nein |
 
 ## <a name="cursor-methods"></a>Cursormethoden
 
@@ -592,7 +595,7 @@ Azure Cosmos DB unterstützt das automatische, serverseitige Sharding. Die Erste
 
 ## <a name="sessions"></a>Sitzungen
 
-Azure Cosmos DB unterstützt noch keine serverseitigen Sitzungsbefehle.
+Für Azure Cosmos DB werden noch keine serverseitigen Sitzungsbefehle unterstützt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

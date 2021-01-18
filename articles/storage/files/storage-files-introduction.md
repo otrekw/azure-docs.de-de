@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 09/15/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 9ce2044f3ee0bff3335f46d8cf712e64394af2d3
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: f0dcd763240205bd396fc8cd0301c2046098473b
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94628865"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98070132"
 ---
 # <a name="what-is-azure-files"></a>Was ist Azure Files?
 Azure Files bietet vollständig verwaltete Dateifreigaben in der Cloud, auf die über das Branchenstandardprotokoll [Server Message Block (SMB)](/windows/win32/fileio/microsoft-smb-protocol-and-cifs-protocol-overview) sowie über das [Network File System-Protokoll (NFS)](https://en.wikipedia.org/wiki/Network_File_System) zugegriffen werden kann. Azure-Dateifreigaben können gleichzeitig über die Cloud oder durch lokale Bereitstellungen eingebunden werden. Der Zugriff auf SMB-Dateifreigaben in Azure Files kann von Windows-, Linux- und macOS-Clients aus erfolgen. Der Zugriff auf NFS-Dateifreigaben in Azure Files kann von Linux- oder macOS-Clients aus erfolgen. Außerdem können SMB-Dateifreigaben in Azure Files auf Windows-Servern mit der Azure-Dateisynchronisierung zwischengespeichert werden, um einen schnellen Zugriff in der Nähe des Datennutzungsorts zu gewährleisten.
@@ -51,7 +51,7 @@ Verwendungsmöglichkeiten für Azure-Dateifreigaben:
 ## <a name="key-benefits"></a>Hauptvorteile
 * **Gemeinsamer Zugriff:** Azure-Dateifreigaben unterstützen die branchenüblichen SMB- und NFS-Standardprotokolle. Dadurch können Sie Ihre lokalen Dateifreigaben problemlos durch Azure-Dateifreigaben ersetzen, ohne sich Gedanken über die Anwendungskompatibilität machen zu müssen. Durch die Möglichkeit, ein Dateisystem über mehrere Computer, Anwendungen und Instanzen hinweg zu nutzen, bietet Azure Files einen deutlichen Vorteil für Anwendungen, die gemeinsam nutzbar sein müssen. 
 * **Vollständige Verwaltung:** Sie können Azure-Dateifreigaben erstellen, ohne sich um die Hardware oder um das Betriebssystem zu kümmern. Sie müssen also weder das Serverbetriebssystem mit kritischen Sicherheitsupgrades patchen noch fehlerhafte Festplatten austauschen.
-* **Skripts und Tools:** Mit PowerShell-Cmdlets und der Azure-Befehlszeilenschnittstelle können Sie Azure-Dateifreigaben im Rahmen der Verwaltung von Azure-Anwendungen erstellen, einbinden und verwalten. Azure-Dateifreigaben können über das Azure-Portal und mithilfe des Azure Storage-Explorers erstellt und verwaltet werden. 
+* **Skripts und Tools:** PowerShell-Cmdlets und die Azure CLI können im Rahmen der Verwaltung von Azure-Anwendungen zum Erstellen, Bereitstellen und Verwalten von Azure-Dateifreigaben verwendet werden. Sie können Azure-Dateifreigaben mit dem Azure-Portal und dem Azure Storage-Explorer erstellen und verwalten. 
 * **Resilienz:** Azure Files ist von Grund auf als hochverfügbare Lösung konzipiert. Anders als bei lokalen Dateifreigaben müssen Sie sich bei Azure Files nicht mehr mit lokalen Stromausfällen oder Netzwerkproblemen auseinandersetzen. 
 * **Vertraute Programmierbarkeit:** In Azure ausgeführte Anwendungen können über [Dateisystem-E/A-APIs](/dotnet/api/system.io.file) auf Daten in der Freigabe zugreifen. Entwickler können daher ihren vorhandenen Code und bereits erlernte Fertigkeiten für die Migration vorhandener Anwendungen verwenden. Neben System-E/A-APIs können Sie auch [Azure Storage-Clientbibliotheken](/previous-versions/azure/dn261237(v=azure.100)) oder die [Azure Storage-REST-API](/rest/api/storageservices/file-service-rest-api) verwenden.
 

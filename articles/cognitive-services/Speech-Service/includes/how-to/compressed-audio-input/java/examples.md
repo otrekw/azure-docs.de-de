@@ -4,14 +4,14 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/09/2020
 ms.author: trbye
-ms.openlocfilehash: caada98d3a2bcc4acb566cb02065c6451c233066
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e9b980dcbe42694137c7b29ee3bddaa7802db3da
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86544874"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97978824"
 ---
-Erstellen Sie `PullAudioInputStream` oder `PushAudioInputStream` zum Streamen von komprimierten Audioformaten an den Speech-Dienst. Erstellen Sie dann eine `AudioConfig` aus einer Instanz Ihrer stream-Klasse, und geben Sie dabei das Komprimierungsformat des Streams an.
+Wenn Sie das Speech-SDK so konfigurieren möchten, dass komprimierte Audioeingaben akzeptiert werden, erstellen Sie `PullAudioInputStream` oder `PushAudioInputStream`. Erstellen Sie dann eine `AudioConfig` aus einer Instanz Ihrer stream-Klasse, und geben Sie dabei das Komprimierungsformat des Streams an.
 
 Angenommen, Sie verfügen über die Eingabestreamklasse `pullStream` und verwenden OPUS/OGG. Ihr Code könnte wie folgt aussehen:
 

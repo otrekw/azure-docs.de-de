@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 0a38f9b8135fed08a95df68f108e44c34fec6325
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 599bb93e747acf504a4ebf43aaea771ed5064886
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94955326"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98131388"
 ---
 # <a name="understand-twin-models-in-azure-digital-twins"></a>Grundlegendes zu Zwillingsmodellen in Azure Digital Twins
 
@@ -88,57 +88,11 @@ Dieser Abschnitt enthält ein Beispiel für ein typisches Modell, das als DTDL-S
  
 Beachten Sie, dass die-Planeten auch mit **Monden** interagieren können, die ihre Satelliten sind und **Krater** aufweisen können. Im folgenden Beispiel drückt das `Planet`-Modell Verbindungen mit diesen anderen Entitäten aus, indem auf zwei externe Modelle verwiesen wird: `Moon` und `Crater`. Diese Modelle werden auch im folgenden Beispielcode definiert, sind jedoch sehr einfach gehalten, sodass Sie nicht vom primären `Planet`-Beispiel ablenken.
 
-```json
-[
-  {
-    "@id": "dtmi:com:contoso:Planet;1",
-    "@type": "Interface",
-    "@context": "dtmi:dtdl:context;2",
-    "displayName": "Planet",
-    "contents": [
-      {
-        "@type": "Property",
-        "name": "name",
-        "schema": "string"
-      },
-      {
-        "@type": "Property",
-        "name": "mass",
-        "schema": "double"
-      },
-      {
-        "@type": "Telemetry",
-        "name": "Temperature",
-        "schema": "double"
-      },
-      {
-        "@type": "Relationship",
-        "name": "satellites",
-        "target": "dtmi:com:contoso:Moon;1"
-      },
-      {
-        "@type": "Component",
-        "name": "deepestCrater",
-        "schema": "dtmi:com:contoso:Crater;1"
-      }
-    ]
-  },
-  {
-    "@id": "dtmi:com:contoso:Crater;1",
-    "@type": "Interface",
-    "@context": "dtmi:dtdl:context;2"
-  },
-  {
-    "@id": "dtmi:com:contoso:Moon;1",
-    "@type": "Interface",
-    "@context": "dtmi:dtdl:context;2"
-  }
-]
-```
+:::code language="json" source="~/digital-twins-docs-samples/models/Planet-Crater-Moon.json":::
 
 Die Felder des Modells sind wie folgt:
 
-| Feld | Beschreibung |
+| Feld | BESCHREIBUNG |
 | --- | --- |
 | `@id` | Ein Bezeichner für das Modell. Muss das Format `dtmi:<domain>:<unique model identifier>;<model version number>` haben. |
 | `@type` | Gibt die Art der beschriebenen Informationen an. Bei einer Schnittstelle ist der Typ *Schnittstelle*. |
@@ -166,57 +120,7 @@ Mitunter möchten Sie ein Modell eventuell weiter spezialisieren. Beispielsweise
 
 Im folgenden Beispiel wird das Modell *Planet* aus dem vorherigen DTDL-Beispiel als Untertyp des größeren Modells *CelestialBody* neu konzipiert. Das übergeordnete Modell wird zuerst definiert. Anschließend baut das untergeordnete Modell unter Verwendung des Felds `extends` darauf auf.
 
-```json
-[
-  {
-    "@id": "dtmi:com:contoso:CelestialBody;1",
-    "@type": "Interface",
-    "@context": "dtmi:dtdl:context;2",
-    "displayName": "Celestial body",
-    "contents": [
-      {
-        "@type": "Property",
-        "name": "name",
-        "schema": "string"
-      },
-      {
-        "@type": "Property",
-        "name": "mass",
-        "schema": "double"
-      },
-      {
-        "@type": "Telemetry",
-        "name": "temperature",
-        "schema": "double"
-      }
-    ]
-  },
-  {
-    "@id": "dtmi:com:contoso:Planet;1",
-    "@type": "Interface",
-    "@context": "dtmi:dtdl:context;2",
-    "displayName": "Planet",
-    "extends": "dtmi:com:contoso:CelestialBody;1",
-    "contents": [
-      {
-        "@type": "Relationship",
-        "name": "satellites",
-        "target": "dtmi:com:contoso:Moon;1"
-      },
-      {
-        "@type": "Component",
-        "name": "deepestCrater",
-        "schema": "dtmi:com:contoso:Crater;1"
-      }
-    ]
-  },
-  {
-    "@id": "dtmi:com:contoso:Crater;1",
-    "@type": "Interface",
-    "@context": "dtmi:dtdl:context;2"
-  }
-]
-```
+:::code language="json" source="~/digital-twins-docs-samples/models/CelestialBody-Planet-Crater.json":::
 
 In diesem Beispiel trägt *CelestialBody* einen Namen, eine Masse und eine Temperatur zu *Planet* bei. Der Abschnitt `extends` ist ein Schnittstellenname oder Array von Schnittstellennamen (der es der erweiternden Schnittstelle ermöglicht, falls gewünscht, von mehreren übergeordneten Modellen zu erben).
 
@@ -236,7 +140,7 @@ Wenn Sie beim Entwerfen von Modellen die Entitäten in Ihrer Umgebung wiedergebe
 
 Die Verwendung von Modellen, die auf Branchenstandards basieren oder eine standardmäßige Ontologiedarstellung nutzen (z. B. RDF oder OWL), bietet einen guten Ausgangspunkt für den Entwurf Ihrer Azure Digital Twins-Modelle. Die Verwendung von Branchenmodellen unterstützt außerdem die Standardisierung und Informationsfreigabe.
 
-Für die Verwendung in Azure Digital Twins muss ein Modell in der auf JSON-LD basierenden Sprache [**DTDL (Digital Twins Definition Language)**](concepts-models.md) dargestellt werden. Deshalb wird in diesem Artikel beschrieben, wie Sie die Branchenstandardmodelle in DTDL darstellen und die vorhandenen Branchenkonzepte in die DTDL-Semantik integrieren, sodass diese von Azure Digital Twins verwendet werden können. Das DTDL-Modell dient dann als allgemeingültige Datenbasis für das Modell in Azure Digital Twins.
+Für die Verwendung in Azure Digital Twins muss ein Modell in der auf JSON-LD basierenden Sprache [**DTDL (Digital Twins Definition Language)**](concepts-models.md) dargestellt werden. Damit Sie ein branchenübliches Modell verwenden können, ist zunächst eine Konvertierung in DTDL erforderlich, sodass die Verwendung durch Azure Digital Twins möglich ist. Das DTDL-Modell dient dann als allgemeingültige Datenbasis für das Modell in Azure Digital Twins.
 
 Es gibt zwei Hauptmethoden zur Integration von Branchenstandardmodellen in DTDL, die von Ihrer jeweiligen Situation abhängen:
 * Wenn Sie die Modelle noch nicht erstellt haben, können Sie diese auf Grundlage **vorhandener DTDL-Anfangsontologien** entwerfen, die eine für Ihre Branche spezifische Sprache enthalten.

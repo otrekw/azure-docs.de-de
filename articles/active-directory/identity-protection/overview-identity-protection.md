@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: overview
-ms.date: 08/24/2020
+ms.date: 01/05/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.custom: contperf-fy21q1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 242e0e4614994c30d0a14b8fe3d7a5c2b217bb5a
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 6e274d35fde6a3d55c05bcb5a9f22e75a37aa3c6
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033339"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97955398"
 ---
 # <a name="what-is-identity-protection"></a>Was ist Identity Protection?
 
@@ -49,13 +49,16 @@ Identity Protection identifiziert Risiken in folgenden Klassifizierungen:
 
 | Risikoerkennungstyp | BESCHREIBUNG |
 | --- | --- |
-| Ungewöhnlicher Ortswechsel | Anmeldung von einem ungewöhnlichen Standort, basierend auf den letzten Anmeldevorgängen des Benutzers |
 | Anonyme IP-Adresse | Anmeldung von einer anonymen IP-Adresse (z.B. Tor-Browser, anonymisierte VPNs) |
-| Ungewöhnliche Anmeldeeigenschaften | Anmeldung mit Eigenschaften, die für den angegebenen Benutzer in letzter Zeit nicht verwendet wurden |
+| Ungewöhnlicher Ortswechsel | Anmeldung von einem ungewöhnlichen Standort, basierend auf den letzten Anmeldevorgängen des Benutzers |
 | Mit Schadsoftware verknüpfte IP-Adresse | Anmeldung von einer mit Schadsoftware verknüpften IP-Adresse |
+| Ungewöhnliche Anmeldeeigenschaften | Anmeldung mit Eigenschaften, die für den angegebenen Benutzer in letzter Zeit nicht verwendet wurden |
 | Kompromittierte Anmeldeinformationen | Gibt an, dass die gültigen Anmeldeinformationen des Benutzers kompromittiert wurden. |
 | Kennwortspray | Gibt an, dass für mehrere Benutzernamen unter Verwendung allgemeiner Kennwörtern koordinierte Brute-Force-Angriffe ausgeführt werden. |
 | Azure AD Threat Intelligence | Auf der Grundlage der internen und externen Quellen für Bedrohungsdaten von Microsoft wurde ein bekanntes Angriffsmuster identifiziert |
+| Neues Land | Diese Erkennung wird von [Microsoft Cloud App Security (MCAS)](/cloud-app-security/anomaly-detection-policy#activity-from-infrequent-country) erkannt. |
+| Aktivität über anonyme IP-Adresse | Diese Erkennung wird von [Microsoft Cloud App Security (MCAS)](/cloud-app-security/anomaly-detection-policy#activity-from-anonymous-ip-addresses) erkannt. |
+| Verdächtige Weiterleitung des Posteingangs | Diese Erkennung wird von [Microsoft Cloud App Security (MCAS)](/cloud-app-security/anomaly-detection-policy#suspicious-inbox-forwarding) erkannt. |
 
 Weitere Informationen zu diesen Risiken sowie zu deren Berechnung finden Sie im Artikel [Was bedeutet Risiko?](concept-identity-protection-risks.md).
 

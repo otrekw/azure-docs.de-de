@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 01/08/2020
-ms.openlocfilehash: 41c0bd23bbd2d69506a979c5a36ac40f73258f2c
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: ab03e0bdf7761e45a134ec90685955403fbc433b
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97605512"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98060383"
 ---
 # <a name="tutorial-migrate-mysql-to-azure-database-for-mysql-online-using-dms"></a>Tutorial: Ausführen einer Onlinemigration von MySQL zu Azure Database for MySQL mithilfe von DMS
 
@@ -237,7 +237,7 @@ Nachdem der Dienst erstellt wurde, suchen Sie diesen im Azure-Portal, öffnen Si
 
     ![Zuordnen zu Zieldatenbanken](media/tutorial-mysql-to-azure-mysql-online/dms-map-target-details.png)
    > [!NOTE] 
-   > Sie können in diesem Schritt mehrere Datenbanken auswählen. Beachten Sie jedoch, dass jede Instanz von Azure Database Migration Service bis zu vier Datenbanken für die gleichzeitige Migration unterstützt. Außerdem besteht eine Beschränkung von zwei Instanzen von Azure Database Migration Service pro Region in einem Abonnement. Wenn Sie z. B. 40 Datenbanken migrieren müssen, können Sie jeweils nur acht Datenbanken gleichzeitig migrieren, aber auch nur, wenn Sie zwei Instanzen von Azure Database Migration Service erstellt haben.
+   > Sie können in diesem Schritt mehrere Datenbanken auswählen. Beachten Sie hierbei aber, dass jede Instanz von Azure Database Migration Service bis zu vier Datenbanken für die gleichzeitige Migration unterstützt. Darüber hinaus besteht eine Beschränkung auf zehn Instanzen von Azure Database Migration Service pro Abonnement und Region. Wenn Sie beispielsweise über 80 zu migrierende Datenbanken verfügen, können Sie 40 davon gleichzeitig zu derselben Region migrieren. Dies gilt aber nur, wenn Sie zehn Instanzen des Azure Database Migration Service erstellt haben.
 
 3. Klicken Sie auf **Speichern**. Geben Sie auf dem Bildschirm **Migrationszusammenfassung** im Textfeld **Aktivitätsname** einen Namen für die Migrationsaktivität ein, und überprüfen Sie anschließend die Zusammenfassung, um sicherzustellen, dass die Ziel- und Quelldetails Ihren vorherigen Angaben entsprechen.
 

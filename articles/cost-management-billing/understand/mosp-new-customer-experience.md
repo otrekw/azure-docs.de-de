@@ -6,14 +6,14 @@ ms.reviewer: amberbhargava
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: conceptual
-ms.date: 08/03/2020
+ms.date: 01/11/2021
 ms.author: banders
-ms.openlocfilehash: 7bec455b804d1f4b13ab7e13677092077214a121
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: f0645115246995c9605563626d99bbf6a76784e1
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94965849"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98133559"
 ---
 # <a name="get-started-with-your-updated-azure-billing-account"></a>Erste Schritte mit Ihrem aktualisierten Azure-Abrechnungskonto
 
@@ -40,7 +40,7 @@ Ein Abrechnungsprofil wird verwendet, um Ihre Rechnungen und Zahlungsmethoden zu
 
 Wenn Ihr Konto aktualisiert wird, wird für jedes Abonnement automatisch ein Abrechnungsprofil erstellt. Die Gebühren für Abonnements werden für das jeweilige Abrechnungsprofil in Rechnung gestellt und auf der zugehörigen Rechnung angezeigt.
 
-Die Rollen für die Abrechnungsprofile verfügen über Berechtigungen zum Anzeigen und Verwalten von Rechnungen und Zahlungsmethoden. Diese Rollen sollten Benutzern zugewiesen werden, die Rechnungen bezahlen. Bei diesen Benutzern handelt es sich beispielsweise um Mitglieder des Buchhaltungsteams in einer Organisation. Weitere Informationen finden Sie unter [Rollen und Aufgaben für ein Abrechnungsprofil](../manage/understand-mca-roles.md#billing-profile-roles-and-tasks). 
+Die Rollen für die Abrechnungsprofile verfügen über Berechtigungen zum Anzeigen und Verwalten von Rechnungen und Zahlungsmethoden. Diese Rollen sollten Benutzern zugewiesen werden, die Rechnungen bezahlen. Bei diesen Benutzern handelt es sich beispielsweise um Mitglieder des Buchhaltungsteams in einer Organisation. Weitere Informationen finden Sie unter [Rollen und Aufgaben für ein Abrechnungsprofil](../manage/understand-mca-roles.md#billing-profile-roles-and-tasks).
 
 Wenn Ihr Konto aktualisiert wird, gilt für jedes Abonnement, für das Sie anderen Benutzern Berechtigungen zum [Anzeigen von Rechnungen](download-azure-invoice.md#allow-others-to-download-the-your-subscription-invoice) gewährt haben, Folgendes: Benutzer, die über eine Azure-Rolle vom Typ „Besitzer“, „Mitwirkender“, „Leser“ oder „Abrechnungsleser“ verfügen, erhalten für das entsprechende Abrechnungsprofil die Rolle „Leser“.
 
@@ -80,9 +80,9 @@ Ihre neue Benutzeroberfläche enthält die folgenden Funktionen für die Kostenv
 
 #### <a name="account-and-subscription-management"></a>Konto- und Abonnementverwaltung
 
-**Zuweisung von mehreren Administratoren zur Durchführung von Abrechnungsvorgängen**: Weisen Sie mehreren Benutzern Abrechnungsberechtigungen zu, um die Abrechnung für Ihr Konto zu verwalten. Sorgen Sie für Flexibilität, indem Sie für andere Benutzer die Lese-, Schreib- oder Lese-/Schreibberechtigung bereitstellen.
+**Zuweisung von mehreren Administratoren zur Durchführung von Abrechnungsvorgängen**: Weisen Sie mehreren Benutzern Abrechnungsberechtigungen zu, um die Abrechnung für Ihr Konto zu verwalten. Sorgen Sie für Flexibilität, indem Sie für andere Benutzer die Lese-, Schreib- oder Lese-/Schreibberechtigung erteilen.
 
-**Direkte Erstellung von zusätzlichen Abonnements im Azure-Portal**: Erstellen Sie Ihre gesamten Abonnements mit nur einem Klick im Azure-Portal.
+**Direkte Erstellung von weiteren Abonnements im Azure-Portal**: Erstellen Sie Ihre gesamten Abonnements mit nur einem Auswahlvorgang im Azure-Portal.
 
 #### <a name="api-support"></a>API-Unterstützung
 
@@ -104,8 +104,59 @@ Falls Sie APIs für die Kostenverwaltung und Abrechnung nutzen, um Ihre Abrechnu
 
 |API | Änderungen  |
 |---------|---------|
-|[Billing Accounts – List](/rest/api/billing/2019-10-01-preview/billingaccounts/list) | In der API für die Auflistung von Abrechnungskonten (Billing Accounts – List) verfügt Ihr altes Abrechnungskonto für „agreementType“ über den Wert **MicrosoftOnlineServiceProgram**. In Ihrem neuen Abrechnungskonto wird **MicrosoftCustomerAgreement** als „agreementType“ verwendet. Falls Sie eine Abhängigkeit von „agreementType“ nutzen, sollten Sie sie aktualisieren. |
+|[Billing Accounts – List](/rest/api/billing/2019-10-01-preview/billingaccounts/list) | In der API für die Auflistung von Abrechnungskonten (Billing Accounts – List) verfügt Ihr altes Abrechnungskonto für „agreementType“ über den Wert **MicrosoftOnlineServiceProgram**. In Ihrem neuen Abrechnungskonto wird **MicrosoftCustomerAgreement** als „agreementType“ verwendet. Falls Sie eine Abhängigkeit von „agreementType“ nutzen, sollten Sie diese aktualisieren. |
 |[Invoices – List By Billing Subscription](/rest/api/billing/2019-10-01-preview/invoices/listbybillingsubscription)     | Diese API gibt nur Rechnungen zurück, die vor der Aktualisierung Ihres Kontos generiert wurden. Sie müssen die API vom Typ [Invoices – List By Billing Account](/rest/api/billing/2019-10-01-preview/invoices/listbybillingaccount) verwenden, um Rechnungen abzurufen, die unter Ihrem neuen Abrechnungskonto generiert werden. |
+
+## <a name="cost-management-updates-after-account-update"></a>Cost Management-Updates nach Kontoupdate
+
+Mit Ihrem aktualisierten Azure-Abrechnungskonto für Ihre Microsoft-Kundenvereinbarung haben Sie Zugriff auf die neuen und erweiterten Cost Management-Benutzeroberflächen im Azure-Portal, die bei Verwendung des Kontos mit nutzungsbasierter Zahlung noch nicht verfügbar waren.
+
+### <a name="new-capabilities"></a>Neue Funktionen
+
+Die folgenden neuen Funktionen sind unter Ihrem Azure-Abrechnungskonto verfügbar.
+
+#### <a name="new-billing-scopes"></a>Neue Abrechnungsbereiche
+
+In Ihrem aktualisierten Konto verfügen Sie unter „Kostenverwaltung + Abrechnung“ über neue Bereiche. Diese sind nicht nur beim Aufbau einer hierarchischen Organisation und der Fakturierung hilfreich, sondern ermöglichen auch die Anzeige von kombinierten Gebühren für mehrere zugrunde liegende Abonnements. Weitere Informationen zu Abrechnungsbereichen finden Sie unter [Bereiche für Microsoft-Kundenvereinbarung](../costs/understand-work-scopes.md#microsoft-customer-agreement-scopes).
+
+Sie können auch auf Cost Management-APIs zugreifen, um kombinierte Kostenübersichten für höhere Bereiche zu erhalten. Alle Cost Management-APIs, für die der Abonnementbereich genutzt wird, sind weiterhin verfügbar und weisen nur geringfügige Änderungen in Bezug auf das Schema auf. Weitere Informationen zu den APIs finden Sie in den Artikeln zu [Azure Cost Management-APIs](/rest/api/cost-management/) und [Azure-Nutzungs-APIs](/rest/api/consumption/).
+
+#### <a name="cost-allocation"></a>Kostenzuteilung
+
+Mit Ihrem aktualisierten Konto können Sie Funktionen für die Kostenzuteilung verwenden, um die Kosten für gemeinsam genutzte Dienste in Ihrer Organisation zu verteilen. Weitere Informationen zur Kostenzuteilung finden Sie unter [Erstellen und Verwalten von Azure-Kostenzuteilungsregeln (Vorschauversion)](../costs/allocate-costs.md).
+
+#### <a name="power-bi"></a>Power BI
+
+Mit dem Azure Cost Management-Connector für Power BI Desktop können Sie benutzerdefinierte Visualisierungen und Berichte zur Nutzung und den Ausgaben in Azure erstellen. Sie greifen auf Ihre Kosten- und Nutzungsdaten zu, nachdem Sie eine Verbindung mit dem aktualisierten Konto hergestellt haben. Weitere Informationen zum Azure Cost Management-Connector für Power BI Desktop finden Sie unter [Erstellen von visuellen Elementen und Berichten mit dem Azure Cost Management-Connector in Power BI Desktop](/power-bi/connect-data/desktop-connect-azure-cost-management).
+
+### <a name="updated-capabilities"></a>Aktualisierte Funktionen
+
+Die folgenden aktualisierten Funktionen sind unter Ihrem Azure-Abrechnungskonto verfügbar.
+
+#### <a name="cost-analysis"></a>Kostenanalyse
+
+Sie können weiterhin Ihre Verbrauchskosten pro Monat anzeigen und nachverfolgen und jetzt zusätzlich die Kosten für Reservierungen und Marketplace-Käufe in der Kostenanalyse anzeigen.
+
+Bei Verwendung Ihres aktualisierten Kontos erhalten Sie nur eine Rechnung für alle Azure-Gebühren. Darüber hinaus verfügen Sie jetzt auch über eine vereinfachte monatliche Kalenderansicht, die die vorherige Ansicht mit den Abrechnungszeiträumen ersetzt.
+
+Wenn der Abrechnungszeitraum für Ihr altes Konto beispielsweise der Zeitraum vom 24. November bis zum 23. Dezember war, gilt nach dem Upgrade der Zeitraum 1. November bis 30. November, 1. Dezember bis 31. Dezember usw.
+
+:::image type="content" source="./media/mosp-new-customer-experience/billing-periods.png" alt-text="Abbildung: Vergleich zwischen alten und neuen Abrechnungszeiträumen" lightbox="./media/mosp-new-customer-experience/billing-periods.png" :::
+
+#### <a name="budgets"></a>Budgets
+
+Sie können jetzt Budgets für das Abrechnungskonto erstellen, um die Kosten übergreifend für die Abonnements nachverfolgen zu können. Mit Budgets sind Sie auch in Bezug auf Ihre Kaufgebühren immer auf dem aktuellen Stand. Weitere Informationen zu Budgets finden Sie unter [Erstellen und Verwalten von Azure-Budgets](../costs/tutorial-acm-create-budgets.md).
+
+#### <a name="exports"></a>Exports
+
+Ihr neues Abrechnungskonto verfügt über verbesserte Exportfunktionen. Beispielsweise können Sie Exporte für die tatsächlichen Kosten erstellen, in denen Kaufbeträge oder die amortisierten Kosten (auf den Kaufzeitraum verteilte Kosten für Reservierungskäufe) enthalten sind. Sie können auch einen Export für das Abrechnungskonto erstellen, um die Daten zur Nutzung und zu Käufen für alle Abonnements des Abrechnungskontos zu erhalten. Weitere Informationen zu Exporten finden Sie unter [Erstellen und Verwalten von exportierten Daten](../costs/tutorial-export-acm-data.md).
+
+> [!NOTE]
+> Bei Exporten vom Typ **Monatlicher Export der Kosten des letzten Monats**, die vor Ihrem Kontoupdate erstellt wurden, werden die Daten für den letzten Kalendermonat und nicht für den letzten Abrechnungszeitraum exportiert.
+
+Bei einem Abrechnungszeitraum vom 23. Dezember bis zum 22. Januar enthält die exportierte CSV-Datei beispielsweise die Kosten- und Nutzungsdaten für diesen Zeitraum. Nach dem Update enthält der Export Daten für den Kalendermonat. Beispiel: 1. Januar bis 31. Januar usw.
+
+:::image type="content" source="./media/mosp-new-customer-experience/export-amortized-costs.png" alt-text="Abbildung: Vergleich zwischen alten und neuen Exportdetails" lightbox="./media/mosp-new-customer-experience/export-amortized-costs.png" :::
 
 ## <a name="additional-information"></a>Zusätzliche Informationen
 
@@ -117,7 +168,7 @@ Die folgenden Abschnitte enthalten zusätzliche Informationen zu Ihrer neuen Ben
 
 **Frühere Rechnungen sind auf der neuen Benutzeroberfläche verfügbar** Rechnungen, die vor der Aktualisierung Ihres Kontos generiert wurden, sind im Azure-Portal weiterhin verfügbar.
 
-**Rechnungen für das Konto werden Mitte des Monats aktualisiert** Wenn Ihr Konto Mitte des Monats aktualisiert wird, erhalten Sie eine Rechnung über die Gebühren, die bis zum Tag der Kontoaktualisierung angefallen sind. Sie erhalten dann eine weitere Rechnung für den Rest des Monats. Angenommen, Ihr Konto verfügt über ein Abonnement und wird am 15. September aktualisiert. Sie erhalten eine Rechnung über die Gebühren, die bis zum 15. September angefallen sind. Anschließend erhalten Sie eine weitere Rechnung für den Zeitraum zwischen dem 15. und 30. September. Für die weiteren Monate erhalten Sie dann eine Rechnung pro Monat.
+**Rechnungen für das Konto werden Mitte des Monats aktualisiert** Wenn Ihr Konto Mitte des Monats aktualisiert wird, erhalten Sie eine Rechnung über die Gebühren, die bis zum Tag der Kontoaktualisierung angefallen sind. Sie erhalten dann eine weitere Rechnung für den Rest des Monats. Angenommen, Ihr Konto verfügt über ein Abonnement und wird am 15. September aktualisiert. Sie erhalten dann eine Rechnung über die Gebühren, die bis zum 15. September angefallen sind. Anschließend erhalten Sie eine weitere Rechnung für den Zeitraum zwischen dem 15. und 30. September. Für die weiteren Monate erhalten Sie dann eine Rechnung pro Monat.
 
 ## <a name="need-help-contact-support"></a>Sie brauchen Hilfe? Wenden Sie sich an den Support.
 

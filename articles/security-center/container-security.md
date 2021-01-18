@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: 7265195f9614928a2150a56a780ea7b36bc2e266
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.openlocfilehash: ea66bb5bcdd6132809804632919a120f5c93353f
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96030865"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98132715"
 ---
 # <a name="container-security-in-security-center"></a>Containersicherheit in Security Center
 
@@ -48,7 +48,7 @@ Der folgende Screenshot zeigt die Seite mit dem Ressourcenbestand (Asset Invento
 
 Wenn Sie Images in Ihren Azure Resource Manager-basierten Azure-Containerregistrierungen überwachen möchten, aktivieren Sie [Azure Defender für Containerregistrierungen](defender-for-container-registries-introduction.md). Security Center scannt alle Images, die gepusht, importiert oder in den letzten 30 Tagen gepullt wurden. Der integrierte Scanner wird von Qualys bereitgestellt. Hierbei handelt es sich um einen branchenführenden Anbieter von Tools zur Überprüfung auf Sicherheitsrisiken.
 
-Werden Probleme gefunden – von Qualys oder Security Center –, werden Sie auf dem [Azure Defender-Dashboard](azure-defender-dashboard.md) benachrichtigt. Für jedes Sicherheitsrisiko bietet Security Center Handlungsempfehlungen sowie eine Klassifizierung des Schweregrads und Anleitungen für die Behebung des Problems. Ausführliche Informationen zu Security Center-Empfehlungen für Container finden Sie in der [Referenzliste der Empfehlungen](recommendations-reference.md#recs-containers).
+Werden Probleme gefunden – von Qualys oder Security Center –, werden Sie auf dem [Azure Defender-Dashboard](azure-defender-dashboard.md) benachrichtigt. Für jedes Sicherheitsrisiko bietet Security Center Handlungsempfehlungen sowie eine Klassifizierung des Schweregrads und Anleitungen für die Behebung des Problems. Ausführliche Informationen zu Security Center-Empfehlungen für Container finden Sie in der [Referenzliste der Empfehlungen](recommendations-reference.md#recs-compute).
 
 Security Center filtert und klassifiziert die Ergebnisse des Scanners. Wenn ein Image fehlerfrei ist, markiert Security Center es entsprechend. Security Center generiert Sicherheitsempfehlungen nur für Images, bei denen Probleme behoben werden müssen. Indem Sie nur benachrichtigt werden, wenn Probleme auftreten, reduziert Security Center das Potenzial von unerwünschten Informationswarnungen.
 
@@ -60,7 +60,7 @@ Azure Security Center identifiziert nicht verwaltete Container, die auf IaaS-Lin
 
 Security Center umfasst den gesamten Regelsatz des CIS-Docker-Benchmark und benachrichtigt Sie, sobald Ihre Container eine der Steuerungen nicht erfüllen. Werden Fehlkonfigurationen gefunden, generiert Security Center Sicherheitsempfehlungen. Verwenden Sie die Seite **Empfehlungen** in Security Center, um Empfehlungen anzuzeigen und Probleme zu beheben. Die CIS-Benchmarkprüfungen können nicht auf von AKS verwalteten Instanzen oder von Databricks verwalteten virtuellen Computern ausgeführt werden.
 
-Ausführliche Informationen zu den möglichen relevanten Security Center-Empfehlungen für dieses Feature finden Sie im Abschnitt [Container](recommendations-reference.md#recs-containers) der Referenztabelle zu Empfehlungen.
+Ausführliche Informationen zu den möglichen relevanten Security Center-Empfehlungen für dieses Feature finden Sie im Abschnitt [Compute](recommendations-reference.md#recs-compute) der Referenztabelle zu den Empfehlungen.
 
 Wenn Sie die Sicherheitsprobleme auf einem virtuellen Computer untersuchen, stellt Security Center zusätzliche Informationen zu den Containern auf dem Computer bereit. Zu diesen Informationen gehören die Docker-Version und Anzahl der auf dem Host ausgeführten Images. 
 
@@ -74,7 +74,7 @@ AKS bietet Sicherheitssteuerungen und Einblicke in den Sicherheitsstatus ihrer C
 * Konstante Überwachung der Konfiguration Ihrer AKS-Cluster
 * Generieren von an Branchenstandards ausgerichteten Sicherheitsempfehlungen
 
-Ausführliche Informationen zu den möglichen relevanten Security Center-Empfehlungen für dieses Feature finden Sie im Abschnitt [Container](recommendations-reference.md#recs-containers) der Referenztabelle zu Empfehlungen.
+Ausführliche Informationen zu den möglichen relevanten Security Center-Empfehlungen für dieses Feature finden Sie im Abschnitt [Compute](recommendations-reference.md#recs-compute) der Referenztabelle zu den Empfehlungen.
 
 ###  <a name="workload-protection-best-practices-using-kubernetes-admission-control"></a>Bewährte Methoden zum Schutz von Workloads mithilfe der Kubernetes-Zugangssteuerung
 

@@ -10,12 +10,12 @@ ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 12/14/2020
-ms.openlocfilehash: e017fac551e3122cc6586b32423ff166462ccad8
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 402ee6d5efdd489914cb7d283c7c46d4f7d175f6
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97513558"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97968057"
 ---
 # <a name="introduction-to-computer-vision-spatial-analysis"></a>Einführung in die räumliche Analyse für maschinelles Sehen
 
@@ -23,7 +23,7 @@ Die räumliche Analyse für maschinelles Sehen ist ein neues Feature der Funktio
 
 ## <a name="the-basics-of-spatial-analysis"></a>Grundlagen der räumlichen Analyse
 
-Heute basieren die grundlegenden Skills der räumlichen Analyse auf einer Pipeline, die Videos erfasst, Personen im Video erkennt, diese verfolgt, während sie sich bewegen, und Ereignisse generieren, wenn Personen mit relevanten Bereichen interagieren.
+Heute basieren die grundlegenden Vorgänge der räumlichen Analyse auf einer Pipeline, die Videos erfasst, Personen im Video erkennt, diese verfolgt, während sie sich bewegen, und Ereignisse generiert, wenn Personen mit relevanten Bereichen interagieren.
 
 ## <a name="spatial-analysis-terms"></a>Begriffe im Zusammenhang mit der räumlichen Analyse
 

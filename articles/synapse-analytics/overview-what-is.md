@@ -9,18 +9,18 @@ ms.subservice: overview
 ms.date: 10/28/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: c315dae7e5f02f112dfdfbec02e1ebaaa5e48a9f
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: e5b12632a60ad5580325fbcda294e1a600bb2b6b
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96445780"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98121701"
 ---
 # <a name="what-is-azure-synapse-analytics"></a>Was ist Azure Synapse Analytics?
 
 Unternehmensanalysen müssen für jede Art von Daten im großen Umfang funktionieren, unabhängig davon, ob es sich um Rohdaten, optimierte Daten oder stark kuratierte Daten handelt. Hierzu mussten Unternehmen in der Regel Big Data- und Data Warehousing-Technologien in umfangreiche Datenpipelines kombinieren, die mit Daten in relationalen Speichern und Data Lakes arbeiten können. Solche Lösungen sind schwer zu erstellen, zu verwalten und zu schützen. Ihre Komplexität verzögert die Bereitstellung der Erkenntnisse, die Unternehmen benötigen.
 
-**Azure Synapse** ist ein integrierter Analysedienst zur schnelleren Gewinnung von Erkenntnissen aus Data Warehouses und Big Data-Systemen. Azure Synapse vereint die besten Aspekte der **SQL**-Technologien, die Unternehmen für Data Warehousing verwenden, der **Spark**-Technologien für Big Data und der **Pipelines** für die Datenintegration und für ETL/ELT. **Synapse Studio** bietet eine einheitliche Oberfläche für die Verwaltung, Überwachung, Codierung und Sicherheit. Synapse zeichnet sich durch umfassende Integrationen mit anderen Azure-Diensten wie **Power BI**, **CosmosDB** und **Azure Machine Learning** aus.
+**Azure Synapse** ist ein integrierter Analysedienst zur schnelleren Gewinnung von Erkenntnissen aus Data Warehouses und Big Data-Systemen. In Azure Synapse ist die jeweils beste Technologie aus unterschiedlichen Bereichen vereint: **SQL**-Technologie für Data Warehousing in Unternehmen, **Spark**-Technologie für Big Data-Zwecke, **Pipelines** für die Datenintegration und ETL/ELT sowie eine tiefe Integration in andere Azure-Dienste, z. B. **Power BI**, **Cosmos DB** und **Azure ML**.
 
 ## <a name="key-features--benefits"></a>Wichtige Features und Vorteile
 

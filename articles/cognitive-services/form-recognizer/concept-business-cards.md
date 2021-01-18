@@ -10,39 +10,43 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 08/17/2019
 ms.author: pafarley
-ms.openlocfilehash: ed57c496443c9d1541bfa9933e7718213da116d7
-ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
+ms.openlocfilehash: 1fd4279cd35e54e2e04f88973c4a825218a75142
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/01/2021
-ms.locfileid: "97845603"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98131123"
 ---
-# <a name="business-card-concepts"></a>Konzepte zu Visitenkarten
+# <a name="form-recognizer-prebuilt-business-cards-model"></a>Vordefiniertes Visitenkartenmodell der Formularerkennung 
 
-Mit der Azure-Formularerkennung können Kontaktinformationen aus Visitenkarten mithilfe eines der vordefinierten Modelle analysiert und extrahiert werden. Die Visitenkarten-API kombiniert leistungsstarke Funktionen zur optischen Zeichenerkennung (Optical Character Recognition, OCR) mit unserem Modell zur Visitenkartenerfassung, um die wichtigsten Informationen auf Visitenkarten zu extrahieren (in englischer Sprache). Dabei werden persönliche Kontaktinformationen, der Firmenname, die Position und weitere Details extrahiert. Die vordefinierte Visitenkarten-API ist in der Vorschauversion der Formularerkennung (v2.1) öffentlich verfügbar. 
+Mit der Azure-Formularerkennung können Kontaktinformationen aus Visitenkarten mithilfe des vordefinierten Modells für Visitenkarten analysiert und extrahiert werden. Hierbei werden die leistungsstarken Funktionen der optischen Zeichenerkennung (Optical Character Recognition, OCR) mit unserem Modell zur Visitenkartenerfassung kombiniert, um die wichtigsten Informationen auf Visitenkarten zu extrahieren (in englischer Sprache). Dabei werden persönliche Kontaktinformationen, der Firmenname, die Position und weitere Details extrahiert. Die vordefinierte Visitenkarten-API ist in der Vorschauversion der Formularerkennung (v2.1) öffentlich verfügbar. 
 
-## <a name="what-does-the-business-card-api-do"></a>Wozu wird die Visitenkarten-API eingesetzt?
+## <a name="what-does-the-business-card-service-do"></a>Wozu wird der Dienst für Visitenkarten eingesetzt?
 
-Die Visitenkarten-API extrahiert wichtige Felder von Visitenkarten und gibt diese Informationen in einer organisierten JSON-Antwort zurück.
+Die vorgefertigte Visitenkarten-API extrahiert wichtige Felder von Visitenkarten und gibt diese Informationen in einer organisierten JSON-Antwort zurück.
 
-![FOTT- und JSON-Ausgabe mit Contoso-Logo](./media/business-card-english.jpg)
+![FOTT- und JSON-Ausgabe mit Contoso-Logo](./media/business-card-example.jpg)
+
+
 
 ### <a name="fields-extracted"></a>Extrahierte Felder:
 
-* Kontaktnamen 
-  * Vornamen
-  * Nachnamen
-* Firmennamen 
-* Departments 
-* Positionen 
-* E-Mails 
-* Websites 
-* Adressen 
-* Telefonnummern 
-  * Mobiltelefonnummern 
-  * Faxnummern 
-  * Geschäftliche Telefonnummern 
-  * Weitere Telefonnummern 
+|Name| type | BESCHREIBUNG | Text | 
+|:-----|:----|:----|:----|
+| ContactNames | Array von Objekten | Aus der Visitenkarte extrahierter Name des Kontakts | [{ "FirstName": "John", "LastName": "Doe" }] |
+| FirstName | Zeichenfolge | Vorname des Kontakts | „John“ | 
+| LastName | Zeichenfolge | Nachname des Kontakts |   „Doe“ | 
+| CompanyNames | array of strings | Aus der Visitenkarte extrahierter Unternehmensname | ["Contoso"] | 
+| Departments | array of strings | Abteilung oder Organisation des Kontakts | ["R&D"] | 
+| JobTitles | array of strings | Aufgeführte Position des Kontakts | ["Software Engineer"] | 
+| E-Mails | array of strings | Aus der Visitenkarte extrahierte E-Mail-Adresse des Kontakts | ["johndoe@contoso.com"] | 
+| Websites | array of strings | Aus der Visitenkarte extrahierte Website | ["https://www.contoso.com"] | 
+| Adressen | array of strings | Aus der Visitenkarte extrahierte Adresse | ["123 Main Street, Redmond, WA 98052"] | 
+| MobilePhones | Array aus Telefonnummern | Aus der Visitenkarte extrahierte Mobiltelefonnummer | ["+19876543210"] |
+| Faxnummern | Array aus Telefonnummern | Aus der Visitenkarte extrahierte Faxnummer | ["+19876543211"] |
+| WorkPhones | Array aus Telefonnummern | Aus der Visitenkarte extrahierte geschäftliche Telefonnummer | ["+19876543231"] |
+| OtherPhones    | Array aus Telefonnummern | Aus der Visitenkarte extrahierte weitere Telefonnummern | ["+19876543233"] |
+
 
 Darüber hinaus kann die Visitenkarten-API auch den gesamten erkannten Text auf der Visitenkarte zurückgeben. Diese OCR-Ausgabe ist in der JSON-Antwort enthalten.  
 

@@ -571,7 +571,11 @@
             - name: Aus dem ITSM-Produkt synchronisierte Daten
               href: platform/itsmc-synced-data.md
             - name: Problembehandlung in ITSM-Connector
-              href: platform/itsmc-resync-servicenow.md
+              items:
+                - name: Überblick
+                  href: platform/itsmc-resync-servicenow.md
+                - name: Dashboarduntersuchung
+                  href: platform/itsmc-dashboard.md
             - name: Integrieren mit sicherem Export
               items:
                 - name: Übersicht
@@ -706,7 +710,7 @@
                       href: app/java-standalone-config.md
                     - name: Telemetrieprozessoren
                       items:
-                        - name: Übersicht
+                        - name: Überblick
                           href: app/java-standalone-telemetry-processors.md
                         - name: Beispiele
                           href: app/java-standalone-telemetry-processors-examples.md

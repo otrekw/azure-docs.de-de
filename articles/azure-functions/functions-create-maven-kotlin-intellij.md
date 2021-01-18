@@ -1,27 +1,27 @@
 ---
-title: Erstellen einer Azure-Funktion mit Kotlin und IntelliJ
-description: Hier erfahren Sie, wie Sie mit Kotlin und IntelliJ eine einfache, über HTTP ausgelöste serverlose App in Azure erstellen und veröffentlichen.
+title: Erstellen einer Kotlin-Funktion in Azure Functions mit IntelliJ
+description: Erfahren Sie, wie Sie IntelliJ zum Erstellen einer einfachen, durch HTTP ausgelösten Kotlin-Funktion verwenden, die Sie dann veröffentlichen, um sie in einer serverlosen Umgebung in Azure auszuführen.
 author: dglover
 ms.service: azure-functions
 ms.topic: quickstart
 ms.date: 03/25/2020
 ms.author: dglover
-ms.openlocfilehash: 09dd868dc9e05241943899654d7c8bb427a8f268
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 0207e4af9f845343866714ec207ca306cb327b36
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92104834"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98035171"
 ---
-# <a name="quickstart-create-your-first-http-triggered-function-with-kotlin-and-intellij"></a>Schnellstart: Erstellen Ihrer ersten, über HTTP ausgelösten Funktion mit Kotlin und IntelliJ
+# <a name="create-your-first-kotlin-function-in-azure-using-intellij"></a>Erstellen Ihrer ersten Kotlin-Funktion in Azure mit IntelliJ
 
-In diesem Artikel erfahren Sie, wie Sie mithilfe von IntelliJ IDEA und Apache Maven ein [serverloses](https://azure.microsoft.com/overview/serverless-computing/) Funktionsprojekt erstellen. Außerdem wird gezeigt, wie Sie Ihren Funktionscode lokal in der integrierten Entwicklungsumgebung (Integrated Development Environment, IDE) debuggen und das Funktionsprojekt anschließend in Azure bereitstellen.
+In diesem Artikel wird veranschaulicht, wie Sie eine durch HTTP ausgelöste Java-Funktion in einem IntelliJ IDEA-Projekt erstellen, das Projekt in der integrierten Entwicklungsumgebung (IDE) ausführen und debuggen und das Funktionsprojekt dann in einer Funktions-App in Azure bereitstellen.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="set-up-your-development-environment"></a>Einrichten der Entwicklungsumgebung
 
-Installieren Sie die folgende Software, um eine Funktion mit Kotlin und IntelliJ zu entwickeln:
+Installieren Sie die folgende Software, um Kotlin-Funktionen mit IntelliJ in Azure zu erstellen und zu veröffentlichen:
 
 - [Java Developer Kit](/azure/developer/java/fundamentals/java-jdk-long-term-support) (JDK), Version 8
 - [Apache Maven](https://maven.apache.org), Version 3.0 oder höher
@@ -32,7 +32,7 @@ Installieren Sie die folgende Software, um eine Funktion mit Kotlin und IntelliJ
 > [!IMPORTANT]
 > Damit Sie die Schritte in diesem Artikel ausführen können, muss die Umgebungsvariable JAVA_HOME auf den Installationsspeicherort des JDK festgelegt sein.
 
-## <a name="create-a-functions-project"></a>Erstellen eines Functions-Projekts
+## <a name="create-a-function-project"></a>Erstellen eines Funktionsprojekts
 
 1. Wählen Sie in IntelliJ IDEA **Neues Projekt erstellen** aus.  
 1. Wählen Sie im Fenster **Neues Projekt** im linken Bereich **Maven** aus.
@@ -47,10 +47,10 @@ Installieren Sie die folgende Software, um eine Funktion mit Kotlin und IntelliJ
 
 Maven erstellt die Projektdateien in einem neuen Ordner mit dem Wert von _ArtifactId_ als Name. Bei dem generierten Code des Projekts handelt es sich um eine einfache [durch HTTP ausgelöste](./functions-bindings-http-webhook.md) Funktion, die den Hauptteil der über HTTP ausgelösten Anforderung wiederholt.
 
-## <a name="run-functions-locally-in-the-ide"></a>Lokales Ausführen von Funktionen in der IDE
+## <a name="run-project-locally-in-the-ide"></a>Lokales Ausführen des Projekts in der IDE
 
 > [!NOTE]
-> Um Funktionen lokal ausführen und debuggen zu können, achten Sie darauf, dass die [Azure Functions Core Tools, Version 2](functions-run-local.md#v2), installiert sind.
+> Um das Projekt lokal ausführen und debuggen zu können, sollten Sie sicherstellen, dass [Version 2 der Azure Functions Core Tools](functions-run-local.md#v2) installiert ist.
 
 1. Importieren Sie Änderungen manuell, oder aktivieren Sie den [automatischen Import](https://www.jetbrains.com/help/idea/creating-and-optimizing-imports.html).
 1. Öffnen Sie die Symbolleiste **Maven-Projekte**.
@@ -60,7 +60,7 @@ Maven erstellt die Projektdateien in einem neuen Ordner mit dem Wert von _Artifa
 
 1. Schließen Sie das Dialogfeld „Ausführen“, wenn Sie den Test der Funktion beendet haben. Es kann nicht mehr als ein Funktionshost gleichzeitig aktiv sein und lokal ausgeführt werden.
 
-## <a name="debug-the-function-in-intellij"></a>Debuggen der Funktion in IntelliJ
+## <a name="debug-the-project-in-intellij"></a>Debuggen des Projekts in IntelliJ
 
 1. Um den Funktionshost im Debugmodus zu starten, fügen Sie **-DenableDebug** als Argument hinzu, wenn Sie Ihre Funktion ausführen. Sie können entweder die Konfiguration in [maven goals](https://www.jetbrains.com/help/idea/maven-support.html#run_goal) ändern oder den folgenden Befehl in einem Terminalfenster ausführen:  
 
@@ -75,25 +75,25 @@ Maven erstellt die Projektdateien in einem neuen Ordner mit dem Wert von _Artifa
 1. Füllen Sie die Felder _Name_ und _Einstellungen_ aus, und wählen Sie dann **OK** aus, um die Konfiguration zu speichern.
 1. Wählen Sie nach dem Setup **Debug <Name der Remotekonfiguration>** aus, oder drücken Sie auf der Tastatur UMSCHALT+F9, um mit dem Debuggen zu beginnen.
 
-   ![Debuggen von Funktionen in IntelliJ](media/functions-create-first-kotlin-intellij/debug-configuration-intellij.PNG)
+   ![Debuggen des Projekts in IntelliJ](media/functions-create-first-kotlin-intellij/debug-configuration-intellij.PNG)
 
 1. Wenn Sie das Debuggen abgeschlossen haben, beenden Sie den Debugger und den laufenden Prozess. Es kann nicht mehr als ein Funktionshost gleichzeitig aktiv sein und lokal ausgeführt werden.
 
-## <a name="deploy-the-function-to-azure"></a>Bereitstellen der Funktion in Azure
+## <a name="deploy-the-project-to-azure"></a>Bereitstellen des Projekts in Azure
 
-1. Bevor Sie Ihre Funktion in Azure bereitstellen können, müssen Sie sich [mithilfe der Azure CLI anmelden](/cli/azure/authenticate-azure-cli?view=azure-cli-latest).
+1. Bevor Sie Ihr Projekt in einer Funktions-App in Azure bereitstellen können, müssen Sie sich [über die Azure CLI anmelden](/cli/azure/authenticate-azure-cli?view=azure-cli-latest).
 
    ``` azurecli
    az login
    ```
 
-1. Stellen Sie Ihren Code mit `azure-functions:deploy` als Maven-Ziel in einer neuen Funktion bereit. Sie können auch die Option **azure-functions:deploy** im Maven Projects-Fenster aktivieren.
+1. Stellen Sie Ihren Code mit `azure-functions:deploy` als Maven-Ziel in einer neuen Funktions-App bereit. Sie können auch die Option **azure-functions:deploy** im Maven Projects-Fenster aktivieren.
 
    ```
    mvn azure-functions:deploy
    ```
 
-1. Suchen Sie die URL für Ihre Funktion in der Azure CLI-Ausgabe nach der erfolgreichen Bereitstellung der Funktion.
+1. Suchen Sie nach der URL für Ihre HTTP-Triggerfunktion in der Azure CLI-Ausgabe nach der erfolgreichen Bereitstellung der Funktions-App.
 
    ``` output
    [INFO] Successfully deployed Function App with package.
@@ -105,5 +105,5 @@ Maven erstellt die Projektdateien in einem neuen Ordner mit dem Wert von _Artifa
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nachdem Sie Ihre erste Kotlin-Funktion in Azure bereitgestellt haben, können Sie sich im [Java-Entwicklerhandbuch für Azure Functions](functions-reference-java.md) mit weiteren Informationen zur Entwicklung von Java- und Kotlin-Funktionen vertraut machen.
-- Fügen Sie mit `azure-functions:add` als Maven-Ziel zusätzliche Funktionen mit verschiedenen Triggern zu Ihrem Projekt hinzu.
+Nachdem Sie Ihre erste Kotlin-Funktions-App in Azure bereitgestellt haben, können Sie sich im [Java-Entwicklerhandbuch für Azure Functions](functions-reference-java.md) mit weiteren Informationen zur Entwicklung von Java- und Kotlin-Funktionen vertraut machen.
+- Fügen Sie mit `azure-functions:add` als Maven-Ziel Ihrem Projekt zusätzliche Funktionen mit verschiedenen Triggern hinzu.

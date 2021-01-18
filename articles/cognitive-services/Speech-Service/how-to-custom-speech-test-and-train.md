@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/27/2020
 ms.author: trbye
-ms.openlocfilehash: af5ed0296ce99a4450fffec6b047285307ed0ff2
-ms.sourcegitcommit: d488a97dc11038d9cef77a0235d034677212c8b3
+ms.openlocfilehash: d24565522a75427be04cacfdc20347056a515847
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2020
-ms.locfileid: "97709298"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98070761"
 ---
 # <a name="prepare-data-for-custom-speech"></a>Vorbereiten von Daten für Custom Speech
 
@@ -50,7 +50,7 @@ Die folgende Tabelle enthält die zulässigen Datentypen, gibt an, wann der jewe
 | [Audio + menschenmarkierte Transkripte](#audio--human-labeled-transcript-data-for-testingtraining) | Ja<br>Zur Bewertung der Genauigkeit verwendet | 0,5 – 5 Stunden Audio | Ja | 1–20 Stunden Audiodaten |
 | [Zugehöriger Text](#related-text-data-for-training) | Nein | Nicht zutreffend | Ja | 1 – 200 MB zugehöriger Text |
 
-Wenn Sie ein neues Modell trainieren, beginnen Sie mit [verwandtem Text](#related-text-data-for-training). Diese Daten verbessern das Erkennen von speziellen Begriffen und Ausdrücken bereits.
+Wenn Sie ein neues Modell trainieren, beginnen Sie mit [verwandtem Text](#related-text-data-for-training). Diese Daten verbessern das Erkennen von speziellen Begriffen und Ausdrücken bereits. Training mit Textdaten ist deutlich schneller als das Training mit Audiodaten (Minuten vs. Tage).
 
 Dateien sollten nach Typ in einem Dataset gruppiert und als ZIP-Datei hochgeladen werden. Jedes Dataset darf nur einen einzelnen Datentyp enthalten.
 
@@ -138,7 +138,9 @@ Nachdem Sie die Audiodateien und entsprechenden Transkriptionen zusammengetragen
 > [!div class="mx-imgBorder"]
 > ![Auswählen von Audio im Speech-Portal](./media/custom-speech/custom-speech-audio-transcript-pairs.png)
 
-Unter [Einrichten Ihres Azure-Kontos](custom-speech-overview.md#set-up-your-azure-account) finden Sie eine Liste der empfohlenen Regionen für Ihre Speech-Dienstabonnements. Durch das Einrichten des Speech-Abonnements in einer dieser Regionen verringert sich die für das Trainieren des Modells erforderliche Zeit.
+Unter [Einrichten Ihres Azure-Kontos](custom-speech-overview.md#set-up-your-azure-account) finden Sie eine Liste der empfohlenen Regionen für Ihre Speech-Dienstabonnements. Durch das Einrichten des Speech-Abonnements in einer dieser Regionen verringert sich die für das Trainieren des Modells erforderliche Zeit. In diesen Regionen können beim Training zehn Stunden an Audiodaten pro Tag im Vergleich zu gerade einmal einer Stunde pro Tag in anderen Regionen verarbeitet werden. Wenn das Modelltraining nicht innerhalb einer Woche abgeschlossen werden kann, wird für das Modell ein Fehler angezeigt.
+
+Nicht alle Basismodelle unterstützen das Training mit Audiodaten. Wenn das Basismodell das Training mit Audiodaten nicht unterstützt, ignoriert der Dienst die Audiodaten und nutzt nur den Text der Transkriptionen für das Training. In diesem Fall ist das Training identisch mit dem Training mit zugehörigem Text.
 
 ## <a name="related-text-data-for-training"></a>Zugehörige Textdaten für das Training
 
@@ -150,6 +152,8 @@ Produktnamen oder Features, die eindeutig sind, sollten verwandte Textdaten für
 | Aussprache | Diese können die Aussprache von selten vorkommenden Begriffen, Abkürzungen oder anderen Wörtern mit nicht definierter Aussprache verbessern. |
 
 Sätze können als eine einzelne oder mehrere Textdateien bereitgestellt werden. Um die Genauigkeit zu erhöhen, verwenden Sie Textdaten, die näher an den erwarteten gesprochenen Äußerungen liegen. Aussprache sollte als eine einzige Textdatei bereitgestellt werden. Alles kann als eine einzige ZIP-Datei gepackt und im <a href="https://speech.microsoft.com/customspeech" target="_blank">Custom Speech-Portal<span class="docon docon-navigate-external x-hidden-focus"></span></a> hochgeladen werden.
+
+Das Training mit zugehörigem Text kann in der Regel innerhalb weniger Minuten abgeschlossen werden.
 
 ### <a name="guidelines-to-create-a-sentences-file"></a>Richtlinien zum Erstellen einer Datei mit Sätzen
 

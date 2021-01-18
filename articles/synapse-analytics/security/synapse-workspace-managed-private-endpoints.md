@@ -5,15 +5,15 @@ author: RonyMSFT
 ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: security
-ms.date: 10/16/2020
+ms.date: 01/12/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 5258b1eab48f71d8d17f52849b5e57b467e7a2da
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 2d2b65261e09d056ec76b25d6fcb6627bc54770b
+ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96460375"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98165721"
 ---
 # <a name="synapse-managed-private-endpoints"></a>Verwaltete private Endpunkte in Synapse
 
@@ -21,27 +21,20 @@ In diesem Artikel erfahren Sie mehr über verwaltete private Endpunkte in Azure 
 
 ## <a name="managed-private-endpoints"></a>Verwaltete private Endpunkte
 
-Verwaltete private Endpunkte sind private Endpunkte, die in der verwalteten Microsoft Azure Virtual Network-Instanz des Arbeitsbereichs erstellt werden und einen privaten Link zu Azure-Ressourcen herstellen. Azure Synapse verwaltet diese privaten Endpunkte für Sie.
+Bei verwalteten privaten Endpunkten handelt es sich um private Endpunkte, die in einem verwalteten virtuellen Netzwerk erstellt werden, das Ihrem Azure Synapse-Arbeitsbereich zugeordnet ist. Mit verwalteten privaten Endpunkten wird eine private Verbindung mit Azure-Ressourcen hergestellt. Azure Synapse verwaltet diese privaten Endpunkte für Sie. Sie können verwaltete private Endpunkte über Ihren Azure Synapse-Arbeitsbereich erstellen, um auf Azure-Dienste (z. B. Azure Storage oder Azure Cosmos DB) und von Azure gehostete Kunden- bzw. Partnerdienste zuzugreifen.
 
-Azure Synapse unterstützt private Links. Mit einem privaten Link können Sie über Ihr Azure Virtual Network sicher auf Azure-Dienste (z. B. Azure Storage und Azure Cosmos DB) und auf in Azure gehostete Kunden-/Partnerdienste zugreifen.
+Bei Verwendung von verwalteten privaten Endpunkten verläuft der Datenverkehr zwischen Ihrem Azure Synapse-Arbeitsbereich und anderen Azure-Ressourcen ausschließlich über das Microsoft-Backbone-Netzwerk. Verwaltete private Endpunkte dienen als Schutz vor Datenexfiltration. Für einen verwalteten privaten Endpunkt wird eine private IP-Adresse aus Ihrem verwalteten virtuellen Netzwerk genutzt, um den Azure-Dienst, mit dem Ihr Azure Synapse-Arbeitsbereich kommuniziert, auf effektive Weise in Ihr virtuelles Netzwerk einzubinden. Verwaltete private Endpunkte werden nicht dem gesamten Dienst zugeordnet, sondern nur einer bestimmten Ressource in Azure. Kunden können die Konnektivität auf eine bestimmte Ressource beschränken, die von Ihrer Organisation genehmigt wurde. 
 
-Bei der Verwendung eines privaten Links wird der Datenverkehr zwischen Ihrem virtuellen Netzwerk und einem Arbeitsbereich vollständig über das Microsoft-Backbone-Netzwerk übertragen. Private Link schützt vor einer möglichen Datenexfiltration. Ein privater Link zu einer Ressource wird durch die Erstellung eines privaten Endpunkts eingerichtet.
-
-Der private Endpunkt verwendet eine private IP-Adresse aus Ihrem virtuellen Netzwerk, um den Dienst effektiv in Ihr virtuelles Netzwerk einzubinden. Private Endpunkte werden einer bestimmten Ressource in Azure und nicht dem gesamten Dienst zugeordnet. Kunden können die Konnektivität auf eine bestimmte Ressource beschränken, die von Ihrer Organisation genehmigt wurde. 
-
-Weitere Informationen finden Sie in der [Dokumentation zu Private Link](https://docs.microsoft.com/azure/private-link/).
+Weitere Informationen finden Sie in der [Dokumentation zu Private Link](../../private-link/index.yml).
 
 >[!IMPORTANT]
 >Verwaltete private Endpunkte werden nur in Azure Synapse-Arbeitsbereichen mit einem verwalteten virtuellen Arbeitsbereichsnetzwerk unterstützt.
 
 >[!NOTE]
->Der gesamte ausgehende Datenverkehr aus dem verwalteten virtuellen Arbeitsbereichsnetzwerk wird in Zukunft blockiert – mit Ausnahme von Datenverkehr über verwaltete private Endpunkte. Es wird empfohlen, verwaltete private Endpunkte zu erstellen, um eine Verbindung mit all Ihren Azure-Datenquellen herzustellen, die extern zu dem Arbeitsbereich sind. 
+>Beim Erstellen eines Azure Synapse-Arbeitsbereichs können Sie angeben, dass diesem ein verwaltetes virtuelles Netzwerk zugeordnet werden soll. Wenn Sie die Zuordnung eines verwalteten virtuellen Netzwerks zu Ihrem Arbeitsbereich auswählen, können Sie auch angeben, dass der ausgehende Datenverkehr Ihres Arbeitsbereichs nur an genehmigte Ziele fließen darf. Sie müssen verwaltete private Endpunkte für diese Ziele erstellen. 
 
-Wenn Sie einen verwalteten privaten Endpunkt in Azure Synapse erstellen, wird eine Verbindung mit einem privaten Endpunkt mit dem Status „Ausstehend“ erstellt. Ein Genehmigungsworkflow wird gestartet. Der Besitzer der Ressource für private Links ist für die Genehmigung oder Ablehnung der Verbindung verantwortlich.
 
-Wenn der Besitzer die Verbindung genehmigt, wird der private Link eingerichtet. Wenn der Besitzer die Verbindung jedoch nicht genehmigt, wird der private Link nicht eingerichtet. In beiden Fällen wird der verwaltete private Endpunkt mit dem Status der Verbindung aktualisiert.
-
-Nur ein verwalteter privater Endpunkt im genehmigten Zustand kann Datenverkehr an eine angegebene Ressource für private Links senden.
+Wenn Sie einen verwalteten privaten Endpunkt in Azure Synapse erstellen, wird eine Verbindung mit einem privaten Endpunkt mit dem Status „Ausstehend“ erstellt. Ein Genehmigungsworkflow wird gestartet. Der Besitzer der Ressource für private Links ist für die Genehmigung oder Ablehnung der Verbindung verantwortlich. Wenn der Besitzer die Verbindung genehmigt, wird der private Link eingerichtet. Wenn der Besitzer die Verbindung jedoch nicht genehmigt, wird der private Link nicht eingerichtet. In beiden Fällen wird der verwaltete private Endpunkt mit dem Status der Verbindung aktualisiert. Nur ein verwalteter privater Endpunkt im genehmigten Zustand kann verwendet werden, um Datenverkehr an die Ressource für die private Verbindung zu senden, die mit dem verwalteten Endpunkt verknüpft ist.
 
 ## <a name="managed-private-endpoints-for-dedicated-sql-pool-and-serverless-sql-pool"></a>Verwaltete private Endpunkte für einen dedizierten SQL-Pool und einen serverlosen SQL-Pool
 

@@ -3,17 +3,17 @@ title: Verwalten der Azure-Kosten mithilfe einer Automatisierung
 description: In diesem Artikel wird erläutert, wie Sie Azure-Kosten mithilfe einer Automatisierung verwalten können.
 author: bandersmsft
 ms.author: banders
-ms.date: 11/19/2020
+ms.date: 01/06/2021
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
-ms.openlocfilehash: 47d9c2838c5c806214e3be2f9ba7ce335bc0af67
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 02215bace693ac5ac36f9fc29758215d45b23eb1
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94956091"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98051784"
 ---
 # <a name="manage-costs-with-automation"></a>Verwalten der Kosten per Automatisierung
 
@@ -56,6 +56,22 @@ Es wird empfohlen, dass Sie pro Tag _nicht mehr als eine Anforderung_ an die Nut
 **Verwendung von Bereichen oberster Ebene ohne Filterung**
 
 Verwenden Sie die API zum Abrufen aller benötigten Daten auf der höchstmöglichen Ebene. Führen Sie erst dann eine Filterung, Gruppierung oder aggregierte Analyse durch, wenn alle erforderlichen Daten erfasst wurden. Die API ist dafür optimiert, große Mengen an nicht aggregierten, unformatierten Kostendaten bereitzustellen. Weitere Informationen zu den verfügbaren Bereichen in Cost Management finden Sie unter [Verstehen von und Arbeiten mit Bereichen](./understand-work-scopes.md). Nachdem Sie die erforderlichen Daten für einen Bereich heruntergeladen haben, verwenden Sie Excel, um die Daten mithilfe von Filtern und Pivottabellen zu analysieren.
+
+### <a name="notes-about-pricing"></a>Hinweise zu Preisen
+
+Beachten Sie die folgenden Informationen, wenn Sie Ihre Nutzung und Gebühren mit Ihrem Preisblatt oder Ihrer Rechnung abstimmen möchten.
+
+Preisverhalten auf dem Preisblatt: Das Preisblatt enthält die Preise, die Sie von Azure erhalten haben. Sie wurden anhand einer bestimmten Maßeinheit skaliert. Leider ist die Maßeinheit nicht immer an der Maßeinheit ausgerichtet, auf der die tatsächliche Ressourcennutzung und die Gebühren basieren.
+
+Preisverhalten für Nutzungsdetails: In Nutzungsdateien werden skalierte Informationen angezeigt, die ggf. nicht genau mit den Angaben im Preisblatt übereinstimmen. Dies gilt insbesondere in folgenden Fällen:
+
+- Einzelpreis: Der Preis wird anhand der Maßeinheit skaliert, auf deren Grundlage die Gebühren von den Azure-Ressourcen tatsächlich ausgegeben werden. Wenn die Skalierung durchgeführt wird, stimmt der Preis nicht mit dem Preis im Preisblatt überein.
+- Maßeinheit: Die Maßeinheit, über die die Gebühren von den Azure-Ressourcen tatsächlich ausgegeben werden.
+- Tatsächlicher Preis/Ressourcensatz: Der Preis steht für den tatsächlichen Satz, den Sie pro Einheit zahlen, nachdem die Rabatte berücksichtigt wurden. Dieser Preis sollte für die Menge verwendet werden, um die Berechnungen der Art „Preis mal Menge“ zum Abstimmen der Gebühren durchzuführen. Bei diesem Preis werden die folgenden Szenarien und der Preis für die skalierte Einheit genutzt, der auch in den Dateien enthalten ist. Aus diesem Grund kann sich dieser Preis vom Preis für die skalierte Einheit unterscheiden.
+  - Mehrstufige Preise: Ein Beispiel für mehrstufige Preise ist die Berechnung von 10 USD für die ersten 100 Einheiten und von 8 USD für die nächsten 100 Einheiten.
+  - Enthaltene Menge – Beispiel: Die ersten 100 Einheiten sind kostenlos, und dann fallen Kosten von 10 USD pro Einheit an.
+  - Reservations
+  - Rundung während der Berechnung: Bei der Rundung werden die verbrauchte Menge, die mehrstufigen Preise bzw. die Preise für die enthaltene Menge und der Preis für die skalierte Einheit berücksichtigt.
 
 ## <a name="example-usage-details-api-requests"></a>Nutzungsdetails-API – Beispielanforderungen
 
@@ -325,7 +341,7 @@ Mithilfe von Azure-Aktionsgruppen können Sie Budgets so konfigurieren, dass dur
 
 ## <a name="data-latency-and-rate-limits"></a>Datenlatenz und Ratenlimits
 
-Es wird empfohlen, die APIs nicht mehr als einmal pro Tag aufzurufen. Cost Management-Daten werden alle vier Stunden aktualisiert, wenn neue Nutzungsdaten von Azure-Ressourcenanbietern eingehen. Häufigere Aufrufe liefern keine zusätzlichen Daten. Stattdessen wird die Datenlast erhöht. Weitere Informationen dazu, wie oft sich Daten ändern und wie Datenlatenz gehandhabt wird, finden Sie unter [Grundlegendes zu Cost Management-Daten](understand-cost-mgt-data.md).
+Es wird empfohlen, die APIs nicht mehr als einmal pro Tag aufzurufen. Cost Management-Daten werden alle vier Stunden aktualisiert, wenn neue Nutzungsdaten von Azure-Ressourcenanbietern eingehen. Wenn die Aufrufe häufiger durchgeführt werden, wird keine größere Datenmenge bereitgestellt. Stattdessen führt dies zu einer höheren Auslastung. Weitere Informationen dazu, wie oft sich Daten ändern und wie Datenlatenz gehandhabt wird, finden Sie unter [Grundlegendes zu Cost Management-Daten](understand-cost-mgt-data.md).
 
 ### <a name="error-code-429---call-count-has-exceeded-rate-limits"></a>Fehlercode 429: Aufrufanzahl hat Ratenlimits überschritten
 

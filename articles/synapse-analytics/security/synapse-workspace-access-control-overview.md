@@ -9,12 +9,12 @@ ms.subservice: security
 ms.date: 12/03/2020
 ms.author: billgib
 ms.reviewer: jrasnick
-ms.openlocfilehash: 256fec97819cde0f6f62d59b34416c92e1edfd20
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 30cc917e2db3a7c4c6d5d6ebd5a8a47afff5d505
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97109605"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98133139"
 ---
 # <a name="synapse-access-control"></a>Synapse-Zugriffssteuerung 
 
@@ -30,7 +30,7 @@ Synapse bietet ein umfassendes und differenziertes Zugriffssteuerungssystem, in 
 
 Synapse-Rollen bieten Berechtigungssätze, die für verschiedene Bereiche angewendet werden können. Dank dieser Granularität ist es ganz einfach, Administratoren, Entwicklern, Sicherheitspersonal und Operatoren den entsprechenden Zugriff auf Computeressourcen und Daten zu gewähren.
 
-Die Zugriffssteuerung kann mithilfe von Sicherheitsgruppen, die auf die Aufgabengebiete der Benutzer zugeschnitten sind, vereinfacht werden.  Um den Zugriff zu verwalten, müssen Sie lediglich den entsprechenden Sicherheitsgruppen Benutzer hinzufügen bzw. daraus entfernen.
+Die Zugriffssteuerung kann mithilfe von Sicherheitsgruppen, die auf die Aufgabengebiete der Benutzer zugeschnitten sind, vereinfacht werden. Um den Zugriff zu verwalten, müssen Sie lediglich den entsprechenden Sicherheitsgruppen Benutzer hinzufügen bzw. daraus entfernen.
 
 ## <a name="access-control-elements"></a>Elemente der Zugriffssteuerung
 
@@ -41,16 +41,16 @@ Mit Azure-Rollen wird die Verwaltung folgender Ressourcen gesteuert:
 - Apache Spark-Pools 
 - Integration Runtimes 
 
-Um diese Ressourcen *erstellen* zu können, müssen Sie ein Azure-Besitzer oder ein Mitwirkender für die Ressourcengruppe sein.  Um sie nach der Erstellung *verwalten* zu können, müssen Sie ein Azure-Besitzer oder ein Mitwirkender für die Ressourcengruppe oder die einzelnen Ressourcen sein. 
+Um diese Ressourcen *erstellen* zu können, müssen Sie ein Azure-Besitzer oder ein Mitwirkender für die Ressourcengruppe sein. Um sie nach der Erstellung *verwalten* zu können, müssen Sie ein Azure-Besitzer oder ein Mitwirkender für die Ressourcengruppe oder die einzelnen Ressourcen sein. 
 
 ### <a name="developing-and-executing-code-in-synapse"></a>Entwickeln und Ausführen von Code in Synapse 
 
 Synapse unterstützt zwei Entwicklungsmodelle.
 
-- **Synapse-Liveentwicklung**.  Sie entwickeln und debuggen Code in Synapse Studio und **veröffentlichen** den Code anschließend, um ihn zu speichern und auszuführen.  Der Synapse-Dienst ist die „Source of Truth“ (Quelle der Wahrheit) für die Codebearbeitung und -ausführung.  Nicht veröffentlichte Arbeit geht verloren, wenn Sie Synapse Studio schließen.  
-- **Entwicklung mit Aktivierung von Git**. Sie entwickeln und debuggen Code in Synapse Studio und **committen** Änderungen in einen Arbeitsbranch eines Git-Repositorys. Die Arbeit aus einem oder mehreren Branches wird in einen Kollaborationsbranch eingebunden, über den Sie sie im Dienst **veröffentlichen** können.  Das Git-Repository ist die Source of Truth für die Codebearbeitung und der Dienst die Source of Truth für die Ausführung. Änderungen müssen vor dem Schließen von Synapse Studio in das Git-Repository committet oder im Dienst veröffentlicht werden. Weitere Informationen zur Verwendung von Synapse Analytics mit Git finden Sie [hier](https://go.microsoft.com/fwlink/?linkid=2150100).
+- **Synapse-Liveentwicklung**. Sie entwickeln und debuggen Code in Synapse Studio und **veröffentlichen** den Code anschließend, um ihn zu speichern und auszuführen.  Der Synapse-Dienst ist die „Source of Truth“ (Quelle der Wahrheit) für die Codebearbeitung und -ausführung.  Nicht veröffentlichte Arbeit geht verloren, wenn Sie Synapse Studio schließen.  
+- **Entwicklung mit Aktivierung von Git**. Sie entwickeln und debuggen Code in Synapse Studio und **committen** Änderungen in einen Arbeitsbranch eines Git-Repositorys. Die Arbeit aus einem oder mehreren Branches wird in einen Kollaborationsbranch eingebunden, über den Sie sie im Dienst **veröffentlichen** können. Das Git-Repository ist die Source of Truth für die Codebearbeitung und der Dienst die Source of Truth für die Ausführung. Änderungen müssen vor dem Schließen von Synapse Studio in das Git-Repository committet oder im Dienst veröffentlicht werden. Weitere Informationen zur Verwendung von Synapse Analytics mit Git finden Sie [hier](../cicd/continuous-integration-deployment.md).
 
-Bei beiden Entwicklungsmodellen kann jeder Benutzer mit Zugriff auf Synapse Studio Codeartefakte erstellen.  Sie benötigen jedoch zusätzliche Berechtigungen, um Artefakte im Dienst zu veröffentlichen, veröffentlichte Artefakte zu lesen, Änderungen in Git zu committen, Code auszuführen und auf verknüpfte Daten zuzugreifen, die durch Anmeldeinformationen geschützt sind.
+Bei beiden Entwicklungsmodellen kann jeder Benutzer mit Zugriff auf Synapse Studio Codeartefakte erstellen. Sie benötigen jedoch zusätzliche Berechtigungen, um Artefakte im Dienst zu veröffentlichen, veröffentlichte Artefakte zu lesen, Änderungen in Git zu committen, Code auszuführen und auf verknüpfte Daten zuzugreifen, die durch Anmeldeinformationen geschützt sind.
 
 ### <a name="synapse-roles"></a>Synapse-Rollen
 
@@ -72,7 +72,7 @@ Wenn Sie die Entwicklung mit Aktivierung von Git im Git-Modus verwenden, bestimm
 
 Wenn Sie mit dedizierten und serverlosen SQL-Pools arbeiten, wird der Zugriff auf Datenebene mithilfe von SQL-Berechtigungen gesteuert. 
 
-Der Ersteller eines Arbeitsbereichs wird als Active Directory-Administrator des Arbeitsbereichs zugewiesen.  Nach der Erstellung kann diese Rolle im Azure-Portal einem anderen Benutzer oder einer Sicherheitsgruppe zugewiesen werden.
+Der Ersteller eines Arbeitsbereichs wird als Active Directory-Administrator des Arbeitsbereichs zugewiesen. Nach der Erstellung kann diese Rolle im Azure-Portal einem anderen Benutzer oder einer Sicherheitsgruppe zugewiesen werden.
 
 **Serverlose SQL-Pools**: Synapse-Administratoren werden Berechtigungen vom Typ `db_owner` (`DBO`) für den serverlosen SQL-Pool „Integriert“ erteilt. Um anderen Benutzern Zugriff auf serverlose SQL-Pools zu gewähren, müssen Synapse-Administratoren SQL-Skripts für jeden serverlosen Pool ausführen.  
 
@@ -82,7 +82,7 @@ Beispiele für SQL-Skripts zum Erteilen von SQL-Berechtigungen für SQL-Pools fi
 
  ### <a name="accessing-system-managed-data-in-storage"></a>Zugreifen auf systemseitig verwaltete Daten im Speicher
 
-Die Daten von serverlosen SQL-Pools und Apache Spark-Tabellen werden in einem ADLS Gen2-Container gespeichert, der dem Arbeitsbereich zugeordnet ist. Vom Benutzer installierte Apache Spark-Bibliotheken werden ebenfalls in demselben Speicherkonto verwaltet.  Zur Unterstützung dieser Anwendungsfälle muss Benutzern und der Arbeitsbereichs-MSI das Zugriffsrecht **Mitwirkender an Storage-Blobdaten** für diesen ADLS Gen2-Speichercontainer des Arbeitsbereichs erteilt werden.  
+Serverlose SQL-Pools und Apache Spark-Tabellen speichern Daten in einem ADLS Gen2-Container, der dem Arbeitsbereich zugeordnet ist. Vom Benutzer installierte Apache Spark-Bibliotheken werden auch unter demselben Speicherkonto verwaltet. Zur Unterstützung dieser Anwendungsfälle muss Benutzern und der Arbeitsbereichs-MSI das Zugriffsrecht **Mitwirkender an Storage-Blobdaten** für diesen ADLS Gen2-Speichercontainer des Arbeitsbereichs erteilt werden.  
 
 ## <a name="using-security-groups-as-a-best-practice"></a>Verwenden von Sicherheitsgruppen als bewährte Methode
 
@@ -97,9 +97,9 @@ Synapse Studio verhält sich je nach Berechtigungen und aktuellem Modus untersc
 - **Synapse-Livemodus:** Synapse Studio verhindert, dass Sie veröffentlichte Inhalte anzeigen, Inhalte veröffentlichen oder andere Aktionen ausführen, wenn Sie nicht über die erforderliche Berechtigung verfügen.  In einigen Fällen ist die Erstellung von Codeartefakten, die Sie nicht verwenden oder speichern können, nicht möglich. 
 - **Git-Modus:** Wenn Sie über Git-Berechtigungen verfügen, die das Committen von Änderungen in den aktuellen Branch erlauben, ist die Commitaktion auch dann zulässig, wenn Sie nicht über die Berechtigung zum Veröffentlichen von Änderungen im Livedienst verfügen.  
 
-In einigen Fällen können Sie auch ohne Berechtigung zum Veröffentlichen oder Committen Codeartefakte erstellen.  Dies ermöglicht es Ihnen, Code auszuführen (mit den erforderlichen Ausführungsberechtigungen). Weitere Informationen zu den erforderlichen Rollen für gängige Aufgaben finden Sie [hier](./synapse-workspace-understand-what-role-you-need.md). 
+In einigen Fällen können Sie auch ohne Berechtigung zum Veröffentlichen oder Committen Codeartefakte erstellen. Dies ermöglicht Ihnen das Ausführen von Code (mit den erforderlichen Ausführungsberechtigungen). Weitere Informationen zu den Rollen, die für häufige Aufgaben benötigt werden, finden Sie [hier](./synapse-workspace-understand-what-role-you-need.md). 
 
-Wenn eine Funktion in Synapse Studio deaktiviert ist, wird die erforderliche Berechtigung in einer QuickInfo angezeigt.  Die erforderlichen Rollen zum Bereitstellen der fehlenden Berechtigungen können Sie im [Leitfaden zu den RBAC-Rollen von Synapse](./synapse-workspace-synapse-rbac-roles.md#synapse-rbac-actions-and-the-roles-that-permit-them) nachlesen.
+Wenn eine Funktion in Synapse Studio deaktiviert ist, wird die erforderliche Berechtigung in einer QuickInfo angezeigt. Die erforderlichen Rollen zum Bereitstellen der fehlenden Berechtigungen können Sie im [Leitfaden zu den RBAC-Rollen von Synapse](./synapse-workspace-synapse-rbac-roles.md#synapse-rbac-actions-and-the-roles-that-permit-them) nachlesen.
 
 
 ## <a name="next-steps"></a>Nächste Schritte

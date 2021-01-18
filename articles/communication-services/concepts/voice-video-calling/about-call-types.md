@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 11c20f3f79a4fceafaca9b1a948f1b4a425dad87
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 00aa24f0ff8c918c645239ca36888c6a214062c8
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96572710"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98028759"
 ---
 # <a name="voice-and-video-concepts"></a>Sprach- und Videokonzepte
 
@@ -50,7 +50,7 @@ In den nativen SDKs (iOS, Android) wird maximal Full HD mit 1080p unterstützt.
 
 ### <a name="rooms-concept"></a>Raumkonzept
 Bei Räumen handelt es sich um eine Gruppe von APIs und SDKs, mit denen Sie Ihrer Website oder nativen Anwendung mühelos Audio-, Video-, Bildschirmfreigabe- und PSTN-Funktionen sowie SMS-Interaktionen hinzufügen können.
-Während der Vorschauphase können Sie die Gruppen-ID verwenden, um an der gleichen Konversation teilzunehmen. Sie können beliebig viele Gruppen-IDs erstellen und die Benutzer durch Räume voneinander trennen. Die Steuerungsmöglichkeiten im Zusammenhang mit Räumen werden von uns noch erweitert. 
+Während der Vorschauphase können Sie die Gruppen-ID verwenden, um an der gleichen Konversation teilzunehmen. Sie können beliebig viele Gruppen-IDs erstellen und die Benutzer durch die Verwendung von „Räumen“ voneinander trennen. Die Steuerungsmöglichkeiten im Zusammenhang mit Räumen werden von uns noch erweitert. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

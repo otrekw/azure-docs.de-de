@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/18/2020
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: 3fe1b966b56142fd312850ac5d77839b7d9db434
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: 089b1b6f1af2f19c16866858324bde2e151e8bdb
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97706219"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98052784"
 ---
 | Resource | Basic | Standard | Premium |
 |---|---|---|---|
@@ -22,8 +22,8 @@ ms.locfileid: "97706219"
 | Maximale Größe für Imageebenen (GiB) | 200 | 200 | 200 |
 | Lesevorgänge pro Minute<sup>2, 3</sup> | 1\.000 | 3,000 | 10.000 |
 | Schreibvorgänge pro Minute<sup>2, 4</sup> | 100 | 500 | 2\.000 |
-| Downloadbandbreite MBit/s<sup>2</sup> | 30 | 60 | 100 |
-| Uploadbandbreite MBit/s<sup>2</sup> | 10 | 20 | 50 |
+| Downloadbandbreite<sup>2</sup> (MBit/s) | 30 | 60 | 100 |
+| Uploadbandbreite <sup>2</sup> (MBit/s) | 10 | 20 | 50 |
 | webhooks | 2 | 10 | 500 |
 | Georeplikation | – | – | [Unterstützt][geo-replication] |
 | Verfügbarkeitszonen | – | – | [Vorschau][zones] |
@@ -38,7 +38,7 @@ ms.locfileid: "97706219"
 | &bull; Repositorys pro Bereichszuordnung | – | – | 500 |
 
 
-<sup>1</sup> In der täglichen Rate für jede Ebene inbegriffener Speicher. Für zusätzlichen Speicher fällt bis zur Speicherbegrenzung eine zusätzliche tägliche Gebühr pro GiB an. Weitere Informationen zu diesen Tarifen finden Sie unter [Container Registry – Preise][pricing].
+<sup>1</sup> In der täglichen Rate für jede Ebene inbegriffener Speicher. Für eine zusätzliche Tagesgebühr pro GiB kann weiterer Speicher bis zum Grenzwert des Registrierungsspeichers genutzt werden. Weitere Informationen zu diesen Tarifen finden Sie unter [Container Registry – Preise][pricing]. Falls Sie Speicher benötigen, der über den Grenzwert des Registrierungsspeichers hinausgeht, können Sie sich an den Azure-Support wenden.
 
 <sup>2</sup>*Lesevorgänge*, *Schreibvorgänge* und *Bandbreite* sind geschätzte Mindestwerte. Die Azure Container Registry soll die Leistung der Nutzung nach Bedarf verbessern.
 

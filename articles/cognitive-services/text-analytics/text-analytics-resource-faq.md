@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 02/13/2019
+ms.date: 01/05/2021
 ms.author: aahi
-ms.openlocfilehash: ffa70afa0edf29181bc622cbef6ff8716134b1f7
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 9a4e179767cc38169cd794f4cd629604bdcdaab0
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94364937"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97955041"
 ---
-# <a name="frequently-asked-questions-faq-about-the-text-analytics-cognitive-service"></a>Häufig gestellte Fragen (FAQ) zur Textanalyse in Cognitive Service
+# <a name="frequently-asked-questions-faq-about-the-text-analytics-api"></a>Häufig gestellte Fragen (FAQ) zur Textanalyse-API
 
- In diesem Artikel finden Sie Antworten zu häufig gestellten Fragen zu Konzepten, Code und Szenarios der Textanalyse-API für Microsoft Cognitive Services in Azure.
+ In diesem Artikel finden Sie Antworten zu häufig gestellten Fragen zu Konzepten, Code und Szenarios der Textanalyse-API für Azure Cognitive Services.
 
 ## <a name="can-text-analytics-identify-sarcasm"></a>Kann die Textanalyse Sarkasmus erkennen?
 
@@ -47,11 +47,21 @@ Im Allgemeinen besteht die Ausgabe aus den Substantiven und Objekten des Satzes.
 
 Verbesserungen an Modellen und Algorithmen werden angekündigt, wenn es sich dabei um eine größere Änderung handelt. Bei kleinen Updates werden sie unangekündigt per Slipstream in den Dienst integriert. Im Laufe der Zeit fällt Ihnen möglicherweise auf, dass die gleiche Texteingabe in verschiedenen Stimmungswerten oder Schlüsselbegriffsausgaben resultiert. Das ist eine normale und beabsichtigte Folge der Verwendung verwalteter Machine Learning-Ressourcen in der Cloud.
 
+## <a name="service-availability-and-redundancy"></a>Dienstverfügbarkeit und Redundanz
+
+### <a name="is-text-analytics-service-zone-resilient"></a>Ist der Textanalyse-Dienst zonenresilient?
+
+Ja. Der Textanalyse-Dienst ist standardmäßig zonenresilient.
+
+### <a name="how-do-i-configure-the-text-analytics-service-to-be-zone-resilient"></a>Wie konfiguriere ich den Textanalyse-Dienst so, dass er zonenresilient ist?
+
+Es ist keine Kundenkonfiguration erforderlich, um Zonenresilienz zu ermöglichen. Zonenresilienz für Textanalyse-Ressourcen ist standardmäßig verfügbar und wird vom Dienst selbst verwaltet.
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 Haben Sie eine Frage zu einem fehlenden Feature bzw. einer fehlenden Funktion? Erwägen Sie, eine Anforderung auf der [UserVoice-Website](https://cognitive.uservoice.com/forums/555922-text-analytics) zu erstellen oder dafür abzustimmen.
 
-## <a name="see-also"></a>Weitere Informationen
+## <a name="see-also"></a>Siehe auch
 
- [StackOverflow: Text Analytics API (StackOverflow: Textanalyse-API)](https://stackoverflow.com/questions/tagged/text-analytics-api)   
- [StackOverflow: Cognitive Services](https://stackoverflow.com/questions/tagged/microsoft-cognitive)
+ * [StackOverflow: Text Analytics API (StackOverflow: Textanalyse-API)](https://stackoverflow.com/questions/tagged/text-analytics-api)   
+ * [StackOverflow: Cognitive Services](https://stackoverflow.com/questions/tagged/microsoft-cognitive)

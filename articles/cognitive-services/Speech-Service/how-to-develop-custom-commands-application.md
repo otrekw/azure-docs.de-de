@@ -1,5 +1,5 @@
 ---
-title: 'Gewusst wie: Entwickeln von Anwendungen mit benutzerdefinierten Befehlen: Speech-Dienst'
+title: 'Vorgehensweise: Entwickeln von Anwendungen mit benutzerdefinierten Befehlen: Speech-Dienst'
 titleSuffix: Azure Cognitive Services
 description: Erfahren Sie, wie Sie Anwendungen mit benutzerdefinierten Befehlen entwickeln und anpassen können. Diese Sprachbefehls-Apps eignen sich am besten für die Aufgabenerledigung oder Befehl-und-Steuerung-Szenarien (Command-and-Control).
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/15/2020
 ms.author: trbye
-ms.openlocfilehash: b3e9c1e8ad23ea0ebf540eddbd6d4a03b8a72fe2
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 1a002b6efbe2603ae254c19f9e3cc7377198cea2
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97835073"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97935817"
 ---
 # <a name="develop-custom-commands-applications"></a>Entwickeln von Anwendungen mit benutzerdefinierten Befehlen
 
@@ -175,10 +175,10 @@ Bearbeiten Sie zunächst den vorhandenen `TurnOn`-Befehl zum Ein- und Ausschalte
    1. Wählen Sie oben im mittleren Bereich **Hinzufügen** aus. Wählen Sie im Dropdownmenü **Parameter** aus.
    1. Fügen Sie im Bereich auf der rechten Seite im Abschnitt **Parameter** im Feld **Name** `OnOff` hinzu.
    1. Wählen Sie **Erforderlich** aus. Wählen Sie im Fenster **Add response for a required parameter** (Antwort für einen erforderlichen Parameter hinzufügen) **Simple editor** (Einfacher Editor) aus. Fügen Sie im Feld **Erste Variation** *„Ein“ oder „Aus“?* hinzu.
-   1. Wählen Sie **Update** aus.
+   1. Wählen Sie **Aktualisieren** aus.
 
        > [!div class="mx-imgBorder"]
-       > ![Screenshot, der den Ort zeigt, an dem eine erforderliche Parameterantwort erstellt wird.](media/custom-commands/add-required-on-off-parameter-response.png)
+       > ![Screenshot: Abschnitt „Add response for a required parameter“ (Antwort für einen erforderlichen Parameter hinzufügen) mit ausgewählter Registerkarte „Simple Editor“ (Einfacher Editor)](media/custom-commands/add-required-on-off-parameter-response.png)
    
    1. Konfigurieren Sie die Eigenschaften des Parameters mithilfe der folgenden Tabelle. Informationen zu sämtlichen Konfigurationseigenschaften eines Befehls finden Sie unter [Konzepte und Definitionen für benutzerdefinierte Befehle](./custom-commands-references.md).
       

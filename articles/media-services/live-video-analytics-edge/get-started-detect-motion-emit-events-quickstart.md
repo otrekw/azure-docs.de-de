@@ -3,12 +3,12 @@ title: 'Erste Schritte mit Live Video Analytics in IoT Edge: Azure'
 description: In dieser Schnellstartanleitung wird veranschaulicht, wie Sie in die Nutzung von Live Video Analytics in IoT Edge einsteigen. Es wird beschrieben, wie Sie in einem Livevideostream Bewegung erkennen.
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: db48183e918fcb1096734f912f02c091ddac1d74
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 276c2ceaa9e0bef254c70f91541a3a3db7c02d47
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97511874"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98060400"
 ---
 # <a name="quickstart-get-started---live-video-analytics-on-iot-edge"></a>Schnellstart: Erste Schritte: Live Video Analytics in IoT Edge
 
@@ -21,7 +21,7 @@ Nach dem Ausführen der Setupschritte können Sie einen simulierten Livevideostr
 
 Sie können sich das folgende Video mit ausführlichen Schritten für den Einstieg in Live Video Analytics in IoT Edge ansehen:
 
-<iframe src="https://www.microsoft.com/en-us/videoplayer/embed/RE4Hcax" width="640" height="320" allowFullScreen="true" frameBorder="0"></iframe>
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4Hcax]
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -43,7 +43,7 @@ Für dieses Tutorial werden die folgenden Azure-Ressourcen benötigt:
 
 Für diese Schnellstartanleitung wird die Verwendung des [Setupskripts für Live Video Analytics-Ressourcen](https://github.com/Azure/live-video-analytics/tree/master/edge/setup) zum Bereitstellen der erforderlichen Ressourcen in Ihrem Azure-Abonnement empfohlen. Gehen Sie dazu folgendermaßen vor:
 
-1. Wechseln Sie zu [Azure Cloud Shell](https://shell.azure.com).
+1. Navigieren Sie zum [Azure-Portal](https://portal.azure.com), und wählen Sie das Cloud Shell-Symbol aus.
 1. Wenn Sie Cloud Shell zum ersten Mal verwenden, werden Sie aufgefordert, ein Abonnement auszuwählen, um ein Speicherkonto und eine Microsoft Azure Files-Freigabe zu erstellen. Wählen Sie **Speicher erstellen** aus, um ein Speicherkonto für die Cloud Shell-Sitzungsinformationen zu erstellen. Dieses Speicherkonto ist von dem Konto getrennt, das vom Skript für die Verwendung mit Ihrem Azure Media Services-Konto erstellt wird.
 1. Wählen Sie auf der linken Seite des Cloud Shell-Fensters im Dropdownmenü **Bash** als Option für die Umgebung aus.
 
@@ -55,9 +55,13 @@ Für diese Schnellstartanleitung wird die Verwendung des [Setupskripts für Live
     bash -c "$(curl -sL https://aka.ms/lva-edge/setup-resources-for-samples)"
     ```
     
-Wenn die Ausführung des Skripts erfolgreich abgeschlossen wird, sollten alle erforderlichen Ressourcen Ihres Abonnements angezeigt werden. In der Ausgabe des Skripts ist in einer Tabelle mit den Ressourcen der Name des IoT-Hubs angegeben. Suchen Sie nach dem Ressourcentyp `Microsoft.Devices/IotHubs`, und notieren Sie sich den Namen. Sie benötigen diesen Namen im nächsten Schritt. 
+Nach der erfolgreichen Ausführung des Skripts sollten alle erforderlichen Ressourcen Ihres Abonnements angezeigt werden. In der Ausgabe des Skripts ist in einer Tabelle mit den Ressourcen der Name des IoT-Hubs angegeben. Suchen Sie nach dem Ressourcentyp **`Microsoft.Devices/IotHubs`** , und notieren Sie sich den Namen. Sie benötigen diesen Namen im nächsten Schritt.  
 
-Darüber hinaus generiert das Skript auch einige Konfigurationsdateien im Verzeichnis *~/clouddrive/lva-sample/* . Sie benötigen diese Dateien später in dieser Schnellstartanleitung noch.
+> [!NOTE]
+> Darüber hinaus generiert das Skript auch einige Konfigurationsdateien im Verzeichnis **_~/clouddrive/lva-sample/_* _. Sie benötigen diese Dateien später in dieser Schnellstartanleitung noch.
+
+> [!TIP]
+> Falls für erstellte Azure-Ressourcen Probleme auftreten, helfen Ihnen die Informationen zum Beheben von häufigen Problemen im _ *[Leitfaden für die Problembehandlung](troubleshoot-how-to.md#common-error-resolutions)* * weiter.
 
 ## <a name="deploy-modules-on-your-edge-device"></a>Bereitstellen von Modulen auf dem Edgegerät
 
@@ -417,8 +421,8 @@ Rufen Sie die direkte Methode `GraphInstanceSet` auf, indem Sie die folgende Nut
 Beachten Sie, dass für diese Nutzlast Folgendes gilt:
 
 * Gibt den Topologienamen (`MotionDetection`) an, für den die Instanz erstellt werden muss.
-* Enthält einen Parameterwert für `rtspUrl`, für den in der Nutzlast der Graphtopologie kein Standardwert vorhanden war.
-
+* Enthält einen Parameterwert für `rtspUrl`, für den in der Nutzlast der Graphtopologie kein Standardwert vorhanden war. Dieser Wert ist ein Link zum folgenden Beispielvideo:
+    > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4LTY4]
 Nach einigen Sekunden wird im **Ausgabefenster** die folgende Antwort angezeigt:
 
 ```

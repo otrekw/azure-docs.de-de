@@ -10,16 +10,16 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 08/17/2019
 ms.author: pafarley
-ms.openlocfilehash: 82f6c5989149b50a1ef5e6c6fb5350d474476436
-ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
+ms.openlocfilehash: 43eae43d11a48ee6c395e4a86b8e8c1353843991
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/01/2021
-ms.locfileid: "97845479"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98131446"
 ---
-# <a name="receipt-concepts"></a>Konzepte zu Belegen
+# <a name="form-recognizer-prebuilt-receipt-model"></a>Vordefiniertes Belegmodell der Formularerkennung
 
-Die Azure-Formularerkennung kann Belege mithilfe eines der vordefinierten Modelle analysieren. Die Beleg-API extrahiert wichtige Informationen aus Verkaufsbelegen in englischer Sprache, z. B. Händlername, Transaktionsdatum, Transaktionssumme, Einzelposten und mehr. 
+Die Azure-Formularerkennung kann Informationen aus Belegen mithilfe der dazugehörigen vordefinierten Belegmodelle analysieren und extrahieren. Sie kombiniert unsere leistungsstarken Funktionen zur [optischen Zeichenerkennung (Optical Character Recognition, OCR)](https://docs.microsoft.com/azure/cognitive-services/computer-vision/concept-recognizing-text) mit Deep-Learning-Modellen zur Beleganalyse, um wichtige Informationen aus Belegen in englischer Sprache zu extrahieren. Die Beleg-API extrahiert wichtige Informationen aus Verkaufsbelegen in englischer Sprache, z. B. Händlername, Transaktionsdatum, Transaktionssumme, Einzelposten und mehr. 
 
 ## <a name="understanding-receipts"></a>Informationen zu Belegen 
 
@@ -27,32 +27,39 @@ Viele Unternehmen und Einzelpersonen sind nach wie vor darauf angewiesen, Daten 
 
 Das automatische Extrahieren von Daten aus diesen Belegen kann kompliziert sein. Belege können zerknittert und schwer lesbar sein und gedruckte oder handgeschriebene Teile enthalten. Mit dem Smartphone aufgenommene Fotos von Belegen können außerdem eine geringe Qualität aufweisen. Auch die Belegvorlagen und -felder können je nach Markt, Region und Anbieter stark variieren. Diese Herausforderungen sowohl bei der Datenextraktion als auch bei der Felderkennung machen die Belegverarbeitung zu einem einzigartigen Problem.  
 
-Mithilfe der optischen Zeichenerkennung (OCR) und unserem vorgefertigten Belegmodell ermöglicht die Beleg-API diese Belegverarbeitungsszenarien und extrahiert Daten aus den Belegen, z. B. Händlername, Trinkgeld, Gesamtsumme, Einzelposten und mehr. Mit dieser API ist es nicht erforderlich, ein Modell zu trainieren. Sie senden lediglich den Beleg an die Beleganalyse-API, und die Daten werden extrahiert.
+Mithilfe der optischen Zeichenerkennung (OCR) und unserem vorgefertigten Belegmodell ermöglicht die Beleg-API diese Belegverarbeitungsszenarien und extrahiert Daten aus den Belegen, z. B. Händlername, Trinkgeld, Gesamtsumme, Einzelposten und mehr. Mit dieser API ist es nicht erforderlich, ein Modell zu trainieren. Sie senden lediglich ein Bild des Belegs an die Beleganalyse-API, und die Daten werden extrahiert.
 
-![Beispielbeleg](./media/contoso-receipt-small.png)
+![Beispielbeleg](./media/receipts-example.jpg)
 
-## <a name="what-does-the-receipt-api-do"></a>Wie funktioniert die Beleg-API? 
 
-Die vordefinierte Beleg-API extrahiert den Inhalt von Verkaufsbelegen – die Art von Beleg, die Sie üblicherweise in einem Restaurant, von einem Einzelhändler oder im Lebensmittelgeschäft erhalten würden.
+## <a name="what-does-the-receipt-service-do"></a>Wie funktioniert der Belegdienst? 
+
+Der vordefinierte Belegdienst extrahiert den Inhalt von Verkaufsbelegen – die Art von Beleg, die Sie üblicherweise in einem Restaurant, von einem Einzelhändler oder im Lebensmittelgeschäft erhalten würden.
 
 ### <a name="fields-extracted"></a>Extrahierte Felder
 
-* Merchant Name (Händlername) 
-* Merchant Address (Händleradresse) 
-* Merchant Phone Number (Telefonnummer des Händlers) 
-* Transaktionsdatum 
-* Transaktionszeit 
-* Subtotal (Zwischensumme) 
-* Tax (Steuern) 
-* Gesamt 
-* Tip (Trinkgeld) 
-* Extraktion von Einzelposten (z. B. Artikelmenge, Artikelpreis, Artikelname)
+|Name| type | BESCHREIBUNG | Text | Wert (standardisierte Ausgabe) |
+|:-----|:----|:----|:----| :----|
+| ReceiptType | Zeichenfolge | Der Typ des Belegs | Aufgeschlüsselt |  |
+| MerchantName | Zeichenfolge | Der Name des Händlers, der den Beleg ausstellt | Contoso |  |
+| MerchantPhoneNumber | phoneNumber | Die aufgeführte Telefonnummer des Händlers | 987-654-3210 | +19876543210 |
+| MerchantAddress | Zeichenfolge | Die aufgeführte Adresse des Händlers | 123 Main St Redmond WA 98052 |  |
+| TransactionDate | date | Das Datum der Ausstellung des Belegs | June 06, 2019 | 2019-06-26 (26. Juni 2019)  |
+| TransactionTime | time | Die Uhrzeit der Ausstellung des Belegs | 4:49 PM | 16:49:00  |
+| Gesamt | number | Die Gesamttransaktion des Belegs | $14.34 | 14,34 |
+| Subtotal (Zwischensumme) | number | Die Zwischensumme des Belegs, oft vor Steuern | $12.34 | 12.34 |
+| Tax (Steuern) | number | Die Steuern auf dem Beleg, oft Mehrwertsteuer oder Äquivalent | 2 $ | 2.00 |
+| Tip (Trinkgeld) | number | Vom Käufer gegebenes Trinkgeld | $1.00 | 1.00 |
+| Elemente | Array von Objekten | Die extrahierten Positionen mit extrahierten Werten für Name, Menge, Stückpreis und Gesamtpreis | |
+| Name | Zeichenfolge | Name des Elements | Surface Pro 6 | |
+| Menge | number | Menge der einzelnen Positionen | 1 | |
+| Preis | number | Einzelpreis der einzelnen Positionen | $999.00 | 999.00 (999,00) |
+| Gesamtpreis | number | Gesamtpreis der Position | $999.00 | 999.00 (999,00) |
 
 ### <a name="additional-features"></a>Zusätzliche Features
 
 Die Beleg-API gibt außerdem die folgenden Informationen zurück:
 
-* Belegtyp (z. B. Einzelposten, Kreditkarte usw.)
 * Feldvertrauensgrad (jedes Feld gibt einen zugehörigen Vertrauenswert zurück)
 * OCR-Rohtext (OCR-extrahierte Textausgabe für den gesamten Beleg)
 * Begrenzungsrahmen für die einzelnen Werte, Zeilen und Wörter

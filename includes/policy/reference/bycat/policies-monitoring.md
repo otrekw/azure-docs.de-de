@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 11/20/2020
+ms.date: 01/08/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: cf638e1de116532136b9e78df1933048c8305b7b
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 907bf06c009738eb098532ac5ff53e13dbd16826
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96005458"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98047367"
 ---
 |Name<br /><sub>(Azure-Portal)</sub> |BESCHREIBUNG |Auswirkungen |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -65,3 +65,4 @@ ms.locfileid: "96005458"
 |[Das Speicherkonto, das den Container mit Aktivitätsprotokollen enthält, muss mit BYOK verschlüsselt sein](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ffbb99e8e-e444-4da0-9ff1-75c92f5a85b2) |Diese Richtlinie überwacht, ob das Speicherkonto, das den Container mit Aktivitätsprotokollen enthält, mit BYOK verschlüsselt ist. Die Richtlinie funktioniert nur, wenn sich das Speicherkonto in demselben Abonnement wie die Aktivitätsprotokolle befindet. Weitere Informationen zur Azure Storage-Verschlüsselung im Ruhezustand finden Sie unter [https://aka.ms/azurestoragebyok](https://aka.ms/azurestoragebyok).  |AuditIfNotExists, Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/ActivityLog_StorageAccountBYOK_Audit.json) |
 |[Der Log Analytics-Agent sollte in Virtual Machine Scale Sets installiert sein](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fefbde977-ba53-4479-b8e9-10b957924fbf) |Diese Richtlinie überwacht alle Windows-/Linux-Virtual Machine Scale Sets, wenn der Log Analytics-Agent nicht installiert ist. |AuditIfNotExists, Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/VMSS_LogAnalyticsAgent_AuditIfNotExists.json) |
 |[Der Log Analytics-Agent sollte auf virtuellen Computern installiert werden](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fa70ca396-0a34-413a-88e1-b956c1e683be) |Diese Richtlinie überwacht alle virtuellen Windows-/Linux-Computer, wenn der Log Analytics-Agent nicht installiert ist. |AuditIfNotExists, Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/VirtualMachines_LogAnalyticsAgent_AuditIfNotExists.json) |
+|[Arbeitsmappen sollten unter von Ihnen kontrollierten Speicherkonten gespeichert werden](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F6fc8115b-2008-441f-8c61-9b722c1e537f) |Mit Bring Your Own Storage (BYOS) werden Ihre Arbeitsmappen in ein Speicherkonto hochgeladen, das Ihrer Kontrolle unterliegt. Dies bedeutet, dass Sie die Richtlinie zur Verschlüsselung ruhender Daten, die Richtlinie zur Verwaltung der Lebensdauer und den Netzwerkzugriff festlegen. Sie sind jedoch auch für die mit diesem Speicherkonto verbundenen Kosten verantwortlich. Weitere Informationen finden Sie unter [https://aka.ms/workbooksByos](https://aka.ms/workbooksByos). |deny, audit, disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Monitoring/Workbooks_BYOSEnabled_Audit.json) |

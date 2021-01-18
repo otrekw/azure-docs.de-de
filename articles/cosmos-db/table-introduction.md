@@ -5,14 +5,14 @@ author: SnehaGunda
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.topic: overview
-ms.date: 11/25/2020
+ms.date: 01/08/2021
 ms.author: sngun
-ms.openlocfilehash: 98b1db18b72aad0c68f2faee031cc040a2a1f369
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 1cf3bf30b37a09b5dfe94bf1e754a7f8e9dcd82c
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96181236"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98045664"
 ---
 # <a name="introduction-to-azure-cosmos-db-table-api"></a>Einführung in Azure Cosmos DB: Tabelle-API
 [!INCLUDE[appliesto-table-api](includes/appliesto-table-api.md)]
@@ -20,7 +20,7 @@ ms.locfileid: "96181236"
 Mit [Azure Cosmos DB](introduction.md) wird die Tabellen-API für Anwendungen bereitgestellt, die für Azure Table Storage geschrieben wurden und beispielsweise folgende Premium-Funktionen benötigen:
 
 * [Globale, sofort einsatzbereite Verteilung](distribute-data-globally.md).
-* [Dedizierter Durchsatz](partitioning-overview.md) weltweit.
+* [Dedizierter Durchsatz](partitioning-overview.md) weltweit (bei Verwendung von bereitgestelltem Durchsatz).
 * Einstellige Latenzzeiten im Millisekundenbereich im 99. Perzentil.
 * Garantierte Hochverfügbarkeit.
 * Automatische sekundäre Indizierung
@@ -44,7 +44,7 @@ Wenn Sie derzeit Azure Table Storage verwenden, bietet Ihnen der Wechsel zur Azu
 | Indizierung | Nur primärer Index für PartitionKey und RowKey. Keine sekundären Indizes. | Standardmäßig automatische und vollständige Indizierung für alle Eigenschaften, keine Indexverwaltung. |
 | Abfrage | Abfrageausführung verwendet Index für Primärschlüssel, andernfalls die Suche. | Abfragen können die automatische Indizierung für Eigenschaften für schnelle Abfragezeiten nutzen. |
 | Konsistenz | „Stark“ in der primären Region. „Möglich“ in der sekundären Region. | [Fünf klar definierte Konsistenzebenen](consistency-levels.md) zur Abstimmung von Verfügbarkeit, Latenz, Durchsatz und Konsistenz basierend auf Ihren Anwendungsanforderungen. |
-| Preise | Speicheroptimiert | Durchsatzoptimiert |
+| Preise | Nutzungsbasiert. | Die verfügbaren Modi lauten [Nutzungsbasiert](serverless.md) und [Bereitgestellte Kapazität](set-throughput.md). |
 | SLAs | Verfügbarkeit von 99,9 bis 99,99 %, abhängig von der Replikationsstrategie | 99,999 % Leseverfügbarkeit, 99,99 % Schreibverfügbarkeit für ein Konto in einer Region und 99,999 % Schreibverfügbarkeit für Konten in mehreren Regionen. Die Bereiche Verfügbarkeit, Latenz, Durchsatz und Konsistenz sind durch [umfassende SLAs](https://azure.microsoft.com/support/legal/sla/cosmos-db/) abgedeckt. |
 
 ## <a name="get-started"></a>Erste Schritte

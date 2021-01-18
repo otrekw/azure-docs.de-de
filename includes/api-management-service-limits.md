@@ -6,15 +6,15 @@ author: vladvino
 ms.assetid: 1b813833-39c8-46be-8666-fd0960cfbf04
 ms.service: api-management
 ms.topic: include
-ms.date: 04/14/2020
+ms.date: 01/11/2021
 ms.author: vlvinogr
 ms.custom: include file
-ms.openlocfilehash: cf051d96651161658796689639b5d268230d4b5a
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 78890c0596642b629482a6d24d17d83fb8ebc9a0
+ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95556360"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98147590"
 ---
 | Resource | Begrenzung |
 | ---------------------------------------------------------------------- | -------------------------- |
@@ -33,7 +33,8 @@ ms.locfileid: "95556360"
 | Maximale Gesamtdauer der Anforderungen<sup>8</sup> | 30 Sekunden |
 | Maximale gepufferte Nutzlastgröße<sup>8</sup> | 2 MiB |
 | Maximale Größe der Anforderungs-URL<sup>9</sup> | 4096 Bytes |
-| Maximale Anzahl von selbstgehosteten Gateways<sup>10</sup> | 25 |
+| Maximale Länge des URL-Pfadsegments<sup>10</sup> | 260 Zeichen |
+| Maximale Anzahl von selbstgehosteten Gateways<sup>11</sup> | 25 |
 
 <sup>1</sup>Die Skalierungsgrenzen sind vom Tarif abhängig. Details zu den Tarifen und den dazugehörigen Grenzwerten für die Skalierung finden Sie unter [API Management – Preise](https://azure.microsoft.com/pricing/details/api-management/).<br/>
 <sup>2</sup>Die Cachegröße pro Einheit ist vom Tarif abhängig. Die Tarife und die dazugehörigen Grenzwerte für die Skalierung finden Sie unter [API Management – Preise](https://azure.microsoft.com/pricing/details/api-management/).<br/>
@@ -44,4 +45,5 @@ ms.locfileid: "95556360"
 <sup>7</sup>Zertifizierungsstellenzertifikate werden im Tarif „Consumption“ nicht unterstützt.<br/>
 <sup>8</sup>Dieser Grenzwert gilt nur für den Tarif „Consumption“. In diesen Kategorien gibt es keine Grenzwerte für andere Tarife.<br/>
 <sup>9</sup> Gilt für nur den Tarif „Consumption“. Enthält eine Abfragezeichenfolge der Länge bis zu 2048 Bytes.<br/>
-<sup>10</sup>Selbstgehostete Gateways werden nur in den Tarifen „Developer“ und „Premium“ unterstützt. Der Grenzwert gilt für die Anzahl von [selbstgehosteten Gatewayressourcen](/rest/api/apimanagement/2019-12-01/gateway). Wenden Sie sich an den [Support](https://azure.microsoft.com/support/options/), um diesen Grenzwert zu erhöhen. Beachten Sie, dass die Anzahl von Knoten (oder Replikaten), die einer selbstgehosteten Gatewayressource zugeordnet sind, im Premium-Tarif unbegrenzt ist und im Developer-Tarif auf einen einzelnen Knoten begrenzt ist.
+<sup>10</sup> Wenden Sie sich an den [Support](https://azure.microsoft.com/support/options/), wenn dieser Grenzwert erhöht werden soll.<br/>
+<sup>11</sup> Selbstgehostete Gateways werden nur in den Tarifen „Developer“ und „Premium“ unterstützt. Der Grenzwert gilt für die Anzahl von [selbstgehosteten Gatewayressourcen](/rest/api/apimanagement/2019-12-01/gateway). Wenden Sie sich an den [Support](https://azure.microsoft.com/support/options/), um diesen Grenzwert zu erhöhen. Beachten Sie, dass die Anzahl von Knoten (oder Replikaten), die einer selbstgehosteten Gatewayressource zugeordnet sind, im Premium-Tarif unbegrenzt ist und im Developer-Tarif auf einen einzelnen Knoten begrenzt ist.

@@ -1,18 +1,18 @@
 ---
-title: Erstellen der ersten Funktion in Azure mit Kotlin und Maven
-description: Hier erfahren Sie, wie Sie mit Kotlin und Maven eine einfache Funktion mit HTTP-Trigger erstellen und für Azure veröffentlichen.
+title: Erstellen einer Kotlin-Funktion in Azure Functions mithilfe von Maven
+description: Hier erfahren Sie, wie Sie mit Kotlin und Maven eine über HTTP-ausgelöste Funktions-App erstellen und für Azure Functions veröffentlichen.
 author: dglover
 ms.service: azure-functions
 ms.topic: quickstart
 ms.date: 03/25/2020
 ms.author: dglover
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 167e7c447fe43851255677a44043c508cbdc4239
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 6f7b79b6e3e72b34a27e5b4f0e1fb5426c539699
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97934831"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98035239"
 ---
 # <a name="quickstart-create-your-first-function-with-kotlin-and-maven"></a>Schnellstart: Erstellen Ihrer ersten Funktion mit Kotlin und Maven
 
@@ -32,9 +32,9 @@ Um Funktionen mit Kotlin entwickeln zu können, muss Folgendes installiert sein:
 > [!IMPORTANT]
 > Damit Sie diesen Schnellstart durchführen können, muss die Umgebungsvariable JAVA_HOME auf den Installationsspeicherort des JDK festgelegt sein.
 
-## <a name="generate-a-new-functions-project"></a>Generieren eines neuen Functions-Projekts
+## <a name="generate-a-new-azure-functions-project"></a>Generieren eines neuen Azure Functions-Projekts
 
-Führen Sie in einem leeren Ordner den folgenden Befehl aus, um das Functions-Projekt über einen [Maven-Archetyp](https://maven.apache.org/guides/introduction/introduction-to-archetypes.html) zu generieren.
+Führen Sie in einem leeren Ordner den folgenden Befehl aus, um das Azure Functions-Projekt über einen [Maven-Archetyp](https://maven.apache.org/guides/introduction/introduction-to-archetypes.html) zu generieren.
 
 # <a name="bash"></a>[Bash](#tab/bash)
 ```bash
@@ -164,16 +164,16 @@ Bei dem Bereitstellungsprozess in Azure Functions werden die Anmeldeinformatione
 az login
 ```
 
-Stellen Sie Ihren Code mit `azure-functions:deploy` als Maven-Ziel in einer neuen Funktionen-App bereit.
+Stellen Sie Ihren Code mit `azure-functions:deploy` als Maven-Ziel in einer neuen Funktions-App bereit.
 
 > [!NOTE]
-> Wenn Sie Ihre Funktionen-App mit Visual Studio Code bereitstellen, vergessen Sie nicht, ein kostenpflichtiges Abonnement auszuwählen. Andernfalls tritt ein Fehler auf. Das Abonnement wird auf der linken Seite der IDE angezeigt.
+> Wenn Sie Ihre Funktions-App mit Visual Studio Code bereitstellen, vergessen Sie nicht, ein kostenpflichtiges Abonnement auszuwählen. Andernfalls tritt ein Fehler auf. Das Abonnement wird auf der linken Seite der IDE angezeigt.
 
 ```
 mvn azure-functions:deploy
 ```
 
-Wenn die Bereitstellung abgeschlossen ist, wird die URL angezeigt, mit der Sie auf Ihre Azure-Funktionen-App zugreifen können:
+Wenn die Bereitstellung abgeschlossen ist, wird die URL angezeigt, mit der Sie auf Ihre Funktions-App zugreifen können:
 
 <pre>
 [INFO] Successfully deployed Function App with package.
@@ -231,7 +231,7 @@ Hi, AzureFunctionsTest
 
 ## <a name="reference-bindings"></a>Verweisbindungen
 
-Wenn Sie [Functions-Trigger und -Bindungen](functions-triggers-bindings.md) verwenden möchten, bei denen es sich nicht um HTTP-Trigger oder Zeitgebertrigger handelt, müssen Sie Bindungserweiterungen installieren. Dies ist in diesem Artikel nicht erforderlich. Bei Verwendung anderer Bindungstypen müssen Sie jedoch wissen, wie Sie Erweiterungen aktivieren.
+Wenn Sie [Azure Functions-Trigger und -Bindungen](functions-triggers-bindings.md) verwenden möchten, bei denen es sich nicht um HTTP-Trigger oder Zeitgebertrigger handelt, müssen Sie Bindungserweiterungen installieren. Dies ist in diesem Artikel nicht erforderlich. Bei Verwendung anderer Bindungstypen müssen Sie jedoch wissen, wie Sie Erweiterungen aktivieren.
 
 [!INCLUDE [functions-extension-bundles](../../includes/functions-extension-bundles.md)]
 

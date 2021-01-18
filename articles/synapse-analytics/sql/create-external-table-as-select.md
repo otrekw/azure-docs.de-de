@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
-ms.openlocfilehash: dd989d5925da864728e944e84962086c0cfb08ea
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 12841c747116cc9e14f348dfcf81acaa5da5e8c9
+ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96462318"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98165364"
 ---
 # <a name="store-query-results-to-storage-using-serverless-sql-pool-in-azure-synapse-analytics"></a>Speichern von Abfrageergebnissen im Speicher mithilfe eines serverlosen SQL-Pools in Azure Synapse Analytics
 
@@ -74,6 +74,9 @@ FROM
 
 ```
 
+> [!NOTE]
+> Für die erneute Ausführung müssen Sie dieses Skript modifizieren und den Zielspeicherort ändern. Externe Tabellen können nicht an dem Speicherort erstellt werden, an dem bei Ihnen bereits Daten vorhanden sind.
+
 ## <a name="use-the-external-table"></a>Verwenden der externen Tabelle
 
 Sie können die mithilfe von CETAS erstellte externe Tabelle wie eine reguläre externe Tabelle verwendet werden.
@@ -93,6 +96,14 @@ WHERE
 ORDER BY
     [population] DESC;
 ```
+
+## <a name="remarks"></a>Bemerkungen
+
+Nachdem Sie Ihre Ergebnisse gespeichert haben, können die Daten in der externen Tabelle nicht mehr geändert werden. Eine Wiederholung ist für dieses Skript nicht möglich, da von CETAS die zugrunde liegenden Daten, die bei der vorherigen Ausführung erstellt wurden, nicht überschrieben werden. Stimmen Sie für die folgenden Feedbackvorschläge, falls Sie einige davon für Ihre Szenarien benötigen, oder machen Sie auf der Azure-Feedbackseite neue Vorschläge:
+- [Ermöglichen des Einfügens von neuen Daten in eine externe Tabelle](https://feedback.azure.com/forums/307516-azure-synapse-analytics/suggestions/32981347-polybase-allow-insert-new-data-to-existing-exteran)
+- [Ermöglichen des Löschens von Daten aus einer externen Tabelle](https://feedback.azure.com/forums/307516-azure-synapse-analytics/suggestions/15158034-polybase-delete-from-external-tables)
+- [Angeben von Partitionen in CETAS](https://feedback.azure.com/forums/307516-azure-synapse-analytics/suggestions/19520860-polybase-partitioned-by-functionality-when-creati)
+- [Angeben von Dateigrößen und Zählern](https://feedback.azure.com/forums/307516-azure-synapse-analytics/suggestions/42263617-cetas-specify-number-of-parquet-files-file-size)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

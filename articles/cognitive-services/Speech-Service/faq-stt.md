@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: panosper
-ms.openlocfilehash: a78e18de1f495feb6234fa5bfd97162d8b80de4c
-ms.sourcegitcommit: 697638c20ceaf51ec4ebd8f929c719c1e630f06f
+ms.openlocfilehash: a6f75a80fd73844c975b332db8a0e8919cde9f0d
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97857323"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98072172"
 ---
 # <a name="speech-to-text-frequently-asked-questions"></a>Häufig gestellte Fragen zur Spracherkennung
 
@@ -136,9 +136,11 @@ Weitere Informationen finden Sie unter [Kontingente und Grenzwerte für Speech S
 
 **F: Wie lang dauert das Trainieren eines benutzerdefinierten Modells mit Audiodaten?**
 
-**A:** Das Trainieren eines Modells mit Audiodaten ist ein langwieriger Prozess. Je nach Menge der Daten kann das Erstellen eines benutzerdefinierten Modells mehrere Tage dauern. Wenn das Training nicht innerhalb einer Woche abgeschlossen werden kann, bricht der Dienst den Trainingsprozess möglicherweise ab und meldet das Modell als fehlgeschlagen. Verwenden Sie eine der [Regionen](custom-speech-overview.md#set-up-your-azure-account), in der dedizierte Hardware für das Training verfügbar ist. Sie können das vollständig trainierte Modell mithilfe der [REST-API](https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/CopyModelToSubscription) in eine andere Region kopieren. Training, bei dem ausschließlich Text verwendet wird, ist deutlich schneller und dauert in der Regel nur Minuten.
+**A:** Das Trainieren eines Modells mit Audiodaten ist ein langwieriger Prozess. Je nach Menge der Daten kann das Erstellen eines benutzerdefinierten Modells mehrere Tage dauern. Wenn das Training nicht innerhalb einer Woche abgeschlossen werden kann, bricht der Dienst den Trainingsprozess möglicherweise ab und meldet das Modell als fehlgeschlagen.
 
-Einige Basismodelle können nicht mit Audiodaten angepasst werden. Für diese verwenden der Dienst nur den Text der Transkription für das Training. Die Audiodaten werden verworfen. Das Training wird dann schneller abgeschlossen, und die Ergebnisse sind mit den Ergebnissen des Trainings identisch, für das nur Text verwendet wird.
+Verwenden Sie eine der [Regionen](custom-speech-overview.md#set-up-your-azure-account), in der dedizierte Hardware für das Training verfügbar ist. Allgemein verarbeitet der Dienst ungefähr zehn Stunden an Audiodaten pro Tag in Regionen mit solcher Hardware. In anderen Regionen kann täglich nur eine Stunde an Audiodaten verarbeitet werden. Sie können das vollständig trainierte Modell mithilfe der [REST-API](https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/CopyModelToSubscription) in eine andere Region kopieren. Training, bei dem ausschließlich Text verwendet wird, ist deutlich schneller und dauert in der Regel nur Minuten.
+
+Einige Basismodelle können nicht mit Audiodaten angepasst werden. Für diese verwendet der Dienst nur den Text der Transkription für das Training. Die Audiodaten werden ignoriert. Das Training wird dann schneller abgeschlossen, und die Ergebnisse sind mit den Ergebnissen des Trainings identisch, für das nur Text verwendet wird.
 
 ## <a name="accuracy-testing"></a>Genauigkeitstests
 

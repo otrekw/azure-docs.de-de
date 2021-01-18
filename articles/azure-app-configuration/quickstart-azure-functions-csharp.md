@@ -8,12 +8,12 @@ ms.custom: devx-track-csharp
 ms.topic: quickstart
 ms.date: 09/28/2020
 ms.author: alkemper
-ms.openlocfilehash: 4197891949062123042736e578cfbcc5def4e1f9
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: b5c659a673ece8fd7fbb9566d8bb84201a668a7f
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96930788"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97964081"
 ---
 # <a name="quickstart-create-an-azure-functions-app-with-azure-app-configuration"></a>Schnellstart: Erstellen einer Azure Functions-App mit Azure App Configuration
 
@@ -44,45 +44,75 @@ In diesem Schnellstart integrieren Sie den Azure App Configuration-Dienst in ein
 [!INCLUDE [Create a project using the Azure Functions template](../../includes/functions-vstools-create.md)]
 
 ## <a name="connect-to-an-app-configuration-store"></a>Herstellen einer Verbindung mit einem App Configuration-Speicher
+In diesem Projekt wird die [Abhängigkeitsinjektion in Azure Functions (.NET)](/azure/azure-functions/functions-dotnet-dependency-injection) verwendet und Azure App Configuration als zusätzliche Konfigurationsquelle hinzugefügt.
 
-1. Klicken Sie mit der rechten Maustaste auf Ihr Projekt, und wählen Sie **NuGet-Pakete verwalten** aus. Suchen Sie auf der Registerkarte **Durchsuchen** das NuGet-Paket `Microsoft.Extensions.Configuration.AzureAppConfiguration`, und fügen Sie es Ihrem Projekt hinzu. Wenn Sie es nicht finden können, aktivieren Sie das Kontrollkästchen **Vorabversion einbeziehen**.
+1. Klicken Sie mit der rechten Maustaste auf Ihr Projekt, und wählen Sie **NuGet-Pakete verwalten** aus. Suchen Sie auf der Registerkarte **Durchsuchen** nach den folgenden NuGet-Paketen, und fügen Sie sie Ihrem Projekt hinzu.
+   - [Microsoft.Extensions.Configuration.AzureAppConfiguration](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.AzureAppConfiguration/): Version 4.1.0 oder höher
+   - [Microsoft.Azure.Functions.Extensions](https://www.nuget.org/packages/Microsoft.Azure.Functions.Extensions/): Version 1.1.0 oder höher 
 
-2. Öffnen Sie *Function1.cs*, und fügen Sie die Namespaces der .NET Core-Konfiguration und den Konfigurationsanbieter App Configuration hinzu.
+2. Fügen Sie die neue Datei *Startup.cs* mit dem folgenden Code hinzu. Hierbei wird eine Klasse mit dem Namen `Startup` definiert, mit der die abstrakte Klasse `FunctionsStartup` implementiert wird. Es wird ein assembly-Attribut verwendet, um den Typnamen anzugeben, der beim Starten von Azure Functions genutzt wird.
+
+    Die `ConfigureAppConfiguration`-Methode wird überschrieben, und der Azure App Configuration-Anbieter wird als zusätzliche Konfigurationsquelle hinzugefügt, indem `AddAzureAppConfiguration()` aufgerufen wird. Die `Configure`-Methode wird leer gelassen, da Sie an diesem Punkt noch keine Dienste registrieren müssen.
+    
+    ```csharp
+    using System;
+    using Microsoft.Azure.Functions.Extensions.DependencyInjection;
+    using Microsoft.Extensions.Configuration;
+
+    [assembly: FunctionsStartup(typeof(FunctionApp.Startup))]
+
+    namespace FunctionApp
+    {
+        class Startup : FunctionsStartup
+        {
+            public override void ConfigureAppConfiguration(IFunctionsConfigurationBuilder builder)
+            {
+                string cs = Environment.GetEnvironmentVariable("ConnectionString");
+                builder.ConfigurationBuilder.AddAzureAppConfiguration(cs);
+            }
+
+            public override void Configure(IFunctionsHostBuilder builder)
+            {
+            }
+        }
+    }
+    ```
+
+3. Öffnen Sie *Function1.cs*, und fügen Sie den folgenden Namespace hinzu.
 
     ```csharp
     using Microsoft.Extensions.Configuration;
-    using Microsoft.Extensions.Configuration.AzureAppConfiguration;
     ```
 
-3. Fügen Sie eine `static`-Eigenschaft namens `Configuration` hinzu, um eine Singletoninstanz von `IConfiguration` zu erstellen. Fügen Sie dann einen `static`-Konstruktor hinzu, um eine Verbindung mit App Configuration herzustellen, indem Sie `AddAzureAppConfiguration()` aufrufen. Damit wird die Konfiguration einmal beim Starten der Anwendung geladen. Dieselbe Konfigurationsinstanz wird später für alle Funktionsaufrufe verwendet.
+   Fügen Sie einen Konstruktor hinzu, der verwendet wird, um eine Instanz von `IConfiguration` per Abhängigkeitsinjektion abzurufen.
 
     ```csharp
-    private static IConfiguration Configuration { set; get; }
+    private readonly IConfiguration _configuration;
 
-    static Function1()
+    public Function1(IConfiguration configuration)
     {
-        var builder = new ConfigurationBuilder();
-        builder.AddAzureAppConfiguration(Environment.GetEnvironmentVariable("ConnectionString"));
-        Configuration = builder.Build();
+        _configuration = configuration;
     }
     ```
 
 4. Aktualisieren Sie die `Run`-Methode, um Werte aus der Konfiguration zu lesen.
 
     ```csharp
-    public static async Task<IActionResult> Run(
+    public async Task<IActionResult> Run(
         [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = null)] HttpRequest req, ILogger log)
     {
         log.LogInformation("C# HTTP trigger function processed a request.");
 
         string keyName = "TestApp:Settings:Message";
-        string message = Configuration[keyName];
+        string message = _configuration[keyName];
 
         return message != null
             ? (ActionResult)new OkObjectResult(message)
             : new BadRequestObjectResult($"Please create a key-value with the key '{keyName}' in App Configuration.");
     }
     ```
+
+   Die `Function1`-Klasse und die `Run`-Methode sollten nicht statisch sein. Entfernen Sie den Modifizierer `static`, falls er automatisch generiert wurde.
 
 ## <a name="test-the-function-locally"></a>Lokales Testen der Funktion
 
@@ -120,7 +150,7 @@ In diesem Schnellstart integrieren Sie den Azure App Configuration-Dienst in ein
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Schnellstart haben Sie über den [Anbieter App Configuration](/dotnet/api/Microsoft.Extensions.Configuration.AzureAppConfiguration) einen neuen App Configuration-Speicher erstellt und mit einer Azure Functions-App verwendet. Fahren Sie mit dem nächsten Tutorial fort, um zu erfahren, wie Sie Ihre Azure Functions-App für das dynamische Aktualisieren der Konfigurationseinstellungen konfigurieren.
+In diesem Schnellstart haben Sie über den [Anbieter App Configuration](/dotnet/api/Microsoft.Extensions.Configuration.AzureAppConfiguration) einen neuen App Configuration-Speicher erstellt und mit einer Azure Functions-App verwendet. Fahren Sie mit dem nächsten Tutorial fort, um zu erfahren, wie Sie Ihre Azure Functions-App für die dynamische Aktualisierung der Konfiguration aktualisieren.
 
 > [!div class="nextstepaction"]
-> [Tutorial: Verwenden der dynamischen Konfiguration in einer .NET Framework-App](./enable-dynamic-configuration-azure-functions-csharp.md)
+> [Aktivieren der dynamischen Konfiguration in Azure Functions](./enable-dynamic-configuration-azure-functions-csharp.md)

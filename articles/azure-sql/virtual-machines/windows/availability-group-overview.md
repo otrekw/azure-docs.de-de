@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 10/07/2020
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: f39380e253d3fa9e86bfea3a8c436862738ff8e3
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 213b973bfc93cb2237473b6bc4c7f1e138457409
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97359930"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98131898"
 ---
 # <a name="always-on-availability-group-on-sql-server-on-azure-vms"></a>Always On-Verfügbarkeitsgruppe für SQL Server auf Azure-VMs
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -62,7 +62,7 @@ Informationen zu den ersten Schritten finden Sie unter [Konfigurieren eines Last
 
 ### <a name="dnn-listener"></a>DNN-Listener
 
-Ab SQL Server 2019 CU8 wird der DNN-Listener unterstützt. Der DNN-Listener ersetzt den herkömmlichen Verfügbarkeitsgruppenlistener. So ist es nicht mehr erforderlich, dass der Datenverkehr im Azure-Netzwerk durch einen Azure Load Balancer weitergeleitet wird. 
+Ab SQL Server 2019 CU8 wird der DNN-Listener unterstützt. Der DNN-Listener ersetzt den herkömmlichen Verfügbarkeitsgruppenlistener. Es ist dann nicht mehr erforderlich, dass der Datenverkehr im Azure-Netzwerk durch einen Azure Load Balancer weitergeleitet wird. 
 
 Der DNN-Listener ist die empfohlene HADR-Konnektivitätslösung in Azure, da sie die Bereitstellung vereinfacht, den Wartungs- und Kostenaufwand reduziert und die Failoverzeit bei einem Ausfall reduziert. 
 

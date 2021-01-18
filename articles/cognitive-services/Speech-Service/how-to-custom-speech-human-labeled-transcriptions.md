@@ -10,26 +10,29 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 4516bbddd3fda593021288a440e1b354d4d7f1e3
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: cc373a67ee0f4ed2e900e7b41cbcb96d31d67b34
+ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96340236"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98126885"
 ---
 # <a name="how-to-create-human-labeled-transcriptions"></a>Erstellen von menschenmarkierten Transkriptionen
 
 Wenn Sie die Genauigkeit der Spracherkennung verbessern möchten, insbesondere bei Problemen, die durch Löschen oder falsches Ersetzen von Wörtern verursacht werden, können Sie menschenmarkierte Transkriptionen zusammen mit Ihren Audiodaten verwenden. Doch was sind menschenmarkierte Transkriptionen? Ganz einfach: Es sind wortwörtliche Transkriptionen einer Audiodatei.
 
-Zum Verbessern der Erkennung ist eine umfangreiche Stichprobe von Transkriptionsdaten erforderlich. Es wird empfohlen, zwischen 10 und 1.000 Stunden an Transkriptionsdaten bereitzustellen. Auf dieser Seite werden Richtlinien besprochen, die Ihnen beim Erstellen qualitativ hochwertiger Transkriptionen helfen sollen. Dieser Leitfaden ist nach Gebietsschema unterteilt und enthält Abschnitte für Englisch (USA), Chinesisch (Mandarin) und Deutsch.
+Zum Verbessern der Erkennung ist eine umfangreiche Stichprobe von Transkriptionsdaten erforderlich. Es wird empfohlen, zwischen 10 und 20 Stunden an Transkriptionsdaten bereitzustellen. Auf dieser Seite werden Richtlinien besprochen, die Ihnen beim Erstellen qualitativ hochwertiger Transkriptionen helfen sollen. Dieser Leitfaden ist nach Gebietsschema unterteilt und enthält Abschnitte für Englisch (USA), Chinesisch (Mandarin) und Deutsch.
+
+> [!NOTE]
+> Nicht alle Basismodelle unterstützen die Anpassung mit Audiodateien. Wenn ein Basismodell Anpassungen nicht unterstützt, wird für das Training nur der Text der Transkriptionen auf die gleiche Weise verwendet, wie der zugehörige Text genutzt wird.
 
 ## <a name="us-english-en-us"></a>Englisch (USA) (en-US)
 
 Menschenmarkierte Transkriptionen für Audioaufnahmen in Englisch müssen als Nur-Text ausschließlich in ASCII-Zeichen bereitgestellt werden. Vermeiden Sie die Verwendung von Lateinisch-1- oder Unicode-Interpunktionszeichen. Diese Zeichen werden oft versehentlich beim Kopieren von Text aus einem Textverarbeitungsprogramm oder beim Erfassen von Daten aus Webseiten hinzugefügt. Wenn solche Zeichen vorhanden sind, stellen Sie sicher, dass sie durch die entsprechenden ASCII-Zeichen ersetzt werden.
 
-Hier sind einige Beispiele:
+Folgende Rollen stehen beispielsweise zur Verfügung:
 
-| Nicht zu verwendende Zeichen | Ersetzung | Notizen |
+| Nicht zu verwendende Zeichen | Substitution | Notizen |
 | ------------------- | ------------ | ----- |
 | “Hello world” | "Hello world" | Die öffnenden und schließenden Anführungszeichen wurden durch entsprechende ASCII-Zeichen ersetzt. |
 | John’s day | John's day | Das Apostroph wurde durch das entsprechende ASCII-Zeichen ersetzt. |
@@ -82,9 +85,9 @@ Es folgen einige Beispiele für die Normalisierung, die automatisch für die Tra
 
 Menschenmarkierte Transkriptionen für Audioaufnahmen in Chinesisch (Mandarin) müssen UTF-8-codiert sein und eine Bytereihenfolge-Marke aufweisen. Vermeiden Sie die Verwendung von Interpunktionszeichen halber Breite. Diese Zeichen können unbeabsichtigt eingefügt werden, wenn die Daten in einem Textverarbeitungsprogramm vorbereitet oder aus Webseiten erfasst werden. Wenn solche Zeichen vorhanden sind, stellen Sie sicher, dass sie durch die entsprechenden Zeichen normaler Breite ersetzt werden.
 
-Hier sind einige Beispiele:
+Folgende Rollen stehen beispielsweise zur Verfügung:
 
-| Nicht zu verwendende Zeichen | Ersetzung   | Notizen |
+| Nicht zu verwendende Zeichen | Substitution   | Notizen |
 | ------------------- | -------------- | ----- |
 | "你好" | "你好" | Die öffnenden und schließenden Anführungszeichen wurden durch entsprechende Zeichen ersetzt. |
 | 需要什么帮助? | 需要什么帮助？| Das Fragezeichen wurde durch das entsprechende Zeichen ersetzt. |

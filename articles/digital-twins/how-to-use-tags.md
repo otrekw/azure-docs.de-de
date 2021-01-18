@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/22/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: c2620b52c426871b0ec85e3db237be2d373d42f1
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 9a1a55bdf21b74116450ca32f66d891f1aa206d3
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96458698"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98045409"
 ---
 # <a name="add-tags-to-digital-twins"></a>Hinzufügen von Tags zu digitalen Zwillingen 
 
@@ -32,23 +32,7 @@ Markertags werden als [DTDL](https://github.com/Azure/opendigitaltwins-dtdl/blob
 
 Im Folgenden finden Sie einen Auszug aus einem Zwillingsmodell, mit dem ein Markertag als Eigenschaft implementiert wird:
 
-```json
-{
-  "@type": "Property",
-  "name": "tags",
-  "schema": {
-    "@type": "Map",
-    "mapKey": {
-      "name": "tagName",
-      "schema": "string"
-    },
-    "mapValue": {
-      "name": "tagValue",
-      "schema": "boolean"
-    }
-  }
-}
-```
+:::code language="json" source="~/digital-twins-docs-samples/models/tags.json" range="2-16":::
 
 ### <a name="add-marker-tags-to-digital-twins"></a>Hinzufügen von Markertags zu digitalen Zwillingen
 
@@ -56,11 +40,7 @@ Nachdem die `tags`-Eigenschaft Teil des Modells des digitalen Zwillings ist, kö
 
 Im Folgenden finden Sie ein Beispiel, bei dem der Marker `tags` für drei Zwillinge aufgefüllt wird:
 
-```csharp
-entity-01: "tags": { "red": true, "round": true } 
-entity-02: "tags": { "blue": true, "round": true } 
-entity-03: "tags": { "red": true, "large": true } 
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/twin_operations_other.cs" id="TagPropertiesMarker":::
 
 ### <a name="query-with-marker-tags"></a>Abfragen mit Markertags
 
@@ -68,15 +48,11 @@ Nachdem digitalen Zwillingen Tags hinzugefügt wurden, können die Tags zum Filt
 
 Im Folgenden finden Sie eine Abfrage, mit der alle Zwillinge abgerufen werden, die mit „red“ getaggt sind: 
 
-```sql
-SELECT * FROM digitaltwins WHERE is_defined(tags.red) 
-```
+:::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="QueryMarkerTags1":::
 
 Tags können auch zu komplexeren Abfragen kombiniert werden. Im Folgenden finden Sie eine Abfrage, mit der alle Zwillinge abgerufen werden, die rund und nicht rot sind: 
 
-```sql
-SELECT * FROM digitaltwins WHERE NOT is_defined(tags.red) AND is_defined(tags.round) 
-```
+:::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="QueryMarkerTags2":::
 
 ## <a name="value-tags"></a>Werttags 
 
@@ -88,23 +64,7 @@ Werttags werden als [DTDL](https://github.com/Azure/opendigitaltwins-dtdl/blob/m
 
 Im Folgenden finden Sie einen Auszug aus einem Zwillingsmodell, mit dem ein Werttag als Eigenschaft implementiert wird:
 
-```json
-{
-  "@type": "Property",
-  "name": "tags",
-  "schema": {
-    "@type": "Map",
-    "mapKey": {
-      "name": "tagName",
-      "schema": "string"
-    },
-    "mapValue": {
-      "name": "tagValue",
-      "schema": "string"
-    }
-  }
-} 
-```
+:::code language="json" source="~/digital-twins-docs-samples/models/tags.json" range="17-31":::
 
 ### <a name="add-value-tags-to-digital-twins"></a>Hinzufügen von Werttags zu digitalen Zwillingen
 
@@ -112,11 +72,7 @@ Wie ein Markertag können Sie auch das Werttag in einem digitalen Zwilling festl
 
 Im Folgenden finden Sie ein Beispiel, bei dem der Wert `tags` für drei Zwillinge aufgefüllt wird:
 
-```csharp
-entity-01: "tags": { "red": "", "size": "large" } 
-entity-02: "tags": { "purple": "", "size": "small" } 
-entity-03: "tags": { "red": "", "size": "small" } 
-```
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/twin_operations_other.cs" id="TagPropertiesValue":::
 
 In diesem Beispiel werden `red` und `purple` als Markertags verwendet.
 
@@ -124,17 +80,13 @@ In diesem Beispiel werden `red` und `purple` als Markertags verwendet.
 
 Wie Markertags können Sie auch Werttags zum Filtern von Zwillingen in Abfragen verwenden. Sie können Werttags und Markertags auch zusammen verwenden.
 
-Im obigen Beispiel wird `red` als Markertag verwendet. Im Folgenden finden Sie eine Abfrage, mit der alle Zwillinge abgerufen werden, die mit „red“ getaggt sind: 
+Im obigen Beispiel wird `red` als Markertag verwendet. Denken Sie daran, dass es sich hierbei um eine Abfrage handelt, mit der alle Zwillinge abgerufen werden, die mit „red“ getaggt sind: 
 
-```sql
-SELECT * FROM digitaltwins WHERE is_defined(tags.red) 
-```
+:::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="QueryMarkerTags1":::
 
 Im Folgenden finden Sie eine Abfrage, mit der alle Entitäten abgerufen werden, die klein (Werttag) und nicht rot sind: 
 
-```sql
-SELECT * FROM digitaltwins WHERE NOT is_defined(tags.red) AND tags.size = 'small' 
-```
+:::code language="sql" source="~/digital-twins-docs-samples/queries/queries.sql" id="QueryMarkerValueTags":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 

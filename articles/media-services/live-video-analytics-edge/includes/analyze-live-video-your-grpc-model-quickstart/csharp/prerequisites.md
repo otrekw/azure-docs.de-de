@@ -1,17 +1,19 @@
 ---
-ms.openlocfilehash: 40861eaca0a88097d65ec80095edcb4110f39633
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: f8c43602e722231d0e5bd31bbc6b94d04c4d225c
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88687244"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98061198"
 ---
 * Ein Azure-Konto das ein aktives Abonnement beinhaltet. Sie können ein [kostenloses Konto erstellen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), falls Sie noch keins besitzen.
 * [Visual Studio Code](https://code.visualstudio.com/) mit den folgenden Erweiterungen:
     * [Azure IoT-Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)
+        > [!TIP]
+        > Bei der Installation von Azure IoT Tools werden Sie unter Umständen aufgefordert, Docker zu installieren. Sie können diese Aufforderung ignorieren.
     * [C#](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp)
 * [.NET Core 3.1 SDK](https://dotnet.microsoft.com/download/dotnet-core/3.1).
 * Wenn Sie den Schnellstart [Erkennen von Bewegung und Ausgeben von Ereignissen](../../../detect-motion-emit-events-quickstart.md) nicht ausgeführt haben, achten Sie darauf, [Azure-Ressourcen einzurichten](../../../detect-motion-emit-events-quickstart.md#set-up-azure-resources).
 
 > [!TIP]
-> Bei der Installation von Azure IoT Tools werden Sie unter Umständen aufgefordert, Docker zu installieren. Sie können diese Aufforderung ignorieren.
+> Falls für erstellte Azure-Ressourcen Probleme auftreten, helfen Ihnen die Informationen zum Beheben von häufigen Problemen im **[Leitfaden für die Problembehandlung](../../../troubleshoot-how-to.md#common-error-resolutions)** weiter.

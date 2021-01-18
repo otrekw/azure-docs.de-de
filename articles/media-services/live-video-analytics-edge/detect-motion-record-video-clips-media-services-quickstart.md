@@ -3,12 +3,12 @@ title: Erkennen von Bewegung, Aufzeichnen von Videos in Azure Media Services
 description: In diesem Schnellstart erfahren Sie, wie Sie Live Video Analytics in IoT Edge verwenden, um Bewegungen in einem Livevideostream zu erkennen und Videoclips in Azure Media Services aufzuzeichnen.
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: 8872c9aefa0ed748cbed93d0f7376586859be9df
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 33deabf27fe9b74fd01dba5d6fbe3883b54dda63
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97511891"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98060417"
 ---
 # <a name="quickstart-detect-motion-record-video-to-media-services"></a>Schnellstart: Erkennen von Bewegung, Aufzeichnen von Video in Media Services
 
@@ -24,12 +24,14 @@ Dieser Artikel baut auf dem [Schnellstart zu den ersten Schritten](get-started-d
     * [Einrichten von Azure-Ressourcen](get-started-detect-motion-emit-events-quickstart.md#set-up-azure-resources)
     * [Bereitstellen von Modulen](get-started-detect-motion-emit-events-quickstart.md#deploy-modules-on-your-edge-device)
     * [Konfigurieren von Visual Studio Code](get-started-detect-motion-emit-events-quickstart.md#configure-the-azure-iot-tools-extension)
-
+    > [!TIP]
+    > Falls für erstellte Azure-Ressourcen Probleme auftreten, helfen Ihnen die Informationen zum Beheben von häufigen Problemen im **[Leitfaden für die Problembehandlung](troubleshoot-how-to.md#common-error-resolutions)** weiter.
 ## <a name="review-the-sample-video"></a>Überprüfen des Beispielvideos
 
 Als Teil der Schritte oben zum Einrichten der Azure-Ressourcen wird ein (kurzes) Video eines Parkplatzes auf den virtuellen Linux-Computer in Azure kopiert, der als IoT Edge-Gerät verwendet wird. Diese Videodatei wird zum Simulieren eines Livestreams für dieses Tutorial verwendet.
 
 Sie können eine Anwendung wie [VLC Player](https://www.videolan.org/vlc/) starten, `Ctrl+N` drücken und diesen Link zum [Parkplatz-Videobeispiel](https://lvamedia.blob.core.windows.net/public/lots_015.mkv) einfügen, um mit der Wiedergabe zu beginnen. Etwa bei der 5-Sekunden-Marke fährt ein weißes Fahrzeug über den Parkplatz.
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4LUbN]
 
 Nach Abschluss der nachfolgenden Schritte haben Sie mithilfe von Live Video Analytics in IoT Edge die Bewegung des Fahrzeugs erkannt und einen Videoclip aufgezeichnet, der ungefähr bei dieser 5-Sekunden-Marke beginnt. In der Abbildung unten ist der gesamte Ablauf visuell dargestellt.
 
@@ -194,7 +196,7 @@ Mithilfe der gleichen Schritte wie zum Aufrufen von GraphTopologyList können Si
 
 Die oben verwendete JSON-Nutzlast bewirkt, dass eine Graphtopologie erstellt wird, mit der fünf Parameter (vier davon mit Standardwerten) definiert werden. Die Topologie umfasst einen Quellknoten ([RTSP-Quelle](media-graph-concept.md#rtsp-source)), zwei Prozessorknoten ([Bewegungserkennungsprozessor](media-graph-concept.md#motion-detection-processor) und [Signalgateprozessor](media-graph-concept.md#signal-gate-processor)) und zwei Senkenknoten (IoT Hub-Senke und [Medienobjektsenke](media-graph-concept.md#asset-sink)). Die visuelle Darstellung der Topologie ist oben abgebildet.
 
-Innerhalb weniger Sekunden wird die folgende Antwort im Ausgabefenster angezeigt.
+Innerhalb weniger Sekunden wird die folgende Antwort im **Ausgabefenster** angezeigt.
 
 ```
 [DirectMethod] Invoking Direct Method [GraphTopologySet] to [lva-sample-device/lvaEdge] ...

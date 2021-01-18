@@ -6,12 +6,12 @@ author: baanders
 ms.author: baanders
 ms.topic: troubleshooting
 ms.date: 7/20/2020
-ms.openlocfilehash: aeae1f1a99d1fa574df8202efd2405232855628b
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 1517c066fe20d478094f57d85d6e27f355a93601
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93091802"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98049812"
 ---
 # <a name="service-request-failed-status-403-forbidden"></a>Fehler bei Service Request. Status: 403 (Unzulässig)
 
@@ -44,7 +44,7 @@ Die erste Lösung besteht darin sicherzustellen, dass Ihr Azure-Benutzer über d
 Beachten Sie, dass sich diese Rolle von folgenden Rollen unterscheidet:
 * Vom früheren Namen für diese Rolle während der Vorschauphase: *Azure Digital Twins-Besitzer (Vorschau)* (Die Rolle ist dieselbe, der Name hat sich jedoch geändert.)
 * Rolle *Besitzer* für das gesamte Azure-Abonnement. *Azure Digital Twins Data Owner* (Azure Digital Twins-Datenbesitzer) ist eine Rolle in Azure Digital Twins und bezieht sich auf diese einzelne Azure Digital Twins-Instanz.
-* Rolle *Besitzer* in Azure Digital Twins. Es handelt sich um zwei verschiedene Verwaltungsrollen für Azure Digital Twins, und *Azure Digital Twins Data Owner* (Azure Digital Twins-Datenbesitzer) ist die Rolle, die während der Vorschauphase für die Verwaltung verwendet werden sollte.
+* Rolle *Besitzer* in Azure Digital Twins. Es handelt sich um zwei verschiedene Verwaltungsrollen für Azure Digital Twins, und *Azure Digital Twins Data Owner* ist die Rolle, die für die Verwaltung verwendet werden sollte.
 
 #### <a name="check-current-setup"></a>Überprüfen des aktuellen Setups
 
@@ -72,7 +72,7 @@ Wenn Sie eine Azure AD-App-Registrierung verwenden, um eine Client-App zu authen
 
 Wenn Sie überprüfen möchten, ob die Berechtigungen ordnungsgemäß konfiguriert wurden, navigieren Sie im Azure-Portal zur [Übersichtsseite der Azure AD-App-Registrierung](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps). Sie können selbst auf diese Seite gelangen, indem Sie über die Portalsuchleiste nach *App-Registrierungen* suchen.
 
-Wechseln Sie zur Registerkarte *Alle Anwendungen* , um alle App-Registrierungen anzuzeigen, die in Ihrem Abonnement erstellt wurden.
+Wechseln Sie zur Registerkarte *Alle Anwendungen*, um alle App-Registrierungen anzuzeigen, die in Ihrem Abonnement erstellt wurden.
 
 Die soeben erstellte App-Registrierung sollte in der Liste angezeigt werden. Wählen Sie sie aus, um die Details zu öffnen.
 

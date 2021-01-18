@@ -5,15 +5,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: include
-ms.date: 09/25/2020
+ms.date: 01/11/2021
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: f8959904482bda8dc26e4df626377027e1ab4bd1
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 3da4fd26b3f985e034ca60039c09412e8237e965
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96005542"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98109451"
 ---
 Führen Sie diese Schritte aus, wenn Sie ein allgemeines Speicherkonto vom Typ „General Purpose v2“ über das Azure-Portal erstellen möchten:
 
@@ -26,8 +26,7 @@ Führen Sie diese Schritte aus, wenn Sie ein allgemeines Speicherkonto vom Typ �
 1. Wählen Sie eine Leistungsstufe aus. Die Standardstufe ist *Standard*.
 1. Legen Sie das Feld **Kontoart** auf *V2 (General Purpose v2)* fest.
 1. Geben Sie an, wie das Speicherkonto repliziert werden soll. Die Standardreplikationsoption ist *Georedundanter Speicher mit Lesezugriff (RA-GRS)* . Weitere Informationen zu verfügbaren Replikationsoptionen finden Sie unter [Azure Storage-Redundanz](../articles/storage/common/storage-redundancy.md).
-1. Geben Sie die Zugriffsebene für Blobs im Speicherkonto an. Die Standardebene ist *heiße Ebene*. Weitere Informationen zu Zugriffsebenen für Blobs finden Sie unter [Zugriffsebenen „Heiß“ (Hot), „Kalt“ (Cool) und „Archiv“ für Blobs](../articles/storage/blobs/storage-blob-storage-tiers.md).
-1. Wenn Sie Azure Data Lake Storage verwenden möchten, wählen Sie die Registerkarte **Erweitert** aus, und legen Sie dann **Hierarchischer Namespace** auf **Aktiviert** fest. Weitere Informationen finden Sie unter [Azure Data Lake Storage Gen2: Einführung](../articles/storage/blobs/data-lake-storage-introduction.md).
+1. Weitere Optionen sind auf den Registerkarten **Netzwerk**, **Schutz von Daten**, **Erweitert** und **Tags** verfügbar. Wenn Sie Azure Data Lake Storage verwenden möchten, wählen Sie die Registerkarte **Erweitert** aus, und legen Sie dann **Hierarchischer Namespace** auf **Aktiviert** fest. Weitere Informationen finden Sie unter [Azure Data Lake Storage Gen2: Einführung](../articles/storage/blobs/data-lake-storage-introduction.md).
 1. Wählen Sie **Überprüfen + erstellen**, um die Speicherkontoeinstellungen zu überprüfen und das Konto zu erstellen.
 1. Klicken Sie auf **Erstellen**.
 

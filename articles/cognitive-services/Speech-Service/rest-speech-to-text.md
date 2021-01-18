@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 12/10/2020
+ms.date: 01/08/2021
 ms.author: trbye
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c746666d58e21c2705a2ef1d6a17d0d1196f7590
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: 1577d63822bdb21eff7fcbb3e1343243a3004409
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97504473"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98033641"
 ---
 # <a name="speech-to-text-rest-api"></a>Spracherkennungs-REST-API
 
@@ -61,7 +61,7 @@ Beachten Sie Folgendes, bevor Sie die Spracherkennungs-REST-API für kurze Audio
 Wenn für Ihre Anwendung das Senden von längeren Audiodaten erforderlich ist, ziehen Sie die Verwendung des [Speech-SDK](speech-sdk.md) oder der [Spracherkennungs-REST-API 3.0](#speech-to-text-rest-api-v30) in Betracht.
 
 > [!TIP]
-> Informationen zu Endpunkten zur Government-Cloud (FairFax) finden Sie in der [Azure Government-Dokumentation](../../azure-government/compare-azure-government-global-azure.md).
+> In [diesem Artikel](sovereign-clouds.md) finden Sie Informationen zu Azure Government- und Azure China-Endpunkten.
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-rest-auth.md)]
 

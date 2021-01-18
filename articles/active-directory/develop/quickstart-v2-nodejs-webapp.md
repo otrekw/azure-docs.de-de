@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 10/28/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET, devx-track-js
-ms.openlocfilehash: 643305057490cc550a5a8e39a892297b000cbc8e
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: c9aa73767fcb9d57ada11f5830fec00b10eee812
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96169408"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98017339"
 ---
 # <a name="quickstart-add-sign-in-using-openid-connect-to-a-nodejs-web-app"></a>Schnellstart: Hinzufügen der Anmeldung mit OpenID Connect zu einer Node.js-Web-App
 
@@ -29,38 +29,29 @@ In dieser Schnellstartanleitung laden Sie ein Codebeispiel herunter und führen 
 - [Node.js](https://nodejs.org/en/download/).
 
 ## <a name="register-your-application"></a>Anwendung registrieren
-1. Melden Sie sich mit einem Geschäfts-, Schul- oder Unikonto oder mit einem persönlichen Microsoft-Konto beim [Azure-Portal](https://portal.azure.com/) an.
-1. Wenn Ihr Konto in mehreren Azure AD-Mandanten enthalten ist:
-    - Wählen Sie im Menü rechts oben auf der Seite Ihr Profil und dann **Verzeichnis wechseln** aus.
-    - Ändern Sie die Sitzung auf den Azure AD-Mandanten, bei dem Sie Ihre Anwendung erstellen möchten.
 
-1. Navigieren Sie zu [Azure Active Directory > App-Registrierungen](https://go.microsoft.com/fwlink/?linkid=2083908), um Ihre App zu registrieren.
-
-1. Wählen Sie **Neue Registrierung** aus.
-
-1. Daraufhin wird die Seite **Anwendung registrieren** angezeigt. Geben Sie hier die Registrierungsinformationen Ihrer App ein:
-    - Geben Sie im Abschnitt **Name** einen aussagekräftigen Namen ein. Dieser wird den Benutzern der App angezeigt. Beispiel: MyWebApp
-    - Wählen Sie im Abschnitt **Unterstützte Kontotypen** die Option **Konten in allen Organisationsverzeichnissen und persönliche Microsoft-Konten (z. B. Skype, Xbox, Outlook.com)** aus.
+1. Melden Sie sich beim <a href="https://portal.azure.com/" target="_blank">Azure-Portal<span class="docon docon-navigate-external x-hidden-focus"></span></a> an.
+1. Wenn Sie Zugriff auf mehrere Mandanten haben, verwenden Sie im Menü am oberen Rand den Filter **Verzeichnis + Abonnement** :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::, um den Mandanten auszuwählen, für den Sie eine Anwendung registrieren möchten.
+1. Suchen Sie nach **Azure Active Directory**, und wählen Sie diese Option aus.
+1. Wählen Sie unter **Verwalten** Folgendes aus: **App-Registrierungen** > **Neue Registrierung**.
+1. Geben Sie unter **Name** einen Namen für Ihre Anwendung ein (beispielsweise `MyWebApp`). Benutzern Ihrer App wird wahrscheinlich dieser Namen angezeigt. Sie können ihn später ändern.
+1. Wählen Sie im Abschnitt **Unterstützte Kontotypen** die Option **Konten in allen Organisationsverzeichnissen und persönliche Microsoft-Konten (z. B. Skype, Xbox, Outlook.com)** aus.
 
     Sind mehrere Umleitungs-URIs vorhanden, müssen diese nach erfolgreicher Erstellung der App auf der Registerkarte **Authentifizierung** hinzugefügt werden.
 
 1. Wählen Sie **Registrieren** aus, um die App zu erstellen.
-
 1. Suchen Sie auf der Seite **Übersicht** der App den Wert **Anwendungsclient-ID**, und notieren Sie ihn zur späteren Verwendung. Dieser Wert wird später in diesem Projekt benötigt, um die Anwendung zu konfigurieren.
+1. Wählen Sie unter **Verwalten** die Option **Authentifizierung** aus.
+1. Wählen Sie **Plattform hinzufügen** > **Web** aus. 
+1. Geben Sie im Abschnitt **Umleitungs-URIs** den URI `http://localhost:3000/auth/openid/return` ein.
+1. Geben Sie die **Abmelde-URL** `https://localhost:3000` ein.
+1. Aktivieren Sie im Abschnitt „Implizite Gewährung“ die Option **ID-Token**, da in diesem Beispiel der [Flow für implizite Genehmigungen](./v2-oauth2-implicit-grant-flow.md) aktiviert werden muss, um den Benutzer anzumelden.
+1. Wählen Sie **Konfigurieren** aus.
+1. Wählen Sie unter **Verwalten** Folgendes aus: **Zertifikate und Geheimnisse** > **Neuer geheimer Clientschlüssel**.
+1. Geben Sie eine Schlüsselbeschreibung ein (beispielsweise „app secret“).
+1. Wählen Sie eine Schlüsseldauer aus: **In 1 Jahr, In 2 Jahren** oder **Läuft nie ab**.
+1. Wählen Sie **Hinzufügen** aus. Der Schlüsselwert wird angezeigt. Kopieren Sie den Schlüsselwert, und speichern Sie ihn zur späteren Verwendung an einem sicheren Ort.
 
-1. Wählen Sie in der Liste mit den Seiten für die App die Option **Authentifizierung** aus.
-    - Wählen Sie im Abschnitt **Umleitungs-URIs** im Kombinationsfeld die Option **Web** aus, und geben Sie den folgenden Umleitungs-URI ein: `http://localhost:3000/auth/openid/return`
-    - Legen Sie im Abschnitt **Erweiterte Einstellungen** die Option **Abmelde-URL** auf `https://localhost:3000` fest.
-    - Aktivieren Sie im Abschnitt **Erweiterte Einstellungen > Implizite Gewährung** die Option **ID-Token**, da in diesem Beispiel der [Flow für implizite Genehmigungen](./v2-oauth2-implicit-grant-flow.md) aktiviert werden muss, um den Benutzer anzumelden.
-
-1. Wählen Sie **Speichern** aus.
-
-1. Wählen Sie auf der Seite **Zertifikate & Geheimnisse** im Abschnitt **Geheime Clientschlüssel** die Option **Neuer geheimer Clientschlüssel** aus.
-    - Geben Sie eine Schlüsselbeschreibung ein (beispielsweise „app secret“).
-    - Wählen Sie eine Schlüsseldauer aus: **In 1 Jahr, In 2 Jahren** oder **Läuft nie ab**.
-    - Wenn Sie auf die Schaltfläche **Hinzufügen** klicken, wird der Schlüsselwert angezeigt. Kopieren Sie den Schlüsselwert, und speichern Sie ihn an einem sicheren Ort.
-
-    Dieser Schlüssel wird später benötigt, um die Anwendung zu konfigurieren. Der Schlüsselwert wird nicht erneut angezeigt und kann auch nicht auf andere Weise abgerufen werden. Erfassen Sie ihn daher, sobald er im Azure-Portal angezeigt wird.
 
 ## <a name="download-the-sample-application-and-modules"></a>Herunterladen der Beispielanwendung und der Module
 

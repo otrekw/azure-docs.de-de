@@ -3,17 +3,17 @@ title: Neuheiten in Windows Virtual Desktop - Azure
 description: Neue Features und Produktupdates für Windows Virtual Desktop.
 author: Heidilohr
 ms.topic: overview
-ms.date: 12/02/2020
+ms.date: 01/06/2021
 ms.author: helohr
 ms.reviewer: thhickli; darank
 manager: lizross
 ms.custom: references_regions
-ms.openlocfilehash: e42e49f69a159bf3bfdc732d41dc66a9a707f42f
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: df3dd8b5b18ec2997ee20ad4955ffd7bc1dc573d
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97617356"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97955007"
 ---
 # <a name="whats-new-in-windows-virtual-desktop"></a>Neuheiten in Windows Virtual Desktop
 
@@ -25,6 +25,44 @@ Windows Virtual Desktop wird regelmäßig aktualisiert. In diesem Artikel werden
 - Behebung von Programmfehlern
 
 Dieser Artikel wird monatlich aktualisiert. Kehren Sie hier oft zurück, um mit neuen Updates auf dem Laufenden zu bleiben.
+
+## <a name="december-2020"></a>Dezember 2020
+
+Änderungen im Dezember 2020: 
+
+### <a name="azure-monitor-for-windows-virtual-desktop"></a>Azure Monitor für Windows Virtual Desktop
+
+Die öffentliche Vorschauversion für Azure Monitor für Windows Virtual Desktop ist jetzt verfügbar. Dieses neue Feature umfasst ein stabiles Dashboard, das auf Azure Monitor-Arbeitsmappen basiert, damit IT-Experten ihre Windows Virtual Desktop-Umgebungen besser verstehen. Weitere Informationen finden Sie in der [Ankündigung in unserem Blog](https://techcommunity.microsoft.com/t5/windows-virtual-desktop/azure-monitor-for-windows-virtual-desktop-public-preview/m-p/1946587). 
+
+### <a name="azure-resource-manager-template-change"></a>Änderung der Azure Resource Manager-Vorlage 
+
+Beim letzten Update haben wir alle Parameter für öffentliche IP-Adressen aus der Azure Resource Manager-Vorlage zum Erstellen und Bereitstellen von Hostpools entfernt. Wir empfehlen Ihnen dringend, keine öffentlichen IP-Adressen für Windows Virtual Desktop zu verwenden, damit für die Sicherheit Ihrer Bereitstellung gesorgt ist. Wenn Ihre Bereitstellung auf öffentlichen IP-Adressen basiert, müssen Sie die Konfiguration so ändern, dass stattdessen private IP-Adressen verwendet werden. Andernfalls funktioniert Ihre Bereitstellung nicht richtig.
+
+### <a name="msix-app-attach-public-preview"></a>MSIX-Feature zum Anfügen von Apps: Öffentliche Vorschauversion 
+
+Das MSIX-Feature zum Anfügen von Apps ist ein weiterer Dienst, für den in diesem Monat die öffentliche Vorschauphase begonnen hat. Beim MSIX-Feature zum Anfügen von Apps handelt es sich um einen Dienst, mit dem MSIX-Anwendungen für die Host-VMs Ihrer Windows Virtual Desktop-Sitzung dynamisch bereitgestellt werden. Weitere Informationen finden Sie in der [Ankündigung in unserem Blog](https://techcommunity.microsoft.com/t5/windows-virtual-desktop/msix-app-attach-azure-portal-integration-public-preview/m-p/1986231). 
+
+### <a name="screen-capture-protection"></a>Schutz von Bildschirmaufnahmen 
+
+In diesem Monat hat auch die öffentliche Vorschauphase für den Schutz von Bildschirmaufnahmen begonnen. Sie können dieses Feature verwenden, um zu verhindern, dass vertrauliche Informationen auf den Clientendpunkten erfasst werden. Informationen zum Schutz von Bildschirmaufnahmen finden Sie auf [dieser Seite](https://aka.ms/WVDScreenCaptureProtection).  
+
+### <a name="built-in-roles"></a>Integrierte Rollen
+
+Wir haben neue integrierte Rollen für Windows Virtual Desktop in Bezug auf Administratorberechtigungen hinzugefügt. Weitere Informationen finden Sie unter [Integrierte Rollen für Windows Virtual Desktop](rbac.md). 
+
+### <a name="application-group-limit-increase"></a>Erhöhung des Grenzwerts für Anwendungsgruppen
+
+Wir haben den Standardgrenzwert für Anwendungsgruppen pro Azure Active Directory-Mandant auf 200 Gruppen erhöht.
+
+### <a name="client-updates-for-december-2020"></a>Clientupdates für Dezember 2020
+
+Wir haben neue Versionen der folgenden Clients veröffentlicht: 
+
+- Android
+- macOS
+- Windows
+
+Weitere Informationen zu Clientupdates finden Sie unter [Clientupdates](whats-new.md#client-updates).
 
 ## <a name="november-2020"></a>November 2020
 
