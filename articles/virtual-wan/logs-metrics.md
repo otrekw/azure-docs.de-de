@@ -8,18 +8,24 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 06/05/2020
 ms.author: cherylmc
-ms.openlocfilehash: 53b8d74d6eb35347d6ac5b27d12fa5b5eaed2582
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 62979a2cbe2a5912476ca65327a06eef9c36c1cb
+ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94566366"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98127888"
 ---
 # <a name="azure-virtual-wan-logs-and-metrics"></a>Azure Virtual WAN-Protokolle und -Metriken
 
-Sie können Azure Virtual WAN mit Azure Monitor überwachen. Virtual WAN ist ein Netzwerkdienst, der viele Netzwerk-, Sicherheits- und Routingfunktionen auf einer einzigen Bedienoberfläche vereint. Für Virtual WAN-VPN-Gateways, ExpressRoute-Gateways und Azure Firewall sind über Azure Monitor Protokollierungsfunktionen und Metriken verfügbar. Informationen zu Azure Firewall finden Sie unter [Azure Firewall-Protokolle und -Metriken](../firewall/logs-and-metrics.md).
+Sie können Azure Virtual WAN mit Azure Monitor überwachen. Virtual WAN ist ein Netzwerkdienst, der viele Netzwerk-, Sicherheits- und Routingfunktionen auf einer einzigen Bedienoberfläche vereint. Für Virtual WAN-VPN-Gateways, ExpressRoute-Gateways und Azure Firewall sind über Azure Monitor Protokollierungsfunktionen und Metriken verfügbar.
 
 In diesem Artikel werden die Metriken und Diagnosen erläutert, die über das Portal verfügbar sind. Metriken sind einfach und können Szenarien nahezu in Echtzeit unterstützen. Dadurch lassen sie sich für Warnungen und zur schnellen Problemerkennung einsetzen.
+
+## <a name="monitoring-secured-hub-azure-firewall"></a>Überwachen des gesicherten Hubs (Azure Firewall) 
+
+Sie können den gesicherten Hub mithilfe von Azure Firewall-Protokollen überwachen. Sie können aber auch Aktivitätsprotokolle verwenden, um Vorgänge für Azure Firewall-Ressourcen zu überwachen.
+
+Wenn Sie sich entschieden haben, den virtuellen Hub mithilfe der Azure-Firewall zu schützen, finden Sie hier relevante Protokolle und Metriken: [Azure Firewall-Protokolle und -Metriken](../firewall/logs-and-metrics.md).
 
 ## <a name="metrics"></a>Metriken
 

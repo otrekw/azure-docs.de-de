@@ -3,17 +3,17 @@ title: Anforderungen für Zeichnungspakete in Microsoft Azure Maps Creator (Vors
 description: Erfahren Sie, welche Anforderungen für Zeichnungspakete erfüllt sein müssen, um Ihre Plandateien für Einrichtungen in Kartendaten zu konvertieren
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 12/07/2020
+ms.date: 1/08/2021
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philMea
-ms.openlocfilehash: 26b6273b4dd2371790025515e35b71d1fc863ebe
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: bed5373cbb9967bd1d86bb80bb3a449430c3b6ae
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96903461"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98044780"
 ---
 # <a name="drawing-package-requirements"></a>Anforderungen für Zeichnungspakete
 
@@ -41,7 +41,7 @@ Nachfolgend finden Sie einige relevante Begriffe und Definitionen, die für die 
 | Ebene | Eine AutoCAD-DWG-Schicht.|
 | Ebene | Ein Gebäudebereich in einer bestimmten Höhe. Hierbei kann es sich beispielsweise um ein Stockwerk handeln. |
 | Querverweis  |Eine Datei im DWG-Dateiformat (*.dwg) von AutoCAD, die als externe Referenz an die Hauptzeichnung angefügt wird.  |
-| Funktion | Ein Objekt, das eine Geometrie mit zusätzlichen Metadateninformationen kombiniert. |
+| Funktion | Ein Objekt, das eine Geometrie mit weiteren Metadateninformationen kombiniert. |
 | Featureklassen | Eine allgemeine Blaupause für Features. So ist beispielsweise eine *Einheit* eine Featureklasse, während es sich bei einem *Büro* um ein Feature handelt. |
 
 ## <a name="drawing-package-structure"></a>Struktur eines Zeichnungspakets
@@ -49,9 +49,9 @@ Nachfolgend finden Sie einige relevante Begriffe und Definitionen, die für die 
 Bei einem Zeichnungspaket handelt es sich um ein ZIP-Archiv mit folgenden Dateien:
 
 * DWG-Dateien im DWG-Dateiformat von AutoCAD
-* Eine Datei vom Typ _manifest.json_ für eine einzelne Einrichtung
+* Eine _manifest.json_-Datei, in der die DWG-Dateien im Zeichnungspaket beschrieben sind.
 
-DWG-Dateien können innerhalb des Ordners beliebig organisiert sein. Die Manifestdatei muss sich jedoch im Stammverzeichnis des Ordners befinden. Der Ordner muss in einer einzelnen Archivdatei mit der Erweiterung „.zip“ gezippt sein. In den nächsten Abschnitten werden die Anforderungen für die DWG-Dateien, die Manifestdatei und den Inhalt dieser Dateien erläutert.  
+Das Zeichnungspaket muss als ZIP in einer einzelnen Archivdatei verpackt sein und die ZIP-Erweiterung aufweisen. Die DWG-Dateien können innerhalb des Pakets beliebig strukturiert sein. Die Manifestdatei muss sich jedoch im Stammverzeichnis des gezippten Pakets befinden. In den nächsten Abschnitten werden die Anforderungen für die DWG-Dateien, die Manifestdatei und den Inhalt dieser Dateien erläutert.
 
 ## <a name="dwg-files-requirements"></a>Anforderungen für DWG-Dateien
 
@@ -60,6 +60,7 @@ Für jede Ebene der Einrichtung ist jeweils eine einzelne DWG-Datei erforderlich
 * Sie muss die Schichten _Exterior_ (Außenbereich) und _Unit_ (Einheit) definieren. Folgende Schichten können optional definiert werden: _Wall_ (Wand), _Door_ (Tür), _UnitLabel_ (Einheitenbezeichnung), _Zone_ (Zone) und _ZoneLabel_ (Zonenbezeichnung).
 * Sie darf keine Features mehrerer Ebenen enthalten.
 * Sie darf keine Features mehrerer Einrichtungen enthalten.
+* Sie muss auf das gleiche Maßsystem und die gleiche Maßeinheit wie die anderen DWG-Dateien im Zeichnungspaket verweisen.
 
 Vom [Azure Maps-Konvertierungsdienst](/rest/api/maps/conversion) können folgende Featureklassen aus einer DWG-Datei extrahiert werden:
 
@@ -78,19 +79,19 @@ DWG-Schichten müssen außerdem folgende Kriterien erfüllen:
 
 * Der Ursprung von Zeichnungen muss für alle DWG-Dateien am gleichen Breiten- und Längengrad ausgerichtet sein.
 * Alle Ebenen müssen über die gleiche Ausrichtung verfügen.
-* Polygone, die sich selbst schneiden, werden automatisch repariert, und vom [Azure Maps-Konvertierungsdienst](/rest/api/maps/conversion) wird eine entsprechende Warnung ausgelöst. Die Ergebnisse der Reparatur sollten manuell überprüft werden, da sie möglicherweise nicht den erwarteten Ergebnissen entsprechen.
+* Polygone, die sich selbst schneiden, werden automatisch repariert, und vom [Azure Maps-Konvertierungsdienst](/rest/api/maps/conversion) wird eine entsprechende Warnung ausgelöst. Es empfiehlt sich, die reparierten Ergebnisse manuell zu überprüfen, da sie möglicherweise nicht mit den erwarteten Ergebnissen übereinstimmen.
 
-Bei allen Schichtentitäten muss es sich um einen der folgenden Typen handeln: Linie, Polylinie, Polygon, Kreisbogen, Kreis oder Text (einzeilig). Alle anderen Entitätstypen werden ignoriert.
+Bei allen Schichtentitäten muss es sich um einen der folgenden Typen handeln: Linie, Polylinie, Polygon, Kreisbogen, Kreis, Ellipse (geschlossen) oder Text (einzeilig). Alle anderen Entitätstypen werden ignoriert.
 
-In der folgenden Tabelle werden die unterstützten Entitätstypen und die unterstützten Features für die einzelnen Schichten beschrieben. Sollte eine Schicht nicht unterstützte Entitätstypen enthalten, werden diese Entitäten vom [Azure Maps-Konvertierungsdienst](/rest/api/maps/conversion) ignoriert.  
+In der folgenden Tabelle werden die unterstützten Entitätstypen und die konvertierten Map-Funktionen für die einzelnen Schichten beschrieben. Sollte eine Schicht nicht unterstützte Entitätstypen enthalten, werden diese Entitäten vom [Azure Maps-Konvertierungsdienst](/rest/api/maps/conversion) ignoriert.  
 
-| Ebene | Entitätstypen | Features |
+| Ebene | Entitätstypen | Konvertierte Funktionen |
 | :----- | :-------------------| :-------
-| [Exterior](#exterior-layer) | Polygon, Polylinie (geschlossen), Kreis | Levels
-| [Einheit](#unit-layer) |  Polygon, Polylinie (geschlossen), Kreis | Vertikale Durchdringungen, Einheiten
-| [Wall](#wall-layer)  | Polygon, Polylinie (geschlossen), Kreis | Nicht zutreffend Weitere Informationen finden Sie unter [Wall-Schicht](#wall-layer).
+| [Exterior](#exterior-layer) | Polygon, Polylinie (geschlossen), Kreis, Ellipse (geschlossen) | Levels
+| [Einheit](#unit-layer) |  Polygon, Polylinie (geschlossen), Kreis, Ellipse (geschlossen) | Vertikale Durchdringungen, Einheiten
+| [Wall](#wall-layer)  | Polygon, Polylinie (geschlossen), Kreis, Ellipse (geschlossen) | Nicht zutreffend Weitere Informationen finden Sie unter [Wall-Schicht](#wall-layer).
 | [Door](#door-layer) | Polygon, Polylinie, Linie, Kreisbogen, Kreis | Openings
-| [Zone](#zone-layer) | Polygon, Polylinie (geschlossen), Kreis | Zone
+| [Zone](#zone-layer) | Polygon, Polylinie (geschlossen), Kreis, Ellipse (geschlossen) | Zone
 | [UnitLabel](#unitlabel-layer) | Text (einzeilig) | Nicht zutreffend Von dieser Schicht können nur Eigenschaften zu den Einheitenfeatures der Unit-Schicht hinzugefügt werden. Weitere Informationen finden Sie unter [UnitLabel-Schicht](#unitlabel-layer).
 | [ZoneLabel](#zonelabel-layer) | Text (einzeilig) | Nicht zutreffend Von dieser Schicht können nur Eigenschaften zu den Zonenfeatures der Zone-Schicht hinzugefügt werden. Weitere Informationen finden Sie unter [ZoneLabel-Schicht](#zonelabel-layer).
 
@@ -102,8 +103,10 @@ Die DWG-Datei für die jeweilige Ebene muss eine Schicht zum Definieren der Gren
 
 Das [resultierende Einrichtungsdataset](tutorial-creator-indoor-maps.md#create-a-feature-stateset) enthält jeweils nur ein Ebenenfeature pro DWG-Datei – unabhängig davon, wie viele Entitätszeichnungen sich in der Exterior-Schicht befinden. Außerdem zu beachten:
 
-* Außenbereiche müssen als Polygon, Polylinie (geschlossen) oder Kreis gezeichnet werden.
-* Außenbereiche dürfen sich zwar überschneiden, werden jedoch zu einer einzelnen Geometrie aufgelöst.
+* Außenbereiche müssen als Polygon, Polylinie (geschlossen), Kreis oder Ellipse (geschlossen) gezeichnet werden.
+* Außenbereiche überschneiden sich zwar möglicherweise, werden jedoch zu einer einzelnen Geometrie aufgelöst.
+* Das resultierende Ebenenfeature muss mindestens 4 Quadratmeter betragen.
+* Das resultierende Ebenenfeature darf nicht größer als maximal 400 Quadratmeter sein.
 
 Enthält die Schicht mehrere sich überschneidende Polylinien, werden diese zu einem einzelnen Ebenenfeature aufgelöst. Wenn die Schicht mehrere Polylinien ohne Überschneidung enthält, verfügt das resultierende Ebenenfeature alternativ über eine Multipolygondarstellung.
 
@@ -111,9 +114,11 @@ Ein Beispiel für die Exterior-Schicht als Outline-Schicht ist im [Beispielzeich
 
 ### <a name="unit-layer"></a>Unit-Schicht
 
-In der DWG-Datei für die jeweilige Ebene wird eine Schicht mit Einheiten definiert. Bei Einheiten handelt es sich um betretbare Gebäudebereiche wie Büros, Flure, Treppenhäuser und Aufzüge. Die Unit-Schicht muss folgende Anforderungen erfüllen:
+In der DWG-Datei für die jeweilige Ebene wird eine Schicht mit Einheiten definiert. Bei Einheiten handelt es sich um betretbare Gebäudebereiche wie Büros, Flure, Treppenhäuser und Aufzüge. Wenn die `VerticalPenetrationCategory`-Eigenschaft definiert ist, werden navigierbare Einheiten, die sich über mehrere Ebenen erstrecken, wie etwa Aufzüge und Treppen, in vertikale Durchdringungsfunktionen konvertiert. Vertikale Durchdringungsfunktionen, die einander überschneiden, werden einem `setid` zugewiesen.
 
-* Einheiten müssen als Polygon, Polylinie (geschlossen) oder Kreis gezeichnet werden.
+Die Unit-Schicht muss folgende Anforderungen erfüllen:
+
+* Einheiten müssen als Polygon, Polylinie (geschlossen), Kreis oder Ellipse (geschlossen) gezeichnet werden.
 * Einheiten müssen innerhalb der Außengrenzen der Einrichtung liegen.
 * Einheiten dürfen sich nicht teilweise überschneiden.
 * Einheiten dürfen keine Geometrie enthalten, die sich selbst schneidet.
@@ -126,7 +131,7 @@ Ein Beispiel für die Units-Schicht ist im [Beispielzeichenpaket](https://github
 
 Die DWG-Datei für die jeweilige Ebene kann eine Schicht enthalten, die die physischen Abmessungen von Wänden, Säulen und anderen Baustrukturen definiert.
 
-* Wände müssen als Polygon, Polylinie (geschlossen) oder Kreis gezeichnet werden.
+* Walls müssen als Polygon, Polylinie (geschlossen), Kreis oder Ellipse (geschlossen) gezeichnet werden.
 * Wall-Schichten dürfen nur eine als Baustruktur interpretierte Geometrie enthalten.
 
 Ein Beispiel für die Walls-Schicht ist im [Beispielzeichenpaket](https://github.com/Azure-Samples/am-creator-indoor-data-examples) enthalten.
@@ -141,9 +146,9 @@ Türöffnungen werden in einem Azure Maps-Dataset als Segment mit einer einzeln
 
 ### <a name="zone-layer"></a>Zone-Schicht
 
-Die DWG-Datei für die jeweilige Ebene kann eine Zone-Schicht enthalten, die die physischen Abmessungen von Zonen definiert. Eine Zone kann ein leerer Innenraum oder ein Hinterhof sein.
+Die DWG-Datei für die jeweilige Ebene kann eine Zone-Schicht enthalten, die die physischen Abmessungen von Zonen definiert. Eine Zone ist ein nicht navigierbarer Bereich, der benannt und wiedergegeben werden kann. Zonen können mehrere Ebenen umfassen und mithilfe der ZoneSetId-Eigenschaft gruppiert werden.
 
-* Zonen müssen als Polygon, Polylinie (geschlossen) oder Kreis gezeichnet werden.
+* Zonen müssen als Polygon, Polylinie (geschlossen) oder Ellipse (geschlossen) gezeichnet werden.
 * Zonen können sich überlappen.
 * Zonen können innerhalb oder außerhalb der Außengrenze der Einrichtung liegen.
 
@@ -153,7 +158,7 @@ Ein Beispiel für die Zone-Schicht ist im [Beispielzeichenpaket](https://github.
 
 ### <a name="unitlabel-layer"></a>UnitLabel-Schicht
 
-Die DWG-Datei für die jeweilige Ebene kann eine UnitLabel-Schicht enthalten. Durch die UnitLabel-Schicht wird eine Namenseigenschaft zu Einheiten hinzugefügt, die aus der Unit-Schicht extrahiert wurden. Für Einheiten mit einer Namenseigenschaft können zusätzliche Details in der Manifestdatei angegeben werden.
+Die DWG-Datei für die jeweilige Ebene kann eine UnitLabel-Schicht enthalten. Durch die UnitLabel-Schicht wird eine Namenseigenschaft zu Einheiten hinzugefügt, die aus der Unit-Schicht extrahiert wurden. Für Einheiten mit einer Namenseigenschaft können weitere Details in der Manifestdatei angegeben werden.
 
 * Bei Einheitenbezeichnungen muss es sich um einzeilige Textentitäten handeln.
 * Einheitenbezeichnungen müssen innerhalb der Grenzen der zugehörigen Einheit liegen.
@@ -163,7 +168,7 @@ Ein Beispiel für die UnitLabel-Schicht ist im [Beispielzeichenpaket](https://gi
 
 ### <a name="zonelabel-layer"></a>ZoneLabel-Schicht
 
-Die DWG-Datei für die jeweilige Ebene kann eine ZoneLabel-Schicht enthalten. Durch diese Schicht wird aus der Zone-Schicht extrahierten Zonen eine Namenseigenschaft hinzugefügt. Für Zonen mit einer Namenseigenschaft können zusätzliche Details in der Manifestdatei angegeben werden.
+Die DWG-Datei für die jeweilige Ebene kann eine ZoneLabel-Schicht enthalten. Durch diese Schicht wird aus der Zone-Schicht extrahierten Zonen eine Namenseigenschaft hinzugefügt. Für Zonen mit einer Namenseigenschaft können weitere Details in der Manifestdatei angegeben werden.
 
 * Bei Zonenbezeichnungen muss es sich um einzeilige Textentitäten handeln.
 * Zonenbezeichnungen müssen innerhalb der Grenzen der zugehörigen Zone liegen.
@@ -186,14 +191,14 @@ Im Zusammenhang mit der Verwendung der Manifestobjekte müssen zwar gewisse Anfo
 | `buildingLevels` | true | Gibt die Ebenen der Gebäude und die Dateien an, die den Plan der Ebenen enthalten. |
 | `georeference` | true | Enthält numerische geografische Informationen für die Einrichtungszeichnung. |
 | `dwgLayers` | true | Listet die Namen der Schichten auf. Außerdem werden für jede Schicht die Namen der zugehörigen Features aufgelistet. |
-| `unitProperties` | false | Ermöglicht das Einfügen zusätzlicher Metadaten für die Einheitenfeatures. |
-| `zoneProperties` | false | Ermöglicht das Einfügen zusätzlicher Metadaten für die Zonenfeatures. |
+| `unitProperties` | false | Ermöglicht das Einfügen weiterer Metadaten für die Einheitenfeatures. |
+| `zoneProperties` | false | Ermöglicht das Einfügen weiterer Metadaten für die Zonenfeatures. |
 
 In den nächsten Abschnitten werden die Anforderungen für die einzelnen Objekte erläutert.
 
 ### `directoryInfo`
 
-| Eigenschaft  | type | Erforderlich | BESCHREIBUNG |
+| Eigenschaft  | type | Erforderlich | Beschreibung |
 |-----------|------|----------|-------------|
 | `name`      | Zeichenfolge | true   |  Name des Gebäudes. |
 | `streetAddress`|    Zeichenfolge |    false    | Adresse des Gebäudes. |
@@ -214,7 +219,7 @@ In den nächsten Abschnitten werden die Anforderungen für die einzelnen Objekte
 
 Das Objekt `buildingLevels` enthält ein JSON-Array mit Gebäudeebenen.
 
-| Eigenschaft  | type | Erforderlich | BESCHREIBUNG |
+| Eigenschaft  | type | Erforderlich | Beschreibung |
 |-----------|------|----------|-------------|
 |`levelName`    |Zeichenfolge    |true |    Beschreibender Ebenenname. Beispiel: 1. Stock, Eingangsbereich, blaue Parkebene oder Keller.|
 |`ordinal` | integer |    true | Bestimmt die vertikale Reihenfolge der Ebenen. Jede Einrichtung muss über eine Ebene mit der Ordnungszahl 0 verfügen. |
@@ -246,7 +251,7 @@ Das Objekt `buildingLevels` enthält ein JSON-Array mit Gebäudeebenen.
 
 Das Objekt `unitProperties` enthält ein JSON-Array mit Einheiteneigenschaften.
 
-| Eigenschaft  | type | Erforderlich | BESCHREIBUNG |
+| Eigenschaft  | type | Erforderlich | Beschreibung |
 |-----------|------|----------|-------------|
 |`unitName`    |Zeichenfolge    |true    |Name der Einheit, die diesem Datensatz vom Typ `unitProperty` zugeordnet werden soll. Dieser Datensatz ist nur gültig, wenn die Schichten vom Typ `unitLabel` eine Bezeichnung vom Typ `unitName` enthalten. |
 |`categoryName`|    Zeichenfolge|    false    |Kategoriename. Eine vollständige Kategorienliste finden Sie [hier](https://aka.ms/pa-indoor-spacecategories). |
@@ -260,13 +265,13 @@ Das Objekt `unitProperties` enthält ein JSON-Array mit Einheiteneigenschaften.
 |`verticalPenetrationDirection`|    Zeichenfolge|    false    |Ist `verticalPenetrationCategory` definiert, kann optional die gültige Bewegungsrichtung definiert werden. Zulässige Werte: `lowToHigh`, `highToLow`, `both` und `closed`. Standardwert: `both`.|
 | `nonPublic` | bool | false | Gibt an, ob die Einheit öffentlich zugänglich ist. |
 | `isRoutable` | bool | false | Wenn diese Eigenschaft auf `false` festgelegt ist, ist keine Bewegung zur oder durch die Einheit möglich. Standardwert: `true`. |
-| `isOpenArea` | bool | false | Ermöglicht dem Navigations-Agent den Zugang/die Zufahrt zur Einheit, ohne dass eine Öffnung mit der Einheit verknüpft sein muss. Standardmäßig ist dieser Wert für Einheiten ohne Öffnungen auf `true` festgelegt, für Einheiten mit Öffnungen auf `false`. Wenn Sie `isOpenArea` für eine Einheit ohne Öffnungen manuell auf `false` festlegen, führt dies zu einer Warnung. Dies liegt daran, dass die resultierende Einheit von einem Navigations-Agent nicht erreicht werden kann.|
+| `isOpenArea` | bool | false | Ermöglicht dem Navigations-Agent den Zugang/die Zufahrt zur Einheit, ohne dass eine Öffnung mit der Einheit verknüpft sein muss. Standardmäßig ist dieser Wert für Einheiten ohne Öffnungen auf `true` festgelegt, für Einheiten mit Öffnungen auf `false`. Das manuelle Festlegen von `isOpenArea` auf `false` für eine Einheit ohne Öffnungen führt zu einer Warnung, da die sich ergebende Einheit nicht durch einen navigierenden Agent erreicht werden kann.|
 
 ### `zoneProperties`
 
 Das Objekt `zoneProperties` enthält ein JSON-Array mit Zoneneigenschaften.
 
-| Eigenschaft  | type | Erforderlich | BESCHREIBUNG |
+| Eigenschaft  | type | Erforderlich | Beschreibung |
 |-----------|------|----------|-------------|
 |zoneName        |Zeichenfolge    |true    |Name der Zone, der dem Datensatz `zoneProperty` zugeordnet werden soll. Dieser Datensatz ist nur gültig, wenn die Schicht `zoneLabel` der Zone eine Bezeichnung vom Typ `zoneName` enthält.  |
 |categoryName|    Zeichenfolge|    false    |Kategoriename. Eine vollständige Kategorienliste finden Sie [hier](https://aka.ms/pa-indoor-spacecategories). |
@@ -276,7 +281,7 @@ Das Objekt `zoneProperties` enthält ein JSON-Array mit Zoneneigenschaften.
 
 ### <a name="sample-drawing-package-manifest"></a>Exemplarisches Zeichnungspaketmanifest
 
-Nachfolgend finden Sie eine exemplarische Manifestdatei für das Beispielzeichnungspaket. Wechseln Sie zum [Beispielzeichnungspaket](https://github.com/Azure-Samples/am-creator-indoor-data-examples), um das gesamte Paket herunterzuladen.
+Unten finden Sie die Manifestdatei für das Beispielzeichnungspaket. Wechseln Sie zum [Beispielzeichnungspaket](https://github.com/Azure-Samples/am-creator-indoor-data-examples), um das gesamte Paket herunterzuladen.
 
 #### <a name="manifest-file"></a>Manifestdatei
 

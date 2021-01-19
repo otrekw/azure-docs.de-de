@@ -66,6 +66,8 @@
           href: sap-hana-backup-support-matrix.md
         - name: Supportmatrix für Sicherungen von Azure-Dateifreigaben
           href: azure-file-share-support-matrix.md
+        - name: "Supportmatrix für die Azure\_Disk-Sicherung"
+          href: disk-backup-support-matrix.md
         - name: Active Directory-Domänencontroller
           href: active-directory-backup-restore.md
         - name: Unterstützte VM-SKUs für Azure Policy
@@ -82,6 +84,8 @@
           href: backup-azure-file-folder-backup-faq.md
         - name: 'Häufig gestellte Fragen: Sichern von Azure Files'
           href: backup-azure-files-faq.md
+        - name: 'Häufig gestellte Fragen: Azure Disk Backup'
+          href: disk-backup-faq.md
         - name: 'Häufig gestellte Fragen: Sichern von SQL Server-Datenbanken auf virtuellen Azure-Computern'
           href: faq-backup-sql-server.md
         - name: 'Häufig gestellte Fragen: Sichern von SAP HANA-Datenbanken auf virtuellen Azure-Computern'
@@ -210,6 +214,14 @@
               href: backup-azure-restore-system-state.md
         - name: Verwalten
           href: backup-azure-manage-mars.md
+    - name: Azure Disk Backup
+      items:
+        - name: Übersicht
+          href: disk-backup-overview.md
+        - name: Backup
+          href: backup-managed-disks.md
+        - name: Restore
+          href: restore-managed-disks.md
     - name: Sichern von Azure-Dateifreigaben
       items:
         - name: Übersicht
@@ -441,6 +453,8 @@
           href: backup-azure-scdpm-troubleshooting.md
         - name: Azure-Dateifreigabe
           href: troubleshoot-azure-files.md
+        - name: Azure Disk Backup
+          href: disk-backup-troubleshoot.md
         - name: SQL Server
           href: backup-sql-server-azure-troubleshoot.md
         - name: SAP HANA-Sicherung auf virtuellen Azure-Computern
@@ -468,7 +482,7 @@
       href: ./policy-reference.md
 - name: Ressourcen
   items:
-    - name: Compliance
+    - name: Kompatibilität
       href: compliance-offerings.md
     - name: Azure-Roadmap
       href: 'https://azure.microsoft.com/roadmap/'

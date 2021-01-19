@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 75839893d0048841440f2c790df7d23ad825d962
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 8acc547552cecaebb60888bb7b9777f6279b9b7c
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97093467"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98015758"
 ---
 # <a name="invite-internal-users-to-b2b-collaboration"></a>Einladen von internen Benutzern zur B2B-Zusammenarbeit
 
@@ -44,8 +44,7 @@ Falls der interne Benutzer auf einen B2B-Benutzer umgestellt werden muss, sollte
 
 Sie können PowerShell oder die Einladungs-API nutzen, um eine B2B-Einladung an einen internen Benutzer zu senden. Stellen Sie sicher, dass die E-Mail-Adresse, die Sie für die Einladung verwenden möchten, für das interne Benutzerobjekt als externe E-Mail-Adresse festgelegt ist.
 
-- Verwenden Sie für einen reinen Cloudbenutzer die E-Mail-Adresse in der „User.OtherMails“-Eigenschaft für die Einladung.
-- Für einen lokal synchronisierten Benutzer müssen Sie den Wert in der „User.Mail“-Eigenschaft für die Einladung verwenden.
+- Sie müssen die E-Mail-Adresse in der „User.OtherMails“-Eigenschaft für die Einladung verwenden.
 - Die Domäne in der „Mail“-Eigenschaft des Benutzers muss mit dem Konto übereinstimmen, dass dieser für die Anmeldung verwendet. Andernfalls kann der Benutzer von einigen Diensten, z. B. Teams, nicht authentifiziert werden.
 
 Standardmäßig wird dem Benutzer beim Einladevorgang eine E-Mail mit einem Hinweis zur Einladung gesendet, aber Sie können diese E-Mail auch unterdrücken und eine eigene Nachricht senden.

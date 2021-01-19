@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to, contperf-fy21q1, automl
 ms.date: 08/20/2020
-ms.openlocfilehash: 47cc67b408ff7fa50a244fffa8d41e640df0ecf3
-ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
+ms.openlocfilehash: 2b24b6480e4331f3a9470dcbb49e7ad221809187
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/28/2020
-ms.locfileid: "97796430"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98132081"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>Automatisches Trainieren eines Modells für die Zeitreihenprognose
 
@@ -224,6 +224,9 @@ Unterstützte Anpassungen für `forecasting`-Aufgaben umfassen:
 |**Löschen von Spalten** |Gibt Spalten an, die aus der Featureverwendung gelöscht werden sollen.|
 
 Um die Featurisierung mit dem SDK anzupassen, geben Sie `"featurization": FeaturizationConfig` in Ihrem `AutoMLConfig`-Objekt an. Erfahren Sie mehr über [benutzerdefinierte Featurisierungen](how-to-configure-auto-features.md#customize-featurization).
+
+>[!NOTE]
+> Die Funktion **Spalten löschen** ist seit SDK-Version 1.19 veraltet. Löschen Sie Spalten im Rahmen der Datenbereinigung aus Ihrem Dataset, bevor Sie es in Ihrem automatisierten ML-Experiment nutzen. 
 
 ```python
 featurization_config = FeaturizationConfig()

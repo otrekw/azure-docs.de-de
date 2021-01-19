@@ -13,12 +13,13 @@ ms.date: 10/01/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev, seoapril2019
-ms.openlocfilehash: e9724bb2e5377f84904dc77c33375c39f3077dd4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ROBOTS: NOINDEX
+ms.openlocfilehash: deb923a52e5d6cd5384dbf94d2249572b25b1a61
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91631408"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98063840"
 ---
 # <a name="integrating-with-microsoft-identity-platform"></a>Integration in Microsoft Identity Platform
 
@@ -82,7 +83,7 @@ Die Integration in Microsoft Identity Platform bietet den Vorteil, dass Sie kein
 
 **Protokolle gemäß Branchenstandard.**  Microsoft ist bestrebt, Branchenstandards zu unterstützen. Microsoft Identity Platform unterstützt die Branchenstandardprotokolle OAuth 2.0 und OpenID Connect 1.0. Erfahren Sie mehr über [Azure Active Directory-Authentifizierungsprotokolle](active-directory-v2-protocols.md).
 
-**Open-Source-Bibliotheken.**  Microsoft bietet zur Beschleunigung der Entwicklung für gängige Sprachen und Plattformen vollständig unterstützte Open-Source-Bibliotheken. Der Quellcode wird unter Apache 2.0 lizenziert, und Sie sind eingeladen, sich an den Projekten zu beteiligen. Erfahren Sie mehr über [Microsoft Authentication Library (MSAL)](reference-v2-libraries.md).
+**Open-Source-Bibliotheken.**  Microsoft bietet zur Beschleunigung der Entwicklung für gängige Sprachen und Plattformen vollständig unterstützte Open-Source-Bibliotheken. Der Quellcode wird unter Apache 2.0 lizenziert, und Sie sind eingeladen, sich an den Projekten zu beteiligen. Erfahren Sie mehr über die [Microsoft Authentication Library (MSAL)](reference-v2-libraries.md).
 
 ### <a name="worldwide-presence-and-high-availability"></a>Weltweite Präsenz und Hochverfügbarkeit
 

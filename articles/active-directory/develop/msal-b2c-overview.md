@@ -1,7 +1,7 @@
 ---
 title: Verwenden von MSAL.js mit Azure AD B2C
 titleSuffix: Microsoft identity platform
-description: Microsoft Authentication Library für JavaScript (MSAL.js) ermöglicht es Anwendungen, mit Azure AD B2C zusammenzuarbeiten und Token zum Aufrufen gesicherter Web-APIs abzurufen. Bei diesen Web-APIs kann es sich um Microsoft Graph, andere Microsoft-APIs, Web-APIs von Dritten oder um Ihre eigene Web-API handeln.
+description: Die Microsoft Authentication Library für JavaScript (MSAL.js) ermöglicht es Anwendungen, mit Azure AD B2C zusammenzuarbeiten und Token zum Aufrufen gesicherter Web-APIs abzurufen. Bei diesen Web-APIs kann es sich um Microsoft Graph, andere Microsoft-APIs, Web-APIs von Dritten oder um Ihre eigene Web-API handeln.
 services: active-directory
 author: negoe
 manager: CelesteDG
@@ -13,16 +13,16 @@ ms.date: 06/05/2020
 ms.author: negoe
 ms.reviewer: nacanuma
 ms.custom: aaddev devx-track-js
-ms.openlocfilehash: ef1c0003978251dd2637915e56dc396e85f4438f
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 53294a30b38bed7ab7516443277cac24e4fef4c1
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97107871"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98063721"
 ---
-# <a name="use-microsoft-authentication-library-for-javascript-to-work-with-azure-ad-b2c"></a>Verwenden von Microsoft Authentication Library für JavaScript für die Zusammenarbeit mit Azure AD B2C
+# <a name="use-the-microsoft-authentication-library-for-javascript-to-work-with-azure-ad-b2c"></a>Verwenden der Microsoft Authentication Library für JavaScript für die Zusammenarbeit mit Azure AD B2C
 
-Mit [Microsoft Authentication Library für JavaScript (MSAL.js)](https://github.com/AzureAD/microsoft-authentication-library-for-js) können JavaScript-Entwickler Benutzern die Authentifizierung mit Social-Media- und lokalen Identitäten über [Azure Active Directory B2C (Azure AD B2C)](../../active-directory-b2c/overview.md) ermöglichen.
+Mit der [Microsoft Authentication Library für JavaScript (MSAL.js)](https://github.com/AzureAD/microsoft-authentication-library-for-js) können JavaScript-Entwickler Benutzern die Authentifizierung mit Social-Media- und lokalen Identitäten über [Azure Active Directory B2C (Azure AD B2C)](../../active-directory-b2c/overview.md) ermöglichen.
 
 Wenn Sie Azure AD B2C als Identitätsverwaltungsdienst verwenden, können Sie anpassen und steuern, wie Kunden sich registrieren, anmelden und ihre Profile verwalten, wenn sie Ihre Anwendungen verwenden. Mit Azure AD B2C können Sie auch die Benutzeroberfläche, die von Ihrer Anwendung während des Authentifizierungsvorgangs angezeigt wird, mit Ihrer Marke versehen und anpassen.
 

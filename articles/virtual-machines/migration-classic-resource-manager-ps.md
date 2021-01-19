@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 02/06/2020
 ms.author: tagore
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 07b511182950095c356887d72ffde75ac098674d
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: 82eaa597796bf3772faa90a9dbc4151da935c46a
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94904642"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98027722"
 ---
 # <a name="migrate-iaas-resources-from-classic-to-azure-resource-manager-by-using-powershell"></a>Migrieren von IaaS-Ressourcen vom klassischen Bereitstellungsmodell zu Azure Resource Manager mithilfe von PowerShell
 
@@ -265,7 +265,7 @@ Wenn die vorbereitete Konfiguration in Ordnung ist, können Sie den Vorgang fort
 Sobald die Migration der virtuellen Computer abgeschlossen ist, überprüfen Sie, ob die folgenden Voraussetzungen erfüllt sind, bevor Sie die Speicherkonten migrieren.
 
 > [!NOTE]
-> Wenn Ihrem Speicherkonto keine Datenträger oder VM-Daten zugeordnet sind, können Sie direkt mit dem Abschnitt „Überprüfen von Speicherkonten und Starten der Migration“ fortfahren.
+> Wenn Ihrem Speicherkonto keine Datenträger oder VM-Daten zugeordnet sind, können Sie direkt mit dem Abschnitt „Überprüfen von Speicherkonten und Starten der Migration“ fortfahren. Beachten Sie außerdem, dass beim Löschen der klassischen Datenträger, VM-Images oder Betriebssystemimages die VHD-Quelldateien im Speicherkonto nicht entfernt werden. Jedoch wird die Lease für diese VHD-Dateien abgebrochen, sodass sie nach der Migration für die Erstellung von ARM-Datenträgern oder -Images verwendet werden können.
 
 * Voraussetzungsüberprüfungen, wenn Sie virtuelle Computer migriert haben oder Ihr Speicherkonto über Datenträgerressourcen verfügt:
     * Migrieren virtueller Computer, deren Datenträger im Speicherkonto gespeichert sind

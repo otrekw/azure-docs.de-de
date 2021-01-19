@@ -6,15 +6,15 @@ ms.service: virtual-machines
 ms.subservice: networking
 ms.topic: how-to
 ms.workload: infrastructure-services
-ms.date: 11/03/2020
+ms.date: 1/12/2020
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 08d5e20bf0755a71e70a0e446cf96d33bb42ad59
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: aadf4000da4ab88a3c3b4dee37d2179eb49d39d7
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93351845"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98132063"
 ---
 # <a name="create-a-fully-qualified-domain-name-in-the-azure-portal-for-a-linux-vm"></a>Erstellen eines vollqualifizierten Domänennamens im Azure-Portal für eine Linux-VM
 
@@ -24,16 +24,14 @@ Beim Erstellen eines virtuellen Computers (Virtual Machine, VM) im [Azure-Portal
 In diesem Artikel wird davon ausgegangen, dass Sie bereits einen virtuellen Computer erstellt haben. Bei Bedarf können Sie im Portal eine [Linux](./linux/quick-create-portal.md)- oder [Windows](./windows/quick-create-portal.md)-VM erstellen. Sobald Ihr virtueller Computer eingerichtet ist und ausgeführt wird, gehen Sie folgendermaßen vor:
 
 
-1. Wählen Sie im Portal Ihren virtuellen Computer aus. Wählen Sie unter **DNS-Name** die Option **Konfigurieren** aus.
-2. Geben Sie den DNS-Namen ein, und wählen Sie dann oben auf der Seite **Speichern** aus.
-3. Um zum Übersichtsblatt der VM zurückzukehren, schließen Sie das Blatt **Konfiguration** , indem Sie in der rechten oberen Ecke das **X** auswählen. 
-4. Überprüfen Sie, ob der *DNS-Name* jetzt richtig angezeigt wird.
-   
-
-
+1. Wählen Sie im Portal Ihren virtuellen Computer aus. 
+1. Wählen Sie im linken Menü die Option **Konfiguration** aus.
+1. Geben Sie unter **DNS-Namensbezeichnung** das Präfix ein, das Sie verwenden möchten.
+1. Wählen Sie im oberen Bereich der Seite **Speichern** aus.
+1. Wechseln Sie zum VM-Übersichtsblatt zurück, indem Sie im linken Menü **Übersicht** auswählen. 
+1. Überprüfen Sie, ob der *DNS-Name* richtig angezeigt wird. 
 
 ## <a name="next-steps"></a>Nächste Schritte
-Ihre VM verfügt nun über eine öffentliche IP-Adresse und einen DNS-Namen. Als Nächstes können Sie allgemeine Anwendungsframeworks oder Dienste wie z. B. NGINX, MongoDB und Docker bereitstellen.
 
-Außerdem können Sie sich ausführlicher [über die Verwendung von Resource Manager informieren](../azure-resource-manager/management/overview.md), um Hinweise zum Erstellen Ihrer Azure-Bereitstellungen zu erhalten.
+Sie können auch DNS-Zonen mithilfe von [Azure DNS-Zonen](../dns/dns-getstarted-portal.md) verwalten.
 

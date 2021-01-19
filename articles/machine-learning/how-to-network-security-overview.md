@@ -11,12 +11,12 @@ author: peterclu
 ms.date: 10/06/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, references_regions, contperf-fy21q1
-ms.openlocfilehash: dd24c4f20fa3a56d25ef142947268b2d2b75474a
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 664264f2cd810f232b967f5af78ba3d522f0a41f
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97029599"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98060009"
 ---
 # <a name="virtual-network-isolation-and-privacy-overview"></a>Übersicht zu Isolation und Datenschutz bei virtuellen Netzwerken
 
@@ -152,7 +152,8 @@ Wenn sich Ihr Speicher in einem VNet befindet, müssen Sie zunächst zusätzlich
 Informationen zur Aktivierung der vollen Studio-Funktionalität innerhalb eines VNets finden Sie unter [Verwenden von Azure Machine Learning Studio in einem virtuellen Azure-Netzwerk](how-to-enable-studio-virtual-network.md#configure-data-access-in-the-studio). Das Studio unterstützt Speicherkonten entweder unter Verwendung von Dienstendpunkten oder privaten Endpunkten.
 
 ### <a name="limitations"></a>Einschränkungen
-- [Von der ML-gestützten Datenbeschriftung](how-to-create-labeling-projects.md#use-ml-assisted-labeling) werden keine Standardspeicherkonten unterstützt, die hinter einem virtuellen Netzwerk gesichert sind. Sie müssen ein nicht standardmäßiges Speicherkonto für die ML-unterstützte Datenbeschriftung verwenden. Beachten Sie, dass das nicht standardmäßige Speicherkonto hinter dem virtuellen Netzwerk gesichert werden kann. 
+
+Von der [ML-gestützten Datenbeschriftung](how-to-create-labeling-projects.md#use-ml-assisted-data-labeling) werden keine Standardspeicherkonten unterstützt, die hinter einem virtuellen Netzwerk geschützt sind. Sie müssen ein nicht standardmäßiges Speicherkonto für die ML-unterstützte Datenbeschriftung verwenden. Beachten Sie, dass das nicht standardmäßige Speicherkonto hinter dem virtuellen Netzwerk gesichert werden kann. 
 
 ## <a name="configure-firewall-settings"></a>Konfigurieren der Firewalleinstellungen
 

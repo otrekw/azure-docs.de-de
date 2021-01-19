@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 06/26/2020
 ms.author: akjosh
-ms.openlocfilehash: 389842901a4c508015d527c0fd8fd87af57dcd9b
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 22cc9bf1bdfdb8a3026bb09f44e007ab3438325a
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94967923"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98046820"
 ---
 # <a name="log-analytics-virtual-machine-extension-for-windows"></a>Log Analytics-VM-Erweiterung für Windows
 
@@ -37,6 +37,7 @@ Die folgende Tabelle enthält eine Zuordnung der Version der Log Analytics-VM-Er
 
 | Log Analytics-Agent-Paketversion für Windows | Version der Log Analytics-VM-Erweiterung für Windows | Veröffentlichungsdatum | Versionsinformationen |
 |--------------------------------|--------------------------|--------------------------|--------------------------|
+| 10.20.18053| 1.0.18053.0 | Oktober 2020   | <ul><li>Neue Agent-Problembehandlung</li><li>Aktualisiert die Weise, in der der Agent Zertifikatänderungen bei Azure-Diensten behandelt</li></ul> |
 | 10.20.18040 | 1.0.18040.2 | August 2020   | <ul><li>Löst ein Problem in Azure Arc</li></ul> |
 | 10.20.18038 | 1.0.18038 | April 2020   | <ul><li>Ermöglicht Konnektivität über Private Link mithilfe von Azure Monitor Private Link-Bereichen.</li><li>Fügt eine Drosselung bei der Erfassung hinzu, um einen versehentlichen plötzlichen Anstieg der Erfassung in einem Arbeitsbereich zu vermeiden.</li><li>Fügt Unterstützung für zusätzliche Azure Government-Clouds und -Regionen hinzu.</li><li>Behebt einen Fehler, der zum Absturz von HealthService.exe führte.</li></ul> |
 | 10.20.18029 | 1.0.18029 | März 2020   | <ul><li>Fügt Unterstützung für SHA-2-Codesignaturen hinzu.</li><li>Verbessert Installation und Verwaltung von VM-Erweiterungen.</li><li>Behebt einen Fehler in Azure Arc für die Integration von Servern.</li><li>Fügt ein integriertes Tool zur Problembehandlung für den Kundensupport hinzu.</li><li>Fügt Unterstützung für zusätzliche Azure Government Regionen hinzu.</li> |

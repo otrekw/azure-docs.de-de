@@ -8,15 +8,15 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 11/10/2020
+ms.date: 01/07/2021
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: cdba4ce36322f9c3fb0f898cb7eb1d1185ed1dc6
-ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
+ms.openlocfilehash: fcd194e2503610db314f6a975a4afb1d27962f8c
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94636944"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98028225"
 ---
 # <a name="tutorial-use-the-video-indexer-api"></a>Tutorial: Verwenden der Video Indexer-API
 
@@ -29,8 +29,10 @@ In diesem Artikel wird veranschaulicht, wie Entwickler die [Video Indexer-API](h
 ## <a name="subscribe-to-the-api"></a>Abonnieren der API
 
 1. Melden Sie sich beim [Portal für Video Indexer-Entwickler an](https://api-portal.videoindexer.ai/).
+
+    Informationen zu [Anmeldeinformationen](release-notes.md#october-2020) finden Sie in den Versionshinweisen.
     
-    ![Beim Video Indexer-Entwicklerportal anmelden](./media/video-indexer-use-apis/video-indexer-api01.png)
+     ![Beim Video Indexer-Entwicklerportal anmelden](./media/video-indexer-use-apis/sign-in.png)
 
    > [!Important]
    > * Sie müssen denselben Anbieter verwenden, den Sie beim Anmelden für Video Indexer genutzt haben.
@@ -40,14 +42,14 @@ In diesem Artikel wird veranschaulicht, wie Entwickler die [Video Indexer-API](h
 
     Wählen Sie die Registerkarte [Produkte](https://api-portal.videoindexer.ai/products). Wählen Sie anschließend „Authorization“ (Autorisierung), und führen Sie den Vorgang für die Einrichtung des Abonnements durch.
     
-    ![Registerkarte „Products“ im Video Indexer-Entwicklerportal](./media/video-indexer-use-apis/video-indexer-api02.png)
+    ![Registerkarte „Products“ im Video Indexer-Entwicklerportal](./media/video-indexer-use-apis/authorization.png)
 
     > [!NOTE]
     > Für neue Benutzer wird das Abonnement der Autorisierung automatisch eingerichtet.
     
     Nach Abschluss des Abonnementvorgangs finden Sie Ihr Abonnement unter **Produkte** -> **Autorisierung**. Auf der Abonnementseite wird der primäre und sekundäre Schlüssel angezeigt. Die Schlüssel sollten geschützt werden. Die Schlüssel sollten nur von Ihrem Servercode verwendet werden. Sie sollten nicht auf Clientseite (.js, .html usw.) verfügbar sein.
 
-    ![Abonnement und Schlüssel im Video Indexer-Entwicklerportal](./media/video-indexer-use-apis/video-indexer-api03.png)
+    ![Abonnement und Schlüssel im Video Indexer-Entwicklerportal](./media/video-indexer-use-apis/subscriptions.png)
 
 > [!TIP]
 > Video Indexer-Benutzer können einen einzelnen Abonnementschlüssel verwenden, um eine Verbindung mit mehreren Video Indexer-Konten herzustellen. Sie können diese Video Indexer-Konten dann mit unterschiedlichen Media Services-Konten verknüpfen.

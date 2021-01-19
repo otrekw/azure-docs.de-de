@@ -7,12 +7,12 @@ ms.service: bastion
 ms.topic: troubleshooting
 ms.date: 10/16/2019
 ms.author: charwen
-ms.openlocfilehash: d4f5d4b7fed8f14f048794616ee272342d1e8343
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 23b7a66afcc91cf1cf4a5dd9f720aad24ad40071
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97915554"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98133989"
 ---
 # <a name="troubleshoot-azure-bastion"></a>Problembehandlung für Azure Bastion
 
@@ -22,11 +22,7 @@ In diesem Artikel erfahren Sie, wie Sie die Problembehandlung für Azure Bastio
 
 **F:** Beim Versuch, eine NSG im Azure Bastion-Subnetz zu erstellen, wird ein mit dem folgenden vergleichbarer Fehler angezeigt: *„Die Netzwerksicherheitsgruppe <NSG name> verfügt nicht über die erforderlichen Regeln für das Azure Bastion-Subnetz ‚AzureBastionSubnet‘“* .
 
-**A:** Wenn Sie eine NSG erstellen und auf *AzureBastionSubnet* anwenden, stellen Sie sicher, dass Sie die folgenden Regeln in Ihrer NSG hinzugefügt haben. Wenn Sie diese Regeln nicht hinzufügen, schlägt die Erstellung/Aktualisierung der NSG fehl.
-
-1. Konnektivität der Steuerungsebene – eingehend an 443 von GatewayManager
-2. Diagnoseprotokollierung und andere – ausgehend an 443 an AzureCloud (Regionale Tags innerhalb dieses Diensttags werden noch nicht unterstützt.)
-3. Ziel-VM – ausgehend für 3389 und 22 an VirtualNetwork
+**A:** Wenn Sie eine NSG erstellen und auf *AzureBastionSubnet* anwenden, stellen Sie sicher, dass Sie der NSG die erforderlichen Regeln hinzugefügt haben. Eine Liste der erforderlichen Regeln finden Sie unter [Verwenden von NSG-Zugriff und Azure Bastion](./bastion-nsg.md). Wenn Sie diese Regeln nicht hinzufügen, schlägt die Erstellung/Aktualisierung der NSG fehl.
 
 Ein Referenzbeispiel für die NSG-Regeln finden Sie in der [Schnellstartvorlage](https://github.com/Azure/azure-quickstart-templates/tree/master/101-azure-bastion-nsg).
 Weitere Informationen finden Sie im [NSG-Leitfaden für Azure Bastion](bastion-nsg.md).

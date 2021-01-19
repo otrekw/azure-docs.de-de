@@ -5,12 +5,12 @@ author: IngridAtMicrosoft
 ms.topic: how-to
 ms.author: inhenkel
 ms.date: 12/04/2020
-ms.openlocfilehash: 31cf89cb66dfbc404d65f8fc09b96c03e1be2f8f
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: d49f048df7a624dc490acf7cb4c8e5f33aa5f1c6
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97401317"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98060230"
 ---
 # <a name="troubleshoot-live-video-analytics-on-iot-edge"></a>Troubleshooting Live Video Analytics in IoT Edge
 
@@ -65,6 +65,8 @@ Sie können das Azure-Portal verwenden, um eine Diagnose des Mediengraphs mithil
     * 406 – das IoT Edge-Gerät ist offline oder sendet keine Statusberichte.
     * 500 – in der IoT Edge-Runtime ist ein Fehler aufgetreten.
 
+    > [!TIP]
+    > Wenn in Ihrer Umgebung Probleme bei der Ausführung von Azure IoT Edge-Modulen auftreten, nutzen Sie **[Azure IoT Edge: Standarddiagnoseschritte](https://docs.microsoft.com/azure/iot-edge/troubleshoot?view=iotedge-2018-06&preserve-view=true)** als Leitfaden zur Problembehandlung und Diagnose.
 ### <a name="post-deployment-direct-method-error-code"></a>Nach der Bereitstellung: Fehlercode der direkten Methode
 1. Wenn Sie einen Status `501 code` empfangen, überprüfen Sie, ob der Name der direkten Methode korrekt ist. Wenn der Methodenname und die Anforderungsnutzlast korrekt sind, sollten Sie Ergebnisse mit dem Erfolgscode „200“ erhalten. 
 1. Wenn die Angabe der Anforderungsnutzlast ungenau ist, erhalten Sie den Status „`400 code`“ und eine Antwortnutzlast, die den Fehlercode und eine Meldung angibt, die Sie bei der Diagnose des Problems bei Ihrem direkten Methodenaufrufe unterstützen soll.
@@ -93,6 +95,8 @@ Live Video Analytics wird als IoT Edge-Modul auf dem IoT Edge-Gerät bereitgeste
 * [Live Video Analytics oder andere benutzerdefinierte IoT Edge-Module können keine Nachricht an den Edge-Hub senden und geben einen 404-Fehler aus](../../iot-edge/troubleshoot-common-errors.md#iot-edge-module-fails-to-send-a-message-to-edgehub-with-404-error).
 * [Das IoT Edge-Modul wird erfolgreich bereitgestellt und verschwindet dann vom Gerät](../../iot-edge/troubleshoot-common-errors.md#iot-edge-module-deploys-successfully-then-disappears-from-device).
 
+    > [!TIP]
+    > Wenn in Ihrer Umgebung Probleme bei der Ausführung von Azure IoT Edge-Modulen auftreten, nutzen Sie **[Azure IoT Edge: Standarddiagnoseschritte](https://docs.microsoft.com/azure/iot-edge/troubleshoot?view=iotedge-2018-06&preserve-view=true)** als Leitfaden zur Problembehandlung und Diagnose.
 ### <a name="live-video-analytics-working-with-external-modules"></a>Live Video Analytics bei der Arbeit mit externen Modulen
 
 Live Video Analytics kann den Mediengraph über die Mediengraph-Erweiterungsprozessoren erweitern, um mithilfe von REST Daten über HTTP an andere IoT Edge-Module zu senden und von diesen zu empfangen. Ein [spezifisches Beispiel](https://github.com/Azure/live-video-analytics/tree/master/MediaGraph/topologies/httpExtension): Dieser Mediengraph kann Videoeinzelbilder als Bilder an ein externes Rückschlussmodul wie Yolo v3 senden und als Rückgabe JSON-basierte Analyseergebnisse erhalten. In einer solchen Topologie bildet in den meisten Fällen der IoT Hub das Ziel für die Ereignisse. In Situationen, in denen Sie keine Rückschlussereignisse auf dem Hub sehen können, prüfen Sie die folgenden Punkte:
@@ -165,7 +169,7 @@ Konfigurieren Sie Ihr Live Video Analytics-Modul für das Sammeln ausführlicher
 ```
 
 Sie können dies auf verschiedene Weise tun:
-* Im **Azure-Portal**, indem Sie die Eigenschaften des Zwillings der Modulkennung des Live Video Analytics-Moduls aktualisieren [ ![Eigenschaften des Zwillings der Modulkennung.](media/troubleshoot-how-to/module-twin.png) ](media/troubleshoot-how-to/module-twin.png#lightbox)    
+* Im **Azure-Portal**, indem Sie die Eigenschaften des Zwillings der Modulkennung des Live Video Analytics-Moduls aktualisieren [ ![Eigenschaften des Zwillings der Modulkennung.](media/troubleshoot-how-to/module-twin.png)](media/troubleshoot-how-to/module-twin.png#lightbox)    
 * Oder in Ihrer **Bereitstellungsmanifestdatei**; dort können Sie diese Einträge im Eigenschaftenknoten des Live Video Analytics-Moduls hinzufügen
 
 ### <a name="use-the-support-bundle-command"></a>Verwenden des Befehls „support-bundle“
@@ -301,7 +305,7 @@ Im Rahmen des gRPC-Datenübertragungsvertrags sollten alle Nachrichten bestätig
 Zum Verwenden Ihres gRPC-Servers mit Live Video Analytics kann Shared Memory verwendet werden, um die optimale Leistung zu erreichen. Dazu müssen Sie die Shared Memory-Funktionen von Linux verwenden, die von der Programmiersprache/Umgebung verfügbar gemacht werden. 
 
 1. Öffnen Sie das Shared Memory-Handle von Linux.
-1. Greifen Sie beim Empfang eines Einzelbilds auf den Adressoffset innerhalb des freigegebenen Speicherbereichs zu.
+1. Greifen Sie beim Empfang eines Frames auf den Adressoffset innerhalb des gemeinsam genutzten Speicherbereichs zu.
 1. Bestätigen Sie den Abschluss der Einzelbildverarbeitung, sodass der belegte Arbeitsspeicher wieder von Live Video Analytics beansprucht werden kann.
 
    > [!NOTE]

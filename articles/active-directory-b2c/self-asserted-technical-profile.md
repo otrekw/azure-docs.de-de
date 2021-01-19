@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 10/26/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 14195ad4638c724cf0c8dd46945a0da79ec0e4ec
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 08b08e3e799ff7b579889a62ecec70677a3cbce9
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97509699"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98059057"
 ---
 # <a name="define-a-self-asserted-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definieren eines selbstbestätigten technischen Profils in einer benutzerdefinierten Richtlinie in Azure Active Directory B2C
 
@@ -208,8 +208,8 @@ Mit Ihrer Geschäftslogik können Sie durch eine weitere Integration in die Bran
 | setting.showCancelButton | Nein | Zeigt die Schaltfläche „Abbrechen“ an. Mögliche Werte: `true` (Standard) oder `false` |
 | setting.showContinueButton | Nein | Zeigt die Schaltfläche „Weiter“ an. Mögliche Werte: `true` (Standard) oder `false` |
 | setting.showSignupLink <sup>2</sup>| Nein | Zeigt die Schaltfläche „Registrieren“ an. Mögliche Werte: `true` (Standard) oder `false` |
-| setting.forgotPasswordLinkLocation <sup>2</sup>| Nein| Zeigt den Link „Kennwort vergessen“ an. Mögliche Werte: `AfterInput` (Standard) Der Link wird unten auf der Seite angezeigt, oder `None` entfernt den Link „Kennwort vergessen“.|
-| setting.enableRememberMe <sup>2</sup>| Nein| Zeigt das Kontrollkästchen [Angemeldet bleiben](session-behavior.md?pivots=b2c-custom-policy#enable-keep-me-signed-in-kmsi) an. Mögliche Werte sind `true` oder `false` (Standardwert). |
+| setting.forgotPasswordLinkLocation <sup>2</sup>| Nein| Zeigt den Link „Kennwort vergessen“ an. Mögliche Werte: `AfterLabel` (Standard) zeigt den Link unmittelbar hinter der Bezeichnung oder dem Kennwort-Eingabefeld an, wenn keine Bezeichnung vorhanden ist, `AfterInput` zeigt den Link hinter dem Kennwort-Eingabefeld an, `AfterButtons` zeigt den Link auf der Unterseite des Formulars nach den Schaltflächen an, `None` entfernt den Link für ein vergessenes Kennwort.|
+| setting.enableRememberMe <sup>2</sup>| Nein| Zeigt das Kontrollkästchen [Angemeldet bleiben](session-behavior.md?pivots=b2c-custom-policy#enable-keep-me-signed-in-kmsi) an. Mögliche Werte: `true` oder `false` (Standardwert). |
 | setting.inputVerificationDelayTimeInMilliseconds <sup>3</sup>| Nein| Verbessert die Benutzererfahrung, indem gewartet wird, bis der Benutzer die Eingabe beendet hat. Dann wird der Wert überprüft. Der Standardwert ist 2.000 Millisekunden. |
 | IncludeClaimResolvingInClaimsHandling  | Nein | Gibt bei Eingabe- und Ausgabeansprüchen an, ob die [Anspruchsauflösung](claim-resolver-overview.md) im technischen Profil enthalten ist. Mögliche Werte sind `true` oder `false` (Standardwert). Wenn Sie im technischen Profil eine Anspruchsauflösung verwenden möchten, legen Sie für diese Einstellung den Wert `true` fest. |
 

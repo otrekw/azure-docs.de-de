@@ -13,12 +13,12 @@ ms.date: 07/23/2020
 ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja, zachowd
 ms.custom: aaddev
-ms.openlocfilehash: d62328534157a1e2d9e53830be9d6b87e08c9e40
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d793ed912af1c6fdd6e0da417b8709cad8bf08b9
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87129269"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98013633"
 ---
 # <a name="how-to-configure-an-applications-publisher-domain"></a>Gewusst wie: Konfigurieren der Herausgeberdomäne einer Anwendung
 
@@ -48,7 +48,7 @@ Wenn Ihre App vor dem 21. Mai 2019 registriert wurde und Sie keine Herausgeberd
 
 Gehen Sie folgendermaßen vor, um die Herausgeberdomäne Ihrer App festzulegen.
 
-1. Melden Sie sich mit einem Geschäfts-, Schul- oder Unikonto oder mit einem persönlichen Microsoft-Konto beim [Azure-Portal](https://portal.azure.com) an.
+1. Melden Sie sich mit einem Geschäfts-, Schul- oder Unikonto oder mit einem persönlichen Microsoft-Konto beim <a href="https://portal.azure.com/" target="_blank">Azure-Portal<span class="docon docon-navigate-external x-hidden-focus"></span></a> an.
 
 1. Wenn Ihr Konto in mehreren Azure AD-Mandanten enthalten ist:
    1. Wählen Sie im Menü rechts oben auf der Seite Ihr Profil und dann **Verzeichnis wechseln** aus.

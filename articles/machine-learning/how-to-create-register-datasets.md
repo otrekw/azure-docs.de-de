@@ -12,12 +12,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 07/31/2020
-ms.openlocfilehash: 28e70a5d5a6ac4cd51f5ed3fc85afd47a5af68d8
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: fa6cdeaa47c7fdf9e90cdab96397473d8498afa0
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033271"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98108703"
 ---
 # <a name="create-azure-machine-learning-datasets"></a>Erstellen von Azure Machine Learning-Datasets
 
@@ -176,6 +176,39 @@ titanic_ds.take(3).to_pandas_dataframe()
 2|3|True|3|Heikkinen, Miss. Laina|female|26,0|0|0|STON/O2. 3101282|7.9250||E
 
 [Registrieren Sie Ihr Dataset](#register-datasets), um Datasets in Ihrem Arbeitsbereich experimentübergreifend wiederverwenden und freigeben zu können.
+
+
+## <a name="explore-data"></a>Durchsuchen von Daten
+
+Nachdem Sie Ihr Dataset erstellt und [registriert](#register-datasets) haben, können Sie es in Ihr Notebook laden, um Daten vor dem Trainieren des Modells zu durchsuchen. Wenn Sie keine Datenuntersuchung ausführen müssen, finden Sie Informationen zum Nutzen von Datenskripts in Ihren Trainingsskripts zum Senden von ML-Experimenten unter [Trainieren mit Datasets](how-to-train-with-datasets.md).
+
+FileDatasets können Sie wahlweise **einbinden** oder **herunterladen** und die Python-Bibliotheken auf sie anwenden, die Sie normalerweise zur Datenuntersuchung verwenden. [Weitere Informationen zum Vergleich von Einbinden und Herunterladen](how-to-train-with-datasets.md#mount-vs-download).
+
+```python
+# download the dataset 
+dataset.download(target_path='.', overwrite=False) 
+
+# mount dataset to the temp directory at `mounted_path`
+
+import tempfile
+mounted_path = tempfile.mkdtemp()
+mount_context = dataset.mount(mounted_path)
+
+mount_context.start()
+```
+
+Verwenden Sie für TabularDatasets die [`to_pandas_dataframe()`](/python/api/azureml-core/azureml.data.tabulardataset?preserve-view=true&view=azure-ml-py#to-pandas-dataframe-on-error--null---out-of-range-datetime--null--)-Methode, um Ihre Daten in einem Datenrahmen anzuzeigen. 
+
+```python
+# preview the first 3 rows of titanic_ds
+titanic_ds.take(3).to_pandas_dataframe()
+```
+
+|(Index)|PassengerId|Survived|Pclass|Name|Geschlecht|Age|SibSp|Parch|Ticket|Fare|Cabin|Embarked
+-|-----------|--------|------|----|---|---|-----|-----|------|----|-----|--------|
+0|1|False|3|Braund, Mr. Owen Harris|male|22,0|1|0|A/5 21171|7.2500||E
+1|2|True|1|Cumings, Mrs. John Bradley (Florence Briggs Th...|female|38,0|1|0|PC 17599|71.2833|C85|C
+2|3|True|3|Heikkinen, Miss. Laina|female|26,0|0|0|STON/O2. 3101282|7.9250||E
 
 ## <a name="create-a-dataset-from-pandas-dataframe"></a>Erstellen eines Datasets aus Pandas-Datenrahmen
 

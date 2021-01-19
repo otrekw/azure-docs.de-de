@@ -5,18 +5,17 @@ description: Enthält eine Beschreibung der Kontingente und Grenzwerte für Azur
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.reviewer: jmartens
 author: nishankgu
 ms.author: nigup
 ms.date: 12/1/2020
 ms.topic: conceptual
 ms.custom: troubleshooting,contperf-fy20q4, contperf-fy21q2
-ms.openlocfilehash: 58dacc9e65da6502d083446cb7202c222cb7e795
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 3f08f401f24d95431bcd3bba48976641cebb28e9
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97034036"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98072206"
 ---
 # <a name="manage-and-increase-quotas-for-resources-with-azure-machine-learning"></a>Verwalten und Erhöhen der Kontingente für Ressourcen mit Azure Machine Learning
 
@@ -29,7 +28,7 @@ In Azure werden Grenzwerte und Kontingente verwendet, um Budgetüberschreitungen
 > + Anfordern von Kontingenterhöhungen
 > + Privater Endpunkt und DNS-Kontingente
 
-Neben dem Verwalten von Kontingenten können Sie sich darüber informieren, wie Sie die [Kosten für Azure Machine Learning planen und verwalten](concept-plan-manage-cost.md).
+Neben dem Verwalten von Kontingenten können Sie sich darüber informieren, wie Sie die [Kosten für Azure Machine Learning planen und verwalten](concept-plan-manage-cost.md) oder mehr über die [Diensteinschränkungen in Azure Machine Learning](resource-limits-quotas-capacity.md) erfahren.
 
 ## <a name="special-considerations"></a>Besondere Überlegungen
 
@@ -53,7 +52,9 @@ In diesem Abschnitt erfahren Sie mehr über die standardmäßigen und maximalen 
 + Azure Storage
 
 > [!IMPORTANT]
-> Änderungen bei Limits bleiben vorbehalten. Aktuelle allgemeine Informationen zu Azure finden Sie unter [Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen](../azure-resource-manager/management/azure-subscription-service-limits.md).
+> Änderungen bei Limits bleiben vorbehalten. Die neuesten Informationen finden Sie unter [Diensteinschränkungen in Azure Machine Learning](resource-limits-quotas-capacity.md).
+
+
 
 ### <a name="azure-machine-learning-assets"></a>Azure Machine Learning-Ressourcen
 Die folgenden Grenzwerte für Ressourcen gelten pro Arbeitsbereich. 
@@ -210,3 +211,4 @@ Verwenden Sie die folgenden Schritte, um eine Zuteilung für diese Szenarien anz
 ## <a name="next-steps"></a>Nächste Schritte
 
 + [Planen und Verwalten von Kosten für Azure Machine Learning](concept-plan-manage-cost.md)
++ [Diensteinschränkungen in Azure Machine Learning](resource-limits-quotas-capacity.md)

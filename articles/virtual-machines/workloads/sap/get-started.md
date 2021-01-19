@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 01/05/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f74e6435af9084b0c8f222c33dc922fe678bc4c7
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: e3a4c367bbe0770495a63c00ca33861ac815460f
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97914518"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98121004"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Verwenden von Azure zum Hosten und Ausführen von SAP-Workloadszenarien
 
@@ -83,6 +83,7 @@ In diesem Abschnitt finden Sie Dokumente zur Integration von Microsoft Power BI
 
 ## <a name="change-log"></a>Änderungsprotokoll
 
+- 11.01.2021: Kleinere Änderungen in [HA für SAP NW auf virtuellen Azure-Computern unter RHEL for SAP-Anwendungen](./high-availability-guide-rhel.md), [HA für SAP NW auf virtuellen Azure-Computern unter RHEL mit ANF](./high-availability-guide-rhel-netapp-files.md) und [HA für SAP NW auf virtuellen Azure-Computern unter RHEL Multi-SID-Leitfaden](./high-availability-guide-rhel-multi-sid.md), um die Befehle so anzupassen, dass sie sowohl mit RHEL8 als auch RHEL7 sowie ENSA1 und ENSA2 funktionieren.
 - 05.01.2021: Änderungen beim [Aufskalieren von SAP HANA mit einem Standbyknoten auf Azure-VMs mit ANF unter SLES](./sap-hana-scale-out-standby-netapp-files-suse.md) und beim [Aufskalieren von SAP HANA mit einem Standbyknoten auf Azure-VMs mit ANF unter RHEL](./sap-hana-scale-out-standby-netapp-files-rhel.md), wobei die empfohlene Konfiguration zum Zulassen des SAP-Host-Agents zum Verwalten des lokalen Portbereichs geändert wurde.  
 - 04.01.2021: Neue Azure in [Was ist SAP HANA in Azure (große Instanzen)](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) hinzugefügt, die von HLI unterstützt werden.
 - 29.12.2020: Architekturempfehlungen für bestimmte Azure-Regionen in [SAP-Workloadkonfigurationen mit Azure-Verfügbarkeitszonen](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-ha-availability-zones) hinzugefügt.

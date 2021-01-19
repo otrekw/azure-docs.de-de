@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/29/2016
 ms.author: kundanap
-ms.openlocfilehash: bca826cda8dfe47c341886faaf4a0d66f09d37d2
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: b8b7a03d5176f5dbd8500b5ff9044c2f22ecbfc0
+ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94966342"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98127140"
 ---
 # <a name="troubleshooting-azure-windows-vm-extension-failures"></a>Problembehandlung bei Fehlern im Zusammenhang mit Azure Windows-VM-Erweiterungen
 [!INCLUDE [virtual-machines-common-extensions-troubleshoot](../../../includes/virtual-machines-common-extensions-troubleshoot.md)]
@@ -85,19 +85,23 @@ Dieses Zertifikat wird automatisch erneut generiert, indem der Windows-Gast-Agen
 - Klicken Sie mit der rechten Maustaste darauf, und wählen Sie „Task beenden“ aus. Der Prozess wird automatisch neu gestartet.
 
 
-Sie können auch einen neuen GoalState für die VM auslösen, indem Sie ein „leeres Update“ ausführen:
+Ferner können Sie für die VM einen neuen GoalState auslösen, indem Sie ein „VM Reapply“ ausführen. VM [Reapply](https://docs.microsoft.com/rest/api/compute/virtualmachines/reapply) ist eine API, die 2020 eingeführt wurde und dazu dient, den Zustand einer VM erneut anzuwenden. Wir empfehlen Ihnen, dies zu einem Zeitpunkt durchzuführen, an dem eine kurze Ausfallzeit der VM akzeptabel ist. Zwar löst Reapply seinerseits keinen Neustart der VM aus, und in der überwiegenden Mehrzahl der Fälle führt das Aufrufen von Reapply nicht zu einem Neustart der VM, es besteht jedoch das sehr kleine Risiko, dass ein anderes ausstehendes Update des VM-Modells angewendet wird, wenn Reapply einen neuen Zielzustand auslöst, und diese andere Änderung macht möglicherweise einen Neustart erforderlich. 
 
-Azure PowerShell:
+Azure-Portal:
+
+Wählen Sie im Portal die VM und im linken Bereich unter **Support und Problembehandlung** die Option **Redeploy + reapply** (Erneut bereitstellen und erneut anwenden) aus. Wählen Sie dann **Reapply** (Erneut anwenden) aus.
+
+
+Azure PowerShell *(ersetzen Sie den RG-Namen und den VM-Namen durch Ihre Werte)* :
 
 ```azurepowershell
-$vm = Get-AzureRMVM -ResourceGroupName <RGName> -Name <VMName>  
-Update-AzureRmVM -ResourceGroupName <RGName> -VM $vm  
+Set-AzVM -ResourceGroupName <RG Name> -Name <VM Name> -Reapply
 ```
 
-Azure CLI:
+Azure CLI *(ersetzen Sie den RG-Namen und den VM-Namen durch Ihre Werte)* :
 
 ```azurecli
-az vm update -g <rgname> -n <vmname>
+az vm reapply -g <RG Name> -n <VM Name>
 ```
 
-Wenn ein „leeres Update“ nicht funktioniert, können Sie der VM einen neuen leeren Datenträger für Daten aus dem Azure-Verwaltungsportal hinzufügen und diesen später entfernen, nachdem das Zertifikat wieder hinzugefügt wurde.
+Wenn ein „VM Reapply“ nicht funktioniert, können Sie der VM einen neuen leeren Datenträger für Daten aus dem Azure-Verwaltungsportal hinzufügen und diesen später entfernen, nachdem das Zertifikat wieder hinzugefügt wurde.
