@@ -1,15 +1,15 @@
 ---
 title: Bereitstellen eines Hyperledger Fabric-Konsortiums in Azure Kubernetes Service (AKS)
 description: Bereitstellen und Konfigurieren eines Hyperledger Fabric-Konsortiumsnetzwerks auf Azure Kubernetes Service
-ms.date: 08/06/2020
+ms.date: 01/08/2021
 ms.topic: how-to
 ms.reviewer: ravastra
-ms.openlocfilehash: 081c7a10ee091f573e8f999c94588ef85c784f74
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1ab5b9fadfbb0f1c9c1cdf25ee319c7775a593ed
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89651559"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98060315"
 ---
 # <a name="deploy-hyperledger-fabric-consortium-on-azure-kubernetes-service"></a>Bereitstellen eines Hyperledger Fabric-Konsortiums in Azure Kubernetes Service (AKS)
 
@@ -106,7 +106,7 @@ Navigieren Sie zum [Azure-Portal](https://portal.azure.com), um mit der Bereitst
     - **DNS-Präfix**: Geben Sie ein DNS-Namenspräfix (Domain Name System) für den AKS-Cluster ein. Sie verwenden DNS, um eine Verbindung mit der Kubernetes-API herzustellen, wenn Sie Container nach dem Erstellen des Clusters verwalten.
     - **Knotengröße**: Für die Größe des Kubernetes-Knotens können Sie eine Größe in der Liste der in Azure verfügbaren SKUs (Stock Keeping Units) für virtuelle Computer auswählen. Um eine optimale Leistung zu erzielen, wird Standard DS3 v2 empfohlen.
     - **Knotenanzahl**: Geben Sie die Anzahl der Kubernetes-Knoten ein, die im Cluster bereitgestellt werden sollen. Es empfiehlt sich, als Wert für „Knotenanzahl“ mindestens die Anzahl der Hyperledger Fabric-Knoten anzugeben, die auf der Registerkarte **Fabric-Einstellungen** angegeben ist.
-    - **Client-ID des Dienstprinzipals**: Geben Sie die Client-ID eines vorhandenen Dienstprinzipals ein, oder erstellen Sie einen neuen Dienstprinzipal. Ein Dienstprinzipal ist für die AKS-Authentifizierung erforderlich. Informieren Sie sich über die [Schritte zum Erstellen eines Dienstprinzipals](/powershell/azure/create-azure-service-principal-azureps?view=azps-3.2.0#create-a-service-principal).
+    - **Client-ID des Dienstprinzipals**: Geben Sie die Client-ID eines vorhandenen Dienstprinzipals ein, oder erstellen Sie einen neuen Dienstprinzipal. Ein Dienstprinzipal ist für die AKS-Authentifizierung erforderlich. Informieren Sie sich über die [Schritte zum Erstellen eines Dienstprinzipals](/powershell/azure/create-azure-service-principal-azureps#create-a-service-principal).
     - **Clientgeheimnis des Dienstprinzipals**: Geben Sie den geheimen Clientschlüssel des Dienstprinzipals ein, der in der Client-ID für den Dienstprinzipal bereitgestellt wird.
     - **Clientgeheimnis bestätigen**: Bestätigen Sie den geheimen Clientschlüssel des Dienstprinzipals.
     - **Containerüberwachung aktivieren**: Aktivieren Sie die AKS-Überwachung. Dies ermöglicht, die AKS-Protokolle in den angegebenen Log Analytics-Arbeitsbereich zu pushen.
@@ -393,23 +393,35 @@ Wenn Sie Chaincode mithilfe von *azhlfTool* installieren, übergeben Sie alle Pe
 
 ## <a name="troubleshoot"></a>Problembehandlung
 
-Führen Sie die folgenden Befehle aus, um die Version Ihrer Vorlagenbereitstellung zu ermitteln.
+### <a name="find-deployed-version"></a>Suchen der bereitgestellten Version
 
-Legen Sie die Umgebungsvariablen entsprechend der Ressourcengruppe fest, in der die Vorlage jeweils bereitgestellt wurde.
-
-```bash
-
-SWITCH_TO_AKS_CLUSTER() { az aks get-credentials --resource-group $1 --name $2 --subscription $3; }
-AKS_CLUSTER_SUBSCRIPTION=<AKSClusterSubscriptionID>
-AKS_CLUSTER_RESOURCE_GROUP=<AKSClusterResourceGroup>
-AKS_CLUSTER_NAME=<AKSClusterName>
-```
-Führen Sie den folgenden Befehl aus, um die Vorlagenversion zu drucken.
+Führen Sie die folgenden Befehle aus, um die Version Ihrer Vorlagenbereitstellung zu ermitteln. Legen Sie die Umgebungsvariablen entsprechend der Ressourcengruppe fest, in der die Vorlage jeweils bereitgestellt wurde.
 
 ```bash
 SWITCH_TO_AKS_CLUSTER $AKS_CLUSTER_RESOURCE_GROUP $AKS_CLUSTER_NAME $AKS_CLUSTER_SUBSCRIPTION
 kubectl describe pod fabric-tools -n tools | grep "Image:" | cut -d ":" -f 3
+```
 
+### <a name="patch-previous-version"></a>Patchen früherer Versionen
+
+Wenn beim Ausführen von Chaincode in Bereitstellungen von Vorlagen einer Version vor 3.0.0 Probleme auftreten, führen Sie die folgenden Schritte aus, um Ihre Peerknoten zu patchen.
+
+Laden Sie das Bereitstellungsskript des Peers herunter.
+
+```bash
+curl https://raw.githubusercontent.com/Azure/Hyperledger-Fabric-on-Azure-Kubernetes-Service/master/scripts/patchPeerDeployment.sh -o patchPeerDeployment.sh; chmod 777 patchPeerDeployment.sh
+```
+
+Führen Sie das Skript mit dem folgenden Befehl aus, und ersetzen Sie dabei die Parameter durch die Werte für Ihren Peer.
+
+```bash
+source patchPeerDeployment.sh <peerOrgSubscription> <peerOrgResourceGroup> <peerOrgAKSClusterName>
+```
+
+Warten Sie, bis alle Peerknoten gepatcht wurden. Mit dem folgenden Befehl können Sie jederzeit den Status Ihrer Peerknoten in einer anderen Instanz der Shell überprüfen.
+
+```bash
+kubectl get pods -n hlf
 ```
 
 ## <a name="support-and-feedback"></a>Support und Feedback
