@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/30/2020
 ms.author: mlottner
-ms.openlocfilehash: c2b440413599ce07112231af17daa0bc14817b76
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 9ac283721526488f587fcabc68348dafac1835db
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97832776"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98033352"
 ---
 # <a name="deploy-a-security-module-on-your-iot-edge-device"></a>Bereitstellen eines Sicherheitsmoduls auf Ihrem IoT Edge-Gerät
 
@@ -51,13 +51,13 @@ Gehen Sie wie folgt vor, um ein Defender für IoT-Sicherheitsmodul für IoT Ed
 
 1. Öffnen Sie im Azure-Portal den **Marketplace**.
 
-1. Wählen Sie **Internet der Dinge** aus, suchen Sie nach **Defender für IoT**, und wählen Sie den Eintrag aus.
+1. Wählen Sie **Internet der Dinge** aus, suchen Sie nach **Azure Security Center für IoT**, und wählen Sie den Eintrag aus.
 
    :::image type="content" source="media/howto/edge-onboarding-8.png" alt-text="Auswählen von Defender für IoT":::
 
 1. Klicken Sie auf **Erstellen**, um die Bereitstellung zu konfigurieren.
 
-1. Wählen Sie das Azure-**Abonnement** Ihres IoT-Hubs und dann Ihren **IoT-Hub** aus.<br>Wählen Sie **Für Gerät bereitstellen** aus, um ein einzelnes Gerät als Bereitstellungsziel auszuwählen, oder wählen Sie **Im gewünschten Umfang bereitstellen** aus, um mehrere Geräte als Ziel festzulegen, und klicken Sie dann auf **Erstellen**. Weitere Informationen zur bedarfsorientierten Bereitstellung finden Sie im Thema zum [Bereitstellen](../iot-edge/how-to-deploy-at-scale.md).
+1. Wählen Sie das Azure-**Abonnement** Ihres IoT-Hubs und dann Ihren **IoT-Hub** aus.<br>Wählen Sie **Für Gerät bereitstellen** aus, um ein einzelnes Gerät als Bereitstellungsziel anzugeben, oder wählen Sie **Im gewünschten Umfang bereitstellen** aus, um mehrere Geräte als Ziel festzulegen, und klicken Sie dann auf **Erstellen**. Weitere Informationen zur bedarfsorientierten Bereitstellung finden Sie im Thema zum [Bereitstellen](../iot-edge/how-to-deploy-at-scale.md).
 
     >[!Note]
     >Wenn Sie **Im gewünschten Umfang bereitstellen** ausgewählt haben, fügen Sie den Gerätenamen und die Details hinzu, bevor Sie in den folgenden Schritten mit der Registerkarte **Module hinzufügen** fortfahren.
@@ -68,7 +68,7 @@ Führen Sie jeden Schritt zum Erstellen einer IoT Edge-Bereitstellung für Defe
 
 1. Wählen Sie das Modul **AzureSecurityCenterforIoT** aus.
 1. Ändern Sie auf der Registerkarte **Moduleinstellungen** den **Namen** in **azureiotsecurity**.
-1. Fügen Sie auf der Registerkarte **Umgebungsvariablen** bei Bedarf eine Variable hinzu (z. B. auf Debugebene).
+1. Fügen Sie bei Bedarf auf der Registerkarte **Umgebungsvariablen** eine Variable hinzu (Sie können beispielsweise eine *Debugebene* hinzufügen und auf einen der folgenden Werte festlegen: „Fatal“, „Error“, „Warning“ oder „Information“).
 1. Fügen Sie auf der Registerkarte **Optionen für Containererstellung** die folgende Konfiguration hinzu:
 
     ``` json
@@ -112,8 +112,12 @@ Führen Sie jeden Schritt zum Erstellen einer IoT Edge-Bereitstellung für Defe
 #### <a name="step-2-runtime-settings"></a>Schritt 2: Runtimeeinstellungen
 
 1. Wählen Sie **Runtimeeinstellungen** aus.
-1. Ändern Sie unter **Edge Hub** das **Image** in **mcr.microsoft.com/azureiotedge-hub:1.0.8.3**.
-1. Vergewissern Sie sich, dass **Erstellungsoptionen** auf die folgende Konfiguration festgelegt ist:
+2. Ändern Sie unter **Edge Hub** das **Image** in **mcr.microsoft.com/azureiotedge-hub:1.0.8.3**.
+
+    >[!Note]
+    > Derzeit wird Version 1.0.8.3 oder früher unterstützt.
+
+3. Vergewissern Sie sich, dass **Erstellungsoptionen** auf die folgende Konfiguration festgelegt ist:
 
     ``` json
     {
@@ -139,9 +143,9 @@ Führen Sie jeden Schritt zum Erstellen einer IoT Edge-Bereitstellung für Defe
     }
     ```
 
-1. Wählen Sie **Speichern** aus.
+4. Wählen Sie **Speichern** aus.
 
-1. Wählen Sie **Weiter** aus.
+5. Wählen Sie **Weiter** aus.
 
 #### <a name="step-3-specify-routes"></a>Schritt 3: Angeben von Routen
 

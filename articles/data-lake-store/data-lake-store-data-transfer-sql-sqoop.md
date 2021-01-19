@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 07/30/2019
 ms.author: twooley
 ms.openlocfilehash: 9bb787138267fd8a9fab4dea233c1c828b457d67
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2020
+ms.lasthandoff: 01/08/2021
 ms.locfileid: "92109186"
 ---
 # <a name="copy-data-between-data-lake-storage-gen1-and-azure-sql-database-using-sqoop"></a>Kopieren von Daten zwischen Data Lake Storage Gen1 und Azure SQL-Datenbank mithilfe von Sqoop
@@ -121,29 +121,29 @@ In einem HDInsight-Cluster sind die Sqoop-Pakete bereits verfügbar. Wenn Sie de
     -rwxrwxrwx   0 sshuser hdfs         18 2016-02-26 21:09 adl://hdiadlsg1store.azuredatalakestore.net/Sqoop/SqoopImportTable1/part-m-00003
     ```
 
-   Jede **part-m-*** Datei entspricht einer Zeile in der Quelltabelle **Table1**.
+   Jede **part-m-** _-Datei entspricht einer Zeile in der Quelltabelle _ *Table1**. Sie können den Inhalt der part-m-* -Dateien anzeigen und überprüfen.
 
-### <a name="export-data-from-data-lake-storage-gen1-into-azure-sql-database"></a>Sie können den Inhalt der part-m-* Dateien anzeigen und überprüfen.
+### <a name="export-data-from-data-lake-storage-gen1-into-azure-sql-database"></a>Exportieren von Daten aus Data Lake Storage Gen1 in Azure SQL-Datenbank
 
-1. Exportieren von Daten aus Data Lake Storage Gen1 in Azure SQL-Datenbank Exportieren Sie die Daten aus dem Data Lake Storage Gen1-Konto in die leere Tabelle **Table2** in Azure SQL-Datenbank.
+1. Exportieren Sie die Daten aus dem Data Lake Storage Gen1-Konto in die leere Tabelle **Table2** in Azure SQL-Datenbank. Verwenden Sie die folgende Syntax.
 
     ```console
     sqoop-export --connect "jdbc:sqlserver://<sql-database-server-name>.database.windows.net:1433;username=<username>@<sql-database-server-name>;password=<password>;database=<sql-database-name>" --table Table2 --export-dir adl://<data-lake-storage-gen1-name>.azuredatalakestore.net/Sqoop/SqoopImportTable1 --input-fields-terminated-by ","
     ```
 
-   Verwenden Sie die folgende Syntax.
+   Beispiel:
 
     ```console
     sqoop-export --connect "jdbc:sqlserver://mysqoopserver.database.windows.net:1433;username=user1@mysqoopserver;password=<password>;database=mysqoopdatabase" --table Table2 --export-dir adl://myadlsg1store.azuredatalakestore.net/Sqoop/SqoopImportTable1 --input-fields-terminated-by ","
     ```
 
-1. Beispiel: Stellen Sie sicher, dass die Daten in die SQL-Datenbanktabelle hochgeladen wurden.
+1. Stellen Sie sicher, dass die Daten in die SQL-Datenbanktabelle hochgeladen wurden. Stellen Sie mit [SQL Server Management Studio](../azure-sql/database/connect-query-ssms.md) oder Visual Studio eine Verbindung mit Azure SQL-Datenbank her, und führen Sie dann die folgende Abfrage aus:
 
     ```tsql
     SELECT * FROM TABLE2
     ```
 
-   Stellen Sie mit [SQL Server Management Studio](../azure-sql/database/connect-query-ssms.md) oder Visual Studio eine Verbindung mit Azure SQL-Datenbank her, und führen Sie dann die folgende Abfrage aus:
+   Dieser Befehl führt zu folgender Ausgabe:
 
     ```output
      ID  FName    LName
@@ -154,13 +154,13 @@ In einem HDInsight-Cluster sind die Sqoop-Pakete bereits verfügbar. Wenn Sie de
     4    Annette  Simpson
     ```
 
-## <a name="performance-considerations-while-using-sqoop"></a>Dieser Befehl führt zu folgender Ausgabe:
+## <a name="performance-considerations-while-using-sqoop"></a>Überlegungen zur Leistung bei der Verwendung von Sqoop
 
-Überlegungen zur Leistung bei der Verwendung von Sqoop
+Informationen zur Leistungsoptimierung Ihres Sqoop-Auftrags zum Kopieren von Daten in Data Lake Storage Gen1 finden Sie im [Blogbeitrag zur Sqoop-Leistung](/archive/blogs/shanyu/performance-tuning-for-hdinsight-storm-and-microsoft-azure-eventhubs).
 
-## <a name="next-steps"></a>Informationen zur Leistungsoptimierung Ihres Sqoop-Auftrags zum Kopieren von Daten in Data Lake Storage Gen1 finden Sie im [Blogbeitrag zur Sqoop-Leistung](/archive/blogs/shanyu/performance-tuning-for-hdinsight-storm-and-microsoft-azure-eventhubs).
+## <a name="next-steps"></a>Nächste Schritte
 
-* Nächste Schritte
 * [Kopieren von Daten aus Azure Storage-Blobs in Data Lake Storage Gen1](data-lake-store-copy-data-azure-storage-blob.md)
 * [Schützen von Daten in Data Lake Storage Gen1](data-lake-store-secure-data.md)
 * [Verwenden von Azure Data Lake Analytics mit Data Lake Storage Gen1](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
+* [Erstellen von HDInsight-Clustern mithilfe von Azure Data Lake Storage Gen1 im Azure-Portal](data-lake-store-hdinsight-hadoop-use-portal.md)

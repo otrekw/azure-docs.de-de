@@ -3,12 +3,12 @@ title: 'Versionshinweise zu Live Video Analytics in IoT Edge: Azure'
 description: Dieses Thema enthält Versionshinweise zu Releases, Verbesserungen, Fehlerbehebungen und bekannten Problemen von Video Analytics in IoT Edge.
 ms.topic: conceptual
 ms.date: 08/19/2020
-ms.openlocfilehash: 2800d41340e45867ea4126733cdb5968cf8b91c5
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: 7f8957d1ec93259cf6defe7980f19298f782ea5e
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97400844"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98121242"
 ---
 # <a name="live-video-analytics-on-iot-edge-release-notes"></a>Versionshinweise zu Live Video Analytics in IoT Edge
 
@@ -23,6 +23,23 @@ Dieser Artikel bietet Folgendes:
 
 <hr width=100%>
 
+## <a name="january-12-2021"></a>12. Januar 2021
+
+Dieses Releasetag gilt für die Aktualisierung des Moduls vom Januar 2021 und lautet:
+
+```
+mcr.microsoft.com/media/live-video-analytics:2.0.1
+```
+
+> [!NOTE]
+> In den Schnellstarts und Tutorials verwenden die Bereitstellungsmanifeste das Tag „2“ (live-video-analytics:2). Daher sollte eine einfache erneute Bereitstellung solcher Manifeste das Modul auf Ihren Edgegeräten aktualisieren.
+### <a name="bug-fixes"></a>Behebung von Programmfehlern 
+
+* Die Felder `ActivationSignalOffset`, `MinimumActivationTime` und `MaximumActivationTime` in Signalgateprozessoren wurden fälschlicherweise als erforderliche Eigenschaften festgelegt. Sie sind nun **optionale** Eigenschaften.
+* Es wurde ein Verwendungsfehler behoben, durch den Live Video Analytics auf einem IoT Edge-Modul abstürzte, wenn die Bereitstellung in bestimmten Regionen erfolgte.
+
+<hr width=100%>
+
 ## <a name="december-14-2020"></a>14. Dezember 2020
 Dieses Release ist eine Aktualisierung der öffentlichen Vorschauversion von Live Video Analytics in IoT Edge. Das Releasetag ist
 
@@ -33,7 +50,7 @@ Dieses Release ist eine Aktualisierung der öffentlichen Vorschauversion von Liv
 * Unterstützung für die Verwendung von mehr als einem HTTP-Erweiterungsprozessor und einem gRPC-Erweiterungsprozessor pro Graphtopologie hinzugefügt.
 * Unterstützung für die Speicherplatzverwaltung für Senkenknoten hinzugefügt.
 * Der `MediaGraphGrpcExtension`-Knoten unterstützt jetzt die [extensionConfiguration](grpc-extension-protocol.md)-Eigenschaft für die Verwendung mehrerer KI-Modelle auf einem einzelnen gRPC-Server.
-* Unterstützung für das Sammeln von Metriken für das Live Video Analytics-Modul im [Prometheus-Format](https://prometheus.io/docs/practices/naming/) hinzugefügt 
+* Unterstützung für das Sammeln von Metriken für das Live Video Analytics-Modul im [Prometheus-Format](https://prometheus.io/docs/practices/naming/) wurde hinzugefügt. Erfahren Sie mehr über das [Erfassen und Anzeigen von Metriken in Azure Monitor](monitoring-logging.md#azure-monitor-collection-via-telegraf). 
 * Der Verarbeitungsknoten für Bildfrequenzfilter wurde als **veraltet** gekennzeichnet.  
     * Die Verwaltung der Bildfrequenz ist jetzt auf den Knoten des Graph-Erweiterungsprozessors selbst verfügbar.
 

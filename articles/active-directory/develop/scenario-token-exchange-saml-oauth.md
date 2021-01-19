@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/08/2020
 ms.author: kenwith
 ms.reviewer: paulgarn
-ms.openlocfilehash: 5841af4225f88b36fe727b60a597af208ac830f5
-ms.sourcegitcommit: 42922af070f7edf3639a79b1a60565d90bb801c0
+ms.openlocfilehash: 92d0dad86b3f048eb96dd7b17ed09f6e20d7cde2
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97827171"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98063296"
 ---
 # <a name="microsoft-identity-platform-token-exchange-scenarios-with-saml-and-oidcoauth"></a>Microsoft Identity Platform-Tokenaustauschszenarien mit SAML und OIDC/OAuth
 
@@ -30,7 +30,7 @@ Viele Apps werden mit SAML implementiert. Die Graph-API verwendet jedoch die OID
 Grundsätzlich besteht die Strategie darin, der App den OIDC/OAuth-Stapel hinzuzufügen. Wenn Ihre App beide Standards implementiert, können Sie ein Sitzungscookie verwenden. Sie tauschen also nicht explizit ein Token aus. Sie melden einen Benutzer mit SAML an, wobei ein Sitzungscookie generiert wird. Wenn die Graph-API einen OAuth-Flow aufruft, verwenden Sie dieses Sitzungscookie für die Authentifizierung. Bei dieser Strategie wird vorausgesetzt, dass die Überprüfungen für den bedingten Zugriff bestanden wurden und der Benutzer autorisiert ist.
 
 > [!NOTE]
-> Die empfohlene Bibliothek zum Hinzufügen von OIDC/OAuth-Verhalten ist die Microsoft Authentication Library (MSAL). Weitere Informationen zur MSAL finden Sie unter [Übersicht über die Microsoft Authentication Library (MSAL)](msal-overview.md). Die Vorgängerbibliothek heißt Active Directory Authentication Library (ADAL). Sie wird jedoch nicht mehr empfohlen, da sie durch die MSAL ersetzt wurde.
+> Die empfohlene Bibliothek zum Hinzufügen von OIDC/OAuth-Verhalten ist die Microsoft Authentication Library (MSAL). Weitere Informationen zur MSAL finden Sie unter [Übersicht über die Microsoft-Authentifizierungsbibliothek (MSAL)](msal-overview.md). Die Vorgängerbibliothek heißt Active Directory Authentication Library (ADAL). Sie wird jedoch nicht mehr empfohlen, da sie durch die MSAL ersetzt wurde.
 
 ## <a name="next-steps"></a>Nächste Schritte
 - [Authentifizierungsflows und Anwendungsszenarien](authentication-flows-app-scenarios.md)

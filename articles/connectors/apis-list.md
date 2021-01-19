@@ -3,15 +3,15 @@ title: Connectors für Azure Logic Apps
 description: Automatisieren von Workflows mit Connectors für Azure Logic Apps wie integrierte, verwaltete, lokale, Integrationskonto-, ISE- und Unternehmensconnectors
 services: logic-apps
 ms.suite: integration
-ms.reviewer: jonfan, logicappspm
+ms.reviewer: estfan, logicappspm, azla
 ms.topic: article
-ms.date: 06/11/2020
-ms.openlocfilehash: 8bf91a3b7843d3212b62ced5b6a7c6fa54892ec9
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.date: 01/07/2021
+ms.openlocfilehash: c2b89450c0e474f5030f8812e888890f1fedde7e
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93359747"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98019634"
 ---
 # <a name="connectors-for-azure-logic-apps"></a>Connectors für Azure Logic Apps
 
@@ -28,7 +28,7 @@ Connectors sind entweder als integrierte Trigger und Aktionen oder als verwaltet
 
 <a name="built-in"></a>
 
-* [**Integriert**](#built-ins): Integrierte Trigger und Aktionen sind in Azure Logic Apps „nativ“ und helfen Ihnen, diese Aufgaben für Ihre Logik-Apps auszuführen:
+* [**Integriert**](#built-ins): Integrierte Trigger und Aktionen werden nativ in Azure Logic Apps ausgeführt, daher müssen Sie keine Verbindung erstellen, um diese für die folgenden Aufgaben für Ihre Logik-Apps verwenden zu können:
 
   * Ausführen nach benutzerdefinierten und erweiterten Zeitplänen.
 
@@ -390,6 +390,54 @@ Die Trigger und Aktionen der einzelnen Connectors verfügen über eigene Eigensc
 Bei Connectors, die Azure AD-OAuth (Azure Active Directory) verwenden, bedeutet das Erstellen einer Verbindung die Anmeldung bei dem Dienst (z. B. Office 365, Salesforce oder GitHub), wobei das Zugriffstoken [verschlüsselt](../security/fundamentals/encryption-overview.md) und sicher in einem Azure-Geheimnisspeicher gespeichert wird. Andere Connectors (z.B. FTP und SQL) erfordern eine Verbindung mit Konfigurationsdetails wie Serveradresse, Benutzername und Kennwort. Diese Verbindungskonfigurationsdetails werden ebenfalls verschlüsselt und sicher gespeichert. Weitere Informationen zur Verschlüsselung in Azure finden Sie [hier](../security/fundamentals/encryption-overview.md).
 
 Verbindungen können solange auf den Zieldienst oder das Zielsystem zugreifen, wie der Dienst oder das System dies zulässt. Bei Diensten, die Azure AD-OAuth-Verbindungen verwenden (z. B. Office 365 und Dynamics), aktualisiert Azure Logic Apps die Zugriffstoken unbegrenzt. Bei anderen Diensten gibt es unter Umständen eine zeitliche Begrenzung für die Verwendung eines Tokens durch Azure Logic Apps, nach der eine Aktualisierung erforderlich ist. Bei einigen Aktionen (z.B. Ändern des Kennworts) werden in der Regel alle Zugriffstoken ungültig.
+
+<a name="recurrence-behavior"></a>
+
+## <a name="recurrence-behavior"></a>Wiederholungsverhalten
+
+Integrierte Trigger für Wiederholungen, die in Azure Logic Apps nativ ausgeführt werden, wie z. B der [Serientrigger](../connectors/connectors-native-recurrence.md), unterscheiden sich im Verhalten von verbindungsbasierten Triggern für Wiederholungen, bei denen Sie zuerst eine Verbindung erstellen müssen, wie z. B. der SQL-Verbindungstrigger.
+
+Für beide Triggerarten gilt jedoch: Wenn eine Serie kein bestimmtes Startdatum und keine Startuhrzeit angibt, wird die erste Wiederholung trotz der Serieneinrichtung Ihres Triggers sofort ausgeführt, wenn Sie die Logik-App speichern oder bereitstellen. Um dieses Verhalten zu vermeiden, geben Sie ein Startdatum und eine Startuhrzeit für die Ausführung der ersten Wiederholung an.
+
+<a name="recurrence-built-in"></a>
+
+### <a name="recurrence-for-built-in-triggers"></a>Integrierte Trigger für Wiederholungen
+
+Integrierte Trigger für Wiederholungen berücksichtigen den von Ihnen festgelegten Zeitplan, einschließlich der von Ihnen angegebenen Zeitzone. Wenn eine Serie jedoch keine anderen erweiterten Zeitplanungsoptionen angibt, wie z. B. spezifische Uhrzeiten zum Ausführen zukünftiger Wiederholungen, basieren diese Wiederholungen auf der letzten Triggerausführung. Hieraus ergibt sich, dass die Startzeiten für diese Wiederholungen sich aufgrund von Faktoren wie Wartezeiten während Speicheraufrufen verschieben können. Wenn Sie keine Zeitzone auswählen, könnte sich auch die Sommerzeit auf die Ausführung von Triggern auswirken: Beispielsweise könnte sich die Startzeit zu Beginn der Sommerzeit um eine Stunde nach vorne und am Ende der Sommerzeit um eine Stunde nach hinten verschieben.
+
+Um sicherzustellen, dass Ihre Logik-App zur angegebenen Startzeit ausgeführt wird und keine Wiederholung verpasst – insbesondere wenn die Häufigkeit im Bereich von Tagen oder länger liegt –, versuchen Sie die folgenden Lösungen:
+
+* Wählen Sie eine Zeitzone aus, damit Ihre Logik-App zu Ihrer angegebenen Startzeit ausgeführt wird. Andernfalls könnte sich die Sommerzeit auf die Ausführung von Triggern auswirken: Beispielsweise könnte sich die Startzeit zu Beginn der Sommerzeit um eine Stunde nach vorne und am Ende der Sommerzeit um eine Stunde nach hinten verschieben.
+
+  Beim Planen von Aufträgen fügt Logic Apps die Nachricht zur Verarbeitung in die Warteschlange ein und gibt an, wann diese Nachricht verfügbar wird. Diese Angabe basiert auf der UTC-Zeit, zu der der letzte Auftrag ausgeführt wurde, und der UTC-Zeit, zu der die Ausführung des nächsten Auftrags geplant ist. Durch Angabe einer Zeitzone wird auch die UTC-Zeit für Ihre Logik-App geändert, um die Sommerzeitumstellung auszugleichen. Einige Zeitfenster können jedoch bei einer Zeitverschiebung Probleme verursachen. Weitere Informationen und Beispiele finden Sie unter [Wiederholung für Sommerzeit und Normalzeit](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md#daylight-saving-standard-time).
+
+* Verwenden Sie den Serientrigger, und geben Sie ein Startdatum und eine Uhrzeit für die Wiederholung an. Geben Sie außerdem die spezifischen Zeiten an, zu denen nachfolgende Wiederholungen ausgeführt werden sollen. Legen Sie dazu die Eigenschaften **Zu diesen Stunden** und **Zu diesen Minuten** fest, die nur für die Häufigkeitsangaben **Tag** und **Woche** verfügbar sind.
+
+* Verwenden Sie den Trigger [Gleitendes Fenster](../connectors/connectors-native-sliding-window.md) anstelle des Triggers „Wiederholung“.
+
+<a name="recurrence-connection-based"></a>
+
+### <a name="recurrence-for-connection-based-triggers"></a>Wiederholung für verbindungsbasierte Trigger
+
+Bei verbindungsbasierten Triggern für Wiederholungen, wie beispielsweise SQL oder SFTP-SSH, ist der Zeitplan nicht der einzige Faktor, der die Ausführung steuert, und die Zeitzone bestimmt nur die anfängliche Startzeit. Nachfolgende Ausführungen richten sich nach dem Wiederholungszeitplan, der letzten Triggerausführung *und* anderen Faktoren, die zu einer Verschiebung der Ausführungszeiten oder zu unerwartetem Verhalten führen können. Beispiele:
+
+* Der Trigger greift auf einen Server mit weiteren Daten zu, für die der Trigger sofort einen Abruf startet.
+
+* Alle Fehler oder Wiederholungsversuche des Triggers.
+
+* Wartezeit bei Speicheraufrufen.
+
+* Nichteinhaltung des angegebenen Zeitplans zu Beginn und Ende der Sommerzeit.
+
+* Andere Faktoren, die sich auf den Zeitpunkt der nächsten Ausführung auswirken können.
+
+Um diese Probleme zu beheben oder zu umgehen, versuchen Sie folgende Lösungen:
+
+* Um sicherzustellen, dass sich die Wiederholungszeit nicht verschiebt, wenn die Sommerzeit wirksam wird, passen Sie die Wiederholung manuell so an, dass Ihre Logik-App weiterhin zum erwarteten Zeitpunkt ausgeführt wird. Andernfalls verschiebt sich die Startzeit zu Beginn der Sommerzeit um eine Stunde nach vorne und am Ende der Sommerzeit um eine Stunde nach hinten.
+
+* Verwenden Sie den Serientrigger, und geben Sie eine Zeitzone, ein Startdatum, eine Uhrzeit *sowie* die spezifischen Zeiten an, zu denen nachfolgende Wiederholungen ausgeführt werden sollen. Legen Sie dazu die Eigenschaften **Zu diesen Stunden** und **Zu diesen Minuten** fest, die nur für die Häufigkeitsangaben **Tag** und **Woche** verfügbar sind. Einige Zeitfenster können bei einer Zeitverschiebung dennoch weiterhin Probleme verursachen. Weitere Informationen und Beispiele finden Sie unter [Wiederholung für Sommerzeit und Normalzeit](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md#daylight-saving-standard-time).
+
+* Verwenden Sie den Trigger [Gleitendes Fenster](../connectors/connectors-native-sliding-window.md) anstelle des Serientriggers, um verpasste Wiederholungen zu vermeiden.
 
 <a name="custom"></a>
 

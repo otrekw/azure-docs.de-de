@@ -7,16 +7,16 @@ ms.date: 11/06/2020
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: a517f7a796b6543c8d60f0d1ebdba16afa0bc4b7
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 36329987e510372ff286a10584a115ea259afc60
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96751426"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98119083"
 ---
 # <a name="use-properties-in-an-azure-iot-central-solution"></a>Verwenden von Eigenschaften in einer Azure IoT Central-Lösung
 
-In diesem Artikel wird gezeigt, wie Sie Geräteeigenschaften verwenden können, die in Ihrer Azure IoT Central-Anwendung in einer Gerätevorlage definiert werden.
+In dieser Schrittanleitung für Geräteentwickler wird gezeigt, wie Sie Geräteeigenschaften verwenden können, die in Ihrer Azure IoT Central-Anwendung in einer Gerätevorlage definiert sind.
 
 Eigenschaften stellen Zeitpunktwerte dar. Ein Gerät kann beispielsweise eine Eigenschaft verwenden, um die Zieltemperatur zu melden, die es zu erreichen versucht. Standardmäßig sind Geräteeigenschaften in IoT Central schreibgeschützt. Mithilfe von schreibbaren Eigenschaften können Sie den Zustand zwischen Ihrem Gerät und der Azure IoT Central-Anwendung synchronisieren.
 
@@ -35,7 +35,7 @@ In der folgenden Tabelle sind die Konfigurationseinstellungen für eine Eigensch
 | Feld           | BESCHREIBUNG                                                                                                                                                                                                                        |
 |-----------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Anzeigename    | Der Anzeigename für den Eigenschaftswert, der in Dashboards und Formularen verwendet wird.                                                                                                                                                              |
-| Name            | Der Name der Eigenschaft. Azure IoT Central generiert einen Wert für dieses Feld aus dem Anzeigenamen. Bei Bedarf können Sie aber einen eigenen Wert auswählen. Dieses Feld muss alphanumerisch sein.                                                 |
+| Name            | Der Name der Eigenschaft. Azure IoT Central generiert einen Wert für dieses Feld aus dem Anzeigenamen. Bei Bedarf können Sie aber einen eigenen Wert auswählen. Dieses Feld muss alphanumerisch sein.  Der Wert von **Name** wird im Gerätecode verwendet.           |
 | Funktionstyp | Eigenschaft.                                                                                                                                                                                                                          |
 | Semantischer Typ   | Der semantische Typ der Eigenschaft, z. B. Temperatur, Zustand oder Ereignis. Die Auswahl des semantischen Typs bestimmt, welches der folgenden Felder verfügbar ist.                                                                       |
 | Schema          | Der Eigenschaftsdatentyp, z.B. „double“, „string“ oder „vector“. Die verfügbaren Optionen werden durch den semantischen Typ bestimmt. Schema ist für die semantischen Typen „Ereignis“ und „Zustand“ nicht verfügbar.                                               |
@@ -160,7 +160,7 @@ hubClient.getTwin((err, twin) => {
 });
 ```
 
-In diesem Artikel wird der Einfachheit halber „Node.js“ verwendet. Vollständige Informationen und Anwendungsbeispiele für Geräte finden Sie im Tutorial [Erstellen einer Clientanwendung und Verbinden dieser Anwendung mit Ihrer Azure IoT Central-Anwendung](tutorial-connect-device.md).
+In diesem Artikel wird der Einfachheit halber „Node.js“ verwendet. Beispiele für andere Programmiersprachen finden Sie im Tutorial [Erstellen einer Clientanwendung und Verbinden der Anwendung mit Ihrer Azure IoT Central-Anwendung](tutorial-connect-device.md).
 
 Die folgende Ansicht in der Azure IoT Central-Anwendung zeigt die Eigenschaften, die Sie sehen können. In der Ansicht wird aus der Eigenschaft **Gerätemodell** automatisch eine _schreibgeschützte Geräteeigenschaft_.
 

@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: how-to
-ms.date: 11/16/2020
+ms.date: 01/11/2021
 ms.author: victorh
-ms.openlocfilehash: c5613dda7adbbc47f989bc2a772777e716620b3c
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.openlocfilehash: 0df91680dadbc4ac19299a4df48a585a11f044e8
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97348032"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98072240"
 ---
 # <a name="azure-firewall-snat-private-ip-address-ranges"></a>Azure Firewall –Private SNAT-IP-Adressbereiche
 
@@ -25,6 +25,9 @@ Wenn Ihre Organisation einen öffentlichen IP-Adressbereich für private Netzwer
 - Wenn Sie Azure Firewall so konfigurieren möchten, dass SNAT unabhängig von der Ziel-IP-Adresse **niemals** angewendet wird, verwenden Sie **0.0.0.0/0** als privaten IP-Adressbereich. Mit dieser Konfiguration kann Azure Firewall niemals Datenverkehr direkt an das Internet weiterleiten. 
 
 - Wenn Sie die Firewall so konfigurieren möchten, dass SNAT unabhängig von der Ziel-Adresse **immer** angewendet wird, verwenden Sie **255.255.255.255/32** als privaten IP-Adressbereich.
+
+> [!IMPORTANT]
+> Der angegebene private Adressbereich gilt nur für Netzwerkregeln. Zurzeit erfolgt bei Anwendungsregeln immer eine SNAT.
 
 > [!IMPORTANT]
 > Wenn Sie Ihre eigenen privaten IP-Adressbereiche festlegen und die standardmäßigen IANA RFC 1918-Adressbereiche beibehalten möchten, stellen Sie sicher, dass Ihre benutzerdefinierte Liste den IANA RFC 1918-Bereich noch enthält. 

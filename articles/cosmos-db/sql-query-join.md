@@ -1,25 +1,25 @@
 ---
 title: SQL-JOIN-Abfragen für Azure Cosmos DB
 description: Hier erfahren Sie, wie Sie mehrere Tabellen in Azure Cosmos DB verknüpfen, um die Daten abzufragen.
-author: markjbrown
+author: timsander1
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 05/17/2019
-ms.author: mjbrown
-ms.openlocfilehash: c3fad0c7eed2b42a9ac340a091f17b90e22b000a
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.date: 01/07/2021
+ms.author: tisande
+ms.openlocfilehash: cb7b2e62a9fabeeca675edb8e6aa356213e0999e
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93333833"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98011389"
 ---
 # <a name="joins-in-azure-cosmos-db"></a>Verknüpfungen in Azure Cosmos DB
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
-In einer relationalen Datenbank sind tabellenübergreifende Verknüpfungen die logische Grundvoraussetzung für die Planung normalisierter Schemas. Im Gegensatz dazu verwendet die SQL-API das denormalisierte Datenmodell schemafreier Elemente (das logische Äquivalent einer *Selbstverknüpfung* ).
+In einer relationalen Datenbank sind tabellenübergreifende Verknüpfungen die logische Grundvoraussetzung für die Planung normalisierter Schemas. Im Gegensatz dazu verwendet die SQL-API das denormalisierte Datenmodell schemafreier Elemente (das logische Äquivalent einer *Selbstverknüpfung*).
 
-Aus inneren Verknüpfungen resultiert ein komplettes Kreuzungsprodukt der an der Verknüpfung beteiligten Sätze. Das Ergebnis einer N-Way-Verknüpfung ist ein Satz von N-Element-Tupeln, wo jeder Wert im Tupel dem an der Verknüpfung beteiligten Aliassatz zugeordnet ist, und der Zugriff auf den Wert durch Verweis auf diesen Alias in anderen Klauseln erfolgen kann.
+Aus Joins resultiert ein komplettes Kreuzprodukt der am Join beteiligten Mengen. Das Ergebnis einer N-Way-Verknüpfung ist ein Satz von N-Element-Tupeln, wo jeder Wert im Tupel dem an der Verknüpfung beteiligten Aliassatz zugeordnet ist, und der Zugriff auf den Wert durch Verweis auf diesen Alias in anderen Klauseln erfolgen kann.
 
 ## <a name="syntax"></a>Syntax
 
@@ -253,6 +253,8 @@ Die Ergebnisse sind:
       }
     ]
 ```
+
+Wenn Ihre Abfrage einen JOIN und Filter enthält, können Sie einen Teil der Abfrage als [geschachtelte Abfrage](sql-query-subquery.md#optimize-join-expressions) erneut generieren, um die Leistung zu verbessern.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

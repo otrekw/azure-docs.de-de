@@ -3,12 +3,12 @@ title: 'Übersicht über die Features: Azure Event Hubs | Microsoft-Dokumentatio
 description: Dieser Artikel enthält Details zu Features und Terminologie von Azure Event Hubs.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: a38cf4ba6a06dc6e977f9ea168fcf67ce83ff5de
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 0730a5fa3abbc6b27cb96431125564a2475a90d1
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96339981"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97955643"
 ---
 # <a name="features-and-terminology-in-azure-event-hubs"></a>Features und Terminologie in Azure Event Hubs
 
@@ -16,32 +16,48 @@ Azure Event Hubs ist ein skalierbarer Ereignisverarbeitungsdienst, der große Me
 
 Dieser Artikel setzt auf den Informationen in der [Übersichtsartikel](./event-hubs-about.md) auf und bietet technische und Implementierungsdetails zu Event Hubs-Komponenten und -Features.
 
+> [!TIP]
+> [Die Protokollunterstützung für **Apache Kafka**-Clients](event-hubs-for-kafka-ecosystem-overview.md) (Version 1.0 oder höher) verfügt über Netzwerkendpunkte, mit denen für Anwendungen, die für die Nutzung von Apache Kafka mit einem beliebigen Client ausgelegt sind, Event Hubs verwendet werden können. Die meisten vorhandenen Kafka-Anwendungen können leicht neu konfiguriert werden, damit sie nicht auf den Bootstrapserver eines Kafka-Clusters verweisen, sondern auf einen Event Hub-Namespace. 
+>
+>Aus Sicht der Kosten, des Betriebsaufwands und der Zuverlässigkeit ist Azure Event Hubs eine hervorragende Alternative zur Bereitstellung und zum Betrieb Ihrer eigenen Kafka- und Zookeeper-Cluster sowie zu Kafka-as-a-Service-Angeboten, die nicht standardmäßig in Azure integriert sind. 
+>
+> Sie erhalten nicht nur Zugang zu derselben Kernfunktionalität wie beim Apache Kafka-Broker, sondern auch zu den folgenden Azure Event Hub-Features: automatische Batchverarbeitung und Archivierung über [Event Hubs Capture](event-hubs-capture-overview.md), automatische Skalierung und automatischer Ausgleich, Notfallwiederherstellung, Unterstützung kostenneutraler Verfügbarkeitszonen, flexible und sichere Netzwerkintegration und Unterstützung mehrerer Protokolle, z. B. des firewallfreundlichen AMQP-over-WebSockets-Protokolls.
+
+
 ## <a name="namespace"></a>Namespace
-Ein Event Hubs-Namespace stellt einen eindeutigen Bereichscontainer bereit, auf den über den [vollqualifizierten Domänennamen](https://en.wikipedia.org/wiki/Fully_qualified_domain_name) verwiesen wird, und in dem Sie mindestens einen Event Hub bzw. mindestens ein Kafka-Thema erstellen. 
-
-## <a name="event-hubs-for-apache-kafka"></a>Event Hubs für Apache Kafka
-
-[Dieses Feature](event-hubs-for-kafka-ecosystem-overview.md) stellt einen Endpunkt bereit, der Kunden die Kommunikation mit Event Hubs über das Kafka-Protokoll ermöglicht. Mit dieser Integration verfügen Kunden über einen Kafka-Endpunkt. Dadurch können Kunden ihre vorhandenen Kafka-Anwendungen so konfigurieren, dass die Kommunikation mit Event Hubs ermöglicht wird. Dies stellt eine Alternative zum Ausführen ihrer eigenen Kafka-Cluster dar. Event Hubs für Apache Kafka unterstützt das Kafka-Protokoll 1.0 und höher. 
-
-Mit dieser Integration ist es nicht erforderlich, dass Sie Kafka-Cluster ausführen oder mit ZooKeeper verwalten. So können Sie auch einige der anspruchsvollsten Features von Event Hubs verwenden, z.B. Capture, automatische Vergrößerung und georedundante Notfallwiederherstellung.
-
-Außerdem können durch diese Integration Anwendungen wie Mirror Maker oder Frameworks wie Kafka Connect nur durch Konfigurationsänderungen ohne Cluster verwendet werden. 
+Ein Event Hubs-Namespace verfügt über in das DNS integrierte Netzwerkendpunkte und verschiedene Verwaltungsfunktionen für die Zugriffssteuerung und Netzwerkintegration, z. B. [IP-Filterung](event-hubs-ip-filtering.md), [VNET-Dienstendpunkt](event-hubs-service-endpoints.md) und [Private Link](private-link-service.md). Darüber hinaus dient er als Verwaltungscontainer für eine von mehreren Event Hub-Instanzen (bei Kafka als „Themen“ bezeichnet).
 
 ## <a name="event-publishers"></a>Ereignisherausgeber
 
-Jede Entität, die Daten an einen Event Hub sendet, ist ein Ereigniserzeuger bzw. *Ereignisherausgeber*. Ereignisherausgeber können Ereignisse über HTTPS, AMQP 1.0 oder Kafka 1.0 und höher veröffentlichen. Ereignisherausgeber identifizieren sich mit einem SAS-Token (Shared Access Signature) bei einem Event Hub und können eine eindeutige Identität aufweisen oder ein gemeinsames SAS-Token verwenden.
+Jede Entität, die Daten an einen Event Hub sendet, ist ein *Ereignisherausgeber* (Synonym: *Ereigniserzeuger*). Ereignisherausgeber können Ereignisse über HTTPS, AMQP 1.0 oder das Kafka-Protokoll veröffentlichen. Ereignisherausgeber nutzen für den Veröffentlichungszugriff die auf Azure Active Directory basierende Autorisierung mit JSON Web Tokens, die über Auth2 ausgestellt werden, oder ein Event Hub-spezifisches SAS-Token (Shared Access Signature).
 
 ### <a name="publishing-an-event"></a>Veröffentlichen eines Ereignisses
 
-Sie können ein Ereignis über AMQP 1.0, Kafka 1.0 (und höher) oder HTTPS veröffentlichen. Der Event Hubs-Dienst stellt eine [REST-API](/rest/api/eventhub/) sowie [.NET](event-hubs-dotnet-standard-getstarted-send.md)-, [Java](event-hubs-java-get-started-send.md)-, [Python](event-hubs-python-get-started-send.md)-, [JavaScript](event-hubs-node-get-started-send.md)- und [Go](event-hubs-go-get-started-send.md)-Clientbibliotheken für die Veröffentlichung von Ereignissen in einem Event Hub bereit. Für andere Runtimes und Plattformen können beliebige AMQP 1.0-Clients verwendet werden, z.B. [Apache Qpid](https://qpid.apache.org/). 
+Sie können ein Ereignis über AMQP 1.0, das Kafka-Protokoll oder HTTPS veröffentlichen. Der Event Hubs-Dienst stellt eine [REST-API](/rest/api/eventhub/) sowie [.NET](event-hubs-dotnet-standard-getstarted-send.md)-, [Java](event-hubs-java-get-started-send.md)-, [Python](event-hubs-python-get-started-send.md)-, [JavaScript](event-hubs-node-get-started-send.md)- und [Go](event-hubs-go-get-started-send.md)-Clientbibliotheken für die Veröffentlichung von Ereignissen in einem Event Hub bereit. Für andere Runtimes und Plattformen können beliebige AMQP 1.0-Clients verwendet werden, z.B. [Apache Qpid](https://qpid.apache.org/). 
 
-Sie können Ereignisse einzeln oder als Batch veröffentlichen. Jede Veröffentlichung (Ereignisdateninstanz) ist auf 1 MB beschränkt, unabhängig davon, ob es sich um ein einzelnes Ereignis oder einen Batch handelt. Das Veröffentlichen von Ereignissen, die größer als dieser Schwellenwert sind, führt zu einem Fehler. Es ist eine bewährte Methode für Herausgeber, die Partitionen innerhalb des Event Hubs nicht zu beachten und nur einen *Partitionsschlüssel* (im nächsten Abschnitt beschrieben) oder die eigene Identität über das SAS-Token anzugeben.
+Die Wahl zwischen AMQP oder HTTPS ist auf das Verwendungsszenario bezogen. AMQP erfordert die Einrichtung eines persistenten bidirektionalen Sockets zusätzlich zu TLS (Transport Level Security) oder SSL/TLS. AMQP weist höhere Netzwerkkosten beim Initialisieren der Sitzung auf, HTTPS erfordert jedoch zusätzlichen TLS-Mehraufwand für jede Anforderung. Mit AMQP kann eine erheblich höhere Leistung für häufig genutzte Herausgeber erzielt werden, und es können deutlich geringere Latenzen realisiert werden, wenn asynchroner Veröffentlichungscode verwendet wird.
 
-Die Wahl zwischen AMQP oder HTTPS ist auf das Verwendungsszenario bezogen. AMQP erfordert die Einrichtung eines persistenten bidirektionalen Sockets zusätzlich zu TLS (Transport Level Security) oder SSL/TLS. AMQP weist höhere Netzwerkkosten beim Initialisieren der Sitzung auf, HTTPS erfordert jedoch zusätzlichen TLS-Mehraufwand für jede Anforderung. AMQP verfügt über eine höhere Leistung für häufige Herausgeber.
+Sie können Ereignisse einzeln oder als Batch veröffentlichen. Jede Veröffentlichung ist auf 1 MB beschränkt. Dies gilt unabhängig davon, ob es sich um ein einzelnes Ereignis oder einen Batch handelt. Wenn dieser Schwellenwert für Veröffentlichungsereignisse überschritten wird, werden diese abgelehnt. 
+
+Der Event Hubs-Durchsatz wird skaliert, indem Partitionen und Zuteilungen von Durchsatzeinheiten verwendet werden (siehe unten). Eine bewährte Methode für Herausgeber besteht darin, dass das für einen Event Hub ausgewählte spezifische Partitionierungsmodell nicht bekannt ist und nur ein *Partitionsschlüssel* angegeben wird, der zum konsistenten Zuweisen von verwandten Ereignissen zu derselben Partition verwendet wird.
 
 ![Partitionsschlüssel](./media/event-hubs-features/partition_keys.png)
 
-Event Hubs stellt sicher, dass alle Ereignisse mit dem gleichen Partitionsschlüsselwert in der richtigen Reihenfolge und an die gleiche Partition übermittelt werden. Wenn Partitionsschlüssel mit Herausgeberrichtlinien verwendet werden, müssen die Identität des Herausgebers und der Wert des Partitionsschlüssels übereinstimmen. Andernfalls tritt ein Fehler auf.
+Event Hubs stellt sicher, dass alle Ereignisse mit dem gleichen Partitionsschlüsselwert zusammen gespeichert und in der Empfangsreihenfolge übermittelt werden. Wenn Partitionsschlüssel mit Herausgeberrichtlinien verwendet werden, müssen die Identität des Herausgebers und der Wert des Partitionsschlüssels übereinstimmen. Andernfalls tritt ein Fehler auf.
+
+### <a name="event-retention"></a>Aufbewahrung von Ereignissen
+
+Veröffentlichte Ereignisse werden basierend auf einer konfigurierbaren, zeitbasierten Aufbewahrungsrichtlinie von einem Event Hub entfernt. Der Standardwert und der kürzestmögliche Aufbewahrungszeitraum beträgt einen Tag (24 Stunden). Für Event Hubs Standard beträgt der maximale Aufbewahrungszeitraum sieben Tage. Für Event Hubs Dedicated beträgt der maximale Aufbewahrungszeitraum 90 Tage.
+
+> [!NOTE]
+> Event Hubs ist eine Engine für das Ereignisstreaming in Echtzeit. Sie ist nicht dafür ausgelegt, anstelle einer Datenbank bzw. als dauerhafter Speicher für Ereignisdatenströme mit unendlich langer Aufbewahrungsdauer verwendet zu werden. 
+> 
+> Je umfangreicher der Verlauf eines Ereignisdatenstroms wird, desto mehr benötigen Sie Hilfsindizes, um ein bestimmtes Verlaufssegment eines bestimmten Datenstroms zu finden. Die Untersuchung von Ereignisnutzdaten und die Indizierung sind nicht Teil des Funktionsumfangs von Event Hubs (oder Apache Kafka). Datenbanken und spezielle Analysespeicher und Engines, z. B. [Azure Data Lake Store](../data-lake-store/data-lake-store-overview.md), [Azure Data Lake Analytics](../data-lake-analytics/data-lake-analytics-overview.md) und [Azure Synapse](../synapse-analytics/overview-what-is.md), sind zum Speichern von Verlaufsereignissen daher viel besser geeignet.
+>
+> [Event Hubs Capture](event-hubs-capture-overview.md) ist direkt in Azure Blob Storage und Azure Data Lake Storage integriert und ermöglicht daher auch das [direkte Senden von Ereignissen an Azure Synapse](store-captured-data-data-warehouse.md).
+>
+> Falls Sie das Muster [Ereignissourcing](https://docs.microsoft.com/azure/architecture/patterns/event-sourcing) für Ihre Anwendung nutzen möchten, sollten Sie Ihre Strategie für Momentaufnahmen an den Grenzwerten für die Aufbewahrung von Event Hubs ausrichten. Vermeiden Sie es, materialisierte Sichten aus den Rohereignissen des gesamten Anfangsdatenbestands neu zu erstellen. Sie würden die Verwendung dieser Strategie sicherlich bereuen, nachdem Sie Ihre Anwendung eine Weile in der Produktion eingesetzt haben und diese stark genutzt wurde, weil Ihr Projektionsgenerator dann die Änderungsereignisse vieler Jahre durchgehen muss, um zu den aktuellen Änderungen zu gelangen. 
+
 
 ### <a name="publisher-policy"></a>Herausgeberrichtlinie
 

@@ -3,15 +3,15 @@ title: Integrieren von Azure Relay in den Azure Private Link-Dienst
 description: Es wird beschrieben, wie Sie Azure Relay in den Azure Private Link-Dienst integrieren.
 ms.date: 09/24/2020
 ms.topic: article
-ms.openlocfilehash: 10d82fe8e272ed18dcc339830dfef0f71d4b2ddb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 13644082160704ba9918e6bd6257fa314bb463a6
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91263851"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98134380"
 ---
-# <a name="integrate-azure-relay-with-azure-private-link-preview"></a>Integrieren von Azure Relay in Azure Private Link (Vorschau)
-Mit Azure Private Link können Sie über einen **privaten Endpunkt** in Ihrem virtuellen Netzwerk auf Azure-Dienste wie Azure Relay, Azure Service Bus, Azure Event Hubs, Azure Storage und Azure Cosmos DB sowie auf in Azure gehostete Kunden-/Partnerdienste zugreifen. Weitere Informationen finden Sie unter [Was ist Azure Private Link? (Vorschau)](../private-link/private-link-overview.md).
+# <a name="integrate-azure-relay-with-azure-private-link"></a>Integrieren von Azure Relay in Azure Private Link 
+Mit **Azure Private Link** können Sie über einen privaten Endpunkt in Ihrem virtuellen Netzwerk auf Azure-Dienste wie Azure Relay, Azure Service Bus, Azure Event Hubs, Azure Storage und Azure Cosmos DB sowie auf in Azure gehostete Kunden-/Partnerdienste zugreifen. Weitere Informationen finden Sie unter [Was ist Azure Private Link?](../private-link/private-link-overview.md).
 
 Ein **privater Endpunkt** ist eine Netzwerkschnittstelle, mit der Ihre Workloads, die in einem virtuellen Netzwerk ausgeführt werden, eine private und sichere Verbindung mit einem Dienst herstellen können, der über eine **Private Link-Ressource** verfügt (z. B. über einen Relaynamespace). Der private Endpunkt verwendet eine private IP-Adresse aus Ihrem VNET und bindet den Dienst dadurch in Ihr VNET ein. Der gesamte für den Dienst bestimmte Datenverkehr kann über den privaten Endpunkt geleitet werden. Es sind also keine Gateways, NAT-Geräte, ExpressRoute-Verbindungen, VPN-Verbindungen oder öffentlichen IP-Adressen erforderlich. Der Datenverkehr zwischen Ihrem virtuellen Netzwerk und dem Dienst wird über das Microsoft-Backbonenetzwerk übertragen und dadurch vom öffentlichen Internet isoliert. Sie können eine gewünschte Granularitätsebene für die Zugriffssteuerung festlegen, indem Sie Verbindungen mit bestimmten Azure Relay-Namespaces zulassen. 
 
@@ -19,7 +19,7 @@ Ein **privater Endpunkt** ist eine Netzwerkschnittstelle, mit der Ihre Workloads
 ## <a name="add-a-private-endpoint-using-azure-portal"></a>Hinzufügen eines privaten Endpunkts über das Azure-Portal
 
 ### <a name="prerequisites"></a>Voraussetzungen
-Um einen Azure Relay-Namespace in Azure Private Link (Vorschau) zu integrieren, benötigen Sie die folgenden Entitäten oder Berechtigungen:
+Um einen Azure Relay-Namespace in Azure Private Link zu integrieren, benötigen Sie die folgenden Entitäten oder Berechtigungen:
 
 - Einen Azure Relay-Namespace
 - Ein virtuelles Azure-Netzwerk
@@ -37,7 +37,7 @@ Eine Schritt-für-Schritt-Anleitung zum Erstellen eines neuen Azure Relay-Namesp
 2. Geben Sie in der Suchleiste den Suchbegriff **Relays** ein.
 3. Wählen Sie in der Liste den **Namespace** aus, dem Sie einen privaten Endpunkt hinzufügen möchten.
 4. Wählen Sie die Registerkarte **Netzwerk** unter **Einstellungen** aus.
-5. Wählen Sie im oberen Seitenbereich die Registerkarte **Private Endpunktverbindungen (Vorschau)** aus.
+5. Wählen Sie im oberen Seitenbereich die Registerkarte **Private Endpunktverbindungen** aus.
 6. Wählen Sie im oberen Seitenbereich die Schaltfläche **+ Privater Endpunkt** aus.
 
     ![Hinzufügen einer Schaltfläche für den privaten Endpunkt](./media/private-link-service/add-private-endpoint-button.png)
@@ -81,7 +81,7 @@ Eine Schritt-für-Schritt-Anleitung zum Erstellen eines neuen Azure Relay-Namesp
 12. Auf der Seite **Privater Endpunkt** wird der Status der Verbindung mit dem privaten Endpunkt angezeigt. Wenn Sie Besitzer des Relaynamespace sind oder Verwaltungszugriff darauf besitzen und die Option **Hiermit wird eine Verbindung mit einer Azure-Ressource im eigenen Verzeichnis hergestellt** als **Verbindungsmethode** ausgewählt haben, sollte die Endpunktverbindung **automatisch genehmigt** sein. Wenn sie sich im Status **Ausstehend** befindet, lesen Sie den Abschnitt [Verwalten eines privaten Endpunkts mit dem Azure-Portal](#manage-private-endpoints-using-azure-portal).
 
     ![Seite „Privater Endpunkt“](./media/private-link-service/private-endpoint-page.png)
-13. Navigieren Sie zurück zur Seite **Netzwerk** des **Namespace**, und wechseln Sie zur Registerkarte **Private Endpunktverbindungen (Vorschau)** . Der private Endpunkt, den Sie erstellt haben, sollte angezeigt werden. 
+13. Navigieren Sie zurück zur Seite **Netzwerk** des **Namespace**, und wechseln Sie zur Registerkarte **Private Endpunktverbindungen**. Der private Endpunkt, den Sie erstellt haben, sollte angezeigt werden. 
 
     ![Privater Endpunkt ist erstellt](./media/private-link-service/private-endpoint-created.png)
 
@@ -230,7 +230,6 @@ Aliases:  <namespace-name>.servicebus.windows.net
 ## <a name="limitations-and-design-considerations"></a>Einschränkungen und Entwurfsaspekte
 
 ### <a name="design-considerations"></a>Überlegungen zum Entwurf
-- Der private Endpunkt für Azure Relay befindet sich in der **öffentlichen Vorschauphase**. 
 - Preisinformationen finden Sie unter [Azure Private Link – Preise](https://azure.microsoft.com/pricing/details/private-link/).
 
 ### <a name="limitations"></a>Einschränkungen 
@@ -240,5 +239,5 @@ Aliases:  <namespace-name>.servicebus.windows.net
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Was ist der Azure Private Link-Dienst?](../private-link/private-link-service-overview.md)
+- Weitere Informationen zu [Azure Private Link](../private-link/private-link-service-overview.md).
 - Weitere Informationen zu [Azure Relay](relay-what-is-it.md)

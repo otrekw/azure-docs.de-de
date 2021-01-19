@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/19/2020
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: dac82692c76d9d36b1f25d7b93b5c3a2e2400672
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 7ebb9dbce020086a716872c86221b97b4b7a6653
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96002789"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97978806"
 ---
 ### <a name="what-ports-do-i-need-to-open-on-the-firewall"></a>Welche Ports muss ich in der Firewall öffnen? 
 Sie können die folgenden Protokolle mit Azure Event Hubs verwenden, um Ereignisse zu senden und zu empfangen:
@@ -53,7 +53,7 @@ Vergewissern Sie sich außerdem, dass die IP-Adresse für Ihren Namespace zuläs
     ```
 2. Notieren Sie sich die IP-Adresse, die in `Non-authoritative answer` zurückgegeben werden. 
 
-Wenn Sie **Zonenredundanz** für Ihren Namespace verwenden, müssen Sie einige zusätzliche Schritte durchführen: 
+Wenn Sie **Zonenredundanz** für Ihren Namespace verwenden, müssen Sie einige zusätzliche Schritte ausführen: 
 
 1. Führen Sie zunächst nslookup für den Namespace aus.
 
@@ -72,7 +72,7 @@ Wenn Sie **Zonenredundanz** für Ihren Namespace verwenden, müssen Sie einige z
     > [!NOTE]
     > Die vom `nslookup`-Befehl zurückgegebene IP-Adresse ist keine statische IP-Adresse. Allerdings bleibt sie gleich, bis die zugrunde liegende Bereitstellung gelöscht oder in einen anderen Cluster verschoben wird.
 
-### <a name="where-can-i-find-client-ip-sending-or-receiving-messages-to-my-namespace"></a>Wo finde ich die Client-IP-Adresse, die Nachrichten an meinen Namespace sendet oder von diesem empfängt?
+### <a name="what-client-ips-are-sending-events-to-or-receiving-events-from-my-namespace"></a>Welche Client-IP-Adressen senden Ereignisse an meinen Namespace oder empfangen Ereignisse daraus?
 Aktivieren Sie zunächst die [IP-Filterung](../articles/event-hubs/event-hubs-ip-filtering.md) für den Namespace. 
 
 Aktivieren Sie dann Diagnoseprotokolle für [Event Hubs-Verbindungsereignisse für virtuelle Netzwerke](../articles/event-hubs/event-hubs-diagnostic-logs.md#event-hubs-virtual-network-connection-event-schema), indem Sie den Anweisungen unter [Aktivieren von Diagnoseprotokollen](../articles/event-hubs/event-hubs-diagnostic-logs.md#enable-diagnostic-logs) folgen. Es wird die IP-Adresse angezeigt, für die die Verbindung verweigert wird.
@@ -92,3 +92,6 @@ Aktivieren Sie dann Diagnoseprotokolle für [Event Hubs-Verbindungsereignisse f�
 
 > [!IMPORTANT]
 > Protokolle virtueller Netzwerke werden nur dann generiert, wenn der Namespace Zugriff über **spezifische IP-Adressen** (IP-Filterregeln) erlaubt. Wenn Sie den Zugriff auf Ihren Namespace mit diesen Features nicht einschränken möchten und dennoch Protokolle virtueller Netzwerke erhalten möchten, um IP-Adressen von Clients zu verfolgen, die sich mit dem Event Hubs-Namespace verbinden, können Sie die folgende Umgehungslösung verwenden: Aktivieren Sie die IP-Filterung, und fügen Sie den gesamten adressierbaren IPv4-Bereich (1.0.0.0/1 bis 255.0.0.0/1) hinzu. Event Hubs unterstützt keine IPv6-Adressbereiche. 
+
+> [!NOTE]
+> Derzeit ist es nicht möglich, die IP-Quelladresse einer einzelnen Nachricht oder eines einzelnen Ereignisses zu bestimmen. 

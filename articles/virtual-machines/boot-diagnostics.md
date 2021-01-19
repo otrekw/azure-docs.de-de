@@ -7,12 +7,12 @@ author: mimckitt
 ms.author: mimckitt
 ms.topic: conceptual
 ms.date: 11/06/2020
-ms.openlocfilehash: 408ba76c44d1161a4b91ccc037721796c7b94661
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 3ae300ca2746ab9e3478d3fe14fd6fc49c95a93d
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96500749"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98071730"
 ---
 # <a name="azure-boot-diagnostics"></a>Azure-Startdiagnose
 
@@ -21,10 +21,14 @@ Die Startdiagnose ist ein Debuggingfeature für Azure-VMs, die eine Diagnose von
 ## <a name="boot-diagnostics-storage-account"></a>Startdiagnose-Speicherkonto
 Wenn Sie eine VM im Azure-Portal erstellen, ist die Startdiagnose standardmäßig aktiviert. Die empfohlene Vorgehensweise bei der Startdiagnose ist die Verwendung eines verwalteten Speicherkontos, da dies zu erheblichen Leistungsverbesserungen bei der Zeit führt, die für die Erstellung einer Azure-VM benötigt wird. Dies liegt daran, dass ein verwaltetes Azure-Speicherkonto verwendet wird, wodurch der Zeitraum, der zum Erstellen eines neuen Benutzerspeicherkontos zum Speichern der Startdiagnosedaten benötigt wird, entfällt.
 
-Eine alternative Vorgehensweise bei der Startdiagnose ist die Verwendung eines vom Benutzer verwalteten Speicherkontos. Ein Benutzer kann entweder ein neues Speicherkonto erstellen oder ein vorhandenes Konto verwenden. 
-
 > [!IMPORTANT]
 > Die Datenblobs der Startdiagnose (die aus Protokollen und Images von Momentaufnahmen bestehen) werden in einem verwalteten Speicherkonto gespeichert. Kunden werden nur die von den Blobs genutzten GiBs berechnet, nicht für die bereitgestellte Größe des Datenträgers. Die Momentaufnahmezähler werden zur Abrechnung des verwalteten Speicherkontos verwendet. Da die verwalteten Konten entweder auf „Standard LRS“ oder „Standard ZRS“ erstellt werden, wird den Kunden nur die Größe ihrer Diagnosedatenblobs mit 0,05 USD/GB pro Monat berechnet. Weitere Informationen zu diesen Preisen finden Sie unter [Preise für verwaltete Datenträger](https://azure.microsoft.com/pricing/details/managed-disks/). Kunden können sehen, dass diese Gebühr an ihren URI der VM-Ressource gebunden ist. 
+
+Eine alternative Vorgehensweise bei der Startdiagnose ist die Verwendung eines vom Benutzer verwalteten Speicherkontos. Ein Benutzer kann entweder ein neues Speicherkonto erstellen oder ein vorhandenes Konto verwenden.
+> [!NOTE]
+> Bei vom Benutzer verwalteten Speicherkonten, die für die Startdiagnose verwendet werden, müssen das Speicherkonto und die zugehörigen virtuellen Computer im gleichen Abonnement enthalten sein. 
+
+
 
 ## <a name="boot-diagnostics-view"></a>Ansicht der Startdiagnose
 Die Option der Startdiagnose befindet sich im Azure-Portal auf dem Blatt Ihrer VM im Abschnitt *Support und Problembehandlung*. Durch Auswählen der Startdiagnose werden ein Screenshot und Informationen des seriellen Protokolls angezeigt. Das serielle Protokoll enthält Kernelmeldungen, der Screenshot ist eine Momentaufnahme des aktuellen Zustands Ihrer VM. Je nachdem, ob auf der VM Windows oder Linux ausgeführt wird, unterscheiden sich die zu erwartenden Screenshots. Windows-Benutzern wird ein Desktophintergrund angezeigt, Linux-Benutzern eine Anmeldeaufforderung.

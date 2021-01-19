@@ -2,13 +2,13 @@
 title: Authentifizieren der Ereignisübermittlung an Ereignishandler (Azure Event Grid)
 description: In diesem Artikel werden verschiedene Methoden zum Authentifizieren der Übermittlung an Ereignishandler in Azure Event Grid beschrieben.
 ms.topic: conceptual
-ms.date: 07/07/2020
-ms.openlocfilehash: abe16c9598c8c10caa832150aafac997dd7f1624
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 01/07/2021
+ms.openlocfilehash: 8360aa49e3d83879499af79448ff9f85082f47ac
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87460642"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98015537"
 ---
 # <a name="authenticate-event-delivery-to-event-handlers-azure-event-grid"></a>Authentifizieren der Ereignisübermittlung an Ereignishandler (Azure Event Grid)
 Dieser Artikel enthält Informationen zum Authentifizieren der Ereignisübermittlung an Ereignishandler. Er zeigt auch das Sichern der Webhook-Endpunkte für das Empfangen von Ereignissen von Event Grid über Azure Active Directory (Azure AD) oder ein gemeinsames Geheimnis.
@@ -41,6 +41,9 @@ Weitere Informationen zum Übermitteln von Ereignissen an Webhooks finden Sie un
 
 > [!IMPORTANT]
 Azure Event Grid unterstützt nur **HTTPS**-Webhook-Endpunkte. 
+
+## <a name="endpoint-validation-with-cloudevents-v10"></a>Endpunktüberprüfung mit CloudEvents 1.0
+Wenn Sie mit Event Grid bereits vertraut sind, kennen Sie wahrscheinlich auch den Handshake zur Überprüfung von Endpunkten, mit dem Missbrauch verhindert werden soll. CloudEvents v1.0 implementiert eine eigene [Semantik für den Schutz vor Missbrauch](webhook-event-delivery.md) über die **HTTP OPTIONS**-Methode. Weitere Informationen dazu finden Sie unter [HTTP 1.1-Webhooks für die Ereignisbereitstellung – Version 1.0](https://github.com/cloudevents/spec/blob/v1.0/http-webhook.md#4-abuse-protection). Wenn Sie das CloudEvents-Schema für die Ausgabe nutzen, verwendet Event Grid anstelle des Event Grid-Mechanismus für Überprüfungsereignisse den Missbrauchsschutz von CloudEvents v1.0. Weitere Informationen finden Sie unter [Verwenden des CloudEvents 1.0-Schemas mit Event Grid](cloudevents-schema.md). 
 
 
 ## <a name="next-steps"></a>Nächste Schritte

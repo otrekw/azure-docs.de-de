@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 09/12/2020
 ms.author: memildin
-ms.openlocfilehash: 08bcb74fd50be0eeb7a73c0743db2c4f3a57be32
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.openlocfilehash: dfa562be4561e8aaec66d4bff51aadeba77cf35f
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96030848"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98131337"
 ---
 # <a name="protect-your-kubernetes-workloads"></a>Schützen Ihrer Kubernetes-Workloads
 
@@ -27,7 +27,7 @@ Security Center bietet noch weitere Features für die Containersicherheit, wenn 
 - Abrufen von Warnungen zur Bedrohungserkennung in Echtzeit für Ihre K8s-Cluster mit [Azure Defender für Kubernetes](defender-for-kubernetes-introduction.md)
 
 > [!TIP]
-> Eine Liste *aller* Sicherheitsempfehlungen für Kubernetes-Cluster und -Knoten finden Sie im Abschnitt [Container](recommendations-reference.md#recs-containers) der Referenztabelle zu Empfehlungen.
+> Eine Liste *aller* Sicherheitsempfehlungen für Kubernetes-Cluster und -Knoten finden Sie im Abschnitt [Compute](recommendations-reference.md#recs-compute) der Referenztabelle zu Empfehlungen.
 
 
 
@@ -251,6 +251,6 @@ In diesem Artikel haben Sie erfahren, wie Sie den Kubernetes-Workloadschutz konf
 
 Weitere verwandte Informationen finden Sie auf den folgenden Seiten: 
 
-- [Security Center-Empfehlungen für Container](recommendations-reference.md#recs-containers)
+- [Security Center-Empfehlungen für Compute](recommendations-reference.md#recs-compute)
 - [Warnungen auf AKS-Clusterebene](alerts-reference.md#alerts-akscluster)
 - [Warnungen auf Containerhostebene](alerts-reference.md#alerts-containerhost)

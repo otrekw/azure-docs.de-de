@@ -3,12 +3,12 @@ title: Häufig gestellte Fragen (FAQ) – Azure Event Hubs | Microsoft-Dokumenta
 description: Dieser Artikel enthält eine Liste häufig gestellter Fragen (FAQ) zu Azure Event Hubs sowie die zugehörigen Antworten.
 ms.topic: article
 ms.date: 10/27/2020
-ms.openlocfilehash: c756d0bccd9b2ad303bd97d3bfb7aed8b0b82b09
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: e7a34fe0f2ef04fffeeddc5615d3ac1749467902
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "96002788"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97955415"
 ---
 # <a name="event-hubs-frequently-asked-questions"></a>Häufig gestellte Fragen zu Event Hubs
 
@@ -153,7 +153,7 @@ Schrittanleitungen und weitere Informationen zum Einrichten eines Event Hubs Ded
 ## <a name="partitions"></a>Partitionen
 
 ### <a name="how-many-partitions-do-i-need"></a>Wie viele Partitionen benötige ich?
-Die Anzahl der Partitionen wird bei der Erstellung angegeben und muss zwischen 1 und 32 liegen. Die Partitionenanzahl kann nicht geändert werden. Behalten Sie daher beim Festlegen der Partitionenanzahl die langfristige Skalierung im Hinterkopf. Partitionen sind ein Mechanismus zum Organisieren von Daten, der sich auf die erforderliche Downstreamparallelität in verarbeitenden Anwendungen bezieht. Die Anzahl der Partitionen in einem Event Hub steht in direktem Zusammenhang mit der erwarteten Anzahl von gleichzeitigen Lesern. Weitere Informationen zur Partitionen finden Sie unter [Partitionen](event-hubs-features.md#partitions).
+Die Anzahl der Partitionen wird bei der Erstellung angegeben und muss zwischen 1 und 32 liegen. Die Partitionenanzahl kann nur im [Dedicated-Tarif](event-hubs-dedicated-overview.md) geändert werden. Behalten Sie daher beim Festlegen der Partitionenanzahl die langfristige Skalierung im Hinterkopf. Partitionen sind ein Mechanismus zum Organisieren von Daten, der sich auf die erforderliche Downstreamparallelität in verarbeitenden Anwendungen bezieht. Die Anzahl der Partitionen in einem Event Hub steht in direktem Zusammenhang mit der erwarteten Anzahl von gleichzeitigen Lesern. Weitere Informationen zur Partitionen finden Sie unter [Partitionen](event-hubs-features.md#partitions).
 
 Es empfiehlt sich ggf., zum Zeitpunkt der Erstellung den höchstmöglichen Wert (32) festzulegen. Beachten Sie, dass bei Verwendung mehrerer Partitionen Ereignisse ohne Berücksichtigung der Reihenfolge an mehrere Partitionen gesendet werden – es sei denn, Sie konfigurieren die Absender so, dass sie Ereignisse nur an eine einzelne der 32 Partitionen senden und die anderen 31 Partitionen redundant sind. Im ersten Fall müssen Ereignisse für alle 32 Partitionen gelesen werden. Im zweiten Fall sind mit Ausnahme der zusätzlichen Konfiguration für den Ereignisprozessorhost keine offensichtlichen Zusatzschritte erforderlich.
 

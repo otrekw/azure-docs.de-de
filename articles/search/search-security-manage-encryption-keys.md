@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/02/2020
 ms.custom: references_regions
-ms.openlocfilehash: 8295e619cfda0d4b83a7356d5fd21d4b80f83849
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: 6b1079797f1a753fa8362d6e920f3394087d7e9f
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96530883"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98119287"
 ---
 # <a name="configure-customer-managed-keys-for-data-encryption-in-azure-cognitive-search"></a>Konfigurieren von kundenseitig verwalteten Schlüsseln für die Datenverschlüsselung in Azure Cognitive Search
 
@@ -52,7 +52,7 @@ In diesem Szenario werden die folgenden Tools und Dienste verwendet.
 Sie sollten über eine Suchanwendung verfügen, mit der das verschlüsselte Objekt erstellt werden kann. In diesem Code verweisen Sie auf einen Key Vault-Schlüssel und Active Directory-Registrierungsinformationen. Bei diesem Code kann es sich um eine funktionierende App oder einen Prototypcode wie das [C#-Codebeispiel „DotNetHowToEncryptionUsingCMK“](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowToEncryptionUsingCMK) handeln.
 
 > [!TIP]
-> Sie können [Postman oder Visual Studio Code](search-get-started-rest.md) oder [Azure PowerShell](./search-get-started-powershell.md) verwenden, um die REST-APIs aufzurufen, mit denen Indizes und Synonymzuordnungen erstellt werden, die einen Parameter für den Verschlüsselungsschlüssel enthalten. Derzeit wird das Hinzufügen eines Schlüssels zu Indizes oder Synonymzuordnungen über das Portal nicht unterstützt.
+> Sie können [Postman](search-get-started-rest.md), [Visual Studio Code](search-get-started-vs-code.md) oder [Azure PowerShell](./search-get-started-powershell.md) verwenden, um die REST-APIs aufzurufen, mit denen Indizes und Synonymzuordnungen erstellt werden, die einen Parameter für den Verschlüsselungsschlüssel enthalten. Derzeit wird das Hinzufügen eines Schlüssels zu Indizes oder Synonymzuordnungen über das Portal nicht unterstützt.
 
 ## <a name="1---enable-key-recovery"></a>1: Aktivieren der Schlüsselwiederherstellung
 

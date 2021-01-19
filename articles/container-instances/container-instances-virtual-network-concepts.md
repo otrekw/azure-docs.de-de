@@ -3,12 +3,12 @@ title: Szenarien für die Verwendung eines virtuellen Netzwerks
 description: Szenarien, Ressourcen und Einschränkungen für die Bereitstellung von Containergruppen in einem virtuellen Azure-Netzwerk.
 ms.topic: article
 ms.date: 08/11/2020
-ms.openlocfilehash: 2fb468a6a860bcc076043c30606922f43fbdb1ad
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: 65d7fa46ebbb9b072b50731bff68b9b88809075d
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97882431"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98033828"
 ---
 # <a name="virtual-network-scenarios-and-resources"></a>Szenarien und Ressourcen für virtuelle Azure-Netzwerke
 
@@ -33,6 +33,7 @@ Containergruppen, die in einem virtuellen Azure-Netzwerk bereitgestellt werden, 
 * **Azure Load Balancer**: Das Positionieren eines Azure Load Balancer vor Containerinstanzen in einer vernetzten Containergruppe wird nicht unterstützt.
 * **Globales Peering virtueller Netzwerke**: Globales Peering (Verbinden virtueller Netzwerke über Azure-Regionen hinweg) wird nicht unterstützt.
 * **Öffentliche IP-Adresse oder DNS-Bezeichnung**: Containergruppen, die in einem virtuellen Netzwerk bereitgestellt werden, unterstützen derzeit keine direkte Bereitstellung von Containern im Internet mit einer öffentlichen IP-Adresse oder einem vollqualifizierten Domänennamen.
+* **Virtual Network NAT**: Containergruppen, die in einem virtuellen Netzwerk bereitgestellt werden, unterstützen derzeit nicht die Verwendung einer NAT-Gatewayressource für die ausgehende Internetkonnektivität.
 
 ## <a name="other-limitations"></a>Weitere Einschränkungen
 

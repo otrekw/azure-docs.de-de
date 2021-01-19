@@ -7,12 +7,12 @@ ms.topic: how-to
 author: vamahtan
 ms.author: vamahtan
 ms.date: 12/07/2020
-ms.openlocfilehash: 6ad58283ad9078088f241a67426657eb7a538e10
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: 0114c75d99d79041631e5078deb33f77863dc35a
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96781129"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98043777"
 ---
 # <a name="migration-of-co-sell-solutions-from-ocp-gtm-to-the-commercial-marketplace"></a>Migrieren von Co-Selling-Lösungen von OCP GTM zum kommerziellen Marketplace
 
@@ -136,7 +136,7 @@ Ausführliche Anweisungen zu den Informationen, die Sie angeben müssen, bevor d
 
     :::image type="content" source="media/co-sell-migrate/offer-setup.png" alt-text="Registerkarten mit einer Übersicht der Angebotseinrichtung im Partner Center":::
 
-3. Einige Details zu Microsoft-Verkäufern wurden aus der OCP GTM-Lösung kopiert. Bearbeiten Sie die übrigen erforderlichen Informationen auf der Registerkarte **Co-Selling mit Microsoft**, um den Co-Sell Ready-Status für Ihr Angebot zu erhalten. Wählen Sie **Überprüfen und veröffentlichen** aus, wenn Sie fertig sind.
+3. Einige Details zu Microsoft-Verkäufern wurden aus der OCP GTM-Lösung kopiert. Bearbeiten Sie die übrigen erforderlichen Informationen auf der Registerkarte **Co-Selling mit Microsoft**, um den Co-Sell Ready-Status für Ihr Angebot zu erhalten. Wählen Sie **Überprüfen und veröffentlichen** aus, wenn Sie fertig sind. Weitere Informationen finden Sie unter [Übermitteln von Co-Selling-Materialien in Partner Center](marketplace-co-sell.md#how-to-submit-co-sell-materials-in-partner-center).
 
     :::image type="content" source="media/co-sell-migrate/co-sell-page.png" alt-text="Registerkarte für das Co-Selling von Angeboten im Partner Center":::
 
@@ -154,4 +154,6 @@ Ausführliche Anweisungen zu den Informationen, die Sie angeben müssen, bevor d
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Verkaufen über CSP-Partner](cloud-solution-providers.md)
+- [Übermitteln von Co-Selling-Materialien in Partner Center](marketplace-co-sell.md#how-to-submit-co-sell-materials-in-partner-center)
 - Lesen Sie diese [FAQ](https://partner.microsoft.com/resources/detail/co-sell-requirements-publish-commercial-marketplace-faq-pdf) (PDF)
+

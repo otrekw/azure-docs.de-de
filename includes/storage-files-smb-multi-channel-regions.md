@@ -8,27 +8,25 @@ ms.topic: include
 ms.date: 09/16/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 6fc70d92d08432de2fed99783d774d73463408ce
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: ba62bf6b926ded5f3d976f096cee44c7341b4e50
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97532018"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98052913"
 ---
 SMB Multichannel für Azure-Dateifreigaben ist derzeit nur in den folgenden Regionen verfügbar:
 
-- Australien (Osten)
-- Brasilien Süd
-- Kanada, Mitte
-- Kanada, Osten
-- Indien, Mitte
-- Frankreich, Mitte
-- Deutschland, Westen-Mitte
-- Japan, Osten
-- USA Nord Mitte
-- USA Süd Mitte
-- Vereinigte Arabische Emirate, Norden
-- UK, Süden
-- UK, Westen
-- USA, Westen-Mitte
-- Indien, Westen
+| Geografische Region | Azure-Region |
+|-------------|-------------------|
+| Australien | Australien (Osten) |
+| Brasilien | Brasilien Süd |
+| Canada | Kanada, Mitte; Kanada, Osten |
+| Frankreich | Frankreich, Mitte |
+| Deutschland | Deutschland, Westen-Mitte |
+| Indien | „Indien, Mitte“, „Indien, Westen“ |
+| Japan | „Japan, Osten“, „Japan, Westen“ |
+| Korea | „Südkorea, Mitte“, „Südkorea, Westen“ |
+| Vereinigte Arabische Emirate | Vereinigte Arabische Emirate, Norden |
+| Vereinigtes Königreich | Vereinigtes Königreich, Süden; Vereinigtes Königreich, Westen |
+| USA | „USA, Norden-Mitte“, „USA, Süden-Mitte“, „USA, Westen-Mitte“ |

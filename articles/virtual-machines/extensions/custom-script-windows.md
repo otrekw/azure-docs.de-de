@@ -11,12 +11,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/31/2020
 ms.author: robreed
-ms.openlocfilehash: aa95d6792f2f5754a237c7bf5e90a11e2e011ede
-ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
+ms.openlocfilehash: b0502fb05043a54d81d768a7809d19b108cc6248
+ms.sourcegitcommit: 8f0803d3336d8c47654e119f1edd747180fe67aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97861773"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97976842"
 ---
 # <a name="custom-script-extension-for-windows"></a>CustomScript-Erweiterung für Windows
 
@@ -50,6 +50,8 @@ Sie können die Erweiterung so konfigurieren, dass mit Ihren Azure Blob Storage-
 ### <a name="internet-connectivity"></a>Internetverbindung
 
 Wenn Sie ein Skript extern herunterladen möchten, etwa von GitHub oder Azure Storage, müssen zusätzliche Firewall-/Netzwerksicherheitsgruppen-Ports geöffnet werden. Wenn sich Ihr Skript beispielsweise in Azure Storage befindet, können Sie Zugriff über Azure-NSG-Diensttags für [Storage](../../virtual-network/network-security-groups-overview.md#service-tags) gewähren.
+
+Beachten Sie dass die CustomScript-Erweiterung keine Möglichkeit zum Umgehen der Zertifikatüberprüfung bietet. Wenn Sie also Daten von einem sicheren Speicherort herunterladen, der z. B. ein selbstsigniertes Zertifikat erfordert, werden Ihnen möglicherweise Fehler wie dieser angezeigt: *Das Remotezertifikat ist laut Validierungsverfahren ungültig*. Stellen Sie sicher, dass das Zertifikat im Speicher *Vertrauenswürdige Stammzertifizierungsstellen* der VM ordnungsgemäß installiert ist.
 
 Befindet sich Ihr Skript auf einem lokalen Server, müssen eventuell dennoch weitere Firewall- und Netzwerksicherheitsgruppen-Ports geöffnet werden.
 

@@ -7,12 +7,12 @@ ms.topic: how-to
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 10/19/2020
-ms.openlocfilehash: 023dc877158c7074f46945893d40291e94ab2f09
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: e5fb425afdd4b212a0b28ce91418eb0ee9e3632f
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94629555"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97964427"
 ---
 # <a name="how-to-create-plans-for-a-virtual-machine-offer"></a>Erstellen von Plänen für ein VM-Angebot
 
@@ -191,7 +191,7 @@ Beim Erstellen einer VM wird die verwendete virtuelle Hardware definiert. Basier
 
 1. Wenn Sie ein neues Angebot erstellen, wählen Sie einen **Generationstyp** aus, und geben Sie die gewünschten Details ein:
 
-    :::image type="content" source="./media/create-vm/azure-vm-generations-image-details-1.png" alt-text="Ansicht des Dropdownfelds „Generation“":::
+    :::image type="content" source="./media/create-vm/azure-vm-generations-image-details-1.png" alt-text="Ansicht des Abschnitts mit Generationsdetail in Partner Center":::
 
 2. Wenn Sie dem Plan eine weitere Generation hinzufügen möchten, wählen Sie **Generation hinzufügen** aus...
 
@@ -203,9 +203,7 @@ Beim Erstellen einer VM wird die verwendete virtuelle Hardware definiert. Basier
 
 <!--    The **Generation ID** you choose will be visible to customers in places such as product URLs and ARM templates (if applicable). Use only lowercase, alphanumeric characters, dashes, or underscores; it cannot be modified once published.
 -->
-3. Wenn Sie eine vorhandene VM, die bereits mit Generation 1 veröffentlicht wurde, aktualisieren möchten, bearbeiten Sie die Details auf der Seite **Technische Konfiguration**:
-
-    :::image type="content" source="./media/create-vm/azure-vm-generations-updating.png" alt-text="Ansicht der Seite „Technische Konfiguration“ für den Plan":::
+3. Wenn Sie eine vorhandene VM, die bereits mit Generation 1 veröffentlicht wurde, aktualisieren möchten, bearbeiten Sie die Details auf der Seite **Technische Konfiguration**.
 
 Weitere Informationen zu den Unterschieden zwischen den Funktionen von Generation 1 und Generation 2 finden Sie unter [Unterstützung für VMs der Generation 2 in Azure](../virtual-machines/generation-2.md).
 

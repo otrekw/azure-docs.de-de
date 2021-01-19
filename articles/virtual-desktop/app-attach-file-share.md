@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 12/14/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 2157a1cb96475209762e829c549d628f2c35fd91
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: 49a350b77958901aae5e54e82d856e4f3772702e
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97417451"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97930785"
 ---
 # <a name="set-up-a-file-share-for-msix-app-attach-preview"></a>Einrichten einer Dateifreigabe für das MSIX-Feature zum Anfügen von Apps (Vorschau)
 
@@ -64,6 +64,12 @@ Im Folgenden finden Sie weitere Empfehlungen zum Optimieren der Leistung des MSI
 Der Setupprozess für die Dateifreigabe für das MSIX-Feature zum Anfügen von Apps ist größtenteils identisch mit dem [Setupprozess für FSLogix-Profildateifreigaben](create-host-pools-user-profile.md). Sie müssen den Benutzern jedoch unterschiedliche Berechtigungen zuweisen. Das MSIX-Feature zum Anfügen von Apps erfordert Leseberechtigungen für den Zugriff auf die Dateifreigabe.
 
 Wenn Sie Ihre MSIX-Anwendungen in Azure Files speichern, müssen Sie für Ihre Sitzungshosts allen Sitzungshost-VMs sowohl die Berechtigungen der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) für das Speicherkonto als auch NTFS-Berechtigungen (New Technology File System) für die Dateifreigabe auf der Freigabe zuweisen.
+
+| Azure-Objekt                      | Erforderliche Rolle                                     | Rollenfunktion                                  |
+|-----------------------------------|--------------------------------------------------|-----------------------------------------------|
+| Sitzungshost (VM-Computerobjekte)| Speicherdateidaten-SMB-Freigabemitwirkender          | Lesen und ausführen, Lesen, Ordnerinhalt auflisten  |
+| Administratoren in Dateifreigabe              | Speicherdateidaten-SMB-Freigabemitwirkender mit erhöhten Rechten | Vollzugriff                                  |
+| Benutzer in Dateifreigabe               | Speicherdateidaten-SMB-Freigabemitwirkender          | Lesen und ausführen, Lesen, Ordnerinhalt auflisten  |
 
 So weisen Sie Sitzungshost-VMs Berechtigungen für das Speicherkonto und die Dateifreigabe zu:
 

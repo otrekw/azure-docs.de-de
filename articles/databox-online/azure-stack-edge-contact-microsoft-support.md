@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 12/17/2020
+ms.date: 01/07/2021
 ms.author: alkohli
-ms.openlocfilehash: a457c2816d4075190a2174339f7e52a2ea41730a
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.openlocfilehash: 5bbd02f9e15a4ee29e244b2a0307accd151ba487
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/19/2020
-ms.locfileid: "97696023"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98033947"
 ---
 # <a name="open-a-support-ticket-for-azure-stack-edge-pro-and-azure-data-box-gateway"></a>Öffnen eines Supporttickets für Azure Stack Edge Pro und Azure Data Box Gateway
 
@@ -78,7 +78,7 @@ Diese Informationen gelten nur für Azure Stack-Geräte. Prozess zum Melden von 
     * Ein Ersatzteil (Field Replacement Unit, FRU) für das fehlerhafte Hardwareteil wird geschickt. Zurzeit werden Netzteile und SSD-Datenträger als einzige Ersatzteile unterstützt.
     * Nur Ersatzteile werden innerhalb des nächsten Werktags ersetzt; alles andere erfordert einen vollständigen Austausch des Systems (Full System Replacement, FSR).
 
-3. Wenn ein Supportticket bis 16:30 Uhr Ortszeit (Montag bis Freitag) erstellt wird, wird ein Vor-Ort-Techniker für den nächsten Werktag eingeteilt, um bei Ihnen einen vollständigen Austausch des Systems durchzuführen. Ein vollständiger Austausch des Systems dauert in der Regel sehr viel länger, da die Teile von unserer Fabrik ausgeliefert werden und Verzögerungen bei Transport und Zoll auftreten könnten.
+3. Wenn festgestellt wird, dass ein FRU-Austausch bis 13 Uhr Ortszeit (Montag bis Freitag) erforderlich ist, wird ein Vor-Ort-Techniker für den nächsten Werktag eingeteilt, um bei Ihnen einen FRU-Austausch vorzunehmen. Ein vollständiger Austausch des Systems dauert in der Regel sehr viel länger, da die Teile von unserer Fabrik ausgeliefert werden und Verzögerungen bei Transport und Zoll auftreten könnten.
 
 ## <a name="manage-a-support-request"></a>Erstellen einer Supportanfrage
 

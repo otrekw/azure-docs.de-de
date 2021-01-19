@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: estfan, logicappspm, azla
 ms.topic: conceptual
 ms.date: 09/04/2020
-ms.openlocfilehash: b15849fb8fbfed5d55b9c224f51634047b7c75b2
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 222f6ebacb6139ca26a6f1cdd0f896270c9b2fc2
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97914483"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98034294"
 ---
 # <a name="reference-guide-to-using-functions-in-expressions-for-azure-logic-apps-and-power-automate"></a>Referenzhandbuch für die Verwendung von Funktionen in Ausdrücken für Azure Logic Apps und Power Automate
 
@@ -1701,7 +1701,7 @@ div(<dividend>, <divisor>)
 
 | Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
-| <*quotient-result*> | Integer oder Float | Das Ergebnis aus der Division der ersten Zahl durch die zweite Zahl. Wenn der Dividend oder der Divisor den Typ Float aufweist, weist auch das Ergebnis den Typ Float auf. <p><p>**Hinweis**: Um das Float-Ergebnis in einen Integer zu konvertieren, können Sie [eine Azure-Funktion in Ihrer Logik-App erstellen und aufrufen](../logic-apps/logic-apps-azure-functions.md). |
+| <*quotient-result*> | Integer oder Float | Das Ergebnis aus der Division der ersten Zahl durch die zweite Zahl. Wenn der Dividend oder der Divisor den Typ Float aufweist, weist auch das Ergebnis den Typ Float auf. <p><p>**Hinweis**: Um das Float-Ergebnis in einen Integer zu konvertieren, können Sie [in Azure in Ihrer Logik-App eine Funktion erstellen und aufrufen](../logic-apps/logic-apps-azure-functions.md). |
 ||||
 
 *Beispiel 1*

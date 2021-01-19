@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 11/16/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 12c9fd43933f9f54e013752c5fe482ce31650536
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: 52a43874060748479beebc994bf0a9b663cde9dc
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95238393"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98020178"
 ---
 # <a name="create-an-app-service-environment"></a>Erstellen einer App Service-Umgebung
 
@@ -20,10 +20,9 @@ ms.locfileid: "95238393"
 > In diesem Artikel wird die App Service-Umgebung v3 (Vorschau) behandelt.
 > 
 
-Die [App Service-Umgebung (ASE)][Intro] ist eine Bereitstellung von App Service für einen Mandanten, die in Ihre Azure Virtual Network-Instanz (VNET) eingeschleust wird.  ASEv3 unterstützt nur die Bereitstellung von Apps über eine private Adresse in Ihrem VNET. Wenn während der Vorschau eine ASEv3-Instanz erstellt wird, werden dem Abonnement drei Ressourcen hinzugefügt.
+Die [App Service-Umgebung (ASE)][Intro] ist eine Bereitstellung von App Service für einen Mandanten, die in Ihre Azure Virtual Network-Instanz (VNET) eingeschleust wird.  ASEv3 unterstützt nur die Bereitstellung von Apps über eine private Adresse in Ihrem VNET. Wenn während der Vorschau eine ASEv3-Instanz erstellt wird, werden diese Ressourcen dem Abonnement hinzugefügt.
 
 - App Service-Umgebung
-- Private Azure DNS-Zone
 - Privater Endpunkt
 
 Für eine Bereitstellung einer ASE müssen zwei Subnetze verwendet werden.  Ein Subnetz enthält den privaten Endpunkt.  Dieses Subnetz kann für andere Zwecke wie z. B. virtuelle Computer verwendet werden.  Das andere Subnetz wird für ausgehende Aufrufe aus der ASE verwendet.  Dieses Subnetz kann für nichts anderes als die ASE verwendet werden. 

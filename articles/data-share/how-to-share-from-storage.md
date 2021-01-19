@@ -6,36 +6,38 @@ ms.author: jife
 ms.service: data-share
 ms.topic: how-to
 ms.date: 12/16/2020
-ms.openlocfilehash: 9dfc8be54fc55842440e376916b2eb9bb04a4610
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: 242980ac1b89345ed9d8ff903e65129cff3cb917
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97617084"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97964098"
 ---
 # <a name="share-and-receive-data-from-azure-blob-storage-and-azure-data-lake-storage"></a>Freigeben und Empfangen von Daten aus Azure Blob Storage und Azure Data Lake Storage
 
 [!INCLUDE[appliesto-storage](includes/appliesto-storage.md)]
 
-Azure Data Share unterstützt das Freigeben aus dem Speicherkonto über Momentaufnahmen. In diesem Artikel wird erläutert, wie Sie Daten aus den folgenden Quellen freigeben und empfangen: Azure Blob Storage, Azure Data Lake Storage Gen1, Azure Data Lake Storage Gen2.
+Azure Data Share unterstützt die auf Momentaufnahmen basierende Freigabe aus einem Speicherkonto. In diesem Artikel wird erläutert, wie Sie Daten aus Azure Blob Storage, Azure Data Lake Storage Gen1 und Azure Data Lake Storage Gen2 freigeben und empfangen können.
 
-Azure Data Share unterstützt die Freigabe von Dateien, Ordnern und Dateisystemen über Azure Data Lake Gen1 und Azure Data Lake Gen2. Außerdem unterstützt es die Freigabe von Blobs, Ordnern und Containern über Azure Blob Storage. Derzeit wird nur das Blockblob unterstützt. Freigegebene Daten aus diesen Quellen können in Azure Data Lake Gen2 oder Azure Blob Storage empfangen werden.
+Azure Data Share unterstützt die Freigabe von Dateien, Ordnern und Dateisystemen aus Azure Data Lake Gen1 und Azure Data Lake Gen2. Darüber hinaus wird die Freigabe von Blobs, Ordnern und Containern aus Azure Blob Storage unterstützt. Derzeit werden nur Blockblobs unterstützt. Freigegebene Daten aus diesen Quellen können durch Azure Data Lake Gen2 oder Azure Blob Storage empfangen werden.
 
-Wenn Dateisysteme, Container oder Ordner in einer auf Momentaufnahmen basierenden Freigabe freigegeben werden, kann der Datenconsumer wahlweise eine vollständige Kopie der Freigabedaten erstellen oder die Funktion der inkrementellen Momentaufnahme nutzen, um nur neue oder aktualisierte Dateien zu kopieren. Die inkrementelle Momentaufnahme basiert auf dem Zeitpunkt der letzten Änderung der Dateien. Vorhandene Dateien mit demselben Namen werden während der Momentaufnahme überschrieben. Die aus der Quelle gelöschte Datei wird nicht im Ziel gelöscht. Leere Unterordner in der Quelle werden nicht in das Ziel kopiert. 
+Wenn Dateisysteme, Container oder Ordner in einer auf Momentaufnahmen basierenden Freigabe freigegeben werden, kann der Datenconsumer wahlweise eine vollständige Kopie der Freigabedaten erstellen. Alternativ kann die Funktion für inkrementelle Momentaufnahmen verwendet werden, um nur neue oder aktualisierte Dateien zu kopieren. Die Funktion für inkrementelle Momentaufnahmen basiert auf dem Zeitpunkt der letzten Änderung der Dateien. 
 
+Vorhandene Dateien mit demselben Namen werden während der Momentaufnahmeerstellung überschrieben. Eine aus der Quelle gelöschte Datei wird nicht im Ziel gelöscht. Leere Unterordner in der Quelle werden nicht in das Ziel kopiert. 
 ## <a name="share-data"></a>Freigeben von Daten
 
+Verwenden Sie die Informationen in den folgenden Abschnitten, um Daten unter Verwendung von Azure Data Share freizugeben. 
 ### <a name="prerequisites-to-share-data"></a>Voraussetzungen für das Freigeben von Daten
 
-* Azure-Abonnement: Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
-* E-Mail-Adresse für die Azure-Anmeldung Ihrer Empfänger (Ein E-Mail-Alias funktioniert nicht.)
-* Befindet sich der Azure-Quelldatenspeicher nicht in dem Azure-Abonnement, in dem Sie die Data Share-Ressource erstellen, registrieren Sie [Microsoft.DataShare resource provider](concepts-roles-permissions.md#resource-provider-registration) in dem Abonnement, in dem sich der Azure-Datenspeicher befindet. 
+* Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
+* Ermitteln Sie für den Empfänger die E-Mail-Adresse für die Azure-Anmeldung. Der E-Mail-Alias des Empfängers kann zu diesem Zweck nicht verwendet werden.
+* Befindet sich der Azure-Quelldatenspeicher nicht in dem Azure-Abonnement, in dem Sie die Data Share-Ressource erstellen, registrieren Sie den [Microsoft.DataShare-Ressourcenanbieter](concepts-roles-permissions.md#resource-provider-registration) in dem Abonnement, in dem sich der Azure-Datenspeicher befindet. 
 
-### <a name="prerequisites-for-source-storage-account"></a>Voraussetzungen für das Quellspeicherkonto
+### <a name="prerequisites-for-the-source-storage-account"></a>Voraussetzungen für das Quellspeicherkonto
 
-* Ein Azure Storage-Konto: Falls Sie noch nicht über ein Konto verfügen, können Sie [hier ein Azure Storage-Konto erstellen](../storage/common/storage-account-create.md).
-* Berechtigung zum Schreiben in das Speicherkonto (unter *Microsoft.Storage/storageAccounts/write*). Diese Berechtigung ist in der Rolle „Mitwirkender“ vorhanden.
-* Berechtigung zum Hinzufügen einer Rollenzuweisung zum Speicherkonto (unter *Microsoft.Authorization/role assignments/write*). Diese Berechtigung ist in der Rolle „Besitzer“ vorhanden. 
+* Azure Storage-Konto Wenn Sie noch kein Konto besitzen, [erstellen Sie ein Konto](../storage/common/storage-account-create.md).
+* Berechtigung zum Schreiben im Speicherkonto. Die Schreibberechtigung ist in *Microsoft.Storage/storageAccounts/write* enthalten. Sie ist Bestandteil der Rolle „Mitwirkender“.
+* Berechtigung zum Lesen oder Hinzufügen einer Rollenzuweisung zum Speicherkonto. Diese Berechtigung ist in *Microsoft.Authorization/role assignments/write* enthalten. Sie ist Bestandteil der Rolle „Besitzer“. 
 
 ### <a name="sign-in-to-the-azure-portal"></a>Melden Sie sich auf dem Azure-Portal an.
 
@@ -45,152 +47,153 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 
 Erstellen Sie eine Azure Data Share-Ressource in einer Azure-Ressourcengruppe.
 
-1. Wählen Sie im Portal links oben die Menüschaltfläche und dann **Ressource erstellen** (+) aus.
+1. Öffnen Sie im Portal links oben das Menü, und klicken Sie dann auf **Ressource erstellen** (+).
 
 1. Suchen Sie nach *Data Share*.
 
-1. Wählen Sie „Data Share“ und dann die Option **Erstellen** aus.
+1. Wählen Sie **Data Share** und dann die Option **Erstellen** aus.
 
-1. Geben Sie die folgenden Informationen als grundlegende Details Ihrer Azure Data Share-Ressource ein. 
+1. Geben Sie grundlegende Informationen zu Ihrer Azure Data Share-Ressource an: 
 
      **Einstellung** | **Empfohlener Wert** | **Feldbeschreibung**
     |---|---|---|
-    | Subscription | Ihr Abonnement | Wählen Sie das Azure-Abonnement aus, das Sie für Ihr Data Share-Konto verwenden möchten.|
-    | Ressourcengruppe | *test-resource-group* | Verwenden Sie eine vorhandene Ressourcengruppe, oder erstellen Sie eine neue Ressourcengruppe. |
+    | Subscription | Ihr Abonnement | Wählen Sie ein Azure-Abonnement für Ihr Data Share-Konto aus.|
+    | Ressourcengruppe | *test-resource-group* | Erstellen Sie eine Ressourcengruppe, oder verwenden Sie eine vorhandene Ressourcengruppe. |
     | Standort | *USA (Ost) 2* | Wählen Sie eine Region für Ihr Data Share-Konto aus.
-    | Name | *datashareaccount* | Geben Sie einen Namen für Ihr Data Share-Konto an. |
+    | Name | *datashareaccount* | Vergeben Sie einen Namen für Ihr Data Share-Konto. |
     | | |
 
-1. Wählen Sie **Überprüfen + erstellen** und dann **Erstellen** aus, um Ihr Data Share-Konto bereitzustellen. Die Bereitstellung eines neuen Data Share-Kontos dauert normalerweise maximal ca. 2 Minuten. 
+1. Wählen Sie **Überprüfen + erstellen** > **Erstellen** aus, um Ihr Data Share-Konto bereitzustellen. Die Bereitstellung eines neuen Data Share-Kontos dauert üblicherweise ca. 2 Minuten. 
 
-1. Wählen Sie nach Abschluss der Bereitstellung die Option **Zu Ressourcengruppe wechseln**.
+1. Wählen Sie nach Abschluss der Bereitstellung die Option **Zu Ressource wechseln**.
 
 ### <a name="create-a-share"></a>Erstellen einer Freigabe
 
-1. Navigieren Sie zu Ihrer Seite mit der Data Share-Übersicht.
+1. Navigieren Sie zur Seite **Übersicht** für Ihre Data Share-Ressource.
 
-    ![Freigeben von Daten](./media/share-receive-data.png "Freigeben von Daten") 
+   :::image type="content" source="./media/share-receive-data.png" alt-text="Screenshot: Data Share-Übersicht":::
 
 1. Wählen Sie **Start sharing your data** (Mit Freigabe der Daten beginnen).
 
 1. Klicken Sie auf **Erstellen**.   
 
-1. Geben Sie die Details für Ihre Freigabe ein. Geben Sie einen Namen, die Art der Freigabe, eine Beschreibung der Freigabeinhalte und Nutzungsbedingungen (optional) an. 
+1. Geben Sie die Details zu Ihrer Freigabe an. Geben Sie einen Namen, die Art der Freigabe, eine Beschreibung der Freigabeinhalte und Nutzungsbedingungen (optional) an. 
 
-    ![EnterShareDetails](./media/enter-share-details.png "Eingeben der Details zur Freigabe") 
-
-1. Wählen Sie **Weiter**.
-
-1. Wählen Sie zum Hinzufügen von Datasets zu Ihrer Freigabe **Datasets hinzufügen** aus. 
-
-    ![Hinzufügen von Datasets zu Ihrer Freigabe](./media/datasets.png "Datasets")
-
-1. Wählen Sie den gewünschten Datasettyp für das Hinzufügen aus. Die angezeigte Liste der Datasettypen ist abhängig von der Art der Freigabe (Momentaufnahme oder direkt), die Sie im vorherigen Schritt ausgewählt haben. 
-
-    ![AddDatasets](./media/add-datasets.png "Hinzufügen von Datasets")    
-
-1. Navigieren Sie zum Objekt, das Sie freigeben möchten, und wählen Sie „Datasets hinzufügen“. 
-
-    ![SelectDatasets](./media/select-datasets.png "Auswählen der Datasets")    
-
-1. Geben Sie auf der Registerkarte „Empfänger“ die E-Mail-Adressen Ihrer Datenconsumer ein, indem Sie die Option „+ Empfänger hinzufügen“ wählen. 
-
-    ![AddRecipients](./media/add-recipient.png "Hinzufügen von Empfängern") 
+    ![Screenshot: Details zur Datenfreigabe](./media/enter-share-details.png "Eingabe von Details zur Datenfreigabe") 
 
 1. Wählen Sie **Weiter**.
 
-1. Wenn Sie eine Momentaufnahmefreigabe ausgewählt haben, können Sie einen Momentaufnahmezeitplan konfigurieren, um Aktualisierungen Ihrer Daten für Ihren Datenconsumer bereitzustellen. 
+1. Wählen Sie **Datasets hinzufügen** aus, um Ihrer Freigabe Datasets hinzuzufügen. 
 
-    ![EnableSnapshots](./media/enable-snapshots.png "Aktivieren von Momentaufnahmen") 
+    ![Screenshot: Hinzufügen von Datasets zu Ihrer Freigabe](./media/datasets.png "Datasets.")
+
+1. Wählen Sie einen Datasettyp aus, den Sie hinzufügen möchten. Die Liste der verfügbaren Datasettypen richtet sich danach, ob Sie im vorherigen Schritt eine direkte Freigabe oder eine Freigabe ausgewählt haben, die auf Momentaufnahmen basiert. 
+
+    ![Screenshot: Auswahl eines Datasettyps](./media/add-datasets.png "Hinzufügen von Datasets")    
+
+1. Wählen Sie das Objekt aus, das Sie freigaben möchten. Wählen Sie anschließend **Datasets hinzufügen** aus. 
+
+    ![Screenshot: Auswählen eines freizugebenden Objekts](./media/select-datasets.png "Wählen Sie Datasets aus.")    
+
+1. Geben Sie auf der Registerkarte **Empfänger** die E-Mail-Adresse Ihres Datenconsumers ein, indem Sie auf **+ Empfänger hinzufügen** klicken. 
+
+    ![Screenshot: Hinzufügen von Empfänger-E-Mail-Adressen](./media/add-recipient.png "Hinzufügen von Empfängern") 
+
+1. Wählen Sie **Weiter**.
+
+1. Wenn Sie einen auf Momentaufnahmen basierenden Freigabetyp ausgewählt haben, können Sie den Momentaufnahmezeitplan zum Aktualisieren Ihrer Daten für den Datenconsumer einrichten. 
+
+    ![Screenshot: Einstellungen für Momentaufnahmezeitplan](./media/enable-snapshots.png "Aktivieren von Momentaufnahmen") 
 
 1. Wählen Sie eine Startzeit und ein Wiederholungsintervall aus. 
 
 1. Wählen Sie **Weiter**.
 
-1. Überprüfen Sie auf der Registerkarte „Bewerten + erstellen“ die Angaben für Paketinhalt, Einstellungen, Empfänger und Synchronisierungseinstellungen. Klicken Sie auf **Erstellen**.
+1. Überprüfen Sie auf der Registerkarte **Überprüfen + erstellen** die Paketinhalte, Einstellungen, Empfänger und Synchronisierungseinstellungen. Klicken Sie anschließend auf **Erstellen**.
 
-Ihre Azure Data Share-Instanz wurde jetzt erstellt, und der Empfänger Ihrer Datenfreigabe kann Ihre Einladung nun akzeptieren. 
+Sie haben soeben Ihre Azure-Datenfreigabe erstellt. Der Empfänger Ihrer Datenfreigabe kann Ihre Einladung annehmen. 
 
 ## <a name="receive-data"></a>Empfangen von Daten
 
+In den folgenden Abschnitten wird beschrieben, wie Sie freigegebene Daten empfangen.
 ### <a name="prerequisites-to-receive-data"></a>Voraussetzungen für den Empfang von Daten
-Bevor Sie eine Einladung zu einer Datenfreigabe annehmen können, müssen Sie einige Azure-Ressourcen bereitstellen. Diese sind unten aufgeführt. 
+Stellen Sie sicher, dass die folgenden erforderlichen Komponenten vorhanden sind, bevor Sie eine Einladung für eine Datenfreigabe akzeptieren: 
 
-Stellen Sie sicher, dass alle Voraussetzungen erfüllt sind, bevor Sie die Einladung zu einer Datenfreigabe annehmen. 
+* Ein Azure-Abonnement. Sollten Sie noch kein Abonnement besitzen, [erstellen Sie ein kostenloses Konto](https://azure.microsoft.com/free/).
+* Eine Einladung von Azure. Der E-Mail-Betreff sollte „Azure Data Share-Einladung von *\<yourdataprovider\@domain.com>* “ lauten.
+* Ein registrierter [Microsoft.DataShare-Ressourcenanbieter](concepts-roles-permissions.md#resource-provider-registration), vorhanden im:
+    * Azure-Abonnement, in dem Sie eine Data Share-Ressource erstellen
+    * Azure-Abonnement, in dem sich Ihre Azure-Zieldatenspeicher befinden
 
-* Azure-Abonnement: Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
-* Eine Data Share-Einladung: Eine Einladung von Microsoft Azure mit dem Betreff „Azure Data Share-Einladung von **<yourdataprovider@domain.com>** “.
-* Registrieren Sie den [Ressourcenanbieter „Microsoft.DataShare“](concepts-roles-permissions.md#resource-provider-registration) in dem Azure-Abonnement, in dem Sie eine Data Share-Ressource erstellen möchten, und in dem Azure-Abonnement, in dem sich die Azure-Zieldatenspeicher befinden.
+### <a name="prerequisites-for-a-target-storage-account"></a>Voraussetzungen für ein Zielspeicherkonto
 
-### <a name="prerequisites-for-target-storage-account"></a>Voraussetzungen für das Zielspeicherkonto
-
-* Ein Azure Storage-Konto: Falls Sie noch nicht über ein Konto verfügen, können Sie [hier ein Azure Storage-Konto erstellen](../storage/common/storage-account-create.md). 
-* Berechtigung zum Schreiben in das Speicherkonto (unter *Microsoft.Storage/storageAccounts/write*). Diese Berechtigung ist in der Rolle „Mitwirkender“ vorhanden. 
-* Berechtigung zum Hinzufügen einer Rollenzuweisung zum Speicherkonto (unter *Microsoft.Authorization/role assignments/write*). Diese Berechtigung ist in der Rolle „Besitzer“ vorhanden.  
+* Azure Storage-Konto Sofern noch nicht geschehen, [erstellen Sie ein Konto](../storage/common/storage-account-create.md). 
+* Berechtigung zum Schreiben im Speicherkonto. Diese Berechtigung ist in *Microsoft.Storage/storageAccounts/write* enthalten. Sie ist Bestandteil der Rolle „Mitwirkender“. 
+* Berechtigung zum Lesen oder Hinzufügen einer Rollenzuweisung zum Speicherkonto. Diese Zuweisung ist in *Microsoft.Authorization/role assignments/write* enthalten. Sie ist Bestandteil der Rolle „Besitzer“.  
 
 ### <a name="sign-in-to-the-azure-portal"></a>Melden Sie sich auf dem Azure-Portal an.
 
 Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 
-### <a name="open-invitation"></a>Öffnen der Einladung
+### <a name="open-an-invitation"></a>Öffnen einer Einladung
 
-1. Sie können die Einladung über die E-Mail oder direkt im Azure-Portal öffnen. 
+Sie können eine Einladung über die E-Mail oder direkt aus dem Azure-Portal öffnen.
 
-   Wenn Sie die Einladung über die E-Mail öffnen möchten, überprüfen Sie Ihren Posteingang auf eine Einladung von Ihrem Datenanbieter. Die Einladung stammt von Microsoft Azure und hat die Bezeichnung **Azure Data Share-Einladung von <yourdataprovider@domain.com>** . Klicken Sie auf **Einladung anzeigen**, um Ihre Einladung in Azure anzuzeigen. 
+1. Wenn Sie die Einladung aus der E-Mail öffnen möchten, überprüfen Sie Ihren Posteingang auf eine Einladung von Ihrem Datenanbieter. Die Einladung stammt von Microsoft Azure und hat die Bezeichnung „Azure Data Share-Einladung von *\<yourdataprovider\@domain.com>* “. Wählen Sie **Einladung anzeigen** aus, um Ihre Einladung in Azure anzuzeigen. 
 
-   Wenn Sie eine Einladung direkt im Azure-Portal öffnen möchten, suchen Sie im Azure-Portal nach **Einladungen zu Data Share**. Dadurch gelangen Sie zur Liste der Data Share-Einladungen.
+   Wenn Sie eine Einladung aus dem Azure-Portal öffnen möchten, suchen Sie dort nach *Einladungen zu Data Share*. Es wird eine Liste der Data Share-Einladungen angezeigt.
 
-   ![Liste mit Einladungen](./media/invitations.png "Liste mit Einladungen") 
+   ![Screenshot: Liste der Einladungen im Azure-Portal](./media/invitations.png "Liste mit Einladungen") 
 
 1. Wählen Sie die Freigabe aus, die Sie anzeigen möchten. 
 
-### <a name="accept-invitation"></a>Annehmen der Einladung
-1. Stellen Sie sicher, dass Sie alle Felder überprüfen – auch die **Nutzungsbedingungen**. Wenn Sie den Nutzungsbedingungen zustimmen, müssen Sie das entsprechende Kontrollkästchen aktivieren, um dies anzugeben. 
+### <a name="accept-an-invitation"></a>Akzeptieren einer Einladung
+1. Überprüfen Sie alle Felder, einschließlich der **Nutzungsbedingungen**. Wenn Sie den Bedingungen zustimmen, aktivieren Sie das Kontrollkästchen. 
 
-   ![Nutzungsbedingungen](./media/terms-of-use.png "Nutzungsbedingungen") 
+   ![Screenshot: Bereich „Nutzungsbedingungen“](./media/terms-of-use.png "Nutzungsbedingungen") 
 
-1. Wählen Sie unter *Target Data Share Account* (Data Share-Zielkonto) das Abonnement und die Ressourcengruppe für die Bereitstellung Ihrer Data Share-Instanz aus. 
+1. Wählen Sie unter **Data Share-Zielkonto** das Abonnement und die Ressourcengruppe aus, in der Sie Ihre Datenfreigabe bereitstellen möchten. Füllen Sie dann folgende Felder aus:
 
-   Wählen Sie für das Feld **Data Share Account** (Data Share-Konto) die Option **Neue erstellen**, falls Sie nicht über ein vorhandenes Data Share-Konto verfügen. Wählen Sie andernfalls ein vorhandenes Data Share-Konto für Ihre Datenfreigabe aus. 
+   * Wählen Sie im Feld **Data Share-Konto** die Option **Neu erstellen** aus, falls Sie noch kein Data Share-Konto besitzen. Wählen Sie andernfalls ein vorhandenes Data Share-Konto aus, das für Ihre Datenfreigabe geeignet ist. 
 
-   Im Feld **Received Share Name** (Name der empfangenen Freigabe) können Sie den vom Datenanbieter angegebenen Standardnamen übernehmen oder einen neuen Namen für die empfangene Freigabe angeben. 
+   * Im Feld **Name der empfangenen Freigabe** können Sie den vom Datenanbieter angegebenen Standardnamen übernehmen oder einen neuen Namen für die empfangene Freigabe angeben. 
 
-   Nachdem Sie den Nutzungsbedingungen zugestimmt und ein Data Share-Konto für die Verwaltung der empfangenen Freigabe angegeben haben, wählen Sie **Accept and configure** (Akzeptieren und konfigurieren) aus. Ein Freigabeabonnement wird erstellt. 
+1. Wählen Sie die Option **Akzeptieren und konfigurieren** aus. Das Freigabeabonnement wird erstellt. 
 
-   ![Optionen zum Akzeptieren](./media/accept-options.png "Optionen zum Akzeptieren") 
+   ![Screenshot: Position zum Akzeptieren der Konfigurationsoptionen](./media/accept-options.png "Optionen zum Akzeptieren") 
 
-   Dadurch gelangen Sie zu der empfangenen Freigabe in Ihrem Data Share-Konto. 
+    Die empfangene Freigabe wird in Ihrem Data Share-Konto angezeigt. 
 
-   Wählen Sie *Ablehnen*, falls Sie die Einladung nicht annehmen möchten. 
+    Wählen Sie die Einladung nicht annehmen möchten, klicken Sie auf **Ablehnen**. 
 
-### <a name="configure-received-share"></a>Konfigurieren der empfangenen Freigabe
-Führen Sie die folgenden Schritte aus, um zu konfigurieren, wo Sie Daten empfangen möchten.
+### <a name="configure-a-received-share"></a>Konfigurieren der empfangenen Freigabe
+Befolgen Sie die Schritte in diesem Abschnitt, um einen Speicherort zum Empfang von Daten zu konfigurieren.
 
-1. Wählen Sie die Registerkarte **Datasets** aus. Aktivieren Sie das Kontrollkästchen neben dem Dataset, dem Sie ein Ziel zuweisen möchten. Wählen Sie **+ Dem Ziel zuordnen** aus, um einen Zieldatenspeicher auszuwählen. 
+1. Aktivieren Sie auf der Registerkarte **Datasets** das Kontrollkästchen neben dem Dataset, das Sie als Ziel zuweisen möchten. Wählen Sie **Dem Ziel zuordnen**, um einen Zieldatenspeicher auszuwählen. 
 
-   ![Dem Ziel zuordnen](./media/dataset-map-target.png "Dem Ziel zuordnen") 
+   ![Screenshot: Zuweisen zu einem Ziel](./media/dataset-map-target.png "Zuordnung zum Ziel") 
 
-1. Wählen Sie einen Zieldatenspeicher aus, in dem die empfangenen Daten gespeichert werden sollen. Datendateien im Zieldatenspeicher mit demselben Pfad und Namen werden überschrieben. 
+1. Wählen Sie einen Zieldatenspeicher für die Daten aus. Datendateien im Zieldatenspeicher, die denselben Pfad und Namen aufweisen, werden überschrieben. 
 
-   ![Zielspeicherkonto](./media/map-target.png "Zielspeicher") 
+   ![Screenshot: Position zum Auswählen eines Zielspeicherkontos](./media/map-target.png "Zielspeicher") 
 
-1. Wenn der Datenanbieter für die momentaufnahmebasierte Freigabe einen Momentaufnahmezeitplan erstellt hat, um die Daten regelmäßig zu aktualisieren, können Sie auch den Momentaufnahmezeitplan aktivieren, indem Sie die Registerkarte **Momentaufnahmezeitplan** auswählen. Aktivieren Sie das Kontrollkästchen neben „Momentaufnahmezeitplan“, und wählen Sie **+ Aktivieren** aus.
+1. Wenn der Datenanbieter bei einer Freigabe basierend auf Momentaufnahmen einen Momentaufnahmezeitplan verwendet, um die Daten regelmäßig zu aktualisieren, können Sie den Zeitplan auf der Registerkarte **Momentaufnahmezeitplan** aktivieren. Aktivieren Sie das Kontrollkästchen neben dem Momentaufnahmezeitplan. Wählen Sie anschließend **Aktivieren** aus.
 
-   ![Aktivieren von „Momentaufnahmezeitplan“](./media/enable-snapshot-schedule.png "Aktivieren des Momentaufnahmezeitplans")
+   ![Screenshot: Aktivieren eines Momentaufnahmezeitplans](./media/enable-snapshot-schedule.png "Aktivieren des Momentaufnahmezeitplans")
 
 ### <a name="trigger-a-snapshot"></a>Auslösen einer Momentaufnahme
-Diese Schritte sind nur für die momentaufnahmebasierte Freigabe relevant.
+Die Schritte in diesem Abschnitt gelten nur für die Freigabe basierend auf Momentaufnahmen.
 
-1. Sie können eine Momentaufnahme auslösen, indem Sie die Registerkarte **Details** und anschließend **Trigger snapshot** (Momentaufnahme auslösen) auswählen. Hier können Sie eine vollständige oder inkrementelle Momentaufnahme Ihrer Daten auslösen. Wählen Sie die Option für das vollständige Kopieren, falls Sie zum ersten Mal Daten von Ihrem Datenanbieter erhalten. 
+1. Sie können über die Registerkarte **Details** eine Momentaufnahme auslösen. Klicken Sie auf der Registerkarte auf **Momentaufnahme auslösen**. Sie können wahlweise eine vollständige oder eine inkrementelle Momentaufnahme Ihrer Daten erstellen. Falls Sie zum ersten Mal Daten von Ihrem Datenanbieter empfangen, wählen Sie **Vollständige Kopie** aus. 
 
-   ![Auslösen der Momentaufnahme](./media/trigger-snapshot.png "Auslösen der Momentaufnahme") 
+   ![Screenshot: Auswahl zum Auslösen einer Momentaufnahme](./media/trigger-snapshot.png "Auslösen einer Momentaufnahme") 
 
-1. Wenn der Status der letzten Ausführung *Erfolgreich* lautet, navigieren Sie zum Zieldatenspeicher, um die empfangenen Daten anzuzeigen. Wählen Sie **Datasets** aus, und klicken Sie auf den Link im Zielpfad. 
+1. Wenn der Status der letzten Ausführung *Erfolgreich* lautet, navigieren Sie zum Zieldatenspeicher, um die empfangenen Daten anzuzeigen. Wählen Sie **Datasets** und anschließend den Zielpfadlink aus. 
 
-   ![Consumerdatasets](./media/consumer-datasets.png "Consumerdatasetzuordnung") 
+   ![Screenshot: Zuordnung eines Consumerdatasets](./media/consumer-datasets.png "Zuordnung des Consumerdatasets") 
 
 ### <a name="view-history"></a>Anzeigen des Verlaufs
-Dieser Schritt ist nur für die momentaufnahmebasierte Freigabe relevant. Wählen Sie zum Anzeigen des Verlaufs der Momentaufnahmen die Registerkarte **Verlauf** aus. Hier ist ein Verlauf aller Momentaufnahmen angegeben, die in den letzten 30 Tagen generiert wurden. 
+Sie können den Verlauf Ihrer Momentaufnahmen nur für eine auf Momentaufnahmen basierende Freigabe anzeigen. Öffnen Sie zur Anzeige von Verlaufsdaten die Registerkarte **Verlauf**. Hier wird ein Verlauf aller Momentaufnahmen angezeigt, die in den letzten 30 Tagen generiert wurden. 
 
 ## <a name="next-steps"></a>Nächste Schritte
-Sie haben erfahren, wie Sie Daten aus Speicherkonten mithilfe des Azure Data Share-Diensts freigeben und empfangen. Weitere Informationen zum Freigeben von Daten aus anderen Datenquellen finden Sie unter [Unterstützte Datenspeicher](supported-data-stores.md).
+Sie haben erfahren, wie Sie mithilfe des Azure Data Share-Diensts Daten aus einem Speicherkonto freigeben und empfangen. Informationen zum Freigeben von Daten aus anderen Datenquellen finden Sie unter [Unterstützte Datenspeicher](supported-data-stores.md).

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 015aadb791172f5033bf0198caad567c9bc03221
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 0c4299bc41a656fd678c14d63ae1d4987dba327b
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95974662"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98060638"
 ---
 # <a name="understand-metrics-for-azure-spring-cloud"></a>Grundlegendes zu Metriken für Azure Spring Cloud
 
@@ -114,7 +114,7 @@ Die verfügbaren Metriken und ihre Details sind in den nachfolgenden Tabellen au
 >[!div class="mx-tdCol2BreakAll"]
 >| Name | Name der Metrik für den Azure Spring Cloud-Aktuator | Einheit | Details |
 >|------|-----------------------------|------|---------|
->| CPU-Auslastung       | cpu-usage      | Millisekunden | Die Zeitspanne, für die der Prozess die CPU verwendet hat. |
+>| CPU-Auslastung       | cpu-usage      | Percent      | Der Prozentsatz der CPU-Auslastung durch den Prozess relativ zu allen CPU-Ressourcen im System [0–100]. |
 >| Arbeitssatz     | working-set    | Megabytes    | Vom Prozess verwendete Arbeitssatzmenge. |
 >| GC-Heapgröße    | gc-heap-size   | Megabytes    | Gesamte vom Garbage Collector gemeldete Heapgröße. |
 >| Anzahl Gen 0 GC  | gen-0-gc-count | Anzahl        | Anzahl der Garbage Collections von Generation 0 pro Sekunde. |

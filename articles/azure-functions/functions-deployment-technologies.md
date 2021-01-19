@@ -4,12 +4,12 @@ description: Lernen Sie die verschiedenen Methoden kennen, mit denen Code in Azu
 ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 04/25/2019
-ms.openlocfilehash: 7a75408008a90a2c40553b1f6c5c196775a48e61
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 04d96a09d41ace64bed5667bb9f0fa6e4beed244
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96168099"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936956"
 ---
 # <a name="deployment-technologies-in-azure-functions"></a>Bereitstellungstechnologien in Azure Functions
 
@@ -25,7 +25,7 @@ In der folgenden Tabelle sind die verfügbaren Bereitstellungsmethoden für Ihr 
 | -- | -- | -- |
 | Toolsbasiert | &bull;&nbsp;[Visual&nbsp;Studio&nbsp;Code&nbsp;veröffentlichen](functions-develop-vs-code.md#publish-to-azure)<br/>&bull;&nbsp;[Visual Studio veröffentlichen](functions-develop-vs.md#publish-to-azure)<br/>&bull;&nbsp;[Core Tools veröffentlichen](functions-run-local.md#publish) | Bereitstellungen während der Entwicklung und anderen Ad-hoc-Bereitstellungen. Bereitstellungen werden lokal von den Tools verwaltet. | 
 | Von App Service verwaltet| &bull;&nbsp;[Bereitstellungscenter&nbsp;(CI/CD)](functions-continuous-deployment.md)&nbsp;<br/>&bull;&nbsp;[Containerbereitstellungen](functions-create-function-linux-custom-image.md#enable-continuous-deployment-to-azure)&nbsp; |  Continuous Deployment (CI/CD) aus der Quellcodeverwaltung oder aus einer Containerregistrierung. Bereitstellungen werden von der App Service-Plattform (Kudu) verwaltet.|
-| Externe Pipelines|&bull;&nbsp;[DevOps Pipelines](functions-how-to-azure-devops.md)<br/>&bull;&nbsp;[GitHub-Aktionen](functions-how-to-github-actions.md) | Produktions- und DevOps-Pipelines, die zusätzliche Validierungs-, Test- und andere Aktionen umfassen, können als Teil einer automatisierten Bereitstellung ausgeführt werden. Bereitstellungen werden von der Pipeline verwaltet. |
+| Externe Pipelines|&bull;&nbsp;[Azure Pipelines](functions-how-to-azure-devops.md)<br/>&bull;&nbsp;[GitHub-Aktionen](functions-how-to-github-actions.md) | Produktions- und DevOps-Pipelines, die zusätzliche Validierungs-, Test- und andere Aktionen umfassen, können als Teil einer automatisierten Bereitstellung ausgeführt werden. Bereitstellungen werden von der Pipeline verwaltet. |
 
 Auch wenn bestimmte Functions-Bereitstellungen die beste Technologie auf Grundlage ihres Kontexts verwenden, basieren die meisten Bereitstellungsmethoden auf der [ZIP-Bereitstellung](#zip-deploy).
 
@@ -33,9 +33,9 @@ Auch wenn bestimmte Functions-Bereitstellungen die beste Technologie auf Grundla
 
 Azure Functions unterstützt die plattformübergreifende lokale Entwicklung sowie Hosting unter Windows und Linux. Derzeit sind drei Hostingpläne verfügbar:
 
-+ [Verbrauch](functions-scale.md#consumption-plan)
-+ [Premium](functions-scale.md#premium-plan)
-+ [Dediziert (App Service)](functions-scale.md#app-service-plan)
++ [Verbrauch](consumption-plan.md)
++ [Premium](functions-premium-plan.md)
++ [Dediziert (App Service)](dedicated-plan.md)
 
 Jeder Plan weist ein anderes Verhalten auf. Nicht alle Bereitstellungstechnologien stehen für jede Variante von Azure Functions zur Verfügung. Das folgende Diagramm zeigt die jeweils unterstützten Bereitstellungstechnologien für die verschiedenen Kombination aus Betriebssystem und Hostingplan:
 
@@ -96,7 +96,7 @@ Linux-Funktions-Apps, die im Verbrauchsplan ausgeführt werden, umfassen keine S
 
 ##### <a name="dedicated-and-premium-plans"></a>Dedizierte und Premium-Pläne
 
-Funktions-Apps, die unter Linux im [App Service-Plan Dedicated](functions-scale.md#app-service-plan) oder [Premium](functions-scale.md#premium-plan) ausgeführt werden, umfassen auch eine eingeschränkte SCM/Kudu-Website.
+Funktions-Apps, die unter Linux im [App Service-Plan Dedicated](dedicated-plan.md) oder [Premium](functions-premium-plan.md) ausgeführt werden, umfassen auch eine eingeschränkte SCM/Kudu-Website.
 
 ## <a name="deployment-technology-details"></a>Bereitstellungstechnologie: Details
 

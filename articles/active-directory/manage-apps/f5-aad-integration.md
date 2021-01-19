@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 11/12/2020
 ms.author: gasinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0e011417b936ed83b4658e6dad25bf8e8ee88aed
-ms.sourcegitcommit: e5f9126c1b04ffe55a2e0eb04b043e2c9e895e48
+ms.openlocfilehash: b5c960c7fbcc29d0aaea7511ba2187c916e84ab3
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96317595"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97935239"
 ---
 # <a name="f5-big-ip-access-policy-manager-and-azure-active-directory-integration-for-secure-hybrid-access"></a>Sicherer Hybridzugriff mit dem F5 BIG-IP Access Policy Manager und dessen Integration in Azure Active Directory
 
@@ -71,7 +71,7 @@ Die Schritte 1-4 im Diagramm veranschaulichen den Front-End-Austausch zur Voraba
 |:------|:-----------|
 | 1. | Der Benutzer wählt im Portal ein Anwendungssymbol aus, die URL wird aufgelöst, und der SAML-Dienstanbieter (BIG-IP) wird aufgerufen. |
 | 2. | BIG-IP leitet den Benutzer zur Vorabauthentifizierung an den SAML-Identitätsanbieter (Azure AD) um.|
-| 3. | Azure AD verarbeitet für die Autorisierung die Zertifizierungsstellenrichtlinien und die [Sitzungssteuerelemente](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-session).|
+| 3. | Azure AD verarbeitet die Richtlinien für bedingten Zugriff und [Sitzungssteuerelemente](https://docs.microsoft.com/azure/active-directory/conditional-access/concept-conditional-access-session) zur Autorisierung.|
 | 4. | Der Benutzer wird zurück an BIG-IP geleitet und präsentiert die von Azure AD ausgestellten SAML-Ansprüche. |
 | 5. | BIG-IP fordert alle zusätzlichen Sitzungsinformationen an, die in [einmaliges Anmelden (SSO)](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sso) und die [rollenbasierte Zugriffssteuerung (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview) für den veröffentlichten Dienst einbezogen werden sollen. |
 | 6. | BIG-IP leitet die Clientanforderung an den Back-End-Dienst weiter.

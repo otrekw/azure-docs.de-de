@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 12/14/2020
-ms.openlocfilehash: db36a77d93735b151ad893b7e25ba86f104e7b90
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 9bee391ddb0fa6c270c6d833fb7e81d5f4880497
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97510463"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98118641"
 ---
 # <a name="create-a-query-in-azure-cognitive-search"></a>Erstellen einer Abfrage in Azure Cognitive Search
 
@@ -26,7 +26,7 @@ Sie benötigen ein Tool oder eine API, um eine Abfrage erstellen zu können. Die
 | Methodik | BESCHREIBUNG |
 |-------------|-------------|
 | Portal| Der [Suchexplorer (Portal)](search-explorer.md) ist eine Abfrageschnittstelle im Azure-Portal, mit dem Sie Indizes im zugrunde liegenden Suchdienst abfragen können. Im Portal werden im Hintergrund REST-API-Aufrufe an den Vorgang [Dokumente suchen](/rest/api/searchservice/search-documents) durchgeführt. Aufrufe von „AutoVervollständigen“, „Vorschläge“ oder „Dokumentsuche“ sind hingegen nicht möglich.<br/><br/> Sie können einen beliebigen Index und eine REST-API-Version auswählen (einschließlich der Vorschauversion). Für die Abfragezeichenfolge kann die einfache oder vollständige Syntax mit Unterstützung für alle Abfrageparameter (filter, select, searchFields usw.) verwendet werden. Wenn Sie im Portal einen Index öffnen, können Sie den Suchexplorer zusammen mit der JSON-Indexdefinition in parallelen Registerkarten nutzen, um einfacher auf Feldattribute zugreifen zu können. Überprüfen Sie beim Testen Ihrer Abfragen, welche Felder durchsuchbar, sortierbar, filterbar und facettierbar sind. <br/>Empfohlen für das erste Erkunden, Testen und Validieren. [Weitere Informationen.](search-explorer.md) |
-| Webtesttools| [Postman oder Visual Studio Code](search-get-started-rest.md) bieten leistungsstarke Optionen für das Formulieren einer Anforderung vom Typ [Dokumente suchen](/rest/api/searchservice/search-documents) und jeder anderen Anforderung in REST. Die REST-APIs unterstützen jeden möglichen programmgesteuerten Vorgang in Azure Cognitive Search. Wenn Sie ein Tool wie Postman oder Visual Studio Code verwenden, können Sie Anforderungen interaktiv ausführen, um ihre Funktion besser zu verstehen, bevor Sie Arbeit in Code investieren. Ein Webtesttool ist auch eine gute Wahl, wenn Sie nicht die Berechtigungen „Mitwirkender“ oder „Administrator“ im Azure-Portal haben. Wenn Sie über eine Such-URL und einen Abfrage-API-Schlüssel verfügen, können Sie mit den Tools Abfragen für einen vorhandenen Index ausführen. |
+| Webtesttools| [Postman](search-get-started-rest.md) oder [Visual Studio Code](search-get-started-vs-code.md) bieten leistungsstarke Optionen für das Formulieren einer Anforderung vom Typ [Dokumente suchen](/rest/api/searchservice/search-documents) und jeder anderen Anforderung in REST. Die REST-APIs unterstützen jeden möglichen programmgesteuerten Vorgang in Azure Cognitive Search. Wenn Sie ein Tool wie Postman oder Visual Studio Code verwenden, können Sie Anforderungen interaktiv ausführen, um ihre Funktion besser zu verstehen, bevor Sie Arbeit in Code investieren. Ein Webtesttool ist auch eine gute Wahl, wenn Sie nicht die Berechtigungen „Mitwirkender“ oder „Administrator“ im Azure-Portal haben. Wenn Sie über eine Such-URL und einen Abfrage-API-Schlüssel verfügen, können Sie mit den Tools Abfragen für einen vorhandenen Index ausführen. |
 | Azure SDK | Wenn Sie bereit sind, Code zu schreiben, können Sie die Clientbibliotheken von Azure.Search.Document in den Azure SDKs für .NET, Python, JavaScript oder Java verwenden. Für jedes SDK gilt ein eigener Veröffentlichungszeitplan, Sie können aber in allen Indizes erstellen und abfragen. <br/><br/>Mit [SearchClient (.NET)](/dotnet/api/azure.search.documents.searchclient) können Sie einen Suchindex in C# abfragen.  [Weitere Informationen.](search-howto-dotnet-sdk.md)<br/><br/>Mit [SearchClient (Python)](/dotnet/api/azure.search.documents.searchclient) können Sie einen Suchindex in Python abfragen. [Weitere Informationen.](search-get-started-python.md)<br/><br/>Mit [SearchClient (JavaScript)](/dotnet/api/azure.search.documents.searchclient) können Sie einen Suchindex in JavaScript abfragen. [Weitere Informationen.](search-get-started-javascript.md) |
 
 ## <a name="set-up-a-search-client"></a>Einrichten eines Suchclients

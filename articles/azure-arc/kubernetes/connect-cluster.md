@@ -9,12 +9,12 @@ ms.author: mlearned
 description: Stellen Sie eine Verbindung zwischen einem Azure Arc-fähigen Kubernetes-Cluster und Azure Arc her.
 keywords: Kubernetes, Arc, Azure, K8s, Container
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: 7f402d86ac1287753bc2deab53b24bb796644992
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 8155ed709045626dee44fb499304ff5244a61b54
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97583931"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98060247"
 ---
 # <a name="connect-an-azure-arc-enabled-kubernetes-cluster-preview"></a>Herstellen einer Verbindung für einen Azure Arc-fähigen Kubernetes-Cluster (Vorschau)
 
@@ -30,7 +30,7 @@ Vergewissern Sie sich, dass die folgenden Anforderungen erfüllt sind:
 * Sie benötigen eine kubeconfig-Datei, um auf den Cluster und die Rolle des Clusteradministrators auf dem Cluster zuzugreifen, um Arc-fähige Kubernetes-Agents bereitstellen zu können.
 * Der für die Befehle `az login` und `az connectedk8s connect` verwendete Benutzer oder Dienstprinzipal muss über die Berechtigungen „Lesen“ und „Schreiben“ für den Ressourcentyp „Microsoft.Kubernetes/connectedclusters“ verfügen. Die Rolle „Kubernetes-Cluster – Azure Arc-Onboarding“ verfügt über diese Berechtigungen und kann für Rollenzuweisungen für den Benutzer oder Dientsprinzipal verwendet werden.
 * Helm 3 ist für das Onboarding des Clusters mithilfe der connectedk8s-Erweiterung erforderlich. [Installieren Sie die neueste Version von Helm 3](https://helm.sh/docs/intro/install), um diese Anforderung zu erfüllen.
-* Azure CLI, Version 2.3 und höher, ist zum Installieren der Azure Arc-fähigen Kubernetes CLI-Erweiterungen erforderlich. [Installieren Sie Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true), oder aktualisieren Sie auf die neueste Version, um sicherzustellen, dass Sie über Azure CLI, Version 2.3 oder höher, verfügen.
+* Die Azure-Befehlszeilenschnittstelle Version 2.15 und höher ist zum Installieren der Azure Arc-fähigen Kubernetes CLI-Erweiterungen erforderlich. [Installieren Sie die Azure-Befehlszeilenschnittstelle](/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true), oder führen Sie ein Update auf die neueste Version durch, um sicherzustellen, dass Sie über die Azure-Befehlszeilenschnittstelle Version 2.15 oder höher verfügen.
 * Installieren der Arc-fähigen Kubernetes-CLI-Erweiterungen:
   
   Installieren Sie die Erweiterung `connectedk8s`, mit der Sie Kubernetes-Cluster mit Azure verbinden können:

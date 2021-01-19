@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 12/08/2020
-ms.openlocfilehash: 327ab63a048e08328cd5b1334b0a697a61ced6c8
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.openlocfilehash: 85600bbee15dadcce7315300ffde481cbfc2e255
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97346332"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98034712"
 ---
 # <a name="copy-and-transform-data-in-azure-blob-storage-by-using-azure-data-factory"></a>Kopieren und Transformieren von Daten in Azure Blob Storage mithilfe von Azure Data Factory
 
@@ -74,7 +74,7 @@ Dieser Blob Storage-Connector unterstützt die folgenden Authentifizierungsypen.
 
 Data Factory unterstützt die folgenden Eigenschaften für die Authentifizierung mit Speicherkontoschlüsseln:
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die **type**-Eigenschaft muss auf **AzureBlobStorage** (empfohlen) oder **AzureStorage** (siehe Hinweise unten) festgelegt werden. |Ja |
 | connectionString | Geben Sie für die **connectionString**-Eigenschaft die Informationen ein, die zum Herstellen einer Verbindung mit Azure Storage erforderlich sind. <br/> Sie können auch den Kontoschlüssel in Azure Key Vault speichern und die `accountKey`-Konfiguration aus der Verbindungszeichenfolge pullen. Weitere Informationen finden Sie in den folgenden Beispielen und im Artikel [Speichern von Anmeldeinformationen in Azure Key Vault](store-credentials-in-key-vault.md). |Ja |
@@ -144,7 +144,7 @@ Weitere Informationen zu Shared Access Signatures finden Sie unter [Shared Acces
 
 Data Factory unterstützt die folgenden Eigenschaften für die Verwendung der SAS-Authentifizierung:
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die **type**-Eigenschaft muss auf **AzureBlobStorage** (empfohlen) oder **AzureStorage** (siehe Hinweise unten) festgelegt werden. |Ja |
 | sasUri | Geben Sie den SAS-URI für Azure Storage-Ressourcen wie Blobs oder Container an. <br/>Markieren Sie dieses Feld als **SecureString**, um es sicher in Data Factory zu speichern. Sie können auch das SAS-Token in Azure Key Vault speichern, um die automatische Rotation zu nutzen und den Tokenabschnitt zu entfernen. Weitere Informationen finden Sie in den folgenden Beispielen sowie unter [Speichern von Anmeldeinformationen in Azure Key Vault](store-credentials-in-key-vault.md). |Ja |
@@ -228,7 +228,7 @@ Zum Verwenden der Dienstprinzipalauthentifizierung führen Sie die folgenden Sch
 
 Diese Eigenschaften werden für den mit Azure Blob Storage verknüpften Dienst unterstützt:
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die **type**-Eigenschaft muss auf **AzureBlobStorage** festgelegt sein. |Ja |
 | serviceEndpoint | Geben Sie den Azure Blob Storage-Dienstendpunkt mit dem Muster `https://<accountName>.blob.core.windows.net/` an. |Ja |
@@ -328,7 +328,7 @@ Eine vollständige Liste mit den Abschnitten und Eigenschaften, die zum Definier
 
 Folgende Eigenschaften werden für Azure Blob Storage unter den `location`-Einstellungen in formatbasierten Datasets unterstützt:
 
-| Eigenschaft   | Beschreibung                                                  | Erforderlich |
+| Eigenschaft   | BESCHREIBUNG                                                  | Erforderlich |
 | ---------- | ------------------------------------------------------------ | -------- |
 | type       | Die **type**-Eigenschaft des Speicherorts im Dataset muss auf **AzureBlobStorageLocation** festgelegt werden. | Ja      |
 | Container  | Der BLOB-Container.                                          | Ja      |
@@ -372,7 +372,7 @@ Eine vollständige Liste mit den Abschnitten und Eigenschaften zum Definieren vo
 
 Folgende Eigenschaften werden für Azure Blob Storage unter den `storeSettings`-Einstellungen in formatbasierten Kopierquellen unterstützt:
 
-| Eigenschaft                 | Beschreibung                                                  | Erforderlich                                      |
+| Eigenschaft                 | BESCHREIBUNG                                                  | Erforderlich                                      |
 | ------------------------ | ------------------------------------------------------------ | --------------------------------------------- |
 | type                     | Die **type**-Eigenschaft unter `storeSettings` muss auf **AzureBlobStorageReadSettings** festgelegt werden. | Ja                                           |
 | **_Suchen nach den zu kopierenden Dateien:_* |  |  |
@@ -433,6 +433,9 @@ Folgende Eigenschaften werden für Azure Blob Storage unter den `storeSettings`-
     }
 ]
 ```
+
+> [!NOTE]
+> Der Container `$logs`, der während der Aktivierung von Storage Analytics für eine Speicherkonto automatisch erstellt wird, wird beim Ausführen eines Auflistungsvorgangs für Container über die Data Factory-Benutzeroberfläche nicht angezeigt. Der Dateipfad muss direkt angegeben werden, damit Data Factory Dateien aus dem Container `$logs` verwenden kann.
 
 ### <a name="blob-storage-as-a-sink-type"></a>Blob Storage als Senkentyp
 

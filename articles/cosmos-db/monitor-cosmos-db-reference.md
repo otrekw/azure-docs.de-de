@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 12/07/2020
 ms.author: sngun
 ms.custom: subject-monitoring
-ms.openlocfilehash: 75df985377e6ed1764985f8d0b6b44323f249b8a
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: 04103de47e82764f7ec4effa84a9b2b7b90b9363
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97632008"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98034627"
 ---
 # <a name="monitoring-azure-cosmos-db-data-reference"></a>Referenz zur Überwachung von Daten in Azure Cosmos DB
 
@@ -81,7 +81,7 @@ In der folgenden Tabelle sind die Eigenschaften der Ressourcenprotokolle in Azur
 | --- | --- | --- |
 | **time** | **TimeGenerated** | Datum und Uhrzeit (UTC), zu denen der Vorgang aufgetreten ist. |
 | **Ressourcen-ID** | **Ressource** | Das Azure Cosmos DB-Konto, für das Protokolle aktiviert sind.|
-| **category** | **Kategorie** | Die verfügbaren Protokolltypen bei Azure Cosmos DB sind: **DataPlaneRequests**, **MongoRequests**, **QueryRuntimeStatistics**, **PartitionKeyStatistics**, **PartitionKeyRUConsumption** und **ControlPlaneRequests**. |
+| **category** | **Kategorie** | Die verfügbaren Protokolltypen bei Azure Cosmos DB sind: **DataPlaneRequests**, **MongoRequests**, **QueryRuntimeStatistics**, **PartitionKeyStatistics**, **PartitionKeyRUConsumption**, **ControlPlaneRequests**, **CassandraRequests** und **GremlinRequests**. |
 | **operationName** | **OperationName** | Name des Vorgangs. Der Vorgangsname kann `Create`, `Update`, `Read`, `ReadFeed`, `Delete`, `Replace`, `Execute`, `SqlQuery`, `Query`, `JSQuery`, `Head`, `HeadFeed` oder `Upsert` sein.   |
 | **properties** | – | Die Inhalte dieser Felder werden in den folgenden Zeilen beschrieben. |
 | **activityId** | **activityId_g** | Die eindeutige GUID für den protokollierten Vorgang. |

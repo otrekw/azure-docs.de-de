@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 11/09/2020
 author: sayantanroy83
 ms.author: sroy
-ms.openlocfilehash: 878fa181ff09d547ef6594a238e9c1d883cc89b7
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: c98b47507a7543002f00aae82370f5ea0043510d
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96460476"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97954276"
 ---
 # <a name="customers-dashboard-in-commercial-marketplace-analytics"></a>Dashboard „Kunden“ in Analysen für den kommerziellen Marketplace
 
@@ -144,7 +144,7 @@ _**Tabelle 1: Wörterbuch mit Datenbegriffen**_
 
 | Spaltenname | Attributname | Definition |
 | ------------ | ------------- | ------------- |
-| Marketplace Subscription Id | Marketplace-Abonnement-ID | Der eindeutige Bezeichner (ID), der mit dem Azure-Abonnement verknüpft ist, über das der Kunde Ihr Angebot im kommerziellen Marketplace erworben hat. Früher war ID die Azure-Abonnement-GUID. |
+| Marketplace Subscription Id | Marketplace-Abonnement-ID | Der eindeutige Bezeichner (ID), der mit dem Azure-Abonnement verknüpft ist, über das der Kunde Ihr Angebot im kommerziellen Marketplace erworben hat. Bei Infrastrukturangeboten ist dies die Azure-Abonnement-GUID des Kunden. Bei SaaS-Angeboten werden hier Nullen angezeigt, da für die SaaS-Käufe kein Azure-Abonnement erforderlich ist. |
 | DateAcquired | Erwerbsdatum | Das erste Datum, an dem der Kunde ein von Ihnen veröffentlichtes Angebot erworben hat. |
 | DateLost | Verlustdatum | Das letzte Datum, an dem der Kunde das letzte aller zuvor erworbenen Angebote storniert hat. |
 | Anbietername | Anbietername | Der Name des Anbieters, der an der Beziehung zwischen Microsoft und dem Kunden beteiligt ist. Beim Lizenztyp „Enterprise über Handelspartner“ ist dies der Handelspartner. Wenn ein Cloud Solution Provider (CSP) beteiligt ist, wird hier der CSP angegeben. |

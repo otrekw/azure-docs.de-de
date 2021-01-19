@@ -11,13 +11,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019; seo-dt-2019
-ms.date: 09/28/2020
-ms.openlocfilehash: bb9768c2a4d3be9ac0e06844c5ac0835707cf455
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.date: 01/08/2021
+ms.openlocfilehash: 71096334f46531bba26f0ead66169340107627cf
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91945854"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98028691"
 ---
 # <a name="copy-data-from-mongodb-using-azure-data-factory"></a>Kopieren von Daten aus MongoDB mithilfe von Azure Data Factory
 
@@ -28,21 +28,25 @@ In diesem Artikel wird beschrieben, wie Sie die Kopieraktivität in Azure Data F
 >[!IMPORTANT]
 >Die ADF-Version umfasst diesen neuen MongoDB-Connector, der bessere native MongoDB-Unterstützung bietet. Wenn Sie den vorherigen MongoDB-Connector in Ihrer Lösung verwenden, der aus Gründen der Abwärtskompatibilität unverändert unterstützt wird, finden Sie Informationen dazu im Artikel [MongoDB-Connector (Vorgängerversion)](connector-mongodb-legacy.md).
 
+
 ## <a name="supported-capabilities"></a>Unterstützte Funktionen
 
 Sie können Daten aus einer MongoDB-Datenbank in beliebige unterstützte Senkendatenspeicher kopieren. Eine Liste der Datenspeicher, die als Quellen oder Senken für die Kopieraktivität unterstützt werden, finden Sie in der Tabelle [Unterstützte Datenspeicher](copy-activity-overview.md#supported-data-stores-and-formats).
 
-Dieser MongoDB-Connector unterstützt insbesondere die **Versionen bis 3.4**.
+Dieser MongoDB-Connector unterstützt insbesondere die **Versionen bis 4.2**.
+
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
+
 
 ## <a name="getting-started"></a>Erste Schritte
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
 Die folgenden Abschnitte enthalten Details zu Eigenschaften, die zum Definieren von Data Factory-Entitäten speziell für den MongoDB-Connector verwendet werden:
+
 
 ## <a name="linked-service-properties"></a>Eigenschaften des verknüpften Diensts
 
@@ -102,6 +106,7 @@ Eine vollständige Liste mit den Abschnitten und Eigenschaften, die zum Definier
 }
 ```
 
+
 ## <a name="copy-activity-properties"></a>Eigenschaften der Kopieraktivität
 
 Eine vollständige Liste mit den Abschnitten und Eigenschaften zum Definieren von Aktivitäten finden Sie im Artikel [Pipelines](concepts-pipelines-activities.md). Dieser Abschnitt enthält eine Liste der Eigenschaften, die von der MongoDB-Quelle unterstützt werden.
@@ -118,7 +123,7 @@ Folgende Eigenschaften werden im Abschnitt **source** der Kopieraktivität unter
 | cursorMethods.sort | Gibt die Reihenfolge an, in der übereinstimmende Dokumente von der Abfrage zurückgegeben werden. Siehe [cursor.sort()](https://docs.mongodb.com/manual/reference/method/cursor.sort/#cursor.sort). | Nein |
 | cursorMethods.limit | Gibt die maximale Anzahl von Dokumenten an, die vom Server zurückgegeben werden. Siehe [cursor.limit()](https://docs.mongodb.com/manual/reference/method/cursor.limit/#cursor.limit).  | Nein |
 | cursorMethods.skip | Gibt die Anzahl von Dokumenten an, die übersprungen werden sollen und ab denen MongoDB mit der Rückgabe von Ergebnissen beginnt. Siehe [cursor.skip()](https://docs.mongodb.com/manual/reference/method/cursor.skip/#cursor.skip). | Nein |
-| batchSize | Gibt die Anzahl von Dokumenten an, die in jedem Batch der Antwort von der MongoDB-Instanz zurückgegeben werden sollen. In den meisten Fällen wirkt sich eine Änderung der Batchgröße nicht auf den Benutzer oder die Anwendung aus. Cosmos DB begrenzt die einzelnen Batches auf eine maximale Größe von 40 MB. Dies entspricht der Summe der „batchSize“-Größen für die Anzahl von Dokumenten. Verringern Sie deshalb diesen Wert, falls Ihre Dokumente groß sind. | Nein<br/>(der Standardwert ist **100**) |
+| batchSize | Gibt die Anzahl von Dokumenten an, die in jedem Batch der Antwort von der MongoDB-Instanz zurückgegeben werden sollen. In den meisten Fällen wirkt sich eine Änderung der Batchgröße nicht auf den Benutzer oder die Anwendung aus. In Cosmos DB ist die maximale Größe von Batches auf 40 MB begrenzt. Dies entspricht der Summe des batchSize-Werts für die Anzahl von Dokumenten. Verringern Sie deshalb diesen Wert, falls Ihre Dokumente groß sind. | Nein<br/>(der Standardwert ist **100**) |
 
 >[!TIP]
 >ADF unterstützt die Nutzung eines BSON-Dokuments im **Strict-Modus**. Stellen Sie sicher, dass die Filterabfrage den Strict-Modus und nicht den Shell-Modus aufweist. Eine weitere Beschreibung finden Sie im [MongoDB-Handbuch](https://docs.mongodb.com/manual/reference/mongodb-extended-json/index.html).
@@ -161,13 +166,16 @@ Folgende Eigenschaften werden im Abschnitt **source** der Kopieraktivität unter
 ]
 ```
 
+
 ## <a name="export-json-documents-as-is"></a>Exportieren von JSON-Dokumenten in unveränderter Form
 
 Mit diesem MongoDB-Connector können Sie JSON-Dokumente in unveränderter Form aus einer MongoDB-Sammlung in verschiedene dateibasierte Speicher oder Azure Cosmos DB exportieren. Um eine solche vom Schema unabhängige Kopie zu erzielen, überspringen Sie den Abschnitt „structure“ (auch *schema* genannt) im Dataset und die Schemazuordnung in der Kopieraktivität.
 
+
 ## <a name="schema-mapping"></a>Schemazuordnung
 
 Informationen zum Kopieren von Daten aus MongoDB in eine tabellarische Senke finden Sie unter [Schemazuordnung](copy-activity-schema-and-type-mapping.md#schema-mapping).
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 Eine Liste der Datenspeicher, die als Quellen und Senken für die Kopieraktivität in Azure Data Factory unterstützt werden, finden Sie unter [Unterstützte Datenspeicher](copy-activity-overview.md#supported-data-stores-and-formats).

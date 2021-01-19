@@ -8,12 +8,12 @@ ms.service: azure-app-configuration
 ms.custom: devx-track-csharp
 ms.topic: conceptual
 ms.date: 2/25/2020
-ms.openlocfilehash: 8ef3ff20c67eefa2091ffb1732ced813b169e596
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: d6b3d60a44725869d68dd9f1158d2279f3cf3e86
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96929751"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97963979"
 ---
 # <a name="use-managed-identities-to-access-app-configuration"></a>Verwenden verwalteter Identitäten für den Zugriff auf App Configuration
 
@@ -102,7 +102,7 @@ Um eine verwaltete Entität im Portal einzurichten, erstellen Sie zuerst eine An
     using Azure.Identity;
     ```
 
-1. Wenn Sie nur auf Werte zugreifen möchten, die direkt in App Configuration gespeichert sind, aktualisieren Sie die `CreateWebHostBuilder`-Methode, indem Sie die `config.AddAzureAppConfiguration()`-Methode ersetzen.
+1. Wenn Sie nur auf Werte zugreifen möchten, die direkt in App Configuration gespeichert sind, aktualisieren Sie die `CreateWebHostBuilder`-Methode, indem Sie die `config.AddAzureAppConfiguration()`-Methode (im Paket `Microsoft.Azure.AppConfiguration.AspNetCore`) ersetzen.
 
     > [!IMPORTANT]
     > `CreateHostBuilder` ersetzt `CreateWebHostBuilder` in .NET Core 3.0.  Wählen Sie auf der Grundlage ihrer Umgebung die richtige Syntax aus.

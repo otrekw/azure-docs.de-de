@@ -15,12 +15,12 @@ ms.date: 11/07/2020
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: devx-track-azurecli, devx-track-azurepowershell, contperf-fy21q2
-ms.openlocfilehash: e7a8f54abbadb63c870c4d92843699c67f59752c
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: 393d0c69201f87ad7c96bd2f9a1f9f57df512e31
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97505629"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97964523"
 ---
 # <a name="register-sql-server-vm-with-sql-iaas-agent-extension"></a>Registrieren einer SQL Server-VM mit der SQL-IaaS-Agent-Erweiterung
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -188,6 +188,9 @@ $sqlvm.SqlManagementType
 ## <a name="upgrade-to-full"></a>Upgrade auf „Vollständig“  
 
 Für SQL Server-VMs, auf denen die Erweiterung im Modus *Lightweight* registriert wurde, können Sie über das Azure-Portal, die Azure-Befehlszeilenschnittstelle oder Azure PowerShell ein Upgrade auf den Modus _Vollständig_ durchführen. Für SQL Server-VMs im Modus _NoAgent_ kann ein Upgrade auf _Vollständig_ durchgeführt werden, nachdem das Betriebssystem auf Windows 2008 R2 oder höher aktualisiert wurde. Es ist nicht möglich, ein Downgrade auszuführen. Dazu müssen Sie die [Registrierung der SQL-IaaS-Agent-Erweiterung für die SQL Server-VM aufheben](#unregister-from-extension). Dadurch wird die _Ressource_ **Virtueller SQL-Computer** entfernt, der tatsächliche virtuelle Computer aber nicht gelöscht. 
+
+> [!NOTE]
+> Wenn Sie ein Upgrade des Verwaltungsmodus für die SQL-IaaS-Erweiterung auf „Vollständig“ durchführen, wird der SQL Server-Dienst neu gestartet. In einigen Fällen kann ein Neustart dazu führen, dass die Dienstprinzipalnamen (SPNs), die dem SQL Server-Dienst zugeordnet sind, in ein falsches Benutzerkonto geändert werden. Wenn nach dem Upgrade des Verwaltungsmodus Konnektivitätsprobleme auftreten, [heben Sie die Registrierung der Dienstprinzipalnamen auf, und registrieren Sie die Namen dann erneut](/sql/database-engine/configure-windows/register-a-service-principal-name-for-kerberos-connections).
 
 
 ### <a name="azure-portal"></a>Azure-Portal

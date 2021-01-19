@@ -5,14 +5,14 @@ services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: how-to
-ms.date: 09/29/2020
+ms.date: 12/14/2020
 ms.author: duau
-ms.openlocfilehash: 56638f14565f76b0a2fc252b81dba3dae9e53dd8
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: acbd5c3aa88c2c8c14407ebda0c42d228aa6c9e3
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93289431"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98018937"
 ---
 # <a name="create-expressroute-direct-using-the-azure-portal"></a>Erstellen von ExpressRoute Direct mit dem Portal
 
@@ -21,7 +21,14 @@ ExpressRoute Direct ermöglicht es, sich direkt mit dem globalen Netzwerk von Mi
 
 ## <a name="before-you-begin"></a><a name="before"></a>Voraussetzungen
 
-Überprüfen Sie, ob der Ressourcenanbieter **Microsoft.Network** in Ihrem Abonnement registriert ist. Durch Registrieren eines Ressourcenanbieters wird Ihr Abonnement für die Verwendung mit dem Ressourcenanbieter konfiguriert.
+Bevor Sie ExpressRoute Direct nutzen können, müssen Sie zunächst Ihr Abonnement registrieren. Senden Sie dafür eine E-Mail mit Ihrer Abonnement-ID an <ExpressRouteDirect@microsoft.com>. Geben Sie in der E-Mail die folgenden Aspekte an:
+
+* Szenarien, für die Sie **ExpressRoute Direct** nutzen können
+* Bevorzugte Standorte: Unter [Partner und Peeringstandorte](expressroute-locations-providers.md) finden Sie eine vollständige Liste aller Standorte.
+* Zeitrahmen für die Implementierung
+* Weitere Fragen
+
+Überprüfen Sie nach der Registrierung, ob der Ressourcenanbieter **Microsoft.Network** in Ihrem Abonnement registriert ist. Durch Registrieren eines Ressourcenanbieters wird Ihr Abonnement für die Verwendung mit dem Ressourcenanbieter konfiguriert.
 
 1. Greifen Sie wie unter [Azure-Ressourcenanbieter und -typen](../azure-resource-manager/management/resource-providers-and-types.md) beschrieben auf die Abonnementeinstellungen zu.
 1. Überprüfen Sie, ob in Ihrem Abonnement unter **Ressourcenanbieter** der Anbieter **Microsoft.Network** den Status **Registriert** aufweist. Wenn der Ressourcenanbieter Microsoft.Network nicht in der Liste der registrierten Anbieter aufgeführt ist, fügen Sie ihn hinzu.
@@ -30,7 +37,7 @@ ExpressRoute Direct ermöglicht es, sich direkt mit dem globalen Netzwerk von Mi
 
 1. Wählen Sie im Menü des [Azure-Portals](https://portal.azure.com) oder auf der **Homepage** die Option **Ressource erstellen** aus.
 
-1. Geben Sie auf der Seite **Neu** im Feld **_Marketplace durchsuchen_ *_ den Suchbegriff _* ExpressRoute Direct** ein, und drücken Sie anschließend die **EINGABETASTE** , um zu den Suchergebnissen zu gelangen.
+1. Geben Sie auf der Seite **Neu** im Feld **_Marketplace durchsuchen_ *_ den Suchbegriff _* ExpressRoute Direct** ein, und drücken Sie anschließend die **EINGABETASTE**, um zu den Suchergebnissen zu gelangen.
 
 1. Wählen Sie in den Ergebnissen **ExpressRoute Direct** aus.
 
@@ -40,18 +47,18 @@ ExpressRoute Direct ermöglicht es, sich direkt mit dem globalen Netzwerk von Mi
 
     :::image type="content" source="./media/how-to-expressroute-direct-portal/basics.png" alt-text="Seite „Grundlagen“":::
 
-    * **Abonnement** : Das Azure-Abonnement, das Sie zum Erstellen einer neuen ExpressRoute Direct-Ressource verwenden möchten. Die ExpressRoute Direct-Ressource und ExpressRoute-Leitungen müssen sich im selben Abonnement befinden.
-    * **Ressourcengruppe** : Die Azure-Ressourcengruppe, in der die neue ExpressRoute Direct-Ressource erstellt wird. Erstellen Sie eine Ressourcengruppe, wenn noch keine vorhanden ist.
-    * **Region** : Die öffentliche Azure-Region, in der die Ressource erstellt wird.
-    * **Name** : Der Name der neuen ExpressRoute Direct-Ressource.
+    * **Abonnement**: Das Azure-Abonnement, das Sie zum Erstellen einer neuen ExpressRoute Direct-Ressource verwenden möchten. Die ExpressRoute Direct-Ressource und ExpressRoute-Leitungen müssen sich im selben Abonnement befinden.
+    * **Ressourcengruppe**: Die Azure-Ressourcengruppe, in der die neue ExpressRoute Direct-Ressource erstellt wird. Erstellen Sie eine Ressourcengruppe, wenn noch keine vorhanden ist.
+    * **Region**: Die öffentliche Azure-Region, in der die Ressource erstellt wird.
+    * **Name**: Der Name der neuen ExpressRoute Direct-Ressource.
 
 1. Vervollständigen Sie dann die Felder auf der Seite **Konfiguration**.
 
     :::image type="content" source="./media/how-to-expressroute-direct-portal/configuration.png" alt-text="Screenshot, der die Seite „Erstellen von ExpressRoute Direct“ mit ausgewählter Registerkarte „Konfiguration“ zeigt.":::
 
-    * **Peeringstandort** : Der Peeringstandort, an dem Sie eine Verbindung mit der ExpressRoute Direct-Ressource herstellen. Weitere Informationen zu Peeringstandorten finden Sie unter [ExpressRoute-Standorte](expressroute-locations-providers.md).
-   * **Bandbreite** : Die Portpaarbandbreite, die Sie reservieren möchten. ExpressRoute Direct unterstützt die Bandbreitenoptionen 10 GB und 100 GB. Wenn die gewünschte Bandbreite am angegebenen Peeringstandort nicht verfügbar ist, [öffnen Sie eine Supportanfrage im Azure-Portal](https://aka.ms/azsupt).
-   * **Kapselung** : ExpressRoute Direct unterstützt die Kapselungen QinQ und Dot1Q.
+    * **Peeringstandort**: Der Peeringstandort, an dem Sie eine Verbindung mit der ExpressRoute Direct-Ressource herstellen. Weitere Informationen zu Peeringstandorten finden Sie unter [ExpressRoute-Standorte](expressroute-locations-providers.md).
+   * **Bandbreite**: Die Portpaarbandbreite, die Sie reservieren möchten. ExpressRoute Direct unterstützt die Bandbreitenoptionen 10 GB und 100 GB. Wenn die gewünschte Bandbreite am angegebenen Peeringstandort nicht verfügbar ist, [öffnen Sie eine Supportanfrage im Azure-Portal](https://aka.ms/azsupt).
+   * **Kapselung**: ExpressRoute Direct unterstützt die Kapselungen QinQ und Dot1Q.
      * Bei Wahl von QinQ wird jeder ExpressRoute-Leitung dynamisch ein S-Tag zugewiesen, das in der gesamten ExpressRoute Direct-Ressource eindeutig ist.
      *  Jedes C-Tag für die Leitung muss innerhalb der Leitung eindeutig sein, jedoch nicht innerhalb von ExpressRoute Direct.
      * Wenn die Kapselung Dot1Q ausgewählt wird, müssen Sie die Eindeutigkeit des C-Tags (VLAN) für die gesamte ExpressRoute Direct-Ressource sicherstellen.

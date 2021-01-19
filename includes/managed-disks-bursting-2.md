@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/27/2020
 ms.author: albecker1
 ms.custom: include file
-ms.openlocfilehash: 1a51cd242eb26709464aa502938cd04807aea721
-ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
+ms.openlocfilehash: 28c92004fe67de35e5776cd7dc24cf534ec6f8f3
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97805604"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98061050"
 ---
 ## <a name="common-scenarios"></a>Häufige Szenarios
 Die folgenden Szenarien können von einem Bursting stark profitieren:
@@ -28,7 +28,7 @@ Das Bursting-Guthabensystem gilt in gleicher Weise sowohl auf der Ebene virtuell
 
 ![Diagramm für Bursting-Bucket](media/managed-disks-bursting/bucket-diagram.jpg)
 
-Wie Sie das 30-minütige Bursting nutzen möchten, bleibt Ihnen überlassen. Sie können es fortlaufend 30 Minuten oder sporadisch im Laufe des Tages verwenden. Bei der Bereitstellung des Produkts steht das vollständige Guthaben zur Verfügung, und wenn das Guthaben erschöpft ist, dauert es weniger als einen Tag, bis das Guthaben wieder vollständig aufgefüllt ist. Sie können Ihre Bursting-Guthaben ansammeln und nach eigenem Ermessen ausgeben, und um das Bursting nutzen zu können, muss der 30-Minuten-Eimer nicht wieder voll sein. Beachten Sie bei der Burstakkumulation, dass sie für jede Ressource unterschiedlich ist, da sie auf den nicht genutzten IOPS und MB/s unterhalb ihrer Leistungswerte basiert. Dies bedeutet, dass Produkte mit einer höheren Basisleistung schneller ihre Bursting-Guthaben ansammeln können als Produkte mit einer niedrigeren Basisleistung. Bei einem P1-Datenträger im Leerlauf ohne Aktivität fallen z. B. 120 IOPS pro Sekunde an, während bei einem P20-Datenträger 2.300 IOPS pro Sekunde im Leerlauf ohne Aktivität anfallen.
+Wie Sie das 30-minütige Bursting nutzen möchten, bleibt vollkommen Ihnen überlassen. Sie können es fortlaufend 30 Minuten oder sporadisch im Laufe des Tages verwenden. Bei der Bereitstellung des Produkts steht das vollständige Guthaben zur Verfügung, und wenn das Guthaben erschöpft ist, dauert es weniger als einen Tag, bis das Guthaben wieder vollständig aufgefüllt ist. Sie können Ihre Bursting-Guthaben ansammeln und nach eigenem Ermessen ausgeben, und um das Bursting nutzen zu können, muss der 30-Minuten-Eimer nicht wieder voll sein. Beachten Sie bei der Burstakkumulation, dass sie für jede Ressource unterschiedlich ist, da sie auf den nicht genutzten IOPS und MB/s unterhalb ihrer Leistungswerte basiert. Dies bedeutet, dass Produkte mit einer höheren Basisleistung schneller ihre Bursting-Guthaben ansammeln können als Produkte mit einer niedrigeren Basisleistung. Bei einem P1-Datenträger im Leerlauf ohne Aktivität fallen z. B. 120 IOPS pro Sekunde an, während bei einem P20-Datenträger 2.300 IOPS pro Sekunde im Leerlauf ohne Aktivität anfallen.
 
 ## <a name="bursting-states"></a>Bursting-Zustände
 Es gibt drei Zustände, in denen sich Ihre Ressource mit aktiviertem Bursting befinden kann:

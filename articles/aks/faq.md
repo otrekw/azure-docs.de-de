@@ -3,12 +3,12 @@ title: Häufig gestellte Fragen zu Azure Kubernetes Service (AKS)
 description: Finden Sie Antworten auf einige der häufig gestellten Fragen zu Azure Kubernetes Service (AKS).
 ms.topic: conceptual
 ms.date: 08/06/2020
-ms.openlocfilehash: 94cbaf417413b3e11071fb8c7237cbb3ac7b9a37
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: 7fc348ae7b3edb79e75aa1acd08941fec447da6f
+ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96780347"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98127633"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Häufig gestellte Fragen zu Azure Kubernetes Service (AKS)
 
@@ -146,7 +146,7 @@ Das Verschieben Ihres AKS-Clusters zwischen Mandanten wird derzeit nicht unterst
 
 Das Verschieben von Clustern zwischen Abonnements wird derzeit nicht unterstützt.
 
-## <a name="can-i-move-my-aks-clusters-from-the-current-azure-subscription-to-another"></a>Kann ich meine AKS-Cluster aus dem aktuellen Azure-Abonnement in ein anderes verschieben? 
+## <a name="can-i-move-my-aks-clusters-from-the-current-azure-subscription-to-another"></a>Kann ich meine AKS-Cluster aus dem aktuellen Azure-Abonnement in ein anderes verschieben?
 
 Das Verschieben Ihres AKS-Clusters und der zugehörigen Ressourcen zwischen Azure-Abonnements wird nicht unterstützt.
 
@@ -154,7 +154,7 @@ Das Verschieben Ihres AKS-Clusters und der zugehörigen Ressourcen zwischen Azur
 
 Das Verschieben oder Umbenennen Ihres AKS-Clusters und der zugehörigen Ressourcen wird nicht unterstützt.
 
-## <a name="why-is-my-cluster-delete-taking-so-long"></a>Warum dauert das Löschen meines Clusters so lange? 
+## <a name="why-is-my-cluster-delete-taking-so-long"></a>Warum dauert das Löschen meines Clusters so lange?
 
 Die meisten Cluster werden auf Benutzeranforderung gelöscht. In einigen Fällen kann der Vorgang zusätzliche Zeit in Anspruch nehmen oder fehlschlagen, insbesondere bei Kunden, die ihre eigene Ressourcengruppe verwenden, oder beim Löschen von RG-übergreifenden Aufgaben. Wenn Sie ein Problem mit Löschvorgängen haben, vergewissern Sie sich, dass keine Sperren für die Ressourcengruppen vorliegen, dass alle Verknüpfungen mit Ressourcen außerhalb der Ressourcengruppe aufgehoben wurden usw.
 
@@ -166,7 +166,7 @@ Dies ist möglich, aber AKS empfiehlt dies nicht. Upgrades sollten ausgeführt w
 
 Nein. Löschen/Entfernen Sie alle Knoten, die den Status „Fehler“ aufweisen oder anderweitig aus dem Cluster entfernt wurden, bevor Sie das Upgrade ausführen.
 
-## <a name="i-ran-a-cluster-delete-but-see-the-error-errno-11001-getaddrinfo-failed"></a>Ich habe eine Clusterlöschung ausgeführt, aber der Fehler `[Errno 11001] getaddrinfo failed` wird angezeigt. 
+## <a name="i-ran-a-cluster-delete-but-see-the-error-errno-11001-getaddrinfo-failed"></a>Ich habe eine Clusterlöschung ausgeführt, aber der Fehler `[Errno 11001] getaddrinfo failed` wird angezeigt.
 
 Dies wird in der Regel dadurch verursacht, dass eine oder mehrere Netzwerksicherheitsgruppen (NSGs) noch von Benutzern verwendet werden und dem Cluster zugeordnet sind.  Entfernen Sie diese, und versuchen Sie erneut, den Löschvorgang auszuführen.
 
@@ -174,7 +174,7 @@ Dies wird in der Regel dadurch verursacht, dass eine oder mehrere Netzwerksicher
 
 Vergewissern Sie sich, dass der Dienstprinzipal nicht abgelaufen ist.  Siehe: [AKS-Dienstprinzipal](./kubernetes-service-principal.md) und [Aktualisieren der AKS-Anmeldeinformationen](./update-credentials.md).
 
-## <a name="my-cluster-was-working-but-suddenly-cant-provision-loadbalancers-mount-pvcs-etc"></a>Mein Cluster hat funktioniert, kann aber plötzlich keine LoadBalancer bereitstellen, keine PVCs einbinden usw. 
+## <a name="my-cluster-was-working-but-suddenly-cant-provision-loadbalancers-mount-pvcs-etc"></a>Mein Cluster hat funktioniert, kann aber plötzlich keine LoadBalancer bereitstellen, keine PVCs einbinden usw.
 
 Vergewissern Sie sich, dass der Dienstprinzipal nicht abgelaufen ist.  Siehe: [AKS-Dienstprinzipal](./kubernetes-service-principal.md) und [Aktualisieren der AKS-Anmeldeinformationen](./update-credentials.md).
 
@@ -254,6 +254,25 @@ Im Folgenden finden Sie ein Beispiel für eine IP-Routeneinrichtung des transpar
 - Einer der Eckfälle im Bridge-Modus ist, dass Azure CNI die benutzerdefinierten DNS-Server-Listen, die Benutzer dem VNET oder der NIC hinzufügen, nicht ständig aktualisieren kann. Dies führt dazu, dass CNI nur die erste Instanz der DNS-Serverliste auswählt. Dieses Problem wird im transparenten Modus gelöst, weil CNI keine eth0-Eigenschaften ändert. Weitere Informationen finden Sie [hier](https://github.com/Azure/azure-container-networking/issues/713).
 - Dieser Modus bietet eine bessere Verarbeitung von UDP-Datenverkehr und Entschärfung für UDP-Überflutung bei einem Timeout von ARP. Wenn die Bridge im Bridge-Modus eine MAC-Adresse des Ziel-Pods bei der Kommunikation zwischen Pods in der VM nicht kennt, führt dies zu einem Paketsturm an alle Ports. Dieses Problem ist im transparenten Modus gelöst, da sich keine L2-Geräte im Pfad befinden. Weitere Informationen finden Sie [hier](https://github.com/Azure/azure-container-networking/issues/704).
 - Der transparente Modus ist in Bezug auf Durchsatz und Latenz bei der Kommunikation zwischen Pods in der VM im Vergleich zum Bridge-Modus leistungsfähiger.
+
+## <a name="how-to-avoid-permission-ownership-setting-slow-issues-when-the-volume-has-a-lot-of-files"></a>Wie kann ich Probleme vermeiden, bei denen das Festlegen des Berechtigungsbesitzes lange dauert, wenn das Volume viele Dateien enthält?
+
+Wenn Ihr Pod nicht per Root-Benutzer ausgeführt wird (was ratsam ist), müssen Sie eine `fsGroup` im Sicherheitskontext des Pods angeben, damit das Volume für den Pod lesbar und schreibbar ist. Eine ausführlichere Beschreibung dieser Anforderung finden Sie [hier](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/).
+
+Ein Nebeneffekt beim Festlegen von `fsGroup` ist, dass von Kubernetes bei jeder Bereitstellung eines Volumes rekursiv die Vorgänge `chown()` und `chmod()` für alle Dateien und Verzeichnisse des Volumes durchgeführt werden müssen (mit einigen Ausnahmen, die unten angegeben sind). Dies ist auch der Fall,wenn der Gruppenbesitz des Volumes bereits mit der angeforderten `fsGroup` übereinstimmt. Für größere Volumes mit vielen kleinen Dateien, bei denen das Starten des Pods lange dauert, kann dies zu relativ hohen Kosten führen. Dieses Szenario war bis zur Version 1.20 ein bekanntes Problem. Die Problemumgehung besteht darin, für den Pod die Ausführung als „Root“ festzulegen:
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: security-context-demo
+spec:
+  securityContext:
+    runAsUser: 0
+    fsGroup: 0
+```
+
+Das Problem wurde mit Kubernetes v1.20 behoben. Weitere Informationen finden Sie unter [Kubernetes 1.20: Präzise Steuerung der Änderungen von Volumeberechtigungen](https://kubernetes.io/blog/2020/12/14/kubernetes-release-1.20-fsgroupchangepolicy-fsgrouppolicy/).
 
 
 <!-- LINKS - internal -->

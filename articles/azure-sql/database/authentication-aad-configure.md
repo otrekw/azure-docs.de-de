@@ -12,12 +12,12 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, sstein
 ms.date: 08/17/2020
-ms.openlocfilehash: 5558480f568e802637deb30c9f1b41c00826c9b5
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 2c7db937905baed94c6fe81adeb44c8b3f5be52b
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96454499"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936072"
 ---
 # <a name="configure-and-manage-azure-ad-authentication-with-azure-sql"></a>Konfigurieren und Verwalten der Azure Active Directory-Authentifizierung mit Azure SQL
 
@@ -395,7 +395,7 @@ CREATE USER [appName] FROM EXTERNAL PROVIDER;
 ```
 
 > [!NOTE]
-> Dieser Befehl erfordert, dass SQL auf Azure AD (den „externen Anbieter“) im Namen des angemeldeten Benutzers zugreift. Manchmal treten Umstände auf, die bewirken, dass Azure AD eine Ausnahme an SQL zurückgibt. In diesen Fällen wird dem Benutzer der SQL-Fehler 33134 angezeigt, der die Azure AD-spezifische Fehlermeldung enthalten sollte. In den meisten Fällen besagt der Fehler, dass der Zugriff verweigert wird oder dass der Benutzer sich für MFA registrieren muss, um auf die Ressource zuzugreifen, oder dass der Zugriff zwischen Erstanbieteranwendungen über Vorautorisierung verarbeitet werden muss. In den ersten beiden Fällen wird das Problem normalerweise durch Richtlinien für bedingten Zugriff verursacht, die im Azure AD-Mandanten des Benutzers festgelegt werden. Diese verhindern, dass der Benutzer auf den externen Anbieter zugreifen kann. Aktualisieren Sie die Zertifizierungsstellenrichtlinien, um den Zugriff auf die Anwendung „00000002-0000-0000-c000-000000000000“ zu ermöglichen (die Anwendungs-ID der Azure AD-Graph-API). Dadurch sollte das Problem behoben werden. Wenn der Fehler besagt, dass der Zugriff zwischen Erstanbieteranwendungen über Vorautorisierung verarbeitet werden muss, liegt das Problem daran, dass der Benutzer als Dienstprinzipal angemeldet ist. Der Befehl sollte erfolgreich sein, wenn er stattdessen von einem Benutzer ausgeführt wird.
+> Dieser Befehl erfordert, dass SQL auf Azure AD (den „externen Anbieter“) im Namen des angemeldeten Benutzers zugreift. Manchmal treten Umstände auf, die bewirken, dass Azure AD eine Ausnahme an SQL zurückgibt. In diesen Fällen wird dem Benutzer der SQL-Fehler 33134 angezeigt, der die Azure AD-spezifische Fehlermeldung enthalten sollte. In den meisten Fällen besagt der Fehler, dass der Zugriff verweigert wird oder dass der Benutzer sich für MFA registrieren muss, um auf die Ressource zuzugreifen, oder dass der Zugriff zwischen Erstanbieteranwendungen über Vorautorisierung verarbeitet werden muss. In den ersten beiden Fällen wird das Problem normalerweise durch Richtlinien für bedingten Zugriff verursacht, die im Azure AD-Mandanten des Benutzers festgelegt werden. Diese verhindern, dass der Benutzer auf den externen Anbieter zugreifen kann. Aktualisieren Sie die Richtlinien für bedingten Zugriff, um den Zugriff auf die Anwendung „00000002-0000-0000-c000-000000000000“ zu ermöglichen (die Anwendungs-ID der Azure AD-Graph-API). Dadurch sollte das Problem behoben werden. Wenn der Fehler besagt, dass der Zugriff zwischen Erstanbieteranwendungen über Vorautorisierung verarbeitet werden muss, liegt das Problem daran, dass der Benutzer als Dienstprinzipal angemeldet ist. Der Befehl sollte erfolgreich sein, wenn er stattdessen von einem Benutzer ausgeführt wird.
 
 > [!TIP]
 > Sie können einen Benutzer nur direkt aus der Azure Active Directory-Instanz erstellen, die Ihrem Azure-Abonnement zugeordnet ist. Mitglieder anderer Active Directory-Instanzen, die importierte Benutzer der zugeordneten Active Directory-Instanz sind (bekannt als externe Benutzer) können jedoch einer Active Directory-Gruppe des Active Directory-Mandanten hinzugefügt werden. Indem Sie einen eigenständigen Datenbankbenutzer für diese AD-Gruppe erstellen, können die Benutzer aus der externen Active Directory-Instanz auf die SQL-Datenbank zugreifen.

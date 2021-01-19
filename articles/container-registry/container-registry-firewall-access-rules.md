@@ -1,14 +1,14 @@
 ---
 title: Firewallzugriffsregeln
-description: Konfigurieren Sie Regeln für den Zugriff auf eine Azure-Containerregistrierung hinter einer Firewall, indem Sie den Zugriff auf die REST-API („Whitelist“) und die Domänennamen oder dienstspezifischen IP-Adressbereiche des Datenendpunkts zulassen.
+description: Konfigurieren Sie Regeln für den Zugriff auf eine Azure-Containerregistrierung hinter einer Firewall, indem Sie den Zugriff auf die REST-API und die Domänennamen des Datenendpunkts oder dienstspezifischen IP-Adressbereiche zulassen.
 ms.topic: article
 ms.date: 05/18/2020
-ms.openlocfilehash: b9ecd5f802176cdc6881294f5dedefd3dd467244
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 548d64632c1d726111770dfb49f705d31f5ca714
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92148503"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97935987"
 ---
 # <a name="configure-rules-to-access-an-azure-container-registry-behind-a-firewall"></a>Konfigurieren von Regeln für den Zugriff auf eine Azure-Containerregistrierung von einem Standort hinter einer Firewall
 

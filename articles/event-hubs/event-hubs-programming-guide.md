@@ -4,12 +4,12 @@ description: Dieser Artikel enthält Informationen zum Schreiben von Code für A
 ms.topic: article
 ms.date: 06/23/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 17bec931f79a6dbb3d98270ab0ff6e2d1d4c6541
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 46bd0c3c1488d6dd7afbae5e88e0b83f56654bb8
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89013910"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98131235"
 ---
 # <a name="net-programming-guide-for-azure-event-hubs-legacy-microsoftazureeventhubs-package"></a>.NET-Programmierleitfaden für Azure Event Hubs (Microsoft.Azure.EventHubs-Legacypaket)
 Dieser Artikel erörtert einige gängige Szenarien zum Schreiben von Code mit Azure Event Hubs. Hierbei wird ein grundlegendes Verständnis von Event Hubs vorausgesetzt. Eine konzeptuelle Übersicht über Event Hubs finden Sie unter [Übersicht über Event Hubs](./event-hubs-about.md).
@@ -77,7 +77,7 @@ Beim Senden von Daten können Sie einen gehashten Wert angeben, um eine Partitio
 
 ### <a name="availability-considerations"></a>Überlegungen zur Verfügbarkeit
 
-Die Verwendung eines Partitionsschlüssels ist optional, und Sie sollten dies sorgfältig abwägen. Wenn Sie beim Veröffentlichen eines Ereignisses keinen Partitionsschlüssel angeben, wird eine Roundrobinzuordnung verwendet. In vielen Fällen ist die Verwendung eines Partitionsschlüssels empfehlenswert, wenn die Ereignisreihenfolge wichtig ist. Wenn Sie einen Partitionsschlüssel verwenden, ist für diese Partitionen die Verfügbarkeit auf einem einzelnen Knoten erforderlich, und mit der Zeit kann es zu Ausfällen kommen, beispielsweise beim Neustart und Patchen von Computeknoten. Wenn Sie daher eine Partitions-ID festlegen und diese Partition aus irgendeinem Grund nicht verfügbar ist, führt der Zugriff auf die Daten in dieser Partition zu einem Fehler. Wenn die Hochverfügbarkeit an erster Stelle steht, geben Sie keinen Partitionsschlüssel an. In diesem Fall werden Ereignisse über das zuvor beschriebene Roundrobin-Modell an Partitionen gesendet. In diesem Szenario treffen Sie explizit die Wahl zwischen Verfügbarkeit (keine Partitions-ID) und Konsistenz (Anheften von Ereignissen an eine Partitions-ID).
+Die Verwendung eines Partitionsschlüssels ist optional, und Sie sollten dies sorgfältig abwägen. Wenn Sie beim Veröffentlichen eines Ereignisses keinen Partitionsschlüssel angeben, wird die Last von Event Hubs gleichmäßig auf die Partitionen aufgeteilt. In vielen Fällen ist die Verwendung eines Partitionsschlüssels empfehlenswert, wenn die Ereignisreihenfolge wichtig ist. Wenn Sie einen Partitionsschlüssel verwenden, ist für diese Partitionen die Verfügbarkeit auf einem einzelnen Knoten erforderlich, und mit der Zeit kann es zu Ausfällen kommen, beispielsweise beim Neustart und Patchen von Computeknoten. Wenn Sie daher eine Partitions-ID festlegen und diese Partition aus irgendeinem Grund nicht verfügbar ist, führt der Zugriff auf die Daten in dieser Partition zu einem Fehler. Wenn Hochverfügbarkeit am wichtigsten ist, geben Sie keinen Partitionsschlüssel an. In diesem Fall werden Ereignisse mithilfe eines Algorithmus für den internen Lastenausgleich an die Partitionen gesendet. In diesem Szenario treffen Sie explizit die Wahl zwischen Verfügbarkeit (keine Partitions-ID) und Konsistenz (Anheften von Ereignissen an eine Partitions-ID).
 
 Ein weiterer Aspekt ist der Umgang mit Verzögerungen bei der Ereignisverarbeitung. In einigen Fällen kann es besser sein, Daten zu löschen und den Vorgang zu wiederholen, anstatt zu versuchen, mit der Verarbeitung Schritt zu halten, wodurch möglicherweise weitere Verzögerungen bei der Downstreamverarbeitung verursacht werden. Bei einem Börsenticker ist es z.B. besser, auf vollständige aktuelle Daten zu warten. In einem Livechat oder VOIP-Szenario, möchten Sie die Daten hingegen schnell erhalten, selbst wenn sie nicht vollständig sind.
 
@@ -93,7 +93,7 @@ Weitere Informationen und eine Erläuterung zu den Vor-und Nachteilen zwischen V
 
 Das Senden von Ereignissen in Batches kann den Durchsatz erhöhen. Mithilfe der [CreateBatch](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.createbatch)-API können Sie einen Batch erstellen, dem später Datenobjekte für einen [SendAsync](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.sendasync)-Aufruf hinzugefügt werden können.
 
-Ein einzelner Batch darf den Grenzwert von 1 MB für ein Ereignis nicht überschreiten. Darüber hinaus wird für jede Nachricht im Batch die gleiche Herausgeberidentität (Publisher Identity) verwendet. Der Absender ist dafür verantwortlich sicherzustellen, dass die maximale Ereignisgröße für den Batch nicht überschritten wird. Bei einer Überschreitung wird ein **Send** -Fehler für den Client generiert. Sie können mit der Hilfsprogrammmethode [EventHubClient.CreateBatch](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.createbatch) sicherstellen, dass der Batch 1 MB nicht überschreitet. Sie erhalten von der [CreateBatch](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.createbatch)-API ein leeres [EventDataBatch](/dotnet/api/microsoft.azure.eventhubs.eventdatabatch)-Element, und verwenden dann [TryAdd](/dotnet/api/microsoft.azure.eventhubs.eventdatabatch.tryadd), um Ereignisse hinzuzufügen und den Batch zu erstellen. 
+Ein einzelner Batch darf den Grenzwert von 1 MB für ein Ereignis nicht überschreiten. Darüber hinaus wird für jede Nachricht im Batch die gleiche Herausgeberidentität (Publisher Identity) verwendet. Der Absender ist dafür verantwortlich sicherzustellen, dass die maximale Ereignisgröße für den Batch nicht überschritten wird. Wird diese Größe überschritten, wird ein **Sendefehler** des Clients generiert. Sie können mit der Hilfsprogrammmethode [EventHubClient.CreateBatch](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.createbatch) sicherstellen, dass der Batch 1 MB nicht überschreitet. Sie erhalten von der [CreateBatch](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.createbatch)-API ein leeres [EventDataBatch](/dotnet/api/microsoft.azure.eventhubs.eventdatabatch)-Element, und verwenden dann [TryAdd](/dotnet/api/microsoft.azure.eventhubs.eventdatabatch.tryadd), um Ereignisse hinzuzufügen und den Batch zu erstellen. 
 
 ## <a name="send-asynchronously-and-send-at-scale"></a>Asynchrones Senden und Senden mit Skalierung
 
@@ -144,7 +144,6 @@ Zusätzlich zu den erweiterten Laufzeitfunktionen des Ereignisprozessorhosts erm
 > [!NOTE]
 > Derzeit wird diese Funktion nur von der REST-API unterstützt ([Herausgebersperrung](/rest/api/eventhub/revoke-publisher)).
 
-Weitere Informationen zum Sperren von Herausgebern und zum Senden an Event Hubs als Herausgeber finden Sie im Beispiel [Service Bus Event Hubs Large Scale Secure Publishing](https://code.msdn.microsoft.com/Service-Bus-Event-Hub-99ce67ab) (Service Bus Event Hubs – Sicheres Veröffentlichen in größerem Umfang).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

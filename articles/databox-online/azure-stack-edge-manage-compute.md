@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 05/20/2019
+ms.date: 01/06/2021
 ms.author: alkohli
-ms.openlocfilehash: 0d93edbefb61cb8ded09f6402ca1e1661429efe1
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: ebf967fe02ab6424b9952bb0315b70fadb547fe3
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91952147"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97967829"
 ---
 # <a name="manage-compute-on-your-azure-stack-edge-pro"></a>Computeverwaltung auf Ihrem Azure Stack Edge Pro-Gerät
 
@@ -38,7 +38,7 @@ Ein Ereignis ist etwas, das in Ihrer Cloudumgebung oder auf Ihrem Gerät passier
 
 Gehen Sie im Azure-Portal wie folgt vor, um einen Trigger zu erstellen:
 
-1. Navigieren Sie im Azure-Portal zu Ihrer Azure Stack Edge-Ressource und anschließend zu **Edgecomputing > Trigger**. Wählen Sie auf der Befehlsleiste die Option **+ Trigger hinzufügen** aus.
+1. Navigieren Sie im Azure-Portal zu Ihrer Azure Stack Edge-Ressource und anschließend zu **IoT Edge > Trigger**. Wählen Sie auf der Befehlsleiste die Option **+ Trigger hinzufügen** aus.
 
     ![Auswählen von „Trigger hinzufügen“](media/azure-stack-edge-manage-compute/add-trigger-1.png)
 
@@ -68,15 +68,15 @@ Gehen Sie im Azure-Portal wie folgt vor, um einen Trigger zu löschen:
 
 1. Wählen Sie in der Triggerliste den zu löschenden Trigger aus.
 
-    ![Trigger auswählen](media/azure-stack-edge-manage-compute/add-trigger-1.png)
+    ![Trigger auswählen](media/azure-stack-edge-manage-compute/delete-trigger-1.png)
 
 2. Klicken Sie mit der rechten Maustaste darauf, und wählen Sie **Löschen** aus.
 
-    ![Auswählen von „Löschen“](media/azure-stack-edge-manage-compute/add-trigger-1.png)
+    ![Auswählen von „Löschen“](media/azure-stack-edge-manage-compute/delete-trigger-2.png)
 
 3. Wenn Sie zur Bestätigung aufgefordert werden, klicken Sie auf **Ja**.
 
-    ![Bestätigen des Löschens](media/azure-stack-edge-manage-compute/add-trigger-1.png)
+    ![Bestätigen des Löschens](media/azure-stack-edge-manage-compute/delete-trigger-3.png)
 
 Die Triggerliste wird nach dem Löschvorgang entsprechend aktualisiert.
 
@@ -88,11 +88,11 @@ Im Azure-Portal können Sie die Computekonfiguration anzeigen, eine vorhandene C
 
 Gehen Sie im Azure-Portal wie folgt vor, um die Computekonfiguration für Ihr Gerät anzuzeigen:
 
-1. Navigieren Sie im Azure-Portal zu Ihrer Azure Stack Edge-Ressource und anschließend zu **Edgecomputing > Module**. Wählen Sie auf der Befehlsleiste die Option **View compute** (Compute anzeigen) aus.
+1. Navigieren Sie im Azure-Portal zu Ihrer Azure Stack Edge-Ressource und dann zu **IoT Edge > Übersicht**. 
 
     ![Auswählen von „View compute“ (Compute anzeigen)](media/azure-stack-edge-manage-compute/view-compute-1.png)
 
-2. Notieren Sie sich die Computekonfiguration auf Ihrem Gerät. Wenn Sie Computeeinstellungen konfiguriert haben, haben Sie eine IoT Hub-Ressource erstellt. Unter dieser IoT Hub-Ressource sind ein IoT-Gerät und ein IoT Edge-Gerät konfiguriert. Auf dem IoT Edge-Gerät wird nur die Ausführung der Linux-Module unterstützt.
+2. Navigieren Sie zur Seite **Eigenschaften**. Notieren Sie sich die Computekonfiguration auf Ihrem Gerät. Wenn Sie Computeeinstellungen konfiguriert haben, haben Sie eine IoT Hub-Ressource erstellt. Unter dieser IoT Hub-Ressource sind ein IoT-Gerät und ein IoT Edge-Gerät konfiguriert. Auf dem IoT Edge-Gerät wird nur die Ausführung der Linux-Module unterstützt.
 
     ![Anzeigen der Konfiguration](media/azure-stack-edge-manage-compute/view-compute-2.png)
 
@@ -101,7 +101,7 @@ Gehen Sie im Azure-Portal wie folgt vor, um die Computekonfiguration für Ihr Ge
 
 Gehen Sie im Azure-Portal wie folgt vor, um die vorhandene Edgecomputingkonfiguration für Ihr Gerät zu entfernen:
 
-1. Navigieren Sie im Azure-Portal zu Ihrer Azure Stack Edge-Ressource und anschließend zu **Edgecomputing > Erste Schritte**. Wählen Sie auf der Befehlsleiste die Option **Compute entfernen** aus.
+1. Navigieren Sie im Azure-Portal zu Ihrer Azure Stack Edge-Ressource und dann zu **IoT Edge > Übersicht**. Wählen Sie auf der Befehlsleiste die Option **Entfernen** aus.
 
     ![Auswählen von „Compute entfernen“](media/azure-stack-edge-manage-compute/remove-compute-1.png)
 
@@ -119,7 +119,7 @@ Wenn die Schlüssel Ihres IoT-Geräts und Ihres IoT Edge-Geräts rotiert wurden
 
 Gehen Sie im Azure-Portal wie folgt vor, um die Zugriffsschlüssel für Ihr Gerät zu synchronisieren:
 
-1. Navigieren Sie im Azure-Portal zu Ihrer Azure Stack Edge-Ressource und anschließend zu **Edgecomputing > Erste Schritte**. Wählen Sie auf der Befehlsleiste die Option **Konfiguration aktualisieren** aus.
+1. Navigieren Sie im Azure-Portal zu Ihrer Azure Stack Edge-Ressource und dann zu **IoT Edge > Übersicht**. Wählen Sie auf der Befehlsleiste die Option **Konfiguration aktualisieren** aus.
 
     ![Auswählen von „Konfiguration aktualisieren“](media/azure-stack-edge-manage-compute/refresh-configuration-1.png)
 

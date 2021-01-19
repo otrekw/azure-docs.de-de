@@ -13,12 +13,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: 85d1880479a514ffb002e4894066734690480457
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 946908bf28a50bc8b523c4efd853e8720b115c7b
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94443125"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98063075"
 ---
 # <a name="get-a-token-for-a-mobile-app-that-calls-web-apis"></a>Abrufen eines Tokens für eine mobile App, die Web-APIs aufruft
 
@@ -255,7 +255,7 @@ var result = await app.AcquireTokenInteractive(scopesForCustomerApi)
 
 ##### <a name="other-optional-parameters"></a>Andere optionale Parameter
 
-Informationen zu den anderen optionalen Parametern für `AcquireTokenInteractive` finden Sie in der [Referenzdokumentation für AcquireTokenInteractiveParameterBuilder](/dotnet/api/microsoft.identity.client.acquiretokeninteractiveparameterbuilder?view=azure-dotnet-preview#methods).
+Informationen zu den anderen optionalen Parametern für `AcquireTokenInteractive` finden Sie in der [Referenzdokumentation für AcquireTokenInteractiveParameterBuilder](/dotnet/api/microsoft.identity.client.acquiretokeninteractiveparameterbuilder#methods).
 
 ### <a name="acquire-tokens-via-the-protocol"></a>Abrufen von Token über das Protokoll
 

@@ -10,17 +10,17 @@ ms.service: active-directory
 ms.subservice: enterprise-users
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/03/2020
+ms.date: 01/11/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 296679135063e2c7e1b7f0e3ffd193c8f18c3acf
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 5038bde01a6b183a25a47f3b4e206c1ce80e6b6d
+ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96576263"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98127837"
 ---
 # <a name="user-management-enhancements-preview-in-azure-active-directory"></a>Erweiterungen bei der Benutzerverwaltung (Vorschau) – Azure Active Directory
 
@@ -60,6 +60,9 @@ Die folgenden Benutzereigenschaften werden auf der Seite **Alle Benutzer** angez
 - Name: Der Anzeigename des Benutzers.
 - Benutzerprinzipalname: Der Benutzerprinzipalname (User Principal Name, UPN) des Benutzers.
 - Benutzertyp: „Mitglied“, „Gast“, „Ohne“
+- Erstellungszeit: Das Datum und die Uhrzeit der Erstellung des Benutzers.
+- Positionsbezeichnung: Die Position des Benutzers.
+- Abteilung: Die Abteilung, in der der Benutzer arbeitet.
 - Verzeichnissynchronisierung: Gibt an, ob der Benutzer aus einem lokalen Verzeichnis synchronisiert wurde.
 - Identitätsaussteller: Die Aussteller der Identität, die für die Anmeldung bei einem Benutzerkonto verwendet wird.
 - Objekt-ID: Die Objekt-ID des Benutzers.
@@ -76,7 +79,8 @@ Die folgenden Benutzereigenschaften werden auf der Seite **Alle Benutzer** angez
 Auf der Seite **Gelöschte Benutzer** werden alle auf der Seite **Alle Benutzer** verfügbaren Spalten angezeigt, sowie die folgenden zusätzlichen Spalten:
 
 - Datum der Löschung: Das Datum, an dem der Benutzer das erste Mal aus der Organisation gelöscht wurde (Benutzer sind wiederherstellbar).
-- Datum der endgültigen Löschung: Das Datum, an dem der Vorgang zum permanenten Löschen des Benutzers aus der Organisation automatisch beginnt. 
+- Datum der endgültigen Löschung: Das Datum, an dem der Vorgang zum permanenten Löschen des Benutzers aus der Organisation automatisch beginnt.
+- Ursprünglicher Benutzerprinzipalname: Der ursprüngliche UPN des Benutzers, bevor dessen Objekt-ID dem gelöschten UPN als Präfix hinzugefügt wurde.
 
 > [!NOTE]
 > Löschtermine werden in koordinierter Weltzeit (UTC) angezeigt.
@@ -105,6 +109,10 @@ Nach den folgenden Eigenschaften kann auf der Seite **Alle Benutzer** gefiltert 
 - Benutzertyp: „Mitglied“, „Gast“, „kein“
 - Status der Verzeichnissynchronisierung: „Ja“, „Nein“
 - Erstellungstyp: „Einladung“, „Verifizierte E-Mail-Adresse“, „Lokales Konto“
+- Erstellungszeit: Letzte 7, 14, 30, 90, 360 Tage oder mehr als 360 Tage
+- Positionsbezeichnung: Geben Sie eine Position ein.
+- Abteilung: Geben Sie einen Abteilungsnamen ein.
+- Gruppe: Suchen Sie eine Gruppe.
 - Einladungsstatus: Ausstehend, akzeptiert
 - Domänenname: Geben Sie einen Domänennamen ein.
 - Name des Unternehmens: Geben Sie einen Unternehmensnamen ein.
@@ -117,6 +125,9 @@ Auf der Seite **Gelöschte Benutzer** werden Filter bereitgestellt, die auf der 
 - Benutzertyp: „Mitglied“, „Gast“, „kein“
 - Status der Verzeichnissynchronisierung: „Ja“, „Nein“
 - Erstellungstyp: „Einladung“, „Verifizierte E-Mail-Adresse“, „Lokales Konto“
+- Erstellungszeit: Letzte 7, 14, 30, 90, 360 Tage oder mehr als 360 Tage
+- Positionsbezeichnung: Geben Sie eine Position ein.
+- Abteilung: Geben Sie einen Abteilungsnamen ein.
 - Einladungsstatus: „Akzeptanz steht aus“, „Akzeptiert“
 - Datum der Löschung: Letzte 7, 14 oder 30 Tage
 - Domänenname: Geben Sie einen Domänennamen ein.

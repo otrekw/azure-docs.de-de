@@ -5,14 +5,14 @@ author: timsander1
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 12/08/2020
+ms.date: 01/07/2021
 ms.author: tisande
-ms.openlocfilehash: f65d179baa2c0a08e2c1dca1716c9691797fc242
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: f959e4e230c1d9f89ad5141713b6a17a8cbb17a2
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97106291"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98018903"
 ---
 # <a name="working-with-arrays-and-objects-in-azure-cosmos-db"></a>Arbeiten mit Arrays und Objekten in Azure Cosmos DB
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -54,9 +54,27 @@ SELECT f.id, ARRAY(SELECT DISTINCT VALUE c.givenName FROM c IN f.children) as Ch
 FROM f
 ```
 
+Die Ergebnisse sind:
+
+```json
+[
+    {
+        "id": "AndersenFamily",
+        "ChildNames": []
+    },
+    {
+        "id": "WakefieldFamily",
+        "ChildNames": [
+            "Jesse",
+            "Lisa"
+        ]
+    }
+]
+```
+
 ## <a name="iteration"></a><a id="Iteration"></a>Iteration
 
-Die SQL-API unterstützt eine Iteration über JSON-Arrays mit einem neuen Konstrukt, das mit dem [IN-Schlüsselwort](sql-query-keywords.md#in) in der FROM-Quelle hinzugefügt wurde. Siehe folgendes Beispiel:
+Die SQL-API unterstützt eine Iteration über JSON-Arrays mit dem [IN-Schlüsselwort](sql-query-keywords.md#in) in der FROM-Quelle. Im folgenden Beispiel:
 
 ```sql
 SELECT *
@@ -156,6 +174,9 @@ Die Ergebnisse sind:
   }
 ]
 ```
+
+> [!NOTE]
+> Wenn Sie das IN-Schlüsselwort für die Iteration verwenden, können Sie keine Eigenschaften außerhalb des Arrays filtern oder projizieren. Stattdessen sollten Sie [JOINs](sql-query-join.md) verwenden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

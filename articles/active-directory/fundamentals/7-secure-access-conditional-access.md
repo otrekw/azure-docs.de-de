@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 27c34135a59521eca361c59a1c82854469626616
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: 8dd570a31813ef12ee8a007c84facb8aa5e7aca4
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97743714"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97933131"
 ---
 # <a name="manage-external-access-with-conditional-access-policies"></a>Verwalten des externen Zugriffs mit Richtlinien für bedingten Zugriff 
 
@@ -28,7 +28,7 @@ Das Verfahren mit [bedingtem Zugriff](../conditional-access/overview.md) wird vo
 
 
 
-In diesem Artikel wird das Anwenden von Richtlinien für bedingten Zugriff auf externe Benutzer beschrieben. Hierbei wird vorausgesetzt, dass Sie über Zugriff auf die Funktion für die [Berechtigungsverwaltung](../governance/entitlement-management-overview.md) verfügen. Richtlinien für bedingten Zugriff können parallel zur Berechtigungsverwaltung eingesetzt werden.
+In diesem Artikel wird das Anwenden von Richtlinien für bedingten Zugriff auf externe Benutzer beschrieben. Hierbei wird vorausgesetzt, dass Sie keinen Zugriff auf die Funktion für die [Berechtigungsverwaltung](../governance/entitlement-management-overview.md) haben. Richtlinien für bedingten Zugriff können parallel zur Berechtigungsverwaltung eingesetzt werden.
 
 Weiter oben in dieser Dokumentation haben Sie einen [Sicherheitsplan erstellt](3-secure-access-plan.md), mit dem Folgendes festgelegt wurde:
 
@@ -43,11 +43,11 @@ Sie verwenden diesen Plan zum Erstellen Ihrer Richtlinien für bedingten Zugriff
 
 ## <a name="conditional-access-policies-for-external-access"></a>Richtlinien für bedingten Zugriff zum Steuern des externen Zugriffs
 
-Hier sind die bewährten Methoden aufgeführt, die für das Steuern des externen Zugriffs mit Richtlinien für bedingten Zugriff gelten.
+Hier sind die bewährten Methoden aufgeführt, die für das Steuern des externen Zugriffs mit Richtlinien für bedingten Zugriff gelten:
 
 * Erstellen Sie eine Azure AD-Sicherheitsgruppe oder Microsoft 365-Gruppe für jede Partnerorganisation, mit der Sie zusammenarbeiten, falls die Verwendung von verbundenen Organisationen im Rahmen der Berechtigungsverwaltung für Sie nicht möglich ist. Weisen Sie der Gruppe alle Benutzer dieses Partners zu. Anschließend können Sie diese Gruppen in Richtlinien für bedingten Zugriff verwenden.
 
-* Erstellen Sie möglichst wenige Richtlinien für bedingten Zugriff. Falls für mehrere Anwendungen die gleichen Zugriffsanforderungen gelten, sollten Sie sie alle derselben Richtlinie hinzufügen.  
+* Erstellen Sie möglichst wenig Richtlinien für bedingten Zugriff. Falls für mehrere Anwendungen die gleichen Zugriffsanforderungen gelten, sollten Sie sie alle derselben Richtlinie hinzufügen.  
 ‎ 
    > [!NOTE]
    > Richtlinien für bedingten Zugriff können auf maximal 250 Anwendungen angewendet werden. Erstellen Sie doppelte Richtlinien, falls mehr als 250 Apps über die gleichen Zugriffsanforderungen verfügen. Richtlinie A gilt für die Apps 1 bis 250, Richtlinie B für die Apps 251 bis 500 usw.

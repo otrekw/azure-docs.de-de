@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 09/29/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python,contperf-fy21q1, automl
-ms.openlocfilehash: 60aab2c77a5ccf59e129b21deab34daf756b2e23
-ms.sourcegitcommit: 42922af070f7edf3639a79b1a60565d90bb801c0
+ms.openlocfilehash: f2170aad9bc0218d39244d08f5cc838235f8fee9
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97827426"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98134363"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Konfigurieren automatisierter ML-Experimente in Python
 
@@ -157,7 +157,6 @@ Beispiele hierfür sind:
     time_series_settings = {
         'time_column_name': time_column_name,
         'time_series_id_column_names': time_series_id_column_names,
-        'drop_column_names': ['logQuantity'],
         'forecast_horizon': n_test_periods
     }
     
@@ -468,15 +467,17 @@ Allgemeine Informationen dazu, wie Modellerklärungen und Featurewichtigkeit in 
   2. Geben Sie `pip freeze` ein, und suchen Sie nach `tensorflow`. Die aufgelistete Version sollte kleiner als 1.13 sein.
   3. Wenn die aufgelistete Version keine unterstützte Version ist, geben Sie in der Befehlsshell `pip uninstall tensorflow` ein, und bestätigen Sie den Befehl mit „y“.
   
- * **Die Ausführung führt zum Fehler `jwt.exceptions.DecodeError`:** Die genaue Fehlermeldung lautet: `jwt.exceptions.DecodeError: It is required that you pass in a value for the "algorithms" argument when calling decode()`. 
- 
-    Sie sollten ein Upgrade auf die neueste Version des AutoML SDK in Erwägung ziehen: `pip install -U azureml-sdk[automl]`. 
-    
-    Wenn dies nicht praktikabel ist, überprüfen Sie die Version von PyJWT. Es werden Versionen unter 2.0.0 unterstützt. Deinstallieren Sie PyJWT aus der Umgebung, wenn die Version größer oder gleich 2.0.0 ist. Gehen Sie wie folgt vor, um die Version von PyJWT zu überprüfen und ggf. PyJWT zu deinstallieren und die richtige Version zu installieren:
+ * **Die Ausführung führt zum Fehler `jwt.exceptions.DecodeError`:** Die genaue Fehlermeldung lautet: `jwt.exceptions.DecodeError: It is required that you pass in a value for the "algorithms" argument when calling decode()`.
+
+    Bei Versionen bis einschließlich 1.17.0 des SDK führt die Installation möglicherweise zu einer nicht unterstützten Version von PyJWT. Überprüfen Sie die PyJWT-Version in der Conda-Umgebung für automatisiertes maschinelles Lernen. Es werden Versionen unter 2.0.0 unterstützt. Sie können die PyJWT-Version wie folgt überprüfen:
     1. Starten Sie eine Befehlsshell, und aktivieren Sie die Conda-Umgebung, in der die Pakete für das automatisierte maschinelle Lernen installiert sind.
     2. Geben Sie `pip freeze` ein, und suchen Sie nach `PyJWT`. Die aufgelistete Version sollte kleiner als 2.0.0 sein.
-    3. Wenn die aufgelistete Version keine unterstützte Version ist, geben Sie in der Befehlsshell `pip uninstall PyJWT` ein, und bestätigen Sie den Befehl mit „y“.
-    4. Führen Sie die Installation mithilfe von `pip install 'PyJWT<2.0.0'` aus.
+
+    Wenn die aufgeführte Version nicht unterstützt wird:
+    1. Sie sollten ein Upgrade auf die neueste Version des AutoML SDK in Erwägung ziehen: `pip install -U azureml-sdk[automl]`.
+    2. Wenn dies nicht praktikabel ist, deinstallieren Sie PyJWT aus der Umgebung, und installieren Sie die richtige Version wie folgt:
+        - Geben Sie in der Befehlsshell `pip uninstall PyJWT` ein, und bestätigen Sie den Vorgang mit `y`.
+        - Führen Sie die Installation mithilfe von `pip install 'PyJWT<2.0.0'` aus.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -5,13 +5,13 @@ ms.service: cosmos-db
 ms.topic: how-to
 author: kanshiG
 ms.author: govindk
-ms.date: 06/25/2020
-ms.openlocfilehash: dc47f2f7a0f1586b197d14015fe2167293c806c6
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.date: 01/07/2021
+ms.openlocfilehash: ec82532b54e7834b62fcc03d3ee7de1345a0f546
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93099333"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98027777"
 ---
 # <a name="how-to-monitor-normalized-rus-for-an-azure-cosmos-container-or-an-account"></a>Überwachen von normalisierten RU/s für einen Azure Cosmos-Container oder ein -Konto
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -30,9 +30,7 @@ Um die Anforderungen zu ermitteln, bei denen die Rate begrenzt ist, empfiehlt es
 
 Wenn ein kontinuierlicher Spitzenwert von 100 % normalisiertem RU/s-Verbrauch vorliegt oder der Wert über mehrere Partitionsschlüsselbereiche fast 100 % beträgt, wird empfohlen, den Durchsatz zu erhöhen. Anhand der Azure Monitor-Metriken und der Azure Monitor-Diagnoseprotokolle können Sie herausfinden, welche Vorgänge einen hohen Verbrauch haben und wie hoch deren Spitzenauslastung ist.
 
-Kurz gesagt, kann mithilfe der Metrik **Normalisierter RU-Verbrauch** erkannt werden, welcher Partitionsschlüsselbereich höher ausgelastet ist. Auf diese Weise erhalten Sie die Verzerrung des Durchsatzes auf einen Partitionsschlüsselbereich. Später können Sie die Auslastung im **PartitionKeyRUConsumption** -Protokoll in den Monitor-Protokollen nachverfolgen, um Informationen darüber zu erhalten, welche logischen Partitionsschlüssel eine hohe Auslastung aufweisen. Dadurch wird entweder die Auswahl des Partitionsschlüssels oder die Anwendungslogik geändert. Zum Auflösen der Ratenbegrenzung verteilen Sie die Datenlast beispielsweise auf mehrere Partitionen, oder erhöhen Sie einfach den Durchsatz, wenn dies wirklich erforderlich ist. 
-
-
+Kurz gesagt, kann mithilfe der Metrik **Normalisierter RU-Verbrauch** erkannt werden, welcher Partitionsschlüsselbereich höher ausgelastet ist. Auf diese Weise erhalten Sie die Verzerrung des Durchsatzes auf einen Partitionsschlüsselbereich. Später können Sie die Auslastung im **PartitionKeyRUConsumption**-Protokoll in den Monitor-Protokollen nachverfolgen, um Informationen darüber zu erhalten, welche logischen Partitionsschlüssel eine hohe Auslastung aufweisen. Dadurch wird entweder die Auswahl des Partitionsschlüssels oder die Anwendungslogik geändert. Zum Auflösen der Ratenbegrenzung verteilen Sie die Datenlast beispielsweise auf mehrere Partitionen, oder erhöhen Sie einfach den Durchsatz, wenn dies wirklich erforderlich ist. 
 
 ## <a name="view-the-normalized-request-unit-consumption-metric"></a>Anzeigen der Metrik für normalisierten Anforderungseinheitenverbrauch
 
@@ -54,11 +52,11 @@ Kurz gesagt, kann mithilfe der Metrik **Normalisierter RU-Verbrauch** erkannt we
 
 ### <a name="filters-for-normalized-request-unit-consumption"></a>Filter für normalisierten Anforderungseinheitenverbrauch
 
-Sie können Metriken und das angezeigte Diagramm auch nach bestimmten Werten für **CollectionName** , **DatabaseName** , **PartitionKeyRangeID** und **Region** filtern. Wählen Sie zum Filtern der Metriken **Filter hinzufügen** aus, und wählen Sie die erforderliche Eigenschaft (z. B. **CollectionName** ) und den entsprechenden Wert aus, der Sie interessiert. Im Diagramm werden die normalisierten RU-Verbrauchseinheiten angezeigt, die für den Container im ausgewählten Zeitraum verbraucht wurden.  
+Sie können Metriken und das angezeigte Diagramm auch nach bestimmten Werten für **CollectionName**, **DatabaseName**, **PartitionKeyRangeID** und **Region** filtern. Wählen Sie zum Filtern der Metriken **Filter hinzufügen** aus, und wählen Sie die erforderliche Eigenschaft (z. B. **CollectionName**) und den entsprechenden Wert aus, der Sie interessiert. Im Diagramm werden die normalisierten RU-Verbrauchseinheiten angezeigt, die für den Container im ausgewählten Zeitraum verbraucht wurden.  
 
-Sie können Metriken mit der Option **Apply splitting** (Aufteilung anwenden) gruppieren.  
+Sie können Metriken mit der Option **Apply splitting** (Aufteilung anwenden) gruppieren. Bei Datenbanken mit gemeinsam genutztem Durchsatz zeigt die normalisierte RU-Metrik nur Daten auf Datenbankebene an, es werden keine Daten pro Sammlung angezeigt. Bei einer Datenbank mit gemeinsam genutztem Durchsatz werden somit keine Daten angezeigt, wenn Sie die Aufteilung nach Sammlungsname anwenden.
 
-Die Metrik für den Verbrauch von normalisierten Anforderungseinheiten für jeden Container wird wie in der folgenden Abbildung dargestellt angezeigt:
+Die normalisierte Metrik für den Verbrauch von Anforderungseinheiten für jeden Container wird wie in der folgenden Abbildung dargestellt angezeigt:
 
 :::image type="content" source="./media/monitor-normalized-request-units/normalized-request-unit-usage-filters.png" alt-text="Anwenden von Filtern auf die Metrik für normalisierten Anforderungseinheitenverbrauch":::
 

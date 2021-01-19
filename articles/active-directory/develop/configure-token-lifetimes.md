@@ -9,57 +9,89 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/14/2020
+ms.date: 01/04/2021
 ms.author: ryanwi
 ms.custom: aaddev, content-perf, FY21Q1
 ms.reviewer: hirsin, jlu, annaba
-ms.openlocfilehash: e663cdd3846e804d1dcf96076c07b9a3db84272c
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 4d6a7150c854ba89c3cd8eacd6b553c4b8e97343
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97507743"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97963348"
 ---
 # <a name="configure-token-lifetime-policies-preview"></a>Konfigurieren von Richtlinien zur Tokenlebensdauer (Vorschau)
-In Azure AD sind viele Szenarien möglich, was das Erstellen und Verwalten von Tokengültigkeitsdauern für Apps, Dienstprinzipale und Ihre gesamte Organisation betrifft.  
+Sie können die Gültigkeitsdauer eines Zugriffs-, SAML- oder ID-Tokens angeben, das von Microsoft Identity Platform ausgestellt wird. Die Tokengültigkeitsdauer können Sie für alle Apps Ihrer Organisation, für eine mehrinstanzenfähige Anwendung (Multiorganisationsanwendung) oder für einen bestimmten Dienstprinzipal in Ihrer Organisation festlegen. Weitere Informationen hierzu finden Sie unter [Konfigurierbare Tokengültigkeitsdauer in Microsoft Identity Platform (Vorschau)](active-directory-configurable-token-lifetimes.md).
 
-> [!IMPORTANT]
-> Seit Mai 2020 können Mandanten die Gültigkeitsdauer von Aktualisierungs- und Sitzungstoken nicht mehr konfigurieren.  Nach dem 30. Januar 2021 berücksichtigt Azure Active Directory vorhandene Konfigurationen von Aktualisierungs- und Sitzungstoken in Richtlinien nicht mehr. Die Gültigkeitsdauer von Zugriffstoken kann jedoch auch nach der Einstellung weiterhin konfiguriert werden.  Weitere Informationen finden Sie unter [Konfigurierbare Tokengültigkeitsdauer in Microsoft Identity Platform](active-directory-configurable-token-lifetimes.md).
-> Wir haben [Funktionen für das Verwalten von Authentifizierungssitzungen](../conditional-access/howto-conditional-access-session-lifetime.md) für den bedingten Zugriff in Azure AD implementiert. Mithilfe dieses neuen Features können Sie die Lebensdauer von Aktualisierungstoken durch Festlegen der Anmeldehäufigkeit konfigurieren.
+In diesem Abschnitt werden einige allgemeine Richtlinienszenarien beschrieben, die Ihnen ermöglichen, neue Regeln für die Tokengültigkeitsdauer vorzugeben. In diesem Beispiel erfahren Sie, wie Sie eine Richtlinie erstellen, mit der sich Benutzer häufiger für Ihre Web-App authentifizieren müssen.
 
-
-In diesem Abschnitt werden einige allgemeine Richtlinienszenarien beschrieben, die es ermöglichen, neue Regeln für folgende Festlegungen vorzugeben:
-
-* Lebensdauer von Token
-* Max. Inaktivitätszeit von Token
-* Max. Alter von Token
-
-Anhand der Beispiele wird Folgendes veranschaulicht:
-
-* Verwalten der Standardrichtlinie einer Organisation
-* Erstellen einer Richtlinie für die Webanmeldung
-* Erstellen einer Richtlinie für eine native App, die eine Web-API aufruft
-* Verwalten einer erweiterten Richtlinie
-
-## <a name="prerequisites"></a>Voraussetzungen
-In den folgenden Beispielen wird gezeigt, wie Sie Richtlinien für Apps, Dienstprinzipale und Ihre gesamte Organisation erstellen, aktualisieren, verknüpfen und löschen. Wenn Azure AD neu für Sie ist, ist es ratsam, sich über das [Erhalten eines Azure AD-Mandanten](quickstart-create-new-tenant.md) zu informieren, bevor Sie mit diesen Beispielen fortfahren.  
-
+## <a name="get-started"></a>Erste Schritte
 Führen Sie die folgenden Schritte aus, um zu beginnen:
 
 1. Laden Sie die aktuelle [öffentliche Vorschauversion des Azure AD PowerShell-Moduls](https://www.powershellgallery.com/packages/AzureADPreview) herunter.
-2. Führen Sie den Befehl `Connect` aus, um sich an Ihrem Azure AD-Administratorkonto anzumelden. Führen Sie diesen Befehl bei jedem Start einer neuen Sitzung aus.
+1. Führen Sie den Befehl `Connect` aus, um sich an Ihrem Azure AD-Administratorkonto anzumelden. Führen Sie diesen Befehl bei jedem Start einer neuen Sitzung aus.
 
     ```powershell
     Connect-AzureAD -Confirm
     ```
 
-3. Führen Sie den folgenden Befehl aus, um alle Richtlinien anzuzeigen, die in Ihrer Organisation erstellt wurden. Führen Sie diesen Befehl nach den meisten Vorgängen in den folgenden Szenarien aus. Wenn Sie den Befehl ausführen, können Sie auch die ** ** Ihrer Richtlinien erhalten.
+1. Führen Sie das Cmdlet [Get-AzureADPolicy](/powershell/module/azuread/get-azureadpolicy?view=azureadps-2.0-preview&preserve-view=true) aus, um alle Richtlinien anzuzeigen, die in Ihrer Organisation erstellt wurden.  Alle Ergebnisse mit definierten Eigenschaftswerten, die sich von den oben aufgeführten Standardwerten unterscheiden, sind von der Einstellung betroffen.
 
     ```powershell
-    Get-AzureADPolicy
+    Get-AzureADPolicy -All
     ```
 
-## <a name="manage-an-organizations-default-policy"></a>Verwalten der Standardrichtlinie einer Organisation
+1. Führen Sie das im Anschluss angegebene Cmdlet [Get-AzureADPolicyAppliedObject](/powershell/module/azuread/get-azureadpolicyappliedobject?view=azureadps-2.0-preview&preserve-view=true) aus, und ersetzen Sie dabei **1a37dad8-5da7-4cc8-87c7-efbc0326cf20** durch eine Ihrer Richtlinien-IDs, um zu sehen, welche Apps und Dienstprinzipale mit einer bestimmten Richtlinie verknüpft sind, die Sie identifiziert haben. Anschließend können Sie entscheiden, ob Sie die Anmeldehäufigkeit des bedingten Zugriffs konfigurieren oder die Azure AD-Standardwerte verwenden möchten.
+
+    ```powershell
+    Get-AzureADPolicyAppliedObject -id 1a37dad8-5da7-4cc8-87c7-efbc0326cf20
+    ```
+
+Wenn Ihr Mandant über Richtlinien mit benutzerdefinierten Werten für die Konfigurationen von Aktualisierungs- und Sitzungstoken verfügt, empfiehlt Microsoft, diese Richtlinien auf Werte festzulegen, die den oben beschriebenen Standardwerten entsprechen. Wenn keine Änderungen vorgenommen werden, nutzt Azure AD automatisch die Standardwerte.
+
+## <a name="create-a-policy-for-web-sign-in"></a>Erstellen einer Richtlinie für die Webanmeldung
+
+In diesem Beispiel erstellen Sie eine Richtlinie, bei der es erforderlich ist, dass sich Benutzer häufiger für Ihre Web-App authentifizieren. Mit dieser Richtlinie wird die Gültigkeitsdauer der Zugriffs-/ID-Token und das maximale Alter eines Multi-Factor-Sitzungstokens auf den Dienstprinzipal Ihrer Web-App festgelegt.
+
+1. Erstellen Sie eine Tokengültigkeitsdauer-Richtlinie.
+
+    Mit dieser Richtlinie für die Webanmeldung werden die Gültigkeitsdauer des Zugriffs-/ID-Tokens und das maximale Alter des Single-Factor-Sitzungstokens auf zwei Stunden festgelegt.
+
+    1. Um die Richtlinie zu erstellen, führen Sie das Cmdlet [New-AzureADPolicy](/powershell/module/azuread/new-azureadpolicy?view=azureadps-2.0-preview&preserve-view=true) aus:
+
+        ```powershell
+        $policy = New-AzureADPolicy -Definition @('{"TokenLifetimePolicy":{"Version":1,"AccessTokenLifetime":"02:00:00","MaxAgeSessionSingleFactor":"02:00:00"}}') -DisplayName "WebPolicyScenario" -IsOrganizationDefault $false -Type "TokenLifetimePolicy"
+        ```
+
+    1. Führen Sie das Cmdlet [Get-AzureADPolicy](/powershell/module/azuread/get-azureadpolicy?view=azureadps-2.0-preview&preserve-view=true) aus, um Ihre neue Richtlinie anzuzeigen und deren **ObjectId** abzurufen:
+
+        ```powershell
+        Get-AzureADPolicy -Id $policy.Id
+        ```
+
+1. Weisen Sie die Richtlinie Ihrem Dienstprinzipal zu. Rufen Sie außerdem die **ObjectId** Ihres Dienstprinzipals ab.
+
+    1. Verwenden Sie das Cmdlet [Get-AzureADServicePrincipal](/powershell/module/azuread/get-azureadserviceprincipal), um alle Dienstprinzipale Ihrer Organisation oder einen einzelnen Dienstprinzipal anzuzeigen.
+        ```powershell
+        # Get ID of the service principal
+        $sp = Get-AzureADServicePrincipal -Filter "DisplayName eq '<service principal display name>'"
+        ```
+
+    1. Wenn Sie über den Dienstprinzipal verfügen, führen Sie das Cmdlet [Add-AzureADServicePrincipalPolicy](/powershell/module/azuread/add-azureadserviceprincipalpolicy?view=azureadps-2.0-preview&preserve-view=true) aus:
+        ```powershell
+        # Assign policy to a service principal
+        Add-AzureADServicePrincipalPolicy -Id $sp.ObjectId -RefObjectId $policy.Id
+        ```
+
+## <a name="create-token-lifetime-policies-for-refresh-and-session-tokens"></a>Erstellen von Richtlinien für die Tokengültigkeitsdauer für Aktualisierungs- und Sitzungstoken
+> [!IMPORTANT]
+> Seit Mai 2020 können neue Mandanten die Gültigkeitsdauer von Aktualisierungen und Sitzungstoken nicht mehr konfigurieren.  Mandanten mit vorhandenen Konfigurationen können die Richtlinien für Aktualisierungs- und Sitzungstoken bis zum 30. Januar 2021 ändern.  Nach dem 30. Januar 2021 berücksichtigt Azure Active Directory vorhandene Konfigurationen von Aktualisierungs- und Sitzungstoken in Richtlinien nicht mehr. Die Gültigkeitsdauer von Zugriffs-, SAML- und ID-Token kann jedoch auch nach der Einstellung weiterhin konfiguriert werden.
+>
+> Wenn Sie weiterhin definieren möchten, nach welcher Zeit ein Benutzer zur erneuten Anmeldung aufgefordert werden soll, können Sie die Anmeldehäufigkeit im bedingten Zugriff konfigurieren. Weitere Informationen zum bedingten Zugriff finden Sie unter [Konfigurieren der Verwaltung von Authentifizierungssitzungen mit bedingtem Zugriff](/azure/active-directory/conditional-access/howto-conditional-access-session-lifetime).
+>
+> Wenn Sie den bedingten Zugriff nach dem Einstellungsdatum nicht verwenden möchten, werden die Aktualisierungs- und Sitzungstoken an diesem Datum auf die [Standardkonfiguration](active-directory-configurable-token-lifetimes.md#configurable-token-lifetime-properties-after-the-retirement) festgelegt, und Sie können ihre Gültigkeitsdauer nicht mehr ändern.
+
+### <a name="manage-an-organizations-default-policy"></a>Verwalten der Standardrichtlinie einer Organisation
 Anhand dieses Beispiels können Sie eine Richtlinie erstellen, die es den Benutzern ermöglicht, sich in Ihrer gesamten Organisation weniger häufig anmelden zu müssen. Erstellen Sie hierzu eine Richtlinie für die Lebensdauer von Single-Factor-Aktualisierungstoken, die auf Ihre gesamte Organisation angewandt wird. Die Richtlinie wird auf jede Anwendung in Ihrer Organisation und jeden Dienstprinzipal angewendet, für die bzw. den noch keine Richtlinie festgelegt wurde.
 
 1. Erstellen Sie eine Tokengültigkeitsdauer-Richtlinie.
@@ -102,41 +134,7 @@ Anhand dieses Beispiels können Sie eine Richtlinie erstellen, die es den Benutz
     Set-AzureADPolicy -Id $policy.Id -DisplayName $policy.DisplayName -Definition @('{"TokenLifetimePolicy":{"Version":1,"MaxAgeSingleFactor":"2.00:00:00"}}')
     ```
 
-## <a name="create-a-policy-for-web-sign-in"></a>Erstellen einer Richtlinie für die Webanmeldung
-
-In diesem Beispiel erstellen Sie eine Richtlinie, bei der es erforderlich ist, dass sich Benutzer häufiger für Ihre Web-App authentifizieren. Mit dieser Richtlinie wird die Gültigkeitsdauer der Zugriffs-/ID-Token und das maximale Alter eines Multi-Factor-Sitzungstokens auf den Dienstprinzipal Ihrer Web-App festgelegt.
-
-1. Erstellen Sie eine Tokengültigkeitsdauer-Richtlinie.
-
-    Mit dieser Richtlinie für die Webanmeldung werden die Gültigkeitsdauer des Zugriffs-/ID-Tokens und das maximale Alter des Single-Factor-Sitzungstokens auf zwei Stunden festgelegt.
-
-    1. Um die Richtlinie zu erstellen, führen Sie das Cmdlet [New-AzureADPolicy](/powershell/module/azuread/new-azureadpolicy?view=azureadps-2.0-preview&preserve-view=true) aus:
-
-        ```powershell
-        $policy = New-AzureADPolicy -Definition @('{"TokenLifetimePolicy":{"Version":1,"AccessTokenLifetime":"02:00:00","MaxAgeSessionSingleFactor":"02:00:00"}}') -DisplayName "WebPolicyScenario" -IsOrganizationDefault $false -Type "TokenLifetimePolicy"
-        ```
-
-    1. Führen Sie das Cmdlet [Get-AzureADPolicy](/powershell/module/azuread/get-azureadpolicy?view=azureadps-2.0-preview&preserve-view=true) aus, um Ihre neue Richtlinie anzuzeigen und deren **ObjectId** abzurufen:
-
-        ```powershell
-        Get-AzureADPolicy -Id $policy.Id
-        ```
-
-1. Weisen Sie die Richtlinie Ihrem Dienstprinzipal zu. Rufen Sie außerdem die **ObjectId** Ihres Dienstprinzipals ab.
-
-    1. Verwenden Sie das Cmdlet [Get-AzureADServicePrincipal](/powershell/module/azuread/get-azureadserviceprincipal), um alle Dienstprinzipale Ihrer Organisation oder einen einzelnen Dienstprinzipal anzuzeigen.
-        ```powershell
-        # Get ID of the service principal
-        $sp = Get-AzureADServicePrincipal -Filter "DisplayName eq '<service principal display name>'"
-        ```
-
-    1. Wenn Sie über den Dienstprinzipal verfügen, führen Sie das Cmdlet [Add-AzureADServicePrincipalPolicy](/powershell/module/azuread/add-azureadserviceprincipalpolicy?view=azureadps-2.0-preview&preserve-view=true) aus:
-        ```powershell
-        # Assign policy to a service principal
-        Add-AzureADServicePrincipalPolicy -Id $sp.ObjectId -RefObjectId $policy.Id
-        ```
-
-## <a name="create-a-policy-for-a-native-app-that-calls-a-web-api"></a>Erstellen einer Richtlinie für eine native App, die eine Web-API aufruft
+### <a name="create-a-policy-for-a-native-app-that-calls-a-web-api"></a>Erstellen einer Richtlinie für eine native App, die eine Web-API aufruft
 In diesem Beispiel erstellen Sie eine Richtlinie, bei der sich Benutzer weniger häufig authentifizieren müssen. Mit der Richtlinie wird außerdem der Zeitraum verlängert, über den ein Benutzer inaktiv sein kann, bevor er sich erneut authentifizieren muss. Die Richtlinie wird auf die Web-API angewendet. Wenn die native App die Web-API als Ressource anfordert, wird diese Richtlinie angewendet.
 
 1. Erstellen Sie eine Tokengültigkeitsdauer-Richtlinie.
@@ -165,7 +163,7 @@ In diesem Beispiel erstellen Sie eine Richtlinie, bei der sich Benutzer weniger 
     Add-AzureADApplicationPolicy -Id $app.ObjectId -RefObjectId $policy.Id
     ```
 
-## <a name="manage-an-advanced-policy"></a>Verwalten einer erweiterten Richtlinie
+### <a name="manage-an-advanced-policy"></a>Verwalten einer erweiterten Richtlinie
 Anhand dieses Beispiels können Sie einige Richtlinien erstellen, um zu erfahren, wie das Prioritätssystem funktioniert. Außerdem erfahren Sie, wie Sie mehrere Richtlinien verwalten, die auf verschiedene Objekte angewendet werden.
 
 1. Erstellen Sie eine Tokengültigkeitsdauer-Richtlinie.

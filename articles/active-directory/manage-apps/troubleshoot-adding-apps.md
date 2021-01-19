@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 09/11/2018
 ms.author: kenwith
-ms.openlocfilehash: 714cbb06506cc3e0dffe74007712d9cbad072284
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: f873608d07785e6b99bd8e0fcdadf64a8899d490
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94655067"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98108414"
 ---
 # <a name="troubleshoot-common-problem-adding-or-removing-an-application-to-azure-active-directory"></a>Behandeln gängiger Probleme beim Hinzufügen oder Entfernen einer Anwendung in Azure Active Directory
 In diesem Artikel werden häufige Probleme beschrieben, die beim Hinzufügen oder Entfernen einer App in Azure Active Directory auftreten.
@@ -43,7 +43,7 @@ Die Schaltfläche „Löschen“ ist in den folgenden Fällen deaktiviert:
 
 - Bei Microsoft-Anwendungen können Sie diese nicht von der Benutzeroberfläche löschen, unabhängig von Ihrer Rolle
 
-- Bei Dienstprinzipalen, die einer verwalteten Identität entsprechen. Dienstprinzipale für verwaltete Identitäten können auf dem Blatt „Enterprise apps“ (Unternehmens-Apps) nicht gelöscht werden. Sie müssen zur Azure-Ressource wechseln, um dies zu verwalten. Weitere Informationen zu verwalteten Identitäten finden Sie [hier](../managed-identities-azure-resources/overview.md).
+- Bei Dienstprinzipalen, die einer verwalteten Identität entsprechen. Dienstprinzipale für verwaltete Identitäten können auf dem Blatt „Enterprise apps“ (Unternehmens-Apps) nicht gelöscht werden. Sie müssen zur Azure-Ressource wechseln, um dies zu verwalten. Weitere Informationen zur [verwalteten Identität](../managed-identities-azure-resources/overview.md)
 
 ## <a name="how-to-see-the-details-of-a-portal-notification"></a>Anzeigen von Details einer Portalbenachrichtigung
 Sie können die Details von Portalbenachrichtigungen anzeigen, indem Sie folgende Schritte ausführen:

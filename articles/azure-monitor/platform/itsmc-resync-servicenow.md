@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: nolavime
 ms.date: 04/12/2020
-ms.openlocfilehash: 01e492072bd75af9f80656b71d2cc1c473d64263
-ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
+ms.openlocfilehash: cea4503c4e3b9dd58cc475aaec355a2bb2e0bd29
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97803798"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98065184"
 ---
 # <a name="troubleshooting-problems-in-itsm-connector"></a>Problembehandlung in ITSM-Connector
 
@@ -23,13 +23,38 @@ ITSM bietet Ihnen die Möglichkeit, die Warnungen an ein externes Ticketsystem w
 
 ## <a name="visualize-and-analyze-the-incident-and-change-request-data"></a>Visualisieren und Analysieren der Incident- und Änderungsanforderungsdaten
 
-Basierend auf Ihrer Konfiguration, die Sie beim Einrichten einer Verbindung vorgenommenen haben, kann der ITSM-Connector bis zu 120 Tage an Incident- und Änderungsanforderungsdaten synchronisieren. Das Schema für den Protokolldatensatz dieser Daten finden Sie im [Abschnitt „Zusätzliche Informationen“](./itsmc-overview.md) dieses Artikels.
+Basierend auf Ihrer Konfiguration, die Sie beim Einrichten einer Verbindung vorgenommenen haben, kann der ITSM-Connector bis zu 120 Tage an Incident- und Änderungsanforderungsdaten synchronisieren. Das Schema für den Protokolldatensatz dieser Daten finden Sie im [Abschnitt „Zusätzliche Informationen“](./itsmc-synced-data.md) dieses Artikels.
 
 Sie können die Incident- und die Änderungsanforderungsdaten über das Dashboard des ITSM-Connectors visualisieren:
 
 ![Screenshot des Dashboards des ITSM-Connectors](media/itsmc-overview/itsmc-overview-sample-log-analytics.png)
 
 Das Dashboard bietet darüber hinaus Informationen zum Connectorstatus, die als Ausgangspunkt bei der Analyse von Verbindungsproblemen verwendet werden können.
+
+### <a name="error-investigation-using-the-dashboard"></a>Untersuchung von Fehlern auf dem Dashboard
+
+Gehen Sie folgendermaßen vor, um Fehler auf dem Dashboard anzuzeigen:
+
+1. Suchen Sie in **Alle Ressourcen** nach **ServiceDesk(*IhrArbeitsbereichsname*)** :
+
+   ![Screenshot der zuletzt verwendeten Ressourcen im Azure-Portal](media/itsmc-definition/create-new-connection-from-resource.png)
+
+2. Wählen Sie im linken Bereich unter **Arbeitsbereichsdatenquellen** die Option **ITSM-Verbindungen** aus:
+
+   ![Screenshot des Menüelements „ITSM-Verbindungen“](media/itsmc-overview/add-new-itsm-connection.png)
+
+3. Wählen Sie unter **Zusammenfassung** im linken Feld **ITSM-Connector** die Option **Zusammenfassung anzeigen** aus:
+
+    ![Screenshot der Zusammenfassungsansicht](media/itsmc-resync-servicenow/dashboard-view-summary.png)
+
+4. Klicken Sie unter **Zusammenfassung** im linken Feld **ITSM-Connector** auf das Diagramm:
+
+    ![Screenshot des Klicks auf das Diagramm](media/itsmc-resync-servicenow/dashboard-graph-click.png)
+
+5. Auf diesem Dashboard können Sie den Status und die Fehler in Ihrem Connector überprüfen.
+    ![Screenshot mit dem Connectorstatus](media/itsmc-resync-servicenow/connector-dashboard.png)
+
+### <a name="service-map"></a>Dienstzuordnung
 
 Zudem lassen sich die mit den betroffenen Computern synchronisierten Incidents innerhalb der Dienstzuordnungslösung visuell darstellen.
 

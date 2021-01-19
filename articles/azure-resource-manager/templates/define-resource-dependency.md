@@ -1,24 +1,24 @@
 ---
 title: Festlegen der Bereitstellungsreihenfolge für Ressourcen
-description: Erfahren Sie, wie Sie während der Bereitstellung festlegen, dass eine Ressource von einer anderen Ressource abhängig ist. Die Abhängigkeiten stellen sicher, dass die Ressourcen in der richtigen Reihenfolge bereitgestellt werden.
+description: Hier erfahren Sie, wie Sie während der Bereitstellung festlegen, dass eine Azure-Ressource von einer anderen Ressource abhängig ist. Die Abhängigkeiten stellen sicher, dass die Ressourcen in der richtigen Reihenfolge bereitgestellt werden.
 ms.topic: conceptual
 ms.date: 12/21/2020
-ms.openlocfilehash: a96dca0ab30d0baee2688427d78867ea128e673a
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: f6b63b066da06a17c3a2e51ab0f3ab9bf521a144
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97722010"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934746"
 ---
 # <a name="define-the-order-for-deploying-resources-in-arm-templates"></a>Definieren der Reihenfolge für die Bereitstellung von Ressourcen in ARM-Vorlagen
 
-Beim Bereitstellen einer Ressource müssen Sie möglicherweise sicherstellen, dass andere Ressourcen bereits vorhanden sind. So benötigen Sie beispielsweise einen logischen SQL-Server, bevor Sie eine Datenbank bereitstellen. Diese Beziehung richten Sie ein, indem Sie eine Ressource als von einer anderen Ressource abhängig kennzeichnen. Verwenden Sie das **dependsOn**-Element, um eine explizite Abhängigkeit zu definieren. Verwenden Sie die Funktionen **reference** oder **list**, um eine implizite Abhängigkeit zu definieren.
+Beim Bereitstellen einer Ressource müssen Sie möglicherweise sicherstellen, dass andere Ressourcen bereits vorhanden sind. So benötigen Sie beispielsweise einen logischen SQL-Server, bevor Sie eine Datenbank bereitstellen. Diese Beziehung richten Sie ein, indem Sie eine Ressource als von einer anderen Ressource abhängig kennzeichnen. Verwenden Sie das `dependsOn`-Element, um eine explizite Abhängigkeit zu definieren. Verwenden Sie die Funktionen **reference** oder **list**, um eine implizite Abhängigkeit zu definieren.
 
-Resource Manager wertet die Abhängigkeiten zwischen den Ressourcen aus und stellt sie in der Reihenfolge ihrer Abhängigkeiten bereit. Wenn Ressourcen nicht voneinander abhängig sind, stellt Resource Manager sie parallel bereit. Sie müssen nur Abhängigkeiten für Ressourcen definieren, die in der gleichen Vorlage bereitgestellt werden.
+Azure Resource Manager wertet die Abhängigkeiten zwischen den Ressourcen aus und stellt sie in der Reihenfolge ihrer Abhängigkeiten bereit. Wenn Ressourcen nicht voneinander abhängig sind, stellt Resource Manager sie parallel bereit. Sie müssen nur Abhängigkeiten für Ressourcen definieren, die in der gleichen Vorlage bereitgestellt werden.
 
 ## <a name="dependson"></a>dependsOn
 
-Innerhalb Ihrer Vorlage bietet das „dependsOn“-Element die Möglichkeit, eine Ressource als von einer oder mehreren Ressourcen abhängig zu definieren. Sein Wert ist ein JSON-Array von Zeichenfolgen, die jeweils einen Ressourcennamen oder eine ID darstellen. Das Array kann Ressourcen mit [bedingter Bereitstellung](conditional-resource-deployment.md) enthalten. Wenn eine bedingte Ressource nicht bereitgestellt wurde, entfernt Azure Resource Manager sie automatisch aus den erforderlichen Abhängigkeiten.
+Innerhalb Ihrer Azure Resource Manager-Vorlage (ARM-Vorlage) bietet das `dependsOn`-Element die Möglichkeit, eine Ressource als von einer oder mehreren Ressourcen abhängig zu definieren. Sein Wert ist ein JSON-Array (JavaScript Object Notation) von Zeichenfolgen, die jeweils einen Ressourcennamen oder eine ID darstellen. Das Array kann Ressourcen mit [bedingter Bereitstellung](conditional-resource-deployment.md) enthalten. Wenn eine bedingte Ressource nicht bereitgestellt wurde, entfernt Azure Resource Manager sie automatisch aus den erforderlichen Abhängigkeiten.
 
 Das folgende Beispiel zeigt eine Netzwerkschnittstelle, die von einem virtuellen Netzwerk, einer Netzwerksicherheitsgruppe und einer öffentlichen IP-Adresse abhängig ist. Die vollständige Vorlage finden Sie in der [Schnellstartvorlage für eine Linux-VM](https://github.com/Azure/azure-quickstart-templates/blob/master/101-vm-simple-linux/azuredeploy.json).
 
@@ -37,11 +37,11 @@ Das folgende Beispiel zeigt eine Netzwerkschnittstelle, die von einem virtuellen
 }
 ```
 
-Sie können Beziehungen zwischen Ihren Ressourcen mithilfe von „dependsOn“ zuordnen, dabei sollte Ihnen jedoch bewusst sein, welchen Zweck diese Zuordnung erfüllt. Um beispielsweise zu dokumentieren, wie Ressourcen miteinander verbunden sind, ist „dependsOn“ nicht der richtige Ansatz. Nach der Bereitstellung können Sie nicht mehr abfragen, welche Ressourcen im dependsOn-Element definiert waren. Das Festlegen unnötiger Abhängigkeiten verlangsamt die Bereitstellung, da Resource Manager diese Ressourcen nicht gleichzeitig bereitstellen kann.
+Sie können Beziehungen zwischen Ihren Ressourcen mithilfe von `dependsOn` zuordnen, dabei sollte Ihnen jedoch bewusst sein, welchen Zweck diese Zuordnung erfüllt. Um beispielsweise zu dokumentieren, wie Ressourcen miteinander verbunden sind, ist `dependsOn` nicht der richtige Ansatz. Nach der Bereitstellung können Sie nicht mehr abfragen, welche Ressourcen im `dependsOn`-Element definiert waren. Das Festlegen unnötiger Abhängigkeiten verlangsamt die Bereitstellung, da Resource Manager diese Ressourcen nicht gleichzeitig bereitstellen kann.
 
 ## <a name="child-resources"></a>Untergeordnete Ressourcen
 
-Es wird nicht automatisch eine implizite Bereitstellungsabhängigkeit zwischen einer [untergeordneten Ressource](child-resource-name-type.md) und der übergeordneten Ressource erstellt. Wenn Sie die untergeordnete Ressource nach der übergeordneten Ressource bereitstellen müssen, legen Sie die dependsOn-Eigenschaft fest.
+Es wird nicht automatisch eine implizite Bereitstellungsabhängigkeit zwischen einer [untergeordneten Ressource](child-resource-name-type.md) und der übergeordneten Ressource erstellt. Wenn Sie die untergeordnete Ressource nach der übergeordneten Ressource bereitstellen müssen, legen Sie die `dependsOn`-Eigenschaft fest.
 
 Das folgende Beispiel zeigt einen logischen SQL-Server und eine Datenbank. Beachten Sie, dass eine explizite Abhängigkeit zwischen der Datenbank und dem Server definiert wird, obwohl die Datenbank ein untergeordnetes Element des Servers ist.
 
@@ -85,13 +85,13 @@ reference- und list-Ausdrücke deklarieren implizit, dass eine Ressource von ein
 
 Um eine implizite Abhängigkeit zu erzwingen, verweisen Sie über den Namen auf die Ressource und nicht über die Ressourcen-ID. Wenn Sie die Ressourcen-ID an die reference- oder list-Funktionen übergeben, wird kein impliziter Verweis erstellt.
 
-Das allgemeine Format der reference-Funktion sieht folgendermaßen aus:
+Das allgemeine Format der `reference`-Funktion sieht folgendermaßen aus:
 
 ```json
 reference('resourceName').propertyPath
 ```
 
-Das allgemeine Format der listKeys-Funktion sieht folgendermaßen aus:
+Das allgemeine Format der `listKeys`-Funktion sieht folgendermaßen aus:
 
 ```json
 listKeys('resourceName', 'yyyy-mm-dd')
@@ -165,7 +165,7 @@ Im folgenden Beispiel wird veranschaulicht, wie Sie mehrere VMs bereitstellen. D
 }
 ```
 
-Das folgende Beispiel zeigt, wie drei Speicherkonten vor dem Bereitstellen des virtuellen Computers bereitgestellt werden. Beachten Sie, dass „name“ für das „copy“-Element auf `storagecopy` und auch das „dependsOn“-Element für die virtuellen Computer auf `storagecopy` festgelegt ist.
+Das folgende Beispiel zeigt, wie drei Speicherkonten vor dem Bereitstellen des virtuellen Computers bereitgestellt werden. Beachten Sie, dass `name` für das `copy`-Element auf `storagecopy` und auch das `dependsOn`-Element für den virtuellen Computer auf `storagecopy` festgelegt ist.
 
 ```json
 {
@@ -213,10 +213,9 @@ Informationen über das Bewerten der Bereitstellungsreihenfolge und das Beheben 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Ein Tutorial, das Sie durcharbeiten können, finden Sie unter [Tutorial: Erstellen von Azure Resource Manager-Vorlagen mit abhängigen Ressourcen](template-tutorial-create-templates-with-dependent-resources.md).
+* Ein entsprechendes Tutorial finden Sie unter [Tutorial: Erstellen von ARM-Vorlagen mit abhängigen Ressourcen](template-tutorial-create-templates-with-dependent-resources.md).
 * Ein Microsoft Learn-Modul, das Ressourcenabhängigkeiten behandelt, finden Sie unter [Verwalten komplexer Cloudbereitstellungen mithilfe erweiterter ARM-Vorlagenfunktionen](/learn/modules/manage-deployments-advanced-arm-template-features/).
-* Empfehlungen zum Festlegen von Abhängigkeiten finden Sie unter [Bewährte Methoden für Azure Resource Manager-Vorlagen](template-best-practices.md).
+* Empfehlungen zum Festlegen von Abhängigkeiten finden Sie unter [Bewährte Methoden für ARM-Vorlagen](template-best-practices.md).
 * Informationen zur Behebung von Abhängigkeiten während der Bereitstellung finden Sie unter [Beheben gängiger Azure-Bereitstellungsfehler mit Azure Resource Manager](common-deployment-errors.md).
-* Weitere Informationen zum Erstellen von Azure-Ressourcen-Manager-Vorlagen finden Sie unter [Erstellen von Vorlagen](template-syntax.md).
-* Eine Liste der verfügbaren Funktionen in einer Vorlage finden Sie unter [Funktionen von Azure Resource Manager-Vorlagen](template-functions.md).
-
+* Informationen zum Erstellen von Azure Resource Manager-Vorlagen finden Sie unter [Verstehen der Struktur und Syntax von ARM-Vorlagen](template-syntax.md).
+* Eine Liste der verfügbaren Funktionen in einer Vorlage finden Sie unter [ARM-Vorlagenfunktionen](template-functions.md).

@@ -3,16 +3,16 @@ title: Ausgaben in Vorlagen
 description: Beschreibt, wie Ausgabewerte in einer Azure Resource Manager-Vorlage (ARM-Vorlage) definiert werden.
 ms.topic: conceptual
 ms.date: 11/24/2020
-ms.openlocfilehash: 6a375dfbc767bcbbfd8ec6b7f8cb9e942e275582
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: f8f13b6caf063cea79dc71775fb936f406a3ee6c
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96353526"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97964013"
 ---
 # <a name="outputs-in-arm-templates"></a>Ausgaben in ARM-Vorlagen
 
-Dieser Artikel beschreibt, wie Sie Ausgabewerte in Ihrer Azure Resource Manager-Vorlage (ARM-Vorlage) definieren. Sie verwenden Ausgaben, wenn Werte von den bereitgestellten Ressourcen zurückgegeben werden müssen.
+Dieser Artikel beschreibt, wie Sie Ausgabewerte in Ihrer Azure Resource Manager-Vorlage (ARM-Vorlage) definieren. Sie verwenden `outputs`, wenn Werte von den bereitgestellten Ressourcen zurückgegeben werden müssen.
 
 Das Format der einzelnen Ausgabewerte muss mit einem der [Datentypen](template-syntax.md#data-types) identisch sein.
 
@@ -31,7 +31,7 @@ Das folgende Beispiel zeigt die Vorgehensweise zum Zurückgeben der Ressourcen-I
 
 ## <a name="conditional-output"></a>Bedingte Ausgabe
 
-Im Ausgabeabschnitt können Sie einen Wert bedingt zurückgeben. In der Regel verwenden Sie eine Bedingung in den Ausgaben, wenn Sie eine Ressource [bedingt bereitgestellt](conditional-resource-deployment.md) haben. Das folgende Beispiel zeigt, wie die Ressourcen-ID für eine öffentliche IP-Adresse abhängig davon zurückgegeben wird, ob eine neue Ressourcen-ID bereitgestellt wurde:
+Im Abschnitt `outputs` können Sie einen Wert bedingt zurückgeben. In der Regel verwenden Sie eine `condition` in den `outputs`, wenn Sie eine Ressource [bedingt bereitgestellt](conditional-resource-deployment.md) haben. Das folgende Beispiel zeigt, wie die Ressourcen-ID für eine öffentliche IP-Adresse abhängig davon zurückgegeben wird, ob eine neue Ressourcen-ID bereitgestellt wurde:
 
 ```json
 "outputs": {
@@ -47,7 +47,7 @@ Ein einfaches Beispiel der bedingten Ausgabe finden Sie unter der [Vorlage für 
 
 ## <a name="dynamic-number-of-outputs"></a>Dynamische Anzahl von Ausgaben
 
-In einigen Szenarien wissen Sie nicht, wie viele Instanzen eines Werts beim Erstellen der Vorlage zurückgegeben werden müssen. Sie können eine variable Anzahl von Werten zurückgeben, indem Sie das **copy**-Element verwenden.
+In einigen Szenarien wissen Sie nicht, wie viele Instanzen eines Werts beim Erstellen der Vorlage zurückgegeben werden müssen. Sie können eine variable Anzahl von Werten zurückgeben, indem Sie das `copy`-Element verwenden.
 
 ```json
 "outputs": {
@@ -61,7 +61,7 @@ In einigen Szenarien wissen Sie nicht, wie viele Instanzen eines Werts beim Erst
 }
 ```
 
-Weitere Informationen finden Sie unter [Ausgabeniteration in Azure Resource Manager-Vorlagen](copy-outputs.md).
+Weitere Informationen finden Sie unter [Ausgabeiteration in ARM-Vorlagen](copy-outputs.md).
 
 ## <a name="linked-templates"></a>Verknüpfte Vorlagen
 

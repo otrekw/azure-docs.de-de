@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 10/01/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 5e0007f3b0dad8a68e9d81cebbe9fe24b5a7db3c
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 0e1ce841f6da8f15bd977437bca6b835a7b0d745
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93285643"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98108737"
 ---
 # <a name="how-to-enable-key-vault-logging"></a>Aktivieren der Protokollierung in Key Vault
 
@@ -25,20 +25,10 @@ Nachdem Sie einen oder mehrere Schlüsseltresore erstellt haben, möchten Sie ve
 Für dieses Tutorial benötigen Sie Folgendes:
 
 * Vorhandenen Schlüsseltresor, der von Ihnen genutzt wird  
-* Die Azure CLI oder Azure PowerShell.
+* [Azure Cloud Shell](https://shell.azure.com) – Bash-Umgebung
 * Ausreichend Speicherplatz unter Azure für Ihre Schlüsseltresor-Protokolle
 
-Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie die Version 2.0.4 oder höher der Azure CLI installieren. Führen Sie `az --version` aus, um die Version zu ermitteln. Installations- und Upgradeinformationen finden Sie bei Bedarf unter [Installieren von Azure CLI](/cli/azure/install-azure-cli). Geben Sie Folgendes ein, um sich über die Befehlszeilenschnittstelle bei Azure anzumelden:
-
-```azurecli-interactive
-az login
-```
-
-Wenn Sie PowerShell lokal installieren und verwenden möchten, müssen Sie mindestens Version 1.0.0 des Azure PowerShell-Moduls verwenden. Geben Sie `$PSVersionTable.PSVersion` ein, um die Version zu ermitteln. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-az-ps) Informationen dazu. Wenn Sie PowerShell lokal ausführen, müssen Sie auch `Connect-AzAccount` ausführen, um eine Verbindung mit Azure herzustellen.
-
-```powershell-interactive
-Connect-AzAccount
-```
+Die Befehle in diesem Leitfaden sind für [Cloud Shell](https://shell.azure.com) mit Bash als Umgebung formatiert.
 
 ## <a name="connect-to-your-key-vault-subscription"></a>Herstellen einer Verbindung zu Ihrem Key Vault-Abonnement
 
@@ -118,7 +108,7 @@ Für die Aktivierung der Protokollierung in Azure Key Vault verwenden Sie den Az
 az monitor diagnostic-settings create --storage-account "<storage-account-id>" --resource "<key-vault-resource-id>" --name "Key vault logs" --logs '[{"category": "AuditEvent","enabled": true}]' --metrics '[{"category": "AllMetrics","enabled": true}]'
 ```
 
-In Azure PowerShell wird das Cmdlet [Set-AzDiagnosticSetting](/powershell/module/az.monitor/set-azdiagnosticsetting?view=azps-4.7.0) verwendet. Das **-Enabled** -Flag wird dabei auf **$true** festgelegt, und die Kategorie ist auf `AuditEvent` festgelegt. Dabei handelt es sich um die einzige Kategorie für die Protokollierung in Azure Key Vault:
+In Azure PowerShell wird das Cmdlet [Set-AzDiagnosticSetting](/powershell/module/az.monitor/set-azdiagnosticsetting?view=azps-4.7.0) verwendet. Das **-Enabled**-Flag wird dabei auf **$true** festgelegt, und die Kategorie ist auf `AuditEvent` festgelegt. Dabei handelt es sich um die einzige Kategorie für die Protokollierung in Azure Key Vault:
 
 ```powershell-interactive
 Set-AzDiagnosticSetting -ResourceId "<key-vault-resource-id>" -StorageAccountId $sa.id -Enabled $true -Category "AuditEvent"
@@ -162,7 +152,7 @@ az storage blob list --account-name "<your-unique-storage-account-name>" --conta
 In Azure PowerShell können Sie das Cmdlet [Get-AzStorageBlob](/powershell/module/az.storage/get-azstorageblob?view=azps-4.7.0) nutzen, um alle Blobs im Container aufzulisten. Geben Sie dazu Folgendes ein:
 
 ```powershell
-Get-AzStorageBlob -Container $container -Context $sa.Context
+Get-AzStorageBlob -Container "insights-logs-auditevent" -Context $sa.Context
 ```
 
 Wie an der Ausgabe entweder des Azure CLI-Befehls oder des Azure PowerShell-Cmdlet ersichtlich wird, weisen die Blobnamen das folgende Format auf: `resourceId=<ARM resource ID>/y=<year>/m=<month>/d=<day of month>/h=<hour>/m=<minute>/filename.json`. Für die Werte für Datum und Uhrzeit wird UTC verwendet.
@@ -178,7 +168,7 @@ az storage blob download --container-name "insights-logs-auditevent" --file <pat
 In Azure PowerShell verwenden Sie das Cmdlet [Gt-AzStorageBlobs](/powershell/module/az.storage/get-azstorageblob?view=azps-4.7.0), um eine Liste der Blobs abzurufen, und übergeben diese über eine Pipeline an das Cmdlet [Get-AzStorageBlobContent](/powershell/module/az.storage/get-azstorageblobcontent?view=azps-4.7.0), um die Protokolle in den von Ihnen ausgewählten Pfad herunterzuladen.
 
 ```powershell-interactive
-$blobs = Get-AzStorageBlob -Container $container -Context $sa.Context | Get-AzStorageBlobContent -Destination "<path-to-file>"
+$blobs = Get-AzStorageBlob -Container "insights-logs-auditevent" -Context $sa.Context | Get-AzStorageBlobContent -Destination "<path-to-file>"
 ```
 
 Beim Ausführen dieses zweiten Cmdlet in PowerShell wird mit dem Trennzeichen **/** in den Blobnamen eine vollständige Ordnerstruktur unter dem Zielordner erstellt. Sie verwenden diese Struktur, um die Blobs herunterzuladen und als Dateien zu speichern.
@@ -188,19 +178,19 @@ Verwenden Sie Platzhalter, um Blobs selektiv herunterzuladen. Beispiel:
 * Bei Verwendung mehrerer Schlüsseltresore und einem Download von Protokollen nur für einen Schlüsseltresor mit dem Namen CONTOSOKEYVAULT3:
 
   ```powershell
-  Get-AzStorageBlob -Container $container -Context $sa.Context -Blob '*/VAULTS/CONTOSOKEYVAULT3
+  Get-AzStorageBlob -Container "insights-logs-auditevent" -Context $sa.Context -Blob '*/VAULTS/CONTOSOKEYVAULT3
   ```
 
 * Wenn Sie über mehrere Ressourcengruppen verfügen und nur Protokolle für eine Ressourcengruppe herunterladen möchten, verwenden Sie `-Blob '*/RESOURCEGROUPS/<resource group name>/*'`:
 
   ```powershell
-  Get-AzStorageBlob -Container $container -Context $sa.Context -Blob '*/RESOURCEGROUPS/CONTOSORESOURCEGROUP3/*'
+  Get-AzStorageBlob -Container "insights-logs-auditevent" -Context $sa.Context -Blob '*/RESOURCEGROUPS/CONTOSORESOURCEGROUP3/*'
   ```
 
 * Wenn Sie alle Protokolle für den Monat Januar 2019 herunterladen möchten, verwenden Sie `-Blob '*/year=2019/m=01/*'`:
 
   ```powershell
-  Get-AzStorageBlob -Container $container -Context $sa.Context -Blob '*/year=2016/m=01/*'
+  Get-AzStorageBlob -Container "insights-logs-auditevent" -Context $sa.Context -Blob '*/year=2016/m=01/*'
   ```
 
 Sie können sich nun ansehen, was in den Protokollen enthalten ist. Aber bevor wir damit fortfahren, sollten Sie noch zwei weitere Befehle kennen:

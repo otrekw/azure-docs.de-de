@@ -4,12 +4,12 @@ description: In diesem Artikel wird erläutert, wie Sie die Benutzerinteraktion 
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 4e0f71369bc02fdce5625d9c74e1d52264ed86be
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cba3cd0fd5d8727c4ffa4d1b42d7cd9250f21032
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80335761"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98028302"
 ---
 # <a name="human-interaction-in-durable-functions---phone-verification-sample"></a>Benutzerinteraktion in Durable Functions: Beispiel zur Telefonüberprüfung
 
@@ -45,7 +45,7 @@ In diesem Artikel werden die folgenden Funktionen in der Beispiel-App schrittwei
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/PhoneVerification.cs?range=17-70)]
 
 > [!NOTE]
-> Es ist möglicherweise nicht gleich erkennbar, aber diese Orchestratorfunktion ist komplett deterministisch. Sie ist deterministisch, weil die Eigenschaft `CurrentUtcDateTime` zur Berechnung der Zeit bis zum Ablauf des Timers verwendet wird und sie an diesem Punkt im Orchestratorcode bei jeder Wiedergabe den gleichen Wert zurückgibt. Dieses Verhalten ist wichtig, um sicherzustellen, dass jeder wiederholte Aufruf in `Task.WhenAny` den gleichen `winner` ergibt.
+> Auch wenn es auf den ersten Blick nicht offensichtlich ist: Dieser Orchestrator verstößt nicht gegen die [Einschränkungen der deterministischen Orchestrierung](durable-functions-code-constraints.md). Sie ist deterministisch, weil die Eigenschaft `CurrentUtcDateTime` zur Berechnung der Zeit bis zum Ablauf des Timers verwendet wird und sie an diesem Punkt im Orchestratorcode bei jeder Wiedergabe den gleichen Wert zurückgibt. Dieses Verhalten ist wichtig, um sicherzustellen, dass jeder wiederholte Aufruf in `Task.WhenAny` den gleichen `winner` ergibt.
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
@@ -58,7 +58,20 @@ Im Folgenden wird der Code dargestellt, der die Funktion implementiert:
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E4_SmsPhoneVerification/index.js)]
 
 > [!NOTE]
-> Es ist möglicherweise nicht gleich erkennbar, aber diese Orchestratorfunktion ist komplett deterministisch. Sie ist deterministisch, weil die Eigenschaft `currentUtcDateTime` zur Berechnung der Zeit bis zum Ablauf des Timers verwendet wird und sie an diesem Punkt im Orchestratorcode bei jeder Wiedergabe den gleichen Wert zurückgibt. Dieses Verhalten ist wichtig, um sicherzustellen, dass jeder wiederholte Aufruf in `context.df.Task.any` den gleichen `winner` ergibt.
+> Auch wenn es auf den ersten Blick nicht offensichtlich ist: Dieser Orchestrator verstößt nicht gegen die [Einschränkungen der deterministischen Orchestrierung](durable-functions-code-constraints.md). Sie ist deterministisch, weil die Eigenschaft `currentUtcDateTime` zur Berechnung der Zeit bis zum Ablauf des Timers verwendet wird und sie an diesem Punkt im Orchestratorcode bei jeder Wiedergabe den gleichen Wert zurückgibt. Dieses Verhalten ist wichtig, um sicherzustellen, dass jeder wiederholte Aufruf in `context.df.Task.any` den gleichen `winner` ergibt.
+
+# <a name="python"></a>[Python](#tab/python)
+
+Die Funktion **E4_SmsPhoneVerification** verwendet für Orchestratorfunktionen die Standarddatei *function.json*.
+
+[!code-json[Main](~/samples-durable-functions-python/samples/human_interaction/E4_SmsPhoneVerification/function.json)]
+
+Im Folgenden wird der Code dargestellt, der die Funktion implementiert:
+
+[!code-python[Main](~/samples-durable-functions-python/samples/human_interaction/E4_SmsPhoneVerification/\_\_init\_\_.py)]
+
+> [!NOTE]
+> Auch wenn es auf den ersten Blick nicht offensichtlich ist: Dieser Orchestrator verstößt nicht gegen die [Einschränkungen der deterministischen Orchestrierung](durable-functions-code-constraints.md). Sie ist deterministisch, weil die Eigenschaft `currentUtcDateTime` zur Berechnung der Zeit bis zum Ablauf des Timers verwendet wird und sie an diesem Punkt im Orchestratorcode bei jeder Wiedergabe den gleichen Wert zurückgibt. Dieses Verhalten ist wichtig, um sicherzustellen, dass jeder wiederholte Aufruf in `context.df.Task.any` den gleichen `winner` ergibt.
 
 ---
 
@@ -94,6 +107,16 @@ Die Datei *function.json* wird wie folgt definiert:
 Dies ist der Code, der den vierstelligen Abfragecode generiert und die SMS-Nachricht sendet:
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E4_SendSmsChallenge/index.js)]
+
+# <a name="python"></a>[Python](#tab/python)
+
+Die Datei *function.json* wird wie folgt definiert:
+
+[!code-json[Main](~/samples-durable-functions-python/samples/human_interaction/SendSMSChallenge/function.json)]
+
+Dies ist der Code, der den vierstelligen Abfragecode generiert und die SMS-Nachricht sendet:
+
+[!code-python[Main](~/samples-durable-functions-python/samples/human_interaction/SendSMSChallenge/\_\_init\_\_.py)]
 
 ---
 

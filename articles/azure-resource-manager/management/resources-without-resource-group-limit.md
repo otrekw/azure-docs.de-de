@@ -2,20 +2,19 @@
 title: Ressourcen ohne Beschränkung auf 800 Instanzen
 description: Aufstellung der Azure-Ressourcentypen, die mehr als 800 Instanzen in einer Ressourcengruppe aufweisen können.
 ms.topic: conceptual
-ms.date: 10/28/2020
-ms.openlocfilehash: c2d5797a7ec354f41d510ec6e884968bf9dbdbcd
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.date: 01/08/2021
+ms.openlocfilehash: 6a63fd7e41c03b542f4a43b483243702c5be5f14
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97672363"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98034933"
 ---
 # <a name="resources-not-limited-to-800-instances-per-resource-group"></a>Ressourcen ohne Beschränkung auf 800 Instanzen pro Ressourcengruppe
 
 Standardmäßig können Sie bis zu 800 Instanzen eines Ressourcentyps in jeder Ressourcengruppe bereitstellen. Einige Ressourcentypen sind jedoch von der Beschränkung auf 800 Instanzen ausgenommen. In diesem Artikel sind die Azure-Ressourcentypen aufgeführt, die mehr als 800 Instanzen in einer Ressourcengruppe aufweisen können. Alle anderen Ressourcentypen sind auf 800 Instanzen beschränkt.
 
 Für einige Ressourcentypen müssen Sie sich an den Support wenden, damit die Beschränkung auf 800 Instanzen aufgehoben wird. Diese Ressourcentypen sind in diesem Artikel angegeben.
-
 
 ## <a name="microsoftautomation"></a>Microsoft.Automation
 
@@ -105,6 +104,11 @@ Für einige Ressourcentypen müssen Sie sich an den Support wenden, damit die Be
 * software
 * softwareUpdateProfile
 * softwareUpdates
+
+## <a name="microsofthybridcompute"></a>Microsoft.HybridCompute
+
+* machines: unterstützt bis zu 5.000 Instanzen
+* extensions: unterstützt eine unbegrenzte Anzahl von VM-Erweiterungsinstanzen
 
 ## <a name="microsoftinsights"></a>microsoft.insights
 

@@ -3,12 +3,12 @@ title: Azure Service Bus-Authentifizierung und -Autorisierung | Microsoft-Dokume
 description: Authentifizieren Sie Service Bus-Apps mit Shared Access Signature-Authentifizierung (SAS).
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: a71cef6aad973f3c39ef61a8dbab313ebfca44ef
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 7b287b209fbcd5bc2782505095aeae4390107803
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92517279"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98060213"
 ---
 # <a name="service-bus-authentication-and-authorization"></a>Service Bus-Authentifizierung und -Autorisierung
 Es gibt zwei Möglichkeiten, den Zugriff auf Azure Service Bus-Ressourcen zu authentifizieren und zu autorisieren: Azure Active Directory (Azure AD) und Shared Access Signatures (SAS). In diesem Artikel erhalten Sie Informationen zur Verwendung dieser beiden Arten von Sicherheitsmechanismen. 
@@ -25,7 +25,7 @@ Weitere Informationen zur Authentifizierung mit Azure AD finden Sie in den folge
 > Die [Service Bus REST-API](/rest/api/servicebus/) unterstützt die OAuth-Authentifizierung mit Azure AD.
 
 > [!IMPORTANT]
-> Das Autorisieren von Benutzern oder Anwendungen mithilfe eines von Azure AD zurückgegebenen OAuth 2.0-Tokens bietet mehr Sicherheit und Benutzerfreundlichkeit als die Autorisierung per SAS (Shared Access Signature). Mit Azure AD ist es nicht erforderlich, Token in Ihrem Code zu speichern und potenzielle Sicherheitsrisiken einzugehen. Wir empfehlen, dass Sie Azure AD nach Möglichkeit mit Ihren Azure Service Bus-Anwendungen verwenden. 
+> Das Autorisieren von Benutzern oder Anwendungen mithilfe eines von Azure AD zurückgegebenen OAuth 2.0-Tokens bietet mehr Sicherheit und Benutzerfreundlichkeit als die Autorisierung per SAS (Shared Access Signature). Mit Azure AD ist es nicht erforderlich, Token in Ihrem Code zu speichern und potenzielle Sicherheitsrisiken einzugehen. Es wird empfohlen, Azure AD nach Möglichkeit mit Ihren Azure Service Bus-Anwendungen zu verwenden. 
 
 ## <a name="shared-access-signature"></a>Shared Access Signature (SAS)
 Mit der [SAS-Authentifizierung](service-bus-sas.md) können Sie einem Benutzer Zugriff auf Service Bus-Ressourcen mit spezifischen Rechten gewähren. Die SAS-Authentifizierung in Service Bus umfasst die Konfiguration eines kryptografischen Schlüssels mit den zugehörigen Rechten für eine Service Bus-Ressource. Clients können Zugriff auf diese Ressource erlangen, indem sie ein SAS-Token bereitstellen. Dieses setzt sich aus dem Ressourcen-URI, auf den zugegriffen wird, und einer Ablaufangabe zusammen, die mit dem konfigurierten Schlüssel signiert wird.
@@ -34,10 +34,10 @@ Sie können Schlüssel für SAS für einen Service Bus-Namespace konfigurieren. 
 
 Wenn Sie SAS verwenden möchten, können Sie ein [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule)-Objekt für einen Namespace, eine Warteschlange oder ein Thema konfigurieren. Diese Regel besteht aus den folgenden Elementen:
 
-* *KeyName* : identifiziert die Regel.
-* *PrimaryKey* : ein kryptografischer Schlüssel, der zum Signieren/Überprüfen von SAS-Token verwendet wird.
-* *SecondaryKey* : ein kryptografischer Schlüssel, der zum Signieren/Überprüfen von SAS-Token verwendet wird.
-* *Rechte* : stellt die Auflistung der erteilten Lausch-, Sende- oder Verwaltungsrechte ( **Listen** , **Send** , **Manage** ) dar.
+* *KeyName*: identifiziert die Regel.
+* *PrimaryKey*: ein kryptografischer Schlüssel, der zum Signieren/Überprüfen von SAS-Token verwendet wird.
+* *SecondaryKey*: ein kryptografischer Schlüssel, der zum Signieren/Überprüfen von SAS-Token verwendet wird.
+* *Rechte*: stellt die Auflistung der erteilten Lausch-, Sende- oder Verwaltungsrechte (**Listen**, **Send**, **Manage**) dar.
 
 Autorisierungsregeln, die auf Namespace-Ebene konfiguriert werden, können Zugriff auf alle Entitäten in einem Namespace für Clients mit Token erteilen, die mithilfe des entsprechenden Schlüssels signiert wurden. Sie können bis zu zwölf solcher Autorisierungsregeln für einen Service Bus-Namespace, eine Service Bus-Warteschlange oder ein Service Bus-Thema konfigurieren. Standardmäßig wird für jeden Namespace bei der ersten Bereitstellung ein [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) -Objekt mit allen Rechten konfiguriert.
 

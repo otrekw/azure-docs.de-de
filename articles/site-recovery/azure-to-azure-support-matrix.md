@@ -4,12 +4,12 @@ description: Fasst die Unterstützung für die Notfallwiederherstellung für vir
 ms.topic: article
 ms.date: 11/29/2020
 ms.author: raynew
-ms.openlocfilehash: a6a5d78385cc61838a606a3f3d2a7277f6b66a4d
-ms.sourcegitcommit: 89c0482c16bfec316a79caa3667c256ee40b163f
+ms.openlocfilehash: 9670178a9c9d772d8966413371f998aa1f0cf5f3
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97858534"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97968294"
 ---
 # <a name="support-matrix-for-azure-vm-disaster-recovery-between-azure-regions"></a>Unterstützungsmatrix für die Notfallwiederherstellung von Azure-VMs zwischen Azure-Regionen
 
@@ -198,6 +198,7 @@ Mit Site Recovery migrierte virtuelle Computer | Unterstützt | Wenn eine VMware
 Azure RBAC-Richtlinien | Nicht unterstützt | Richtlinien für die rollenbasierte Zugriffssteuerung in Azure (Azure RBAC) auf virtuellen Computern werden nicht in die Failover-VM in der Zielregion repliziert.
 Erweiterungen | Nicht unterstützt | Erweiterungen werden nicht auf die Failover-VM in der Zielregion repliziert. Nach dem Failover müssen sie manuell installiert werden.
 Näherungsplatzierungsgruppen | Unterstützt | Virtuelle Computer innerhalb einer Näherungsplatzierungsgruppe können mithilfe von Site Recovery geschützt werden.
+Tags  | Unterstützt | Auf virtuelle Quellcomputer angewendete benutzergenerierte Tags werden nach einem Testfailover oder einem Failover auf die virtuellen Zielcomputer übertragen.
 
 
 ## <a name="replicated-machines---disk-actions"></a>Replizierte Computer – Datenträgeraktionen
@@ -256,6 +257,7 @@ NVMe-Datenträger | Nicht unterstützt
 Freigegebene Azure-Datenträger | Nicht unterstützt
 Option für die sichere Übertragung | Unterstützt
 Datenträger mit aktivierter Schreibbeschleunigung | Nicht unterstützt
+Tags  | Benutzergenerierte Tags werden alle 24 Stunden repliziert.
 
 >[!IMPORTANT]
 > Um Leistungsprobleme zu vermeiden, stellen Sie sicher, dass Sie die Skalierbarkeits- und Leistungsziele für VM-Datenträger für virtuelle [Linux](../virtual-machines/linux/disk-scalability-targets.md)- oder [Windows](../virtual-machines/windows/disk-scalability-targets.md)-Computer beachten. Wenn Sie die Standardeinstellungen verwenden, erstellt Site Recovery die erforderlichen Datenträger und Speicherkonten auf Basis der Quellkonfiguration. Wenn Sie Ihre eigenen Einstellungen anpassen und verwenden möchten, halten Sie die Skalierbarkeits- und Leistungsziele für Datenträger für Ihre virtuellen Quellcomputer ein.
@@ -302,6 +304,7 @@ Beschleunigte Netzwerke | Unterstützt | Auf dem virtuellen Quellcomputer muss d
 Palo Alto Network Appliance | Nicht unterstützt | Bei Appliances von Drittanbietern gibt es häufig Beschränkungen, die vom Anbieter innerhalb des virtuellen Computers auferlegt werden. Azure Site Recovery erfordert die Verfügbarkeit eines Agents sowie von Erweiterungen und ausgehender Konnektivität. Die Appliance lässt jedoch nicht zu, dass ausgehende Aktivitäten innerhalb des virtuellen Computers konfiguriert werden.
 IPv6  | Nicht unterstützt | Gemischte Konfigurationen, die sowohl IPv4 als auch IPv6 einschließen, werden ebenfalls nicht unterstützt. Entfernen Sie den IPv6-Bereich aus dem Subnetz, bevor Sie Site Recovery-Vorgänge ausführen.
 Private Link-Zugriff auf den Site Recovery-Dienst | Unterstützt | [Weitere Informationen](azure-to-azure-how-to-enable-replication-private-endpoints.md)
+Tags  | Unterstützt | Benutzergenerierte Tags auf NICs werden alle 24 Stunden repliziert.
 
 
 

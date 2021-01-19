@@ -3,12 +3,12 @@ title: Knoten und Pools in Azure Batch
 description: Erfahren Sie mehr über Computeknoten und Pools und deren Verwendung in einem Azure Batch-Workflow aus Entwicklersicht.
 ms.topic: conceptual
 ms.date: 11/20/2020
-ms.openlocfilehash: 880a956a2d839483c59578afad1b62146799578a
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: c229381ba1019a5a40a4ca6b7db88f534f57de29
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95243068"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934644"
 ---
 # <a name="nodes-and-pools-in-azure-batch"></a>Knoten und Pools in Azure Batch
 
@@ -63,6 +63,9 @@ Wenn Sie einen Batch-Pool erstellen, können Sie die Konfiguration der Azure-VM 
 ## <a name="configurations"></a>Configurations
 
 In Batch sind zwei Arten von Poolkonfigurationen verfügbar.
+
+> [!IMPORTANT]
+> Pools sollten gemäß „VM-Konfiguration“ konfiguriert werden, nicht als „Cloud Services-Konfiguration“. Alle Batch-Features werden von Pools mit „VM-Konfiguration“ unterstützt, und neue Features werden hinzugefügt. Pools mit „Cloud Services-Konfiguration“ unterstützen nicht alle Features, und es sind keine neuen Funktionen geplant.
 
 ### <a name="virtual-machine-configuration"></a>VM-Konfiguration
 

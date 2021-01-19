@@ -3,21 +3,21 @@ title: Verwenden von Azure Automation-Runbooks und -Modulen im PowerShell-Katalo
 description: In diesem Artikel wird erläutert, wie Sie Runbooks und Module von Microsoft und der Community im PowerShell-Katalog verwenden.
 services: automation
 ms.subservice: process-automation
-ms.date: 12/17/2020
+ms.date: 01/08/2021
 ms.topic: conceptual
-ms.openlocfilehash: 26dfedf1961cf39645c3bcf3ce5fa2db6c14119e
-ms.sourcegitcommit: e0ec3c06206ebd79195d12009fd21349de4a995d
+ms.openlocfilehash: 590220782a7f43e785cc7885e68eefa99afb7d1d
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97682766"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98049115"
 ---
 # <a name="use-runbooks-and-modules-in-powershell-gallery"></a>Verwenden von Runbooks und Modulen im PowerShell-Katalog
 
 Statt eigene Runbooks und Module in Azure Automation zu erstellen, können Sie Szenarien nutzen, die bereits von Microsoft und der Community entwickelt wurden. Sie können PowerShell-Runbooks und -[Module](#modules-in-powershell-gallery) aus dem PowerShell-Katalog sowie [Python-Runbooks](#use-python-runbooks) von der Azure Automation-GitHub-Organisation abrufen. Sie können auch etwas zur Community beitragen, indem Sie [von Ihnen entwickelte Szenarien](#add-a-powershell-runbook-to-the-gallery) zur Verfügung stellen.
 
 > [!NOTE]
-> Das TechNet Script Center (TechNet-Skriptcenter) wird eingestellt. Alle Runbooks aus dem Script Center im Runbook-Katalog wurden in unsere [Automation-GitHub-Organisation](https://github.com/azureautomation) verschoben.
+> Das TechNet Script Center (TechNet-Skriptcenter) wird eingestellt. Alle Runbooks aus dem Script Center im Runbook-Katalog wurden in unsere [Automation-GitHub-Organisation](https://github.com/azureautomation) verschoben. Weitere Informationen finden Sie [hier](https://techcommunity.microsoft.com/t5/azure-governance-and-management/azure-automation-runbooks-moving-to-github/ba-p/2039337).
 
 ## <a name="runbooks-in-powershell-gallery"></a>Runbooks im PowerShell-Katalog
 

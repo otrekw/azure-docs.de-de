@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 09/03/2018
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: ec857db64529a27db7412c61f8f09c66f8a76363
-ms.sourcegitcommit: 93329b2fcdb9b4091dbd632ee031801f74beb05b
+ms.openlocfilehash: 4af29df27a109a9e1e26a720c190ab9d119fc4d1
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92098144"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98033794"
 ---
 # <a name="azure-table-storage-output-bindings-for-azure-functions"></a>Azure Table Storage-Ausgabebindungen für Azure Functions
 
@@ -101,112 +101,6 @@ public class Person
 
 ```
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
-
-Das folgende Beispiel zeigt eine Tabellenausgabebindung in einer Datei vom Typ *function.json* sowie eine [JavaScript-Funktion](functions-reference-node.md), die die Bindung verwendet. Die Funktion schreibt mehrere Tabellenentitäten.
-
-Die Datei *function.json* sieht wie folgt aus:
-
-```json
-{
-  "bindings": [
-    {
-      "name": "input",
-      "type": "manualTrigger",
-      "direction": "in"
-    },
-    {
-      "tableName": "Person",
-      "connection": "MyStorageConnectionAppSetting",
-      "name": "tableBinding",
-      "type": "table",
-      "direction": "out"
-    }
-  ],
-  "disabled": false
-}
-```
-
-Weitere Informationen zu diesen Eigenschaften finden Sie im Abschnitt [Konfiguration](#configuration).
-
-Der JavaScript-Code sieht wie folgt aus:
-
-```javascript
-module.exports = function (context) {
-
-    context.bindings.tableBinding = [];
-
-    for (var i = 1; i < 10; i++) {
-        context.bindings.tableBinding.push({
-            PartitionKey: "Test",
-            RowKey: i.toString(),
-            Name: "Name " + i
-        });
-    }
-
-    context.done();
-};
-```
-
-# <a name="python"></a>[Python](#tab/python)
-
-Das folgende Beispiel zeigt, wie Sie die Tabellenspeicherausgabe-Bindung verwenden. Die `table`-Bindung ist in *function.json* konfiguriert, indem `name`, `tableName`, `partitionKey` und `connection` Werte zugewiesen werden:
-
-```json
-{
-  "scriptFile": "__init__.py",
-  "bindings": [
-    {
-      "name": "message",
-      "type": "table",
-      "tableName": "messages",
-      "partitionKey": "message",
-      "connection": "AzureWebJobsStorage",
-      "direction": "out"
-    },
-    {
-      "authLevel": "function",
-      "type": "httpTrigger",
-      "direction": "in",
-      "name": "req",
-      "methods": [
-        "get",
-        "post"
-      ]
-    },
-    {
-      "type": "http",
-      "direction": "out",
-      "name": "$return"
-    }
-  ]
-}
-```
-
-Die folgende Funktion generiert eine eindeutige UUI für den `rowKey`-Wert und speichert die Nachricht dauerhaft im Tabellenspeicher.
-
-```python
-import logging
-import uuid
-import json
-
-import azure.functions as func
-
-def main(req: func.HttpRequest, message: func.Out[str]) -> func.HttpResponse:
-
-    rowKey = str(uuid.uuid4())
-
-    data = {
-        "Name": "Output binding message",
-        "PartitionKey": "message",
-        "RowKey": rowKey
-    }
-
-    message.set(json.dumps(data))
-
-    return func.HttpResponse(f"Message created with the rowKey: {rowKey}")
-```
-
 # <a name="java"></a>[Java](#tab/java)
 
 Das folgende Beispiel zeigt eine Java-Funktion, die einen HTTP-Trigger zum Schreiben einer einzelnen Tabellenzeile verwendet.
@@ -284,6 +178,152 @@ public class AddPersons {
 }
 ```
 
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+Das folgende Beispiel zeigt eine Tabellenausgabebindung in einer Datei vom Typ *function.json* sowie eine [JavaScript-Funktion](functions-reference-node.md), die die Bindung verwendet. Die Funktion schreibt mehrere Tabellenentitäten.
+
+Die Datei *function.json* sieht wie folgt aus:
+
+```json
+{
+  "bindings": [
+    {
+      "name": "input",
+      "type": "manualTrigger",
+      "direction": "in"
+    },
+    {
+      "tableName": "Person",
+      "connection": "MyStorageConnectionAppSetting",
+      "name": "tableBinding",
+      "type": "table",
+      "direction": "out"
+    }
+  ],
+  "disabled": false
+}
+```
+
+Weitere Informationen zu diesen Eigenschaften finden Sie im Abschnitt [Konfiguration](#configuration).
+
+Der JavaScript-Code sieht wie folgt aus:
+
+```javascript
+module.exports = function (context) {
+
+    context.bindings.tableBinding = [];
+
+    for (var i = 1; i < 10; i++) {
+        context.bindings.tableBinding.push({
+            PartitionKey: "Test",
+            RowKey: i.toString(),
+            Name: "Name " + i
+        });
+    }
+
+    context.done();
+};
+```
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+Das folgende Beispiel veranschaulicht, wie mehrere Entitäten aus einer Funktion in eine Tabelle geschrieben werden.
+
+Bindungskonfiguration in _function.json_:
+
+```json
+{
+  "bindings": [
+    {
+      "name": "InputData",
+      "type": "manualTrigger",
+      "direction": "in"
+    },
+    {
+      "tableName": "Person",
+      "connection": "MyStorageConnectionAppSetting",
+      "name": "TableBinding",
+      "type": "table",
+      "direction": "out"
+    }
+  ],
+  "disabled": false
+}
+```
+
+PowerShell-Code in _run.ps1_:
+
+```powershell
+param($InputData, $TriggerMetadata)
+  
+foreach ($i in 1..10) {
+    Push-OutputBinding -Name TableBinding -Value @{
+        PartitionKey = 'Test'
+        RowKey = "$i"
+        Name = "Name $i"
+    }
+}
+```
+
+# <a name="python"></a>[Python](#tab/python)
+
+Das folgende Beispiel zeigt, wie Sie die Tabellenspeicherausgabe-Bindung verwenden. Die `table`-Bindung ist in *function.json* konfiguriert, indem `name`, `tableName`, `partitionKey` und `connection` Werte zugewiesen werden:
+
+```json
+{
+  "scriptFile": "__init__.py",
+  "bindings": [
+    {
+      "name": "message",
+      "type": "table",
+      "tableName": "messages",
+      "partitionKey": "message",
+      "connection": "AzureWebJobsStorage",
+      "direction": "out"
+    },
+    {
+      "authLevel": "function",
+      "type": "httpTrigger",
+      "direction": "in",
+      "name": "req",
+      "methods": [
+        "get",
+        "post"
+      ]
+    },
+    {
+      "type": "http",
+      "direction": "out",
+      "name": "$return"
+    }
+  ]
+}
+```
+
+Die folgende Funktion generiert eine eindeutige UUI für den `rowKey`-Wert und speichert die Nachricht dauerhaft im Tabellenspeicher.
+
+```python
+import logging
+import uuid
+import json
+
+import azure.functions as func
+
+def main(req: func.HttpRequest, message: func.Out[str]) -> func.HttpResponse:
+
+    rowKey = str(uuid.uuid4())
+
+    data = {
+        "Name": "Output binding message",
+        "PartitionKey": "message",
+        "RowKey": rowKey
+    }
+
+    message.set(json.dumps(data))
+
+    return func.HttpResponse(f"Message created with the rowKey: {rowKey}")
+```
+
 ---
 
 ## <a name="attributes-and-annotations"></a>Attribute und Anmerkungen
@@ -326,19 +366,23 @@ Mit dem Attribut `StorageAccount` können Sie das Speicherkonto auf Klassen-, Me
 
 Attribute werden von C#-Skript nicht unterstützt.
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
-
-Attribute werden von JavaScript nicht unterstützt.
-
-# <a name="python"></a>[Python](#tab/python)
-
-Attribute werden von Python nicht unterstützt.
-
 # <a name="java"></a>[Java](#tab/java)
 
 Verwenden Sie in der [Java-Funktionslaufzeitbibliothek](/java/api/overview/azure/functions/runtime) die [TableOutput](https://github.com/Azure/azure-functions-java-library/blob/master/src/main/java/com/microsoft/azure/functions/annotation/TableOutput.java/)-Anmerkung bei Parametern, um Werte in den Tabellenspeicher zu schreiben.
 
 Weitere Details finden Sie in dem [Beispiel](#example).
+
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+Attribute werden von JavaScript nicht unterstützt.
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+Attribute werden von PowerShell nicht unterstützt.
+
+# <a name="python"></a>[Python](#tab/python)
+
+Attribute werden von Python nicht unterstützt.
 
 ---
 
@@ -372,25 +416,29 @@ Greifen Sie mithilfe eines der Methodenparameter `ICollector<T> paramName` oder 
 
 Alternativ können Sie einen `CloudTable`-Methodenparameter verwenden, um unter Verwendung des Azure Storage SDKs in die Tabelle zu schreiben. Wenn Sie versuchen, eine Bindung an `CloudTable` herzustellen, und eine Fehlermeldung erhalten, stellen Sie sicher, dass ein Verweis auf [die richtige Storage SDK-Version](./functions-bindings-storage-table.md#azure-storage-sdk-version-in-functions-1x) vorliegt.
 
+# <a name="java"></a>[Java](#tab/java)
+
+Es gibt zwei Optionen für das Ausgeben einer Tabellenspeicherzeile aus einer Funktion mittels der [TableStorageOutput](/java/api/com.microsoft.azure.functions.annotation.tableoutput?view=azure-java-stablet&preserve-view=true)-Anmerkung:
+
+- **Rückgabewert**: Wenn Sie die Anmerkung auf die Funktion selbst anwenden, wird der Rückgabewert der Funktion als Tabellenspeicherzeile beibehalten.
+
+- **Imperativ**: Um den Nachrichtenwert explizit festzulegen, wenden Sie die Anmerkung auf einen bestimmten Parameter des Typs [`OutputBinding<T>`](/java/api/com.microsoft.azure.functions.outputbinding) an, wobei `T` die Eigenschaften `PartitionKey` und `RowKey` enthält. Diese Eigenschaften gehen häufig mit der Implementierung von `ITableEntity` oder der Vererbung von `TableEntity` einher.
+
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Greifen Sie mithilfe von `context.bindings.<name>` auf das Ausgabeereignis zu, wobei `<name>` der in der Eigenschaft `name` von *function.json* angegebene Wert ist.
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+Um in Tabellendaten zu schreiben, verwenden Sie das Cmdlet `Push-OutputBinding`, und legen Sie die Parameter `-Name TableBinding` und `-Value` entsprechend den Zeilendaten fest. Weitere Details finden Sie im [PowerShell-Beispiel](#example).
 
 # <a name="python"></a>[Python](#tab/python)
 
 Es gibt zwei Optionen für das Ausgeben einer Tabellenspeicherzeilen-Nachricht aus einer Funktion:
 
-- **Rückgabewert** : Legen Sie die Eigenschaft `name` in *function.json* auf `$return` fest. Mit dieser Konfiguration wird der Rückgabewert der Funktion als Tabellenspeicherzeile beibehalten.
+- **Rückgabewert**: Legen Sie die Eigenschaft `name` in *function.json* auf `$return` fest. Mit dieser Konfiguration wird der Rückgabewert der Funktion als Tabellenspeicherzeile beibehalten.
 
-- **Imperativ** : Übergeben Sie einen Wert an die [set](/python/api/azure-functions/azure.functions.out?view=azure-python&preserve-view=true#set-val--t-----none)-Methode des Parameters, der als [Out](/python/api/azure-functions/azure.functions.out?view=azure-python&preserve-view=true)-Typ deklariert ist. Der an `set` übergebene Wert wird als Event Hub-Nachricht beibehalten.
-
-# <a name="java"></a>[Java](#tab/java)
-
-Es gibt zwei Optionen für das Ausgeben einer Tabellenspeicherzeile aus einer Funktion mittels der [TableStorageOutput](/java/api/com.microsoft.azure.functions.annotation.tableoutput?view=azure-java-stablet&preserve-view=true)-Anmerkung:
-
-- **Rückgabewert** : Wenn Sie die Anmerkung auf die Funktion selbst anwenden, wird der Rückgabewert der Funktion als Tabellenspeicherzeile beibehalten.
-
-- **Imperativ** : Um den Nachrichtenwert explizit festzulegen, wenden Sie die Anmerkung auf einen bestimmten Parameter des Typs [`OutputBinding<T>`](/java/api/com.microsoft.azure.functions.outputbinding) an, wobei `T` die Eigenschaften `PartitionKey` und `RowKey` enthält. Diese Eigenschaften gehen häufig mit der Implementierung von `ITableEntity` oder der Vererbung von `TableEntity` einher.
+- **Imperativ**: Übergeben Sie einen Wert an die [set](/python/api/azure-functions/azure.functions.out?view=azure-python&preserve-view=true#set-val--t-----none)-Methode des Parameters, der als [Out](/python/api/azure-functions/azure.functions.out?view=azure-python&preserve-view=true)-Typ deklariert ist. Der an `set` übergebene Wert wird als Event Hub-Nachricht beibehalten.
 
 ---
 

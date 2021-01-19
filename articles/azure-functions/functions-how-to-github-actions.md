@@ -6,18 +6,18 @@ ms.topic: conceptual
 ms.date: 10/07/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python, github-actions-azure
-ms.openlocfilehash: 0018b7bafa8ff2ecd328a150df752082c85484e2
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: bc80a4f5c6c2919f0cb3faa15958fb75eed70270
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97608509"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98035222"
 ---
 # <a name="continuous-delivery-by-using-github-action"></a>Continuous Delivery mit GitHub Actions
 
-Verwenden Sie [GitHub Actions](https://github.com/features/actions), um einen Workflow zum automatischen Erstellen und Bereitstellen von Code in Ihrer Azure-Funktions-App zu definieren. 
+Verwenden Sie [GitHub Actions](https://github.com/features/actions), um einen Workflow zum automatischen Erstellen und Bereitstellen von Code in Ihrer Funktions-App in Azure Functions zu definieren. 
 
-In GitHub Actions ist ein [Workflow](https://docs.github.com/en/free-pro-team@latest/actions/learn-github-actions/introduction-to-github-actions#the-components-of-github-actions) ein automatisierter Prozess, den Sie in Ihrem GitHub-Repository definieren. Dieser Prozess informiert GitHub, wie Ihr Funktions-App-Projekt auf GitHub erstellt und bereitgestellt werden soll. 
+In GitHub Actions ist ein [Workflow](https://docs.github.com/en/free-pro-team@latest/actions/learn-github-actions/introduction-to-github-actions#the-components-of-github-actions) ein automatisierter Prozess, den Sie in Ihrem GitHub-Repository definieren. Dieser Prozess informiert GitHub darüber, wie Ihr Funktions-App-Projekt in GitHub erstellt und bereitgestellt werden soll. 
 
 Ein Workflow wird durch eine YAML-Datei im Pfad `/.github/workflows/` in Ihrem Repository definiert. Diese Definition enthält die verschiedenen Schritte und Parameter, die den Workflow bilden. 
 
@@ -187,6 +187,7 @@ Das folgende Beispiel zeigt den Teil des Workflows, der die Funktions-App erstel
 ---
 
 ## <a name="deploy-the-function-app"></a>Bereitstellen der Funktionen-App
+
 Verwenden Sie die Aktion `Azure/functions-action`, um Ihren Code in einer Funktions-App bereitzustellen. Diese Aktion umfasst drei Parameter:
 
 |Parameter |Erklärung  |
@@ -202,7 +203,7 @@ Im folgenden Beispiel werden Version 1 von `functions-action` und `publish prof
 Richten Sie einen .NET-Linux-Workflow ein, der ein Veröffentlichungsprofil verwendet.
 
 ```yaml
-name: Deploy DotNet project to Azure function app with a Linux environment
+name: Deploy DotNet project to function app with a Linux environment
 
 on:
   [push]
@@ -241,7 +242,7 @@ jobs:
 Richten Sie einen .NET-Windows-Workflow ein, der ein Veröffentlichungsprofil verwendet.
 
 ```yaml
-name: Deploy DotNet project to Azure function app with a Windows environment
+name: Deploy DotNet project to function app with a Windows environment
 
 on:
   [push]
@@ -283,7 +284,7 @@ jobs:
 Richten Sie einen Java-Linux-Workflow ein, der ein Veröffentlichungsprofil verwendet.
 
 ```yaml
-name: Deploy Java project to Azure Function App
+name: Deploy Java project to function app
 
 on:
   [push]
@@ -325,7 +326,7 @@ jobs:
 Richten Sie einen Java-Windows-Workflow ein, der ein Veröffentlichungsprofil verwendet.
 
 ```yaml
-name: Deploy Java project to Azure Function App
+name: Deploy Java project to function app
 
 on:
   [push]
@@ -369,7 +370,7 @@ jobs:
 Richten Sie einen Node.JS-Linux-Workflow ein, der ein Veröffentlichungsprofil verwendet.
 
 ```yaml
-name: Deploy Node.js project to Azure Function App
+name: Deploy Node.js project to function app
 
 on:
   [push]
@@ -411,7 +412,7 @@ jobs:
 Richten Sie einen Node.JS-Windows-Workflow ein, der ein Veröffentlichungsprofil verwendet.
 
 ```yaml
-name: Deploy Node.js project to Azure Function App
+name: Deploy Node.js project to function app
 
 on:
   [push]
@@ -455,7 +456,7 @@ jobs:
 Richten Sie einen Python-Linux-Workflow ein, der ein Veröffentlichungsprofil verwendet.
 
 ```yaml
-name: Deploy Python project to Azure Function App
+name: Deploy Python project to function app
 
 on:
   [push]

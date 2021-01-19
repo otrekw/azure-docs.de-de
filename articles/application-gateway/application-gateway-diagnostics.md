@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/22/2019
 ms.author: victorh
-ms.openlocfilehash: 9d2fba48762e11a92f6f3925c969b01aebbe3630
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.openlocfilehash: e18267d5a810826e41e05eb3dde3cd82a8eb9197
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97347590"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98065319"
 ---
 # <a name="back-end-health-and-diagnostic-logs-for-application-gateway"></a>Back-End-Integrität und Diagnoseprotokolle für Application Gateway
 
@@ -222,7 +222,7 @@ Das Zugriffsprotokoll wird nur generiert, wenn Sie es auf jeder Application Gate
 |serverRouted| Back-End-Server, an den das Anwendungsgateway die Anforderung weiterleitet|
 |serverStatus| HTTP-Statuscode des Back-End-Servers|
 |serverResponseLatency| Wartezeit für die Antwort vom Back-End-Server|
-|host| Adresse im host-Header der Anforderung Wenn dieses Feld neu geschrieben wird, enthält es den aktualisierten Hostnamen.|
+|host| Adresse im host-Header der Anforderung Wenn dieses Feld beim erneuten Generieren von Headern neu geschrieben wird, enthält es den aktualisierten Hostnamen.|
 |originalRequestUriWithArgs| Dieses Feld enthält die ursprüngliche Anforderungs-URL. |
 |requestUri| Dieses Feld enthält die URL nach dem Vorgang zur erneuten Generierung in Application Gateway. |
 |originalHost| Dieses Feld enthält den Hostnamen der ursprüngliche Anforderung.

@@ -12,19 +12,21 @@ ms.reviewer: nibaccam
 ms.date: 07/31/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, data4ml
-ms.openlocfilehash: 8b95c5a45992c895713e0be056856172b14b830d
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: 52b52c4c19b22fb1afd76d1e8dfa4163326c0244
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97740673"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98108589"
 ---
 # <a name="train-with-datasets-in-azure-machine-learning"></a>Trainieren mit Datasets in Azure Machine Learning
 
 
-In diesem Artikel erfahren Sie, wie Sie [Azure Machine Learning-Datasets](/python/api/azureml-core/azureml.core.dataset%28class%29?preserve-view=true&view=azure-ml-py) in Ihren Trainingsexperimenten einsetzen.  Sie können Datasets in Ihrem Lokal- oder Remotecomputeziel verwenden, ohne sich Gedanken über Verbindungszeichenfolgen oder Datenpfade machen zu müssten.
+In diesem Artikel erfahren Sie, wie Sie [Azure Machine Learning-Datasets](/python/api/azureml-core/azureml.core.dataset%28class%29?preserve-view=true&view=azure-ml-py) zum Trainieren von Machine Learning-Modellen einsetzen.  Sie können Datasets in Ihrem Lokal- oder Remotecomputeziel verwenden, ohne sich Gedanken über Verbindungszeichenfolgen oder Datenpfade machen zu müssten. 
 
 Azure Machine Learning-Datasets bieten eine nahtlose Integration in Azure Machine Learning-Trainingsfunktionen wie [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig?preserve-view=true&view=azure-ml-py), [HyperDrive](/python/api/azureml-train-core/azureml.train.hyperdrive?preserve-view=true&view=azure-ml-py) und [Azure Machine Learning-Pipelines](how-to-create-your-first-pipeline.md).
+
+Wenn Sie noch nicht bereit sind, Ihre Daten für das Modelltraining verfügbar zu machen, aber Ihre Daten zur Untersuchung in Ihr Notebook laden möchten, lesen Sie unter [Untersuchen der Daten in Ihrem Dataset](how-to-create-register-datasets.md#explore-data) nach. 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -34,7 +36,7 @@ Sie benötigen Folgendes, um Datasets zu erstellen und für das Training zu nutz
 
 * Ein [Azure Machine Learning-Arbeitsbereich](how-to-manage-workspace.md).
 
-* Eine [Installation des Azure Machine Learning-SDK für Python](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py) (mindestens 1.13.0), in dem das Paket „azureml-datasets“ enthalten ist
+* Eine [Installation des Azure Machine Learning SDK für Python](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py) (ab Version 1.13.0), in dem das Paket `azureml-datasets` enthalten ist.
 
 > [!Note]
 > Einige Datasetklassen sind vom Paket [azureml-dataprep](/python/api/azureml-dataprep/?preserve-view=true&view=azure-ml-py) abhängig. Für Linux-Benutzer werden diese Klassen nur unter den folgenden Distributionen unterstützt:  Red Hat Enterprise Linux, Ubuntu, Fedora und CentOS.
@@ -65,7 +67,7 @@ Mit dem folgenden Code wird das Skriptargument `--input-data` konfiguriert, das 
 > [!Note]
 > Wenn die ursprüngliche Datenquelle einen nicht numerischen Wert, leere Zeichenfolgen oder leere Werte enthält, werden diese Werte bei Verwendung von `to_pandas_dataframe()` durch *NULL*-Werte ersetzt.
 
-Wenn Sie die vorbereiteten Daten aus einem In-Memory-Pandas-Datenrahmen in ein neues Dataset laden müssen, schreiben Sie die Daten in eine lokale Datei, z. B. eine Parquet-Datei, und erstellen das neue Dataset aus dieser Datei. Sie können Datasets auch aus lokalen Dateien oder Pfaden in Datenspeichern erstellen. Erfahren Sie mehr über das [Erstellen von Datasets](how-to-create-register-datasets.md).
+Wenn Sie die vorbereiteten Daten aus einem In-Memory-Pandas-Datenrahmen in ein neues Dataset laden müssen, schreiben Sie die Daten in eine lokale Datei, z. B. eine Parquet-Datei, und erstellen das neue Dataset aus dieser Datei. Erfahren Sie mehr über das [Erstellen von Datasets](how-to-create-register-datasets.md).
 
 ```Python
 %%writefile $script_folder/train_titanic.py

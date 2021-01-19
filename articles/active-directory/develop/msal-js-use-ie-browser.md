@@ -13,16 +13,16 @@ ms.date: 05/16/2019
 ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 633166f3bb46212991920d6720737f8268b3f401
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 428405fc200751d2581ad9ca6e8ec97382594c09
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87026853"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98064843"
 ---
 # <a name="known-issues-on-internet-explorer-browsers-msaljs"></a>Bekannte Probleme bei Browsern mit Internet Explorer (MSAL.js)
 
-Die Microsoft-Authentifizierungsbibliothek für JavaScript (MSAL.js) wird für [JavaScript ES5](https://fr.wikipedia.org/wiki/ECMAScript#ECMAScript_Edition_5_.28ES5.29) generiert, um die Ausführung in Internet Explorer zu ermöglichen. Hierbei sollten aber einige Dinge beachtet werden.
+Die Microsoft Authentication Library für JavaScript (MSAL.js) wird für [JavaScript ES5](https://fr.wikipedia.org/wiki/ECMAScript#ECMAScript_Edition_5_.28ES5.29) generiert, um die Ausführung in Internet Explorer zu ermöglichen. Hierbei sollten aber einige Dinge beachtet werden.
 
 ## <a name="run-an-app-in-internet-explorer"></a>Ausführen einer App in Internet Explorer
 Wenn Sie „MSAL.js“ in Anwendungen nutzen möchten, die in Internet Explorer ausgeführt werden können, müssen Sie einen Verweis auf ein Zusagen-Polyfill-Element hinzufügen, bevor Sie auf das Skript „MSAL.js“ verweisen.

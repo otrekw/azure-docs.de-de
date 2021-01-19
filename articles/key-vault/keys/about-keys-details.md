@@ -9,12 +9,12 @@ ms.subservice: keys
 ms.topic: conceptual
 ms.date: 10/22/2020
 ms.author: ambapat
-ms.openlocfilehash: b483ffc480f9ad750f8d9901d6bec382db2378c2
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.openlocfilehash: 675c4f04ece322000ae0ebb44d6291c455db9397
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2020
-ms.locfileid: "97368918"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98133275"
 ---
 # <a name="key-types-algorithms-and-operations"></a>Schlüsseltypen, Algorithmen und Vorgänge
 
@@ -26,7 +26,7 @@ Die folgende Tabelle fasst die Schlüsseltypen und unterstützten Algorithmen zu
 | --- | --- | --- |
 |EC-P256, EC-P256K, EC-P384, EC-521|Nicht verfügbar|ES256<br>ES256K<br>ES384<br>ES512|
 |RSA 2K, 3K, 4K| RSA1_5<br>RSA-OAEP<br>RSA-OAEP-256|PS256<br>PS384<br>PS512<br>RS256<br>RS384<br>RS512<br>RSNULL| 
-|AES (128 Bit, 256 Bit)| AES-KW<br>AES-GCM<br>AES-CBC| Nicht verfügbar| 
+|AES (128 Bit, 256 Bit) <br/>(Nur verwaltetes HSM)| AES-KW<br>AES-GCM<br>AES-CBC| Nicht verfügbar| 
 |||
 
 ##  <a name="ec-algorithms"></a>EC-Algorithmen
@@ -65,7 +65,7 @@ Die folgende Tabelle fasst die Schlüsseltypen und unterstützten Algorithmen zu
 -   **RS512**: RSASSA-PKCS-v1_5 mithilfe von SHA-512. Der von der Anwendung bereitgestellte Zusammenfassungswert muss mithilfe von SHA-512 berechnet werden und 64 Byte lang sein.  
 -   **RSNULL**: Siehe [RFC2437](https://tools.ietf.org/html/rfc2437). Hierbei handelt es sich um einen speziellen Anwendungsfall für bestimmte TLS-Szenarien.  
 
-##  <a name="symmetric-key-algorithms"></a>Algorithmen für symmetrische Schlüssel
+##  <a name="symmetric-key-algorithms-managed-hsm-only"></a>Algorithmen für symmetrische Schlüssel (nur verwaltetes HSM)
 - **AES-KW**: AES-Schlüsselverpackung ([RFC3394](https://tools.ietf.org/html/rfc3394))
 - **AES-GCM:** AES-Verschlüsselung im Galois-Zählermodus ([NIST SP 800-38d](https://csrc.nist.gov/publications/sp800))
 - **AES-CBC:** AES-Verschlüsselung im Verschlüsselungsblockverkettungs-Modus ([NIST SP 800-38a](https://csrc.nist.gov/publications/sp800))

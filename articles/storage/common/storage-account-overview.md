@@ -1,20 +1,20 @@
 ---
 title: Speicherkontoübersicht
 titleSuffix: Azure Storage
-description: Hier finden Sie eine Übersicht über Speicherkonten in Azure Storage. Überprüfen Sie Kontobenennung, Leistungsstufen, Zugriffsebenen, Redundanz, Verschlüsselung, Endpunkte und mehr.
+description: Erfahren Sie mehr über die verschiedenen Typen von Speicherkonten in Azure Storage. Überprüfen Sie Kontobenennung, Leistungsstufen, Zugriffsebenen, Redundanz, Verschlüsselung, Endpunkte und mehr.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 12/11/2020
+ms.date: 01/08/2021
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 2c9c4cd643e2e4b89f9a7d8f44a6569d0dde2b37
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 5cf43310c68c8446b9465a39d85f84c8273a68d8
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97357380"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98051223"
 ---
 # <a name="storage-account-overview"></a>Speicherkontoübersicht
 
@@ -24,7 +24,40 @@ Um zu erfahren, wie Sie ein Azure Storage-Konto erstellen, lesen Sie den Artikel
 
 ## <a name="types-of-storage-accounts"></a>Speicherkontentypen
 
-[!INCLUDE [storage-account-types-include](../../../includes/storage-account-types-include.md)]
+Azure Storage bietet mehrere Arten von Speicherkonten. Jeder Typ unterstützt unterschiedliche Features und verfügt über ein eigenes Preismodell. Informieren Sie sich vor dem Erstellen eines Speicherkontos genau über diese Unterschiede, um den Kontotyp zu ermitteln, der sich für Ihre Anwendungen am besten eignet. Folgende Speicherkontotypen stehen zur Verfügung:
+
+- **Konten vom Typ „Allgemein v2“:** Grundlegender Speicherkontotyp für Blobs, Dateien, Warteschlangen und Tabellen. Empfohlen für die meisten Azure Storage-Szenarien.
+- **Konten vom Typ „Allgemein v1“:** Legacy-Speicherkontotyp für Blobs, Dateien, Warteschlangen und Tabellen. Verwenden Sie nach Möglichkeit Konten vom Typ „Allgemein v2“.
+- **BlockBlobStorage-Konten**: Speicherkonten mit Premium-Leistungsmerkmalen für Blockblobs und Anfügeblobs. Empfohlen für Szenarien mit hohen Transaktionsraten oder Szenarien, die kleinere Objekte verwenden oder aber eine gleichbleibend geringe Speicherlatenz erfordern.
+- **FileStorage-Konten**: Reine Dateispeicherkonten mit Premium-Leistungsmerkmalen Empfohlen für Unternehmens- oder Hochleistungsanwendungen
+- **BlobStorage-Konten**: Ältere reine Blobspeicherkonten. Verwenden Sie nach Möglichkeit Konten vom Typ „Allgemein v2“.
+
+In der folgenden Tabelle werden die Typen von Speicherkonten, die jeweils unterstützten Dienste und die unterstützten Bereitstellungsmodelle der einzelnen Kontotypen beschrieben:
+
+| Speicherkontotyp | Unterstützte Dienste | Redundanzoptionen | Bereitstellungsmodell<sup>1</sup> |
+|--|--|--|--|
+| Allgemein v2 | Blob, Datei, Warteschlange, Tabelle, Datenträger und Data Lake Gen2<sup>2</sup> | LRS, GRS, RA-GRS, ZRS, GZRS, RA-GZRS<sup>3</sup> | Ressourcen-Manager |
+| Allgemein v1 | Blob, Datei, Warteschlange, Tabelle und Datenträger | LRS, GRS, RA-GRS | Resource Manager, klassisch |
+| BlockBlobStorage | Blob (nur Blockblobs und Anfügeblobs) | LRS, ZRS<sup>3</sup> | Ressourcen-Manager |
+| FileStorage | Nur Datei | LRS, ZRS<sup>3</sup> | Ressourcen-Manager |
+| BlobStorage | Blob (nur Blockblobs und Anfügeblobs) | LRS, GRS, RA-GRS | Ressourcen-Manager |
+
+<sup>1</sup>Die Verwendung des Azure Resource Manager-Bereitstellungsmodells wird empfohlen. Speicherkonten, die das klassische Bereitstellungsmodell verwenden, können an einigen Standorten weiterhin erstellt werden, und vorhandene klassische Konten werden weiterhin unterstützt. Weitere Informationen finden Sie unter [Azure Resource Manager-Bereitstellung im Vergleich zur klassischen Bereitstellung: Grundlegendes zu Bereitstellungsmodellen und zum Status von Ressourcen](../../azure-resource-manager/management/deployment-models.md).
+
+<sup>2</sup> Azure Data Lake Storage Gen2 basiert auf Azure Blob Storage und bietet eine Reihe von Funktionen für die Big Data-Analyse. Data Lake Storage Gen2 wird nur für Speicherkonten vom Typ „GPv2“ mit aktiviertem hierarchischen Namespace unterstützt. Weitere Informationen zu Data Lake Storage Gen2 finden Sie in der [Einführung in Azure Data Lake Storage Gen2](../blobs/data-lake-storage-introduction.md).
+
+<sup>3</sup> Zonenredundanter Speicher (ZRS) und geozonenredundanter Speicher (GZRS/RA-GZRS) sind in bestimmten Regionen nur für Standardkonten des Typs „Universell V2“ sowie für Konten des Typs „BlockBlobStorage“ und „FileStorage“ verfügbar. Weitere Informationen zu den Azure Storage-Redundanzoptionen finden Sie unter [Azure Storage-Redundanz](storage-redundancy.md).
+
+### <a name="storage-account-redundancy"></a>Speicherkontenredundanz
+
+Redundanzoptionen für ein Speicherkonto umfassen Folgendes:
+
+- **Lokal redundanter Speicher (LRS):** Eine einfache, kostengünstige Redundanzstrategie. Daten werden drei Mal synchron innerhalb eines einzigen physischen Speicherorts in der primären Region kopiert.
+- **Zonenredundanter Speicher (ZRS):** Redundanz für Szenarien, die Hochverfügbarkeit erfordern. Daten werden synchron über drei Azure-Verfügbarkeitszonen hinweg in der primären Region kopiert.
+- **Georedundanter Speicher (Geo-Redundant Storage, GRS)** : Regionsübergreifende Redundanz zum Schutz vor regionalen Ausfällen. Die Daten werden in der primären Region drei Mal synchron kopiert und dann asynchron in die sekundäre Region kopiert. Aktivieren Sie für den Lesezugriff auf die Daten in der sekundären Region den georedundanten Speicher mit Lesezugriff (RA-GRS).
+- **Geozonenredundanter Speicher (GZRS)** : Redundanz für Szenarien, die sowohl Hochverfügbarkeit als auch maximale Dauerhaftigkeit erfordern. Die Daten werden synchron über drei Azure-Verfügbarkeitszonen in die primären Region kopiert und anschließend asynchron in die sekundäre Region kopiert. Aktivieren Sie für den Lesezugriff auf Daten in der sekundären Region den geozonenredundanten Speicher mit Lesezugriff (RA-GZRS).
+
+Weitere Informationen zu Redundanzoptionen in Azure Storage finden Sie unter [Azure Storage-Redundanz](storage-redundancy.md).
 
 ### <a name="general-purpose-v2-accounts"></a>Allgemeines Konto vom Typ „General Purpose v2“
 
@@ -83,7 +116,17 @@ Beachten Sie bei der Benennung Ihres Speicherkontos folgende Regeln:
 
 ## <a name="performance-tiers"></a>Leistungsstufen
 
-Je nach dem von Ihnen erstellten Speicherkontotyp können Sie zwischen den Leistungsstufen „Standard“ und „Premium“ wählen.
+Je nach dem von Ihnen erstellten Speicherkontotyp können Sie zwischen den Leistungsstufen „Standard“ und „Premium“ wählen. In der folgenden Tabelle ist zusammengefasst, welche Leistungsstufen für welchen Typ von Speicherkonto verfügbar sind.
+
+| Speicherkontotyp | Unterstützte Leistungsstufen |
+|--|--|
+| Allgemein v2 | Standard, Premium<sup>1</sup> |
+| Allgemein v1 | Standard, Premium<sup>1</sup> |
+| BlockBlobStorage | Premium |
+| FileStorage | Premium |
+| BlobStorage | Standard |
+
+<sup>1</sup> Premium-Leistung für Konten vom Typ „Universell V1“ und „Universell V2“ ist nur für Datenträger und Seitenblobs verfügbar. Premium-Leistung für Block- oder Anfügeblobs ist nur für BlockBlobStorage-Konten verfügbar. Premium-Leistung für Dateien ist nur für FileStorage-Konten verfügbar.
 
 ### <a name="general-purpose-storage-accounts"></a>Allgemeine Speicherkonten
 
@@ -112,12 +155,20 @@ Folgende Zugriffsebenen sind verfügbar:
 
 Wenn sich das Nutzungsmuster Ihrer Daten ändert, können Sie jederzeit zwischen diesen Zugriffsebenen wechseln. Weitere Informationen zu Zugriffsebenen finden Sie unter [Azure Blob Storage: Zugriffsebenen „Heiß“ (Hot), „Kalt“ (Cool) und „Archiv“](../blobs/storage-blob-storage-tiers.md).
 
+In der folgenden Tabelle wird gezeigt, welche Leistungsstufen für Blobs bei den einzelnen Typen von Speicherkonten verfügbar sind.
+
+| Speicherkontotyp | Unterstützte Zugriffsebenen |
+|--|--|
+| Allgemein v2 | Heiß, Kalt, Archiv<sup>1</sup> |
+| Allgemein v1 | – |
+| BlockBlobStorage | – |
+| FileStorage | – |
+| BlobStorage | Heiß, Kalt, Archiv<sup>1</sup> |
+
+<sup>1</sup> Für die Archivspeicherebene und das Blobebenentiering werden nur Blockblobs unterstützt. Die Ebene „Archiv“ ist nur auf Ebene der einzelnen Blobs verfügbar, nicht auf Ebene des Speicherkontos. Weitere Informationen finden Sie unter [Zugriffsebenen für Azure Blob Storage: „Heiß“, „Kalt“ und „Archiv“](../blobs/storage-blob-storage-tiers.md).
+
 > [!IMPORTANT]
-> Das Ändern der Zugriffsebene für ein vorhandenes Speicherkonto oder Blob zieht möglicherweise zusätzliche Gebühren nach sich. Weitere Informationen finden Sie im Abschnitt [Speicherkontoabrechnung](#storage-account-billing).
-
-## <a name="redundancy"></a>Redundanz
-
-[!INCLUDE [storage-common-redundancy-options](../../../includes/storage-common-redundancy-options.md)]
+> Das Ändern der Zugriffsebene für ein vorhandenes Speicherkonto oder Blob zieht möglicherweise zusätzliche Gebühren nach sich. Weitere Informationen finden Sie unter [Speicherkontoabrechnung](#storage-account-billing).
 
 ## <a name="encryption"></a>Verschlüsselung
 
@@ -127,13 +178,15 @@ Alle Daten in Ihrem Speicherkonto werden auf Dienstseite verschlüsselt. Weitere
 
 Ein Speicherkonto bietet einen eindeutigen Namespace für Ihre Daten in Azure. Jedes Objekt, das Sie in Azure speichern, besitzt eine Adresse, die den eindeutigen Namen Ihres Speicherkontos enthält. Die Kombination aus Kontoname und Azure Storage-Dienstendpunkt bildet die Endpunkte für Ihr Speicherkonto.
 
-Wenn Ihr allgemeines Speicherkonto beispielsweise *meinspeicherkonto* heißt, lauten die Standardendpunkte für dieses Konto wie folgt:
+In der folgenden Tabelle sind die Endpunkte für die einzelnen Azure Storage-Dienste aufgeführt.
 
-- Blob Storage: `https://*mystorageaccount*.blob.core.windows.net`
-- Table Storage: `https://*mystorageaccount*.table.core.windows.net`
-- Queue Storage: `https://*mystorageaccount*.queue.core.windows.net`
-- Azure Files: `https://*mystorageaccount*.file.core.windows.net`
-- Azure Data Lake Storage Gen2: `https://*mystorageaccount*.dfs.core.windows.net` (Verwendet den [ABFS-Treiber, der speziell für Big Data optimiert ist](../blobs/data-lake-storage-introduction.md#key-features-of-data-lake-storage-gen2).)
+| Speicherdienst | Endpunkt |
+|--|--|
+| Blobspeicher | `https://<storage-account>.blob.core.windows.net` |
+| Azure Data Lake Storage Gen2 | `https://<storage-account>.dfs.core.windows.net` |
+| Azure Files | `https://<storage-account>.file.core.windows.net` |
+| Queue Storage | `https://<storage-account>.queue.core.windows.net` |
+| Tabellenspeicher | `https://<storage-account>.table.core.windows.net` |
 
 > [!NOTE]
 > Blockblob- und Blockspeicherkonten machen nur den Endpunkt des Blob-Diensts verfügbar.
@@ -184,7 +237,17 @@ Weitere Informationen zur Azure Storage REST-API finden Sie unter [Azure Storage
 
 ## <a name="storage-account-billing"></a>Speicherkontoabrechnung
 
-[!INCLUDE [storage-account-billing-include](../../../includes/storage-account-billing-include.md)]
+Die Abrechnung für Azure Storage basiert auf der Nutzung Ihres Speicherkontos. Alle Objekte in einem Speicherkonto werden zusammen als Gruppe abgerechnet. Die Speicherkosten werden nach den folgenden Faktoren berechnet:
+
+- **Region** bezieht sich auf die geografische Region, in der sich Ihr Konto befindet.
+- **Kontotyp** verweist auf den Typ des Speicherkontos, das Sie verwenden.
+- **Zugriffsebene** bezieht sich auf das Datenverwendungsmuster, das Sie für Ihr Konto vom Typ „Allgemein v2“ oder Ihr Blobspeicherkonto angegeben haben.
+- **Kapazität** bezieht sich darauf, wie viel von Ihrer Speicherkontozuweisung zum Speichern von Daten verwendet wird.
+- Die **Replikation** bestimmt, wie viele Kopien Ihrer Daten jeweils an welchen Standorten unterhalten werden.
+- **Transaktionen** beziehen sich auf alle Lese- und Schreibvorgänge in Azure Storage.
+- **Datenausgang** bezieht sich alle Daten, die aus einer Azure-Region übertragen werden. Wenn eine Anwendung, die nicht in der gleichen Region ausgeführt wird, auf die Daten in Ihrem Speicherkonto zugreift, fallen Gebühren für den Datenausgang an. Weitere Informationen zur Verwendung von Ressourcengruppen zum Gruppieren von Daten und Diensten in der gleichen Region zur Beschränkung vom Gebühren für den Datenausgang, finden Sie unter [Was ist eine Azure-Ressourcengruppe?](/azure/cloud-adoption-framework/govern/resource-consistency/resource-access-management#what-is-an-azure-resource-group).
+
+Die Seite [Preise für Azure Storage](https://azure.microsoft.com/pricing/details/storage/) bietet detaillierte Preisinformationen basierend auf Kontotyp, Speicherkapazität, Replikation und Transaktionen. In der [Datenübertragungs-Preisübersicht](https://azure.microsoft.com/pricing/details/data-transfers/) finden Sie detaillierte Preisinformationen für den Datenausgang. Sie können den [Azure Storage-Preisrechner](https://azure.microsoft.com/pricing/calculator/?scenario=data-management) verwenden, um Ihre Kosten zu bestimmen.
 
 [!INCLUDE [cost-management-horizontal](../../../includes/cost-management-horizontal.md)]
 

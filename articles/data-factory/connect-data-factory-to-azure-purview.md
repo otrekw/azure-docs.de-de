@@ -13,12 +13,12 @@ ms.custom:
 - seo-lt-2019
 - references_regions
 ms.date: 12/3/2020
-ms.openlocfilehash: 94b2ed8a25ca5cc837f6677dea1c0bbb54225fcd
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: 7dc05c88416bb2a23221029bc04c506271a86652
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96602968"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98108346"
 ---
 # <a name="connect-data-factory-to-azure-purview-preview"></a>Herstellen einer Verbindung zwischen einer Data Factory und Azure Purview (Vorschau)
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
@@ -29,7 +29,7 @@ In diesem Artikel wird erläutert, wie Sie eine Data Factory mit Azure Purview v
 Azure Purview ist ein neuer Clouddienst, den Datenbenutzer für die zentrale Verwaltung der Datengovernance aller ihrer Daten in Cloud- und lokalen Umgebungen verwenden können. Sie können Ihre Data Factory mit Azure Purview verbinden und über diese Verbindung dann mit Azure Purview Herkunftsdaten von Copy- und Dataflow-Aktivitäten sowie von der Aktivität „SSIS-Paket ausführen“ aufzeichnen. Informationen zum Registrieren einer Data Factory in Azure Purview finden Sie unter [Verbinden von Azure Data Factory und Azure Purview](https://docs.microsoft.com/azure/purview/how-to-link-azure-data-factory). 
 
 ## <a name="report-lineage-data-to-azure-purview"></a>Übermitteln von Herkunftsdaten an Azure Purview
-Beim Ausführen von Copy- und Dataflow-Aktivitäten oder der Aktivität „SSIS-Paket ausführen“ in Azure Data Factory können Kunden die Abhängigkeitsbeziehung abrufen und sich eine allgemeine Übersicht über den gesamten Workflowprozess zwischen den Datenquellen und dem Ziel verschaffen.
+Beim Ausführen der Aktivitäten für Kopiervorgänge, Datenflüsse oder das Ausführen eines SSIS-Pakets in Azure Data Factory können Kunden die Abhängigkeitsbeziehung abrufen und sich eine allgemeine Übersicht über den gesamten Workflowprozess zwischen den Datenquellen und dem Ziel verschaffen.
 Informationen zum Sammeln von Herkunftsinformationen aus Azure Data Factory finden Sie unter [Data Factory-Herkunftsdaten](https://docs.microsoft.com/azure/purview/how-to-link-azure-data-factory#supported-azure-data-factory-activities).
 
 ## <a name="next-steps"></a>Nächste Schritte

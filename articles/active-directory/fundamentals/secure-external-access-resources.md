@@ -1,5 +1,5 @@
 ---
-title: Schützen des externen Zugriffs auf Ressourcen in Azure Active Directory
+title: Schützen der externen Zusammenarbeit in Azure Active Directory
 description: Leitfaden zum Schutz des externen Zugriffs auf interne Ressourcen für Architekten und IT-Administratoren
 services: active-directory
 author: BarbaraSelden
@@ -13,14 +13,14 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 39300c887245a99dce2913661f6492c85a1e6722
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: 7f09d2050617cbda539eee9fcda1ecfb204a015a
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97743713"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98059278"
 ---
-# <a name="securing-external-access-to-resources"></a>Schützen des externen Zugriffs auf Ressourcen
+# <a name="securing-external-collaboration-in-azure-active-directory-and-microsoft-365"></a>Schützen der externen Zusammenarbeit in Azure Active Directory und Microsoft 365
 
 Eine sichere Zusammenarbeit mit externen Partnern stellt sicher, dass die richtigen externen Partner für einen angemessenen Zeitraum angemessenen Zugriff auf interne Ressourcen haben. Durch ein ganzheitliches Governancekonzept können Sie Sicherheitsrisiken senken, Complianceziele erreichen und sicherstellen, dass Sie wissen, wer Zugriff hat.
 
@@ -43,7 +43,7 @@ Diese Dokumentation unterstützt Sie bei der Migration von einer Ad-hoc-basierte
 In den folgenden Artikeln finden Sie Informationen zum Schützen des externen Zugriffs auf Ressourcen. Wir empfehlen Ihnen, die Aktionen in der angegebenen Reihenfolge durchzuführen:
 
 
-1. [Ermitteln des gewünschten Sicherheitsstatus für externen Zugriff](1-secure-access-posture.md)
+1. [Ermitteln des Sicherheitsstatus für externen Zugriff](1-secure-access-posture.md)
 
 2. [Ermitteln des aktuellen Status](2-secure-access-current-state.md)
 

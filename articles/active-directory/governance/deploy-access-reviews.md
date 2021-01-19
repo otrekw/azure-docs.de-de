@@ -16,12 +16,12 @@ ms.date: 12/23/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a2e670525840b801df874e3f8dcbdbadc0955a12
-ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
+ms.openlocfilehash: 4122e645b76751e8944704a6405cf5dee09129f1
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97746302"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97932434"
 ---
 # <a name="planning-azure-active-directory-access-reviews-deployment"></a>Planen der Bereitstellung von Azure Active Directory-Zugriffsüberprüfungen
 
@@ -333,7 +333,7 @@ Gruppen, die von lokalem Active Directory synchronisiert werden, können in Azur
 > [!NOTE]
 > Es wird empfohlen, Geschäftsrichtlinien zu definieren, die die Erstellung von Gruppen regeln, um den Gruppenbesitz und die Zuständigkeit für die regelmäßige Überprüfung der Mitgliedschaft eindeutig festzulegen. 
 
-### <a name="review-membership-of-exclusion-groups-in-ca-policies"></a>Überprüfen der Mitgliedschaft von Ausschlussgruppen in Richtlinien für bedingten Zugriff 
+### <a name="review-membership-of-exclusion-groups-in-conditional-access-policies"></a>Überprüfen der Mitgliedschaft von Ausschlussgruppen in Richtlinien für bedingten Zugriff 
 
 In bestimmten Fällen sollen Richtlinien für bedingten Zugriff, die zum Schutz des Netzwerks konzipiert wurden, nicht für alle Benutzer gelten. Beispielsweise gilt eine Richtlinie für bedingten Zugriff, die Benutzern eine Anmeldung nur erlaubt, wenn sie sich im Unternehmensnetzwerk befinden, möglicherweise nicht für das Vertriebsteam, das oft im Außendienst ist. In diesem Fall sollten die Mitglieder des Vertriebsteams in eine Gruppe eingefügt werden, und diese Gruppe wird von der Richtlinie für bedingten Zugriff ausgeschlossen. 
 

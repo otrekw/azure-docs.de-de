@@ -3,18 +3,18 @@ title: Leitfaden zum Azure Relay-Hybridverbindungsprotokoll | Microsoft-Dokument
 description: In diesem Artikel werden die clientseitigen Interaktionen mit dem Hybridverbindungsrelay für die Verbindung von Clients in Listener- und Absenderrollen beschrieben.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 8a812aa401077b81934d89ada99cf1dc312d8dbc
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: 36321f88de173a37c9aa6615c4c0f2b29aec9f20
+ms.sourcegitcommit: 8f0803d3336d8c47654e119f1edd747180fe67aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96862325"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97976961"
 ---
 # <a name="azure-relay-hybrid-connections-protocol"></a>Azure Relay-Hybridverbindungsprotokoll
 
 Azure Relay ist eine der Säulen der Schlüsselfunktionen der Azure Service Bus-Plattform Die neue Funktion _Hybridverbindungen_ von Relay ist eine sichere Entwicklung mit offenem Protokoll, die auf HTTP und WebSockets basiert. Sie ersetzt die ehemalige, gleichnamige Funktion _BizTalk Services_, die auf einer proprietären Protokollbasis erstellt wurde. Die Integration von Hybridverbindungen in Azure App Services funktioniert weiterhin ohne weiteren Aufwand.
 
-Hybridverbindungen ermöglichen eine bidirektionale, binäre Streamkommunikation und einen einfachen Datagrammfluss zwischen zwei vernetzten Anwendungen. Eine oder beide Parteien können sich hierbei hinter NATs oder Firewalls befinden.
+Hybridverbindungen ermöglichen eine bidirektionale Anforderung/Antwort-Kommunikation in Form von binären Streams sowie einen einfachen Datagrammfluss zwischen zwei vernetzten Anwendungen. Eine oder beide Parteien können sich hierbei hinter NATs oder Firewalls befinden.
 
 In diesem Artikel werden die clientseitigen Interaktionen mit dem Hybridverbindungsrelay für die Verbindung von Clients in Listener- und Absenderrollen beschrieben. Außerdem wird beschrieben, wie Listener neue Verbindungen und Anforderungen akzeptieren.
 
@@ -24,7 +24,7 @@ Das Hybridverbindungs-Relay verbindet zwei Parteien durch einen Rendezvouspunkt 
 
 Der Dienst ermöglicht die Bereitstellung von WebSocket-Verbindungen und HTTP(S)-Anforderungen und -Antworten.
 
-Für das Interaktionsmodell werden Bezeichnungen verwendet, die auch für viele andere Netzwerk-APIs gängig sind. Es gibt einen Listener, der zuerst die Bereitschaft anzeigt, eingehende Verbindungen zu verarbeiten und akzeptiert diese anschließend, wenn sie ankommen. Auf der anderen Seite stellt ein Client eine Verbindung mit dem Listener her und erwartet, dass diese Verbindung für die Erstellung eines bidirektionalen Kommunikationspfads akzeptiert wird. „Verbinden“ (Connect), „Lauschen“ (Listen) und „Akzeptieren“ (Accept) sind die Begriffe, die Sie in den meisten Socket-APIs finden.
+Für das Interaktionsmodell werden Bezeichnungen verwendet, die auch für viele andere Netzwerk-APIs gängig sind. Es gibt einen Listener, der zuerst die Bereitschaft zur Verarbeitung eingehender Verbindungen anzeigt und diese anschließend akzeptiert, wenn sie eintreffen. Auf der anderen Seite stellt ein Client eine Verbindung mit dem Listener her und erwartet, dass diese Verbindung für die Erstellung eines bidirektionalen Kommunikationspfads akzeptiert wird. „Verbinden“ (Connect), „Lauschen“ (Listen) und „Akzeptieren“ (Accept) sind die Begriffe, die Sie in den meisten Socket-APIs finden.
 
 In jedem Relaykommunikationsmodell stellen beide Parteien ausgehende Verbindungen mit einem Dienstendpunkt her. Hierdurch wird der „Listener“ umgangssprachlich auch zu einem „Client“ und kann ebenfalls weitere Überschneidungen in der Terminologie verursachen. Daher wird bei Hybridverbindungen die folgende präzise Terminologie verwendet:
 
@@ -49,7 +49,7 @@ Wenn für Hybridverbindungen zwei oder mehr aktive Listener vorhanden sind, werd
 Wenn ein Absender eine neue Verbindung im Dienst öffnet, wählt und benachrichtigt der Dienst einen der aktiven Listener in der Hybridverbindung. Diese Benachrichtigung wird über den offenen Steuerkanal als JSON-Nachricht an den Listener gesendet. Die Nachricht enthält die URL des WebSocket-Endpunkts, mit dem der Listener eine Verbindung herstellen muss, um die Verbindung zu akzeptieren.
 
 Die URL kann bzw. muss vom Listener ohne zusätzlichen Aufwand direkt verwendet werden.
-Die codierten Informationen sind nur für kurze Zeit gültig. Dies ist im Grunde genommen der Zeitraum, der vom Absender toleriert wird, bis die End-to-End-Verbindung hergestellt wurde. Der anzunehmende Höchstwert beträgt 30 Sekunden. Die URL kann nur für einen erfolgreichen Verbindungsversuch verwendet werden. Sobald die WebSocket-Verbindung mit der Rendezvous-URL hergestellt wurde, wird jede weitere Aktivität in diesem WebSocket an den bzw. vom Absender übermittelt. Dies erfolgt ohne Eingriff oder Interpretation des Diensts.
+Die codierten Informationen sind nur für kurze Zeit gültig. Dies ist im Grunde genommen der Zeitraum, der vom Absender toleriert wird, bis die End-to-End-Verbindung hergestellt wurde. Der anzunehmende Höchstwert beträgt 30 Sekunden. Die URL kann nur für einen erfolgreichen Verbindungsversuch verwendet werden. Sobald die WebSocket-Verbindung mit der Rendezvous-URL hergestellt wurde, wird jede weitere Aktivität in diesem WebSocket an den bzw. vom Absender übermittelt. Dieses Verhalten erfolgt ohne Eingriff oder Interpretation durch den Dienst.
 
 ### <a name="request-message"></a>Request-Nachricht
 
@@ -57,7 +57,7 @@ Zusätzlich zu WebSocket-Verbindungen kann der Listener auch HTTP-Anforderungsfr
 
 Listener, die an Hybridverbindungen mit HTTP-Unterstützung angefügt sind, MÜSSEN die `request`-Geste verarbeiten. Ein Listener, der `request` nicht verarbeitet und so wiederholt Zeitüberschreitungsfehler verursacht, während die Verbindung besteht, KANN vom Dienst im weiteren Verlauf blockiert werden.
 
-Die Metadaten von HTTP-Frame-Headern werden in das JSON-Format übersetzt, damit sie vom Listener-Framework einfacher verarbeitet werden können. Ein Grund hierfür ist, dass HTTP-Header-Analysebibliotheken seltener als JSON-Parser sind. HTTP-Metadaten, die nur für die Beziehung zwischen dem Absender und dem Relay-HTTP-Gateway relevant sind, z.B. Autorisierungsinformationen, werden nicht weitergeleitet. HTTP-Anforderungstexte werden auf transparente Weise als binäre WebSocket-Frames übertragen.
+Die Metadaten von HTTP-Frame-Headern werden in das JSON-Format übersetzt, damit sie vom Listener-Framework einfacher verarbeitet werden können. Ein Grund hierfür ist, dass HTTP-Header-Analysebibliotheken seltener als JSON-Parser sind. HTTP-Metadaten, die nur für die Beziehung zwischen dem Absender und dem HTTP-Vermittlungsgateway relevant sind, wie z. B. Autorisierungsinformationen, werden nicht weitergeleitet. HTTP-Anforderungstexte werden auf transparente Weise als binäre WebSocket-Frames übertragen.
 
 Der Listener kann auf HTTP-Anforderungen antworten, indem er eine äquivalente Antwortgeste verwendet.
 
@@ -65,7 +65,7 @@ Für den Anforderung/Antwort-Datenfluss wird standardmäßig der Steuerkanal ver
 
 Für den Steuerkanal sind Anforderungs- und Antworttexte auf eine maximale Größe von 64 KB beschränkt. Die Metadaten von HTTP-Headern sind auf insgesamt 32 KB beschränkt. Wenn dieser Schwellenwert entweder von der Anforderung oder der Antwort überschritten wird, MUSS der Listener ein Upgrade auf ein WebSocket-Rendezvouselement durchführen, indem er eine Geste verwendet, die zur Verarbeitung der [Accept](#accept-message)-Nachricht äquivalent ist.
 
-Für Anforderungen entscheidet der Dienst, ob Anforderungen über den Steuerkanal geleitet werden. Beispiele hierfür sind u.a. Fälle, in denen eine Anforderung den Wert von 64 KB (Header und Text zusammen) klar überschreitet, die Anforderung mit [der Übertragungscodierung „Chunked“](https://tools.ietf.org/html/rfc7230#section-4.1) gesendet wird und der Dienst den begründeten Verdacht hegt, dass die Anforderung 64 KB überschreitet, oder das Lesen der Anforderung nicht sofort erfolgt. Wenn der Dienst für die Zustellung der Anforderung das Rendezvouselement wählt, wird nur die Rendezvousadresse an den Listener übergeben.
+Für Anforderungen entscheidet der Dienst, ob Anforderungen über den Steuerkanal geleitet werden. Beispiele hierfür sind u. a. Fälle, in denen eine Anforderung den Wert von 64 KB (Header plus Text) klar überschreitet, die Anforderung mit [der Übertragungscodierung „Chunk“](https://tools.ietf.org/html/rfc7230#section-4.1) gesendet wird und davon ausgegangen werden kann, dass die Anforderung 64 KB überschreitet oder das Lesen der Anforderung nicht sofort erfolgt. Wenn der Dienst für die Zustellung der Anforderung das Rendezvouselement wählt, wird nur die Rendezvousadresse an den Listener übergeben.
 Der Listener MUSS anschließend das WebSocket-Rendezvouselement einrichten, und der Dienst stellt die vollständige Anforderung, einschließlich der Texte, sofort über das WebSocket-Rendezvouselement bereit. Auch für die Antwort MUSS das WebSocket-Rendezvouselement verwendet werden.
 
 Für Anforderungen, die über den Steuerkanal eingehen, entscheidet der Listener, ob über den Steuerkanal oder das Rendezvouselement geantwortet werden soll. Der Dienst MUSS eine Rendezvousadresse enthalten, bei der jede Anforderung über den Steuerkanal geleitet wird. Diese Adresse ist nur für Upgrades basierend auf der aktuellen Anforderung gültig.
@@ -146,7 +146,7 @@ Wenn die WebSocket-Verbindung nicht hergestellt werden kann, weil der Pfad der H
 | ---- | -------------- | -------------------------------------------------------------------
 | 404  | Nicht gefunden      | Der Pfad der Hybridverbindung ist ungültig, oder die Basis-URL ist falsch formatiert.
 | 401  | Nicht autorisiert   | Das Sicherheitstoken ist nicht vorhanden, falsch formatiert oder ungültig.
-| 403  | Verboten      | Das Sicherheitstoken ist für diesen Pfad für diese Aktion ungültig.
+| 403  | Verboten      | Das Sicherheitstoken ist für diesen Pfad und diese Aktion ungültig.
 | 500  | Interner Fehler | Es ist ein Fehler im Dienst aufgetreten.
 
 Wenn die WebSocket-Verbindung absichtlich durch den Dienst heruntergefahren wird, nachdem sie anfangs eingerichtet wurde, erfolgt die Angabe des Grunds dafür mithilfe eines entsprechenden WebSocket-Protokollfehlercodes sowie mit einer beschreibenden Fehlermeldung, die auch eine Nachverfolgungs-ID enthält. Ohne eine erkennbare Fehlerbedingung fährt der Dienst den Steuerungskanal nicht herunter. Jedes saubere Herunterfahren wird durch den Client gesteuert.
@@ -164,7 +164,7 @@ Die Benachrichtigung zum Akzeptieren wird vom Dienst als JSON-Nachricht in einem
 Die Nachricht enthält ein JSON-Objekt mit dem Namen „accept“, das zu diesem Zeitpunkt die folgenden Eigenschaften definiert:
 
 * **address**: Die URL-Zeichenfolge, die zum Erstellen des WebSockets für den Dienst verwendet wird, um eingehende Verbindungen zu akzeptieren.
-* **id**: Der eindeutige Bezeichner für diese Verbindung. Wenn die ID vom Absenderclient angegeben wurde, ist sie der Wert, der vom Absender angegeben wurde. Andernfalls ist sie ein systemgenerierter Wert.
+* **id**: Der eindeutige Bezeichner für diese Verbindung. Wenn die ID vom Absenderclient angegeben wurde, ist sie der vom Absender bereitgestellte Wert, andernfalls ein systemgenerierter Wert.
 * **connectHeaders**: Alle HTTP-Header, die durch den Absender auf dem Relay-Endpunkt angegeben wurden, der ebenso das Sec-WebSocket-Protocol und die Sec-WebSocket-Extensions-Header enthält.
 
 ```json
@@ -202,7 +202,7 @@ Die URL muss unverändert für die Erstellung des accept-Sockets verwendet werde
 `{path}` ist der URL-codierte Namespacepfad der vorkonfigurierten Hybridverbindung, für die dieser Listener registriert werden soll. Dieser Ausdruck wird an den festen Pfadteil `$hc/` angehängt.
 
 Der `path`-Ausdruck kann mit einem Suffix und einem Abfragezeichenfolgenausdruck erweitert werden, der nach einem trennenden Schrägstrich auf den registrierten Namen folgt.
-Hiermit kann der Absenderclient dispatch-Argumente an den akzeptierenden Listener übergeben, wenn das Einschließen von HTTP-Headern nicht möglich ist. Erwartet wird, dass das Listenerframework den festen Pfadteil und den registrierten Namen aus dem Pfad analysiert und den Rest – unter Umständen ohne Abfragezeichenfolgenargumente mit vorangestelltem `sb-` – für die Anwendung verfügbar macht, damit diese entscheiden kann, ob die Verbindung akzeptiert wird.
+Mit diesem Parameter kann der Absenderclient dispatch-Argumente an den akzeptierenden Listener übergeben, wenn keine HTTP-Header eingeschlossen werden können. Erwartet wird, dass das Listenerframework den festen Pfadteil und den registrierten Namen aus dem Pfad analysiert und den Rest – unter Umständen ohne Abfragezeichenfolgenargumente mit vorangestelltem `sb-` – für die Anwendung verfügbar macht, damit diese entscheiden kann, ob die Verbindung akzeptiert wird.
 
 Weitere Informationen finden Sie im Abschnitt „Absenderprotokoll“ weiter unten.
 
@@ -210,7 +210,7 @@ Wenn ein Fehler auftritt, kann der Dienst wie folgt reagieren:
 
 | Code | Fehler          | BESCHREIBUNG
 | ---- | -------------- | -----------------------------------
-| 403  | Verboten      | Die URL ist nicht gültig.
+| 403  | Verboten      | Die URL ist ungültig.
 | 500  | Interner Fehler | Es ist ein Fehler im Dienst aufgetreten
 
  Nachdem die Verbindung hergestellt wurde, beendet der Server den WebSocket, wenn der Absender-WebSocket beendet wird oder folgenden Status aufweist:
@@ -241,7 +241,7 @@ Wenn der Vorgang erfolgreich abgeschlossen ist, schlägt dieser Handshake absich
 
 | Code | Fehler          | BESCHREIBUNG                          |
 | ---- | -------------- | ------------------------------------ |
-| 403  | Verboten      | Die URL ist nicht gültig.                |
+| 403  | Verboten      | Die URL ist ungültig.                |
 | 500  | Interner Fehler | Es ist ein Fehler im Dienst aufgetreten. |
 
 #### <a name="request-message"></a>Request-Nachricht
@@ -249,7 +249,7 @@ Wenn der Vorgang erfolgreich abgeschlossen ist, schlägt dieser Handshake absich
 Die `request`-Nachricht wird vom Dienst über den Steuerkanal an den Listener gesendet. Die gleiche Nachricht wird auch über das WebSocket-Rendezvouselement gesendet, nachdem es eingerichtet wurde.
 
 `request` besteht aus zwei Teilen: einem Header und einem oder mehreren binären Textframes.
-Wenn kein Text vorhanden ist, werden die Textframes weggelassen. Der Indikator für das Vorhandensein eines Texts ist die boolesche `body`-Eigenschaft in der „request“-Nachricht.
+Wenn kein Text vorhanden ist, werden die Textframes weggelassen. Die boolesche Eigenschaft `body` gibt an, ob die Anforderungsnachricht Text enthält.
 
 Für eine Anforderung mit einem Anforderungstext kann die Struktur beispielsweise wie folgt aussehen:
 
@@ -303,7 +303,7 @@ Der JSON-Inhalt für `request` lautet wie folgt:
   * `Upgrade` (RFC7230, Abschnitt 6.7)
   * `Close` (RFC7230, Abschnitt 8.1)
 
-* **requestTarget**: Zeichenfolge. Diese Eigenschaft enthält das [„Anforderungsziel“ (RFC7230, Abschnitt 5.3)](https://tools.ietf.org/html/rfc7230#section-5.3) der Anforderung. Hierin ist der Abfragezeichenfolgen-Teil enthalten, aus dem ALLE Parameter mit dem Präfix `sb-hc-` entfernt werden.
+* **requestTarget**: Zeichenfolge. Diese Eigenschaft enthält das [„Anforderungsziel“ (RFC7230, Abschnitt 5.3)](https://tools.ietf.org/html/rfc7230#section-5.3) der Anforderung. Sie enthält auch die Abfragezeichenfolge, aus der ALLE Parameter mit dem Präfix `sb-hc-` entfernt wurden.
 * **method**: Zeichenfolge. Dies ist die Methode der Anforderung gemäß [RFC7231, Abschnitt 4](https://tools.ietf.org/html/rfc7231#section-4). Die `CONNECT`-Methode darf NICHT verwendet werden.
 * **body**: Boolescher Wert. Gibt an, ob ein einzelner Frame oder mehrere Frames mit binärem Text folgen.
 
@@ -444,16 +444,16 @@ Wenn die WebSocket-Verbindung nicht hergestellt werden kann, weil der Pfad der H
 | ---- | -------------- | -------------------------------------------------------------------
 | 404  | Nicht gefunden      | Der Pfad der Hybridverbindung ist ungültig, oder die Basis-URL ist falsch formatiert.
 | 401  | Nicht autorisiert   | Das Sicherheitstoken ist nicht vorhanden, falsch formatiert oder ungültig.
-| 403  | Verboten      | Das Sicherheitstoken ist für diesen Pfad und für diese Aktion ungültig.
+| 403  | Verboten      | Das Sicherheitstoken ist für diesen Pfad und diese Aktion ungültig.
 | 500  | Interner Fehler | Es ist ein Fehler im Dienst aufgetreten.
 
 Wenn die WebSocket-Verbindung absichtlich durch den Dienst heruntergefahren wird, nachdem sie anfangs eingerichtet wurde, erfolgt die Angabe des Grunds dafür mithilfe eines entsprechenden WebSocket-Protokollfehlercodes sowie mit einer beschreibenden Fehlermeldung, die auch eine Nachverfolgungs-ID enthält.
 
 | WS-Status | BESCHREIBUNG
 | --------- | ------------------------------------------------------------------------------- 
-| 1000      | Der Listener beendet den Socket.
+| 1000      | Der Listener hat den Socket heruntergefahren.
 | 1001      | Der Hybridverbindungspfad wurde gelöscht oder deaktiviert.
-| 1008      | Das Sicherheitstoken ist abgelaufen, sodass die Autorisierungsrichtlinie verletzt wurde.
+| 1008      | Das Sicherheitstoken ist abgelaufen, daher wurde die Autorisierungsrichtlinie verletzt.
 | 1011      | Es ist ein Fehler im Dienst aufgetreten.
 
 ### <a name="http-request-protocol"></a>HTTP-Anforderungsprotokoll
@@ -467,7 +467,7 @@ https://{namespace-address}/{path}?sb-hc-token=...
 
 Die _namespace-address_ ist der vollqualifizierte Domänenname des Azure Relaynamespace, der die Hybridverbindung hostet, typischerweise in der Form `{myname}.servicebus.windows.net`.
 
-Die Anforderung kann beliebige zusätzliche HTTP-Header enthalten, z.B. auch von der Anwendung definierte Header. Alle bereitgestellten Header – mit Ausnahme der direkt in RFC7230 definierten (siehe [Request-Nachricht](#request-message)) – fließen an den Listener und befinden sich im `requestHeader`-Objekt der **request**-Nachricht.
+Die Anforderung kann beliebige zusätzliche HTTP-Header enthalten, z.B. auch von der Anwendung definierte Header. Alle bereitgestellten Header – mit Ausnahme der direkt in RFC7230 definierten (siehe [request-Nachricht](#request-message)) – fließen an den Listener und befinden sich im `requestHeader`-Objekt der **request**-Nachricht.
 
 Die Optionen des Abfragezeichenfolgenparameters lauten wie folgt:
 
@@ -485,13 +485,13 @@ Der Dienst fügt den Hostnamen des Relay-Namespace an `Via` an.
 | 200  | OK       | Die Anforderung wurde von mindestens einem Listener verarbeitet.  |
 | 202  | Zulässig | Die Anforderung wurde von mindestens einem Listener akzeptiert. |
 
-Wenn ein Fehler auftritt, kann der Dienst wie folgt reagieren. Anhand des Vorhandenseins des `Via`-Headers kann identifiziert werden, ob die Antwort vom Dienst oder vom Listener stammt. Wenn der Header vorhanden ist, stammt die Antwort vom Listener.
+Im Fall eines Fehlers kann der Dienst wie folgt reagieren. Anhand des Vorhandenseins des `Via`-Headers kann identifiziert werden, ob die Antwort vom Dienst oder vom Listener stammt. Wenn der Header vorhanden ist, stammt die Antwort vom Listener.
 
 | Code | Fehler           | BESCHREIBUNG
 | ---- | --------------- |--------- |
 | 404  | Nicht gefunden       | Der Pfad der Hybridverbindung ist ungültig, oder die Basis-URL ist falsch formatiert.
 | 401  | Nicht autorisiert    | Das Sicherheitstoken ist nicht vorhanden, falsch formatiert oder ungültig.
-| 403  | Verboten       | Das Sicherheitstoken ist für diesen Pfad und für diese Aktion ungültig.
+| 403  | Verboten       | Das Sicherheitstoken ist für diesen Pfad und diese Aktion ungültig.
 | 500  | Interner Fehler  | Es ist ein Fehler im Dienst aufgetreten.
 | 503  | Ungültiges Gateway     | Die Anforderung konnte nicht an einen Listener weitergeleitet werden.
 | 504  | Gatewaytimeout | Die Anforderung wurde an einen Listener weitergeleitet, aber der Listener hat den Empfang nicht innerhalb des erforderlichen Zeitraums bestätigt.

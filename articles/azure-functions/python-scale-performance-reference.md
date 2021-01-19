@@ -4,19 +4,19 @@ description: Hier erfahren Sie, wie Sie mithilfe von Python hochleistungsfähige
 ms.topic: article
 ms.date: 10/13/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 3383ec322903d15c6090630890d14ce6d90bc96f
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.openlocfilehash: baa362f029678f266f154df912a9178a6626667d
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97899383"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97935868"
 ---
 # <a name="improve-throughput-performance-of-python-apps-in-azure-functions"></a>Verbessern der Durchsatzleistung von Python-Apps in Azure Functions
 
 Beim Entwickeln von Apps für Azure Functions mithilfe von Python müssen Sie wissen, wie leistungsfähig Ihre Funktionen sind und wie sich die Leistung auf die Skalierung Ihrer Funktions-App auswirkt. Beim Entwerfen von hochleistungsfähigen Apps ist dieser Aspekt besonders wichtig. Die wichtigsten Faktoren, die Sie beim Entwerfen, Schreiben und Konfigurieren Ihrer Funktions-Apps bedenken müssen, sind die Konfigurationen für die Aufskalierung und die Durchsatzleistung.
 
 ## <a name="horizontal-scaling"></a>Horizontale Skalierung
-Standardmäßig überwacht Azure Functions automatisch die Auslastung Ihrer Anwendung und erstellt bei Bedarf zusätzliche Host Instanzen für Python. Um zu entscheiden, wann Instanzen hinzugefügt werden sollen, verwendet Azure Functions integrierte Schwellenwerte für verschiedene Triggertypen, beispielsweise in Bezug auf das Alter von Nachrichten und die Warteschlangengröße für QueueTrigger. Diese Schwellenwerte sind nicht vom Benutzer konfigurierbar. Weitere Informationen finden Sie unter [Funktionsweise von Verbrauchsplan (Verbrauchstarif) und Premium-Plan](functions-scale.md#how-the-consumption-and-premium-plans-work).
+Standardmäßig überwacht Azure Functions automatisch die Auslastung Ihrer Anwendung und erstellt bei Bedarf zusätzliche Host Instanzen für Python. Um zu entscheiden, wann Instanzen hinzugefügt werden sollen, verwendet Azure Functions integrierte Schwellenwerte für verschiedene Triggertypen, beispielsweise in Bezug auf das Alter von Nachrichten und die Warteschlangengröße für QueueTrigger. Diese Schwellenwerte sind nicht vom Benutzer konfigurierbar. Weitere Informationen finden Sie unter [Ereignisgesteuerte Skalierung in Azure Functions](event-driven-scaling.md).
 
 ## <a name="improving-throughput-performance"></a>Verbessern der Durchsatzleistung
 
@@ -35,7 +35,7 @@ Da Funktionsworkloads in der Praxis üblicherweise eine Mischung aus E/A- und CP
 
 Nachdem Sie das Workloadprofil ihrer Funktions-App nun kennen, können Sie die folgenden Konfigurationen zum Verbessern der Durchsatzleistung ihrer Funktionen einsetzen.
 
-* [Async](#async)
+* [Asynchron](#async)
 * [Mehrere Sprachworker](#use-multiple-language-worker-processes)
 * [Maximale Anzahl von Workern in einem Sprachworkerprozess](#set-up-max-workers-within-a-language-worker-process)
 * [Ereignisschleife](#managing-event-loop)

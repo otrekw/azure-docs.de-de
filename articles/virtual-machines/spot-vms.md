@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 10/05/2020
 ms.author: cynthn
 ms.reviewer: jagaveer
-ms.openlocfilehash: b8e5c6b6b755134772cc8eaea3dab3af7f5346c9
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: e1666b7e74ceefd7e7e4fe6e499667b09efa0ac7
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91963362"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97963792"
 ---
 # <a name="use-spot-vms-in-azure"></a>Verwenden von Spot-VMs in Azure
 
@@ -81,7 +81,7 @@ Sie können den Preisverlauf und Entfernungsraten pro Größe in einer Region im
 
 **Tabelle**:
 
-:::image type="content" source="./media/spot-table.png" alt-text="Screenshot: Regionsoptionen mit Unterschied in den Preisen und Entfernungsraten als Diagramm.":::
+:::image type="content" source="./media/spot-table.png" alt-text="Screenshot: Regionsoptionen mit Unterschied in den Preisen und Entfernungsraten als Tabelle.":::
 
 
 
@@ -110,6 +110,11 @@ Sie können den Preisverlauf und Entfernungsraten pro Größe in einer Region im
 **F:** Wo kann ich Fragen stellen?
 
 **A:** Sie können Ihre Frage in [Q&A](/answers/topics/azure-spot.html) veröffentlichen und mit `azure-spot` markieren. 
+
+
+**F:** Wie kann ich den maximalen Preis für eine Spot-VM ändern?
+
+**A:** Bevor Sie den maximalen Preis ändern können, müssen Sie die Zuordnung der VM aufheben. Dann können Sie den Preis im Portal im Abschnitt **Konfiguration** für die VM ändern. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 Verwenden Sie die [Befehlszeilenschnittstelle](./linux/spot-cli.md), das [Portal](spot-portal.md), [ARM-Vorlagen](./linux/spot-template.md) oder [PowerShell](./windows/spot-powershell.md), um Spot-VMs bereitzustellen.

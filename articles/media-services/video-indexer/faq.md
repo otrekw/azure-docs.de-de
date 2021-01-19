@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 05/12/2020
 ms.author: juliako
-ms.openlocfilehash: 721af069a76497576b92c4203a93656d19c283aa
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 0fc28a1f808eeb2977b1dcca5046ed29933b8aa8
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92217727"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98028793"
 ---
 # <a name="video-indexer-frequently-asked-questions"></a>Häufig gestellte Fragen zu Video Indexer
 
@@ -197,7 +197,7 @@ Zugriffstoken laufen nach einer Stunde ab. Daher müssen Sie einmal pro Stunde e
 
 ### <a name="what-are-the-login-options-to-video-indexer-developer-portal"></a>Welche Anmeldeoptionen bestehen für das Entwicklerportal für Video Indexer?
 
-Sie können sich mithilfe von Azure AD, einem Microsoft-Konto, einem Google-Konto oder einem Facebook-Konto anmelden. 
+Informationen zu [Anmeldeinformationen](release-notes.md#october-2020) finden Sie in den Versionshinweisen.
 
 Nachdem Sie Ihr E-Mail-Konto mithilfe eines Identitätsanbieters registriert haben, können Sie das betreffende E-Mail-Konto nicht mehr mit einem anderen Identitätsanbieter verwenden.
 

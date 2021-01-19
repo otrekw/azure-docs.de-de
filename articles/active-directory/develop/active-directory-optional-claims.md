@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: how-to
 ms.workload: identity
-ms.date: 1/04/2021
+ms.date: 1/06/2021
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, keyam
 ms.custom: aaddev
-ms.openlocfilehash: 6f95b4eca8dbaf6cfaa7546fddada7577a1541b3
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 1debeab6e420d9021ebba1cecb2d551cf21c9fe2
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97916251"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98028470"
 ---
 # <a name="how-to-provide-optional-claims-to-your-app"></a>Gewusst wie: Bereitstellen optionaler Ansprüche für Ihre App
 
@@ -87,14 +87,16 @@ Diese Ansprüche sind in Azure AD v1.0-Token immer enthalten, jedoch nie in v2.0
 | `given_name`  | Vorname                      | Gibt den Vornamen des Benutzers entsprechend der Definition im Benutzerobjekt an.<br>"given_name": "Frank"                   | Wird in MSA und Azure AD unterstützt.  Erfordert den Bereich `profile`. |
 | `upn`         | Benutzerprinzipalname | Ein Bezeichner für den Benutzer, der mit dem Parameter „username_hint“ verwendet werden kann.  Kein dauerhafter Bezeichner für den Benutzer, sollte nicht zur eindeutigen Identifizierung von Benutzerinformationen verwendet werden (beispielsweise als Datenbankschlüssel). Verwenden Sie stattdessen die Benutzerobjekt-ID (`oid`) als Datenbankschlüssel. Benutzern, die sich mit einer [alternativen Anmelde-ID](../authentication/howto-authentication-use-email-signin.md) anmelden, sollte ihr Benutzerprinzipalname (User Principal Name, UPN) nicht angezeigt werden. Verwenden Sie stattdessen den folgenden `preferred_username`-Anspruch, um den Anmeldezustand dem Benutzer anzuzeigen. | Informationen zur Konfiguration des Anspruchs finden Sie weiter unten unter [Zusätzliche Eigenschaften](#additional-properties-of-optional-claims). Erfordert den Bereich `profile`.|
 
+## <a name="v10-specific-optional-claims-set"></a>v1.0-spezifische optionale Ansprüche
+
+Einige der Verbesserungen des v2-Tokenformats sind für Apps verfügbar, die das v1-Tokenformat verwenden, da sie eine Optimierung der Sicherheit und Zuverlässigkeit ermöglichen. Diese werden für die vom v2-Endpunkt angeforderten ID-Token oder Zugriffstoken für APIs, die das v2-Tokenformat verwenden, nicht wirksam. Diese gelten nur für JWTs, nicht für SAML-Token. 
 
 **Tabelle 4: nur in v1.0 enthaltene optionale Ansprüche**
 
-Einige der Verbesserungen des v2-Tokenformats sind für Apps verfügbar, die das v1-Tokenformat verwenden, da sie eine Optimierung der Sicherheit und Zuverlässigkeit ermöglichen. Diese werden für die vom v2-Endpunkt angeforderten ID-Token oder Zugriffstoken für APIs, die das v2-Tokenformat verwenden, nicht wirksam. 
 
-| JWT-Anspruch     | Name                            | Beschreibung | Notizen |
+| JWT-Anspruch     | Name                            | BESCHREIBUNG | Notizen |
 |---------------|---------------------------------|-------------|-------|
-|`aud`          | Zielgruppe | In JWTs immer vorhanden, in v1-Zugriffstoken kann sie jedoch auf unterschiedlichste Weise ausgegeben werden, was die Programmierung bei Durchführung der Tokenüberprüfung erschwert.  Verwenden Sie die [zusätzlichen Eigenschaften für diesen Anspruch](#additional-properties-of-optional-claims), um sicherzustellen, dass er immer auf eine GUID in v1-Zugriffstoken festgelegt ist. | Nur v1-JWT-Zugriffstoken|
+|`aud`          | Zielgruppe | Ist in JWTs immer vorhanden, aber in v1-Zugriffstoken kann der Anspruch auf unterschiedliche Weise ausgegeben werden: als appID-URI mit oder ohne führenden Schrägstrich oder als Client-ID der Ressource. Diese Randomisierung lässt sich bei der Tokenüberprüfung im Code nur schwer berücksichtigen.  Verwenden Sie die [zusätzlichen Eigenschaften für diesen Anspruch](#additional-properties-of-optional-claims), um sicherzustellen, dass er in v1-Zugriffstoken immer auf die Client-ID der Ressource festgelegt ist. | Nur v1-JWT-Zugriffstoken|
 |`preferred_username` | Bevorzugter Benutzername        | Stellt den bevorzugten Benutzernamensanspruch innerhalb von v1-Token bereit. Dies erleichtert es Apps, Hinweise zu Benutzernamen bereitzustellen und lesbare Anzeigenamen unabhängig von Ihrem Tokentyp anzuzeigen.  Es wird empfohlen, diesen optionalen Anspruch anstelle etwa von `upn` oder `unique_name` zu verwenden. | v1-ID-Token und Zugriffstoken |
 
 ### <a name="additional-properties-of-optional-claims"></a>Zusätzliche Eigenschaften optionaler Ansprüche
@@ -108,8 +110,8 @@ Einige optionale Ansprüche können so konfiguriert werden, dass sie auf andere 
 | `upn`          |                          | Kann für SAML- und JWT-Antworten und für v1.0- und v2.0-Token verwendet werden. |
 |                | `include_externally_authenticated_upn`  | Bezieht den Gast-UPN ein, wie er im Ressourcenmandanten gespeichert ist. Zum Beispiel, `foo_hometenant.com#EXT#@resourcetenant.com` |
 |                | `include_externally_authenticated_upn_without_hash` | Wie oben, außer dass die Hashzeichen (`#`) durch Unterstriche (`_`) ersetzt werden, z. B. `foo_hometenant.com_EXT_@resourcetenant.com`|
-| `aud`          |                          | In v1-Zugriffstoken wird dies verwendet, um das Format des `aud`-Anspruchs zu ändern.  Dies hat keine Auswirkungen auf v2-Token oder ID-Token, bei denen der `aud`-Anspruch immer die Client-ID ist. Verwenden Sie diese Informationen, um sicherzustellen, dass Ihre API die Zielgruppenüberprüfung leichter durchführen kann Wie alle optionalen Ansprüche, die sich auf das Zugriffstoken auswirken, muss die Ressource in der Anforderung diesen optionalen Anspruch festlegen, da Ressourcen Besitzer des Zugriffstokens sind.|
-|                | `use_guid`               | Gibt die Client-ID der Ressource (API) im GUID-Format als `aud`-Anspruch anstelle eines AppID-URI oder einer GUID aus. Wenn also die Client-ID einer Ressource `bb0a297b-6a42-4a55-ac40-09a501456577` ist, erhält jede App, die ein Zugriffstoken für diese Ressource anfordert, ein Zugriffstoken mit `aud` : `bb0a297b-6a42-4a55-ac40-09a501456577`.|
+| `aud`          |                          | In v1-Zugriffstoken wird dies verwendet, um das Format des `aud`-Anspruchs zu ändern.  Dies hat keine Auswirkungen auf v2-Token oder ID-Token einer beliebigen Version, bei denen der `aud`-Anspruch immer die Client-ID ist. Verwenden Sie diese Konfiguration, um sicherzustellen, dass Ihre API die Zielgruppenüberprüfung leichter durchführen kann. Wie alle optionalen Ansprüche, die sich auf das Zugriffstoken auswirken, muss die Ressource in der Anforderung diesen optionalen Anspruch festlegen, da Ressourcen Besitzer des Zugriffstokens sind.|
+|                | `use_guid`               | Gibt die Client-ID der Ressource (API) im GUID-Format immer als `aud`-Anspruch aus, statt sie als nicht laufzeitabhängig festzulegen. Ein Beispiel: Wenn eine Ressource dieses Flag festlegt und die Client-ID `bb0a297b-6a42-4a55-ac40-09a501456577` lautet, erhält jede App, die ein Zugriffstoken für diese Ressource anfordert, ein Zugriffstoken mit `aud`: `bb0a297b-6a42-4a55-ac40-09a501456577`. </br></br> Wenn dieser Anspruch nicht festgelegt ist, könnte eine API Token mit dem `aud`-Anspruch `api://MyApi.com`, `api://MyApi.com/`, `api://myapi.com/AdditionalRegisteredField` oder einem anderen als App-ID-URI für diese API festgelegten Wert sowie die Client-ID der Ressource abrufen. |
 
 #### <a name="additional-properties-example"></a>Beispiel für zusätzliche Eigenschaften
 
@@ -136,7 +138,7 @@ Dieses OptionalClaims-Objekt bewirkt, dass das an den Client zurückgegebene ID-
 
 Sie können optionale Ansprüche für Ihre Anwendung über die Benutzeroberfläche oder das Anwendungsmanifest konfigurieren.
 
-1. Öffnen Sie das [Azure-Portal](https://portal.azure.com). 
+1. Öffnen Sie das <a href="https://portal.azure.com/" target="_blank">Azure-Portal<span class="docon docon-navigate-external x-hidden-focus"></span></a>. 
 1. Suchen Sie nach **Azure Active Directory**, und wählen Sie diese Option aus.
 1. Wählen Sie unter **Verwalten** die Option **App-Registrierungen** aus.
 1. Wählen Sie in der Liste die Anwendung aus, für die Sie optionale Ansprüche konfigurieren möchten.
@@ -245,7 +247,7 @@ Dieser Abschnitt behandelt die Konfigurationsoptionen unter den optionalen Anspr
 
 **Konfigurieren optionaler Gruppenansprüche über die Benutzeroberfläche:**
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
+1. Melden Sie sich beim <a href="https://portal.azure.com/" target="_blank">Azure-Portal<span class="docon docon-navigate-external x-hidden-focus"></span></a> an.
 1. Wählen Sie nach der Authentifizierung Ihren Azure AD-Mandanten aus, indem Sie ihn in der rechten oberen Ecke der Seite auswählen.
 1. Suchen Sie nach **Azure Active Directory**, und wählen Sie diese Option aus.
 1. Wählen Sie unter **Verwalten** die Option **App-Registrierungen** aus.
@@ -258,7 +260,7 @@ Dieser Abschnitt behandelt die Konfigurationsoptionen unter den optionalen Anspr
 
 **Konfigurieren optionaler Gruppenansprüche über das Anwendungsmanifest:**
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
+1. Melden Sie sich beim <a href="https://portal.azure.com/" target="_blank">Azure-Portal<span class="docon docon-navigate-external x-hidden-focus"></span></a> an.
 1. Wählen Sie nach der Authentifizierung Ihren Azure AD-Mandanten aus, indem Sie ihn in der rechten oberen Ecke der Seite auswählen.
 1. Suchen Sie nach **Azure Active Directory**, und wählen Sie diese Option aus.
 1. Wählen Sie in der Liste die Anwendung aus, für die Sie optionale Ansprüche konfigurieren möchten.
@@ -389,7 +391,7 @@ Im folgenden Beispiel verwenden Sie die Benutzeroberfläche für die **Tokenkonf
 
 **Benutzeroberflächenkonfiguration:**
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
+1. Melden Sie sich beim <a href="https://portal.azure.com/" target="_blank">Azure-Portal<span class="docon docon-navigate-external x-hidden-focus"></span></a> an.
 1. Wählen Sie nach der Authentifizierung Ihren Azure AD-Mandanten aus, indem Sie ihn in der rechten oberen Ecke der Seite auswählen.
 
 1. Suchen Sie nach **Azure Active Directory**, und wählen Sie diese Option aus.
@@ -412,7 +414,7 @@ Im folgenden Beispiel verwenden Sie die Benutzeroberfläche für die **Tokenkonf
 
 **Manifestkonfiguration:**
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
+1. Melden Sie sich beim <a href="https://portal.azure.com/" target="_blank">Azure-Portal<span class="docon docon-navigate-external x-hidden-focus"></span></a> an.
 1. Wählen Sie nach der Authentifizierung Ihren Azure AD-Mandanten aus, indem Sie ihn in der rechten oberen Ecke der Seite auswählen.
 1. Suchen Sie nach **Azure Active Directory**, und wählen Sie diese Option aus.
 1. Suchen Sie in der Liste nach der Anwendung, für die Sie optionale Ansprüche konfigurieren möchten, und klicken Sie darauf.

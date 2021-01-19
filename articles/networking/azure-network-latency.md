@@ -7,12 +7,12 @@ ms.service: virtual-network
 ms.topic: article
 ms.date: 12/07/2020
 ms.author: kumud
-ms.openlocfilehash: fb828d239266691766f55c1b156831afab7cc5bc
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: bc2d7bb7ba17a4a47fecf2144157f79f5367fca7
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96854671"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98059167"
 ---
 # <a name="azure-network-round-trip-latency-statistics"></a>Roundtrip-Latenzstatistiken von Azure-Netzwerken
 
@@ -22,9 +22,9 @@ Azure überwacht kontinuierlich die Latenz (Geschwindigkeit) der Kernbereiche de
 
 Die Latenzmessungen werden von ThousandEyes-Agents erfasst, die weltweit in Azure-Cloudregionen gehostet werden und fortlaufend in Intervallen von 1 Minute untereinander Netzwerktests senden. Die monatlichen Latenzstatistiken werden aus dem Mittelwert der erfassten Stichproben für den Monat abgeleitet.
 
-## <a name="november-2020-round-trip-latency-figures"></a>Zahlen zur Roundtriplatenz im November 2020
+## <a name="december-2020-round-trip-latency-figures"></a>Zahlen zur Roundtriplatenz im Dezember 2020
 
-Die monatlichen durchschnittlichen Roundtripzeiten zwischen Azure-Regionen für die letzten 30 Tage (Ende am 30. November 2020) sind unten dargestellt. Die folgenden Messungen werden von [ThousandEyes](https://thousandeyes.com) unterstützt.
+Im Folgenden sind die monatlichen durchschnittlichen Roundtripzeiten zwischen Azure-Regionen für die letzten 30 Tage (Ende am 31. Dezember 2020) dargestellt. Die folgenden Messungen werden von [ThousandEyes](https://thousandeyes.com) unterstützt.
 
 [![Latenzstatistiken zu regionsübergreifender Datenübertragung in Azure](media/azure-network-latency/azure-network-latency.png)](media/azure-network-latency/azure-network-latency.png#lightbox)
 

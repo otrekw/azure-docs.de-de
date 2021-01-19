@@ -3,12 +3,12 @@ title: Bereitstellen von Ressourcen mit Azure-CLI und Vorlagen
 description: Verwenden Sie Azure Resource Manager und Azure CLI, um Ressourcen in Azure bereitzustellen. Die Ressourcen werden in einer Resource Manager-Vorlage definiert.
 ms.topic: conceptual
 ms.date: 10/22/2020
-ms.openlocfilehash: 7b1639f31b696f300177d05107a98effc3f3ae23
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: a2caea70a51a737bfa433a089c03b43f252b5d6e
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92676192"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98028147"
 ---
 # <a name="deploy-resources-with-arm-templates-and-azure-cli"></a>Bereitstellen von Ressourcen mit ARM-Vorlagen und der Azure CLI
 
@@ -18,7 +18,7 @@ Die Bereitstellungsbefehle wurden in Version 2.2.0 der Azure CLI geändert. Die
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
 
-Wenn die Azure CLI nicht installiert ist, können Sie Cloud Shell verwenden. Weitere Informationen finden Sie unter [Bereitstellen von ARM-Vorlagen über Cloud Shell](deploy-cloud-shell.md).
+Wenn die Azure-Befehlszeilenschnittstelle nicht installiert ist, können Sie Azure Cloud Shell verwenden. Weitere Informationen finden Sie unter [Bereitstellen von ARM-Vorlagen über Azure Cloud Shell](deploy-cloud-shell.md).
 
 ## <a name="deployment-scope"></a>Bereitstellungsumfang
 
@@ -106,7 +106,7 @@ Das obige Beispiel erfordert einen URI mit öffentlichem Zugriff für die Vorlag
 
 ## <a name="deployment-name"></a>„Deployment name“ (Bereitstellungsname)
 
-Wenn Sie eine ARM-Vorlage bereitstellen, können Sie der Bereitstellung einen Namen geben. Dieser Name kann Ihnen beim Abrufen der Bereitstellung aus dem Bereitstellungsverlauf helfen. Wenn Sie keinen Namen für die Bereitstellung angeben, wird der Name der Vorlagendatei verwendet. Wenn Sie beispielsweise eine Vorlage mit dem Namen `azuredeploy.json` bereitstellen und keinen Bereitstellungsnamen angeben, erhält die Bereitstellung den Namen `azuredeploy`.
+Wenn Sie eine ARM-Vorlage bereitstellen, können Sie der Bereitstellung einen Namen geben. Dieser Name kann das Abrufen der Bereitstellung aus dem Bereitstellungsverlauf vereinfachen. Wenn Sie keinen Namen für die Bereitstellung angeben, wird der Name der Vorlagendatei verwendet. Wenn Sie beispielsweise eine Vorlage mit dem Namen `azuredeploy.json` bereitstellen und keinen Bereitstellungsnamen angeben, erhält die Bereitstellung den Namen `azuredeploy`.
 
 Bei jedem Ausführen einer Bereitstellung wird dem Bereitstellungsverlauf der Ressourcengruppe ein Eintrag mit dem Bereitstellungsnamen hinzugefügt. Wenn Sie eine andere Bereitstellung ausführen und denselben Namen vergeben, wird der vorherige Eintrag durch die aktuelle Bereitstellung ersetzt. Wenn Sie eindeutige Einträge im Bereitstellungsverlauf beibehalten möchten, müssen Sie jeder Bereitstellung einen eindeutigen Namen geben.
 
@@ -191,7 +191,7 @@ az deployment group create \
 
 Das Abrufen eines Parameterwerts aus einer Datei ist praktisch, wenn Sie Konfigurationswerte angeben müssen. Sie können beispielsweise [cloud-init-Werte für einen virtuellen Linux-Computer](../../virtual-machines/linux/using-cloud-init.md) angeben.
 
-Das Format „arrayContent.json“ sieht wie folgt aus:
+Das Format von _arrayContent.json_ lautet:
 
 ```json
 [
@@ -228,7 +228,7 @@ Anstatt Parameter als Inlinewerte in Ihrem Skript zu übergeben, ist es wohl ein
 
 Weitere Informationen zur Parameterdatei finden Sie unter [Erstellen einer Resource Manager-Parameterdatei](parameter-files.md).
 
-Um eine lokale Parameterdatei zu übergeben, verwenden Sie `@` zur Angabe einer lokalen Datei mit dem Namen „storage.parameters.json“ anzugeben.
+Um eine lokale Parameterdatei zu übergeben, verwenden Sie `@` zur Angabe einer lokalen Datei mit dem Namen _storage.parameters.json_.
 
 ```azurecli-interactive
 az deployment group create \

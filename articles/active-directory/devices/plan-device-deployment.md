@@ -11,12 +11,12 @@ author: BarbaraSelden
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bf30570f10f176c47aed0f99127e03a027eff775
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: fc631e4329c1df2cdcbfe57c2b43ccccf14afa85
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92093088"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936446"
 ---
 # <a name="plan-your-azure-active-directory-device-deployment"></a>Planen Ihrer Azure Active Directory-Gerätebereitstellung
 
@@ -44,7 +44,7 @@ Die wichtigsten Vorteile, wenn Sie Ihren Geräten eine Azure AD Identität zuwei
 
 * Steigern der Produktivität – mit Azure AD ermöglichen Sie Ihren Benutzern eine [nahtlose Anmeldung (SSO](./azuread-join-sso.md)) für Ihre lokalen und Cloudressourcen, sodass sie unabhängig von ihrem Standort produktiv arbeiten können.
 
-* Optimieren der Sicherheit – mit Azure AD Geräten können Sie [Richtlinien für bedingten Zugriff](../conditional-access/require-managed-devices.md) für Ressourcen basierend auf der Identität des Geräts oder des Benutzers anwenden. Richtlinien für bedingten Zugriff bieten mithilfe von [Azure AD Identity Protection](../identity-protection/overview-identity-protection.md) zusätzlichen Schutz. Das Einbinden eines Geräts in Azure AD ist eine Voraussetzung, um Ihre Sicherheit mit einer Strategie zur [kennwortlosen Authentifizierung](../authentication/concept-authentication-passwordless.md) zu optimieren.
+* Optimieren der Sicherheit – mit Azure AD-Geräten können Sie [Richtlinien für den bedingten Zugriff](../conditional-access/require-managed-devices.md) auf Ressourcen basierend auf der Identität des Geräts oder des Benutzers anwenden. Richtlinien für bedingten Zugriff bieten mithilfe von [Azure AD Identity Protection](../identity-protection/overview-identity-protection.md) zusätzlichen Schutz. Das Einbinden eines Geräts in Azure AD ist eine Voraussetzung, um Ihre Sicherheit mit einer Strategie zur [kennwortlosen Authentifizierung](../authentication/concept-authentication-passwordless.md) zu optimieren.
 
 * Verbessern der Benutzererfahrung – mit Geräteidentitäten in Azure AD ermöglichen Sie Ihren Benutzern einfachen Zugriff auf die cloudbasierten Ressourcen Ihrer Organisation sowohl über persönliche und als auch über unternehmenseigene Geräte. Administratoren können [Enterprise State Roaming](enterprise-state-roaming-overview.md) für eine einheitliche Darstellung auf allen Windows-Geräten aktivieren.
 
@@ -129,7 +129,7 @@ Bedingter Zugriff <br>(Über Azure AD Hybrid Join eingebundene Geräte erforderl
 
 Registrierte Geräte werden häufig mit [Microsoft Intune](/mem/intune/enrollment/device-enrollment) verwaltet. Geräte werden in Intune auf verschiedene Arten registriert, je nach Betriebssystem. 
 
-In Azure AD registrierte Geräte bieten Unterstützung für Bring Your Own Device (BYOD) und unternehmenseigene Geräte für das einmalige Anmelden in Cloudressourcen. Der Zugriff auf Ressourcen basiert auf den Azure AD-[Richtlinien für bedingten Zugriff](../conditional-access/require-managed-devices.md), die auf das Gerät und den Benutzer angewendet werden.
+In Azure AD registrierte Geräte bieten Unterstützung für Bring Your Own Device (BYOD) und unternehmenseigene Geräte für das einmalige Anmelden in Cloudressourcen. Der Zugriff auf Ressourcen basiert auf den Azure AD-[Richtlinien für bedingten Zugriff](../conditional-access/require-managed-devices.md), die auf das Gerät und den Benutzer angewandt werden.
 
 ### <a name="registering-devices"></a>Registrieren von Geräten
 

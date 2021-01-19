@@ -4,12 +4,12 @@ description: In diesem Artikel wird beschrieben, wie ein Auffächerungsszenario 
 ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
-ms.openlocfilehash: d61600801286126ea6ffb9a97bc5655b6f233816
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 91128033696af6a56488db7991987f1e384b719e
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77562189"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98027644"
 ---
 # <a name="fan-outfan-in-scenario-in-durable-functions---cloud-backup-example"></a>Auffächerungsszenario (nach innen und außen) in Durable Functions – Beispiel der Cloudsicherung
 
@@ -72,6 +72,23 @@ Beachten Sie die Zeile `yield context.df.Task.all(tasks);`. Sämtliche einzelnen
 
 Nach der Rückgabe von `context.df.Task.all` wissen wir, dass alle Funktionsaufrufe abgeschlossen wurden und Werte an uns zurückgegeben haben. Jeder Aufruf von `E2_CopyFileToBlob` gibt die Anzahl von hochgeladenen Bytes zurück. Die Summe der Gesamtbytezahl wird folglich berechnet, indem alle diese Rückgabewerte addiert werden.
 
+# <a name="python"></a>[Python](#tab/python)
+
+Die Funktion verwendet die Standarddatei *function.json* für Orchestratorfunktionen.
+
+[!code-json[Main](~/samples-durable-functions-python/samples/fan_in_fan_out/E2_BackupSiteContent/function.json)]
+
+Im Folgenden wird der Code dargestellt, der die Orchestratorfunktion implementiert:
+
+[!code-python[Main](~/samples-durable-functions-python/samples/fan_in_fan_out/E2_BackupSiteContent/\_\_init\_\_.py)]
+
+Beachten Sie die Zeile `yield context.task_all(tasks);`. Sämtliche einzelnen Aufrufe der `E2_CopyFileToBlob`-Funktion wurden *nicht* ausgegeben, sodass sie parallel ausgeführt werden können. Wenn dieses Array von Aufgaben an `context.task_all` übergeben wird, wird eine Aufgabe zurückgegeben, die erst *nach Abschluss aller Kopiervorgänge* abgeschlossen wird. Wenn Sie mit [`asyncio.gather`](https://docs.python.org/3/library/asyncio-task.html#asyncio.gather) in Python vertraut sind, ist dies nicht neu für Sie. Der Unterschied besteht darin, dass diese Aufgaben auf mehreren virtuellen Computern gleichzeitig ausgeführt werden könnten. Die Durable Functions-Erweiterung stellt dabei sicher, dass die End-to-End-Ausführung gegenüber der Prozesswiederverwendung robust ist.
+
+> [!NOTE]
+> Obwohl Aufgaben ein ähnliches Konzept zugrunde liegt wie Python-Awaitables, sollten für Orchestratorfunktionen `yield` und die APIs `context.task_all` und `context.task_any` verwendet werden, um die Parallelisierung von Aufgaben zu verwalten.
+
+Nach der Rückgabe von `context.task_all` wissen wir, dass alle Funktionsaufrufe abgeschlossen wurden und Werte an uns zurückgegeben haben. Jeder Aufruf von `E2_CopyFileToBlob` gibt die Anzahl von hochgeladenen Bytes zurück. Die Summe der Gesamtbytezahl wird folglich berechnet, indem alle diese Rückgabewerte addiert werden.
+
 ---
 
 ### <a name="helper-activity-functions"></a>Hilfsaktivitätsfunktionen
@@ -95,6 +112,16 @@ Und hier ist die Implementierung:
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E2_GetFileList/index.js)]
 
 Die Funktion verwendet das `readdirp`-Modul (Version 2.x), um die Verzeichnisstruktur rekursiv zu lesen.
+
+# <a name="python"></a>[Python](#tab/python)
+
+Die Datei *function.json* für `E2_GetFileList` sieht wie folgt aus:
+
+[!code-json[Main](~/samples-durable-functions-python/samples/fan_in_fan_out/E2_GetFileList/function.json)]
+
+Und hier ist die Implementierung:
+
+[!code-python[Main](~/samples-durable-functions-python/samples/fan_in_fan_out/E2_GetFileList/\_\_init\_\_.py)]
 
 ---
 
@@ -122,6 +149,16 @@ Die JavaScript-Implementierung verwendet das [Azure Storage SDK für Node](https
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E2_CopyFileToBlob/index.js)]
 
+# <a name="python"></a>[Python](#tab/python)
+
+Die Datei *function.json* für `E2_CopyFileToBlob` ist ebenso einfach:
+
+[!code-json[Main](~/samples-durable-functions-python/samples/fan_in_fan_out/E2_CopyFileToBlob/function.json)]
+
+Die Python-Implementierung verwendet das [Azure Storage SDK für Python](https://github.com/Azure/azure-storage-python), um die Dateien in Azure Blob Storage hochzuladen.
+
+[!code-python[Main](~/samples-durable-functions-python/samples/fan_in_fan_out/E2_CopyFileToBlob/\_\_init\_\_.py)]
+
 ---
 
 Bei der Implementierung wird die Datei vom Datenträger geladen, und die Inhalte werden asynchron in ein Blob mit dem gleichen Namen im Container „backups“ gestreamt. Der Rückgabewert ist die Anzahl der Bytes, die in den Speicher kopiert und anschließend von der Orchestratorfunktion für die Berechnung der Summe verwendet werden.
@@ -131,7 +168,7 @@ Bei der Implementierung wird die Datei vom Datenträger geladen, und die Inhalte
 
 ## <a name="run-the-sample"></a>Ausführen des Beispiels
 
-Sie können die Orchestrierung starten, indem Sie die folgende HTTP POST-Anforderung senden.
+Sie können die Orchestrierung unter Windows starten, indem Sie die folgende HTTP POST-Anforderung senden.
 
 ```
 POST http://{host}/orchestrators/E2_BackupSiteContent
@@ -139,6 +176,16 @@ Content-Type: application/json
 Content-Length: 20
 
 "D:\\home\\LogFiles"
+```
+
+Alternativ können Sie die Orchestrierung in einer Linux-Funktions-App (Python kann derzeit nur unter Linux für App Service genutzt werden) wie folgt starten:
+
+```
+POST http://{host}/orchestrators/E2_BackupSiteContent
+Content-Type: application/json
+Content-Length: 20
+
+"/home/site/wwwroot"
 ```
 
 > [!NOTE]

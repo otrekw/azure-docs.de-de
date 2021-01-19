@@ -5,19 +5,19 @@ services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: how-to
-ms.date: 11/28/2018
+ms.date: 01/07/2021
 ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: 7df96f34ee408c0a6d26b27adbac7351c9ab937f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 84c8275b7a7257530a735e8612047ef42e2f8a7c
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89393087"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98011338"
 ---
 # <a name="reset-a-failed-expressroute-circuit"></a>Zurücksetzen einer fehlerhaften ExpressRoute-Verbindung
 
-Wenn ein Vorgang über eine ExpressRoute-Verbindung nicht erfolgreich abgeschlossen wird, gelangt die Verbindung möglicherweise in einen Fehlerstatus. In diesem Artikel erfahren Sie, wie Sie eine fehlerhafte Azure ExpressRoute-Verbindung zurücksetzen.
+Wenn ein Vorgang über eine ExpressRoute-Verbindung nicht erfolgreich abgeschlossen wird, wird die Verbindung möglicherweise in einen Fehlerzustand versetzt. Die Informationen in diesem Artikel helfen Ihnen dabei, eine fehlerhafte Azure ExpressRoute-Verbindung zurückzusetzen.
 
 [!INCLUDE [updated-for-az](../../includes/hybrid-az-ps.md)]
 
@@ -52,4 +52,4 @@ Die Verbindung sollte jetzt fehlerfrei sein. Öffnen Sie ein Supportticket beim 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Öffnen Sie ein Supportticket beim [Microsoft-Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) , wenn weiterhin Probleme auftreten.
+Öffnen eines Supporttickets beim [Microsoft-Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade), wenn weiterhin Probleme auftreten

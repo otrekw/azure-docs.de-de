@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie einen privaten Azure Kubernetes Service-Clust
 services: container-service
 ms.topic: article
 ms.date: 7/17/2020
-ms.openlocfilehash: 696ba785abb317a29de38160440dc06487ff5bca
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: 87966a9bd2f83916998a724fc6c1c26a91609665
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97673884"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98133394"
 ---
 # <a name="create-a-private-azure-kubernetes-service-cluster"></a>Erstellen eines privaten Azure Kubernetes Service-Clusters
 
@@ -68,17 +68,21 @@ Dabei gilt: `--enable-private-cluster` ist ein obligatorisches Flag für einen p
 
 ### <a name="configure-private-dns-zone"></a>Konfigurieren einer privaten DNS-Zone
 
-Der Standardwert ist „system“, wenn das Argument „--private-dns-zone“ weggelassen wird. AKS erstellt eine private DNS-Zone in der Knotenressourcengruppe. Das Übergeben des Parameters „none“ bewirkt, dass AKS keine private DNS-Zone erstellt.  Dies geht von einer Konfiguration mit „Bring Your Own DNS Server“ (Verwenden eines eigenen DNS-Servers) und der Konfiguration der DNS-Auflösung für den privaten FQDN aus.  Wenn Sie keine DNS-Auflösung konfigurieren, kann DNS nur innerhalb der Agent-knoten aufgelöst werden; dies führt nach der Bereitstellung zu Clusterproblemen.
+Zum Konfigurieren einer privaten DNS-Zone können die folgenden Parameter verwendet werden.
+
+1. „System“ ist der Standardwert. Wenn das Argument „--private-dns-zone“ weggelassen wird, erstellt AKS eine private DNS-Zone in der Knotenressourcengruppe.
+2. „None“ bedeutet, dass AKS keine private DNS-Zone erstellt.  Dies erfordert, dass Sie selbst einen DNS-Server bereitstellen und die DNS-Auflösung für den privaten FQDN konfigurieren.  Wenn Sie keine DNS-Auflösung konfigurieren, kann DNS nur innerhalb der Agent-Knoten aufgelöst werden; dies führt nach der Bereitstellung zu Clusterproblemen.
+3. Der benutzerdefinierte Name der privaten DNS-Zone sollte für die globale Azure-Cloud im folgenden Format angegeben werden: `privatelink.<region>.azmk8s.io`. Der benutzerseitig zugewiesenen Identität oder dem benutzerseitig zugewiesenen Dienstprinzipal muss mindestens die Rolle `private dns zone contributor` in der benutzerdefinierten privaten DNS-Zone zugewiesen sein.
 
 ## <a name="no-private-dns-zone-prerequisites"></a>Voraussetzungen für No Private DNS Zone
-No PrivateDNSZone
-* Azure CLI, Version 0.4.67 oder höher
+
+* Azure CLI, Version 0.4.71 oder höher
 * API-Version 2020-11-01 oder höher
 
 ## <a name="create-a-private-aks-cluster-with-private-dns-zone"></a>Erstellen eines privaten AKS-Clusters mit privater DNS-Zone
 
 ```azurecli-interactive
-az aks create -n <private-cluster-name> -g <private-cluster-resource-group> --load-balancer-sku standard --enable-private-cluster --private-dns-zone [none|system]
+az aks create -n <private-cluster-name> -g <private-cluster-resource-group> --load-balancer-sku standard --enable-private-cluster --private-dns-zone [none|system|custom private dns zone]
 ```
 ## <a name="options-for-connecting-to-the-private-cluster"></a>Optionen zum Herstellen einer Verbindung mit dem privaten Cluster
 

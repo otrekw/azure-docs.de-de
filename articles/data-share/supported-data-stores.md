@@ -6,68 +6,77 @@ author: jifems
 ms.author: jife
 ms.topic: conceptual
 ms.date: 12/16/2020
-ms.openlocfilehash: d45d9a29f671e66c6caba689f49e1748780545e0
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: 852c44f5edc5c0b0f5f655f63ab040927bd9bc7b
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97616744"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97963678"
 ---
 # <a name="supported-data-stores-in-azure-data-share"></a>Unterstützte Datenspeicher in Azure Data Share
 
-Azure Data Share bietet eine offene und flexible Datenfreigabe, einschließlich der Möglichkeit zur Freigabe aus und in unterschiedliche Datenspeicher. Datenanbieter können Daten aus einem Datenspeichertyp freigeben, und ihre Datenconsumer können den Datenspeicher auswählen, in dem Daten empfangen werden sollen. 
+Azure Data Share bietet eine offene und flexible Datenfreigabe, einschließlich der Möglichkeit zur Freigabe aus und in unterschiedliche Datenspeicher. Datenanbieter können Daten aus einem Datenspeichertyp freigeben, und Datenconsumer können den Datenspeicher auswählen, in dem Daten empfangen werden sollen. 
 
-In diesem Artikel erfahren Sie mehr über die umfangreiche Gruppe von Azure-Datenspeichern, die in Azure Data Share unterstützt werden. Außerdem erhalten Sie Informationen zu den Kombinationen von Datenspeichern, die von Datenanbietern und Datenconsumern genutzt werden können. 
+In diesem Artikel erfahren Sie mehr über die verschiedenen Azure-Datenspeicher, die in Azure Data Share unterstützt werden. Sie erfahren auch, wie Datenanbieter und Datenconsumer verschiedene Datenspeicher kombinieren können. 
 
-## <a name="what-data-stores-are-supported-in-azure-data-share"></a>Welche Datenspeicher werden in Azure Data Share unterstützt? 
+## <a name="supported-data-stores"></a>Unterstützte Datenspeicher 
 
-In der folgenden Tabelle sind die unterstützten Datenquellen für Azure Data Share aufgeführt. 
+Die folgende Tabelle erläutert die Datenspeicher, die von Azure Data Share unterstützt werden. 
 
-| Datenspeicher | Momentaufnahmebasierte Freigabe (vollständige Momentaufnahme) | Momentaufnahmebasierte Freigabe (inkrementelle Momentaufnahme) | Direkte Freigabe 
+| Datenspeicher | Freigabe basierend auf vollständigen Momentaufnahmen | Freigabe basierend auf inkrementellen Momentaufnahmen | Direkte Freigabe 
 |:--- |:--- |:--- |:--- |:--- |:--- |:--- |
 | Azure Blob Storage |✓ |✓ | |
 | Azure Data Lake Storage Gen1 |✓ |✓ | |
 | Azure Data Lake Storage Gen2 |✓ |✓ ||
 | Azure SQL-Datenbank |✓ | | |
-| Azure Synapse Analytics (ehemals Azure SQL DW) |✓ | | |
+| Azure Synapse Analytics (ehemals Azure SQL Data Warehouse) |✓ | | |
 | Dedizierter SQL-Pool von Azure Synapse Analytics (Arbeitsbereich) |✓ | | |
 | Azure-Daten-Explorer | | |✓ |
 
 ## <a name="data-store-support-matrix"></a>Datenspeicher-Unterstützungsmatrix
 
-Azure Data Share bietet Datenconsumern Flexibilität bei der Entscheidung für einen Datenspeicher, in dem Daten empfangen werden. Beispielsweise können Daten, die von Azure SQL-Datenbank freigegeben werden, in Azure Data Lake Store Gen2, Azure SQL-Datenbank oder Azure Synapse Analytics empfangen werden. Kunden können beim Konfigurieren einer empfangenen Datenfreigabe das Format auswählen, in dem Daten empfangen werden sollen. 
+In Azure Data Share können Datenconsumer einen Datenspeicher für die Aufnahme von Daten auswählen. Beispielsweise können Daten, die von Azure SQL-Datenbank freigegeben werden, in Azure Data Lake Storage Gen2, Azure SQL-Datenbank oder Azure Synapse Analytics empfangen werden. Wenn Kunden eine empfangende Datenfreigabe einrichten, können sie das Format auswählen, in dem die Daten empfangen werden sollen. 
 
-In der folgenden Tabelle sind die verschiedenen Kombinationen und Auswahlmöglichkeiten aufgeführt, die Datenconsumern beim Akzeptieren und Konfigurieren ihrer Datenfreigabe zur Verfügung stehen. Weitere Informationen zum Konfigurieren von Datasetzuordnungen finden Sie unter [Konfigurieren von Datasetzuordnungen](how-to-configure-mapping.md).
+Die folgende Tabelle erläutert die Kombinationen und Optionen, aus denen Datenconsumer auswählen können, wenn sie eine Datenfreigabe akzeptieren und konfigurieren. Weitere Informationen finden Sie unter [Konfigurieren einer Datasetzuordnung](how-to-configure-mapping.md).
 
-| Datenspeicher | Azure Blob Storage | Azure Data Lake Storage Gen1 | Azure Data Lake Storage Gen2 | Azure SQL-Datenbank | Azure Synapse Analytics (ehemals Azure SQL DW) | Dedizierter SQL-Pool von Azure Synapse Analytics (Arbeitsbereich) | Azure-Daten-Explorer
+| Datenspeicher | Blob Storage | Data Lake Storage Gen1 | Data Lake Storage Gen2 | SQL-Datenbank | Synapse Analytics (früher SQL Data Warehouse) | Dedizierter SQL-Pool für Synapse Analytics (Arbeitsbereich) | Data Explorer
 |:--- |:--- |:--- |:--- |:--- |:--- |:--- | :--- |
-| Azure Blob Storage | ✓ || ✓ |||
-| Azure Data Lake Storage Gen1 | ✓ | | ✓ |||
-| Azure Data Lake Storage Gen2 | ✓ | | ✓ |||
-| Azure SQL-Datenbank | ✓ | | ✓ | ✓ | ✓ | ✓ ||
-| Azure Synapse Analytics (ehemals Azure SQL DW) | ✓ | | ✓ | ✓ | ✓ | ✓ ||
-| Dedizierter SQL-Pool von Azure Synapse Analytics (Arbeitsbereich) | ✓ | | ✓ | ✓ | ✓ | ✓ ||
-| Azure-Daten-Explorer ||||||| ✓ |
+| Blob Storage | ✓ || ✓ |||
+| Data Lake Storage Gen1 | ✓ | | ✓ |||
+| Data Lake Storage Gen2 | ✓ | | ✓ |||
+| SQL-Datenbank | ✓ | | ✓ | ✓ | ✓ | ✓ ||
+| Synapse Analytics (früher SQL Data Warehouse) | ✓ | | ✓ | ✓ | ✓ | ✓ ||
+| Dedizierter SQL-Pool für Synapse Analytics (Arbeitsbereich) | ✓ | | ✓ | ✓ | ✓ | ✓ ||
+| Data Explorer ||||||| ✓ |
 
 ## <a name="share-from-a-storage-account"></a>Freigeben über ein Speicherkonto
-Azure Data Share unterstützt die Freigabe von Dateien, Ordnern und Dateisystemen über Azure Data Lake Gen1 und Azure Data Lake Gen2. Außerdem unterstützt es die Freigabe von Blobs, Ordnern und Containern über Azure Blob Storage. Derzeit wird nur das Blockblob unterstützt. Wenn Dateisysteme, Container oder Ordner in einer auf Momentaufnahmen basierenden Freigabe freigegeben werden, kann der Datenconsumer wahlweise eine vollständige Kopie der Freigabedaten erstellen oder die Funktion der inkrementellen Momentaufnahme nutzen, um nur neue oder aktualisierte Dateien zu kopieren. Die inkrementelle Momentaufnahme basiert auf dem Zeitpunkt der letzten Änderung der Dateien. Vorhandene Dateien mit demselben Namen werden während der Momentaufnahme überschrieben. Die aus der Quelle gelöschte Datei wird nicht im Ziel gelöscht. 
+Azure Data Share unterstützt die Freigabe von Dateien, Ordnern und Dateisystemen aus Azure Data Lake Storage Gen1 und Azure Data Lake Storage Gen2. Darüber hinaus wird die Freigabe von Blobs, Ordnern und Containern aus Azure Blob Storage unterstützt. Derzeit werden nur Blockblobs unterstützt. 
 
-Ausführliche Informationen finden Sie unter [Freigeben und Empfangen von Daten aus Azure Blob Storage und Azure Data Lake Storage](how-to-share-from-storage.md).
+Wenn Dateisysteme, Container oder Ordner in einer auf Momentaufnahmen basierenden Freigabe freigegeben werden, können Datenconsumer wahlweise eine vollständige Kopie der Freigabedaten erstellen. Alternativ dazu kann die Funktion für inkrementelle Momentaufnahmen verwendet werden, um nur neue oder aktualisierte Dateien zu kopieren. 
+
+Eine inkrementelle Momentaufnahme basiert auf dem Zeitpunkt der letzten Änderung der Dateien. Vorhandene Dateien mit denselben Namen wie Dateien in den empfangenen Daten werden in einer Momentaufnahme überschrieben. Aus der Quelle gelöschte Dateien werden im Ziel nicht gelöscht. 
+
+Weitere Informationen finden Sie unter [Freigeben und Empfangen von Daten aus Azure Blob Storage und Azure Data Lake Storage](how-to-share-from-storage.md).
 
 ## <a name="share-from-a-sql-based-source"></a>Freigeben über eine SQL-basierte Quelle
-Azure Data Share unterstützt die Freigabe sowohl von Tabellen als auch Sichten aus Azure SQL-Datenbank und Azure Synapse Analytics (ehemals Azure SQL DW) sowie die Freigabe von Tabellen aus einem dedizierten SQL-Pool von Azure Synapse Analytics (Arbeitsbereich). Die Freigabe aus einem serverlosen SQL-Pool von Azure Synapse Analytics (Arbeitsbereich) wird derzeit nicht unterstützt. Datenconsumer können die Daten in Azure Data Lake Storage Gen2 und Azure Blob Storage als CSV- oder Parquet-Datei, in Azure SQL-Datenbank und Azure Synapse Analytics als Tabellen akzeptieren.
+Azure Data Share unterstützt die Freigabe von Tabellen oder Sichten aus Azure SQL-Datenbank und Azure Synapse Analytics (früher Azure SQL Data Warehouse). Auch das Freigeben von Tabellen aus einem dedizierten SQL-Pool für Azure Synapse Analytics (Arbeitsbereich) wird unterstützt. Die Freigabe aus einem serverlosen SQL-Pool für Azure Synapse Analytics (Arbeitsbereich) wird derzeit nicht unterstützt. 
 
-Wenn Sie Daten in Azure Data Lake Store Gen2 oder Azure Blob Storage akzeptieren, überschreiben vollständige Momentaufnahmen den Inhalt der Zieldatei (sofern bereits vorhanden).
-Wenn Daten in einer Tabelle empfangen werden und die Zieltabelle noch nicht vorhanden ist, erstellt Azure Data Share die SQL-Tabelle mit dem Quellschema. Wenn bereits eine Zieltabelle mit demselben Namen vorhanden ist, wird sie gelöscht und mit der letzten vollständigen Momentaufnahme überschrieben. Inkrementelle Momentaufnahmen werden derzeit nicht unterstützt.
+Datenconsumer können die Daten wahlweise in Azure Data Lake Storage Gen2 oder Azure Blob Storage als CSV- oder Parquet-Datei akzeptieren. Sie können Daten auch als Tabellen für Azure SQL-Datenbank und Azure Synapse Analytics akzeptieren.
 
-Ausführliche Informationen finden Sie unter [Freigeben und Empfangen von Daten aus Azure SQL-Datenbank und Azure Synapse Analytics](how-to-share-from-sql.md).
+Wenn Consumer Daten in Azure Data Lake Storage Gen2 oder Azure Blob Storage akzeptieren, überschreiben vollständige Momentaufnahmen den Inhalt der Zieldatei, sofern die Datei bereits vorhanden ist. Wenn Daten in einer Tabelle empfangen werden und die Zieltabelle noch nicht vorhanden ist, erstellt Azure Data Share anhand des Quellschemas eine SQL-Tabelle. Wenn bereits eine Zieltabelle vorhanden ist, die denselben Namen aufweist, wird sie gelöscht und mit der letzten vollständigen Momentaufnahme überschrieben. Inkrementelle Momentaufnahmen werden derzeit nicht unterstützt.
 
-## <a name="share-from-azure-data-explorer"></a>Freigeben über Azure Data Explorer
-Azure Data Share unterstützt die Möglichkeit zur direkten Freigabe von Datenbanken über Azure Data Explorer-Cluster. Der Datenanbieter kann auf Datenbank- oder Clusterebene freigeben. Wenn der Datenconsumer auf Datenbankebene freigegeben wurde, kann er nur auf die vom Datenanbieter freigegebene(n) Datenbank(en) zugreifen. Wenn der Datenconsumer auf Clusterebene freigegeben wurde, kann er auf alle Datenbanken aus dem Cluster des Anbieters zugreifen, einschließlich zukünftiger Datenbanken, die vom Datenanbieter erstellt werden.
+Weitere Informationen finden Sie unter [Freigeben und Empfangen von Daten aus Azure SQL-Datenbank und Azure Synapse Analytics](how-to-share-from-sql.md).
 
-Für den Zugriff auf freigegebene Datenbanken benötigt der Datenconsumer seinen eigenen Azure Data Explorer-Cluster. Der Azure Data Explorer-Cluster des Datenconsumers muss sich im selben Azure-Rechenzentrum wie der Azure Data Explorer-Cluster des Datenanbieters befinden. Beim Herstellen einer Freigabebeziehung erstellt Azure Data Share eine symbolische Verknüpfung zwischen den Azure Data Explorer-Clustern des Anbieters und des Consumers. Daten, die im Batchmodus im Azure Data Explorer-Ausgangscluster erfasst werden, sind nach wenigen Sekunden bis zu einigen Minuten im Zielcluster verfügbar.
+## <a name="share-from-data-explorer"></a>Freigeben aus Data Explorer
+Azure Data Share unterstützt die Möglichkeit zur direkten Freigabe von Datenbanken über Azure Data Explorer-Cluster. Eine Freigabe durch einen Datenanbieter kann auf der Ebene der Datenbank oder des Clusters erfolgen. 
 
-Ausführliche Informationen finden Sie unter [Verwenden von Azure Data Share zum Freigeben von Daten für Azure Data Explorer](/azure/data-explorer/data-share). 
+Bei der Freigabe auf Datenbankebene können Datenconsumer nur auf die Datenbanken zugreifen, die vom Datenanbieter freigegeben wurden. Wenn ein Anbieter Daten auf Clusterebene freigegeben hat, können Datenconsumer auf alle Datenbanken im Cluster des Anbieters zugreifen, einschließlich zukünftiger Datenbanken, die vom Datenanbieter erstellt werden.
+
+Für den Zugriff auf freigegebene Datenbanken benötigen Datenconsumer einen eigenen Azure Data Explorer-Cluster. Der Cluster muss sich im gleichen Azure-Rechenzentrum befinden wie der Azure Data Explorer-Cluster des Datenanbieters. 
+
+Beim Herstellen einer Freigabebeziehung erstellt Azure Data Share eine symbolische Verknüpfung zwischen den Clustern des Anbieters und des Consumers. Daten, die im Batchmodus in den Quellcluster übertragen werden, werden innerhalb weniger Minuten im Zielcluster angezeigt.
+
+Weitere Informationen finden Sie unter [Verwenden von Azure Data Share zum Freigeben von Daten für Azure Data Explorer](/azure/data-explorer/data-share). 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

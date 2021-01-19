@@ -1,18 +1,18 @@
 ---
 title: 'Ressourcenübergreifende Abfrage: Azure Data Explorer mithilfe von Azure Monitor'
 description: Verwenden Sie Azure Monitor, um produktübergreifende Abfragen zwischen Azure Data Explorer, Log Analytics-Arbeitsbereichen und klassischen Application Insights-Anwendungen in Azure Monitor auszuführen.
-author: orens
+author: osalzberg
 ms.author: bwren
 ms.reviewer: bwren
 ms.subservice: logs
 ms.topic: conceptual
 ms.date: 12/02/2020
-ms.openlocfilehash: cb586d15e762f88620fe0c91152af41b3f607d74
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: 1a35b80ceec12b378a01555f42b7a0500b8f6229
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97674428"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98060451"
 ---
 # <a name="cross-resource-query-azure-data-explorer-by-using-azure-monitor"></a>Ressourcenübergreifende Abfrage: Azure Data Explorer mithilfe von Azure Monitor
 Azure Monitor unterstützt dienstübergreifende Abfragen zwischen Azure Data Explorer, [Application Insights](/azure/azure-monitor/app/app-insights-overview) und [Log Analytics](/azure/azure-monitor/platform/data-platform-logs). Anschließend können Sie den Azure Data Explorer-Cluster mit Log Analytics/Application Insights-Tools abfragen und in einer dienstübergreifenden Abfrage darauf verweisen. Der Artikel zeigt, wie eine dienstübergreifende Abfrage durchgeführt wird.
@@ -22,7 +22,7 @@ Das folgende Diagramm zeigt den dienstübergreifenden Azure Monitor-Flow:
 :::image type="content" source="media\azure-data-explorer-monitor-proxy\azure-monitor-data-explorer-flow.png" alt-text="Diagramm des Abfrageflows zwischen einem Benutzer, Azure Monitor, einem Proxy und Azure Data Explorer":::
 
 >[!NOTE]
-> Die dienstübergreifende Azure Monitor-Abfrage befindet sich in der privaten Vorschau. AllowListing ist erforderlich. Wenden Sie sich mit Fragen an das [Service Team](mailto:ADXProxy@microsoft.com).
+> Die dienstübergreifende Azure Monitor-Abfrage befindet sich in der öffentlichen Vorschau. Wenden Sie sich mit Fragen an das [Service Team](mailto:ADXProxy@microsoft.com).
 
 ## <a name="cross-query-your-log-analytics-or-application-insights-resources-and-azure-data-explorer"></a>Übergreifende Abfrage von Log Analytics- oder Application Insights-Ressourcen und Azure Data Explorer
 

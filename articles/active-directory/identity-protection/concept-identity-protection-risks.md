@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: conceptual
-ms.date: 11/09/2020
+ms.date: 01/05/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f10d8a94be53780f732112c012600a7fb840642b
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 18e504579c750caf452ef74844c4a388ec96448a
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96180641"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97954484"
 ---
 # <a name="what-is-risk"></a>Was bedeutet Risiko?
 
@@ -63,6 +63,9 @@ Diese Risiken können in Echtzeit oder offline anhand interner und externer Thre
 | Verdächtige Regeln zur Posteingangsänderung | Offline | Diese Erkennung wird von [Microsoft Cloud App Security (MCAS)](/cloud-app-security/anomaly-detection-policy#suspicious-inbox-manipulation-rules) erkannt. Diese Erkennung erstellt ein Profil Ihrer Umgebung und löst Warnungen aus, wenn verdächtige Regeln zum Löschen oder Verschieben von Nachrichten oder Ordnern für den Posteingang eines Benutzers festgelegt werden. Diese Erkennung kann darauf hinweisen, dass das Konto des Benutzers kompromittiert ist, dass Nachrichten absichtlich ausgeblendet werden und das Postfach zum Verteilen von Spam und Schadsoftware in Ihrer Organisation verwendet wird. |
 | Kennwortspray | Offline | Bei einem Kennwortspray-Angriff werden mehrere Benutzernamen unter Verwendung gängiger Kennwörter im Rahmen eines koordinierten Brute-Force-Angriffs angegriffen, um nicht autorisierten Zugriff zu erhalten. Die Risikoerkennung wird ausgelöst, wenn ein Kennwortspray-Angriff erfolgt ist. |
 | Unmöglicher Ortswechsel | Offline | Diese Erkennung wird von [Microsoft Cloud App Security (MCAS)](/cloud-app-security/anomaly-detection-policy#impossible-travel) erkannt. Diese Erkennung identifiziert zwei Benutzeraktivitäten (in einer einzelnen Sitzung oder in mehreren Sitzungen), die von unterschiedlichen geografischen Standorten stammen und in einem Zeitraum liegen, der kürzer ist als die Zeit, die der Benutzer benötigt, um von Standort A zu Standort B zu gelangen. Dies deutet darauf hin, dass ein anderer Benutzer die gleichen Anmeldeinformationen verwendet. |
+| Neues Land | Offline | Diese Erkennung wird von [Microsoft Cloud App Security (MCAS)](/cloud-app-security/anomaly-detection-policy#activity-from-infrequent-country) erkannt. Bei dieser Erkennungsmethode werden anhand von in der Vergangenheit verwendeten Aktivitätsstandorten neue und selten verwendete Standorte ermittelt. Die Anomalieerkennungsengine speichert Informationen zu Standorten, die Benutzer der Organisation in der Vergangenheit verwendet haben. |
+| Aktivität über anonyme IP-Adresse | Offline | Diese Erkennung wird von [Microsoft Cloud App Security (MCAS)](/cloud-app-security/anomaly-detection-policy#activity-from-anonymous-ip-addresses) erkannt. Diese Erkennung stellt fest, ob Benutzer eine IP-Adresse verwendet haben, die als anonyme Proxy-IP-Adresse identifiziert wurde. |
+| Verdächtige Weiterleitung des Posteingangs | Offline | Diese Erkennung wird von [Microsoft Cloud App Security (MCAS)](/cloud-app-security/anomaly-detection-policy#suspicious-inbox-forwarding) erkannt. Durch diese Erkennungsmethode werden verdächtige Regeln zur E-Mail-Weiterleitung erkannt. Hierzu gehört beispielsweise die Erstellung einer Posteingangsregel, die eine Kopie aller E-Mails an eine externe Adresse weiterleitet. |
 
 ### <a name="other-risk-detections"></a>Andere Risikoerkennungen
 

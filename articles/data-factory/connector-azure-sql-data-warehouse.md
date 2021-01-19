@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 12/18/2020
-ms.openlocfilehash: 68f536e06ec5a40083d96745f5b72e511e423f64
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.date: 01/11/2021
+ms.openlocfilehash: a411f4ce261ee6d203e274efe3cf23ca23203453
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/19/2020
-ms.locfileid: "97695179"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98070897"
 ---
 # <a name="copy-and-transform-data-in-azure-synapse-analytics-by-using-azure-data-factory"></a>Kopieren und Transformieren von Daten in Azure Synapse Analytics mithilfe von Azure Data Factory
 
@@ -277,7 +277,7 @@ Legen Sie zum Kopieren von Daten aus Azure Synapse Analytics die Eigenschaft **t
 
 **Beachten Sie Folgendes:**
 
-- Wenn Sie eine gespeicherte Prozedur in der Quelle zum Abrufen von Daten verwenden und die gespeicherte Prozedur so konzipiert ist, dass beim Übergeben eines anderen Parameterwerts ein anderes Schema zurückgegeben wird, tritt möglicherweise ein Fehler oder ein unerwartetes Ergebnis auf, wenn Sie ein Schema von der Benutzeroberfläche importieren oder Daten in SQL-Datenbank mit automatischer Tabellenerstellung kopieren.
+- Wenn Sie zum Abrufen von Daten eine gespeicherte Prozedur in der Quelle verwenden und die gespeicherte Prozedur beim Übergeben eines anderen Parameterwerts ein anderes Schema zurückgibt, kommt es möglicherweise beim Importieren eines Schemas über die Benutzeroberfläche oder beim Kopieren von Daten in eine SQL-Datenbank zu einem Fehler oder einem unerwarteten Ergebnis.
 
 **Beispiel: Verwenden von SQL-Abfragen**
 
@@ -391,7 +391,7 @@ Legen Sie zum Kopieren von Daten in Azure Synapse Analytics den Senkentyp in der
 | writeBatchTimeout | Wartezeit für den Abschluss der Batcheinfügung, bis das Timeout wirksam wird.<br/><br/>Zulässiger Wert: **timespan**. Beispiel: 00:30:00 (30 Minuten). | Nein.<br/>Beim Verwenden von BULK INSERT anwenden.        |
 | preCopyScript     | Geben Sie eine SQL-Abfrage an, die bei jeder Ausführung von der Kopieraktivität ausgeführt werden soll, bevor Daten in Azure Synapse Analytics geschrieben werden. Sie können diese Eigenschaft nutzen, um vorab geladene Daten zu bereinigen. | Nein                                            |
 | tableOption | Gibt an, ob die [Senkentabelle auf Basis des Quellschemas automatisch erstellt werden soll](copy-activity-overview.md#auto-create-sink-tables), wenn sie nicht vorhanden ist. Zulässige Werte: `none` (Standard), `autoCreate`. |Nein |
-| disableMetricsCollection | Data Factory erfasst Metriken wie Azure Synapse Analytics-DWUs für die Leistungsoptimierung von Kopiervorgängen und Empfehlungen. Wenn Sie sich wegen dieses Verhaltens Gedanken machen, geben Sie `true` an, um es zu deaktivieren. | Nein (Standard = `false`) |
+| disableMetricsCollection | Data Factory sammelt Metriken wie Azure Synapse Analytics-DWUs für die Leistungsoptimierung von Kopiervorgängen und Empfehlungen, wodurch zusätzlicher Zugriff auf die Masterdatenbank ermöglicht wird. Wenn Sie sich wegen dieses Verhaltens Gedanken machen, geben Sie `true` an, um es zu deaktivieren. | Nein (Standard = `false`) |
 
 #### <a name="azure-synapse-analytics-sink-example"></a>Beispiel für eine Azure Synapse Analytics-Senke
 

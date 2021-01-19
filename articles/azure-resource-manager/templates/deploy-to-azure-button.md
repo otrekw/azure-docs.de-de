@@ -3,23 +3,23 @@ title: Schaltfläche zum Bereitstellen in Azure
 description: Verwenden Sie diese Schaltfläche, um Azure Resource Manager-Vorlagen aus einem GitHub-Repository bereitzustellen.
 ms.topic: conceptual
 ms.date: 11/10/2020
-ms.openlocfilehash: 65891cace1cb17614abbfe091e1592d6f13feff4
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: abe59f377474540e9209691df8b1d1a7b806c26d
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96185724"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98028742"
 ---
 # <a name="use-a-deployment-button-to-deploy-templates-from-github-repository"></a>Verwenden einer Bereitstellungsschaltfläche zum Bereitstellen von Vorlagen aus einem GitHub-Repository
 
-In diesem Artikel wird beschrieben, wie Sie die Schaltfläche **In Azure bereitstellen** verwenden, um Vorlagen aus einem GitHub-Repository bereitzustellen. Sie können die Schaltfläche direkt zur Datei „README.md“ in Ihrem GitHub-Repository hinzufügen. Oder Sie können die Schaltfläche zu einer Webseite hinzufügen, die auf das Repository verweist.
+In diesem Artikel wird beschrieben, wie Sie die Schaltfläche **In Azure bereitstellen** verwenden, um Vorlagen aus einem GitHub-Repository bereitzustellen. Sie können die Schaltfläche direkt der Datei _README.md_ in Ihrem GitHub-Repository hinzufügen. Oder Sie können die Schaltfläche zu einer Webseite hinzufügen, die auf das Repository verweist.
 
 Der Bereitstellungsumfang wird durch das Vorlagenschema bestimmt. Weitere Informationen finden Sie unter
 
-* [resource groups](deploy-to-resource-group.md)
-* [subscriptions](deploy-to-subscription.md)
-* [Verwaltungsgruppen](deploy-to-management-group.md)
-* [tenants](deploy-to-tenant.md)
+- [resource groups](deploy-to-resource-group.md)
+- [subscriptions](deploy-to-subscription.md)
+- [Verwaltungsgruppen](deploy-to-management-group.md)
+- [tenants](deploy-to-tenant.md)
 
 ## <a name="use-common-image"></a>Verwenden eines einheitlichen Bilds
 
@@ -78,7 +78,7 @@ Damit ist die URL für Ihren Link vollständig.
 
 Die Vorlage wird in der Regel in einem öffentlichen Repository gehostet. Bei Verwendung eines privaten Repositorys müssen Sie ein Token für den Zugriff auf den unformatierten Inhalt der Vorlage einschließen. Das von GitHub generierte Token ist nur für kurze Zeit gültig. Der Link müsste daher häufig aktualisiert werden.
 
-Wenn Sie [Git mit Azure Repos](/azure/devops/repos/git/) anstelle eines GitHub-Repositorys verwenden, können Sie die Schaltfläche „Bereitstellung in Azure“ dennoch verwenden. Sorgen Sie dafür, dass es sich bei Ihrem Repository um ein öffentliches handelt. Verwenden Sie den [Items-Vorgang](/rest/api/azure/devops/git/items/get), um die Vorlage abzurufen. Ihre Anforderung sollte das folgende Format aufweisen:
+Wenn Sie [Git mit Azure Repos](/azure/devops/repos/git/) anstelle eines GitHub-Repositorys verwenden, können Sie die Schaltfläche **In Azure bereitstellen** dennoch verwenden. Sorgen Sie dafür, dass es sich bei Ihrem Repository um ein öffentliches handelt. Verwenden Sie den [Items-Vorgang](/rest/api/azure/devops/git/items/get), um die Vorlage abzurufen. Ihre Anforderung sollte das folgende Format aufweisen:
 
 ```http
 https://dev.azure.com/{organization-name}/{project-name}/_apis/git/repositories/{repository-name}/items?scopePath={url-encoded-path}&api-version=6.0
@@ -90,7 +90,7 @@ Codieren Sie diese Anforderungs-URL.
 
 Fügen Sie zum Schluss Link und Bild zusammen.
 
-Um die Schaltfläche über Markdown in die README.md-Datei in Ihrem GitHub-Repository oder einer Webseite hinzuzufügen, verwenden Sie folgenden Befehl:
+Um die Schaltfläche über Markdown der Datei _README.md_ in Ihrem GitHub-Repository oder einer Webseite hinzuzufügen, verwenden Sie folgenden Befehl:
 
 ```markdown
 [![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-storage-account-create%2Fazuredeploy.json)
@@ -122,4 +122,4 @@ Das Portal zeigt einen Bereich an, indem Sie ganz einfach Parameterwerte angeben
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Weitere Informationen zu Vorlagen finden Sie unter [Verstehen der Struktur und Syntax von Azure Resource Manager-Vorlagen](template-syntax.md).
+- Weitere Informationen zu Vorlagen finden Sie unter [Verstehen der Struktur und Syntax von ARM-Vorlagen](template-syntax.md).

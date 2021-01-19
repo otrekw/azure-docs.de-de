@@ -4,16 +4,16 @@ description: Erfahren Sie, wie Sie ein Azure Files-Volume einbinden, sodass der 
 ms.topic: article
 ms.date: 07/02/2020
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: afebdcdc9d9c5852d7fe66ed06ac457c1dbb0afb
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: d52ad8ad02735c98b29a83d8ca69cdea8c6af7d8
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97881802"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97954973"
 ---
 # <a name="mount-an-azure-file-share-in-azure-container-instances"></a>Einbinden einer Azure-Dateifreigabe in Azure Container Instances
 
-Standardmäßig ist Azure Container Instances zustandslos. Wenn der Container abstürzt oder beendet wird, gehen alle Zustände verloren. Um den Zustand nach Ablauf der Lebensdauer des Containers beizubehalten, müssen Sie ein Volume aus einem externen Speicher einbinden. Wie in diesem Artikel gezeigt, können Azure Container Instances eine mit [Azure Files](../storage/files/storage-files-introduction.md) erstellte Azure-Dateifreigabe einbinden. Azure Files bietet vollständig verwaltete Dateifreigaben gehostet in Azure Storage, auf die über das Branchenstandardprotokoll Server Message Block (SMB) zugegriffen werden kann. Durch das Verwenden einer Azure-Dateifreigabe mit Azure Container Instances werden Dateifreigabefeatures bereitgestellt, die Azure-Dateifreigaben mit virtuellen Azure-Computern ähneln.
+Standardmäßig ist Azure Container Instances zustandslos. Wenn der Container neu gestartet wird, abstürzt oder beendet wird, gehen alle Zustände verloren. Um den Zustand nach Ablauf der Lebensdauer des Containers beizubehalten, müssen Sie ein Volume aus einem externen Speicher einbinden. Wie in diesem Artikel gezeigt, können Azure Container Instances eine mit [Azure Files](../storage/files/storage-files-introduction.md) erstellte Azure-Dateifreigabe einbinden. Azure Files bietet vollständig verwaltete Dateifreigaben gehostet in Azure Storage, auf die über das Branchenstandardprotokoll Server Message Block (SMB) zugegriffen werden kann. Durch das Verwenden einer Azure-Dateifreigabe mit Azure Container Instances werden Dateifreigabefeatures bereitgestellt, die Azure-Dateifreigaben mit virtuellen Azure-Computern ähneln.
 
 > [!NOTE]
 > Zurzeit ist das Einbinden einer Azure-Dateifreigabe in Linux-Container eingeschränkt. Aktuelle Plattformunterschiede finden Sie in der [Übersicht](container-instances-overview.md#linux-and-windows-containers).

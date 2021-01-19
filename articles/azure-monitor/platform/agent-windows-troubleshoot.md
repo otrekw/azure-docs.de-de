@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/21/2019
-ms.openlocfilehash: 3d99293ea83c883f8d0870d78dfbec58f74c9bd1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4e2531d511193586ef4605cc3732968b6db28d9f
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87927316"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98050560"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-windows"></a>Behandeln von Problemen mit dem Log Analytics-Agent für Windows 
 
@@ -21,6 +21,40 @@ Falls sich Ihr Problem durch keinen dieser Schritte beheben lässt, stehen Ihnen
 * Kunden mit Premier Support-Vorteilen können eine Supportanfrage mit [Premier](https://premier.microsoft.com/) stellen.
 * Kunden mit Azure-Supportvereinbarungen können eine Supportanfrage [im Azure-Portal](https://manage.windowsazure.com/?getsupport=true) stellen.
 * Besuchen Sie die Log Analytics-Feedbackseite unter [https://aka.ms/opinsightsfeedback](https://aka.ms/opinsightsfeedback), um bereits eingereichte Vorschläge und gemeldete Fehler einzusehen oder ein neues Problem zu melden. 
+
+## <a name="log-analytics-troubleshooting-tool"></a>Log Analytics-Problembehandlungstool
+
+Das Problembehandlungstool für den Log Analytics-Agent für Windows ist eine Sammlung von PowerShell-Skripts für die Ermittlung und Diagnose von Problemen mit dem Log Analytics-Agent. Es ist bei der Installation des Agents automatisch enthalten. Das Ausführen des Tools sollte der erste Schritt bei der Diagnose eines Problems sein.
+
+### <a name="how-to-use"></a>Verwendung
+1. Öffnen Sie die PowerShell-Eingabeaufforderung als Administrator auf dem Computer, auf dem der Log Analytics-Agent installiert ist.
+1. Navigieren Sie zu dem Verzeichnis, in dem sich das Tool befindet.
+   * `cd "C:\Program Files\Microsoft Monitoring Agent\Agent\Troubleshooter"`
+1. Führen Sie das Hauptskript mit diesem Befehl aus:
+   * `.\GetAgentInfo.ps1`
+1. Wählen Sie ein Problembehandlungsszenario aus.
+1. Befolgen Sie die Anweisungen an der Konsole. (Hinweis: Für die Schritte mit den Ablaufverfolgungsprotokollen ist ein manueller Eingriff erforderlich, um die Protokollerfassung zu unterbrechen. Warten Sie je nach Reproduzierbarkeit des Problems die entsprechende Zeit ab, und drücken Sie „s“, um die Protokollerfassung anzuhalten und mit dem nächsten Schritt fortzufahren).
+
+   Die Speicherorte der Ergebnisdatei werden beim Abschluss protokolliert und in einem daraufhin geöffneten neuen Explorer-Fenster hervorgehoben.
+
+### <a name="installation"></a>Installation
+Das Problembehandlungstool ist bei der Installation des Log Analytics-Agents ab Build 10.20.18053.0 automatisch enthalten.
+
+### <a name="scenarios-covered"></a>Behandelte Szenarien
+Es folgt eine Liste von Szenarien, die vom Problembehandlungstool geprüft werden:
+
+- Agent meldet keine Daten oder fehlende Heartbeatdaten.
+- Fehler bei der Agent-Erweiterungsbereitstellung
+- Agent stürzt ab.
+- Agent verbraucht viel CPU/Arbeitsspeicher.
+- Fehler bei der Installation/Deinstallation
+- Problem mit benutzerdefinierten Protokollen
+- Problem mit OMS-Gateway
+- Problem mit Leistungsindikatoren
+- Sammeln aller Protokolle
+
+>[!NOTE]
+>Führen Sie das Problembehandlungstool aus, wenn ein Problem auftritt. Wenn Sie ein Ticket erstellen, kann unser Supportteam mithilfe der anfänglichen Protokolle das Problem schneller beheben.
 
 ## <a name="important-troubleshooting-sources"></a>Wichtige Quellen für die Problembehandlung
 
@@ -101,6 +135,6 @@ Wenn die Abfrage Ergebnisse zurückgibt, müssen Sie feststellen, ob ein bestimm
 
     |Ereignis-ID |`Source` |BESCHREIBUNG |Lösung |
     |---------|-------|------------|
-    |8\.000 |Integritätsdienst |Dieses Ereignis gibt an, ob ein Workflow im Zusammenhang mit der Leistung, ein Ereignis oder ein anderer gesammelter Datentyp nicht zur Erfassung im Arbeitsbereich an den Dienst weitergeleitet werden kann. | Ereignis-ID 2136 aus der Integritätsdienstquelle wird zusammen mit diesem Ereignis geschrieben und kann angeben, dass der Agent nicht mit dem Dienst kommunizieren kann. Der Grund dafür ist möglicherweise eine falsche Konfiguration der Proxy- und Authentifizierungseinstellungen, ein Netzwerkausfall oder dass die Netzwerkfirewall/der Netzwerkproxy keinen TCP-Datenverkehr vom Computer zum Dienst zulässt.| 
+    |8.000 |Integritätsdienst |Dieses Ereignis gibt an, ob ein Workflow im Zusammenhang mit der Leistung, ein Ereignis oder ein anderer gesammelter Datentyp nicht zur Erfassung im Arbeitsbereich an den Dienst weitergeleitet werden kann. | Ereignis-ID 2136 aus der Integritätsdienstquelle wird zusammen mit diesem Ereignis geschrieben und kann angeben, dass der Agent nicht mit dem Dienst kommunizieren kann. Der Grund dafür ist möglicherweise eine falsche Konfiguration der Proxy- und Authentifizierungseinstellungen, ein Netzwerkausfall oder dass die Netzwerkfirewall/der Netzwerkproxy keinen TCP-Datenverkehr vom Computer zum Dienst zulässt.| 
     |10102 und 10103 |Integritätsdienstmodule |Workflow konnte Datenquelle nicht auflösen. |Dies kann auftreten, wenn der angegebene Leistungsindikator oder die Instanz auf dem Computer nicht vorhanden oder in den Einstellungen des Arbeitsbereichs falsch definiert ist. Wenn es sich um einen vom Benutzer angegebenen [Leistungsindikator](data-sources-performance-counters.md#configuring-performance-counters) handelt, überprüfen Sie, ob die angegebenen Informationen das richtige Format aufweisen und auf den Zielcomputern vorhanden sind. |
     |26002 |Integritätsdienstmodule |Workflow konnte Datenquelle nicht auflösen. |Dies kann auftreten, wenn das angegebene Windows-Ereignisprotokoll auf dem Computer nicht vorhanden ist. Dieser Fehler kann ignoriert werden, wenn nicht erwartet wird, dass auf dem Computer dieses Ereignisprotokoll registriert ist. Andernfalls überprüfen Sie bei einem vom Benutzer angegebenen [Ereignisprotokoll](data-sources-windows-events.md#configuring-windows-event-logs), ob die angegebenen Informationen korrekt sind. |

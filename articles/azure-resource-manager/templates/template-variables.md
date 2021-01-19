@@ -3,12 +3,12 @@ title: Variablen in Vorlagen
 description: Beschreibt, wie Variablen in einer Azure Resource Manager-Vorlage (ARM-Vorlage) definiert werden.
 ms.topic: conceptual
 ms.date: 11/24/2020
-ms.openlocfilehash: 5d9b58d63e96656c45d3494d24099bbeadc46b11
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 7f782f9c7d3107472a74fcab73290c4cebf73693
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96353458"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97934661"
 ---
 # <a name="variables-in-arm-template"></a>Variablen in ARM-Vorlagen
 
@@ -28,7 +28,7 @@ Im folgenden Beispiel wird eine Variablendefinition gezeigt. Dabei wird ein Zeic
 },
 ```
 
-Im Variablenabschnitt kann weder die [reference](template-functions-resource.md#reference)-Funktion noch eine der [list](template-functions-resource.md#list)-Funktionen verwendet werden. Diese Funktionen rufen den Laufzeitstatus einer Ressource ab und können nicht vor der Bereitstellung ausgeführt werden, wenn Variablen aufgelöst werden.
+Im Abschnitt `variables` kann weder die [reference](template-functions-resource.md#reference)-Funktion noch eine der [list](template-functions-resource.md#list)-Funktionen verwendet werden. Diese Funktionen rufen den Laufzeitstatus einer Ressource ab und können nicht vor der Bereitstellung ausgeführt werden, wenn Variablen aufgelöst werden.
 
 ## <a name="use-variable"></a>Verwenden einer Variablen
 
@@ -63,7 +63,7 @@ Sie können Variablen definieren, die zugehörige Werte zum Konfigurieren einer 
 },
 ```
 
-Unter „Parameters“ erstellen Sie einen Wert, der angibt, welche Konfigurationswerte verwendet werden sollen.
+Unter `parameters` erstellen Sie einen Wert, der angibt, welche Konfigurationswerte verwendet werden sollen.
 
 ```json
 "parameters": {

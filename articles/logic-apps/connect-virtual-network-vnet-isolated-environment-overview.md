@@ -3,19 +3,19 @@ title: Zugriff auf virtuelle Azure-Netzwerke
 description: Übersicht darüber, wie Logik-Apps mit Integrationsdienstumgebungen (ISEs) auf virtuelle Azure-Netzwerke (VNETs) zugreifen können
 services: logic-apps
 ms.suite: integration
-ms.reviewer: jonfan, logicappspm
+ms.reviewer: estfan, logicappspm, azla
 ms.topic: conceptual
-ms.date: 11/12/2020
-ms.openlocfilehash: 19c9ec39d85bfc56b118498aba62c3752d6d771c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.date: 01/11/2021
+ms.openlocfilehash: 7bb9c8552f673587891fde12e25d4fb899726c22
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95996320"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98108567"
 ---
 # <a name="access-to-azure-virtual-network-resources-from-azure-logic-apps-by-using-integration-service-environments-ises"></a>Zugreifen auf Ressourcen virtueller Azure-Netzwerke über Azure Logic Apps mit Integrationsdienstumgebungen (ISEs)
 
-Manchmal benötigen Ihre Logik-Apps Zugriff auf geschützte Ressourcen wie virtuelle Computer (virtual machines, VMs) und andere Systeme oder Dienste, die sich innerhalb eines [virtuellen Azure-Netzwerks](../virtual-network/virtual-networks-overview.md) befinden oder damit verbunden sind. Um diesen Zugriff einzurichten, können Sie eine [*Integrationsdienstumgebung* (Integration Service Environment, ISE) erstellen](../logic-apps/connect-virtual-network-vnet-isolated-environment.md). Eine ISE ist eine Instanz des Logic Apps-Diensts, die dedizierte Ressourcen verwendet und getrennt vom „globalen“ mehrinstanzenfähigen Logic Apps-Dienst ausgeführt wird.
+Manchmal benötigen Ihre Logik-Apps Zugriff auf geschützte Ressourcen wie virtuelle Computer (virtual machines, VMs) und andere Systeme oder Dienste, die sich innerhalb eines [virtuellen Azure-Netzwerks](../virtual-network/virtual-networks-overview.md) befinden oder damit verbunden sind. Um diesen Zugriff einzurichten, können Sie eine [*Integrationsdienstumgebung* (Integration Service Environment, ISE) erstellen](../logic-apps/connect-virtual-network-vnet-isolated-environment.md). Eine ISE ist eine Instanz des Logic Apps-Diensts, die dedizierte Ressourcen verwendet und getrennt vom „globalen“ mehrinstanzenfähigen Logic Apps-Dienst ausgeführt wird. Daten in einer ISE verbleiben in [derselben Region, in der Sie diese ISE erstellen und bereitstellen](https://azure.microsoft.com/global-infrastructure/data-residency/).
 
 Einige virtuelle Azure-Netzwerke verwenden beispielsweise private Endpunkte, die Sie mittels [Azure Private Link](../private-link/private-link-overview.md) einrichten können, um den Zugriff auf Azure-PaaS-Dienste wie Azure Storage, Azure Cosmos DB oder Azure SQL-Datenbank sowie auf Partnerdienste oder auf Kundendienste zu ermöglichen, die in Azure gehostet werden. Falls Ihre Logik-Apps Zugriff auf virtuelle Netzwerke mit privaten Endpunkten benötigen, müssen diese Logik-Apps in einer ISE erstellt, bereitgestellt und ausgeführt werden.
 

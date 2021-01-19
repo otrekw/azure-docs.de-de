@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/18/2020
-ms.openlocfilehash: ae8fd7f405beb20d516835ccb80b86e769fd0393
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 47e9b80bb25b7ff14695cc67682265fe338ff76f
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94697083"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98119100"
 ---
 # <a name="how-to-rebuild-an-index-in-azure-cognitive-search"></a>Neuerstellen eines Index in Azure Cognitive Search.
 
@@ -91,7 +91,7 @@ Wenn Sie den Index laden, wird der invertierte Index der einzelnen Felder mit al
 
 Sie können mit der Abfrage eines Indexes beginnen, sobald das erste Dokument geladen wurde. Wenn Sie die ID eines Dokuments kennen, gibt die [REST-API zur Dokumentsuche](/rest/api/searchservice/lookup-document) das jeweilige Dokument zurück. Für umfangreichere Testvorgänge sollten Sie warten, bis der Index vollständig geladen wurde, und anschließend den erwarteten Kontext anhand von Abfragen überprüfen.
 
-Sie können den [Suchexplorer](search-explorer.md) oder ein Webtesttool wie [Postman oder Visual Studio Code](search-get-started-rest.md) verwenden, um nach aktualisierten Inhalten zu suchen.
+Sie können den [Suchexplorer](search-explorer.md) oder ein Webtesttool wie [Postman](search-get-started-rest.md) oder [Visual Studio Code](search-get-started-vs-code.md) verwenden, um nach aktualisierten Inhalten zu suchen.
 
 Wenn Sie ein Feld hinzugefügt oder umbenannt haben, verwenden Sie [$select](search-query-odata-select.md), um dieses Feld zurückzugeben: `search=*&$select=document-id,my-new-field,some-old-field&$count=true`
 

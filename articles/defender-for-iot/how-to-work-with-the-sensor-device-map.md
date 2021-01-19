@@ -1,18 +1,18 @@
 ---
-title: Arbeiten mit der Übersicht über Sensorgeräte
+title: Arbeiten mit der Sensorgerätezuordnung
 description: Die Geräteübersicht bietet eine grafische Darstellung erkannter Netzwerkgeräte. Mithilfe der Übersicht können Sie Geräteinformationen und Netzwerksegmente analysieren und verwalten sowie Berichte generieren.
 author: shhazam-ms
 manager: rkarlin
 ms.author: shhazam
-ms.date: 12/07/2020
+ms.date: 1/7/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: dd0f28411dccab1a1dd36fbd01d2d1acbcc689e0
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: fd1721060bdc4b18f324a94f7c367bacde6ed4e8
+ms.sourcegitcommit: 8f0803d3336d8c47654e119f1edd747180fe67aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97836446"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97976757"
 ---
 # <a name="investigate-sensor-detections-in-the-device-map"></a>Untersuchen von Sensorerkennungen in der Geräteübersicht
 
@@ -48,7 +48,7 @@ Die Benutzerrolle bestimmt, welche Tools im Fenster „Geräteübersicht“ verf
 | :::image type="icon" source="media/how-to-work-with-maps/time-icon.png" border="false"::: | Filtern der Geräte in der Übersicht nach der Uhrzeit, zu der sie zuletzt mit anderen Geräten kommuniziert haben |
 | :::image type="icon" source="media/how-to-work-with-maps/notifications-icon.png" alt-text="Benachrichtigungen" border="false"::: | Anzeigen von Benachrichtigungen zu einem Gerät Wenn beispielsweise eine neue IP-Adresse für ein Gerät erkannt wurde, das eine vorhandene MAC-Adresse verwendet |
 | :::image type="icon" source="media/how-to-work-with-maps/export-import.png" alt-text="Export" border="false"::: | Exportieren/Importieren von Geräteinformationen |
-| :::image type="icon" source="media/how-to-work-with-maps/properties-icon.png" alt-text="Eigenschaften" border="false"::: | Anzeigen grundlegender Geräteeigenschaften für ausgewählte Geräte |
+| :::image type="icon" source="media/how-to-work-with-maps/properties-icon.png" alt-text="properties" border="false"::: | Anzeigen grundlegender Geräteeigenschaften für ausgewählte Geräte |
 | :::image type="icon" source="media/how-to-work-with-maps/zoom-in-icon-v2.png" alt-text="Vergrößern" border="false"::: oder :::image type="icon" source="media/how-to-work-with-maps/zoom-out-icon-v2.png" alt-text="Verkleinern" border="false"::: | Vergrößern oder Verkleinern von Geräten in der Übersicht |
 
 ## <a name="view-ot-elements-only"></a>Ausschließliches Anzeigen von OT-Elementen
@@ -59,7 +59,7 @@ Jedes Subnetz wird in der Geräteübersicht als einzelne Entität dargestellt, e
 
 Die folgende Abbildung zeigt ein zugeklapptes IT-Subnetz mit 27 IT-Netzwerkelementen.
 
-:::image type="content" source="media/how-to-work-with-maps/shrunk-it-subnet.png" alt-text="Zugeklapptes IT-Subnetz mit 27 IT-Netzwerkelementen":::
+:::image type="content" source="media/how-to-work-with-maps/shrunk-it-subnet-v2.png" alt-text="Zugeklapptes IT-Subnetz mit 27 IT-Netzwerkelementen":::
 
 So aktivieren Sie die Zuklappfunktion für IT-Netzwerke
 
@@ -96,11 +96,11 @@ So klappen Sie ein IT-Subnetz zu
 
 2. Wählen Sie im Fenster „Geräte“ das Zuklappsymbol aus. Die Zahl in Rot gibt an, wie viele erweiterte IT-Subnetze derzeit in der Übersicht angezeigt werden.
 
-   :::image type="content" source="media/how-to-work-with-maps/devices-notifications.png" alt-text="Fenster „Geräte“":::
+   :::image type="content" source="media/how-to-work-with-maps/devices-notifications.png" alt-text="Gerätefenster":::
 
 3. Wählen Sie die Subnetze aus, die Sie zuklappen möchten, oder wählen Sie **Alle zuklappen** aus. Das ausgewählte Subnetz wird in der Übersicht zugeklappt angezeigt.
 
-   :::image type="content" source="media/how-to-work-with-maps/close-all-subnets.png" alt-text="Alle zuklappen":::
+   :::image type="content" source="media/how-to-work-with-maps/close-all-subnets.png" alt-text="Alle reduzieren":::
 
 Das Zuklappsymbol wird mit der aktualisierten Anzahl der aufgeklappten IT-Subnetze aktualisiert.
 
@@ -125,7 +125,7 @@ Die folgenden vordefinierten Gruppen sind verfügbar:
 | **Autorisierung (Standard)** | Geräte, die während des Lernprozesses im Netzwerk erkannt wurden oder dem Netzwerk offiziell hinzugefügt wurden |
 | **Filter für den Gerätebestand** | Geräte, die gemäß den Filtern gruppiert sind, werden in der Tabelle „Gerätebestand“ gespeichert. |
 | **Abrufintervalle** | Geräte, die nach Abrufintervallen gruppiert sind. Abrufintervalle werden automatisch anhand von zyklischen Kanälen bzw. Zeiträumen generiert. Beispiel: 15,0 Sekunden, 3,0 Sekunden, 1,5 Sekunden oder beliebiges Intervall. Durch Überprüfung dieser Informationen können Sie feststellen, ob Systeme zu schnell oder zu langsam abrufen. |
-| **Programmierung** | Engineeringstationen und programmierte Steuerungen |
+| **Programmieren** | Engineeringstationen und programmierte Steuerungen |
 | **Subnetze** | Geräte, die zu einem bestimmten Subnetz gehören. |
 | **VLAN** | Geräte, die einer bestimmten VLAN-ID zugeordnet sind. |
 | **Verbindung zwischen Subnetzen** | Geräte, die einer subnetzübergreifenden Verbindung zugeordnet sind |
@@ -226,7 +226,7 @@ Das Gerätetypsymbol wird mit verbundenen Geräten gezeigt.
 
 Die Detailansicht zeigt Geräte und Gerätebezeichnungen und -indikatoren mit den folgenden Informationen:
 
-:::image type="content" source="media/how-to-work-with-maps/device-map.png" alt-text="Detailansicht":::
+:::image type="content" source="media/how-to-work-with-maps/device-map-v2.png" alt-text="Detailansicht":::
 
 ### <a name="control-the-zoom-view"></a>Steuern der Zoomansicht
 
@@ -236,7 +236,7 @@ Die Übersichtsansicht hängt von der Zoomstufe der Übersicht ab. Der Wechsel z
 
 ### <a name="enable-simplified-zoom-views"></a>Aktivieren vereinfachter Zoomansichten
 
-Administratoren, die Sicherheitsanalysten und Benutzern mit Leseberechtigung den Zugriff auf die Ansichten „Vogelperspektive“ und „Geräte -und Verbindungstypen“ ermöglichen möchten, sollten die Option „Vereinfachte Ansicht“ aktivieren.
+Administratoren, die Sicherheitsanalysten und Benutzern mit Leseberechtigung den Zugriff auf die Vogelperspektive und die Ansicht der Gerätetypen und -verbindungen ermöglichen möchten, sollten die Option „Vereinfachte Ansicht“ aktivieren.
 
 So aktivieren Sie vereinfachte Ansichten der Übersicht
 
@@ -321,9 +321,9 @@ Die folgenden Informationen können manuell geändert werden. Manuell eingegeben
 | type | Der vom Sensor erkannte Gerätetyp. <br /> Weitere Informationen finden Sie unter [Anzeigen von Gerätetypen](#view-device-types). |
 | Hersteller | Der Gerätehersteller. |
 | Betriebssystem | Das Betriebssystem des Geräts. |
-| Purdue-Ebene | Die vom Sensor für dieses Gerät erkannte Purdue-Ebene wie z. B.: <br /> Automatisch <br /> Prozesssteuerung <br /> Aufsicht <br /> Enterprise |
+| Purdue-Ebene | Die vom Sensor für dieses Gerät erkannte Purdue-Ebene wie z. B.: <br /> Automatisch <br /> Prozesssteuerung <br /> Aufsicht <br /> – Enterprise |
 | BESCHREIBUNG | Ein Feld für die freie Texteingabe. <br /> Fügen Sie weitere Informationen zum Gerät hinzu. |
-| Attributes | Alle zusätzlichen Informationen, die in der Lernphase über das Gerät entdeckt wurden und nicht zu anderen Kategorien gehören, werden im Abschnitt „Attribute“ angezeigt. <br /> Diese Informationen sind schreibgeschützt. |
+| Attribute | Alle zusätzlichen Informationen, die in der Lernphase über das Gerät entdeckt wurden und nicht zu anderen Kategorien gehören, werden im Abschnitt „Attribute“ angezeigt. <br /> Diese Informationen sind schreibgeschützt. |
 | Einstellungen | Sie können Geräteeinstellungen manuell ändern, um falsch positive Ergebnisse zu vermeiden: <br /> - **Autorisiertes Gerät**: In der Lernphase werden alle im Netzwerk erkannten Geräte als autorisierte Geräte identifiziert. Wenn ein Gerät nach der Lernphase erkannt wird, wird es standardmäßig als nicht autorisiertes Gerät ausgewiesen. Sie können diese Festlegung manuell ändern. <br /> - **Als Scanner bekannt**: Aktivieren Sie diese Option, wenn Sie wissen, dass dieses Gerät als Scanner bekannt ist und keine Notwendigkeit besteht, Sie davor zu warnen. <br /> - **Programmiergerät**: Aktivieren Sie diese Option, wenn Sie wissen, dass dieses Gerät als Programmiergerät bekannt ist und keine Notwendigkeit besteht, Sie davor zu warnen. |
 | Benutzerdefinierte Gruppen | Die benutzerdefinierten Gruppen in der Geräteübersicht, zu denen dieses Gerät gehört. |
 | State | Der Sicherheits- und Autorisierungsstatus des Geräts: <br /> Der Status ist `Secured`, wenn keine Warnungen vorhanden sind. <br /> Wenn Warnungen zum Gerät vorliegen, wird die Anzahl der Warnungen angezeigt. <br /> Der Status `Unauthorized` wird für Geräte angezeigt, die nach der Lernphase dem Netzwerk hinzugefügt wurden. Sie können das Gerät in den Einstellungen manuell als `Authorized Device` festlegen. <br /> Für den Fall, dass die Adresse dieses Geräts als dynamische Adresse festgelegt ist, wird `DHCP` dem Status hinzugefügt. |
@@ -360,7 +360,7 @@ In der folgenden Tabelle sind alle Typen im System aufgeführt:
 |--|--|
 | ICS | Engineeringstation <br /> SPS <br />Historian <br />HMI <br />IED <br />DCS-Controller <br />RTU <br />Industrielle Packanlage <br />Industrieller Maßstab <br />Industrieroboter <br />Slot <br />Zähler <br />Frequenzumrichter  <br />Robotersteuerung <br />Servoantrieb <br />Pneumatisches Gerät <br />Marquee |
 | IT | Domänencontroller <br />Datenbankserver <br />Arbeitsstation <br />Server <br />Endstation <br />Storage <br />Smart Phone <br />Tablet <br />Sicherungsserver |
-| IoT | IP-Kamera <br />Drucker  <br />Stechuhr <br />ATM <br />Smart TV <br />Spielkonsole <br />DVR <br />Türbedienfeld <br />Heizung, Lüftung, Klimatechnik <br />Thermostat <br />Feuermelder <br />Intelligentes Lichtsystem <br />Intelligenter Zwischenstecker <br />Brandmelder <br />IP-Telefon <br />Alarmanlage <br />Alarmsirene <br />Motion Detector <br />Aufzug <br />Feuchtigkeitssensor <br />Barcodescanner <br />Unterbrechungsfreie Stromversorgung <br />Personenzählsystem <br />Intercom <br />Drehkreuz |
+| Internet der Dinge | IP-Kamera <br />Drucker  <br />Stechuhr <br />ATM <br />Smart TV <br />Spielkonsole <br />DVR <br />Türbedienfeld <br />Heizung, Lüftung, Klimatechnik <br />Thermostat <br />Feuermelder <br />Intelligentes Lichtsystem <br />Intelligenter Zwischenstecker <br />Brandmelder <br />IP-Telefon <br />Alarmanlage <br />Alarmsirene <br />Motion Detector <br />Aufzug <br />Feuchtigkeitssensor <br />Barcodescanner <br />Unterbrechungsfreie Stromversorgung <br />Personenzählsystem <br />Intercom <br />Drehkreuz |
 | Netzwerk | Drahtloser Zugriffspunkt <br />Router <br />Schalter <br />Firewall <br />VPN Gateway <br />NTP Server <br />WLAN-Ananas <br />Physischer Standort <br />E/A-Adapter <br /> Protokollkonverter |
 
 So zeigen Sie Geräteinformationen an
@@ -463,7 +463,7 @@ Sie haben folgende Möglichkeiten des Zugriffs auf das Fenster für die Programm
 
 - [Warnungen zu nicht autorisierter Programmierung](#unauthorized-programming-alerts)
 
-### <a name="event-timeline"></a>Zeitskala der Ereignisse
+### <a name="event-timeline"></a>Ereigniszeitachse
 
 Die Zeitskala der Ereignisse zeigt Ereignisse, bei denen Programmieränderungen erkannt wurden.
 

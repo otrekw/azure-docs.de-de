@@ -1,7 +1,7 @@
 ---
 title: Verwenden der MSAL in einer nationalen Cloud-App | Azure
 titleSuffix: Microsoft identity platform
-description: Die Microsoft-Authentifizierungsbibliothek (Microsoft Authentication Library, MSAL) ermöglicht Anwendungsentwicklern das Abrufen von Token, um geschützte Web-APIs aufzurufen. Bei diesen Web-APIs kann es sich um Microsoft Graph, andere Microsoft-APIs, Partner-Web-APIs oder um Ihre eigene Web-API handeln. Die MSAL unterstützt mehrere Anwendungsarchitekturen und -plattformen.
+description: Die Microsoft-Authentifizierungsbibliothek (Microsoft Authentication Library, MSAL) ermöglicht Anwendungsentwicklern das Abrufen von Token für den Aufruf von geschützten Web-APIs. Bei diesen Web-APIs kann es sich um Microsoft Graph, andere Microsoft-APIs, Partner-Web-APIs oder um Ihre eigene Web-API handeln. Die MSAL unterstützt mehrere Anwendungsarchitekturen und -plattformen.
 services: active-directory
 author: negoe
 manager: CelesteDG
@@ -13,12 +13,12 @@ ms.date: 11/22/2019
 ms.author: negoe
 ms.reviewer: marsma, nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 2f631ad650b20110084ff902043447f26c2d4ab3
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 22b3ea9eb0e4c3379438b6c3fb58ccfb13b4ed32
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96453606"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98064792"
 ---
 # <a name="use-msal-in-a-national-cloud-environment"></a>Verwenden der MSAL in einer nationalen Cloudumgebung
 

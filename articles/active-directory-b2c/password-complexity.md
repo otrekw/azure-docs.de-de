@@ -13,12 +13,12 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 11a45adfda306b2ab843725b6aaa28a5e6c026a6
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: f9748d0d278375029fc9875f5b36674d19ad871a
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97614250"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98058972"
 ---
 # <a name="configure-complexity-requirements-for-passwords-in-azure-active-directory-b2c"></a>Konfigurieren der Komplexitätsanforderungen für Kennwörter in Azure Active Directory B2C
 
@@ -76,7 +76,7 @@ Ermöglicht Ihnen, wahlweise nur Ziffern (PIN) oder den vollständigen Zeichensa
 Ermöglicht Ihnen, die Längenanforderungen des Kennworts zu steuern.
 
 - **Mindestlänge** muss mindestens 4 sein.
-- **Maximale Länge** muss größer oder gleich der Mindestlänge und darf höchstens 64 Zeichen lang sein.
+- **Maximale Länge** muss größer oder gleich der Mindestlänge und höchstens 256 Zeichen lang sein.
 
 ### <a name="character-classes"></a>Zeichenklassen
 

@@ -1,7 +1,7 @@
 ---
 title: Verwenden von Brokern mit Xamarin iOS und Android | Azure
 titleSuffix: Microsoft identity platform
-description: Erfahren Sie, wie Xamarin iOS-Anwendungen eingerichtet werden, die Microsoft Authenticator und die Microsoft Authentication Library for .NET (MSAL.NET) verwenden können. Erfahren Sie außerdem, wie Sie von der Azure AD Authentication Library for .NET (ADAL.NET) zu Microsoft Authentication Library for .NET (MSAL.NET) migrieren.
+description: Erfahren Sie, wie Xamarin iOS-Anwendungen eingerichtet werden, die Microsoft Authenticator und die Microsoft-Authentifizierungsbibliothek für .NET (Microsoft Authentication Library for .NET, MSAL.NET) verwenden können. Erfahren Sie außerdem, wie Sie von der Azure AD-Authentifizierungsbibliothek für .NET (Azure AD Authentication Library for .NET, ADAL.NET) zur Microsoft-Authentifizierungsbibliothek für .NET migrieren.
 author: jmprieur
 manager: CelesteDG
 ms.service: active-directory
@@ -12,12 +12,12 @@ ms.date: 09/08/2019
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: 7fa13a328a55b0e9eaa546e70bf0711f4f011cf1
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 73fbda9a3356e2877617391430a7f2b555b1a0e5
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96173429"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98063483"
 ---
 # <a name="use-microsoft-authenticator-or-intune-company-portal-on-xamarin-applications"></a>Verwenden von Microsoft Authenticator oder des Intune-Unternehmensportals für Xamarin-Anwendungen
 
@@ -183,7 +183,7 @@ Fügen Sie den Umleitungs-URI der Registrierung der App im [Azure-Portal](https:
 
 **So generieren Sie den Umleitungs-URI:**
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
+1. Melden Sie sich beim <a href="https://portal.azure.com/" target="_blank">Azure-Portal<span class="docon docon-navigate-external x-hidden-focus"></span></a> an.
 1. Wählen Sie unter **Azure Active Directory** > **App-Registrierungen** Ihre registrierte App aus.
 1. Wählen Sie **Authentifizierung** > **Plattform hinzufügen** > **IOS/macOS** aus.
 1. Geben Sie Ihre Bündel-ID ein, und wählen Sie dann **Konfigurieren** aus.

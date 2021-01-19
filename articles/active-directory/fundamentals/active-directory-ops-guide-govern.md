@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: d4df373f78a9c74584d0e4046f7532a2190f3a3f
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: ba3ca140abe36a31ffa03422420ea537bbe4f39a
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92370966"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97935749"
 ---
 # <a name="azure-active-directory-governance-operations-reference-guide"></a>Referenzleitfaden zu Azure Active Directory-Governancevorgängen
 
@@ -59,7 +59,7 @@ Für einige Änderungen sind beim Testen besondere Maßnahmen erforderlich, beis
 | Szenario| Empfehlung |
 |-|-|
 |Ändern des Authentifizierungstyps von „Verbund“ in „PHS/PTA“ oder umgekehrt| Testen Sie die Auswirkung der Änderung des Authentifizierungstyp mit einem [gestaffelten Rollout](../hybrid/how-to-connect-staged-rollout.md).|
-|Rollout einer neuen Richtlinie für bedingten Zugriff oder einer Identitätsschutzrichtlinie|Erstellen Sie eine neue ZS-Richtlinie, und weisen Sie diese Testbenutzern zu.|
+|Rollout einer neuen Richtlinie für bedingten Zugriff oder einer Identitätsschutzrichtlinie|Erstellen Sie eine neue Richtlinie für bedingten Zugriff, und weisen Sie diese Testbenutzern zu.|
 |Onboarding einer Testumgebung für eine Anwendung|Fügen Sie die Anwendung zu einer Produktionsumgebung hinzu, blenden Sie sie im MyApps-Panel aus, und weisen Sie sie während der Qualitätssicherungsphase Testbenutzern zu.|
 |Ändern von Synchronisierungsregeln|Führen Sie die Änderungen in einer Azure AD Connect-Testumgebung mit der gleichen Konfiguration aus, die zu diesem Zeitpunkt in der Produktion verwendet wird (auch als Stagingmodus bezeichnet), und analysieren Sie die Ergebnisse von CSExport. Wenn Sie zufrieden sind, wechseln Sie in die Produktion.|
 |Brandingänderung|Führen Sie einen Test in einem separaten Testmandanten durch.|

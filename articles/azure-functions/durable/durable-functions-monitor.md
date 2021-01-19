@@ -4,12 +4,12 @@ description: In diesem Artikel wird erläutert, wie Sie mithilfe der Durable Fun
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: ed92156df9d8e1e07b56cea4b1e64edee11d68d9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e70c50098ece516312e1e92984185624c276301b
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77562121"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98028419"
 ---
 # <a name="monitor-scenario-in-durable-functions---weather-watcher-sample"></a>Überwachungsszenario in Durable Functions – Beispiel einer Wetterbeobachtungsstation
 
@@ -72,6 +72,9 @@ Im Folgenden wird der Code dargestellt, der die Funktion implementiert:
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E3_Monitor/index.js)]
 
+# <a name="python"></a>[Python](#tab/python)
+Für das Überwachungsmuster in Python gibt es ein anderes Tutorial. Dieses finden Sie [hier](durable-functions-monitor-python.md).
+
 ---
 
 Diese Orchestratorfunktion führt die folgenden Aktionen aus:
@@ -83,8 +86,7 @@ Diese Orchestratorfunktion führt die folgenden Aktionen aus:
 5. Sie erstellt einen permanenten Timer, um die Orchestrierung im nächsten Abrufintervall fortzusetzen. Aus Gründen der Übersichtlichkeit verwendet dieses Beispiel einen hartcodierten Wert.
 6. Sie wird ausgeführt, bis ^die aktuelle UTC-Zeit den Ablaufzeitpunkt des Monitors überschreitet oder eine SMS-Benachrichtigung gesendet wird.
 
-Mehrere Orchestratorinstanzen können gleichzeitig ausgeführt werden, indem die Orchestratorfunktion mehrmals aufgerufen wird. Der zu überwachende Standort und die Telefonnummer, an die eine SMS-Benachrichtigung gesendet werden soll, können angegeben werden.
-
+Mehrere Orchestratorinstanzen können gleichzeitig ausgeführt werden, indem die Orchestratorfunktion mehrmals aufgerufen wird. Der zu überwachende Standort und die Telefonnummer, an die eine SMS-Benachrichtigung gesendet werden soll, können angegeben werden. Beachten Sie schließlich, dass die Orchestratorfunktion während des Wartens auf den Timer *nicht* ausgeführt wird, daher werden Ihnen keine Gebühren dafür berechnet.
 ### <a name="e3_getisclear-activity-function"></a>Aktivitätsfunktion „E3_GetIsClear“
 
 Bei den Hilfsaktivitätsfunktionen handelt es sich, wie bei anderen Beispielen, um reguläre Funktionen, die die Triggerbindung `activityTrigger` verwenden. Die Funktion **E3_GetIsClear** ruft mithilfe der Weather Underground-API die aktuellen Wetterbedingungen ab und ermittelt, ob das Wetter schön ist.
@@ -102,6 +104,9 @@ Die Datei *function.json* wird wie folgt definiert:
 Hier ist die Implementierung.
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E3_GetIsClear/index.js)]
+
+# <a name="python"></a>[Python](#tab/python)
+Für das Überwachungsmuster in Python gibt es ein anderes Tutorial. Dieses finden Sie [hier](durable-functions-monitor-python.md).
 
 ---
 
@@ -125,6 +130,9 @@ Die *function.json* ist einfach:
 Hier sehen Sie den Code, der die SMS-Nachricht sendet:
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/E3_SendGoodWeatherAlert/index.js)]
+
+# <a name="python"></a>[Python](#tab/python)
+Für das Überwachungsmuster in Python gibt es ein anderes Tutorial. Dieses finden Sie [hier](durable-functions-monitor-python.md).
 
 ---
 
@@ -169,7 +177,7 @@ Sie können sich die Aktivität der Orchestrierung in den Funktionsprotokollen i
 2018-03-01T01:14:54.030 Function completed (Success, Id=561d0c78-ee6e-46cb-b6db-39ef639c9a2c, Duration=62ms)
 ```
 
-Die Orchestrierung wird [beendet](durable-functions-instance-management.md), sobald das Zeitlimit erreicht ist oder schönes Wetter erkannt wird. Sie können auch `TerminateAsync` (.NET) oder `terminate` (JavaScript) in einer anderen Funktion verwenden oder den HTTP POST-Webhook **terminatePostUri** aufrufen, auf den oben in der 202-Antwort verwiesen wird. Dabei wird `{text}` durch den Grund für die Beendigung ersetzt:
+Die Orchestrierung wird abgeschlossen, sobald das Zeitlimit erreicht ist oder schönes Wetter erkannt wird. Sie können auch die `terminate`-API in einer anderen Funktion verwenden oder den HTTP POST-Webhook **terminatePostUri** aufrufen, auf den oben in der 202-Antwort verwiesen wird. Ersetzen Sie `{text}` durch den Grund für die vorzeitige Beendigung, um den Webhook zu verwenden. Die HTTP POST-URL sieht in etwa wie folgt aus:
 
 ```
 POST https://{host}/runtime/webhooks/durabletask/instances/f6893f25acf64df2ab53a35c09d52635/terminate?reason=Because&taskHub=SampleHubVS&connection=Storage&code={systemKey}

@@ -10,14 +10,14 @@ ms.service: media-services
 ms.subservice: video-indexer
 ms.workload: na
 ms.topic: article
-ms.date: 10/30/2020
+ms.date: 01/06/2021
 ms.author: juliako
-ms.openlocfilehash: 81e52d4a6827492931179055d040b541d51228eb
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: b6e18e077b717da65ca8d70b9bda6a133dba1f5c
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97916659"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98120086"
 ---
 # <a name="azure-media-services-video-indexer-release-notes"></a>Azure Media Services Video Indexer: Versionshinweise
 
@@ -44,12 +44,15 @@ Video Indexer unterstützt die Erkennung und Gruppierung von Figuren in animiert
 
 ### <a name="planned-video-indexer-website-authenticatication-changes"></a>Geplante Änderungen an der Authentifizierung der Video Indexer-Website
 
-Ab 1. Januar 2021 können Sie sich nicht mehr über Facebook oder LinkedIn bei der [Video Indexer](https://www.videoindexer.ai/)-Website (Testversion) registrieren und anmelden.
+Ab 1. März 2021 können Sie sich nicht mehr über Facebook oder LinkedIn beim [Entwicklerportal](video-indexer-use-apis.md) der [Video Indexer](https://www.videoindexer.ai/)-Website registrieren und anmelden.
 
 Sie können sich über einen der folgenden Anbieter registrieren und anmelden: Azure AD, Microsoft und Google.
 
 > [!NOTE]
-> Es wird dringend angeraten, Ihre Inhalte vor dem 1. Januar 2021 zu exportieren, da mit LinkedIn und Facebook verknüpfte Konten gelöscht und deren Inhalte nicht mehr zugänglich sein werden.
+> Auf Video Indexer-Konten, die mit LinkedIn und Facebook verknüpft sind, kann nach dem 1. März 2021 nicht mehr zugegriffen werden. 
+> 
+> Sie sollten ein Azure AD-, Microsoft- oder Google-E-Mail-Konto, das Sie bereits besitzen, zum Video Indexer-Konto [einladen](invite-users.md), damit Sie weiterhin Zugriff haben.<br/>
+> Alternativ dazu können Sie ein kostenpflichtiges Konto erstellen und die Daten migrieren.
 
 ## <a name="august-2020"></a>August 2020
 

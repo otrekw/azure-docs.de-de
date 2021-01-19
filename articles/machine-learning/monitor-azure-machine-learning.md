@@ -9,12 +9,12 @@ ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 10/01/2020
-ms.openlocfilehash: a77f9c8f7e37d2c5a040a48b6bd96bef11d51f14
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 183d8b415ccb35d22dcc23ccf11d0707ad0778dd
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94533479"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97963654"
 ---
 # <a name="monitor-azure-machine-learning"></a>Überwachen von Azure Machine Learning
 
@@ -68,7 +68,7 @@ Ausführliche Informationen zum Erstellen einer Diagnoseeinstellung über das Az
 
 Sie können die folgenden Protokolle für Azure Machine Learning konfigurieren:
 
-| Kategorie | Beschreibung |
+| Kategorie | BESCHREIBUNG |
 |:---|:---|
 | AmlComputeClusterEvent | Ereignisse von Azure Machine Learning-Computeclustern |
 | AmlComputeClusterNodeEvent | Ereignisse von Knoten in einem Azure Machine Learning-Computecluster |
@@ -91,6 +91,8 @@ Alle Metriken für Azure Machine Learning befinden sich im Namespace **Machine L
 
 Sie können zur Referenz auf eine Liste [aller in Azure Monitor unterstützter Ressourcenmetriken](../azure-monitor/platform/metrics-supported.md) anzeigen.
 
+> [!TIP]
+> Metrikdaten stehen in Azure Monitor 90 Tage zur Verfügung. Beim Erstellen von Diagrammen können jedoch nur 30 Tage visualisiert werden. Wenn Sie z. B. einen 90-tägigen Zeitraum visualisieren möchten, müssen Sie ihn in drei Diagramme mit jeweils 30 Tagen in diesem 90-Tage-Zeitraum aufteilen.
 ### <a name="filtering-and-splitting"></a>Filtern und Teilen
 
 Für Metriken, die Dimensionen unterstützen, können Sie Filter mit einem Dimensionswert anwenden. Beispielsweise können Sie **Active Cores** (Aktive Kerne) nach dem **Clusternamen**`cpu-cluster` filtern. 

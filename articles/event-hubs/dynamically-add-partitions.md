@@ -3,12 +3,12 @@ title: Dynamisches Hinzufügen von Partitionen zu einem Event Hub in Azure Event
 description: In diesem Artikel erfahren Sie, wie Sie einem Event Hub in Azure Event Hubs dynamisch Partitionen hinzufügen.
 ms.topic: how-to
 ms.date: 06/23/2020
-ms.openlocfilehash: 4a729147eaa11497c66f82a9764dfee9492786b9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4ebe4491338c24a331812041f4d3e6d37b934117
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87002538"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98132170"
 ---
 # <a name="dynamically-add-partitions-to-an-event-hub-apache-kafka-topic-in-azure-event-hubs"></a>Dynamisches Hinzufügen von Partitionen zu einem Event Hub (Apache Kafka-Thema) in Azure Event Hubs
 Event Hubs bietet Nachrichtenstreaming über ein partitioniertes Consumermuster, in dem jeder Consumer nur eine bestimmte Teilmenge oder Partition des Nachrichtenstreams liest. Dieses Muster ermöglicht eine horizontale Skalierung für die Ereignisverarbeitung und bietet andere datenstrombezogene Features, die in Warteschlangen und Themen nicht verfügbar sind. Eine Partition ist eine geordnete Sequenz von Ereignissen, die in einem Event Hub besteht. Neu eingehende Ereignisse werden am Ende dieser Sequenz hinzugefügt. Weitere Informationen zu Partitionen im Allgemeinen finden Sie unter [Partitionen](event-hubs-scalability.md#partitions).
@@ -71,7 +71,7 @@ Event Hubs umfasst drei Senderoptionen:
 
 - **Partitionssender:** In diesem Szenario senden Clients Ereignisse direkt an eine Partition. Obwohl Partitionen identifizierbar sind und Ereignisse direkt an sie gesendet werden können, wird von der Verwendung dieses Musters abgeraten. Das Hinzufügen von Partitionen hat keine Auswirkung auf dieses Szenario. Es wird empfohlen, Anwendungen neu zu starten, damit neu hinzugefügte Partitionen erkannt werden können. 
 - **Partitionsschlüsselsender:** In diesem Szenario senden Clients die Ereignisse mit einem Schlüssel, sodass sich alle zu dem Schlüssel gehörenden Ereignisse in derselben Partition befinden. In diesem Fall erstellt der Dienst einen Hashwert für den Schlüssel und leitet ihn an die entsprechende Partition weiter. Die Aktualisierung der Partitionsanzahl kann durch Hashänderungen zu Problemen wegen falscher Reihenfolge führen. Wenn Ihnen die Reihenfolge wichtig ist, sollten Sie daher sicherstellen, dass in der Anwendung alle Ereignisse aus vorhandenen Partitionen verarbeitet werden, bevor Sie die Partitionsanzahl erhöhen.
-- **Roundrobinsender (Standard):** In diesem Szenario werden die Ereignisse im Event Hubs-Dienst mittels Roundrobinverfahren partitionsübergreifend gesendet. Der Event Hubs-Dienst erkennt Änderungen der Partitionsanzahl und sendet Ereignisse innerhalb von wenigen Sekunden nach einer Änderung der Partitionsanzahl an die neuen Partitionen.
+- **Roundrobinsender (Standard):** In diesem Szenario werden die Ereignisse im Event Hubs-Dienst mittels Roundrobinverfahren partitionsübergreifend gesendet. Zusätzlich wird ein Lastenausgleichsalgorithmus verwendet. Der Event Hubs-Dienst erkennt Änderungen der Partitionsanzahl und sendet Ereignisse innerhalb von wenigen Sekunden nach einer Änderung der Partitionsanzahl an die neuen Partitionen.
 
 ### <a name="receiverconsumer-clients"></a>Empfänger-/Consumerclients
 Event Hubs umfasst direkte Empfänger und eine einfache Consumerbibliothek, die als [Ereignisprozessorhost (altes SDK)](event-hubs-event-processor-host.md) oder [Ereignisprozessor (neues SDK)](event-processor-balance-partition-load.md) bezeichnet wird.
@@ -99,7 +99,7 @@ Wenn ein Mitglied einer Consumergruppe eine Aktualisierung der Metadaten durchf�
     > [!IMPORTANT]
     > Obwohl die Reihenfolge der vorhandenen Daten beibehalten wird, treten beim Partitionenhashing für Nachrichten, für die nach Änderungen der Partitionsanzahl ein Hashwert erstellt wird, aufgrund der Hinzufügung von Partitionen Fehler auf.
 - Das Hinzufügen von Partitionen zu einem vorhandenen Thema oder einer vorhandenen Event Hubs-Instanz wird in folgenden Fällen empfohlen:
-    - Beim Verwenden der (standardmäßigen) Roundrobinmethode zum Senden von Ereignissen
+    - Beim Verwenden der Standardmethode zum Senden von Ereignissen
      - Bei standardmäßigen Kafka-Partitionierungsstrategien, z. B. der StickyAssignor-Strategie
 
 

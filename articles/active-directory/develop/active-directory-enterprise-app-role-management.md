@@ -12,12 +12,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 12/07/2020
 ms.author: jeedes
-ms.openlocfilehash: e88a721d500ea1c17c768e9f28835248711bd361
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 10b61dd4b6cc3a99b8eecf86cb5ba7e718d64743
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97584441"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98015112"
 ---
 # <a name="how-to-configure-the-role-claim-issued-in-the-saml-token-for-enterprise-applications"></a>Gewusst wie: Konfigurieren von im SAML-Token ausgestellten Rollenansprüchen für Unternehmensanwendungen
 
@@ -34,7 +34,7 @@ Wenn die Anwendung erwartet, dass benutzerdefinierte Rollen in einer SAML-Antwor
 
 ## <a name="create-roles-for-an-application"></a>Erstellen von Rollen für eine Anwendung
 
-1. Klicken Sie im linken Bereich des [Azure-Portals](https://portal.azure.com) auf das Symbol **Azure Active Directory**.
+1. Klicken Sie im linken Bereich des <a href="https://portal.azure.com/" target="_blank">Azure-Portals <span class="docon docon-navigate-external x-hidden-focus"></span></a> auf das Symbol **Azure Active Directory**.
 
     ![Azure Active Directory-Symbol][1]
 

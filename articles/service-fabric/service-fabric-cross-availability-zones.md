@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: pepogors
-ms.openlocfilehash: 73a3be62e57991b63525372f008e15d8e4f36a74
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: f729c00d3b78631a32013ec9453302584cecbd16
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97401728"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97962430"
 ---
 # <a name="deploy-an-azure-service-fabric-cluster-across-availability-zones"></a>Bereitstellen eines Azure Service Fabric-Clusters über Verfügbarkeitszonen hinweg
 Verfügbarkeitszonen sind in Azure ein Hochverfügbarkeitsangebot, das Anwendungen und Daten vor Ausfällen von Rechenzentren schützt. Eine Verfügbarkeitszone ist ein eindeutiger physischer Standort, der mit unabhängiger Stromversorgung, Kühlung und Netzwerk innerhalb einer Azure-Region ausgestattet ist.
@@ -35,7 +35,7 @@ Die empfohlene Topologie für den primären Knotentyp erfordert die nachfolgend 
 >[!NOTE]
 > Die Eigenschaft der VM-Skalierungsgruppe für die einzelne Platzierungsgruppe muss auf „true“ festgelegt sein, da eine einzelne VM-Skalierungsgruppe, die mehrere Zonen umfasst, von Service Fabric nicht unterstützt wird.
 
- ![Architektur der Azure Service Fabric-Verfügbarkeitszone][sf-architecture]
+ ![Diagramm der Architektur der Azure Service Fabric-Verfügbarkeitszone][sf-architecture]
 
 ## <a name="networking-requirements"></a>Netzwerkanforderungen
 ### <a name="public-ip-and-load-balancer-resource"></a>Öffentliche IP- und Load Balancer-Ressource
@@ -344,7 +344,7 @@ Eine vollständige Beispielvorlage finden Sie [hier](https://github.com/Azure-Sa
 Um Zonen zu aktivieren, müssen Sie in einer VM-Skalierungsgruppe die folgenden drei Werte in die Ressourcen der VM-Skalierungsgruppe aufnehmen.
 
 * Der erste Wert ist die **zones**-Eigenschaft, die angibt, welche Verfügbarkeitszonen in der VM-Skalierungsgruppe vorhanden sind.
-* Der zweite Wert ist die Eigenschaft „singlePlacementGroup“, die auf „true“ festgelegt werden muss.
+* Der zweite Wert ist die Eigenschaft „singlePlacementGroup“, die auf „true“ festgelegt werden muss. **Die Skalierungsgruppe erstreckt sich über drei Verfügbarkeitszonen und kann auf bis zu 300 VMs skaliert werden, auch mit „singlePlacementGroup = true“.**
 * Der dritte, optionale Wert „zoneBalance“ stellt sicher, dass das strikte Zonengleichgewicht auf „true“ festgelegt ist. Informieren Sie sich über [zoneBalancing](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones#zone-balancing).
 * Die Außerkraftsetzungen für FaultDomain und UpgradeDomain müssen nicht konfiguriert werden.
 

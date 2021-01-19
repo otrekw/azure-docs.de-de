@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 08/05/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: cbae833c1b207669e35b467707f946e9bafe31d2
-ms.sourcegitcommit: c538b6e4cf27b992500c079ad9c914c05d55eb7f
+ms.openlocfilehash: 077d200dcaf957f636acecebb441ff99a68eb96f
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2021
-ms.locfileid: "97854943"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97963586"
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>Integrieren Ihrer App in ein Azure Virtual Network
 
@@ -130,6 +130,12 @@ Auf der Benutzeroberfläche der VNET-Integration des App Service-Plans werden al
 
 * **Netzwerk synchronisieren**: Der Vorgang zum Synchronisieren des Netzwerks wird nur für die von einem Gateway abhängige VNet-Integration verwendet. Durch die Netzwerksynchronisierung wird sichergestellt, dass Ihre Zertifikate und Netzwerkinformationen synchronisiert sind. Wenn Sie dem VNET ein DNS hinzufügen oder dieses ändern, führen Sie eine Netzwerksynchronisierung durch. Mit diesem Vorgang werden alle Apps, die dieses VNET verwenden, neu gestartet. Dieser Vorgang funktioniert nicht, wenn Sie eine App und ein VNet verwenden, die zu verschiedenen Abonnements gehören.
 * **Routen hinzufügen**: Durch das Hinzufügen von Routen wird ausgehender Datenverkehr in Ihr VNET geleitet.
+
+Die private IP-Adresse, die der Instanz zugewiesen ist, wird über die Umgebungsvariable **WEBSITE_PRIVATE_IP** verfügbar gemacht. Auf der Benutzeroberfläche der Kudu-Konsole wird auch die Liste der Umgebungsvariablen angezeigt, die für die Web-App verfügbar sind. Diese IP-Adresse wird aus dem Adressbereich des integrierten Subnetzes zugewiesen. Bei der regionalen VNet-Integration ist der Wert von WEBSITE_PRIVATE_IP eine IP-Adresse aus dem Adressbereich des delegierten Subnetzes, und bei der für das Gateway erforderlichen VNet-Integration ist der Wert eine IP-Adresse aus dem Adressbereich des Point-to-Site-Adresspools, der auf dem Gateway des virtuellen Netzwerks konfiguriert ist. Diese IP-Adresse wird von der Web-App zum Herstellen einer Verbindung mit den Ressourcen über das virtuelle Netzwerk verwendet. 
+
+> [!NOTE]
+> Der Wert von WEBSITE_PRIVATE_IP ist veränderlich. Es handelt sich aber immer um eine IP-Adresse im Adressbereich des Integrationssubnetzes oder im Point-to-Site-Adressbereich. Sie müssen daher den Zugriff vom gesamten Adressbereich aus zulassen.
+>
 
 ### <a name="gateway-required-vnet-integration-routing"></a>Routing der von einem Gateway abhängige VNet-Integration
 Die in Ihrem VNET definierten Routen werden zum Weiterleiten des Datenverkehrs aus der App in Ihr VNET verwendet. Wenn Sie weiteren ausgehenden Datenverkehr in das VNET senden möchten, fügen Sie diese Adressblöcke hier hinzu. Diese Funktion kann nur mit der von einem Gateway abhängigen VNet-Integration. Routingtabellen wirken sich nicht auf den App-Datenverkehr aus, wenn von einem Gateway abhängige VNet-Integration so verwendet wird wie regionale VNet-Integration.

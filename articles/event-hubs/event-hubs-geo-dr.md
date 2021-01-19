@@ -3,12 +3,12 @@ title: 'Georedundante Notfallwiederherstellung: Azure Event Hubs | Microsoft-Dok
 description: Verwenden von geografischen Regionen für Failover und Notfallwiederherstellung in Azure Event Hubs
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: e10ac5847a38190c8feaae5e51f9b55bee4c4fbc
-ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
+ms.openlocfilehash: 8824334e762237c3f18cb763d5b39fa55d6415a3
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97861471"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98108487"
 ---
 # <a name="azure-event-hubs---geo-disaster-recovery"></a>Azure Event Hubs: Georedundante Notfallwiederherstellung 
 
@@ -16,11 +16,11 @@ Die Resilienz gegen katastrophale Ausfälle von Datenverarbeitungsressourcen ist
 
 Mit Azure Event Hubs wird das Risiko von katastrophalen Ausfällen einzelner Computer oder sogar ganzer Racks auf Cluster verteilt, die sich über mehrere Fehlerdomänen in einem Rechenzentrum erstrecken. Außerdem implementiert der Dienst transparente Fehlererkennungs- und Failovermechanismen und kann somit auch bei solchen Ausfällen weiterhin innerhalb der garantierten Servicelevel und in der Regel ohne spürbare Unterbrechungen ausgeführt werden. Wenn ein Event Hubs-Namespace mit aktivierter Option für [Verfügbarkeitszonen](../availability-zones/az-overview.md) erstellt wurde, wird das Ausfallrisiko noch weiter auf drei physisch getrennte Einrichtungen verteilt. Der Dienst verfügt dann über genügend Kapazitätsreserven, um den vollständigen, katastrophalen Ausfall einer gesamten Einrichtung sofort zu bewältigen. 
 
-Das Azure Event Hubs-Clustermodell mit Unterstützung von Verfügbarkeitszonen bietet Resilienz bei schwerwiegenden Hardwareausfälle und sogar beim katastrophalen Ausfall eines vollständigen Rechenzentrums. Es kann jedoch bedrohliche Situationen mit großflächigen physischen Zerstörungen geben, vor denen selbst diese Maßnahmen keinen ausreichenden Schutz bieten können. 
+Das Azure Event Hubs-Clustermodell mit Unterstützung von Verfügbarkeitszonen bietet Resilienz bei schwerwiegenden Hardwareausfälle und sogar beim katastrophalen Ausfall eines vollständigen Rechenzentrums. Dennoch kann es zu schwerwiegenden Situationen mit einer weit gestreuten physischen Zerstörung kommen, gegen die selbst diese Maßnahmen keinen ausreichenden Schutz bieten können. 
 
-Die georedundante Notfallwiederherstellung von Event Hubs erleichtert die Wiederherstellung nach einer Katastrophe dieser Größenordnung und die endgültige Aufgabe einer Azure-Region, ohne dass Sie die Anwendungskonfigurationen ändern müssen. Wenn Sie eine Azure-Region aufgeben, sind in der Regel mehrere Dienste betroffen. Dieses Feature soll vor allem dabei helfen, die Integrität der gesamten Anwendungskonfiguration zu bewahren.  
+Die georedundante Notfallwiederherstellung von Event Hubs erleichtert die Wiederherstellung nach einer Katastrophe dieser Größenordnung und die endgültige Aufgabe einer Azure-Region, ohne dass Sie die Anwendungskonfigurationen ändern müssen. Wenn Sie eine Azure-Region verwerfen, sind in der Regel mehrere Dienste betroffen. Dieses Feature soll vor allem helfen, die Integrität der gesamten Anwendungskonfiguration zu bewahren.  
 
-Die georedundante Notfallwiederherstellung stellt sicher, dass die gesamte Konfiguration eines Namespaces (Event Hubs, Consumergruppen und Einstellungen) ständig von einem primären Namespace in einem sekundären Namespace repliziert wird, wenn diese gekoppelt sind. Außerdem können Sie jederzeit ein einmaliges Failover vom primären zum sekundären Namespace auslösen. Beim Failover wird der ausgewählte Aliasname für den Namespace dem sekundären Namespace zugeordnet, dann wird die Kopplung aufgehoben. Das Failover erfolgt nach der Initiierung fast unmittelbar. 
+Die georedundante Notfallwiederherstellung stellt sicher, dass die gesamte Konfiguration eines Namespaces (Event Hubs, Consumergruppen und Einstellungen) ständig von einem primären Namespace in einem sekundären Namespace repliziert wird, wenn diese gekoppelt sind. Außerdem können Sie jederzeit ein einmaliges Failover vom primären zum sekundären Namespace auslösen. Beim Failover wird der ausgewählte Aliasname für den Namespace dem sekundären Namespace zugeordnet, und die Kopplung wird dann aufgehoben. Das Failover erfolgt nach der Initiierung fast unmittelbar. 
 
 > [!IMPORTANT]
 > Das Feature ermöglicht die sofortige Fortsetzung von Vorgängen mit derselben Konfiguration, **repliziert aber keine Ereignisdaten**. Sofern der Notfall nicht zum Verlust sämtlicher Zonen geführt hat, werden die Ereignisdaten nach dem Failover im primären Event Hub beibehalten, und die bisherigen Ereignisse können von dort abgerufen werden, sobald der Zugriff wiederhergestellt ist. Verwenden Sie zum Replizieren von Ereignisdaten und zum Betreiben der entsprechenden Namespaces in Aktiv/Aktiv-Konfigurationen zur Bewältigung von Ausfällen und Notfällen nicht den Featuresatz der georedundanten Notfallwiederherstellung. Befolgen Sie stattdessen die [Replikationsanleitung](event-hubs-federation-overview.md).  
@@ -70,7 +70,29 @@ Im folgenden Abschnitt finden Sie eine Übersicht über den Failoverprozess und 
 
 ### <a name="setup"></a>Einrichten
 
-Zuerst erstellen bzw. verwenden Sie einen vorhandenen primären Namespace und einen neuen sekundären Namespace und koppeln diese anschließend. Über diese Kopplung erhalten Sie einen Alias, mit dem Sie eine Verbindung herstellen können. Da Sie einen Alias verwenden, müssen Sie keine Verbindungszeichenfolgen ändern. Nur neue Namespaces können der Failoverkopplung hinzugefügt werden. Abschließend sollten Sie einige Überwachungsfunktionen hinzufügen, um zu ermitteln, ob ein Failover erforderlich ist. In den meisten Fällen ist der Dienst Teil eines großen Ökosystems, sodass automatische Failover selten möglich sind, da Failover häufig synchron mit dem restlichen Subsystem oder der Infrastruktur durchgeführt werden müssen.
+Zuerst erstellen bzw. verwenden Sie einen vorhandenen primären Namespace und einen neuen sekundären Namespace und koppeln diese anschließend. Über diese Kopplung erhalten Sie einen Alias, mit dem Sie eine Verbindung herstellen können. Da Sie einen Alias verwenden, müssen Sie keine Verbindungszeichenfolgen ändern. Nur neue Namespaces können der Failoverkopplung hinzugefügt werden. 
+
+1. Erstellen Sie den primären Namespace.
+1. Erstellen Sie den sekundären Namespace. Dieser Schritt ist optional. Sie können den sekundären Namespace während der Erstellung der Kopplung im nächsten Schritt erstellen. 
+1. Navigieren Sie im Azure-Portal zu Ihrem primären Namespace.
+1. Wählen Sie im linken Menü **Georedundante Wiederherstellung** und auf der Symbolleiste **Kopplung initiieren** aus. 
+
+    :::image type="content" source="./media/event-hubs-geo-dr/primary-namspace-initiate-pairing-button.png" alt-text="Initiieren der Kopplung vom primären Namespace":::    
+1. Wählen Sie auf der Seite **Kopplung initiieren** einen vorhandenen sekundären Namespace aus, oder erstellen Sie einen solchen Namespace. Wählen Sie dann **Erstellen** aus. Im folgenden Beispiel wird ein vorhandener sekundärer Namespace ausgewählt. 
+
+    :::image type="content" source="./media/event-hubs-geo-dr/initiate-pairing-page.png" alt-text="Auswählen des sekundären Namespaces":::        
+1. Wenn Sie jetzt **Georedundante Wiederherstellung** für den primären Namespace auswählen, wird die Seite **Event Hubs-Alias für georedundante Notfallwiederherstellung** ähnlich der folgenden Abbildung angezeigt:
+
+    :::image type="content" source="./media/event-hubs-geo-dr/geo-dr-alias-page.png" alt-text="Seite „Event Hubs-Alias für georedundante Notfallwiederherstellung“":::    
+1. Auf der Seite **Übersicht** können Sie die folgenden Aktionen ausführen: 
+    1. Aufheben der Kopplung zwischen dem primären und sekundären Namespace. Wählen Sie auf der Symbolleiste die Option **Kopplung aufheben** aus. 
+    1. Manuelles Failover zum sekundären Namespace. Wählen Sie auf der Symbolleiste die Option **Failover** aus. 
+    
+        > [!WARNING]
+        > Ein Failover aktiviert den sekundären Namespace und entfernt den primären Namespace aus der Kopplung für die georedundante Notfallwiederherstellung. Erstellen Sie einen weiteren Namespace, um eine neue Kopplung für die georedundante Notfallwiederherstellung zu erhalten. 
+1. Wählen Sie auf der Seite **Event Hubs-Alias für georedundante Notfallwiederherstellung** die Option **Richtlinien für gemeinsamen Zugriff** aus, um auf die primäre Verbindungszeichenfolge für den Alias zuzugreifen. Verwenden Sie diese Verbindungszeichenfolge anstelle der direkten Verbindungszeichenfolge zum primären bzw. sekundären Namespace. 
+
+Abschließend sollten Sie einige Überwachungsfunktionen hinzufügen, um zu ermitteln, ob ein Failover erforderlich ist. In den meisten Fällen ist der Dienst Teil eines großen Ökosystems, sodass automatische Failover selten möglich sind, da Failover häufig synchron mit dem restlichen Subsystem oder der Infrastruktur durchgeführt werden müssen.
 
 ### <a name="example"></a>Beispiel
 
@@ -133,7 +155,7 @@ Sie können Verfügbarkeitszonen nur für neue Namespaces über das Azure-Portal
 ![3][]
 
 ## <a name="private-endpoints"></a>Private Endpunkte
-Dieser Abschnitt enthält zusätzliche Überlegungen zur Verwendung der georedundanten Notfallwiederherstellung mit Namespaces, bei denen private Endpunkte verwendet werden. Informationen zur Verwendung privater Endpunkte mit Event Hubs im Allgemeinen finden Sie unter [Konfigurieren privater Endpunkte](private-link-service.md).
+In diesem Abschnitt finden Sie weitere Überlegungen zur Verwendung der georedundanten Notfallwiederherstellung mit Namespaces, die private Endpunkte verwenden. Informationen zur Verwendung privater Endpunkte mit Event Hubs im Allgemeinen finden Sie unter [Konfigurieren privater Endpunkte](private-link-service.md).
 
 ### <a name="new-pairings"></a>Neue Kopplungen
 Wenn Sie versuchen, eine Kopplung zwischen einem primären Namespace mit einem privaten Endpunkt und einem sekundären Namespace ohne einen privaten Endpunkt zu erstellen, wird die Kopplung nicht durchgeführt. Die Kopplung erfolgt nur, wenn sowohl der primäre als auch der sekundäre Namespace einen privaten Endpunkt aufweist. Es wird empfohlen, für den primären und den sekundären Namespace sowie für virtuelle Netzwerke, in denen private Endpunkte erstellt werden, die gleichen Konfigurationen zu verwenden.  

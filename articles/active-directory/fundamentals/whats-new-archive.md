@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro, seo-update-azuread-jan, has-adal-ref
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e90adcb5312df6e1dfe6d4b58407edeb924a8809
-ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
+ms.openlocfilehash: 6e561a0e05cf1a0870d85369867caba6c4d6bf12
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97862442"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97932417"
 ---
 # <a name="archive-for-whats-new-in-azure-active-directory"></a>Archiv für Neuerungen in Azure Active Directory
 
@@ -3733,7 +3733,7 @@ Weitere Informationen zum Listen Ihrer Anwendung im Azure AD-App-Katalog finden 
 
 **Typ:** Neues Feature-**Dienstkategorie:** Andere **Produktfunktion:** Verzeichnis
 
-Neue detaillierte Anleitungen für die Bereitstellung von Azure Active Directory (Azure AD), einschließlich Self-Service-Kennwortzurücksetzung, einmaliges Anmelden, bedingter Zugriff, App-Proxy, Benutzerbereitstellung, Active Directory-Verbunddienste (AD FS) zu Pass-Through-Authentifizierung und AD FS zu Kennworthashsynchronisierung.
+Neue detaillierte Anleitungen zur Bereitstellung von Azure Active Directory (Azure AD), einschließlich Self-Service-Kennwortzurücksetzung, einmaliges Anmelden, bedingter Zugriff, App-Proxy, Benutzerbereitstellung, Active Directory-Verbunddienste (AD FS) zur Passthrough-Authentifizierung und AD FS zur Kennworthashsynchronisierung.
 
 Die Bereitstellungsanleitungen finden Sie auf GitHub im Repository [Identity Deployment Guides](./active-directory-deployment-plans.md). Um Feedback zu den Bereitstellungsanleitungen zu geben, verwenden Sie das Formular [Deployment Plan Feedback](https://aka.ms/deploymentplanfeedback). Bei Fragen zu den Bereitstellungsanleitungen wenden Sie sich unter [IDGitDeploy](mailto:idgitdeploy@microsoft.com) an uns.
 

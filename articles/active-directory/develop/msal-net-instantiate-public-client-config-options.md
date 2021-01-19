@@ -13,16 +13,16 @@ ms.date: 04/30/2019
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: 349ec8c99bc9e6768e5ec2ded346893da95c1636
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3e2ffebf0b414d4b59178fe04fb109530365786b
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88166143"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98064707"
 ---
 # <a name="instantiate-a-public-client-application-with-configuration-options-using-msalnet"></a>Instanziieren einer öffentlichen Clientanwendung mit Konfigurationsoptionen unter Verwendung von MSAL.NET
 
-In diesem Artikel wird beschrieben, wie Sie eine [öffentliche Clientanwendung](msal-client-applications.md) unter Verwendung der Microsoft Authentication Library für .NET (MSAL.NET) instanziieren.  Die Anwendung wird mit Konfigurationsoptionen instanziiert, die in einer Einstellungsdatei definiert werden.
+In diesem Artikel wird beschrieben, wie Sie mithilfe der Microsoft-Authentifizierungsbibliothek für .NET (Microsoft Authentication Library for .NET, MSAL.NET) eine [öffentliche Clientanwendung](msal-client-applications.md) instanziieren.  Die Anwendung wird mit Konfigurationsoptionen instanziiert, die in einer Einstellungsdatei definiert werden.
 
 Vor der Initialisierung einer Anwendung müssen Sie diese zunächst [registrieren](quickstart-register-app.md), damit Ihre App in Microsoft Identity Platform integriert werden kann. Nach der Registrierung benötigen Sie unter Umständen die folgenden Informationen (die Sie im Azure-Portal finden können):
 

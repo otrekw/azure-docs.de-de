@@ -8,12 +8,12 @@ author: mlearned
 ms.author: mlearned
 description: Verwenden von GitOps zum Konfigurieren eines Azure Arc-fähigen Kubernetes-Clusters (Vorschau)
 keywords: GitOps, Kubernetes, K8s, Azure, Arc, Azure Kubernetes Service, AKS, Container
-ms.openlocfilehash: 85771824a6cecd10346937220e400028a4570377
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 906021377cbfd6960769f98f9dbd15a5c430c71f
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97653451"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97955330"
 ---
 # <a name="deploy-configurations-using-gitops-on-arc-enabled-kubernetes-cluster-preview"></a>Bereitstellen von Konfigurationen mithilfe von GitOps in Arc-fähigen Kubernetes-Clustern (Vorschauversion)
 
@@ -150,7 +150,7 @@ Hier finden Sie einige weitere Parameter, um die Konfiguration anzupassen:
 
 `--helm-operator-chart-version` : *Optionale* Chartversion für den Helm-Operator (falls aktiviert). Standardwert: ‚1.2.0‘.
 
-`--operator-namespace` : *Optionaler* Name für den Operatornamespace. Standardwert: „default“
+`--operator-namespace` : *Optionaler* Name für den Operatornamespace. Standardwert: „default“. Maximal 23 Zeichen
 
 `--operator-params` : *Optionale* Parameter für den Operator. Diese müssen in einfachen Anführungszeichen angegeben werden. Zum Beispiel, ```--operator-params='--git-readonly --git-path=releases --sync-garbage-collection' ```
 
@@ -169,12 +169,6 @@ Unterstützte Optionen in „--operator-params“
 | --git-email  | Für Git-Commits zu verwendende E-Mail-Adresse. |
 
 * Wenn „--git-user“ oder „--git-email“ nicht festgelegt ist, da Sie nicht möchten, dass Flux in das Repository schreibt, wird „--git-readonly“ (falls nicht bereits festgelegt) automatisch festgelegt.
-
-* Wenn „enableHelmOperator“ den Wert „True“ aufweist, können die Zeichenfolgen „operatorInstanceName“ und „operatorNamespace“ zusammen nicht mehr als 47 Zeichen enthalten.  Wenn Sie diesen Grenzwert nicht einhalten, erhalten Sie den folgenden Fehler:
-
-   ```console
-   {"OperatorMessage":"Error: {failed to install chart from path [helm-operator] for release [<operatorInstanceName>-helm-<operatorNamespace>]: err [release name \"<operatorInstanceName>-helm-<operatorNamespace>\" exceeds max length of 53]} occurred while doing the operation : {Installing the operator} on the config","ClusterState":"Installing the operator"}
-   ```
 
 Weitere Informationen finden Sie in der [Flux-Dokumentation](https://aka.ms/FluxcdReadme).
 
@@ -251,7 +245,7 @@ Während des Bereitstellungsprozesses wird der Status der `sourceControlConfigur
 
 ## <a name="apply-configuration-from-a-private-git-repository"></a>Anwenden der Konfiguration aus einem privaten Git-Repository
 
-Wenn Sie ein privates Git-Repository verwenden, müssen Sie den öffentlichen SSH-Schlüssel in Ihrem Repository konfigurieren. Sie können den öffentlichen Schlüssel entweder für das Git-Repository oder den Git-Benutzer konfigurieren, der Zugriff auf das Repository hat. Der öffentliche SSH-Schlüssel ist entweder der von Ihnen bereitgestellte oder der von Flux generierte.
+Wenn Sie ein privates Git-Repository verwenden, müssen Sie den öffentlichen SSH-Schlüssel in Ihrem Repository konfigurieren. Sie können den öffentlichen Schlüssel entweder für das spezifische Git-Repository oder den Git-Benutzer konfigurieren, der Zugriff auf das Repository hat. Der öffentliche SSH-Schlüssel ist entweder der von Ihnen bereitgestellte oder der von Flux generierte.
 
 **Abrufen Ihres eigenen öffentlichen Schlüssels**
 
@@ -260,7 +254,7 @@ Wenn Sie Ihre eigenen SSH-Schlüssel generiert haben, verfügen Sie bereits übe
 **Abrufen des öffentlichen Schlüssels mithilfe der Azure CLI (nützlich, wenn Flux die Schlüssel generiert)**
 
 ```console
-$ az k8sconfiguration show --resource-group <resource group name> --cluster-name <connected cluster name> --name <configuration name> --query 'repositoryPublicKey'
+$ az k8sconfiguration show --resource-group <resource group name> --cluster-name <connected cluster name> --name <configuration name> --cluster-type connectedClusters --query 'repositoryPublicKey' 
 Command group 'k8sconfiguration' is in preview. It may be changed/removed in a future release.
 "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAREDACTED"
 ```

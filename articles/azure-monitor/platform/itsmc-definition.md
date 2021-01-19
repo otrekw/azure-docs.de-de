@@ -7,12 +7,12 @@ author: nolavime
 ms.author: v-jysur
 ms.date: 05/24/2018
 ms.custom: references_regions
-ms.openlocfilehash: 1f7a493c071e86114afd7d4a9e08e204bbab509d
-ms.sourcegitcommit: 31d242b611a2887e0af1fc501a7d808c933a6bf6
+ms.openlocfilehash: 717a1bc4361ba4a7366f4864c1fe44f93b6f4b5e
+ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97809478"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98127854"
 ---
 # <a name="connect-azure-to-itsm-tools-by-using-it-service-management-connector"></a>Verbinden von Azure mit ITSM-Tools mithilfe des ITSM-Connectors
 
@@ -64,7 +64,7 @@ Nachdem Sie Ihre ITSM-Tools vorbereitet haben, führen Sie diese Schritte aus, u
 
 1. Suchen Sie in **Alle Ressourcen** nach **ServiceDesk(*IhrArbeitsbereichsname*)** :
 
-   ![Screenshot der zuletzt verwendeten Ressourcen im Azure-Portal](media/itsmc-overview/itsm-connections.png)
+   ![Screenshot der zuletzt verwendeten Ressourcen im Azure-Portal](media/itsmc-definition/create-new-connection-from-resource.png)
 
 1. Wählen Sie im linken Bereich unter **Arbeitsbereichsdatenquellen** die Option **ITSM-Verbindungen** aus:
 
@@ -127,14 +127,34 @@ Gehen Sie folgendermaßen vor, um Aktionsgruppen zu erstellen:
 
 8. Wenn Sie vordefinierte Felder mit festen Werten ausfüllen möchten, wählen Sie **Benutzerdefinierte Vorlage verwenden** aus. Wählen Sie andernfalls in der Liste **Vorlagen** eine vorhandene [Vorlage](#template-definitions) aus, und geben Sie die festen Werte in den Vorlagenfeldern ein.
 
-9. Durch Aktivieren von **Einzelne Arbeitselemente für jedes Konfigurationselement erstellen** erhält jedes Konfigurationselement ein eigenes Arbeitselement. Das bedeutet, das pro Konfigurationselement ein Arbeitselement vorhanden ist.
+9. Im letzten Abschnitt für die Definition der ITSM-Aktionsgruppe können Sie angeben, wie viele Arbeitselemente für die einzelnen Warnungen definiert werden sollen.
 
-    * Bei Auswahl von „Incident“ oder „Warnung“ in der Dropdownliste für das Arbeitselement: Wenn Sie das Kontrollkästchen **Einzelne Arbeitselemente für jedes Konfigurationselement erstellen** deaktivieren, wird bei jeder Warnung ein neues Arbeitselement erstellt. Für jedes Konfigurationselement können mehrere Warnungen verwendet werden.
+    >[!NOTE]
+    >
+    > * Dieser Abschnitt ist nur für Protokollsuchwarnungen relevant.
+    > * Für alle anderen Warnungstypen wird pro Warnung ein Arbeitselement erstellt.
 
-       ![Screenshot des ITSM-Fensters mit „Incident“](media/itsmc-overview/itsm-action-configuration.png)
+    * Bei Auswahl von „Incident“ oder „Warnung“ in der Dropdownliste „Arbeitselement“: ![Screenshot: ITSM-Fenster mit „Incident“](media/itsmc-overview/itsm-action-configuration.png)
+        * Wenn Sie das Kontrollkästchen **Einzelne Arbeitselemente für jedes Konfigurationselement erstellen** aktivieren, wird für jedes Konfigurationselement in jeder Warnung ein neues Arbeitselement erstellt. Da mehrere Warnungen für die gleichen Konfigurationselemente betroffen sind, ist für jedes Konfigurationselement mehr als ein Arbeitselement vorhanden.
 
-    * Bei Auswahl von „Ereignis“ in der Dropdownliste für das Arbeitselement: Wenn Sie das Optionsfeld **Einzelne Arbeitselemente für jeden Protokolleintrag erstellen** aktivieren, wird bei jeder Warnung ein neues Arbeitselement erstellt. Durch Aktivieren des Optionsfelds **Einzelne Arbeitselemente für jedes Konfigurationselement erstellen** erhält jedes Konfigurationselement ein eigenes Arbeitselement.
-   ![Screenshot des ITSM-Fensters mit „Ereignis“](media/itsmc-overview/itsm-action-configuration-event.png)
+             Beispiel:
+             1) Warnung 1 mit drei Konfigurationselementen: A, B, C: Drei Arbeitselemente werden erstellt.
+             2) Warnung 2 mit einem Konfigurationselement: A: Ein Arbeitselement wird erstellt.
+
+        * Wenn Sie das Kontrollkästchen **Einzelne Arbeitselemente für jedes Konfigurationselement erstellen** deaktivieren, wird vom ITSM-Connector nur ein Arbeitselement für jede Warnungsregel erstellt und an alle betroffenen Konfigurationselemente angefügt. Ein neues Arbeitselement wird erstellt, falls das vorherige geschlossen wurde.
+
+        >[!NOTE]
+        > In diesem Fall werden für einige ausgelöste Warnungen im ITSM-Tool keine neuen Arbeitselemente generiert.
+
+        Beispiel:
+         1) Warnung 1 mit drei Konfigurationselementen: A, B, C: Ein Arbeitselement wird erstellt.
+         2) Warnung 2 für dieselbe Warnungsregel wie in Schritt „a“ mit einem Konfigurationselement: D: D wird an die betroffene Liste mit den Konfigurationselementen des Arbeitselements angefügt, das in Schritt „a“ erstellt wurde.
+         3) Warnung 3 für eine andere Warnungsregel mit einem Konfigurationselement: E: Ein Arbeitselement wird erstellt.
+
+    * Bei Auswahl von „Ereignis“ in der Dropdownliste „Arbeitselement“: ![Screenshot des ITSM-Fensters mit „Ereignis“](media/itsmc-overview/itsm-action-configuration-event.png)
+
+        * Bei Auswahl von **Create individual work items for each Log Entry (Configuration item field is not filled. Can result in large number of work items.)** (Einzelne Arbeitselemente für jeden Protokolleintrag erstellen (Feld für Konfigurationselement ist nicht ausgefüllt. Dies kann zu einer großen Zahl von Arbeitselementen führen.)) im Abschnitt mit den Optionsfeldern wird in den Suchergebnissen der Abfrage der Protokollsuchwarnungen pro Zeile ein Arbeitselement erstellt. Die Beschreibungseigenschaft in den Nutzdaten des Arbeitselements enthält die Zeile aus den Suchergebnissen.
+        * Wenn Sie im Abschnitt mit den Optionsfeldern die Option **Einzelne Arbeitselemente für jedes Konfigurationselement erstellen** auswählen, erhält jedes Konfigurationselement jeder Warnung ein neues Arbeitselement. Im ITSM-System kann mehr als ein Arbeitselement pro Konfigurationselement vorhanden sein. Dies entspricht der Aktivierung des Kontrollkästchens im Abschnitt „Incident/Warnung“.
 
 10. Klicken Sie auf **OK**.
 

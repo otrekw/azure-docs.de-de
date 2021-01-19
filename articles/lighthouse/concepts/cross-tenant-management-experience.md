@@ -1,14 +1,14 @@
 ---
 title: Mandantenübergreifende Verwaltungsmöglichkeiten
 description: Die delegierte Azure-Ressourcenverwaltung ermöglicht eine mandantenübergreifende Verwaltungserfahrung.
-ms.date: 12/16/2020
+ms.date: 01/07/2020
 ms.topic: conceptual
-ms.openlocfilehash: 111e5310f1dac01053eebc6592d7b56105358c41
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: a550655b8076a1e3946ff015239715ddf0712236
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97630087"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98131762"
 ---
 # <a name="cross-tenant-management-experiences"></a>Mandantenübergreifende Verwaltungsmöglichkeiten
 
@@ -97,7 +97,7 @@ Die meisten Aufgaben und Dienste können auf delegierten Ressourcen über verwal
 
 - Anzeigen von Warnungen für delegierte Abonnements mit der Möglichkeit, Warnungen in allen Abonnements anzuzeigen und zu aktualisieren
 - Anzeigen von Aktivitätsprotokolldetails für delegierte Abonnements
-- Log Analytics: Abfragen von Daten aus Remotearbeitsbereichen in mehreren Mandanten
+- Log Analytics: Abfragen von Daten aus Remotearbeitsbereichen in mehreren Mandanten. (Beachten Sie, dass Automation-Konten, die für den Zugriff auf Daten aus Arbeitsbereichen in Kundenmandanten verwendet werden, im selben Mandanten erstellt werden müssen.)
 - Erstellen von Warnungen in Kundenmandanten, die eine Automatisierung auslösen, wie z. B. Azure Automation-Runbooks oder Azure Functions im verwaltenden Mandanten über Webhooks
 - Erstellen von [Diagnoseeinstellungen](../..//azure-monitor/platform/diagnostic-settings.md) in Kundenmandanten zum Senden von Ressourcenprotokollen an Arbeitsbereiche im verwaltenden Mandanten
 - Für SAP-Workloads sollten Sie [die Metriken von SAP-Lösungen mit einer aggregierten Sicht über Kundenmandanten hinweg überwachen](https://techcommunity.microsoft.com/t5/running-sap-applications-on-the/using-azure-lighthouse-and-azure-monitor-for-sap-solutions-to/ba-p/1537293).

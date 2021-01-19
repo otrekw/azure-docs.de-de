@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: rarayudu, logicappspm
 ms.topic: conceptual
-ms.date: 12/08/2020
-ms.openlocfilehash: cdaa054559be9db52eeef6f3aaa0f86ccf84206f
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.date: 01/09/2020
+ms.openlocfilehash: 5ad01e31cb9af18fa018d99424b25dee338981d7
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96922946"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98034508"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>Schützen des Zugriffs und der Daten in Azure Logic Apps
 
@@ -308,12 +308,13 @@ Um Ihrer Logik-App weitere [Authentifizierungsprotokolle](../active-directory/de
 
 Zusätzlich zur Shared Access Signature (SAS) empfiehlt es sich, spezifisch die Clients einzuschränken, die Ihre Logik-App aufrufen können. Beispiel: Wenn Sie den Anforderungsendpunkt mit [Azure API Management](../api-management/api-management-key-concepts.md) verwalten, können Sie für die Logik-App festlegen, dass sie Anforderungen nur von der IP-Adresse der [von Ihnen erstellten API Management-Dienstinstanz](../api-management/get-started-create-service-instance.md) annimmt.
 
-> [!NOTE]
-> Unabhängig von den von Ihnen angegebenen IP-Adressen können Sie eine Logik-App, die einen anforderungsbasierten Trigger hat, mithilfe der Anforderung [Logic Apps-REST-API: Workflowtrigger – Ausführen](/rest/api/logic/workflowtriggers/run) oder über API Management weiterhin ausführen. In diesem Szenario ist jedoch weiterhin eine [Authentifizierung](../active-directory/develop/authentication-vs-authorization.md) über die Azure-REST-API erforderlich. Alle Ereignisse werden im Azure-Überwachungsprotokoll angezeigt. Achten Sie darauf, die Richtlinien für die Zugriffssteuerung entsprechend festzulegen.
+Unabhängig von den von Ihnen angegebenen IP-Adressen können Sie eine Logik-App, die einen anforderungsbasierten Trigger hat, mithilfe der Anforderung [Logic Apps-REST-API: Workflowtrigger – Ausführen](/rest/api/logic/workflowtriggers/run) oder über API Management weiterhin ausführen. In diesem Szenario ist jedoch weiterhin eine [Authentifizierung](../active-directory/develop/authentication-vs-authorization.md) über die Azure-REST-API erforderlich. Alle Ereignisse werden im Azure-Überwachungsprotokoll angezeigt. Achten Sie darauf, die Richtlinien für die Zugriffssteuerung entsprechend festzulegen.
 
 <a name="restrict-inbound-ip-portal"></a>
 
 #### <a name="restrict-inbound-ip-ranges-in-azure-portal"></a>Einschränken eingehender IP-Adressbereiche im Azure-Portal
+
+Wenn Sie eingehende IP-Adressen für Ihre Logik-App über das Portal einschränken, wirken sich diese Einschränkungen auf Trigger *und* auf Aktionen aus, ungeachtet der Beschreibung im Portal unter **zulässige eingehende IP-Adressen**. Um Einschränkungen für Trigger getrennt von Aktionen einzurichten, verwenden Sie das [`accessControl`-Objekt in der Azure Resource Manager-Vorlage Ihrer Logik-App](#restrict-inbound-ip-template) oder die [Logic Apps-REST-API: Workflow – Vorgang erstellen oder aktualisieren](/rest/api/logic/workflows/createorupdate).
 
 1. Öffnen Sie Ihre Logik-App über das [Azure-Portal](https://portal.azure.com) im Logik-App-Designer.
 
@@ -1082,7 +1083,7 @@ Wenn die Option [Verwaltete Identität](../active-directory/managed-identities-a
 
 1. Bevor Ihre Logik-App eine verwaltete Identität verwenden kann, führen Sie die Schritte in [Authentifizieren und Zugreifen auf Ressourcen mit verwalteten Identitäten in Azure Logic Apps](../logic-apps/create-managed-service-identity.md) aus. Diese Schritte aktivieren die verwaltete Identität in Ihrer Logik-App und richten den Zugriff dieser Identität auf die Zielressource in Azure ein.
 
-1. Bevor eine Azure-Funktion eine verwaltete Identität verwenden kann, aktivieren Sie zuerst [die Authentifizierung für Azure-Funktionen](../logic-apps/logic-apps-azure-functions.md#enable-authentication-for-azure-functions).
+1. Bevor eine Azure-Funktion eine verwaltete Identität verwenden kann, aktivieren Sie zuerst [die Authentifizierung für Azure-Funktionen](../logic-apps/logic-apps-azure-functions.md#enable-authentication-for-functions).
 
 1. Geben Sie in dem Trigger oder der Aktion, in dem/der Sie die verwaltete Identität verwenden möchten, diese Eigenschaftswerte an:
 
@@ -1125,7 +1126,7 @@ Sie können Azure Logic Apps in [Azure Government](../azure-government/documenta
 
 * Um Ihren eigenen Code auszuführen oder eine XML-Transformation auszuführen, [erstellen und rufen Sie eine Azure-Funktion auf](../logic-apps/logic-apps-azure-functions.md), anstatt die [Inlinecodefunktion](../logic-apps/logic-apps-add-run-inline-code.md) zu verwenden, oder stellen Sie [als Zuordnungen zu verwendende Assemblys bereit](../logic-apps/logic-apps-enterprise-integration-maps.md). Richten Sie außerdem die Hostingumgebung für ihre Funktions-App so ein, dass Sie Ihren Isolationsanforderungen entspricht.
 
-  Um z. B. Anforderungen der Auswirkungsstufe 5 zu erfüllen, erstellen Sie Ihre Funktions-App mit dem [App Service Plan](../azure-functions/functions-scale.md#app-service-plan), der den Tarif [**Isoliert**](../app-service/overview-hosting-plans.md) zusammen mit einer [App Service-Umgebung (ASE)](../app-service/environment/intro.md) verwendet, die ebenfalls den Tarif **Isoliert** verwendet. In dieser Umgebung werden Funktions-Apps auf dedizierte Azure-VMs und in dedizierten virtuellen Azure-Netzwerken ausgeführt, die zusätzlich zur Computeisolation eine Netzwerkisolation für Ihre Apps bieten sowie maximale horizontale Skalierungsmöglichkeiten. Weitere Informationen finden Sie unter [Azure Government-Auswirkungsstufe 5-Isolationsanleitung – Azure Functions](../azure-government/documentation-government-impact-level-5.md#azure-functions).
+  Um z. B. Anforderungen der Auswirkungsstufe 5 zu erfüllen, erstellen Sie Ihre Funktions-App mit dem [App Service Plan](../azure-functions/dedicated-plan.md), der den Tarif [**Isoliert**](../app-service/overview-hosting-plans.md) zusammen mit einer [App Service-Umgebung (ASE)](../app-service/environment/intro.md) verwendet, die ebenfalls den Tarif **Isoliert** verwendet. In dieser Umgebung werden Funktions-Apps auf dedizierte Azure-VMs und in dedizierten virtuellen Azure-Netzwerken ausgeführt, die zusätzlich zur Computeisolation eine Netzwerkisolation für Ihre Apps bieten sowie maximale horizontale Skalierungsmöglichkeiten. Weitere Informationen finden Sie unter [Azure Government-Auswirkungsstufe 5-Isolationsanleitung – Azure Functions](../azure-government/documentation-government-impact-level-5.md#azure-functions).
 
   Weitere Informationen finden Sie in den folgenden Themen:<p>
 

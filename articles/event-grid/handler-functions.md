@@ -1,31 +1,31 @@
 ---
-title: Azure-Funktion als Ereignishandler für Azure Event Grid-Ereignisse
-description: Beschreibt, wie Sie Azure-Funktionen als Ereignishandler für Event Grid-Ereignisse verwenden können.
+title: Verwenden einer Funktion in Azure als Ereignishandler für Azure Event Grid-Ereignisse
+description: Erfahren Sie, wie Sie Funktionen, die in Azure Functions erstellt und dort gehostet werden, als Ereignishandler für Event Grid-Ereignisse verwenden können.
 ms.topic: conceptual
 ms.date: 09/18/2020
-ms.openlocfilehash: 9e04fd3e04dab7a50940c2a4a799a56d447fbb6e
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 5a1ec575b58829a422e4d263ae0324e0343d5ad3
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92145751"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98034967"
 ---
-# <a name="azure-function-as-an-event-handler-for-event-grid-events"></a>Azure-Funktion als Ereignishandler für Event Grid-Ereignisse
+# <a name="use-a-function-as-an-event-handler-for-event-grid-events"></a>Verwenden einer Funktion als Ereignishandler für Event Grid-Ereignisse
 
 Ein Ereignishandler ist der Ort, an den das Ereignis gesendet wird. Der Handler ergreift zur Verarbeitung des Ereignisses eine Maßnahme. Mehrere Azure-Dienste werden automatisch für die Behandlung von Ereignissen konfiguriert. **Azure Functions** ist einer dieser Dienste. 
 
 
-Um eine Azure-Funktion als Handler für Ereignisse zu verwenden, verfolgen Sie einen der folgenden Ansätze: 
+Um eine Funktion in Azure als Handler für Ereignisse zu verwenden, verfolgen Sie einen der folgenden Ansätze: 
 
--   Verwenden eines [Event Grid-Triggers](../azure-functions/functions-bindings-event-grid-trigger.md).  Angeben von **Azure-Funktion** als **Endpunkttyp**. Geben Sie dann die Azure-Funktions-App und die Funktion an, die Ereignisse verarbeitet. 
--   Verwenden eines [HTTP-Triggers](../azure-functions/functions-bindings-http-webhook.md).  Geben Sie **Webhook** als **Endpunkttyp** an. Geben Sie dann die URL für die Azure-Funktion an, die Ereignisse verarbeitet. 
+-   Verwenden eines [Event Grid-Triggers](../azure-functions/functions-bindings-event-grid-trigger.md).  Angeben von **Azure-Funktion** als **Endpunkttyp**. Geben Sie dann die Funktions-App und die Funktion für die Verarbeitung der Ereignisse an. 
+-   Verwenden eines [HTTP-Triggers](../azure-functions/functions-bindings-http-webhook.md).  Geben Sie **Webhook** als **Endpunkttyp** an. Geben Sie dann die URL für die Funktion an, die die Ereignisse verarbeitet. 
 
 Es wird empfohlen, den ersten Ansatz (Event Grid-Trigger) zu verwenden, da er im Vergleich zum zweiten Ansatz folgende Vorteile bietet:
 -   Event Grid überprüft Event Grid-Trigger automatisch. Bei generischen HTTP-Triggern müssen Sie die [Überprüfungsantwort](webhook-event-delivery.md) selbst implementieren.
 -   Event Grid passt die Rate, mit der Ereignisse übermittelt werden, automatisch an eine Funktion an, die von einem Event Grid-Ereignis ausgelöst wird, basierend auf der erkannten Rate, mit der die Funktion Ereignisse verarbeiten kann. Diese Ratenübereinstimmungsfunktion verhindert Übermittlungsfehler, die sich aus der Unfähigkeit einer Funktion ergeben, Ereignisse zu verarbeiten, da die Ereignisverarbeitungsrate der Funktion im Laufe der Zeit variieren kann. Um die Effizienz bei hohem Durchsatz zu verbessern, aktivieren Sie Batchverarbeitung für das Ereignisabonnement. Weitere Informationen finden Sie unter [Aktivieren von Batchverarbeitung](#enable-batching).
 
     > [!NOTE]
-    > Zurzeit kann für eine Azure Functions-App kein Event Grid-Trigger verwendet werden, wenn das Ereignis im **CloudEvents**-Schema übermittelt wird. Verwenden Sie stattdessen einen HTTP-Trigger.
+    > Zurzeit kann für eine Funktions-App kein Event Grid-Trigger verwendet werden, wenn das Ereignis im **CloudEvents**-Schema übermittelt wird. Verwenden Sie stattdessen einen HTTP-Trigger.
 
 ## <a name="tutorials"></a>Tutorials
 
@@ -69,7 +69,7 @@ Navigieren Sie zum Zeitpunkt der Erstellung eines Abonnements in der Benutzerobe
 
 Sie können diese Werte für ein vorhandenes Abonnement auf der Registerkarte **Funktionen** der Seite **Event Grid-Thema** aktualisieren. 
 
-:::image type="content" source="./media/custom-event-to-function/features-batch-settings.png" alt-text="Aktivieren der Batchverarbeitung zum Zeitpunkt der Erstellung eines Abonnements":::
+:::image type="content" source="./media/custom-event-to-function/features-batch-settings.png" alt-text="Aktivieren von Batchverarbeitung nach der Erstellung":::
 
 ### <a name="azure-resource-manager-template"></a>Azure Resource Manager-Vorlage
 Sie können **maxEventsPerBatch** und **preferredBatchSizeInKilobytes** in einer Azure Resource Manager-Vorlage festlegen. Weitere Informationen finden Sie unter [Microsoft.EventGrid eventSubscriptions-Vorlagenreferenz](/azure/templates/microsoft.eventgrid/eventsubscriptions).

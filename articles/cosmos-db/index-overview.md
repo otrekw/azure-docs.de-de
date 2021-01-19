@@ -1,18 +1,18 @@
 ---
 title: Indizierung in Azure Cosmos DB
-description: Hier finden Sie Informationen zur Funktionsweise der Indizierung in Azure Cosmos DB sowie zu verschiedenen unterstützten Indextypen (etwa zu Bereichsindizes, räumlichen Indizes und zusammengesetzten Indizes).
+description: Hier finden Sie Informationen zur Funktionsweise der Indizierung in Azure Cosmos DB sowie zu verschiedenen unterstützten Indextypen (etwa zu Bereichsindizes, räumlichen Indizes und zusammengesetzten Indizes).
 author: timsander1
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 05/21/2020
 ms.author: tisande
-ms.openlocfilehash: 4211f13324b9fda0b0823b2d035eb03863cb686d
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: b7349a08b93810dcc3befd6058302d6c4573ab8d
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93339752"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98019209"
 ---
 # <a name="indexing-in-azure-cosmos-db---overview"></a>Indizierung in Azure Cosmos DB: Übersicht
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -64,9 +64,9 @@ Dies sind die Pfade für jede Eigenschaft aus dem oben beschriebenen Beispielele
 
 Wenn ein Element geschrieben wird, indiziert Azure Cosmos DB den Pfad jeder Eigenschaft und den zugehörigen Wert.
 
-## <a name="index-kinds"></a>Indextypen
+## <a name="types-of-indexes"></a><a id="index-types"></a>Indextypen
 
-Azure Cosmos DB unterstützt derzeit drei Arten von Indizes.
+Azure Cosmos DB unterstützt derzeit drei Typen von Indizes. Sie können diese Indextypen beim Definieren der Indizierungsrichtlinie konfigurieren.
 
 ### <a name="range-index"></a>Bereichsindex
 
@@ -122,11 +122,11 @@ Der **Bereichsindex** basiert auf einer geordneten Baumstruktur. Dieser Indextyp
    SELECT child FROM container c JOIN child IN c.properties WHERE child = 'value'
    ```
 
-Range-Indizes können für Skalarwerte (Zeichenfolge oder Zahl) verwendet werden.
+Range-Indizes können für Skalarwerte (Zeichenfolge oder Zahl) verwendet werden. Die standardmäßige Indizierungsrichtlinie für neu erstellte Container erzwingt Bereichsindizes für jede Zeichenfolge oder Zahl. Weitere Informationen zum Konfigurieren von Bereichsindizes finden Sie unter den [Beispielrichtlinien für Bereichsindizes](how-to-manage-indexing-policy.md#range-index).
 
 ### <a name="spatial-index"></a>Räumlicher Index
 
-**Räumliche** Indizes ermöglichen effiziente Abfragen räumlicher Objekte wie Punkte, Linien, Polygone und Multipolygon. Diese Abfragen verwenden die Schlüsselwörter ST_DISTANCE, ST_WITHIN und ST_INTERSECTS. Es folgen einige Beispiele für die Verwendung des räumlichen Index:
+**Räumliche** Indizes ermöglichen effiziente Abfragen räumlicher Objekte wie Punkte, Linien, Polygone und Multipolygon. Diese Abfragen verwenden die Schlüsselwörter ST_DISTANCE, ST_WITHIN und ST_INTERSECTS. Im Folgenden finden Sie einige Beispiele für die Verwendung des räumlichen Indextyps:
 
 - Abfragen zum räumlichen Abstand:
 
@@ -146,7 +146,7 @@ Range-Indizes können für Skalarwerte (Zeichenfolge oder Zahl) verwendet werden
    SELECT * FROM c WHERE ST_INTERSECTS(c.property, { 'type':'Polygon', 'coordinates': [[ [31.8, -5], [32, -5], [31.8, -5] ]]  })  
    ```
 
-Spatial-Indizes können für ordnungsgemäß formatierte [GeoJSON](./sql-query-geospatial-intro.md)-Objekte verwendet werden. Derzeit werden Point, LineString, Polygon und MultiPolygon unterstützt.
+Spatial-Indizes können für ordnungsgemäß formatierte [GeoJSON](./sql-query-geospatial-intro.md)-Objekte verwendet werden. Derzeit werden Point, LineString, Polygon und MultiPolygon unterstützt. Um diesen Indextyp zu verwenden, legen Sie ihn beim Konfigurieren der Indizierungsrichtlinie mit der `"kind": "Range"`-Eigenschaft fest. Weitere Informationen zum Konfigurieren von räumlichen Indizes finden Sie in den [Beispielrichtlinien für räumliche Indizes](how-to-manage-indexing-policy.md#spatial-index).
 
 ### <a name="composite-indexes"></a>Zusammengesetzte Indizes
 
@@ -175,6 +175,8 @@ Solange ein einziges Filterprädikat einen der Indextypen verwendet, wertet die 
 * Bei der oben gezeigten Abfrage wird zuerst mithilfe des Index nach Einträgen gefiltert, bei denen „firstName“ den Wert „Andrew“ hat. Anschließend werden alle Einträge mit „firstName“ = „Andrew“ über eine nachfolgende Pipeline übergeben, um das Filterprädikat CONTAINS auszuwerten.
 
 * Sie können Abfragen beschleunigen und vollständige Containerüberprüfungen vermeiden, wenn Sie Funktionen ohne Nutzung des Index (z .B. CONTAINS) verwenden, indem Sie zusätzliche Filterprädikate hinzufügen, die den Index verwenden. Die Reihenfolge der Filterklauseln ist nicht von Bedeutung. Die Abfrage-Engine ermittelt, welche Prädikate selektiver sind, und führt die Abfrage entsprechend aus.
+
+Weitere Informationen zum Konfigurieren von zusammengesetzten Indizes finden Sie in den [Beispielrichtlinien für zusammengesetzte Indizes](how-to-manage-indexing-policy.md#composite-index).
 
 ## <a name="querying-with-indexes"></a>Abfragen mit Indizes
 

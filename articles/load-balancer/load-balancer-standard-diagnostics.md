@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/14/2019
 ms.author: allensu
-ms.openlocfilehash: 9c322620e1d66182937be41bb02d48fd1469f459
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 386e0051a64f73b18c1ff76ed33af5f9eebe8aa0
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94697559"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98121412"
 ---
 # <a name="standard-load-balancer-diagnostics-with-metrics-alerts-and-resource-health"></a>Load Balancer Standard-Diagnose mit Metriken, Warnungen und Ressourcenintegrität
 
@@ -39,15 +39,18 @@ Die verschiedenen Standard Load Balancer-Konfigurationen bieten die folgenden Me
 | --- | --- | --- | --- |
 | Datenpfadverfügbarkeit | Öffentlicher und interner Load Blancer | Standard Load Balancer wendet kontinuierlich den Datenpfad aus einer Region auf das Load Balancer-Front-End bis hin zum SDN-Stapel an, der Ihren virtuellen Computer unterstützt. Solange integre Instanzen verbleiben, folgt die Messung demselben Pfad wie der Datenverkehr mit Lastenausgleich Ihrer Anwendungen. Der Datenpfad, der von Ihren Kunden verwendet wird, wird ebenfalls überprüft. Die Messung ist für Ihre Anwendung nicht sichtbar und bewirkt keine Beeinträchtigung bei anderen Vorgängen.| Average |
 | Integritätsteststatus | Öffentlicher und interner Load Blancer | Standard Load Balancer verwendet einen verteilten Integritätsprüfungsdienst, der die Integrität Ihres Anwendungsendpunkts gemäß Ihren Konfigurationseinstellungen überwacht. Diese Metrik stellt eine Aggregat- oder nach Endpunkt gefilterte Ansicht jedes Instanzendpunkts im Load Balancer-Pool bereit. Sie können sehen, wie Load Balancer die Integrität Ihrer Anwendung gemäß Ihrer Integritätsprüfungskonfiguration beurteilt. |  Average |
-| SYN-Pakete (Synchronisierung) | Öffentlicher und interner Load Blancer | Standard Load Balancer beendet keine TCP-Verbindungen (Transmission Control Protocol) und interagiert nicht mit TCP- oder UDP-Paketdatenflüssen. Datenflüsse und deren Handshakes erfolgen immer zwischen der Quelle und der VM-Instanz. Für eine bessere Problembehandlung Ihrer TCP-Protokollszenarien können Sie SYN-Paketzähler verwenden, um zu verstehen, wie viele TCP-Verbindungsversuche vorgenommen werden. Die Metrik gibt die Anzahl der TCP-SYN-Pakete an, die empfangen wurden.| Average |
-| SNAT-Verbindungen | Öffentlicher Load Balancer |Standard Load Balancer meldet die Anzahl von maskierten ausgehenden Datenflüssen an das Front-End mit der öffentlichen IP-Adresse. SNAT-Ports (Source Network Address Translation) stellen eine erschöpfbare Ressource dar. Diese Metrik kann einen Hinweis darauf geben, in welchem Umfang Ihre Anwendung SNAT für ausgehende Flows nutzt. Die Zählerstände für erfolgreiche und fehlgeschlagene ausgehende SNAT-Flows werden gemeldet und können zur Problembehebung und Analyse Ihrer ausgehenden Flows verwendet werden.| Average |
+| SYN-Anzahl (Synchronisierung) | Öffentlicher und interner Load Blancer | Standard Load Balancer beendet keine TCP-Verbindungen (Transmission Control Protocol) und interagiert nicht mit TCP- oder UDP-Paketdatenflüssen. Datenflüsse und deren Handshakes erfolgen immer zwischen der Quelle und der VM-Instanz. Für eine bessere Problembehandlung Ihrer TCP-Protokollszenarien können Sie SYN-Paketzähler verwenden, um zu verstehen, wie viele TCP-Verbindungsversuche vorgenommen werden. Die Metrik gibt die Anzahl der TCP-SYN-Pakete an, die empfangen wurden.| SUM |
+| Anzahl von SNAT-Verbindungen | Öffentlicher Load Balancer |Standard Load Balancer meldet die Anzahl von maskierten ausgehenden Datenflüssen an das Front-End mit der öffentlichen IP-Adresse. SNAT-Ports (Source Network Address Translation) stellen eine erschöpfbare Ressource dar. Diese Metrik kann einen Hinweis darauf geben, in welchem Umfang Ihre Anwendung SNAT für ausgehende Flows nutzt. Die Zählerstände für erfolgreiche und fehlgeschlagene ausgehende SNAT-Flows werden gemeldet und können zur Problembehebung und Analyse Ihrer ausgehenden Flows verwendet werden.| SUM |
 | Zugeordnete SNAT-Ports | Öffentlicher Load Balancer | Load Balancer Standard meldet die Anzahl der pro Back-End-Instanz zugeordneten SNAT-Ports. | Average. |
 | Verwendete SNAT-Ports | Öffentlicher Load Balancer | Load Balancer Standard meldet die Anzahl der pro Back-End-Instanz genutzten SNAT-Ports. | Average | 
-| Byteleistungsindikatoren |  Öffentlicher und interner Load Blancer | Standard Load Balancer meldet die pro Front-End verarbeiteten Daten. Sie bemerken möglicherweise, dass die Bytes nicht gleichmäßig auf die Back-End-Instanzen verteilt sind. Dies ist zu erwarten, da der Azure Load Balancer-Algorithmus auf Flows basiert. | Average |
-| Paketleistungsindikatoren |  Öffentlicher und interner Load Blancer | Standard Load Balancer meldet die pro Front-End verarbeiteten Pakete.| Average |
+| Byteanzahl |  Öffentlicher und interner Load Blancer | Standard Load Balancer meldet die pro Front-End verarbeiteten Daten. Sie bemerken möglicherweise, dass die Bytes nicht gleichmäßig auf die Back-End-Instanzen verteilt sind. Dies ist zu erwarten, da der Azure Load Balancer-Algorithmus auf Flows basiert. | SUM |
+| Paketzahl |  Öffentlicher und interner Load Blancer | Standard Load Balancer meldet die pro Front-End verarbeiteten Pakete.| SUM |
 
   >[!NOTE]
-  >Bei der Verwendung der Verteilung von Datenverkehr von einem internen Lastenausgleichsmodul über eine NVA oder Firewall, sind die Metriken „Synchronisierungspaket“, „Bytezähler“ und „Paketzähler“ nicht verfügbar und werden als Nullwerte angezeigt. 
+  >Bei Verwendung der Verteilung von Datenverkehr von einem internen Lastenausgleich über eine NVA oder Firewall sind die Metriken „Synchronisierungspaket“, „Byteanzahl“ und „Paketanzahl“ nicht verfügbar und werden als Nullwerte angezeigt. 
+  
+  >[!NOTE]
+  >Maximale und minimale Aggregationen sind für die Metriken „SYN-Anzahl“, „Paketanzahl“, „Anzahl von SNAT-Verbindungen“ und „Byteanzahl“ nicht verfügbar. 
   
 ### <a name="view-your-load-balancer-metrics-in-the-azure-portal"></a>Anzeigen Ihrer Load Balancer-Metriken im Azure-Portal
 
@@ -231,7 +234,14 @@ Anhand des Diagramms kann der Kunde eigenständig eine Fehlerbehebung für die B
 
 ## <a name="resource-health-status"></a><a name = "ResourceHealth"></a>Ressourcenintegritätsstatus
 
-Der Integritätsstatus für die Standard Load Balancer-Ressourcen wird über die vorhandene **Ressourcenintegrität** unter **Monitor > Service Health** verfügbar gemacht.
+Der Integritätsstatus für die Standard Load Balancer-Ressourcen wird über die vorhandene **Ressourcenintegrität** unter **Monitor > Service Health** verfügbar gemacht. Er wird alle **zwei Minuten** ausgewertet. Dazu wird die Datenpfadverfügbarkeit gemessen, die bestimmt, ob Ihre Front-End-Lastenausgleichs-Endpunkte verfügbar sind.
+
+| Ressourcenintegritätsstatus | BESCHREIBUNG |
+| --- | --- |
+| Verfügbar | Ihre Load Balancer Standard-Ressource ist fehlerfrei und verfügbar. |
+| Heruntergestuft | Für die Load Balancer Standard-Instanz liegen plattform- oder benutzerseitig initiierte Ereignisse vor, die sich auf die Leistung auswirken. Die Metrik für die Datenpfadverfügbarkeit hat mindestens zwei Minuten lang weniger als 90 %, aber mehr als 25 %Integrität gemeldet. Es treten mittlere bis schwerwiegende Leistungsbeeinträchtigungen auf. [Lesen Sie den Leitfaden zur Behandlung von Problemen mit RHC](https://docs.microsoft.com/azure/load-balancer/troubleshoot-rhc), um zu ermitteln, ob benutzerseitig initiierte Ereignisse vorliegen, die sich auf die Verfügbarkeit auswirken.
+| Nicht verfügbar | Ihre Load Balancer Standard-Ressource ist nicht fehlerfrei. Die Metrik für die Datenpfadverfügbarkeit hat mindestens zwei Minuten lang weniger als 25 % Integrität gemeldet. Leistung und Verfügbarkeit für eingehende Verbindungen sind erheblich beeinträchtigt. Möglicherweise liegen Benutzer- oder Plattformereignisse vor, die eine Nichtverfügbarkeit verursachen. [Lesen Sie den Leitfaden zur Behandlung von Problemen mit RHC](https://docs.microsoft.com/azure/load-balancer/troubleshoot-rhc), um zu ermitteln, ob benutzerseitig initiierte Ereignisse vorliegen, die sich auf die Verfügbarkeit auswirken. |
+| Unbekannt | Der Ressourcenintegritätsstatus Ihrer Load Balancer Standard-Ressource wurde noch nicht aktualisiert oder hat in den letzten 10 Minuten keine Informationen zur Datenpfadverfügbarkeit empfangen. Dieser Zustand sollte vorübergehend sein. Der korrekte Status wird angegeben, sobald Daten empfangen werden. |
 
 So zeigen Sie die Integrität Ihrer öffentlichen Standard Load Balancer-Ressourcen an
 1. Wählen Sie **Monitor** > **Dienstintegrität** aus.
@@ -254,12 +264,6 @@ So zeigen Sie die Integrität Ihrer öffentlichen Standard Load Balancer-Ressour
  
 Eine generische Beschreibung des Ressourcenintegritätsstatus finden Sie in der [Dokumentation zu Resource Health](../service-health/resource-health-overview.md). Bestimmte Status für Azure Load Balancer sind in der folgenden Tabelle aufgeführt: 
 
-| Ressourcenintegritätsstatus | BESCHREIBUNG |
-| --- | --- |
-| Verfügbar | Ihre Load Balancer Standard-Ressource ist fehlerfrei und verfügbar. |
-| Heruntergestuft | Für die Load Balancer Standard-Instanz liegen plattform- oder benutzerseitig initiierte Ereignisse vor, die sich auf die Leistung auswirken. Die Metrik für die Datenpfadverfügbarkeit hat mindestens zwei Minuten lang weniger als 90 %, aber mehr als 25 %Integrität gemeldet. Es treten mittlere bis schwerwiegende Leistungsbeeinträchtigungen auf. [Lesen Sie den Leitfaden zur Behandlung von Problemen mit der Datenpfadverfügbarkeit], um zu ermitteln, ob benutzerseitig initiierte Ereignisse vorliegen, die sich auf die Verfügbarkeit auswirken.
-| Nicht verfügbar | Ihre Load Balancer Standard-Ressource ist nicht fehlerfrei. Die Metrik für die Datenpfadverfügbarkeit hat mindestens zwei Minuten lang weniger als 25 % Integrität gemeldet. Leistung und Verfügbarkeit für eingehende Verbindungen sind erheblich beeinträchtigt. Möglicherweise liegen Benutzer- oder Plattformereignisse vor, die eine Nichtverfügbarkeit verursachen. [Lesen Sie den Leitfaden zur Behandlung von Problemen mit der Datenpfadverfügbarkeit], um zu ermitteln, ob benutzerseitig initiierte Ereignisse vorliegen, die sich auf die Verfügbarkeit auswirken. |
-| Unbekannt | Der Ressourcenintegritätsstatus Ihrer Load Balancer Standard-Ressource wurde noch nicht aktualisiert oder hat in den letzten 10 Minuten keine Informationen zur Datenpfadverfügbarkeit empfangen. Dieser Zustand sollte vorübergehend sein. Der korrekte Status wird angegeben, sobald Daten empfangen werden. |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1d634978333e2b833324228fb0908cfba61a786d
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 568584b849b2c5977d4bbb6216697dce3c498cfd
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96919753"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98107921"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Berechtigungen der Administratorrolle in Azure Active Directory
 
@@ -87,6 +87,14 @@ Die Rolle [Privilegierter Authentifizierungsadministrator](#privileged-authentic
 >* Besitzer von Sicherheitsgruppen und Microsoft 365-Gruppen, die die Gruppenmitgliedschaft verwalten können. Diese Gruppen können Zugriff auf vertrauliche oder private Informationen bzw. kritische Konfigurationen in Azure AD und in anderen Diensten gewähren.
 >* Administratoren in anderen Diensten außerhalb von Azure AD wie Exchange Online, Office Security and Compliance Center und Personalwesen.
 >* Nichtadministratoren wie Führungskräfte, Rechtsberater und Mitarbeiter der Personalabteilung mit Zugriff auf vertrauliche oder private Informationen.
+
+### <a name="attack-payload-author"></a>[Autor der Angriffsnutzdaten](#attack-payload-author-permissions)
+
+Benutzer in dieser Rolle können Angriffsnutzdaten erstellen, diese jedoch nicht tatsächlich starten oder planen. Die Angriffsnutzdaten stehen dann allen Administratoren im Mandanten zur Verfügung und können von diesen zum Erstellen einer Simulation verwendet werden.
+
+### <a name="attack-simulation-administrator"></a>[Administrator für Angriffssimulation](#attack-simulation-administrator-permissions)
+
+Benutzer mit dieser Rolle können alle Aspekte der Angriffssimulationserstellung, des Starts und der Planung einer Simulation und der Überprüfung der Simulationsergebnisse erstellen und verwalten. Mitglieder dieser Rolle besitzen diesen Zugriff für alle Simulationen im Mandanten.
 
 ### <a name="azure-devops-administrator"></a>[Azure DevOps-Administrator](#azure-devops-administrator-permissions)
 
@@ -489,6 +497,10 @@ Benutzer mit dieser Rolle können im Teams Admin Center [von Teams zertifizierte
 
 Benutzer mit dieser Rolle können alle Aspekte der Microsoft Teams-Workload über das Admin Center von Microsoft Teams und Skype for Business und die entsprechenden PowerShell-Module verwalten. Dazu zählen unter anderem alle Verwaltungstools im Zusammenhang mit Telefonie, Messaging, Besprechungen und den Teams selbst. Außerdem bietet diese Rolle die Möglichkeit zum Erstellen und Verwalten aller Microsoft 365-Gruppen, Verwalten von Supporttickets und Überwachen der Dienstintegrität.
 
+### <a name="usage-summary-reports-reader"></a>[Leseberechtigter für Berichte mit Nutzungszusammenfassung](#usage-summary-reports-reader-permissions)
+
+Benutzer mit dieser Rolle können zur Nutzungs- und Produktivitätsbewertung im Microsoft 365 Admin Center auf aggregierte Daten sowie zugehörige Erkenntnisse auf Mandantenebene, aber nicht auf Details oder Erkenntnisse auf Benutzerebene zugreifen. Im Microsoft 365 Admin Center für die beiden Berichte unterscheiden wir zwischen aggregierten Daten auf Mandantenebene und Details auf Benutzerebene. Diese Rolle bietet eine zusätzliche Sicherheitsebene für personenbezogene Daten, die von Kunden und Rechtsabteilungen angefordert werden. 
+
 ### <a name="user-administrator"></a>[Benutzeradministrator](#user-administrator-permissions)
 
 Benutzer mit dieser Rolle können Benutzer erstellen und alle Aspekte von Benutzern verwalten (mit einigen Einschränkungen, siehe Tabelle). Außerdem können sie Richtlinien für den Kennwortablauf aktualisieren. Außerdem können Benutzer mit dieser Rolle Gruppen erstellen und verwalten. Zudem haben sie die Möglichkeit, Benutzeransichten und Supporttickets zu verwalten sowie die Dienstintegrität zu überwachen. Benutzeradministratoren haben keine Berechtigungen zum Verwalten bestimmter Benutzereigenschaften für Benutzer in den meisten Administratorrollen. Benutzer mit dieser Rolle verfügen nicht über Berechtigungen zum Verwalten von MFA. Die Rollen, die von dieser Einschränkung ausgenommen sind, sind in der folgenden Tabelle aufgeführt.
@@ -591,6 +603,25 @@ Ist berechtigt, Informationen zur Authentifizierungsmethode für alle Benutzer o
 | microsoft.office365.serviceHealth/allEntities/allTasks | Lesen und Konfigurieren des Microsoft 365-Dienststatus. |
 | microsoft.office365.supportTickets/allEntities/allTasks | Erstellen und Verwalten von Office 365-Supporttickets. |
 | microsoft.directory/users/password/update | Aktualisieren von Kennwörtern für alle Benutzer in der Microsoft 365-Organisation. Weitere Informationen finden Sie in der Onlinedokumentation. |
+
+### <a name="attack-payload-author-permissions"></a>Berechtigungen von „Autor der Angriffsnutzdaten“
+
+Kann Angriffsnutzdaten erstellen, die später durch einen Administrator bereitgestellt werden können.
+
+| **Aktionen** | **Beschreibung** |
+| --- | --- |
+| microsoft.office365.protectionCenter/attackSimulator/payload/allProperties/allTasks | Angriffsnutzdaten im Angriffssimulator erstellen und verwalten |
+| microsoft.office365.protectionCenter/attackSimulator/reports/allProperties/read | Berichte zu Angriffssimulation, Antworten und zugehörigem Training lesen |
+
+### <a name="attack-simulation-administrator-permissions"></a>Berechtigungen von „Administrator für Angriffssimulation“
+
+Kann alle Aspekte von Angriffssimulationskampagnen erstellen und verwalten.
+
+| **Aktionen** | **Beschreibung** |
+| --- | --- |
+| microsoft.office365.protectionCenter/attackSimulator/payload/allProperties/allTasks | Angriffsnutzdaten im Angriffssimulator erstellen und verwalten |
+| microsoft.office365.protectionCenter/attackSimulator/reports/allProperties/read | Berichte zu Angriffssimulation, Antworten und zugehörigem Training lesen |
+| microsoft.office365.protectionCenter/attackSimulator/simulation/allProperties/allTasks | Angriffssimulationsvorlagen im Angriffssimulator erstellen und verwalten |
 
 ### <a name="azure-devops-administrator-permissions"></a>Berechtigungen von Azure DevOps-Administratoren
 
@@ -739,6 +770,7 @@ Verwalten sämtlicher Aspekte von Azure AD und Microsoft-Diensten, die Azure AD-
 | microsoft.directory/directoryRoles/allProperties/allTasks | Erstellen und Löschen von directoryRoles und Lesen und Aktualisieren aller Eigenschaften in Azure Active Directory |
 | microsoft.directory/directoryRoleTemplates/allProperties/allTasks | Erstellen und Löschen von directoryRoleTemplates und Lesen und Aktualisieren aller Eigenschaften in Azure Active Directory |
 | microsoft.directory/domains/allProperties/allTasks | Erstellen und Löschen von Domänen und Lesen und Aktualisieren aller Eigenschaften in Azure Active Directory |
+| microsoft.directory/entitlementManagement/allProperties/allTasks | Erstellen und löschen Sie Ressourcen, und lesen und aktualisieren Sie alle Eigenschaften in der Azure AD-Berechtigungsverwaltung. |
 | microsoft.directory/groups/allProperties/allTasks | Erstellen und Löschen von Gruppen und Lesen und Aktualisieren aller Eigenschaften in Azure Active Directory |
 | microsoft.directory/groupsAssignableToRoles/allProperties/update | Aktualisieren von Gruppen, bei denen die isAssignableToRole-Eigenschaft in Azure Active Directory auf TRUE festgelegt ist |
 | microsoft.directory/groupsAssignableToRoles/create | Erstellen von Gruppen, bei denen die isAssignableToRole-Eigenschaft in Azure Active Directory auf TRUE festgelegt ist |
@@ -800,6 +832,7 @@ Lesen und Verwalten der Konformitätskonfiguration und der zugehörigen Berichte
 | --- | --- |
 | microsoft.azure.serviceHealth/allEntities/allTasks | Lesen und Konfigurieren von Azure Service Health |
 | microsoft.azure.supportTickets/allEntities/allTasks | Erstellen und Verwalten von Azure-Supporttickets für Dienste auf Verzeichnisebene. |
+| microsoft.directory/entitlementManagement/allProperties/read | Lesen Sie alle Eigenschaften in der Azure AD-Berechtigungsverwaltung. |
 | microsoft.office365.complianceManager/allEntities/allTasks | Verwalten sämtlicher Aspekte von Office 365 Compliance-Manager |
 | microsoft.office365.serviceHealth/allEntities/allTasks | Lesen und Konfigurieren des Microsoft 365-Dienststatus. |
 | microsoft.office365.supportTickets/allEntities/allTasks | Erstellen und Verwalten von Office 365-Supporttickets. |
@@ -1102,6 +1135,7 @@ Benutzer mit dieser Rolle können alles lesen, was ein globaler Administrator le
 | microsoft.directory/directoryRoles/eligibleMembers/read    | Lesen der directoryRoles.eligibleMembers-Eigenschaft in Azure Active Directory |
 | microsoft.directory/directoryRoles/members/read    | Lesen der directoryRoles.members-Eigenschaft in Azure Active Directory |
 | microsoft.directory/domains/basic/read    | Lesen der Basiseigenschaften für Domänen in Azure Active Directory |
+| microsoft.directory/entitlementManagement/allProperties/read | Lesen Sie alle Eigenschaften in der Azure AD-Berechtigungsverwaltung. |
 | microsoft.directory/groups/appRoleAssignments/read    | Lesen der groups.appRoleAssignments-Eigenschaft in Azure Active Directory |
 | microsoft.directory/groups/basic/read    | Lesen der Basiseigenschaften für Gruppen in Azure Active Directory |
 | microsoft.directory/groups/hiddenMembers/read    | Lesen der groups.hiddenMembers-Eigenschaft in Azure Active Directory |
@@ -1200,7 +1234,7 @@ Zurücksetzen von Kennwörtern für Nicht-Administratoren und Helpdeskadministra
 
 ### <a name="hybrid-identity-administrator-permissions"></a>Berechtigungen von Hybrididentitätsadministratoren
 
-Aktivieren, Bereitstellen, Konfigurieren, Verwalten und Überwachen von Cloudbereitstellungs- und Authentifizierungsdiensten sowie Durchführen von Troubleshooting für diese 
+Kann die Einstellungen für die Cloudbereitstellungen zwischen AD und Azure AD sowie die Verbundeinstellungen verwalten. 
 
 | **Aktionen** | **Beschreibung** |
 | --- | --- |
@@ -1218,8 +1252,10 @@ Aktivieren, Bereitstellen, Konfigurieren, Verwalten und Überwachen von Cloudber
 | microsoft.directory/applicationTemplates/instantiate | Instanziieren von Kataloganwendungen über Anwendungsvorlagen |
 | microsoft.directory/auditLogs/allProperties/read | Lesen aller Eigenschaften (einschließlich der privilegierten Eigenschaften) für Überwachungsprotokolle (auditLogs) in Azure Active Directory |
 | microsoft.directory/cloudProvisioning/allProperties/allTasks | Lesen und Konfigurieren aller Eigenschaften des Azure AD-Cloudbereitstellungsdiensts |
-| microsoft.directory/federatedAuthentication/allProperties/allTasks | Verwalten aller Aspekte von Active Directory-Verbunddienste (AD FS) oder von Drittanbieterverbunden in Azure AD |
+| microsoft.directory/domains/allProperties/read | Alle Eigenschaften von Domänen lesen. |
+| microsoft.directory/domains/federation/update | Verbundeigenschaft von Domänen aktualisieren. |
 | microsoft.directory/organization/dirSync/update | Aktualisieren der organization.dirSync-Eigenschaft in Azure Active Directory |
+| microsoft.directory/provisioningLogs/allProperties/read | Alle Eigenschaften der Bereitstellungsprotokolle lesen |
 | microsoft.directory/servicePrincipals/audience/update | Aktualisieren der servicePrincipals.audience-Eigenschaft in Azure Active Directory |
 | microsoft.directory/servicePrincipals/authentication/update | Aktualisieren der servicePrincipals.authentication-Eigenschaft in Azure Active Directory |
 | microsoft.directory/servicePrincipals/basic/update | Aktualisieren der Basiseigenschaften für servicePrincipals in Azure Active Directory |
@@ -1434,6 +1470,14 @@ Verwenden Sie diese Rolle nicht – sie ist nicht zur allgemeinen Verwendung vor
 
 | **Aktionen** | **Beschreibung** |
 | --- | --- |
+| microsoft.directory/applications/appRoles/update | Verwalten Sie App-Rollen, und fordern Sie delegierte Berechtigungen für Anwendungen an. |
+| microsoft.directory/applications/audience/update | Zielgruppe für alle Anwendungstypen aktualisieren |
+| microsoft.directory/applications/authentication/update | Authentifizierung für alle Anwendungstypen aktualisieren |
+| microsoft.directory/applications/basic/update | Basiseigenschaften für alle Anwendungstypen aktualisieren |
+| microsoft.directory/applications/credentials/update | Anmeldeinformationen für alle Anwendungstypen aktualisieren |
+| microsoft.directory/applications/owners/update | Besitzer für alle Anwendungstypen aktualisieren |
+| microsoft.directory/applications/permissions/update | Verfügbare Berechtigungen und erforderliche Berechtigungen für alle Anwendungstypen aktualisieren |
+| microsoft.directory/applications/policies/update | Aktualisieren der applications.policies-Eigenschaft in Azure Active Directory |
 | microsoft.directory/contacts/basic/update | Aktualisieren der Basiseigenschaften für Kontakte in Azure Active Directory |
 | microsoft.directory/contacts/create | Erstellen von Kontakten in Azure Active Directory |
 | microsoft.directory/contacts/delete | Löschen von Kontakten in Azure Active Directory |
@@ -1467,6 +1511,14 @@ Verwenden Sie diese Rolle nicht – sie ist nicht zur allgemeinen Verwendung vor
 
 | **Aktionen** | **Beschreibung** |
 | --- | --- |
+| microsoft.directory/applications/appRoles/update | Verwalten Sie App-Rollen, und fordern Sie delegierte Berechtigungen für Anwendungen an. |
+| microsoft.directory/applications/audience/update | Zielgruppe für alle Anwendungstypen aktualisieren |
+| microsoft.directory/applications/authentication/update | Authentifizierung für alle Anwendungstypen aktualisieren |
+| microsoft.directory/applications/basic/update | Basiseigenschaften für alle Anwendungstypen aktualisieren |
+| microsoft.directory/applications/credentials/update | Anmeldeinformationen für alle Anwendungstypen aktualisieren |
+| microsoft.directory/applications/owners/update | Besitzer für alle Anwendungstypen aktualisieren |
+| microsoft.directory/applications/permissions/update | Verfügbare Berechtigungen und erforderliche Berechtigungen für alle Anwendungstypen aktualisieren |
+| microsoft.directory/applications/policies/update | Aktualisieren der applications.policies-Eigenschaft in Azure Active Directory |
 | microsoft.directory/contacts/basic/update | Aktualisieren der Basiseigenschaften für Kontakte in Azure Active Directory |
 | microsoft.directory/contacts/create | Erstellen von Kontakten in Azure Active Directory |
 | microsoft.directory/contacts/delete | Löschen von Kontakten in Azure Active Directory |
@@ -1661,9 +1713,10 @@ Leseberechtigung für Sicherheitsinformationen und -berichte und Konfigurationsb
 | --- | --- |
 | microsoft.azure.serviceHealth/allEntities/allTasks | Lesen und Konfigurieren von Azure Service Health |
 | microsoft.azure.supportTickets/allEntities/allTasks | Erstellen und Verwalten von Azure-Supporttickets für Dienste auf Verzeichnisebene. |
-| microsoft.directory/bitlockerKeys/key/read | Lesen von BitLocker-Schlüsselobjekten und -eigenschaften (einschließlich Wiederherstellungsschlüssel) in Azure Active Directory |
 | microsoft.directory/applications/policies/update | Aktualisieren der applications.policies-Eigenschaft in Azure Active Directory |
 | microsoft.directory/auditLogs/allProperties/read | Lesen aller Eigenschaften (einschließlich der privilegierten Eigenschaften) für Überwachungsprotokolle (auditLogs) in Azure Active Directory |
+| microsoft.directory/bitlockerKeys/key/read | Lesen von BitLocker-Schlüsselobjekten und -eigenschaften (einschließlich Wiederherstellungsschlüssel) in Azure Active Directory |
+| microsoft.directory/entitlementManagement/allProperties/read | Lesen Sie alle Eigenschaften in der Azure AD-Berechtigungsverwaltung. |
 | microsoft.directory/identityProtection/allProperties/read | Lesen aller Ressourcen in microsoft.aad.identityProtection |
 | microsoft.directory/identityProtection/allProperties/update | Aktualisieren aller Ressourcen in microsoft.aad.identityProtection |
 | microsoft.directory/policies/basic/update | Aktualisieren der Basiseigenschaften für Richtlinien in Azure Active Directory |
@@ -1714,6 +1767,7 @@ Lesen von Sicherheitsinformationen und Berichten in Azure AD und Microsoft 365.
 | --- | --- |
 | microsoft.directory/auditLogs/allProperties/read | Lesen aller Eigenschaften (einschließlich der privilegierten Eigenschaften) für Überwachungsprotokolle (auditLogs) in Azure Active Directory |
 | microsoft.directory/bitlockerKeys/key/read | Lesen von BitLocker-Schlüsselobjekten und -eigenschaften (einschließlich Wiederherstellungsschlüssel) in Azure Active Directory |
+| microsoft.directory/entitlementManagement/allProperties/read | Lesen Sie alle Eigenschaften in der Azure AD-Berechtigungsverwaltung. |
 | microsoft.directory/policies/conditionalAccess/basic/read | Lesen der policies.conditionalAccess-Eigenschaft in Azure Active Directory |
 | microsoft.directory/signInReports/allProperties/read | Lesen aller Eigenschaften (einschließlich der privilegierten Eigenschaften) für Anmeldeberichte (signInReports) in Azure Active Directory |
 | microsoft.aad.identityProtection/allEntities/read | Lesen aller Ressourcen in microsoft.aad.identityProtection |
@@ -1860,6 +1914,14 @@ Kann den Microsoft Teams-Dienst verwalten.
 | microsoft.office365.webPortal/allEntities/basic/read | Lesen der Basiseigenschaften für alle Ressourcen in microsoft.office365.webPortal. |
 | microsoft.azure.print/allEntities/allProperties/allTasks | Verwalten aller Ressourcen in Teams. |
 
+### <a name="usage-summary-reports-reader-permissions"></a>Berechtigungen von „Leseberechtigter für Berichte mit Nutzungszusammenfassung“
+Kann in der M365-Nutzungsanalyse und -Produktivitätsbewertung nur Aggregate auf Mandantenebene anzeigen.
+
+| **Aktionen** | **Beschreibung** |
+| --- | --- |
+| microsoft.office365.usageReports/allEntities/standard/read | Aggregierte Office 365-Nutzungsberichte auf Mandantenebene lesen |
+| microsoft.office365.webPortal/allEntities/standard/read | Lesen der Basiseigenschaften für alle Ressourcen in microsoft.office365.webPortal.|
+
 ### <a name="user-administrator-permissions"></a>Berechtigungen von Benutzeradministratoren
 Dieser Administrator kann alle Aspekte von Benutzern und Gruppen verwalten, einschließlich der Kennwortzurücksetzung für eingeschränkte Administratoren.
 
@@ -1871,6 +1933,7 @@ Dieser Administrator kann alle Aspekte von Benutzern und Gruppen verwalten, eins
 | microsoft.directory/contacts/basic/update | Aktualisieren der Basiseigenschaften für Kontakte in Azure Active Directory |
 | microsoft.directory/contacts/create | Erstellen von Kontakten in Azure Active Directory |
 | microsoft.directory/contacts/delete | Löschen von Kontakten in Azure Active Directory |
+| microsoft.directory/entitlementManagement/allProperties/allTasks | Erstellen und löschen Sie Ressourcen, und lesen und aktualisieren Sie alle Eigenschaften in der Azure AD-Berechtigungsverwaltung. |
 | microsoft.directory/groups/appRoleAssignments/update | Aktualisieren der groups.appRoleAssignments-Eigenschaft in Azure Active Directory |
 | microsoft.directory/groups/basic/update | Aktualisieren der Basiseigenschaften für Gruppen in Azure Active Directory |
 | microsoft.directory/groups/create | Erstellen von Gruppen in Azure Active Directory |
@@ -1906,6 +1969,8 @@ Graph displayName | Anzeigename des Azure-Portals | directoryRoleTemplateId
 Anwendungsadministrator | Anwendungsadministrator | 9B895D92-2CD3-44C7-9D02-A6AC2D5EA5C3
 Anwendungsentwickler | Anwendungsentwickler | CF1C38E5-3621-4004-A7CB-879624DCED7C
 Authentifizierungsadministrator | Authentifizierungsadministrator | c4e39bd9-1100-46d3-8c65-fb160da0071f
+Autor der Angriffsnutzdaten | Autor der Angriffsnutzdaten | 9c6df0f2-1e7c-4dc3-b195-66dfbd24aa8f
+Administrator für Angriffssimulation | Administrator für Angriffssimulation | c430b396-e693-46cc-96f3-db01bf8bb62a
 Azure DevOps-Administrator | Azure DevOps-Administrator | e3973bdf-4987-49ae-837a-ba8e231c7286
 Azure Information Protection-Administrator | Azure Information Protection-Administrator | 7495fdc4-34c4-4d15-a289-98788ce399fd
 B2C-IEF-Schlüsselsatzadministrator | B2C-IEF-Schlüsselsatzadministrator | aaf43236-0c0d-4d5f-883a-6955382ac081
@@ -1969,6 +2034,7 @@ Teams-Kommunikationssupporttechniker | Teams-Kommunikationssupporttechniker | f7
 Teams-Kommunikationssupportspezialist | Teams-Kommunikationssupportspezialist | fcf91098-03e3-41a9-b5ba-6f0ec8188a12
 Teams-Geräteadministrator | Teams-Geräteadministrator | 3d762c5a-1b6c-493f-843e-55a3b42923d4
 Teams-Dienstadministrator | Teams-Dienstadministrator | 69091246-20e8-4a56-aa4d-066075b2a7a8
+Leseberechtigter für Berichte mit Nutzungszusammenfassung | Leseberechtigter für Berichte mit Nutzungszusammenfassung | 75934031-6c7e-415a-99d7-48dbd49e875e
 Benutzer | Nicht angezeigt, weil keine Verwendung erfolgen kann | a0b1b346-4d3e-4e8b-98f8-753987be4970
 Benutzerkontoadministrator | Benutzeradministrator | fe930be7-5e62-47db-91af-98c3a49a38b1
 Geräteeinbindung am Arbeitsplatz | Als veraltet markiert | c34f683f-4d5a-4403-affd-6615e00e3a7f

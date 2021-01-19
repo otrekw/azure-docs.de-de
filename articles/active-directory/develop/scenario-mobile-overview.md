@@ -13,12 +13,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.reviewer: brandwe
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 853ab82ab40cc7ebee1c74feaf6aad87adf39ece
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: f60e21f98092df65ef01e68fe9c2e64833a24855
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94443108"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98063211"
 ---
 # <a name="scenario-mobile-application-that-calls-web-apis"></a>Szenario: Mobile App, die Web-APIs aufruft
 
@@ -34,7 +34,7 @@ Erstellen Sie, falls noch nicht geschehen, Ihre erste App, indem Sie einen der f
 
 ## <a name="overview"></a>Übersicht
 
-Eine personalisierte und übersichtliche Benutzeroberfläche ist für mobile Apps äußerst wichtig.  Microsoft Identity Platform ermöglicht Entwicklern von mobilen Apps, diese Oberfläche für iOS- und Android-Benutzer zu schaffen. Ihre Anwendung kann Benutzer von Azure Active Directory (Azure AD), Benutzer eines persönlichen Microsoft-Kontos und Azure AD B2C-Benutzer anmelden. Sie kann außerdem Token erwerben, um in ihrem Auftrag eine Web-API aufzurufen. Zum Implementieren dieser Abläufe verwenden wir die Microsoft-Authentifizierungsbibliothek (Microsoft Authentication Library, MSAL). MSAL implementiert den [OAuth2.0-Autorisierungscodeablauf](v2-oauth2-auth-code-flow.md), den Branchenstandard.
+Eine personalisierte und übersichtliche Benutzeroberfläche ist für mobile Apps äußerst wichtig.  Microsoft Identity Platform ermöglicht Entwicklern von mobilen Apps, diese Oberfläche für iOS- und Android-Benutzer zu schaffen. Ihre Anwendung kann Benutzer von Azure Active Directory (Azure AD), Benutzer eines persönlichen Microsoft-Kontos und Azure AD B2C-Benutzer anmelden. Sie kann außerdem Token erwerben, um in ihrem Auftrag eine Web-API aufzurufen. Zum Implementieren dieser Flows verwenden wir die Microsoft-Authentifizierungsbibliothek (Microsoft Authentication Library, MSAL). MSAL implementiert den [OAuth2.0-Autorisierungscodeablauf](v2-oauth2-auth-code-flow.md), den Branchenstandard.
 
 ![Daemon-Apps](./media/scenarios/mobile-app.svg)
 

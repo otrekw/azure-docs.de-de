@@ -1,90 +1,90 @@
 ---
 title: Behandeln von Problemen mit Azure Data Share
-description: Hier erfahren Sie, wie Sie Probleme mit Einladungen und Fehlern beim Erstellen oder Empfangen von Datenfreigaben mit Azure Data Share behandeln.
+description: Hier erfahren Sie, wie Sie beim Erstellen oder Empfangen von Datenfreigaben mit Azure Data Share Probleme mit Einladungen und Fehler behandeln.
 services: data-share
 author: jifems
 ms.author: jife
 ms.service: data-share
 ms.topic: troubleshooting
 ms.date: 12/16/2020
-ms.openlocfilehash: c93ce9c81ada3c30128846b43041603e132abd88
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: 3aa1c0b8579bd37d2bb51cbde70997131c696813
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97617237"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97964506"
 ---
-# <a name="troubleshoot-common-issues-in-azure-data-share"></a>Behandeln allgemeiner Probleme in Azure Data Share 
+# <a name="troubleshoot-common-problems-in-azure-data-share"></a>Behandeln allgemeiner Probleme in Azure Data Share 
 
-In diesem Artikel erfahren Sie, wie Sie allgemeine Probleme mit Azure Data Share behandeln. 
+In diesem Artikel erfahren Sie, wie Sie allgemeine Probleme in Azure Data Share behandeln. 
 
 ## <a name="azure-data-share-invitations"></a>Azure Data Share-Einladungen 
 
-Wenn ein neuer Benutzer in der gesendeten E-Mail-Einladung auf **Einladung akzeptieren** klickt, kann es vorkommen, dass eine leere Einladungsliste angezeigt wird. 
+In einigen Fällen wird möglicherweise eine leere Einladungsliste angezeigt, wenn neue Benutzer in einer E-Mail-Einladung auf **Einladung annehmen** klicken. 
 
-![Keine Einladungen](media/no-invites.png)
+:::image type="content" source="media/no-invites.png" alt-text="Screenshot: leere Einladungsliste":::
 
-Dies könnte die folgenden Gründe haben:
+Das Problem kann eine der folgenden Ursachen haben:
 
-* **Der Azure Data Share-Dienst ist im Azure-Mandanten nicht als Ressourcenanbieter eines Azure-Abonnements registriert.** Dieses Problem tritt auf, wenn es in Ihrem Azure-Mandanten keine Data Share-Ressource gibt. Wenn Sie eine Azure Data Share-Ressource erstellen, wird der Ressourcenanbieter in Ihrem Azure-Abonnement automatisch registriert. Sie können den Data Share-Dienst auch manuell registrieren, indem Sie die nachstehenden Schritte ausführen. Für diese Schritte benötigen Sie die Rolle „Azure-Mitwirkender“.
+* **Der Azure Data Share-Dienst ist im Azure-Mandanten nicht als Ressourcenanbieter eines Azure-Abonnements registriert.** Dieses Problem tritt auf, wenn Ihr Azure-Mandant keine Data Share-Ressource enthält. 
+
+    Wenn Sie eine Azure Data Share-Ressource erstellen, wird der Ressourcenanbieter in Ihrem Azure-Abonnement automatisch registriert. Sie können den Data Share-Dienst manuell registrieren, indem Sie die folgenden Schritte ausführen. Sie müssen über die [Rolle „Mitwirkender“](../role-based-access-control/built-in-roles.md#contributor) für das Azure-Abonnement verfügen, um diese Schritte ausführen zu können. 
 
     1. Navigieren Sie im Azure-Portal zu **Abonnements**.
-    1. Wählen Sie das Abonnement aus, das Sie zum Erstellen einer Azure Data Share-Ressource verwenden möchten.
-    1. Klicken Sie auf **Ressourcenanbieter**.
+    1. Wählen Sie das Abonnement aus, das Sie zum Erstellen der Azure Data Share-Ressource verwenden möchten.
+    1. Er wählt **Ressourcenanbieter** aus.
     1. Suchen Sie nach **Microsoft.DataShare**.
-    1. Klicken Sie auf **Registrieren**. 
+    1. Wählen Sie **Registrieren**.
 
-    Für diese Schritte benötigen Sie die Rolle [Azure-Mitwirkender](../role-based-access-control/built-in-roles.md#contributor) für das Azure-Abonnement. 
+* **Die Einladung wird nicht an Ihre E-Mail-Adresse für die Anmeldung bei Azure, sondern an Ihren E-Mail-Alias gesendet.** Wenn Sie den Azure Data Share-Dienst bereits registriert oder eine Data Share-Ressource im Azure-Mandanten erstellt haben, aber die Einladung weiterhin nicht angezeigt wird, ist möglicherweise Ihr E-Mail-Alias als Empfänger festgelegt. Wenden Sie sich an Ihren Datenanbieter, und vergewissern Sie sich, dass die Einladung an Ihre E-Mail-Adresse für die Anmeldung bei Azure und nicht an Ihren E-Mail-Alias gesendet wird.
 
-* **Die Einladung wird an Ihren E-Mail-Alias statt an Ihre E-Mail-Adresse für die Anmeldung bei Azure gesendet.** Wenn Sie den Azure Data Share-Dienst registriert oder bereits eine Data Share-Ressource im Azure-Mandanten erstellt haben, die Einladung aber immer noch nicht angezeigt wird, liegt dies möglicherweise daran, dass der Anbieter Ihren E-Mail-Alias statt Ihrer E-Mail-Adresse für die Anmeldung bei Azure als Empfänger eingegeben hat. Wenden Sie sich an Ihren Datenanbieter, und stellen Sie sicher, dass die Einladung an Ihre E-Mail-Adresse für die Anmeldung bei Azure und nicht an Ihren E-Mail-Alias gesendet wurde.
+* **Die Einladung wurde bereits akzeptiert.** Der Link in der E-Mail führt Sie zur Seite der **Data Share-Einladungen** im Azure-Portal. Auf dieser Seite werden nur ausstehende Einladungen aufgeführt. Bereits akzeptierte Einladungen werden auf der Seite nicht angezeigt. Wechseln Sie zu der Data Share-Ressource, mit der Sie die Einladung akzeptiert haben. Dort können Sie die empfangenen Freigaben anzeigen und die Einstellung für den Azure Data Explorer-Zielcluster konfigurieren.
 
-* **Die Einladung wurde bereits akzeptiert.** Der Link in der E-Mail führt Sie im Azure-Portal zur Data Share-Einladungsseite, auf der nur ausstehende Einladungen aufgeführt sind. Wenn Sie die Einladung bereits akzeptiert haben, wird sie auf der Data Share-Einladungsseite nicht mehr angezeigt. Fahren Sie mit Ihrer Data Share-Ressource fort, mit der Sie die Einladung zum Anzeigen von empfangenen Freigaben und Konfigurieren Ihrer Zieleinstellung für den Azure Data Explorer-Cluster akzeptiert haben.
+## <a name="creating-and-receiving-shares"></a>Erstellen und Empfangen von Freigaben
 
-## <a name="error-when-creating-or-receiving-a-new-share"></a>Fehler beim Erstellen oder Empfangen einer neuen Freigabe
+Wenn Sie eine neue Freigabe erstellen, Datasets hinzufügen oder Datasets zuordnen, kann es zur Anzeige der folgenden Fehler kommen:
 
-„Fehler beim Hinzufügen von Datasets“
+* „Fehler beim Hinzufügen von Datasets.“
+* „Fehler beim Zuordnen von Datasets.“
+* „Data Share-Ressource ‚x‘ kann kein Zugriff auf ‚y‘ gewährt werden.“
+* „Sie besitzen nicht die erforderlichen Berechtigungen für ‚x‘.“
+* „Für mindestens eine der ausgewählten Ressourcen konnten keine Schreibberechtigungen für das Azure Data Share-Konto hinzugefügt werden.“
 
-„Fehler beim Zuordnen von Datasets“
+Wenn Sie keine ausreichenden Berechtigungen für den Azure-Datenspeicher besitzen, wird möglicherweise einer dieser Fehler angezeigt. Weitere Informationen finden Sie unter [Rollen und Anforderungen](concepts-roles-permissions.md). 
 
-„Data Share-Ressource ‚x‘ kann kein Zugriff auf ‚y‘ gewährt werden.“
+Sie benötigen Schreibberechtigungen, um Daten aus einem Azure-Datenspeicher freizugeben oder zu empfangen. Diese Berechtigung ist üblicherweise in der Rolle „Mitwirkender“ enthalten. 
 
-„Sie besitzen nicht die erforderlichen Berechtigungen für ‚x‘.“
+Wenn Sie zum ersten Mal Daten aus dem Azure-Datenspeicher freigeben oder aus diesem empfangen, benötigen Sie außerdem die Berechtigung *Microsoft.Authorization/role assignments/write*. Diese Berechtigung ist üblicherweise in der Rolle „Besitzer“ enthalten. Selbst wenn Sie die Azure Data Store-Ressource erstellt haben, sind Sie nicht automatisch deren Besitzer. 
 
-„Es konnten keine Schreibberechtigungen für das Azure Data Share-Konto mindestens einer Ihrer ausgewählten Ressourcen hinzugefügt werden.“
+Wenn Sie über die geeigneten Berechtigungen verfügen, gewährt der Azure Data Share-Dienst der verwalteten Identität der Data Share-Ressource automatisch Zugriff auf den Datenspeicher. Dies kann einige Minuten dauern. Wenn aufgrund dieser Verzögerung ein Fehler auftritt, versuchen Sie es nach einigen Minuten noch mal.
 
-Wenn beim Erstellen einer neuen Freigabe, Hinzufügen von Datasets oder Zuordnen von Datasets einer der vorstehenden Fehler angezeigt wird, könnte dies daran liegen, dass die Berechtigungen für den Azure-Datenspeicher nicht ausreichen. Informationen zu den erforderlichen Berechtigungen finden Sie unter [Rollen und Anforderungen](concepts-roles-permissions.md). 
+Für eine SQL-basierte Freigabe sind zusätzliche Berechtigungen erforderlich. Informationen zu den Voraussetzungen finden Sie im Artikel zur [Freigabe aus SQL-Quellen](how-to-share-from-sql.md).
 
-Sie benötigen eine Schreibberechtigung zum Freigeben oder Empfangen von Daten aus einem Azure-Datenspeicher, die in der Rolle **Mitwirkender** normalerweise enthalten ist. 
+## <a name="snapshots"></a>Momentaufnahmen
+Es kann verschiedene Gründe haben, dass eine Momentaufnahme nicht erfolgreich erstellt werden kann. Eine ausführliche Fehlermeldung können Sie öffnen, indem Sie die Startzeit der Momentaufnahme und dann den Status jedes Datasets auswählen. 
 
-Wenn Sie zum ersten Mal Daten aus dem Azure-Datenspeicher freigeben oder empfangen, benötigen Sie außerdem die Berechtigung *Microsoft.Authorization/role assignments/write*, die normalerweise in der Rolle **Besitzer** enthalten ist. Selbst wenn Sie die Azure Data Store-Ressource erstellt haben, werden Sie dadurch NICHT automatisch zu deren Besitzer. Bei der entsprechenden Berechtigung gewährt der Azure Data Share-Dienst der verwalteten Identität der Data Share-Ressource automatisch Zugriff auf den Datenspeicher. Dieser Vorgang könnte einige Minuten dauern. Wenn aufgrund dieser Verzögerung ein Fehler auftritt, versuchen Sie es in einigen Minuten erneut.
+Fehler bei Momentaufnahmen haben häufig diese Ursachen:
 
-Für SQL-basierte Freigabe sind zusätzliche Berechtigungen erforderlich. Eine ausführliche Liste der Voraussetzungen finden Sie unter [Freigeben aus SQL-Quellen](how-to-share-from-sql.md).
+* Data Share fehlt die Berechtigung zum Lesen aus dem Quelldatenspeicher oder zum Schreiben in den Zieldatenspeicher. Weitere Informationen finden Sie unter [Rollen und Anforderungen](concepts-roles-permissions.md). Wenn Sie zum ersten Mal eine Momentaufnahme erstellen, benötigt die Data Share-Ressource möglicherweise einige Minuten, um Zugriff auf den Azure-Datenspeicher zu erhalten. Warten Sie einige Minuten, und versuchen Sie es noch mal.
+* Die Data Share-Verbindung mit dem Quell- oder Zieldatenspeicher wird durch eine Firewall blockiert.
+* Ein freigegebenes Dataset, ein Quell- oder ein Zieldatenspeicher wurde gelöscht.
 
-## <a name="snapshot-failed"></a>Fehler bei Momentaufnahme
-Die Momentaufnahme kann aus einer Vielzahl von Gründen fehlschlagen. Die ausführliche Fehlermeldung können Sie finden, indem Sie auf die Startzeit der Momentaufnahme und dann auf den Status jedes Datasets klicken. Im Folgenden finden Sie häufige Ursachen, warum keine Momentaufnahme möglich ist:
+Für Speicherkonten kann es zu Fehlern bei der Momentaufnahme kommen, weil zum Zeitpunkt der Momentaufnahmeerstellung eine Datei in der Quelle aktualisiert wird. Als Ergebnis wird möglicherweise eine 0-Byte-Datei im Ziel angezeigt. Nach der Aktualisierung in der Quelle sollten die Momentaufnahmen erfolgreich erstellt werden können.
 
-* Data Share verfügt nicht über die Berechtigung zum Lesen aus dem Quelldatenspeicher oder zum Schreiben in den Zieldatenspeicher. Weitere Informationen zu den erforderlichen Berechtigungen finden Sie unter [Rollen und Anforderungen](concepts-roles-permissions.md). Wenn Sie zum ersten Mal eine Momentaufnahme erstellen, könnte es einige Minuten dauern, bis die Data Share-Ressource Zugriff auf den Azure-Datenspeicher erhält. Warten Sie einige Minuten, und versuchen Sie es erneut.
-* Die Data Share-Verbindung mit dem Quell- oder Zieldatenspeicher wird durch die Firewall blockiert.
-* Das freigegebene Dataset oder der Quell- oder Zieldatenspeicher wird gelöscht.
+Für SQL-Quellen kann es aus anderen Gründen zu Fehlern bei Momentaufnahmen kommen:
 
-Bei einem Speicherkonto gibt es die folgenden zusätzlichen Ursachen für Momentaufnahmefehler.
+* Das SQL-Quellskript oder das SQL-Zielskript zum Gewähren der Data Share-Berechtigung wurde nicht ausgeführt. Möglicherweise wird das Skript auch für Azure SQL-Datenbank oder Azure Synapse Analytics (vormals Azure SQL Data Warehouse) unter Verwendung der SQL-Authentifizierung anstelle der Azure Active Directory-Authentifizierung ausgeführt.  
+* Der Quelldatenspeicher oder der SQL-Zieldatenspeicher wurde angehalten.
+* Der Prozess für Momentaufnahmen oder der Zieldatenspeicher unterstützt keine SQL-Datentypen. Weitere Informationen finden Sie im Artikel zur [Freigabe aus SQL-Quellen](how-to-share-from-sql.md#supported-data-types).
+* Der Quelldatenspeicher oder SQL-Zieldatenspeicher ist durch andere Prozesse gesperrt. Durch Azure Data Share erfolgt keine Sperrung dieser Datenspeicher. Vorhandene Sperren für diese Datenspeicher können jedoch zu Fehlern bei der Momentaufnahmeerstellung führen.
+* Auf die SQL-Zieltabelle wird mit einer Fremdschlüsseleinschränkung verwiesen. Wenn bei der Momentaufnahmeerstellung eine gleichnamige Zieltabelle vorhanden ist, löscht Azure Data Share die Tabelle und erstellt eine neue Tabelle. Wenn auf die SQL-Zieltabelle mit einer Fremdschlüsseleinschränkung verwiesen wird, kann die Tabelle nicht gelöscht werden.
+* Die CSV-Zieldatei wird generiert, aber die Daten können nicht in Excel gelesen werden. Dieses Problem tritt möglicherweise auf, wenn die SQL-Quelltabelle Daten mit Sonderzeichen umfasst. Wählen Sie in Excel die Registerkarte **Daten abrufen** und dann die CSV-Datei aus. Wählen Sie den Dateiursprung **65001: Unicode (UTF-8)** aus, und laden Sie anschließend die Daten.
 
-* Die Datei wird an der Quelle geändert, während die Momentaufnahme ausgeführt wird. Dies kann zu einer Datei mit 0 Byte am Ziel führen. Eine nachfolgende Momentaufnahme nach Abschluss der Änderungen an der Quelle sollte erfolgreich sein.
-
-Bei SQL-Quellen gibt es die folgenden zusätzlichen Ursachen für Momentaufnahmefehler. 
-
-* Das SQL-Quell- oder -Zielskript zum Erteilen der Data Share-Berechtigung wird nicht ausgeführt. Möglicherweise wird es auch für Azure SQL-Datenbank oder Azure Synapse Analytics (ehemals Azure SQL DW) mithilfe der SQL-Authentifizierung anstelle der Azure Active Directory-Authentifizierung ausgeführt.  
-* Der SQL-Quell- oder -Zieldatenspeicher wurde angehalten.
-* SQL-Datentypen werden weder bei der Erstellung der Momentaufnahme noch vom Zieldatenspeicher unterstützt. Ausführliche Informationen finden Sie unter [Freigeben aus SQL-Quellen](how-to-share-from-sql.md#supported-data-types).
-* Der SQL-Quell- oder -Zieldatenspeicher ist durch andere Prozesse gesperrt. Azure Data Share wendet keine Sperren auf den SQL-Quell- und -Zieldatenspeicher an. Vorhandene Sperren für den SQL-Quell- und -Zieldatenspeicher führen jedoch zu einem Momentaufnahmefehler.
-* Auf die SQL-Zieltabelle wird mit einer Fremdschlüsseleinschränkung verwiesen. Wenn bei der Momentaufnahme eine Zieltabelle mit demselben Namen vorhanden ist, löscht Azure Data Share die Tabelle und erstellt eine neue Tabelle. Wenn auf die SQL-Zieltabelle mit einer Fremdschlüsseleinschränkung verwiesen wird, kann die Tabelle nicht gelöscht werden.
-* Die CSV-Zieldatei wird generiert, aber die Daten können nicht in Excel gelesen werden. Dies kann der Fall sein, wenn die SQL-Quelltabelle Daten mit nicht englischen Zeichen enthält. Wählen Sie in Excel die Registerkarte „Daten abrufen“ aus, wählen Sie die CSV-Datei aus, wählen Sie als Dateiursprung „65001: Unicode (UTF-8)“ aus, und laden Sie die Daten.
-
-## <a name="snapshot-issue-after-updating-snapshot-schedule"></a>Momentaufnahmeproblem nach dem Aktualisieren des Momentaufnahmezeitplans
-Nachdem der Datenanbieter den Momentaufnahmezeitplan für die gesendete Freigabe aktualisiert hat, muss der Datenconsumer den früheren Momentaufnahmezeitplan deaktivieren und den aktualisierten Momentaufnahmezeitplan für die empfangene Freigabe erneut aktivieren. 
+## <a name="updated-snapshot-schedules"></a>Aktualisierte Zeitpläne für Momentaufnahmen
+Nachdem der Datenanbieter den Momentaufnahmezeitplan für die gesendete Freigabe aktualisiert hat, muss der Datenconsumer den vorherigen Momentaufnahmezeitplan deaktivieren. Anschließend muss der aktualisierte Momentaufnahmezeitplan für die empfangene Freigabe aktiviert werden. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Informationen zum Freigeben von Daten finden Sie im Tutorial zum [Freigeben Ihrer Daten](share-your-data.md). 
+Informationen zum Freigeben von Daten finden Sie im Tutorial zur [Datenfreigabe](share-your-data.md). 
 
-Weitere Informationen zum Empfangen von Daten finden Sie im Tutorial [Akzeptieren und Empfangen von Daten](subscribe-to-data-share.md).
+Weitere Informationen zum Datenempfang finden Sie im Tutorial [Akzeptieren und Empfangen von Daten](subscribe-to-data-share.md).

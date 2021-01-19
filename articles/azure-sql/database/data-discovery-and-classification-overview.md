@@ -13,12 +13,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 12/01/2020
 tags: azure-synapse
-ms.openlocfilehash: c3f1209c2c903399617bd60258cc152a6ce90b80
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: ece76f0017a72484f5c4e66b2ab8c7e71d32f1a7
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96462090"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98132034"
 ---
 # <a name="data-discovery--classification"></a>Datenermittlung und -klassifizierung
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -28,7 +28,7 @@ Datenermittlung und -klassifizierung ist in Azure SQL-Datenbank, verwaltete Azur
 Zu den vertraulichsten Daten gehören Geschäfts-, Finanz-, Gesundheits- und personenbezogene Informationen. Das Ermitteln und Klassifizieren dieser Daten kann eine entscheidende Rolle beim Ansatz Ihrer Organisation zum Schutz von Daten spielen. Sie kann für Folgendes als Infrastruktur gelten:
 
 - Unterstützung bei der Einhaltung von Standards für den Datenschutz und von gesetzlichen Bestimmungen
-- Verschiedene Sicherheitsszenarien, z.B. Überwachung und Warnungen bei abweichendem Zugriff auf sensible Daten
+- Verschiedene Sicherheitsszenarien, z. B. Überwachung vertraulicher Daten
 - Steuern des Zugriffs auf und Härten der Sicherheit von Datenbanken mit vertraulichen Daten
 
 > [!NOTE]

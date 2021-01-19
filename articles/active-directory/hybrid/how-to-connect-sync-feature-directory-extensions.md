@@ -16,12 +16,12 @@ ms.date: 11/12/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 74bc659c11c4f43ab3cf85cdc53f704cd07a1cde
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 25d4152783129fa1c5950d6cf6287332bf90d32a
+ms.sourcegitcommit: 8f0803d3336d8c47654e119f1edd747180fe67aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96172366"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97976876"
 ---
 # <a name="azure-ad-connect-sync-directory-extensions"></a>Azure AD Connect Sync: Verzeichniserweiterungen
 Sie können Verzeichniserweiterungen verwenden, um das Schema in Azure Active Directory (Azure AD) um Ihre eigenen Attribute aus dem lokalen Active Directory zu erweitern. Dank dieses Features können Sie Branchen-Apps erstellen, indem Sie Attribute nutzen, die Sie weiterhin lokal verwalten. Diese Attribute können über [Erweiterungen](/graph/extensibility-overview
@@ -46,7 +46,7 @@ Bei der Installation werden folgenden Attribute als zulässige Kandidaten angeze
 
 
 >[!NOTE]
-> Azure AD Connect unterstützt zwar das Synchronisieren mehrwertiger Active Directory-Attribute für Azure AD als mehrwertige Verzeichniserweiterungen, doch gibt es derzeit keine Möglichkeit, die in Attribute für mehrwertige Verzeichniserweiterungen hochgeladenen Daten abzurufen/zu nutzen.
+> Nachdem Azure AD Connect mehrwertige Active Directory-Attribute in Form einer mehrwertigen Attributerweiterung mit Azure AD synchronisiert hat, ist es möglich, Attribute in den SAML-Anspruch einzuschließen. Es ist jedoch nicht möglich, diese Daten über einen API-Aufruf zu verwenden.
 
 Die Attributliste wird aus dem Schemacache gelesen, der im Zuge der Installation von Azure AD Connect erstellt wird. Wenn Sie das Active Directory-Schema um zusätzliche Attribute erweitert haben, müssen Sie [das Schema aktualisieren](how-to-connect-installation-wizard.md#refresh-directory-schema), damit die neuen Attribute angezeigt werden.
 

@@ -5,16 +5,16 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: how-to
-ms.date: 11/06/2020
+ms.date: 01/08/2020
 author: timsander1
 ms.author: tisande
 ms.custom: devx-track-js
-ms.openlocfilehash: e920af85c511387e66bcafcb6a140844d25f204c
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 34caca47746814046a894494ec43d9b5c977389a
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94369289"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98060087"
 ---
 # <a name="manage-indexing-in-azure-cosmos-dbs-api-for-mongodb"></a>Verwalten der Indizierung in der Azure Cosmos DB-API für MongoDB
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -29,6 +29,16 @@ Um zusätzliche Felder zu indizieren, verwenden Sie die MongoDB-Indexverwaltungs
 
 Um eine Abfrage zu sortieren, müssen Sie einen Index für die Felder erstellen, die beim Sortiervorgang verwendet werden.
 
+### <a name="editing-indexing-policy"></a>Bearbeiten der Indizierungsrichtlinie
+
+Es wird empfohlen, die Indizierungsrichtlinie im Azure-Portal im Daten-Explorer zu bearbeiten.
+. Über den Editor für Indizierungsrichtlinien im Daten-Explorer können Sie Einzelfeldindizes und Indizes mit Platzhalterzeichen hinzufügen:
+
+:::image type="content" source="./media/mongodb-indexing/indexing-policy-editor.png" alt-text="Editor für Indizierungsrichtlinien":::
+
+> [!NOTE]
+> Mit dem Editor für Indizierungsrichtlinien im Daten-Explorer können Sie keine zusammengesetzten Indizes erstellen.
+
 ## <a name="index-types"></a>Indextypen
 
 ### <a name="single-field"></a>Einzelfeld
@@ -36,6 +46,10 @@ Um eine Abfrage zu sortieren, müssen Sie einen Index für die Felder erstellen,
 Sie können für jedes einzelne Feld Indizes erstellen. Die Sortierreihenfolge des Einzelfeldindexes ist unerheblich. Der folgende Befehl erstellt einen Index für das Feld `name`:
 
 `db.coll.createIndex({name:1})`
+
+Sie können denselben Einzelfeldindex für `name` im Azure-Portal erstellen:
+
+:::image type="content" source="./media/mongodb-indexing/add-index.png" alt-text="Hinzufügen eines Namensindex im Editor für Indizierungsrichtlinien":::
 
 Bei einer Abfrage werden mehrere Einzelfeldindizes verwendet, soweit verfügbar. Sie können pro Container bis zu 500 Einzelfeldindizes erstellen.
 
@@ -134,6 +148,10 @@ Folgende Indextypen lassen sich mit Platzhaltersyntax erstellen:
 So erstellen Sie einen Platzhalterindex für alle Felder:
 
 `db.coll.createIndex( { "$**" : 1 } )`
+
+Mit dem Daten-Explorer im Azure-Portal können Sie auch Indizes mit Platzhalterzeichen erstellen:
+
+:::image type="content" source="./media/mongodb-indexing/add-wildcard-index.png" alt-text="Hinzufügen eines Index mit Platzhalterzeichen im Editor für Indizierungsrichtlinien":::
 
 > [!NOTE]
 > Wenn Sie gerade mit der Entwicklung beginnen, wird **dringend** empfohlen, mit einem Platzhalterindex für alle Felder zu beginnen. Dies kann sowohl die Entwicklung als auch die Optimierung von Abfragen vereinfachen.

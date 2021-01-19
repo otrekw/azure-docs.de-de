@@ -13,16 +13,16 @@ ms.date: 9/18/2019
 ms.author: brianmel
 ms.reviewer: rapong
 ms.custom: aaddev
-ms.openlocfilehash: 1c4f47fd771cfb92b3896963c96b39d9eb7d97b8
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: a8c7ae8de41a01cb07a4bbbcd5943fb6290eced8
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96344877"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98131643"
 ---
 # <a name="use-msal-for-android-with-b2c"></a>Verwendung von MSAL für Android mit B2C
 
-Microsoft Authentication Library (MSAL) ermöglicht es Anwendungsentwicklern, Benutzer mit Social Media-Identitäten und lokalen Identitäten mithilfe von [Azure Active Directory B2C (Azure AD B2C)](../../active-directory-b2c/index.yml) zu authentifizieren. Azure AD B2C ist ein Identitätsverwaltungsdienst. Mit diesem Dienst können Sie anpassen und steuern, wie sich Kunden für Ihre Apps registrieren, anmelden und ihre Profile verwalten.
+Die Microsoft Authentication Library (MSAL) ermöglicht Anwendungsentwicklern, Benutzer mit Social Media-Identitäten und lokalen Identitäten mithilfe von [Azure Active Directory B2C (Azure AD B2C)](../../active-directory-b2c/index.yml) zu authentifizieren. Azure AD B2C ist ein Identitätsverwaltungsdienst. Mit diesem Dienst können Sie anpassen und steuern, wie sich Kunden für Ihre Apps registrieren, anmelden und ihre Profile verwalten.
 
 ## <a name="configure-known-authorities-and-redirect-uri"></a>Konfigurieren bekannter Autoritäten und des Umleitungs-URI
 
@@ -36,11 +36,14 @@ Bei einer B2C-Anwendung mit zwei Richtlinien:
 
 Die Konfigurationsdatei für die App würde zwei `authorities` deklarieren. Jeweils eine pro Richtlinie. Die `type`-Eigenschaft jeder Autorität ist `B2C`.
 
+>Hinweis: Der `account_mode` muss für B2C-Anwendungen auf **MULTIPLE** festgelegt werden. Weitere Informationen zu [öffentlichen Clientanwendungen für mehrere Konten](https://docs.microsoft.com/azure/active-directory/develop/single-multi-account#multiple-account-public-client-application) finden Sie in der Dokumentation.
+
 ### `app/src/main/res/raw/msal_config.json`
 ```json
 {
     "client_id": "<your_client_id_here>",
     "redirect_uri": "<your_redirect_uri_here>",
+    "account_mode" : "MULTIPLE",
     "authorities": [{
             "type": "B2C",
             "authority_url": "https://contoso.b2clogin.com/tfp/contoso.onmicrosoft.com/B2C_1_SISOPolicy/",
@@ -153,7 +156,7 @@ AcquireTokenParameters parameters = new AcquireTokenParameters.Builder()
 
 ## <a name="handle-password-change-policies"></a>Umgang mit Richtlinien zur Kennwortänderung
 
-Der Benutzerflow zur Registrierung oder Anmeldung für das lokale Konto zeigt „**Kennwort vergessen?** “ an. . Durch Klicken auf diesen Link wird nicht automatisch ein Benutzerflow zum Zurücksetzen des Kennworts ausgelöst.
+Der Benutzerflow zur Registrierung oder Anmeldung für das lokale Konto zeigt „**Kennwort vergessen?**“ an. klicken. Durch Klicken auf diesen Link wird nicht automatisch ein Benutzerflow zum Zurücksetzen des Kennworts ausgelöst.
 
 Stattdessen wird der Fehlercode `AADB2C90118` an Ihre App zurückgegeben. Ihre Anwendung sollte diesen Fehlercode verarbeiten, indem sie einen bestimmten Benutzerflow zum Zurücksetzen des Kennworts ausführt.
 

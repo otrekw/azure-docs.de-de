@@ -1,28 +1,28 @@
 ---
-title: Hinzufügen und Aufrufen von Azure Functions aus Azure Logic Apps
-description: Aufrufen und Ausführen benutzerdefinierten Codes in Ihren Azure Functions aus automatisierten Aufgaben und Workflows in Azure Logic Apps
+title: Hinzufügen und Aufrufen von Funktionen aus Azure Logic Apps
+description: Aufrufen und Ausführen von benutzerdefiniertem Code in Funktionen, die in Azure aus automatisierten Aufgaben und Workflows in Azure Logic Apps erstellt wurden
 services: logic-apps
 ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/01/2019
 ms.custom: devx-track-js
-ms.openlocfilehash: 75693c57a8d120aad53a15d03ae4054bac8262af
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: fd04e5a7f084de7a95f20b54b99a9e4590f10cd7
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96023056"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98034763"
 ---
-# <a name="call-azure-functions-from-azure-logic-apps"></a>Aufrufen von Azure-Funktionen aus Azure Logic Apps
+# <a name="call-functions-from-azure-logic-apps"></a>Aufrufen von Funktionen aus Azure Logic Apps
 
-Wenn Sie Code ausführen möchten, der einen bestimmten Auftrag in Ihren Logik-Apps ausführt, können Sie Ihre eigene Funktion erstellen, indem Sie [Azure Functions](../azure-functions/functions-overview.md) verwenden. Mit diesem Dienst können Sie Node.js-, C#- and F#-Funktionen erstellen, sodass Sie keine vollständige App oder Infrastruktur zur Ausführung von Code erstellen müssen. Sie können [Logik-Apps auch aus Azure-Funktionen aufrufen](#call-logic-app). Azure Functions ermöglicht serverloses Computing in der Cloud und ist nützlich, um Aufgaben auszuführen, z.B. diese Beispiele:
+Wenn Sie Code ausführen möchten, der einen bestimmten Auftrag in Ihren Logik-Apps ausführt, können Sie Ihre eigene Funktion erstellen, indem Sie [Azure Functions](../azure-functions/functions-overview.md) verwenden. Mit diesem Dienst können Sie Node.js-, C#- and F#-Funktionen erstellen, sodass Sie keine vollständige App oder Infrastruktur zur Ausführung von Code erstellen müssen. Sie können [Logik-Apps auch aus Funktionen aufrufen](#call-logic-app). Azure Functions ermöglicht serverloses Computing in der Cloud und ist nützlich, um Aufgaben auszuführen, z.B. diese Beispiele:
 
 * Erweitern Sie das Verhalten Ihrer Logik-App um Funktionen in Node.js oder C#.
 * Führen Sie in Ihrem Logik-App-Workflow Berechnungen durch.
 * Wenden Sie in Ihren Logik-Apps die erweiterte Formatierung oder Computefelder an.
 
-Informationen zum Ausführen von Codeausschnitten ohne Erstellen von Azure-Funktionen finden Sie unter [Hinzufügen und Ausführen von Inlinecode](../logic-apps/logic-apps-add-run-inline-code.md).
+Informationen zum Ausführen von Codeausschnitten ohne Azure Functions finden Sie unter [Hinzufügen und Ausführen von Inlinecode](../logic-apps/logic-apps-add-run-inline-code.md).
 
 > [!NOTE]
 > Die Integration zwischen Logic Apps und Azure Functions funktioniert zurzeit nicht mit aktivierten Slots.
@@ -31,7 +31,7 @@ Informationen zum Ausführen von Codeausschnitten ohne Erstellen von Azure-Funkt
 
 * Ein Azure-Abonnement. Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich [für ein kostenloses Azure-Konto registrieren](https://azure.microsoft.com/free/).
 
-* Eine Funktions-App in Azure, bei der es sich um einen Container für Azure-Funktionen handelt, zusammen mit Ihrer Azure-Funktion. Wenn noch keine Funktionen-App vorhanden ist, [erstellen Sie zuerst Ihre Funktionen-App](../azure-functions/functions-create-first-azure-function.md). Sie können dann Ihre Funktion außerhalb Ihrer Logik-App im Azure-Portal oder [aus Ihrer Logik-App heraus](#create-function-designer) im Logik-App-Designer erstellen.
+* Eine Funktions-App ist ein Container für eine in Azure Functions erstellte Funktion gemeinsam mit der Funktion, die Sie erstellen. Wenn noch keine Funktionen-App vorhanden ist, [erstellen Sie zuerst Ihre Funktionen-App](../azure-functions/functions-create-first-azure-function.md). Sie können dann Ihre Funktion außerhalb Ihrer Logik-App im Azure-Portal oder [aus Ihrer Logik-App heraus](#create-function-designer) im Logik-App-Designer erstellen.
 
 * Wenn Sie mit Logik-Apps arbeiten, gelten sowohl für vorhandene als auch für neue Funktions-Apps und Funktionen dieselben Anforderungen:
 
@@ -41,7 +41,7 @@ Informationen zum Ausführen von Codeausschnitten ohne Erstellen von Azure-Funkt
 
   * Ihre Funktion verwendet die **HTTP-Trigger**-Vorlage.
 
-    Die HTTP-Trigger-Vorlage kann Inhalte mit dem Typ `application/json` von Ihrer Logik-App akzeptieren. Wenn Sie Ihrer Logik-App eine Azure-Funktion hinzufügen, zeigt der Logik-App-Designer benutzerdefinierte Funktionen, die im Rahmen Ihres Azure-Abonnements aus dieser Vorlage erstellt wurden.
+    Die HTTP-Trigger-Vorlage kann Inhalte mit dem Typ `application/json` von Ihrer Logik-App akzeptieren. Wenn Sie Ihrer Logik-App eine Funktion hinzufügen, zeigt der Logik-App-Designer benutzerdefinierte Funktionen, die im Rahmen Ihres Azure-Abonnements aus dieser Vorlage erstellt wurden.
 
   * Ihre Funktion verwendet keine benutzerdefinierten Routen – es sei denn, dass Sie eine [OpenAPI-Definition](../azure-functions/functions-openapi-definition.md) festgelegt haben (früher als [Swagger-Datei](https://swagger.io/) bezeichnet).
 
@@ -96,15 +96,15 @@ In dieser Funktion läuft Folgendes ab:
    body: data.date.ToDateString();
    ```
 
-Nachdem Sie nun Ihre Azure-Funktion erstellt haben, können Sie die Schritte zum [Hinzufügen von Funktionen zu Logik-Apps](#add-function-logic-app) ausführen.
+Nachdem Sie nun Ihre Funktion in Azure erstellt haben, können Sie die Schritte zum [Hinzufügen von Funktionen zu Logik-Apps](#add-function-logic-app) ausführen.
 
 <a name="create-function-designer"></a>
 
 ## <a name="create-functions-inside-logic-apps"></a>Erstellen von Funktionen innerhalb von Logik-Apps
 
-Sie können Azure-Funktionen direkt aus dem Workflow Ihrer Logik-App erstellen, indem Sie die integrierte Azure Functions-Aktion im Logik-App-Designer verwenden. Sie können diese Methode jedoch nur für in JavaScript geschriebene Azure-Funktionen verwenden. Für andere Sprachen können Sie Azure Functions-Instanzen auf der Azure Functions-Oberfläche im Azure-Portal erstellen. Weitere Informationen finden Sie unter [Erstellen Ihrer ersten Funktion im Azure-Portal](../azure-functions/functions-create-first-azure-function.md).
+Sie können Funktionen direkt aus dem Workflow Ihrer Logik-App erstellen, indem Sie die integrierte Azure Functions-Aktion im Logik-App-Designer verwenden. Sie können diese Methode jedoch nur für in JavaScript geschriebene Funktionen verwenden. Für andere Programmiersprachen können Sie Funktionen auf der Azure Functions-Benutzeroberfläche im Azure-Portal erstellen. Weitere Informationen finden Sie unter [Erstellen Ihrer ersten Funktion im Azure-Portal](../azure-functions/functions-create-first-azure-function.md).
 
-Bevor Sie jedoch eine Azure-Funktion erstellen können, müssen Sie bereits über eine Azure-Funktions-App verfügen, die ein Container für Ihre Funktionen ist. Erstellen Sie zuerst diese Funktionen-App, falls sie noch nicht vorhanden ist. Weitere Informationen finden Sie unter [Erstellen Ihrer ersten Funktion im Azure-Portal](../azure-functions/functions-create-first-azure-function.md).
+Bevor Sie jedoch eine Funktion in Azure erstellen können, müssen Sie bereits über eine Funktions-App verfügen, die ein Container für Ihre Funktionen ist. Erstellen Sie zuerst diese Funktionen-App, falls sie noch nicht vorhanden ist. Weitere Informationen finden Sie unter [Erstellen Ihrer ersten Funktion im Azure-Portal](../azure-functions/functions-create-first-azure-function.md).
 
 1. Öffnen Sie Ihre Logik-App über das [Azure-Portal](https://portal.azure.com) im Logik-App-Designer.
 
@@ -116,7 +116,7 @@ Bevor Sie jedoch eine Azure-Funktion erstellen können, müssen Sie bereits übe
 
 1. Geben Sie im Suchfeld „azure functions“ als Filter ein. Wählen Sie in der Aktionsliste beispielsweise die Aktion **Azure-Funktion wählen** aus.
 
-   ![Suchen nach „Azure Functions“](./media/logic-apps-azure-functions/find-azure-functions-action.png)
+   ![Suchen Sie Funktionen im Azure-Portal.](./media/logic-apps-azure-functions/find-azure-functions-action.png)
 
 1. Wählen Sie in der Liste mit den Funktionen-Apps Ihre Funktionen-App aus. Wählen diese Aktion aus, nachdem die Liste mit den Aktionen geöffnet wurde: **Erstellen einer neuen Funktion**
 
@@ -155,13 +155,13 @@ Bevor Sie jedoch eine Azure-Funktion erstellen können, müssen Sie bereits übe
 
    ![Umwandeln eines Objekts in eine Zeichenfolge](./media/logic-apps-azure-functions/function-request-body-string-cast-example.png)
 
-1. Um weitere Details wie die zu verwendende Methode, Anforderungskopfzeilen, Abfrageparameter oder Authentifizierung anzugeben, öffnen Sie die Liste **Neuen Parameter hinzufügen**, und wählen Sie die gewünschten Optionen aus. Bei der Authentifizierung unterscheiden sich die Optionen je nach der von Ihnen ausgewählten Funktion. Weitere Informationen finden Sie unter [Aktivieren der Authentifizierung für Azure Functions](#enable-authentication-functions).
+1. Um weitere Details wie die zu verwendende Methode, Anforderungskopfzeilen, Abfrageparameter oder Authentifizierung anzugeben, öffnen Sie die Liste **Neuen Parameter hinzufügen**, und wählen Sie die gewünschten Optionen aus. Bei der Authentifizierung unterscheiden sich die Optionen je nach der von Ihnen ausgewählten Funktion. Weitere Informationen finden Sie unter [Aktivieren der Authentifizierung für Funktionen](#enable-authentication-functions).
 
 <a name="add-function-logic-app"></a>
 
 ## <a name="add-existing-functions-to-logic-apps"></a>Hinzufügen von vorhandenen Funktionen zu Logik-Apps
 
-Zum Aufrufen von vorhandenen Azure-Funktionen aus Ihren Logik-Apps können Sie Azure-Funktionen wie alle anderen Aktionen im Logik-App-Designer hinzufügen.
+Zum Aufrufen von vorhandenen Funktionen aus Ihren Logik-Apps können Sie Funktionen wie alle anderen Aktionen im Logik-App-Designer hinzufügen.
 
 1. Öffnen Sie Ihre Logik-App über das [Azure-Portal](https://portal.azure.com) im Logik-App-Designer.
 
@@ -169,15 +169,15 @@ Zum Aufrufen von vorhandenen Azure-Funktionen aus Ihren Logik-Apps können Sie A
 
 1. Geben Sie unter **Aktion auswählen** im Suchfeld „azure functions“ als Filter ein. Wählen Sie in der Aktionsliste die Aktion **Azure-Funktion wählen** aus.
 
-   ![Suchen nach „Azure Functions“](./media/logic-apps-azure-functions/find-azure-functions-action.png)
+   ![Suchen Sie in Azure eine Funktion.](./media/logic-apps-azure-functions/find-azure-functions-action.png)
 
 1. Wählen Sie in der Liste mit den Funktionen-Apps Ihre Funktionen-App aus. Wählen Sie Ihre Funktion aus, wenn die Liste mit den Funktionen angezeigt wird.
 
-   ![Auswählen Ihrer Funktionen-App und Azure-Funktion](./media/logic-apps-azure-functions/select-function-app-existing-function.png)
+   ![Auswählen Ihrer Funktions-App und Funktion](./media/logic-apps-azure-functions/select-function-app-existing-function.png)
 
    Für Funktionen, die über API-Definitionen (Swagger-Beschreibungen) verfügen und [so eingerichtet sind, dass Ihre Logik-App diese Funktionen finden und darauf zugreifen kann](#function-swagger), können Sie **Swagger-Aktionen** auswählen.
 
-   ![Auswählen von Funktions-App, „Swagger-Aktionen“ und Azure-Funktion](./media/logic-apps-azure-functions/select-function-app-existing-function-swagger.png)
+   ![Auswählen von Funktions-App, „Swagger-Aktionen“ und Ihrer Funktion](./media/logic-apps-azure-functions/select-function-app-existing-function-swagger.png)
 
 1. Geben Sie im Feld **Anforderungstext** die Eingabe für Ihre Funktion ein, die als JSON-Objekt (JavaScript Object Notation) formatiert werden muss.
 
@@ -189,27 +189,27 @@ Zum Aufrufen von vorhandenen Azure-Funktionen aus Ihren Logik-Apps können Sie A
 
    ![Umwandeln eines Objekts in eine Zeichenfolge](./media/logic-apps-azure-functions/function-request-body-string-cast-example.png)
 
-1. Um weitere Details wie die zu verwendende Methode, Anforderungskopfzeilen, Abfrageparameter oder Authentifizierung anzugeben, öffnen Sie die Liste **Neuen Parameter hinzufügen**, und wählen Sie die gewünschten Optionen aus. Bei der Authentifizierung unterscheiden sich die Optionen je nach der von Ihnen ausgewählten Funktion. Weitere Informationen finden Sie unter [Aktivieren der Authentifizierung in Azure-Funktionen](#enable-authentication-functions).
+1. Um weitere Details wie die zu verwendende Methode, Anforderungskopfzeilen, Abfrageparameter oder Authentifizierung anzugeben, öffnen Sie die Liste **Neuen Parameter hinzufügen**, und wählen Sie die gewünschten Optionen aus. Bei der Authentifizierung unterscheiden sich die Optionen je nach der von Ihnen ausgewählten Funktion. Weitere Informationen finden Sie unter [Aktivieren der Authentifizierung in Funktionen](#enable-authentication-functions).
 
 <a name="call-logic-app"></a>
 
-## <a name="call-logic-apps-from-azure-functions"></a>Aufrufen von Logik-Apps aus Azure Functions
+## <a name="call-logic-apps-from-functions"></a>Aufrufen von Logik-Apps aus Funktionen
 
-Wenn Sie eine Logik-App aus einer Azure-Funktion auslösen möchten, muss diese App mit einem Trigger starten, der einen aufrufbaren Endpunkt bereitstellt. So können Sie beispielsweise die Logik-App mit dem Trigger **HTTP**, **Anforderung**, **Azure-Warteschlangen** oder **Event Grid** starten. Senden Sie in Ihrer Funktion eine HTTP POST-Anforderung an die URL des Triggers, und binden Sie die Nutzlast ein, die von dieser Logik-App verarbeitet werden soll. Weitere Informationen hierzu finden Sie unter [Aufrufen, Auslösen oder Schachteln von Logik-Apps](../logic-apps/logic-apps-http-endpoint.md).
+Wenn Sie eine Logik-App aus einer Funktion auslösen möchten, muss diese App mit einem Trigger starten, der einen aufrufbaren Endpunkt bereitstellt. So können Sie beispielsweise die Logik-App mit dem Trigger **HTTP**, **Anforderung**, **Azure-Warteschlangen** oder **Event Grid** starten. Senden Sie in Ihrer Funktion eine HTTP POST-Anforderung an die URL des Triggers, und binden Sie die Nutzlast ein, die von dieser Logik-App verarbeitet werden soll. Weitere Informationen hierzu finden Sie unter [Aufrufen, Auslösen oder Schachteln von Logik-Apps](../logic-apps/logic-apps-http-endpoint.md).
 
 <a name="enable-authentication-functions"></a>
 
-## <a name="enable-authentication-for-azure-functions"></a>Aktivieren der Authentifizierung für Azure-Funktionen
+## <a name="enable-authentication-for-functions"></a>Aktivieren der Authentifizierung für Funktionen
 
 Um den Zugriff auf andere Ressourcen, die von Azure Active Directory (Azure AD) geschützt werden, ohne Anmeldung oder Bereitstellung von Anmeldeinformationen oder Geheimnissen einfach zu authentifizieren, kann Ihre Logik-App eine [verwaltete Identität](../active-directory/managed-identities-azure-resources/overview.md) (früher als verwaltete Dienstidentität (Managed Service Identity, MSI) bezeichnet) verwenden. Azure verwaltet diese Identität für Sie und dient als Hilfe beim Schützen Ihrer Anmeldeinformationen, da Sie keine Geheimnisse angeben oder eine Rotation dafür durchführen müssen. Erfahren Sie mehr zu [Azure-Diensten, die verwaltete Identitäten für die Azure AD-Authentifizierung unterstützen](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication).
 
-Wenn Sie Ihre Logik-App so einrichten, dass sie die vom System zugewiesene verwaltete Identität oder eine manuell erstellte benutzerseitig zugewiesene Identität verwendet, können die Azure-Funktionen in Ihrer Logik-App auch dieselbe Identität für die Authentifizierung verwenden. Weitere Informationen zur Unterstützung der Authentifizierung für Azure-Funktionen in Logik-Apps finden Sie unter [Hinzufügen von Authentifizierung zu ausgehenden Aufrufen](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound).
+Wenn Sie Ihre Logik-App so einrichten, dass sie die vom System zugewiesene verwaltete Identität oder eine manuell erstellte benutzerseitig zugewiesene Identität verwendet, können die Funktionen in Ihrer Logik-App auch dieselbe Identität für die Authentifizierung verwenden. Weitere Informationen zur Unterstützung der Authentifizierung für Funktionen in Logik-Apps finden Sie unter [Hinzufügen von Authentifizierung zu ausgehenden Aufrufen](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound).
 
 Um die verwaltete Identität mit Ihrer Funktion einzurichten und zu verwenden, führen Sie diese Schritte aus:
 
 1. Aktivieren Sie die verwaltete Identität in Ihrer Logik-App, und richten den Zugriff dieser Identität auf die Zielressource ein. Weitere Informationen finden Sie unter [Authentifizieren des Zugriffs auf Azure-Ressourcen mithilfe verwalteter Identitäten in Azure Logic Apps](../logic-apps/create-managed-service-identity.md).
 
-1. Aktivieren Sie die Authentifizierung in ihrer Azure-Funktion und der Funktions-App, indem Sie folgende Schritte ausführen:
+1. Aktivieren Sie die Authentifizierung in Ihrer Funktion und der Funktions-App, indem Sie folgende Schritte ausführen:
 
    * [Einrichten der anonymen Authentifizierung in ihrer Funktion](#set-authentication-function-app)
    * [Einrichten der Azure AD-Authentifizierung in ihrer Funktions-App](#set-azure-ad-authentication)
@@ -218,7 +218,7 @@ Um die verwaltete Identität mit Ihrer Funktion einzurichten und zu verwenden, f
 
 ### <a name="set-up-anonymous-authentication-in-your-function"></a>Einrichten der anonymen Authentifizierung in ihrer Funktion
 
-Um die verwaltete Identität Ihrer Logik-App in Ihrer Azure-Funktion zu verwenden, müssen Sie die Authentifizierungsebene Ihrer Funktion auf „Anonym“ festlegen. Andernfalls löst die Logik-App einen „BadRequest“-Fehler aus.
+Um die verwaltete Identität Ihrer Logik-App in Ihrer Funktion zu verwenden, müssen Sie die Authentifizierungsebene Ihrer Funktion auf „Anonym“ festlegen. Andernfalls löst die Logik-App einen „BadRequest“-Fehler aus.
 
 1. Suchen Sie im [Azure-Portal](https://portal.azure.com) nach Ihrer Funktions-App, und wählen Sie sie aus. In diesen Schritten wird „FabrikamFunctionApp“ als Beispiel für eine Funktions-App verwendet.
 

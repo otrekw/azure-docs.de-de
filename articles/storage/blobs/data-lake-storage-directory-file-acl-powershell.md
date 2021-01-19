@@ -6,16 +6,16 @@ author: normesta
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
 ms.topic: how-to
-ms.date: 08/26/2020
+ms.date: 01/06/2021
 ms.author: normesta
 ms.reviewer: prishet
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: eaa34da7dbdf8d315cf60d84cf15ef428f4c7900
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: fb715840ec3b3b1d5e65f17d4c18eb719e6acf80
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95913350"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98043573"
 ---
 # <a name="use-powershell-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>Verwenden von PowerShell zum Verwalten von Verzeichnissen, Dateien und Zugriffssteuerungslisten in Azure Data Lake Storage Gen2
 
@@ -51,35 +51,36 @@ In diesem Artikel erfahren Sie, wie Sie PowerShell zum Erstellen und Verwalten v
 
 ## <a name="connect-to-the-account"></a>Herstellen einer Verbindung mit dem Konto
 
-Öffnen Sie ein Windows PowerShell-Befehlsfenster, melden Sie sich dann mit dem Befehl `Connect-AzAccount` bei Ihrem Azure-Abonnement an, und befolgen Sie die Anweisungen auf dem Bildschirm.
-
-```powershell
-Connect-AzAccount
-```
-
-Wenn Ihre Identität mehreren Abonnements zugeordnet ist, legen Sie das aktive Abonnement auf das Abonnement des Speicherkontos fest, das Sie erstellen und in dem Sie Verzeichnisse verwalten möchten. In diesem Beispiel ersetzen Sie den Platzhalterwert `<subscription-id>` durch die ID Ihres Abonnements.
-
-```powershell
-Select-AzSubscription -SubscriptionId <subscription-id>
-```
-
-Wählen Sie als Nächstes aus, wie Ihre Befehle die Autorisierung für das Speicherkonto abrufen sollen. 
+Wählen Sie aus, wie Ihre Befehle die Autorisierung für das Speicherkonto abrufen sollen. 
 
 ### <a name="option-1-obtain-authorization-by-using-azure-active-directory-ad"></a>Option 1: Abrufen der Autorisierung mithilfe von Azure Active Directory (AD)
 
-Bei diesem Ansatz stellt das System sicher, dass Ihr Benutzerkonto über die entsprechenden Azure RBAC-Zuweisungen (Azure Role-Based Access Control, rollenbasierte Zugriffssteuerung von Azure) und ACL-Berechtigungen verfügt. 
+Bei diesem Ansatz stellt das System sicher, dass Ihr Benutzerkonto über die entsprechenden Azure RBAC-Zuweisungen (Azure Role-Based Access Control, rollenbasierte Zugriffssteuerung von Azure) und ACL-Berechtigungen verfügt.
 
-```powershell
-$ctx = New-AzStorageContext -StorageAccountName '<storage-account-name>' -UseConnectedAccount
-```
+1. Öffnen Sie ein Windows PowerShell-Befehlsfenster, melden Sie sich dann mit dem Befehl `Connect-AzAccount` bei Ihrem Azure-Abonnement an, und befolgen Sie die Anweisungen auf dem Bildschirm.
+
+   ```powershell
+   Connect-AzAccount
+   ```
+
+2. Wenn Ihre Identität mehreren Abonnements zugeordnet ist, legen Sie das aktive Abonnement auf das Abonnement des Speicherkontos fest, das Sie erstellen und in dem Sie Verzeichnisse verwalten möchten. In diesem Beispiel ersetzen Sie den Platzhalterwert `<subscription-id>` durch die ID Ihres Abonnements.
+
+   ```powershell
+   Select-AzSubscription -SubscriptionId <subscription-id>
+   ``` 
+
+3. Rufen Sie den Speicherkontokontext ab.
+
+   ```powershell
+   $ctx = New-AzStorageContext -StorageAccountName '<storage-account-name>' -UseConnectedAccount
+   ```
 
 ### <a name="option-2-obtain-authorization-by-using-the-storage-account-key"></a>Option 2: Abrufen der Autorisierung mithilfe des Speicherkontoschlüssels
 
-Bei diesem Ansatz überprüft das System nicht die Azure RBAC- oder ACL-Berechtigungen.
+Bei diesem Ansatz überprüft das System nicht die Azure RBAC- oder ACL-Berechtigungen. Rufen Sie den Speicherkontokontext mithilfe eines Kontoschlüssels ab.
 
 ```powershell
-$storageAccount = Get-AzStorageAccount -ResourceGroupName "<resource-group-name>" -AccountName "<storage-account-name>"
-$ctx = $storageAccount.Context
+$ctx = New-AzStorageContext -StorageAccountName '<storage-account-name>' -StorageAccountKey '<storage-account-key>'
 ```
 
 ## <a name="create-a-container"></a>Erstellen eines Containers
@@ -336,6 +337,10 @@ Update-AzDataLakeGen2Item -Context $ctx -FileSystem $filesystemName -Path $dirna
 $dir = Get-AzDataLakeGen2Item -Context $ctx -FileSystem $filesystemName -Path $dirname
 $dir.ACL
 ```
+
+> [!NOTE]
+> Wenn Sie einen **standardmäßigen** ACL-Eintrag festlegen möchten, verwenden Sie den Parameter **-DefaultScope**, wenn Sie den Befehl **Set-AzDataLakeGen2ItemAclObject** ausführen. Beispiel: `$acl = set-AzDataLakeGen2ItemAclObject -AccessControlType user -Permission rwx -DefaultScope`.
+
 In diesem Beispiel wird die Zugriffssteuerungsliste auf eine **Datei** für den zuständigen Benutzer, die zuständige Gruppe oder andere Benutzer festgelegt und dann in der Konsole ausgegeben.
 
 ```powershell
@@ -348,6 +353,8 @@ Update-AzDataLakeGen2Item -Context $ctx -FileSystem $filesystemName -Path $fileP
 $file = Get-AzDataLakeGen2Item -Context $ctx -FileSystem $filesystemName -Path $filePath
 $file.ACL
 ```
+> [!NOTE]
+> Wenn Sie einen **standardmäßigen** ACL-Eintrag festlegen möchten, verwenden Sie den Parameter **-DefaultScope**, wenn Sie den Befehl **Set-AzDataLakeGen2ItemAclObject** ausführen. Beispiel: `$acl = set-AzDataLakeGen2ItemAclObject -AccessControlType user -Permission rwx -DefaultScope`.
 
 Die folgende Abbildung zeigt die Ausgabe nach dem Festlegen der Zugriffssteuerungsliste einer Datei.
 
@@ -368,6 +375,9 @@ $acl = (Get-AzDataLakeGen2Item -Context $ctx -FileSystem $filesystemName -Path $
 $acl = set-AzDataLakeGen2ItemAclObject -AccessControlType user -EntityID xxxxxxxx-xxxx-xxxxxxxxxxx -Permission r-x -InputObject $acl 
 Update-AzDataLakeGen2Item -Context $ctx -FileSystem $filesystemName -Path $dirname -Acl $acl
 ```
+
+> [!NOTE]
+> Wenn Sie einen **standardmäßigen** ACL-Eintrag aktualisieren möchten, verwenden Sie den Parameter **-DefaultScope**, wenn Sie den Befehl **Set-AzDataLakeGen2ItemAclObject** ausführen. Beispiel: `$acl = set-AzDataLakeGen2ItemAclObject -AccessControlType user -EntityID xxxxxxxx-xxxx-xxxxxxxxxxx -Permission r-x -DefaultScope`.
 
 ### <a name="remove-an-acl-entry"></a>Entfernen eines ACL-Eintrags
 

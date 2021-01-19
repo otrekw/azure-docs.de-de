@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.date: 10/20/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 1bbc3b3cd755aabd348a238ad65cda132b9a7547
-ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
+ms.openlocfilehash: c32f90221a73d04fd6c54c8332826232d0e6a6f3
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97746608"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97968533"
 ---
 # <a name="use-spark--hive-tools-for-visual-studio-code"></a>Verwenden von Spark- und Hive-Tools für Visual Studio Code
 
@@ -269,7 +269,7 @@ Das Tool unterstützt auch die **Spark SQL**-Abfrage:
 
 > [!NOTE]
 >
-> Das Problem [„Version 2020.5.78807 und höher von ‚ms-python‘ wird von dieser Erweiterung nicht unterstützt“](#issues-changed) wurde behoben. Vorerst kann die neueste Version von ms-python verwendet werden.
+> Das Problem [„Version 2020.5.78807 und höher von ‚ms-python‘ wird von dieser Erweiterung nicht unterstützt“](#issues-changed) wurde behoben. Aktualisieren Sie **ms-python** jetzt auf die **aktuelle Version**.
 
 ## <a name="submit-pyspark-batch-job"></a>Übermitteln von PySpark-Batchaufträgen
 
@@ -491,7 +491,7 @@ Navigieren Sie auf der Menüleiste zu **Ansicht** > **Befehlspalette**, und gebe
 
 ## <a name="issues-changed"></a>Geänderte Probleme
 
-Das Problem „Version 2020.5.78807 und höher von ‚ms-python‘ wird von dieser Erweiterung nicht unterstützt“ wurde behoben, sodass vorerst die **neueste Version von ms-python** verwendet werden kann.
+Für dieses Problem wurde „Version 2020.5.78807 und höher von ‚ms-python‘ wird von dieser Erweiterung nicht unterstützt“ behoben. Aktualisieren Sie **ms-python** jetzt auf die **aktuelle Version**.
 
 
 ## <a name="next-steps"></a>Nächste Schritte

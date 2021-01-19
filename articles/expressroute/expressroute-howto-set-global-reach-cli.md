@@ -5,15 +5,15 @@ services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: how-to
-ms.date: 12/12/2018
+ms.date: 01/07/2021
 ms.author: duau
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 16a86982813b667ed5c761da27c8e9e5a43ab6cc
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 27f16ac7d7d799c5467b11fd93352dc5fdef666c
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91322494"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98028062"
 ---
 # <a name="configure-expressroute-global-reach-by-using-the-azure-cli"></a>Konfigurieren von ExpressRoute Global Reach unter Verwendung der Azure CLI
 
@@ -48,7 +48,7 @@ az account set --subscription <your subscription ID>
 
 ### <a name="identify-your-expressroute-circuits-for-configuration"></a>Bestimmen der zu konfigurierenden ExpressRoute-Leitungen
 
-Sie können ExpressRoute Global Reach zwischen zwei beliebigen ExpressRoute-Leitungen aktivieren, solange sich diese in unterstützten Ländern/Regionen befinden und an verschiedenen Peeringstandorten erstellt wurden. Wenn beide Leitungen Ihrem Abonnement zugewiesen sind, können Sie eine der beiden Leitungen auswählen, um die Konfiguration auszuführen, wie nachfolgend in diesem Artikel beschrieben. Wenn sich die beiden Leitungen in unterschiedlichen Azure-Abonnements befinden, benötigen Sie die Autorisierung eines Azure-Abonnements und müssen den entsprechenden Autorisierungsschlüssel übergeben, sofern Sie den Konfigurationsbefehl im anderen Azure-Abonnement ausführen.
+Sie können ExpressRoute Global Reach zwischen zwei beliebigen ExpressRoute-Leitungen aktivieren. Die Leitungen müssen sich in unterstützten Ländern bzw. Regionen befinden und an unterschiedlichen Peeringstandorten erstellt worden sein. Falls sich beide Leitungen unter Ihrem Abonnement befinden, können Sie eine der Leitungen für die Ausführung der Konfiguration auswählen. Wenn sich die beiden Leitungen aber in unterschiedlichen Azure-Abonnements befinden, müssen Sie über eine der Leitungen einen Autorisierungsschlüssel erstellen. Mit dem über die erste Leitung generierten Autorisierungsschlüssel können Sie Global Reach für die zweite Leitung aktivieren.
 
 ## <a name="enable-connectivity-between-your-on-premises-networks"></a>Aktivieren der Konnektivität zwischen Ihren lokalen Netzwerken
 
@@ -58,7 +58,7 @@ Beachten Sie bei der Ausführung des Befehls zur Aktivierung der Konnektivität 
 
   > /subscriptions/{your_subscription_id}/resourceGroups/{your_resource_group}/providers/Microsoft.Network/expressRouteCircuits/{your_circuit_name}
 
-* *address-prefix* muss ein IPv4-Subnetz vom Typ „/29“ sein (zum Beispiel: 10.0.0.0/29). Wir verwenden IP-Adressen in diesem Subnetz, um eine Verbindung zwischen den beiden ExpressRoute-Leitungen herzustellen. Sie müssen keine Adressen in diesem Subnetz in Ihren virtuellen Azure-Netzwerken oder lokalen Netzwerken verwenden.
+* *address-prefix* muss ein IPv4-Subnetz vom Typ „/29“ sein (zum Beispiel: 10.0.0.0/29). Wir verwenden IP-Adressen in diesem Subnetz, um eine Verbindung zwischen den beiden ExpressRoute-Leitungen herzustellen. Sie können keine Adressen dieses Subnetzes in Ihren virtuellen Azure-Netzwerken oder lokalen Netzwerken verwenden.
 
 Führen Sie den folgenden CLI-Befehl aus, um zwei ExpressRoute-Leitungen zu verbinden:
 
@@ -94,7 +94,7 @@ Wenn der beschriebene Vorgang abgeschlossen ist, verfügen Sie dank der beiden E
 
 ## <a name="enable-connectivity-between-expressroute-circuits-in-different-azure-subscriptions"></a>Aktivieren der Konnektivität zwischen ExpressRoute-Leitungen in verschiedenen Azure-Abonnements
 
-Wenn sich die beiden Leitungen nicht im gleichen Azure-Abonnement befinden, benötigen Sie eine Autorisierung. Bei der folgenden Konfiguration generieren Sie die Autorisierung im Abonnement von Leitung 2 und übergeben den Autorisierungsschlüssel an Leitung 1.
+Wenn sich die beiden Leitungen nicht im gleichen Azure-Abonnement befinden, benötigen Sie eine Autorisierung. In der folgenden Konfiguration generieren Sie die Autorisierung aus dem Abonnement von Leitung 2. Anschließend übergeben Sie den Autorisierungsschlüssel an Leitung 1.
 
 1. Generieren Sie einen Autorisierungsschlüssel:
 

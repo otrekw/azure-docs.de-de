@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
-ms.date: 12/06/2019
-ms.openlocfilehash: f7cac8ef41ff49f2d623e2b86dff271adcd71ff1
-ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
+ms.date: 01/12/2021
+ms.openlocfilehash: 43e46c1b5e720e4f9f46f8d3198fea7124d8f5ba
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97821416"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98132204"
 ---
 # <a name="manage-resources-for-apache-spark-cluster-on-azure-hdinsight"></a>Verwalten von Ressourcen für den Apache Spark-Cluster unter Azure HDInsight
 
@@ -85,6 +85,9 @@ Der folgende Befehl ist ein Beispiel dafür, wie die Konfigurationsparameter fü
 curl -k -v -H 'Content-Type: application/json' -X POST -d '{"file":"<location of application jar file>", "className":"<the application class to execute>", "args":[<application parameters>], "numExecutors":10, "executorMemory":"2G", "executorCores":5' localhost:8998/batches
 ```
 
+> [!Note]
+> Kopieren Sie die JAR-Datei in das Speicherkonto Ihres Clusters. Kopieren Sie die JAR-Datei nicht direkt auf den Hauptknoten.
+
 ### <a name="change-these-parameters-on-a-spark-thrift-server"></a>Ändern dieser Parameter auf einem Spark Thrift-Server
 
 Der Spark Thrift-Server bietet JDBC/ODBC-Zugriff auf einen Spark-Cluster und wird verwendet, um Spark-SQL-Abfragen zu verarbeiten. Tools wie Power BI, Tableau usw. verwenden das ODBC-Protokoll zur Kommunikation mit dem Spark Thrift-Server, um Spark-SQL-Abfragen als Spark-Anwendung auszuführen. Wenn ein Spark-Cluster erstellt wird, werden zwei Instanzen des Spark Thrift-Servers gestartet, eine auf jedem Hauptknoten. Jeder Spark Thrift-Server wird als Spark-Anwendung auf der YARN-Benutzeroberfläche angezeigt.
@@ -146,7 +149,7 @@ Starten Sie die YARN-Benutzeroberfläche, wie am Anfang des Artikels beschrieben
 
     ![Beenden der App: 2](./media/apache-spark-resource-manager/apache-ambari-kill-app2.png "Beenden der App: 2")
 
-## <a name="see-also"></a>Weitere Informationen
+## <a name="see-also"></a>Siehe auch
 
 * [Track and debug jobs running on an Apache Spark cluster in HDInsight (Nachverfolgen und Debuggen von Aufträgen in einem Apache Spark-Cluster unter HDInsight)](apache-spark-job-debugging.md)
 

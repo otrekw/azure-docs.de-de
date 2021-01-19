@@ -3,12 +3,12 @@ title: Speicheraspekte für Azure Functions
 description: Erfahren Sie über die Speicheranforderungen von Azure Functions und über das Verschlüsseln gespeicherter Daten.
 ms.topic: conceptual
 ms.date: 07/27/2020
-ms.openlocfilehash: 67ff822208f065041e479fc484173d9f06a773ba
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 66bfded384be47224e86ee8e0a2999fe3d4ed5d9
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97107242"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936157"
 ---
 # <a name="storage-considerations-for-azure-functions"></a>Speicheraspekte für Azure Functions
 
@@ -18,7 +18,7 @@ Azure Functions erfordert ein Azure Storage-Konto, wenn Sie eine Funktions-App-I
 |Speicherdienst  | Verwendung in Functions  |
 |---------|---------|
 | [Azure Blob Storage](../storage/blobs/storage-blobs-introduction.md)     | Aufrechterhalten von Bindungszustand und Funktionsschlüsseln.  <br/>Wird auch von [Aufgabenhubs in Durable Functions](durable/durable-functions-task-hubs.md) verwendet. |
-| [Azure Files](../storage/files/storage-files-introduction.md)  | Dateifreigabe, die zum Speichern und Ausführen Ihres Funktions-App-Codes in einem [Verbrauchstarif](functions-scale.md#consumption-plan) und [Premium-Plan](functions-scale.md#premium-plan) verwendet wird. |
+| [Azure Files](../storage/files/storage-files-introduction.md)  | Dateifreigabe, die zum Speichern und Ausführen Ihres Funktions-App-Codes in einem [Verbrauchstarif](consumption-plan.md) und [Premium-Plan](functions-premium-plan.md) verwendet wird. |
 | [Azure Queue Storage](../storage/queues/storage-queues-introduction.md)     | Wird von [Aufgabenhubs in Durable Functions](durable/durable-functions-task-hubs.md) verwendet.   |
 | [Azure Table Storage](../storage/tables/table-storage-overview.md)  |  Wird von [Aufgabenhubs in Durable Functions](durable/durable-functions-task-hubs.md) verwendet.       |
 
@@ -32,6 +32,8 @@ Beim Erstellen einer Funktions-App müssen Sie ein allgemeines Azure Storage-Kon
 Weitere Informationen zu Speicherkontotypen finden Sie unter [Einführung in die Azure Storage-Dienste](../storage/common/storage-introduction.md#core-storage-services). 
 
 Sie können zwar ein vorhandenes Speicherkonto mit ihrer Funktions-App verwenden, aber Sie müssen sicherstellen, dass diese Anforderungen erfüllt werden. Für Speicherkonten, die im Rahmen der Erstellung der Funktions-App im Azure-Portal erstellt werden, ist garantiert, dass sie diese Speicherkontenanforderungen erfüllen. Im Portal werden nicht unterstützte Konten herausgefiltert, wenn Sie beim Erstellen einer Funktions-App ein vorhandenes Speicherkonto auswählen. In diesem Flow dürfen Sie nur vorhandene Speicherkonten in derselben Region wie die von Ihnen erstellte Funktions-App auswählen. Weitere Informationen finden Sie unter [Standort des Speicherkontos](#storage-account-location).
+
+<!-- JH: Does using a Premium Storage account improve perf? -->
 
 ## <a name="storage-account-guidance"></a>Speicherkontoanleitung
 
@@ -59,7 +61,15 @@ Es ist möglich, dass mehrere Funktions-Apps dasselbe Speicherkonto ohne Problem
 
 [!INCLUDE [functions-storage-encryption](../../includes/functions-storage-encryption.md)]
 
-## <a name="mount-file-shares-linux"></a>Einbinden von Dateifreigaben (Linux)
+### <a name="in-region-data-residency"></a>Data Residency in der Region
+
+Wenn alle Kundendaten in einer einzelnen Region verbleiben müssen, muss das Speicherkonto, das der Funktions-App zugeordnet ist, eines mit [regionsinterner Redundanz](../storage/common/storage-redundancy.md) sein. Für Speicherkonten mit regionsinterner Redundanz muss auch [Azure Durable Functions](./durable/durable-functions-perf-and-scale.md#storage-account-selection) verwendet werden.
+
+Andere plattformseitig verwaltete Kundendaten werden nur dann in der Region gespeichert, wenn sie in einer App Service-Umgebung (ASE) mit internem Lastenausgleich gehostet werden. Weitere Informationen finden Sie unter [ASE-Zonenredundanz](../app-service/environment/zone-redundancy.md#in-region-data-residency).
+
+## <a name="mount-file-shares"></a>Einbinden von Dateifreigaben
+
+_Diese Funktion ist derzeit nur unter Linux verfügbar._ 
 
 Sie können vorhandene Azure Files-Freigaben in Ihre Linux-Funktions-Apps einbinden. Durch das Einbinden einer Freigabe in Ihre Linux-Funktions-App können Sie vorhandene Machine Learning-Modelle oder andere Daten in Ihren Funktionen nutzen. Sie können den Befehl [`az webapp config storage-account add`](/cli/azure/webapp/config/storage-account#az-webapp-config-storage-account-add) verwenden, um eine vorhandene Freigabe in Ihre Linux-Funktions-App einzubinden. 
 

@@ -3,12 +3,12 @@ title: Einrichten der Diagnoseprotokolle – Azure Event Hubs | Microsoft-Dokume
 description: Erfahren Sie, wie Sie Aktivitäts- und Diagnoseprotokolle für Event Hubs in Azure einrichten.
 ms.topic: article
 ms.date: 10/27/2020
-ms.openlocfilehash: a7230746dc4225b04b0507c872416368aa14442b
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 015814b9a56ec963f5209f971f096ac6c173d7e1
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92912598"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98131983"
 ---
 # <a name="set-up-diagnostic-logs-for-an-azure-event-hub"></a>Einrichten von Diagnoseprotokollen für Azure Event Hubs
 
@@ -45,7 +45,7 @@ Event Hubs erfasst Diagnoseprotokolle für die folgenden Kategorien:
 | Category | BESCHREIBUNG | 
 | -------- | ----------- | 
 | Archivprotokolle | Erfasst Informationen zu [Event Hubs Capture](event-hubs-capture-overview.md)-Vorgängen, insbesondere Protokolle zu Erfassungsfehlern. |
-| Betriebsprotokolle | Erfassen alle Verwaltungsvorgänge, die für den Azure Event Hubs-Namespace ausgeführt werden. Datenvorgänge werden aufgrund der hohen Menge an Datenvorgängen, die für Azure Event Hubs durchgeführt werden, nicht erfasst. |
+| Betriebsprotokolle | Erfassen alle Verwaltungsvorgänge, die für den Azure Event Hubs-Namespace ausgeführt werden. Datenvorgänge werden aufgrund der großen Menge von Datenvorgängen, die für Azure Event Hubs durchgeführt werden, nicht erfasst. |
 | Protokolle zur automatischen Skalierung | Erfassen automatische Vergrößerungsvorgänge, die für einen Event Hubs-Namespace ausgeführt wurden. |
 | Kafka-Koordinatorprotokolle | Erfassen Kafka-Koordinatorvorgänge, die sich auf Event Hubs beziehen. |
 | Kafka-Benutzerfehlerprotokolle | Erfassen Informationen zu Kafka-APIs, die für Event Hubs aufgerufen werden. |
@@ -100,12 +100,12 @@ JSON-Zeichenfolgen im Betriebsprotokoll enthalten Elemente, die in der folgenden
 Name | BESCHREIBUNG
 ------- | -------
 `ActivityId` | Interne ID zur Nachverfolgung |
-`EventName` | Vorgangsname |
+`EventName` | Vorgangsname Eine Liste der Werte für dieses Element finden Sie unter den [Ereignisnamen](#event-names). |
 `resourceId` | Azure Resource Manager-Ressourcen-ID |
 `SubscriptionId` | Abonnement-ID |
 `EventTimeString` | Vorgangsdauer |
-`EventProperties` | Vorgangseigenschaften |
-`Status` | Vorgangsstatus |
+`EventProperties` |Eigenschaften für den Vorgang. Dieses Element stellt weitere Informationen zu dem Ereignis bereit, wie im folgenden Beispiel gezeigt. |
+`Status` | Vorgangsstatus Der Wert kann entweder **Erfolgreich** oder **Fehler** lauten.  |
 `Caller` | Aufrufer des Vorgangs (Azure-Portal oder Verwaltungsclient) |
 `Category` | OperationalLogs |
 
@@ -125,6 +125,13 @@ Example:
    "category": "OperationalLogs"
 }
 ```
+
+### <a name="event-names"></a>Ereignisnamen
+Der Ereignisname setzt sich aus Vorgangstyp und Ressourcentyp aus den folgenden Enumerationen zusammen. Beispiel: `Create Queue`, `Retrieve Event Hu` oder `Delete Rule`. 
+
+| Vorgangsart | Ressourcentyp | 
+| -------------- | ------------- | 
+| <ul><li>Erstellen</li><li>Aktualisieren</li><li>Löschen</li><li>Gerätehandle</li><li>Unbekannt</li></ul> | <ul><li>Namespace</li><li>Warteschlange</li><li>Thema</li><li>Subscription</li><li>EventHub</li><li>EventHubSubscription</li><li>NotificationHub</li><li>NotificationHubTier</li><li>SharedAccessPolicy</li><li>UsageCredit</li><li>NamespacePnsCredentials</li>Regel</li>ConsumerGroup</li> |
 
 ## <a name="autoscale-logs-schema"></a>Schema der Protokolle für automatische Skalierung
 Die JSON-Zeichenfolge im Protokoll für automatische Skalierung enthält Elemente, die in der folgenden Tabelle aufgeführt werden:

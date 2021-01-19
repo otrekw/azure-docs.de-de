@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a08a4f4a31893fc93789d019ea87dff390552f6a
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: fd04d24e0e46b053381858be037a009b1987f8e9
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97743731"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97932519"
 ---
 # <a name="3-create-a-security-plan-for-external-access"></a>3. Erstellen eines Sicherheitsplans für den externen Zugriff 
 
@@ -195,7 +195,7 @@ Auch mit Azure AD P1 und Microsoft 365 E3 kann eine stabile Governance errei
 | Azure AD B2B Collaboration| **Einladung per E-Mail, Einmalkennung, Self-Service**| Direkter B2B-Verbund| **Regelmäßige Überprüfung pro Partner**| Konto entfernen<br>Einschränken der Anmeldung |
 | Microsoft oder Office 365-Gruppen| | | | Ablauf oder Löschung der Gruppe<br>Entfernen aus Gruppe |
 | Sicherheitsgruppen| | **Hinzufügen von externen Benutzern zu Sicherheitsgruppen (Organisation, Team, Projekt usw.)**| |  |
-| Richtlinien für bedingten Zugriff| | **Richtlinien für bedingten Zugriff für die Anmeldung für externe Benutzer**| |  |
+| Richtlinien für bedingten Zugriff| | **Anmelderichtlinien für bedingten Zugriff für externe Benutzer**| |  |
 
 
  ### <a name="access-to-resources"></a>Zugriff auf Ressourcen.

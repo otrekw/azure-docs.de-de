@@ -11,12 +11,12 @@ author: BarbaraSelden
 manager: daveba
 ms.reviewer: joflore
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 20b51cc747d3a24b1437eda988397a2e999f6ab3
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 13756be041f88883d84f9558308c7fe5c9be2d0e
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94837480"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98116006"
 ---
 # <a name="plan-a-conditional-access-deployment"></a>Planen einer Bereitstellung für bedingten Zugriff
 
@@ -24,7 +24,7 @@ Die Planung Ihrer Bereitstellung für bedingten Zugriff ist wichtig, um sicherzu
 
 In einer von Mobilgeräten und der Cloud geprägten Welt können Ihre Benutzer mithilfe einer Vielzahl von Geräten und Apps von überall aus auf Ressourcen Ihrer Organisation zugreifen. Daher reicht es nicht mehr aus, sich darauf zu konzentrieren, wer Zugriff auf eine Ressourcen besitzt. Sie müssen auch berücksichtigen, wo sich der Benutzer befindet, welches Gerät verwendet wird, auf welche Ressource zugegriffen wird und vieles mehr. 
 
-Der bedingte Zugriff (Conditional Access, CA) von Azure Active Directory (Azure AD) analysiert Signale wie Benutzer, Gerät und Standort, um Entscheidungen zu automatisieren und Zugriffsrichtlinien des Unternehmens für Ressourcen durchzusetzen. Mithilfe von Richtlinien für bedingten Zugriff können Sie Zugriffssteuerungen wie Multi-Factor Authentication (MFA) anwenden. Richtlinien für bedingten Zugriff ermöglichen es Ihnen, Benutzer zur mehrstufigen Authentifizierung aufzufordern, wenn diese aus Sicherheitsgründen benötigt wird, und sie Benutzern zu ersparen, wenn sie nicht benötigt wird.
+Der bedingte Zugriff von Azure Active Directory (Azure AD) analysiert Signale wie Benutzer, Gerät und Standort, um Entscheidungen zu automatisieren und Zugriffsrichtlinien des Unternehmens für Ressourcen durchzusetzen. Mithilfe von Richtlinien für bedingten Zugriff können Sie Zugriffssteuerungen wie die mehrstufige Authentifizierung (Multi-Factor Authentication, MFA) anwenden. Richtlinien für bedingten Zugriff ermöglichen Ihnen, Benutzer zur mehrstufigen Authentifizierung aufzufordern, wenn diese aus Sicherheitsgründen benötigt wird, und sie Benutzern zu ersparen, wenn sie nicht benötigt wird.
 
 ![Bedingter Zugriff – Überblick](./media/plan-conditional-access/conditional-access-overview-how-it-works.png)
 
@@ -38,7 +38,7 @@ Stellen Sie vor Beginn sicher, dass Sie die Funktionsweise von [bedingtem Zugrif
 
 Die Bereitstellung bedingten Zugriffs bietet folgende Vorteile:
 
-* Produktivitätssteigerung. Unterbrechen Sie Benutzer nur dann mit einer Anmeldebedingung wie MFA, wenn bestimmte Aspekte dies verlangen. Mithilfe von Richtlinien für bedingten Zugriff können Sie steuern, wann Benutzer MFA verwenden müssen, wann der Zugriff blockiert wird und wann ein vertrauenswürdiges Gerät verwendet werden muss.
+* Produktivitätssteigerung. Unterbrechen Sie Benutzer nur dann mit einer Anmeldebedingung wie MFA, wenn bestimmte Aspekte dies verlangen. Mithilfe von Richtlinien für bedingten Zugriff können Sie steuern, wann Benutzer die mehrstufige Authentifizierung verwenden müssen, wann der Zugriff blockiert wird und wann ein vertrauenswürdiges Gerät verwendet werden muss.
 
 * Risikomanagement Die Automatisierung der Risikobewertung mit Richtlinienbedingungen bedeutet, dass riskante Anmeldungen sofort erkannt und behoben oder blockiert werden. Die Kopplung von bedingtem Zugriff mit [Identity Protection](../identity-protection/overview-identity-protection.md) zum Erkennen von Anomalien und verdächtigen Ereignissen ermöglicht Ihnen Zielvorgaben, wann der Zugriff auf Ressourcen blockiert oder eingeschränkt wird. 
 
@@ -71,7 +71,7 @@ Die folgenden Ressourcen können nützlich sein, wenn Sie sich über bedingten Z
 
 * [Was ist bedingter Zugriff?](https://youtu.be/ffMAw2IVO7A)
 * [Wie wird bedingter Zugriff bereitgestellt?](https://youtu.be/c_izIRNJNuk)
-* [Wie wird das Rollout von Richtlinien für bedingten Zugriff für Endbenutzer ausgeführt?](https://youtu.be/0_Fze7Zpyvc)
+* [Wie werden die Richtlinien für bedingten Zugriff für Endbenutzer umgesetzt?](https://youtu.be/0_Fze7Zpyvc)
 * [Bedingter Zugriff mit Gerätesteuerungen](https://youtu.be/NcONUf-jeS4)
 * [Bedingter Zugriff mit Azure AD MFA](https://youtu.be/Tbc-SU97G-w)
 * [Bedingter Zugriff in Enterprise Mobility + Security](https://youtu.be/A7IrxAH87wc)
@@ -102,8 +102,8 @@ Wenn neue Richtlinien für Ihre Umgebung bereit sind, stellen Sie sie in Phasen 
 > [!NOTE]
 > Zum Rollout neuer Richtlinien, die nicht spezifisch für Administratoren sind, schließen Sie alle Administratoren aus. Dadurch wird sichergestellt, dass Administratoren weiterhin auf die Richtlinie zugreifen und Änderungen vornehmen oder Sie widerrufen können, wenn eine beträchtliche Auswirkung vorliegt. Überprüfen Sie die Richtlinie immer mit kleineren Benutzergruppen, bevor Sie sie auf alle Benutzer anwenden.
 
-## <a name="understand-ca-policy-components"></a>Grundlagen der Komponenten von Richtlinien für bedingten Zugriff
-Richtlinien für bedingten Zugriff sind If-Then-Anweisungen: Wenn ein Arbeitsauftrag erfüllt ist, wenden Sie diese Zugriffssteuerungen an.
+## <a name="understand-conditional-access-policy-components"></a>Grundlegendes zu den Komponenten der Richtlinie für bedingten Zugriff
+Bei Richtlinien für bedingten Zugriff handelt es sich um if-then-Anweisungen: Wenn ein Arbeitsauftrag erfüllt ist, wenden Sie diese Zugriffssteuerungen an.
 
 Beim Konfigurieren von Richtlinien für bedingten Zugriff werden Bedingungen als *Zuweisungen* bezeichnet. Richtlinien für bedingten Zugriff ermöglichen das Durchsetzen von Zugriffssteuerungen für die Apps Ihrer Organisation auf der Grundlage bestimmter Zuweisungen.
 
@@ -207,14 +207,14 @@ Wenn ein Benutzer, der kein Mitglied von Gruppe 1 ist, versucht, auf die App zu
 
 Das Framework für bedingten Zugriff bietet Ihnen mehr Flexibilität bei der Konfiguration. Mehr Flexibilität bedeutet jedoch auch, dass Sie jede Konfigurationsrichtlinie vor dem Veröffentlichen sorgfältig prüfen sollten, um unerwünschte Ergebnisse zu vermeiden.
 
-### <a name="apply-ca-policies-to-every-app"></a>Anwenden von Richtlinien für bedingten Zugriff auf jede App
+### <a name="apply-conditional-access-policies-to-every-app"></a>Anwenden von Richtlinien für bedingten Zugriff auf alle Apps
 
-Zugriffstoken werden standardmäßig ausgestellt, wenn eine Richtlinienbedingung für bedingten Zugriff keine Zugriffssteuerung auslöst. Stellen Sie sicher, dass für jede App mindestens eine Richtlinie für bedingten Zugriff angewendet wird.
+Zugriffstoken werden standardmäßig ausgestellt, wenn eine Bedingung der Richtlinie für bedingten Zugriff keine Zugriffssteuerung auslöst. Stellen Sie sicher, dass für jede App mindestens eine Richtlinie für bedingten Zugriff angewendet wird.
 
 > [!IMPORTANT]
 > Gehen Sie bei der Verwendung von Blockieren und allen Apps in einer einzigen Richtlinie sehr vorsichtig vor. Dadurch können Administratoren für das Azure-Verwaltungsportal gesperrt werden, und Ausschlüsse können nicht für wichtige Endpunkte wie Microsoft Graph konfiguriert werden.
 
-### <a name="minimize-the-number-of-ca-policies"></a>Minimieren der Anzahl der Richtlinien für bedingten Zugriff
+### <a name="minimize-the-number-of-conditional-access-policies"></a>Minimieren der Anzahl von Richtlinien für bedingten Zugriff
 
 Das Erstellen einer Richtlinie für jede App ist nicht effizient und führt zu einer schwierigen Verwaltung. Der bedingte Zugriff wendet nur die ersten 195 Richtlinien pro Benutzer an. Es wird empfohlen, dass Sie Ihre Apps analysieren und in Anwendungen gruppieren, die dieselben Ressourcenanforderungen für dieselben Benutzer aufweisen. Wenn beispielsweise alle Microsoft 365-Apps oder alle HR-Apps dieselben Anforderungen für dieselben Benutzer aufweisen, erstellen Sie eine einzelne Richtlinie, und schließen Sie alle Apps in diese ein, auf die sie angewendet werden soll. 
 
@@ -224,14 +224,6 @@ Wenn Sie eine Richtlinie falsch konfigurieren, kann die Organisationen aus dem A
 
 * Erstellen Sie ein Benutzerkonto, das für die Richtlinienverwaltung reserviert ist und von allen Richtlinien ausgeschlossen wird.
 
-* Glasbruchszenario für Hybridumgebungen:
-
-  * Erstellen Sie eine lokale Sicherheitsgruppe, und synchronisieren Sie sie mit Azure AD. Die Sicherheitsgruppe sollte Ihr dediziertes Konto für die Richtlinienverwaltung enthalten. 
-
-   * Diese Sicherheitsgruppe wird von allen Richtlinien für bedingten Zugriff AUSGENOMMEN.
-
-   * Wenn ein Dienstausfall auftritt, fügen Sie Ihre anderen Administratoren nach Bedarf der lokalen Gruppe hinzu, und erzwingen Sie eine Synchronisierung. Dadurch wird ihr Ausschluss von Richtlinien für bedingten Zugriff veranlasst.
-
 ### <a name="set-up-report-only-mode"></a>Einrichten eines reinen Berichtsmodus
 
 Es kann schwierig sein, die Anzahl und die Namen von Benutzern vorherzusagen, die von häufigen Bereitstellungsinitiativen betroffen sind, beispielsweise:
@@ -240,9 +232,9 @@ Es kann schwierig sein, die Anzahl und die Namen von Benutzern vorherzusagen, di
 * Erfordern von MFA
 * Implementieren Richtlinien für Risiken bei der Anmeldung
 
-Ein [reiner Berichtsmodus ](concept-conditional-access-report-only.md) ermöglicht Administratoren das Auswerten der Auswirkungen von Richtlinien für bedingten Zugriff auswerten, bevor sie diese in ihrer Umgebung aktivieren.
+Ein [reiner Berichtsmodus](concept-conditional-access-report-only.md) ermöglicht Administratoren das Auswerten der Auswirkungen von Richtlinien für bedingten Zugriff, bevor sie diese in ihrer Umgebung aktivieren.
 
-Informieren Sie sich über das [Konfigurieren einer Richtlinie für bedingten Zugriff im reinen Berichtsmodus](howto-conditional-access-insights-reporting.md).
+Erfahren Sie, wie Sie [eine Richtlinie für bedingten Zugriff im reinen Berichtsmodus konfigurieren](howto-conditional-access-insights-reporting.md).
 
 ### <a name="plan-for-disruption"></a>Planen von Unterbrechungen
 
@@ -389,9 +381,9 @@ Der Testplan ist wichtig, um die erwarteten Ergebnisse mit den tatsächlichen Er
 
 ### <a name="configure-the-test-policy"></a>Konfigurieren der Testrichtlinie
 
-Im [Azure-Portal](https://portal.azure.com/) konfigurieren Sie Richtlinien für bedingten Zugriff unter „Azure Active Directory > Sicherheit > Bedingter Zugriff“.
+Im [Azure-Portal](https://portal.azure.com/) konfigurieren Sie Richtlinien für bedingten Zugriff unter „Azure Active Directory“ > „Sicherheit“ > „Bedingter Zugriff“.
 
-Weitere Informationen zum Erstellen von Richtlinien für bedingten Zugriff finden Sie in diesem Beispiel: [Richtlinie für bedingten Zugriff, die zur Verwendung von MFA auffordert, wenn sich ein Benutzer am Azure-Portal anmeldet](../authentication/tutorial-enable-azure-mfa.md?bc=%2fazure%2factive-directory%2fconditional-access%2fbreadcrumb%2ftoc.json&toc=%2fazure%2factive-directory%2fconditional-access%2ftoc.json). Diese Schnellstartanleitung enthält Folgendes:
+Weitere Informationen zum Erstellen von Richtlinien für bedingten Zugriff finden Sie in diesem Beispiel: [Richtlinie für bedingten Zugriff, die zur Verwendung der mehrstufigen Authentifizierung auffordert, wenn sich ein Benutzer beim Azure-Portal anmeldet](../authentication/tutorial-enable-azure-mfa.md?bc=%2fazure%2factive-directory%2fconditional-access%2fbreadcrumb%2ftoc.json&toc=%2fazure%2factive-directory%2fconditional-access%2ftoc.json). Diese Schnellstartanleitung enthält Folgendes:
 
 * Vertrautwerden mit der Benutzeroberfläche
 
@@ -449,7 +441,7 @@ Verwenden Sie die folgenden Verwaltungsoptionen zum Steuern und Verwalten Ihrer 
 
 ### <a name="named-locations"></a>Benannte Orte
 
-Mit der Standortbedingung einer Richtlinie für bedingten Zugriff können Sie die Einstellungen der Zugriffssteuerung an die Netzwerkstandorte Ihrer Benutzer knüpfen. Mithilfe von [benannten Standorten](location-condition.md) können Sie logische Gruppierungen von IP-Adressbereichen oder Ländern und Regionen erstellen.
+Mit der Standortbedingung einer Richtlinie zum bedingten Zugriff können Sie die Einstellungen der Zugriffssteuerung an die Netzwerkstandorte Ihrer Benutzer knüpfen. Mithilfe von [benannten Standorten](location-condition.md) können Sie logische Gruppierungen von IP-Adressbereichen oder Ländern und Regionen erstellen.
 
 ### <a name="custom-controls"></a>Benutzerdefinierte Steuerelemente
 
@@ -461,7 +453,7 @@ Vor dem Zugriff auf bestimmte Cloud-Apps in Ihrer Umgebung können Sie die Zusti
 
 ## <a name="troubleshoot-conditional-access"></a>Problembehandlung für bedingten Zugriff
 
-Wenn ein Benutzer ein Problem mit Richtlinie für bedingten Zugriff hat, erfassen Sie die folgenden Informationen, um die Problembehandlung zu vereinfachen.
+Wenn ein Benutzer ein Problem mit einer Richtlinie für bedingten Zugriff hat, erfassen Sie die folgenden Informationen, um die Problembehandlung zu vereinfachen.
 
 * Benutzerprinzipalname
 
@@ -493,4 +485,4 @@ Nachdem Sie diese Informationen erfasst haben, finden Sie weitere Beschreibungen
 
 [Erfahren Sie mehr über Identity Protection](../identity-protection/overview-identity-protection.md)
 
-[Verwalten von Richtlinien für bedingten Zugriff mit der Microsoft Graph-API](/graph/api/resources/conditionalaccesspolicy?view=graph-rest-beta.md)
+[Verwalten von Richtlinien für bedingten Zugriff mit der Microsoft Graph-API](https://docs.microsoft.com/graph/api/resources/conditionalaccesspolicy)

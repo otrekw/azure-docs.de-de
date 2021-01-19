@@ -4,28 +4,20 @@ description: Automatisieren von Aufgaben, die Dateien auf einem SFTP-Server mith
 services: logic-apps
 ms.suite: integration
 author: divyaswarnkar
-ms.reviewer: estfan, logicappspm
+ms.reviewer: estfan, logicappspm, azla
 ms.topic: article
-ms.date: 11/03/2020
+ms.date: 01/07/2021
 tags: connectors
-ms.openlocfilehash: 31714eee2e79481bbc8afb47718ed38e178d5b82
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 388d747da692160ab6d0a89c0c35de348d921486
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93324247"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98016761"
 ---
 # <a name="monitor-create-and-manage-sftp-files-by-using-ssh-and-azure-logic-apps"></a>Überwachen, Erstellen und Verwalten von SFTP-Dateien mithilfe von SSH und Azure Logic Apps
 
 Um Aufgaben zu automatisieren, die Dateien auf einem [Secure File Transfer Protocol (SFTP)](https://www.ssh.com/ssh/sftp/)-Server überwachen, erstellen, senden und empfangen, indem Sie das [Secure Shell (SSH)](https://www.ssh.com/ssh/protocol/)-Protokoll verwenden, können Sie Integrationsworkflows mithilfe von Azure Logic Apps und dem SFTP-SSH-Connector erstellen und automatisieren. SFTP ist ein Netzwerkprotokoll, das Dateizugriff, Dateiübertragung und Dateiverwaltung über jeden beliebigen zuverlässigen Datenstrom ermöglicht.
-
-> [!NOTE]
-> Der SFTP-SSH-Connector unterstützt die folgenden SFTP-Server derzeit nicht:
-> 
-> * IBM DataPower
-> * MessageWay
-> * OpenText Secure MFT
-> * OpenText GXS
 
 Im Folgenden finden Sie einige Beispielaufgaben, die automatisiert werden können:
 
@@ -41,14 +33,21 @@ Weitere Unterschiede zwischen dem SFTP-SSH-Connector und dem SFTP-Connector find
 
 ## <a name="limits"></a>Einschränkungen
 
+* Der SFTP-SSH-Connector unterstützt die folgenden SFTP-Server derzeit nicht:
+
+  * IBM DataPower
+  * MessageWay
+  * OpenText Secure MFT
+  * OpenText GXS
+
 * Der SFTP-SSH-Connector unterstützt die Authentifizierung entweder mit einem privaten Schlüssel oder mit einem Kennwort, aber nicht beides.
 
-* SFTP-SSH-Aktionen, die [Blockerstellung](../logic-apps/logic-apps-handle-large-messages.md) unterstützen, können Dateien bis zu einer Größe von 1 GB verarbeiten, während SFTP-SSH-Aktionen, die keine Blockerstellung unterstützen, Dateien bis zu einer Größe von 50 MB verarbeiten können. Obgleich die Standardblockgröße 15 MB beträgt, kann sich diese Größe dynamisch ändern, beginnend mit 5 MB und allmählich ansteigend auf den Maximalwert von 50 MB, basierend auf Faktoren wie Netzwerkwartezeiten, Serverreaktionszeiten usw.
+* SFTP-SSH-Aktionen, die [Blockerstellung](../logic-apps/logic-apps-handle-large-messages.md) unterstützen, können Dateien bis zu einer Größe von 1 GB verarbeiten, während SFTP-SSH-Aktionen, die keine Blockerstellung unterstützen, Dateien bis zu einer Größe von 50 MB verarbeiten können. Obwohl die Standardblockgröße 15 MB beträgt, kann sich diese Größe dynamisch ändern, und zwar beginnend mit 5 MB und allmählich ansteigend auf den Maximalwert von 50 MB. Dies hängt von Faktoren wie Netzwerkwartezeiten, Serverreaktionszeiten usw. ab.
 
   > [!NOTE]
   > Für Logik-Apps in einer [Integrationsdienstumgebung (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) erfordert die mit ISE bezeichnete Version dieses Connectors Chunking, um stattdessen die [ISE-Nachrichtengrenzwerte](../logic-apps/logic-apps-limits-and-config.md#message-size-limits) zu verwenden.
 
-  Sie können dieses adaptive Verhalten außer Kraft setzen, indem Sie eine [konstante Blockgröße angeben](#change-chunk-size), die stattdessen verwendet werden soll. Diese Größe kann zwischen 5 MB und 50 MB liegen. Nehmen Sie beispielsweise an, Sie verfügen über eine 45 MB große Datei und ein Netzwerk, das diese Dateigröße ohne Latenzen unterstützt. Die adaptive Segmentierung führt zu mehreren Aufrufen anstelle von einem Aufruf. Um die Anzahl der Aufrufe zu reduzieren, können Sie versuchen, die Blockgröße auf 50 MB festzulegen. Wenn in einem anderen Szenario mit einer Blockgröße von beispielsweise 15 MB ein Timeout bei Ihrer Logik-App auftritt, können Sie versuchen, die Größe auf 5 MB zu reduzieren.
+  Sie können dieses adaptive Verhalten außer Kraft setzen, indem Sie eine [konstante Blockgröße angeben](#change-chunk-size), die stattdessen verwendet werden soll. Diese Größe kann zwischen 5 MB und 50 MB liegen. Nehmen Sie beispielsweise an, Sie verfügen über eine 45 MB große Datei und ein Netzwerk, das diese Dateigröße ohne Latenz unterstützt. Die adaptive Segmentierung führt zu mehreren Aufrufen anstelle von einem Aufruf. Um die Anzahl von Aufrufen zu reduzieren, können Sie versuchen, die Blockgröße auf 50 MB festzulegen. Wenn in einem anderen Szenario mit einer Blockgröße von beispielsweise 15 MB ein Timeout für Ihre Logik-App auftritt, können Sie versuchen, die Größe auf 5 MB zu reduzieren.
 
   Die Blockgröße ist einer Verbindung zugeordnet, was beduetet, dass Sie dieselbe Verbindung für Aktionen verwenden können, die Blockerstellung unterstützen, und dann für Aktionen, die keine Blockerstellung unterstützen. In diesem Fall liegt die Blockgröße für Aktionen, die keine Blockerstellung unterstützen, zwischen 5 MB und 50 MB. In dieser Tabelle sehen Sie, welche SFTP-SSH-Aktionen Blockerstellung unterstützen:
 
@@ -86,7 +85,7 @@ Hier sind weitere wesentliche Unterschiede zwischen dem SFTP-SSH-Connector und d
 
 * Er stellt die Aktion **Datei umbenennen** bereit, wodurch eine Datei auf dem SFTP-Server umbenannt wird.
 
-* Er speichert die Verbindung zum SFTP-Server *für bis zu 1 Stunde* , wodurch die Leistung verbessert und die Anzahl der Verbindungsversuche auf dem Server reduziert wird. Um die Dauer für dieses Verhalten beim Zwischenspeichern festzulegen, bearbeiten Sie die Eigenschaft [**ClientAliveInterval**](https://man.openbsd.org/sshd_config#ClientAliveInterval) in der SSH-Konfiguration auf Ihrem SFTP-Server.
+* Er speichert die Verbindung zum SFTP-Server *für bis zu 1 Stunde*, wodurch die Leistung verbessert und die Anzahl der Verbindungsversuche auf dem Server reduziert wird. Um die Dauer für dieses Verhalten beim Zwischenspeichern festzulegen, bearbeiten Sie die Eigenschaft [**ClientAliveInterval**](https://man.openbsd.org/sshd_config#ClientAliveInterval) in der SSH-Konfiguration auf Ihrem SFTP-Server.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -98,13 +97,13 @@ Hier sind weitere wesentliche Unterschiede zwischen dem SFTP-SSH-Connector und d
   >
   > Der SFTP-SSH-Connector unterstützt *nur* diese privaten Schlüssel, Formate, Algorithmen und Fingerabdrücke:
   >
-  > * **Formate für private Schlüssel** : Die Schlüssel „RSA“ (Rivest Shamir-Adleman) und „DSA“ (Digital Signature Algorithm) und OpenSSH- und ssh.com-Formate. Wenn Ihr privater Schlüssel im PuTTY-Dateiformat (PPK) vorliegt, [konvertieren Sie den Schlüssel zuerst in das OpenSSH-Dateiformat (PEM)](#convert-to-openssh).
+  > * **Formate für private Schlüssel**: Die Schlüssel „RSA“ (Rivest Shamir-Adleman) und „DSA“ (Digital Signature Algorithm) und OpenSSH- und ssh.com-Formate. Wenn Ihr privater Schlüssel im PuTTY-Dateiformat (PPK) vorliegt, [konvertieren Sie den Schlüssel zuerst in das OpenSSH-Dateiformat (PEM)](#convert-to-openssh).
   >
-  > * **Verschlüsselungsalgorithmen** : DES-EDE3-CBC, DES EDE3 CFB, DES-CBC, AES-128-CBC, AES-192-CBC und AES-256-CBC
+  > * **Verschlüsselungsalgorithmen**: DES-EDE3-CBC, DES EDE3 CFB, DES-CBC, AES-128-CBC, AES-192-CBC und AES-256-CBC
   >
-  > * **Fingerabdruck** : MD5
+  > * **Fingerabdruck**: MD5
   >
-  > Nach dem Hinzufügen des SFTP-SSH-Triggers oder der gewünschten Aktion zu Ihrer Logik-App müssen Sie Verbindungsinformationen für Ihren SFTP-Server bereitstellen. Wenn Sie Ihren privaten SSH-Schlüssel für diese Verbindung angeben, * *_geben Sie den Schlüssel nicht manuell ein, oder bearbeiten Sie ihn manuell_* _, da dies zu einem Fehler bei der Verbindung führen könnte. Stellen Sie stattdessen sicher, dass Sie _*_den Schlüssel aus Ihrer Datei für private SSH-Schlüssel kopieren_*_ und diesen Schlüssel in die Verbindungsdetails _*_einfügen_*_. 
+  > Nach dem Hinzufügen des SFTP-SSH-Triggers oder der gewünschten Aktion zu Ihrer Logik-App müssen Sie Verbindungsinformationen für Ihren SFTP-Server bereitstellen. Wenn Sie Ihren privaten SSH-Schlüssel für diese Verbindung angeben, **_geben Sie den Schlüssel nicht manuell ein, oder bearbeiten Sie ihn manuell_* _, da dies zu einem Fehler bei der Verbindung führen könnte. Stellen Sie stattdessen sicher, dass Sie _*_den Schlüssel aus Ihrer Datei für private SSH-Schlüssel kopieren_*_ und diesen Schlüssel in die Verbindungsdetails _*_einfügen_*_. 
   > Weitere Informationen finden Sie im Abschnitt [Herstellen einer Verbindung zu SFTP mit SSH](#connect) weiter unten in diesem Artikel.
 
 _ Grundlegende Kenntnisse zum [Erstellen von Logik-Apps](../logic-apps/quickstart-create-first-logic-app-workflow.md)
@@ -113,7 +112,11 @@ _ Grundlegende Kenntnisse zum [Erstellen von Logik-Apps](../logic-apps/quickstar
 
 ## <a name="how-sftp-ssh-triggers-work"></a>Funktionsweise von SFTP-SSH-Triggern
 
-SFTP-SSH-Trigger rufen das SFTP-Dateisystem ab und suchen nach jeder Datei, die seit dem letzten Abruf geändert wurde. Bei einigen Tools können Sie den Zeitstempel beibehalten, wenn sich die Dateien ändern. In diesen Fällen müssen Sie diese Funktion deaktivieren, sodass der Trigger arbeiten kann. Hier sind einige gängige Einstellungen:
+<a name="polling-behavior"></a>
+
+### <a name="polling-behavior"></a>Abrufverhalten
+
+Mit SFTP-SSH-Triggern wird das SFTP-Dateisystem abgefragt und nach Dateien gesucht, die sich seit der letzten Abfrage geändert haben. Bei einigen Tools können Sie den Zeitstempel beibehalten, wenn sich die Dateien ändern. In diesen Fällen müssen Sie diese Funktion deaktivieren, sodass der Trigger arbeiten kann. Hier sind einige gängige Einstellungen:
 
 | SFTP-Client | Aktion |
 |-------------|--------|
@@ -123,6 +126,12 @@ SFTP-SSH-Trigger rufen das SFTP-Dateisystem ab und suchen nach jeder Datei, die 
 
 Wenn ein Trigger eine neue Datei findet, überprüft er, ob die neue Datei vollständig ist und nicht nur teilweise geschrieben wurde. Zum Beispiel werden bei einer Datei möglicherweise gerade Änderungen vorgenommen, wenn der Trigger den Dateiserver überprüft. Um zu vermeiden, dass eine nur zum Teil geschriebene Datei zurückgegeben wird, vermerkt der Trigger den Zeitstempel für die Datei mit den kürzlichen Änderungen, gibt diese Datei jedoch nicht sofort zurück. Der Trigger gibt die Datei erst dann zurück, wenn der Server erneut abgerufen wird. Dieses Verhalten kann in manchen Fällen zu Verzögerungen führen, die bis zu zweimal länger als das Abrufintervall des Triggers sein können.
 
+<a name="trigger-recurrence-shift-drift"></a>
+
+### <a name="trigger-recurrence-shift-and-drift"></a>Verschiebung und Drift von Triggerwiederholungen
+
+Verbindungsbasierte Trigger, bei denen Sie zuerst eine Verbindung erstellen müssen, z. B. der SFTP-SSH-Trigger, unterscheiden sich von integrierten Triggern, die in Azure Logic Apps nativ ausgeführt werden, z. B der [Wiederholungstrigger](../connectors/connectors-native-recurrence.md). Bei wiederkehrenden, verbindungsbasierten Triggern ist der Wiederholungszeitplan nicht der einzige Faktor, der die Ausführung steuert, und die Zeitzone bestimmt nur die anfängliche Startzeit. Nachfolgende Ausführungen richten sich nach dem Wiederholungszeitplan, der letzten Triggerausführung, *und* anderen Faktoren, die zur Drift der Ausführungszeiten oder zu unerwartetem Verhalten führen können, z. B. Nichteinhaltung des angegebenen Zeitplans, wenn die Sommerzeit beginnt und endet. Um sicherzustellen, dass sich die Wiederholungszeit nicht verschiebt, wenn die Sommerzeit wirksam wird, sollten Sie die Wiederholung manuell so anpassen, dass Ihre Logik-App weiterhin zum erwarteten Zeitpunkt ausgeführt wird. Andernfalls verschiebt sich die Startzeit um eine Stunde nach vorn, wenn die Sommerzeit beginnt, und eine Stunde nach hinten, wenn die Sommerzeit endet. Weitere Informationen finden Sie unter [Wiederholung für verbindungsbasierte Trigger](../connectors/apis-list.md#recurrence-connection-based).
+
 <a name="convert-to-openssh"></a>
 
 ## <a name="convert-putty-based-key-to-openssh"></a>PuTTY-basierten Schlüssel in OpenSSH konvertieren
@@ -131,7 +140,7 @@ Wenn Ihr privater Schlüssel im PuTTY-Format vorliegt das die Dateinamenerweiter
 
 ### <a name="unix-based-os"></a>Unix-basiertes Betriebssystem
 
-1. Wenn die PuTTY-Tools nicht bereits auf Ihrem System installiert sind, holen Sie dies jetzt nach, z. B.:
+1. Falls Sie die PuTTY-Tools nicht bereits auf Ihrem System installiert haben, sollten Sie dies jetzt nachholen. Gehen Sie beispielsweise wie folgt vor:
 
    `sudo apt-get install -y putty`
 
@@ -201,7 +210,7 @@ Zum Erstellen einer Datei auf Ihrem SFTP-Server können Sie die SFTP-SSH-Aktion 
 
    1. Fügen Sie in den von Ihnen hinzugefügten SFTP-SSH-Trigger oder die von Ihnen hinzugefügte Aktion den kopierter Schlüssel *complete* in die Eigenschaft **SSH private key** ein, die mehrere Zeilen unterstützt.  **_Stellen Sie sicher, dass Sie den Schlüssel einfügen._* _ _*_Sie dürfen den Schlüssel nicht manuell eingeben oder bearbeiten._*_
 
-1. Wenn Sie die Verbindungsdetails eingegeben haben, wählen Sie _*Erstellen** aus.
+1. Wählen Sie _*Erstellen** aus, nachdem Sie die Verbindungsdetails eingegeben haben.
 
 1. Geben Sie jetzt die erforderlichen Details für Ihren ausgewählten Trigger oder Ihre ausgewählte Aktion an, und fahren Sie mit dem Erstellen Ihres Logik-App-Workflows fort.
 
@@ -219,7 +228,7 @@ Um das adaptive Standardverhalten außer Kraft zu setzen, bei dem Blöcke verwen
 
    ![Angeben der stattdessen zu verwendenden Blockgröße](./media/connectors-sftp-ssh/specify-chunk-size-override-default.png)
 
-1. Klicken Sie auf **Fertig** , wenn Sie fertig sind.
+1. Wählen Sie **Fertig** aus, nachdem Sie den Vorgang abgeschlossen haben.
 
 ## <a name="examples"></a>Beispiele
 
@@ -229,7 +238,7 @@ Um das adaptive Standardverhalten außer Kraft zu setzen, bei dem Blöcke verwen
 
 Dieser Trigger startet einen Logik-App-Workflow, wenn auf einem SFTP-Server eine Datei hinzugefügt oder geändert wird. Sie können beispielsweise eine Bedingung hinzufügen, die den Inhalt der Datei überprüft und den Inhalt basierend darauf abruft, ob er eine bestimmte Bedingung erfüllt. Sie können dann eine Aktion hinzufügen, die den Inhalt der Datei abruft und in einem Ordner auf dem SFTP-Server ablegt.
 
-**Beispiel für Unternehmen** : Sie können mit diesem Trigger beispielsweise einen SFTP-Ordner auf neue Dateien überwachen, die Kundenbestellungen darstellen. Anschließend können Sie eine SFTP-Aktion wie etwa **Dateiinhalt abrufen** verwenden, um den Inhalt einer Bestellung zur weiteren Verarbeitung abzurufen und in einer Bestelldatenbank zu speichern.
+**Beispiel für Unternehmen**: Sie können mit diesem Trigger beispielsweise einen SFTP-Ordner auf neue Dateien überwachen, die Kundenbestellungen darstellen. Anschließend können Sie eine SFTP-Aktion wie etwa **Dateiinhalt abrufen** verwenden, um den Inhalt einer Bestellung zur weiteren Verarbeitung abzurufen und in einer Bestelldatenbank zu speichern.
 
 <a name="get-content"></a>
 
@@ -239,21 +248,9 @@ Diese Aktion ruft den Inhalt einer Datei auf einem SFTP-Server durch Angeben des
 
 <a name="troubleshooting-errors"></a>
 
-## <a name="troubleshoot-errors"></a>Beheben von Fehlern
+## <a name="troubleshoot-problems"></a>Behandeln von Problemen
 
 In diesem Abschnitt werden mögliche Lösungen für häufige Fehler oder Probleme beschrieben.
-
-<a name="file-does-not-exist"></a>
-
-### <a name="404-error-a-reference-was-made-to-a-file-or-folder-which-does-not-exist"></a>404-Fehler: „Es wurde auf eine Datei oder einen Ordner verwiesen, die oder der nicht vorhanden ist.“
-
-Dieser Fehler kann auftreten, wenn Ihre Logik-App über die SFTP-SSH-Aktion **Datei erstellen** eine neue Datei auf Ihrem SFTP-Server erstellt, diese dann aber sofort verschoben wird, bevor der Logic Apps-Dienst die Metadaten der Datei abrufen kann. Wenn Ihre Logik-App die Aktion **Datei erstellen** ausführt, ruft der Logic Apps-Dienst auch automatisch Ihren SFTP-Server auf, um die Metadaten der Datei abzurufen. Wenn die Datei jedoch verschoben wird, kann der Logic Apps-Dienst sie nicht mehr finden, daher erhalten Sie die Fehlermeldung `404`.
-
-Wenn Sie das Verschieden der Datei nicht vermeiden oder verzögern können, können Sie das Lesen der Dateimetadaten nach der Dateierstellung überspringen, indem Sie die folgenden Schritte ausführen:
-
-1. Öffnen Sie in der Aktion **Datei erstellen** die Liste **Neuen Parameter hinzufügen** , wählen Sie die Eigenschaft **Alle Dateimetadaten abrufen** aus, und legen Sie den Wert auf **Nein** fest.
-
-1. Wenn Sie diese Dateimetadaten zu einem späteren Zeitpunkt benötigen, können Sie die Aktion **Dateimetadaten abrufen** verwenden.
 
 <a name="connection-attempt-failed"></a>
 
@@ -272,6 +269,18 @@ Dieser Fehler kann auftreten, wenn Ihre Logik-App nicht in der Lage ist, erfolgr
 * Erhöhen Sie die [**ClientAliveInterval**](https://man.openbsd.org/sshd_config#ClientAliveInterval)-Eigenschaft in der SSH-Konfiguration auf dem SFTP-Server auf etwa eine Stunde, um den Aufwand für die Verbindungsherstellung zu verringern.
 
 * Sie können im SFTP-Serverprotokoll überprüfen, ob die Anforderung von der Logik-App den SFTP-Server erreicht hat. Wenn Sie weitere Informationen zum Konnektivitätsproblem benötigen, können Sie auch eine Netzwerkablaufverfolgung in Ihrer Firewall und auf dem SFTP-Server ausführen.
+
+<a name="file-does-not-exist"></a>
+
+### <a name="404-error-a-reference-was-made-to-a-file-or-folder-which-does-not-exist"></a>404-Fehler: „Es wurde auf eine Datei oder einen Ordner verwiesen, die oder der nicht vorhanden ist.“
+
+Dieser Fehler kann auftreten, wenn Ihre Logik-App über die SFTP-SSH-Aktion **Datei erstellen** eine neue Datei auf Ihrem SFTP-Server erstellt, die dann aber sofort verschoben wird, bevor der Logic Apps-Dienst die Metadaten der Datei abrufen kann. Wenn Ihre Logik-App die Aktion **Datei erstellen** ausführt, ruft der Logic Apps-Dienst auch automatisch Ihren SFTP-Server auf, um die Metadaten der Datei abzurufen. Wenn die Datei von Ihrer Logik-App verschoben wird, kann der Logic Apps-Dienst sie aber nicht mehr finden. Daher erhalten Sie die Fehlermeldung `404`.
+
+Wenn Sie das Verschieden der Datei nicht vermeiden oder verzögern können, können Sie das Lesen der Dateimetadaten nach der Dateierstellung überspringen, indem Sie die folgenden Schritte ausführen:
+
+1. Öffnen Sie in der Aktion **Datei erstellen** die Liste **Neuen Parameter hinzufügen**, wählen Sie die Eigenschaft **Alle Dateimetadaten abrufen** aus, und legen Sie den Wert auf **Nein** fest.
+
+1. Wenn Sie diese Dateimetadaten zu einem späteren Zeitpunkt benötigen, können Sie die Aktion **Dateimetadaten abrufen** verwenden.
 
 ## <a name="connector-reference"></a>Connector-Referenz
 

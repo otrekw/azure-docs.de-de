@@ -5,12 +5,12 @@ ms.topic: article
 ms.date: 01/17/2020
 author: macolso
 ms.author: macolso
-ms.openlocfilehash: 967d2da61ffdfa9d1723bcab589deb2277d4041e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 68b9b31cdfb55e8150b05e3efd35389320905cdc
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91825603"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98034270"
 ---
 # <a name="deploy-on-dedicated-hosts"></a>Bereitstellen auf dedizierten Hosts
 
@@ -19,6 +19,9 @@ ms.locfileid: "91825603"
 Die dedizierte SKU eignet sich für Containerworkloads, die Workloadisolation aus Perspektive eines physischen Servers erfordern.
 
 ## <a name="prerequisites"></a>Voraussetzungen
+
+> [!NOTE]
+> Aufgrund aktueller Einschränkungen ist nicht garantiert, dass alle Anforderungen zur Erhöhung von Limits genehmigt werden.
 
 * Das Standardlimit für die Verwendung der dedizierten SKU für jedes Abonnement ist 0. Wenn Sie diese SKU für Ihre Produktionscontainerbereitstellungen verwenden möchten, erstellen Sie eine [Azure-Supportanfrage][azure-support], um das Limit zu erhöhen.
 

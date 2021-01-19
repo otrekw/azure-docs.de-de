@@ -16,12 +16,12 @@ ms.date: 05/12/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c274424641ee0173d68f0de9061415815b0df588
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 45b6b182d030c267dcec7ed57c0c0dd1901b0cb1
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97107429"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97935086"
 ---
 # <a name="frequently-asked-questions-around-azure-active-directory-reports"></a>Häufig gestellte Fragen zu Azure Active Directory-Berichten
 
@@ -144,7 +144,7 @@ Dieser Artikel enthält Antworten auf häufig gestellte Fragen zu Azure Active D
 **A:** Der Status des bedingten Zugriffs kann folgende Werte aufweisen:
 
 * **Nicht angewendet**: Es ist keine Richtlinie für bedingten Zugriff für den Benutzer und die App vorhanden. 
-* **Erfolg**: Für den Benutzer und die App ist eine Richtlinie für bedingten Zugriff vorhanden, und diese wurde erfüllt. 
+* **Erfolg**: Auf den Benutzer und die App wurde eine Richtlinie für bedingten Zugriff angewendet und erfolgreich umgesetzt. 
 * **Fehler**: Die Anmeldung hat zwar die Benutzer- und Anwendungsbedingung mindestens einer Richtlinie für bedingten Zugriff erfüllt, die Gewährungssteuerelemente wurden jedoch nicht erfüllt oder sind auf Blockieren des Zugriffs eingestellt.
     
 **F: Welche Werte sind als Ergebnis einer Richtlinie für bedingten Zugriff möglich?**

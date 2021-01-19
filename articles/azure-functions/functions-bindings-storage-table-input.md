@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 09/03/2018
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: 20dc6cde9cce6a9d57047940a38adb5cf004ae6a
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.openlocfilehash: 4fc2426189384856d2d2e95887cdabd2f9e9ebea
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97347675"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98033777"
 ---
 # <a name="azure-table-storage-input-bindings-for-azure-functions"></a>Azure Table Storage-Eingabebindungen für Azure Functions
 
@@ -296,97 +296,6 @@ public class Person : TableEntity
 }
 ```
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
-
-Das folgende Beispiel zeigt eine Tabelleneingabebindung in einer Datei vom Typ *function.json* sowie [JavaScript-Code](functions-reference-node.md), der die Bindung verwendet. Die Funktion verwendet einen Warteschlangentrigger zum Lesen einer einzelnen Tabellenzeile. 
-
-Die Datei *function.json* gibt jeweils einen Wert für `partitionKey` und `rowKey` zurück. Der `rowKey`-Wert „{queueTrigger}“ gibt an, dass der Zeilenschlüssel aus der Zeichenfolge der Warteschlangennachricht stammt.
-
-```json
-{
-  "bindings": [
-    {
-      "queueName": "myqueue-items",
-      "connection": "MyStorageConnectionAppSetting",
-      "name": "myQueueItem",
-      "type": "queueTrigger",
-      "direction": "in"
-    },
-    {
-      "name": "personEntity",
-      "type": "table",
-      "tableName": "Person",
-      "partitionKey": "Test",
-      "rowKey": "{queueTrigger}",
-      "connection": "MyStorageConnectionAppSetting",
-      "direction": "in"
-    }
-  ],
-  "disabled": false
-}
-```
-
-Weitere Informationen zu diesen Eigenschaften finden Sie im Abschnitt [Konfiguration](#configuration).
-
-Der JavaScript-Code sieht wie folgt aus:
-
-```javascript
-module.exports = function (context, myQueueItem) {
-    context.log('Node.js queue trigger function processed work item', myQueueItem);
-    context.log('Person entity name: ' + context.bindings.personEntity.Name);
-    context.done();
-};
-```
-
-# <a name="python"></a>[Python](#tab/python)
-
-Einzelne Tabellenzeile 
-
-```json
-{
-  "scriptFile": "__init__.py",
-  "bindings": [
-    {
-      "name": "messageJSON",
-      "type": "table",
-      "tableName": "messages",
-      "partitionKey": "message",
-      "rowKey": "{id}",
-      "connection": "AzureWebJobsStorage",
-      "direction": "in"
-    },
-    {
-      "authLevel": "function",
-      "type": "httpTrigger",
-      "direction": "in",
-      "name": "req",
-      "methods": [
-        "get",
-        "post"
-      ],
-      "route": "messages/{id}"
-    },
-    {
-      "type": "http",
-      "direction": "out",
-      "name": "$return"
-    }
-  ],
-  "disabled": false
-}
-```
-
-```python
-import json
-
-import azure.functions as func
-
-def main(req: func.HttpRequest, messageJSON) -> func.HttpResponse:
-
-    message = json.loads(messageJSON)
-    return func.HttpResponse(f"Table row: {messageJSON}")
-```
-
 # <a name="java"></a>[Java](#tab/java)
 
 Das folgende Beispiel zeigt eine durch HTTP ausgelöste Funktion, die eine Liste mit Personenobjekte in einer angegebenen Partition in Table Storage zurückgibt. Bei diesem Beispiel wird der Partitionsschlüssel aus der HTTP-Route extrahiert, und „tableName“ und „connection“ stammen aus den Funktionseinstellungen. 
@@ -456,6 +365,143 @@ public Person[] get(
 }
 ```
 
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+Das folgende Beispiel zeigt eine Tabelleneingabebindung in einer Datei vom Typ *function.json* sowie [JavaScript-Code](functions-reference-node.md), der die Bindung verwendet. Die Funktion verwendet einen Warteschlangentrigger zum Lesen einer einzelnen Tabellenzeile. 
+
+Die Datei *function.json* gibt jeweils einen Wert für `partitionKey` und `rowKey` zurück. Der `rowKey`-Wert „{queueTrigger}“ gibt an, dass der Zeilenschlüssel aus der Zeichenfolge der Warteschlangennachricht stammt.
+
+```json
+{
+  "bindings": [
+    {
+      "queueName": "myqueue-items",
+      "connection": "MyStorageConnectionAppSetting",
+      "name": "myQueueItem",
+      "type": "queueTrigger",
+      "direction": "in"
+    },
+    {
+      "name": "personEntity",
+      "type": "table",
+      "tableName": "Person",
+      "partitionKey": "Test",
+      "rowKey": "{queueTrigger}",
+      "connection": "MyStorageConnectionAppSetting",
+      "direction": "in"
+    }
+  ],
+  "disabled": false
+}
+```
+
+Weitere Informationen zu diesen Eigenschaften finden Sie im Abschnitt [Konfiguration](#configuration).
+
+Der JavaScript-Code sieht wie folgt aus:
+
+```javascript
+module.exports = function (context, myQueueItem) {
+    context.log('Node.js queue trigger function processed work item', myQueueItem);
+    context.log('Person entity name: ' + context.bindings.personEntity.Name);
+    context.done();
+};
+```
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+Die folgende Funktion verwendet einen Warteschlangentrigger, um eine einzelne Tabellenzeile als Eingabe für eine Funktion zu lesen.
+
+In diesem Beispiel gibt die Bindungskonfiguration einen expliziten Wert für den `partitionKey` der Tabelle an und verwendet einen Ausdruck, um diesen an den `rowKey` zu übergeben. Der `rowKey`-Ausdruck `{queueTrigger}` gibt an, dass der Zeilenschlüssel aus der Warteschlangennachricht-Zeichenfolge stammt.
+
+Bindungskonfiguration in _function.json_:
+
+```json
+{
+  "bindings": [
+    {
+      "queueName": "myqueue-items",
+      "connection": "MyStorageConnectionAppSetting",
+      "name": "MyQueueItem",
+      "type": "queueTrigger",
+      "direction": "in"
+    },
+    {
+      "name": "PersonEntity",
+      "type": "table",
+      "tableName": "Person",
+      "partitionKey": "Test",
+      "rowKey": "{queueTrigger}",
+      "connection": "MyStorageConnectionAppSetting",
+      "direction": "in"
+    }
+  ],
+  "disabled": false
+}
+```
+
+PowerShell-Code in _run.ps1_:
+
+```powershell
+param($MyQueueItem, $PersonEntity, $TriggerMetadata)
+Write-Host "PowerShell queue trigger function processed work item: $MyQueueItem"
+Write-Host "Person entity name: $($PersonEntity.Name)"
+```
+
+# <a name="python"></a>[Python](#tab/python)
+
+Die folgende Funktion verwendet einen Warteschlangentrigger, um eine einzelne Tabellenzeile als Eingabe für eine Funktion zu lesen.
+
+In diesem Beispiel gibt die Bindungskonfiguration einen expliziten Wert für den `partitionKey` der Tabelle an und verwendet einen Ausdruck, um diesen an den `rowKey` zu übergeben. Der `rowKey`-Ausdruck `{id}` gibt an, dass der Zeilenschlüssel aus der Warteschlangennachricht-Zeichenfolge stammt.
+
+Bindungskonfiguration in der _function.json_-Datei:
+
+```json
+{
+  "scriptFile": "__init__.py",
+  "bindings": [
+    {
+      "name": "messageJSON",
+      "type": "table",
+      "tableName": "messages",
+      "partitionKey": "message",
+      "rowKey": "{id}",
+      "connection": "AzureWebJobsStorage",
+      "direction": "in"
+    },
+    {
+      "authLevel": "function",
+      "type": "httpTrigger",
+      "direction": "in",
+      "name": "req",
+      "methods": [
+        "get",
+        "post"
+      ],
+      "route": "messages/{id}"
+    },
+    {
+      "type": "http",
+      "direction": "out",
+      "name": "$return"
+    }
+  ],
+  "disabled": false
+}
+```
+
+Python-Code in der *\_\_init\_\_.py*-Datei:
+
+```python
+import json
+
+import azure.functions as func
+
+def main(req: func.HttpRequest, messageJSON) -> func.HttpResponse:
+
+    message = json.loads(messageJSON)
+    return func.HttpResponse(f"Table row: {messageJSON}")
+```
+
 ---
 
 ## <a name="attributes-and-annotations"></a>Attribute und Anmerkungen
@@ -522,17 +568,21 @@ Das zu verwendende Speicherkonto wird anhand von Folgendem bestimmt (in der ange
 
 Attribute werden von C#-Skript nicht unterstützt.
 
+# <a name="java"></a>[Java](#tab/java)
+
+Verwenden Sie die `@TableInput`-Anmerkung in der [Laufzeitbibliothek für Java-Funktionen](/java/api/overview/azure/functions/runtime) für Parameter, deren Wert von Table Storage empfangen wird.  Diese Anmerkung kann mit nativen Java-Typen, POJOs oder Werten mit `Optional<T>`, die NULL-Werte annehmen können, verwendet werden.
+
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Attribute werden von JavaScript nicht unterstützt.
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+Attribute werden von PowerShell nicht unterstützt.
+
 # <a name="python"></a>[Python](#tab/python)
 
 Attribute werden von Python nicht unterstützt.
-
-# <a name="java"></a>[Java](#tab/java)
-
-Verwenden Sie die `@TableInput`-Anmerkung in der [Laufzeitbibliothek für Java-Funktionen](/java/api/overview/azure/functions/runtime) für Parameter, deren Wert von Table Storage empfangen wird.  Diese Anmerkung kann mit nativen Java-Typen, POJOs oder Werten mit `Optional<T>`, die NULL-Werte annehmen können, verwendet werden.
 
 ---
 
@@ -582,17 +632,21 @@ Die folgende Tabelle gibt Aufschluss über die Bindungskonfigurationseigenschaft
   > [!NOTE]
   > `IQueryable` wird in der [Laufzeit von Functions v2](functions-versions.md) nicht unterstützt. Als Alternative kann beispielsweise ein [CloudTable paramName-Methodenparameter verwendet werden](https://stackoverflow.com/questions/48922485/binding-to-table-storage-in-v2-azure-functions-using-cloudtable), um die Tabelle unter Verwendung des Azure Storage SDKs zu lesen. Wenn Sie versuchen, eine Bindung an `CloudTable` herzustellen, und eine Fehlermeldung erhalten, stellen Sie sicher, dass ein Verweis auf [die richtige Storage SDK-Version](./functions-bindings-storage-table.md#azure-storage-sdk-version-in-functions-1x) vorliegt.
 
+# <a name="java"></a>[Java](#tab/java)
+
+Das [TableInput](/java/api/com.microsoft.azure.functions.annotation.tableinput)-Attribut gewährt Ihnen Zugriff auf die Tabellenzeile, die die Funktion ausgelöst hat.
+
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Legen Sie die Eigenschaften `filter` und `take` fest. Legen Sie `partitionKey` oder `rowKey` nicht fest. Verwenden Sie `context.bindings.<BINDING_NAME>`, um auf die Eingabetabellenentität(en) zuzugreifen. Die deserialisierten Objekte verfügen über die Eigenschaften `RowKey` und `PartitionKey`.
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+Daten werden an den Eingabeparameter übergeben, so wie durch den `name`-Schlüssel in der *function.json*-Datei angegeben. Durch Angabe von `partitionKey` und `rowKey` können Sie nach bestimmten Datensätzen filtern. Weitere Details finden Sie im [PowerShell-Beispiel](#example).
+
 # <a name="python"></a>[Python](#tab/python)
 
 Tabellendaten werden als JSON-Zeichenfolge an die Funktion übergeben. Deserialisieren Sie die Nachricht durch Aufrufen von `json.loads`, wie im Eingabe[beispiel](#example) gezeigt.
-
-# <a name="java"></a>[Java](#tab/java)
-
-Das [TableInput](/java/api/com.microsoft.azure.functions.annotation.tableinput)-Attribut gewährt Ihnen Zugriff auf die Tabellenzeile, die die Funktion ausgelöst hat.
 
 ---
 

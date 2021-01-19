@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/24/2020
-ms.openlocfilehash: ba1542d1bb10933edb34b697f1c81cc5e3e7f1c9
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: 88a7a0240a4711bebad0ea9007caf6590436e371
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97705369"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98049778"
 ---
 # <a name="ipsec-encryption-in-transit-for-azure-hdinsight"></a>IPSec-Verschlüsselung während der Übertragung für Azure HDInsight
 
@@ -24,7 +24,7 @@ Azure HDInsight bietet eine Vielzahl von Sicherheitsfeatures zum Schützen von U
 
 Die Verschlüsselung ruhender Daten wird durch die serverseitige Verschlüsselung in Azure-Speicherkonten sowie durch die Datenträgerverschlüsselung auf virtuellen Azure-Computern abgedeckt, die Teil Ihres HDInsight-Clusters sind.
 
-Die Verschlüsselung von Daten während der Übertragung in HDInsight wird mit [Transport Layer Security (TLS)](../transport-layer-security.md) für Zugreifen auf die Clustergateways und [Internetprotokollsicherheit (Internet Protocol Security, IPSec)](https://wikipedia.org/wiki/IPsec) zwischen Clusterknoten erreicht. IPSec kann zwischen allen Hauptknoten, Workerknoten, Edgeknoten und ZooKeeper-Knoten aktiviert werden. IPSec wird nicht für Datenverkehr zwischen Gateway- oder [Identitätsbroker](./identity-broker.md)knoten aktiviert, die Windows-VMs und weitere Linux-Knoten im Cluster sind.
+Die Verschlüsselung von Daten während der Übertragung in HDInsight wird mit [Transport Layer Security (TLS)](../transport-layer-security.md) für Zugreifen auf die Clustergateways und [Internetprotokollsicherheit (Internet Protocol Security, IPSec)](https://wikipedia.org/wiki/IPsec) zwischen Clusterknoten erreicht. IPSec kann optional zwischen allen Hauptknoten, Workerknoten, Edgeknoten, Zookeeper-Knoten sowie Gatewayknoten und [Identitätsbrokerknoten](./identity-broker.md) aktiviert werden.
 
 ## <a name="enable-encryption-in-transit"></a>Aktivieren der Verschlüsselung während der Übertragung
 

@@ -4,19 +4,22 @@ description: Erfahren Sie, wie Sie Azure Kubernetes Service (AKS) und Azure Cont
 services: container-service
 manager: gwallace
 ms.topic: article
-ms.date: 02/25/2020
-ms.openlocfilehash: 4338f4ce1fe60a3a9002be93feab134dd2601720
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 01/08/2021
+ms.openlocfilehash: 4157195260e5c685faaddeaca87db81d199ffb23
+ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87406502"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98043845"
 ---
 # <a name="authenticate-with-azure-container-registry-from-azure-kubernetes-service"></a>Authentifizieren per Azure Container Registry über Azure Kubernetes Service
 
 Wenn Sie Azure Container Registry (ACR) mit dem Azure Kubernetes Service (AKS) nutzen, ist es erforderlich, einen Authentifizierungsmechanismus einzurichten. Dieser Vorgang ist als Teil der Befehlszeilenschnittstelle und des Portals implementiert, indem ACR die erforderlichen Berechtigungen erteilt werden. In diesem Artikel werden Beispiele für die Konfiguration der Authentifizierung zwischen diesen beiden Azure-Diensten beschrieben. 
 
 Sie können die AKS- und ACR-Integration mit einigen einfachen Befehlen über die Azure-Befehlszeilenschnittstelle einrichten. Diese Integration weist dem Dienstprinzipal, der dem AKS-Cluster zugeordnet ist, die AcrPull-Rolle zu.
+
+> [!NOTE]
+> In diesem Artikel wird die automatische Authentifizierung zwischen AKS und ACR beschrieben. Wenn Sie ein Image aus einer privaten externen Registrierung abrufen, verwenden Sie ein [Geheimnis für Imagepullvorgänge][Image Pull Secret].
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
@@ -152,3 +155,4 @@ nginx0-deployment-669dfc4d4b-xdpd6   1/1     Running   0          20s
 
 <!-- LINKS - external -->
 [AKS AKS CLI]: /cli/azure/aks?view=azure-cli-latest#az-aks-create
+[Image Pull secret]: https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/

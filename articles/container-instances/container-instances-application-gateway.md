@@ -3,12 +3,12 @@ title: Statische IP-Adresse für eine Containergruppe
 description: Erstellen einer Containergruppe in einem virtuellen Netzwerk und Verwenden eines Azure-Anwendungsgateways, um eine statische Front-End-IP-Adresse für eine Container-Web-App verfügbar zu machen
 ms.topic: article
 ms.date: 03/16/2020
-ms.openlocfilehash: bc128da0f4c2e92af98781cef45f48f9e8aeab31
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0131780fdb04a71837d5ae9bf5498bf2bd499f8a
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86260786"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98035052"
 ---
 # <a name="expose-a-static-ip-address-for-a-container-group"></a>Verfügbarmachen einer statischen IP-Adresse für eine Containergruppe
 
@@ -100,6 +100,9 @@ ACI_IP=$(az container show \
   --resource-group myResourceGroup \
   --query ipAddress.ip --output tsv)
 ```
+
+> [!IMPORTANT]
+> Wenn eine Containergruppe beendet, gestartet oder neu gestartet wird, kann sich die private IP-Adresse der Gruppe ändern. In diesem Fall müssen Sie die Konfiguration des Anwendungsgateways aktualisieren.
 
 ## <a name="create-application-gateway"></a>Erstellen eines Anwendungsgateways
 

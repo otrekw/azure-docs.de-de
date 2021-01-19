@@ -3,12 +3,12 @@ title: Was ist Azure Relay? | Microsoft-Dokumentation
 description: Dieser Artikel enthält eine Übersicht über den Azure Relay-Dienst. Mit diesem Dienst können Sie Cloudanwendungen entwickeln, die in Ihrem Unternehmensnetzwerk ausgeführte lokale Dienste nutzen, ohne eine Firewallverbindung zu öffnen oder grundlegende Änderungen an Ihrer Netzwerkinfrastruktur vorzunehmen.
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 0c9a67bcad47ad2e7284bcf6e70914d2ffb06a8c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fbf1b2134a4c2dce7a3e6a62668d0852dc08c18a
+ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85322643"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97955381"
 ---
 # <a name="what-is-azure-relay"></a>Was ist Azure Relay?
 Mit dem Azure Relay-Dienst können Sie Dienste, die in Ihrem Unternehmensnetzwerk ausgeführt werden, auf sichere Weise in der öffentlichen Cloud verfügbar machen. Dazu müssen Sie weder einen Port in Ihrer Firewall öffnen noch grundlegende Änderungen an der Netzwerkinfrastruktur Ihres Unternehmens vornehmen. 

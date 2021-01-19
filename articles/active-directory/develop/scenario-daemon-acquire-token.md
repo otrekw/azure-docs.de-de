@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: c13b6ed991403e65c4c4d71c964f1f7f4d1ffe7b
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 9416005c708cafe5adbad2b09ce70c41fae66fd7
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94443312"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936021"
 ---
 # <a name="daemon-app-that-calls-web-apis---acquire-a-token"></a>Daemon-App, die Web-APIs aufruft – Aufruf eines Tokens
 
@@ -91,6 +91,10 @@ catch (MsalServiceException ex) when (ex.Message.Contains("AADSTS70011"))
     // Mitigation: Change the scope to be as expected.
 }
 ```
+
+### <a name="acquiretokenforclient-uses-the-application-token-cache"></a>AcquireTokenForClient verwendet den Anwendungstokencache.
+
+In MSAL.NET verwendet `AcquireTokenForClient` den Anwendungstokencache. (Alle anderen AcquireToken *XX*-Methoden verwenden den Benutzertokencache.) Rufen Sie `AcquireTokenSilent` nicht vor `AcquireTokenForClient` auf, da `AcquireTokenSilent` den *Benutzertokencache* verwendet. `AcquireTokenForClient` überprüft den *Anwendungstokencache* selbst und aktualisiert diesen.
 
 # <a name="python"></a>[Python](#tab/python)
 
@@ -200,10 +204,6 @@ scope=https%3A%2F%2Fgraph.microsoft.com%2F.default
 
 Weitere Informationen finden Sie in der Protokolldokumentation: [Microsoft Identity Platform und der Fluss von OAuth 2.0-Clientanmeldeinformationen](v2-oauth2-client-creds-grant-flow.md).
 
-## <a name="application-token-cache"></a>Anwendungstokencache
-
-In MSAL.NET verwendet `AcquireTokenForClient` den Anwendungstokencache. (Alle anderen AcquireToken *XX*-Methoden verwenden den Benutzertokencache.) Rufen Sie `AcquireTokenSilent` nicht vor `AcquireTokenForClient` auf, da `AcquireTokenSilent` den *Benutzertokencache* verwendet. `AcquireTokenForClient` überprüft den *Anwendungstokencache* selbst und aktualisiert diesen.
-
 ## <a name="troubleshooting"></a>Problembehandlung
 
 ### <a name="did-you-use-the-resourcedefault-scope"></a>Haben Sie den Bereich „resource/.default“ verwendet?
@@ -228,6 +228,12 @@ Content: {
   }
 }
 ```
+
+### <a name="are-you-calling-your-own-api"></a>Rufen Sie Ihre eigene API auf?
+
+Wenn Sie Ihre eigene Web-API aufrufen und der App-Registrierung Ihrer Daemon-App keine App-Berechtigung hinzufügen konnten, haben Sie dann eine App-Rolle in Ihrer Web-API verfügbar gemacht?
+
+Weitere Informationen finden Sie unter [Verfügbarmachen von Anwendungsberechtigungen (App-Rollen)](scenario-protected-web-api-app-registration.md#exposing-application-permissions-app-roles) und insbesondere unter [Sicherstellen der Tokenausgabe von Azure AD für Ihre Web-API nur an zugelassene Clients](scenario-protected-web-api-app-registration.md#ensuring-that-azure-ad-issues-tokens-for-your-web-api-to-only-allowed-clients).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

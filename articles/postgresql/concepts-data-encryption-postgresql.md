@@ -6,16 +6,16 @@ ms.author: sumuth
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: 23961a03d1da1137d92ecd3b8003241120b11d80
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: c2a6a88e9f730e17c929cf7949352448903435f6
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96493782"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98118454"
 ---
 # <a name="azure-database-for-postgresql-single-server-data-encryption-with-a-customer-managed-key"></a>Datenverschlüsselung auf Azure Database for PostgreSQL-Einzelservern mit einem kundenseitig verwalteten Schlüssel
 
-Datenverschlüsselung mit kundenseitig verwalteten Schlüsseln für Azure Database for PostgreSQL-Einzelserver ermöglicht Ihnen BYOK (Bring Your Own Key) für den Schutz von Daten im Ruhezustand. Sie bietet Organisationen auch eine Möglichkeit der Trennung von Aufgaben bei der Verwaltung von Schlüsseln und Daten. Bei der vom Kunden verwalteten Verschlüsselung ist der Kunde vollständig für die Verwaltung des Lebenszyklus von Schlüsseln und der Schlüsselnutzungsberechtigungen sowie für die Überwachung von Vorgängen für Schlüssel verantwortlich, hat damit aber auch vollständige Kontrolle.
+Azure PostgreSQL verschlüsselt ruhende Daten mit der [Azure Storage-Verschlüsselung](../storage/common/storage-service-encryption.md). Dabei werden standardmäßig von Microsoft verwaltete Schlüssel verwendet. Für Azure PostgreSQL-Benutzer ähnelt sie stark der Transparent Data Encryption (TDE) in anderen Datenbanken wie SQL Server. Viele Organisationen benötigen die vollständige Kontrolle über den Zugriff auf die Daten mit einem kundenseitig verwalteten Schlüssel. Datenverschlüsselung mit kundenseitig verwalteten Schlüsseln für Azure Database for PostgreSQL-Einzelserver ermöglicht Ihnen BYOK (Bring Your Own Key) für den Schutz von Daten im Ruhezustand. Sie bietet Organisationen auch eine Möglichkeit der Trennung von Aufgaben bei der Verwaltung von Schlüsseln und Daten. Bei der vom Kunden verwalteten Verschlüsselung ist der Kunde vollständig für die Verwaltung des Lebenszyklus von Schlüsseln und der Schlüsselnutzungsberechtigungen sowie für die Überwachung von Vorgängen für Schlüssel verantwortlich, hat damit aber auch vollständige Kontrolle.
 
 Datenverschlüsselung mit vom Kunden verwalteten Schlüsseln für Azure Database for PostgreSQL-Einzelserver wird auf Serverebene festgelegt. Bei einem bestimmten Server wird ein vom Kunden verwalteter Schlüssel verwendet, der als Schlüsselverschlüsselungsschlüssel (Key Encryption Key, KEK) bezeichnet wird, um den vom Dienst verwendeten Datenverschlüsselungsschlüssel (Data Encryption Key, DEK) zu verschlüsseln. Der KEK ist ein asymmetrischer Schlüssel, der in einer vom Kunden verwalteten [Azure Key Vault](../key-vault/general/secure-your-key-vault.md)-Instanz im Besitz des Kunden gespeichert wird. Der Schlüsselverschlüsselungsschlüssel (Key Encryption Key, KEK) und der Datenverschlüsselungsschlüssel (Data Encryption Key, DEK) werden weiter unten in diesem Artikel ausführlicher beschrieben.
 
@@ -60,7 +60,9 @@ Wenn der Server für die Verwendung des in Key Vault gespeicherten vom Kunden ve
 Nachfolgend werden die Anforderungen für die Konfiguration von Key Vault aufgeführt:
 
 * Key Vault und der Azure Database for PostgreSQL-Einzelserver müssen demselben Azure Active Directory-Mandanten (Azure AD) angehören. Mandantenübergreifende Interaktionen zwischen Key Vault und dem Server werden nicht unterstützt. Wenn Sie die Key Vault-Ressourcen später verschieben möchten, müssen Sie die Datenverschlüsselung neu konfigurieren.
-* Aktivieren Sie das Feature zum vorläufigen Löschen in Key Vault, um bei einer versehentlichen Löschung des Schlüssels (oder Schlüsseltresors) Datenverluste zu vermeiden. Vorläufig gelöschte Ressourcen werden 90 Tage lang aufbewahrt, sofern sie der Benutzer nicht in der Zwischenzeit wiederherstellt oder bereinigt. Den Aktionen zum Wiederherstellen und endgültigen Löschen sind über Key Vault-Zugriffsrichtlinien eigene Berechtigungen zugewiesen. Die Funktion für vorläufiges Löschen ist standardmäßig deaktiviert. Sie können sie jedoch über PowerShell oder die Azure CLI aktivieren (beachten Sie, dass Sie sie nicht über das Azure-Portal aktivieren können).
+* In Key Vault muss für „Aufbewahrungsdauer für gelöschte Tresore in Tagen“ 90 Tage festgelegt werden. Wenn der vorhandene Schlüsseltresor mit einer niedrigeren Anzahl konfiguriert wurde, müssen Sie einen neuen Schlüsseltresor erstellen, da der Wert nach der Erstellung nicht mehr geändert werden kann.
+* Aktivieren Sie das Feature zum vorläufigen Löschen in Key Vault, um bei einer versehentlichen Löschung des Schlüssels (oder Schlüsseltresors) Datenverluste zu vermeiden. Vorläufig gelöschte Ressourcen werden 90 Tage lang aufbewahrt, sofern sie der Benutzer nicht in der Zwischenzeit wiederherstellt oder bereinigt. Den Aktionen zum Wiederherstellen und endgültigen Löschen sind über Key Vault-Zugriffsrichtlinien eigene Berechtigungen zugewiesen. Die Funktion für vorläufiges Löschen ist standardmäßig deaktiviert. Sie können sie jedoch über PowerShell oder die Azure CLI aktivieren (beachten Sie, dass Sie sie nicht über das Azure-Portal aktivieren können). 
+* Löschschutz aktivieren (obligatorischen Aufbewahrungszeitraum für gelöschte Tresore und Tresorobjekte erzwingen)
 * Gewähren Sie dem Azure Database for PostgreSQL-Einzelserver mit den Berechtigungen „get“, „wrapKey“, „unwrapKey“ unter Verwendung der eindeutigen verwalteten Identität Zugriff auf den Schlüsseltresor. Im Azure-Portal wird die eindeutige Identität „Service“ automatisch erstellt, wenn die Datenverschlüsselung auf dem PostgreSQL-Einzelserver aktiviert wird. Ausführliche, schrittweise Anleitungen für die Verwendung des Azure-Portals finden Sie unter [Datenverschlüsselung für Azure Database for PostgreSQL-Einzelserver mithilfe des Azure-Portals](howto-data-encryption-portal.md).
 
 Nachfolgend werden die Anforderungen für die Konfiguration des vom Kunden verwalteten Schlüssels aufgeführt:

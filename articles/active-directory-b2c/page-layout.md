@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 08/24/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: beb38be985457ea36b2cea9a6dc337ba305d503f
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 4237aba81a01423a3356a30879fbd27450c876bd
+ms.sourcegitcommit: 8f0803d3336d8c47654e119f1edd747180fe67aa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97108500"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97976502"
 ---
 # <a name="page-layout-versions"></a>Seitenlayoutversionen
 
@@ -51,7 +51,7 @@ Seitenlayoutpakete werden regelmäßig aktualisiert, um Korrekturen und Verbesse
 - Der Fokus liegt jetzt auf dem Kennwortfeld, nachdem die E-Mail überprüft wurde.
 - `autofocus` aus dem CheckBox-Steuerelement entfernt 
 - Unterstützung für ein Anzeigesteuerelement für die Überprüfung der Telefonnummer hinzugefügt
-- Sie können nun das Attribut `data-preload="true"` hinzufügen [in Ihren HTML-Tags](customize-ui-with-html.md#guidelines-for
+- Sie können nun das `data-preload="true"`-Attribut [in Ihren HTML-Tags](customize-ui-with-html.md#guidelines-for-using-custom-page-content) hinzufügen.
   - Laden Sie verknüpfte CSS-Dateien zur gleichen Zeit wie Ihre HTML-Vorlage, damit zwischen dem Laden der Dateien kein „Flackern“ auftritt.
   - Sie steuern damit die Reihenfolge, in der die `script`-Tags vor dem Laden der Seite abgerufen und ausgeführt werden.
 - Als E-Mail-Feld wird jetzt `type=email` verwendet, und bei Tastaturen von Mobilgeräten werden jetzt die richtigen Vorschläge angezeigt.

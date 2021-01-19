@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 09/13/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: f2d55d1fcc92abdc629581d6e4d277ec0294dce0
-ms.sourcegitcommit: 89c0482c16bfec316a79caa3667c256ee40b163f
+ms.openlocfilehash: 8e657386c417ce3407aea9b3765419e1d2b70bb9
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97858687"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97962447"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows-smb"></a>Behandeln von Azure Files-Problemen unter Windows (SMB)
 
@@ -126,7 +126,7 @@ Azure Files unterstützt neben SMB auch REST. Der REST-Zugriff erfolgt über Por
 
 „Systemfehler 53“ oder „Systemfehler 87“ können auftreten, wenn die NTLMv1-Kommunikation auf dem Client aktiviert ist. Azure Files unterstützt nur die NTLMv2-Authentifizierung. Wenn NTLMv1 aktiviert ist, ist der Client weniger sicher. Aus diesem Grund wird die Kommunikation für Azure Files blockiert. 
 
-Um zu bestimmen, ob dies die Ursache des Fehlers ist, überprüfen Sie, ob der folgende Registrierungsunterschlüssel auf den Wert 3 festgelegt ist:
+Um zu bestimmen, ob dies die Ursache des Fehlers ist, überprüfen Sie, ob der folgende Registrierungsunterschlüssel auf einen Wert unter 3 festgelegt ist:
 
 **HKLM\SYSTEM\CurrentControlSet\Control\Lsa &gt; LmCompatibilityLevel**
 

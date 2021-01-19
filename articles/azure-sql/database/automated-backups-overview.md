@@ -11,12 +11,12 @@ author: shkale-msft
 ms.author: shkale
 ms.reviewer: mathoma, stevestein, danil
 ms.date: 11/18/2020
-ms.openlocfilehash: c6754e6f0e3f0d6208bd34c96c8bc473429c943c
-ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
+ms.openlocfilehash: e4917d03e3c0fb8109f9ad9bdcea9e7c1cdcd5df
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94917901"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98108057"
 ---
 # <a name="automated-backups---azure-sql-database--sql-managed-instance"></a>Automatisierte Sicherungen – Azure SQL-Datenbank und SQL Managed Instance
 
@@ -122,7 +122,7 @@ Der Speicherverbrauch für Sicherungen bis zur maximalen Datengröße für eine 
 
 ## <a name="backup-retention"></a>Sicherungsaufbewahrung
 
-Für alle neuen, wiederhergestellten und kopierten Datenbanken behalten Azure SQL-Datenbank und Azure SQL Managed Instance standardmäßig ausreichende Sicherungen für die Point-in-Time-Wiederherstellung in den letzten 7 Tagen bei. Mit Ausnahme von Hyperscale-Datenbanken können Sie den [Aufbewahrungszeitraum von Sicherungen](#change-the-pitr-backup-retention-period) pro aktiver Datenbank im Bereich von 1 bis 35 Tagen ändern. Wie unter [Sicherungsspeicherverbrauch](#backup-storage-consumption) beschrieben, liegen Sicherungen, die zum Ermöglichen der Point-in-Time-Wiederherstellung gespeichert wurden, möglicherweise zeitlich vor der Beibehaltungsdauer. Nur für Azure SQL Managed Instance ist es möglich, die PITR-Sicherungsaufbewahrungsrate festzulegen, nachdem eine Datenbank innerhalb des Zeitraums von 0 bis 35 Tagen gelöscht wurde. 
+Für alle neuen, wiederhergestellten und kopierten Datenbanken behalten Azure SQL-Datenbank und Azure SQL Managed Instance standardmäßig ausreichende Sicherungen für die Point-in-Time-Wiederherstellung in den letzten 7 Tagen bei. Mit Ausnahme von Datenbanken in den Tarifen „Hyperscale“ und „Basic“ können Sie den [Aufbewahrungszeitraum von Sicherungen](#change-the-pitr-backup-retention-period) pro aktiver Datenbank im Bereich von 1 bis 35 Tagen ändern. Wie unter [Sicherungsspeicherverbrauch](#backup-storage-consumption) beschrieben, liegen Sicherungen, die zum Ermöglichen der Point-in-Time-Wiederherstellung gespeichert wurden, möglicherweise zeitlich vor der Beibehaltungsdauer. Nur für Azure SQL Managed Instance ist es möglich, die PITR-Sicherungsaufbewahrungsrate festzulegen, nachdem eine Datenbank innerhalb des Zeitraums von 0 bis 35 Tagen gelöscht wurde. 
 
 Wenn Sie eine Datenbank löschen, behält das System Sicherungen genauso bei, wie dies für eine Onlinedatenbank mit der jeweiligen Beibehaltungsdauer gelten würde. Die Beibehaltungsdauer für eine gelöschte Datenbank kann nicht geändert werden.
 

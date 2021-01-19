@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 11/09/2020
 ms.author: b-juche
-ms.openlocfilehash: 1ffbcc24a2ee386be1a8ce50b55375d5bd458df1
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 69168060cbce4a904c53d7f79895e909c8c42e01
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94410095"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97935222"
 ---
 # <a name="configure-nfsv41-kerberos-encryption-for-azure-netapp-files"></a>Konfigurieren der NFSv4.1-Kerberos-Verschlüsselung für Azure NetApp Files
 
@@ -67,7 +67,7 @@ Für die Verschlüsselung des NFSv4.1-Clients gelten die folgenden Anforderungen
 
     ![Kerberos-Bereich](../media/azure-netapp-files/kerberos-realm.png)
  
-3.  Klicken Sie auf **Beitreten** , um die Konfiguration zu speichern.
+3.  Klicken Sie auf **Beitreten**, um die Konfiguration zu speichern.
 
 ## <a name="configure-active-directory-connection"></a>Konfigurieren der Active Directory-Verbindung 
 
@@ -172,6 +172,7 @@ Leistungsauswirkungen von krb5p:
 
 ## <a name="next-steps"></a>Nächste Schritte  
 
+* [Problembehandlung für NFSv4.1-Kerberos-Volumes](troubleshoot-nfsv41-kerberos-volumes.md)
 * [Häufig gestellte Fragen zu Azure NetApp Files](azure-netapp-files-faqs.md)
 * [Erstellen eines NFS-Volumes für Azure NetApp Files](azure-netapp-files-create-volumes.md)
 * [Erstellen einer Active Directory-Verbindung](azure-netapp-files-create-volumes-smb.md#create-an-active-directory-connection)

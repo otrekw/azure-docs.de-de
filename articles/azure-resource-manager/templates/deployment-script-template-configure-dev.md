@@ -1,26 +1,26 @@
 ---
 title: Konfigurieren der Entwicklungsumgebung für Bereitstellungsskripts in Vorlagen | Microsoft-Dokumentation
-description: Hier erfahren Sie mehr über das Konfigurieren der Entwicklungsumgebung für Bereitstellungsskripts in Azure Resource Manager-Vorlagen.
+description: Hier erfahren Sie, wie Sie die Entwicklungsumgebung für Bereitstellungsskripts in Azure Resource Manager-Vorlagen (ARM-Vorlagen) konfigurieren.
 services: azure-resource-manager
 author: mumian
 ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 12/14/2020
 ms.author: jgao
-ms.openlocfilehash: d12ec5e3fef45429741fff1665f435d68e6c83f6
-ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
+ms.openlocfilehash: 13dc072e31f0d27768de8d9a62ea942d55460713
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97734180"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97936395"
 ---
-# <a name="configure-development-environment-for-deployment-scripts-in-templates"></a>Konfigurieren der Entwicklungsumgebung für Bereitstellungsskripts in Vorlagen
+# <a name="configure-development-environment-for-deployment-scripts-in-arm-templates"></a>Konfigurieren der Entwicklungsumgebung für Bereitstellungsskripts in ARM-Vorlagen
 
 Hier erfahren Sie, wie Sie eine Bereitstellungsumgebung für das Erstellen und Testen von Bereitstellungsskripts mit einem Bereitstellungsskriptimage erstellen. Sie können entweder eine [Azure-Containerinstanz](../../container-instances/container-instances-overview.md) erstellen oder [Docker](https://docs.docker.com/get-docker/) verwenden. Beide Varianten werden in diesem Artikel beschrieben.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Wenn Sie über kein Bereitstellungsskript verfügen, können Sie eine **hello.ps1**-Datei mit dem folgenden Inhalt erstellen:
+Wenn Sie über kein Bereitstellungsskript verfügen, können Sie eine _hello.ps1_-Datei mit dem folgenden Inhalt erstellen:
 
 ```powershell
 param([string] $name)
@@ -39,11 +39,11 @@ Sie müssen ein Speicherkonto erstellen und dieses in die Containerinstanz einbi
 
 ### <a name="create-an-azure-container-instance"></a>Erstellen einer Azure-Containerinstanz
 
-Mit der folgenden ARM-Vorlage wird eine Containerinstanz und eine Dateifreigabe erstellt. Letztere wird dann in das Containerimage eingebunden.
+Die folgende Azure Resource Manager-Vorlage (ARM-Vorlage) erstellt eine Containerinstanz sowie eine Dateifreigabe und bindet die Freigabe in das Containerimage ein.
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "projectName": {
@@ -153,9 +153,10 @@ Mit der folgenden ARM-Vorlage wird eine Containerinstanz und eine Dateifreigabe 
   ]
 }
 ```
-Der Standardwert für den Einbindungspfad lautet **deploymentScript**.  Dies ist der Pfad in der Containerinstanz, in dem er in die Dateifreigabe eingebunden wird.
 
-Das in der Vorlage angegebene Standardcontainerimage ist **mcr.microsoft.com/azuredeploymentscripts-powershell:az4.3"** .   Eine Liste mit den unterstützten Azure PowerShell-Versionen finden Sie [hier](https://mcr.microsoft.com/v2/azuredeploymentscripts-powershell/tags/list). Eine Liste mit den unterstützten Azure CLI-Versionen finden Sie [hier](https://mcr.microsoft.com/v2/azure-cli/tags/list).
+Der Standardwert für den Einbindungspfad lautet `deploymentScript`. Dies ist der Pfad in der Containerinstanz, in dem er in die Dateifreigabe eingebunden wird.
+
+Das in der Vorlage angegebene Standardcontainerimage ist `mcr.microsoft.com/azuredeploymentscripts-powershell:az4.3` . Eine Liste mit den unterstützten Azure PowerShell-Versionen finden Sie [hier](https://mcr.microsoft.com/v2/azuredeploymentscripts-powershell/tags/list). Eine Liste mit den unterstützten Azure CLI-Versionen finden Sie [hier](https://mcr.microsoft.com/v2/azure-cli/tags/list).
 
   >[!IMPORTANT]
   > Das Bereitstellungsskript verwendet die verfügbaren CLI-Images von Microsoft Container Registry (MCR). Das Zertifizieren eines CLI-Images für das Bereitstellungsskript dauert ungefähr einen Monat. Verwenden Sie nicht die CLI-Versionen, die innerhalb von 30 Tagen veröffentlicht wurden. Die Veröffentlichungsdaten für die Images finden Sie unter [Versionshinweise für die Azure CLI](/cli/azure/release-notes-azure-cli?view=azure-cli-latest&preserve-view=true). Wenn eine nicht unterstützte Version verwendet wird, werden in der Fehlermeldung die unterstützten Versionen aufgelistet.
@@ -196,7 +197,7 @@ Sie können die Datei auch mithilfe des Azure-Portals oder über die Azure CLI h
 
 1. Öffnen Sie im Azure-Portal die Ressourcengruppe, in der Sie die Containerinstanz und das Speicherkonto bereitgestellt haben.
 1. Öffnen Sie die Containergruppe. Der Standardcontainergruppenname entspricht dem Projektnamen mit dem Zusatz **cg**. Für die Containerinstanz sollte der Status **Wird ausgeführt** angezeigt werden.
-1. Klicken Sie im Menü links auf **Container**. Es sollte eine Containerinstanz angezeigt werden.  Der Containerinstanzname entspricht dem Projektnamen mit dem Zusatz **container**.
+1. Klicken Sie im Menü links auf **Container**. Es sollte eine Containerinstanz angezeigt werden. Der Containerinstanzname entspricht dem Projektnamen mit dem Zusatz **container**.
 
     ![Bereitstellungsskript: Verbinden mit der Containerinstanz](./media/deployment-script-template-configure-dev/deployment-script-container-instance-connect.png)
 
@@ -248,7 +249,7 @@ Darüber hinaus muss die Dateifreigabe so konfiguriert werden, dass das Verzeich
     docker run -v <host drive letter>:/<host directory name>:/data -it mcr.microsoft.com/azuredeploymentscripts-powershell:az4.3
     ```
 
-    Ersetzen Sie **&lt;host drive letter>** und **&lt;host directory name>** durch einen vorhandenen Ordner auf dem freigegebenen Laufwerk.  Der Ordner wird dem Ordner **/data** im Container zugeordnet. So ordnen Sie z. B. „D:\docker“ zu
+    Ersetzen Sie **&lt;host drive letter>** und **&lt;host directory name>** durch einen vorhandenen Ordner auf dem freigegebenen Laufwerk. Der Ordner wird dem Ordner _/data_ im Container zugeordnet. Bei der Zuordnung von _D:\docker_ gilt beispielsweise:
 
     ```command
     docker run -v d:/docker:/data -it mcr.microsoft.com/azuredeploymentscripts-powershell:az4.3
@@ -262,7 +263,7 @@ Darüber hinaus muss die Dateifreigabe so konfiguriert werden, dass das Verzeich
     docker run -v d:/docker:/data -it mcr.microsoft.com/azure-cli:2.0.80
     ```
 
-1. Der folgende Screenshot zeigt die Ausführung eines PowerShell-Skripts, wenn das freigegebene Laufwerk eine Datei namens „helloworld.ps1“ enthält.
+1. Der folgende Screenshot zeigt die Ausführung eines PowerShell-Skripts, wenn sich auf dem freigegebenen Laufwerk eine Datei namens _helloworld.ps1_ befindet.
 
     ![Resource Manager-Vorlage: Bereitstellungsskript, Docker-Befehle](./media/deployment-script-template/resource-manager-deployment-script-docker-cmd.png)
 
@@ -273,4 +274,4 @@ Nachdem das Skript erfolgreich getestet wurde, können Sie es als Bereitstellung
 In diesem Artikel haben Sie erfahren, wie Sie Bereitstellungsskripts verwenden. Ein Tutorial zu Bereitstellungsskripts finden Sie unter:
 
 > [!div class="nextstepaction"]
-> [Tutorial: Verwenden von Bereitstellungsskripts in Azure Resource Manager-Vorlagen](./template-tutorial-deployment-script.md).
+> [Tutorial: Verwenden von Bereitstellungsskripts in ARM-Vorlagen](./template-tutorial-deployment-script.md)

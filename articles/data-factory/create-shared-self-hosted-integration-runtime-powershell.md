@@ -11,12 +11,12 @@ author: nabhishek
 manager: anansub
 ms.custom: seo-lt-2019
 ms.date: 06/10/2020
-ms.openlocfilehash: 8734247a913bdf6a44a9156f6f87705b618f7228
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 3f0cf3de4c2cffca6540fcd727872372103ac98f
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92632888"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98118233"
 ---
 # <a name="create-a-shared-self-hosted-integration-runtime-in-azure-data-factory"></a>Erstellen einer freigegebenen selbstgehosteten Integration Runtime in Azure Data Factory
 
@@ -24,11 +24,24 @@ ms.locfileid: "92632888"
 
 In diesem Leitfaden erfahren Sie, wie Sie eine freigegebene selbstgehostete Integration Runtime in Azure Data Factory erstellen. Anschließend können Sie die freigegebene, selbstgehostete Integration Runtime in einer anderen Data Factory verwenden.
 
+## <a name="create-a-shared-self-hosted-integration-runtime-in-azure-data-factory"></a>Erstellen einer freigegebenen selbstgehosteten Integration Runtime in Azure Data Factory
+
+Sie können eine vorhandene selbstgehostete Integration Runtime-Infrastruktur wiederverwenden, die Sie bereits in einer Data Factory eingerichtet haben. Diese Wiederverwendung ermöglicht Ihnen das Erstellen einer verknüpften selbstgehosteten Integration Runtime in einer anderen Data Factory durch Verweisen auf eine vorhandene freigegebene selbstgehostete IR.
+
+Sehen Sie sich das folgende zwölfminütige Video an, um eine Einführung und Demonstration dieses Features zu erhalten:
+
+> [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Hybrid-data-movement-across-multiple-Azure-Data-Factories/player]
+
+### <a name="terminology"></a>Begriff
+
+- **Freigegebene IR**: Eine ursprüngliche selbstgehostete IR, die in einer physischen Infrastruktur ausgeführt wird.  
+- **Verknüpfte IR**: Eine IR, die auf eine andere freigegebene IR verweist. Diese verknüpfte IR ist eine logische IR. Sie nutzt die Infrastruktur einer anderen freigegebenen selbstgehosteten IR.
+
 ## <a name="create-a-shared-self-hosted-ir-using-azure-data-factory-ui"></a>Erstellen einer freigegebenen selbstgehosteten IR über die Azure Data Factory-Benutzeroberfläche
 
 Sie können die unten angegebenen Schritte ausführen, um über die Azure Data Factory-Benutzeroberfläche eine freigegebene selbstgehostete IR zu erstellen.
 
-1. Wählen Sie in der freizugebenden selbstgehosteten Integration Runtime die Option **Anderen Data Factory die Berechtigung erteilen** , und wählen Sie auf der Seite „Integration Runtime-Setup“ die Data Factory aus, in der Sie die verknüpfte Integration Runtime erstellen möchten.
+1. Wählen Sie in der freizugebenden selbstgehosteten Integration Runtime die Option **Anderen Data Factory die Berechtigung erteilen**, und wählen Sie auf der Seite „Integration Runtime-Setup“ die Data Factory aus, in der Sie die verknüpfte Integration Runtime erstellen möchten.
       
     ![Schaltfläche zum Erteilen von Berechtigungen auf der Registerkarte „Freigabe“](media/create-self-hosted-integration-runtime/grant-permissions-IR-sharing.png)  
     
@@ -55,9 +68,9 @@ Sie können die unten angegebenen Schritte ausführen, um mithilfe von Azure Pow
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-- **Azure-Abonnement** . Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen. 
+- **Azure-Abonnement**. Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen. 
 
-- **Azure PowerShell** . Befolgen Sie die Anweisungen unter [Installieren von Azure PowerShell unter Windows mit PowerShellGet](/powershell/azure/install-az-ps). Verwenden Sie PowerShell zum Ausführen eines Skripts, um eine selbstgehostete Integration Runtime zu erstellen, die für andere Data Factorys freigegeben werden kann. 
+- **Azure PowerShell**. Befolgen Sie die Anweisungen unter [Installieren von Azure PowerShell unter Windows mit PowerShellGet](/powershell/azure/install-az-ps). Verwenden Sie PowerShell zum Ausführen eines Skripts, um eine selbstgehostete Integration Runtime zu erstellen, die für andere Data Factorys freigegeben werden kann. 
 
 > [!NOTE]  
 > Eine Liste der Azure-Regionen, in denen Data Factory derzeit verfügbar ist, finden Sie, indem Sie die für Sie interessanten Regionen auswählen: [Verfügbare Produkte nach Region](https://azure.microsoft.com/global-infrastructure/services/?products=data-factory).
@@ -213,6 +226,37 @@ Remove-AzDataFactoryV2IntegrationRuntime `
     -Links `
     -LinkedDataFactoryName $LinkedDataFactoryName
 ```
+
+### <a name="monitoring"></a>Überwachung
+
+#### <a name="shared-ir"></a>Freigegebene IR
+
+![Auswahl für die Suche nach einer freigegebenen Integration Runtime](media/create-self-hosted-integration-runtime/Contoso-shared-IR.png)
+
+![Überwachen einer freigegebenen Integration Runtime](media/create-self-hosted-integration-runtime/contoso-shared-ir-monitoring.png)
+
+#### <a name="linked-ir"></a>Verknüpfte IR
+
+![Auswahl für die Suche nach einer verknüpften Integration Runtime](media/create-self-hosted-integration-runtime/Contoso-linked-ir.png)
+
+![Überwachen einer verknüpften Integration Runtime](media/create-self-hosted-integration-runtime/Contoso-linked-ir-monitoring.png)
+
+
+### <a name="known-limitations-of-self-hosted-ir-sharing"></a>Bekannte Einschränkungen der Freigabe selbstgehosteter IRs
+
+* Die Data Factory, in der eine verknüpfte IR erstellt wird, muss über eine [verwaltete Identität](../active-directory/managed-identities-azure-resources/overview.md) verfügen. Standardmäßig verfügen die im Azure-Portal oder mit PowerShell-Cmdlets erstellten Data Factorys über eine implizit erstellte verwaltete Identität. Wenn eine Data Factory aber mit einer Azure Resource Manager-Vorlage oder mit einem SDK erstellt wird, müssen Sie die **Identity**-Eigenschaft explizit festlegen. Mit dieser Einstellung wird sichergestellt, dass Resource Manager eine Data Factory mit einer verwalteten Identität erstellt.
+
+* Sie müssen mindestens Version 1.1.0 des Data Factory .NET SDK verwenden, damit dieses Feature unterstützt wird.
+
+* Zum Gewähren von Berechtigungen müssen Sie über die Rolle „Besitzer“ oder die geerbte Rolle „Besitzer“ in der Data Factory verfügen, in der die freigegebene IR vorhanden ist.
+
+* Die Freigabefunktion kann nur für Data Factorys unter demselben Azure Active Directory-Mandanten verwendet werden.
+
+* Für Azure AD-[Gastbenutzer](../active-directory/governance/manage-guest-access-with-access-reviews.md) ist zu beachten, dass die Suchfunktion auf der Benutzeroberfläche, bei der alle Data Factorys per Suchschlüsselwort aufgelistet werden, nicht funktioniert. Aber sofern der Gastbenutzer der Besitzer der Data Factory ist, können Sie die IR ohne Suchfunktion freigeben. Geben Sie für die verwaltete Identität der Data Factory, für die die IR freigegeben werden muss, diese verwaltete Identität in das Feld **Berechtigung zuweisen** ein. Wählen Sie auf der Data Factory-Benutzeroberfläche **Hinzufügen** aus.
+
+  > [!NOTE]
+  > Dieses Feature steht nur in Data Factory V2 zur Verfügung.
+
 
 ### <a name="next-steps"></a>Nächste Schritte
 

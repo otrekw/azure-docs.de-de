@@ -1,22 +1,22 @@
 ---
 title: Azure Policy-Erweiterung für Visual Studio Code
 description: In diesem Artikel erfahren Sie, wie Sie mithilfe der Azure Policy-Erweiterung für Visual Studio Code nach Azure Resource Manager-Aliassen suchen.
-ms.date: 10/20/2020
+ms.date: 01/11/2021
 ms.topic: how-to
-ms.openlocfilehash: 8c7357d70323fa74ec77cf43bd11f149a2f99154
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 4c4ba0eeb0506179ff92ead0ee86f048600d157e
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96906300"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98107938"
 ---
 # <a name="use-azure-policy-extension-for-visual-studio-code"></a>Verwenden der Azure Policy-Erweiterung für Visual Studio Code
 
-> Gilt für Version **0.1.0** und höher der Azure Policy-Erweiterung.
+> Gilt für Version **0.1.1** und höher der Azure Policy-Erweiterung.
 
 Hier erfahren Sie, wie Sie die Azure Policy-Erweiterung für Visual Studio Code verwenden, um nach [Aliasen](../concepts/definition-structure.md#aliases) zu suchen, Ressourcen und Richtlinien zu überprüfen, Objekte zu exportieren und Richtliniendefinitionen auszuwerten. Zunächst wird beschrieben, wie Sie die Azure Policy-Erweiterung in Visual Studio Code installieren. Anschließend erfahren Sie, wie Sie Aliase suchen.
 
-Die Azure Policy-Erweiterung für Visual Studio Code kann auf allen von Visual Studio Code unterstützten Plattformen installiert werden. Diese Unterstützung umfasst Windows, Linux und macOS.
+Die Azure Policy-Erweiterung für Visual Studio Code kann unter Windows installiert werden.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

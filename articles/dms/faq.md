@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: troubleshooting
 ms.date: 02/20/2020
-ms.openlocfilehash: bf6e61ef3dfb1c50166cf17168b4deeb21e958d7
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 460380d9435528dcd8cbb3f877c8034fdc34f50c
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94962908"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98134146"
 ---
 # <a name="faq-about-using-azure-database-migration-service"></a>Häufig gestellte Fragen zur Verwendung von Azure Database Migration Service
 
@@ -50,6 +50,9 @@ Azure Database Migration Service ist die bevorzugte Methode für bedarfsorientie
 
 **F: Inwiefern unterscheidet sich Azure Database Migration Service vom Azure Migrate-Angebot?**
 Azure Migrate unterstützt Benutzer bei der Migration lokaler virtueller Computer zu Azure IaaS. Der Dienst bewertet die Eignung für die Migration und die leistungsbasierte Größenauslegung und stellt Kostenschätzungen für die Ausführung Ihrer lokalen virtuellen Computer in Azure bereit. Azure Migrate ist hilfreich bei Lift & Shift-Migrationen lokaler, VM-basierter Workloads zu virtuellen Azure IaaS-Computern. Im Gegensatz zu Azure Database Migration Service handelt es sich bei Azure Migrate allerdings nicht um einen speziellen Datenbankmigrationsdienst für relationale Azure PaaS-Datenbankplattformen wie Azure SQL-Datenbank oder eine verwaltete Azure SQL-Instanz.
+
+**F: Speichert Database Migration Service Kundendaten?**
+Nein. Database Migration Service speichert keine Kundendaten.
 
 ## <a name="setup"></a>Einrichten
 
@@ -106,7 +109,7 @@ Eine typische einfache Datenbankmigration umfasst Folgendes:
 ## <a name="troubleshooting-and-optimization"></a>Problembehandlung und Optimierung
 
 **F: Ich richte ein Migrationsprojekt in DMS ein und habe Schwierigkeiten beim Herstellen einer Verbindung mit meiner Quelldatenbank. Wie soll ich vorgehen?**
-Wenn Sie während der Migration keine Verbindung mit Ihrem Quelldatenbanksystem herstellen können, erstellen Sie einen virtuellen Computer im virtuellen Netzwerk, mit dem Sie Ihre DMS-Instanz einrichten. Im virtuellen Computer sollten Sie in der Lage sein, einen Verbindungstest durchzuführen, z.B. mit einer UDL-Datei, um eine Verbindung mit SQL Server zu testen, oder Robo 3T herunterzuladen, um MongoDB-Verbindungen zu testen. Wenn der Verbindungstest erfolgreich ist, sollten Sie kein Problem mit dem Herstellen einer Verbindung mit Ihrer Quelldatenbank haben. Wenn der Verbindungstest nicht erfolgreich ist, wenden Sie sich an Ihren Netzwerkadministrator.
+Wenn Sie während der Migration keine Verbindung mit Ihrem Quelldatenbanksystem herstellen können, erstellen Sie eine VM im selben Subnetz des virtuellen Netzwerks, in dem Sie Ihre DMS-Instanz einrichten. Im virtuellen Computer sollten Sie in der Lage sein, einen Verbindungstest durchzuführen, z.B. mit einer UDL-Datei, um eine Verbindung mit SQL Server zu testen, oder Robo 3T herunterzuladen, um MongoDB-Verbindungen zu testen. Wenn der Verbindungstest erfolgreich ist, sollten Sie kein Problem mit dem Herstellen einer Verbindung mit Ihrer Quelldatenbank haben. Wenn der Verbindungstest nicht erfolgreich ist, wenden Sie sich an Ihren Netzwerkadministrator.
 
 **F: Warum ist mein Azure Database Migration Service nicht verfügbar oder wurde beendet?**
 Wenn der Benutzer Azure Database Migration Service (DMS) explizit beendet oder der Dienst für einen Zeitraum von 24 Stunden inaktiv ist, wird der Dienst beendet oder automatisch angehalten. In jedem Fall ist der Dienst nicht verfügbar und beendet.  Um aktive Migrationen wieder aufzunehmen, starten Sie den Dienst neu.

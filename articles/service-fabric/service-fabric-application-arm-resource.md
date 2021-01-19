@@ -3,12 +3,12 @@ title: Bereitstellungen und Upgrades mit Azure Resource Manager
 description: Erfahren Sie, wie Sie Anwendungen und Dienste mithilfe einer Azure Resource Manager-Vorlage in einem Service Fabric-Cluster bereitstellen.
 ms.topic: conceptual
 ms.date: 12/06/2017
-ms.openlocfilehash: bb866eb24fb1b286f496bad9845d1ee557baa221
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: ed6bc7d96cb3ea0934929e6543c5e637a9f42c1f
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94681668"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97930836"
 ---
 # <a name="manage-applications-and-services-as-azure-resource-manager-resources"></a>Verwalten von Anwendungen und Diensten als Azure Resource Manager-Ressourcen
 
@@ -50,13 +50,12 @@ Der folgende Codeausschnitt zeigt die verschiedenen Arten von Ressourcen, die mi
 }
 ```
 
-
 ## <a name="add-a-new-application-to-your-resource-manager-template"></a>Hinzufügen einer neuen Anwendung zu Ihrer Resource Manager-Vorlage
 
 1. Bereiten Sie die Resource Manager-Vorlage Ihres Clusters auf die Bereitstellung vor. Weitere Informationen hierzu Sie unter [Erstellen eines Service Fabric-Clusters in Azure mithilfe von Azure Resource Manager](service-fabric-cluster-creation-via-arm.md).
 2. Überlegen Sie sich einige der Anwendungen, die Sie im Cluster bereitstellen möchten. Gibt es welche, die stets ausgeführt werden und für die andere Anwendungen ggf. Abhängigkeiten aufweisen? Planen Sie die Bereitstellung von Governance- oder Setup-Anwendungen für den Cluster? Diese Arten von Anwendungen werden, wie oben beschrieben, am besten mithilfe einer Resource Manager-Vorlage verwaltet. 
-3. Sobald Sie herausgefunden haben, welche Anwendungen auf diese Weise bereitgestellt werden sollen, müssen die Anwendungen gepackt, gezippt und in einer Dateifreigabe bereitgestellt werden. Die Freigabe muss über einen REST-Endpunkt zugänglich sein, den Azure Resource Manager während der Bereitstellung verwenden kann.
-4. Beschreiben Sie in Ihrer Resource Manager-Vorlage unter Ihrer Clusterdeklaration die Eigenschaften der einzelnen Anwendungen. Zu diesen Eigenschaften gehören die Anzahl von Replikaten und Instanzen sowie Abhängigkeiten zwischen Ressourcen (anderen Anwendungen oder Diensten). Eine umfassende Liste der Eigenschaften finden Sie unter [REST-API – Swagger-Spezifikation](https://aka.ms/sfrpswaggerspec). Beachten Sie, dass dies nicht die Anwendungs- oder Dienstmanifeste ersetzt, sondern vielmehr einige der darin enthaltenen Elemente als Teil der Resource Manager-Vorlage des Clusters beschreibt. Hier ist eine Beispielvorlage, die die Bereitstellung des zustandslosen Diensts *Service1* und des zustandsbehafteten Diensts *Service2* als Teil von *Application1* enthält:
+3. Sobald Sie herausgefunden haben, welche Anwendungen auf diese Weise bereitgestellt werden sollen, müssen die Anwendungen gepackt, gezippt und auf einer Speicherfreigabe platziert werden. Die Freigabe muss über einen REST-Endpunkt zugänglich sein, den Azure Resource Manager während der Bereitstellung verwenden kann. Ausführliche Informationen finden Sie unter [Erstellen eines Speicherkontos](service-fabric-concept-resource-model.md#create-a-storage-account).
+4. Beschreiben Sie in Ihrer Resource Manager-Vorlage unter Ihrer Clusterdeklaration die Eigenschaften der einzelnen Anwendungen. Zu diesen Eigenschaften gehören die Anzahl von Replikaten und Instanzen sowie Abhängigkeiten zwischen Ressourcen (anderen Anwendungen oder Diensten). Beachten Sie, dass dies nicht die Anwendungs- oder Dienstmanifeste ersetzt, sondern vielmehr einige der darin enthaltenen Elemente als Teil der Resource Manager-Vorlage des Clusters beschreibt. Hier ist eine Beispielvorlage, die die Bereitstellung des zustandslosen Diensts *Service1* und des zustandsbehafteten Diensts *Service2* als Teil von *Application1* enthält:
 
    ```json
    {
@@ -244,7 +243,7 @@ Der folgende Codeausschnitt zeigt die verschiedenen Arten von Ressourcen, die mi
    ```
 
    > [!NOTE] 
-   > *apiVersion* muss auf `"2019-03-01"` festgelegt werden. Diese Vorlage kann auch unabhängig vom Cluster bereitgestellt werden, sofern der Cluster bereits bereitgestellt wurde.
+   > Informationen zur Nutzung und zu den einzelnen Vorlageneigenschaften finden Sie in der [Azure Resource Manager-Referenz](/azure/templates/microsoft.servicefabric/clusters/applicationtypes) von Service Fabric.
 
 5. Bereitstellen 
 

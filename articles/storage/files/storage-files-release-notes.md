@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/17/2020
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: 739e59ea8e5737abbc6f0f0799129be5f59fb9b0
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: 3bf3ecefb17f4c9fda6405da7fb2bdc2650f5324
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97674496"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98131473"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>Versionshinweise zum Azure-Dateisynchronisierungs-Agent
 Mit der Azure-Dateisynchronisierung können Sie Dateifreigaben Ihrer Organisation in Azure Files zentralisieren, ohne auf die Flexibilität, Leistung und Kompatibilität eines lokalen Dateiservers verzichten zu müssen. Ihre Windows Server-Installationen werden in einen schnellen Cache Ihrer Azure-Dateifreigabe transformiert. Sie können ein beliebiges Protokoll verwenden, das unter Windows Server verfügbar ist, um lokal auf Ihre Daten zuzugreifen (z.B. SMB, NFS und FTPS). Sie können weltweit so viele Caches wie nötig nutzen.
@@ -236,14 +236,14 @@ Die folgenden Versionshinweise gelten für Version 9.0.0.0 des Azure-Dateisynch
 ### <a name="improvements-and-issues-that-are-fixed"></a>Verbesserungen und behobene Probleme
 
 - Unterstützung der Self-Service-Wiederherstellung
-    - Benutzer können ihre Dateien nun mithilfe des Features „Vorherige Version“ wiederherstellen. Vor dem V9-Release wurde das Feature für vorherige Versionen auf Volumes mit aktiviertem Cloudtiering nicht unterstützt. Dieses Feature muss für jedes Volume separat aktiviert werden, auf denen ein Endpunkt mit aktiviertem Cloudtiering vorliegt. Weitere Informationen finden Sie unter  
+    - Benutzer können jetzt mithilfe des Features für vorherige Versionen auch Tieringdateien (sowie Dateien auf dem Datenträger) wiederherstellen. Dabei werden VSS-Momentaufnahmen verwendet, die nach Aktivierung der Self-Service-Wiederherstellung auf dem Volume erstellt wurden. Vor dem V9-Release wurde das Feature für vorherige Versionen für Tieringdateien nicht unterstützt. Dieses Feature muss für jedes Volume separat aktiviert werden, auf denen ein Endpunkt mit aktiviertem Cloudtiering vorliegt. Weitere Informationen finden Sie unter  
 [Self-Service-Wiederherstellung mit „Vorherige Versionen“ und VSS (Volumeschattenkopie-Dienst)](./storage-sync-files-deployment-guide.md#self-service-restore-through-previous-versions-and-vss-volume-shadow-copy-service). 
  
 - Unterstützung größerer Dateifreigaben 
     - Die Azure-Dateisynchronisierung unterstützt nun bis zu 64 TiB und 100 Millionen Dateien in einem einzelnen Synchronisierungsnamespace.  
  
 - Unterstützung der Datendeduplizierung auf Windows Server 2019 
-    - Die Datendeduplizierung wird nun mit aktiviertem Cloudtiering auf Windows Server 2019 unterstützt. Für die Unterstützung der Datendeduplizierung auf Volumes mit Cloudtiering muss das Windows-Update [KB4520062](https://support.microsoft.com/help/4520062) installiert sein. 
+    - Die Datendeduplizierung wird jetzt unter Windows Server 2016 und Windows Server 2019 unterstützt, unabhängig davon, ob das Cloudtiering auf einem oder mehreren Serverendpunkten auf dem Volume aktiviert oder deaktiviert ist. Zur Unterstützung der Datendeduplizierung auf Volumes mit Cloudtiering unter Windows Server 2019 muss das Windows-Update [KB4520062](https://support.microsoft.com/help/4520062) installiert sein. 
  
 - Verbesserung der Mindestdateigröße für Dateien, für die das Tiering durchgeführt werden soll 
     - Die Mindestdateigröße für Dateien, für die das Tiering durchgeführt werden soll, basiert nun auf der Größe des Dateisystemclusters (das Doppelte der Größe des Dateisystemclusters). Die Standardgröße des NTFS-Dateisystemclusters beträgt beispielsweise 4 KB, weshalb die Mindestdateigröße für eine Datei, für die das Tiering durchgeführt werden soll, 8 KB beträgt. 

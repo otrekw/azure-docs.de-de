@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 11/17/2020
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 1a7bd36a6e3f3cc5b785745fc51f0aede3b47b74
-ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
+ms.openlocfilehash: 2029ec2d0b0f27d7078f381880cf7ca177d24ca0
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97803305"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98020201"
 ---
 # <a name="redact-faces-with-azure-media-analytics"></a>Bearbeiten von Gesichtern mit Azure Media Analytics
 
@@ -36,6 +36,9 @@ Dieser Artikel enthält Details zu **Azure Media Redactor** und veranschaulicht 
 Bei der Gesichtsbearbeitung werden Gesichter in jedem Bild eines Videos erkannt, und gleichzeitig wird das Gesichtsobjekt in Vorwärts- und Rückwärtsrichtung verfolgt, damit eine Person auch aus anderen Winkeln unkenntlich gemacht werden kann. Der automatisierte Prozess der Gesichtsbearbeitung ist komplex und führt nicht immer exakt zum gewünschten Ergebnis. Aus diesem Grund werden unter Media Analytics einige Optionen zum Ändern der Endausgabe bereitgestellt.
 
 Zusätzlich zu einem vollautomatischen Modus ist ein zweistufiger Workflow vorhanden, der die Auswahl bzw. Abwahl von gefundenen Gesichtern anhand einer Liste mit IDs ermöglicht. Für beliebige Anpassungen pro Bild nutzt der Medienprozessor außerdem eine Metadatendatei im JSON-Format. Dieser Workflow ist in die Modi **Analyze** (Analysieren) und **Redact** (Bearbeiten) unterteilt. Sie können die beiden Modi auch zusammen in einem Durchlauf anwenden, bei dem beide Aufgaben als Teil eines Einzelvorgangs ausgeführt werden. Dieser Modus hat die Bezeichnung **Combined** (Kombiniert).
+
+   > [!NOTE]
+   > Der Medienprozessor zur Gesichtserkennung wurde im Juni 2020 als veraltet gekennzeichnet und ist unter [Legacy-Komponenten von Azure Media Services](./legacy-components.md) zu finden. Erwägen Sie die Verwendung der Azure Media Services v3-API.
 
 ### <a name="combined-mode"></a>Kombinierter Modus
 

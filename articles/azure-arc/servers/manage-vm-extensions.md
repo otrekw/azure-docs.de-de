@@ -1,14 +1,14 @@
 ---
 title: Verwaltung von VM-Erweiterungen mit Azure Arc-fähigen Servern
 description: Mit Azure Arc-fähigen Servern kann die Bereitstellung von Erweiterungen für virtuelle Computer verwaltet werden, die Konfigurations- und Automatisierungsaufgaben nach der Bereitstellung für nicht in Azure gehostete VMs bereitstellen.
-ms.date: 12/14/2020
+ms.date: 01/07/2021
 ms.topic: conceptual
-ms.openlocfilehash: 55e21f9c6bcd2dfe5f995093034773f2a87d9b03
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: 5430b1c1318747cccfb95f031700fddaad716284
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97504507"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98020620"
 ---
 # <a name="virtual-machine-extension-management-with-azure-arc-enabled-servers"></a>Verwaltung von Erweiterungen für virtuelle Computer mit Azure Arc-fähigen Servern
 
@@ -43,20 +43,31 @@ Die Funktionalität der VM-Erweiterungen ist nur in den [unterstützten Regionen
 
 In dieser Version unterstützen wir die folgenden VM-Erweiterungen auf Windows- und Linux-Computern.
 
-|Durchwahl |OS |Herausgeber |Zusätzliche Informationen |
-|----------|---|----------|-----------------------|
-|CustomScriptExtension |Windows |Microsoft.Compute |[Erweiterung für benutzerdefinierte Windows-Skripts](../../virtual-machines/extensions/custom-script-windows.md)|
-|DSC |Windows |Microsoft.PowerShell|[Windows PowerShell DSC-Erweiterung](../../virtual-machines/extensions/dsc-windows.md)|
-|Log Analytics-Agent |Windows |Microsoft.EnterpriseCloud.Monitoring |[Log Analytics-Erweiterung für virtuelle Computer für Windows](../../virtual-machines/extensions/oms-windows.md)|
-|Microsoft Dependency-Agent | Windows |Microsoft.Compute | [VM-Erweiterung für den Dependency-Agent für Windows](../../virtual-machines/extensions/agent-dependency-windows.md)|
-|Key Vault | Windows | Microsoft.Compute | [Key Vault-VM-Erweiterung für Windows](../../virtual-machines/extensions/key-vault-windows.md) |
-|CustomScript|Linux |Microsoft.Azure.Extension |[Erweiterung für benutzerdefinierte Linux-Skripts, Version 2](../../virtual-machines/extensions/custom-script-linux.md) |
-|DSC |Linux |Microsoft.OSTCExtensions |[PowerShell DSC.-Erweiterung für Linux](../../virtual-machines/extensions/dsc-linux.md) |
-|Log Analytics-Agent |Linux |Microsoft.EnterpriseCloud.Monitoring |[Log Analytics VM-Erweiterung für Linux](../../virtual-machines/extensions/oms-linux.md) |
-|Microsoft Dependency-Agent | Linux |Microsoft.Compute | [VM-Erweiterung für den Dependency-Agent für Linux](../../virtual-machines/extensions/agent-dependency-linux.md) |
-|Key Vault | Linux | Microsoft.Compute | [Key Vault-VM-Erweiterung für Linux](../../virtual-machines/extensions/key-vault-linux.md) |
-
 Weitere Informationen zum Azure Connected Machine-Agent-Paket und Details zur Erweiterungs-Agent-Komponente finden Sie in der [Agent-Übersicht](agent-overview.md#agent-component-details).
+
+### <a name="windows-extensions"></a>Windows-Erweiterungen
+
+|Erweiterung |Herausgeber |type |Zusätzliche Informationen |
+|----------|----------|-----|-----------------------|
+|In Azure Defender integrierter Scanner für Sicherheitsrisiken |Qualys |WindowsAgent.AzureSecurityCenter |[Integrierte Azure Defender-Lösung zur Sicherheitsrisikobewertung für Azure- und Hybridcomputer](../../security-center/deploy-vulnerability-assessment-vm.md)|
+|Benutzerdefinierte Skripterweiterung |Microsoft.Compute | CustomScriptExtension |[Erweiterung für benutzerdefinierte Windows-Skripts](../../virtual-machines/extensions/custom-script-windows.md)|
+|PowerShell DSC |Microsoft.PowerShell |DSC |[Windows PowerShell DSC-Erweiterung](../../virtual-machines/extensions/dsc-windows.md)|
+|Log Analytics-Agent |Microsoft.EnterpriseCloud.Monitoring |MicrosoftMonitoringAgent |[Log Analytics-Erweiterung für virtuelle Computer für Windows](../../virtual-machines/extensions/oms-windows.md)|
+|Azure Monitor für VMs (Insights) |Microsoft.Azure.Monitoring.DependencyAgent |DependencyAgentWindows | [VM-Erweiterung für den Dependency-Agent für Windows](../../virtual-machines/extensions/agent-dependency-windows.md)|
+|Azure Key Vault-Zertifikatsynchronisierung | Microsoft.Azure.Key.Vault |KeyVaultForWindows | [Key Vault-VM-Erweiterung für Windows](../../virtual-machines/extensions/key-vault-windows.md) |
+|Azure Monitor-Agent |Microsoft.Azure.Monitor |AzureMonitorWindowsAgent |[Installieren des Azure Monitor-Agents (Vorschau)](../../azure-monitor/platform/azure-monitor-agent-install.md) |
+
+### <a name="linux-extensions"></a>Linux-Erweiterungen
+
+|Erweiterung |Herausgeber |type |Zusätzliche Informationen |
+|----------|----------|-----|-----------------------|
+|In Azure Defender integrierter Scanner für Sicherheitsrisiken |Qualys |LinuxAgent.AzureSecurityCenter |[Integrierte Azure Defender-Lösung zur Sicherheitsrisikobewertung für Azure- und Hybridcomputer](../../security-center/deploy-vulnerability-assessment-vm.md)|
+|Benutzerdefinierte Skripterweiterung |Microsoft.Azure.Extensions |CustomScript |[Erweiterung für benutzerdefinierte Linux-Skripts, Version 2](../../virtual-machines/extensions/custom-script-linux.md) |
+|PowerShell DSC |Microsoft.OSTCExtensions |DSCForLinux |[PowerShell DSC.-Erweiterung für Linux](../../virtual-machines/extensions/dsc-linux.md) |
+|Log Analytics-Agent |Microsoft.EnterpriseCloud.Monitoring |OmsAgentForLinux |[Log Analytics VM-Erweiterung für Linux](../../virtual-machines/extensions/oms-linux.md) |
+|Azure Monitor für VMs (Insights) |Microsoft.Azure.Monitoring.DependencyAgent |DependencyAgentLinux |[VM-Erweiterung für den Dependency-Agent für Linux](../../virtual-machines/extensions/agent-dependency-linux.md) |
+|Azure Key Vault-Zertifikatsynchronisierung | Microsoft.Azure.Key.Vault |KeyVaultForLinux | [Key Vault-VM-Erweiterung für Linux](../../virtual-machines/extensions/key-vault-linux.md) |
+|Azure Monitor-Agent |Microsoft.Azure.Monitor |AzureMonitorLinuxAgent |[Installieren des Azure Monitor-Agents (Vorschau)](../../azure-monitor/platform/azure-monitor-agent-install.md) |
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

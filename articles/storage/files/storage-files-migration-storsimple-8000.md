@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/16/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 1e45c39a8f562ca6264ab631dfadc84315b58030
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: 08ed07adbfe0fc4b22d8a3d0afcfc9ab1312dba4
+ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97723977"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98134346"
 ---
 # <a name="storsimple-8100-and-8600-migration-to-azure-file-sync"></a>StorSimple 8100- und 8600-Migration zur Azure-Dateisynchronisierung
 
@@ -441,6 +441,9 @@ An diesem Punkt gibt es Unterschiede zwischen Ihrer lokalen Windows Server-Insta
 1. Einige Dateien wurden vom Datentransformationsauftrag wegen ungültiger Zeichen unter Umständen nicht übertragen. Ist dies der Fall, kopieren Sie diese Dateien auf die Windows Server-Instanz mit aktivierter Azure-Dateisynchronisierung. Später können Sie die Dateien so anpassen, dass sie synchronisiert werden. Wenn Sie die Azure-Dateisynchronisierung für eine bestimmte Freigabe nicht verwenden, ist es besser, die Dateien auf dem StorSimple-Volume mit ungültigen Zeichen umzubenennen. Führen Sie RoboCopy dann direkt für die Azure-Dateifreigabe aus.
 
 > [!WARNING]
+> Bei Robocopy unter Windows Server 2019 tritt zurzeit ein Problem auf, das dazu führt, dass Dateien, die von der Azure-Dateisynchronisierung auf dem Zielserver verwendet werden, bei Anwendung der /MIR-Funktion von Robocopy an der Quelle neu kopiert und in Azure hochgeladen werden. Unter anderen Windows Server-Versionen als 2019 muss unbedingt Robocopy verwendet werden. Eine bevorzugte Wahl ist Windows Server 2016. Dieser Hinweis wird aktualisiert, wenn das Problem über Windows Update behoben wurde.
+
+> [!WARNING]
 > Sie dürfen RoboCopy *nicht* starten, bevor der Server den Namespace für eine Azure-Dateifreigabe vollständig heruntergeladen hat. Weitere Informationen finden Sie unter [Feststellen, wann Ihr Namespace vollständig mit dem Server synchronisiert ist](#determine-when-your-namespace-has-fully-synced-to-your-server).
 
  Sie möchten nur Dateien kopieren, die nach dem letzten Ausführen des Migrationsauftrags geändert wurden, sowie Dateien, die durch diese Aufträge noch nicht verschoben wurden. Das Problem, das dazu geführt hat, dass diese Dateien nicht verschoben wurden, können Sie später nach Abschluss der Migration auf dem Server beheben. Weitere Informationen finden Sie unter [Problembehandlung für Azure-Dateisynchronisierung](storage-sync-files-troubleshoot.md#how-do-i-see-if-there-are-specific-files-or-folders-that-are-not-syncing).
@@ -448,7 +451,7 @@ An diesem Punkt gibt es Unterschiede zwischen Ihrer lokalen Windows Server-Insta
 RoboCopy hat mehrere Parameter. Im folgenden Beispiel sind ein fertiger Befehl und eine Liste mit den Gründen für die Auswahl dieser Parameter aufgeführt.
 
 ```console
-Robocopy /MT:16 /UNILOG:<file name> /TEE /NP /B /MIR /COPYALL /DCOPY:DAT <SourcePath> <Dest.Path>
+Robocopy /MT:16 /UNILOG:<file name> /TEE /NP /B /MIR /IT /COPYALL /DCOPY:DAT <SourcePath> <Dest.Path>
 ```
 
 Hintergrund:
@@ -499,6 +502,14 @@ Hintergrund:
    :::column-end:::
    :::column span="1":::
       Ermöglicht RoboCopy, nur Abweichungen zwischen der Quelle (StorSimple-Appliance) und dem Ziel (Windows Server-Verzeichnis) zu berücksichtigen.
+   :::column-end:::
+:::row-end:::
+:::row:::
+   :::column span="1":::
+      /IT
+   :::column-end:::
+   :::column span="1":::
+      Sorgt dafür, dass die Genauigkeit in bestimmten Spiegelungsszenarien beibehalten wird.</br>Beispiel: Zwischen zwei Robocopy-Ausführungen erfährt eine Datei eine ACL-Änderung und ein Attributupdate, indem sie z. B. auch als *ausgeblendet* markiert wird. Ohne /IT bemerkt Robocopy die ACL-Änderung möglicherweise nicht und führt daher auch keine Übertragung an den Zielspeicherort aus.
    :::column-end:::
 :::row-end:::
 :::row:::

@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 10/19/2020
 ms.author: maquaran
-ms.openlocfilehash: c47d18726d9581b1b03aa2e676a71d6ca1bc1b7d
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: f753010eb994c9f3c286ad6eca6392ca7b643075
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93086464"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97932910"
 ---
 # <a name="how-to-configure-logging-and-connectivity-with-the-azure-functions-trigger-for-cosmos-db"></a>Konfigurieren der Protokollierung und Konnektivität mit dem Azure Functions-Trigger für Cosmos DB
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -82,7 +82,7 @@ Bei Azure Functions-Projekten mit Version 1 der Azure Functions-Runtime hat die
 ```
 
 > [!NOTE]
-> Wenn Sie als Azure Functions-Hostingplan den Verbrauchsplan verwenden, gilt für jede Instanz ein Grenzwert bei der Menge der Socket-Verbindungen, die aufrechterhalten werden können. Wenn Sie den direkten Modus oder den TCP-Modus verwenden, werden standardmäßig mehr Verbindungen erstellt, und unter Umständen wird der [Grenzwert des Verbindungsplans](../azure-functions/manage-connections.md#connection-limit) erreicht. In diesem Fall können Sie entweder den Gatewaymodus verwenden oder Azure Functions im [App Service-Modus](../azure-functions/functions-scale.md#app-service-plan) ausführen.
+> Wenn Sie Ihre Funktions-App in einem Verbrauchsplan hosten, gilt für jede Instanz ein Grenzwert in Bezug auf Menge der Socketverbindungen, die aufrechterhalten werden können. Wenn Sie den direkten Modus oder den TCP-Modus verwenden, werden entwurfsbedingt mehr Verbindungen erstellt, und unter Umständen wird der [Verbindungsgrenzwert](../azure-functions/manage-connections.md#connection-limit) erreicht. In diesem Fall können Sie entweder den Gatewaymodus verwenden oder Ihre Funktions-App in einem [Premium-Plan](../azure-functions/functions-premium-plan.md) oder einem [dedizierten App Service-Plan](../azure-functions/dedicated-plan.md) hosten.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -1,18 +1,18 @@
 ---
 title: Bereitstellen von Vorlagen mit Cloud Shell
-description: In diesem Artikel verwenden Sie den Azure Resource Manager und Azure PowerShell, um Ressourcen in Azure bereitzustellen. Die Ressourcen sind in einer Azure Resource Manager-Vorlage definiert.
+description: Verwenden Sie Azure Resource Manager und Cloud Shell, um Ressourcen in Azure bereitzustellen. Die Ressourcen sind in einer Azure Resource Manager-Vorlage (ARM-Vorlage) definiert.
 ms.topic: conceptual
 ms.date: 10/22/2020
-ms.openlocfilehash: d0b519955cb877f5fb9640cc0cf95a898e1743ef
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: c67251a33b6197603be27086bcc6cd047e0c414b
+ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92681291"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98028606"
 ---
-# <a name="deploy-arm-templates-from-cloud-shell"></a>Bereitstellen von ARM-Vorlagen über Cloud Shell
+# <a name="deploy-arm-templates-from-azure-cloud-shell"></a>Bereitstellen von ARM-Vorlagen mit Azure Cloud Shell
 
-Mit [Cloud Shell](../../cloud-shell/overview.md) können Sie Azure Resource Manager-Vorlagen (ARM-Vorlagen) bereitstellen. Sie können entweder eine remote gespeicherte oder eine im lokalen Speicherkonto von Cloud Shell gespeicherte ARM-Vorlage bereitstellen.
+Mit [Azure Cloud Shell](../../cloud-shell/overview.md) können Sie Azure Resource Manager-Vorlagen (ARM-Vorlagen) bereitstellen. Sie können entweder eine remote gespeicherte oder eine im lokalen Speicherkonto von Cloud Shell gespeicherte ARM-Vorlage bereitstellen.
 
 Den Umfang der Bereitstellung legen Sie selbst fest. In diesem Artikel wird gezeigt, wie Sie eine Bereitstellung in einer Ressourcengruppe durchführen.
 

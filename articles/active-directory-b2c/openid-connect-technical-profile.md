@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 12/01/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 8364e67e71143729e97c5253f0dfd7b30a1e5c2f
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 42880eed3c694029ef70ee29a00a9ade7f1d398f
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97559819"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98058989"
 ---
 # <a name="define-an-openid-connect-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definieren eines technischen OpenID Connect-Profils in einer benutzerdefinierten Richtlinie in Azure Active Directory B2C
 
@@ -88,12 +88,13 @@ Das technische Profil gibt auch Ansprüche zurück, die vom Identitätsanbieter 
 | scope | Nein | Der Bereich für die Anforderung gemäß der OpenId Connect Core 1.0-Spezifikation. Beispiele: `openid`, `profile` und `email`. |
 | HttpBinding | Nein | Die erwartete HTTP-Bindung an die Endpunkte für Zugriffs- und Anspruchstoken. Mögliche Werte: `GET` oder `POST`.  |
 | ValidTokenIssuerPrefixes | Nein | Ein Schlüssel, der für die Anmeldung bei den einzelnen Mandanten verwendet werden kann, wenn ein mehrinstanzenfähiger Identitätsanbieter wie Azure Active Directory verwendet wird. |
-| UsePolicyInRedirectUri | Nein | Gibt an, ob beim Erstellen des Umleitungs-URI eine Richtlinie verwendet werden soll. Wenn Sie Ihre Anwendung im Identitätsanbieter konfigurieren, müssen Sie den Umleitungs-URI angeben. Der Umleitungs-URI verweist auf Azure AD B2C, `https://{your-tenant-name}.b2clogin.com/{your-tenant-name}.onmicrosoft.com/oauth2/authresp`.  Bei Angabe von `false` müssen Sie einen Umleitungs-URI für jede verwendete Richtlinie hinzufügen. Beispiel: `https://{your-tenant-name}.b2clogin.com/{your-tenant-name}.onmicrosoft.com/{policy-name}/oauth2/authresp`. |
+| UsePolicyInRedirectUri | Nein | Gibt an, ob beim Erstellen des Umleitungs-URI eine Richtlinie verwendet werden soll. Wenn Sie Ihre Anwendung im Identitätsanbieter konfigurieren, müssen Sie den Umleitungs-URI angeben. Der Umleitungs-URI verweist auf Azure AD B2C, `https://{your-tenant-name}.b2clogin.com/{your-tenant-name}.onmicrosoft.com/oauth2/authresp`.  Bei Angabe von `true` müssen Sie einen Umleitungs-URI für jede verwendete Richtlinie hinzufügen. Beispiel: `https://{your-tenant-name}.b2clogin.com/{your-tenant-name}.onmicrosoft.com/{policy-name}/oauth2/authresp`. |
 | MarkAsFailureOnStatusCode5xx | Nein | Gibt an, ob eine Anforderung an einen externen Dienst als fehlerhaft gekennzeichnet werden soll, wenn der HTTP-Statuscode im Bereich 5xx liegt. Der Standardwert lautet `false`. |
 | DiscoverMetadataByTokenIssuer | Nein | Gibt an, ob die OIDC-Metadaten mithilfe des Ausstellers im JWT-Token ermittelt werden sollen. |
 | IncludeClaimResolvingInClaimsHandling  | Nein | Gibt bei Eingabe- und Ausgabeansprüchen an, ob die [Anspruchsauflösung](claim-resolver-overview.md) im technischen Profil enthalten ist. Mögliche Werte sind `true` oder `false` (Standardwert). Wenn Sie im technischen Profil eine Anspruchsauflösung verwenden möchten, legen Sie für diese Einstellung den Wert `true` fest. |
-|token_endpoint_auth_method| Nein| Gibt an, wie Azure AD B2C den Authentifizierungsheader an den Tokenendpunkt sendet. Mögliche Werte: `client_secret_post` (Standardwert), `private_key_jwt` (öffentliche Vorschau) und `client_secret_basic` (öffentliche Vorschau). Weitere Informationen finden Sie im Abschnitt [OpenID Connect-Clientauthentifizierung](https://openid.net/specs/openid-connect-core-1_0.html#ClientAuthentication). |
-|SingleLogoutEnabled| Nein| Gibt an, ob das technische Profil bei der Anmeldung versucht, sich beim Verbundidentitätsanbieter abzumelden. Weitere Informationen finden Sie unter [Abmelden von der Azure AD B2C-Sitzung](session-behavior.md#sign-out).  Mögliche Werte: `true` (Standard) oder `false`.|
+| token_endpoint_auth_method | Nein | Gibt an, wie Azure AD B2C den Authentifizierungsheader an den Tokenendpunkt sendet. Mögliche Werte sind `client_secret_post` (Standardwert) und `client_secret_basic` (öffentliche Vorschau). Weitere Informationen finden Sie im Abschnitt [OpenID Connect-Clientauthentifizierung](https://openid.net/specs/openid-connect-core-1_0.html#ClientAuthentication). |
+| token_signing_algorithm | Nein | Der Signaturalgorithmus, der für Clientassertionen verwendet wird, wenn die **token_endpoint_auth_method**-Metadaten auf `private_key_jwt` festgelegt sind. Mögliche Werte: `RS256` (Standard). |
+| SingleLogoutEnabled | Nein | Gibt an, ob das technische Profil bei der Anmeldung versucht, sich beim Verbundidentitätsanbieter abzumelden. Weitere Informationen finden Sie unter [Abmelden von der Azure AD B2C-Sitzung](session-overview.md#sign-out).  Mögliche Werte: `true` (Standard) oder `false`. |
 
 ```xml
 <Metadata>
@@ -124,7 +125,8 @@ Das **CryptographicKeys**-Element enthält das folgende Attribut:
 
 | attribute | Erforderlich | Beschreibung |
 | --------- | -------- | ----------- |
-| client_secret | Ja | Der geheime Clientschlüssel der Anwendung des Identitätsanbieters. Der kryptografische Schlüssel ist nur erforderlich, wenn die **response_type**-Metadaten auf `code` festgelegt sind. Azure AD B2C führt in diesem Fall einen weiteren Aufruf zum Austauschen des Autorisierungscode gegen ein Zugriffstoken durch. Wenn die Metadaten auf `id_token` festgelegt wurden, können Sie den kryptografischen Schlüssel weglassen.  |
+| client_secret | Ja | Der geheime Clientschlüssel der Anwendung des Identitätsanbieters. Der kryptografische Schlüssel ist nur erforderlich, wenn die **response_type**-Metadaten auf `code` festgelegt sind und **token_endpoint_auth_method** auf `client_secret_post` oder `client_secret_basic` festgelegt ist. Azure AD B2C führt in diesem Fall einen weiteren Aufruf zum Austauschen des Autorisierungscode gegen ein Zugriffstoken durch. Wenn die Metadaten auf `id_token` festgelegt wurden, können Sie den kryptografischen Schlüssel weglassen.  |
+| assertion_signing_key | Ja | Der private RSA-Schlüssel zum Signieren der Clientassertion. Der kryptografische Schlüssel ist nur erforderlich, wenn die **token_endpoint_auth_method**-Metadaten auf `private_key_jwt` festgelegt sind. |
 
 ## <a name="redirect-uri"></a>Umleitungs-URI
 

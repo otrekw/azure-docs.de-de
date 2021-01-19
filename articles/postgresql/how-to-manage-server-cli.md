@@ -3,15 +3,15 @@ title: Verwalten eines Servers – Azure CLI – Azure Database for PostgreSQL
 description: Hier erfahren Sie, wie Sie einen Azure Database for PostgreSQL-Server über die Azure-Befehlszeilenschnittstelle (Azure CLI) verwalten.
 author: ajlam
 ms.author: andrela
-ms.service: mysql
+ms.service: postgresql
 ms.topic: how-to
 ms.date: 9/22/2020
-ms.openlocfilehash: d99634388b9c4db99c996cfccb9bb5f12682f217
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 2ea07e2bc12e6fc0d62abd462b8537c6a93689f9
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92490117"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97935800"
 ---
 # <a name="manage-an-azure-database-for-postgresql-single-server-using-the-azure-cli"></a>Verwalten eines Azure Database for PostgreSQL-Einzelservers über die Azure CLI
 
@@ -21,19 +21,19 @@ In diesem Artikel erfahren Sie, wie Sie Ihre in Azure bereitgestellten Einzelser
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen. Für den Artikel müssen Sie mindestens Version 2.0 der Azure-Befehlszeilenschnittstelle lokal ausführen. Führen Sie den Befehl `az --version` aus, um die installierte Version anzuzeigen. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sie bei Bedarf unter [Installieren der Azure CLI](/cli/azure/install-azure-cli).
 
-Sie müssen sich mithilfe des Befehls [az login](/cli/azure/reference-index#az-login) bei Ihrem Konto anmelden. Beachten Sie die Eigenschaft **id** , die auf die **Abonnement-ID** für Ihr Azure-Konto verweist.
+Sie müssen sich mithilfe des Befehls [az login](/cli/azure/reference-index#az-login) bei Ihrem Konto anmelden. Beachten Sie die Eigenschaft **id**, die auf die **Abonnement-ID** für Ihr Azure-Konto verweist.
 
 ```azurecli-interactive
 az login
 ```
 
-Wählen Sie mithilfe des Befehls [az account set](/cli/azure/account) das Abonnement unter Ihrem Konto aus. Notieren Sie sich aus der Ausgabe von **az login** den Wert für **id** . Sie verwenden ihn im Befehl als Wert für das Argument **subscription** . Wenn Sie über mehrere Abonnements verfügen, wählen Sie das entsprechende Abonnement aus, in dem die Ressource fakturiert sein sollte. Verwenden Sie [az account list](/cli/azure/account#az-account-list), um alle Abonnements abzurufen.
+Wählen Sie mithilfe des Befehls [az account set](/cli/azure/account) das Abonnement unter Ihrem Konto aus. Notieren Sie sich aus der Ausgabe von **az login** den Wert für **id**. Sie verwenden ihn im Befehl als Wert für das Argument **subscription**. Wenn Sie über mehrere Abonnements verfügen, wählen Sie das entsprechende Abonnement aus, in dem die Ressource fakturiert sein sollte. Verwenden Sie [az account list](/cli/azure/account#az-account-list), um alle Abonnements abzurufen.
 
 ```azurecli
 az account set --subscription <subscription id>
 ```
 
-Wenn Sie noch keinen Server erstellt haben, lesen Sie diesen [Schnellstart](quickstart-create-server-database-azure-cli.md), um einen erstellen zu können.
+Wenn Sie noch keinen Server erstellt haben, lesen Sie diesen [Schnellstart](quickstart-create-server-database-azure-cli.md), um einen zu erstellen.
 
 [!INCLUDE [cloud-shell-try-it](../../includes/cloud-shell-try-it.md)]
 
@@ -60,7 +60,7 @@ storage-size | 6.144 | Die Speicherkapazität des Servers (Einheit: MB). Mindest
 
 
 ## <a name="manage-postgresql-databases-on-a-server"></a>Verwalten Sie PostgreSQL-Datenbanken auf einem Server.
-Sie können die Eigenschaften einer Datenbank auf Ihrem Server mit einem der folgenden Befehle erstellen, löschen, auflisten und anzeigen.
+Sie können die Eigenschaften einer Datenbank auf Ihrem Server mit einem der folgenden Befehle erstellen, löschen, auflisten und anzeigen:
 
 | Cmdlet | Verwendung| BESCHREIBUNG |
 | --- | ---| --- |

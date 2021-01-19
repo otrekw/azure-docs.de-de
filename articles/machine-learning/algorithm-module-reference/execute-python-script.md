@@ -9,13 +9,13 @@ ms.topic: reference
 ms.custom: devx-track-python
 author: likebupt
 ms.author: keli19
-ms.date: 12/02/2020
-ms.openlocfilehash: d1e4ffa525c5628d0b6c9a3ca67f3e069c44e823
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.date: 01/02/2021
+ms.openlocfilehash: 7b5bc77375d684340116a21b7f95cf576d99dad2
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97679184"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98065353"
 ---
 # <a name="execute-python-script-module"></a>Execute Python Script-Modul
 
@@ -60,7 +60,7 @@ if spec is None:
 > [!WARNING]
 > Das Modul vom Typ „Excute Python Script“ unterstützt nicht die Installation von Paketen, die von zusätzlichen nativen Bibliotheken mit Befehlen wie „apt-get“ abhängen, z. B. Java, PyODBC usw. Dies liegt daran, dass dieses Modul in einer einfachen Umgebung ausgeführt wird, in der Python nur vorinstalliert ist und keine Administratorrechte besitzt.  
 
-## <a name="access-to-registered-datasets"></a>Zugreifen auf registrierte Datasets
+## <a name="access-to-current-workspace-and-registered-datasets"></a>Zugreifen auf den aktuellen Arbeitsbereich und registrierte Datasets
 
 Verwenden Sie den folgenden Beispielcode, um auf die in Ihrem Arbeitsbereich [registrierten Datasets](../how-to-create-register-datasets.md) zuzugreifen:
 
@@ -71,8 +71,10 @@ def azureml_main(dataframe1 = None, dataframe2 = None):
     print(f'Input pandas.DataFrame #1: {dataframe1}')
     from azureml.core import Run
     run = Run.get_context(allow_offline=True)
+    #access to current workspace
     ws = run.experiment.workspace
 
+    #access to registered dataset of current workspace
     from azureml.core import Dataset
     dataset = Dataset.get_by_name(ws, name='test-register-tabular-in-designer')
     dataframe1 = dataset.to_pandas_dataframe()
@@ -219,7 +221,9 @@ Das Modul „Execute Python Script“ (Python-Skript ausführen) enthält Python
 
 6. Übermitteln Sie die Pipeline.
 
-    Alle Daten und der gesamte Code werden in einen virtuellen Computer geladen und unter Verwendung der angegebenen Python-Umgebung ausgeführt.
+    Wenn das Modul abgeschlossen wurde, überprüfen Sie, ob die Ausgabe den Erwartungen entspricht.
+
+    Wenn beim Modul ein Fehler aufgetreten ist, müssen Sie eine Problembehandlung durchführen. Wählen Sie das Modul aus, und öffnen Sie im rechten Bereich **Ausgaben und Protokolle**. Öffnen Sie **70_driver_log.txt**, und suchen Sie nach **in azureml_main**, um die Zeile zu ermitteln, die den Fehler verursacht hat. Beispielsweise gibt „File "/tmp/tmp01_ID/user_script.py", line 17, in azureml_main“ an, dass der Fehler in Zeile 17 Ihres Python-Skripts aufgetreten ist.
 
 ## <a name="results"></a>Ergebnisse
 

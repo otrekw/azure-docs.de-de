@@ -10,16 +10,16 @@ ms.topic: reference
 ms.service: machine-learning
 ms.subservice: core
 ms.date: 12/21/2020
-ms.openlocfilehash: 132c4b223b99f7110cd4553bb0dd93f1e58f4cdd
-ms.sourcegitcommit: a89a517622a3886b3a44ed42839d41a301c786e0
+ms.openlocfilehash: b675e72df4f128d0ce096b3ac398fab63c20557e
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97733216"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97930802"
 ---
 # <a name="service-limits-in-azure-machine-learning"></a>Diensteinschränkungen in Azure Machine Learning
 
-In diesem Abschnitt werden die grundlegenden Kontingente und Drosselungsschwellenwerte in Azure Machine Learning aufgelistet.
+In diesem Abschnitt werden die grundlegenden Kontingente und Drosselungsschwellenwerte in Azure Machine Learning aufgelistet. Informationen zum Erhöhen der Ressourcenkontingente finden Sie unter [Verwalten und Erhöhen der Kontingente für Ressourcen](how-to-manage-quotas.md).
 
 ## <a name="workspaces"></a>Arbeitsbereiche
 | Begrenzung | Wert |
@@ -73,3 +73,5 @@ Einige Grenzwerte können für einzelne Arbeitsbereiche erhöht werden, indem Si
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Konfigurieren Ihrer Azure Machine Learning-Umgebung](how-to-configure-environment.md)
+- Informationen zum Erhöhen der Ressourcenkontingente finden Sie unter [Verwalten und Erhöhen der Kontingente für Ressourcen](how-to-manage-quotas.md).
+

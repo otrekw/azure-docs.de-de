@@ -3,14 +3,14 @@ title: Azure Kubernetes Service (AKS) mit Betriebszeit-SLA
 description: Erfahren Sie mehr über das optionale Betriebszeit-SLA-Angebot für den Azure Kubernetes Service (AKS)-API-Server.
 services: container-service
 ms.topic: conceptual
-ms.date: 06/24/2020
+ms.date: 01/08/2021
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: d9d22b54ef2534cf0adb205175fdc3f1c57205fb
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: 95728ca14b96adf7396ca13888107477d953b2a9
+ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97607338"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98033335"
 ---
 # <a name="azure-kubernetes-service-aks-uptime-sla"></a>Azure Kubernetes Service (AKS): Betriebszeit-SLA
 
@@ -26,7 +26,7 @@ Kunden können nach wie vor unbegrenzt kostenlose Cluster mit einem Servicelevel
 ## <a name="region-availability"></a>Regionale Verfügbarkeit
 
 * Die Uptime-SLA ist in öffentlichen Regionen und Azure Government-Regionen mit [AKS-Unterstützung](https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service) verfügbar.
-* Die Uptime-SLA ist für [private AKS-Cluster][private-clusters] in allen Regionen verfügbar, in denen AKS unterstützt wird.
+* Die Uptime-SLA ist für [private AKS-Cluster][private-clusters] in allen öffentlichen Regionen verfügbar, in denen AKS unterstützt wird.
 
 ## <a name="sla-terms-and-conditions"></a>SLA-Geschäftsbedingungen
 

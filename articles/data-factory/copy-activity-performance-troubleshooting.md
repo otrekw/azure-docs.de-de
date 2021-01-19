@@ -11,13 +11,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 12/09/2020
-ms.openlocfilehash: d22d040b0001ee30e29c551e686a7cb6bc47c2af
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.date: 01/07/2021
+ms.openlocfilehash: ee6105376f5e8dc884f13e04db51126c039328e9
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96921918"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97968890"
 ---
 # <a name="troubleshoot-copy-activity-performance"></a>Problembehandlung für die Leistung der Kopieraktivität
 
@@ -172,6 +172,60 @@ Gehen Sie wie folgt vor, falls die Kopierleistung nicht Ihre Erwartungen erfüll
 
   - Erwägen Sie, die [parallelen Kopien](copy-activity-performance-features.md) allmählich zu optimieren. Beachten Sie, dass sich zu viele parallele Kopien ggf. negativ auf die Leistung auswirken können.
 
+
+## <a name="connector-and-ir-performance"></a>Leistung von Connector und Integration Runtime
+
+In diesem Abschnitt werden einige Hinweise zum Beheben Leistungsproblemen für bestimmte Connectortypen oder Integration Runtimes (IRs) erläutert.
+
+### <a name="activity-execution-time-varies-using-azure-ir-vs-azure-vnet-ir"></a>Ausführungszeit für Aktivitäten variiert zwischen Azure IR und VNet IR
+
+Die Ausführungszeit für Aktivitäten variiert je nachdem, auf welcher Integration Runtime das Dataset basiert.
+
+- **Symptome:** Durch einfaches Umschalten der Dropdownliste „Verknüpfter Dienst“ im Dataset werden dieselben Pipelineaktivitäten ausgeführt, die Laufzeiten unterscheiden sich jedoch stark. Wenn das Dataset auf der Integration Runtime für verwaltete virtuelle Netzwerke basiert, dauert die Ausführung im Durchschnitt länger als 2 Minuten. Sie dauert jedoch ca. 20 Sekunden, wenn es auf der Standard-Integration Runtime basiert.
+
+- **Ursache:** Wenn Sie die Details der Pipelineausführungen überprüfen, können Sie feststellen, dass die langsame Pipeline in der IR für das verwaltete VNET (virtuelles Netzwerk) ausgeführt wird, während die normale Pipeline in der Azure IR ausgeführt wird. Die Warteschlangenzeit ist im IR für das verwaltete VNET länger als in der Azur IR. Der Grund dafür ist, dass wir nicht einen Computeknoten pro Data Factory reservieren und somit vor dem Starten jeder Kopieraktivität eine Aufwärmphase von ca. 2 Minuten erfolgt. Dies geschieht hauptsächlich beim Beitritt zu einem VNET statt in der Azure IR.
+
+    
+### <a name="low-performance-when-loading-data-into-azure-sql-database"></a>Geringe Leistung beim Laden von Daten in Azure SQL-Datenbank
+
+- **Symptome:** Daten werden nur langsam nach Azure SQL-Datenbank kopiert.
+
+- **Ursache:** Die Grundursache dieses Problems ist meistens ein Engpass bei der Azure SQL-Datenbank. Folgende Ursachen kommen in Betracht:
+
+    - Die Azure SQL-Datenbank wird auf einer zu niedrigen Ebene ausgeführt.
+
+    - Der DTU-Verbrauch der Azure SQL-Datenbank beträgt nahezu 100 %. Sie können [die Leistung überwachen](https://docs.microsoft.com/azure/azure-sql/database/monitor-tune-overview) und ein Upgrade der Ebene der Azure SQL-Datenbank in Erwägung ziehen.
+
+    - Die Indizes sind nicht ordnungsgemäß festgelegt. Entfernen Sie vor dem Laden der Daten alle Indizes, und erstellen Sie sie nach Abschluss des Ladevorgangs neu.
+
+    - WriteBatchSize ist nicht groß genug für die Zeilengröße des Schemas. Versuchen Sie, den Wert der Eigenschaft zu erhöhen, um das Problem zu beheben.
+
+    - Anstelle einer Masseneinfügung wird eine gespeicherte Prozedur verwendet, bei der eine geringere Leistung zu erwarten ist. 
+
+- **Lösung:** Informieren Sie sich unter [Problembehandlung für die Leistung der Kopieraktivität](https://docs.microsoft.com/azure/data-factory/copy-activity-performance-troubleshooting).
+
+### <a name="timeout-or-slow-performance-when-parsing-large-excel-file"></a>Timeout oder geringe Leistung beim Analysieren einer großen Excel-Datei
+
+- **Symptome:**
+
+    - Wenn Sie ein Excel-Dataset erstellen und über „Aus Verbindung/Speicher“ ein Schema importieren oder wenn Sie Arbeitsblätter auflisten, aktualisieren oder eine Datenvorschau anzeigen, kann ein Timeoutfehler auftreten, falls die Excel-Datei sehr groß ist.
+
+    - Wenn Sie die Kopieraktivität zum Kopieren von Daten aus einer großen Excel-Datei (>= 100 MB) in einen anderen Datenspeicher verwenden, wird der Vorgang unter Umständen nur langsam ausgeführt, oder es tritt ein Fehler vom Typ „Nicht genügend Arbeitsspeicher“ auf.
+
+- **Ursache**: 
+
+    - Für Vorgänge wie das Importieren von Schemas, das Anzeigen einer Datenvorschau und das Auflisten von Arbeitsblättern eines Excel-Datasets beträgt der Timeoutzeitraum 100 Sekunden und ist statisch. Bei sehr umfangreichen Excel-Dateien können diese Vorgänge unter Umständen nicht innerhalb des Timeoutzeitraums abgeschlossen werden.
+
+    - Bei der ADF-Kopieraktivität wird die gesamte Excel-Datei in den Arbeitsspeicher eingelesen. Anschließend wird das angegebene Arbeitsblatt ermittelt, und die Daten werden aus den Zellen ausgelesen. Dieses Verhalten basiert auf dem zugrunde liegenden SDK, das von ADF verwendet wird.
+
+- **Lösung:** 
+
+    - Zum Importieren von Schemas können Sie eine kleinere Beispieldatei generieren, bei der es sich um eine Teilmenge der Originaldatei handelt, und anstelle von „Schema aus Verbindung/Speicher importieren“ die Option „Schema aus Beispieldatei importieren“ auswählen.
+
+    - Zum Auflisten von Arbeitsblättern können Sie in der Dropdownliste „Arbeitsblatt“ auf „Bearbeiten“ klicken und stattdessen den Arbeitsblattnamen bzw. den Index eingeben.
+
+    - Zum Kopieren von großen Excel-Dateien (> 100 MB) in einen anderen Speicher können Sie den Datenfluss für Excel-Quellen verwenden, der Lesevorgänge streamt und eine bessere Leistung bietet.
+    
 ## <a name="other-references"></a>Andere Referenzen
 
 Hier finden Sie Referenzen zur Leistungsüberwachung und -optimierung für einige der unterstützten Datenspeicher:

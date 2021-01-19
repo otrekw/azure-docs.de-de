@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: df25278d37e518e99bc315a315e017b98c7f4e58
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: deced953089fcbb2640cbf3e402db24cb511e769
+ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89049382"
+ms.lasthandoff: 01/06/2021
+ms.locfileid: "97935885"
 ---
 # <a name="what-is-conditional-access-report-only-mode"></a>Was ist der reine Berichtsmodus des bedingten Zugriffs?
 
