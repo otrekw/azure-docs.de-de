@@ -3,12 +3,12 @@ title: 'Fortlaufende Videoaufzeichnung in der Cloud und Wiedergabe aus der Cloud
 description: In diesem Tutorial erfahren Sie, wie Sie Azure Live Video Analytics in Azure IoT Edge für die fortlaufende Videoaufzeichnung in der Cloud verwenden und einen beliebigen Teil dieses Videos mit Azure Media Services streamen.
 ms.topic: tutorial
 ms.date: 05/27/2020
-ms.openlocfilehash: c38ab1f32d1ef4e54cd8568ff17d325fabdefc31
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 8fa2b65416499e58235fa312ffdcd2d71c3cfb39
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96498369"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98060145"
 ---
 # <a name="tutorial-continuous-video-recording-to-the-cloud-and-playback-from-the-cloud"></a>Tutorial: Fortlaufende Videoaufzeichnung in der Cloud und Wiedergabe aus der Cloud
 
@@ -51,6 +51,9 @@ Nach dem Abschluss dieser Schritte sind in Ihrem Azure Abonnement relevante Azur
 * Azure Media Services-Konto
 * Virtueller Linux-Computer in Azure mit installierter [IoT Edge-Runtime](../../iot-edge/how-to-install-iot-edge.md)
 
+> [!TIP]
+> Falls für erstellte Azure-Ressourcen Probleme auftreten, helfen Ihnen die Informationen zum Beheben von häufigen Problemen im **[Leitfaden für die Problembehandlung](troubleshoot-how-to.md#common-error-resolutions)** weiter.
+
 ## <a name="concepts"></a>Konzepte
 
 Wie im Artikel zum [Mediengraph-Konzept](media-graph-concept.md) erläutert, können Sie mithilfe eines Mediengraphs Folgendes definieren:
@@ -64,7 +67,9 @@ Wie im Artikel zum [Mediengraph-Konzept](media-graph-concept.md) erläutert, kö
 > [!div class="mx-imgBorder"]
 > :::image type="content" source="./media/continuous-video-recording-tutorial/continuous-video-recording-overview.svg" alt-text="Mediendiagramm":::
 
-In diesem Tutorial wird ein mithilfe des [Live555-Medienservers](https://github.com/Azure/live-video-analytics/tree/master/utilities/rtspsim-live555) erstelltes Edge-Modul verwendet, um eine RTSP-Kamera zu simulieren. Innerhalb des Mediengraphs wird ein Knoten vom Typ [RTSP-Quelle](media-graph-concept.md#rtsp-source) verwendet, um den Livefeed abzurufen, und das Video wird an einen Knoten vom Typ [ Medienobjektsenke](media-graph-concept.md#asset-sink) gesendet, um es in einem Medienobjekt aufzuzeichnen.
+In diesem Tutorial wird ein mithilfe des [Live555-Medienservers](https://github.com/Azure/live-video-analytics/tree/master/utilities/rtspsim-live555) erstelltes Edge-Modul verwendet, um eine RTSP-Kamera zu simulieren. Innerhalb des Mediengraphs wird ein Knoten vom Typ [RTSP-Quelle](media-graph-concept.md#rtsp-source) verwendet, um den Livefeed abzurufen, und das Video wird an einen Knoten vom Typ [ Medienobjektsenke](media-graph-concept.md#asset-sink) gesendet, um es in einem Medienobjekt aufzuzeichnen. In diesem Tutorial wird ein [Beispielvideo zur Schnellstraßenkreuzung](https://lvamedia.blob.core.windows.net/public/camera-300s.mkv) verwendet.
+<iframe src="https://www.microsoft.com/en-us/videoplayer/embed/RE4LTY4" width="640" height="320" allowFullScreen="true" frameBorder="0"></iframe>
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4LTY4]
 
 ## <a name="set-up-your-development-environment"></a>Einrichten der Entwicklungsumgebung
 
@@ -169,14 +174,14 @@ Wenn Sie das Modul „Live Video Analytics in IoT Edge“ verwenden, um den Liv
 
     > [!div class="mx-imgBorder"]
     > :::image type="content" source="./media/run-program/show-verbose-message.png" alt-text="Show Verbose Message (Ausführliche Meldung anzeigen)":::
-1. <!--In Visual Studio Code, go-->Navigieren Sie zu „src/cloud-to-device-console-app/operations.json“.
+1. Navigieren Sie zu „src/cloud-to-device-console-app/operations.json“.
 1. Bearbeiten Sie unter dem Knoten **GraphTopologySet** Folgendes:
 
     `"topologyUrl" : "https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/cvr-asset/topology.json" `
 1. Vergewissern Sie sich anschließend unter den Knoten **GraphInstanceSet** und **GraphTopologyDelete**, dass der Wert für **topologyName** dem Wert der Eigenschaft **name** in der vorherigen Graphtopologie entspricht:
 
     `"topologyName" : "CVRToAMSAsset"`  
-1. Öffnen Sie die [Topologie](https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/cvr-asset/topology.json) in einem Browser, und sehen Sie sich „assetNamePattern“ an. Es empfiehlt sich gegebenenfalls, in der Datei „operations.json“ den Namen der Graphinstanz (standardmäßig „Sample-Graph-1“) zu ändern, um sicherzustellen, dass Sie über ein Medienobjekt mit einem eindeutigen Namen verfügen.
+1. Öffnen Sie die [Topologie](https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/cvr-asset/2.0/topology.json) in einem Browser, und sehen Sie sich „assetNamePattern“ an. Es empfiehlt sich gegebenenfalls, in der Datei „operations.json“ den Namen der Graphinstanz (standardmäßig „Sample-Graph-1“) zu ändern, um sicherzustellen, dass Sie über ein Medienobjekt mit einem eindeutigen Namen verfügen.
 
     `"assetNamePattern": "sampleAsset-${System.GraphTopologyName}-${System.GraphInstanceName}"`    
 1. Starten Sie eine Debugsitzung, indem Sie F5 drücken. Daraufhin werden im **Terminalfenster** einige Nachrichten ausgegeben.
@@ -187,7 +192,7 @@ Wenn Sie das Modul „Live Video Analytics in IoT Edge“ verwenden, um den Liv
     Executing operation GraphTopologyList
     -----------------------  Request: GraphTopologyList  --------------------------------------------------
     {
-      "@apiVersion": "1.0"
+      "@apiVersion": "2.0"
     }
     ---------------  Response: GraphTopologyList - Status: 200  ---------------
     {
@@ -204,7 +209,7 @@ Wenn Sie das Modul „Live Video Analytics in IoT Edge“ verwenden, um den Liv
      
      ```
      {
-       "@apiVersion": "1.0",
+       "@apiVersion": "2.0",
        "name": "Sample-Graph-1",
        "properties": {
          "topologyName": "CVRToAMSAsset",
@@ -277,7 +282,7 @@ Wenn die Graphinstanz aktiviert wird, wird vom RTSP-Quellknoten versucht, eine V
 
 ### <a name="recordingstarted-event"></a>RecordingStarted-Ereignis
 
-Wenn der Knoten der Medienobjektsenke mit der Videoaufzeichnung beginnt, wird ein Ereignis vom Typ „Microsoft.Media.Graph.Operational.RecordingStarted“ ausgegeben:
+Wenn der Knoten der Medienobjektsenke mit der Videoaufzeichnung beginnt, wird ein Ereignis vom Typ **Microsoft.Media.Graph.Operational.RecordingStarted** ausgegeben:
 
 ```
 [IoTHubMonitor] [9:42:38 AM] Message received from [lva-sample-device/lvaEdge]:
@@ -302,7 +307,7 @@ Der Textabschnitt enthält Informationen über den Ausgabespeicherort. In diesem
 
 ### <a name="recordingavailable-event"></a>RecordingAvailable-Ereignis
 
-Wie der Name bereits vermuten lässt, wird das Ereignis „RecordingStarted“ gesendet, wenn die Aufzeichnung begonnen hat. Unter Umständen wurden aber noch keine Videodaten in das Medienobjekt hochgeladen. Wenn vom Knoten der Medienobjektsenke Videodaten in das Medienobjekt hochgeladen wurden, wird ein Ereignis vom Typ „Microsoft.Media.Graph.Operational.RecordingAvailable“ ausgegeben:
+Wie der Name bereits vermuten lässt, wird das Ereignis „RecordingStarted“ gesendet, wenn die Aufzeichnung begonnen hat. Unter Umständen wurden aber noch keine Videodaten in das Medienobjekt hochgeladen. Wenn vom Knoten der Medienobjektsenke Videodaten in das Medienobjekt hochgeladen wurden, wird ein Ereignis vom Typ **Microsoft.Media.Graph.Operational.RecordingAvailable** ausgegeben:
 
 ```
 [IoTHubMonitor] [[9:43:38 AM] Message received from [lva-sample-device/lvaEdge]:
@@ -329,7 +334,7 @@ Der Textabschnitt enthält Informationen über den Ausgabespeicherort. In diesem
 
 ### <a name="recordingstopped-event"></a>Ereignis „RecordingStopped“
 
-Wenn Sie die Graphinstanz deaktivieren, beendet der Knoten der Medienobjektsenke das Aufzeichnen von Videodaten im Medienobjekt. Er gibt dieses Ereignis vom Typ „Microsoft.Media.Graph.Operational.RecordingStopped“ aus:
+Wenn Sie die Graphinstanz deaktivieren, beendet der Knoten der Medienobjektsenke das Aufzeichnen von Videodaten im Medienobjekt. Er gibt dieses Ereignis vom Typ **Microsoft.Media.Graph.Operational.RecordingStopped** aus:
 
 ```
 [IoTHubMonitor] [11:33:31 PM] Message received from [lva-sample-device/lvaEdge]:

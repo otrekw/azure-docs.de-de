@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie mit Azure Custom Vision ein Containermodell e
 ms.topic: tutorial
 ms.date: 09/08/2020
 zone_pivot_groups: ams-lva-edge-programming-languages
-ms.openlocfilehash: 614c4e401579eda68d8030dc2d2a42b2c4736031
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: de788c337ce8030b73538565e4f374ffc7db55b8
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97401694"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98060499"
 ---
 # <a name="tutorial-analyze-live-video-with-live-video-analytics-on-iot-edge-and-azure-custom-vision"></a>Tutorial: Analysieren von Livevideo mit Live Video Analytics in IoT Edge and Azure Custom Vision
 
@@ -61,8 +61,11 @@ Lesen Sie die folgenden Artikel, bevor Sie beginnen:
 ::: zone-end
 ## <a name="review-the-sample-video"></a>Überprüfen des Beispielvideos
 
+In diesem Tutorial wird mit einer [Spielzeugauto-Rückschlussvideodatei](https://lvamedia.blob.core.windows.net/public/t2.mkv) ein Livestream simuliert. Sie können das Video z. B. in der Anwendung [VLC Media Player](https://www.videolan.org/vlc/) überprüfen. Wählen Sie **STRG+N** aus, und fügen Sie dann einen Link zum [Spielzeugauto-Rückschlussvideo](https://lvamedia.blob.core.windows.net/public/t2.mkv) ein, um die Wiedergabe zu starten. Beachten Sie während der Wiedergabe des Videos, dass am 36-Sekunden-Marker ein Spielzeug-LKW im Video erscheint. Das benutzerdefinierte Modell wurde zum Erkennen dieses speziellen Spielzeug-LKW trainiert. 
 
-In diesem Tutorial wird mit einer [Spielzeugauto-Rückschlussvideodatei](https://lvamedia.blob.core.windows.net/public/t2.mkv) ein Livestream simuliert. Sie können das Video z. B. in der Anwendung [VLC Media Player](https://www.videolan.org/vlc/) überprüfen. Wählen Sie **STRG+N** aus, und fügen Sie dann einen Link zum [Spielzeugauto-Rückschlussvideo](https://lvamedia.blob.core.windows.net/public/t2.mkv) ein, um die Wiedergabe zu starten. Beachten Sie während der Wiedergabe des Videos, dass am 36-Sekunden-Marker ein Spielzeug-LKW im Video erscheint. Das benutzerdefinierte Modell wurde zum Erkennen dieses speziellen Spielzeug-LKW trainiert. In diesem Tutorial verwenden Sie Live Video Analytics in IoT Edge, um Spielzeug-LKW zu erkennen und entsprechende Rückschlussereignisse auf dem IoT Edge Hub zu veröffentlichen.
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4LPwK]
+
+In diesem Tutorial verwenden Sie Live Video Analytics in IoT Edge, um Spielzeug-LKW zu erkennen und entsprechende Rückschlussereignisse auf dem IoT Edge Hub zu veröffentlichen.
 
 ## <a name="overview"></a>Übersicht
 
@@ -127,7 +130,6 @@ Nachdem Sie den Vorgang abgeschlossen haben, können Sie das Modell in einen Doc
 
 ## <a name="examine-the-sample-files"></a>Untersuchen der Beispieldateien
 
-
 ::: zone pivot="programming-language-csharp"
 [!INCLUDE [examine-sample-files](includes/custom-vision-tutorial/csharp/examine-sample-files.md)]
 ::: zone-end
@@ -140,7 +142,7 @@ Nachdem Sie den Vorgang abgeschlossen haben, können Sie das Modell in einen Doc
 
 1. Navigieren Sie in Visual Studio Code zu „src/cloud-to-device-console-app/operations.json“.
 
-1. Vergewissern Sie sich, dass unter `GraphTopologySet` Folgendes zutrifft:<br/>`"topologyUrl" : "https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/httpExtension/topology.json"`
+1. Vergewissern Sie sich, dass unter `GraphTopologySet` Folgendes zutrifft:<br/>`"topologyUrl" : "https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/httpExtension/2.0/topology.json"`
 1. Stellen Sie unter `GraphInstanceSet` Folgendes sicher:
     1. `"topologyName" : "InferencingWithHttpExtension"`
     1. Fügen Sie Folgendes oben zum Parameterarray hinzu: `{"name": "inferencingUrl","value": "http://cv:80/image"},`
@@ -261,7 +263,7 @@ In den folgenden Meldungen werden vom Live Video Analytics-Modul die Anwendungse
 
 ### <a name="mediasessionestablished-event"></a>MediaSessionEstablished-Ereignis
 
-Wenn ein Mediengraph instanziiert wird, versucht der Knoten der RTSP-Quelle eine Verbindung mit dem RTSP-Server herzustellen, der im Container „rtspsim-live555“ ausgeführt wird. Wenn die Verbindungsherstellung erfolgreich ist, wird das folgende Ereignis ausgegeben. Der Ereignistyp ist `Microsoft.Media.MediaGraph.Diagnostics.MediaSessionEstablished`.
+Wenn ein Mediengraph instanziiert wird, versucht der Knoten der RTSP-Quelle eine Verbindung mit dem RTSP-Server herzustellen, der im Container „rtspsim-live555“ ausgeführt wird. Wenn die Verbindungsherstellung erfolgreich ist, wird das folgende Ereignis ausgegeben. Der Ereignistyp lautet **Microsoft.Media.MediaGraph.Diagnostics.MediaSessionEstablished**.
 
 ```
 {

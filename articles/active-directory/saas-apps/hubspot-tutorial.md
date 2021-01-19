@@ -9,26 +9,22 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 04/14/2019
+ms.date: 12/27/2020
 ms.author: jeedes
-ms.openlocfilehash: c53b7fed17ba4ef2000b905b202286338cd461ed
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 3b60ab21bb1e8f5270512d3f1e77aeab2baedc31
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92442936"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97968635"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hubspot"></a>Tutorial: Azure Active Directory-Integration in HubSpot
 
-In diesem Tutorial erfahren Sie, wie Sie HubSpot in Azure Active Directory (Azure AD) integrieren.
+In diesem Tutorial erfahren Sie, wie Sie HubSpot in Azure Active Directory (Azure AD) integrieren. Die Integration von HubSpot in Azure AD ermöglicht Folgendes:
 
-Die Integration von HubSpot in Azure AD bietet die folgenden Vorteile:
-
-* Sie können mit Azure AD steuern, wer Zugriff auf HubSpot hat.
-* Benutzer können sich mit ihren Azure AD-Konten automatisch bei HubSpot anmelden (einmaliges Anmelden; Single Sign-On, SSO).
-* Sie können Ihre Konten an einem zentralen Ort, im Azure-Portal, verwalten.
-
-Weitere Informationen zur Integration von SaaS-Apps (Software-as-a-Service) in Azure AD finden Sie unter [Einmaliges Anmelden bei Anwendungen in Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
+* Steuern Sie in Azure AD, wer Zugriff auf HubSpot hat.
+* Ermöglichen Sie es Ihren Benutzern, sich mit ihren Azure AD-Konten automatisch bei HubSpot anzumelden.
+* Verwalten Sie Ihre Konten zentral im Azure-Portal.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -46,31 +42,20 @@ HubSpot unterstützt die folgenden Features:
 * **SP-initiiertes einmaliges Anmelden**
 * **IDP-initiiertes einmaliges Anmelden**
 
-## <a name="add-hubspot-in-the-azure-portal"></a>Hinzufügen von HubSpot im Azure-Portal
+## <a name="adding-hubspot-from-the-gallery"></a>Hinzufügen von HubSpot aus dem Katalog
 
-Damit Sie HubSpot in Azure AD integrieren können, müssen Sie HubSpot zur Liste der verwalteten SaaS-Apps hinzufügen.
+Zum Konfigurieren der Integration von HubSpot in Azure AD müssen Sie HubSpot über den Katalog der Liste mit den verwalteten SaaS-Apps hinzufügen.
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
+1. Melden Sie sich mit einem Geschäfts-, Schul- oder Unikonto oder mit einem persönlichen Microsoft-Konto beim Azure-Portal an.
+1. Wählen Sie im linken Navigationsbereich den Dienst **Azure Active Directory** aus.
+1. Navigieren Sie zu **Unternehmensanwendungen**, und wählen Sie dann **Alle Anwendungen** aus.
+1. Wählen Sie zum Hinzufügen einer neuen Anwendung **Neue Anwendung** aus.
+1. Geben Sie im Abschnitt **Aus Katalog hinzufügen** den Suchbegriff **HubSpot** in das Suchfeld ein.
+1. Wählen Sie im Ergebnisbereich **HubSpot** aus, und fügen Sie dann die App hinzu. Warten Sie einige Sekunden, während die App Ihrem Mandanten hinzugefügt wird.
 
-1. Wählen Sie im linken Menü **Azure Active Directory** aus.
+## <a name="configure-and-test-azure-ad-sso-for-hubspot"></a>Konfigurieren und Testen des einmaligen Anmeldens von Azure AD für HubSpot
 
-    ![Die Option „Azure Active Directory“](common/select-azuread.png)
-
-1. Wählen Sie **Unternehmensanwendungen** > **Alle Anwendungen** .
-
-    ![Bereich „Unternehmensanwendungen“](common/enterprise-applications.png)
-
-1. Wählen Sie zum Hinzufügen einer Anwendung **Neue Anwendung** aus.
-
-    ![Die Option „Neue Anwendung“](common/add-new-app.png)
-
-1. Geben Sie im Suchfeld **HubSpot** ein. Wählen Sie in den Suchergebnissen **HubSpot** und dann **Hinzufügen** aus.
-
-    ![HubSpot in der Ergebnisliste](common/search-new-app.png)
-
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurieren und Testen des einmaligen Anmeldens in Azure AD
-
-In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit HubSpot mithilfe eines Testbenutzers namens **Britta Simon** . Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in HubSpot eingerichtet werden.
+In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit HubSpot mithilfe eines Testbenutzers namens **Britta Simon**. Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in HubSpot eingerichtet werden.
 
 Zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD mit HubSpot müssen Sie die folgenden Schritte ausführen:
 
@@ -85,19 +70,11 @@ Zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD mit HubSpot m
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens in Azure AD
 
-In diesem Abschnitt konfigurieren Sie das einmalige Anmelden von Azure AD mit HubSpot im Azure-Portal.
+1. Navigieren Sie im Azure-Portal auf der Anwendungsintegrationsseite für **HubSpot** zum Abschnitt **Verwalten**, und wählen Sie **Einmaliges Anmelden** aus.
+1. Wählen Sie auf der Seite **SSO-Methode auswählen** die Methode **SAML** aus.
+1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Stiftsymbol für **Grundlegende SAML-Konfiguration**, um die Einstellungen zu bearbeiten.
 
-1. Wählen Sie im [Azure-Portal](https://portal.azure.com/) im Anwendungsintegrationsbereich für **HubSpot** die Option **Einmaliges Anmelden** aus.
-
-    ![Option „Einmaliges Anmelden konfigurieren“](common/select-sso.png)
-
-1. Wählen Sie im Bereich **SSO-Methode auswählen** den Modus **SAML** oder **SAML/WS-Fed** aus, um einmaliges Anmelden zu aktivieren.
-
-    ![Auswahlmodus für einmaliges Anmelden](common/select-saml-option.png)
-
-1. Wählen Sie im Bereich **Einmaliges Anmelden (SSO) mit SAML einrichten** die Option **Bearbeiten** (Stiftsymbol) aus, um den Bereich **Grundlegende SAML-Konfiguration** zu öffnen.
-
-    ![Bearbeiten der SAML-Basiskonfiguration](common/edit-urls.png)
+   ![Bearbeiten der SAML-Basiskonfiguration](common/edit-urls.png)
 
 1. Zum Konfigurieren des *IDP-initiierten Modus* führen Sie im Bereich **Grundlegende SAML-Konfiguration** die folgenden Schritte aus:
 
@@ -110,7 +87,7 @@ In diesem Abschnitt konfigurieren Sie das einmalige Anmelden von Azure AD mit Hu
     > [!NOTE]
     > Sie können sich zum Formatieren der URLs auch die Muster im Bereich **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
 
-1. So konfigurieren Sie die Anwendung im *SP-initiierten Modus* :
+1. So konfigurieren Sie die Anwendung im *SP-initiierten Modus*:
 
     1. Wählen Sie **Zusätzliche URLs festlegen** aus.
 
@@ -164,53 +141,27 @@ In diesem Abschnitt konfigurieren Sie das einmalige Anmelden von Azure AD mit Hu
 
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 
-In diesem Abschnitt erstellen Sie im Azure-Portal eine Testbenutzerin mit dem Namen Britta Simon.
+In diesem Abschnitt erstellen Sie im Azure-Portal einen Testbenutzer mit dem Namen B. Simon.
 
-1. Wählen Sie im Azure-Portal **Azure Active Directory** > **Benutzer** > **Alle Benutzer** aus.
-
-    ![Optionen „Benutzer“ und „Alle Benutzer“](common/users.png)
-
-1. Wählen Sie **Neuer Benutzer** aus.
-
-    ![Option „Neuer Benutzer“](common/new-user.png)
-
-1. Führen Sie im Bereich **Benutzer** die folgenden Schritte aus:
-
-    1. Geben Sie in das Feld **Name** den Namen **BrittaSimon** ein.
-  
-    1. Geben Sie in das Feld **Benutzername** den Namen **brittasimon\@\<your-company-domain>.\<extension\>** ein. Beispiel: **brittasimon\@contoso.com**
-
-    1. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen** . Notieren Sie sich den Wert, der im Feld **Kennwort** angezeigt wird.
-
-    1. Klicken Sie auf **Erstellen** .
-
-    ![Der Bereich „Benutzer“](common/user-properties.png)
+1. Wählen Sie im linken Bereich des Microsoft Azure-Portals **Azure Active Directory** > **Benutzer** > **Alle Benutzer** aus.
+1. Wählen Sie oben im Bildschirm die Option **Neuer Benutzer** aus.
+1. Führen Sie unter den Eigenschaften für **Benutzer** die folgenden Schritte aus:
+    1. Geben Sie im Feld **Name** die Zeichenfolge `B.Simon` ein.  
+    1. Geben Sie im Feld **Benutzername** die Zeichenfolge username@companydomain.extension ein. Beispiel: `B.Simon@contoso.com`.
+    1. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert aus dem Feld **Kennwort**.
+    1. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
-In diesem Abschnitt gewähren Sie Britta Simon Zugriff auf HubSpot, damit sie das einmalige Anmelden von Azure verwenden kann.
+In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie ihr Zugriff auf HubSpot gewähren.
 
-1. Wählen Sie im Azure-Portal **Unternehmensanwendungen** > **Alle Anwendungen** > **HubSpot** aus.
-
-    ![Bereich „Unternehmensanwendungen“](common/enterprise-applications.png)
-
+1. Wählen Sie im Azure-Portal **Unternehmensanwendungen** > **Alle Anwendungen** aus.
 1. Wählen Sie in der Anwendungsliste **HubSpot** aus.
-
-    ![HubSpot in der Anwendungsliste](common/all-applications.png)
-
-1. Wählen Sie im Menü die Option **Benutzer und Gruppen** aus.
-
-    ![Option „Benutzer und Gruppen“](common/users-groups-blade.png)
-
-1. Klicken Sie auf **Benutzer hinzufügen** . Wählen Sie im Bereich **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
-
-    ![Bereich „Zuweisung hinzufügen“](common/add-assign-user.png)
-
-1. Wählen Sie im Bereich **Benutzer und Gruppen** in der Benutzerliste **Britta Simon** aus. Wählen Sie **Auswählen** .
-
-1. Falls Sie in der SAML-Assertion einen Rollenwert erwarten, wählen Sie im Bereich **Rolle auswählen** die entsprechende Rolle für den Benutzer aus der Liste aus. Wählen Sie **Auswählen** .
-
-1. Wählen Sie im Bereich **Zuweisung hinzufügen** die Option **Zuweisen** aus.
+1. Navigieren Sie auf der Übersichtsseite der App zum Abschnitt **Verwalten**, und wählen Sie **Benutzer und Gruppen** aus.
+1. Wählen Sie **Benutzer hinzufügen** und anschließend im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
+1. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Liste „Benutzer“ den Eintrag **B. Simon** aus, und klicken Sie dann unten auf dem Bildschirm auf die Schaltfläche **Auswählen**.
+1. Wenn den Benutzern eine Rolle zugewiesen werden soll, können Sie sie im Dropdownmenü **Rolle auswählen** auswählen. Wurde für diese App keine Rolle eingerichtet, ist die Rolle „Standardzugriff“ ausgewählt.
+1. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen**.
 
 ### <a name="create-a-hubspot-test-user"></a>Erstellen eines HubSpot-Testbenutzers
 
@@ -236,7 +187,7 @@ So stellen Sie in HubSpot ein Benutzerkonto bereit:
 
     ![Das Feld „Add email address(es)“ (E-Mail-Adresse(n) hinzufügen) im Abschnitt „Create users“ (Benutzer erstellen) in HubSpot](./media/hubspot-tutorial/user3.png)
 
-1. Wählen Sie im Abschnitt **Create users** (Benutzer erstellen) jede Registerkarte aus. Legen Sie auf jeder Registerkarte die relevanten Optionen und Berechtigungen für den Benutzer fest. Klicken Sie anschließend auf **Weiter** .
+1. Wählen Sie im Abschnitt **Create users** (Benutzer erstellen) jede Registerkarte aus. Legen Sie auf jeder Registerkarte die relevanten Optionen und Berechtigungen für den Benutzer fest. Klicken Sie anschließend auf **Weiter**.
 
     ![Registerkarten im Abschnitt „Create users“ (Benutzer erstellen) in HubSpot](./media/hubspot-tutorial/user4.png)
 
@@ -249,14 +200,21 @@ So stellen Sie in HubSpot ein Benutzerkonto bereit:
 
 ### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens
 
-In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden mithilfe des Portals „Meine Apps“.
+In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden mit den folgenden Optionen: 
 
-Nachdem Sie einmaliges Anmelden eingerichtet haben, werden Sie bei Auswahl von **HubSpot** im Portal „Meine Apps“ automatisch bei HubSpot angemeldet. Weitere Informationen zum Portal „Meine Apps“ finden Sie unter [Zugreifen auf und Verwenden von Apps im Portal „Meine Apps“](../user-help/my-apps-portal-end-user-access.md).
+#### <a name="sp-initiated"></a>SP-initiiert:
+
+* Klicken Sie im Azure-Portal auf **Diese Anwendung testen**. Dadurch werden Sie zur Anmelde-URL für HubSpot weitergeleitet, wo Sie den Anmeldeflow initiieren können.  
+
+* Rufen Sie direkt die HubSpot-Anmelde-URL auf, und initiieren Sie den Anmeldeflow.
+
+#### <a name="idp-initiated"></a>IDP-initiiert:
+
+* Klicken Sie im Azure-Portal auf **Diese Anwendung testen**. Dadurch sollten Sie automatisch bei der HubSpot-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. 
+
+Sie können auch den Microsoft-Bereich „Meine Apps“ verwenden, um die Anwendung in einem beliebigen Modus zu testen. Beim Klicken auf die Kachel „HubSpot“ in „Meine Apps“ geschieht Folgendes: Wenn Sie den SP-Modus konfiguriert haben, werden Sie zum Initiieren des Anmeldeflows zur Anmeldeseite der Anwendung weitergeleitet. Wenn Sie den IDP-Modus konfiguriert haben, sollten Sie automatisch bei der HubSpot-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen finden Sie in den folgenden Artikeln:
-
-- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](./tutorial-list.md)
-- [Einmaliges Anmelden bei Anwendungen in Azure Active Directory](../manage-apps/what-is-single-sign-on.md)
-- [Was ist bedingter Zugriff?](../conditional-access/overview.md)
+Nach dem Konfigurieren von HubSpot können Sie die Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](/cloud-app-security/proxy-deployment-aad) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.

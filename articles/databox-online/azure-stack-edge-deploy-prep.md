@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 11/11/2020
+ms.date: 01/06/2021
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to prepare the portal to deploy Azure Stack Edge Pro so I can use it to transfer data to Azure.
-ms.openlocfilehash: 3943caba5249432b3a0a4b7c2e63b2b818e2b7a1
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: aabc141666fe5c9fb52a3eac5ee1866f390e4551
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96575702"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97968494"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-stack-edge-pro"></a>Tutorial: Vorbereiten der Bereitstellung von Azure Stack Edge Pro  
 
@@ -150,11 +150,11 @@ Nach der Bestellung wird diese von Microsoft geprüft, und Sie erhalten eine E-M
 
 Wenn die Azure Stack Edge-Ressource betriebsbereit ist, müssen Sie den Aktivierungsschlüssel abrufen. Dieser Schlüssel wird verwendet, um Ihr Azure Stack Edge Pro-Gerät zu aktivieren und mit der Ressource zu verbinden. Sie können diesen Schlüssel jetzt abrufen, während Sie sich im Azure-Portal befinden.
 
-1. Wählen Sie die von Ihnen erstellte Ressource aus. Wählen Sie **Übersicht** und anschließend **Geräteeinrichtung** aus.
+1. Navigieren Sie zu der von Ihnen erstellten Ressource, und wählen Sie **Übersicht** aus. Es wird eine Benachrichtigung mit dem Hinweis angezeigt, dass Ihre Bestellung verarbeitet wird.
 
-    ![Auswählen von „Geräteeinrichtung“](media/azure-stack-edge-deploy-prep/data-box-edge-select-devicesetup.png)
+    ![Auswählen von „Übersicht“](media/azure-stack-edge-deploy-prep/data-box-edge-select-devicesetup.png)
 
-2. Wählen Sie auf der Kachel **Aktivieren** die Option **Schlüssel generieren** aus, um einen Aktivierungsschlüssel zu erstellen. Wählen Sie das Kopiersymbol, um den Schlüssel zu kopieren und für die spätere Verwendung zu speichern.
+2. Nachdem die Bestellung verarbeitet und das Gerät an Sie versendet wurde, wird die **Übersicht** aktualisiert. Übernehmen Sie den Standardwert für **Azure Key Vault-Name**, oder geben Sie einen neuen Namen ein. Wählen Sie **Generate activation key** (Aktivierungsschlüssel generieren) aus. Wählen Sie das Kopiersymbol, um den Schlüssel zu kopieren und für die spätere Verwendung zu speichern.
 
     ![Abrufen des Aktivierungsschlüssels](media/azure-stack-edge-deploy-prep/get-activation-key.png)
 

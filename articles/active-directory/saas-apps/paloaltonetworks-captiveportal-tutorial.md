@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/10/2020
 ms.author: jeedes
-ms.openlocfilehash: 66e363b43bf9028e3075efa0f5a1f54e6bda190d
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 0e16cb3d24f9dd33b156bca72ce1c99e7aae957a
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92512687"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97963603"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-palo-alto-networks-captive-portal"></a>Tutorial: Azure Active Directory-Integration mit Palo Alto Networks Captive Portal
 
@@ -38,8 +38,8 @@ Um die Azure AD-Integration mit Palo Alto Networks Captive Portal einrichten zu 
 
 In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
 
-* Palo Alto Networks Captive Portal unterstützt **IDP** -initiiertes einmaliges Anmelden.
-* Palo Alto Networks Captive Portal unterstützt die **Just-In-Time** -Benutzerbereitstellung.
+* Palo Alto Networks Captive Portal unterstützt **IDP**-initiiertes einmaliges Anmelden.
+* Palo Alto Networks Captive Portal unterstützt die **Just-In-Time**-Benutzerbereitstellung.
 
 ## <a name="adding-palo-alto-networks-captive-portal-from-the-gallery"></a>Hinzufügen von Palo Alto Networks Captive Portal aus dem Katalog
 
@@ -47,14 +47,14 @@ Zum Konfigurieren der Integration von Palo Alto Networks Captive Portal in Azure
 
 1. Melden Sie sich mit einem Geschäfts-, Schul- oder Unikonto oder mit einem persönlichen Microsoft-Konto beim Azure-Portal an.
 1. Wählen Sie im linken Navigationsbereich den Dienst **Azure Active Directory** aus.
-1. Navigieren Sie zu **Unternehmensanwendungen** , und wählen Sie dann **Alle Anwendungen** aus.
+1. Navigieren Sie zu **Unternehmensanwendungen**, und wählen Sie dann **Alle Anwendungen** aus.
 1. Wählen Sie zum Hinzufügen einer neuen Anwendung **Neue Anwendung** aus.
 1. Geben Sie im Abschnitt **Aus Katalog hinzufügen** den Suchbegriff **Palo Alto Networks Captive Portal** in das Suchfeld ein.
 1. Wählen Sie im Ergebnisbereich **Palo Alto Networks Captive Portal** aus, und fügen Sie dann die App hinzu. Warten Sie einige Sekunden, während die App Ihrem Mandanten hinzugefügt wird.
 
 ## <a name="configure-and-test-azure-ad-sso"></a>Konfigurieren und Testen des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD
 
-In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit Palo Alto Networks Captive Portal mithilfe eines Testbenutzers namens **B.Simon** .
+In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit Palo Alto Networks Captive Portal mithilfe eines Testbenutzers namens **B.Simon**.
 Damit einmaliges Anmelden funktioniert, muss zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Palo Alto Networks Captive Portal eine Linkbeziehung eingerichtet werden.
 
 Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Palo Alto Networks Captive Portal die folgenden Schritte aus:
@@ -70,9 +70,9 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Palo Alt
 
 Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal zu aktivieren.
 
-1. Navigieren Sie im Azure-Portal auf der Anwendungsintegrationsseite für **Palo Alto Networks Captive Portal** zum Abschnitt **Verwalten** , und wählen Sie **Einmaliges Anmelden** aus.
+1. Navigieren Sie im Azure-Portal auf der Anwendungsintegrationsseite für **Palo Alto Networks Captive Portal** zum Abschnitt **Verwalten**, und wählen Sie **Einmaliges Anmelden** aus.
 1. Wählen Sie auf der Seite **SSO-Methode auswählen** die Methode **SAML** aus.
-1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Bearbeitungs- bzw. Stiftsymbol für **Grundlegende SAML-Konfiguration** , um die Einstellungen zu bearbeiten.
+1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Stiftsymbol für **Grundlegende SAML-Konfiguration**, um die Einstellungen zu bearbeiten.
 
    ![Bearbeiten der SAML-Basiskonfiguration](common/edit-urls.png)
 
@@ -98,20 +98,20 @@ In diesem Abschnitt erstellen Sie im Azure-Portal einen Testbenutzer mit dem Nam
 1. Führen Sie unter den Eigenschaften für **Benutzer** die folgenden Schritte aus:
    1. Geben Sie im Feld **Name** die Zeichenfolge `B.Simon` ein.  
    1. Geben Sie im Feld **Benutzername** die Zeichenfolge username@companydomain.extension ein. Beispiel: `B.Simon@contoso.com`.
-   1. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen** , und notieren Sie sich den Wert aus dem Feld **Kennwort** .
-   1. Klicken Sie auf **Erstellen** .
+   1. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert aus dem Feld **Kennwort**.
+   1. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
 In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie ihr Zugriff auf Palo Alto Networks Captive Portal gewähren.
 
-1. Wählen Sie im Azure-Portal **Unternehmensanwendungen**  > **Alle Anwendungen** aus.
+1. Wählen Sie im Azure-Portal **Unternehmensanwendungen** > **Alle Anwendungen** aus.
 1. Wählen Sie in der Anwendungsliste **Palo Alto Networks Captive Portal** aus.
-1. Navigieren Sie auf der Übersichtsseite der App zum Abschnitt **Verwalten** , und wählen Sie **Benutzer und Gruppen** aus.
+1. Navigieren Sie auf der Übersichtsseite der App zum Abschnitt **Verwalten**, und wählen Sie **Benutzer und Gruppen** aus.
 1. Wählen Sie **Benutzer hinzufügen** und anschließend im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
-1. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Liste „Benutzer“ den Eintrag **B. Simon** aus, und klicken Sie dann unten auf dem Bildschirm auf die Schaltfläche **Auswählen** .
+1. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Liste „Benutzer“ den Eintrag **B. Simon** aus, und klicken Sie dann unten auf dem Bildschirm auf die Schaltfläche **Auswählen**.
 1. Wenn den Benutzern eine Rolle zugewiesen werden soll, können Sie sie im Dropdownmenü **Rolle auswählen** auswählen. Wurde für diese App keine Rolle eingerichtet, ist die Rolle „Standardzugriff“ ausgewählt.
-1. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen** .
+1. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen**.
 
 ## <a name="configure-palo-alto-networks-captive-portal-sso"></a>Konfigurieren des einmaligen Anmeldens für Palo Alto Networks Captive Portal
 
@@ -131,15 +131,15 @@ Richten Sie als Nächstes das einmalige Anmelden in Palo Alto Networks Captive P
 
     ![Konfigurieren des einmaligen Anmeldens für Palo Alto Networks](./media/paloaltonetworks-captiveportal-tutorial/tutorial_paloaltoadmin_admin3.png)
 
-    1. Geben Sie einen **Profilnamen** ein (beispielsweise **AzureAD-CaptivePortal** ).
+    1. Geben Sie einen **Profilnamen** ein (beispielsweise **AzureAD-CaptivePortal**).
     
     2. Wählen Sie neben **Identity Provider Metadata** (Metadaten des Identitätsanbieters) die Option **Browse** (Durchsuchen) aus. Wählen Sie die Datei „metadata.xml“ aus, die Sie im Azure-Portal heruntergeladen haben.
     
-    3. Klicken Sie auf **OK** .
+    3. Klicken Sie auf **OK**.
 
 ### <a name="create-a-palo-alto-networks-captive-portal-test-user"></a>Erstellen eines Testbenutzers für Palo Alto Networks Captive Portal
 
-Erstellen Sie als Nächstes in Palo Alto Networks Captive Portal einen Benutzer namens *Britta Simon* . Palo Alto Networks Captive Portal unterstützt die Just-in-Time-Benutzerbereitstellung, und sie ist standardmäßig aktiviert. In diesem Abschnitt müssen keine Aufgaben ausgeführt werden. Falls ein Benutzer noch nicht in Palo Alto Networks Captive Portal vorhanden ist, wird nach der Authentifizierung ein neuer Benutzer erstellt.
+Erstellen Sie als Nächstes in Palo Alto Networks Captive Portal einen Benutzer namens *Britta Simon*. Palo Alto Networks Captive Portal unterstützt die Just-in-Time-Benutzerbereitstellung, und sie ist standardmäßig aktiviert. In diesem Abschnitt müssen keine Aufgaben ausgeführt werden. Falls ein Benutzer noch nicht in Palo Alto Networks Captive Portal vorhanden ist, wird nach der Authentifizierung ein neuer Benutzer erstellt.
 
 > [!NOTE]
 > Setzen Sie sich mit dem [Clientsupportteam für Palo Alto Networks Captive Portal](https://support.paloaltonetworks.com/support) in Verbindung, wenn Sie einen Benutzer manuell erstellen möchten.
@@ -148,9 +148,10 @@ Erstellen Sie als Nächstes in Palo Alto Networks Captive Portal einen Benutzer 
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden mit den folgenden Optionen:
 
-Klicken Sie im Azure-Portal auf „Diese Anwendung testen“. Dadurch sollten Sie automatisch bei der Palo Alto Networks Captive Portal-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben.
+* Klicken Sie im Azure-Portal auf „Diese Anwendung testen“. Dadurch sollten Sie automatisch bei der Palo Alto Networks Captive Portal-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben.
 
-Sie können den Microsoft-Zugriffsbereich verwenden. Wenn Sie im Zugriffsbereich auf die Kachel „Palo Alto Networks Captive Portal“ klicken, sollten Sie automatisch bei der Instanz für Palo Alto Networks Captive Portal angemeldet werden, für die Sie das einmalige Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/my-apps-portal-end-user-access.md).
+* Sie können „Meine Apps“ von Microsoft verwenden. Wenn Sie in „Meine Apps“ auf die Kachel „Palo Alto Networks Captive Portal“ klicken, sollten Sie automatisch bei der Instanz für Palo Alto Networks Captive Portal angemeldet werden, für die Sie das einmalige Anmelden eingerichtet haben. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

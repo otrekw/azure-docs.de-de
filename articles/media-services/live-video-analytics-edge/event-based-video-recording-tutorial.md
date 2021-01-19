@@ -3,12 +3,12 @@ title: 'Tutorial: Ereignisbasierte Videoaufzeichnung in der Cloud und Wiedergabe
 description: In diesem Tutorial erfahren Sie, wie Sie Azure Live Video Analytics in Azure IoT Edge verwenden, um eine ereignisbasierte Videoaufzeichnung in der Cloud durchzuführen und sie aus der Cloud wiederzugeben.
 ms.topic: tutorial
 ms.date: 05/27/2020
-ms.openlocfilehash: 8f3ecdf7e4260d700f31663852abbb39474cd474
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: cfb4648d991565470133d603194c07b797f89311
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97401667"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98060434"
 ---
 # <a name="tutorial-event-based-video-recording-to-the-cloud-and-playback-from-the-cloud"></a>Tutorial: Ereignisbasierte Videoaufzeichnung in der Cloud und Wiedergabe aus der Cloud
 
@@ -53,6 +53,9 @@ Nach dem Abschluss dieser Schritte sind in Ihrem Azure Abonnement relevante Azur
 * Azure-Speicherkonto
 * Azure Media Services-Konto
 * Virtueller Linux-Computer in Azure mit installierter [IoT Edge-Runtime](../../iot-edge/how-to-install-iot-edge.md)
+
+> [!TIP]
+> Falls für erstellte Azure-Ressourcen Probleme auftreten, helfen Ihnen die Informationen zum Beheben von häufigen Problemen im **[Leitfaden für die Problembehandlung](troubleshoot-how-to.md#common-error-resolutions)** weiter.
 
 ## <a name="concepts"></a>Konzepte
 
@@ -189,7 +192,7 @@ Führen Sie die folgenden Schritte aus, um die Ereignisse vom Objektzählermodul
     
 ## <a name="run-the-program"></a>Ausführen des Programms
 
-1. Öffnen Sie in Visual Studio Code die Registerkarte **Erweiterungen** (oder drücken Sie STRG + UMSCHALT + X), und suchen Sie nach Azure IoT Hub.
+1. Öffnen Sie in Visual Studio Code die Registerkarte **Erweiterungen** (oder drücken Sie STRG+UMSCHALT+X), und suchen Sie nach Azure IoT Hub.
 1. Klicken Sie mit der rechten Maustaste, um das Kontextmenü zu öffnen, und wählen Sie **Erweiterungseinstellungen** aus.
 
     > [!div class="mx-imgBorder"]
@@ -230,7 +233,7 @@ Führen Sie die folgenden Schritte aus, um die Ereignisse vom Objektzählermodul
      
         ```
         {
-          "@apiVersion": "1.0",
+          "@apiVersion": "2.0",
           "name": "Sample-Graph-1",
           "properties": {
             "topologyName": "EVRtoAssetsOnObjDetect",
@@ -277,7 +280,7 @@ In den folgenden Nachrichten werden die Anwendungseigenschaften und der Inhalt v
 
 ### <a name="mediasessionestablished-event"></a>MediaSessionEstablished-Ereignis 
 
-Wenn ein Mediengraph instanziiert wird, versucht der Knoten der RTSP-Quelle eine Verbindung mit dem RTSP-Server herzustellen, der im RTSP-Simulatorcontainer ausgeführt wird. Bei erfolgreich hergestellter Verbindung wird dieses Ereignis ausgegeben. Der Ereignistyp lautet „Microsoft.Media.MediaGraph.Diagnostics.MediaSessionEstablished“.
+Wenn ein Mediengraph instanziiert wird, versucht der Knoten der RTSP-Quelle eine Verbindung mit dem RTSP-Server herzustellen, der im RTSP-Simulatorcontainer ausgeführt wird. Bei erfolgreich hergestellter Verbindung wird dieses Ereignis ausgegeben. Der Ereignistyp lautet **Microsoft.Media.MediaGraph.Diagnostics.MediaSessionEstablished**.
 
 ```
 [IoTHubMonitor] [5:53:17 PM] Message received from [lva-sample-device/lvaEdge]:
@@ -325,7 +328,7 @@ Sie werden möglicherweise das Auftreten weiterer dieser Ereignisse feststellen,
 
 ### <a name="recordingstarted-event"></a>RecordingStarted-Ereignis
 
-Fast unmittelbar nach dem Senden des Ereignisses durch den ObjectCounter wird ein Ereignis vom Typ „Microsoft.Media.Graph.Operational.RecordingStarted“ angezeigt:
+Fast unmittelbar nach dem Senden des Ereignisses durch den Objektzähler wird ein Ereignis vom Typ **Microsoft.Media.Graph.Operational.RecordingStarted** angezeigt:
 
 ```
 [IoTHubMonitor] [5:53:46 PM] Message received from [lva-sample-device/lvaEdge]:
@@ -348,7 +351,7 @@ Der Abschnitt „subject“ in „applicationProperties“ verweist auf den Knot
 
 ### <a name="recordingavailable-event"></a>RecordingAvailable-Ereignis
 
-Wenn vom Knoten der Medienobjektsenke ein Videosignal in das Medienobjekt hochgeladen wurde, wird ein Ereignis vom Typ „Microsoft.Media.Graph.Operational.RecordingAvailable“ ausgegeben:
+Wenn vom Knoten der Medienobjektsenke ein Video in das Medienobjekt hochgeladen wurde, wird ein Ereignis vom Typ **Microsoft.Media.Graph.Operational.RecordingAvailable** ausgegeben:
 
 ```
 [IoTHubMonitor] [5:54:15 PM] Message received from [lva-sample-device/lvaEdge]:
@@ -371,7 +374,7 @@ Durch dieses Ereignis wird angegeben, dass genügend Daten in das Medienobjekt g
 
 ### <a name="recordingstopped-event"></a>Ereignis „RecordingStopped“
 
-Wenn Sie die Aktivierungseinstellungen (maximumActivationTime) für den Knoten des Signalgateprozessors in der [Topologie](https://github.com/Azure/live-video-analytics/tree/master/MediaGraph/topologies/evr-hubMessage-assets/topology.json) überprüfen, sehen Sie, dass das Gate so eingerichtet ist, dass es nach 30 Sekunden nach dem Senden des Videos geschlossen wird. Ungefähr 30 Sekunden nach dem RecordingStarted-Ereignis sollte ein Ereignis vom Typ „Microsoft.Media.Graph.Operational.RecordingStopped“ angezeigt werden. Dieses Ereignis gibt an, dass der Knoten der Medienobjektsenke das Aufzeichnen von Videodaten im Medienobjekt beendet hat.
+Wenn Sie die Aktivierungseinstellungen (maximumActivationTime) für den Knoten des Signalgateprozessors in der [Topologie](https://github.com/Azure/live-video-analytics/tree/master/MediaGraph/topologies/evr-hubMessage-assets/topology.json) überprüfen, sehen Sie, dass das Gate so eingerichtet ist, dass es nach 30 Sekunden nach dem Senden des Videos geschlossen wird. Ungefähr 30 Sekunden nach dem RecordingStarted-Ereignis sollte ein Ereignis vom Typ **Microsoft.Media.Graph.Operational.RecordingStopped** angezeigt werden. Dieses Ereignis gibt an, dass der Knoten der Medienobjektsenke das Aufzeichnen von Videodaten im Medienobjekt beendet hat.
 
 ```
 [IoTHubMonitor] [5:54:15 PM] Message received from [lva-sample-device/lvaEdge]:

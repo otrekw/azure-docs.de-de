@@ -1,7 +1,7 @@
 ---
 title: Erstellen eines Datenbeschriftungsprojekts
 titleSuffix: Azure Machine Learning
-description: In diesem Artikel erfahren Sie, wie Sie Beschriftungsprojekte zum Kennzeichnen von Daten für das maschinelle Lernen erstellen und ausführen.  Verwenden Sie zur Unterstützung bei dieser Aufgabe die ML-gestützte Beschriftung sowie die Human-in-the-Loop-Beschriftung.
+description: In diesem Artikel erfahren Sie, wie Sie Beschriftungsprojekte zum Kennzeichnen von Daten für das maschinelle Lernen erstellen und ausführen. Verwenden Sie zur Unterstützung bei dieser Aufgabe die ML-gestützte Beschriftung sowie die Human-in-the-Loop-Beschriftung.
 author: sdgilley
 ms.author: sgilley
 ms.service: machine-learning
@@ -9,36 +9,28 @@ ms.subservice: core
 ms.topic: tutorial
 ms.date: 07/27/2020
 ms.custom: data4ml
-ms.openlocfilehash: cd35cea28e23e88ba97bb7a27dc252d6bebd65e4
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: 854504347409efb4f0eafff0d776db23ca9fda07
+ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97739653"
+ms.lasthandoff: 01/10/2021
+ms.locfileid: "98059839"
 ---
 # <a name="create-a-data-labeling-project-and-export-labels"></a>Erstellen eines Datenbeschriftungsprojekts und Exportieren der Beschriftungen 
 
+In diesem Artikel erfahren Sie, wie Sie Datenbeschriftungsprojekte zum Kennzeichnen von Daten in Azure Machine Learning erstellen und ausführen.  Verwenden Sie zur Unterstützung bei dieser Aufgabe die ML-gestützte Datenbeschriftung sowie die Human-in-the-Loop-Beschriftung.
 
 
-Das Beschriften großer Datenmengen in Projekten für maschinelles Lernen bereitet häufig Kopfzerbrechen. Projekte mit einer Komponente für maschinelles Sehen – z. B. zur Bildklassifizierung oder Objekterkennung – erfordern im Allgemeinen Beschriftungen für Tausende von Bildern.
- 
-Die Datenbeschriftung von [Azure Machine Learning](https://ml.azure.com/) bietet Ihnen einen zentralen Ort zum Erstellen, Verwalten und Überwachen von Beschriftungsprojekten. Verwenden Sie die Lösung zum Koordinieren von Daten, Beschriftungen und Teammitgliedern, um Beschriftungsaufgaben effizient zu verwalten. Machine Learning unterstützt Bildklassifizierung (entweder mit mehreren Beschriftungen oder mit mehreren Klassen) und die Objektidentifikation mit Begrenzungsrahmen.
-
-Die Datenbeschriftung verfolgt den Fortschritt nach und verwaltet die Warteschlange mit unvollständigen Beschriftungsaufgaben.
-
-Sie können das Projekt starten und beenden und den Beschriftungsfortschritt steuern. Sie können die beschrifteten Daten überprüfen und im COCO-Format oder als Azure Machine Learning-Dataset exportieren.
+## <a name="data-labeling-capabilities"></a>Datenbeschriftungsfunktionen
 
 > [!Important]
 > Derzeit werden nur Beschriftungsprojekte für die Bildklassifizierung und Objektidentifizierung unterstützt. Außerdem müssen die Datenbilder in einem Azure-Blobdatenspeicher verfügbar sein. (Wenn kein Datenspeicher vorhanden ist, können Sie Bilder während der Projekterstellung hochladen.)
 
-In diesem Artikel lernen Sie Folgendes:
-
-> [!div class="checklist"]
-> * Erstellen eines Projekts
-> * Angeben der Daten und Struktur des Projekts
-> * Ausführen und Überwachen des Projekts
-> * Exportieren der Beschriftungen
-
+Die Datenbeschriftung von Azure Machine Learning bietet Ihnen einen zentralen Ort zum Erstellen, Verwalten und Überwachen von Beschriftungsprojekten:
+ - Koordinieren von Daten, Beschriftungen und Teammitgliedern, um Beschriftungsaufgaben effizient zu verwalten 
+ - Nachverfolgen des Fortschritts und Verwalten der Warteschlange mit unvollständigen Beschriftungsaufgaben
+ - Starten und Beenden des Projekts und Steuern des Beschriftungsfortschritts
+ - Überprüfen der beschrifteten Daten und Exportieren im COCO-Format oder als Azure Machine Learning-Dataset
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -48,13 +40,13 @@ In diesem Artikel lernen Sie Folgendes:
 * Ein Azure-Abonnement. Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://aka.ms/AMLFree) erstellen, bevor Sie beginnen.
 * Ein Machine Learning-Arbeitsbereich. Weitere Informationen finden Sie unter [Erstellen eines Azure Machine Learning-Arbeitsbereichs](how-to-manage-workspace.md).
 
-## <a name="create-a-labeling-project"></a>Erstellen eines Beschriftungsprojekts
+## <a name="create-a-data-labeling-project"></a>Erstellen eines Datenbeschriftungsprojekts
 
 Beschriftungsprojekte werden in Azure Machine Learning verwaltet. Auf der Seite **Beschriftungsprojekte** verwalten Sie Ihre Projekte.
 
 Wenn sich Ihre Daten bereits in einem Azure-Blobspeicher befinden, sollten Sie diesen als Datenspeicher zur Verfügung stellen, bevor Sie das Beschriftungsprojekt erstellen. Ein Beispiel zum Verwenden eines Datenspeichers finden Sie unter [Tutorial: Erstellen eines Beschriftungsprojekts für mehrklassige Bildklassifizierung](tutorial-labeling.md).
 
-Zum Erstellen eines Projekts wählen Sie **Projekt hinzufügen** aus. Geben Sie dem Projekt einen geeigneten Namen, und wählen Sie den **Beschriftungsaufgabentyp** aus.
+Zum Erstellen eines Projekts wählen Sie **Projekt hinzufügen** aus. Geben Sie dem Projekt einen geeigneten Namen, und wählen Sie den **Beschriftungsaufgabentyp** aus. Der Projektname kann nicht wiederverwendet werden, auch wenn das Projekt in Zukunft gelöscht wird.
 
 :::image type="content" source="media/how-to-create-labeling-projects/labeling-creation-wizard.png" alt-text="Assistent zum Erstellen von Bezeichnungsprojekten":::
 
@@ -119,11 +111,11 @@ Den Zeitstempel der letzten Aktualisierung finden Sie auf der Registerkarte **De
 
 ## <a name="specify-label-classes"></a>Angeben von Beschriftungsklassen
 
-Auf der Seite **Beschriftungsklassen** geben Sie den Satz von Klassen zum Kategorisieren Ihrer Daten an. Gehen Sie dabei vorsichtig vor, denn die Genauigkeit und Geschwindigkeit Ihrer Beschriftungsersteller wird durch die Möglichkeit der Auswahl zwischen den Klassen beeinflusst. Beispiel: Anstatt Gattung und Art von Pflanzen oder Tieren vollständig anzugeben, wird empfohlen, einen Feldcode zu verwenden oder die Gattung abzukürzen.
+Auf der Seite **Beschriftungsklassen** geben Sie den Satz von Klassen zum Kategorisieren Ihrer Daten an. Die Genauigkeit und Geschwindigkeit Ihrer Beschriftungsersteller wird durch die Möglichkeit der Auswahl zwischen den Klassen beeinflusst. Beispiel: Anstatt Gattung und Art von Pflanzen oder Tieren vollständig anzugeben, wird empfohlen, einen Feldcode zu verwenden oder die Gattung abzukürzen.
 
 Geben Sie eine Beschriftung pro Zeile ein. Verwenden Sie die Schaltfläche **+** , um eine neue Zeile hinzuzufügen. Wenn Sie mehr als 3 oder 4, aber weniger als 10 Beschriftungen haben, können Sie den Namen Zahlen („1: “, „2: “) voranstellen, damit die Beschriftungsersteller die Zifferntasten verwenden können, um ihre Arbeit zu beschleunigen.
 
-## <a name="describe-the-labeling-task"></a>Beschreiben der Beschriftungsaufgabe
+## <a name="describe-the-data-labeling-task"></a>Beschreiben der Datenbeschriftungsaufgabe
 
 Es ist wichtig, die Beschriftungsaufgabe genau zu erläutern. Auf der Seite **Beschriftungsanweisungen** können Sie einen Link zu einer externen Website für Beschriftungsanweisungen hinzufügen. Sie können aber auch Anweisungen im Bearbeitungsfeld auf der Seite angeben. Stellen Sie Anweisungen bereit, die aufgabenorientiert und für die Zielgruppe geeignet sind. Stellen Sie sich die folgenden Fragen:
 
@@ -145,7 +137,7 @@ Für Begrenzungsrahmen stellen sich folgende wichtige Fragen:
 >[!NOTE]
 > Beachten Sie, dass die Beschriftungsersteller die ersten 9 Beschriftungen mit den Zifferntasten 1–9 auswählen können.
 
-## <a name="use-ml-assisted-labeling"></a>Verwenden der ML-gestützten Beschriftung
+## <a name="use-ml-assisted-data-labeling"></a>Verwenden der ML-gestützten Datenbeschriftung
 
 Auf der Seite **Durch ML unterstützte Beschriftung** können Sie automatische Machine Learning-Modelle auslösen, um die Beschriftung zu beschleunigen. Zu Beginn Ihres Beschriftungsprojekts werden die Bilder in eine zufällige Reihenfolge gebracht, um potenzielle Verzerrungen zu verringern. Im Dataset enthaltene Verzerrungen fließen jedoch in das trainierte Modell ein. Wenn es sich also beispielsweise bei 80 Prozent der Bilder um eine einzelne Klasse handelt, gehören ungefähr 80 Prozent der Daten, die zum Trainieren des Modells verwendet werden, zu dieser Klasse. Dieses Training beinhaltet kein aktives Lernen.
 
@@ -172,9 +164,9 @@ Die Clusteringphase wird für Objekterkennungsmodelle nicht angezeigt.
 
 Nachdem genügend Bildbeschriftungen übermittelt wurden, wird ein Klassifizierungsmodell verwendet, um Bildtags vorherzusagen. Oder es wird ein Objekterkennungsmodell verwendet, um Begrenzungsrahmen vorherzusagen. Dem Beschriftungsersteller werden nun Seiten angezeigt, auf denen bereits vorhergesagte Beschriftungen für die einzelnen Bilder vorhanden sind. Bei der Objekterkennung werden auch vorhergesagte Rahmen angezeigt. Diese Vorhersagen müssen dann überprüft und falsch beschriftete Bilder korrigiert werden, bevor die Seite übermittelt wird.  
 
-Nachdem ein Machine Learning-Modell mit Ihren manuell beschrifteten Daten trainiert wurde, wird es anhand eines Testsatzes manuell beschrifteter Bilder ausgewertet, um seine Genauigkeit mit verschiedensten Zuverlässigkeitsschwellenwerten zu bestimmen. Diese Auswertung dient zur Ermittlung eines Zuverlässigkeitsschwellenwerts, über dem das Modell genau genug ist, um Vorabbeschriftungen anzuzeigen. Anschließend wird das Modell anhand von nicht beschrifteten Daten ausgewertet. Bilder, bei denen die Vorhersagezuverlässigkeit über dem Schwellenwert liegt, werden für die Vorabbeschriftung verwendet.
+Nachdem ein Machine Learning-Modell mit Ihren manuell beschrifteten Daten trainiert wurde, wird es anhand eines Testsatzes manuell beschrifteter Bilder ausgewertet, um seine Genauigkeit mit verschiedensten Konfidenzschwellenwerten zu bestimmen. Diese Auswertung dient zur Ermittlung eines Zuverlässigkeitsschwellenwerts, über dem das Modell genau genug ist, um Vorabbeschriftungen anzuzeigen. Anschließend wird das Modell anhand von nicht beschrifteten Daten ausgewertet. Bilder, bei denen die Vorhersagezuverlässigkeit über dem Schwellenwert liegt, werden für die Vorabbeschriftung verwendet.
 
-## <a name="initialize-the-labeling-project"></a>Initialisieren des Beschriftungsprojekts
+## <a name="initialize-the-data-labeling-project"></a>Initialisieren des Datenbeschriftungsprojekts
 
 Nach dem Initialisieren das Beschriftungsprojekts sind einige Aspekte des Projekts unveränderlich. Sie können den Aufgabentyp oder das Dataset nicht ändern. Beschriftungen sowie die URL für die Aufgabenbeschreibung *können* dagegen geändert werden. Überprüfen Sie die Einstellungen sorgfältig, bevor Sie das Projekt erstellen. Nachdem Sie das Projekt übermittelt haben, gelangen Sie wieder zur Startseite von **Datenbeschriftung**, wo das Projekt mit dem Status **Initialisierung** angezeigt wird.
 
@@ -233,7 +225,7 @@ Jeder Benutzer, der Zugriff auf Ihren Arbeitsbereich hat, kann Daten in Ihrem Pr
 
 ## <a name="add-new-label-class-to-a-project"></a>Hinzufügen einer neuen Beschriftungsklasse zu einem Projekt
 
-Im Rahmen des Beschriftungsprozesses stellen Sie möglicherweise fest, dass Sie weitere Beschriftungen benötigen, um Ihre Bilder zu klassifizieren.  So kann es beispielsweise sein, dass Sie für verwirrende Bilder Beschriftungen wie „Unbekannt“ oder „Sonstiges“ hinzufügen möchten.
+Im Rahmen des Datenbeschriftungsprozesses stellen Sie möglicherweise fest, dass Sie weitere Beschriftungen benötigen, um Ihre Bilder zu klassifizieren.  So kann es beispielsweise sein, dass Sie für verwirrende Bilder Beschriftungen wie „Unbekannt“ oder „Sonstiges“ hinzufügen möchten.
 
 Gehen Sie wie folgt vor, um einem Projekt Beschriftungen hinzuzufügen:
 
@@ -267,6 +259,7 @@ Verwenden Sie diese Tipps, wenn Sie eines der folgenden Probleme feststellen.
 |Nach der Erstellung wird für das Projekt lange der Status „Wird initialisiert“ angezeigt.     | Aktualisieren Sie die Seite manuell. Die Initialisierung sollte mit ungefähr 20 Datenpunkten pro Sekunde durchgeführt werden. Die fehlende automatische Aktualisierung ist ein bekanntes Problem.         |
 |Beim Überprüfen von Bildern werden neu bezeichnete Bilder nicht angezeigt.     |   Wählen Sie die Schaltfläche **Erste** aus, um alle bezeichneten Bilder zu laden. Mit der Schaltfläche **Erste** gelangen Sie zurück an den Anfang der Liste, aber es werden alle bezeichneten Daten geladen.      |
 |Wird während der Erstellung von Bezeichnungen für die Objekterkennung ESC gedrückt, wird in der linken oberen Ecke eine Bezeichnung mit der Größe null erstellt. In diesem Fall ist die Übermittlung von Bezeichnungen nicht erfolgreich.     |   Löschen Sie die Bezeichnung, indem Sie auf das daneben angezeigte Kreuzsymbol klicken.  |
+|Das Zuweisen einer Gruppe von Aufgaben zu einem bestimmten Beschriftungsersteller ist nicht möglich.     |   Dies ist eine bekannte Einschränkung der aktuellen Version.  |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

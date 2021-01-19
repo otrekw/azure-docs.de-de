@@ -3,16 +3,16 @@ title: 'Tutorial: Erstellen und Verwalten von Regeln in Ihrer Azure IoT Centra
 description: In diesem Tutorial wird gezeigt, wie Azure IoT Central-Regeln es Ihnen ermöglichen, Ihre Geräte nahezu in Echtzeit zu überwachen und Aktionen, wie das Senden einer E-Mail, durch Auslösen der Regel automatisch aufzurufen.
 author: dominicbetts
 ms.author: dobett
-ms.date: 11/16/2020
+ms.date: 01/08/2021
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 6d49e3585460c95ca931f497a63cbc281aed1db1
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: 6be49ec3777b4bcaa033a60546e95711090662a4
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94991012"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98065285"
 ---
 # <a name="tutorial-create-a-rule-and-set-up-notifications-in-your-azure-iot-central-application"></a>Tutorial: Erstellen einer Regel und Einrichten von Benachrichtigungen in Ihrer Azure IoT Central-Anwendung
 
@@ -38,6 +38,9 @@ Erstellen Sie zunächst anhand der Schnellstarts [Erstellen einer Azure IoT Ce
 ## <a name="create-a-rule"></a>Erstellen einer Regel
 
 Um eine Telemetrieregel zu erstellen, muss für die Gerätevorlage mindestens ein Telemetriewert definiert sein. In diesem Tutorial wird ein simuliertes Gerät **Sensor Controller** verwendet, das Telemetriedaten zur Temperatur und Luftfeuchtigkeit sendet. Die Schritte zum Hinzufügen dieser Gerätevorlage sowie zum Erstellen eines simulierten Geräts wurden im Rahmen der Schnellstartanleitung [Schnellstart: Hinzufügen eines simulierten Geräts zu Ihrer IoT Central-Anwendung (Previewfunktionen)](./quick-create-simulated-device.md) ausgeführt. Die Regel überwacht die vom Gerät gemeldete Temperatur und sendet eine E-Mail, sobald die Temperatur 70 Grad übersteigt.
+
+> [!NOTE]
+> Pro Anwendung gilt ein Grenzwert von 50 Regeln.
 
 1. Klicken Sie im linken Bereich auf **Regeln**.
 
@@ -115,4 +118,4 @@ In diesem Tutorial haben Sie Folgendes gelernt:
 Nachdem Sie nun eine schwellenwertbasierte Regel definiert haben, können Sie sich als Nächstes mit Folgendem befassen:
 
 > [!div class="nextstepaction"]
-> [Exportieren Ihrer Azure IoT Central-Daten (Previewfunktionen)](./howto-export-data.md)
+> [Erstellen von Webhooks für Regeln](./howto-create-webhooks.md)

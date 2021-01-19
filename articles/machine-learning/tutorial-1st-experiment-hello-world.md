@@ -11,12 +11,12 @@ ms.author: amsaied
 ms.reviewer: sgilley
 ms.date: 09/15/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 971bac8a0b0951d4e07e139aea6c465a9159b8db
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 43a483f49a9e9004a4f487e82195198f2600a919
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96570959"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98071152"
 ---
 # <a name="tutorial-run-a-hello-world-python-script-part-2-of-4"></a>Tutorial: Ausführen eines Python-Skripts „Hello World!“ (Teil 2 von 4)
 
@@ -36,9 +36,6 @@ In diesem Tutorial wird Folgendes vermittelt:
 ## <a name="prerequisites"></a>Voraussetzungen
 
 - Abschluss von [Teil 1](tutorial-1st-experiment-sdk-setup-local.md), wenn Sie noch nicht über einen Azure Machine Learning-Arbeitsbereich verfügen.
-- Kenntnisse der Python-Sprache und der Machine Learning-Workflows auf Einstiegsniveau.
-- Lokale Entwicklungsumgebung, z. B. Visual Studio Code, Jupyter oder PyCharm.
-- Python (Version 3.5 bis 3.7).
 
 ## <a name="create-and-run-a-python-script-locally"></a>Lokales Erstellen und Ausführen eines Python-Skripts
 
@@ -64,7 +61,7 @@ tutorial
 
 ### <a name="test-your-script-locally"></a><a name="test"></a>Lokales Testen des Skripts
 
-Sie können Ihren Code lokal ausführen, indem Sie Ihre bevorzugte IDE oder ein Terminal verwenden. Das lokale Ausführen von Code hat den Vorteil, dass Sie Code interaktiv debuggen.
+Sie können Ihren Code lokal ausführen, indem Sie Ihre bevorzugte IDE oder ein Terminal verwenden. Das lokale Ausführen von Code hat den Vorteil, dass Sie Code interaktiv debuggen.  Führen Sie in dem Fenster mit der aktivierten Conda-Umgebung *tutorial1* die Python-Datei aus:
 
 ```bash
 cd <path/to/tutorial>
@@ -93,8 +90,6 @@ run = experiment.submit(config)
 aml_url = run.get_portal_url()
 print(aml_url)
 ```
-
-
 
 ### <a name="understand-the-code"></a>Grundlegendes zum Code
 
@@ -148,13 +143,6 @@ Eine kurze Beschreibung zur Funktionsweise des Steuerungsskripts:
 
 Führen Sie Ihr Steuerungsskript aus, das seinerseits `hello.py` auf dem Computecluster ausführt, den Sie im [Setup-Tutorial](tutorial-1st-experiment-sdk-setup-local.md) erstellt haben.
 
-Die erste Ausführung dauert fünf bis zehn Minuten. Dies hat folgende Ursachen:
-
-* Ein Docker-Image wird in der Cloud erstellt.
-* Die Größe des Computeclusters wird von 0 in 1 Knoten geändert.
-* Das Docker-Image wird in den Computecluster heruntergeladen. 
-
-Nachfolgende Ausführungen sind wesentlich schneller (etwa 15 Sekunden), da das Docker-Image im Computecluster zwischengespeichert wird. Sie können dies testen, indem Sie den folgenden Code nach Abschluss der ersten Ausführung erneut übermitteln.
 
 ```bash
 python 03-run-hello.py
@@ -168,9 +156,17 @@ python 03-run-hello.py
 
 ## <a name="monitor-your-code-in-the-cloud-by-using-the-studio"></a><a name="monitor"></a>Überwachen Ihres Codes in der Cloud mithilfe von Studio
 
-Die Ausgabe enthält einen Link zu Studio, der etwa wie folgt aussieht: `https://ml.azure.com/experiments/hello-world/runs/<run-id>?wsid=/subscriptions/<subscription-id>/resourcegroups/<resource-group>/workspaces/<workspace-name>`.
+Die Ausgabe Ihres Skripts enthält einen Link zu Studio, der etwa wie folgt aussieht: `https://ml.azure.com/experiments/hello-world/runs/<run-id>?wsid=/subscriptions/<subscription-id>/resourcegroups/<resource-group>/workspaces/<workspace-name>`.
 
-Folgen Sie dem Link, und navigieren Sie zur Registerkarte **Ausgaben und Protokolle**. Dort sehen Sie eine Datei `70_driver_log.txt`, die wie folgt aussieht:
+Klicken Sie auf den Link.  Zunächst sehen Sie den Status **Wird vorbereitet**.  Die erste Ausführung dauert fünf bis zehn Minuten. Dies hat folgende Ursachen:
+
+* Ein Docker-Image wird in der Cloud erstellt.
+* Die Größe des Computeclusters wird von 0 in 1 Knoten geändert.
+* Das Docker-Image wird in den Computecluster heruntergeladen. 
+
+Nachfolgende Ausführungen sind wesentlich schneller (ca. 15 Sekunden), da das Docker-Image in der Computeressource zwischengespeichert wird. Sie können dies testen, indem Sie den nachfolgenden Code nach Abschluss der ersten Ausführung erneut übermitteln.
+
+Navigieren Sie nach Abschluss des Auftrags zur Registerkarte **Ausgaben und Protokolle**. Dort sehen Sie eine Datei `70_driver_log.txt`, die wie folgt aussieht:
 
 ```txt
  1: [2020-08-04T22:15:44.407305] Entering context manager injector.

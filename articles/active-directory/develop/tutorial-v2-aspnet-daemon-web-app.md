@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 12/10/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: c1d448fe9da72654ac1600009e66c88c5e7b93b4
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 5f2560cdc062edb41ecda935eb9b8efe630949dc
+ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97509426"
+ms.lasthandoff: 01/08/2021
+ms.locfileid: "98015945"
 ---
 # <a name="tutorial-build-a-multi-tenant-daemon-that-uses-the-microsoft-identity-platform"></a>Tutorial: Erstellen eines mehrinstanzenfähigen Daemons, der Microsoft Identity Platform verwendet
 
@@ -93,7 +93,7 @@ Falls Sie die Automatisierung nicht verwenden möchten, führen Sie die Schritte
 
 ### <a name="choose-the-azure-ad-tenant"></a>Erstellen des Azure AD-Mandanten
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
+1. Melden Sie sich beim <a href="https://portal.azure.com/" target="_blank">Azure-Portal<span class="docon docon-navigate-external x-hidden-focus"></span></a> an.
 1. Wenn Sie Zugriff auf mehrere Mandanten haben, verwenden Sie im Menü am oberen Rand den Filter **Verzeichnis + Abonnement** :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::, um den Mandanten auszuwählen, für den Sie eine Anwendung registrieren möchten.
 
 
@@ -203,7 +203,7 @@ Dieses Projekt enthält Web-App- und Web-API-Projekte. Führen Sie jeweils die f
 
 ### <a name="create-and-publish-dotnet-web-daemon-v2-to-an-azure-website"></a>Erstellen und Veröffentlichen von „dotnet-web-daemon-v2“ für eine Azure-Website
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
+1. Melden Sie sich beim <a href="https://portal.azure.com/" target="_blank">Azure-Portal<span class="docon docon-navigate-external x-hidden-focus"></span></a> an.
 1. Wählen Sie links oben **Ressource erstellen** aus.
 1. Wählen Sie **Web** > **Web-App** aus, und benennen Sie Ihre Website. Nennen Sie sie beispielsweise **dotnet-web-daemon-v2-contoso.azurewebsites.net**.
 1. Wählen Sie die Informationen für **Abonnement** und **Ressourcengruppe** sowie für **App Service-Plan und Standort** aus. Legen Sie **Betriebssystem** auf **Windows** und **Veröffentlichen** auf **Code** fest.
@@ -224,7 +224,7 @@ Visual Studio veröffentlicht das Projekt und öffnet die Projekt-URL automatisc
 
 ### <a name="update-the-azure-ad-tenant-application-registration-for-dotnet-web-daemon-v2"></a>Aktualisieren der Azure AD-Mandantenanwendungsregistrierung für „dotnet-web-daemon-v2“
 
-1. Wechseln Sie zurück zum [Azure-Portal](https://portal.azure.com).
+1. Wechseln Sie zurück zum <a href="https://portal.azure.com/" target="_blank">Azure-Portal<span class="docon docon-navigate-external x-hidden-focus"></span></a>.
 1. Wählen Sie im linken Bereich den Dienst **Azure Active Directory** und anschließend **App-Registrierungen** aus.
 1. Wählen Sie die Anwendung **dotnet-web-daemon-v2** aus.
 1. Aktualisieren Sie auf der Seite **Authentifizierung** für Ihre Anwendung die Felder vom Typ **Abmelde-URL** mit der Adresse Ihres Diensts. Verwenden Sie z. B. `https://dotnet-web-daemon-v2-contoso.azurewebsites.net`.

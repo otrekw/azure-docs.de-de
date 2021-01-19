@@ -11,12 +11,12 @@ ms.devlang: na
 ms.date: 12/16/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 7eda805a5fdf24a7a55b9296a0f0a1c9a5bfc576
-ms.sourcegitcommit: e0ec3c06206ebd79195d12009fd21349de4a995d
+ms.openlocfilehash: 36fb54b4b6521d87c7461936c84a644bf22f7e31
+ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97683489"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97963962"
 ---
 # <a name="tutorial-use-deployment-scripts-to-create-a-self-signed-certificate"></a>Tutorial: Verwenden von Bereitstellungsskripts zum Erstellen eines selbstsignierten Zertifikats
 
@@ -329,13 +329,13 @@ Vom Bereitstellungsskript wird dem Schlüsseltresor ein Zertifikat hinzugefügt.
 
     ![Resource Manager-Vorlage: Bereitstellungsskriptressourcen](./media/template-tutorial-deployment-script/resource-manager-template-deployment-script-resources.png)
 
-    Beide Dateien verfügen über das Suffix **azscripts**. Hierbei handelt es sich um ein Speicherkonto und eine Containerinstanz.
+    Beide Dateien verfügen über das Suffix _azscripts_. Hierbei handelt es sich um ein Speicherkonto und eine Containerinstanz.
 
     Wählen Sie die Option **Ausgeblendete Typen anzeigen** aus, um die `deploymentScripts`-Ressource aufzulisten.
 
-1. Wählen Sie das Speicherkonto mit dem Suffix **azscripts** aus.
-1. Wählen Sie die Kachel **Dateifreigaben** aus. Der Ordner **azscripts** wird angezeigt. Der Ordner enthält die Ausführungsdateien für die Bereitstellungsskripts.
-1. Wählen Sie **azscripts** aus. Die beiden Ordner **azscriptinput** und **azscriptoutput** werden angezeigt. Der Eingabeordner enthält eine PowerShell-Skriptdatei des Systems und die Bereitstellungsskriptdateien der Benutzer. Der Ausgabeordner enthält die Datei _executionresult.json_ und die Skriptausgabedatei. Sie können die Fehlermeldung in _executionresult.json_ anzeigen. Die Ausgabedatei ist nicht vorhanden, weil bei der Ausführung ein Fehler aufgetreten ist.
+1. Wählen Sie das Speicherkonto mit dem Suffix _azscripts_ aus.
+1. Wählen Sie die Kachel **Dateifreigaben** aus. Der Ordner _azscripts_ wird angezeigt. Er enthält die Ausführungsdateien für die Bereitstellungsskripts.
+1. Wählen Sie _azscripts_ aus. Die beiden Ordner _azscriptinput_ und _azscriptoutput_ werden angezeigt. Der Eingabeordner enthält eine PowerShell-Skriptdatei des Systems und die Bereitstellungsskriptdateien der Benutzer. Der Ausgabeordner enthält die Datei _executionresult.json_ und die Skriptausgabedatei. Sie können die Fehlermeldung in _executionresult.json_ anzeigen. Die Ausgabedatei ist nicht vorhanden, weil bei der Ausführung ein Fehler aufgetreten ist.
 
 Entfernen Sie die Zeile `Write-Output1`, und stellen Sie die Vorlage erneut bereit.
 

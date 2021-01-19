@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 12/13/2019
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40
-ms.openlocfilehash: dce2cd0d77ff0a98d4d68e1c99edb472e61ce8a5
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 63d56d8afc584a760f4b31c6021d4c764afd52b3
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97509460"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98064418"
 ---
 # <a name="tutorial-call-the-microsoft-graph-api-from-a-universal-windows-platform-uwp-application"></a>Tutorial: Aufrufen der Microsoft Graph-API über eine UWP-Anwendung (UWP = Universelle Windows-Plattform)
 
@@ -50,7 +50,7 @@ In dieser Anleitung wird das folgende NuGet-Paket verwendet:
 
 |Bibliothek|Beschreibung|
 |---|---|
-|[Microsoft.Identity.Client](https://www.nuget.org/packages/Microsoft.Identity.Client)|Microsoft Authentication Library (MSAL)|
+|[Microsoft.Identity.Client](https://www.nuget.org/packages/Microsoft.Identity.Client)| Microsoft Authentication Library (MSAL)|
 |[Microsoft.Graph](https://www.nuget.org/packages/Microsoft.Graph)|Microsoft Graph-Clientbibliothek|
 
 ## <a name="set-up-your-project"></a>Einrichten des Projekts
@@ -71,7 +71,7 @@ In diesem Leitfaden wird eine Anwendung mit einer Schaltfläche zum Abfragen der
 
    ![Mindestversion und Zielversion](./media/tutorial-v2-windows-uwp/select-uwp-target-minimum.png)
 
-### <a name="add-microsoft-authentication-library-to-your-project"></a>Hinzufügen der MSAL (Microsoft Authentication Library) zu Ihrem Projekt
+### <a name="add-the-microsoft-authentication-library-to-your-project"></a>Hinzufügen der Microsoft-Authentifizierungsbibliothek (Microsoft Authentication Library, MSAL) zu Ihrem Projekt
 
 1. Klicken Sie in Visual Studio auf **Tools** > **NuGet-Paket-Manager** > **Paket-Manager-Konsole**.
 1. Kopieren Sie die folgenden Befehle, und fügen Sie sie in das Fenster **Paket-Manager-Konsole** ein:
@@ -103,7 +103,7 @@ Visual Studio erstellt als Teil Ihrer Projektvorlage die Datei *MainPage.xaml*. 
 </Grid>
 ```
 
-### <a name="use-microsoft-authentication-library-to-get-a-token-for-the-microsoft-graph-api"></a>Abrufen eines Tokens für die Microsoft Graph-API mithilfe der Microsoft-Authentifizierungsbibliothek
+### <a name="use-the-microsoft-authentication-library-to-get-a-token-for-the-microsoft-graph-api"></a>Abrufen eines Tokens für die Microsoft Graph-API mithilfe der Microsoft-Authentifizierungsbibliothek
 
 In diesem Abschnitt erfahren Sie, wie Sie mithilfe der Microsoft-Authentifizierungsbibliothek ein Token für die Microsoft Graph-API abrufen. Nehmen Sie Änderungen an der Datei *MainPage.xaml.cs* vor.
 
@@ -346,7 +346,7 @@ private async Task DisplayMessageAsync(string message)
 
 Nun müssen Sie Ihre Anwendung registrieren:
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
+1. Melden Sie sich beim <a href="https://portal.azure.com/" target="_blank">Azure-Portal<span class="docon docon-navigate-external x-hidden-focus"></span></a> an.
 1. Wenn Sie Zugriff auf mehrere Mandanten haben, verwenden Sie im Menü am oberen Rand den Filter **Verzeichnis + Abonnement** :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::, um den Mandanten auszuwählen, für den Sie eine Anwendung registrieren möchten.
 1. Suchen Sie nach **Azure Active Directory**, und wählen Sie diese Option aus.
 1. Wählen Sie unter **Verwalten** Folgendes aus: **App-Registrierungen** > **Neue Registrierung**.
@@ -357,7 +357,7 @@ Nun müssen Sie Ihre Anwendung registrieren:
 
 Konfigurieren der Authentifizierung für Ihre Anwendung:
 
-1. Wenn Sie sich wieder im [Azure-Portal](https://portal.azure.com) befinden, wählen Sie unter **Verwalten** die Optionen **Authentifizierung** > **Plattform hinzufügen** und dann **Mobilgerät- und Desktopanwendungen** aus.
+1. Wenn Sie sich wieder im <a href="https://portal.azure.com/" target="_blank">Azure-Portal <span class="docon docon-navigate-external x-hidden-focus"></span></a> befinden, wählen Sie unter **Verwalten** die Optionen **Authentifizierung** > **Plattform hinzufügen** und dann **Mobilgerät- und Desktopanwendungen** aus.
 1. Aktivieren Sie **https://login.microsoftonline.com/common/oauth2/nativeclient** im Abschnitt **Umleitungs-URIs**.
 1. Wählen Sie **Konfigurieren** aus.
 
@@ -509,4 +509,4 @@ Nach der Aktivierung von [Integrierte Authentifizierung für Verbunddomänen](#e
 Erfahren Sie mehr über die Verwendung von Microsoft Authentication Library (MSAL) für die Autorisierung und Authentifizierung in .NET-Anwendungen:
 
 > [!div class="nextstepaction"]
-> [Übersicht über Microsoft Authentication Library (MSAL)](msal-overview.md)
+> [Übersicht über die Microsoft-Authentifizierungsbibliothek (MSAL)](msal-overview.md)

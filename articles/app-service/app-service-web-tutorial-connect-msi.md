@@ -5,12 +5,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 04/27/2020
 ms.custom: devx-track-csharp, mvc, cli-validate, devx-track-azurecli
-ms.openlocfilehash: 1f6757a9f78e3c400d92fd65a0795ceae7570c99
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.openlocfilehash: f043f7ed63353dcb9cf9fd26690da97b902f32a6
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97347573"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98108618"
 ---
 # <a name="tutorial-secure-azure-sql-database-connection-from-app-service-using-a-managed-identity"></a>Tutorial: Schützen der Azure SQL-Datenbank-Verbindung von App Service mittels einer verwalteten Identität
 
@@ -229,6 +229,9 @@ Geben Sie `EXIT` ein, um zur Cloud Shell-Eingabeaufforderung zurückzukehren.
 > [!NOTE]
 > Die Back-End-Dienste verwalteter Identitäten [verwalten darüber hinaus einen Tokencache](overview-managed-identity.md#obtain-tokens-for-azure-resources), der das Token für eine Zielressource nur bei Ablauf aktualisiert. Wenn Sie beim Konfigurieren der Berechtigungen für SQL-Datenbank einen Fehler machen und die Berechtigungen ändern möchten, *nachdem* Sie versucht haben, mit Ihrer App ein Token abzurufen, erhalten Sie tatsächlich erst dann ein neues Token mit den aktualisierten Berechtigungen, wenn das zwischengespeicherte Token abläuft.
 
+> [!NOTE]
+> AAD wird für lokale SQL Server-Instanzen nicht unterstützt. Dazu zählen auch MSIs. 
+
 ### <a name="modify-connection-string"></a>Ändern der Verbindungszeichenfolge
 
 Zur Erinnerung: Die in *Web.config* oder *appsettings.json* vorgenommenen Änderungen funktionieren auch mit der verwalteten Identität. Sie müssen also lediglich die vorhandene Verbindungszeichenfolge in App Service entfernen, die von Visual Studio im Zuge der erstmaligen Bereitstellung Ihrer App erstellt wurde. Verwenden Sie den folgenden Befehl, und ersetzen Sie dabei den Platzhalter *\<app-name>* durch den Namen Ihrer App.
@@ -251,7 +254,7 @@ Wurden Sie vom **[Tutorial: Erstellen einer ASP.NET Core- und SQL-Datenbank-App 
 
 ```bash
 git commit -am "configure managed identity"
-git push azure master
+git push azure main
 ```
 
 Wenn die neue Webseite Ihre Aufgabenliste anzeigt, stellt Ihre App unter Verwendung der verwalteten Identität eine Verbindung mit der Datenbank her.

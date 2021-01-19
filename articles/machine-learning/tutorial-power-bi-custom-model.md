@@ -1,7 +1,7 @@
 ---
-title: 'Tutorial: Erstellen des Vorhersagemodells mit einem Notebook (Teil 1 von 2)'
+title: 'Tutorial: Erstellen des Vorhersagemodells mit einem Notebook (Teil 1 von 2)'
 titleSuffix: Azure Machine Learning
-description: Es wird beschrieben, wie Sie ein Machine Learning-Modell erstellen und bereitstellen, indem Sie Code in einem Jupyter Notebook verwenden. Sie können das Modell nutzen, um Ergebnisse in Microsoft Power BI vorherzusagen.
+description: Es wird beschrieben, wie Sie ein Machine Learning-Modell erstellen und bereitstellen, indem Sie Code in einem Jupyter Notebook verwenden. Erstellen Sie außerdem ein Bewertungsskript, das die Eingabe und Ausgabe für eine einfache Integration in Microsoft Power BI definiert.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,16 +10,16 @@ ms.author: samkemp
 author: samuel100
 ms.reviewer: sdgilley
 ms.date: 12/11/2020
-ms.openlocfilehash: 1dfee56f90011d3c532767e136b383e4eb95c234
-ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
+ms.openlocfilehash: 29b340448f3ce3e18a649065bdcd0b335bab8b73
+ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97814770"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98108244"
 ---
-# <a name="tutorial-power-bi-integration---create-the-predictive-model-by-using-a-jupyter-notebook-part-1-of-2"></a>Tutorial: Power BI-Integration: Erstellen des Vorhersagemodells mit einem Jupyter Notebook (Teil 1 von 2)
+# <a name="tutorial-power-bi-integration---create-the-predictive-model-with-a-jupyter-notebook-part-1-of-2"></a>Tutorial: Power BI-Integration: Erstellen des Vorhersagemodells mit einer Jupyter Notebook-Instanz (Teil 1 von 2)
 
-In Teil 1 dieses Tutorials wird ein Vorhersagemodell für maschinelles Lernen mithilfe von Code in einem Jupyter Notebook trainiert und bereitgestellt. In Teil 2 verwenden Sie das Modell, um Ergebnisse in Microsoft Power BI vorherzusagen.
+In Teil 1 dieses Tutorials wird ein Vorhersagemodell für maschinelles Lernen mithilfe von Code in einem Jupyter Notebook trainiert und bereitgestellt. Außerdem erstellen Sie ein Bewertungsskript, um das Eingabe- und Ausgabeschema des Modells für die Integration in Power BI zu definieren.  In Teil 2 verwenden Sie das Modell, um Ergebnisse in Microsoft Power BI vorherzusagen.
 
 In diesem Tutorial führen Sie Folgendes durch:
 
@@ -27,6 +27,7 @@ In diesem Tutorial führen Sie Folgendes durch:
 > * Erstellen eines Notebooks für Jupyter Notebook
 > * Erstellen einer Compute-Instanz von Azure Machine Learning
 > * Trainieren eines Regressionsmodells mithilfe von scikit-learn
+> * Schreiben Sie ein Bewertungsskript, das die Eingabe und Ausgabe für eine einfache Integration in Microsoft Power BI definiert.
 > * Bereitstellen des Modells auf einem Echtzeit-Bewertungsendpunkt
 
 Es gibt drei Möglichkeiten, wie Sie das zu verwendende Modell in Power BI erstellen und bereitstellen können.  In diesem Artikel wird Option A behandelt: Trainieren und Bereitstellen mithilfe von Notebooks.  Bei dieser Option handelt es sich um eine codebasierte Erstellung. Es werden in Azure Machine Learning Studio gehostete Jupyter Notebooks verwendet. 
@@ -157,7 +158,7 @@ Sie können das Modell auch in Azure Machine Learning Studio anzeigen. Wählen S
 
 :::image type="content" source="media/tutorial-power-bi/model.png" alt-text="Screenshot: Anzeigen eines Modells":::
 
-### <a name="define-the-scoring-script"></a>Definieren des Bewertungsskripts
+## <a name="define-the-scoring-script"></a>Definieren des Bewertungsskripts
 
 Wenn Sie ein Modell bereitstellen, das in Power BI integriert werden soll, müssen Sie ein Python-*Bewertungsskript* und eine benutzerdefinierte Umgebung definieren. Das Bewertungsskript enthält zwei Funktionen:
 
@@ -165,7 +166,7 @@ Wenn Sie ein Modell bereitstellen, das in Power BI integriert werden soll, müss
 - Die Funktion `run(data)` wird ausgeführt, wenn ein Aufruf des Diensts Eingabedaten enthält, die bewertet werden müssen. 
 
 >[!NOTE]
-> In diesem Artikel werden Decorator-Elemente von Python verwendet, um das Schema der Eingabe- und Ausgabedaten zu definieren. Diese Vorgehensweise ist für die Power BI-Integration wichtig.
+> Die Decorator-Elemente von Python im folgenden Code definieren das Schema der Eingabe- und Ausgabedaten. Dies ist für die Integration in Power BI wichtig.
 
 Kopieren Sie den folgenden Code, und fügen Sie ihn in eine neue *Codezelle* Ihres Notebooks ein. Der folgende Codeausschnitt enthält Zellen-Magic-Befehle, mit denen der Code in eine Datei mit dem Namen *score.py* geschrieben wird.
 

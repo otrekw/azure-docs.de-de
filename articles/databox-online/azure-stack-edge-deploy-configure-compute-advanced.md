@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 05/20/2019
+ms.date: 01/06/2021
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to configure compute on Azure Stack Edge Pro for advanced deployment flow so I can use it to transform the data before sending it to Azure.
-ms.openlocfilehash: bcad165f5d0ba2cf652cff35091e05b4414193c8
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 8946dfca9a416009effb45cad1e81348dd900f98
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91951790"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97968186"
 ---
 # <a name="tutorial-transform-data-with-azure-stack-edge-pro-for-advanced-deployment-flow"></a>Tutorial: Transformieren von Daten mit Azure Stack Edge Pro für den erweiterten Bereitstellungsablauf
 
@@ -52,32 +52,34 @@ Stellen Sie Folgendes sicher, bevor Sie eine Computerolle auf Ihrem Azure Stack 
 
 Sie erstellen eine IoT Hub-Ressource, um die Computeumgebung in Ihrer Azure Stack Edge Pro-Instanz zu konfigurieren.
 
-1. Navigieren Sie im Azure-Portal für Ihre Azure Stack Edge-Ressource zu **Übersicht**. Wählen Sie im Bereich auf der rechten Seite auf der Kachel **Compute** die Option **Erste Schritte**.
+1. Navigieren Sie im Azure-Portal für Ihre Azure Stack Edge-Ressource zu **Übersicht**. Wählen Sie im rechten Bereich die Kachel **IoT Edge** aus.
 
     ![Erste Schritte mit Compute](./media/azure-stack-edge-deploy-configure-compute-advanced/configure-compute-1.png)
 
-2. Wählen Sie auf der Kachel **Edgecomputing konfigurieren** die Option **Compute konfigurieren**.
+2. Wählen Sie auf der Kachel **IoT Edge-Dienst aktivieren** die Option **Hinzufügen** aus. Mit dieser Aktion wird der IoT Edge-Dienst aktiviert, der Ihnen das lokale Bereitstellen von IoT Edge-Modulen auf Ihrem Gerät ermöglicht.
 
     ![Erste Schritte mit Compute 2](./media/azure-stack-edge-deploy-configure-compute-advanced/configure-compute-2.png)
 
-3. Geben Sie auf dem Blatt **Edgecomputing konfigurieren** Folgendes ein:
+3. Geben Sie unter **IoT Edge-Dienst erstellen** Folgendes ein:
 
    
     |Feld  |Wert  |
     |---------|---------|
-    |IoT Hub     | Wählen Sie zwischen **Neu** und **Vorhanden**. <br> Standardmäßig wird ein Standard-Tarif (S1) verwendet, um eine IoT-Ressource zu erstellen. Wenn Sie eine IoT-Ressource im Free-Tarif verwenden möchten, können Sie diese erstellen und dann als vorhandene Ressource auswählen. <br> Die IoT Hub-Ressource nutzt in jedem Fall dasselbe Abonnement und dieselbe Ressourcengruppe wie die Azure Stack Edge-Ressource.     |
-    |Name     |Geben Sie einen Namen für Ihre IoT Hub-Ressource ein.         |
+    |Subscription     |Wählen Sie ein Abonnement für Ihre IoT Hub-Ressource aus. Sie können dasselbe Abonnement auswählen, das auch von der Azure Stack Edge-Ressource verwendet wird.        |
+    |Resource group     |Geben Sie einen Namen für die Ressourcengruppe für Ihre IoT Hub-Ressource ein. Sie können dieselbe Ressourcengruppe auswählen, die auch von der Azure Stack Edge-Ressource verwendet wird.         |
+    |IoT Hub     | Wählen Sie zwischen **Neu** und **Vorhanden**. <br> Standardmäßig wird ein Standard-Tarif (S1) verwendet, um eine IoT-Ressource zu erstellen. Wenn Sie eine IoT-Ressource im Free-Tarif verwenden möchten, können Sie diese erstellen und dann als vorhandene Ressource auswählen.      |
+    |Name     |Übernehmen Sie den Standardwert, oder geben Sie einen Namen für Ihre IoT Hub-Ressource ein.         |
 
     ![Erste Schritte mit Compute 3](./media/azure-stack-edge-deploy-configure-compute-advanced/configure-compute-3.png)
 
-4. Klicken Sie auf **Erstellen**. Die Erstellung der IoT Hub-Ressource dauert einige Minuten. Nachdem die IoT Hub-Ressource erstellt wurde, wird die Kachel **Edgecomputing konfigurieren** aktualisiert, um die Computekonfiguration anzuzeigen. Wählen Sie auf der Kachel **Compute konfigurieren** die Option **Konfiguration anzeigen** aus, um sich zu vergewissern, dass die Edge-Computerolle konfiguriert wurde.
-    
+4. Klicken Sie auf **Überprüfen + erstellen**. Die Erstellung der IoT Hub-Ressource dauert einige Minuten. Nach der Erstellung der IoT Hub-Ressource wird die **Übersicht** aktualisiert, um anzugeben, dass der IoT Edge-Dienst ausgeführt wird. 
+
+    Wenn der IoT Edge-Dienst auf dem Edge-Gerät konfiguriert ist, werden zwei Geräte erstellt: ein IoT-Gerät und ein IoT Edge-Gerät. Beide Geräte können in der IoT Hub-Ressource angezeigt werden. Auf diesem IoT Edge-Gerät wird auch eine IoT Edge-Runtime ausgeführt. Derzeit ist für Ihr IoT Edge-Gerät nur die Linux-Plattform verfügbar.
+
+    Um zu bestätigen, dass die Edgecomputingrolle konfiguriert wurde, wählen Sie **IoT Edge-Dienst > Eigenschaften aus**, und zeigen Sie das IoT-Gerät und das IoT Edge-Gerät an. 
+
     ![Erste Schritte mit Compute 4](./media/azure-stack-edge-deploy-configure-compute-advanced/configure-compute-4.png)
-
-    Wenn die Edge-Computerolle auf dem Edge-Gerät eingerichtet ist, werden zwei Geräte erstellt: ein IoT-Gerät und ein IoT Edge-Gerät. Beide Geräte können in der IoT Hub-Ressource angezeigt werden. Auf diesem IoT Edge-Gerät wird auch eine IoT Edge-Runtime ausgeführt.
-
-    Derzeit ist für Ihr IoT Edge-Gerät nur die Linux-Plattform verfügbar.
-
+    
 
 ## <a name="add-shares"></a>Hinzufügen von Freigaben
 
@@ -85,19 +87,13 @@ Für die erweiterte Bereitstellung in diesem Tutorial benötigen Sie zwei Freiga
 
 1. Fügen Sie auf dem Gerät eine Edgefreigabe hinzu, indem Sie die folgenden Schritte ausführen:
 
-    1. Navigieren Sie auf Ihrer Azure Stack Edge-Ressource zu **Edgecomputing > Erste Schritte**.
-    2. Wählen Sie auf der Kachel **Freigabe(n) hinzufügen** die Option **Hinzufügen**.
+    1. Navigieren Sie in Ihrer Azure Stack Edge-Ressource zu **IoT Edge > Freigaben**.
+    2. Wählen Sie auf der Seite **Freigaben** auf der Befehlsleiste **+ Freigabe hinzufügen** aus.
     3. Geben Sie auf dem Blatt **Freigabe hinzufügen** den Freigabenamen an, und wählen Sie den Freigabetyp aus.
     4. Aktivieren Sie zum Bereitstellen der Edgefreigabe das Kontrollkästchen für **Freigabe mit Edgecomputing verwenden**.
     5. Wählen Sie das **Speicherkonto**, den **Speicherdienst**, einen vorhandenen Benutzer und dann die Option **Erstellen** aus.
 
         ![Hinzufügen einer Edgefreigabe](./media/azure-stack-edge-deploy-configure-compute-advanced/add-edge-share-1.png)
-
-    <!--If you created a local NFS share, use the following remote sync (rsync) command option to copy files onto the share:
-
-    `rsync <source file path> < destination file path>`
-
-    For more information about the rsync command, go to [Rsync documentation](https://www.computerhope.com/unix/rsync.htm).-->
 
     Nachdem die Edgefreigabe erstellt wurde, erhalten Sie eine Benachrichtigung zur erfolgreichen Erstellung. Die Freigabeliste wird aktualisiert, um die neue Freigabe anzuzeigen.
 
@@ -124,7 +120,7 @@ Für die erweiterte Bereitstellung in diesem Tutorial benötigen Sie zwei Freiga
 
 ## <a name="add-a-trigger"></a>Hinzufügen eines Triggers
 
-1. Wechseln Sie zu **Edgecomputing > Trigger**. Wählen Sie **+ Trigger hinzufügen** aus.
+1. Wechseln Sie zu Ihrer Azure Stack Edge-Ressource und dann zu **IoT Edge > Trigger**. Wählen Sie **+ Trigger hinzufügen** aus.
 
     ![Hinzufügen des Triggers](./media/azure-stack-edge-deploy-configure-compute-advanced/add-trigger-1.png)
 
@@ -154,7 +150,7 @@ Auf diesem Edgegerät sind keine benutzerdefinierten Module vorhanden. Sie könn
 
 In diesem Abschnitt fügen Sie dem IoT Edge-Gerät, das Sie unter [Entwickeln eines C#-Moduls für Ihr Azure Stack Edge Pro-Gerät](azure-stack-edge-create-iot-edge-module.md) erstellt haben, ein benutzerdefiniertes Modul hinzu. Dieses benutzerdefinierte Modul verwendet Dateien von einer lokalen Edgefreigabe auf dem Edgegerät und verschiebt sie auf eine Edgefreigabe (Cloudfreigabe) auf dem Gerät. Die Cloudfreigabe überträgt die Dateien dann per Pushvorgang an das Azure-Speicherkonto, das der Cloudfreigabe zugeordnet ist.
 
-1. Navigieren Sie zu **Edgecomputing > Erste Schritte**. Wählen Sie auf der Kachel **Module hinzufügen** als Szenariotyp die Option **Erweitert** aus. Wählen Sie **Zu IoT Hub wechseln** aus.
+1. Wechseln Sie zu Ihrer Azure Stack Edge-Ressource und dann zu **IoT Edge > Übersicht**. Wählen Sie auf der Kachel **Module** die Option **Go to Azure IoT Hub** (Zu Azure IoT Hub wechseln) aus.
 
     ![Auswählen der erweiterten Bereitstellung](./media/azure-stack-edge-deploy-configure-compute-advanced/add-module-1.png)
 

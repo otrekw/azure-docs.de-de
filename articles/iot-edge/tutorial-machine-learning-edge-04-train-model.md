@@ -8,30 +8,29 @@ ms.date: 3/24/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 757e34fd45b7d3d9703aa09daa7f040c5f605637
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 2cc96db88d9a2aec02de5e2fc4ed18b445972e7b
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96932386"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98121135"
 ---
 # <a name="tutorial-train-and-deploy-an-azure-machine-learning-model"></a>Tutorial: Trainieren und Bereitstellen eines Azure Machine Learning-Modells
 
 In diesem Artikel führen Sie die folgenden Aufgaben aus:
 
-* Verwenden von Azure Notebooks zum Trainieren eines Machine Learning-Modells
+* Trainieren eines Machine Learning-Modells mithilfe von Azure Machine Learning Studio
 * Packen des trainierten Modells als Containerimage
 * Bereitstellen des Containerimages als Azure IoT Edge-Modul
 
-Von Azure Notebooks wird ein Azure Machine Learning-Arbeitsbereich genutzt. Dabei handelt es sich um eine grundlegende Komponente für das Experimentieren, Trainieren und Bereitstellen von Machine Learning-Modellen.
+Azure Machine Learning Studio ist eine grundlegende Komponente für das Experimentieren, Trainieren und Bereitstellen von Machine Learning-Modellen.
 
 Normalerweise werden die Schritte in diesem Artikel von Data Scientists ausgeführt.
 
 In diesem Abschnitt des Tutorials lernen Sie Folgendes:
 
 > [!div class="checklist"]
->
-> * Erstellen eines Azure Notebooks-Projekts zum Trainieren eines Machine Learning-Modells
+> * Erstellen von Jupyter Notebook-Instanzen in einem Azure Machine Learning-Arbeitsbereich zum Trainieren eines Machine Learning-Modells
 > * Containerisieren des trainiertes Machine Learning-Modells
 > * Erstellen eines Azure IoT Edge-Moduls auf der Grundlage des containerisierten Machine Learning-Modells
 
@@ -39,49 +38,49 @@ In diesem Abschnitt des Tutorials lernen Sie Folgendes:
 
 Dieser Artikel ist Teil einer Tutorialreihe zur Verwendung von Azure Machine Learning für IoT Edge. Jeder Artikel in der Reihe baut auf der Arbeit im vorherigen Artikel auf. Wenn Sie diesen Artikel direkt aufgerufen haben, wechseln Sie zum [ersten Artikel](tutorial-machine-learning-edge-01-intro.md) in der Reihe.
 
-## <a name="set-up-azure-notebooks"></a>Einrichten von Azure Notebooks
+## <a name="set-up-azure-machine-learning"></a>Einrichten von Azure Machine Learning 
 
-Wir verwenden Azure Notebooks, um die beiden Jupyter Notebooks und die unterstützenden Dateien zu hosten. Hier erstellen und konfigurieren wir ein Azure Notebooks-Projekt. Falls Sie Jupyter bzw. Azure Notebooks noch nicht verwendet haben, helfen Ihnen diese Dokumente mit Informationen zum Einstieg weiter:
+Sie verwenden Azure Machine Learning Studio, um die beiden Jupyter Notebook-Instanzen und die unterstützenden Dateien zu hosten. Hier erstellen und konfigurieren Sie ein Azure Machine Learning-Projekt. Falls Sie Jupyter und/oder Azure Machine Learning Studio noch nicht verwendet haben, helfen Ihnen diese Dokumente mit Informationen zum Einstieg weiter:
 
-* **Schnellstart:** [Erstellen und Freigeben eines Notebooks](../notebooks/quickstart-create-share-jupyter-notebook.md)
-* **Tutorial:** [Erstellen und Ausführen einer Jupyter Notebook-Datei mit Python](../notebooks/tutorial-create-run-jupyter-notebook.md)
+* **Jupyter Notebook:** [Arbeiten mit Jupyter Notebook in Visual Studio Code](https://code.visualstudio.com/docs/python/jupyter-support)
+* **Azure Machine Learning:** [Tutorial: Machen Sie sich mit den ersten Schritten mit Azure Machine Learning in Jupyter Notebooks vertraut.](../machine-learning/tutorial-1st-experiment-sdk-setup.md)
 
-Mit Azure Notebooks wird die Einheitlichkeit der Umgebung für die Übung sichergestellt.
 
 > [!NOTE]
-> Nach der Einrichtung kann von jedem Computer aus auf den Azure Notebooks-Dienst zugegriffen werden. Während der Einrichtung sollten Sie den virtuellen Entwicklungscomputer nutzen, auf dem alle benötigten Dateien vorhanden sind.
+> Nach der Einrichtung kann von jedem Computer aus auf Azure Machine Learning Service zugegriffen werden. Während der Einrichtung sollten Sie den virtuellen Entwicklungscomputer nutzen, auf dem alle benötigten Dateien vorhanden sind.
 
-### <a name="create-an-azure-notebooks-account"></a>Erstellen eines Azure Notebooks-Kontos
+### <a name="install-azure-machine-learning-visual-studio-code-extension"></a>Installieren der Azure Machine Learning-Erweiterung für Visual Studio Code
+Für VS Code auf dem virtuellen Entwicklungscomputer muss diese Erweiterung installiert sein. Wenn die Ausführung in einer anderen Instanz erfolgt, installieren Sie die Erweiterung wie [hier](../machine-learning/tutorial-setup-vscode-extension.md) beschrieben neu.
 
-Sie müssen ein Konto erstellen, um Azure Notebooks verwenden zu können. Azure Notebooks-Konten sind unabhängig von Azure-Abonnements.
+### <a name="create-an-azure-machine-learning-account"></a>Erstellen eines Azure Machine Learning-Kontos  
+Zum Bereitstellen von Ressourcen und Ausführen von Workloads in Azure müssen Sie sich mit Ihren Anmeldeinformationen für Ihr Azure-Konto anmelden.
 
-1. Navigieren Sie zu [Azure Notebooks](https://notebooks.azure.com).
+1. Öffnen Sie in Visual Studio Code die Befehlspalette, indem Sie auf der Menüleiste **Ansicht** > **Befehlspalette** auswählen. 
 
-1. Klicken Sie oben rechts auf der Seite auf **Anmelden**.
+1. Geben Sie in der Befehlspalette den Befehl `Azure: Sign In` ein, um den Anmeldeprozess zu starten. Folgen Sie den Anweisungen, um die Anmeldung abzuschließen. 
 
-1. Melden Sie sich entweder mit Ihrem Geschäfts-, Schul- oder Unikonto (Azure Active Directory) oder Ihrem persönlichen Konto (Microsoft-Konto) an.
+1. Erstellen Sie eine Azure ML Compute-Instanz, um die Workload auszuführen. Geben Sie unter Verwendung der Befehlspalette den Befehl `Azure ML: Create Compute` ein. 
+1. Auswählen Ihres Azure-Abonnements
+1. Wählen Sie die Option **+ Create a new Azure ML workspace** (Neuen Azure ML-Arbeitsbereich erstellen) aus, und geben Sie den Namen `turbofandemo` ein.
+1. Wählen Sie die Ressourcengruppe aus, die Sie für diese Demo verwendet haben.
+1. Der Status der Arbeitsbereichserstellung sollte in der unteren rechten Ecke des VS Code-Fensters angezeigt werden: **Arbeitsbereich wird erstellt: turobofandemo**. (Dieser Vorgang kann ein bis zwei Minuten dauern.) 
+1. Warten Sie, bis der Arbeitsbereich erstellt wurde. Die Meldung **Azure ML workspace turbofandemo created** (Der Azure ML-Arbeitsbereich 'turbofandemo' wurde erstellt.) sollte angezeigt werden.
 
-1. Falls Sie Azure Notebooks noch nicht verwendet haben, werden Sie aufgefordert, den Zugriff für die Azure Notebooks-App zu gewähren.
-
-1. Erstellen Sie eine Benutzer-ID für Azure Notebooks.
 
 ### <a name="upload-jupyter-notebook-files"></a>Hochladen von Jupyter Notebook-Dateien
 
-Sie laden Notebook-Beispieldateien in ein neues Azure Notebooks-Projekt hoch.
+Sie laden Notebook-Beispieldateien in einen neuen Azure ML-Arbeitsbereich hoch.
 
-1. Wählen Sie auf der Benutzerseite Ihres neuen Kontos auf der oberen Menüleiste **Meine Projekte** aus.
+1. Navigieren Sie zu ml.azure.com, und melden Sie sich an.
+1. Wählen Sie Ihr Microsoft-Verzeichnis, das Azure-Abonnement und den neu erstellten Azure ML-Arbeitsbereich aus.
 
-1. Fügen Sie ein neues Projekt hinzu, indem Sie die Schaltfläche **+** auswählen.
+    :::image type="content" source="media/tutorial-machine-learning-edge-04-train-model/select-studio-workspace.png" alt-text="Auswählen des Azure ML-Arbeitsbereichs" :::
 
-1. Geben Sie im Dialogfeld **Neues Projekt erstellen** unter **Projektname** einen Projektnamen ein. 
+1. Nachdem Sie sich bei Ihrem Azure ML-Arbeitsbereich angemeldet haben, navigieren Sie im Menü auf der linken Seite zum Abschnitt **Notebooks**.
+1. Wählen Sie die Registerkarte **Eigene Dateien** aus.
 
-1. Lassen Sie **Öffentlich** and **INFODATEI** deaktiviert, da es nicht erforderlich ist, dass das Projekt öffentlich ist oder über eine Infodatei verfügt.
+1. Wählen Sie **Hochladen** (Pfeil nach oben) aus. 
 
-1. Klicken Sie auf **Erstellen**.
-
-1. Wählen Sie **Hochladen** (Pfeil nach oben) und dann **Von Computer** aus.
-
-1. Wählen Sie **Dateien auswählen**.
 
 1. Navigieren Sie zu **C:\source\IoTEdgeAndMlSample\AzureNotebooks**. Wählen Sie alle Dateien in der Liste aus, und klicken Sie auf **Öffnen**.
 
@@ -89,9 +88,9 @@ Sie laden Notebook-Beispieldateien in ein neues Azure Notebooks-Projekt hoch.
 
 1. Wählen Sie **Hochladen**, um mit dem Upload zu beginnen, und wählen Sie anschließend **Fertig**, wenn der Prozess abgeschlossen ist.
 
-### <a name="azure-notebook-files"></a>Azure Notebook-Dateien
+### <a name="jupyter-notebook-files"></a>Jupyter Notebook-Dateien
 
-Sehen wir uns die Dateien an, die Sie in Ihr Azure Notebooks-Projekt hochgeladen haben. Die Aktivitäten in diesem Teil des Tutorials umfassen zwei Notebook-Dateien, die einige unterstützende Dateien verwenden.
+Sehen Sie sich die Dateien an, die Sie in Ihren Azure ML-Arbeitsbereich hochgeladen haben. Die Aktivitäten in diesem Teil des Tutorials umfassen zwei Notebook-Dateien, die einige unterstützende Dateien verwenden.
 
 * **01-turbofan\_regression.ipynb:** Dieses Notebook verwendet den Machine Learning-Dienstarbeitsbereich zum Erstellen und Ausführen eines Machine Learning-Experiments. Mit dem Notebook werden im Allgemeinen die folgenden Schritte ausgeführt:
 
@@ -115,13 +114,13 @@ Sehen wir uns die Dateien an, die Sie in Ihr Azure Notebooks-Projekt hochgelade
 
 * **README.md:** Infodatei, in der die Verwendung der Notebooks beschrieben ist.  
 
-## <a name="run-azure-notebooks"></a>Ausführen von Azure Notebooks
+## <a name="run-jupyter-notebooks"></a>Ausführen von Jupyter Notebook-Instanzen
 
-Das Projekt wurde erstellt, und Sie können nun die Notebooks ausführen. 
+Der Arbeitsbereich wurde erstellt, und Sie können nun die Notebooks ausführen. 
 
-1. Wählen Sie auf der Projektseite die Option **01-turbofan\_regression.ipynb** aus.
+1. Wählen Sie **01-turbofan\_regression.ipynb** auf der Seite **Eigene Dateien** aus.
 
-    ![Auswählen des ersten auszuführenden Notebooks](media/tutorial-machine-learning-edge-04-train-model/select-turbofan-regression-notebook.png)
+    :::image type="content" source="media/tutorial-machine-learning-edge-04-train-model/select-turbofan-notebook.png" alt-text="Auswählen des ersten auszuführenden Notebooks":::
 
 1. Klicken Sie oben rechts im Notebook auf das Widget **Not Trusted** (Nicht vertrauenswürdig), falls das Notebook als **Not Trusted** (Nicht vertrauenswürdig) aufgeführt ist. Wählen Sie **Trust** (Vertrauen), wenn das Dialogfeld angezeigt wird.
 
@@ -162,7 +161,7 @@ Das Projekt wurde erstellt, und Sie können nun die Notebooks ausführen.
 
 Überprüfen Sie, ob Elemente erstellt wurden, um sich zu vergewissern, dass die Notebooks erfolgreich abgeschlossen wurden.
 
-1. Wählen Sie auf der Azure Notebooks-Projektseite die Option **Ausgeblendete Elemente anzeigen** aus, damit Elementnamen angezeigt werden, die mit einem Punkt beginnen.
+1. Wählen Sie auf der Registerkarte **Eigene Dateien** der Azure ML-Notebooks die Option **Aktualisieren** aus.
 
 1. Überprüfen Sie, ob die folgenden Dateien erstellt wurden:
 
@@ -194,7 +193,7 @@ Dieses Tutorial ist Teil einer Reihe, in der jeder Artikel auf den Schritten auf
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Artikel haben wir zwei Jupyter Notebooks verwendet, die in Azure Notebooks ausgeführt werden. Hierbei wurden die Daten von den turbofan-Geräten genutzt, um einen Klassifizierer für die Restlebensdauer (RUL) zu trainieren, den Klassifizierer als Modell zu speichern, ein Containerimage zu erstellen und das Image als Webdienst bereitzustellen und zu testen.
+In diesem Artikel haben Sie zwei Jupyter Notebook-Instanzen verwendet, die in Azure ML Studio ausgeführt werden. Hierbei wurden die Daten von den turbofan-Geräten genutzt, um einen Klassifizierer für die Restlebensdauer (RUL) zu trainieren, den Klassifizierer als Modell zu speichern, ein Containerimage zu erstellen und das Image als Webdienst bereitzustellen und zu testen.
 
 Fahren Sie mit dem nächsten Artikel fort, um ein IoT Edge-Gerät zu erstellen.
 

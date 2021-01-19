@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 09/05/2019
+ms.date: 12/28/2020
 ms.author: jeedes
-ms.openlocfilehash: 35bb05eb019a1284a8a418df0197960130e8d013
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: ab21c6dc95ef39e6273dac405ba58e748890fc1a
+ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92897295"
+ms.lasthandoff: 01/07/2021
+ms.locfileid: "97968431"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sap-fiori"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit SAP Fiori
 
@@ -26,7 +26,6 @@ In diesem Tutorial erfahren Sie, wie Sie SAP Fiori in Azure Active Directory (A
 * Ermöglichen Sie es Ihren Benutzern, sich mit ihren Azure AD-Konten automatisch bei SAP Fiori anzumelden.
 * Verwalten Sie Ihre Konten zentral im Azure-Portal.
 
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -48,14 +47,14 @@ In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure
 
 Zum Konfigurieren der Integration von SAP Fiori in Azure AD müssen Sie SAP Fiori aus dem Katalog der Liste mit den verwalteten SaaS-Apps hinzufügen.
 
-1. Melden Sie sich mit einem Geschäfts-, Schul- oder Unikonto oder mit einem persönlichen Microsoft-Konto beim [Azure-Portal](https://portal.azure.com) an.
+1. Melden Sie sich mit einem Geschäfts-, Schul- oder Unikonto oder mit einem persönlichen Microsoft-Konto beim Azure-Portal an.
 1. Wählen Sie im linken Navigationsbereich den Dienst **Azure Active Directory** aus.
-1. Navigieren Sie zu **Unternehmensanwendungen** , und wählen Sie dann **Alle Anwendungen** aus.
+1. Navigieren Sie zu **Unternehmensanwendungen**, und wählen Sie dann **Alle Anwendungen** aus.
 1. Wählen Sie zum Hinzufügen einer neuen Anwendung **Neue Anwendung** aus.
 1. Geben Sie im Abschnitt **Aus Katalog hinzufügen** den Suchbegriff **SAP Fiori** in das Suchfeld ein.
 1. Wählen Sie im Ergebnisbereich **SAP Fiori** aus, und fügen Sie dann die App hinzu. Warten Sie einige Sekunden, während die App Ihrem Mandanten hinzugefügt wird.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-sap-fiori"></a>Konfigurieren und Testen des einmaligen Anmeldens von Azure AD für SAP Fiori
+## <a name="configure-and-test-azure-ad-sso-for-sap-fiori"></a>Konfigurieren und Testen des einmaligen Anmeldens von Azure AD für SAP Fiori
 
 Konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit SAP Fiori mithilfe eines Testbenutzers namens **B. Simon**. Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in SAP Fiori eingerichtet werden.
 
@@ -74,7 +73,7 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
 1. Melden Sie sich in einem neuen Webbrowserfenster bei der SAP Fiori-Unternehmenswebsite als Administrator an.
 
-1. Stellen Sie sicher, dass **http** - und **https** -Dienste aktiv sind und dass die entsprechenden Ports der Transaktionscode- **SMICM** zugewiesen wurden.
+1. Stellen Sie sicher, dass **http**- und **https**-Dienste aktiv sind und dass die entsprechenden Ports der Transaktionscode-**SMICM** zugewiesen wurden.
 
 1. Melden Sie sich beim SAP Business Client für SAP-System **T01** an, auf dem einmaliges Anmelden erforderlich ist. Aktivieren Sie dann HTTP Security Session Management.
 
@@ -110,7 +109,7 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
         /sap/bc/webdynpro/sap/sec_diag_tool (This is only to enable / disable trace)
         ```
 
-1. Wechseln Sie im Business Client for SAP-System [ **T01/122** ] zum Transaktionscode **SAML2**. Die Benutzeroberfläche für die Konfiguration wird in einem neuen Browserfenster geöffnet. In diesem Beispiel verwenden wir das Business Client for SAP-System 122.
+1. Wechseln Sie im Business Client for SAP-System [**T01/122**] zum Transaktionscode **SAML2**. Die Benutzeroberfläche für die Konfiguration wird in einem neuen Browserfenster geöffnet. In diesem Beispiel verwenden wir das Business Client for SAP-System 122.
 
     ![Anmeldeseite für SAP Fiori Business Client](./media/sapfiori-tutorial/tutorial-sapnetweaver-sapbusinessclient.png)
 
@@ -118,7 +117,7 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
     ![Seite mit der SAML 2.0-Konfiguration des ABAP-Systems T01/122 in SAP](./media/sapfiori-tutorial/tutorial-sapnetweaver-userpwd.png)
 
-1. Ersetzen Sie im Feld **Provider Name** (Anbietername) **T01122** durch **http:\//T01122** , und wählen Sie dann **Save** (Speichern) aus.
+1. Ersetzen Sie im Feld **Provider Name** (Anbietername) **T01122** durch **http:\//T01122**, und wählen Sie dann **Save** (Speichern) aus.
 
     > [!NOTE]
     > Der Anbietername ist standardmäßig im Format „\<sid>\<client>“ angegeben. Azure AD erwartet einen Namen im Format „\<protocol>://\<name>“. Es wird empfohlen, den Anbieternamen im Format „https\://\<sid>\<client>“ beizubehalten, damit Sie mehrere SAP Fiori ABAP-Engines in Azure AD konfigurieren können.
@@ -131,9 +130,9 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
     ![Link zum Herunterladen von Metadaten im Dialogfeld „SAML 2.0 Metadata“ (SAML 2.0-Metadaten) in SAP](./media/sapfiori-tutorial/tutorial-sapnetweaver-generatesp.png)
 
-1. Navigieren Sie im [Azure-Portal](https://portal.azure.com/) auf der Anwendungsintegrationsseite für **SAP Fiori** zum Abschnitt **Verwalten** , und wählen Sie **Einmaliges Anmelden** aus.
+1. Navigieren Sie im Azure-Portal auf der Anwendungsintegrationsseite für **SAP Fiori** zum Abschnitt **Verwalten**, und wählen Sie **Einmaliges Anmelden** aus.
 1. Wählen Sie auf der Seite **SSO-Methode auswählen** die Methode **SAML** aus.
-1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Bearbeitungs- bzw. Stiftsymbol für **Grundlegende SAML-Konfiguration** , um die Einstellungen zu bearbeiten.
+1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Stiftsymbol für **Grundlegende SAML-Konfiguration**, um die Einstellungen zu bearbeiten.
 
    ![Bearbeiten der SAML-Basiskonfiguration](common/edit-urls.png)
 
@@ -143,7 +142,7 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
     ![Metadatendatei hochladen](common/upload-metadata.png)
 
-    b. Klicken Sie auf das **Ordnerlogo** , wählen Sie die Metadatendatei aus, und klicken Sie auf **Hochladen**.
+    b. Klicken Sie auf das **Ordnerlogo**, wählen Sie die Metadatendatei aus, und klicken Sie auf **Hochladen**.
 
     ![Metadatendatei auswählen](common/browse-upload-metadata.png)
 
@@ -176,7 +175,7 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
        ![Abschnitt „Transformation“ im Bereich „Benutzeransprüche verwalten“](./media/sapfiori-tutorial/nameidattribute1.png)
     
-1. Navigieren Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** zu **Verbundmetadaten-XML** , und wählen Sie **Herunterladen** aus, um das Zertifikat herunterzuladen und auf Ihrem Computer zu speichern.
+1. Navigieren Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** zu **Verbundmetadaten-XML**, und wählen Sie **Herunterladen** aus, um das Zertifikat herunterzuladen und auf Ihrem Computer zu speichern.
 
     ![Downloadlink für das Zertifikat](common/metadataxml.png)
 
@@ -193,25 +192,19 @@ In diesem Abschnitt erstellen Sie im Azure-Portal einen Testbenutzer mit dem Nam
 1. Führen Sie unter den Eigenschaften für **Benutzer** die folgenden Schritte aus:
    1. Geben Sie im Feld **Name** die Zeichenfolge `B.Simon` ein.  
    1. Geben Sie im Feld **Benutzername** die Zeichenfolge username@companydomain.extension ein. Beispiel: `B.Simon@contoso.com`.
-   1. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen** , und notieren Sie sich den Wert aus dem Feld **Kennwort**.
+   1. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert aus dem Feld **Kennwort**.
    1. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
 In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie ihr Zugriff auf SAP Fiori gewähren.
 
-1. Wählen Sie im Azure-Portal **Unternehmensanwendungen**  > **Alle Anwendungen** aus.
+1. Wählen Sie im Azure-Portal **Unternehmensanwendungen** > **Alle Anwendungen** aus.
 1. Wählen Sie in der Anwendungsliste den Eintrag **SAP Fiori** aus.
-1. Navigieren Sie auf der Übersichtsseite der App zum Abschnitt **Verwalten** , und wählen Sie **Benutzer und Gruppen** aus.
-
-   ![Link „Benutzer und Gruppen“](common/users-groups-blade.png)
-
+1. Navigieren Sie auf der Übersichtsseite der App zum Abschnitt **Verwalten**, und wählen Sie **Benutzer und Gruppen** aus.
 1. Wählen Sie **Benutzer hinzufügen** und anschließend im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
-
-    ![Link „Benutzer hinzufügen“](common/add-assign-user.png)
-
 1. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Liste „Benutzer“ den Eintrag **B. Simon** aus, und klicken Sie dann unten auf dem Bildschirm auf die Schaltfläche **Auswählen**.
-1. Wenn Sie einen beliebigen Rollenwert in der SAML-Assertion erwarten, wählen Sie im Dialogfeld **Rolle auswählen** die entsprechende Rolle für den Benutzer in der Liste aus, und klicken Sie dann im unteren Bildschirmbereich auf die Schaltfläche **Auswählen**.
+1. Wenn den Benutzern eine Rolle zugewiesen werden soll, können Sie sie im Dropdownmenü **Rolle auswählen** auswählen. Wurde für diese App keine Rolle eingerichtet, ist die Rolle „Standardzugriff“ ausgewählt.
 1. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen**.
 
 ## <a name="configure-sap-fiori-sso"></a>Konfigurieren des einmaligen Anmeldens für SAP Fiori
@@ -268,7 +261,7 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
     Die Werte für **User ID Source** (Benutzer-ID-Quelle) und **User ID Mapping Mode** (Zuordnungsmodus für Benutzer-ID) bestimmen die Verknüpfung zwischen dem SAP-Benutzer und dem Azure AD-Anspruch.  
 
-    **Szenario 1** : Zuordnung zwischen SAP-Benutzer und Azure AD-Benutzer
+    **Szenario 1**: Zuordnung zwischen SAP-Benutzer und Azure AD-Benutzer
 
     1. Notieren Sie sich in SAP die Details unter **Details of NameID Format „Unspecified“** (Details des NameID-Formats „Nicht angegeben“):
 
@@ -278,7 +271,7 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
         ![Screenshot: Dialogfeld „Benutzerattribute und Ansprüche“](./media/sapfiori-tutorial/claimsaad1.png)
 
-    **Szenario 2** : Auswählen der SAP-Benutzer-ID basierend auf der konfigurierten E-Mail-Adresse in SU01 In diesem Fall sollte die E-Mail-ID in SU01 für jeden Benutzer konfiguriert werden, der SSO benötigt.
+    **Szenario 2**: Auswählen der SAP-Benutzer-ID basierend auf der konfigurierten E-Mail-Adresse in SU01 In diesem Fall sollte die E-Mail-ID in SU01 für jeden Benutzer konfiguriert werden, der SSO benötigt.
 
     1.  Notieren Sie sich in SAP die Details unter **Details of NameID Format „Unspecified“** (Details des NameID-Formats „Nicht angegeben“):
 
@@ -316,12 +309,6 @@ In diesem Abschnitt erstellen Sie in SAP Fiori eine Benutzerin namens Britta Si
 
 1. Wenn ein Benutzername und ein Kennwort angefordert werden, aktivieren Sie die Ablaufverfolgung, um die Problemdiagnose zu unterstützen. Verwenden Sie für die Ablaufverfolgung folgende URL: https:\//\<sapurl\>/sap/bc/webdynpro/sap/sec_diag_tool?sap-client=122&sap-language=EN#.
 
-## <a name="additional-resources"></a>Zusätzliche Ressourcen
+## <a name="next-steps"></a>Nächste Schritte
 
-- [Liste mit den Tutorials zur Integration von SaaS-Apps in Azure Active Directory](./tutorial-list.md)
-
-- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
-
-- [Was ist der bedingte Zugriff in Azure Active Directory?](../conditional-access/overview.md)
-
-- [SAP Fiori mit Azure AD ausprobieren](https://aad.portal.azure.com/)
+Nach dem Konfigurieren von SAP Fiori können Sie die Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](/cloud-app-security/proxy-deployment-any-app) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.

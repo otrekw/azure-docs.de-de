@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/17/2020
 ms.author: hahamil
 ms.custom: aaddev, devx-track-js
-ms.openlocfilehash: 79fe821e2da494ab8c9e4cb407e2c2b025f75568
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: b7d14ee321a1160420d106151276ae6aef513c5b
+ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96169102"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98064401"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-a-javascript-single-page-app-spa-using-auth-code-flow"></a>Tutorial: Anmelden von Benutzern und Aufrufen der Microsoft Graph-API aus einer JavaScript-Single-Page-Webanwendung (SPA) mithilfe des Autorisierungscodeflusses
 
@@ -45,7 +45,7 @@ Die in diesem Tutorial erstellte Anwendung ermöglicht einer JavaScript-SPA das 
 
 In diesem Tutorial wird die folgende Bibliothek verwendet:
 
-[msal.js](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-browser) Microsoft Authentication Library für JavaScript v2.0: Browserpaket
+[msal.js:](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/lib/msal-browser) Microsoft-Authentifizierungsbibliothek für JavaScript v2.0: Browserpaket
 
 ## <a name="get-the-completed-code-sample"></a>Abrufen des abgeschlossenen Codebeispiels
 
@@ -360,7 +360,7 @@ graphMeEndpoint: "https://graph.microsoft.com/v1.0/me",
 graphMailEndpoint: "https://graph.microsoft.com/v1.0/me/messages"
 ```
 
-## <a name="use-microsoft-authentication-library-msal-to-sign-in-user"></a>Verwenden der MSAL (Microsoft Authentication Library) für die Benutzeranmeldung
+## <a name="use-the-microsoft-authentication-library-msal-to-sign-in-user"></a>Verwenden der Microsoft-Authentifizierungsbibliothek (Microsoft Authentication Library, MSAL) für die Benutzeranmeldung
 
 ### <a name="pop-up"></a>Popup
 

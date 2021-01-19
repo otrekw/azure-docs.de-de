@@ -11,12 +11,12 @@ ms.author: amsaied
 ms.reviewer: sgilley
 ms.date: 09/15/2020
 ms.custom: tracking-python
-ms.openlocfilehash: de89f9d87b010dc3710e7d82f4d846de12303905
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: ab497dee35afdd60247d156d0f30bbf003ea1210
+ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97739432"
+ms.lasthandoff: 01/11/2021
+ms.locfileid: "98072155"
 ---
 # <a name="tutorial-use-your-own-data-part-4-of-4"></a>Tutorial: Verwenden eigener Daten (Teil 4 von 4)
 
@@ -40,9 +40,6 @@ In diesem Tutorial führen Sie Folgendes durch:
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * Abschluss von [Teil 3](tutorial-1st-experiment-sdk-train.md) der Reihe.
-* Kenntnisse der Python-Sprache und der Machine Learning-Workflows auf Einstiegsniveau.
-* Lokale Entwicklungsumgebung, z. B. Visual Studio Code, Jupyter oder PyCharm.
-* Python (Version 3.5 bis 3.7).
 
 ## <a name="adjust-the-training-script"></a>Anpassen des Trainingsskripts
 
@@ -130,7 +127,7 @@ Der `target_path`-Wert gibt den Pfad im Datenspeicher an, in den die CIFAR10-Dat
 >[!TIP] 
 > Während Sie Azure Machine Learning zum Hochladen der Daten verwenden, können Sie [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) zum Hochladen von Ad-hoc-Dateien verwenden. Wenn Sie ein ETL-Tool benötigen, können Sie [Azure Data Factory](../data-factory/introduction.md) für die Erfassung Ihrer Daten in Azure verwenden.
 
-Führen Sie die Python-Datei aus, um die Daten hochzuladen. (Der Upload sollte schnell sein und weniger als 60 Sekunden dauern.)
+Führen Sie in dem Fenster mit der aktivierten Conda-Umgebung *tutorial1* die Python-Datei aus, um die Daten hochzuladen. (Der Upload sollte schnell sein und weniger als 60 Sekunden dauern.)
 
 ```bash
 python 05-upload-data.py

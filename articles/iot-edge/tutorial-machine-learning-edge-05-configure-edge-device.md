@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: amqp, devx-track-azurecli
-ms.openlocfilehash: bc62590b9517b2c6d16fdf2637990b845248d2ec
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 74d77d8c81455116cec861bf6704c6cb96526561
+ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96932352"
+ms.lasthandoff: 01/12/2021
+ms.locfileid: "98121089"
 ---
 # <a name="tutorial-configure-an-iot-edge-device"></a>Tutorial: Konfigurieren eines IoT Edge-Geräts
 
@@ -81,7 +81,7 @@ In diesem Abschnitt erstellen wir die selbstsignierten Zertifikate mit einem Doc
 
 ## <a name="upload-certificates-to-azure-key-vault"></a>Hochladen von Zertifikaten in Azure Key Vault
 
-Wir laden die Zertifikate in Azure Key Vault hoch, um unsere Zertifikate sicher zu speichern und den Zugriff darauf von mehreren Geräten aus zu ermöglichen. In der obigen Liste ist zu sehen, dass zwei Arten von Zertifikatdateien vorhanden sind: PFX und PEM. Wir behandeln die PFX-Dateien als Key Vault-Zertifikate, die in Key Vault hochgeladen werden sollen. Die PEM-Dateien sind Nur-Text-Dateien und werden als Key Vault-Geheimnisse behandelt. Wir verwenden die Key Vault-Instanz, die dem Azure Machine Learning-Arbeitsbereich zugeordnet ist, den wir durch Ausführen der [Azure Notebooks](tutorial-machine-learning-edge-04-train-model.md#run-azure-notebooks) erstellt haben.
+Wir laden die Zertifikate in Azure Key Vault hoch, um unsere Zertifikate sicher zu speichern und den Zugriff darauf von mehreren Geräten aus zu ermöglichen. In der obigen Liste ist zu sehen, dass zwei Arten von Zertifikatdateien vorhanden sind: PFX und PEM. Wir behandeln die PFX-Dateien als Key Vault-Zertifikate, die in Key Vault hochgeladen werden sollen. Die PEM-Dateien sind Nur-Text-Dateien und werden als Key Vault-Geheimnisse behandelt. Sie verwenden die Key Vault-Instanz, die dem Azure Machine Learning-Arbeitsbereich zugeordnet ist, den Sie durch Ausführen der [Jupyter Notebook-Instanzen](tutorial-machine-learning-edge-04-train-model.md#run-jupyter-notebooks) erstellt haben.
 
 1. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Ihrem Azure Machine Learning-Arbeitsbereich.
 
