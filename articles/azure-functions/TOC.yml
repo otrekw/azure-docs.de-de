@@ -413,8 +413,6 @@
           href: ./functions-create-vnet.md
         - name: Erstellen einer Open API 2.0-Definition
           href: ./functions-openapi-definition.md
-        - name: Export in PowerApps und Microsoft Flow
-          href: app-service-export-api-to-powerapps-and-flow.md
         - name: Verwenden einer verwalteten Identität
           href: ../app-service/overview-managed-identity.md?toc=%2fazure%2fazure-functions%2ftoc.json
         - name: Anpassen des HTTP-Funktionsendpunkts

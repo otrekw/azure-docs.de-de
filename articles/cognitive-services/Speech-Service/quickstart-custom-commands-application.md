@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: sausin
 ms.custom: references_regions
-ms.openlocfilehash: c5f8be87e7ee95e1deff12cce09204b5fe8a0bb7
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.openlocfilehash: 2cc37cc66c06dc9e6997c6a031a9c60ad050c01a
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/19/2020
-ms.locfileid: "97694187"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98601762"
 ---
 # <a name="create-a-voice-assistant-using-custom-commands"></a>Erstellen eines Sprachassistenten mithilfe von benutzerdefinierten Befehlen
 
-In dieser Schnellstartanleitung erstellen und testen Sie eine einfache Anwendung für benutzerdefinierte Befehle mithilfe von Speech Studio. Sie können auf diese Anwendung auch von einer Windows-Client-App aus zugreifen. Mit **benutzerdefinierten Befehlen** ist es einfach, funktionsreiche Apps mit Sprachsteuerung zu erstellen, die für Voice-First-Interaktionserfahrungen optimiert sind. Sie bieten eine einheitliche Benutzeroberfläche für die Erstellung, ein automatisches Hostingmodell und eine relativ geringe Komplexität, sodass Sie sich auf die Entwicklung der besten Lösung für Ihre Szenarien mit Sprachsteuerung konzentrieren können.
+In dieser Schnellstartanleitung erstellen und testen Sie eine einfache Anwendung für benutzerdefinierte Befehle mithilfe von Speech Studio. Sie können auf diese Anwendung auch von einer Windows-Client-App aus zugreifen.
 
 ## <a name="region-availability"></a>Regionale Verfügbarkeit
 Derzeit unterstützen benutzerdefinierte Befehle Speech-Abonnements, die in folgenden Regionen erstellt werden:

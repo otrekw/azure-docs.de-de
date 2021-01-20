@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
-ms.openlocfilehash: e50d7aba5cc5b3d5d620d844cc9ad169ad8b3bf6
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 6f2dfdbb5833b34441b4abba7359ad70c4717d1d
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95025890"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98602159"
 ---
 # <a name="set-up-web-endpoints"></a>Einrichten von Webendpunkten
 
@@ -23,7 +23,7 @@ In diesem Artikel erfahren Sie, wie Sie Webendpunkte in einer Anwendung für ben
 
 - Einrichten von Webendpunkten in einer Anwendung für benutzerdefinierte Befehle
 - Aufrufen von Webendpunkten in einer Anwendung für benutzerdefinierte Befehle
-- Empfangen der Antwort der Webendpunkte 
+- Empfangen der Antwort der Webendpunkte
 - Integrieren der Antwort der Webendpunkte in eine benutzerdefinierte JSON-Nutzlast, Senden und Visualisieren der Webendpunkte aus einer C# UWP Speech SDK-Clientanwendung
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -35,7 +35,7 @@ In diesem Artikel erfahren Sie, wie Sie Webendpunkte in einer Anwendung für ben
 
 ## <a name="setup-web-endpoints"></a>Einrichten von Webendpunkten
 
-1. Öffnen Sie die Anwendung für benutzerdefinierte Befehle, die Sie zuvor erstellt haben. 
+1. Öffnen Sie die Anwendung für benutzerdefinierte Befehle, die Sie zuvor erstellt haben.
 1. Wechseln Sie zu „Webendpunkte“, und klicken Sie auf „Neuer Webendpunkt“.
 
    > [!div class="mx-imgBorder"]
@@ -61,7 +61,7 @@ In diesem Artikel erfahren Sie, wie Sie Webendpunkte in einer Anwendung für ben
 1. Wechseln Sie zum Befehl **TurnOnOff**, wählen Sie **ConfirmationResponse** unter der Vervollständigungsregel und dann **Aktion hinzufügen** aus.
 1. Wählen Sie unter **Neuer Aktionstyp** die Option **Webendpunkt aufrufen** aus.
 1. Wählen Sie unter **Aktion bearbeiten – Endpunkte** die Option **UpdateDeviceState** aus, die den von uns erstellten Webendpunkt darstellt.  
-1. Fügen Sie in **Konfiguration** die folgenden Werte ein: 
+1. Fügen Sie in **Konfiguration** die folgenden Werte ein:
    > [!div class="mx-imgBorder"]
    > ![Aktionsparameter für Webendpunkte aufrufen](media/custom-commands/setup-web-endpoint-edit-action-parameters.png)
 
@@ -75,16 +75,16 @@ In diesem Artikel erfahren Sie, wie Sie Webendpunkte in einer Anwendung für ben
     > - Die vorgeschlagenen Abfrageparameter werden nur für den Beispielendpunkt benötigt.
 
 1. Wählen Sie in **Bei Erfolg – Auszuführende Aktion** die Option **Sprachantwort senden** aus.
-    
+
     Geben Sie im **einfachen Editor** `{SubjectDevice} is {OnOff}` ein.
-   
+
    > [!div class="mx-imgBorder"]
    > ![Screenshot: Bildschirm „Bei Erfolg – Auszuführende Aktion“](media/custom-commands/setup-web-endpoint-edit-action-on-success-send-response.png)
 
    | Einstellung | Vorgeschlagener Wert | BESCHREIBUNG |
    | ------- | --------------- | ----------- |
    | Auszuführende Aktion | Sprachantwort senden | Auszuführende Aktion, wenn die Anforderung an den Webendpunkt erfolgreich ist. |
-   
+
    > [!NOTE]
    > - Sie können auch direkt auf die Felder in der HTTP-Antwort zugreifen, indem Sie `{YourWebEndpointName.FieldName}` verwenden. Beispiel: `{UpdateDeviceState.TV}`
 
@@ -101,7 +101,7 @@ In diesem Artikel erfahren Sie, wie Sie Webendpunkte in einer Anwendung für ben
 
    > [!NOTE]
    > - `{WebEndpointErrorMessage}` ist optional. Wenn Sie keine Fehlermeldung verfügbar machen möchten, können Sie sie entfernen.
-   > - Innerhalb unseres Beispielendpunkts senden wir eine HTTP-Antwort mit detaillierten Fehlermeldungen für häufige Fehler wie fehlende Headerparameter zurück. 
+   > - Innerhalb unseres Beispielendpunkts senden wir eine HTTP-Antwort mit detaillierten Fehlermeldungen für häufige Fehler wie fehlende Headerparameter zurück.
 
 ### <a name="try-it-out-in-test-portal"></a>Probieren Sie es im Testportal aus
 - Antwort bei Erfolg\
@@ -119,7 +119,7 @@ In [Vorgehensweise Aktivität an Clientanwendung senden (Vorschau)](./how-to-cus
 In den meisten Fällen möchten Sie jedoch nur dann Aktivitäten an die Clientanwendung senden, wenn der Aufruf des Webendpunkts erfolgreich ist. In diesem Beispiel ist dies der Fall, wenn der Status des Geräts erfolgreich aktualisiert wurde.
 
 1. Löschen Sie die Aktion **Aktivität an Client senden**, die Sie zuvor hinzugefügt haben.
-1. Aufruf des Webendpunkts bearbeiten: 
+1. Aufruf des Webendpunkts bearbeiten:
     1. Stellen Sie in **Konfiguration** sicher, dass **Abfrageparameter** auf `item={SubjectDevice}&&value={OnOff}` festgelegt ist.
     1. In **Bei Erfolg** ändern Sie **Auszuführende Aktion** in **Aktivität an Client senden**.
     1. Kopieren Sie den nachfolgenden JSON-Code in den **Aktivitätsinhalt**.
@@ -133,7 +133,6 @@ In den meisten Fällen möchten Sie jedoch nur dann Aktivitäten an die Clientan
       }
     }
    ```
-   
 Jetzt werden nur Aktivitäten an den Client gesendet, wenn die Anforderung an den Webendpunkt erfolgreich ist.
 
 ### <a name="create-visuals-for-syncing-device-state"></a>Erstellen von visuellen Elementen zum Synchronisieren des Gerätestatus
@@ -147,7 +146,7 @@ Fügen Sie den folgenden XML-Code oberhalb des `"EnableMicrophoneButton"`-Blocks
         .........../>
 ```
 
-### <a name="sync-device-state"></a>Zustand des Synchronisierungsgeräts 
+### <a name="sync-device-state"></a>Zustand des Synchronisierungsgeräts
 
 Fügen Sie in `MainPage.xaml.cs` den Verweis `using Windows.Web.Http;` hinzu. Fügen Sie der `MainPage` -Klasse den folgenden Code hinzu. Diese Methode sendet eine GET-Anforderung an den Beispielendpunkt und extrahiert den aktuellen Gerätestatus für Ihre App. Stellen Sie sicher, dass Sie `<your_app_name>` in das ändern, was Sie im **Header** im Webendpunkt für benutzerdefinierte Befehle verwendet haben.
 
@@ -157,7 +156,7 @@ private async void SyncDeviceState_ButtonClicked(object sender, RoutedEventArgs 
     //Create an HTTP client object
     var httpClient = new HttpClient();
 
-    //Add a user-agent header to the GET request. 
+    //Add a user-agent header to the GET request.
     var your_app_name = "<your-app-name>";
 
     Uri endpoint = new Uri("https://webendpointexample.azurewebsites.net/api/DeviceState");

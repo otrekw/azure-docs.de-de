@@ -35,6 +35,8 @@
       href: Face-API-How-to-Topics/specify-recognition-model.md
     - name: Angeben eines Gesichtserkennungsmodells
       href: Face-API-How-to-Topics/specify-detection-model.md
+    - name: Verringern der Wartezeit bei Verwendung des Gesichtserkennungsdiensts
+      href: Face-API-How-to-Topics/how-to-mitigate-latency.md
     - name: Verwenden des Features für die Verarbeitung in großem Umfang
       href: Face-API-How-to-Topics/how-to-use-large-scale.md
     - name: Videoanalyse in Echtzeit
@@ -96,7 +98,7 @@
       href: 'https://azure.microsoft.com/updates/?product=cognitive-services'
     - name: Regionale Verfügbarkeit
       href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
-    - name: Kompatibilität
+    - name: Compliance
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: Verschlüsselung
       href: face-encryption-of-data-at-rest.md
