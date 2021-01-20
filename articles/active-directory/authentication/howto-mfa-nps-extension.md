@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: deb05083ca45c24a58cabf9e923b706575ef093b
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 484dd8313710332660bb20d55f3dac2aa21bbc61
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97562139"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98232521"
 ---
 # <a name="integrate-your-existing-network-policy-server-nps-infrastructure-with-azure-ad-multi-factor-authentication"></a>Integrieren Ihrer vorhandenen NPS-Infrastruktur in Azure AD Multi-Factor Authentication
 
@@ -116,6 +116,8 @@ Darüber hinaus ist Konnektivität mit den folgenden URLs erforderlich, um die [
 * *https:\//login.microsoftonline.com*
 * *https:\//provisioningapi.microsoftonline.com*
 * *https:\//aadcdn.msauth.net*
+* <bpt id="p1">*</bpt>https:<ph id="ph1">\/</ph>/www.powershellgallery.com<ept id="p1">*</ept>
+* <bpt id="p1">*</bpt>https:<ph id="ph1">\/</ph>/aadcdn.msftauthimages.net<ept id="p1">*</ept>
 
 ## <a name="prepare-your-environment"></a>Vorbereiten der Umgebung
 
