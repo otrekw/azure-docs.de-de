@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 09/18/2019
 ms.reviewer: dariac
 ms.custom: seodec18
-ms.openlocfilehash: ce8c32b1afdf4178e3ffdc09e9c9176436fa771b
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: cfec5ec5f14afc8c4eba5c21c5904687c9b187cc
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97605075"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98209252"
 ---
 # <a name="deploy-your-app-to-azure-app-service-using-ftps"></a>Bereitstellen der App in Azure App Service mithilfe von FTP/S
 
@@ -111,7 +111,7 @@ Weitere Informationen zur Ermittlung, ob es sich um ein Bereitstellungs- oder La
 ### <a name="im-not-able-to-ftp-and-publish-my-code-how-can-i-resolve-the-issue"></a>Ich kann meinen Code nicht mit FTP erreichen und veröffentlichen. Wie kann ich das Problem beheben?
 Vergewissern Sie sich, dass Sie den richtigen Hostnamen und die richtigen [Anmeldeinformationen](#open-ftp-dashboard) eingegeben haben. Stellen Sie auch sicher, dass die folgenden FTP-Ports auf dem Computer nicht durch eine Firewall blockiert werden:
 
-- Port für FTP-Kontrollverbindung: 21
+- Port für FTP-Kontrollverbindung:
 - Port für FTP-Datenverbindung: 989, 10001–10300
  
 ### <a name="how-can-i-connect-to-ftp-in-azure-app-service-via-passive-mode"></a>Wie kann ich in Azure App Service über den passiven Modus eine Verbindung mit FTP herstellen?
