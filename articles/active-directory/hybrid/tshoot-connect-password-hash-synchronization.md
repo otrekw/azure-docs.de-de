@@ -16,12 +16,12 @@ ms.date: 03/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 77271679306b0fbde10c748afc7535f3ad3d0945
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 8c6ec162ceb51c3bf19be42219b054d8371ff221
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91317564"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98247351"
 ---
 # <a name="troubleshoot-password-hash-synchronization-with-azure-ad-connect-sync"></a>Problembehandlung für die Kennworthashsynchronisierung mit der Azure AD Connect-Synchronisierung
 
@@ -357,7 +357,7 @@ Die Statusspalte kann die folgenden Werte enthalten:
 | Status | BESCHREIBUNG |
 | --- | --- |
 | Erfolg |Das Kennwort wurde erfolgreich synchronisiert. |
-| FilteredByTarget |Das Kennwort wird auf **Benutzer muss Kennwort bei der nächsten Anmeldung ändern**festgelegt. Das Kennwort wurde nicht synchronisiert. |
+| FilteredByTarget |Das Kennwort wird auf **Benutzer muss Kennwort bei der nächsten Anmeldung ändern** festgelegt. Das Kennwort wurde nicht synchronisiert. |
 | NoTargetConnection |Im Metaverse oder im Azure AD-Connectorbereich befindet sich kein Objekt. |
 | SourceConnectorNotPresent |Im lokalen Active Directory Connector-Bereich wurde kein Objekt gefunden. |
 | TargetNotExportedToDirectory |Das Objekt im Azure AD-Connectorbereich wurde noch nicht exportiert. |
@@ -380,7 +380,7 @@ if ($aadConnectors -ne $null -and $adConnectors -ne $null)
 {
     if ($aadConnectors.Count -eq 1)
     {
-        $features = Get-ADSyncAADCompanyFeature -ConnectorName $aadConnectors[0].Name
+        $features = Get-ADSyncAADCompanyFeature
         Write-Host
         Write-Host "Password sync feature enabled in your Azure AD directory: "  $features.PasswordHashSync
         foreach ($adConnector in $adConnectors)

@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 10/21/2019
 ms.author: sideeksh
-ms.openlocfilehash: 599ad76f38833e06cc458fd0687921e6975e190b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f63021275574e294fa372357d6e62724f5efe0f7
+ms.sourcegitcommit: 949c0a2b832d55491e03531f4ced15405a7e92e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89426366"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98541189"
 ---
 # <a name="customize-networking-configurations-of-the-target-azure-vm"></a>Anpassen der Netzwerkkonfigurationen des virtuellen Azure-Zielcomputers
 
@@ -44,7 +44,7 @@ Beim Replizieren von virtuellen Azure-Computern können die folgenden Konfigurat
 
      ![Anpassen der Netzwerkkonfigurationen für das Failover](media/azure-to-azure-customize-networking/edit-networking-properties.png)
 
-4. Wählen Sie ein virtuelles Netzwerk für den Testfailover aus. Sie können es leer lassen und zum Zeitpunkt des Testfailovers eines auswählen.
+4. Wählen Sie ein virtuelles Netzwerk für den Testfailover aus.
 5. Wählen Sie neben dem Netzwerkadapter, den Sie konfigurieren möchten, die Option **Bearbeiten** aus. Wählen Sie auf dem nächsten Blatt, das geöffnet wird, die entsprechenden vorab erstellten Ressourcen am Testfailover- und Failoverstandort aus.
 
     ![Bearbeiten der Konfiguration des Netzwerkadapters](media/azure-to-azure-customize-networking/nic-drilldown.png) 

@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 3/27/2020
 ms.author: yexu
-ms.openlocfilehash: 3591bfe046fa1c3e1e55aa49a0ae3ad698bc57b3
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: 274250fecdf69b6a488c33ff25df3728a1c90af0
+ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94593670"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98556374"
 ---
 #  <a name="data-consistency-verification-in-copy-activity"></a>Datenkonsistenzprüfung in der Kopieraktivität
 
@@ -81,7 +81,7 @@ linkedServiceName | Der verknüpfte Dienst von [Azure Blob Storage](connector-az
 path | Der Pfad der Protokolldateien. | Geben Sie den Pfad an, in dem die Protokolldateien gespeichert werden sollen. Wenn Sie keinen Pfad angeben, erstellt der Dienst automatisch einen Container. | Nein
 
 >[!NOTE]
->- Beim Kopieren von Binärdateien aus oder in Azure-Blobs oder Azure Data Lake Storage Gen2 überprüft ADF unter Verwendung der [Azure-Blob-API](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions?view=azure-dotnet-legacy) und der [Azure Data Lake Storage Gen2-API](/rest/api/storageservices/datalakestoragegen2/path/update#request-headers) die MD5-Prüfsumme auf Blockebene. Wenn ContentMD5 in Dateien im Azure-Blob oder in Azure Data Lake Storage Gen2 als Datenquelle vorhanden ist, führt ADF nach dem Lesen der Dateien auch eine Überprüfung der MD5-Prüfsumme auf Dateiebene durch. Nach dem Kopieren von Dateien in das Azure-Blob oder in Azure Data Lake Storage Gen2 als Datenziel schreibt ADF ContentMD5 in das Ziel. Dies kann in Downstreamanwendungen zur Überprüfung der Datenkonsistenz weiterverwendet werden.
+>- Beim Kopieren von Binärdateien aus oder in Azure-Blobs oder Azure Data Lake Storage Gen2 überprüft ADF unter Verwendung der [Azure-Blob-API](/dotnet/api/microsoft.azure.storage.blob.blobrequestoptions?view=azure-dotnet-legacy&preserve-view=true) und der [Azure Data Lake Storage Gen2-API](/rest/api/storageservices/datalakestoragegen2/path/update#request-headers) die MD5-Prüfsumme auf Blockebene. Wenn ContentMD5 in Dateien im Azure-Blob oder in Azure Data Lake Storage Gen2 als Datenquelle vorhanden ist, führt ADF nach dem Lesen der Dateien auch eine Überprüfung der MD5-Prüfsumme auf Dateiebene durch. Nach dem Kopieren von Dateien in das Azure-Blob oder in Azure Data Lake Storage Gen2 als Datenziel schreibt ADF ContentMD5 in das Ziel. Dies kann in Downstreamanwendungen zur Überprüfung der Datenkonsistenz weiterverwendet werden.
 >- Beim Kopieren von Binärdateien zwischen Speichern führt ADF eine Überprüfung der Dateigröße durch.
 
 ## <a name="monitoring"></a>Überwachung

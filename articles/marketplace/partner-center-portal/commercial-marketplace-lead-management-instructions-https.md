@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: trkeya
 ms.author: trkeya
 ms.date: 03/30/2020
-ms.openlocfilehash: b4dabee6a725fd02b7be6dd12c8a032e3d816835
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 5bea2cf256e30bd896957bbee0e0ad824057a569
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94489368"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98247181"
 ---
 # <a name="use-an-https-endpoint-to-manage-commercial-marketplace-leads"></a>Verwenden eines HTTPS-Endpunkts zum Verwalten von Leads im kommerziellen Marketplace
 
@@ -66,6 +66,10 @@ In diesem Artikel wird erläutert, wie ein neuer Flow in Power Automate erstellt
         },
         "LeadSource": {
           "id": "/properties/LeadSource",
+          "type": "string"
+        },
+        "Description": {
+          "id": "/properties/Description",
           "type": "string"
         },
         "UserDetails": {
@@ -162,7 +166,7 @@ In diesem Artikel wird erläutert, wie ein neuer Flow in Power Automate erstellt
 
 1. Konfigurieren Sie im Fenster **E-Mail senden** die folgenden Pflichtfelder:
 
-   - **An** : Geben Sie mindestens eine gültige E-Mail-Adresse ein, an die die Leads gesendet werden.
+   - **An**: Geben Sie mindestens eine gültige E-Mail-Adresse ein, an die die Leads gesendet werden.
    - **Antragsteller:** Power Automate ermöglicht das Hinzufügen dynamischer Inhalte, etwa **LeadSource** auf dem folgenden Bildschirm. Geben Sie als Erstes einen Feldnamen ein. Wählen Sie dann im Popupfenster die Auswahlliste für dynamischen Inhalt aus. 
 
         >[!NOTE] 
@@ -170,7 +174,7 @@ In diesem Artikel wird erläutert, wie ein neuer Flow in Power Automate erstellt
 
         ![Hinzufügen einer E-Mail-Aktion mit dynamischem Inhalt](./media/commercial-marketplace-lead-management-instructions-https/add-email-using-dynamic-content.png)
 
-   - **Text** : Fügen Sie über die Auswahlliste für dynamischen Inhalt die gewünschten Informationen in den E-Mail-Text ein. Verwenden Sie beispielsweise „LastName“, „FirstName“, „Email“ und „Company“. Ein Beispiel für eine fertig eingerichtete E-Mail-Benachrichtigung sehen Sie auf dem folgenden Bildschirm.
+   - **Text**: Fügen Sie über die Auswahlliste für dynamischen Inhalt die gewünschten Informationen in den E-Mail-Text ein. Verwenden Sie beispielsweise „LastName“, „FirstName“, „Email“ und „Company“. Ein Beispiel für eine fertig eingerichtete E-Mail-Benachrichtigung sehen Sie auf dem folgenden Bildschirm.
 
 
        ![Beispiel für eine E-Mail-Benachrichtigung](./media/commercial-marketplace-lead-management-instructions-https/send-an-email.png)
@@ -202,7 +206,7 @@ Sie können Ihre Konfiguration mit [Postman](https://app.getpostman.com/app/down
 1. Kehren Sie zu [Power Automate](https://flow.microsoft.com/) zurück. Suchen Sie den erstellten Flow zum Senden von Leads, indem Sie auf der Power Automate-Menüleiste **Meine Flows** auswählen. Wählen Sie die Auslassungspunkte neben dem Flownamen aus, um weitere Optionen anzuzeigen, und wählen Sie dann **Bearbeiten** aus.
 
 
-1. Wählen Sie in der rechten oberen Ecke **Testen** , anschließend **Ich führe die Triggeraktion durch** und dann **Testen** aus. Am oberen Bildschirmrand wird ein Hinweis darüber angezeigt, dass der Test gestartet wurde.
+1. Wählen Sie in der rechten oberen Ecke **Testen**, anschließend **Ich führe die Triggeraktion durch** und dann **Testen** aus. Am oberen Bildschirmrand wird ein Hinweis darüber angezeigt, dass der Test gestartet wurde.
 
    ![Option „Ich führe die Triggeraktion durch“](./media/commercial-marketplace-lead-management-instructions-https/test-flow-trigger-action.png)
 

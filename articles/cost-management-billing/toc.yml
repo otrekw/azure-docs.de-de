@@ -188,16 +188,6 @@
               href: manage/pay-by-invoice.md
             - name: Erstellen zusätzlicher Abonnements
               href: manage/create-subscription.md
-            - name: Programmgesteuertes Erstellen von EA-Abonnements
-              href: manage/programmatically-create-subscription-enterprise-agreement.md
-            - name: Programmgesteuertes Erstellen von MCA-Abonnements
-              href: manage/programmatically-create-subscription-microsoft-customer-agreement.md
-            - name: Programmgesteuertes Erstellen von MPA-Abonnements
-              href: manage/programmatically-create-subscription-microsoft-partner-agreement.md
-            - name: 'Erstellen von Abonnements: ARM-Vorlage'
-              href: manage/create-subscription-template.md
-            - name: 'Programmgesteuerte Erstellung von Abonnements: Vorschau'
-              href: manage/programmatically-create-subscription-preview.md
             - name: Gewähren des Zugriffs zur Erstellung von EA-Abonnements
               href: manage/grant-access-to-create-subscription.md
             - name: Exportieren der Abonnementinformationen
@@ -214,6 +204,20 @@
               href: manage/transfer-subscriptions-subscribers-csp.md
             - name: Kündigen eines Abonnements
               href: manage/cancel-azure-subscription.md
+        - name: Programmgesteuerte Erstellung von Abonnements
+          items:
+            - name: Programmgesteuerte Erstellung von Abonnements
+              href: manage/programmatically-create-subscription.md
+            - name: Programmgesteuertes Erstellen von EA-Abonnements
+              href: manage/programmatically-create-subscription-enterprise-agreement.md
+            - name: Programmgesteuertes Erstellen von MCA-Abonnements
+              href: manage/programmatically-create-subscription-microsoft-customer-agreement.md
+            - name: Programmgesteuertes Erstellen von MPA-Abonnements
+              href: manage/programmatically-create-subscription-microsoft-partner-agreement.md
+            - name: 'Erstellen von Abonnements: ARM-Vorlage'
+              href: manage/create-subscription-template.md
+            - name: 'Programmgesteuertes Erstellen von Abonnements: Vorschau-APIs'
+              href: manage/programmatically-create-subscription-preview.md
         - name: Verwalten von Enterprise Agreement-Abonnements
           items:
             - name: EA-Rollen in Azure

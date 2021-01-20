@@ -2,14 +2,14 @@
 author: alkohli
 ms.service: databox
 ms.topic: include
-ms.date: 12/21/2020
+ms.date: 01/15/2021
 ms.author: alkohli
-ms.openlocfilehash: f2443765ecc9116193cefbc729ced25fa5657e59
-ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
+ms.openlocfilehash: 56fc24966fa60c3a5e91f92b57332ae2f6a525ff
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97763426"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98256365"
 ---
 Bevor Sie virtuelle Computer auf Ihrem Azure Stack Edge-Gerät bereitstellen können, müssen Sie den Client so konfigurieren, dass er über Azure Resource Manager über Azure PowerShell eine Verbindung mit dem Gerät herstellt. Ausführliche Schritte finden Sie unter [Herstellen einer Verbindung mit Azure Resource Manager auf Ihrem Azure Stack Edge-Gerät](../articles/databox-online/azure-stack-edge-j-series-connect-resource-manager.md).
 
@@ -38,11 +38,3 @@ Stellen Sie sicher, dass die folgenden Schritte für den Zugriff auf das Gerät 
     > Wählen Sie beim Erstellen von GPU-VMs eine Netzwerkschnittstelle aus, die mit dem Internet verbunden ist. Auf diese Weise können Sie die GPU-Erweiterung auf Ihrem Gerät installieren.
 
 
-1. Aktivieren Sie die VM-Rolle im Azure-Portal. In diesem Schritt wird ein eindeutiges Abonnement für Ihr Gerät erstellt, das zum Erstellen von VMs über die lokalen APIs des Geräts verwendet wird. 
-
-    1. Um die VM-Rolle zu aktivieren, wechseln Sie im Azure-Portal zur Azure Stack Edge-Ressource für Ihr Azure Stack Edge-Gerät. Wechseln Sie zu **Edgecomputing -> Virtuelle Computer**.
-
-        ![VM-Image hinzufügen 1](../articles/databox-online/media/azure-stack-edge-gpu-deploy-virtual-machine-portal/add-virtual-machine-image-1.png)
-
-    1. Wählen Sie **Virtuelle Computer** aus, um zur Seite **Übersicht** zu wechseln. **Aktivieren** Sie die Cloudverwaltung für virtuelle Computer.
-        ![VM-Image hinzufügen 2](../articles/databox-online/media/azure-stack-edge-gpu-deploy-virtual-machine-portal/add-virtual-machine-image-2.png)

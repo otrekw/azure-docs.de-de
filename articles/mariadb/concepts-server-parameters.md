@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 6/25/2020
-ms.openlocfilehash: 4432178d5908d4360cda05a62b62d05687be4235
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 7797ee9d20b33a25c1b51289036651c7ad9f22a1
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94541129"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98247497"
 ---
 # <a name="server-parameters-in-azure-database-for-mariadb"></a>Serverparameter in Azure Database for MariaDB
 
@@ -159,7 +159,7 @@ Der Abfragecache ist in MariaDB standardmäßig mit dem Parameter `have_query_ca
 
 Weitere Informationen zu diesem Parameter finden Sie in der [MariaDB-Dokumentation](https://mariadb.com/kb/en/server-system-variables/#query_cache_size).
 
-|**Tarif**|**vCore(s)**|**Standardwert (Bytes)**|**Mindestwert (Bytes)**|**Höchstwert **|
+|**Tarif**|**vCore(s)**|**Standardwert (Bytes)**|**Mindestwert (Bytes)**|**Höchstwert (Bytes)**|
 |---|---|---|---|---|
 |Basic|1|Nicht konfigurierbar im Basic-Tarif|–|–|
 |Basic|2|Nicht konfigurierbar im Basic-Tarif|–|–|

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/05/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: e48b1357b8576baca0e8defca94f4c5248c6f74e
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: ff777f079116942eba32e49f359c7f7e0b99f65d
+ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96461291"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98555779"
 ---
 # <a name="azure-security-baseline-for-azure-data-factory"></a>Azure-Sicherheitsbaseline für Azure Data Factory
 
@@ -335,9 +335,9 @@ Obwohl Azure AD zum Verwalten des Benutzerzugriffs empfohlen wird, sollten Sie b
 
 * [Informationen zu Privileged Identity Management](../active-directory/privileged-identity-management/pim-deployment-plan.md)
 
-* [Abrufen einer Verzeichnisrolle in Azure AD mit PowerShell](/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
+* [Abrufen einer Verzeichnisrolle in Azure AD mit PowerShell](/powershell/module/azuread/get-azureaddirectoryrole)
 
-* [Abrufen von Mitgliedern einer Verzeichnisrolle in Azure AD mit PowerShell](/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
+* [Abrufen von Mitgliedern einer Verzeichnisrolle in Azure AD mit PowerShell](/powershell/module/azuread/get-azureaddirectoryrolemember)
 
 * [Informationen zu lokalen Konten](../active-directory/devices/assign-local-admin.md#manage-the-device-administrator-role)
 
@@ -408,7 +408,7 @@ Wenn Ihre Integration Runtime auf einer Azure-VM ausgeführt wird, können auch 
 
 **Leitfaden**: Verwenden Sie Arbeitsstationen mit privilegiertem Zugriff (Privileged Access Workstations, PAW) mit Multi-Factor Authentication (MFA), die für die Anmeldung und Konfiguration von Azure-Ressourcen konfiguriert sind.
 
-* [Informationen zu Arbeitsstationen mit privilegiertem Zugriff](/windows-server/identity/securing-privileged-access/privileged-access-workstations)
+* [Informationen zu Arbeitsstationen mit privilegiertem Zugriff](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
 * [Aktivieren von MFA in Azure](../active-directory/authentication/howto-mfa-getstarted.md)
 
@@ -744,7 +744,7 @@ Obwohl klassische Azure-Ressourcen über das Resource Graph ermittelt werden kö
 
 * [Erstellen von Abfragen mit Azure Resource Graph](../governance/resource-graph/first-query-portal.md)
 
-* [Anzeigen Ihrer Azure-Abonnements](/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
+* [Anzeigen Ihrer Azure-Abonnements](/powershell/module/az.accounts/get-azsubscription)
 
 * [Grundlegendes zu Azure RBAC](../role-based-access-control/overview.md)
 
@@ -880,7 +880,7 @@ Beachten Sie, dass das nur gilt, wenn Ihre Integration Runtime auf einer Azure-V
 
 **Leitfaden**: Wenn Ihre Integration Runtime auf einer Azure-VM ausgeführt wird, können Sie abhängig vom Skripttyp betriebssystemspezifische Konfigurationen oder Ressourcen von Drittanbietern verwenden, um die Möglichkeit der Benutzer zur Skriptausführung innerhalb von Azure-Computeressourcen einzuschränken. Sie können auch die adaptiven Anwendungssteuerungen in Azure Security Center nutzen, um sicherzustellen, dass nur autorisierte Software ausgeführt und die Ausführung jeglicher nicht autorisierter Software in Azure Virtual Machines blockiert wird.
 
-* [Steuern der PowerShell-Skriptausführung in Windows-Umgebungen](/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-6)
+* [Steuern der PowerShell-Skriptausführung in Windows-Umgebungen](/powershell/module/microsoft.powershell.security/set-executionpolicy)
 
 * [Verwenden der adaptiven Anwendungssteuerungen in Azure Security Center](../security-center/security-center-adaptive-application.md)
 
@@ -918,7 +918,7 @@ Beachten Sie, dass das nur gilt, wenn Ihre Integration Runtime auf einer Azure-V
 
 **Leitfaden**: Definieren und implementieren Sie Standardsicherheitskonfigurationen für Azure Data Factory mit Azure Policy. Verwenden Sie Azure Policy-Aliase im Namespace „Microsoft.DataFactory“, um benutzerdefinierte Richtlinien zum Überwachen oder Erzwingen der Konfiguration Ihrer Azure Data Factory-Instanzen zu erstellen.
 
-* [Anzeigen verfügbarer Azure Policy-Aliase](/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
+* [Anzeigen verfügbarer Azure Policy-Aliase](/powershell/module/az.resources/get-azpolicyalias)
 
 * [Konfigurieren und Verwalten von Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
@@ -964,7 +964,7 @@ In den meisten Fällen sind die Microsoft-Basisvorlagen in Kombination mit Azure
 
 * [Erstellen von Azure Resource Manager-Vorlagen](../virtual-machines/windows/ps-template.md)
 
-* [Hochladen einer benutzerdefinierten VM-VHD in Azure](/azure-stack/operator/azure-stack-add-vm-image?view=azs-1910)
+* [Hochladen einer benutzerdefinierten VM-VHD in Azure](/azure-stack/operator/azure-stack-add-vm-image)
 
 **Azure Security Center-Überwachung**: Ja
 
@@ -974,9 +974,9 @@ In den meisten Fällen sind die Microsoft-Basisvorlagen in Kombination mit Azure
 
 **Leitfaden**: Wenn Sie benutzerdefinierte Azure Policy-Definitionen verwenden, nutzen Sie Azure DevOps oder Azure Repos, um Ihren Code sicher zu speichern und zu verwalten.
 
-* [Speichern von Code in Azure DevOps](/azure/devops/repos/git/gitworkflow?view=azure-devops)
+* [Speichern von Code in Azure DevOps](/azure/devops/repos/git/gitworkflow)
 
-* [Dokumentation zu Azure Repos](/azure/devops/repos/index?view=azure-devops)
+* [Dokumentation zu Azure Repos](/azure/devops/repos/index)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -1150,7 +1150,7 @@ Empfehlungen zum Ausführen regulärer, automatisierter Sicherungen für Ihre Da
 
 * [Übersicht über die Sicherung von Azure-VMs](../backup/backup-azure-vms-introduction.md)
 
-* [Sichern von Schlüsseltresorschlüsseln in Azure](/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0)
+* [Sichern von Schlüsseltresorschlüsseln in Azure](/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey)
 
 **Azure Security Center-Überwachung**: Ja
 
@@ -1164,7 +1164,7 @@ Informationen zum Überprüfen von Sicherungen für Ihre Datenspeicher finden Si
 
 * [Wiederherstellen von Dateien aus einer Sicherung von virtuellen Azure-Computern](../backup/backup-azure-restore-files-from-vm.md)
 
-* [Wiederherstellen von Schlüsseltresorschlüsseln in Azure](/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
+* [Wiederherstellen von Schlüsseltresorschlüsseln in Azure](/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -1264,7 +1264,7 @@ Kennzeichnen Sie außerdem die Abonnements (z. B. Produktion, Nicht-Produktion)
 
 * [Befolgen Sie die Einsatzregeln von Microsoft, um sicherzustellen, dass Ihre Penetrationstests nicht gegen Microsoft-Richtlinien verstoßen.](https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1)
 
-* Weitere Informationen zur Microsoft-Strategie im Zusammenhang mit Red Team- und Livewebsite-Penetrationstests für von Microsoft verwaltete Cloudinfrastrukturen, Dienste und Anwendungen sowie zu deren Durchführung finden Sie [hier](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e).
+* [Weitere Informationen zur Microsoft-Strategie im Zusammenhang mit Red Team- und Livewebsite-Penetrationstests für von Microsoft verwaltete Cloudinfrastrukturen, Dienste und Anwendungen sowie zu deren Durchführung finden Sie unter diesem Link.](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 

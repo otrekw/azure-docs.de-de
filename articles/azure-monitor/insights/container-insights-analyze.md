@@ -3,12 +3,12 @@ title: Kubernetes-Überwachung mit Azure Monitor für Container | Microsoft-Doku
 description: In diesem Artikel wird beschrieben, wie Sie mit Azure Monitor für Container die Leistung eines Kubernetes-Clusters anzeigen und analysieren.
 ms.topic: conceptual
 ms.date: 03/26/2020
-ms.openlocfilehash: a1f661089b3a6357abb3eed584401e6a8ae2e2fb
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 68d0ac03ae0f6029e0f984e296a89048536f4eb7
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96905705"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251283"
 ---
 # <a name="monitor-your-kubernetes-cluster-performance-with-azure-monitor-for-containers"></a>Überwachen der Leistung von Kubernetes-Clustern mit Azure Monitor für Container
 
@@ -130,7 +130,7 @@ Im Metrik-Explorer können Sie Metriken für aggregierte Knoten und Podnutzung a
 | insights.container/pods | |
 | | PodCount | Die Podanzahl von Kubernetes.|
 
-Sie können eine Metrik [teilen](../platform/metrics-charts.md#apply-splitting-to-a-chart), um sie nach Dimension anzuzeigen und damit zu visualisieren, wie verschiedene Segmente der Metrik zusammenhängen. Für einen Knoten können Sie das Diagramm nach der Dimension *Host* segmentieren. Über einen Pod können Sie die Segmentierung nach den folgenden Dimensionen durchführen:
+Sie können eine Metrik [teilen](../platform/metrics-charts.md#apply-splitting), um sie nach Dimension anzuzeigen und damit zu visualisieren, wie verschiedene Segmente der Metrik zusammenhängen. Für einen Knoten können Sie das Diagramm nach der Dimension *Host* segmentieren. Über einen Pod können Sie die Segmentierung nach den folgenden Dimensionen durchführen:
 
 * Controller
 * Kubernetes-Namespace

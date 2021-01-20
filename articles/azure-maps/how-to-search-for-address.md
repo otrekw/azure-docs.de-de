@@ -3,17 +3,17 @@ title: Suchen nach einem Ort mit dem Suchdienst von Azure Maps
 description: Erfahren Sie mehr über den Azure Maps-Suchdienst. Sehen Sie, wie Sie diese Gruppe von APIs für die Geocodierung, inverse Geocodierung, Fuzzysuchen und umgekehrte Querstraßensuchen verwenden.
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 10/05/2020
+ms.date: 01/19/2021
 ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 00ddb53276c052d538d658f2c40384e86cf72aee
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: dddf56edf2037d87a28589a59834db32f8d04a4c
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92910983"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98598366"
 ---
 # <a name="search-for-a-location-using-azure-maps-search-services"></a>Suchen nach einem Ort mit dem Suchdienst von Azure Maps
 
@@ -43,7 +43,7 @@ In diesem Beispiel wird die Azure Maps-[API zum Abrufen der Suchadresse](/rest/a
 
 1. Öffnen Sie die Postman-App. Wählen Sie oben in der Postman-App **New** (Neu) aus. Wählen Sie im Fenster **Create New** (Neu erstellen) die Option **Collection** (Sammlung) aus.  Geben Sie einen Namen für die Sammlung ein, und klicken Sie dann auf **Create** (Erstellen). Sie verwenden diese Sammlung für alle weiteren Beispiele in diesem Dokument.
 
-2. Klicken Sie erneut auf **New** (Neu), um die Anforderung zu erstellen. Wählen Sie im Fenster **Create New** (Neu erstellen) die Option **Request** (Anforderung) aus. Geben Sie einen Anforderungsnamen ( **Request name** ) ein. Wählen Sie die im vorherigen Schritt erstellte Sammlung und anschließend **Save** (Speichern) aus.
+2. Klicken Sie erneut auf **New** (Neu), um die Anforderung zu erstellen. Wählen Sie im Fenster **Create New** (Neu erstellen) die Option **Request** (Anforderung) aus. Geben Sie einen Anforderungsnamen (**Request name**) ein. Wählen Sie die im vorherigen Schritt erstellte Sammlung und anschließend **Save** (Speichern) aus.
 
 3. Wählen Sie auf der Registerkarte „Builder“ (Generator) die HTTP-Methode **GET** aus, und geben Sie die folgende URL ein. In dieser Anforderung suchen wir nach einer bestimmten Adresse: `400 Braod St, Seattle, WA 98109`. Ersetzen Sie bei dieser Anforderung sowie bei den anderen in diesem Artikel angegebenen Anforderungen jeweils `{Azure-Maps-Primary-Subscription-key}` durch Ihren primären Abonnementschlüssel.
 
@@ -75,7 +75,7 @@ In diesem Beispiel verwenden wir die Fuzzysuche, um eine weltweite Suche nach `p
 >[!IMPORTANT]
 >Fügen Sie immer so viele Standortangaben wie möglich hinzu, damit die Ergebnisse dem für Ihren Benutzer relevanten geografischen Bereich entsprechen. Weitere Informationen finden Sie unter [Bewährte Methoden für den Suchdienst](how-to-use-best-practices-for-search.md#geobiased-search-results).
 
-1. Öffnen Sie die Postman-App, klicken Sie auf **New** „Neu“, und wählen Sie **Request** (Anforderung) aus. Geben Sie einen Anforderungsnamen ( **Request name** ) ein. Wählen Sie die im vorherigen Abschnitt oder eine neu erstellte Sammlung aus, und klicken Sie dann auf **Save** (Speichern).
+1. Öffnen Sie die Postman-App, klicken Sie auf **New** „Neu“, und wählen Sie **Request** (Anforderung) aus. Geben Sie einen Anforderungsnamen (**Request name**) ein. Wählen Sie die im vorherigen Abschnitt oder eine neu erstellte Sammlung aus, und klicken Sie dann auf **Save** (Speichern).
 
 2. Wählen Sie auf der Registerkarte „Builder“ (Generator) die HTTP-Methode **GET** aus, und geben Sie die folgende URL ein. Ersetzen Sie bei dieser Anforderung sowie bei den anderen in diesem Artikel angegebenen Anforderungen jeweils `{Azure-Maps-Primary-Subscription-key}` durch Ihren primären Abonnementschlüssel.
 
@@ -123,7 +123,7 @@ Die Azure Maps-[API für die inverse Adresssuche]( https://docs.microsoft.com/re
 
 In diesem Beispiel führen wir mithilfe einiger der verfügbaren optionalen Parameter eine umgekehrte Suche durch. Eine vollständige Liste der optionalen Parameter finden Sie im Abschnitt zu den [Parametern für die umgekehrte Suche](/rest/api/maps/search/getsearchaddressreverse#uri-parameters).
 
-1. Klicken Sie in der Postman-App auf **New** „Neu“, und wählen Sie **Request** (Anforderung) aus. Geben Sie einen Anforderungsnamen ( **Request name** ) ein. Wählen Sie die im ersten Abschnitt oder eine neu erstellte Sammlung aus, und klicken Sie dann auf **Save** (Speichern).
+1. Klicken Sie in der Postman-App auf **New** „Neu“, und wählen Sie **Request** (Anforderung) aus. Geben Sie einen Anforderungsnamen (**Request name**) ein. Wählen Sie die im ersten Abschnitt oder eine neu erstellte Sammlung aus, und klicken Sie dann auf **Save** (Speichern).
 
 2. Wählen Sie auf der Registerkarte „Builder“ (Generator) die HTTP-Methode **GET** aus, und geben Sie die folgende URL ein. Ersetzen Sie bei dieser Anforderung sowie bei den anderen in diesem Artikel angegebenen Anforderungen jeweils `{Azure-Maps-Primary-Subscription-key}` durch Ihren primären Abonnementschlüssel. Die Anforderung sollte wie die folgende URL aussehen:
 
@@ -159,7 +159,7 @@ In diesem Beispiel führen wir mithilfe einiger der verfügbaren optionalen Para
 
 In diesem Beispiel suchen wir basierend auf den Koordinaten einer Adresse nach einer Querstraße.
 
-1. Klicken Sie in der Postman-App auf **New** „Neu“, und wählen Sie **Request** (Anforderung) aus. Geben Sie einen Anforderungsnamen ( **Request name** ) ein. Wählen Sie die im ersten Abschnitt oder eine neu erstellte Sammlung aus, und klicken Sie dann auf **Save** (Speichern).
+1. Klicken Sie in der Postman-App auf **New** „Neu“, und wählen Sie **Request** (Anforderung) aus. Geben Sie einen Anforderungsnamen (**Request name**) ein. Wählen Sie die im ersten Abschnitt oder eine neu erstellte Sammlung aus, und klicken Sie dann auf **Save** (Speichern).
 
 2. Wählen Sie auf der Registerkarte „Builder“ (Generator) die HTTP-Methode **GET** aus, und geben Sie die folgende URL ein. Ersetzen Sie bei dieser Anforderung sowie bei den anderen in diesem Artikel angegebenen Anforderungen jeweils `{Azure-Maps-Primary-Subscription-key}` durch Ihren primären Abonnementschlüssel. Die Anforderung sollte wie die folgende URL aussehen:
   
@@ -169,7 +169,7 @@ In diesem Beispiel suchen wir basierend auf den Koordinaten einer Adresse nach e
 
     :::image type="content" source="./media/how-to-search-for-address/search-address-cross.png" alt-text="Suche nach einer Querstraße":::
   
-3. Klicken Sie auf **Send** (Senden), und sehen Sie sich den Antworttext an. Beachten Sie, dass die Antwort den Wert `Occidental Avenue South` für `crossStreet` enthält.
+3. Klicken Sie auf **Send** (Senden), und sehen Sie sich den Antworttext an. Beachten Sie, dass die Antwort den Wert `South Atlantic Street` für `crossStreet` enthält.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

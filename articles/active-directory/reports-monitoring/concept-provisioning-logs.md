@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 12/28/2020
+ms.date: 1/19/2021
 ms.author: markvi
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 56818862b6bc4eb38b819185aceb121e6e78488e
-ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
+ms.openlocfilehash: 05a514debcf8036a296bbe66b2dd75c7dacacdc2
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97803526"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98600746"
 ---
 # <a name="provisioning-reports-in-the-azure-active-directory-portal-preview"></a>Bereitstellungsberichte im Azure Active Directory-Portal (Vorschau)
 
@@ -215,8 +215,6 @@ Die Registerkarte **Zusammenfassung** bietet eine Übersicht über die Vorgänge
 - Im Azure-Portal werden gemeldete Bereitstellungsdaten 30 Tage gespeichert, wenn Sie eine Premium-Edition haben, und 7 Tage, wenn Sie eine kostenlose Edition haben. Die Bereitstellungsprotokolle können in [Log Analytics](../app-provisioning/application-provisioning-log-analytics.md) für die Aufbewahrung über 30 Tage hinaus veröffentlicht werden. 
 
 - Sie können das Attribut „Änderungs-ID“ als eindeutigen Bezeichner verwenden. Dies ist beispielsweise bei der Kommunikation mit dem Produktsupport hilfreich.
-
-- Zurzeit gibt es keine Option zum Herunterladen von Bereitstellungsdaten als CSV-Datei. Sie können die Daten jedoch mit [Microsoft Graph](/graph/api/provisioningobjectsummary-list?tabs=http&view=graph-rest-beta) exportieren.
 
 - Möglicherweise werden übersprungene Ereignisse für Benutzer aufgeführt, die nicht dem Gültigkeitsbereich angehören. Dies entspricht dem erwarteten Verhalten, insbesondere dann, wenn der Synchronisierungsbereich auf alle Benutzer und Gruppen festgelegt ist. Der Dienst wertet alle Objekte im Mandanten aus, auch solche, die außerhalb des Gültigkeitsbereichs liegen. 
 

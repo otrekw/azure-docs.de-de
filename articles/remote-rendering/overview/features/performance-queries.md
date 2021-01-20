@@ -6,12 +6,12 @@ ms.author: flborn
 ms.date: 02/10/2020
 ms.topic: article
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 95993b35174b80dae8c878c22554ee60afeb8a14
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 57a9f6f11283e020efc25f55f1df473a6cb2d321
+ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92206219"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98569996"
 ---
 # <a name="server-side-performance-queries"></a>Serverseitige Leistungsabfragen
 
@@ -65,9 +65,9 @@ Das abgerufene Objekt `FrameStatistics` enthält die folgenden Member:
 | Member | Erklärung |
 |:-|:-|
 | latencyPoseToReceive | Die Latenz für die Schätzung der Kamerastellung auf dem Clientgerät, bis für die Clientanwendung ein Serverframe für diese Stellung vollständig verfügbar ist. Dieser Wert umfasst den Netzwerkroundtrip, die Renderzeit des Servers, die Videodecodierung und die Jitterkorrektur. Siehe **Intervall 1 in der obigen Abbildung**.|
-| latencyReceiveToPresent | Latenz der Verfügbarkeit eines empfangenen Remote-Frames, bis die Client-App „PresentFrame“ für die CPU aufruft. |
-| latencyPresentToDisplay  | Latenz der Darstellung eines Frames in der CPU, bis die Anzeige verfügbar ist. Dieser Wert umfasst die GPU-Zeit des Clients, Framepufferung des Betriebssystems, Umprojizierung der Hardware und geräteabhängige Scandauer der Anzeige. Siehe **Intervall 2 in der obigen Abbildung**.|
-| timeSinceLastPresent | Die Zeit zwischen nachfolgenden Aufrufen und „PresentFrame“ in der CPU. Höhere Werte als die Anzeigedauer (z. B. 16,6 ms auf einem Clientgerät mit 60 Hz) deuten auf Probleme hin, die deshalb auftreten, weil die Clientanwendung die CPU-Workload nicht rechtzeitig abgearbeitet hat. Siehe **Intervall 3 in der obigen Abbildung**.|
+| latencyReceiveToPresent | Latenz der Verfügbarkeit eines empfangenen Remote-Frames, bis die Client-App „PresentFrame“ für die CPU aufruft. Siehe **Intervall 2 in der obigen Abbildung**.|
+| latencyPresentToDisplay  | Latenz der Darstellung eines Frames in der CPU, bis die Anzeige verfügbar ist. Dieser Wert umfasst die GPU-Zeit des Clients, Framepufferung des Betriebssystems, Umprojizierung der Hardware und geräteabhängige Scandauer der Anzeige. Siehe **Intervall 3 in der obigen Abbildung**.|
+| timeSinceLastPresent | Die Zeit zwischen nachfolgenden Aufrufen und „PresentFrame“ in der CPU. Höhere Werte als die Anzeigedauer (z. B. 16,6 ms auf einem Clientgerät mit 60 Hz) deuten auf Probleme hin, die deshalb auftreten, weil die Clientanwendung die CPU-Workload nicht rechtzeitig abgearbeitet hat.|
 | videoFramesReceived | Die Anzahl von Frames, die vom Server innerhalb der letzten Sekunde empfangen wurden. |
 | videoFrameReusedCount | Anzahl von innerhalb der letzten Sekunde empfangenen Frames, die auf dem Gerät mehr als einmal verwendet wurden. Mit anderen Werten als Null wird angegeben, dass Frames wiederverwendet und umprojiziert werden mussten, weil entweder Netzwerkjitter aufgetreten ist oder der Server sehr viel Zeit für das Rendern benötigt hat. |
 | videoFramesSkipped | Anzahl von empfangenen Frames innerhalb der letzten Sekunde, die decodiert, aber nicht in der Anzeige dargestellt wurden, weil ein neuer Frame eingetroffen ist. Mit anderen Werten als Null wird angegeben, dass aufgrund von Netzwerkjitter mehrere Frames verzögert waren und dann auf einmal auf dem Clientgerät eingetroffen sind. |

@@ -11,12 +11,12 @@ author: dcstwh
 ms.author: weetok
 manager: anandsub
 ms.custom: devx-track-python
-ms.openlocfilehash: e7b435080fda48e1df0bb31d16dafed30ac3d3db
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: b5d1f0c0d6aa848e590e68e1f18abf7861674483
+ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96497859"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98556561"
 ---
 # <a name="programmatically-monitor-an-azure-data-factory"></a>Programmgesteuertes Überwachen einer Azure Data Factory
 
@@ -68,7 +68,7 @@ Eine vollständige exemplarische Vorgehensweise zum Erstellen und Überwachen ei
     Console.ReadKey();
     ```
 
-Eine vollständige Dokumentation zum .NET SDK finden Sie in der [.NET SDK-Referenz für Data Factory](/dotnet/api/microsoft.azure.management.datafactory?view=azure-dotnet).
+Eine vollständige Dokumentation zum .NET SDK finden Sie in der [.NET SDK-Referenz für Data Factory](/dotnet/api/microsoft.azure.management.datafactory).
 
 ## <a name="python"></a>Python
 Eine vollständige exemplarische Vorgehensweise zum Erstellen und Überwachen einer Pipeline mit dem Python-SDK finden Sie unter [Erstellen einer Data Factory und Pipeline mithilfe von Python](quickstart-create-data-factory-python.md).
@@ -86,7 +86,7 @@ activity_runs_paged = list(adf_client.activity_runs.list_by_pipeline_run(
 print_activity_run_details(activity_runs_paged[0])
 ```
 
-Eine vollständige Dokumentation zum Python-SDK finden Sie in der [Python-SDK-Referenz für Data Factory](/python/api/overview/azure/datafactory?view=azure-python).
+Eine vollständige Dokumentation zum Python-SDK finden Sie in der [Python-SDK-Referenz für Data Factory](/python/api/overview/azure/datafactory).
 
 ## <a name="rest-api"></a>REST-API
 Eine vollständige exemplarische Vorgehensweise zum Erstellen und Überwachen einer Pipeline mit der REST-API finden Sie unter [Erstellen einer Azure Data Factory und einer Pipeline mithilfe der REST-API](quickstart-create-data-factory-rest-api.md).

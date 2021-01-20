@@ -12,12 +12,12 @@ ms.reviewer: douglasl
 manager: mflasko
 ms.custom: seo-lt-2019
 ms.date: 11/19/2020
-ms.openlocfilehash: 82cc58d46061ec7b623d062ab0b0e5a1fdae7ddd
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: bde8bc11a959bea4bd2c05c5ae75db81192aad6a
+ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96352217"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98555864"
 ---
 # <a name="configure-a-self-hosted-ir-as-a-proxy-for-an-azure-ssis-ir-in-azure-data-factory"></a>Konfigurieren einer selbstgehosteten IR als Proxy für eine Azure-SSIS IR in Azure Data Factory
 
@@ -54,7 +54,7 @@ Zum Schluss laden Sie die neueste Version der selbstgehosteten IR sowie die zus�
 
 ### <a name="enable-windows-authentication-for-on-premises-staging-tasks"></a>Aktivieren der Windows-Authentifizierung für lokale Stagingtasks
 
-Wenn für die lokalen Stagingtasks in Ihrer selbstgehosteten IR die Windows-Authentifizierung erforderlich ist, [konfigurieren Sie Ihre SSIS-Pakete für die Verwendung derselben Windows-Authentifizierung](/sql/integration-services/lift-shift/ssis-azure-connect-with-windows-auth?view=sql-server-ver15). 
+Wenn für die lokalen Stagingtasks in Ihrer selbstgehosteten IR die Windows-Authentifizierung erforderlich ist, [konfigurieren Sie Ihre SSIS-Pakete für die Verwendung derselben Windows-Authentifizierung](/sql/integration-services/lift-shift/ssis-azure-connect-with-windows-auth). 
 
 Ihre lokalen Stagingtasks werden mit dem Dienstkonto der selbstgehosteten IR (standardmäßig *NT SERVICE\DIAHostService*) aufgerufen, und der Zugriff auf Ihre Datenspeicher erfolgt über das Windows-Authentifizierungskonto. Beiden Konten müssen bestimmte Sicherheitsrichtlinien zugewiesen werden. Wechseln Sie auf dem Computer mit der selbstgehosteten IR zu **Lokale Sicherheitsrichtlinie** > **Lokale Richtlinien** > **Zuweisen von Benutzerrechten**, und führen Sie dann die folgenden Schritte aus:
 
@@ -70,7 +70,7 @@ Erstellen Sie einen mit Azure Blob Storage verknüpften Dienst in der gleichen D
 - Wählen Sie unter **Authentifizierungsmethode** die Option **Kontoschlüssel**, **SAS-URI**, **Dienstprinzipal** oder **Verwaltete Identität** aus.  
 
 >[!TIP]
->Wenn Sie die Methode **Dienstprinzipal** auswählen, gewähren Sie dem Dienstprinzipal mindestens die Rolle *Mitwirkender an Storage-Blobdaten*. Weitere Informationen finden Sie unter [Eigenschaften des verknüpften Diensts](connector-azure-blob-storage.md#linked-service-properties). Wenn Sie die Methode **Verwaltete Identität** auswählen, erteilen Sie Ihrer verwalteten ADF-Identität geeignete Rollen für den Zugriff auf Azure Blob Storage. Weitere Informationen finden Sie unter [Verwaltete Identitäten für die Authentifizierung von Azure-Ressourcen](/sql/integration-services/connection-manager/azure-storage-connection-manager?view=sql-server-ver15#managed-identities-for-azure-resources-authentication).
+>Wenn Sie die Methode **Dienstprinzipal** auswählen, gewähren Sie dem Dienstprinzipal mindestens die Rolle *Mitwirkender an Storage-Blobdaten*. Weitere Informationen finden Sie unter [Eigenschaften des verknüpften Diensts](connector-azure-blob-storage.md#linked-service-properties). Wenn Sie die Methode **Verwaltete Identität** auswählen, erteilen Sie Ihrer verwalteten ADF-Identität geeignete Rollen für den Zugriff auf Azure Blob Storage. Weitere Informationen finden Sie unter [Verwaltete Identitäten für die Authentifizierung von Azure-Ressourcen](/sql/integration-services/connection-manager/azure-storage-connection-manager#managed-identities-for-azure-resources-authentication).
 
 ![Vorbereiten des mit Azure Blob Storage verknüpften Diensts für das Staging](media/self-hosted-integration-runtime-proxy-ssis/shir-azure-blob-storage-linked-service.png)
 
@@ -132,7 +132,7 @@ Start-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $ResourceGroupName `
 
 Wenn Sie die neuesten SSDT entweder als Erweiterung „SSIS-Projekte“ für Visual Studio oder ein eigenständiges Installationsprogramm verwenden, gibt es eine neue `ConnectByProxy`-Eigenschaft, die in Verbindungs-Managern für unterstützte Datenflusskomponenten hinzugefügt wurde.
 * [Herunterladen der Erweiterung „SSIS-Projekte“ für Visual Studio](https://marketplace.visualstudio.com/items?itemName=SSIS.SqlServerIntegrationServicesProjects)
-* [Herunterladen des eigenständigen Installationsprogramms](/sql/ssdt/download-sql-server-data-tools-ssdt?view=sql-server-2017#ssdt-for-vs-2017-standalone-installer)   
+* [Herunterladen des eigenständigen Installationsprogramms](/sql/ssdt/download-sql-server-data-tools-ssdt#ssdt-for-vs-2017-standalone-installer)   
 
 Wenn Sie neue Pakete entwerfen, die Datenflusstasks mit Komponenten enthalten, die lokal auf Daten zugreifen, können Sie diese Eigenschaft aktivieren, indem Sie sie im Bereich **Eigenschaften** der entsprechenden Verbindungs-Manager auf *TRUE* festlegen.
 

@@ -6,12 +6,12 @@ ms.author: robinsh
 ms.topic: conceptual
 ms.service: iot-hub
 ms.date: 11/06/2020
-ms.openlocfilehash: 2fabf75f74ccf57f57e7b47720ceda8885420842
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 35134f3ee4946d294ba6c6f71bd3953823d6d138
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96460901"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98250027"
 ---
 # <a name="monitoring-azure-iot-hub"></a>Überwachen von Azure IoT Hub
 
@@ -87,7 +87,7 @@ Eine Liste der Plattformmetriken, die für Azure IoT Hub gesammelt werden, finde
 
 Bei IoT Hub-Plattformmetriken, die in Anzahlen von Einheiten gesammelt werden, sind einige Aggregationen möglicherweise nicht verfügbar oder können nicht verwendet werden. Weitere Informationen finden Sie in der [Referenz zu Azure IoT Hub-Überwachungsdaten im Abschnitt „Unterstützte Aggregationen“](monitor-iot-hub-reference.md#supported-aggregations).
 
-Einige IoT Hub-Metriken, z. B. [Routingmetriken](monitor-iot-hub-reference.md#routing-metrics), sind mehrdimensional. Bei diesen Metriken können Sie [Filter](../azure-monitor/platform/metrics-charts.md#apply-filters-to-charts) anwenden und auf der Grundlage einer Dimension auf Ihre Diagramme [aufteilen](../azure-monitor/platform/metrics-charts.md#apply-splitting-to-a-chart).
+Einige IoT Hub-Metriken, z. B. [Routingmetriken](monitor-iot-hub-reference.md#routing-metrics), sind mehrdimensional. Bei diesen Metriken können Sie [Filter](../azure-monitor/platform/metrics-charts.md#filters) anwenden und auf der Grundlage einer Dimension auf Ihre Diagramme [aufteilen](../azure-monitor/platform/metrics-charts.md#apply-splitting).
 
 ## <a name="analyzing-logs"></a>Analysieren von Protokollen
 

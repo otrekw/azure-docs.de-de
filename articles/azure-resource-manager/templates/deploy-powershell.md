@@ -2,13 +2,13 @@
 title: Bereitstellen von Ressourcen mit PowerShell und Vorlagen
 description: Verwenden Sie Azure Resource Manager und Azure PowerShell, um Ressourcen in Azure bereitzustellen. Die Ressourcen werden in einer Resource Manager-Vorlage definiert.
 ms.topic: conceptual
-ms.date: 10/22/2020
-ms.openlocfilehash: 40ee659f5892c983f84409a10634c6a8d6d78cc5
-ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
+ms.date: 01/15/2021
+ms.openlocfilehash: d895c6e029b0b4a70333dde987706549609c8bd3
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98028488"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251021"
 ---
 # <a name="deploy-resources-with-arm-templates-and-azure-powershell"></a>Bereitstellen von Ressourcen mit ARM-Vorlagen und Azure PowerShell
 
@@ -135,7 +135,7 @@ Um Konflikte mit gleichzeitigen Bereitstellungen zu vermeiden und eindeutige Ein
 
 Anstatt eine lokale oder Remotevorlage bereitzustellen, können Sie eine [Vorlagenspezifikation](template-specs.md) erstellen. Bei der Vorlagenspezifikation handelt es sich um eine Ressource im Azure-Abonnement, die eine ARM-Vorlage enthält. Sie vereinfacht die sichere Freigabe der Vorlage für Benutzer in Ihrer Organisation. Mit der rollenbasierten Zugriffssteuerung von Azure (Role-Based Access Control, Azure RBAC) können Sie Zugriff auf die Vorlagenspezifikation gewähren. Diese Funktion steht derzeit als Vorschau zur Verfügung.
 
-In den folgenden Beispielen wird das Erstellen und Bereitstellen einer Vorlagenspezifikation veranschaulicht. Diese Befehle sind nur verfügbar, wenn Sie sich für die [Vorschau registriert haben](https://aka.ms/templateSpecOnboarding).
+In den folgenden Beispielen wird das Erstellen und Bereitstellen einer Vorlagenspezifikation veranschaulicht.
 
 Als Erstes erstellen Sie die Vorlagenspezifikation, indem Sie die ARM-Vorlage angeben.
 

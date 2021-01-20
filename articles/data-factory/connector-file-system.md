@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: jingwang
-ms.openlocfilehash: 4741053acdefe27eadc380d9144c548af4b5143c
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.openlocfilehash: a29cf81a6e074f680fc9c04337a07d273ac456cf
+ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97346111"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98555371"
 ---
 # <a name="copy-data-to-or-from-a-file-system-by-using-azure-data-factory"></a>Kopieren von Daten in ein bzw. aus einem Dateisystem mithilfe von Azure Data Factory
 > [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version des Data Factory-Diensts aus:"]
@@ -151,7 +151,7 @@ Die folgenden Eigenschaften werden für ein Dateisystem unter den `storeSettings
 | type                     | Die „type“-Eigenschaft unter `storeSettings` muss auf **FileServerReadSettings** festgelegt werden. | Ja                                           |
 | **_Suchen nach den zu kopierenden Dateien:_* |  |  |
 | OPTION 1: statischer Pfad<br> | Kopieren Sie aus dem im Dataset angegebenen Ordner/Dateipfad. Wenn Sie alle Dateien aus einem Ordner kopieren möchten, geben Sie zusätzlich für `wildcardFileName` den Wert `_` an. |  |
-| OPTION 2: serverseitiger Filter<br>– fileFilter  | Der dateiserverseitige native Filter wird verwendet, dessen Leistung im Vergleich zum Platzhalterfilter OPTION 3 besser ist. Verwenden Sie `*` für eine Übereinstimmung mit null (0) oder mehreren Zeichen und `?` für eine Übereinstimmung mit null (0) oder einem einzelnen Zeichen. Weitere Informationen zur Syntax und Hinweise finden Sie unter **Hinweise** in [diesem Abschnitt](/dotnet/api/system.io.directory.getfiles?view=netframework-4.7.2#System_IO_Directory_GetFiles_System_String_System_String_System_IO_SearchOption_). | Nein                                                          |
+| OPTION 2: serverseitiger Filter<br>– fileFilter  | Der dateiserverseitige native Filter wird verwendet, dessen Leistung im Vergleich zum Platzhalterfilter OPTION 3 besser ist. Verwenden Sie `*` für eine Übereinstimmung mit null (0) oder mehreren Zeichen und `?` für eine Übereinstimmung mit null (0) oder einem einzelnen Zeichen. Weitere Informationen zur Syntax und Hinweise finden Sie unter **Hinweise** in [diesem Abschnitt](/dotnet/api/system.io.directory.getfiles#System_IO_Directory_GetFiles_System_String_System_String_System_IO_SearchOption_). | Nein                                                          |
 | OPTION 3: clientseitiger Filter<br>– wildcardFolderPath | Der Ordnerpfad mit Platzhalterzeichen, um Quellordner zu filtern. Dieser Filter tritt auf der ADF-Seite auf. ADF zählt die Ordner/Dateien unter dem angegebenen Pfad auf und wendet dann den Platzhalterfilter an.<br>Zulässige Platzhalter sind: `*` (entspricht null oder mehr Zeichen) und `?` (entspricht null oder einem einzelnen Zeichen). Verwenden Sie `^` als Escapezeichen, wenn Ihr tatsächlicher Dateiname einen Platzhalter oder dieses Escapezeichen enthält. <br>Weitere Beispiele finden Sie unter [Beispiele für Ordner- und Dateifilter](#folder-and-file-filter-examples). | Nein                                            |
 | OPTION 3: clientseitiger Filter<br>– wildcardFileName | Der Dateiname mit Platzhalterzeichen unter dem angegebenen „folderPath/wildcardFolderPath“ für das Filtern von Quelldateien. Dieser Filter tritt auf der ADF-Seite auf. ADF zählt die Dateien unter dem angegebenen Pfad auf und wendet dann den Platzhalterfilter an.<br>Zulässige Platzhalter sind: `*` (entspricht null oder mehr Zeichen) und `?` (entspricht null oder einem einzelnen Zeichen). Verwenden Sie `^` als Escapezeichen, wenn Ihr tatsächlicher Dateiname einen Platzhalter oder dieses Escapezeichen enthält.<br>Weitere Beispiele finden Sie unter [Beispiele für Ordner- und Dateifilter](#folder-and-file-filter-examples). | Ja |
 | OPTION 3: eine Liste von Dateien<br>– fileListPath | Gibt an, dass eine bestimmte Dateigruppe kopiert werden soll. Verweisen Sie auf eine Textdatei, die eine Liste der zu kopierenden Dateien enthält, und zwar eine Datei pro Zeile. Dies ist der relative Pfad zu dem im Dataset konfigurierten Pfad.<br/>Wenn Sie diese Option verwenden, dürfen Sie keinen Dateinamen im Dataset angeben. Weitere Beispiele finden Sie unter [Beispiele für Dateilisten](#file-list-examples). |Nein |

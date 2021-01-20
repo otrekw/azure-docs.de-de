@@ -6,12 +6,12 @@ ms.author: rajosh
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 11/10/2020
-ms.openlocfilehash: e6582443ddc56b315c1c666c81a596fa71b1d54f
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 02757477ca4a07f4526df0339291122eda57c9b5
+ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96753976"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98567430"
 ---
 # <a name="support-matrix-for-vmware-assessment"></a>Unterstützungsmatrix für die VMware-Bewertung 
 
@@ -23,7 +23,7 @@ Wenn Sie VMware-VMs zu Azure migrieren möchten, überprüfen Sie die [Migration
 
 ## <a name="limitations"></a>Einschränkungen
 
-**Unterstützung** | **Details**
+**Anforderung** | **Details**
 --- | ---
 **Projekteinschränkungen** | Sie können mehrere Projekte in einem Azure-Abonnement erstellen.<br/><br/> In einem [Projekt](migrate-support-matrix.md#azure-migrate-projects) können bis zu 35.000 VMware-VMs ermittelt und bewertet werden. Ein Projekt kann im Rahmen der jeweiligen Bewertungseinschränkungen auch physische Server und Hyper-V-VMs umfassen.
 **Ermittlung** | Die Azure Migrate-Appliance kann bis zu 10.000 virtuelle VMware-Computer in einer vCenter Server-Instanz ermitteln.
@@ -81,9 +81,9 @@ Mit der Serverbewertung können nicht nur Computer, sondern auch die auf Compute
 
 ## <a name="dependency-analysis-requirements-agentless"></a>Anforderungen der Abhängigkeitsanalyse (ohne Agent)
 
-Mit der [Abhängigkeitsanalyse](concepts-dependency-visualization.md) können Sie Abhängigkeiten zwischen lokalen Computern identifizieren, die Sie bewerten und zu Azure migrieren möchten. In der Tabelle werden die Anforderungen zum Einrichten der Abhängigkeitsanalyse ohne Agent zusammengefasst.
+Mit der [Abhängigkeitsanalyse](concepts-dependency-visualization.md) können Sie Abhängigkeiten zwischen lokalen Computern identifizieren, die Sie bewerten und zu Azure migrieren möchten. In der Tabelle werden die Anforderungen zum Einrichten der Abhängigkeitsanalyse ohne Agent zusammengefasst. 
 
-**Anforderung** | **Details**
+**Unterstützung** | **Details**
 --- | --- 
 **Unterstützte Computer** | Zurzeit nur unterstützt für VMware-VMs.
 **Virtuelle Windows-Computer** | Windows Server 2016<br/> Windows Server 2012 R2<br/> Windows Server 2012<br/> Windows Server 2008 R2 (64-Bit)<br/>Microsoft Windows Server 2008 R2 (32-Bit). 

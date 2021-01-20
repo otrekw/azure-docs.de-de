@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: 7c3af0865282475ded0172d18aecad1dfb61721b
-ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
+ms.openlocfilehash: 5219553fe300d607212af1ef6cedf72ce6506762
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97814260"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98250331"
 ---
 # <a name="troubleshooting-metrics-charts"></a>Problembehandlung für Metrikdiagramme
 
@@ -48,7 +48,7 @@ Einige Ressourcen geben ihre Metriken nicht kontinuierlich aus. Beispielsweise s
 
 ### <a name="all-metric-values-were-outside-of-the-locked-y-axis-range"></a>Alle Metrikwerte lagen außerhalb des gesperrten y-Achsenbereichs
 
-Wenn Sie [die Grenzen der y-Achse](metrics-charts.md#lock-boundaries-of-chart-y-axis) des Diagramms sperren, können Sie unbeabsichtigt bewirken, dass der Diagrammanzeigebereich die Diagrammzeile nicht anzeigt. Wenn z. B. die y-Achse auf einen Bereich zwischen 0 % und 50 % festgelegt ist und die Metrik einen konstanten Wert von 100 % aufweist, wird die Zeile immer außerhalb des sichtbaren Bereichs dargestellt, wodurch das Diagramm leer aussieht.
+Wenn Sie [die Grenzen der y-Achse](metrics-charts.md#locking-the-range-of-the-y-axis) des Diagramms sperren, können Sie unbeabsichtigt bewirken, dass der Diagrammanzeigebereich die Diagrammzeile nicht anzeigt. Wenn z. B. die y-Achse auf einen Bereich zwischen 0 % und 50 % festgelegt ist und die Metrik einen konstanten Wert von 100 % aufweist, wird die Zeile immer außerhalb des sichtbaren Bereichs dargestellt, wodurch das Diagramm leer aussieht.
 
 **Lösung:** Stellen Sie sicher, dass die y-Achsenbegrenzungen des Diagramms nicht außerhalb des Bereichs der Metrikwerte gesperrt sind. Wenn die y-Achsenbegrenzungen gesperrt sind, sollten Sie sie möglicherweise vorübergehend zurücksetzen, um sicherzustellen, dass die Metrikwerte nicht außerhalb des Diagrammbereichs liegen. Die Sperrung des y-Achsenbereichs wird nicht mit automatischer Granularität für die Diagramme mit der Aggregation **sum**, **min** und **max** empfohlen, da sich ihre Werte mit der Granularität ändern, indem die Größe des Browserfensters geändert oder von einer Bildschirmauflösung zur anderen gewechselt wird. Durch den Wechsel der Granularität bleibt der Anzeigebereich Ihres Diagramms möglicherweise leer.
 

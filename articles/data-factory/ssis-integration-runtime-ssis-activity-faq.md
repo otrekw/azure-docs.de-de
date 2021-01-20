@@ -11,12 +11,12 @@ ms.reviewer: sawinark
 manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 04/15/2019
-ms.openlocfilehash: b4902e1fb7a2a181d3d5b2ce2ac6d1d458500fce
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 9609c382161514611ddc41af040e8fb438431fdf
+ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94844181"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98556000"
 ---
 # <a name="troubleshoot-package-execution-in-the-ssis-integration-runtime"></a>Behandeln von Problemen bei der Paketausführung in der SSIS Integration Runtime
 
@@ -28,7 +28,7 @@ In diesem Artikel werden die häufigsten Fehler behandelt, die beim Ausführen v
 
 Verwenden Sie das Azure Data Factory-Portal, um die Ausgabe der SSIS-Paketausführungsaktivität zu überprüfen. Die Ausgabe enthält das Ausführungsergebnis, Fehlermeldungen und die Vorgangs-ID. Weitere Informationen finden Sie unter [Überwachen der Pipeline](how-to-invoke-ssis-package-ssis-activity.md#monitor-the-pipeline).
 
-Verwenden Sie den SSIS-Katalog (SSISDB), um die Detailprotokolle zur Ausführung zu überprüfen. Weitere Informationen finden Sie unter [Überwachen von ausgeführten Paketen und anderen Vorgängen](/sql/integration-services/performance/monitor-running-packages-and-other-operations?view=sql-server-2017).
+Verwenden Sie den SSIS-Katalog (SSISDB), um die Detailprotokolle zur Ausführung zu überprüfen. Weitere Informationen finden Sie unter [Überwachen von ausgeführten Paketen und anderen Vorgängen](/sql/integration-services/performance/monitor-running-packages-and-other-operations).
 
 ## <a name="common-errors-causes-and-solutions"></a>Häufige Fehler, Ursachen und Lösungen
 
@@ -91,7 +91,7 @@ Dieser Fehler bedeutet, dass der lokale Datenträger auf dem Knoten mit SSIS Int
 Dieser Fehler tritt auf, wenn die Paketausführung in der SSIS Integration Runtime keine Datei auf dem lokalen Datenträger finden kann. Probieren Sie diese Maßnahmen:
 * Verwenden Sie nicht den absoluten Pfad im Paket, das in der SSIS Integration Runtime ausgeführt wird. Verwenden Sie stattdessen das aktuelle Arbeitsverzeichnis (.) oder den temporären Ordner (%TEMP%).
 * Wenn Sie einige Dateien auf Knoten mit der SSIS Integration Runtime dauerhaft speichern müssen, bereiten Sie die Dateien wie unter [Anpassen des Setups](how-to-configure-azure-ssis-ir-custom-setup.md) beschrieben vor. Alle Dateien im Arbeitsverzeichnis werden nach Abschluss der Ausführung bereinigt.
-* Verwenden Sie Azure Files, anstatt die Datei auf dem Knoten mit SSIS Integration Runtime zu speichern. Weitere Informationen finden Sie unter [Verwenden von Azure-Dateifreigaben](/sql/integration-services/lift-shift/ssis-azure-files-file-shares?view=sql-server-2017#use-azure-file-shares).
+* Verwenden Sie Azure Files, anstatt die Datei auf dem Knoten mit SSIS Integration Runtime zu speichern. Weitere Informationen finden Sie unter [Verwenden von Azure-Dateifreigaben](/sql/integration-services/lift-shift/ssis-azure-files-file-shares#use-azure-file-shares).
 
 ### <a name="error-message-the-database-ssisdb-has-reached-its-size-quota"></a>Fehlermeldung: „Das Kontingent der SSISDB-Datenbank wurde erreicht“
 
@@ -154,7 +154,7 @@ Eine mögliche Ursache ist, dass Ihre selbstgehosteter Integration Runtime nicht
 
 * Mögliche Ursache und empfohlene Maßnahme:
   * Wenn im Ausführungsprotokoll auch die Warnmeldung „Die Komponente unterstützt die Verwendung des Verbindungs-Managers nicht, wenn ConnectByProxy auf TRUE festgelegt ist“ enthalten ist, bedeutet dies, dass ein Verbindungs-Manager für eine Komponente verwendet wird, die „ConnectByProxy“ noch nicht unterstützt. Die unterstützten Komponenten finden Sie unter [Konfigurieren einer selbstgehosteten IR als Proxy für Azure-SSIS IR in ADF](self-hosted-integration-runtime-proxy-ssis.md#enable-ssis-packages-to-connect-by-proxy).
-  * Das Ausführungsprotokoll befindet sich im [SSMS-Bericht](/sql/integration-services/performance/monitor-running-packages-and-other-operations?view=sql-server-2017#reports) oder in dem Protokollordner, den Sie in der SSIS-Paketausführungsaktivität angegeben haben.
+  * Das Ausführungsprotokoll befindet sich im [SSMS-Bericht](/sql/integration-services/performance/monitor-running-packages-and-other-operations#reports) oder in dem Protokollordner, den Sie in der SSIS-Paketausführungsaktivität angegeben haben.
   * Alternativ kann ein VNet für den Zugriff auf lokale Daten verwendet werden. Weitere Informationen finden Sie unter [Verknüpfen einer Azure-SSIS Integration Runtime mit einem virtuellen Netzwerk](join-azure-ssis-integration-runtime-virtual-network.md).
 
 ### <a name="error-message-staging-task-status-failed-staging-task-error-errorcode-2906-errormessage-package-execution-failed-output-operationerrormessages-ssis-executor-exit-code--1n-loglocation-ssistelemetryexecutionlog-effectiveintegrationruntime--executionduration--durationinqueue--integrationruntimequeue--"></a>Fehlermeldung: „Status der Stagingaufgabe: Fehler. Fehler bei Stagingaufgabe: Fehlercode: 2906, ErrorMessage: Fehler bei der Paketausführung. Ausgabe: {"OperationErrorMessages": "SSIS Executor exit code: -1.\n", "LogLocation": "...\\SSISTelemetry\\ExecutionLog\\...", "effectiveIntegrationRuntime": "...", "executionDuration": ..., "durationInQueue": { "integrationRuntimeQueue": ... }}"

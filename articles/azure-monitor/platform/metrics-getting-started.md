@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: 710de93a24037031784ca8d37a8ae0be76bff9e6
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: 2bf56379a32bf8035ea2d0d3fe797776ec6ba40d
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97614591"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98250399"
 ---
 # <a name="getting-started-with-azure-metrics-explorer"></a>Erste Schritte mit dem Azure-Metrik-Explorer
 
@@ -38,7 +38,7 @@ Der Azure Monitor-Metrik-Explorer ist eine Komponente des Microsoft Azure-Portal
 
     > ![Metrik auswählen](./media/metrics-getting-started/metrics-dropdown.png)
 
-4. Optional können Sie die [Metrikaggregation ändern](metrics-charts.md#changing-aggregation), wenn Sie beispielsweise möchten, dass Ihr Diagramm nur die minimalen, maximalen oder durchschnittlichen Werte der Metrik anzeigt.
+4. Optional können Sie die [Metrikaggregation ändern](metrics-charts.md#aggregation), wenn Sie beispielsweise möchten, dass Ihr Diagramm nur die minimalen, maximalen oder durchschnittlichen Werte der Metrik anzeigt.
 
 > [!TIP]
 > Klicken Sie auf **Metrik hinzufügen**, und wiederholen Sie diese Schritte, wenn mehrere Metriken im gleichen Diagramm angezeigt werden sollen. Wenn mehrere Diagramme in einer Ansicht angezeigt werden sollen, klicken Sie oben auf **Diagramm hinzufügen**.
@@ -57,7 +57,7 @@ Das Diagramm zeigt standardmäßig die Metrikdaten der letzten 24 Stunden an. V
 
 ## <a name="apply-dimension-filters-and-splitting"></a>Anwenden von Dimensionsfiltern und Aufteilung
 
-[Filtern](metrics-charts.md#apply-filters-to-charts) und [Aufteilen](metrics-charts.md#apply-splitting-to-a-chart) sind leistungsstarke Diagnosetools für Metriken mit Dimensionen. Diese Features zeigen, wie sich verschiedene Metriksegmente („Dimensionswerte“) auf den Gesamtwert der Metrik auswirken und ermöglichen Ihnen, mögliche Ausreißer zu identifizieren.
+[Filtern](metrics-charts.md#filters) und [Aufteilen](metrics-charts.md#apply-splitting) sind leistungsstarke Diagnosetools für Metriken mit Dimensionen. Diese Features zeigen, wie sich verschiedene Metriksegmente („Dimensionswerte“) auf den Gesamtwert der Metrik auswirken und ermöglichen Ihnen, mögliche Ausreißer zu identifizieren.
 
 - Durch das **Filtern** können Sie entscheiden, welche Dimensionswerte im Diagramm enthalten sind. Wenn Sie beispielsweise die erfolgreichen Anforderungen in einem Diagramm der Metrik für die *Serverantwortzeit* veranschaulichen möchten, müssen Sie den Filter auf die Dimension *success of request* (Erfolg der Anforderung) anwenden. 
 

@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie verwaltete Identitäten in Azure Kubernetes S
 services: container-service
 ms.topic: article
 ms.date: 12/16/2020
-ms.openlocfilehash: 948a189e1c6e03efca046b6d43dddcaf3d141957
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: fe11170b1cdf18aacf832f4c8171bfc082339395
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97607285"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98599605"
 ---
 # <a name="use-managed-identities-in-azure-kubernetes-service"></a>Verwenden verwalteter Identitäten in Azure Kubernetes Service
 
@@ -131,7 +131,7 @@ Aktualisieren Sie die benutzerseitig zugewiesene Identität:
 az aks update -g <RGName> -n <AKSName> --enable-managed-identity --assign-identity <UserAssignedIdentityResourceID> 
 ```
 > [!NOTE]
-> Sobald die system- oder benutzerseitig zugewiesenen Identitäten auf verwaltete Identitäten aktualisiert sind, führen Sie `az nodepool upgrade --node-image-only` auf Ihren Knoten aus, um das Update auf verwalteten Identitäten abzuschließen.
+> Sobald die system- oder benutzerseitig zugewiesenen Identitäten auf verwaltete Identitäten aktualisiert sind, führen Sie `az aks nodepool upgrade --node-image-only` auf Ihren Knoten aus, um das Update auf verwalteten Identitäten abzuschließen.
 
 ## <a name="bring-your-own-control-plane-mi"></a>Verwenden einer eigenen verwalteten Identität für die Steuerungsebene
 Eine benutzerdefinierte Steuerungsebenenidentität ermöglicht den Zugriff auf die vorhandene Identität vor der Clustererstellung. Dieses Feature ermöglicht beispielsweise die Verwendung eines benutzerdefinierten VNET oder einer UDR vom Typ „outboundType“ mit einer vorab erstellten verwalteten Identität.

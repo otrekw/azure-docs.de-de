@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/14/2020
 ms.author: anavin
 ms.custom: include file
-ms.openlocfilehash: 9751bd082947e66b3fc5ea47448857558301a1e7
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 59329fccda77f16e4a595e9b1789ef684c5cbf95
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97366345"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98256317"
 ---
 ### <a name="networking-limits---azure-resource-manager"></a><a name="azure-resource-manager-virtual-networking-limits"></a>Netzwerkgrenzwerte – Azure Resource Manager
 Die folgenden Grenzwerte gelten nur für Netzwerkressourcen, die über den **Azure Resource Manager** pro Region pro Abonnement verwaltet werden. Erfahren Sie, wie Sie [die aktuelle Ressourcennutzung anhand der Grenzwerte Ihres Abonnements anzeigen](../articles/networking/check-usage-against-limits.md).
@@ -34,7 +34,7 @@ Die folgenden Grenzwerte gelten nur für Netzwerkressourcen, die über den **Azu
 | Private IP-Adressen pro virtuellem Computer |256 |
 | Öffentliche IP-Adressen pro Netzwerkschnittstelle |256 |
 | Öffentliche IP-Adressen pro virtuellem Computer |256 |
-| [Parallele TCP- oder UDP-Flows pro NIC eines virtuellen Computers bzw. einer Rolleninstanz](../articles/virtual-network/virtual-machine-network-throughput.md#flow-limits-and-recommendations) |500.000 |
+| [Parallele TCP- oder UDP-Flows pro NIC eines virtuellen Computers bzw. einer Rolleninstanz](../articles/virtual-network/virtual-machine-network-throughput.md#flow-limits-and-active-connections-recommendations) |500.000 |
 | Netzwerkschnittstellenkarten |65.536 |
 | Netzwerksicherheitsgruppen |5\.000 |
 | NSG-Regeln pro NSG |1\.000 |

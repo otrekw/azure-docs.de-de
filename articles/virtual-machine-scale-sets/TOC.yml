@@ -182,7 +182,7 @@
         - name: Kurzlebige Betriebssystemdatenträger
           href: ../virtual-machines/ephemeral-os-disks.md
         - name: Skalierbarkeitsziele für Datenträger
-          href: ../virtual-machines/windows/disk-scalability-targets.md
+          href: ../virtual-machines/disks-scalability-targets.md
           maintainContext: true
         - name: Sicherung und Notfallwiederherstellung für Datenträger
           href: ../virtual-machines/backup-and-disaster-recovery-for-azure-iaas-disks.md

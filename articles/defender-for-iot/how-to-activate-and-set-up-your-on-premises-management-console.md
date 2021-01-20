@@ -4,15 +4,15 @@ description: Durch die Aktivierung und Einrichtung der Verwaltungskonsole wird s
 author: shhazam-ms
 manager: rkarlin
 ms.author: shhazam
-ms.date: 12/24/2020
+ms.date: 1/12/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 56092d61e1eed4e4ebe4f8cb7f97d01e91e8543e
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: d344b3d9ea54243d61cc6a1f3f0982eb5ab1d238
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97836439"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98538584"
 ---
 # <a name="activate-and-set-up-your-on-premises-management-console"></a>Aktivieren und Einrichten der lokalen Verwaltungskonsole 
 
@@ -51,7 +51,7 @@ Nach der erstmaligen Aktivierung könnte die Anzahl der überwachten Geräte die
 
 ## <a name="set-up-a-certificate"></a>Einrichten eines Zertifikats
 
-Nach der Installation der Verwaltungskonsole wird ein lokales selbstsigniertes Zertifikat generiert und für den Zugriff auf die Konsole verwendet. Nachdem sich ein Administrator zum ersten Mal bei der Verwaltungskonsole angemeldet hat, wird dieser Benutzer aufgefordert, ein SSL/TLS-Zertifikat zu integrieren. Wir empfehlen, dass Sie mit einem vertrauenswürdigen, von einer Zertifizierungsstelle signierten Zertifikat arbeiten und nicht das lokal generierte selbstsignierte Zertifikat verwenden.
+Nach der Installation der Verwaltungskonsole wird ein lokales selbstsigniertes Zertifikat generiert und für den Zugriff auf die Konsole verwendet. Nachdem sich ein Administrator zum ersten Mal bei der Verwaltungskonsole angemeldet hat, wird dieser Benutzer aufgefordert, ein SSL/TLS-Zertifikat zu integrieren. 
 
 Zwei Sicherheitsstufen stehen zur Verfügung:
 
@@ -61,11 +61,13 @@ Zwei Sicherheitsstufen stehen zur Verfügung:
 Die Konsole unterstützt die folgenden Arten von Zertifikaten:
 
 - Private und Enterprise Key-Infrastruktur (private PKI)
-- Public Key-Infrastruktur (public PKI)
+
+- Public Key-Infrastruktur (Public PKI)
+
 - Lokal auf dem Gerät generiert (lokal selbstsigniert) 
 
   > [!IMPORTANT]
-  > Wir empfehlen, dass Sie kein selbstsigniertes Zertifikat verwenden. Das Zertifikat ist nicht sicher und sollte nur für Testumgebungen verwendet werden. Der Besitzer des Zertifikats kann nicht überprüft werden, und die Sicherheit Ihres Systems kann nicht aufrechterhalten werden. Verwenden Sie diese Option niemals bei Produktionsnetzwerken.
+  > Wir empfehlen, dass Sie kein selbstsigniertes Zertifikat verwenden. Das Zertifikat ist nicht sicher und sollte nur für Testumgebungen verwendet werden. Der Besitzer des Zertifikats kann nicht überprüft und die Sicherheit Ihres Systems nicht aufrechterhalten werden. Verwenden Sie diese Option niemals bei Produktionsnetzwerken.
 
 So laden Sie ein Zertifikat hoch:
 
@@ -221,7 +223,7 @@ Sie konfigurieren Zonen im Rahmen des Standortkonfigurationsprozesses.
 
 In der folgenden Tabelle werden die Parameter im Fenster **Standortverwaltung** beschrieben.
 
-| Parameter | BESCHREIBUNG |
+| Parameter | Beschreibung |
 |--|--|
 | Name | Der Name des Sensors. Sie können diesen Namen nur über den Sensor ändern. Weitere Informationen finden Sie im Benutzerhandbuch zu Defender für IoT. |
 | IP | Die IP-Adresse des Sensors. |

@@ -5,12 +5,12 @@ description: Erfahren Sie, wie Sie manuell ein Volume mit Azure Files für die V
 services: container-service
 ms.topic: article
 ms.date: 03/01/2019
-ms.openlocfilehash: 89976211763f5d4729718c4e4c6503650f27f7cc
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: a6e28464df2ff9c9dcc7734a127cc00f887e08dd
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93126272"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98246960"
 ---
 # <a name="manually-create-and-use-a-volume-with-azure-files-share-in-azure-kubernetes-service-aks"></a>Manuelles Erstellen und Verwenden eines Volumes mit Azure Files-Freigabe in Azure Kubernetes Service (AKS)
 
@@ -26,7 +26,7 @@ Außerdem muss mindestens die Version 2.0.59 der Azure CLI installiert und konfi
 
 ## <a name="create-an-azure-file-share"></a>Erstellen einer Azure-Dateifreigabe
 
-Bevor Sie eine Azure Files-Freigabe als Kubernetes-Volume verwenden können, müssen Sie ein Azure Storage-Konto und die Dateifreigabe erstellen. Die folgenden Befehle erstellen die Ressourcengruppe *myAKSShare* , ein Speicherkonto und die Azure Files-Freigabe *aksshare* :
+Bevor Sie eine Azure Files-Freigabe als Kubernetes-Volume verwenden können, müssen Sie ein Azure Storage-Konto und die Dateifreigabe erstellen. Die folgenden Befehle erstellen die Ressourcengruppe *myAKSShare*, ein Speicherkonto und die Azure Files-Freigabe *aksshare*:
 
 ```azurecli-interactive
 # Change these four parameters as needed for your own environment
@@ -133,7 +133,7 @@ Volumes:
 
 ## <a name="mount-options"></a>Einbindungsoptionen
 
-Der Standardwert für *fileMode* und *dirMode* lautet bei Kubernetes-Version 1.9.1 und höher *0755*. Wenn Sie einen Cluster mit Kubernetes-Version 1.8.5 oder höher verwenden und das Objekt für das persistente Volume statisch erstellen, müssen die Einbindungsoptionen im *PersistentVolume* -Objekt angegeben werden. Im folgenden Beispiel wird *0777* festgelegt:
+Der Standardwert für *fileMode* und *dirMode* lautet bei Kubernetes-Version 1.9.1 und höher *0755*. Wenn Sie einen Cluster mit Kubernetes-Version 1.8.5 oder höher verwenden und das Objekt für das persistente Volume statisch erstellen, müssen die Einbindungsoptionen im *PersistentVolume*-Objekt angegeben werden. Im folgenden Beispiel wird *0777* festgelegt:
 
 ```yaml
 apiVersion: v1
@@ -145,7 +145,6 @@ spec:
     storage: 5Gi
   accessModes:
     - ReadWriteMany
-  storageClassName: azurefile
   azureFile:
     secretName: azure-secret
     shareName: aksshare
@@ -161,7 +160,7 @@ spec:
 
 Bei Verwendung eines Clusters der Version 1.8.0 bis 1.8.4 kann ein Sicherheitskontext angegeben werden, indem der Wert *runAsUser* auf *0* festgelegt wird. Weitere Informationen zum Sicherheitskontext für Pods finden Sie unter [Konfigurieren eines Sicherheitskontexts][kubernetes-security-context].
 
-Zum Aktualisieren Ihrer Einbindungsoptionen erstellen Sie eine Datei *azurefile-mount-options-pv.yaml* mit einem *PersistentVolume* -Objekt. Beispiel:
+Zum Aktualisieren Ihrer Einbindungsoptionen erstellen Sie eine Datei *azurefile-mount-options-pv.yaml* mit einem *PersistentVolume*-Objekt. Beispiel:
 
 ```yaml
 apiVersion: v1
@@ -173,7 +172,6 @@ spec:
     storage: 5Gi
   accessModes:
     - ReadWriteMany
-  storageClassName: azurefile
   azureFile:
     secretName: azure-secret
     shareName: aksshare
@@ -187,7 +185,7 @@ spec:
   - nobrl
 ```
 
-Erstellen Sie eine Datei *azurefile-mount-options-pvc.yaml* mit einem *PersistentVolumeClaim* -Objekt, das *PersistentVolume* verwendet. Beispiel:
+Erstellen Sie eine Datei *azurefile-mount-options-pvc.yaml* mit einem *PersistentVolumeClaim*-Objekt, das *PersistentVolume* verwendet. Beispiel:
 
 ```yaml
 apiVersion: v1
@@ -197,7 +195,7 @@ metadata:
 spec:
   accessModes:
     - ReadWriteMany
-  storageClassName: azurefile
+  storageClassName: ""
   resources:
     requests:
       storage: 5Gi

@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/27/2020
 ms.author: trbye
-ms.openlocfilehash: 5a06a0663601c221dd456b9cf4437cb9f32a18f8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 99bc49dfe7b3f7b6a9d49c2947d8d8c01ad98dac
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81399901"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98256399"
 ---
 :::row:::
     :::column span="3":::
@@ -30,20 +30,6 @@ Das Speech SDK für C++ kann mit dem folgenden `Install-Package`-Befehl über de
 ```powershell
 Install-Package Microsoft.CognitiveServices.Speech
 ```
-
-#### <a name="c-binaries-and-header-files"></a>C++-Binärdateien und Headerdateien
-
-Alternativ kann das Speech SDK für C++ über Binärdateien installiert werden. Laden Sie das SDK als <a href="https://aka.ms/csspeech/linuxbinary" target="_blank">TAR-Paket <span class="docon docon-navigate-external x-hidden-focus"></span></a> herunter, und entpacken Sie die Dateien in einem Verzeichnis Ihrer Wahl. Der Inhalt dieses Pakets (einschließlich der Headerdateien für die x86- und x64-Zielarchitektur) ist wie folgt strukturiert:
-
-  | `Path`                   | BESCHREIBUNG                                          |
-  |------------------------|------------------------------------------------------|
-  | `license.md`           | Lizenz                                              |
-  | `ThirdPartyNotices.md` | Hinweise zu Drittanbietern                                  |
-  | `include`              | Headerdateien für C++                                 |
-  | `lib/x64`              | Native x64-Bibliothek für die Verknüpfung mit Ihrer Anwendung |
-  | `lib/x86`              | Native x86-Bibliothek für die Verknüpfung mit Ihrer Anwendung |
-
-  Wenn Sie eine Anwendung erstellen möchten, kopieren oder verschieben Sie die erforderlichen Binärdateien (und Bibliotheken) in Ihre Entwicklungsumgebung. Fügen Sie sie nach Bedarf in Ihren Buildprozess ein.
 
 #### <a name="additional-resources"></a>Zusätzliche Ressourcen
 

@@ -240,7 +240,7 @@
         - name: Datenträgerbursting
           href: ../disk-bursting.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: Skalierbarkeitsziele für Datenträger
-          href: disk-scalability-targets.md
+          href: ../disks-scalability-targets.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: Sicherung und Notfallwiederherstellung für Datenträger
           href: ../backup-and-disaster-recovery-for-azure-iaas-disks.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: Freigegebene Datenträger

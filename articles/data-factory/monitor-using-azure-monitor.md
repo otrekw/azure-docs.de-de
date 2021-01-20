@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 07/13/2020
-ms.openlocfilehash: 35d2073dca21b4a0d48a43bed9933bb7549cf8f3
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: d1325ac1afbca8b30cc640f1f22cb598506a5c91
+ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96497893"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98555711"
 ---
 # <a name="monitor-and-alert-data-factory-by-using-azure-monitor"></a>Durchführen der Überwachung und Verwenden von Warnungen für Data Factory mit Azure Monitor
 
@@ -583,7 +583,7 @@ Nachstehend finden Sie die Protokollattribute der Start-/Beendigungs-/Wartungsvo
 
 #### <a name="ssis-event-message-context-log-attributes"></a>Protokollattribute des Meldungskontexts von SSIS-Ereignissen
 
-Nachstehend finden Sie die Protokollattribute von Bedingungen der Ereignismeldungen, die von SSIS-Paketausführungen Ihrer SSIS IR generiert werden. Sie liefern ähnliche Informationen wie [Tabellen oder Sichten zum Kontext von Ereignismeldungen im SSIS-Katalog (SSISDB)](/sql/integration-services/system-views/catalog-event-message-context?view=sql-server-ver15), in denen Runtimewerte für viele SSIS-Paketeigenschaften angezeigt werden. Sie werden generiert, wenn Sie den Protokolliergrad `Basic/Verbose` auswählen, und sind hilfreich beim Debuggen und Überprüfen der Konformität.
+Nachstehend finden Sie die Protokollattribute von Bedingungen der Ereignismeldungen, die von SSIS-Paketausführungen Ihrer SSIS IR generiert werden. Sie liefern ähnliche Informationen wie [Tabellen oder Sichten zum Kontext von Ereignismeldungen im SSIS-Katalog (SSISDB)](/sql/integration-services/system-views/catalog-event-message-context), in denen Runtimewerte für viele SSIS-Paketeigenschaften angezeigt werden. Sie werden generiert, wenn Sie den Protokolliergrad `Basic/Verbose` auswählen, und sind hilfreich beim Debuggen und Überprüfen der Konformität.
 
 ```json
 {
@@ -620,7 +620,7 @@ Nachstehend finden Sie die Protokollattribute von Bedingungen der Ereignismeldun
 | **operationId**            | String | Eindeutige ID für die Nachverfolgung eines bestimmten Vorgangs in der SSISDB          | `1` (1 steht für Vorgänge von Paketen, die **nicht** in der SSISDB gespeichert sind oder über T-SQL aufgerufen werden.) |
 | **contextDepth**           | String | Tiefe Ihres Kontexts von Ereignismeldungen                              | `0` (0 steht für den Kontext vor dem Start der Paketausführung, und 1 steht für den Kontext beim Auftreten eines Fehlers. Dieser Wert wird erhöht, je weiter der Kontext vom Fehler entfernt ist.) |
 | **packagePath**            | String | Pfad des Paketobjekts als Quelle des Kontexts Ihrer Ereignismeldung      | `\Package` |
-| **contextType**            | String | Typ des Paketobjekts als Quelle des Kontexts Ihrer Ereignismeldung      | `60` ([weitere Kontexttypen](/sql/integration-services/system-views/catalog-event-message-context?view=sql-server-ver15#remarks)) |
+| **contextType**            | String | Typ des Paketobjekts als Quelle des Kontexts Ihrer Ereignismeldung      | `60` ([weitere Kontexttypen](/sql/integration-services/system-views/catalog-event-message-context#remarks)) |
 | **contextSourceName**      | String | Name des Paketobjekts als Quelle des Kontexts Ihrer Ereignismeldung      | `MyPackage` |
 | **contextSourceId**        | String | Eindeutige ID des Paketobjekts als Quelle des Kontexts Ihrer Ereignismeldung | `{E2CF27FB-EA48-41E9-AF6F-3FE938B4ADE1}` |
 | **propertyName**           | String | Name der Paketeigenschaft für die Quelle des Kontexts Ihrer Ereignismeldung   | `DelayValidation` |
@@ -629,7 +629,7 @@ Nachstehend finden Sie die Protokollattribute von Bedingungen der Ereignismeldun
 
 #### <a name="ssis-event-messages-log-attributes"></a>Protokollattribute von SSIS-Ereignismeldungen
 
-Nachstehend finden Sie die Protokollattribute von Ereignismeldungen, die von SSIS-Paketausführungen Ihrer SSIS IR generiert werden. Sie liefern ähnliche Informationen wie [Tabellen oder Sichten für SSISDB-Ereignismeldungen](/sql/integration-services/system-views/catalog-event-messages?view=sql-server-ver15), in denen die ausführlichen Text- bzw. Metadaten von Ereignismeldungen angezeigt werden. Sie werden für alle Protokolliergrade mit Ausnahme von `None` generiert.
+Nachstehend finden Sie die Protokollattribute von Ereignismeldungen, die von SSIS-Paketausführungen Ihrer SSIS IR generiert werden. Sie liefern ähnliche Informationen wie [Tabellen oder Sichten für SSISDB-Ereignismeldungen](/sql/integration-services/system-views/catalog-event-messages), in denen die ausführlichen Text- bzw. Metadaten von Ereignismeldungen angezeigt werden. Sie werden für alle Protokolliergrade mit Ausnahme von `None` generiert.
 
 ```json
 {
@@ -669,8 +669,8 @@ Nachstehend finden Sie die Protokollattribute von Ereignismeldungen, die von SSI
 | **level**                  | String | Ebene mit Diagnoseprotokollen                                       | `Informational` |
 | **operationId**            | String | Eindeutige ID für die Nachverfolgung eines bestimmten Vorgangs in der SSISDB        | `1` (1 steht für Vorgänge von Paketen, die **nicht** in der SSISDB gespeichert sind oder über T-SQL aufgerufen werden.) |
 | **messageTime**            | String | Zeitpunkt, zum dem Ihre Ereignismeldung im UTC-Format erstellt wird          | `2017-06-28T21:00:27.3534352Z` |
-| **messageType**            | String | Typ Ihrer Ereignismeldung                                     | `70` ([weitere Meldungstypen](/sql/integration-services/system-views/catalog-operation-messages-ssisdb-database?view=sql-server-ver15#remarks)) |
-| **messageSourceType**      | String | Typ Ihrer Quelle für Ereignismeldungen                              | `20` ([weitere Typen von Meldungsquellen](/sql/integration-services/system-views/catalog-operation-messages-ssisdb-database?view=sql-server-ver15#remarks)) |
+| **messageType**            | String | Typ Ihrer Ereignismeldung                                     | `70` ([weitere Meldungstypen](/sql/integration-services/system-views/catalog-operation-messages-ssisdb-database#remarks)) |
+| **messageSourceType**      | String | Typ Ihrer Quelle für Ereignismeldungen                              | `20` ([weitere Typen von Meldungsquellen](/sql/integration-services/system-views/catalog-operation-messages-ssisdb-database#remarks)) |
 | **Nachricht**                | String | Text Ihrer Ereignismeldung                                     | `MyPackage:Validation has started.` |
 | **packageName**            | String | Name Ihrer ausgeführten Paketdatei                             | `MyPackage.dtsx` |
 | **eventName**              | String | Name des zugehörigen Runtimeereignisses                                 | `OnPreValidate` |
@@ -683,7 +683,7 @@ Nachstehend finden Sie die Protokollattribute von Ereignismeldungen, die von SSI
 
 #### <a name="ssis-executable-statistics-log-attributes"></a>Protokollattribute der Statistik zu ausführbaren SSIS-Dateien
 
-Nachstehend finden Sie die Protokollattribute der Statistiken von ausführbaren Dateien, die über SSIS-Paketausführungen Ihrer SSIS IR generiert werden. Hierbei sind ausführbare Dateien Container oder Tasks in Paketablaufsteuerungen. Sie liefern ähnliche Informationen wie [Tabellen oder Sichten für Statistiken zu ausführbaren SSISDB-Dateien](/sql/integration-services/system-views/catalog-executable-statistics?view=sql-server-ver15), in denen eine Zeile für jede aktive ausführbare Datei angezeigt wird, einschließlich Iterationen. Sie werden bei allen Protokolliergraden mit Ausnahme von `None` generiert und sind nützlich zum Identifizieren von Engpässen bzw. Fehlern auf Taskebene.
+Nachstehend finden Sie die Protokollattribute der Statistiken von ausführbaren Dateien, die über SSIS-Paketausführungen Ihrer SSIS IR generiert werden. Hierbei sind ausführbare Dateien Container oder Tasks in Paketablaufsteuerungen. Sie liefern ähnliche Informationen wie [Tabellen oder Sichten für Statistiken zu ausführbaren SSISDB-Dateien](/sql/integration-services/system-views/catalog-executable-statistics), in denen eine Zeile für jede aktive ausführbare Datei angezeigt wird, einschließlich Iterationen. Sie werden bei allen Protokolliergraden mit Ausnahme von `None` generiert und sind nützlich zum Identifizieren von Engpässen bzw. Fehlern auf Taskebene.
 
 ```json
 {
@@ -727,7 +727,7 @@ Nachstehend finden Sie die Protokollattribute der Statistiken von ausführbaren 
 
 #### <a name="ssis-execution-component-phases-log-attributes"></a>Protokollattribute der Komponentenphasen von SSIS-Ausführungen
 
-Nachstehend finden Sie die Protokollattribute von Runtimestatistiken für Datenflusskomponenten, die von SSIS-Paketausführungen Ihrer SSIS IR generiert werden. Sie liefern ähnliche Informationen wie [Tabellen und Sichten der Komponentenphasen von SSISDB-Ausführungen](/sql/integration-services/system-views/catalog-execution-component-phases?view=sql-server-ver15), in denen die Zeit angezeigt wird, die die Datenflusskomponenten in den einzelnen Ausführungsphasen verbringen. Sie werden generiert, wenn Sie den Protokolliergrad `Performance/Verbose` auswählen, und sind hilfreich zum Erfassen von Statistiken zur Datenflussausführung.
+Nachstehend finden Sie die Protokollattribute von Runtimestatistiken für Datenflusskomponenten, die von SSIS-Paketausführungen Ihrer SSIS IR generiert werden. Sie liefern ähnliche Informationen wie [Tabellen und Sichten der Komponentenphasen von SSISDB-Ausführungen](/sql/integration-services/system-views/catalog-execution-component-phases), in denen die Zeit angezeigt wird, die die Datenflusskomponenten in den einzelnen Ausführungsphasen verbringen. Sie werden generiert, wenn Sie den Protokolliergrad `Performance/Verbose` auswählen, und sind hilfreich zum Erfassen von Statistiken zur Datenflussausführung.
 
 ```json
 {
@@ -773,7 +773,7 @@ Nachstehend finden Sie die Protokollattribute von Runtimestatistiken für Datenf
 
 #### <a name="ssis-execution-data-statistics-log-attributes"></a>Protokollattribute für Statistiken von SSIS-Ausführungsdaten
 
-Nachstehend finden Sie die Protokollattribute von Datenverschiebungen durch die einzelnen Abschnitte von Datenflusspipelines (von Upstream- zu Downstream-Komponenten), die von SSIS-Paketausführungen Ihrer SSIS IR generiert werden. Sie liefern ähnliche Informationen wie [Tabellen und Sichten mit Statistiken für SSISDB-Ausführungsdaten](/sql/integration-services/system-views/catalog-execution-data-statistics?view=sql-server-ver15), in denen die Zeilenanzahl für Daten angezeigt wird, die Datenflusstasks durchlaufen. Sie werden generiert, wenn Sie den Protokolliergrad `Verbose` auswählen, und sind hilfreich zum Berechnen des Datenflussdurchsatzes.
+Nachstehend finden Sie die Protokollattribute von Datenverschiebungen durch die einzelnen Abschnitte von Datenflusspipelines (von Upstream- zu Downstream-Komponenten), die von SSIS-Paketausführungen Ihrer SSIS IR generiert werden. Sie liefern ähnliche Informationen wie [Tabellen und Sichten mit Statistiken für SSISDB-Ausführungsdaten](/sql/integration-services/system-views/catalog-execution-data-statistics), in denen die Zeilenanzahl für Daten angezeigt wird, die Datenflusstasks durchlaufen. Sie werden generiert, wenn Sie den Protokolliergrad `Verbose` auswählen, und sind hilfreich zum Berechnen des Datenflussdurchsatzes.
 
 ```json
 {

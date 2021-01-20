@@ -4,17 +4,17 @@ description: Erfahren Sie, wie Sie mit Azure Queue Storage in Python Warteschlan
 author: mhopkins-msft
 ms.author: mhopkins
 ms.reviewer: dineshm
-ms.date: 08/25/2020
+ms.date: 01/19/2021
 ms.topic: how-to
 ms.service: storage
 ms.subservice: queues
 ms.custom: seo-javascript-october2019, devx-track-python
-ms.openlocfilehash: e473bf5c2761010a6aeea94e6430d34ca34989fb
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 82d18fd79b10a8500cfd9191f143438d69fda401
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97588276"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98600789"
 ---
 # <a name="how-to-use-azure-queue-storage-from-python"></a>Verwenden von Azure Queue Storage mit Python
 
@@ -69,7 +69,7 @@ Das [`QueueClient`](/azure/developer/python/sdk/storage/azure-storage-queue/azur
 
 # <a name="python-v2"></a>[Python v2](#tab/python2)
 
-Das [`QueueService`](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueservice.queueservice?view=storage-py-v2)-Objekt ermöglicht Ihnen die Arbeit mit Warteschlangen. Der folgende Code erstellt ein `QueueService`-Objekt. Fügen Sie am Anfang jeder Python-Datei, in der Sie programmgesteuert auf Azure Storage zugreifen möchten, folgenden Code hinzu:
+Das [`QueueService`](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueservice.queueservice?view=storage-py-v2&preserve-view=true)-Objekt ermöglicht Ihnen die Arbeit mit Warteschlangen. Der folgende Code erstellt ein `QueueService`-Objekt. Fügen Sie am Anfang jeder Python-Datei, in der Sie programmgesteuert auf Azure Storage zugreifen möchten, folgenden Code hinzu:
 
 ```python
 from azure.storage.queue import (
@@ -127,7 +127,7 @@ Verwenden Sie zum Einfügen einer Nachricht in eine Warteschlange die Methode [`
 
 # <a name="python-v2"></a>[Python v2](#tab/python2)
 
-Zum Einfügen einer Nachricht in eine Warteschlange verwenden Sie die [`put_message`](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueservice.queueservice?view=storage-py-v2#put-message-queue-name--content--visibility-timeout-none--time-to-live-none--timeout-none-)-Methode, um eine neue Nachricht zu erstellen und zur Warteschlange hinzuzufügen.
+Zum Einfügen einer Nachricht in eine Warteschlange verwenden Sie die [`put_message`](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueservice.queueservice?view=storage-py-v2&preserve-view=true#put-message-queue-name--content--visibility-timeout-none--time-to-live-none--timeout-none-)-Methode, um eine neue Nachricht zu erstellen und zur Warteschlange hinzuzufügen.
 
 ```python
 message = u"Hello, World"
@@ -167,7 +167,7 @@ Sie können Nachrichten einsehen, ohne sie aus der Warteschlange zu entfernen. R
 
 # <a name="python-v2"></a>[Python v2](#tab/python2)
 
-Sie können Nachrichten einsehen, ohne sie aus der Warteschlange zu entfernen. Rufen Sie dazu die Methode [`peek_messages`](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueservice.queueservice?view=storage-py-v2#peek-messages-queue-name--num-messages-none--timeout-none-) auf. Standardmäßig wird von dieser Methode jeweils nur eine Nachricht angeschaut.
+Sie können Nachrichten einsehen, ohne sie aus der Warteschlange zu entfernen. Rufen Sie dazu die Methode [`peek_messages`](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueservice.queueservice?view=storage-py-v2&preserve-view=true#peek-messages-queue-name--num-messages-none--timeout-none-) auf. Standardmäßig wird von dieser Methode jeweils nur eine Nachricht angeschaut.
 
 ```python
 messages = queue_service.peek_messages(queue_name)
@@ -190,7 +190,7 @@ Im folgenden Codebeispiel wird die Methode [`update_message`](/azure/developer/p
 
 # <a name="python-v2"></a>[Python v2](#tab/python2)
 
-Im folgenden Codebeispiel wird die Methode [`update_message`](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueservice.queueservice?view=storage-py-v2#update-message-queue-name--message-id--pop-receipt--visibility-timeout--content-none--timeout-none-) verwendet, um eine Nachricht zu aktualisieren. Das Sichtbarkeitstimeout ist auf 0 festgelegt, d. h., die Nachricht wird sofort angezeigt, und der Inhalt wird aktualisiert.
+Im folgenden Codebeispiel wird die Methode [`update_message`](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueservice.queueservice?view=storage-py-v2&preserve-view=true#update-message-queue-name--message-id--pop-receipt--visibility-timeout--content-none--timeout-none-) verwendet, um eine Nachricht zu aktualisieren. Das Sichtbarkeitstimeout ist auf 0 festgelegt, d. h., die Nachricht wird sofort angezeigt, und der Inhalt wird aktualisiert.
 
 ```python
 messages = queue_service.get_messages(queue_name)
@@ -214,7 +214,7 @@ Die Methode [get_queue_properties](/azure/developer/python/sdk/storage/azure-sto
 
 # <a name="python-v2"></a>[Python v2](#tab/python2)
 
-Die Methode [`get_queue_metadata`](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueservice.queueservice?view=storage-py-v2#get-queue-metadata-queue-name--timeout-none-) gibt Warteschlangeneigenschaften zurück, einschließlich `approximate_message_count`.
+Die Methode [`get_queue_metadata`](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueservice.queueservice?view=storage-py-v2&preserve-view=true#get-queue-metadata-queue-name--timeout-none-) gibt Warteschlangeneigenschaften zurück, einschließlich `approximate_message_count`.
 
 ```python
 metadata = queue_service.get_queue_metadata(queue_name)
@@ -238,7 +238,7 @@ Wenn Sie [receive_messages](/azure/developer/python/sdk/storage/azure-storage-qu
 
 # <a name="python-v2"></a>[Python v2](#tab/python2)
 
-Wenn Sie [get_messages](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueservice.queueservice?view=storage-py-v2#get-messages-queue-name--num-messages-none--visibility-timeout-none--timeout-none-) aufrufen, wird standardmäßig die nächste Nachricht in der Warteschlange abgerufen. Die für `get_messages` zurückgegebene Nachricht ist für anderen Code, mit dem Nachrichten aus dieser Warteschlange gelesen werden, nicht mehr sichtbar. Standardmäßig bleibt die Nachricht 30 Sekunden lang unsichtbar. Um die Nachricht endgültig aus der Warteschlange zu entfernen, müssen Sie außerdem [delete_message](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueservice.queueservice?view=storage-py-v2#delete-message-queue-name--message-id--pop-receipt--timeout-none-) aufrufen.
+Wenn Sie [get_messages](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueservice.queueservice?view=storage-py-v2&preserve-view=true#get-messages-queue-name--num-messages-none--visibility-timeout-none--timeout-none-) aufrufen, wird standardmäßig die nächste Nachricht in der Warteschlange abgerufen. Die für `get_messages` zurückgegebene Nachricht ist für anderen Code, mit dem Nachrichten aus dieser Warteschlange gelesen werden, nicht mehr sichtbar. Standardmäßig bleibt die Nachricht 30 Sekunden lang unsichtbar. Um die Nachricht endgültig aus der Warteschlange zu entfernen, müssen Sie außerdem [delete_message](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueservice.queueservice?view=storage-py-v2&preserve-view=true#delete-message-queue-name--message-id--pop-receipt--timeout-none-) aufrufen.
 
 ```python
 messages = queue_service.get_messages(queue_name)
@@ -260,7 +260,7 @@ Im folgenden Codebeispiel wird die Methode [`receive_messages`](/azure/developer
 
 # <a name="python-v2"></a>[Python v2](#tab/python2)
 
-Im folgenden Codebeispiel wird [`get_messages`](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueservice.queueservice?view=storage-py-v2#get-messages-queue-name--num-messages-none--visibility-timeout-none--timeout-none-) verwendet, um 16 Nachrichten mit einem Aufruf abzurufen. Anschließend wird jede Nachricht mithilfe einer `for`-Schleife verarbeitet. Außerdem wird das Unsichtbarkeits-Zeitlimit auf fünf Minuten pro Nachricht festgelegt.
+Im folgenden Codebeispiel wird [`get_messages`](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueservice.queueservice?view=storage-py-v2&preserve-view=true#get-messages-queue-name--num-messages-none--visibility-timeout-none--timeout-none-) verwendet, um 16 Nachrichten mit einem Aufruf abzurufen. Anschließend wird jede Nachricht mithilfe einer `for`-Schleife verarbeitet. Außerdem wird das Unsichtbarkeits-Zeitlimit auf fünf Minuten pro Nachricht festgelegt.
 
 ```python
 messages = queue_service.get_messages(queue_name, num_messages=16, visibility_timeout=5*60)
@@ -282,7 +282,7 @@ Zum Löschen einer Warteschlange und aller darin enthaltenen Nachrichten rufen S
 
 # <a name="python-v2"></a>[Python v2](#tab/python2)
 
-Zum Löschen einer Warteschlange und aller darin enthaltenen Nachrichten rufen Sie die Methode [`delete_queue`](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueservice.queueservice?view=storage-py-v2#delete-queue-queue-name--fail-not-exist-false--timeout-none-) auf.
+Zum Löschen einer Warteschlange und aller darin enthaltenen Nachrichten rufen Sie die Methode [`delete_queue`](/azure/developer/python/sdk/storage/azure-storage-queue/azure.storage.queue.queueservice.queueservice?view=storage-py-v2&preserve-view=true#delete-queue-queue-name--fail-not-exist-false--timeout-none-) auf.
 
 ```python
 print("Deleting queue: " + queue_name)

@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 4/7/2020
-ms.openlocfilehash: 5566717387f6da375129a0e70c9ad825198d66b7
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 1072f915c5d8483676874422703820dc75719256
+ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96005706"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98555745"
 ---
 # <a name="migrate-sql-server-agent-jobs-to-adf-with-ssms"></a>Migrieren von SQL Server-Agent-Aufträgen zu ADF mit SSMS
 
@@ -41,7 +41,7 @@ Mit dem **Assistenten für die SSIS-Auftragsmigration** können Sie generell fol
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Die in diesem Artikel beschriebene Funktion erfordert Version 18.5 oder höher von SQL Server Management Studio. Die neueste Version von SSMS können Sie unter [Herunterladen von SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver15) abrufen.
+Die in diesem Artikel beschriebene Funktion erfordert Version 18.5 oder höher von SQL Server Management Studio. Die neueste Version von SSMS können Sie unter [Herunterladen von SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms) abrufen.
 
 ## <a name="migrate-ssis-jobs-to-adf"></a>Migrieren von SSIS-Aufträgen zu ADF
 

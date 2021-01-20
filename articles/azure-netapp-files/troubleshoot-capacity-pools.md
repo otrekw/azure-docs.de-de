@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 11/06/2020
+ms.date: 01/14/2021
 ms.author: b-juche
-ms.openlocfilehash: a07898692c8af70fab0d2634ed1513f0f3666a4d
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: 759759b67582b241d0bab1e043dd15e54a804faf
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97505459"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251538"
 ---
 # <a name="troubleshoot-capacity-pool-issues"></a>Problembehandlung bei Kapazitätspools
 
@@ -34,9 +34,6 @@ In diesem Artikel werden Lösungen für möglicherweise beim Verwalten von Kapaz
 | Fehler `Requested throughput not available` bei Volumeerstellung oder -änderung | Der verfügbare Durchsatz für ein Volume wird durch die Größe des Kapazitätspools und den Servicelevel festgelegt. Wenn Sie nicht über genügend Durchsatz verfügen, sollten Sie die Poolgröße heraufsetzen oder den vorhandenen Volumedurchsatz anpassen. | 
 
 ## <a name="issues-when-changing-the-capacity-pool-of-a-volume"></a>Probleme beim Ändern des Kapazitätspools eines Volumes 
-
-> [!IMPORTANT] 
-> Die Registrierung für die unter [Dynamisches Ändern der Dienstebene eines Volumes](dynamic-change-volume-service-level.md) beschriebene öffentliche Vorschau wurde bis auf Weiteres ausgesetzt.
 
 |     Fehlerzustand    |     Lösung    |
 |-|-|

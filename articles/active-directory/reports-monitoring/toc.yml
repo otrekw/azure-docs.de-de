@@ -6,7 +6,7 @@
       href: overview-reports.md
     - name: Was ist die Azure AD-Überwachung?
       href: overview-monitoring.md
-    - name: Was ist die Anmeldediagnose?
+    - name: Worum handelt es sich bei der Anmeldediagnose?
       href: overview-sign-in-diagnostics.md
 - name: Schnellstarts
   expanded: true

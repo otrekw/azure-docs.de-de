@@ -6,12 +6,12 @@ ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 11/30/2020
-ms.openlocfilehash: 244f8a446e33102e018881b3ec8f32ba9d8cbcc6
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 7d624f2dd2c0c9b4c7e99d5628a1d47e4303da7f
+ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98014144"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98555592"
 ---
 # <a name="use-managed-identities-to-access-azure-sql-database-or-azure-synapse-analytics-from-an-azure-stream-analytics-job-preview"></a>Zugreifen auf Azure SQL-Datenbank oder Azure Synapse Analytics mit verwalteten Identitäten aus einem Azure Stream Analytics-Auftrag (Vorschau)
 
@@ -123,7 +123,7 @@ Nachdem Sie einen Benutzer einer eigenständigen Datenbank erstellt und Zugriff 
 
 Nachdem Sie einen Benutzer einer eigenständigen Datenbank erstellt und Zugriff auf Azure-Dienste erteilt haben, wie im vorherigen Abschnitt beschrieben, hat Ihr Stream Analytics-Auftrag von der verwalteten Identität die Berechtigung **CONNECT**. Damit kann er mithilfe der verwalteten Identität eine Verbindung mit Ihrer Azure Synapse-Datenbankressource herstellen. Es empfiehlt sich, dem Stream Analytics-Auftrag außerdem die Berechtigungen SELECT, INSERT und ADMINISTER DATABASE BULK OPERATIONS zu erteilen, da diese später im Stream Analytics-Workflow benötigt werden. Mithilfe der **SELECT**-Berechtigung kann der Auftrag seine Verbindung mit der Tabelle in der Azure Synapse-Datenbank testen. Die Berechtigungen **INSERT** und **ADMINISTER DATABASE BULK OPERATIONS** ermöglichen das Testen von End-to-End-Abfragen in Stream Analytics, nachdem Sie eine Eingabe und die Azure Synapse-Datenbankausgabe konfiguriert haben.
 
-Zum Erteilen der Berechtigung ADMINISTER DATABASE BULK OPERATIONS müssen Sie dem Stream Analytics-Auftrag alle Berechtigungen gewähren, die unter [Impliziert durch Datenbankberechtigung](/sql/t-sql/statements/grant-database-permissions-transact-sql?view=azure-sqldw-latest#remarks) mit **CONTROL** bezeichnet sind. Sie benötigen diese Berechtigung, da der Stream Analytics-Auftrag die COPY-Anweisung ausführt, für die [ADMINISTER DATABASE BULK OPERATIONS und INSERT](/sql/t-sql/statements/copy-into-transact-sql) erforderlich sind.
+Zum Erteilen der Berechtigung ADMINISTER DATABASE BULK OPERATIONS müssen Sie dem Stream Analytics-Auftrag alle Berechtigungen gewähren, die unter [Impliziert durch Datenbankberechtigung](/sql/t-sql/statements/grant-database-permissions-transact-sql?view=azure-sqldw-latest&preserve-view=true#remarks) mit **CONTROL** bezeichnet sind. Sie benötigen diese Berechtigung, da der Stream Analytics-Auftrag die COPY-Anweisung ausführt, für die [ADMINISTER DATABASE BULK OPERATIONS und INSERT](/sql/t-sql/statements/copy-into-transact-sql) erforderlich sind.
 
 ---
 

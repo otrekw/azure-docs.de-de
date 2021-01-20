@@ -9,22 +9,26 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen, devx-track-js
-ms.openlocfilehash: ec7459a356221fb7b599cbbc02f1cb825920b5b3
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: b6fcf39e05c4649503f0b7a80aadaaa16df24674
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92890665"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98599562"
 ---
 # <a name="show-traffic-on-the-map"></a>Anzeigen von Datenverkehr auf einer Karte
 
 In Azure Maps sind zwei Arten von Verkehrsdaten verfügbar:
 
 - Vorfallsdaten: Punkt- und linienbasierte Daten, z. B. für Baustellen, Straßensperrungen und Unfälle.
-- Flussdaten: Stellt Metriken zum Verkehrsfluss auf Straßen bereit. Daten zum Verkehrsfluss werden häufig verwendet, um Straßen farbig zu markieren. Die Farben basieren auf dem Verkehrsaufkommen, das aufgrund einer Geschwindigkeitsbeschränkung oder anderen Metrik zu einer Verlangsamung des Verkehrsflusses führt. Die Daten zum Verkehrsfluss in Azure Maps verfügen über drei unterschiedliche Metriken für Messungen:
-    - `relative`: Geschwindigkeit relativ zur Geschwindigkeit bei ungehindertem Verkehrsfluss auf der Straße.
-    - `absolute`: Absolute Geschwindigkeit aller Fahrzeuge auf der Straße.
-    - `relative-delay`: Zeigt Bereiche mit einer langsameren Geschwindigkeit als der durchschnittlichen erwarteten Verzögerung an.
+- Flussdaten: Stellt Metriken zum Verkehrsfluss auf Straßen bereit. Daten zum Verkehrsfluss werden häufig verwendet, um Straßen farbig zu markieren. Die Farben basieren auf dem Verkehrsaufkommen, das aufgrund einer Geschwindigkeitsbeschränkung oder anderen Metrik zu einer Verlangsamung des Verkehrsflusses führt. An die Verkehrsflussoption `flow` der Karte können vier Werte übergeben werden.
+
+    |Wert des Verkehrsflusses | BESCHREIBUNG|
+    | :-- | :-- |
+    | `none` | Zeigt keine Verkehrsdaten auf der Karte an. |
+    | `relative` | Zeigt Verkehrsdaten an, die relativ zur Geschwindigkeit bei ungehindertem Verkehrsfluss auf der Straße sind. |
+    | `relative-delay` | Zeigt Bereiche mit einer langsameren Geschwindigkeit als der durchschnittlichen erwarteten Verzögerung an. |
+    | `absolute` | Zeigt die absolute Geschwindigkeit aller Fahrzeuge auf der Straße an. |
 
 Der folgende Code verdeutlicht, wie Sie Verkehrsdaten auf der Karte anzeigen.
 

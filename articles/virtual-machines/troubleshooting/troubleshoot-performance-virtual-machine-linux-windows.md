@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 09/18/2019
 ms.author: v-miegge
-ms.openlocfilehash: 53fd2332224d903c5a4b33563470cf3569f82b13
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ec605fd30252b9a0cfb80d0bc3ff145ed3b5a1d4
+ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86526655"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98573308"
 ---
 # <a name="troubleshoot-azure-virtual-machine-performance-on-linux-or-windows"></a>Behandeln von Leistungsproblemen von virtuellen Azure-Computern unter Linux oder Windows
 
@@ -208,7 +208,7 @@ Um zu bestimmen, ob Sie den IOPS-Grenzwert erreichen, wechseln Sie zur Speicherk
 
 Mit neuen Datenträgerangeboten unter Storage Standard können die IOPS- und Durchsatzlimits abweichen, aber das kumulative Limit für das Storage Standard-Speicherkonto beträgt 20.000 IOPS (Storage Premium hat unterschiedliche Grenzwerte auf Konto- oder Datenträgerebene). Weitere Informationen zu Storage Standard-Datenträgerangeboten und Grenzwerten pro Datenträger:
 
-* [Skalierbarkeits- und Leistungsziele für VM-Datenträger unter Windows](../windows/disk-scalability-targets.md).
+* [Skalierbarkeits- und Leistungsziele für VM-Datenträger unter Windows](../disks-scalability-targets.md).
 
 #### <a name="references"></a>References
 
@@ -224,7 +224,7 @@ Vergleichen Sie TotalIngress und TotalEgress mit den Grenzwerten für Ingress un
 
 Neue Datenträgerangebote in Storage Standard weisen unterschiedliche IOPS- und Durchsatzlimits auf (IOPS werden nicht pro VHD verfügbar gemacht). Sehen Sie sich die Daten an, um festzustellen, ob Sie auf der Grundlage der Datenlese- und -schreibvorgänge die Grenzwerte des kombinierten Durchsatzes in MB der VHD(s) erreichen, und optimieren Sie dann Ihre VM-Speicherkonfiguration, um eine Skalierung jenseits der Grenzwerte einzelner VHDs zu erreichen. Weitere Informationen zu Storage Standard-Datenträgerangeboten und Grenzwerten pro Datenträger:
 
-* [Skalierbarkeits- und Leistungsziele für VM-Datenträger unter Windows](../windows/disk-scalability-targets.md).
+* [Skalierbarkeits- und Leistungsziele für VM-Datenträger unter Windows](../disks-scalability-targets.md).
 
 ### <a name="high-disk-utilizationlatency-remediation"></a>Wartung bei hoher Datenträgerverwendung/Latenz
 
@@ -252,4 +252,4 @@ Die spezifischen Szenarien werden in diesen Artikeln besprochen:
 
 Wenn Sie beim Lesen dieses Artikels feststellen, dass Sie weitere Hilfe benötigen, wenden Sie sich an die Azure-Experten im [MSDN Azure-Forum oder im Stack Overflow-Forum](https://azure.microsoft.com/support/forums/).
 
-Alternativ dazu können Sie eine Azure-Supportanfrage erstellen. Rufen Sie die [Azure-Support-Website](https://azure.microsoft.com/support/options/) auf, und wählen Sie **Support erhalten**aus.
+Alternativ dazu können Sie eine Azure-Supportanfrage erstellen. Rufen Sie die [Azure-Support-Website](https://azure.microsoft.com/support/options/) auf, und wählen Sie **Support erhalten** aus.

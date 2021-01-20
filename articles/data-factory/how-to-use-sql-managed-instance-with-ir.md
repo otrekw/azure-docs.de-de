@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 4/15/2020
-ms.openlocfilehash: 86bff161e29384b10030ed3d524301f6dea6037e
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: fb622bdb1d7aa485c421122cdfbd2493a32cf5db
+ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92634163"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98555661"
 ---
 # <a name="use-azure-sql-managed-instance-with-sql-server-integration-services-ssis-in-azure-data-factory"></a>Verwenden von verwalteten Azure SQL-Instanzen mit SQL Server Integration Services (SSIS) in Azure Data Factory
 
@@ -41,7 +41,7 @@ Sie können Ihre SQL Server Integration Services-Projekte, -Pakete und -Workload
     - Über einen privaten Endpunkt (bevorzugt)
 
         1. Wählen Sie das virtuelle Netzwerk aus, das mit der Azure-SSIS IR verknüpft werden soll:
-            - Im selben virtuellen Netzwerk wie die verwaltete Instanz mit **unterschiedlichen Subnetzen** .
+            - Im selben virtuellen Netzwerk wie die verwaltete Instanz mit **unterschiedlichen Subnetzen**.
             - In einem anderen virtuellen Netzwerk als die verwaltete Instanz über Peering virtueller Netzwerke (das aufgrund von Einschränkungen für globales VNET-Peering auf dieselbe Region beschränkt ist) oder eine Verbindung zwischen den virtuellen Netzwerken.
 
             Weitere Informationen zu SQL Managed Instance-Verbindungen finden Sie unter [Herstellen einer Verbindung zwischen einer Anwendung und Azure SQL Managed Instance](https://review.docs.microsoft.com/azure/sql-database/sql-database-managed-instance-connect-app).
@@ -80,12 +80,12 @@ Sie können Ihre SQL Server Integration Services-Projekte, -Pakete und -Workload
 
 ### <a name="configure-virtual-network"></a>Konfigurieren eines virtuellen Netzwerks
 
-1. **Benutzerberechtigung** . Der Benutzer, der die Azure-SSIS IR erstellt, muss über die [Rollenzuweisung](../role-based-access-control/role-assignments-list-portal.md#list-role-assignments-for-a-user-at-a-scope) mindestens für die Azure Data Factory-Ressource verfügen, und zwar mit einer der folgenden Optionen:
+1. **Benutzerberechtigung**. Der Benutzer, der die Azure-SSIS IR erstellt, muss über die [Rollenzuweisung](../role-based-access-control/role-assignments-list-portal.md#list-role-assignments-for-a-user-at-a-scope) mindestens für die Azure Data Factory-Ressource verfügen, und zwar mit einer der folgenden Optionen:
 
     - Verwenden Sie die integrierte Rolle „Netzwerkmitwirkender“. Diese Rolle umfasst die Berechtigung _Microsoft.Network/\*_ , die jedoch einen deutlich größeren Umfang als erforderlich hat.
     - Erstellen Sie eine benutzerdefinierte Rolle, die nur die erforderliche Berechtigung _Microsoft.Network/virtualNetworks/\*/join/action_ aufweist. Wenn Sie beim Verknüpfen der Azure-SSIS IR mit einem virtuellen Azure Resource Manager-Netzwerk Ihre eigenen öffentlichen IP-Adressen verwenden möchten, beziehen Sie auch die Berechtigung _Microsoft.Network/publicIPAddresses/*/join/action_ mit in die Rolle ein.
 
-1. **Virtuelles Netzwerk** .
+1. **Virtuelles Netzwerk**.
 
     1. Stellen Sie sicher, dass bestimmte Azure-Netzwerkressourcen durch die Ressourcengruppe des virtuellen Netzwerks erstellt und gelöscht werden können.
 
@@ -163,7 +163,7 @@ Weitere Informationen zum Erstellen einer Azure-SSIS IR finden Sie im Artikel [E
 
 ## <a name="clean-up-ssisdb-logs"></a>Bereinigen der SSISDB-Protokolle
 
-Die Beibehaltungsrichtlinie für SSISDB-Protokolle wird durch die nachstehenden Eigenschaften in [catalog.catalog_properties](/sql/integration-services/system-views/catalog-catalog-properties-ssisdb-database?view=sql-server-ver15) definiert:
+Die Beibehaltungsrichtlinie für SSISDB-Protokolle wird durch die nachstehenden Eigenschaften in [catalog.catalog_properties](/sql/integration-services/system-views/catalog-catalog-properties-ssisdb-database) definiert:
 
 - OPERATION_CLEANUP_ENABLED
 

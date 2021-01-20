@@ -4,12 +4,12 @@ description: In diesem Artikel erfahren Sie, wie Sie Dateien und Ordner aus eine
 ms.topic: conceptual
 ms.date: 03/12/2020
 ms.custom: references_regions
-ms.openlocfilehash: b4bd64fb00c2f341e474ecb96738fab47d717474
-ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
+ms.openlocfilehash: 9bd66c1e3c89c8974adc3970f8595e5100878088
+ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97831668"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98567138"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Wiederherstellen von Dateien aus einer Sicherung von virtuellen Azure-Computern
 
@@ -188,7 +188,7 @@ Unter Linux werden die Volumes des Wiederherstellungspunkts im Ordner bereitgest
 Wenn die Dateiwiederherstellung nicht mehr reagiert, nachdem Sie das Skript zur Dateiwiederherstellung ausgeführt haben (wenn z. B. die Datenträger nicht eingebunden werden, oder sie werden eingebunden, aber die Volumes werden nicht angezeigt), führen Sie die folgenden Schritte aus:
 
 1. Ändern Sie in der Datei „/etc/iscsi/iscsid.conf“ die Einstellung:
-    - `node.conn[0].timeo.noop_out_timeout = 5` in `node.conn[0].timeo.noop_out_timeout = 30`
+    - `node.conn[0].timeo.noop_out_timeout = 5` in `node.conn[0].timeo.noop_out_timeout = 120`
 2. Nachdem Sie die obigen Änderung vorgenommen haben, führen Sie das Skript erneut aus. Wenn vorübergehende Fehler auftreten, stellen Sie sicher, dass zwischen den erneuten Ausführungen eine Lücke von 20 bis 30 Minuten besteht, um aufeinander folgende Bursts von Anforderungen zu vermeiden, die die Zielvorbereitung beeinträchtigen. Dieses Intervall zwischen erneuten Ausführungen stellt sicher, dass das Ziel für die Verbindung mit dem Skript bereit ist.
 3. Wechseln Sie nach der Dateiwiederherstellung unbedingt zurück zum Portal, und wählen Sie dort für die Wiederherstellungspunkte, bei denen Sie keine Volumes einbinden konnten, **Einbindung von Datenträgern aufheben** aus. Mit diesem Schritt werden alle vorhandenen Prozesse/Sitzungen bereinigt, und die Wahrscheinlichkeit für eine Wiederherstellung steigt.
 

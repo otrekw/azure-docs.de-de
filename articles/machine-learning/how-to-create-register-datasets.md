@@ -1,5 +1,5 @@
 ---
-title: Erstellen von Azure Machine Learning-Datasets für den Datenzugriff
+title: Erstellen von Azure Machine Learning-Datasets
 titleSuffix: Azure Machine Learning
 description: Hier erfahren Sie, wie Sie Azure Machine Learning-Datasets erstellen, um auf Ihre Daten für Machine Learning-Experimentausführungen zuzugreifen.
 services: machine-learning
@@ -12,16 +12,14 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 07/31/2020
-ms.openlocfilehash: fa6cdeaa47c7fdf9e90cdab96397473d8498afa0
-ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
+ms.openlocfilehash: 8dac15f359d8ab6c7a84bbc30dba392322e84bb5
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98108703"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98538190"
 ---
 # <a name="create-azure-machine-learning-datasets"></a>Erstellen von Azure Machine Learning-Datasets
-
-
 
 In diesem Artikel erfahren Sie, wie Sie Azure Machine Learning-Datasets erstellen, um auf Daten für Ihre lokalen oder remotebasierten Experimente mit dem Python-SDK für Azure Machine Learning zuzugreifen. Informationen dazu, welche Rolle Datasets im Workflow für den Datenzugriff in Azure Machine Learning spielen, finden Sie im Artikel [Datenzugriff in Azure Machine Learning](concept-data.md#data-workflow).
 
@@ -127,6 +125,7 @@ mnist_ds = Dataset.File.from_files(path=web_paths)
 > Laden Sie Dateien aus einem lokalen Verzeichnis hoch, und erstellen Sie ein FileDataset-Element in einer einzelnen Methode mit der öffentlichen Vorschaumethode [upload_directory()](/python/api/azureml-core/azureml.data.dataset_factory.filedatasetfactory?preserve-view=true&view=azure-ml-py#upload-directory-src-dir--target--pattern-none--overwrite-false--show-progress-true-). Diese Methode ist eine [experimentelle](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py#stable-vs-experimental) Previewfunktion und kann jederzeit geändert werden. 
 > 
 >  Mit dieser Methode werden Daten in den zugrunde liegenden Speicher hochgeladen, was zu Speicherkosten führt. 
+
 ### <a name="create-a-tabulardataset"></a>Erstellen eines TabularDataset-Elements
 
 Verwenden Sie die Methode [`from_delimited_files()`](/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory) für die Klasse `TabularDatasetFactory`, um Dateien im CSV- oder TSV-Format zu lesen und ein nicht registriertes TabularDataset-Objekt zu erstellen. Wenn Sie Daten aus mehreren Dateien lesen, werden die Ergebnisse in einer Tabellendarstellung aggregiert. 
@@ -176,7 +175,6 @@ titanic_ds.take(3).to_pandas_dataframe()
 2|3|True|3|Heikkinen, Miss. Laina|female|26,0|0|0|STON/O2. 3101282|7.9250||E
 
 [Registrieren Sie Ihr Dataset](#register-datasets), um Datasets in Ihrem Arbeitsbereich experimentübergreifend wiederverwenden und freigeben zu können.
-
 
 ## <a name="explore-data"></a>Durchsuchen von Daten
 

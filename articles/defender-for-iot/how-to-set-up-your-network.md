@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 01/03/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: b5cb7d0e421657b84c365d8dca536191cafd4e72
-ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
+ms.openlocfilehash: 2053632f24504f896d1045f99d581b9aa6050b55
+ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97861960"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98573138"
 ---
 # <a name="about-azure-defender-for-iot-network-setup"></a>Azure Defender für IoT: Netzwerkeinrichtung
 
@@ -223,7 +223,7 @@ In einem Sternnetzwerk ist jeder Host mit einem zentralen Hub verbunden. In sein
 
 Dies sind einige Empfehlungen für das Bereitstellen mehrerer Sensoren:
 
-| **Anzahl **| **Meter** | **Abhängigkeit** | **Anzahl der Sensoren** |
+| **Number** | **Meter** | **Abhängigkeit** | **Anzahl der Sensoren** |
 |--|--|--|--|
 | Der maximale Abstand zwischen Switches | 80 Meter | Vorbereitetes Ethernet-Kabel | Mehr als 1 |
 | Anzahl der OT-Netzwerke | Mehr als 1 | Keine physische Verbindung | Mehr als 1 |
