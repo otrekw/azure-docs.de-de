@@ -3,17 +3,17 @@ title: 'Schnellstart: Azure Blob Storage-Clientbibliothek v10 für JavaScript'
 description: Erstellen, Hochladen und Löschen von Blobs und Containern in Node.js mit der Azure Storage-Clientbibliothek v10 für JavaScript
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 07/24/2020
+ms.date: 01/19/2021
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: devx-track-js
-ms.openlocfilehash: 1f47c35997fe060fd3c318602bcad17de83b530c
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 2371c789b9e4a9fc70f4207fd8a634e419c97912
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91249619"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98599459"
 ---
 # <a name="quickstart-manage-blobs-with-javascript-v10-sdk-in-nodejs"></a>Schnellstart: Verwalten von Blobs per JavaScript v10 SDK in Node.js
 
@@ -139,7 +139,7 @@ const ONE_MEGABYTE = 1024 * 1024;
 const FOUR_MEGABYTES = 4 * ONE_MEGABYTE;
 ```
 
-Für Anforderungen der API kann festgelegt werden, dass nach einem bestimmten Intervall ein Timeout auftreten soll. Die [Aborter](/javascript/api/%40azure/storage-blob/aborter?view=azure-node-legacy) Klasse ist zuständig für das Verwalten, wie bei Anforderungen ein Timeout erfolgt, und die folgende Konstante wird verwendet, um in diesem Beispiel verwendete Timeouts zu definieren.
+Für Anforderungen der API kann festgelegt werden, dass nach einem bestimmten Intervall ein Timeout auftreten soll. Die [Aborter](/javascript/api/%40azure/storage-blob/aborter?view=azure-node-legacy&preserve-view=true) Klasse ist zuständig für das Verwalten, wie bei Anforderungen ein Timeout erfolgt, und die folgende Konstante wird verwendet, um in diesem Beispiel verwendete Timeouts zu definieren.
 
 ```javascript
 const ONE_MINUTE = 60 * 1000;
@@ -178,13 +178,13 @@ const serviceURL = new ServiceURL(`https://${STORAGE_ACCOUNT_NAME}.blob.core.win
 
 Die folgenden Klassen werden in diesem Codeblock verwendet:
 
-- Die [SharedKeyCredential](/javascript/api/%40azure/storage-blob/sharedkeycredential?view=azure-node-legacy)-Klasse ist verantwortlich für das Einbetten von Anmeldeinformationen für das Speicherkonto, um sie einer Anforderungspipeline bereitzustellen.
+- Die [SharedKeyCredential](/javascript/api/%40azure/storage-blob/sharedkeycredential?view=azure-node-legacy&preserve-view=true)-Klasse ist verantwortlich für das Einbetten von Anmeldeinformationen für das Speicherkonto, um sie einer Anforderungspipeline bereitzustellen.
 
-- Die [StorageURL](/javascript/api/%40azure/storage-blob/storageurl?view=azure-node-legacy)-Klasse ist für das Erstellen einer neuen Pipeline verantwortlich.
+- Die [StorageURL](/javascript/api/%40azure/storage-blob/storageurl?view=azure-node-legacy&preserve-view=true)-Klasse ist für das Erstellen einer neuen Pipeline verantwortlich.
 
-- Die [ServiceURL](/javascript/api/%40azure/storage-blob/serviceurl?view=azure-node-legacy) modelliert eine in der REST-API verwendete URL. Instanzen dieser Klasse gestatten Ihnen die Ausführung von Aktionen wie das Auflisten von Containern und bieten Kontextinformationen zum Generieren von Container-URLs.
+- Die [ServiceURL](/javascript/api/%40azure/storage-blob/serviceurl?view=azure-node-legacy&preserve-view=true) modelliert eine in der REST-API verwendete URL. Instanzen dieser Klasse gestatten Ihnen die Ausführung von Aktionen wie das Auflisten von Containern und bieten Kontextinformationen zum Generieren von Container-URLs.
 
-Die Instanz von *ServiceURL* wird zusammen mit den Instanzen von [ContainerURL](/javascript/api/%40azure/storage-blob/containerurl?view=azure-node-legacy) und [BlockBlobURL](/javascript/api/%40azure/storage-blob/blockbloburl?view=azure-node-legacy) verwendet, um Container und Blobs in Ihrem Speicherkonto zu verwalten.
+Die Instanz von *ServiceURL* wird zusammen mit den Instanzen von [ContainerURL](/javascript/api/%40azure/storage-blob/containerurl?view=azure-node-legacy&preserve-view=true) und [BlockBlobURL](/javascript/api/%40azure/storage-blob/blockbloburl?view=azure-node-legacy&preserve-view=true) verwendet, um Container und Blobs in Ihrem Speicherkonto zu verwalten.
 
 ```javascript
 const containerURL = ContainerURL.fromServiceURL(serviceURL, containerName);
