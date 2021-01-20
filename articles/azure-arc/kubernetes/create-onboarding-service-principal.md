@@ -8,12 +8,12 @@ author: mlearned
 ms.author: mlearned
 description: 'Erstellen eines Azure Arc-fähigen Onboardingdienstprinzipals '
 keywords: Kubernetes, Arc, Azure, Container
-ms.openlocfilehash: 02689dba32c8cc91e4a4a4de4dee98bc990b4dd6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8eb38dbc04d964c0ab4869e801099ee9420d6ac2
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87050070"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98184695"
 ---
 # <a name="create-an-azure-arc-enabled-onboarding-service-principal-preview"></a>Erstellen eines Azure Arc-fähigen Onboardingdienstprinzipals (Vorschauversion)
 
@@ -82,7 +82,7 @@ az role assignment create \
 
 Verweisen auf den neu erstellten Dienstprinzipal:
 
-```console
+```azurecli
 az login --service-principal -u mySpnClientId -p mySpnClientSecret --tenant myTenantID
 az connectedk8s connect -n myConnectedClusterName -g myResoureGroupName
 ```

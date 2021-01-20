@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/04/2018
 ms.author: duau
-ms.openlocfilehash: 78a1681c743f65081b30657f4fd747ff8aaef5f5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 31048a0abd939c81b64e87b4a146ae3b6934803f
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89392832"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98183908"
 ---
 # <a name="traffic-manager-endpoint-monitoring"></a>Traffic Manager-Endpunktüberwachung
 
@@ -79,7 +79,7 @@ Der Überwachungsstatus von Endpunkten ist ein Wert, der von Traffic Manager gen
 Ausführlichere Informationen zur Berechnung des Überwachungsstatus bei geschachtelten Endpunkten finden Sie unter [Geschachtelte Traffic Manager-Profile](traffic-manager-nested-profiles.md).
 
 >[!NOTE]
-> Der Überwachungsstatus „Endpunkt wurde beendet“ kann in App Service auftreten, wenn Ihre Webanwendung nicht mindestens im Tarif „Standard“ ausgeführt wird. Weitere Informationen finden Sie unter [Steuern des Azure App Service-Datenverkehrs mit Azure Traffic Manager](/azure/app-service/web-sites-traffic-manager).
+> Der Überwachungsstatus „Endpunkt wurde beendet“ kann in App Service auftreten, wenn Ihre Webanwendung nicht mindestens im Tarif „Standard“ ausgeführt wird. Weitere Informationen finden Sie unter [Steuern des Azure App Service-Datenverkehrs mit Azure Traffic Manager](../app-service/web-sites-traffic-manager.md).
 
 ### <a name="profile-monitor-status"></a>Überwachungsstatus von Profilen
 
@@ -137,7 +137,7 @@ Wenn ein Endpunkt den Status „Heruntergestuft“ aufweist, wird er nicht mehr 
 * **Leistung**: Der Endpunkt, der dem Endbenutzer am nächsten liegt, wird zurückgegeben. Wenn dieser Endpunkt nicht verfügbar ist, verschiebt Traffic Manager den Datenverkehr an die Endpunkte in der nächstgelegenen Azure-Region. Sie können alternative Failoverpläne für das leistungsorientierte Datenverkehrsrouting mithilfe von [geschachtelten Traffic Manager-Profilen](traffic-manager-nested-profiles.md#example-4-controlling-performance-traffic-routing-between-multiple-endpoints-in-the-same-region) konfigurieren.
 * **Geografisch**. Der zugeordnete Endpunkt zum Bereitstellen des geografischen Standorts basierend auf den IPs der Abfrageanforderung wird zurückgegeben. Falls dieser Endpunkt nicht verfügbar ist, wird kein anderer Endpunkt für das Failover ausgewählt, da ein geografischer Standort nur einem Endpunkt eines Profils zugeordnet werden kann (weitere Details unter [Häufig gestellte Fragen (FAQ) zu Traffic Manager](traffic-manager-FAQs.md#traffic-manager-geographic-traffic-routing-method)). Als bewährte Methode bei der Verwendung des geografischen Routings empfehlen wir Kunden, geschachtelte Traffic Manager-Profile mit mehr als einem Endpunkt zu verwenden.
 * **MultiValue**: Mehrere Endpunkte, die IPv4/IPv6-Adressen zugeordnet sind, werden zurückgegeben. Wenn eine Abfrage für dieses Profil empfangen wird, werden fehlerfreie Endpunkte basierend auf dem von Ihnen angegebenen Wert für die **maximale Datensatzanzahl in einer Antwort** zurückgegeben. Die Standardanzahl der Antworten sind zwei Endpunkte.
-* **Subnetz**: Der Endpunkt, der einem Satz von IP-Adressbereichen zugeordnet ist, wird zurückgegeben. Wenn eine Anforderung von dieser IP-Adresse empfangen wird, ist der zurückgegebene Endpunkt derjenige, der für diese IP-Adresse zugeordnet ist. 
+* **Subnetz**: Der Endpunkt, der einem Satz von IP-Adressbereichen zugeordnet ist, wird zurückgegeben. Wenn eine Anforderung von dieser IP-Adresse empfangen wird, ist der zurückgegebene Endpunkt derjenige, der für diese IP-Adresse zugeordnet ist. 
 
 Weitere Informationen finden Sie unter [Traffic Manager-Methoden für das Datenverkehrsrouting](traffic-manager-routing-methods.md).
 
@@ -155,43 +155,43 @@ Weitere Informationen zur Behandlung von Fehlern bei Integritätsprüfungen find
 
 ## <a name="faqs"></a>Häufig gestellte Fragen
 
-* [Ist Traffic Manager gegenüber Ausfällen von Azure-Regionen resistent?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#is-traffic-manager-resilient-to-azure-region-failures)
+* [Ist Traffic Manager gegenüber Ausfällen von Azure-Regionen resistent?](./traffic-manager-faqs.md#is-traffic-manager-resilient-to-azure-region-failures)
 
-* [Wie wirkt sich die Wahl des Ressourcengruppenstandorts auf Traffic Manager aus?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-does-the-choice-of-resource-group-location-affect-traffic-manager)
+* [Wie wirkt sich die Wahl des Ressourcengruppenstandorts auf Traffic Manager aus?](./traffic-manager-faqs.md#how-does-the-choice-of-resource-group-location-affect-traffic-manager)
 
-* [Wie kann ich den aktuellen Integritätsstatus jedes Endpunkts bestimmen?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-do-i-determine-the-current-health-of-each-endpoint)
+* [Wie kann ich den aktuellen Integritätsstatus jedes Endpunkts bestimmen?](./traffic-manager-faqs.md#how-do-i-determine-the-current-health-of-each-endpoint)
 
-* [Kann ich HTTPS-Endpunkte überwachen?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#can-i-monitor-https-endpoints)
+* [Kann ich HTTPS-Endpunkte überwachen?](./traffic-manager-faqs.md#can-i-monitor-https-endpoints)
 
-* [Verwende ich beim Hinzufügen eines Endpunkts eine IP-Adresse oder einen DNS-Namen?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#do-i-use-an-ip-address-or-a-dns-name-when-adding-an-endpoint)
+* [Verwende ich beim Hinzufügen eines Endpunkts eine IP-Adresse oder einen DNS-Namen?](./traffic-manager-faqs.md#do-i-use-an-ip-address-or-a-dns-name-when-adding-an-endpoint)
 
-* [Welche Arten von IP-Adressen kann ich beim Hinzufügen eines Endpunkts verwenden?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-types-of-ip-addresses-can-i-use-when-adding-an-endpoint)
+* [Welche Arten von IP-Adressen kann ich beim Hinzufügen eines Endpunkts verwenden?](./traffic-manager-faqs.md#what-types-of-ip-addresses-can-i-use-when-adding-an-endpoint)
 
-* [Kann ich verschiedene Endpunktadressierungsarten innerhalb eines einzigen Profils verwenden?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#can-i-use-different-endpoint-addressing-types-within-a-single-profile)
+* [Kann ich verschiedene Endpunktadressierungsarten innerhalb eines einzigen Profils verwenden?](./traffic-manager-faqs.md#can-i-use-different-endpoint-addressing-types-within-a-single-profile)
 
-* [Was passiert, wenn sich der Eintragstyp einer eingehenden Abfrage vom Eintragstyp unterscheidet, der dem Adressierungstyp der Endpunkte zugeordnet ist?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-happens-when-an-incoming-querys-record-type-is-different-from-the-record-type-associated-with-the-addressing-type-of-the-endpoints)
+* [Was passiert, wenn sich der Eintragstyp einer eingehenden Abfrage vom Eintragstyp unterscheidet, der dem Adressierungstyp der Endpunkte zugeordnet ist?](./traffic-manager-faqs.md#what-happens-when-an-incoming-querys-record-type-is-different-from-the-record-type-associated-with-the-addressing-type-of-the-endpoints)
 
-* [Kann ich ein Profil mit über IPv4/IPv6 adressierten Endpunkten in einem geschachtelten Profil verwenden?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#can-i-use-a-profile-with-ipv4--ipv6-addressed-endpoints-in-a-nested-profile)
+* [Kann ich ein Profil mit über IPv4/IPv6 adressierten Endpunkten in einem geschachtelten Profil verwenden?](./traffic-manager-faqs.md#can-i-use-a-profile-with-ipv4--ipv6-addressed-endpoints-in-a-nested-profile)
 
-* [Ich habe einen Webanwendungs-Endpunkt in meinem Traffic Manager-Profil angehalten, aber ich erhalte keinen Datenverkehr, auch nicht nach einem Neustart. Wie kann ich dieses Problem beheben?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#i-stopped-an-web-application-endpoint-in-my-traffic-manager-profile-but-i-am-not-receiving-any-traffic-even-after-i-restarted-it-how-can-i-fix-this)
+* [Ich habe einen Webanwendungs-Endpunkt in meinem Traffic Manager-Profil angehalten, aber ich erhalte keinen Datenverkehr, auch nicht nach einem Neustart. Wie kann ich dieses Problem beheben?](./traffic-manager-faqs.md#i-stopped-an-web-application-endpoint-in-my-traffic-manager-profile-but-i-am-not-receiving-any-traffic-even-after-i-restarted-it-how-can-i-fix-this)
 
-* [Kann ich Traffic Manager auch dann verwenden, wenn meine Anwendung HTTP oder HTTPS nicht unterstützt?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#can-i-use-traffic-manager-even-if-my-application-does-not-have-support-for-http-or-https)
+* [Kann ich Traffic Manager auch dann verwenden, wenn meine Anwendung HTTP oder HTTPS nicht unterstützt?](./traffic-manager-faqs.md#can-i-use-traffic-manager-even-if-my-application-does-not-have-support-for-http-or-https)
 
-* [Welche bestimmten Antworten vom Endpunkt sind bei Verwendung der TCP-Überwachung erforderlich?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-specific-responses-are-required-from-the-endpoint-when-using-tcp-monitoring)
+* [Welche bestimmten Antworten vom Endpunkt sind bei Verwendung der TCP-Überwachung erforderlich?](./traffic-manager-faqs.md#what-specific-responses-are-required-from-the-endpoint-when-using-tcp-monitoring)
 
-* [Wie schnell verschiebt Traffic Manager meine Benutzer von einem fehlerhaften Endpunkt weg?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-fast-does-traffic-manager-move-my-users-away-from-an-unhealthy-endpoint)
+* [Wie schnell verschiebt Traffic Manager meine Benutzer von einem fehlerhaften Endpunkt weg?](./traffic-manager-faqs.md#how-fast-does-traffic-manager-move-my-users-away-from-an-unhealthy-endpoint)
 
-* [Wie kann ich verschiedene Überwachungseinstellungen für verschiedene Endpunkte in einem Profil angeben?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-can-i-specify-different-monitoring-settings-for-different-endpoints-in-a-profile)
+* [Wie kann ich verschiedene Überwachungseinstellungen für verschiedene Endpunkte in einem Profil angeben?](./traffic-manager-faqs.md#how-can-i-specify-different-monitoring-settings-for-different-endpoints-in-a-profile)
 
-* [Wie kann ich meinen Endpunkten HTTP-Header für die Traffic Manager-Integritätsprüfungen zuweisen?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-can-i-assign-http-headers-to-the-traffic-manager-health-checks-to-my-endpoints)
+* [Wie kann ich meinen Endpunkten HTTP-Header für die Traffic Manager-Integritätsprüfungen zuweisen?](./traffic-manager-faqs.md#how-can-i-assign-http-headers-to-the-traffic-manager-health-checks-to-my-endpoints)
 
-* [Welcher Hostheader wird für die Integritätsprüfungen für Endpunkte verwendet?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-host-header-do-endpoint-health-checks-use)
+* [Welcher Hostheader wird für die Integritätsprüfungen für Endpunkte verwendet?](./traffic-manager-faqs.md#what-host-header-do-endpoint-health-checks-use)
 
-* [Wie lauten die IP-Adressen, von denen die Integritätsüberprüfungen stammen?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-are-the-ip-addresses-from-which-the-health-checks-originate)
+* [Wie lauten die IP-Adressen, von denen die Integritätsüberprüfungen stammen?](./traffic-manager-faqs.md#what-are-the-ip-addresses-from-which-the-health-checks-originate)
 
-* [Wie viele Integritätsprüfungen meines Endpunkts kann ich von Traffic Manager erwarten?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-many-health-checks-to-my-endpoint-can-i-expect-from-traffic-manager)
+* [Wie viele Integritätsprüfungen meines Endpunkts kann ich von Traffic Manager erwarten?](./traffic-manager-faqs.md#how-many-health-checks-to-my-endpoint-can-i-expect-from-traffic-manager)
 
-* [Wie kann ich benachrichtigt werden, wenn einer meiner Endpunkte ausfällt?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-can-i-get-notified-if-one-of-my-endpoints-goes-down)
+* [Wie kann ich benachrichtigt werden, wenn einer meiner Endpunkte ausfällt?](./traffic-manager-faqs.md#how-can-i-get-notified-if-one-of-my-endpoints-goes-down)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/08/2017
 ms.author: duau
-ms.openlocfilehash: fc6e8bcda17f9d788a430ed763bd9f8702eaf250
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 3d5a888bf132725ff64c2a128b77f0257f435585
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96003547"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98184253"
 ---
 # <a name="add-disable-enable-or-delete-endpoints"></a>Hinzufügen, Deaktivieren, Aktivieren oder Löschen von Endpunkten
 
@@ -45,7 +45,7 @@ Sie können auch einzelne Endpunkte deaktivieren, die Teil eines Traffic Manager
 7.  Wenn Sie das Hinzufügen beider Endpunkte abgeschlossen haben, werden diese auf dem Blatt **Traffic Manager-Profil** zusammen mit ihrem Überwachungsstatus als **Online** angezeigt.
 
 > [!NOTE]
-> Nachdem Sie in einem Profil einen Endpunkt mit der Datenverkehr-Routingmethode *Failover* hinzugefügt oder entfernt haben, ist die Failoverprioritätsliste ggf. nicht mehr wie gewünscht sortiert. Sie können die Reihenfolge der Failoverprioritätsliste auf der Seite „Konfiguration“ anpassen. Weitere Informationen finden Sie unter [Konfigurieren des Routings für Failoverdatenverkehr](traffic-manager-configure-failover-routing-method.md).
+> Nachdem Sie in einem Profil einen Endpunkt mit der Datenverkehr-Routingmethode *Failover* hinzugefügt oder entfernt haben, ist die Failoverprioritätsliste ggf. nicht mehr wie gewünscht sortiert. Sie können die Reihenfolge der Failoverprioritätsliste auf der Seite „Konfiguration“ anpassen. Weitere Informationen finden Sie unter [Konfigurieren des Routings für Failoverdatenverkehr](./traffic-manager-configure-priority-routing-method.md).
 
 ## <a name="to-disable-an-endpoint"></a>So deaktivieren Sie einen Endpunkt
 
@@ -77,8 +77,7 @@ Sie können auch einzelne Endpunkte deaktivieren, die Teil eines Traffic Manager
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Verwalten von Traffic Manager-Profilen](traffic-manager-manage-profiles.md)
-* [Konfigurieren von Routingmethoden](traffic-manager-configure-routing-method.md)
+* [Konfigurieren von Routingmethoden](./traffic-manager-configure-priority-routing-method.md)
 * [Problembehandlung beim Status „Heruntergestuft“ in Azure Traffic Manager](traffic-manager-troubleshooting-degraded.md)
 * [Leistungsüberlegungen zu Traffic Manager](traffic-manager-performance-considerations.md)
-* [Vorgänge für Traffic Manager (REST-API-Referenz)](https://go.microsoft.com/fwlink/p/?LinkID=313584)
-
+* [Vorgänge für Traffic Manager (REST-API-Referenz)](/previous-versions/azure/reference/hh758255(v=azure.100))

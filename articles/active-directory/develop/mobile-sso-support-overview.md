@@ -11,16 +11,18 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 10/14/2020
 ms.author: nichola
-ms.openlocfilehash: 9c53ea5bad88eb79940274c409218045c06d7981
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: 4f0588667df6acb11a43e8c3469c67f65ed3cdd9
+ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98064967"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98165177"
 ---
 # <a name="support-single-sign-on-and-app-protection-policies-in-mobile-apps-you-develop"></a>Unterstützung von einmaligem Anmelden und App-Schutzrichtlinien in von Ihnen entwickelten mobilen Apps
 
 Einmaliges Anmelden (Single Sign-On, SSO) ist ein wichtiges Angebot von Microsoft Identity Platform und Azure Active Directory, das Benutzern Ihrer App einfache und sichere Anmeldungen ermöglicht. App-Schutzrichtlinien (App Protection Policies, APP) erlauben außerdem die Unterstützung der wesentlichen Sicherheitsrichtlinien zum Schutz der Daten Ihrer Benutzer. Diese beiden Features ermöglichen sichere Benutzeranmeldungen und die Verwaltung der Daten Ihrer App.
+
+> [!VIDEO https://www.youtube.com/embed/JpeMeTjQJ04]
 
 In diesem Artikel wird erläutert, was SSO und APP so wichtig macht. Außerdem finden Sie hier die allgemeinen Schritte zum Erstellen mobiler Anwendungen, die diese Features unterstützen. Diese Informationen gelten für Smartphone- und Tablet-Apps gleichermaßen. Wenn Sie IT-Administrator sind, der SSO für den Azure Active Directory-Mandanten Ihrer Organisation bereitstellen möchte, lesen Sie unseren [Leitfaden zum Planen einer Bereitstellung von einmaligem Anmelden](../manage-apps/plan-sso-deployment.md).
 

@@ -6,12 +6,12 @@ ms.service: virtual-machines-linux
 ms.topic: how-to
 ms.date: 08/03/2020
 ms.author: cynthn
-ms.openlocfilehash: 897cae53e589f4058e5499c0e6e941d4f1d9bb2f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f0c5e51665b4b1d31e7d2b3e25e7be31b481d0d9
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87761053"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98203166"
 ---
 # <a name="download-a-linux-vhd-from-azure"></a>Herunterladen einer Linux-VHD von Azure
 
@@ -42,11 +42,11 @@ Um die VHD-Datei herunterzuladen, müssen Sie eine [SAS-URL (Shared Access Signa
 
 1.  Wählen Sie unter der generierten URL die Option **VHD-Datei herunterladen** aus.
 
-    :::image type="content" source="./media/download-vhd/export-download.PNG" alt-text="Menüschaltfläche zum Beenden der VM":::
+    :::image type="content" source="./media/download-vhd/export-download.PNG" alt-text="Schaltfläche zum Herunterladen der VHD":::
 
 2.  Gegebenenfalls muss im Browser die Option **Speichern** ausgewählt werden, um den Download zu starten. Der Standardname für die VHD-Datei lautet *abcd*.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Informationen zum [Hochladen und Erstellen eines virtuellen Linux-Computers aus einem benutzerdefinierten Datenträger mithilfe von Azure CLI](upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). 
-- [Verwalten von Azure-Datenträgern mit der Azure-CLI](tutorial-manage-disks.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+- Informationen zum [Hochladen und Erstellen eines virtuellen Linux-Computers aus einem benutzerdefinierten Datenträger mithilfe von Azure CLI](upload-vhd.md). 
+- [Verwalten von Azure-Datenträgern mit der Azure-CLI](tutorial-manage-disks.md)

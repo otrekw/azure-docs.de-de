@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 02/14/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 5d680da7a5f09a55bec5d791642b80fd76c6088e
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: fea8d93121fcb5622f86257febcc7d834b444098
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97509613"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98178805"
 ---
 # <a name="migrate-users-to-azure-ad-b2c"></a>Migrieren von Benutzern zu Azure AD B2C
 
@@ -97,7 +97,7 @@ Es empfiehlt sich, vor Beginn der Migration Ihr Verzeichnis zu bereinigen.
 
 ### <a name="password-policy"></a>Kennwortrichtlinie
 
-Wenn die Konten, die Sie migrieren möchten, nicht über die [hohe Kennwortsicherheit](../active-directory/authentication/concept-sspr-policy.md) verfügen, die von Azure AD B2C erzwungen wird, können Sie die Erzwingung sicherer Kennwörter deaktivieren. Weitere Informationen finden Sie unter [Eigenschaft „passwordPolicies“ (Kennwortrichtlinien)](manage-user-accounts-graph-api.md#password-policy-property).
+Wenn die Konten, die Sie migrieren möchten, nicht über die [hohe Kennwortsicherheit](../active-directory/authentication/concept-sspr-policy.md) verfügen, die von Azure AD B2C erzwungen wird, können Sie die Erzwingung sicherer Kennwörter deaktivieren. Weitere Informationen finden Sie unter [Eigenschaft „passwordPolicies“ (Kennwortrichtlinien)](user-profile-attributes.md#password-policy-attribute).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

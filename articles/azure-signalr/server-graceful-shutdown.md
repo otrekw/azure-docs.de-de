@@ -6,12 +6,12 @@ ms.author: tefa
 ms.date: 11/12/2020
 ms.service: signalr
 ms.topic: conceptual
-ms.openlocfilehash: 06aa91ff414e5575f7b1a743d2cc17765437ef72
-ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
+ms.openlocfilehash: d9dd7ce9cf321628598a7bb866c5d1b1a6fb0e1e
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/28/2020
-ms.locfileid: "97797394"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201670"
 ---
 # <a name="server-graceful-shutdown"></a>Ordnungsgemäßes Herunterfahren von Servern
 Microsoft Azure SignalR Service bietet zwei Modi zum ordnungsgemäßen Herunterfahren eines Servers. 
@@ -43,7 +43,7 @@ Im Allgemeinen erfolgt das ordnungsgemäße Herunterfahren in vier Phasen:
 
     Möglicherweise müssen Sie ein entsprechendes Verfahren entwickeln, z. B. das Senden einer Benachrichtigung über das Trennen an alle Clients. Anschließend können Ihre Clients entscheiden, wann die Verbindung getrennt oder wiederhergestellt werden soll.
 
-    Sehen Sie sich das [ChatSample](https://github.com/Azure/azure-signalr/tree/dev/samples/ChatSample/ChatSample) an. Dort finden Sie ein Beispiel, bei dem über einen Shutdown-Hook eine „exit“-Meldung übertragen wird, um die Clients zu trennen.
+    Sehen Sie sich das [ChatSample](https://github.com/Azure/azure-signalr/tree/dev/samples/ChatSample) an. Dort finden Sie ein Beispiel, bei dem über einen Shutdown-Hook eine „exit“-Meldung übertragen wird, um die Clients zu trennen.
 
     **Modus MigrateClients**
 

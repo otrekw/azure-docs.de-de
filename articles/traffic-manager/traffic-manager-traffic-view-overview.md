@@ -12,12 +12,12 @@ ms.workload: infrastructure
 ms.date: 03/16/2018
 ms.author: duau
 ms.custom: ''
-ms.openlocfilehash: f1a3cc5ccb326d6a198895f9f459e661f7805b1e
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: b20357413c62460aba55a2d354b90995a2aa4815
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96003836"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98183692"
 ---
 # <a name="traffic-manager-traffic-view"></a>Traffic Manager-Datenverkehrsansicht
 
@@ -72,29 +72,29 @@ Wenn Sie die Datenverkehrsansicht verwenden, erfolgt die Abrechnung anhand der A
 
 ## <a name="faqs"></a>Häufig gestellte Fragen
 
-* [Wozu dient die Datenverkehrsansicht?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#what-does-traffic-view-do)
+* [Wozu dient die Datenverkehrsansicht?](./traffic-manager-faqs.md#what-does-traffic-view-do)
 
-* [Welche Vorteile ergeben sich für mich durch die Verwendung der Datenverkehrsansicht?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-can-i-benefit-from-using-traffic-view)
+* [Welche Vorteile ergeben sich für mich durch die Verwendung der Datenverkehrsansicht?](./traffic-manager-faqs.md#how-can-i-benefit-from-using-traffic-view)
 
-* [Inwiefern unterscheidet sich die Datenverkehrsansicht von den Traffic Manager-Metriken, die über Azure Monitor verfügbar sind?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-is-traffic-view-different-from-the-traffic-manager-metrics-available-through-azure-monitor)
+* [Inwiefern unterscheidet sich die Datenverkehrsansicht von den Traffic Manager-Metriken, die über Azure Monitor verfügbar sind?](./traffic-manager-faqs.md#how-is-traffic-view-different-from-the-traffic-manager-metrics-available-through-azure-monitor)
 
-* [Werden für die Datenverkehrsansicht EDNS-Clientsubnetzinformationen verwendet?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#does-traffic-view-use-edns-client-subnet-information)
+* [Werden für die Datenverkehrsansicht EDNS-Clientsubnetzinformationen verwendet?](./traffic-manager-faqs.md#does-traffic-view-use-edns-client-subnet-information)
 
-* [Wie viele Tage mit Daten werden von der Datenverkehrsansicht genutzt?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-many-days-of-data-does-traffic-view-use)
+* [Wie viele Tage mit Daten werden von der Datenverkehrsansicht genutzt?](./traffic-manager-faqs.md#how-many-days-of-data-does-traffic-view-use)
 
-* [Wie werden externe Endpunkte von der Datenverkehrsansicht behandelt?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-does-traffic-view-handle-external-endpoints)
+* [Wie werden externe Endpunkte von der Datenverkehrsansicht behandelt?](./traffic-manager-faqs.md#how-does-traffic-view-handle-external-endpoints)
 
-* [Muss ich die Datenverkehrsansicht für jedes Profil meines Abonnements aktivieren?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#do-i-need-to-enable-traffic-view-for-each-profile-in-my-subscription)
+* [Muss ich die Datenverkehrsansicht für jedes Profil meines Abonnements aktivieren?](./traffic-manager-faqs.md#do-i-need-to-enable-traffic-view-for-each-profile-in-my-subscription)
 
-* [Wie kann ich die Datenverkehrsansicht deaktivieren?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-can-i-turn-off-traffic-view)
+* [Wie kann ich die Datenverkehrsansicht deaktivieren?](./traffic-manager-faqs.md#how-can-i-turn-off-traffic-view)
 
-* [Wie funktioniert die Abrechnung für die Datenverkehrsansicht?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs#how-does-traffic-view-billing-work)
+* [Wie funktioniert die Abrechnung für die Datenverkehrsansicht?](./traffic-manager-faqs.md#how-does-traffic-view-billing-work)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Informieren Sie sich über die [Funktionsweise von Traffic Manager](traffic-manager-overview.md)
 - Informieren Sie sich über die von Traffic Manager unterstützten [Methoden für das Datenverkehrsrouting](traffic-manager-routing-methods.md) .
-- Informieren Sie sich über das [Erstellen eines Traffic Manager-Profils](traffic-manager-create-profile.md)
+- Informieren Sie sich über das [Erstellen eines Traffic Manager-Profils](./quickstart-create-traffic-manager-profile.md)
 
 <!--Image references-->
 [1]: ./media/traffic-manager-traffic-view-overview/trafficview.png

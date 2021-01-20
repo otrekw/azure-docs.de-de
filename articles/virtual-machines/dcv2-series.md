@@ -7,12 +7,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/20/2020
 ms.author: jushiman
-ms.openlocfilehash: 1809194ce551fc828389cc31f5c7d6f28a2cddd6
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 1cbd4c92ec4c124cfd384f45a4cd6f47fdc60be6
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91972372"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98180165"
 ---
 # <a name="dcsv2-series"></a>DCsv2-Serie
 
@@ -23,9 +23,9 @@ Beispiele für Anwendungsfälle sind Freigabe von vertraulichen Mehrparteiendate
 
 [Storage Premium](premium-storage-performance.md): Unterstützt*<br>
 [Storage Premium-Zwischenspeicherung:](premium-storage-performance.md) Unterstützt<br>
-[Livemigration](maintenance-and-updates.md): Nicht unterstützt<br>
-[Updates mit Speicherbeibehaltung](maintenance-and-updates.md): Nicht unterstützt<br>
-[Unterstützung von VM-Generationen](generation-2.md): Generation 1 und 2<br>
+[Livemigration:](maintenance-and-updates.md) Nicht unterstützt<br>
+[Updates mit Speicherbeibehaltung:](maintenance-and-updates.md) Nicht unterstützt<br>
+[Unterstützung von VM-Generationen:](generation-2.md) Generation 2<br>
 
 \* Außer für Standard_DC8_v2
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.workload: infrastructure
 ms.date: 07/17/2020
 ms.author: cynthn
-ms.openlocfilehash: dfa0efaa49fbca0b927bfd32511348f3ded7e6c7
-ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
+ms.openlocfilehash: 96c68850cfd8b03f7d1457eb0f1ca9ce5880c926
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96302816"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98197998"
 ---
 # <a name="use-infrastructure-automation-tools-with-virtual-machines-in-azure"></a>Verwenden von Infrastrukturautomatisierungstools mit virtuellen Computern in Azure
 
@@ -88,7 +88,7 @@ Skripts können aus Azure-Speicher oder von einem anderen öffentlichen Speicher
 In diesem Artikel werden folgende Themen erläutert:
 
 - [Erstellen eines virtuellen Linux-Computers mit der Azure-Befehlszeilenschnittstelle und Verwenden der benutzerdefinierten Skripterweiterung](./scripts/virtual-machines-linux-cli-sample-create-vm-nginx.md?toc=%2fcli%2fazure%2ftoc.json)
-- [Erstellen eines virtuellen Windows-Computers mit Azure PowerShell und Verwenden der benutzerdefinierten Skripterweiterung](./scripts/virtual-machines-windows-powershell-sample-create-vm-iis.md?toc=%2fpowershell%2fmodule%2ftoc.json)
+- [Erstellen eines virtuellen Windows-Computers mit Azure PowerShell und Verwenden der benutzerdefinierten Skripterweiterung](./scripts/virtual-machines-windows-powershell-sample-create-vm-iis.md)
 
 
 ## <a name="packer"></a>Packer

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: troubleshooting
 ms.date: 03/31/2020
 ms.author: v-mibufo
-ms.openlocfilehash: 76c3f729a8520c7bff7b49a1d2200d7950f8a9f4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 55dcd65e901a5ce8665ef8d3a2a29d7943581df9
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87074309"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98200718"
 ---
 # <a name="vm-is-unresponsive-with-c01a001d-error-when-applying-windows-update"></a>VM reagiert nicht mehr bei Anwenden von Windows Update, und Fehler C01A001D wird ausgegeben
 
@@ -56,7 +56,7 @@ Eine Kerndatei kann im Dateisystem nicht erstellt werden. Das Betriebssystem kan
 
 Wenn der Datenträger nicht bereits 1 TB groß ist, müssen Sie seine Größe ändern. Sobald die Größe des Datenträgers 1 TB beträgt, führen Sie eine Bereinigung und Defragmentierung des Datenträgers durch.
 
-1. Überprüfen Sie, ob der Datenträger voll ist. Wenn die Größe des Datenträgers unter 1 TB liegt, [erweitern Sie ihn mit PowerShell auf eine maximale Größe von 1 TB](../windows/expand-os-disk.md?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Ftoc.json).
+1. Überprüfen Sie, ob der Datenträger voll ist. Wenn die Größe des Datenträgers unter 1 TB liegt, [erweitern Sie ihn mit PowerShell auf eine maximale Größe von 1 TB](../windows/expand-os-disk.md).
 2. Sobald die Größe des Datenträgers 1 TB beträgt, führen Sie eine Datenträgerbereinigung durch.
     - [Trennen Sie den Datenträger von der defekten VM](../windows/detach-disk.md).
     - [Fügen Sie den Datenträger an eine funktionsfähige VM an](../windows/attach-disk-ps.md#attach-an-existing-data-disk-to-a-vm).

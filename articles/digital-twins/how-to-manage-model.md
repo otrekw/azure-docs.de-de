@@ -7,12 +7,13 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: a8b2fdf99b33df3322748b7e073cc4ab18957c84
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.custom: contperf-fy21q3
+ms.openlocfilehash: 00e6802f37ec60467edbea98038dd23fcba1239a
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98045239"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98185494"
 ---
 # <a name="manage-azure-digital-twins-models"></a>Verwalten von Azure Digital Twins-Modellen
 
@@ -52,9 +53,6 @@ Mit dieser Methode können Sie Modelle für die Stationen oder Bereiche des Kran
 ## <a name="upload-models"></a>Hochladen von Modellen
 
 Nachdem Sie Modelle erstellt haben, können Sie sie in die Azure Digital Twins-Instanz hochladen.
-
-> [!TIP]
-> Es wird empfohlen, Ihre Modelle offline zu validieren, bevor Sie sie in Ihre Azure Digital Twins-Instanz hochladen. Sie können die [clientseitige DTDL-Parserbibliothek](https://nuget.org/packages/Microsoft.Azure.DigitalTwins.Parser/) und das [Beispiel für das DTDL-Validierungssteuerelement](/samples/azure-samples/dtdl-validator/dtdl-validator) verwenden, die im Artikel [ *Analysieren und Überprüfen von Modellen mit der DTDL-Parserbibliothek*](how-to-parse-models.md) beschrieben sind, um Ihre Modelle vor dem Hochladen in den Dienst zu überprüfen.
 
 Wenn Sie zum Hochladen eines Modells bereit sind, können Sie den folgenden Codeausschnitt verwenden:
 

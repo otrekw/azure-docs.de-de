@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/09/2020
 ms.author: terrylan
-ms.openlocfilehash: c88a2cf33cf1149a17af4a82dcf2858822f0c6d4
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 3808da24c1baf6dd6e3332d4bd26fd176b761c65
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94696148"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98196077"
 ---
 # <a name="azure-data-security-and-encryption-best-practices"></a>Bewährte Methoden für Datensicherheit und Datenverschlüsselung in Azure
 In diesem Artikel werden bewährte Methoden für die Datensicherheit und -verschlüsselung beschrieben.
@@ -74,7 +74,7 @@ Verwenden Sie Azure RBAC, um zu steuern, worauf Benutzer Zugriff haben. Wenn Si
 Da die große Mehrzahl der Angriffe auf den Endbenutzer zielt, ist der Endpunkt einer der Hauptangriffspunkte. Ein Angreifer, der den Endpunkt zum Ziel hat, kann die Anmeldeinformationen des Benutzers verwenden, um Zugriff auf die Daten der Organisation zu erhalten. Die meisten Angriffe auf Endpunkte können sich zunutze machen, dass Benutzer Administratoren ihrer lokalen Arbeitsstationen sind.
 
 **Bewährte Methode**: Verwenden Sie eine sichere Verwaltungsarbeitsstation, um sensible Konten, Aufgaben und Daten zu schützen.   
-**Detail**: Verwenden Sie eine [Arbeitsstation mit privilegiertem Zugriff](/windows-server/identity/securing-privileged-access/privileged-access-workstations), um die Angriffsfläche bei Arbeitsstationen zu reduzieren. Diese sicheren Verwaltungsarbeitsstationen helfen Ihnen, einige dieser Angriffe zu minimieren und damit Ihre Daten sicherer zu machen.
+**Detail**: Verwenden Sie eine [Arbeitsstation mit privilegiertem Zugriff](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/), um die Angriffsfläche bei Arbeitsstationen zu reduzieren. Diese sicheren Verwaltungsarbeitsstationen helfen Ihnen, einige dieser Angriffe zu minimieren und damit Ihre Daten sicherer zu machen.
 
 **Bewährte Methode**: Sorgen Sie für Endpunktsicherheit.   
 **Detail**: Erzwingen Sie die Einhaltung der Sicherheitsrichtlinien auf allen Geräten, die die Daten verwenden, unabhängig vom Speicherort der Daten (in der Cloud oder lokal).

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/26/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 860bc9440547a4c62336ccc573859ec56b3400b5
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: c3e2245ae47504e058921c532ed40a220e95423d
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96533858"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98197573"
 ---
 # <a name="azure-security-baseline-for-site-recovery"></a>Azure-Sicherheitsbaseline für Site Recovery
 
@@ -222,7 +222,7 @@ Erstellen Sie einen Prozess zur Nachverfolgung der Identität und Zugriffssteuer
 
 **Leitfaden**: Verwenden Sie eine sichere, von Azure verwaltete Arbeitsstation (auch bekannt als Arbeitsstation mit privilegiertem Zugriff) mit mehrstufiger Azure-Authentifizierung für administrative Aufgaben und zum Durchführen privilegierter Aktionen für Site Recovery-Ressourcen.
 
-- [Privileged Access Workstations](/windows-server/identity/securing-privileged-access/privileged-access-workstations)
+- [Privileged Access Workstations](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
 - [Planen einer cloudbasierten Azure AD Multi-Factor Authentication-Bereitstellung](../active-directory/authentication/howto-mfa-getstarted.md)
 

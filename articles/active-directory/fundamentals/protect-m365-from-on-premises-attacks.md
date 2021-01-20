@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 71d64552520db28b3fe38cc354a30ee5470ee091
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.openlocfilehash: 97893dece068dfdde85159f734095401288231d2
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2021
-ms.locfileid: "98060677"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201347"
 ---
 # <a name="protecting-microsoft-365-from-on-premises-attacks"></a>Schützen von Microsoft 365 vor lokalen Angriffen
 
@@ -131,7 +131,7 @@ Die Bereitstellung bezieht sich auf die Erstellung von Benutzerkonten und Gruppe
 
    *  Schränken Sie den Gastzugriff auf die Navigation von Gruppen und anderen Eigenschaften im Verzeichnis ein. Verwenden Sie die Einstellungen für externe Zusammenarbeit, um die Fähigkeit von Gästen einzuschränken, Gruppen zu lesen, bei denen sie nicht Mitglied sind. 
 
-    *   Blockieren Sie den Zugriff auf das Azure-Portal. Seltene erforderliche Ausnahmen können jedoch festgelegt werden.  Erstellen Sie eine Richtlinie für bedingten Zugriff, die alle Gäste und externen Benutzer einschließt, und [implementieren Sie dann eine Richtlinie zum Blockieren des Zugriffs](https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management.md). 
+    *   Blockieren Sie den Zugriff auf das Azure-Portal. Seltene erforderliche Ausnahmen können jedoch festgelegt werden.  Erstellen Sie eine Richtlinie für bedingten Zugriff, die alle Gäste und externen Benutzer einschließt, und [implementieren Sie dann eine Richtlinie zum Blockieren des Zugriffs](/azure/role-based-access-control/conditional-access-azure-management). 
 
 * **Getrennte Gesamtstrukturen:** Verwenden Sie [Azure AD-Cloudbereitstellung](../cloud-provisioning/what-is-cloud-provisioning.md). Dies ermöglicht Ihnen das Herstellen einer Verbindung mit nicht verbundenen Gesamtstrukturen. Dadurch entfällt die Notwendigkeit, gesamtstrukturübergreifende Verbindungen oder Vertrauensstellungen einzurichten, wodurch die Auswirkungen einer lokalen Sicherheitsverletzung ausgeweitet werden können. * 
  

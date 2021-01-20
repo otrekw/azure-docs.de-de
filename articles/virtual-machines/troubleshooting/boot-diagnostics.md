@@ -10,12 +10,12 @@ ms.service: virtual-machines
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: delhan
-ms.openlocfilehash: 236390529ddaf84416448138d7b5bdf31caf681b
-ms.sourcegitcommit: 42922af070f7edf3639a79b1a60565d90bb801c0
+ms.openlocfilehash: fa133e7c62b7970a1c48c7fd86c877bcf699e034
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97827494"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201602"
 ---
 # <a name="how-to-use-boot-diagnostics-to-troubleshoot-virtual-machines-in-azure"></a>Es wird beschrieben, wie Sie die Startdiagnose zum Beheben von Problemen mit virtuellen Computern in Azure verwenden.
 
@@ -94,4 +94,4 @@ Zum Aktivieren von Startdiagnoseeinstellungen auf vorhandenen virtuellen Compute
 
 ### <a name="enable-boot-diagnostics-using-the-azure-cli"></a>Aktivieren der Startdiagnose über die Azure-Befehlszeilenschnittstelle
 
-Sie können die Azure-Befehlszeilenschnittstelle verwenden, um die Startdiagnose auf einem virtuellen Azure-Computer zu aktivieren. Weitere Informationen finden Sie unter [az vm boot-diagnostics](/cli/azure/vm/boot-diagnostics?view=azure-cli-latest).
+Sie können die Azure-Befehlszeilenschnittstelle verwenden, um die Startdiagnose auf einem virtuellen Azure-Computer zu aktivieren. Weitere Informationen finden Sie unter [az vm boot-diagnostics](/cli/azure/vm/boot-diagnostics).

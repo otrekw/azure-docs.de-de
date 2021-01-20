@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/18/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 53324709e2d3dd11160ee0b7837d86d9e9594571
-ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
+ms.openlocfilehash: 77fccf8b2480232debb88136394013941af796c8
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96763926"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98197267"
 ---
 # <a name="azure-security-baseline-for-azure-front-door"></a>Azure-Sicherheitsbaseline für Azure Front Door
 
@@ -86,7 +86,7 @@ Stellen Sie eingeschränkten Zugriff auf die Verwaltungs-, Identitäts- und Sich
 
 Verwenden Sie stark gesicherte Benutzerarbeitsstationen mit Azure Bastion für Verwaltungsaufgaben. Wählen Sie Azure Active Directory (Azure AD), Microsoft Defender Advanced Threat Protection (ATP) und Microsoft Intune aus, um sichere und verwaltete Benutzerarbeitsstationen für Verwaltungsaufgaben einzurichten. Die gesicherten Arbeitsstationen müssen zentral verwaltet werden, um eine gesicherte Konfiguration einschließlich starker Authentifizierung, Software- und Hardwarebaselines, eingeschränktem logischen und Netzwerkzugang durchzusetzen.
 
-- [Informationen zu sicheren, von Azure verwalteten Arbeitsstationen](../active-directory/devices/concept-azure-managed-workstation.md) 
+- [Informationen zu sicheren, von Azure verwalteten Arbeitsstationen](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/) 
 
 - [Bereitstellen einer sicheren, von Azure verwalteten Arbeitsstation](../active-directory/devices/howto-azure-managed-workstation.md)
 

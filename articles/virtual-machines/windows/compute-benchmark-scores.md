@@ -9,15 +9,15 @@ ms.workload: infrastructure-services
 ms.date: 04/29/2020
 ms.author: cynthn
 ms.reviewer: davberg
-ms.openlocfilehash: ccaf44f733958bff461e954c78196f7376a59771
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b354f6f121e6a055e7db07a587936f3eaff94c33
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87836206"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201568"
 ---
 # <a name="compute-benchmark-scores-for-windows-vms"></a>Compute-Benchmarkergebnisse für virtuelle Windows-Computer
-Die folgenden SPECInt-Benchmarkergebnisse zeigen die Computeleistung für ausgewählte Azure-VMs unter Windows Server. Compute-Benchmarkergebnisse stehen auch für [virtuelle Linux-Computer](../linux/compute-benchmark-scores.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)zur Verfügung.
+Die folgenden SPECInt-Benchmarkergebnisse zeigen die Computeleistung für ausgewählte Azure-VMs unter Windows Server. Compute-Benchmarkergebnisse stehen auch für [virtuelle Linux-Computer](../linux/compute-benchmark-scores.md)zur Verfügung.
 
 
 ## <a name="av2---general-compute"></a>Av2 – Compute allgemein
@@ -65,9 +65,9 @@ Die folgenden SPECInt-Benchmarkergebnisse zeigen die Computeleistung für ausgew
 | Standard_B4ms | 4 | 1 | Intel(R) Xeon(R) CPU E5-2673 v4 mit 2,30 GHz | 43 | 28,3 | 0,7 | 
 | Standard_B8ms | 8 | 1 | Intel(R) Xeon(R) CPU E5-2673 v3 mit 2,40 GHz | 3 | 42,0 | 0,0 | 
 | Standard_B8ms | 8 | 1 | Intel(R) Xeon(R) CPU E5-2673 v4 mit 2,30 GHz | 25 | 41,4 | 0.9 | 
-| Standard_B12ms | 12 | 1 | Intel(R) Xeon(R) CPU E5-2673 v3 oder v4 | 19 | 58,9 | 2.3 |
-| Standard_B16ms | 16 | 1 | Intel(R) Xeon(R) CPU E5-2673 v3 oder v4 | 18 | 75,4 | 2.1 |
-| Standard_B20ms | 20 | 1 | Intel(R) Xeon(R) CPU E5-2673 v3 oder v4| 2 | 90,6 | 1.3 |
+| Standard_B12ms | 12 | 1 | Intel(R) Xeon(R) CPU E5-2673 v3 oder v4 | 19 | 58,9 | 2.3 |
+| Standard_B16ms | 16 | 1 | Intel(R) Xeon(R) CPU E5-2673 v3 oder v4 | 18 | 75,4 | 2.1 |
+| Standard_B20ms | 20 | 1 | Intel(R) Xeon(R) CPU E5-2673 v3 oder v4| 2 | 90,6 | 1.3 |
 
 
 >[!NOTE]
@@ -91,12 +91,12 @@ Die folgenden SPECInt-Benchmarkergebnisse zeigen die Computeleistung für ausgew
 | Standard_D16s_v3 | 16 | 1 | Intel(R) Xeon(R) CPU E5-2673 v4 mit 2,30 GHz | 38 | 298,2 | 4.4 | 
 | Standard_D32s_v3 | 32 | 1 | Intel(R) Xeon(R) CPU E5-2673 v4 mit 2,30 GHz | 24 | 545,8 | 10,5 | 
 | Standard_D32s_v3 | 32 | 2 | Intel(R) Xeon(R) CPU E5-2673 v3 mit 2,40 GHz | 9 | 535,6 | 12,6 | 
-| Standard_D32-8s_v3 | 8 |  | Intel(R) Xeon(R) CPU E5-2673 v3 oder v4 | 6 | 166,0 | 8,8 |
-| Standard_D32-16s_v3 | 16 |  | Intel(R) Xeon(R) CPU E5-2673 v3 oder v4 | 4 | 300,8 | 6.4 |
-| Standard_D48s_v3 | 48 | 2 | Intel(R) Xeon(R) CPU E5-2673 v3 oder v4 | 1 | 838,0 | 0,0 |
+| Standard_D32-8s_v3 | 8 |  | Intel(R) Xeon(R) CPU E5-2673 v3 oder v4 | 6 | 166,0 | 8,8 |
+| Standard_D32-16s_v3 | 16 |  | Intel(R) Xeon(R) CPU E5-2673 v3 oder v4 | 4 | 300,8 | 6.4 |
+| Standard_D48s_v3 | 48 | 2 | Intel(R) Xeon(R) CPU E5-2673 v3 oder v4 | 1 | 838,0 | 0,0 |
 | Standard_D64s_v3 | 64 | 2 | Intel(R) Xeon(R) CPU E5-2673 v4 mit 2,30 GHz | 35 | 1070,6 | 2.4 | 
-| Standard_D64-16s_v3 | 16 |  | Intel(R) Xeon(R) CPU E5-2673 v3 oder v4 | 4 | 340,0 | 21,4 |
-| Standard_D64-32s_v3 | 32 |  | Intel(R) Xeon(R) CPU E5-2673 v3 oder v4 | 3 | 592,3 | 1.5 |
+| Standard_D64-16s_v3 | 16 |  | Intel(R) Xeon(R) CPU E5-2673 v3 oder v4 | 4 | 340,0 | 21,4 |
+| Standard_D64-32s_v3 | 32 |  | Intel(R) Xeon(R) CPU E5-2673 v3 oder v4 | 3 | 592,3 | 1.5 |
 
 ## <a name="dv3---general-compute"></a>Dv3 – Compute allgemein
 
@@ -114,7 +114,7 @@ Die folgenden SPECInt-Benchmarkergebnisse zeigen die Computeleistung für ausgew
 | Standard_D16_v3 | 16 | 1 | Intel(R) Xeon(R) CPU E5-2673 v4 mit 2,30 GHz | 32 | 300,7 | 8,8 | 
 | Standard_D32_v3 | 32 | 1 | Intel(R) Xeon(R) CPU E5-2673 v4 mit 2,30 GHz | 24 | 549,3 | 11,1 | 
 | Standard_D32_v3 | 32 | 2 | Intel(R) Xeon(R) CPU E5-2673 v3 mit 2,40 GHz | 7 | 538,6 | 9,4 | 
-| Standard_D48_v3 | 48 |  |  Intel(R) Xeon(R) CPU E5-2673 v3 oder v4 | 3 | 839,7 | 14.4 |
+| Standard_D48_v3 | 48 |  |  Intel(R) Xeon(R) CPU E5-2673 v3 oder v4 | 3 | 839,7 | 14.4 |
 | Standard_D64_v3 | 64 | 2 | Intel(R) Xeon(R) CPU E5-2673 v4 mit 2,30 GHz | 32 | 1070,6 | 12,4 | 
 
 ## <a name="dsv2---storage-optimized"></a>DSv2 – Datenspeicheroptimiert
@@ -389,4 +389,4 @@ Die folgenden SPECInt-Benchmarkergebnisse zeigen die Computeleistung für ausgew
 Die Windows-Zahlen wurden durch die Ausführung von [SPECint 2006](https://www.spec.org/cpu2006/results/rint2006.html) unter Windows Server berechnet. SPECint wurde mit der Option für die Basisrate (SPECint_rate2006) mit einer Kopie pro vCPU ausgeführt. SPECint besteht aus 12 getrennten Tests, die jeweils dreimal ausgeführt wurden. Der Mittelwert jedes Tests wurde gewichtet, um eine zusammengesetzte Bewertung zu erhalten. Diese Tests wurden dann auf mehreren virtuellen Computern ausgeführt, um die gezeigten Durchschnittsergebnisse zu liefern.
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Speicherkapazitäten, Details zu Datenträgern und weitere Überlegungen zur Auswahl von Größen für virtuelle Computer finden Sie unter [Größen für virtuelle Computer](../sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+* Speicherkapazitäten, Details zu Datenträgern und weitere Überlegungen zur Auswahl von Größen für virtuelle Computer finden Sie unter [Größen für virtuelle Computer](../sizes.md).

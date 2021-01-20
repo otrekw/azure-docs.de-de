@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/27/2016
 ms.author: duau
-ms.openlocfilehash: 431eaff9da95063648d3e80acb54be9cc5c25bc5
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: eaf50f3bdacaf5680bc5ecb1379faff20133b5ce
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96021689"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98184372"
 ---
 # <a name="using-load-balancing-services-in-azure"></a>Verwenden von Lastenausgleichsdiensten in Azure
 
@@ -92,11 +92,11 @@ Das folgende Diagramm zeigt die Architektur dieses Szenarios:
 4. Definieren Sie das virtuelle Netzwerk, Subnetz, die Front-End-IP-Adresse und Listenerkonfigurationen für das Anwendungsgateway. In diesem Szenario ist die Front-End-IP-Adresse **Öffentlich**, um das spätere Hinzufügen als Endpunkt zum Traffic Manager-Profil zu ermöglichen.
 5. Konfigurieren Sie den Listener mit einer der folgenden Optionen:
     * Wenn Sie HTTP verwenden, muss nichts konfiguriert werden. Klicken Sie auf **OK**.
-    * Wenn Sie HTTPS verwenden, sind weitere Konfigurationsschritte erforderlich. Siehe [Erstellen eines Anwendungsgateways](../application-gateway/application-gateway-create-gateway-portal.md) beginnend bei Schritt 9. Wenn Sie die Konfiguration abgeschlossen haben, klicken Sie auf **OK**.
+    * Wenn Sie HTTPS verwenden, sind weitere Konfigurationsschritte erforderlich. Siehe [Erstellen eines Anwendungsgateways](../application-gateway/quick-create-portal.md) beginnend bei Schritt 9. Wenn Sie die Konfiguration abgeschlossen haben, klicken Sie auf **OK**.
 
 #### <a name="configure-url-routing-for-application-gateways"></a>Konfigurieren des URL-Routings für Anwendungsgateways
 
-Ein Anwendungsgateway, das mit einer pfadbasierten Regel konfiguriert wird, benötigt bei Wahl eines Back-End-Pools zusätzlich zur Roundrobin-Verteilung ein Pfadmuster der Anforderungs-URL. In diesem Szenario fügen wir eine pfadbasierte Regel hinzu, um alle URLs mit "/images/\*" zum Imageserverpool zu leiten. Weitere Informationen zum Konfigurieren von auf dem URL-Pfad basierendem Routing für ein Anwendungsgateway finden Sie unter [Erstellen einer pfadbasierten Regel für ein Application Gateway über das Portal](../application-gateway/application-gateway-create-url-route-portal.md).
+Ein Anwendungsgateway, das mit einer pfadbasierten Regel konfiguriert wird, benötigt bei Wahl eines Back-End-Pools zusätzlich zur Roundrobin-Verteilung ein Pfadmuster der Anforderungs-URL. In diesem Szenario fügen wir eine pfadbasierte Regel hinzu, um alle URLs mit "/images/\*" zum Imageserverpool zu leiten. Weitere Informationen zum Konfigurieren von auf dem URL-Pfad basierendem Routing für ein Anwendungsgateway finden Sie unter [Erstellen einer pfadbasierten Regel für ein Application Gateway über das Portal](../application-gateway/create-url-route-portal.md).
 
 ![Application Gateway: Diagramm der Webebenen](./media/traffic-manager-load-balancing-azure/web-tier-diagram.png)
 
@@ -156,7 +156,7 @@ In diesem Szenario verteilt Load Balancer Verbindungen von der Webebene zu den D
 
 Wenn Ihr Cluster mit hoher Verfügbarkeit SQL Server AlwaysOn verwendet, finden Sie Schritt-für-Schritt-Anleitungen unter [Konfigurieren von Always On-Verfügbarkeitsgruppenlistenern](../azure-sql/virtual-machines/windows/availability-group-listener-powershell-configure.md).
 
-Weitere Informationen zum Konfigurieren eines internen Lastenausgleichs finden Sie unter [Erstellen eines internen Lastenausgleichs über das Azure-Portal](../load-balancer/load-balancer-get-started-ilb-arm-portal.md).
+Weitere Informationen zum Konfigurieren eines internen Lastenausgleichs finden Sie unter [Erstellen eines internen Lastenausgleichs über das Azure-Portal](../load-balancer/quickstart-load-balancer-standard-internal-portal.md).
 
 1. Klicken Sie im Azure-Portal im linken Bereich auf **Ressource erstellen** > **Netzwerk** > **Lastenausgleich**.
 2. Wählen Sie einen Namen für den Lastenausgleich aus.
@@ -210,5 +210,5 @@ Jetzt konfigurieren wir die IP-Adresse und den Load Balancer-Front-End-Port in d
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Was ist Traffic Manager?](traffic-manager-overview.md)
-* [Übersicht über Application Gateway](../application-gateway/application-gateway-introduction.md)
+* [Übersicht über Application Gateway](../application-gateway/overview.md)
 * [Übersicht über Azure Load Balancer](../load-balancer/load-balancer-overview.md)

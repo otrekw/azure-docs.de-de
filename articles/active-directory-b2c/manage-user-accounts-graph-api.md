@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 08/03/2020
+ms.date: 01/13/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 6abc3316e18fc70a2969bc220fd75e10e10f0e6e
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: ff3cd858de86d21637f4a7a9ab9d9a83c7022f5a
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97507777"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98178873"
 ---
 # <a name="manage-azure-ad-b2c-user-accounts-with-microsoft-graph"></a>Verwalten von Azure AD B2C-Benutzerkonten mit Microsoft Graph
 
@@ -43,85 +43,6 @@ Die folgenden Benutzerverwaltungsvorgänge sind in der [Microsoft Graph-API](/gr
 - [Aktualisieren eines Benutzers](/graph/api/user-update)
 - [Löschen eines Benutzers](/graph/api/user-delete)
 
-## <a name="user-properties"></a>Benutzereigenschaften
-
-### <a name="display-name-property"></a>Eigenschaft „displayName“ (Anzeigename)
-
-Der `displayName` ist der Name, der im Azure-Portal in der Benutzerverwaltung für den Benutzer und im Zugriffstoken, das Azure AD B2C an die Anwendung zurückgibt, angezeigt werden soll. Diese Eigenschaft ist obligatorisch.
-
-### <a name="identities-property"></a>Eigenschaft „Identities“ (Identitäten)
-
-Einem Kundenkonto (von einem Endbenutzer, einem Partner oder einem anderen Benutzer) kann einer der folgenden Identitätstypen zugeordnet werden:
-
-- **Lokale** Identität: Der Benutzername und das Kennwort werden lokal im Azure AD B2C-Verzeichnis gespeichert. Diese Identitäten werden häufig als „lokale Konten“ bezeichnet.
-- **Verbundidentität:** Die Identitäten dieser auch als *Konten für soziale Netzwerke* oder *Unternehmenskonten* bezeichneten Benutzer werden von einem Verbundidentitätsanbieter wie Facebook, Microsoft, AD FS oder Salesforce verwaltet.
-
-Ein Benutzer mit einem Kundenkonto kann sich mit mehreren Identitäten anmelden. Er kann z. B. den Benutzernamen, die E-Mail-Adresse, die Mitarbeiter-ID, eine Behördenkennung und andere Daten verwenden. Ein einzelnes Konto kann über mehrere Identitäten verfügen. Dabei kann es sich um lokale Identitäten und Identitäten für soziale Netzwerke handeln, die auch dasselbe Kennwort nutzen können.
-
-In der Microsoft Graph-API werden sowohl lokale als auch Verbundidentitäten im Benutzerattribut `identities` gespeichert, das den Typ [objectIdentity][graph-objectIdentity] aufweist. Die Sammlung `identities` stellt einen Satz von Identitäten dar, die für die Anmeldung bei einem Benutzerkonto verwendet werden. Diese Sammlung ermöglicht dem Benutzer, sich mit den zugehörigen Identitäten beim Benutzerkonto anzumelden.
-
-| Eigenschaft   | type |BESCHREIBUNG|
-|:---------------|:--------|:----------|
-|signInType|Zeichenfolge| Gibt die Benutzeranmeldetypen in Ihrem Verzeichnis an. Für ein lokales Konto: `emailAddress`, `emailAddress1`, `emailAddress2`, `emailAddress3`, `userName` oder ein beliebiger anderer Typ. Bei einem Konto für soziale Netzwerke muss dies auf `federated` festgelegt werden.|
-|Issuer (Aussteller)|Zeichenfolge|Gibt den Aussteller der Identität an. Bei lokalen Konten (bei denen **signInType** nicht `federated` ist) ist diese Eigenschaft der Standarddomänenname des lokalen B2C-Mandanten, z. B. `contoso.onmicrosoft.com`. Bei einer Identität für ein soziales Netzwerk (bei der der **signInType** `federated` ist) entspricht der Wert dem Namen des Ausstellers, z. B. `facebook.com`.|
-|issuerAssignedId|Zeichenfolge|Gibt den dem Benutzer vom Aussteller zugewiesenen eindeutigen Bezeichner an. Die Kombination aus **issuer** und **issuerAssignedId** muss innerhalb Ihres Mandanten eindeutig sein. Wenn für das lokale Konto **signInType** auf `emailAddress` oder `userName` festgelegt ist, stellt dies den Anmeldenamen für den Benutzer dar.<br>Wenn **signInType** auf <ul><li>`emailAddress` festgelegt ist (oder mit `emailAddress` beginnt wie bei `emailAddress1`), muss die **issuerAssignedId** eine gültige E-Mail-Adresse sein.</li><li>`userName` festgelegt (oder einen beliebigen anderen Wert) ist, muss die **issuerAssignedId** ein gültiger [lokaler Teil einer E-Mail-Adresse](https://tools.ietf.org/html/rfc3696#section-3) sein.</li><li>`federated` festgelegt ist, stellt die **issuerAssignedId** den eindeutigen Bezeichner des Verbundkontos dar.</li></ul>|
-
-Die folgende **Identities**-Eigenschaft mit einer lokalen Kontoidentität mit einem Anmeldenamen, einer E-Mail-Adresse für die Anmeldung und einer Social Media-Identität. 
-
- ```json
- "identities": [
-     {
-       "signInType": "userName",
-       "issuer": "contoso.onmicrosoft.com",
-       "issuerAssignedId": "johnsmith"
-     },
-     {
-       "signInType": "emailAddress",
-       "issuer": "contoso.onmicrosoft.com",
-       "issuerAssignedId": "jsmith@yahoo.com"
-     },
-     {
-       "signInType": "federated",
-       "issuer": "facebook.com",
-       "issuerAssignedId": "5eecb0cd"
-     }
-   ]
- ```
-
-Bei Verbundidentitäten handelt es sich abhängig vom Identitätsanbieter bei der **issuerAssignedId** um einen eindeutigen Wert für einen bestimmten Benutzer pro Anwendung oder ein Entwicklungskonto. Konfigurieren Sie die Azure AD B2C-Richtlinie mit der gleichen Anwendungs-ID, die zuvor vom Anbieter des sozialen Netzwerks zugewiesen wurde, oder mit der einer anderen Anwendung im selben Entwicklungskonto.
-
-### <a name="password-profile-property"></a>Eigenschaft „passwordProfile“ (Kennwortprofil)
-
-Für eine lokale Identität ist die **passwordProfile**-Eigenschaft erforderlich und enthält das Kennwort des Benutzers. Die `forceChangePasswordNextSignIn`-Eigenschaft muss auf `false` festgelegt werden.
-
-Für eine Verbundidentität (Identität eines sozialen Netzwerks) ist die **passwordProfile**-Eigenschaft nicht erforderlich.
-
-```json
-"passwordProfile" : {
-    "password": "password-value",
-    "forceChangePasswordNextSignIn": false
-  }
-```
-
-### <a name="password-policy-property"></a>Eigenschaft „passwordPolicies“ (Kennwortrichtlinien)
-
-Die Kennwortrichtlinie von Azure AD B2C (für lokale Konten) basiert auf der Richtlinie für [hohe Kennwortsicherheit](../active-directory/authentication/concept-sspr-policy.md) von Azure Active Directory. Die Azure AD B2C-Richtlinien zur Registrierung, Anmeldung und Kennwortzurücksetzung erfordern sichere Kennwörter, die nicht ablaufen.
-
-Wenn bei Benutzermigrationsvorgängen die Konten, die Sie migrieren möchten, über eine geringere Kennwortsicherheit als die [hohe Kennwortsicherheit](../active-directory/authentication/concept-sspr-policy.md) unter Azure AD B2C verfügen, können Sie die Erzwingung sicherer Kennwörter deaktivieren. Legen Sie zum Ändern der standardmäßigen Kennwortrichtlinie die Eigenschaft `passwordPolicies` auf `DisableStrongPassword` fest. Beispielsweise können Sie die Anforderung zum Erstellen eines Benutzers wie folgt ändern:
-
-```json
-"passwordPolicies": "DisablePasswordExpiration, DisableStrongPassword"
-```
-
-### <a name="extension-properties"></a>Erweiterungseigenschaften
-
-Für jede kundenorientierte Anwendung gelten spezifische Anforderungen im Hinblick auf die Informationen, die erfasst werden sollen. Der Azure AD B2C-Mandant umfasst einen integrierten Satz von in Eigenschaften gespeicherten Informationen, z. B. Vorname, Nachname, Ort und Postleitzahl. Mit Azure AD B2C haben Sie die Möglichkeit, den für die einzelnen Kundenkonten gespeicherten Satz von Eigenschaften zu erweitern. Weitere Informationen zum Definieren benutzerdefinierter Attribute finden Sie unter [Definieren benutzerdefinierter Attribute in Azure Active Directory B2C](user-flow-custom-attributes.md).
-
-Die Microsoft Graph-API unterstützt das Erstellen und Aktualisieren eines Benutzers mit Erweiterungsattributen. Erweiterungsattribute in den Graph-API werden gemäß der Konvention `extension_ApplicationClientID_attributename` benannt, wobei `ApplicationClientID` die **Anwendungs-ID (Client)** der Anwendung `b2c-extensions-app` ist (im Azure-Portal unter **App-Registrierungen** > **Alle Anwendungen**). Beachten Sie, dass die **Anwendungs-ID (Client)** in der Darstellung im Namen des Erweiterungsattributs keine Bindestriche enthält. Beispiel:
-
-```json
-"extension_831374b3bd5041bfaa54263ec9e050fc_loyaltyNumber": "212342"
-```
 
 ## <a name="code-sample-how-to-programmatically-manage-user-accounts"></a>Codebeispiel: Programmgesteuertes Verwalten von Benutzerkonten
 

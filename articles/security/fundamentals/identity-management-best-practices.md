@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: bf593eab54233ab65435585485dd8e3940f5addb
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: d2abc357a5a636aa15909a3645e284c978fb903f
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96489818"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98197590"
 ---
 # <a name="azure-identity-management-and-access-control-security-best-practices"></a>Azure-Identitätsverwaltung und Sicherheit der Zugriffssteuerung – Bewährte Methoden
 
@@ -275,7 +275,7 @@ Schreiben Sie bei der Anmeldung die mehrstufige Authentifizierung (Multi-Factor 
 **Detail**: Verwenden Sie eine Administrator-Arbeitsstation. Wählen Sie ein Sicherheitsniveau für die Arbeitsstation aus:
 
 - Hochsichere Produktivitätsgeräte bieten umfassende Sicherheit für Webbrowsen und anderen Produktivitätsaufgaben.
-- [Privileged Access Workstations (PAWs)](/windows-server/identity/securing-privileged-access/privileged-access-workstations) bieten für sensible Aufgaben ein dediziertes Betriebssystem, das vor Internetangriffen und Bedrohungsvektoren geschützt ist.
+- [Privileged Access Workstations (PAWs)](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/) bieten für sensible Aufgaben ein dediziertes Betriebssystem, das vor Internetangriffen und Bedrohungsvektoren geschützt ist.
 
 **Bewährte Methode**: Heben Sie die Bereitstellung von Administratorkonten auf, wenn Mitarbeiter Ihre Organisation verlassen.
 **Detail**: Pflegen Sie einen Prozess, mit dem Administratorkonten deaktiviert oder gelöscht werden, wenn Mitarbeiter Ihre Organisation verlassen.

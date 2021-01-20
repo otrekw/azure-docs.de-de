@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 03/25/2019
 ms.author: genli
-ms.openlocfilehash: 80bcac36271d86334e11cb3cd161cd96777e6fe5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2f242de3bfa6a2bc95dc46b4ca5c10222b755a2f
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87832449"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98200922"
 ---
 # <a name="reset-remote-desktop-services-or-its-administrator-password-in-a-windows-vm"></a>Zurücksetzen von Remotedesktopdienste oder dem zugehörigen Administratorkennwort auf einer Windows-VM
 Wenn Sie keine Verbindung mit einem virtuellen Windows-Computer herstellen können, können Sie Ihr lokales Administratorkennwort oder die Konfiguration von Remotedesktopdienste zurücksetzen (für Windows-Domänencontroller nicht unterstützt). Verwenden Sie zum Zurücksetzen des Kennworts entweder das Azure-Portal oder die VM-Zugriffserweiterung in Azure PowerShell. Setzen Sie das Kennwort für diesen lokalen Administrator zurück, nachdem Sie sich am virtuellen Computer angemeldet haben.  
@@ -86,14 +86,14 @@ Stellen Sie zunächst mit dem Cmdlet [Connect-AzAccount](/powershell/module/az.a
     > [!TIP]
     > Zu jedem Zeitpunkt kann eine VM nur einen einzelnen VM-Zugriffs-Agent haben. Verwenden Sie die Option `-ForceRerun`, um die Eigenschaften für den VM-Zugriffs-Agent festzulegen. Stellen Sie bei Verwendung von `-ForceRerun` sicher, dass Sie den gleichen Namen für den VM-Zugriffs-Agent verwenden, den Sie ggf. bereits in vorherigen Befehlen genutzt haben.
 
-1. Wenn Sie weiterhin nicht remote auf den virtuellen Computer zugreifen können, helfen Ihnen die Informationen unter [Problembehandlung bei Remotedesktopverbindungen mit einem Windows-basierten virtuellen Azure-Computer](troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) weiter. Wenn die Verbindung zum Windows-Domänencontroller getrennt wird, müssen Sie sie aus einer Domänencontrollersicherung wiederherstellen.
+1. Wenn Sie weiterhin nicht remote auf den virtuellen Computer zugreifen können, helfen Ihnen die Informationen unter [Problembehandlung bei Remotedesktopverbindungen mit einem Windows-basierten virtuellen Azure-Computer](troubleshoot-rdp-connection.md) weiter. Wenn die Verbindung zum Windows-Domänencontroller getrennt wird, müssen Sie sie aus einer Domänencontrollersicherung wiederherstellen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Falls die Erweiterung für den Zugriff auf virtuelle Computer nicht reagiert und Sie das Kennwort nicht zurücksetzen können, können Sie [das lokale Windows-Kennwort offline zurücksetzen](reset-local-password-without-agent.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Dies ist eine anspruchsvollere Methode, bei der Sie die virtuelle Festplatte des problematischen virtuellen Computers mit einem anderen virtuellen Computer verbinden müssen. Führen Sie zunächst die in diesem Artikel dokumentierten Schritte aus. Die Methode zur Offlinezurücksetzung des Kennworts sollte nur genutzt werden, wenn diese Schritte nicht funktionieren.
+- Falls die Erweiterung für den Zugriff auf virtuelle Computer nicht reagiert und Sie das Kennwort nicht zurücksetzen können, können Sie [das lokale Windows-Kennwort offline zurücksetzen](reset-local-password-without-agent.md). Dies ist eine anspruchsvollere Methode, bei der Sie die virtuelle Festplatte des problematischen virtuellen Computers mit einem anderen virtuellen Computer verbinden müssen. Führen Sie zunächst die in diesem Artikel dokumentierten Schritte aus. Die Methode zur Offlinezurücksetzung des Kennworts sollte nur genutzt werden, wenn diese Schritte nicht funktionieren.
 
-- [Informationen zu Azure-VM-Erweiterungen und -Features](../extensions/features-windows.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+- [Informationen zu Azure-VM-Erweiterungen und -Features](../extensions/features-windows.md)
 
 - [Herstellen einer Verbindung mit einem virtuellen Azure-Computer über RDP oder SSH](/previous-versions/azure/dn535788(v=azure.100))
 
-- [Problembehandlung bei Remotedesktopverbindungen mit einem Windows-basierten virtuellen Azure-Computer](troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+- [Problembehandlung bei Remotedesktopverbindungen mit einem Windows-basierten virtuellen Azure-Computer](troubleshoot-rdp-connection.md)

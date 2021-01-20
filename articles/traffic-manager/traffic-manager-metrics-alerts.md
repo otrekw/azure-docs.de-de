@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/11/2018
 ms.author: duau
-ms.openlocfilehash: 997e2e97161e6db7cdca04c1b79f5149a2e4c409
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: bd3588c207fe8828744a665539830d81805bd7b3
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96003530"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98184270"
 ---
 # <a name="traffic-manager-metrics-and-alerts"></a>Traffic Manager-Metriken und -Warnungen
 
@@ -58,10 +58,10 @@ Diese Metrik kann als ein aggregierter Wert angezeigt werden, der den Status all
 
 *Abbildung 4: Unterteilte Ansicht der Metrik zum Endpunktstatus*
 
-Sie können diese Metriken über das Portal des [Azure Monitor-Diensts](../azure-monitor/platform/metrics-supported.md), [REST-API](https://docs.microsoft.com/rest/api/monitor/), [Azure CLI](https://docs.microsoft.com/cli/azure/monitor) und [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.applicationinsights) oder über den Abschnitt „Metriken“ in der Traffic Manager-Portalumgebung nutzen.
+Sie können diese Metriken über das Portal des [Azure Monitor-Diensts](../azure-monitor/platform/metrics-supported.md), [REST-API](/rest/api/monitor/), [Azure CLI](/cli/azure/monitor) und [Azure PowerShell](/powershell/module/az.applicationinsights) oder über den Abschnitt „Metriken“ in der Traffic Manager-Portalumgebung nutzen.
 
 ## <a name="alerts-on-traffic-manager-metrics"></a>Warnungen für Traffic Manager-Metriken
-Zusätzlich zum Verarbeiten und Anzeigen von Metriken aus Traffic Manager ermöglicht Azure Monitor den Kunden, Warnungen zu konfigurieren und zu empfangen, die mit diesen Metriken verknüpft sind. Sie können auswählen, welche Bedingungen in diesen Metriken erfüllt sein müssen, damit eine Warnung auftritt, wie oft diese Bedingungen beobachtet werden müssen und wie die Warnungen an Sie gesendet werden sollen. Weitere Informationen finden Sie in der [Dokumentation zu Azure Monitor-Warnungen](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md).
+Zusätzlich zum Verarbeiten und Anzeigen von Metriken aus Traffic Manager ermöglicht Azure Monitor den Kunden, Warnungen zu konfigurieren und zu empfangen, die mit diesen Metriken verknüpft sind. Sie können auswählen, welche Bedingungen in diesen Metriken erfüllt sein müssen, damit eine Warnung auftritt, wie oft diese Bedingungen beobachtet werden müssen und wie die Warnungen an Sie gesendet werden sollen. Weitere Informationen finden Sie in der [Dokumentation zu Azure Monitor-Warnungen](../azure-monitor/platform/alerts-metric.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 - Erfahren Sie mehr über den [Azure Monitor-Dienst](../azure-monitor/platform/metrics-supported.md).

@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 01/08/2020
 ms.author: cynthn
-ms.openlocfilehash: f3c1e305024eb255a85aa470105d99edd3c26982
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: cae75c88b4803912565e010f744a7757a3b98f04
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92201306"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201551"
 ---
 # <a name="how-to-detach-a-data-disk-from-a-windows-virtual-machine"></a>Trennen eines Datenträgers von einem virtuellen Windows-Computer
 
@@ -53,11 +53,11 @@ Sie können einen Datenträger für Daten *im laufenden Betrieb* entfernen. Stel
 1. Wählen Sie im Menü auf der linken Seite die Option **Virtuelle Computer** aus.
 1. Wählen Sie den virtuellen Computer mit dem zu trennenden Datenträger aus.
 1. Wählen Sie unter **Einstellungen** die Option **Datenträger** aus.
-1. Klicken Sie im Bereich **Datenträger** ganz rechts neben dem Datenträger, den Sie trennen möchten, zum Löschen auf die Schaltfläche **X** .
+1. Klicken Sie im Bereich **Datenträger** ganz rechts neben dem Datenträger, den Sie trennen möchten, zum Löschen auf die Schaltfläche **X**.
 1. Wählen Sie oben auf der Seite **Speichern** aus, um Ihre Änderungen zu speichern.
 
 Der Datenträger verbleibt im Speicher, ist jedoch nicht mehr an einen virtuellen Computer angefügt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Wenn Sie den Datenträger wiederverwenden möchten, können Sie ihn einfach [an einen anderen virtuellen Computer anfügen](attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+Wenn Sie den Datenträger wiederverwenden möchten, können Sie ihn einfach [an einen anderen virtuellen Computer anfügen](attach-managed-disk-portal.md)

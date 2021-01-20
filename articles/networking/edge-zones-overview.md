@@ -2,17 +2,17 @@
 title: Informationen zur Vorschau von Azure Edge Zone
 description: 'In diesem Artikel erfahren Sie mehr über eines der Edgecomputing-Angebote von Microsoft: Azure Edge Zone.'
 services: vnf-manager
-author: ganesr
+author: cherylmc
 ms.service: vnf-manager
 ms.topic: article
-ms.date: 07/07/2020
-ms.author: ganesr
-ms.openlocfilehash: 68aa3342ab09be73a82f4f896ffdff99d15a5350
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 01/13/2021
+ms.author: cherylmc
+ms.openlocfilehash: 04555303d5128db6c183d27a0c5fcb69063fdc28
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91329570"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98185409"
 ---
 # <a name="about-azure-edge-zone-preview"></a>Informationen zur Vorschau von Azure Edge Zone
 
@@ -38,7 +38,7 @@ Es gibt drei Typen von Zonen in Azure Edge Zone:
 
 ![Azure Edge Zone-Zonen](./media/edge-zones-overview/edge-zones.png "Azure Edge Zones")
 
-Azure Edge Zone-Zonen sind kleine Ausläufer des Azure-Netzwerks, die sich in Ballungsräumen befinden, die weit von den eigentlichen Azure-Regionen entfernt sind. Azure Edge Zone-Zonen unterstützen virtuelle Computer, Container und ausgewählte Azure-Dienste, mit denen Sie latenzempfindliche und durchsatzintensive Anwendungen in der Nähe der Endbenutzer ausführen können. Azure Edge Zone-Zonen gehören zu dem globalen Netzwerk von Microsoft. Sie bieten sichere und zuverlässige Konnektivität mit einer hohen Bandbreite zwischen Anwendungen, die in der Edgezone in der Nähe der Benutzer ausgeführt werden. Darüber hinaus bieten sie den vollen Umfang von Azure-Diensten, die in den Azure-Regionen ausgeführt werden. Azure Edge Zone-Zonen gehören Microsoft und werden von Microsoft betrieben. Sie können dieselben Azure-Tools und dasselbe Portal verwenden, um Dienste in Azure Edge Zone-Zonen zu verwalten und bereitzustellen.
+Azure Edge Zone-Zonen sind kleine Ausläufer des Azure-Netzwerks, die sich in Ballungsräumen befinden, die weit von den eigentlichen Azure-Regionen entfernt sind. Azure Edge Zone-Zonen unterstützen virtuelle Computer, Container und ausgewählte Azure-Dienste, mit denen Sie latenzempfindliche und durchsatzintensive Anwendungen in der Nähe der Endbenutzer ausführen können. Azure Edge Zone-Zonen gehören zu dem globalen Netzwerk von Microsoft. Sie bieten sichere und zuverlässige Konnektivität mit einer hohen Bandbreite zwischen Anwendungen, die in der Edgezone in der Nähe der Benutzer ausgeführt werden. Azure Edge Zone-Zonen gehören Microsoft und werden von Microsoft betrieben. Sie können dieselben Azure-Tools und dasselbe Portal verwenden, um Dienste in Azure Edge Zone-Zonen zu verwalten und bereitzustellen.
 
 Typische Anwendungsfälle sind:
 
@@ -61,7 +61,7 @@ Weitere Informationen erhalten Sie beim [Supportteam für Azure Edge Zone-Zonen]
 
 Azure Edge Zone-Zonen mit Netzbetreiber sind kleine Ausläufer des Azure-Netzwerks, die in den Rechenzentren von Mobilfunkbetreibern in Ballungszentren platziert werden. Die Infrastruktur von Azure Edge Zone-Zonen mit Netzbetreiber befindet sich nur einen Hop vom 5G-Netzwerk des Mobilfunkanbieters entfernt. Aufgrund dieser Nähe beträgt die Latenz zwischen Anwendungen und mobilen Geräten weniger als 10 Millisekunden.
 
-Azure Edge Zone-Zonen mit Netzbetreiber werden in den Rechenzentren von Mobilfunkbetreibern bereitgestellt und sind an das globale Netzwerk von Microsoft angebunden. Sie bieten sichere und zuverlässige Konnektivität mit einer hohen Bandbreite zwischen Anwendungen, die in der Nähe der Benutzer ausgeführt werden. Darüber hinaus bieten sie den vollen Umfang von Azure-Diensten, die in den Azure-Regionen ausgeführt werden. Entwickler können dieselben vertrauten Tools zum Erstellen und Bereitstellen von Diensten in den Edge Zones verwenden.
+Azure Edge Zone-Zonen mit Netzbetreiber werden in den Rechenzentren von Mobilfunkbetreibern bereitgestellt und sind an das globale Netzwerk von Microsoft angebunden. Sie bieten sichere und zuverlässige Konnektivität mit einer hohen Bandbreite zwischen Anwendungen, die in der Nähe der Benutzer ausgeführt werden. Entwickler können dieselben vertrauten Tools zum Erstellen und Bereitstellen von Diensten in den Edge Zones verwenden.
 
 Typische Anwendungsfälle sind:
 

@@ -8,16 +8,16 @@ ms.topic: how-to
 ms.date: 06/22/2017
 ms.author: cynthn
 ms.custom: devx-track-python
-ms.openlocfilehash: a7117d30eb1774753f21e82ad5f812a7309d8386
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 15714405c683889c0f783359011a0f0f5f9f3f43
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96483095"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201789"
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-python"></a>Erstellen und Verwalten von Windows-VMs in Azure mithilfe von Python
 
-Für einen [virtuellen Azure-Computer](overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) (VM) sind mehrere unterstützende Azure-Ressourcen erforderlich. In diesem Artikel wird das Erstellen, Verwalten und Löschen von VM-Ressourcen mithilfe von Python behandelt. Folgendes wird vermittelt:
+Für einen [virtuellen Azure-Computer](overview.md) (VM) sind mehrere unterstützende Azure-Ressourcen erforderlich. In diesem Artikel wird das Erstellen, Verwalten und Löschen von VM-Ressourcen mithilfe von Python behandelt. Folgendes wird vermittelt:
 
 > [!div class="checklist"]
 > * Erstellen eines Visual Studio-Projekts
@@ -342,7 +342,7 @@ Nachdem Sie nun alle benötigten Ressourcen erstellt haben, können Sie einen vi
     ```
 
     > [!NOTE]
-    > In diesem Tutorial wird eine virtuelle Maschine erstellt, auf dem eine Version des Windows Server-Betriebssystems ausgeführt wird. Weitere Informationen zur Auswahl von anderen Images finden Sie unter [Navigieren zu und Auswählen von Images virtueller Linux-Computer in Azure mithilfe der Befehlszeilenschnittstelle oder PowerShell](../linux/cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+    > In diesem Tutorial wird eine virtuelle Maschine erstellt, auf dem eine Version des Windows Server-Betriebssystems ausgeführt wird. Weitere Informationen zur Auswahl von anderen Images finden Sie unter [Navigieren zu und Auswählen von Images virtueller Linux-Computer in Azure mithilfe der Befehlszeilenschnittstelle oder PowerShell](../linux/cli-ps-findimage.md).
     > 
     > 
 
@@ -492,7 +492,7 @@ Viele Aspekte der Bereitstellung müssen berücksichtigt werden, wenn Sie die Gr
 
 ### <a name="add-a-data-disk-to-the-vm"></a>Hinzufügen eines Datenträgers zur VM
 
-Virtuelle Computer können über einen oder mehrere [Datenträger](../managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) verfügen, die als VHDs gespeichert werden.
+Virtuelle Computer können über einen oder mehrere [Datenträger](../managed-disks-overview.md) verfügen, die als VHDs gespeichert werden.
 
 1. Um einen Datenträger zum virtuellen Computer hinzuzufügen, fügen Sie diese Funktion nach den Variablen in der PY-Datei hinzu: 
 

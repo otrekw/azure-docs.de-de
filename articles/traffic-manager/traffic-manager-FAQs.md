@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/26/2019
 ms.author: duau
-ms.openlocfilehash: 86758c355566fb67ebd8a606068e2044e0b8bd64
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 17ccfeb709c530a868a75ecd87052618aaea4846
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89400176"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98184576"
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>Häufig gestellte Fragen (FAQ) zu Traffic Manager
 
@@ -96,7 +96,7 @@ Der Hauptunterschied zwischen diesen zwei gängigen Routingmethoden ist, dass da
 
 ### <a name="what-are-the-regions-that-are-supported-by-traffic-manager-for-geographic-routing"></a>Welche Bereiche werden von Traffic Manager für das geografische Routing unterstützt?
 
-Die Landes/Regionshierarchie, die von Traffic Manager verwendet wird, finden Sie [hier](traffic-manager-geographic-regions.md). Diese Seite wird jeweils auf dem neuesten Änderungsstatus gehalten, jedoch können Sie die gleichen Informationen auch programmgesteuert mithilfe der [Azure Traffic Manager-REST-API](https://docs.microsoft.com/rest/api/trafficmanager/) abrufen. 
+Die Landes/Regionshierarchie, die von Traffic Manager verwendet wird, finden Sie [hier](traffic-manager-geographic-regions.md). Diese Seite wird jeweils auf dem neuesten Änderungsstatus gehalten, jedoch können Sie die gleichen Informationen auch programmgesteuert mithilfe der [Azure Traffic Manager-REST-API](/rest/api/trafficmanager/) abrufen. 
 
 ### <a name="how-does-traffic-manager-determine-where-a-user-is-querying-from"></a>Wie bestimmt Traffic Manager, woher die Abfrage eines Benutzers stammt?
 
@@ -116,11 +116,11 @@ Nein, der Standort des Endpunkts bringt keine Einschränkungen hinsichtlich der 
 
 ### <a name="can-i-assign-geographic-regions-to-endpoints-in-a-profile-that-is-not-configured-to-do-geographic-routing"></a>Kann ich geografische Regionen Endpunkten in einem Profil zuordnen, das nicht für geografisches Routing konfiguriert ist?
 
-Ja, falls die Routingmethode eines Profils nicht geografisch ist, können Sie die [Azure Traffic Manager-REST-API](https://docs.microsoft.com/rest/api/trafficmanager/) verwenden, um Endpunkten im betreffenden Profil geografische Regionen zuzuweisen. Diese Konfiguration wird für Profile von nicht geografischen Routingtypen ignoriert. Wenn Sie ein derartiges Profil zu einem späteren Zeitpunkt auf den geografischen Routingtyp umstellen, kann Traffic Manager diese Zuordnungen verwenden.
+Ja, falls die Routingmethode eines Profils nicht geografisch ist, können Sie die [Azure Traffic Manager-REST-API](/rest/api/trafficmanager/) verwenden, um Endpunkten im betreffenden Profil geografische Regionen zuzuweisen. Diese Konfiguration wird für Profile von nicht geografischen Routingtypen ignoriert. Wenn Sie ein derartiges Profil zu einem späteren Zeitpunkt auf den geografischen Routingtyp umstellen, kann Traffic Manager diese Zuordnungen verwenden.
 
 ### <a name="why-am-i-getting-an-error-when-i-try-to-change-the-routing-method-of-an-existing-profile-to-geographic"></a>Warum tritt ein Fehler auf, wenn ich versuche, die Routingmethode eines vorhandenen Profils in geografisch zu ändern?
 
-Allen Endpunkten in einem Profil mit geografischem Routing muss mindestens eine geografische Region zugeordnet sein. Um ein vorhandenes Profil in den geografischen Routingtyp zu konvertieren, müssen Sie zuerst mithilfe der [Azure Traffic Manager-REST-API](https://docs.microsoft.com/rest/api/trafficmanager/) allen seinen Endpunkten geografische Regionen zuordnen, bevor Sie den Routingtyp in geografisch ändern. Wenn Sie das Portal verwenden, löschen Sie zuerst die Endpunkte, ändern Sie die Routingmethode des Profils in geografisch und fügen Sie anschließend alle Endpunkte zusammen mit ihrer geografischen Regionszuordnung hinzu.
+Allen Endpunkten in einem Profil mit geografischem Routing muss mindestens eine geografische Region zugeordnet sein. Um ein vorhandenes Profil in den geografischen Routingtyp zu konvertieren, müssen Sie zuerst mithilfe der [Azure Traffic Manager-REST-API](/rest/api/trafficmanager/) allen seinen Endpunkten geografische Regionen zuordnen, bevor Sie den Routingtyp in geografisch ändern. Wenn Sie das Portal verwenden, löschen Sie zuerst die Endpunkte, ändern Sie die Routingmethode des Profils in geografisch und fügen Sie anschließend alle Endpunkte zusammen mit ihrer geografischen Regionszuordnung hinzu.
 
 ### <a name="why-is-it-strongly-recommended-that-customers-create-nested-profiles-instead-of-endpoints-under-a-profile-with-geographic-routing-enabled"></a>Warum wird es Kunden dringend empfohlen, in einem Profil mit aktiviertem geografischem Routing geschachtelte Profile anstelle von Endpunkten zu erstellen?
 
@@ -306,7 +306,7 @@ Die Preise für die Datenverkehrsansicht basieren auf der Anzahl von Datenpunkte
 
 Die Verwendung von Endpunkten aus mehreren Abonnements ist mit Azure-Web-Apps nicht möglich. Für Azure-Web-Apps dürfen mit Web-Apps verwendete, benutzerdefinierte Domänennamen nur innerhalb eines einzelnen Abonnements genutzt werden. Es ist nicht möglich, Web-Apps aus mehreren Abonnements mit dem gleichen Domänennamen zu verwenden.
 
-Für andere Endpunkttypen kann Traffic Manager mit Endpunkten aus mehreren Abonnements verwendet werden. In Resource Manager können Endpunkte aus jedem Abonnement zu Traffic Manager hinzugefügt werden, solange die Person, die das Traffic Manager-Profil konfiguriert, über Lesezugriff für den Endpunkt verfügt. Diese Berechtigungen können über die [rollenbasierte Zugriffssteuerung von Azure (Role-Based Access Control, RBAC)](../role-based-access-control/role-assignments-portal.md) gewährt werden. Endpunkte aus anderen Abonnements können über [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.trafficmanager/new-aztrafficmanagerendpoint) oder die [Azure CLI](https://docs.microsoft.com/cli/azure/network/traffic-manager/endpoint?view=azure-cli-latest#az-network-traffic-manager-endpoint-create) hinzugefügt werden.
+Für andere Endpunkttypen kann Traffic Manager mit Endpunkten aus mehreren Abonnements verwendet werden. In Resource Manager können Endpunkte aus jedem Abonnement zu Traffic Manager hinzugefügt werden, solange die Person, die das Traffic Manager-Profil konfiguriert, über Lesezugriff für den Endpunkt verfügt. Diese Berechtigungen können über die [rollenbasierte Zugriffssteuerung von Azure (Role-Based Access Control, RBAC)](../role-based-access-control/role-assignments-portal.md) gewährt werden. Endpunkte aus anderen Abonnements können über [Azure PowerShell](/powershell/module/az.trafficmanager/new-aztrafficmanagerendpoint) oder die [Azure CLI](/cli/azure/network/traffic-manager/endpoint?view=azure-cli-latest#az-network-traffic-manager-endpoint-create) hinzugefügt werden.
 
 ### <a name="can-i-use-traffic-manager-with-cloud-service-staging-slots"></a>Kann ich Traffic Manager mit „Stagingslots“ des Clouddiensts verwenden?
 
@@ -345,9 +345,9 @@ Für Azure Resource Manager ist es erforderlich, dass für alle Ressourcengruppe
 
 ### <a name="how-do-i-determine-the-current-health-of-each-endpoint"></a>Wie kann ich den aktuellen Integritätsstatus jedes Endpunkts bestimmen?
 
-Der aktuelle Überwachungsstatus jedes Endpunkts sowie das Gesamtprofil werden im Azure-Portal angezeigt. Diese Informationen sind auch über die [REST-API](https://msdn.microsoft.com/library/azure/mt163667.aspx) von Traffic Manager, [PowerShell-Cmdlets](https://docs.microsoft.com/powershell/module/az.trafficmanager) und die [plattformübergreifende Azure-Befehlszeilenschnittstelle](../cli-install-nodejs.md) verfügbar.
+Der aktuelle Überwachungsstatus jedes Endpunkts sowie das Gesamtprofil werden im Azure-Portal angezeigt. Diese Informationen sind auch über die [REST-API](/rest/api/trafficmanager/) von Traffic Manager, [PowerShell-Cmdlets](/powershell/module/az.trafficmanager) und die [plattformübergreifende Azure-Befehlszeilenschnittstelle](/cli/azure/install-classic-cli) verfügbar.
 
-Sie können auch mit Azure Monitor die Integrität Ihrer Endpunkte nachverfolgen und eine visuelle Darstellung anzeigen. Weitere Informationen zum Verwenden von Azure Monitor finden Sie in der [Dokumentation zur Azure-Überwachung](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics).
+Sie können auch mit Azure Monitor die Integrität Ihrer Endpunkte nachverfolgen und eine visuelle Darstellung anzeigen. Weitere Informationen zum Verwenden von Azure Monitor finden Sie in der [Dokumentation zur Azure-Überwachung](../azure-monitor/platform/data-platform.md).
 
 ### <a name="can-i-monitor-https-endpoints"></a>Kann ich HTTPS-Endpunkte überwachen?
 
@@ -458,7 +458,7 @@ Die Anzahl der Traffic Manager-Integritätsprüfungen Ihres Endpunkts hängt von
 
 ### <a name="how-can-i-get-notified-if-one-of-my-endpoints-goes-down"></a>Wie kann ich benachrichtigt werden, wenn einer meiner Endpunkte ausfällt?
 
-Eine der vom Traffic Manager bereitgestellten Metriken ist der Integritätsstatus von Endpunkten in einem Profil. Dies wird als Aggregat aller Endpunkte in einem Profil angezeigt (z.B. sind 75% Ihrer Endpunkte fehlerfrei) oder auf Pro-Endpunkt-Ebene. Azure Monitor stellt Traffic Manager-Metriken bereit, und Sie können dessen [Warnfunktionen](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md) verwenden, um bei einer Änderung des Integritätsstatus Ihres Endpunkts Benachrichtigungen zu erhalten. Weitere Informationen finden Sie unter [Traffic Manager-Metriken und -Warnungen](traffic-manager-metrics-alerts.md).  
+Eine der vom Traffic Manager bereitgestellten Metriken ist der Integritätsstatus von Endpunkten in einem Profil. Dies wird als Aggregat aller Endpunkte in einem Profil angezeigt (z.B. sind 75% Ihrer Endpunkte fehlerfrei) oder auf Pro-Endpunkt-Ebene. Azure Monitor stellt Traffic Manager-Metriken bereit, und Sie können dessen [Warnfunktionen](../azure-monitor/platform/alerts-metric.md) verwenden, um bei einer Änderung des Integritätsstatus Ihres Endpunkts Benachrichtigungen zu erhalten. Weitere Informationen finden Sie unter [Traffic Manager-Metriken und -Warnungen](traffic-manager-metrics-alerts.md).  
 
 ## <a name="traffic-manager-nested-profiles"></a>Geschachtelte Profile in Traffic Manager
 
