@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/08/2018
 ms.author: kumud
-ms.openlocfilehash: 6eab1803bf5adab42be87b5f8567682c6d75947e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8cb1a490ac8edf2630253b45d99c3394bbe721b8
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "74483531"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98234153"
 ---
 # <a name="disaster-recovery-using-azure-dns-and-traffic-manager"></a>Notfallwiederherstellung mit Azure DNS und Traffic Manager
 
@@ -45,7 +45,7 @@ Die meisten Enterprise-Kunden entscheiden sich für eine Architektur für mehrer
     
     *Abbildung: Notfallwiederherstellungs-Konfiguration Aktiv/Passiv mit Standbymodus „Betriebsbereit“*
     
-Weiter Informationen zu Failover und Hochverfügbarkeit finden Sie in [Notfallwiederherstellung für Azure-Anwendungen](https://docs.microsoft.com/azure/architecture/resiliency/disaster-recovery-azure-applications).
+Weiter Informationen zu Failover und Hochverfügbarkeit finden Sie in [Notfallwiederherstellung für Azure-Anwendungen](/azure/architecture/resiliency/disaster-recovery-azure-applications).
 
 
 ## <a name="planning-your-disaster-recovery-architecture"></a>Planen Ihrer Notfallwiederherstellungs-Architektur
@@ -54,7 +54,7 @@ Es gibt zwei technische Aspekte, die bei der Einrichtung Ihrer Notfallwiederhers
 -  Verwenden eines Bereitstellungsmechanismus zum Replizieren von Instanzen, Daten und Konfigurationen zwischen primären und Standbyumgebungen. Diese Art von Notfallwiederherstellung kann systemintern über Azure Site Recovery über Appliances/Dienste von Microsoft Azure-Partnern wie Veritas oder NetApp erfolgen. 
 - Entwickeln einer Lösung zum Umleiten von Netzwerkdaten-/Webdatenverkehr vom primären Standort zum Standbystandort. Diese Art von Notfallwiederherstellung kann über Azure DNS, Azure Traffic Manager (DNS) oder globale Lastenausgleichsmodule von Drittanbietern erreicht werden.
 
-Dieser Artikel ist auf Ansätze bezüglich der Weiterleitung von Netzwerkdaten- und Webdatenverkehr beschränkt. Anweisungen zur Einrichtung von Azure Site Recovery finden Sie in der [Dokumentation für Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/).
+Dieser Artikel ist auf Ansätze bezüglich der Weiterleitung von Netzwerkdaten- und Webdatenverkehr beschränkt. Anweisungen zur Einrichtung von Azure Site Recovery finden Sie in der [Dokumentation für Azure Site Recovery](../site-recovery/index.yml).
 DNS ist einer der effizientesten Mechanismen, um den Netzwerkdatenverkehr umzuleiten, da DNS oft global ist und sich außerhalb des Rechenzentrums befindet und von Ausfällen auf regionaler oder Verfügbarkeitszonenebene (AZ) isoliert ist. Es kann ein DNS-basierter Failovermechanismus verwendet werden und in Azure können zwei DNS-Dienste in gewisser Weise dasselbe erreichen – Azure DNS (autoritatives DNS) und Azure Traffic Manager (DNS-basiertes intelligentes Datenverkehrsrouting). 
 
 Zur Besprechung der in diesem Artikel aufgeführten Lösungen müssen Sie einige wenige DNS-Konzepte verstehen, die in großem Umfang verwendet werden:
@@ -155,7 +155,7 @@ Auf ähnliche Weise erstellen Sie auch den Notfallwiederherstellungs-Endpunkt in
 
 ### <a name="step-3-set-up-health-check-and-failover-configuration"></a>Schritt 3: Einrichten der Integritätsprüfungen und der Failoverkonfiguration
 
-In diesem Schritt legen Sie die DNS-TTL auf 10 Sekunden, die von den meisten rekursiven Resolvern mit Internetzugriff berücksichtigt wird. Diese Konfigurationen bedeutet, dass ein DNS-Resolver die Informationen für maximal 10 Sekunden zwischenspeichert. Für die Einstellungen des Endpunktmonitors ist der Pfad aktuell auf / oder Stamm eingestellt, aber Sie können die Endpunkteinstellungen anpassen, um einen Pfad auszuwerten, z. B. prod.contoso.com/index. Das nachfolgende Beispiel ist**https** das Testprotokoll. Sie können jedoch auch **http** oder **tcp** auswählen. Die Wahl des Protokolls hängt von der Endanwendung ab. Das Testintervall ist auf 10 Sekunden festgelegt, sodass schnelle Tests möglich sind, und die Anzahl der Wiederholungen ist auf 3 gesetzt. Folglich führt Traffic Manager ein Failover auf den zweiten Endpunkt durch, wenn in drei aufeinander folgende Intervallen ein Fehler registriert wird. Die folgende Formel definiert die Gesamtzeit für ein automatisches Failover: Zeit für Failover = TTL + Wiederholung * Testintervall. In diesem Fall ist der Wert 10 + 3 * 10 = 40 Sekunden (Max).
+In diesem Schritt legen Sie die DNS-TTL auf 10 Sekunden, die von den meisten rekursiven Resolvern mit Internetzugriff berücksichtigt wird. Diese Konfigurationen bedeutet, dass ein DNS-Resolver die Informationen für maximal 10 Sekunden zwischenspeichert. Für die Einstellungen des Endpunktmonitors ist der Pfad aktuell auf / oder Stamm eingestellt, aber Sie können die Endpunkteinstellungen anpassen, um einen Pfad auszuwerten, z. B. prod.contoso.com/index. Das nachfolgende Beispiel ist **https** das Testprotokoll. Sie können jedoch auch **http** oder **tcp** auswählen. Die Wahl des Protokolls hängt von der Endanwendung ab. Das Testintervall ist auf 10 Sekunden festgelegt, sodass schnelle Tests möglich sind, und die Anzahl der Wiederholungen ist auf 3 gesetzt. Folglich führt Traffic Manager ein Failover auf den zweiten Endpunkt durch, wenn in drei aufeinander folgende Intervallen ein Fehler registriert wird. Die folgende Formel definiert die Gesamtzeit für ein automatisches Failover: Zeit für Failover = TTL + Wiederholung * Testintervall. In diesem Fall ist der Wert 10 + 3 * 10 = 40 Sekunden (Max).
 Wenn die Anzahl der Wiederholungen auf 1 sowie die TTL auf 10 Sekunden festgelegt ist, beträgt die Zeit für das Failover 10 + 1 * 10 = 20 Sekunden. Leben Sie die Anzahl der Wiederholungen auf einen Wert von mehr als **1** fest, um die Wahrscheinlichkeit von Failovers aufgrund von falsch positiven Werten oder kleineren Netzwerk-Blips zu vermeiden. 
 
 
@@ -170,12 +170,3 @@ Während eines Notfalls wird der primäre Endpunkt getestet, der Status ändert 
 ## <a name="next-steps"></a>Nächste Schritte
 - Weitere Informationen zu [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md).
 - [Weitere Informationen zu Azure DNS](../dns/dns-overview.md).
-
-
-
-
-
-
-
-
-

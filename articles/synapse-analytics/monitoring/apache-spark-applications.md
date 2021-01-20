@@ -9,12 +9,12 @@ ms.subservice: monitoring
 ms.date: 04/15/2020
 ms.author: mahi
 ms.reviewer: mahi
-ms.openlocfilehash: 16b37258d922db59f520d4e30c45773f6d1108cf
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 2f9fa6e7ef9a7ee8ea7dd2a09622f26f6fd9739e
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93341069"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98223124"
 ---
 # <a name="use-synapse-studio-to-monitor-your-apache-spark-applications"></a>Verwenden von Synapse Studio zum Überwachen Ihrer Apache Spark-Anwendungen
 
@@ -33,7 +33,7 @@ Dieses Tutorial enthält die folgenden Aufgaben:
 
 Vergewissern Sie sich zunächst, dass die folgenden Anforderungen erfüllt sind bzw. dass Folgendes vorhanden ist:
 
-- Ein Synapse Studio-Arbeitsbereich. Entsprechende Anweisungen finden Sie unter [Erstellen eines Synapse Studio-Arbeitsbereichs](https://docs.microsoft.com/azure/machine-learning/how-to-manage-workspace#create-a-workspace).
+- Ein Synapse Studio-Arbeitsbereich. Entsprechende Anweisungen finden Sie unter [Erstellen eines Synapse Studio-Arbeitsbereichs](../../machine-learning/how-to-manage-workspace.md#create-a-workspace).
 
 - Ein Apache Spark-Pool.
 
@@ -43,11 +43,11 @@ Sie können alle Apache Spark-Anwendungen unter **Überwachen** -> **Apache Spar
 
 ## <a name="view-completed-apache-spark-application"></a>Anzeigen abgeschlossener Apache Spark-Anwendungen
 
-Öffnen Sie **Überwachen** , und wählen Sie dann **Apache Spark-Anwendungen** aus. Um die Details zu abgeschlossenen Apache Spark-Anwendungen anzuzeigen, wählen Sie die Apache Spark-Anwendung aus, und zeigen Sie die Details an.
+Öffnen Sie **Überwachen**, und wählen Sie dann **Apache Spark-Anwendungen** aus. Um die Details zu abgeschlossenen Apache Spark-Anwendungen anzuzeigen, wählen Sie die Apache Spark-Anwendung aus, und zeigen Sie die Details an.
 
   ![Abgeschlossenen Auftrag auswählen](./media/how-to-monitor-spark-applications/select-completed-job.png)
 
-1. Überprüfen Sie **Abgeschlossene Aufgaben** , **Status** und **Gesamtdauer**.
+1. Überprüfen Sie **Abgeschlossene Aufgaben**, **Status** und **Gesamtdauer**.
 
 2. Aktualisieren Sie die Protokollabfrage.
 
@@ -92,17 +92,17 @@ Sie können alle Apache Spark-Anwendungen unter **Überwachen** -> **Apache Spar
 
 ## <a name="monitor-running-apache-spark-application"></a>Überwachen aktiver Apache Spark-Anwendungen
 
-Öffnen Sie **Überwachen** , und wählen Sie dann **Apache Spark-Anwendungen** aus. Um die Details zu den ausgeführten Apache Spark-Anwendungen anzuzeigen, wählen Sie die sendende Apache Spark-Anwendung aus, und zeigen Sie die Details an. Wenn die Apache Spark-Anwendung noch ausgeführt wird, können Sie den Fortschritt überwachen.
+Öffnen Sie **Überwachen**, und wählen Sie dann **Apache Spark-Anwendungen** aus. Um die Details zu den ausgeführten Apache Spark-Anwendungen anzuzeigen, wählen Sie die sendende Apache Spark-Anwendung aus, und zeigen Sie die Details an. Wenn die Apache Spark-Anwendung noch ausgeführt wird, können Sie den Fortschritt überwachen.
 
    ![Ausgeführten Auftrag auswählen](./media/how-to-monitor-spark-applications/select-running-job.png)
 
-1. Überprüfen Sie **Abgeschlossene Aufgaben** , **Status** und **Gesamtdauer**.
+1. Überprüfen Sie **Abgeschlossene Aufgaben**, **Status** und **Gesamtdauer**.
 
 2. **Brechen** Sie die Apache Spark-Anwendung ab.
 
 3. **Aktualisieren** Sie die Protokollabfrage.
 
-4. Klicken Sie auf die Schaltfläche für die **Spark-Benutzeroberfläche** , um zur Seite „Spark-Auftrag“ zu wechseln.
+4. Klicken Sie auf die Schaltfläche für die **Spark-Benutzeroberfläche**, um zur Seite „Spark-Auftrag“ zu wechseln.
 
 5. Sehen Sie sich das Diagramm an. Sie sehen eine Übersicht Ihres Auftrags in dem generierten Auftragsdiagramm. Weitere Informationen finden Sie in den Schritten 6, 7, 8, 9 und 10 unter [Anzeigen abgeschlossener Apache Spark-Anwendungen](#view-completed-apache-spark-application).
 
@@ -116,11 +116,11 @@ Sie können alle Apache Spark-Anwendungen unter **Überwachen** -> **Apache Spar
 
 ## <a name="view-canceled-apache-spark-application"></a>Anzeigen abgebrochener Apache Spark-Anwendungen
 
-Öffnen Sie **Überwachen** , und wählen Sie dann **Apache Spark-Anwendungen** aus. Um die Details zu abgebrochenen Apache Spark-Anwendungen anzuzeigen, wählen Sie die Apache Spark-Anwendung aus, und zeigen Sie die Details an.
+Öffnen Sie **Überwachen**, und wählen Sie dann **Apache Spark-Anwendungen** aus. Um die Details zu abgebrochenen Apache Spark-Anwendungen anzuzeigen, wählen Sie die Apache Spark-Anwendung aus, und zeigen Sie die Details an.
 
  ![Abgebrochenen Auftrag auswählen](./media/how-to-monitor-spark-applications/select-cancelled-job.png) 
 
-1. Überprüfen Sie **Abgeschlossene Aufgaben** , **Status** und **Gesamtdauer**.
+1. Überprüfen Sie **Abgeschlossene Aufgaben**, **Status** und **Gesamtdauer**.
 
 2. Aktualisieren Sie die Protokollabfrage.
 
@@ -138,11 +138,11 @@ Sie können alle Apache Spark-Anwendungen unter **Überwachen** -> **Apache Spar
 
 ## <a name="debug-failed-apache-spark-application"></a>Debuggen von Fehlern bei Apache Spark-Anwendungen
 
-Öffnen Sie **Überwachen** , und wählen Sie dann **Apache Spark-Anwendungen** aus. Um die Details zu Apache Spark-Anwendungen mit Fehlern anzuzeigen, wählen Sie die Apache Spark-Anwendung aus, und zeigen Sie die Details an.
+Öffnen Sie **Überwachen**, und wählen Sie dann **Apache Spark-Anwendungen** aus. Um die Details zu Apache Spark-Anwendungen mit Fehlern anzuzeigen, wählen Sie die Apache Spark-Anwendung aus, und zeigen Sie die Details an.
 
 ![Auftrag mit Fehlern auswählen](./media/how-to-monitor-spark-applications/select-failed-job.png)
 
-1. Überprüfen Sie **Abgeschlossene Aufgaben** , **Status** und **Gesamtdauer**.
+1. Überprüfen Sie **Abgeschlossene Aufgaben**, **Status** und **Gesamtdauer**.
 
 2. Aktualisieren Sie die Protokollabfrage.
 
@@ -158,4 +158,4 @@ Sie können alle Apache Spark-Anwendungen unter **Überwachen** -> **Apache Spar
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zum Überwachen von Pipelineausführungen finden Sie im Artikel [Überwachen von Pipelineausführungen mithilfe von Synapse Studio](how-to-monitor-pipeline-runs.md).  
+Weitere Informationen zum Überwachen von Pipelineausführungen finden Sie im Artikel [Überwachen von Pipelineausführungen mithilfe von Synapse Studio](how-to-monitor-pipeline-runs.md).

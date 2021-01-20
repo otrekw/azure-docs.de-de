@@ -17,18 +17,18 @@ ms.workload: infrastructure-services
 ms.date: 02/07/2019
 ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: ced76b73a8a08e6886cf0cef04c74a82d05c75dd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2825d8d9f8be7c56d7beea767a1afb7a290eafa2
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84708126"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222597"
 ---
 # <a name="create-a-virtual-machine-with-a-static-private-ip-address-using-powershell"></a>Erstellen eines virtuellen Computers mit einer statischen privaten IP-Adresse mithilfe von PowerShell
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Sie können einen virtuellen Computer (VM) mit einer statischen privaten IP-Adresse erstellen. Weisen Sie eine statische private IP-Adresse anstelle einer dynamischen Adresse zu, wenn Sie auswählen möchten, welche Adresse aus einem Subnetz einem virtuellen Computer zugewiesen wird. Erfahren Sie mehr über [statische private IP-Adressen](virtual-network-ip-addresses-overview-arm.md#allocation-method). Um eine dynamische private IP-Adresse, die einem vorhandenen virtuellen Computer zugewiesen ist, in eine statische Adresse zu ändern oder mit öffentlichen IP-Adressen zu arbeiten, lesen Sie [Hinzufügen, Ändern oder Entfernen von IP-Adressen](virtual-network-network-interface-addresses.md).
+Sie können einen virtuellen Computer (VM) mit einer statischen privaten IP-Adresse erstellen. Weisen Sie eine statische private IP-Adresse anstelle einer dynamischen Adresse zu, wenn Sie auswählen möchten, welche Adresse aus einem Subnetz einem virtuellen Computer zugewiesen wird. Erfahren Sie mehr über [statische private IP-Adressen](./public-ip-addresses.md#allocation-method). Um eine dynamische private IP-Adresse, die einem vorhandenen virtuellen Computer zugewiesen ist, in eine statische Adresse zu ändern oder mit öffentlichen IP-Adressen zu arbeiten, lesen Sie [Hinzufügen, Ändern oder Entfernen von IP-Adressen](virtual-network-network-interface-addresses.md).
 
 ## <a name="create-a-virtual-machine"></a>Erstellen eines virtuellen Computers
 
@@ -109,5 +109,5 @@ Remove-AzResourceGroup -Name myResourceGroup -Force
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Lesen Sie mehr über [private IP-Adressen](virtual-network-ip-addresses-overview-arm.md#private-ip-addresses) und das Zuweisen einer [statischen privaten IP-Adresse](virtual-network-network-interface-addresses.md#add-ip-addresses) zu einer Azure-VM.
+- Lesen Sie mehr über [private IP-Adressen](./private-ip-addresses.md) und das Zuweisen einer [statischen privaten IP-Adresse](virtual-network-network-interface-addresses.md#add-ip-addresses) zu einer Azure-VM.
 - Erfahren Sie mehr über das Erstellen von VMs unter [Linux](../virtual-machines/windows/tutorial-manage-vm.md?toc=%2fazure%2fvirtual-network%2ftoc.json) und [Windows](../virtual-machines/windows/tutorial-manage-vm.md?toc=%2fazure%2fvirtual-network%2ftoc.json).

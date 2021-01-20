@@ -8,12 +8,12 @@ ms.assetid: 2fa5ee6b-51a6-4237-805f-518e6c57d11b
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: fb193637525722bf227241a614cd977fbf70c9ac
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: df4bd0ae0884feae8bd21e33f4d27b6ceb207337
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93074181"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98234000"
 ---
 # <a name="configuration-and-management-faqs-for-web-apps-in-azure"></a>Häufig gestellte Fragen zur Konfiguration und Verwaltung von Web-Apps in Azure
 
@@ -185,7 +185,7 @@ Sie haben zwei Optionen zum Aufzeichnen einer F12-Ablaufverfolgung:
 ### <a name="f12-console-output"></a>F12-Konsolenausgabe
 
 1. Klicken Sie auf die Registerkarte **Konsole**.
-2. Für jede Registerkarte, die mehr als 0 Elemente enthält, klicken Sie auf die Registerkarte ( **Fehler** , **Warnung** oder **Informationen** ). Wenn die Registerkarte nicht ausgewählt ist, ist das Registerkartensymbol grau oder schwarz, sobald Sie den Cursor davon entfernen.
+2. Für jede Registerkarte, die mehr als 0 Elemente enthält, klicken Sie auf die Registerkarte (**Fehler**, **Warnung** oder **Informationen**). Wenn die Registerkarte nicht ausgewählt ist, ist das Registerkartensymbol grau oder schwarz, sobald Sie den Cursor davon entfernen.
 3. Klicken Sie im Meldungsabschnitt des Bereichs mit der rechten Maustaste, und wählen Sie dann **Alle kopieren** aus.
 4. Fügen Sie den kopierten Text in eine Datei ein, und speichern Sie dann die Datei.
 
@@ -284,7 +284,7 @@ Eine ausführliche Dokumentation der Authentifizierung und Autorisierung in App 
 
 ## <a name="how-do-i-redirect-the-default-azurewebsitesnet-domain-to-my-azure-web-apps-custom-domain"></a>Wie leite ich die Standarddomäne „*.azurewebsites.net“ zur benutzerdefinierten Domäne meiner Azure-Web-App um?
 
-Beim Erstellen einer neuen Website mithilfe von Web-Apps in Azure wird Ihrer Website standardmäßig die Domäne „ *Websitename*.azurewebsites.net“ zugewiesen. Wenn Sie Ihrer Website einen benutzerdefinierten Hostnamen hinzufügen und nicht möchten, dass Benutzer auf Ihre Standarddomäne „*.azurewebsites.net“ zugreifen, können Sie die Standard-URL umleiten. Informationen zum Umleiten des gesamten Datenverkehrs von der Standarddomäne Ihrer Website zu Ihrer benutzerdefinierten Domäne finden Sie unter [Redirect the default domain to your custom domain in Azure web apps](https://zainrizvi.io/blog/block-default-azure-websites-domain/) (Umleiten der Standarddomäne zu Ihrer benutzerdefinierten Domäne in Azure-Web-Apps).
+Beim Erstellen einer neuen Website mithilfe von Web-Apps in Azure wird Ihrer Website standardmäßig die Domäne „*Websitename*.azurewebsites.net“ zugewiesen. Wenn Sie Ihrer Website einen benutzerdefinierten Hostnamen hinzufügen und nicht möchten, dass Benutzer auf Ihre Standarddomäne „*.azurewebsites.net“ zugreifen, können Sie die Standard-URL umleiten. Informationen zum Umleiten des gesamten Datenverkehrs von der Standarddomäne Ihrer Website zu Ihrer benutzerdefinierten Domäne finden Sie unter [Redirect the default domain to your custom domain in Azure web apps](https://zainrizvi.io/blog/block-default-azure-websites-domain/) (Umleiten der Standarddomäne zu Ihrer benutzerdefinierten Domäne in Azure-Web-Apps).
 
 ## <a name="how-do-i-determine-which-version-of-net-version-is-installed-in-app-service"></a>Wie erkenne ich, welche .NET-Version in App Service installiert ist?
 
@@ -317,3 +317,8 @@ Sie können auch die spezifischen dynamischen und statischen MIME-Typen angeben,
 ## <a name="how-do-i-migrate-from-an-on-premises-environment-to-app-service"></a>Wie migriere ich von einer lokalen Umgebung zu App Service?
 
 Um Websites von Windows- und Linux-Webservern zu App Service zu migrieren, können Sie den Azure App Service-Migrations-Assistenten verwenden. Das Migrationstool erstellt Web-Apps und Datenbanken in Azure nach Bedarf und veröffentlicht dann den Inhalt. Weitere Informationen finden Sie unter [Azure App Service-Migrations-Assistent](https://appmigration.microsoft.com/).
+
+## <a name="why-is-my-certificate-issued-for-11-months-and-not-for-a-full-year"></a>Warum wird mein Zertifikat für 11 Monate und nicht für ein ganzes Jahr ausgestellt?
+
+Für alle Zertifikate, die nach dem 1.9.2020 ausgestellt werden, beträgt die maximale Dauer jetzt 397 Tage. Zertifikate, die vor dem 1.9.2020 ausgestellt wurden, haben eine maximale Gültigkeit von 825 Tagen, bis Sie verlängert werden, ein neuer Schlüssel erstellt wird usw. Alle Zertifikate, die nach dem 1.9.2020 verlängert werden, sind von dieser Änderung betroffen, und Benutzer bemerken möglicherweise eine kürzere Gültigkeit ihrer verlängerten Zertifikate.
+GoDaddy hat einen Abonnementdienst implementiert, der sowohl die neuen Anforderungen erfüllt als auch gleichzeitig vorhandene Kundenzertifikate berücksichtigt. Dreißig Tage vor Ablauf des neu ausgestellten Zertifikats gibt der Dienst automatisch ein zweites Zertifikat aus, das die Dauer auf das ursprüngliche Ablaufdatum verlängert. App Service arbeitet mit GoDaddy zusammen, um diese Änderung zu berücksichtigen und sicherzustellen, dass unsere Kunden die vollständige Dauer ihrer Zertifikate erhalten.

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 27372207df66b4198bd9c785ecc099fa88cbe548
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: b974af343907c98ebd7a318bc60a0e553a07a233
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94335693"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98219350"
 ---
 # <a name="troubleshooting-failed-to-delete-a-virtual-network-in-azure"></a>Problembehandlung: Fehler beim Löschen eines virtuellen Netzwerks in Azure.
 
@@ -72,7 +72,7 @@ Wenn ein Anwendungsgateway vorhanden ist, müssen Sie dieses entfernen, bevor Si
 
 1. Löschen Sie das Subnetz oder das virtuelle Netzwerk erneut.
 
-Wenn das Problem durch diese Schritte nicht behoben wurde, verwenden Sie diese [Azure CLI-Befehle](https://docs.microsoft.com/azure/container-instances/container-instances-vnet#clean-up-resources), um die Ressourcen zu bereinigen. 
+Wenn das Problem durch diese Schritte nicht behoben wurde, verwenden Sie diese [Azure CLI-Befehle](../container-instances/container-instances-vnet.md#clean-up-resources), um die Ressourcen zu bereinigen. 
 
 ### <a name="check-whether-azure-active-directory-domain-service-is-enabled-in-the-virtual-network"></a>Überprüfen, ob im virtuellen Netzwerk Azure Active Directory Domain Services aktiviert ist
 

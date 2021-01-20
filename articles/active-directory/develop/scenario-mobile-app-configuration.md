@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 06/16/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: a18a36b8583f8534b2a2e643e5c155dc7a2d65e2
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: e2c632de3d602fe2d3e5bfa74f78e90f48412067
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94444060"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98208912"
 ---
 # <a name="configure-a-mobile-app-that-calls-web-apis"></a>Konfigurieren einer mobilen App, die Web-APIs aufruft
 
@@ -149,8 +149,8 @@ Weitere Informationen finden Sie unter [Für UWP spezifische Überlegungen mit M
 Unter Android und iOS ermöglichen Broker Folgendes:
 
 - **Einmaliges Anmelden (Single Sign-On, SSO)** : Sie können SSO für Geräte verwenden, die bei Azure Active Directory (Azure AD) registriert sind. Wenn Sie SSO verwenden, müssen sich Ihre Benutzer nicht bei jeder Anwendung anmelden.
-- **Geräteidentifikation** : Diese Einstellung ermöglicht bedingte Zugriffsrichtlinien im Zusammenhang mit Azure AD Geräten. Der Authentifizierungsprozess verwendet das Gerätezertifikat, das beim Hinzufügen des Geräts zum Arbeitsplatz erstellt wurde.
-- **Überprüfung der Anwendungsidentifikation** : Wenn eine Anwendung den Broker aufruft, übergibt sie ihre Umleitungs-URL. Diese wird dann vom Broker überprüft.
+- **Geräteidentifikation**: Diese Einstellung ermöglicht bedingte Zugriffsrichtlinien im Zusammenhang mit Azure AD Geräten. Der Authentifizierungsprozess verwendet das Gerätezertifikat, das beim Hinzufügen des Geräts zum Arbeitsplatz erstellt wurde.
+- **Überprüfung der Anwendungsidentifikation**: Wenn eine Anwendung den Broker aufruft, übergibt sie ihre Umleitungs-URL. Diese wird dann vom Broker überprüft.
 
 ### <a name="enable-the-broker-on-xamarin"></a>Aktivieren des Brokers in Xamarin
 
@@ -249,8 +249,8 @@ Führen Sie die folgenden Schritte aus, um das URL-Schema Ihrer App zu registrie
 
    Hier identifiziert `BundleId` Ihr Gerät eindeutig. Wenn `BundleId` z. B. `yourcompany.xforms` ist, lautet Ihr URL-Schema `msauth.com.yourcompany.xforms`.
 
-   > [!NOTE]
-   > Dieses URL-Schema wird Teil des Umleitungs-URI, der Ihre App eindeutig identifiziert, wenn er die Antwort des Brokers empfängt.
+  
+      Dieses URL-Schema wird Teil des Umleitungs-URI, der Ihre App eindeutig identifiziert, wenn er die Antwort des Brokers empfängt.
 
    ```XML
     <key>CFBundleURLTypes</key>
@@ -310,10 +310,9 @@ Wenn MSAL für iOS und macOS den Broker aufruft, führt der Broker einen Rückru
     }
 ```
 
-> [!NOTE]
-> Wenn Sie `UISceneDelegate` unter iOS 13 oder höher eingeführt haben, platzieren Sie den MSAL-Rückruf stattdessen in den `scene:openURLContexts:` von `UISceneDelegate`. MSAL `handleMSALResponse:sourceApplication:` darf für jede URL nur ein Mal aufgerufen werden.
->
-> Weitere Informationen finden Sie in der [Apple-Dokumentation](https://developer.apple.com/documentation/uikit/uiscenedelegate/3238059-scene?language=objc).
+Wenn Sie `UISceneDelegate` unter iOS 13 oder höher eingeführt haben, platzieren Sie den MSAL-Rückruf stattdessen in den `scene:openURLContexts:` von `UISceneDelegate`. MSAL `handleMSALResponse:sourceApplication:` darf für jede URL nur ein Mal aufgerufen werden.
+
+Weitere Informationen finden Sie in der [Apple-Dokumentation](https://developer.apple.com/documentation/uikit/uiscenedelegate/3238059-scene?language=objc).
 
 #### <a name="step-2-register-a-url-scheme"></a>Schritt 2: Registrieren eines URL-Schemas
 
@@ -329,8 +328,7 @@ So registrieren Sie ein Schema für Ihre App:
 
    Hier identifiziert `BundleId` Ihr Gerät eindeutig. Wenn `BundleId` z. B. `yourcompany.xforms` ist, lautet Ihr URL-Schema `msauth.com.yourcompany.xforms`.
 
-   > [!NOTE]
-   > Dieses URL-Schema wird Teil des Umleitungs-URI, der Ihre App eindeutig identifiziert, wenn er die Antwort des Brokers empfängt. Achten Sie darauf, dass der Umleitungs-URI im Format `msauth.(BundleId)://auth` für Ihre Anwendung im [Azure-Portal](https://portal.azure.com) registriert ist.
+    Dieses URL-Schema wird Teil des Umleitungs-URI, der Ihre App eindeutig identifiziert, wenn er die Antwort des Brokers empfängt. Achten Sie darauf, dass der Umleitungs-URI im Format `msauth.(BundleId)://auth` für Ihre Anwendung im [Azure-Portal](https://portal.azure.com) registriert ist.
 
    ```XML
    <key>CFBundleURLTypes</key>

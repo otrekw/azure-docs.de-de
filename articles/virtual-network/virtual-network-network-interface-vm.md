@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/13/2020
 ms.author: kumud
-ms.openlocfilehash: f7253be2844f40ca52df2f9b3bc9cbba552fea2b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2b45bd2e2b9ad971891cbcb944286f40b4f66883
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85480132"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98216953"
 ---
 # <a name="add-network-interfaces-to-or-remove-network-interfaces-from-virtual-machines"></a>Hinzufügen von Netzwerkschnittstellen zu virtuellen Computern oder Entfernen von Netzwerkschnittstellen aus diesen
 
@@ -61,7 +61,7 @@ Gehen Sie wie folgt vor, um Ihrem virtuellen Computer eine Netzwerkschnittstelle
 
 1. Navigieren Sie zum [Azure-Portal](https://portal.azure.com), um nach einem vorhandenen virtuellen Computer zu suchen. Suchen Sie nach **Virtuelle Computer**, und wählen Sie diese Option aus.
 
-2. Wählen Sie den Namen Ihres virtuellen Computers aus. Der virtuelle Computer muss die Anzahl an Netzwerkschnittstellen, die Sie hinzufügen möchten, unterstützen. Informationen dazu, wie viele Netzwerkschnittstellen jede VM-Größe unterstützt, finden Sie unter [Größen für virtuelle Linux-Computer in Azure](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) oder [Größen für virtuelle Windows-Computer in Azure](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+2. Wählen Sie den Namen Ihres virtuellen Computers aus. Der virtuelle Computer muss die Anzahl an Netzwerkschnittstellen, die Sie hinzufügen möchten, unterstützen. Informationen dazu, wie viele Netzwerkschnittstellen jede VM-Größe unterstützt, finden Sie unter [Größen für virtuelle Linux-Computer in Azure](../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) oder [Größen für virtuelle Windows-Computer in Azure](../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 3. Wählen Sie auf der VM-Befehlsleiste die Option **Beenden** aus, und klicken Sie dann im Bestätigungsdialogfeld auf **OK**. Warten Sie dann, bis der **Status** des virtuellen Computers in **Beendet (Zuordnung aufgehoben)** geändert wird.
 
@@ -133,7 +133,7 @@ Weitere Informationen zu Netzwerkschnittstellen-Einstellungen finden Sie im Arti
 
 - An einen virtuellen Computer muss mindestens eine Netzwerkschnittstelle angefügt sein.
 
-- Es können an einen virtuellen Computer nur so viele Netzwerkschnittstellen angefügt sein, wie die VM-Größe unterstützt. Weitere Informationen dazu, wie viele Netzwerkschnittstellen jede VM-Größe unterstützt, finden Sie unter [Größen für virtuelle Linux-Computer in Azure](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) oder [Größen für virtuelle Windows-Computer in Azure](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Alle Größen unterstützen mindestens zwei Netzwerkschnittstellen.
+- Es können an einen virtuellen Computer nur so viele Netzwerkschnittstellen angefügt sein, wie die VM-Größe unterstützt. Weitere Informationen dazu, wie viele Netzwerkschnittstellen jede VM-Größe unterstützt, finden Sie unter [Größen für virtuelle Linux-Computer in Azure](../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) oder [Größen für virtuelle Windows-Computer in Azure](../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Alle Größen unterstützen mindestens zwei Netzwerkschnittstellen.
 
 - Die Netzwerkschnittstellen, die Sie einem virtuellen Computer hinzufügen, können derzeit nicht an einen anderen virtuellen Computer angefügt werden. Weitere Informationen zum Erstellen von Netzwerkschnittstellen finden Sie unter [Erstellen einer Netzwerkschnittstelle](virtual-network-network-interface.md#create-a-network-interface).
 
@@ -143,7 +143,7 @@ Weitere Informationen zu Netzwerkschnittstellen-Einstellungen finden Sie im Arti
 
 - Sie können steuern, an welche Netzwerkschnittstelle ausgehender Datenverkehr gesendet wird. Standardmäßig sendet ein virtueller Computer jedoch den gesamten ausgehenden Datenverkehr an die IP-Adresse, die der primären IP-Konfiguration der primären Netzwerkschnittstelle zugewiesen ist.
 
-- In der Vergangenheit mussten alle virtuellen Computer in der gleichen Verfügbarkeitsgruppe über eine einzelne Netzwerkschnittstelle (oder über mehrere Netzwerkschnittstellen) verfügen. In einer Verfügbarkeitsgruppe können nun VMs mit bis zu der von der VM-Größe unterstützten Anzahl an Netzwerkschnittstellen vertreten sein. Sie können eine VM erst dann einer Verfügbarkeitsgruppe hinzufügen, nachdem sie erstellt wurde. Weitere Informationen zu Verfügbarkeitsgruppen finden Sie unter [Verwalten der Verfügbarkeit von VMs in Azure](../virtual-machines/windows/manage-availability.md?toc=%2fazure%2fvirtual-network%2ftoc.json#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy).
+- In der Vergangenheit mussten alle virtuellen Computer in der gleichen Verfügbarkeitsgruppe über eine einzelne Netzwerkschnittstelle (oder über mehrere Netzwerkschnittstellen) verfügen. In einer Verfügbarkeitsgruppe können nun VMs mit bis zu der von der VM-Größe unterstützten Anzahl an Netzwerkschnittstellen vertreten sein. Sie können eine VM erst dann einer Verfügbarkeitsgruppe hinzufügen, nachdem sie erstellt wurde. Weitere Informationen zu Verfügbarkeitsgruppen finden Sie unter [Verwalten der Verfügbarkeit von VMs in Azure](../virtual-machines/manage-availability.md?toc=%2fazure%2fvirtual-network%2ftoc.json#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy).
 
 - Sie können Netzwerkschnittstellen auf demselben virtuellen Computer mit unterschiedlichen Subnetzen in einem virtuellen Netzwerk verbinden. Die Netzwerkschnittstellen müssen jedoch alle mit demselben virtuellen Netzwerk verbunden sein.
 

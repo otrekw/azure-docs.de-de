@@ -11,16 +11,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/28/2020
 ms.author: blehr
-ms.openlocfilehash: 76af225b6f93e0a47799234e3e2b430344f68787
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 70fb502e45a6cdcc196f5fb97ee4c8c59ba6c27d
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96009992"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98223532"
 ---
 # <a name="quickstart-create-a-public-ip-address-using-azure-cli"></a>Schnellstart: Erstellen einer öffentlichen IP-Adresse mithilfe der Azure CLI
 
-In diesem Artikel wird gezeigt, wie Sie mithilfe der Azure CLI eine öffentliche IP-Adressressource erstellen. Weitere Informationen zu den Ressourcen, denen diese zugeordnet werden kann, zum Unterschied zwischen der SKU „Basic“ und „Standard“ und andere zugehörige Informationen finden Sie unter [Öffentliche IP-Adressen](https://docs.microsoft.com/azure/virtual-network/public-ip-addresses).  In diesem Beispiel konzentrieren wir uns ausschließlich auf IPv4-Adressen. Weitere Informationen zu IPv6-Adressen finden Sie unter [IPv6 für Azure VNET](https://docs.microsoft.com/azure/virtual-network/ipv6-overview).
+In diesem Artikel wird gezeigt, wie Sie mithilfe der Azure CLI eine öffentliche IP-Adressressource erstellen. Weitere Informationen zu den Ressourcen, denen diese zugeordnet werden kann, zum Unterschied zwischen der SKU „Basic“ und „Standard“ und andere zugehörige Informationen finden Sie unter [Öffentliche IP-Adressen](./public-ip-addresses.md).  In diesem Beispiel konzentrieren wir uns ausschließlich auf IPv4-Adressen. Weitere Informationen zu IPv6-Adressen finden Sie unter [IPv6 für Azure VNET](./ipv6-overview.md).
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
@@ -30,7 +30,7 @@ In diesem Artikel wird gezeigt, wie Sie mithilfe der Azure CLI eine öffentliche
 
 Eine Azure-Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden.
 
-Erstellen Sie mit [az group create](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-create) eine Ressourcengruppe namens **myResourceGroup** am Speicherort **eastus2**.
+Erstellen Sie mit [az group create](/cli/azure/group?view=azure-cli-latest#az-group-create) eine Ressourcengruppe namens **myResourceGroup** am Speicherort **eastus2**.
 
 ```azurecli-interactive
   az group create \
@@ -44,9 +44,9 @@ Erstellen Sie mit [az group create](https://docs.microsoft.com/cli/azure/group?v
 # <a name="standard-sku---using-zones"></a>[**Standard-SKU: Verwenden von Zonen**](#tab/option-create-public-ip-standard-zones)
 
 >[!NOTE]
->Der folgende Befehl funktioniert für die API-Version 2020-08-01 oder höher.  Weitere Informationen zur derzeit verwendeten API-Version finden Sie unter [Ressourcenanbieter und -typen](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-providers-and-types).
+>Der folgende Befehl funktioniert für die API-Version 2020-08-01 oder höher.  Weitere Informationen zur derzeit verwendeten API-Version finden Sie unter [Ressourcenanbieter und -typen](../azure-resource-manager/management/resource-providers-and-types.md).
 
-Verwenden Sie [az network public-ip create](https://docs.microsoft.com/cli/azure/network/public-ip?view=azure-cli-latest#az-network-public-ip-create), um in **myResourceGroup** eine zonenredundante öffentliche Standard-IP-Adresse namens **myStandardZRPublicIP** zu erstellen.
+Verwenden Sie [az network public-ip create](/cli/azure/network/public-ip?view=azure-cli-latest#az-network-public-ip-create), um in **myResourceGroup** eine zonenredundante öffentliche Standard-IP-Adresse namens **myStandardZRPublicIP** zu erstellen.
 
 ```azurecli-interactive
   az network public-ip create \
@@ -69,14 +69,14 @@ Verwenden Sie den folgenden Befehl, um eine standardmäßige zonale öffentliche
     --zone 2
 ```
 
-Beachten Sie, dass die oben genannten Optionen für Zonen nur eine gültige Auswahl in Regionen mit [Verfügbarkeitszonen](https://docs.microsoft.com/azure/availability-zones/az-overview?toc=/azure/virtual-network/toc.json#availability-zones) sind.
+Beachten Sie, dass die oben genannten Optionen für Zonen nur eine gültige Auswahl in Regionen mit [Verfügbarkeitszonen](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#availability-zones) sind.
 
 # <a name="standard-sku---no-zones"></a>[**Standard-SKU: Keine Zonen**](#tab/option-create-public-ip-standard)
 
 >[!NOTE]
->Der folgende Befehl funktioniert für die API-Version 2020-08-01 oder höher.  Weitere Informationen zur derzeit verwendeten API-Version finden Sie unter [Ressourcenanbieter und -typen](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-providers-and-types).
+>Der folgende Befehl funktioniert für die API-Version 2020-08-01 oder höher.  Weitere Informationen zur derzeit verwendeten API-Version finden Sie unter [Ressourcenanbieter und -typen](../azure-resource-manager/management/resource-providers-and-types.md).
 
-Verwenden Sie [az network public-ip create](https://docs.microsoft.com/cli/azure/network/public-ip?view=azure-cli-latest#az-network-public-ip-create), um eine öffentliche Standard-IP-Adresse als nicht zonale Ressource namens **myStandardPublicIP** in **myResourceGroup** zu erstellen.
+Verwenden Sie [az network public-ip create](/cli/azure/network/public-ip?view=azure-cli-latest#az-network-public-ip-create), um eine öffentliche Standard-IP-Adresse als nicht zonale Ressource namens **myStandardPublicIP** in **myResourceGroup** zu erstellen.
 
 ```azurecli-interactive
   az network public-ip create \
@@ -84,11 +84,11 @@ Verwenden Sie [az network public-ip create](https://docs.microsoft.com/cli/azure
     --name myStandardPublicIP \
     --sku Standard
 ```
-Diese Auswahl ist in allen Regionen gültig und die Standardauswahl für öffentliche Standard-IP-Adressen in Regionen ohne [Verfügbarkeitszonen](https://docs.microsoft.com/azure/availability-zones/az-overview?toc=/azure/virtual-network/toc.json#availability-zones).
+Diese Auswahl ist in allen Regionen gültig und die Standardauswahl für öffentliche Standard-IP-Adressen in Regionen ohne [Verfügbarkeitszonen](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#availability-zones).
 
 # <a name="basic-sku"></a>[**Basic-SKU**](#tab/option-create-public-ip-basic)
 
-Verwenden Sie [az network public-ip create](https://docs.microsoft.com/cli/azure/network/public-ip?view=azure-cli-latest#az-network-public-ip-create), um in **myResourceGroupLB** eine statische öffentliche IP-Adresse des Typs „Basic“ namens **myBasicPublicIP** zu erstellen.  Öffentliche IP-Adressen des Typs „Basic“ verwenden nicht das Konzept von Verfügbarkeitszonen.
+Verwenden Sie [az network public-ip create](/cli/azure/network/public-ip?view=azure-cli-latest#az-network-public-ip-create), um in **myResourceGroupLB** eine statische öffentliche IP-Adresse des Typs „Basic“ namens **myBasicPublicIP** zu erstellen.  Öffentliche IP-Adressen des Typs „Basic“ verwenden nicht das Konzept von Verfügbarkeitszonen.
 
 ```azurecli-interactive
   az network public-ip create \
@@ -103,9 +103,9 @@ Wenn es akzeptabel ist, dass sich die IP-Adresse im Laufe der Zeit ändert, kann
 
 ## <a name="additional-information"></a>Zusätzliche Informationen 
 
-Weitere Informationen zu den oben aufgeführten einzelnen Variablen finden Sie unter [Verwalten öffentlicher IP-Adressen](https://docs.microsoft.com/azure/virtual-network/virtual-network-public-ip-address#create-a-public-ip-address).
+Weitere Informationen zu den oben aufgeführten einzelnen Variablen finden Sie unter [Verwalten öffentlicher IP-Adressen](./virtual-network-public-ip-address.md#create-a-public-ip-address).
 
 ## <a name="next-steps"></a>Nächste Schritte
-- Zuordnen einer [öffentlichen IP-Adresse zu einem virtuellen Computer](https://docs.microsoft.com/azure/virtual-network/associate-public-ip-address-vm#azure-portal)
-- Lesen Sie mehr über [öffentliche IP-Adressen](virtual-network-ip-addresses-overview-arm.md#public-ip-addresses) in Azure.
+- Zuordnen einer [öffentlichen IP-Adresse zu einem virtuellen Computer](./associate-public-ip-address-vm.md#azure-portal)
+- Lesen Sie mehr über [öffentliche IP-Adressen](./public-ip-addresses.md#public-ip-addresses) in Azure.
 - Erfahren Sie mehr über alle [Einstellungen für öffentliche IP-Adressen](virtual-network-public-ip-address.md#create-a-public-ip-address).

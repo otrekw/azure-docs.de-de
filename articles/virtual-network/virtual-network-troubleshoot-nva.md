@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/26/2018
 ms.author: genli
-ms.openlocfilehash: 3a8982b5626e3c19dbd49a3d2e20542d44b1a1da
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 18f2128b6869b4047cc6f35e1638aca81233a014
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92368586"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98219245"
 ---
 # <a name="network-virtual-appliance-issues-in-azure"></a>Probleme mit virtuellen Netzwerkappliances in Azure
 
@@ -71,7 +71,7 @@ Verwenden von PowerShell
    Get-AzNetworkInterface -ResourceGroupName <ResourceGroupName> -Name <NicName>
    ```
 
-3. Überprüfen Sie die Eigenschaft **EnableIPForwarding** .
+3. Überprüfen Sie die Eigenschaft **EnableIPForwarding**.
 4. Wenn die IP-Weiterleitung nicht aktiviert ist, führen Sie die folgenden Befehle aus, um diese zu aktivieren:
 
    ```powershell
@@ -95,7 +95,7 @@ Verwenden von PowerShell
 
 1. Wählen Sie im [Azure-Portal](https://portal.azure.com) unter **Network Watcher** **IP-Flussüberprüfung** aus. 
 2. Geben Sie die VM und die IP-Adresse der NVA an, und überprüfen Sie dann, ob der Datenverkehr durch eine Netzwerksicherheitsgruppe (NSG) blockiert wird.
-3. Wenn eine NSG-Regel vorhanden ist, die den Datenverkehr blockiert, suchen Sie die NSG in den **effektiven Sicherheitsregeln** , und aktualisieren Sie sie dann, indem Sie die Weiterleitung von Datenverkehr zulassen. Führen Sie dann erneut **IP-Flussüberprüfung** aus, und testen Sie mit **Problembehandlung für Verbindung** die TCP-Kommunikation zwischen der VM und Ihrer internen oder externen IP-Adresse.
+3. Wenn eine NSG-Regel vorhanden ist, die den Datenverkehr blockiert, suchen Sie die NSG in den **effektiven Sicherheitsregeln**, und aktualisieren Sie sie dann, indem Sie die Weiterleitung von Datenverkehr zulassen. Führen Sie dann erneut **IP-Flussüberprüfung** aus, und testen Sie mit **Problembehandlung für Verbindung** die TCP-Kommunikation zwischen der VM und Ihrer internen oder externen IP-Adresse.
 
 **Überprüfen, ob die NVA und die VMs auf erwarteten Datenverkehr lauschen**
 
@@ -127,7 +127,7 @@ Wenn das VM-Netzwerk Spitzen oder Zeiträume mit hoher Auslastung aufweist, müs
 ## <a name="advanced-network-administrator-troubleshooting"></a>Erweiterte Behandlung von Problemen mit Netzwerkadministratoren
 
 ### <a name="capture-network-trace"></a>Erfassen der Netzwerkablaufverfolgung
-Erfassen Sie während der Ausführung von **[PsPing](https://docs.microsoft.com/sysinternals/downloads/psping)** oder **Nmap** eine gleichzeitige Netzwerkablaufverfolgung auf der Quell-VM, der NVA und der Ziel-VM, und beenden Sie dann die Ablaufverfolgung.
+Erfassen Sie während der Ausführung von **[PsPing](/sysinternals/downloads/psping)** oder **Nmap** eine gleichzeitige Netzwerkablaufverfolgung auf der Quell-VM, der NVA und der Ziel-VM, und beenden Sie dann die Ablaufverfolgung.
 
 1. Um eine gleichzeitige Netzwerkablaufverfolgung zu erfassen, führen Sie den folgenden Befehl aus:
 

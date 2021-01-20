@@ -9,12 +9,12 @@ ms.subservice: spark
 ms.date: 06/15/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 43e4027c9d88b209ed0606e045dd5b4d47d3ff6e
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: a35cdebe5ff4db562b19dc4ceed069a831af4305
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92088515"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98219996"
 ---
 # <a name="analyze-complex-data-types-in-azure-synapse-analytics"></a>Analysieren komplexer Datentypen in Azure Synapse Analytics
 
@@ -28,7 +28,7 @@ Technische Fachkräfte für Daten müssen wissen, wie komplexe Datentypen effizi
 
 ## <a name="what-are-arrays-and-nested-structures"></a>Was sind Arrays und geschachtelte Strukturen?
 
-Das folgende Objekt stammt aus [Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview). Dieses Objekt enthält geschachtelte Strukturen und Arrays, die geschachtelte Strukturen enthalten.
+Das folgende Objekt stammt aus [Application Insights](../azure-monitor/app/app-insights-overview.md). Dieses Objekt enthält geschachtelte Strukturen und Arrays, die geschachtelte Strukturen enthalten.
 
 ```json
 {
@@ -221,4 +221,4 @@ Es gibt zwei verschiedene Arten von Vorgängen:
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Erfahren Sie, wie Sie Synapse Link für Azure Cosmos DB mit Spark abfragen.](./synapse-link/how-to-query-analytical-store-spark.md)
-* [Abfragen von geschachtelten Parquet-Typen](./sql/query-parquet-nested-types.md) 
+* [Abfragen von geschachtelten Parquet-Typen](./sql/query-parquet-nested-types.md)

@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/21/2020
 ms.author: rdhillon
-ms.openlocfilehash: 13535a82f8aca741a1e25755e5a2d971ce45514e
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: 9766379807e6d2708fd6935dd2ffbd7660f9988f
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97739296"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98216647"
 ---
 # <a name="virtual-network-service-endpoint-policies-for-azure-storage"></a>Richtlinien für VNET-Dienstendpunkte für Azure Storage
 
@@ -32,7 +32,7 @@ Richtlinien für VNET-Dienstendpunkte bieten folgende Vorteile:
 
 - __Verbesserte Sicherheit für Ihren virtuellen Netzwerkdatenverkehr zu Azure Storage__
 
-  [Azure-Diensttags für Netzwerksicherheitsgruppen](https://aka.ms/servicetags) ermöglichen es Ihnen, den ausgehenden virtuellen Netzwerkdatenverkehr zu bestimmten Azure Storage-Regionen einzuschränken. Dies ermöglicht jedoch den Datenverkehr zu jedem beliebigen Konto innerhalb der ausgewählten Azure Storage-Region.
+  [Azure-Diensttags für Netzwerksicherheitsgruppen](./network-security-groups-overview.md) ermöglichen es Ihnen, den ausgehenden virtuellen Netzwerkdatenverkehr zu bestimmten Azure Storage-Regionen einzuschränken. Dies ermöglicht jedoch den Datenverkehr zu jedem beliebigen Konto innerhalb der ausgewählten Azure Storage-Region.
   
   Mit Endpunktrichtlinien können Sie die Azure Storage-Konten angeben, für die der ausgehende Zugriff auf das virtuelle Netzwerk zulässig ist, und den Zugriff auf alle anderen Speicherkonten einschränken. Damit erhalten Sie eine viel präzisere Sicherheitskontrolle, um die Datenexfiltration aus Ihrem virtuellen Netzwerk zu schützen.
 

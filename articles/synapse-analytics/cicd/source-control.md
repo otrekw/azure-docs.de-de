@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/20/2020
 ms.author: liud
 ms.reviewer: pimorano
-ms.openlocfilehash: 2f1fe7c25327e8ecab9b450cab167391d8949b0a
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.openlocfilehash: 1f1a74f3a26a079039e68eb8e59fac4c18ff0c32
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97008163"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98219741"
 ---
 # <a name="source-control-in-azure-synapse-studio"></a>Quellcodeverwaltung in Azure Synapse Studio
 
@@ -77,7 +77,7 @@ Außerdem können Sie mit dem Repositorylink schnell auf das Git-Repository verw
 
 ### <a name="use-a-different-azure-active-directory-tenant"></a>Verwenden eines anderen Azure Active Directory-Mandanten
 
-Das Azure Repos-Git-Repository kann sich in einem anderen Azure Active Directory-Mandanten befinden. Zum Angeben eines anderen Azure AD-Mandanten müssen Sie über Administratorberechtigungen für das verwendete Azure-Abonnement verfügen. Weitere Informationen finden Sie unter [Ändern des Abonnementadministrators](https://docs.microsoft.com/azure/cost-management-billing/manage/add-change-subscription-administrator#assign-a-subscription-administrator).
+Das Azure Repos-Git-Repository kann sich in einem anderen Azure Active Directory-Mandanten befinden. Zum Angeben eines anderen Azure AD-Mandanten müssen Sie über Administratorberechtigungen für das verwendete Azure-Abonnement verfügen. Weitere Informationen finden Sie unter [Ändern des Abonnementadministrators](../../cost-management-billing/manage/add-change-subscription-administrator.md#assign-a-subscription-administrator).
 
 > [!IMPORTANT]
 > Um eine Verbindung mit einer anderen Azure Active Directory-Instanz herstellen zu können, muss der angemeldete Benutzer zu diesem Verzeichnis gehören. 
@@ -86,7 +86,7 @@ Das Azure Repos-Git-Repository kann sich in einem anderen Azure Active Directory
 
 Um ein persönliches Microsoft-Konto für die Git-Integration zu verwenden, können Sie Ihr persönliches Azure-Repository mit dem Active Directory Ihrer Organisation verknüpfen.
 
-1. Fügen Sie Ihr persönliches Microsoft-Konto als Gast zum Active Directory Ihrer Organisation hinzu. Weitere Informationen finden Sie unter [Hinzufügen von Azure Active Directory B2B-Zusammenarbeitsbenutzern über das Azure-Portal](https://docs.microsoft.com/azure/active-directory/external-identities/add-users-administrator).
+1. Fügen Sie Ihr persönliches Microsoft-Konto als Gast zum Active Directory Ihrer Organisation hinzu. Weitere Informationen finden Sie unter [Hinzufügen von Azure Active Directory B2B-Zusammenarbeitsbenutzern über das Azure-Portal](../../active-directory/external-identities/add-users-administrator.md).
 
 2. Melden Sie sich mit Ihrem persönlichen Microsoft-Konto beim Azure-Portal an. Wechseln Sie dann zum Active Directory Ihrer Organisation.
 

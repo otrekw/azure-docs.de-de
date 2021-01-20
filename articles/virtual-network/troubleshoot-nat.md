@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/20/2020
 ms.author: allensu
-ms.openlocfilehash: 690543ebc91e346e77509fbf993493f6978374ee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 70410e58acb30c7694e6fe4a6dcaff57bee98607
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87836104"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98223430"
 ---
 # <a name="troubleshoot-azure-virtual-network-nat-connectivity"></a>Problembehandlung für Azure Virtual Network NAT-Konnektivität
 
@@ -68,10 +68,10 @@ _**Lösung:**_ Nutzen geeigneter Muster und bewährter Methoden
 Die SNAT-Überlastung kann auch durch andere Antimuster in der zugrunde liegenden Anwendung verstärkt werden. Informieren Sie sich über diese zusätzlichen Muster und bewährten Methoden, um die Skalierbarkeit und Zuverlässigkeit Ihres Diensts zu verbessern.
 
 - Untersuchen Sie die Auswirkungen einer Verringerung des [TCP-Leerlauftimeouts](nat-gateway-resource.md#timers) (einschließlich des standardmäßigen Leerlauftimeouts von vier Minuten), um SNAT-Ports früher freizugeben.
-- Erwägen Sie die Nutzung von [asynchronen Abrufmustern](https://docs.microsoft.com/azure/architecture/patterns/async-request-reply) für zeitintensive Vorgänge, um Verbindungsressourcen für andere Vorgänge freizuhalten.
+- Erwägen Sie die Nutzung von [asynchronen Abrufmustern](/azure/architecture/patterns/async-request-reply) für zeitintensive Vorgänge, um Verbindungsressourcen für andere Vorgänge freizuhalten.
 - Für langlebige Datenflüsse (z. B. wiederverwendete TCP-Verbindungen) sollten TCP-Keepalives oder Anwendungsschicht-Keepalives verwendet werden, um zu verhindern, dass es für zwischengeschaltete Systeme zu Zeitüberschreitungen kommt. Die Verlängerung des Leerlauftimeouts ist das letzte Mittel, und unter Umständen wird die Grundursache hierdurch nicht beseitigt. Eine lange Timeoutdauer kann zu einer geringen Ausfallrate führen, wenn der Timeoutzeitraum abgelaufen ist, und mit Verzögerungen und unnötigen Fehlern verbunden sein.
-- Es sollten ordnungsgemäße [Wiederholungsmuster](https://docs.microsoft.com/azure/architecture/patterns/retry) verwendet werden, um bei vorübergehenden Fehlern oder der Wiederherstellung nach Fehlern aggressive Wiederholungsversuche oder Bursts zu vermeiden.
-Die Erstellung einer neuen TCP-Verbindung für jeden HTTP-Vorgang (auch als „atomische Verbindungen“ bezeichnet) ist ein Antimuster.  Mit atomischen Verbindungen wird verhindert, dass für Ihre Anwendung eine gute Skalierung erzielt wird, und es werden Ressourcen verschwendet.  Fassen Sie immer mehrere Vorgänge per Pipeline in derselben Verbindung zusammen.  Ihre Anwendung profitiert von der Transaktionsgeschwindigkeit und den Ressourcenkosten.  Wenn Ihre Anwendung die Verschlüsselung auf der Transportschicht nutzt (z. B. TLS), ist die Verarbeitung neuer Verbindungen mit erheblichen Kosten verbunden.  Informationen zu weiteren bewährten Mustern finden Sie unter [Cloudentwurfsmuster](https://docs.microsoft.com/azure/architecture/patterns/).
+- Es sollten ordnungsgemäße [Wiederholungsmuster](/azure/architecture/patterns/retry) verwendet werden, um bei vorübergehenden Fehlern oder der Wiederherstellung nach Fehlern aggressive Wiederholungsversuche oder Bursts zu vermeiden.
+Die Erstellung einer neuen TCP-Verbindung für jeden HTTP-Vorgang (auch als „atomische Verbindungen“ bezeichnet) ist ein Antimuster.  Mit atomischen Verbindungen wird verhindert, dass für Ihre Anwendung eine gute Skalierung erzielt wird, und es werden Ressourcen verschwendet.  Fassen Sie immer mehrere Vorgänge per Pipeline in derselben Verbindung zusammen.  Ihre Anwendung profitiert von der Transaktionsgeschwindigkeit und den Ressourcenkosten.  Wenn Ihre Anwendung die Verschlüsselung auf der Transportschicht nutzt (z. B. TLS), ist die Verarbeitung neuer Verbindungen mit erheblichen Kosten verbunden.  Informationen zu weiteren bewährten Mustern finden Sie unter [Cloudentwurfsmuster](/azure/architecture/patterns/).
 
 #### <a name="additional-possible-mitigations"></a>Weitere mögliche Minderungsmaßnahmen
 
@@ -96,7 +96,7 @@ Die folgende Tabelle kann als Ausgangspunkt dafür dienen, welche Tools für den
 | Betriebssystem | Allgemeiner TCP-Verbindungstest | TCP-Anwendungsschichttest | UDP |
 |---|---|---|---|
 | Linux | nc (allgemeiner Verbindungstest) | curl (TCP-Anwendungsschichttest) | Anwendungsspezifisch |
-| Windows | [PsPing](https://docs.microsoft.com/sysinternals/downloads/psping) | PowerShell [Invoke-WebRequest](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/invoke-webrequest) | Anwendungsspezifisch |
+| Windows | [PsPing](/sysinternals/downloads/psping) | PowerShell [Invoke-WebRequest](/powershell/module/microsoft.powershell.utility/invoke-webrequest) | Anwendungsspezifisch |
 
 ### <a name="connectivity-failures"></a>Konnektivitätsfehler
 
@@ -113,7 +113,7 @@ Verwenden Sie Tools wie die folgenden, um die Konnektivität zu überprüfen. [I
 | Betriebssystem | Allgemeiner TCP-Verbindungstest | TCP-Anwendungsschichttest | UDP |
 |---|---|---|---|
 | Linux | nc (allgemeiner Verbindungstest) | curl (TCP-Anwendungsschichttest) | Anwendungsspezifisch |
-| Windows | [PsPing](https://docs.microsoft.com/sysinternals/downloads/psping) | PowerShell [Invoke-WebRequest](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/invoke-webrequest) | Anwendungsspezifisch |
+| Windows | [PsPing](/sysinternals/downloads/psping) | PowerShell [Invoke-WebRequest](/powershell/module/microsoft.powershell.utility/invoke-webrequest) | Anwendungsspezifisch |
 
 #### <a name="configuration"></a>Konfiguration
 
@@ -202,4 +202,3 @@ Wenn Sie weiterhin Probleme haben, öffnen Sie eine Supportanfrage zur weiteren 
 * Informieren Sie sich über die [NAT-Gatewayressource](nat-gateway-resource.md).
 * Informieren Sie sich über [Metriken und Warnungen für NAT-Gatewayressourcen](nat-metrics.md).
 * [Teilen Sie uns bei UserVoice mit, welche Funktionen wir als Nächstes für Virtual Network NAT entwickeln sollen.](https://aka.ms/natuservoice)
-

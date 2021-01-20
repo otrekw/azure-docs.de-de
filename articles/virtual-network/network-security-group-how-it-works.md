@@ -13,17 +13,17 @@ ms.workload: infrastructure-services
 ms.date: 08/24/2020
 ms.author: kumud
 ms.reviewer: kumud
-ms.openlocfilehash: e60cdfb00d0dc9d446bd52a72e9fd15676acd285
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5cf0345ccffe95286b95607c6c7322752df6342b
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89458194"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98223277"
 ---
 # <a name="how-network-security-groups-filter-network-traffic"></a>Filtern von Netzwerkdatenverkehr mit Netzwerksicherheitsgruppen
 <a name="network-security-groups"></a>
 
-Sie können eine Azure-Netzwerksicherheitsgruppe verwenden, um Netzwerkdatenverkehr von und zu Azure-Ressourcen in einem virtuellen Azure-Netzwerk zu filtern. Eine Netzwerksicherheitsgruppe enthält [Sicherheitsregeln](https://docs.microsoft.com/azure/virtual-network/security-overview#security-rules), die eingehenden Netzwerkdatenverkehr an verschiedene Typen von Azure-Ressourcen oder ausgehenden Netzwerkdatenverkehr von diesen zulassen oder verweigern. Für jede Regel können Sie die Quelle, das Ziel, den Port und das Protokoll angeben.
+Sie können eine Azure-Netzwerksicherheitsgruppe verwenden, um Netzwerkdatenverkehr von und zu Azure-Ressourcen in einem virtuellen Azure-Netzwerk zu filtern. Eine Netzwerksicherheitsgruppe enthält [Sicherheitsregeln](./network-security-groups-overview.md#security-rules), die eingehenden Netzwerkdatenverkehr an verschiedene Typen von Azure-Ressourcen oder ausgehenden Netzwerkdatenverkehr von diesen zulassen oder verweigern. Für jede Regel können Sie die Quelle, das Ziel, den Port und das Protokoll angeben.
 
 Sie können Ressourcen von mehreren Azure-Diensten in einem virtuellen Azure-Netzwerk bereitstellen. Eine vollständige Liste finden Sie unter [Dienste, die in einem virtuellen Netzwerk bereitgestellt werden können](virtual-network-for-azure-services.md#services-that-can-be-deployed-into-a-virtual-network). Sie können jedem [Subnetz](virtual-network-manage-subnet.md#change-subnet-settings) eines virtuellen Netzwerks und jeder [Netzwerkschnittstelle](virtual-network-network-interface.md#associate-or-dissociate-a-network-security-group) eines virtuellen Computers keine oder eine Netzwerksicherheitsgruppe zuordnen. Sie können dieselbe Netzwerksicherheitsgruppe beliebig vielen Subnetzen und Netzwerkschnittstellen zuordnen.
 
@@ -37,7 +37,7 @@ Sehen Sie sich die Abbildung oben zusammen mit dem folgenden Text an, um weitere
 
 Für eingehenden Datenverkehr verarbeitet Azure zuerst die Regeln in einer Netzwerksicherheitsgruppe, die einem Subnetz (sofern vorhanden) zugeordnet sind, und anschließend die Regeln in einer Netzwerksicherheitsgruppe, die der Netzwerkschnittstelle (sofern vorhanden) zugeordnet sind.
 
-- **VM1**: Die Sicherheitsregeln in *NSG1* werden verarbeitet, da diese Netzwerksicherheitsgruppe *Subnet1* zugeordnet ist und *VM1* sich in *Subnet1* befindet. Sofern Sie keine Regel erstellt haben, die Port 80 als eingehenden Port zulässt, wird der Datenverkehr von der Standardsicherheitsregel [DenyAllInbound](https://docs.microsoft.com/azure/virtual-network/security-overview#denyallinbound) abgelehnt und von *NSG2* nicht ausgewertet, da *NSG2* der Netzwerkschnittstelle zugeordnet ist. Wenn *NSG1* über eine Sicherheitsregel verfügt, die Port 80 zulässt, wird der Datenverkehr von *NSG2* verarbeitet. Damit Port 80 für den virtuellen Computer zulässig ist, müssen sowohl *NSG1* als auch *NSG2* über eine Regel verfügen, die Port 80 aus dem Internet zulässt.
+- **VM1**: Die Sicherheitsregeln in *NSG1* werden verarbeitet, da diese Netzwerksicherheitsgruppe *Subnet1* zugeordnet ist und *VM1* sich in *Subnet1* befindet. Sofern Sie keine Regel erstellt haben, die Port 80 als eingehenden Port zulässt, wird der Datenverkehr von der Standardsicherheitsregel [DenyAllInbound](./network-security-groups-overview.md#denyallinbound) abgelehnt und von *NSG2* nicht ausgewertet, da *NSG2* der Netzwerkschnittstelle zugeordnet ist. Wenn *NSG1* über eine Sicherheitsregel verfügt, die Port 80 zulässt, wird der Datenverkehr von *NSG2* verarbeitet. Damit Port 80 für den virtuellen Computer zulässig ist, müssen sowohl *NSG1* als auch *NSG2* über eine Regel verfügen, die Port 80 aus dem Internet zulässt.
 - **VM2**: Die Regeln in *NSG1* werden verarbeitet, da *VM2* sich auch in *Subnet1* befindet. Da *VM2* über keine Netzwerksicherheitsgruppe verfügt, die seiner Netzwerkschnittstelle zugeordnet ist, empfängt er den gesamten zulässigen Datenverkehr über *NSG1*, oder der gesamte Datenverkehr wird durch *NSG1* verweigert. Datenverkehr wird für alle Ressourcen im selben Subnetz entweder zugelassen oder verweigert, wenn eine Netzwerksicherheitsgruppe einem Subnetz zugeordnet ist.
 - **VM3**: Da *Subnet2* keine Netzwerksicherheitsgruppe zugeordnet ist, ist Datenverkehr in das Subnetz zulässig und wird von *NSG2* verarbeitet, da *NSG2* der Netzwerkschnittstelle zugeordnet ist, die *VM3* angefügt ist.
 - **VM4**: Datenverkehr für *VM4* ist zulässig, da *Subnet3* oder der Netzwerkschnittstelle in der VM keine Netzwerksicherheitsgruppe zugeordnet ist. Der gesamte Netzwerkdatenverkehr ist über ein Subnetz und eine Netzwerkschnittstelle zulässig, wenn diesen keine Netzwerksicherheitsgruppe zugeordnet ist.
@@ -46,7 +46,7 @@ Für eingehenden Datenverkehr verarbeitet Azure zuerst die Regeln in einer Netzw
 
 Für ausgehenden Datenverkehr verarbeitet Azure zuerst die Regeln in einer Netzwerksicherheitsgruppe, die einer Netzwerkschnittstelle (sofern vorhanden) zugeordnet sind, und anschließend die Regeln in einer Netzwerksicherheitsgruppe, die dem Subnetz (sofern vorhanden) zugeordnet sind.
 
-- **VM1**: Die Sicherheitsregeln in *NSG2* werden verarbeitet. Sofern Sie keine Sicherheitsregel erstellen, die Port 80 als ausgehenden Port zum Internet zulässt, wird der Datenverkehr von der Standardsicherheitsregel [AllowInternetOutbound](https://docs.microsoft.com/azure/virtual-network/security-overview#allowinternetoutbound) in *NSG1* sowie *NSG2* zugelassen. Wenn *NSG2* über eine Sicherheitsregel verfügt, die Port 80 ablehnt, wird der Datenverkehr abgelehnt und nicht von *NSG1* ausgewertet. Zum Verweigern von Port 80 vom virtuellen Computer oder beiden Netzwerksicherheitsgruppen ist eine Regel erforderlich, die Port 80 für das Internet verweigert.
+- **VM1**: Die Sicherheitsregeln in *NSG2* werden verarbeitet. Sofern Sie keine Sicherheitsregel erstellen, die Port 80 als ausgehenden Port zum Internet zulässt, wird der Datenverkehr von der Standardsicherheitsregel [AllowInternetOutbound](./network-security-groups-overview.md#allowinternetoutbound) in *NSG1* sowie *NSG2* zugelassen. Wenn *NSG2* über eine Sicherheitsregel verfügt, die Port 80 ablehnt, wird der Datenverkehr abgelehnt und nicht von *NSG1* ausgewertet. Zum Verweigern von Port 80 vom virtuellen Computer oder beiden Netzwerksicherheitsgruppen ist eine Regel erforderlich, die Port 80 für das Internet verweigert.
 - **VM2**: Der gesamte Datenverkehr wird über die Netzwerkschnittstelle an das Subnetz gesendet, da der Netzwerkschnittstelle, die an *VM2* angefügt ist, keine Netzwerksicherheitsgruppe zugeordnet ist. Die Regeln in *NSG1* werden verarbeitet.
 - **VM3**: Wenn *NSG2* über eine Sicherheitsregel verfügt, die Port 80 verweigert, wird der Datenverkehr verweigert. Wenn *NSG2* über eine Sicherheitsregel verfügt, die Port 80 zulässt, dann ist Port 80 als ausgehender Port für das Internet zulässig, da *Subnet2* keine Netzwerksicherheitsgruppe zugeordnet ist.
 - **VM4**: Der gesamte Netzwerkdatenverkehr von *VM4* ist zulässig, da der Netzwerkschnittstelle, die an die VM angefügt ist, oder *Subnet3* keine Netzwerksicherheitsgruppe zugeordnet ist.

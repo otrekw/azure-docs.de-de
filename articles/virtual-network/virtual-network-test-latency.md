@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/29/2019
 ms.author: steveesp
-ms.openlocfilehash: 77ea14097538f722569acb5a0371674776aac8e5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f8f167a7947c42ce837ec83b336ae636f593f2e4
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84687802"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98219257"
 ---
 # <a name="test-vm-network-latency"></a>Testen der VM-Netzwerklatenz
 
@@ -55,7 +55,7 @@ Mit der Verwendung dieser Tools stellen Sie sicher, dass nur die Bereitstellungs
 Beachten Sie beim Erstellen Ihrer VM-Konfiguration die folgenden Empfehlungen:
 - Verwenden Sie die neueste Version von Windows oder Linux.
 - Aktivieren Sie den beschleunigten Netzwerkbetrieb, um optimale Ergebnisse zu erzielen.
-- Stellen Sie VMs mit einer [Azure-Näherungsplatzierungsgruppe](https://docs.microsoft.com/azure/virtual-machines/linux/co-location) bereit.
+- Stellen Sie VMs mit einer [Azure-Näherungsplatzierungsgruppe](../virtual-machines/co-location.md) bereit.
 - Mit größeren VMs wird im Allgemeinen eine bessere Leistung als mit kleineren VMs erzielt.
 
 ### <a name="tips-for-analysis"></a>Tipps für die Analyse
@@ -200,7 +200,7 @@ In diesem SockPerf-Beispiel wird eine Nachrichtengröße von 350 Byte genutzt. 
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Verbessern Sie die Latenz mit [Azure-Näherungsplatzierungsgruppen](https://docs.microsoft.com/azure/virtual-machines/linux/co-location).
+* Verbessern Sie die Latenz mit [Azure-Näherungsplatzierungsgruppen](../virtual-machines/co-location.md).
 * Informieren Sie sich, wie Sie das [Netzwerk für virtuelle Computer für Ihr Szenario optimieren](../virtual-network/virtual-network-optimize-network-bandwidth.md).
 * Lesen Sie mehr über die [Zuweisung von Bandbreite zu virtuellen Computern](../virtual-network/virtual-machine-network-throughput.md).
 * Weitere Informationen finden Sie unter [Azure Virtual Network – häufig gestellte Fragen](../virtual-network/virtual-networks-faq.md).

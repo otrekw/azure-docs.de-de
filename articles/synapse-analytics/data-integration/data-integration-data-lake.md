@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: daperlov
 ms.reviewer: jrasnick
-ms.openlocfilehash: 495300d677d6d898bfc916e5115b801c815bd587
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: fbc4f11b450a645002daedc800d4fed74ed37a3d
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96461483"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98219571"
 ---
 # <a name="ingest-data-into-azure-data-lake-storage-gen2"></a>Erfassen von Daten in Azure Data Lake Storage Gen2 
 
@@ -23,7 +23,7 @@ In diesem Artikel erfahren Sie, wie Sie mithilfe von Azure Synapse Analytics Dat
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * **Azure-Abonnement**: Wenn Sie über kein Azure-Abonnement verfügen, können Sie ein [kostenloses Azure-Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
-* **Azure Storage-Konto**: Sie verwenden Azure Data Lake Gen 2 als *Quelldatenspeicher*. Wenn Sie kein Speicherkonto haben, finden Sie unter [Erstellen eines Azure Storage-Kontos](../../storage/blobs/data-lake-storage-quickstart-create-account.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) die erforderlichen Schritte zum Erstellen eines solchen Kontos.
+* **Azure Storage-Konto**: Sie verwenden Azure Data Lake Gen 2 als *Quelldatenspeicher*. Wenn Sie kein Speicherkonto haben, finden Sie unter [Erstellen eines Azure Storage-Kontos](../../storage/common/storage-account-create.md?bc=%2fazure%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2ftoc.json) die erforderlichen Schritte zum Erstellen eines solchen Kontos.
 
 ## <a name="create-linked-services"></a>Erstellen von verknüpften Diensten
 

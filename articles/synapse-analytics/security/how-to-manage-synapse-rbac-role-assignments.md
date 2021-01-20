@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 12/1/2020
 ms.author: billgib
 ms.reviewer: jrasnick
-ms.openlocfilehash: f26b54a18ff137575cac208d70e4693c0b9914a8
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: c88371eb450d5b0e2e8b821cdec0e87190e291f8
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96572285"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98218194"
 ---
 # <a name="how-to-manage-synapse-rbac-role-assignments-in-synapse-studio"></a>Vorgehensweise: Verwalten von Synapse RBAC-Rollenzuweisungen in Synapse Studio
 
@@ -65,7 +65,7 @@ Wenn Sie eine Rolle in einem differenzierteren Bereich zuweisen möchten, wähle
 
 ![Hinzufügen der Rollenzuweisung für das Arbeitsbereichselement – Elementtyp auswählen](./media/how-to-manage-synapse-rbac-role-assignments/access-control-add-workspace-item-assignment-select-item-type.png) 
 
-Wählen Sie das spezifische **Element** aus, das als Bereich verwendet werden soll, und dann die zuzuweisende **Rolle** aus der Dropdownliste.  In der Dropdownliste werden nur die Rollen aufgelistet, die für den ausgewählten Elementtyp gültig sind. [Weitere Informationen](https://go.microsoft.com/fwlink/?linkid=2148306)  
+Wählen Sie das spezifische **Element** aus, das als Bereich verwendet werden soll, und dann die zuzuweisende **Rolle** aus der Dropdownliste.  In der Dropdownliste werden nur die Rollen aufgelistet, die für den ausgewählten Elementtyp gültig sind. [Weitere Informationen](./synapse-workspace-synapse-rbac.md)  
 
 ![Hinzufügen der Rollenzuweisung für das Arbeitsbereichselement – Rolle auswählen](./media/how-to-manage-synapse-rbac-role-assignments/access-control-add-workspace-item-assignment-select-role.png) 
  
@@ -81,4 +81,4 @@ Beachten Sie, dass Änderungen an den Rollenzuweisungen erst nach 2-5 Minuten in
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Grundlegendes zu den Rollen, die zum Ausführen allgemeiner Aufgaben in Synapse erforderlich sind](./synapse-workspace-understand-what-role-you-need.md) 
+[Grundlegendes zu den Rollen, die zum Ausführen allgemeiner Aufgaben in Synapse erforderlich sind](./synapse-workspace-understand-what-role-you-need.md)

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/15/2019
 ms.author: kumud
-ms.openlocfilehash: 61617777efa8241c93b2b5ffe42fc1d914b6ebcf
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: feea2d54edd8a93e6e0effbef03389ef895d5ffb
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96004975"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98216749"
 ---
 # <a name="virtual-network-peering"></a>Peering in virtuellen Netzwerken
 
@@ -48,7 +48,7 @@ Die Netzwerklatenz zwischen virtuellen Computern in per Peering verknüpften vir
 Der Datenverkehr zwischen virtuellen Computern in mittels Peering verknüpften virtuellen Netzwerken wird nicht über ein Gateway oder das öffentliche Internet, sondern direkt über die Microsoft-Backbone-Infrastruktur geleitet.
 
 Sie können Netzwerksicherheitsgruppen in beiden virtuellen Netzwerken anwenden, um den Zugriff auf andere virtuelle Netzwerke oder Subnetze zu blockieren.
-Beim Konfigurieren des VNET-Peerings können Sie die Regeln für Netzwerksicherheitsgruppen zwischen den virtuellen Netzwerken öffnen oder schließen. Wenn Sie sich für das Öffnen der vollständigen Konnektivität zwischen den mittels Peering verknüpften virtuellen Netzwerken entscheiden, können Sie Netzwerksicherheitsgruppen verwenden, um den spezifischen Zugriff jeweils zu blockieren oder zu verweigern. „Vollständige Konnektivität“ ist die Standardoption. Weitere Informationen zu Netzwerksicherheitsgruppen finden Sie unter [Sicherheitsgruppen](security-overview.md).
+Beim Konfigurieren des VNET-Peerings können Sie die Regeln für Netzwerksicherheitsgruppen zwischen den virtuellen Netzwerken öffnen oder schließen. Wenn Sie sich für das Öffnen der vollständigen Konnektivität zwischen den mittels Peering verknüpften virtuellen Netzwerken entscheiden, können Sie Netzwerksicherheitsgruppen verwenden, um den spezifischen Zugriff jeweils zu blockieren oder zu verweigern. „Vollständige Konnektivität“ ist die Standardoption. Weitere Informationen zu Netzwerksicherheitsgruppen finden Sie unter [Sicherheitsgruppen](./network-security-groups-overview.md).
 
 ## <a name="service-chaining"></a>Dienstverkettung
 

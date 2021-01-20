@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/28/2020
 ms.author: allensu
-ms.openlocfilehash: 62c1b323899f03a043904f4b10d5fe3bb551e0f4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d4ef8e6207d53a192b19f8343a60093e82368fa6
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91441764"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98223379"
 ---
 # <a name="designing-virtual-networks-with-nat-gateway-resources"></a>Entwerfen von virtuellen Netzwerken mit NAT-Gatewayressourcen
 
@@ -60,7 +60,7 @@ Im folgenden Diagramm sind die schreibbaren Verweise zwischen den verschiedenen 
 
 NAT wird für die meisten Workloads empfohlen, sofern bei Ihnen nicht eine spezifische Abhängigkeit von [poolbasierter Load Balancer-Konnektivität in ausgehender Richtung](../load-balancer/load-balancer-outbound-connections.md) besteht.  
 
-Sie können die Migration von Standardszenarien für den Lastenausgleich, einschließlich [Ausgangsregeln](../load-balancer/load-balancer-outbound-rules-overview.md), zu einem NAT-Gateway durchführen. Verschieben Sie zur Durchführung der Migration die Ressourcen bzw. Präfixressourcen für öffentliche IP-Adressen von den Front-Ends des Lastenausgleichs auf das NAT-Gateway. Neue IP-Adressen für das NAT-Gateway sind nicht erforderlich. Öffentliche Standard-IP-Adressressourcen und die Präfixressource für öffentliche IP-Adressen können wiederverwendet werden, sofern die Gesamtzahl von 16 IP-Adressen nicht überschritten wird. Planen Sie die Migration so, dass die Dienstunterbrechung während der Umstellung berücksichtigt wird.  Sie können die Unterbrechungsdauer verringern, indem Sie den Prozess automatisieren. Testen Sie die Migration zuerst in einer Stagingumgebung.  Während der Umstellung werden Datenflüsse, die ursprünglich in eingehender Richtung erfolgt sind, nicht beeinträchtigt.
+Sie können die Migration von Standardszenarien für den Lastenausgleich, einschließlich [Ausgangsregeln](../load-balancer/load-balancer-outbound-connections.md#outboundrules), zu einem NAT-Gateway durchführen. Verschieben Sie zur Durchführung der Migration die Ressourcen bzw. Präfixressourcen für öffentliche IP-Adressen von den Front-Ends des Lastenausgleichs auf das NAT-Gateway. Neue IP-Adressen für das NAT-Gateway sind nicht erforderlich. Öffentliche Standard-IP-Adressressourcen und die Präfixressource für öffentliche IP-Adressen können wiederverwendet werden, sofern die Gesamtzahl von 16 IP-Adressen nicht überschritten wird. Planen Sie die Migration so, dass die Dienstunterbrechung während der Umstellung berücksichtigt wird.  Sie können die Unterbrechungsdauer verringern, indem Sie den Prozess automatisieren. Testen Sie die Migration zuerst in einer Stagingumgebung.  Während der Umstellung werden Datenflüsse, die ursprünglich in eingehender Richtung erfolgt sind, nicht beeinträchtigt.
 
 
 Bei dem folgenden Beispiel handelt es sich um einen Ausschnitt aus einer Azure Resource Manager-Vorlage.  Diese Vorlage stellt mehrere Ressourcen bereit, einschließlich eines NAT-Gateways.  In dem Beispiel besitzt die Vorlage folgende Parameter:
@@ -230,7 +230,7 @@ Auch wenn das Szenario scheinbar funktioniert, sind das Integritätsmodell und d
 
 Jede NAT-Gatewayressource kann einen Durchsatz von bis zu 50 GBit/s bereitstellen. Zum Aufskalieren können Sie Ihre Bereitstellungen in mehrere Subnetze unterteilen und jedem Subnetz oder jeder Gruppe von Subnetzen ein NAT-Gateway zuweisen.
 
-Jedes NAT-Gateway kann 64.000 TCP- bzw. UDP-Datenflüsse pro zugewiesener ausgehender IP-Adresse unterstützen.  Ausführlichere Informationen finden Sie im folgenden Abschnitt zur Übersetzung der Quellnetzwerkadresse (Source Network Address Translation, SNAT). Spezifische Informationen zur Problembehandlung finden Sie im Artikel [Problembehandlung für Azure Virtual Network NAT-Konnektivität](https://docs.microsoft.com/azure/virtual-network/troubleshoot-nat).
+Jedes NAT-Gateway kann 64.000 TCP- bzw. UDP-Datenflüsse pro zugewiesener ausgehender IP-Adresse unterstützen.  Ausführlichere Informationen finden Sie im folgenden Abschnitt zur Übersetzung der Quellnetzwerkadresse (Source Network Address Translation, SNAT). Spezifische Informationen zur Problembehandlung finden Sie im Artikel [Problembehandlung für Azure Virtual Network NAT-Konnektivität](./troubleshoot-nat.md).
 
 ## <a name="source-network-address-translation"></a>Übersetzung der Quellnetzwerkadresse (Source Network Address Translation, SNAT)
 
@@ -264,7 +264,7 @@ NAT-Gateways verwenden (SNAT-)Quellports opportunistisch wieder.  Im Folgenden w
 |:---:|:---:|:---:|
 | 4 | 192.168.0.16:4285 | 65.52.0.2:80 |
 
-Ein NAT-Gateway übersetzt Datenfluss 4 wahrscheinlich in einen Port, der auch für andere Ziele verwendet werden kann.  Weitere Informationen zur richtigen Dimensionierung bei der IP-Adressbereitstellung finden Sie unter [Skalierung](https://docs.microsoft.com/azure/virtual-network/nat-gateway-resource#scaling).
+Ein NAT-Gateway übersetzt Datenfluss 4 wahrscheinlich in einen Port, der auch für andere Ziele verwendet werden kann.  Weitere Informationen zur richtigen Dimensionierung bei der IP-Adressbereitstellung finden Sie unter [Skalierung](#scaling).
 
 | Flow | Quelltupel | Quelltupel nach SNAT | Zieltupel | 
 |:---:|:---:|:---:|:---:|
@@ -307,7 +307,7 @@ NAT-Gatewayressourcen verwenden (SNAT-)Quellports opportunistisch wieder. Als Or
 
 SNAT-Ports für verschiedene Ziele werden höchstwahrscheinlich nach Möglichkeit wiederverwendet, und wenn die SNAT-Ports fast ausgelastet sind, tritt für die Datenflüsse möglicherweise ein Fehler auf.  
 
-Weitere Informationen finden Sie z. B. im Abschnitt über [SNAT-Grundlagen](https://docs.microsoft.com/azure/virtual-network/nat-gateway-resource#source-network-address-translation).
+Weitere Informationen finden Sie z. B. im Abschnitt über [SNAT-Grundlagen](#source-network-address-translation).
 
 
 ### <a name="protocols"></a>Protokolle
@@ -359,10 +359,10 @@ Wir möchten wissen, wie wir den Dienst verbessern können. Fehlt eine Funktion?
   - [Portal](./quickstart-create-nat-gateway-portal.md)
   - [Vorlage](./quickstart-create-nat-gateway-template.md)
 * Informieren Sie sich über die NAT-Gatewayressourcen-API:
-  - [REST-API](https://docs.microsoft.com/rest/api/virtualnetwork/natgateways)
-  - [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure/network/nat/gateway)
-  - [PowerShell](https://docs.microsoft.com/powershell/module/az.network/new-aznatgateway)
+  - [REST-API](/rest/api/virtualnetwork/natgateways)
+  - [Azure-Befehlszeilenschnittstelle](/cli/azure/network/nat/gateway)
+  - [PowerShell](/powershell/module/az.network/new-aznatgateway)
 * Informieren Sie sich über [Verfügbarkeitszonen](../availability-zones/az-overview.md).
-* Informieren Sie sich über [Load Balancer Standard](../load-balancer/load-balancer-standard-overview.md).
+* Informieren Sie sich über [Load Balancer Standard](../load-balancer/load-balancer-overview.md).
 * Informieren Sie sich über [Verfügbarkeitszonen und Load Balancer Standard](../load-balancer/load-balancer-standard-availability-zones.md).
 * [Teilen Sie uns bei UserVoice mit, welche Funktionen wir als Nächstes für Virtual Network NAT entwickeln sollen.](https://aka.ms/natuservoice)

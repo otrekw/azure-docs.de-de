@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 06/11/2020
 ms.author: allensu
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 0ec054d55432ad2680314b4ff91a067d37b629d4
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: e99ee28460c1639a7f0b9dd989bbe5a287a9158c
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94734326"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98221817"
 ---
 # <a name="tutorial-create-a-nat-gateway-using-azure-cli-and-test-the-nat-service"></a>Tutorial: Erstellen eines NAT-Gateways mit der Azure CLI und Testen des NAT-Diensts
 
@@ -34,7 +34,7 @@ In diesem Tutorial erstellen Sie ein NAT-Gateway, um ausgehende Konnektivität f
 
 ## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 
-Erstellen Sie mit [az group create](https://docs.microsoft.com/cli/azure/group) eine Ressourcengruppe. Eine Azure-Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden.
+Erstellen Sie mit [az group create](/cli/azure/group) eine Ressourcengruppe. Eine Azure-Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden.
 
 Im folgenden Beispiel wird eine Ressourcengruppe mit dem Namen **myResourceGroupNAT** am Standort **eastus2** erstellt:
 
@@ -49,7 +49,7 @@ Im folgenden Beispiel wird eine Ressourcengruppe mit dem Namen **myResourceGroup
 
 ### <a name="create-a-public-ip-address"></a>Erstellen einer öffentlichen IP-Adresse
 
-Für den Zugriff auf das öffentliche Internet benötigen Sie mindestens eine öffentliche IP-Adresse für das NAT-Gateway. Verwenden Sie [az network public-ip create](https://docs.microsoft.com/cli/azure/network/public-ip), um in **myResourceGroupNAT** eine öffentliche IP-Ressource namens **myPublicIPsource** zu erstellen.
+Für den Zugriff auf das öffentliche Internet benötigen Sie mindestens eine öffentliche IP-Adresse für das NAT-Gateway. Verwenden Sie [az network public-ip create](/cli/azure/network/public-ip), um in **myResourceGroupNAT** eine öffentliche IP-Ressource namens **myPublicIPsource** zu erstellen.
 
 ```azurecli-interactive
   az network public-ip create \
@@ -77,7 +77,7 @@ In diesem Abschnitt erfahren Sie, wie Sie mit der NAT-Gatewayressource die folge
   - Öffentlicher IP-Adresspool und Präfix für öffentliche IP-Adressen für ausgehende Datenflüsse, die von der NAT-Gatewayressource übersetzt werden
   - Ändern des Leerlauftimeouts von vier Minuten (Standardwert) in zehn Minuten
 
-Erstellen Sie mit [az network nat gateway create](https://docs.microsoft.com/cli/azure/network/nat?view=azure-cli-latest) ein globales Azure NAT-Gateway namens **myNATgateway**. Der Befehl verwendet die öffentliche IP-Adresse **myPublicIP** und das Präfix für öffentliche IP-Adressen **myPublicIPprefix**. Mit dem Befehl wird auch das Leerlauftimeout in „10 Minuten“ geändert.
+Erstellen Sie mit [az network nat gateway create](/cli/azure/network/nat?view=azure-cli-latest) ein globales Azure NAT-Gateway namens **myNATgateway**. Der Befehl verwendet die öffentliche IP-Adresse **myPublicIP** und das Präfix für öffentliche IP-Adressen **myPublicIPprefix**. Mit dem Befehl wird auch das Leerlauftimeout in „10 Minuten“ geändert.
 
 ```azurecli-interactive
   az network nat gateway create \
@@ -99,7 +99,7 @@ Hier wird die Einrichtung einer vollständigen Testumgebung Schritt für Schritt
 
 Sie müssen zunächst das virtuelle Netzwerk erstellen, damit Sie einen virtuellen Computer bereitstellen und das NAT-Gateway testen können.
 
-Erstellen Sie das virtuelle Netzwerk **myVnetsource** mit einem Subnetz namens **mySubnetsource** in **myResourceGroupNAT**, indem Sie den Befehl [az network Microsoft Azure Virtual Network create](https://docs.microsoft.com/cli/azure/network/vnet) verwenden.  Der IP-Adressraum für das virtuelle Netzwerk ist **192.168.0.0/16**. Das Subnetz im virtuellen Netzwerk ist **192.168.0.0/24**.
+Erstellen Sie das virtuelle Netzwerk **myVnetsource** mit einem Subnetz namens **mySubnetsource** in **myResourceGroupNAT**, indem Sie den Befehl [az network Microsoft Azure Virtual Network create](/cli/azure/network/vnet) verwenden.  Der IP-Adressraum für das virtuelle Netzwerk ist **192.168.0.0/16**. Das Subnetz im virtuellen Netzwerk ist **192.168.0.0/24**.
 
 ```azurecli-interactive
   az network vnet create \
@@ -113,7 +113,7 @@ Erstellen Sie das virtuelle Netzwerk **myVnetsource** mit einem Subnetz namens *
 
 ### <a name="configure-nat-service-for-source-subnet"></a>Konfigurieren des NAT-Diensts für das Quellsubnetz
 
-Konfigurieren Sie das Quellsubnetz **mySubnetsource** im virtuellen Netzwerk **myVnetsource** für die Verwendung der spezifischen NAT-Gatewayressource **myNATgateway**, indem Sie den Befehl [az network Microsoft Azure Virtual Network subnet update](https://docs.microsoft.com/cli/azure/network/vnet/subnet) verwenden. Mit diesem Befehl wird der NAT-Dienst im angegebenen Subnetz aktiviert.
+Konfigurieren Sie das Quellsubnetz **mySubnetsource** im virtuellen Netzwerk **myVnetsource** für die Verwendung der spezifischen NAT-Gatewayressource **myNATgateway**, indem Sie den Befehl [az network Microsoft Azure Virtual Network subnet update](/cli/azure/network/vnet/subnet) verwenden. Mit diesem Befehl wird der NAT-Dienst im angegebenen Subnetz aktiviert.
 
 ```azurecli-interactive
     az network vnet subnet update \
@@ -132,7 +132,7 @@ Zu Übungszwecken können Sie diesen virtuellen Computer auch ohne öffentliche 
 
 ### <a name="create-public-ip-for-source-vm"></a>Erstellen einer öffentlichen IP-Adresse für den virtuellen Quellcomputer
 
-Sie erstellen eine öffentliche IP-Adresse, die für den Zugriff auf den virtuellen Quellcomputer verwendet werden soll. Verwenden Sie [az network public-ip create](https://docs.microsoft.com/cli/azure/network/public-ip), um in **myResourceGroupNAT** eine öffentliche IP-Ressource namens **myPublicIPsourceVM** zu erstellen.
+Sie erstellen eine öffentliche IP-Adresse, die für den Zugriff auf den virtuellen Quellcomputer verwendet werden soll. Verwenden Sie [az network public-ip create](/cli/azure/network/public-ip), um in **myResourceGroupNAT** eine öffentliche IP-Ressource namens **myPublicIPsourceVM** zu erstellen.
 
 ```azurecli-interactive
   az network public-ip create \
@@ -144,7 +144,7 @@ Sie erstellen eine öffentliche IP-Adresse, die für den Zugriff auf den virtuel
 
 ### <a name="create-an-nsg-for-source-vm"></a>Erstellen einer NSG für den virtuellen Quellcomputer
 
-Da öffentliche Standard-IP-Adressen standardmäßig sicher sind, müssen Sie eine NSG erstellen, um den SSH-Zugriff in eingehender Richtung zuzulassen.  Der NAT-Dienst von Azure kennt die Richtung des Datenflusses. Diese NSG wird nicht für ausgehenden Datenverkehr verwendet, nachdem das NAT-Gateway in demselben Subnetz konfiguriert wurde. Erstellen Sie mit [az network nsg create](https://docs.microsoft.com/cli/azure/network/nsg?view=azure-cli-latest#az-network-nsg-create) eine NSG-Ressource namens **myNSGsource** in **myResourceGroupNAT**.
+Da öffentliche Standard-IP-Adressen standardmäßig sicher sind, müssen Sie eine NSG erstellen, um den SSH-Zugriff in eingehender Richtung zuzulassen.  Der NAT-Dienst von Azure kennt die Richtung des Datenflusses. Diese NSG wird nicht für ausgehenden Datenverkehr verwendet, nachdem das NAT-Gateway in demselben Subnetz konfiguriert wurde. Erstellen Sie mit [az network nsg create](/cli/azure/network/nsg?view=azure-cli-latest#az-network-nsg-create) eine NSG-Ressource namens **myNSGsource** in **myResourceGroupNAT**.
 
 ```azurecli-interactive
   az network nsg create \
@@ -155,7 +155,7 @@ Da öffentliche Standard-IP-Adressen standardmäßig sicher sind, müssen Sie ei
 
 ### <a name="expose-ssh-endpoint-on-source-vm"></a>Verfügbarmachen des SSH-Endpunkts auf einem virtuellen Quellcomputer
 
-Sie erstellen eine Regel in der NSG für den SSH-Zugriff auf den virtuellen Quellcomputer. Verwenden Sie [az network nsg rule create](https://docs.microsoft.com/cli/azure/network/nsg/rule?view=azure-cli-latest#az-network-nsg-rule-create), um eine NSG-Regel mit dem Namen **ssh** zu erstellen. Diese Regel wird in der NSG mit dem Namen **myNSGsource** in der Ressourcengruppe **myResourceGroupNAT** erstellt.
+Sie erstellen eine Regel in der NSG für den SSH-Zugriff auf den virtuellen Quellcomputer. Verwenden Sie [az network nsg rule create](/cli/azure/network/nsg/rule?view=azure-cli-latest#az-network-nsg-rule-create), um eine NSG-Regel mit dem Namen **ssh** zu erstellen. Diese Regel wird in der NSG mit dem Namen **myNSGsource** in der Ressourcengruppe **myResourceGroupNAT** erstellt.
 
 ```azurecli-interactive
   az network nsg rule create \
@@ -211,7 +211,7 @@ Wir erstellen jetzt ein Ziel für den ausgehenden Datenverkehr, der vom NAT-Dien
 
  Wir müssen ein virtuelles Netzwerk erstellen, in dem der virtuelle Zielcomputer angeordnet werden kann.  Diese Befehle umfassen die gleichen Schritte wie für den virtuellen Quellcomputer, aber es wurden geringfügige Änderungen zum Verfügbarmachen des Zielendpunkts vorgenommen.
 
-Erstellen Sie das virtuelle Netzwerk **myVnetdestination** mit einem Subnetz namens **mySubnetdestination** in **myResourceGroupNAT**, indem Sie den Befehl [az network Microsoft Azure Virtual Network create](https://docs.microsoft.com/cli/azure/network/vnet) verwenden.  Der IP-Adressraum für das virtuelle Netzwerk ist **192.168.0.0/16**. Das Subnetz im virtuellen Netzwerk ist **192.168.0.0/24**.
+Erstellen Sie das virtuelle Netzwerk **myVnetdestination** mit einem Subnetz namens **mySubnetdestination** in **myResourceGroupNAT**, indem Sie den Befehl [az network Microsoft Azure Virtual Network create](/cli/azure/network/vnet) verwenden.  Der IP-Adressraum für das virtuelle Netzwerk ist **192.168.0.0/16**. Das Subnetz im virtuellen Netzwerk ist **192.168.0.0/24**.
 
 ```azurecli-interactive
   az network vnet create \
@@ -225,7 +225,7 @@ Erstellen Sie das virtuelle Netzwerk **myVnetdestination** mit einem Subnetz nam
 
 ### <a name="create-public-ip-for-destination-vm"></a>Erstellen einer öffentlichen IP-Adresse für den virtuellen Zielcomputer
 
-Sie erstellen eine öffentliche IP-Adresse, die für den Zugriff auf den virtuellen Quellcomputer verwendet werden soll. Verwenden Sie [az network public-ip create](https://docs.microsoft.com/cli/azure/network/public-ip), um in **myResourceGroupNAT** eine öffentliche IP-Ressource namens **myPublicIPdestinationVM** zu erstellen. 
+Sie erstellen eine öffentliche IP-Adresse, die für den Zugriff auf den virtuellen Quellcomputer verwendet werden soll. Verwenden Sie [az network public-ip create](/cli/azure/network/public-ip), um in **myResourceGroupNAT** eine öffentliche IP-Ressource namens **myPublicIPdestinationVM** zu erstellen. 
 
 ```azurecli-interactive
   az network public-ip create \
@@ -237,7 +237,7 @@ Sie erstellen eine öffentliche IP-Adresse, die für den Zugriff auf den virtuel
 
 ### <a name="create-an-nsg-for-destination-vm"></a>Erstellen einer NSG für den virtuellen Zielcomputer
 
-Da öffentliche Standard-IP-Adressen standardmäßig sicher sind, müssen Sie eine NSG erstellen, um eingehenden Zugriff für SSH zuzulassen. Der NAT-Dienst von Azure kennt die Richtung des Datenflusses. Diese NSG wird nicht für ausgehenden Datenverkehr verwendet, nachdem das NAT-Gateway in demselben Subnetz konfiguriert wurde. Erstellen Sie mit [az network nsg create](https://docs.microsoft.com/cli/azure/network/nsg?view=azure-cli-latest#az-network-nsg-create) eine NSG-Ressource namens **myNSGdestination** in **myResourceGroupNAT**.
+Da öffentliche Standard-IP-Adressen standardmäßig sicher sind, müssen Sie eine NSG erstellen, um eingehenden Zugriff für SSH zuzulassen. Der NAT-Dienst von Azure kennt die Richtung des Datenflusses. Diese NSG wird nicht für ausgehenden Datenverkehr verwendet, nachdem das NAT-Gateway in demselben Subnetz konfiguriert wurde. Erstellen Sie mit [az network nsg create](/cli/azure/network/nsg?view=azure-cli-latest#az-network-nsg-create) eine NSG-Ressource namens **myNSGdestination** in **myResourceGroupNAT**.
 
 ```azurecli-interactive
     az network nsg create \
@@ -248,7 +248,7 @@ Da öffentliche Standard-IP-Adressen standardmäßig sicher sind, müssen Sie ei
 
 ### <a name="expose-ssh-endpoint-on-destination-vm"></a>Verfügbarmachen des SSH-Endpunkts auf dem virtuellen Zielcomputer
 
-Sie erstellen eine Regel in der NSG für den SSH-Zugriff auf den virtuellen Zielcomputer. Verwenden Sie [az network nsg rule create](https://docs.microsoft.com/cli/azure/network/nsg/rule?view=azure-cli-latest#az-network-nsg-rule-create), um eine NSG-Regel mit dem Namen **ssh** zu erstellen. Diese Regel wird in der NSG mit dem Namen **myNSGdestination** in der Ressourcengruppe **myResourceGroupNAT** erstellt.
+Sie erstellen eine Regel in der NSG für den SSH-Zugriff auf den virtuellen Zielcomputer. Verwenden Sie [az network nsg rule create](/cli/azure/network/nsg/rule?view=azure-cli-latest#az-network-nsg-rule-create), um eine NSG-Regel mit dem Namen **ssh** zu erstellen. Diese Regel wird in der NSG mit dem Namen **myNSGdestination** in der Ressourcengruppe **myResourceGroupNAT** erstellt.
 
 ```azurecli-interactive
     az network nsg rule create \
@@ -266,7 +266,7 @@ Sie erstellen eine Regel in der NSG für den SSH-Zugriff auf den virtuellen Ziel
 
 ### <a name="expose-http-endpoint-on-destination-vm"></a>Verfügbarmachen des HTTP-Endpunkts auf dem virtuellen Zielcomputer
 
-Sie erstellen in der NSG eine Regel für den HTTP-Zugriff auf den virtuellen Zielcomputer. Erstellen Sie mit [az network nsg rule create](https://docs.microsoft.com/cli/azure/network/nsg/rule?view=azure-cli-latest#az-network-nsg-rule-create) in **myResourceGroupNAT** eine NSG-Regel namens **http** in der NSG mit dem Namen **myNSGdestination**.
+Sie erstellen in der NSG eine Regel für den HTTP-Zugriff auf den virtuellen Zielcomputer. Erstellen Sie mit [az network nsg rule create](/cli/azure/network/nsg/rule?view=azure-cli-latest#az-network-nsg-rule-create) in **myResourceGroupNAT** eine NSG-Regel namens **http** in der NSG mit dem Namen **myNSGdestination**.
 
 ```azurecli-interactive
     az network nsg rule create \
@@ -434,4 +434,3 @@ Sehen Sie sich die Metriken in Azure Monitor an, um Informationen zum Betrieb Ih
 - Schnellstart zur Bereitstellung einer [NAT-Gatewayressource mithilfe des Azure-Portals](./quickstart-create-nat-gateway-portal.md)
 
 > [!div class="nextstepaction"]
-

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/18/2020
 ms.author: allensu
-ms.openlocfilehash: de4e32d79cf4dfb3a5f54544c65544297a2c0232
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 516f858c8f95ec3f7cfd8ffc1592358716986519
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95993566"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98223294"
 ---
 # <a name="tutorial-create-a-nat-gateway-using-azure-powershell"></a>Tutorial: Erstellen eines NAT-Gateways mithilfe von Azure PowerShell
 
@@ -35,7 +35,7 @@ Sie können dieses Tutorial mithilfe von Azure Cloud Shell absolvieren oder die 
 
 ## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 
-Erstellen Sie mit [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup?view=latest) eine Ressourcengruppe. Eine Azure-Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden.
+Erstellen Sie mit [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup?view=latest) eine Ressourcengruppe. Eine Azure-Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden.
 
 Im folgenden Beispiel wird eine Ressourcengruppe mit dem Namen **myResourceGroupNAT** am Standort **eastus2** erstellt:
 
@@ -59,7 +59,7 @@ In diesem Szenario werden zur Veranschaulichung eine öffentliche IP-Adresse und
 
 ### <a name="create-a-public-ip-address"></a>Erstellen einer öffentlichen IP-Adresse
 
-Für den Zugriff auf das Internet benötigen Sie mindestens eine öffentliche IP-Adresse für das NAT-Gateway. Verwenden Sie [New-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/az.network/new-azpublicipaddress?view=latest) zum Erstellen einer öffentlichen IP-Ressource namens **myPublicIP** in **myResourceGroupNAT**. Das Ergebnis dieses Befehls wird zur späteren Verwendung in der Variablen **$publicIP** gespeichert.
+Für den Zugriff auf das Internet benötigen Sie mindestens eine öffentliche IP-Adresse für das NAT-Gateway. Verwenden Sie [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress?view=latest) zum Erstellen einer öffentlichen IP-Ressource namens **myPublicIP** in **myResourceGroupNAT**. Das Ergebnis dieses Befehls wird zur späteren Verwendung in der Variablen **$publicIP** gespeichert.
 
 ```azurepowershell-interactive
 $rsg = 'myResourceGroupNAT'
@@ -73,7 +73,7 @@ New-AzPublicIpAddress -Name $pbnm -ResourceGroupName $rsg -AllocationMethod Stat
 
 ### <a name="create-a-public-ip-prefix"></a>Erstellen des Präfixes für öffentliche IP-Adressen
 
-Verwenden Sie [New-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/az.network/new-azpublicipprefix?view=latest), um eine Präfixressource für öffentliche IP-Adressen mit dem Namen **myPublicIPprefix** in **myResourceGroupNAT** zu erstellen.  Das Ergebnis dieses Befehls wird zur späteren Verwendung in einer Variablen namens **$publicIPPrefix** gespeichert.
+Verwenden Sie [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipprefix?view=latest), um eine Präfixressource für öffentliche IP-Adressen mit dem Namen **myPublicIPprefix** in **myResourceGroupNAT** zu erstellen.  Das Ergebnis dieses Befehls wird zur späteren Verwendung in einer Variablen namens **$publicIPPrefix** gespeichert.
 
 ```azurepowershell-interactive
 $rsg = 'myResourceGroupNAT'
@@ -90,7 +90,7 @@ In diesem Abschnitt erfahren Sie, wie Sie mit der NAT-Gatewayressource die folge
   - Öffentlicher IP-Adresspool und Präfix für öffentliche IP-Adressen für ausgehende Datenflüsse, die von der NAT-Gatewayressource übersetzt werden
   - Ändern des Leerlauftimeouts von vier Minuten (Standardwert) in zehn Minuten
 
-Erstellen Sie mit [New-AzNatGateway](https://docs.microsoft.com/powershell/module/az.network/new-aznatgateway) ein globales Azure-NAT-Gateway. Als Ergebnis dieses Befehls wird eine Gatewayressource namens **myNATgateway** erstellt, die die öffentliche IP-Adresse **myPublicIP** und das Präfix für öffentliche IP-Adressen **myPublicIPprefix** verwendet. Das Leerlauftimeout wird auf zehn Minuten festgelegt.  Das Ergebnis dieses Befehls wird zur späteren Verwendung in einer Variablen namens **$natGateway** gespeichert.
+Erstellen Sie mit [New-AzNatGateway](/powershell/module/az.network/new-aznatgateway) ein globales Azure-NAT-Gateway. Als Ergebnis dieses Befehls wird eine Gatewayressource namens **myNATgateway** erstellt, die die öffentliche IP-Adresse **myPublicIP** und das Präfix für öffentliche IP-Adressen **myPublicIPprefix** verwendet. Das Leerlauftimeout wird auf zehn Minuten festgelegt.  Das Ergebnis dieses Befehls wird zur späteren Verwendung in einer Variablen namens **$natGateway** gespeichert.
 
 ```azurepowershell-interactive
 $rsg = 'myResourceGroupNAT'
@@ -108,7 +108,7 @@ Das NAT-Gateway ist nun verwendungsbereit, und Sie müssen nur noch konfiguriere
 
 Erstellen Sie das virtuelle Netzwerk, und weisen Sie das Subnetz dem Gateway zu.
 
-Erstellen Sie ein virtuelles Netzwerk namens **myVnet** mit einem Subnetz namens **mySubnet** mit [New-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworksubnetconfig?view=latest) in **myResourceGroup**, indem Sie [New-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetwork?view=latest) verwenden. Der IP-Adressraum für das virtuelle Netzwerk ist **192.168.0.0/16**. Das Subnetz im virtuellen Netzwerk ist **192.168.0.0/24**.  Das Ergebnis der Befehle wird zur späteren Verwendung in Variablen mit den Namen **$subnet** und **$vnet** gespeichert.
+Erstellen Sie ein virtuelles Netzwerk namens **myVnet** mit einem Subnetz namens **mySubnet** mit [New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig?view=latest) in **myResourceGroup**, indem Sie [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork?view=latest) verwenden. Der IP-Adressraum für das virtuelle Netzwerk ist **192.168.0.0/16**. Das Subnetz im virtuellen Netzwerk ist **192.168.0.0/24**.  Das Ergebnis der Befehle wird zur späteren Verwendung in Variablen mit den Namen **$subnet** und **$vnet** gespeichert.
 
 ```azurepowershell-interactive
 $sbnm = 'mySubnet'
@@ -133,7 +133,7 @@ Sie erstellen nun einen virtuellen Computer zur Verwendung des NAT-Diensts.  Die
 
 ### <a name="create-public-ip-for-source-vm"></a>Erstellen einer öffentlichen IP-Adresse für den virtuellen Quellcomputer
 
-Sie erstellen eine öffentliche IP-Adresse, die für den Zugriff auf den virtuellen Computer verwendet werden soll.  Verwenden Sie [New-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/az.network/new-azpublicipaddress?view=latest) zum Erstellen einer öffentlichen IP-Ressource namens **myPublicIPVM** in **myResourceGroupNAT**.  Das Ergebnis dieses Befehls wird zur späteren Verwendung in einer Variablen namens **$publicIpVM** gespeichert.
+Sie erstellen eine öffentliche IP-Adresse, die für den Zugriff auf den virtuellen Computer verwendet werden soll.  Verwenden Sie [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress?view=latest) zum Erstellen einer öffentlichen IP-Ressource namens **myPublicIPVM** in **myResourceGroupNAT**.  Das Ergebnis dieses Befehls wird zur späteren Verwendung in einer Variablen namens **$publicIpVM** gespeichert.
 
 ```azurepowershell-interactive
 $rsg = 'myResourceGroupNAT'
@@ -147,7 +147,7 @@ New-AzPublicIpAddress -Name $ipnm -ResourceGroupName $rsg -AllocationMethod Stat
 
 ### <a name="create-an-nsg-and-expose-ssh-endpoint-for-vm"></a>Erstellen einer NSG und Verfügbarmachen des SSH-Endpunkts für den virtuellen Computer
 
-Öffentliche Standard-IP-Adressen sind standardmäßig sicher, und Sie müssen eine NSG erstellen, um den SSH-Zugriff in eingehender Richtung zuzulassen. Verwenden Sie [New-AzNetworkSecurityGroup](https://docs.microsoft.com/powershell/module/az.network/new-aznetworksecuritygroup?view=latest), um eine NSG-Ressource mit dem Namen **myNSG** zu erstellen. Verwenden Sie [New-AzNetworkSecurityRuleConfig](https://docs.microsoft.com/powershell/module/az.network/new-aznetworksecurityruleconfig?view=latest), um in **myResourceGroupNAT** eine NSG-Regel namens **ssh** für den SSH-Zugriff zu erstellen.  Das Ergebnis dieses Befehls wird zur späteren Verwendung in einer Variablen namens **$nsg** gespeichert.
+Öffentliche Standard-IP-Adressen sind standardmäßig sicher, und Sie müssen eine NSG erstellen, um den SSH-Zugriff in eingehender Richtung zuzulassen. Verwenden Sie [New-AzNetworkSecurityGroup](/powershell/module/az.network/new-aznetworksecuritygroup?view=latest), um eine NSG-Ressource mit dem Namen **myNSG** zu erstellen. Verwenden Sie [New-AzNetworkSecurityRuleConfig](/powershell/module/az.network/new-aznetworksecurityruleconfig?view=latest), um in **myResourceGroupNAT** eine NSG-Regel namens **ssh** für den SSH-Zugriff zu erstellen.  Das Ergebnis dieses Befehls wird zur späteren Verwendung in einer Variablen namens **$nsg** gespeichert.
 
 ```azurepowershell-interactive
 $rnm = 'ssh'
@@ -170,7 +170,7 @@ New-AzNetworkSecurityGroup -ResourceGroupName $rsg -Name $rnm -Location $loc -Se
 
 ### <a name="create-nic-for-vm"></a>Erstellen einer NIC für virtuelle Computer
 
-Erstellen Sie mit [New-AzNetworkInterface](https://docs.microsoft.com/powershell/module/az.network/new-aznetworkinterface?view=azps-2.8.0) eine Netzwerkschnittstelle namens **myNic**. Mit diesem Befehl wird die öffentliche IP-Adresse der Netzwerksicherheitsgruppe zugeordnet. Das Ergebnis dieses Befehls wird zur späteren Verwendung in einer Variablen namens **$nic** gespeichert.
+Erstellen Sie mit [New-AzNetworkInterface](/powershell/module/az.network/new-aznetworkinterface?view=azps-2.8.0) eine Netzwerkschnittstelle namens **myNic**. Mit diesem Befehl wird die öffentliche IP-Adresse der Netzwerksicherheitsgruppe zugeordnet. Das Ergebnis dieses Befehls wird zur späteren Verwendung in einer Variablen namens **$nic** gespeichert.
 
 ```azurepowershell-interactive
 $rsg = 'myResourceGroupNAT'
@@ -192,9 +192,9 @@ Verwenden Sie „ssh-keygen“, um ein SSH-Schlüsselpaar zu erstellen.
 ```azurepowershell-interactive
 ssh-keygen -t rsa -b 2048
 ```
-Ausführlichere Informationen zum Erstellen von SSH-Schlüsselpaaren, u.a. zur Verwendung von PuTTy, finden Sie unter [Verwenden von SSH-Schlüsseln mit Windows in Azure](https://docs.microsoft.com/azure/virtual-machines/linux/ssh-from-windows).
+Ausführlichere Informationen zum Erstellen von SSH-Schlüsselpaaren, u.a. zur Verwendung von PuTTy, finden Sie unter [Verwenden von SSH-Schlüsseln mit Windows in Azure](../virtual-machines/linux/ssh-from-windows.md).
 
-Wenn Sie das SSH-Schlüsselpaar mit Cloud Shell erstellen, wird es in einem Containerimage gespeichert. Dieses [Speicherkonto wird automatisch erstellt](https://docs.microsoft.com/azure/cloud-shell/persisting-shell-storage). Löschen Sie das Speicherkonto oder die darin enthaltene Dateifreigabe nicht, bis Sie Ihre Schlüssel abgerufen haben.
+Wenn Sie das SSH-Schlüsselpaar mit Cloud Shell erstellen, wird es in einem Containerimage gespeichert. Dieses [Speicherkonto wird automatisch erstellt](../cloud-shell/persisting-shell-storage.md). Löschen Sie das Speicherkonto oder die darin enthaltene Dateifreigabe nicht, bis Sie Ihre Schlüssel abgerufen haben.
 
 #### <a name="create-vm-configuration"></a>Erstellen der VM-Konfiguration
 
@@ -249,7 +249,7 @@ Warten Sie, bis der virtuelle Computer auf die Bereitstellung vorbereitet wurde,
 
 ## <a name="discover-the-ip-address-of-the-vm"></a>Ermitteln der IP-Adresse des virtuellen Computers
 
-Als Erstes müssen Sie die IP-Adresse des virtuellen Computers ermitteln, den Sie erstellt haben. Verwenden Sie [Get-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/az.network/get-azpublicipaddress?view=latest) zum Abrufen der öffentlichen IP-Adresse des virtuellen Computers: 
+Als Erstes müssen Sie die IP-Adresse des virtuellen Computers ermitteln, den Sie erstellt haben. Verwenden Sie [Get-AzPublicIpAddress](/powershell/module/az.network/get-azpublicipaddress?view=latest) zum Abrufen der öffentlichen IP-Adresse des virtuellen Computers: 
 
 ```azurepowershell-interactive
 $rsg = 'myResourceGroupNAT'
@@ -273,7 +273,7 @@ Sie können den NAT-Dienst nun verwenden.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Wenn die Ressourcengruppe und alle darin enthaltenen Ressourcen nicht mehr benötigt werden, können Sie sie mit dem Befehl [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup?view=latest) entfernen.
+Wenn die Ressourcengruppe und alle darin enthaltenen Ressourcen nicht mehr benötigt werden, können Sie sie mit dem Befehl [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup?view=latest) entfernen.
 
 ```azurepowershell-interactive 
 Remove-AzResourceGroup -Name myResourceGroupNAT
@@ -292,5 +292,3 @@ Sehen Sie sich die Metriken in Azure Monitor an, um Informationen zum Betrieb Ih
 - Schnellstart zur Bereitstellung einer [NAT-Gatewayressource mithilfe von Azure PowerShell](./quickstart-create-nat-gateway-powershell.md)
 - Schnellstart zur Bereitstellung einer [NAT-Gatewayressource mithilfe des Azure-Portals](./quickstart-create-nat-gateway-portal.md)
 > [!div class="nextstepaction"]
-
-

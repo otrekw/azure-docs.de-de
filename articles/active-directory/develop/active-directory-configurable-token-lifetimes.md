@@ -13,12 +13,12 @@ ms.date: 01/04/2021
 ms.author: ryanwi
 ms.custom: aaddev, identityplatformtop40, content-perf, FY21Q1, contperf-fy21q1
 ms.reviewer: hirsin, jlu, annaba
-ms.openlocfilehash: 0b3c2f74edff661326e97da7b06860914468c43b
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.openlocfilehash: ec925ce165c1de98fe920381e1b51e3388c1e4ad
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2021
-ms.locfileid: "98059346"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98232402"
 ---
 # <a name="configurable-token-lifetimes-in-microsoft-identity-platform-preview"></a>Konfigurierbare Tokengültigkeitsdauer in Microsoft Identity Platform (Vorschau)
 
@@ -101,8 +101,7 @@ Vertrauliche Clients sind Anwendungen, die ein Clientkennwort (Geheimnis) sicher
 
 Öffentliche Clients können ein Clientkennwort (Geheimnis) nicht sicher speichern. Eine iOS- oder Android-App kann beispielsweise kein Geheimnis vor dem Ressourcenbesitzer verbergen und gilt daher als öffentlicher Client. Sie können Richtlinien für Ressourcen festlegen, um zu verhindern, dass Aktualisierungstoken aus öffentlichen Clients, deren Alter einen festgelegten Wert überschritten hat, ein neues Zugriffs-/Aktualisierungstoken-Paar abrufen können. Verwenden Sie hierfür die Eigenschaft [Max. Zeit der Inaktivität für Aktualisierungstoken](#refresh-token-max-inactive-time) (`MaxInactiveTime`). Sie können Richtlinien auch verwenden, um einen Zeitraum bis zum einem Punkt festzulegen, ab dem die Aktualisierungstoken nicht mehr akzeptiert werden. Verwenden Sie zu diesem Zweck eine der Eigenschaften [Max. Alter Single-Factor-Aktualisierungstoken](#single-factor-session-token-max-age) oder [Max. Alter Multi-Factor-Sitzungstoken](#multi-factor-refresh-token-max-age). Sie können die Gültigkeitsdauer eines Aktualisierungstokens anpassen, um zu steuern, wann und wie oft der Benutzer erneut Anmeldeinformationen eingeben muss, anstatt automatisch erneut authentifiziert zu werden, wenn er eine öffentliche Clientanwendung verwendet.
 
-> [!NOTE]
-> Die Eigenschaft „Max. Alter“ ist die Zeitspanne, in der ein Token verwendet werden kann. 
+Die Eigenschaft „Max. Alter“ ist die Zeitspanne, in der ein Token verwendet werden kann. 
 
 ### <a name="single-sign-on-session-tokens"></a>Sitzungstoken für einmaliges Anmelden
 Wenn sich ein Benutzer mit Microsoft Identity Platform authentifiziert, wird eine SSO-Sitzung (Single Sign-On, einmaliges Anmelden) im Browser des Benutzers und bei Microsoft Identity Platform hergestellt. Das SSO-Token stellt diese Sitzung dar (in Form eines Cookies). Das SSO-Sitzungstoken ist nicht an eine bestimmte Ressource/Clientanwendung gebunden. SSO-Sitzungstoken können widerrufen werden, und ihre Gültigkeit wird bei jeder Verwendung überprüft.

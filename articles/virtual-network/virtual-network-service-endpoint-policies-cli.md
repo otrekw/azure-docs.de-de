@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: rdhillon
 ms.custom: ''
-ms.openlocfilehash: a080c3953c48227301052a0bb151c8cba96e515a
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: 9ce1e320a93a834a938ce95f3931d885d2214faa
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94737335"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98216868"
 ---
 # <a name="manage-data-exfiltration-to-azure-storage-accounts-with-virtual-network-service-endpoint-policies-using-the-azure-cli"></a>Verwalten der Datenexfiltration in Azure Storage-Konten mit VNET-Dienstendpunkt-Richtlinien mithilfe der Azure-Befehlszeilenschnittstelle
 
@@ -114,7 +114,7 @@ az network nsg rule create \
   --destination-port-range "*"
 ```
 
-Jede Netzwerksicherheitsgruppe enthält mehrere [Standardsicherheitsregeln](security-overview.md#default-security-rules). Die folgende Regel überschreibt eine Standardsicherheitsregel, die ausgehenden Zugriff auf alle öffentlichen IP-Adressen zulässt. Die `destination-address-prefix "Internet"`-Option verweigert den ausgehenden Zugriff auf alle öffentlichen IP-Adressen. Die vorherige Regel überschreibt diese Regel. Dies ist auf die höhere Priorität zurückzuführen, die den Zugriff auf die öffentlichen IP-Adressen von Azure Storage zulässt.
+Jede Netzwerksicherheitsgruppe enthält mehrere [Standardsicherheitsregeln](./network-security-groups-overview.md#default-security-rules). Die folgende Regel überschreibt eine Standardsicherheitsregel, die ausgehenden Zugriff auf alle öffentlichen IP-Adressen zulässt. Die `destination-address-prefix "Internet"`-Option verweigert den ausgehenden Zugriff auf alle öffentlichen IP-Adressen. Die vorherige Regel überschreibt diese Regel. Dies ist auf die höhere Priorität zurückzuführen, die den Zugriff auf die öffentlichen IP-Adressen von Azure Storage zulässt.
 
 ```azurecli-interactive
 az network nsg rule create \

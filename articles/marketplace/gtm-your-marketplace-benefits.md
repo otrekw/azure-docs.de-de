@@ -4,15 +4,15 @@ description: Go-To-Market-Dienste – Die Microsoft-Ressourcen, die Herausgeber 
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
-ms.date: 09/24/2020
+ms.date: 01/13/2021
 author: keferna
 ms.author: keferna
-ms.openlocfilehash: ad86ebe1ca397004745e75dd279ea0a7cfe8348e
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: 07535add495484abae06fc6ac8ac435d84bccc52
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94746566"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98246246"
 ---
 # <a name="your-commercial-marketplace-benefits"></a>Ihre Vorteile des kommerziellen Marketplace
 
@@ -26,7 +26,7 @@ Marketplace-Prämien sind darauf ausgelegt, Sie in Ihrer ganz persönlichen Wach
 
 Das Programm erzeugt eine positive Rückkopplung: Die Vorteile in den einzelnen Wachstumsphasen sind so konzipiert, dass Sie zur nächsten Phase fortschreiten können. Sie können so Ihr Unternehmen im Geschäftsfeld von Microsoft und über den Kanal von Microsoft auf Microsoft-Kunden ausweiten, indem Sie den kommerziellen Marketplace als Plattform nutzen.
 
-Ihre Vorteile variieren in Abhängigkeit davon, ob es sich bei Ihrem Angebot um [List, Trial oder Transact](determine-your-listing-type.md#available-listing-options-by-offer-type) handelt.
+Ihre Vorteile variieren in Abhängigkeit davon, ob es sich bei Ihrem Angebot um [List, Trial oder Transact](determine-your-listing-type.md) handelt.
 
 Sie werden basierend auf Ihrer Berechtigung von einem Mitglied des Prämienteams kontaktiert, wenn Ihr Angebot veröffentlicht wird.
 
@@ -65,7 +65,7 @@ Wenn Sie einen Proof of Concept, eine Implementierung oder einen Workshop der St
 
 In der folgenden Tabelle sind die Berechtigungsvoraussetzungen für List-, Trial- und Consulting-Angebote zusammengefasst:
 
-![Vorteile bei der Markteinführung](./media/marketplace-publishers-guide/gtm-eligibility-requirements.png)
+![Vorteile bei der Markteinführung](./media/marketplace-publishers-guide/go-to-market-gtm-eligibility-requirements.png)
 
 Ausführliche Beschreibungen aller dieser Vorteile finden Sie im [Folienstapel für das Marketplace-Prämienprogramm](https://aka.ms/marketplacerewards).
 
@@ -104,16 +104,16 @@ Herausgeber der Stufen [List und Trial](determine-your-listing-type.md) können 
 
 Microsoft behält sich vor, Marketplace-Prämienvorteile für Herausgeber zu widerrufen und zu beenden, für die Folgendes gilt:
 
-* Sie beteiligen sich mithilfe ihres Marketplace-Angebots an illegalen Aktivitäten.
-* Sie schließen einen Kaufvorgang ab, der als betrügerisch erkannt oder als vermutlich betrügerisch eingestuft wird.
-* Sie wurden aus dem kommerziellen Marketplace entfernt.
-* Sie nutzen ihr Angebot, um Marketing oder andere Inhalte anzuzeigen, die gegen Urheberrechte oder Markengesetze verstoßen.
-* Sie verstoßen gegen die Richtlinien des [Azure Sponsorship-Programms](https://azure.microsoft.com/offers/ms-azr-0036p/), einschließlich, jedoch nicht beschränkt auf die Verwendung von Azure Sponsorship-Mitteln für eigene interne Vorgänge oder Bitcoin-Mining.
+- Sie beteiligen sich mithilfe ihres Marketplace-Angebots an illegalen Aktivitäten.
+- Sie schließen einen Kaufvorgang ab, der als betrügerisch erkannt oder als vermutlich betrügerisch eingestuft wird.
+- Sie wurden aus dem kommerziellen Marketplace entfernt.
+- Sie nutzen ihr Angebot, um Marketing oder andere Inhalte anzuzeigen, die gegen Urheberrechte oder Markengesetze verstoßen.
+- Sie verstoßen gegen die Richtlinien des [Azure Sponsorship-Programms](https://azure.microsoft.com/offers/ms-azr-0036p/), einschließlich, jedoch nicht beschränkt auf die Verwendung von Azure Sponsorship-Mitteln für eigene interne Vorgänge oder Bitcoin-Mining.
 
 Microsoft behält sich vor, Marketplace-Prämienvorteile in folgenden Fällen zu widerrufen und zu beenden:
 
-* Der Kunde hat den Kaufvorgang versehentlich abgeschlossen und möchte den Auftrag stornieren.
-* Der Kunde storniert den Auftrag, bevor das Produkt des Partners verwendet wurde.
+- Der Kunde hat den Kaufvorgang versehentlich abgeschlossen und möchte den Auftrag stornieren.
+- Der Kunde storniert den Auftrag, bevor das Produkt des Partners verwendet wurde.
 
 ### <a name="offer-availability"></a>Angebotsverfügbarkeit
 

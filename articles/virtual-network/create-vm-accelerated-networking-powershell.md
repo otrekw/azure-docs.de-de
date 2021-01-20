@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 04/15/2020
 ms.author: gsilva
-ms.openlocfilehash: fd50af98fe0d7f20273c45e2b86c18215a3626f0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b3728a2b67529bab0900d42b3e39140d9329bc83
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87289625"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98223634"
 ---
 # <a name="create-a-windows-vm-with-accelerated-networking-using-azure-powershell"></a>Erstellen eines virtuellen Windows-Computers mit beschleunigtem Netzwerkbetrieb mit Azure PowerShell
 
@@ -65,7 +65,7 @@ Der beschleunigte Netzwerkbetrieb wird für die meisten Größen universeller, c
 
 Bei Instanzen, die Hyperthreading unterstützen, wird der beschleunigte Netzwerkbetrieb auf VM-Instanzen mit mindestens vier vCPUs unterstützt. Folgende Reihen werden unterstützt: D/Dsv3, D/Dsv4, Da/Dasv4, E/Esv3, Ea/Easv4, Fsv2, Lsv2, Ms/Mms und Ms/Mmsv2.
 
-Weitere Informationen zu VM-Instanzen finden Sie unter [Größen für virtuelle Windows-Computer in Azure](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+Weitere Informationen zu VM-Instanzen finden Sie unter [Größen für virtuelle Windows-Computer in Azure](../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 ### <a name="custom-images"></a>Benutzerdefinierte Images
 
@@ -208,7 +208,7 @@ Ersetzen Sie in den folgenden Beispielen die Beispielparameternamen durch Ihre e
     $vmConfig = New-AzVMConfig -VMName "myVm" -VMSize "Standard_DS4_v2"
     ```
 
-    Eine Liste aller VM-Größen und -Eigenschaften finden Sie unter [Größen für virtuelle Windows-Computer](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+    Eine Liste aller VM-Größen und -Eigenschaften finden Sie unter [Größen für virtuelle Windows-Computer](../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 3. Erstellen Sie die restliche Konfiguration des virtuellen Computers mit [Set-AzVMOperatingSystem](/powershell/module/az.compute/set-azvmoperatingsystem) und [Set-AzVMSourceImage](/powershell/module/az.compute/set-azvmsourceimage). Der folgende Befehl erstellt eine Windows Server 2016-VM:
 

@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 01/16/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a1430b32c0e74be7a0e50fa4c5c183018b2b55e0
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 81d44dae0fed45d4a4df76973c7e233fd71baff1
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96006301"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98198967"
 ---
 # <a name="how-to-install-and-configure-sap-hana-large-instances-on-azure"></a>Installieren und Konfigurieren von SAP HANA (große Instanzen) in Azure
 
@@ -129,7 +129,7 @@ Deshalb müssen Sie einen separaten Zeitserver einrichten, der von den auf Azure
 Es wird davon ausgegangen, dass Sie beim Entwerfen Ihrer virtuellen Azure-Netzwerke und Verbinden dieser Netzwerke mit den großen HANA-Instanzen den Empfehlungen in den folgenden Dokumenten gefolgt sind:
 
 - [Übersicht und Architektur von SAP HANA in Azure (große Instanzen)](./hana-overview-architecture.md)
-- [Infrastruktur und Verbindungen mit SAP HANA in Azure (große Instanzen)](hana-overview-infrastructure-connectivity.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+- [Infrastruktur und Verbindungen mit SAP HANA in Azure (große Instanzen)](hana-overview-infrastructure-connectivity.md)
 
 Es gibt einige Details zum Netzwerkbetrieb der einzelnen Einheiten, die Sie kennen sollten. Jede HANA-Einheit (große Instanzen) wird mit zwei oder drei IP-Adressen geliefert, die zwei oder drei Netzwerkkartenports zugewiesen sind. Drei IP-Adressen werden in HANA-Konfigurationen für die horizontale Skalierung und im Szenario für die HANA-Systemreplikation verwendet. Eine der IP-Adressen, die der Netzwerkkarte der Einheit zugewiesen sind, stammt aus dem Server-IP-Pool, der in [Übersicht und Architektur von SAP HANA in Azure (große Instanzen)](./hana-overview-architecture.md) beschrieben ist.
 
@@ -139,7 +139,7 @@ Weitere Informationen zu den Ethernet-Daten für Ihre Architektur finden Sie unt
 
 Das Speicherlayout für SAP HANA in Azure (große Instanzen) wird von SAP HANA im Azure-`service management` basierend auf von SAP empfohlenen Richtlinien konfiguriert. Diese Richtlinien sind im Whitepaper [SAP HANA Storage Requirements](https://go.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html) (SAP HANA-Speicheranforderungen) dokumentiert. 
 
-Die ungefähren Größen der verschiedenen Volumes mit den unterschiedlichen SKUs für HANA (große Instanzen) sind unter [Übersicht und Architektur von SAP HANA in Azure (große Instanzen)](hana-overview-architecture.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) dokumentiert.
+Die ungefähren Größen der verschiedenen Volumes mit den unterschiedlichen SKUs für HANA (große Instanzen) sind unter [Übersicht und Architektur von SAP HANA in Azure (große Instanzen)](hana-overview-architecture.md) dokumentiert.
 
 Die Benennungskonventionen der Speichervolumes sind in der folgenden Tabelle aufgeführt:
 
@@ -161,7 +161,7 @@ Für Umgebungen für horizontales Skalieren werden Daten-, Protokoll- und Protok
 
 Wenn Sie sich eine HANA-Einheit (große Instanzen) ansehen, werden Sie feststellen, dass die Einheiten mit einem großzügigen Datenträgervolume für „HANA/data“ bereitgestellt werden und dass es das Volume „HANA/log/backup“ gibt. Wir haben „HANA/data“ so großzügig dimensioniert, weil für die Speichermomentaufnahmen, die Ihnen als Kunde angeboten werden, dasselbe Datenträgervolume verwendet wird. Je mehr Speichermomentaufnahmen Sie erstellen, desto mehr Speicherplatz wird von Momentaufnahmen in Ihren zugewiesenen Speichervolumes verbraucht. 
 
-Das Volume „HANA/log/backup“ ist nicht für die Speicherung von Datenbanksicherungen vorgesehen. Seine Größe ist so ausgelegt, dass es als Sicherungsvolume für Sicherungen von HANA-Transaktionsprotokollen verwendet werden kann. Weitere Informationen finden Sie unter [Hochverfügbarkeit und Notfallwiederherstellung für SAP HANA in Azure (große Instanzen)](hana-overview-high-availability-disaster-recovery.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). 
+Das Volume „HANA/log/backup“ ist nicht für die Speicherung von Datenbanksicherungen vorgesehen. Seine Größe ist so ausgelegt, dass es als Sicherungsvolume für Sicherungen von HANA-Transaktionsprotokollen verwendet werden kann. Weitere Informationen finden Sie unter [Hochverfügbarkeit und Notfallwiederherstellung für SAP HANA in Azure (große Instanzen)](hana-overview-high-availability-disaster-recovery.md). 
 
 Zusätzlich zu dem bereitgestellten Speicher können Sie weitere Speicherkapazität in Schritten von 1 TB erwerben. Dieser zusätzliche Speicher kann einer großen HANA-Instanz in Form von neuen Volumes hinzugefügt werden.
 

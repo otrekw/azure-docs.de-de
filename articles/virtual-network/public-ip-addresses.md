@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/28/2020
 ms.author: allensu
-ms.openlocfilehash: 1e46cf78c76e873bcb78af4942f42a5c4be45391
-ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
+ms.openlocfilehash: deb9f60cd3f75eacdf0adc06f6f7470819949555
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97955585"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98223226"
 ---
 # <a name="public-ip-addresses"></a>Öffentliche IP-Adressen
 
@@ -44,7 +44,7 @@ Weitere Informationen zum SKU-Upgrade finden Sie unter [Ausführen eines Upgrade
 Öffentliche IP-Adressen werden mit einer der folgenden SKUs erstellt:
 
 >[!IMPORTANT]
-> Für Lastenausgleichs- und öffentliche IP-Adressressourcen müssen übereinstimmende SKUs verwendet werden. Eine Kombination von Ressourcen der SKU-Typen „Basic“ und „Standard“ ist nicht möglich. Sie können eigenständige virtuelle Computer, virtuelle Computer in einer Ressource einer Verfügbarkeitsgruppe oder eine Ressource einer VM-Skalierungsgruppe an beide SKUs gleichzeitig anfügen.  Für neue Entwürfe sollte SKU-Standardressourcen verwendet werden.  Unter [Load Balancer Standard](../load-balancer/load-balancer-standard-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) finden Sie ausführliche Informationen.
+> Für Lastenausgleichs- und öffentliche IP-Adressressourcen müssen übereinstimmende SKUs verwendet werden. Eine Kombination von Ressourcen der SKU-Typen „Basic“ und „Standard“ ist nicht möglich. Sie können eigenständige virtuelle Computer, virtuelle Computer in einer Ressource einer Verfügbarkeitsgruppe oder eine Ressource einer VM-Skalierungsgruppe an beide SKUs gleichzeitig anfügen.  Für neue Entwürfe sollte SKU-Standardressourcen verwendet werden.  Unter [Load Balancer Standard](../load-balancer/load-balancer-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) finden Sie ausführliche Informationen.
 
 ### <a name="standard"></a>Standard
 
@@ -52,13 +52,13 @@ Für öffentliche IP-Adressen mit Standard-SKU gilt Folgendes:
 
 - Sie verwenden immer eine statische Zuordnungsmethode.
 - Sie verfügen über ein anpassbares Leerlauftimeout für den ursprünglich eingehenden Datenfluss, das auf einen Wert zwischen vier und 30 Minuten (Standardwert: vier Minuten) festgelegt werden kann, sowie über ein vorgegebenes Leerlauftimeout für den ursprünglich ausgehenden Datenfluss von vier Minuten.
-- Sie sind standardmäßig sicher und für eingehenden Datenverkehr geschlossen. Sie ermöglichen das Auflisten von eingehendem Datenverkehr mit einer [Netzwerksicherheitsgruppe](security-overview.md#network-security-groups).
-- Sie werden Netzwerkschnittstellen, öffentlichen Load Balancer Standard-Instanzen oder Application Gateway-Instanzen zugewiesen. Weitere Informationen zu Load Balancer Standard finden Sie unter [Azure Load Balancer Standard](../load-balancer/load-balancer-standard-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
-- Sie können zonenredundant (aus allen 3 Zonen gemeldet) oder zonengebunden sein (also zonengebunden erstellt und in einer bestimmten Verfügbarkeitszone garantiert werden). Weitere Informationen zu Verfügbarkeitszonen finden Sie unter [Übersicht über Verfügbarkeitszonen in Azure](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) und [Azure Load Balancer Standard und Verfügbarkeitszonen](../load-balancer/load-balancer-standard-availability-zones.md?toc=%2fazure%2fvirtual-network%2ftoc.json). **Zonenredundante IP-Adressen können nur in [Regionen mit drei aktiven Verfügbarkeitszonen](https://docs.microsoft.com/azure/availability-zones/az-region) erstellt werden.** IP-Adressen, die vor der Aktivierung der Zonen erstellt wurden, sind nicht zonenredundant.
-- Können als Anycast-Front-End-IP-Adressen für [regionsübergreifende Load Balancer](https://docs.microsoft.com/azure/load-balancer/cross-region-overview) verwendet werden (Vorschaufunktionalität).
+- Sie sind standardmäßig sicher und für eingehenden Datenverkehr geschlossen. Sie ermöglichen das Auflisten von eingehendem Datenverkehr mit einer [Netzwerksicherheitsgruppe](./network-security-groups-overview.md#network-security-groups).
+- Sie werden Netzwerkschnittstellen, öffentlichen Load Balancer Standard-Instanzen oder Application Gateway-Instanzen zugewiesen. Weitere Informationen zu Load Balancer Standard finden Sie unter [Azure Load Balancer Standard](../load-balancer/load-balancer-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+- Sie können zonenredundant (aus allen 3 Zonen gemeldet) oder zonengebunden sein (also zonengebunden erstellt und in einer bestimmten Verfügbarkeitszone garantiert werden). Weitere Informationen zu Verfügbarkeitszonen finden Sie unter [Übersicht über Verfügbarkeitszonen in Azure](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) und [Azure Load Balancer Standard und Verfügbarkeitszonen](../load-balancer/load-balancer-standard-availability-zones.md?toc=%2fazure%2fvirtual-network%2ftoc.json). **Zonenredundante IP-Adressen können nur in [Regionen mit drei aktiven Verfügbarkeitszonen](../availability-zones/az-region.md) erstellt werden.** IP-Adressen, die vor der Aktivierung der Zonen erstellt wurden, sind nicht zonenredundant.
+- Können als Anycast-Front-End-IP-Adressen für [regionsübergreifende Load Balancer](../load-balancer/cross-region-overview.md) verwendet werden (Vorschaufunktionalität).
  
 > [!NOTE]
-> Die eingehende Kommunikation mit einer SKU-Standardressource ist erst erfolgreich, wenn Sie eine [Netzwerksicherheitsgruppe](security-overview.md#network-security-groups) erstellen und zuordnen und den gewünschten eingehenden Datenverkehr explizit zulassen.
+> Die eingehende Kommunikation mit einer SKU-Standardressource ist erst erfolgreich, wenn Sie eine [Netzwerksicherheitsgruppe](./network-security-groups-overview.md#network-security-groups) erstellen und zuordnen und den gewünschten eingehenden Datenverkehr explizit zulassen.
 
 > [!NOTE]
 > Nur öffentliche IP-Adressen mit SKU-Typ „Basic“ stehen zur Verfügung, wenn der [Instance Metadata Service IMDS](../virtual-machines/windows/instance-metadata-service.md) verwendet wird. Die SKU vom Typ „Standard“ wird nicht unterstützt.
@@ -150,7 +150,7 @@ Sie können eine öffentliche IP-Adresse mit einer der beiden [SKUs](#sku) einer
 
 Sie können einem Load Balancer-Front-End eine dynamische oder eine statische öffentliche IP-Adresse zuweisen. Sie können einem Load Balancer-Front-End mehrere öffentliche IP-Adressen zuweisen. Diese Konfiguration ermöglicht Szenarien mit [mehreren VIPs](../load-balancer/load-balancer-multivip-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json), z. B. eine mehrinstanzenfähige Umgebung mit TLS-basierten Websites. 
 
-Weitere Informationen zu SKUs von Azure Load Balancer finden Sie unter [Azure load balancer standard SKU](../load-balancer/load-balancer-standard-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) (Standard-SKU von Azure Load Balancer).
+Weitere Informationen zu SKUs von Azure Load Balancer finden Sie unter [Azure load balancer standard SKU](../load-balancer/load-balancer-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) (Standard-SKU von Azure Load Balancer).
 
 ## <a name="vpn-gateways"></a>VPN-Gateways
 
@@ -163,7 +163,7 @@ Eine öffentliche IP-Adresse wird dem VPN Gateway zugewiesen, um die Kommunikati
 
 ## <a name="application-gateways"></a>Anwendungsgateways
 
-Sie können eine öffentliche IP-Adresse einem Azure [Application Gateway](../application-gateway/application-gateway-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json)zuordnen, indem Sie sie der **Front-End** -Konfiguration des Gateways zuweisen. 
+Sie können eine öffentliche IP-Adresse einem Azure [Application Gateway](../application-gateway/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)zuordnen, indem Sie sie der **Front-End** -Konfiguration des Gateways zuweisen. 
 
 * Weisen Sie einer Application Gateway-Front-End-Konfiguration der Version 1 eine **dynamische** öffentliche IP-Adresse mit Basic-SKU zu. 
 * Weisen Sie einer Front-End-Konfiguration der Version 2 eine **statische** Adresse mit Standard-SKU zu.
@@ -200,4 +200,3 @@ Für öffentliche IP-Adressen wird unter Umständen eine geringe Gebühr berechn
 ## <a name="next-steps"></a>Nächste Schritte
 * Erfahren Sie etwas über [private IP-Adressen in Azure](private-ip-addresses.md).
 * [Bereitstellen einer VM mit einer statischen öffentlichen IP-Adresse mithilfe des Azure-Portals](virtual-network-deploy-static-pip-arm-portal.md)
-

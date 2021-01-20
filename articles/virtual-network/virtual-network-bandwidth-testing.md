@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/06/2020
 ms.author: steveesp
-ms.openlocfilehash: 0b009b7c44084e76194c1447fefdb2ff59f8086a
-ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
+ms.openlocfilehash: 7a2f6750a4d0a48c6971f60241976fb55410b65c
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91812283"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98221441"
 ---
 # <a name="bandwidththroughput-testing-ntttcp"></a>Testen der Bandbreite / des Durchsatzes (NTTTCP)
 
@@ -26,7 +26,7 @@ Wenn Sie die Leistung des Netzwerkdurchsatzes in Azure testen, ist es empfehlens
 Kopieren Sie das Tool in zwei virtuelle Azure-Computer der selben Größe. Ein virtueller Computer fungiert als SENDER und der andere als EMPFÄNGER.
 
 #### <a name="deploying-vms-for-testing"></a>Bereitstellen von virtuellen Computern zu Testzwecken
-Im Rahmen dieser Test sollten sich die beiden VMs entweder in der gleichen [Näherungsplatzierungsgruppe](../virtual-machines/windows/co-location.md) oder in der gleichen Verfügbarkeitsgruppe befinden, sodass wir deren externe IPs verwenden und die Load Balancer aus dem Test ausschließen können. Es ist möglich, einen Test mit der VIP-Adresse durchzuführen, aber diese Art von Tests geht über den Rahmen dieses Dokuments hinaus.
+Im Rahmen dieser Test sollten sich die beiden VMs entweder in der gleichen [Näherungsplatzierungsgruppe](../virtual-machines/co-location.md) oder in der gleichen Verfügbarkeitsgruppe befinden, sodass wir deren externe IPs verwenden und die Load Balancer aus dem Test ausschließen können. Es ist möglich, einen Test mit der VIP-Adresse durchzuführen, aber diese Art von Tests geht über den Rahmen dieses Dokuments hinaus.
 
 Notieren Sie die IP-Adresse des EMPFÄNGERS. Nennen wir diese IP-Adresse „a.b.c.r“
 
@@ -65,7 +65,7 @@ Lassen Sie NTTTCP wie folgt auf der Windows-Firewall zu:
 
 netsh advfirewall firewall add rule program=\<PATH\>\\ntttcp.exe name="ntttcp" protocol=any dir=in action=allow enable=yes profile=ANY
 
-Angenommen, Sie haben „ntttcp.exe“ in den Ordner „C:\\tools“ kopiert, dann wäre dies der Befehl: 
+Angenommen, Sie haben ntttcp.exe in den Ordner „C:\\Extras“ kopiert, dann wäre dies der Befehl: 
 
 netsh advfirewall firewall add rule program=c:\\tools\\ntttcp.exe name="ntttcp" protocol=any dir=in action=allow enable=yes profile=ANY
 
@@ -80,9 +80,9 @@ Wenn der virtuelle Computer vier Kerne und die IP-Adresse 10.0.0.4 aufweist, wü
 ntttcp -r –m 8,\*,10.0.0.4 -t 300
 
 
-Starten Sie NTTTCP auf den SENDER (**Ausführen über CMD**und nicht über PowerShell):
+Starten Sie NTTTCP auf den SENDER (**Ausführen über CMD** und nicht über PowerShell):
 
-ntttcp -s –m 8,\*,10.0.0.4 -t 300 
+ntttcp -s –m 8,\*,10.0.0.4 -t 300 
 
 Warten Sie auf die Ergebnisse.
 
@@ -91,23 +91,23 @@ Warten Sie auf die Ergebnisse.
 
 Verwenden Sie nttcp-for-linux. Diese Option ist bei <https://github.com/Microsoft/ntttcp-for-linux> verfügbar.
 
-Führen Sie diese Befehle zum Vorbereiten von ntttcp-for-linux auf Ihren virtuellen Computern (jeweils SENDER und EMPFÄNGER) auf den Linux-VMs aus:
+Führen Sie diese Befehle zum Vorbereiten von ntttcp-for-linux auf den Linux-VMs (jeweils SENDER und EMPFÄNGER) auf Ihren virtuellen Computern aus:
 
 CentOS – Git installieren:
 ``` bash
-  yum install gcc -y  
-  yum install git -y
+  yum install gcc -y  
+  yum install git -y
 ```
 Ubuntu – Git installieren:
 ``` bash
- apt-get -y install build-essential  
- apt-get -y install git
+ apt-get -y install build-essential  
+ apt-get -y install git
 ```
 Auf beiden erstellen und installieren:
 ``` bash
- git clone https://github.com/Microsoft/ntttcp-for-linux
- cd ntttcp-for-linux/src
- make && make install
+ git clone https://github.com/Microsoft/ntttcp-for-linux
+ cd ntttcp-for-linux/src
+ make && make install
 ```
 
 Wie im Windows-Beispiel gehen wir davon aus, dass die IP des Linux-EMPFÄNGERS 10.0.0.4 ist
@@ -123,7 +123,7 @@ Führen Sie nun Folgendes auf dem SENDER aus:
 ``` bash
 ntttcp -s10.0.0.4 -t 300
 ```
- 
+ 
 Die Testlänge beträgt standardmäßig 60 Sekunden, wenn kein Zeitparameter angegeben ist
 
 ## <a name="testing-between-vms-running-windows-and-linux"></a>Vergleich der Tests zwischen virtuellen Computern unter Windows und Linux:

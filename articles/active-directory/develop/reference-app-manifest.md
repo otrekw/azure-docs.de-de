@@ -13,12 +13,12 @@ ms.date: 04/15/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: sureshja
-ms.openlocfilehash: b29d8007ba7c6fb41209ad4f792069667416616b
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: d855e124c84dee8554073d05fa04fe078b92ddaa
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98011542"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98208888"
 ---
 # <a name="azure-active-directory-app-manifest"></a>Azure Active Directory-App-Manifest
 
@@ -115,17 +115,6 @@ Beispiel:
     "allowPublicClient": false,
 ```
 
-### <a name="availabletoothertenants-attribute"></a>availableToOtherTenants-Attribut
-
-| Schlüssel | Werttyp |
-| :--- | :--- |
-| availableToOtherTenants | Boolean |
-
-Ist auf „true“ festgelegt, wenn die Anwendung für andere Mandanten freigegeben wird; andernfalls „false“.
-
-> [!NOTE]
-> Dieses Attribut ist nur in der Benutzeroberfläche **App-Registrierungen (Vorgängerversion)** verfügbar. In der Benutzeroberfläche [App-Registrierungen](https://go.microsoft.com/fwlink/?linkid=2083908) durch `signInAudience` ersetzt.
-
 ### <a name="appid-attribute"></a>appId-Attribut
 
 | Schlüssel | Werttyp |
@@ -165,17 +154,6 @@ Beispiel:
     ],
 ```
 
-### <a name="displayname-attribute"></a>displayName-Attribut
-
-| Schlüssel | Werttyp |
-| :--- | :--- |
-| displayName | String |
-
-Der Anzeigename für die App.
-
-> [!NOTE]
-> Dieses Attribut ist nur in der Benutzeroberfläche **App-Registrierungen (Vorgängerversion)** verfügbar. In der Benutzeroberfläche [App-Registrierungen](https://go.microsoft.com/fwlink/?linkid=2083908) durch `name` ersetzt.
-
 ### <a name="errorurl-attribute"></a>errorUrl-Attribut
 
 | Schlüssel | Werttyp |
@@ -203,33 +181,6 @@ Beispiel:
     "groupMembershipClaims": "SecurityGroup",
 ```
 
-### <a name="homepage-attribute"></a>homepage-Attribut
-
-| Schlüssel | Werttyp |
-| :--- | :--- |
-| homepage |String |
-
-Die URL zur Startseite der Anwendung.
-
-> [!NOTE]
-> Dieses Attribut ist nur in der Benutzeroberfläche **App-Registrierungen (Vorgängerversion)** verfügbar. In der Benutzeroberfläche [App-Registrierungen](https://go.microsoft.com/fwlink/?linkid=2083908) durch `signInUrl` ersetzt.
-
-### <a name="objectid-attribute"></a>objectId-Attribut
-
-| Schlüssel | Werttyp |
-| :--- | :--- |
-|objectId | String |
-
-Ein eindeutiger Bezeichner für die App im Verzeichnis.
-
-Dies ist nur in der Benutzeroberfläche **App-Registrierungen (Vorgängerversion)** verfügbar. In der Benutzeroberfläche [App-Registrierungen](https://go.microsoft.com/fwlink/?linkid=2083908) durch `id` ersetzt.
-
-Beispiel:
-
-```json
-    "objectId": "f7f9acfc-ae0c-4d6c-b489-0a81dc1652dd",
-```
-
 ### <a name="optionalclaims-attribute"></a>optionalClaims-Attribut
 
 | Schlüssel | Werttyp |
@@ -245,7 +196,6 @@ Beispiel:
 ```json
     "optionalClaims": null,
 ```
-
 
 
 ### <a name="identifieruris-attribute"></a>identifierUris-Attribut
@@ -489,16 +439,6 @@ Beispiel:
     ],
 ```
 
-### <a name="publicclient-attribute"></a>publicClient-Attribut
-
-| Schlüssel | Werttyp |
-| :--- | :--- |
-| publicClient | Boolean|
-
-Gibt an, ob es sich bei dieser Anwendung um einen öffentlichen Client handelt (beispielsweise eine installierte Anwendung auf einem mobilen Gerät).
-
-Diese Eigenschaft ist nur in der Benutzeroberfläche **App-Registrierungen (Vorgängerversion)** verfügbar. In der Benutzeroberfläche [App-Registrierungen](https://go.microsoft.com/fwlink/?linkid=2083908) durch `allowPublicClient` ersetzt.
-
 ### <a name="publisherdomain-attribute"></a>publisherDomain-Attribut
 
 | Schlüssel | Werttyp |
@@ -511,17 +451,7 @@ Beispiel:
 
 ```json
     "publisherDomain": "https://www.contoso.com",
-````
-
-### <a name="replyurls-attribute"></a>replyUrls-Attribut
-
-| Schlüssel | Werttyp |
-| :--- | :--- |
-| replyUrls | Zeichenfolgenarray |
-
-Diese Eigenschaft, die mehrere Werte zulässt, enthält die Liste der registrierten „redirect_uri“-Werte, die von Azure AD bei der Rückgabe von Token als Ziele akzeptiert werden.
-
-Diese Eigenschaft ist nur in der Benutzeroberfläche **App-Registrierungen (Vorgängerversion)** verfügbar. In der Benutzeroberfläche [App-Registrierungen](https://go.microsoft.com/fwlink/?linkid=2083908) durch `replyUrlsWithType` ersetzt.
+```
 
 ### <a name="replyurlswithtype-attribute"></a>replyUrlsWithType-Attribut
 

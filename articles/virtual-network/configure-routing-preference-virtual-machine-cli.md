@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 12/01/2020
 ms.author: mnayak
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: ccd04a43e6781e8d58234cc382b2739d800e5fe7
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: d375b860c6b23fd6033e985e23c6f12dfe9a3c68
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96510674"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98223566"
 ---
 # <a name="configure-routing-preference-for-a-vm-using-azure-cli"></a>Konfigurieren der Routingpräferenz für einen virtuellen Computer mithilfe der Azure CLI
 
@@ -58,7 +58,7 @@ Bevor Sie einen virtuellen Computer bereitstellen, müssen Sie unterstützende N
 
 ### <a name="create-a-network-security-group"></a>Erstellen einer Netzwerksicherheitsgruppe
 
-Erstellen Sie eine Netzwerksicherheitsgruppe für die Regeln, durch die die eingehende und ausgehende Kommunikation in Ihrem VNET mit [az network nsg create](https://docs.microsoft.com/cli/azure/network/nsg?view=azure-cli-latest#az-network-nsg-create) gesteuert wird.
+Erstellen Sie eine Netzwerksicherheitsgruppe für die Regeln, durch die die eingehende und ausgehende Kommunikation in Ihrem VNET mit [az network nsg create](/cli/azure/network/nsg?view=azure-cli-latest#az-network-nsg-create) gesteuert wird.
 
 ```azurecli
 az network nsg create \
@@ -69,7 +69,7 @@ az network nsg create \
 
 ### <a name="create-a-virtual-network"></a>Erstellen eines virtuellen Netzwerks
 
-Erstellen Sie mit [az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet?view=azure-cli-latest#az-network-vnet-create) ein virtuelles Netzwerk. Im folgenden Beispiel wird ein virtuelles Netzwerk namens *myVNET* mit einem Subnetz namens *mySubNet* erstellt:
+Erstellen Sie mit [az network vnet create](/cli/azure/network/vnet?view=azure-cli-latest#az-network-vnet-create) ein virtuelles Netzwerk. Im folgenden Beispiel wird ein virtuelles Netzwerk namens *myVNET* mit einem Subnetz namens *mySubNet* erstellt:
 
 ```azurecli
 # Create a virtual network
@@ -89,7 +89,7 @@ az network vnet subnet create \
 
 ### <a name="create-a-nic"></a>Erstellen einer NIC
 
-Erstellen Sie mit [az network nic create](https://docs.microsoft.com/cli/azure/network/nic?view=azure-cli-latest#az-network-nic-create) eine virtuelle NIC für den virtuellen Computer. Im folgenden Beispiel wird eine virtuelle NIC erstellt, die an den virtuellen Computer angefügt wird.
+Erstellen Sie mit [az network nic create](/cli/azure/network/nic?view=azure-cli-latest#az-network-nic-create) eine virtuelle NIC für den virtuellen Computer. Im folgenden Beispiel wird eine virtuelle NIC erstellt, die an den virtuellen Computer angefügt wird.
 
 ```azurecli-interactive
 # Create a NIC
@@ -105,7 +105,7 @@ az network nic create \
 
 ## <a name="create-a-virtual-machine"></a>Erstellen eines virtuellen Computers
 
-Erstellen Sie mit [az vm create](https://docs.microsoft.com/cli/azure/vm?view=azure-cli-latest#az-vm-create) einen virtuellen Computer. Im folgenden Beispiel werden ein virtueller Computer mit Windows Server 2019 und die erforderlichen Komponenten des virtuellen Netzwerks erstellt, falls sie nicht bereits vorhanden sind.
+Erstellen Sie mit [az vm create](/cli/azure/vm?view=azure-cli-latest#az-vm-create) einen virtuellen Computer. Im folgenden Beispiel werden ein virtueller Computer mit Windows Server 2019 und die erforderlichen Komponenten des virtuellen Netzwerks erstellt, falls sie nicht bereits vorhanden sind.
 
 ```azurecli
 az vm create \
@@ -128,5 +128,5 @@ az group delete --name myResourceGroup --yes
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Erfahren Sie mehr über die [Routingpräferenz in öffentlichen IP-Adressen](routing-preference-overview.md).
-- Lesen Sie mehr über [öffentliche IP-Adressen](virtual-network-ip-addresses-overview-arm.md#public-ip-addresses) in Azure.
+- Lesen Sie mehr über [öffentliche IP-Adressen](./public-ip-addresses.md#public-ip-addresses) in Azure.
 - Weitere Informationen zu den [Einstellungen für öffentliche IP-Adressen](virtual-network-public-ip-address.md#create-a-public-ip-address)

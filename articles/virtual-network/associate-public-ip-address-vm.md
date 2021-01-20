@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/21/2019
 ms.author: allensu
-ms.openlocfilehash: 9b5fc9e4118d98905138b7f205f61d85a96b60b0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 76f92b5da2331748fbbbfc68f1e456fd50dd71ee
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88035466"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98223022"
 ---
 # <a name="associate-a-public-ip-address-to-a-virtual-machine"></a>Zuordnen einer öffentlichen IP-Adresse zu einem virtuellen Computer
 
@@ -214,4 +214,4 @@ Bevor Sie eine Internetverbindung mit der öffentlichen IP-Adresse herstellen k�
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Lassen Sie eingehenden Datenverkehr an Ihren virtuellen Computer mithilfe einer Netzwerksicherheitsgruppe zu. Informationen zum Erstellen einer Netzwerksicherheitsgruppe finden Sie unter [Arbeiten mit Netzwerksicherheitsgruppen](manage-network-security-group.md#work-with-network-security-groups). Weitere Informationen zu Netzwerksicherheitsgruppen finden Sie unter [Sicherheitsgruppen](security-overview.md).
+Lassen Sie eingehenden Datenverkehr an Ihren virtuellen Computer mithilfe einer Netzwerksicherheitsgruppe zu. Informationen zum Erstellen einer Netzwerksicherheitsgruppe finden Sie unter [Arbeiten mit Netzwerksicherheitsgruppen](manage-network-security-group.md#work-with-network-security-groups). Weitere Informationen zu Netzwerksicherheitsgruppen finden Sie unter [Sicherheitsgruppen](./network-security-groups-overview.md).

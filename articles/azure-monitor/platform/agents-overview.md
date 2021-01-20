@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/12/2021
-ms.openlocfilehash: ba08b5a2563af8f6fde6690bb33e51174683302a
-ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
+ms.openlocfilehash: d1350248e3819863a30ecf21ff68bb7b9488b6ef
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98127582"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98232929"
 ---
 # <a name="overview-of-azure-monitor-agents"></a>Übersicht über Azure Monitor-Agents
 
@@ -160,7 +160,7 @@ In der folgenden Tabelle sind die Betriebssysteme aufgeführt, die von den Azure
 | CentOS Linux 6                                           |   | X |   |   |
 | CentOS Linux 6.5+                                        |   | X | X | X |
 | Debian 9                                                 | X | X | w | X |
-| Debian 8                                                 |   | X | X | X |
+| Debian 8                                                 |   | X | X |   |
 | Debian 7                                                 |   |   |   | X |
 | OpenSUSE 13.1+                                           |   |   |   | X |
 | Oracle Linux 8                                           |   | X |   |   |

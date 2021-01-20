@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/05/2017
 ms.author: alkohli
-ms.openlocfilehash: 805ab0e78f0679ce483af3a73203b41132be2a59
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: df2d74701e21c3773d96564f1b06d80ddb9fce9d
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96022954"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98209218"
 ---
 # <a name="use-storsimple-snapshot-manager-to-create-and-manage-volume-groups"></a>Verwenden des StorSimple Snapshot Manager zum Erstellen und Verwalten von Volumegruppen
 ## <a name="overview"></a>Übersicht
@@ -107,7 +107,7 @@ Gehen Sie folgendermaßen vor, um eine Vorlumegruppe zu bearbeiten.
 #### <a name="to-edit-a-volume-group"></a>So bearbeiten Sie eine Volumegruppe
 1. Klicken Sie auf das Desktopsymbol, um den StorSimple Snapshot Manager zu starten.
 2. Erweitern Sie im Fensterbereich **Bereich** den Knoten **Volumegruppen**, klicken Sie mit der rechten Maustaste auf einen Volumegruppennamen, und klicken Sie dann auf **Bearbeiten**.
-3. Das Dialogfeld Volumegruppe erstellen wird angezeigt. Sie können die Einträge für **Name**, **Anwendungen** und **Volumes** ändern.
+3. Das Dialogfeld **Volumegruppe erstellen** wird angezeigt. Sie können die Einträge für **Name**, **Anwendungen** und **Volumes** ändern.
 4. Klicken Sie auf **OK** , um die Änderungen zu speichern.
 
 ## <a name="delete-a-volume-group"></a>Löschen einer Volumegruppe

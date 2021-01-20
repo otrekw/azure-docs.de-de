@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 11/08/2019
 ms.author: sumi
 ms.custom: ''
-ms.openlocfilehash: 7d937542201792c0d1c0be69df9bd1c2b34edea3
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 93feaef01b234eeb7ac363c18d8e9d8f52b009de
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96004941"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98216528"
 ---
 # <a name="virtual-network-service-endpoints"></a>Virtual Network-Dienstendpunkte
 
@@ -33,14 +33,14 @@ Dieses Feature ist für die folgenden Azure-Dienste und -Regionen verfügbar. Di
 - **[Azure Synapse Analytics](../azure-sql/database/vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** (*Microsoft.Sql*): Allgemein in allen Azure-Regionen verfügbar.
 - **[Azure Database for PostgreSQL-Server](../postgresql/howto-manage-vnet-using-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** (*Microsoft.Sql*): Allgemein verfügbar in Azure-Regionen, in denen der Datenbankdienst verfügbar ist.
 - **[Azure Database for MySQL-Server](../mysql/howto-manage-vnet-using-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** (*Microsoft.Sql*): Allgemein verfügbar in Azure-Regionen, in denen der Datenbankdienst verfügbar ist.
-- **[Azure Database for MariaDB](https://docs.microsoft.com/azure/mariadb/concepts-data-access-security-vnet)** (*Microsoft.Sql*): Allgemein verfügbar in Azure-Regionen, in denen der Datenbankdienst verfügbar ist.
-- **[Azure Cosmos DB](../cosmos-db/vnet-service-endpoint.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** (*Microsoft.AzureCosmosDB*): Allgemein in allen Azure-Regionen verfügbar.
+- **[Azure Database for MariaDB](../mariadb/concepts-data-access-security-vnet.md)** (*Microsoft.Sql*): Allgemein verfügbar in Azure-Regionen, in denen der Datenbankdienst verfügbar ist.
+- **[Azure Cosmos DB](../cosmos-db/how-to-configure-vnet-service-endpoint.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** (*Microsoft.AzureCosmosDB*): Allgemein in allen Azure-Regionen verfügbar.
 - **[Azure Key Vault](../key-vault/general/overview-vnet-service-endpoints.md)** (*Microsoft.KeyVault*): Allgemein in allen Azure-Regionen verfügbar.
 - **[Azure Service Bus](../service-bus-messaging/service-bus-service-endpoints.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** (*Microsoft.ServiceBus*): Allgemein in allen Azure-Regionen verfügbar.
 - **[Azure Event Hubs](../event-hubs/event-hubs-service-endpoints.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** (*Microsoft.EventHub*): Allgemein in allen Azure-Regionen verfügbar.
 - **[Azure Data Lake Storage Gen1](../data-lake-store/data-lake-store-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json)** (*Microsoft.AzureActiveDirectory*): Allgemein verfügbar in allen Azure-Regionen, in denen ADLS Gen1 verfügbar ist.
-- **[Azure App Service](https://docs.microsoft.com/azure/app-service/app-service-ip-restrictions)** (*Microsoft.Web*): Allgemein verfügbar in allen Azure-Regionen, in denen App Service verfügbar ist.
-- **[Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-virtual-networks?tabs=portal)** (*Microsoft.CognitiveServices*): Allgemein verfügbar in allen Azure-Regionen, in denen Cognitive Services verfügbar sind.
+- **[Azure App Service](../app-service/app-service-ip-restrictions.md)** (*Microsoft.Web*): Allgemein verfügbar in allen Azure-Regionen, in denen App Service verfügbar ist.
+- **[Azure Cognitive Services](../cognitive-services/cognitive-services-virtual-networks.md?tabs=portal)** (*Microsoft.CognitiveServices*): Allgemein verfügbar in allen Azure-Regionen, in denen Cognitive Services verfügbar sind.
 
 **Public Preview**
 
@@ -98,7 +98,7 @@ Dienstendpunkte bieten folgende Vorteile:
 
 - Netzwerksicherheitsgruppen (NSGs) mit Dienstendpunkten:
   - NSGs gestatten standardmäßig den ausgehenden Internetdatenverkehr und auch den Datenverkehr aus Ihrem VNET zu Azure-Diensten. In Verbindung mit Dienstendpunkten funktioniert dieser Datenverkehr wie bisher. 
-  - Falls Sie den gesamten ausgehenden Internetdatenverkehr verweigern und nur Datenverkehr für bestimmte Azure-Dienste zulassen möchten, können Sie hierfür [Diensttags](security-overview.md#service-tags) in Ihren NSGs verwenden. Sie können unterstützte Azure-Dienste als Ziel in Ihren NSG-Regeln angeben, und die Wartung der zugrunde liegenden IP-Adressen der einzelnen Tags wird von Azure bereitgestellt. Weitere Informationen finden Sie unter [Azure-Diensttags für NSGs](security-overview.md#service-tags). 
+  - Falls Sie den gesamten ausgehenden Internetdatenverkehr verweigern und nur Datenverkehr für bestimmte Azure-Dienste zulassen möchten, können Sie hierfür [Diensttags](./network-security-groups-overview.md#service-tags) in Ihren NSGs verwenden. Sie können unterstützte Azure-Dienste als Ziel in Ihren NSG-Regeln angeben, und die Wartung der zugrunde liegenden IP-Adressen der einzelnen Tags wird von Azure bereitgestellt. Weitere Informationen finden Sie unter [Azure-Diensttags für NSGs](./network-security-groups-overview.md#service-tags). 
 
 ### <a name="scenarios"></a>Szenarien
 
@@ -138,11 +138,11 @@ Bestimmte Azure-Dienste, wie etwa Azure-Speicherkonten, erzwingen möglicherweis
 
 ## <a name="vnet-service-endpoint-policies"></a>Richtlinien zu VNET-Dienstendpunkten 
 
-Mithilfe von VNET-Dienstendpunkten können Sie den Datenverkehr virtueller Netzwerke zu Azure-Diensten filtern. Dieser Filter gestattet nur bestimmte Azure-Dienstressourcen über Dienstendpunkte. Dienstendpunkt-Richtlinien bieten eine differenzierte Zugriffssteuerung für virtuellen Netzwerkdatenverkehr zu Azure-Diensten. Weitere Informationen finden Sie unter [Richtlinien für VNET-Dienstendpunkte](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoint-policies-overview).
+Mithilfe von VNET-Dienstendpunkten können Sie den Datenverkehr virtueller Netzwerke zu Azure-Diensten filtern. Dieser Filter gestattet nur bestimmte Azure-Dienstressourcen über Dienstendpunkte. Dienstendpunkt-Richtlinien bieten eine differenzierte Zugriffssteuerung für virtuellen Netzwerkdatenverkehr zu Azure-Diensten. Weitere Informationen finden Sie unter [Richtlinien für VNET-Dienstendpunkte](./virtual-network-service-endpoint-policies-overview.md).
 
 ## <a name="faqs"></a>Häufig gestellte Fragen
 
-Häufig gestellte Fragen finden Sie unter [Azure Virtual Network-Endpunkte – häufig gestellte Fragen](https://docs.microsoft.com/azure/virtual-network/virtual-networks-faq#virtual-network-service-endpoints).
+Häufig gestellte Fragen finden Sie unter [Azure Virtual Network-Endpunkte – häufig gestellte Fragen](./virtual-networks-faq.md#virtual-network-service-endpoints).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -151,5 +151,5 @@ Häufig gestellte Fragen finden Sie unter [Azure Virtual Network-Endpunkte – h
 - [Sichern einer Azure SQL-Datenbank in einem virtuellen Netzwerk](../azure-sql/database/vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 - [Schützen von Azure Synapse Analytics in einem virtuellen Netzwerk](../azure-sql/database/vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fsql-data-warehouse%2ftoc.json)
 - [Azure-Dienstintegration in virtuellen Netzwerken](virtual-network-for-azure-services.md)
-- [Richtlinien für VNET-Dienstendpunkte](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoint-policies-overview)
+- [Richtlinien für VNET-Dienstendpunkte](./virtual-network-service-endpoint-policies-overview.md)
 - [Azure Resource Manager-Vorlage](https://azure.microsoft.com/resources/templates/201-vnet-2subnets-service-endpoints-storage-integration)

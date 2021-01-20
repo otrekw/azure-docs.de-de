@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/12/2020
 ms.author: allensu
-ms.openlocfilehash: 1ae0b869b24c4e05c88b936eceb1b9b1db3a9405
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: d416af3d3a8eb8ab8057f13cc0d9a133adcb849a
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94506310"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98221155"
 ---
 # <a name="create-a-virtual-machine-with-a-static-public-ip-address-using-the-azure-portal"></a>Erstellen eines virtuellen Computers mit einer statischen öffentlichen IP-Adresse mithilfe des Azure-Portals
 
@@ -68,7 +68,7 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
     | Eingangsports auswählen | Wählen Sie **RDP (3389)** aus. |
 
     > [!WARNING]
-    > Port 3389 ist ausgewählt, um den Remotezugriff auf den virtuellen Windows Server-Computer über das Internet zu aktivieren. Beim Verwalten von Produktionsworkloads wird vom Öffnen von Port 3389 für das Internet abgeraten. </br> Informationen zum sicheren Zugriff auf virtuelle Azure-Computer finden Sie unter **[Was ist Azure Bastion?](/azure/bastion/bastion-overview)**
+    > Port 3389 ist ausgewählt, um den Remotezugriff auf den virtuellen Windows Server-Computer über das Internet zu aktivieren. Beim Verwalten von Produktionsworkloads wird vom Öffnen von Port 3389 für das Internet abgeraten. </br> Informationen zum sicheren Zugriff auf virtuelle Azure-Computer finden Sie unter **[Was ist Azure Bastion?](../bastion/bastion-overview.md)**
    
 5. Klicken Sie auf **Überprüfen + erstellen**. 
   
@@ -95,7 +95,7 @@ Die SKU der öffentlichen IP-Adresse des virtuellen Computers muss beim Hinzufü
 
 Sie können die Liste von Bereichen (Präfixen) für die [öffentliche Azure-Cloud](https://www.microsoft.com/download/details.aspx?id=56519), die [Azure US Government-Cloud](https://www.microsoft.com/download/details.aspx?id=57063) sowie für die Azure-Cloud in [China](https://www.microsoft.com/download/details.aspx?id=57062) und [Deutschland](https://www.microsoft.com/download/details.aspx?id=57064) herunterladen.
 
-- Lesen Sie im folgenden Artikel mehr über [statische öffentliche IP-Adressen](virtual-network-ip-addresses-overview-arm.md#allocation-method).
-- Lesen Sie mehr über [öffentliche IP-Adressen](virtual-network-ip-addresses-overview-arm.md#public-ip-addresses) in Azure.
+- Lesen Sie im folgenden Artikel mehr über [statische öffentliche IP-Adressen](./public-ip-addresses.md#allocation-method).
+- Lesen Sie mehr über [öffentliche IP-Adressen](./public-ip-addresses.md#public-ip-addresses) in Azure.
 - Erfahren Sie mehr über alle [Einstellungen für öffentliche IP-Adressen](virtual-network-public-ip-address.md#create-a-public-ip-address).
-- Lesen Sie mehr über [private IP-Adressen](virtual-network-ip-addresses-overview-arm.md#private-ip-addresses) und das Zuweisen einer [statischen privaten IP-Adresse](virtual-network-network-interface-addresses.md#add-ip-addresses) zu einer Azure-VM.
+- Lesen Sie mehr über [private IP-Adressen](./private-ip-addresses.md) und das Zuweisen einer [statischen privaten IP-Adresse](virtual-network-network-interface-addresses.md#add-ip-addresses) zu einer Azure-VM.

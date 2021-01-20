@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/19/2020
 ms.author: kumud
-ms.openlocfilehash: 664e3851370be812cd7a0e58cf9beb1fddb5d991
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a8c38f4e84a6a653c3a4d887c82340409fc363af
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87290995"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98220591"
 ---
 # <a name="create-change-or-delete-a-route-table"></a>Erstellen, Ändern oder Löschen einer Routingtabelle
 
@@ -52,7 +52,7 @@ Die Anzahl von Routingtabellen, die Sie pro Azure-Standort und -Abonnement erste
     1. Geben Sie einen **Namen** für die Routingtabelle ein.
     1. Wählen Sie Ihr **Abonnement** aus.
     1. Wählen Sie eine vorhandene **Ressourcengruppe** aus, oder klicken Sie auf **Neu erstellen**, um eine neue Ressourcengruppe zu erstellen.
-    1. Wählen Sie einen **Standort**aus.
+    1. Wählen Sie einen **Standort** aus.
     1. Wenn Sie die Routingtabelle einem Subnetz in einem virtuellen Netzwerk zuordnen möchten, das über ein VPN-Gateway mit Ihrem lokalen Netzwerk verbunden ist, und Sie Ihre lokalen Routen nicht an die Netzwerkschnittstellen im Subnetz weitergeben möchten, legen Sie **Routenverteilung des Gateways für virtuelle Netzwerke** auf **Deaktiviert** fest.
 
 1. Klicken Sie auf **Erstellen**, um Ihre neue Routingtabelle zu erstellen.
@@ -348,4 +348,4 @@ Zum Durchführen von Aufgaben für Routingtabellen und Routen muss Ihr Konto der
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Erstellen einer Routingtabelle mithilfe von [PowerShell](powershell-samples.md)- oder [Azure CLI](cli-samples.md)-Beispielskripts oder mithilfe von [Azure Resource Manager-Vorlagen](template-samples.md)
-- Erstellen und Zuweisen von [Azure Policy-Definitionen](policy-samples.md) für virtuelle Netzwerke
+- Erstellen und Zuweisen von [Azure Policy-Definitionen](./policy-reference.md) für virtuelle Netzwerke

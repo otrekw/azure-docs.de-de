@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/04/2020
 ms.author: mlottner
-ms.openlocfilehash: c4f65da4f9a4f7ade94d76e99d57439e62b3c808
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 495f9d568760421c7f42df3acf74217c15b01a05
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97092056"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98246338"
 ---
 # <a name="access-your-security-data"></a>Zugreifen auf Sicherheitsdaten
 
@@ -37,7 +37,7 @@ So greifen Sie nach der Konfiguration auf Ihre Warnungen und Empfehlungen in Ihr
 1. Wählen Sie eine Warnung oder Empfehlung in Defender für IoT aus.
 1. Klicken Sie auf **Weitere Untersuchungen**, und dann auf **Klicken Sie hier, und zeigen Sie die Spalte „DeviceId“ an, um die Geräte mit dieser Warnung anzuzeigen**.
 
-Ausführliche Informationen zum Abfragen von Daten aus Log Analytics finden Sie unter [Erste Schritte mit Abfragen in Log Analytics](/azure/azure-monitor/log-query/get-started-queries).
+Ausführliche Informationen zum Abfragen von Daten aus Log Analytics finden Sie unter [Erste Schritte mit Abfragen in Log Analytics](../azure-monitor/log-query/get-started-queries.md).
 
 ## <a name="security-alerts"></a>Sicherheitswarnungen
 

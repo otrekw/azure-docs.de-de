@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/23/2017
 ms.author: subsarma
-ms.openlocfilehash: 9f5b535a341956e5675ba96ba9570bd3f2ff3443
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ad91eb94aedcdd0e4e715162e3ae064a1d2fb1ea
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84710948"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98220421"
 ---
 # <a name="use-dynamic-dns-to-register-hostnames-in-your-own-dns-server"></a>Registrieren von Hostnamen in Ihrem eigenen DNS-Server mit dynamischem DNS
 
@@ -28,7 +28,7 @@ ms.locfileid: "84710948"
 Wenn Ihre benutzerdefinierten DNS-Server als virtuelle Azure-Computer gehostet werden, können Sie Abfragen des Hostnamens für das gleiche virtuelle Netzwerk in Azure zum Auflösen von Hostnamen weiterleiten. Wenn Sie diese Option nicht nutzen möchten, können Sie die Hostnamen Ihrer virtuellen Computer über Dynamic DNS (DDNS) in Ihrem DNS-Server registrieren. Azure verfügt nicht über die Anmeldeinformationen, um Einträge direkt in Ihren DNS-Servern zu erstellen. Daher sind meist andere Vorkehrungen erforderlich. Einige allgemeine Szenarien mit Alternativen sind:
 
 ## <a name="windows-clients"></a>Windows-Clients
-Nicht per Beitritt in eine Domäne eingebundene Windows-Clients versuchen beim Starten oder bei IP-Adressänderungen, ungesicherte DDNS-Aktualisierungen vorzunehmen. Der DNS-Name besteht aus dem Hostnamen und dem primären DNS-Suffix. In Azure wird das primäre DNS-Suffix leer gelassen, Sie können es jedoch im virtuellen Computer über die [Benutzeroberfläche](https://technet.microsoft.com/library/cc794784.aspx) oder durch [PowerShell](/powershell/module/dnsclient/set-dnsclient) festlegen.
+Nicht per Beitritt in eine Domäne eingebundene Windows-Clients versuchen beim Starten oder bei IP-Adressänderungen, ungesicherte DDNS-Aktualisierungen vorzunehmen. Der DNS-Name besteht aus dem Hostnamen und dem primären DNS-Suffix. In Azure wird das primäre DNS-Suffix leer gelassen, Sie können es jedoch im virtuellen Computer über die [Benutzeroberfläche](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc794784(v=ws.10)) oder durch [PowerShell](/powershell/module/dnsclient/set-dnsclient) festlegen.
 
 Per Beitritt in die Domäne eingebundene Windows-Clients registrieren ihre IP-Adressen mithilfe von sicherem DDNS beim Domänencontroller. Während des Domänenbeitritts wird das primäre DNS-Suffix auf dem Client festgelegt, und die Vertrauensstellung wird erstellt und verwaltet.
 

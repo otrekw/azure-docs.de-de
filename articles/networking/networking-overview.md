@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 10/28/2020
 ms.author: kumud
-ms.openlocfilehash: f49a340a004a4aef37bcae9e3ae1c2b02ae030b9
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: d02f85647d947c2f28527ba6f0397c2a98e73840
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92913081"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98234187"
 ---
 # <a name="azure-networking-services-overview"></a>Übersicht über Azure-Netzwerkdienste
 
@@ -89,7 +89,7 @@ Azure Orbital ist eine vollständig verwaltete, cloudbasierte Erdfunkstelle-as-a
 In diesem Abschnitt werden die Netzwerkdienste in Azure beschrieben, mit denen Sie Ihre Netzwerkressourcen schützen können. Schützen Sie Ihre Anwendungen mithilfe einer Kombination folgender Netzwerkdienste in Azure: DDoS-Schutz, Private Link, Firewall, Web Application Firewall, Netzwerksicherheitsgruppen und VNET-Dienstendpunkte.
 
 ### <a name="ddos-protection"></a><a name="ddosprotection"></a>DDoS Protection 
-[Azure DDoS Protection](../virtual-network/manage-ddos-protection.md) bietet Gegenmaßnahmen gegen die komplexesten DDoS-Bedrohungen. Der Dienst bietet erweiterte DDoS-Risikominderungsfunktionen für die Anwendungen und Ressourcen, die in Ihren virtuellen Netzwerken bereitgestellt werden. Außerdem haben Kunden, die Azure DDoS Protection verwenden, Zugriff auf DDoS Rapid Response-Support, durch den sich DDoS-Experten bei einem aktiven Angriff einschalten können.
+[Azure DDoS Protection](../ddos-protection/manage-ddos-protection.md) bietet Gegenmaßnahmen gegen die komplexesten DDoS-Bedrohungen. Der Dienst bietet erweiterte DDoS-Risikominderungsfunktionen für die Anwendungen und Ressourcen, die in Ihren virtuellen Netzwerken bereitgestellt werden. Außerdem haben Kunden, die Azure DDoS Protection verwenden, Zugriff auf DDoS Rapid Response-Support, durch den sich DDoS-Experten bei einem aktiven Angriff einschalten können.
 
 :::image type="content" source="./media/networking-overview/ddos-protection.png" alt-text="DDoS Protection":::
 
@@ -109,7 +109,7 @@ Weitere Informationen zu Azure Firewall finden Sie in der [zugehörigen Dokument
 ### <a name="web-application-firewall"></a><a name="waf"></a>Web Application Firewall
 [Azure Web Application Firewall](../web-application-firewall/overview.md) (WAF) schützt Ihre Webanwendungen vor gängigen Webexploits und Sicherheitsrisiken wie die Einschleusung von SQL-Befehlen und Cross-Site Scripting. WAF bietet über verwaltete Regeln integrierten Schutz vor den zehn häufigsten Websicherheitslücken (laut OWASP). Darüber hinaus können Kunden benutzerdefinierte Regeln konfigurieren, bei denen es sich um vom Kunden verwaltete Regeln handelt, um zusätzlichen Schutz anhand des Quell-IP-Adressbereichs und der Anforderungsattribute wie Header, Cookies, Formulardatenfelder oder Abfragezeichenfolgenparameter zu bieten.
 
-Kunden können [Azure WAF mit Application Gateway](../application-gateway/waf-overview.md) einsetzen, um Entitäten im öffentlichen und privaten Adressraum regional zu schützen. Kunden können auch [Azure WAF mit Front Door](../frontdoor/waf-overview.md) einsetzen, um öffentliche Endpunkte am Netzwerkedge zu schützen.
+Kunden können [Azure WAF mit Application Gateway](../web-application-firewall/ag/ag-overview.md) einsetzen, um Entitäten im öffentlichen und privaten Adressraum regional zu schützen. Kunden können auch [Azure WAF mit Front Door](../web-application-firewall/afds/afds-overview.md) einsetzen, um öffentliche Endpunkte am Netzwerkedge zu schützen.
 
 :::image type="content" source="./media/networking-overview/waf-overview.png" alt-text="Web Application Firewall":::
 
@@ -166,7 +166,7 @@ In diesem Abschnitt werden die Azure-Netzwerkdienste beschrieben, mit denen Sie 
 Mit Azure Network Watcher werden Tools für die Überwachung, Diagnose, Metrikanzeige und Aktivierung/Deaktivierung von Protokollen für Ressourcen in einem virtuellen Azure-Netzwerk bereitgestellt. Weitere Informationen finden Sie unter [Was ist Network Watcher?](../network-watcher/network-watcher-monitoring-overview.md?toc=%2fazure%2fnetworking%2ftoc.json).
 
 ### <a name="azure-monitor-for-networks-preview"></a>Azure Monitor für Netzwerke (Vorschau)
-Azure Monitor für Netzwerke bietet eine umfassende Ansicht der Integrität und Metriken für alle bereitgestellten Netzwerkressourcen ohne jegliche Konfiguration. Außerdem erhalten Sie Zugriff auf Netzwerküberwachungsfunktionen wie [Verbindungsmonitor](../network-watcher/connection-monitor-preview.md), [Datenflussprotokollierung für Netzwerksicherheitsgruppen](../network-watcher/network-watcher-nsg-flow-logging-overview.md) und [Traffic Analytics](../network-watcher/traffic-analytics.md). Weitere Informationen finden Sie unter [Azure Monitor für Netzwerke (Vorschau)](../azure-monitor/insights/network-insights-overview.md?toc=%2fazure%2fnetworking%2ftoc.json).
+Azure Monitor für Netzwerke bietet eine umfassende Ansicht der Integrität und Metriken für alle bereitgestellten Netzwerkressourcen ohne jegliche Konfiguration. Außerdem erhalten Sie Zugriff auf Netzwerküberwachungsfunktionen wie [Verbindungsmonitor](../network-watcher/connection-monitor-overview.md), [Datenflussprotokollierung für Netzwerksicherheitsgruppen](../network-watcher/network-watcher-nsg-flow-logging-overview.md) und [Traffic Analytics](../network-watcher/traffic-analytics.md). Weitere Informationen finden Sie unter [Azure Monitor für Netzwerke (Vorschau)](../azure-monitor/insights/network-insights-overview.md?toc=%2fazure%2fnetworking%2ftoc.json).
 
 ### <a name="expressroute-monitor"></a><a name="expressroutemonitor"></a>ExpressRoute-Monitor
 Weitere Informationen zum Anzeigen von ExpressRoute-Verbindungsmetriken, -Ressourcenprotokollen und -Warnungen finden Sie unter [ExpressRoute-Überwachung, -Metriken und -Warnungen](../expressroute/expressroute-monitoring-metrics-alerts.md?toc=%2fazure%2fnetworking%2ftoc.json).
@@ -185,4 +185,4 @@ Weitere Informationen finden Sie unter [Was sind Terminalzugangspunkte für virt
 
 - Erstellen Sie Ihr erstes virtuelles Netzwerk, und verbinden Sie einige VMs damit, indem Sie die Schritte des Artikels [Erstellen Ihres ersten virtuellen Netzwerks](../virtual-network/quick-create-portal.md?toc=%2fazure%2fnetworking%2ftoc.json) ausführen.
 - Verbinden Sie Ihren Computer über eine Point-to-Site-Verbindung mit einem virtuellen Netzwerk, indem Sie die Schritte im Artikel [Konfigurieren einer Point-to-Site-Verbindung](../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md?toc=%2fazure%2fnetworking%2ftoc.json) befolgen.
-- Führen Sie einen Lastenausgleich des Internetdatenverkehrs zu öffentlichen Servern durch, indem Sie die Schritte im Artikel [Erstellen eines Load Balancers mit Internetzugriff](../load-balancer/load-balancer-get-started-internet-portal.md?toc=%2fazure%2fnetworking%2ftoc.json) ausführen.
+- Führen Sie einen Lastenausgleich des Internetdatenverkehrs zu öffentlichen Servern durch, indem Sie die Schritte im Artikel [Erstellen eines Load Balancers mit Internetzugriff](../load-balancer/quickstart-load-balancer-standard-public-portal.md?toc=%2fazure%2fnetworking%2ftoc.json) ausführen.

@@ -15,18 +15,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/29/2018
 ms.author: kumud
-ms.openlocfilehash: ec70f7820994898cb8e552dab66547cc9c9f10ec
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: 73562d8d32f265fa43ca80d2f8d4f84b1b631ec6
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93042880"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98223668"
 ---
 # <a name="diagnose-a-virtual-machine-network-traffic-filter-problem"></a>Diagnostizieren von Problemen mit dem Filter für Netzwerkdatenverkehr eines virtuellen Computers
 
 In diesem Artikel erfahren Sie, wie ein Problem mit einem Filter für Netzwerkdatenverkehr diagnostiziert werden kann, indem Sie die für einen virtuellen Computer (VM) geltenden NSG-Sicherheitsregeln (Netzwerksicherheitsgruppe) anzeigen.
 
-Über NSGs können Sie die Typen des Datenverkehrs steuern, der bei einer VM ein- und ausgeht. Sie können einem Subnetz in einem virtuellen Azure-Network, einer Netzwerkschnittstelle, die an eine VM angefügt ist, oder beidem eine NSG zuordnen. Die geltenden Sicherheitsregeln, die auf eine Netzwerkschnittstelle angewendet werden, stellen eine Aggregation der Regeln, die in der einer Netzwerkschnittstelle zugeordneten NSG vorhanden sind, und des Subnetzes der Netzwerkschnittstelle dar. Die Regeln in den verschiedenen NSGs können manchmal in Konflikt miteinander stehen und sich auf die Netzwerkkonnektivität einer VM auswirken. Sie können alle effektiven Sicherheitsregeln der NSGs anzeigen, die auf die Netzwerkschnittstellen Ihrer VM angewendet werden. Wenn Sie nicht mit virtuellen Netzwerken, Netzwerkschnittstellen oder NSG-Konzepten vertraut sind, lesen Sie [Was ist Azure Virtual Network?](virtual-networks-overview.md), [Erstellen, Ändern oder Löschen von Netzwerkschnittstellen](virtual-network-network-interface.md) und [Netzwerksicherheit](security-overview.md).
+Über NSGs können Sie die Typen des Datenverkehrs steuern, der bei einer VM ein- und ausgeht. Sie können einem Subnetz in einem virtuellen Azure-Network, einer Netzwerkschnittstelle, die an eine VM angefügt ist, oder beidem eine NSG zuordnen. Die geltenden Sicherheitsregeln, die auf eine Netzwerkschnittstelle angewendet werden, stellen eine Aggregation der Regeln, die in der einer Netzwerkschnittstelle zugeordneten NSG vorhanden sind, und des Subnetzes der Netzwerkschnittstelle dar. Die Regeln in den verschiedenen NSGs können manchmal in Konflikt miteinander stehen und sich auf die Netzwerkkonnektivität einer VM auswirken. Sie können alle effektiven Sicherheitsregeln der NSGs anzeigen, die auf die Netzwerkschnittstellen Ihrer VM angewendet werden. Wenn Sie nicht mit virtuellen Netzwerken, Netzwerkschnittstellen oder NSG-Konzepten vertraut sind, lesen Sie [Was ist Azure Virtual Network?](virtual-networks-overview.md), [Erstellen, Ändern oder Löschen von Netzwerkschnittstellen](virtual-network-network-interface.md) und [Netzwerksicherheit](./network-security-groups-overview.md).
 
 ## <a name="scenario"></a>Szenario
 
@@ -38,18 +38,18 @@ Die folgenden Schritte setzen voraus, dass Sie über eine VM verfügen, deren ef
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) mit einem Azure-Konto an, dem die [erforderlichen Berechtigungen](virtual-network-network-interface.md#permissions) zugewiesen sind.
 2. Geben Sie oben im Azure-Portal in das Suchfeld den Namen der VM ein. Wenn der Name der VM in den Suchergebnissen angezeigt wird, wählen Sie sie aus.
-3. Klicken Sie unter **EINSTELLUNGEN** auf **Netzwerk** , wie in der folgenden Abbildung gezeigt wird:
+3. Klicken Sie unter **EINSTELLUNGEN** auf **Netzwerk**, wie in der folgenden Abbildung gezeigt wird:
 
    ![Screenshot: Azure-Portal mit Netzwerkeinstellungen für myVMVMNic](./media/diagnose-network-traffic-filter-problem/view-security-rules.png)
 
    Die Regeln, die in der vorherigen Abbildung aufgeführt sind, beziehen sich auf eine Netzwerkschnittstelle mit dem Namen **myVMVMNic**. Sie können **REGELN FÜR EINGEHENDE PORTS** für die Netzwerkschnittstelle aus zwei verschiedenen Netzwerksicherheitsgruppen sehen:
    
-   - **mySubnetNSG** : Ist dem Subnetz zugeordnet, in dem sich die Netzwerkschnittstelle befindet.
-   - **myVMNSG** : Ist der Netzwerkschnittstelle in der VM mit dem Namen **myVMVMNic** zugeordnet.
+   - **mySubnetNSG**: Ist dem Subnetz zugeordnet, in dem sich die Netzwerkschnittstelle befindet.
+   - **myVMNSG**: Ist der Netzwerkschnittstelle in der VM mit dem Namen **myVMVMNic** zugeordnet.
 
-   Die Regel mit dem Namen **DenyAllInBound** verhindert eingehende Kommunikation mit der VM über Port 80 über das Internet, wie im [Szenario](#scenario) beschrieben wird. Die Regel gibt *0.0.0.0/0* für **QUELLE** an, die das Internet einschließt. Keine andere Regel mit einer höheren Priorität (niedrigere Zahl) lässt den Port 80 als eingehenden Port zu. Um den Port 80 als eingehenden Port für die VM über das Internet zuzulassen, lesen Sie den Artikel [Beheben eines Problems](#resolve-a-problem). Weitere Informationen zu Sicherheitsregeln und zu ihrer Anwendung in Azure finden Sie unter [Netzwerksicherheitsgruppen](security-overview.md).
+   Die Regel mit dem Namen **DenyAllInBound** verhindert eingehende Kommunikation mit der VM über Port 80 über das Internet, wie im [Szenario](#scenario) beschrieben wird. Die Regel gibt *0.0.0.0/0* für **QUELLE** an, die das Internet einschließt. Keine andere Regel mit einer höheren Priorität (niedrigere Zahl) lässt den Port 80 als eingehenden Port zu. Um den Port 80 als eingehenden Port für die VM über das Internet zuzulassen, lesen Sie den Artikel [Beheben eines Problems](#resolve-a-problem). Weitere Informationen zu Sicherheitsregeln und zu ihrer Anwendung in Azure finden Sie unter [Netzwerksicherheitsgruppen](./network-security-groups-overview.md).
 
-   Unten in der Abbildung sehen Sie darüber hinaus **REGELN FÜR AUSGEHENDE PORTS**. Darunter befinden sich die Regeln für ausgehende Ports für die Netzwerkschnittstelle. Obwohl in der Abbildung nur vier Eingangsregeln für jede NSG gezeigt werden, verfügen Ihre NSGs möglicherweise über mehr als vier Regeln. In der Abbildung finden Sie **VirtualNetwork** unter **QUELLE** und **ZIEL** und **AzureLoadBalancer** unter **QUELLE**. Bei **VirtualNetwork** und **AzureLoadBalancer** handelt es sich um [Diensttags](security-overview.md#service-tags). Diensttags stellen eine Gruppe von IP-Adressen dar und haben die Aufgabe, bei der Erstellung von Sicherheitsregeln die Komplexität zu verringern.
+   Unten in der Abbildung sehen Sie darüber hinaus **REGELN FÜR AUSGEHENDE PORTS**. Darunter befinden sich die Regeln für ausgehende Ports für die Netzwerkschnittstelle. Obwohl in der Abbildung nur vier Eingangsregeln für jede NSG gezeigt werden, verfügen Ihre NSGs möglicherweise über mehr als vier Regeln. In der Abbildung finden Sie **VirtualNetwork** unter **QUELLE** und **ZIEL** und **AzureLoadBalancer** unter **QUELLE**. Bei **VirtualNetwork** und **AzureLoadBalancer** handelt es sich um [Diensttags](./network-security-groups-overview.md#service-tags). Diensttags stellen eine Gruppe von IP-Adressen dar und haben die Aufgabe, bei der Erstellung von Sicherheitsregeln die Komplexität zu verringern.
 
 4. Um die in der folgenden Abbildung gezeigten effektiven Sicherheitsregeln anzuzeigen, stellen Sie sicher, dass sich die VM im Ausführungsstatus befindet, und wählen Sie dann **Effektive Sicherheitsregeln** aus:
 
@@ -72,8 +72,8 @@ Die folgenden Schritte setzen voraus, dass Sie über eine VM verfügen, deren ef
    Im Gegensatz zur Netzwerkschnittstelle **myVMVMNic** ist die Netzwerkschnittstelle **myVMVMNic2** nicht einer Netzwerksicherheitsgruppe zugeordnet. Jede Netzwerkschnittstelle und jedes Subnetz können optional einer NSG zugeordnet werden. Den einzelnen Netzwerkschnittstellen oder Subnetzen kann die gleiche oder eine andere NSG zugeordnet werden. Sie können dieselbe Netzwerksicherheitsgruppe beliebig vielen Netzwerkschnittstellen und Subnetzen zuordnen.
 
 Effektive Sicherheitsregeln können nicht nur über die VM angezeigt werden, sondern auch jeweils über Folgendes:
-- **Netzwerkschnittstelle** : Erfahren Sie, wie [eine Netzwerkschnittstelle angezeigt wird](virtual-network-network-interface.md#view-network-interface-settings).
-- **NSG** : Erfahren Sie, wie [eine NSG angezeigt wird](manage-network-security-group.md#view-details-of-a-network-security-group).
+- **Netzwerkschnittstelle**: Erfahren Sie, wie [eine Netzwerkschnittstelle angezeigt wird](virtual-network-network-interface.md#view-network-interface-settings).
+- **NSG**: Erfahren Sie, wie [eine NSG angezeigt wird](manage-network-security-group.md#view-details-of-a-network-security-group).
 
 ## <a name="diagnose-using-powershell"></a>Diagnose mit PowerShell
 
@@ -156,9 +156,9 @@ In der vorangehenden Ausgabe lautet der Netzwerkschnittstellenname *myVMVMNic in
 
 Unabhängig davon, ob Sie [PowerShell](#diagnose-using-powershell) oder die [Azure CLI](#diagnose-using-azure-cli) zum Diagnostizieren eines Problems verwendet haben, erhalten Sie eine Ausgabe mit den folgenden Informationen:
 
-- **NetworkSecurityGroup** : Die ID der Netzwerksicherheitsgruppe.
-- **Zuordnung** : Gibt an, ob die Netzwerksicherheitsgruppe *NetworkInterface* oder *Subnet* zugeordnet ist. Wenn eine NSG beidem zugeordnet ist, wird die Ausgabe mit **NetworkSecurityGroup** , **Association** und **EffectiveSecurityRules** für jede NSG zurückgegeben. Wenn die NSG unmittelbar vor dem Ausführen dieses Befehls zum Anzeigen der effektiven Sicherheitsregeln zugeordnet oder ihre Zuordnung aufgehoben wird, müssen Sie möglicherweise einen Moment warten, damit die Änderung in der Befehlsausgabe angezeigt wird.
-- **EffectiveSecurityRules** : Eine Erläuterung der einzelnen Eigenschaften finden Sie unter [Erstellen einer Sicherheitsregel](manage-network-security-group.md#create-a-security-rule). Regelnamen mit vorangestellten *defaultSecurityRules/* sind Standardsicherheitsregeln, die in jede NSG vorhanden sind. Regelnamen mit vorangestellten *securityRules/* sind Regeln, die Sie erstellt haben. Regeln, die ein [Diensttag](security-overview.md#service-tags) angeben (z.B. **Internet** , **VirtualNetwork** und **AzureLoadBalancer** für die Eigenschaften **destinationAddressPrefix** oder **sourceAddressPrefix** ), weisen auch Werte für die Eigenschaft **expandedDestinationAddressPrefix** auf. Die Eigenschaft **expandedDestinationAddressPrefix** listet alle Adresspräfixe auf, die von dem Diensttag dargestellt werden.
+- **NetworkSecurityGroup**: Die ID der Netzwerksicherheitsgruppe.
+- **Zuordnung**: Gibt an, ob die Netzwerksicherheitsgruppe *NetworkInterface* oder *Subnet* zugeordnet ist. Wenn eine NSG beidem zugeordnet ist, wird die Ausgabe mit **NetworkSecurityGroup**, **Association** und **EffectiveSecurityRules** für jede NSG zurückgegeben. Wenn die NSG unmittelbar vor dem Ausführen dieses Befehls zum Anzeigen der effektiven Sicherheitsregeln zugeordnet oder ihre Zuordnung aufgehoben wird, müssen Sie möglicherweise einen Moment warten, damit die Änderung in der Befehlsausgabe angezeigt wird.
+- **EffectiveSecurityRules**: Eine Erläuterung der einzelnen Eigenschaften finden Sie unter [Erstellen einer Sicherheitsregel](manage-network-security-group.md#create-a-security-rule). Regelnamen mit vorangestellten *defaultSecurityRules/* sind Standardsicherheitsregeln, die in jede NSG vorhanden sind. Regelnamen mit vorangestellten *securityRules/* sind Regeln, die Sie erstellt haben. Regeln, die ein [Diensttag](./network-security-groups-overview.md#service-tags) angeben (z.B. **Internet**, **VirtualNetwork** und **AzureLoadBalancer** für die Eigenschaften **destinationAddressPrefix** oder **sourceAddressPrefix**), weisen auch Werte für die Eigenschaft **expandedDestinationAddressPrefix** auf. Die Eigenschaft **expandedDestinationAddressPrefix** listet alle Adresspräfixe auf, die von dem Diensttag dargestellt werden.
 
 Wenn doppelte Regeln in der Ausgabe aufgeführt werden, so ist dies darauf zurückzuführen, dass eine NSG sowohl der Netzwerkschnittstelle als auch dem Subnetz zugeordnet ist. Beide NSGs weisen die gleichen Standardregeln und möglicherweise weitere doppelte Regeln auf, wenn Sie eigene Regeln erstellt haben, die in beiden NSGs identisch sind.
 
@@ -179,9 +179,9 @@ Unabhängig davon, ob Sie das im [Szenario](#scenario) dieses Artikels dargestel
 | Priority                | 100                                                                                |
 | Name                    | Allow-HTTP-All                                                                     |
 
-Nachdem Sie die Regel erstellt haben, wird Port 80 eingehender Datenverkehr aus dem Internet erlaubt, da die Priorität der Regel höher ist als die Standardsicherheitsregel mit dem Namen *DenyAllInBound* , die den Datenverkehr ablehnt. Weitere Informationen finden Sie unter [Erstellen einer Sicherheitsregel](manage-network-security-group.md#create-a-security-rule). Wenn verschiedene NSGs sowohl der Netzwerkschnittstelle als auch dem Subnetz zugeordnet sind, müssen Sie die gleiche Regel in beiden NSGs erstellen.
+Nachdem Sie die Regel erstellt haben, wird Port 80 eingehender Datenverkehr aus dem Internet erlaubt, da die Priorität der Regel höher ist als die Standardsicherheitsregel mit dem Namen *DenyAllInBound*, die den Datenverkehr ablehnt. Weitere Informationen finden Sie unter [Erstellen einer Sicherheitsregel](manage-network-security-group.md#create-a-security-rule). Wenn verschiedene NSGs sowohl der Netzwerkschnittstelle als auch dem Subnetz zugeordnet sind, müssen Sie die gleiche Regel in beiden NSGs erstellen.
 
-Wenn eingehender Datenverkehr in Azure verarbeitet wird, werden die Regeln in der NSG, die dem Subnetz zugeordnet sind (sofern eine zugeordnete NSG vorhanden ist), und dann die Regeln in der NSG verarbeitet, die der Netzwerkschnittstelle zugeordnet sind. Ist eine NSG der Netzwerkschnittstelle und dem Subnetz zugeordnet, muss der Port in beiden NSGs geöffnet sein, damit der Datenverkehr die VM erreicht. Um Probleme mit der Verwaltung und der Kommunikation einfacher beheben zu können, wird empfohlen, eine NSG einem Subnetz zuzuordnen statt einzelnen Netzwerkschnittstellen. Wenn VMs in einem Subnetz verschiedene Sicherheitsregeln erfordern, können Sie die Netzwerkschnittstellen zu Mitgliedern einer Anwendungssicherheitsgruppe (ASG) machen und eine ASG als Quelle und Ziel einer Sicherheitsregel angeben. Weitere Informationen finden Sie unter [Anwendungssicherheitsgruppen](security-overview.md#application-security-groups).
+Wenn eingehender Datenverkehr in Azure verarbeitet wird, werden die Regeln in der NSG, die dem Subnetz zugeordnet sind (sofern eine zugeordnete NSG vorhanden ist), und dann die Regeln in der NSG verarbeitet, die der Netzwerkschnittstelle zugeordnet sind. Ist eine NSG der Netzwerkschnittstelle und dem Subnetz zugeordnet, muss der Port in beiden NSGs geöffnet sein, damit der Datenverkehr die VM erreicht. Um Probleme mit der Verwaltung und der Kommunikation einfacher beheben zu können, wird empfohlen, eine NSG einem Subnetz zuzuordnen statt einzelnen Netzwerkschnittstellen. Wenn VMs in einem Subnetz verschiedene Sicherheitsregeln erfordern, können Sie die Netzwerkschnittstellen zu Mitgliedern einer Anwendungssicherheitsgruppe (ASG) machen und eine ASG als Quelle und Ziel einer Sicherheitsregel angeben. Weitere Informationen finden Sie unter [Anwendungssicherheitsgruppen](./network-security-groups-overview.md#application-security-groups).
 
 Falls weiterhin Probleme mit der Kommunikation bestehen, lesen Sie die Abschnitte [Überlegungen](#considerations) und „Zusätzliche Diagnose“.
 
@@ -189,8 +189,8 @@ Falls weiterhin Probleme mit der Kommunikation bestehen, lesen Sie die Abschnitt
 
 Beachten Sie bei der Problembehandlung von Verbindungsproblemen die folgenden Punkte:
 
-* Die Standardsicherheitsregeln blockieren den eingehenden Zugriff über das Internet und lassen nur eingehenden Datenverkehr über das virtuelle Netzwerk zu. Um eingehenden Datenverkehr aus dem Internet zuzulassen, fügen Sie Sicherheitsregeln mit einer höheren Priorität als der der Standardregeln hinzu. Erfahren Sie mehr über [Standardsicherheitsregeln](security-overview.md#default-security-rules), oder das [Erstellen einer Sicherheitsregel](manage-network-security-group.md#create-a-security-rule).
-* Beim Peering virtueller Netzwerke wird das Diensttag **VIRTUAL_NETWORK** standardmäßig automatisch erweitert, sodass Präfixe für die per Peering verknüpften virtuellen Netzwerke einbezogen werden. Um Probleme im Hinblick auf Peerings virtueller Netzwerke zu beheben, können Sie diese Präfixe in der Liste **ExpandedAddressPrefix** anzeigen. Weitere Informationen hierzu finden Sie unter [Peering virtueller Netzwerke](virtual-network-peering-overview.md) und [Diensttags](security-overview.md#service-tags).
+* Die Standardsicherheitsregeln blockieren den eingehenden Zugriff über das Internet und lassen nur eingehenden Datenverkehr über das virtuelle Netzwerk zu. Um eingehenden Datenverkehr aus dem Internet zuzulassen, fügen Sie Sicherheitsregeln mit einer höheren Priorität als der der Standardregeln hinzu. Erfahren Sie mehr über [Standardsicherheitsregeln](./network-security-groups-overview.md#default-security-rules), oder das [Erstellen einer Sicherheitsregel](manage-network-security-group.md#create-a-security-rule).
+* Beim Peering virtueller Netzwerke wird das Diensttag **VIRTUAL_NETWORK** standardmäßig automatisch erweitert, sodass Präfixe für die per Peering verknüpften virtuellen Netzwerke einbezogen werden. Um Probleme im Hinblick auf Peerings virtueller Netzwerke zu beheben, können Sie diese Präfixe in der Liste **ExpandedAddressPrefix** anzeigen. Weitere Informationen hierzu finden Sie unter [Peering virtueller Netzwerke](virtual-network-peering-overview.md) und [Diensttags](./network-security-groups-overview.md#service-tags).
 * Effektive Sicherheitsregeln werden nur dann für eine Netzwerkschnittstelle angezeigt, wenn der Netzwerkschnittstelle und/oder dem Subnetz der VM eine NSG zugeordnet ist und die VM den Ausführungsstatus aufweist.
 * Wenn der Netzwerkschnittstelle oder dem Subnetz keine NSGs zugeordnet sind und der VM eine [öffentliche IP-Adresse](virtual-network-public-ip-address.md) zugewiesen ist, sind alle Ports für den eingehenden und ausgehenden Zugriff auf beliebige Ziele geöffnet. Wenn die VM eine öffentliche IP-Adresse aufweist, sollten Sie eine NSG auf das Subnetz der Netzwerkschnittstelle anwenden.
 
@@ -204,4 +204,4 @@ Beachten Sie bei der Problembehandlung von Verbindungsproblemen die folgenden Pu
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Erfahren Sie mehr über alle Aufgaben, Eigenschaften und Einstellungen für eine [Netzwerksicherheitsgruppe](manage-network-security-group.md#work-with-network-security-groups) und für [Sicherheitsregeln](manage-network-security-group.md#work-with-security-rules).
-- Erfahren Sie mehr über [Standardsicherheitsregeln](security-overview.md#default-security-rules), [Diensttags](security-overview.md#service-tags) und die [Verarbeitung von Sicherheitsregeln für eingehenden und ausgehenden Datenverkehr in Azure](security-overview.md#network-security-groups) für eine VM.
+- Erfahren Sie mehr über [Standardsicherheitsregeln](./network-security-groups-overview.md#default-security-rules), [Diensttags](./network-security-groups-overview.md#service-tags) und die [Verarbeitung von Sicherheitsregeln für eingehenden und ausgehenden Datenverkehr in Azure](./network-security-groups-overview.md#network-security-groups) für eine VM.

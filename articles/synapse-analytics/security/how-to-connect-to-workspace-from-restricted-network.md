@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 10/25/2020
 ms.author: xujiang1
 ms.reviewer: jrasnick
-ms.openlocfilehash: 2e96cbf0c1464e27b0a384e8a813118056103b91
-ms.sourcegitcommit: 192f9233ba42e3cdda2794f4307e6620adba3ff2
+ms.openlocfilehash: 41403a59be0395a6d9874c7369bfe59c22f5ac17
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96296684"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98218364"
 ---
 # <a name="connect-to-workspace-resources-from-a-restricted-network"></a>Herstellen einer Verbindung mit Arbeitsbereichsressourcen über ein eingeschränktes Netzwerk
 
@@ -40,7 +40,7 @@ Der folgende Screenshot zeigt Details zur Ausgangsregel von Azure Resource Manag
 
 Wenn Sie die anderen drei Regeln erstellen, ersetzen Sie den Wert von **Zieldiensttag** durch **AzureFrontDoor.Front-End**, **AzureActiveDirectory** oder **AzureMonitor** aus der Dropdownliste.
 
-Weitere Informationen finden Sie unter [Diensttags in virtuellen Netzwerken](/azure/virtual-network/service-tags-overview).
+Weitere Informationen finden Sie unter [Diensttags in virtuellen Netzwerken](../../virtual-network/service-tags-overview.md).
 
 ## <a name="step-2-create-private-link-hubs"></a>Schritt 2: Erstellen eines Private Link-Hubs
 

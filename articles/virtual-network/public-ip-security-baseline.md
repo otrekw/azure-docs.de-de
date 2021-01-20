@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/11/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 788c52490a97bb5d5aee0656bbdd09731d767d85
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: d625cb8e0d0fa0f2fff55fbd41818057b7e9cb89
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94842599"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98217650"
 ---
 # <a name="azure-security-baseline-for-azure-public-ip"></a>Azure-Sicherheitsbaseline für Azure Public IP
 
@@ -30,7 +30,7 @@ Die vollständige Zuordnung zwischen Azure Public IP und dem Azure-Sicherheitsv
 
 Sie können Azure PowerShell oder die Azure-Befehlszeilenschnittstelle verwenden, um Ressourcen basierend auf ihren Tags zu suchen oder Aktionen für diese Ressourcen auszuführen. 
 
-- [Erstellen und Verwenden von Tags](/azure/azure-resource-manager/resource-group-using-tags) 
+- [Erstellen und Verwenden von Tags](../azure-resource-manager/management/tag-resources.md) 
 
 - [Erstellen eines virtuellen Azure-Netzwerks](quick-create-portal.md) 
 
@@ -64,7 +64,7 @@ Stattdessen können Sie Daten in Azure Sentinel oder in einer SIEM-Drittanbieter
 
 **Leitfaden**: Verwenden Sie das Azure-Aktivitätsprotokoll, um Konfigurationen zu überwachen und Änderungen für Ihre Public IP-Instanzen zu erkennen. Von Public IP selbst werden nur auf der Steuerungsebene (z. B. im Azure-Portal) Überwachungsprotokolle generiert. Public IP bietet Tools für die Überwachung, Diagnose, Metrikanzeige und Aktivierung/Deaktivierung von Protokollen für Ressourcen in einem virtuellen Azure-Netzwerk.
 
-- [Anzeigen und Abrufen von Azure-Aktivitätsprotokollereignissen](/azure/azure-monitor/platform/activity-log-view)
+- [Anzeigen und Abrufen von Azure-Aktivitätsprotokollereignissen](../azure-monitor/platform/activity-log.md#view-the-activity-log)
 
 **Azure Security Center-Überwachung**: Ja
 
@@ -88,7 +88,7 @@ Verwenden Sie das Azure-Aktivitätsprotokoll, um Konfigurationen zu überwachen 
 
 Von Public IP selbst werden nur auf der Steuerungsebene (z. B. im Azure-Portal) Protokolle im Zusammenhang mit Netzwerkdatenverkehr generiert.
 
-- [Anzeigen und Abrufen von Azure-Aktivitätsprotokollereignissen](/azure/azure-monitor/platform/activity-log-view)
+- [Anzeigen und Abrufen von Azure-Aktivitätsprotokollereignissen](../azure-monitor/platform/activity-log.md#view-the-activity-log)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -114,9 +114,9 @@ Von Public IP selbst werden nur auf der Steuerungsebene (z. B. im Azure-Portal
 
 Verwenden Sie Tools wie die Azure-Befehlszeilenschnittstelle, Azure PowerShell oder das Azure-Portal, um vordefinierte integrierte Azure-Rollen für bestimmte Ressourcen zu inventarisieren oder abzufragen.
 
-- [Abrufen einer Verzeichnisrolle in Azure AD mit PowerShell](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
+- [Abrufen einer Verzeichnisrolle in Azure AD mit PowerShell](/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
 
-- [Abrufen von Mitgliedern einer Verzeichnisrolle in Azure AD mit PowerShell](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
+- [Abrufen von Mitgliedern einer Verzeichnisrolle in Azure AD mit PowerShell](/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
 
 **Azure Security Center-Überwachung**: Ja
 
@@ -128,7 +128,7 @@ Verwenden Sie Tools wie die Azure-Befehlszeilenschnittstelle, Azure PowerShell o
 
 Ermöglichen Sie Just-In-Time-Zugriff mithilfe von Azure Active Directory (Azure AD) Privileged Identity Management (PIM) und Azure Resource Manager. 
 
-- [Weitere Informationen zu Privileged Identity Management](/azure/active-directory/privileged-identity-management)
+- [Weitere Informationen zu Privileged Identity Management](../active-directory/privileged-identity-management/index.yml)
 
 **Azure Security Center-Überwachung**: Ja
 
@@ -150,7 +150,7 @@ Ermöglichen Sie Just-In-Time-Zugriff mithilfe von Azure Active Directory (Azure
 
 **Leitfaden**: Verwenden Sie eine Privileged Access Workstation (PAW) mit Azure AD Multi-Factor Authentication (MFA), die für die Anmeldung und Konfiguration Ihrer Azure Sentinel-fähigen Ressourcen berechtigt ist.
 
-- [Privileged Access Workstations](/windows-server/identity/securing-privileged-access/privileged-access-workstations)
+- [Privileged Access Workstations](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
 - [Planen einer cloudbasierten Azure AD Multi-Factor Authentication-Bereitstellung](../active-directory/authentication/howto-mfa-getstarted.md)
 
@@ -164,9 +164,9 @@ Ermöglichen Sie Just-In-Time-Zugriff mithilfe von Azure Active Directory (Azure
 
 Überprüfen Sie Azure AD-Risikoerkennungen auf Warnungen und Berichte zum Verhalten von Risikobenutzern, und ergreifen Sie entsprechende Maßnahmen.
 
-- [Bereitstellen von Azure AD Privileged Identity Management (PIM)](/azure/active-directory/privileged-identity-management/pim-deployment-plan)
+- [Bereitstellen von Azure AD Privileged Identity Management (PIM)](../active-directory/privileged-identity-management/pim-deployment-plan.md)
 
-- [Azure Active Directory-Risikoerkennungen](/azure/active-directory/reports-monitoring/concept-risk-events)
+- [Azure Active Directory-Risikoerkennungen](../active-directory/identity-protection/overview-identity-protection.md)
 
 **Azure Security Center-Überwachung**: Ja
 
@@ -198,7 +198,7 @@ Ermöglichen Sie Just-In-Time-Zugriff mithilfe von Azure Active Directory (Azure
 
 Verwenden Sie Zugriffsüberprüfungen für Azure-Identitäten, um Gruppenmitgliedschaften, den Zugriff auf Unternehmensanwendungen sowie Rollenzuweisungen effizient zu verwalten. Der Benutzerzugriff kann regelmäßig überprüft werden, um sicherzustellen, dass Benutzer genehmigten und unterbrechungsfreien Zugriff haben.
 
-- [Grundlegendes zur Azure AD-Berichterstellung](/azure/active-directory/reports-monitoring/)
+- [Grundlegendes zur Azure AD-Berichterstellung](../active-directory/reports-monitoring/index.yml)
 
 - [Verwenden von Zugriffsüberprüfungen für Azure-Identitäten](../active-directory/governance/access-reviews-overview.md)
 
@@ -211,7 +211,7 @@ Verwenden Sie Zugriffsüberprüfungen für Azure-Identitäten, um Gruppenmitglie
 **Leitfaden**: Implementieren Sie eine Integration für ein beliebiges SIEM-/Überwachungstool auf der Grundlage Ihres Zugriffs auf Quellen mit Protokollen im Zusammenhang mit Azure AD-Anmeldeaktivitäten (Azure Active Directory) sowie mit der Überwachung und mit Risikoereignissen.
 Optimieren Sie diesen Prozess, indem Sie Diagnoseeinstellungen für Azure AD-Benutzerkonten erstellen und die Überwachungs- und Anmeldeprotokolle an einen Log Analytics-Arbeitsbereich senden. Konfigurieren Sie die gewünschten Warnungen im Log Analytics-Arbeitsbereich. 
 
-- [Integrieren von Azure-Aktivitätsprotokollen in Azure Monitor](/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+- [Integrieren von Azure-Aktivitätsprotokollen in Azure Monitor](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -220,7 +220,7 @@ Optimieren Sie diesen Prozess, indem Sie Diagnoseeinstellungen für Azure AD-Be
 ### <a name="312-alert-on-account-login-behavior-deviation"></a>3.12: Warnung bei abweichendem Verhalten bei der Kontoanmeldung
 
 **Leitfaden**: Mit Azure AD-Funktionen (Azure Active Directory) zum Identitätsschutz können Sie automatische Reaktionen auf erkannte verdächtige Aktionen im Zusammenhang mit Benutzeridentitäten konfigurieren. Erfassen Sie bei Bedarf Daten zur weiteren Untersuchung in Azure Sentinel, um geschäftliche Anforderungen zu erfüllen.
-- [Anzeigen riskanter Azure AD-Anmeldungen](/azure/active-directory/reports-monitoring/concept-risky-sign-ins) 
+- [Anzeigen riskanter Azure AD-Anmeldungen](../active-directory/identity-protection/overview-identity-protection.md) 
 
 - [Konfigurieren und Aktivieren von Risikorichtlinien für den Identitätsschutz](../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md) 
 
@@ -242,7 +242,7 @@ Obwohl klassische Azure-Ressourcen über Resource Graph ermittelt werden können
 
 - [Erstellen von Abfragen mit Azure Resource Graph](../governance/resource-graph/first-query-portal.md)
 
-- [Anzeigen Ihrer Azure-Abonnements](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
+- [Anzeigen Ihrer Azure-Abonnements](/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
 
 - [Grundlegendes zu Azure RBAC](../role-based-access-control/overview.md)
 
@@ -254,7 +254,7 @@ Obwohl klassische Azure-Ressourcen über Resource Graph ermittelt werden können
 
 **Leitfaden**: Wenden Sie Tags auf Ihre Azure-Ressourcen an, die Metadaten erzeugen, um sie logisch in einer Taxonomie zu organisieren.
 
-- [Erstellen und Verwenden von Tags](/azure/azure-resource-manager/resource-group-using-tags)
+- [Erstellen und Verwenden von Tags](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -269,11 +269,11 @@ Verwenden Sie darüber hinaus Azure Policy, um Einschränkungen für die Ressour
 - Not allowed resource types (Unzulässige Ressourcentypen)
 - Zulässige Ressourcentypen
 
-- [Erstellen zusätzlicher Azure-Abonnements](/azure/billing/billing-create-subscription)
+- [Erstellen zusätzlicher Azure-Abonnements](../cost-management-billing/manage/create-subscription.md)
 
-- [Erstellen von Verwaltungsgruppen](/azure/governance/management-groups/create)
+- [Erstellen von Verwaltungsgruppen](../governance/management-groups/create-management-group-portal.md)
 
-- [Erstellen und Verwenden von Tags](/azure/azure-resource-manager/resource-group-using-tags)
+- [Erstellen und Verwenden von Tags](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -302,7 +302,7 @@ Verwenden Sie Azure Resource Graph, um Ressourcen in ihren Abonnements abzufrage
 
 - [Konfigurieren und Verwalten von Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-- [Ablehnen eines bestimmten Ressourcentyps mit Azure Policy](/azure/governance/policy/samples/not-allowed-resource-types)
+- [Ablehnen eines bestimmten Ressourcentyps mit Azure Policy](../governance/policy/samples/index.md)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -350,9 +350,9 @@ Verwenden Sie Azure Resource Graph, um Ressourcen in ihren Abonnements abzufrage
 
 **Leitfaden**: Wenn Sie benutzerdefinierte Azure Policy-Definitionen verwenden, nutzen Sie Azure DevOps oder Azure Repos, um Ihren Code sicher zu speichern und zu verwalten.
 
-- [Speichern von Code in Azure DevOps](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops)
+- [Speichern von Code in Azure DevOps](/azure/devops/repos/git/gitworkflow?view=azure-devops)
 
-- [Dokumentation zu Azure Repos](https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops)
+- [Dokumentation zu Azure Repos](/azure/devops/repos/index?view=azure-devops)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -408,7 +408,7 @@ Kennzeichnen Sie außerdem die Abonnements (z. B. Produktion, Nicht-Produktion)
 
 - [Sicherheitswarnungen in Azure Security Center](../security-center/security-center-alerts-overview.md) 
 
-- [Verwenden von Tags zum Organisieren von Azure-Ressourcen](/azure/azure-resource-manager/resource-group-using-tags)
+- [Verwenden von Tags zum Organisieren von Azure-Ressourcen](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center-Überwachung**: Ja
 
@@ -474,5 +474,5 @@ Kennzeichnen Sie außerdem die Abonnements (z. B. Produktion, Nicht-Produktion)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Lesen Sie den [Vergleichstest für die Azure-Sicherheit](/azure/security/benchmarks/overview).
-- Erfahren Sie mehr über [Azure-Sicherheitsbaselines](/azure/security/benchmarks/security-baselines-overview).
+- Lesen Sie den [Vergleichstest für die Azure-Sicherheit](../security/benchmarks/overview.md).
+- Erfahren Sie mehr über [Azure-Sicherheitsbaselines](../security/benchmarks/security-baselines-overview.md).

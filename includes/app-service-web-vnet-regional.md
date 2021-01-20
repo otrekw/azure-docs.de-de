@@ -4,12 +4,12 @@ ms.service: app-service-web
 ms.topic: include
 ms.date: 10/21/2020
 ms.author: ccompy
-ms.openlocfilehash: 57b2955f8cec059cd20d353eba31dc39ad992d50
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: 3f9dd35959980eef4e1bec550bf7e9f583cf30d2
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97506297"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98225250"
 ---
 Die Verwendung der regionalen VNET-Integration ermöglicht der App Zugriff auf Folgendes:
 
@@ -48,7 +48,6 @@ Es gibt einige Einschränkungen bei der Verwendung der VNET-Integration in VNETs
 * Für das Feature ist ein nicht genutztes Subnetz vom Typ /28 oder größer in einem Azure Resource Manager-VNet erforderlich.
 * Die App und das VNET müssen sich in derselben Region befinden.
 * Es ist nicht möglich, ein VNET mit einer integrierten App zu löschen. Entfernen Sie die Integration, bevor Sie das VNET löschen.
-* Sie können nur VNETs im selben Abonnement wie die App integrieren.
 * Sie können nur eine regionale VNET-Integration pro App Service-Plan verwenden. Mehrere Apps im gleichen App Service-Plan können das gleiche VNET verwenden.
 * Sie können das Abonnement einer App oder eines Plans nicht ändern, solange eine App mit regionaler VNET-Integration vorhanden ist.
 * Ihre App kann ohne Konfigurationsänderungen keine Adressen in Azure DNS Private Zones auflösen.

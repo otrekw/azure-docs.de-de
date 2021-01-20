@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 02/02/2016
 ms.author: genli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 669b8427f13efcc55a69bc7c970b6658a6719cd8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2e798f81102017b4d34c4b1b219a9f23035b0359
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86134712"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222835"
 ---
 # <a name="configure-private-ip-addresses-for-a-virtual-machine-classic-using-powershell"></a>Konfigurieren von privaten IP-Adressen für einen virtuellen Computer (klassisch) mithilfe von PowerShell
 
@@ -35,7 +35,7 @@ Dieser Artikel gilt für das klassische Bereitstellungsmodell. Sie können [eine
 
 [!INCLUDE [virtual-networks-static-ip-scenario-include](../../includes/virtual-networks-static-ip-scenario-include.md)]
 
-Die folgenden PowerShell-Beispielbefehle setzen voraus, dass bereits eine einfache Umgebung erstellt wurde. Wenn Sie die in diesem Dokument aufgeführten Befehle ohne Veränderungen ausführen möchten, erstellen Sie zunächst eine Testumgebung, wie unter [Erstellen eines VNets](virtual-networks-create-vnet-classic-netcfg-ps.md)beschrieben.
+Die folgenden PowerShell-Beispielbefehle setzen voraus, dass bereits eine einfache Umgebung erstellt wurde. Wenn Sie die in diesem Dokument aufgeführten Befehle ohne Veränderungen ausführen möchten, erstellen Sie zunächst eine Testumgebung, wie unter [Erstellen eines VNets](/previous-versions/azure/virtual-network/virtual-networks-create-vnet-classic-netcfg-ps)beschrieben.
 
 ## <a name="how-to-verify-if-a-specific-ip-address-is-available"></a>Überprüfen der Verfügbarkeit einer bestimmten IP-Adresse
 Wenn Sie beispielsweise überprüfen möchten, ob die IP-Adresse *192.168.1.101* in einem VNet namens *TestVnet* verfügbar ist, führen Sie den folgenden PowerShell-Befehl aus, und sehen Sie sich den Wert für *IsAvailable* an:
@@ -78,7 +78,7 @@ New-AzureVM          3b99a86d-84f8-04e5-888e-b6fc3c73c4b9 Succeeded
 ```
 
 ## <a name="how-to-retrieve-static-private-ip-address-information-for-a-vm"></a>Abrufen der Informationen zur statischen privaten IP-Adresse für einen virtuellen Computer
-Führen Sie den folgenden PowerShell-Befehl aus, und sehen Sie sich die Werte für *IpAddress*an, um Informationen zur statischen privaten IP-Adresse des virtuellen Computers zu erhalten, der mit dem obigen Skript erstellt wurde:
+Führen Sie den folgenden PowerShell-Befehl aus, und sehen Sie sich die Werte für *IpAddress* an, um Informationen zur statischen privaten IP-Adresse des virtuellen Computers zu erhalten, der mit dem obigen Skript erstellt wurde:
 
 ```azurepowershell
 Get-AzureVM -Name DNS01 -ServiceName TestService
@@ -154,7 +154,6 @@ Update-AzureVM       77d8cae2-87e6-0ead-9738-7c7dae9810cb Succeeded
 Es wird davon abgeraten, die private IP-Adresse, die dem virtuellen Azure-Computer innerhalb des Betriebssystems einer VM zugewiesen ist, statisch zuzuweisen, sofern dies nicht erforderlich ist. Wenn Sie die private IP-Adresse innerhalb des Betriebssystems manuell festlegen, sollten Sie sicherstellen, dass es sich um dieselbe Adresse wie die private IP-Adresse handelt, die dem virtuellen Azure-Computer zugewiesen ist. Andernfalls kann die Konnektivität mit dem virtuellen Computer verloren gehen. Die öffentliche IP-Adresse sollte niemals manuell einem virtuellen Azure-Computer innerhalb des Betriebssystems des virtuellen Computers zugewiesen werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Erfahren Sie mehr über [reservierte öffentliche IP-Adressen](virtual-networks-reserved-public-ip.md) .
-* Erfahren Sie mehr über [öffentliche IP-Adressen auf Instanzebene (ILPIP)](virtual-networks-instance-level-public-ip.md) .
-* Lesen Sie die Informationen zu [REST-APIs für reservierte IP-Adressen](https://msdn.microsoft.com/library/azure/dn722420.aspx).
-
+* Erfahren Sie mehr über [reservierte öffentliche IP-Adressen](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip) .
+* Erfahren Sie mehr über [öffentliche IP-Adressen auf Instanzebene (ILPIP)](/previous-versions/azure/virtual-network/virtual-networks-instance-level-public-ip) .
+* Lesen Sie die Informationen zu [REST-APIs für reservierte IP-Adressen](/previous-versions/azure/reference/dn722420(v=azure.100)).

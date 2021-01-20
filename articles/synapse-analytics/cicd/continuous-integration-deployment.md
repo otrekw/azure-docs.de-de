@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/20/2020
 ms.author: liud
 ms.reviewer: pimorano
-ms.openlocfilehash: d38c57a8c8504e1e03406f7cd8a0b61725cb0511
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.openlocfilehash: 7a665bf05167a6bdf20c7325c66a5d0e439aa7f1
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97008083"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98223685"
 ---
 # <a name="continuous-integration-and-delivery-for-azure-synapse-workspace"></a>Continuous Integration und Continuous Delivery für Azure Synapse-Arbeitsbereiche
 
@@ -21,7 +21,7 @@ ms.locfileid: "97008083"
 
 Continuous Integration (CI) ist der Prozess, mit dem das Erstellen und Testen von Code bei jedem Committen von Änderungen durch Teammitglieder an die Versionskontrolle automatisiert werden kann. Continuous Deployment (CD) bezeichnet das Erstellen, Testen, Konfigurieren und Bereitstellen aus mehreren Test- oder Stagingumgebungen in einer Produktionsumgebung.
 
-Bei Azure Synapse-Arbeitsbereichen dienen Continuous Integration und Continuous Delivery (CI/CD) dazu, sämtliche Entitäten aus einer Umgebung (Entwicklung, Test, Produktion) in eine andere zu verschieben. Um Ihren Arbeitsbereich auf einen anderen Arbeitsbereich höher zu stufen, müssen Sie zwei Schritte ausführen: Verwenden Sie [Azure Resource Manager-Vorlagen](https://docs.microsoft.com/azure/azure-resource-manager/templates/overview), um Arbeitsbereichsressourcen (Pools und Arbeitsbereich) zu erstellen oder zu aktualisieren, und migrieren Sie Artefakte (SQL-Skripts, Notebooks, Spark-Auftragsdefinitionen, Pipelines, Datasets, Datenflüsse usw.) mit Synapse-CI/CD-Tools zu Azure DevOps. 
+Bei Azure Synapse-Arbeitsbereichen dienen Continuous Integration und Continuous Delivery (CI/CD) dazu, sämtliche Entitäten aus einer Umgebung (Entwicklung, Test, Produktion) in eine andere zu verschieben. Um Ihren Arbeitsbereich auf einen anderen Arbeitsbereich höher zu stufen, müssen Sie zwei Schritte ausführen: Verwenden Sie [Azure Resource Manager-Vorlagen](../../azure-resource-manager/templates/overview.md), um Arbeitsbereichsressourcen (Pools und Arbeitsbereich) zu erstellen oder zu aktualisieren, und migrieren Sie Artefakte (SQL-Skripts, Notebooks, Spark-Auftragsdefinitionen, Pipelines, Datasets, Datenflüsse usw.) mit Synapse-CI/CD-Tools zu Azure DevOps. 
 
 In diesem Artikel wird die Verwendung von Azure-Releasepipelines zum Automatisieren der Bereitstellung eines Synapse-Arbeitsbereichs in mehreren Umgebungen beschrieben.
 
@@ -46,7 +46,7 @@ In diesem Artikel wird die Verwendung von Azure-Releasepipelines zum Automatisie
 
 1.  Geben Sie im Feld **Name der Stufe** den Namen der Umgebung ein.
 
-1.  Wählen Sie **Artefakt hinzufügen** und dann das Git-Repository aus, das bei der Entwicklung in Synapse Studio konfiguriert wurde. Wählen Sie das Git-Repository aus, das Sie zum Verwalten der ARM-Vorlage für Pools und den Arbeitsbereich verwendet haben. Wenn Sie als Quelle GitHub verwenden, müssen Sie eine Dienstverbindung für Ihr GitHub-Konto erstellen und Repositorys pullen. Weitere Informationen zur [Dienstverbindung](https://docs.microsoft.com/azure/devops/pipelines/library/service-endpoints) 
+1.  Wählen Sie **Artefakt hinzufügen** und dann das Git-Repository aus, das bei der Entwicklung in Synapse Studio konfiguriert wurde. Wählen Sie das Git-Repository aus, das Sie zum Verwalten der ARM-Vorlage für Pools und den Arbeitsbereich verwendet haben. Wenn Sie als Quelle GitHub verwenden, müssen Sie eine Dienstverbindung für Ihr GitHub-Konto erstellen und Repositorys pullen. Weitere Informationen zur [Dienstverbindung](/azure/devops/pipelines/library/service-endpoints) 
 
     ![Hinzufügen eines Branches für die Veröffentlichung](media/release-creation-github.png)
 
@@ -87,7 +87,7 @@ Fügen Sie eine Azure Resource Manager-Bereitstellungsaufgabe hinzu, um Ressourc
     ![Erteilen einer Berechtigung](media/release-creation-grant-permission.png)
 
  > [!WARNING]
-> Im vollständigen Bereitstellungsmodus werden Ressourcen, die in der Ressourcengruppe vorhanden, aber in der neuen Resource Manager-Vorlage nicht angegeben sind, **gelöscht**. Weitere Informationen finden Sie unter [Azure Resource Manager-Bereitstellungsmodi](https://docs.microsoft.com/azure/azure-resource-manager/templates/deployment-modes).
+> Im vollständigen Bereitstellungsmodus werden Ressourcen, die in der Ressourcengruppe vorhanden, aber in der neuen Resource Manager-Vorlage nicht angegeben sind, **gelöscht**. Weitere Informationen finden Sie unter [Azure Resource Manager-Bereitstellungsmodi](../../azure-resource-manager/templates/deployment-modes.md).
 
 ## <a name="set-up-a-stage-task-for-artifacts-deployment"></a>Einrichten einer Stagingaufgabe für die Artefaktbereitstellung 
 
@@ -122,7 +122,7 @@ Verwenden Sie die Erweiterung für die [Synapse-Arbeitsbereichsbereitstellung](h
 
 ## <a name="create-release-for-deployment"></a>Erstellen eines Release für die Bereitstellung 
 
-Nachdem alle Änderungen gespeichert wurden, können Sie **Release erstellen** auswählen, um manuell ein Release zu erstellen. Informationen zum Automatisieren der Erstellung von Releases finden Sie unter [Azure DevOps-Releasetrigger](https://docs.microsoft.com/azure/devops/pipelines/release/triggers).
+Nachdem alle Änderungen gespeichert wurden, können Sie **Release erstellen** auswählen, um manuell ein Release zu erstellen. Informationen zum Automatisieren der Erstellung von Releases finden Sie unter [Azure DevOps-Releasetrigger](/azure/devops/pipelines/release/triggers).
 
    ![Auswählen von „Release erstellen“](media/release-creation-manually.png)
 
@@ -133,6 +133,4 @@ Wenn Sie die Git-Integration mit Ihre, Synapse-Arbeitsbereich verwenden und übe
 -   **Git-Integration**. Konfigurieren Sie nur Ihren Synapse-Arbeitsbereich für die Entwicklung mit Git-Integration. Änderungen an den Test- und Produktionsarbeitsbereichen werden über CI/CD bereitgestellt, und eine Git-Integration wird hierfür nicht benötigt.
 -   **Bereiten Sie vor der Migration von Artefakten Pools vor.** Wenn Sie über SQL-Skripts oder Notebooks verfügen, die im Entwicklungsarbeitsbereich an Pools angefügt sind, werden in den anderen Umgebungen dieselben Poolnamen erwartet. 
 -   **Infrastruktur als Code (Infrastructure-as-Code, IaC).** Verwenden Sie für die Verwaltung von Infrastruktur (Netzwerken, VMs, Lastenausgleichsmodulen und der Verbindungstopologie) in einem beschreibenden Modell die gleiche Versionsverwaltung, die das DevOps-Team für den Quellcode nutzt. 
--   **Sonstige.** Weitere Informationen finden Sie unter [Bewährte Methoden für ADF-Artefakte](/azure/data-factory/continuous-integration-deployment#best-practices-for-cicd).
-
-
+-   **Sonstige.** Weitere Informationen finden Sie unter [Bewährte Methoden für ADF-Artefakte](../../data-factory/continuous-integration-deployment.md#best-practices-for-cicd).

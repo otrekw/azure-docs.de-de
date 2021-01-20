@@ -3,15 +3,15 @@ title: Überwachen von Key Vault mit Azure Monitor für Key Vault | Microsoft-Do
 description: Dieser Artikel enthält Informationen zu Azure Monitor für Key Vault-Instanzen.
 services: azure-monitor
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
+author: lgayhardt
+ms.author: lagayhar
 ms.date: 09/10/2020
-ms.openlocfilehash: d28138b251cf159b7cbc5cc6942bb287e57a95d7
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 41b058cf41aa1a8fb1def68851457385c8187823
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93088096"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98209881"
 ---
 # <a name="monitoring-your-key-vault-service-with-azure-monitor-for-key-vault"></a>Überwachen Ihres Schlüsseltresordiensts mit Azure Monitor für Key Vault
 Azure Monitor für Key Vault ermöglicht eine umfassende Überwachung Ihrer Schlüsseltresore. Zu diesem Zweck wird eine einheitliche Darstellung der Anforderungen, Leistung, Fehler und Wartezeit im Zusammenhang mit Key Vault bereitgestellt.
@@ -129,7 +129,7 @@ Sie können den Bereich der Übersichts- oder Fehlerarbeitsmappe für mehrere Ab
 2. Wählen Sie in der Arbeitsmappe **Übersicht** in der Befehlsleiste den Befehl **Bearbeiten** aus.
 3. Wählen Sie in der Dropdownliste **Abonnements** mindestens ein Abonnement aus, das Sie als Standard verwenden möchten. Beachten Sie, dass die Arbeitsmappe die Auswahl von bis zu 10 Abonnements unterstützt.
 4. Wählen Sie in der Dropdownliste **Schlüsseltresore** mindestens ein Konto aus, das Sie als Standard verwenden möchten. Beachten Sie, dass die Arbeitsmappe die Auswahl von bis zu insgesamt 200 Speicherkonten unterstützt.
-5. Wählen Sie in der Befehlsleiste den Befehl **Speichern unter** aus, um eine Kopie der Arbeitsmappe mit Ihren Anpassungen zu speichern. Klicken Sie dann auf **Bearbeitung abgeschlossen** , um zum Lesemodus zurückzukehren.
+5. Wählen Sie in der Befehlsleiste den Befehl **Speichern unter** aus, um eine Kopie der Arbeitsmappe mit Ihren Anpassungen zu speichern. Klicken Sie dann auf **Bearbeitung abgeschlossen**, um zum Lesemodus zurückzukehren.
 
 ## <a name="troubleshooting"></a>Problembehandlung
 

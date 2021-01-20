@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 04/21/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 14c71d5888aefc11485c03935c5d8c7ff7d17045
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 7462c78ecad718c30980a98ff7659a2a4d2ea020
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95995878"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222155"
 ---
 # <a name="quickstart-connect-to-azure-synapse-link-for-azure-cosmos-db"></a>Schnellstart: Herstellen einer Verbindung mit Azure Synapse Link für Azure Cosmos DB
 
@@ -24,8 +24,8 @@ In diesem Artikel wird beschrieben, wie Sie über Azure Synapse Analytics Studio
 
 Sie benötigen Folgendes, um eine Verbindung zwischen einem Azure Cosmos DB-Konto und Ihrem Arbeitsbereich herstellen zu können:
 
-* Ein vorhandenes Azure Cosmos DB-Konto. Erstellen Sie alternativ anhand [dieser Schnellstartanleitung](https://docs.microsoft.com/azure/cosmos-db/how-to-manage-database-account) ein neues Konto.
-* Einen vorhandenen Synapse-Arbeitsbereich. Erstellen Sie alternativ anhand [dieser Schnellstartanleitung](https://docs.microsoft.com/azure/synapse-analytics/quickstart-create-workspace) einen neuen Arbeitsbereich. 
+* Ein vorhandenes Azure Cosmos DB-Konto. Erstellen Sie alternativ anhand [dieser Schnellstartanleitung](../cosmos-db/how-to-manage-database-account.md) ein neues Konto.
+* Einen vorhandenen Synapse-Arbeitsbereich. Erstellen Sie alternativ anhand [dieser Schnellstartanleitung](./quickstart-create-workspace.md) einen neuen Arbeitsbereich. 
 
 ## <a name="enable-azure-cosmos-db-analytical-store"></a>Aktivieren des Azure Cosmos DB-Analysespeichers
 

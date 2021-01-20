@@ -3,17 +3,17 @@ title: Netzwerksicherheit für Azure Relay
 description: In diesem Artikel wird beschrieben, wie IP-Firewallregeln und private Endpunkte mit Azure Relay verwendet werden.
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 608224f42fac8cd2d8ff06ab84989b1f675d418c
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 735a0b7dc303ad63cb301151e3e14e4488c856b1
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98134465"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98217242"
 ---
 # <a name="network-security-for-azure-relay"></a>Netzwerksicherheit für Azure Relay 
 In diesem Artikel wird beschrieben, wie Sie die folgenden Sicherheitsfunktionen mit Azure Relay verwenden: 
 
-- IP-Firewallregeln (Vorschau)
+- IP-Firewallregeln
 - Private Endpunkte 
 
 > [!NOTE]
@@ -28,9 +28,6 @@ Diese Funktion ist in Szenarien hilfreich, in denen Azure Relay nur von bestimmt
 Die IP-Firewallregeln werden auf der Relaynamespaceebene angewendet. Daher gelten die Regeln für alle Clientverbindungen mit einem beliebigen unterstützten Protokoll. Jeder Verbindungsversuch von einer IP-Adresse, die nicht mit einer zulässigen IP-Regel im Relaynamespace übereinstimmt, wird als nicht autorisiert abgelehnt. In der Antwort wird die IP-Regel nicht erwähnt. IP-Filterregeln werden der Reihe nach angewendet, und die erste Regel, die eine Übereinstimmung mit der IP-Adresse ergibt, bestimmt die Aktion (Zulassen oder Ablehnen).
 
 Weitere Informationen finden Sie unter [Konfigurieren einer IP-Firewall für einen Relaynamespace](ip-firewall-virtual-networks.md).
-
-> [!NOTE]
-> Diese Funktion steht derzeit als **Vorschau** zur Verfügung. 
 
 ## <a name="private-endpoints"></a>Private Endpunkte
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/15/2019
 ms.author: genli
-ms.openlocfilehash: 03c1badf984fb150631c157f3fdc07856b60e965
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 1e304bc30a48c92fdff576723dae6af1e26ef3da
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93088896"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222580"
 ---
 # <a name="what-is-ip-address-1686312916"></a>Was ist die IP-Adresse 168.63.129.16?
 
@@ -37,7 +37,7 @@ Die IP-Adresse 168.63.129.16 ist eine virtuelle öffentliche IP-Adresse, die ver
 
 ## <a name="scope-of-ip-address-1686312916"></a>Bereich der IP-Adresse 168.63.129.16
 
-Die öffentliche IP-Adresse 168.63.129.16 wird in allen Regionen und allen nationalen Clouds verwendet. Diese spezielle öffentliche IP-Adresse ist Eigentum von Microsoft und wird nicht geändert. Wir empfehlen Ihnen, diese IP-Adresse in lokalen Firewallrichtlinien (auf der VM, in ausgehender Richtung) zuzulassen. Die Kommunikation zwischen dieser speziellen IP-Adresse und den Ressourcen ist sicher, da nur die interne Azure-Plattform eine Nachricht von dieser IP-Adresse beziehen kann. Wenn diese Adresse gesperrt ist, kann es in verschiedenen Szenarien zu unerwartetem Verhalten kommen. 168.63.129.16 ist eine [virtuelle IP des Hostknotens](../virtual-network/security-overview.md#azure-platform-considerations) und unterliegt daher keinen benutzerdefinierten Routen.
+Die öffentliche IP-Adresse 168.63.129.16 wird in allen Regionen und allen nationalen Clouds verwendet. Diese spezielle öffentliche IP-Adresse ist Eigentum von Microsoft und wird nicht geändert. Wir empfehlen Ihnen, diese IP-Adresse in lokalen Firewallrichtlinien (auf der VM, in ausgehender Richtung) zuzulassen. Die Kommunikation zwischen dieser speziellen IP-Adresse und den Ressourcen ist sicher, da nur die interne Azure-Plattform eine Nachricht von dieser IP-Adresse beziehen kann. Wenn diese Adresse gesperrt ist, kann es in verschiedenen Szenarien zu unerwartetem Verhalten kommen. 168.63.129.16 ist eine [virtuelle IP des Hostknotens](./network-security-groups-overview.md#azure-platform-considerations) und unterliegt daher keinen benutzerdefinierten Routen.
 
 - Für den VM-Agent ist ausgehende Kommunikation über die Ports 80/tcp und 32526/tcp mit dem WireServer (168.63.129.16) erforderlich. Diese Ports müssen in der lokalen Firewall auf dem virtuellen Computer geöffnet sein. Die Kommunikation mit 168.63.129.16 über diese Ports unterliegt nicht den konfigurierten Netzwerksicherheitsgruppen.
 
@@ -49,5 +49,5 @@ Die öffentliche IP-Adresse 168.63.129.16 wird in allen Regionen und allen natio
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Sicherheitsgruppen](security-overview.md)
+- [Sicherheitsgruppen](./network-security-groups-overview.md)
 - [Erstellen, Ändern oder Löschen einer Netzwerksicherheitsgruppe](manage-network-security-group.md)

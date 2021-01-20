@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 3/2/2020
 ms.author: rohink
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 340ca07ba605359f71c1dbf23ca38abd75d84416
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: bbaf2fb99f1268a752fab4322078b0566a054d30
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96937048"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222852"
 ---
 # <a name="name-resolution-for-resources-in-azure-virtual-networks"></a>Namensauflösung für Ressourcen in virtuellen Azure-Netzwerken
 
@@ -57,7 +57,7 @@ Die von Azure bereitgestellte Namensauflösung bietet nur grundlegende autoritat
 Zusammen mit der Auflösung des öffentlichen DNS-Namens bietet Azure die Auflösung interner Namen für virtuelle Computer und Rolleninstanzen, die sich innerhalb des gleichen virtuellen Netzwerks oder Clouddiensts befinden. Virtuelle Computer und Instanzen in einem Clouddienst verwenden das gleiche DNS-Suffix gemeinsam, sodass der Hostname allein ausreichend ist. In virtuellen Netzwerken, die mit dem klassischen Bereitstellungsmodell bereitgestellt werden, weisen verschiedene Clouddienste jedoch unterschiedliche DNS-Suffixe auf. In diesem Fall benötigen Sie den FQDN zum Auflösen von Namen zwischen verschiedenen Clouddiensten. In virtuellen Netzwerken, die mit dem Azure Resource Manager-Bereitstellungsmodell bereitgestellt werden, ist das DNS-Suffix aller virtuellen Computer in einem virtuellen Netzwerk einheitlich, sodass der FQDN nicht benötigt wird. DNS-Namen können virtuellen Computern und Netzwerkschnittstellen zugewiesen werden. Obwohl für die von Azure durchgeführte Namensauflösung keine Konfiguration erforderlich ist, ist sie nicht für alle Bereitstellungsszenarien die beste Lösung (siehe die vorherige Tabelle).
 
 > [!NOTE]
-> Bei Verwendung von Clouddienstweb- und Workerrollen können Sie auf die internen IP-Adressen von Rolleninstanzen über die REST-API für die Azure-Dienstverwaltung zugreifen. Weitere Informationen finden Sie unter [Referenz zur REST-API der Dienstverwaltung](https://msdn.microsoft.com/library/azure/ee460799.aspx). Die Adresse basiert auf dem Rollennamen und der Instanznummer. 
+> Bei Verwendung von Clouddienstweb- und Workerrollen können Sie auf die internen IP-Adressen von Rolleninstanzen über die REST-API für die Azure-Dienstverwaltung zugreifen. Weitere Informationen finden Sie unter [Referenz zur REST-API der Dienstverwaltung](/previous-versions/azure/ee460799(v=azure.100)). Die Adresse basiert auf dem Rollennamen und der Instanznummer. 
 >
 
 ### <a name="features"></a>Features
@@ -88,7 +88,7 @@ Reverse-DNS wird in allen auf Azure Resource Manager basierenden virtuellen Netz
 * Forward-Lookup für FQDNs im Format \[VM-Name\].internal.cloudapp.net wird in die IP-Adresse aufgelöst, die dem virtuellen Computer zugewiesen ist.
 * Wenn das virtuelle Netzwerk mit [privaten Azure DNS-Zonen](../dns/private-dns-overview.md) als virtuelles Registrierungsnetzwerk verknüpft ist, geben die Reverse-DNS-Abfragen zwei Einträge zurück. Ein Eintrag hat das Format „\[VM-Name\].[Name der privaten Zone]“, der andere das Format „\[VM-Name\].internal.cloudapp.net“.
 * Reverse-DNS-Lookup ist auf ein bestimmtes virtuelles Netzwerk begrenzt, auch bei Peerings mit anderen virtuellen Netzwerken. Reverse-DNS-Abfragen (PTR-Abfragen) für IP-Adressen virtueller Computer im Peering mit virtuellen Netzwerken geben NXDOMAIN zurück.
-* Wenn Sie die Reverse-DNS-Funktion in einem virtuellen Netzwerk deaktivieren möchten, können Sie dazu mit [Azure DNS Private Zones](../dns/private-dns-overview.md) eine Reverse-Lookup-Zone erstellen und diese mit Ihrem virtuellen Netzwerk verknüpfen. Wenn der IP-Adressraum des virtuellen Netzwerks z. B. 10.20.0.0/16 lautet, können Sie die leere private DNS-Zone 20.10.in-addr.arpa erstellen und diese mit dem virtuellen Netzwerk verknüpfen. Beim Verknüpfen der Zone mit dem virtuellen Netzwerk sollten Sie die automatische Registrierung für den Link deaktivieren. Diese Zone setzt die Reverse-Lookup-Standardzonen für das virtuelle Netzwerk außer Kraft, und da diese Zone leer ist, erhalten Sie für Ihre Reverse-DNS-Abfragen NXDOMAIN. Weitere Informationen zum Erstellen einer privaten DNS-Zone und Verknüpfen der Zone mit einem virtuellen Netzwerk finden Sie in unserem [Schnellstart](https://docs.microsoft.com/azure/dns/private-dns-getstarted-portal).
+* Wenn Sie die Reverse-DNS-Funktion in einem virtuellen Netzwerk deaktivieren möchten, können Sie dazu mit [Azure DNS Private Zones](../dns/private-dns-overview.md) eine Reverse-Lookup-Zone erstellen und diese mit Ihrem virtuellen Netzwerk verknüpfen. Wenn der IP-Adressraum des virtuellen Netzwerks z. B. 10.20.0.0/16 lautet, können Sie die leere private DNS-Zone 20.10.in-addr.arpa erstellen und diese mit dem virtuellen Netzwerk verknüpfen. Beim Verknüpfen der Zone mit dem virtuellen Netzwerk sollten Sie die automatische Registrierung für den Link deaktivieren. Diese Zone setzt die Reverse-Lookup-Standardzonen für das virtuelle Netzwerk außer Kraft, und da diese Zone leer ist, erhalten Sie für Ihre Reverse-DNS-Abfragen NXDOMAIN. Weitere Informationen zum Erstellen einer privaten DNS-Zone und Verknüpfen der Zone mit einem virtuellen Netzwerk finden Sie in unserem [Schnellstart](../dns/private-dns-getstarted-portal.md).
 
 > [!NOTE]
 > Wenn Sie möchten, dass sich Reverse-DNS-Lookup über ein virtuelles Netzwerk erstreckt, können Sie eine Reverse-Lookup-Zone (in-addr.arpa [private Azure DNS-Zonen](../dns/private-dns-overview.md)) erstellen und diese mit mehreren virtuellen Netzwerken verknüpfen. Sie müssen jedoch die Reverse-DNS-Einträge für die virtuellen Computer manuell verwalten.
@@ -164,7 +164,7 @@ DNS-Server in einem virtuellen Netzwerk können DNS-Abfragen an die rekursiven R
 Durch die DNS-Weiterleitung wird außerdem eine DNS-Auflösung zwischen virtuellen Netzwerken ermöglicht, sodass die lokalen Computer von Azure bereitgestellte Hostnamen auflösen können. Um den Hostnamen eines virtuellen Computers aufzulösen, muss sich die DNS-Server-VM im selben virtuellen Netzwerk befinden und zur Weiterleitung von Abfragen für Hostnamen an Azure konfiguriert sein. Da jedes virtuelle Netzwerk ein eigenes DNS-Suffix verwendet, können Sie mithilfe von Regeln für die bedingte Weiterleitung DNS-Abfragen zur Auflösung an das richtige virtuelle Netzwerk senden. In der folgenden Abbildung sind zwei virtuelle Netzwerke und ein lokales Netzwerk dargestellt, in dem eine DNS-Auflösung zwischen virtuellen Netzwerken mithilfe dieser Methode ausgeführt wird. Ein Beispiel für eine DNS-Weiterleitung steht im [Azure-Katalog mit Schnellstartvorlagen](https://azure.microsoft.com/documentation/templates/301-dns-forwarder/) und auf [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/301-dns-forwarder) zur Verfügung.
 
 > [!NOTE]
-> Eine Rolleninstanz kann die Namensauflösung von virtuellen Computern innerhalb des gleichen virtuellen Netzwerks ausführen. Diese erfolgt mithilfe des FQDN, der aus dem Hostnamen des virtuellen Computers und dem DNS-Suffix **internal.cloudapp.net** besteht. In diesem Fall ist die Namensauflösung jedoch nur erfolgreich, wenn für die Rolleninstanz der Namen des virtuellen Computers im [Rollenschema (CSCFG-Datei)](https://msdn.microsoft.com/library/azure/jj156212.aspx) definiert ist.
+> Eine Rolleninstanz kann die Namensauflösung von virtuellen Computern innerhalb des gleichen virtuellen Netzwerks ausführen. Diese erfolgt mithilfe des FQDN, der aus dem Hostnamen des virtuellen Computers und dem DNS-Suffix **internal.cloudapp.net** besteht. In diesem Fall ist die Namensauflösung jedoch nur erfolgreich, wenn für die Rolleninstanz der Namen des virtuellen Computers im [Rollenschema (CSCFG-Datei)](/previous-versions/azure/reference/jj156212(v=azure.100)) definiert ist.
 > `<Role name="<role-name>" vmName="<vm-name>">`
 >
 > Rolleninstanzen, die eine Namensauflösung virtueller Computer in einem anderen virtuellen Netzwerk ausführen müssen (FQDN mit dem Suffix **internal.cloudapp.net**), müssen diese mit der in diesem Abschnitt beschriebenen Methode vornehmen (über benutzerdefinierte DNS-Server, die für eine Weiterleitung zwischen den beiden virtuellen Netzwerken sorgen).
@@ -176,8 +176,8 @@ Wenn Sie die von Azure bereitgestellte Namensauflösung verwenden, stellt Azure 
 
 Bei Bedarf kann das interne DNS-Suffix mithilfe von PowerShell oder der API ermittelt werden:
 
-* Für virtuelle Netzwerke in Azure Resource Manager-Bereitstellungsmodellen ist das Suffix über die [Netzwerkschnittstellen-REST-API](https://docs.microsoft.com/rest/api/virtualnetwork/networkinterfaces), das PowerShell-Cmdlet [Get-AzNetworkInterface](/powershell/module/az.network/get-aznetworkinterface) und den Azure CLI-Befehl [az network nic show](/cli/azure/network/nic#az-network-nic-show) verfügbar.
-* In klassischen Bereitstellungsmodellen steht das Suffix über einen Aufruf von [Get Deployment API](https://msdn.microsoft.com/library/azure/ee460804.aspx) oder das Cmdlet [Get-AzureVM -Debug](/powershell/module/servicemanagement/azure.service/get-azurevm) zur Verfügung.
+* Für virtuelle Netzwerke in Azure Resource Manager-Bereitstellungsmodellen ist das Suffix über die [Netzwerkschnittstellen-REST-API](/rest/api/virtualnetwork/networkinterfaces), das PowerShell-Cmdlet [Get-AzNetworkInterface](/powershell/module/az.network/get-aznetworkinterface) und den Azure CLI-Befehl [az network nic show](/cli/azure/network/nic#az-network-nic-show) verfügbar.
+* In klassischen Bereitstellungsmodellen steht das Suffix über einen Aufruf von [Get Deployment API](/previous-versions/azure/reference/ee460804(v=azure.100)) oder das Cmdlet [Get-AzureVM -Debug](/powershell/module/servicemanagement/azure.service/get-azurevm) zur Verfügung.
 
 Wenn eine Abfrageweiterleitung an Azure nicht Ihren Anforderungen entspricht, sollten Sie eine eigene DNS-Lösung bereitstellen. Die DNS-Lösung muss Folgendes leisten:
 
@@ -215,7 +215,7 @@ Wenn Sie das Azure Resource Manager-Bereitstellungsmodell verwenden, können Sie
 > [!NOTE]
 > Wenn Sie sich für den benutzerdefinierten DNS-Server für Ihr virtuelles Netzwerk entscheiden, müssen Sie mindestens eine DNS-Server-IP-Adresse angeben; andernfalls ignoriert das virtuelle Netzwerk die Konfiguration und verwendet stattdessen das von Azure bereitgestellte DNS.
 
-Wenn Sie das klassische Bereitstellungsmodell verwenden, können Sie DNS-Server für das virtuelle Netzwerk im Portal oder in der [Netzwerkkonfigurationsdatei](https://msdn.microsoft.com/library/azure/jj157100) angeben. Für Clouddienste können Sie DNS-Server über die [Dienstkonfigurationsdatei](https://msdn.microsoft.com/library/azure/ee758710) oder mithilfe von PowerShell mit [New-AzureVM](/powershell/module/servicemanagement/azure.service/new-azurevm) angegeben.
+Wenn Sie das klassische Bereitstellungsmodell verwenden, können Sie DNS-Server für das virtuelle Netzwerk im Portal oder in der [Netzwerkkonfigurationsdatei](/previous-versions/azure/reference/jj157100(v=azure.100)) angeben. Für Clouddienste können Sie DNS-Server über die [Dienstkonfigurationsdatei](/previous-versions/azure/reference/ee758710(v=azure.100)) oder mithilfe von PowerShell mit [New-AzureVM](/powershell/module/servicemanagement/azure.service/new-azurevm) angegeben.
 
 > [!NOTE]
 > Wenn Sie die DNS-Einstellungen für ein virtuelles Netzwerk oder einen virtuellen Computer ändern, das bzw. der schon bereitgestellt wurde, müssen Sie für alle betroffenen virtuellen Computer im virtuellen Netzwerk die DHCP-Leasedauer verlängern, damit die neuen DNS-Einstellungen wirksam werden. Bei virtuellen Computern, auf denen das Windows-Betriebssystem ausgeführt wird, können Sie dazu `ipconfig /renew` direkt auf dem virtuellen Computer eingeben. Die Schritte unterscheiden sich je nach Betriebssystem. Weitere Informationen finden Sie in der jeweiligen Dokumentation für Ihren Betriebssystemtyp.
@@ -229,6 +229,6 @@ Azure Resource Manager-Bereitstellungsmodell:
 
 Klassisches Bereitstellungsmodell:
 
-* [Azure-Dienstkonfigurationsschema (.cscfg-Datei)](https://msdn.microsoft.com/library/azure/ee758710)
-* [Konfigurationsschema für virtuelle Netzwerke](https://msdn.microsoft.com/library/azure/jj157100)
-* [Konfigurieren eines virtuellen Netzwerks mithilfe einer Netzwerkkonfigurationsdatei](virtual-networks-using-network-configuration-file.md)
+* [Azure-Dienstkonfigurationsschema (.cscfg-Datei)](/previous-versions/azure/reference/ee758710(v=azure.100))
+* [Konfigurationsschema für virtuelle Netzwerke](/previous-versions/azure/reference/jj157100(v=azure.100))
+* [Konfigurieren eines virtuellen Netzwerks mithilfe einer Netzwerkkonfigurationsdatei](/previous-versions/azure/virtual-network/virtual-networks-using-network-configuration-file)

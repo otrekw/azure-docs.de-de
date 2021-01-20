@@ -15,18 +15,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/29/2020
 ms.author: allensu
-ms.openlocfilehash: 53dd6d2dda762b3cbf53f4aaec6cd3692a9656e9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3d98107075c215c0a00bc2035325a6ad8bf5bfc5
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87432587"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222427"
 ---
 # <a name="public-ip-address-prefix"></a>Präfix für öffentliche IP-Adressen
 
 Ein Präfix für öffentliche IP-Adressen ist ein reservierter Bereich von IP-Adressen in Azure. Azure weist Ihrem Abonnement einen zusammenhängenden Adressbereich zu, der auf der Anzahl der von Ihnen angegebenen IP-Adressen basiert. 
 
-Wenn Sie mit öffentlichen IP-Adressen nicht vertraut sind, finden Sie weitere Informationen unter [Öffentliche IP-Adressen](virtual-network-ip-addresses-overview-arm.md#public-ip-addresses).
+Wenn Sie mit öffentlichen IP-Adressen nicht vertraut sind, finden Sie weitere Informationen unter [Öffentliche IP-Adressen](./public-ip-addresses.md#public-ip-addresses).
 
 Öffentliche IP-Adressen werden aus einem Pool mit Adressen in jeder Azure-Region zugewiesen. Sie können die Liste der Bereiche [herunterladen](https://www.microsoft.com/download/details.aspx?id=56519), die Azure in jeder Region verwendet. 40.121.0.0/16 ist beispielsweise einer von mehr als 100 Bereichen, die Azure in der Region „USA, Osten“ verwendet. Der Bereich umfasst nutzbare Adressen von 40.121.0.1 bis 40.121.255.254.
 
@@ -68,9 +68,9 @@ Sie können die folgenden Ressourcen einer statischen öffentlichen IP-Adresse a
 ## <a name="constraints"></a>Einschränkungen
 
 - Sie können die IP-Adressen für das Präfix nicht angeben. Azure ordnet die IP-Adressen für das Präfix basierend auf der von Ihnen angegebenen Größe zu.
-- Sie können standardmäßig ein Präfix von bis zu 16 IP-Adressen oder ein /28 erstellen. Weitere Informationen finden Sie unter den [Anforderungen zum Erhöhen der Netzwerkgrenzwerte](https://docs.microsoft.com/azure/azure-portal/supportability/networking-quota-requests) und den [Einschränkungen bei Azure](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits).
+- Sie können standardmäßig ein Präfix von bis zu 16 IP-Adressen oder ein /28 erstellen. Weitere Informationen finden Sie unter den [Anforderungen zum Erhöhen der Netzwerkgrenzwerte](../azure-portal/supportability/networking-quota-requests.md) und den [Einschränkungen bei Azure](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits).
 - Nachdem Sie das Präfix erstellt haben, können Sie den Bereich nicht mehr ändern.
-- Nur statische öffentliche IP-Adressen, die mit der Standard-SKU erstellt wurden, können aus dem Bereich des Präfix zugewiesen werden. Weitere Informationen zu SKUs für öffentliche IP-Adressen finden Sie unter [Öffentliche IP-Adressen](virtual-network-ip-addresses-overview-arm.md#public-ip-addresses).
+- Nur statische öffentliche IP-Adressen, die mit der Standard-SKU erstellt wurden, können aus dem Bereich des Präfix zugewiesen werden. Weitere Informationen zu SKUs für öffentliche IP-Adressen finden Sie unter [Öffentliche IP-Adressen](./public-ip-addresses.md#public-ip-addresses).
 - Adressen aus dem Bereich können nur Azure Resource Manager-Ressourcen zugewiesen werden. Adressen können keinen Ressourcen im klassischen Bereitstellungsmodell zugewiesen werden.
 - Alle aus dem Präfix erstellten öffentlichen IP-Adressen müssen sich in der gleichen Azure-Region und im gleichen Azure-Abonnement wie das Präfix befinden. Die Adressen müssen Ressourcen in der gleichen Region und im gleichen Abonnement zugewiesen werden.
 - Sie können ein Präfix nicht löschen, wenn darin befindliche IP-Adressen öffentlichen IP-Adressressourcen zugewiesen sind, die einer Ressource zugeordnet sind. Heben Sie zuerst die Zuordnung aller öffentlichen IP-Adressressourcen auf, denen IP-Adressen aus dem Präfix zugewiesen sind.

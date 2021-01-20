@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 06/25/2020
 ms.author: osamaz
-ms.openlocfilehash: e13dc868512dba15c5b335c1774aaa540eef8157
-ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
+ms.openlocfilehash: 9a22e58e4407897fb9418cae0ba9f32408cda8e1
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97861415"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98234204"
 ---
 # <a name="azure-for-network-engineers"></a>Azure für Netzwerktechniker
 Als herkömmlicher Netzwerktechniker sind Sie mit physischen Ressourcen wie Routern, Switches, Kabeln und Firewalls zum Erstellen einer Infrastruktur umgegangen. Auf logischer Ebene haben Sie virtuelles LAN (VLAN), STP (Spanning Tree Protocol) und Routingprotokolle (RIP, OSPF, BGP) konfiguriert. Sie haben Ihr Netzwerk mithilfe von Verwaltungstools und einer Befehlszeilenschnittstelle verwaltet. Netzwerke in der Cloud unterscheiden sich darin, dass die Netzwerkendpunkte logisch sind und Routingprotokolle nur minimal zum Einsatz kommen. In Azure konfigurieren und verwalten Sie Ressourcen mit der Azure Resource Manager-API, der Azure-Befehlszeilenschnittstelle und PowerShell. Sie beginnen Ihre Netzwerkjourney, indem Sie sich über grundlegende Mandanten der Azure-Netzwerkstruktur informieren. 
@@ -88,7 +88,6 @@ Erfahren Sie mehr über das [Routing in virtuellen Netzwerken][vnet-routing].
 Erfahren Sie mehr über [Netzwerksicherheitsgruppen][network-security].
 
 <!--Link References-->
-[VNet]: https://docs.microsoft.com/azure/virtual-network/tutorial-connect-virtual-networks-portal
-[vnet-routing]: https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview
-[network-security]: https://docs.microsoft.com/azure/virtual-network/security-overview
-
+[VNet]: ../virtual-network/tutorial-connect-virtual-networks-portal.md
+[vnet-routing]: ../virtual-network/virtual-networks-udr-overview.md
+[network-security]: ../virtual-network/network-security-groups-overview.md

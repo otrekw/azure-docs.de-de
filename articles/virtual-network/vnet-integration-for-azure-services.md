@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 12/01/2020
 ms.author: kumud
-ms.openlocfilehash: a25d6d0d1990682287b5962a7bd93a0c525db133
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: a29454f09268406511730c63dcc3bc3063b909c6
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97882363"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98218653"
 ---
 # <a name="integrate-azure-services-with-virtual-networks-for-network-isolation"></a>Integrieren von Azure-Diensten mit virtuellen Netzwerken zur Netzwerkisolation
 
@@ -66,7 +66,7 @@ Weitere Informationen finden Sie unter [Dienstendpunkte im virtuellen Netzwerk](
 
 ## <a name="service-tags"></a>Diensttags
 
-Ein Diensttag steht für eine Gruppe von IP-Adresspräfixen eines bestimmten Azure-Diensts. Mithilfe von Diensttags können Sie Netzwerkzugriffssteuerungen in [Netzwerksicherheitsgruppen](https://docs.microsoft.com/azure/virtual-network/security-overview#security-rules) oder in der [Azure Firewall](https://docs.microsoft.com/azure/firewall/service-tags) definieren. Wenn Sie den Diensttagnamen (beispielsweise „AzureEventGrid“) im entsprechenden Quell- oder Zielfeld einer Regel angeben, können Sie den Datenverkehr für den entsprechenden Dienst zulassen oder verweigern.
+Ein Diensttag steht für eine Gruppe von IP-Adresspräfixen eines bestimmten Azure-Diensts. Mithilfe von Diensttags können Sie Netzwerkzugriffssteuerungen in [Netzwerksicherheitsgruppen](./network-security-groups-overview.md#security-rules) oder in der [Azure Firewall](../firewall/service-tags.md) definieren. Wenn Sie den Diensttagnamen (beispielsweise „AzureEventGrid“) im entsprechenden Quell- oder Zielfeld einer Regel angeben, können Sie den Datenverkehr für den entsprechenden Dienst zulassen oder verweigern.
 
 ![Zulassen oder Verweigern von Datenverkehr mithilfe von Diensttags](./media/network-isolation/service-tags.png)
 
@@ -78,4 +78,4 @@ Weitere Informationen zu Diensttags und Azure-Diensten, die diese unterstützen,
 
 - Erfahren Sie, wie Sie Ihre [App in ein Azure-Netzwerk integrieren können](../app-service/web-sites-integrate-with-vnet.md).
 - Erfahren Sie, wie Sie den [Zugriff auf Ressourcen mithilfe von Diensttags einschränken](tutorial-restrict-network-access-to-resources.md) können.
-- Erfahren Sie, wie Sie eine [private Verbindung mit einem Azure Cosmos-Konto mithilfe von Azure Private Link herstellen](../private-link/create-private-endpoint-cosmosdb-portal.md).
+- Erfahren Sie, wie Sie eine [private Verbindung mit einem Azure Cosmos-Konto mithilfe von Azure Private Link herstellen](../private-link/tutorial-private-endpoint-cosmosdb-portal.md).

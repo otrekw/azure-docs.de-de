@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 09/10/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 44e9712466734c0e42fd2bea05c5110cbff6924b
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 308d30118349e020d3b407243f106d9ad8368118
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94964795"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98198984"
 ---
 # <a name="additional-network-requirements-for-large-instances"></a>Zusätzliche Netzwerkanforderungen für große Instanzen
 
@@ -31,7 +31,7 @@ Verwenden Sie zum Hinzufügen weiterer IP-Adressen oder Subnetze das Azure-Porta
 
 Fügen Sie dem Adressraum des virtuellen Netzwerks den neuen IP-Adressbereich als neuen Bereich hinzu, statt einen neuen aggregierten Bereich zu erstellen. Übermitteln Sie diese Änderung an Microsoft. Dadurch können Sie über diesen neuen IP-Adressbereich eine Verbindung mit den großen HANA-Instanzeinheiten auf Ihrem Client herstellen. Sie können eine Azure-Supportanfrage öffnen, um den neuen Adressraum des virtuellen Netzwerks hinzufügen zu lassen. Führen Sie nach Erhalt einer Bestätigung die nächsten Schritte aus.
 
-Informationen zum Erstellen eines weiteren Subnetzes im Azure-Portal finden Sie unter [Erstellen eines virtuellen Netzwerks im Azure-Portal](../../../virtual-network/manage-virtual-network.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#create-a-virtual-network). Informationen zur Erstellung mithilfe von PowerShell finden Sie unter [Erstellen eines virtuellen Netzwerks mithilfe von PowerShell](../../../virtual-network/manage-virtual-network.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#create-a-virtual-network).
+Informationen zum Erstellen eines weiteren Subnetzes im Azure-Portal finden Sie unter [Erstellen eines virtuellen Netzwerks im Azure-Portal](../../../virtual-network/manage-virtual-network.md#create-a-virtual-network). Informationen zur Erstellung mithilfe von PowerShell finden Sie unter [Erstellen eines virtuellen Netzwerks mithilfe von PowerShell](../../../virtual-network/manage-virtual-network.md#create-a-virtual-network).
 
 ## <a name="add-virtual-networks"></a>Hinzufügen virtueller Netzwerke
 
@@ -51,11 +51,11 @@ Nachdem die neue Leitung erstellt wurde und die Konfiguration von SAP HANA in de
 
 Zum Entfernen eines Subnetzes des virtuellen Netzwerks können Sie das Azure-Portal, PowerShell oder die Azure-Befehlszeilenschnittstelle (Azure CLI) verwenden. Wenn der IP-Adressbereich oder der Adressraum Ihres virtuellen Azure-Netzwerks ein aggregierter Bereich ist, besteht keine Notwendigkeit zur Nachverfolgung bei Microsoft. (Beachten Sie jedoch, dass das virtuelle Netzwerk weiterhin den BGP-Routenadressraum weitergibt, der das gelöschte Subnetz umfasst.) Möglicherweise haben Sie den Adressbereich/Adressraum des virtuellen Azure-Netzwerks in Form von mehreren IP-Adressbereichen definiert, von denen ein Bereich dem gelöschten Subnetz zugewiesen war. Löschen Sie diesen unbedingt aus dem Adressraum des virtuellen Netzwerks. Informieren Sie dann das SAP HANA in Microsoft Azure-Dienstverwaltungsteam darüber, dass der Bereich aus den Bereichen entfernt werden muss, mit denen SAP HANA in Azure (große Instanzen) kommunizieren darf.
 
-Weitere Informationen finden Sie unter [Löschen eines Subnetzes](../../../virtual-network/virtual-network-manage-subnet.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#delete-a-subnet).
+Weitere Informationen finden Sie unter [Löschen eines Subnetzes](../../../virtual-network/virtual-network-manage-subnet.md#delete-a-subnet).
 
 ## <a name="delete-a-virtual-network"></a>Löschen eines virtuellen Netzwerks
 
-Informationen hierzu finden Sie unter [Löschen eines virtuellen Netzwerks](../../../virtual-network/manage-virtual-network.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#delete-a-virtual-network).
+Informationen hierzu finden Sie unter [Löschen eines virtuellen Netzwerks](../../../virtual-network/manage-virtual-network.md#delete-a-virtual-network).
 
 Das SAP HANA in Microsoft Azure-Dienstverwaltungsteam entfernt die vorhandenen Autorisierungen für die ExpressRoute-Leitung für SAP HANA in Azure (große Instanzen). Außerdem wird auch der IP-Adressbereich oder der Adressraum des virtuellen Azure-Netzwerks für die Kommunikation mit großen HANA-Instanzen entfernt.
 

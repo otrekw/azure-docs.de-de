@@ -9,12 +9,12 @@ ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring
-ms.openlocfilehash: bfecae4775655f732df8fd6cffea613cd39fb828
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: e5495b466bf9b16319b788ec32c7b3a03100f505
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92782007"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98218141"
 ---
 # <a name="monitor-a-storage-account-in-the-azure-portal"></a>Überwachen eines Speicherkontos im Azure-Portal
 
@@ -32,6 +32,8 @@ Es wird empfohlen, [Azure Monitor für Storage](../../azure-monitor/insights/sto
 > Eine ausführliche Anleitung zum Verwenden der Speicheranalyse sowie weiterer Tools, um Azure Storage-bezogene Probleme zu identifizieren, zu diagnostizieren und zu beheben, finden Sie unter [Microsoft Azure Storage: Überwachung, Diagnose und Problembehandlung](storage-monitoring-diagnosing-troubleshooting.md).
 >
 
+<a id="modify-retention-policy"></a>
+
 ## <a name="configure-monitoring-for-a-storage-account"></a>Konfigurieren der Überwachung für ein Speicherkonto
 
 1. Wählen Sie im [Azure-Portal](https://portal.azure.com)**Speicher** und dann den Speicherkontonamen, um das Kontodashboard zu öffnen.
@@ -39,7 +41,7 @@ Es wird empfohlen, [Azure Monitor für Storage](../../azure-monitor/insights/sto
 
     ![Screenshot: Hervorgehobene Option „Diagnoseeinstellungen (klassisch)“ im Abschnitt „Überwachung (klassisch)“](./media/storage-monitor-storage-account/storage-enable-metrics-00.png)
 
-1. Wählen Sie den **Typ** der Metrikdaten für jeden **Dienst** , den Sie überwachen möchten, und die **Aufbewahrungsrichtlinie** für die Daten. Sie können die Überwachung auch deaktivieren, indem Sie für **Status** **Aus** festlegen.
+1. Wählen Sie den **Typ** der Metrikdaten für jeden **Dienst**, den Sie überwachen möchten, und die **Aufbewahrungsrichtlinie** für die Daten. Sie können die Überwachung auch deaktivieren, indem Sie für **Status** **Aus** festlegen.
 
     ![Überwachungsoptionen](./media/storage-monitor-storage-account/storage-enable-metrics-01.png)
 
@@ -91,7 +93,7 @@ Die Liste der verfügbaren Metriken ändert sich je nach dem Dienst, den Sie in 
 
 Die Metriken, die Sie in **Diagnose** ausgewählt haben, bestimmen die Auflösung der Metriken, die für Ihr Konto verfügbar sind:
 
-* **Aggregieren** -Überwachung erfasst Metriken wie Eingang/Ausgang, Verfügbarkeit, Latenz sowie Erfolgsprozentwerte. Diese Metriken werden aus Blob-, Tabellen-, Datei- und Warteschlangendienst aggregiert.
+* **Aggregieren**-Überwachung erfasst Metriken wie Eingang/Ausgang, Verfügbarkeit, Latenz sowie Erfolgsprozentwerte. Diese Metriken werden aus Blob-, Tabellen-, Datei- und Warteschlangendienst aggregiert.
 * **Pro API** bietet eine feinere Auflösung mit Metriken, die für einzelne Speicheroperationen verfügbar sind, in Ergänzung der Aggregate auf Dienstebene.
 
 ## <a name="configure-metrics-alerts"></a>Konfigurieren von Metrikenwarnungen
@@ -101,9 +103,9 @@ Sie können Warnungen erstellen, damit Sie benachrichtigt werden, wenn Speicherr
 1. Um das ‚Blatt **Warnungsregeln** zu öffnen, scrollen Sie zum Abschnitt **ÜBERWACHUNG** des **Menüblatts** nach unten, und wählen Sie **Warnungen (klassisch)** .
 2. Wählen Sie **Metrikwarnung hinzufügen (klassisch)** , um das Blatt **Warnungsregel hinzufügen** zu öffnen.
 3. Geben Sie einen **Namen** und eine **Beschreibung** für Ihre neue Warnungsregel ein.
-4. Wählen Sie die **Metrik** , für die Sie eine Warnung hinzufügen möchten, eine **Bedingung** für die Warnung und einen **Schwellenwert**. Der Schwellenwerteinheiten-Typ ändert sich je nach der Metrik, die Sie ausgewählt haben. Beispielsweise ist „count“ der Einheitentyp für *ContainerCount* , die Einheit für die Metrik *PercentNetworkError* ist dagegen ein Prozentsatz.
+4. Wählen Sie die **Metrik**, für die Sie eine Warnung hinzufügen möchten, eine **Bedingung** für die Warnung und einen **Schwellenwert**. Der Schwellenwerteinheiten-Typ ändert sich je nach der Metrik, die Sie ausgewählt haben. Beispielsweise ist „count“ der Einheitentyp für *ContainerCount*, die Einheit für die Metrik *PercentNetworkError* ist dagegen ein Prozentsatz.
 5. Wählen Sie den **Zeitraum** aus. Metriken, die den Schwellenwert innerhalb des Zeitraums erreichen oder überschreiten, lösen eine Warnung aus.
-6. (Optional) Konfigurieren Sie **E-Mail** - und **Webhook** -Benachrichtigungen. Weitere Informationen über Webhooks finden Sie unter [Konfigurieren eines Webhooks für eine Azure-Metrikwarnung](../../azure-monitor/platform/alerts-webhooks.md). Wenn Sie keine E-Mail- oder Webhook-Benachrichtigungen konfigurieren, werden Warnungen nur im Azure-Portal angezeigt.
+6. (Optional) Konfigurieren Sie **E-Mail**- und **Webhook**-Benachrichtigungen. Weitere Informationen über Webhooks finden Sie unter [Konfigurieren eines Webhooks für eine Azure-Metrikwarnung](../../azure-monitor/platform/alerts-webhooks.md). Wenn Sie keine E-Mail- oder Webhook-Benachrichtigungen konfigurieren, werden Warnungen nur im Azure-Portal angezeigt.
 
 ![Blatt „Warnungsregel hinzufügen“ im Azure-Portal](./media/storage-monitor-storage-account/add-alert-rule.png)
 
@@ -111,7 +113,7 @@ Sie können Warnungen erstellen, damit Sie benachrichtigt werden, wenn Speicherr
 
 Sie können Ihrem Portaldashboard Azure Storage-Metrikdiagramme für beliebige Ihrer Speicherkonten hinzufügen.
 
-1. Wählen Sie **Dashboard bearbeiten** , während Ihr Dashboard im [Azure-Portal](https://portal.azure.com) angezeigt wird.
+1. Wählen Sie **Dashboard bearbeiten**, während Ihr Dashboard im [Azure-Portal](https://portal.azure.com) angezeigt wird.
 1. Wählen Sie im **Kachelkatalog** die Option **Kacheln suchen nach:**  > **Typ**.
 1. Wählen Sie **Typ** > **Speicherkonten**.
 1. Wählen Sie in **Ressourcen** das Speicherkonto aus, dessen Metriken Sie dem Dashboard hinzufügen möchten.
@@ -136,7 +138,7 @@ Sie können Azure Storage anweisen, Diagnoseprotokolle für Lese-, Schreib- und 
 
     ![Element des Menüs „Diagnose“ unter ÜBERWACHUNG im Azure-Portal.](./media/storage-monitor-storage-account/storage-enable-metrics-00.png)
 
-1. Stellen Sie sicher, dass **Status** auf **Ein** festgelegt ist, und wählen Sie die **Dienste** , für die Sie die Protokollierung aktivieren möchten.
+1. Stellen Sie sicher, dass **Status** auf **Ein** festgelegt ist, und wählen Sie die **Dienste**, für die Sie die Protokollierung aktivieren möchten.
 
     ![Konfigurieren Sie die Protokollierung im Azure-Portal.](./media/storage-monitor-storage-account/enable-diagnostics.png)
 1. Klicken Sie auf **Speichern**.

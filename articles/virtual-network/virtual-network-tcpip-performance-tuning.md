@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 04/02/2019
 ms.author: rimayber
 ms.reviewer: dgoddard, stegag, steveesp, minale, btalb, prachank
-ms.openlocfilehash: 67b635f09cb9407279e89b5f7b8526dab3c08946
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 1f6abbf68d4f648aeee6c025800f24140c9459e9
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96017609"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98219316"
 ---
 # <a name="tcpip-performance-tuning-for-azure-vms"></a>Optimierung der TCP/IP-Leistung für Azure-VMs
 
@@ -89,7 +89,7 @@ Es wird Kunden nicht empfohlen, die VM-MTUs zu erhöhen. Ziel dieser Diskussion 
 
 #### <a name="large-send-offload"></a>Large Send Offload
 
-Large Send Offload (LSO) kann die Netzwerkleistung verbessern, indem die Segmentierung der Pakete dem Ethernet-Adapter überlassen wird. Wenn LSO aktiviert ist, erstellt der TCP/IP-Stapel ein großes TCP-Paket und sendet dieses zur Segmentierung an den Ethernet-Adapter, bevor er das Paket weiterleitet. Der Vorteil von LSO ist, dass die CPU Pakete nicht in Größen segmentieren muss, die der MTU entsprechen, und diese Verarbeitung an die Ethernet-Schnittstelle auslagern kann, wo sie in Hardware ausgeführt wird. Weitere Informationen zu den Vorteilen von LSO finden Sie unter [Unterstützung von Large Send Offload](https://docs.microsoft.com/windows-hardware/drivers/network/performance-in-network-adapters#supporting-large-send-offload-lso).
+Large Send Offload (LSO) kann die Netzwerkleistung verbessern, indem die Segmentierung der Pakete dem Ethernet-Adapter überlassen wird. Wenn LSO aktiviert ist, erstellt der TCP/IP-Stapel ein großes TCP-Paket und sendet dieses zur Segmentierung an den Ethernet-Adapter, bevor er das Paket weiterleitet. Der Vorteil von LSO ist, dass die CPU Pakete nicht in Größen segmentieren muss, die der MTU entsprechen, und diese Verarbeitung an die Ethernet-Schnittstelle auslagern kann, wo sie in Hardware ausgeführt wird. Weitere Informationen zu den Vorteilen von LSO finden Sie unter [Unterstützung von Large Send Offload](/windows-hardware/drivers/network/performance-in-network-adapters#supporting-large-send-offload-lso).
 
 Wenn LSO aktiviert ist, können Azure-Kunden, wenn sie Paketerfassungen vornehmen, große Framegrößen sehen. Diese großen Framegrößen könnten einige Kunden zu der Annahme veranlassen, dass Fragmentierung auftritt oder eine große MTU verwendet wird, obwohl dies nicht der Fall ist. Mit LSO kann der Ethernet-Adapter dem TCP/IP-Stapel eine größere maximale Segmentgröße (Maximum Segment Size, MSS) anbieten, um ein größeres TCP-Paket zu erstellen. Dieser gesamte nicht segmentierte Frame wird dann an den Ethernetadapter weitergeleitet und wäre in einer Paketerfassung auf der VM sichtbar. Das Paket wird jedoch durch den Ethernet-Adapter gemäß seiner MTU in viele kleinere Frames zerlegt.
 
@@ -117,7 +117,7 @@ Der PMTUD-Prozess ist ineffizient und wirkt sich auf die Leistung des Netzwerks 
 
 Wenn Sie virtuelle Computer verwenden, die Kapselung vornehmen (z. B. IPsec-VPNs), gibt es einige zusätzlichen Aspekte hinsichtlich Paketgröße und MTU. VPNs fügen weitere Header zu Paketen hinzu, wodurch die Paketgröße erhöht und eine kleinere MSS erforderlich wird.
 
-Für Azure lautet die Empfehlung, TCP-MSS-Clamping auf 1.350 Bytes und die MTU der Tunnelschnittstelle auf 1.400 festzulegen. Weitere Informationen finden Sie auf der Seite [Informationen zu VPN-Geräten und IPsec-/IKE-Parametern für VPN-Gatewayverbindungen zwischen Standorten](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpn-devices).
+Für Azure lautet die Empfehlung, TCP-MSS-Clamping auf 1.350 Bytes und die MTU der Tunnelschnittstelle auf 1.400 festzulegen. Weitere Informationen finden Sie auf der Seite [Informationen zu VPN-Geräten und IPsec-/IKE-Parametern für VPN-Gatewayverbindungen zwischen Standorten](../vpn-gateway/vpn-gateway-about-vpn-devices.md).
 
 ### <a name="latency-round-trip-time-and-tcp-window-scaling"></a>Latenz, Paketumlaufzeit und TCP-Fensterskalierung
 
@@ -210,7 +210,7 @@ Sie können den PowerShell-Befehl `Get-NetTCPSetting` verwenden, um die Werte vo
 Get-NetTCPSetting
 ```
 
-Mit dem PowerShell-Befehl `Set-NetTCPSetting` können Sie in Windows die anfängliche TCP-Fenstergröße und den anfänglichen TCP-Skalierungsfaktor festlegen. Weitere Informationen hierzu finden Sie unter [Set-NetTCPSetting](https://docs.microsoft.com/powershell/module/nettcpip/set-nettcpsetting?view=win10-ps).
+Mit dem PowerShell-Befehl `Set-NetTCPSetting` können Sie in Windows die anfängliche TCP-Fenstergröße und den anfänglichen TCP-Skalierungsfaktor festlegen. Weitere Informationen hierzu finden Sie unter [Set-NetTCPSetting](/powershell/module/nettcpip/set-nettcpsetting?view=win10-ps).
 
 ```powershell
 Set-NetTCPSetting
@@ -253,13 +253,13 @@ Der beschleunigte Netzwerkbetrieb verbessert die Leistung, indem er es der Gast-
 
 - **Verringerte CPU-Auslastung**: Das Umgehen des virtuellen Switch auf dem Host führt zu weniger CPU-Auslastung für die Verarbeitung des Netzwerkdatenverkehrs.
 
-Um beschleunigten Netzwerkbetrieb verwenden zu können, müssen Sie diesen explizit auf jedem entsprechenden virtuellen Computer aktivieren. Anweisungen hierzu finden Sie unter [Erstellen eines virtuellen Linux-Computers mit beschleunigtem Netzwerkbetrieb](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli).
+Um beschleunigten Netzwerkbetrieb verwenden zu können, müssen Sie diesen explizit auf jedem entsprechenden virtuellen Computer aktivieren. Anweisungen hierzu finden Sie unter [Erstellen eines virtuellen Linux-Computers mit beschleunigtem Netzwerkbetrieb](./create-vm-accelerated-networking-cli.md).
 
 #### <a name="receive-side-scaling"></a>Empfangsseitige Skalierung
 
-Die empfangsseitige Skalierung ist eine Netzwerktreibertechnologie, die den Empfang von Netzwerkverkehr effizienter verteilt, indem sie die Empfangsverarbeitung auf mehrere CPUs in einem Multiprozessorsystem verteilt. Einfach ausgedrückt ermöglicht empfangsseitige Skalierung es einem System, mehr empfangenen Datenverkehr zu verarbeiten, da es alle verfügbaren CPUs anstelle von nur einer verwendet. Eine technischere Beschreibung der empfangsseitigen Skalierung finden Sie unter [Introduction to Receive Side Scaling](https://docs.microsoft.com/windows-hardware/drivers/network/introduction-to-receive-side-scaling) (Einführung in die empfangsseitige Skalierung).
+Die empfangsseitige Skalierung ist eine Netzwerktreibertechnologie, die den Empfang von Netzwerkverkehr effizienter verteilt, indem sie die Empfangsverarbeitung auf mehrere CPUs in einem Multiprozessorsystem verteilt. Einfach ausgedrückt ermöglicht empfangsseitige Skalierung es einem System, mehr empfangenen Datenverkehr zu verarbeiten, da es alle verfügbaren CPUs anstelle von nur einer verwendet. Eine technischere Beschreibung der empfangsseitigen Skalierung finden Sie unter [Introduction to Receive Side Scaling](/windows-hardware/drivers/network/introduction-to-receive-side-scaling) (Einführung in die empfangsseitige Skalierung).
 
-Um die beste Leistung zu erzielen, wenn der beschleunigte Netzwerkbetrieb auf einem virtuellen Computer aktiviert ist, müssen Sie die empfangsseitige Skalierung aktivieren. Die empfangsseitige Skalierung kann auch zu Vorteilen auf virtuellen Computern führen, auf denen der beschleunigte Netzwerkbetrieb nicht verwendet wird. Eine Übersicht darüber, wie Sie feststellen können, ob die empfangsseitige Skalierung aktiviert ist, und wie diese aktiviert wird, finden Sie unter [Optimieren des Netzwerkdurchsatzes für virtuelle Azure-Computer](https://aka.ms/FastVM).
+Um die beste Leistung zu erzielen, wenn der beschleunigte Netzwerkbetrieb auf einem virtuellen Computer aktiviert ist, müssen Sie die empfangsseitige Skalierung aktivieren. Die empfangsseitige Skalierung kann auch zu Vorteilen auf virtuellen Computern führen, auf denen der beschleunigte Netzwerkbetrieb nicht verwendet wird. Eine Übersicht darüber, wie Sie feststellen können, ob die empfangsseitige Skalierung aktiviert ist, und wie diese aktiviert wird, finden Sie unter [Optimieren des Netzwerkdurchsatzes für virtuelle Azure-Computer](./virtual-network-optimize-network-bandwidth.md).
 
 ### <a name="tcp-time_wait-and-time_wait-assassination"></a>TCP TIME_WAIT und TIME_WAIT Assassination
 
@@ -271,7 +271,7 @@ Der Wert für den Portbereich für ausgehende Sockets kann normalerweise im TCP/
 
 Sie können TIME_WAIT Assassination verwenden, um diese Skalierungsbeschränkung zu umgehen. TIME_WAIT Assassination ermöglicht die Wiederverwendung eines Sockets in bestimmten Situationen, etwa wenn die Sequenznummer im IP-Paket der neuen Verbindung die Sequenznummer des letzten Pakets der vorherigen Verbindung überschreitet. In diesem Fall ermöglicht das Betriebssystem das Herstellen der neuen Verbindung (es akzeptiert das neue SYN/ACK), und es erzwingt das Schließen der vorherigen Verbindung, die sich in einem TIME_WAIT-Zustand befunden hat. Diese Funktionalität wird auf Windows-VMs in Azure unterstützt. Um mehr über die Unterstützung in anderen VMs zu erfahren, wenden Sie sich an den Betriebssystemanbieter.
 
-Informationen über das Konfigurieren von TCP TIME_WAIT-Einstellungen und des Quellportbereichs finden Sie unter [Einstellungen, die zur Verbesserung der Netzwerkleistung geändert werden können](https://docs.microsoft.com/biztalk/technical-guides/settings-that-can-be-modified-to-improve-network-performance).
+Informationen über das Konfigurieren von TCP TIME_WAIT-Einstellungen und des Quellportbereichs finden Sie unter [Einstellungen, die zur Verbesserung der Netzwerkleistung geändert werden können](/biztalk/technical-guides/settings-that-can-be-modified-to-improve-network-performance).
 
 ## <a name="virtual-network-factors-that-can-affect-performance"></a>Faktoren eines virtuellen Netzwerks, die sich auf die Leistung auswirken können
 
@@ -287,7 +287,7 @@ Der beschleunigte Netzwerkbetrieb ist dazu ausgelegt, die Netzwerkleistung, eins
 
 Jedem virtuellen Azure-Computer ist mindestens eine Netzwerkschnittstelle zugeordnet. Es können aber auch mehrere zugeordnet sein. Die einem virtuellen Computer zugeordnete Bandbreite ist die Summe des gesamten ausgehenden Datenverkehrs über alle Netzwerkschnittstellen, die dem Computer zugeordnet sind. Mit anderen Worten, die Bandbreite wird pro virtuellem Computer zugeordnet, unabhängig davon, wie viele Netzwerkschnittstellen dem Computer zugeordnet sind.
 
-Der erwartete ausgehende Durchsatz und die Anzahl der Netzwerkschnittstellen, die von der jeweiligen Größe eines virtuellen Computers unterstützt werden, sind unter [Größen für virtuelle Windows-Computer in Azure](https://docs.microsoft.com/azure/virtual-machines/windows/sizes?toc=%2fazure%2fvirtual-network%2ftoc.json) ausführlich beschrieben. Um den maximalen Durchsatz zu sehen, wählen Sie einen Typ aus, etwa **Allgemeiner Zweck**, und suchen Sie dann auf der angezeigten Seite nach dem Abschnitt über die Größenserie (z. B. „Dv2-Serie“). Für jede Serie gibt es eine Tabelle, in der in der letzten Spalte, die mit „Maximale Anzahl NICs/Erwartete Netzwerkbandbreite (MBit/s)“ überschrieben ist, Netzwerkspezifikationen enthalten sind.
+Der erwartete ausgehende Durchsatz und die Anzahl der Netzwerkschnittstellen, die von der jeweiligen Größe eines virtuellen Computers unterstützt werden, sind unter [Größen für virtuelle Windows-Computer in Azure](../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) ausführlich beschrieben. Um den maximalen Durchsatz zu sehen, wählen Sie einen Typ aus, etwa **Allgemeiner Zweck**, und suchen Sie dann auf der angezeigten Seite nach dem Abschnitt über die Größenserie (z. B. „Dv2-Serie“). Für jede Serie gibt es eine Tabelle, in der in der letzten Spalte, die mit „Maximale Anzahl NICs/Erwartete Netzwerkbandbreite (MBit/s)“ überschrieben ist, Netzwerkspezifikationen enthalten sind.
 
 Die Durchsatzbegrenzung gilt für den virtuellen Computer. Die folgenden Faktoren wirken sich nicht auf den Durchsatz aus:
 
@@ -299,7 +299,7 @@ Die Durchsatzbegrenzung gilt für den virtuellen Computer. Die folgenden Faktore
 
 - **Protokoll:** Der gesamte ausgehende Datenverkehr über alle Protokolle wird auf den Grenzwert angerechnet.
 
-Weitere Informationen finden Sie unter [Netzwerkdurchsatz virtueller Computer](https://aka.ms/AzureBandwidth).
+Weitere Informationen finden Sie unter [Netzwerkdurchsatz virtueller Computer](./virtual-machine-network-throughput.md).
 
 ### <a name="internet-performance-considerations"></a>Überlegungen zur Internetleistung
 
@@ -333,7 +333,7 @@ Eine Bereitstellung in Azure kann mit Endpunkten außerhalb von Azure im öffent
 
 Für jede ausgehende Verbindung muss der Azure Load Balancer diese Zuordnung für einige Zeit aufrechterhalten. Aufgrund der Mehrmandantenfähigkeit von Azure kann die Aufrechterhaltung dieser Zuordnung für jeden ausgehenden Datenverkehr für jede VM ressourcenintensiv sein. Daher gibt es Einschränkungen, die entsprechend der Konfiguration des virtuellen Azure-Netzwerks festgelegt werden. Oder, um dies genauer zu formulieren, eine Azure-VM kann jeweils nur eine bestimmte Anzahl von ausgehenden Verbindungen herstellen. Wenn diese Einschränkungen erreicht sind, können für die VM keine weiteren ausgehenden Verbindungen hergestellt werden.
 
-Dieses Verhalten ist aber konfigurierbar. Weitere Informationen zu SNAT und SNAT-Portauslastung finden Sie in [diesem Artikel](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections).
+Dieses Verhalten ist aber konfigurierbar. Weitere Informationen zu SNAT und SNAT-Portauslastung finden Sie in [diesem Artikel](../load-balancer/load-balancer-outbound-connections.md).
 
 ## <a name="measure-network-performance-on-azure"></a>Messen der Netzwerkleistung in Azure
 
@@ -341,13 +341,13 @@ Eine Reihe der Leistungshöchstwerte in diesem Artikel beziehen sich auf die Net
 
 ### <a name="measure-round-trip-time-and-packet-loss"></a>Messen von Paketumlaufzeit (RTT) und Paketverlust
 
-Die TCP-Leistung hängt stark von RTT und Paketverlust ab. Das in Windows und Linux verfügbaren PING-Hilfsprogramm bietet die einfachste Möglichkeit, RTT und Paketverlust zu messen. Die Ausgabe von PING enthält die minimale/maximale/durchschnittliche Latenz zwischen einer Quelle und einem Ziel. Darüber hinaus enthält sie auch den Paketverlust. PING verwendet standardmäßig das ICMP-Protokoll. Sie können PsPing verwenden, um TCP RTT zu testen. Weitere Informationen hierzu finden Sie unter [PsPing](https://docs.microsoft.com/sysinternals/downloads/psping).
+Die TCP-Leistung hängt stark von RTT und Paketverlust ab. Das in Windows und Linux verfügbaren PING-Hilfsprogramm bietet die einfachste Möglichkeit, RTT und Paketverlust zu messen. Die Ausgabe von PING enthält die minimale/maximale/durchschnittliche Latenz zwischen einer Quelle und einem Ziel. Darüber hinaus enthält sie auch den Paketverlust. PING verwendet standardmäßig das ICMP-Protokoll. Sie können PsPing verwenden, um TCP RTT zu testen. Weitere Informationen hierzu finden Sie unter [PsPing](/sysinternals/downloads/psping).
 
 ### <a name="measure-actual-throughput-of-a-tcp-connection"></a>Messen des tatsächlichen Durchsatzes für eine TCP-Verbindung
 
 NTttcp ist ein Tool zum Testen der TCP-Leistung einer Linux- oder Windows-VM. Sie können verschiedene TCP-Einstellungen ändern und dann die Vorteile testen, indem Sie NTttcp verwenden. Weitere Informationen finden Sie in den folgenden Ressourcen:
 
-- [Testen der Bandbreite/des Durchsatzes (NTttcp)](https://aka.ms/TestNetworkThroughput)
+- [Testen der Bandbreite/des Durchsatzes (NTttcp)](./virtual-network-bandwidth-testing.md)
 
 - [NTttcp-Hilfsprogramm](https://gallery.technet.microsoft.com/NTttcp-Version-528-Now-f8b12769)
 
@@ -357,9 +357,9 @@ Sie können die Leistung von verschiedenen VM-Typen, von beschleunigtem Netzwerk
 
 Weitere Informationen und Beispiele finden Sie in diesen Artikeln:
 
-- [Beheben von Problemen bei der Expressroute-Netzwerkleistung](https://docs.microsoft.com/azure/expressroute/expressroute-troubleshooting-network-performance)
+- [Beheben von Problemen bei der Expressroute-Netzwerkleistung](../expressroute/expressroute-troubleshooting-network-performance.md)
 
-- [Überprüfen des VPN-Durchsatzes zu einem virtuellen Netzwerk](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-validate-throughput-to-vnet)
+- [Überprüfen des VPN-Durchsatzes zu einem virtuellen Netzwerk](../vpn-gateway/vpn-gateway-validate-throughput-to-vnet.md)
 
 ### <a name="detect-inefficient-tcp-behaviors"></a>Erkennen von ineffizientem TCP-Verhalten
 
@@ -371,4 +371,4 @@ Trotzdem sind diese Pakettypen weiterhin Hinweise darauf, dass der TCP-Durchsatz
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nachdem Sie nun erfahren haben, wie sich die TCP/IP-Leistung für virtuelle Azure-Computer optimieren lässt, möchten Sie wahrscheinlich mehr über andere Aspekte des [Planens von virtuellen Netzwerken](https://docs.microsoft.com/azure/virtual-network/virtual-network-vnet-plan-design-arm) oder [über Verbinden und Konfigurieren von virtuellen Netzwerken](https://docs.microsoft.com/azure/virtual-network/) erfahren.
+Nachdem Sie nun erfahren haben, wie sich die TCP/IP-Leistung für virtuelle Azure-Computer optimieren lässt, möchten Sie wahrscheinlich mehr über andere Aspekte des [Planens von virtuellen Netzwerken](./virtual-network-vnet-plan-design-arm.md) oder [über Verbinden und Konfigurieren von virtuellen Netzwerken](./index.yml) erfahren.

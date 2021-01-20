@@ -16,16 +16,16 @@ ms.workload: infrastructure-services
 ms.date: 9/18/2018
 ms.author: aanandr
 ms.custom: ''
-ms.openlocfilehash: 09a0574666441138c143932e843080e8745f1b40
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b95b3cfdf8fea6e31015d945566803569b4ba064
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87289582"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222920"
 ---
 # <a name="deploy-the-azure-virtual-network-container-network-interface-plug-in"></a>Bereitstellen des Container Network Interface-Plug-Ins von Azure Virtual Network
 
-Das CNI-Plug-In (Container Network Interface) von Azure Virtual Network wird auf einem virtuellen Azure-Computer installiert und bietet so Virtual Network-Funktionen für Kubernetes-Pods und Docker-Container. Weitere Informationen zu dem Plug-In finden Sie unter [Verwenden von Azure Virtual Network-Funktionen für Container](container-networking-overview.md). Zudem kann das Plug-In mit Azure Kubernetes Service (AKS) verwendet werden, und zwar durch Auswählen der Option [Erweiterte Funktionen für Netzwerkbetrieb und Skalierung](../aks/networking-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json), über die AKS-Container automatisch in einem virtuellen Netzwerk platziert werden.
+Das CNI-Plug-In (Container Network Interface) von Azure Virtual Network wird auf einem virtuellen Azure-Computer installiert und bietet so Virtual Network-Funktionen für Kubernetes-Pods und Docker-Container. Weitere Informationen zu dem Plug-In finden Sie unter [Verwenden von Azure Virtual Network-Funktionen für Container](container-networking-overview.md). Zudem kann das Plug-In mit Azure Kubernetes Service (AKS) verwendet werden, und zwar durch Auswählen der Option [Erweiterte Funktionen für Netzwerkbetrieb und Skalierung](../aks/configure-azure-cni.md?toc=%2fazure%2fvirtual-network%2ftoc.json), über die AKS-Container automatisch in einem virtuellen Netzwerk platziert werden.
 
 ## <a name="deploy-plug-in-for-acs-engine-kubernetes-cluster"></a>Bereitstellen des Plug-Ins für AKS-Engine-Kubernetes-Cluster
 
@@ -95,10 +95,10 @@ Führen Sie die folgenden Schritte aus, um das Plug-In auf allen virtuellen Azur
 1. [Laden Sie das Plug-In herunter, und installieren Sie es](#download-and-install-the-plug-in).
 2. Ordnen Sie auf jedem virtuellen Computer, über den Pods IP-Adressen zugewiesen werden, vorab einen IP-Adressenpool des virtuellen Netzwerks zu. Alle virtuellen Azure-Computer umfassen eine private IP-Adresse des primären virtuellen Netzwerks für jede Netzwerkschnittstelle. Der Pool von IP-Adressen für Pods wird mithilfe einer der folgenden Optionen als sekundäre Adressen (*ipconfigs*) für die Netzwerkschnittstelle des virtuellen Computers hinzugefügt:
 
-   - **CLI**: [Zuweisen von mehreren IP-Adressen über die Azure-Befehlszeilenschnittstelle](virtual-network-multiple-ip-addresses-cli.md)
-   - **PowerShell**: [Zuweisen von mehreren IP-Adressen mithilfe von PowerShell](virtual-network-multiple-ip-addresses-powershell.md)
-   - **Portal**: [Zuweisen von mehreren IP-Adressen über das Azure-Portal](virtual-network-multiple-ip-addresses-portal.md)
-   - **Azure Resource Manager-Vorlage**: [Zuweisen von mehreren IP-Adressen mithilfe von Vorlagen](virtual-network-multiple-ip-addresses-template.md)
+   - **CLI:**[Zuweisen von mehreren IP-Adressen über die Azure-Befehlszeilenschnittstelle](virtual-network-multiple-ip-addresses-cli.md)
+   - **PowerShell:**[Zuweisen von mehreren IP-Adressen mithilfe von PowerShell](virtual-network-multiple-ip-addresses-powershell.md)
+   - **Portal:**[Zuweisen von mehreren IP-Adressen über das Azure-Portal](virtual-network-multiple-ip-addresses-portal.md)
+   - **Azure Resource Manager-Vorlage:**[Zuweisen von mehreren IP-Adressen mithilfe von Vorlagen](./template-samples.md)
 
    Stellen Sie sicher, dass Sie genügend IP-Adressen für alle Pods hinzufügen, die auf dem virtuellen Computer angezeigt werden sollen.
 
@@ -106,7 +106,7 @@ Führen Sie die folgenden Schritte aus, um das Plug-In auf allen virtuellen Azur
 4. Wenn die Pods auf das Internet zugreifen können sollen, fügen Sie auf Ihren virtuellen Linux-Computern die folgende *iptables*-Regel hinzu, sodass eine Netzwerkadressenübersetzung für die Quelle des Internetdatenverkehrs durchgeführt wird. Im folgenden Beispiel wurde als IP-Adressbereich 10.0.0.0/8 angegeben.
 
    ```bash
-   iptables -t nat -A POSTROUTING -m iprange ! --dst-range 168.63.129.16 -m
+   iptables -t nat -A POSTROUTING -m iprange ! --dst-range 168.63.129.16 -m
    addrtype ! --dst-type local ! -d 10.0.0.0/8 -j MASQUERADE
    ```
 
@@ -157,10 +157,10 @@ Die CNI-Netzwerkkonfigurationsdatei wird im JSON-Format beschrieben. Sie ist unt
 
 #### <a name="settings-explanation"></a>Erläuterung der Einstellungen
 
-- **cniVersion**: Das CNI-Plug-In von Azure Virtual Network unterstützt Version 0.3.0 und 0.3.1 der  [CNI-Spezifikation](https://github.com/containernetworking/cni/blob/master/SPEC.md).
+- **cniVersion:** Das CNI-Plug-In von Azure Virtual Network unterstützt Version 0.3.0 und 0.3.1 der [CNI-Spezifikation](https://github.com/containernetworking/cni/blob/master/SPEC.md).
 - **name:** Name des Netzwerks. Diese Eigenschaft kann auf einen beliebigen eindeutigen Wert festgelegt werden.
 - **Typ**: Name des Netzwerk-Plug-Ins. Legen Sie diese Eigenschaft auf *azure-vnet* fest.
-- **mode**: Betriebsmodus. Dieses Feld ist optional. Es wird lediglich der Modus „bridge“ unterstützt. Weitere Informationen finden Sie unter  [Operational Modes](https://github.com/Azure/azure-container-networking/blob/master/docs/network.md) (Betriebsmodi).
+- **mode**: Betriebsmodus. Dieses Feld ist optional. Es wird lediglich der Modus „bridge“ unterstützt. Weitere Informationen finden Sie unter [Operational Modes](https://github.com/Azure/azure-container-networking/blob/master/docs/network.md) (Betriebsmodi).
 - **bridge**: Name der Brücke, über die Container mit einem virtuellen Netzwerk verbunden werden. Dieses Feld ist optional. Wenn kein Wert angegeben ist, wählt das Plug-In basierend auf dem Index der Masterschnittstelle automatisch einen eindeutigen Namen aus.
 - **ipam type**: Name des IPAM-Plug-Ins. Legen Sie diese Eigenschaft immer auf *azure-vnet-ipam* fest.
 

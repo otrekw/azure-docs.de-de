@@ -7,12 +7,12 @@ ms.service: virtual-network
 ms.topic: article
 ms.date: 03/26/2020
 ms.author: rambala
-ms.openlocfilehash: e0e5806ec59cd2d75111db213d8511488d043eec
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 835be5b867826d75732c9482743ad6a4ca2900e7
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80982853"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98231841"
 ---
 # <a name="working-remotely-using-azure-networking-services"></a>Remotearbeit mit Azure-Netzwerkdiensten
 
@@ -86,15 +86,15 @@ In den folgenden Artikeln wird erläutert, wie verschiedene Azure-Netzwerkfeatur
 | [Azure Virtual WAN und Remotearbeit](../virtual-wan/work-remotely-support.md) | Verwenden Sie Azure Virtual WAN, um die Anforderungen Ihrer Organisation an die Remotekonnektivität zu erfüllen.|
 | [Unterstützung von hohem Datenverkehr mit Application Gateway](../application-gateway/high-traffic-support.md) | Verwenden Sie Application Gateway mit der Web Application Firewall (WAF) für eine skalierbare und sichere Methode zum Verwalten von Datenverkehr an Ihre Webanwendungen. |
 | [Remotearbeit: Aspekte in Bezug auf virtuelle Netzwerkgeräte für die Remotearbeit](../vpn-gateway/nva-work-remotely-support.md)|Überprüfen Sie den Leitfaden zur Nutzung von virtuellen Netzwerkgeräten in Azure zur Bereitstellung von Lösungen für den Remotezugriff. |
-| [Wechsel zu OpenVPN oder IKEv2 von SSTP](https://go.microsoft.com/fwlink/?linkid=2124112) | Überschreiten Sie den Grenzwert von 128 gleichzeitigen Verbindungen von SSTP durch den Übergang zum OpenVPN-Protokoll oder IKEv2.|
+| [Wechsel zu OpenVPN oder IKEv2 von SSTP](../vpn-gateway/ikev2-openvpn-from-sstp.md) | Überschreiten Sie den Grenzwert von 128 gleichzeitigen Verbindungen von SSTP durch den Übergang zum OpenVPN-Protokoll oder IKEv2.|
 | [Remotearbeit mit Azure Bastion](../bastion/work-remotely-support.md) | Stellen Sie sichere und problemlose RDP/SSH-Konnektivität zu virtuellen Computern innerhalb des virtuellen Azure-Netzwerks bereit, direkt im Azure-Portal, ohne die Verwendung einer öffentlichen IP-Adresse. |
 | [Verwenden von Azure ExpressRoute, um Hybridkonnektivität für Remotebenutzer bereitzustellen](../expressroute/work-remotely-support.md) | Verwenden Sie ExpressRoute für Hybridkonnektivität, um Benutzern in Ihrer Organisation die Remotearbeit zu ermöglichen.|
 | [Unterstützung von Remotearbeit in Azure Firewall](../firewall/remote-work-support.md)|Schützen Sie Ihre virtuellen Azure-Netzwerkressourcen mit Azure Firewall. |
 
 <!--Link References-->
-[VNet-peer]: https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview
-[S2S]: https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal
-[ExR]: https://docs.microsoft.com/azure/expressroute/expressroute-introduction
-[ExR-eco]: https://docs.microsoft.com/azure/expressroute/expressroute-locations
-[ExR-D]: https://docs.microsoft.com/azure/expressroute/expressroute-erdirect-about
-[Az-OCI]: https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/configure-azure-oci-networking
+[VNet-peer]: ../virtual-network/virtual-network-peering-overview.md
+[S2S]: ../vpn-gateway/tutorial-site-to-site-portal.md
+[ExR]: ../expressroute/expressroute-introduction.md
+[ExR-eco]: ../expressroute/expressroute-locations.md
+[ExR-D]: ../expressroute/expressroute-erdirect-about.md
+[Az-OCI]: ../virtual-machines/workloads/oracle/configure-azure-oci-networking.md

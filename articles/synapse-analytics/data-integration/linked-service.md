@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: fb3c7dd7b3d7e8e42e230eedcd0d1b43af104327
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: af6afa2b0285fe741241183ed99712a132953a30
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96452525"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98220115"
 ---
 # <a name="secure-a-linked-service-with-private-links"></a>Schützen eines verknüpften Diensts mit Private Link
 
@@ -23,7 +23,7 @@ In diesem Artikel erfahren Sie, wie Sie einen verknüpften Dienst in Synapse mit
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * **Azure-Abonnement**: Wenn Sie über kein Azure-Abonnement verfügen, können Sie ein [kostenloses Azure-Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
-* **Azure Storage-Konto**: Sie verwenden Azure Data Lake Gen 2 als *Quelldatenspeicher*. Wenn Sie kein Speicherkonto haben, finden Sie unter [Erstellen eines Azure Storage-Kontos](../../storage/blobs/data-lake-storage-quickstart-create-account.md) die erforderlichen Schritte zum Erstellen eines solchen Kontos. Stellen Sie sicher, dass es beim Speicherkonto die Synapse Studio-IP-Filterung für den Zugriff darauf gibt und dass Sie nur **ausgewählten Netzwerken** erlauben, auf das Speicherkonto zuzugreifen. Die Einstellung auf dem Blatt **Firewalls und virtuelle Netzwerke** sollte wie in der Abbildung unten aussehen.
+* **Azure Storage-Konto**: Sie verwenden Azure Data Lake Gen 2 als *Quelldatenspeicher*. Wenn Sie kein Speicherkonto haben, finden Sie unter [Erstellen eines Azure Storage-Kontos](../../storage/common/storage-account-create.md) die erforderlichen Schritte zum Erstellen eines solchen Kontos. Stellen Sie sicher, dass es beim Speicherkonto die Synapse Studio-IP-Filterung für den Zugriff darauf gibt und dass Sie nur **ausgewählten Netzwerken** erlauben, auf das Speicherkonto zuzugreifen. Die Einstellung auf dem Blatt **Firewalls und virtuelle Netzwerke** sollte wie in der Abbildung unten aussehen.
 
 ![Geschütztes Speicherkonto](./media/secure-storage-account.png)
 

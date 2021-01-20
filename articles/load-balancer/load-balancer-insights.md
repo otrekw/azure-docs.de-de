@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/27/2020
 ms.author: errobin
-ms.openlocfilehash: 63b91194c9ffb10fd8f4c5f1341eaf74bc81f5e1
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 88c287c4aa87b4df41bfe6bbc1992262b21d07aa
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94694880"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98232759"
 ---
 # <a name="using-insights-to-monitor-and-configure-your-azure-load-balancer"></a>Verwenden von Erkenntnissen zum Überwachen und Konfigurieren Ihrer Azure Load Balancer-Instanz
 
@@ -68,7 +68,7 @@ Auf der Registerkarte „Datendurchsatz“ können Sie den gesamten Durchsatz f�
 ### <a name="flow-distribution"></a>Flowverteilung
 Mithilfe der Registerkarte „Flowverteilung“ können Sie die Anzahl der Flows visualisieren und verwalten, die von Ihren Back-End-Instanzen empfangen und generiert werden. Sie zeigt die Erstellungsrate und die Anzahl der Flows für ein- und ausgehenden Datenverkehr sowie den Netzwerkdatenverkehr, den die einzelnen virtuellen Computer und Instanzen von VM-Skalierungsgruppen empfangen. 
 
-Diese Ansichten können Ihnen Aufschluss darüber geben, ob Ihre Load Balancer-Konfiguration oder die Datenverkehrsmuster zu einem unausgeglichenen Datenverkehr führen. Angenommen beispielsweise, Sie haben Sitzungsaffinität konfiguriert, aber ein einzelner Client führt eine unverhältnismäßig hohe Anzahl von Anforderungen durch. In diesem Fall werden Sie informiert, wenn Sie den [Grenzwert pro virtuellem Computer](../virtual-network/virtual-machine-network-throughput.md#flow-limits-and-recommendations) für Ihre Computergröße erreichen.
+Diese Ansichten können Ihnen Aufschluss darüber geben, ob Ihre Load Balancer-Konfiguration oder die Datenverkehrsmuster zu einem unausgeglichenen Datenverkehr führen. Angenommen beispielsweise, Sie haben Sitzungsaffinität konfiguriert, aber ein einzelner Client führt eine unverhältnismäßig hohe Anzahl von Anforderungen durch. In diesem Fall werden Sie informiert, wenn Sie den [Grenzwert pro virtuellem Computer](../virtual-network/virtual-machine-network-throughput.md#flow-limits-and-active-connections-recommendations) für Ihre Computergröße erreichen.
 
 ### <a name="connection-monitors"></a>Verbindungsmonitore
 Auf der Registerkarte „Verbindungsmonitore“ wird die Roundtriplatenz auf einer globalen Karte für alle [Verbindungsmonitore](../network-watcher/connection-monitor.md) angezeigt, die Sie konfiguriert haben. Diese visuellen Elemente bieten nützliche Informationen für Dienste mit strengen Latenzanforderungen. Damit Sie Ihre Anforderungen erfüllen können, müssen Sie möglicherweise zusätzliche regionale Bereitstellungen hinzufügen oder auf ein [regionsübergreifendes Lastenausgleichsmodell](./cross-region-overview.md) umstellen.

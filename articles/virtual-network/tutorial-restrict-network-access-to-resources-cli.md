@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 03/14/2018
 ms.author: kumud
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 1a1eab081a7c1e83a57ef4735c6eb5248d92defc
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: b4f9dcf6fd43749cdf71098b3cd0da8a42020f6d
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94734105"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98221764"
 ---
 # <a name="restrict-network-access-to-paas-resources-with-virtual-network-service-endpoints-using-the-azure-cli"></a>Einschränken des Netzwerkzugriffs auf PaaS-Ressourcen mit VNET-Dienstendpunkten mithilfe der Azure CLI
 
@@ -120,7 +120,7 @@ az network nsg rule create \
   --destination-port-range "*"
 ```
 
-Jede Netzwerksicherheitsgruppe enthält mehrere [Standardsicherheitsregeln](security-overview.md#default-security-rules). Die folgende Regel überschreibt eine Standardsicherheitsregel, die ausgehenden Zugriff auf alle öffentlichen IP-Adressen zulässt. Die `destination-address-prefix "Internet"`-Option verweigert den ausgehenden Zugriff auf alle öffentlichen IP-Adressen. Die vorherige Regel überschreibt diese Regel. Dies ist auf die höhere Priorität zurückzuführen, die den Zugriff auf die öffentlichen IP-Adressen von Azure Storage zulässt.
+Jede Netzwerksicherheitsgruppe enthält mehrere [Standardsicherheitsregeln](./network-security-groups-overview.md#default-security-rules). Die folgende Regel überschreibt eine Standardsicherheitsregel, die ausgehenden Zugriff auf alle öffentlichen IP-Adressen zulässt. Die `destination-address-prefix "Internet"`-Option verweigert den ausgehenden Zugriff auf alle öffentlichen IP-Adressen. Die vorherige Regel überschreibt diese Regel. Dies ist auf die höhere Priorität zurückzuführen, die den Zugriff auf die öffentlichen IP-Adressen von Azure Storage zulässt.
 
 ```azurecli-interactive
 az network nsg rule create \
