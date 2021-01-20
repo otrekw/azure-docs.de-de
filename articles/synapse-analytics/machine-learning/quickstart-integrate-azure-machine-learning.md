@@ -9,12 +9,12 @@ ms.reviewer: jrasnick, garye
 ms.date: 09/25/2020
 author: nelgson
 ms.author: negust
-ms.openlocfilehash: a5d84b936679cdd5ebd5bec4938d6db7fcb641e7
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 800cbf9b7a7fa415452f29b253347188c8917c52
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96455500"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98219452"
 ---
 # <a name="quickstart-create-a-new-azure-machine-learning-linked-service-in-synapse"></a>Schnellstart: Erstellen eines neuen verknüpften Azure Machine Learning-Diensts in Synapse
 
@@ -22,7 +22,7 @@ In dieser Schnellstartanleitung wird ein Azure Synapse Analytics-Arbeitsbereic
 
 Beispielsweise ermöglicht diese Verknüpfung mit einem Azure Machine Learning-Arbeitsbereich folgende Erfahrungen:
 
-- Ausführen Ihrer Azure Machine Learning-Pipelines als Schritt in Ihren Synapse-Pipelines. Weitere Informationen finden Sie unter [Ausführen von Azure Machine Learning-Pipelines](/azure/data-factory/transform-data-machine-learning-service).
+- Ausführen Ihrer Azure Machine Learning-Pipelines als Schritt in Ihren Synapse-Pipelines. Weitere Informationen finden Sie unter [Ausführen von Azure Machine Learning-Pipelines](../../data-factory/transform-data-machine-learning-service.md).
 
 - Anreichern Ihrer Daten mit Vorhersagen, indem Sie ein Machine Learning-Modell aus der Azure Machine Learning-Modellregistrierung einbinden und das Modell in Synapse SQL-Pools bewerten. Weitere Informationen finden Sie im [Tutorial: Assistent für die Bewertung von Machine Learning-Modellen für Synapse SQL-Pools](tutorial-sql-pool-model-scoring-wizard.md).
 
@@ -30,7 +30,7 @@ Beispielsweise ermöglicht diese Verknüpfung mit einem Azure Machine Learning-A
 
 - Azure-Abonnement – [Erstellen eines kostenlosen Kontos](https://azure.microsoft.com/free/)
 - Als Standardspeicher konfigurierter [Synapse Analytics-Arbeitsbereich](../get-started-create-workspace.md) mit einem ADLS Gen2-Speicherkonto. Sie müssen **Mitwirkender an Storage-Blobdaten** des ADLS Gen2-Dateisystems sein, mit dem Sie arbeiten.
-- [Azure Machine Learning-Arbeitsbereich](/azure/machine-learning/how-to-manage-workspace).
+- [Azure Machine Learning-Arbeitsbereich](../../machine-learning/how-to-manage-workspace.md).
 - Sie benötigen Berechtigungen zum Erstellen eines Dienstprinzipals und Geheimnisses (oder müssen dies von jemandem mit den benötigten Berechtigungen anfordern), die Sie zum Erstellen des verknüpften Diensts verwenden können. Beachten Sie, dass diesem Dienstprinzipal die Rolle „Mitwirkender“ im Azure Machine Learning-Arbeitsbereich zugewiesen werden muss.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Melden Sie sich auf dem Azure-Portal an.

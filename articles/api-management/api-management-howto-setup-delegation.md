@@ -186,7 +186,7 @@ Weitere Informationen zum Delegieren finden Sie im folgenden Video:
 [Delegating product subscription]: #delegate-product-subscription
 [Anfordern eines SAS-Tokens]: /rest/api/apimanagement/2019-12-01/user/getsharedaccesstoken
 [Erstellen Sie einen Benutzer]: /rest/api/apimanagement/2019-12-01/user/createorupdate
-[REST-API für Abonnements
+[REST-API für Abonnements]: /rest/api/apimanagement/2019-12-01/subscription/createorupdate
 [Next steps]: #next-steps
 [Beispielcode finden Sie unter]: #delegate-example-code
 

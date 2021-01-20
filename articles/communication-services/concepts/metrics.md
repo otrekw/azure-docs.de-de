@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 05/19/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 460cca051d743102e734971cf45069362e24c147
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: e7ed4ba181d3730ebbea7725451567c93433afb8
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97106002"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251096"
 ---
 # <a name="metrics-overview"></a>Übersicht der Metriken
 
@@ -30,7 +30,7 @@ Es gibt zwei Arten von Anforderungen, die in den Communication Services-Metriken
 
 Sowohl Chat- als auch SMS-API-Anforderungsmetriken enthalten drei Dimensionen, mit denen Sie Ihre Metrikdaten filtern können. Diese Dimensionen können mithilfe des Aggregationstyps `Count` zusammen aggregiert werden und unterstützen alle Azure Aggregation-Standardzeitreihen, einschließlich `Sum`, `Average`, `Min` und `Max`.
 
-Weitere Informationen zu unterstützten Aggregationstypen und Zeitreihenaggregationen finden Sie unter [Erweiterte Funktionen von Azure-Metrik-Explorer](../../azure-monitor/platform/metrics-charts.md#changing-aggregation).
+Weitere Informationen zu unterstützten Aggregationstypen und Zeitreihenaggregationen finden Sie unter [Erweiterte Funktionen von Azure-Metrik-Explorer](../../azure-monitor/platform/metrics-charts.md#aggregation).
 
 - **Operation**: Alle Vorgänge oder Routen, die über das ACS Chat-Gateway aufgerufen werden können.
 - **Statuscode**: Die Statuscodeantwort, die nach der Anforderung gesendet wurde.

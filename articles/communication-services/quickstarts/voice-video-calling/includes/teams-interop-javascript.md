@@ -5,26 +5,18 @@ ms.author: mikben
 ms.date: 10/10/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: c72083f205fae77de366125e666cee479fd46805
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.openlocfilehash: dbba87be839d7f172d42827698a8e485c2edddd8
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97691960"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98256479"
 ---
 ## <a name="prerequisites"></a>Voraussetzungen
 
 - Eine funktionierende [Communication Services-Telefonie-App](../getting-started-with-calling.md)
 - Eine [Teams-Bereitstellung](/deployoffice/teams-install)
 
-## <a name="enable-teams-interoperability"></a>Aktivieren der Teams-Interoperabilität
-
-Das Teams-Interoperabilitätsfeature befindet sich derzeit in der privaten Vorschau. Wenn Sie dieses Feature für Ihre Communication Services-Ressource aktivieren möchten, senden Sie eine E-Mail an [acsfeedback@microsoft.com](mailto:acsfeedback@microsoft.com), und geben Sie darin Folgendes an:
-
-1. Die Abonnement-ID des Azure-Abonnements, das Ihre Communication Services-Ressource enthält.
-2. Ihre Teams-Mandanten-ID. Diese erhalten Sie am einfachsten, indem Sie [einen Link zum Team abrufen und weitergeben](https://support.microsoft.com/office/create-a-link-or-a-code-for-joining-a-team-11b0de3b-9288-4cb4-bc49-795e7028296f).
-
-Sie müssen Mitglied der besitzenden Organisation beider Entitäten sein, um dieses Feature verwenden zu können.
 
 ## <a name="add-the-teams-ui-controls"></a>Hinzufügen der Steuerelemente der Teams-Benutzeroberfläche
 

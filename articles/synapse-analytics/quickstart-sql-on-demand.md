@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: e75bab664bdd0d6a4ac898905226c9956f62b4ff
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: ffa9e7b5685f9a200f6a403045687626f67f66f4
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96450507"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98218296"
 ---
 # <a name="quickstart-use-serverless-sql-pool"></a>Schnellstart: Verwenden eines serverlosen SQL-Pools
 
@@ -26,7 +26,7 @@ In dieser Schnellstartanleitung sehen Sie, wie Abfragen folgender Dateiformate a
 
 Wählen Sie einen SQL-Client aus, der zum Ausgeben von Abfragen verwendet werden soll:
 
-- [Azure Synapse Studio](quickstart-synapse-studio.md) ist ein Webtool, mit dem Sie Dateien im Speicher durchsuchen und SQL-Abfragen erstellen können.
+- [Azure Synapse Studio](./get-started-create-workspace.md) ist ein Webtool, mit dem Sie Dateien im Speicher durchsuchen und SQL-Abfragen erstellen können.
 - [Azure Data Studio](sql/get-started-azure-data-studio.md) ist ein Clienttool, mit dem Sie SQL-Abfragen und Notebooks für Ihre On-Demand-Datenbank ausführen können.
 - [SQL Server Management Studio](sql/get-started-ssms.md) ist ein Clienttool, mit dem Sie SQL-Abfragen für Ihre On-Demand-Datenbank ausführen können.
 

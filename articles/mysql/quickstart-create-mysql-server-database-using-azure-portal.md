@@ -7,12 +7,12 @@ ms.service: mysql
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 11/04/2020
-ms.openlocfilehash: f71bcc1fd3b92a32a3e6d9fa056bae7131a663bd
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: b8f3a8e06bb27051417205c4dc3141948960bb00
+ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96492606"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98567796"
 ---
 # <a name="quickstart-create-an-azure-database-for-mysql-server-by-using-the-azure-portal"></a>Schnellstart: Erstellen eines Servers für Azure-Datenbank für MySQL über das Azure-Portal
 
@@ -45,7 +45,7 @@ Ein Azure-Abonnement ist erforderlich. Wenn Sie über kein Azure-Abonnement verf
    Servername | **mydemoserver** | Geben Sie einen eindeutigen Namen ein. Der Servername darf nur Kleinbuchstaben, Zahlen und den Bindestrich (-) enthalten. Er muss zwischen 3 und 63 Zeichen enthalten.
    Datenquelle |**None** | Wählen Sie **Keine** aus, um einen neuen Server ohne Vorlage zu erstellen. Wählen Sie **Sicherung** nur aus, wenn Sie die Wiederherstellung aus einer Geosicherung eines vorhandenen Servers durchführen.
    Position |Der gewünschte Speicherort | Wählen Sie einen Ort aus der Liste aus.
-   Version | Die aktuelle Hauptversion| Verwenden Sie die aktuelle Hauptversion. Zeigen Sie [alle unterstützten Versionen](../postgresql/concepts-supported-versions.md) an.
+   Version | Die aktuelle Hauptversion| Verwenden Sie die aktuelle Hauptversion. Zeigen Sie [alle unterstützten Versionen](concepts-supported-versions.md) an.
    Compute und Speicher | Verwenden von Standardwerten| Der Standardtarif ist **Universell** mit **4 virtuellen Kernen** und **100 GB** Speicher. Die Aufbewahrungsdauer für Sicherungen ist auf **7 Tage** mit der Sicherungsoption **Georedundant** festgelegt.<br/>Überprüfen Sie die Seite [Preise](https://azure.microsoft.com/pricing/details/mysql/), und aktualisieren Sie ggf. die Standardwerte.
    Administratorbenutzername | **mydemoadmin** | Geben Sie den Benutzernamen des Serveradministrators ein. Der Benutzername des Administrators darf nicht **azure_superuser**, **admin**, **administrator**, **root**, **guest** oder **public** lauten.
    Kennwort | Ein Kennwort | Ein neues Kennwort für den Serveradministratorbenutzer. Das Kennwort muss zwischen 8 und 128 Zeichen lang sein und eine Kombination aus Groß- oder Kleinbuchstaben, Ziffern und nicht alphanumerischen Zeichen (!, $, #, % usw.) aufweisen.

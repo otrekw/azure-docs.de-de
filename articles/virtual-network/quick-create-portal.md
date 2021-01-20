@@ -11,12 +11,12 @@ ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 03/05/2020
 ms.author: kumud
-ms.openlocfilehash: dfeb9c6bc3dbe33881fc51ccb08a776b827dfe9c
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: cc3ba3a0519400368e0cbfec7abe2d9bd1731b34
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "86082436"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98217633"
 ---
 # <a name="quickstart-create-a-virtual-network-using-the-azure-portal"></a>Schnellstart: Erstellen eines virtuellen Netzwerks im Azure-Portal
 
@@ -225,4 +225,4 @@ Weitere Informationen zu VNET-Einstellungen finden Sie unter [Erstellen, Ändern
 Azure ermöglicht standardmäßig eine sichere Kommunikation zwischen virtuellen Computern. Azure lässt nur eingehende Remotedesktopverbindungen mit virtuellen Windows-Computern über das Internet zu. Weitere Informationen zu verschiedenen Arten der VM-Netzwerkkommunikation finden Sie unter [Tutorial: Filtern von Netzwerkdatenverkehr mithilfe einer Netzwerksicherheitsgruppe über das Azure-Portal](tutorial-filter-network-traffic.md).
 
 > [!NOTE] 
-> Azure-Dienste kosten Geld. Mit Azure Cost Management können Sie Budgets festlegen und Warnungen konfigurieren, um die Kontrolle über Ihre Ausgaben zu behalten. Analysieren, verwalten und optimieren Sie Ihre Azure-Kosten mit Cost Management. Weitere Informationen finden Sie in der [Schnellstartanleitung zur Kostenanalyse](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn).
+> Azure-Dienste kosten Geld. Mit Azure Cost Management können Sie Budgets festlegen und Warnungen konfigurieren, um die Kontrolle über Ihre Ausgaben zu behalten. Analysieren, verwalten und optimieren Sie Ihre Azure-Kosten mit Cost Management. Weitere Informationen finden Sie in der [Schnellstartanleitung zur Kostenanalyse](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn).

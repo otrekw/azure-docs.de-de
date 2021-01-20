@@ -7,12 +7,12 @@ ms.author: askaur
 ms.date: 12/08/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: ea66e4295e8228aa382aa29a46fcca8147dcbc98
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 1ad6b7241c7167c6da8952e7db2797fa275b7246
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97578015"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251919"
 ---
 # <a name="quickstart-join-your-chat-app-to-a-teams-meeting"></a>Schnellstart: Beitreten mit einer Chat-App zu einer Teams-Besprechung
 
@@ -29,11 +29,7 @@ Steigen Sie in die Nutzung von Azure Communication Services ein, indem Sie Ihre 
 
 Ein Communication Services-Benutzer, der einer Teams-Besprechung als Gastbenutzer hinzugefügt wird, kann nur auf den Chat der Besprechung zugreifen, wenn er der Teams-Telefonkonferenz beitritt. Weitere Informationen zum Hinzufügen eines Communication Services-Benutzers zu einer Teams-Telefonkonferenz finden Sie in der Dokumentation zur [Teams-Interoperabilität](../voice-video-calling/get-started-teams-interop.md).
 
-Das Teams-Interoperabilitätsfeature befindet sich derzeit in der privaten Vorschau. Wenn Sie dieses Feature für Ihre Communication Services-Ressource aktivieren möchten, senden Sie eine E-Mail an acsfeedback@microsoft.com, und geben Sie darin Folgendes an: 
-1. Die Abonnement-ID des Azure-Abonnements, das Ihre Communication Services-Ressource enthält. 
-2. Ihre Teams-Mandanten-ID. Diese erhalten Sie am einfachsten, indem Sie einen Link zum Team abrufen und weitergeben. 
-
-Sie müssen Mitglied der besitzenden Organisation beider Entitäten sein, um dieses Feature verwenden zu können. 
+Sie müssen Mitglied der besitzenden Organisation beider Entitäten sein, um dieses Feature verwenden zu können.
 
 [!INCLUDE [Join Teams meetings](./includes/meeting-interop-javascript.md)]
 

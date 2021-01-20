@@ -9,12 +9,12 @@ ms.subservice: overview
 ms.date: 10/25/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: 0d833c32000eb91511782184ef4455bc1973a714
-ms.sourcegitcommit: 02ed9acd4390b86c8432cad29075e2204f6b1bc3
+ms.openlocfilehash: a7ee4e205851a751f7a50ac0ddadfb4e4c7eb81a
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97807908"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98247402"
 ---
 # <a name="azure-synapse-analytics-frequently-asked-questions"></a>Azure Synapse Analytics: Häufig gestellte Fragen
 
@@ -138,11 +138,6 @@ A: Eine „Verschiebung“ oder „Migration“ ist nicht möglich. Sie können 
 ### <a name="q-what-is-the-default-deployment-of-dedicated-sql-pools-now"></a>F: Wie sieht die Standardbereitstellung von dedizierten SQL-Pools jetzt aus? 
 
 A: Standardmäßig werden alle neuen dedizierten SQL-Pools in einem Arbeitsbereich bereitgestellt. Bei Bedarf können Sie aber trotzdem noch einen dedizierten SQL-Pool (vormals SQL DW) basierend auf dem Formfaktor „Eigenständig“ erstellen. 
-
-
-### <a name="q-what-are-the-functional-differences-between-dedicated-sql-pools-and-serverless-sql-pools"></a>F: Welche Funktionsunterschiede gibt es zwischen dedizierten SQL-Pools und serverlosen SQL-Pools?
-
-A: Eine vollständige Liste mit den Unterschieden finden Sie unter [T-SQL-Funktionsunterschiede in Synapse SQL](./sql/overview-features.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.topic: quickstart
 ms.custom: seo-lt-2019
 ms.date: 11/02/2020
-ms.openlocfilehash: 542fde3ac951bf60d999361dc114491515fb9528
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: 568c738284a3d1b54ba907a973139fbced11f139
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94735244"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222695"
 ---
 # <a name="quickstart-load-data-into-dedicated-sql-pool-using-the-copy-activity"></a>Schnellstart: Laden von Daten in einen dedizierten SQL-Pool mithilfe der Copy-Aktivität
 
@@ -36,9 +36,9 @@ In dieser Schnellstartanleitung erfahren Sie, wie Sie *Daten aus Azure SQL-Date
 Nachdem Ihr Synapse-Arbeitsbereich erstellt wurde, haben Sie zwei Möglichkeiten zum Öffnen von Synapse Studio:
 
 * Öffnen Sie Ihren Synapse-Arbeitsbereich im [Azure-Portal](https://ms.portal.azure.com/#home). Wählen Sie unter „Erste Schritte“ auf der Karte „Synapse Studio öffnen“ die Option **Öffnen** aus.
-* Öffnen Sie [Azure Synapse Analytics](https://web.azuresynapse.net/), und melden Sie sich beim Arbeitsbereich an.
+* Öffnen Sie [Azure Synapse Analytics](https://web.azuresynapse.net/), und melden Sie sich bei Ihrem Arbeitsbereich an.
 
-In dieser Schnellstartanleitung verwenden Sie als Beispiel den Arbeitsbereich mit dem Namen „adftest2020“. Sie werden automatisch zur Startseite von Synapse Studio weitergeleitet.
+In dieser Schnellstartanleitung wird der Arbeitsbereich „adftest2020“ als Beispiel verwendet. Sie werden automatisch zur Startseite von Synapse Studio weitergeleitet.
 
 ![Synapse Studio-Startseite](media/doc-common-process/synapse-studio-home.png)
 
@@ -130,6 +130,6 @@ In diesem Abschnitt lösen Sie die im vorherigen Schritt veröffentlichte Pipeli
 Lesen Sie den folgenden Artikel, um mehr über die Unterstützung von Azure Synapse Analytics zu erfahren:
 
 > [!div class="nextstepaction"]
-> [Pipelines und Aktivitäten in Azure Data Factory](https://docs.microsoft.com/azure/data-factory/concepts-pipelines-activities?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
-> [Übersicht über Azure Data Factory-Connectors](https://docs.microsoft.com/azure/data-factory/connector-overview?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
-> [Kopieraktivität in Azure Data Factory](https://docs.microsoft.com/azure/data-factory/copy-activity-overview?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
+> [Pipelines und Aktivitäten in Azure Data Factory](../data-factory/concepts-pipelines-activities.md?bc=%2fazure%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2ftoc.json)
+> [Übersicht über Azure Data Factory-Connectors](../data-factory/connector-overview.md?bc=%2fazure%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2ftoc.json)
+> [Kopieraktivität in Azure Data Factory](../data-factory/copy-activity-overview.md?bc=%2fazure%2fsynapse-analytics%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsynapse-analytics%2ftoc.json)

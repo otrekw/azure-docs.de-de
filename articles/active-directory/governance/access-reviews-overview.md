@@ -17,12 +17,12 @@ ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 08399c1b2d930abfdd5832cb102a789844931d61
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 22bfef17f68b2e83e4f7462d8e9af6fb8aacc284
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97027695"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98246739"
 ---
 # <a name="what-are-azure-ad-access-reviews"></a>Was sind Azure AD-Zugriffsüberprüfungen?
 
@@ -103,7 +103,7 @@ Anhand der folgenden Beispielszenarien für Lizenzen können Sie die Anzahl der 
 | Ein Administrator erstellt eine Zugriffsüberprüfung von Gruppe B mit 500 Benutzern und 3 Gruppenbesitzern und weist die 3 Gruppenbesitzer als Reviewer zu. | 3 Lizenzen für jeden Gruppenbesitzer als Reviewer | 3 |
 | Ein Administrator erstellt eine Zugriffsüberprüfung für Gruppe B mit 500 Benutzern. Er legt sie als Selbstüberprüfung fest. | 500 Lizenzen für jeden Benutzer als Selbstprüfer | 500 |
 | Ein Administrator erstellt eine Zugriffsüberprüfung für Gruppe C mit 50 Mitgliedsbenutzern und 25 Gastbenutzern. Er legt sie als Selbstüberprüfung fest. | 50 Lizenzen für jeden Benutzer als Selbstprüfer.* | 50 |
-| Ein Administrator erstellt eine Zugriffsüberprüfung für Gruppe D mit 6 Mitgliedsbenutzern und 108 Gastbenutzern. Er legt sie als Selbstüberprüfung fest. | 6 Lizenzen für jeden Benutzer als Selbstprüfer. Für Gastbenutzer erfolgt die Abrechnung basierend auf den monatlich aktiven Benutzern (Monthly Active Users, MAU). Es sind keine zusätzlichen Lizenzen erforderlich. *  | - |
+| Ein Administrator erstellt eine Zugriffsüberprüfung für Gruppe D mit 6 Mitgliedsbenutzern und 108 Gastbenutzern. Er legt sie als Selbstüberprüfung fest. | 6 Lizenzen für jeden Benutzer als Selbstprüfer. Für Gastbenutzer erfolgt die Abrechnung basierend auf den monatlich aktiven Benutzern (Monthly Active Users, MAU). Es sind keine zusätzlichen Lizenzen erforderlich. *  | 6 |
 
 \* Die Preise für Azure AD External Identities (Gastbenutzer) basieren auf den monatlich aktiven Benutzern (Monthly Active Users, MAU). Dies ist die Anzahl eindeutiger Benutzer mit Authentifizierungsaktivität innerhalb eines Kalendermonats. Dieses Modell ersetzt das Abrechnungsmodell im Verhältnis 1:5, das bis zu fünf Gastbenutzer pro Azure AD Premium-Lizenz in Ihrem Mandanten zuließ. Wenn Ihr Mandant mit einem Abonnement verknüpft ist und Sie External Identities-Features für die Zusammenarbeit mit Gastbenutzern verwenden, erfolgt Ihre Abrechnung automatisch nach dem MAU-basierten Abrechnungsmodell. Weitere Informationen finden Sie unter „Abrechnungsmodell für Azure AD External Identities“.
 

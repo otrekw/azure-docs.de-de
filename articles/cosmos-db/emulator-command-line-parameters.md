@@ -131,7 +131,7 @@ Sie können mit dem Azure Cosmos-Emulator standardmäßig bis zu 25 Container m
 
 Wenn Sie versuchen, einen Container zu erstellen, wenn die aktuelle Anzahl von Partitionen überschritten wurde, löst der Emulator eine ServiceUnavailable-Ausnahme mit der folgenden Meldung aus.
 
-> „Sorry, we are currently experiencing high demand in this region, and cannot fulfill your request at this time. We work continuously to bring more and more capacity online, and encourage you to try again.
+> Bedauerlicherweise liegt in dieser Region zurzeit eine starke Nachfrage vor. Daher kann Ihre Anfrage gegenwärtig nicht verarbeitet werden.  Wir arbeiten fortlaufend daran, immer mehr Kapazitäten online zu stellen. Bitte versuchen Sie es zu einem späteren Zeitpunkt noch mal.
 > ActivityId: 12345678-1234-1234-1234-123456789abc
 
 Gehen Sie wie folgt vor, um die Anzahl von Containern zu ändern, die für den Azure Cosmos DB-Emulator verfügbar sind:
