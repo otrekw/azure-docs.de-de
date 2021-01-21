@@ -13,12 +13,12 @@ ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 03/13/2020
 ms.author: kumud
-ms.openlocfilehash: d630a41f9b83a852605ffad2a85ad6dd14bbac73
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e047f46e110e1f7b1d544545c80bd1097ae65167
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86079648"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98221917"
 ---
 # <a name="tutorial-route-network-traffic-with-a-route-table-using-the-azure-portal"></a>Tutorial: Weiterleiten von Netzwerkdatenverkehr mithilfe des Azure-Portals
 
@@ -361,4 +361,4 @@ Sie können zwar viele Azure-Ressourcen in einem virtuellen Netzwerk bereitstell
 > [Beschränken des Netzwerkzugriffs auf PaaS-Ressourcen](tutorial-restrict-network-access-to-resources.md)
 
 > [!NOTE] 
-> Azure-Dienste kosten Geld. Mit Azure Cost Management können Sie Budgets festlegen und Warnungen konfigurieren, um die Kontrolle über Ihre Ausgaben zu behalten. Analysieren, verwalten und optimieren Sie Ihre Azure-Kosten mit Cost Management. Weitere Informationen finden Sie in der [Schnellstartanleitung zur Kostenanalyse](https://docs.microsoft.com/azure/cost-management-billing/costs/quick-acm-cost-analysis?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn).
+> Azure-Dienste kosten Geld. Mit Azure Cost Management können Sie Budgets festlegen und Warnungen konfigurieren, um die Kontrolle über Ihre Ausgaben zu behalten. Analysieren, verwalten und optimieren Sie Ihre Azure-Kosten mit Cost Management. Weitere Informationen finden Sie in der [Schnellstartanleitung zur Kostenanalyse](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn).

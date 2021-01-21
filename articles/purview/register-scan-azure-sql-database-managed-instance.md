@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 12/01/2020
-ms.openlocfilehash: 6eb17537fd64b192f64c36b38bab57e11d751328
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: 3513ba0cd1a894b55da604d54964affa79b6adf4
+ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97400776"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98555966"
 ---
 # <a name="register-and-scan-an-azure-sql-database-managed-instance"></a>Registrieren und Überprüfen einer verwalteten Azure SQL-Datenbank-Instanz
 
@@ -28,19 +28,19 @@ Die Datenquelle vom Typ „Verwaltete Azure SQL-Datenbank-Instanz“ unterstütz
 
 ### <a name="known-limitations"></a>Bekannte Einschränkungen
 
-Azure Purview unterstützt nicht die Überprüfung von [Ansichten](https://docs.microsoft.com/sql/relational-databases/views/views?view=sql-server-ver15) in Azure SQL Managed Instance.
+Azure Purview unterstützt nicht die Überprüfung von [Ansichten](/sql/relational-databases/views/views?view=azuresqldb-mi-current&preserve-view=true) in Azure SQL Managed Instance.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 - Erstellen Sie ein neues Purview-Konto, wenn Sie noch keines besitzen.
 
-- [Konfigurieren des öffentlichen Endpunkts in der verwalteten Azure SQL-Instanz](https://docs.microsoft.com/azure/azure-sql/managed-instance/public-endpoint-configure)
+- [Konfigurieren des öffentlichen Endpunkts in der verwalteten Azure SQL-Instanz](/azure/azure-sql/managed-instance/public-endpoint-configure)
     > [!Note]
     > Ihre Organisation muss in der Lage sein, einen öffentlichen Endpunkt zuzulassen, da von Purview **private Endpunkte noch nicht unterstützt werden**. Wenn Sie einen privaten Endpunkt verwenden, ist die Überprüfung nicht erfolgreich.
 
 ### <a name="setting-up-authentication-for-a-scan"></a>Einrichten der Authentifizierung für eine Überprüfung
 
-Authentifizierung zum Überprüfen einer verwalteten Azure SQL-Datenbank-Instanz Wenn Sie eine neue Authentifizierung erstellen müssen, müssen Sie [den Datenbankzugriff auf die verwaltete Azure SQL-Datenbank-Instanz](https://docs.microsoft.com/azure/azure-sql/database/logins-create-manage) autorisieren. Es gibt drei Authentifizierungsmethoden, die von Purview aktuell unterstützt werden:
+Authentifizierung zum Überprüfen einer verwalteten Azure SQL-Datenbank-Instanz Wenn Sie eine neue Authentifizierung erstellen müssen, müssen Sie [den Datenbankzugriff auf die verwaltete Azure SQL-Datenbank-Instanz](/azure/azure-sql/database/logins-create-manage) autorisieren. Es gibt drei Authentifizierungsmethoden, die von Purview aktuell unterstützt werden:
 
 - SQL-Authentifizierung
 - Dienstprinzipal
@@ -51,7 +51,7 @@ Authentifizierung zum Überprüfen einer verwalteten Azure SQL-Datenbank-Instan
 > [!Note]
 > Neue Anmeldenamen können nur mit den Anmeldenamen des Serverebenenprinzipals (im Bereitstellungsprozess erstellt) oder von Mitgliedern der `loginmanager`-Datenbankrolle in der Masterdatenbank erstellt werden. Nach dem Gewähren der Berechtigung dauert es ca. **15 Minuten**, bis im Purview-Konto die entsprechenden Berechtigungen zum Überprüfen der Ressourcen verfügbar sind.
 
-Sie können die Anleitung unter [CREATE LOGIN](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-current&preserve-view=true#examples-1) befolgen, um einen Anmeldenamen für die verwaltete Azure SQL-Datenbank-Instanz zu erstellen, falls Sie noch keinen besitzen. Sie benötigen **Benutzername** und **Kennwort** für die nächsten Schritte.
+Sie können die Anleitung unter [CREATE LOGIN](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-current&preserve-view=true#examples-1) befolgen, um einen Anmeldenamen für die verwaltete Azure SQL-Datenbank-Instanz zu erstellen, falls Sie noch keinen besitzen. Sie benötigen **Benutzername** und **Kennwort** für die nächsten Schritte.
 
 1. Navigieren Sie im Azure-Portal zu Ihrem Schlüsseltresor.
 1. Wählen Sie **Einstellungen > Geheimnisse** aus.
@@ -85,8 +85,8 @@ Zur Nutzung eines Dienstprinzipals können Sie einen vorhandenen Dienstprinzipal
 ##### <a name="configure-azure-ad-authentication-in-the-database-account"></a>Konfigurieren der Azure AD-Authentifizierung im Datenbankkonto
 
 Der Dienstprinzipal oder die verwaltete Identität muss über die Berechtigung zum Abrufen von Metadaten für die Datenbank, die Schemas und die Tabellen verfügen. Darüber hinaus muss das Abfragen der Tabellen möglich sein, damit Stichproben für die Klassifizierung genommen werden können.
-- [Konfigurieren und Verwalten der Azure Active Directory-Authentifizierung mit Azure SQL](https://docs.microsoft.com/azure/azure-sql/database/authentication-aad-configure)
-- Erstellen Sie einen Azure AD-Benutzer in der verwalteten Azure SQL-Datenbank-Instanz, indem Sie die Voraussetzungen erfüllen und das Tutorial unter [Erstellen eigenständiger Benutzer mit Zuordnung zu Azure AD-Identitäten](https://docs.microsoft.com/azure/azure-sql/database/authentication-aad-configure?tabs=azure-powershell#create-contained-users-mapped-to-azure-ad-identities) durcharbeiten.
+- [Konfigurieren und Verwalten der Azure Active Directory-Authentifizierung mit Azure SQL](/azure/azure-sql/database/authentication-aad-configure)
+- Erstellen Sie einen Azure AD-Benutzer in der verwalteten Azure SQL-Datenbank-Instanz, indem Sie die Voraussetzungen erfüllen und das Tutorial unter [Erstellen eigenständiger Benutzer mit Zuordnung zu Azure AD-Identitäten](/azure/azure-sql/database/authentication-aad-configure?tabs=azure-powershell#create-contained-users-mapped-to-azure-ad-identities) durcharbeiten.
 - Weisen Sie der Identität die Berechtigung `db_owner` (**empfohlen**) zu.
 
 ##### <a name="add-service-principal-to-key-vault-and-purviews-credential"></a>Hinzufügen des Dienstprinzipals zum Schlüsseltresor und zu den Anmeldeinformationen von Purview

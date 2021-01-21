@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 12/03/2020
-ms.openlocfilehash: 06f738ea88093ea8de45efebea983fd7fa13216e
-ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
+ms.openlocfilehash: fcc3e487d949a9450f792a6cc230b64e7dbe950a
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97387818"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98202945"
 ---
 # <a name="tutorial-use-the-rest-apis"></a>Tutorial: Verwenden der REST-APIs
 
@@ -142,7 +142,7 @@ Suchen und speichern Sie die folgenden Werte:
 
 
 
-1. [Installieren Sie Node.js.](https://github.com/Azure/autorest/blob/master/docs/installing-autorest.md)
+1. [Installieren Sie Node.js.](https://github.com/Azure/autorest/blob/v2/docs/installing-autorest.md)
 1. Öffnen Sie PowerShell, und führen Sie den folgenden Befehl aus:
 
    ```powershell
@@ -173,7 +173,7 @@ Suchen und speichern Sie die folgenden Werte:
 1. Stellen Sie sicher, dass die Version mindestens 2.3.21 lautet, und wählen Sie dann **Installieren** aus.
 1. Erstellen Sie die Anwendung, und führen Sie sie aus.
 
-Der Beispielcode gibt die Anzahl von Typdefinitionen (Typedefs) im Katalog zurück und zeigt, wie Rollenzuweisungen behandelt werden sollen. Ausführliche Informationen finden Sie im Beispielcode unter `DoRoleAssignmentOperations()`. Weitere Informationen zum Projekt finden Sie unter [Projekteinrichtung](https://github.com/Azure/autorest/blob/master/docs/client/proj-setup.md).
+Der Beispielcode gibt die Anzahl von Typdefinitionen (Typedefs) im Katalog zurück und zeigt, wie Rollenzuweisungen behandelt werden sollen. Ausführliche Informationen finden Sie im Beispielcode unter `DoRoleAssignmentOperations()`. Weitere Informationen zum Projekt finden Sie unter [Projekteinrichtung](https://github.com/Azure/autorest/blob/v2/docs/client/proj-setup.md).
 
 ### <a name="sample-code-for-the-console-application"></a>Beispielcode für die Konsolenanwendung
 

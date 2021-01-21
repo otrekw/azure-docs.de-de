@@ -6,12 +6,12 @@ ms.author: bwren
 ms.subservice: metrics
 ms.topic: tutorial
 ms.date: 03/09/2020
-ms.openlocfilehash: 5dcb86ff4af2a68ecf0bb361e6da4f788ea32b62
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: 121de67ddb251e7431873c76e379eb223ceacd0d
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97881292"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98250671"
 ---
 # <a name="tutorial-create-a-metrics-chart-in-azure-monitor"></a>Tutorial: Erstellen eines Metrikdiagramms in Azure Monitor
 Mit dem Metrik-Explorer – einem Azure Monitor-Feature im Azure-Portal – können Sie auf der Grundlage von Metrikwerten Diagramme erstellen, Trends visuell korrelieren sowie Spitzen und Einbrüche bei Metrikwerten untersuchen. Verwenden Sie den Metrik-Explorer, um die Integrität und Auslastung Ihrer Azure-Ressourcen zu untersuchen oder um Diagramme auf der Grundlage benutzerdefinierter Metriken zu zeichnen. 
@@ -70,20 +70,20 @@ Verwenden Sie **Time Brush**, um einen interessanten Bereich des Diagramms (beis
 ## <a name="apply-dimension-filters-and-splitting"></a>Anwenden von Dimensionsfiltern und Aufteilung
 Die folgenden Referenzen enthalten Informationen zu erweiterten Features, mit denen Sie Ihre Metriken weiter analysieren und potenzielle Ausreißer in Ihren Daten ermitteln können.
 
-- Durch das [Filtern](../platform/metrics-charts.md#apply-filters-to-charts) können Sie entscheiden, welche Dimensionswerte im Diagramm enthalten sind. So können Sie beispielsweise erreichen, dass in einem Diagramm für eine Metrik vom Typ *Serverantwortzeit* nur erfolgreiche Anforderungen angezeigt werden. 
+- Durch das [Filtern](../platform/metrics-charts.md#filters) können Sie entscheiden, welche Dimensionswerte im Diagramm enthalten sind. So können Sie beispielsweise erreichen, dass in einem Diagramm für eine Metrik vom Typ *Serverantwortzeit* nur erfolgreiche Anforderungen angezeigt werden. 
 
-- Durch das [Aufteilen](../platform/metrics-charts.md#apply-splitting-to-a-chart) können Sie steuern, ob das Diagramm separate Linien für jeden Wert einer Dimension anzeigt oder die Werte in eine Linie zusammenfügt. So können Sie beispielsweise eine einzelne Linie für die durchschnittliche Antwortzeit aller Serverinstanzen oder separate Linien für jeden Server anzeigen. 
+- Durch das [Aufteilen](../platform/metrics-charts.md#apply-splitting) können Sie steuern, ob das Diagramm separate Linien für jeden Wert einer Dimension anzeigt oder die Werte in eine Linie zusammenfügt. So können Sie beispielsweise eine einzelne Linie für die durchschnittliche Antwortzeit aller Serverinstanzen oder separate Linien für jeden Server anzeigen. 
 
 In den [Beispielen für Metrikdiagramme](../platform/metric-chart-samples.md) können Sie sich Beispiele mit angewandter Filterung und Aufteilung ansehen.
 
 ## <a name="advanced-chart-settings"></a>Erweiterte Diagrammeinstellungen
 
-Sie können die Formatierung des Diagramms, den Titel und erweiterte Diagrammeinstellungen anpassen. Wenn Sie Ihre Anpassungen vorgenommen haben, heften Sie das Diagramm an ein Dashboard an, um Ihr Werk zu speichern. Sie können auch Metrikwarnungen konfigurieren. Unter [Erweiterte Funktionen von Azure Metrik-Explorer](../platform/metrics-charts.md#lock-boundaries-of-chart-y-axis) finden Sie Informationen zu diesen und anderen erweiterten Features des Azure Monitor-Metrik-Explorers.
+Sie können die Formatierung des Diagramms, den Titel und erweiterte Diagrammeinstellungen anpassen. Wenn Sie Ihre Anpassungen vorgenommen haben, heften Sie das Diagramm an ein Dashboard an, um Ihr Werk zu speichern. Sie können auch Metrikwarnungen konfigurieren. Unter [Erweiterte Funktionen von Azure Metrik-Explorer](../platform/metrics-charts.md#locking the-range-of-the-y-axis) finden Sie Informationen zu diesen und anderen erweiterten Features des Azure Monitor-Metrik-Explorers.
 
 
 ## <a name="next-steps"></a>Nächste Schritte
 Sie wissen nun, wie Sie mit Metriken in Azure Monitor arbeiten. Als Nächstes erfahren Sie, wie Sie Metriken verwenden, um proaktive Warnungen zu senden.
 
 > [!div class="nextstepaction"]
-> [Erstellen, Anzeigen und Verwalten von Metrikwarnungen mit Azure Monitor](../platform/metrics-charts.md#create-alert-rules)
+> [Erstellen, Anzeigen und Verwalten von Metrikwarnungen mit Azure Monitor](../platform/metrics-charts.md#alert-rules)
 

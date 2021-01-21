@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 10/02/2020
-ms.openlocfilehash: 15708e35fa27bb4a1f72368df6f49ff747eb799b
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: 36781e7f975ee9d4a03cf899650701bf2d3940ac
+ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97739789"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98555949"
 ---
 # <a name="register-and-scan-an-azure-sql-database"></a>Registrieren und Überprüfen von Azure SQL-Datenbank
 
@@ -28,7 +28,7 @@ Die Datenquelle vom Typ „Azure SQL-Datenbank“ unterstützt die folgenden Fu
 
 ### <a name="known-limitations"></a>Bekannte Einschränkungen
 
-Azure Purview unterstützt nicht die Überprüfung von [Ansichten](https://docs.microsoft.com/sql/relational-databases/views/views?view=sql-server-ver15&preserve-view=true) in Azure SQL-Datenbank. 
+Azure Purview unterstützt nicht die Überprüfung von [Ansichten](/sql/relational-databases/views/views?view=azuresqldb-current&preserve-view=true) in Azure SQL-Datenbank.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -50,7 +50,7 @@ Authentifizierung zum Überprüfen von Azure SQL-Datenbank Wenn Sie eine neue A
 > [!Note]
 > Neue Anmeldenamen können nur mit den Anmeldenamen des Serverebenenprinzipals (im Bereitstellungsprozess erstellt) oder von Mitgliedern der `loginmanager`-Datenbankrolle in der Masterdatenbank erstellt werden. Nach dem Gewähren der Berechtigung dauert es ca. **15 Minuten**, bis im Purview-Konto die entsprechenden Berechtigungen zum Überprüfen der Ressourcen verfügbar sind.
 
-Sie können die Anleitung unter [CREATE LOGIN](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-current&preserve-view=true#examples-1) befolgen, um einen Anmeldenamen für Azure SQL-Datenbank zu erstellen, falls Sie noch keinen besitzen. Sie benötigen **Benutzername** und **Kennwort** für die nächsten Schritte.
+Sie können die Anleitung unter [CREATE LOGIN](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-current&preserve-view=true#examples-1) befolgen, um einen Anmeldenamen für Azure SQL-Datenbank zu erstellen, falls Sie noch keinen besitzen. Sie benötigen **Benutzername** und **Kennwort** für die nächsten Schritte.
 
 1. Navigieren Sie im Azure-Portal zu Ihrem Schlüsseltresor.
 1. Wählen Sie **Einstellungen > Geheimnisse** aus.
@@ -100,7 +100,7 @@ Der Dienstprinzipal oder die verwaltete Identität muss über die Berechtigung z
     ```
 
     > [!Note]
-    > `Username` ist Ihr eigener Dienstprinzipal oder eine verwaltete Identität von Purview. Weitere Informationen finden Sie unter den [festen Datenbankrollen und ihren Möglichkeiten](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/database-level-roles?view=sql-server-ver15&preserve-view=true#fixed-database-roles).
+    > `Username` ist Ihr eigener Dienstprinzipal oder eine verwaltete Identität von Purview. Weitere Informationen finden Sie unter den [festen Datenbankrollen und ihren Möglichkeiten](/sql/relational-databases/security/authentication-access/database-level-roles?view=sql-server-ver15&preserve-view=true#fixed-database-roles).
     
 ##### <a name="add-service-principal-to-key-vault-and-purviews-credential"></a>Hinzufügen des Dienstprinzipals zum Schlüsseltresor und zu den Anmeldeinformationen von Purview
 

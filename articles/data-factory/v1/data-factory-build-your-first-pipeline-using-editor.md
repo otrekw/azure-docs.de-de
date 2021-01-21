@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.date: 01/22/2018
-ms.openlocfilehash: 360fbc3e1bfe7890f1f3b05899eb95ce7a3a72c2
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 4e19991de20b130b878a230313d87ca09d31a84e
+ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96496619"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98556442"
 ---
 # <a name="tutorial-build-your-first-data-factory-by-using-the-azure-portal"></a>Tutorial: Erstellen der ersten Data Factory mit dem Azure-Portal
 > [!div class="op_single_selector"]
@@ -31,7 +31,7 @@ ms.locfileid: "96496619"
 > Dieser Artikel bezieht sich auf Version 1 von Azure Data Factory, die allgemein verfügbar ist. Wenn Sie die aktuelle Version des Data Factory-Diensts verwenden, helfen Ihnen die Informationen unter [Schnellstart: Erstellen einer Data Factory mit Data Factory](../quickstart-create-data-factory-dot-net.md).
 
 > [!WARNING]
-> Der JSON-Editor im Azure-Portal zum Erstellen und Bereitstellen von Pipelines für ADF v1 wird am 31. Juli 2019 deaktiviert. Nach dem 31. Juli 2019 können Sie zum Erstellen und Bereitstellen von Pipelines für ADF v1 weiterhin [Powershell-Cmdlets für ADF v1](/powershell/module/az.datafactory/?view=azps-2.4.0&viewFallbackFrom=azps-2.3.2), das [ADF v1 .NET SDK](/dotnet/api/microsoft.azure.management.datafactories.models?view=azure-dotnet) und [REST-APIs für ADF v1](/rest/api/datafactory/) verwenden.
+> Der JSON-Editor im Azure-Portal zum Erstellen und Bereitstellen von Pipelines für ADF v1 wird am 31. Juli 2019 deaktiviert. Nach dem 31. Juli 2019 können Sie zum Erstellen und Bereitstellen von Pipelines für ADF v1 weiterhin [Powershell-Cmdlets für ADF v1](/powershell/module/az.datafactory/), das [ADF v1 .NET SDK](/dotnet/api/microsoft.azure.management.datafactories.models) und [REST-APIs für ADF v1](/rest/api/datafactory/) verwenden.
 
 In diesem Artikel erfahren Sie, wie Sie mithilfe des [Azure-Portals](https://portal.azure.com/) Ihre erste Data Factory erstellen. Falls Sie das Tutorial mit anderen Tools/SDKs absolvieren möchten, wählen Sie in der Dropdownliste eine andere Option aus. 
 

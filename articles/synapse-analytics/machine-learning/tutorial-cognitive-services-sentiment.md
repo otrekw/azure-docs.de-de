@@ -9,16 +9,16 @@ ms.reviewer: jrasnick, garye
 ms.date: 11/20/2020
 author: nelgson
 ms.author: negust
-ms.openlocfilehash: 1b407cbee5218149f794ab125ac058e32b422558
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 6a4833cf0d73939e01fd3e3e7263c6cba3c0a28a
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96465222"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222189"
 ---
 # <a name="tutorial-sentiment-analysis-with-cognitive-services-preview"></a>Tutorial: Stimmungsanalyse mit Cognitive Services (Vorschau)
 
-In diesem Tutorial erfahren Sie, wie Sie Ihre Daten in Azure Synapse mit [Cognitive Services](https://go.microsoft.com/fwlink/?linkid=2147492) problemlos anreichern können. Wir verwenden die Funktionen der [Textanalyse](https://docs.microsoft.com/azure/cognitive-services/text-analytics/) zum Durchführen einer Stimmungsanalyse. Ein Benutzer in Azure Synapse kann einfach eine Tabelle auswählen, die eine Textspalte enthält, um sie mit Stimmungen anzureichern. Diese Stimmungen können positiv, negativ, gemischt oder neutral sein, und es wird auch eine Wahrscheinlichkeit zurückgegeben.
+In diesem Tutorial erfahren Sie, wie Sie Ihre Daten in Azure Synapse mit [Cognitive Services](../../cognitive-services/index.yml) problemlos anreichern können. Wir verwenden die Funktionen der [Textanalyse](../../cognitive-services/text-analytics/index.yml) zum Durchführen einer Stimmungsanalyse. Ein Benutzer in Azure Synapse kann einfach eine Tabelle auswählen, die eine Textspalte enthält, um sie mit Stimmungen anzureichern. Diese Stimmungen können positiv, negativ, gemischt oder neutral sein, und es wird auch eine Wahrscheinlichkeit zurückgegeben.
 
 In diesem Lernprogramm wird Folgendes behandelt:
 
@@ -98,7 +98,7 @@ Das soeben geöffnete Notebook verwendet die [mmlspark-Bibliothek](https://githu
 
 Mit den von Ihnen bereitgestellten Azure Key Vault-Details können Sie auf sichere Weise auf Ihre Geheimnisse verweisen, ohne sie offenzulegen.
 
-Sie können jetzt **Alle ausführen** für die Zellen wählen, um Ihre Daten mit Stimmungen anzureichern. Die Stimmungen werden als positiv/negativ/neutral/gemischt zurückgegeben, und Sie erhalten auch eine Wahrscheinlichkeit pro Stimmung. Weitere Informationen zu [Cognitive Services – Stimmungsanalyse](https://go.microsoft.com/fwlink/?linkid=2147792)
+Sie können jetzt **Alle ausführen** für die Zellen wählen, um Ihre Daten mit Stimmungen anzureichern. Die Stimmungen werden als positiv/negativ/neutral/gemischt zurückgegeben, und Sie erhalten auch eine Wahrscheinlichkeit pro Stimmung. Weitere Informationen zu [Cognitive Services – Stimmungsanalyse](../../cognitive-services/text-analytics/how-tos/text-analytics-how-to-sentiment-analysis.md)
 
 ![Ausführen der Stimmungsanalyse](media/tutorial-cognitive-services/tutorial-cognitive-services-sentiment-00h.png)
 

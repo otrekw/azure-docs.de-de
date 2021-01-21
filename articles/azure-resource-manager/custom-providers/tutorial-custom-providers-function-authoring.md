@@ -3,14 +3,14 @@ title: Erstellen eines RESTful-Endpunkts
 description: In diesem Tutorial wird gezeigt, wie Sie einen RESTful-Endpunkt für benutzerdefinierte Anbieter erstellen. Sie erfahren ausführlich, wie Sie Anforderungen und Antworten für die unterstützten RESTful-HTTP-Methoden behandeln.
 author: jjbfour
 ms.topic: tutorial
-ms.date: 06/19/2019
+ms.date: 01/13/2021
 ms.author: jobreen
-ms.openlocfilehash: d7f6c51211ce0572797ade659b9316003502da1f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 54d0df287865d5d92403bf68227a2d4c5faa8bb4
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75648727"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98200208"
 ---
 # <a name="author-a-restful-endpoint-for-custom-providers"></a>Erstellen eines RESTful-Endpunkts für benutzerdefinierte Anbieter
 
@@ -347,7 +347,7 @@ Nachdem Sie die Methoden und Klassen hinzugefügt haben, müssen Sie die Methode
 ```csharp
 #r "Newtonsoft.Json"
 #r "Microsoft.WindowsAzure.Storage"
-#r "../bin/Microsoft.Azure.Management.ResourceManager.Fluent.dll"
+#r "../bin/Microsoft.Azure.Management.ResourceManager.Fluent"
 
 using System;
 using System.Net;
