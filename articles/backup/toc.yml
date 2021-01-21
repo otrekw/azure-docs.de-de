@@ -210,6 +210,8 @@
           items:
             - name: Wiederherstellen von Dateien aus Azure für Windows Server
               href: backup-azure-restore-windows-server.md
+            - name: Wiederherstellen aller Dateien auf einem Volume
+              href: restore-all-files-volume-mars.md
             - name: Wiederherstellen des Systemstatus von Windows Server
               href: backup-azure-restore-system-state.md
         - name: Verwalten
@@ -482,7 +484,7 @@
       href: ./policy-reference.md
 - name: Ressourcen
   items:
-    - name: Kompatibilität
+    - name: Compliance
       href: compliance-offerings.md
     - name: Azure-Roadmap
       href: 'https://azure.microsoft.com/roadmap/'

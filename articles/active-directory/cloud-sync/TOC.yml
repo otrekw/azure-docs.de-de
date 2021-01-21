@@ -1,0 +1,88 @@
+- name: Cloudsynchronisierung
+  href: index.yml
+- name: Übersicht
+  items:
+    - name: Was ist die Identitätsbereitstellung?
+      href: what-is-provisioning.md
+    - name: "Worum handelt es sich bei der Azure\_AD Connect-Cloudsynchronisierung?"
+      href: what-is-cloud-sync.md
+      maintainContext: true
+- name: Tutorials
+  expanded: true
+  items:
+    - name: "Integrieren einer einzelnen AD-Gesamtstruktur in einen einzelnen Azure\_AD-Mandanten"
+      href: tutorial-single-forest.md
+    - name: "Integrieren einer vorhandenen Gesamtstruktur in eine neue Gesamtstruktur mit einem einzelnen Azure\_AD-Mandanten"
+      href: tutorial-existing-forest.md
+    - name: Pilotcloudsynchronisierung für eine vorhandene synchronisierte AD-Gesamtstruktur
+      href: tutorial-pilot-aadc-aadccp.md
+- name: Konzepte
+  items:
+    - name: Funktionsweise
+      href: concept-how-it-works.md
+    - name: Was ist Kennworthashsynchronisierung?
+      href: ../hybrid/whatis-phs.md?context=%2fazure%2factive-directory%2fcloud-provisioning%2fcontext%2fcloud-provisioning-context
+    - name: Grundlegendes zum Schema sowie zu den Attributen und Ausdrücken von Azure AD
+      href: concept-attributes.md
+    - name: Schreiben von Ausdrücken für Attributzuordnungen in Azure Active Directory
+      href: reference-expressions.md
+- name: Anleitungen
+  items:
+    - name: Installation und Upgrade
+      items:
+        - name: Voraussetzungen für die Installation
+          href: how-to-prerequisites.md
+        - name: Installieren des Agents für die Azure AD Connect-Cloudbereitstellung
+          href: how-to-install.md
+        - name: Konfiguration der Cloudsynchronisierung
+          href: how-to-configure.md
+        - name: Bedarfsorientierte Bereitstellung
+          href: how-to-on-demand-provision.md
+        - name: Attributzuordnung
+          href: how-to-attribute-mapping.md
+        - name: Verwenden des einmaligen Anmeldens
+          href: how-to-sso.md
+    - name: Planung und Entwurf
+      items:
+        - name: Topologien und Szenarien für die Azure AD Connect-Cloudsynchronisierung
+          href: plan-cloud-sync-topologies.md
+    - name: Verwalten
+      items:
+        - name: Automatisches Upgrade des Agents
+          href: how-to-automatic-upgrade.md
+        - name: Versehentliche Löschvorgänge
+          href: how-to-accidental-deletes.md
+        - name: Optionen für die Agent-Registrierung
+          href: how-to-manage-registry-options.md
+        - name: PowerShell-Cmdlets für den Agent (gMSA)
+          href: how-to-gmsa-cmdlets.md
+        - name: Installieren des Bereitstellungs-Agents mithilfe von PowerShell
+          href: how-to-install-pshell.md
+    - name: Entwickeln
+      items:
+        - name: Transformationen
+          href: how-to-transformation.md
+        - name: Eingehende Synchronisierung mit der MS Graph-API
+          href: how-to-inbound-synch-ms-graph.md
+        - name: Azure AD-Synchronisierungs-API
+          href: /graph/api/resources/synchronization-overview
+    - name: Problembehandlung
+      items:
+        - name: Problembehandlung für die Cloudsynchronisierung
+          href: how-to-troubleshoot.md
+        - name: Duplizierte Attribute
+          href: ../hybrid/how-to-connect-syncservice-duplicate-attribute-resiliency.md?context=%2fazure%2factive-directory%2fcloud-provisioning%2fcontext%2fcp-context
+- name: Verweis
+  items:
+    - name: Versionsverlauf des Agents für die Azure AD Connect-Cloudbereitstellung
+      href: reference-version-history.md
+    - name: Häufig gestellte Fragen zur Azure AD Connect-Cloudsynchronisierung
+      href: reference-cloud-sync-faq.md
+    - name: AADCloudSyncTools-PowerShell-Modul
+      href: reference-powershell.md
+    - name: 'Attribute, die synchronisiert werden'
+      href: ../hybrid/reference-connect-sync-attributes-synchronized.md?context=%2fazure%2factive-directory%2fcloud-provisioning%2fcontext%2fcp-context
+    - name: Fehlercodes und -beschreibungen
+      href: reference-error-codes.md
+    - name: "Grundlegende Active Directory- und Azure\_AD-Umgebung"
+      href: tutorial-basic-ad-azure.md
