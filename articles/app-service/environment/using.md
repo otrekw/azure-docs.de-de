@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 11/16/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: c0ceae8727681c045c3bbf3e6626937633b38997
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: ba06a0f9d520f445965329203aecd6c576666737
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98013531"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98209728"
 ---
 # <a name="using-an-app-service-environment"></a>Verwenden einer App Service-Umgebung
 
@@ -51,7 +51,7 @@ So erstellen Sie eine App in einer ASE
     > Linux- und Windows-Apps können sich zwar nicht im gleichen App Service-Plan, aber in der gleichen App Service-Umgebung befinden.
     >
 
-1. Wählen Sie **Weiter: Überwachen** aus. Wenn Sie App Insights für Ihre App aktivieren möchten, können Sie dies hier im Rahmen der Erstellung tun. 
+1. Klicken Sie auf **Weiter: Überwachen** aus. Wenn Sie App Insights für Ihre App aktivieren möchten, können Sie dies hier im Rahmen der Erstellung tun. 
 
 1.  Klicken Sie auf **Weiter: Tags**. Fügen Sie der App ggf. gewünschte Tags hinzu.  
 

@@ -3,14 +3,14 @@ title: 'Azure Automation-Updateverwaltung: Übersicht'
 description: Dieser Artikel bietet eine Übersicht über die Updateverwaltungsfunktion, die Updates für Ihre Windows- und Linux-Computer implementiert.
 services: automation
 ms.subservice: update-management
-ms.date: 12/09/2020
+ms.date: 01/13/2021
 ms.topic: conceptual
-ms.openlocfilehash: 4b557c9772e76b6b61cdf01799ee30ba6bc11807
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: d66d4d32c788317d8b0781f9f24120fbce2f6f8f
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96928425"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98185613"
 ---
 # <a name="update-management-overview"></a>Übersicht über die Updateverwaltung
 
@@ -65,16 +65,16 @@ Die Registrierung eines Computers für die Updateverwaltung in mehreren Log Ana
 
 ## <a name="clients"></a>Clients
 
-### <a name="supported-client-types"></a>Unterstützte Clienttypen
+### <a name="supported-operating-systems"></a>Unterstützte Betriebssysteme
 
-Die folgende Tabelle enthält die unterstützten Betriebssysteme für Updatebewertungen und -patching. Das Patchen erfordert einen Hybrid Runbook Worker, der automatisch installiert wird, wenn Sie den virtuellen Computer oder Server für die Verwaltung durch Updateverwaltung aktivieren. Informationen zu den Systemanforderungen für Hybrid Runbook Worker finden Sie unter [Bereitstellen eines Windows Hybrid Runbook Workers](../automation-windows-hrw-install.md) und [Bereitstellen eines Linux Hybrid Runbook Workers](../automation-linux-hrw-install.md).
+Die folgende Tabelle enthält die unterstützten Betriebssysteme für Updatebewertungen und -patching. Das Patchen erfordert einen System Hybrid Runbook Worker, der automatisch installiert wird, wenn Sie den virtuellen Computer oder Server für die Verwaltung durch Updateverwaltung aktivieren. Informationen zu den Systemanforderungen für Hybrid Runbook Worker finden Sie unter [Bereitstellen eines Windows Hybrid Runbook Workers](../automation-windows-hrw-install.md) und [Bereitstellen eines Linux Hybrid Runbook Workers](../automation-linux-hrw-install.md).
 
 > [!NOTE]
 > Die Updatebewertung von Linux-Computern wird nur in bestimmten Regionen unterstützt, die in der [Zuordnungstabelle](../how-to/region-mappings.md#supported-mappings) für Automation-Konto und Log Analytics-Arbeitsbereich aufgeführt sind.
 
 |Betriebssystem  |Notizen  |
 |---------|---------|
-|Windows Server 2019 (Datacenter/Datacenter Core/Standard)<br><br>Windows Server 2016 (Datacenter/Datacenter Core/Standard)<br><br>Windows Server 2012 R2 (Datacenter/Standard)<br><br>Windows Server 2012 ||
+|Windows Server 2019 (Datacenter/Datacenter Core/Standard)<br>Windows Server 2016 (Datacenter/Datacenter Core/Standard)<br>Windows Server 2012 R2 (Datacenter/Standard)<br>Windows Server 2012 |
 |Windows Server 2008 R2 (RTM und SP1 Standard)| Die Updateverwaltung unterstützt Bewertungen und Patching für dieses Betriebssystem. Der [Hybrid Runbook Worker](../automation-windows-hrw-install.md) wird für Windows Server 2008 R2 unterstützt. |
 |CentOS 6 und 7 (x64)      | Linux-Agents erfordern Zugriff auf ein Updaterepository. Für klassifizierungsbasiertes Patchen muss `yum` Sicherheitsdaten zurückgeben, über die CentOS in den RTM-Releases nicht verfügt. Weitere Informationen zu klassifizierungsbasiertem Patching unter CentOS finden Sie unter [Lösung für die Updateverwaltung in Azure](view-update-assessments.md#linux).          |
 |Red Hat Enterprise 6 und 7 (x64)     | Linux-Agents erfordern Zugriff auf ein Updaterepository.        |
@@ -84,9 +84,9 @@ Die folgende Tabelle enthält die unterstützten Betriebssysteme für Updatebewe
 > [!NOTE]
 > VM-Skalierungsgruppen von Azure können über die Updateverwaltung verwaltet werden. Die Updateverwaltung arbeitet nicht mit dem Basisimage, sondern mit den Instanzen selbst. Die Updates müssen inkrementell geplant werden, damit nicht alle VM-Instanzen auf einmal aktualisiert werden. Sie können Knoten für VM-Skalierungsgruppen hinzufügen. Eine entsprechende Anleitung finden Sie unter [Hinzufügen eines Nicht-Azure-Computers zu Änderungsnachverfolgung und Bestand](../automation-tutorial-installed-software.md#add-a-non-azure-machine-to-change-tracking-and-inventory).
 
-### <a name="unsupported-client-types"></a>Nicht unterstützte Clienttypen
+### <a name="unsupported-operating-systems"></a>Nicht unterstützte Betriebssysteme
 
-Die folgende Tabelle enthält nicht unterstützte Betriebssysteme:
+In der folgenden Tabelle werden Betriebssysteme aufgelistet, die von der Updateverwaltung nicht unterstützt werden:
 
 |Betriebssystem  |Notizen  |
 |---------|---------|
@@ -94,15 +94,20 @@ Die folgende Tabelle enthält nicht unterstützte Betriebssysteme:
 |Windows Server 2016 Nano Server     | Wird nicht unterstützt.       |
 |Azure Kubernetes Service-Knoten | Wird nicht unterstützt. Verwenden Sie den unter [Anwenden von Sicherheits- und Kernelupdates auf Linux-Knoten in Azure Kubernetes Service (AKS)](../../aks/node-updates-kured.md) beschriebenen Patchprozess.|
 
-### <a name="client-requirements"></a>Clientanforderungen
+### <a name="system-requirements"></a>Systemanforderungen
 
-Der folgende Abschnitt enthält Informationen zu betriebssystemspezifischen Clientanforderungen. Weitere Informationen finden Sie unter [Netzwerkplanung](#ports). Informationen zu den Clientanforderungen für TLS 1.2 finden Sie unter [Erzwingen von TLS 1.2 für Azure Automation](../automation-managing-data.md#tls-12-enforcement-for-azure-automation).
+Der folgende Abschnitt enthält Informationen zu betriebssystemspezifischen Anforderungen. Weitere Informationen finden Sie unter [Netzwerkplanung](#ports). Informationen zu den Anforderungen für TLS 1.2 finden Sie unter [Erzwingen von TLS 1.2 für Azure Automation](../automation-managing-data.md#tls-12-enforcement-for-azure-automation).
 
 #### <a name="windows"></a>Windows
 
+Softwareanforderungen:
+
+- .NET Framework 4.6 oder höher ist erforderlich. ([.NET Framework herunterladen](/dotnet/framework/install/guide-for-developers).)
+- Windows PowerShell 5.1 ist erforderlich. ([Windows Management Framework 5.1 herunterladen](https://www.microsoft.com/download/details.aspx?id=54616).)
+
 Windows-Agents müssen für die Kommunikation mit einem WSUS-Server konfiguriert sein oder erfordern Zugriff auf Microsoft Update. Für Hybridcomputer empfehlen wir, den Log Analytics-Agent für Windows zu installieren, indem Sie zuerst Ihren Computer mit [Azure Arc-fähigen Servern](../../azure-arc/servers/overview.md) verbinden und dann Azure Policy verwenden, um die integrierte Richtlinie [Log Analytics-Agent für Windows Azure Arc-Computer bereitstellen](../../governance/policy/samples/built-in-policies.md#monitoring) zuzuweisen. Wenn Sie alternativ die Überwachung der Computer mit Azure Monitor für VMs planen, verwenden Sie stattdessen die Methode [Azure Monitor für VMs aktivieren](../../governance/policy/samples/built-in-initiatives.md#monitoring).
 
-Sie können die Updateverwaltung zusammen mit Microsoft Endpoint Configuration Manager verwenden. Weitere Informationen zu Integrationsszenarien finden Sie unter [Integrieren der Updateverwaltung in Windows Endpoint Configuration Manager](mecmintegration.md). Der [Log Analytics-Agent für Windows](../../azure-monitor/platform/agent-windows.md) ist für Windows-Server erforderlich, die von Sites in Ihrer Configuration Manager-Umgebung verwaltet werden. 
+Sie können die Updateverwaltung zusammen mit Microsoft Endpoint Configuration Manager verwenden. Weitere Informationen zu Integrationsszenarien finden Sie unter [Integrieren der Updateverwaltung in Windows Endpoint Configuration Manager](mecmintegration.md). Der [Log Analytics-Agent für Windows](../../azure-monitor/platform/agent-windows.md) ist für Windows-Server erforderlich, die von Sites in Ihrer Configuration Manager-Umgebung verwaltet werden.
 
 Über Azure Marketplace bereitgestellte virtuelle Windows-Computer sind standardmäßig so konfiguriert, dass sie automatisch Updates vom Windows Update-Dienst erhalten. Dieses Verhalten ändert sich nicht, wenn Sie Ihrem Arbeitsbereich virtuelle Windows-Computer hinzufügen. Wenn Sie Updates mithilfe der Updateverwaltung nicht aktiv verwalten, gilt das Standardverhalten (Updates werden automatisch angewendet).
 
@@ -111,7 +116,11 @@ Sie können die Updateverwaltung zusammen mit Microsoft Endpoint Configuration M
 
 #### <a name="linux"></a>Linux
 
-Für Linux erfordert der Computer Zugriff auf ein Updaterepository, entweder privat oder öffentlich. Für die Interaktion mit der Updateverwaltung ist TLS 1.1 oder TLS 1.2 erforderlich. Die Updateverwaltung unterstützt keinen Log Analytics-Agent für Linux, der für die Berichterstattung an mehr als einen Log Analytics-Arbeitsbereich konfiguriert ist. Auf dem Computer muss außerdem Python 2.x installiert sein.
+Softwareanforderungen:
+
+- Der Computer benötigt Zugriff auf ein Updaterepository, entweder privat oder öffentlich.
+- Für die Interaktion mit der Updateverwaltung ist TLS 1.1 oder TLS 1.2 erforderlich.
+- Python 2.x-Installation
 
 > [!NOTE]
 > Die Updatebewertung von Linux-Computern wird nur in bestimmten Regionen unterstützt. Informationen finden Sie in der [Zuordnungstabelle](../how-to/region-mappings.md#supported-mappings) für Automation-Konto und Log Analytics-Arbeitsbereich.
@@ -130,11 +139,11 @@ Die Updateverwaltung verwendet die in diesem Abschnitt beschriebenen Ressourcen.
 
 ### <a name="hybrid-runbook-worker-groups"></a>Hybrid-Runbook-Workergruppen
 
-Nachdem Sie die Updateverwaltung aktiviert haben, werden alle direkt mit dem Log Analytics-Arbeitsbereich verbundenen Windows-Computer automatisch als Hybrid Runbook Worker konfiguriert, um die Runbooks zu unterstützen, die die Updateverwaltung unterstützen.
+Nachdem Sie die Updateverwaltung aktiviert haben, werden alle direkt mit dem Log Analytics-Arbeitsbereich verbundenen Windows-Computer automatisch als System Hybrid Runbook Worker konfiguriert, um die Runbooks zu unterstützen, die die Updateverwaltung unterstützen.
 
 Jeder von der Updateverwaltung verwaltete Windows-Computer wird im Bereich „Hybrid Worker-Gruppen“ als Hybrid Worker-Systemgruppe für das Automation-Konto aufgeführt. Die Gruppen verwenden die Benennungskonvention `Hostname FQDN_GUID`. Es ist nicht möglich, diese Gruppen mit Runbooks in Ihrem Konto zu erreichen. Entsprechende Versuche sind nicht erfolgreich. Diese Gruppen sind nur für die ausschließliche Unterstützung der Updateverwaltung bestimmt. Weitere Informationen zur Anzeige der Liste von Windows-Computern, die als Hybrid Runbook Worker konfiguriert sind, finden Sie unter [Anzeigen von Hybrid Runbook Workern](../automation-hybrid-runbook-worker.md#view-system-hybrid-runbook-workers).
 
-Sie können die Windows-Computer einer Hybrid Runbook Worker-Gruppe in Ihrem Automation-Konto hinzufügen, um Automation-Runbooks zu unterstützen, wenn Sie für die Updateverwaltung und die Mitgliedschaft in der Hybrid Runbook Worker-Gruppe dasselbe Konto verwenden. Diese Funktionalität wurde in Version 7.2.12024.0 des Hybrid Runbook Worker hinzugefügt.
+Sie können die Windows-Computer einer System Hybrid Runbook Worker-Gruppe in Ihrem Automation-Konto hinzufügen, um Automation-Runbooks zu unterstützen, wenn Sie für die Updateverwaltung und die Mitgliedschaft in der Hybrid Runbook Worker-Gruppe dasselbe Konto verwenden. Diese Funktionalität wurde in Version 7.2.12024.0 des Hybrid Runbook Worker hinzugefügt.
 
 ### <a name="management-packs"></a>Management Packs
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/17/2020
 ms.author: yelevin
-ms.openlocfilehash: c8af1c32607e5fc7bf548b40069e18923c666303
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 28abb9f09e3bca2522b959c6a9b890de5320b17a
+ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87089650"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98567447"
 ---
 # <a name="connect-your-infoblox-nios-to-azure-sentinel"></a>Verbinden Ihrer Infoblox NIOS-Daten mit Azure Sentinel
 
@@ -34,7 +34,7 @@ In diesem Artikel wird erläutert, wie Sie Ihre [Infoblox Network Identity Opera
 
 ## <a name="forward-infoblox-logs-to-the-syslog-agent"></a>Weiterleiten von Infoblox-Protokollen an den Syslog-Agent  
 
-Konfigurieren Sie Infoblox für das Weiterleiten von Syslog-Nachrichten an Ihren Azure-Arbeitsbereich über den Syslog-Agent.
+Konfigurieren Sie Infoblox für das Weiterleiten von Syslog-Nachrichten an Ihren Azure Sentinel-Arbeitsbereich über den Syslog-Agent.
 
 1. Klicken Sie im Azure Sentinel-Portal auf **Datenconnectors**, und wählen Sie den Connector **Infoblox NIOS** aus.
 

@@ -8,12 +8,12 @@ author: AlexandraKemperMS
 ms.author: alkemper
 ms.topic: conceptual
 ms.date: 3/9/2020
-ms.openlocfilehash: 9a6ae1581b3958495010b032980b0de2e267088b
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 39455c4bc193cce036bd169c702b5c020d53d2f6
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96931876"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98602291"
 ---
 # <a name="use-feature-filters-to-enable-conditional-feature-flags"></a>Verwenden von Featurefiltern, um bedingte Featureflags zu aktivieren
 
@@ -31,7 +31,7 @@ Sie können auch einen eigenen Featurefilter erstellen, der die [Microsoft.Featu
 
 ## <a name="registering-a-feature-filter"></a>Registrieren eines Featurefilters
 
-Rufen Sie zum Registrieren eines Featurefilters die Methode `AddFeatureFilter` auf, und geben Sie dabei den Namen des Featurefilters an. Mit dem folgenden Code wird beispielsweise `PercentageFilter` registriert:
+Sie registrieren einen Featurefilter, indem Sie die `AddFeatureFilter`-Methode aufrufen und dabei den Typnamen des gewünschten Featurefilters angeben. Mit dem folgenden Code wird beispielsweise `PercentageFilter` registriert:
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
@@ -56,29 +56,29 @@ Diese Einstellungen können für definierte Featureflags in Azure App Configurat
     > [!div class="mx-imgBorder"]
     > ![Bearbeiten des Featureflags „Beta“](./media/edit-beta-feature-flag.png)
 
-1. Aktivieren Sie im Bildschirm **Bearbeiten** das Optionsfeld **Ein**, sofern es nicht bereits aktiviert ist. Klicken Sie anschließend auf die Schaltfläche **Filter hinzufügen**. (Die Beschriftung des Optionsfeld **Ein** ändert sich in **Bedingt**.)
+1. Aktivieren Sie im Bildschirm **Bearbeiten** das Kontrollkästchen **Featureflag aktivieren**, sofern es nicht bereits aktiviert ist. Aktivieren Sie dann das Kontrollkästchen **Featurefilter verwenden**, und wählen Sie **Benutzerdefiniert** aus. 
 
-1. Geben Sie im Feld **Schlüssel** die Zeichenfolge *Microsoft.Percentage* ein.
+1. Wählen Sie im Feld **Name** die Zeichenfolge *Microsoft.Percentage* aus.
 
     > [!div class="mx-imgBorder"]
     > ![Hinzufügen eines Featurefilters](./media/feature-flag-add-filter.png)
 
-1. Klicken Sie neben dem Featurefilterschlüssel auf das Kontextmenü. Klicken Sie auf **Parameter bearbeiten**.
+1. Klicken Sie auf das Kontextmenü neben dem Featurefilternamen. Klicken Sie auf **Filterparameter bearbeiten**.
 
     > [!div class="mx-imgBorder"]
-    > ![Bearbeiten von Featurefilterparametern](./media/feature-flag-edit-filter-parameters.png)
+    > ![Bearbeiten von Featurefilterparametern](./media/feature-flags-edit-filter-parameters.png)
 
-1. Zeigen Sie auf den Bereich unter der Kopfzeile **Name**, sodass Textfelder im Raster angezeigt werden. Geben Sie unter **Name** den Namen *Value* und unter **Wert** den Wert „50“ ein. Das Feld **Wert** gibt den Prozentsatz von Anforderungen an, für die der Featurefilter aktiviert werden soll.
+1. Geben Sie unter **Name** den Namen *Value* und unter **Wert** den Wert „50“ ein. Das Feld **Wert** gibt den Prozentsatz von Anforderungen an, für die der Featurefilter aktiviert werden soll.
 
     > [!div class="mx-imgBorder"]
     > ![Festlegen von Featurefilterparametern](./media/feature-flag-set-filter-parameters.png)
 
 1. Klicken Sie auf **Anwenden**, um zum Bildschirm **Featureflag bearbeiten** zurückzukehren. Klicken Sie anschließend erneut auf **Anwenden**, um die Featureflageinstellungen zu speichern.
 
-1. Unter **Zustand** wird für das Featureflag nun *Bedingt* angezeigt. Dieser Zustand gibt an, dass das Featureflag anforderungsspezifisch auf der Grundlage der Kriterien des Featurefilters aktiviert oder deaktiviert wird.
+1. Auf der Seite **Feature-Manager** verfügt das Featureflag nun über den **Featurefilter**-Wert *Benutzerdefiniert*. 
 
     > [!div class="mx-imgBorder"]
-    > ![Bedingtes Featureflag](./media/feature-flag-filter-enabled.png)
+    > ![Mit dem Featurefilterwert „Benutzerdefiniert“ aufgelistetes Featureflag](./media/feature-flag-filter-custom.png)
 
 ## <a name="feature-filters-in-action"></a>Featurefilter in Aktion
 

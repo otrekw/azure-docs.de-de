@@ -5,12 +5,12 @@ author: macolso
 ms.author: macolso
 ms.topic: article
 ms.date: 06/02/2020
-ms.openlocfilehash: e4760463a4d71e4c097b082aa6b93d8b339f94ca
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 5de1188ee018e796f918d7559c0e2c24c77834f4
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92516969"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98186191"
 ---
 # <a name="frequently-asked-questions-about-azure-container-instances"></a>Häufig gestellte Fragen zu Azure Container Instances
 
@@ -53,7 +53,11 @@ Weitere Informationen finden Sie in der [ausführlichen Anleitung](container-ins
 
 ### <a name="what-net-or-net-core-image-layer-should-i-use-in-my-container"></a>Welche .NET oder .NET Core-Imageebene sollte ich in meinem Container verwenden? 
 
-Verwenden Sie das kleinste Image, das Ihre Anforderungen erfüllt. Unter Linux können Sie ein *runtime-alpine* -.NET Core-Image verwenden, das seit der Veröffentlichung von .NET Core 2.1 unterstützt wird. Für Windows müssen Sie bei Verwendung des vollständigen .NET Framework ein Windows Server Core-Image verwenden (reines Laufzeitimage, z.B. *4.7.2-windowsservercore-ltsc2016* ). Reine Laufzeitimages sind kleiner, unterstützen jedoch keine Workloads, für die das .NET SDK erforderlich ist.
+Verwenden Sie das kleinste Image, das Ihre Anforderungen erfüllt. Unter Linux können Sie ein *runtime-alpine*-.NET Core-Image verwenden, das seit der Veröffentlichung von .NET Core 2.1 unterstützt wird. Für Windows müssen Sie bei Verwendung des vollständigen .NET Framework ein Windows Server Core-Image verwenden (reines Laufzeitimage, z.B. *4.7.2-windowsservercore-ltsc2016*). Reine Laufzeitimages sind kleiner, unterstützen jedoch keine Workloads, für die das .NET SDK erforderlich ist.
+
+### <a name="what-types-of-container-registries-are-compatible-with-aci"></a>Welche Typen von Containerregistrierungen sind mit ACI kompatibel?
+
+ACI unterstützt das Abrufen von Images aus ACR und anderen Containerregistrierungen von Drittanbietern, z. B. DockerHub. ACI unterstützt auch das Abrufen von Images aus lokalen Registrierungen, solange sie OCR-kompatibel sind und über einen Endpunkt verfügen, der öffentlich über das Internet verfügbar ist.
 
 ## <a name="availability-and-quotas"></a>Verfügbarkeit und Kontingente
 

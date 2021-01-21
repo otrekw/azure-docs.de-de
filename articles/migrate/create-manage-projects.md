@@ -1,21 +1,21 @@
 ---
 title: Erstellen und Verwalten von Azure Migrate-Projekten
 description: Suchen, erstellen, verwalten und löschen Sie Projekte in Azure Migrate.
-author: ms-psharma
-ms.author: panshar
+author: vineetvikram
+ms.author: vivikram
 ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 11/23/2020
-ms.openlocfilehash: 445e08b255e5b4dd67dd1c6a47c8df6ce59df5bd
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: de0c48bb775b96052fe16d60aa58049bfd58ca4d
+ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96753823"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98567784"
 ---
 # <a name="create-and-manage-azure-migrate-projects"></a>Erstellen und Verwalten von Azure Migrate-Projekten
 
-In diesem Artikel wird beschrieben, wie Sie [Azure Migrate](migrate-services-overview.md)-Projekte erstellen, verwalten und löschen.
+In diesem Artikel wird beschrieben, wie Sie [Azure Migrate](migrate-services-overview.md)-Projekte erstellen, verwalten und löschen. Wenn Sie klassische Azure Migrate-Projekte verwenden, löschen Sie diese Projekte, und befolgen Sie die Schritte zum Erstellen eines neuen Azure Migrate-Projekts. Sie können kein Upgrade klassischer Azure Migrate-Projekte oder -Komponenten auf Azure Migrate durchführen.
 
 Ein Azure Migrate-Projekt wird zum Speichern von Ermittlungs-, Bewertungs- und Migrationsmetadaten verwendet, die in der von Ihnen bewerteten oder migrierten Umgebung gesammelt werden. In einem Projekt können Sie ermittelte Ressourcen nachverfolgen, Bewertungen erstellen und Migrationsvorgänge zu Azure orchestrieren.  
 

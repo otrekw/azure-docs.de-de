@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 12/04/2020
 ms.author: jovanpop
 ms.reviewer: jrasnick
-ms.openlocfilehash: a0458264b6ea0c741244531fc104a7637108b06e
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 4681039f60154b95eeb7e40196ca33055a192c74
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98121344"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222104"
 ---
 # <a name="query-azure-cosmos-db-data-with-a-serverless-sql-pool-in-azure-synapse-link-preview"></a>Abfragen von Azure Cosmos DB-Daten mithilfe eines serverlosen SQL-Pools in Azure Synapse Link (Vorschau)
 
@@ -205,6 +205,8 @@ Das Ergebnis dieser Abfrage könnte wie in der folgenden Tabelle aussehen:
 Weitere Informationen zu den SQL-Typen, die für Azure Cosmos DB-Werte verwendet werden sollten, finden Sie in den [Regeln für die SQL-Typzuordnung](#azure-cosmos-db-to-sql-type-mappings) am Ende dieses Artikels.
 
 ## <a name="create-view"></a>Erstellen einer Sicht
+
+Das Erstellen von Sichten in Master- oder Standarddatenbanken wird weder empfohlen noch unterstützt. Deshalb müssen Sie eine Benutzerdatenbank für Ihre Sichten erstellen.
 
 Nachdem Sie das Schema identifiziert haben, können Sie auf Basis Ihrer Azure Cosmos DB-Daten eine Sicht vorbereiten. Sie sollten Ihren Azure Cosmos DB-Kontoschlüssel in gesonderten Anmeldeinformationen ablegen aus der `OPENROWSET`-Funktion auf diese Anmeldeinformationen verweisen. Lassen Sie Ihren Kontoschlüssel nicht in der Sichtdefinition.
 

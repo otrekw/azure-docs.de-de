@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: alkemper
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: 038d19270fbdb672d397eb2bd56bd27e17ea7af9
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: f407f9ee2ea0ca73b29e4fde9d542c005f78a929
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96929088"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98200446"
 ---
 # <a name="azure-app-configuration-best-practices"></a>Bewährte Methoden für Azure App Configuration
 
@@ -89,6 +89,10 @@ App Configuration bietet die Möglichkeit, Ihre Konfigurationseinstellungen aus 
 ## <a name="multi-region-deployment-in-app-configuration"></a>Bereitstellung in mehreren Regionen in App Configuration
 
 App Configuration ist ein regionaler Dienst. Bei Anwendungen mit unterschiedlichen Konfigurationen pro Region kann das Speichern dieser Konfigurationen in einer Instanz zu einem Single Point of Failure führen. Die Bereitstellung einer App Configuration-Instanz pro Region über mehrere Regionen hinweg ist unter Umständen die bessere Option. Dies kann bei der regionalen Notfallwiederherstellung, zur Sicherstellung der Leistung und bei der Erstellung von Sicherheitssilos hilfreich sein. Durch die Konfiguration nach Region wird auch die Wartezeit verkürzt, und es werden getrennte Drosselungskontingente verwendet, da die Drosselung pro Instanz erfolgt. Zur Anwendung von Notfallwiederherstellungsmaßnahmen können Sie [mehrere Konfigurationsspeicher](./concept-disaster-recovery.md) verwenden. 
+
+## <a name="client-applications-in-app-configuration"></a>Clientanwendungen in App Configuration 
+
+Übermäßige Anforderungen an die App-Konfiguration können zur Drosselung oder zu Überschreitungsgebühren führen. Anwendungen profitieren von der Zwischenspeicherung und intelligenten Aktualisierung, die derzeit verfügbar ist, um die Anzahl der gesendeten Anforderungen zu optimieren. Dieser Prozess kann in Clientanwendungen mit hohem Volumen abgebildet werden, indem direkte Verbindungen mit dem Konfigurationsspeicher vermieden werden. Stattdessen stellen Clientanwendungen eine Verbindung mit einem benutzerdefinierten Dienst her, und dieser Dienst kommuniziert mit dem Konfigurationsspeicher. Diese Proxylösung kann sicherstellen, dass die Clientanwendungen den Einschränkungsgrenzwert für den Konfigurationsspeicher nicht erreichen. Weitere Informationen zu Einschränkungen finden Sie in den [Häufig gestellten Fragen (FAQ)](https://docs.microsoft.com/azure/azure-app-configuration/faq#are-there-any-limits-on-the-number-of-requests-made-to-app-configuration).  
 
 ## <a name="next-steps"></a>Nächste Schritte
 

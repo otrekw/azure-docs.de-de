@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 01/12/2021
-ms.openlocfilehash: 2478148f946ddc88e571b76396544b028455ec75
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 82e1c6bdcd508bf1844223b331bf8363efa7b573
+ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98132104"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98555320"
 ---
 # <a name="cluster-creation-fails-with-invalidnetworkconfigurationerrorcode-in-azure-hdinsight"></a>Fehler „InvalidNetworkConfigurationErrorCode“ bei der Clustererstellung in Azure HDInsight
 
@@ -46,11 +46,11 @@ Dieser Fehler ist ein Hinweis auf ein Problem mit der benutzerdefinierten DNS-Ko
 
 ---
 
-## <a name="failed-to-connect-to-azure-storage-account"></a>„Fehler beim Herstellen der Verbindung mit dem Azure Storage-Konto“
+## <a name="failed-to-connect-to-azure-storage-account"></a>„Fehler beim Herstellen einer Verbindung mit dem Azure Storage-Konto.“
 
 ### <a name="issue"></a>Problem
 
-Fehlerbeschreibung enthält: „Fehler beim Herstellen der Verbindung mit dem Azure Storage-Konto“ oder „Fehler beim Herstellen einer Verbindung mit Azure SQL“.
+Fehlerbeschreibung enthält: „Fehler beim Herstellen einer Verbindung mit dem Azure Storage-Konto“ oder „Fehler beim Herstellen einer Verbindung mit Azure SQL“.
 
 ### <a name="cause"></a>Ursache
 
@@ -72,7 +72,7 @@ Da Azure Storage und SQL nicht über feste IP-Adressen verfügen, müssen wir au
 
 ### <a name="issue"></a>Problem
 
-Die Fehlerbeschreibung enthält den folgenden Text: „Failed to establish an outbound connection from the cluster for the communication with the HDInsight resource provider. Please ensure that outbound connectivity is allowed.“ (Es konnte für die Kommunikation keine ausgehende Verbindung vom Cluster mit dem HDInsight-Ressourcenanbieter hergestellt werden. Sorgen Sie dafür, dass ausgehende Konnektivität zulässig ist.).
+Die Fehlerbeschreibung enthält den folgenden Text: „Failed to establish an outbound connection from the cluster for the communication with the HDInsight resource provider. Please ensure that outbound connectivity is allowed.“ (Es konnte für die Kommunikation keine ausgehende Verbindung vom Cluster mit dem HDInsight-Ressourcenanbieter hergestellt werden. Sorgen Sie dafür, dass ausgehende Konnektivität zulässig ist.)
 
 ### <a name="cause"></a>Ursache
 
@@ -153,7 +153,7 @@ Eine weitere Ursache für den Fehlercode `InvalidNetworkConfigurationErrorCode` 
 
 ### <a name="resolution"></a>Lösung
 
-Verwenden Sie die gültigen Parameter für `Get-AzVirtualNetwork`, wie im [Az PowerShell SDK](https://docs.microsoft.com/powershell/module/az.network/get-azvirtualnetwork?view=azps-5.3.0&viewFallbackFrom=azps-4.2.0) dokumentiert.
+Verwenden Sie die gültigen Parameter für `Get-AzVirtualNetwork`, wie im [Az PowerShell SDK](/powershell/module/az.network/get-azvirtualnetwork) dokumentiert.
 
 ---
 
