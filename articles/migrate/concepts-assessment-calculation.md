@@ -6,12 +6,12 @@ ms.author: rajosh
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 05/27/2020
-ms.openlocfilehash: f8a4f29114f7e0a2ed7868f01e05e25c8a0d0ce1
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 9bdf907ede2c09f7e314df619cd81059956f17dc
+ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96752225"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98567753"
 ---
 # <a name="server-assessment-overview-migrate-to-azure-vms"></a>Serverbewertungsübersicht (Migration zu Azure-VMs)
 
@@ -268,8 +268,14 @@ Die nachfolgende Tabelle zeigt die Zuverlässigkeitsstufen einer Bewertung, die 
 Einige mögliche Gründe für eine niedrige Zuverlässigkeitsstufe einer Bewertung:
 
 - Sie haben für den Zeitraum, für den Sie die Bewertung erstellen, kein Profil der Umgebung erstellt. Wenn Sie die Bewertung z. B. mit einer auf einen Tag festgelegten Leistungsdauer erstellen, müssen Sie bis mindestens einen Tag nach dem Start der Ermittlung warten, bis alle Datenpunkte gesammelt sind.
-- Einige virtuelle Computer wurden während des Zeitraums, für den die Bewertung berechnet wird, heruntergefahren. Wenn einige VMs für eine gewisse Zeit heruntergefahren wurden, kann die Serverbewertung für diesen Zeitraum keine Leistungsdaten sammeln.
-- Einige virtuelle Computer wurden während des Zeitraums, für den die Bewertung berechnet wird, erstellt. Beispiel: Sie haben eine Bewertung für den Leistungsverlauf im letzten Monat erstellt, einige VMs wurden jedoch erst vor einer Woche erstellt. Bei den neuen VMs ist in diesem Fall kein Leistungsverlauf für den gesamten Zeitraum verfügbar.
+- Die Bewertung kann die Leistungsdaten für einige oder alle VMs im Bewertungszeitraum nicht erfassen. Für eine Bewertung mit hoher Konfidenz stellen Sie Folgendes sicher: 
+    - VMs sind für die Dauer der Bewertung eingeschaltet.
+    - Ausgehende Verbindungen am Port 443 sind zugelassen.
+    - Für Hyper-V-VMs ist dynamischer Arbeitsspeicher aktiviert. 
+    
+    Führen Sie die erneute Berechnung der Bewertung mit der Option „Neu berechnen“ durch, um die neuesten Änderungen an der Zuverlässigkeitsstufe widerzuspiegeln.
+
+- Einige virtuelle Computer wurden während des Zeitraums, für den die Bewertung berechnet wird, erstellt. Beispiel: Sie haben eine Bewertung für den Leistungsverlauf im letzten Monat erstellt, einige VMs wurden jedoch erst vor einer Woche erstellt. In diesem Fall stehen für die gesamte Dauer keine Leistungsdaten für die neuen VMs zur Verfügung und die Zuverlässigkeitsstufe wäre gering.
 
 > [!NOTE]
 > Bei einer Zuverlässigkeitsstufe von weniger als fünf Sternen wird empfohlen, mindestens einen Tag zu warten, damit die Appliance ein Profil der Umgebung erstellen kann. Führen Sie dann eine Neuberechnung der Bewertung durch. Anderenfalls ist die leistungsbasierte Größenanpassung möglicherweise unzuverlässig. In diesem Fall wird empfohlen, die Bewertung auf die Größenanpassung „Wie lokal“ zu ändern.

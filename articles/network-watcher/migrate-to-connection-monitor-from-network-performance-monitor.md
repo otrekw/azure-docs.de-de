@@ -12,21 +12,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/07/2021
 ms.author: vinigam
-ms.openlocfilehash: 3eb456dad2836bed55c45e7be9e898fdf72ac4d2
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 59e266274d6b65182ad63513ecf9bf3b5ab95490
+ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98017934"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98164837"
 ---
 # <a name="migrate-to-connection-monitor-from-network-performance-monitor"></a>Migrieren vom Netzwerkleistungsmonitor zum Verbindungsmonitor
 
 Sie können Tests vom Netzwerkleistungsmonitor (NPM) mit nur einem Mausklick und ohne Ausfallzeit zum neuen, verbesserten Verbindungsmonitor migrieren. Weitere Informationen zu den Vorteilen finden Sie unter [Verbindungsmonitor](./connection-monitor-overview.md).
 
-
->[!NOTE]
-> Nur Tests vom Dienstkonnektivitätsmonitor können zum Verbindungsmonitor migriert werden.
->
 
 ## <a name="key-points-to-note"></a>Wichtige Hinweise
 
@@ -52,7 +48,7 @@ Gehen Sie folgendermaßen vor, um von Netzwerkleistungsmonitor zu Verbindungsmon
 
     :::image type="content" source="./media/connection-monitor-2-preview/migrate-npm-to-cm-preview.png" alt-text="Migrieren von Tests von Netzwerkleistungsmonitor zu Verbindungsmonitor" lightbox="./media/connection-monitor-2-preview/migrate-npm-to-cm-preview.png":::
     
-1. Wählen Sie in den Dropdownlisten Ihr Abonnement und den Arbeitsbereich und dann das NPM-Feature aus, das Sie migrieren möchten. Derzeit können Sie Tests nur über Dienstkonnektivitätsmonitor migrieren.  
+1. Wählen Sie in den Dropdownlisten Ihr Abonnement und den Arbeitsbereich und dann das NPM-Feature aus, das Sie migrieren möchten. 
 1. Wählen Sie zum Migrieren der Tests **Importieren** aus.
 
 Nach dem Beginn der Migration werden die folgenden Änderungen durchgeführt: 
@@ -73,6 +69,6 @@ Achten Sie nach der Migration auf Folgendes:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen über Verbindungsmonitor finden Sie in den folgenden Artikeln:
-* [Migrieren von Verbindungsmonitor zu Verbindungsmonitor](./migrate-to-connection-monitor-from-connection-monitor-classic.md)
+Weitere Informationen zu Verbindungsmonitor finden Sie in den folgenden Artikeln:
+* [Migrieren von Verbindungsmonitor (klassisch) zu Verbindungsmonitor](./migrate-to-connection-monitor-from-connection-monitor-classic.md)
 * [Erstellen eines Verbindungsmonitors mithilfe des Azure-Portals](./connection-monitor-create-using-portal.md)

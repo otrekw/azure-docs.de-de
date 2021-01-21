@@ -4,12 +4,12 @@ description: Verhindern Sie, dass Benutzer Azure-Ressourcen aktualisieren oder l
 ms.topic: conceptual
 ms.date: 11/11/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: f1073d8c4a6902ea00a9b4098ef87bc411b3e6c0
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: 7efeb8a073a04f78f77046c07c107abf0c7526f4
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94555667"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98602205"
 ---
 # <a name="lock-resources-to-prevent-unexpected-changes"></a>Sperren von Ressourcen, um unerwartete Änderungen zu verhindern
 
@@ -28,7 +28,7 @@ Resource Manager-Sperren gelten nur für Vorgänge auf der Verwaltungsebene (als
 
 ## <a name="considerations-before-applying-locks"></a>Überlegungen vor der Anwendung von Sperren
 
-Das Anwenden von Sperren kann zu unerwarteten Ergebnissen führen, da einige Vorgänge, die die Ressource nicht zu ändern scheinen, tatsächlich Aktionen erfordern, die von der Sperre blockiert werden. Einige gängige Beispiele für die Vorgänge, die durch Sperren blockiert werden, sind:
+Das Anwenden von Sperren kann zu unerwarteten Ergebnissen führen, da einige Vorgänge, die die Ressource nicht zu ändern scheinen, tatsächlich Aktionen erfordern, die von der Sperre blockiert werden. Sperren verhindern alle Vorgänge, für die eine POST-Anforderung an die Azure Resource Manager-API erforderlich ist. Einige gängige Beispiele für die Vorgänge, die durch Sperren blockiert werden, sind:
 
 * Eine Schreibschutzsperre für ein **Speicherkonto** hindert alle Benutzer am Auflisten der Schlüssel. Der Vorgang zum Auflisten von Schlüsseln wird über eine POST-Anforderung behandelt, da die zurückgegebenen Schlüssel für Schreibvorgänge zur Verfügung stehen.
 

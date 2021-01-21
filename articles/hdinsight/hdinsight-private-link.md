@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/15/2020
-ms.openlocfilehash: 9fe1b7a077142b00aaf2a8502faa0e166c4311c4
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 219f8728eb90101e7437cbb82b44a1f7124ef14d
+ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97915622"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98556425"
 ---
 # <a name="secure-and-isolate-azure-hdinsight-clusters-with-private-link-preview"></a>Schützen und Isolieren von Azure HDInsight-Clustern mit Private Link (Vorschauversion)
 
@@ -100,12 +100,12 @@ networkProperties: {
 
 Eine vollständige Vorlage mit vielen dieser HDInsight-Sicherheitsfunktionen für Unternehmen, z. B. Private Link, finden Sie im Artikel zur [Enterprise-Sicherheitsvorlage für HDInsight](https://github.com/Azure-Samples/hdinsight-enterprise-security/tree/main/ESP-HIB-PL-Template).
 
-### <a name="use-azure-powershell"></a>Verwenden von Azure PowerShell
+### <a name="use-azure-powershell"></a>Mithilfe von Azure PowerShell
 
-Informationen zur Verwendung von PowerShell finden Sie [hier](/powershell/module/az.hdinsight/new-azhdinsightcluster?view=azps-5.1.0#example-4--create-an-azure-hdinsight-cluster-with-relay-outbound-and-private-link-feature) in dem Beispiel.
+Informationen zur Verwendung von PowerShell finden Sie [hier in dem Beispiel](/powershell/module/az.hdinsight/new-azhdinsightcluster#example-4--create-an-azure-hdinsight-cluster-with-relay-outbound-and-private-link-feature).
 
 ### <a name="use-azure-cli"></a>Mithilfe der Azure-Befehlszeilenschnittstelle
-Informationen zur Verwendung der Azure CLI finden Sie [hier](/cli/azure/hdinsight?view=azure-cli-latest#az_hdinsight_create-examples) in dem Beispiel.
+Informationen zur Verwendung der Azure CLI finden Sie [hier](/cli/azure/hdinsight#az_hdinsight_create-examples) in dem Beispiel.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

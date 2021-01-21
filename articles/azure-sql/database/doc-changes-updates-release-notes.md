@@ -115,7 +115,7 @@ Die folgenden Funktionen sind im SQL Managed Instance-Bereitstellungsmodell in d
 |[Resource Governor auf Dienstebene „Unternehmenskritisch“ muss nach einem Failover möglicherweise neu konfiguriert werden](#resource-governor-on-business-critical-service-tier-might-need-to-be-reconfigured-after-failover)|September 2019|Mit Problemumgehung||
 |[Datenbankübergreifende Service Broker-Dialoge müssen nach einem Upgrade der Dienstebene erneut initialisiert werden](#cross-database-service-broker-dialogs-must-be-reinitialized-after-service-tier-upgrade)|August 2019|Mit Problemumgehung||
 |[Identitätswechsel für Azure AD-Anmeldetypen wird nicht unterstützt.](#impersonation-of-azure-ad-login-types-is-not-supported)|Juli 2019|Keine Problemumgehung||
-|[Parameter @query wird in „sp_send_db_mail“ nicht unterstützt](#-parameter-not-supported-in-sp_send_db_mail)|April 2019|Keine Problemumgehung||
+|[@queryParameter wird in „sp_send_db_mail“ nicht unterstützt](#-parameter-not-supported-in-sp_send_db_mail)|April 2019|Keine Problemumgehung||
 |[Transaktionsreplikation muss nach einem geografischen Failover neu konfiguriert werden](#transactional-replication-must-be-reconfigured-after-geo-failover)|März 2019|Keine Problemumgehung||
 |[Temporäre Datenbank wird während des RESTORE-Vorgangs verwendet](#temporary-database-is-used-during-restore-operation)||Mit Problemumgehung||
 |[Struktur und Inhalt von TEMPDB werden neu erstellt](#tempdb-structure-and-content-is-re-created)||Keine Problemumgehung||
@@ -238,7 +238,7 @@ Identitätswechsel mit `EXECUTE AS USER` oder `EXECUTE AS LOGIN` der folgenden A
 -   Azure AD-Benutzer mit Alias. In diesem Fall wird der Fehler `15517` zurückgegeben.
 - Azure AD-Anmeldungen und-Benutzer, die auf Azure AD-Anwendungen oder -Dienstprinzipalen basieren. In diesem Fall werden die Fehler `15517` und `15406` zurückgegeben.
 
-### <a name="query-parameter-not-supported-in-sp_send_db_mail"></a>Der Parameter @query wird in sp_send_db_mail nicht unterstützt.
+### <a name="query-parameter-not-supported-in-sp_send_db_mail"></a>@queryDer Parameter wird in sp_send_db_mail nicht unterstützt.
 
 Der `@query`-Parameter in der Prozedur [sp_send_db_mail](/sql/relational-databases/system-stored-procedures/sp-send-dbmail-transact-sql) funktioniert nicht.
 
