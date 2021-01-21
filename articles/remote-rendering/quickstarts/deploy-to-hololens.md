@@ -5,12 +5,12 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/14/2020
 ms.topic: quickstart
-ms.openlocfilehash: 3eec935d0a25f9510cd9a2f6e00b7ac22756e697
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: a5a44b9d27901fcd00f8813096de6bbae5f2310d
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88796798"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98179944"
 ---
 # <a name="quickstart-deploy-unity-sample-to-hololens"></a>Schnellstart: Bereitstellen des Unity-Beispiels für HoloLens
 
@@ -36,13 +36,13 @@ Stellen Sie sicher, dass Ihre Anmeldeinformationen ordnungsgemäß mit der Szene
 1. Ändern Sie *Platform* (Plattform) in **Universal Windows Platform** (Universelle Windows-Plattform).
 1. Legen Sie *Target Device* (Zielgerät) auf **HoloLens** fest.
 1. Legen Sie *Architecture* (Architektur) auf **ARM64** fest.
-1. Legen Sie *Build Type* (Buildtyp) auf **D3D Project** (D3D-Projekt) fest.\
+1. Legen Sie *Build Type* (Buildtyp) auf **D3D Project**\ (D3D-Projekt) fest.
     ![Buildeinstellungen](./media/unity-build-settings.png)
 1. Wählen Sie **Switch to Platform** (Zu Plattform wechseln) aus.
 1. Wenn Sie auf **Build** (Erstellen) oder „Build And Run“ (Erstellen und ausführen) klicken, werden Sie zur Auswahl eines Ordners aufgefordert, in dem die Projektmappe gespeichert werden soll.
 1. Öffnen Sie die generierte Datei **Quickstart.sln** mit Visual Studio.
 1. Ändern Sie die Konfiguration in **Release** und **ARM64**.
-1. Ändern Sie den Debuggermodus in **Remote Machine** (Remotecomputer).\
+1. Ändern Sie den Debuggermodus in **Remote Machine**\ (Remotecomputer).
     ![Projektmappenkonfiguration](media/unity-deploy-config.png)
 1. Erstellen Sie die Lösung.
 1. Navigieren Sie für das Projekt „Schnellstart“ zu *Properties > Debugging* (Eigenschaften > Debuggen).

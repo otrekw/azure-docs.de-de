@@ -4,13 +4,13 @@ description: Dieser Artikel wird regelmäßig mit Neuigkeiten über die Language
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: overview
-ms.date: 01/05/2021
-ms.openlocfilehash: 4591bc26c848032d1c0f8b96720c4ec66b9b064d
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.date: 01/12/2021
+ms.openlocfilehash: 4bcd25e96aba1ca103737679540cb9ff67674914
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97916353"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98179128"
 ---
 # <a name="whats-new-in-language-understanding"></a>Neuerungen in Language Understanding
 
@@ -18,10 +18,14 @@ Informieren Sie sich über die Neuerungen im Dienst. Dabei kann es sich um Versi
 
 ## <a name="release-notes"></a>Versionshinweise
 
+### <a name="january-2021"></a>Januar 2021
+
+* Von der V3-Vorhersage-API wird jetzt die [Bing-Rechtschreibprüfungs-API](luis-how-to-publish-app.md#spelling-correction) unterstützt.
+
 ### <a name="december-2020"></a>Dezember 2020
 
 * Alle LUIS-Benutzer müssen die [Migration zu einer LUIS-Erstellungsressource](luis-migration-authoring.md) durchführen.
-* Neue [Auswertungsendpunkte](luis-how-to-batch-test.md#batch-testing-using-the-rest-api), die Ihnen die Übermittlung von Batchtests mithilfe der REST-API und das Abrufen von Genauigkeitsergebnissen für Ihre Absichten und Entitäten ermöglichen. Verfügbar ab LUIS-Endpunkt „v3.0-preview“
+* Neue [Auswertungsendpunkte](luis-how-to-batch-test.md#batch-testing-using-the-rest-api), die die Übermittlung von Batchtests mithilfe der REST-API und das Abrufen von Genauigkeitsergebnissen für Ihre Absichten und Entitäten ermöglichen. Verfügbar ab LUIS-Endpunkt „v3.0-preview“
 
 ### <a name="june-2020"></a>Juni 2020
 
