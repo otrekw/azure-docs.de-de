@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: rbeckers
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e9e5db87f983c5db59715eb8b6a9561acf5fad14
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: 9c8016b566db8be1b7f5c5ddb8d92123d6673db5
+ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97630614"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98569843"
 ---
 # <a name="migrate-code-from-v20-to-v30-of-the-rest-api"></a>Migration von Version 2.0 zu Version 3.0 der REST-API
 
@@ -24,11 +24,51 @@ Im Vergleich zur Version 2 ist die Version 3 der REST-API der Speech-Dienste fü
 
 ## <a name="forward-compatibility"></a>Aufwärtskompatibilität
 
-Alle Entitäten aus Version 2 können auch in der API der Version 3 unter derselben Identität gefunden werden. Wenn sich das Schema eines Ergebnisses geändert hat (z. B. bei Transkriptionen), verwendet das Ergebnis eines GET-Aufrufs in der Version 3 der API das Schema der Version 3. Das Ergebnis eines GET-Aufrufs in der Version 2 der API verwendet dasselbe Schema der Version 2. Neu erstellte Entitäten der Version 3 sind **nicht** in Ergebnissen von APIs der Version 2 verfügbar.
+Alle Entitäten aus Version 2 können auch in der API von Version 3 unter derselben Identität gefunden werden. Wenn sich das Schema eines Ergebnisses geändert hat (z. B. bei Transkriptionen), verwendet das Ergebnis eines GET-Aufrufs in der Version 3 der API das Schema der Version 3. Das Ergebnis eines GET-Aufrufs in der Version 2 der API verwendet dasselbe Schema der Version 2. Neu erstellte Entitäten für Version 3 sind  **nicht** in den Antworten der APIs von Version 2 verfügbar. 
+
+## <a name="migration-steps"></a>Schritte bei der Migration
+
+Dies ist eine zusammenfassende Liste von Elementen, die Sie berücksichtigen müssen, wenn Sie die Migration vorbereiten. Details finden Sie unter den einzelnen Links. Abhängig von der aktuellen Verwendung der API können nicht alle hier aufgeführten Schritte angewendet werden. Nur einige wenige Änderungen erfordern nicht triviale Änderungen im Aufrufcode. Die meisten Änderungen erfordern lediglich eine Änderung der Elementnamen. 
+
+Allgemeine Änderungen: 
+
+1. [Ändern des Hostnamens](#host-name-changes)
+
+1. [Umbenennen der Eigenschaft „id“ in „self“ in Ihrem Clientcode](#identity-of-an-entity) 
+
+1. [Ändern des Codes zum Durchlaufen von Entitätssammlungen](#working-with-collections-of-entities)
+
+1. [Umbenennen der Eigenschaft „name“ in „displayName“ in Ihrem Clientcode](#name-of-an-entity)
+
+1. [Anpassen des Abrufs der Metadaten von referenzierten Entitäten](#accessing-referenced-entities)
+
+1. Bei Verwendung der Batch-Transkription: 
+
+    * [Anpassen von Code zum Erstellen von Batchtranskriptionen](#creating-transcriptions) 
+
+    * [Anpassen von Code an das neue Transkriptionsergebnisschema](#format-of-v3-transcription-results)
+
+    * [Anpassen von Code für das Abrufen von Ergebnissen](#getting-the-content-of-entities-and-the-results)
+
+1. Bei Verwendung von APIs für das benutzerdefinierte Modelltraining bzw. für Tests: 
+
+    * [Anwenden von Änderungen auf das benutzerdefinierte Modelltraining](#customizing-models)
+
+    * [Ändern der Abrufweise von Basismodellen und benutzerdefinierten Modellen](#retrieving-base-and-custom-models)
+
+    * [Umbenennen des Pfadsegments „accuracytests“ in „evaluations“ in Ihrem Clientcode](#accuracy-tests)
+
+1. Bei Verwendung von Endpunkt-APIs:
+
+    * [Ändern der Abrufweise von Endpunktprotokollen](#retrieving-endpoint-logs)
+
+1. Andere geringfügige Änderungen: 
+
+    * [Übergeben aller benutzerdefinierten Eigenschaften als „customProperties“ anstelle von Eigenschaften in Ihren POST-Anforderungen](#using-custom-properties)
+
+    * [Auslesen des Speicherorts aus dem Antwortheader „Location“ anstelle von „Operation-Location“](#response-headers)
 
 ## <a name="breaking-changes"></a>Aktuelle Änderungen
-
-Die Liste der Breaking Changes wurde nach dem Umfang der zur Anpassung erforderlichen Änderungen sortiert. Nur einige wenige Änderungen erfordern nicht triviale Änderungen im Aufrufcode. Die meisten Änderungen erfordern lediglich eine Änderung der Elementnamen.
 
 ### <a name="host-name-changes"></a>Änderungen des Hostnamens
 

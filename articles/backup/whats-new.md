@@ -3,12 +3,12 @@ title: Neuerungen in Azure Backup
 description: Erfahren Sie mehr über die neuen Features in Azure Backup.
 ms.topic: conceptual
 ms.date: 11/11/2020
-ms.openlocfilehash: ba29ddea5d5f096640f2bfc012c44ab06bb3e131
-ms.sourcegitcommit: ac7029597b54419ca13238f36f48c053a4492cb6
+ms.openlocfilehash: 62a6146990863c339917777b2624fee76ebe60d8
+ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/29/2020
-ms.locfileid: "96309663"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98569418"
 ---
 # <a name="whats-new-in-azure-backup"></a>Neuerungen in Azure Backup
 
@@ -18,6 +18,9 @@ Weitere Informationen zu den neuen Releases erhalten Sie, indem Sie diese Seite 
 
 ## <a name="updates-summary"></a>Übersicht über Updates
 
+- Januar 2021
+  - [Azure Disk Backup (Vorschau)](disk-backup-overview.md)
+  - [Verschlüsselung ruhender Daten mit von Kunden verwalteten Schlüsseln jetzt allgemein verfügbar](encryption-at-rest-with-cmk.md)
 - November 2020
   - [Azure Resource Manager-Vorlage für die Sicherung der Azure-Dateifreigabe](#azure-resource-manager-template-for-afs-backup)
   - [Inkrementelle Sicherungen für SAP HANA-Datenbanken auf Azure-VMs](#incremental-backups-for-sap-hana-databases)
@@ -31,6 +34,18 @@ Weitere Informationen zu den neuen Releases erhalten Sie, indem Sie diese Seite 
   - [Sichern von SAP HANA in Azure Virtual Machines unter RHEL](#backup-sap-hana-in-rhel-azure-virtual-machines)
   - [Zonenredundanter Speicher (ZRS) für Sicherungsdaten](#zone-redundant-storage-zrs-for-backup-data)
   - [Vorläufiges Löschen für SQL Server- und SAP HANA-Workloads auf Azure-VMs](#soft-delete-for-sql-server-and-sap-hana-workloads)
+
+## <a name="azure-disk-backup-in-preview"></a>Azure Disk Backup (Vorschau)
+
+Azure Disk Backup bietet eine schlüsselfertige Lösung, die eine Verwaltung des Lebenszyklus von Momentaufnahmen für [Azure Managed Disks](https://docs.microsoft.com/azure/virtual-machines/managed-disks-overview) durch Automatisierung einer periodischen Erstellung von Momentaufnahmen und Aufbewahrung der Momentaufnahmen für eine konfigurierte Dauer unter Verwendung der Sicherungsrichtlinie bereitstellt. Sie können die Datenträgermomentaufnahmen ohne Infrastrukturkosten und ohne die Notwendigkeit von benutzerdefinierten Skripts oder jeglichem Verwaltungsaufwand verwalten. Es handelt sich um eine absturzsichere Sicherungslösung, die eine zeitpunktgenaue Sicherung eines verwalteten Datenträgers mit [inkrementellen Momentaufnahmen](https://docs.microsoft.com/azure/virtual-machines/windows/disks-incremental-snapshots) mit Unterstützung für mehrere Sicherungen pro Tag vornimmt. Es handelt sich außerdem um eine Lösung ohne Agent, die die Leistung der Produktionsanwendung nicht beeinträchtigt. Sie unterstützt die Sicherung und Wiederherstellung der Betriebssystem- und regulären Datenträger (einschließlich gemeinsam genutzter Datenträger), unabhängig davon, ob sie derzeit mit einem ausgeführten virtuellen Azure-Computer verbunden sind oder nicht.
+
+Weitere Informationen finden Sie unter [Azure Disk Backup (Vorschau)](disk-backup-overview.md).
+
+## <a name="encryption-at-rest-using-customer-managed-keys"></a>Verschlüsselung im Ruhezustand mithilfe von Kunden verwalteter Schlüssel
+
+Unterstützung für die Verschlüsselung ruhender Daten mit von Kunden verwalteten Schlüsseln ist jetzt allgemein verfügbar. Dies bietet Ihnen die Möglichkeit, die Sicherungsdaten in Ihren Recovery Services-Tresoren mit Ihren eigenen, in Azure Key Vaults gespeicherten Schlüsseln zu verschlüsseln. Der Verschlüsselungsschlüssel, der zum Verschlüsseln von Sicherungen im Recovery Services-Tresor verwendet wird, kann sich von den für die Verschlüsselung der Quelle verwendeten Verschlüsselungsschlüssel unterscheiden. Die Daten werden mithilfe eines AES-256 basierten Datenverschlüsselungsschlüssels (DEK) geschützt, der wiederum mit Ihren im Schlüsseltresor gespeicherten Schlüsseln geschützt wird. Im Vergleich zur Verschlüsselung mit plattformverwalteten Schlüsseln (die standardmäßig verfügbar ist), haben Sie so mehr Kontrolle über Ihre Schlüssel und können Ihre Complianceanforderungen besser erfüllen.
+
+Weitere Informationen finden Sie unter [Verschlüsselung von Sicherungsdaten mit von Kunden verwalteten Schlüsseln](encryption-at-rest-with-cmk.md).
 
 ## <a name="azure-resource-manager-template-for-afs-backup"></a>Azure Resource Manager-Vorlage für die Sicherung der Azure-Dateifreigabe
 

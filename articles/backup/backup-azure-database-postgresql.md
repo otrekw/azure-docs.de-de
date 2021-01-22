@@ -4,12 +4,12 @@ description: Weitere Informationen zur Azure Database for PostgreSQL-Sicherung m
 ms.topic: conceptual
 ms.date: 09/08/2020
 ms.custom: references_regions
-ms.openlocfilehash: 32837e5bb871f7db5024569efc27940047aeacd7
-ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
+ms.openlocfilehash: 628f43788c11558185a7b8a735373f0a663fdad1
+ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97734639"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98569486"
 ---
 # <a name="azure-database-for-postgresql-backup-with-long-term-retention-preview"></a>Azure Database for PostgreSQL-Sicherung mit Langzeitaufbewahrung (Vorschau)
 
@@ -135,7 +135,7 @@ Die folgenden Anweisungen stellen eine Schrittanleitung zum Konfigurieren der Si
 
 1. Legen Sie die Einstellungen für die **Aufbewahrung** fest. Sie können eine oder mehrere Aufbewahrungsregeln hinzufügen. Jede Aufbewahrungsregel nimmt Eingaben für bestimmte Sicherungen und den Datenspeicher sowie die Aufbewahrungsdauer für diese Sicherungen an.
 
-1. Sie können Ihre Sicherungen in einem der beiden Datenspeicher (oder in einer der beiden Ebenen) speichern: **Sicherungsdatenspeicher** (heiße Ebene) oder **Archivdatenspeicher** (in der Vorschau). Sie können zwischen **zwei Tiering-Optionen** wählen, um festzulegen, wann die Sicherungen über die beiden Datenspeicher verteilt werden:
+1. Sie können Ihre Sicherungen in einem der beiden Datenspeicher (oder in einer der beiden Ebenen) speichern: **Sicherungsdatenspeicher** (Standard-Tarif) oder **Archivdatenspeicher** (Vorschau). Sie können zwischen **zwei Tiering-Optionen** wählen, um festzulegen, wann die Sicherungen über die beiden Datenspeicher verteilt werden:
 
     - Kopieren Sie **sofort**, wenn Sie gleichzeitig eine Sicherungskopie für sowohl Sicherungs- als auch Archivdatenspeicher haben möchten.
     - Wählen Sie die Option zum Verschieben nach **Ablauf**, wenn Sie die Sicherung nach Ablauf im Sicherungsdatenspeicher in den Archivdatenspeicher verschieben möchten.

@@ -3,12 +3,12 @@ title: Antworten auf häufig gestellte Fragen
 description: 'Antworten auf häufig gestellte Fragen zu: Azure Backup-Features wie Azure Recovery Services-Tresoren, zu sicherbaren Elementen sowie zu Funktionsweise, Verschlüsselung und Grenzwerten. '
 ms.topic: conceptual
 ms.date: 07/07/2019
-ms.openlocfilehash: d85866e490b2c56abb7de1e94cd0ffaa8f714615
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: bd84ff553b486d200ec4501b89b42335335b223f
+ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96327150"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98572526"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure Backup – häufig gestellte Fragen
 
@@ -61,6 +61,10 @@ Wenn Sie die Sicherung bereits konfiguriert haben und von GRS zu LRS wechseln m�
 ### <a name="how-can-i-move-data-from-the-recovery-services-vault-to-on-premises"></a>Wie kann ich Daten aus dem Recovery Services-Tresor in eine lokale Umgebung verschieben?
 
 Das direkte Exportieren von Daten aus dem Recovery Services-Tresor in eine lokale Umgebung mithilfe von Data Box wird nicht unterstützt. Die Daten müssen in einem Speicherkonto wiederhergestellt werden und können dann über [Data Box](../databox/data-box-overview.md) oder [Import/Export](../storage/common/storage-import-export-service.md) in eine lokale Umgebung verschoben werden.
+
+### <a name="what-is-the-difference-between-a-geo-redundant-storage-grs-vault-with-and-without-the-cross-region-restore-crr-capability-enabled"></a>Worin besteht der Unterschied zwischen einem georedundanten Speichertresor (GRS) mit und ohne aktivierter Funktion „Regionsübergreifende Wiederherstellung (Cross Region Restore, CRR)“?
+
+Im Falle eines [GRS](azure-backup-glossary.md#grs)-Tresors ohne aktivierte [CRR](azure-backup-glossary.md#cross-region-restore-crr)-Funktion kann auf die Daten in der sekundären Region erst dann zugegriffen werden, wenn Azure einen Notfall in der primären Region erklärt. In einem solchen Szenario erfolgt die Wiederherstellung vom sekundären Bereich aus. Ist CRR aktiviert, können Sie eine Wiederherstellung in der sekundären Region auslösen, auch wenn die primäre Region in Betrieb ist.
 
 ## <a name="azure-backup-agent"></a>Azure Backup-Agent
 
