@@ -6,6 +6,8 @@
       href: automation-intro.md
     - name: Häufig gestellte Fragen
       href: automation-faq.md
+    - name: Neues
+      href: whats-new.md
 - name: Schnellstarts
   items:
     - name: Erstellen eines Automation-Kontos

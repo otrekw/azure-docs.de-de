@@ -70,10 +70,6 @@
         - name: Beschriften von Bilddaten
           displayName: 'tag, tagging, images'
           href: tutorial-labeling.md
-    - name: R SDK
-      items:
-        - name: Erstellen des ersten ML-Experiments (R)
-          href: tutorial-1st-r-experiment.md
     - name: Befehlszeilenschnittstelle (CLI)
       items:
         - name: Trainieren und Bereitstellen mit der CLI

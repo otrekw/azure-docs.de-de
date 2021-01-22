@@ -25,6 +25,8 @@
       href: 'https://github.com/Azure-Samples/media-services-video-indexer'
 - name: Konzepte
   items:
+    - name: Übersicht
+      href: concepts-overview.md
     - name: Vergleichen von Video Indexer- und Media Services-Voreinstellungen
       href: compare-video-indexer-with-media-services-presets.md
     - name: Verwalten mehrerer Mandanten
@@ -109,7 +111,7 @@
       href: regions.md
     - name: Häufig gestellte Fragen
       href: faq.md
-    - name: Kompatibilität
+    - name: Compliance
       href: 'https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942'
     - name: Versionshinweise
       href: release-notes.md

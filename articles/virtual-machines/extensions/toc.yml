@@ -9,11 +9,11 @@
     - name: Windows-VM-Agent
       href: agent-windows.md
 - name: Schnellstarts
-  expanded: true
   items:
     - name: Verwenden der benutzerdefinierten Skripterweiterung
       href: ../windows/tutorial-automate-vm-deployment.md
       maintainContext: true
+  expanded: true
 - name: Konzepte
   items:
     - name: Linux
@@ -120,13 +120,6 @@
         - name: Symantec
           href: symantec.md
     - name: Veraltete Erweiterungen
-      items:
-        - name: Protokollsammler
-          href: log-collector.md
-        - name: Trend Micro Deep Security
-          href: trend.md
-        - name: 'Linux: Version 1 (OSTC)'
-          href: custom-script-linuxOstc.md
     - name: Beschränken der Erweiterungsinstallation
       items:
         - name: Linux
