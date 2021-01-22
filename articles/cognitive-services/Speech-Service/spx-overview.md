@@ -8,28 +8,28 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 04/14/2020
+ms.date: 01/13/2021
 ms.author: trbye
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 6b852186834fba858e8a049a8230b38f3d69164d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8f1e5f38e97a1b51a2d919deebbdc452e9daf993
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88067425"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98539780"
 ---
 # <a name="what-is-the-speech-cli"></a>Worum handelt es sich bei der Speech-Befehlszeilenschnittstelle?
 
 Die Speech-Befehlszeilenschnittstelle ist ein Befehlszeilentool, mit dem der Speech-Dienst verwendet werden kann, ohne Code zu schreiben. Der Einrichtungsaufwand für die Speech-Befehlszeilenschnittstelle ist minimal, und Sie können sofort mit wichtigen Features des Speech-Diensts experimentieren, um zu ermitteln, ob die Anforderungen Ihrer Anwendungsfälle erfüllt werden können. Innerhalb weniger Minuten können einfache Testworkflows wie etwa eine Batchspracherkennung auf der Grundlage eines Verzeichnisses mit Dateien oder eine Textsynthese für eine Sammlung von Zeichenfolgen aus einer Datei ausgeführt werden. Die Speech-Befehlszeilenschnittstelle kann jedoch nicht nur für einfache Workflows genutzt werden. Sie ist produktionsbereit und hochskalierbar, um umfangreichere Prozesse mit automatisierten Batches (`.bat`) oder Shellskripts auszuführen.
 
-Über die Speech-Befehlszeilenschnittstelle steht der Großteil der Hauptfeatures des Speech SDK zur Verfügung, und einige erweiterte Features und Anpassungen sind in der Speech-Befehlszeilenschnittstelle vereinfacht. Im Anschluss erfahren Sie, wann die Speech-Befehlszeilenschnittstelle und wann das Speech SDK verwendet werden sollte.
+Über die Speech-Befehlszeilenschnittstelle stehen die meisten Features des Speech SDK zur Verfügung, und einige erweiterte Features und Anpassungen sind in der Speech-Befehlszeilenschnittstelle vereinfacht. Im Anschluss erfahren Sie, wann die Speech-Befehlszeilenschnittstelle und wann das Speech SDK verwendet werden sollte.
 
 Verwenden Sie in folgenden Fällen die Speech-Befehlszeilenschnittstelle:
 * Sie möchten mit minimalem Einrichtungs- und ohne Programmieraufwand mit Features des Speech-Diensts experimentieren.
 * Sie haben relativ einfache Anforderungen an eine Produktionsanwendung, von der der Speech-Dienst genutzt wird.
 
 Verwenden Sie in folgenden Fällen das Speech SDK:
-* Sie möchten Funktionen des Speech-Diensts innerhalb einer bestimmten Sprache oder Plattform (beispielsweise C#, Python oder C++) integrieren.
+* Sie möchten Funktionen des Speech-Diensts innerhalb einer bestimmten Sprache oder Plattform (z. B. C#, Python oder C++) integrieren.
 * Sie haben komplexe Anforderungen, für die unter Umständen erweiterte Service Requests erforderlich sind oder die die Entwicklung von benutzerdefiniertem Verhalten (einschließlich Antwortstreaming) erfordern.
 
 ## <a name="core-features"></a>Wichtige Funktionen
@@ -44,9 +44,10 @@ Verwenden Sie in folgenden Fällen das Speech SDK:
 
 ## <a name="get-started"></a>Erste Schritte
 
-Informationen zu den ersten Schritten mit der Speech-Befehlszeilenschnittstelle finden Sie im Artikel [Erlernen der Grundlagen der Speech-Befehlszeilenschnittstelle](spx-basics.md). In diesem Artikel erfahren Sie, wie Sie einige einfache Befehle ausführen, und es werden auch etwas komplexere Befehle zum Ausführen von Batchvorgängen für Spracherkennung und -synthese gezeigt. Nach der Lektüre des Grundlagenartikels sollten Sie ausreichend mit der Syntax vertraut sein, um einige benutzerdefinierte Befehle schreiben oder einfache Speech-Dienstvorgänge automatisieren zu können.
+Informationen zu den ersten Schritten mit der Speech-Befehlszeilenschnittstelle finden Sie in der [Schnellstartanleitung](spx-basics.md). In diesem Artikel erfahren Sie, wie Sie einige einfache Befehle ausführen, und es werden auch etwas komplexere Befehle zum Ausführen von Batchvorgängen für Spracherkennung und -synthese gezeigt. Nach der Lektüre des Grundlagenartikels sollten Sie ausreichend mit der Syntax vertraut sein, um einige benutzerdefinierte Befehle schreiben oder einfache Speech-Dienstvorgänge automatisieren zu können.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Erlernen der Grundlagen der Speech-Befehlszeilenschnittstelle](spx-basics.md)
-- Bei komplexeren Anwendungsfällen benötigen Sie das [Speech SDK](speech-sdk.md).
+- Erste Schritte mit der [Schnellstartanleitung zur Speech-Befehlszeilenschnittstelle](spx-basics.md)
+- [Konfigurieren des Datenspeichers](./spx-data-store-configuration.md)
+- Weitere Informationen zum [Ausführen von Batchvorgängen für die Speech-Befehlszeilenschnittstelle](./spx-batch-operations.md)

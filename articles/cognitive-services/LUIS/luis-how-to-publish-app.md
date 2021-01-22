@@ -3,18 +3,20 @@ title: 'Veröffentlichen einer App: LUIS'
 titleSuffix: Azure Cognitive Services
 description: Wenn Sie das Erstellen und Testen Ihrer aktiven LUIS-App abgeschlossen haben, stellen Sie sie Ihrer Clientanwendung zur Verfügung, indem Sie sie am Endpunkt veröffentlichen.
 services: cognitive-services
+author: aahill
 manager: nitinme
+ms.author: aahi
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
-ms.date: 05/17/2020
-ms.openlocfilehash: b72f1fd64cca0fa77ebc486670a512c5228e1146
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 01/12/2021
+ms.openlocfilehash: 8db0f5fa39c7f489db0e30e98ee2684c74eee7e8
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91541474"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98180029"
 ---
 # <a name="publish-your-active-trained-app-to-a-staging-or-production-endpoint"></a>Veröffentlichen Ihrer aktiven, trainierten App an einem Staging- oder Produktionsendpunkt
 
@@ -55,7 +57,7 @@ Wenn Sie beispielsweise für eine auf [www.luis.ai](https://www.luis.ai) erstell
 Nachdem Sie den Slot ausgewählt haben, konfigurieren Sie die Veröffentlichungseinstellungen für:
 
 * Stimmungsanalyse
-* [Rechtschreibkorrektur:](luis-tutorial-bing-spellcheck.md) nur V2-Vorhersageendpunkte
+* [Rechtschreibkorrektur](luis-tutorial-bing-spellcheck.md)
 * Sprachvorbereitung
 
 Nach der Veröffentlichung können Sie diese Einstellungen auf der zum Abschnitt **Verwalten** gehörenden Seite **Veröffentlichungseinstellungen** ändern. Sie können die Einstellungen mit jeder Veröffentlichung ändern. Wenn Sie eine Veröffentlichung abbrechen, werden alle Änderungen, die Sie während der Veröffentlichung vorgenommen haben, ebenfalls abgebrochen.
@@ -80,7 +82,32 @@ Weitere Informationen zur JSON-Endpunktantwort im Zusammenhang mit der Standpunk
 
 ## <a name="spelling-correction"></a>Rechtschreibkorrektur
 
-[!INCLUDE [Not supported in V3 API prediction endpoint](./includes/v2-support-only.md)]
+Die V3-Vorhersage-API unterstützt jetzt die Bing-Rechtschreibprüfungs-API. Sie können der Anwendung eine Rechtschreibprüfung hinzufügen, indem Sie den Schlüssel zur Ressource der Bing-Suche in der Kopfzeile Ihrer Anforderungen einschließen. Sie können eine vorhandene Bing-Ressource verwenden, wenn Sie bereits über eine verfügen, oder [eine neue erstellen](https://portal.azure.com/#create/Microsoft.BingSearch), um dieses Feature zu verwenden. 
+
+|Headerschlüssel|Headerwert|
+|--|--|
+|`mkt-bing-spell-check-key`|Auf dem Blatt **Keys and Endpoint** (Schlüssel und Endpunkte) der Ressource gefundene Schlüssel|
+
+Beispiel für eine Vorhersageausgabe für eine falsch geschriebene Abfrage:
+
+```json
+{
+  "query": "bouk me a fliht to kayro",
+  "prediction": {
+    "alteredQuery": "book me a flight to cairo",
+    "topIntent": "book a flight",
+    "intents": {
+      "book a flight": {
+        "score": 0.9480589
+      }
+      "None": {
+        "score": 0.0332136229
+      }
+    },
+    "entities": {}
+  }
+}
+```
 
 Korrekturen an der Rechtschreibung werden vor der LUIS-Äußerungsvorhersage für den Benutzer vorgenommen. In der Antwort können Sie alle Änderungen an der ursprünglichen Äußerung, einschließlich Rechtschreibung, sehen.
 

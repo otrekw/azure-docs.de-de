@@ -1,7 +1,7 @@
 ---
 title: Häufig gestellte Fragen zu Sprachassistenten
 titleSuffix: Azure Cognitive Services
-description: Hier erhalten Sie Antworten auf die häufigsten Fragen zu Sprachassistenten, die benutzerdefinierte Befehle (Vorschauversion) oder den Kanal „Direct Line Speech“ verwenden.
+description: Auf dieser Seite erhalten Sie Antworten auf die häufigsten Fragen zu Sprach-Assistenten, die das Toolset „Benutzerdefinierte Befehle“ oder den Kanal „Direct Line Speech“ verwenden.
 services: cognitive-services
 author: trrwilson
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: travisw
-ms.openlocfilehash: b43d446930d1f8c40c12e5d0aeba6eb202ef47ef
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 4b0bbb982ed48dc052b1a15514ad36b1d69b62b5
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96353730"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98599418"
 ---
 # <a name="voice-assistants-frequently-asked-questions"></a>Häufig gestellte Fragen zu Sprachassistenten
 
@@ -25,11 +25,11 @@ Wenn Sie in diesem Dokument keine Antworten auf Ihre Fragen finden, sehen Sie si
 
 **F: Was ist ein Sprachassistent?**
 
-**A:** Ebenso wie Cortana ist ein Sprachassistent eine Lösung, die auf die gesprochenen Äußerungen eines Benutzers lauscht, den Inhalt dieser Äußerungen auf eine Bedeutung hin analysiert, eine oder mehrere Aktionen als Reaktion auf die Absicht der Äußerung ausführt und dann dem Benutzer eine Antwort präsentiert, die häufig eine gesprochene Komponente enthält. Es handelt sich um eine „Sprachein-/Sprachausgabe“-Funktion zur Interaktion mit einem System. Autoren von Sprachassistenten erstellen mithilfe des `DialogServiceConnector` im Sprach-SDK eine Anwendung auf dem Gerät, um mit einem Assistenten zu kommunizieren, der mithilfe [benutzerdefinierter Befehle (Vorschau)](custom-commands.md) oder mit dem Kanal [Direct Line Speech](direct-line-speech.md) des Bot Framework erstellt wurde. Diese Assistenten können benutzerdefinierte Schlüsselwörter, Custom Speech und Custom Voice verwenden, um eine auf Ihre Marke oder Ihr Produkt zugeschnittene Erfahrung zu bieten.
+**A:** Ebenso wie Cortana ist ein Sprachassistent eine Lösung, die auf die gesprochenen Äußerungen eines Benutzers lauscht, den Inhalt dieser Äußerungen auf eine Bedeutung hin analysiert, eine oder mehrere Aktionen als Reaktion auf die Absicht der Äußerung ausführt und dann dem Benutzer eine Antwort präsentiert, die häufig eine gesprochene Komponente enthält. Es handelt sich um eine „Sprachein-/Sprachausgabe“-Funktion zur Interaktion mit einem System. Autoren von Sprach-Assistenten erstellen mithilfe des `DialogServiceConnector` im Speech SDK eine Anwendung auf dem Gerät, um mit einem Assistenten zu kommunizieren, der mithilfe des Toolsets [Benutzerdefinierte Befehle](custom-commands.md) oder mit dem Kanal [Direct Line Speech](direct-line-speech.md) von Bot Framework erstellt wurde. Diese Assistenten können benutzerdefinierte Schlüsselwörter, Custom Speech und Custom Voice verwenden, um eine auf Ihre Marke oder Ihr Produkt zugeschnittene Erfahrung zu bieten.
 
-**F: Sollte ich benutzerdefinierte Befehle (Vorschau) oder „Direct Line Speech“ verwenden? Wo liegt der Unterschied?**
+**F: Sollte ich „Benutzerdefinierte Befehle“ oder „Direct Line Speech“ verwenden? Wo liegt der Unterschied?**
 
-**A:** [Benutzerdefinierte Befehle (Vorschau)](custom-commands.md) ist eine Reihe von Tools mit geringer Komplexität, mit denen Sie problemlos einen Assistenten erstellen und hosten können, der für Aufgabenabschluss-Szenarien gut geeignet ist. [Direct Line Speech](direct-line-speech.md) bietet umfangreichere, anspruchsvollere Funktionen, die stabile Konversationsszenarien ermöglichen. Weitere Informationen finden Sie im [Vergleich der Assistenten-Lösungen](voice-assistants.md#choosing-an-assistant-solution).
+**A:** [Benutzerdefinierte Befehle](custom-commands.md) ist eine Reihe von Tools mit geringer Komplexität, mit denen Sie problemlos einen Assistenten erstellen und hosten können, der für Szenarios zur Aufgabenerledigung gut geeignet ist. [Direct Line Speech](direct-line-speech.md) bietet umfangreichere, anspruchsvollere Funktionen, die stabile Konversationsszenarien ermöglichen. Weitere Informationen finden Sie im [Vergleich der Assistenten-Lösungen](voice-assistants.md#choosing-an-assistant-solution).
 
 **F: Wie fange ich an?**
 
@@ -61,7 +61,7 @@ Eine ausführlichere Anleitung finden Sie im [Tutorialabschnitt](tutorial-voice-
 
 **A:** Dieser Fehler weist auf ein Kommunikationsproblem zwischen dem Assistenten und dem Sprachassistentendienst hin.
 
-- Stellen Sie für benutzerdefinierte Befehle (Vorschau) sicher, dass die Anwendung für benutzerdefinierte Befehle (Vorschau) veröffentlicht wurde.
+- Stellen Sie bei benutzerdefinierten Befehlen sicher, dass die Anwendung „Benutzerdefinierte Befehle“ veröffentlicht wird.
 - Stellen Sie für „Direct Line Speech“ sicher, dass Sie eine [Verbindung Ihres Bots mit dem Direct Line Speech-Kanal hergestellt](/azure/bot-service/bot-service-channel-connect-directlinespeech) und Ihrem Bot [Unterstützung für das Streaming-Protokoll hinzugefügt](/azure/bot-service/directline-speech-bot) haben (mit der entsprechenden Websocketunterstützung). Überprüfen Sie dann, ob Ihr Bot auf eingehende Anforderungen vom Kanal reagiert.
 
 **F: Dieser Code funktioniert trotzdem nicht, und/oder ich erhalte bei der Verwendung eines `DialogServiceConnector` eine andere Fehlermeldung. Wie soll ich vorgehen?**

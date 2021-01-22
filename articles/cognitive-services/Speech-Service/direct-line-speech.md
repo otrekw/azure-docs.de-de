@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: trbye
-ms.openlocfilehash: e8c7e21b0784aacc85bd02e3c1702e1a710e76ab
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 501a0e954efbdbc9a0396fd94c915efaf0fde9fc
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95021880"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98601121"
 ---
 # <a name="what-is-direct-line-speech"></a>Was ist Direct Line Speech?
 
@@ -23,7 +23,7 @@ ms.locfileid: "95021880"
 
 [Sprachassistenten](voice-assistants.md) hören den Benutzern zu und ergreifen als Reaktion eine Aktion, wobei sie dabei häufig antworten. Sie verwenden die [Spracherkennung](speech-to-text.md), um die Sprache des Benutzers zu erfassen, und ergreifen dann Maßnahmen zum in natürlicher Sprache verstandenen Text. Diese Aktion umfasst häufig die Sprachausgabe des Assistenten, die mit [Sprachsynthese](text-to-speech.md) generiert wurde.
 
-Direct Line Speech bietet ein Höchstmaß an Anpassungsmöglichkeiten und Vielseitigkeit für Sprachassistenten. Es ist für interaktive Szenarien konzipiert, die offen, natürlich oder eine Kombination aus beidem sind und Aufgabenerledigung oder die Verwendung von Befehl-und-Steuerung (Command-and-Control) bieten. Dieser hohe Grad an Flexibilität ist mit einer höheren Komplexität verbunden, und Szenarien, die auf klar definierte Aufgaben unter Verwendung natürlicher Sprache ausgerichtet sind, können [Benutzerdefinierte Befehle (Vorschau)](custom-commands.md) für eine optimierte Benutzererfahrung berücksichtigen.
+Direct Line Speech bietet ein Höchstmaß an Anpassungsmöglichkeiten und Vielseitigkeit für Sprachassistenten. Es ist für interaktive Szenarien konzipiert, die offen, natürlich oder eine Kombination aus beidem sind und Aufgabenerledigung oder die Verwendung von Befehl-und-Steuerung (Command-and-Control) bieten. Dieser hohe Grad an Flexibilität ist mit einer höheren Komplexität verbunden, und Szenarios, die auf klar definierte Aufgaben unter Verwendung natürlicher Sprache ausgerichtet sind, können [Benutzerdefinierte Befehle](custom-commands.md) für eine optimierte Servicequalität erwägen.
 
 ## <a name="getting-started-with-direct-line-speech"></a>Erste Schritte mit Direct Line Speech
 
@@ -45,7 +45,7 @@ Wir bieten außerdem Schnellstarts an, mit denen Sie Code ausführen und die API
 
 Beispielcode für die Erstellung eines Sprachassistenten ist auf GitHub verfügbar. Diese Beispiele decken die Clientanwendung für die Verbindung mit Ihrem Assistenten in mehreren gängigen Programmiersprachen ab.
 
-* [Beispiele für Sprachassistenten (SDK)](https://aka.ms/csspeech/samples)
+* [Beispiele für Sprachassistenten (SDK)](https://aka.ms/csspeech/samples/#voice-assistants-quickstarts)
 * [Tutorial: Sprachaktivierung für Ihren Assistenten mit dem Speech SDK, C#](tutorial-voice-enable-your-bot-speech-sdk.md)
 
 ## <a name="customization"></a>Anpassung

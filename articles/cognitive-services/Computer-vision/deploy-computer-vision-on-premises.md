@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 11/23/2020
 ms.author: aahi
-ms.openlocfilehash: d79c52c05d09eedab2dd964acb544c9cdb405380
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: b3e1bb3f418f21c75e29b5a1cad337c6f3c10145
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97562598"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98246637"
 ---
 # <a name="use-computer-vision-container-with-kubernetes-and-helm"></a>Verwenden eines Containers für maschinelles Sehen mit Kubernetes und Helm
 
@@ -258,6 +258,8 @@ Entwurfsbedingt verfügt jeder V3-Container über einen Verteiler und einen Erke
 
 Der Container, der die Anforderung empfängt, kann die Aufgabe in einseitige untergeordnete Aufgaben aufteilen und sie der universellen Warteschlange hinzufügen. Jeder Erkennungsworker aus einem Container mit geringerer Auslastung kann einseitige Unteraufgaben aus der Warteschlange nutzen, eine Erkennung durchführen und das Ergebnis in den Speicher hochladen. Der Durchsatz kann je nach Anzahl der bereitgestellten Container bis zu `n` Mal verbessert werden.
 
+Der V3-Container stellt die Livetest-API unter dem Pfad `/ContainerLiveness` bereit. Verwenden Sie das folgende Bereitstellungsbeispiel, um einen Livetest für Kubernetes zu konfigurieren. 
+
 Kopieren Sie den folgenden YAML-Code, und fügen Sie ihn in eine Datei mit dem Namen `deployment.yaml` ein. Ersetzen Sie die Kommentare `# {ENDPOINT_URI}` und `# {API_KEY}` durch Ihre eigenen Werte. Ersetzen Sie den `# {AZURE_STORAGE_CONNECTION_STRING}`-Kommentar durch Ihre Azure Storage-Verbindungszeichenfolge. Konfigurieren Sie `replicas` auf die gewünschte Anzahl, die im folgenden Beispiel auf `3` festgelegt ist.
 
 ```yaml
@@ -293,6 +295,13 @@ spec:
           value: # {AZURE_STORAGE_CONNECTION_STRING}
         - name: Queue__Azure__ConnectionString
           value: # {AZURE_STORAGE_CONNECTION_STRING}
+        livenessProbe:
+          httpGet:
+            path: /ContainerLiveness
+            port: 5000
+          initialDelaySeconds: 60
+          periodSeconds: 60
+          timeoutSeconds: 20
 --- 
 apiVersion: v1
 kind: Service

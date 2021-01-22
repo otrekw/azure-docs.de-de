@@ -10,18 +10,26 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: erhopf
-ms.openlocfilehash: 5427e9f996fb77d455aa8064fc7cb1c65e1fcf7e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 563a3e224ffedc98bcc3102ea865f06315294365
+ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "74805976"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98573104"
 ---
 # <a name="prepare-data-to-create-a-custom-voice"></a>Vorbereiten von Daten zum Erstellen einer benutzerdefinierten Stimme
 
 Wenn Sie bereit sind, eine benutzerdefinierte Stimme für die Sprachsynthese zu erstellen, besteht der erste Schritt darin, Audioaufnahmen und zugehörige Skripts für das Training des Stimmmodells zusammenzustellen. Der Speech-Dienst erstellt anhand dieser Daten eine einzigartige Stimme, die der Stimme in den Aufnahmen entspricht. Nachdem Sie die Stimme trainiert haben, können Sie mit dem Synthetisieren von Sprache in Ihren Anwendungen beginnen.
 
-Zu Beginn sind für einen Proof of Concept nur wenige Daten erforderlich. Je mehr Daten Sie bereitstellen, desto natürlicher klingt Ihre benutzerdefinierte Stimme jedoch. Bevor Sie Ihr eigenes Stimmmodell für die Sprachsynthese trainieren können, benötigen Sie Audioaufnahmen und die zugehörigen Texttranskriptionen. Auf dieser Seite werden die Datentypen, ihre Verwendung und ihre Verwaltung beschrieben.
+Bevor Sie Ihr eigenes Stimmmodell für die Sprachsynthese trainieren können, benötigen Sie Audioaufnahmen und die zugehörigen Texttranskriptionen. Auf dieser Seite werden die Datentypen, ihre Verwendung und ihre Verwaltung beschrieben.
+
+> [!NOTE]
+> Wenn Sie eine neuronale Stimme trainieren möchten, müssen Sie ein Sprecherprofil mit der Audiozustimmungsdatei des Sprechers angeben, in der dieser bestätigt, die Sprachdaten zum Trainieren eines benutzerdefinierten Sprachmodells zu verwenden. Stellen Sie beim Vorbereiten des Aufzeichnungsskripts sicher, dass Sie den folgenden Satz einschließen. 
+
+> „Ich [Vor- und Nachname nennen] akzeptiere, dass die Aufzeichnungen meiner Stimme von [Name des Unternehmens nennen] verwendet werden, um eine synthetische Version meiner Stimme zu erstellen und diese zu verwenden.“
+Dieser Satz wird verwendet, um zu überprüfen, ob die Trainingsdaten von derselben Person gesprochen werden, die die Zustimmung erteilt. Weitere Informationen zur [Überprüfung des Sprechers](https://aka.ms/CNV-data-privacy)
+
+> Die benutzerdefinierte neuronale Stimme ist mit eingeschränktem Zugriff verfügbar. Stellen Sie sicher, dass Sie die [Anforderungen für verantwortungsvolle KI](https://aka.ms/gating-overview) kennen und [geben Sie hier die Zugriffsdaten ein](https://aka.ms/customneural). 
 
 ## <a name="data-types"></a>Datentypen
 
@@ -31,11 +39,11 @@ Es kann vorkommen, dass Sie noch kein passendes Dataset haben und das Training f
 
 In der folgenden Tabelle sind die Datentypen und ihre Verwendung zum Erstellen eines benutzerdefinierten Stimmmodells für die Sprachsynthese aufgeführt.
 
-| Datentyp | BESCHREIBUNG | Verwendung | Zusätzlicher Dienst erforderlich | Menge zum Trainieren eines Modells | Gebietsschema(s) |
-| --------- | ----------- | ----------- | --------------------------- | ----------------------------- | --------- |
-| **Einzelne Äußerungen und entsprechendes Transkript** | Eine Sammlung (.zip) von Audiodateien (.wav) als einzelne Äußerungen. Jede Audiodatei sollte maximal 15 Sekunden lang sein und über ein zugehöriges formatiertes Transkript (.txt) verfügen. | Professionelle Aufnahmen mit entsprechenden Transkripten | Bereit zum Training. | Keine zwingende Anforderung für „en-US“ und „zh-CN“. Mehr als 2.000 unterschiedliche Äußerungen für andere Gebietsschemas. | [Alle Custom Voice-Gebietsschemas](language-support.md#customization) |
-| **Lange Audiodatei und Transkript (Betaversion)** | Eine Sammlung (.zip) von langen, nicht segmentierten Audiodateien (länger als 20 Sekunden) mit einem zugehörigen Transkript (.txt), das alle gesprochenen Wörter enthält. | Sie haben Audiodateien und entsprechende Transkripte, die aber nicht in Äußerungen segmentiert sind. | Segmentierung (mithilfe der Batch-Transkription).<br>Transformation des Audioformats (sofern erforderlich). | Keine zwingende Anforderung  | [Alle Custom Voice-Gebietsschemas](language-support.md#customization) |
-| **Nur Audio (Betaversion)** | Eine Sammlung (.zip) von Audiodateien ohne Transkript. | Sie haben nur Audiodateien ohne Transkripte. | Segmentierung und Transkriptgenerierung (mithilfe der Batch-Transkription).<br>Transformation des Audioformats (sofern erforderlich).| Keine zwingende Anforderung | [Alle Custom Voice-Gebietsschemas](language-support.md#customization) |
+| Datentyp | BESCHREIBUNG | Verwendung | Zusätzliche Verarbeitung erforderlich | 
+| --------- | ----------- | ----------- | --------------------------- |
+| **Einzelne Äußerungen und entsprechendes Transkript** | Eine Sammlung (.zip) von Audiodateien (.wav) als einzelne Äußerungen. Jede Audiodatei sollte maximal 15 Sekunden lang sein und über ein zugehöriges formatiertes Transkript (.txt) verfügen. | Professionelle Aufnahmen mit entsprechenden Transkripten | Bereit zum Training. |
+| **Lange Audiodatei und Transkript (Betaversion)** | Eine Sammlung (.zip) von langen, nicht segmentierten Audiodateien (länger als 20 Sekunden) mit einem zugehörigen Transkript (.txt), das alle gesprochenen Wörter enthält. | Sie haben Audiodateien und entsprechende Transkripte, die aber nicht in Äußerungen segmentiert sind. | Segmentierung (mithilfe der Batch-Transkription).<br>Transformation des Audioformats (sofern erforderlich). | 
+| **Nur Audio (Betaversion)** | Eine Sammlung (.zip) von Audiodateien ohne Transkript. | Sie haben nur Audiodateien ohne Transkripte. | Segmentierung und Transkriptgenerierung (mithilfe der Batch-Transkription).<br>Transformation des Audioformats (sofern erforderlich).| 
 
 Dateien sollten nach Typ in einem Dataset gruppiert und als ZIP-Datei hochgeladen werden. Jedes Dataset darf nur einen einzelnen Datentyp enthalten.
 
@@ -46,7 +54,7 @@ Dateien sollten nach Typ in einem Dataset gruppiert und als ZIP-Datei hochgelade
 
 Zum Vorbereiten der Aufnahmen von einzelnen Äußerungen und des zugehörigen Transkripts stehen zwei Methoden zur Auswahl. Entweder erstellen Sie zunächst das Skript, das dann von einem Sprecher eingesprochen wird, oder Sie nutzen eine öffentlich verfügbare Audiodatei und transkribieren diese in Text. Wenn Sie sich für Letzteres entscheiden, müssen Füllwörter wie „ähm“ sowie gestotterte, undeutlich gesprochene und falsch ausgesprochene Wörter entfernt werden.
 
-Die Erstellung eines guten Voicefonts setzt voraus, dass die Aufnahmen in einem ruhigen Raum mit einem qualitativ hochwertigen Mikrofon erstellt werden. Eine gleichmäßige Lautstärke, Geschwindigkeit und Tonhöhe sowie eine ausdrucksstarke Prosodie sind entscheidend.
+Die Erstellung eines guten Stimmmodells setzt voraus, dass die Aufnahmen in einem ruhigen Raum mit einem qualitativ hochwertigen Mikrofon erstellt werden. Eine gleichmäßige Lautstärke, Geschwindigkeit und Tonhöhe sowie eine ausdrucksstarke Prosodie sind entscheidend.
 
 > [!TIP]
 > Wenn Sie eine Stimme für eine Produktionsumgebung erstellen möchten, werden ein professioneller Sprecher und ein professionelles Tonstudio empfohlen. Weitere Informationen finden Sie unter [Aufzeichnen von Sprachbeispielen für eine benutzerdefinierte Stimme](record-custom-voice-samples.md).
@@ -65,7 +73,7 @@ Beachten Sie beim Vorbereiten der Audiodateien die folgenden Richtlinien.
 | Dateiname | Numerisch, mit der Erweiterung WAV. Doppelte Dateinamen sind nicht zulässig. |
 | Länge der Audiodatei | Kürzer als 15 Sekunden |
 | Archivierungsformat | .zip |
-| Maximale Archivgröße | 2048 MB |
+| Maximale Archivgröße | 2\.048MB |
 
 > [!NOTE]
 > WAV-Dateien mit einer Samplingrate unter 16.000 Hz werden zurückgewiesen. Wenn eine ZIP-Datei WAV-Dateien mit unterschiedlichen Samplingraten enthält, werden nur die Dateien importiert, deren Rate mindestens 16.000 Hz beträgt. Aktuell werden im Portal ZIP-Archiv-Importe von bis zu 200 MB unterstützt. Es besteht allerdings die Möglichkeit, mehrere Archive hochzuladen.
@@ -79,7 +87,7 @@ Die Transkriptionsdatei ist eine reine Textdatei. Beachten Sie beim Vorbereiten 
 | Dateiformat | Nur-Text (.txt) |
 | Codierungsformat | ANSI/ASCII, UTF-8, UTF-8-BOM, UTF-16-LE oder UTF-16-BE. Für zh-CN werden ANSI/ASCII- und UTF-8-Codierungen nicht unterstützt. |
 | Anzahl von Äußerungen pro Zeile | **Eine**: Jede Zeile der Transkriptionsdatei muss den Namen einer der Audiodateien enthalten, gefolgt von der jeweiligen Transkription. Der Dateiname und die Transkription sollten durch ein Tabulatorzeichen (\t) getrennt werden. |
-| Maximale Dateigröße | 2048 MB |
+| Maximale Dateigröße | 2\.048MB |
 
 Das folgende Beispiel zeigt, wie die Transkripte nach Äußerungen unterteilt in einer TXT-Datei organisiert werden:
 
@@ -89,9 +97,6 @@ Das folgende Beispiel zeigt, wie die Transkripte nach Äußerungen unterteilt in
 0000000003[tab] It was Janet Maslin.
 ```
 Entscheidend ist, dass die Transkripte zu 100 % mit den zugehörigen Audioaufnahmen übereinstimmen. Fehler in den Transkripten führen während des Trainings zu Qualitätsverlusten.
-
-> [!TIP]
-> Beim Erstellen von Sprachsynthesestimmen für eine Produktionsumgebung sollten Sie bei der Auswahl der Äußerungen (oder beim Schreiben der Skripts) sowohl auf eine ausreichende Anzahl phonetischer Eigenschaften als auch auf die phonetische Effizienz achten. Erzielen Sie nicht die gewünschten Ergebnisse? [Wenden Sie sich an das Custom Voice-Team](mailto:speechsupport@microsoft.com), um mehr über die Beratung durch uns zu erfahren.
 
 ## <a name="long-audio--transcript-beta"></a>Lange Audiodatei und Transkript (Betaversion)
 
@@ -110,7 +115,7 @@ Beachten Sie beim Vorbereiten der Audiodateien für die Segmentierung die folgen
 | Dateiname | ASCII- und Unicode-Zeichen werden unterstützt. Doppelte Namen sind nicht zulässig. |
 | Länge der Audiodatei | Länger als 20 Sekunden |
 | Archivierungsformat | .zip |
-| Maximale Archivgröße | 2048 MB |
+| Maximale Archivgröße | 2\.048MB |
 
 Alle Audiodateien müssen in einer ZIP-Datei gruppiert werden. Das gemeinsame Speichern von WAV- und MP3-Dateien in einer einzelnen Audio-ZIP-Datei ist zulässig. Sie können z. B. eine ZIP-Datei hochladen, die eine 45 Sekunden lange Audiodatei mit dem Namen „kingstory.wav“ und eine weitere 200 Sekunden lange Audiodatei mit dem Namen „queenstory.mp3“ enthält. Alle MP3-Dateien werden nach der Verarbeitung in das WAV-Format transformiert.
 
@@ -124,7 +129,7 @@ Transkripte müssen entsprechend den Spezifikationen in dieser Tabelle vorbereit
 | Dateiname | Namen der entsprechenden Audiodatei verwenden |
 | Codierungsformat | Nur UTF-8-BOM |
 | Anzahl von Äußerungen pro Zeile | Keine Begrenzung |
-| Maximale Dateigröße | 2048 MB |
+| Maximale Dateigröße | 2\.048MB |
 
 Alle Transkriptdateien dieses Datentyps müssen in einer ZIP-Datei gruppiert werden. Angenommen, Sie haben eine ZIP-Datei hochgeladen, die eine 45 Sekunden lange Audiodatei mit dem Namen „kingstory.wav“ und eine weitere 200 Sekunden lange Audiodatei mit dem Namen „queenstory.mp3“ enthält. In diesem Fall müssen Sie eine weitere ZIP-Datei hochladen, die zwei Transkripte enthält – eine mit dem Namen „kingstory.txt“ und eine mit dem Namen „queenstory.txt“. In jeder Nur-Text-Datei stellen Sie die richtige und vollständige Transkription für die entsprechende Audioaufnahme bereit.
 
@@ -145,7 +150,7 @@ Beachten Sie beim Vorbereiten der Audiodateien die folgenden Richtlinien.
 | Dateiname | ASCII- und Unicode-Zeichen werden unterstützt. Doppelte Namen sind nicht zulässig. |
 | Länge der Audiodatei | Länger als 20 Sekunden |
 | Archivierungsformat | .zip |
-| Maximale Archivgröße | 2048 MB |
+| Maximale Archivgröße | 2\.048MB |
 
 Alle Audiodateien müssen in einer ZIP-Datei gruppiert werden. Nachdem das Dataset erfolgreich hochgeladen wurde, helfen wir Ihnen dabei, die Audiodatei mit unserem Dienst für die Batch-Sprachtranskription in Äußerungen zu segmentieren. Den segmentierten Äußerungen werden automatisch eindeutige IDs zugewiesen. Zugehörige Transkripte werden mittels Spracherkennung generiert. Alle MP3-Dateien werden nach der Verarbeitung in das WAV-Format transformiert. Sie können die segmentierten Äußerungen und die entsprechenden Transkripte überprüfen, indem Sie das Dataset herunterladen.
 

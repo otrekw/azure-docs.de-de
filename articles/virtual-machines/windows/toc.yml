@@ -18,38 +18,32 @@
   expanded: true
 - name: Tutorials
   items:
-    - name: '1: Erstellen/Verwalten eines virtuellen Computers'
+    - name: Erstellen/Verwalten eines virtuellen Computers
       href: tutorial-manage-vm.md
-    - name: '2: Erstellen/Verwalten von Datenträgern'
+    - name: Erstellen/Verwalten von Datenträgern
       href: tutorial-manage-data-disk.md
-    - name: '3: Automatisieren der Konfiguration'
+    - name: Automatisieren der Konfiguration
       href: tutorial-automate-vm-deployment.md
-    - name: '4: Erstellen von VM-Images'
+    - name: Erstellen von VM-Images
       href: tutorial-custom-images.md
-    - name: '5: Hoch verfügbare virtuelle Computer'
+    - name: Hoch verfügbare virtuelle Computer
       href: tutorial-availability-sets.md
-    - name: '6: Erstellen einer Skalierungsgruppe'
+    - name: Erstellen einer Skalierungsgruppe
       href: tutorial-create-vmss.md
-    - name: '7: Lastenausgleich für virtuelle Computer'
+    - name: Lastenausgleich für virtuelle Computer
       href: tutorial-load-balancer.md
-    - name: '8: Verwalten von Netzwerken'
+    - name: Verwalten von Netzwerken
       href: tutorial-virtual-network.md
-    - name: 9 – Sichern virtueller Computer
-      href: tutorial-backup-vms.md
-    - name: 10. Aktivieren der Notfallwiederherstellung
+    - name: Aktivieren der Notfallwiederherstellung
       href: tutorial-disaster-recovery.md
-    - name: 11. Verwalten virtueller Computer
+    - name: Verwalten von VMs
       displayName: scope policy Azure RBAC lock tag
       href: tutorial-govern-resources.md
-    - name: 12. Nachverfolgen und Aktualisieren virtueller Computer
+    - name: Nachverfolgen und Aktualisieren virtueller Computer
       href: tutorial-config-management.md
-    - name: 13. Überwachen virtueller Computer
+    - name: Überwachen virtueller Computer
       href: tutorial-monitor.md
-    - name: 14. Verwalten der VM-Sicherheit
-      href: ../tutorial-azure-security.md
-    - name: 15. Installieren eines SQL-\IIS-\.NET-Stapels
-      href: tutorial-iis-sql.md
-    - name: '16: Sichern von Webservern mit SSL'
+    - name: Sichern von Webservern mit SSL
       href: tutorial-secure-web-server.md
 - name: Konzepte
   items:
@@ -758,8 +752,6 @@
           href: ../custom-data.md
         - name: Chef
           href: /azure/developer/chef/windows-vm-configure
-        - name: Veröffentlichen einer Web-App über Visual Studio
-          href: publish-web-app-from-visual-studio.md
     - name: Ausführen von Anwendungen
       items:
         - name: SQL Server

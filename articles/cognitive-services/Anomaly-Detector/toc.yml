@@ -38,7 +38,7 @@
           href: ../containers/index.yml
 - name: Konzepte
   items:
-    - name: Best Practices für die Anomalieerkennungs-API
+    - name: Bewährte Methoden für die Anomalieerkennungs-API
       href: concepts/anomaly-detection-best-practices.md
 - name: Verweis
   items:

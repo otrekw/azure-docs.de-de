@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/13/2020
 ms.author: erhopf
-ms.openlocfilehash: dae7b8e0485c1a2456b85e0910f60b2164d4e41c
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 966b11e2c9a0f7ffc5e6ec9238080b9076d37af6
+ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95026317"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98572424"
 ---
 # <a name="record-voice-samples-to-create-a-custom-voice"></a>Aufzeichnen von Sprachbeispielen zum Erstellen einer benutzerdefinierten Stimme
 
@@ -25,6 +25,14 @@ Vor der Aufzeichnung benötigen Sie ein Skript: die Wörter, die von Ihrem Sprec
 
 Das Erstellen einer professionellen Sprachaufzeichnung setzt sich aus vielen kleinen, jedoch wichtigen Details zusammen. Diese Anleitung ist eine Roadmap für einen Prozess, mit dem Sie gute, einheitliche Ergebnisse erzielen.
 
+> [!NOTE]
+> Wenn Sie eine neuronale Stimme trainieren möchten, müssen Sie ein Sprecherprofil mit der Audiozustimmungsdatei des Sprechers angeben, in der dieser bestätigt, die Sprachdaten zum Trainieren eines benutzerdefinierten Sprachmodells zu verwenden. Stellen Sie beim Vorbereiten des Aufzeichnungsskripts sicher, dass Sie den folgenden Satz einschließen. 
+
+> „Ich [Vor- und Nachname nennen] akzeptiere, dass die Aufzeichnungen meiner Stimme von [Name des Unternehmens nennen] verwendet werden, um eine synthetische Version meiner Stimme zu erstellen und diese zu verwenden.“
+Dieser Satz wird verwendet, um zu überprüfen, ob die Trainingsdaten von derselben Person gesprochen werden, die die Zustimmung erteilt. Weitere Informationen zur [Überprüfung des Sprechers](https://aka.ms/CNV-data-privacy)
+
+> Die benutzerdefinierte neuronale Stimme ist mit eingeschränktem Zugriff verfügbar. Stellen Sie sicher, dass Sie die [Anforderungen für verantwortungsvolle KI](https://aka.ms/gating-overview) kennen, und fordern Sie [hier](https://aka.ms/customneural) den Zugriff an. 
+
 > [!TIP]
 > Für Ergebnisse höchster Qualität könnten Sie Microsoft damit beauftragen, Ihre benutzerdefinierte Stimme zu entwickeln. Microsoft hat umfangreiche Erfahrungen beim Produzieren qualitativ hochwertiger Stimmen für die eigenen Produkte, einschließlich Cortana und Office.
 
@@ -32,7 +40,7 @@ Das Erstellen einer professionellen Sprachaufzeichnung setzt sich aus vielen kle
 
 Es gibt vier grundlegende Rollen in einem Projekt zur Aufzeichnung einer benutzerdefinierten Stimme:
 
-Role|Zweck
+Rolle|Zweck
 -|-
 Sprecher        |Die Stimme dieser Person bildet die Grundlage für die benutzerdefinierte Stimme.
 Tontechniker  |Überwacht die technischen Aspekte der Aufzeichnung und bedient die Aufzeichnungsgeräte.
@@ -56,7 +64,7 @@ Ihr Sprecher ist die andere Hälfte der Gleichung. Sie müssen mit einheitlicher
 
 Die Aufzeichnung von Beispielen für benutzerdefinierte Stimmen kann ermüdender als andere Arten von Sprecharbeiten sein. Die meisten Sprecher können für zwei oder drei Stunden pro Tag aufzeichnen. Beschränken Sie die Sitzungen auf drei oder vier pro Woche mit möglichst einem freien Tag dazwischen.
 
-Aufzeichnungen für ein Stimmmodell sollten nicht emotional sein. Eine traurige Äußerung sollte also nicht auf eine traurige Weise vorgelesen werden. Die Stimmung kann der synthetisierten Sprache später über die Steuerung des Satzrhythmus hinzugefügt werden. Arbeiten Sie mit Ihrem Sprecher zusammen, um eine Rolle zu entwickeln, die den allgemeinen Klang und emotionaler Tonfall der benutzerdefinierten Stimme definiert. Dabei sollten Sie festlegen, was für die Rolle „neutral“ klingt.
+Arbeiten Sie mit Ihrem Sprecher zusammen, um eine Rolle zu entwickeln, die den allgemeinen Klang und emotionaler Tonfall der benutzerdefinierten Stimme definiert. Dabei sollten Sie festlegen, was für die Rolle „neutral“ klingt. Mithilfe des Features „Benutzerdefinierte neuronale Stimme“ können Sie ein Modell trainieren, das mit Emotionen spricht. Definieren Sie die „Sprechstile“, und bitten Sie den Sprecher, das Skript in verschiedenen gewünschten Stilen zu lesen.  
 
 Eine Rolle kann z.B. eine natürliche, optimistische Persönlichkeit haben. Daher kann „ihre“ Stimme optimistisch klingen, selbst wenn neutral gesprochen wird. Ein solches Persönlichkeitsmerkmal sollte allerdings subtil und konsistent sein. Hören Sie sich Aufzeichnungen von vorhandenen Stimmen an, um eine Vorstellung davon zu erhalten, was das Ziel sein könnte.
 
@@ -164,7 +172,7 @@ Um keine Studiozeit zu verschwenden, gehen Sie das Skript mit Ihrem Sprecher vor
 
 Ihr Sprecher könnte fragen, welches Wort in einer Äußerung betont werden soll (das „Schlüsselwort“). Antworten Sie, dass Sie einen natürlichen Vortrag ohne besondere Betonungen wünschen. Betonungen können hinzugefügt werden, wenn die Sprache synthetisiert wird. Sie sollten kein Teil der Originalaufzeichnung sein.
 
-Bitten Sie den Sprecher, Wörter deutlich auszusprechen. Jedes Wort des Skripts sollte so gesprochen werden, wie es geschrieben ist. Silben sollten nicht weggelassen oder undeutlich gesprochen werden, wie es häufig in der Alltagssprache der Fall ist, es sein denn, *sie wurden im Skript auf diese Weise geschrieben.*
+Bitten Sie den Sprecher, Wörter deutlich auszusprechen. Jedes Wort des Skripts sollte so gesprochen werden, wie es geschrieben ist. Silben sollten nicht weggelassen oder undeutlich gesprochen werden, wie es häufig in der Alltagssprache der Fall ist, es sein denn,*sie wurden im Skript auf diese Weise geschrieben.*
 
 |Geschriebener Text|Unerwünschte saloppe Aussprache|
 |-|-|
@@ -211,7 +219,7 @@ Hören Sie sich jede Datei genau an. Sie können in dieser Phase kleine, unerwü
 
 Konvertieren Sie vor dem Speichern jede Datei in 16 Bit und eine Samplingrate von 16 kHz. Falls Sie die Gespräche im Studio aufgezeichnet haben, entfernen Sie den zweiten Kanal. Speichern Sie jede Datei im WAV-Format, und benennen Sie die Dateien mit der Nummer der Äußerung aus Ihrem Skript.
 
-Erstellen Sie abschließend das *Transkript*, mit dem die WAV-Datei mit einer Textversion der entsprechenden Äußerung verknüpft wird. [Erstellen benutzerdefinierter Voicefonts](./how-to-custom-voice-create-voice.md) enthält Details zum erforderlichen Format. Sie können den Text direkt aus Ihrem Skript kopieren. Erstellen Sie eine ZIP-Datei der WAV-Dateien und des Texttranskripts.
+Erstellen Sie abschließend das *Transkript*, mit dem die WAV-Datei mit einer Textversion der entsprechenden Äußerung verknüpft wird. Unter [Erstellen einer benutzerdefinierten Stimme](./how-to-custom-voice-create-voice.md) erhalten Sie weitere Informationen zum erforderlichen Format. Sie können den Text direkt aus Ihrem Skript kopieren. Erstellen Sie eine ZIP-Datei der WAV-Dateien und des Texttranskripts.
 
 Archivieren Sie die Originalaufzeichnungen an einem sicheren Ort, falls Sie sie später noch benötigen. Bewahren Sie auch Ihr Skript und die Notizen auf.
 

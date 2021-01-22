@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/17/2020
 ms.author: trbye
-ms.openlocfilehash: 6ae164b1300119481e495e647dd491beafdd5241
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: e48dfd224a9656c7d8327dd77f1b55e9a744f3af
+ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95025077"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98573087"
 ---
 # <a name="get-started-with-custom-voice"></a>Erste Schritte mit Custom Voice
 
@@ -39,10 +39,10 @@ Im folgenden Diagramm sind die Schritte zum Erstellen eines benutzerdefinierten 
 
 ## <a name="custom-neural-voices"></a>Benutzerdefinierte neuronale Stimmen
 
-Die neuronale Stimmenanpassungsfunktion befindet sich derzeit in der öffentlichen Vorschauversion und ist auf ausgewählte Kunden beschränkt. Füllen Sie dieses [Antragsformular](https://go.microsoft.com/fwlink/?linkid=2108737) aus, um loszulegen.
+Custom Voice unterstützt aktuell sowohl neuronale Ebenen als auch Standardebenen. Das Feature „Benutzerdefinierte neuronale Stimme“ ermöglicht es Benutzern, leistungsfähigere Sprachmodelle zu erstellen, für die weniger Daten erforderlich sind. Außerdem werden über das Feature Methoden bereitgestellt, die Sie dabei unterstützen, KI verantwortungsbewusst zu nutzen. Sie sollten das Feature „Benutzerdefinierte neuronale Stimme“ verwenden, um realistischere Stimmen für natürlichere Konversationsschnittstellen zu entwickeln. So können Sie es Ihren Kunden und Endbenutzern ermöglichen, die Vorteile der aktuellen Text-zu-Sprache-Technologie verantwortungsvoll zu nutzen. [Hier](https://aka.ms/CNV-Transparency-Note) erhalten Sie weitere Informationen zum Feature „Benutzerdefinierte neuronale Stimme“. 
 
 > [!NOTE]
-> Im Rahmen der Verpflichtung von Microsoft für die Entwicklung einer verantwortungsvollen KI ist es unsere Absicht, die Rechte von Personen und der Gesellschaft zu schützen und transparente Interaktionen zwischen Mensch und Computer zu fördern. Aus diesem Grund ist die benutzerdefinierte neuronale Stimme nicht für alle Kunden verfügbar. Sie erhalten erst Zugriff auf die Technologie, nachdem Ihre Anwendungen überprüft wurden und Sie sich zur Einhaltung der ethischen Grundlagen verpflichtet haben. Erfahren Sie mehr über unseren [Anwendungskontrollprozess](./concepts-gating-overview.md).
+> Im Rahmen der Zusage von Microsoft zu einem verantwortungsbewussten Umgang mit KI haben wir die Verwendung des Features „Benutzerdefinierte neuronale Stimme“ beschränkt. Sie erhalten erst Zugriff auf die Technologie, nachdem Ihre Anwendungen überprüft wurden und Sie sich zur Einhaltung der Prinzipien eines verantwortungsbewussten Umgangs mit KI verpflichtet haben. [Hier](https://aka.ms/gating-overview) erhalten Sie weitere Informationen zu unserer Richtlinie zur Zugriffsbeschränkung. [Hier](https://aka.ms/customneural) können Sie den Zugriff anfordern. Die für die Standardversion und die neuronale Version von Custom Voice unterstützten [Sprachen](language-support.md#customization) und [Regionen](regions.md#custom-voices) unterscheiden sich. Überprüfen Sie die Details, bevor Sie loslegen.  
 
 ## <a name="set-up-your-azure-account"></a>Einrichten Ihres Azure-Kontos
 
@@ -56,7 +56,7 @@ Nachdem Sie ein Azure-Konto und ein Abonnement für den Speech-Dienst erstellt h
 4. Wenn Sie zu einem anderen Speech-Abonnement wechseln möchten, verwenden Sie das Zahnradsymbol auf der oberen Navigationsleiste.
 
 > [!NOTE]
-> Sie müssen über einen in Azure erstellten F0- oder S0-Schlüssel verfügen, um den Dienst nutzen zu können.
+> Sie müssen über einen in Azure erstellten F0- oder S0-Schlüssel für den Speech-Dienst verfügen, um den Dienst nutzen zu können. Das Feature „Benutzerdefinierte neuronale Stimme“ unterstützt nur die S0-Ebene. 
 
 ## <a name="how-to-create-a-project"></a>So erstellen Sie ein Projekt
 

@@ -109,8 +109,8 @@
               href: tutorial-data-flow.md
             - name: Videotutorials zum Zuordnungsdatenfluss
               href: data-flow-tutorials.md
-        - name: Vorbereiten von Daten mit Wranglingdatenflüssen
-          href: wrangling-data-flow-tutorial.md
+        - name: Vorbereiten von Daten mit Wrangling
+          href: wrangling-tutorial.md
         - name: Verwenden externer Dienste
           items:
             - name: HDInsight Spark
@@ -197,12 +197,12 @@
               href: concepts-data-flow-expression-builder.md
             - name: Ausdruckssprache
               href: data-flow-expression-functions.md
-        - name: Vorbereiten von Daten mit Wrangling-Datenflüssen
+        - name: Vorbereiten von Daten mit Power Query Data Wrangling
           items:
-            - name: Übersicht über Wrangling-Datenflüsse
-              href: wrangling-data-flow-overview.md
+            - name: Übersicht über Data Wrangling
+              href: wrangling-overview.md
             - name: Unterstützte Funktionen
-              href: wrangling-data-flow-functions.md
+              href: wrangling-functions.md
     - name: Rollen und Berechtigungen
       href: concepts-roles-permissions.md
     - name: Benennungsregeln
@@ -464,6 +464,8 @@
       items:
         - name: Ausführen der Datenflussaktivität
           href: control-flow-execute-data-flow-activity.md
+        - name: Ausführen der Power Query-Aktivität
+          href: control-flow-power-query-activity.md
         - name: Azure-Funktionsaktivität
           href: control-flow-azure-function-activity.md
         - name: Benutzerdefinierte Aktivität

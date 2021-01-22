@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 09/11/2020
+ms.date: 01/12/2021
 ms.author: aahi
-ms.openlocfilehash: 8e951e6cb18596b19f49bf42179297f656e3fa5f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 849afe54125588cb7664ee221e4f229e83be8f96
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91304292"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98185477"
 ---
 # <a name="camera-placement-guide"></a>Leitfaden zur Kameraplatzierung
 
@@ -52,7 +52,7 @@ In der folgenden Abbildung wird die gehende Person von oben gezeigt.
 
 ## <a name="camera-height"></a>Kamerahöhe
 
-Im Allgemeinen sollten Kameras 3–4 m über dem Boden montiert werden. Berücksichtigen Sie beim Planen der Kameramontage in dieser Höhe Hindernisse (z. B. Regale, Hängeleuchten, Deckenschilder und Vitrinen), die die Kamerasicht beeinträchtigen können, und passen Sie die Höhe ggf. an.
+Im Allgemeinen sollten Kameras 3–4 m über dem Boden montiert werden. Für die Gesichtsmaskenerkennung empfiehlt es sich, dass Kameras acht bis zwölf Fuß vom Boden montiert werden. Berücksichtigen Sie beim Planen der Kameramontage in dieser Höhe Hindernisse (z. B. Regale, Hängeleuchten, Deckenschilder und Vitrinen), die die Kamerasicht beeinträchtigen können, und passen Sie die Höhe ggf. an.
 
 ## <a name="camera-to-focal-point-distance"></a>Kameraabstand
 
@@ -68,7 +68,7 @@ Von oben sieht dies folgendermaßen aus:
 
 ![Messen des Kameraabstands von oben](./media/spatial-analysis/camera-focal-point-above.png)
 
-Ermitteln Sie anhand der folgenden Tabelle den Abstand der Kamera vom Fokuspunkt basierend auf der Montagehöhe. Diese Abstände sorgen für eine optimale Platzierung. Beachten Sie, dass die Tabelle auch Hinweis für Höhen unter den empfohlenen 3–4 m enthält, da die Höhe bei einigen Gebäuden eingeschränkt sein kann.
+Ermitteln Sie anhand der folgenden Tabelle den Abstand der Kamera vom Fokuspunkt basierend auf der Montagehöhe. Diese Abstände sorgen für eine optimale Platzierung. Beachten Sie, dass die Tabelle auch Hinweis für Höhen unter den empfohlenen 3–4 m enthält, da die Höhe bei einigen Gebäuden eingeschränkt sein kann. Für die Gesichtsmaskenerkennung beträgt der empfohlene Kameraabstand (min/max) vier bis zehn Zoll bei einer Kamerahöhe zwischen acht und zwölf Zoll.
 
 | Kamerahöhe | Kameraabstand (min./max.) |  
 | ------------- | ---------------------------------------- |  
@@ -91,7 +91,7 @@ In diesem Abschnitt werden akzeptable Montagespielräume für den Kamerawinkel b
 
 ### <a name="line-configuration"></a>Linienanordnung
 
-In der folgenden Tabelle sind die Empfehlungen für Kameras aufgeführt, die für den Vorgang **cognitiveservices.vision.spatialanalysis-personcrossingline** konfiguriert werden. 
+In der folgenden Tabelle sind die Empfehlungen für Kameras aufgeführt, die für den Vorgang **cognitiveservices.vision.spatialanalysis-personcrossingline** konfiguriert werden. Für die Gesichtsmaskenerkennung beträgt der optimale Winkel für die Kameramontage +/- 30 Grad bei einer Kamerahöhe zwischen acht und zwölf Zoll.
 
 | Kamerahöhe | Kameraabstand | Optimaler Winkel für die Kameramontage (min./max.) |  
 | ------------- | ------------------------------ | ------------------------------------------ |  

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/03/2020
 ms.author: trbye
-ms.openlocfilehash: 9356cbb6eb210d6745d90e8ad001917e73592cd3
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 597a7c3954912a3a86b5db9f92ba75e8aaee63f6
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "96021984"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98601816"
 ---
 # <a name="about-the-speech-sdk"></a>Informationen zum Speech SDK
 
@@ -58,7 +58,7 @@ Die [Spracherkennung](speech-to-text.md) (auch als *Speech-to-Text* bezeichnet) 
 
 ### <a name="voice-assistants"></a>Sprachassistenten
 
-[Sprachassistenten](voice-assistants.md), die das Speech SDK verwenden, ermöglichen es Entwicklern, natürliche Konversationsschnittstellen für ihre Anwendungen und Umgebungen zu erstellen, die der menschlichen Sprache nahekommen. Der Sprachassistentendienst ermöglicht die schnelle, zuverlässige Interaktion zwischen einem Gerät und einem Assistenten. Die Implementierung verarbeitet Aufgaben über den Direct Line Speech-Kanal des Bot Framework oder den integrierten Dienst Benutzerdefinierte Befehle (Vorschauversion). Darüber hinaus können Sprachassistenten benutzerdefinierte Stimmen verwenden, die über das [Custom Voice-Portal](https://aka.ms/customvoice) erstellt werden, um eine unverwechselbare Sprachausgabe zu erzielen.
+[Sprachassistenten](voice-assistants.md), die das Speech SDK verwenden, ermöglichen es Entwicklern, natürliche Konversationsschnittstellen für ihre Anwendungen und Umgebungen zu erstellen, die der menschlichen Sprache nahekommen. Der Sprachassistentendienst ermöglicht die schnelle, zuverlässige Interaktion zwischen einem Gerät und einem Assistenten. Die Implementierung verarbeitet Aufgaben über den Kanal „Direct Line Speech“ von Bot Framework oder den integrierten Dienst „Benutzerdefinierte Befehle“. Darüber hinaus können Sprachassistenten benutzerdefinierte Stimmen verwenden, die über das [Custom Voice-Portal](https://aka.ms/customvoice) erstellt werden, um eine unverwechselbare Sprachausgabe zu erzielen.
 
 **Sprach-Assistent** ist auf den folgenden Plattformen verfügbar:
 

@@ -383,6 +383,8 @@
           href: partner-itsme.md
         - name: Jumio
           href: partner-jumio.md
+        - name: Keyless
+          href: partner-keyless.md
         - name: LexisNexis
           href: partner-lexisnexis.md
         - name: N8 Identity
@@ -417,9 +419,9 @@
         - name: Azure Monitor
           href: azure-monitor.md
           displayName: 'log, logs, logging, usage, events'
-        - name: 'Verwalten von Benutzern: Microsoft Graph'
-          href: manage-user-accounts-graph-api.md
-          displayName: 'account, accounts'
+        - name: Microsoft Graph-API
+          href: microsoft-graph-operations.md
+          displayName: 'account, accounts, msgraph, ms graph, graph'
         - name: Bereitstellen mit Azure Pipelines
           href: deploy-custom-policies-devops.md
           displayName: 'azure devops, ci/cd, cicd, custom policy, policies'
@@ -463,8 +465,6 @@
       href: extensions-app.md
     - name: Versionshinweise zu benutzerdefinierten Richtlinien (IEF)
       href: custom-policy-developer-notes.md
-    - name: Microsoft Graph-API-Vorgänge
-      href: microsoft-graph-operations.md
     - name: Seitenlayoutversionen
       href: page-layout.md
     - name: Regionale Verfügbarkeit und Datenresidenz

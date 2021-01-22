@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 09/11/2020
+ms.date: 01/12/2021
 ms.author: aahi
-ms.openlocfilehash: dd1b6d216f6225a13d86aa2435b5b1c807547ec3
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: dda3ece27fd2c687647e0aa289bd1596a87b274f
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95014576"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98186021"
 ---
 # <a name="telemetry-and-troubleshooting"></a>Telemetrie und Problembehandlung
 
@@ -68,7 +68,7 @@ az iot hub list
 az ad sp create-for-rbac --role="Monitoring Metrics Publisher" --name "<principal name>" --scopes="<resource ID of IoT Hub>"
 ```
 
-Suchen Sie im Bereitstellungsmanifest für Ihr [Azure Stack Edge-Gerät](https://go.microsoft.com/fwlink/?linkid=2142179) oder anderen [Desktopcomputer](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/ComputerVision/spatial-analysis/DeploymentManifest_for_non_ASE_devices.json) nach dem Modul *Telegraf*, ersetzen Sie die folgenden Werte durch die Informationen zum Dienstprinzipal aus dem vorherigen Schritt, und führen Sie eine erneute Bereitstellung aus.
+Suchen Sie im Bereitstellungsmanifest für Ihr [Azure Stack Edge-Gerät](https://go.microsoft.com/fwlink/?linkid=2142179), Ihren [Desktopcomputer](https://go.microsoft.com/fwlink/?linkid=2152270) oder Ihre [Azure-VM mit GPU](https://go.microsoft.com/fwlink/?linkid=2152189) nach dem Modul *Telegraf*, und ersetzen Sie die folgenden Werte durch die Informationen zum Dienstprinzipal aus dem vorherigen Schritt, und führen Sie die Bereitstellung dann noch mal aus.
 
 ```json
 
@@ -129,7 +129,7 @@ Mit dem Befehlszeilentool `iotedge` können Sie den Status und die Protokolle au
 
 ## <a name="collect-log-files-with-the-diagnostics-container"></a>Sammeln von Protokolldateien mit dem Diagnosecontainer
 
-Bei der räumlichen Analyse werden Docker-Debugprotokolle generiert, mit denen Sie Laufzeitprobleme diagnostizieren und die Sie in Supporttickets einfügen können. Sie können das Diagnosemodul für räumliche Analysen in Microsoft Container Registry herunterladen. Suchen Sie in der Manifestbereitstellungsdatei für Ihr [Azure Stack Edge-Gerät](https://go.microsoft.com/fwlink/?linkid=2142179) oder anderen [Desktopcomputer](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/ComputerVision/spatial-analysis/DeploymentManifest_for_non_ASE_devices.json) nach dem Modul *Diagnose*.
+Bei der räumlichen Analyse werden Docker-Debugprotokolle generiert, mit denen Sie Laufzeitprobleme diagnostizieren und die Sie in Supporttickets einfügen können. Sie können das Diagnosemodul für räumliche Analysen in Microsoft Container Registry herunterladen. Suchen Sie in der Manifestbereitstellungsdatei für Ihr [Azure Stack Edge-Gerät](https://go.microsoft.com/fwlink/?linkid=2142179), Ihren [Desktopcomputer](https://go.microsoft.com/fwlink/?linkid=2152270) oder Ihre [Azure-VM mit GPU](https://go.microsoft.com/fwlink/?linkid=2152189) nach dem Modul *Diagnose*.
 
 Fügen Sie im Abschnitt „env“ die folgende Konfiguration hinzu:
 
@@ -188,13 +188,13 @@ Sie kann auch über das Dokument für IoT Edge-Modulzwillinge global für alle b
 > Das `diagnostics`-Modul wirkt sich nicht auf den Protokollierungsinhalt aus, es unterstützt nur das Erfassen, Filtern und Hochladen vorhandener Protokolle.
 > Sie benötigen mindestens die Docker-API-Version 1.40, um dieses Modul verwenden zu können.
 
-Die Beispiel-Bereitstellungsmanifestdatei für Ihr [Azure Stack Edge-Gerät](https://go.microsoft.com/fwlink/?linkid=2142179) oder anderen [Desktopcomputer](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/ComputerVision/spatial-analysis/DeploymentManifest_for_non_ASE_devices.json) beinhaltet ein Modul mit dem Namen `diagnostics`, das Protokolle sammelt und hochlädt. Dieses Modul ist standardmäßig deaktiviert und sollte durch die Konfiguration des IoT Edge-Moduls aktiviert werden, wenn Sie auf Protokolle zugreifen müssen. 
+Die Beispielbereitstellungsmanifestdatei für Ihr [Azure Stack Edge-Gerät](https://go.microsoft.com/fwlink/?linkid=2142179), Ihren [Desktopcomputer](https://go.microsoft.com/fwlink/?linkid=2152270) oder Ihre [Azure-VM mit GPU](https://go.microsoft.com/fwlink/?linkid=2152189) beinhaltet ein Modul mit dem Namen `diagnostics`, das Protokolle sammelt und hochlädt. Dieses Modul ist standardmäßig deaktiviert und sollte durch die Konfiguration des IoT Edge-Moduls aktiviert werden, wenn Sie auf Protokolle zugreifen müssen. 
 
 Die `diagnostics`-Sammlung ist bedarfsgesteuert und wird über eine direkte IoT Edge-Methode gesteuert. Sie kann Protokolle an Azure Blob Storage senden.
 
 ### <a name="configure-diagnostics-upload-targets"></a>Konfigurieren der Uploadziele für die Diagnose
 
-Wählen Sie im IoT Edge-Portal Ihr Gerät und dann das Modul **diagnostics** aus. Suchen Sie in der Beispiel-Bereitstellungsmanifestdatei für Ihr [Azure Stack Edge-Gerät](https://go.microsoft.com/fwlink/?linkid=2142179) oder anderen [Desktopcomputer](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/ComputerVision/spatial-analysis/DeploymentManifest_for_non_ASE_devices.json) nach dem Abschnitt **Umgebungsvariablen** für Diagnosen mit dem Namen `env`, und fügen Sie die folgenden Informationen hinzu:
+Wählen Sie im IoT Edge-Portal Ihr Gerät und dann das Modul **diagnostics** aus. Suchen Sie in der Beispielbereitstellungsmanifestdatei für Ihr [Azure Stack Edge-Gerät](https://go.microsoft.com/fwlink/?linkid=2142179), Ihren [Desktopcomputer](https://go.microsoft.com/fwlink/?linkid=2152270) oder [Ihre Azure-VM mit GPU](https://go.microsoft.com/fwlink/?linkid=2152189) nach dem Abschnitt **Umgebungsvariablen** für Diagnosen mit dem Namen `env`, und fügen Sie die folgenden Informationen hinzu:
 
 **Konfigurieren des Uploads in Azure Blob Storage**
 

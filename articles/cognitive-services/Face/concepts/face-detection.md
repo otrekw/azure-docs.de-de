@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 04/26/2019
 ms.author: pafarley
-ms.openlocfilehash: 92b19941f34b9bf5656c9beb188a68d2cf01f674
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 68d1e9744d937cf80327c3f41cc69f4af97d3400
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92504128"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98600187"
 ---
 # <a name="face-detection-and-attributes"></a>Gesichtserkennung und -attribute
 
@@ -64,7 +64,9 @@ Anhand der folgenden Tipps können Sie sicherstellen, dass Ihre Eingabebilder m�
 
 * Als Eingabebildformate werden JPEG, PNG, GIF (der erste Frame) und BMP unterstützt.
 * Die Bilddateien dürfen maximal 6 MB groß sein.
-* Die erkennbare Gesichtsgröße reicht von 36 x 36 bis 4.096 x 4.096 Pixel. Außerhalb dieses Bereichs liegende Gesichter werden nicht erkannt.
+* Die minimal erkennbare Gesichtsgröße beträgt 36×36 Pixel auf einem Bild, das selbst nicht größer als 1.920×1.080 Pixel sein darf. Auf Bildern, die größer als 1.920×1.080 Pixel sind, ist eine proportional größere minimale Gesichtsgröße möglich. Eine Verkleinerung der Gesichtsgröße kann dazu führen, dass einige Gesichter nicht erkannt werden, selbst wenn sie größer als die minimal erkennbare Gesichtsgröße sind.
+* Die maximal erkennbare Gesichtsgröße beträgt 4.096×4.096 Pixel.
+* Gesichter außerhalb der Größenspanne von 36×36 bis 4.096×4.096 Pixel werden nicht erkannt.
 * Einige Gesichter können möglicherweise aufgrund technischer Probleme nicht erkannt werden. Extreme Gesichtswinkel (Kopfhaltung) oder verdeckte Gesichter (Objekte wie Sonnenbrille oder Hände bedecken Teile des Gesichts) können die Erkennung beeinträchtigen. Frontalansichten und nahezu der Frontalansicht entsprechende Ansichten von Gesichtern führen zu den besten Ergebnissen.
 
 Wenn Sie Gesichter in einem Videofeed ermitteln möchten, können Sie die Leistung verbessern, indem Sie bestimmte Einstellungen an Ihrer Videokamera anpassen:

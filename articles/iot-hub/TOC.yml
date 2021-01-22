@@ -481,6 +481,8 @@
           href: iot-hub-migrate-to-diagnostics-settings.md
         - name: Einstellung von TLS 1.0 und 1.1
           href: iot-hub-tls-deprecating-1-0-and-1-1.md
+        - name: Klassischer IP-Filter
+          href: iot-hub-ip-filter-classic.md
 - name: Ressourcen
   items:
     - name: Support- und Hilfeoptionen

@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 05/26/2020
 ms.author: swmachan
-ms.openlocfilehash: a9050b85c974a3c04ca717e8fe3d5188c1bf7a40
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6773c6b29ecfd8354c54a6214cfe0b4050edcd38
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88244311"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98602651"
 ---
 # <a name="how-to-sign-up-for-translator"></a>Registrieren für Translator
 
@@ -41,7 +41,7 @@ Nachdem Sie sich beim Portal angemeldet haben, können Sie wie folgt ein Abonnem
 Wenn Sie sich bei Translator registrieren, erhalten Sie einen personalisierten Zugriffsschlüssel, der nur für Ihr Abonnement gilt. Dieser Schlüssel ist für jeden Aufruf von Translator erforderlich.
 
 1. Sie rufen Ihren Authentifizierungsschlüssel ab, indem Sie zunächst das zugehörige Abonnement auswählen.
-1. Wählen Sie im Abschnitt **Ressourcenverwaltung** Ihres Abonnements **Schlüssel** aus.
+1. Klicken Sie im Abschnitt **Ressourcenverwaltung** der Abonnementdetails auf **Keys and Endpoint** (Schlüssel und Endpunkt).
 1. Kopieren Sie einen der für Ihr Abonnement aufgeführten Schlüssel.
 
 ## <a name="learn-test-and-get-support"></a>Lernen, testen und Hilfe erhalten

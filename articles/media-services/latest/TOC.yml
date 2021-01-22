@@ -258,8 +258,49 @@
               href: job-error-codes.md
         - name: Zurücksetzen der Kontoanmeldeinformationen
           href: cli-reset-account-credentials.md
-    - name: Migration von v2 zu v3
+    - name: Migrationsleitfaden
+      displayName: migration
       items:
+        - name: Migrationsleitfaden – Einführung
+          href: migrate-v-2-v-3-migration-introduction.md
+          displayName: migration
+        - name: "Schritt\_1: Vorteile"
+          href: migrate-v-2-v-3-migration-benefits.md
+          displayName: 'migration, benefits'
+        - name: "Schritt\_2: Unterschiede"
+          items:
+            - name: API-Zugriff
+              href: migrate-v-2-v-3-differences-api-access.md
+              displayName: 'migration, api'
+            - name: Funktionslücken
+              href: migrate-v-2-v-3-differences-feature-gaps.md
+              displayName: 'migration, features'
+            - name: Terminologie- und Entitätsänderungen
+              href: migrate-v-2-v-3-differences-terminology.md
+              displayName: 'migration, entity, api'
+        - name: "Schritt\_3: SDK-Setup"
+          href: migrate-v-2-v-3-migration-setup.md
+          displayName: 'migration, SDK`'
+        - name: "Schritt\_4: Szenariobasierter Migrationsleitfaden"
+          items:
+            - name: Codierung
+              href: migrate-v-2-v-3-migration-scenario-based-encoding.md
+              displayName: 'migration, encoding'
+            - name: Livestreaming
+              href: migrate-v-2-v-3-migration-scenario-based-live-streaming.md
+              displayName: 'migration, live streaming'
+            - name: Verpackung und Bereitstellung
+              href: migrate-v-2-v-3-migration-scenario-based-publishing.md
+              displayName: 'migration, packaging, delivery, publishing'
+            - name: Inhaltsschutz
+              href: migrate-v-2-v-3-migration-scenario-based-content-protection.md
+              displayName: 'migration, content protection, DRM, digital rights management'
+            - name: Reservierte Einheiten für Medien (MRU)
+              href: migrate-v-2-v-3-migration-scenario-based-media-reserved-units.md
+              displayName: 'migration, media reserved units'
+        - name: Vergleich von Beispielen
+          href: migrate-v-2-v-3-migration-samples.md
+          displayName: 'migration, samples'
         - name: Vergleich von v2 und v3
           displayName: 'migrate, v2 to v3'
           href: media-services-v2-vs-v3.md

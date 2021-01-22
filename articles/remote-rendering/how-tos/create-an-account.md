@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/11/2020
 ms.topic: how-to
-ms.openlocfilehash: 8169b277dfae918e86ac493259325ff84d0b6a4e
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 83bd4a7ae0082d24f7ac617719e628f4db4baeb9
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95998531"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98197630"
 ---
 # <a name="create-an-azure-remote-rendering-account"></a>Erstellen eines Azure Remote Rendering-Kontos
 
@@ -71,35 +71,26 @@ Der Wert für **`arrAccountKey`** kann ein primärer oder ein sekundärer Schlü
 
 In diesem Abschnitt wird erläutert, wie Speicherkonten mit Ihrem Remote Rendering-Konto verknüpft werden. Wenn ein Speicherkonto verknüpft ist, ist es nicht erforderlich, jedes Mal einen SAS-URI zu generieren, wenn Sie mit den Daten in Ihrem Konto interagieren möchten, z. B. beim Laden eines Modells. Stattdessen können Sie die Namen der Speicherkonten direkt verwenden, wie im Abschnitt [Laden eines Modells](../concepts/models.md#loading-models) beschrieben wird.
 
-Die Schritte in diesem Absatz müssen für jedes Speicherkonto ausgeführt werden, für das diese alternative Zugriffsmethode verwendet werden soll. Wenn Sie noch keine Speicherkonten erstellt haben, können Sie den entsprechenden Schritt unter [Schnellstart: Konvertieren eines Modells für das Rendern](../quickstarts/convert-model.md#storage-account-creation) nachvollziehen.
+Die Schritte in diesem Absatz müssen für jedes Speicherkonto ausgeführt werden, für das diese Zugriffsmethode verwendet werden soll. Wenn Sie noch keine Speicherkonten erstellt haben, können Sie den entsprechenden Schritt unter [Schnellstart: Konvertieren eines Modells für das Rendern](../quickstarts/convert-model.md#storage-account-creation) nachvollziehen.
 
 Es wird davon ausgegangen, dass Sie jetzt über ein Speicherkonto verfügen. Navigieren Sie im Portal zum Speicherkonto, und wechseln Sie zur Registerkarte **Zugriffssteuerung (IAM)** für dieses Speicherkonto:
 
 ![Speicherkonto (IAM)](./media/azure-storage-account.png)
 
- Stellen Sie sicher, dass Sie über Besitzerberechtigungen für dieses Speicherkonto verfügen, damit Sie Rollenzuweisungen hinzufügen können. Wenn Sie keinen Zugriff besitzen, ist die Option **Rollenzuweisung hinzufügen** deaktiviert.
+Stellen Sie sicher, dass Sie über Besitzerberechtigungen für dieses Speicherkonto verfügen, damit Sie Rollenzuweisungen hinzufügen können. Wenn Sie keinen Zugriff besitzen, ist die Option **Rollenzuweisung hinzufügen** deaktiviert.
 
- Sie müssen drei verschiedene Rollen hinzufügen, wie in den nächsten Schritten beschrieben. Wenn Sie nicht alle drei Zugriffsebenen bereitstellen, treten beim Zugriff auf das Speicherkonto Berechtigungsprobleme auf.
-
- Klicken Sie auf die Schaltfläche **Hinzufügen** auf der Kachel „Rollenzuweisung hinzufügen“, um die erste Rolle hinzuzufügen:
+Klicken Sie auf die Schaltfläche **Hinzufügen** auf der Kachel „Rollenzuweisung hinzufügen“, um die Rolle hinzuzufügen:
 
 ![Speicherkonto (IAM): Rollenzuweisung hinzufügen](./media/azure-add-role-assignment.png)
 
-* Die erste zuzuweisende Rolle ist **Besitzer**, wie im Screenshot oben gezeigt.
-* Wählen Sie **Remote Rendering-Konto** aus der Dropdownliste **Zugriff zuweisen zu** aus.
+* Weisen Sie die Rolle **Mitwirkender an Storage-Blobdaten** wie im obigen Screenshot zu.
+* Wählen Sie die systemseitig zugewiesene verwaltete Identität **Remote Rendering-Konto** aus dem Dropdown-Menü **Zugriff zuweisen zu** aus.
 * Wählen Sie in den letzten Dropdownlisten Ihr Abonnement und das Remote Rendering-Konto aus.
+* Klicken Sie auf „Speichern“, um Ihre Änderungen zu speichern.
 
 > [!WARNING]
 > Wenn Ihr Remote Rendering-Konto nicht aufgeführt ist, lesen Sie den [Abschnitt zur Problembehandlung](../resources/troubleshoot.md#cant-link-storage-account-to-arr-account).
 
-Wiederholen Sie das Hinzufügen neuer Rollen zwei weitere Male für die jeweilige Auswahl aus der Dropdownliste **Rolle**:
-
-* **Mitwirkender von Speicherkonto**
-* **Mitwirkender an Speicherblobdaten**
-
-Die anderen Dropdownlisten werden wie im ersten Schritt beschrieben ausgewählt.
-
-Nachdem Sie alle drei Rollen hinzugefügt haben, besitzt Ihr Azure Remote Rendering-Konto Zugriff auf Ihr Speicherkonto unter Verwendung der systemseitig zugewiesenen verwalteten Dienstidentitäten.
 > [!IMPORTANT]
 > Azure-Rollenzuweisungen werden von Azure Storage zwischengespeichert. Daher entsteht unter Umständen eine Verzögerung von 30 Minuten zwischen dem Zeitpunkt der Zugriffsgewährung für das Remote Rendering-Konto und dem Zeitpunkt, zu dem es für den Zugriff auf das Speicherkonto verwendet werden kann. Detailinformationen finden Sie in der [Dokumentation zur rollenbasierten Zugriffssteuerung in Azure (Azure RBAC)](../../role-based-access-control/troubleshooting.md#role-assignment-changes-are-not-being-detected).
 

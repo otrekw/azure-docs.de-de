@@ -8,23 +8,23 @@ ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 10/14/2019
-ms.openlocfilehash: edd1549ddabef0ae1ba37150ad75a371ac6e6d85
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 55d1b7171201c962278d7c526528b36848c19449
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94365515"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98217888"
 ---
 # <a name="features-are-information-about-actions-and-context"></a>Merkmale sind Informationen über Aktionen und Kontext.
 
 Der Personalisierungsdienst funktioniert, indem er lernt, was Ihre Anwendung Benutzern in einem bestimmten Kontext anzeigen sollte.
 
-Die Personalisierung verwendet **Merkmale** , wobei es sich um Informationen über den **aktuellen Kontext** handelt, um die beste **Aktion** auszuwählen. Die Merkmale stellen alle Informationen dar, von denen Sie glauben, dass sie bei der Personalisierung hilfreich sein können, um höhere Belohnungen zu erzielen. Merkmale können sehr allgemein oder spezifisch für ein Element sein. 
+Die Personalisierung verwendet **Merkmale**, wobei es sich um Informationen über den **aktuellen Kontext** handelt, um die beste **Aktion** auszuwählen. Die Merkmale stellen alle Informationen dar, von denen Sie glauben, dass sie bei der Personalisierung hilfreich sein können, um höhere Belohnungen zu erzielen. Merkmale können sehr allgemein oder spezifisch für ein Element sein. 
 
 Beispielsweise können Sie ein **Merkmal** haben:
 
-* Die _Benutzerpersona_ , wie z. B. `Sports_Shopper`. Dabei sollte es sich nicht um die ID eines einzelnen Benutzers handeln. 
-* Zu dem _Inhalt_ , z. B. ob ein Video ein `Documentary` ist, ein `Movie` oder eine `TV Series`, oder ob ein Einzelhandelsartikel im Store verfügbar ist.
+* Die _Benutzerpersona_, wie z. B. `Sports_Shopper`. Dabei sollte es sich nicht um die ID eines einzelnen Benutzers handeln. 
+* Zu dem _Inhalt_, z. B. ob ein Video ein `Documentary` ist, ein `Movie` oder eine `TV Series`, oder ob ein Einzelhandelsartikel im Store verfügbar ist.
 * Zum _aktuellen_ Zeitraum dar, z. B. welcher Wochentag es ist.
 
 Die Personalisierung schreibt weder vor noch schränkt sie ein, welche Merkmale Sie für Aktionen und Kontext senden können:
@@ -37,12 +37,12 @@ Die Personalisierung schreibt weder vor noch schränkt sie ein, welche Merkmale 
 
 ## <a name="supported-feature-types"></a>Unterstützte Merkmalstypen
 
-Die Personalisierung unterstützt Merkmale der Typen Zeichenfolge, numerisch und boolesch.
+Die Personalisierung unterstützt Merkmale der Typen Zeichenfolge, numerisch und boolesch. Es ist sehr wahrscheinlich, dass Ihre Anwendung bis auf wenige Ausnahmen hauptsächlich Zeichenfolgenmerkmale verwendet.
 
 ### <a name="how-choice-of-feature-type-affects-machine-learning-in-personalizer"></a>Auswirkungen der Wahl des Merkmalstyps auf Machine Learning in der Personalisierung
 
-* **Zeichenfolgen** : Bei Zeichenfolgentypen erstellt jede Kombination aus Schlüssel und Wert neue Gewichtungen im Machine Learning-Modell „Personalisierung“. 
-* **Numerisch** : Sie sollten numerische Werte verwenden, wenn sich die Zahl proportional auf das Personalisierungsergebnis auswirken soll. Dies hängt stark vom Szenario ab. Hier ist ein vereinfachtes Beispiel: Bei der Personalisierung eines Kundenerlebnisses im Einzelhandel könnte „NumberOfPetsOwned“ (AnzahlVonHaustierenImBesitz) ein numerisches Merkmal sein, wenn Personen mit 2 oder 3 Haustieren das Personalisierungsergebnis zwei- oder dreimal so stark wie Personen beeinflussen sollen, die nur ein Haustier besitzen. Merkmale, die auf numerischen Einheiten basieren, bei denen aber die Bedeutung nicht linear ist – z.B. „Alter“, „Temperatur“ oder „Körpergröße einer Person“ – werden am besten als Zeichenfolgen codiert, und die Merkmalsqualität kann durch die Verwendung von Bereichen normalerweise verbessert werden. „Alter“ könnte beispielsweise codiert werden als „Alter“: „0–5“, „Alter“: „6–10“ usw.
+* **Zeichenfolgen**: Bei Zeichenfolgentypen wird jede Kombination aus Schlüssel und Wert als 1-aus-n-Merkmal behandelt. Beispielsweise würden genre:"ScienceFiction" und genre:"Documentary" zwei neue Eingabemerkmale für das Machine Learning-Modell erstellen.
+* **Numerisch**: Sie sollten numerische Werte verwenden, wenn die Zahl eine Größe ist, die sich proportional auf das Personalisierungsergebnis auswirken sollte. Dies hängt stark vom Szenario ab. Hier ist ein vereinfachtes Beispiel: Bei der Personalisierung eines Kundenerlebnisses im Einzelhandel könnte „NumberOfPetsOwned“ (AnzahlVonHaustierenImBesitz) ein numerisches Merkmal sein, wenn Personen mit 2 oder 3 Haustieren das Personalisierungsergebnis zwei- oder dreimal so stark wie Personen beeinflussen sollen, die nur ein Haustier besitzen. Merkmale, die auf numerischen Einheiten basieren, bei denen aber die Bedeutung nicht linear ist (z. B. Alter, Temperatur oder Körpergröße einer Person) werden am besten als Zeichenfolgen codiert. Beispielsweise wäre DayOfMonth eine Zeichenfolge mit "1", "2"... "31". Wenn Sie über viele Kategorien verfügen, kann die Merkmalsqualität in der Regel mithilfe von Bereichen verbessert werden. „Alter“ könnte beispielsweise codiert werden als „Alter“: „0–5“, „Alter“: „6–10“ usw.
 * **Boolesche** Werte, die mit dem Wert „false“ gesendet wurden, agieren so, als ob sie nie gesendet worden wären.
 
 Merkmale, die nicht vorhanden sind, sollten aus der Anforderung entfernt werden. Vermeiden Sie das Senden von Merkmalen mit einem Nullwert, weil dieser beim Trainieren des Modells als vorhanden und mit einem Wert von „Null“ verarbeitet wird.
@@ -80,12 +80,14 @@ JSON-Objekte können geschachtelte JSON-Objekte und einfache Eigenschaften/Werte
         { 
             "user": {
                 "profileType":"AnonymousUser",
-                "latlong": [47.6, -122.1]
+                "latlong": ["47.6", "-122.1"]
             }
         },
         {
-            "state": {
-                "timeOfDay": "noon",
+            "environment": {
+                "dayOfMonth": "28",
+                "monthOfYear": "8",
+                "timeOfDay": "13:00",
                 "weather": "sunny"
             }
         },
@@ -93,6 +95,13 @@ JSON-Objekte können geschachtelte JSON-Objekte und einfache Eigenschaften/Werte
             "device": {
                 "mobile":true,
                 "Windows":true
+            }
+        },
+        {
+            "userActivity" : {
+                "itemsInCart": 3,
+                "cartValue": 250,
+                "appliedCoupon": true
             }
         }
     ]
@@ -113,9 +122,11 @@ Ein guter Merkmalssatz hilft der Personalisierung zu lernen, wie die Aktion vorh
 
 Erwägen Sie, Merkmale an die Relevanz-API der Personalisierung zu senden, die diese Empfehlungen befolgen:
 
+* Verwenden Sie Kategorie- und Zeichenfolgentypen für Merkmale, die keine Größe sind. 
+
 * Es gibt genügend Merkmale zum Betreiben der Personalisierung. Je exakter der Inhalt zielgerichtet sein muss, desto mehr Merkmale werden benötigt.
 
-* Es gibt genügend Merkmale vielfältiger *Dichten*. Ein Merkmal ist *dicht* , wenn viele Elemente in wenigen Buckets gruppiert sind. Beispielsweise lassen sich Tausende von Videos als „Lang“ (länger als 5 Minuten) oder „Kurz“ (kürzer als 5 Minuten) klassifizieren. Dies ist ein *sehr dichtes* Merkmal. Andererseits können dieselben Tausenden von Elementen ein Attribut namens „Titel“ besitzen, das praktisch nie denselben Wert bei zwei Elementen haben wird. Dies ist ein sehr undichtes Merkmal oder *von geringer Dichte*.  
+* Es gibt genügend Merkmale vielfältiger *Dichten*. Ein Merkmal ist *dicht*, wenn viele Elemente in wenigen Buckets gruppiert sind. Beispielsweise lassen sich Tausende von Videos als „Lang“ (länger als 5 Minuten) oder „Kurz“ (kürzer als 5 Minuten) klassifizieren. Dies ist ein *sehr dichtes* Merkmal. Andererseits können dieselben Tausenden von Elementen ein Attribut namens „Titel“ besitzen, das praktisch nie denselben Wert bei zwei Elementen haben wird. Dies ist ein sehr undichtes Merkmal oder *von geringer Dichte*.  
 
 Das Vorhandensein von Merkmalen mit hoher Dichte hilft der Personalisierung bei der Extrapolierung des Lernfortgangs von einem zum anderen Element. Wenn aber nur wenige Merkmale vorhanden und diese zu dicht sind, versucht die Personalisierung, Inhalt exakt zu treffen, wobei nur aus wenigen Buckets ausgewählt werden kann.
 
@@ -177,7 +188,7 @@ Senden Sie beim Zuweisen von Rangfolgen für Aktionen nicht in mehr als 50 Aktio
 
 Die Aktionen, die Sie an die Relevanz-API senden, sind davon abhängig, was Sie zu personalisieren versuchen.
 
-Im Folgenden finden Sie einige Beispiele:
+Hier einige Beispiele:
 
 |Zweck|Aktion|
 |--|--|
