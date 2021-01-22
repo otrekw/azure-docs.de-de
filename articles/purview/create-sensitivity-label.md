@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 12/03/2020
-ms.openlocfilehash: c824e0abea7320a20441e51caa2a05d534ff61b3
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 003a71f962652b1a1436f5d9875835534090a77a
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97092685"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98196587"
 ---
 # <a name="automatically-label-your-data-in-azure-purview"></a>Automatisches Bezeichnen Ihrer Daten in Azure Purview
 
@@ -33,12 +33,13 @@ In Purview ähneln Klassifizierungen Betrefftags und werden zum Kennzeichnen und
 Purview verwendet die gleichen Klassifizierungen, auch als vertrauliche Informationstypen bezeichnet, wie Microsoft 365.  Die MIP-Vertraulichkeitsbezeichnungen werden im Microsoft 365 Security and Compliance Center (SCC) erstellt. Dies ermöglicht Ihnen, Ihre vorhandenen Vertraulichkeitsbezeichnungen auf Ihre Azure Purview-Ressourcen auszuweiten.
 
 > [!NOTE]
-> Während Klassifizierungen direkt abgeglichen werden (eine Sozialversicherungsnummer ist als **Sozialversicherungsnummer** klassifiziert), werden Vertraulichkeitsbezeichnungen angewendet, wenn ein(e) oder mehrere Klassifizierungen und Szenarios zusammen gefunden werden. 
-> 
+> Klassifizierungen werden direkt abgeglichen, z. B. eine Sozialversicherungsnummer, die über die Klassifizierung **Sozialversicherungsnummer** verfügt. 
+>
+> Im Gegensatz dazu werden Vertraulichkeitsbezeichnungen angewendet, wenn eine oder mehrere Klassifizierungen und Bedingungen gleichzeitig gefunden werden. In diesem Kontext beziehen sich [Bedingungen](/microsoft-365/compliance/apply-sensitivity-label-automatically) auf alle Parameter, die Sie für unstrukturierte Daten definieren können, z. B. **Nähe zu einer anderen Klassifizierung** und **% Konfidenz**. 
 
 Vertraulichkeitsbezeichnungen in Azure Purview können zum automatischen Anwenden von Bezeichnungen auf Dateien und Datenbankspalten verwendet werden.
 
-   Weitere Informationen finden Sie unter
+Weitere Informationen finden Sie unter
 
 - [Informationen zu Vertraulichkeitsbezeichnungen](/microsoft-365/compliance/sensitivity-labels) in der Microsoft 365-Dokumentation
 - [Was sind Regeln für die automatische Bezeichnung?](#what-are-autolabeling-rules)
@@ -68,7 +69,7 @@ Vertraulichkeitsbezeichnungen werden in Azure Purview für die folgenden Datenty
 
 Wenn Sie nicht bereits über Vertraulichkeitsbezeichnungen verfügen, müssen Sie sie erstellen und für Azure Purview verfügbar machen. Vorhandene Vertraulichkeitsbezeichnungen können auch geändert werden, um sie für Azure Purview verfügbar zu machen.
 
-   Weitere Informationen finden Sie unter
+Weitere Informationen finden Sie unter
 
 - [Lizenzanforderungen](#licensing-requirements)
 - [Erweitern von Vertraulichkeitsbezeichnungen auf Azure Purview](#extending-sensitivity-labels-to-azure-purview)
@@ -91,11 +92,6 @@ Durch die Erweiterung der MIP-Vertraulichkeitsbezeichnungen mit Azure Purview k�
 > Da Microsoft 365 und Azure Purview separate Dienste sind, werden sie möglicherweise in verschiedenen Regionen bereitgestellt. Bezeichnungsnamen und Namen benutzerdefinierter Vertraulichkeitsinformationstypen werden als Kundendaten betrachtet und standardmäßig am gleichen geografischen Standort aufbewahrt, um die Vertraulichkeit Ihrer Daten zu schützen und die Vorschriften der DSGVO einzuhalten.
 >
 > Aus diesem Grund werden Bezeichnungen und benutzerdefinierte vertrauliche Informationstypen nicht standardmäßig für Azure Purview freigegeben, sondern erfordern zur Verwendung in Azure Purview Ihre Zustimmung.
-
-> [!IMPORTANT]
-> Ihre Zustimmung ermöglicht Microsoft, den Bezeichnungsnamen und den Namen benutzerdefinierter Vertraulichkeitsinformationstypen *sowohl* für Azure Purview als auch Azure Security Center (ASC) freizugeben. Microsoft verwendet die Bezeichnungsinformationen aus Azure Purview, um Ihre Empfehlungen und Warnungen in ASC zu erweitern. 
->
-> Die Zustimmung im Microsoft 365 Compliance Center gilt für die gemeinsame Nutzung dieser Daten mit beiden Diensten. Zurzeit gibt es keine Möglichkeit, Bezeichnungsinformationen nur für Azure Purview freizugeben.
 
 **So erweitern Sie Vertraulichkeitsbezeichnungen auf Purview:**
 

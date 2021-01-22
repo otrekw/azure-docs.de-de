@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/08/2020
+ms.date: 01/18/2021
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
-ms.openlocfilehash: bc3640fecbe1138e46fd0d36975691740bc669dd
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.openlocfilehash: f6ae9ff27e773c36626812387b1284d660cbf39d
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2020
-ms.locfileid: "97369258"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98602461"
 ---
 # <a name="understand-azure-role-definitions"></a>Grundlegendes zu Azure-Rollendefinitionen
 
@@ -291,11 +291,27 @@ Die Berechtigung `Actions` gibt die Verwaltungsvorgänge an, deren Ausführung d
 
 ## <a name="notactions"></a>NotActions
 
-Die Berechtigung `NotActions` gibt die Verwaltungsvorgänge an, die von den zulässigen Aktionen (`Actions`) ausgeschlossen sind. Verwenden Sie die Berechtigung `NotActions`, wenn die Vorgänge, die Sie zulassen möchten, durch den Ausschluss unzulässiger Vorgänge leichter zu definieren sind. Zur Ermittlung des Zugriffs, der durch eine Rolle gewährt wird (effektive Berechtigungen), werden die `NotActions`-Vorgänge von den `Actions`-Vorgängen subtrahiert.
+Die Berechtigung `NotActions` gibt die Verwaltungsvorgänge an, die von den zulässigen Aktionen (`Actions`) abgezogen oder ausgeschlossen werden, die einen Platzhalter (`*`) enthalten. Verwenden Sie die Berechtigung `NotActions`, wenn sich die Gruppe von Vorgängen, die Sie zulassen möchten, leichter durch das Abziehen von `Actions`, die einen Platzhalter (`*`) enthalten, definieren lässt. Zur Ermittlung des Zugriffs, der durch eine Rolle gewährt wird (effektive Berechtigungen), werden die `NotActions`-Vorgänge von den `Actions`-Vorgängen subtrahiert.
+
+`Actions - NotActions = Effective management permissions`
+
+In der folgenden Tabelle werden zwei Beispiele für die effektiven Berechtigungen für einen [Microsoft.CostManagement](resource-provider-operations.md#microsoftcostmanagement)-Platzhaltervorgang angezeigt:
+
+> [!div class="mx-tableFixed"]
+> | Actions | NotActions | Effektive Verwaltungsberechtigungen |
+> | --- | --- | --- |
+> | `Microsoft.CostManagement/exports/*` | *keine* | `Microsoft.CostManagement/exports/action`</br>`Microsoft.CostManagement/exports/read`</br>`Microsoft.CostManagement/exports/write`</br>`Microsoft.CostManagement/exports/delete`</br>`Microsoft.CostManagement/exports/run/action` |
+> | `Microsoft.CostManagement/exports/*` | `Microsoft.CostManagement/exports/delete` | `Microsoft.CostManagement/exports/action`</br>`Microsoft.CostManagement/exports/read`</br>`Microsoft.CostManagement/exports/write`</br>`Microsoft.CostManagement/exports/run/action` |
 
 > [!NOTE]
 > Wenn einem Benutzer eine Rolle zugewiesen wird, die einen Vorgang in `NotActions` ausschließt, und dem Benutzer dann durch Zuweisen einer zweiten Rolle der Zugriff auf diesen Vorgang gewährt wird, kann der Benutzer den Vorgang durchführen. `NotActions` ist keine Verweigerungsregel. Es ist lediglich eine bequeme Möglichkeit, eine Gruppe zulässiger Vorgänge zu erstellen, wenn bestimmte Vorgänge ausgeschlossen werden müssen.
 >
+
+### <a name="differences-between-notactions-and-deny-assignments"></a>Unterschiede zwischen NoActions und Ablehnungszuweisungen
+
+`NotActions` und Ablehnungszuweisungen sind nicht identisch und dienen unterschiedlichen Zwecken. `NotActions` stellen eine bequeme Möglichkeit dar, um bestimmte Aktionen von einem Platzhaltervorgang (`*`) abzuziehen.
+
+Ablehnungszuweisungen blockieren Aktionen für bestimmte Benutzer, selbst wenn diesen durch eine Rollenzuweisung Zugriff erteilt wurde. Weitere Informationen finden Sie unter [Verstehen von Ablehnungszuweisungen für Azure-Ressourcen](deny-assignments.md).
 
 ## <a name="dataactions"></a>DataActions
 
@@ -311,7 +327,17 @@ Die Berechtigung `DataActions` gibt die Datenvorgänge an, deren Ausführung fü
 
 ## <a name="notdataactions"></a>NotDataActions
 
-Die Berechtigung `NotDataActions` gibt die Datenvorgänge an, die von den zulässigen Aktionen (`DataActions`) ausgeschlossen sind. Zur Ermittlung des Zugriffs, der durch eine Rolle gewährt wird (effektive Berechtigungen), werden die `NotDataActions`-Vorgänge von den `DataActions`-Vorgängen subtrahiert. Jedem Ressourcenanbieter steht eine entsprechende Gruppe von APIs zur Verfügung, um Datenvorgänge durchzuführen.
+Die Berechtigung `NotDataActions` gibt die Datenvorgänge an, die von den zulässigen Aktionen (`DataActions`) abgezogen oder ausgeschlossen werden, die einen Platzhalter (`*`) enthalten. Verwenden Sie die Berechtigung `NotDataActions`, wenn sich die Gruppe von Vorgängen, die Sie zulassen möchten, leichter durch das Abziehen von `DataActions`, die einen Platzhalter (`*`) enthalten, definieren lässt. Zur Ermittlung des Zugriffs, der durch eine Rolle gewährt wird (effektive Berechtigungen), werden die `NotDataActions`-Vorgänge von den `DataActions`-Vorgängen subtrahiert. Jedem Ressourcenanbieter steht eine entsprechende Gruppe von APIs zur Verfügung, um Datenvorgänge durchzuführen.
+
+`DataActions - NotDataActions = Effective data permissions`
+
+In der folgenden Tabelle werden zwei Beispiele für die effektiven Berechtigungen für einen [Microsoft.Storage](resource-provider-operations.md#microsoftstorage)-Platzhaltervorgang angezeigt:
+
+> [!div class="mx-tableFixed"]
+> | DataActions | NotDataActions | Effektive Datenberechtigungen |
+> | --- | --- | --- |
+> | `Microsoft.Storage/storageAccounts/queueServices/queues/messages/*` | *keine* | `Microsoft.Storage/storageAccounts/queueServices/queues/messages/read`</br>`Microsoft.Storage/storageAccounts/queueServices/queues/messages/write`</br>`Microsoft.Storage/storageAccounts/queueServices/queues/messages/delete`</br>`Microsoft.Storage/storageAccounts/queueServices/queues/messages/add/action`</br>`Microsoft.Storage/storageAccounts/queueServices/queues/messages/process/action` |
+> | `Microsoft.Storage/storageAccounts/queueServices/queues/messages/*` | `Microsoft.Storage/storageAccounts/queueServices/queues/messages/delete`</br> | `Microsoft.Storage/storageAccounts/queueServices/queues/messages/read`</br>`Microsoft.Storage/storageAccounts/queueServices/queues/messages/write`</br>`Microsoft.Storage/storageAccounts/queueServices/queues/messages/add/action`</br>`Microsoft.Storage/storageAccounts/queueServices/queues/messages/process/action` |
 
 > [!NOTE]
 > Wenn einem Benutzer eine Rolle zugewiesen wird, die einen Datenvorgang in `NotDataActions` ausschließt, und dem Benutzer dann durch Zuweisen einer zweiten Rolle der Zugriff auf diesen Datenvorgang gewährt wird, kann der Benutzer den Datenvorgang durchführen. `NotDataActions` ist keine Verweigerungsregel. Es ist lediglich eine bequeme Möglichkeit, eine Gruppe zulässiger Datenvorgänge zu erstellen, wenn bestimmte Datenvorgänge ausgeschlossen werden müssen.

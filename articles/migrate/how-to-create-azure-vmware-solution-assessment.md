@@ -6,12 +6,12 @@ ms.author: rajosh
 ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: 93d17ec2a4fb5c191ce02c73a7a3532e9c854b00
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: fb1ec55bc68ccc323f8dee90982a9169e3085219
+ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96752072"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98567647"
 ---
 # <a name="create-an-azure-vmware-solution-avs-assessment"></a>Erstellen einer Bewertung vom Typ „Azure VMware Solution (AVS)“
 
@@ -58,27 +58,29 @@ Führen Sie eine Bewertung vom Typ „Azure VMware Solution (AVS)“ wie folgt a
 
     ![Screenshot: Azure Migrate Server mit ausgewählter Option „Bewerten“ unter Bewertungstools](./media/how-to-create-assessment/assess.png)
 
-3. Wählen Sie unter **Server bewerten** die Option „Azure VMware Solution (AVS)“ als Bewertungstyp und dann die Ermittlungsquelle aus, und geben Sie den Bewertungsnamen an.
+3. Wählen Sie unter **Server bewerten** die Option „Azure VMware Solution (AVS)“ als Bewertungstyp und dann die Ermittlungsquelle aus.
 
-    ![Grundlagen der Bewertung](./media/how-to-create-avs-assessment/assess-servers-avs.png)
+    :::image type="content" source="./media/how-to-create-avs-assessment/assess-servers-avs.png" alt-text="Grundlagen der Bewertung hinzufügen":::
 
-4. Klicken Sie auf **Alle anzeigen**, um die Eigenschaften für die Bewertung zu überprüfen.
+4. Klicken Sie auf **Bearbeiten**, um die Eigenschaften für die Bewertung zu überprüfen.
 
-    ![AVS-Bewertungseigenschaften](./media/how-to-create-avs-assessment/avs-view-all.png)
+    :::image type="content" source="./media/tutorial-assess-vmware-azure-vmware-solution/assess-servers.png" alt-text="Ort der Schaltfläche „Bearbeiten“ zum Überprüfen der Bewertungseigenschaften":::
 
-5. Klicken Sie auf **Weiter**, um zu **Computer für die Bewertung auswählen** zu gelangen. Wählen Sie unter **Gruppe auswählen oder erstellen** die Option **Neu erstellen** aus, und geben Sie einen Namen für die Gruppe ein. Eine Gruppe enthält mindestens eine zu bewertende VM.
+1. Geben Sie in **Zu bewertende Computer auswählen** > **Bewertungsname** einen Namen für die Bewertung an. 
+ 
+1. Wählen Sie unter **Gruppe auswählen oder erstellen** die Option **Neu erstellen** aus, und geben Sie einen Namen für die Gruppe ein. Eine Gruppe enthält mindestens eine zu bewertende VM.
+    
+    :::image type="content" source="./media/tutorial-assess-vmware-azure-vmware-solution/assess-group.png" alt-text="Hinzufügen von VMs zu einer Gruppe":::
 
-6. Wählen Sie unter **Computer zur Gruppe hinzufügen** die VMs aus, die der Gruppe hinzugefügt werden sollen.
+1. Wählen Sie unter **Computer zur Gruppe hinzufügen** die VMs aus, die der Gruppe hinzugefügt werden sollen.
 
-7. Klicken Sie auf **Weiter**, um unter **Überprüfen + Bewertung erstellen** die Bewertungsdetails zu überprüfen.
+1. Klicken Sie auf **Weiter**, um unter **Überprüfen + Bewertung erstellen** die Bewertungsdetails zu überprüfen.
 
-8. Klicken Sie auf **Bewertung erstellen**, um die Gruppe zu erstellen und die Bewertung auszuführen.
+1. Klicken Sie auf **Bewertung erstellen**, um die Gruppe zu erstellen und die Bewertung auszuführen.
 
-    ![Erstellen einer AVS-Bewertung](./media/how-to-create-avs-assessment/avs-assessment-create.png)
+1. Zeigen Sie die erstellte Bewertung unter **Server** > **Azure Migrate: Server Assessment** (Azure Migrate-Serverbewertung) > **Bewertungen** an.
 
-9. Zeigen Sie die erstellte Bewertung unter **Server** > **Azure Migrate: Server Assessment** (Azure Migrate-Serverbewertung) > **Bewertungen** an.
-
-10. Klicken Sie auf **Bewertung exportieren**, um sie als Excel-Datei herunterzuladen.
+1. Klicken Sie auf **Bewertung exportieren**, um sie als Excel-Datei herunterzuladen.
 
 
 ## <a name="review-an-azure-vmware-solution-avs-assessment"></a>Überprüfen einer Bewertung vom Typ „Azure VMware Solution (AVS)“
@@ -88,6 +90,8 @@ Eine Bewertung vom Typ „Azure VMware Solution (AVS)“ beschreibt Folgendes:
 - **AVS-Bereitschaft (Azure VMware Solution)** : Ermittelt, ob die lokalen virtuellen Computer für die Migration zu Azure VMware Solution (AVS) geeignet sind.
 - **Anzahl der AVS-Knoten**: Geschätzte Anzahl der AVS-Knoten, die zur Ausführung der virtuellen Computer erforderlich sind.
 - **Übergreifende Nutzung auf AVS-Knoten**: Projizierte CPU-, Arbeitsspeicher- und Speicherauslastung über alle Knoten hinweg.
+    - Die Nutzung beinhaltet Voraus-Factoring in den folgenden Mehraufwandsbereichen der Clusterverwaltung wie vCenter Server, NSX-Manager (groß) und NSX Edge, wenn HCX bereitgestellt ist, außerdem den HCX-Manager und die IX-Appliance, das ~44vCPU (11 CPU), 75 GB RAM und 722 GB Speicher vor Komprimierung und Deduplizierung beansprucht.
+    - Arbeitsspeicher, Deduplizierung und Komprimierung sind zurzeit auf 100 % Auslastung für den Arbeitsspeicher und 1,5 Deduplizierung und Komprimierung festgelegt, wobei es sich in zukünftigen Versionen um eine benutzerdefinierte Eingabe handeln wird, mit der der Benutzer seine erforderlichen Dimensionierungen anpassen kann.
 - **Geschätzte monatliche Kosten**: Die geschätzten monatlichen Kosten für alle AVS-Knoten (Azure VMware Solution), auf denen die lokalen virtuellen Computer ausgeführt werden.
 
 
@@ -97,7 +101,7 @@ Eine Bewertung vom Typ „Azure VMware Solution (AVS)“ beschreibt Folgendes:
 
 2. Klicken Sie unter **Bewertungen** auf eine Bewertung, um sie zu öffnen.
 
-    ![Zusammenfassung der AVS-Bewertung](./media/how-to-create-avs-assessment/avs-assessment-summary.png)
+    :::image type="content" source="./media/how-to-create-avs-assessment/avs-assessment-summary.png" alt-text="Zusammenfassung der AVS-Bewertung":::
 
 ### <a name="review-azure-vmware-solution-avs-readiness"></a>Überprüfen der AVS-Bereitschaft (Azure VMware Solution)
 

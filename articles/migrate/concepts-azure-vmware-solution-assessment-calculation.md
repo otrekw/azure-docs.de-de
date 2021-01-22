@@ -6,12 +6,12 @@ ms.author: rajosh
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 06/25/2020
-ms.openlocfilehash: 67d4137a21753b221e17a1effde35bc1b89600d3
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: f52c0296023098c755feb1bf0baba980f2988bd7
+ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96753806"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98567712"
 ---
 # <a name="server-assessment-overview-migrate-to-azure-vmware-solution"></a>Serverbewertungsübersicht (Migration zu Azure VMware Solution)
 
@@ -207,6 +207,8 @@ Nachdem der Wert für die effektive Auslastung festgelegt wurde, werden Speicher
 
 Wenn Sie die Größenanpassung *Wie lokal* verwenden, wird der Leistungsverlauf der VMs und Datenträger von der Serverbewertung nicht berücksichtigt. Stattdessen werden AVS-Knoten basierend auf der lokal zugeordneten Größe zugewiesen. Der Standardspeichertyp in AVS ist vSAN.
 
+[Weitere Informationen](https://docs.microsoft.com/azure/migrate/tutorial-assess-vmware-azure-vmware-solution#review-an-assessment) zum Überprüfen einer Bewertung vom Typ „Azure VMware Solution (AVS)“.
+
 ## <a name="confidence-ratings"></a>Zuverlässigkeitsstufen
 
 Jeder leistungsbasierten Bewertung in Azure Migrate wird eine Zuverlässigkeitsstufe zugeordnet, die zwischen ein (niedrigster Wert) bis fünf Sterne (höchster Wert) betragen kann.
@@ -235,9 +237,15 @@ Die Zuverlässigkeitsstufe für die Bewertung ist abhängig davon, wie viele Dat
 
 Einige mögliche Gründe für eine niedrige Zuverlässigkeitsstufe einer Bewertung:
 
-- Sie haben für den Zeitraum, für den Sie die Bewertung erstellen, kein Profil der Umgebung erstellt. Wenn Sie z. B. die Bewertung mit einer auf 1 Tag festgelegten Leistungsdauer erstellen, müssen Sie bis mindestens einen Tag nach dem Start der Ermittlung warten, bis alle Datenpunkte gesammelt sind.
-- Einige virtuelle Computer wurden während des Zeitraums, für den die Bewertung berechnet wird, heruntergefahren. Wenn einige VMs für eine gewisse Zeit heruntergefahren wurden, kann die Serverbewertung für diesen Zeitraum keine Leistungsdaten sammeln.
-- Einige virtuelle Computer wurden während des Zeitraums erstellt, für den die Bewertung berechnet wird. Wenn Sie beispielsweise eine Bewertung für den Leistungsverlauf des letzten Monats erstellen, aber einige VMs erst vor einer Woche in der Umgebung erstellt wurden, dann ist der Leistungsverlauf der neuen VMs nicht für die gesamte Dauer abrufbar.
+- Sie haben für den Zeitraum, für den Sie die Bewertung erstellen, kein Profil der Umgebung erstellt. Wenn Sie die Bewertung z. B. mit einer auf einen Tag festgelegten Leistungsdauer erstellen, müssen Sie bis mindestens einen Tag nach dem Start der Ermittlung warten, bis alle Datenpunkte gesammelt sind.
+- Die Bewertung kann die Leistungsdaten für einige oder alle VMs im Bewertungszeitraum nicht erfassen. Für eine Bewertung mit hoher Konfidenz stellen Sie Folgendes sicher: 
+    - VMs sind für die Dauer der Bewertung eingeschaltet.
+    - Ausgehende Verbindungen am Port 443 sind zugelassen.
+    - Für Hyper-V-VMs ist dynamischer Arbeitsspeicher aktiviert. 
+    
+    Führen Sie die erneute Berechnung der Bewertung mit der Option „Neu berechnen“ durch, um die neuesten Änderungen an der Zuverlässigkeitsstufe widerzuspiegeln.
+
+- Einige virtuelle Computer wurden während des Zeitraums, für den die Bewertung berechnet wird, erstellt. Beispiel: Sie haben eine Bewertung für den Leistungsverlauf im letzten Monat erstellt, einige VMs wurden jedoch erst vor einer Woche erstellt. In diesem Fall stehen für die gesamte Dauer keine Leistungsdaten für die neuen VMs zur Verfügung und die Zuverlässigkeitsstufe wäre gering.
 
 > [!NOTE]
 > Bei einer Zuverlässigkeitsstufe von weniger als fünf Sternen wird empfohlen, mindestens einen Tag zu warten, damit die Appliance ein Profil der Umgebung erstellen kann. Führen Sie dann eine Neuberechnung der Bewertung durch. Wenn Sie dies nicht tun, ist die leistungsbasierte Dimensionierung möglicherweise nicht zuverlässig. In diesem Fall wird empfohlen, die Bewertung auf die Größenanpassung „Wie lokal“ zu ändern.

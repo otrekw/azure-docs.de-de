@@ -6,12 +6,12 @@ ms.author: vivikram
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 06/09/2020
-ms.openlocfilehash: 4531d68c2fbd0698c33d70a75bb82ac9c7f52f49
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 944d867ef888e70faa659adcc0e2d4c02f003c97
+ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96752242"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98567416"
 ---
 # <a name="discovery-assessment-and-dependency-analysis---common-questions"></a>Häufig gestellte Fragen zur Ermittlung, Bewertung und Abhängigkeitsanalyse
 
@@ -46,7 +46,8 @@ Sie können bis zu 10.000 VMware-VMs und bis zu 5.000 Hyper-V-VMs sowie bis zu
 Für eine Bewertung vom Typ „Leistungsbasiert“ enthält der Bewertungsbericht „PercentageOfCoresUtilizedMissing“ oder „PercentageOfMemoryUtilizedMissing“, wenn die Azure Migrate-Appliance keine Leistungsdaten für die lokalen virtuellen Computer sammeln kann. Überprüfen Sie Folgendes:
 
 - Ob die VMs im Zeitraum, in dem Sie die Bewertung erstellen, eingeschaltet sind
-- Falls nur Arbeitsspeicher-Leistungsindikatoren fehlen und Sie versuchen, virtuelle Hyper-V-Computer zu bewerten, überprüfen Sie, ob auf diesen virtuellen Computern dynamischer Arbeitsspeicher aktiviert ist. Die Azure Migrate-Appliance kann derzeit aufgrund eines bekannten Problems keine Arbeitsspeicherauslastung für virtuelle Computer dieser Art erfassen.
+- Falls nur Arbeitsspeicher-Leistungsindikatoren fehlen und Sie versuchen, virtuelle Hyper-V-Computer zu bewerten. Aktivieren Sie in diesem Szenario dynamischen Arbeitsspeicher auf den virtuellen Computern, und führen Sie die erneute Berechnung der Bewertung durch, um die neuesten Änderungen widerzuspiegeln. Die Appliance kann Speicherauslastungswerte für Hyper-V-VMs nur erfassen, wenn auf dem virtuellen Computer dynamischer Arbeitsspeicher aktiviert ist.
+
 - Falls alle Leistungsindikatoren fehlen, sollten Sie sicherstellen, dass ausgehende Verbindungen über Port 443 (HTTPS) zulässig sind.
 
 Hinweis: Falls einer der Leistungsindikatoren fehlt, greift die Azure Migrate-Serverbewertung auf die lokalen zugeordneten Kerne bzw. auf den lokalen zugeordneten Arbeitsspeicher zurück und empfiehlt eine entsprechende VM-Größe.
@@ -57,7 +58,12 @@ Die Zuverlässigkeitsstufe wird für Bewertungen vom Typ „Leistungsbasiert“ 
 
 - Sie haben für den Zeitraum, für den Sie die Bewertung erstellen, kein Profil Ihrer Umgebung erstellt. Wenn Sie beispielsweise eine Bewertung mit einer auf eine Woche festgelegten Leistungsdauer erstellen, müssen Sie nach dem Start der Ermittlung mindestens eine Woche warten, damit alle Datenpunkte erfasst werden können. Falls Sie nicht so lange warten können, sollten Sie die Leistungsdauer in einen kürzeren Zeitraum ändern und die Bewertung neu berechnen (Option „Neu berechnen“).
  
-- Die Serverbewertung kann die Leistungsdaten für einige oder alle VMs im Bewertungszeitraum nicht erfassen. Überprüfen Sie, ob die VMs während der Dauer der Bewertung eingeschaltet und ausgehende Verbindungen über Port 443 zulässig waren. Wenn bei Verwendung von Hyper-V-VMs der dynamische Arbeitsspeicher aktiviert ist, fehlen Arbeitsspeicher-Leistungsindikatoren. Dies führt zu einer niedrigen Zuverlässigkeitsstufe. Führen Sie die erneute Berechnung der Bewertung mit der Option „Neu berechnen“ durch, um die neuesten Änderungen an der Zuverlässigkeitsstufe widerzuspiegeln. 
+- Die Serverbewertung kann die Leistungsdaten für einige oder alle VMs im Bewertungszeitraum nicht erfassen. Für eine Bewertung mit hoher Konfidenz stellen Sie Folgendes sicher: 
+    - VMs sind für die Dauer der Bewertung eingeschaltet.
+    - Ausgehende Verbindungen am Port 443 sind zugelassen.
+    - Für Hyper-V-VMs ist dynamischer Arbeitsspeicher aktiviert. 
+
+    Führen Sie die erneute Berechnung der Bewertung mit der Option „Neu berechnen“ durch, um die neuesten Änderungen an der Zuverlässigkeitsstufe widerzuspiegeln.
 
 - Nach dem Start der Ermittlung in der Serverbewertung wurden wenige VMs erstellt. Ein Beispiel: Angenommen, Sie erstellen eine Bewertung für den Leistungsverlauf des letzten Monats, und in der Umgebung wurden letzte Woche einige virtuelle Computer erstellt. In diesem Fall stehen für die gesamte Dauer keine Leistungsdaten für die neuen VMs zur Verfügung und die Zuverlässigkeitsstufe wäre gering.
 

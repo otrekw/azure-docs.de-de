@@ -1,14 +1,14 @@
 ---
 title: Onboarding eines Kunden in Azure Lighthouse durchführen
 description: Erfahren Sie, wie Sie das Onboarding eines Kunden in Azure Lighthouse durchführen, sodass Ihr eigener Mandant über die delegierte Azure-Ressourcenverwaltung auf dessen Ressourcen zugreifen und sie verwalten kann.
-ms.date: 12/15/2020
+ms.date: 01/14/2021
 ms.topic: how-to
-ms.openlocfilehash: 023b44a77cb38a14df8aa6a885ff137c02942061
-ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
+ms.openlocfilehash: 1a7c8fc85819b2c34b5c64dc83cb908b7bee3c41
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97516129"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98232674"
 ---
 # <a name="onboard-a-customer-to-azure-lighthouse"></a>Onboarding eines Kunden in Azure Lighthouse durchführen
 
@@ -62,14 +62,17 @@ az account show
 
 ## <a name="define-roles-and-permissions"></a>Definieren von Rolle und Berechtigungen
 
-Als Dienstanbieter können Sie mehrere Aufgaben für einen einzelnen Kunden ausführen, die für unterschiedliche Bereiche einen anderen Zugriff erfordern. Sie können so viele Autorisierungen definieren, wie Sie benötigen, um Benutzern in Ihrem Mandanten die entsprechenden [integrierten Azure-Rollen](../../role-based-access-control/built-in-roles.md) zuzuweisen.
+Als Dienstanbieter können Sie mehrere Aufgaben für einen einzelnen Kunden ausführen, die für unterschiedliche Bereiche einen anderen Zugriff erfordern. Sie können so viele Autorisierungen definieren, wie Sie benötigen, um die entsprechenden [integrierten Azure-Rollen](../../role-based-access-control/built-in-roles.md) zuzuweisen. Jede Autorisierung umfasst eine **principalId**, die auf einen Azure AD-Benutzer, eine Gruppe oder einen Dienstprinzipal im verwaltenden Mandanten verweist.
 
-Um die Verwaltung zu vereinfachen, empfiehlt es sich, Azure AD-Benutzergruppen für jede Rolle zu verwenden. Dadurch haben Sie die Flexibilität, einzelne Benutzer der Gruppe mit Zugriffsberechtigung hinzuzufügen oder daraus zu entfernen, sodass Sie den Onboardingprozess nicht wiederholen müssen, um Benutzeränderungen vorzunehmen. Sie können einem Dienstprinzipal Rollen zuweisen, was für Automatisierungsszenarien nützlich sein kann.
+> [!NOTE]
+> Wenn nicht explizit angegeben, können sich Verweise auf einen „Benutzer“ in der Azure Lighthouse-Dokumentation auf einen Azure AD-Benutzer, eine Gruppe oder einen Dienstprinzipal in einer Autorisierung beziehen.
+
+Um die Verwaltung zu vereinfachen, empfiehlt es sich, wann immer möglich Azure AD-Benutzergruppen für jede Rolle zu verwenden, anstatt einzelner Benutzer. Dadurch haben Sie die Flexibilität, einzelne Benutzer der Gruppe mit Zugriffsberechtigung hinzuzufügen oder daraus zu entfernen, sodass Sie den Onboardingprozess nicht wiederholen müssen, um Benutzeränderungen vorzunehmen. Sie können auch einem Dienstprinzipal Rollen zuweisen, was für Automatisierungsszenarien nützlich sein kann.
 
 > [!IMPORTANT]
 > Um Berechtigungen für eine Azure AD-Gruppe hinzuzufügen, muss der **Gruppentyp** auf **Sicherheit** festgelegt werden. Diese Option wird bei der Erstellung der Gruppe ausgewählt. Weitere Informationen dazu finden Sie in [Erstellen einer Basisgruppe und Hinzufügen von Mitgliedern mit Azure Active Directory](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md).
 
-Achten Sie beim Definieren der Autorisierungen darauf, das Prinzip der geringsten Rechte zu befolgen, damit Benutzer nur über die Berechtigungen verfügen, die zum Durchführen ihrer Aufgaben erforderlich sind. Richtlinien und Informationen zu unterstützten Rollen finden Sie unter [Mandanten, Benutzer und Rollen in Azure Lighthouse-Szenarien](../concepts/tenants-users-roles.md).
+Achten Sie beim Definieren der Autorisierungen darauf, das Prinzip der geringsten Rechte zu befolgen, damit Benutzer nur über die Berechtigungen verfügen, die zum Durchführen ihrer Aufgaben erforderlich sind. Informationen zu unterstützten Rollen sowie bewährte Methode finden Sie unter [Mandanten, Benutzer und Rollen in Azure Lighthouse-Szenarien](../concepts/tenants-users-roles.md).
 
 Um Autorisierungen zu definieren, müssen Sie die ID-Werte für jeden Benutzer, jede Benutzergruppe oder jeden Dienstprinzipal im Dienstanbietermandanten kennen, dem bzw. der Sie Zugriff gewähren möchten. Außerdem benötigen Sie die Rollendefinitions-ID für jede integrierten Rolle, die Sie zuweisen möchten. Wenn Sie über diese nicht bereits verfügen, können Sie sie abrufen, indem Sie die folgenden Befehle aus dem Dienstanbietermandanten ausführen.
 
@@ -195,7 +198,7 @@ Das folgende Beispiel zeigt eine geänderte Datei **delegatedResourceManagement.
 }
 ```
 
-Die letzte Autorisierung im obigen Beispiel fügt eine **prinzipalId** mit der Rolle „Benutzerzugriffsadministrator“ hinzu (18d7d88d-d35e-4b5-a5c3-7773c20a72d9). Wenn Sie diese Rolle zuweisen, müssen Sie die **delegatedRoleDefinitionIds**-Eigenschaft und mindestens eine integrierte Rolle einschließen. Der in dieser Autorisierung erstellte Benutzer kann diese integrierten Rollen [verwalteten Identitäten](../../active-directory/managed-identities-azure-resources/overview.md) im Kundenmandanten zuweisen. Dies ist erforderlich, um [Richtlinien bereitzustellen, die korrigiert werden können](deploy-policy-remediation.md).  Der Benutzer kann außerdem Supportfälle erstellen.  Für diesen Benutzer gelten keine anderen Berechtigungen, die normalerweise der Rolle „Benutzerzugriffsadministrator“ zugeordnet sind.
+Die letzte Autorisierung im obigen Beispiel fügt eine **prinzipalId** mit der Rolle „Benutzerzugriffsadministrator“ hinzu (18d7d88d-d35e-4b5-a5c3-7773c20a72d9). Wenn Sie diese Rolle zuweisen, müssen Sie die **delegatedRoleDefinitionIds**-Eigenschaft und mindestens eine unterstützte integrierte Azure-Rolle einschließen. Der in dieser Autorisierung erstellte Benutzer kann diese Rollen [verwalteten Identitäten](../../active-directory/managed-identities-azure-resources/overview.md) im Kundenmandanten zuweisen. Dies ist erforderlich, um [Richtlinien bereitzustellen, die korrigiert werden können](deploy-policy-remediation.md).  Der Benutzer kann außerdem Supportfälle erstellen. Für diese **principalId** gelten keine anderen Berechtigungen, die normalerweise der Rolle „Benutzerzugriffsadministrator“ zugeordnet sind.
 
 ## <a name="deploy-the-azure-resource-manager-templates"></a>Bereitstellen der Azure Resource Manager-Vorlagen
 
@@ -278,7 +281,7 @@ Im Mandanten des Kunden:
 3. Vergewissern Sie sich, dass die Abonnements mit dem Angebotsnamen angezeigt werden, den Sie in der Resource Manager-Vorlage angegeben haben.
 
 > [!NOTE]
-> Nach dem Abschluss Ihrer Bereitstellung kann es noch einige Minuten dauern, bis die Aktualisierungen im Azure-Portal zu sehen sind.
+> Nach dem Abschluss Ihrer Bereitstellung kann es noch bis zu 15 Minuten dauern, bis die Aktualisierungen im Azure-Portal zu sehen sind. Möglicherweise werden die Updates früher angezeigt, wenn Sie Ihr Azure Resource Manager-Token aktualisieren, indem Sie den Browser aktualisieren, sich an- und abmelden oder ein neues Token anfordern.
 
 ### <a name="powershell"></a>PowerShell
 
@@ -312,6 +315,7 @@ Wenn Sie das Onboarding Ihres Kunden nicht erfolgreich durchführen können oder
 - Der **Microsoft.ManagedServices**-Ressourcenanbieter muss für das delegierte Abonnement registriert sein. Dies sollte während der Bereitstellung automatisch erfolgen, aber wenn dies nicht der Fall ist, können Sie es [manuell registrieren](../../azure-resource-manager/management/resource-providers-and-types.md#register-resource-provider).
 - Die Autorisierungen dürfen keine Benutzer mit der integrierten Rolle [Besitzer](../../role-based-access-control/built-in-roles.md#owner) und keine integrierten Rollen mit [DataActions](../../role-based-access-control/role-definitions.md#dataactions) enthalten.
 - Gruppen müssen so erstellt werden, dass der [**Gruppentyp**](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md#group-types) auf **Sicherheit** und nicht **Microsoft 365** festgelegt ist.
+- Es kann zu einer zusätzlichen Verzögerung kommen, bevor der Zugriff für [geschachtelte Gruppen](../..//active-directory/fundamentals/active-directory-groups-membership-azure-portal.md) aktiviert wird.
 - Benutzer, die Ressourcen im Azure-Portal anzeigen müssen, müssen die Rolle [Leser](../../role-based-access-control/built-in-roles.md#reader) (oder eine andere integrierte Rolle, die Lesezugriff umfasst) aufweisen.
 
 ## <a name="next-steps"></a>Nächste Schritte
