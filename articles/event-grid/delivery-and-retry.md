@@ -3,12 +3,12 @@ title: Azure Event Grid – Übermittlung und Wiederholung
 description: Beschreibt, wie Azure Event Grid Ereignisse übermittelt und wie nicht übermittelte Nachrichten verarbeitet werden.
 ms.topic: conceptual
 ms.date: 10/29/2020
-ms.openlocfilehash: 51473cf457a1c713e6694edd23c344be8c4d439e
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 3c4ed6ec2c9eae4dbcf70a831e3e7f70a28a57a0
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96463239"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98247368"
 ---
 # <a name="event-grid-message-delivery-and-retry"></a>Event Grid – Übermittlung und Wiederholung von Nachrichten
 
@@ -57,7 +57,7 @@ Weitere Informationen zur Verwendung von Azure CLI mit Event Grid finden Sie unt
 
 Wenn EventGrid einen Fehler für einen Ereignisbereitstellungsversuch erhält, entscheidet EventGrid je nach Art des Fehlers, ob die Bereitstellung erneut versucht oder ob das Ereignis abgebrochen oder gelöscht werden soll. 
 
-Wenn es sich bei dem vom abonnierten Endpunkt zurückgegebenen Fehler um einen konfigurationsbedingten Fehler handelt, der nicht durch Wiederholungsversuche behoben werden kann (z. B. wenn der Endpunkt gelöscht wird), markiert EventGrid das Ereignis als unzustellbare Nachricht oder löscht das Ereignis, wenn die unzustellbare Nachricht nicht konfiguriert ist.
+Wenn es sich bei dem vom abonnierten Endpunkt zurückgegebenen Fehler um einen konfigurationsbedingten Fehler handelt, der nicht durch Wiederholungsversuche behoben werden kann (z. B. wenn der Endpunkt gelöscht wird), markiert EventGrid das Ereignis als unzustellbare Nachricht oder löscht das Ereignis, wenn die Warteschlange für unzustellbare Nachrichten nicht konfiguriert ist.
 
 Im folgenden sind die Typen von Endpunkten aufgeführt, für die der Wiederholungsversuch nicht ausgeführt wird:
 
@@ -67,7 +67,7 @@ Im folgenden sind die Typen von Endpunkten aufgeführt, für die der Wiederholun
 | Webhook | 400 – Ungültige Anforderung, 413 – Anforderungsentität zu groß, 403 – Unzulässig, 404 – Nicht gefunden, 401 – Nicht autorisiert |
  
 > [!NOTE]
-> Wenn unzustellbare Nachrichten nicht für den Endpunkt konfiguriert sind, werden Ereignisse gelöscht, wenn die obigen Fehler auftreten. Daher sollten Sie die Konfiguration von unzustellbaren Nachrichten in Erwägung ziehen, wenn diese Arten von Ereignissen nicht gelöscht werden sollen.
+> Wenn die Warteschlange für unzustellbare Nachrichten nicht für den Endpunkt konfiguriert ist, werden Ereignisse gelöscht, wenn die oben genannten Fehler auftreten. Es empfiehlt sich, die Warteschlange für unzustellbare Nachrichten zu konfigurieren, wenn Sie nicht möchten, dass diese Arten von Ereignissen gelöscht werden.
 
 Wenn der vom abonnierten Endpunkt zurückgegebene Fehler nicht in der obigen Liste enthalten ist, führt EventGrid die Wiederholung mithilfe der unten beschriebenen Richtlinien durch:
 
@@ -80,7 +80,10 @@ Event Grid wartet nach der Zustellung einer Nachricht 30 Sekunden auf eine Antwo
 - 10 Minuten
 - 30 Minuten
 - 1 Stunde
-- Pro Stunde für bis zu 24 Stunden
+- 3 Stunden
+- 6 Stunden
+- Alle 12 Stunden bis zu 24 Stundenlang
+
 
 Wenn der Endpunkt innerhalb von 3 Minuten antwortet, versucht Event Grid, das Ereignis aus der Wiederholungswarteschlange auf bestmögliche Weise zu entfernen, aber es können dennoch weiterhin Duplikate empfangen werden.
 
@@ -104,7 +107,7 @@ Wenn ein Ereignis innerhalb eines bestimmten Zeitraums oder nach einer bestimmte
 
 Wenn eine der Bedingungen erfüllt ist, wird das Ereignis gelöscht oder als unzustellbare Nachricht gespeichert.  Die Speicherung unzustellbarer Nachrichten ist standardmäßig nicht aktiviert. Wenn Sie das Feature aktivieren möchten, müssen Sie bei der Erstellung des Ereignisabonnements ein Speicherkonto zum Speichern nicht übermittelter Ereignisse angeben. Ereignisse werden aus diesem Speicherkonto gepullt, um Übermittlungsprobleme zu beheben.
 
-Event Grid sendet ein Ereignis an den Speicherort für unzustellbare Nachrichten, wenn alle Wiederholungsversuche ausgeführt wurden. Wenn Event Grid den Antwortcode 400 (Ungültige Anforderung) oder 413 (Anforderungsentität zu groß) erhält, sendet der Dienst das Ereignis sofort an den Endpunkt für unzustellbare Nachrichten. Diese Antwortcodes geben an, dass die Übermittlung des Ereignisses nie erfolgreich ausgeführt wird.
+Event Grid sendet ein Ereignis an den Speicherort für unzustellbare Nachrichten, wenn alle Wiederholungsversuche ausgeführt wurden. Wenn Event Grid den Antwortcode 400 (Ungültige Anforderung) oder 413 (Anforderungsentität zu groß) empfängt, wird das Ereignis sofort für die Warteschlange für unzustellbare Nachrichten geplant. Diese Antwortcodes geben an, dass die Übermittlung des Ereignisses nie erfolgreich ausgeführt wird.
 
 Der Ablauf der Gültigkeitsdauer wird ERST beim nächsten geplanten Übermittlungsversuch geprüft. Aus diesem Grund gilt Folgendes: Auch wenn die Gültigkeitsdauer vor dem nächsten geplanten Übermittlungsversuch abläuft, wird der Ablauf eines Ereignisses erst zum Zeitpunkt der nächsten Übermittlung überprüft. Anschließend wird das Ereignis als unzustellbar markiert. 
 

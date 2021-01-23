@@ -3,12 +3,12 @@ title: 'Problembehandlung: Azure Functions-Runtime ist nicht erreichbar'
 description: Erfahren Sie, wie Sie Problembehandlung für ein ungültiges Speicherkonto durchführen.
 ms.topic: article
 ms.date: 09/05/2018
-ms.openlocfilehash: 0b6778a08bf04367f2a0ef10f7cd4fe29a52dd61
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 9f6592b6d5ef88127a9dfca1e868564be0aa4ed5
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94579010"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98217293"
 ---
 # <a name="troubleshoot-error-azure-functions-runtime-is-unreachable"></a>Problembehandlung: „Azure Functions-Runtime ist nicht erreichbar“
 
@@ -16,15 +16,15 @@ Dieser Artikel enthält Informationen zur Problembehandlung für die folgende Fe
 
 > „Fehler: Die Azure Functions-Runtime ist nicht erreichbar. Klicken Sie hier, um Informationen zur Speicherkonfiguration zu erhalten.“
 
-Dieses Problem tritt auf, wenn die Azure Functions-Runtime nicht gestartet werden kann. Der häufigste Grund für das Problem ist, dass für die Funktions-App kein Zugriff auf das Speicherkonto mehr besteht. Weitere Informationen finden Sie unter [Anforderungen an das Speicherkonto](./functions-create-function-app-portal.md#storage-account-requirements).
+Dieses Problem tritt auf, wenn die Functions-Runtime nicht gestartet werden kann. Der häufigste Grund besteht darin, dass die Funktions-App den Zugriff auf das Speicherkonto verloren hat. Weitere Informationen finden Sie unter [Anforderungen an das Speicherkonto](storage-considerations.md#storage-account-requirements).
 
-Der Rest dieses Artikels hilft Ihnen bei der Problembehandlung der folgenden Ursachen dieses Fehlers, einschließlich der Vorgehensweise zum Identifizieren und Auflösen jedes Falls.
+Der Rest dieses Artikels hilft Ihnen bei der Problembehandlung bestimmter Ursachen dieses Fehlers, einschließlich der Vorgehensweise zum Identifizieren und Auflösen jedes Falls.
 
 ## <a name="storage-account-was-deleted"></a>Speicherkonto wurde gelöscht
 
-Jede Funktions-App benötigt für den Betrieb ein Speicherkonto. Wenn dieses Konto gelöscht wird, funktioniert Ihre Funktion nicht.
+Jede Funktions-App benötigt für den Betrieb ein Speicherkonto. Wenn dieses Konto gelöscht wird, funktionieren Ihre Funktionen nicht.
 
-Schlagen Sie zunächst den Namen Ihres Speicherkontos in den Anwendungseinstellungen nach. Der Name Ihres Speicherkontos (eingeschlossen in eine Verbindungszeichenfolge) ist entweder in `AzureWebJobsStorage` oder in `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING` enthalten. Weitere Informationen finden Sie unter [Referenz zu App-Einstellungen für Azure Functions](./functions-app-settings.md#azurewebjobsstorage).
+Schlagen Sie zunächst den Namen Ihres Speicherkontos in den Anwendungseinstellungen nach. Der Name Ihres Speicherkontos (als Teil einer Verbindungszeichenfolge) ist entweder in `AzureWebJobsStorage` oder in `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING` enthalten. Weitere Informationen finden Sie unter [Referenz zu App-Einstellungen für Azure Functions](./functions-app-settings.md#azurewebjobsstorage).
 
 Suchen Sie im Azure-Portal nach Ihrem Speicherkonto, um zu ermitteln, ob es noch vorhanden ist. Wenn es gelöscht wurde, müssen Sie das Speicherkonto neu erstellen und Ihre Verbindungszeichenfolgen für den Speicher ersetzen. Ihr Funktionscode ist verloren gegangen, und Sie müssen ihn erneut bereitstellen.
 
@@ -44,7 +44,7 @@ Weitere Informationen finden Sie unter [Referenz zu App-Einstellungen für Azure
 
 ### <a name="guidance"></a>Anleitungen
 
-* Aktivieren Sie für keine dieser Einstellungen „Sloteinstellung“. Wenn Sie die Bereitstellungsslots tauschen, wird die Funktions-App beschädigt.
+* Aktivieren Sie für keine dieser Einstellungen die Option **Sloteinstellung**. Wenn Sie die Bereitstellungsslots tauschen, wird die Funktions-App beschädigt.
 * Ändern Sie diese Einstellungen im Rahmen von automatisierten Bereitstellungen nicht.
 * Diese Einstellungen müssen zur Erstellungszeit angegeben werden und gültig sein. Eine automatisierte Bereitstellung, die diese Einstellungen nicht enthält, führt zu einer Funktions-App, die nicht läuft, selbst wenn die Einstellungen später hinzugefügt werden.
 
@@ -56,7 +56,7 @@ Die oben erwähnten Verbindungszeichenfolgen für Speicherkonten müssen aktuali
 
 Ihre Funktions-App muss auf das Speicherkonto zugreifen können. Häufige Probleme, die den Zugriff einer Funktions-App auf ein Speicherkonto blockieren, sind:
 
-* Die Funktions-App wurde in Ihrer App Service-Umgebung ohne die richtigen Netzwerkregeln bereitgestellt, die Datenverkehr zum und vom Speicherkonto zulassen.
+* Die Funktions-App wird in Ihrer App Service-Umgebung (ASE) ohne die richtigen Netzwerkregeln bereitgestellt, die Datenverkehr zum und vom Speicherkonto zulassen.
 
 * Die Firewall des Speicherkontos ist aktiviert und nicht für das Zulassen von Datenverkehr von und zu Functions konfiguriert. Weitere Informationen finden Sie unter [Konfigurieren von Firewalls und virtuellen Netzwerken in Azure Storage](../storage/common/storage-network-security.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
 
@@ -72,7 +72,7 @@ Um dieses Problem zu beheben, entfernen oder erhöhen Sie das tägliche Kontinge
 
 ## <a name="app-is-behind-a-firewall"></a>App ist hinter einer Firewall
 
-Es kann einen der folgenden Gründe haben, warum Ihre Functions-Runtime ggf. nicht erreichbar ist:
+Es kann einen der folgenden Gründe haben, warum Ihre Funktions-App ggf. nicht erreichbar ist:
 
 * Ihre Funktions-App wird in einer [App Service-Umgebung mit internem Lastenausgleich](../app-service/environment/create-ilb-ase.md) gehostet und ist für das Blockieren von eingehendem Datenverkehr aus dem Internet konfiguriert.
 
@@ -80,8 +80,8 @@ Es kann einen der folgenden Gründe haben, warum Ihre Functions-Runtime ggf. nic
 
 Das Azure-Portal sendet Aufrufe direkt an die ausgeführte App, um die Liste mit den Funktionen abzurufen, und führt HTTP-Aufrufe des Kudu-Endpunkts durch. Die Einstellungen auf Plattformebene auf der Registerkarte **Plattformfeatures** sind weiterhin verfügbar.
 
-Überprüfen Sie Ihre Konfiguration der App Service-Umgebung wie folgt:
-1. Navigieren Sie zur Netzwerksicherheitsgruppe (NSG) des Subnetzes, in dem sich die App Service-Umgebung befindet.
+So überprüfen Sie die ASE-Konfiguration:
+1. Navigieren Sie zur Netzwerksicherheitsgruppe (NSG) des Subnetzes, in dem sich die App Service-Umgebung (ASE) befindet.
 1. Überprüfen Sie die Eingangsregeln, um Datenverkehr über die öffentliche IP-Adresse des Computers zuzulassen, mit dem Sie auf die Anwendung zugreifen. 
    
 Sie können das Portal auch auf einem Computer verwenden, der mit dem virtuellen Netzwerk verbunden ist, in dem Ihre App ausgeführt wird, oder auf einem virtuellen Computer, der in Ihrem virtuellen Netzwerk ausgeführt wird. 

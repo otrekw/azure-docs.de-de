@@ -3,12 +3,12 @@ title: Erste Schritte mit Azure Lab Services
 description: Dieser Artikel enthält eine Einführung in die Verwendung von Azure Lab Services.
 ms.topic: article
 ms.date: 11/18/2020
-ms.openlocfilehash: 44afe13fb6f555b12dfce939ce8e88e3af8dc7ef
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: d260ace7d7819c3ca2db96d6c4984bf834e170da
+ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96602664"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98165041"
 ---
 # <a name="get-started-with-lab-services"></a>Erste Schritte mit Lab Services 
 
@@ -109,56 +109,7 @@ Kursleiter können eine Verbindung mit der VM eines Kursteilnehmers herstellen, 
 
 ## <a name="manage-users-in-a-lab"></a>Verwalten von Benutzern in einem Lab
 
-Kursleiter können einem Lab Kursteilnehmer hinzufügen und ihre Stundenkontingente überwachen. 
-
-### <a name="add-users-by-email-address"></a>Hinzufügen von Benutzern per E-Mail-Adresse
-
-1. Klicken Sie auf der [Azure Lab Services-Website](https://labs.azure.com/) im linken Bereich des Fensters auf **Benutzer**.
-1. Klicken Sie oben im Fenster auf **Benutzer hinzufügen**, und wählen Sie **Per E-Mail-Adresse hinzufügen** aus. 
-1. Geben Sie im rechts angezeigten Bereich **Benutzer hinzufügen** die E-Mail-Adressen der Kursteilnehmer in separaten Zeilen oder durch Semikolons getrennt in einer einzelnen Zeile ein.
-1. Klicken Sie auf **Speichern**.
-1. Die Liste der Benutzer wird nun mit E-Mail-Adresse, Status, Einladung und Kontingentstunden aktualisiert.
-
-    Nachdem Kursteilnehmer für ein Lab registriert wurden, werden ihre Namen mit den Vor- und Nachnamen aus Azure Active Directory aktualisiert.
-
-    > [!NOTE]
-    > Behalten Sie für die Umschaltfläche „Zugriff einschränken“ für die Benutzer die Aktivierung bei. Das bedeutet, dass nur aufgeführte Benutzer sich über den von Ihnen gesendeten Registrierungslink beim Lab registrieren können.
-
-### <a name="add-users-using-a-spreadsheet"></a>Hinzufügen von Benutzern mittels einer Tabelle 
-
-Sie können auch eine CSV-Datei mit E-Mail-Adressen von Benutzern hochladen, um Benutzer hinzuzufügen.
-
-1. Erstellen Sie in Microsoft Excel eine CSV-Datei, die die E-Mail-Adressen der Kursteilnehmer in einer Spalte auflistet.
-1. Klicken Sie auf der Seite [Azure Lab Services-Website](https://labs.azure.com/) oben auf der Seite **Benutzer** auf die Schaltfläche **Benutzer hinzufügen**.
-1. Wählen Sie die Option **CSV hochladen** aus.
-1. Wählen Sie die CSV-Datei aus, die die E-Mail-Adressen der Kursteilnehmer enthält, und klicken Sie dann auf **Öffnen**.
-
-    :::image type="content" source="./media/get-started-manage-labs/add-users-spreadsheet.png" alt-text="Hinzufügen von Benutzern mittels einer Tabelle":::
-1. Die E-Mail-Adressen werden nun im Fenster im rechten Bereich gezeigt. Klicken Sie auf **Speichern**.
-
-    :::image type="content" source="./media/get-started-manage-labs/register-users.png" alt-text="Registrieren von Benutzern":::
-
-### <a name="register-users"></a>Registrieren von Benutzern
-
-Nachdem dem Lab Benutzer hinzugefügt wurden, müssen diese sich registrieren, um auf die VMs zugreifen zu können. Hierzu können Sie entweder Benutzer über das Portal einladen, über das dann eine E-Mail mit dem Registrierungslink für das Lab gesendet wird. Oder Sie können den Registrierungslink kopieren und in eine E-Mail oder ein anderes Kommunikationsmedium mit den Kursteilnehmern einfügen.
-
-1. Wählen Sie auf der Seite **Benutzer** einen oder mehrere Kursteilnehmer in der Liste aus.
-
-    Wählen Sie in der Zeile für den ausgewählten Kursteilnehmer das Briefumschlagsymbol in der Liste aus, oder klicken Sie oben auf dem Bildschirm auf **Einladen**.
-
-    :::image type="content" source="./media/get-started-manage-labs/send-invitation.png" alt-text="Senden einer Einladung":::
-    
-    Geben Sie im Fenster **Einladung per E-Mail senden** eine optionale Nachricht an die Kursteilnehmer ein (z. B. Benutzername und Kennwort), und klicken Sie dann auf **Senden**. 
-    
-    :::image type="content" source="./media/get-started-manage-labs/send-invitation-mail.png" alt-text="Senden einer Einladung per E-Mail":::
-
-    Alternativ können Sie auf der Seite **Benutzer** oben auf dem Bildschirm auf die Schaltfläche **Registrierungslink** klicken. 
-
-    :::image type="content" source="./media/get-started-manage-labs/registration-link.png" alt-text="Registrierungslink für Benutzer":::
-    
-    Kopieren Sie den Registrierungslink aus dem Textfeld, und fügen Sie ihn in einer E-Mail oder Ihrer bevorzugten sicheren Nachrichten-App ein.  
-    
-    :::image type="content" source="./media/get-started-manage-labs/user-registration.png" alt-text="Senden der Benutzerregistrierung":::
+Kursleiter können einem Lab Kursteilnehmer hinzufügen und ihre Stundenkontingente überwachen. Ausführliche Informationen zum Hinzufügen von Benutzern über ihre E-Mail-Adresse oder mithilfe einer Tabellenkalkulationsliste sowie zum Registrieren von Benutzern finden Sie unter [Hinzufügen und Verwalten von Lab-Benutzern](how-to-configure-student-usage.md).
 
 Nachdem Sie die Benutzer eingeladen oder den Link freigegeben haben, können Sie auf der Seite **Benutzer** in der Spalte **Status** sehen, welche Benutzer erfolgreich registriert wurden. 
 

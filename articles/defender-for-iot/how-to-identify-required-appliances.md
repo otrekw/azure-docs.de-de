@@ -4,15 +4,15 @@ description: Erfahren Sie mehr über Hardware und virtuelle Appliances für zert
 author: shhazam-ms
 manager: rkarlin
 ms.author: shhazam
-ms.date: 12/21/2020
+ms.date: 01/13/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: b22f880eee1b691b6b50b8151a64a2d501b891b3
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 25685d7e933c9d171e1547be2f5899c08443321a
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97836189"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98246569"
 ---
 # <a name="identify-required-appliances"></a>Ermitteln der erforderlichen Appliances
 
@@ -254,28 +254,6 @@ Nachdem Sie Ihre Appliance gekauft haben, navigieren Sie zu **Defender für IoT*
 ## <a name="dell-r340-bom"></a>Dell R340 BOM
 
 :::image type="content" source="media/how-to-prepare-your-network/enterprise-deployment-for-azure-defender-for-iot-dell-r340-bom.png" alt-text="Dell R340 BOM.":::
-
-## <a name="smb-deployment-neousys-nuvo-5006lp"></a>SMB-Bereitstellung: Neousys Nuvo-5006LP
-
-| Komponente | Technische Spezifikationen |
-|--|--|
-| Bauwesen | Ventilatorloses und staubgeschütztes Design aus Aluminium |
-| Dimensionen | 240 mm (B) x 225 mm (T) x 77 mm (H) |
-| Weight | 3,1 kg (einschließlich CPU, Arbeitsspeicher und HDD) |
-| CPU | Intel Core i5-6500TE (6M Cache, bis zu 3,30 GHz) S1151 |
-| Chipsatz | Intel Q170 Platform Controller-Hub |
-| Arbeitsspeicher | 8 GB DDR4 2133 MHz Wide Temperature SODIMM |
-| Storage | 128 GB 3ME3 Wide Temperature mSATA SSD |
-| Netzwerkcontroller | 6x Gigabit Ethernet-Ports von Intel I219 |
-| Gerätezugriff | 4 USB-Anschlüsse: Zwei vorne, zwei hinten, einer intern |
-| Netzadapter | 120/240VAC-20VDC/6A |
-| Montage | Montage-Kit, DIN-Schiene |
-| Betriebstemperatur | \-25° C ~ 70° C |
-| Speichertemperatur | \-40° C ~ 85° C |
-| Luftfeuchtigkeit | 10 % ~ 90 %, nicht kondensierend |
-| Vibration | Betrieb, 5 Grms, 5–500 Hz, 3 Achsen <br>(w/SSD, gemäß IEC60068-2-64) |
-| Erschütterung | Betrieb, 50 Grms, Halbsinus 11-ms-Dauer (w/SSD, gemäß IEC60068-2-27) |
-| EMC | CE/FCC-Klasse A, gemäß EN 55022, EN 55024 und EN 55032 |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

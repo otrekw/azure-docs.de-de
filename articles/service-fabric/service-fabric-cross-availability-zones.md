@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: pepogors
-ms.openlocfilehash: f729c00d3b78631a32013ec9453302584cecbd16
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.openlocfilehash: 82161a8f66dd717a9dc448a743b818a9ab9938db
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97962430"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98250977"
 ---
 # <a name="deploy-an-azure-service-fabric-cluster-across-availability-zones"></a>Bereitstellen eines Azure Service Fabric-Clusters über Verfügbarkeitszonen hinweg
 Verfügbarkeitszonen sind in Azure ein Hochverfügbarkeitsangebot, das Anwendungen und Daten vor Ausfällen von Rechenzentren schützt. Eine Verfügbarkeitszone ist ein eindeutiger physischer Standort, der mit unabhängiger Stromversorgung, Kühlung und Netzwerk innerhalb einer Azure-Region ausgestattet ist.
@@ -345,7 +345,7 @@ Um Zonen zu aktivieren, müssen Sie in einer VM-Skalierungsgruppe die folgenden 
 
 * Der erste Wert ist die **zones**-Eigenschaft, die angibt, welche Verfügbarkeitszonen in der VM-Skalierungsgruppe vorhanden sind.
 * Der zweite Wert ist die Eigenschaft „singlePlacementGroup“, die auf „true“ festgelegt werden muss. **Die Skalierungsgruppe erstreckt sich über drei Verfügbarkeitszonen und kann auf bis zu 300 VMs skaliert werden, auch mit „singlePlacementGroup = true“.**
-* Der dritte, optionale Wert „zoneBalance“ stellt sicher, dass das strikte Zonengleichgewicht auf „true“ festgelegt ist. Informieren Sie sich über [zoneBalancing](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones#zone-balancing).
+* Der dritte Wert zoneBalance stellt sicher, dass das strikte Zonengleichgewicht auf TRUE festgelegt ist. Sie sollten diese Einstellung auf TRUE festlegen, um eine unausgeglichene Verteilung von VMs auf Zonen zu vermeiden. Informieren Sie sich über [zoneBalancing](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones#zone-balancing).
 * Die Außerkraftsetzungen für FaultDomain und UpgradeDomain müssen nicht konfiguriert werden.
 
 ```json
@@ -357,7 +357,7 @@ Um Zonen zu aktivieren, müssen Sie in einer VM-Skalierungsgruppe die folgenden 
     "zones": ["1", "2", "3"],
     "properties": {
         "singlePlacementGroup": "true",
-        "zoneBalance": false
+        "zoneBalance": true
     }
 }
 ```

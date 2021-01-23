@@ -3,12 +3,12 @@ title: Details der Struktur von Richtliniendefinitionen
 description: Beschreibt, wie Richtliniendefinitionen verwendet werden, um Konventionen für Azure-Ressourcen in Ihrer Organisation einzurichten.
 ms.date: 10/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: 52adaf9522e4690c4c44a72ed47592f5b1d6471e
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: 6e04551a2ef2f890844693fec71d2d3232a456f2
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97883247"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98220812"
 ---
 # <a name="azure-policy-definition-structure"></a>Struktur von Azure Policy-Definitionen
 
@@ -261,7 +261,7 @@ Logische Operatoren können geschachtelt werden. Das folgende Beispiel zeigt ein
 
 ### <a name="conditions"></a>Bedingungen
 
-Eine Bedingung prüft, ob ein **Feld** oder der Accessor **Wert** bestimmte Kriterien erfüllt. Folgende Bedingungen werden unterstützt:
+Eine Bedingung überprüft, ob ein Wert bestimmte Kriterien erfüllt. Folgende Bedingungen werden unterstützt:
 
 - `"equals": "stringValue"`
 - `"notEquals": "stringValue"`
@@ -291,12 +291,9 @@ Der Wert darf maximal einen Platzhalter des Typs `*` enthalten.
 
 Geben Sie bei Verwendung der Bedingungen **match** und **notMatch** für eine Ziffer `#`, für einen Buchstaben `?`, für irgendein Zeichen `.` und für ein Zeichen das gewünschte Zeichen ein. Während bei **match** und **notMatch** die Groß-/Kleinschreibung beachtet wird, erfolgt bei allen anderen Bedingungen, die einen _stringValue_ auswerten, keine Berücksichtigung der Groß-/Kleinschreibung. Als Alternativen, bei denen die Groß-/Kleinschreibung nicht beachtet werden muss, stehen **matchInsensitively** und **notMatchInsensitively** zur Verfügung.
 
-Bei den Feldwerten eines Arrays mit einem **\[\*\]-Alias** wird jedes Element im Array einzeln ausgewertet, wobei die Elemente durch ein logisches **UND** verknüpft werden. Weitere Informationen finden Sie unter [Verweisen auf Arrayeigenschaften in Ressourcen](../how-to/author-policies-for-arrays.md#referencing-array-resource-properties).
-
 ### <a name="fields"></a>Felder
 
-Bedingungen werden mithilfe von Feldern gebildet. Ein Feld stimmt mit Eigenschaften in der Anforderungsnutzlast einer Ressource überein und beschreibt den Zustand der Ressource.
-
+Bedingungen, die auswerten, ob die Werte von Eigenschaften in der Nutzlast der Ressourcenanforderung bestimmte Kriterien erfüllen, können mit einem **Feldausdruck** gebildet werden.
 Folgende Felder werden unterstützt:
 
 - `name`
@@ -305,6 +302,7 @@ Folgende Felder werden unterstützt:
 - `kind`
 - `type`
 - `location`
+  - Standortfelder werden normalisiert, um verschiedene Formate zu unterstützen. Beispielsweise werden `East US 2` und `eastus2` als gleich betrachtet.
   - Verwenden Sie **global** für Ressourcen, die speicherortagnostisch sind.
 - `id`
   - Gibt die Ressourcen-ID für die auszuwertende Ressource zurück.
@@ -324,6 +322,10 @@ Folgende Felder werden unterstützt:
 
 > [!NOTE]
 > `tags.<tagName>`, `tags[tagName]` und `tags[tag.with.dots]` werden weiterhin als Möglichkeiten zum Deklarieren eines Felds für Tags akzeptiert. Die oben aufgeführten Ausdrücke werden jedoch bevorzugt.
+
+> [!NOTE]
+> Bei **Feldausdrücken**, die sich auf den **\[\*\]-Alias** beziehen, wird jedes Element im Array einzeln ausgewertet, wobei die Elemente durch ein logisches **UND** verknüpft werden.
+> Weitere Informationen finden Sie unter [Verweisen auf Arrayeigenschaften in Ressourcen](../how-to/author-policies-for-arrays.md#referencing-array-resource-properties).
 
 #### <a name="use-tags-with-parameters"></a>Verwenden von Tags mit Parametern
 
@@ -355,7 +357,7 @@ Im folgenden Beispiel wird mit `concat` eine Tagfeldsuche nach dem Tag erstellt,
 
 ### <a name="value"></a>Wert
 
-Bedingungen können auch mithilfe von **Wert** gebildet werden. **Wert** gleicht die Bedingungen mit [Parametern](#parameters), [unterstützten Vorlagenfunktionen](#policy-functions) oder Literalen ab. **Wert** wird mit beliebigen unterstützten [Bedingungen](#conditions) verknüpft.
+Bedingungen, die auswerten, ob ein Wert bestimmte Kriterien erfüllt, können mit einem **Wertausdruck** gebildet werden. Werte können Literale, die Werte von [Parametern](#parameters) oder die zurückgegebenen Werte beliebiger [unterstützter Vorlagenfunktionen](#policy-functions) sein.
 
 > [!WARNING]
 > Wenn eine _Vorlagenfunktion_ einen Fehler ergibt, schlägt die Richtlinienauswertung fehl. Eine fehlerhafte Auswertung ist ein implizites **Deny** (Verweigern). Weitere Informationen finden Sie unter [Vermeiden von Vorlagenfehlern](#avoiding-template-failures). Verwenden Sie als [enforcementMode](./assignment-structure.md#enforcement-mode) den Modus **DoNotEnforce**, um Auswirkungen einer fehlerhaften Auswertung auf neue oder aktualisierte Ressourcen beim Testen und Überprüfen einer neuen Richtliniendefinition zu verhindern.
@@ -440,9 +442,11 @@ Mit der überarbeiteten Richtlinienregel überprüft `if()` die Länge des **Nam
 
 ### <a name="count"></a>Anzahl
 
-Mithilfe eines **count**-Ausdrucks können Bedingungen erstellt werden, mit denen gezählt wird, wie viele Member eines Arrays in der Ressourcennutzlast einem Bedingungsausdruck entsprechen. Häufige Szenarien sind die Überprüfung, ob mindestens einer (at least one of), genau einer (exactly one of), alle (all of) oder keiner (none of) der Arraymember die Bedingung erfüllt. **count** wertet jeden [\[\*\]-Alias](#understanding-the--alias)-Arraymember für einen Bedingungsausdruck aus und fasst die Ergebnisse mit dem Wert _true_ zusammen, die dann mit dem Ausdrucksoperator verglichen werden. **Count**-Ausdrücke können einer einzelnen **policyRule-** -Definition bis zu drei Mal hinzugefügt werden.
+Bedingungen, die zählen, wie viele Member eines Arrays bestimmte Kriterien erfüllen, können mithilfe eines **Zählausdrucks** gebildet werden. Häufige Szenarien sind die Überprüfung, ob mindestens einer (at least one of), genau einer (exactly one of), alle (all of) oder keiner (none of) der Arraymember eine Bedingung erfüllt. **Count** wertet jeden Arraymember für einen Bedingungsausdruck aus und fasst die Ergebnisse mit dem Wert _TRUE_ zusammen, die dann mit dem Ausdrucksoperator verglichen werden.
 
-Die Struktur des **count**-Ausdrucks sieht wie folgt aus:
+#### <a name="field-count"></a>Feldzählung
+
+Zählt, wie viele Member eines Arrays in der Anforderungsnutzlast einem Bedingungsausdruck entsprechen. Die Struktur von **Feldzählungsausdrücken** sieht wie folgt aus:
 
 ```json
 {
@@ -456,16 +460,62 @@ Die Struktur des **count**-Ausdrucks sieht wie folgt aus:
 }
 ```
 
-Die folgenden Eigenschaften werden bei **count** verwendet:
+Die folgenden Eigenschaften werden bei der **Feldzählung** verwendet:
 
-- **count.field** (erforderlich): Enthält den Pfad zum Array und muss ein Arrayalias sein. Wenn das Array fehlt, wird der Ausdruck ohne Berücksichtigung des Bedingungsausdrucks als _false_ ausgewertet.
-- **count.where** (optional): Der Bedingungsausdruck zum individuellen Auswerten der einzelnen Arraymember des Typs [\[\*\]-Alias](#understanding-the--alias) von **count.field**. Wenn diese Eigenschaft nicht angegeben wird, werden alle Arraymember mit dem Pfad „field“ als _true_ ausgewertet. Innerhalb dieser Eigenschaft kann eine beliebige [Bedingung](../concepts/definition-structure.md#conditions) verwendet werden.
+- **count.field** (erforderlich): Enthält den Pfad zum Array und muss ein Arrayalias sein.
+- **count.where** (optional): Der Bedingungsausdruck, der individuell für jeden Arraymember des [\[\*\]-Alias](#understanding-the--alias) von `count.field` ausgewertet wird. Wenn diese Eigenschaft nicht angegeben wird, werden alle Arraymember mit dem Pfad „field“ als _true_ ausgewertet. Innerhalb dieser Eigenschaft kann eine beliebige [Bedingung](../concepts/definition-structure.md#conditions) verwendet werden.
   Es können [logische Operatoren](#logical-operators) innerhalb dieser Eigenschaft verwendet werden, um komplexe Auswertungsanforderungen zu erstellen.
 - **\<condition\>** (erforderlich): Der Wert wird mit der Anzahl der Elemente verglichen, die dem **count.where**-Bedingungsausdruck entsprachen. Es sollte eine numerische [Bedingung](../concepts/definition-structure.md#conditions) verwendet werden.
 
-Weitere Informationen zur Arbeit mit Arrayeigenschaften in Azure Policy, einschließlich einer detaillierten Erklärung, wie der Count-Ausdruck ausgewertet wird, finden Sie unter [Verweisen auf Arrayeigenschaften in Ressourcen](../how-to/author-policies-for-arrays.md#referencing-array-resource-properties).
+**Feldzählungsausdrücke** können das gleiche Feldarray bis zu drei Mal in einer einzelnen **policyRule**-Definition aufzählen.
 
-#### <a name="count-examples"></a>Beispiele für „count“
+Weitere Informationen zur Arbeit mit Arrayeigenschaften in Azure Policy, einschließlich einer detaillierten Erklärung, wie der **Feldzählungsausdruck** ausgewertet wird, finden Sie unter [Verweisen auf Arrayeigenschaften in Ressourcen](../how-to/author-policies-for-arrays.md#referencing-array-resource-properties).
+
+#### <a name="value-count"></a>Wertzählung
+Zählt, wie viele Member eines Arrays eine Bedingung erfüllen. Das Array kann ein Literalarray oder ein [Verweis auf den Arrayparameter](#using-a-parameter-value) sein. Die Struktur von **Wertzählungsausdrücken** sieht wie folgt aus:
+
+```json
+{
+    "count": {
+        "value": "<literal array | array parameter reference>",
+        "name": "<index name>",
+        "where": {
+            /* condition expression */
+        }
+    },
+    "<condition>": "<compare the count of true condition expression array members to this value>"
+}
+```
+
+Die folgenden Eigenschaften werden bei der **Wertzählung** verwendet:
+
+- **count.value** (erforderlich): Das auszuwertende Array.
+- **count.name** (erforderlich): Der Indexname, der aus Buchstaben des englischen Alphabets und Ziffern besteht. Definiert einen Namen für den Wert des Arraymembers, der in der aktuellen Iteration ausgewertet wird. Der Name wird verwendet, um auf den aktuellen Wert innerhalb der `count.where`-Bedingung zu verweisen. Optional, wenn der **count**-Ausdruck kein untergeordnetes Element eines anderen **count**-Ausdrucks ist. Wenn nicht angegeben, wird der Indexname implizit auf `"default"`festgelegt.
+- **count.where** (optional): Der Bedingungsausdruck, der individuell für jeden Arraymember von `count.value` ausgewertet wird. Wenn diese Eigenschaft nicht angegeben wird, werden alle Arraymember in _TRUE_ ausgewertet. Innerhalb dieser Eigenschaft kann eine beliebige [Bedingung](../concepts/definition-structure.md#conditions) verwendet werden. Es können [logische Operatoren](#logical-operators) innerhalb dieser Eigenschaft verwendet werden, um komplexe Auswertungsanforderungen zu erstellen. Auf den Wert des aktuell aufgelisteten Arraymembers kann durch Aufrufen der [aktuellen](#the-current-function) Funktion zugegriffen werden.
+- **\<condition\>** (erforderlich): Der Wert wird mit der Anzahl der Elemente verglichen, die dem `count.where`-Bedingungsausdruck entsprachen. Es sollte eine numerische [Bedingung](../concepts/definition-structure.md#conditions) verwendet werden.
+
+Die folgenden Einschränkungen werden erzwungen:
+- Bis zu 10 **Wertzählungsausdrücke** können in einer einzelnen **policyRule**-Definition verwendet werden.
+- Jeder **Wertzählungsausdruck** kann bis zu 100 Iterationen ausführen. Diese Zahl schließt die Anzahl von Iterationen ein, die von einem beliebigen übergeordneten **Wertzählungsausdruck** ausgeführt werden.
+
+#### <a name="the-current-function"></a>Die current-Funktion
+
+Die `current()`-Funktion ist nur innerhalb der `count.where`-Bedingung verfügbar. Sie gibt den Wert des Arraymembers zurück, der zurzeit von der Auswertung des **Zählungsausdrucks** aufgezählt wird.
+
+**Wertzählung: Syntax**
+
+- `current(<index name defined in count.name>)`. Beispiel: `current('arrayMember')`.
+- `current()`. Nur zulässig, wenn der **Wertzählungsausdruck** kein untergeordnetes Element eines anderen **count**-Ausdrucks ist. Gibt den gleichen Wert wie oben zurück.
+
+Wenn der vom Aufruf zurückgegebene Wert ein Objekt ist, werden Eigenschaftenaccessoren unterstützt. Beispiel: `current('objectArrayMember').property`.
+
+**Feldzählung: Syntax**
+
+- `current(<the array alias defined in count.field>)`. Beispiel: `current('Microsoft.Test/resource/enumeratedArray[*]')`.
+- `current()`. Nur zulässig, wenn der **Feldzählungsausdruck** kein untergeordnetes Element eines anderen **count**-Ausdrucks ist. Gibt den gleichen Wert wie oben zurück.
+- `current(<alias of a property of the array member>)`. Beispiel: `current('Microsoft.Test/resource/enumeratedArray[*].property')`.
+
+#### <a name="field-count-examples"></a>Beispiele für Feldzählung
 
 Beispiel 1: Überprüfen, ob ein Array leer ist
 
@@ -550,18 +600,162 @@ Beispiel 5: Überprüfen, ob mindestens ein Arraymember mehreren Eigenschaften i
 }
 ```
 
-Beispiel 6: Verwenden Sie die `field()`-Funktion innerhalb der `where`-Bedingungen, um auf den Literalwert des aktuell ausgewerteten Arraymembers zuzugreifen. Diese Bedingung prüft, dass es keine Sicherheitsregeln mit einem geradzahligen _Prioritätswert_ gibt.
+Beispiel 6: Verwenden Sie die `current()`-Funktion innerhalb der `where`-Bedingungen, um auf den Wert des aktuell aufgezählten Arraymembers in einer Vorlagenfunktion zuzugreifen. Diese Bedingung überprüft, ob ein virtuelles Netzwerk ein Adresspräfix enthält, das sich nicht im CIDR-Bereich 10.0.0.0/24 befindet.
 
 ```json
 {
     "count": {
-        "field": "Microsoft.Network/networkSecurityGroups/securityRules[*]",
+        "field": "Microsoft.Network/virtualNetworks/addressSpace.addressPrefixes[*]",
         "where": {
-          "value": "[mod(first(field('Microsoft.Network/networkSecurityGroups/securityRules[*].priority')), 2)]",
-          "equals": 0
+          "value": "[ipRangeContains('10.0.0.0/24', current('Microsoft.Network/virtualNetworks/addressSpace.addressPrefixes[*]'))]",
+          "equals": false
         }
     },
     "greater": 0
+}
+```
+
+Beispiel 7: Verwenden Sie die `field()`-Funktion innerhalb der `where`-Bedingungen, um auf den Wert des aktuell aufgezählten Arraymembers zuzugreifen. Diese Bedingung überprüft, ob ein virtuelles Netzwerk ein Adresspräfix enthält, das sich nicht im CIDR-Bereich 10.0.0.0/24 befindet.
+
+```json
+{
+    "count": {
+        "field": "Microsoft.Network/virtualNetworks/addressSpace.addressPrefixes[*]",
+        "where": {
+          "value": "[ipRangeContains('10.0.0.0/24', first(field(('Microsoft.Network/virtualNetworks/addressSpace.addressPrefixes[*]')))]",
+          "equals": false
+        }
+    },
+    "greater": 0
+}
+```
+
+#### <a name="value-count-examples"></a>Beispiele für Wertzählung
+
+Beispiel 1: Überprüfen, ob der Ressourcenname mit einem der angegebenen Namensmuster übereinstimmt.
+
+```json
+{
+    "count": {
+        "value": [ "prefix1_*", "prefix2_*" ],
+        "name": "pattern",
+        "where": {
+            "field": "name",
+            "like": "[current('pattern')]"
+        }
+    },
+    "greater": 0
+}
+```
+
+Beispiel 2: Überprüfen, ob der Ressourcenname mit einem der angegebenen Namensmuster übereinstimmt. Die `current()`-Funktion gibt keinen Indexnamen an. Das Ergebnis ist das gleiche wie im vorherigen Beispiel.
+
+```json
+{
+    "count": {
+        "value": [ "prefix1_*", "prefix2_*" ],
+        "where": {
+            "field": "name",
+            "like": "[current()]"
+        }
+    },
+    "greater": 0
+}
+```
+
+Beispiel 3: Überprüfen, ob der Ressourcenname mit einem der durch einen Arrayparameter angegebenen Namensmuster übereinstimmt.
+
+```json
+{
+    "count": {
+        "value": "[parameters('namePatterns')]",
+        "name": "pattern",
+        "where": {
+            "field": "name",
+            "like": "[current('pattern')]"
+        }
+    },
+    "greater": 0
+}
+```
+
+Beispiel 4: Überprüfen, ob sich ein Adresspräfix des virtuellen Netzwerks nicht in der Liste der genehmigten Präfixe befindet.
+
+```json
+{
+    "count": {
+        "field": "Microsoft.Network/virtualNetworks/addressSpace.addressPrefixes[*]",
+        "where": {
+            "count": {
+                "value": "[parameters('approvedPrefixes')]",
+                "name": "approvedPrefix",
+                "where": {
+                    "value": "[ipRangeContains(current('approvedPrefix'), current('Microsoft.Network/virtualNetworks/addressSpace.addressPrefixes[*]'))]",
+                    "equals": true
+                },
+            },
+            "equals": 0
+        }
+    },
+    "greater": 0
+}
+```
+
+Beispiel 5: Überprüfen, ob alle reservierten NSG-Regeln in einer Netzwerksicherheitsgruppe definiert sind. Die Eigenschaften der reservierten NSG-Regeln werden in einem Arrayparameter definiert, der Objekte enthält.
+
+Parameterwert:
+
+```json
+[
+    {
+        "priority": 101,
+        "access": "deny",
+        "direction": "inbound",
+        "destinationPortRange": 22
+    },
+    {
+        "priority": 102,
+        "access": "deny",
+        "direction": "inbound",
+        "destinationPortRange": 3389
+    }
+]
+```
+
+Richtlinie:
+```json
+{
+    "count": {
+        "value": "[parameters('reservedNsgRules')]",
+        "name": "reservedNsgRule",
+        "where": {
+            "count": {
+                "field": "Microsoft.Network/networkSecurityGroups/securityRules[*]",
+                "where": {
+                    "allOf": [
+                        {
+                            "field": "Microsoft.Network/networkSecurityGroups/securityRules[*].priority",
+                            "equals": "[current('reservedNsgRule').priority]"
+                        },
+                        {
+                            "field": "Microsoft.Network/networkSecurityGroups/securityRules[*].access",
+                            "equals": "[current('reservedNsgRule').access]"
+                        },
+                        {
+                            "field": "Microsoft.Network/networkSecurityGroups/securityRules[*].direction",
+                            "equals": "[current('reservedNsgRule').direction]"
+                        },
+                        {
+                            "field": "Microsoft.Network/networkSecurityGroups/securityRules[*].destinationPortRange",
+                            "equals": "[current('reservedNsgRule').destinationPortRange]"
+                        }
+                    ]
+                }
+            },
+            "equals": 1
+        }
+    },
+    "equals": "[length(parameters('reservedNsgRules'))]"
 }
 ```
 
@@ -627,7 +821,6 @@ Die folgenden Funktionen sind nur in Richtlinienregeln verfügbar:
   }
   ```
 
-
 - `ipRangeContains(range, targetRange)`
     - **range**: [Erforderlich] Zeichenfolge: Zeichenfolge, die einen Bereich von IP-Adressen angibt
     - **targetRange**: [Erforderlich] Zeichenfolge: Zeichenfolge, die einen Bereich von IP-Adressen angibt
@@ -639,6 +832,8 @@ Die folgenden Funktionen sind nur in Richtlinienregeln verfügbar:
     - CIDR-Bereich (Beispiele: `10.0.0.0/24`, `2001:0DB8::/110`)
     - Durch Start- und End-IP-Adressen definierter Bereich (Beispiele: `192.168.0.1-192.168.0.9`, `2001:0DB8::-2001:0DB8::3:FFFF`)
 
+- `current(indexName)`
+    - Eine spezielle Funktion, die nur innerhalb von [Zählausdrücken](#count) verwendet werden kann.
 
 #### <a name="policy-function-example"></a>Beispiel für Richtlinienfunktion
 

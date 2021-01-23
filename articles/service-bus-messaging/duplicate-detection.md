@@ -2,32 +2,37 @@
 title: Erkennung doppelter Nachrichten von Azure Service Bus | Microsoft-Dokumentation
 description: In diesem Artikel wird erläutert, wie Sie Duplikate in Azure Service Bus-Nachrichten erkennen können. Die doppelte Nachricht kann ignoriert und gelöscht werden.
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: dbca1b4b4f894d35835e7d37e0b4e742a2d3b917
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 01/13/2021
+ms.openlocfilehash: 29972f756c66f524cc2e4684fcb7afd1ca628820
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87083887"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98184678"
 ---
 # <a name="duplicate-detection"></a>Duplikaterkennung
 
 Tritt bei einer Anwendung unmittelbar nach dem Senden einer Nachricht ein schwerwiegender Fehler auf und geht die neu gestartete Anwendungsinstanz fälschlicherweise davon aus, dass die vorherige Nachrichtenübermittlung nicht stattgefunden hat, ist die Nachricht nach einem weiteren Sendevorgang zweimal im System enthalten.
 
-Es ist auch möglich, dass kurz zuvor ein Fehler auf Client- oder Netzwerkebene aufgetreten ist, sodass eine gesendete Nachricht in die Warteschlange gestellt wird, ohne dass die Bestätigung erfolgreich an den Client zurückgesendet werden kann. In diesem Fall weiß der Client nicht sicher, welches Ergebnis der Sendevorgang hatte.
+Es ist auch möglich, dass kurz zuvor ein Fehler auf Client- oder Netzwerkebene aufgetreten ist, sodass eine gesendete Nachricht in die Warteschlange eingereiht wird, ohne dass die Bestätigung erfolgreich an den Client zurückgesendet werden kann. In diesem Fall weiß der Client nicht sicher, welches Ergebnis der Sendevorgang hatte.
 
 Durch die Erkennung von Duplikaten werden diese Situationen aufgelöst, indem der Absender die gleiche Nachricht erneut senden kann, während die Warteschlange oder das Thema mögliche Duplikate verwirft.
 
+## <a name="how-it-works"></a>So funktioniert's 
 Das Aktivieren der Erkennung von Duplikaten unterstützt das Nachverfolgen der anwendungsgesteuerten *MessageId* aller in einem angegebenen Zeitfenster an eine Warteschlange oder ein Thema gesendeten Nachrichten. Wenn eine neue Nachricht mit einer *MessageId* gesendet wird, die während des Zeitfensters erfasst wurde, wird die Nachricht als akzeptiert gemeldet (der Sendevorgang war erfolgreich). Die neu gesendete Nachricht wird jedoch sofort ignoriert und verworfen. Es werden keine anderen Teile der Nachricht außer der *MessageId* ausgewertet.
 
 Die Anwendungssteuerung der ID ist wichtig, da nur diese es der Anwendung erlaubt, die *MessageId* einem Geschäftsprozesskontext zuzuordnen, aus dem sie bei einem Fehler vorhersagbar rekonstruiert werden kann.
 
 Für einen Geschäftsprozess, bei dem für die Behandlung von Anwendungskontext mehrere Nachrichten gesendet werden, setzt sich die *MessageId* möglicherweise aus dem Kontextbezeichner auf Anwendungsebene (z.B. einer Bestellnummer) und dem Betreff der Nachricht (z.B. **12345.2017/Bezahlung**) zusammen.
 
-Die *MessageId* kann immer auch eine GUID sein, aber das Verankern des Bezeichners in den Geschäftsprozess sorgt für eine vorhersagbare Wiederholbarkeit, die für die effektive Erkennung von Duplikaten gewünscht wird.
+Die *MessageId* kann immer auch eine GUID sein, aber das Verankern des Bezeichners in den Geschäftsprozess sorgt für eine vorhersagbare Wiederholbarkeit, die für die effektive Verwendung der Erkennung von Duplikaten gewünscht wird.
 
-> [!NOTE]
-> Wenn die Duplikaterkennung aktiviert ist und die Sitzungs-ID oder der Partitionsschlüssel nicht festgelegt ist, wird die Nachrichten-ID als Partitionsschlüssel verwendet. Wenn die Nachrichten-ID ebenfalls nicht festgelegt ist, generieren .NET- und AMQP-Bibliotheken automatisch eine Nachrichten-ID für die Nachricht. Weitere Informationen finden Sie unter [Verwenden von Partitionsschlüsseln](service-bus-partitioning.md#use-of-partition-keys).
+> [!IMPORTANT]
+>- Wenn **Partitionierung** **aktiviert** ist, wird `MessageId+PartitionKey` verwendet, um die Eindeutigkeit zu bestimmen. Wenn Sitzungen aktiviert sind, müssen der Partitionsschlüssel und die Sitzungs-ID identisch sein. 
+>- Wenn **Partitionierung** **deaktiviert** ist (Standardeinstellung), wird nur `MessageId` verwendet, um die Eindeutigkeit zu bestimmen.
+>- Weitere Informationen zu SessionId, PartitionKey und MessageId finden Sie unter [Verwenden von Partitionsschlüsseln](service-bus-partitioning.md#use-of-partition-keys).
+>- Die [Premier-Ebene](service-bus-premium-messaging.md) unterstützt keine Partitionierung. Daher wird empfohlen, eindeutige Nachrichten-IDs in Ihren Anwendungen zu verwenden und sich für die Duplikaterkennung nicht auf Partitionsschlüssel zu verlassen. 
+
 
 ## <a name="enable-duplicate-detection"></a>Aktivieren der Duplikaterkennung
 

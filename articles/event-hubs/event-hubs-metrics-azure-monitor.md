@@ -3,12 +3,12 @@ title: Metriken in Azure Monitor – Azure Event Hubs | Microsoft-Dokumentation
 description: Dieser Artikel enthält Informationen zur Verwendung von Azure Monitor zum Überwachen von Azure Event Hubs.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 5b055c02783c40d844d1c6306bbb71cb23d602f2
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 74830775a4f31e6f8e486b4d6cc434335b4ee723
+ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98118794"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98165891"
 ---
 # <a name="azure-event-hubs-metrics-in-azure-monitor"></a>Azure Event Hubs-Metriken in Azure Monitor
 
@@ -20,7 +20,7 @@ Azure Monitor bietet einheitliche Benutzeroberflächen für die übergreifende �
 
 Azure Monitor bietet mehrere Möglichkeiten für den Metrikzugriff. Sie können über das [Azure-Portal](https://portal.azure.com), über die Azure Monitor-APIs (REST und .NET) sowie über Analyselösungen wie Log Analytics und Event Hubs auf Metriken zugreifen. Weitere Informationen finden Sie unter [Von Azure Monitor gesammelte Überwachungsdaten](../azure-monitor/platform/data-platform.md).
 
-Metriken sind standardmäßig aktiviert, und es stehen Daten für die letzten 30 Tage zur Verfügung. Zur längeren Aufbewahrung können Sie Metrikdaten in einem Azure-Speicherkonto archivieren. Dies wird in den [Diagnoseeinstellungen](../azure-monitor/platform/diagnostic-settings.md) in Azure Monitor konfiguriert.
+Metriken sind standardmäßig aktiviert, und es stehen Daten für die letzten 30 Tage zur Verfügung. Zur längeren Aufbewahrung können Sie Metrikdaten in einem Azure-Speicherkonto archivieren. Diese Einstellung kann in den [Diagnoseeinstellungen](../azure-monitor/platform/diagnostic-settings.md) in Azure Monitor konfiguriert werden.
 
 
 ## <a name="access-metrics-in-the-portal"></a>Zugreifen auf Metriken über das Portal
@@ -29,7 +29,7 @@ Im [Azure-Portal](https://portal.azure.com) können Sie Metriken im Zeitverlauf 
 
 ![Anzeigen erfolgreicher Metriken][1]
 
-Sie können auch direkt über den Namespace auf die Metriken zugreifen. Dazu wählen Sie den Namespace aus und klicken dann auf **Metriken**. Wenn Sie Metriken anzeigen möchten, die für den Bereich des Event Hubs gefiltert wurden, wählen Sie den Event Hub aus, und klicken Sie anschließend auf **Metriken**.
+Sie können auch direkt über den Namespace auf die Metriken zugreifen. Wählen Sie dazu den Namespace und anschließend **Metriken** aus. Wenn Sie Metriken anzeigen möchten, die für den Bereich des Event Hubs gefiltert wurden, wählen Sie den Event Hub und anschließend **Metriken** aus.
 
 Bei Metriken mit Dimensionsunterstützung müssen Sie den gewünschten Dimensionswert als Filter verwenden, wie im folgenden Beispiel zu sehen:
 
@@ -37,7 +37,7 @@ Bei Metriken mit Dimensionsunterstützung müssen Sie den gewünschten Dimension
 
 ## <a name="billing"></a>Abrechnung
 
-Die Verwendung von Metriken in Azure Monitor ist derzeit kostenlos. Wenn Sie allerdings zusätzliche Lösungen zur Metrikdatenerfassung verwenden, fallen unter Umständen Kosten für diese Lösungen an. So werden etwa Gebühren für Azure Storage berechnet, wenn Sie Metrikdaten in einem Azure-Speicherkonto archivieren. Es fallen auch Kosten für Azure an, wenn Sie Metrikdaten für eine ausführlichere Analyse an Azure Monitor-Protokolle streamen.
+Die Verwendung von Metriken in Azure Monitor ist derzeit kostenlos. Wenn Sie allerdings andere Lösungen zur Metrikdatenerfassung verwenden, fallen unter Umständen Kosten für diese Lösungen an. So werden etwa Gebühren für Azure Storage berechnet, wenn Sie Metrikdaten in einem Azure-Speicherkonto archivieren. Es fallen auch Kosten für Azure an, wenn Sie Metrikdaten für eine ausführlichere Analyse an Azure Monitor-Protokolle streamen.
 
 Die folgenden Metriken bieten Ihnen eine Übersicht über die Integrität eines Diensts. 
 
@@ -49,8 +49,11 @@ Alle Metrikwerte werden minütlich an Azure Monitor gesendet. Das Aggregationsin
 ## <a name="azure-event-hubs-metrics"></a>Azure Event Hubs-Metriken
 Eine Liste der Metriken, die vom Dienst unterstützt werden, finden Sie unter [Azure Event Hubs](../azure-monitor/platform/metrics-supported.md#microsofteventhubnamespaces).
 
+> [!NOTE]
+> Wenn ein Benutzerfehler auftritt, aktualisiert Azure Event Hubs die Metrik **Benutzerfehler**, protokolliert jedoch keine weiteren Diagnoseinformationen. Daher müssen Sie Details zu Benutzerfehlern in Ihren Anwendungen erfassen. Sie können auch die Telemetriewerte konvertieren, die generiert werden, wenn Nachrichten an Application Insights gesendet oder dort empfangen werden. Ein Beispiel finden Sie unter [Nachverfolgung mit Application Insights](../service-bus-messaging/service-bus-end-to-end-tracing.md#tracking-with-azure-application-insights).
+
 ## <a name="azure-monitor-integration-with-siem-tools"></a>Azure Monitor-Integration mit SIEM-Tools
-Durch das Weiterleiten von Überwachungsdaten (Aktivitätsprotokollen, Diagnoseprotokollen usw.) an einen Event Hub mit Azure Monitor erreichen Sie auf einfache Weise eine Integration mit SIEM-Tools (Security Information & Event Management). Weitere Informationen finden Sie in den folgenden Artikeln und Blogbeiträgen:
+Durch das Weiterleiten von Überwachungsdaten (Aktivitätsprotokollen, Diagnoseprotokollen usw.) an einen Event Hub mit Azure Monitor erreichen Sie auf einfache Weise eine Integration in SIEM-Tools (Security Information & Event Management). Weitere Informationen finden Sie in den folgenden Artikeln und Blogbeiträgen:
 
 - [Streamen von Azure-Überwachungsdaten an einen Event Hub für die Verwendung durch ein externes Tool](../azure-monitor/platform/stream-monitoring-data-event-hubs.md)
 - [Einführung in Azure Log Integration](/previous-versions/azure/security/fundamentals/azure-log-integration-overview)

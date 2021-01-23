@@ -3,12 +3,12 @@ title: Unterstützte Clusterversionen in Azure Service Fabric
 description: Erfahren Sie mehr über Clusterversionen in Azure Service Fabric, einschließlich eines Links zu den neuesten Releases des Service Fabric-Teamblogs.
 ms.topic: troubleshooting
 ms.date: 06/15/2020
-ms.openlocfilehash: abf9900e9749a1b21d927e0315076b38848bea10
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: c2ea2b53649cf148a19df46835c8936345aa20e5
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98132646"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98234340"
 ---
 # <a name="supported-service-fabric-versions"></a>Unterstützte Service Fabric-Versionen
 
@@ -37,18 +37,18 @@ Wir verlangen und empfehlen, Maßnahmen zu ergreifen, um bis zum **19. Januar 
 Führen Sie ein Upgrade auf die unten aufgeführten unterstützten Service Fabric-Versionen aus, um Ausfallzeiten oder Funktionsverluste zu vermeiden. Stellen Sie sicher, dass auf Ihren Clustern mindestens diese Versionen ausgeführt werden, um Probleme in Ihrer Umgebung zu vermeiden.
 
   ###### <a name="supported-service-fabric-runtime-versions"></a>Unterstützte Service Fabric-Laufzeitversion
-   Wenn Sie NICHT über die unten aufgeführten unterstützten Versionen von Service Fabric verfügen, führen Sie ein Upgrade auf eine dieser Versionen durch, die bereits die erforderlichen Änderungen enthalten, um Ausfallzeiten der Cluster zu verhindern.  
+   Wenn Sie NICHT über die unten aufgeführten unterstützten Versionen von Service Fabric verfügen, führen Sie ein Upgrade auf eine dieser Versionen durch, die bereits die erforderlichen Änderungen enthalten, um Ausfallzeiten der Cluster zu verhindern. **Hinweis:** Alle Releaseversionen von 7.2 enthalten die erforderlichen Änderungen.
   
   | OS | Aktuelle Service Fabric-Runtime im Cluster | CU/Patchrelease  | 
   | --- | --- |--- | 
   | Windows | 7.0.* | 7.0.478.9590 |
   | Windows | 7.1.* | 7.1.503.9590 |
-  | Windows | 7.2.* | 7.2.445.9590 |
+  | Windows | 7.2.* | 7.2.* |
   | Ubuntu 16 | 7.0.* | 7.0.472.1  |
   | Linux Ubuntu 16.04 | 7.1.* | 7.1.455.1  |
   | Linux Ubuntu 18.04 | 7.1.* | 7.1.455.1804 |
-  | Linux Ubuntu 16.04 | 7.2.* | 7.2.447.1 |
-  | Linux Ubuntu 18.04 | 7.2.* | 7.2.447.1804 |
+  | Linux Ubuntu 16.04 | 7.2.* | 7.2.* |
+  | Linux Ubuntu 18.04 | 7.2.* | 7.2.* |
  
 ### <a name="upgrade-alert-for-versions-greater-than-63"></a>Upgradewarnung für höhere Versionen als 6.3 
 Um die Sicherheit und Verfügbarkeit zu verbessern, nimmt die Azure-Infrastruktur eine Änderung vor, die sich ggf. auf Service Fabric-Kunden auswirkt. **Alle Service Fabric-Cluster, die das [Open Networking-Feature für Container](https://docs.microsoft.com/azure/service-fabric/service-fabric-networking-modes#set-up-open-networking-mode) verwenden, werden unter nicht unterstützten Versionen ausgeführt, die größer als 6.3 und kleiner als 7.0 sind, und inkompatible unterstützte Versionen ab 7.0 sind betroffen**. Die Adressierung der Änderung erfordert ein Update der Service-Fabric-Laufzeit, das bereits für alle unterstützten Service-Fabric-Versionen in allen Regionen verfügbar ist.
@@ -58,24 +58,24 @@ Um die Sicherheit und Verfügbarkeit zu verbessern, nimmt die Azure-Infrastruktu
  
   - **Bei Clustern, die eine höhere Version von Service Fabric als 6.3 ausführen und das Open Networking-Feature NICHT verwenden**, bleibt der Cluster in Betrieb, das Open Networking-Feature für Containercluster funktioniert jedoch nicht mehr, was zu Dienstunterbrechungen für Ihre Workloads führen kann.
 
- - **Bei Clustern, die eine höhere Version von Service Fabric als 6.3 ausführen und das [Open Networking-Feature für Container](https://docs.microsoft.com/azure/service-fabric/service-fabric-networking-modes#set-up-open-networking-mode)** verwenden, bleibt der Cluster in Betrieb, funktioniert jedoch nicht mehr, was zu Dienstunterbrechungen für Ihre Workloads führen kann.
+ - **Bei Clustern, die eine höhere Version von Service Fabric als 6.3 ausführen und das [Open Networking-Feature für Container](https://docs.microsoft.com/azure/service-fabric/service-fabric-networking-modes#set-up-open-networking-mode)** verwenden, ist der Cluster ggf. nicht verfügbar und funktioniert nicht mehr, was zu Dienstunterbrechungen für Ihre Workloads führen kann.
   
 #### <a name="required-action"></a>Erforderliche Aktion
 Führen Sie ein Upgrade auf die unten aufgeführten unterstützten Service Fabric-Versionen aus, um Ausfallzeiten oder Funktionsverluste zu vermeiden. Stellen Sie sicher, dass auf Ihren Clustern mindestens diese Versionen ausgeführt werden, um Probleme in Ihrer Umgebung zu vermeiden. 
  
  ###### <a name="supported-service-fabric-runtime-versions"></a>Unterstützte Service Fabric-Laufzeitversion
- Wenn Sie NICHT über die unten aufgeführten unterstützten Versionen von Service Fabric verfügen, führen Sie ein Upgrade auf eine dieser Versionen durch, die bereits die erforderlichen Änderungen enthalten, um Funktionsverluste zu verhindern.  
+ Wenn Sie NICHT über die unten aufgeführten unterstützten Versionen von Service Fabric verfügen, führen Sie ein Upgrade auf eine dieser Versionen durch, die bereits die erforderlichen Änderungen enthalten, um Funktionsverluste zu verhindern.  **Hinweis:** Alle Releaseversionen von 7.2 enthalten die erforderlichen Änderungen.
  
   | OS | Aktuelle Service Fabric-Runtime im Cluster | CU/Patchrelease  | 
   | --- | --- |--- | 
   | Windows | 7.0.* | 7.0.478.9590 |
   | Windows | 7.1.* | 7.1.503.9590 |
-  | Windows | 7.2.* | 7.2.445.9590 |
+  | Windows | 7.2.* | 7.2.* |
   | Linux Ubuntu 16.04 | 7.0.* | 7.0.472.1  |
   | Linux Ubuntu 16.04 | 7.1.* | 7.1.455.1  |
   | Linux Ubuntu 18.04 | 7.1.* | 7.1.455.1804 |
-  | Linux Ubuntu 16.04 | 7.2.* | 7.2.447.1 |
-  | Linux Ubuntu 18.04 | 7.2.* | 7.2.447.1804 |
+  | Linux Ubuntu 16.04 | 7.2.* | 7.2.* |
+  | Linux Ubuntu 18.04 | 7.2.* | 7.2.* |
 
 ## <a name="supported-versions"></a>Unterstützte Versionen
 Die folgende Tabelle enthält die Versionen von Service Fabric und das jeweilige Datum des Ablaufs des Supports.
