@@ -139,7 +139,7 @@
         - name: Erkunden einer Bildverarbeitungs-App
           href: Tutorials/CSharpTutorial.md
         - name: Weitere Beispiele für maschinelles Sehen
-          href: 'https://docs.microsoft.com/samples/browse/?products=azure&terms=computer-vision'
+          href: /samples/browse/?products=azure&terms=computer-vision
     - name: Häufig gestellte Fragen
       href: FAQ.md
     - name: Kategorietaxonomie

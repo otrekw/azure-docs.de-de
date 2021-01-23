@@ -38,4 +38,4 @@
 - name: Ressourcen
   items:
     - name: Einstieg in Azure Arc
-      href: 'https://github.com/microsoft/azure_arc'
+      href: 'https://azurearcjumpstart.io'
