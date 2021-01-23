@@ -11,9 +11,10 @@
     - name: Erstellen unbegrenzter App-Registrierungen
       href: quickstart-app-registration-limits.md
 - name: Tutorials
+  expanded: true
   items:
-    - name: Erstellen einer dynamischen Gruppe
-      href: ../enterprise-users/users-revoke-access.md?context=%2fazure%2factive-directory%2froles%2fcontext%2fugr-context
+    - name: Zuweisen von Benutzern zu Administratorrollen
+      href: ../fundamentals/active-directory-users-assign-role-azure-portal.md?context=%2fazure%2factive-directory%2froles%2fcontext%2fugr-context
 - name: Konzepte
   expanded: true
   items:
@@ -28,18 +29,6 @@
 - name: Anleitungen
   expanded: true
   items:
-    - name: Benutzer und Rollen
-      items:
-        - name: Zuweisen von Benutzern zu Administratorrollen
-          href: ../fundamentals/active-directory-users-assign-role-azure-portal.md?context=%2fazure%2factive-directory%2froles%2fcontext%2fugr-context
-        - name: Widerrufen des Zugriffs eines Benutzers
-          href: ../enterprise-users/users-revoke-access.md?context=%2fazure%2factive-directory%2froles%2fcontext%2fugr-context
-        - name: Zuweisen einer Rolle zu einem Gastbenutzer
-          href: ../external-identities/add-guest-to-role.md?context=%2fazure%2factive-directory%2froles%2fcontext%2fugr-context
-        - name: Einschränken des Zugriffs durch Gastbenutzer
-          href: ../enterprise-users/users-restrict-guest-permissions.md?context=%2fazure%2factive-directory%2froles%2fcontext%2fugr-context
-        - name: Dynamische Gruppen und Gäste
-          href: ../external-identities/use-dynamic-groups.md?context=%2fazure%2factive-directory%2froles%2fcontext%2fugr-context
     - name: Rollen und Berechtigungen
       expanded: true
       items:
@@ -119,7 +108,7 @@
     - name: "Dokumentation zu Microsoft\_365-Rollen"
       href: m365-workload-docs.md
     - name: Graph-API
-      href: /graph/api/resources/azure-ad-overview?view=graph-rest-1.0
+      href: /graph/api/resources/directoryrole?view=graph-rest-1.0
     - name: Azure AD-Befehlszeilenschnittstelle
       href: /cli/azure/ad
     - name: Azure AD PowerShell für Graph
