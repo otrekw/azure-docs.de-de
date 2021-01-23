@@ -51,8 +51,6 @@
           href: non-gallery-apps.md
         - name: Planen einer Bereitstellung von „Meine Apps“
           href: access-panel-deployment-plan.md
-        - name: Leitfaden für Entwickler
-          href: developer-guidance-for-integrating-applications.md
     - name: Einmaliges Anmelden
       items:
         - name: Planen einer Bereitstellung für einmaliges Anmelden
