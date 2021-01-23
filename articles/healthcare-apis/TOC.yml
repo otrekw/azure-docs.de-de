@@ -21,8 +21,13 @@
         - name: Per ARM-Vorlage
           displayName: Resource Manager
           href: fhir-paas-arm-template-quickstart.md
-    - name: "Bereitstellen von Azure\_IoT-Konnektor für FHIR (Vorschauversion): Portal"
-      href: iot-fhir-portal-quickstart.md
+    - name: "Bereitstellen von Azure\_IoT-Konnektor für FHIR (Vorschauversion)"
+      expanded: false
+      items:
+        - name: Verwenden des Portals
+          href: iot-fhir-portal-quickstart.md
+        - name: Per ARM-Vorlage
+          href: iot-fhir-arm-template-quickstart.md
 - name: Tutorials
   expanded: false
   items:

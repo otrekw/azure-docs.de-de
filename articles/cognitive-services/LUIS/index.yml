@@ -12,12 +12,12 @@ metadata:
   title: Language Understanding (LUIS) – Dokumentation
   titleSuffix: Azure Cognitive Services
   description: Mit dem Language Understanding-Dienst (LUIS) kann Ihre Anwendung es verstehen, wenn eine Person Wünsche in ihrer eigenen Sprache äußert. Für LUIS wird das maschinelle Lernen genutzt, um Entwicklern das Erstellen von Anwendungen zu ermöglichen, die Benutzereingaben in natürlicher Sprache empfangen und die Bedeutung entschlüsseln können.
-  ms.openlocfilehash: ff928f1879f8cfd356fa020ff6afaa68b72f63c5
-  ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+  ms.openlocfilehash: ca9209295d8265eeac5545091e4d4c5c9678e994
+  ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 11/21/2020
-  ms.locfileid: "95019380"
+  ms.lasthandoff: 01/23/2021
+  ms.locfileid: "98738066"
 landingContent:
 - title: Informationen zu Language Understanding (LUIS)
   linkLists:
@@ -60,9 +60,9 @@ landingContent:
     - text: 'Portal: Erstellen einer neuen LUIS-App'
       url: get-started-portal-build-app.md
     - text: Mit C# SDK
-      url: azure-sdk-quickstart.md?pivots=programming-language-csharp
+      url: ./client-libraries-rest-api.md?pivots=rest-api
     - text: Mit Python SDK
-      url: azure-sdk-quickstart.md?pivots=programming-language-python
+      url: ./client-libraries-rest-api.md?pivots=rest-api
   - linkListType: how-to-guide
     links:
     - text: Erstellen einer neuen LUIS-App
@@ -82,13 +82,13 @@ landingContent:
     - text: Interaktives Testen
       url: luis-concept-test.md
     - text: Testen in Batches
-      url: luis-concept-batch-test.md
+      url: ./luis-how-to-batch-test.md
   - linkListType: quickstart
     links:
     - text: 'Portal: App für Vorhersageendpunkt bereitstellen'
       url: get-started-portal-deploy-app.md
     - text: Verwenden des SDK
-      url: azure-sdk-quickstart.md
+      url: ./client-libraries-rest-api.md?pivots=rest-api
   - linkListType: how-to-guide
     links:
     - text: Versionen Ihrer App verwalten
@@ -106,7 +106,7 @@ landingContent:
   - linkListType: quickstart
     links:
     - text: Verwenden des SDK
-      url: azure-sdk-quickstart.md
+      url: ./client-libraries-rest-api.md?pivots=rest-api
   - linkListType: quickstart
     links:
     - text: Mit C# und REST
