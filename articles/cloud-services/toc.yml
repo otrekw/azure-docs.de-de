@@ -1,8 +1,8 @@
-- name: Dokumentation zu Cloud Services
+- name: Dokumentation zu Cloud Services (klassisch)
   href: index.yml
 - name: Übersicht
   items:
-    - name: Was ist Cloud Services?
+    - name: Was ist Cloud Services (klassisch)?
       href: cloud-services-choose-me.md
     - name: Konfigurationsdateien und Packen von Clouddiensten
       href: cloud-services-model-and-package.md

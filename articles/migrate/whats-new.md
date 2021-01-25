@@ -7,16 +7,22 @@ ms.author: anvar
 ms.manager: bsiva
 ms.date: 04/19/2020
 ms.custom: mvc
-ms.openlocfilehash: 7ff9d9c6624016d4b1ea94072d52de1c42d73913
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: fbafed60019005fe2d81c96fb9557e3c307669ac
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97400470"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98233762"
 ---
 # <a name="whats-new-in-azure-migrate"></a>Neuerungen in Azure Migrate
 
 [Azure Migrate](migrate-services-overview.md) unterstützt Sie beim Ermitteln, Bewerten und Migrieren von lokalen Servern, Apps und Daten in die Microsoft Azure Cloud. In diesem Artikel werden die neuen Releases und Features in Azure Migrate zusammengefasst.
+
+## <a name="update-january-2021"></a>Update (Januar 2021)
+-  Die Migration von VMware-VMs mithilfe der Azure Migrate-Servermigration (Replikation ohne Agents) zu Azure-VMs mit Datenträgern, die mit Mehrfachverschlüsselung mit plattformseitig verwalteten und kundenseitig verwalteten Schlüsseln (Customer Managed Keys, CMKs) verschlüsselt sind, ist nun über das Azure-Portal verfügbar.
+- Die Migration von VMware-VMs mithilfe der Azure Migrate-Servermigration (Replikation ohne Agents) zu Azure-VMs mit Datenträgern, die mit der serverseitigen Verschlüsselung (Server-Side Encryption, SSE) mit kundenseitig verwalteten Schlüsseln (Customer Managed Keys, CMKs) und Mehrfachverschlüsselung mit plattformseitig verwalteten und kundenseitig verwalteten Schlüsseln verschlüsselt sind, ist nun über das Azure-Portal verfügbar.
+- Die Migration von physischen Servern und virtuellen Computern aus anderen Clouds wie AWS und GCP mithilfe der Azure Migrate-Servermigration (Replikation ohne Agents) zu Azure-VMs mit Datenträgern, die mit der serverseitigen Verschlüsselung (Server-Side Encryption, SSE) mit kundenseitig verwalteten Schlüsseln (Customer Managed Keys, CMKs) und Mehrfachverschlüsselung mit plattformseitig verwalteten und kundenseitig verwalteten Schlüsseln verschlüsselt sind, ist nun über das Azure-Portal verfügbar.
+
 ## <a name="update-december-2020"></a>Update (Dezember 2020)
 - Azure Migrate installiert jetzt automatisch den VM-Agent von Azure auf den VMware-VMs, während diese mit der Methode ohne Agent der VMware-Migration zu Azure migriert werden.
 - Die Migration von VMware-VMs mit der Azure Migrate-Servermigration (Replikation ohne Agents) zu Azure-VMs mit Datenträgern, die mithilfe der serverseitigen Verschlüsselung (SSE) mit vom Kunden verwalteten Schlüsseln (CMK) verschlüsselt sind, ist nun über das Azure-Portal verfügbar.

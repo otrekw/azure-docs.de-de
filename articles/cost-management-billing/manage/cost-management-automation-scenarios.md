@@ -9,12 +9,12 @@ ms.subservice: common
 ms.topic: reference
 ms.date: 02/12/2020
 ms.author: banders
-ms.openlocfilehash: 8cef36cf26231758eb839379d0c020484cbe09fb
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: e0a7553269e1223a5e744db967d65814877878ab
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92132600"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98598267"
 ---
 # <a name="automation-scenarios-for-billing-and-cost-management"></a>Automatisierungsszenarien zur Abrechnungs- und Kostenverwaltung
 
@@ -103,7 +103,7 @@ Die folgenden APIs sind nur für Unternehmen bestimmt:
 ### <a name="whats-the-difference-between-the-enterprise-reporting-apis-and-the-consumption-apis-when-should-i-use-each"></a>Worin besteht der Unterschied zwischen den Enterprise-Berichterstellungs-APIs und den Nutzungs-APIs? Wann sollte ich diese jeweils verwenden?
 Diese APIs weisen ähnliche Funktionen auf und können die gleiche Bandbreite an Fragen im Abrechnungs- und Kostenverwaltungsbereich beantworten. Aber sie richten sich an verschiedene Zielgruppen:
 
-- Enterprise-Berichterstellungs-APIs stehen für Kunden zur Verfügung, die ein Enterprise Agreement mit Microsoft geschlossen haben, das ihnen Zugang zu ausgehandelten finanziellen Verpflichtungen und benutzerdefinierten Preisen gewährt. Für die APIs ist ein Schlüssel erforderlich, den Sie aus dem [Enterprise Portal](https://ea.azure.com) abrufen können. Eine Beschreibung dieser APIs finden Sie unter [Überblick über Berichterstellungs-APIs für Enterprise-Kunden](enterprise-api.md).
+- Enterprise-Berichterstellungs-APIs stehen für Kunden zur Verfügung, die ein Enterprise Agreement mit Microsoft geschlossen haben, das ihnen Zugang zu ausgehandelten Azure-Vorauszahlungen (zuvor als „Mindestverbrauch“ bezeichnet) und benutzerdefinierten Preisen gewährt. Für die APIs ist ein Schlüssel erforderlich, den Sie aus dem [Enterprise Portal](https://ea.azure.com) abrufen können. Eine Beschreibung dieser APIs finden Sie unter [Überblick über Berichterstellungs-APIs für Enterprise-Kunden](enterprise-api.md).
 
 - Nutzungs-APIs sind mit einigen Ausnahmen für alle Kunden verfügbar. Weitere Informationen finden Sie unter [Azure-Nutzungs-API: Übersicht](consumption-api-overview.md) und [Azure-Verbrauch](/rest/api/consumption/). Die bereitgestellten APIs werden als Lösung für die aktuellen Entwicklungsszenarien empfohlen.
 
@@ -112,7 +112,7 @@ Diese APIs stellen im Grundsatz verschiedene Daten bereit:
 
 - Die [Nutzungsdetails-API](/rest/api/consumption/usagedetails) bietet Informationen zur Nutzung und den Kosten von Azure auf Basis von Verbrauchseinheiten. Die bereitgestellten Daten haben bereits das System zur Zählung von Kostenverbrauchseinheiten in Azure durchlaufen. Kosten sowie andere mögliche Änderungen wurden auf diese angewendet:
 
-   - Änderungen am Konto für die Verwendung der im Voraus bezahlten finanziellen Verpflichtungen
+   - Änderungen am Konto für die Verwendung der Azure-Vorauszahlung
    - Änderungen am Konto für die Verwendung der von Azure ermittelten Abweichungen
 
 - Die [Nutzungs-API](/previous-versions/azure/reference/mt219003(v=azure.100)) bietet Informationen zu Azure-Nutzungsrohdaten, bevor diese das Kostenerfassungssystem in Azure durchlaufen. Diese Daten weisen möglicherweise keine Korrelation mit dem Nutzungsumfang oder dem Gebührenbetrag auf, der nach dem Kostenerfassungssystem von Azure zu sehen ist.

@@ -1,0 +1,97 @@
+- name: Dokumentation zu Cloud Services (erweiterter Support)
+  href: index.yml
+- name: Übersicht
+  items:
+    - name: Informationen zu Cloud Services (erweiterter Support)
+      href: overview.md
+    - name: Voraussetzungen für die Bereitstellung
+      href: deploy-prerequisite.md
+    - name: Konfigurationsdateien und Paketerstellung
+      href: cloud-services-model-and-package.md
+- name: Lernprogramme
+  items:
+    - name: 'Bereitstellen eines Clouddiensts: Portal'
+      href: deploy-portal.md
+    - name: 'Bereitstellen eines Clouddiensts: PowerShell'
+      href: deploy-powershell.md
+    - name: 'Bereitstellen eines Clouddiensts: Vorlage'
+      href: deploy-template.md
+    - name: 'Bereitstellen eines Clouddiensts: Visual Studio'
+      href: deploy-visual-studio.md
+  expanded: true
+- name: Konzepte
+  items:
+    - name: Verfügbare VM-Größen
+      href: available-sizes.md
+    - name: Häufig gestellte Fragen
+      href: faq.md
+    - name: Patches für Gastbetriebssysteme
+      href: ../cloud-services/cloud-services-guestos-msrc-releases.md?toc=/azure/cloud-services-extended-support/toc.json&bc=/azure/cloud-services-extended-support/breadcrumb/toc.json
+    - name: Deaktivierung von Gastbetriebssystemen
+      href: ../cloud-services/cloud-services-guestos-retirement-policy.md?toc=/azure/cloud-services-extended-support/toc.json&bc=/azure/cloud-services-extended-support/breadcrumb/toc.json
+    - name: Neuigkeiten zu den Versionen des Gastbetriebssystems
+      href: ../cloud-services/cloud-services-guestos-update-matrix.md?toc=/azure/cloud-services-extended-support/toc.json&bc=/azure/cloud-services-extended-support/breadcrumb/toc.json
+    - name: XML-Schema
+      items:
+        - name: Csdef-XML-Schema
+          href: schema-csdef-file.md
+        - name: LoadBalancerProbe-Schema
+          href: schema-csdef-loadbalancerprobe.md
+        - name: WebRole-Schema
+          href: schema-csdef-webrole.md
+        - name: WorkerRole-Schema
+          href: schema-csdef-workerrole.md
+        - name: NetworkTrafficRules-Schema
+          href: schema-csdef-networktrafficrules.md
+        - name: Cscfg-XML-Schema
+          href: schema-cscfg-file.md
+        - name: Role-Schema
+          href: schema-cscfg-role.md
+        - name: NetworkConfiguration-Schema
+          href: schema-cscfg-networkconfiguration.md
+- name: Vorgehensweise
+  items:
+    - name: Übersicht über Erweiterungen
+      href: extensions.md
+    - name: Anwenden der Remotedesktoperweiterung
+      href: enable-rdp.md
+    - name: Anwenden der WAD-Erweiterung
+      href: enable-wad.md
+    - name: Aktivieren von Warnungen
+      href: enable-alerts.md
+    - name: Konfigurieren der Skalierung
+      href: configure-scaling.md
+    - name: Zertifikate
+      href: certificates-and-key-vault.md
+- name: Beispiele
+  items:
+    - name: Erstellen eines neuen Clouddiensts
+      href: sample-create-cloud-service.md
+    - name: Abrufen von Clouddienstdetails
+      href: sample-get-cloud-service.md
+    - name: Zurücksetzen eines Clouddiensts
+      href: sample-reset-cloud-service.md
+- name: Referenz
+  items:
+    - name: Modul „Az.CloudService“
+      href: 'https://www.powershellgallery.com/packages/Az.CloudService/0.1.0'
+    - name: PowerShell-Cmdlets
+      href: 'https://docs.microsoft.com/powershell/module/az.cloudservice/?view=azps-5.4.0#cloudservice'
+    - name: ARM-Vorlagenreferenz
+      href: 'https://docs.microsoft.com/azure/templates/microsoft.compute/cloudservices'
+    - name: REST
+      href: 'https://docs.microsoft.com/rest/api/compute/cloudservices'
+- name: Ressourcen
+  items:
+    - name: Azure-Roadmap
+      href: 'https://azure.microsoft.com/roadmap/?category=compute'
+    - name: Lernpfad
+      href: /learn/paths/azure-fundamentals/
+    - name: Microsoft Q&A (Fragen und Antworten)
+      href: 'https://docs.microsoft.com/answers/topics/azure-cloud-services.html'
+    - name: Preise
+      href: 'https://azure.microsoft.com/pricing/details/cloud-services/'
+    - name: Preisrechner
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: Dienstupdates
+      href: 'https://azure.microsoft.com/updates/?product=cloud-services&updatetype=&platform='

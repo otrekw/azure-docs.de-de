@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
 ms.custom: references_regions
-ms.openlocfilehash: 6a587ecbe7ff67908b22d4f2429cfdd0c511e07d
-ms.sourcegitcommit: 003ac3b45abcdb05dc4406661aca067ece84389f
+ms.openlocfilehash: 0d1b2bd039f3e110c83d7ad4bf32f1e53e4c7a79
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96748772"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98610147"
 ---
 # <a name="microsoft-azure-attestation-preview"></a>Microsoft Azure Attestation (Vorschau)
 
@@ -39,6 +39,12 @@ Clientanwendungen können so entworfen werden, dass sie die Vorteile von SGX-Enc
 [Open Enclave](https://openenclave.io/sdk/) (OE) ist eine Sammlung von Bibliotheken, die auf das Erstellen einer einzelnen vereinheitlichten Enclave-Abstraktion abzielen, damit Entwickler TEE-basierte Anwendungen erstellen können. Sie bietet ein universelles, sicheres App-Modell, das Plattformbesonderheiten minimiert. Für Microsoft ist sie eine Grundlage hin zur Demokratisierung hardwarebasierter Enclavetechnologien wie SGX und zur Steigerung der Akzeptanz in Azure.
 
 OE standardisiert bestimmte Anforderungen für die Überprüfung eines Enclavenachweises. Das qualifiziert OE als einen passenden Nachweisconsumer von Azure Attestation.
+
+### <a name="tpm-attestation"></a>TPM-Nachweis 
+
+Der TPM-basierte Nachweis (Trusted Platform Module) ist wichtig, um den Zustand einer Plattform nachzuweisen. TPM fungiert als Vertrauensanker und Sicherheits-Coprozessor, um die kryptografische Gültigkeit der Messungen zu bestätigen (Beweis). Geräte mit TPM können nachweisen, dass die Startintegrität nicht beeinträchtigt ist, und mithilfe der Ansprüche den Aktivierungsstatus von Funktionen während des Starts erkennen. 
+
+Clientanwendungen können so entworfen werden, dass sie den TPM-Nachweis nutzen, indem sicherheitsrelevante Aufgaben delegiert und somit nur ausgeführt werden, nachdem die Sicherheit einer Plattform überprüft wurde. Solche Anwendungen können Azure Attestation nutzen, um routinemäßig eine Vertrauensstellung auf der Plattform herzustellen und auf sensible Daten zuzugreifen.
 
 ## <a name="azure-attestation-can-run-in-a-tee"></a>Azure Attestation kann in einer TEE ausgeführt werden.
 

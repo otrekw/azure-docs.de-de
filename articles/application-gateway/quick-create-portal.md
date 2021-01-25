@@ -6,15 +6,15 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: quickstart
-ms.date: 12/08/2020
+ms.date: 01/19/2021
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 42701fbcee9833fd31fff3ace55d48079015dbcd
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: c1b17d8c624d4bef74278acc24ece37a736a5ca8
+ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96906402"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98572968"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway---azure-portal"></a>Schnellstart: Weiterleiten von Webdatenverkehr per Azure Application Gateway – Azure-Portal
 
@@ -78,7 +78,7 @@ Das Anwendungsgateway wird über die Registerkarten der Seite **Application Gate
    > [!NOTE]
    > Für die Application Gateway v2-SKU muss eine **öffentliche** Front-End-IP-Konfiguration vorhanden sein. Sie können weiterhin eine Kombination aus öffentlicher und privater Front-End-IP-Konfiguration verwenden. Für die Version 2 der SKU kann derzeit jedoch keine rein private Front-End-IP-Konfiguration (nur ILB-Modus) verwendet werden. 
 
-2. Wählen Sie **Neu erstellen** für die **Öffentliche IP-Adresse** aus, und geben Sie *myAGPublicIPAddress* als Namen der öffentlichen IP-Adresse ein. Wählen Sie dann **OK** aus. 
+2. Wählen Sie **Neu hinzufügen** für **Öffentliche IP-Adresse** aus, und geben Sie *myAGPublicIPAddress* als Namen der öffentlichen IP-Adresse ein. Wählen Sie dann **OK** aus. 
 
      ![Erstellen eines neuen Anwendungsgateways: Front-Ends](./media/application-gateway-create-gateway-portal/application-gateway-create-frontends.png)
 
@@ -86,9 +86,9 @@ Das Anwendungsgateway wird über die Registerkarten der Seite **Application Gate
 
 ### <a name="backends-tab"></a>Registerkarte „Back-Ends“
 
-Der Back-End-Pool wird zum Weiterleiten von Anforderungen an die Back-End-Server verwendet, die die Anforderung verarbeiten. Back-End-Pools können Netzwerkkarten, VM-Skalierungsgruppen, öffentliche IP-Adressen, interne IP-Adressen, vollqualifizierte Domänennamen (Fully Qualified Domain Names, FQDN) und Back-Ends mit mehreren Mandanten wie Azure App Service umfassen. In diesem Beispiel erstellen Sie mit Ihrem Anwendungsgateway einen leeren Back-End-Pool und fügen dann Back-End-Ziele zum Back-End-Pool hinzu.
+Der Back-End-Pool wird zum Weiterleiten von Anforderungen an die Back-End-Server verwendet, die die Anforderung verarbeiten. Back-End-Pools können Netzwerkadapter, VM-Skalierungsgruppen, öffentliche IP-Adressen, interne IP-Adressen, vollqualifizierte Domänennamen (Fully Qualified Domain Names, FQDNs) und Back-Ends mit mehreren Mandanten (beispielsweise Azure App Service) umfassen. In diesem Beispiel erstellen Sie mit Ihrem Anwendungsgateway einen leeren Back-End-Pool und fügen dann Back-End-Ziele zum Back-End-Pool hinzu.
 
-1. Wählen Sie auf der Registerkarte **Back-Ends** die Option **+Back-End-Pool hinzufügen** aus.
+1. Wählen Sie auf der Registerkarte **Back-Ends** die Option **Back-End-Pool hinzufügen** aus.
 
 2. Geben Sie im Fenster **Back-End-Pool hinzufügen**, das geöffnet wird, die folgenden Werte ein, um einen leeren Back-End-Pool zu erstellen:
 
@@ -105,7 +105,7 @@ Der Back-End-Pool wird zum Weiterleiten von Anforderungen an die Back-End-Server
 
 Auf der Registerkarte **Konfiguration** verbinden Sie das Front-End und den von Ihnen erstellten Back-End-Pool mithilfe einer Routingregel.
 
-1. Wählen Sie **Regel hinzufügen** in der Spalte **Routingregeln** aus.
+1. Wählen Sie in der Spalte **Routingregeln** die Option **Routingregel hinzufügen** aus.
 
 2. Geben Sie im Fenster **Routingregel hinzufügen**, das geöffnet wird, *myRoutingRule* als **Regelname** ein.
 
@@ -120,7 +120,7 @@ Auf der Registerkarte **Konfiguration** verbinden Sie das Front-End und den von 
 
 4. Wählen Sie auf der Registerkarte **Back-End-Ziele** den Pool **myBackendPool** als **Back-End-Ziel** aus.
 
-5. Wählen Sie für die **HTTP-Einstellung** die Option **Neu erstellen** aus, um eine neue HTTP-Einstellung zu erstellen. Die HTTP-Einstellung bestimmt das Verhalten der Routingregel. Geben Sie im Fenster **HTTP-Einstellung hinzufügen**, das geöffnet wird, *myHTTPSetting* als **Name der HTTP-Einstellung** und *80* als **Back-End-Port** ein. Übernehmen Sie im Fenster **HTTP-Einstellung hinzufügen** die Standardwerte für die übrigen Einstellungen, und wählen Sie dann **Hinzufügen** aus, um zum Fenster **Routingregel hinzufügen** zurückzukehren. 
+5. Wählen Sie für die **HTTP-Einstellung** die Option **Neu hinzufügen** aus, um eine neue HTTP-Einstellung zu hinzuzufügen. Die HTTP-Einstellung bestimmt das Verhalten der Routingregel. Geben Sie im Fenster **HTTP-Einstellung hinzufügen**, das geöffnet wird, *myHTTPSetting* als **Name der HTTP-Einstellung** und *80* als **Back-End-Port** ein. Übernehmen Sie im Fenster **HTTP-Einstellung hinzufügen** die Standardwerte für die übrigen Einstellungen, und wählen Sie dann **Hinzufügen** aus, um zum Fenster **Routingregel hinzufügen** zurückzukehren. 
 
      ![Erstellen eines neuen Anwendungsgateways: HTTP-Einstellung](./media/application-gateway-create-gateway-portal/application-gateway-create-httpsetting.png)
 
@@ -147,7 +147,7 @@ Gehen Sie dazu wie folgt vor:
 ### <a name="create-a-virtual-machine"></a>Erstellen eines virtuellen Computers
 
 1. Wählen Sie im Menü des Azure-Portals oder auf der **Startseite** die Option **Ressource erstellen** aus. Das Fenster **Neu** wird angezeigt.
-2. Wählen Sie dann in der Liste **Beliebt** die Option **Windows Server 2016 Datacenter** aus. Die Seite **Virtuellen Computer erstellen** wird angezeigt.<br>Application Gateway kann Datenverkehr an jeden beliebigen virtuellen Computer weiterleiten, der im Back-End-Pool verwendet wird. In diesem Beispiel verwenden Sie Windows Server 2016 Datacenter.
+2. Wählen Sie dann in der Liste **Beliebt** die Option **Windows Server 2016 Datacenter** aus. Die Seite **Virtuellen Computer erstellen** wird angezeigt.<br>Application Gateway kann Datenverkehr an jeden beliebigen virtuellen Computer weiterleiten, der im Back-End-Pool verwendet wird. In diesem Beispiel verwenden Sie einen virtuellen Windows Server 2016 Datacenter-Computer.
 3. Geben Sie auf der Registerkarte **Grundlagen** die folgenden Werte für die VM-Einstellungen ein:
 
     - **Ressourcengruppe**: Wählen Sie **myResourceGroupAG** als Namen der Ressourcengruppe aus.
@@ -165,9 +165,11 @@ Gehen Sie dazu wie folgt vor:
 
 ### <a name="install-iis-for-testing"></a>Installieren von IIS für Testzwecke
 
-In diesem Beispiel installieren Sie IIS auf den virtuellen Computern nur, um zu überprüfen, ob Azure das Anwendungsgateway erfolgreich erstellt hat.
+In diesem Beispiel installieren Sie IIS auf den virtuellen Computern, um zu überprüfen, ob Azure das Anwendungsgateway erfolgreich erstellt hat.
 
-1. Öffnen Sie Azure PowerShell. Wählen Sie auf der oberen Navigationsleiste des Azure-Portals **Cloud Shell** und anschließend in der Dropdownliste **PowerShell** aus. 
+1. Öffnen Sie Azure PowerShell.
+
+   Wählen Sie auf der oberen Navigationsleiste des Azure-Portals **Cloud Shell** und anschließend in der Dropdownliste **PowerShell** aus. 
 
     ![Installieren der benutzerdefinierten Erweiterung](./media/application-gateway-create-gateway-portal/application-gateway-extension.png)
 
@@ -208,7 +210,9 @@ In diesem Beispiel installieren Sie IIS auf den virtuellen Computern nur, um zu 
 
 ## <a name="test-the-application-gateway"></a>Testen des Anwendungsgateways
 
-IIS ist für die Erstellung des Anwendungsgateways zwar nicht erforderlich, wird in dieser Schnellstartanleitung aber installiert, um die erfolgreiche Erstellung des Anwendungsgateways durch Azure zu überprüfen. Testen des Anwendungsgateways mit IIS:
+IIS ist für die Erstellung des Anwendungsgateways zwar nicht erforderlich, wird in dieser Schnellstartanleitung aber installiert, um die erfolgreiche Erstellung des Anwendungsgateways durch Azure zu überprüfen. 
+
+Testen des Anwendungsgateways mit IIS:
 
 1. Suchen Sie auf der Seite **Übersicht** des Anwendungsgateways nach der öffentlichen IP-Adresse für das Anwendungsgateway.![Notieren der öffentlichen IP-Adresse des Anwendungsgateways](./media/application-gateway-create-gateway-portal/application-gateway-record-ag-address.png)Sie können auch **Alle Ressourcen** auswählen, *myAGPublicIPAddress* in das Suchfeld eingeben und den Eintrag dann in den Suchergebnissen auswählen. Azure zeigt die öffentliche IP-Adresse auf der Seite **Übersicht** an.
 2. Kopieren Sie die öffentliche IP-Adresse, und fügen Sie sie in die Adressleiste Ihres Browsers ein, um zu dieser IP-Adresse zu navigieren.
@@ -227,7 +231,7 @@ So löschen Sie die Ressourcengruppe:
 1. Wählen Sie im Menü des Azure-Portals die Option **Ressourcengruppen** aus, oder suchen Sie nach *Ressourcengruppen*, und wählen Sie die entsprechende Option aus.
 2. Suchen Sie auf der Seite **Ressourcengruppen** in der Liste nach **myResourceGroupAG**, und wählen Sie den Eintrag aus.
 3. Wählen Sie auf der Seite für die **Ressourcengruppe** die Option **Ressourcengruppe löschen** aus.
-4. Geben Sie *myResourceGroupAG* für **RESSOURCENGRUPPENNAMEN EINGEBEN** ein, und wählen Sie **Löschen** aus.
+4. Geben Sie *myResourceGroupAG* unter **RESSOURCENGRUPPENNAMEN EINGEBEN** ein, und wählen Sie **Löschen** aus.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -298,8 +298,6 @@
       href: template-best-practices.md
     - name: Häufig gestellte Fragen
       href: frequently-asked-questions.md
-    - name: Vorlagenspezifikationen
-      href: template-specs.md
     - name: Vorlagen für Cloudkonsistenz
       href: templates-cloud-consistency.md
     - name: Bereitstellungsmodi
@@ -327,7 +325,7 @@
           href: template-expressions.md
         - name: Parameter
           href: template-parameters.md
-        - name: Variables
+        - name: Variablen
           href: template-variables.md
         - name: Benutzerdefinierte Funktionen
           href: template-user-defined-functions.md
@@ -423,6 +421,12 @@
           href: test-toolkit.md
         - name: Testfälle
           href: test-cases.md
+    - name: Vorlagenspezifikationen
+      items:
+        - name: Erstellen und Bereitstellen von Vorlagenspezifikationen
+          href: template-specs.md
+        - name: Konvertieren des Portalvorlagenkatalogs
+          href: convert-to-template-spec.md
     - name: CI/CD
       items:
         - name: ARM-Vorlagen mit Pipelines

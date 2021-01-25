@@ -7,12 +7,12 @@ ms.service: attestation
 ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 8ae5bcf103bbb2d2b952fa647ba591e49002f2ff
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: c6c09dc771692cb2fc2f36840e729874cfaf2d09
+ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96921615"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98572815"
 ---
 # <a name="basic-concepts"></a>Grundlegende Konzepte
 
@@ -28,9 +28,7 @@ Im Folgenden finden Sie einige grundlegende Konzepte zu Microsoft Azure Attestat
 
 ## <a name="attestation-provider"></a>Nachweisanbieter
 
-Der Nachweisanbieter gehört zum Azure-Ressourcenanbieter mit dem Namen „Microsoft.Attestation“. Der Ressourcenanbieter ist ein Dienstendpunkt, der den Azure Attestation-REST-Vertrag bereitstellt und mithilfe von [Azure Resource Manager](../azure-resource-manager/management/overview.md) bereitgestellt wird. Jeder Nachweisanbieter berücksichtigt eine bestimmte erkennbare Richtlinie. 
-
-Nachweisanbieter werden mit einer Standardrichtlinie für jeden Nachweistyp erstellt. (Beachten Sie, dass die VBS-Enclave über keine Standardrichtlinie verfügt.) Weitere Informationen zur Standardrichtlinie für SGX finden Sie unter [Beispiele einer Nachweisrichtlinie](policy-examples.md).
+Der Nachweisanbieter gehört zum Azure-Ressourcenanbieter mit dem Namen „Microsoft.Attestation“. Der Ressourcenanbieter ist ein Dienstendpunkt, der den Azure Attestation-REST-Vertrag bereitstellt und mithilfe von [Azure Resource Manager](../azure-resource-manager/management/overview.md) bereitgestellt wird. Jeder Nachweisanbieter berücksichtigt eine bestimmte erkennbare Richtlinie. Nachweisanbieter werden mit einer Standardrichtlinie für jeden Nachweistyp erstellt. (Beachten Sie, dass die VBS-Enclave über keine Standardrichtlinie verfügt.) Weitere Informationen zur Standardrichtlinie für SGX finden Sie unter [Beispiele einer Nachweisrichtlinie](policy-examples.md).
 
 ### <a name="regional-default-provider"></a>Regionaler Standardanbieter
 
@@ -38,11 +36,16 @@ Azure Attestation stellt in jeder Region einen Standardanbieter bereit. Kunden k
 
 | Region | Nachweis-URI | 
 |--|--|
+| East US | `https://sharedeus.eus.attest.azure.net` | 
+| USA (Westen) | `https://sharedwus.wus.attest.azure.net` | 
 | UK, Süden | `https://shareduks.uks.attest.azure.net` | 
+| UK, Westen| `https://sharedukw.ukw.attest.azure.net  ` | 
+| Kanada, Osten | `https://sharedcae.cae.attest.azure.net` | 
+| Kanada, Mitte | `https://sharedcac.cac.attest.azure.net` | 
+| Nordeuropa | `https://sharedneu.neu.attest.azure.net` | 
+| Europa, Westen| `https://sharedweu.weu.attest.azure.net` | 
 | USA (Ost 2) | `https://sharedeus2.eus2.attest.azure.net` | 
 | USA (Mitte) | `https://sharedcus.cus.attest.azure.net` | 
-| East US| `https://sharedeus.eus.attest.azure.net` | 
-| Kanada, Mitte | `https://sharedcac.cac.attest.azure.net` | 
 
 ## <a name="attestation-request"></a>Nachweisanforderung
 
@@ -58,7 +61,7 @@ Eine Nachweisrichtlinie wird zum Verarbeiten der Nachweisbeweise verwendet und k
 
 Falls die Standardrichtlinie im Nachweisanbieter die Anforderungen nicht erfüllt, können Kunden benutzerdefinierte Richtlinien in allen Regionen erstellen, die von Azure Attestation unterstützt werden. Die Richtlinienverwaltung ist ein wichtiges Feature, das Azure Attestation den Kunden bereitstellt. Richtlinien sind nachweistypspezifisch und können zum Identifizieren von Enclaves oder zum Hinzufügen von Ansprüchen zum Ausgabetoken bzw. zum Ändern von Ansprüchen in einem Ausgabetoken verwendet werden. 
 
-Weitere Informationen zum Inhalt von Standardrichtlinien und Beispiele finden Sie unter [Beispiele einer Nachweisrichtlinie](policy-examples.md).
+Richtlinienbeispiele finden Sie unter [Beispiele für eine Nachweisrichtlinie](policy-examples.md).
 
 ## <a name="benefits-of-policy-signing"></a>Vorteile der Richtliniensignatur
 
@@ -80,25 +83,55 @@ Beispiel für ein JWT, das für eine SGX-Enclave generiert wurde:
 
 ```
 {
-  “alg”: “RS256”,
-  “jku”: “https://tradewinds.us.attest.azure.net/certs”,
-  “kid”: “f1lIjBlb6jUHEUp1/Nh6BNUHc6vwiUyMKKhReZeEpGc=”,
-  “typ”: “JWT”
+  "alg": "RS256",
+  "jku": "https://tradewinds.us.attest.azure.net/certs",
+  "kid": <self signed certificate reference to perform signature verification of attestation token,
+  "typ": "JWT"
 }.{
-  “maa-ehd”: <input enclave held data>,
-  “exp”: 1568187398,
-  “iat”: 1568158598,
-  “is-debuggable”: false,
-  “iss”: “https://tradewinds.us.attest.azure.net”,
-  “nbf”: 1568158598,
-  “product-id”: 4639,
-  “sgx-mrenclave”: “”,
-  “sgx-mrsigner”: “”,
-  “svn”: 0,
-  “tee”: “sgx”
+  "aas-ehd": <input enclave held data>,
+  "exp": 1568187398,
+  "iat": 1568158598,
+  "is-debuggable": false,
+  "iss": "https://tradewinds.us.attest.azure.net",
+  "maa-attestationcollateral": 
+    {
+      "qeidcertshash": <SHA256 value of QE Identity issuing certs>,
+      "qeidcrlhash": <SHA256 value of QE Identity issuing certs CRL list>,
+      "qeidhash": <SHA256 value of the QE Identity collateral>,
+      "quotehash": <SHA256 value of the evaluated quote>, 
+      "tcbinfocertshash": <SHA256 value of the TCB Info issuing certs>, 
+      "tcbinfocrlhash": <SHA256 value of the TCB Info issuing certs CRL list>, 
+      "tcbinfohash": <SHA256 value of the TCB Info collateral>
+     },
+  "maa-ehd": <input enclave held data>,
+  "nbf": 1568158598,
+  "product-id": 4639,
+  "sgx-mrenclave": <SGX enclave mrenclave value>,
+  "sgx-mrsigner": <SGX enclave msrigner value>,
+  "svn": 0,
+  "tee": "sgx"
+  "x-ms-attestation-type": "sgx", 
+  "x-ms-policy-hash": <>,
+  "x-ms-sgx-collateral": 
+    {
+      "qeidcertshash": <SHA256 value of QE Identity issuing certs>,
+      "qeidcrlhash": <SHA256 value of QE Identity issuing certs CRL list>,
+      "qeidhash": <SHA256 value of the QE Identity collateral>,
+      "quotehash": <SHA256 value of the evaluated quote>, 
+      "tcbinfocertshash": <SHA256 value of the TCB Info issuing certs>, 
+      "tcbinfocrlhash": <SHA256 value of the TCB Info issuing certs CRL list>, 
+      "tcbinfohash": <SHA256 value of the TCB Info collateral>
+     },
+  "x-ms-sgx-ehd": <>, 
+  "x-ms-sgx-is-debuggable": true,
+  "x-ms-sgx-mrenclave": <SGX enclave mrenclave value>,
+  "x-ms-sgx-mrsigner": <SGX enclave msrigner value>, 
+  "x-ms-sgx-product-id": 1, 
+  "x-ms-sgx-svn": 1,
+  "x-ms-ver": "1.0"
 }.[Signature]
 ```
-Ansprüche wie „exp“, „iat“, „iss“ oder „nbf“ werden von der [JWT-RFC](https://tools.ietf.org/html/rfc7517) definiert, und die verbleibenden werden von Azure Attestation generiert. Weitere Informationen finden Sie unter [von Azure Attestation ausgegebene Ansprüche](claim-sets.md).
+Einige der oben verwendeten Ansprüche werden als veraltet eingestuft, werden jedoch vollständig unterstützt.  Es wird empfohlen, dass der gesamte zukünftige Code und alle Tools die nicht veralteten Anspruchsnamen verwenden. Weitere Informationen finden Sie unter [von Azure Attestation ausgegebene Ansprüche](claim-sets.md).
 
 ## <a name="encryption-of-data-at-rest"></a>Verschlüsselung für ruhende Daten
 

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
-ms.openlocfilehash: c03bf5e52ae7f6b259c7b744e6033d760af23dd0
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 72b371fd1184c9c9e69593c5ad7e57310abf1de2
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88683673"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98600035"
 ---
 # <a name="common-cost-analysis-uses"></a>Häufige Anwendungsbereiche der Kostenanalyse
 
@@ -198,7 +198,7 @@ Es werden nur die Kosten für Ihre aktive Registrierung angezeigt. Wenn Sie eine
 
 
 1. Navigieren Sie im Azure-Portal zu **Kostenverwaltung + Abrechnung** > **Übersicht**.
-1. Klicken Sie für den aktuellen Monat auf **Aufschlüsselung**, und zeigen Sie die Entstehung der Zahlungsverpflichtungen an.  
+1. Klicken Sie für den aktuellen Monat auf **Aufschlüsselung**, und zeigen Sie den Verbrauch der Azure-Vorauszahlung (zuvor als „Mindestverbrauch“ bezeichnet) an.  
     [![Übersicht über EA-Kosten – Aufschlüsselung in der Übersicht](./media/cost-analysis-common-uses/breakdown1.png)](./media/cost-analysis-common-uses/breakdown1.png#lightbox)
 1.  Klicken Sie auf die Registerkarte **Nutzung + Gebühren**, und zeigen Sie die Aufschlüsselung des Vormonats im ausgewählten Zeitraum an.  
     [![Registerkarte „Nutzung + Gebühren“](./media/cost-analysis-common-uses/breakdown2.png)](./media/cost-analysis-common-uses/breakdown2.png#lightbox)

@@ -3,17 +3,17 @@ title: 'Azure EA: Vereinbarungen und Ergänzungen'
 description: In diesem Artikel wird erläutert, wie sich Azure EA-Vereinbarungen und -Zusatzvereinbarungen auf Ihre Azure EA-Portalnutzung auswirken.
 author: bandersmsft
 ms.author: banders
-ms.date: 09/03/2020
+ms.date: 01/19/2021
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.reviewer: boalcsva
-ms.openlocfilehash: 9e6750bd8404b4f9b910dda93859a0ca3fd268d4
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: c2c3636e98d67616826b03cca9657b806c5bd653
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89442529"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98598009"
 ---
 # <a name="azure-ea-agreements-and-amendments"></a>Azure EA: Vereinbarungen und Ergänzungen
 
@@ -21,7 +21,7 @@ In diesem Artikel wird beschrieben, wie sich Azure-EA-Vereinbarungen und -Zusatz
 
 ## <a name="enrollment-provisioning-status"></a>Registrierungsbereitstellungsstatus
 
-Das Startdatum einer neuen Azure-Vorauszahlung wird durch das Datum definiert, an dem das regionale Betriebszentrum diese verarbeitet hat. Da Azure-Vorauszahlungsbestellungen über das Azure-EA-Portal in der Zeitzone „UTC“ verarbeitet werden, kann es zu Verzögerungen kommen, wenn Ihre Bestellung im Rahmen der Azure-Vorauszahlung in einer anderen Zeitzone verarbeitet wurde. Das Startdatum der Abdeckung in der Bestellung zeigt den Beginn der Azure-Vorauszahlung an. Das Startdatum der Abdeckung ist dann, wenn die Azure-Vorauszahlung im Azure EA-Portal angezeigt wird.
+Das Startdatum einer neuen Azure-Vorauszahlung (zuvor als „Mindestverbrauch“ bezeichnet) wird durch das Datum definiert, an dem das regionale Betriebszentrum diese verarbeitet hat. Da Azure-Vorauszahlungsbestellungen über das Azure-EA-Portal in der Zeitzone „UTC“ verarbeitet werden, kann es zu Verzögerungen kommen, wenn Ihre Bestellung im Rahmen der Azure-Vorauszahlung in einer anderen Zeitzone verarbeitet wurde. Das Startdatum der Abdeckung in der Bestellung zeigt den Beginn der Azure-Vorauszahlung an. Das Startdatum der Abdeckung ist dann, wenn die Azure-Vorauszahlung im Azure EA-Portal angezeigt wird.
 
 ## <a name="support-for-enterprise-customers"></a>Support für Unternehmenskunden
 
@@ -60,7 +60,7 @@ Microsoft greift nur dann auf die angegebenen Aufschläge und zugehörigen Preis
 
 ### <a name="how-the-calculation-works"></a>Funktionsweise der Berechnung
 
-Der LSP gibt eine einstellige Prozentzahl im EA-Portal an.  Alle kaufmännischen Informationen im Portal werden um den vom LSP angegebenen Prozentsatz angehoben. Beispiel:
+Der LSP gibt eine einstellige Prozentzahl im EA-Portal an.    Alle kaufmännischen Informationen im Portal werden um den vom LSP angegebenen Prozentsatz angehoben. Beispiel:
 
 - Ein Kunde unterzeichnet ein Enterprise Agreement mit einer Azure-Vorauszahlung von 100.000 USD.
 - Der Preis für Verbrauchseinheiten für Dienst A beträgt 10 USD/Stunde.
@@ -101,13 +101,14 @@ Prüfen Sie alle kaufmännischen Informationen – Guthabensaldo, Preisliste usw
 Überprüfen Sie den Aufschlagspreis in der _Nutzungszusammenfassung_ für die Laufzeit der Vorauszahlung in der Kundenansicht. Der Preis von Microsoft ist in der Partneransicht weiterhin verfügbar. Sie können mithilfe des Partnermarkups „Personen“ oben rechts zwischen den Ansichten wechseln.
 
 1. Überprüfen Sie die Preise auf dem Preisblatt.
-1. Sie können vor der Veröffentlichung Änderungen vornehmen, indem Sie auf der Registerkarte _Nutzungszusammenfassung anzeigen > Kundenansicht_ auf **Bearbeiten** klicken.
-  Sowohl für die Dienstpreise als auch für die Vorauszahlungssaldi wird der gleiche Prozentsatz als Aufschlag berechnet. Wenn Sie verschiedene Prozentsätze für Mindestverbrauch und Verbrauchseinheitspreise oder für verschiedene Dienste festgelegt haben, verwenden Sie dieses Feature nicht.
+1. Sie können vor der Veröffentlichung Änderungen vornehmen, indem Sie auf der Registerkarte _Nutzungszusammenfassung anzeigen > Kundenansicht_ auf **Bearbeiten** klicken.
+   
+Sowohl für die Dienstpreise als auch für die Vorauszahlungssaldi wird der gleiche Prozentsatz als Aufschlag berechnet. Wenn Sie verschiedene Prozentsätze für Mindestverbrauch und Verbrauchseinheitspreise oder für verschiedene Dienste festgelegt haben, verwenden Sie dieses Feature nicht.
 
 **Schritt 3: Veröffentlichen**
 
 Nachdem Sie die Preise überprüft und validiert haben, klicken Sie auf **Veröffentlichen**.
-  
+  
 Preise mit Aufschlägen stehen Unternehmensadministratoren sofort nach der Auswahl von „Veröffentlichen“ zur Verfügung. Aufschläge können nicht bearbeitet werden. Wenn Sie etwas ändern möchten, müssen Sie den Aufschlag deaktivieren und bei Schritt 1 beginnen.
 
 ### <a name="which-enrollments-have-a-markup-enabled"></a>Für welche Registrierungen ist ein Aufschlag aktiviert?

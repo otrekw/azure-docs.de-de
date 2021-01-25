@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
-ms.openlocfilehash: c59bd7f9bc8c5049572afdf93343222b30c0007b
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: d1546ef92d923b9d72c4aca0ddf61d2b93646656
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92131903"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98602339"
 ---
 # <a name="use-cost-alerts-to-monitor-usage-and-spending"></a>Verwenden von Kostenwarnungen zum Überwachen von Verbrauch und Ausgaben
 
@@ -29,7 +29,7 @@ Sie können die Budget-API verwenden, um E-Mail-Warnungen in einer anderen Sprac
 
 ## <a name="credit-alerts"></a>Guthabenwarnungen
 
-Sie erhalten Warnungen, wenn Ihr Azure-Guthaben aufgebraucht ist. Das betrifft nur Organisationen mit Enterprise Agreement. Guthabenwarnungen werden automatisch generiert, wenn 90 % oder 100 % Ihres Guthabens aufgebraucht sind. Wenn eine Warnung generiert wird, wird das bei den Kostenwarnungen und in der E-Mail widergespiegelt, die an die Kontobesitzer gesendet wird.
+Mit Guthabenwarnungen werden Sie benachrichtigt, wenn die Azure-Vorauszahlung (zuvor als „Mindestverbrauch“ bezeichnet) verbraucht ist. Azure-Vorauszahlung ist für Organisationen mit Enterprise Agreements gedacht. Guthabenwarnungen werden bei 90 Prozent und bei 100 Prozent Ihres Azure-Vorauszahlungsguthabens generiert. Wenn eine Warnung generiert wird, wird das bei den Kostenwarnungen und in der E-Mail widergespiegelt, die an die Kontobesitzer gesendet wird.
 
 ## <a name="department-spending-quota-alerts"></a>Warnungen bei Ausgabenkontingenten für Abteilungen
 

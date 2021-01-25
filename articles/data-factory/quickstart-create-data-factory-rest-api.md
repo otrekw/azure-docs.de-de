@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: rest-api
 ms.topic: quickstart
-ms.date: 06/10/2019
+ms.date: 01/18/2021
 ms.author: jingwang
-ms.openlocfilehash: 48928c5c4f3a2787e8f00e4084daacf6a64f1ea7
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 34a2e423e06782b0d43766cccac9319ce68239d4
+ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96461579"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98569469"
 ---
 # <a name="quickstart-create-an-azure-data-factory-and-pipeline-by-using-the-rest-api"></a>Schnellstart: Erstellen einer Azure Data Factory und einer Pipeline mithilfe der REST-API
 
@@ -303,7 +303,7 @@ Hier ist die Beispielausgabe:
 ```
 ## <a name="create-pipeline"></a>Erstellen der Pipeline
 
-In diesem Beispiel enthält die Pipeline eine Aktivität und akzeptiert zwei Parameter: Eingabeblobpfad und Ausgabeblobpfad. Die Werte für diese Parameter werden festgelegt, wenn die Pipeline ausgelöst bzw. ausgeführt wird. Die Kopieraktivität verweist für die Eingabe und Ausgabe auf das gleiche Blobdataset, das im vorherigen Schritt erstellt wurde. Wenn das Dataset als Eingabedataset verwendet wird, wird der Eingabepfad angegeben. Wenn das Dataset als Ausgabedataset verwendet wird, wird der Ausgabepfad angegeben.
+In diesem Beispiel enthält die Pipeline eine Copy-Aktivität. Die Copy-Aktivität verweist auf „InputDataset“ und „OutputDataset“, die im vorherigen Schritt als Eingabe und Ausgabe erstellt wurden.
 
 ```powershell
 $request = "https://management.azure.com/subscriptions/${subscriptionId}/resourceGroups/${resourceGroupName}/providers/Microsoft.DataFactory/factories/${dataFactoryName}/pipelines/Adfv2QuickStartPipeline?api-version=${apiVersion}"
@@ -383,10 +383,7 @@ Hier ist die Beispielausgabe:
 
 ## <a name="create-pipeline-run"></a>Erstellen einer Pipelineausführung
 
-In diesem Schritt legen Sie die in der Pipeline angegebenen Parameter **inputPath** und **outputPath** auf die tatsächlichen Werte der Quell- und Senkenblobpfade fest, und lösen eine Pipelineausführung aus. Die im Antworttext zurückgegebene ID der Pipelineausführung wird später in der Überwachungs-API verwendet.
-
-Ersetzen Sie die Werte für **inputPath** und **outputPath** durch den Pfad Ihres Quell- bzw. Senkenblobs, um Daten aus der Quelle in die Senke zu kopieren. Speichern Sie dann die Datei.
-
+In diesem Schritt lösen Sie eine Pipelineausführung aus. Die im Antworttext zurückgegebene ID der Pipelineausführung wird später in der Überwachungs-API verwendet.
 
 ```powershell
 $request = "https://management.azure.com/subscriptions/${subscriptionId}/resourceGroups/${resourceGroupName}/providers/Microsoft.DataFactory/factories/${factoryName}/pipelines/Adfv2QuickStartPipeline/createRun?api-version=${apiVersion}"

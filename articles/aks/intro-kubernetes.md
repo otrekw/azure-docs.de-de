@@ -5,12 +5,12 @@ services: container-service
 ms.topic: overview
 ms.date: 05/06/2019
 ms.custom: mvc
-ms.openlocfilehash: 75f4602be15ef2487272ed5790d92c4c884c551f
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 4115ab2140cd3bf67135e494e16fb8121c040ff6
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94681549"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98246195"
 ---
 # <a name="azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS)
 
@@ -66,7 +66,7 @@ Weitere Informationen finden Sie unter [Verwenden von GPUs in AKS][aks-gpu].
 
 ### <a name="confidential-computing-nodes-public-preview"></a>Confidential Computing-Knoten (Public Preview)
 
-AKS unterstützt die Erstellung von Pools mit Intel SGX-basierten Confidential Computing-Knoten (DCSv2-VMs). Mit Confidential Computing-Knoten können Container in einer hardwarebasierten vertrauenswürdigen und isolierten Ausführungsumgebung (Enklave) ausgeführt werden. Die Isolation zwischen Containern in Kombination mit einer Sicherstellung der Codeintegrität durch Nachweise kann ein Beitrag zu Ihrer Defense-in-Depth-Strategie für die Containersicherheit sein. Für Confidential Computing-Knoten werden sowohl vertrauliche Container (vorhandene Docker-Apps) als auch für Enklaven geeignete Container unterstützt.
+AKS unterstützt die Erstellung von Pools mit Intel SGX-basierten Confidential Computing-Knoten (DCSv2-VMs). Mit Confidential Computing-Knoten können Container in einer hardwarebasierten vertrauenswürdigen Ausführungsumgebung (Enklave) ausgeführt werden. Die Isolation zwischen Containern in Kombination mit einer Sicherstellung der Codeintegrität durch Nachweise kann ein Beitrag zu Ihrer Defense-in-Depth-Strategie für die Containersicherheit sein. Für Confidential Computing-Knoten werden sowohl vertrauliche Container (vorhandene Docker-Apps) als auch für Enklaven geeignete Container unterstützt.
 
 Weitere Informationen finden Sie unter [Confidential Computing-Knoten in AKS][conf-com-node].
 
@@ -98,9 +98,9 @@ Kubernetes verfügt über ein umfangreiches Ökosystem von Entwicklungs- und Ver
 
 Darüber hinaus ermöglicht Azure Dev Spaces eine schnelle, iterative Kubernetes-Bereitstellung für Teams. Container lassen sich mit minimalem Konfigurationsaufwand direkt in AKS ausführen und debuggen. Informationen zu ersten Schritten finden Sie unter [Azure Dev Spaces][azure-dev-spaces].
 
-Das Azure DevOps-Projekt bietet eine Lösung, mit der Sie vorhanden Code und das Git-Repository ganz einfach in Azure einbinden können. Mit dem DevOps-Projekt werden automatisch Azure-Ressourcen wie AKS erstellt, in Azure DevOps Services eine Releasepipeline mit einer Buildpipeline für CI erstellt, eine Releasepipeline für CD eingerichtet und anschließend eine Azure Application Insights-Ressource für die Überwachung erstellt.
+DevOps Starter bietet eine Lösung, mit der Sie vorhandenen Code und Git-Repositorys ganz einfach in Azure einbinden können. Mit DevOps Starter werden automatisch Azure-Ressourcen wie AKS erstellt, in Azure DevOps Services eine Releasepipeline mit einer Buildpipeline für CI erstellt, eine Releasepipeline für CD eingerichtet und anschließend eine Azure Application Insights-Ressource für die Überwachung erstellt.
 
-Weitere Informationen finden Sie unter [Übersicht über Azure DevOps Projects][azure-devops].
+Weitere Informationen finden Sie unter [Übersicht über DevOps Starter][azure-devops].
 
 ## <a name="docker-image-support-and-private-container-registry"></a>Docker-Imageunterstützung und private Containerregistrierung
 

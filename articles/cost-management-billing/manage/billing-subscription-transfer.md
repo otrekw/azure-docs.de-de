@@ -8,15 +8,15 @@ tags: billing,top-support-issue
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 11/11/2020
+ms.date: 01/06/2021
 ms.author: banders
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: d37225f988cc906bdd92467afcf3f286220eebda
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: ae588708a41c1259628b726a3a471034dba7d131
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97027865"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98601526"
 ---
 # <a name="transfer-billing-ownership-of-an-azure-subscription-to-another-account"></a>Übertragen des Abrechnungsbesitzes eines Azure-Abonnements an ein anderes Konto
 
@@ -72,6 +72,18 @@ Wenn Sie den Abrechnungsbesitz für ein Azure-Abonnement angenommen haben, empfi
    1. Tastenkombinationen für Dienste wie Storage. Weitere Informationen finden Sie unter [Informationen zu Azure-Speicherkonten](../../storage/common/storage-account-create.md).
    1. Anmeldeinformationen für den Remotezugriff für Dienste wie Azure Virtual Machines.
 1. Wenn Sie mit einem Partner arbeiten, sollten Sie die Partner-ID im Abonnement aktualisieren. Sie können die Partner-ID im [Azure-Portal](https://portal.azure.com) aktualisieren. Weitere Informationen finden Sie unter [Verknüpfen einer Partner-ID mit Ihren Azure-Konten](link-partner-id.md).
+
+## <a name="cancel-a-transfer-request"></a>Abbrechen einer Übertragungsanforderung
+
+Es ist jeweils nur eine Übertragungsanforderung aktiv. Eine Übertragungsanforderung ist 15 Tage lang gültig. Nach den 15 Tagen läuft die Übertragungsanforderung ab.
+
+So brechen Sie eine Übertragungsanforderung ab:
+
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
+1. Navigieren Sie zu **Abonnements**, und wählen Sie das Abonnement, für das Sie eine Übertragungsanforderung gesendet haben, und anschließend **Abrechnungsbesitz übertragen** aus.
+1. Wählen Sie unten auf der Seite **Übertragungsanforderung abbrechen** aus.
+
+:::image type="content" source="./media/billing-subscription-transfer/transfer-billing-owership-cancel-request.png" alt-text="Beispiel für das Fenster „Abrechnungsbesitz übertragen“ mit der Option „Übertragungsanforderung abbrechen“" lightbox="./media/billing-subscription-transfer/transfer-billing-owership-cancel-request.png" :::
 
 ## <a name="troubleshooting"></a>Problembehandlung
 

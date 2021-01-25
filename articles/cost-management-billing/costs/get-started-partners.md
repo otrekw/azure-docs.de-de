@@ -3,18 +3,18 @@ title: Erste Schritte mit Azure Cost Management für Partner
 description: In diesem Artikel wird erläutert, wie Partner Features von Azure Cost Management verwenden und den Zugriff auf Cost Management für ihre Kunden aktivieren.
 author: bandersmsft
 ms.author: banders
-ms.date: 11/16/2020
+ms.date: 01/19/2021
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: aparnag
 ms.custom: secdec18
-ms.openlocfilehash: cd3ca4d3ddf73469cd1f1fc065eccb369cf765af
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 8a04cb2c590bc4f0104a93ac7c7c2cf7b71a4662
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96905675"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98602176"
 ---
 # <a name="get-started-with-azure-cost-management-for-partners"></a>Erste Schritte mit Azure Cost Management für Partner
 
@@ -71,9 +71,9 @@ Nachdem Sie Ihre Kunden in eine Microsoft-Kundenvereinbarung aufgenommen haben, 
 
 Verwenden Sie den Abrechnungskontobereich, um die Kosten vor Steuern für alle Ihre Kunden und Abrechnungsprofile anzuzeigen. Rechnungskosten werden nur für verbrauchsbasierte Produkte in der Microsoft-Kundenvereinbarung von Kunden angezeigt. Rechnungskosten werden jedoch für erworbene Produkte für Kunden im Rahmen der Microsoft-Kundenvereinbarung und des CSP-Angebots angezeigt. Derzeit werden die Kosten im Bereich standardmäßig in US-Dollar angezeigt. Die Budgets werden für den Bereich ebenfalls in US-Dollar festgelegt.
 
-Unabhängig von den verschiedenen Währungen, in denen mit dem Kunden abgerechnet wird, nutzen Partner den Abrechnungskontobereich, um in US-Dollar Budgets festzulegen und Kosten für ihre Kunden, Abonnements, Ressourcen und Ressourcengruppen zu verwalten.
+Unabhängig von den verschiedenen für die Abrechnung verwendeten Währungen nutzen Partner den Abrechnungskontobereich, um in US-Dollar Budgets festzulegen und Kosten für ihre Kunden, Abonnements, Ressourcen und Ressourcengruppen zu verwalten.
 
-Partner filtern auch Kosten in einer bestimmten Abrechnungswährung kundenübergreifend in der Kostenanalyseansicht. Wählen Sie die Liste **Tatsächliche Kosten** aus, um die Kosten in den für die Kundenabrechnung unterstützten Währungen anzuzeigen.
+Partner filtern auch Kosten in einer bestimmten Abrechnungswährung kundenübergreifend in der Kostenanalyseansicht. Wählen Sie die Liste **Tatsächliche Kosten** aus, um die Kosten in den für die Abrechnung unterstützten Währungen anzuzeigen.
 
 ![Beispiel mit der Auswahl „Tatsächliche Kosten“ für Währungen](./media/get-started-partners/actual-cost-selector.png)
 
@@ -83,7 +83,7 @@ Verwenden Sie die [Ansicht der amortisierten Kosten](quick-acm-cost-analysis.md#
 
 Verwenden Sie den Abrechnungsprofilbereich, um für alle Ihre Kunden für alle in einer Rechnung enthaltenen Produkte und Abonnements die Kosten vor Steuern in der Abrechnungswährung anzuzeigen. Mithilfe des Filters **InvoiceID** können Sie die Kosten in einem Abrechnungsprofil für eine bestimmte Rechnung filtern. Der Filter zeigt die Verbrauchs- und Produktkaufkosten für eine bestimmte Rechnung an. Sie können auch die Kosten für einen bestimmten Kunden in der Rechnung filtern, um die Kosten vor Steuern anzuzeigen.
 
-Nachdem Sie Kunden in eine Microsoft-Kundenvereinbarung aufgenommen haben, erhalten Sie eine Rechnung, die alle Gebühren für alle Produkte (Nutzung, Käufe und Berechtigungen) für diese Kunden in der Microsoft-Kundenvereinbarung enthält. Wenn diese Rechnungen in derselben Währung abgerechnet werden, enthalten Sie auch die Gebühren für Berechtigungen und erworbene Produkte wie Saas, Azure Marketplace und Reservierungen für Kunden, die sich noch im CSP-Angebot befinden.
+Nachdem Sie Kunden in eine Microsoft-Kundenvereinbarung aufgenommen haben, erhalten Sie eine Rechnung, die alle Gebühren für alle Produkte (Nutzung, Käufe und Berechtigungen) für diese Kunden in der Microsoft-Kundenvereinbarung enthält. Wenn diese Rechnungen in derselben Währung abgerechnet werden, enthalten sie auch die Gebühren für Berechtigungen und erworbene Produkte wie SaaS, Azure Marketplace und Reservierungen für Kunden, für die noch das klassische CSP-Angebot oder der Azure-Plan gilt.
 
 Um Gebühren mit der Kundenrechnung abzustimmen, können Sie im Abrechnungsprofilbereich alle Kosten anzeigen, die im Rahmen einer Rechnung für Ihre Kunden anfallen. Wie die Rechnung zeigt der Bereich Kosten für jeden Kunden an, der in die neue Microsoft-Kundenvereinbarung eingebunden ist. Der Bereich zeigt auch sämtliche Gebühren für Kundenberechtigungsprodukte an, die noch zum aktuellen CSP-Angebot gehören.
 
@@ -91,7 +91,7 @@ Abrechnungsprofil- und Abrechnungskontobereich sind die einzigen Bereiche, die G
 
 Abrechnungsprofile definieren die Abonnements, die in einer Rechnung berücksichtigt werden. Abrechnungsprofile sind das funktionale Äquivalent zu einer Enterprise Agreement-Registrierung. Ein Abrechnungsprofil ist der Bereich, in dem Rechnungen generiert werden.
 
-Derzeit ist die Abrechnungswährung des Kunden die Standardwährung beim Anzeigen der Kosten im Abrechnungsprofilbereich. Im Abrechnungsprofilbereich erfolgt die Festlegung von Budgets in der Abrechnungswährung.
+Derzeit ist die Abrechnungswährung die Standardwährung beim Anzeigen der Kosten im Abrechnungsprofilbereich. Im Abrechnungsprofilbereich erfolgt die Festlegung von Budgets in der Abrechnungswährung.
 
 Partner können den Bereich verwenden, um Rechnungen abzustimmen. Außerdem verwenden sie den Bereich, um Budgets in der Abrechnungswährung für folgende Elemente festzulegen:
 
@@ -220,7 +220,7 @@ Die folgenden Datenfelder befinden sich im Nutzungsdetaildateien und Cost Manage
 | Menge | Die gemessene Menge, die erworben oder genutzt wurde. Die Menge der Verbrauchseinheit, die während des Abrechnungszeitraums genutzt wurde. | Anzahl der Einheiten. Stellen Sie sicher, dass die Angaben den Informationen in Ihrem Abrechnungssystem während des Abgleichs entsprechen. |
 | unitOfMeasure | Gibt die Einheit an, in der der Dienst in Rechnung gestellt wird. Beispiele: GB oder Stunden. | Gibt die Einheit an, in der der Dienst in Rechnung gestellt wird. Beispiele sind GB, Stunden und 10.000 s. |
 | pricingCurrency | Die Währung, die den Einheitenpreis definiert. | Die Währung in der Preisliste.|
-| billingCurrency | Die Währung, in der die abgerechneten Kosten definiert sind. | Die Währung der geografischen Region des Kunden. |
+| billingCurrency | Die Währung, in der die abgerechneten Kosten definiert sind. | Die auf der Rechnung als Abrechnungswährung definierte Währung |
 | chargeType | Definiert den Gebührentyp, den die Kosten in Azure Cost Management repräsentieren, z. B. Erwerb oder Erstattung. | Der Typ der Gebühr oder Berichtigung. Nicht verfügbar für die aktuelle Aktivität. |
 | costinBillingCurrency | Geschätzte erweiterte oder gemischte Kosten vor Steuern in der Abrechnungswährung. | – |
 | costinPricingCurrency | Erweiterte oder gemischte Kosten vor Steuern in der Währung, die mit den Preisen korreliert. | – |

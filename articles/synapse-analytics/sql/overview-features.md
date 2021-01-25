@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: jovanpop
 ms.reviewer: jrasnick
-ms.openlocfilehash: 629a063d80c9f1bb1a9ae3d56783e07491149f24
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 30241716a7a0034bcfb4b90437a083b0a1f34952
+ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98118240"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98555337"
 ---
 # <a name="transact-sql-features-supported-in-azure-synapse-sql"></a>In Azure Synapse SQL unterstützte Transact-SQL-Funktionen
 
@@ -55,7 +55,7 @@ Die unterstützten Funktionen der in Synapse SQL verwendeten Abfragesprachen k�
 | **INSERT-Anweisung** | Ja | Nein |
 | **UPDATE-Anweisung** | Ja | Nein |
 | **DELETE-Anweisung** | Ja | Nein |
-| **MERGE-Anweisung** | Nein  | Nein |
+| **MERGE-Anweisung** | Ja ([Vorschau](https://docs.microsoft.com/sql/t-sql/statements/merge-transact-sql?view=sql-server-ver15)) | Nein |
 | **[Transaktionen](develop-transactions.md)** | Ja | Ja, gültig für Metadatenobjekte |
 | **[Bezeichnungen](develop-label.md)** | Ja | Nein |
 | **Ladevorgänge für Daten** | Ja. Das bevorzugte Hilfsprogramm ist zwar die [COPY](/sql/t-sql/statements/copy-into-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)-Anweisung, vom System werden jedoch auch Massenladen (BCP) sowie [CETAS](/sql/t-sql/statements/create-external-table-as-select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) zum Laden von Daten unterstützt. | Nein |

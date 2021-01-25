@@ -1,0 +1,83 @@
+### YamlMime:Landing
+title: Dokumentation zu Azure Cloud Services (erweiterter Support)
+summary: Hier erfahren Sie, wie Sie mithilfe von Cloud Services hochverfügbare und skalierbare Cloudanwendungen und APIs hosten und ausführen. Es wird gezeigt, wie Sie Hosts für virtuelle Maschinen verwalten und Software konfigurieren, patchen und installieren.
+metadata:
+  title: Dokumentation zu Azure Cloud Services (erweiterter Support)
+  description: Es wird beschrieben, wie Sie mithilfe von Cloud Services hochverfügbare und skalierbare Cloudanwendungen und APIs hosten und ausführen.
+  ms.service: cloud-services-extended-support
+  service: cloud-services-extended-support
+  ms.topic: landing-page
+  author: mimckitt
+  ms.author: mimckitt
+  ms.date: 03/06/2020
+  ms.openlocfilehash: 8f999851c1566b2a488daa4bdc5da73761f7ce0b
+  ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+  ms.translationtype: HT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 01/23/2021
+  ms.locfileid: "98743653"
+landingContent:
+- title: Informationen zu Cloud Services (erweiterter Support)
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Was ist Cloud Services (erweiterter Support)?
+      url: overview.md
+    - text: Voraussetzungen für die Bereitstellung
+      url: deploy-prerequisite.md
+    - text: Konfigurationsdateien und Paketerstellung
+      url: cloud-services-model-and-package.md
+- title: Lernprogramme
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Bereitstellen mit PowerShell
+      url: deploy-powershell.md
+    - text: Bereitstellen über das Azure-Portal
+      url: deploy-portal.md
+    - text: Bereitstellen unter Verwendung von ARM-Vorlagen
+      url: deploy-template.md
+    - text: Bereitstellen mit Visual Studio
+      url: deploy-visual-studio.md
+- title: Konzepte
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Verfügbare Größen
+      url: available-sizes.md
+    - text: Häufig gestellte Fragen
+      url: faq.md
+- title: Anleitungen
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Erweiterungen
+      url: extensions.md
+    - text: Aktivieren von Warnungen
+      url: enable-alerts.md
+    - text: Konfigurieren der Skalierung
+      url: configure-scaling.md
+    - text: Zertifikate
+      url: certificates-and-key-vault.md
+- title: Beispiele
+  linkLists:
+  - linkListType: sample
+    links:
+    - text: Erstellen einer Clouddienstbereitstellung
+      url: sample-create-cloud-service.md
+    - text: Abrufen von Informationen zu einer Clouddienstbereitstellung
+      url: sample-get-cloud-service.md
+    - text: Aktualisieren einer Clouddienstbereitstellung
+      url: sample-update-cloud-service.md
+    - text: Zurücksetzen einer Clouddienstbereitstellung
+      url: sample-reset-cloud-service.md
+- title: Schemainformationen
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Konfigurationsschema
+      url: schema-cscfg-file.md
+    - text: Definitionsschema
+      url: schema-csdef-file.md
+    - text: Konfigurationsrollenschema
+      url: schema-cscfg-role.md

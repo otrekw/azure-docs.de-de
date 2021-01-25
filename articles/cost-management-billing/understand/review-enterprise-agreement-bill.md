@@ -9,18 +9,18 @@ ms.subservice: enterprise
 ms.topic: tutorial
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: d707051e20b4ce9d1289557aec6f8256c2e6bfba
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 643aac7927cc7b14693387fbb5765bdcd0214dc2
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92150068"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98598239"
 ---
 # <a name="understand-your-azure-enterprise-agreement-bill"></a>Grundlegendes zu Ihrer Azure Enterprise-Rechnung
 
 Azure-Kunden mit Enterprise Agreement erhalten eine Rechnung, wenn sie das Guthaben der Organisation überschreiten oder Dienste nutzen, die nicht durch das Guthaben abgedeckt sind.
 
-Das Guthaben Ihrer Organisation schließt Ihre finanzielle Verpflichtung ein. Der finanzielle Verpflichtung ist der Betrag, den Ihre Organisation für die Nutzung von Azure-Diensten im Voraus bezahlt hat. Sie können Ihrem Enterprise Agreement ein Guthaben für finanzielle Verpflichtungen hinzufügen, indem Sie sich an Ihren Microsoft-Kundenbetreuer oder -Reseller wenden.
+Das Guthaben Ihrer Organisation umfasst Ihre Azure-Vorauszahlung (zuvor als „Mindestverbrauch“ bezeichnet). Die Azure-Vorauszahlung ist der Betrag, den Ihre Organisation für die Nutzung von Azure-Diensten im Voraus bezahlt hat. Sie können Ihrem Enterprise Agreement Azure-Vorauszahlungsguthaben hinzufügen, indem Sie sich an Ihren Microsoft-Kundenbetreuer oder -Handelspartner wenden.
 
 Dieses Tutorial gilt nur für Azure-Kunden mit einem Azure Enterprise Agreement.
 
@@ -155,7 +155,7 @@ Einige Gründe für Unterschiede bei den Preisen:
 
 ## <a name="request-detailed-usage-information"></a>Anfordern ausführlicher Informationen zur Verwendung
 
-Unternehmensadministratoren können eine Zusammenfassung ihrer Nutzungsdaten, den genutzten Mindestverbrauch und die Gebühren für die zusätzliche Nutzung im Azure Enterprise Portal anzeigen. Die Gebühren werden auf der Übersichtsebene für alle Konten und Abonnements angezeigt.
+Unternehmensadministratoren können eine Zusammenfassung ihrer Nutzungsdaten, die in Anspruch genommene Azure-Vorauszahlung und die Gebühren für die zusätzliche Nutzung im Azure Enterprise Portal anzeigen. Die Gebühren werden auf der Übersichtsebene für alle Konten und Abonnements angezeigt.
 
 Wenn Sie Nutzungsdetails für spezifische Konten anzeigen möchten, laden Sie den Bericht mit Verwendungsdetails herunter. Navigieren Sie dazu zu **Berichte** > **Nutzung herunterladen**.
 
@@ -166,7 +166,7 @@ Bei indirekten Registrierungen muss Ihr Partner die Markupfunktion aktivieren, b
 
 ## <a name="reports"></a>Berichte
 
-Unternehmensadministratoren können eine Zusammenfassung ihrer Nutzungsdaten, den genutzten Mindestverbrauch und die Gebühren für die zusätzliche Nutzung im Azure Enterprise Portal anzeigen. Die Gebühren werden auf der Übersichtsebene für alle Konten und Abonnements angezeigt.
+Unternehmensadministratoren können eine Zusammenfassung ihrer Nutzungsdaten, die in Anspruch genommene Azure-Vorauszahlung und die Gebühren für die zusätzliche Nutzung im Azure Enterprise Portal anzeigen. Die Gebühren werden auf der Übersichtsebene für alle Konten und Abonnements angezeigt.
 
 ### <a name="azure-enterprise-reports"></a>Azure Enterprise-Berichte
 

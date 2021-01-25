@@ -154,9 +154,9 @@
           href: howto-password-ban-bad-on-premises-faq.md
         - name: Verlauf der Agent-Version
           href: howto-password-ban-bad-on-premises-agent-versions.md
-    - name: Verwenden der SMS-basierten Authentifizierung (Vorschau)
+    - name: Verwenden der SMS-basierten Authentifizierung
       href: howto-authentication-sms-signin.md
-    - name: Verwenden der Anmeldung mit E-Mail-Adresse (Vorschau)
+    - name: Verwenden der Anmeldung mit E-Mail-Adresse
       href: howto-authentication-use-email-signin.md
     - name: Smart Lockout für Azure AD
       href: howto-password-smart-lockout.md

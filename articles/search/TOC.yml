@@ -5,9 +5,9 @@
   items:
     - name: Was ist Cognitive Search?
       href: search-what-is-azure-search.md
-    - name: Features in Cognitive Search
+    - name: Funktionsliste
       href: search-features-list.md
-    - name: Neues in Cognitive Search
+    - name: Neu in Search
       href: whats-new.md
 - name: Schnellstarts
   items:

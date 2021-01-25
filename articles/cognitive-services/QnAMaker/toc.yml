@@ -14,9 +14,7 @@
           href: Quickstarts/create-publish-knowledge-base.md
         - name: Abfragen einer Knowledge Base
           href: Quickstarts/get-answer-from-knowledge-base-using-url-tool.md
-    - name: Verwenden von REST
-      href: Quickstarts/quickstart-rest-curl.md
-    - name: Verwenden des SDK
+    - name: Verwenden von Clientbibliotheken oder REST-API
       href: Quickstarts/quickstart-sdk.md
 - name: Tutorials
   items:
@@ -171,7 +169,7 @@
       href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/qnamaker/context/context
     - name: Regionale Verfügbarkeit
       href: 'https://azure.microsoft.com/global-infrastructure/services/'
-    - name: Compliance
+    - name: Kompatibilität
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: Azure-Roadmap
       href: 'https://azure.microsoft.com/roadmap/'

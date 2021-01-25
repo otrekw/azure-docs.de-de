@@ -93,6 +93,11 @@
           href: export-data.md
         - name: Anonymisierter Export
           href: de-identified-export.md
+    - name: Konvertieren von Daten
+      expanded: false
+      items:
+        - name: „$convert-data“ und FHIR-Konvertererweiterungsvorlagen
+          href: convert-data.md
     - name: Ermitteln von Identitätsobjekt-IDs
       href: find-identity-object-ids.md
     - name: Diagnoseprotokollierung und -metriken

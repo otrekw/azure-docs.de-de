@@ -1,14 +1,14 @@
 ---
 title: Übersicht zu Azure-Richtlinien
 description: Azure Policy ist ein Dienst in Azure, mit dem Sie Richtliniendefinitionen in Ihrer Azure-Umgebung erstellen, zuweisen und verwalten können.
-ms.date: 10/05/2020
+ms.date: 01/14/2021
 ms.topic: overview
-ms.openlocfilehash: 96fd29b5e3d24bc3e678461a95005e004a8a3a80
-ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
+ms.openlocfilehash: df430586af2e701ec2881f6ea760095fd2ca79d0
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97803951"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98220727"
 ---
 # <a name="what-is-azure-policy"></a>Was ist Azure Policy?
 
@@ -83,7 +83,7 @@ Wenn keine der integrierten Rollen über die erforderlichen Berechtigungen verf�
 
 ### <a name="resources-covered-by-azure-policy"></a>Von Azure Policy abgedeckte Ressourcen
 
-Mit Azure Policy werden alle Ressourcen in Azure und alle Arc-fähigen Ressourcen ausgewertet. Für bestimmte Ressourcenanbieter wie [Gastkonfiguration](./concepts/guest-configuration.md), [Azure Kubernetes Service](../../aks/intro-kubernetes.md) und [Azure Key Vault](../../key-vault/general/overview.md) gibt es eine tiefergreifendere Integration für die Verwaltung von Einstellungen und Objekten. Weitere Informationen finden Sie unter [Ressourcenanbietermodi](./concepts/definition-structure.md).
+Azure Policy wertet alle Azure-Ressourcen auf oder unterhalb der Abonnementebene aus, einschließlich Ressourcen mit Arc-Unterstützung. Für bestimmte Ressourcenanbieter wie [Gastkonfiguration](./concepts/guest-configuration.md), [Azure Kubernetes Service](../../aks/intro-kubernetes.md) und [Azure Key Vault](../../key-vault/general/overview.md) gibt es eine tiefergreifendere Integration für die Verwaltung von Einstellungen und Objekten. Weitere Informationen finden Sie unter [Ressourcenanbietermodi](./concepts/definition-structure.md).
 
 ### <a name="recommendations-for-managing-policies"></a>Empfehlungen für die Verwaltung von Richtlinien
 

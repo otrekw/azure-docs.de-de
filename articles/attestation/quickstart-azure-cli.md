@@ -7,16 +7,16 @@ ms.service: attestation
 ms.topic: quickstart
 ms.date: 11/20/2020
 ms.author: mbaldwin
-ms.openlocfilehash: fb8b0f12844ce1057bd3cfc4716a32ee64ec5586
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: df1064128d6a4eca8497ebf3ea0c6ae8cd42255c
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96937218"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98208436"
 ---
 # <a name="quickstart-set-up-azure-attestation-with-azure-cli"></a>Schnellstart: Einrichten von Azure Attestation mithilfe der Azure CLI
 
-Führen Sie erste Schritte mit Azure Attestation aus, indem Sie die Azure CLI zum Einrichten des Nachweises verwenden.
+Führen Sie erste Schritte mit [Azure Attestation unter Verwendung der Azure CLI](/cli/azure/ext/attestation/attestation?view=azure-cli-latest) aus.
 
 ## <a name="get-started"></a>Erste Schritte
 
@@ -65,7 +65,7 @@ Führen Sie erste Schritte mit Azure Attestation aus, indem Sie die Azure CLI zu
 
 Die folgenden Befehle können Sie zum Erstellen und Verwalten des Nachweisanbieters verwenden:
 
-1. Führen Sie den Befehl [az attestation create](/cli/azure/ext/attestation/attestation?view=azure-cli-latest#ext_attestation_az_attestation_create) aus, um einen Nachweisanbieter zu erstellen:
+1. Führen Sie den Befehl [az attestation create](/cli/azure/ext/attestation/attestation?view=azure-cli-latest#ext_attestation_az_attestation_create) aus, um einen Nachweisanbieter ohne Richtliniensignierungsanforderung zu erstellen:
 
    ```azurecli
    az attestation create --name "myattestationprovider" --resource-group "MyResourceGroup" --location westus
@@ -128,7 +128,7 @@ So legen Sie die Richtlinie im JWT-Format für eine bestimmte Art von Nachweisty
 
 ```azurecli
 az attestation policy set --name "myattestationprovider" --resource-group "MyResourceGroup" \
---attestation-type SGX-IntelSDK --new-attestation-policy-file "{file_path}" --policy-format JWT
+--attestation-type SGX-IntelSDK -f "{file_path}" --policy-format JWT
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte

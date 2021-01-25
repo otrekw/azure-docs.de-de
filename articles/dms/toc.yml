@@ -89,8 +89,10 @@
       items:
         - name: SQL Server zu SQL-Datenbank
           href: howto-sql-server-to-azure-sql-powershell.md
-        - name: SQL Server zu SQL Managed Instance
-          href: howto-sql-server-to-azure-sql-mi-powershell.md
+        - name: "SQL\_Server zu SQL\_MI (online)"
+          href: howto-sql-server-to-azure-sql-managed-instance-powershell-online.md
+        - name: "SQL\_Server zu SQL\_MI (offline)"
+          href: howto-sql-server-to-azure-sql-managed-instance-powershell-offline.md
     - name: Erneutes Bereitstellen eines SSIS-Pakets in
       items:
         - name: "Azure\_SQL-Datenbank"
@@ -137,17 +139,17 @@
               href: known-issues-dms-hybrid-mode.md
         - name: Bekannte Migrationsprobleme
           items:
-            - name: zu SQL-Datenbank
+            - name: SQL-Datenbank
               href: known-issues-azure-sql-online.md
             - name: Verwaltete SQL-Instanz
               href: known-issues-azure-sql-db-managed-instance-online.md
-            - name: zu Azure DB for MySQL
+            - name: Azure-Datenbank für MySQL
               href: known-issues-azure-mysql-online.md
-            - name: von PostgreSQL zu Azure DB for PostgreSQL
+            - name: PostgreSQL zu Azure Database for PostgreSQL
               href: known-issues-azure-postgresql-online.md
-            - name: von Oracle zu Azure DB for PostgreSQL
+            - name: Oracle zu Azure Database for PostgreSQL
               href: known-issues-oracle-azure-postgresql-online.md
-            - name: von MongoDB zur Azure Cosmos DB-API für MongoDB
+            - name: "MongoDB zur Azure Cosmos\_DB-API für MongoDB"
               href: known-issues-mongo-cosmos-db.md
     - name: Videos
       items:

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.reviewer: boalcsva
-ms.openlocfilehash: 7c8a35e7c8ecd0952f8e02b66c5071253d9b0445
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 072377f98939d996547cb6ee9f9a535b4b32a3dc
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96348924"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98597962"
 ---
 # <a name="azure-ea-vm-reserved-instances"></a>Reservierte Azure EA-VM-Instanzen
 
@@ -25,7 +25,7 @@ Sie können eine Reservierung gegen eine andere Reservierung des gleichen Typs u
 
 ### <a name="partial-refunds"></a>Teilrückerstattungen
 
-Wir führen eine Teilrückerstattung durch, wenn von EA-Kunden Reservierungen zurückgegeben werden, die aufgrund einer Überschreitung erworben wurden, und nicht basierend auf dem Mindestverbrauch.
+Wir führen eine Teilrückerstattung durch, wenn von EA-Kunden Reservierungen zurückgegeben werden, die aufgrund einer Überschreitung und nicht basierend auf der Azure-Vorauszahlung (zuvor als „Mindestverbrauch“ bezeichnet) erworben wurden
 
 Die Rückerstattung wird im EA Portal als negative Anpassung im vorherigen Monat und positive Anpassung im aktuellen Monat angezeigt. Diese Anzeige ähnelt einem Austausch von Reservierungen. In der Gutschrift ist die Nummer der ursprünglichen Rechnung angegeben. Verwenden Sie beim Abstimmen des ursprünglichen Kaufs mit der Gutschrift daher diese ursprüngliche Rechnungsnummer.
 

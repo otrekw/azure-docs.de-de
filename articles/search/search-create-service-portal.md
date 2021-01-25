@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 10/14/2020
-ms.openlocfilehash: 1b3804029a4174698ed1e4e4f8d75fbed4fba981
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 3f55e2a7d62d2f32173d382dc9be0d6eb4f83fae
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92102811"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98249753"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-service-in-the-portal"></a>Schnellstart: Erstellen eines Azure Cognitive Search-Diensts im Portal
 
@@ -30,7 +30,7 @@ Bevorzugen Sie PowerShell? Verwenden Sie die Azure Resource Manager-[Dienstvorla
 Die folgenden Diensteigenschaften sind für die Lebensdauer des Diensts festgelegt, und ihre Änderung erfordert einen neuen Dienst. Da sie festgelegt sind, sollten Sie beim Ausfüllen der einzelnen Eigenschaften ihre Auswirkungen auf die Nutzung berücksichtigen:
 
 * Der Dienstname wird Teil des URL-Endpunkts. (Hilfreiche Informationen zu Dienstnamen finden Sie unter [Benennen des Diensts](#name-the-service).)
-* Der Tarif [wirkt sich auf die Abrechnung aus](search-sku-tier.md) und legt eine Obergrenze für die Kapazität fest. Einige Features sind im Free-Tarif nicht verfügbar.
+* Die [Dienstebene](search-sku-tier.md) wirkt sich auf die Abrechnung aus und legt eine Obergrenze für die Kapazität fest. Einige Features sind im Free-Tarif nicht verfügbar.
 * Die Dienstregion kann die Verfügbarkeit bestimmter Szenarien bestimmen. Wenn Sie [Features für hohe Sicherheit](search-security-overview.md) oder [KI-Anreicherung](cognitive-search-concept-intro.md) benötigen, müssen Sie Azure Cognitive Search in derselben Region wie andere Dienste oder in Regionen platzieren, in denen das betreffende Feature bereitgestellt wird. 
 
 ## <a name="subscribe-free-or-paid"></a>Abonnieren (kostenlos oder kostenpflichtig)
@@ -59,11 +59,11 @@ Eine Ressourcengruppe ist ein Container, der verwandte Ressourcen für Ihre Azur
 
 Wenn Sie keine Ressourcen in einer einzigen Gruppe kombinieren oder vorhandene Ressourcengruppen mit Ressourcen gefüllt sind, die in nicht verbundenen Lösungen verwendet werden, erstellen Sie eine neue Ressourcengruppe nur für die Ressource für die kognitive Azure-Suche. 
 
-:::image type="content" source="media/search-create-service-portal/new-resource-group.png" alt-text="Erstellen einer Ressource im Portal" border="false":::
+:::image type="content" source="media/search-create-service-portal/new-resource-group.png" alt-text="Erstellen einer neuen Ressourcengruppe" border="false":::
 
 Im weiteren Verlauf können Sie aktuelle und prognostizierte Kosten insgesamt nachverfolgen oder Gebühren für einzelne Ressourcen anzeigen. Im folgenden Screenshot wird die Art der Kosteninformationen dargestellt, die Sie erwarten können, wenn Sie mehrere Ressourcen in einer Gruppe kombinieren.
 
-:::image type="content" source="media/search-create-service-portal/resource-group-cost-management.png" alt-text="Erstellen einer Ressource im Portal" border="false":::
+:::image type="content" source="media/search-create-service-portal/resource-group-cost-management.png" alt-text="Verwalten von Kosten auf Ressourcengruppenebene" border="false":::
 
 > [!TIP]
 > Ressourcengruppen vereinfachen die Bereinigung, da durch Löschen einer Gruppe alle darin enthaltenen Dienste gelöscht werden. Bei Prototypprojekten, die mehrere Dienste verwenden, sollten Sie all diese Dienste in die gleiche Ressourcengruppe platzieren, um das Bereinigen nach Abschluss des Projekts zu vereinfachen.
@@ -114,11 +114,11 @@ Denken Sie daran, dass ein Tarif nicht geändert werden kann, nachdem der Dienst
 
 Nachdem Sie die erforderlichen Informationen angegeben haben, erstellen Sie den Dienst. 
 
-:::image type="content" source="media/search-create-service-portal/new-service3.png" alt-text="Erstellen einer Ressource im Portal" border="false":::
+:::image type="content" source="media/search-create-service-portal/new-service3.png" alt-text="Überprüfen und Erstellen des Diensts" border="false":::
 
 Ihr Dienst wird innerhalb weniger Minuten bereitgestellt. Sie können den Fortschritt über Azure-Benachrichtigungen überwachen. Heften Sie den Dienst ggf. an Ihr Dashboard an, um in Zukunft einfacher darauf zugreifen zu können.
 
-:::image type="content" source="media/search-create-service-portal/monitor-notifications.png" alt-text="Erstellen einer Ressource im Portal" border="false":::
+:::image type="content" source="media/search-create-service-portal/monitor-notifications.png" alt-text="Überwachen und Anheften des Diensts" border="false":::
 
 ## <a name="get-a-key-and-url-endpoint"></a>Abrufen eines Schlüssels und URL-Endpunkts
 
@@ -128,7 +128,7 @@ Falls Sie nicht das Portal verwenden, müssen Sie den URL-Endpunkt und einen Aut
 
 2. Kopieren Sie auf der Seite **Schlüssel** einen der Administratorschlüssel (diese sind gleichwertig). Administrator-API-Schlüssel sind für das Erstellen, Aktualisieren und Löschen von Objekten in Ihrem Dienst erforderlich. Im Gegensatz dazu bieten Abfrageschlüssel Lesezugriff auf den Indexinhalt.
 
-   :::image type="content" source="media/search-create-service-portal/get-url-key.png" alt-text="Erstellen einer Ressource im Portal" border="false":::
+   :::image type="content" source="media/search-create-service-portal/get-url-key.png" alt-text="Übersichtsseite des Diensts mit URL-Endpunkt" border="false":::
 
 Endpunkt und Schlüssel sind für portalbasierte Aufgaben nicht erforderlich. Das Portal ist bereits mit Ihrer Ressource für die kognitive Azure-Suche mit Administratorrechten verknüpft. Eine exemplarische Vorgehensweise für das Portal finden Sie unter [Schnellstart: Erstellen eines Azure Search-Indexes im Azure-Portal](search-get-started-portal.md).
 
@@ -136,9 +136,9 @@ Endpunkt und Schlüssel sind für portalbasierte Aufgaben nicht erforderlich. Da
 
 Nach der Bereitstellung Ihres Diensts können Sie ihn Ihren Anforderungen entsprechend skalieren. Wenn Sie für Ihren Dienst für die kognitive Azure-Suche den Standard-Tarif ausgewählt haben, können Sie den Dienst in zwei Dimensionen skalieren: Replikate und Partitionen. Wenn Sie den Basic-Tarif auswählen, können Sie nur Replikate hinzufügen. Wenn Sie den kostenlosen Dienst bereitstellen, ist keine Skalierung verfügbar.
 
-***Partitionen*** ermöglichen Ihrem Dienst das Speichern und Durchsuchen weiterer Dokumente.
+**_Partitionen_* _ ermöglichen Ihrem Dienst das Speichern und Durchsuchen weiterer Dokumente.
 
-***Replikate*** ermöglichen Ihrem Dienst, eine größere Menge von Suchabfragen zu verarbeiten.
+_*_Replikate_*_ ermöglichen Ihrem Dienst, eine größere Menge von Suchabfragen zu verarbeiten.
 
 Durch das Hinzufügen von Ressourcen wird Ihre monatliche Rechnung höher. Der [Preisrechner](https://azure.microsoft.com/pricing/calculator/) veranschaulicht, wie das Hinzufügen von Ressourcen sich auf die Abrechnung auswirken kann. Denken Sie daran, dass Sie Ressourcen basierend auf der Last anpassen können. Beispielsweise können Sie Ressourcen erhöhen, um einen vollständigen anfänglichen Index zu erstellen. Später können Sie die Ressourcen auf eine Ebene verringern, die sich besser für die inkrementelle Indizierung eignet.
 
@@ -146,10 +146,10 @@ Durch das Hinzufügen von Ressourcen wird Ihre monatliche Rechnung höher. Der [
 > Ein Dienst benötigt [2 Replikate für schreibgeschützte SLAs und 3 Replikate für SLAs mit Lese-/Schreibzugriff](https://azure.microsoft.com/support/legal/sla/search/v1_0/).
 
 1. Wechseln Sie im Azure-Portal zur Seite Ihres Suchdiensts.
-2. Wählen Sie im linken Navigationsbereich die Optionen **Einstellungen** > **Skalierung** aus.
+2. Wählen Sie im linken Navigationsbereich die Optionen _ *Einstellungen** > **Skalierung** aus.
 3. Verwenden Sie den Schieberegler, um Ressourcen jedes Typs hinzuzufügen.
 
-:::image type="content" source="media/search-create-service-portal/settings-scale.png" alt-text="Erstellen einer Ressource im Portal" border="false":::
+:::image type="content" source="media/search-create-service-portal/settings-scale.png" alt-text="Hinzufügen von Kapazität durch Replikate und Partitionen" border="false":::
 
 > [!Note]
 > In höheren Tarifen stehen pro Partition mehr Speicher und eine höhere Geschwindigkeit zur Verfügung. Weitere Informationen finden Sie unter [Grenzwerte für den Azure Search-Dienst](search-limits-quotas-capacity.md).

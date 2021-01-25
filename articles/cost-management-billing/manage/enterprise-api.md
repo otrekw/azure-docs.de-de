@@ -8,19 +8,19 @@ ms.subservice: enterprise
 ms.topic: reference
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: b78b046e2991fa4ebfb575e4f6a1cc900df0d298
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: a1c420eed89b7b45ea6c50345737b8615f39ad8c
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88686903"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98602091"
 ---
 # <a name="overview-of-reporting-apis-for-enterprise-customers"></a>Überblick über Berichterstellungs-APIs für Unternehmenskunden
 
 > [!Note]
 > Die Azure-Abrechnungs-APIs für die Enterprise-Berichtstellung werden von Microsoft nicht mehr aktualisiert. Verwenden Sie stattdessen die [Azure-Nutzungs](/rest/api/consumption)-APIs.
 
-Die Berichterstellungs-APIs ermöglichen es Azure-Unternehmenskunden, die Verbrauchs- und Abrechnungsdaten in bevorzugte Datenanalysetools abzurufen. Enterprise-Kunden haben ein [Enterprise Agreement (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/) mit Azure unterzeichnet, um ausgehandelte finanzielle Verpflichtungen einzugehen und Zugang zu benutzerdefinierten Preisen für Azure-Ressourcen zu erhalten.
+Die Berichterstellungs-APIs ermöglichen es Azure-Unternehmenskunden, die Verbrauchs- und Abrechnungsdaten in bevorzugte Datenanalysetools abzurufen. Enterprise-Kunden haben ein [Enterprise Agreement (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/) mit Azure unterzeichnet, um eine ausgehandelte Azure-Vorauszahlung (zuvor als „Mindestverbrauch“ bezeichnet) zu leisten und Zugang zu benutzerdefinierten Preisen für Azure-Ressourcen zu erhalten.
 
 Alle Datums- und Uhrzeitparameter, die für APIs benötigt werden, müssen als kombinierte UTC-Werte (Coordinated Universal Time) angegeben werden. Die von APIs zurückgegebenen Werte werden im UTC-Format angezeigt.
 

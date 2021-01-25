@@ -366,6 +366,8 @@
           href: sql-data-warehouse-restore-deleted-dw.md
         - name: Wiederherstellung anhand einer Geosicherung
           href: sql-data-warehouse-restore-from-geo-backup.md
+        - name: Deaktivieren von Geosicherungen
+          href: disable-geo-backup.md
     - name: Integrieren
       items:
         - name: Verwenden von maschinellem Lernen

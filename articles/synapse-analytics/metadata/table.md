@@ -10,12 +10,12 @@ ms.date: 05/01/2020
 ms.author: mrys
 ms.reviewer: jrasnick
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9ee18edd563d94a85dedf48b7a4d6df394c09707
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: b93addfe659847187dffe61f12f5a2bfac9dca21
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96461381"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98209626"
 ---
 # <a name="azure-synapse-analytics-shared-metadata-tables"></a>Azure Synapse Analytics: Gemeinsam genutzte Metadatentabellen
 
@@ -32,7 +32,7 @@ Da die Tabellen asynchron mit dem serverlosen SQL-Pool synchronisiert werden, ko
 
 Verwalten Sie von Spark erstellte Datenbanken mithilfe von Spark. Löschen Sie sie beispielsweise über einen Auftrag für serverlose Apache Spark-Pools, und erstellen Sie Tabellen in der Datenbank über Spark.
 
-Wenn Sie Objekte in einer solchen Datenbank über einen serverlosen SQL-Pool erstellen oder versuchen, die Datenbank zu löschen, ist der Vorgang zwar erfolgreich, die ursprüngliche Spark-Datenbank wird jedoch nicht geändert.
+Wenn Sie über einen serverlosen SQL-Pool Objekte in solch einer Datenbank erstellen oder versuchen, die Datenbank zu löschen, ist der Vorgang nicht erfolgreich. Die ursprüngliche Spark-Datenbank kann nicht über einen serverlosen SQL-Pool geändert werden.
 
 ## <a name="expose-a-spark-table-in-sql"></a>Verfügbarmachen einer Spark-Tabelle in SQL
 

@@ -12,12 +12,12 @@ ms.date: 09/03/2020
 ms.author: marsma
 ms.custom: aaddev, identityplatformtop40, contperf-fy21q1, contperf-fy21q2
 ms.reviewer: aragra, lenalepa, sureshja
-ms.openlocfilehash: cc0d908f479fe5bdf14abb2ace0e6c046fd6d7d5
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 45280ec41a9fd9423e4184b2e1ce593720ab6488
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98011948"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98232351"
 ---
 # <a name="quickstart-register-an-application-with-the-microsoft-identity-platform"></a>Schnellstart: Registrieren einer Anwendung bei Microsoft Identity Platform
 
@@ -97,7 +97,7 @@ Beim Format der Umleitungs-URIs, die Sie einer App-Registrierung hinzufügen, gi
 
 ## <a name="add-credentials"></a>Hinzufügen von Anmeldeinformationen
 
-Anmeldeinformationen werden von vertraulichen Clientanwendungen verwendet, die auf eine Web-API zugreifen. Beispiele für vertrauliche Clients sind Web-Apps, andere Web-APIs oder Daemon- oder Dienstanwendungen. Mit den Anmeldeinformationen kann sich Ihre Anwendung selbst authentifizieren und benötigt zur Laufzeit keine Interaktion durch einen Benutzer.
+Anmeldeinformationen werden von [vertraulichen Clientanwendungen](msal-client-applications.md) verwendet, die auf eine Web-API zugreifen. Beispiele für vertrauliche Clients sind [Web-Apps](scenario-web-app-call-api-overview.md), andere [Web-APIs](scenario-protected-web-api-overview.md) oder [Dienst- und Daemonanwendungen](scenario-daemon-overview.md). Mit den Anmeldeinformationen kann sich Ihre Anwendung selbst authentifizieren und benötigt zur Laufzeit keine Interaktion durch einen Benutzer. 
 
 Sie können Ihrer vertraulichen Client-App-Registrierung sowohl Zertifikate als auch geheime Clientschlüssel (Zeichenfolge) als Anmeldeinformationen hinzufügen.
 
@@ -105,7 +105,7 @@ Sie können Ihrer vertraulichen Client-App-Registrierung sowohl Zertifikate als 
 
 ### <a name="add-a-certificate"></a>Hinzufügen eines Zertifikats
 
-Zertifikate (manchmal auch als *öffentlicher Schlüssel* bezeichnet) werden als Anmeldeinformationstyp empfohlen, da sie eine höhere Sicherheitsstufe als ein geheimer Clientschlüssel bieten.
+Zertifikate (manchmal auch als *öffentlicher Schlüssel* bezeichnet) werden als Anmeldeinformationstyp empfohlen, da sie eine höhere Sicherheitsstufe als ein geheimer Clientschlüssel bieten. Weitere Informationen zur Verwendung von Zertifikaten als Authentifizierungsmethode in Ihrer Anwendung finden Sie unter [Microsoft Identity Platform-Zertifikatanmeldeinformationen für die Anwendungsauthentifizierung](active-directory-certificate-credentials.md).
 
 1. Wählen Sie im Azure-Portal unter **App-Registrierungen** Ihre Anwendung aus.
 1. Wählen Sie **Zertifikate & Geheimnisse** > **Zertifikat hochladen** aus.
@@ -114,7 +114,7 @@ Zertifikate (manchmal auch als *öffentlicher Schlüssel* bezeichnet) werden als
 
 ### <a name="add-a-client-secret"></a>Geheimen Clientschlüssel hinzufügen
 
-Der geheime Clientschlüssel (auch als *Anwendungskennwort* bezeichnet) ist ein Zeichenfolgenwert, der anstelle eines Zertifikats von Ihrer App für die Identifizierung verwendet werden kann. Dieser Anmeldeinformationstyp ist der einfacher zu verwendende Typ, der häufig bei der Entwicklung eingesetzt, aber als unsicherer als ein Zertifikat betrachtet wird. Für Ihre Anwendungen, die in der Produktion eingesetzt werden, sollten Sie Zertifikate verwenden.
+Der geheime Clientschlüssel (auch als *Anwendungskennwort* bezeichnet) ist ein Zeichenfolgenwert, der anstelle eines Zertifikats von Ihrer App für die Identifizierung verwendet werden kann. Dieser Anmeldeinformationstyp ist der einfacher zu verwendende Typ, der häufig bei der Entwicklung eingesetzt, aber als unsicherer als ein Zertifikat betrachtet wird. Für Ihre Anwendungen, die in der Produktion eingesetzt werden, sollten Sie Zertifikate verwenden. Weitere Informationen zu Empfehlungen zur Anwendungssicherheit finden Sie unter [Bewährte Methoden und Empfehlungen für Microsoft Identity Platform](identity-platform-integration-checklist.md#security).
 
 1. Wählen Sie im Azure-Portal unter **App-Registrierungen** Ihre Anwendung aus.
 1. Wählen Sie **Zertifikate und Geheimnisse** >  **Neuer geheimer Clientschlüssel** aus.
@@ -122,6 +122,8 @@ Der geheime Clientschlüssel (auch als *Anwendungskennwort* bezeichnet) ist ein 
 1. Wählen Sie eine Dauer aus.
 1. Wählen Sie **Hinzufügen**.
 1. **Notieren Sie den Wert des geheimen Schlüssels**, der in Ihrem Clientanwendungscode verwendet werden soll. Er wird *nie wieder angezeigt*, nachdem Sie diese Seite verlassen haben.
+
+**Hinweis:** Die ID, die zusammen mit dem Wert des Geheimnisses generiert wird, ist die ID des Geheimnisses und unterscheidet sich von der Anwendungs-ID.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

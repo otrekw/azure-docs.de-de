@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 01/12/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 2d2b65261e09d056ec76b25d6fcb6627bc54770b
-ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
+ms.openlocfilehash: 65794c695fa4b36586b23a308845b1f12a20b7cb
+ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98165721"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98569945"
 ---
 # <a name="synapse-managed-private-endpoints"></a>Verwaltete private Endpunkte in Synapse
 
@@ -23,7 +23,7 @@ In diesem Artikel erfahren Sie mehr über verwaltete private Endpunkte in Azure 
 
 Bei verwalteten privaten Endpunkten handelt es sich um private Endpunkte, die in einem verwalteten virtuellen Netzwerk erstellt werden, das Ihrem Azure Synapse-Arbeitsbereich zugeordnet ist. Mit verwalteten privaten Endpunkten wird eine private Verbindung mit Azure-Ressourcen hergestellt. Azure Synapse verwaltet diese privaten Endpunkte für Sie. Sie können verwaltete private Endpunkte über Ihren Azure Synapse-Arbeitsbereich erstellen, um auf Azure-Dienste (z. B. Azure Storage oder Azure Cosmos DB) und von Azure gehostete Kunden- bzw. Partnerdienste zuzugreifen.
 
-Bei Verwendung von verwalteten privaten Endpunkten verläuft der Datenverkehr zwischen Ihrem Azure Synapse-Arbeitsbereich und anderen Azure-Ressourcen ausschließlich über das Microsoft-Backbone-Netzwerk. Verwaltete private Endpunkte dienen als Schutz vor Datenexfiltration. Für einen verwalteten privaten Endpunkt wird eine private IP-Adresse aus Ihrem verwalteten virtuellen Netzwerk genutzt, um den Azure-Dienst, mit dem Ihr Azure Synapse-Arbeitsbereich kommuniziert, auf effektive Weise in Ihr virtuelles Netzwerk einzubinden. Verwaltete private Endpunkte werden nicht dem gesamten Dienst zugeordnet, sondern nur einer bestimmten Ressource in Azure. Kunden können die Konnektivität auf eine bestimmte Ressource beschränken, die von Ihrer Organisation genehmigt wurde. 
+Bei Verwendung von verwalteten privaten Endpunkten verläuft der Datenverkehr zwischen Ihrem Azure Synapse-Arbeitsbereich und anderen Azure-Ressourcen ausschließlich über das Microsoft-Backbone-Netzwerk. Verwaltete private Endpunkte dienen als Schutz vor Datenexfiltration. Für einen verwalteten privaten Endpunkt wird eine private IP-Adresse aus Ihrem verwalteten virtuellen Netzwerk genutzt, um den Azure-Dienst, mit dem Ihr Azure Synapse-Arbeitsbereich kommuniziert, auf effektive Weise in Ihr virtuelles Netzwerk einzubinden. Verwaltete private Endpunkte werden nicht dem gesamten Dienst zugeordnet, sondern nur einer bestimmten Ressource in Azure. Kunden können die Konnektivität auf eine bestimmte Ressource beschränken, die von Ihrer Organisation genehmigt wurde. 
 
 Weitere Informationen finden Sie in der [Dokumentation zu Private Link](../../private-link/index.yml).
 

@@ -1,8 +1,8 @@
 ### YamlMime:Landing
-title: Dokumentation zu Azure Cloud Services
+title: Dokumentation zu Azure Cloud Services (klassisch)
 summary: Hier erfahren Sie, wie Sie mithilfe von Cloud Services hochverfügbare und skalierbare Cloudanwendungen und APIs hosten und ausführen. Es wird gezeigt, wie Sie Hosts für virtuelle Maschinen verwalten und Software konfigurieren, patchen und installieren.
 metadata:
-  title: Dokumentation zu Azure Cloud Services
+  title: Dokumentation zu Azure Cloud Services (klassisch)
   description: Es wird beschrieben, wie Sie mithilfe von Cloud Services hochverfügbare und skalierbare Cloudanwendungen und APIs hosten und ausführen.
   ms.service: cloud-services
   service: cloud-services
@@ -10,22 +10,22 @@ metadata:
   author: tgore03
   ms.author: tagore
   ms.date: 03/06/2020
-  ms.openlocfilehash: 11699a28ab3b5863812c9c171428896aeaaefec1
-  ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+  ms.openlocfilehash: 596fbac75c93ec36906123ee6ff5c7f13e3706b9
+  ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 10/09/2020
-  ms.locfileid: "78943181"
+  ms.lasthandoff: 01/23/2021
+  ms.locfileid: "98739716"
 landingContent:
-- title: Informationen zu Cloud Services
+- title: Informationen zu Cloud Services (klassisch)
   linkLists:
   - linkListType: overview
     links:
-    - text: Was ist Cloud Services?
+    - text: Was ist Cloud Services (klassisch)?
       url: cloud-services-choose-me.md
   - linkListType: video
     links:
-    - text: Videobibliothek zu Cloud Services
+    - text: Videobibliothek zu Cloud Services (klassisch)
       url: https://azure.microsoft.com/documentation/videos/index/?services=cloud-services
 - title: Erste Schritte
   linkLists:
@@ -49,9 +49,9 @@ landingContent:
   linkLists:
   - linkListType: how-to-guide
     links:
-    - text: Erstellen und Bereitstellen eines Clouddiensts im Portal
+    - text: Erstellen und Bereitstellen eines (klassischen) Clouddiensts im Portal
       url: cloud-services-how-to-create-deploy-portal.md
-    - text: Erstellen eines leeren Clouddienstcontainers in PowerShell
+    - text: Erstellen eines leeren (klassischen) Clouddienstcontainers in PowerShell
       url: cloud-services-powershell-create-cloud-container.md
 - title: Verwalten
   linkLists:
@@ -59,5 +59,5 @@ landingContent:
     links:
     - text: Allgemeine Verwaltungsaufgaben
       url: cloud-services-how-to-manage-portal.md
-    - text: Konfigurieren eines Clouddiensts
+    - text: Konfigurieren eines (klassischen) Clouddiensts
       url: cloud-services-how-to-configure-portal.md

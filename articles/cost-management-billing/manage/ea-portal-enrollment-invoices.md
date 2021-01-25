@@ -3,18 +3,18 @@ title: Rechnungen für die Azure Enterprise-Registrierung
 description: In diesem Artikel wird erläutert, wie Sie Ihre Azure-Unternehmensrechnung verwalten und Aktionen dafür ausführen.
 author: bandersmsft
 ms.author: banders
-ms.date: 12/09/2020
+ms.date: 01/19/2021
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.reviewer: boalcsva
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: c64127f7ebbb416d9dfebb5e417cd27d51697665
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 90ae9bdcee5f5f4c4281f2c3f931389b2ebf9486
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97030721"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98598080"
 ---
 # <a name="azure-enterprise-enrollment-invoices"></a>Rechnungen für die Azure Enterprise-Registrierung
 
@@ -238,7 +238,7 @@ Grundlegende öffentliche Preisinformationen, Maßeinheiten, FAQs und Richtlinie
 
 ### <a name="enterprise-agreement-units-of-measure"></a>Maßeinheiten des Enterprise Agreement
 
-Die Maßeinheiten für Enterprise Agreements unterscheiden sich häufig von denen in anderen Programmen wie z. B. dem Microsoft Online Services-Abonnementvertrag-Programm (MOSA). Diese Ungleichheit bedeutet, dass für eine Reihe von Diensten die Maßeinheit aggregiert wird, um die normalisierten Preise bereitzustellen. Die Maßeinheit, die in der Ansicht „Nutzungszusammenfassung“ des Azure Enterprise Portals angezeigt wird, ist immer das Enterprise-Maß. Eine vollständige Liste der aktuellen Maßeinheiten und Konvertierungen für jeden Dienst wird Ihnen in der Excel-Datei [Friendly_Service_Names.xlsx](https://azurepricing.blob.core.windows.net/supplemental/Friendly_Service_Names.xlsx) bereitgestellt.
+Die Maßeinheiten für Enterprise Agreements unterscheiden sich häufig von denen in anderen Programmen wie z. B. dem Microsoft Online Services-Abonnementvertrag-Programm (MOSA). Diese Ungleichheit bedeutet, dass für eine Reihe von Diensten die Maßeinheit aggregiert wird, um die normalisierten Preise bereitzustellen. Die Maßeinheit, die in der Ansicht „Nutzungszusammenfassung“ des Azure Enterprise Portals angezeigt wird, ist immer das Enterprise-Maß. Sie erhalten eine vollständige Liste der aktuellen Maßeinheiten und Konvertierungen für jeden Dienst, indem Sie eine [Supportanfrage](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) übermitteln.
 
 ### <a name="conversion-between-usage-detail-report-and-the-usage-summary-page"></a>Konvertierung zwischen Nutzungsdetailbericht und Nutzungszusammenfassungs-Seite
 
@@ -324,13 +324,6 @@ Wenn die Änderung des Kanalpartners (Change Of Channel Partner, COCP) in der Mi
 Die Rechnungen werden im Monat nach dem Ende des Abrechnungszeitraums veröffentlicht. Bei einem monatlichen Abrechnungsintervall wird die Septemberrechnung für beide Partner im Oktober veröffentlicht. Im Falle eines vierteljährlichen oder jährlichen Abrechnungszeitraums erhält der Kunde eine Rechnung für den zuvor zugeordneten Partner, die die Nutzung des zugehörigen Zeitraums enthält. Der Rest wird dann für den neuen Partner auf der Grundlage des Abrechnungsintervalls abgerechnet.
 
 ## <a name="next-steps"></a>Nächste Schritte
-
-- Die folgenden Excel-Dateien enthalten Details zu den Azure-Diensten und werden am 6. und 20. jedes Monats aktualisiert:
-
-   | Titel | BESCHREIBUNG | Dateiname |
-   | --- | --- | --- |
-   | [Anzeigedienstnamen](https://azurepricing.blob.core.windows.net/supplemental/Friendly_Service_Names.xlsx) | Listet alle aktiven Dienste auf und umfasst Folgendes: <br>  <ul><li>Dienstkategorie</li>   <li>Anzeigedienstnamen</li>   <li>Vorauszahlungsname und Artikelnummer</li> <li>Verbrauchsname und Artikelnummer</li>   <li>Maßeinheiten</li>   <li>Faktoren zur Konvertierung zwischen berichteter Verwendung und angezeigter Enterprise Portal-Verwendung</li></ul> | Friendly\_Service\_Names.xlsx |
-   | [Dienstdownloadfelder](https://azurepricing.blob.core.windows.net/supplemental/Service_Download_Fields.xlsx) | Diese Tabelle enthält eine Liste aller möglichen Kombinationen dienstbezogener Felder im Verwendungsdownloadbericht. | Service\_Download\_Fields.xlsx |
 
 - Informationen zu Ihren Rechnungen und Gebühren finden Sie unter [Grundlegendes zu Ihrer Azure Enterprise-Rechnung](../understand/review-enterprise-agreement-bill.md).
 - Informationen zur Verwendung des Azure Enterprise Portals finden Sie unter [Erste Schritte mit dem Azure EA-Portal](ea-portal-get-started.md).

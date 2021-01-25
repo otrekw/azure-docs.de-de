@@ -50,6 +50,8 @@
           href: create-data-controller-using-azdata.md
         - name: Kubernetes-Tools
           href: create-data-controller-using-kubernetes-native-tools.md
+        - name: Anwenden einer Sicherheitskontexteinschränkung (OpenShift)
+          href: how-to-apply-security-context-constraint.md
     - name: "Allgemeine Erfahrungen mit Azure\_Arc-fähigen Datendiensten"
       items:
         - name: Überwachen mit Dashboards (Azure Data Studio)
@@ -233,4 +235,4 @@
 - name: Ressourcen
   items:
     - name: Einstieg in Azure Arc
-      href: 'https://github.com/microsoft/azure_arc'
+      href: 'https://azurearcjumpstart.io'
