@@ -5,13 +5,13 @@ author: ambhatna
 ms.author: ambhatna
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 10/26/2020
-ms.openlocfilehash: 3fe63deb8115c0043023301c6d0dc3731e97743f
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.date: 01/14/2021
+ms.openlocfilehash: fa7cc9b9a09bfd2bc503640272b5e7ac3a0a7b58
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96492624"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251300"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql---flexible-server"></a>Lesereplikate in Azure Database for MySQL – Flexible Server
 
@@ -24,14 +24,12 @@ Auf der Anwendungsseite wird die Anwendung typischerweise in Java oder PHP entwi
 
 Mithilfe des Lesereplikatfeatures können Sie Daten von einer Azure Database for MySQL Flexible Server-Instanz auf einem schreibgeschützten Server replizieren. Sie können vom Quellserver auf bis zu **10** Replikate replizieren. Replikate werden asynchron mithilfe des auf der Position der nativen, binären Protokolldatei (binlog) basierenden Replikationsverfahrens der MySQL-Engine aktualisiert. Weitere Informationen zur binlog-Replikation finden Sie unter [Binary Log File Position Based Replication Configuration Overview](https://dev.mysql.com/doc/refman/5.7/en/binlog-replication-configuration-overview.html) (Konfiguration der auf der Position der binären Protokolldatei basierenden Replikation – Übersicht).
 
-Replikate sind neue Server, die Sie ähnlich wie Ihre flexiblen Azure Database for MySQL-Quellserver verwalten. Für jedes gelesene Replikat fallen Gebühren an, die auf der bereitgestellten Compute-Instanz hinsichtlich der virtuellen Kerne und dem Speicherplatz in GB/Monat basieren. Weitere Informationen finden Sie unter [Preise](./concepts-compute-storage.md#pricing).
+Replikate sind neue Server, die Sie ähnlich wie Ihre flexiblen Azure Database for MySQL-Quellserver verwalten. Für jedes gelesene Replikat fallen Gebühren an, die auf der bereitgestellten Compute-Instanz hinsichtlich der virtuellen Kerne und dem Speicherplatz in GB/Monat basieren. Weitere Informationen finden Sie unter [Azure Data Lake Storage – Preise](./concepts-compute-storage.md#pricing).
 
 Weitere Informationen zu Features und Problemen der MySQL-Replikation finden Sie in der [Dokumentation zur MySQL-Replikation](https://dev.mysql.com/doc/refman/5.7/en/replication-features.html).
 
 > [!NOTE]
-> Unvoreingenommene Kommunikation
->
-> Microsoft setzt sich für Diversität und Inklusion ein. In diesem Artikel wird das Wort _Slave_ (Sklave) verwendet. Laut [Microsoft-Styleguide für unvoreingenommene Kommunikation](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md) sollte dieses Wort jedoch vermieden werden. In diesem Artikel wird es aus Konsistenzgründen verwendet, da das Wort derzeit noch in der Software vorkommt. Wenn die Software aktualisiert und um dieses Wort bereinigt wird, wird auch der Artikel entsprechend aktualisiert.
+> Dieser Artikel enthält Verweise auf den Begriff _Slave_, einen Begriff, den Microsoft nicht mehr verwendet. Sobald der Begriff aus der Software entfernt wurde, wird er auch aus diesem Artikel entfernt.
 >
 
 ## <a name="common-use-cases-for-read-replica"></a>Allgemeine Anwendungsfälle für Lesereplikate
@@ -93,24 +91,24 @@ Erfahren Sie, wie Sie die [Replikation auf ein Replikat beenden](how-to-read-rep
 
 ## <a name="failover"></a>Failover
 
-Zwischen Quell- und Replikatservern erfolgt kein automatisiertes Failover. 
+Zwischen Quell- und Replikatservern erfolgt kein automatisiertes Failover.
 
 Lesereplikate sind für die Skalierung leseintensiver Workloads gedacht und sind nicht dafür ausgelegt, die Hochverfügbarkeitsanforderungen eines Servers zu erfüllen. Zwischen Quell- und Replikatservern erfolgt kein automatisiertes Failover. Das Beenden der Replikation bei einem Lesereplikat, um es im Lese-/Schreibmodus online zu schalten, ist die Methode, mit der dieser manuelle Failover durchgeführt wird.
 
-Da die Replikation asynchron erfolgt, gibt es eine Verzögerung zwischen der Quelle und dem Replikat. Die Verzögerungsdauer kann durch eine Reihe von Faktoren beeinflusst werden, z. B. durch den Umfang der Workload auf dem Quellserver und die Wartezeit zwischen Rechenzentren. In den meisten Fällen beträgt die Replikatverzögerung einige Sekunden bis zu einigen Minuten. Sie können die tatsächliche Replikatverzögerung mithilfe der Metrik *Replikatverzögerung* nachverfolgen, die für jedes Replikat verfügbar ist. Diese Metrik zeigt die seit der letzten wiedergegebenen Transaktion verstrichene Zeit an. Es wird empfohlen, die durchschnittliche Verzögerung zu ermitteln, indem Sie die Replikatverzögerung über einen bestimmten Zeitraum hinweg beobachten. Sie können eine Warnung für die Replikatverzögerung festlegen, sodass Sie Maßnahmen ergreifen können, wenn sie sich außerhalb des erwarteten Bereichs befindet.
+Da die Replikation asynchron erfolgt, gibt es eine Verzögerung zwischen der Quelle und dem Replikat. Die Verzögerungsdauer kann durch viele Faktoren beeinflusst werden, z. B. durch den Umfang der Workload auf dem Quellserver und die Wartezeit zwischen Rechenzentren. In den meisten Fällen beträgt die Replikatverzögerung einige Sekunden bis zu einigen Minuten. Sie können die tatsächliche Replikatverzögerung mithilfe der Metrik *Replikatverzögerung* nachverfolgen, die für jedes Replikat verfügbar ist. Diese Metrik zeigt die seit der letzten wiedergegebenen Transaktion verstrichene Zeit an. Es wird empfohlen, die durchschnittliche Verzögerung zu ermitteln, indem Sie die Replikatverzögerung über einen bestimmten Zeitraum hinweg beobachten. Sie können eine Warnung für die Replikatverzögerung festlegen, sodass Sie Maßnahmen ergreifen können, wenn sie sich außerhalb des erwarteten Bereichs befindet.
 
 > [!Tip]
 > Wenn Sie ein Failover auf das Replikat durchführen, zeigt die Verzögerung zum Zeitpunkt der Trennung des Replikats von der Quelle an, wie viel Daten verloren gehen.
 
-Gehen Sie folgendermaßen vor, nachdem Sie entschieden haben, ein Failover auf ein Replikat durchzuführen: 
+Gehen Sie folgendermaßen vor, nachdem Sie sich für ein Failover auf ein Replikat entschieden haben:
 
 1. Beenden der Replikation auf das Replikat<br/>
-   Dieser Schritt ist erforderlich, damit der Replikatserver Schreibvorgänge akzeptieren kann. Im Rahmen dieses Vorgangs wird der Replikatserver von der Quelle getrennt. Nachdem Sie die das Beenden der Replikation gestartet haben, dauert der Abschluss des Back-End-Prozesse in der Regel etwa 2 Minuten. Informationen zu den Auswirkungen dieser Aktion finden Sie im Abschnitt [Beenden der Replikation](#stop-replication) in diesem Artikel.
-    
+   Dieser Schritt ist erforderlich, damit der Replikatserver Schreibvorgänge akzeptieren kann. Im Rahmen dieses Vorgangs wird der Replikatserver von der Quelle getrennt. Nachdem Sie das Beenden der Replikation initiiert haben, dauert der Back-End-Prozess in der Regel etwa 2 Minuten. Informationen zu den Auswirkungen dieser Aktion finden Sie im Abschnitt [Beenden der Replikation](#stop-replication) in diesem Artikel.
+
 2. Verweisen der Anwendung auf das (ehemalige) Replikat<br/>
    Jeder Server verfügt über eine eindeutige Verbindungszeichenfolge. Aktualisieren Sie Ihre Anwendung so, dass Sie auf das (ehemalige) Replikat und nicht auf die Quelle verweist.
-    
-Wenn die Anwendung erfolgreich Lese- und Schreibvorgänge verarbeitet, haben Sie das Failover abgeschlossen. Die Ausfallzeit Ihrer Anwendung hängt davon ab, ob Sie ein Problem erkennen und die oben beschriebenen Schritte 1 und 2 ausführen.
+
+Wenn Ihre Anwendung Lese- und Schreibvorgänge erfolgreich verarbeitet, haben Sie das Failover abgeschlossen. Die Ausfallzeit Ihrer Anwendung hängt davon ab, ob Sie ein Problem erkennen und die oben beschriebenen Schritte 1 und 2 ausführen.
 
 ## <a name="considerations-and-limitations"></a>Überlegungen und Einschränkungen
 
@@ -125,10 +123,10 @@ Wenn die Anwendung erfolgreich Lese- und Schreibvorgänge verarbeitet, haben Sie
 | Beendete Replikate | Wenn Sie die Replikation zwischen einem Quellserver und einem Lesereplikat beenden, wird das beendete Replikat zu einem eigenständigen Server, der sowohl Lese- als auch Schreibzugriffe akzeptiert. Der eigenständige Server kann nicht wieder in ein Replikat umgewandelt werden. |
 | Gelöschte Quellserver und eigenständige Server | Wenn ein Quellserver gelöscht wird, wird die Replikation an alle Lesereplikate beendet. Diese Replikate werden automatisch zu eigenständigen Servern und können sowohl Lese- als auch Schreibvorgänge akzeptieren. Der Quellserver selbst wird gelöscht. |
 | Benutzerkonten | Benutzer auf dem Quellserver werden an die Lesereplikate repliziert. Sie können nur mit denjenigen Benutzerkonten eine Verbindung mit einem Lesereplikat herstellen, die auf dem Quellserver verfügbar sind. |
-| Serverparameter | Um zu verhindern, dass Daten nicht synchronisiert werden und um einen möglichen Datenverlust oder eine Beschädigung zu vermeiden, sind einige Serverparameter bei der Verwendung von Lesereplikaten für die Aktualisierung gesperrt. <br> Die folgenden Serverparameter sind sowohl auf dem Quell- als auch auf dem Replikatserver gesperrt:<br> - [`innodb_file_per_table`](https://dev.mysql.com/doc/refman/8.0/en/innodb-file-per-table-tablespaces.html) <br> - [`log_bin_trust_function_creators`](https://dev.mysql.com/doc/refman/5.7/en/replication-options-binary-log.html#sysvar_log_bin_trust_function_creators) <br> Der Parameter [`event_scheduler`](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_event_scheduler) ist auf den Replikatservern gesperrt. <br> Löschen Sie Replikatserver, aktualisieren Sie den Parameterwert für die Quelle, und erstellen Sie Replikate neu, um einen der oben genannten Parameter auf dem Quellserver zu aktualisieren. |
+| Serverparameter | Um zu verhindern, dass Daten nicht synchronisiert werden und um einen möglichen Datenverlust oder eine Beschädigung zu vermeiden, sind einige Serverparameter bei der Verwendung von Lesereplikaten für die Aktualisierung gesperrt. <br> Die folgenden Serverparameter sind sowohl auf dem Quell- als auch auf dem Replikatserver gesperrt:<br> - [`innodb_file_per_table`](https://dev.mysql.com/doc/refman/8.0/en/innodb-file-per-table-tablespaces.html) <br> - [`log_bin_trust_function_creators`](https://dev.mysql.com/doc/refman/5.7/en/replication-options-binary-log.html#sysvar_log_bin_trust_function_creators) <br> Der Parameter [`event_scheduler`](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_event_scheduler) ist auf den Replikatservern gesperrt. <br> Wenn Sie einen der oben genannten Parameter auf dem Quellserver aktualisieren möchten, löschen Sie Replikatserver, aktualisieren Sie den Parameterwert für die Quelle, und erstellen Sie Replikate neu. |
 | Sonstige | – Die Erstellung des Replikats eines Replikats wird nicht unterstützt. <br> – In-Memory-Tabellen können dazu führen, dass Replikate nicht mehr synchron sind. Dies ist eine Einschränkung der MySQL-Replikationstechnologie. Weitere Informationen finden Sie in der [MySQL-Referenzdokumentation](https://dev.mysql.com/doc/refman/5.7/en/replication-features-memory.html). <br>– Stellen Sie sicher, dass die Quellservertabellen über Primärschlüssel verfügen. Das Fehlen von Primärschlüsseln kann zu Replikationslatenz zwischen der Quelle und den Replikaten führen.<br>– Eine vollständige Liste aller Einschränkungen der MySQL-Replikation finden Sie in der [MySQL-Dokumentation](https://dev.mysql.com/doc/refman/5.7/en/replication-features.html). |
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Erfahren Sie, wie Sie [Lesereplikate über das Azure-Portal erstellen und verwalten](how-to-read-replicas-portal.md).
-- Erfahren Sie, wie Sie [Lesereplikate über die Azure CLI erstellen und verwalten](how-to-read-replicas-cli.md).
+* Erfahren Sie, wie Sie [Lesereplikate über das Azure-Portal erstellen und verwalten](how-to-read-replicas-portal.md).
+* Erfahren Sie, wie Sie [Lesereplikate über die Azure CLI erstellen und verwalten](how-to-read-replicas-cli.md).

@@ -3,12 +3,12 @@ title: Unterstützungsmatrix für VMware- oder physische Notfallwiederherstellun
 description: Fasst die Unterstützung der Notfallwiederherstellung von VMware-VMs und physische Server in Azure mit Azure Site Recovery zusammen.
 ms.topic: conceptual
 ms.date: 07/14/2020
-ms.openlocfilehash: 6cc67a6af9e11e5667479eadfe277d400c2d4947
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 4bf0227cf11b21d7cde2807d465385bfc2b998b5
+ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96492215"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98573053"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>Unterstützungsmatrix für die Notfallwiederherstellung von virtuellen VMware-Computern und physischen Servern in Azure
 
@@ -57,6 +57,9 @@ IIS | Stellen Sie sicher, dass Sie:<br/><br/> - Es ist noch keine Standardwebsit
 NIC-Typ | VMXNET3 (bei Bereitstellung als VMware-VM)
 Art der IP-Adresse | statischen
 Ports | 443 für die Steuerkanalorchestrierung<br/>9443 für den Datentransport
+
+> [!NOTE]
+Das Betriebssystem muss mit dem englischen Gebietsschema installiert werden. Die Konvertierung des Gebietsschemas nach der Installation kann zu potenziellen Problemen führen.
 
 ## <a name="replicated-machines"></a>Replizierte Computer
 
@@ -231,6 +234,7 @@ Gast-/Serverdatenträger mit einer logischen Sektorgröße von 4K und einer phys
 Gast-/Servervolume mit Stripesetdatenträgern > 4 TB | Ja
 Logische Volumeverwaltung (Logical Volume Management, LVM)| Vollständige Speicherzuweisung: ja <br></br> Schlanke Speicherzuweisung: nein
 Gast/Server – Speicherplätze | Nein
+Gast/Server – NVMe-Schnittstelle | Nein
 Gast/Server – Datenträger bei laufendem Systembetrieb hinzufügen/entfernen | Nein
 Gast/Server – Datenträger ausschließen | Ja
 Gast-/Servermultipfad (MPIO) | Nein

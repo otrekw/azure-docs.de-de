@@ -3,15 +3,15 @@ title: Clusterkonfiguration in Azure Kubernetes Services (AKS)
 description: Erfahren Sie, wie Sie in Azure Kubernetes Service (AKS) einen Cluster konfigurieren.
 services: container-service
 ms.topic: article
-ms.date: 09/21/2020
+ms.date: 01/13/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: ab9e2a5483f0699ad7bfca991539025adff34b11
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: eacca50e00dfe8625d86362c444544e2fd5d5511
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97606911"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201109"
 ---
 # <a name="configure-an-aks-cluster"></a>Konfigurieren eines AKS-Clusters
 
@@ -21,10 +21,52 @@ Im Rahmen der Erstellung eines AKS-Clusters müssen Sie möglicherweise Ihre Clu
 
 AKS unterstützt jetzt Ubuntu 18.04 als Knotenbetriebssystem (OS) in allgemeiner Verfügbarkeit für Cluster in Kubernetes-Versionen, die höher als 1.18.8 sind. Für Versionen unter 1.18.x ist AKS Ubuntu 16.04 weiterhin das Standardbasisimage. Ab Kubernetes v1.18.x ist die Standardbasis AKS Ubuntu 18.04.
 
-> [!IMPORTANT]
-> Knotenpools, die unter Kubernetes 1.18 oder höher erstellt wurden, verwenden standardmäßig ein `AKS Ubuntu 18.04`-Knotenimage. Knotenpools auf einer unterstützten Kubernetes-Version vor 1.18 erhalten `AKS Ubuntu 16.04` als Knotenimage, werden jedoch auf `AKS Ubuntu 18.04` aktualisiert, sobald die Kubernetes-Version des Knotenpools auf 1.18 oder höher aktualisiert wird.
-> 
-> Es wird dringend empfohlen, Ihre Workloads auf AKS Ubuntu 18.04-Knotenpools zu testen, bevor Sie Cluster auf 1.18 oder höher verwenden. Informieren Sie sich über das [Testen von Ubuntu 18.04-Knotenpools](#use-aks-ubuntu-1804-existing-clusters-preview).
+### <a name="use-aks-ubuntu-1804-generally-available-on-new-clusters"></a>Verwenden von AKS Ubuntu 18.04 (allgemein verfügbar) für neue Cluster
+
+In Kubernetes v1.18 oder höher erstellte Cluster verwenden standardmäßig ein `AKS Ubuntu 18.04`-Knotenimage. Knotenpools in einer unterstützten Kubernetes-Version vor 1.18 erhalten weiterhin `AKS Ubuntu 16.04` als Knotenimage, werden jedoch auf `AKS Ubuntu 18.04` aktualisiert, sobald die Kubernetes-Version des Clusters oder Knotenpools auf v1.18 oder höher aktualisiert wird.
+
+Es wird dringend empfohlen, Ihre Workloads auf AKS Ubuntu 18.04-Knotenpools zu testen, bevor Sie Cluster auf 1.18 oder höher verwenden. Informieren Sie sich über das [Testen von Ubuntu 18.04-Knotenpools](#test-aks-ubuntu-1804-generally-available-on-existing-clusters).
+
+Wenn Sie einen Cluster mit dem `AKS Ubuntu 18.04`-Knotenimage erstellen möchten, erstellen Sie einfach einen Cluster, auf dem Kubernetes v1.18 oder höher ausgeführt wird, wie unten gezeigt.
+
+```azurecli
+az aks create --name myAKSCluster --resource-group myResourceGroup --kubernetes-version 1.18.14
+```
+
+### <a name="use-aks-ubuntu-1804-generally-available-on-existing-clusters"></a>Verwenden von AKS Ubuntu 18.04 (allgemein verfügbar) für bestehende Cluster
+
+In Kubernetes v1.18 oder höher erstellte Cluster verwenden standardmäßig ein `AKS Ubuntu 18.04`-Knotenimage. Knotenpools in einer unterstützten Kubernetes-Version vor 1.18 erhalten weiterhin `AKS Ubuntu 16.04` als Knotenimage, werden jedoch auf `AKS Ubuntu 18.04` aktualisiert, sobald die Kubernetes-Version des Clusters oder Knotenpools auf v1.18 oder höher aktualisiert wird.
+
+Es wird dringend empfohlen, Ihre Workloads auf AKS Ubuntu 18.04-Knotenpools zu testen, bevor Sie Cluster auf 1.18 oder höher verwenden. Informieren Sie sich über das [Testen von Ubuntu 18.04-Knotenpools](#test-aks-ubuntu-1804-generally-available-on-existing-clusters).
+
+Wenn Ihre Cluster oder Knotenpools für das `AKS Ubuntu 18.04`-Knotenimage bereit sind, können Sie diese wie unten beschrieben einfach auf v1.18 oder höher aktualisieren.
+
+```azurecli
+az aks upgrade --name myAKSCluster --resource-group myResourceGroup --kubernetes-version 1.18.14
+```
+
+Gehen Sie wie folgt vor, wenn Sie nur einen Knotenpool aktualisieren möchten:
+
+```azurecli
+az aks nodepool upgrade -name ubuntu1804 --cluster-name myAKSCluster --resource-group myResourceGroup --kubernetes-version 1.18.14
+```
+
+### <a name="test-aks-ubuntu-1804-generally-available-on-existing-clusters"></a>Testen von AKS Ubuntu 18.04 (allgemein verfügbar) in bestehenden Clustern
+
+Knotenpools, die unter Kubernetes 1.18 oder höher erstellt wurden, verwenden standardmäßig ein `AKS Ubuntu 18.04`-Knotenimage. Knotenpools in einer unterstützten Kubernetes-Version vor 1.18 erhalten weiterhin `AKS Ubuntu 16.04` als Knotenimage, werden jedoch auf `AKS Ubuntu 18.04` aktualisiert, sobald die Kubernetes-Version des Knotenpools auf v1.18 oder höher aktualisiert wird.
+
+Es wird dringend empfohlen, Ihre Workloads in AKS Ubuntu 18.04-Knotenpools zu testen, bevor Sie Ihre Produktionsknotenpools aktualisieren.
+
+Wenn Sie einen Knotenpool mit dem `AKS Ubuntu 18.04`-Knotenimage erstellen möchten, erstellen Sie einfach einen Knotenpool, auf dem Kubernetes v1.18 oder höher ausgeführt wird. Für Ihre Clustersteuerungsebene muss auch mindestens v1.18 verwendet werden, aber für Ihre anderen Knotenpools kann eine ältere Kubernetes-Version verwendet werden.
+Nachfolgend aktualisieren wir zunächst die Steuerungsebene, und dann erstellen wir einen neuen Knotenpool mit v1.18, der die Betriebssystemversion des neuen Knotenimages erhält.
+
+```azurecli
+az aks upgrade --name myAKSCluster --resource-group myResourceGroup --kubernetes-version 1.18.14 --control-plane-only
+
+az aks nodepool add --name ubuntu1804 --cluster-name myAKSCluster --resource-group myResourceGroup --kubernetes-version 1.18.14
+```
+
+### <a name="use-aks-ubuntu-1804-on-new-clusters-preview"></a>Verwenden von AKS Ubuntu 18.04 auf neuen Clustern (Vorschau)
 
 Im folgenden Abschnitt wird erläutert, wie Sie AKS Ubuntu 18.04 auf Clustern, die noch keine Kubernetes-Version 1.18.x oder höher verwenden oder die erstellt wurden, bevor diese Funktion allgemein verfügbar wurde, mithilfe der Vorschau der Betriebssystemkonfiguration verwenden und testen.
 
@@ -57,8 +99,6 @@ Wenn der Status als registriert angezeigt wird, können Sie die Registrierung de
 ```azurecli
 az provider register --namespace Microsoft.ContainerService
 ```
-
-### <a name="use-aks-ubuntu-1804-on-new-clusters-preview"></a>Verwenden von AKS Ubuntu 18.04 auf neuen Clustern (Vorschau)
 
 Konfigurieren Sie den Cluster für die Verwendung von Ubuntu 18,04, wenn der Cluster erstellt wird. Verwenden Sie das Flag `--aks-custom-headers`, um Ubuntu 18.04 als Standardbetriebssystem festzulegen.
 

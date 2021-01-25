@@ -9,34 +9,34 @@ ms.service: cognitive-search
 ms.topic: overview
 ms.date: 12/17/2020
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 1814555f738f37523c5b23ae729bf20bff62e1f9
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.openlocfilehash: 3f62ab20359273aec6743c27ab46b33027e82b55
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97679520"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98598396"
 ---
 # <a name="what-is-azure-cognitive-search"></a>Was ist Azure Cognitive Search?
 
 Azure Cognitive Search ([früher „Azure Search“](whats-new.md#new-service-name)) ist ein Cloudsuchdienst, der Entwicklern APIs und Tools zum Erstellen umfangreicher Suchfunktionen für private, heterogene Inhalte in Web- und Unternehmensanwendungen sowie in mobilen Anwendungen bietet. 
 
-Wenn Sie einen Cognitive Search-Dienst erstellen, erhalten Sie Folgendes:
+Ein Suchdienst verfügt über die folgenden Komponenten:
 
-+ Eine Suchmaschine für die Indizierung und Abfrageausführung
-+ Dauerhafte Speicherung der von Ihnen erstellten und verwalteten Suchindizes
-+ Eine Abfragesprache für einfache und komplexe Abfragen
-+ [KI-basierte Anreicherungen](cognitive-search-concept-intro.md) mit Erstellung von durchsuchbarem Inhalt aus Bildern, unformatiertem Text und Anwendungsdateien
-+ Integration in andere Azure-Dienste für die Bereiche Daten, Machine Learning/KI und Sicherheit
++ Suchmodul für Indizierung und Abfrageausführung
++ Dauerhafte Speicherung von im Besitz von Benutzern befindlichen Suchindizes
++ Abfragesprache für einfache und komplexe Abfragen
++ Optionale [KI-basierte Anreicherungen](cognitive-search-concept-intro.md) mit Erstellung von durchsuchbarem Inhalt aus Bildern, unformatiertem Text und Anwendungsdateien
++ Optionale Integration in andere Azure-Dienste für die Bereiche Daten, Machine Learning/KI und Sicherheit
 
 Aus architektonischer Sicht befindet sich ein Suchdienst zwischen den externen Datenspeichern, die Ihre nicht indizierten Daten enthalten, und einer Client-App, die Abfrageanforderungen an einen Suchindex sendet und die Antwort verarbeitet.
 
 ![Architektur von Azure Cognitive Search](media/search-what-is-azure-search/azure-search-diagram.svg "Architektur von Azure Cognitive Search")
 
-Ein Suchdienst kann in andere Azure-Dienste integriert werden. Dies geschieht in Form von *Indexern*, die das Erfassen/Abrufen von Daten aus Azure-Datenquellen automatisieren, und *Qualifikationsgruppen*, mit denen nutzbare KI aus Cognitive Services (z. B. die Bild- und Textanalyse) oder benutzerdefinierte KI, die Sie in Azure Machine Learning erstellen oder in Azure Functions einbinden, einbezogen wird.
+Nach außen kann eine Suche in andere Azure-Dienste integriert werden. Dies geschieht in Form von *Indexern*, die das Erfassen/Abrufen von Daten aus Azure-Datenquellen automatisieren, und *Qualifikationsgruppen*, mit denen nutzbare KI-Daten aus Cognitive Services (z. B. Bild- und Textanalyse) oder benutzerdefinierte KI-Daten, die Sie in Azure Machine Learning erstellen oder in Azure Functions einbinden, einbezogen werden.
 
 Die beiden primären Workloads des eigentlichen Suchdiensts sind *Indizierung* und *Abfrage*. 
 
-+ Durch Indizierung wird Text in Ihren Suchdienst integriert und durchsuchbar. Intern wird eingehender Text in Token verarbeitet und für schnelle Scans in invertierten Indizes gespeichert. 
++ Durch die Indizierung wird Text für Ihren Suchdienst erfasst und durchsuchbar gemacht. Intern wird eingehender Text in Token verarbeitet und für schnelle Scans in invertierten Indizes gespeichert. Sie können beliebige Inhalte hochladen, die als JSON-Dokumente vorliegen.
 
   Im Rahmen der Indizierung haben Sie die Möglichkeit, *KI-Anreicherungen* über [kognitive Skills](cognitive-search-working-with-skillsets.md) hinzuzufügen. Dabei kann es sich um vordefinierte Skills von Microsoft oder um benutzerdefinierte (also selbst erstellte) Skills handeln. Die anschließenden Analysen und Transformationen können zu neuen Informationen und Strukturen führen, die zuvor nicht vorhanden waren und für viele Such- und Knowledge Mining-Szenarien von großem Nutzen sind.
 
@@ -48,13 +48,13 @@ Die Funktionalität wird über eine einfache [REST-API](/rest/api/searchservice/
 
 Azure Cognitive Search eignet sich sehr gut für folgende Anwendungsszenarien:
 
-+ Konsolidierung heterogener Inhalte in einem privaten, benutzerdefinierten Suchindex. Sie können einen Suchindex mit Streams aus JSON-Dokumenten aus jeder beliebigen Quelle auffüllen. Verwenden Sie für unterstützte Quellen in Azure einen *Indexer*, um die Indizierung zu automatisieren. Die Steuerung des Indexschemas und des Aktualisierungszeitplans ist ein Hauptgrund für die Verwendung von Cognitive Search.
++ Konsolidierung heterogener Inhalte in einem privaten, benutzerdefinierten Suchindex.
 
-+ Einfache Implementierung von Features in Zusammenhang mit der Suche. Such-APIs vereinfachen Abfrageerstellung, Facettennavigation, Filter (einschließlich geografisch-räumlicher Suche), Synonymzuordnung, automatische Vervollständigung und Relevanzoptimierung. Mithilfe von integrierten Features können Sie die Erwartungen von Endbenutzern an einen Suchdienst erfüllen, der der Funktionalität von kommerziellen Suchmaschinen in nichts nachsteht.
++ Einfache Implementierung von suchbezogenen Features: Relevanzoptimierung, Facettennavigation, Filter (z. B. geografisch-räumliche Suche), Synonymzuordnung und AutoVervollständigen.
 
-+ Bei unformatiertem Inhalt handelt es sich um große undifferenzierte Text- oder Bilddateien oder um Anwendungsdateien, die in Azure Blob Storage oder Cosmos DB gespeichert sind. Sie können [kognitive Qualifikationen](cognitive-search-concept-intro.md) während der Indizierung anwenden, um Text zu identifizieren und extrahieren, eine Struktur zu erstellen oder neue Informationen wie übersetzten Text oder Entitäten zu erstellen.
++ Transformation von großen undifferenzierten Text-/Bilddateien oder Anwendungsdateien, die in Azure Blob Storage oder Cosmos DB gespeichert sind, in durchsuchbare JSON-Dokumente. Dies wird bei der Indizierung mit [kognitiven Skills](cognitive-search-concept-intro.md) erreicht, mit denen Funktionen für die externe Verarbeitung hinzugefügt werden.
 
-+ Inhalte erfordern eine linguistische oder benutzerdefinierte Textanalyse. Bei nicht englischsprachigen Inhalten unterstützt Azure Cognitive Search sowohl Lucene-Analysetools als auch die Microsoft-Prozessoren für die Verarbeitung natürlicher Sprache. Sie können Analysetools auch so konfigurieren, dass Rohdaten einer speziellen Verarbeitung unterzogen werden, um z. B. diakritische Zeichen herauszufiltern oder Muster in Zeichenfolgen zu erkennen und beizubehalten.
++ Hinzufügung einer linguistischen oder benutzerdefinierten Textanalyse. Bei nicht englischsprachigen Inhalten unterstützt Azure Cognitive Search sowohl Lucene-Analysetools als auch die Microsoft-Prozessoren für die Verarbeitung natürlicher Sprache. Sie können Analysetools auch so konfigurieren, dass Rohdaten einer speziellen Verarbeitung unterzogen werden, um z. B. diakritische Zeichen herauszufiltern oder Muster in Zeichenfolgen zu erkennen und beizubehalten.
 
 Weitere Informationen zu bestimmten Funktionen finden Sie unter [Azure Cognitive Search-Features](search-features-list.md).
 
@@ -62,11 +62,11 @@ Weitere Informationen zu bestimmten Funktionen finden Sie unter [Azure Cognitive
 
 Mithilfe der folgenden vier Schritte können Sie sich umfassend mit den wichtigsten Suchfunktionen vertraut machen:
 
-1. [**Erstellen Sie einen Suchdienst**](search-create-service-portal.md) im Free-Tarif, der gemeinsam mit anderen Abonnenten genutzt wird, oder verwenden Sie einen [kostenpflichtigen Tarif](https://azure.microsoft.com/pricing/details/search/) mit dedizierten Ressourcen, die ausschließlich Ihrem Dienst vorbehalten sind. Alle Schnellstartanleitungen und Tutorials können mit dem kostenlosen Dienst abgeschlossen werden.
+1. [**Erstellen Sie einen Suchdienst**](search-create-service-portal.md) über den freigegebenen Free-Tarif, oder verwenden Sie einen [kostenpflichtigen Tarif](https://azure.microsoft.com/pricing/details/search/) für dedizierte Ressourcen, die nur von Ihrem Dienst genutzt werden. Alle Schnellstartanleitungen und Tutorials können über einen Dienst, der für die gemeinsame Nutzung freigegeben ist, durchgearbeitet werden.
 
-1. [**Erstellen Sie einen Suchindex**](search-what-is-an-index.md) über das Portal, mithilfe der [REST-API](/rest/api/searchservice/create-index), per [.NET SDK](search-howto-dotnet-sdk.md) oder mithilfe eines anderen SDK. Das Indexschema definiert die Struktur von durchsuchbarem Inhalt.
+1. [**Erstellen Sie einen Suchindex**](search-what-is-an-index.md), indem Sie das Portal, die [REST-API](/rest/api/searchservice/create-index), das [.NET SDK](search-howto-dotnet-sdk.md) oder ein anderes SDK verwenden. Das Indexschema definiert die Struktur von durchsuchbarem Inhalt.
 
-1. [**Laden Sie Inhalte in den Index hoch.**](search-what-is-data-import.md) Verwenden Sie das [Pushmodell](tutorial-optimize-indexing-push-api.md), um JSON-Dokumente aus einer beliebigen Quelle zu pushen, oder verwenden Sie das [Pullmodell (Indexer)](search-indexer-overview.md), wenn sich Ihre Quelldaten in Azure befinden.
+1. [**Laden Sie Inhalt hoch**](search-what-is-data-import.md), indem Sie das [Pushmodell](tutorial-optimize-indexing-push-api.md) verwenden, um JSON-Dokumente aus einer beliebigen Quelle zu pushen. Verwenden Sie alternativ das [Pullmodell (Indexer)](search-indexer-overview.md), falls sich Ihre Quelldaten in Azure befinden.
 
 1. [**Fragen Sie einen Index ab.**](search-query-overview.md) Verwenden Sie dazu den [Suchexplorer](search-explorer.md) im Portal, die [REST-API](search-get-started-rest.md), das [.NET SDK](/dotnet/api/azure.search.documents.searchclient.search) oder ein anderes SDK.
 

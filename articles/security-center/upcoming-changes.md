@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/05/2021
+ms.date: 01/18/2021
 ms.author: memildin
-ms.openlocfilehash: 0656000a1d6449306e8afe538f846c55c79a31a2
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: ba9a640c2231c7098e58ad6e29bbfa196436a7f9
+ms.sourcegitcommit: 61d2b2211f3cc18f1be203c1bc12068fc678b584
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97915285"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98562317"
 ---
 # <a name="important-upcoming-changes-to-azure-security-center"></a>Wichtige bevorstehende Änderungen an Azure Security Center
 
@@ -31,8 +31,37 @@ Die neuesten Versionshinweise finden Sie unter [Neuerungen in Azure Security Cen
 
 ## <a name="planned-changes"></a>Geplante Änderungen
 
+- [Zwei Empfehlungen der Sicherheitskontrolle „Systemupdates anwenden“ als veraltet eingestuft](#two-recommendations-from-apply-system-updates-security-control-being-deprecated)
+- [Verbesserungen für die Empfehlung zur SQL-Datenklassifizierung](#enhancements-to-sql-data-classification-recommendation)
 - [„Nicht anwendbare“ Ressourcen sollen in Azure Policy-Bewertungen als „Konform“ gemeldet werden](#not-applicable-resources-to-be-reported-as-compliant-in-azure-policy-assessments)
 - [35 Vorschauempfehlungen werden hinzugefügt, um die Abdeckung des Azure-Sicherheitsvergleichstests zu erhöhen](#35-preview-recommendations-being-added-to-increase-coverage-of-azure-security-benchmark)
+
+
+### <a name="two-recommendations-from-apply-system-updates-security-control-being-deprecated"></a>Zwei Empfehlungen der Sicherheitskontrolle „Systemupdates anwenden“ als veraltet eingestuft 
+
+**Geschätztes Datum für die Änderung:** Februar 2021
+
+Für die beiden folgenden Empfehlungen ist geplant, sie im Februar 2021 als veraltet einzustufen:
+
+- **Ihre Computer sollten neu gestartet werden, damit Systemupdates wirksam werden.** Dies kann zu geringfügigen Auswirkungen auf Ihre Sicherheitsbewertung führen.
+- **Der Überwachungs-Agent sollte auf Ihren Computern installiert werden.** Diese Empfehlung gilt nur für lokale Computer. Ein Teil der Logik wird in eine andere Empfehlung übertragen: **Log Analytics-Agent-Integritätsprobleme müssen auf Computern gelöst werden**. Dies kann zu geringfügigen Auswirkungen auf Ihre Sicherheitsbewertung führen.
+
+Wir empfehlen Ihnen, Ihre Konfigurationen für den fortlaufenden Export und die Workflowautomatisierung zu überprüfen, um zu ermitteln, ob diese Empfehlungen darin enthalten sind. Darüber hinaus sollten Sie alle Dashboards oder anderen Überwachungstools, für die diese ggf. genutzt werden, entsprechend aktualisieren.
+
+Weitere Informationen zu diesen Empfehlungen finden Sie auf der [Referenzseite zu Sicherheitsempfehlungen](recommendations-reference.md).
+
+
+### <a name="enhancements-to-sql-data-classification-recommendation"></a>Verbesserungen für die Empfehlung zur SQL-Datenklassifizierung
+
+**Geschätztes Datum für die Änderung:** Q2 2021
+
+Die aktuelle Version der Empfehlung **Sensible Daten in Ihren SQL-Datenbanken müssen klassifiziert werden** in der Sicherheitskontrolle **Datenklassifizierung anwenden** werden als veraltet eingestuft und durch eine neue Version ersetzt, die stärker an der Microsoft-Strategie zur Datenklassifizierung ausgerichtet ist. Infolgedessen:
+
+- Die Empfehlung geht nicht mehr in Ihre Sicherheitsbewertung ein.
+- Die Sicherheitskontrolle („Datenklassifizierung anwenden“) geht nicht mehr in Ihre Sicherheitsbewertung ein.
+- Die ID der Empfehlung ändert sich ebenfalls (derzeit b0df6f56-862d-4730-8597-38c0fd4ebd59).
+
+
 
 ### <a name="not-applicable-resources-to-be-reported-as-compliant-in-azure-policy-assessments"></a>„Nicht anwendbare“ Ressourcen sollen in Azure Policy-Bewertungen als „Konform“ gemeldet werden
 

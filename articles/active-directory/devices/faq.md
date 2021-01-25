@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dd438a09b929274808984322981f6d21da0bf68f
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: 73946eea846b06b28d0a0f017ea1317c8cc7326d
+ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96860948"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98165143"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Azure Active Directory: Häufig gestellte Fragen zur Geräteverwaltung
 
@@ -142,6 +142,12 @@ Weiter unten finden Sie Informationen dazu, wie diese Aktionen korrigiert werden
 >* Wenn ein Gerät aus einem Synchronisierungsbereich in Azure AD Connect entfernt und wieder hinzugefügt wird.
 >
 >In beiden Fällen müssen Sie das Gerät auf jedem dieser Geräte manuell erneut registrieren. Um zu überprüfen, ob das Gerät zuvor registriert wurde, können Sie eine [Problembehandlung von Geräten mit dem Befehl „dsregcmd“](troubleshoot-device-dsregcmd.md) ausführen.
+
+---
+
+### <a name="q-i-cannot-add-more-than-3-azure-ad-user-accounts-under-the-same-user-session-on-a-windows-10-device-why"></a>F: Warum kann ich auf einem Windows 10-Gerät nicht mehr als 3 Azure AD-Benutzerkonten in derselben Benutzersitzung hinzufügen?
+
+**A:** Azure AD hat die Unterstützung für mehrere Azure AD-Konten in Windows 10 (Version 1803) hinzugefügt. Unter Windows 10 ist jedoch die Anzahl von Azure AD-Konten auf einem Gerät auf 3 Konten beschränkt, um die Größe von Tokenanforderungen einzuschränken und zuverlässiges einmaliges Anmelden (Single Sign-On, SSO) zu ermöglichen. Sobald 3 Konten hinzugefügt wurden, erhalten Benutzer für nachfolgende Konten eine Fehlermeldung. Die zusätzlichen Probleminformationen auf dem Fehlerbildschirm enthalten eine Meldung, die besagt, dass der Vorgang zum Hinzufügen eines Kontos blockiert wurde, weil der Grenzwert erreicht wurde. 
 
 ---
 ## <a name="azure-ad-join-faq"></a>Häufig gestellte Fragen zu Azure AD Join

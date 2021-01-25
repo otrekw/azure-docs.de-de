@@ -4,12 +4,12 @@ description: Fasst die Unterstützung für die Notfallwiederherstellung für vir
 ms.topic: article
 ms.date: 11/29/2020
 ms.author: raynew
-ms.openlocfilehash: 9670178a9c9d772d8966413371f998aa1f0cf5f3
-ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
+ms.openlocfilehash: 2dbd7cd756e386b44c6933697ff50180021ac035
+ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97968294"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98572305"
 ---
 # <a name="support-matrix-for-azure-vm-disaster-recovery-between-azure-regions"></a>Unterstützungsmatrix für die Notfallwiederherstellung von Azure-VMs zwischen Azure-Regionen
 
@@ -44,13 +44,13 @@ Sie können virtuelle Computer zwischen zwei beliebigen Regionen im gleichen geo
 **Geografischer Cluster** | **Azure-Regionen**
 -- | --
 Südamerika | Kanada, Osten; Kanada, Mitte; USA, Süden-Mitte; USA, Westen-Mitte; USA, Osten; USA, Osten 2; USA, Westen; USA, Westen 2; USA, Mitte; USA, Norden-Mitte
-Europa | Vereinigtes Königreich, Westen; Vereinigtes Königreich, Süden; Europa, Norden; Europa, Westen; Südafrika, Westen; Südafrika, Norden; Norwegen, Osten; Norwegen, Westen; Frankreich, Mitte; Schweiz, Norden
+Europa | Vereinigtes Königreich, Westen; Vereinigtes Königreich, Süden; Europa, Norden; Europa, Westen; Südafrika, Westen; Südafrika, Norden; Norwegen, Osten; Frankreich, Mitte; Schweiz, Norden; Deutschland, Westen-Mitte
 Asia | Indien, Süden; Indien, Mitte; Indien, Westen; Asien, Südosten; Asien, Osten; Japan, Osten; Japan, Westen; Korea, Mitte; Korea, Süden
 Australien    | Australien, Osten; Australien, Südosten; Australien, Mitte; Australien, Mitte 2
 Azure Government    | „US GOV Virginia“; „US GOV Iowa“; „US GOV Arizona“; „US GOV Texas“; „US DoD, Osten“; „US DoD, Mitte“
 Deutschland    | „Deutschland, Mitte“; „Deutschland, Nordosten“
 China | China, Osten; China, Norden; China, Norden 2; China, Osten 2
-Eingeschränkte Regionen, die für eine Notfallwiederherstellung innerhalb des Landes reserviert sind |„Deutschland, Norden“ reserviert für Kunden in „Deutschland, Westen-Mitte“, „Schweiz, Westen“ reserviert für Kunden in „Schweiz, Norden“, „Frankreich, Süden“ reserviert für Kunden in „Frankreich, Mitte“, „VAE, Mitte“eingeschränkt für Kunden in „VAE, Norden“
+Eingeschränkte Regionen, die für eine Notfallwiederherstellung innerhalb des Landes reserviert sind |„Schweiz, Westen“ reserviert für Kunden in „Schweiz, Norden“, „Frankreich, Süden“ reserviert für Kunden in „Frankreich, Mitte“, „VAE, Mitte“ eingeschränkt für Kunden in „VAE, Norden“, „Norwegen, Westen“ für Kunden in „Norwegen, Osten“
 
 >[!NOTE]
 >
@@ -213,7 +213,7 @@ Offlineänderungen an geschützten Datenträgern | Wenn Sie Datenträger trennen
 
 In dieser Tabelle ist die Unterstützung für den Betriebssystemdatenträger, Datenträger und temporären Datenträger der Azure-VM zusammengefasst.
 
-- Es ist wichtig, dass die VM-Datenträgergrenzwerte und -Ziele für [Linux](../virtual-machines/linux/disk-scalability-targets.md)- und [Windows](../virtual-machines/windows/disk-scalability-targets.md)-VMs eingehalten werden, um Leistungsprobleme zu vermeiden.
+- Es ist wichtig, dass die VM-Datenträgergrenzwerte und -Ziele für [verwaltete Datenträger](../virtual-machines/disks-scalability-targets.md) eingehalten werden, um Leistungsprobleme zu vermeiden.
 - Wenn Sie für die Bereitstellung die Standardeinstellungen verwenden, erstellt Site Recovery Datenträger und Speicherkonten automatisch basierend auf den Einstellungen für die Datenquelle.
 - Achten Sie darauf, dass Sie die Richtlinien befolgen, wenn Sie Anpassungen vornehmen möchten.
 
@@ -233,6 +233,7 @@ SSD Standard | Unterstützt |
 Redundanz | LRS und GRS werden unterstützt.<br/><br/> ZRS wird nicht unterstützt.
 Kalter und heißer Speicher | Nicht unterstützt | VM-Datenträger werden für kalten und heißen Speicher nicht unterstützt
 Speicherplätze | Unterstützt |
+NVMe-Speicherschnittstelle | Nicht unterstützt
 Verschlüsselung ruhender Daten (SSE) | Unterstützt | SSE ist die Standardeinstellung für Speicherkonten.
 Verschlüsselung ruhender Daten (CMK) | Unterstützt | Software- und HSM-Schlüssel werden für verwaltete Datenträger unterstützt.
 Doppelte Verschlüsselung im Ruhezustand | Unterstützt | Erfahren Sie mehr über unterstützte Regionen für [Windows](../virtual-machines/disk-encryption.md) und [Linux](../virtual-machines/disk-encryption.md).
@@ -260,7 +261,7 @@ Datenträger mit aktivierter Schreibbeschleunigung | Nicht unterstützt
 Tags  | Benutzergenerierte Tags werden alle 24 Stunden repliziert.
 
 >[!IMPORTANT]
-> Um Leistungsprobleme zu vermeiden, stellen Sie sicher, dass Sie die Skalierbarkeits- und Leistungsziele für VM-Datenträger für virtuelle [Linux](../virtual-machines/linux/disk-scalability-targets.md)- oder [Windows](../virtual-machines/windows/disk-scalability-targets.md)-Computer beachten. Wenn Sie die Standardeinstellungen verwenden, erstellt Site Recovery die erforderlichen Datenträger und Speicherkonten auf Basis der Quellkonfiguration. Wenn Sie Ihre eigenen Einstellungen anpassen und verwenden möchten, halten Sie die Skalierbarkeits- und Leistungsziele für Datenträger für Ihre virtuellen Quellcomputer ein.
+> Um Leistungsprobleme zu vermeiden, stellen Sie sicher, dass Sie die Skalierbarkeits- und Leistungsziele für [verwaltete Datenträger](../virtual-machines/disks-scalability-targets.md) beachten. Wenn Sie die Standardeinstellungen verwenden, erstellt Site Recovery die erforderlichen Datenträger und Speicherkonten auf Basis der Quellkonfiguration. Wenn Sie Ihre eigenen Einstellungen anpassen und verwenden möchten, halten Sie die Skalierbarkeits- und Leistungsziele für Datenträger für Ihre virtuellen Quellcomputer ein.
 
 ## <a name="limits-and-data-change-rates"></a>Grenzwerte und Datenänderungsraten
 

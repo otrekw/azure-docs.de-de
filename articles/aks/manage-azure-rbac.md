@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 09/21/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: a2a385b2be4e1005a7aabd76261b3190ecd2a506
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: af8d0300b533d9f25cddf225f4ffbe78ca6bf2cb
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94684218"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98249634"
 ---
 # <a name="use-azure-rbac-for-kubernetes-authorization-preview"></a>Verwenden von Azure RBAC für Kubernetes-Autorisierung (Vorschau)
 
@@ -113,9 +113,9 @@ Eine erfolgreiche Erstellung eines Clusters mit Azure AD-Integration und Azure 
 AKS stellt die folgenden vier integrierten Rollen bereit:
 
 
-| Role                                | BESCHREIBUNG  |
+| Rolle                                | Beschreibung  |
 |-------------------------------------|--------------|
-| RBAC-Viewer von Azure Kubernetes Service  | Ermöglicht schreibgeschützten Zugriff, um die meisten Objekte in einem Namespace anzuzeigen. Es ist nicht möglich, Rollen oder Rollenbindungen anzuzeigen. Diese Rolle lässt das Anzeigen von `Secrets` nicht zu, da das Lesen des Inhalts von Geheimnissen den Zugriff auf ServiceAccount-Anmeldeinformationen im Namespace ermöglicht, was den API-Zugriff als beliebiges Dienstkonto im Namespace ermöglichen würde (eine Form von Berechtigungsausweitung).  |
+| RBAC-Leser von Azure Kubernetes Service  | Ermöglicht schreibgeschützten Zugriff, um die meisten Objekte in einem Namespace anzuzeigen. Es ist nicht möglich, Rollen oder Rollenbindungen anzuzeigen. Diese Rolle lässt das Anzeigen von `Secrets` nicht zu, da das Lesen des Inhalts von Geheimnissen den Zugriff auf ServiceAccount-Anmeldeinformationen im Namespace ermöglicht, was den API-Zugriff als beliebiges Dienstkonto im Namespace ermöglichen würde (eine Form von Berechtigungsausweitung).  |
 | RBAC-Writer von Azure Kubernetes Service | Ermöglicht Lese-/Schreibzugriff auf die meisten Objekte in einem Namespace. Diese Rolle lässt das Anzeigen oder Ändern von Rollen oder Rollenbindungen nicht zu. Diese Rolle ermöglicht jedoch den Zugriff auf `Secrets` und das Ausführen von Pods als beliebiges Dienstkonto im Namespace, sodass sie verwendet werden kann, um die API-Zugriffsebenen eines beliebigen ServiceAccount im Namespace zu erhalten. |
 | RBAC-Administrator von Azure Kubernetes Service  | Ermöglicht Administratorzugriff, der in einem Namespace erteilt werden soll. Ermöglicht Lese-/Schreibzugriff auf die meisten Ressourcen in einem Namespace (oder Clusterbereich), einschließlich der Möglichkeit zum Erstellen von Rollen und Rollenbindungen innerhalb des Namespace. Diese Rolle lässt keinen Schreibzugriff auf das Ressourcenkontingent oder den Namespace selbst zu. |
 | RBAC-Clusteradministrator von Azure Kubernetes Service  | Ermöglicht Superuserzugriff, um beliebige Aktionen für beliebige Ressourcen auszuführen. Diese Rolle ermöglicht die vollständige Kontrolle über alle Ressourcen im Cluster und in allen Namespaces. |

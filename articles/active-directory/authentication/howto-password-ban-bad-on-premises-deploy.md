@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: deb1f74902fe28d53a5180e4f341547f339a83ac
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: d0a082149d85736000b5bb6a91e2fc7132205a88
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96741983"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98220285"
 ---
 # <a name="plan-and-deploy-on-premises-azure-active-directory-password-protection"></a>Planen und Bereitstellen des lokalen Azure AD-Kennwortschutzes
 
@@ -99,7 +99,7 @@ Es gelten die folgenden zentralen Anforderungen:
 
 Die folgenden Anforderungen gelten für den Azure AD-Kennwortschutz-DC-Agent:
 
-* Alle Computer, auf denen die DC Agent-Software für den Azure AD-Kennwortschutz installiert werden soll, müssen Windows Server 2012 oder höher ausführen.
+* Alle Computer, auf denen die DC-Agent-Software für den Azure AD-Kennwortschutz installiert werden soll, müssen unter Windows Server 2012 oder höher (einschließlich der Windows Server Core-Editionen) ausgeführt werden.
     * Die Active Directory-Domäne oder -Gesamtstruktur muss sich nicht ebenfalls in einer Windows Server 2012-Domänenfunktionsebene oder der Funktionsebene der Gesamtstruktur befinden. Wie unter [Entwurfsprinzipien](concept-password-ban-bad-on-premises.md#design-principles) ausgeführt, gibt es für das Ausführen des DC-Agents oder der Proxysoftware keine Mindestanforderungen an die Domänenfunktionsebene (DFL) oder die Funktionsebene der Gesamtstruktur (FFL).
 * Auf allen Computern, auf denen der Azure AD-Kennwortschutz-DC-Agent ausgeführt wird, muss .NET 4.5 installiert sein.
 * Alle Active Directory-Domänen, die den DC-Agent-Dienst für den Azure AD-Kennwortschutz ausführen, müssen DFSR (Distributed File System Replication) für die SYSVOL-Replikation verwenden.
@@ -116,7 +116,7 @@ Die folgenden Anforderungen gelten für den Azure AD-Kennwortschutz-DC-Agent:
 
 Die folgenden Anforderungen gelten für den Azure AD-Kennwortschutz-Proxydienst:
 
-* Alle Computer, auf denen der Azure AD-Kennwortschutz-Proxydienst installiert werden soll, müssen Windows Server 2012 R2 oder höher ausführen.
+* Alle Computer, auf denen der Azure AD-Kennwortschutz-Proxydienst installiert werden soll, müssen unter Windows Server 2012 R2 oder höher (einschließlich der Windows Server Core-Editionen) ausgeführt werden.
 
     > [!NOTE]
     > Die Bereitstellung des Azure AD-Kennwortschutz-Proxydiensts ist eine obligatorische Voraussetzung für das Bereitstellen des Azure AD-Kennwortschutzes, auch wenn der Domänencontroller möglicherweise über eine direkte ausgehende Internetverbindung verfügt.

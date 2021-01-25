@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.topic: tutorial
 ms.workload: identity
-ms.date: 08/05/2020
+ms.date: 01/19/2021
 ms.author: chmutali
-ms.openlocfilehash: 53707261070e8efbd014614ee700df63a0925ef8
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: ce48d87c6e04e6c349b681e953647feb5e7ddda5
+ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95999704"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98570115"
 ---
 # <a name="tutorial-configure-sap-successfactors-to-active-directory-user-provisioning"></a>Tutorial: Konfigurieren der Benutzerbereitstellung von SAP SuccessFactors in Active Directory 
 In diesem Tutorial werden die Schritte vorgestellt, die Sie zum Bereitstellen von Benutzern aus SuccessFactors Employee Central in sowohl Active Directory (AD) als auch Azure AD ausführen müssen, wobei einige E-Mail-Adressen optional in SuccessFactors zurückgeschrieben werden. 
@@ -94,55 +94,61 @@ Wenden Sie sich an das Administratorteam von SuccessFactors oder Ihren Implement
 
 ### <a name="create-an-api-permissions-role"></a>Erstellen einer API-Berechtigungsrolle
 
-* Melden Sie sich bei SAP SuccessFactors mit einem Benutzerkonto an, das Zugriff auf das Admin Center hat.
-* Suchen Sie nach *Manage Permission Roles* (Berechtigungsrollen verwalten), und wählen Sie dann in den Suchergebnissen **Manage Permission Roles** (Berechtigungsrollen verwalten) aus.
+1. Melden Sie sich bei SAP SuccessFactors mit einem Benutzerkonto an, das Zugriff auf das Admin Center hat.
+1. Suchen Sie nach *Manage Permission Roles* (Berechtigungsrollen verwalten), und wählen Sie dann in den Suchergebnissen **Manage Permission Roles** (Berechtigungsrollen verwalten) aus.
   ![Verwalten von Berechtigungsrollen](./media/sap-successfactors-inbound-provisioning/manage-permission-roles.png)
-* Klicken Sie in der Liste „Permission Role“ (Berechtigungsrolle) auf **Create New** (Neue erstellen).
-  > [!div class="mx-imgBorder"]
-  > ![Erstellen einer neuen Berechtigungsrolle](./media/sap-successfactors-inbound-provisioning/create-new-permission-role-1.png)
-* Fügen Sie einen **Rollennamen** und eine **Beschreibung** für die neue Berechtigungsrolle hinzu. Der Name und die Beschreibung sollten darauf hindeuten, dass die Rolle für Berechtigungen zur API-Verwendung vorgesehen ist.
-  > [!div class="mx-imgBorder"]
-  > ![Details zur Berechtigungsrolle](./media/sap-successfactors-inbound-provisioning/permission-role-detail.png)
-* Klicken Sie unter den Berechtigungseinstellungen auf **Permission...** (Berechtigung), scrollen Sie in der Berechtigungsliste nach unten, und klicken Sie auf **Manage Integration Tools** (Integrationstools verwalten). Aktivieren Sie das Kontrollkästchen für **Allow Admin to Access to OData API through Basic Authentication** (Administratoren den Zugriff auf OData-API über die Standardauthentifizierung erlauben).
-  > [!div class="mx-imgBorder"]
-  > ![Verwalten von Integrationstools](./media/sap-successfactors-inbound-provisioning/manage-integration-tools.png)
-* Scrollen Sie in demselben Feld nach unten, und wählen Sie **Employee Central API** aus. Fügen Sie wie unten gezeigt Berechtigungen für das Lesen und Bearbeiten über die OData-API hinzu. Wählen Sie die Bearbeitungsoption aus, wenn Sie dasselbe Konto für das Rückschreiben in ein SuccessFactors-Szenario verwenden möchten. 
-  > [!div class="mx-imgBorder"]
-  > ![Lese-/Schreibberechtigungen](./media/sap-successfactors-inbound-provisioning/odata-read-write-perm.png)
+1. Klicken Sie in der Liste „Permission Role“ (Berechtigungsrolle) auf **Create New** (Neue erstellen).
+    > [!div class="mx-imgBorder"]
+    > ![Erstellen einer neuen Berechtigungsrolle](./media/sap-successfactors-inbound-provisioning/create-new-permission-role-1.png)
+1. Fügen Sie einen **Rollennamen** und eine **Beschreibung** für die neue Berechtigungsrolle hinzu. Der Name und die Beschreibung sollten darauf hindeuten, dass die Rolle für Berechtigungen zur API-Verwendung vorgesehen ist.
+    > [!div class="mx-imgBorder"]
+    > ![Details zur Berechtigungsrolle](./media/sap-successfactors-inbound-provisioning/permission-role-detail.png)
+1. Klicken Sie unter den Berechtigungseinstellungen auf **Permission...** (Berechtigung), scrollen Sie in der Berechtigungsliste nach unten, und klicken Sie auf **Manage Integration Tools** (Integrationstools verwalten). Aktivieren Sie das Kontrollkästchen für **Allow Admin to Access to OData API through Basic Authentication** (Administratoren den Zugriff auf OData-API über die Standardauthentifizierung erlauben).
+    > [!div class="mx-imgBorder"]
+    > ![Verwalten von Integrationstools](./media/sap-successfactors-inbound-provisioning/manage-integration-tools.png)
+1. Scrollen Sie in demselben Feld nach unten, und wählen Sie **Employee Central API** aus. Fügen Sie wie unten gezeigt Berechtigungen für das Lesen und Bearbeiten über die OData-API hinzu. Wählen Sie die Bearbeitungsoption aus, wenn Sie dasselbe Konto für das Rückschreiben in ein SuccessFactors-Szenario verwenden möchten. 
+    > [!div class="mx-imgBorder"]
+    > ![Lese-/Schreibberechtigungen](./media/sap-successfactors-inbound-provisioning/odata-read-write-perm.png)
 
-  >[!NOTE]
-  >Eine vollständige Liste der Attribute, die von dieser Bereitstellungs-App abgerufen werden, finden Sie in der [SuccessFactors-Attributreferenz](../app-provisioning/sap-successfactors-attribute-reference.md).
+1. Navigieren Sie in demselben Feld für die Berechtigungen zu **Benutzerberechtigungen > Mitarbeiterdaten**, und überprüfen Sie die Attribute, die das Dienstkonto aus dem SuccessFactors-Mandanten lesen kann. Wenn Sie beispielsweise das Attribut *Username* aus SuccessFactors abrufen möchten, sollten Sie sich vergewissern, dass für dieses Attribut die Anzeigeberechtigung erteilt wurde. Überprüfen Sie analog dazu jedes Attribut auf die Anzeigeberechtigung. 
 
-* Klicken Sie auf **Done** (Fertig). Klicken Sie auf **Änderungen speichern**.
+    > [!div class="mx-imgBorder"]
+    > ![Berechtigungen für Mitarbeiterdaten](./media/sap-successfactors-inbound-provisioning/review-employee-data-permissions.png)
+   
+
+    >[!NOTE]
+    >Eine vollständige Liste der Attribute, die von dieser Bereitstellungs-App abgerufen werden, finden Sie in der [SuccessFactors-Attributreferenz](../app-provisioning/sap-successfactors-attribute-reference.md).
+
+1. Klicken Sie auf **Done** (Fertig). Klicken Sie auf **Änderungen speichern**.
 
 ### <a name="create-a-permission-group-for-the-api-user"></a>Erstellen einer Berechtigungsgruppe für den API-Benutzer
 
-* Suchen Sie im SuccessFactors Admin Center nach *Manage Permission Groups* (Berechtigungsgruppen verwalten), und wählen Sie in den Suchergebnissen dann **Manage Permission Groups** (Berechtigungsgruppen verwalten) aus.
-  > [!div class="mx-imgBorder"]
-  > ![Verwalten von Berechtigungsgruppen](./media/sap-successfactors-inbound-provisioning/manage-permission-groups.png)
-* Klicken Sie im Fenster „Manage Permission Groups“ (Berechtigungsgruppen verwalten) auf **Create New** (Neue erstellen).
-  > [!div class="mx-imgBorder"]
-  > ![Hinzufügen einer neuen Gruppe](./media/sap-successfactors-inbound-provisioning/create-new-group.png)
-* Fügen Sie einen Gruppennamen für die neue Gruppe hinzu. Im Gruppennamen sollte angegeben werden, dass die Gruppe für API-Benutzer vorgesehen ist.
-  > [!div class="mx-imgBorder"]
-  > ![Name der Berechtigungsgruppe](./media/sap-successfactors-inbound-provisioning/permission-group-name.png)
-* Fügen Sie der Gruppe Mitglieder hinzu. Beispielsweise können Sie im Dropdownmenü „People Pool“ (Personenpool) die Option **Username** (Benutzername) auswählen und dann den Benutzernamen des API-Kontos eingeben, das für die Integration verwendet werden soll. 
-  > [!div class="mx-imgBorder"]
-  > ![Add group members](./media/sap-successfactors-inbound-provisioning/add-group-members.png) (Hinzufügen von Gruppenmitgliedern)
-* Klicken Sie auf **Done** (Fertig), um die Erstellung der Berechtigungsgruppe abzuschließen.
+1. Suchen Sie im SuccessFactors Admin Center nach *Manage Permission Groups* (Berechtigungsgruppen verwalten), und wählen Sie in den Suchergebnissen dann **Manage Permission Groups** (Berechtigungsgruppen verwalten) aus.
+    > [!div class="mx-imgBorder"]
+    > ![Verwalten von Berechtigungsgruppen](./media/sap-successfactors-inbound-provisioning/manage-permission-groups.png)
+1. Klicken Sie im Fenster „Manage Permission Groups“ (Berechtigungsgruppen verwalten) auf **Create New** (Neue erstellen).
+    > [!div class="mx-imgBorder"]
+    > ![Hinzufügen einer neuen Gruppe](./media/sap-successfactors-inbound-provisioning/create-new-group.png)
+1. Fügen Sie einen Gruppennamen für die neue Gruppe hinzu. Im Gruppennamen sollte angegeben werden, dass die Gruppe für API-Benutzer vorgesehen ist.
+    > [!div class="mx-imgBorder"]
+    > ![Name der Berechtigungsgruppe](./media/sap-successfactors-inbound-provisioning/permission-group-name.png)
+1. Fügen Sie der Gruppe Mitglieder hinzu. Beispielsweise können Sie im Dropdownmenü „People Pool“ (Personenpool) die Option **Username** (Benutzername) auswählen und dann den Benutzernamen des API-Kontos eingeben, das für die Integration verwendet werden soll. 
+    > [!div class="mx-imgBorder"]
+    > ![Add group members](./media/sap-successfactors-inbound-provisioning/add-group-members.png) (Hinzufügen von Gruppenmitgliedern)
+1. Klicken Sie auf **Done** (Fertig), um die Erstellung der Berechtigungsgruppe abzuschließen.
 
 ### <a name="grant-permission-role-to-the-permission-group"></a>Erteilen der Berechtigungsrolle für die Berechtigungsgruppe
 
-* Suchen Sie im SuccessFactors Admin Center nach *Manage Permission Roles* (Berechtigungsrollen verwalten), und wählen Sie in den Suchergebnissen dann **Manage Permission Roles** (Berechtigungsrollen verwalten) aus.
-* Wählen Sie in der Liste **Permission Role** (Berechtigungsrolle) die Rolle aus, die Sie für die Berechtigungen zur API-Verwendung erstellt haben.
-* Klicken Sie unter **Grant this role to...** (Rolle erteilen für) auf die Schaltfläche **Add...** (Hinzufügen).
-* Wählen Sie im Dropdownmenü die Option **Permission Group...** (Berechtigungsgruppe) aus, und klicken Sie dann auf **Select...** (Auswählen), um das Fenster „Groups“ (Gruppen) zu öffnen. Darin können Sie die oben erstellte Gruppe suchen und auswählen. 
-  > [!div class="mx-imgBorder"]
-  > ![Hinzufügen der Berechtigungsgruppe](./media/sap-successfactors-inbound-provisioning/add-permission-group.png)
-* Überprüfen Sie die erteilte Berechtigungsrolle für die Berechtigungsgruppe. 
-  > [!div class="mx-imgBorder"]
-  > ![Details zu Berechtigungsrolle und -gruppe](./media/sap-successfactors-inbound-provisioning/permission-role-group.png)
-* Klicken Sie auf **Änderungen speichern**.
+1. Suchen Sie im SuccessFactors Admin Center nach *Manage Permission Roles* (Berechtigungsrollen verwalten), und wählen Sie in den Suchergebnissen dann **Manage Permission Roles** (Berechtigungsrollen verwalten) aus.
+1. Wählen Sie in der Liste **Permission Role** (Berechtigungsrolle) die Rolle aus, die Sie für die Berechtigungen zur API-Verwendung erstellt haben.
+1. Klicken Sie unter **Grant this role to...** (Rolle erteilen für) auf die Schaltfläche **Add...** (Hinzufügen).
+1. Wählen Sie im Dropdownmenü die Option **Permission Group...** (Berechtigungsgruppe) aus, und klicken Sie dann auf **Select...** (Auswählen), um das Fenster „Groups“ (Gruppen) zu öffnen. Darin können Sie die oben erstellte Gruppe suchen und auswählen. 
+    > [!div class="mx-imgBorder"]
+    > ![Hinzufügen der Berechtigungsgruppe](./media/sap-successfactors-inbound-provisioning/add-permission-group.png)
+1. Überprüfen Sie die erteilte Berechtigungsrolle für die Berechtigungsgruppe. 
+    > [!div class="mx-imgBorder"]
+    > ![Details zu Berechtigungsrolle und -gruppe](./media/sap-successfactors-inbound-provisioning/permission-role-group.png)
+1. Klicken Sie auf **Änderungen speichern**.
 
 ## <a name="configuring-user-provisioning-from-successfactors-to-active-directory"></a>Konfigurieren der Benutzerbereitstellung aus SuccessFactors in Active Directory
 
@@ -173,68 +179,14 @@ Dieser Abschnitt enthält die Schritte zum Konfigurieren der Bereitstellung von 
 7. Ändern des **Modus** **Bereitstellung** in **Automatisch**
 
 8. Klicken Sie auf das angezeigte Informationsbanner, um den Bereitstellungs-Agent herunterzuladen. 
-   > [!div class="mx-imgBorder"]
-   > ![Herunterladen des Agents](./media/sap-successfactors-inbound-provisioning/download-pa-agent.png "Bildschirm für das Herunterladen des Agents")
-
+   >[!div class="mx-imgBorder"]
+   >![Herunterladen des Agents](./media/workday-inbound-tutorial/pa-download-agent.png "Bildschirm für das Herunterladen des Agents")
 
 ### <a name="part-2-install-and-configure-on-premises-provisioning-agents"></a>Teil 2: Installieren und Konfigurieren der lokalen Bereitstellungs-Agents
 
-Um Active Directory lokal bereitzustellen, muss der Bereitstellungs-Agent auf einem Server mit .NET Framework 4.7.1 oder höher und Netzwerkzugriff auf die gewünschten Active Directory-Domänen installiert werden.
+Um Active Directory lokal bereitzustellen, muss der Bereitstellungs-Agent auf einem in die Domäne eingebundenen Server installiert werden, der über Netzwerkzugriff auf die gewünschten Active Directory-Domänen verfügt.
 
-> [!TIP]
-> Sie können die Version von .NET Framework auf dem Server mithilfe der Anweisungen [hier](/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed) überprüfen.
-> Wenn auf dem Server nicht .NET 4.7.1 oder höher installiert ist, können Sie es [hier](https://support.microsoft.com/help/4033342/the-net-framework-4-7-1-offline-installer-for-windows) herunterladen.  
-
-Übertragen Sie das heruntergeladene Installationsprogramm für den Agent auf den Serverhost, und führen Sie die unten angegebenen Schritte aus, um die Konfiguration des Agents abzuschließen.
-
-1. Melden Sie sich bei dem Windows Server an, auf dem Sie den neuen Agent installieren möchten.
-
-1. Starten Sie den Installer für den Bereitstellungs-Agent, akzeptieren Sie die Bedingungen, und klicken Sie auf die Schaltfläche **Installieren**.
-
-   ![Installationsbildschirm](./media/workday-inbound-tutorial/pa_install_screen_1.png "Installationsbildschirm")
-   
-1. Nachdem die Installation abgeschlossen ist, wird der Assistent gestartet, und der Bildschirm **Azure AD verbinden** wird angezeigt. Klicken Sie auf die Schaltfläche **Authentifizieren**, um eine Verbindung mit Ihrer Azure AD-Instanz herzustellen.
-
-   ![Herstellen einer Verbindung mit Azure AD](./media/workday-inbound-tutorial/pa_install_screen_2.png "Herstellen einer Verbindung mit Azure AD")
-   
-1. Authentifizieren Sie Ihre Azure AD-Instanz mit den Anmeldeinformationen eines globalen Administrators.
-
-   ![Administratorauthentifizierung](./media/workday-inbound-tutorial/pa_install_screen_3.png "Administratorauthentifizierung")
-
-   > [!NOTE]
-   > Die Azure AD-Administratoranmeldeinformationen dienen nur zur Herstellung einer Verbindung mit Ihrem Azure AD-Mandanten. Der Agent speichert die Anmeldeinformationen nicht lokal auf dem Server.
-
-1. Nach der erfolgreichen Authentifizierung mit Azure AD wird der Bildschirm **Active Directory verbinden** angezeigt. In diesem Schritt geben Sie Ihren AD-Domänennamen an und klicken auf die Schaltfläche **Verzeichnis hinzufügen**.
-
-   ![Verzeichnis hinzufügen](./media/workday-inbound-tutorial/pa_install_screen_4.png "Verzeichnis hinzufügen")
-  
-1. Sie werden daraufhin aufgefordert, die Anmeldeinformationen für die Verbindung mit der AD-Domäne einzugeben. Auf dem gleichen Bildschirm können Sie die **Domänencontrollerpriorität auswählen**, um Domänencontroller anzugeben, die der Agent zum Senden von Bereitstellungsanforderungen verwenden soll.
-
-   ![Anmeldeinformationen für die Domäne](./media/workday-inbound-tutorial/pa_install_screen_5.png)
-   
-1. Nach dem Konfigurieren der Domäne zeigt der Installer eine Liste der konfigurierten Domänen an. Auf diesem Bildschirm können Sie Schritt 5 und 6 wiederholen, um weitere Domänen hinzuzufügen, oder auf **Weiter** klicken, um mit der Registrierung des Agents fortzufahren.
-
-   ![Konfigurierte Domänen](./media/workday-inbound-tutorial/pa_install_screen_6.png "Konfigurierte Domänen")
-
-   > [!NOTE]
-   > Wenn Sie über mehrere AD-Domänen verfügen (z.B. na.contoso.com, emea.contoso.com), fügen Sie jede Domäne einzeln der Liste hinzu.
-   > Es reicht nicht aus, nur die übergeordnete Domäne (z.B. „contoso.com“) hinzufügen. Sie müssen jede untergeordnete Domäne mit dem Agent registrieren.
-   
-1. Überprüfen Sie die Konfigurationsdetails, und klicken Sie auf **Bestätigen**, um den Agent zu registrieren.
-  
-   ![Bestätigungsbildschirm](./media/workday-inbound-tutorial/pa_install_screen_7.png "Bestätigungsbildschirm")
-   
-1. Der Konfigurations-Assistent zeigt den Fortschritt der Agent-Registrierung an.
-  
-   ![Agent-Registrierung](./media/workday-inbound-tutorial/pa_install_screen_8.png "Agent-Registrierung")
-   
-1. Nach der erfolgreichen Agent-Registrierung können Sie auf **Beenden** klicken, um den Assistenten zu beenden.
-  
-   ![Beendigungsbildschirm](./media/workday-inbound-tutorial/pa_install_screen_9.png "Beendigungsbildschirm")
-   
-1. Überprüfen Sie die Installation des Agents, und stellen Sie sicher, dass er ausgeführt wird, indem Sie das Snap-In „Dienste“ öffnen und nach dem Dienst mit der Bezeichnung „Microsoft Azure AD Connect Provisioning Agent“ suchen.
-  
-   ![Screenshot des in „Dienste“ ausgeführten Microsoft Azure AD Connect-Bereitstellungs-Agents](./media/workday-inbound-tutorial/services.png)
+Übertragen Sie das heruntergeladene Installationsprogramm für den Agent auf den Serverhost, und führen Sie die Schritte im [Abschnitt zur Installation des Agents](../cloud-provisioning/how-to-install.md) aus, um die Konfiguration des Agents durchzuführen.
 
 ### <a name="part-3-in-the-provisioning-app-configure-connectivity-to-successfactors-and-active-directory"></a>Teil 3: Konfigurieren der Konnektivität zwischen SuccessFactors und Active Directory in der Bereitstellungs-App
 In diesem Schritt stellen Sie im Azure-Portal Konnektivität zwischen SuccessFactors und Active Directory her. 
@@ -331,24 +283,22 @@ In diesem Abschnitt konfigurieren Sie den Fluss von Benutzerdaten aus SuccessFac
 
 1. Klicken Sie oben im Abschnitt „Attributzuordnung“ auf **Speichern**, um Ihre Zuordnungen zu speichern.
 
-Sobald Ihre Attributzuordnungskonfiguration abgeschlossen ist, können Sie jetzt [den Benutzerbereitstellungsdienst aktivieren und starten](#enable-and-launch-user-provisioning).
+Nachdem die Konfiguration Ihrer Attributzuordnung abgeschlossen ist, können Sie die Bereitstellung für einen einzelnen Benutzer testen, indem Sie die [bedarfsgesteuerte Bereitstellung](../app-provisioning/provision-on-demand.md) verwenden und dann den [Dienst für die Benutzerbereitstellung aktivieren und starten](#enable-and-launch-user-provisioning).
 
 ## <a name="enable-and-launch-user-provisioning"></a>Aktivieren und Starten der Benutzerbereitstellung
 
-Nachdem die Konfiguration der SuccessFactors-Bereitstellungs-App abgeschlossen ist, können Sie den Bereitstellungsdienst im Azure-Portal aktivieren.
+Nachdem Sie die Konfiguration der SuccessFactors-Bereitstellungs-App abgeschlossen haben und die Bereitstellung für einen einzelnen Benutzer per [bedarfsgesteuerter Bereitstellung](../app-provisioning/provision-on-demand.md) überprüft haben, können Sie den Bereitstellungsdienst im Azure-Portal aktivieren.
 
 > [!TIP]
-> Beim Aktivieren des Bereitstellungsdiensts werden Bereitstellungsvorgänge für alle Benutzer im Bereich initiiert. Wenn Fehler bei der Zuordnung oder SuccessFactors-Datenprobleme auftreten, kann der Bereitstellungsauftrag fehlschlagen und in den Quarantänezustand versetzt werden. Um dies zu vermeiden, empfehlen wir, den Filter **Quellobjektbereich** zu konfigurieren und Ihre Attributzuordnungen mit einigen Testbenutzern zu testen, bevor Sie die vollständige Synchronisierung für alle Benutzer starten. Sobald Sie sich vergewissert haben, dass die Zuordnungen funktionieren und Sie die gewünschten Ergebnisse erhalten, können Sie den Filter entweder entfernen oder schrittweise erweitern, um mehr Benutzer einzubinden.
+> Beim Aktivieren des Bereitstellungsdiensts werden Bereitstellungsvorgänge für alle Benutzer im Bereich initiiert. Wenn Fehler bei der Zuordnung oder SuccessFactors-Datenprobleme auftreten, kann der Bereitstellungsauftrag fehlschlagen und in den Quarantänezustand versetzt werden. Um dies zu vermeiden, empfehlen wir Ihnen, den Filter **Quellobjektbereich** zu konfigurieren und Ihre Attributzuordnungen mit einigen Testbenutzern per [bedarfsgesteuerter Bereitstellung](../app-provisioning/provision-on-demand.md) zu testen, bevor Sie die vollständige Synchronisierung für alle Benutzer starten. Sobald Sie sich vergewissert haben, dass die Zuordnungen funktionieren und Sie die gewünschten Ergebnisse erhalten, können Sie den Filter entweder entfernen oder schrittweise erweitern, um mehr Benutzer einzubinden.
 
-1. Legen Sie auf der Registerkarte **Bereitstellung** die Einstellung **Bereitstellungsstatus** auf **Ein** fest.
+1. Wechseln Sie zum Blatt **Bereitstellung**, und klicken Sie auf **Bereitstellung beginnen**.
 
-2. Klicken Sie auf **Speichern**.
+1. Dieser Vorgang startet die erste Synchronisierung, die abhängig von der Anzahl von Benutzern im SuccessFactors-Mandanten mehrere Stunden dauern kann. Sie können die Statusanzeige überprüfen, um den Fortschritt des Synchronisierungszyklus zu verfolgen. 
 
-3. Dieser Vorgang startet die erste Synchronisierung, die abhängig von der Anzahl von Benutzern im SuccessFactors-Mandanten mehrere Stunden dauern kann. Sie können die Statusanzeige überprüfen, um den Fortschritt des Synchronisierungszyklus zu verfolgen. 
+1. Im Azure-Portal können Sie sich auf der Registerkarte **Überwachungsprotokolle** jederzeit ansehen, welche Aktionen der Bereitstellungsdienst ausgeführt hat. Die Überwachungsprotokolle enthalten alle einzelnen Synchronisierungsereignisse des Bereitstellungsdiensts, beispielsweise welche Benutzer in SuccessFactors gelesen und anschließend zu Active Directory hinzugefügt oder darin aktualisiert wurden. 
 
-4. Im Azure-Portal können Sie sich auf der Registerkarte **Überwachungsprotokolle** jederzeit ansehen, welche Aktionen der Bereitstellungsdienst ausgeführt hat. Die Überwachungsprotokolle enthalten alle einzelnen Synchronisierungsereignisse des Bereitstellungsdiensts, beispielsweise welche Benutzer in SuccessFactors gelesen und anschließend zu Active Directory hinzugefügt oder darin aktualisiert wurden. 
-
-5. Nach Abschluss der ersten Synchronisierung wird auf der Registerkarte **Bereitstellung** ein Überwachungszusammenfassungsbericht ausgegeben:
+1. Nach Abschluss der ersten Synchronisierung wird auf der Registerkarte **Bereitstellung** ein Überwachungszusammenfassungsbericht ausgegeben:
 
    > [!div class="mx-imgBorder"]
    > ![Statusanzeige für die Bereitstellung](./media/sap-successfactors-inbound-provisioning/prov-progress-bar-stats.png)

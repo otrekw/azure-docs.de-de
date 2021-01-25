@@ -3,12 +3,12 @@ title: Verbessern der Leistung von Azure-Anwendungen mit Advisor
 description: Anhand der Empfehlungen zur Leistung in Azure Advisor können Sie die Geschwindigkeit und Reaktionszeit Ihrer unternehmenskritischen Anwendungen verbessern.
 ms.topic: article
 ms.date: 07/29/2020
-ms.openlocfilehash: 8937272f8b6ef945d80076732ea38523f7b475a1
-ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
+ms.openlocfilehash: d7d4e87670ca529f38465e928c4067daec802b8f
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97802540"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98248427"
 ---
 # <a name="improve-the-performance-of-azure-applications-by-using-azure-advisor"></a>Verbessern der Leistung von Azure-Anwendungen mit Azure Advisor
 
@@ -177,7 +177,7 @@ Weitere Informationen zum [Immersive Reader SDK](../cognitive-services/immersive
 
 ## <a name="improve-vm-performance-by-changing-the-maximum-session-limit"></a>Verbessern der VM-Leistung durch Ändern des maximalen Sitzungslimits
 
-Advisor erkennt, dass Sie über einen Hostpool verfügen, für den als Lastenausgleichsalgorithmus „Tiefensuche“ festgelegt ist und dessen maximales Sitzungslimit größer oder gleich 99.999 ist. Beim tiefenorientierten Lastenausgleich wird die Option für die maximale Anzahl von Sitzungen verwendet, um die maximale Anzahl von Benutzern zu bestimmen, für die gleichzeitige Sitzungen auf einem einzelnen Sitzungshost vorhanden sein können. Ist die maximale Anzahl von Sitzungen zu hoch, werden alle Benutzersitzungen an denselben Sitzungshost weitergeleitet. Dies beeinträchtigt die Leistung und Zuverlässigkeit. Wenn Sie also einen Hostpool mit tiefenorientiertem Lastenausgleich konfigurieren, müssen Sie auch eine geeignete maximale Anzahl von Sitzungen festlegen. Orientieren Sie sich hierbei an der Konfiguration Ihrer Bereitstellung und an der Kapazität Ihrer VMs. 
+Advisor erkennt, dass Sie über einen Hostpool verfügen, für den als Lastenausgleichsalgorithmus „Tiefensuche“ festgelegt ist und dessen maximales Sitzungslimit größer oder gleich 999999 ist. Beim tiefenorientierten Lastenausgleich wird die Option für die maximale Anzahl von Sitzungen verwendet, um die maximale Anzahl von Benutzern zu bestimmen, für die gleichzeitige Sitzungen auf einem einzelnen Sitzungshost vorhanden sein können. Ist die maximale Anzahl von Sitzungen zu hoch, werden alle Benutzersitzungen an denselben Sitzungshost weitergeleitet. Dies beeinträchtigt die Leistung und Zuverlässigkeit. Wenn Sie also einen Hostpool mit tiefenorientiertem Lastenausgleich konfigurieren, müssen Sie auch eine geeignete maximale Anzahl von Sitzungen festlegen. Orientieren Sie sich hierbei an der Konfiguration Ihrer Bereitstellung und an der Kapazität Ihrer VMs. 
 
 Weitere Informationen zum Lastenausgleich in Windows Virtual Desktop finden Sie unter [Konfigurieren der Lastenausgleichsmethode für Windows Virtual Desktop](/azure/virtual-desktop/troubleshoot-set-up-overview).
 

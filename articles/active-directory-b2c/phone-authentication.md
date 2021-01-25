@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 09/01/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 9d4fa80f669493e4dc47a9ad0f9bfe9390d4ab24
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 8d41f8959d0a1ec0d6e48cf2fa4711a8ef8d8ae5
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94953575"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98178941"
 ---
 # <a name="set-up-phone-sign-up-and-sign-in-with-custom-policies-in-azure-ad-b2c"></a>Einrichten von Telefonregistrierung und -anmeldung mit benutzerdefinierten Richtlinien in Azure AD B2C
 
@@ -39,7 +39,7 @@ Einmalkennwörter werden mithilfe von SMS-Textnachrichten an Ihre Benutzer gesen
 >
 > *&lt;Einfügen: Link zu Ihrer Datenschutzerklärung&gt;*<br/>*&lt;Einfügen: Link zu Ihren Vertragsbedingungen&gt;*
 
-Wenn Sie Ihre eigenen Zustimmungsinformationen hinzufügen möchten, passen Sie das folgende Beispiel an. Fügen Sie den entsprechenden Inhalt in die „LocalizedResources“-Elemente für die Inhaltsdefinition (ContentDefinition) ein, die von der selbstbestätigten Seite mit dem Anzeigesteuerelement verwendet wird (Datei „Phone-Email-Base.xml“ im Starter Pack für die Telefonregistrierung und -anmeldung):
+Wenn Sie Ihre eigenen Zustimmungsinformationen hinzufügen möchten, passen Sie das folgende Beispiel an. Fügen Sie den entsprechenden Inhalt in die „LocalizedResources“-Elemente für die Inhaltsdefinition (ContentDefinition) ein, die von der selbstbestätigten Seite mit dem Anzeigesteuerelement verwendet wird (Datei *Phone_Email_Base.xml* im [Starter Pack für die Telefonregistrierung und -anmeldung][starter-pack-phone]):
 
 ```xml
 <LocalizedResources Id="phoneSignUp.en">        

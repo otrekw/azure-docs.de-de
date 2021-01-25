@@ -13,12 +13,12 @@ ms.date: 09/24/2018
 ms.author: kkrishna
 ms.reviewer: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: f5a5242cb9448b3d11e0921b2272cf00bef8f6c1
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: 5f6ac11fc5c7bbe7a8f81e6ea89e2c582ebcf264
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97722265"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98178737"
 ---
 # <a name="how-to-restrict-your-azure-ad-app-to-a-set-of-users-in-an-azure-ad-tenant"></a>Gewusst wie: Einschränken Ihrer Azure AD-App auf eine Gruppe von Benutzern in einem Azure AD-Mandanten
 
@@ -34,8 +34,8 @@ Mandantenadministratoren und Entwickler können auch durch Verwendung dieser int
 
 Die Option zum Beschränken einer App auf eine bestimmte Gruppe von Benutzern oder Sicherheitsgruppen in einem Mandanten funktioniert für die folgenden Arten von Anwendungen:
 
-- Anwendungen, die für die einmalige Verbundanmeldung mit SAML-basierter Authentifizierung konfiguriert sind
-- Anwendungsproxyanwendungen mit Verwendung von Azure AD-Vorauthentifizierung
+- Anwendungen, die für die einmalige Verbundanmeldung mit SAML-basierter Authentifizierung konfiguriert sind.
+- Anwendungsproxyanwendungen, die Azure AD-Vorauthentifizierung verwenden.
 - Anwendungen, die direkt auf der Azure AD-Anwendungsplattform mit Verwendung der OAuth 2.0/OpenID Connect-Authentifizierung erstellt werden (nachdem ein Benutzer oder Administrator seine Zustimmung für die Anwendung erteilt hat).
 
      > [!NOTE]
@@ -47,50 +47,40 @@ Es gibt zwei Möglichkeiten zum Erstellen einer Anwendung mit aktivierter Benutz
 
 ### <a name="enterprise-applications-requires-the-global-administrator-role"></a>Unternehmensanwendungen (erfordert die Rolle „Globaler Administrator“)
 
-1. Navigieren Sie zum [**Azure-Portal**](https://portal.azure.com/), und melden Sie sich als **globaler Administrator** an.
-1. Wählen Sie in der obersten Leiste das angemeldete Konto aus. 
-1. Wählen Sie unter **Verzeichnis** den Azure AD-Mandanten aus, für den die App registriert werden soll.
-1. Wählen Sie im Navigationsmenü auf der linken Seite die Option **Azure Active Directory**. Führen Sie die folgenden Schritte aus, wenn Azure Active Directory im Navigationsbereich nicht verfügbar ist:
-
-    1. Wählen Sie oben im Hauptnavigationsmenü auf der linken Seite die Option **Alle Dienste**.
-    1. Geben Sie im Filtersuchfeld den Namen **Azure Active Directory** ein, und wählen Sie dann in den Ergebnissen das Element **Azure Active Directory** aus.
-
-1. Wählen Sie im Bereich **Azure Active Directory** im Navigationsmenü **Azure Active Directory** auf der linken Seite die Option **Unternehmensanwendungen**.
-1. Wählen Sie **Alle Anwendungen**, um eine Liste mit Ihren Anwendungen anzuzeigen.
-
-     Falls die gewünschte Anwendung hier nicht angezeigt wird, können Sie oben in der Liste **Alle Anwendungen** die verschiedenen Filter verwenden, um den Inhalt der Liste einzugrenzen. Sie können auch in der Liste nach unten scrollen, um nach Ihrer Anwendung zu suchen.
-
-1. Wählen Sie in der Liste die Anwendung aus, der Sie einen Benutzer oder eine Sicherheitsgruppe zuweisen möchten.
-1. Wählen Sie auf der Seite **Übersicht** der Anwendung im linken Navigationsmenü der Anwendung die Option **Eigenschaften** aus.
+1. Melden Sie sich als **globaler Administrator** beim <a href="https://portal.azure.com/" target="_blank">Azure-Portal<span class="docon docon-navigate-external x-hidden-focus"></span></a> an.
+1. Wenn Sie Zugriff auf mehrere Mandanten haben, verwenden Sie im Menü am oberen Rand den Filter **Verzeichnis + Abonnement** :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::, um den Mandanten auszuwählen, für den Sie eine Anwendung registrieren möchten.
+1. Suchen Sie nach **Azure Active Directory**, und wählen Sie diese Option aus.
+1. Wählen Sie unter **Verwalten** die Optionen **Unternehmensanwendungen** > **Alle Anwendungen** aus.
+1. Wählen Sie in der Liste die Anwendung aus, der Sie einen Benutzer oder eine Sicherheitsgruppe zuweisen möchten. 
+    Verwenden Sie oben im Fenster die Filter, um nach einer bestimmten Anwendung zu suchen.
+1. Wählen Sie auf der Seite **Übersicht** der Anwendung unter **Verwalten** die Option **Eigenschaften** aus.
 1. Suchen Sie nach der Einstellung **Benutzerzuweisung erforderlich?** , und legen Sie sie auf **Ja** fest. Wenn diese Option auf **Ja** festgelegt ist, müssen Benutzer im Mandanten zuerst dieser Anwendung zugewiesen werden. Andernfalls können sie sich nicht bei dieser Anwendung anmelden.
-1. Wählen Sie **Speichern**, um diese Konfigurationsänderung zu speichern.
+1. Wählen Sie **Speichern** aus.
 
 ### <a name="app-registration"></a>App-Registrierung
 
-1. Navigieren Sie zum [**Azure-Portal**](https://portal.azure.com/).
-1. Wählen Sie in der obersten Leiste das angemeldete Konto aus. 
-1. Wählen Sie unter **Verzeichnis** den Azure AD-Mandanten aus, für den die App registriert werden soll.
-1. Wählen Sie im Navigationsmenü auf der linken Seite die Option **Azure Active Directory**.
-1. Wählen Sie im Bereich **Azure Active Directory** im linken Navigationsmenü **Azure Active Directory** die Option **App-Registrierungen** aus.
-1. Erstellen Sie die App, die Sie verwalten möchten, oder wählen Sie die App aus. Sie müssen der **Besitzer** dieser App-Registrierung sein.
-1. Folgen Sie auf der Seite **Übersicht** der Anwendung dem Link **Verwaltete Anwendung in lokalem Verzeichnis** unter der Zusammenfassung oben auf der Seite. Dadurch gelangen Sie zur _verwalteten Unternehmensanwendung_ Ihrer App-Registrierung.
-1. Wählen Sie auf dem Navigationsblatt auf der linken Seite die Option **Eigenschaften** aus.
+1. Melden Sie sich beim <a href="https://portal.azure.com/" target="_blank">Azure-Portal<span class="docon docon-navigate-external x-hidden-focus"></span></a> an.
+1. Wenn Sie Zugriff auf mehrere Mandanten haben, verwenden Sie im Menü am oberen Rand den Filter **Verzeichnis + Abonnement** :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::, um den Mandanten auszuwählen, für den Sie eine Anwendung registrieren möchten.
+1. Suchen Sie nach **Azure Active Directory**, und wählen Sie diese Option aus.
+1. Wählen Sie unter **Verwalten** die Option **App-Registrierungen** aus.
+1. Erstellen Sie die App, die Sie verwalten möchten, oder wählen Sie die App aus. Sie müssen der **Besitzer** dieser Anwendung sein.
+1. Wählen Sie auf der Seite **Übersicht** der Anwendung im Abschnitt **Essentials** den Link **Verwaltete Anwendung in lokalem Verzeichnis** aus.
+1. Wählen Sie unter **Verwalten** die Option **Eigenschaften** aus.
 1. Suchen Sie nach der Einstellung **Benutzerzuweisung erforderlich?** , und legen Sie sie auf **Ja** fest. Wenn diese Option auf **Ja** festgelegt ist, müssen Benutzer im Mandanten zuerst dieser Anwendung zugewiesen werden. Andernfalls können sie sich nicht bei dieser Anwendung anmelden.
-1. Wählen Sie **Speichern**, um diese Konfigurationsänderung zu speichern.
+1. Wählen Sie **Speichern** aus.
 
 ## <a name="assign-users-and-groups-to-the-app"></a>Zuweisen von Benutzern und Gruppen zur App
 
 Nachdem Sie Ihre App für die Aktivierung der Benutzerzuweisung konfiguriert haben, können Sie damit beginnen, der App Benutzer und Gruppen zuzuweisen.
 
-1. Wählen Sie in der Unternehmensanwendung im Navigationsmenü auf der linken Seite den Bereich **Benutzer und Gruppen** aus.
-1. Wählen Sie oben in der Liste **Benutzer und Gruppen** die Schaltfläche **Benutzer hinzufügen** aus, um den Bereich **Zuweisung hinzufügen** zu öffnen.
-1. Wählen Sie im Bereich **Zuweisung hinzufügen** den Selektor **Benutzer**. 
+1. Wählen Sie unter **Verwalten** die Optionen **Benutzer und Gruppen** > **Benutzer/Gruppe hinzufügen** aus.
+1. Wählen Sie die Auswahl **Benutzer** aus. 
 
      Eine Liste mit Benutzern und Sicherheitsgruppen wird mit einem Textfeld angezeigt, mit dem bestimmte Benutzer oder Gruppen gesucht werden können. Auf diesem Bildschirm können Sie mehrere Benutzer und Gruppen auf einmal auswählen.
 
-1. Nachdem Sie mit dem Auswählen der Benutzer und Gruppen fertig sind, können Sie unten die Schaltfläche **Auswählen** verwenden, um mit dem nächsten Teil fortzufahren.
+1. Wählen Sie nach dem Auswählen der Benutzer und Gruppen die Option **Auswählen** aus.
 1. (Optional) Wenn Sie App-Rollen in Ihrer Anwendung definiert haben, können mit der Option **Rolle auswählen** die ausgewählten Benutzer und Gruppen einer der Anwendungsrollen zuweisen. 
-1. Wählen Sie unten die Schaltfläche **Zuweisen** aus, um die Zuweisungen von Benutzern und Gruppen zur App abzuschließen. 
+1. Wählen Sie **Zuweisen** aus, um die Zuweisungen von Benutzern und Gruppen für die App abzuschließen. 
 1. Vergewissern Sie sich, dass die hinzugefügten Benutzer und Gruppen in der aktualisierten Liste **Benutzer und Gruppen** angezeigt werden.
 
 ## <a name="more-information"></a>Weitere Informationen

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 0f0d94dbc7b2c720faa1da41a88e3c3313dac377
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.openlocfilehash: df82e76fa2e5a9ea70c447411beafb8a2df9b036
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97680757"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98601588"
 ---
 # <a name="azure-maps-community---open-source-projects"></a>Azure Maps-Community: Open-Source-Projekte
 
@@ -65,6 +65,12 @@ Im Folgenden finden Sie eine Liste von Open-Source-Projekten, mit denen die Funk
 | [.NET-Remotesteuerung für Azure Maps für UWP-IoT-Geräte](https://github.com/Azure-Samples/azure-maps-dotnet-webgl-uwp-iot-remote-control) | Dies ist eine Beispielanwendung, die zeigt, wie Sie eine ferngesteuerte Karte mithilfe von Azure Maps und IoT Hub-Diensten erstellen. |
 | [Implementieren der räumlichen IoT-Analyse mit Azure Maps](https://github.com/Azure-Samples/iothub-to-azure-maps-geofencing) | Das Nachverfolgen und Erfassen relevanter Ereignisse, die in Raum und Zeit eintreten, ist ein häufiges IoT-Szenario. |
 
+**Kartensteuerelement-Plug-Ins von Drittanbietern**
+
+| Projektname | BESCHREIBUNG |
+|-|-|
+| [Azure Maps-Leaflet-Plug-In](https://github.com/azure-samples/azure-maps-leaflet) | Ein [Leaflet](https://leafletjs.com/)-JavaScript-Plug-In, das die Überlagerung von Kachelebenen aus [Azure Maps-Kacheldiensten](https://docs.microsoft.com/rest/api/maps/renderv2/getmaptilepreview) erleichtert. |
+ 
 **Tools und Ressourcen**
 
 | Projektname | BESCHREIBUNG |

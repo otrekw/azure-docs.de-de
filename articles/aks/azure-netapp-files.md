@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie Azure NetApp Files in Azure Kubernetes Servic
 services: container-service
 ms.topic: article
 ms.date: 10/23/2020
-ms.openlocfilehash: bc65c3dfad4c27c1650054c6836fbbbf07a7dbf2
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 19727d3c3322b05f340463d94a2bc3884e5d9d93
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93126252"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98196009"
 ---
 # <a name="integrate-azure-netapp-files-with-azure-kubernetes-service"></a>Integrieren von Azure NetApp Files in Azure Kubernetes Service
 
@@ -28,16 +28,16 @@ Außerdem muss mindestens die Version 2.0.59 der Azure CLI installiert und konfi
 Bei Verwendung von Azure NetApp Files gelten folgende Einschränkungen:
 
 * Azure NetApp Files ist nur [in ausgewählten Azure-Regionen][anf-regions] verfügbar.
-* Bevor Sie Azure NetApp Files verwenden können, muss Ihnen der Zugriff auf den Azure NetApp Files-Dienst gewährt werden. Zum Beantragen des Zugriffs können Sie das [Formular für die Übermittlung einer Azure NetApp Files-Warteliste][anf-waitlist] verwenden. Sie können erst auf den Azure NetApp Files-Dienst zugreifen, wenn Sie die offizielle Bestätigungs-E-Mail vom Azure NetApp Files-Team erhalten haben.
+* Bevor Sie Azure NetApp Files verwenden können, muss Ihnen der Zugriff auf den Azure NetApp Files-Dienst gewährt werden. Zum Beantragen des Zugriffs können Sie das [Formular für die Übermittlung einer Azure NetApp Files-Warteliste][anf-waitlist] verwenden oder zu https://azure.microsoft.com/services/netapp/#getting-started navigieren. Sie können erst auf den Azure NetApp Files-Dienst zugreifen, wenn Sie die offizielle Bestätigungs-E-Mail vom Azure NetApp Files-Team erhalten haben.
 * Nach der ersten Bereitstellung eines AKS-Clusters wird nur die statische Bereitstellung für Azure NetApp Files unterstützt.
 * Wenn Sie die dynamische Bereitstellung mit Azure NetApp Files verwenden möchten, installieren und konfigurieren Sie [NetApp Trident](https://netapp-trident.readthedocs.io/) Version 19.07 oder höher.
 
 ## <a name="configure-azure-netapp-files"></a>Konfigurieren von Azure NetApp Files
 
 > [!IMPORTANT]
-> Bevor Sie den *Microsoft.NetApp* -Ressourcenanbieter registrieren können, müssen Sie das [Formular für die Übermittlung einer Azure NetApp Files-Warteliste][anf-waitlist] für Ihr Abonnement ausfüllen. Sie können die Ressource erst registrieren, nachdem Sie die offizielle Bestätigungs-E-Mail vom Azure NetApp Files-Team erhalten haben.
+> Bevor Sie den *Microsoft.NetApp*-Ressourcenanbieter registrieren können, müssen Sie für Ihr Abonnement das [Formular für die Übermittlung einer Azure NetApp Files-Warteliste][anf-waitlist] ausfüllen oder zu https://azure.microsoft.com/services/netapp/#getting-started navigieren. Sie können die Ressource erst registrieren, nachdem Sie die offizielle Bestätigungs-E-Mail vom Azure NetApp Files-Team erhalten haben.
 
-Registrieren des *Microsoft NetApp* -Ressourcenanbieters:
+Registrieren des *Microsoft NetApp*-Ressourcenanbieters:
 
 ```azurecli
 az provider register --namespace Microsoft.NetApp --wait
@@ -46,7 +46,7 @@ az provider register --namespace Microsoft.NetApp --wait
 > [!NOTE]
 > Dieser Vorgang kann einige Zeit in Anspruch nehmen.
 
-Wenn Sie ein Azure NetApp-Konto für die Verwendung mit AKS erstellen, müssen Sie das Konto in der **Knoten** -Ressourcengruppe erstellen. Rufen Sie zunächst den Namen der Ressourcengruppe mit dem Befehl [az aks show][az-aks-show] ab, und fügen Sie den Abfrageparameter `--query nodeResourceGroup` hinzu. Im folgenden Beispiel wird die Knoten-Ressourcengruppe für den AKS-Cluster namens *myAKSCluster* in der Ressourcengruppe *myResourceGroup* abgerufen:
+Wenn Sie ein Azure NetApp-Konto für die Verwendung mit AKS erstellen, müssen Sie das Konto in der **Knoten**-Ressourcengruppe erstellen. Rufen Sie zunächst den Namen der Ressourcengruppe mit dem Befehl [az aks show][az-aks-show] ab, und fügen Sie den Abfrageparameter `--query nodeResourceGroup` hinzu. Im folgenden Beispiel wird die Knoten-Ressourcengruppe für den AKS-Cluster namens *myAKSCluster* in der Ressourcengruppe *myResourceGroup* abgerufen:
 
 ```azurecli-interactive
 az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv
@@ -56,7 +56,7 @@ az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeRes
 MC_myResourceGroup_myAKSCluster_eastus
 ```
 
-Erstellen Sie ein Azure NetApp Files-Konto in **Knoten** -Ressourcengruppe und in derselben Region wie Ihr AKS-Cluster, indem Sie [az netappfiles account create][az-netappfiles-account-create] verwenden. Im folgenden Beispiel wird ein Konto namens *myaccount1* in der Ressourcengruppe *MC_myResourceGroup_myAKSCluster_eastus* und in der Region *eastus* erstellt:
+Erstellen Sie ein Azure NetApp Files-Konto in **Knoten**-Ressourcengruppe und in derselben Region wie Ihr AKS-Cluster, indem Sie [az netappfiles account create][az-netappfiles-account-create] verwenden. Im folgenden Beispiel wird ein Konto namens *myaccount1* in der Ressourcengruppe *MC_myResourceGroup_myAKSCluster_eastus* und in der Region *eastus* erstellt:
 
 ```azurecli
 az netappfiles account create \
@@ -158,6 +158,8 @@ spec:
     storage: 100Gi
   accessModes:
     - ReadWriteMany
+  mountOptions:
+    - vers=3
   nfs:
     server: 10.0.0.4
     path: /myfilepath2

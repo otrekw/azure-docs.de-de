@@ -17,15 +17,15 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 915b56e9a9340920e99f4d3d4de6da4c39233eab
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 713ec3a4020434fa73aad2e04676129cf43853be
+ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90014802"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98165840"
 ---
 # <a name="upgrade-windows-azure-active-directory-sync-and-azure-active-directory-sync"></a>Aktualisieren der Windows Azure Active Directory-Synchronisierung und Azure Active Directory-Synchronisierung
-Azure AD Connect ist die beste Lösung, um Ihr lokales Verzeichnis mit Azure AD und Microsoft 365 zu verbinden. Da Windows Azure Active Directory Sync (DirSync) und Azure AD Sync veraltet sind und der Support für diese Tools am 13. April 2017 endete, ist dies ein guter Zeitpunkt, um ein Upgrade auf Azure AD Connect durchzuführen.
+Azure AD Connect ist die beste Lösung, um Ihr lokales Verzeichnis mit Azure AD und Microsoft 365 zu verbinden. Da Windows Azure Active Directory Sync (DirSync) und Azure AD Sync (AADSync) veraltet sind und der Support für diese Tools am 13. April 2017 endete, ist dies ein guter Zeitpunkt, um ein Upgrade auf Azure AD Connect durchzuführen.
 
 Die beiden veralteten Tools zur Synchronisierung von Identitäten wurden für Kunden mit einer einzelnen Gesamtstruktur (DirSync) sowie für Kunden mit mehreren Gesamtstrukturen oder anderen erweiterten Anforderungen (Azure AD Sync) angeboten. Diese älteren Tools wurden durch eine Gesamtlösung ersetzt, die für alle Szenarien verfügbar ist: Azure AD Connect. Diese neue Lösung bietet neue Funktionalität, erweiterte Features und Unterstützung für neue Szenarien. Um Ihre lokalen Identitätsdaten weiterhin mit Azure AD und Microsoft 365 synchronisieren zu können, wird dringend empfohlen, ein Upgrade auf Azure AD Connect durchzuführen. Microsoft übernimmt keine Garantie dafür, dass diese älteren Versionen nach dem 31. Dezember 2017 noch funktionieren.
 

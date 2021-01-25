@@ -7,17 +7,17 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.devlang: na
-ms.topic: overview
+ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/07/2021
+ms.date: 01/17/2021
 ms.author: memildin
-ms.openlocfilehash: 4e4ee8690822c6caf4a7c5bd69387ea00d6d00a8
-ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
+ms.openlocfilehash: 48e7093c30ffb135231f5843cb0767848f242d89
+ms.sourcegitcommit: 949c0a2b832d55491e03531f4ced15405a7e92e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97955449"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98541381"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Neuerungen in Azure Security Center
 
@@ -32,6 +32,24 @@ Weitere Informationen zu den *geplanten* Änderungen, die demnächst im Security
 
 
 ## <a name="january-2021"></a>Januar 2021
+
+Zu den Updates im Dezember gehören:
+
+- [CSV-Export der gefilterten Liste mit Empfehlungen](#csv-export-of-filtered-list-of-recommendations)
+- [Sicherheitsrisikobewertung für lokale und Multi-Cloud-Computer ist allgemein verfügbar](#vulnerability-assessment-for-on-premise-and-multi-cloud-machines-is-generally-available)
+
+
+### <a name="csv-export-of-filtered-list-of-recommendations"></a>CSV-Export der gefilterten Liste mit Empfehlungen 
+
+Im November 2020 haben wir der Seite mit den Empfehlungen Filter hinzugefügt ([Die Empfehlungsliste beinhaltet nun Filter](#recommendations-list-now-includes-filters)). Im Dezember haben wir diese Filter erweitert ([Empfehlungsseite enthält neue Filter für Umgebung, Schweregrad und verfügbare Antworten](#recommendations-page-has-new-filters-for-environment-severity-and-available-responses)). 
+
+Mit dieser Ankündigung wird das Verhalten der Schaltfläche für den **Download als CSV** so geändert, dass der CSV-Export nur die Empfehlungen enthält, die derzeit in der gefilterten Liste angezeigt werden. 
+
+In der Abbildung unten ist beispielsweise erkennbar, dass die Liste nach zwei Empfehlungen gefiltert wurde. Die generierte CSV-Datei enthält die Statusdetails für jede Ressource, auf die sich diese beiden Empfehlungen auswirken.   
+
+:::image type="content" source="media/security-center-managing-and-responding-alerts/export-to-csv-with-filters.png" alt-text="Exportieren von gefilterten Empfehlungen als CSV-Datei":::
+
+Weitere Informationen finden Sie unter [Sicherheitsempfehlungen in Azure Security Center](security-center-recommendations.md).
 
 ### <a name="vulnerability-assessment-for-on-premise-and-multi-cloud-machines-is-generally-available"></a>Sicherheitsrisikobewertung für lokale und Multi-Cloud-Computer ist allgemein verfügbar
 

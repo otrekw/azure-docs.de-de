@@ -5,15 +5,15 @@ author: RonyMSFT
 ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: security
-ms.date: 04/15/2020
+ms.date: 01/18/2021
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 949b7e55569cc6fceacc37677ed06a28bb85d7c2
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: f55251932c8aa8f632bd3b498943ac722f006dee
+ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98116363"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98569906"
 ---
 # <a name="azure-synapse-analytics-managed-virtual-network"></a>Azure Synapse Analytics: verwaltetes virtuelles Netzwerk
 
@@ -52,8 +52,21 @@ Ist das Kontrollkästchen deaktiviert, wird Ihr Arbeitsbereich nicht mit einem v
 
 ![Aktivieren eines verwalteten virtuellen Arbeitsbereichsnetzwerks](./media/synapse-workspace-managed-vnet/enable-managed-vnet-1.png)
 
+Nachdem Sie die Entscheidung für die Zuordnung eines verwalteten virtuellen Arbeitsbereichsnetzwerks zu Ihrem Arbeitsbereich getroffen haben, können Sie den Schutz vor Datenexfiltration einrichten. Lassen Sie hierfür ausgehende Verbindungen vom verwalteten virtuellen Arbeitsbereichsnetzwerk nur zu genehmigten Zielen zu, indem Sie [verwaltete private Endpunkte](./synapse-workspace-managed-private-endpoints.md) verwenden. Wählen Sie **Ja** aus, um ausgehenden Datenverkehr aus dem verwalteten virtuellen Arbeitsbereichsnetzwerk zu Zielen auf den Weg über verwaltete private Endpunkte zu beschränken. 
 
-Wenn Sie überprüfen möchten, ob Ihr Azure Synapse-Arbeitsbereich mit einem verwalteten virtuellen Arbeitsbereichsnetzwerk verknüpft ist, wählen Sie im Azure-Portal die Option **Übersicht** aus.
+
+>[!IMPORTANT]
+>Metastore ist in Synapse-Arbeitsbereichen deaktiviert, die über ein verwaltetes virtuelles Netzwerk mit aktiviertem Schutz vor Datenexfiltration verfügen. In diesen Arbeitsbereichen können Sie Spark SQL nicht nutzen.
+
+![Ausgehender Datenverkehr über verwaltete private Endpunkte](./media/synapse-workspace-managed-vnet/select-outbound-connectivity.png)
+
+Wählen Sie **Nein** aus, um für den Arbeitsbereich ausgehenden Datenverkehr zu beliebigen Zielen zuzulassen.
+
+Sie können die Ziele, für die verwaltete private Endpunkte erstellt werden, auch über Ihren Azure Synapse-Arbeitsbereich steuern. Standardmäßig sind verwaltete private Endpunkte für Ressourcen auf demselben AAD-Mandanten zulässig, dem Ihr Abonnement angehört. Wenn Sie einen verwalteten privaten Endpunkt für eine Ressource auf einem AAD-Mandanten erstellen möchten, der sich vom Mandanten Ihres Abonnements unterscheidet, können Sie diesen AAD-Mandanten hinzufügen, indem Sie die Option **+ Hinzufügen** verwenden. Sie können den AAD-Mandanten entweder in der Dropdownliste auswählen oder die ID des AAD-Mandanten manuell eingeben.
+
+![Hinzufügen zusätzlicher AAD-Mandanten](./media/synapse-workspace-managed-vnet/add-additional-azure-active-directory-tenants.png)
+
+Nach der Erstellung des Arbeitsbereichs können Sie überprüfen, ob Ihr Azure Synapse-Arbeitsbereich mit einem verwalteten virtuellen Arbeitsbereichsnetzwerk verknüpft ist. Wählen Sie hierfür im Azure-Portal die Option **Übersicht** aus.
 
 ![Arbeitsbereichsübersicht im Azure-Portal](./media/synapse-workspace-managed-vnet/enable-managed-vnet-2.png)
 

@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 6/8/2020
-ms.openlocfilehash: bea618b34809544308caba46a0ffbdecee91d69f
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 199810f835924ccbb51948169244622a19c5e8ed
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94541809"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98201432"
 ---
 # <a name="connect-to-azure-database-for-mysql-with-redirection"></a>Herstellen einer Verbindung mit Azure Database for MySQL mit Umleitung
 
@@ -21,6 +21,9 @@ In diesem Thema wird erläutert, wie Sie eine Anwendung mit Ihrem Azure Database
 Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. Erstellen Sie einen Azure Database for MySQL-Server mit der Engine-Version 5.6, 5.7 oder 8.0. 
 
 Weitere Informationen finden Sie unter den Ausführungen zum Erstellen eines Azure Database for MySQL-Servers mit dem [Azure-Portal](quickstart-create-mysql-server-database-using-azure-portal.md) oder der [Azure CLI](quickstart-create-mysql-server-database-using-azure-cli.md).
+
+> [!IMPORTANT]
+> Derzeit wird die Umleitung bei [Private Link für Azure Database for MySQL](concepts-data-access-security-private-link.md) nicht unterstützt.
 
 ## <a name="enable-redirection"></a>Aktivieren der Umleitung
 

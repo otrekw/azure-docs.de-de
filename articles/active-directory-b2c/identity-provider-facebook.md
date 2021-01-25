@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/07/2020
+ms.date: 01/19/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 37fc33ae8084a2b4e99e7b5dc417eac70060eef5
-ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
+ms.openlocfilehash: 64a4404fa881181f92d442a73e5da4c16ae87ae3
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97516207"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98598874"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-facebook-account-using-azure-active-directory-b2c"></a>Einrichten der Registrierung und Anmeldung mit einem Facebook-Konto mithilfe von Azure Active Directory B2C
 
@@ -36,7 +36,7 @@ ms.locfileid: "97516207"
 
 ## <a name="create-a-facebook-application"></a>Erstellen einer Facebook-Anwendung
 
-Um ein Facebook-Konto als [Identitätsanbieter](authorization-code-flow.md) in Azure Active Directory B2C (Azure AD B2C) verwenden zu können, müssen Sie in Ihrem Mandanten eine Anwendung erstellen, die es darstellt. Wenn Sie noch über kein Facebook-Konto verfügen, können Sie sich unter [https://www.facebook.com/](https://www.facebook.com/) registrieren.
+Wenn Sie die Anmeldung für Benutzer mit einem Facebook-Konto in Azure Active Directory B2C (Azure AD B2C) aktivieren möchten, müssen Sie eine Anwendung im [Facebook-App-Dashboard](https://developers.facebook.com/) erstellen. Weitere Informationen finden Sie unter [App-Entwicklung](https://developers.facebook.com/docs/development). Wenn Sie noch über kein Facebook-Konto verfügen, können Sie sich unter [https://www.facebook.com/](https://www.facebook.com/) registrieren.
 
 1. Melden Sie sich auf der [Facebook-Entwickler-Website](https://developers.facebook.com/) mit den Anmeldeinformationen für Ihr Facebook-Konto an.
 1. Wenn Sie dies noch nicht getan haben, müssen Sie sich als Facebook-Entwickler registrieren. Dazu wählen Sie oben rechts auf der Seite die Option **Get Started** (Erste Schritte) aus, akzeptieren die Facebook-Richtlinien und führen die Registrierungsschritte aus.
@@ -60,7 +60,7 @@ Um ein Facebook-Konto als [Identitätsanbieter](authorization-code-flow.md) in A
 
 ::: zone pivot="b2c-user-flow"
 
-## <a name="configure-a-facebook-account-as-an-identity-provider"></a>Konfigurieren eines Facebook-Kontos als Identitätsanbieter
+## <a name="configure-facebook-as-an-identity-provider"></a>Konfigurieren von Facebook als Identitätsanbieter
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) als globaler Administrator Ihres Azure AD B2C-Mandanten an.
 1. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD B2C-Mandanten enthält, indem Sie im oberen Menü auf den **Verzeichnis- und Abonnementfilter** klicken und das entsprechende Verzeichnis auswählen.
@@ -70,25 +70,6 @@ Um ein Facebook-Konto als [Identitätsanbieter](authorization-code-flow.md) in A
 1. Geben Sie für die **Client-ID** die App-ID der Facebook-Anwendung ein, die Sie zuvor erstellt haben.
 1. Geben Sie das zuvor notierte App-Geheimnis als **Geheimer Clientschlüssel** ein.
 1. Wählen Sie **Speichern** aus.
-
-::: zone-end
-
-::: zone pivot="b2c-custom-policy"
-
-## <a name="add-facebook-as-an-identity-provider"></a>Hinzufügen von Facebook als Identitätsanbieter
-
-1. Ersetzen Sie in der Datei `SocialAndLocalAccounts/`**`TrustFrameworkExtensions.xml`** den Wert `client_id` durch die ID der Facebook-Anwendung:
-
-   ```xml
-   <TechnicalProfile Id="Facebook-OAUTH">
-     <Metadata>
-     <!--Replace the value of client_id in this technical profile with the Facebook app ID"-->
-       <Item Key="client_id">00000000000000</Item>
-   ```
-
-::: zone-end
-
-::: zone pivot="b2c-user-flow"
 
 ## <a name="add-facebook-identity-provider-to-a-user-flow"></a>Hinzufügen von Facebook als Identitätsanbieter zu einem Benutzerflow 
 
@@ -103,6 +84,17 @@ Um ein Facebook-Konto als [Identitätsanbieter](authorization-code-flow.md) in A
 ::: zone-end
 
 ::: zone pivot="b2c-custom-policy"
+
+## <a name="configure-a-facebook-account-as-an-identity-provider"></a>Konfigurieren eines Facebook-Kontos als Identitätsanbieter
+
+1. Ersetzen Sie in der Datei `SocialAndLocalAccounts/`**`TrustFrameworkExtensions.xml`** den Wert `client_id` durch die ID der Facebook-Anwendung:
+
+   ```xml
+   <TechnicalProfile Id="Facebook-OAUTH">
+     <Metadata>
+     <!--Replace the value of client_id in this technical profile with the Facebook app ID"-->
+       <Item Key="client_id">00000000000000</Item>
+   ```
 
 ## <a name="upload-and-test-the-policy"></a>Hochladen und Testen der Richtlinie
 

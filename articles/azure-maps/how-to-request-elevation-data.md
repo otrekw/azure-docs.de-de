@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 76232a917e8856a06645fabc0ab4716195c5c0e1
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: a303f5e6177d0dc4205eaec8c3b1911e8e004fe3
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97094198"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98602437"
 ---
 # <a name="request-elevation-data-using-the-azure-maps-elevation-service-preview"></a>Anfordern von Höhendaten mithilfe des Azure Maps-Höhenangabendiensts (Vorschau)
 
@@ -471,7 +471,7 @@ Weitere Informationen finden Sie unter dem Stift <a href='https://codepen.io/azu
 
 ### <a name="get-elevation-data-by-polyline-path"></a>Abrufen von Höhendaten nach Polylinienroute
 
-Auf der folgenden Beispielwebseite wird gezeigt, wie Sie mit dem Kartensteuerelement Höhendaten entlang einer Route anzeigen. Sie definieren die Route, indem Sie auf das Symbol `PolyLine` links oben klicken und die Polylinie an die gewünschte Position auf der Karte ziehen. Mit dem Kartensteuerelement werden die Höhendaten dann in den Farben gerendert, die im Schlüssel oben rechts angegeben sind.
+Auf der folgenden Beispielwebseite wird gezeigt, wie Sie mit dem Kartensteuerelement Höhendaten entlang einer Route anzeigen. Benutzer definieren die Route, indem sie in der oberen linken Ecke auf das Symbol `Polyline` klicken und die Polylinie auf der Karte zeichnen. Mit dem Kartensteuerelement werden die Höhendaten dann in den Farben gerendert, die im Schlüssel oben rechts angegeben sind.
 
 <br/>
 
