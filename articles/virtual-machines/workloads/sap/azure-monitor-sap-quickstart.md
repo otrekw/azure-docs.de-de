@@ -8,12 +8,12 @@ ms.service: virtual-machines
 ms.subservice: workloads
 ms.date: 08/17/2020
 ms.reviewer: cynthn
-ms.openlocfilehash: c3b3848e4e4f7b0445f882265dbe66bb10b48833
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 0bb0a7833e9ee3b499ae013b665ecf137c667005
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94968586"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98250994"
 ---
 # <a name="deploy-azure-monitor-for-sap-solutions-with-azure-portal"></a>Bereitstellen von Azure Monitor für SAP-Lösungen mit dem Azure-Portal
 
@@ -77,6 +77,18 @@ Melden Sie sich unter https://portal.azure.com beim Azure-Portal an.
 4. Wählen Sie abschließend die Option **Anbieter hinzufügen** aus. Fügen Sie nach Bedarf weitere Anbieter hinzu, oder wählen Sie **Überprüfen und erstellen** aus, um die Bereitstellung abzuschließen.
 
    :::image type="content" source="./media/azure-monitor-sap/azure-monitor-quickstart-5.png" alt-text="Abbildung der Optionen im Zusammenhang mit dem Anbieter für Hochverfügbarkeitscluster (Pacemaker)" lightbox="./media/azure-monitor-sap/azure-monitor-quickstart-5.png":::
+
+
+### <a name="os-linux-provider"></a>Betriebssystemanbieter (Linux) 
+
+1. Wählen Sie in der Dropdownliste die Option für das Betriebssystem (Linux) aus. 
+
+> [!IMPORTANT]
+> Stellen Sie zum Konfigurieren des Betriebssystemanbieters (Linux) sicher, dass „Node_Exporter“ in jeder BareMetal-Instanz installiert ist. Weitere Informationen finden Sie unter  [Node_Exporter](https://github.com/prometheus/node_exporter).
+
+2. Geben Sie einen Namen ein, der der Bezeichner für die BareMetal-Instanz sein wird.
+3. Geben Sie den Endpunkt für Knotenexport in Form von http://IP:9100/metrics ein.
+4. Wählen Sie abschließend die Option  **Anbieter hinzufügen** aus. Fügen Sie nach Bedarf weitere Anbieter hinzu, oder wählen Sie  **Überprüfen und erstellen** aus, um die Bereitstellung abzuschließen. 
 
 
 ### <a name="microsoft-sql-server-provider"></a>Microsoft SQL Server-Anbieter
