@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/16/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 2418a8813e7b9de603b7e7cdc11fc756d73ac2a4
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 2a1455c5956297a19d640146879f93b61d035139
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96350754"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98185902"
 ---
 # <a name="access-control-lists-acls-in-azure-data-lake-storage-gen2"></a>Zugriffssteuerungslisten (ACLs) in Azure Data Lake Storage Gen2
 
@@ -60,7 +60,7 @@ Zugriffs- und Standard-ACLs haben die gleiche Struktur.
 
 ## <a name="levels-of-permission"></a>Berechtigungsebenen
 
-Die Berechtigungen für ein Containerobjekt sind **Lesen**, **Schreiben** und **Ausführen**. Sie können wie in der folgenden Tabelle beschrieben auf Dateien und Verzeichnisse angewendet werden:
+Die Berechtigungen für Verzeichnisse und Dateien in einem Container sind **Lesen**, **Schreiben** und **Ausführen**. Sie können wie in der folgenden Tabelle beschrieben auf Dateien und Verzeichnisse angewendet werden:
 
 |            |    Datei     |   Verzeichnis |
 |------------|-------------|----------|
@@ -69,7 +69,7 @@ Die Berechtigungen für ein Containerobjekt sind **Lesen**, **Schreiben** und **
 | **Ausführen (Execute, X)** | Hat im Kontext von Data Lake Storage Gen2 keine Bedeutung | Erfordert das Durchlaufen der untergeordneten Elemente eines Verzeichnisses |
 
 > [!NOTE]
-> Wenn Sie Berechtigungen ausschließlich mithilfe von Zugriffssteuerungslisten (ohne Azure RBAC) erteilen, müssen Sie zum Erteilen von Lese- oder Schreibzugriff auf eine Datei für einen Sicherheitsprinzipal dem Sicherheitsprinzipal die Berechtigung **Ausführen** für den Container und für jeden Ordner in der Ordnerhierarchie erteilen, der zu der betreffenden Datei führt.
+> Wenn Sie Berechtigungen ausschließlich mithilfe von Zugriffssteuerungslisten (ohne Azure RBAC) erteilen, müssen Sie zum Erteilen von Lese- oder Schreibzugriff auf eine Datei für einen Sicherheitsprinzipal dem Prinzipal die Berechtigung **Ausführen** für den Stammordner des Containers und für jeden Ordner in der Ordnerhierarchie erteilen, der zu der betreffenden Datei führt.
 
 ### <a name="short-forms-for-permissions"></a>Kurzformen für Berechtigungen
 

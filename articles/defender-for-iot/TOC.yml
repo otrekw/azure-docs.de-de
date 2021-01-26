@@ -81,38 +81,51 @@
           items:
             - name: Ermitteln der erforderlichen Appliances
               href: how-to-identify-required-appliances.md
+              displayName: 'virtual, Dell, HPE, SMB, certified, hardware, deployment'
             - name: Installieren von Software
               href: how-to-install-software.md
+              displayName: 'virtual, Dell, HPE, SMB, certified, hardware, port mirroring, ESXi, install'
             - name: Einrichten des Netzwerks
               href: how-to-set-up-your-network.md
+              displayName: 'passive, browsers, network access, TAP, switch, mirroring, firewall, SPAN, monitoring, tuning'
         - name: Vorbereiten der Sensoren
           items:
             - name: Integrieren von Sensoren
               href: how-to-manage-sensors-on-the-cloud.md
+              displayName: 'onboard, cloud, register, activate'
             - name: Aktivieren und Einrichten des Sensors
               href: how-to-activate-and-set-up-your-sensor.md
+              displayName: 'onboard, register, activation, certificate, cloud connected, sign in, login, setup, learning mode, initial'
         - name: Vorbereiten der lokalen Verwaltungskonsole
           items:
             - name: Aktivieren und Einrichten der lokalen Verwaltungskonsole
               href: how-to-activate-and-set-up-your-on-premises-management-console.md
+              displayName: 'activate, certificate, sign in, login, setup, initial, committed'
             - name: Einrichten von Hochverfügbarkeit
               href: how-to-set-up-high-availability.md
+              displayName: 'primary, secondary, failover, failback fail, recovery'
         - name: Verwalten von Benutzern und des Benutzerzugriffs
           items:
             - name: Erstellen und Verwalten von Benutzern
               href: how-to-create-and-manage-users.md
+              displayName: 'Active Directory, roles, permissions'
             - name: Definieren der globalen Benutzerzugriffssteuerung
               href: how-to-define-global-user-access-control.md
+              displayName: 'business unit, site, region'
         - name: 'Steuern, welcher Datenverkehr überwacht wird'
           href: how-to-control-what-traffic-is-monitored.md
+          displayName: 'Windows, Learning, Smart IT Learning, DNS, DHCP, engines, subnets'
         - name: Verwalten von Sensoren über die lokale Verwaltungskonsole
           href: how-to-manage-sensors-from-the-on-premises-management-console.md
+          displayName: 'disconnect, connect, activation file, sensor backup'
         - name: Verwalten einzelner Sensoren
           href: how-to-manage-individual-sensors.md
+          displayName: 'activation, certificate, connect, timezone time zone, backup, restore, software update, failure'
         - name: Verwalten von Sensoren in der Cloud
           href: how-to-manage-sensors-on-the-cloud.md
         - name: Verwalten der lokalen Verwaltungskonsole
           href: how-to-manage-the-on-premises-management-console.md
+          displayName: 'activation, certificate, software update, backup, restore, proxy, password recovery'
         - name: "Arbeiten mit Threat\_Intelligence-Paketen"
           href: how-to-work-with-threat-intelligence-packages.md
         - name: Arbeiten mit Gerätebestandsinformationen
@@ -145,12 +158,16 @@
           items:
             - name: Arbeiten mit Gerätebenachrichtigungen
               href: how-to-work-with-device-notifications.md
+              displayName: 'notifications, operating systems, enrich, device information, classification'
             - name: Verbessern der Port- und VLAN-Namensauflösung
               href: how-to-enhance-port-and-vlan-name-resolution.md
+              displayName: 'port, VLAN'
             - name: Importieren von Geräteinformationen
               href: how-to-import-device-information.md
+              displayName: 'import, enrich'
         - name: Nachverfolgen der Sensoraktivität
           href: how-to-track-sensor-activity.md
+          displayName: 'timeline, time line, time-line, event'
         - name: Generieren von Berichten
           href: how-to-generate-reports.md
         - name: Behandeln von Problemen mit dem Sensor und der lokalen Verwaltungskonsole

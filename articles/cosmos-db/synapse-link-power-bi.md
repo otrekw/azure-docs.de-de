@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 11/30/2020
 ms.author: acomet
-ms.openlocfilehash: be2657d9606f260fcea06d2535be87fc6976577c
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: f0111228b9b0030cbbceb9fc70d829a7a22fda01
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97915673"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98247011"
 ---
 # <a name="use-power-bi-and-serverless-synapse-sql-pool-preview-to-analyze-azure-cosmos-db-data-with-synapse-link"></a>Verwenden von Power BI und serverlosem Synapse SQL-Pool (Vorschau) zum Analysieren von Azure Cosmos DB-Daten mit Synapse Link 
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -49,7 +49,7 @@ Jeder Arbeitsbereich enthält einen serverlosen SQL-Endpunkt. Nachdem Sie ein SQ
 
 :::image type="content" source="./media/synapse-link-power-bi/enable-sql-on-demand-endpoint.png" alt-text="Aktivieren des SQL-Skripts zur Verwendung des serverlosen SQL-Endpunkts im Arbeitsbereich":::
 
-Erstellen Sie die neue Datenbank **RetailCosmosDB** und eine SQL-Sicht für die Container mit Synapse Link-Aktivierung. Der folgende Befehl zeigt, wie eine Datenbank erstellt wird:
+Das Erstellen von Sichten in **Master**- oder **Standard** datenbanken wird nicht empfohlen oder unterstützt. Erstellen Sie die neue Datenbank **RetailCosmosDB** und eine SQL-Sicht für die Container mit Synapse Link-Aktivierung. Der folgende Befehl zeigt, wie eine Datenbank erstellt wird:
 
 ```sql
 -- Create database

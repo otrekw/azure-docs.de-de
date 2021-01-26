@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 05/19/2020
 ms.author: dech
-ms.openlocfilehash: 381aa88326440aba91e02393cfe2bdb1e2c38097
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: b89fcf32ed033f359b4db601e36cc69bb899944d
+ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93340412"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98165823"
 ---
 # <a name="use-built-in-notebook-commands-and-features-in-azure-cosmos-db-python-notebooks-preview"></a>Verwenden integrierter Notebookbefehle und -features in Python-Notebooks für Azure Cosmos DB (Vorschauversion)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -123,6 +123,8 @@ Total time taken : 00:00:38.1228087 hours
 Total RUs consumed : 25022.58
 ```
 Mit der Ausgabestatistik können Sie die effektive Rate an RU/s berechnen, die zum Hochladen der Elemente benötigt werden. Wenn beispielsweise 28.000 RUs in 38 Sekunden verarbeitet werden, liegt die effektive Rate an RU/s bei 25.000 RUs / 38 Sekunden = 658 RU/s.
+
+Sie können Dateien (z. B. CSV- oder JSON-Dateien) im lokalen Notebook-Arbeitsbereich speichern. Wir empfehlen, in Ihrem Notebook eine Zelle zum Speichern von Dateien hinzuzufügen. Sie können diese Dateien über das integrierte Terminal in der Notebook-Umgebung anzeigen. Mit dem Befehl „ls“ können Sie die gespeicherten Dateien anzeigen. Diese Dateien werden aber entfernt, wenn Sie den Arbeitsbereich zurücksetzen. Daher ist es am besten, einen permanenten Speicher wie GitHub oder ein Speicherkonto statt des lokalen Arbeitsbereichs zu verwenden.
 
 ## <a name="run-another-notebook-in-current-notebook"></a>Ausführen eines anderen Notebooks im aktuellen Notebook 
 Sie können den Magic-Befehl ``%%run`` verwenden, um vom aktuellen Notebook in Ihrem Arbeitsbereich aus ein anderes Notebook auszuführen. Verwenden Sie die folgende Syntax:

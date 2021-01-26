@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/19/2020
-ms.openlocfilehash: b0e2cc3f23a8c39e51523e6f6fd974ebf46f7322
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 3ddae808fbb2e3dcfe20909c8b3d0c5a20bb04bd
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93097446"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98247521"
 ---
 # <a name="optimize-development-and-testing-cost-in-azure-cosmos-db"></a>Optimieren der Entwicklungs- und Testkosten in Azure Cosmos DB
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -37,7 +37,7 @@ Unter [Azure Cosmos DB kostenlos testen](https://azure.microsoft.com/try/cosmosd
 
 ## <a name="azure-free-account"></a>Kostenloses Azure-Konto
 
-Azure Cosmos DB ist in dem [kostenlosen Azure-Konto](https://azure.microsoft.com/free) enthalten. Mit diesem Konto erhalten Sie ein kostenloses Azure-Guthaben und -Ressourcen für einen bestimmten Zeitraum. Speziell für Azure Cosmos DB bietet dieses kostenlose Konto einen Speicher von 5 GB und bereitgestellten Durchsatz von 400 RUs/Sek. für das ganze Jahr. Diese Funktion ermöglicht jedem Entwickler ganz einfach und kostenlos das Testen der Funktionen von Azure Cosmos DB oder der Integration mit anderen Azure-Diensten. Mit dem kostenlosen Azure-Konto erhalten Sie ein Guthaben von 200 US-Dollar, das Sie in den ersten 30 Tagen verbrauchen können. Selbst wenn Sie die Dienste schon nutzen, fallen Kosten erst an, wenn Sie ein Upgrade durchführen. Informationen zum Einstieg finden Sie auf der Seite [Kostenloses Azure-Konto](https://azure.microsoft.com/free).
+Azure Cosmos DB ist in dem [kostenlosen Azure-Konto](https://azure.microsoft.com/free) enthalten. Mit diesem Konto erhalten Sie ein kostenloses Azure-Guthaben und -Ressourcen für einen bestimmten Zeitraum. Speziell für Azure Cosmos DB bietet dieses kostenlose Konto einen Speicher von 25 GB und bereitgestellten Durchsatz von 400 RUs/Sek. für das ganze Jahr. Diese Funktion ermöglicht jedem Entwickler ganz einfach und kostenlos das Testen der Funktionen von Azure Cosmos DB oder der Integration mit anderen Azure-Diensten. Mit dem kostenlosen Azure-Konto erhalten Sie ein Guthaben von 200 US-Dollar, das Sie in den ersten 30 Tagen verbrauchen können. Selbst wenn Sie die Dienste schon nutzen, fallen Kosten erst an, wenn Sie ein Upgrade durchführen. Informationen zum Einstieg finden Sie auf der Seite [Kostenloses Azure-Konto](https://azure.microsoft.com/free).
 
 ## <a name="azure-cosmos-db-serverless"></a>Azure Cosmos DB serverlos
 

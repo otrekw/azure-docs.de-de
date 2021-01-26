@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 08/12/2020
 ms.author: anfeldma
 ms.custom: devx-track-python
-ms.openlocfilehash: b69b3a3888b2d6e19b8eaa92ba9b2fedf0e15545
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 27bcb220c67392661cc1b2875823abdca4593bd4
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93091117"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98220948"
 ---
 # <a name="azure-cosmos-db-python-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Python SDK für die SQL-API: Versionshinweise und Ressourcen
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -320,34 +320,34 @@ Version 4.0.0b1 ist die erste Vorschau auf eine benutzerfreundliche Clientbiblio
 Wenn Microsoft ein SDK deaktiviert, werden Sie mindestens **12 Monate** vorher benachrichtigt, um einen reibungslosen Übergang zu einer neueren/unterstützten Version zu gewährleisten. Neue Features, Funktionen und Optimierungen werden nur dem aktuellen SDK hinzugefügt. Daher wird empfohlen, immer so früh wie möglich auf die neueste SDK-Version zu aktualisieren.
 
 > [!WARNING]
-> Nach dem 31. August 2022 werden von Azure Cosmos DB für die Versionen 1.x oder 2.x des Azure Cosmos DB Python SDK für die SQL-API weder Fehlerbehebungen durchgeführt noch neue Funktionen hinzugefügt, und es wird keine Unterstützung bereitgestellt. Wenn Sie kein Upgrade durchführen möchten, werden Anforderungen, die von Version 1.x und 2.x des SDK gesendet werden, weiterhin vom Azure Cosmos DB-Dienst bedient.
+> Nach dem 31. August 2022 werden von Azure Cosmos DB für die Versionen 1.x und 2.x des Azure Cosmos DB Python SDK für die SQL-API weder Fehlerbehebungen durchgeführt noch wird Unterstützung dafür bereitgestellt. Wenn Sie kein Upgrade durchführen möchten, werden Anforderungen, die von Version 1.x und 2.x des SDK gesendet werden, weiterhin vom Azure Cosmos DB-Dienst bedient.
 
 | Version | Veröffentlichungsdatum | Deaktivierungstermine |
 | --- | --- | --- |
 | [4.0.0](#400) |20. Mai 2020 |--- |
 | [3.0.2](#302) |15. November 2018 |--- |
 | [3.0.1](#301) |4\. Oktober 2018 |--- |
-| [2.3.3](#233) |8\. September 2018 |30. August 2020 |
-| [2.3.2](#232) |8\. Mai 2018 |30. August 2020 |
-| [2.3.1](#231) |21. Dezember 2017 |30. August 2020 |
-| [2.3.0](#230) |10. November 2017 |30. August 2020 |
-| [2.2.1](#221) |29. September 2017 |30. August 2020 |
-| [2.2.0](#220) |10. Mai 2017 |30. August 2020 |
-| [2.1.0](#210) |01. Mai 2017 |30. August 2020 |
-| [2.0.1](#201) |30. Oktober 2016 |30. August 2020 |
-| [2.0.0](#200) |29. September 2016 |30. August 2020 |
-| [1.9.0](#190) |7\. Juli 2016 |30. August 2020 |
-| [1.8.0](#180) |14. Juni 2016 |30. August 2020 |
-| [1.7.0](#170) |26. April 2016 |30. August 2020 |
-| [1.6.1](#161) |8\. April 2016 |30. August 2020 |
-| [1.6.0](#160) |29. März 2016 |30. August 2020 |
-| [1.5.0](#150) |03. Januar 2016 |30. August 2020 |
-| [1.4.2](#142) |06. Oktober 2015 |30. August 2020 |
-| 1.4.1 |06. Oktober 2015 |30. August 2020 |
-| [1.2.0](#120) |06. August 2015 |30. August 2020 |
-| [1.1.0](#110) |9\. Juli 2015 |30. August 2020 |
-| [1.0.1](#101) |25. Mai 2015 |30. August 2020 |
-| 1.0.0 |7\. April 2015 |30. August 2020 |
+| [2.3.3](#233) |8\. September 2018 |31. August 2022 |
+| [2.3.2](#232) |8\. Mai 2018 |31. August 2022 |
+| [2.3.1](#231) |21. Dezember 2017 |31. August 2022 |
+| [2.3.0](#230) |10. November 2017 |31. August 2022 |
+| [2.2.1](#221) |29. September 2017 |31. August 2022 |
+| [2.2.0](#220) |10. Mai 2017 |31. August 2022 |
+| [2.1.0](#210) |01. Mai 2017 |31. August 2022 |
+| [2.0.1](#201) |30. Oktober 2016 |31. August 2022 |
+| [2.0.0](#200) |29. September 2016 |31. August 2022 |
+| [1.9.0](#190) |7\. Juli 2016 |31. August 2022 |
+| [1.8.0](#180) |14. Juni 2016 |31. August 2022 |
+| [1.7.0](#170) |26. April 2016 |31. August 2022 |
+| [1.6.1](#161) |8\. April 2016 |31. August 2022 |
+| [1.6.0](#160) |29. März 2016 |31. August 2022 |
+| [1.5.0](#150) |03. Januar 2016 |31. August 2022 |
+| [1.4.2](#142) |06. Oktober 2015 |31. August 2022 |
+| 1.4.1 |06. Oktober 2015 |31. August 2022 |
+| [1.2.0](#120) |06. August 2015 |31. August 2022 |
+| [1.1.0](#110) |9\. Juli 2015 |31. August 2022 |
+| [1.0.1](#101) |25. Mai 2015 |31. August 2022 |
+| 1.0.0 |7\. April 2015 |31. August 2022 |
 | 0.9.4-prelease |14. Januar 2015 |29. Februar 2016 |
 | 0.9.3-prelease |09. Dezember 2014 |29. Februar 2016 |
 | 0.9.2-prelease |25. November 2014 |29. Februar 2016 |

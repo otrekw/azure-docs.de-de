@@ -11,12 +11,12 @@ ms.author: lle
 manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 12/25/2020
-ms.openlocfilehash: 76d53458154a7e66589c16f955373975bb04b25b
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: fd56ef74a7641a01eae2354f149f45e84ff56833
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98121608"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98217446"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>Erstellen und Konfigurieren einer selbstgehosteten Integration Runtime
 
@@ -157,21 +157,21 @@ Hier finden Sie Details zu den Aktionen und Argumenten der Anwendung:
 
 |ACTION|args|Beschreibung|
 |------|----|-----------|
-|-rn,<br/>-RegisterNewNode|"`<AuthenticationKey>`" ["`<NodeName>`"]|Knoten einer selbstgehosteten Integration Runtime mit dem angegebenen Authentifizierungsschlüssel und Knotennamen registrieren|
-|-era,<br/>-EnableRemoteAccess|"`<port>`" ["`<thumbprint>`"]|Remotezugriff auf den aktuellen Knoten zum Einrichten eines Hochverfügbarkeitsclusters aktivieren. Oder Aktivierung des direkten Festlegens von Anmeldeinformationen für die selbstgehostete IR ohne Umweg über Azure Data Factory. Für Letzteres verwenden Sie das Cmdlet **New-AzDataFactoryV2LinkedServiceEncryptedCredential** auf einem Remotecomputer in demselben Netzwerk.|
-|-erac,<br/>-EnableRemoteAccessInContainer|"`<port>`" ["`<thumbprint>`"]|Remotezugriff auf den aktuellen Knoten aktivieren, wenn der Knoten in einem Container ausgeführt wird|
-|-dra,<br/>-DisableRemoteAccess||Remotezugriff auf den aktuellen Knoten deaktivieren. Der Remotezugriff ist zum Einrichten von mehreren Knoten erforderlich. Das PowerShell-Cmdlet **New-AzDataFactoryV2LinkedServiceEncryptedCredential** funktioniert auch, wenn der Remotezugriff deaktiviert ist. Dies ist der Fall, sofern das Cmdlet auf demselben Computer ausgeführt wird, auf dem sich auch der Knoten für die selbstgehostete IR befindet.|
-|-k,<br/>-Key|"`<AuthenticationKey>`"|Vorherigen Authentifizierungsschlüssel überschreiben oder aktualisieren. Verwenden Sie diese Aktion mit Bedacht. Ihr Knoten der selbstgehostete IR wird ggf. in den Offlinezustand versetzt, wenn der Schlüssel von einer neuen Integration Runtime stammt.|
-|-gbf,<br/>-GenerateBackupFile|"`<filePath>`" "`<password>`"|Generiert eine Sicherungsdatei für den aktuellen Knoten. Die Sicherungsdatei enthält den Knotenschlüssel und die Anmeldeinformationen für den Datenspeicher.|
-|-ibf,<br/>-ImportBackupFile|"`<filePath>`" "`<password>`"|Knoten aus einer Sicherungsdatei wiederherstellen|
-|-r,<br/>-Restart||Hostdienst der selbstgehosteten Integration Runtime neu starten|
-|-s,<br/>-Start||Hostdienst der selbstgehosteten Integration Runtime starten|
-|-t,<br/>-Stop||Hostdienst der selbstgehosteten Integration Runtime beenden|
-|-sus,<br/>-StartUpgradeService||Upgradedienst der selbstgehosteten Integration Runtime starten|
-|-tus,<br/>-StopUpgradeService||Upgradedienst der selbstgehosteten Integration Runtime beenden|
-|-tonau,<br/>-TurnOnAutoUpdate||Automatische Aktualisierung der selbstgehosteten Integration Runtime aktivieren|
-|-toffau,<br/>-TurnOffAutoUpdate||Automatische Aktualisierung der selbstgehosteten Integration Runtime deaktivieren|
-|-ssa,<br/>-SwitchServiceAccount|"`<domain\user>`" ["`<password>`"]|Legen Sie fest, dass DIAHostService als neues Konto ausgeführt wird. Verwenden Sie ein leeres Kennwort („“) für Systemkonten und virtuelle Konten.|
+|`-rn`,<br/>`-RegisterNewNode`|"`<AuthenticationKey>`" ["`<NodeName>`"]|Knoten einer selbstgehosteten Integration Runtime mit dem angegebenen Authentifizierungsschlüssel und Knotennamen registrieren|
+|`-era`,<br/>`-EnableRemoteAccess`|"`<port>`" ["`<thumbprint>`"]|Remotezugriff auf den aktuellen Knoten zum Einrichten eines Hochverfügbarkeitsclusters aktivieren. Oder Aktivierung des direkten Festlegens von Anmeldeinformationen für die selbstgehostete IR ohne Umweg über Azure Data Factory. Für Letzteres verwenden Sie das Cmdlet **New-AzDataFactoryV2LinkedServiceEncryptedCredential** auf einem Remotecomputer in demselben Netzwerk.|
+|`-erac`,<br/>`-EnableRemoteAccessInContainer`|"`<port>`" ["`<thumbprint>`"]|Remotezugriff auf den aktuellen Knoten aktivieren, wenn der Knoten in einem Container ausgeführt wird|
+|`-dra`,<br/>`-DisableRemoteAccess`||Remotezugriff auf den aktuellen Knoten deaktivieren. Der Remotezugriff ist zum Einrichten von mehreren Knoten erforderlich. Das PowerShell-Cmdlet **New-AzDataFactoryV2LinkedServiceEncryptedCredential** funktioniert auch, wenn der Remotezugriff deaktiviert ist. Dies ist der Fall, sofern das Cmdlet auf demselben Computer ausgeführt wird, auf dem sich auch der Knoten für die selbstgehostete IR befindet.|
+|`-k`,<br/>`-Key`|"`<AuthenticationKey>`"|Vorherigen Authentifizierungsschlüssel überschreiben oder aktualisieren. Verwenden Sie diese Aktion mit Bedacht. Ihr Knoten der selbstgehostete IR wird ggf. in den Offlinezustand versetzt, wenn der Schlüssel von einer neuen Integration Runtime stammt.|
+|`-gbf`,<br/>`-GenerateBackupFile`|"`<filePath>`" "`<password>`"|Generiert eine Sicherungsdatei für den aktuellen Knoten. Die Sicherungsdatei enthält den Knotenschlüssel und die Anmeldeinformationen für den Datenspeicher.|
+|`-ibf`,<br/>`-ImportBackupFile`|"`<filePath>`" "`<password>`"|Knoten aus einer Sicherungsdatei wiederherstellen|
+|`-r`,<br/>`-Restart`||Hostdienst der selbstgehosteten Integration Runtime neu starten|
+|`-s`,<br/>`-Start`||Hostdienst der selbstgehosteten Integration Runtime starten|
+|`-t`,<br/>`-Stop`||Hostdienst der selbstgehosteten Integration Runtime beenden|
+|`-sus`,<br/>`-StartUpgradeService`||Upgradedienst der selbstgehosteten Integration Runtime starten|
+|`-tus`,<br/>`-StopUpgradeService`||Upgradedienst der selbstgehosteten Integration Runtime beenden|
+|`-tonau`,<br/>`-TurnOnAutoUpdate`||Automatische Aktualisierung der selbstgehosteten Integration Runtime aktivieren|
+|`-toffau`,<br/>`-TurnOffAutoUpdate`||Automatische Aktualisierung der selbstgehosteten Integration Runtime deaktivieren|
+|`-ssa`,<br/>`-SwitchServiceAccount`|"`<domain\user>`" ["`<password>`"]|Legen Sie fest, dass DIAHostService als neues Konto ausgeführt wird. Verwenden Sie ein leeres Kennwort („“) für Systemkonten und virtuelle Konten.|
 
 
 ## <a name="install-and-register-a-self-hosted-ir-from-microsoft-download-center"></a>Installieren und Registrieren einer selbstgehosteten IR über das Microsoft Download Center
@@ -205,9 +205,9 @@ Das standardmäßige Anmeldedienstkonto für die selbstgehostete Integration Run
 
 Stellen Sie sicher, dass das Konto über die Berechtigung „Anmelden als Dienst“ verfügt. Andernfalls kann die selbstgehostete Integration Runtime nicht erfolgreich gestartet werden. Sie können die Berechtigung unter **Lokale Sicherheitsrichtlinie -> Sicherheitseinstellungen -> Lokale Richtlinien -> Zuweisen von Benutzerrechten -> Anmelden als Dienst** prüfen.
 
-![Berechtigung für Dienstkonto](media/create-self-hosted-integration-runtime/shir-service-account-permission.png)
+![Screenshot von „ Lokale Sicherheitsrichtlinie“ – „Zuweisen von Benutzerrechten“](media/create-self-hosted-integration-runtime/shir-service-account-permission.png)
 
-![Berechtigung für Dienstkonto](media/create-self-hosted-integration-runtime/shir-service-account-permission-2.png)
+![Screenshot von „Anmelden als Dienst“ – „Zuweisen von Benutzerrechten“](media/create-self-hosted-integration-runtime/shir-service-account-permission-2.png)
 
 
 ## <a name="notification-area-icons-and-notifications"></a>Symbole des Benachrichtigungsbereichs und Benachrichtigungen

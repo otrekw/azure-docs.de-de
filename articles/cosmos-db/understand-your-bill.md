@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/04/2020
 ms.reviewer: sngun
-ms.openlocfilehash: b51be165d3d05ae753c7e0e5536a157fbbacf1ab
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: b0d27cb2f941db374a144cbd5c026444730e24e8
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96938629"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98247487"
 ---
 # <a name="understand-your-azure-cosmos-db-bill"></a>Grundlegendes zu Ihrer Azure Cosmos DB-Rechnung
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -215,8 +215,12 @@ Die monatliche Gesamtrechnung wird (30 Tage und 720 Stunden im Monat vorausgeset
 | | |Durchsatzabrechnung für zwei weitere Regionen „USA, Osten“ und „Europa, Norden“ (Schreibanforderungen für alle Regionen)  |`(1 + 1) * (70 K RU/sec /100 * $0.016) * 20 hours = $448`  |224 US-Dollar  |
 || |**Monatliche Gesamtkosten**  | |**38.688 US-Dollar**   |
 
-## <a name="billing-examples-with-free-tier-accounts"></a>Abrechnungsbeispiele mit Free-Tarif-Konten
+## <a name="billing-examples-with-azure-cosmos-db-free-tier-accounts"></a><a id="azure-free-tier"></a>Abrechnungsbeispiele bei Free-Tarif-Konten für Azure Cosmos DB
+
 Beim Free-Tarif für Azure Cosmos DB erhalten Sie die ersten 400 RUs/Sek. und 5 GB Speicher in Ihrem Konto kostenlos, angewendet auf der Kontoebene. Jegliche Nutzung, die über 400 RUs/Sek. und 5 GB Speicher hinausgeht, wird zu den regulären Preisen abgerechnet, die auf der Preisseite angegeben sind. Die Rechnung enthält keine Gebühr oder Position für die kostenlosen 400 RUs/Sek. bzw. 5 GB, sondern nur für die über den Free-Tarif hinausgehende RUs/Sek. und Speichernutzung. Die 400 RUs/Sek. gelten für jeden beliebigen Typ von RUs/Sek. – bereitgestellten Durchsatz, Autoskalierung und Schreibvorgänge für mehrere Regionen.  
+
+> [!NOTE]
+> Der Free-Tarif von Azure Cosmos DB ist anders als das kostenlose Azure-Konto. Das kostenlose Azure-Konto bietet Azure-Gutschriften und -Ressourcen kostenlos für einen begrenzten Zeitraum. Wenn Sie Azure Cosmos DB im Rahmen dieses kostenlosen Kontos nutzen, erhalten Sie 25 GB Speicher und 400 RU/s von bereitgestelltem Durchsatz für 12 Monate.
 
 ### <a name="billing-example---container-or-database-with-provisioned-throughput"></a>Abrechnungsbeispiel: Container oder Datenbank mit bereitgestelltem Durchsatz
 - Angenommen, Sie erstellen eine Datenbank oder einen Container in einem Free-Tarif-Konto mit 400 RUs/Sek. und 5 GB Speicher.

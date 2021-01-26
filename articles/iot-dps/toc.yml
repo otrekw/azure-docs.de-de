@@ -124,8 +124,6 @@
       items:
         - name: 'Verwalten von Registrierungen: Portal'
           href: how-to-manage-enrollments.md
-        - name: 'Verwalten von Registrierungen: Dienst-SDKs'
-          href: how-to-manage-enrollments-sdks.md
         - name: Konfigurieren von überprüften ZS-Zertifikaten
           href: how-to-verify-certificates.md
         - name: Rollen von Gerätezertifikaten
@@ -150,10 +148,6 @@
         - name: Windows
           href: ../iot-edge/how-to-auto-provision-simulated-device-windows.md
           maintainContext: true
-    - name: Verwenden von Nachweismechanismen mit dem SDK
-      href: use-hsm-with-sdk.md
-    - name: Verwenden von SDK-Tools für die Entwicklung
-      href: how-to-use-sdk-tools.md
     - name: Senden zusätzlicher Daten von Geräten
       href: how-to-send-additional-data.md
     - name: Problembehandlung

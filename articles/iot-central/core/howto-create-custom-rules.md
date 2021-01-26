@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc, devx-track-csharp
 manager: philmea
-ms.openlocfilehash: f6c8272f736e2f83b4d33f3d61ce83356aa40e5d
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: c79367ca8cf9e4a4884c829c675d794b2e734737
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92126755"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98220264"
 ---
 # <a name="extend-azure-iot-central-with-custom-rules-using-stream-analytics-azure-functions-and-sendgrid"></a>Erweitern von Azure IoT Central mit benutzerdefinierten Regeln mithilfe von Stream Analytics, Azure Functions und SendGrid
 
@@ -249,7 +249,7 @@ Die Lösung verwendet eine Stream Analytics-Abfrage, um zu erkennen, wenn ein Ge
     | Event Hub-Namespace | Ihr Event Hub-Namespace |
     | Event Hub-Name | Vorhandenen Wert verwenden: **centralexport** |
 
-1. Wählen Sie unter **Auftragstopologie** den Eintrag **Ausgaben** aus, klicken Sie auf **+ Hinzufügen**, und wählen Sie dann **Azure-Funktion** aus.
+1. Wählen Sie unter **Auftragstopologie** den Eintrag **Ausgaben** anschließend **+ Hinzufügen** und dann **Azure-Funktion** aus.
 1. Verwenden Sie die Informationen in der folgenden Tabelle, um die Ausgabe zu konfigurieren, und klicken Sie dann auf **Speichern**:
 
     | Einstellung | value |

@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 11/13/2020
+ms.date: 01/13/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 47a2aae39be93361e1e0e581efb56cc678b444cd
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: ff2408e35d76a6ea0d5221e04c7a41ed6cde7ac9
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96549088"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98178975"
 ---
 # <a name="object-replication-for-block-blobs"></a>Objektreplikation für Blockblobs
 
@@ -89,6 +89,16 @@ Beim Erstellen einer Replikationsregel werden standardmäßig nur neue Blockblob
 Sie können ferner einen oder mehrere Filter als Teil einer Replikationsregel angeben, um Blockblobs anhand eines Präfixes zu filtern. Wenn Sie ein Präfix angeben, werden nur Blobs in den Zielcontainer kopiert, die mit diesem Präfix im Quellcontainer übereinstimmen.
 
 Die Quell- und Zielcontainer müssen beide vorhanden sein, bevor Sie sie in einer Regel angeben können. Nachdem Sie die Replikationsrichtlinie erstellt haben, wird der Zielcontainer schreibgeschützt. Alle Versuche, in den Zielcontainer zu schreiben, schlagen mit dem Fehlercode 409 (Konflikt) fehl. Sie können jedoch den Vorgang [Blobebene festlegen](/rest/api/storageservices/set-blob-tier) für einen Blob im Zielcontainer aufrufen, um ihn auf die Archivebene zu verschieben. Weitere Informationen zur Archivebene finden Sie unter [Azure Blob Storage: Zugriffsebenen „Heiß“, „Kalt“ und „Archiv“](storage-blob-storage-tiers.md#archive-access-tier).
+
+## <a name="replication-status"></a>Replikationsstatus
+
+Sie können den Replikationsstatus für ein Blob im Quellkonto überprüfen. Weitere Informationen finden Sie unter [Überprüfen des Replikationsstatus eines Blobs](object-replication-configure.md#check-the-replication-status-of-a-blob).
+
+Wenn der Replikationsstatus für ein Blob im Quellkonto auf einen Fehler hinweist, untersuchen Sie die folgenden möglichen Ursachen:
+
+- Stellen Sie sicher, dass die Objektreplikationsrichtlinie im Zielkonto konfiguriert ist.
+- Überprüfen Sie, ob der Zielcontainer noch vorhanden ist.
+- Wenn das Quellblob im Rahmen eines Schreibvorgangs mit einem vom Kunden bereitgestellten Schlüssel verschlüsselt wurde, tritt bei der Objektreplikation ein Fehler auf. Weitere Informationen zu vom Kunden bereitgestellten Schlüsseln finden Sie unter [Angeben eines Verschlüsselungsschlüssels bei Stellen einer Anforderung für Blob Storage](encryption-customer-provided-keys.md).
 
 ## <a name="billing"></a>Abrechnung
 

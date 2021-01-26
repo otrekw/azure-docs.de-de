@@ -329,7 +329,7 @@
               href: msal-error-handling-dotnet.md
               displayName: 'handling, catch'
             - name: Protokollierung in MSAL.NET
-              href: msal-logging.md?tabs=dotnet
+              href: msal-logging-dotnet.md
             - name: Abrufen eines Token aus dem Cache
               href: msal-net-acquire-token-silently.md
             - name: Tokencacheserialisierung
@@ -371,7 +371,7 @@
               href: msal-error-handling-js.md
               displayName: 'handling, catch'
             - name: Protokollierung in MSAL.js
-              href: msal-logging.md?tabs=javascript
+              href: msal-logging-js.md
         - name: MSAL für iOS und macOS
           items:
             - name: Unterschiede zwischen MSAL für iOS und macOS
@@ -401,7 +401,7 @@
               href: msal-error-handling-ios.md
               displayName: 'handling, catch'
             - name: Protokollierung in MSAL für iOS/macOS
-              href: msal-logging.md?tabs=swift
+              href: msal-logging-ios.md
         - name: MSAL für Python
           items:
             - name: Benutzerdefinierte Tokencacheserialisierung
@@ -414,7 +414,7 @@
               href: msal-error-handling-python.md
               displayName: 'handling, catch'
             - name: Protokollierung in MSAL für Python
-              href: msal-logging.md?tabs=python
+              href: msal-logging-python.md
         - name: MSAL für Java
           items:
             - name: Benutzerdefinierte Tokencacheserialisierung
@@ -429,7 +429,7 @@
               href: msal-error-handling-java.md
               displayName: 'handling, catch'
             - name: Protokollierung in MSAL für Java
-              href: msal-logging.md?tabs=java
+              href: msal-logging-java.md
         - name: MSAL für Android
           items:
             - name: Konten und Mandantenprofile
@@ -449,7 +449,7 @@
               href: msal-android-handling-exceptions.md
               displayName: 'android, mobile, handling, catch'
             - name: Protokollierung in MSAL für Android
-              href: msal-logging.md?tabs=android
+              href: msal-logging-android.md
     - name: Anpassen von Token und Ansprüchen
       items:
         - name: Konfigurieren von Rollenansprüchen

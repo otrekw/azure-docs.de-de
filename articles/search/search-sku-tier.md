@@ -1,44 +1,44 @@
 ---
 title: Auswählen eines Tarifs
 titleSuffix: Azure Cognitive Search
-description: 'Azure Cognitive Search kann in folgenden Dienstebenen bereitgestellt werden: „Free“, „Basic“ und „Standard“, wobei „Standard“ mit verschiedenen Ressourcenkonfigurationen und Kapazitäten verfügbar ist.'
+description: 'Hier erfahren Sie etwas über die Tarife (oder SKUs) für Azure Cognitive Search. Ein Suchdienst kann auf diesen Ebenen bereitgestellt werden: „Free“, „Basic“ und „Standard“. „Standard“ steht in verschiedenen Ressourcenkonfigurationen und Kapazitäten zur Verfügung.'
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 12/15/2020
+ms.date: 01/15/2021
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 062bd41b0803cbb08f74fbcbcebb89bbddeb0d45
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 1a1fc0ce634282ffd4fcf374138fe97a04f32062
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97559802"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98539589"
 ---
 # <a name="choose-a-pricing-tier-for-azure-cognitive-search"></a>Auswählen eines Tarifs für die kognitive Azure-Suche
 
-Beim [Erstellen eines Suchdiensts](search-create-service-portal.md) wählen Sie einen Tarif, der für die Lebensdauer des Diensts festgelegt ist. Der ausgewählte Tarif bestimmt:
+Beim [Erstellen eines Suchdiensts](search-create-service-portal.md) wählen Sie einen Tarif (oder eine SKU) aus, der für die Lebensdauer des Diensts festgelegt wurde. Die geschätzten monatlichen Kosten werden im Portal auf der Seite **Tarif auswählen** angezeigt. Wenn Sie stattdessen einen Dienst über PowerShell oder Azure CLI erstellen, wird der Tarif durch den Parameter **`-Sku`** angegeben.
 
-+ Die Anzahl von Indizes und anderen Objekten, die Sie erstellen können (maximale Grenzwerte)
+Der ausgewählte Tarif bestimmt:
+
++ Die maximale Anzahl von Indizes und anderen Objekten, die Sie für den Dienst erstellen können
 + Größe und Geschwindigkeit von Partitionen (physischer Speicher)
-+ Die abrechenbare Rate, eine festgelegte monatliche Gebühr, aber auch inkrementelle Kosten, wenn Sie Partitionen oder Replikate hinzufügen
++ Die abrechenbare Rate als eine festgelegte monatliche Gebühr, aber auch als inkrementelle Kosten, wenn Sie Kapazität hinzufügen
 
-Außerdem gelten für einige [Premium-Features](#premium-features) Tarifanforderungen.
+In einigen Fällen bestimmt der von Ihnen gewählte Tarif die Verfügbarkeit von [Premium-Features](#premium-features).
 
 ## <a name="tier-descriptions"></a>Tarifbeschreibungen
 
-Folgende Tarife sind verfügbar: **Free**, **Basic**, **Standard** und **Speicheroptimiert**. „Standard“ und „Speicheroptimiert“ werden mit verschiedenen Konfigurationen und Kapazitäten bereitgestellt.
+Folgende Tarife sind verfügbar: **Free**, **Basic**, **Standard** und **Speicheroptimiert**. „Standard“ und „Speicheroptimiert“ werden mit verschiedenen Konfigurationen und Kapazitäten bereitgestellt. Im folgenden Screenshot aus dem Azure-Portal sind die verfügbaren Tarife ohne Preise aufgeführt (die Preise finden Sie im Portal und auf der [Seite mit der Preisübersicht](https://azure.microsoft.com/pricing/details/search/)). 
 
-Im folgenden Screenshot aus dem Azure-Portal sind die verfügbaren Tarife ohne Preise aufgeführt (die Preise finden Sie im Portal und auf der [Seite mit der Preisübersicht](https://azure.microsoft.com/pricing/details/search/)). 
+:::image type="content" source="media/search-sku-tier/tiers.png" alt-text="Diagramm des Tarifs" border="true":::
 
-![Tarife der kognitiven Azure-Suche](media/search-sku-tier/tiers.png "Tarife der kognitiven Azure-Suche")
+Mit **Free** wird ein eingeschränkter Suchdienst für kleinere Projekte wie das Ausführen von Tutorials und Codebeispielen erstellt. Intern werden Systemressourcen von mehreren Abonnenten gemeinsam genutzt. Es ist nicht möglich, einen kostenlosen Dienst zu skalieren oder signifikante Workloads auszuführen.
 
-Mit **Free** wird ein eingeschränkter Suchdienst für kleinere Projekte wie das Ausführen von Tutorials und Codebeispielen erstellt. Intern werden Replikate und Partitionen von mehreren Abonnenten gemeinsam genutzt. Es ist nicht möglich, einen kostenlosen Dienst zu skalieren oder signifikante Workloads auszuführen.
+**Basic** und **Standard** sind die am häufigsten verwendeten abzurechnenden Tarife, wobei **Standard** die Standardeinstellung ist, weil sie mehr Flexibilität bei der Skalierung für Workloads bietet. Wenn Sie dedizierte Ressourcen nutzen, können Sie größere Projekte bereitstellen, die Leistung optimieren und die Kapazität steigern.
 
-**Basic** und **Standard** sind die am häufigsten verwendeten abrechenbaren Tarife, wobei **Standard** der vorgegebene Tarif ist. Wenn Sie dedizierte Ressourcen nutzen, können Sie größere Projekte bereitstellen, die Leistung optimieren und die Kapazität steigern.
-
-Einige Tarife sind für bestimmte Verwendungszwecke optimiert. **Standard 3 High Density (S3 HD)** ist beispielsweise ein *Hostingmodus* für S3. Die zugrunde liegende Hardware ist für eine große Anzahl kleinerer Indizes optimiert und für Szenarien mit Mehrinstanzenfähigkeit konzipiert. Die Gebühr pro Einheit unterscheidet sich zwischen „S3 HD“ und „S3“ nicht. Die Hardware ist bei „S3 HD“ jedoch für schnelle Dateilesevorgänge bei einer großen Anzahl kleinerer Indizes optimiert.
+Einige Tarife sind für bestimmte Verwendungszwecke konzipiert. **Standard 3 High Density (S3 HD)** ist beispielsweise ein *Hostingmodus* für S3. Die zugrunde liegende Hardware ist für eine große Anzahl kleinerer Indizes optimiert und für Szenarien mit Mehrinstanzenfähigkeit konzipiert. Die Gebühr pro Einheit unterscheidet sich zwischen „S3 HD“ und „S3“ nicht. Die Hardware ist bei „S3 HD“ jedoch für schnelle Dateilesevorgänge bei einer großen Anzahl kleinerer Indizes optimiert.
 
 **Datenspeicheroptimierte** Tarife bieten eine höhere Speicherkapazität zu einem niedrigeren Preis pro TB als die Standard-Tarife. Der größte Nachteil ist die höhere Wartezeit. Diese müssen Sie bei Ihren spezifischen Anwendungsanforderungen berücksichtigen. Weitere Informationen zu den Leistungsaspekten dieses Tarifs finden Sie unter [Überlegungen zur Leistung und Optimierung von Azure Search](search-performance-optimization.md).
 
@@ -54,80 +54,37 @@ Die meisten Funktionen sind in allen Tarifen (einschließlich des Free-Tarifs) v
 |---------|-------------|
 | [Indexer](search-indexer-overview.md) | Indexer sind auf S3 HD nicht verfügbar.  |
 | [KI-Anreicherung](search-security-manage-encryption-keys.md) | Wird im Free-Tarif ausgeführt, aber nicht empfohlen. |
+| [Verwaltete oder vertrauenswürdige Identitäten für den ausgehenden Zugriff (Indexer)](search-howto-managed-identities-data-sources.md) | Im Free-Tarif nicht verfügbar.|
 | [Von Kunden verwaltete Verschlüsselungsschlüssel](search-security-manage-encryption-keys.md) | Im Free-Tarif nicht verfügbar. |
 | [IP-Firewallzugriff](service-configure-firewall.md) | Im Free-Tarif nicht verfügbar. |
 | [Privater Endpunkt (Integration mit Azure Private Link)](service-create-private-endpoint.md) | Für eingehende Verbindungen bei einem Suchdienst, nicht im Free-Tarif verfügbar. Für ausgehende Verbindungen von Indexern zu anderen Azure-Ressourcen, nicht verfügbar im Tarif „Free“ oder „S3 HD“. Für Indexer, die Skillsets verwenden, nicht verfügbar im Tarif „Free“, „Basic“, „S1“ oder „S3 HD“|
 
 Ressourcenintensive Funktionen funktionieren möglicherweise nicht gut, wenn Sie ihnen nicht genügend Kapazität zuweisen. Beispielsweise umfasst die [KI-Anreicherung](cognitive-search-concept-intro.md) Skills mit langer Laufzeit, die bei einem kostenlosen Dienst zu einem Timeout führen, sofern es sich nicht um ein kleines Dataset handelt.
 
-## <a name="billable-events"></a>Abrechenbare Ereignisse
+## <a name="upper-limits"></a>Obergrenzen
 
-Für eine auf der kognitiven Azure-Suche basierende Lösung können folgende Kosten anfallen:
+Tarife bestimmen den maximalen Speicherplatz des Diensts selbst sowie die maximale Anzahl von Indizes, Indexern, Datenquellen, Skillsets und Synonymzuordnungen, die Sie erstellen können. Eine vollständige Unterbrechung aller Grenzwerte finden Sie unter [Diensteinschränkungen in Azure Cognitive Search](search-limits-quotas-capacity.md). 
 
-+ [Kosten für den Dienst](#service-costs) selbst, der rund um die Uhr mit einer minimalen Konfiguration (eine Partition und ein Replikat) im Basistarif ausgeführt wird. Sie können sich dies als die Fixkosten für die Ausführung des Diensts vorstellen.
+## <a name="partition-size-and-speed"></a>Partitionsgröße und Geschwindigkeit
 
-+ Hinzufügen von Kapazität (Replikate oder Partitionen), wobei die Kosten in Inkrementen der abrechenbaren Rate steigen
+Der Tarifpreis enthält Details zum partitionsweisen Speicher, der von 2 GB für „Basic“ bis zu 2 TB für datenspeicheroptimierte Tarife (L2) reicht. Andere Hardwaremerkmale, wie z. B. die Geschwindigkeit von Vorgängen, die Latenz und die Übertragungsraten, werden nicht veröffentlicht, aber die für bestimmte Lösungsarchitekturen vorgesehenen Tarife basieren auf Hardware mit den Features zur Unterstützung dieser Szenarien.
 
-+ Bandbreitengebühren (ausgehende Datenübertragung)
+## <a name="billing-rates"></a>Abrechnungsraten
 
-+ Für bestimmte Funktionen oder Features erforderliche Add-On-Dienste:
+Bei Tarifen gibt es unterschiedliche Abrechnungsraten, mit höheren Raten für Tarife, die auf teurerer Hardware ausgeführt werden oder teurere Features bereitstellen. Die Abrechnungsrate pro Ebene finden Sie auf den [Seiten zu Azure-Preisen](https://azure.microsoft.com/pricing/details/search/) für Azure Cognitive Search.
 
-  + KI-Anreicherung (erfordert [Cognitive Services](https://azure.microsoft.com/pricing/details/cognitive-services/))
-  + Wissensspeicher (erfordert [Azure Storage](https://azure.microsoft.com/pricing/details/storage/))
-  + Inkrementelle Anreicherung (erfordert [Azure Storage](https://azure.microsoft.com/pricing/details/storage/), gilt für KI-Anreicherung)
-  + Kundenseitig verwaltete Schlüssel und doppelte Verschlüsselung (erfordert [Azure Key Vault](https://azure.microsoft.com/pricing/details/key-vault/))
-  + Private Endpunkte für ein Zugriffsmodell ohne Internet (erfordert [Azure Private Link](https://azure.microsoft.com/pricing/details/private-link/))
+Nachdem Sie einen Dienst erstellt haben, wird die Abrechnungsrate sowohl zu *Fixkosten* für die Ausführung des Diensts rund um die Uhr als auch zu *inkrementellen Kosten*, wenn Sie mehr Kapazität hinzufügen möchten.
 
-### <a name="service-costs"></a>Dienstkosten
+Suchdiensten werden Computerressourcen in Form von *Partitionen* (für Speicher) und *Replikaten* (Instanzen der Abfrage-Engine) zugeordnet. Anfänglich wird ein Dienst mit jeweils einer der beiden Ressourcen erstellt, und die Abrechnungsrate ist in beiden Ressourcen enthalten. Wenn Sie jedoch die Kapazität skalieren, werden die Kosten in Inkrementen der abrechenbaren Rate erhöht oder gesenkt.
 
-Im Unterschied zu virtuellen Computern oder anderen Ressourcen, die angehalten werden können, um Gebühren zu vermeiden, ist ein Dienst für die kognitive Azure-Suche immer auf der Hardware verfügbar, die für Ihre ausschließliche Nutzung bestimmt ist. Daher ist die Erstellung eines Diensts ein abrechenbares Ereignis, das mit dem Erstellen des Diensts beginnt und mit dem Löschen des Diensts endet. 
+Dies wird im folgenden Beispiel veranschaulicht. Nehmen Sie eine hypothetische Abrechnungsrate von 100 € pro Monat an. Wenn Sie für den Suchdienst seine Anfangskapazität von einer Partition und einem Replikat beibehalten, ist 100 € der Betrag, den Sie am Monatsende erwartungsgemäß bezahlen werden. Wenn Sie aber zwei weitere Replikate hinzufügen, um Hochverfügbarkeit zu erreichen, erhöht sich die monatliche Rechnung auf 300 € (100 € für das erste Paar aus Replikat und Partition, gefolgt von 200 € für die zwei Replikate).
 
-Die Mindestgebühr fällt zum abrechenbaren Preis für die erste Sucheinheit (ein Replikat × eine Partition) an. Dieser Betrag gilt für die Lebensdauer des Diensts, da der Dienst nicht mit weniger als dieser Konfiguration ausgeführt werden kann. Über dieses Minimum hinaus können Sie Replikate und Partitionen unabhängig voneinander hinzufügen. Inkrementelle Kapazitätserweiterungen durch Replikate und Partitionen erhöhen die Abrechnung basierend auf der folgenden Formel: [(Replikate × Partitionen × Preis)](#search-units). Der abgerechnete Preis hängt dabei von Ihrem ausgewählten Tarif ab.
-
-Wenn Sie Ihre Kosten für eine Suchlösung abschätzen möchten, bedenken Sie, dass sich Preis und Kapazität nicht linear verhalten. (Bei einer Verdopplung der Kapazität fallen mehr als doppelt so hohe Kosten an.) Ein Beispiel zur Funktionsweise der Formel finden Sie unter [Zuordnen von Replikaten und Partitionen](search-capacity-planning.md#how-to-allocate-replicas-and-partitions).
-
-### <a name="bandwidth-charges"></a>Bandbreitengebühren
-
-Die Verwendung von [Indexern](search-indexer-overview.md) kann sich auf die Abrechnung auswirken, wenn sich die Azure-Datenquelle in einer anderen Region als Azure Cognitive Search befindet. In diesem Szenario sind dies die Kosten für das Verschieben von ausgehenden Daten aus der Azure-Datenquelle in Azure Cognitive Search. 
-
-Sie können die Gebühren für ausgehende Daten vollständig vermeiden, wenn Sie den Dienst für die kognitive Azure-Suche in derselben Region wie Ihre Daten erstellen. Die folgenden Informationen stammen von der Seite [Preisübersicht Bandbreite](https://azure.microsoft.com/pricing/details/bandwidth/):
-
-+ Microsoft stellt keine Gebühren für in beliebige Azure-Dienste eingehende Daten in Rechnung.
-+ Es fallen keine Gebühren für aus Azure Cognitive Search ausgehende Daten an. Beispiel: Wenn sich Ihr Suchdienst in der Region „USA, Westen“ befindet und eine Azure-Web-App in der Region „USA, Osten“ bereitgestellt wird, stellt Microsoft keine Gebühren für die Abfrageantwortnutzlasten aus „USA, Westen“ in Rechnung.
-+ Bei Lösungen mit mehreren Diensten fallen keine Gebühren für Datenübertragungen an, wenn sich alle Dienste in derselben Region befinden.
-
-Für ausgehende Daten fallen Gebühren an, wenn sich die Dienste in verschiedenen Regionen befinden. Diese Gebühren sind nicht Teil Ihrer eigentlichen Rechnung für die kognitive Azure-Suche. Sie werden hier jedoch erwähnt, weil die Kosten für eine Datenübertragung per Pull aus unterschiedlichen Regionen mithilfe von Daten oder um KI erweiterte Indexer in Ihrer Gesamtrechnung aufgeführt werden.
-
-### <a name="ai-enrichment-with-cognitive-services"></a>KI-Anreicherung mit Cognitive Services
-
-Für die [KI-Anreicherung](cognitive-search-concept-intro.md) sollten Sie eine [abrechenbare Azure Cognitive Services-Ressource](cognitive-search-attach-cognitive-services.md) in derselben Region wie die kognitive Azure-Suche im S0-Tarif für die nutzungsbasierte Bezahlung der Verarbeitung anfügen. Durch das Anfügen von Cognitive Services fallen keine festen Kosten an. Sie bezahlen nur für die benötigte Verarbeitung.
-
-| Vorgang | Auswirkungen auf die Abrechnung |
-|-----------|----------------|
-| Dokumententschlüsselung, Textextraktion | Kostenlos |
-| Dokumententschlüsselung, Bildextraktion | Die Abrechnung erfolgt entsprechend der Anzahl von Bildern, die aus den Dokumenten extrahiert werden. In einer [Indexerkonfiguration](/rest/api/searchservice/create-indexer#indexer-parameters) löst der Parameter **imageAction** die Bildextraktion aus. Ist **imageAction** auf „None“ festgelegt (Standardeinstellung), fallen keine Gebühren für die Bildextraktion an. Die Preise für die Bildextraktion sind auf der Seite mit [Preisdetails](https://azure.microsoft.com/pricing/details/search/) für die kognitive Azure-Suche dokumentiert.|
-| [Integrierte kognitive Qualifikationen](cognitive-search-predefined-skills.md) | Wird zum gleichen Preis abgerechnet, als ob Sie die Aufgabe direkt mithilfe von Cognitive Services ausgeführt hätten. |
-| Benutzerdefinierte Qualifikationen | Bei einer benutzerdefinierten Qualifikation handelt es sich um die von Ihnen bereitgestellte Funktionalität. Die Kosten für die Verwendung einer benutzerdefinierten Qualifikation hängen ganz davon ab, ob mit dem benutzerdefinierten Code andere gebührenpflichtige Dienste aufgerufen werden. |
-
-Mit dem Feature [Inkrementelle Anreicherung (Vorschau)](cognitive-search-incremental-indexing-conceptual.md) können Sie einen Cache bereitstellen, durch den der Indexer beim Ausführen nur der kognitiven Fähigkeiten, die beim zukünftigen Ändern Ihres Skillsets notwendig sind, effizienter arbeiten kann. Das spart Zeit und Geld.
-
-<a name="search-units"></a>
-
-## <a name="billing-formula-r-x-p--su"></a>Formel für die Abrechnung (R × P = SU)
-
-Bei Vorgängen der kognitiven Azure-Suche ist das wichtigste Abrechnungskonzept die *Sucheinheit* (Search Unit, SU). Da die kognitive Azure-Suche bei der Indizierung und bei Abfragen sowohl von Replikaten als auch von Partitionen abhängig ist, ist es nicht sinnvoll, entweder nur nach dem einen oder nur nach dem anderen abzurechnen. Stattdessen basiert die Abrechnung auf einer Kombination beider.
-
-Die SU ist das Produkt aus den von einem Dienst verwendeten *Replikaten* und *Partitionen*: **(R x P = SU)** .
-
-Jeder Dienst beginnt mit mindestens einer SU (einem Replikat multipliziert mit einer Partition). Die maximale Anzahl von SUs für einen Dienst beträgt 36. Dieser Höchstwert kann auf verschiedene Weise erreicht werden: beispielsweise mit 6 Partitionen x 6 Replikaten oder mit 3 Partitionen x 12 Replikaten. Üblicherweise werden weniger als die Gesamtkapazität an SUs verwendet (3 Replikate x 3 Partitionen werden beispielsweise als 9 SUs abgerechnet). Gültige Kombinationen finden Sie in der Tabelle [Partitions- und Replikatskombinationen](search-capacity-planning.md#chart).
-
-Der Preis wird stündlich pro SU abgerechnet. Dabei steigt der Preis mit jedem höheren Tarif an. Höhere Tarife enthalten größere und schnellere Partitionen, was zu einem insgesamt höheren Stundensatz für den jeweiligen Tarif führt. Die Preise für die einzelnen Tarife finden Sie auf der Seite [Azure Search – Preise](https://azure.microsoft.com/pricing/details/search/).
-
-Die meisten Kunden schalten nur einen Teil der Gesamtkapazität online und halten den Rest in Reserve. Die Anzahl der Partitionen und Replikate, die Sie online schalten, bestimmt (mit der SU-Formel berechnet) den stündlichen Preis.
+Dieses Preismodell basiert auf dem Konzept einer Anwendung der Abrechnungsrate auf die Anzahl der *Sucheinheiten* (Search Units, SUs), die von einem Suchdienst verwendet werden. Alle Dienste werden zunächst in einer einzigen SU bereitgestellt. Sie können aber die Anzahl der SUs erhöhen, indem Sie entweder Partitionen oder Replikate zur Verarbeitung größerer Workloads hinzufügen. Weitere Informationen finden Sie unter [Schätzen der Kosten für einen Suchdienst](search-sku-manage-costs.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Die Kostenverwaltung ist ein wesentlicher Bestandteil der Kapazitätsplanung. Fahren Sie im nächsten Schritt mit dem folgenden Artikel fort. Darin erfahren Sie, wie Sie die Kapazität schätzen und Kosten verwalten können.
+Die beste Möglichkeit zur Auswahl eines Tarifs ist, mit dem kostengünstigsten Tarif zu beginnen und sich dann aufgrund von Erfahrungen und anhand von Tests zu entscheiden, ob Sie den Dienst beibehalten oder einen neuen Dienst zu einem höheren Tarif erstellen möchten. Für die nächsten Schritte empfehlen wir, dass Sie einen Suchdienst auf einer Ebene erstellen, die die von Ihnen vorgeschlagenen Testebene aufnehmen kann. Lesen Sie dann den folgenden Leitfaden mit Empfehlungen zum Schätzen von Kosten und Kapazität.
 
-> [!div class="nextstepaction"]
-> [Schätzen von Kapazität und Kosten in Azure Cognitive Search](search-sku-manage-costs.md)
++ [Erstellen eines Suchdiensts](search-create-service-portal.md)
++ [Schätzen der Kosten](search-sku-manage-costs.md)
++ [Schätzen der Kapazität](search-sku-manage-costs.md)

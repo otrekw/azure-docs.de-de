@@ -1,28 +1,28 @@
 ---
 title: Systemanforderungen für Microsoft Azure Data Box | Microsoft-Dokumentation
-description: Hier werden wichtige Systemanforderungen für Ihre Azure Data Box-Instanz und die Clients beschrieben, die sich mit der Data Box verbinden.
+description: Hier erfahren Sie etwas über wichtige Systemanforderungen für Ihre Azure Data Box und für Clients, die eine Verbindung mit der Data Box herstellen.
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 10/02/2020
+ms.date: 12/23/2020
 ms.author: alkohli
-ms.openlocfilehash: 5f1623ef4dde59e816e3afe5a5f5894c49469580
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0190e295c2ab206242ab8a44a09ffb42746d75bd
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91767864"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98209548"
 ---
 # <a name="azure-data-box-system-requirements"></a>Systemanforderungen für Azure Data Box
 
-In diesem Artikel werden wichtige Systemanforderungen für Ihre Microsoft Azure Data Box und die Clients beschrieben, die eine Verbindung mit der Data Box herstellen. Sie sollten die Informationen sorgfältig lesen, bevor Sie Ihre Data Box bereitstellen. Später können Sie während der Bereitstellung und des Betriebs bei Bedarf als Referenz darauf zurückgreifen.
+In diesem Artikel werden wichtige Systemanforderungen für Ihre Microsoft Azure Data Box und die Clients beschrieben, die eine Verbindung mit der Data Box herstellen. Sie sollten die Informationen sorgfältig lesen, bevor Sie Ihre Data Box bereitstellen. Dann können Sie bei Bedarf während der Bereitstellung und des Betriebs als Referenz darauf zurückgreifen.
 
 Systemanforderungen:
 
 * **Softwareanforderungen**: Für Hosts, die eine Verbindung mit der Data Box herstellen, werden die unterstützten Betriebssysteme, Dateiübertragungsprotokolle, Speicherkonten, Speichertypen und Browser für die lokale Webbenutzeroberfläche beschrieben.
-* **Netzwerkanforderungen**: Für die Data Box werden Anforderungen an Netzwerkverbindungen und Ports für einen optimalen Betrieb der Data Box beschrieben.
+* **Netzwerkanforderungen**: Für die Data Box werden Anforderungen an Netzwerkverbindungen und Ports für den optimalen Betrieb der Data Box beschrieben.
 
 
 ## <a name="software-requirements"></a>Softwareanforderungen
@@ -55,11 +55,11 @@ Die Softwareanforderungen umfassen unterstützte Betriebssysteme, Dateiübertrag
 
 ## <a name="networking-requirements"></a>Netzwerkanforderungen
 
-Ihr Datencenter verfügt über ein Hochgeschwindigkeitsnetzwerk. Mindestens eine 10-GbE-Verbindung wird dringend empfohlen. Falls keine 10-GbE-Verbindung verfügbar ist, kann zum Kopieren der Daten ein 1-GbE-Datenlink verwendet werden, die Geschwindigkeit der Kopiervorgänge wird dadurch jedoch beeinträchtigt.
+Ihr Datencenter verfügt über ein Hochgeschwindigkeitsnetzwerk. Wir empfehlen dringend mindestens eine 10-GbE-Verbindung. Falls keine 10-GbE-Verbindung zur Verfügung steht, können Sie eine 1-GbE-Datenverbindung verwenden. Allerdings wird dadurch die Geschwindigkeit für Kopiervorgänge beeinträchtigt.
 
 ### <a name="port-requirements"></a>Portanforderungen
 
-In der folgenden Tabelle sind die Ports aufgeführt, die in der Firewall für SMB- oder NFS-Datenverkehr geöffnet werden müssen. In dieser Tabelle bezieht sich *ein* (*eingehend*) auf die Richtung, aus der eingehende Clientanforderungen auf das Gerät zugreifen. Entsprechend bezieht sich *aus* (*ausgehend*) auf die Richtung, in der das Data Box-Gerät Daten aus der Bereitstellung heraus an externe Ziele sendet, z. B. ausgehende Verbindungen mit dem Internet.
+In der folgenden Tabelle sind die Ports aufgeführt, die in der Firewall für SMB- oder NFS-Datenverkehr geöffnet werden müssen. In dieser Tabelle bezieht sich *ein* (*eingehend*) auf die Richtung, aus der eingehende Clientanforderungen auf das Gerät zugreifen. *Aus* (oder *ausgehend*) bezieht sich auf die Richtung, in der Ihr Data Box-Gerät Daten aus der Bereitstellung heraus an externe Ziele sendet. Beispielsweise könnte das Ziel für ausgehende Daten das Internet sein.
 
 [!INCLUDE [data-box-port-requirements](../../includes/data-box-port-requirements.md)]
 

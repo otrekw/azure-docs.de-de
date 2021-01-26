@@ -21,10 +21,10 @@
   expanded: true
 - name: Konzepte
   items:
+    - name: Erweiterungen
+      href: extensions.md
     - name: Verfügbare VM-Größen
       href: available-sizes.md
-    - name: Häufig gestellte Fragen
-      href: faq.md
     - name: Patches für Gastbetriebssysteme
       href: ../cloud-services/cloud-services-guestos-msrc-releases.md?toc=/azure/cloud-services-extended-support/toc.json&bc=/azure/cloud-services-extended-support/breadcrumb/toc.json
     - name: Deaktivierung von Gastbetriebssystemen
@@ -49,10 +49,10 @@
           href: schema-cscfg-role.md
         - name: NetworkConfiguration-Schema
           href: schema-cscfg-networkconfiguration.md
+    - name: Häufig gestellte Fragen
+      href: faq.md
 - name: Vorgehensweise
   items:
-    - name: Übersicht über Erweiterungen
-      href: extensions.md
     - name: Anwenden der Remotedesktoperweiterung
       href: enable-rdp.md
     - name: Anwenden der WAD-Erweiterung
@@ -83,6 +83,8 @@
       href: 'https://docs.microsoft.com/azure/templates/microsoft.compute/cloudservices'
     - name: REST
       href: 'https://docs.microsoft.com/rest/api/compute/cloudservices'
+    - name: SDK
+      href: 'https://www.nuget.org/packages/Microsoft.Azure.Management.Compute/43.0.0-preview'
 - name: Ressourcen
   items:
     - name: Azure-Roadmap

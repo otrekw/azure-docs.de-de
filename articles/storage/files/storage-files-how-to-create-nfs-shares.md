@@ -1,5 +1,5 @@
 ---
-title: 'Erstellen einer NFS-Freigabe: Azure Files'
+title: Erstellen einer NFS-Freigabe – Azure Files (Vorschau)
 description: In diesem Artikel erfahren Sie, wie Sie eine Azure-Dateifreigabe erstellen, die mithilfe des NFS-Protokolls (Network File System) eingebunden werden kann.
 author: roygara
 ms.service: storage
@@ -8,12 +8,12 @@ ms.date: 12/04/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: 3cf22ee22c35b850aff33290a59a7043bb57c984
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 323eed77d6f7a6ccfcdd0a7c7aecff3a125300dc
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96620942"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98602672"
 ---
 # <a name="how-to-create-an-nfs-share"></a>Erstellen einer NFS-Freigabe
 

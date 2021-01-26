@@ -1,5 +1,5 @@
 ---
-title: Anpassen der Kapazität für Abfrage- und Indexworkloads
+title: Schätzen der Kapazität für Abfrage- und Indexworkloads
 titleSuffix: Azure Cognitive Search
 description: Passen Sie Partitions- und Replikatcomputerressourcen in der kognitiven Azure-Suche an, wobei jede Ressource in abrechenbaren Sucheinheiten abgerechnet wird.
 manager: nitinme
@@ -7,19 +7,21 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 09/08/2020
-ms.openlocfilehash: 92dcbfd360938724bb65b734d7c69ea61d7826b0
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.date: 01/15/2021
+ms.openlocfilehash: 4a9a6b61e392ed2efd68cdcb1cf7e53d6bde5ccd
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96533042"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98249728"
 ---
-# <a name="adjust-the-capacity-of-an-azure-cognitive-search-service"></a>Anpassen der Kapazität eines Azure Cognitive Search-Diensts
+# <a name="estimate-and-manage-capacity-of-an-azure-cognitive-search-service"></a>Schätzen und Verwalten der Kapazität eines Azure Cognitive Search-Diensts
 
 Nehmen Sie sich einige Minuten Zeit, bevor Sie [einen Suchdienst bereitstellen](search-create-service-portal.md) und einen bestimmten Tarif festlegen, um zu verstehen, wie die Kapazität funktioniert und wie Sie Replikate und Partitionen an Schwankungen der Workload anpassen können.
 
-Die Kapazität ist vom [ausgewählten Tarif](search-sku-tier.md) (Tarife bestimmen die Hardwareeigenschaften) und der für geplante Workloads erforderlichen Kombination aus Replikat und Partition abhängig. Nach der Erstellung eines Diensts können Sie die Anzahl von Replikaten oder Partitionen unabhängig voneinander erhöhen oder verringern. Die Kosten erhöhen sich mit jeder zusätzlichen physischen Ressource. Nach Abschluss umfangreicher Workloads können Sie jedoch herunterskalieren, um Ihre Kosten zu senken. Je nach Tarif und Umfang der Anpassung kann das Hinzufügen oder Reduzieren von Kapazität zwischen 15 Minuten und mehreren Stunden dauern.
+Kapazität ist eine Funktion der [Dienstebene](search-sku-tier.md). Tarife unterscheiden sich durch die maximale Speichergröße, die Speicherkapazität pro Partition und die maximalen Grenzwerte für die Anzahl der Objekte, die Sie erstellen können. Der Tarif „Basic“ ist für Apps vorgesehen, die relativ geringe Speicheranforderungen (nur eine Partition) haben, aber die Möglichkeit zur Ausführung in einer Konfiguration mit hoher Verfügbarkeit (3 Replikate) bieten. Andere Tarife sind für bestimmte Arbeitsauslastungen oder Muster, z. B. Mehrinstanzenfähigkeit, konzipiert. Intern profitieren auf diesen Tarifen erstellte Dienste von Hardware, die diese Szenarien unterstützt.
+
+Die Skalierbarkeitsarchitektur in Azure Cognitive Search basiert auf flexiblen Kombinationen von Replikaten und Partitionen, sodass Sie die Kapazität variieren können – je nachdem, ob Sie mehr Abfrage- oder mehr Indizierungsleistung benötigen. Nach der Erstellung eines Diensts können Sie die Anzahl von Replikaten oder Partitionen unabhängig voneinander erhöhen oder verringern. Die Kosten erhöhen sich mit jeder zusätzlichen physischen Ressource. Nach Abschluss umfangreicher Workloads können Sie jedoch herunterskalieren, um Ihre Kosten zu senken. Je nach Tarif und Umfang der Anpassung kann das Hinzufügen oder Reduzieren von Kapazität zwischen 15 Minuten und mehreren Stunden dauern.
 
 Wir empfehlen, die Replikat- und Partitionszuordnung über das Azure-Portal zu ändern. Das Portal erzwingt Grenzwerte für zulässige Kombinationen, damit die Obergrenzen eines Tarifs nicht überschritten werden. Wenn die Bereitstellung jedoch skript- oder codebasiert erfolgen soll, sind die [Azure PowerShell](/rest/api/searchmanagement/services) oder die [Verwaltungs-REST-API](search-manage-powershell.md) alternative Lösungen.
 
@@ -42,17 +44,94 @@ Das obige Diagramm ist nur ein Beispiel. Es sind viele Kombinationen von Partiti
 
 In Cognitive Search ist die Shardverwaltung ein Implementierungsdetail und nicht konfigurierbar. Aber das Wissen, dass das Sharding für einen Index ausgeführt wird, hilft dabei, die gelegentlichen Anomalien bei der Erstellung der Rangfolge und beim Verhalten von AutoVervollständigen zu verstehen:
 
-+ Anomalien beim Erstellen der Rangfolge: Suchbewertungen werden zunächst auf der Shard-Ebene berechnet und dann zu einem einzelnen Resultset aggregiert. Abhängig von den Merkmalen des Shardinhalts können Übereinstimmungen aus einem Shard höher eingestuft werden als Übereinstimmungen in einem anderen Shard. Wenn Sie nicht intuitive Rangfolgen in den Suchergebnissen bemerken, ist dies höchstwahrscheinlich auf die Auswirkungen des Shardings zurückzuführen, insbesondere wenn die Indizes klein sind. Sie können diese Anomalien in der Rangfolge vermeiden, indem Sie die Option zum [globalen Berechnen von Bewertungen über den gesamten Index](index-similarity-and-scoring.md#scoring-statistics-and-sticky-sessions) auswählen. Dies ist jedoch mit Leistungseinbußen verbunden.
++ Anomalien beim Erstellen der Rangfolge: Suchbewertungen werden zunächst auf der Shard-Ebene berechnet und dann zu einem einzelnen Resultset aggregiert. Abhängig von den Merkmalen des Shardinhalts können Übereinstimmungen aus einem Shard höher eingestuft werden als Übereinstimmungen in einem anderen Shard. Wenn Sie in den Suchergebnissen intuitive Rangfolgen bemerken, ist dies höchstwahrscheinlich auf die Auswirkungen des Shardings zurückzuführen – insbesondere wenn die Indizes klein sind. Sie können diese Anomalien in der Rangfolge vermeiden, indem Sie die Option zum [globalen Berechnen von Bewertungen über den gesamten Index](index-similarity-and-scoring.md#scoring-statistics-and-sticky-sessions) auswählen. Dies ist jedoch mit Leistungseinbußen verbunden.
 
 + Anomalien beim AutoVervollständigen: AutoVervollständigen-Abfragen, bei denen Vergleiche anhand der ersten paar Zeichen eines teilweise eingegebenen Begriffs vorgenommen werden, akzeptieren einen Fuzzyparameter, der kleine Abweichungen in der Rechtschreibung verzeiht. Bei AutoVervollständigen ist die Fuzzyübereinstimmung auf Begriffe innerhalb des aktuellen Shards beschränkt. Wenn z. B. ein Shard „Microsoft“ enthält und ein Teilbegriff von „micor“ eingegeben wird, findet die Suchmaschine in diesem Shard eine Übereinstimmung mit „Microsoft“, aber nicht in anderen Shards, die die restlichen Teile des Indexes enthalten.
 
-## <a name="when-to-add-nodes"></a>Zeitpunkt zum Hinzufügen von Knoten
+## <a name="how-to-evaluate-capacity-requirements"></a>Auswerten von Kapazitätsanforderungen
+
+Zwischen der Kapazität und den Kosten für die Ausführung des Diensts besteht ein direkter Zusammenhang. Tarife sind mit Grenzwerten auf zwei Ebenen verbunden: Speicher und Inhalt (z. B. eine Anzahl von Indizes für einen Dienst). Weil der zuerst erreichte Grenzwert gilt, müssen Sie beide Aspekte berücksichtigen.
+
+Mengen von Indizes und anderen Objekten werden normalerweise von geschäftlichen und technischen Anforderungen vorgegeben. Beispielsweise könnten Sie mehrere Versionen desselben Indexes für aktive Entwicklung, Tests und Produktion haben.
+
+Speicheranforderungen werden durch die Größe der Indizes bestimmt, die Sie für die Erstellung erwarten. Es gibt keine solide Heuristik oder allgemein gültige Regeln, die bei Schätzungen helfen. Die einzige Möglichkeit zur Ermittlung der Größe eines Indexes ist, [einen zu erstellen](search-what-is-an-index.md). Dessen Größe basiert auf den importierten Daten, der Textanalyse und Indexkonfiguration, also beispielsweise, ob Sie Vorschlagsfunktionen, die Filterung und Sortierung aktivieren.
+
+Bei der Volltextsuche entspricht die primäre Datenstruktur der Struktur eines [invertierten Indexes](https://en.wikipedia.org/wiki/Inverted_index), die über andere Eigenschaften als die Quelldaten verfügt. Bei einem invertierten Index werden Größe und Komplexität vom Inhalt bestimmt, nicht notwendigerweise von der Menge der Daten, die Sie eingeben. Eine große Datenquelle mit hoher Redundanz könnte einen kleineren Index ergeben als ein kleineres Dataset mit stark variierendem Inhalt. Daher ist es kaum möglich, die Indexgröße aus der Größe des ursprünglichen Datasets abzuleiten.
+
+> [!NOTE] 
+> Auch wenn sich das Schätzen der künftig benötigten Indizes und des erforderlichen Speichers wie bloßes Mutmaßen anfühlt, lohnt sich der Aufwand. Stellt sich die Kapazität eines Tarifs als zu gering heraus, müssen Sie einen neuen Dienst in einem höheren Tarif bereitstellen und anschließend die [Indizes neu laden](search-howto-reindex.md). Für einen Dienst kann kein direktes Upgrade von einem Tarif auf einen anderen durchgeführt werden.
+>
+
+### <a name="estimate-with-the-free-tier"></a>Schätzung mit dem Free-Tarif
+
+Eine Möglichkeit zum Abschätzen der Kapazität besteht darin, mit dem Tarif „Free“ zu beginnen. Bedenken Sie, dass der Dienst vom Typ „Free“ bis zu drei Indizes, 50 MB Speicherplatz und 2 Minuten Indizierungszeit bietet. Es kann schwierig sein, mit diesen Einschränkungen eine voraussichtliche Indexgröße zu schätzen. Sie können es dennoch wie folgt versuchen:
+
++ [Erstellen Sie einen kostenlosen Dienst](search-create-service-portal.md).
++ Bereiten Sie ein kleines repräsentatives Dataset vor.
++ Erstellen Sie einen Index, und laden Sie Ihre Daten. Wenn das Dataset in einer von Indexern unterstützten Azure-Datenquelle gehostet werden kann, können Sie den Index mithilfe des [Datenimport-Assistenten im Portal](search-get-started-portal.md) erstellen und laden. Andernfalls sollten Sie REST und [Postman](search-get-started-rest.md) oder [Visual Studio Code](search-get-started-vs-code.md) verwenden, um den Index zu erstellen und die Daten zu pushen. Beim Pushmodell müssen Daten in Form von JSON-Dokumenten vorliegen, wobei Felder im Dokument Feldern im Index entsprechen.
++ Sammeln Sie Informationen zum Index, z. B. die Größe. Funktionen und Attribute haben Auswirkungen auf den Speicher. Durch das Hinzufügen von Vorschlagsfunktionen (Search-as-you-Type-Abfragen) erhöhen sich beispielsweise die Speicheranforderungen. 
+
+  Sie können mehrere Versionen eines Index unter Verwendung desselben Datasets erstellen und dabei verschiedene Attribute für die einzelnen Felder verwenden, um zu ermitteln, wie sich die Speicheranforderungen ändern. Weitere Informationen finden Sie [im Abschnitt „Hinweise zum Speicher“ unter „Erstellen eines einfachen Index“](search-what-is-an-index.md#index-size).
+
+Mit einer groben Schätzung können Sie die betreffende Größe für zwei Indizes verdoppeln (Entwicklung und Produktion) und dann Ihren Tarif entsprechend auswählen.
+
+### <a name="estimate-with-a-billable-tier"></a>Schätzung mit einem abrechenbaren Tarif
+
+Dedizierte Ressourcen ermöglichen längere Sampling- und Verarbeitungszeiten und eignen sich besser für realistische Schätzungen bezüglich Indexmenge, Größe und Abfragevolumen während der Entwicklung. Einige Kunden beginnen direkt mit einem abrechenbaren Tarif und werten ihn im Lauf des Entwicklungsprojekts erneut aus.
+
+1. [Überprüfen Sie die Dienstgrenzwerte in jedem Tarif](./search-limits-quotas-capacity.md#index-limits), um festzustellen, ob niedrigere Tarife die Anzahl der benötigten Indizes unterstützen können. In den Tarifen „Basic“, „S1“ und „S2“ betragen die Grenzwerte für Indizes 15, 50 bzw. 200. Der Tarif „Speicheroptimiert“ ist auf zehn Indizes beschränkt, da er für eine geringe Anzahl sehr großer Indizes ausgelegt ist.
+
+1. [Erstellen Sie einen Dienst unter einem abzurechnenden Tarif](search-create-service-portal.md):
+
+    + Beginnen Sie mit einem niedrigen Tarif, z. B. „Basic“ oder „S1“, wenn Sie sich über die projizierte Last nicht sicher sind.
+    + Starten Sie hoch, mit „S2“ oder sogar „S3“, wenn Tests umfangreiche Indizierungs- und Abfrageworkloads enthalten.
+    + Beginnen Sie mit einem Tarif vom Typ „Speicheroptimiert“ („L1“ oder „L2“), wenn Sie sehr viele Daten indizieren möchten und die Abfragelast relativ gering ist (etwa im Fall einer internen Geschäftsanwendung).
+
+1. [Erstellen Sie einen anfänglichen Index](search-what-is-an-index.md), um zu bestimmen, wie Quelldaten in einen Index übersetzt werden. Dies ist die einzige Möglichkeit, die Größe des Indexes zu schätzen.
+
+1. [Überwachen Sie Speicher, Dienstgrenzwerte, Abfragevolumen und Latenz](search-monitor-usage.md) im Portal. Im Portal werden die Abfragen pro Sekunde, gedrosselte Abfragen und die Wartezeit bei Suchvorgängen angezeigt. Diese Werte können Ihnen dabei helfen, den richtigen Tarif auszuwählen.
+
+1. Fügen Sie Replikate hinzu, wenn Sie Hochverfügbarkeit benötigen oder wenn die Abfrageleistung verlangsamt wird.
+
+   Es gibt keine Richtlinien zur Anzahl der Replikate, die für bestimmte Abfragelasten benötigt werden. Die Abfrageleistung hängt von der Komplexität der Abfrage und den konkurrierenden Workloads ab. Obwohl das Hinzufügen von Replikaten die Leistung deutlich erhöht, ist das Endergebnis aber nicht streng linear: Das Hinzufügen von 3 Replikaten garantiert keinen dreifachen Durchsatz. Leitlinien zur Schätzung der QPS (Queries per Second, Abfragen pro Sekunde) für Ihre Lösung finden Sie unter [Skalieren zur Verbesserung der Leistung](search-performance-optimization.md) und [Überwachen von Abfragen](search-monitor-queries.md).
+
+> [!NOTE]
+> Speicheranforderungen können vergrößert werden, wenn Sie Daten einbeziehen, die nie durchsucht werden. Im Idealfall enthalten Dokumente nur die Daten, die Sie für die Suche benötigen. Binäre Daten sind nicht durchsuchbar und sollten separat gespeichert werden (beispielsweise in einer Azure-Tabelle oder in Azure Blob Storage). In diesem Fall sollte dem Index ein Feld mit einem URL-Verweis auf die externen Daten hinzugefügt werden. Die maximale Größe eines einzelnen Suchdokuments beträgt 16 MB (oder weniger, wenn Sie im Rahmen einer einzelnen Anforderung mehrere Dokumente gleichzeitig hochladen). Weitere Informationen finden Sie unter [Grenzwerte für den Dienst für die kognitive Azure-Suche](search-limits-quotas-capacity.md).
+>
+
+**Überlegungen zum Abfragevolumen**
+
+„Abfragen pro Sekunde“ (Queries per Second, QPS) ist eine wichtige Metrik bei der Leistungsoptimierung, spielt aber im Allgemeinen bei der Tarifauswahl nur dann eine Rolle, wenn Sie zu Beginn ein hohes Abfragevolumen erwarten.
+
+Die Tarife vom Typ „Standard“ bieten ein ausgewogenes Verhältnis von Replikaten und Partitionen. Durch Hinzufügen von Replikaten für den Lastenausgleich oder durch Hinzufügen von Partitionen für eine parallele Verarbeitung können Sie kürzere Abfrageverarbeitungszeiten erzielen. Nach der Bereitstellung des Diensts können Sie die Leistung optimieren.
+
+Ist von Anfang an ein hohes durchgängiges Abfragevolumen zu erwarten, sollten Sie höhere Tarife vom Typ „Standard“ in Verbindung mit einer leistungsfähigeren Hardware in Erwägung ziehen. Bleiben diese Abfragevolumen aus, können Sie Partitionen und Replikate offline schalten oder auch zu einem Dienst mit niedrigerem Tarif wechseln. Weitere Informationen zum Berechnen des Abfragedurchsatzes finden Sie unter [Überlegungen zur Leistung und Optimierung der kognitiven Azure-Suche](search-performance-optimization.md).
+
+Die Tarife vom Typ „Speicheroptimiert“ eigenen sich für Workloads mit großen Datenmengen und unterstützen insgesamt mehr verfügbaren Indexspeicher bei niedrigeren Anforderungen an die Abfragewartezeit. Dabei sollten Sie weiterhin zusätzliche Replikate für den Lastenausgleich und zusätzliche Partitionen für die parallele Verarbeitung verwenden. Nach der Bereitstellung des Diensts können Sie die Leistung optimieren.
+
+**Vereinbarungen zum Servicelevel**
+
+Die Funktionen des Tarifs „Free“ und der Vorschauversion bieten keine [Vereinbarungen zum Servicelevel (Service Level Agreements, SLA)](https://azure.microsoft.com/support/legal/sla/search/v1_0/). Für alle abrechenbaren Tarife gelten SLAs, wenn Sie genügend Redundanz für Ihren Dienst bereitstellen. Für Abfrage-SLAs (Lesezugriff) benötigen Sie zwei oder mehr Replikate. Für Abfrage- und Indizierungs-SLAs (Lese-/Schreibzugriff) sind drei oder mehr Replikate erforderlich. Die Anzahl der Partitionen hat keine Auswirkungen auf die SLAs.
+
+## <a name="tips-for-capacity-planning"></a>Tipps zur Kapazitätsplanung
+
++ Erstellen Sie Metriken zu Abfragen, und sammeln Sie Daten zu Verwendungsmustern (Abfragen während der Geschäftszeiten, Indizierung außerhalb der Spitzenzeiten). Treffen Sie anhand dieser Daten Entscheidungen zur Dienstbereitstellung. Da ein stündliches oder tägliches Intervall ungeeignet ist, können Sie Partitionen und Ressourcen dynamisch so anpassen, dass geplante Änderungen von Abfragevolumen ermöglicht werden. Auch ungeplante, aber anhaltende Änderungen können berücksichtigt werden, wenn Ebenen beständig genug sind, um die Durchführung von Aktionen zu garantieren.
+
++ Beachten Sie, dass der einzige Nachteil einer unterdimensionierten Bereitstellung darin besteht, dass Sie ggf. einen Dienst entfernen müssen, wenn die tatsächlichen Anforderungen Ihre Schätzungen überschreiten. Um Dienstunterbrechungen zu vermeiden, sollten Sie einen neuen Dienst in einem höheren Tarif erstellen und parallel ausführen, bis alle Apps und Anforderungen den neuen Endpunkt zum Ziel haben.
+
+## <a name="when-to-add-partitions-and-replicas"></a>Wann Partitionen und Replikate hinzugefügt werden sollten
 
 Zunächst wird einem Dienst eine Mindestmenge von Ressourcen (bestehend aus einer Partition und einem Replikat) zugeordnet.
 
 Ein einzelner Dienst muss über genügend Ressourcen verfügen, um sämtliche Workloads (Indizierung und Abfragen) bewältigen zu können. Beide Workloads laufen nicht im Hintergrund. Sie können die Indizierung für Zeiten planen, in denen Abfrageanforderungen naturgemäß weniger häufig sind, aber der Dienst priorisiert ansonsten keine Aufgabe gegenüber einer anderen. Zusätzlich gleicht ein gewisses Maß an Redundanz die Abfrageleistung aus, wenn Dienste oder Knoten intern aktualisiert werden.
 
 Allgemein gilt: Suchanwendungen benötigen in der Regel mehr Replikate als Partitionen – insbesondere, wenn die Dienstvorgänge auf Abfrageworkloads ausgerichtet sind. Warum das so ist, erfahren Sie im [Abschnitt zu Hochverfügbarkeit](#HA).
+
+Der [ausgewählte Tarif](search-sku-tier.md) bestimmt die Größe und Geschwindigkeit der Partition, und jeder Tarif ist um eine Reihe von Eigenschaften optimiert, die auf bestimmte Szenarien ausgerichtet sind. Wenn Sie sich für einen höherwertigen Tarif entscheiden, benötigen Sie möglicherweise weniger Partitionen als bei S1. Eine der Fragen, die Sie durch selbstgesteuerte Tests beantworten müssen, lautet: Bringt eine größere und teurere Partition eine bessere Leistung als zwei billigere Partitionen bei einem Dienst, der in einem niedrigeren Tarif bereitgestellt wird?
+
+Suchanwendungen, die Datenaktualisierung nahezu in Echtzeit erfordern, benötigen proportional mehr Partitionen als Replikate. Das Hinzufügen von Partitionen verteilt Lese-/ Schreibvorgänge über eine größere Anzahl von Computerressourcen. Außerdem erhalten Sie mehr Speicherplatz auf dem Datenträger zum Speichern zusätzlicher Indizes und Dokumente.
+
+Größere Indizes erfordern eine längere Abfragezeit. Daher werden Sie feststellen, dass jede inkrementelle Zunahme an Partitionen einen kleineren, aber proportionalen Anstieg der Replikate erforderlich macht. Die Komplexität Ihrer Abfragen und das Abfragevolumen haben darauf Einfluss, wie schnell die Abfrage ausgeführt wird.
 
 > [!NOTE]
 > Wenn Sie weitere Replikate oder Partitionen hinzufügen, erhöhen sich die Kosten für die Ausführung des Diensts. Außerdem kann die Sortierung der Ergebnisse leicht variieren. Sie sollten daher den [Preisrechner](https://azure.microsoft.com/pricing/calculator/) verwenden, um die Auswirkungen des Hinzufügens weiterer Knoten auf die Abrechnung zu verstehen. Das [Diagramm unten ](#chart) kann Ihnen helfen, die Anzahl der für eine bestimmte Konfiguration erforderlichen Sucheinheiten zu ermitteln. Weitere Informationen dazu, wie sich zusätzliche Replikate auf die Abfrageverarbeitung auswirken, finden Sie unter [Sortieren von Ergebnissen](search-pagination-page-layout.md#ordering-results).
@@ -61,27 +140,27 @@ Allgemein gilt: Suchanwendungen benötigen in der Regel mehr Replikate als Parti
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an, und wählen Sie den Suchdienst aus.
 
-1. Öffnen Sie in **Einstellungen** die Seite **Skalierung**, um Replikate und Partitionen zu ändern. 
+1. Öffnen Sie unter **Einstellungen** die Seite **Skalierung**, um Replikate und Partitionen zu ändern. 
 
-   Der folgende Screenshot zeigt einen Standarddienst, der mit einem Replikat und einer Partition bereitgestellt wurde. Die Formel im unteren Bereich gibt an, wie viele Sucheinheiten verwendet werden (1). Wenn der Preis pro Einheit 100 US-Dollar wäre (kein echter Preis), würden die monatlichen Kosten für die Ausführung dieses Diensts durchschnittlich 100 US-Dollar betragen.
+   Der folgende Screenshot zeigt einen Basic Standard, der mit einem Replikat und einer Partition bereitgestellt wurde. Die Formel im unteren Bereich gibt an, wie viele Sucheinheiten verwendet werden (1). Wenn der Preis pro Einheit 100 US-Dollar wäre (kein echter Preis), würden die monatlichen Kosten für die Ausführung dieses Diensts durchschnittlich 100 US-Dollar betragen.
 
-   ![Seite „Skalierung“ mit aktuellen Werten](media/search-capacity-planning/1-initial-values.png "Seite „Skalierung“ mit aktuellen Werten")
+   :::image type="content" source="media/search-capacity-planning/1-initial-values.png" alt-text="Seite „Skalierung“ mit aktuellen Werten" border="true":::
 
-1. Mit dem Schieberegler können Sie die Anzahl der Partitionen erhöhen oder verringern. Die Formel im unteren Bereich gibt an, wie viele Sucheinheiten verwendet werden.
+1. Mit dem Schieberegler können Sie die Anzahl der Partitionen erhöhen oder verringern. Die Formel im unteren Bereich gibt an, wie viele Sucheinheiten verwendet werden. Wählen Sie **Speichern** aus.
 
-   In diesem Beispiel wird die Kapazität verdoppelt – mit jeweils zwei Replikaten und Partitionen. Beachten Sie die Anzahl der Sucheinheiten. Sie beträgt jetzt vier, weil die Formel für die Abrechnung lautet: Replikate, multipliziert mit Partitionen (2 x 2). Bei einer Verdopplung der Kapazität fallen mehr als doppelt so hohe Kosten für die Ausführung des Diensts an. Wenn die Kosten für die Sucheinheit 100 US-Dollar wären, würde die neue Monatsrechnung jetzt 400 US-Dollar betragen.
+   In diesem Beispiel werden ein zweites Replikat und eine zweite Partition hinzugefügt. Beachten Sie die Anzahl der Sucheinheiten. Sie beträgt jetzt vier, weil die Formel für die Abrechnung lautet: Replikate, multipliziert mit Partitionen (2 x 2). Bei einer Verdopplung der Kapazität fallen mehr als doppelt so hohe Kosten für die Ausführung des Diensts an. Wenn die Kosten für die Sucheinheit 100 US-Dollar wären, würde die neue Monatsrechnung jetzt 400 US-Dollar betragen.
 
    Wenn Sie die aktuellen Kosten pro Einheit für die einzelnen Tarife erfahren möchten, besuchen Sie die [Seite mit der Preisübersicht](https://azure.microsoft.com/pricing/details/search/).
 
-   ![Hinzufügen von Replikaten und Partitionen](media/search-capacity-planning/2-add-2-each.png "Hinzufügen von Replikaten und Partitionen")
+   :::image type="content" source="media/search-capacity-planning/2-add-2-each.png" alt-text="Hinzufügen von Replikaten und Partitionen" border="true":::
 
-1. Wählen Sie **Speichern** aus, um die Änderungen zu bestätigen.
+1. Nach dem Speichern können Sie Benachrichtigungen überprüfen, um zu bestätigen, dass die Aktion erfolgreich war.
 
-   ![Bestätigen von Änderungen an Skalierung und Abrechnung](media/search-capacity-planning/3-save-confirm.png "Bestätigen von Änderungen an Skalierung und Abrechnung")
+   :::image type="content" source="media/search-capacity-planning/3-save-confirm.png" alt-text="Änderungen speichern" border="true":::
 
-   Kapazitätsänderungen dauern mehrere Stunden. Sie können den Prozess nach seinem Start nicht abbrechen, und es gibt keine Echtzeitüberwachung für Replikat- und Partitionsanpassungen. Allerdings bleibt die folgende Meldung sichtbar, während Änderungen vorgenommen werden.
+   Änderungen bei der Kapazität können mehrere Stunden bis zum Abschluss dauern. Sie können den Prozess nach seinem Start nicht abbrechen, und es gibt keine Echtzeitüberwachung für Replikat- und Partitionsanpassungen. Allerdings bleibt die folgende Meldung sichtbar, während Änderungen vorgenommen werden.
 
-   ![Statusmeldung im Portal](media/search-capacity-planning/4-updating.png "Statusmeldung im Portal")
+   :::image type="content" source="media/search-capacity-planning/4-updating.png" alt-text="Statusmeldung im Portal" border="true":::
 
 > [!NOTE]
 > Sobald ein Dienst bereitgestellt ist, kann kein direktes Upgrade auf einen höheren Tarif erfolgen. In diesem Fall müssen Sie einen Suchdienst unter dem neuen Tarif erstellen und Ihre Indizes neu laden. Informationen zur Dienstbereitstellung finden Sie unter [Erstellen eines Diensts für die kognitive Azure-Suche im Portal](search-create-service-portal.md).
@@ -95,7 +174,7 @@ Allgemein gilt: Suchanwendungen benötigen in der Regel mehr Replikate als Parti
 
 Ein Basic-Dienst kann genau eine Partition und bis zu drei Replikate besitzen. Die Obergrenze liegt bei drei SUs. Nur die Replikate können angepasst werden. Für Hochverfügbarkeit bei Abfragen sind mindestens zwei Replikate erforderlich.
 
-Alle Suchdienste vom Typ „Standard“ oder „Storage Optimized“ können die folgenden Kombinationen von Replikaten und Partitionen annehmen, vorbehaltlich dem Limit 36 SU. 
+Alle Suchdienste vom Typ „Standard“ oder „Datenspeicheroptimiert“ können die folgenden Kombinationen von Replikaten und Partitionen annehmen, vorbehaltlich dem für diese Ebenen zulässigen Limit von 36 SU. 
 
 |   | **1 Partition** | **2 Partitionen** | **3 Partitionen** | **4 Partitionen** | **6 Partitionen** | **12 Partitionen** |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -105,7 +184,7 @@ Alle Suchdienste vom Typ „Standard“ oder „Storage Optimized“ können die
 | **4 Replikate** |4 SU |8 SU |12 SU |16 SU |24 SU |– |
 | **5 Replikate** |5 SU |10 SU |15 SU |20 SU |30 SU |– |
 | **6 Replikate** |6 SU |12 SU |18 SU |24 SU |36 SU |– |
-| **12 Replikate** |12 SU |24 SU |36 SU |– |– |– |
+| **12 Replikate** |12 SU |24 SU |36 SU |– |Nicht zutreffend |– |
 
 SUs, Preise und Kapazität werden auf der Azure-Website ausführlich erläutert. Weitere Informationen finden Sie unter [Preise](https://azure.microsoft.com/pricing/details/search/).
 
@@ -121,35 +200,15 @@ Da ein Hochskalieren einfach und relativ schnell durchzuführen ist, wird im All
 
 Allgemeine Empfehlungen für Hochverfügbarkeit sind:
 
-* Zwei Replikate für Hochverfügbarkeit von schreibgeschützten Workloads (Abfragen)
++ Zwei Replikate für Hochverfügbarkeit von schreibgeschützten Workloads (Abfragen)
 
-* Drei oder mehr Replikate für Hochverfügbarkeit von Lese-/Schreibworkloads (Abfragen und Indizierung, wenn einzelne Dokumente hinzugefügt, aktualisiert oder gelöscht werden)
++ Drei oder mehr Replikate für Hochverfügbarkeit von Lese-/Schreibworkloads (Abfragen und Indizierung, wenn einzelne Dokumente hinzugefügt, aktualisiert oder gelöscht werden)
 
 Vereinbarungen zum Servicelevel (Service Level Agreements, SLAs) für die kognitive Azure-Suche sind auf Abfragevorgänge und auf Indexupdates (Hinzufügen, Aktualisieren oder Löschen von Dokumenten) ausgerichtet.
 
 Der Tarif „Basic“ erreicht den Höchstwert bei einer Partition und drei Replikaten. Wenn Sie die Flexibilität benötigen, auf Schwankungen beim Bedarf an Indizierungen und Abfragedurchsatz sofort zu reagieren, ziehen Sie einen der Standard-Tarife in Betracht.  Wenn Sie feststellen, dass Ihre Speicheranforderungen viel schneller wachsen als Ihr Abfragedurchsatz, sollten Sie einen der Tarife vom Typ „Storage Optimized“ in Betracht ziehen.
 
-## <a name="disaster-recovery"></a>Notfallwiederherstellung
-
-Derzeit steht kein integrierter Mechanismus für die Notfallwiederherstellung bereit. Das Hinzufügen von Partitionen oder Replikaten wäre die falsche Strategie, um die Zielsetzungen für eine Notfallwiederherstellung zu erfüllen. Der gängigste Ansatz ist, Redundanz auf Dienstebene durch Bereitstellung eines zweiten Suchdiensts in einer anderen Region hinzuzufügen. Die Umleitungs- oder Failoverlogik muss genau wie bei der Verfügbarkeit während der Indexneuerstellung in Ihrem Code bereitgestellt werden.
-
-## <a name="estimate-replicas"></a>Schätzen der Replikate
-
-Für Produktionsdienste sollten Sie aus SLA-Gründen drei Replikate zuordnen. Wenn Sie eine langsame Abfrageleistung feststellen, können Sie Replikate hinzufügen, damit zusätzliche Kopien des Index online geschaltet werden, um größere Abfrageworkloads zu unterstützen und die Anforderungslast gleichmäßig auf mehrere Replikate zu verteilen.
-
-Wir stellen keine Richtlinien zur Verfügung, wie viele Replikate für bestimmte Abfragelasten benötigt werden. Die Abfrageleistung hängt von der Komplexität der Abfrage und den konkurrierenden Workloads ab. Obwohl das Hinzufügen von Replikaten die Leistung deutlich erhöht, ist das Endergebnis aber nicht streng linear: Das Hinzufügen von 3 Replikaten garantiert keinen dreifachen Durchsatz.
-
-Leitlinien zur Schätzung der QPS für Ihre Lösung finden Sie unter [Skalieren zur Verbesserung der Leistung](search-performance-optimization.md) und [Überwachen von Abfragen](search-monitor-queries.md).
-
-## <a name="estimate-partitions"></a>Schätzen der Partitionen
-
-Der [ausgewählte Tarif](search-sku-tier.md) bestimmt die Größe und Geschwindigkeit der Partition, und jeder Tarif ist um eine Reihe von Eigenschaften optimiert, die auf bestimmte Szenarien ausgerichtet sind. Wenn Sie sich für einen höherwertigen Tarif entscheiden, benötigen Sie möglicherweise weniger Partitionen als bei S1. Eine der Fragen, die Sie durch selbstgesteuerte Tests beantworten müssen, lautet: Bringt eine größere und teurere Partition eine bessere Leistung als zwei billigere Partitionen bei einem Dienst, der in einem niedrigeren Tarif bereitgestellt wird?
-
-Suchanwendungen, die Datenaktualisierung nahezu in Echtzeit erfordern, benötigen proportional mehr Partitionen als Replikate. Das Hinzufügen von Partitionen verteilt Lese-/ Schreibvorgänge über eine größere Anzahl von Computerressourcen. Außerdem erhalten Sie mehr Speicherplatz auf dem Datenträger zum Speichern zusätzlicher Indizes und Dokumente.
-
-Größere Indizes erfordern eine längere Abfragezeit. Daher werden Sie feststellen, dass jede inkrementelle Zunahme an Partitionen einen kleineren, aber proportionalen Anstieg der Replikate erforderlich macht. Die Komplexität Ihrer Abfragen und das Abfragevolumen haben darauf Einfluss, wie schnell die Abfrage ausgeführt wird.
-
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Auswählen eines Tarifs für die kognitive Azure-Suche](search-sku-tier.md)
+> [Schätzen und Verwalten von Kosten](search-sku-manage-costs.md)
