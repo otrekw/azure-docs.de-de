@@ -8,12 +8,12 @@ author: emuench
 ms.author: mingshen
 ms.date: 10/15/2020
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: d8cb5179583dd23ea2bd4baf5ebe7d84b0ae9cbf
-ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
+ms.openlocfilehash: 748b6c3506127de8fce153a77571664ea531ffa1
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97814430"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98601362"
 ---
 # <a name="azure-consumption-commitment-benefit"></a>Vorteil eines Prepaidtarifs für den Azure-Verbrauch
 
@@ -24,7 +24,7 @@ Wenn für Ihr Unternehmen eine der folgenden Vereinbarungen getroffen wurde, wir
 
 Wir überprüfen alle Angebote im Rahmen dieses Programms, um sicherzustellen, dass Sie hochwertige Lösungen erhalten.
 
-Um den Vorteil zu nutzen, erwerben Sie im Azure Marketplace unter Verwendung eines Abonnements, das mit Ihrer Azure-Vereinbarung verknüpft ist, einfach ein berechtigendes Angebot. Dieser Vorteil gilt nicht in Verbindung mit Vorauszahlungen und Verpflichtungen zum Mindestverbrauch in Azure.
+Um den Vorteil zu nutzen, erwerben Sie im Azure Marketplace unter Verwendung eines Abonnements, das mit Ihrer Azure-Vereinbarung verknüpft ist, einfach ein berechtigendes Angebot. Dieser Vorteil gilt nicht in Verbindung mit der Azure-Vorauszahlung (zuvor als „Mindestverbrauch“ bezeichnet).
 
 > [!IMPORTANT]
 > Außerdem können CtC-Vereinbarungen ausgeschlossen sein, die vor diesem Marketplace-Vorteilsprogramm abgeschlossen wurden. Wenn Sie Fragen zur Berechtigung haben, wenden Sie sich an Ihren Microsoft-Kundenbetreuer.

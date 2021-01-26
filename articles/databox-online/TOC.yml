@@ -1,5 +1,5 @@
 - name: Dokumentation zu Azure Stack Edge Pro
-  href: /azure/databox-online/
+  href: ./index.yml
   expanded: true
 - name: 'Azure Stack Edge Pro: GPU'
   items:
@@ -291,8 +291,8 @@
               href: azure-stack-edge-contact-microsoft-support.md
     - name: Freigegebene Versionshinweise
       items:
-        - name: '2012: Aktuell'
-          href: azure-stack-edge-gpu-2012-release-notes.md
+        - name: '2101: Aktuell'
+          href: azure-stack-edge-gpu-2101-release-notes.md
         - name: 2010
           href: azure-stack-edge-gpu-2009-release-notes.md
         - name: 2008
@@ -397,7 +397,7 @@
   items:
     - name: Sicherheitsbaseline
       href: security-baseline.md
-- name: References
+- name: Referenzen
   items:
     - name: Azure Policy-Integrationen
       displayName: 'samples, policies, definitions'

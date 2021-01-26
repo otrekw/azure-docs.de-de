@@ -5,13 +5,13 @@ author: savjani
 ms.author: pariks
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 3/18/2020
-ms.openlocfilehash: bca995f8b2cea33266e032b543abb18ee7140f3f
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.date: 01/15/2021
+ms.openlocfilehash: 164285b1fea3dce18161066e643aa165e47cc496
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94541180"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98233985"
 ---
 # <a name="monitor-azure-database-for-mariadb-performance-with-query-store"></a>Überwachen der Leistung von Azure Database for MariaDB mit dem Abfragespeicher
 
@@ -21,7 +21,7 @@ Das Abfragespeicherfeature in Azure Database for MariaDB ermöglicht die Nachver
 
 ## <a name="common-scenarios-for-using-query-store"></a>Gängige Szenarien für die Verwendung des Abfragespeichers
 
-Der Abfragespeicher kann in unterschiedlichen Szenarien genutzt werden, z. B.:
+Der Abfragespeicher kann in vielen Szenarien genutzt werden, z. B.:
 
 - Erkennen von zurückgestellten Abfragen
 - Bestimmen der Häufigkeit zum Ausführen einer Abfrage in einem angegebenen Zeitfenster
@@ -34,14 +34,14 @@ Der Abfragespeicher ist ein optionales Feature. Daher ist er auf einem Server ni
 ### <a name="enable-query-store-using-the-azure-portal"></a>Aktivieren des Abfragespeichers über das Azure-Portal
 
 1. Melden Sie sich beim Azure-Portal an, und wählen Sie Ihren Azure Database for MariaDB-Server aus.
-1. Wählen Sie im Bereich **Einstellungen** im Menü die Option **Serverparameter**.
-1. Suchen Sie nach dem Parameter „query_store_capture_mode“.
-1. Legen Sie den Wert auf „ALL“ fest, und wählen Sie dann **Speichern** aus.
+2. Wählen Sie im Bereich **Einstellungen** im Menü die Option **Serverparameter**.
+3. Suchen Sie nach dem Parameter „query_store_capture_mode“.
+4. Legen Sie den Wert auf „ALL“ fest, und wählen Sie dann **Speichern** aus.
 
 So aktivieren Sie Wartestatistiken in Ihrem Abfragespeicher:
 
 1. Suchen Sie nach dem Parameter „query_store_wait_sampling_capture_mode“.
-1. Legen Sie den Wert auf „ALL“ fest, und wählen Sie dann **Speichern** aus.
+2. Legen Sie den Wert auf „ALL“ fest, und wählen Sie dann **Speichern** aus.
 
 Es kann bis zu 20 Minuten dauern, bis der erste Batch mit Daten in der mysql-Datenbank gespeichert ist.
 
@@ -108,7 +108,7 @@ Verwenden Sie das[Azure-Portal](howto-server-parameters.md), um für einen Param
 
 ## <a name="views-and-functions"></a>Ansichten und Funktionen
 
-Mithilfe der folgenden Ansichten und Funktionen können Sie den Abfragespeicher anzeigen und verwalten. Jeder Benutzer mit der [öffentlichen Rolle für die Auswahl von Berechtigungen](howto-create-users.md#create-additional-admin-users) kann diese Ansichten verwenden, um die Daten im Abfragespeicher anzuzeigen. Diese Sichten sind nur in der **mysql**-Datenbank verfügbar.
+Mithilfe der folgenden Ansichten und Funktionen können Sie den Abfragespeicher anzeigen und verwalten. Jeder Benutzer mit der [öffentlichen Rolle für die Auswahl von Berechtigungen](howto-create-users.md#create-more-admin-users) kann diese Ansichten verwenden, um die Daten im Abfragespeicher anzuzeigen. Diese Sichten sind nur in der **mysql**-Datenbank verfügbar.
 
 Abfragen werden normalisiert, indem ihre Struktur nach dem Entfernen von Literalen und Konstanten untersucht wird. Wenn zwei Abfragen mit Ausnahme von Literalwerten identisch sind, haben sie denselben Hash.
 
@@ -138,8 +138,8 @@ In dieser Ansicht werden alle Daten im Abfragespeicher zurückgegeben. Es gibt e
 | `sum_select_full_join` | bigint(20)| Nein| Anzahl von vollständigen Verknüpfungen.|
 | `sum_select_scan` | bigint(20)| Nein| Anzahl für Scanauswahl. |
 | `sum_sort_rows` | bigint(20)| Nein| Anzahl sortierter Zeilen.|
-| `sum_no_index_used` | bigint(20)| Nein| Anzahl der Fälle, in denen von der Abfrage keine Indizes verwendet wurden.|
-| `sum_no_good_index_used` | bigint(20)| Nein| Anzahl der Fälle, in denen die Abfrageausführungs-Engine keine guten Indizes verwendet hat.|
+| `sum_no_index_used` | bigint(20)| Nein| Anzahl der Fälle, in denen von der Abfrage keine Indizes verwendet wurden|
+| `sum_no_good_index_used` | bigint(20)| Nein| Anzahl der Fälle, in denen die Abfrageausführungs-Engine keine guten Indizes verwendet hat|
 | `sum_created_tmp_tables` | bigint(20)| Nein| Gesamtzahl erstellter temporärer Tabellen.|
 | `sum_created_tmp_disk_tables` | bigint(20)| Nein| Gesamtzahl temporärer Tabellen, die auf dem Datenträger erstellt wurden (E/A-Generierung).|
 | `first_seen` | timestamp| Nein| Erstes Auftreten der Abfrage (UTC) während des Aggregationsfensters.|

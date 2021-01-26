@@ -1,14 +1,14 @@
 ---
 title: Grundlegendes zur Abfragesprache
 description: Beschreibt Resource Graph-Tabellen und die verfügbaren Kusto-Datentypen, -Operatoren und -Funktionen, die mit Azure Resource Graph verwendet werden können.
-ms.date: 11/18/2020
+ms.date: 01/14/2021
 ms.topic: conceptual
-ms.openlocfilehash: 3023991c76d94dc8aa87cfe950c18ab5d6a07ba9
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: f94023d47153dc64ca78e0386edd87a9821515be
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97883060"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251725"
 ---
 # <a name="understanding-the-azure-resource-graph-query-language"></a>Grundlegendes zur Azure Resource Graph-Abfragesprache
 
@@ -26,16 +26,19 @@ In diesem Artikel werden die von Resource Graph unterstützten Sprachkomponenten
 
 Resource Graph umfasst mehrere Tabellen für die Daten, die in Bezug auf Azure Resource Manager-Ressourcentypen und deren Eigenschaften gespeichert werden. Einige Tabellen können mit den Operatoren `join` oder `union` verwendet werden, um Eigenschaften von verknüpften Ressourcentypen zu erhalten. Es folgt eine Liste der in Resource Graph verfügbaren Tabellen:
 
-|Resource Graph-Tabelle |`join` möglich? |BESCHREIBUNG |
+|Resource Graph-Tabelle |Ist ein `join` für andere Tabellen möglich? |BESCHREIBUNG |
 |---|---|
 |Ressourcen |Ja |Die Standardtabelle, wenn keine in der Abfrage definiert ist. Die meisten Resource Manager-Ressourcentypen und -Eigenschaften sind hier enthalten. |
 |ResourceContainers |Ja |Umfasst die Ressourcentypen und Daten des Abonnements (in der Vorschauphase – `Microsoft.Resources/subscriptions`) und der Ressourcengruppe (`Microsoft.Resources/subscriptions/resourcegroups`). |
-|AdvisorResources |Nein |Umfasst Ressourcen, die mit `Microsoft.Advisor`_in Zusammenhang stehen_. |
-|AlertsManagementResources |Nein |Umfasst Ressourcen, die mit `Microsoft.AlertsManagement`_in Zusammenhang stehen_. |
+|AdvisorResources |Ja (Vorschau) |Umfasst Ressourcen, die mit `Microsoft.Advisor`_in Zusammenhang stehen_. |
+|AlertsManagementResources |Ja (Vorschau) |Umfasst Ressourcen, die mit `Microsoft.AlertsManagement`_in Zusammenhang stehen_. |
 |GuestConfigurationResources |Nein |Umfasst Ressourcen, die mit `Microsoft.GuestConfiguration`_in Zusammenhang stehen_. |
-|MaintenanceResources |Nein |Umfasst Ressourcen, die mit `Microsoft.Maintenance`_in Zusammenhang stehen_. |
+|MaintenanceResources |Teilweise, nur Beitritt _zu_. (Vorschauversion) |Umfasst Ressourcen, die mit `Microsoft.Maintenance`_in Zusammenhang stehen_. |
+|PatchAssessmentResources|No |Umfasst Ressourcen _im Zusammenhang mit_ der Azure Virtual Machines-Patchbewertung. |
+|PatchInstallationResources|Nein |Umfasst Ressourcen _im Zusammenhang mit_ der Azure Virtual Machines-Patchinstallation. |
 |PolicyResources |Nein |Umfasst Ressourcen, die mit `Microsoft.PolicyInsights`_in Zusammenhang stehen_. (**Vorschau**)|
-|SecurityResources |Nein |Umfasst Ressourcen, die mit `Microsoft.Security`_in Zusammenhang stehen_. |
+|RecoveryServicesResources |Teilweise, nur Beitritt _zu_. (Vorschauversion) |Umfasst Ressourcen _im Zusammenhang mit_ `Microsoft.DataProtection` und `Microsoft.RecoveryServices`. |
+|SecurityResources |Teilweise, nur Beitritt _zu_. (Vorschauversion) |Umfasst Ressourcen, die mit `Microsoft.Security`_in Zusammenhang stehen_. |
 |ServiceHealthResources |Nein |Umfasst Ressourcen, die mit `Microsoft.ResourceHealth`_in Zusammenhang stehen_. |
 
 Eine komplette Liste, einschließlich Ressourcentypen, finden Sie unter [ Azure Resource Graph-Tabelle und Ressourcentypreferenz](../reference/supported-tables-resources.md).
@@ -53,13 +56,14 @@ Resources
 | limit 1
 ```
 
-Die folgende Abfrage zeigt eine komplexere Verwendung von `join`. Die Abfrage schränkt die verknüpfte Tabelle auf Abonnementressourcen ein, und mit `project` wird nur das ursprüngliche Feld _subscriptionId_ einbezogen, und das Feld _name_ wird in _SubName_ umbenannt. Durch das Umbenennen des Felds wird das Hinzufügen als _name1_ bei `join` vermieden, da das Feld bereits unter _Resources_ vorhanden ist. Die ursprüngliche Tabelle wird mit `where` gefiltert, und das folgende `project`-Element enthält Spalten aus beiden Tabellen. Das Abfrageergebnis ist ein einzelner Schlüsseltresor, der den Typ, den Namen des Schlüsseltresors und den Namen des Abonnements, in dem er sich befindet, anzeigt.
+Die folgende Abfrage zeigt eine komplexere Verwendung von `join`. Zuerst verwendet die Abfrage `project`, um die Felder aus _Resources_ für den Ressourcentyp „Azure Key Vault-Tresore“ abzurufen. Im nächsten Schritt werden die Ergebnisse mithilfe von `join` mit _ResourceContainers_ zusammengeführt, wobei es sich bei dem Typ um ein Abonnement _für_ eine Eigenschaft handelt, die sich sowohl im `project` der ersten Tabelle als auch im `project` der verbundenen Tabelle befindet. Durch das Umbenennen des Felds wird das Hinzufügen als _name1_ bei `join` vermieden, da die Eigenschaft bereits unter _Resources_ projiziert ist. Das Abfrageergebnis ist ein einzelner Schlüsseltresor, der den Typ, den Namen, den Speicherort und die Ressourcengruppe des Schlüsseltresors sowie den Namen des Abonnements anzeigt, in dem er sich befindet.
 
 ```kusto
 Resources
 | where type == 'microsoft.keyvault/vaults'
+| project name, type, location, subscriptionId, resourceGroup
 | join (ResourceContainers | where type=='microsoft.resources/subscriptions' | project SubName=name, subscriptionId) on subscriptionId
-| project type, name, SubName
+| project type, name, location, resourceGroup, SubName
 | limit 1
 ```
 
@@ -125,7 +129,7 @@ Es folgt eine Liste der von Resource Graph unterstützten tabellarischen KQL-Ope
 |[count](/azure/kusto/query/countoperator) |[Anzahl von Schlüsseltresoren](../samples/starter.md#count-keyvaults) | |
 |[distinct](/azure/kusto/query/distinctoperator) |[Anzeigen von Ressourcen, die Speicher enthalten](../samples/starter.md#show-storage) | |
 |[extend](/azure/kusto/query/extendoperator) |[Anzahl von virtuellen Computern nach Betriebssystemtyp](../samples/starter.md#count-os) | |
-|[join](/azure/kusto/query/joinoperator) |[Schlüsseltresor mit Abonnementname](../samples/advanced.md#join) |Unterstützte Joinvarianten: [innerunique](/azure/kusto/query/joinoperator#default-join-flavor), [inner](/azure/kusto/query/joinoperator#inner-join), [leftouter](/azure/kusto/query/joinoperator#left-outer-join). Maximal drei `join`-Elemente in einer einzelnen Abfrage. Benutzerdefinierte Joinstrategien wie Broadcastjoin sind nicht zulässig. Welche Tabellen `join` verwenden können, erfahren Sie unter [Resource Graph-Tabellen](#resource-graph-tables). |
+|[join](/azure/kusto/query/joinoperator) |[Schlüsseltresor mit Abonnementname](../samples/advanced.md#join) |Unterstützte Joinvarianten: [innerunique](/azure/kusto/query/joinoperator#default-join-flavor), [inner](/azure/kusto/query/joinoperator#inner-join), [leftouter](/azure/kusto/query/joinoperator#left-outer-join). Begrenzt auf 3 `join` in einer einzelnen Abfrage, von denen einer ein tabellenübergreifender `join` sein kann. Wenn alle tabellenübergreifenden `join`-Vorgänge zwischen _Resource_ und _ResourceContainers_ stattfinden, sind drei tabellenübergreifende `join` zulässig. Benutzerdefinierte Joinstrategien wie Broadcastjoin sind nicht zulässig. Welche Tabellen `join` verwenden können, erfahren Sie unter [Resource Graph-Tabellen](#resource-graph-tables). |
 |[limit](/azure/kusto/query/limitoperator) |[Liste der öffentlichen IP-Adressen](../samples/starter.md#list-publicip) |Synonym für `take`. Funktioniert nicht für [Skip](./work-with-data.md#skipping-records). |
 |[mvexpand](/azure/kusto/query/mvexpandoperator) | | Legacy-Operator, verwenden Sie stattdessen `mv-expand`. _RowLimit_ maximal 400. Der Standardwert ist 128. |
 |[mv-expand](/azure/kusto/query/mvexpandoperator) |[Auflisten von Cosmos DB mit bestimmten Schreibstandorten](../samples/advanced.md#mvexpand-cosmosdb) |_RowLimit_ maximal 400. Der Standardwert ist 128. |

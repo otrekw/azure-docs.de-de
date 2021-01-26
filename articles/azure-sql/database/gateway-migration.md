@@ -10,12 +10,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 07/01/2019
-ms.openlocfilehash: 7fadbecc2c00a739afb2f94dd1d049805915cfa5
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 0542d7e0ea204d1e9279e89c9f36b9bc6c6c88fa
+ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92427108"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98165857"
 ---
 # <a name="azure-sql-database-traffic-migration-to-newer-gateways"></a>Migration des Azure SQL-Datenbank-Datenverkehrs zu neueren Gateways
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -27,6 +27,25 @@ Kunden werden per E-Mail und im Azure-Portal rechtzeitig vor jeder Änderung der
 ## <a name="status-updates"></a>Statusaktualisierungen
 
 # <a name="in-progress"></a>[Vorgang wird ausgeführt](#tab/in-progress-ip)
+## <a name="january-2021"></a>Januar 2021
+Neue SQL-Gateways werden den folgenden Regionen hinzugefügt:
+
+- Australien, Mitte: 20.36.104.6 , 20.36.104.7 
+- Australien, Mitte 2: 20.36.112.6 
+- Brasilien, Süden: 191.234.144.16 ,191.234.152.3 
+- Kanada, Osten: 40.69.105.9 ,40.69.105.10
+- Indien, Mitte: 104.211.86.30 , 104.211.86.31 
+- Asien, Osten: 13.75.32.14 
+- Frankreich, Mitte: 40.79.137.8, 40.79.145.12 
+- Frankreich, Süden: 40.79.177.10 ,40.79.177.12
+- Korea, Mitte: 52.231.17.22 ,52.231.17.23
+- Indien, Westen: 104.211.144.4
+
+Diese SQL-Gateways sollen ab dem 31. Januar 2021 Kundendatenverkehr akzeptieren.
+
+# <a name="completed"></a>[Abgeschlossen](#tab/completed-ip)
+Die folgenden Gatewaymigrationen sind abgeschlossen: 
+
 ### <a name="october-2020"></a>Oktober 2020
 
 Neue SQL-Gateways werden den folgenden Regionen hinzugefügt:
@@ -70,9 +89,6 @@ Neue SQL-Gateways werden den folgenden Regionen hinzugefügt. Diese SQL-Gateways
 Vorhandene SQL-Gateways akzeptieren Datenverkehr in den folgenden Regionen. Diese SQL-Gateways sollen ab dem **1. September 2020** Kundendatenverkehr akzeptieren:
 - Japan, Osten: 40.79.184.8, 40.79.192.5
 
-# <a name="completed"></a>[Abgeschlossen](#tab/completed-ip)
-
-Die folgenden Gatewaymigrationen sind abgeschlossen: 
 
 ### <a name="august-2020"></a>August 2020
 

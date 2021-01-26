@@ -2,14 +2,14 @@
 title: Bewährte Methoden zur Verbesserung der Leistung mit Azure Service Bus
 description: Beschreibt, wie Service Bus verwendet wird, um die Leistung beim Austausch von Brokernachrichten zu optimieren.
 ms.topic: article
-ms.date: 11/11/2020
+ms.date: 01/15/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 6a0457537712ccb85191f320fd348446eed9b229
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 7bfff1a31365724ed1d1cb6ff1956a4e2ef4f4c0
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97655627"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98539430"
 ---
 # <a name="best-practices-for-performance-improvements-using-service-bus-messaging"></a>Bewährte Methoden für Leistungsoptimierungen mithilfe von Service Bus Messaging
 
@@ -24,22 +24,27 @@ Service Bus ermöglicht Clients das Senden und Empfangen von Nachrichten über e
 2. Service Bus Messaging Protocol (SBMP)
 3. Hypertext Transfer-Protokoll (HTTP)
 
-AMQP ist am effizientesten, weil hierbei die Verbindung mit Service Bus aufrechterhalten wird. Außerdem implementiert es die Batchverarbeitung und Vorabrufe. Sofern nicht anders angegeben, wird für alle Inhalte in diesem Artikel AMQP oder SBMP verwendet.
+AMQP ist am effizientesten, weil hierbei die Verbindung mit Service Bus aufrechterhalten wird. Außerdem implementiert es die [Batchverarbeitung](#batching-store-access) und [Vorabrufe](#prefetching). Sofern nicht anders angegeben, wird für alle Inhalte in diesem Artikel AMQP oder SBMP verwendet.
 
 > [!IMPORTANT]
 > SBMP ist nur für .NET Framework verfügbar. AMQP ist die Standardeinstellung für .NET Standard.
 
 ## <a name="choosing-the-appropriate-service-bus-net-sdk"></a>Auswählen des geeigneten Service Bus .NET SDK
-Es gibt zwei unterstützte Azure Service Bus .NET SDKs. Da sich die zugehörigen APIs ähneln, kann es ggf. zu Unsicherheit bei der Auswahl kommen. Die folgende Tabelle enthält hierzu hilfreiche Informationen. Wir empfehlen Ihnen die Verwendung des Microsoft.Azure.ServiceBus SDK, da es moderner, leistungsfähiger und plattformübergreifend kompatibel ist. Darüber hinaus wird AMQP über WebSockets unterstützt, und es ist Teil der Azure .NET SDK-Sammlung mit Open-Source-Projekten.
+Es gibt drei unterstützte Azure Service Bus .NET SDKs. Da sich die zugehörigen APIs ähneln, kann es ggf. zu Unsicherheit bei der Auswahl kommen. Die folgende Tabelle enthält hierzu hilfreiche Informationen. Das SDK „Azure.Messaging.ServiceBus“ ist das neueste, dessen Verwendung gegenüber den anderen empfohlen wird. Sowohl „Azure.Messaging.ServiceBus“ als auch „Microsoft.Azure.ServiceBus“ sind moderne, leistungsfähige und plattformübergreifend kompatible SDKs. Darüber hinaus unterstützen sie AMQP über WebSockets und sind Teil der Azure .NET SDK-Sammlung von Open-Source-Projekten.
 
 | NuGet-Paket | Primäre Namespaces | Mindestplattform | Protokolle |
 |---------------|----------------------|---------------------|-------------|
-| <a href="https://www.nuget.org/packages/Microsoft.Azure.ServiceBus" target="_blank">Microsoft.Azure.ServiceBus <span class="docon docon-navigate-external x-hidden-focus"></span></a> | `Microsoft.Azure.ServiceBus`<br>`Microsoft.Azure.ServiceBus.Management` | .NET Core 2.0<br>.NET Framework 4.6.1<br>Mono 5.4<br>Xamarin.iOS 10.14<br>Xamarin.Mac 3.8<br>Xamarin.Android 8.0<br>Universelle Windows-Plattform 10.0.16299 | AMQP<br>HTTP |
-| <a href="https://www.nuget.org/packages/WindowsAzure.ServiceBus" target="_blank">WindowsAzure.ServiceBus <span class="docon docon-navigate-external x-hidden-focus"></span></a> | `Microsoft.ServiceBus`<br>`Microsoft.ServiceBus.Messaging` | .NET Framework 4.6.1 | AMQP<br>SBMP<br>HTTP |
+| [Azure.Messaging.ServiceBus](https://www.nuget.org/packages/Azure.Messaging.ServiceBus) | `Azure.Messaging.ServiceBus`<br>`Azure.Messaging.ServiceBus.Administration` | .NET Core 2.0<br>.NET Framework 4.6.1<br>Mono 5.4<br>Xamarin.iOS 10.14<br>Xamarin.Mac 3.8<br>Xamarin.Android 8.0<br>Universelle Windows-Plattform 10.0.16299 | AMQP<br>HTTP |
+| [Microsoft.Azure.ServiceBus](https://www.nuget.org/packages/Azure.Messaging.ServiceBus/) | `Microsoft.Azure.ServiceBus`<br>`Microsoft.Azure.ServiceBus.Management` | .NET Core 2.0<br>.NET Framework 4.6.1<br>Mono 5.4<br>Xamarin.iOS 10.14<br>Xamarin.Mac 3.8<br>Xamarin.Android 8.0<br>Universelle Windows-Plattform 10.0.16299 | AMQP<br>HTTP |
+| [WindowsAzure.ServiceBus](https://www.nuget.org/packages/WindowsAzure.ServiceBus) | `Microsoft.ServiceBus`<br>`Microsoft.ServiceBus.Messaging` | .NET Framework 4.6.1 | AMQP<br>SBMP<br>HTTP |
 
 Weitere Informationen zu den Mindestplattformen für die Unterstützung von .NET Standard finden Sie unter [Unterstützung der .NET-Implementierung](/dotnet/standard/net-standard#net-implementation-support).
 
 ## <a name="reusing-factories-and-clients"></a>Wiederverwenden von Factorys und Clients
+# <a name="azuremessagingservicebus-sdk"></a>[Azure.Messaging.ServiceBus SDK](#tab/net-standard-sdk-2)
+Die Service Bus-Objekte, die mit dem Dienst interagieren (z. B. [ServiceBusClient](/dotnet/api/azure.messaging.servicebus.servicebusclient), [ServiceBusSender](/dotnet/api/azure.messaging.servicebus.servicebussender), [ServiceBusReceiver](/dotnet/api/azure.messaging.servicebus.servicebusreceiver) und [ServiceBusProcessor](/dotnet/api/azure.messaging.servicebus.servicebusprocessor)), sollten für die Abhängigkeitsinjektion als Singletons registriert (oder einmal instanziiert und freigegeben) werden. ServiceBusClient kann für die Abhängigkeitsinjektion mit den [ServiceBusClientBuilderExtensions](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/servicebus/Azure.Messaging.ServiceBus/src/Compatibility/ServiceBusClientBuilderExtensions.cs) registriert werden. 
+
+Es wird empfohlen, diese Objekte nach dem Senden oder Empfangen einzelner Nachrichten nicht zu schließen oder zu verwerfen. Durch das Schließen oder Verwerfen der entitätsspezifischen Objekte (ServiceBusSender/Receiver/Processor) wird die Verknüpfung zum Service Bus-Dienst getrennt. Das Verwerfen von ServiceBusClient führt dazu, dass die Verbindung mit dem Service Bus-Dienst beendet wird. Das Herstellen einer Verbindung ist ein aufwendiger Vorgang, den Sie vermeiden können, indem Sie denselben ServiceBusClient wiederverwenden und die erforderlichen erntitätsspezifischen Objekte aus derselben ServiceBusClient-Instanz erstellen. Sie können diese Clientobjekte sicher für gleichzeitige asynchrone Vorgänge und von mehreren Threads verwenden.
 
 # <a name="microsoftazureservicebus-sdk"></a>[Microsoft.Azure.ServiceBus SDK](#tab/net-standard-sdk)
 
@@ -55,6 +60,27 @@ Service Bus-Clientobjekte, z. B. `QueueClient` oder `MessageSender`, werden üb
 Vorgänge wie Senden, Empfangen, Löschen usw. nehmen einige Zeit in Anspruch. Dieser Zeitraum umfasst die Zeit, die der Service-Bus-Dienst für die Bearbeitung des Vorgangs benötigt, sowie die Latenzzeit der Anforderung und der Antwort. Die Vorgänge müssen parallel ausgeführt werden, um die Anzahl von Vorgängen pro Zeitraum zu erhöhen.
 
 Der Client plant gleichzeitige Vorgänge durch Ausführen von **asynchronen** Vorgängen. Die nächste Anforderung wird gestartet, bevor die vorherige Anforderung abgeschlossen ist. Im folgenden Codeausschnitt sehen Sie ein Beispiel für einen asynchronen Sendevorgang:
+
+# <a name="azuremessagingservicebus-sdk"></a>[Azure.Messaging.ServiceBus SDK](#tab/net-standard-sdk-2)
+```csharp
+var messageOne = new ServiceBusMessage(body);
+var messageTwo = new ServiceBusMessage(body);
+
+var sendFirstMessageTask =
+    sender.SendMessageAsync(messageOne).ContinueWith(_ =>
+    {
+        Console.WriteLine("Sent message #1");
+    });
+var sendSecondMessageTask =
+    sender.SendMessageAsync(messageTwo).ContinueWith(_ =>
+    {
+        Console.WriteLine("Sent message #2");
+    });
+
+await Task.WhenAll(sendFirstMessageTask, sendSecondMessageTask);
+Console.WriteLine("All messages sent");
+
+```
 
 # <a name="microsoftazureservicebus-sdk"></a>[Microsoft.Azure.ServiceBus SDK](#tab/net-standard-sdk)
 
@@ -101,6 +127,35 @@ Console.WriteLine("All messages sent");
 ---
 
 Im folgenden Code sehen Sie ein Beispiel für einen asynchronen Empfangsvorgang.
+
+# <a name="azuremessagingservicebus-sdk"></a>[Azure.Messaging.ServiceBus SDK](#tab/net-standard-sdk-2)
+
+```csharp
+var client = new ServiceBusClient(connectionString);
+var options = new ServiceBusProcessorOptions 
+{
+
+      AutoCompleteMessages = false,
+      MaxConcurrentCalls = 20
+};
+await using ServiceBusProcessor processor = client.CreateProcessor(queueName,options);
+processor.ProcessMessageAsync += MessageHandler;
+processor.ProcessErrorAsync += ErrorHandler;
+
+static Task ErrorHandler(ProcessErrorEventArgs args)
+{
+    Console.WriteLine(args.Exception);
+    return Task.CompletedTask;
+};
+
+static async Task MessageHandler(ProcessMessageEventArgs args)
+{
+Console.WriteLine("Handle message");
+      await args.CompleteMessageAsync(args.Message);
+}
+
+await processor.StartProcessingAsync();
+```
 
 # <a name="microsoftazureservicebus-sdk"></a>[Microsoft.Azure.ServiceBus SDK](#tab/net-standard-sdk)
 
@@ -168,6 +223,9 @@ Service Bus unterstützt keine Transaktionen für ReceiveAndDelete-Vorgänge. Au
 
 Durch die clientseitige Batchverarbeitung kann ein Warteschlangen- oder Themenclient das Senden einer Nachricht für einen bestimmten Zeitraum verzögern. Wenn der Client während dieses Zeitraums weitere Nachrichten sendet, werden die Nachrichten in einem einzigen Batch übertragen. Die clientseitige Batchverarbeitung bewirkt auch, dass ein Warteschlangen- oder Abonnementclient mehrere Anforderungen zum **Abschließen** als Batch in eine einzelne Anforderung aufnehmen kann. Die Batchverarbeitung ist nur für asynchrone Vorgänge zum **Senden** und **Abschließen** verfügbar. Synchrone Vorgänge werden sofort an den Service Bus-Dienst gesendet. Die Batchverarbeitung erfolgt nicht für Vorschau- oder Empfangsvorgänge und auch nicht clientübergreifend.
 
+# <a name="azuremessagingservicebus-sdk"></a>[Azure.Messaging.ServiceBus SDK](#tab/net-standard-sdk-2)
+Bei der Batchverarbeitung für das .NET Standard SDK wird keine Eigenschaft für die Bearbeitung verfügbar gemacht.
+
 # <a name="microsoftazureservicebus-sdk"></a>[Microsoft.Azure.ServiceBus SDK](#tab/net-standard-sdk)
 
 Bei der Batchverarbeitung für das .NET Standard SDK wird keine Eigenschaft für die Bearbeitung verfügbar gemacht.
@@ -217,6 +275,19 @@ Um den Durchsatz einer Warteschlange, eines Themas oder eines Abonnements zu erh
 Weitere Speichervorgänge, die während dieses Intervalls auftreten, werden dem Batch hinzugefügt. Speicherzugriff als Batch wirkt sich nur auf Vorgänge zum **Senden** und **Abschließen** aus, Empfangsvorgänge sind nicht betroffen. Speicherzugriff als Batch ist eine Eigenschaft einer Entität. Die Batchverarbeitung erfolgt für alle Entitäten, die Speicherzugriff als Batch ermöglichen.
 
 Beim Erstellen neuer Warteschlangen, Themen oder Abonnements ist der Speicherzugriff als Batch standardmäßig aktiviert.
+
+
+# <a name="azuremessagingservicebus-sdk"></a>[Azure.Messaging.ServiceBus SDK](#tab/net-standard-sdk-2)
+Zum Deaktivieren des Speicherzugriffs als Batch benötigen Sie eine `ServiceBusAdministrationClient`-Instanz. Erstellen Sie `CreateQueueOptions` aus einer Warteschlangenbeschreibung, wobei die `EnableBatchedOperations`-Eigenschaft auf `false` festgelegt wird.
+
+```csharp
+var options = new CreateQueueOptions(path)
+{
+    EnableBatchedOperations = false
+};
+var queue = await administrationClient.CreateQueueAsync(options);
+```
+
 
 # <a name="microsoftazureservicebus-sdk"></a>[Microsoft.Azure.ServiceBus SDK](#tab/net-standard-sdk)
 
@@ -270,6 +341,12 @@ Die Eigenschaft für die Gültigkeitsdauer (Time-to-Live, TTL) einer Nachricht w
 
 Der Vorabruf wirkt sich nicht auf die Anzahl der abrechenbaren Messagingvorgänge aus und ist nur für das Service Bus-Clientprotokoll verfügbar. Das HTTP-Protokoll unterstützt keinen Vorabruf. Vorabrufe sind für synchrone und asynchrone Empfangsvorgänge verfügbar.
 
+# <a name="azuremessagingservicebus-sdk"></a>[Azure.Messaging.ServiceBus SDK](#tab/net-standard-sdk-2)
+Weitere Informationen finden Sie unter den folgenden `PrefetchCount`-Eigenschaften:
+
+- [ServiceBusReceiver.PrefetchCount](/dotnet/api/azure.messaging.servicebus.servicebusreceiver.prefetchcount)
+- [ServiceBusProcessor.PrefetchCount](/dotnet/api/azure.messaging.servicebus.servicebusprocessor.prefetchcount)
+
 # <a name="microsoftazureservicebus-sdk"></a>[Microsoft.Azure.ServiceBus SDK](#tab/net-standard-sdk)
 
 Weitere Informationen finden Sie unter den folgenden `PrefetchCount`-Eigenschaften:
@@ -287,10 +364,6 @@ Weitere Informationen finden Sie unter den folgenden `PrefetchCount`-Eigenschaft
 ---
 
 ## <a name="prefetching-and-receivebatch"></a>Vorabruf und „ReceiveBatch“
-
-> [!NOTE]
-> Dieser Abschnitt gilt nur für das WindowsAzure.ServiceBus SDK, da vom Microsoft.Azure.ServiceBus SDK keine Batchfunktionen verfügbar gemacht werden.
-
 Die beim gemeinsamen Vorabrufen mehrerer Nachrichten angewendeten Konzepte ähneln hinsichtlich der Semantik der Nachrichtenverarbeitung in einem Batch (`ReceiveBatch`). Es gibt aber einige geringfügige Unterschiede, die Sie beachten müssen, wenn Sie diese beiden Optionen gemeinsam verwenden.
 
 Der Vorabruf ist eine Konfiguration (bzw. ein Modus) auf dem Client (`QueueClient` und `SubscriptionClient`), und `ReceiveBatch` ist ein Vorgang (mit Anforderung/Antwort-Semantik).
@@ -309,7 +382,7 @@ Wenn eine einzelne Warteschlange oder ein Thema die erwartete Menge nicht verarb
 ## <a name="development-and-testing-features"></a>Entwicklungs- und Testfunktionen
 
 > [!NOTE]
-> Dieser Abschnitt gilt nur für das WindowsAzure.ServiceBus SDK, da diese Funktionalität vom Microsoft.Azure.ServiceBus SDK nicht verfügbar gemacht wird.
+> Dieser Abschnitt gilt nur für das WindowsAzure.ServiceBus SDK, da diese Funktionalität von Microsoft.Azure.ServiceBus und Azure.Messaging.ServiceBus nicht verfügbar gemacht wird.
 
 Service Bus verfügt über ein Feature, das speziell für die Entwicklung verwendet wird und **nie in Produktionskonfigurationen eingesetzt werden sollte**[`TopicDescription.EnableFilteringMessagesBeforePublishing`][TopicDescription.EnableFiltering].
 
@@ -372,7 +445,7 @@ Verwenden Sie die folgenden Richtlinien, um den Durchsatz zu maximieren:
 * Lassen Sie den Speicherzugriff als Batch aktiviert. Dies verringert die Gesamtlast der Entität. Es verringert zudem die Gesamtrate, mit der Nachrichten in die Warteschlange oder in das Thema geschrieben werden können.
 * Legen Sie den Wert für den Vorabruf auf einen kleinen Wert fest (z. B. "PrefetchCount" = 10). Dadurch wird verhindert, dass Empfänger über freie Kapazitäten verfügen, während andere Empfänger eine große Anzahl von Nachrichten zwischengespeichert haben.
 
-### <a name="topic-with-a-small-number-of-subscriptions"></a>Thema mit einer geringen Anzahl von Abonnements
+### <a name="topic-with-a-few-subscriptions"></a>Thema mit einigen Abonnements
 
 Zielsetzung: Maximieren des Durchsatzes eines Themas mit einer geringen Anzahl von Abonnements. Eine Nachricht wird von zahlreichen Abonnements empfangen, was bedeutet, dass die kombinierte Empfangsrate aller Abonnements größer als die Senderate ist. Die Anzahl der Absender ist klein. Die Empfängeranzahl pro Abonnement ist gering.
 

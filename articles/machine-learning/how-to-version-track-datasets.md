@@ -1,7 +1,7 @@
 ---
 title: Datasetversionierung
 titleSuffix: Azure Machine Learning
-description: Erfahren Sie, wie Sie Ihre Datasets optimal versionieren und wie das Versionieren mit Machine Learning-Pipelines funktioniert.
+description: Erfahren Sie, wie Sie Ihre Datasets für maschinelles Lernen versionieren und wie das Versionieren mit Pipelines des maschinellen Lernens funktioniert.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,14 +11,14 @@ ms.reviewer: nibaccam
 ms.date: 03/09/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, data4ml
-ms.openlocfilehash: 7eb8010853ba370f4502b6bc155c6a098e64965b
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 3290574b26abe544c8c749165e22bef41a83ecf3
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98133445"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98538153"
 ---
-# <a name="version-and-track-datasets-in-experiments"></a>Versionieren und Nachverfolgen von Datasets in Experimenten
+# <a name="version-and-track-azure-machine-learning-datasets"></a>Versionieren und Nachverfolgen von Azure Machine Learning-Datasets
 
 In diesem Artikel erfahren Sie, wie Sie Azure Machine Learning-Datasets für die Reproduzierbarkeit versionieren und nachverfolgen. Eine Datasetversionierung ermöglicht es, den Zustand der Daten zu markieren, sodass Sie eine bestimmte Version des Datasets für zukünftige Experimente verwenden können.
 

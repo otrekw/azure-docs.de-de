@@ -13,12 +13,12 @@ ms.date: 10/27/2020
 ms.author: hirsin
 ms.reviewer: mmacy, hirsin
 ms.custom: aaddev, identityplatformtop40, fasttrack-edit
-ms.openlocfilehash: ceb5acbee2e572b1859a5577b58dd586fc924b3b
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 4a798443560f62673ef8fcf0bce970a66071d011
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97653281"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98232385"
 ---
 # <a name="microsoft-identity-platform-access-tokens"></a>Microsoft Identity Platform-Zugriffstoken
 
@@ -292,10 +292,7 @@ Bei einer *Nicht kennwortbasierten* Anmeldung hat der Benutzer kein Kennwort ein
 - Sprache
 - PIN
 
-> [!NOTE]
-> Primäre Aktualisierungstoken (PRT) unter Windows 10 werden auf Grundlage der Anmeldeinformationen getrennt. Beispielsweise besitzen Windows Hello und Kennwort ihre jeweiligen PRTs, die voneinander isoliert sind. Wenn sich ein Benutzer mit Hello-Anmeldeinformationen (PIN oder Biometrie) anmeldet und dann das Kennwort ändert, wird das zuvor abgerufene kennwortbasierte PRT widerrufen. Bei erneuter Anmeldung mit einem Kennwort wird das alte PRT ungültig und ein neues angefordert.
->
-> Beim Abrufen eines neuen Zugriffstoken und Aktualisierungstoken verwendete Aktualisierungstoken sind ungültig oder wurden aufgehoben.  Ihre App sollte jedoch das alte verwerfen, sobald es verwendet wird, und durch das neue ersetzen, da für das neue Token eine neue Ablaufzeit gilt.
+Weitere Informationen zu primären Aktualisierungstoken finden Sie unter [Was ist ein primäres Aktualisierungstoken (Primary Refresh Token, PRT)?](../devices/concept-primary-refresh-token.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

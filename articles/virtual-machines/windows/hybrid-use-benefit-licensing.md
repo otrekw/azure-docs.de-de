@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 4/22/2018
 ms.author: xujing
-ms.openlocfilehash: 43784fe2bb94d5abd012f22ed530e4631a304614
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: c13203c076378e1ff8f213971466eb5f63dfc4f4
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91335985"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98539164"
 ---
 # <a name="azure-hybrid-benefit-for-windows-server"></a>Azure-Hybridvorteil für Windows Server
 Für Kunden mit Software Assurance ermöglicht der Azure-Hybridvorteil für Windows Server die Verwendung der lokalen Windows Server-Lizenzen und die Ausführung von virtuellen Windows-Computern in Azure zu geringeren Kosten. Sie können den Azure-Hybridvorteil für Windows Server dazu nutzen, neue virtuelle Computer mit dem Windows-Betriebssystem bereitzustellen. In diesem Artikel werden die Schritte zum Bereitstellen der neuen VMs mit dem Azure-Hybridvorteil für Windows Server und das Aktualisieren von vorhandenen, ausgeführten VMs beschrieben. Weitere Informationen zum Azure-Hybridvorteil für die Windows Server-Lizenzierung und den Kosteneinsparungen finden Sie auf der Seite zum [Azure-Hybridvorteil für die Windows Server-Lizenzierung](https://azure.microsoft.com/pricing/hybrid-use-benefit/).
@@ -42,10 +42,9 @@ Es gibt mehrere Möglichkeiten, um virtuelle Windows-Computer mit dem Azure-Hybr
 Für den Azure-Hybridvorteil für Windows Server werden alle auf dem Windows Server-Betriebssystem basierenden Images unterstützt. Sie können Azure-Plattformimages verwenden oder eigene benutzerdefinierte Windows Server-Images hochladen. 
 
 ### <a name="portal"></a>Portal
-Verwenden Sie zum Erstellen eines virtuellen Computers mit dem Azure-Hybridvorteil für Windows Server die Umschaltfläche im Abschnitt „Sparen Sie Geld“.
+Zum Erstellen einer VM mit Azure-Hybridvorteil für Windows Server scrollen Sie während der Erstellung auf der Registerkarte **Grundlagen** nach unten und aktivieren das Kontrollkästchen **Lizenzierung**, um eine vorhandene Windows Server-Lizenz zu verwenden. 
 
 ### <a name="powershell"></a>PowerShell
-
 
 ```powershell
 New-AzVm `

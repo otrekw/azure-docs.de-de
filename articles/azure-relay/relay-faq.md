@@ -3,12 +3,12 @@ title: Azure Relay – häufig gestellte Fragen | Microsoft-Dokumentation
 description: Dieser Artikel bietet Antworten auf einige häufig gestellte Fragen im Zusammenhang mit dem Azure Relay-Dienst.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 77d3122942289654c0f651f9f648307123b23546
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 83cbc4b02bb8b63878abd046ed2314728546e87a
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98131847"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98250049"
 ---
 # <a name="azure-relay-faqs"></a>Azure Relay – häufig gestellte Fragen
 
@@ -70,7 +70,7 @@ Relays, die anhand der WCF-Bindung **netTCPRelay** geöffnet werden, behandeln N
 ## <a name="quotas"></a>Kontingente
 | Namen des Kontingents | `Scope` |  Notizen | Wert |
 | --- | --- | --- | --- |
-| Gleichzeitige Listener für ein Relay |Entität |Nachfolgende Anforderungen für zusätzliche Verbindungen werden abgelehnt, und vom aufrufenden Code wird eine Ausnahme empfangen. |25 |
+| Gleichzeitige Listener für ein Relay |Entität (Hybridverbindung oder WCF-Relay) |Nachfolgende Anforderungen für zusätzliche Verbindungen werden abgelehnt, und vom aufrufenden Code wird eine Ausnahme empfangen. |25 |
 | Gleichzeitige Relayverbindungen für alle Relayendpunkte eines Dienstnamespace |Namespace |- |5\.000 |
 | Relayendpunkte pro Dienstnamespace |Namespace |- |10.000 |
 | Nachrichtengröße für [NetOnewayRelayBinding](/dotnet/api/microsoft.servicebus.netonewayrelaybinding)- und [NetEventRelayBinding](/dotnet/api/microsoft.servicebus.neteventrelaybinding)-Relays |Namespace |Eingehende Nachrichten, die diese Kontingente überschreiten, werden abgelehnt, und vom aufrufenden Code wird eine Ausnahme empfangen. |64 KB |

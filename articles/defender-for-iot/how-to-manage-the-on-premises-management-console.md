@@ -4,15 +4,15 @@ description: Erfahren Sie mehr über die Möglichkeiten der lokalen Verwaltungsk
 author: shhazam-ms
 manager: rkarlin
 ms.author: shhazam
-ms.date: 12/12/2020
+ms.date: 1/12/2021
 ms.topic: article
 ms.service: azure
-ms.openlocfilehash: 7bbac0d8593d47c3162a8ea43e928343a88f2de4
-ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
+ms.openlocfilehash: 80dbad919e9446100bdeebb7cde71c147abfc8bc
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97861448"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98539355"
 ---
 # <a name="manage-the-on-premises-management-console"></a>Verwalten der lokalen Verwaltungskonsole
 
@@ -49,9 +49,26 @@ Azure Defender für IoT verwendet SSL- und TLS-Zertifikate für folgende Zwecke:
 
 - Erfüllen spezifischer Zertifikat- und Verschlüsselungsanforderungen, die von Ihrer Organisation angefordert wurden, durch Hochladen des von der Zertifizierungsstelle signierten Zertifikats.
 
-- Zulassen der Überprüfung zwischen der Verwaltungskonsole und verbundenen Sensoren sowie zwischen einer Verwaltungskonsole und einer Verwaltungskonsole für Hochverfügbarkeit. Die Überprüfung wird anhand einer Zertifikatssperrliste und des Ablaufdatums des Zertifikats ausgewertet. *Wenn bei der Überprüfung ein Fehler auftritt, wird die Kommunikation zwischen Verwaltungskonsole und Sensor angehalten, und in der Konsole wird ein Überprüfungsfehler angezeigt.* Diese Option ist nach der Installation standardmäßig aktiviert.
+- Zulassen der Überprüfung zwischen der Verwaltungskonsole und verbundenen Sensoren sowie zwischen einer Verwaltungskonsole und einer Verwaltungskonsole für Hochverfügbarkeit. Die Überprüfung wird anhand einer Zertifikatssperrliste und des Ablaufdatums des Zertifikats ausgewertet. *Wenn bei der Überprüfung ein Fehler auftritt, wird die Kommunikation zwischen Verwaltungskonsole und Sensor angehalten, und in der Konsole wird ein Überprüfungsfehler angezeigt*. Diese Option ist nach der Installation standardmäßig aktiviert.
 
 Weiterleitungsregeln von Drittanbietern werden nicht überprüft. Beispiele sind Warnungsinformationen, die an SYSLOG, Splunk oder ServiceNow gesendet werden, und die Kommunikation mit Active Directory.
+
+#### <a name="ssl-certificates"></a>SSL-Zertifikate
+
+Der Defender für IoT-Sensor und die lokale Verwaltungskonsole verwenden SSL- und TLS-Zertifikate für die folgenden Funktionen: 
+
+ - Sichere Kommunikation zwischen Benutzern und der Webkonsole der Appliance 
+ 
+ - Sichere Kommunikation mit der REST-API im Sensor und der lokalen Verwaltungskonsole
+ 
+ - Sichere Kommunikation zwischen den Sensoren und einer lokalen Verwaltungskonsole 
+
+Nach der Installation generiert die Appliance ein lokales selbstsigniertes Zertifikat, um den vorläufigen Zugriff auf die Webkonsole zuzulassen. SSL- und TLS-Zertifikate des Unternehmens können mithilfe des Befehlszeilentools [`cyberx-xsense-certificate-import`](#cli-commands) installiert werden. 
+
+ > [!NOTE]
+ > Für Integrationen und Weiterleitungsregeln, bei denen es sich bei der Appliance um den Client und Initiator der Sitzung handelt, werden spezifische Zertifikate verwendet, die nicht mit den Systemzertifikaten verknüpft sind.  
+ >
+ >In diesen Fällen werden die Zertifikate normalerweise vom Server empfangen, oder sie verwenden die asymmetrische Verschlüsselung, bei der ein bestimmtes Zertifikat zum Einrichten der Integration bereitgestellt wird. 
 
 ### <a name="update-certificates"></a>Aktualisieren von Zertifikaten
 
@@ -60,16 +77,19 @@ Administratoren der lokalen Verwaltungskonsole können Zertifikate aktualisieren
 So aktualisieren Sie ein Zertifikat  
 
 1. Wählen Sie **Systemeinstellungen** aus.
+
 1. Wählen Sie **SSL/TLS-Zertifikate** aus.
 1. Löschen oder bearbeiten Sie das Zertifikat, und fügen Sie ein neues Zertifikat hinzu.
    
    - Fügen Sie einen Zertifikatnamen hinzu.
+   
    - Laden Sie eine CRT-Datei und eine Schlüsseldatei hoch, und geben Sie eine Passphrase ein.
    - Laden Sie bei Bedarf eine PEM-Datei hoch.
 
 So ändern Sie die Überprüfungseinstellung
 
 1. Aktivieren oder deaktivieren Sie den Umschalter **Serverzertifikatüberprüfung aktivieren**.
+
 1. Wählen Sie **Speichern** aus.
 
 Wenn die Option aktiviert ist und bei der Überprüfung ein Fehler auftritt, wird die Kommunikation zwischen Verwaltungskonsole und Sensor angehalten, und in der Konsole wird ein Überprüfungsfehler angezeigt.
@@ -78,25 +98,30 @@ Wenn die Option aktiviert ist und bei der Überprüfung ein Fehler auftritt, wir
 
 Die folgenden Zertifikate werden unterstützt:
 
-- Private und Enterprise Key-Infrastruktur (Private PKI) 
+- Private und Enterprise Key-Infrastruktur (Private PKI)
+ 
 - Public Key-Infrastruktur (Public PKI) 
+
 - Lokal auf der Appliance generiert (lokal selbstsigniert) 
 
   > [!IMPORTANT]
-  > Das Verwenden selbstsignierter Zertifikate wird nicht empfohlen. Diese Verbindung ist unsicher und darf nur für Testumgebungen verwendet werden. Der Besitzer des Zertifikats kann nicht überprüft und die Sicherheit Ihres Systems nicht aufrechterhalten werden. Für Produktionsnetzwerke sollten niemals selbstsignierte Zertifikate verwendet werden.  
+  > Die Verwendung selbstsignierter Zertifikate wird nicht empfohlen. Diese Art der Verbindung ist nicht sicher und darf nur für Testumgebungen verwendet werden. Da der Besitzer des Zertifikats nicht überprüft und die Sicherheit Ihres Systems nicht aufrechterhalten werden kann, sollten selbstsignierte Zertifikate niemals für Produktionsnetzwerke verwendet werden.
+
+### <a name="supported-ssl-certificates"></a>Unterstützte SSL-Zertifikate 
 
 Die folgenden Parameter werden unterstützt: 
 
 **CRT-Datei des Zertifikats**
 
 - Die primäre Zertifikatsdatei für Ihren Domänennamen
+
 - Signaturalgorithmus = SHA256RSA
 - Signaturhashalgorithmus = SHA256
 - Gültig von = gültiges Datum in der Vergangenheit
 - Gültig bis = gültiges Datum in der Zukunft
 - Öffentlicher Schlüssel = RSA 2.048 Bits (mindestens) oder 4.096 Bits
 - CRL-Verteilungspunkt = URL zu CRL-Datei
-- Antragsteller-CN = URL, kann ein Platzhalterzertifikat sein, z. B. example.contoso.com oder \*.contoso.com
+- Antragsteller-CN = URL, kann ein Platzhalterzertifikat sein, z. B. Sensor.contoso.<span>com oder *.contoso.<span>com
 - Land des Antragsstellers = definiert, z. B. USA
 - Organisationseinheit des Antragsstellers = definiert, z. B. Contoso Labs
 - Organisationseinheit des Antragsstellers = definiert, z. B. Contoso Labs
@@ -104,17 +129,25 @@ Die folgenden Parameter werden unterstützt:
 **Schlüsseldatei**
 
 - Die Schlüsseldatei, die beim Erstellen der Zertifikatsignieranforderung generiert wurde
+
 - RSA 2.048 Bits (mindestens) oder 4.096 Bits
+
+ > [!Note]
+ > Bei einer Schlüssellänge von 4.096 Bit gilt Folgendes:
+ > - Der SSL-Handshake zu Beginn jeder Verbindung erfolgt langsamer.  
+ > - Die CPU-Auslastung erhöht sich bei Handshakes. 
 
 **Zertifikatkette**
 
 - Die von Ihrer Zertifizierungsstelle bereitgestellte Zwischenversion der Zertifikatsdatei (sofern vorhanden).
+
 - Das Zertifikat der Zertifizierungsstelle, die das Serverzertifikat ausgestellt hat, muss sich an erster Stelle in der Datei befinden, gefolgt von allen anderen bis zum Stammzertifikat. 
 - Die Kette kann Behälterattribute enthalten.
 
 **Passphrase**
 
 - Ein einzelner Schlüssel wird unterstützt.
+
 - Richten Sie ihn beim Importieren des Zertifikats ein.
 
 Zertifikate mit anderen Parametern funktionieren möglicherweise, werden aber von Microsoft nicht unterstützt.
@@ -123,23 +156,51 @@ Zertifikate mit anderen Parametern funktionieren möglicherweise, werden aber vo
 
 **.pem: Zertifikatcontainerdatei**
 
-Der Name stammt aus Privacy Enhanced Mail (PEM), einer historischen Methode für sichere E-Mails. Das Containerformat ist eine Base64-Übersetzung der x509 ASN.1-Schlüssel.  
+PEM-Dateien (Privacy Enhanced Mail) wurden früher als allgemeiner Dateityp zum Schützen von E-Mails verwendet. Heutzutage werden PEM-Dateien mit Zertifikaten und X.509 ASN1-Schlüssel verwendet.  
 
-Diese Datei ist in den RFCs 1421 bis 1424 definiert: ein Containerformat, das lediglich das öffentliche Zertifikat enthalten darf (wie bei Apache-Installationen, Zertifikatsdateien von Zertifizierungsstellen und ETC-SSL-Zertifikaten). Oder sie kann eine komplette Zertifikatkette enthalten, einschließlich eines öffentlichen Schlüssels, eines privaten Schlüssels und Stammzertifikaten.  
+Die Containerdatei ist in den RFCs 1421 bis 1424 definiert: ein Containerformat, das lediglich das öffentliche Zertifikat enthalten kann, beispielsweise Apache-Installationen, Zertifikatdateien von Zertifizierungsstellen und ETC-, SSL- oder CERTS-Dateien. Dabei kann es sich um eine vollständige Zertifikatkette handeln, einschließlich öffentlichem Schlüssel, privatem Schlüssel und Stammzertifikaten.  
 
-Sie kann auch eine Zertifikatsignieranforderung codieren, da das PKCS10-Format in PEM übersetzt werden kann.
+Außerdem kann eine CSR-Datei im PKCS10-Format codiert werden, die in PEM umgewandelt werden kann.
 
 **.cert .cer .crt: Zertifikatcontainerdatei**
 
-Eine Datei im PEM-Format (oder selten im DER-Format) mit einer anderen Erweiterung. Windows-Datei-Explorer erkennt sie als Zertifikat. Datei-Explorer erkennt die PEM-Datei nicht.
+Eine Datei im `.pem`- oder `.der`-Format mit einer anderen Erweiterung. Die Datei wird in Windows-Explorer als Zertifikat erkannt. Die `.pem` -Datei wird in Windows-Explorer nicht erkannt.
 
 **.key: Datei mit dem privaten Schlüssel**
 
 Eine KEY-Datei hat das gleiche Format wie eine PEM-Datei, aber eine andere Erweiterung. 
 
+#### <a name="additional-commonly-available-key-artifacts"></a>Zusätzliche allgemein verfügbare Schlüsselartefakte
+
+**.csr: Zertifikatsignieranforderung**  
+
+Diese Datei wird für die Übermittlung an Zertifizierungsstellen verwendet. Das tatsächliche Format ist PKCS10, das in RFC 2986 definiert ist, und kann einige oder alle Schlüsseldetails des angeforderten Zertifikats enthalten, z. B. Antragsteller, Organisation und Status. Es handelt sich um den öffentlichen Schlüssel des Zertifikats, das von der Zertifizierungsstelle signiert wird und auf das ein Zertifikat zurückgegeben wird.  
+
+Das zurückgegebene Zertifikat ist das öffentliche Zertifikat, das den öffentlichen Schlüssel, jedoch nicht den privaten Schlüssel enthält. 
+
+**.pkcs12, .pfx, .p12: Kennwortcontainer** 
+
+Ursprünglich durch RSA in den Public-Key Cryptography Standards (PKCS) definiert, wurde die PKCS12-Variante zunächst von Microsoft erweitert und später als RFC 7292 eingereicht.  
+
+Dieses Containerformat erfordert ein Kennwort, das öffentliche sowie private Zertifikatpaare enthält. Im Unterschied zu `.pem` -Dateien ist dieser Container vollständig verschlüsselt.  
+
+Mithilfe von OpenSSL können Sie die Datei in eine `.pem` -Datei mit öffentlichen und privaten Schlüsseln umwandeln: `openssl pkcs12 -in file-to-convert.p12 -out converted-file.pem -nodes`  
+
+**.der: binär codierte PEM-Datei**
+
+Die Methode zum Codieren der ASN.1-Syntax in das binäre Format erfolgt über eine `.pem` -Datei, bei der es sich lediglich um eine Base64-codierte `.der`-Datei handelt. 
+
+Mit OpenSSL können diese Dateien in `.pem`: `openssl x509 -inform der -in to-convert.der -out converted.pem` konvertiert werden.  
+
+Diese Dateien werden unter Windows als Zertifikatdateien erkannt. Unter Windows werden Zertifikate standardmäßig als Dateien im `.der`-Format mit einer anderen Erweiterung exportiert.
+
+**.crl: Zertifikatssperrliste**  
+
+Zertifizierungsstellen können diese Dateien erstellen, um die Autorisierung von Zertifikaten vor deren Ablauf aufzuheben. 
+
 #### <a name="cli-commands"></a>CLI-Befehle
 
-Importieren Sie Zertifikate mit dem CLI-Befehl `cyberx-xsense-certificate-import`. Für dieses Tools müssen Zertifikatdateien auf das Gerät hochgeladen werden (mithilfe von Tools wie WinSCP oder Wget).
+Importieren Sie Zertifikate mit dem CLI-Befehl `cyberx-xsense-certificate-import`. Zur Verwendung dieses Tools müssen Zertifikatdateien mithilfe von Tools wie WinSCP oder Wget auf das Gerät hochgeladen werden.
 
 Der Befehl unterstützt die folgenden Eingabeflags:
 
@@ -160,6 +221,41 @@ Bei Verwendung des CLI-Befehls gilt Folgendes:
 - Überprüfen Sie, ob die Zertifikatdateien auf der Appliance lesbar sind.
 
 - Überprüfen Sie, ob der Domänenname und die IP-Adresse im Zertifikat der von der IT-Abteilung vorgesehenen Konfiguration entsprechen.
+
+### <a name="use-openssl-to-manage-certificates"></a>Verwalten von Zertifikaten mithilfe von OpenSSL
+
+Sie können Zertifikate mit den folgenden Befehlen verwalten:
+
+| Beschreibung | CLI-Befehl |
+|--|--|
+| Generieren eines neuen privaten Schlüssels und einer Zertifikatsignieranforderung | `openssl req -out CSR.csr -new -newkey rsa:2048 -nodes -keyout privateKey.key` |
+| Generieren eines selbstsignierten Zertifikats | `openssl req -x509 -sha256 -nodes -days 365 -newkey rsa:2048 -keyout privateKey.key -out certificate.crt` |
+| Generieren einer Zertifikatsignieranforderung (Certificate Signing Request, CSR) für einen vorhandenen privaten Schlüssel | `openssl req -out CSR.csr -key privateKey.key -new` |
+| Generieren einer Zertifikatsignieranforderung basierend auf einem vorhandenen Zertifikat | `openssl x509 -x509toreq -in certificate.crt -out CSR.csr -signkey privateKey.key` |
+| Entfernen einer Passphrase aus einem privaten Schlüssel | `openssl rsa -in privateKey.pem -out newPrivateKey.pem` |
+
+Wenn Sie die Informationen in einem Zertifikat, einer Zertifikatsignieranforderung oder einem privaten Schlüssel überprüfen möchten, verwenden Sie die folgenden Befehle:
+
+| Beschreibung | CLI-Befehl |
+|--|--|
+| Überprüfen einer Zertifikatsignieranforderung (CSR) | `openssl req -text -noout -verify -in CSR.csr` |
+| Überprüfen eines privaten Schlüssels | `openssl rsa -in privateKey.key -check` |
+| Überprüfen eines Zertifikats | `openssl x509 -in certificate.crt -text -noout`  |
+
+Wenn in einer Fehlermeldung angezeigt wird, dass der private Schlüssel nicht mit dem Zertifikat übereinstimmt oder dass ein in einer Site installiertes Zertifikat nicht vertrauenswürdig ist, können Sie den Fehler mit den folgenden Befehlen beheben:
+
+| Beschreibung | CLI-Befehl |
+|--|--|
+| Überprüfen eines MD5-Hash des öffentlichen Schlüssels, um sicherzustellen, dass er mit dem Inhalt einer Zertifikatsignieranforderung oder einem privaten Schlüssel übereinstimmt | 1. `openssl x509 -noout -modulus -in certificate.crt | openssl md5` <br /> 2. `openssl rsa -noout -modulus -in privateKey.key | openssl md5` <br /> 3. `openssl req -noout -modulus -in CSR.csr | openssl md5 ` |
+
+Führen Sie die folgenden Befehle aus, um Zertifikate und Schlüssel in unterschiedliche Formate zu konvertieren, sodass sie mit bestimmten Servertypen oder spezifischer Software kompatibel sind.
+
+| Beschreibung | CLI-Befehl |
+|--|--|
+| Konvertieren einer DER-Datei (.crt, .cer, .der) in PEM  | `openssl x509 -inform der -in certificate.cer -out certificate.pem`  |
+| Konvertieren einer PEM-Datei in DER | `openssl x509 -outform der -in certificate.pem -out certificate.der`  |
+| Konvertieren einer PKCS#12-Datei (.pfx, .p12) mit einem privaten Schlüssel und Zertifikaten in PEM | `openssl pkcs12 -in keyStore.pfx -out keyStore.pem -nodes` <br />Sie können `-nocerts` hinzufügen, um nur den privaten Schlüssel auszugeben, oder `-nokeys`, um nur die Zertifikate auszugeben. |
+| Konvertieren einer PEM-Zertifikatdatei und eines privaten Schlüssels in PKCS#12 (.pfx, .p12) | `openssl pkcs12 -export -out certificate.pfx -inkey privateKey.key -in certificate.crt -certfile CACert.crt` |
 
 ## <a name="define-backup-and-restore-settings"></a>Festlegen von Sicherungs- und Wiederherstellungseinstellungen
 

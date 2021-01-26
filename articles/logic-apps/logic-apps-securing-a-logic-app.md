@@ -3,15 +3,15 @@ title: Sichern des Zugriffs und der Daten
 description: Schützen des Zugriffs auf Eingaben, Ausgaben, anforderungsbasierte Trigger, Verlaufsprotokolle, Verwaltungsaufgaben und des Zugriffs auf andere Ressourcen in Azure Logic Apps
 services: logic-apps
 ms.suite: integration
-ms.reviewer: rarayudu, logicappspm
+ms.reviewer: estfan, logicappspm, azla, rarayudu
 ms.topic: conceptual
-ms.date: 01/09/2020
-ms.openlocfilehash: 5ad01e31cb9af18fa018d99424b25dee338981d7
-ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
+ms.date: 01/15/2021
+ms.openlocfilehash: c889498d6341875682055e9d67b8d2b958bac70a
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98034508"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251062"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>Schützen des Zugriffs und der Daten in Azure Logic Apps
 
@@ -911,6 +911,10 @@ HTTP- und HTTP-Endpunkte unterstützen verschiedene Arten der Authentifizierung.
 > Um vertrauliche Informationen, die Ihre Logik-App verarbeitet, zu schützen, verwenden Sie abgesicherte Parameter, und verschlüsseln Sie Daten nach Bedarf.
 > Weitere Informationen zum Verwenden und Absichern von Parametern finden Sie unter [Zugriff auf Parametereingaben](#secure-action-parameters).
 
+<a name="authentication-types-supported-triggers-actions"></a>
+
+#### <a name="authentication-types-for-triggers-and-actions-that-support-authentication"></a>Authentifizierungstypen für Trigger und Aktionen, die die Authentifizierung unterstützen
+
 In dieser Tabelle werden die Authentifizierungstypen aufgeführt, die für die Trigger und Aktionen verfügbar sind, bei denen Sie einen Authentifizierungstyp auswählen können:
 
 | Authentifizierungsart | Unterstützte Trigger und Aktionen |
@@ -919,12 +923,12 @@ In dieser Tabelle werden die Authentifizierungstypen aufgeführt, die für die T
 | [Clientzertifikat](#client-certificate-authentication) | Azure API Management, Azure App Services, HTTP, HTTP + Swagger, HTTP Webhook |
 | [Active Directory OAuth](#azure-active-directory-oauth-authentication) | Azure API Management, Azure App Services, Azure Functions, HTTP, HTTP + Swagger, HTTP Webhook |
 | [Raw](#raw-authentication) | Azure API Management, Azure App Services, Azure Functions, HTTP, HTTP + Swagger, HTTP Webhook |
-| [Verwaltete Identität](#managed-identity-authentication) | Azure API Management, Azure App Services, Azure Functions, HTTP, HTTP-Webhook |
+| [Verwaltete Identität](#managed-identity-authentication) | **Integrierte Trigger und Aktionen** <p><p>Azure API Management, Azure App Services, Azure Functions, HTTP, HTTP-Webhook <p><p>**Verwaltete Connectors** <p><p>Azure AD Identity Protection, Azure Automation, Azure Container Instance, Azure Data Explorer, Azure Data Factory, Azure Data Lake, Azure Event Grid, Azure IoT Central V3, Azure Key Vault, Azure Log Analytics, Azure Monitor-Protokolle, Azure Resource Manager, Azure Sentinel, HTTP mit Azure AD <p><p>**Hinweis**: Die Unterstützung für verwaltete Connectors befindet sich derzeit in der Vorschauphase. |
 |||
 
 <a name="basic-authentication"></a>
 
-### <a name="basic-authentication"></a>Standardauthentifizierung
+#### <a name="basic-authentication"></a>Standardauthentifizierung
 
 Wenn die Option [Standard](../active-directory-b2c/secure-rest-api.md) verfügbar ist, geben Sie die folgenden Eigenschaftswerte an:
 
@@ -955,7 +959,7 @@ Wenn Sie [abgesicherte Parameter](#secure-action-parameters) verwenden, um vertr
 
 <a name="client-certificate-authentication"></a>
 
-### <a name="client-certificate-authentication"></a>Authentifizierung mit Clientzertifikat
+#### <a name="client-certificate-authentication"></a>Authentifizierung mit Clientzertifikat
 
 Wenn die Option [Clientzertifikat](../active-directory/authentication/active-directory-certificate-based-authentication-get-started.md) verfügbar ist, geben Sie die folgenden Eigenschaftswerte an:
 
@@ -994,7 +998,7 @@ Weitere Informationen zum Absichern von Diensten mithilfe der Clientzertifikatau
 
 <a name="azure-active-directory-oauth-authentication"></a>
 
-### <a name="azure-active-directory-open-authentication"></a>Azure Active Directory Open Authentication
+#### <a name="azure-active-directory-open-authentication"></a>Azure Active Directory Open Authentication
 
 Bei Anforderungstriggern können Sie nach der [Einrichtung von Azure AD-Autorisierungsrichtlinien](#enable-oauth) eingehende Anrufe für Ihre Logik-App mit [Azure Active Directory Open Authentication (Azure AD OAuth)](../active-directory/develop/index.yml) authentifizieren. Geben Sie für alle anderen Trigger und Aktionen, die Ihnen den **Active Directory OAuth**-Authentifizierungstyp zur Auswahl bereitstellen, die folgenden Eigenschaftswerte an:
 
@@ -1034,7 +1038,7 @@ Wenn Sie [abgesicherte Parameter](#secure-action-parameters) verwenden, um vertr
 
 <a name="raw-authentication"></a>
 
-### <a name="raw-authentication"></a>Raw-Authentifizierung
+#### <a name="raw-authentication"></a>Raw-Authentifizierung
 
 Sofern die Option **Raw** verfügbar ist, können Sie diesen Authentifizierungstyp verwenden, wenn Sie [Authentifizierungsschemas](https://iana.org/assignments/http-authschemes/http-authschemes.xhtml) verwenden müssen, die nicht das Protokoll [OAuth 2.0](https://oauth.net/2/) befolgen. Bei diesem Typ legen Sie den Wert des Autorisierungsheaders, den Sie mit der ausgehenden Anforderung senden, manuell fest und geben diesen Headerwert in Ihrem Trigger oder Ihrer Aktion an.
 
@@ -1077,15 +1081,17 @@ Wenn Sie [abgesicherte Parameter](#secure-action-parameters) verwenden, um vertr
 
 <a name="managed-identity-authentication"></a>
 
-### <a name="managed-identity-authentication"></a>Authentifizierung der verwalteten Identität
+#### <a name="managed-identity-authentication"></a>Authentifizierung der verwalteten Identität
 
-Wenn die Option [Verwaltete Identität](../active-directory/managed-identities-azure-resources/overview.md) für einen [bestimmten Trigger oder eine bestimmte Aktion](#add-authentication-outbound) verfügbar ist, kann Ihre Logik-App die systemseitig zugewiesene Identität oder eine *einzelne*, manuell erstellte, benutzerseitig zugewiesene Identität verwenden, um den Zugriff auf andere Ressourcen, die von Azure Active Directory (Azure AD) geschützt werden, ohne Anmeldung zu authentifizieren. Azure verwaltet diese Identität für Sie und dient als Hilfe beim Schützen Ihrer Anmeldeinformationen, da Sie keine Geheimnisse angeben oder eine Rotation dafür durchführen müssen. Erfahren Sie mehr zu [Azure-Diensten, die verwaltete Identitäten für die Azure AD-Authentifizierung unterstützen](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication).
+Wenn die Option [Verwaltete Identität](../active-directory/managed-identities-azure-resources/overview.md) für einen [Trigger oder eine Aktion verfügbar ist, der oder die die Authentifizierung der verwalteten Identitäten unterstützt,](#add-authentication-outbound) kann Ihre Logik-App die systemseitig zugewiesene Identität oder eine *einzelne* manuell erstellte, benutzerseitig zugewiesene Identität verwenden, um den Zugriff auf Azure-Ressourcen, die von Azure Active Directory (Azure AD) und nicht durch Anmeldeinformationen, Geheimnisse oder Azure AD-Token geschützt werden, ohne Anmeldung zu authentifizieren. Azure verwaltet diese Identität für Sie und dient als Hilfe beim Schützen Ihrer Anmeldeinformationen, da Sie keine Geheimnisse verwalten und Azure AD-Token nicht direkt verwenden müssen. Erfahren Sie mehr zu [Azure-Diensten, die verwaltete Identitäten für die Azure AD-Authentifizierung unterstützen](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication).
 
 1. Bevor Ihre Logik-App eine verwaltete Identität verwenden kann, führen Sie die Schritte in [Authentifizieren und Zugreifen auf Ressourcen mit verwalteten Identitäten in Azure Logic Apps](../logic-apps/create-managed-service-identity.md) aus. Diese Schritte aktivieren die verwaltete Identität in Ihrer Logik-App und richten den Zugriff dieser Identität auf die Zielressource in Azure ein.
 
 1. Bevor eine Azure-Funktion eine verwaltete Identität verwenden kann, aktivieren Sie zuerst [die Authentifizierung für Azure-Funktionen](../logic-apps/logic-apps-azure-functions.md#enable-authentication-for-functions).
 
-1. Geben Sie in dem Trigger oder der Aktion, in dem/der Sie die verwaltete Identität verwenden möchten, diese Eigenschaftswerte an:
+1. Geben Sie im Trigger oder der Aktion mit Unterstützung der Verwendung einer verwalteten folgende Informationen an:
+
+   **Integrierte Trigger und Aktionen**
 
    | Eigenschaft (Designer) | Eigenschaft (JSON) | Erforderlich | Wert | BESCHREIBUNG |
    |---------------------|-----------------|----------|-------|-------------|
@@ -1094,7 +1100,7 @@ Wenn die Option [Verwaltete Identität](../active-directory/managed-identities-a
    | **Zielgruppe** | `audience` | Ja | <*target-resource-ID*> | Die Ressourcen-ID der Zielressource, auf die Sie zugreifen möchten. <p>Beispielsweise macht `https://storage.azure.com/` die [Zugriffstoken](../active-directory/develop/access-tokens.md) für die Authentifizierung für alle Speicherkonten gültig. Sie können jedoch auch für ein bestimmtes Speicherkonto eine Stammdienst-URL angeben, z. B. `https://fabrikamstorageaccount.blob.core.windows.net`. <p>**Hinweis**: Die Eigenschaft **Zielgruppe** kann in einigen Triggern oder Aktionen ausgeblendet sein. Um diese Eigenschaft einzublenden, öffnen Sie für den Trigger oder die Aktion die Liste **Neuen Parameter hinzufügen**, und wählen Sie **Zielgruppe** aus. <p><p>**Wichtig**: Vergewissern Sie sich, dass diese Zielressourcen-ID *genau dem Wert entspricht*, den Azure AD erwartet, einschließlich aller erforderlichen nachgestellten Schrägstriche. Daher erfordert die `https://storage.azure.com/`-Ressourcen-ID für alle Azure Blob Storage-Konten einen nachgestellten Schrägstrich. Allerdings erfordert die Ressourcen-ID für ein bestimmtes Speicherkonto keinen nachgestellten Schrägstrich. Diese Ressourcen-IDs finden Sie unter [Azure-Dienste, die die Azure AD-Authentifizierung unterstützen](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication). |
    |||||
 
-   Wenn Sie [abgesicherte Parameter](#secure-action-parameters) verwenden, um vertrauliche Informationen zu verarbeiten und zu schützen, z. B. in einer [Azure Resource Manager-Vorlage zur Automatisierung der Bereitstellung](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md), können Sie zur Runtime mit Ausdrücken auf diese Parameterwerte zugreifen. In dieser Beispieldefinition einer HTTP-Aktion werden der `type` der Authentifizierung als `ManagedServiceIdentity` angegeben und die Funktion [parameters()](../logic-apps/workflow-definition-language-functions-reference.md#parameters) verwendet, um die Parameterwerte abzurufen:
+   Wenn Sie [abgesicherte Parameter](#secure-action-parameters) verwenden, um vertrauliche Informationen zu verarbeiten und zu schützen, z. B. in einer [Azure Resource Manager-Vorlage zur Automatisierung der Bereitstellung](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md), können Sie zur Runtime mit Ausdrücken auf diese Parameterwerte zugreifen. In dieser Beispieldefinition einer HTTP-Aktion werden der `type` der Authentifizierung als `ManagedServiceIdentity` angegeben und die [parameters()](../logic-apps/workflow-definition-language-functions-reference.md#parameters)-Funktion verwendet, um die Parameterwerte abzurufen:
 
    ```json
    "HTTP": {
@@ -1111,6 +1117,15 @@ Wenn die Option [Verwaltete Identität](../active-directory/managed-identities-a
       "runAfter": {}
    }
    ```
+
+   **Verwaltete Connectors als Trigger und Aktionen**
+
+   | Eigenschaft (Designer) | Erforderlich | Wert | BESCHREIBUNG |
+   |---------------------|----------|-------|-------------|
+   | **Verbindungsname** | Ja | <*connection-name*> ||
+   | **Verwaltete Identität** | Yes | **Systemseitig zugewiesene verwaltete Identität** <br>oder <br> <*user-assigned-managed-identity-name*> | Der zu verwendende Authentifizierungstyp |
+   |||||
+
 
 <a name="block-connections"></a>
 

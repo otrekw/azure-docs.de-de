@@ -7,12 +7,12 @@ ms.service: resource-move
 ms.topic: how-to
 ms.date: 10/11/2020
 ms.author: raynew
-ms.openlocfilehash: 4da707ab698599c8ea5dd8e1ea8647f543eb2a68
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 00b220e07dc3fa7580100d6d36108c14fe598d40
+ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95524248"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98572186"
 ---
 # <a name="support-for-moving-azure-vms-between-azure-regions"></a>Unterstützung für das Verschieben von virtuellen Azure-Computern zwischen Azure-Regionen
 
@@ -113,7 +113,7 @@ Erweiterungen | Nicht unterstützt | Erweiterungen werden nicht in den virtuelle
 
 ## <a name="supported-vm-storage-settings"></a>Unterstützte Einstellungen für den Speicher von virtuellen Computern
 
-In dieser Tabelle ist die Unterstützung für den Betriebssystemdatenträger, Datenträger und temporären Datenträger der Azure-VM zusammengefasst. Es ist wichtig, dass die VM-Datenträgergrenzwerte und -Ziele für [Linux](../virtual-machines/linux/disk-scalability-targets.md)- und [Windows](../virtual-machines/windows/disk-scalability-targets.md)-VMs eingehalten werden, um Leistungsprobleme zu vermeiden.
+In dieser Tabelle ist die Unterstützung für den Betriebssystemdatenträger, Datenträger und temporären Datenträger der Azure-VM zusammengefasst. Es ist wichtig, dass die VM-Datenträgergrenzwerte und -Ziele für [verwaltete Datenträger](../virtual-machines/disks-scalability-targets.md) eingehalten werden, um Leistungsprobleme zu vermeiden.
 
 > [!NOTE]
 > Der virtuelle Zielcomputer muss gleich groß wie oder größer als der virtuelle Quellcomputer sein. Für die Validierung werden folgende Parameter verwendet: Anzahl der Datenträger, Anzahl der Netzwerkkarten, Verfügbare CPUs, Arbeitsspeicher in GB. Trifft dies nicht zu, wird ein Fehler ausgegeben.

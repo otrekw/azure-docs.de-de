@@ -1,18 +1,18 @@
 ---
-title: Klassifizierungsberichterstellung für Ihre Daten mithilfe von Purview-Erkenntnissen (Vorschau)
-description: In dieser Schrittanleitung wird beschrieben, wie Sie die Klassifizierungsberichterstellung mit Purview-Erkenntnissen für Ihre Daten anzeigen und verwenden können.
+title: Klassifizierungsberichterstellung für Ihre Daten in Azure Purview mithilfe von Purview-Erkenntnissen (Vorschau)
+description: In dieser Schrittanleitung wird beschrieben, wie Sie die Klassifizierungsberichterstellung in Purview für Ihre Daten anzeigen und verwenden können.
 author: batamig
 ms.author: bagol
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/24/2020
-ms.openlocfilehash: bb3c7cc3f51eae90c5b712d224407e639b232fbc
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: a0eed27636a3f65d68489d1f2249db784ba1d722
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96938884"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98196536"
 ---
 # <a name="classification-insights-about-your-data-from-azure-purview"></a>Klassifizierungserkenntnisse zu Ihren Daten aus Azure Purview
 
@@ -33,7 +33,9 @@ Stellen Sie vor dem Beginn mit Purview-Erkenntnissen sicher, dass Sie die folgen
 
 - Einrichten Ihrer Azure-Ressourcen und Füllen der entsprechenden Konten mit Testdaten
 
-- Einrichten und Abschließen einer Überprüfung der Testdaten in den einzelnen Datenquellen 
+- Einrichten und Abschließen einer Überprüfung der Testdaten in den einzelnen Datenquellen
+
+- Anmeldung mit einem Konto mit einer Rollen [„Datenleser“ oder „Datenkurator“](catalog-permissions.md#azure-purviews-pre-defined-data-plane-roles)
 
 Weitere Informationen finden Sie unter [Verwalten von Datenquellen in Azure Purview (Vorschau)](manage-data-sources.md).
 
@@ -60,7 +62,7 @@ Für Purview werden die gleichen Arten von vertraulichen Informationen wie in Mi
 
    Die Hauptseite für **Klassifizierungserkenntnisse** zeigt die folgenden Bereiche an:
 
-   |Bereich  |Beschreibung  |
+   |Bereich  |BESCHREIBUNG  |
    |---------|---------|
    |**Übersicht über Quellen mit Klassifizierungen**     |Zeigt Kacheln mit folgenden Informationen an: <br>- Die Anzahl der in Ihren Daten gefundenen Abonnements <br>- Die Anzahl der in Ihren Daten gefundenen eindeutigen Klassifizierungen <br>- Die Anzahl der gefundenen klassifizierten Quellen <br>- Die Anzahl der gefundenen klassifizierten Dateien <br>- Die Anzahl der gefundenen klassifizierten Tabellen         |
    |**Hauptquellen mit klassifizierten Daten (letzte 30 Tage)**     |Zeigt den Trend über die letzten 30 Tage für die Anzahl der gefundenen Quellen mit klassifizierten Daten.            |

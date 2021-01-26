@@ -5,13 +5,13 @@ author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 11/10/2020
-ms.openlocfilehash: 4fea027663b55e87822eae1fd0cdb2d67dbc630b
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.date: 01/19/2021
+ms.openlocfilehash: a03ad1eb893c97671d7ab60cc38708115a73d260
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96170821"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98602396"
 ---
 # <a name="introduction-to-provisioned-throughput-in-azure-cosmos-db"></a>Einführung zum bereitgestellten Durchsatz in Azure Cosmos DB
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -109,7 +109,7 @@ Die Antwort dieser Methoden enthält auch den [bereitgestellten Mindestdurchsatz
 Der tatsächliche Mindestwert an RU/s kann je nach Kontokonfiguration variieren. Im Allgemeinen ist es jedoch ein Maximalwert von:
 
 * 400 RU/s 
-* Aktueller Speicher in GB * 10 RU/s (falls Ihr Container oder Ihre Datenbank mehr als 1 TB an Daten enthält, siehe unser [Programm „High Storage/Low Throughput“ (Hohe Speicherkapazität/geringer Durchsatz)](#high-storage-low-throughput-program))
+* Aktueller Speicher in GB * 10 RU/s (Diese Einschränkung kann in einigen Fällen gelockert werden. Weitere Informationen finden Sie in unserem [Programm „High Storage/Low Throughput“ (hohe Speicherkapazität/geringer Durchsatz)](#high-storage-low-throughput-program).)
 * Höchstwert bereitgestellter RU/s für die Datenbank oder den Container / 100
 
 ### <a name="changing-the-provisioned-throughput"></a>Ändern des bereitgestellten Durchsatzes
@@ -139,7 +139,7 @@ Wie im Abschnitt [Aktuell bereitgestellter Durchsatz](#current-provisioned-throu
 
 Dies kann in Situationen, in denen Sie große Datenmengen speichern müssen, aber im Vergleich dazu geringe Durchsatzanforderungen haben, ein Problem darstellen. Um diese Szenarien besser zu unterstützen, wurde in Azure Cosmos DB ein **Programm „High Storage/Low Throughput“** (hohe Speicherkapazität/geringer Durchsatz) eingeführt, das die Einschränkung für RU/s pro GB bei berechtigten Konten reduziert.
 
-Derzeit benötigen Sie in Ihrem Konto mindestens einen Container oder eine Datenbank mit gemeinsam genutztem Durchsatz, der bzw. die mehr als 1 TB Daten enthält, um dafür berechtigt zu sein. Um an diesem Programm teilzunehmen und Ihre Gesamtberechtigung zu prüfen, müssen Sie lediglich [diese Umfrage](https://customervoice.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRzBPrdEMjvxPuDm8fCLUtXpUREdDU0pCR0lVVFY5T1lRVEhWNUZITUJGMC4u) ausfüllen. Das Azure Cosmos DB-Team wird dies dann nachverfolgen und mit dem Onboarding fortfahren.
+Um an diesem Programm teilzunehmen und Ihre Gesamtberechtigung zu prüfen, müssen Sie lediglich [diese Umfrage](https://customervoice.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRzBPrdEMjvxPuDm8fCLUtXpUREdDU0pCR0lVVFY5T1lRVEhWNUZITUJGMC4u) ausfüllen. Das Azure Cosmos DB-Team wird dies dann nachverfolgen und mit dem Onboarding fortfahren.
 
 ## <a name="comparison-of-models"></a>Vergleich der Modelle
 Diese Tabelle zeigt einen Vergleich zwischen dem standardmäßig (manuell) bereitgestellten Durchsatz in einer Datenbank und in einem Container. 

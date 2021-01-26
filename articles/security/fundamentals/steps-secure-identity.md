@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 01/29/2020
 ms.author: martinco
-ms.openlocfilehash: 4703a76ff0a0b55a438f9f0d164cd7f2d3242a02
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: ffc5bafca305086b0c524c76eb91b8aec2e2655d
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94842021"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98602441"
 ---
 # <a name="five-steps-to-securing-your-identity-infrastructure"></a>Fünf Schritte zum Sichern Ihrer Identitätsinfrastruktur
 
@@ -81,7 +81,7 @@ Wenn Sie Identitäten direkt in Azure AD erstellen, können Sie den [Kennwortabl
 
 Wenn Ihre Organisation eine Hybrididentitätslösung mit Pass-Through-Authentifizierung oder Verbundauthentifizierung verwendet, sollten Sie aus den beiden folgenden Gründen die Kennworthashsynchronisierung aktivieren:
 
-* Der Bericht zu [Benutzern mit kompromittierten Anmeldeinformationen](../../active-directory/identity-protection/overview-identity-protection.md) in der Azure AD-Verwaltung warnt Sie vor Kombinationen aus Benutzername und Kennwort, die im „Dark Web“ verbreitet wurden. Eine schier unglaubliche Menge an Kennwörtern wird über drei Wege kompromittiert: Phishing, Schadsoftware und die Wiederverwendung von Kennwörtern auf Drittanbieterwebsites, die später gehackt werden. Microsoft findet eine Vielzahl dieser kompromittierten Anmeldeinformationen und teilt Ihnen in diesem Bericht mit, wenn sie Anmeldeinformationen in Ihrer Organisation entsprechen – aber nur, wenn Sie die [Kennworthashsynchronisierung aktivieren](../../active-directory/hybrid/how-to-connect-password-hash-synchronization.md)!
+* Der Bericht zu [Benutzern mit kompromittierten Anmeldeinformationen](../../active-directory/identity-protection/overview-identity-protection.md) in der Azure AD-Verwaltung warnt Sie vor Kombinationen aus Benutzername und Kennwort, die im „Dark Web“ verbreitet wurden. Eine schier unglaubliche Menge an Kennwörtern wird über drei Wege kompromittiert: Phishing, Schadsoftware und die Wiederverwendung von Kennwörtern auf Drittanbieterwebsites, die später gehackt werden. Microsoft findet eine Vielzahl dieser kompromittierten Anmeldeinformationen und teilt Ihnen in diesem Bericht mit, wenn sie Anmeldeinformationen in Ihrer Organisation entsprechen – aber nur, wenn Sie die [Kennworthashsynchronisierung aktivieren](../../active-directory/hybrid/how-to-connect-password-hash-synchronization.md) oder über Cloudidentitäten verfügen!
 * Wenn ein lokales System ausfällt (beispielsweise aufgrund eines Ransomware-Angriffs), können Sie zur [Cloudauthentifizierung mit Kennworthashsynchronisierung](../../active-directory/hybrid/choose-ad-authn.md) wechseln. Diese sekundäre Authentifizierungsmethode ermöglicht es, weiterhin auf Apps zuzugreifen, die für die Authentifizierung mit Azure Active Directory konfiguriert sind, einschließlich Microsoft 365. In diesem Fall müssen IT-Mitarbeiter nicht auf persönliche E-Mail-Konten zurückgreifen, um bis zur Behebung des lokalen Ausfalls Daten freizugeben.
 
 Informieren Sie sich, wie die [Kennworthashsynchronisierung](../../active-directory/hybrid/how-to-connect-password-hash-synchronization.md) funktioniert.

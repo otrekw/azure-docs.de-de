@@ -4,15 +4,15 @@ description: Beheben von häufigen Problemen in einer Bereitstellung in der Azur
 author: jeffpatt24
 ms.service: storage
 ms.topic: troubleshooting
-ms.date: 6/12/2020
+ms.date: 1/15/2021
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: c7405ada800bd5fb9161e9d96bd4c8b0484be620
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 71de1d17731e086d012da5365fa6671bcb9e6e3b
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96005319"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98539250"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Problembehandlung für Azure-Dateisynchronisierung
 Mit der Azure-Dateisynchronisierung können Sie die Dateifreigaben Ihrer Organisation in Azure Files zentralisieren, ohne auf die Flexibilität, Leistung und Kompatibilität eines lokalen Dateiservers verzichten zu müssen. Mit der Azure-Dateisynchronisierung werden Ihre Windows Server-Computer zu einem schnellen Cache für Ihre Azure-Dateifreigabe. Sie können ein beliebiges Protokoll verwenden, das unter Windows Server verfügbar ist, um lokal auf Ihre Daten zuzugreifen, z.B. SMB, NFS und FTPS. Sie können weltweit so viele Caches wie nötig nutzen.
@@ -52,9 +52,11 @@ Installieren Sie zum Beheben des Fehlers [KB2919355](https://support.microsoft.c
 <a id="server-registration-missing-subscriptions"></a>**Bei der Serverregistrierung werden nicht alle Azure-Abonnements aufgelistet.**  
 Beim Registrieren eines Servers mithilfe von „ServerRegistration.exe“ fehlen Abonnements, wenn Sie auf die Dropdownliste für das Azure-Abonnement klicken.
 
-Dieses Problem tritt auf, da „ServerRegistration.exe“ derzeit keine Umgebungen mit mehreren Mandanten unterstützt. Dieses Problem wird in einem zukünftigen Agent-Update für die Azure-Dateisynchronisierung behoben.
+Dieses Problem tritt auf, da „ServerRegistration.exe“ nur Abonnements von den ersten fünf Azure AD-Mandanten abruft. 
 
-Um dieses Problem zu umgehen, verwenden Sie die folgenden PowerShell-Befehle, um den Server zu registrieren:
+Um das Mandantenlimit für die Serverregistrierung zu erhöhen, erstellen Sie auf dem Server unter HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Azure\StorageSync einen DWORD-Wert mit dem Namen ServerRegistrationTenantLimit und einem Wert über 5.
+
+Sie können dieses Problem auch umgehen, indem Sie den Server mit den folgenden PowerShell-Befehlen registrieren:
 
 ```powershell
 Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.PowerShell.Cmdlets.dll"
@@ -199,10 +201,27 @@ Dieses Problem kann auftreten, wenn der Überwachungsprozess für die Speichersy
 - Wenn **GetNextJob abgeschlossen mit dem Status: 0** protokolliert ist, kann der Server mit dem Azure-Dateisynchronisierungsdienst kommunizieren. 
     - Öffnen Sie den Task-Manager auf dem Server und überprüfen Sie, ob der Überwachungsprozess für die Speichersynchronisierung (AzureStorageSyncMonitor.exe) ausgeführt wird. Wenn der Prozess nicht ausgeführt wird, versuchen Sie zunächst, den Server neu zu starten. Wenn der Neustart des Servers das Problem nicht behebt, führen Sie ein Upgrade auf die [neueste Version](./storage-files-release-notes.md) des Azure-Dateisynchronisierungs-Agents aus. 
 
-- Wenn **GetNextJob abgeschlossen mit dem Status: -2134347756** protokolliert ist, kann der Server aufgrund einer Firewall oder eines Proxys nicht mit dem Azure-Dateisynchronisierungsdienst kommunizieren. 
+- Wenn **GetNextJob abgeschlossen mit dem Status: –2134347756** protokolliert ist, kann der Server aufgrund einer Firewall, eines Proxys oder der konfigurierten Reihenfolge einer TLS-Verschlüsselungssammlung nicht mit dem Azure-Dateisynchronisierungsdienst kommunizieren. 
     - Wenn sich der Server hinter einer Firewall befindet, überprüfen Sie, ob Port 443 für ausgehenden Datenverkehr zulässig ist. Wenn die Firewall den Datenverkehr auf bestimmte Domänen einschränkt, bestätigen Sie, dass die in der Firewall-[Dokumentation](./storage-sync-files-firewall-and-proxy.md#firewall) aufgeführten Domänen zugänglich sind.
     - Wenn sich der Server hinter einem Proxy befindet, konfigurieren Sie die computerweiten oder App-spezifischen Proxyeinstellungen, indem Sie den Schritten in der Proxy-[Dokumentation](./storage-sync-files-firewall-and-proxy.md#proxy) folgen.
     - Verwenden Sie das Test-Cmdlet „StorageSyncNetworkConnectivity“ zum Überprüfen der Netzwerkkonnektivität mit den Dienstendpunkten. Wenn Sie weitere Informationen benötigen, lesen Sie [Testen der Netzwerkkonnektivität mit Dienstendpunkten](./storage-sync-files-firewall-and-proxy.md#test-network-connectivity-to-service-endpoints).
+    - Wenn die Reihenfolge der TLS-Verschlüsselungssammlung auf dem Server konfiguriert ist, können Sie Verschlüsselungssammlungen mithilfe von Gruppenrichtlinien oder TLS-Cmdlets hinzufügen:
+        - Informationen zur Verwendung von Gruppenrichtlinien finden Sie unter [Konfigurieren der Reihenfolge von TLS-Verschlüsselungssammlungen mithilfe von Gruppenrichtlinien](https://docs.microsoft.com/windows-server/security/tls/manage-tls#configuring-tls-cipher-suite-order-by-using-group-policy).
+        - Informationen zur Verwendung von TLS-Cmdlets finden Sie unter [Konfigurieren der Reihenfolge von TLS-Verschlüsselungssammlungen mithilfe von TLS-Cmdlets in PowerShell](https://docs.microsoft.com/windows-server/security/tls/manage-tls#configuring-tls-cipher-suite-order-by-using-tls-powershell-cmdlets).
+    
+        Die Azure-Dateisynchronisierung unterstützt derzeit die folgenden Verschlüsselungssammlungen für das TLS 1.2-Protokoll:  
+        - TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384_P384  
+        - TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256_P256  
+        - TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384_P384  
+        - TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256_P256  
+        - TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384_P256  
+        - TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256  
+        - TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA_P256  
+        - TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA_P256  
+        - TLS_RSA_WITH_AES_256_GCM_SHA384  
+        - TLS_RSA_WITH_AES_128_GCM_SHA256  
+        - TLS_RSA_WITH_AES_256_CBC_SHA256  
+        - TLS_RSA_WITH_AES_128_CBC_SHA256  
 
 - Wenn **GetNextJob abgeschlossen mit dem Status: -2134347764** protokolliert ist, kann der Server aufgrund eines abgelaufenen oder gelöschten Zertifikats nicht mit dem Azure-Dateisynchronisierungsdienst kommunizieren.  
     - Führen Sie den folgenden PowerShell-Befehl auf dem Server aus, um das für die Authentifizierung verwendete Zertifikat zurückzusetzen:
@@ -897,6 +916,22 @@ Dieser Fehler tritt auf, weil die Azure-Dateisynchronisierung keine HTTP-Umleitu
 | **Korrektur erforderlich** | Nein |
 
 Dieser Fehler tritt auf, wenn ein Datenerfassungsvorgang das Timeout überschreitet. Dieser Fehler kann ignoriert werden, wenn die Synchronisierung fortgesetzt wird („AppliedItemCount“ ist größer als 0). Informationen finden Sie unter [Wie überwache ich den Fortschritt einer aktuellen Synchronisierungssitzung?](#how-do-i-monitor-the-progress-of-a-current-sync-session)
+
+<a id="-2134375814"></a>**Fehler bei der Synchronisierung, da der Serverendpunktpfad auf dem Server nicht gefunden werden kann.**  
+
+| | |
+|-|-|
+| **HRESULT** | 0x80c8027a |
+| **HRESULT (dezimal)** | -2134375814 |
+| **Fehlerzeichenfolge** | ECS_E_SYNC_ROOT_DIRECTORY_NOT_FOUND |
+| **Korrektur erforderlich** | Ja |
+
+Dieser Fehler tritt auf, wenn das als Serverendpunktpfad verwendete Verzeichnis umbenannt oder gelöscht wurde. Wenn das Verzeichnis umbenannt wurde, benennen Sie es wieder in den ursprünglichen Namen um, und starten Sie den Speichersynchronisierungs-Agent (FileSyncSvc) neu.
+
+Wenn das Verzeichnis gelöscht wurde, führen Sie die folgenden Schritte aus, um den vorhandenen Serverendpunkt zu entfernen und einen neuen Serverendpunkt mit einem neuen Pfad zu erstellen:
+
+1. Entfernen Sie den Serverendpunkt in der Synchronisierungsgruppe, indem Sie die Schritte unter [Entfernen eines Serverendpunkts](./storage-sync-files-server-endpoint.md#remove-a-server-endpoint) ausführen.
+2. Erstellen Sie einen neuen Serverendpunkt in der Synchronisierungsgruppe, indem Sie die Schritte unter [Hinzufügen eines Serverendpunkts](https://docs.microsoft.com/azure/storage/files/storage-sync-files-server-endpoint#add-a-server-endpoint) ausführen.
 
 ### <a name="common-troubleshooting-steps"></a>Allgemeine Schritte zur Problembehandlung
 <a id="troubleshoot-storage-account"></a>**Überprüfen Sie, ob das Speicherkonto vorhanden ist.**  

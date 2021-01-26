@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2017
 ms.author: damendo
-ms.openlocfilehash: 5342c4505bd300d1287acba246ca59610f2697bd
-ms.sourcegitcommit: 89c0482c16bfec316a79caa3667c256ee40b163f
+ms.openlocfilehash: 0d0597c2df8731171505a090de6959d8a112c004
+ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97858636"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98569979"
 ---
 # <a name="introduction-to-resource-troubleshooting-in-azure-network-watcher"></a>Einführung in die Problembehandlung bei Ressourcen in Azure Network Watcher
 
@@ -209,7 +209,9 @@ Elapsed Time            330 sec
 ```
 
 ## <a name="considerations"></a>Überlegungen 
+* Es kann jeweils nur ein Problembehandlungsvorgang pro Abonnement ausgeführt werden. Warten Sie, bis der vorherige Vorgang beendet wurde, bevor Sie einen weiteren Problembehandlungsvorgang starten. Das Auslösen weiterer Vorgänge vor der Fertigstellung eines vorherigen Vorgangs führt zu Fehlern bei nachfolgenden Vorgängen. 
 * CLI-Fehler: Wenn Sie Azure CLI verwenden, um den Befehl auszuführen, müssen sich das VPN Gateway und das Speicherkonto in derselben Ressourcengruppe befinden. Kunden mit den Ressourcen in verschiedenen Ressourcengruppen können stattdessen PowerShell oder das Azure-Portal verwenden.  
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

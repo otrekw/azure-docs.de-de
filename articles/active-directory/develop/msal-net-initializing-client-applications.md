@@ -13,12 +13,12 @@ ms.date: 09/18/2019
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: fd836afd6b8574be71ad22d26d67f49971834a88
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: 6616b0573019703f287d3be521569f5953aeb032
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98064724"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98600284"
 ---
 # <a name="initialize-client-applications-using-msalnet"></a>Initialisieren von Clientanwendungen mithilfe von MSAL.NET
 Dieser Artikel beschreibt die Initialisierung öffentlicher und vertraulicher Clientanwendungen mithilfe der Microsoft Authentication Library für .NET (MSAL.NET).  Um mehr über die Clientanwendungstypen und Anwendungskonfigurationsoptionen zu erfahren, lesen Sie die [Übersicht](msal-client-applications.md).
@@ -166,3 +166,12 @@ app = PublicClientApplicationBuilder.Create(clientId)
         .WithB2CAuthority("https://fabrikamb2c.b2clogin.com/tfp/{tenant}/{PolicySignInSignUp}")
         .Build();
 ```
+
+## <a name="next-steps"></a>Nächste Schritte
+
+Nachdem Sie die Clientanwendung initialisiert haben, müssen Sie als Nächstes die Unterstützung für die Benutzeranmeldung, den autorisierten API-Zugriff oder beides hinzufügen.
+
+Unsere Anwendungsszenariodokumentation enthält Anleitungen zum Anmelden eines Benutzers und zum Abrufen eines Zugriffstokens für den Zugriff auf eine API im Namen dieses Benutzers:
+
+- [Web-App für Benutzeranmeldungen: An- und Abmeldung](scenario-web-app-sign-user-sign-in.md)
+- [Web-App, die Web-APIs aufruft: Abrufen eines Tokens](scenario-web-app-call-api-acquire-token.md)

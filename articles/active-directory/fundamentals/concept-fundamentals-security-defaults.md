@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy20q4
-ms.openlocfilehash: 9c912b7122a40ae39bcbb703e1387af25fff2bc8
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: efaf6060c0b09e071546038d9e30f2c8065059e7
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97029905"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98600138"
 ---
 # <a name="what-are-security-defaults"></a>Was sind Sicherheitsstandards?
 
@@ -76,7 +76,7 @@ Wir gehen häufig davon aus, dass nur Administratorkonten durch eine mehrstufige
 
 Nachdem die Angreifer Zugang erhalten haben, können sie im Namen des ursprünglichen Kontoinhabers Zugriff auf privilegierten Informationen anfordern. Sie können sogar das gesamte Verzeichnis herunterladen, um einen Phishing-Angriff auf Ihr gesamtes Unternehmen durchzuführen. 
 
-Eine gängige Methode zur Verbesserung des Schutzes für alle Benutzer besteht in einer strengeren Kontoüberprüfung, beispielsweise durch eine mehrstufige Authentifizierung (MFA). Nachdem die Benutzer die MFA-Registrierung abgeschlossen haben, werden sie bei Bedarf zu einer zusätzlichen Authentifizierung aufgefordert. Diese Funktion schützt alle Anwendungen, die bei Azure AD registriert sind (einschließlich SaaS-Anwendungen).
+Eine gängige Methode zur Verbesserung des Schutzes für alle Benutzer besteht in einer strengeren Kontoüberprüfung, beispielsweise durch eine mehrstufige Authentifizierung (MFA). Nachdem die Benutzer die MFA-Registrierung abgeschlossen haben, werden sie bei Bedarf zu einer zusätzlichen Authentifizierung aufgefordert. Benutzer werden in erster Linie aufgefordert, wenn sie sich mit einem neuen Gerät oder einer neuen Anwendung authentifizieren oder wenn sie kritische Rollen und Aufgaben ausführen. Diese Funktion schützt alle Anwendungen, die bei Azure AD registriert sind (einschließlich SaaS-Anwendungen).
 
 ### <a name="blocking-legacy-authentication"></a>Blockieren der Legacyauthentifizierung
 

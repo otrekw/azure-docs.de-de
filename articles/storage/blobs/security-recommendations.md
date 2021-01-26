@@ -7,15 +7,15 @@ author: tamram
 ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
-ms.date: 01/12/2021
+ms.date: 01/13/2021
 ms.author: tamram
 ms.custom: security-recommendations
-ms.openlocfilehash: 55c4fa00cfd20a83e65a3d57c6020991734f9d9f
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: e3cfede444b65ee6990afd006d3b174d65f9cfad
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98132476"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98179162"
 ---
 # <a name="security-recommendations-for-blob-storage"></a>Sicherheitsempfehlungen für Blob Storage
 
@@ -35,7 +35,7 @@ Azure Security Center analysiert in regelmäßigen Abständen den Sicherheitssta
 | Aktivieren des vorläufigen Löschens für Container | Das vorläufige Löschen für Container ermöglicht es Ihnen, einen Container nach dem Löschen wiederherzustellen. Weitere Informationen zum vorläufigen Löschen für Container finden Sie unter [Vorläufiges Löschen für Container (Vorschau)](./soft-delete-container-overview.md). | - |
 | Sperren eines Speicherkontos, um eine versehentliche Kontolöschung zu verhindern | Sie können eine Azure Resource Manager-Ressource (z. B. ein Abonnement, eine Ressourcengruppe oder ein Speicherkonto) sperren, um zu verhindern, dass andere Benutzer in Ihrer Organisation sie versehentlich löschen oder ändern. Durch das Sperren eines Speicherkontos wird nicht verhindert, dass Daten in diesem Konto gelöscht werden. Dadurch wird nur verhindert, dass das Konto selbst gelöscht wird. Weitere Informationen finden Sie unter [Sperren von Ressourcen, um unerwartete Änderungen zu verhindern](../../azure-resource-manager/management/lock-resources.md).
 | Speichern unternehmenskritischer Daten in unveränderlichen Blobs | Konfigurieren Sie Richtlinien zur gesetzlichen Aufbewahrungspflicht und zeitbasierten Aufbewahrung für das Speichern von Blobdaten in einem WORM-Zustand (Write Once, Read Many). Unveränderlich gespeicherte Blobs können während des Aufbewahrungszeitraums gelesen, aber nicht geändert oder gelöscht werden. Weitere Informationen finden Sie unter [Speichern unternehmenskritischer Blobdaten mit unveränderlichem Speicher](storage-blob-immutable-storage.md). | - |
-| Vorschreiben einer sicheren Übertragung (HTTPS) in das Speicherkonto | ??? | - |
+| Vorschreiben einer sicheren Übertragung (HTTPS) in das Speicherkonto | Wenn Sie eine sichere Übertragung für ein Speicherkonto benötigen, müssen alle Anforderungen an das Speicherkonto über HTTPS erfolgen. Anforderungen über HTTP werden abgelehnt. Microsoft empfiehlt, immer eine sichere Übertragung für sämtliche Speicherkonten zu erzwingen. Weitere Informationen finden Sie unter [Erzwingen einer sicheren Übertragung für sichere Verbindungen](../common/storage-require-secure-transfer.md). | - |
 | Beschränken von SAS-Token (Shared Access Signature) auf HTTPS-Verbindungen | Durch das verbindliche Verwenden von HTTPS, wenn ein Client ein SAS-Token für den Zugriff auf Blobdaten nutzt, kann das Risiko eines Lauschangriffs reduziert werden. Weitere Informationen finden Sie unter [Gewähren von eingeschränktem Zugriff auf Azure Storage-Ressourcen mithilfe von SAS (Shared Access Signature)](../common/storage-sas-overview.md). | - |
 
 ## <a name="identity-and-access-management"></a>Identitäts- und Zugriffsverwaltung

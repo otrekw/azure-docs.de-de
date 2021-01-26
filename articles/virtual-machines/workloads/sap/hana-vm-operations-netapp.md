@@ -13,15 +13,15 @@ ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 09/28/2020
+ms.date: 01/18/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 511801962d07e5fb99000b2fc19adce2489b46d3
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 2c7ea804e9e85578076969f0ec6bdf90b571bb75
+ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94967481"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98570081"
 ---
 # <a name="nfs-v41-volumes-on-azure-netapp-files-for-sap-hana"></a>NFS v4.1-Volumes unter Azure NetApp Files für SAP HANA
 
@@ -69,10 +69,10 @@ Der maximale Durchsatz für eine LIF und eine einzelne Linux-Sitzung liegt zwisc
 | 1 TB | 16 MB/s | 64 MB/s | 128 MB/s |
 | 2 TB | 32 MB/s | 128 MB/s | 256 MB/s |
 | 4 TB | 64 MB/s | 256 MB/s | 512 MB/s |
-| 10 TB | 160 MB/s | 640 MB/s | 1.280 MB/s |
-| 15 TB | 240 MB/s | 960 MB/s | 1.400 MB/s |
-| 20 TB | 320 MB/s | 1.280 MB/s | 1.400 MB/s |
-| 40 TB | 640 MB/s | 1.400 MB/s | 1.400 MB/s |
+| 10 TB | 160 MB/s | 640 MB/s | 1\.280 MB/s |
+| 15 TB | 240 MB/s | 960 MB/s | 1\.400 MB/s |
+| 20 TB | 320 MB/s | 1\.280 MB/s | 1\.400 MB/s |
+| 40 TB | 640 MB/s | 1\.400 MB/s | 1\.400 MB/s |
 
 Es ist wichtig zu wissen, dass die Daten im Speicher-Back-End in die gleichen SSDs geschrieben werden. Das Leistungskontingent aus dem Kapazitätspool wurde erstellt, um die Umgebung verwalten zu können.
 Die Speicher-KPIs sind für alle HANA-Datenbankgrößen gleich. In fast allen Fällen spiegelt diese Annahme nicht die Realität und die Kundenerwartung wider. Die Größe von HANA-Systemen bedeutet nicht notwendigerweise, dass ein kleines System einen niedrigen und ein großes System einen hohen Speicherdurchsatz erfordert. Im Allgemeinen sind jedoch für größere HANA-Datenbankinstanzen höhere Durchsatzanforderungen zu erwarten. Infolge der Dimensionierungsregeln von SAP für die zugrunde liegende Hardware bieten solch größere HANA-Instanzen auch mehr CPU-Ressourcen und eine höhere Parallelität in Aufgaben wie dem Laden von Daten nach einem Neustart einer Instanz. Daher sollten die Volumegrößen den Erwartungen und Anforderungen der Kunden angepasst werden. Sie sollten nicht nur durch reine Kapazitätsanforderungen bestimmt werden.

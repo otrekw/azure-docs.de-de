@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 12/09/2020
+ms.date: 01/15/2020
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: a1307aa19c66e3f6fcb71f677e6c67551d2a01f9
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: f799ed5c18537b862a4971075ae9107b7a722fdd
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96928323"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251504"
 ---
 # <a name="frequently-asked-questions-faq-about-the-microsoft-authenticator-app"></a>Häufig gestellte Fragen zur Microsoft Authenticator-App
 
@@ -33,13 +33,17 @@ Die Microsoft Authenticator-App ersetzt die Azure Authenticator-App und ist die 
 
 **A:** Durch das Registrieren eines Geräts erhält Ihr Gerät Zugriff auf die Dienste Ihrer Organisation, ohne dass Sie Ihrer Organisation erlauben, auf Ihr Gerät zuzugreifen.
 
-## <a name="too-many-app-permissions"></a>Zu viele App-Berechtigungen
+### <a name="too-many-app-permissions"></a>Zu viele App-Berechtigungen
 
 **F:** Warum fordert die App so viele Berechtigungen an?
 
-**A:** Hier ist die vollständige Liste der Berechtigungen, die möglicherweise erforderlich sind, sowie Hinweise zu deren Verwendung in der App. Die jeweils angezeigten Berechtigungen hängen vom Typ Ihres Telefons ab.
+**A:** Hier ist die vollständige Liste der Berechtigungen, die möglicherweise erforderlich sind, sowie Hinweise zu deren Verwendung in der App. Die jeweils angezeigten Berechtigungen hängen vom Typ Ihres Telefons ab. Manchmal möchte Ihre Organisation Ihren **Standort** kennen, bevor sie Ihnen Zugriff auf bestimmte Ressourcen gewährt. Diese Berechtigung wird von der App nur angefordert, wenn Ihre Organisation über eine Richtlinie verfügt, die einen Standort erfordert.
 
-- **Speicherort:** Manchmal möchte Ihre Organisation Ihren Standort kennen, bevor sie Ihnen Zugriff auf bestimmte Ressourcen gewährt. Diese Berechtigung wird von der App nur angefordert, wenn Ihre Organisation über eine Richtlinie verfügt, die einen Standort erfordert. 
+### <a name="error-adding-account"></a>Fehler beim Hinzufügen des Kontos
+
+**F:** Wenn ich versuche, mein Konto hinzuzufügen, erhalte ich etwa folgende Fehlermeldung: „Das Konto, das Sie hinzufügen möchten, ist zu diesem Zeitpunkt ungültig. Wenden Sie sich an Ihren Administrator, um dieses Problem zu beheben (Eindeutigkeitsüberprüfung).“ Wie sollte ich vorgehen?
+
+**A:** Wenden Sie sich an Ihren Administrator, und informieren Sie ihn darüber, dass Sie aufgrund eines Eindeutigkeitsüberprüfungsproblems am Hinzufügen Ihres Kontos zu einem Authentifikator gehindert wurden. Sie müssen Ihren Anmeldebenutzernamen angeben, damit Ihr Administrator Sie in Ihrer Organisation suchen kann.
 
 ### <a name="legacy-apns-support-deprecated"></a>Unterstützung für ältere APNs als veraltet markiert
 

@@ -13,16 +13,16 @@ ms.topic: end-user-help
 ms.date: 05/28/2020
 ms.author: curtand
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: c9d8bb85aac87503ca641f6633668a6dc582882f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 07303a0b0b3007ade9adb90af7397855a5014cc0
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90056080"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98179421"
 ---
 # <a name="manage-app-passwords-for-two-step-verification"></a>Verwalten von App-Kennwörtern für die zweistufige Überprüfung
 
->[!Important]
+> [!Important]
 >Möglicherweise gestattet Ihr Administrator die Verwendung von App-Kennwörtern nicht. Wenn die Option **App-Kennwörter** nicht angezeigt wird, steht sie in Ihrer Organisation nicht zur Verfügung.
 
 Wenn Sie App-Kennwörter verwenden, müssen Sie unbedingt Folgendes beachten:
@@ -66,7 +66,7 @@ Sie können App-Kennwörter auf der Seite **Zusätzliche Sicherheitsüberprüfun
 
 4. Stellen Sie auf der Seite **App-Kennwörter** sicher, dass Ihre App aufgelistet ist.
 
-     ![Seite „App-Kennwörter“ mit in der Liste angezeigter neuer App](media/multi-factor-authentication-end-user-app-passwords/mfa-app-passwords-page-with-new-password.png)  
+    ![Seite „App-Kennwörter“ mit in der Liste angezeigter neuer App](media/multi-factor-authentication-end-user-app-passwords/mfa-app-passwords-page-with-new-password.png)  
 
 5. Öffnen Sie die App, für die Sie das App-Kennwort erstellt haben (z. B. Outlook 2010), und fügen Sie dann das App-Kennwort ein, wenn Sie dazu aufgefordert werden. Dies sollte nur einmal pro App erforderlich sein.
 
@@ -74,7 +74,7 @@ Sie können App-Kennwörter auf der Seite **Zusätzliche Sicherheitsüberprüfun
 
 1. Wählen Sie auf der Seite **App-Kennwörter** die Option **Löschen** neben dem zu löschenden App-Kennwort aus.
 
-   ![Löschen eines App-Kennworts](media/multi-factor-authentication-end-user-app-passwords/mfa-app-passwords-page-delete.png)
+   ![Screenshot des Löschens eines App-Kennworts auf der Seite „App-Kennwörter“](media/multi-factor-authentication-end-user-app-passwords/mfa-app-passwords-page-delete.png)
 
 2. Klicken Sie auf **Ja**, um das Löschen des Kennworts zu bestätigen, und klicken Sie dann auf **Schließen**.
 
@@ -86,35 +86,35 @@ Wenn Sie die zweistufige Überprüfung mit Ihrem Geschäfts-, Schul- oder Unikon
 
 ### <a name="to-create-app-passwords-using-the-office-365-portal"></a>So erstellen Sie App-Kennwörter im Office 365-Portal
 
-1. Melden Sie sich bei Ihrem Geschäfts-, Schul- oder Unikonto an, wechseln Sie zur Seite [Mein Konto](https://portal.office.com), wählen Sie **Sicherheit und Datenschutz** aus, und erweitern Sie dann **Zusätzliche Sicherheitsüberprüfung**.
+1. Melden Sie sich bei Ihrem Geschäfts-, Schul- oder Unikonto an, navigieren Sie zur Seite [Mein Konto](https://myaccount.microsoft.com), und wählen Sie **Sicherheitsinformationen** aus.
 
-    ![Office-Portal mit erweitertem Bereich „Zusätzliche Sicherheitsüberprüfung“](media/multi-factor-authentication-end-user-app-passwords/mfa-app-passwords-o365-my-account-page.png)
+    ![Office-Portal mit Registerkarte „Sicherheitsinformationen“](media/multi-factor-authentication-end-user-app-passwords/mfa-security-info.png)
 
-2. Klicken Sie auf den Text **App-Kennwörter erstellen und verwalten**, um die Seite **App-Kennwörter** zu öffnen.
+2. Wählen Sie **Methode hinzufügen** und anschließend in der Dropdownliste **App-Kennwort** aus, und klicken Sie dann auf **Hinzufügen**.
 
-    ![Seite „App-Kennwörter“ mit hervorgehobener Registerkarte „App-Kennwörter“](media/multi-factor-authentication-end-user-app-passwords/mfa-app-passwords-page.png)
+    ![Seite „Sicherheitsinformationen“ mit der Dropdownliste „Methode hinzufügen“](media/multi-factor-authentication-end-user-app-passwords/mfa-add-method.png)
 
-3. Wählen Sie **Erstellen** aus, geben Sie den Namen der App ein, für die das App-Kennwort benötigt wird, und klicken Sie dann auf **Weiter**.
+3. Geben Sie einen Namen für das App-Kennwort ein, und wählen Sie **Weiter** aus.
 
-    ![Erstellen Sie die Seite mit den App-Kennwörtern, mit dem Namen der App, die das Kennwort benötigt.](media/multi-factor-authentication-end-user-app-passwords/mfa-create-app-password-page.png)
+    ![Seite „App-Kennwörter erstellen“ mit dem Namen des App-Kennworts](media/multi-factor-authentication-end-user-app-passwords/mfa-enter-app-password-name.png)
 
-4. Kopieren Sie das Kennwort von der Seite **Ihr App-Kennwort**, und wählen Sie dann **Schließen** aus.
+4. Kopieren Sie das Kennwort von der Seite **App-Kennwort**, und wählen Sie dann **Fertig** aus.
 
-    ![Ihre Seite „App-Kennwort“ mit dem Kennwort für Ihre angegebene App.](media/multi-factor-authentication-end-user-app-passwords/mfa-your-app-password-page.png)
+    ![Seite „App-Kennwort“ mit dem neu erstellten App-Kennwort](media/multi-factor-authentication-end-user-app-passwords/mfa-copy-app-password.png)
 
-5. Stellen Sie auf der Seite **App-Kennwörter** sicher, dass Ihre App aufgelistet ist.
+5. Überprüfen Sie auf der Seite **Sicherheitsinformationen**, ob Ihr App-Kennwort aufgelistet ist.
 
-     ![Seite „App-Kennwörter“ mit in der Liste angezeigter neuer App](media/multi-factor-authentication-end-user-app-passwords/mfa-app-passwords-page-with-new-password.png)  
+    ![Seite „Sicherheitsinformationen“ mit dem neuen App-Kennwort in der Liste](media/multi-factor-authentication-end-user-app-passwords/mfa-verify-app-password.png)  
 
-6. Öffnen Sie die App, für die Sie das App-Kennwort erstellt haben (z. B. Outlook 2010), und fügen Sie dann das App-Kennwort ein, wenn Sie dazu aufgefordert werden. Dies sollte nur einmal pro App erforderlich sein.
+6. Öffnen Sie die App, für die Sie das App-Kennwort erstellt haben (z. B. Outlook 2016), und fügen Sie das App-Kennwort ein, wenn Sie dazu aufgefordert werden. Dies sollte nur einmal pro App erforderlich sein.
 
-### <a name="to-delete-app-passwords-using-the-app-passwords-page"></a>So löschen Sie App-Kennwörter über die Seite „App-Kennwörter“
+### <a name="to-delete-app-passwords-using-the-security-info-page"></a>So löschen Sie App-Kennwörter auf der Seite „Sicherheitsinformationen“
 
-1. Wählen Sie auf der Seite **App-Kennwörter** die Option **Löschen** neben dem zu löschenden App-Kennwort aus.
+1. Wählen Sie auf der Seite **Sicherheitsinformationen** die Option **Löschen** neben dem zu löschenden App-Kennwort aus.
 
-   ![Löschen eines App-Kennworts](media/multi-factor-authentication-end-user-app-passwords/mfa-app-passwords-page-delete.png)
+   ![Screenshot des Löschens eines App-Kennworts auf der Seite „Sicherheitsinformationen“](media/multi-factor-authentication-end-user-app-passwords/mfa-delete-app-password.png)
 
-2. Wählen Sie **Ja** im Bestätigungsfeld und dann **Schließen** aus.
+2. Wählen Sie im Bestätigungsfeld **OK** aus.
 
     Das App-Kennwort wurde erfolgreich gelöscht.
 

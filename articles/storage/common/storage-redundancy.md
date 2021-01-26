@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 01/08/2021
+ms.date: 01/19/2021
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 60ae6eb3142f8898f760027d37881ded8261f571
-ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
+ms.openlocfilehash: 83a4a2aa8328a6e3de9eab44bbf19fc76921b128
+ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98108091"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98573354"
 ---
 # <a name="azure-storage-redundancy"></a>Azure Storage-Redundanz
 
@@ -35,11 +35,15 @@ Daten in einem Azure Storage-Konto werden immer dreimal in der primären Region 
 
 ### <a name="locally-redundant-storage"></a>Lokal redundanter Speicher
 
-Bei lokal redundantem Speicher (LRS) werden die Daten innerhalb eines einzelnen physischen Standorts in der primären Region repliziert. LRS stellt eine Dauerhaftigkeit von mindestens 99,999999999 % (11 Neunen) für Objekte in einem bestimmten Jahr bereit.
+Bei lokal redundantem Speicher (LRS) werden die Daten innerhalb eines einzelnen Rechenzentrums in der primären Region repliziert. LRS stellt eine Dauerhaftigkeit von mindestens 99,999999999 % (11 Neunen) für Objekte in einem bestimmten Jahr bereit.
 
 LRS ist die kostengünstigste Redundanzoption und bietet im Vergleich zu anderen Optionen die geringste Dauerhaftigkeit. LRS schützt Ihre Daten vor Serverrack- und Laufwerkfehlern. Bei einem Katastrophenfall in einem Rechenzentrum (Feuer, Überschwemmung usw.) gehen jedoch eventuell alle Replikate in einem Speicherkonto, das LRS verwendet, verloren oder können nicht mehr wiederhergestellt werden. Zur Minimierung dieses Risikos wird empfohlen, [zonenredundanten Speicher](#zone-redundant-storage) (ZRS), [georedundanten Speicher](#geo-redundant-storage) (GRS) oder [geozonenredundanten Speicher](#geo-zone-redundant-storage) (GZRS) zu verwenden.
 
 Schreibanforderungen an ein Speicherkonto, das LRS verwendet, erfolgen synchron. Die Schreibanforderung wird erst dann erfolgreich zurückgegeben, nachdem die Daten in alle drei Replikate geschrieben wurden.
+
+Das folgende Diagramm zeigt, wie Ihre Daten mit LRS innerhalb eines einzelnen Rechenzentrums repliziert werden:
+
+:::image type="content" source="media/storage-redundancy/locally-redundant-storage.png" alt-text="Diagramm der Datenreplikation mit LRS innerhalb eines einzelnen Rechenzentrums":::
 
 LRS ist eine gute Wahl für die folgenden Szenarien:
 
@@ -54,7 +58,11 @@ Auf Ihre Daten kann mit ZRS weiterhin von Lese- und Schreibvorgängen zugegriffe
 
 Schreibanforderungen an ein Speicherkonto, das ZRS verwendet, erfolgen synchron. Die Schreibanforderung wird erst dann erfolgreich zurückgegeben, nachdem die Daten in alle Replikate in den drei Verfügbarkeitszonen geschrieben wurden.
 
-Microsoft empfiehlt die Verwendung von ZRS in der primären Region für Szenarien, die Konsistenz, Dauerhaftigkeit und Hochverfügbarkeit erfordern. Außerdem wird die Verwendung von ZRS empfohlen, wenn die Datenreplikation einer Anwendung aufgrund von Datengovernanceanforderungen auf ein einzelnes Land oder auf eine einzelne Region beschränkt werden soll.
+Microsoft empfiehlt die Verwendung von ZRS in der primären Region für Szenarien, die Konsistenz, Dauerhaftigkeit und Hochverfügbarkeit erfordern. ZRS wird auch zum Einschränken der Replikation von Daten auf ein Land oder eine Region empfohlen, um die Anforderungen an die Datengovernance zu erfüllen.
+
+Das folgende Diagramm zeigt, wie Ihre Daten mit ZRS über Verfügbarkeitszonen in der primären Region hinweg repliziert werden:
+
+:::image type="content" source="media/storage-redundancy/zone-redundant-storage.png" alt-text="Diagramm der Datenreplikation mit ZRS in der primären Region":::
 
 ZRS bietet hervorragende Leistung, geringe Latenz und Resilienz für Ihre Daten, wenn diese vorübergehend nicht verfügbar sind. ZRS selbst kann Ihre Daten jedoch nicht vor einem regionalen Notfall schützen, bei dem mehrere Zonen dauerhaft betroffen sind. Für den Schutz vor regionalen Notfällen empfiehlt Microsoft die Verwendung von [geozonenredundantem Speicher](#geo-zone-redundant-storage) (GZRS), der ZRS in der primären Region verwendet und die Daten in eine sekundäre Region georepliziert.
 
@@ -97,11 +105,19 @@ Bei georedundantem Speicher (GRS) werden die Daten synchron dreimal innerhalb ei
 
 Ein Schreibvorgang wird zunächst an den primären Speicherort übertragen und mit LRS repliziert. Anschließend wird das Update asynchron in die sekundäre Region repliziert. Wenn Daten in den sekundären Speicherort geschrieben werden, werden sie dort auch mit LRS repliziert.
 
+Das folgende Diagramm zeigt, wie Ihre Daten mit GRS oder RA-GRS repliziert werden:
+
+:::image type="content" source="media/storage-redundancy/geo-redundant-storage.png" alt-text="Diagramm der Datenreplikation mit GRS oder RA-GRS":::
+
 ### <a name="geo-zone-redundant-storage"></a>Geozonenredundanter Speicher
 
 Mit geozonenredundantem Speicher (GZRS) wird die Hochverfügbarkeit durch Redundanz über Verfügbarkeitszonen hinweg mit dem Schutz vor regionalen Ausfällen kombiniert, der durch Georeplikation geboten wird. Daten in einem GZRS-Speicherkonto werden über drei [Azure-Verfügbarkeitszonen](../../availability-zones/az-overview.md) in die primäre Region kopiert sowie auch in eine sekundäre geografische Region zum Schutz vor regionalen Notfällen. Microsoft empfiehlt die Verwendung von GZRS für Anwendungen, die maximale Konsistenz, Dauerhaftigkeit und Verfügbarkeit, hervorragende Leistung und Resilienz bei der Notfallwiederherstellung erfordern.
 
 Mit einem GZRS-Speicherkonto können Sie weiterhin Daten lesen und schreiben, wenn eine Verfügbarkeitszone nicht verfügbar oder nicht wiederherstellbar ist. Außerdem sind Ihre Daten auch bei einem regionalen Komplettausfall oder einem Notfall, nach dem die primäre Region nicht mehr wiederhergestellt werden kann, beständig gespeichert. GZRS ist darauf ausgelegt, für Objekte eine Dauerhaftigkeit von mindestens 99,99999999999999 Prozent (16 Neunen) in einem bestimmten Jahr bereitzustellen.
+
+Das folgende Diagramm zeigt, wie Ihre Daten mit GZRS oder RA-GZRS repliziert werden:
+
+:::image type="content" source="media/storage-redundancy/geo-zone-redundant-storage.png" alt-text="Diagramm der Datenreplikation mit GZRS oder RA-GZRS":::
 
 Nur Speicherkonten vom Typ „Allgemein v2“ unterstützen GZRS und RA-GZRS. Weitere Informationen zu Arten von Speicherkontotypen finden Sie unter [Übersicht über Azure Storage-Konten](storage-account-overview.md). GZRS und RA-GZRS unterstützen Blockblobs, Seitenblobs (mit Ausnahme von VHD-Datenträgern), Dateien, Tabellen und Warteschlangen.
 
@@ -155,7 +171,7 @@ In der folgenden Tabelle werden die Schlüsselparameter für die einzelnen Redun
 | Prozentuale Dauerhaftigkeit von Objekten über ein bestimmtes Jahr | mindestens 99,999999999 % (11 mal die 9) | mindestens 99,9999999999 % (12 mal die 9) | mindestens 99,99999999999999 % (16 mal die 9) | mindestens 99,99999999999999 % (16 mal die 9) |
 | Verfügbarkeit für Leseanforderungen | mindestens 99,9 % (99 % bei der kalten Zugriffsebene) | mindestens 99,9 % (99 % bei der kalten Zugriffsebene) | mindestens 99,9 % (99 % bei der kalten Zugriffsebene) für GRS<br /><br />mindestens 99,99 % (99,9 % bei der kalten Zugriffsebene) für RA-GRS | mindestens 99,9 % (99 % bei der kalten Zugriffsebene) für GZRS<br /><br />mindestens 99,99 % (99,9 % bei der kalten Zugriffsebene) für RA-GZRS |
 | Verfügbarkeit für Schreibanforderungen | mindestens 99,9 % (99 % bei der kalten Zugriffsebene) | mindestens 99,9 % (99 % bei der kalten Zugriffsebene) | mindestens 99,9 % (99 % bei der kalten Zugriffsebene) | mindestens 99,9 % (99 % bei der kalten Zugriffsebene) |
-| Anzahl von Datenkopien, die auf separaten Knoten aufbewahrt werden.                             | 3   | 3   | 6   | 6      |
+| Die Anzahl der Datenkopien, die auf separaten Knoten gespeichert werden. | Drei Kopien innerhalb einer Region | Drei Kopien in separaten Verfügbarkeitszonen innerhalb einer einzelnen Region | Sechs Kopien insgesamt, darunter drei in der primären Region und drei in der sekundären Region | Sechs Kopien insgesamt, darunter drei über separate Verfügbarkeitszonen in der primären Region und drei lokal redundante Kopien in der sekundären Region |
 
 ### <a name="durability-and-availability-by-outage-scenario"></a>Dauerhaftigkeit und Verfügbarkeit nach Ausfallszenario
 

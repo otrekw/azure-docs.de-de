@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 12/18/2020
-ms.openlocfilehash: b62621a77f383b5c6413e7c187e7ba3d60beabad
-ms.sourcegitcommit: a89a517622a3886b3a44ed42839d41a301c786e0
+ms.openlocfilehash: 5e608d38ff70d51b569088629a6d80cb08e74ed4
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97732086"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251623"
 ---
 # <a name="synonyms-in-azure-cognitive-search"></a>Synonyme in der kognitiven Azure-Suche
 
@@ -21,9 +21,9 @@ Mit Synonymzuordnungen können Sie entsprechende Begriffe zuordnen, um den Berei
 
 ## <a name="create-synonyms"></a>Erstellen von Synonymen
 
-Eine Synonymzuordnung ist ein Objekt, das einmalig erstellt und von vielen Indizes verwendet werden kann. Die [Dienstebene](search-limits-quotas-capacity.md#synonym-limits) bestimmt, wie viele Synonymzuordnungen Sie erstellen können, von 3 Synonymzuordnungen für die Tarife „Free“ und „Basic“, bis zu 20 für die Standard-Tarife. 
+Eine Synonymzuordnung ist ein Objekt, das einmalig erstellt und von vielen Indizes verwendet werden kann. Die [Dienstebene](search-limits-quotas-capacity.md#synonym-limits) bestimmt, wie viele Synonymzuordnungen Sie erstellen können, von drei Synonymzuordnungen für die Tarife „Free“ und „Basic“ bis zu 20 für die Standard-Tarife. 
 
-Sie können mehrere Synonymzuordnungen für verschiedene Sprachen erstellen, z. B. englische und französische Versionen, oder Lexika, wenn Ihr Inhalt technische oder unbekannte Terminologie enthält. Sie können zwar mehrere Synonymzuordnungen erstellen, ein Feld kann derzeit aber nur eine davon verwenden.
+Sie können mehrere Synonymzuordnungen für verschiedene Sprachen erstellen, z. B. englische und französische Versionen, oder Lexika, wenn Ihr Inhalt technische oder unbekannte Terminologie enthält. Sie können zwar mehrere Synonymzuordnungen in Ihrem Suchdienst erstellen, ein Feld kann derzeit aber nur eine davon verwenden.
 
 Eine Synonymzuordnung besteht aus Name, Format und Regeln, die als Synonymzuordnungseinträge fungieren. Das einzige unterstützte Format ist `solr`, und das `solr`-Format bestimmt die Regelkonstruktion.
 
@@ -50,7 +50,7 @@ Zuordnungsregeln entsprechen den Open-Source-Synonymfilterspezifikation von Apac
 
 Jede Regel muss durch das Zeilenumbruchzeichen (`\n`) von anderen Regeln getrennt werden. Sie können bis zu 5.000 Regeln pro Synonymzuordnung in einem kostenlosen Dienst und 20.000 Regeln pro Zuordnung in anderen Tarifen definieren. Jede Regel kann bis zu 20 Erweiterungen (oder Elemente in einer Regel) aufweisen. Weitere Informationen finden Sie unter [Synonymeinschränkungen](search-limits-quotas-capacity.md#synonym-limits).
 
-Abfrageparser wandeln alle Begriffe in Großbuchstaben oder gemischter Groß-/Kleinschreibung in Kleinbuchstaben um. Wenn Sie jedoch Sonderzeichen in der Zeichenfolge beibehalten möchten, wie z. B. ein Komma oder einen Gedankenstrich, fügen Sie beim Erstellen der Synonymzuordnung die entsprechenden Escape-Zeichen hinzu. 
+Abfrageparser wandeln alle Begriffe in Großbuchstaben oder gemischter Groß-/Kleinschreibung in Kleinbuchstaben um. Wenn Sie jedoch Sonderzeichen in der Zeichenfolge beibehalten möchten, wie z. B. ein Komma oder einen Gedankenstrich, fügen Sie beim Erstellen der Synonymzuordnung die entsprechenden Escape-Zeichen hinzu.
 
 ### <a name="equivalency-rules"></a>Äquivalenzregeln
 
@@ -85,7 +85,7 @@ Bei einer expliziten Zuordnung wird eine Abfrage nach `Washington`, `Wash.` oder
 
 ### <a name="escaping-special-characters"></a>Verwenden von Escapezeichen für Sonderzeichen
 
-Wenn Sie Synonyme definieren müssen, die Kommas oder andere Sonderzeichen enthalten, können Sie diese wie in diesem Beispiel mit einem umgekehrten Schrägstrich als Escapezeichen versehen:
+Synonyme werden während der Abfrageverarbeitung analysiert. Wenn Sie Synonyme definieren müssen, die Kommas oder andere Sonderzeichen enthalten, können Sie diese wie in diesem Beispiel mit einem umgekehrten Schrägstrich als Escapezeichen versehen:
 
 ```json
 {
@@ -143,11 +143,15 @@ POST /indexes?api-version=2020-06-30
 
 Das Hinzufügen von Synonymen stellt keine neuen Anforderungen an die Abfragekonstruktion. Sie können Begriffe und Ausdrücke genau so abfragen wie vor dem Hinzufügen der Synonyme. Der einzige Unterschied besteht darin, dass die Abfrage-Engine bei Vorhandensein eines Abfragebegriffs in der Synonymzuordnung den Begriff oder Ausdruck je nach Regel entweder erweitert oder umformuliert.
 
-## <a name="how-synonyms-interact-with-other-features"></a>Interaktion von Synonymen mit anderen Features
+## <a name="how-synonyms-are-used-during-query-execution"></a>Verwendung von Synonymen bei der Abfrageausführung
 
-Das Feature „Synonyme“ ändert die ursprüngliche Abfrage mithilfe von Synonymen mit dem OR-Operator. Aus diesem Grund werden der ursprüngliche Begriff und Synonyme von der Treffermarkierung und von Bewertungsprofilen als gleichwertig behandelt.
+Synonyme sind eine Abfrageerweiterungstechnik, die den Inhalt eines Indexes mit äquivalenten Begriffen ergänzt, aber nur für Felder, die über eine Synonymzuordnung verfügen. Wenn eine feldbezogene Abfrage ein für Synonyme aktiviertes Feld *ausschließt*, werden keine Übereinstimmungen aus der Synonymzuordnung angezeigt.
 
-Synonyme gelten nur für Suchabfragen und werden nicht für Filter, Facets, AutoVervollständigen oder Vorschläge unterstützt. AutoVervollständigen und Vorschläge basieren nur auf dem ursprünglichen Begriff. Synonymübereinstimmungen werden in der Antwort nicht angezeigt.
+Für Felder, die für Synonyme aktiviert sind, unterliegen Synonyme derselben Textanalyse wie das zugehörige Feld. Wenn ein Feld z. B. mit dem standardmäßigen Lucene-Analysetool analysiert wird, unterliegen synonyme Begriffe zur Abfragezeit ebenfalls dem standardmäßigen Lucene-Analysetool. Wenn Sie Interpunktionszeichen wie Punkte oder Bindestriche im synonymen Begriff beibehalten möchten, wenden Sie ein Analysetool an, das den Inhalt beibehält.
+
+Intern ändert das Synonymefeature die ursprüngliche Abfrage mithilfe von Synonymen mit dem OR-Operator. Aus diesem Grund werden der ursprüngliche Begriff und Synonyme von der Treffermarkierung und von Bewertungsprofilen als gleichwertig behandelt.
+
+Synonyme gelten nur für Freitextabfragen und werden nicht für Filter, Facets, AutoVervollständigen oder Vorschläge unterstützt. AutoVervollständigen und Vorschläge basieren nur auf dem ursprünglichen Begriff. Synonymübereinstimmungen werden in der Antwort nicht angezeigt.
 
 Die Synonymerweiterungen gelten nicht für Platzhaltersuchbegriffe. Präfix-, Fuzzy- und Regex-Begriffe werden nicht erweitert.
 

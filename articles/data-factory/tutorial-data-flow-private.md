@@ -7,13 +7,13 @@ ms.reviewer: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 05/19/2019
-ms.openlocfilehash: 9a4b57f3813adfeee53891f733dd4d303dbbef8d
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.date: 01/15/2021
+ms.openlocfilehash: a5c93244862d72f9c8ea2928c41e699302b1752b
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96497128"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98249436"
 ---
 # <a name="transform-data-securely-by-using-mapping-data-flow"></a>Sicheres Transformieren von Daten mithilfe von Zuordnungsdatenflüssen
 
@@ -34,6 +34,7 @@ In diesem Tutorial führen Sie die folgenden Schritte aus:
 > * Überwachen einer Datenflussaktivität
 
 ## <a name="prerequisites"></a>Voraussetzungen
+
 * **Azure-Abonnement**. Wenn Sie über kein Azure-Abonnement verfügen, können Sie ein [kostenloses Azure-Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 * **Azure-Speicherkonto**. Sie verwenden Data Lake Storage als *Quell-* und *Senkendatenspeicher*. Wenn Sie kein Speicherkonto besitzen, finden Sie unter [Informationen zu Azure-Speicherkonten](../storage/common/storage-account-create.md?tabs=azure-portal) Schritte zum Erstellen eines solchen Kontos. *Stellen Sie sicher, dass das Speicherkonto nur den Zugriff aus ausgewählten Netzwerken zulässt.* 
 
@@ -64,12 +65,14 @@ In diesem Schritt erstellen Sie eine Data Factory und öffnen die Data Factory-B
 1. Klicken Sie auf **Erstellen und überwachen**, um die Data Factory-Benutzeroberfläche auf einer separaten Registerkarte zu starten.
 
 ## <a name="create-an-azure-ir-in-data-factory-managed-virtual-network"></a>Erstellen einer Azure Integration Runtime-Instanz in vom Data Factory verwalteten virtuellen Netzwerk
+
 In diesem Schritt erstellen Sie eine Azure Integration Runtime-Instanz und aktivieren ein von Data Factory verwaltetes virtuelles Netzwerk.
 
 1. Navigieren Sie im Data Factory-Portal zu **Verwalten**, und wählen Sie **Neu** aus, um eine neue Azure Integration Runtime-Instanz zu erstellen.
 
    ![Screenshot, der das Erstellen einer neuen Azure Integration Runtime-Instanz zeigt.](./media/tutorial-copy-data-portal-private/create-new-azure-ir.png)
-1. Wählen Sie die Option **Azure Integration Runtime** aus.
+1. Wählen Sie auf der Seite **Integration Runtime-Setup** basierend auf den erforderlichen Funktionen die Integration Runtime aus, die erstellt werden soll. Wählen Sie für dieses Tutorial **Azure, selbstgehostet** aus, und klicken Sie dann auf **Fortsetzen**. 
+1. Wählen Sie **Azure** aus, und klicken Sie dann auf **Fortsetzen**, um eine Azure Integration Runtime zu erstellen.
 
    ![Screenshot der neuen Azure Integration Runtime-Instanz.](./media/tutorial-copy-data-portal-private/azure-ir.png)
 

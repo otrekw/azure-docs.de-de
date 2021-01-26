@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/23/2019
 ms.author: thweiss
 ms.custom: devx-track-js
-ms.openlocfilehash: c3cdc0a9fb9fa236fae37a52194f446278a42f72
-ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
+ms.openlocfilehash: d2f35ae7a6110acb2ca89bdaeb487eddabf84923
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94616245"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98185817"
 ---
 # <a name="how-to-model-and-partition-data-on-azure-cosmos-db-using-a-real-world-example"></a>Modellieren und Partitionieren von Daten in Azure Cosmos DB anhand eines praktischen Beispiels
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -60,7 +60,7 @@ Hier sehen Sie die Liste der Anforderungen, die die Plattform verfügbar machen 
 
 Zu diesem Zeitpunkt haben wir uns noch keine Gedanken über die Details gemacht, die die einzelnen Entitäten (Benutzer, Beitrag usw.) enthalten. In der Regel ist dies einer der ersten Schritte beim Entwerfen eines relationalen Speichers, da wir ermitteln müssen, welchen Tabellen, Spalten, Fremdschlüsseln usw. diese Entitäten entsprechen. Bei einer Dokumentdatenbank, die bei Schreibvorgängen kein Schema erzwingt, ist dies weniger problematisch.
 
-Die Zugriffsmuster von Beginn an zu identifizieren, ist vor allem deswegen wichtig, weil diese Liste von Anforderungen unsere Testsammlung sein wird. Jedes Mal, wenn wir das Datenmodell durchlaufen, sehen wir uns jede der Anforderungen an und überprüfen ihre Leistung und Skalierbarkeit.
+Die Zugriffsmuster von Beginn an zu identifizieren, ist vor allem deswegen wichtig, weil diese Liste von Anforderungen unsere Testsammlung sein wird. Jedes Mal, wenn wir das Datenmodell durchlaufen, sehen wir uns jede der Anforderungen an und überprüfen ihre Leistung und Skalierbarkeit. Wir berechnen die in den einzelnen Modellen verbrauchten Anforderungseinheiten und optimieren sie. Alle diese Modelle verwenden die Standardindizierungsrichtlinie, und Sie können sie überschreiben, indem Sie bestimmte Eigenschaften indizieren, was auch RU-Verbrauch und Latenz weiter verbessern kann.
 
 ## <a name="v1-a-first-version"></a>Version 1: Die erste Version
 

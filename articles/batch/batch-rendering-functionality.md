@@ -3,14 +3,14 @@ title: Renderingfunktionen
 description: Azure Batch-Standardfunktionen werden verwendet, um Renderingworkloads und -Apps auszuführen. Batch enthält bestimmte Funktionen zur Unterstützung von Renderingworkloads.
 author: mscurrell
 ms.author: markscu
-ms.date: 08/02/2018
+ms.date: 01/14/2021
 ms.topic: how-to
-ms.openlocfilehash: 77a6ec54495b394c597f6d6b4ddb5f5fe3285550
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: d9d196897800467fd02397bb774af0bbb9ebabf0
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92107469"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98234272"
 ---
 # <a name="azure-batch-rendering-capabilities"></a>Azure Batch-Renderingfunktionen
 
@@ -18,7 +18,15 @@ Azure Batch-Standardfunktionen werden verwendet, um Renderingworkloads und -anwe
 
 Eine Übersicht über Batch-Konzepte, z.B. Pools, Aufträge und Aufgaben, finden Sie in [diesem Artikel](./batch-service-workflow-features.md).
 
-## <a name="batch-pools"></a>Batch-Pools
+## <a name="batch-pools-using-custom-vm-images-and-standard-application-licensing"></a>Batch-Pools mit benutzerdefinierten VM-Images und Standardanwendungslizenzierung
+
+Wie bei anderen Workloads und Anwendungstypen kann ein benutzerdefiniertes VM-Image mit den erforderlichen Renderinganwendungen und Plug-Ins erstellt werden. Das benutzerdefinierte VM-Image wird in der [Shared Image Gallery](../virtual-machines/shared-image-galleries.md) gespeichert und kann zum [Erstellen von Batch-Pools](batch-sig-images.md) verwendet werden.
+
+Die Befehlszeilen-Zeichenfolgen für eine Aufgabe müssen auf die Anwendungen und Pfade verweisen, die beim Erstellen des benutzerdefinierten VM-Images verwendet wurden.
+
+Die meisten Renderinganwendungen benötigen Lizenzen, die von einem Lizenzserver abgerufen werden. Wenn ein lokaler Lizenzserver vorhanden ist, müssen sich der Pool und der Lizenzserver im selben [virtuellen Netzwerk](../virtual-network/virtual-networks-overview.md) befinden. Es ist auch möglich, einen Lizenzserver auf einer Azure-VM auszuführen. Dann müssen sich der Batch-Pool und die Lizenzserver-VM im selben virtuellen Netzwerk befinden.
+
+## <a name="batch-pools-using-rendering-vm-images"></a>Batch-Pools mit VM-Images für das Rendering
 
 ### <a name="rendering-application-installation"></a>Installation von Renderinganwendungen
 
@@ -71,13 +79,13 @@ Arnold 2017-Befehlszeile|kick.exe|ARNOLD_2017_EXEC|
 |Arnold 2018-Befehlszeile|kick.exe|ARNOLD_2018_EXEC|
 |Blender|blender.exe|BLENDER_2018_EXEC|
 
-### <a name="azure-vm-families"></a>Azure-VM-Familien
+## <a name="azure-vm-families"></a>Azure-VM-Familien
 
 Wie bei anderen Workloads variieren die Systemanforderungen für Renderinganwendungen, und die Leistungsanforderungen fallen je nach Aufträgen und Projekten unterschiedlich aus.  Abhängig von Ihren Anforderungen (z.B. niedrigste Kosten, bestes Preis-Leistungs-Verhältnis, beste Leistung usw.) stehen in Azure verschiedenste VM-Familien zur Verfügung.
 Einige Renderinganwendungen, z.B. Arnold, sind CPU-basiert. In anderen wie V-Ray und Blender Cycles können CPUs und/oder GPUs verwendet werden.
 Eine Beschreibung der verfügbaren VM-Familien und VM-Größen finden Sie unter [Arten und Größen von virtuellen Computern](../virtual-machines/sizes.md).
 
-### <a name="low-priority-vms"></a>Virtuelle Computer mit niedriger Priorität
+## <a name="low-priority-vms"></a>Virtuelle Computer mit niedriger Priorität
 
 Wie bei anderen Workloads können virtuelle Computer mit niedriger Priorität auch in Batch-Pools für das Rendering verwendet werden.  Virtuelle Computer mit niedriger Priorität weisen die gleiche Leistung wie reguläre dedizierte virtuelle Computer auf, nutzen jedoch überschüssige Kapazitäten in Azure und sind zu einem günstigen Rabattpreis erhältlich.  Die Verwendung von VMs mit niedriger Priorität hat jedoch auch Nachteile: Möglicherweise stehen diese VMs für eine Zuweisung gerade nicht zur Verfügung, und sie können jederzeit vorzeitig entfernt werden, je nach der verfügbaren Kapazität. Aus diesem Grund eignen sich virtuelle Computer mit niedriger Priorität nicht für alle Renderingaufträge. Wenn das Rendering von Images beispielsweise viele Stunden dauert, ist es wahrscheinlich, dass das Rendering der Images unterbrochen und dann neu gestartet werden muss, da die vorzeitige Entfernung der virtuellen Computer nicht akzeptabel ist.
 
@@ -93,4 +101,4 @@ Wenn die VM-Images von Azure Marketplace verwendet werden, empfiehlt es sich, de
 Beispiele für das Rendering mit Batch finden Sie in den folgenden beiden Tutorials:
 
 * [Tutorial: Rendern einer Szene mit Azure Batch](./tutorial-rendering-cli.md)
-* [Tutorial: Rendern einer Blender-Szene mithilfe von Batch Explorer](./tutorial-rendering-batchexplorer-blender.md)
+* [Rendern einer Blender-Szene mithilfe von Batch Explorer](./tutorial-rendering-batchexplorer-blender.md)

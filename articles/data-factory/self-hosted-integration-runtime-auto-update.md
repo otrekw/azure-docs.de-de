@@ -1,8 +1,6 @@
 ---
 title: Benachrichtigung zur automatischen Aktualisierung und zum Ablauf der selbstgehosteten Integration Runtime
 description: Erfahren Sie mehr über die Benachrichtigung zur automatischen Aktualisierung und zum Ablauf der selbstgehosteten Integration Runtime.
-services: data-factory
-documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
@@ -11,12 +9,12 @@ ms.author: lle
 manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 12/25/2020
-ms.openlocfilehash: 6a6c897d92d469fd6247dd51f2bacb91032ac123
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 8c51839e760dcca32bfc0d150c5e4d10767d95a4
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98121834"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222682"
 ---
 # <a name="self-hosted-integration-runtime-auto-update-and-expire-notification"></a>Benachrichtigung zur automatischen Aktualisierung und zum Ablauf der selbstgehosteten Integration Runtime
 
@@ -33,7 +31,7 @@ Die einfachste Möglichkeit besteht darin, beim Erstellen oder Bearbeiten der se
 
 Sie können Datum und Uhrzeit der letzten Aktualisierung auf dem Client der selbstgehosteten Integration Runtime überprüfen.
 
-![Aktivieren der automatischen Aktualisierung](media/create-self-hosted-integration-runtime/shir-auto-update-2.png)
+![Screenshot der Überprüfung der Aktualisierungszeit](media/create-self-hosted-integration-runtime/shir-auto-update-2.png)
 
 > [!NOTE]
 > Obwohl wir jeden Monat zwei Versionen veröffentlichen, wird die selbstgehostete Integration Runtime nur einmal im Monat automatisch aktualisiert, um Stabilität zu gewährleisten. Gelegentlich werden Sie daher feststellen, dass es sich bei der automatisch aktualisierten Version nicht um die aktuelle, sondern um die vorherige Version handelt. Wenn Sie die neueste Version erhalten möchten, wechseln Sie zum [Download Center](https://www.microsoft.com/download/details.aspx?id=39717).

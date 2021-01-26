@@ -2,21 +2,24 @@
 title: Bereich für Erweiterungsressourcentypen
 description: Hier wird die Verwendung der Bereichseigenschaft beim Bereitstellen von Erweiterungsressourcentypen erläutert.
 ms.topic: conceptual
-ms.date: 10/22/2020
-ms.openlocfilehash: bd468d31454c38bd314269243702d7df4f279a5e
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.date: 01/13/2021
+ms.openlocfilehash: 75c2c8b8409cc9f8e7a8e71965589ece6660607a
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92681310"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98179978"
 ---
 # <a name="setting-scope-for-extension-resources-in-arm-templates"></a>Festlegen des Bereichs für Erweiterungsressourcen in Resource Manager-Vorlagen
 
-Eine Erweiterungsressource ist eine Ressource, die eine andere Ressource ändert. Sie können beispielsweise einer Ressource eine Rolle zuweisen, um den Zugriff einzuschränken. Die Rollenzuweisung ist ein Erweiterungsressourcentyp.
+Eine Erweiterungsressource ist eine Ressource, die eine andere Ressource ändert. Sie können beispielsweise einer Ressource eine Rolle zuweisen. Die Rollenzuweisung ist ein Erweiterungsressourcentyp.
 
 Eine vollständige Liste der Erweiterungsressourcentypen finden Sie unter [Ressourcentypen, die Funktionen anderer Ressourcen erweitern](../management/extension-resource-types.md).
 
 In diesem Artikel wird gezeigt, wie Sie den Bereich für einen Erweiterungsressourcentyp festlegen, wenn dieser mit einer Resource Manager-Vorlage (ARM-Vorlage) bereitgestellt wird. Außerdem wird die Bereichseigenschaft beschrieben, die für Erweiterungsressourcen beim Anwenden auf eine Ressource verfügbar ist.
+
+> [!NOTE]
+> Die Bereichseigenschaft ist nur für Erweiterungsressourcentypen verfügbar. Wenn Sie einen anderen Bereich für einen Ressourcentyp angeben möchten, der kein Erweiterungstyp ist, verwenden Sie eine geschachtelte oder verknüpfte Bereitstellung. Weitere Informationen finden Sie unter [Bereitstellungen von Ressourcengruppen](deploy-to-resource-group.md), [Bereitstellungen von Abonnements](deploy-to-subscription.md), [Bereitstellungen von Verwaltungsgruppen](deploy-to-management-group.md) und [Bereitstellungen von Mandanten](deploy-to-tenant.md).
 
 ## <a name="apply-at-deployment-scope"></a>Anwenden im Bereitstellungsumfang
 

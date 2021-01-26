@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 12/11/2020
+ms.date: 01/13/2021
 ms.author: tamram
 ms.reviewer: dineshm
 ms.subservice: blobs
-ms.openlocfilehash: 8667fc3c5224b1f75a9beeb95b6e1261c768c14d
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.openlocfilehash: 512b949fceda850e968a6f97b3788ae3a602f56d
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97347913"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98199256"
 ---
 # <a name="create-a-user-delegation-sas-for-a-container-or-blob-with-net"></a>Erstellen einer SAS für die Benutzerdelegierung für einen Container oder ein Blob mit .NET
 
@@ -96,6 +96,16 @@ Im folgenden Codebeispiel wird gezeigt, wie Sie eine SAS für die Benutzerdelegi
 Im folgenden Beispiel wird die im vorherigen Beispiel erstellte SAS für die Benutzerdelegierung in einer simulierten Clientanwendung getestet. Wenn die SAS gültig ist, können die Inhalte des Blobs in der Clientanwendung gelesen werden. Wenn die SAS ungültig ist, z. B. weil sie abgelaufen ist, wird in Azure Storage der Fehlercode 403 (Verboten) zurückgegeben.
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Sas.cs" id="Snippet_ListBlobsWithSasAsync":::
+
+## <a name="get-a-user-delegation-sas-for-a-directory"></a>Abrufen einer SAS für die Benutzerdelegierung für ein Verzeichnis
+
+Im folgenden Codebeispiel wird gezeigt, wie Sie eine SAS für die Benutzerdelegierung für ein Verzeichnis generieren, wenn ein hierarchischer Namespace aktiviert ist:
+
+:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Sas.cs" id="Snippet_GetUserDelegationSasDirectory":::
+
+Im folgenden Beispiel wird die im vorherigen Beispiel erstellte SAS für die Benutzerdelegierung in einer simulierten Clientanwendung getestet. Wenn die SAS gültig ist, kann die Clientanwendung Dateipfade in diesem Verzeichnis auflisten. Wenn die SAS ungültig ist, z. B. weil sie abgelaufen ist, wird in Azure Storage der Fehlercode 403 (Verboten) zurückgegeben.
+
+:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Sas.cs" id="Snippet_ListFilePathsWithDirectorySasAsync":::
 
 [!INCLUDE [storage-blob-dotnet-resources-include](../../../includes/storage-blob-dotnet-resources-include.md)]
 

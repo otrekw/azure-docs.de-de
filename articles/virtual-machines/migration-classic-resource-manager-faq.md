@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: tagore
-ms.openlocfilehash: 24e52f517f46de06fef8aa52e889185826c20d44
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: abf4e4621a7e42829032923a67d21c5322f432ec
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96498394"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98232725"
 ---
 # <a name="frequently-asked-questions-about-classic-to-azure-resource-manager-migration"></a>Häufig gestellte Fragen zur Migration vom klassischen Bereitstellungsmodell zum Azure Resource Manager-Bereitstellungsmodell
 
@@ -82,11 +82,11 @@ Während der Migration wird für die Ressourcen die Transformation vom klassisch
 
 Wenn Sie einen virtuellen Computer vom klassischen in den Resource Manager-Modus verschieben, werden Sicherungen, die vor der Migration aufgezeichnet wurden, nicht auf die neu migrierte Resource Manager-VM migriert. Wenn Sie die Sicherungen der klassischen VMs Jedoch aufbewahren möchten, gehen Sie vor der Migration folgendermaßen vor. 
 
-1. Wechseln Sie im Recovery Services-Tresor zur Registerkarte **Geschützte Elemente**, und wählen Sie den virtuellen Computer aus. 
-2. Klicken Sie auf „Schutz beenden“. Aktivieren Sie die Option *Zugeordnete Sicherungsdaten löschen* **nicht**.
+1. Wechseln Sie im Recovery Services-Tresor zum Blatt **Sicherungselemente**, und wählen Sie den virtuellen Computer aus. 
+2. Klicken Sie auf „Sicherung beenden“. Wählen Sie im Dropdownmenü die Option „Sicherungsdaten aufbewahren“ aus.
 
 > [!NOTE]
-> Ihnen werden Kosten für die Sicherungsinstanz berechnet, bis Sie die Daten beibehalten. Sicherungskopien werden gemäß der Beibehaltungsdauer gelöscht. Die letzte Sicherungskopie wird jedoch immer beibehalten, bis Sie Sicherungsdaten explizit löschen. Es wird empfohlen, die Beibehaltungsdauer des virtuellen Computers zu überprüfen und „Sicherungsdaten löschen“ für das geschützte Element im Tresor auszulösen, sobald die Beibehaltungsdauer überschritten wurde. 
+> Mit dieser Option wird der Schutz Ihres virtuellen Computers durch alle zukünftigen Sicherungsaufträge beendet. Der Azure Backup-Dienst behält die bereits gesicherten Wiederherstellungspunkte jedoch bei.  Die Aufbewahrung der Wiederherstellungspunkte im Tresor wird Ihnen in Rechnung gestellt (Einzelheiten finden Sie unter [Azure Backup – Preise](https://azure.microsoft.com/pricing/details/backup/)). Sie können den virtuellen Computer bei Bedarf wiederherstellen. Mit der Option *Sicherung fortsetzen* können Sie bei Bedarf den VM-Schutz fortsetzen.
 >
 >
 

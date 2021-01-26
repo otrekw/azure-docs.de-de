@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/28/2020
 ms.author: yitoh
-ms.openlocfilehash: c09f8c5ae4a742e6caa489ee29043f500617bb24
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: b53501bf5aa4bafb0229158edfe0cb244116b909
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96746487"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98600843"
 ---
 # <a name="azure-ddos-protection-standard-frequent-asked-questions"></a>Azure DDoS Protection Standard: häufig gestellte Fragen
 
@@ -27,6 +27,19 @@ Distributed Denial-of-Service oder DDoS ist eine Art von Angriff, bei dem ein An
 
 ## <a name="what-is-azure-ddos-protection-standard-service"></a>Was ist der Dienst Azure DDoS Protection Standard?
 Azure DDoS Protection Standard, kombiniert mit bewährten Methoden des Anwendungsentwurfs, bietet erweiterte Features zur DDoS-Risikominderung, um vor DDoS-Angriffen zu schützen. Er wird automatisch optimiert, um Ihre spezifischen Azure-Ressourcen in einem virtuellen Netzwerk zu schützen. Der Schutz kann einfach in jedem neuen oder vorhandenen virtuellen Netzwerk aktiviert werden und erfordert keine Änderung von Anwendung oder Ressource. Er hat mehrere Vorteile gegenüber dem Basisdienst, z.B. Protokollierung, Warnungen und Telemetrie. Weitere Informationen finden Sie unter [Übersicht über Azure DDoS Protection Standard](ddos-protection-overview.md). 
+
+## <a name="how-does-pricing-work"></a>Wie ist das Preismodell aufgebaut?
+Für DDoS-Schutzpläne gilt eine feste monatliche Gebühr von 2.944 USD, die bis zu 100 öffentliche IP-Adressen abdeckt. Der Schutz zusätzlicher Ressourcen kostet pro Ressource 30 USD pro Monat zusätzlich. 
+
+Innerhalb eines Mandanten kann ein einzelner DDoS-Schutzplan für mehrere Abonnements verwendet werden, sodass nicht mehrere DDoS-Schutzpläne erstellt werden müssen.
+
+Weitere Informationen finden Sie unter [Azure DDoS Protection Standard – Preise](https://azure.microsoft.com/pricing/details/ddos-protection/).
+
+## <a name="is-the-service-zone-resilient"></a>Ist die Dienst zonenresilient?
+Ja. Azure DDoS Protection ist standardmäßig zonenresilient.
+
+## <a name="how-do-i-configure-the-service-to-be-zone-resilient"></a>Wie konfiguriere ich den Dienst so, dass er zonenresilient ist?
+Es ist keine Kundenkonfiguration erforderlich, um Zonenresilienz zu ermöglichen. Zonenresilienz ist für Azure DDoS Protection-Ressourcen standardmäßig verfügbar und wird vom Dienst selbst verwaltet.
 
 ## <a name="what-about-protection-at-the-service-layer-layer-7"></a>Was gilt für Schutz auf Dienstebene (Ebene 7)?
 Kunden können den Dienst Azure DDoS Protection in Kombination mit einer Web Application Firewall (WAF) zum Schutz sowohl auf Netzwerkebene (Ebene 3 und 4, angeboten von Azure DDoS Protection Standard) als auch auf Anwendungsebene (Ebene 7, angeboten von einer WAF) verwenden. WAF-Angebote umfassen [Azure Application Gateway-WAF-SKU](../web-application-firewall/ag/ag-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) sowie Web Application Firewall-Angebote von Drittanbietern, die in [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps?page=1&search=web%20application%20firewall) verfügbar sind.

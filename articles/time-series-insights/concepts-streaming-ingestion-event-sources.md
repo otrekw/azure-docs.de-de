@@ -9,12 +9,12 @@ ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
 ms.date: 10/01/2020
-ms.openlocfilehash: 4e83cca79a4dc99533ab17cca7e96e1ac802d598
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: ee13b2fbe4abbaf9bddf4975f8e25d746dc78f5e
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95020792"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98232181"
 ---
 # <a name="azure-time-series-insights-gen2-event-sources"></a>Azure Time Series Insights Gen2-Ereignisquellen
 
@@ -45,13 +45,25 @@ Wenn Sie eine Ereignisquelle verbinden, liest Ihre Azure Time Series Insights Ge
 
 - Überschreiten Sie nicht den [Grenzwert Ihrer Umgebung für die Durchsatzrate](./concepts-streaming-ingress-throughput-limits.md) oder den Durchsatz pro Partition.
 
-- Konfigurieren Sie eine [Verzögerungswarnung](./time-series-insights-environment-mitigate-latency.md#monitor-latency-and-throttling-with-alerts), damit Sie benachrichtigt werden, wenn in Ihrer Umgebung Probleme beim Verarbeiten von Daten auftreten.
+- Konfigurieren Sie eine [Verzögerungswarnung](./time-series-insights-environment-mitigate-latency.md#monitor-latency-and-throttling-with-alerts), damit Sie benachrichtigt werden, wenn in Ihrer Umgebung Probleme beim Verarbeiten von Daten auftreten. Unter [Produktionsworkloads](./concepts-streaming-ingestion-event-sources.md#production-workloads) unten finden Sie Vorschläge für Warnungsbedingungen. 
 
 - Verwenden Sie die Streamingerfassung nur für Daten in Quasi-Echtzeit und für aktuelle Daten. Das Streamen historischer Daten wird nicht unterstützt.
 
 - Informieren Sie sich, wie Eigenschaften mit Escapezeichen versehen werden und wie JSON-[Daten vereinfacht und gespeichert](./concepts-json-flattening-escaping-rules.md) werden.
 
 - Befolgen Sie das Prinzip der geringsten Rechte, wenn Sie Verbindungszeichenfolgen für Ereignisquellen angeben. Konfigurieren Sie für Event Hubs eine SAS-Richtlinie, die ausschließlich den *send*-Anspruch umfasst, und verwenden Sie für IoT Hub nur die *service connect*-Berechtigung.
+
+## <a name="production-workloads"></a>Produktionsworkloads
+
+Zusätzlich zu den oben beschriebenen bewährten Methoden sollten Sie die folgenden geschäftskritischen Workloads implementieren. 
+
+- Erhöhen Sie Ihre IoT Hub- oder Event Hub-Datenaufbewahrungsdauer auf maximal 7 Tage.
+
+- Erstellen von Umgebungswarnungen im Azure-Portal Mithilfe von Warnungen, die auf [Plattformmetriken basieren](https://docs.microsoft.com/azure/time-series-insights/how-to-monitor-tsi-reference#metrics), können Sie das Verhalten von End-to-End-Pipelines überprüfen. Die Anweisungen zum Erstellen und Verwalten von Warnungen finden Sie [hier](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-environment-mitigate-latency#monitor-latency-and-throttling-with-alerts). Vorgeschlagene Warnungsbedingungen:
+
+     - IngressReceivedMessagesTimeLag überschreitet 5 Minuten.
+     - IngressReceivedBytes ist 0.
+- Sorgen Sie dafür, dass die Erfassungslast zwischen Ihren IoT Hub- oder Event Hub-Partitionen ausgeglichen ist.
 
 ### <a name="historical-data-ingestion"></a>Erfassung historischer Daten
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/18/2020
 ms.author: mingshen
 author: mingshen-ms
-ms.openlocfilehash: d602687ea623b90ea5dcae4ece09a1ccc438ea57
-ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
+ms.openlocfilehash: 5a2a7abf0227812826428557b86c4468f7693c82
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97822385"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98600387"
 ---
 # <a name="commercial-marketplace-transact-capabilities"></a>Transaktionsfunktionen im kommerziellen Marketplace
 
@@ -160,7 +160,7 @@ In diesem Szenario stellt Microsoft 100,00 USD für Ihre Softwarelizenz in Rech
 
 **Kreditkarten und monatliche Rechnung**: Kunden können auch per Kreditkarte und monatlicher Rechnung bezahlen. In diesem Fall werden Ihre Softwarelizenzgebühren genau wie beim Enterprise Agreement-Szenario als Postenkosten abgerechnet, und zwar getrennt von allen Azure-spezifischen Nutzungskosten.
 
-**Kostenlose Guthaben und finanzielle Verpflichtung**: Einige Kunden entscheiden sich dafür, Azure mit einer finanziellen Verpflichtung im Enterprise Agreement-Rahmen im Voraus zu bezahlen oder erhalten kostenlose Guthaben für die Nutzung mit Azure. Obwohl diese Guthaben zur Bezahlung der Azure-Nutzung verwendet werden können, dürfen sie nicht zur Zahlung von Softwarelizenzgebühren für Herausgeber verwendet werden.
+**Kostenlose Guthaben und Azure-Vorauszahlung**: Einige Kunden entscheiden sich dafür, Azure mit der Azure-Vorauszahlung (zuvor als „Mindestverbrauch“ bezeichnet) im Enterprise Agreement-Rahmen zu bezahlen oder haben kostenlose Guthaben für die Nutzung mit Azure erhalten. Obwohl diese Guthaben zur Bezahlung der Azure-Nutzung verwendet werden können, dürfen sie nicht zur Zahlung von Softwarelizenzgebühren für Herausgeber verwendet werden.
 
 **Abrechnung und Inkasso**: Die Abrechnung der Softwarelizenz des Herausgebers erfolgt nach der vom Kunden gewählten Methode der Rechnungsstellung und folgt dem Zeitrahmen der Rechnungsstellung. Kunden ohne Enterprise Agreement werden Marketplace-Softwarelizenzen monatlich in Rechnung gestellt. Kunden mit Enterprise Agreement wird monatlich eine Rechnung gestellt, die vierteljährlich ausgefertigt wird.
 

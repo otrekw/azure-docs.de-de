@@ -11,18 +11,18 @@ ms.topic: how-to
 author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: sstein
-ms.date: 04/19/2020
-ms.openlocfilehash: 480e9f9031481621ac9d568a7bd97b942f47b947
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.date: 1/14/2021
+ms.openlocfilehash: b87d0a2446eb2b65c20ae0bef408320686cb5165
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96493640"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98219129"
 ---
 # <a name="monitoring-microsoft-azure-sql-database-and-azure-sql-managed-instance-performance-using-dynamic-management-views"></a>Überwachen der Leistung von Microsoft Azure SQL-Datenbank und Azure SQL Managed Instance mithilfe von dynamischen Verwaltungssichten
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-Microsoft Azure SQL-Datenbank und Azure SQL Managed Instance unterstützen eine Teilmenge dynamischer Verwaltungssichten für die Diagnose von Leistungsproblemen, die auf blockierte Abfragen oder Abfragen mit langen Laufzeiten, fehlerhafte Abfragepläne usw. zurückzuführen sind. Dieses Thema enthält Informationen zum Erkennen häufiger Leistungsprobleme mithilfe von dynamischen Verwaltungssichten.
+Microsoft Azure SQL-Datenbank und Azure SQL Managed Instance unterstützen eine Teilmenge dynamischer Verwaltungssichten für die Diagnose von Leistungsproblemen, die auf blockierte Abfragen oder Abfragen mit langen Laufzeiten, fehlerhafte Abfragepläne usw. zurückzuführen sind. Dieser Artikel enthält Informationen zum Erkennen häufiger Leistungsprobleme mithilfe von dynamischen Verwaltungssichten.
 
 Microsoft Azure SQL-Datenbank und Azure SQL Managed Instance bieten eine Teilunterstützung für drei Kategorien von dynamischen Verwaltungssichten:
 
@@ -259,7 +259,7 @@ Bei tempdb-Konflikten besteht eine gängige Methode darin, den Anwendungscode, d
 - Temporäre Tabellen
 - Tabellenvariablen
 - Tabellenwertparameter
-- Versionsspeichernutzung (insbesondere in Zusammenhang mit Transaktionen mit langer Ausführungszeit)
+- Versionsspeichernutzung (in Zusammenhang mit Transaktionen mit langer Ausführungszeit)
 - Abfragen mit Abfrageplänen, die Sortiervorgänge, Hashjoins und Spoolvorgänge verwenden
 
 ### <a name="top-queries-that-use-table-variables-and-temporary-tables"></a>Häufige Abfragen, die Tabellenvariablen und temporäre Tabellen verwenden
@@ -563,7 +563,7 @@ SELECT resource_name, AVG(avg_cpu_percent) AS Average_Compute_Utilization
 FROM sys.server_resource_stats
 WHERE start_time BETWEEN @s AND @e  
 GROUP BY resource_name  
-HAVING AVG(avg_cpu_percent) >= 80
+HAVING AVG(avg_cpu_percent) >= 80;
 ```
 
 ### <a name="sysresource_stats"></a>sys.resource_stats
@@ -589,7 +589,7 @@ Dieses Beispiel veranschaulicht, wie die Daten in dieser Sicht verfügbar gemach
 SELECT TOP 10 *
 FROM sys.resource_stats
 WHERE database_name = 'resource1'
-ORDER BY start_time DESC
+ORDER BY start_time DESC;
 ```
 
 ![Katalogsicht „sys.resource_stats“](./media/monitoring-with-dmvs/sys_resource_stats.png)
@@ -699,7 +699,7 @@ Um die Anzahl aktueller aktiver Sitzungen anzuzeigen, führen Sie diese Transact
 
 ```sql
 SELECT COUNT(*) AS [Sessions]
-FROM sys.dm_exec_connections
+FROM sys.dm_exec_connections;
 ```
 
 Wenn Sie die SQL Server-Workload analysieren, ändern Sie die Abfrage für eine spezifische Datenbank ab. Diese Abfrage ist zum Ermitteln der möglichen Sitzungsanforderungen für die Datenbank hilfreich, wenn Sie eine Umstellung auf Azure erwägen.
@@ -709,7 +709,7 @@ SELECT COUNT(*) AS [Sessions]
 FROM sys.dm_exec_connections C
 INNER JOIN sys.dm_exec_sessions S ON (S.session_id = C.session_id)
 INNER JOIN sys.databases D ON (D.database_id = S.database_id)
-WHERE D.name = 'MyDatabase'
+WHERE D.name = 'MyDatabase';
 ```
 
 Diese Abfragen geben wieder eine Anzahl zu einem bestimmten Zeitpunkt zurück. Wenn Sie im Laufe der Zeit mehrere Beispielwerte sammeln, können Sie sich am besten über Ihre Sitzungsnutzung informieren.
@@ -743,7 +743,7 @@ ORDER BY 2 DESC;
 
 ### <a name="monitoring-blocked-queries"></a>Überwachen blockierter Abfragen
 
-Langsame Abfragen oder Abfragen mit langer Laufzeit können zu einer übermäßigen Ressourcennutzung beitragen und auf blockierte Abfragen zurückzuführen sein. Ursache für das Blockieren kann ein mangelhafter Anwendungsentwurf, fehlerhafte Abfragepläne oder ein Mangel an nützlichen Indizes usw. sein. Verwenden Sie die Sicht „sys.dm_tran_locks“, um Informationen über die aktuellen Sperraktivitäten in der Datenbank abzurufen. Beispielcode finden Sie unter [sys.dm_tran_locks (Transact-SQL)](/sql/relational-databases/system-dynamic-management-views/sys-dm-tran-locks-transact-sql).
+Langsame Abfragen oder Abfragen mit langer Laufzeit können zu einer übermäßigen Ressourcennutzung beitragen und auf blockierte Abfragen zurückzuführen sein. Ursache für das Blockieren kann ein mangelhafter Anwendungsentwurf, fehlerhafte Abfragepläne oder ein Mangel an nützlichen Indizes usw. sein. Verwenden Sie die Sicht „sys.dm_tran_locks“, um Informationen über die aktuellen Sperraktivitäten in der Datenbank abzurufen. Beispielcode finden Sie unter [sys.dm_tran_locks (Transact-SQL)](/sql/relational-databases/system-dynamic-management-views/sys-dm-tran-locks-transact-sql). Weitere Informationen zur Problembehandlung beim Blockieren finden Sie unter [Verstehen und Beheben von SQL Server-Blockierungsproblemen](understand-resolve-blocking.md).
 
 ### <a name="monitoring-query-plans"></a>Überwachen von Abfrageplänen
 

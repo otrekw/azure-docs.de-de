@@ -5,12 +5,12 @@ description: Erfahren Sie, wie Sie einen NGINX-Eingangscontroller mit einer stat
 services: container-service
 ms.topic: article
 ms.date: 08/17/2020
-ms.openlocfilehash: eb58bbe127349aaebed3b1eb00281cf2938c1933
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: e6777946b0c83eb7f7eb6f3230bb95da2313e741
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94681583"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98246229"
 ---
 # <a name="create-an-ingress-controller-with-a-static-public-ip-address-in-azure-kubernetes-service-aks"></a>Erstellen eines Eingangscontrollers mit einer statischen öffentlichen IP-Adresse in Azure Kubernetes Service (AKS)
 
@@ -103,7 +103,7 @@ Da noch keine Eingangsregeln erstellt wurden, wird die Standard-404-Seite des NG
 Sie können überprüfen, ob die DNS-Namensbezeichnung angewandt wurde, indem Sie den vollqualifizierten Domänennamen für die öffentliche IP-Adresse wie folgt abfragen:
 
 ```azurecli-interactive
-az network public-ip list --resource-group MC_myResourceGroup_myAKSCluster_eastus --query "[?name=='myAKSPublicIP'].[dnsSettings.fqdn]" -o tsv
+az network public-ip list --resource-group MC_myResourceGroup_myAKSCluster_eastus --query "[?ipAddress=='myAKSPublicIP'].[dnsSettings.fqdn]" -o tsv
 ```
 
 Der Eingangscontroller ist jetzt über die IP-Adresse oder den vollqualifizierten Domänennamen erreichbar.
@@ -169,8 +169,12 @@ spec:
 Um den Aussteller zu erstellen, verwenden Sie den Befehl `kubectl apply`.
 
 ```
-$ kubectl apply -f cluster-issuer.yaml --namespace ingress-basic
+kubectl apply -f cluster-issuer.yaml --namespace ingress-basic
+```
 
+Die Ausgabe sollte in etwa wie das folgende Beispiel aussehen:
+
+```
 clusterissuer.cert-manager.io/letsencrypt-staging created
 ```
 
@@ -307,8 +311,12 @@ spec:
 Erstellen Sie die Eingangsressource mit dem Befehl `kubectl apply`.
 
 ```
-$ kubectl apply -f hello-world-ingress.yaml --namespace ingress-basic
+kubectl apply -f hello-world-ingress.yaml --namespace ingress-basic
+```
 
+Die Ausgabe sollte in etwa wie das folgende Beispiel aussehen:
+
+```
 ingress.extensions/hello-world-ingress created
 ```
 

@@ -9,12 +9,12 @@ ms.subservice: azure-sentinel
 ms.topic: how-to
 ms.date: 09/01/2020
 ms.author: yelevin
-ms.openlocfilehash: b5d98a834ed4f87fb95a13e666967a7b2d80975d
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: c54b5b785f6da1bb651d8b1f508da42ab0fb802d
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94656053"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98538391"
 ---
 # <a name="connect-data-from-azure-ddos-protection"></a>Herstellen einer Verbindung für Daten aus Azure DDoS Protection
 
@@ -38,7 +38,7 @@ Ein DDoS-Angriff (Distributed Denial of Service) hat das Ziel, die Ressourcen ei
 
 1. Wählen Sie im Katalog für Datenconnectors die Option **Azure DDoS Protection** und dann im Vorschaubereich **Connectorseite öffnen** aus.
 
-1. Aktivieren Sie **Diagnoseprotokolle** für alle Firewalls, deren Protokolle Sie verbinden möchten:
+1. Aktivieren Sie **Diagnoseprotokolle** für alle öffentlichen IP-Adressen, deren Protokolle Sie verbinden möchten:
 
     1. Wählen Sie den Link **Diagnoseeinstellungen öffnen >** und dann in der Liste eine Ressource vom Typ **Öffentliche IP-Adresse** aus.
 

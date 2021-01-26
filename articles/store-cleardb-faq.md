@@ -12,12 +12,12 @@ ms.date: 10/27/2016
 ms.author: sumuth
 ROBOTS: NOINDEX,NOFOLLOW
 ms.custom: references_regions
-ms.openlocfilehash: 25cc4dfaabee58a47cc33fe4be8dc7375bc804d2
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: d9d4ae746c192e8b4afd1781c1e072fc0dc70422
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96491641"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98599794"
 ---
 # <a name="faq-for-cleardb-mysql-databases-with-azure-app-service"></a>Häufig gestellte Fragen zur Verwendung von ClearDB MySql-Datenbanken mit Azure App Service
 In diesem Dokument werden häufige gestellte Fragen zu Verwendung und Erwerb von ClearDB MySQL-Datenbanken für Azure-Web-Apps beantwortet.
@@ -42,7 +42,7 @@ Dies hängt vom Typ Ihres Abonnements ab. Hier einige gängige Abonnementtypen:
 * [Nutzungsbasierte Bezahlung](https://azure.microsoft.com/offers/ms-azr-0003p/): Erfordert eine Kreditkarte. Wenn Sie eine kostenpflichtige MySQL-Datenbank erwerben, wird die Kreditkarte belastet.
 * [Kostenlose Testversion](https://azure.microsoft.com/pricing/free-trial/): Bietet Guthaben für die Nutzung mit Microsoft Azure-Diensten, lässt aber nicht den Erwerb von Ressourcen von Drittanbietern zu. Zum Erwerben von Diensten von Drittanbietern oder einer kostenpflichtigen MySQL-Datenbank benötigen Sie ein kreditkartengestütztes Abonnement. Für Web-Apps können Sie eine ClearDB MySQL-Datenbank im Tarif FREE erstellen.
 * [MSDN-Abonnement](https://azure.microsoft.com/pricing/member-offers/msdn-benefits/) und **MSDN Dev/Test Pay-As-You-Go**: Wie die kostenlose Testversion erfordert ein MSDN-Abonnement, dass Sie über eine Kreditkarte verfügen, um eine kostenpflichtige MySQL-Lösung von ClearDB zu erwerben.
-* [Enterprise Agreement (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/): EA-Kunden erhalten im Rahmen ihres Vertrags vierteljährlich eine Sammelrechnung für alle Käufe (bei Drittanbietern) über den Azure Marketplace. Die Rechnungsstellung für alle Marketplace-Einkäufe erfolgt außerhalb der Zahlungsverpflichtung. Beachten Sie, dass der Azure Store nicht für Kunden verfügbar ist, die in Aserbaidschan, Kroatien, Norwegen und Puerto Rico registriert sind. 
+* [Enterprise Agreement (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/): EA-Kunden erhalten im Rahmen ihres Vertrags vierteljährlich eine Sammelrechnung für alle Käufe (bei Drittanbietern) über den Azure Marketplace. Die Rechnungsstellung für alle Marketplace-Einkäufe erfolgt außerhalb der Azure-Vorauszahlung (früher als „Mindestverbrauch“ bezeichnet). Beachten Sie, dass der Azure Store nicht für Kunden verfügbar ist, die in Aserbaidschan, Kroatien, Norwegen und Puerto Rico registriert sind. 
 
 ## <a name="why-was-i-charged-350-for-a-web-app--mysql-from-the-azure-marketplace"></a>Warum wurden mir 3,50 $ für eine Web-App und MySQL-Vorlage aus Azure Marketplace in Rechnung gestellt?
 Die Standardoption Datenbanken ist Titan zum Preis von 3,50 $. Während der Datenbankerstellung zeigen wir die Preise nicht an, und Sie haben ggf. versehentlich eine Datenbank erworben, die Sie nicht wollten. Wir suchen derzeit nach einer Verbesserungsmöglichkeit. Bis dahin müssen Sie alle für die Web-App und Datenbank ausgewählten Tarife prüfen, bevor Sie auf **Erstellen** klicken und mit der Bereitstellung der Ressourcen beginnen.
@@ -94,10 +94,10 @@ Für vorhandene ClearDB-Datenbanken wird die Kreditkarte genutzt, die den besteh
 * Ändern Sie Ihre Anwendung so, dass die neue Datenbank verwendet wird.
 * Löschen Sie Ihre alte ClearDB-Datenbank.
 
-Wenn Sie eine neue Web-App mit MySQL (ClearDB) oder eine MySQL-Datenbank (ClearDB) erstellen, richtet sich die Zahlungsweise für den Dienst nach dem gewählten Abonnement. Bei einem EA-Abonnement wird die Bereitstellung von Drittanbieterdiensten, z.B. ClearDB, im Azure-Portal nicht blockiert. Für EA-Abonnements erfolgt die Berechnung außerhalb der Zahlungsverpflichtung und nachträglich pro Vierteljahr. EA-Kunden müssen eine Zahlungsmethode, z.B. Kreditkarte, für alle im Marketplace erworbenen Dienste von Drittanbietern festlegen.
+Wenn Sie eine neue Web-App mit MySQL (ClearDB) oder eine MySQL-Datenbank (ClearDB) erstellen, richtet sich die Zahlungsweise für den Dienst nach dem gewählten Abonnement. Bei einem EA-Abonnement wird die Bereitstellung von Drittanbieterdiensten, z.B. ClearDB, im Azure-Portal nicht blockiert. Für EA-Abonnements erfolgt die Berechnung außerhalb der Azure-Vorauszahlung und nachträglich pro Vierteljahr. EA-Kunden müssen eine Zahlungsmethode, z.B. Kreditkarte, für alle im Marketplace erworbenen Dienste von Drittanbietern festlegen.
 
 ## <a name="where-can-i-see-the-charges-for-cleardb-resources-in-an-ea-subscription"></a>Wo kann ich die Kosten für ClearDB-Ressourcen in einem EA-Abonnement finden?
-Direkten EA-Kunden werden die Azure Marketplace-Gebühren im Enterprise Portal angezeigt. Beachten Sie, dass alle Marketplace-Käufe und deren Nutzung außerhalb der Zahlungsverpflichtung abgerechnet werden, wobei die Rechnungsstellung vierteljährlich und nachträglich erfolgt. EA-Kunden müssen Dienste von Drittanbietern direkt zahlen, was möglich ist, indem sie für ihr EA-Konto eine Zahlungsmethode, z.B. eine Kreditkarte, einrichten.
+Direkten EA-Kunden werden die Azure Marketplace-Gebühren im Enterprise Portal angezeigt. Beachten Sie, dass alle Marketplace-Käufe und deren Nutzung außerhalb der Azure-Vorauszahlung abgerechnet werden, wobei die Rechnungsstellung vierteljährlich und nachträglich erfolgt. EA-Kunden müssen Dienste von Drittanbietern direkt zahlen, was möglich ist, indem sie für ihr EA-Konto eine Zahlungsmethode, z.B. eine Kreditkarte, einrichten.
 
 Indirekte EA-Kunden finden ihre Azure Marketplace-Abonnements im Enterprise Portal auf der Seite **Abonnements verwalten** , wobei die Preise jedoch ausgeblendet sind. Kunden sollten ihren Lizenzierungsdienstanbieter zwecks Informationen zu Marketplace-Gebühren kontaktieren.
 

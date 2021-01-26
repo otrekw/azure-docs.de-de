@@ -13,12 +13,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 06/25/2019
-ms.openlocfilehash: eedc3dc1422d4eb6dcce80766077e8056f8509cf
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 7bd991bd709bb4be69325afe967d7e5600a9e1a4
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92678052"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222563"
 ---
 # <a name="overview-of-business-continuity-with-azure-sql-database"></a>Übersicht über die Geschäftskontinuität mit Azure SQL-Datenbank
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -48,10 +48,10 @@ Azure SQL-Datenbank und Azure SQL Managed Instance bieten außerdem mehrere Feat
 
 - [Temporäre Tabellen](../temporal-tables.md) ermöglichen es Ihnen, Zeilenversionen eines beliebigen Zeitpunkts wiederherzustellen.
 - [Integrierte, automatisierte Sicherungen](automated-backups-overview.md) und die [Point-in-Time-Wiederherstellung](recovery-using-backups.md#point-in-time-restore) ermöglichen es Ihnen, die vollständige Datenbank zu einem Zeitpunkt innerhalb des konfigurierten Aufbewahrungszeitraums von bis zu 35 Tagen wiederherzustellen.
-- Sie können [eine gelöschte Datenbank auf den Punkt wiederherstellen](recovery-using-backups.md#deleted-database-restore), an dem sie gelöscht wurde, sofern der **Server noch vorhanden ist** .
+- Sie können [eine gelöschte Datenbank auf den Punkt wiederherstellen](recovery-using-backups.md#deleted-database-restore), an dem sie gelöscht wurde, sofern der **Server noch vorhanden ist**.
 - [Langfristige Sicherungsaufbewahrung](long-term-retention-overview.md) ermöglicht es Ihnen, die Sicherungen bis zu 10 Jahre aufzubewahren. Dies ist die eingeschränkte öffentliche Vorschauversion für SQL Managed Instance
 - Die [aktive Georeplikation](active-geo-replication-overview.md) ermöglicht es Ihnen, lesbare Replikate zu erstellen und bei Ausfall eines Rechenzentrums oder bei einem Anwendungsupgrade ein manuelles Failover auf ein beliebiges Replikat durchzuführen.
-- [Autofailover-Gruppe](auto-failover-group-overview.md#terminology-and-capabilities) ermöglicht der Anwendung im Falle eines Rechenzentrumsausfalls eine automatische Wiederherstellung.
+- Eine [Autofailover-Gruppe](auto-failover-group-overview.md#terminology-and-capabilities) ermöglicht der Anwendung im Fall eines Rechenzentrumsausfalls eine automatische Wiederherstellung.
 
 ## <a name="recover-a-database-within-the-same-azure-region"></a>Wiederherstellen einer Datenbank innerhalb derselben Azure-Region
 

@@ -5,13 +5,14 @@ author: savjani
 ms.author: pariks
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 10/15/2020
-ms.openlocfilehash: b2dbaa932c01c96582cb038143fa7686707be67d
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.date: 01/18/2021
+ms.custom: references_regions
+ms.openlocfilehash: 39547e3156a684293a0624f974a8b0930f656485
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94541163"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98540010"
 ---
 # <a name="read-replicas-in-azure-database-for-mariadb"></a>Lesereplikate in Azure Database for MariaDB
 
@@ -22,34 +23,34 @@ Replikate sind neue Server, die Sie ähnlich wie normale Azure Database for Mari
 Weitere Informationen zur GTID-Replikation finden Sie in der [Dokumentation zur MariaDB-Replikation](https://mariadb.com/kb/en/library/gtid/).
 
 > [!NOTE]
-> Unvoreingenommene Kommunikation
->
-> Microsoft setzt sich für Diversität und Inklusion ein. In diesem Artikel wird das Wort _Slave_ (Sklave) verwendet. Laut [Microsoft-Styleguide für unvoreingenommene Kommunikation](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md) sollte dieses Wort jedoch vermieden werden. In diesem Artikel wird es aus Konsistenzgründen verwendet, da das Wort derzeit noch in der Software vorkommt. Wenn die Software aktualisiert und um dieses Wort bereinigt wird, wird auch der Artikel entsprechend aktualisiert.
->
+> Dieser Artikel enthält Verweise auf den Begriff _Slave_, einen Begriff, den Microsoft nicht mehr verwendet. Sobald der Begriff aus der Software entfernt wurde, wird er auch aus diesem Artikel entfernt.
 
 ## <a name="when-to-use-a-read-replica"></a>Einsatzmöglichkeiten von Lesereplikaten
 
-Das Feature für Lesereplikate kann die Leistung und Skalierung von leseintensiven Workloads verbessern. Leseworkloads können in den Replikaten isoliert werden, während Schreibworkloads an den Masterserver weitergeleitet werden können.
+Das Feature für Lesereplikate kann die Leistung und Skalierung von leseintensiven Workloads verbessern. Leseworkloads können in den Replikaten isoliert werden, während Schreibworkloads an den primären Server weitergeleitet werden können.
 
 In einem häufig anzutreffenden Szenario verwenden BI- und Analyseworkloads das Lesereplikat als Datenquelle für die Berichterstellung.
 
-Da Replikate schreibgeschützt sind, führen sie nicht direkt zu einer verringerten Auslastung der Schreibkapazität auf dem Master. Dieses Feature ist nicht auf schreibintensive Workloads ausgerichtet.
+Da Replikate schreibgeschützt sind, führen sie nicht direkt zu einer verringerten Auslastung der Schreibkapazität auf dem primären Server. Dieses Feature ist nicht auf schreibintensive Workloads ausgerichtet.
 
-Das Lesereplikatfeature verwendet die asynchrone Replikation. Das Feature ist nicht für synchrone Replikationsszenarien vorgesehen. Zwischen der Quelle und dem Replikat entsteht eine messbare Verzögerung. Letztendlich sind die Daten auf dem Replikat mit den Daten auf dem Masterserver konsistent. Verwenden Sie das Feature für Workloads, für die diese Verzögerung akzeptabel ist.
+Das Lesereplikatfeature verwendet die asynchrone Replikation. Das Feature ist nicht für synchrone Replikationsszenarien vorgesehen. Zwischen der Quelle und dem Replikat entsteht eine messbare Verzögerung. Letztendlich sind die Daten auf dem Replikat mit den Daten auf dem primären Server konsistent. Verwenden Sie das Feature für Workloads, für die diese Verzögerung akzeptabel ist.
 
 ## <a name="cross-region-replication"></a>Regionsübergreifende Replikation
+
 Sie können ein Lesereplikat erstellen, das sich in einer anderen Region als Ihr Quellserver befindet. Die regionsübergreifende Replikation kann beispielsweise hilfreich sein, um die Notfallwiederherstellung zu planen oder Daten näher beim Benutzer bereitzustellen.
 
 Sie können einen Quellserver in jeder [Azure Database for MariaDB-Region](https://azure.microsoft.com/global-infrastructure/services/?products=mariadb) haben.  Ein Quellserver kann ein Replikat in der gekoppelten Region oder den universellen Replikatregionen besitzen. Die folgende Abbildung zeigt, welche Replikatregionen entsprechend Ihrer Quellregion verfügbar sind.
 
-[ ![Lesereplikatregionen](media/concepts-read-replica/read-replica-regions.png)](media/concepts-read-replica/read-replica-regions.png#lightbox)
+[![Replikatregionen lesen](media/concepts-read-replica/read-replica-regions.png)](media/concepts-read-replica/read-replica-regions.png#lightbox)
 
 ### <a name="universal-replica-regions"></a>Universelle Replikatregionen
+
 Sie können ein Lesereplikat in einer der folgenden Regionen erstellen, unabhängig davon, wo sich der Quellserver befindet. Folgende universelle Replikatregionen werden unterstützt:
 
 Australien, Osten; Australien, Südosten; Brasilien, Süden; Kanada, Mitte; Kanada, Osten; USA, Mitte; Asien, Osten; USA, Osten; USA, Osten 2; Japan, Osten; Japan, Westen; Südkorea, Mitte; Südkorea, Süden; USA, Norden-Mitte; Europa, Norden; USA, Süden-Mitte; Asien, Südosten; Vereinigtes Königreich, Süden; Vereinigtes Königreich, Westen; Europa, Westen; USA, Westen; USA, Westen 2; USA, Westen-Mitte.
 
 ### <a name="paired-regions"></a>Regionspaare
+
 Zusätzlich zu den universellen Replikatregionen können Sie ein Lesereplikat in der gekoppelten Azure-Region Ihres Quellservers erstellen. Sollte Ihnen Ihr Regionspaar nicht bekannt sein, lesen Sie den Artikel [Gekoppelte Azure-Regionen](../best-practices-availability-paired-regions.md).
 
 Wenn Sie für die Notfallwiederherstellungsplanung regionsübergreifende Replikate verwenden, empfehlen wir Ihnen, das Replikat in der gekoppelten Region und nicht in einer der anderen Regionen zu erstellen. Regionspaare vermeiden gleichzeitige Aktualisierungen und priorisieren die physische Isolation und die Datenresidenz.  
@@ -57,7 +58,7 @@ Wenn Sie für die Notfallwiederherstellungsplanung regionsübergreifende Replika
 Es gibt jedoch einige Einschränkungen: 
 
 * Regionale Verfügbarkeit: Azure Database for MariaDB ist in den Regionen „Frankreich, Mitte“ und „VAE, Norden“ und „Deutschland, Mitte“ verfügbar. Die entsprechenden gekoppelten Regionen sind allerdings nicht verfügbar.
-    
+
 * Unidirektionale Paare: Einige Azure-Regionen werden nur in eine Richtung gekoppelt. Zu diesen Regionen zählen „Indien, Westen“, „Brasilien, Süden“ und „US Gov Virginia“. 
    Das bedeutet, dass ein Quellserver in der Region „Indien, Westen“ ein Replikat in „Indien, Süden“ erstellen kann. Ein Quellserver in der Region „Indien, Süden“ kann jedoch kein Replikat in der Region „Indien, Westen“ erstellen. Der Grund: Die sekundäre Region von „Indien, Westen“ ist zwar „Indien, Süden“, die sekundäre Region von „Indien, Süden“ ist jedoch nicht „Indien, Westen“.
 
@@ -111,22 +112,24 @@ Erfahren Sie, wie Sie die [Replikation auf ein Replikat beenden](howto-read-repl
 
 ## <a name="failover"></a>Failover
 
-Zwischen Quell- und Replikatservern erfolgt kein automatisiertes Failover. 
+Zwischen Quell- und Replikatservern erfolgt kein automatisiertes Failover.
 
 Da die Replikation asynchron erfolgt, gibt es eine Verzögerung zwischen der Quelle und dem Replikat. Die Verzögerungsdauer kann durch eine Reihe von Faktoren beeinflusst werden, z. B. durch den Umfang der Workload auf dem Quellserver und die Wartezeit zwischen Rechenzentren. In den meisten Fällen beträgt die Replikatverzögerung einige Sekunden bis zu einigen Minuten. Sie können die tatsächliche Replikatverzögerung mithilfe der Metrik *Replikatverzögerung* nachverfolgen, die für jedes Replikat verfügbar ist. Diese Metrik zeigt die seit der letzten wiedergegebenen Transaktion verstrichene Zeit an. Es wird empfohlen, die durchschnittliche Verzögerung zu ermitteln, indem Sie die Replikatverzögerung über einen bestimmten Zeitraum hinweg beobachten. Sie können eine Warnung für die Replikatverzögerung festlegen, sodass Sie Maßnahmen ergreifen können, wenn sie sich außerhalb des erwarteten Bereichs befindet.
 
 > [!Tip]
 > Wenn Sie ein Failover auf das Replikat durchführen, zeigt die Verzögerung zum Zeitpunkt der Trennung des Replikats von der Quelle an, wie viel Daten verloren gehen.
 
-Gehen Sie folgendermaßen vor, nachdem Sie entschieden haben, ein Failover auf ein Replikat durchzuführen: 
+Nachdem Sie sich für ein Failover auf ein Replikat entschieden haben,
 
-1. Beenden der Replikation auf das Replikat<br/>
-   Dieser Schritt ist erforderlich, damit der Replikatserver Schreibvorgänge akzeptieren kann. Im Rahmen dieses Vorgangs wird der Replikatserver vom Master getrennt. Nachdem Sie die das Beenden der Replikation gestartet haben, dauert der Abschluss des Back-End-Prozesse in der Regel etwa 2 Minuten. Informationen zu den Auswirkungen dieser Aktion finden Sie im Abschnitt [Beenden der Replikation](#stop-replication) in diesem Artikel.
-    
-2. Verweisen der Anwendung auf das (ehemalige) Replikat<br/>
-   Jeder Server verfügt über eine eindeutige Verbindungszeichenfolge. Aktualisieren Sie Ihre Anwendung so, dass Sie auf das (ehemalige) Replikat und nicht auf den Master verweist.
-    
-Wenn die Anwendung erfolgreich Lese- und Schreibvorgänge verarbeitet, haben Sie das Failover abgeschlossen. Die Ausfallzeit Ihrer Anwendung hängt davon ab, ob Sie ein Problem erkennen und die oben beschriebenen Schritte 1 und 2 ausführen.
+1. beenden Sie die Replikation zum Replikat.
+
+   Dieser Schritt ist erforderlich, damit der Replikatserver Schreibvorgänge akzeptieren kann. Im Rahmen dieses Vorgangs wird der Replikatserver vom primären Server getrennt. Nachdem Sie das Beenden der Replikation initiiert haben, dauert der Back-End-Prozess in der Regel etwa 2 Minuten. Informationen zu den Auswirkungen dieser Aktion finden Sie im Abschnitt [Beenden der Replikation](#stop-replication) in diesem Artikel.
+
+2. Verweisen Sie Ihre Anwendung auf das (ehemalige) Replikat.
+
+   Jeder Server verfügt über eine eindeutige Verbindungszeichenfolge. Aktualisieren Sie Ihre Anwendung so, dass Sie auf das (ehemalige) Replikat und nicht auf den primären Server verweist.
+
+Wenn Ihre Anwendung Lese- und Schreibvorgänge erfolgreich verarbeitet, haben Sie das Failover abgeschlossen. Die Ausfallzeit Ihrer Anwendung hängt davon ab, ob Sie ein Problem erkennen und die oben beschriebenen Schritte 1 und 2 ausführen.
 
 ## <a name="considerations-and-limitations"></a>Überlegungen und Einschränkungen
 
@@ -147,10 +150,10 @@ Ein Lesereplikat wird als neuer Azure Database for MariaDB-Server erstellt. Ein 
 
 ### <a name="replica-configuration"></a>Replikatkonfiguration
 
-Ein Replikat wird mit der gleichen Serverkonfiguration wie der Masterserver erstellt. Nachdem ein Replikat erstellt wurde, können mehrere Einstellungen unabhängig vom Quellserver geändert werden: die Computegeneration, die virtuellen Kerne, der Speicher, der Aufbewahrungszeitraum für Sicherungen und die Version der MariaDB-Engine. Auch der Tarif kann unabhängig geändert werden, allerdings nicht in den oder aus dem Tarif „Basic“.
+Ein Replikat wird mit der gleichen Serverkonfiguration wie der primäre Server erstellt. Nachdem ein Replikat erstellt wurde, können mehrere Einstellungen unabhängig vom Quellserver geändert werden: die Computegeneration, die virtuellen Kerne, der Speicher, der Aufbewahrungszeitraum für Sicherungen und die Version der MariaDB-Engine. Auch der Tarif kann unabhängig geändert werden, allerdings nicht in den oder aus dem Tarif „Basic“.
 
 > [!IMPORTANT]
-> Bevor Sie die Konfiguration eines Quellservers mit neuen Werten aktualisieren, sollten Sie die Replikatkonfiguration in die gleichen oder in höhere Werte ändern. Durch diese Aktion wird sichergestellt, dass das Replikat mit allen Änderungen, die auf dem Masterserver durchgeführt werden, Schritt halten kann.
+> Bevor Sie die Konfiguration eines Quellservers mit neuen Werten aktualisieren, sollten Sie die Replikatkonfiguration in die gleichen oder in höhere Werte ändern. Durch diese Aktion wird sichergestellt, dass das Replikat mit allen Änderungen, die auf dem primären Server erfolgen, Schritt halten kann.
 
 Firewallregeln und Parametereinstellungen werden beim Erstellen eines Replikats vom Quellserver geerbt. Danach sind die Regeln des Replikats unabhängig.
 
@@ -171,20 +174,21 @@ Benutzer auf dem Quellserver werden an die Lesereplikate repliziert. Sie können
 Um zu verhindern, dass Daten nicht synchronisiert werden und um einen möglichen Datenverlust oder eine Beschädigung zu vermeiden, sind einige Serverparameter bei der Verwendung von Lesereplikaten für die Aktualisierung gesperrt.
 
 Die folgenden Serverparameter sind sowohl auf dem Quell- als auch auf dem Replikatserver gesperrt:
-- [`innodb_file_per_table`](https://mariadb.com/kb/en/library/innodb-system-variables/#innodb_file_per_table) 
-- [`log_bin_trust_function_creators`](https://mariadb.com/kb/en/library/replication-and-binary-log-system-variables/#log_bin_trust_function_creators)
+
+* [`innodb_file_per_table`](https://mariadb.com/kb/en/library/innodb-system-variables/#innodb_file_per_table) 
+* [`log_bin_trust_function_creators`](https://mariadb.com/kb/en/library/replication-and-binary-log-system-variables/#log_bin_trust_function_creators)
 
 Der Parameter [`event_scheduler`](https://mariadb.com/kb/en/library/server-system-variables/#event_scheduler) ist auf den Replikatservern gesperrt.
 
-Löschen Sie Replikatserver, aktualisieren Sie den Parameterwert auf dem Master, und erstellen Sie Replikate neu, um einen der oben genannten Parameter auf dem Quellserver zu aktualisieren.
+Löschen Sie Replikatserver, aktualisieren Sie den Parameterwert auf dem Primärserver, und erstellen Sie Replikate neu, um einen der oben genannten Parameter auf dem Quellserver zu aktualisieren.
 
 ### <a name="other"></a>Andere
 
-- Die Erstellung des Replikats eines Replikats wird nicht unterstützt.
-- In-Memory-Tabellen können dazu führen, dass Replikate nicht mehr synchron sind. Dies ist eine Einschränkung der MariaDB-Replikationstechnologie.
-- Stellen Sie sicher, dass die Quellservertabellen über Primärschlüssel verfügen. Das Fehlen von Primärschlüsseln kann zu Replikationslatenz zwischen der Quelle und den Replikaten führen.
+* Die Erstellung des Replikats eines Replikats wird nicht unterstützt.
+* In-Memory-Tabellen können dazu führen, dass Replikate nicht mehr synchron sind. Dies ist eine Einschränkung der MariaDB-Replikationstechnologie.
+* Stellen Sie sicher, dass die Quellservertabellen über Primärschlüssel verfügen. Das Fehlen von Primärschlüsseln kann zu Replikationslatenz zwischen der Quelle und den Replikaten führen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Erfahren Sie, wie Sie [Lesereplikate über das Azure-Portal erstellen und verwalten](howto-read-replicas-portal.md).
-- Erfahren Sie, wie Sie [Lesereplikate über die Azure CLI und REST-API erstellen und verwalten](howto-read-replicas-cli.md).
+* Erfahren Sie, wie Sie [Lesereplikate über das Azure-Portal erstellen und verwalten](howto-read-replicas-portal.md).
+* Erfahren Sie, wie Sie [Lesereplikate über die Azure CLI und REST-API erstellen und verwalten](howto-read-replicas-cli.md).

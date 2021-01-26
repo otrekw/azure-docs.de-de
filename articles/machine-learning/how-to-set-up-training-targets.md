@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 09/28/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperf-fy21q1
-ms.openlocfilehash: ec4917aa378f746eb2caac6a7b4ce99d1c44db90
-ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
+ms.openlocfilehash: 55e618a7e4e0d21f6d4afab270e257c26fa15634
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98127650"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251113"
 ---
 # <a name="configure-and-submit-training-runs"></a>Konfigurieren und Übermitteln von Trainingsausführungen
 
@@ -75,6 +75,9 @@ experiment = Experiment(workspace=ws, name=experiment_name)
 Wählen Sie das Computeziel aus, auf dem das Trainingsskript ausgeführt werden soll. Wenn in der ScriptRunConfig-Datei kein Computeziel angegeben ist oder der Parameter `compute_target='local'` verwendet wird, wird das Skript von Azure ML lokal ausgeführt. 
 
 Im Beispielcode in diesem Artikel wird davon ausgegangen, dass Sie bereits ein `my_compute_target`-Computeziel im Abschnitt „Voraussetzungen“ erstellt haben.
+
+>[!Note]
+>Azure Databricks wird nicht als Computeziel für das Modelltraining unterstützt. Sie können Azure Databricks für Datenvorbereitungs- und Bereitstellungsaufgaben verwenden. 
 
 ## <a name="create-an-environment"></a>Erstellen einer Umgebung
 Azure Machine Learning-[Umgebungen](concept-environments.md) sind eine Kapselung der Umgebung, in der Ihr Training für das maschinelle Lernen stattfindet. Sie geben die Python-Pakete, ein Docker-Image, Umgebungsvariablen und Softwareeinstellungen für die Trainings- und Bewertungsskripts an. Sie geben auch Laufzeiten an (Python, Spark oder Docker).

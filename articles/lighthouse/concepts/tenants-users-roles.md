@@ -1,14 +1,14 @@
 ---
 title: Mandanten, Benutzer und Rollen in Azure Lighthouse-Szenarien
 description: Erfahren Sie mehr über die Konzepte von Azure Active Directory-Mandanten, -Benutzern und -Rollen sowie deren Verwendung in Azure Lighthouse-Szenarien.
-ms.date: 10/29/2020
+ms.date: 01/14/2021
 ms.topic: conceptual
-ms.openlocfilehash: 411b9bae19166e1875011360aa011c05d590b237
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: d78828cc739030f8e456c64885d77ddf59dd13fb
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96023941"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98233915"
 ---
 # <a name="tenants-users-and-roles-in-azure-lighthouse-scenarios"></a>Mandanten, Benutzer und Rollen in Azure Lighthouse-Szenarien
 
@@ -18,7 +18,10 @@ Ein *Mandant* ist eine dedizierte und vertrauenswürdige Instanz von Azure Activ
 
 Um diese logische Projektion zu erreichen, muss für ein Abonnement (oder mindestens eine Ressourcengruppe in einem Abonnement) im Kundenmandanten ein *Onboarding* für Azure Lighthouse durchgeführt werden. Dieser Onboardingprozess kann entweder [über Azure Resource Manager-Vorlagen](../how-to/onboard-customer.md) oder durch das [Veröffentlichen eines öffentlichen oder privaten Angebots im Azure Marketplace](../how-to/publish-managed-services-offers.md) erfolgen.
 
-Unabhängig von der gewählten Onboardingmethode müssen Sie *Autorisierungen* definieren. Jede Autorisierung gibt ein Benutzerkonto im verwaltenden Mandanten an, der Zugriff auf die delegierten Ressourcen erhält. Außerdem wird eine integrierte Rolle angegeben, mit der die Berechtigungen dieser Benutzer für die Ressourcen festgelegt werden.
+Unabhängig von der gewählten Onboardingmethode müssen Sie *Autorisierungen* definieren. Jede Autorisierung gibt eine **principalId** an, die Zugriff auf die delegierten Ressourcen erhält. Außerdem wird eine integrierte Rolle angegeben, mit der die Berechtigungen dieser Benutzer für die Ressourcen festgelegt werden. Die **principalId** definiert einen Azure AD-Benutzer, eine Gruppe oder einen Dienstprinzipal im verwaltenden Mandanten.
+
+> [!NOTE]
+> Wenn nicht explizit angegeben, können sich Verweise auf einen „Benutzer“ in der Azure Lighthouse-Dokumentation auf einen Azure AD-Benutzer, eine Gruppe oder einen Dienstprinzipal in einer Autorisierung beziehen.
 
 ## <a name="best-practices-for-defining-users-and-roles"></a>Best Practices für das Definieren von Benutzern und Rollen
 

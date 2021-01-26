@@ -5,14 +5,14 @@ author: timsander1
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 07/29/2020
+ms.date: 01/20/2021
 ms.author: tisande
-ms.openlocfilehash: 35232f95bc18432db05775807d95f23ceab66aea
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 09148e65e446d723fbfe7a54602db59ee0739f83
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93333782"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98599358"
 ---
 # <a name="keywords-in-azure-cosmos-db"></a>Schlüsselwörter in Azure Cosmos DB
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -107,6 +107,73 @@ Abfragen mit einer Aggregatsystemfunktion und einer Unterabfrage mit `DISTINCT` 
 ```sql
 SELECT COUNT(1) FROM (SELECT DISTINCT f.lastName FROM f)
 ```
+
+## <a name="like"></a>LIKE
+
+Gibt je nachdem, ob eine bestimmte Zeichenfolge mit einem angegebenen Muster übereinstimmt, einen booleschen Wert zurück. Ein Muster kann normale Zeichen und Platzhalterzeichen einschließen. Sie können logisch äquivalente Abfragen schreiben, indem Sie entweder das `LIKE`-Schlüsselwort oder die [RegexMatch](sql-query-regexmatch.md)-Systemfunktion verwenden. Sie werden unabhängig von der ausgewählten Option dieselbe Indexauslastung beobachten. Daher sollten Sie `LIKE` verwenden, wenn Sie dessen Syntax anderen regulären Ausdrücken vorziehen.
+
+> [!NOTE]
+> Da `LIKE` einen Index verwenden kann, sollten Sie [einen Bereichsindex erstellen](indexing-policy.md) für Eigenschaften, die Sie mit `LIKE` vergleichen.
+
+Sie können folgende Platzhalterzeichen mit „LIKE“ verwenden:
+
+| Platzhalter | BESCHREIBUNG                                                  | Beispiel                                     |
+| -------------------- | ------------------------------------------------------------ | ------------------------------------------- |
+| %                    | Eine Zeichenfolge aus null oder mehr Zeichen                      | WHERE   c.description LIKE   “%SO%PS%”      |
+| _ (Unterstrich)     | Ein einzelnes Zeichen                                       | WHERE   c.description LIKE   “%SO_PS%”      |
+| [ ]                  | Beliebiges einzelnes Zeichen im angegebenen Bereich ([a-f]) oder in der angegebenen Menge ([abcdef]). | WHERE   c.description LIKE   “%SO[t-z]PS%”  |
+| [^]                  | Beliebiges einzelnes Zeichen, das sich nicht im angegebenen Bereich ([^a-f]) oder in der angegebenen Menge ([^abcdef]) befindet. | WHERE   c.description LIKE   “%SO[^abc]PS%” |
+
+
+### <a name="using-like-with-the--wildcard-character"></a>Verwenden von NOT LIKE mit dem Platzhalterzeichen %
+
+Das Zeichen `%` entspricht einer Zeichenfolge aus null oder mehr Zeichen. Wenn Sie z. B. ein `%` am Anfang und am Ende des Musters platzieren, gibt die folgende Abfrage alle Elemente mit einer Beschreibung zurück, die `fruit` enthält:
+
+```sql
+SELECT *
+FROM c
+WHERE c.description LIKE "%fruit%"
+```
+
+Wenn Sie ein `%`-Zeichen nur am Anfang des Musters verwendet haben, werden nur Elemente mit einer Beschreibung zurückgegeben, die mit `fruit` beginnt:
+
+```sql
+SELECT *
+FROM c
+WHERE c.description LIKE "fruit%"
+```
+
+
+### <a name="using-not-like"></a>Verwenden von „NOT LIKE“
+
+Im folgenden Beispiel werden alle Elemente mit einer Beschreibung zurückgegeben, die nicht `fruit` enthält:
+
+```sql
+SELECT *
+FROM c
+WHERE c.description NOT LIKE "%fruit%"
+```
+
+### <a name="using-the-escape-clause"></a>Verwenden der ESCAPE-Klausel
+
+Mithilfe der ESCAPE-Klausel können Sie nach Mustern suchen, die ein oder mehrere Platzhalterzeichen enthalten. Wenn Sie z. B. nach Beschreibungen suchen möchten, in denen die Zeichenfolge `20-30%` enthalten ist, sollten Sie die `%` nicht als Platzhalterzeichen interpretieren.
+
+```sql
+SELECT *
+FROM c
+WHERE c.description LIKE '%20-30!%%' ESCAPE '!'
+```
+
+### <a name="using-wildcard-characters-as-literals"></a>Verwenden von Platzhalterzeichen als Literale
+
+Sie können Platzhalterzeichen in eckige Klammern einschließen, um sie als Literalzeichen zu behandeln. Wenn Sie ein Platzhalterzeichen in Klammern einschließen, entfernen Sie alle besonderen Attribute. Hier einige Beispiele:
+
+| Muster           | Bedeutung |
+| ----------------- | ------- |
+| LIKE   “20-30[%]” | 20-30 %  |
+| LIKE   “[_]n”     | _n      |
+| LIKE   “[ [ ]”    | [       |
+| LIKE   “]”        | ]       |
 
 ## <a name="in"></a>IN
 

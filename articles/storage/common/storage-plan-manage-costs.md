@@ -9,12 +9,12 @@ ms.date: 11/13/2020
 ms.author: normesta
 ms.subservice: common
 ms.custom: subject-cost-optimization
-ms.openlocfilehash: 6942c3ecd631a141f1df741ff827a6889605e536
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 0bad4637f13bbcf02047416499e4f82fdc53eb4f
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96498199"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98601300"
 ---
 # <a name="plan-and-manage-costs-for-azure-blob-storage"></a>Planen und Verwalten von Kosten für Azure Blob Storage
 
@@ -41,7 +41,7 @@ Verwenden Sie den [Azure-Preisrechner](https://azure.microsoft.com/pricing/calcu
 4. Ändern Sie die übrigen Optionen, um die jeweilige Auswirkung auf die Schätzung anzuzeigen.
 
    > [!NOTE]
-   > Sie können Gebühren für Azure Blob Storage mit Ihrem Azure Enterprise Agreement-Mindestverbrauchsguthaben bezahlen. Allerdings können Sie mit dem Mindestverbrauchsguthaben keine Gebühren für Produkte und Dienste von Drittanbietern, einschließlich derjenigen aus Azure Marketplace, bezahlen.
+   > Sie können Azure Blob Storage-Gebühren mit der Azure-Vorauszahlungsgutschrift (früher als Mindestverbrauch bezeichnet) bezahlen. Allerdings können Sie mit der Azure-Vorauszahlungsgutschrift keine Gebühren für Produkte und Dienste von Drittanbietern, einschließlich derjenigen aus dem Azure Marketplace, bezahlen.
 
 ## <a name="optimize-costs"></a>Optimieren von Kosten
 
@@ -75,16 +75,16 @@ Weitere Informationen finden Sie unter [Verwalten des Azure Blob Storage-Lebensz
 
 ## <a name="create-budgets"></a>Erstellen von Budgets
 
-Sie können [Budgets](../../cost-management-billing/costs/tutorial-acm-create-budgets.md) erstellen, um Kosten zu verwalten, und Warnungen erstellen, die die Beteiligten automatisch über Ausgabenanomalien und Überschreitungsrisiken informieren. Warnungen basieren auf Ausgaben im Vergleich zum Budget und zu Kostenschwellenwerten. Budgets und Warnungen werden für Azure-Abonnements und -Ressourcengruppen erstellt und sind daher im Rahmen einer umfassenden Strategie zur Kostenüberwachung hilfreich. Unter Umständen verfügen sie aber über eine eingeschränkte Funktionalität für die Verwaltung der Kosten einzelner Azure-Dienste, z. B. die Kosten für Azure Storage, weil diese Funktionen für die Nachverfolgung von Kosten auf höherer Ebene ausgelegt sind.
+Sie können [Budgets](../../cost-management-billing/costs/tutorial-acm-create-budgets.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) erstellen, um Kosten zu verwalten, und Warnungen erstellen, die die Beteiligten automatisch über Ausgabenanomalien und Überschreitungsrisiken informieren. Warnungen basieren auf Ausgaben im Vergleich zum Budget und zu Kostenschwellenwerten. Budgets und Warnungen werden für Azure-Abonnements und -Ressourcengruppen erstellt und sind daher im Rahmen einer umfassenden Strategie zur Kostenüberwachung hilfreich. Unter Umständen verfügen sie aber über eine eingeschränkte Funktionalität für die Verwaltung der Kosten einzelner Azure-Dienste, z. B. die Kosten für Azure Storage, weil diese Funktionen für die Nachverfolgung von Kosten auf höherer Ebene ausgelegt sind.
 
 ## <a name="monitor-costs"></a>Überwachen der Kosten
 
-Wenn Sie Azure-Ressourcen mit Azure Storage verwenden, fallen Kosten an. Die Kosten pro Ressourcennutzungseinheit variieren nach dem Zeitintervall (Sekunden, Minuten, Stunden und Tage) oder der Einheitennutzung (Bytes, Megabytes usw.) Kosten fallen an, sobald mit der Nutzung von Azure Storage begonnen wird. Die Kosten werden im Bereich [Kostenanalyse](../../cost-management-billing/costs/quick-acm-cost-analysis.md) im Azure-Portal angezeigt.
+Wenn Sie Azure-Ressourcen mit Azure Storage verwenden, fallen Kosten an. Die Kosten pro Ressourcennutzungseinheit variieren nach dem Zeitintervall (Sekunden, Minuten, Stunden und Tage) oder der Einheitennutzung (Bytes, Megabytes usw.) Kosten fallen an, sobald mit der Nutzung von Azure Storage begonnen wird. Die Kosten werden im Bereich [Kostenanalyse](../../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) im Azure-Portal angezeigt.
 
 Bei Verwendung der Kostenanalyse können Sie Azure Storage-Kosten in Diagrammen und Tabellen für unterschiedliche Zeitintervalle anzeigen. Beispiele hierfür sind „Tag“, „Aktueller Monat“, „Vorheriger Monat“ und „Jahr“. Außerdem können Sie Kosten nach Budgets und vorhergesagten Kosten anzeigen. Wenn Sie im Laufe der Zeit zu längeren Zeiträumen wechseln, können Sie Ausgabentrends ermitteln und erkennen, wo es ggf. zu hohen Ausgaben gekommen ist. Wenn Sie Budgets erstellt haben, können Sie auch leicht feststellen, wo diese überschritten wurden.
 
 >[!NOTE]
-> Die Kostenanalyse unterstützt verschiedene Arten von Azure-Kontotypen. Die vollständige Liste der unterstützten Kontotypen finden Sie unter [Grundlegendes zu Cost Management-Daten](../../cost-management-billing/costs/understand-cost-mgt-data.md). Um Kostendaten anzeigen zu können, müssen Sie mindestens über Lesezugriff auf Ihr Azure-Konto verfügen. Informationen zum Zuweisen des Zugriffs auf Azure Cost Management-Daten finden Sie unter [Zuweisen des Zugriffs auf Cost Management-Daten](../../cost-management-billing/costs/assign-access-acm-data.md).
+> Die Kostenanalyse unterstützt verschiedene Arten von Azure-Kontotypen. Die vollständige Liste der unterstützten Kontotypen finden Sie unter [Grundlegendes zu Cost Management-Daten](../../cost-management-billing/costs/understand-cost-mgt-data.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn). Um Kostendaten anzeigen zu können, müssen Sie mindestens über Lesezugriff auf Ihr Azure-Konto verfügen. Informationen zum Zuweisen des Zugriffs auf Azure Cost Management-Daten finden Sie unter [Zuweisen des Zugriffs auf Cost Management-Daten](../../cost-management-billing/costs/assign-access-acm-data.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn).
 
 So zeigen Sie Azure Storage-Kosten in der Kostenanalyse an:
 

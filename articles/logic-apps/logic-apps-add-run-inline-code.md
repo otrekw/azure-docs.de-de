@@ -7,12 +7,12 @@ ms.reviewer: deli, logicappspm
 ms.topic: article
 ms.date: 12/07/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 1736a1d22ccfb0f00061534d1c733ab72da4c7b0
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 3f88fa38d62778bc3c4c1e29571d1d0ae4eeb5ff
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96922508"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98179604"
 ---
 # <a name="add-and-run-code-snippets-by-using-inline-code-in-azure-logic-apps"></a>Hinzufügen und Ausführen von Codeausschnitten mit Inlinecode in Azure Logic Apps
 
@@ -31,7 +31,7 @@ Wenn Sie einen Codeausschnitt in Ihrer Logik-App ausführen möchten, können Si
   > [!NOTE]
   > Die `require()`-Funktion wird von der Inlinecode-Aktion zur Ausführung von JavaScript nicht unterstützt.
 
-Diese Aktion führt den Codeausschnitt aus und gibt die Ausgabe des Codeausschnitts als Token mit dem Namen `Result` zurück. Sie können dieses Token mit nachfolgenden Aktionen im Workflow ihrer Logik-App verwenden. Wenn Sie in anderen Szenarien eine Funktion für Ihren Code erstellen möchten, versuchen Sie, in der Logik-App [stattdessen eine Azure-Funktion zu erstellen und aufzurufen](../logic-apps/logic-apps-azure-functions.md).
+Diese Aktion führt den Codeausschnitt aus und gibt die Ausgabe des Codeausschnitts als Token mit dem Namen `Result` zurück. Sie können dieses Token mit nachfolgenden Aktionen im Workflow ihrer Logik-App verwenden. Wenn Sie in anderen Szenarien eine Funktion für Ihren Code erstellen möchten, versuchen Sie, in der Logik-App [stattdessen eine Azure-Funktion über Azure Functions zu erstellen und aufzurufen](../logic-apps/logic-apps-azure-functions.md).
 
 In diesem Artikel wird die Beispiel-Logik-App ausgelöst, wenn eine neue E-Mail in einem Geschäfts-, Schul- oder Unikonto empfangen wird. Der Codeausschnitt extrahiert und gibt alle E-Mail-Adressen zurück, die im E-Mail-Text enthalten sind.
 

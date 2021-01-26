@@ -10,13 +10,13 @@ ms.topic: troubleshooting
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: wiassaf, sstein
-ms.date: 03/10/2020
-ms.openlocfilehash: 6ea17f04538e3444b1baddaa8862add2cfbbaa9c
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.date: 1/14/2021
+ms.openlocfilehash: 4d0f5404a64eae99ced0dd797954ba042b50060f
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96493422"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98217225"
 ---
 # <a name="detectable-types-of-query-performance-bottlenecks-in-azure-sql-database"></a>Erkennbare Typen von Problemen mit Engpässen bei der Abfrageleistung in Azure SQL-Datenbank
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
@@ -90,7 +90,7 @@ Hier sehen Sie ein Beispiel für eine teilweise parametrisierte Abfrage:
 ```sql
 SELECT *
 FROM t1 JOIN t2 ON t1.c1 = t2.c1
-WHERE t1.c1 = @p1 AND t2.c2 = '961C3970-0E54-4E8E-82B6-5545BE897F8F'
+WHERE t1.c1 = @p1 AND t2.c2 = '961C3970-0E54-4E8E-82B6-5545BE897F8F';
 ```
 
 In diesem Beispiel nimmt `t1.c1` den Wert `@p1` an, aber `t2.c2` verwendet weiterhin die GUID als Literal. Wenn Sie in diesem Fall den Wert für `c2` ändern, wird die Abfrage als eine andere Abfrage behandelt und eine neue Kompilierung durchgeführt. In diesem Beispiel muss auch die GUID parametrisiert werden, um die Anzahl von Kompilierungen zu verringern.
@@ -115,7 +115,7 @@ WHERE
   rsi.start_time >= DATEADD(hour, -2, GETUTCDATE())
   AND query_parameterization_type_desc IN ('User', 'None')
 GROUP BY q.query_hash
-ORDER BY count (distinct p.query_id) DESC
+ORDER BY count (distinct p.query_id) DESC;
 ```
 
 ### <a name="factors-that-affect-query-plan-changes"></a>Faktoren, die sich auf Abfrageplanänderungen auswirken
@@ -187,7 +187,7 @@ Sobald Sie einen suboptimalen Plan und *wartebezogene Probleme* im Zusammenhang 
 
 - **Blockierung:**
 
-  Möglicherweise wurden einige Objekte in der Datenbank für eine Abfrage gesperrt, während andere Abfragen versuchen, auf die gleichen Objekte zuzugreifen. Blockierende Abfragen können mithilfe von [DMVs](database/monitoring-with-dmvs.md#monitoring-blocked-queries) oder [Intelligent Insights](database/intelligent-insights-troubleshoot-performance.md#locking) ermittelt werden.
+  Möglicherweise wurden einige Objekte in der Datenbank für eine Abfrage gesperrt, während andere Abfragen versuchen, auf die gleichen Objekte zuzugreifen. Blockierende Abfragen können mithilfe von [DMVs](database/monitoring-with-dmvs.md#monitoring-blocked-queries) oder [Intelligent Insights](database/intelligent-insights-troubleshoot-performance.md#locking) ermittelt werden. Weitere Informationen finden Sie unter [Verstehen und Beheben von Problemen durch Blockierungen in Azure SQL](database/understand-resolve-blocking.md).
 - **E/A-Probleme**
 
   Abfragen warten möglicherweise darauf, dass Seiten in die Daten- oder Protokolldateien geschrieben werden. Überprüfen Sie in diesem Fall die Wartestatistik `INSTANCE_LOG_RATE_GOVERNOR`, `WRITE_LOG` oder `PAGEIOLATCH_*` in der DMV. Erfahren Sie, wie DMVs zum [Identifizieren von Problemen mit der E/A-Leistung](database/monitoring-with-dmvs.md#identify-io-performance-issues) verwendet werden können.

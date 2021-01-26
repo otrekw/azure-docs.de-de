@@ -4,15 +4,15 @@ description: In dieser Anleitung werden häufig verwendete Horizon-Methoden besc
 author: shhazam-ms
 manager: rkarlin
 ms.author: shhazam
-ms.date: 1/7/2020
+ms.date: 1/5/2021
 ms.topic: article
 ms.service: azure
-ms.openlocfilehash: 6d2e3fccd6a61fe129050faa29cb7bb77674ccfe
-ms.sourcegitcommit: 8f0803d3336d8c47654e119f1edd747180fe67aa
+ms.openlocfilehash: 39770fe7aa7b11cae03304fda8901e81e0f1877a
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97976900"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98208409"
 ---
 # <a name="horizon-api"></a>Horizon-API 
 
@@ -20,17 +20,19 @@ In dieser Anleitung werden häufig verwendete Horizon-Methoden beschrieben.
 
 ### <a name="getting-more-information"></a>Weitere Informationen
 
-Weitere Informationen zum Arbeiten mit Horizon und der CyberX-Plattform finden Sie an folgenden Stellen:
+Weitere Informationen zur Arbeit mit Horizon und der Defender für IoT-Plattform finden Sie an folgenden Stellen:
 
-- Informationen zum Horizon ODE-SDK (Open Development Environment) erhalten Sie von Ihrem CyberX-Vertriebsmitarbeiter.
+- Informationen zum Horizon ODE-SDK (Open Development Environment) erhalten Sie von Ihrem Defender für IoT-Vertriebsmitarbeiter.
 - Informationen zum Support und zur Problembehandlung erhalten Sie vom <support@cyberx-labs.com>.
-- Wenn Sie über die CyberX-Konsole auf das CyberX-Benutzerhandbuch zugreifen möchten, wählen Sie :::image type="icon" source="media/references-horizon-api/profile-icon.png"::: und anschließend **Benutzerhandbuch herunterladen** aus.
+
+- Wenn Sie über die Defender für IoT-Konsole auf das Benutzerhandbuch zu Defender für IoT zugreifen möchten, wählen Sie :::image type="icon" source="media/references-horizon-api/profile.png"::: und anschließend **Benutzerhandbuch herunterladen** aus.
+
 
 ## `horizon::protocol::BaseParser`
 
 Abstrakt für alle Plug-Ins. Dies enthält zwei Methoden:
 
-- Zum Verarbeiten von Plug-In-Filtern, die Sie definiert haben. Auf diese Weise wird Horizon informiert, wie die Kommunikation mit dem Parser erfolgen soll
+- Zum Verarbeiten von Plug-In-Filtern, die Sie definiert haben. Auf diese Weise wird Horizon informiert, wie die Kommunikation mit dem Parser erfolgen soll.
 - Zum Verarbeiten der tatsächlichen Daten.
 
 ## `std::shared_ptr<horizon::protocol::BaseParser> create_parser()`
@@ -39,7 +41,7 @@ Mit der ersten Funktion, die für das Plug-In aufgerufen wird, wird eine Instanz
 
 ### <a name="parameters"></a>Parameter 
 
-Keine
+Keine.
 
 ### <a name="return-value"></a>Rückgabewert
 
@@ -57,7 +59,7 @@ In den meisten Fällen bleibt dieser Parameter leer. Löst eine Ausnahme aus, da
 
 ### <a name="return-value"></a>Rückgabewert 
 
-Ein Array von „uint64_t“, bei dem es sich um die Registrierung handelt, die in eine Art von „uint64_t“ verarbeitet wird. Das heißt, dass in der Karte eine Liste von Ports enthalten ist, deren Werte „uin64_t“ bilden.
+Ein Array von „uint64_t“, bei dem es sich um die Registrierung handelt, die als eine Art von „uint64_t“ verarbeitet wird. Das heißt, dass in der Karte eine Liste von Ports enthalten ist, deren Werte „uin64_t“ bilden.
 
 ## `horizon::protocol::ParserResult horizon::protocol::BaseParser::processLayer(horizon::protocol::management::IProcessingUtils &,horizon::general::IDataBuffer &)`
 
@@ -69,12 +71,12 @@ Ihr Plug-In sollte threadsicher sein, da diese Funktion möglicherweise von unte
 
 ### <a name="parameters"></a>Parameter
 
-- Die SDK-Steuerungseinheit, die für das Speichern der Daten und das Erstellen von SDK-bezogenen Objekten (z. B. ILayer, Felder usw.) verantwortlich ist.
+- Die SDK-Steuerungseinheit, die für das Speichern der Daten und das Erstellen von SDK-bezogenen Objekten wie ILayer und Felder zuständig ist.
 - Ein Hilfsprogramm zum Lesen der Daten aus dem Rohdatenpaket. Für das Hilfsprogramm ist bereits die Bytereihenfolge festgelegt, die Sie in der Datei „config.json“ definiert haben.
 
 ### <a name="return-value"></a>Rückgabewert 
 
-Das Ergebnis der Verarbeitung. Mögliche Werte: „Success/Malformed/SanityFailure“ (Erfolg/Falsch formatiert/Integritätsfehler).
+Das Ergebnis der Verarbeitung. Mögliche Werte: *Success*, *Malformed* oder *Sanity* (Erfolgreich/Nicht wohlgeformt/Integrität).
 
 ## `horizon::protocol::SanityFailureResult: public horizon::protocol::ParserResult`
 
@@ -90,7 +92,7 @@ Konstruktor
 
 ## `horizon::protocol::MalformedResult: public horizon::protocol::ParserResult`
 
-Ergebnis: Falsch formatiert. Das heißt, dass das Paket bereits als Protokoll erkannt wurde, einige Überprüfungen jedoch fehlerhaft waren (reservierte Bits sind aktiviert, ein Feld fehlt usw.).
+Ergebnis: Nicht wohlgeformt. Das heißt, dass das Paket bereits als Protokoll erkannt wurde, einige Überprüfungen jedoch fehlerhaft waren (reservierte Bits sind aktiviert, oder ein Feld fehlt).
 
 ## `horizon::protocol::MalformedResult::MalformedResult(uint64_t)`
 
@@ -110,24 +112,24 @@ Konstruktor. Es wurde ein erfolgreiches Basisergebnis erstellt. Das heißt, dass
 
 ## `horizon::protocol::SuccessResult(horizon::protocol::ParserResultDirection)`
 
-Konstruktor
+Konstruktor.
 
 ### <a name="parameters"></a>Parameter 
 
-- Die Richtung des Pakets (sofern definiert). Mögliche Werte: REQUEST (Anforderung), RESPONSE (Antwort)
+- Die Richtung des Pakets (sofern definiert). Mögliche Werte: *REQUEST* (Anforderung) oder *RESPONSE* (Antwort).
 
 ## `horizon::protocol::SuccessResult(horizon::protocol::ParserResultDirection, const std::vector<uint64_t> &)`
 
-Konstruktor
+Konstruktor.
 
 ### <a name="parameters"></a>Parameter
 
-- Die Richtung des Pakets kann, sofern sie definiert wurde, „REQUEST“ oder „RESPONSE“ lauten
+- Die Richtung des Pakets kann, sofern sie definiert wurde, *REQUEST* oder *RESPONSE* lauten.
 - Warnungen. Diese Ereignisse schlagen nicht fehl, aber Horizon wird benachrichtigt.
 
 ## `horizon::protocol::SuccessResult(const std::vector<uint64_t> &)`
 
-Konstruktor
+Konstruktor.
 
 ### <a name="parameters"></a>Parameter 
 
@@ -135,11 +137,11 @@ Konstruktor
 
 ## `HorizonID HORIZON_FIELD(const std::string_view &)`
 
-Konvertiert einen zeichenfolgenbasierten Verweis auf einen Feldnamen (z. B. „function_code“) in eine Horizon-ID (HorizonID)
+Konvertiert einen zeichenfolgenbasierten Verweis auf einen Feldnamen (z. B. „function_code“) in eine Horizon-ID (HorizonID).
 
 ### <a name="parameters"></a>Parameter 
 
-- Zeichenfolge, die konvertiert werden soll
+- Zu konvertierende Zeichenfolge.
 
 ### <a name="return-value"></a>Rückgabewert
 
@@ -155,11 +157,11 @@ Ein Verweis auf eine erstellte Ebene, damit Sie dort Daten hinzufügen können.
 
 ## `horizon::protocol::management::IFieldManagement &horizon::protocol::management::IProcessingUtils::getFieldsManager()`
 
-Ruft das Feldverwaltungsobjekt ab, das für das Erstellen von Feldern auf unterschiedlichen Objekten (z. B. ILayer) verantwortlich ist
+Ruft das Feldverwaltungsobjekt ab, das für das Erstellen von Feldern auf unterschiedlichen Objekten (z. B. ILayer) verantwortlich ist.
 
 ### <a name="return-value"></a>Rückgabewert
 
-Verweis auf den Manager
+Verweis auf den Manager.
 
 ## `void horizon::protocol::management::IFieldManagement::create(horizon::protocol::ILayer &, HorizonID, uint64_t)`
 
@@ -167,9 +169,9 @@ Erstellt auf der Ebene mit der angeforderten ID ein neues numerisches Feld mit 6
 
 ### <a name="parameters"></a>Parameter 
 
-- Die zuvor erstellte Ebene
-- Vom Makro „HORIZON_FIELD“ erstellte HorizonID
-- Der Rohwert, den Sie speichern möchten
+- Die zuvor erstellte Ebene.
+- Vom Makro **HORIZON_FIELD** erstellte HorizonID.
+- Der Rohwert, den Sie speichern möchten.
 
 ## `void horizon::protocol::management::IFieldManagement::create(horizon::protocol::ILayer &, HorizonID, std::string)`
 
@@ -177,19 +179,19 @@ Erstellt auf der Ebene mit der angeforderten ID ein neues Zeichenfolgenfeld. Der
 
 ### <a name="parameters"></a>Parameter  
 
-- Die zuvor erstellte Ebene
-- Vom Makro „HORIZON_FIELD“ erstellte HorizonID
-- Der Rohwert, den Sie speichern möchten
+- Die zuvor erstellte Ebene.
+- Vom Makro **HORIZON_FIELD** erstellte HorizonID.
+- Der Rohwert, den Sie speichern möchten.
 
 ## `void horizon::protocol::management::IFieldManagement::create(horizon::protocol::ILayer &, HorizonID, std::vector<char> &)`
 
-Erstellt auf der Ebene mit der angeforderten ID ein neues Feld mit Rohwerten (Bytearray). Der Speicher wird verschoben.Seien Sie daher vorsichtig. Sie können diesen Wert nicht noch einmal verwenden.
+Erstellt auf der Ebene mit der angeforderten ID ein neues Feld mit Rohwerten (Bytearray). Der Speicher wird verschoben. Vorsicht: Sie können diesen Wert nicht noch einmal verwenden.
 
 ### <a name="parameters"></a>Parameter
 
-- Die zuvor erstellte Ebene
-- Vom Makro „HORIZON_FIELD“ erstellte HorizonID
-- Der Rohwert, den Sie speichern möchten
+- Die zuvor erstellte Ebene.
+- Vom Makro **HORIZON_FIELD** erstellte HorizonID.
+- Der Rohwert, den Sie speichern möchten.
 
 ## `horizon::protocol::IFieldValueArray &horizon::protocol::management::IFieldManagement::create(horizon::protocol::ILayer &, HorizonID, horizon::protocol::FieldValueType)`
 
@@ -197,40 +199,40 @@ Erstellt auf der Ebene des angegebenen Typs mit der angeforderten ID ein Feld mi
 
 ### <a name="parameters"></a>Parameter
 
-- Die zuvor erstellte Ebene
-- Vom Makro „HORIZON_FIELD“ erstellte HorizonID
-- Typ der Werte, die im Array gespeichert werden
+- Die zuvor erstellte Ebene.
+- Vom Makro **HORIZON_FIELD** erstellte HorizonID.
+- Typ der Werte, die im Array gespeichert werden.
 
 ### <a name="return-value"></a>Rückgabewert
 
-Verweis auf ein Array, an das Sie Werte anfügen sollten
+Verweis auf ein Array, an das Sie Werte anfügen sollten.
 
 ## `void horizon::protocol::management::IFieldManagement::create(horizon::protocol::IFieldValueArray &, uint64_t)`
 
-Fügt dem zuvor erstellten Array einen neuen ganzzahligen Wert an
+Fügt dem zuvor erstellten Array einen neuen ganzzahligen Wert an.
 
 ### <a name="parameters"></a>Parameter
 
-- Das zuvor erstellte Array
-- Rohwert, der im Array gespeichert werden soll
+- Das zuvor erstellte Array.
+- Rohwert, der im Array gespeichert werden soll.
 
 ## `void horizon::protocol::management::IFieldManagement::create(horizon::protocol::IFieldValueArray &, std::string)`
 
-Fügt dem zuvor erstellten Array einen neuen Zeichenfolgenwert an. Der Speicher wird verschoben.Seien Sie daher vorsichtig. Sie können diesen Wert nicht noch einmal verwenden.
+Fügt dem zuvor erstellten Array einen neuen Zeichenfolgenwert an. Der Speicher wird verschoben. Vorsicht: Sie können diesen Wert nicht noch einmal verwenden.
 
 ### <a name="parameters"></a>Parameter
 
-- Das zuvor erstellte Array
-- Rohwert, der im Array gespeichert werden soll
+- Das zuvor erstellte Array.
+- Rohwert, der im Array gespeichert werden soll.
 
 ## `void horizon::protocol::management::IFieldManagement::create(horizon::protocol::IFieldValueArray &, std::vector<char> &)`
 
-Fügt dem zuvor erstellten Array einen neuen Rohwert an. Der Speicher wird verschoben.Seien Sie daher vorsichtig. Sie können diesen Wert nicht noch einmal verwenden.
+Fügt dem zuvor erstellten Array einen neuen Rohwert an. Der Speicher wird verschoben. Vorsicht: Sie können diesen Wert nicht noch einmal verwenden.
 
 ### <a name="parameters"></a>Parameter
 
-- Das zuvor erstellte Array
-- Rohwert, der im Array gespeichert werden soll
+- Das zuvor erstellte Array.
+- Rohwert, der im Array gespeichert werden soll.
 
 ## `bool horizon::general::IDataBuffer::validateRemainingSize(size_t)`
 
@@ -238,11 +240,11 @@ Fügt dem zuvor erstellten Array einen neuen Rohwert an. Der Speicher wird versc
 
 ### <a name="parameters"></a>Parameter
 
-Anzahl der Bytes, die vorhanden sein müssen 
+Anzahl von Bytes, die vorhanden sein müssen.
 
 ### <a name="return-value"></a>Rückgabewert
 
-TRUE, wenn der Puffer mindestens x Bytes enthält. Andernfalls FALSE.
+TRUE, wenn der Puffer mindestens x Bytes enthält. Andernfalls lautet der Wert `False`.
 
 ## `uint8_t horizon::general::IDataBuffer::readUInt8()`
 
@@ -282,12 +284,12 @@ Liest den vorab zugeordneten Speicher einer bestimmten Größe. Kopiert tatsäch
 
 ### <a name="parameters"></a>Parameter 
 
-- Speicherbereich, in den die Daten kopiert werden sollen
+- Speicherbereich, in den die Daten kopiert werden sollen.
 - Größe des Speicherbereichs. Dieser Parameter definiert auch, wie viele Bytes kopiert werden.
 
 ## `std::string_view horizon::general::IDataBuffer::readString(size_t)`
 
-Liest eine Zeichenfolge aus dem Puffer
+Liest eine Zeichenfolge aus dem Puffer.
 
 ### <a name="parameters"></a>Parameter 
 

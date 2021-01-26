@@ -3,31 +3,48 @@ title: Authentifizieren mit verwalteten Dienstidentitäten
 description: Erfahren Sie, wie Sie ohne Anmeldung mit Anmeldeinformationen oder Geheimnissen auf von Azure Active Directory geschützte Ressourcen zugreifen, indem Sie eine verwaltete Identität verwenden.
 services: logic-apps
 ms.suite: integration
-ms.reviewer: jonfan, logicappspm
+ms.reviewer: estfan, logicappspm, azla
 ms.topic: article
-ms.date: 10/27/2020
-ms.openlocfilehash: 1152c8b72bcb830a7ba4efa053d3ffff667f9dc8
-ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
+ms.date: 01/15/2021
+ms.openlocfilehash: 9ac8a23569d9a85787768419a0377967026e9bd9
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98034168"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251603"
 ---
 # <a name="authenticate-access-to-azure-resources-by-using-managed-identities-in-azure-logic-apps"></a>Authentifizieren des Zugriffs auf Azure-Ressourcen mithilfe verwalteter Identitäten in Azure Logic Apps
 
-Zum mühelosen Zugreifen auf andere Ressourcen, die von Azure Active Directory (Azure AD) geschützt werden, und Authentifizieren Ihrer Identität ohne Anmeldung kann Ihre Logik-App eine [verwaltete Identität](../active-directory/managed-identities-azure-resources/overview.md) (früher als verwaltete Dienstidentität, Managed Service Identity, MSI bezeichnet) anstelle von Anmeldeinformationen oder Geheimnissen verwenden. Azure verwaltet diese Identität für Sie und dient als Hilfe beim Schützen Ihrer Anmeldeinformationen, da Sie keine Geheimnisse angeben oder eine Rotation dafür durchführen müssen.
+Zum mühelosen Zugreifen auf andere Ressourcen, die von Azure Active Directory (Azure AD) geschützt werden, und zum Authentifizieren Ihrer Identität kann Ihre Logik-App eine [verwaltete Identität](../active-directory/managed-identities-azure-resources/overview.md) (früher als verwaltete Dienstidentität, Managed Service Identity, MSI bezeichnet) anstelle von Anmeldeinformationen, Geheimnissen oder Azure AD-Token verwenden. Azure verwaltet diese Identität für Sie und unterstützt Sie beim Schutz Ihrer Anmeldeinformationen. Sie müssen keine Geheimnisse verwalten oder Azure AD-Token direkt verwenden.
 
-Azure Logic Apps unterstützt sowohl [*systemseitig zugewiesene*](../active-directory/managed-identities-azure-resources/overview.md) als auch [*benutzerseitig zugewiesene*](../active-directory/managed-identities-azure-resources/overview.md) verwaltete Identitäten. Ihre Logik-App kann entweder die vom System zugewiesene Identität oder eine *einzelne* vom Benutzer zugewiesene Identität (die Sie für eine Gruppe von Logik-Apps gemeinsam verwenden können) verwenden, aber nicht beide. Derzeit unterstützen nur [spezifische integrierte Trigger und Aktionen](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound) verwaltete Identitäten, nicht aber verwaltete Connectors oder Verbindungen, z. B.:
+Azure Logic Apps unterstützt sowohl [*systemseitig zugewiesene*](../active-directory/managed-identities-azure-resources/overview.md) als auch [*benutzerseitig zugewiesene*](../active-directory/managed-identities-azure-resources/overview.md) verwaltete Identitäten. Ihre Logik-App oder einzelne Verbindungen können entweder die systemseitig zugewiesene Identität oder eine *einzelne* benutzerseitig zugewiesene Identität (die Sie für eine Gruppe von Logik-Apps gemeinsam nutzen können), aber nicht beide verwenden.
 
-* HTTP
-* Azure-Funktionen
+## <a name="where-can-logic-apps-use-managed-identities"></a>Wo können Logik-Apps verwaltete Identitäten verwenden?
+
+Derzeit können nur [bestimmte integrierte Trigger und Aktionen](../logic-apps/logic-apps-securing-a-logic-app.md#authentication-types-supported-triggers-actions) sowie [bestimmte verwaltete Connectors](../logic-apps/logic-apps-securing-a-logic-app.md#authentication-types-supported-triggers-actions), die Azure AD-OAuth unterstützen, eine verwaltete Identität für die Authentifizierung verwenden. Einige Beispiele:
+
+**Integrierte Trigger und Aktionen**
+
 * Azure API Management
 * Azure App Services
+* Azure-Funktionen
+* HTTP
+* HTTP + Webhook
+
+**Verwaltete Connectors**
+
+* Azure Automation
+* Azure Event Grid
+* Azure-Schlüsseltresor
+* Azure Monitor-Protokolle
+* Azure Resource Manager
+* HTTP mit Azure AD
+
+Die Unterstützung für verwaltete Connectors befindet sich derzeit in der Vorschauphase. Eine aktuelle Liste finden Sie unter [Authentifizierungstypen für Trigger und Aktionen, die die Authentifizierung unterstützen](../logic-apps/logic-apps-securing-a-logic-app.md#authentication-types-supported-triggers-actions).
 
 In diesem Artikel wird gezeigt, wie Sie beide Arten von verwalteten Identitäten für Ihre Logik-App einrichten. Weitere Informationen finden Sie in den folgenden Themen:
 
-* [Trigger und Aktionen, die verwaltete Identitäten unterstützen](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)
-* [Unterstützte Authentifizierungstypen bei ausgehenden Aufrufen](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)
+* [Trigger und Aktionen, die verwaltete Identitäten unterstützen](../logic-apps/logic-apps-securing-a-logic-app.md#authentication-types-supported-triggers-actions)
 * [Grenzwerte für verwaltete Identitäten für Logik-Apps](../logic-apps/logic-apps-limits-and-config.md#managed-identity)
 * [Azure-Dienste, die verwaltete Identitäten für die Azure AD-Authentifizierung unterstützen](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)
 
@@ -39,7 +56,7 @@ In diesem Artikel wird gezeigt, wie Sie beide Arten von verwalteten Identitäten
 
 * Die Azure-Zielressource, auf die Sie zugreifen möchten. Für diese Ressource fügen Sie eine Rolle für die verwaltete Identität hinzu, die der Logik-App hilft, den Zugriff auf die Zielressource zu authentifizieren.
 
-* Die Logik-App, in der Sie den [Trigger oder die Aktionen verwenden möchten, die verwaltete Identitäten unterstützen](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)
+* [Die Logik-App, in der Sie den Trigger oder die Aktionen verwenden möchten, die verwaltete Identitäten unterstützen](../logic-apps/logic-apps-securing-a-logic-app.md#authentication-types-supported-triggers-actions).
 
 ## <a name="enable-managed-identity"></a>Aktivieren einer verwalteten Identität
 
@@ -70,7 +87,7 @@ Im Unterschied zu benutzerseitig zugewiesenen Identitäten müssen Sie systemsei
    > [!NOTE]
    > Wenn Sie eine Fehlermeldung erhalten, dass Sie nur eine einzige verwaltete Identität verwenden können, ist Ihrer Logik-App bereits eine benutzerseitig zugewiesene Identität zugeordnet. Bevor Sie die vom System zugewiesene Identität hinzufügen können, müssen Sie zuerst die vom Benutzer zugewiesene Identität aus Ihrer Logik-App *entfernen*.
 
-   In der Logik-App kann nun die systemseitig zugewiesene Identität verwendet werden, die bei Azure Active Directory registriert ist und durch eine Objekt-ID angegeben wird.
+   In der Logik-App kann nun die systemseitig zugewiesene Identität verwendet werden, die bei Azure AD registriert ist und durch eine Objekt-ID dargestellt wird.
 
    ![Objekt-ID für die systemseitig zugewiesene Identität](./media/create-managed-service-identity/object-id-system-assigned-identity.png)
 
@@ -160,7 +177,7 @@ Um eine vom Benutzer zugewiesene verwaltete Identität für Ihre Logik-App einzu
 
    ![Erstellen einer benutzerseitig zugewiesenen verwalteten Identität](./media/create-managed-service-identity/create-user-assigned-identity.png)
 
-   | Eigenschaft | Erforderlich | Wert | BESCHREIBUNG |
+   | Eigenschaft | Erforderlich | Wert | Beschreibung |
    |----------|----------|-------|-------------|
    | **Abonnement** | Ja | <*Name des Azure-Abonnements*> | Der Name des zu verwendenden Azure-Abonnements |
    | **Ressourcengruppe** | Ja | <*Name der Azure-Ressourcengruppe*> | Der Name der zu verwendenden Ressourcengruppe. Erstellen Sie eine neue Gruppe, oder wählen Sie eine vorhandene Gruppe aus. Dieses Beispiel erstellt eine neue Gruppe namens `fabrikam-managed-identities-RG`. |
@@ -294,6 +311,8 @@ Bevor Sie die verwaltete Identität Ihrer Logik-App für die Authentifizierung v
 
 ### <a name="assign-access-in-the-azure-portal"></a>Zuweisen des Zugriffs im Azure-Portal
 
+Erteilen Sie der verwalteten Identität auf der Azure-Zielressource, auf die diese Identität zugreifen soll, den rollenbasierten Zugriff auf diese Zielressource.
+
 1. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu der Azure-Ressource, auf die die verwaltete Identität Zugriff erhalten soll.
 
 1. Wählen Sie im Menü der Ressource **Zugriffssteuerung (IAM)**  > **Rollenzuweisungen** aus. Dort können Sie die aktuellen Rollenzuweisungen für die Ressource überprüfen. Wählen Sie auf der Symbolleiste die Option **Hinzufügen** > **Rollenzuweisung hinzufügen** aus.
@@ -345,7 +364,7 @@ Bevor Sie die verwaltete Identität Ihrer Logik-App für die Authentifizierung v
 
 ## <a name="authenticate-access-with-managed-identity"></a>Authentifizieren des Zugriffs mit der verwalteten Identität
 
-Nachdem Sie [die verwaltete Identität für die Logik-App aktiviert](#azure-portal-system-logic-app) und [dieser Identität Zugriff auf die Zielressource oder Zielentität gewährt](#access-other-resources) haben, können Sie diese Identität in [Triggern und Aktionen verwenden, die verwaltete Identitäten unterstützen](logic-apps-securing-a-logic-app.md#managed-identity-authentication).
+Nachdem Sie [die verwaltete Identität für die Logik-App aktiviert](#azure-portal-system-logic-app) und [dieser Identität Zugriff auf die Zielressource oder Zielentität gewährt](#access-other-resources) haben, können Sie diese Identität in [Triggern und Aktionen verwenden, die verwaltete Identitäten unterstützen](logic-apps-securing-a-logic-app.md#authentication-types-supported-triggers-actions).
 
 > [!IMPORTANT]
 > Für eine Azure-Funktion, für die die systemseitig zugewiesene Identität verwendet werden soll, müssen Sie zunächst [die Authentifizierung für Azure-Funktionen aktivieren](../logic-apps/logic-apps-azure-functions.md#enable-authentication-for-functions).
@@ -354,44 +373,120 @@ Die folgenden Schritte veranschaulichen, wie Sie die verwaltete Identität über
 
 1. Öffnen Sie Ihre Logik-App über das [Azure-Portal](https://portal.azure.com) im Logik-App-Designer.
 
-1. Wenn dies noch nicht erfolgt ist, fügen Sie [den Trigger oder die Aktion hinzu, der bzw. die verwaltete Identitäten unterstützt](logic-apps-securing-a-logic-app.md#managed-identity-authentication).
+1. Wenn dies noch nicht erfolgt ist, fügen Sie [den Trigger oder die Aktion hinzu, der bzw. die verwaltete Identitäten unterstützt](logic-apps-securing-a-logic-app.md#authentication-types-supported-triggers-actions).
 
-   Beispielsweise kann die für die Logik-App aktivierte systemseitig zugewiesene Identität mit dem HTTP-Trigger oder der HTTP-Aktion verwendet werden. Im Allgemeinen werden im HTTP-Trigger oder der HTTP-Aktion die folgenden Eigenschaften verwendet, um die Ressource oder Entität anzugeben, auf die Sie zugreifen möchten:
+   > [!NOTE]
+   > Sie können nicht für alle Trigger und Aktionen einen Authentifizierungstyp hinzufügen. Weitere Informationen finden Sie unter [Authentifizierungstypen für Trigger und Aktionen, die die Authentifizierung unterstützen](../logic-apps/logic-apps-securing-a-logic-app.md#authentication-types-supported-triggers-actions).
 
-   | Eigenschaft | Erforderlich | BESCHREIBUNG |
-   |----------|----------|-------------|
-   | **Methode** | Ja | Die HTTP-Methode, die in dem Vorgang verwendet wird, den Sie ausführen möchten. |
-   | **URI** | Ja | Die Endpunkt-URL für den Zugriff auf die Azure-Zielressource oder Azure-Zielentität. Die URI-Syntax enthält normalerweise die [Ressourcen-ID](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication) für die Azure-Ressource oder den Azure-Dienst. |
-   | **Headers** | Nein | Alle Headerwerte, die Sie in der ausgehenden Anforderung einfügen müssen oder möchten, z. B. den Inhaltstyp |
-   | **Abfragen** | Nein | Alle Abfrageparameter, die Sie in der Anforderung einfügen müssen oder möchten, z. B. den Parameter für einen bestimmten Vorgang oder die API-Version für den auszuführenden Vorgang |
-   | **Authentifizierung** | Ja | Der Authentifizierungstyp, der zum Authentifizieren des Zugriffs auf die Zielressource oder Zielentität verwendet wird. |
-   ||||
+1. Führen Sie für den hinzugefügten Trigger oder die hinzugefügte Aktion die folgenden Schritte aus:
 
-   Als konkretes Beispiel wird angenommen, dass Sie den [Snapshot Blob-Vorgang](/rest/api/storageservices/snapshot-blob) für ein Blob in dem Azure Storage-Konto ausführen möchten, in dem Sie zuvor den Zugriff für die Identität eingerichtet haben. Jedoch unterstützt der [Azure Blob Storage-Connector](/connectors/azureblob/) diesen Vorgang derzeit nicht. Stattdessen können Sie diesen Vorgang mithilfe der [HTTP-Aktion](../logic-apps/logic-apps-workflow-actions-triggers.md#http-action) oder mit einem anderen [REST-API-Vorgang des Blob-Diensts](/rest/api/storageservices/operations-on-blobs) ausführen.
+   * **Integrierte Trigger und Aktionen, die die Verwendung einer verwalteten Identität unterstützen**
 
-   > [!IMPORTANT]
-   > Um über HTTP-Anforderungen und verwaltete Identitäten auf Azure Storage-Konten hinter Firewalls zuzugreifen, müssen Sie sicherstellen, dass Sie auch das Speicherkonto mit der [Ausnahme einrichten, die den Zugriff durch vertrauenswürdige Microsoft-Dienste](../connectors/connectors-create-api-azureblobstorage.md#access-trusted-service) zulässt.
+     1. Fügen Sie die Eigenschaft **Authentifizierung** hinzu, falls diese Eigenschaft noch nicht angezeigt wird.
 
-   Zum Ausführen des [Snapshot Blob-Vorgangs](/rest/api/storageservices/snapshot-blob) werden in der HTTP-Aktion die folgenden Eigenschaften angegeben:
+     1. Wählen Sie unter **Authentifizierungstyp** die Option **Verwaltete Identität** aus.
 
-   | Eigenschaft | Erforderlich | Beispielwert | BESCHREIBUNG |
-   |----------|----------|---------------|-------------|
-   | **Methode** | Ja | `PUT`| Die im Snapshot Blob-Vorgang verwendete HTTP-Methode |
-   | **URI** | Ja | `https://{storage-account-name}.blob.core.windows.net/{blob-container-name}/{folder-name-if-any}/{blob-file-name-with-extension}` | Die Ressourcen-ID für eine Azure Blob Storage-Datei in der globalen (öffentlichen) Azure-Umgebung, in der diese Syntax verwendet wird. |
-   | **Headers** | Für Azure Storage | `x-ms-blob-type` = `BlockBlob` <p>`x-ms-version` = `2019-02-02` <p>`x-ms-date` = `@{formatDateTime(utcNow(),'r'}` | Die Headerwerte `x-ms-blob-type`, `x-ms-version` und `x-ms-date`, die für Azure Storage-Vorgänge erforderlich sind. <p><p>**Wichtig**: In ausgehenden Anforderungen für HTTP-Trigger und HTTP-Aktionen für Azure Storage sind für den Header die `x-ms-version`-Eigenschaft und die API-Version für den auszuführenden Vorgang erforderlich. `x-ms-date` muss das aktuelle Datum sein. Andernfalls tritt bei Ihrer Logik-App ein `403 FORBIDDEN`-Fehler auf. Um das aktuelle Datum im erforderlichen Format abzurufen, können Sie den Ausdruck im Beispielwert verwenden. <p>Weitere Informationen finden Sie in den folgenden Themen: <p><p>- [Anforderungsheader: Snapshot Blob](/rest/api/storageservices/snapshot-blob#request) <br>- [Versionsverwaltung für Azure Storage-Dienste](/rest/api/storageservices/versioning-for-the-azure-storage-services#specifying-service-versions-in-requests) |
-   | **Abfragen** | Nur für den Vorgang für den Momentaufnahmeblob | `comp` = `snapshot` | Der Name und der Wert des Abfrageparameters für den Vorgang. |
-   |||||
+     Weitere Informationen finden Sie unter [Example: Authentifizieren Sie den integrierten Trigger oder die integrierte Aktion über eine verwaltete Identität](#authenticate-built-in-managed-identity).
+ 
+   * **Trigger und Aktionen verwalteter Connectors, die die Verwendung einer verwalteten Identität unterstützen**
 
-   HTTP-Beispielaktion, in der alle diese Eigenschaftswerte angezeigt werden:
+     1. Wählen Sie auf der Seite zur Mandantenauswahl die Option **Verbindung mit verwalteter Identität herstellen** aus.
 
-   ![Hinzufügen einer HTTP-Aktion zum Zugreifen auf eine Azure-Ressource](./media/create-managed-service-identity/http-action-example.png)
+     1. Geben Sie auf der nächsten Seite einen Verbindungsnamen an.
 
-1. Fügen Sie nun der HTTP-Aktion die **Authentication**-Eigenschaft hinzu. Wählen Sie in der Liste **Neuen Parameter hinzufügen** die Option **Authentifizierung** aus.
+        Standardmäßig wird in der Liste verwalteter Identitäten nur die derzeit aktivierte verwaltete Identität angezeigt, weil eine Logik-App nur die Aktivierung jeweils einer verwalteten Identität unterstützt. Beispiel:
+
+        ![Screenshot mit der Seite „Verbindungsname“ und der ausgewählten verwalteten Identität.](./media/create-managed-service-identity/system-assigned-managed-identity.png)
+
+     Weitere Informationen finden Sie unter [Example: Authentifizieren eines Triggers oder einer Aktion eines verwalteter Connectors über eine verwaltete Identität](#authenticate-managed-connector-managed-identity).
+
+     Verbindungen, die Sie zur Verwendung einer verwalteten Identität erstellen, entsprechen einem speziellen Verbindungstyp, der nur mit einer verwalteten Identität funktioniert. Zur Laufzeit verwendet die Verbindung die verwaltete Identität, die für die Logik-App aktiviert wurde. Diese Konfiguration wird im `parameters`-Objekt der Logik-App-Ressourcendefinition gespeichert. Dieses umfasst das `$connections`-Objekt, das bei Aktivierung der die benutzerseitig zugewiesenen Identität Verweise auf die Ressourcen-ID der Verbindung sowie die Ressourcen-ID der Identität enthält.
+
+     Dieses Beispiel zeigt die Konfiguration bei Aktivierung der systemseitig zugewiesenen verwalteten Identität in der Logik-App:
+
+     ```json
+     "parameters": {
+        "$connections": {
+           "value": {
+              "<action-name>": {
+                 "connectionId": "/subscriptions/{Azure-subscription-ID}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/connections/{connection-name}",
+                 "connectionName": "{connection-name}",
+                 "connectionProperties": {
+                    "authentication": {
+                       "type": "ManagedServiceIdentity"
+                    }
+                 },
+                 "id": "/subscriptions/{Azure-subscription-ID}/providers/Microsoft.Web/locations/{Azure-region}/managedApis/{managed-connector-type}"
+              }
+           }
+        }
+     }
+     ```
+
+     Dieses Beispiel zeigt die Konfiguration bei Aktivierung einer benutzerseitig zugewiesenen verwalteten Identität in der Logik-App:
+
+     ```json
+     "parameters": {
+        "$connections": {
+           "value": {
+              "<action-name>": {
+                 "connectionId": "/subscriptions/{Azure-subscription-ID}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/connections/{connection-name}",
+                 "connectionName": "{connection-name}",
+                 "connectionProperties": {
+                    "authentication": {
+                       "identity": "/subscriptions/{Azure-subscription-ID}/resourceGroups/{resourceGroupName}/providers/microsoft.managedidentity/userassignedidentities/{managed-identity-name}",
+                       "type": "ManagedServiceIdentity"
+                    }
+                 },
+                 "id": "/subscriptions/{Azure-subscription-ID}/providers/Microsoft.Web/locations/{Azure-region}/managedApis/{managed-connector-type}"
+              }
+           }
+        }
+     }
+     ```
+
+     Während der Laufzeit prüft der Logic Apps-Dienst, ob ein Trigger des verwalteten Connectors und Aktionen in der Logik-App für die Verwendung der verwalteten Identität eingerichtet sind. Außerdem stellt er sicher, dass alle erforderlichen Berechtigungen eingerichtet sind, um über die verwaltete Identität auf die Zielressourcen zuzugreifen, die durch den Trigger und die Aktionen angegeben werden. Bei erfolgreicher Ausführung ruft der Logic Apps-Dienst das Azure AD-Token ab, das der verwalteten Identität zugeordnet ist, authentifiziert anhand dieser Identität den Zugriff auf die Zielressource und führt den konfigurierten Vorgang in Trigger und Aktionen aus.
+
+<a name="authenticate-built-in-managed-identity"></a>
+
+#### <a name="example-authenticate-built-in-trigger-or-action-with-a-managed-identity"></a>Beispiel: Authentifizieren eines vordefinierten Triggers oder einer Aktion über eine verwaltete Identität
+
+Die für die Logik-App aktivierte systemseitig zugewiesene Identität kann von dem HTTP-Trigger oder der HTTP-Aktion verwendet werden. Im Allgemeinen werden im HTTP-Trigger oder der HTTP-Aktion die folgenden Eigenschaften verwendet, um die Ressource oder Entität anzugeben, auf die Sie zugreifen möchten:
+
+| Eigenschaft | Erforderlich | BESCHREIBUNG |
+|----------|----------|-------------|
+| **Methode** | Ja | Die HTTP-Methode, die in dem Vorgang verwendet wird, den Sie ausführen möchten. |
+| **URI** | Ja | Die Endpunkt-URL für den Zugriff auf die Azure-Zielressource oder Azure-Zielentität. Die URI-Syntax enthält normalerweise die [Ressourcen-ID](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication) für die Azure-Ressource oder den Azure-Dienst. |
+| **Headers** | Nein | Alle Headerwerte, die Sie in der ausgehenden Anforderung einfügen müssen oder möchten, z. B. den Inhaltstyp |
+| **Abfragen** | Nein | Alle Abfrageparameter, die Sie in der Anforderung einfügen müssen oder möchten, z. B. den Parameter für einen bestimmten Vorgang oder die API-Version für den auszuführenden Vorgang |
+| **Authentifizierung** | Ja | Der Authentifizierungstyp, der zum Authentifizieren des Zugriffs auf die Zielressource oder Zielentität verwendet wird. |
+||||
+
+Als konkretes Beispiel wird angenommen, dass Sie den [Snapshot Blob-Vorgang](/rest/api/storageservices/snapshot-blob) für ein Blob in dem Azure Storage-Konto ausführen möchten, in dem Sie zuvor den Zugriff für die Identität eingerichtet haben. Jedoch unterstützt der [Azure Blob Storage-Connector](/connectors/azureblob/) diesen Vorgang derzeit nicht. Stattdessen können Sie diesen Vorgang mithilfe der [HTTP-Aktion](../logic-apps/logic-apps-workflow-actions-triggers.md#http-action) oder mit einem anderen [REST-API-Vorgang des Blob-Diensts](/rest/api/storageservices/operations-on-blobs) ausführen.
+
+> [!IMPORTANT]
+> Um über HTTP-Anforderungen und verwaltete Identitäten auf Azure Storage-Konten hinter Firewalls zuzugreifen, müssen Sie sicherstellen, dass Sie auch das Speicherkonto mit der [Ausnahme einrichten, die den Zugriff durch vertrauenswürdige Microsoft-Dienste](../connectors/connectors-create-api-azureblobstorage.md#access-trusted-service) zulässt.
+
+Zum Ausführen des [Snapshot Blob-Vorgangs](/rest/api/storageservices/snapshot-blob) werden in der HTTP-Aktion die folgenden Eigenschaften angegeben:
+
+| Eigenschaft | Erforderlich | Beispielwert | BESCHREIBUNG |
+|----------|----------|---------------|-------------|
+| **Methode** | Ja | `PUT`| Die im Snapshot Blob-Vorgang verwendete HTTP-Methode |
+| **URI** | Ja | `https://{storage-account-name}.blob.core.windows.net/{blob-container-name}/{folder-name-if-any}/{blob-file-name-with-extension}` | Die Ressourcen-ID für eine Azure Blob Storage-Datei in der globalen (öffentlichen) Azure-Umgebung, in der diese Syntax verwendet wird. |
+| **Headers** | Für Azure Storage | `x-ms-blob-type` = `BlockBlob` <p>`x-ms-version` = `2019-02-02` <p>`x-ms-date` = `@{formatDateTime(utcNow(),'r'}` | Die Headerwerte `x-ms-blob-type`, `x-ms-version` und `x-ms-date`, die für Azure Storage-Vorgänge erforderlich sind. <p><p>**Wichtig**: In ausgehenden Anforderungen für HTTP-Trigger und HTTP-Aktionen für Azure Storage sind für den Header die `x-ms-version`-Eigenschaft und die API-Version für den auszuführenden Vorgang erforderlich. `x-ms-date` muss das aktuelle Datum sein. Andernfalls tritt bei Ihrer Logik-App ein `403 FORBIDDEN`-Fehler auf. Um das aktuelle Datum im erforderlichen Format abzurufen, können Sie den Ausdruck im Beispielwert verwenden. <p>Weitere Informationen finden Sie in den folgenden Themen: <p><p>- [Anforderungsheader: Snapshot Blob](/rest/api/storageservices/snapshot-blob#request) <br>- [Versionsverwaltung für Azure Storage-Dienste](/rest/api/storageservices/versioning-for-the-azure-storage-services#specifying-service-versions-in-requests) |
+| **Abfragen** | Nur für den Vorgang für den Momentaufnahmeblob | `comp` = `snapshot` | Der Name und der Wert des Abfrageparameters für den Vorgang. |
+|||||
+
+HTTP-Beispielaktion, in der alle diese Eigenschaftswerte angezeigt werden:
+
+![Hinzufügen einer HTTP-Aktion zum Zugreifen auf eine Azure-Ressource](./media/create-managed-service-identity/http-action-example.png)
+
+1. Nachdem Sie die HTTP-Aktion hinzugefügt haben, fügen Sie ihr die Eigenschaft **Authentifizierung** hinzu. Wählen Sie in der Liste **Neuen Parameter hinzufügen** die Option **Authentifizierung** aus.
 
    ![Hinzufügen der Authentication-Eigenschaft zur HTTP-Aktion](./media/create-managed-service-identity/add-authentication-property.png)
 
    > [!NOTE]
-   > Sie können nicht für alle Trigger und Aktionen einen Authentifizierungstyp hinzufügen. Weitere Informationen finden Sie unter [Hinzufügen der Authentifizierung zu ausgehenden Aufrufen](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound).
+   > Sie können nicht für alle Trigger und Aktionen einen Authentifizierungstyp hinzufügen. Weitere Informationen finden Sie unter [Authentifizierungstypen für Trigger und Aktionen, die die Authentifizierung unterstützen](../logic-apps/logic-apps-securing-a-logic-app.md#authentication-types-supported-triggers-actions).
 
 1. Wählen Sie in der Liste **Authentifizierungstyp** die Option **Verwaltete Identität** aus.
 
@@ -422,6 +517,32 @@ Die folgenden Schritte veranschaulichen, wie Sie die verwaltete Identität über
 
    * [Autorisieren des Zugriffs auf Azure-Blobs und -Warteschlangen mit Azure Active Directory](../storage/common/storage-auth-aad.md)
    * [Autorisieren des Zugriffs auf Azure Storage mit Azure Active Directory](/rest/api/storageservices/authorize-with-azure-active-directory#use-oauth-access-tokens-for-authentication)
+
+1. Fahren Sie damit fort, die Logik-App wie gewünscht zu erstellen.
+
+<a name="authenticate-managed-connector-managed-identity"></a>
+
+#### <a name="example-authenticate-managed-connector-trigger-or-action-with-a-managed-identity"></a>Beispiel: Authentifizieren eines Triggers oder einer Aktion eines verwalteter Connectors über eine verwaltete Identität
+
+Die Azure Resource Manager-Aktion **Ressourcen lesen** kann die verwaltete Identität verwenden, die Sie für Ihre Logik-App aktiviert haben. Dieses Beispiel zeigt Ihnen die Verwendung der systemseitig zugewiesenen verwalteten Identität.
+
+1. Nachdem Sie die Aktion Ihrem Workflow hinzugefügt haben, wählen Sie auf der Seite zur Mandantenauswahl die Option **Verbindung mit verwalteter Identität herstellen** aus.
+
+   ![Screenshot, der die Azure Resource Manager-Aktion und die Auswahl „Verbindung mit verwalteter Identität herstellen“ zeigt.](./media/create-managed-service-identity/select-connect-managed-identity.png)
+
+   Die Aktion zeigt nun die Seite „Verbindungsname“ mit der Liste verwalteter Identitäten. Diese umfasst den Typ der verwalteten Identität, die derzeit in der Logik-App aktiviert ist.
+
+1. Geben Sie auf der Seite „Verbindungsname“ einen Namen für die Verbindung ein. Wählen Sie in der Liste verwalteter Identitäten die verwaltete Identität aus, die in diesem Beispiel als **systemseitig zugewiesene verwaltete Identität** verwendet wird, und klicken Sie auf **Erstellen** . Wenn Sie eine benutzerseitig zugewiesene verwaltete Identität aktiviert haben, wählen Sie stattdessen diese Identität aus.
+
+   ![Screenshot, der die Azure Resource Manager-Aktion mit eingegebenem Verbindungsnamen und Auswahl von „Systemseitig zugewiesene verwaltete Identität“ anzeigt.](./media/create-managed-service-identity/system-assigned-managed-identity.png)
+
+   Wenn die verwaltete Identität nicht aktiviert ist, wird beim Erstellen der Verbindung der folgende Fehler angezeigt:
+
+   *Sie müssen die verwaltete Identität für Ihre Logik-App aktivieren und dann den erforderlichen Zugriff auf die Identität in der Zielressource gewähren.*
+
+   ![Screenshot, der die Azure Resource Manager-Aktion mit Fehler zeigt, wenn keine verwaltete Identität aktiviert ist.](./media/create-managed-service-identity/system-assigned-managed-identity-disabled.png)
+
+1. Nachdem die Verbindung erfolgreich erstellt wurde, kann der Designer dynamische Werte, Inhalte oder Schemas durch Authentifizierung über die verwaltete Identität abrufen.
 
 1. Fahren Sie damit fort, die Logik-App wie gewünscht zu erstellen.
 

@@ -2,15 +2,15 @@
 title: Beheben von Problemen bei der Azure Automation-Updateverwaltung
 description: In diesem Artikel erfahren Sie, wie Sie Probleme mit der Azure Automation-Updateverwaltung beheben.
 services: automation
-ms.date: 12/04/2020
+ms.date: 01/13/2021
 ms.topic: conceptual
 ms.service: automation
-ms.openlocfilehash: c6d0f38eaa25f2fe033a5e2cf48ee6daa51fcbe6
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 55e58c92004f4f4cf4ba6a96620b4f037c80cdb4
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96929275"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98246263"
 ---
 # <a name="troubleshoot-update-management-issues"></a>Beheben von Problemen bei der Updateverwaltung
 
@@ -144,13 +144,11 @@ Dieses Problem kann durch lokale Konfigurationsprobleme oder eine falsch konfigu
    | summarize by Computer, Solutions
    ```
 
-4. Wenn Ihr Computer nicht in den Abfrageergebnissen aufgeführt ist, wurde er in letzter Zeit nicht eingecheckt. Es liegt wahrscheinlich ein Problem mit der lokalen Konfiguration vor, und Sie sollten [den Agent neu installieren](../../azure-monitor/learn/quick-collect-windows-computer.md#install-the-agent-for-windows).
+    Wenn Ihr Computer nicht in den Abfrageergebnissen aufgeführt ist, wurde er in letzter Zeit nicht eingecheckt. Es liegt wahrscheinlich ein Problem mit der lokalen Konfiguration vor, und Sie sollten [den Agent neu installieren](../../azure-monitor/learn/quick-collect-windows-computer.md#install-the-agent-for-windows).
 
-5. Wenn Ihr Computer in den Abfrageergebnissen angezeigt wird, suchen Sie nach Bereichskonfigurationsproblemen. Die [Bereichskonfiguration](../update-management/scope-configuration.md) bestimmt, welche Computer für die Updateverwaltung konfiguriert werden.
+    Wenn Ihr Computer in den Abfrageergebnissen aufgeführt ist, überprüfen Sie, ob unter der **Lösungen**-Eigenschaft **Updates** aufgeführt ist. Damit können Sie sich vergewissern, dass er bei der Updateverwaltung registriert ist. Wenn dies nicht zutrifft, suchen Sie nach Bereichskonfigurationsproblemen. Die [Bereichskonfiguration](../update-management/scope-configuration.md) bestimmt, welche Computer für die Updateverwaltung konfiguriert werden. Informationen zum Ändern der Bereichskonfiguration für den Zielcomputer finden Sie unter [Aktivieren von Computern im Arbeitsbereich](../update-management/enable-from-automation-account.md#enable-machines-in-the-workspace).
 
-6. Wenn Ihr Computer zwar in Ihrem Arbeitsbereich, aber nicht in der Updateverwaltung angezeigt wird, müssen Sie die Bereichskonfiguration so festlegen, dass sie auf die Computer ausgerichtet ist. Informationen hierzu finden Sie unter [Integrieren von Lösungen für die Updateverwaltung, Änderungsnachverfolgung und den Bestand](../update-management/enable-from-automation-account.md#enable-machines-in-the-workspace).
-
-7. Führen Sie in Ihrem Arbeitsbereich diese Abfrage aus.
+4. Führen Sie in Ihrem Arbeitsbereich diese Abfrage aus.
 
    ```kusto
    Operation
@@ -158,9 +156,9 @@ Dieses Problem kann durch lokale Konfigurationsprobleme oder eine falsch konfigu
    | sort by TimeGenerated desc
    ```
 
-8. Wenn das Ergebnis `Data collection stopped due to daily limit of free data reached. Ingestion status = OverQuota` angezeigt wird, wurde ein für Ihren Arbeitsbereich definiertes Kontingent erreicht, wodurch das Speichern von Daten verhindert wird. Wechseln Sie in Ihrem Arbeitsbereich unter **Nutzung und geschätzte Kosten** zu **Datenvolumenverwaltung**, und ändern Sie das Kontingent, oder heben Sie es auf.
+   Wenn das Ergebnis `Data collection stopped due to daily limit of free data reached. Ingestion status = OverQuota` angezeigt wird, wurde ein für Ihren Arbeitsbereich definiertes Kontingent erreicht, wodurch das Speichern von Daten verhindert wird. Wechseln Sie in Ihrem Arbeitsbereich unter **Nutzung und geschätzte Kosten** zu **Datenvolumenverwaltung**, und ändern Sie das Kontingent, oder heben Sie es auf.
 
-9. Wird das Problem dadurch immer noch nicht behoben, führen Sie die Schritte unter [Bereitstellen eines Windows Hybrid Runbook Workers](../automation-windows-hrw-install.md) aus, um den Hybrid Worker für Windows neu zu installieren. Informationen zu Linux finden Sie unter [Bereitstellen eines Linux Hybrid Runbook Workers](../automation-linux-hrw-install.md).
+5. Wird das Problem dadurch immer noch nicht behoben, führen Sie die Schritte unter [Bereitstellen eines Windows Hybrid Runbook Workers](../automation-windows-hrw-install.md) aus, um den Hybrid Worker für Windows neu zu installieren. Informationen zu Linux finden Sie unter [Bereitstellen eines Linux Hybrid Runbook Workers](../automation-linux-hrw-install.md).
 
 ## <a name="scenario-unable-to-register-automation-resource-provider-for-subscriptions"></a><a name="rp-register"></a>Szenario: Der Automation-Ressourcenanbieter für Abonnements kann nicht registriert werden.
 
@@ -425,7 +423,7 @@ Dieser Fehler kann aus einem der folgenden Gründe auftreten:
 
 Verwenden Sie [dynamische Gruppen](../update-management/configure-groups.md) (falls vorhanden) für Ihre Updatebereitstellungen. Außerdem können Sie die folgenden Schritte ausführen.
 
-1. Vergewissern Sie sich, dass der Computer oder Server die [Anforderungen](../update-management/overview.md#client-requirements) erfüllt.
+1. Vergewissern Sie sich, dass der Computer oder Server die [Anforderungen](../update-management/overview.md#system-requirements) erfüllt.
 2. Überprüfen Sie die Konnektivität mit dem Hybrid Runbook Worker mithilfe der Problembehandlung für den Hybrid Runbook Worker-Agent. Informationen zur Problembehandlung finden Sie unter [Beheben von Problemen mit dem Update-Agent](update-agent-issues.md).
 
 ## <a name="scenario-updates-are-installed-without-a-deployment"></a><a name="updates-nodeployment"></a>Szenario: Updates werden ohne Bereitstellung installiert.

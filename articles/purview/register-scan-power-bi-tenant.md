@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/19/2020
-ms.openlocfilehash: 3d8107e980b9cad9bc55cb51cc78b63985986ba5
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.openlocfilehash: 3370215e9a69e62596f214ba4330fc4914a2837f
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/19/2020
-ms.locfileid: "97696226"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98539690"
 ---
 # <a name="register-and-scan-a-power-bi-tenant-preview"></a>Registrieren und Überprüfen eines Power BI-Mandanten (Vorschau)
 
@@ -55,7 +55,7 @@ Erstellen Sie zum Einrichten der Authentifizierung eine Sicherheitsgruppe, und f
     > [!Important]
     > Sie müssen Power BI-Administrator sein, um die Seite mit den Mandanteneinstellungen anzeigen zu können.
 
-1. Wählen Sie **Entwicklereinstellungen** > **Dienstprinzipalen die Verwendung schreibgeschützter Power BI-Administrator-APIs gestatten (Vorschau)** aus.
+1. Wählen Sie **Administrator-API-Einstellungen** > **Dienstprinzipalen die Verwendung schreibgeschützter Power BI-Administrator-APIs gestatten (Vorschau)** aus.
 1. Wählen Sie **Sicherheitsgruppen angeben** aus.
 
     :::image type="content" source="./media/setup-power-bi-scan-PowerShell/allow-service-principals-power-bi-admin.png" alt-text="Bild, das zeigt, wie Dienstprinzipale schreibgeschützte Power BI-Administrator-API-Berechtigungen erhalten können":::

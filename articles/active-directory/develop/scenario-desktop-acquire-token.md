@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 01/06/2021
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: d5f5e1098b688fc307bae5ea3538c818cb529b0a
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.openlocfilehash: e15dce586dc4dd43cf56fd1cbb08b84ebcda1787
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97962396"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98232300"
 ---
 # <a name="desktop-app-that-calls-web-apis-acquire-a-token"></a>Desktop-App, die Web-APIs aufruft: Abrufen eines Token
 
@@ -420,8 +420,8 @@ Wenn Sie einen Domänenbenutzer in einer Domäne oder einen in Azure AD eingebun
 - Die integrierte Windows-Authentifizierung kann nur für Benutzer des Typs *Federated+* verwendet werden, d. h. für Benutzer, die in Azure Active Directory erstellt und von Azure AD unterstützt werden. Direkt in Azure AD erstellte Benutzer ohne Azure Active Directory-Unterstützung (d. h. *verwaltete* Benutzer) können diesen Authentifizierungsflow nicht verwenden. Diese Einschränkung wirkt sich nicht auf den Flow mit Benutzername und Kennwort aus.
 - IWA ist für Apps bestimmt, die für die .NET Framework-, .NET Core- und die UWP-Plattform (Universal Windows Platform) geschrieben wurden.
 - Die [mehrstufige Authentifizierung (Multi-Factor Authentication, MFA)](../authentication/concept-mfa-howitworks.md) wird von der IWA nicht umgangen. Wenn MFA konfiguriert ist, kann IWA fehlschlagen, wenn eine MFA-Abfrage erforderlich ist, da bei MFA eine Benutzerinteraktion benötigt wird.
-  > [!NOTE]
-  > Dies ist eine komplizierte Situation. IWA ist nicht interaktiv, die mehrstufige Authentifizierung erfordert jedoch eine Benutzerinteraktion. Wann der Identitätsanbieter eine mehrstufige Authentifizierung anfordert, wird nicht von Ihnen gesteuert, sondern vom Mandantenadministrator. Nach unserer Erfahrung ist die mehrstufige Authentifizierung erforderlich, wenn Sie sich aus einem anderen Land/einer anderen Region anmelden, nicht über ein VPN mit einem Unternehmensnetzwerk verbunden sind und gelegentlich sogar dann, wenn eine VPN-Verbindung besteht. Erwarten Sie keinen deterministischen Satz von Regeln. Azure AD greift auf KI zurück, um kontinuierlich zu lernen, wann MFA erforderlich ist. Greifen Sie beim Fehlschlagen von IWA auf eine Eingabeaufforderung für Benutzer wie die interaktive Authentifizierung oder den Gerätecodeflow zurück.
+  
+    IWA ist nicht interaktiv, die mehrstufige Authentifizierung erfordert jedoch eine Benutzerinteraktion. Wann der Identitätsanbieter eine mehrstufige Authentifizierung anfordert, wird nicht von Ihnen gesteuert, sondern vom Mandantenadministrator. Nach unserer Erfahrung ist die mehrstufige Authentifizierung erforderlich, wenn Sie sich aus einem anderen Land/einer anderen Region anmelden, nicht über ein VPN mit einem Unternehmensnetzwerk verbunden sind und gelegentlich sogar dann, wenn eine VPN-Verbindung besteht. Erwarten Sie keinen deterministischen Satz von Regeln. Azure AD greift auf KI zurück, um kontinuierlich zu lernen, wann MFA erforderlich ist. Greifen Sie beim Fehlschlagen von IWA auf eine Eingabeaufforderung für Benutzer wie die interaktive Authentifizierung oder den Gerätecodeflow zurück.
 
 - Für die in `PublicClientApplicationBuilder` übergebene Autorität gelten folgende Voraussetzungen:
   - Sie muss auf Mandanten beruhen (im Format `https://login.microsoftonline.com/{tenant}/`, wobei `tenant` entweder die GUID ist, die die Mandanten-ID darstellt, oder eine Domäne, die dem Mandanten zugeordnet ist).
@@ -602,14 +602,13 @@ Sie können ein Token auch abrufen, indem Sie Benutzername und Kennwort angeben.
 
 ### <a name="this-flow-isnt-recommended"></a>Dieser Flow wird nicht empfohlen.
 
-Dieser Flow wird *nicht empfohlen*, da es nicht sicher ist, wenn die Anwendung das Kennwort des Benutzers abfragt. Weitere Informationen finden Sie unter [What's the solution to the growing problem of passwords? (Wie sich das zunehmende Problem der Passwörter lösen lässt.)](https://news.microsoft.com/features/whats-solution-growing-problem-passwords-says-microsoft/). Der bevorzugte Flow für das automatische Abrufen eines Tokens auf Computern in Windows-Domänen ist die [integrierte Windows-Authentifizierung](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Integrated-Windows-Authentication). Sie können auch den [Gerätecodeflow](https://aka.ms/msal-net-device-code-flow) verwenden.
+Der Benutzername- und Kennwortflow wird *nicht empfohlen*, da es nicht sicher ist, wenn die Anwendung das Kennwort des Benutzers abfragt. Weitere Informationen finden Sie unter [What's the solution to the growing problem of passwords? (Wie sich das zunehmende Problem der Kennwörter lösen lässt.)](https://news.microsoft.com/features/whats-solution-growing-problem-passwords-says-microsoft/). Der bevorzugte Flow für das automatische Abrufen eines Tokens auf Computern in Windows-Domänen ist die [integrierte Windows-Authentifizierung](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Integrated-Windows-Authentication). Sie können auch den [Gerätecodeflow](https://aka.ms/msal-net-device-code-flow) verwenden.
 
-> [!NOTE]
-> In manchen Fällen ist auch die Verwendung eines Benutzernamens und Kennworts hilfreich, z. B. in DevOps-Szenarien. Wenn Sie jedoch Benutzernamen und Kennwort in interaktiven Szenarien verwenden möchten, in denen Sie Ihre eigene Benutzeroberfläche bereitstellen, sollten Sie sich Gedanken darüber machen, wie Sie das ändern können. Durch die Verwendung von Benutzername und Kennwort geben Sie eine Reihe von Vorteilen auf:
->
-> - Grundsätze moderner Identitäten. Ein Kennwort kann ausgespäht und wiedergegeben werden, da ein gemeinsames Geheimnis abgefangen werden kann. Dies ist inkompatibel mit einem Szenario ohne Kennwort.
-> - Benutzer, die MFA durchführen müssen, können sich nicht anmelden, da keine Interaktion besteht.
-> - Benutzer können die einmalige Anmeldung (Single Sign-On, SSO) nicht nutzen.
+In manchen Fällen ist auch die Verwendung eines Benutzernamens und Kennworts hilfreich, z. B. in DevOps-Szenarien. Wenn Sie jedoch Benutzernamen und Kennwort in interaktiven Szenarien verwenden möchten, in denen Sie Ihre eigene Benutzeroberfläche bereitstellen, sollten Sie sich Gedanken darüber machen, wie Sie das ändern können. Durch die Verwendung von Benutzername und Kennwort geben Sie eine Reihe von Vorteilen auf:
+
+- Grundsätze moderner Identitäten. Ein Kennwort kann ausgespäht und wiedergegeben werden, da ein gemeinsames Geheimnis abgefangen werden kann. Dies ist inkompatibel mit einem Szenario ohne Kennwort.
+- Benutzer, die MFA durchführen müssen, können sich nicht anmelden, da keine Interaktion besteht.
+- Benutzer können die einmalige Anmeldung (Single Sign-On, SSO) nicht nutzen.
 
 ### <a name="constraints"></a>Einschränkungen
 

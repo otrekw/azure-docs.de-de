@@ -6,12 +6,12 @@ ms.topic: troubleshooting
 ms.date: 10/15/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 6a9eb99ae7af88e77fa597fa92ff8e6278c307e6
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 42502864cfed177adfe487e9c59247579628fec8
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92108948"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98539071"
 ---
 # <a name="windows-virtual-desktop-service-connections"></a>Windows Virtual Desktop-Dienstverbindungen
 
@@ -49,14 +49,15 @@ Um dieses Problem zu beheben, müssen Sie lediglich die Benutzer ihren jeweilige
 Dies kann auch der Fall sein, wenn ein CSP-Anbieter das Abonnement erstellt und dann an den Kunden übertragen hat. Um dieses Problem zu beheben, registrieren Sie den Ressourcenanbieter erneut.
 
 1. Melden Sie sich beim Azure-Portal an.
-2. Wechseln Sie zu **Abonnements** , und wählen Sie Ihr Abonnement aus.
+2. Wechseln Sie zu **Abonnements**, und wählen Sie Ihr Abonnement aus.
 3. Wählen Sie im Menü links auf der Seite die Option **Ressourcenanbieter** aus.
-4. Suchen Sie nach **Microsoft.DesktopVirtualization** , wählen Sie die Option aus, und wählen Sie dann **Erneut registrieren** aus.
+4. Suchen Sie nach **Microsoft.DesktopVirtualization**, wählen Sie die Option aus, und wählen Sie dann **Erneut registrieren** aus.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Eine Übersicht über die Problembehandlung von Windows Virtual Desktop und die Eskalationspfade finden Sie unter [Überblick über Problembehandlung, Feedback und Support](troubleshoot-set-up-overview.md).
 - Informationen zur Problembehandlung beim Erstellen einer Windows Virtual Desktop-Umgebung und eines Hostpools in einer Windows Virtual Desktop-Umgebung finden Sie unter [Umgebungs- und Hostpoolerstellung](troubleshoot-set-up-issues.md).
 - Informationen zur Problembehandlung bei der Konfiguration eines virtuellen Computers (VM) in Windows Virtual Desktop finden Sie unter [Konfiguration des virtuellen Sitzungshostcomputers](troubleshoot-vm-configuration.md).
+- Informationen zur Problembehandlung beim Windows Virtual Desktop-Agent oder der Sitzungskonnektivität finden Sie unter [Beheben häufiger Probleme mit dem Windows Virtual Desktop-Agent](troubleshoot-agent.md).
 - Informationen zur Problembehandlung bei der Verwendung von PowerShell mit Windows Virtual Desktop finden Sie unter [Windows Virtual Desktop – PowerShell](troubleshoot-powershell.md).
 - Ein Tutorial zur Problembehandlung finden Sie unter [Tutorial: Problembehandlung von Bereitstellungen der Resource Manager-Vorlage](../azure-resource-manager/templates/template-tutorial-troubleshoot.md).

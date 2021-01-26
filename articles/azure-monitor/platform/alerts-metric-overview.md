@@ -1,15 +1,15 @@
 ---
 title: Erhalten Sie Informationen zur Funktionsweise von Metrikwarnungen in Azure Monitor.
 description: Verschaffen Sie sich einen Überblick darüber, was Sie mit Metrikwarnungen erreichen können und wie sie in Azure Monitor funktionieren.
-ms.date: 01/11/2021
+ms.date: 01/19/2021
 ms.topic: conceptual
 ms.subservice: alerts
-ms.openlocfilehash: 424cc9db01f1eb6300c2915795f3e2c37b34449f
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: 031768b8a72fbe9498abd3c17e0f79fd157d4f52
+ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98071050"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98572730"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>Informationen zur Funktionsweise von Metrikwarnungen in Azure Monitor
 
@@ -26,7 +26,7 @@ Nehmen wir an, Sie haben wie folgt eine einfache statische Metrikwarnung mit Sch
 - Zielressource (die zu überwachende Azure-Ressource): myVM
 - Metrik: CPU in Prozent
 - Bedingungstyp: statischen
-- Zeitaggregation (Statistik, die über Rohmetriken geführt wird. [Unterstützte Zeitaggregationen](metrics-charts.md#changing-aggregation) sind Minimum, Maximum, Durchschnitt, Gesamtwert, Anzahl): Average
+- Aggregationstyp (eine Statistik, die über Rohmetriken geführt wird. [Unterstützte Aggregationstypen](./metrics-aggregation-explained.md#aggregation-types) sind „Minimum“, „Maximum“, „Durchschnitt“, „Gesamt“, „Anzahl“): Average
 - Zeitraum (das zurückliegende Zeitfenster, über das Metrikwerte geprüft werden): Über die letzten 5 Minuten
 - Häufigkeit (die Häufigkeit, mit der die Metrikwarnung überprüft werden soll, wenn die Bedingungen erfüllt sind): 1 Minute
 - Operator: Größer als
@@ -43,7 +43,7 @@ Nehmen wir an, Sie haben wie folgt eine einfache dynamische Metrikwarnung mit Sc
 - Zielressource (die zu überwachende Azure-Ressource): myVM
 - Metrik: CPU in Prozent
 - Bedingungstyp: Dynamisch
-- Zeitaggregation (Statistik, die über Rohmetriken geführt wird. [Unterstützte Zeitaggregationen](metrics-charts.md#changing-aggregation) sind Minimum, Maximum, Durchschnitt, Gesamtwert, Anzahl): Average
+- Aggregationstyp (eine Statistik, die über Rohmetriken geführt wird. [Unterstützte Aggregationstypen](./metrics-aggregation-explained.md#aggregation-types) sind „Minimum“, „Maximum“, „Durchschnitt“, „Gesamt“, „Anzahl“): Average
 - Zeitraum (das zurückliegende Zeitfenster, über das Metrikwerte geprüft werden): Über die letzten 5 Minuten
 - Häufigkeit (die Häufigkeit, mit der die Metrikwarnung überprüft werden soll, wenn die Bedingungen erfüllt sind): 1 Minute
 - Operator: Größer als
@@ -65,6 +65,10 @@ Nach einer gewissen Zeit erreicht die Nutzung von „myVM“ wieder einen normal
 
 Da die aufgelöste Benachrichtigung über einen Webhook oder eine E-Mail versendet wird, wird auch der Status der Warnungsinstanz (Monitorzustand) im Azure-Portal auf „aufgelöst“ festgelegt.
 
+> [!NOTE]
+>
+> Wenn eine Warnungsregel mehrere Bedingungen überwacht, wird eine ausgelöste Warnung aufgelöst, wenn mindestens eine der Bedingungen für drei aufeinanderfolgende Zeiträume nicht mehr erfüllt ist.
+
 ### <a name="using-dimensions"></a>Verwenden von Dimensionen
 
 Metrikwarnungen in Azure Monitor unterstützen auch die Überwachung von mehrdimensionalen Wertekombinationen mit einer Regel. Lassen Sie uns anhand eines Beispiels erläutern, warum Sie mehrere Dimensionskombinationen verwenden können.
@@ -76,7 +80,7 @@ Angenommen, Sie verfügen über einen App Service-Plan für Ihre Website. Sie m�
 - Bedingungstyp: statischen
 - Dimensionen
   - Instanz = InstanceName1, InstanceName2
-- Zeitaggregation: Average
+- Aggregationstyp: Average
 - Zeitraum: Über die letzten 5 Minuten
 - Häufigkeit: 1 Minute
 - Operator: GreaterThan
@@ -91,7 +95,7 @@ Nehmen wir an, Sie verfügen über eine Web-App, die eine massive Nachfrage verz
 - Bedingungstyp: statischen
 - Dimensionen
   - Instanz = *
-- Zeitaggregation: Average
+- Aggregationstyp: Average
 - Zeitraum: Über die letzten 5 Minuten
 - Häufigkeit: 1 Minute
 - Operator: GreaterThan
@@ -108,7 +112,7 @@ Nehmen wir an, Sie haben eine Web-App mit vielen Instanzen, und Sie wissen nicht
 - Bedingungstyp: Dynamisch
 - Dimensionen
   - Instanz = *
-- Zeitaggregation: Average
+- Aggregationstyp: Average
 - Zeitraum: Über die letzten 5 Minuten
 - Häufigkeit: 1 Minute
 - Operator: GreaterThan
@@ -176,7 +180,7 @@ Die vollständige Liste der unterstützten Ressourcentypen finden Sie in diesem 
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Erfahren Sie, wie Sie in Azure Metrikwarnungen erstellen, anzeigen und verwalten können.](alerts-metric.md)
-- [Erfahren Sie, wie Sie Warnungen im Azure Monitor-Metrik-Explorer erstellen können](./metrics-charts.md#create-alert-rules).
+- [Erfahren Sie, wie Sie Warnungen im Azure Monitor-Metrik-Explorer erstellen können](./metrics-charts.md#alert-rules).
 - [Erfahren Sie, wie Sie Metrikwarnungen mithilfe von Azure Resource Manager-Vorlagen bereitstellen können](./alerts-metric-create-templates.md).
 - [Erfahren Sie mehr über Aktionsgruppen](action-groups.md).
 - [Erfahren Sie mehr über den Bedingungstyp für dynamische Schwellenwerte.](alerts-dynamic-thresholds.md)

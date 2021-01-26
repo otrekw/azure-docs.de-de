@@ -1,7 +1,7 @@
 ---
-title: Konfigurieren von Kreuzvalidierung und Datenaufteilung in automatisierten Experimenten mit maschinellem Lernen
+title: Datenaufteilung und Kreuzvalidierung beim automatisierten maschinellen Lernen
 titleSuffix: Azure Machine Learning
-description: Erfahren Sie, wie Sie die Kreuzvalidierung und die Aufteilung von Datasets für automatisierte Experimente mit maschinellem Lernen konfigurieren.
+description: Erfahren Sie, wie Sie die Aufteilung von Datasets und die Kreuzvalidierung für Experimente mit automatisiertem maschinellem Lernen konfigurieren.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,25 +11,25 @@ ms.author: cesardl
 author: CESARDELATORRE
 ms.reviewer: nibaccam
 ms.date: 06/16/2020
-ms.openlocfilehash: c29c8ab31507c0ec904a7534e50ef6523e1aab96
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: a781900534156e455c125dffe3b1334820fdf4d5
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93360104"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98599061"
 ---
 # <a name="configure-data-splits-and-cross-validation-in-automated-machine-learning"></a>Konfigurieren von Datenaufteilung und Kreuzvalidierung im automatisierten maschinellen Lernen
 
-In diesem Artikel lernen Sie die verschiedenen Optionen zum Konfigurieren der Aufteilung von Trainings- und Validierungsdaten und der Kreuzvalidierung für Ihre automatisierten Experimente mit maschinellem Lernen, AutoML, kennen.
+In diesem Artikel lernen Sie die verschiedenen Optionen zum Konfigurieren der Aufteilung von Trainings- und Validierungsdaten sowie die Einstellungen für die Kreuzvalidierung für Ihre Experimente mit automatisiertem maschinellem Lernen (automatisiertem ML) kennen.
 
-Wenn Sie in Azure Machine Learning AutoML zum Erstellen mehrerer ML-Modelle verwenden, muss jede untergeordnete Ausführung das zugehörige Modell durch Berechnen der Qualitätsmetriken für das Modell validieren, etwa „Genauigkeit“ oder „AUC gewichtet“. Diese Metriken werden durch Vergleichen der mit jedem Modell gemachten Vorhersagen mit realen Bezeichnungen aus Beobachtungen in der Vergangenheit in den Validierungsdaten berechnet. 
+Wenn Sie in Azure Machine Learning automatisiertes maschinelles Lernen zum Erstellen mehrerer ML-Modelle verwenden, muss jede untergeordnete Ausführung das zugehörige Modell durch Berechnen der Qualitätsmetriken für das Modell validieren, etwa „Genauigkeit“ oder „AUC gewichtet“. Diese Metriken werden durch Vergleichen der mit jedem Modell gemachten Vorhersagen mit realen Bezeichnungen aus Beobachtungen in der Vergangenheit in den Validierungsdaten berechnet. [Erfahren Sie mehr darüber, wie Metriken basierend auf dem Validierungstyp berechnet werden.](#metric-calculation-for-cross-validation-in-machine-learning) 
 
-AutoML-Experimente führen die Modellvalidierung automatisch durch. In den folgenden Abschnitten wird beschrieben, wie Sie die Validierungseinstellungen mit dem [Azure Machine Learning Python SDK](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py) weiter anpassen können. 
+Experimente mit automatisiertem maschinellem Lernen führen die Modellvalidierung automatisch durch. In den folgenden Abschnitten wird beschrieben, wie Sie die Validierungseinstellungen mit dem [Azure Machine Learning Python SDK](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py) weiter anpassen können. 
 
 Anweisungen zum Arbeiten mit wenig Code oder ohne Code finden Sie unter [Erstellen automatisierter Experimente mit maschinellem Lernen in Azure Machine Learning-Studio](how-to-use-automated-ml-for-ml-models.md). 
 
 > [!NOTE]
-> Im Studio werden aktuell Datenaufteilung für Training/Validierung und Optionen zur Kreuzvalidierung unterstützt, nicht jedoch das Angeben einzelner Datendateien für Ihr Validierungsset. 
+> In Studio wird aktuell die Aufteilung von Trainings- und Validierungsdaten sowie Optionen zur Kreuzvalidierung unterstützt, nicht jedoch das Angeben einzelner Datendateien für Ihren Validierungssatz. 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -39,13 +39,13 @@ Für diesen Artikel ist Folgendes erforderlich:
 
 * Grundkenntnisse in der Einrichtung eines automatisierten Experiments mit maschinellem Lernen mit dem Azure Machine Learning SDK. Machen Sie sich anhand des [Tutorials](tutorial-auto-train-models.md) oder der [Anleitung](how-to-configure-auto-train.md) mit den grundlegenden Entwurfsmustern für automatisierte ML-Experimente vertraut.
 
-* Ein grundlegendes Verständnis von Kreuzvalidierung und Datenaufteilung für Training/Validierung als ML-Konzepte. Eine allgemeine Erklärung finden Sie unter
+* Ein grundlegendes Verständnis der Aufteilung von Trainings- und Validierungsdaten sowie der Kreuzvalidierung als Konzepte des maschinellen Lernens. Eine allgemeine Erklärung finden Sie unter
 
-    * [About Train, Validation and Test Sets in Machine Learning](https://towardsdatascience.com/train-validation-and-test-sets-72cb40cba9e7) `(Informationen über Trainings-, Validierungs- und Testsets im maschinellen Lernen)
+    * [About training, validation and test data in machine learning](https://towardsdatascience.com/train-validation-and-test-sets-72cb40cba9e7) (Informationen zu Trainings-, Validierungs- und Testdaten beim maschinellen Lernen)
 
-    * [Understanding Cross Validation](https://towardsdatascience.com/understanding-cross-validation-419dbd47e9bd) (Grundlegendes zur Kreuzvalidierung)
+    * [Understand Cross Validation in machine learning](https://towardsdatascience.com/understanding-cross-validation-419dbd47e9bd) (Grundlegendes zur Kreuzvalidierung beim maschinellen Lernen) 
 
-## <a name="default--data-splits-and-cross-validation"></a>Standard-Datenaufteilung und Kreuzvalidierung
+## <a name="default-data-splits-and-cross-validation-in-machine-learning"></a>Standarddatenaufteilung und Kreuzvalidierung beim maschinellen Lernen
 
 Verwenden Sie das [AutoMLConfig](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?preserve-view=true&view=azure-ml-py)-Objekt zum Definieren Ihrer Experiment- und Trainingseinstellungen. Beachten Sie im folgenden Codeausschnitt, dass nur die erforderlichen Parameter definiert sind, d. h., die Parameter für `n_cross_validation` oder `validation_ data` sind **nicht** enthalten.
 
@@ -62,16 +62,16 @@ automl_config = AutoMLConfig(compute_target = aml_remote_compute,
                             )
 ```
 
-Wenn Sie nicht explizit einen `validation_data`- oder `n_cross_validation`-Parameter angeben, wendet AutoML Standardverfahren an, abhängig von der Anzahl der Zeilen im übergebenen einzelnen Dataset `training_data`:
+Wenn Sie nicht explizit die Parameter `validation_data` oder `n_cross_validation` angeben, werden beim automatisierten maschinellen Lernen Standardverfahren angewandt, die von der Anzahl der Zeilen im übergebenen einzelnen Dataset `training_data` abhängen:
 
 |Größe der Trainings&nbsp;daten&nbsp;| Validierungsverfahren |
 |---|-----|
 |**Größer&nbsp;als&nbsp;20.000&nbsp;Zeilen**| Es wird eine Aufteilung in Trainings- und Validierungsdaten vorgenommen. Standardmäßig werden 10 % des ursprünglichen Trainingsdatasets als Validierungsset verwendet. Dieses Validierungsset wird seinerseits für die Metrikberechnung verwendet.
-|**Kleiner&nbsp;als&nbsp;20.000&nbsp;Zeilen**| Der Kreuzvalidierungsansatz wird angewendet. Die Standardanzahl der Faltungen (Folds) hängt von der Zeilenanzahl ab. <br> **Wenn das Dataset weniger als 1.000 Zeilen aufweist** , werden 10 Faltungen verwendet. <br> **Wenn die Anzahl der Zeilen zwischen 1.000 und 20.000 liegt** , werden drei Faltungen verwendet.
+|**Kleiner&nbsp;als&nbsp;20.000&nbsp;Zeilen**| Der Kreuzvalidierungsansatz wird angewendet. Die Standardanzahl der Faltungen (Folds) hängt von der Zeilenanzahl ab. <br> **Wenn das Dataset weniger als 1.000 Zeilen aufweist**, werden 10 Faltungen verwendet. <br> **Wenn die Anzahl der Zeilen zwischen 1.000 und 20.000 liegt**, werden drei Faltungen verwendet.
 
 ## <a name="provide-validation-data"></a>Bereitstellen von Validierungsdaten
 
-In diesem Fall können Sie entweder von einer einzelnen Datendatei ausgehen, die Sie in Trainings- und Validierungssets aufteilen, oder Sie können für das Validierungsset eine separate Datendatei bereitstellen. In beiden Fällen weist der Parameter `validation_data` in Ihrem `AutoMLConfig`-Objekt die Daten zu, die als Validierungsset verwendet werden. Dieser Parameter akzeptiert nur Datasets in der Form eines [Azure Machine Learning-Datasets](how-to-create-register-datasets.md) oder eines Pandas-Dataframes.   
+In diesem Fall können Sie entweder von einer einzelnen Datendatei ausgehen, die Sie in Trainings- und Validierungsdatasets aufteilen, oder Sie können für den Validierungssatz eine separate Datendatei bereitstellen. In beiden Fällen weist der Parameter `validation_data` in Ihrem `AutoMLConfig`-Objekt die Daten zu, die als Validierungsset verwendet werden. Dieser Parameter akzeptiert nur Datasets in der Form eines [Azure Machine Learning-Datasets](how-to-create-register-datasets.md) oder eines Pandas-Dataframes.   
 
 Im folgenden Codebeispiel ist explizit definiert, welcher Teil der bereitgestellten Daten in `dataset` zum Training und welcher zur Validierung verwendet wird.
 
@@ -117,7 +117,7 @@ Um Kreuzvalidierung durchzuführen, schließen Sie den Parameter `n_cross_valida
 
 Im folgenden Code werden fünf Faltungen für die Kreuzvalidierung definiert. Es ergeben sich also fünf verschiedene Trainings, von denen jedes 4/5 der Daten und jede Validierung 1/5 der Daten mit einer pro Durchgang verschiedenen Faltung der zurückgehaltenen Daten verwendet.
 
-Als Ergebnis werden Metriken mit dem Durchschnitt der 5 Validierungsmetriken berechnet.
+Als Ergebnis werden Metriken mit dem Durchschnitt der fünf Validierungsmetriken berechnet.
 
 ```python
 data = "https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/creditcard.csv"
@@ -135,7 +135,7 @@ automl_config = AutoMLConfig(compute_target = aml_remote_compute,
 
 ## <a name="specify-custom-cross-validation-data-folds"></a>Angeben benutzerdefinierter Faltungen für die Kreuzvalidierung
 
-Sie können außerdem eigene Datenfaltungen für die Kreuzvalidierung (Cross-Validation, CV) angeben. Dies wird als fortgeschrittenes Szenario angesehen, da Sie angeben, welche Spalten aufgeteilt und zur Validierung verwendet werden sollen.  Nehmen Sie benutzerdefinierte aufgeteilte CV-Spalten in Ihre Trainingsdaten auf, und geben Sie die Spalten an, indem Sie die Spaltennamen in den `cv_split_column_names`-Parameter einsetzen. Jede Spalte stellt eine Kreuzvalidierungsaufteilung dar und enthält die ganzzahligen Werte 1 oder 0 – hier gibt 1 an, dass die Zeile zum Training, 0, dass die Zeile zur Validierung verwendet werden soll.
+Sie können außerdem eigene Datenfaltungen für die Kreuzvalidierung (Cross-Validation, CV) angeben. Dies wird als fortgeschrittenes Szenario angesehen, da Sie angeben, welche Spalten aufgeteilt und zur Validierung verwendet werden sollen.  Nehmen Sie benutzerdefinierte aufgeteilte CV-Spalten in Ihre Trainingsdaten auf, und geben Sie die Spalten an, indem Sie die Spaltennamen in den `cv_split_column_names`-Parameter einsetzen. Jede Spalte stellt eine Kreuzvalidierungsaufteilung dar und enthält die Integerwerte 1 oder 0. Dabei gibt 1 an, dass die Zeile zum Training verwendet werden soll, und 0, dass die Zeile zur Validierung verwendet werden soll.
 
 Der folgende Codeausschnitt enthält Marketingdaten einer Bank mit zwei CV-Aufteilungsspalten ‚cv1‘ und ‚cv2‘.
 
@@ -155,6 +155,13 @@ automl_config = AutoMLConfig(compute_target = aml_remote_compute,
 
 > [!NOTE]
 > Um `cv_split_column_names` mit `training_data` und `label_column_name` zu verwenden, führen Sie ein Upgrade Ihres Azure Machine Learning Python SDK auf Version 1.6.0 oder höher durch. Informieren Sie sich für frühere SDK-Versionen über die Verwendung von `cv_splits_indices`, beachten Sie aber, dass dies nur in Verbindung mit der `X`- und `y`-Eingabe von Datasets verwendet wird. 
+
+
+## <a name="metric-calculation-for-cross-validation-in-machine-learning"></a>Metrikberechnung für die Kreuzvalidierung beim maschinellen Lernen
+
+Wenn die k-fache Kreuzvalidierung oder die Monte Carlo-Kreuzvalidierung verwendet wird, werden Metriken für jeden Validierungsteil berechnet und anschließend aggregiert. Der Aggregationsvorgang ist bei skalaren Metriken ein Mittelwert und bei Diagrammen eine Summe. Die bei der Kreuzvalidierung berechneten Metriken basieren auf allen Aufteilungen und somit auf allen Stichproben aus dem Trainingssatz. [Weitere Informationen zu Metriken beim automatisierten maschinellen Lernen.](how-to-understand-automated-ml.md)
+
+Wenn ein benutzerdefinierter Validierungssatz oder ein automatisch ausgewählter Validierungssatz verwendet wird, werden die Metriken zur Modellauswertung nur mit diesem Validierungssatz berechnet und nicht mit den Trainingsdaten.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

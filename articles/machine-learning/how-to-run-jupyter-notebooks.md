@@ -1,7 +1,7 @@
 ---
 title: Ausführen von Jupyter Notebooks in Ihrem Arbeitsbereich
 titleSuffix: Azure Machine Learning
-description: Erfahren Sie, wie Sie im Azure Machine Learning Studio ein Jupyter Notebook ausführen können, ohne Ihren Arbeitsbereich zu verlassen.
+description: Erfahren Sie, wie Sie in Azure Machine Learning Studio ein Jupyter Notebook ausführen können, ohne Ihren Arbeitsbereich zu verlassen.
 services: machine-learning
 author: abeomor
 ms.author: osomorog
@@ -10,25 +10,17 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
-ms.date: 06/27/2020
-ms.openlocfilehash: d253699199617489947dd95a44d9bcd1eff17334
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.date: 01/19/2021
+ms.openlocfilehash: 7bb1ce8141f609feb4f354aa85f202915e197f37
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93325407"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98599219"
 ---
 # <a name="how-to-run-jupyter-notebooks-in-your-workspace"></a>Ausführen von Jupyter Notebooks in Ihrem Arbeitsbereich
 
-
-Erfahren Sie, wie Sie im Azure Machine Learning Studio Ihr Jupyter Notebook direkt in Ihrem Arbeitsbereich ausführen können. Sie können zwar [Jupyter](https://jupyter.org/) oder [JupyterLab](https://jupyterlab.readthedocs.io) starten, aber Sie können Ihre Notebooks auch bearbeiten und ausführen, ohne den Arbeitsbereich zu verlassen.
-
-Erhalten Sie Informationen zu folgenden Themen:
-
-* Erstellen von Jupyter Notebooks in Ihrem Arbeitsbereich
-* Ausführen eines Experiments über ein Notebook
-* Ändern der Notebookumgebung
-* Suchen von Details zu den Computeinstanzen, die zum Ausführen Ihrer Notebooks verwendet werden
+Erfahren Sie, wie Sie in Azure Machine Learning Studio Ihr Jupyter Notebook direkt in Ihrem Arbeitsbereich ausführen können. Sie können zwar [Jupyter](https://jupyter.org/) oder [JupyterLab](https://jupyterlab.readthedocs.io) starten, aber Sie können Ihre Notebooks auch bearbeiten und ausführen, ohne den Arbeitsbereich zu verlassen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -48,7 +40,7 @@ So erstellen Sie ein neues Notebook
     :::image type="content" source="media/how-to-run-jupyter-notebooks/create-new-file.png" alt-text="Erstellen einer neuen Datei":::
 
 1. Benennen Sie die Datei. 
-1. Für Jupyter Notebook-Dateien wählen Sie **Notebook** als Dateityp aus.
+1. Für Jupyter Notebook-Dateien wählen Sie als Dateityp **Notebook** aus.
 1. Wählen Sie ein Dateiverzeichnis aus.
 1. Klicken Sie auf **Erstellen**.
 
@@ -105,7 +97,7 @@ Kopieren Sie die URL und fügen Sie sie ein, um ein Notebook oder eine Datei fre
 
 Sie können das Notebook bearbeiten, ohne eine Verbindung zu einer Computeinstanz herzustellen.  Wenn Sie die Zellen im Notebook ausführen möchten, wählen oder erstellen Sie eine Computeinstanz.  Wenn Sie eine beendete Computeinstanz auswählen, wird sie automatisch gestartet, wenn Sie die erste Zelle ausführen.
 
-Wenn eine Computeinstanz ausgeführt wird, können Sie auch die Codevervollständigung mit [IntelliSense](https://code.visualstudio.com/docs/editor/intellisense) in jedem Python-Notebook verwenden.
+Wenn eine Compute-Instanz ausgeführt wird, können Sie auch die Codevervollständigung mit [IntelliSense](https://code.visualstudio.com/docs/editor/intellisense) in jedem Python-Notebook verwenden.
 
 Sie können Jupyter oder JupyterLab auch über die Notebook-Symbolleiste starten.  Azure Machine Learning stellt keine Updates und Fehlerbehebungen von Jupyter oder JupyterLab zur Verfügung, da es sich um Open Source-Produkte außerhalb der Zuständigkeit des Microsoft-Supports handelt.
 
@@ -143,56 +135,62 @@ Das neue Notebook enthält nur Codezellen. Dabei müssen alle Zellen die gleiche
 
 ### <a name="save-and-checkpoint-a-notebook"></a>Speichern eines Notebooks und Hinzufügen eines Prüfpunkts
 
-Azure Machine Learning erstellt eine Prüfpunktdatei, wenn Sie eine *IPYNB* -Datei erstellen.
+Azure Machine Learning erstellt eine Prüfpunktdatei, wenn Sie eine *IPYNB*-Datei erstellen.
 
 Wählen Sie in der Notebook-Symbolleiste das Menü und dann **Datei&gt;Save and Checkpoint** (Speichern und Prüfpunkt), um das Notebook manuell zu speichern. Dadurch wird eine dem Notebook zugeordnete Prüfpunktdatei hinzugefügt.
 
 :::image type="content" source="media/how-to-run-jupyter-notebooks/file-save.png" alt-text="Screenshot des Speichertools auf der Notebook-Symbolleiste":::
 
-Jedes Notebook wird alle 30 Sekunden automatisch gespeichert. Die automatische Speicherung aktualisiert nur die ursprüngliche *IPYNB* -Datei, nicht die Prüfpunktdatei.
+Jedes Notebook wird alle 30 Sekunden automatisch gespeichert. Die automatische Speicherung aktualisiert nur die ursprüngliche *IPYNB*-Datei, nicht die Prüfpunktdatei.
  
 Wählen Sie **Checkpoints** (Prüfpunkte) im Notebook-Menü aus, um einen benannten Prüfpunkt zu erstellen und das Notebook auf einen gespeicherten Prüfpunkt zurückzusetzen.
 
-
-### <a name="useful-keyboard-shortcuts"></a>Hilfreiche Tastenkombinationen
-
-|Tastatur  |Aktion  |
-|---------|---------|
-|UMSCHALT+EINGABE     |  Ausführen einer Zelle       |
-|STRG+LEERTASTE | Aktivieren von IntelliSense |
-|STRG+M (Fenster)     |  Aktivieren/Deaktivieren des Abfangens von Registerkarten im Notebook       |
-|STRG+UMSCHALT+M (Mac und Linux)     |    Aktivieren/Deaktivieren des Abfangens von Registerkarten im Notebook     |
-|TAB (bei aktiviertem Abfangen von Registerkarten) | Hinzufügen eines „\t“-Zeichens (Einzug)
-|TAB (bei deaktiviertem Abfangen von Registerkarten) | Ändern des Fokus auf das nächste Element, das den Fokus erhalten kann (Schaltfläche „Zelle löschen“, Schaltfläche „Ausführen“ usw.)
-
 ## <a name="delete-a-notebook"></a>Löschen eines Notebooks
 
-Sie können die **Beispiel** -Notebooks *nicht* löschen.  Diese Notebooks sind Teil des Studios und werden jedes Mal aktualisiert, wenn ein neues SDK veröffentlicht wird.  
+Sie können die **Beispiel**-Notebooks *nicht* löschen.  Diese Notebooks sind Teil des Studios und werden jedes Mal aktualisiert, wenn ein neues SDK veröffentlicht wird.  
 
-Sie *können* **Benutzerdateien** -Notebooks auf eine der folgenden Arten löschen:
+Sie *können* **Benutzerdateien**-Notebooks auf eine der folgenden Arten löschen:
 
 * Wählen Sie im Studio die **...** (Auslassungspunkte) am Ende eines Ordners oder einer Datei aus.  Stellen Sie sicher, dass Sie einen unterstützten Browser (Microsoft Edge, Chrome oder Firefox) verwenden.
-* Wählen Sie auf einer beliebigen Notebook-Symbolleiste [**Terminal öffnen**](#terminal) aus, um auf das Terminalfenster für die Computeinstanz zuzugreifen.
+* Wählen Sie auf einer beliebigen Notebook-Symbolleiste [**Terminal öffnen**](#terminal) aus, um auf das Terminalfenster für die Compute-Instanz zuzugreifen.
 * Entweder in Jupyter oder JupyterLab mit den zugehörigen Tools.
 
-## <a name="run-an-experiment"></a>Ausführen eines Experiments
+## <a name="run-a-notebook-or-python-script"></a>Ausführen eines Notebooks oder Python-Skripts
 
-Um ein Experiment von einem Notebook aus durchzuführen, stellen Sie zunächst eine Verbindung mit einer aktiven [Computeinstanz](concept-compute-instance.md) her. Wenn Sie keine Computeinstanz besitzen, verwenden Sie die folgenden Schritte, um eine zu erstellen: 
+Um ein Notebook oder ein Python-Skript auszuführen, stellen Sie zunächst eine Verbindung mit einer aktiven [Compute-Instanz](concept-compute-instance.md) her. Wenn Sie keine Computeinstanz besitzen, verwenden Sie die folgenden Schritte, um eine zu erstellen: 
 
-1. Wählen Sie **+** auf der Notebook-Symbolleiste aus. 
+1. Wählen Sie auf der Notebook- oder Skript-Symbolleiste **+** aus. 
 2. Benennen Sie die Computeinstanz, und wählen Sie eine **VM-Größe** aus. 
 3. Klicken Sie auf **Erstellen**.
-4. Die Computeinstanz wird automatisch mit dem Notebook verbunden, und Sie können jetzt Ihre Zellen ausführen.
+4. Die Compute-Instanz wird automatisch mit der Datei verknüpft.  Sie können jetzt die Notebookzellen oder das Python-Skript mit dem Tool links neben der Compute-Instanz ausführen.
 
 Nur Sie können die von Ihnen erstellten Computeinstanzen sehen und verwenden.  Ihre **Benutzerdateien** werden getrennt vom virtuellen Computer gespeichert und von allen Computeinstanzen im Arbeitsbereich gemeinsam genutzt.
 
 ### <a name="view-logs-and-output"></a>Anzeigen von Protokollen und Ausgaben
 
-Verwenden Sie [Notebook-Widgets](/python/api/azureml-widgets/azureml.widgets?preserve-view=true&view=azure-ml-py), um den Fortschritt der Ausführung und der Protokolle anzuzeigen. Ein Widget ist asynchron und bietet Updates, bis das Training abgeschlossen ist. Azure Machine Learning-Widgets werden auch in Jupyter und JupterLab unterstützt.
+Verwenden Sie [Notebook-Widgets](/python/api/azureml-widgets/azureml.widgets?preserve-view=true&view=azure-ml-py), um den Fortschritt der Ausführung und die Protokolle anzuzeigen. Ein Widget ist asynchron und bietet Updates, bis das Training abgeschlossen ist. Azure Machine Learning-Widgets werden auch in Jupyter und JupterLab unterstützt.
+
+:::image type="content" source="media/how-to-run-jupyter-notebooks/jupyter-widget.png" alt-text="Screenshot: Jupyter Notebook-Widget ":::
+
+## <a name="explore-variables-in-the-notebook"></a>Untersuchen von Variablen im Notebook
+
+Verwenden Sie auf der Notebook-Symbolleiste das Tool **Variablen-Explorer**, um den Namen, den Typ, die Länge und Stichprobenwerte aller Variablen anzuzeigen, die in Ihrem Notebook erstellt wurden.
+
+:::image type="content" source="media/how-to-run-jupyter-notebooks/variable-explorer.png" alt-text="Screenshot: Variablen-Explorer-Tool":::
+
+Wählen Sie das Tool aus, um das Fenster des Variablen-Explorers anzuzeigen.
+
+:::image type="content" source="media/how-to-run-jupyter-notebooks/variable-explorer-window.png" alt-text="Screenshot: Fenster des Variablen-Explorers":::
+
+## <a name="navigate-with-a-toc"></a>Navigieren mit einem Inhaltsverzeichnis
+
+Verwenden Sie auf der Notebook-Symbolleiste das Tool **Inhaltsverzeichnis**, um das Inhaltsverzeichnis anzuzeigen oder auszublenden.  Beginnen Sie mit einer Markdown-Zelle mit einer Überschrift, um sie dem Inhaltsverzeichnis hinzuzufügen. Klicken Sie auf einen Eintrag in der Tabelle, um zu dieser Zelle im Notebook zu scrollen.  
+
+:::image type="content" source="media/how-to-run-jupyter-notebooks/table-of-contents.png" alt-text="Screenshot: Inhaltsverzeichnis im Notebook":::
 
 ## <a name="change-the-notebook-environment"></a>Ändern der Notebookumgebung
 
-Die Notebook-Symbolleiste ermöglicht es Ihnen, die Umgebung zu ändern, in der das Notebook ausgeführt wird.  
+Die Notebook-Symbolleiste ermöglicht Ihnen, die Umgebung zu ändern, in der das Notebook ausgeführt wird.  
 
 Diese Aktionen ändern weder den Notebook-Zustand noch die Werte von Variablen im Notebook:
 
@@ -213,7 +211,7 @@ Mit diesen Aktionen werden der Notebook-Zustand und alle Variablen im Notebook z
 
 ### <a name="add-new-kernels"></a>Hinzufügen neuer Kernel
 
-Das Notebook findet automatisch alle Jupyter-Kernel, die auf der verbundenen ComputeiInstanz installiert sind.  So fügen Sie einen Kernel zur Computeinstanz hinzu
+Das Notebook findet automatisch alle Jupyter-Kernel, die auf der verbundenen Compute-Instanz installiert sind.  So fügen Sie einen Kernel zur Computeinstanz hinzu
 
 1. Wählen Sie auf der Notebook-Symbolleiste [**Terminal öffnen**](#terminal) aus.
 1. Verwenden Sie das Terminalfenster, um eine neue Umgebung zu erstellen.  Beispielsweise erstellt der folgende Code `newenv`:
@@ -234,13 +232,13 @@ Das Notebook findet automatisch alle Jupyter-Kernel, die auf der verbundenen Com
     ```
 
 > [!NOTE]
-> Für die Paketverwaltung innerhalb eines Notebooks verwenden Sie die magischen Funktionen **%pip** oder **%conda** , um Pakete automatisch in den **aktuell aktiven Kernel** zu installieren, anstatt **!pip** oder **!conda** , die sich auf alle Pakete beziehen (einschließlich der Pakete außerhalb des aktuell aktiven Kernels).
+> Für die Paketverwaltung innerhalb eines Notebooks verwenden Sie die magischen Funktionen **%pip** oder **%conda**, um Pakete automatisch in den **aktuell aktiven Kernel** zu installieren, anstatt **!pip** oder **!conda**, die sich auf alle Pakete beziehen (einschließlich der Pakete außerhalb des aktuell aktiven Kernels).
 
 Jeder der [verfügbaren Jupyter-Kernel](https://github.com/jupyter/jupyter/wiki/Jupyter-kernels) kann installiert werden.
 
 ### <a name="status-indicators"></a>Statusanzeigen
 
-Ein Indikator neben der **Compute** -Dropdownliste zeigt seinen Status an.  Der Status wird auch in der Dropdownliste selbst angezeigt.  
+Ein Indikator neben der **Compute**-Dropdownliste zeigt seinen Status an.  Der Status wird auch in der Dropdownliste selbst angezeigt.  
 
 |Color |Computestatus |
 |---------|---------| 
@@ -250,16 +248,99 @@ Ein Indikator neben der **Compute** -Dropdownliste zeigt seinen Status an.  Der 
 |  Hellblau |Erstellen, Starten, Neustarten und Einrichten von Compute |
 |  Grau |Compute wird gelöscht, beendet |
 
-Ein Indikator neben der **Kernel** -Dropdownliste zeigt seinen Status an.
+Ein Indikator neben der **Kernel**-Dropdownliste zeigt seinen Status an.
 
 |Color |Kernelstatus |
 |---------|---------|
 |  Grün |Kernel verbunden, im Leerlauf, ausgelastet|
 |  Grau |Kernel nicht verbunden |
 
-## <a name="find-compute-details"></a>Suchen von Computedetails 
+## <a name="shortcut-keys"></a>Tastenkombinationen
+Ähnlich wie Jupyter Notebooks verfügen Azure Machine Learning-Notebooks über eine modale Benutzeroberfläche. Mit der Tastatur werden unterschiedliche Aktionen ausgeführt, je nachdem, in welchem Modus sich die Notebook-Zelle befindet. Azure Machine Learning-Notebooks unterstützen die folgenden zwei Modi für eine bestimmte Codezelle: Befehlsmodus und Bearbeitungsmodus.
 
-Hier finden Sie Details zu ihren Computeinstanzen auf der **Compute** -Seite in [Studio](https://ml.azure.com).
+### <a name="command-mode-shortcuts"></a>Tastenkombinationen im Befehlsmodus
+
+Eine Zelle befindet sich im Befehlsmodus, wenn Sie kein Textcursor zur Eingabe auffordert. Wenn sich eine Zelle im Befehlsmodus befindet, können Sie das Notebook als Ganzes bearbeiten, aber keine Eingaben in einzelne Zellen vornehmen. Sie wechseln in den Befehlsmodus, indem Sie `ESC` drücken oder mit der Maus außerhalb des Editor-Bereichs einer Zelle klicken.  Der linke Rand der aktiven Zelle ist blau und durchgehend, und die zugehörige Schaltfläche **Ausführen** ist blau.
+
+   :::image type="content" source="media/how-to-run-jupyter-notebooks/command-mode.png" alt-text="Notebookzelle im Befehlsmodus ":::
+
+| Verknüpfung                      | Beschreibung                          |
+| ----------------------------- | ------------------------------------|
+| EINGABETASTE                         | Aktivieren des Bearbeitungsmodus             |        
+| UMSCHALT + ENTER                 | Zelle ausführen, Zelle darunter auswählen         |     
+| STRG/Befehlstaste + EINGABETASTE       | Run cell (Zelle ausführen)                            |
+| ALT+EINGABETASTE                   | Zelle ausführen, Codezelle unten einfügen    |
+| STRG/Befehlstaste + ALT + EINGABETASTE | Zelle ausführen, Markdownzelle unten einfügen|
+| ALT + R                       | Run all (Alle ausführen)      |                       
+| J                             | Zelle in Code konvertieren    |                         
+| M                             | Zelle in Markdown konvertieren  |                       
+| Nach oben/K                          | Zelle darüber auswählen    |               
+| Nach unten/J                        | Zelle darunter auswählen    |               
+| Ein                             | Codezelle oben einfügen  |            
+| B                             | Codezelle unten einfügen   |           
+| STRG/Befehlstaste + UMSCHALT + A   | Markdownzelle oben einfügen    |      
+| STRG/Befehlstaste + UMSCHALT + B   | Markdownzelle unten einfügen   |       
+| X                             | Ausgewählte Zelle ausschneiden    |               
+| C                             | Ausgewählte Zelle kopieren   |               
+| UMSCHALT + V                     | Ausgewählte Zelle oben einfügen           |
+| V                             | Ausgewählte Zelle unten einfügen    |       
+| D D                           | Ausgewählte Zelle löschen|                
+| O                             | Toggle Output         |              
+| UMSCHALT + O                     | Scrollen der Ausgabe umschalten   |          
+| I I                           | Kernel unterbrechen |                   
+| 0 0                           | Kernel neu starten |                     
+| UMSCHALT + LEERTASTE                 | Bildlauf nach oben  |                         
+| LeerZchn                         | Bildlauf nach unten|
+| Registerkarte                           | Fokus auf das nächste Element ändern, das den Fokus erhalten kann (bei deaktivierter Fokusinitialisierung)|
+| STRG/Befehlstaste + S           | Notebook speichern |                      
+| 1                             | In h1 ändern|                       
+| 2                             | In h2 ändern|                        
+| 3                             | In h3 ändern|                        
+| 4                             | In h4 ändern |                       
+| 5                             | In h5 ändern |                       
+| 6                             | In h6 ändern |                       
+
+### <a name="edit-mode-shortcuts"></a>Tastenkombinationen im Bearbeitungsmodus
+
+Der Bearbeitungsmodus wird durch einen Textcursor angezeigt, der Sie zur Eingabe im Editor-Bereich auffordert. Wenn sich eine Zelle im Bearbeitungsmodus befindet, können Sie etwas in die Zelle eingeben. Sie wechseln in den Bearbeitungsmodus, indem Sie `Enter` drücken oder mit der Maus auf den Editor-Bereich einer Zelle klicken. Der linke Rand der aktiven Zelle ist grün und gestrichelt, und die zugehörige Schaltfläche **Ausführen** ist grün. Außerdem wird im Bearbeitungsmodus der Cursor der Eingabeaufforderung in der Zelle angezeigt.
+
+   :::image type="content" source="media/how-to-run-jupyter-notebooks/edit-mode.png" alt-text="Notebookzelle im Bearbeitungsmodus":::
+
+Mithilfe der folgenden Tastenkombinationen können Sie in Azure Machine Learning-Notebooks einfacher navigieren und Code ausführen, während sie sich im Bearbeitungsmodus befinden.
+
+| Verknüpfung                      | Beschreibung|                                     
+| ----------------------------- | ----------------------------------------------- |
+| Escape                        | Befehlsmodus aktivieren|  
+| STRG/Befehlstaste + LEERTASTE       | Aktivieren von IntelliSense |
+| UMSCHALT + ENTER                 | Zelle ausführen, Zelle darunter auswählen |                         
+| STRG/Befehlstaste + EINGABETASTE       | Run cell (Zelle ausführen)  |                                      
+| ALT+EINGABETASTE                   | Zelle ausführen, Codezelle unten einfügen  |              
+| STRG/Befehlstaste + ALT + EINGABETASTE | Zelle ausführen, Markdownzelle unten einfügen  |          
+| ALT + R                       | Ausführen aller Zellen     |                              
+| Nach oben                            | Cursor nach oben oder in die vorherige Zelle bewegen    |             
+| Nach unten                          | Cursor nach unten oder in die nächste Zelle bewegen |                  
+| STRG/Befehlstaste + S           | Notebook speichern   |                                
+| STRG/Befehlstaste + Nach-oben          | Zum Anfang der Zelle wechseln   |                             
+| STRG/Befehlstaste + Nach-unten        | Zum Ende der Zelle wechseln |                                 
+| Registerkarte                           | Codevervollständigung oder -einzug (bei aktivierter Fokusinitialisierung) |
+| STRG/Befehlstaste + M           | Fokusinitialisierung aktivieren/deaktivieren  |                       
+| STRG/Befehlstaste + ]           | Einziehen |                                         
+| STRG/Befehlstaste + [           | Einzug entfernen  |                                        
+| STRG/Befehlstaste + A           | Alle auswählen|                                      
+| STRG/Befehlstaste + Z           | Rückgängig |                                           
+| STRG/Befehlstaste + UMSCHALT + Z   | Wiederholen |                                           
+| STRG/Befehlstaste + Y           | Wiederholen |                                           
+| STRG/Befehlstaste + Pos1        | Zum Anfang der Zelle wechseln|                                
+| STRG/Befehlstaste + Ende         | Zum Ende der Zelle wechseln   |                               
+| STRG/Befehlstaste + Nach-links        | Ein Wort nach links wechseln |                               
+| STRG/Befehlstaste + Nach-rechts       | Ein Wort nach rechts wechseln |                              
+| STRG/Befehlstaste + RÜCKTASTE   | Wort davor löschen |                             
+| STRG/Befehlstaste + Entf      | Wort danach löschen |                              
+| STRG/Befehlstaste + /           | Kommentar in Zelle umschalten
+
+## <a name="find-compute-details"></a>Suchen von Computedetails
+
+Hier finden Sie Details zu ihren Computeinstanzen auf der **Compute**-Seite in [Studio](https://ml.azure.com).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

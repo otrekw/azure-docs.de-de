@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 07/23/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: f464664737ab56b43ca0c0a159837487494a1eaa
-ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
+ms.openlocfilehash: 2da90a2c8950d85d8db2a414bbe63dfc7b94cf01
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97826036"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98601316"
 ---
 # <a name="create--use-software-environments-in-azure-machine-learning"></a>Erstellen und Verwenden von Softwareumgebungen in Azure Machine Learning
 
@@ -131,6 +131,8 @@ myenv.docker.base_image_registry="your_registry_location"
 #### <a name="use-your-own-dockerfile"></a>Verwenden Ihres eigenen Dockerfiles 
 
 Sie können auch eine benutzerdefinierte Dockerfile angeben. Am einfachsten ist es, von einem der Azure Machine Learning-Basisimages mit dem Docker-Befehl ```FROM``` zu beginnen und dann Ihre eigenen benutzerdefinierten Schritte hinzuzufügen. Verwenden Sie diesen Ansatz, wenn Sie Nicht-Python-Pakete als Abhängigkeiten installieren müssen. Denken Sie daran, das Basisimage auf „Kein“ festzulegen.
+
+Beachten Sie, dass Python eine implizite Abhängigkeit in Azure Machine Learning ist, sodass Python auf einer benutzerdefinierten Dockerfile-Datei installiert werden muss.
 
 ```python
 # Specify docker steps as a string. 

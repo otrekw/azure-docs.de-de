@@ -5,14 +5,14 @@ services: iot-hub
 author: jlian
 ms.service: iot-fundamentals
 ms.topic: conceptual
-ms.date: 11/25/2020
+ms.date: 01/14/2020
 ms.author: jlian
-ms.openlocfilehash: f4438aebcb81d665a19a595ac7ade4fea27fc43f
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: d36a7917693aef9063ade473759f2f451d3a677f
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96621007"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98234017"
 ---
 # <a name="transport-layer-security-tls-support-in-iot-hub"></a>Transport Layer Security (TLS)-Unterstützung in IoT Hub
 
@@ -46,9 +46,16 @@ Wenn Sie die Sicherheit erhöhen möchten, konfigurieren Sie Ihre IoT Hubs so, d
 * USA Süd Mitte
 * USA, Westen 2
 * US Gov Arizona
-* US Government, Virginia
+* US Gov Virginia (Unterstützung für TLS 1.0/1.1 ist in dieser Region nicht verfügbar. TLS 1.2-Erzwingung muss aktiviert werden, sonst führt die Erstellung des IoT-Hubs zu einem Fehler)
 
-Stellen Sie zu diesem Zweck einen neuen IoT Hub in einer der unterstützten Regionen bereit, und legen Sie die `minTlsVersion`-Eigenschaft in der IoT Hub-Ressourcenspezifikation Ihrer Azure Resource Manager-Vorlage auf `1.2` fest:
+Um die TLS 1.2-Erzwingung zu aktivieren, führen Sie die Schritte in [Erstellen von IoT-Hubs im Azure-Portal](iot-hub-create-through-portal.md) mit den folgenden Ausnahmen aus:
+
+- Wählen Sie eine **Region** in der in der obigen Liste aus.
+- Wählen Sie unter **Verwaltung > Erweitert > Transport Layer Security (TLS) > TLS-Mindestversion** die Option **1.2** aus. Diese Einstellung wird nur bei IoT-Hubs angezeigt, die in einer unterstützten Region erstellt wurden.
+
+    :::image type="content" source="media/iot-hub-tls-12-enforcement.png" alt-text="Screenshot der Aktivierung der TLS 1.2-Erzwingung während der IoT-Hub-Erstellung":::
+
+Stellen Sie für die Verwendung einer ARM-Vorlage für die Erstellung einen neuen IoT-Hub in einer der unterstützten Regionen bereit, und legen Sie die `minTlsVersion`-Eigenschaft in der Ressourcenspezifikation auf `1.2` fest:
 
 ```json
 {

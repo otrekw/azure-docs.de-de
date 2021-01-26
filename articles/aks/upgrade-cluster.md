@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie das Upgrade eines Azure Kubernetes Service-Cl
 services: container-service
 ms.topic: article
 ms.date: 12/17/2020
-ms.openlocfilehash: 947d669d436308a550bce31f04c7b1a2b8a8485a
-ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
+ms.openlocfilehash: 1d3c275758a1e241a531b65d1897903153efab94
+ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97734351"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98567451"
 ---
 # <a name="upgrade-an-azure-kubernetes-service-aks-cluster"></a>Durchführen eines Upgrades für einen Azure Kubernetes Service-Cluster (AKS)
 
@@ -108,7 +108,7 @@ Die Dauer des Clusterupgrades hängt von der Anzahl der vorhanden Knoten ab und 
 az aks show --resource-group myResourceGroup --name myAKSCluster --output table
 ```
 
-Die Ausgabe im folgenden Beispiel zeigt, dass im Cluster nun Version *1.13.10* ausgeführt wird:
+Die Ausgabe im folgenden Beispiel zeigt, dass im Cluster nun Version *1.18.10* ausgeführt wird:
 
 ```json
 Name          Location    ResourceGroup    KubernetesVersion    ProvisioningState    Fqdn

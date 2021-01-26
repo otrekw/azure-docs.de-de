@@ -4,15 +4,15 @@ description: In diesem Artikel wird beschrieben, wie Sie sich anmelden und eine 
 author: shhazam-ms
 manager: rkarlin
 ms.author: shhazam
-ms.date: 12/26/2020
+ms.date: 1/12/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 9305609b624a96e4d785657dfb63af6639e132c4
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 4ad1562bdd9853b6ff3c537790a54dbeab96b5b8
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97836185"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98538566"
 ---
 # <a name="activate-and-set-up-your-sensor"></a>Aktivieren und Einrichten des Sensors
 
@@ -65,10 +65,13 @@ Zwei Sicherheitsstufen stehen zur Verfügung:
 Die Konsole unterstützt die folgenden Zertifikattypen:
 
 - Private und Enterprise Key-Infrastruktur (Private PKI)
+
 - Public Key-Infrastruktur (Public PKI)
+
 - Lokal auf dem Gerät generiert (lokal selbstsigniert) 
 
-  > [WICHTIG] Wir empfehlen, nicht das standardmäßige selbstsignierte Zertifikat zu verwenden. Das Zertifikat ist nicht sicher und darf nur für Testumgebungen verwendet werden. Der Besitzer des Zertifikats kann nicht überprüft und die Sicherheit Ihres Systems nicht aufrechterhalten werden. Verwenden Sie diese Option auf keinen Fall in Produktionsnetzwerken.
+  > [!IMPORTANT]
+  > Es empfiehlt sich, nicht das standardmäßige selbstsignierte Zertifikat zu verwenden. Das Zertifikat ist nicht sicher und darf nur für Testumgebungen verwendet werden. Der Besitzer des Zertifikats kann nicht überprüft und die Sicherheit Ihres Systems nicht aufrechterhalten werden. Verwenden Sie diese Option auf keinen Fall in Produktionsnetzwerken.
 
 ### <a name="sign-in-and-activate-the-sensor"></a>Anmelden und Aktivieren des Sensors
 

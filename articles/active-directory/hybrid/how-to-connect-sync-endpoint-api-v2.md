@@ -12,12 +12,12 @@ ms.date: 12/04/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 07acd71eb1a77592c82b80aa574d79b98c48f60e
-ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
+ms.openlocfilehash: 0067ed618f95e7f83fc041fe214bbc4d715a504f
+ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96608298"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98567630"
 ---
 # <a name="azure-ad-connect-sync-v2-endpoint-api"></a>Azure AD Connect-Synchronisierung: V2-Endpunkt-API 
 Microsoft hat einen neuen Endpunkt (API) für Azure AD Connect bereitgestellt, mit dem die Leistung der Synchronisierungsdienstvorgänge für Azure Active Directory verbessert wird. Wenn Sie den neuen V2-Endpunkt verwenden, treten beim Exportieren aus und Importieren in Azure AD spürbare Leistungssteigerungen auf. Dieser neue Endpunkt unterstützt Folgendes:
@@ -28,7 +28,7 @@ Microsoft hat einen neuen Endpunkt (API) für Azure AD Connect bereitgestellt, m
 > [!NOTE]
 > Der neue Endpunkt verfügt derzeit nicht über eine konfigurierte Beschränkung der Gruppengröße für Microsoft 365-Gruppen, die zurückgeschrieben werden. Dies hat möglicherweise Auswirkungen auf Ihr Active Directory und Synchronisierungszykluslatenzen. Es wird empfohlen, die Gruppengröße inkrementell zu erhöhen.  
 
-## <a name="pre-requisites"></a>Voraussetzungen  
+## <a name="prerequisites"></a>Voraussetzungen  
 Um den neuen V2-Endpunkt verwenden zu können, müssen Sie [Azure AD Connect Version 1.5.30.0](https://www.microsoft.com/download/details.aspx?id=47594) oder höher verwenden und die unten angegebenen Bereitstellungsschritte ausführen, um den V2-Endpunkt für Ihren Azure AD Connect-Server zu aktivieren.   
 
 ## <a name="deployment-guidance"></a>Hinweise zur Bereitstellung 

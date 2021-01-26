@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 12/09/2020
-ms.openlocfilehash: 182ec758a8764a959b39296163e63e800cf5108c
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.openlocfilehash: a7171d656ec9f839aea4ae73763ec6ebd20c2bb3
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97008483"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98209830"
 ---
 # <a name="how-to-work-with-search-results-in-azure-cognitive-search"></a>Arbeiten mit Suchergebnissen in der kognitiven Azure-Suche
 
@@ -103,7 +103,7 @@ Suchergebnisse vermitteln einen allgemeinen Eindruck von Relevanz, der die Stär
 
 ### <a name="how-to-get-consistent-ordering"></a>Sicherstellen einer konsistenten Reihenfolge
 
-Wenn eine konsistente Reihenfolge eine wichtige Anforderung der Anwendung ist, können Sie explizit einen [ **`$orderby`** ]-Ausdruck(query-odata-filter-orderby-syntax.md) in einem Feld definieren. Nur Felder, die als **`sortable`** indiziert sind, können zum Sortieren von Ergebnissen verwendet werden. Felder, die häufig in **`$orderby`** verwendet werden, sind „rating“, „date“ und „location“, wenn Sie den Wert des **`orderby`** -Parameters angeben, um Feldnamen und Aufrufe der [ **`geo.distance()`-Funktion**](query-odata-filter-orderby-syntax.md) für räumliche Daten einzuschließen.
+Wenn eine konsistente Reihenfolge eine Anforderung der Anwendung ist, können Sie explizit einen [ **`$orderby`** -Ausdruck](query-odata-filter-orderby-syntax.md) in einem Feld definieren. Nur Felder, die als **`sortable`** indiziert sind, können zum Sortieren von Ergebnissen verwendet werden. Felder, die häufig in **`$orderby`** verwendet werden, sind „rating“, „date“ und „location“, wenn Sie den Wert des **`orderby`** -Parameters angeben, um Feldnamen und Aufrufe der [ **`geo.distance()`-Funktion**](query-odata-filter-orderby-syntax.md) für räumliche Daten einzuschließen.
 
 Einen weiteren Ansatz für mehr Konsistenz stellt die Verwendung eines [benutzerdefinierten Bewertungsprofils](index-add-scoring-profiles.md) dar. Mit Bewertungsprofilen haben Sie mehr Kontrolle über die Bewertung von Elementen in Suchergebnissen und können in bestimmten Feldern gefundene Übereinstimmungen aufwerten. Mithilfe der zusätzlichen Bewertungslogik können geringfügige Unterschiede zwischen Replikaten außer Kraft gesetzt werden, da die Suchbewertungen für die einzelnen Dokumente weiter auseinander liegen. Für diesen Ansatz wird der [Rangfolgenalgorithmus](index-ranking-similarity.md) empfohlen.
 

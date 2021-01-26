@@ -10,19 +10,20 @@ ms.author: sagopal
 ms.date: 12/3/2020
 ms.topic: troubleshooting
 ms.custom: devx-track-python
-ms.openlocfilehash: b452c24b4b2ed6021910f267b9941f3829acccd8
-ms.sourcegitcommit: a89a517622a3886b3a44ed42839d41a301c786e0
+ms.openlocfilehash: 71061c056b499f79727f70fb855db7a81a65f3bd
+ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97733218"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98572169"
 ---
 # <a name="troubleshoot-environment-image-builds"></a>Problembehandlung für Buildvorgänge für Umgebungsimages
+
 Es wird beschrieben, wie Sie die Problembehandlung durchführen, wenn Probleme mit dem Buildvorgang für Docker-Umgebungsimages und mit der Paketinstallation auftreten.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Ein **Azure-Abonnement**. Probieren Sie die [kostenlose oder kostenpflichtige Version von Azure Machine Learning](https://aka.ms/AMLFree) aus.
+* Ein Azure-Abonnement. Probieren Sie die [kostenlose oder kostenpflichtige Version von Azure Machine Learning](https://aka.ms/AMLFree) aus.
 * Das [Azure Machine Learning SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py).
 * Die [Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest)
 * Die [CLI-Erweiterung für Azure Machine Learning](reference-azure-machine-learning-cli.md).
@@ -30,26 +31,27 @@ Es wird beschrieben, wie Sie die Problembehandlung durchführen, wenn Probleme m
 
 ## <a name="docker-image-build-failures"></a>Fehler beim Erstellen eines Docker-Images
  
-Bei den meisten Buildfehlern für Images ist die Grundursache im Buildprotokoll des Images zu finden.
-Sie finden das Buildprotokoll des Images im Azure Machine Learning-Portal (20\_image\_build\_log.txt) oder in den Ausführungsprotokollen Ihrer ACR-Tasks.
+Bei den meisten Fehlern bei der Imageerstellung finden Sie die Grundursache im Buildprotokoll.
+Sie finden das Buildprotokoll des Images im Azure Machine Learning-Portal (20\_image\_build\_log.txt) und in den Ausführungsprotokollen Ihrer Azure Container Registry-Tasks.
  
-In den meisten Fällen ist es einfacher, Fehler lokal zu reproduzieren. Überprüfen Sie, welche Art von Fehler vorliegt, und probieren Sie eines der folgenden `setuptools` aus:
+Meist ist es einfacher, Fehler lokal zu reproduzieren. Überprüfen Sie, welche Art von Fehler vorliegt, und probieren Sie eines der folgenden `setuptools` aus:
 
-- Conda-Abhängigkeit lokal installieren: `conda install suspicious-dependency==X.Y.Z`
-- PIP-Abhängigkeit lokal installieren: `pip install suspicious-dependency==X.Y.Z`
-- Gesamte Umgebung materialisieren: `conda create -f conda-specification.yml`
+- Lokales Installieren einer Conda-Abhängigkeit: `conda install suspicious-dependency==X.Y.Z`
+- Lokales Installieren einer pip-Abhängigkeit: `pip install suspicious-dependency==X.Y.Z`
+- Materialisieren der gesamten Umgebung: `conda create -f conda-specification.yml`
 
 > [!IMPORTANT]
-> Stellen Sie sicher, dass die Plattform und der Interpreter auf Ihrer lokalen Computeressource mit den entsprechenden Komponenten auf der Remoteressource übereinstimmen. 
+> Stellen Sie sicher, dass die Plattform und der Interpreter in Ihrem lokalen Computecluster mit den entsprechenden Komponenten im Remotecomputecluster übereinstimmen. 
 
 ### <a name="timeout"></a>Timeout 
  
-Timeoutfehler können für unterschiedliche Netzwerkprobleme auftreten:
+Die folgenden Netzwerkprobleme können Timeoutfehler verursachen:
+
 - Geringe Internetbandbreite
 - Serverprobleme
-- Umfangreiche Abhängigkeit, die nicht mit den jeweiligen Conda- oder PIP-Timeouteinstellungen heruntergeladen werden kann
+- Umfangreiche Abhängigkeiten, die nicht mit den jeweiligen Conda- oder pip-Timeouteinstellungen heruntergeladen werden können
  
-Mit Meldungen der folgenden Art wird auf das Problem hingewiesen:
+Mit Meldungen ähnlich den folgenden Beispielen wird auf das Problem hingewiesen:
  
 ```
 ('Connection broken: OSError("(104, \'ECONNRESET\')")', OSError("(104, 'ECONNRESET')"))
@@ -58,42 +60,45 @@ Mit Meldungen der folgenden Art wird auf das Problem hingewiesen:
 ReadTimeoutError("HTTPSConnectionPool(host='****', port=443): Read timed out. (read timeout=15)",)
 ```
 
-Mögliche Lösungen:
+Wenn Sie eine Fehlermeldung erhalten, versuchen Sie es mit einer der folgenden möglichen Lösungen:
  
-- Versuchen Sie, eine andere Quelle für die Abhängigkeit zu verwenden, falls eine verfügbar ist. Beispiele hierfür sind Spiegel, Blobspeicher oder andere Python-Feeds.
-- Führen Sie ein Update für Conda bzw. PIP durch. Aktualisieren Sie die Timeouteinstellungen, falls eine benutzerdefinierte Docker-Datei verwendet wird.
-- Für einige PIP-Versionen bestehen bekannte Probleme. Erwägen Sie, eine bestimmte Version von PIP den Umgebungsabhängigkeiten hinzuzufügen.
+- Versuchen Sie, eine andere Quelle für die Abhängigkeit zu verwenden. Beispiele hierfür sind Spiegel, Azure Blob Storage oder andere Python-Feeds.
+- Führen Sie ein Update für Conda bzw. PIP durch. Aktualisieren Sie die Timeouteinstellungen, falls Sie eine benutzerdefinierte Docker-Datei verwenden.
+- Für einige PIP-Versionen bestehen bekannte Probleme. Erwägen Sie, den Umgebungsabhängigkeiten eine bestimmte Version von pip hinzuzufügen.
 
 ### <a name="package-not-found"></a>Paket nicht gefunden
 
-Dies ist der häufigste Fehler, der beim Buildvorgang für Images auftritt.
+Die folgenden Fehler treten am häufigsten bei der Imageerstellung auf:
 
-- Conda-Paket wurde nicht gefunden
-        ```
-        ResolvePackageNotFound: 
-          - not-existing-conda-package
-        ```
+- Conda-Paket wurde nicht gefunden:
 
-- Das angegebene PIP-Paket oder die Version wurde nicht gefunden
-        ```
-        ERROR: Could not find a version that satisfies the requirement invalid-pip-package (from versions: none)
-        ERROR: No matching distribution found for invalid-pip-package
-        ```
+   ```
+   ResolvePackageNotFound: 
+   - not-existing-conda-package
+   ```
 
-- Ungültige geschachtelte PIP-Abhängigkeit
-        ```
-        ERROR: No matching distribution found for bad-backage==0.0 (from good-package==1.0)
-        ```
+- Das angegebene pip-Paket oder die Version wurde nicht gefunden:
 
-Überprüfen Sie, ob das Paket auf den angegebenen Quellen vorhanden ist. Verwenden Sie die [PIP-Suche](https://pip.pypa.io/en/stable/reference/pip_search/), um die PIP-Abhängigkeiten zu überprüfen.
+   ```
+   ERROR: Could not find a version that satisfies the requirement invalid-pip-package (from versions: none)
+   ERROR: No matching distribution found for invalid-pip-package
+   ```
 
-`pip search azureml-core`
+- Ungültige geschachtelte pip-Abhängigkeit:
 
-Verwenden Sie für Conda-Abhängigkeiten die [Conda-Suche](https://docs.conda.io/projects/conda/en/latest/commands/search.html).
+   ```
+   ERROR: No matching distribution found for bad-package==0.0 (from good-package==1.0)
+   ```
 
-`conda search conda-forge::numpy`
+Überprüfen Sie, ob das Paket an den angegebenen Quellen vorhanden ist. Verwenden Sie die [pip-Suche](https://pip.pypa.io/en/stable/reference/pip_search/), um die pip-Abhängigkeiten zu überprüfen:
 
-Weitere Optionen:
+- `pip search azureml-core`
+
+Verwenden Sie für Conda-Abhängigkeiten die [Conda-Suche](https://docs.conda.io/projects/conda/en/latest/commands/search.html):
+
+- `conda search conda-forge::numpy`
+
+Versuchen Sie als weitere Optionen folgende:
 - `pip search -h`
 - `conda search -h`
 
@@ -101,16 +106,16 @@ Weitere Optionen:
 
 Stellen Sie sicher, dass die erforderliche Verteilung für die angegebene Plattform und die Version des Python-Interpreters vorhanden ist.
 
-Navigieren Sie für PIP-Abhängigkeiten zu `https://pypi.org/project/[PROJECT NAME]/[VERSION]/#files`, um zu ermitteln, ob die erforderliche Version verfügbar ist. Zum Beispiel, https://pypi.org/project/azureml-core/1.11.0/#files
+Navigieren Sie für pip-Abhängigkeiten zu `https://pypi.org/project/[PROJECT NAME]/[VERSION]/#files`, um zu ermitteln, ob die erforderliche Version verfügbar ist. Ein Beispiel finden Sie unter https://pypi.org/project/azureml-core/1.11.0/#files.
 
 Überprüfen Sie für Conda-Abhängigkeiten das Paket im Kanalrepository.
-Führen Sie die Überprüfung für Kanäle, die von Anaconda, Inc. verwaltet werden, [hier](https://repo.anaconda.com/pkgs/) durch.
+Lesen Sie für Kanäle, die von Anaconda, Inc. verwaltet werden, die [Seite zu Anaconda-Paketen](https://repo.anaconda.com/pkgs/).
 
-### <a name="pip-package-update"></a>Aktualisierung des PIP-Pakets
+### <a name="pip-package-update"></a>pip-Paketupdate
 
-Während der Installation oder Aktualisierung eines PIP-Pakets muss der Konfliktlöser ggf. ein Update für ein bereits installiertes Paket durchführen, um die neuen Anforderungen zu erfüllen.
-Für die Deinstallation kann aus verschiedenen Gründen ein Fehler auftreten, dessen Ursache die PIP-Version oder die Installationsweise der Abhängigkeit ist.
-Das häufigste Szenario ist, dass eine von Conda installierte Abhängigkeit von PIP nicht deinstalliert werden konnte.
+Während einer Installation oder Aktualisierung eines pip-Pakets muss der Konfliktlöser ggf. ein Update für ein bereits installiertes Paket durchführen, um die neuen Anforderungen zu erfüllen.
+Bei der Deinstallation kann aus verschiedenen Gründen ein Fehler auftreten, dessen Ursache die pip-Version oder die Installationsweise der Abhängigkeit ist.
+Das häufigste Szenario ist, dass eine von Conda installierte Abhängigkeit von pip nicht deinstalliert werden konnte.
 Erwägen Sie in diesem Fall, die Abhängigkeit mit `conda remove mypackage` zu deinstallieren.
 
 ```
@@ -122,58 +127,70 @@ ERROR: Cannot uninstall 'mypackage'. It is a distutils installed project and thu
 
 Für bestimmte Installationsprogrammversionen treten Probleme in den Paketkonfliktlösern auf, die zu einem Buildfehler führen können.
 
-Wenn ein benutzerdefiniertes Basisimage oder ein Dockerfile verwendet wird, empfehlen wir Ihnen, Conda-Version 4.5.4 oder höher zu verwenden.
+Wenn Sie ein benutzerdefiniertes Basisimage oder ein Dockerfile verwenden, wird empfohlen, mindestens Conda-Version 4.5.4 zu verwenden.
 
-Das PIP-Paket wird benötigt, um PIP-Abhängigkeiten zu installieren. Falls eine Version in der Umgebung nicht angegeben ist, wird die aktuelle Version verwendet.
-Wir empfehlen Ihnen, eine bekannte Version von PIP zu verwenden, um das Auftreten von vorübergehenden Problemen oder Breaking Changes zu vermeiden, die durch die aktuelle Version des Tools verursacht werden.
+Zum Installieren von pip-Abhängigkeiten ist ein pip-Paket erforderlich. Wenn in der Umgebung keine Version angegeben ist, wird die neueste Version verwendet.
+Es wird empfohlen, eine bekannte Version von pip zu verwenden, um das Auftreten von vorübergehenden Problemen oder Breaking Changes zu vermeiden, die eventuell durch die aktuelle Version des Tools verursacht werden.
 
-Erwägen Sie, die PIP-Version in Ihrer Umgebung anzuheften, falls eine der folgenden Meldungen angezeigt wird:
+Erwägen Sie, die pip-Version in Ihrer Umgebung anzuheften, falls die folgende Meldung angezeigt wird:
 
-`Warning: you have pip-installed dependencies in your environment file, but you do not list pip itself as one of your conda dependencies. Conda may not use the correct pip to install your packages, and they may end up in the wrong place. Please add an explicit pip dependency. I'm adding one for you, but still nagging you.`
+   ```
+   Warning: you have pip-installed dependencies in your environment file, but you do not list pip itself as one of your conda dependencies. Conda may not use the correct pip to install your packages, and they may end up in the wrong place. Please add an explicit pip dependency. I'm adding one for you, but still nagging you.
+   ```
 
-`Pip subprocess error:
-ERROR: THESE PACKAGES DO NOT MATCH THE HASHES FROM THE REQUIREMENTS FILE. If you have updated the package versions, update the hashes as well. Otherwise, examine the package contents carefully; someone may have tampered with them.`
+Fehler im pip-Unterprozess:
+   ```
+   ERROR: THESE PACKAGES DO NOT MATCH THE HASHES FROM THE REQUIREMENTS FILE. If you have updated the package versions, update the hashes as well. Otherwise, examine the package contents carefully; someone may have tampered with them.
+   ```
 
-Darüber hinaus kann die PIP-Installation auch in einer unendlichen Schleife hängen bleiben, falls für die Abhängigkeiten unlösbare Konflikte bestehen. Wenn Sie lokal arbeiten, sollten Sie für die PIP-Version das Downgrade auf eine frühere Version als 20.3 durchführen. In einer Conda-Umgebung, die aus einer YAML-Datei erstellt wird, tritt dieses Problem nur auf, wenn „conda-forge“ der Kanal mit der höchsten Priorität ist. Geben Sie zum Beheben des Problems in der Conda-Spezifikationsdatei explizit „pip < 20.3“ (!=20.3 oder =20.2.4-Anheftung an andere Version) als Conda-Abhängigkeit an.
+Die pip-Installation kann auch in einer unendlichen Schleife hängen bleiben, falls für die Abhängigkeiten unlösbare Konflikte bestehen. Wenn Sie lokal arbeiten, sollten Sie für die pip-Version ein Downgrade auf eine frühere Version als 20.3 durchführen. In einer Conda-Umgebung, die aus einer YAML-Datei erstellt wurde, tritt dieses Problem nur auf, wenn „conda-forge“ der Kanal mit der höchsten Priorität ist. Geben Sie zum Beheben des Problems in der Conda-Spezifikationsdatei explizit „pip < 20.3“ (!=20.3 oder =20.2.4-Anheftung an andere Version) als Conda-Abhängigkeit an.
 
 ## <a name="service-side-failures"></a>Dienstseitige Fehler
 
-### <a name="unable-to-pull-image-from-mcraddress-could-not-be-resolved-for-container-registry"></a>Der Fehler, bei dem das Pullen des Images aus MCR bzw. der Adresse nicht möglich war, konnte für Container Registry nicht behoben werden.
+In den folgenden Szenarien finden Sie Informationen zur Problembehandlung bei dienstseitigen Fehlern.
+
+### <a name="youre-unable-to-pull-an-image-from-a-container-registry-or-the-address-couldnt-be-resolved-for-a-container-registry"></a>Sie können ein Image nicht aus einer Containerregistrierung pullen, oder die Adresse konnte für eine Containerregistrierung nicht aufgelöst werden
+
 Mögliche Probleme:
-- Der Pfadname für die Containerregistrierung wird ggf. nicht richtig aufgelöst. Überprüfen Sie, ob für Imagenamen doppelte Schrägstriche verwendet werden und ob die Richtung der Schrägstriche auf den Linux- bzw. Windows-Hosts korrekt ist.
-- Wenn für die ACR-Instanz hinter einem VNET ein privater Endpunkt in einer [nicht unterstützten Region](https://docs.microsoft.com/azure/private-link/private-link-overview#availability) verwendet wird, sollten Sie die hinter dem VNET befindliche ACR-Instanz mit dem Dienstendpunkt (öffentlicher Zugriff) über das Portal konfigurieren und den Vorgang dann wiederholen.
-- Stellen Sie nach dem Anordnen der ACR-Instanz hinter einem VNET sicher, dass die [ARM-Vorlage](https://docs.microsoft.com/azure/machine-learning/how-to-enable-virtual-network#azure-container-registry) ausgeführt wird. Auf diese Weise kann der Arbeitsbereich mit der ACR-Instanz kommunizieren.
+- Der Pfadname für die Containerregistrierung wird möglicherweise nicht richtig aufgelöst. Überprüfen Sie, ob für Imagenamen doppelte Schrägstriche verwendet werden und ob die Richtung der Schrägstriche auf den Linux- bzw. Windows-Hosts korrekt ist.
+- Wenn eine Containerregistrierung hinter einem virtuellen Netzwerk einen privaten Endpunkt in einer [nicht unterstützten Region](https://docs.microsoft.com/azure/private-link/private-link-overview#availability) verwendet, sollten Sie die Containerregistrierung über das Portal mit dem Dienstendpunkt (öffentlicher Zugriff) konfigurieren und den Vorgang dann wiederholen.
+- Nachdem Sie die Containerregistrierung hinter einem virtuellen Netzwerk platziert haben, führen Sie die [Azure Resource Manager-Vorlage](https://docs.microsoft.com/azure/machine-learning/how-to-enable-virtual-network#azure-container-registry) aus, damit der Arbeitsbereich mit der Instanz der Containerregistrierung kommunizieren kann.
 
-### <a name="401-error-from-workspace-acr"></a>Fehler 401 für ACR-Instanz des Arbeitsbereichs
-Führen Sie die erneute Synchronisierung von Speicherschlüsseln durch, indem Sie [ws.sync_keys()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#sync-keys--) verwenden.
+### <a name="you-get-a-401-error-from-a-workspace-container-registry"></a>Sie erhalten einen 401-Fehler von der Containerregistrierung eines Arbeitsbereichs
 
-### <a name="environment-keeps-throwing-waiting-for-other-conda-operations-to-finish-error"></a>Fehler der Art „Warten auf den Abschluss anderer Conda-Vorgänge…“ in der Umgebung
+Führen Sie die erneute Synchronisierung von Speicherschlüsseln mit [ws.sync_keys()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#sync-keys--) durch.
+
+### <a name="the-environment-keeps-throwing-a-waiting-for-other-conda-operations-to-finish-error"></a>Fehler der Art „Warten auf den Abschluss anderer Conda-Vorgänge …“ in der Umgebung
+
 Wenn gerade ein Buildvorgang für ein Image durchgeführt wird, wird Conda vom SDK-Client gesperrt. Falls der Prozess abgestürzt ist oder vom Benutzer nicht richtig abgebrochen wurde, verbleibt Conda im gesperrten Zustand. Um dieses Problem zu beheben, müssen Sie die Sperrdatei manuell löschen. 
 
-### <a name="custom-docker-image-not-in-registry"></a>Benutzerdefiniertes Docker-Image nicht in der Registrierung vorhanden
+### <a name="your-custom-docker-image-isnt-in-the-registry"></a>Ihr benutzerdefiniertes Docker-Image befindet sich nicht in der Registrierung
+
 Überprüfen Sie, ob das [richtige Tag](https://docs.microsoft.com/azure/machine-learning/how-to-use-environments#create-an-environment) verwendet wird und Folgendes gilt: `user_managed_dependencies = True`. Mit `Environment.python.user_managed_dependencies = True` wird Conda deaktiviert, und es werden die installierten Pakete des Benutzers verwendet.
 
-### <a name="common-vnet-issues"></a>Häufige VNET-Probleme
+### <a name="you-get-one-of-the-following-common-virtual-network-issues"></a>Sie erhalten eines der folgenden allgemeinen Probleme mit dem virtuellen Netzwerk
 
-1. Überprüfen Sie, ob sich das Speicherkonto, der Computecluster und die Azure Container Registry-Instanz in demselben Subnetz des virtuellen Netzwerks befinden.
-2. Wenn die ACR-Instanz hinter einem VNET angeordnet ist, kann sie nicht direkt zum Erstellen von Images genutzt werden. Der Computecluster muss verwendet werden, um den Buildvorgang für Images durchzuführen.
-3. Speicher muss ggf. hinter einem VNET angeordnet werden, wenn Folgendes gilt:
+- Überprüfen Sie, ob sich das Speicherkonto, der Computecluster und die Containerregistrierung im selben Subnetz des virtuellen Netzwerks befinden.
+- Wenn sich Ihre Containerregistrierung hinter einem virtuellen Netzwerk befindet, kann sie nicht direkt zum Erstellen von Images verwendet werden. Sie müssen den Computecluster verwenden, um Images zu erstellen.
+- Der Speicher muss in den folgenden Fällen möglicherweise hinter einem virtuellen Netzwerk platziert werden:
     - Verwendung von Rückschlüssen oder Private Wheel
     - Auftreten von Dienstfehlern vom Typ „403: Nicht autorisiert“
-    - Kein Abruf der Imagedetails aus ACR/MCR möglich
+    - Imagedetails können nicht aus Azure Container Registry abgerufen werden.
 
-### <a name="image-build-fails-when-trying-to-access-network-protected-storage"></a>Fehler beim Buildvorgang für das Image, wenn auf den geschützten Netzwerkspeicher zugegriffen werden soll
-- ACR-Aufgaben funktionieren hinter dem VNET nicht. Falls der Benutzer seine ACR-Instanz hinter dem VNET angeordnet hat, muss er den Computecluster zum Erstellen eines Images verwenden.
-- Speicher sollte sich hinter einem VNET befinden, damit dafür das Pullen von Abhängigkeiten möglich ist. 
+### <a name="the-image-build-fails-when-youre-trying-to-access-network-protected-storage"></a>Fehler beim Buildvorgang für das Image, wenn auf den geschützten Netzwerkspeicher zugegriffen werden soll
 
-### <a name="cannot-run-experiments-when-storage-has-network-security-enabled"></a>Ausführung von Experimenten nicht möglich, wenn für Speicher die Netzwerksicherheit aktiviert ist
-Wenn Sie Docker-Standardimages nutzen und vom Benutzer verwaltete Abhängigkeiten aktiviert haben, müssen Sie die [Diensttags](https://docs.microsoft.com/azure/machine-learning/how-to-enable-virtual-network) „MicrosoftContainerRegistry“ und „AzureFrontDoor.FirstParty“ verwenden, um MCR und die zugehörigen Abhängigkeiten auf die Positivliste zu setzen.
+- Azure Container Registry-Tasks funktionieren hinter einem virtuellen Netzwerk nicht. Wenn der Benutzer seine Containerregistrierung hinter einem virtuellen Netzwerk platziert hat, muss er für die Imageerstellung den Computecluster verwenden.
+- Der Speicher sollte sich hinter einem VNet befinden, damit daraus Abhängigkeiten gepullt werden können.
 
- Weitere Informationen finden Sie im Artikel zum [Aktivieren von virtuellen Netzwerken](https://docs.microsoft.com/azure/machine-learning/how-to-enable-virtual-network#azure-container-registry).
+### <a name="you-cant-run-experiments-when-storage-has-network-security-enabled"></a>Ausführung von Experimenten nicht möglich, wenn für Speicher die Netzwerksicherheit aktiviert ist
 
-### <a name="creating-an-icm"></a>Erstellen eines IcM-Tickets
+Wenn Sie Docker-Standardimages nutzen und vom Benutzer verwaltete Abhängigkeiten aktiviert haben, verwenden Sie die [Diensttags](https://docs.microsoft.com/azure/machine-learning/how-to-enable-virtual-network) „MicrosoftContainerRegistry“ und „AzureFrontDoor.FirstParty“, um Azure Container Registry und die zugehörigen Abhängigkeiten auf die Positivliste zu setzen.
 
-Fügen Sie beim Erstellen bzw. Zuweisen eines IcM-Tickets zu Metastore das CSS-Supportticket hinzu, damit wir das Problem besser verstehen können.
+ Weitere Informationen finden Sie unter [Aktivieren virtueller Netzwerke](https://docs.microsoft.com/azure/machine-learning/how-to-enable-virtual-network#azure-container-registry).
+
+### <a name="you-need-to-create-an-icm"></a>Erstellen eines ICM-Tickets erforderlich
+
+Fügen Sie beim Erstellen bzw. Zuweisen eines ICM-Tickets zu Metastore das CSS-Supportticket hinzu, damit wir das Problem besser verstehen können.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

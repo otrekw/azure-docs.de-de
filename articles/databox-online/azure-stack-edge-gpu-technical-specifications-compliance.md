@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 10/07/2020
+ms.date: 01/19/2021
 ms.author: alkohli
-ms.openlocfilehash: 225cb9a31b73f330d8b4ed5790caacc4fa729477
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d40d26e8fab0832a37a43c353e11189f8f193f14
+ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91839944"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98573325"
 ---
 # <a name="technical-specifications-and-compliance-for-azure-stack-edge-pro-with-gpu"></a>Technische Spezifikationen und Compliance für Azure Stack Edge Pro mit GPU 
 
@@ -26,7 +26,7 @@ Das Azure Stack Edge Pro-Gerät verfügt über die folgenden Spezifikationen fü
 | Spezifikation           | Wert                  |
 |-------------------------|----------------------------|
 | CPU                     | 2 Intel Xeon Silver 4214-CPUs (Cascade Lake)            |
-| Arbeitsspeicher                  | 128 GB RAM (8x16 GB)                     |
+| Arbeitsspeicher                  | 128 GB RAM (8x16 GB) <br> Dell-kompatibles RDIMM mit 16 GB (PC4-23400 DDR4-2933Mhz 2Rx8 1.2v ECC Registered)       |
 
 
 ## <a name="compute-acceleration-specifications"></a>Spezifikationen zur Computebeschleunigung
@@ -68,7 +68,7 @@ Nachfolgend sind die Details für die Mellanox-Karte aufgeführt:
 | Parameter           | BESCHREIBUNG                 |
 |-------------------------|----------------------------|
 | Modell    | ConnectX®-4 Lx EN-Netzwerkschnittstellenkarte                      |
-| Modellbeschreibung               | 25-GbE-SFP28 (Dual Port); PCIe3.0 x8; ROHS R6                    |
+| Modellbeschreibung               | 25 GbE-SFP28 (Dual Port); PCIe3.0 x8; ROHS R6                    |
 | Teilenummer (R640) | MCX4121A-ACAT  |
 | PSID (R640)           | MT_2420110034                         |
 
@@ -88,11 +88,9 @@ Die Azure Stack Edge Pro-Geräte verfügen über fünf NVMe DC P4610-SSDs mit 2,
 |    SATA-SSD-Startlaufwerke      |    1                  |
 |    Kapazität des SSD-Startlaufwerks                       |    240 GB             |
 |    Gesamtkapazität                          |    8,0 TB             |
-|    Insgesamt nutzbare Kapazität*                  |    ~ 4,19 TB          |
+|    Insgesamt nutzbare Kapazität                   |    ~ 4,19 TB          |
+|    RAID-Konfiguration                      |    Direkte Speicherplätze mit einer Kombination aus Spiegelung und Parität  |
 |    SAS-Controller                          |    HBA330 mit 12 GBit/s     |
-
-
-**Nach Paritätsresilienz und Reservierung von Speicherplatz für die interne Verwendung.*
 
 <!--Remove based on feedback from Ravi
 ## Other hardware specifications
@@ -150,7 +148,8 @@ Dieser Abschnitt enthält die Spezifikationen im Zusammenhang mit der Gehäuseum
 |     Gehäuse                           |     Betriebsspezifikationen                                                                                                                                                                                         |
 |-----------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 |    Luftströmung                              |    Die Luftströmung im System verläuft von vorne nach hinten. Das System muss mit einem hinteren Luftstromauslass mit niedrigem Druck betrieben werden. <!--Back pressure created by rack doors and obstacles should not exceed 5 pascals (0.5 mm water gauge).-->    |
-|    Maximale Betriebshöhe        |    3048 Meter (10.000 Fuß) mit einer maximalen Betriebstemperatur bei heruntergesetzter Leistung, die Sie der Tabelle unter [Spezifikationen für Betriebstemperatur bei heruntergesetzter Leistung](#operating-temperature-de-rating-specifications) entnehmen.                                                                                |
+| IP-Schutzart                 |    Dieser Gerätetyp für die Rackmontage im Innenbereich wird in der Regel nicht auf die Schutzart getestet (Schutz gegen Fremdkörper und Wasser für elektrische Betriebsmittel). Die Sicherheitsbewertung des Herstellers zeigt daher IPXO (kein Eindringschutz).  |
+|    Maximale Betriebshöhe        |    3\.048 m (10.000 Fuß) mit einer maximalen Betriebstemperatur bei heruntergesetzter Leistung, die Sie der Tabelle unter [Spezifikationen für Betriebstemperatur bei heruntergesetzter Leistung](#operating-temperature-de-rating-specifications) entnehmen.                                                                                |
 |    Maximal Höhenlage, außerhalb des Betriebs    |    12.000 Meter (39.370 Fuß)                                                                                                                                                                                         |
 |    Stoßfestigkeit, bei Betrieb                   |    6 G für eine Dauer von 11 Millisekunden in sechs verschiedenen Ausrichtungen                                                                                                                                                                         |
 |    Stoßfestigkeit, außerhalb des Betriebs               |    71 G für eine Dauer von zwei Millisekunden in sechs verschiedenen Ausrichtungen                                                                                                                                                                           |

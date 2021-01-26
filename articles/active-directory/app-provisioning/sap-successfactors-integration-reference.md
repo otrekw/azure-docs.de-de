@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: reference
 ms.workload: identity
-ms.date: 07/20/2020
+ms.date: 01/19/2021
 ms.author: chmutali
-ms.openlocfilehash: 805cdc0713afd43502bb224cce60167adbc418ee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e97be7fef09287e6c4f8696e217702b97853fa6a
+ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90969522"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98569452"
 ---
 # <a name="how-azure-active-directory-provisioning-integrates-with-sap-successfactors"></a>Integration der Azure Active Directory-Bereitstellung mit SAP SuccessFactors 
 
@@ -55,21 +55,22 @@ Der Azure AD-Bereitstellungsdienst ruft für jeden Benutzer in SuccessFactors d
 | 6  | Benutzer                                   | employmentNav/userNav        | Always           |
 | 7  | EmpJob                                 | employmentNav/jobInfoNav     | Always           |
 | 8  | EmpEmploymentTermination               | activeEmploymentsCount       | Always           |
-| 9  | FOCompany                              | employmentNav/jobInfoNav/companyNav | Nur, wenn eines der Attribute `company` oder `companyId` zugeordnet ist |
-| 10 | FODepartment                           | employmentNav/jobInfoNav/departmentNav | Nur, wenn eines der Attribute `department` oder `departmentId` zugeordnet ist |
-| 11 | FOBusinessUnit                         | employmentNav/jobInfoNav/businessUnitNav | Nur, wenn eines der Attribute `businessUnit` oder `businessUnitId` zugeordnet ist |
-| 12 | FOCostCenter                           | employmentNav/jobInfoNav/costCenterNav | Nur, wenn eines der Attribute `costCenter` oder `costCenterId` zugeordnet ist |
-| 13 | FODivision                             | employmentNav/jobInfoNav/divisionNav  | Nur, wenn eines der Attribute `division` oder `divisionId` zugeordnet ist |
-| 14 | FOJobCode                              | employmentNav/jobInfoNav/jobCodeNav  | Nur, wenn eines der Attribute `jobCode` oder `jobCodeId` zugeordnet ist |
-| 15 | FOPayGrade                             | employmentNav/jobInfoNav/payGradeNav  | Nur, wenn das Attribut `payGrade` zugeordnet ist |
-| 16 | FOLocation                             | employmentNav/jobInfoNav/locationNav  | Nur, wenn das Attribut `location` zugeordnet ist |
-| 17 | FOCorporateAddressDEFLT                | employmentNav/jobInfoNav/addressNavDEFLT  | Wenn die Zuordnung eines der folgenden Attribute enthält: `officeLocationAddress,  officeLocationCity, officeLocationZipCode` |
-| 18 | FOEventReason                          | employmentNav/jobInfoNav/eventReasonNav  | Nur, wenn das Attribut `eventReason` zugeordnet ist |
-| 19 | EmpGlobalAssignment                    | employmentNav/empGlobalAssignmentNav | Nur, wenn `assignmentType` zugeordnet ist |
-| 20 | EmploymentType Picklist                | employmentNav/jobInfoNav/employmentTypeNav | Nur, wenn `employmentType` zugeordnet ist |
-| 21 | EmployeeClass (Auswahlliste)                 | employmentNav/jobInfoNav/employeeClassNav | Nur, wenn `employeeClass` zugeordnet ist |
-| 22 | EmplStatus (Auswahlliste)                    | employmentNav/jobInfoNav/emplStatusNav | Nur, wenn `emplStatus` zugeordnet ist |
-| 23 | AssignmentType (Auswahlliste)                | employmentNav/empGlobalAssignmentNav/assignmentTypeNav | Nur, wenn `assignmentType` zugeordnet ist |
+| 9  | Vorgesetzter eines Benutzers                         | employmentNav/userNav/manager/empInfo | Immer  |
+| 10 | FOCompany                              | employmentNav/jobInfoNav/companyNav | Nur, wenn eines der Attribute `company` oder `companyId` zugeordnet ist |
+| 11 | FODepartment                           | employmentNav/jobInfoNav/departmentNav | Nur, wenn eines der Attribute `department` oder `departmentId` zugeordnet ist |
+| 12 | FOBusinessUnit                         | employmentNav/jobInfoNav/businessUnitNav | Nur, wenn eines der Attribute `businessUnit` oder `businessUnitId` zugeordnet ist |
+| 13 | FOCostCenter                           | employmentNav/jobInfoNav/costCenterNav | Nur, wenn eines der Attribute `costCenter` oder `costCenterId` zugeordnet ist |
+| 14 | FODivision                             | employmentNav/jobInfoNav/divisionNav  | Nur, wenn eines der Attribute `division` oder `divisionId` zugeordnet ist |
+| 15 | FOJobCode                              | employmentNav/jobInfoNav/jobCodeNav  | Nur, wenn eines der Attribute `jobCode` oder `jobCodeId` zugeordnet ist |
+| 16 | FOPayGrade                             | employmentNav/jobInfoNav/payGradeNav  | Nur, wenn das Attribut `payGrade` zugeordnet ist |
+| 17 | FOLocation                             | employmentNav/jobInfoNav/locationNav  | Nur, wenn das Attribut `location` zugeordnet ist |
+| 18 | FOCorporateAddressDEFLT                | employmentNav/jobInfoNav/addressNavDEFLT  | Wenn die Zuordnung eines der folgenden Attribute enthält: `officeLocationAddress,  officeLocationCity, officeLocationZipCode` |
+| 19 | FOEventReason                          | employmentNav/jobInfoNav/eventReasonNav  | Nur, wenn das Attribut `eventReason` zugeordnet ist |
+| 20 | EmpGlobalAssignment                    | employmentNav/empGlobalAssignmentNav | Nur, wenn `assignmentType` zugeordnet ist |
+| 21 | EmploymentType Picklist                | employmentNav/jobInfoNav/employmentTypeNav | Nur, wenn `employmentType` zugeordnet ist |
+| 22 | EmployeeClass (Auswahlliste)                 | employmentNav/jobInfoNav/employeeClassNav | Nur, wenn `employeeClass` zugeordnet ist |
+| 23 | EmplStatus (Auswahlliste)                    | employmentNav/jobInfoNav/emplStatusNav | Nur, wenn `emplStatus` zugeordnet ist |
+| 24 | AssignmentType (Auswahlliste)                | employmentNav/empGlobalAssignmentNav/assignmentTypeNav | Nur, wenn `assignmentType` zugeordnet ist |
 
 ## <a name="how-full-sync-works"></a>Funktionsweise der vollständigen Synchronisierung
 Basierend auf der Attributzuordnung sendet der Azure AD-Bereitstellungsdienst während der vollständigen Synchronisierung die folgende GET-Abfrage der OData-API, um die tatsächlichen Daten aller aktiven Benutzer abzurufen. 

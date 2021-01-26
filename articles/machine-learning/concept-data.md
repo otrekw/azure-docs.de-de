@@ -11,12 +11,12 @@ author: nibaccam
 ms.author: nibaccam
 ms.date: 08/31/2020
 ms.custom: devx-track-python, data4ml
-ms.openlocfilehash: 6d8c04e48a3d0009a152830a4ee332cd706c4b2c
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 8b73676adbb9aa12e6f3b42dd26bed94b22780a8
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93360172"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98539887"
 ---
 # <a name="secure-data-access-in-azure-machine-learning"></a>Sicherer Datenzugriff in Azure Machine Learning
 
@@ -42,7 +42,7 @@ Wenn Sie bereit sind, die Daten in ihrer cloudbasierten Speicherlösung zu verwe
 
     1. direkt in Azure Machine Learning-Lösungen, z. B. Experimentausführungen für automatisiertes maschinelles Lernen (automatisiertes ML), Machine Learning-Pipelines oder [Azure Machine Learning-Designer](concept-designer.md), verwenden.
 
-4. Erstellen Sie [Datasetüberwachungen](#data-drift) für Ihr Modellausgabedataset, um Datendrift zu erkennen. 
+4. Erstellen Sie [Datasetüberwachungen](#drift) für Ihr Modellausgabedataset, um Datendrift zu erkennen. 
 
 5. Wenn Datendrift erkannt wird, aktualisieren Sie Ihr Eingabedataset, und trainieren Sie Ihr Modell entsprechend neu.
 
@@ -50,7 +50,8 @@ In der folgenden Abbildung ist dieser empfohlene Workflow dargestellt.
 
 ![Die Abbildung zeigt den Azure Storage-Dienst mit einem Flow in einen Datenspeicher, der wiederum einen Flow in ein Dataset aufweist. Das Dataset weist einen Flow in das Modelltraining auf, dieses wiederum einen Flow in einen Datendrift, der wiederum einen Flow zurück zum Dataset aufweist.](./media/concept-data/data-concept-diagram.svg)
 
-## <a name="datastores"></a>Datenspeicher
+<a name="datastores"></a>
+## <a name="connect-to-storage-with-datastores"></a>Herstellen einer Verbindung zwischen Speicher und Datenspeichern
 
 Azure Machine Learning-Datenspeicher speichern die Informationen zur Verbindung mit Ihrem Azure-Speicher sicher, sodass Sie sie nicht in Ihren Skripts programmieren müssen. [Registrieren und erstellen Sie einen Datenspeicher](how-to-access-data.md), um auf einfache Weise eine Verbindung mit Ihrem Speicherkonto herzustellen und auf die Daten in Ihrem zugrunde liegenden Azure-Speicherdienst zuzugreifen. 
 
@@ -65,7 +66,8 @@ Unterstützte cloudbasierte Speicherdienste in Azure, die als Datenspeicher regi
 + Databricks-Dateisystem
 + Azure Database for MySQL
 
-## <a name="datasets"></a>Datasets
+<a name="datasets"></a>
+## <a name="reference-data-in-storage-with-datasets"></a>Verweisen auf Daten im Speicher mit Datasets
 
 Bei Azure Machine Learning-Datasets handelt es sich nicht um Kopien Ihrer Daten. Durch Erstellen eines Datasets erstellen Sie einen Verweis auf die Daten in ihrem Speicherdienst sowie eine Kopie der zugehörigen Metadaten. 
 
@@ -105,7 +107,7 @@ Mit Datasets können Sie eine Reihe von Machine Learning-Aufgaben über nahtlose
 
 <a name="label"></a>
 
-## <a name="data-labeling"></a>Datenbeschriftung
+## <a name="label-data-with-data-labeling-projects"></a>Beschriften von Daten mit Datenbeschriftungsprojekten
 
 Das Beschriften großer Datenmengen bereitet in Projekten für maschinelles Lernen (ML) häufig Kopfzerbrechen. Projekte mit einer Komponente für maschinelles Sehen – z. B. zur Bildklassifizierung oder Objekterkennung – erfordern im Allgemeinen Tausende von Bildern und entsprechende Beschriftungen.
 
@@ -115,7 +117,7 @@ Erstellen Sie ein [Datenbeschriftungsprojekt](how-to-create-labeling-projects.md
 
 <a name="drift"></a>
 
-## <a name="data-drift"></a>Datendrift
+## <a name="monitor-model-performance-with-data-drift"></a>Überwachen der Modellleistung mit Datendrift
 
 Im Zusammenhang mit maschinellem Lernen ist die Datenabweichung die Änderung der Modelleingabedaten, die zu einem Abfallen der Modellleistung führt. Datendrift ist einer der Hauptgründe für die Abnahme der Modellgenauigkeit im Lauf der Zeit, daher hilft das Überwachen auf Datendrift bei der Erkennung von Problemen bei der Leistung eines Modells.
 

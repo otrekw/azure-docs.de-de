@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 09/09/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 08e07ac3a8079d725611f9b072e8d21dabb32867
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: c769fd86f432d135542c1f09b83ea5a01c6ab0a6
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98011559"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98250603"
 ---
 # <a name="desktop-app-that-calls-web-apis-app-registration"></a>Desktop-App, die Web-APIs aufruft: App-Registrierung
 
@@ -42,7 +42,7 @@ Die in einer Desktopanwendung zu verwendenden Umleitungs-URIs hängen von dem Fl
 - Bei Verwendung der interaktiven Authentifizierung oder des Gerätecodeflows verwenden Sie `https://login.microsoftonline.com/common/oauth2/nativeclient`. Um diese Konfiguration zu erzielen, wählen Sie im Abschnitt **Authentifizierung** für Ihre Anwendung die entsprechende URL aus.
 
   > [!IMPORTANT]
-  > Aktuell verwendet MSAL.NET standardmäßig in Desktopanwendungen, die unter Windows ausgeführt werden (`urn:ietf:wg:oauth:2.0:oob`), einen anderen Umleitungs-URI. In Zukunft möchten wir diese Standardeinstellung ändern. Daher empfehlen wir Ihnen die Verwendung von `https://login.microsoftonline.com/common/oauth2/nativeclient`.
+  > Die Verwendung von `https://login.microsoftonline.com/common/oauth2/nativeclient` als Umleitungs-URI wird als bewährte Sicherheitsmaßnahme empfohlen.  Wenn kein Umleitungs-URI angegeben wird, verwendet MSAL.NET standardmäßig `urn:ietf:wg:oauth:2.0:oob`, was nicht empfohlen wird.  Diese Standardeinstellung wird als Breaking Change in der nächsten Hauptversion aktualisiert.
 
 - Wenn Sie eine native Objective-C-oder Swift-App für macOS erstellen, sollten Sie den Umleitungs-URI basierend auf der Paket-ID Ihrer Anwendung im folgenden Format registrieren: `msauth.<your.app.bundle.id>://auth`. Ersetzen Sie `<your.app.bundle.id>` durch die Paket-ID Ihrer Anwendung.
 - Wenn Ihre App nur die integrierte Windows-Authentifizierung oder Benutzername und Kennwort verwendet, müssen Sie für Ihre Anwendung keinen Umleitungs-URI registrieren. Diese Flows führen einen Roundtrip zum Microsoft Identity Platform v 2.0-Endpunkt aus. Ihre Anwendung wird nicht über einen bestimmten URI zurückgerufen.

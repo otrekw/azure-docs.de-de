@@ -5,13 +5,13 @@ author: abhijitpai
 ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 11/19/2020
-ms.openlocfilehash: 9d351bc945c08c82e96791059b00dc94eb94b918
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.date: 01/19/2021
+ms.openlocfilehash: 9ace9a319f4cc6bcc1545d6d1becce61b1892765
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2020
-ms.locfileid: "97368737"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98598664"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Kontingente im Azure Cosmos DB-Dienst
 
@@ -37,7 +37,7 @@ Sie können Durchsatz auf einer Container- oder Datenbankebene in Form von [Anfo
 | Maximale Speicherkapazität pro Container | Unbegrenzt |
 | Maximale Speicherkapazität pro Datenbank | Unbegrenzt |
 | Maximale Anlagengröße pro Konto (Anlagenfeature wird eingestellt) | 2 GB |
-| Mindestens erforderliche RU/s pro 1 GB | 10 RU/s<br>**Hinweis:** Wenn Ihr Container oder Ihre Datenbank mehr als ein TB an Daten enthält, ist Ihr Konto möglicherweise für das Programm [High Storage/Low Throughput](set-throughput.md#high-storage-low-throughput-program) (Hohe Speicherkapazität/geringer Durchsatz) qualifiziert. |
+| Mindestens erforderliche RU/s pro 1 GB | 10 RU/s<br>**Hinweis:** Dieser Minimalwert kann gesenkt werden, wenn Ihr Konto für unser [Programm „High Storage/Low Throughput“ (hohe Speicherkapazität/geringer Durchsatz)](set-throughput.md#high-storage-low-throughput-program) qualifiziert ist. |
 
 > [!NOTE]
 > Informationen zu bewährten Methoden für die Verwaltung von Workloads, bei denen Partitionsschlüssel höhere Grenzwerte für Speicher oder Durchsatz erfordern, finden Sie unter [Erstellen eines synthetischen Partitionsschlüssels](synthetic-partition-keys.md).
@@ -60,7 +60,7 @@ Um den Mindestdurchsatz zu schätzen, der für einen Container mit manuellem Dur
 
 Beispiel: Angenommen, Sie verfügen über einen Container, für den 400 RU/s und 0 GB Speicher bereitgestellt werden. Sie erhöhen den Durchsatz auf 50.000 RU/s und importieren 20 GB an Daten. Die minimale Anzahl von RU/s beträgt jetzt `MAX(400, 20 * 10 RU/s per GB, 50,000 RU/s / 100)` = 500 RU/s. Im Laufe der Zeit wächst der Speicher auf 200 GB an. Die minimale Anzahl von RU/s beträgt jetzt `MAX(400, 200 * 10 RU/s per GB, 50,000 / 100)` = 2000 RU/s. 
 
-**Hinweis:** Wenn Ihr Container oder Ihre Datenbank mehr als 1 TB an Daten enthält, ist Ihr Konto möglicherweise für das Programm [High Storage/Low Throughput](set-throughput.md#high-storage-low-throughput-program) (Hohe Speicherkapazität/geringer Durchsatz) qualifiziert.
+**Hinweis:** Dieser Minimaldurchsatz von 10 RU/s pro GB Speicherplatz kann gesenkt werden, wenn Ihr Konto für unser [Programm „High Storage/Low Throughput“ (hohe Speicherkapazität/geringer Durchsatz)](set-throughput.md#high-storage-low-throughput-program) qualifiziert ist.
 
 #### <a name="minimum-throughput-on-shared-throughput-database"></a>Mindestdurchsatz für eine Datenbank mit gemeinsam genutztem Durchsatz 
 Um den Mindestdurchsatz zu schätzen, der für eine Datenbank mit gemeinsam genutztem Durchsatz erforderlich ist, ermitteln Sie die folgenden Maximalwerte:
@@ -72,7 +72,7 @@ Um den Mindestdurchsatz zu schätzen, der für eine Datenbank mit gemeinsam genu
 
 Beispiel: Angenommen, Sie verfügen über eine Datenbank, für die 400 RU/s, 15 GB Speicher und 10 Container bereitgestellt werden. Die minimale Anzahl von RU/s beträgt `MAX(400, 15 * 10 RU/s per GB, 400 / 100, 400 + 0 )` = 400 RU/s. Wenn in der Datenbank 30 Container vorhanden sind, beträgt die minimale Anzahl von RU/s `400 + MAX(30 - 25, 0) * 100 RU/s` = 900 RU/s. 
 
-**Hinweis:** Wenn Ihr Container oder Ihre Datenbank mehr als 1 TB an Daten enthält, ist Ihr Konto möglicherweise für das Programm [High Storage/Low Throughput](set-throughput.md#high-storage-low-throughput-program) (Hohe Speicherkapazität/geringer Durchsatz) qualifiziert.
+**Hinweis:** Dieser Minimaldurchsatz von 10 RU/s pro GB Speicherplatz kann gesenkt werden, wenn Ihr Konto für unser [Programm „High Storage/Low Throughput“ (hohe Speicherkapazität/geringer Durchsatz)](set-throughput.md#high-storage-low-throughput-program) qualifiziert ist.
 
 Hier sehen Sie eine Zusammenfassung der RU-Mindestgrenzwerte. 
 
@@ -256,7 +256,8 @@ Die folgende Tabelle enthält die Grenzwerte für die [Azure Cosmos DB kostenlos
 
 „Azure Cosmos DB kostenlos testen“ unterstützt die globale Verteilung nur in den Regionen „USA, Mitte“, „Europa, Norden“ und „Asien, Südosten“. Für „Azure Cosmos DB kostenlos testen“-Konten können keine Azure-Supporttickets erstellt werden. Abonnenten mit bestehenden Supportplänen wird allerdings Support gewährt.
 
-## <a name="free-tier-account-limits"></a>Kontolimits für den Free-Tarif
+## <a name="azure-cosmos-db-free-tier-account-limits"></a>Grenzwerte für Azure Cosmos DB-Konten mit Free-Tarif
+
 Die folgende Tabelle enthält die Limits für [Free-Tarif-Konten in Azure Cosmos DB](optimize-dev-test.md#azure-cosmos-db-free-tier).
 
 | Resource | Standardlimit |
@@ -268,7 +269,10 @@ Die folgende Tabelle enthält die Limits für [Free-Tarif-Konten in Azure Cosmos
 | Maximale Anzahl von Datenbanken mit gemeinsam genutztem Durchsatz | 5 |
 | Maximale Anzahl von Containern in einer Datenbank mit gemeinsam genutztem Durchsatz | 25 <br>Bei Konten mit Free-Tarif hat eine Datenbank mit gemeinsam genutztem Durchsatz mit bis zu 25 Containern mindestens 400 RU/s. |
 
-  Zusätzlich zu den oben genannten Einschränkungen gelten die [Grenzwerte pro Konto](#per-account-limits) auch für Free-Tarif-Konten.
+Zusätzlich zu den oben genannten Einschränkungen gelten die [Grenzwerte pro Konto](#per-account-limits) auch für Free-Tarif-Konten.
+
+> [!NOTE]
+> Der Free-Tarif von Azure Cosmos DB unterscheidet sich vom kostenlosen Azure-Konto. Das kostenlose Azure-Konto bietet Azure-Gutschriften und -Ressourcen kostenlos für einen begrenzten Zeitraum. Wenn Sie Azure Cosmos DB im Rahmen dieses kostenlosen Kontos nutzen, erhalten Sie 25 GB Speicher und 400 RU/s von bereitgestelltem Durchsatz für 12 Monate.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

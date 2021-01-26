@@ -3,16 +3,19 @@ title: Azure Service Bus mit .NET und AMQP 1.0 | Microsoft-Dokumentation
 description: In diesem Artikel erfahren Sie, wie Sie Azure Service Bus über eine .NET-Anwendung mit AMQP (Advanced Message Queuing Protocol) verwenden.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 7a67ab74efc700e16f5b1689e9cc1f459ecf14bd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0d6d7d01a56d2e7068f9c4ccb8ec505914a31ecf
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88067102"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98233932"
 ---
 # <a name="use-service-bus-from-net-with-amqp-10"></a>Verwenden von Service Bus aus .NET mit AMQP 1.0
 
 Unterstützung für AMQP 1.0 ist im Service Bus-Paket ab Version 2.1 verfügbar. Sie können sicherstellen, dass Sie über die aktuelle Version verfügen, indem Sie die Service Bus-Komponenten von[NuGet][NuGet] herunterladen.
+
+> [!NOTE]
+> Sie können das Advance Message Queueing Protocol (AMQP) oder das Service Bus Messaging Protocol (SBMP) mit der .NET-Bibliothek für Service Bus verwenden. AMQP ist das Standardprotokoll, das von der .NET-Bibliothek verwendet wird. Es wird empfohlen, das AMQP-Protokoll (Standardeinstellung) zu verwenden und es nicht außer Kraft zu setzen. 
 
 ## <a name="configure-net-applications-to-use-amqp-10"></a>Konfigurieren von .NET-Anwendungen für das Verwenden von AMQP 1.0
 
@@ -41,6 +44,14 @@ Beim Wert der Einstellung `Microsoft.ServiceBus.ConnectionString` handelt es sic
 `namespace` und `SAS key` werden aus dem [Azure-Portal][Azure portal] abgerufen, wenn Sie einen Service Bus-Namespace erstellen. Weitere Informationen finden Sie unter [Erstellen eines Service Bus-Namespace mithilfe des Azure-Portals][Create a Service Bus namespace using the Azure portal].
 
 Wenn Sie AMQP verwenden, fügen Sie `;TransportType=Amqp` an die Verbindungszeichenfolge an. Diese Notation weist die Clientbibliothek an, die Verbindung mit Service Bus über AMQP 1.0 herzustellen.
+
+### <a name="amqp-over-websockets"></a>AMQP über WebSockets
+Wenn Sie AMQP über WebSockets verwenden möchten, legen Sie `TransportType` in der Verbindungszeichenfolge auf `AmqpWebSockets` fest. Beispiel: `Endpoint=sb://[namespace].servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=[SAS key];TransportType=AmqpWebSockets`. 
+
+Wenn Sie die .NET-Bibliothek „Microsoft.Azure.ServiceBus“ verwenden, legen Sie [ServiceBusConnection.TransportType](/dotnet/api/microsoft.azure.servicebus.servicebusconnection.transporttype) in der [TransportType-Enumeration](/dotnet/api/microsoft.azure.servicebus.transporttype) auf AmqpWebSockets fest.
+
+Wenn Sie die .NET-Bibliothek „Azure.Messaging.ServiceBus“ verwenden, legen Sie [ServiceBusClient.TransportType](/dotnet/api/azure.messaging.servicebus.servicebusclient.transporttype) in der [ServiceBusTransportType-Enumeration](/dotnet/api/azure.messaging.servicebus.servicebustransporttype) auf AmqpWebSockets fest.
+
 
 ## <a name="message-serialization"></a>Nachrichtenserialisierung
 

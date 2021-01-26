@@ -3,12 +3,12 @@ title: Verschlüsselung von Sicherungsdaten mit von Kunden verwalteten Schlüsse
 description: Hier erfahren Sie, wie Sie mit Azure Backup Sicherungsdaten mithilfe von kundenseitig verwalteten Schlüsseln (Customer-Managed Keys, CMK) verschlüsseln können.
 ms.topic: conceptual
 ms.date: 07/08/2020
-ms.openlocfilehash: 6e3eea4b5f44203b68c1263c0fb3ae843cabbe72
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 30bcf907e1a2759c8a9977e50cb4880c2e254ca2
+ms.sourcegitcommit: 61d2b2211f3cc18f1be203c1bc12068fc678b584
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92895986"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98562759"
 ---
 # <a name="encryption-of-backup-data-using-customer-managed-keys"></a>Verschlüsselung von Sicherungsdaten mit von Kunden verwalteten Schlüsseln
 
@@ -25,11 +25,11 @@ In diesem Artikel werden die folgenden Themen behandelt:
 
 ## <a name="before-you-start"></a>Vorbereitung
 
-- Diese Funktion ermöglicht Ihnen eine Verschlüsselung **nur bei neuen Recovery Services-Tresoren** . Eine Registrierung und der Versuch einer Registrierung von Tresoren, die vorhandene Elemente enthalten, werden nicht unterstützt.
+- Diese Funktion ermöglicht Ihnen eine Verschlüsselung **nur bei neuen Recovery Services-Tresoren**. Eine Registrierung und der Versuch einer Registrierung von Tresoren, die vorhandene Elemente enthalten, werden nicht unterstützt.
 
 - Nach der Aktivierung für einen Recovery Services-Tresor kann die Verschlüsselung mit kundenseitig verwalteten Schlüsseln nicht wieder auf die Verwendung plattformseitig verwalteter Schlüssel (Standardeinstellung) zurückgesetzt werden. Sie können die Verschlüsselungsschlüssel gemäß Ihren Anforderungen ändern.
 
-- Diese Funktion **unterstützt derzeit keine Sicherung mit dem MARS-Agent** , und mit dem CMK verschlüsselte Tresore können dafür möglicherweise nicht verwendet werden. Der MARS-Agent verwendet eine Verschlüsselung, die auf einer Passphrase des Benutzers basiert. Diese Funktion unterstützt außerdem keine Sicherung von klassischen VMs.
+- Diese Funktion **unterstützt derzeit keine Sicherung mit dem MARS-Agent**, und mit dem CMK verschlüsselte Tresore können dafür möglicherweise nicht verwendet werden. Der MARS-Agent verwendet eine Verschlüsselung, die auf einer Passphrase des Benutzers basiert. Diese Funktion unterstützt außerdem keine Sicherung von klassischen VMs.
 
 - Dieses Feature hängt nicht mit [Azure Disk Encryption](../security/fundamentals/azure-disk-encryption-vms-vmss.md) zusammen, das die gastbasierte Verschlüsselung der Datenträger eines virtuellen Computers mithilfe von BitLocker (für Windows) und DM-Crypt (für Linux) verwendet.
 
@@ -37,7 +37,10 @@ In diesem Artikel werden die folgenden Themen behandelt:
 
 - Das Verschieben eines mit CMK verschlüsselten Recovery Services-Tresors in andere Ressourcengruppen und Abonnements wird derzeit nicht unterstützt.
 
-- Diese Funktion kann derzeit nur über das Azure-Portal konfiguriert werden.
+- Diese Funktion kann über das Azure-Portal und PowerShell konfiguriert werden.
+
+    >[!NOTE]
+    >Verwenden Sie das Az-Modul 5.3.0 oder höher, um für Sicherungen im Recovery Services-Tresor kundenseitig verwaltete Schlüssel zu verwenden.
 
 Wenn Sie Ihren Recovery Services-Tresor noch nicht erstellt und konfiguriert haben, erfahren Sie [hier](backup-create-rs-vault.md), wie Sie vorgehen können.
 
@@ -62,27 +65,53 @@ Azure Backup verwendet die vom System zugewiesene verwaltete Identität, um den 
 >[!NOTE]
 >Nach der Aktivierung darf die verwaltete Identität **nicht** deaktiviert werden (auch nicht vorübergehend). Die Deaktivierung der verwalteten Identität kann zu inkonsistentem Verhalten führen.
 
-1. Navigieren Sie zu Ihrem Recovery Services-Tresor und dann zu **Identität** .
+**Im Portal:**
+
+1. Navigieren Sie zu Ihrem Recovery Services-Tresor und dann zu **Identität**.
 
     ![Identitätseinstellungen](./media/encryption-at-rest-with-cmk/managed-identity.png)
 
-1. Ändern Sie den **Status** in **Ein** , und klicken Sie auf **Speichern** .
+1. Ändern Sie den **Status** in **Ein**, und klicken Sie auf **Speichern**.
 
 1. Es wird eine Objekt-ID generiert, welche die vom System zugewiesene verwaltete Identität des Tresors darstellt.
+
+**Mit PowerShell:**
+
+Verwenden Sie den Befehl [Update-AzRecoveryServicesVault](https://docs.microsoft.com/powershell/module/az.recoveryservices/update-azrecoveryservicesvault), um die systemseitig zugewiesene verwaltete Identität für den Recovery Services-Tresor zu aktivieren.
+
+Beispiel:
+
+```AzurePowerShell
+$vault=Get-AzRecoveryServicesVault -ResourceGroupName "testrg" -Name "testvault"
+
+Update-AzRecoveryServicesVault -IdentityType SystemAssigned -VaultId $vault.ID
+
+$vault.Identity | fl
+```
+
+Ausgabe:
+
+```output
+PrincipalId : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+TenantId    : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+Type        : SystemAssigned
+```
 
 ### <a name="assign-permissions-to-the-recovery-services-vault-to-access-the-encryption-key-in-the-azure-key-vault"></a>Zuweisen von Berechtigungen zum Recovery Services-Tresor für den Zugriff auf den Verschlüsselungsschlüssel im Azure Key Vault
 
 Sie müssen jetzt dem Recovery Services-Tresor gestatten, auf den Azure Key Vault zuzugreifen, der den Verschlüsselungsschlüssel enthält. Dazu erlauben Sie der verwalteten Identität des Recovery Services-Tresors, auf den Key Vault zuzugreifen.
 
-1. Navigieren Sie zu Ihrem Azure Key Vault und dann zu **Zugriffsrichtlinien** . Klicken Sie anschließend auf **+ Zugriffsrichtlinie hinzufügen** .
+**Im Portal:**
+
+1. Navigieren Sie zu Ihrem Azure Key Vault und dann zu **Zugriffsrichtlinien**. Klicken Sie anschließend auf **+ Zugriffsrichtlinie hinzufügen**.
 
     ![Zugriffsrichtlinie hinzufügen](./media/encryption-at-rest-with-cmk/access-policies.png)
 
-1. Wählen Sie unter **Schlüsselberechtigungen** die Vorgänge **Abrufen** , **Auflisten** , **Schlüssel entpacken** und **Schlüssel packen** aus. Hiermit werden die zulässigen Aktionen für den Schlüssel angegeben.
+1. Wählen Sie unter **Schlüsselberechtigungen** die Vorgänge **Abrufen**, **Auflisten**, **Schlüssel entpacken** und **Schlüssel packen** aus. Hiermit werden die zulässigen Aktionen für den Schlüssel angegeben.
 
     ![Schlüsselberechtigungen zuweisen](./media/encryption-at-rest-with-cmk/key-permissions.png)
 
-1. Wechseln Sie zu **Prinzipal auswählen** , und suchen Sie über das Suchfeld nach dem Namen oder der verwalteten Identität für den Tresor. Sobald der Tresor angezeigt wird, wählen Sie ihn und dann unten im Bereich **Auswählen** aus.
+1. Wechseln Sie zu **Prinzipal auswählen**, und suchen Sie über das Suchfeld nach dem Namen oder der verwalteten Identität für den Tresor. Sobald der Tresor angezeigt wird, wählen Sie ihn und dann unten im Bereich **Auswählen** aus.
 
     ![Prinzipal auswählen](./media/encryption-at-rest-with-cmk/select-principal.png)
 
@@ -90,9 +119,35 @@ Sie müssen jetzt dem Recovery Services-Tresor gestatten, auf den Azure Key Vaul
 
 1. Wählen Sie **Speichern** aus, um die Änderungen an der Zugriffsrichtlinie von Azure Key Vault zu speichern.
 
+**Mit PowerShell:**
+
+Verwenden Sie den Befehl [Set-AzRecoveryServicesVaultProperty](https://docs.microsoft.com/powershell/module/az.recoveryservices/set-azrecoveryservicesvaultproperty), um die Verschlüsselung mithilfe von kundenseitig verwalteten Schlüsseln zu aktivieren und den zu verwendenden Verschlüsselungsschlüssel zuzuweisen oder zu aktualisieren.
+
+Beispiel:
+
+```azurepowershell
+$keyVault = Get-AzKeyVault -VaultName "testkeyvault" -ResourceGroupName "testrg" 
+$key = Get-AzKeyVaultKey -VaultName $keyVault -Name "testkey" 
+Set-AzRecoveryServicesVaultProperty -EncryptionKeyId $key.ID -KeyVaultSubscriptionId "xxxx-yyyy-zzzz"  -VaultId $vault.ID
+
+
+$enc=Get-AzRecoveryServicesVaultProperty -VaultId $vault.ID
+$enc.encryptionProperties | fl
+```
+
+Ausgabe:
+
+```output
+EncryptionAtRestType          : CustomerManaged
+KeyUri                        : testkey
+SubscriptionId                : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx 
+LastUpdateStatus              : Succeeded
+InfrastructureEncryptionState : Disabled
+```
+
 ### <a name="enable-soft-delete-and-purge-protection-on-the-azure-key-vault"></a>Aktivieren des vorläufigen Löschens und des Löschschutzes im Azure Key Vault
 
-Sie müssen für den Azure Key Vault, in dem Ihr Verschlüsselungsschlüssel gespeichert ist, **vorläufiges Löschen und Löschschutz aktivieren** . Dies können Sie über die Azure Key Vault-Benutzeroberfläche ausführen, wie unten gezeigt. (Alternativ können diese Eigenschaften beim Erstellen des Key Vault festgelegt werden.) Weitere Informationen zu diesen Key Vault-Eigenschaften finden Sie [hier](../key-vault/general/soft-delete-overview.md).
+Sie müssen für den Azure Key Vault, in dem Ihr Verschlüsselungsschlüssel gespeichert ist, **vorläufiges Löschen und Löschschutz aktivieren**. Dies können Sie über die Azure Key Vault-Benutzeroberfläche ausführen, wie unten gezeigt. (Alternativ können diese Eigenschaften beim Erstellen des Key Vault festgelegt werden.) Weitere Informationen zu diesen Key Vault-Eigenschaften finden Sie [hier](../key-vault/general/soft-delete-overview.md).
 
 ![Vorläufiges Löschen und Löschschutz aktivieren](./media/encryption-at-rest-with-cmk/soft-delete-purge-protection.png)
 
@@ -144,7 +199,7 @@ Sobald Sie sich versichert haben, dass die genannten Bedingungen erfüllt sind, 
 
 So weisen Sie den Schlüssel zu
 
-1. Navigieren Sie zu Ihrem Recovery Services-Tresor und dann zu **Eigenschaften** .
+1. Navigieren Sie zu Ihrem Recovery Services-Tresor und dann zu **Eigenschaften**.
 
     ![Verschlüsselungseinstellungen](./media/encryption-at-rest-with-cmk/encryption-settings.png)
 
@@ -154,19 +209,27 @@ So weisen Sie den Schlüssel zu
 
     1. Geben Sie den **Schlüssel-URI** für den Schlüssel ein, mit dem Sie die Daten in diesem Recovery Services-Tresor verschlüsseln möchten. Außerdem müssen Sie das Abonnement angeben, in dem der Azure Key Vault (der diesen Schlüssel enthält) vorhanden ist. Dieser Schlüssel-URI kann aus dem entsprechenden Schlüssel in Ihrem Azure Key Vault abgerufen werden. Vergewissern Sie sich, dass Sie den Schlüssel-URI korrekt kopiert haben. Es wird empfohlen, dass Sie die Schaltfläche **in Zwischenablage kopieren** neben dem Schlüsselbezeichner verwenden.
 
+        >[!NOTE]
+        >Wenn Sie den Verschlüsselungsschlüssel mit dem Schlüssel-URI angeben, wird der Schlüssel nicht automatisch rotiert. Wichtige Updates müssen daher manuell durchgeführt werden, indem der neue Schlüssel bei Bedarf angegeben wird.
+
         ![Schlüssel-URI eingeben](./media/encryption-at-rest-with-cmk/key-uri.png)
 
     1. Suchen Sie über den Schlüsselauswahlbereich nach dem Schlüssel aus dem Key Vault, und wählen Sie ihn aus.
+
+        >[!NOTE]
+        >Wenn Sie den Verschlüsselungsschlüssel über den Bereich „Schlüsselauswahl“ angeben, wird er jedes Mal automatisch rotiert, wenn eine neue Version für den Schlüssel aktiviert wird.
 
         ![Auswählen des Schlüssels aus dem Schlüsseltresor](./media/encryption-at-rest-with-cmk/key-vault.png)
 
 1. Wählen Sie **Speichern** aus.
 
-1. **Verfolgen des Aktualisierungsstatus für den Verschlüsselungsschlüssel:** Sie können den Status der Schlüsselzuweisung mithilfe des **Aktivitätsprotokolls** im Recovery Services-Tresor verfolgen. Der Status sollte nach kurzer Zeit in **Erfolgreich** geändert werden. Ihr Tresor verschlüsselt nun alle Daten mit dem angegebenen Schlüssel als KEK.
+1. **Nachverfolgen des Aktualisierungsstatus für den Verschlüsselungsschlüssel:** Sie können den Status der Zuweisung des Verschlüsselungsschlüssels mithilfe der Ansicht **Sicherungsaufträge** auf der linken Navigationsleiste nachverfolgen. Der Status sollte nach kurzer Zeit in **Abgeschlossen** geändert werden. Ihr Tresor verschlüsselt nun alle Daten mit dem angegebenen Schlüssel als KEK.
 
-    ![Verfolgen des Status mit dem Aktivitätsprotokoll](./media/encryption-at-rest-with-cmk/activity-log.png)
+    ![Status „Abgeschlossen“](./media/encryption-at-rest-with-cmk/status-succeeded.png)
 
-    ![Status „Erfolgreich“](./media/encryption-at-rest-with-cmk/status-succeeded.png)
+    Die Updates für den Verschlüsselungsschlüssel werden auch im Aktivitätsprotokoll des Tresors aufgezeichnet.
+
+    ![Aktivitätsprotokoll](./media/encryption-at-rest-with-cmk/activity-log.png)
 
 >[!NOTE]
 > Den gleichen Prozess führen Sie aus, wenn Sie den Verschlüsselungsschlüssel aktualisieren oder ändern möchten. Wenn Sie den Schlüssel aktualisieren und einen Schlüssel aus einer anderen Key Vault-Instanz verwenden möchten (der sich von dem derzeit verwendeten unterscheidet), stellen Sie Folgendes sicher:
@@ -192,7 +255,7 @@ Bevor Sie mit der Konfiguration des Schutzes fortfahren, sollten Sie unbedingt d
 >
 >Wenn alle oben genannten Schritte bestätigt wurden, fahren Sie mit dem Konfigurieren der Sicherung fort.
 
-Der Prozess zum Konfigurieren und Ausführen von Sicherungen für einen Recovery Services-Tresor, der mit kundenseitig verwalteten Schlüsseln verschlüsselt ist, ist identisch mit dem Prozess für einen Tresor, der plattformseitig verwaltete Schlüssel verwendet, und **die Funktionalität für den Benutzer ist die gleiche** . Dies gilt auch für die [Sicherung von virtuellen Azure-Computern](./quick-backup-vm-portal.md) sowie für die Sicherung von Workloads, die auf einem virtuellen Computer ausgeführt werden (z. B. [SAP HANA](./tutorial-backup-sap-hana-db.md)- oder [SQL Server](./tutorial-sql-backup.md)-Datenbanken).
+Der Prozess zum Konfigurieren und Ausführen von Sicherungen für einen Recovery Services-Tresor, der mit kundenseitig verwalteten Schlüsseln verschlüsselt ist, ist identisch mit dem Prozess für einen Tresor, der plattformseitig verwaltete Schlüssel verwendet, und **die Funktionalität für den Benutzer ist die gleiche**. Dies gilt auch für die [Sicherung von virtuellen Azure-Computern](./quick-backup-vm-portal.md) sowie für die Sicherung von Workloads, die auf einem virtuellen Computer ausgeführt werden (z. B. [SAP HANA](./tutorial-backup-sap-hana-db.md)- oder [SQL Server](./tutorial-sql-backup.md)-Datenbanken).
 
 ## <a name="restoring-data-from-backup"></a>Wiederherstellen von Daten aus einer Sicherung
 
@@ -212,6 +275,8 @@ Sie können den wiederhergestellten Datenträger/virtuellen Computer nach Abschl
 
 #### <a name="select-a-disk-encryption-set-while-restoring-from-vault-recovery-point"></a>Auswählen eines Datenträgerverschlüsselungssatzes beim Wiederherstellen vom Tresor-Wiederherstellungspunkt
 
+**Im Portal:**
+
 Der Datenträgerverschlüsselungssatz wird im Bereich „Wiederherstellung“ unter „Verschlüsselungseinstellungen“ angegeben, wie unten dargestellt:
 
 1. Wählen Sie für die **Verschlüsselung der Datenträger mit Ihrem Schlüssel** die Option **Ja** aus.
@@ -222,6 +287,21 @@ Der Datenträgerverschlüsselungssatz wird im Bereich „Wiederherstellung“ un
 >Wenn Sie eine VM wiederherstellen, die Azure Disk Encryption verwendet, können Sie bei der Wiederherstellung keinen DES auswählen.
 
 ![Verschlüsseln des Datenträgers mit Ihrem Schlüssel](./media/encryption-at-rest-with-cmk/encrypt-disk-using-your-key.png)
+
+**Mit PowerShell:**
+
+Verwenden Sie den Befehl [Get-AzRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupitem) mit dem Parameter [`-DiskEncryptionSetId <string>`], um [den DES anzugeben](https://docs.microsoft.com/powershell/module/az.compute/get-azdiskencryptionset), der zum Verschlüsseln des wiederhergestellten Datenträgers verwendet werden soll. Weitere Informationen zum Wiederherstellen von Datenträgern aus einer VM-Sicherung finden Sie in [diesem Artikel](https://docs.microsoft.com/azure/backup/backup-azure-vms-automation#restore-an-azure-vm).
+
+Beispiel:
+
+```azurepowershell
+$namedContainer = Get-AzRecoveryServicesBackupContainer  -ContainerType "AzureVM" -Status "Registered" -FriendlyName "V2VM" -VaultId $vault.ID
+$backupitem = Get-AzRecoveryServicesBackupItem -Container $namedContainer  -WorkloadType "AzureVM" -VaultId $vault.ID
+$startDate = (Get-Date).AddDays(-7)
+$endDate = Get-Date
+$rp = Get-AzRecoveryServicesBackupRecoveryPoint -Item $backupitem -StartDate $startdate.ToUniversalTime() -EndDate $enddate.ToUniversalTime() -VaultId $vault.ID
+$restorejob = Restore-AzRecoveryServicesBackupItem -RecoveryPoint $rp[0] -StorageAccountName "DestAccount" -StorageAccountResourceGroupName "DestRG" -TargetResourceGroupName "DestRGforManagedDisks" -DiskEncryptionSetId “testdes1” -VaultId $vault.ID
+```
 
 #### <a name="restoring-files"></a>Wiederherstellen von Dateien
 

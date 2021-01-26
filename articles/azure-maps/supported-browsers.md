@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: 43bf70d66c42bc0ecd5e26e4cc724456bd4bf84e
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: f51b46efcaf9be4f51e96b038b93562d0e3eae0b
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896921"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98601152"
 ---
 # <a name="web-sdk-supported-browsers"></a>Web SDK: unterstützte Browser
 
@@ -36,7 +36,7 @@ Das Web SDK von Azure Maps unterstützt die folgenden Desktopbrowser:
 - Microsoft Edge (aktuelle und vorherige Version)
 - Google Chrome (aktuelle und vorherige Version)
 - Mozilla Firefox (aktuelle und vorherige Version)
-- Apple Safari (Mac OS X) (aktuelle und vorherige Version)
+- Apple Safari (macOS X) (aktuelle und vorherige Version)
 
 Siehe auch [Ausrichtung auf Legacy-Browser](#Target-Legacy-Browsers) weiter unten in diesem Artikel.
 
@@ -63,7 +63,7 @@ Die folgenden Web SDK-Module werden auch in Node.js unterstützt:
 
 ## <a name="target-legacy-browsers"></a><a name="Target-Legacy-Browsers"></a>Ausrichtung auf Legacy-Browser
 
-Möglicherweise möchten Sie ältere Browser als Ziel verwenden, die WebGL nicht oder nur eingeschränkt unterstützen. In solchen Fällen empfehlen wir, die Azure Maps-Dienste zusammen mit einem Open-Source-Kartensteuerelement wie [Leaflet](https://leafletjs.com/) zu verwenden. Hier sehen Sie ein Beispiel:
+Möglicherweise möchten Sie ältere Browser als Ziel verwenden, die WebGL nicht oder nur eingeschränkt unterstützen. In solchen Fällen empfehlen wir, die Azure Maps-Dienste zusammen mit einem Open-Source-Kartensteuerelement wie [Leaflet](https://leafletjs.com/) zu verwenden. Im Folgenden finden Sie ein Beispiel für die Verwendung des Open-Source-Plug-Ins für [Azure Maps in Leaflet](https://github.com/azure-samples/azure-maps-leaflet).
 
 <br/>
 
@@ -71,6 +71,7 @@ Möglicherweise möchten Sie ältere Browser als Ziel verwenden, die WebGL nicht
 Weitere Informationen finden Sie unter <a href='https://codepen.io/azuremaps/pen/GeLgyx/'>Azure Maps + Leaflet</a> (Azure Maps und Broschüre) in Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) auf <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
+Weitere Codebeispiele für die Verwendung von Azure Maps in Leaflet finden Sie [hier](https://azuremapscodesamples.azurewebsites.net/?search=leaflet).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

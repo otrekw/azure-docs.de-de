@@ -3,19 +3,22 @@ title: Vorbereiten und Anpassen eines VHD-Masterimages – Azure
 description: Vorbereiten, Anpassen und Hochladen eines Windows Virtual Desktop-Masterimage in Azure.
 author: Heidilohr
 ms.topic: how-to
-ms.date: 10/14/2019
+ms.date: 01/19/2021
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 9e4cb4fe8a701600290d24c055e2be5187a711c5
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 33af83934e8ecc5745f2edad3a7832a870406452
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95023393"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98602375"
 ---
 # <a name="prepare-and-customize-a-master-vhd-image"></a>Vorbereiten und Anpassen eines VHD-Masterimages
 
 In diesem Artikel wird beschrieben, wie Sie ein VHD-Masterimage (Virtual Hard Disk) für den Upload in Azure vorbereiten und virtuelle Computer (VMs) erstellen und darauf Software installieren. Diese Anweisungen beziehen sich auf eine spezielle Konfiguration für Windows Virtual Desktop, die mit den in Ihrer Organisation vorhandenen Prozessen verwendet werden kann.
+
+>[!IMPORTANT]
+>Es wird empfohlen, ein Image aus dem Azure-Imagekatalog zu verwenden. Wenn Sie jedoch ein benutzerdefiniertes Image verwenden müssen, stellen Sie sicher, dass der Windows Virtual Desktop-Agent nicht bereits auf Ihrem Gerät installiert ist. Die Verwendung eines angepassten Images mit dem Windows Virtual Desktop-Agent kann Probleme mit dem Image verursachen.  
 
 ## <a name="create-a-vm"></a>Erstellen einer VM
 

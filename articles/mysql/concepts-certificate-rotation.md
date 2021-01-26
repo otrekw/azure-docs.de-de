@@ -5,13 +5,13 @@ author: mksuni
 ms.author: sumuth
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 01/13/2021
-ms.openlocfilehash: a65ac8d52c17a288447193fb8c0fba2c6e6c5554
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.date: 01/18/2021
+ms.openlocfilehash: e9e13f0254cdefd9a6b4887d8ab97dd54ad9810d
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98201262"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98539661"
 ---
 # <a name="understanding-the-changes-in-the-root-ca-change-for-azure-database-for-mysql"></a>Grundlegendes zu den Änderungen im Zusammenhang mit der Stammzertifizierungsstelle für Azure Database for MySQL
 
@@ -21,9 +21,7 @@ Bei Azure Database for MySQL ändert sich das Stammzertifikat für die Clientanw
 > Basierend auf dem Feedback von Kunden haben wir die eingestellte Unterstützung des Stammzertifikats für unsere vorhandene Baltimore-Stammzertifizierungsstelle vom 26. Oktober 2020 bis zum 15. Februar 2021 verlängert. Wir hoffen, dass diese Verlängerung eine ausreichende Vorlaufzeit für unsere Benutzer zur Implementierung der Clientänderungen ermöglicht, wenn sie davon betroffen sind.
 
 > [!NOTE]
-> Unvoreingenommene Kommunikation
->
-> Microsoft setzt sich für Diversität und Inklusion ein. In diesem Artikel werden die Begriffe _Master_ und _Slave_ verwendet. Laut [Microsoft-Styleguide für unvoreingenommene Kommunikation](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md) sollten diese Wörter jedoch vermieden werden. In diesem Artikel werden sie aus Konsistenzgründen verwendet, da diese Wörter derzeit noch in der Software vorkommen. Sobald die Software so aktualisiert wurde, dass die Wörter nicht mehr auftauchen, wird dieser Artikel entsprechend aktualisiert.
+> Dieser Artikel enthält Verweise auf den Begriff _Slave_, einen Begriff, den Microsoft nicht mehr verwendet. Sobald der Begriff aus der Software entfernt wurde, wird er auch aus diesem Artikel entfernt.
 >
 
 ## <a name="what-update-is-going-to-happen"></a>Welches Update wird durchgeführt?
@@ -46,7 +44,7 @@ Alle Anwendungen, die SSL/TLS verwenden und das Stammzertifikat überprüfen, m�
 Wenn Sie einen Client verwenden, der die Verbindungszeichenfolge abstrahiert, lesen Sie die Dokumentation des Clients, um zu ermitteln, ob Zertifikate überprüft werden.
 Informationen zum Azure Database for MySQL-Parameter „sslmode“ finden Sie in der [Beschreibung der SSL-Modus](concepts-ssl-connection-security.md#ssl-default-settings).
 
-Informationen dazu, wie Sie verhindern, dass die Verfügbarkeit Ihrer Anwendung infolge unerwartet widerrufener Zertifikate unterbrochen wird, oder wie Sie ein widerrufenes Zertifikat aktualisieren, finden Sie im Abschnitt [**Was muss ich tun, um die Konnektivität aufrechtzuerhalten?** ](concepts-certificate-rotation.md#what-do-i-need-to-do-to-maintain-connectivity).
+Informationen dazu, wie Sie verhindern, dass die Verfügbarkeit Ihrer Anwendung infolge unerwartet widerrufener Zertifikate unterbrochen wird, oder wie Sie ein widerrufenes Zertifikat aktualisieren, finden Sie im Abschnitt [**Was muss ich tun, um die Konnektivität aufrechtzuerhalten?**](concepts-certificate-rotation.md#what-do-i-need-to-do-to-maintain-connectivity).
 
 ## <a name="what-do-i-need-to-do-to-maintain-connectivity"></a>Was muss ich tun, um die Konnektivität aufrechtzuerhalten?
 
@@ -76,13 +74,20 @@ Führen Sie die unten angegebenen Schritte aus, um zu verhindern, dass die Verf�
 
   * Stellen Sie bei .NET-Benutzern (MySQL-Connector/NET, MySQLConnector) sicher, dass **BaltimoreCyberTrustRoot** und **DigiCertGlobalRootG2** im Windows-Zertifikatspeicher unter vertrauenswürdigen Stammzertifizierungsstellen enthalten sind. Ist eines der Zertifikate nicht vorhanden, importieren Sie das fehlende Zertifikat.
 
-        ![Azure Database for MySQL .net cert](media/overview/netconnecter-cert.png)
+    :::image type="content" source="media/overview/netconnecter-cert.png" alt-text="Azure Database for MySQL, Diagramm der Zertifikate für .NET-Benutzer":::
 
   * Stellen Sie bei .NET-Benutzern unter Linux, die SSL_CERT_DIR verwenden, sicher, dass **BaltimoreCyberTrustRoot** und **DigiCertGlobalRootG2** in dem durch SSL_CERT_DIR angegebenen Verzeichnis enthalten sind. Ist eines der Zertifikate nicht vorhanden, erstellen Sie die fehlende Zertifikatsdatei.
 
-  * Bei anderen Benutzern (MySQL-Client/MySQL Workbench/C/C++/Go/Python/Ruby/PHP/NodeJS/Perl/Swift) können Sie zwei ZS-Zertifikatsdateien im folgenden Format zusammenführen:</b>
+  * Bei anderen Benutzern (MySQL-Client/MySQL Workbench/C/C++/Go/Python/Ruby/PHP/NodeJS/Perl/Swift) können Sie zwei ZS-Zertifikatsdateien im folgenden Format zusammenführen:
 
-     </br>-----BEGIN CERTIFICATE-----  </br>(Root CA1: BaltimoreCyberTrustRoot.crt.pem)  </br>-----END CERTIFICATE-----  </br>-----BEGIN CERTIFICATE-----  </br>(Root CA2: DigiCertGlobalRootG2.crt.pem)  </br>-----END CERTIFICATE-----
+      ```
+      -----BEGIN CERTIFICATE-----
+      (Root CA1: BaltimoreCyberTrustRoot.crt.pem)
+      -----END CERTIFICATE-----
+      -----BEGIN CERTIFICATE-----
+      (Root CA2: DigiCertGlobalRootG2.crt.pem)
+      -----END CERTIFICATE-----
+      ```
 
 * Ersetzen Sie die ursprüngliche PEM-Datei der Stammzertifizierungsstelle durch die kombinierte Datei der Stammzertifizierungsstelle, und starten Sie die Anwendung bzw. den Client neu.
 * Nachdem das neue Zertifikat auf der Serverseite bereitgestellt wurde, können Sie die PEM-Datei der Zertifizierungsstelle in Zukunft in „DigiCertGlobalRootG2.crt.pem“ ändern.

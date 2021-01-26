@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-mongo
 ms.topic: troubleshooting
 ms.date: 07/15/2020
 ms.author: chrande
-ms.openlocfilehash: 06a06d275ba6f5ded475ffd693ee61e7a72b9516
-ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
+ms.openlocfilehash: 26097408d0b83b043f4a25183146c892fc4b48ad
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98127701"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98538554"
 ---
 # <a name="troubleshoot-common-issues-in-azure-cosmos-dbs-api-for-mongodb"></a>Behandeln häufiger Probleme in der Azure Cosmos DB-API für MongoDB
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -36,7 +36,7 @@ Im folgenden Artikel werden allgemeine Fehler und Lösungen für Bereitstellung 
 | 67 | CannotCreateIndex | Die Anforderung zum Erstellen eines Indexes kann nicht abgeschlossen werden. | In einem Container können bis zu 500 Einzelfeldindizes erstellt werden. Ein zusammengesetzter Index kann bis zu acht Felder enthalten (zusammengesetzte Indizes werden in Version 3.6 und höher unterstützt). |
 | 115 | CommandNotSupported | Die Anforderung wird nicht unterstützt. | In der Fehlermeldung sollten weitere Informationen angegeben sein. Wenn diese Funktion für Ihre Bereitstellungen wichtig ist, informieren Sie uns per Supportticket im [Azure-Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) darüber. |
 | 11000 | DuplicateKey | Der Shardschlüssel (Azure Cosmos DB-Partitionsschlüssel) des einzufügenden Dokuments ist in der Sammlung bereits vorhanden, oder eine Einschränkung in Bezug auf eindeutige Indexfelder wurde verletzt. | Verwenden Sie die update()-Funktion, um ein vorhandenes Dokument zu aktualisieren. Wenn eine Einschränkung in Bezug auf eindeutige Indexfelder verletzt wurde, fügen Sie einen Feldwert in das Dokument ein, der im Shard bzw. in der Partition noch nicht vorhanden ist, oder aktualisieren Sie das Dokument mit einem entsprechenden Feldwert. |
-| 16500 | TooManyRequests  | Die Gesamtanzahl der verbrauchten Anforderungseinheiten hat die bereitgestellte Anforderungseinheitenrate für die Sammlung überschritten und wurde gedrosselt. | Skalieren Sie über das Azure-Portal ggf. den Durchsatz, der einem Container oder einer Gruppe von Containern zugewiesen ist, oder wiederholen Sie den Vorgang. Wenn Sie SSR (Server-Side Retry, serverseitige Wiederholung) aktivieren, versucht Azure Cosmos DB automatisch, die Anforderungen zu wiederholen, die aufgrund dieses Fehlers nicht ausgeführt werden konnten. |
+| 16500 | TooManyRequests  | Die Gesamtanzahl der verbrauchten Anforderungseinheiten hat die bereitgestellte Anforderungseinheitenrate für die Sammlung überschritten und wurde gedrosselt. | Skalieren Sie über das Azure-Portal ggf. den Durchsatz, der einem Container oder einer Gruppe von Containern zugewiesen ist, oder wiederholen Sie den Vorgang. Wenn Sie [SSR (Server-Side Retry, serverseitige Wiederholung) aktivieren](prevent-rate-limiting-errors.md), versucht Azure Cosmos DB automatisch, die Anforderungen zu wiederholen, die aufgrund dieses Fehlers nicht ausgeführt werden konnten. |
 | 16501 | ExceededMemoryLimit | Der Vorgang ist ein mehrinstanzenfähiger Dienst und hat die Speicherzuweisung des Clients überschritten. | Verringern Sie den Umfang des Vorgangs mithilfe restriktiverer Abfragekriterien, oder wenden Sie sich im [Azure-Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) an den Support. Beispiel: `db.getCollection('users').aggregate([{$match: {name: "Andy"}}, {$sort: {age: -1}}]))` |
 | 40324 | Nicht erkannter Name einer Pipelinestage | Der Stagename in der Anforderung Ihrer Aggregationspipeline wurde nicht erkannt. | Stellen Sie sicher, dass alle Aggregationspipelinenamen in Ihrer Anforderung gültig sind. |
 | - | Probleme mit der MongoDB-Wire-Version | Ältere Versionen von MongoDB-Treibern können den Namen des Azure Cosmos-Kontos in den Verbindungszeichenfolgen nicht erkennen. | Fügen Sie am Ende der Verbindungszeichenfolge Ihrer Azure Cosmos DB-API für MongoDB *appName=@**Kontoname**@* hinzu, und ersetzen Sie dabei ***Kontoname*** durch den Namen Ihres Cosmos DB-Kontos. |

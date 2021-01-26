@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 352d5218f91fa55134a7515b6aeee49857847468
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 345cbe2efb644fe2b84d4a6021ff962337e29285
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96173208"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98219911"
 ---
 # <a name="how-users-in-your-organization-can-invite-guest-users-to-an-app"></a>Beschreibt, wie Benutzer in Ihrer Organisation Gastbenutzer zu einer App einladen können.
 
@@ -28,8 +28,8 @@ Nachdem ein Gastbenutzer dem Verzeichnis in Azure AD hinzugefügt wurde, kann ei
  - Konfigurieren der App für Self-Service und Zuweisen der Gruppe zur App
 
 > [!NOTE]
-> In diesem Artikel wird beschrieben, wie Sie die Self-Service-Verwaltung für katalog- und SAML-basierte Apps einrichten, die Sie Ihrem Azure AD-Mandanten hinzugefügt haben. Sie können auch [die Self-Service-Verwaltung für Microsoft 365-Gruppen einrichten](../enterprise-users/groups-self-service-management.md), damit Ihre Benutzer den Zugriff auf ihre eigenen Microsoft 365-Gruppen verwalten können. Weitere Möglichkeiten, über die Benutzer Office-Dateien und -Apps für Gastbenutzer freigeben können, finden Sie unter [Gastzugriff in Microsoft 365-Gruppen](https://support.office.com/article/guest-access-in-office-365-groups-bfc7a840-868f-4fd6-a390-f347bf51aff6) und [Freigeben von SharePoint-Dateien oder -Ordnern](https://support.office.com/article/share-sharepoint-files-or-folders-1fe37332-0f9a-4719-970e-d2578da4941c).
-
+> * In diesem Artikel wird beschrieben, wie Sie die Self-Service-Verwaltung für katalog- und SAML-basierte Apps einrichten, die Sie Ihrem Azure AD-Mandanten hinzugefügt haben. Sie können auch [die Self-Service-Verwaltung für Microsoft 365-Gruppen einrichten](../enterprise-users/groups-self-service-management.md), damit Ihre Benutzer den Zugriff auf ihre eigenen Microsoft 365-Gruppen verwalten können. Weitere Möglichkeiten, über die Benutzer Office-Dateien und -Apps für Gastbenutzer freigeben können, finden Sie unter [Gastzugriff in Microsoft 365-Gruppen](https://support.office.com/article/guest-access-in-office-365-groups-bfc7a840-868f-4fd6-a390-f347bf51aff6) und [Freigeben von SharePoint-Dateien oder -Ordnern](https://support.office.com/article/share-sharepoint-files-or-folders-1fe37332-0f9a-4719-970e-d2578da4941c).
+> * Benutzer können nur dann Gäste einladen, wenn ihnen die Rolle **Gasteinladender** zugewiesen ist.
 ## <a name="invite-a-guest-user-to-an-app-from-the-access-panel"></a>Einladen eines Gastbenutzers zur App über den Zugriffsbereich
 
 Nach dem Konfigurieren einer App für Self-Service können Anwendungsbesitzer ihren eigenen Zugriffsbereich verwenden, um einen Gastbenutzer zu der App einzuladen, die sie freigeben möchten. Der Gastbenutzer muss Azure AD nicht unbedingt im Vorfeld hinzugefügt werden. 

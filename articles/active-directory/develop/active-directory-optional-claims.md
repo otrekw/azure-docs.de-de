@@ -12,12 +12,12 @@ ms.date: 1/06/2021
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, keyam
 ms.custom: aaddev
-ms.openlocfilehash: 1debeab6e420d9021ebba1cecb2d551cf21c9fe2
-ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
+ms.openlocfilehash: 6b5c328503a28c6eb92c2c20ca54d4d3d80c9a15
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98028470"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98232470"
 ---
 # <a name="how-to-provide-optional-claims-to-your-app"></a>Gewusst wie: Bereitstellen optionaler Ansprüche für Ihre App
 
@@ -45,7 +45,7 @@ Zwar werden optionale Ansprüche von Token der Formate v1.0 und v2.0 sowie von S
 Die Gruppe optionaler Ansprüche, die standardmäßig zur Verwendung in Anwendungen bereitstehen, sind nachfolgend aufgeführt. Informationen zum Hinzufügen benutzerdefinierter optionaler Ansprüche für Ihre Anwendung finden Sie unter [Verzeichniserweiterungen](#configuring-directory-extension-optional-claims) weiter unten. Beim Hinzufügen von Ansprüchen zum **Zugriffstoken** gilt der Anspruch für Zugriffstoken, die *für* die Anwendung (eine Web-API) und nicht *von* der Anwendung angefordert werden. Unabhängig vom Client, der auf Ihre API zugreift, sind so die richtigen Daten im Zugriffstoken vorhanden, die zum Authentifizieren bei Ihrer API verwendet werden.
 
 > [!NOTE]
-> Die Mehrzahl dieser Ansprüche kann in JWTs für v1.0- und v2.0-Token, jedoch nicht in SAML-Token eingeschlossen werden. Ausnahmen stellen die Ansprüche dar, die einen entsprechenden Hinweis in der Spalte „Tokentyp“ enthalten. Consumerkonten unterstützen eine Teilmenge dieser Ansprüche, die in der Spalte als „Benutzertyp“ gekennzeichnet sind.  Viele der aufgelisteten Ansprüche gelten nicht für Consumerbenutzer (sie besitzen keinen Mandanten, daher weist `tenant_ctry` keinen Wert auf).
+>Die Mehrzahl dieser Ansprüche kann in JWTs für v1.0- und v2.0-Token, jedoch nicht in SAML-Token eingeschlossen werden. Ausnahmen stellen die Ansprüche dar, die einen entsprechenden Hinweis in der Spalte „Tokentyp“ enthalten. Consumerkonten unterstützen eine Teilmenge dieser Ansprüche, die in der Spalte als „Benutzertyp“ gekennzeichnet sind.  Viele der aufgelisteten Ansprüche gelten nicht für Consumerbenutzer (sie besitzen keinen Mandanten, daher weist `tenant_ctry` keinen Wert auf).
 
 **Tabelle 2: Gruppe optionaler Ansprüche in v1.0 und v2.0**
 
@@ -148,13 +148,13 @@ Sie können optionale Ansprüche für Ihre Anwendung über die Benutzeroberfläc
 [![Konfigurieren optionaler Ansprüche in der Benutzeroberfläche](./media/active-directory-optional-claims/token-configuration.png)](./media/active-directory-optional-claims/token-configuration.png)
 
 1. Wählen Sie unter **Verwalten** die Option **Tokenkonfiguration** aus.
+   - Die Benutzeroberflächenoption auf dem Blatt **Tokenkonfiguration** ist nicht für Apps verfügbar, die in einem Azure AD B2C-Mandanten registriert sind, der durch Ändern des Anwendungsmanifests konfiguriert werden kann. Weitere Informationen finden Sie unter [Hinzufügen von Ansprüchen und Anpassen von Benutzereingaben mit benutzerdefinierten Richtlinien in Azure Active Directory B2C](../../active-directory-b2c/configure-user-input.md).  
+
 1. Wählen Sie **Optionalen Anspruch hinzufügen** aus.
 1. Wählen Sie den Tokentyp aus, den Sie konfigurieren möchten.
 1. Wählen Sie die hinzuzufügenden optionalen Ansprüche aus.
 1. Wählen Sie **Hinzufügen**.
 
-> [!NOTE]
-> Die Benutzeroberflächenoption auf dem Blatt **Tokenkonfiguration** ist nicht für Apps verfügbar, die derzeit in einem Azure AD B2C-Mandanten registriert sind. Bei Anwendungen, die in einem B2C-Mandanten registriert sind, können die optionalen Ansprüche durch Bearbeiten des Anwendungsmanifests konfiguriert werden. Weitere Informationen finden Sie unter [Hinzufügen von Ansprüchen und Anpassen von Benutzereingaben mit benutzerdefinierten Richtlinien in Azure Active Directory B2C](../../active-directory-b2c/configure-user-input.md) 
 
 **Konfigurieren optionaler Ansprüche über das Anwendungsmanifest:**
 
@@ -201,7 +201,7 @@ Deklariert die von einer Anwendung angeforderten optionalen Ansprüche. Eine Anw
 
 **Tabelle 5: Eigenschaften des Typs „OptionalClaims“**
 
-| Name          | type                       | BESCHREIBUNG                                           |
+| Name          | Typ                       | BESCHREIBUNG                                           |
 |---------------|----------------------------|-------------------------------------------------------|
 | `idToken`     | Sammlung (OptionalClaim) | Die optionalen Ansprüche, die im JWT-ID-Token zurückgegeben werden.     |
 | `accessToken` | Sammlung (OptionalClaim) | Die optionalen Ansprüche, die im JWT-Zugriffstoken zurückgegeben werden. |
@@ -214,7 +214,7 @@ Wenn durch einen bestimmten Anspruch unterstützt, können Sie auch das Verhalte
 
 **Tabelle 6: Eigenschaften des Typs „OptionalClaim“**
 
-| Name                   | type                    | BESCHREIBUNG                                                                                                                                                                                                                                                                                                   |
+| Name                   | Typ                    | BESCHREIBUNG                                                                                                                                                                                                                                                                                                   |
 |------------------------|-------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `name`                 | Edm.String              | Der Name des optionalen Anspruchs.                                                                                                                                                                                                                                                                               |
 | `source`               | Edm.String              | Die Quelle (Verzeichnisobjekt) des Anspruchs. Es gibt vordefinierte Ansprüche und benutzerdefinierte Ansprüche aus Erweiterungseigenschaften. Wenn der Quellwert „null“ ist, ist der Anspruch ein vordefinierter optionaler Anspruch. Wenn der Quellwert „user“ ist, ist der Wert in der „name“-Eigenschaft die Erweiterungseigenschaft aus dem Benutzerobjekt. |
@@ -227,8 +227,7 @@ Zusätzlich zu den optionalen Standardansprüchen können Sie Token auch so konf
 
 Optionale Ansprüche unterstützen keine Schemaerweiterungen und offenen Erweiterungen, sondern nur AAD Graph-Verzeichniserweiterungen. Diese Funktion ist nützlich, um zusätzliche Benutzerinformationen anzufügen, die von Ihrer App verwendet werden können, z. B. einen zusätzlichen Bezeichner oder eine wichtige Konfigurationsoption, die vom Benutzer festgelegt wurde. Ein Beispiel finden Sie unten auf dieser Seite.
 
-> [!NOTE]
-> Verzeichnisschemaerweiterungen sind ein auf Azure AD beschränktes Feature. Wenn Ihr Anwendungsmanifest eine benutzerdefinierte Erweiterung erfordert und sich ein MSA-Benutzer bei Ihrer App anmeldet, werden diese Erweiterungen nicht zurückgegeben.
+Verzeichnisschemaerweiterungen sind ein auf Azure AD beschränktes Feature. Wenn Ihr Anwendungsmanifest eine benutzerdefinierte Erweiterung erfordert und sich ein MSA-Benutzer bei Ihrer App anmeldet, werden diese Erweiterungen nicht zurückgegeben.
 
 ### <a name="directory-extension-formatting"></a>Formatierung der Verzeichniserweiterung
 
@@ -290,8 +289,7 @@ Dieser Abschnitt behandelt die Konfigurationsoptionen unter den optionalen Anspr
    - accessToken für das OAuth-Zugriffstoken
    - Saml2Token für SAML-Token
 
-   > [!NOTE]
-   > Der Typ „Saml2Token“ gilt für Token sowohl im SAML1.1- als auch im SAML2.0-Format.
+   Der Typ „Saml2Token“ gilt für Token sowohl im SAML1.1- als auch im SAML2.0-Format.
 
    Ändern Sie für jeden relevanten Tokentyp den Gruppenanspruch so, dass der Abschnitt „Optionale Ansprüche“ im Manifest verwendet wird. Das Schema für optionale Ansprüche sieht folgendermaßen aus:
 
@@ -315,8 +313,7 @@ Dieser Abschnitt behandelt die Konfigurationsoptionen unter den optionalen Anspr
 
    Einige Anwendungen erfordern Gruppeninformationen über Benutzer im Rollenanspruch.  Fügen Sie den zusätzlichen Eigenschaften „emit_as_roles“ hinzu, um den Anspruchstyp von einem Gruppenanspruch in einen Rollenanspruch zu ändern.  Die Gruppenwerte werden im Rollenanspruch ausgegeben.
 
-   > [!NOTE]
-   > Wenn „emit_as_roles“ verwendet wird, sind konfigurierte Anwendungsrollen, denen der Benutzer zugewiesen ist, nicht im Rollenanspruch enthalten.
+   Wenn „emit_as_roles“ verwendet wird, sind konfigurierte Anwendungsrollen, denen der Benutzer zugewiesen ist, nicht im Rollenanspruch enthalten.
 
 **Beispiele:**
 

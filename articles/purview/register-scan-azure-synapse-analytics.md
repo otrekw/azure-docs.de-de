@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 10/22/2020
-ms.openlocfilehash: e0a1d8dba9ea284322584de3b4be2ae390d15fdf
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 3ba43b83166b5548dee4ea4e52c7411db48d23f5
+ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96920265"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98567268"
 ---
 # <a name="register-and-scan-azure-synapse-analytics"></a>Registrieren und Überprüfen von Azure Synapse Analytics
 
@@ -24,7 +24,7 @@ Für Azure Synapse Analytics (vormals SQL DW) werden vollständige und inkrement
 
 ### <a name="known-limitations"></a>Bekannte Einschränkungen
 
-Azure Purview unterstützt nicht die Überprüfung von [Sichten](https://docs.microsoft.com/sql/relational-databases/views/views?view=sql-server-ver15) in Azure Synapse Analytics.
+Azure Purview unterstützt nicht die Überprüfung von [Sichten](/sql/relational-databases/views/views?view=azure-sqldw-latest&preserve-view=true) in Azure Synapse Analytics.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -34,7 +34,7 @@ Azure Purview unterstützt nicht die Überprüfung von [Sichten](https://docs.mi
  
 ## <a name="setting-up-authentication-for-a-scan"></a>Einrichten der Authentifizierung für eine Überprüfung
 
-Es gibt drei Möglichkeiten, die Authentifizierung für Azure Blob Storage einzurichten:
+Es gibt drei Möglichkeiten, die Authentifizierung für Azure Synapse Analytics einzurichten:
 
 - Verwaltete Identität
 - SQL-Authentifizierung
@@ -45,7 +45,7 @@ Es gibt drei Möglichkeiten, die Authentifizierung für Azure Blob Storage einzu
 
 ### <a name="managed-identity-recommended"></a>Verwaltete Identität (empfohlen) 
    
-Ihr Purview-Konto verfügt über eine eigene verwaltete Identität, bei der es sich im Grunde genommen um den Purview-Namen handelt, den Sie bei der Erstellung eingegeben haben. Sie müssen einen Azure AD-Benutzer in Azure Synapse Analytics (vormals SQL DW) erstellen, indem Sie genau den Namen der verwalteten Identität von Purview angeben. Erfüllen Sie hierfür die Voraussetzungen unter [Tutorial: Erstellen von Azure AD-Benutzern mithilfe von Azure AD-Anwendungen](https://docs.microsoft.com/azure/azure-sql/database/authentication-aad-service-principal-tutorial), und arbeiten Sie das Tutorial durch.
+Ihr Purview-Konto verfügt über eine eigene verwaltete Identität, bei der es sich im Grunde genommen um den Purview-Namen handelt, den Sie bei der Erstellung eingegeben haben. Sie müssen einen Azure AD-Benutzer in Azure Synapse Analytics (vormals SQL DW) erstellen, indem Sie genau den Namen der verwalteten Identität von Purview angeben. Erfüllen Sie hierfür die Voraussetzungen unter [Tutorial: Erstellen von Azure AD-Benutzern mithilfe von Azure AD-Anwendungen](/azure/azure-sql/database/authentication-aad-service-principal-tutorial), und arbeiten Sie das Tutorial durch.
 
 SQL-Beispielsyntax für das Erstellen eines Benutzers und das Gewähren der Berechtigung:
 
@@ -102,7 +102,7 @@ GO
 
 ### <a name="sql-authentication"></a>SQL-Authentifizierung
 
-Sie können die Anleitung unter [CREATE LOGIN](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-current&preserve-view=true#examples-1) befolgen, um einen Anmeldenamen für Azure Synapse Analytics (vormals SQL DW) zu erstellen, falls Sie noch keinen besitzen.
+Sie können die Anleitung unter [CREATE LOGIN](/sql/t-sql/statements/create-login-transact-sql?view=azure-sqldw-latest&preserve-view=true#examples-1) befolgen, um einen Anmeldenamen für Azure Synapse Analytics (vormals SQL DW) zu erstellen, falls Sie noch keinen besitzen.
 
 Wenn **SQL-Authentifizierung** als Authentifizierungsmethode ausgewählt wird, müssen Sie Ihr Kennwort eingeben und im Schlüsseltresor speichern:
 

@@ -13,12 +13,12 @@ ms.date: 08/7/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 018d67b3e4e730cd46eb524a8927b3a6d68d74e8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8c8167142876dfac0ae0aeff51e85b66c65c607b
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88958659"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98208847"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-on-behalf-of-flow"></a>Microsoft Identity Platform und der On-Behalf-Of-Fluss von OAuth2.0
 
@@ -27,8 +27,8 @@ Der On-Behalf-Of-Fluss von OAuth 2.0 (OBO) wird verwendet, wenn eine Anwendung e
 
 In diesem Artikel wird beschrieben, wie Sie direkt mit dem Protokoll in Ihrer Anwendung programmieren.  Es wird stattdessen empfohlen, ggf. die unterstützten Microsoft Authentication Libraries (MSAL) zu verwenden, um [Token zu erhalten und gesicherte Web-APIs aufzurufen](authentication-flows-app-scenarios.md#scenarios-and-supported-authentication-flows).  Sehen Sie sich auch die [Beispiel-Apps an, die MSAL verwenden](sample-v2-code.md).
 
-> [!NOTE]
-> Ab Mai 2018 können einige implizit vom Fluss abgeleitete `id_token` nicht für den OBO-Fluss verwendet werden. Single-Page-Anwendungen (SPAs) müssen ein **Zugriffstoken** an einen vertraulichen Client der mittleren Ebene übergeben, um stattdessen OBO-Flüsse auszuführen. Weitere Informationen dazu, welche Clients OBO-Aufrufe ausführen können, finden Sie unter [Einschränkungen](#client-limitations).
+
+Ab Mai 2018 können einige implizit vom Fluss abgeleitete `id_token` nicht für den OBO-Fluss verwendet werden. Single-Page-Anwendungen (SPAs) müssen ein **Zugriffstoken** an einen vertraulichen Client der mittleren Ebene übergeben, um stattdessen OBO-Flüsse auszuführen. Weitere Informationen dazu, welche Clients OBO-Aufrufe ausführen können, finden Sie unter [Einschränkungen](#client-limitations).
 
 ## <a name="protocol-diagram"></a>Protokolldiagramm
 
@@ -42,10 +42,9 @@ Die folgenden Schritte entsprechen dem OBO-Fluss und werden anhand des folgenden
 1. API A wird beim Tokenausstellungs-Endpunkt der Microsoft Identity Platform authentifiziert und fordert ein Token für den Zugriff auf API B an.
 1. Der Tokenausstellungs-Endpunkt von Microsoft Identity Platform überprüft neben Token A die Anmeldeinformationen von API A und stellt das Zugriffstoken für API B (Token B) für API A aus.
 1. Token B wird von API A im Autorisierungsheader der Anforderung auf API B festgelegt.
-1. Daten von der sicheren Ressource werden von API B an API A und von dort an den Client zurückgegeben.
+1. Daten von der sicheren Ressource werden von API B an API A und dann an den Client zurückgegeben.
 
-> [!NOTE]
-> In diesem Szenario interagiert der Dienst auf der mittleren Ebene nicht mit dem Benutzer, um dessen Zustimmung für den Zugriff auf die Downstream-API zu erlangen. Aus diesem Grund muss die Zugriffsgewährung auf die nachgelagerte API zuvor als Teil des Genehmigungsschrittes während der Authentifizierung als Option angezeigt werden. Um zu erfahren, wie Sie dies für Ihre App einrichten, lesen Sie [Erhalten der Zustimmung für die Anwendung der mittleren Ebene](#gaining-consent-for-the-middle-tier-application).
+In diesem Szenario interagiert der Dienst auf der mittleren Ebene nicht mit dem Benutzer, um dessen Zustimmung für den Zugriff auf die nachgelagerte API zu erlangen. Aus diesem Grund muss die Zugriffsgewährung auf die nachgelagerte API zuvor als Teil des Genehmigungsschrittes während der Authentifizierung als Option angezeigt werden. Um zu erfahren, wie Sie dies für Ihre App einrichten, lesen Sie [Erhalten der Zustimmung für die Anwendung der mittleren Ebene](#gaining-consent-for-the-middle-tier-application).
 
 ## <a name="middle-tier-access-token-request"></a>Zugriffstokenanforderung auf der mittleren Ebene
 
@@ -152,10 +151,9 @@ Das folgende Beispiel zeigt eine erfolgreiche Antwort auf eine Anforderung eines
 }
 ```
 
-> [!NOTE]
-> Das obige Zugriffstoken ist ein Token mit v1.0-Formatierung für Microsoft Graph. Dies liegt daran, dass das Tokenformat auf der **Ressource** basiert, auf die zugegriffen wird, und nicht mit den Endpunkten in Zusammenhang steht, die für deren Anforderung verwendet werden. Microsoft Graph akzeptiert entsprechend seiner Einrichtung v1.0-Token. Microsoft Identity Platform erzeugt daher v1.0-Zugriffstoken, wenn ein Client Token für Microsoft Graph anfordert. Andere Apps können signalisieren, dass sie Token im v2.0- oder v1.0-Format oder sogar proprietäre oder verschlüsselte Tokenformate bevorzugen.  Die Endpunkte der Versionen 1.0 und 2.0 können jedes beliebige Tokenformat ausgeben. Dadurch kann die Ressource immer das richtige Tokenformat abrufen, unabhängig davon, wie oder wo das Token vom Client angefordert wurde. 
->
-> Nur Anwendungen sollten Zugriffstoken betrachten. Clients **dürfen sie nicht** überprüfen. Das Überprüfen von Zugriffstoken für andere Apps in Ihrem Code hat zur Folge, dass Ihre App unerwartet angehalten wird, wenn diese das Format ihrer Token ändert oder mit deren Verschlüsselung beginnt. 
+Das obige Zugriffstoken ist ein Token mit v1.0-Formatierung für Microsoft Graph. Dies liegt daran, dass das Tokenformat auf der **Ressource** basiert, auf die zugegriffen wird, und nicht mit den Endpunkten in Zusammenhang steht, die für deren Anforderung verwendet werden. Microsoft Graph akzeptiert entsprechend seiner Einrichtung v1.0-Token. Microsoft Identity Platform erzeugt daher v1.0-Zugriffstoken, wenn ein Client Token für Microsoft Graph anfordert. Andere Apps können signalisieren, dass sie Token im v2.0- oder v1.0-Format oder sogar proprietäre oder verschlüsselte Tokenformate bevorzugen.  Die Endpunkte der Versionen 1.0 und 2.0 können jedes beliebige Tokenformat ausgeben. Dadurch kann die Ressource immer das richtige Tokenformat abrufen, unabhängig davon, wie oder wo das Token vom Client angefordert wurde. 
+
+Nur Anwendungen sollten Zugriffstoken betrachten. Clients **dürfen sie nicht** überprüfen. Das Überprüfen von Zugriffstoken für andere Apps in Ihrem Code hat zur Folge, dass Ihre App unerwartet angehalten wird, wenn diese das Format ihrer Token ändert oder mit deren Verschlüsselung beginnt. 
 
 ### <a name="error-response-example"></a>Beispiel für eine fehlerhafte Antwort
 
@@ -189,8 +187,7 @@ Authorization: Bearer eyJ0eXAiO ... 0X2tnSQLEANnSPHY0gKcgw
 
 Einige OAuth-basierte Webdienste benötigen Zugriff auf andere Webdienst-APIs, die SAML-Assertionen in nicht interaktiven Flüssen akzeptieren. Azure Active Directory kann es eine SAML-Assertion als Antwort auf einen Im-Namen-von-Fluss mit einem SAML-basierten Webdienst als Zielressource bereitstellen.
 
->[!NOTE]
->Dies ist eine nicht standardmäßige Erweiterung für den OAuth 2.0-Im-Namen-von-Fluss, der einer OAuth2-basierten Anwendung Zugriff auf Webdienst-API-Endpunkte ermöglicht, die SAML-Token nutzen.
+Dies ist eine nicht standardmäßige Erweiterung für den OAuth 2.0-Im-Namen-von-Fluss, der einer OAuth2-basierten Anwendung Zugriff auf Webdienst-API-Endpunkte ermöglicht, die SAML-Token nutzen.
 
 > [!TIP]
 > Wenn Sie einen geschützten SAML-Webdienst über eine Front-End-Anwendung aufrufen, können Sie einfach die API aufrufen und einen normalen interaktiven Authentifizierungsfluss initiieren, der die vorhandene Sitzung eines Benutzers verwendet. Sie müssen lediglich einen OBO-Fluss verwenden, wenn ein Dienst-zu-Dienst-Aufruf ein SAML-Token für die Bereitstellung des Benutzerkontexts erfordert.
