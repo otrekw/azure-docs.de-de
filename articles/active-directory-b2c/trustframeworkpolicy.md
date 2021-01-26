@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 01/31/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 354c6f9710b7cbd70e0631bc973b2482ea8d8bb3
-ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
+ms.openlocfilehash: a87b4c6b845006a9f9f3cf82815277c67c09bef0
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97386883"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98178839"
 ---
 # <a name="trustframeworkpolicy"></a>TrustFrameworkPolicy
 
@@ -46,7 +46,7 @@ Das **TrustFrameworkPolicy**-Element enthält die folgenden Attribute:
 | `PolicyId` | Ja | Der eindeutige Bezeichner für die Richtlinie. Diesem Bezeichner muss das Präfix *B2C_1A_* vorangestellt werden. |
 | PublicPolicyUri | Ja | Der URI für die Richtlinie, bei dem es sich um eine Kombination der Mandanten-ID und der Richtlinien-ID handelt. |
 | DeploymentMode | Nein | Mögliche Werte sind `Production` oder `Development`. `Production` ist die Standardeinstellung. Verwenden Sie diese Eigenschaft, um Ihre Richtlinie zu debuggen. Weitere Informationen finden Sie unter [Sammeln von Protokollen](troubleshoot-with-application-insights.md). |
-| UserJourneyRecorderEndpoint | Nein | Der Endpunkt, der verwendet wird, wenn **DeploymentMode** auf `Development` festgelegt ist. Der Wert muss `urn:journeyrecorder:applicationinsights` sein. Weitere Informationen finden Sie unter [Sammeln von Protokollen](troubleshoot-with-application-insights.md). |
+| UserJourneyRecorderEndpoint | Nein | Der Endpunkt, der für die Protokollierung verwendet wird. Der Wert muss auf `urn:journeyrecorder:applicationinsights` festgelegt werden, wenn das Attribut vorhanden ist. Weitere Informationen finden Sie unter [Sammeln von Protokollen](troubleshoot-with-application-insights.md). |
 
 
 Das folgende Beispiel zeigt, wie das **TrustFrameworkPolicy**-Element angegeben wird:

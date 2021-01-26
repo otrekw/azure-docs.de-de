@@ -4,12 +4,12 @@ description: In diesem Artikel erfahren Sie, wie Sie Ihren Cluster mithilfe der 
 services: container-service
 ms.topic: article
 ms.date: 07/18/2019
-ms.openlocfilehash: e644a931152c83a5232c8233d519f7807ab708af
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 5f0754638be1aa29672b6a59218a6c9d695261a5
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92542640"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98223141"
 ---
 # <a name="automatically-scale-a-cluster-to-meet-application-demands-on-azure-kubernetes-service-aks"></a>Automatisches Skalieren eines Clusters zur Erfüllung von Anwendungsanforderungen in Azure Kubernetes Service (AKS)
 
@@ -130,24 +130,25 @@ Sie können auch differenziertere Details der Clusterautoskalierung konfiguriere
 | scale-down-unneeded-time         | Wie lange ein Knoten nicht benötigt werden sollte, bevor er für das zentrale Herunterskalieren geeignet ist                  | 10 Minuten    |
 | scale-down-unready-time          | Wie lange ein nicht bereiter Knoten nicht benötigt werden sollte, bevor er für das zentrale Herunterskalieren geeignet ist         | 20 Minuten    |
 | scale-down-utilization-threshold | Auslastungsgrad des Knotens, definiert als Summe der angeforderten Ressourcen dividiert durch die Kapazität, unterhalb derer ein Knoten für das zentrale Herunterskalieren in Betracht gezogen werden kann | 0.5 |
-| max-graceful-termination-sec     | Maximale Anzahl von Sekunden, die die Clusterautoskalierung beim Versuch, einen Knoten herunterzuskalieren, auf die Beendigung des Pods wartet | 600 Sekunden   |
+| max-graceful-termination-sec     | Maximaler Zeitraum in Sekunden, der von der Clusterautoskalierung beim Versuch, einen Knoten herunterzuskalieren, beim Warten auf die Beendigung des Pods eingehalten wird | 600 Sekunden   |
 | balance-similar-node-groups      | Erkennt ähnliche Knotenpools und gleicht die Anzahl der Knoten zwischen ihnen aus                 | false         |
-| Erweiterung                         | Der Typ der Knotenpool[erweiterung](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/FAQ.md#what-are-expanders), die bei der zentralen Hochskalierung zu verwenden ist. Mögliche Werte: `most-pods`, `random`, `least-waste` | random | 
+| Erweiterung                         | Der Typ der Knotenpool[erweiterung](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/FAQ.md#what-are-expanders), die bei der zentralen Hochskalierung zu verwenden ist. Mögliche Werte: `most-pods`, `random`, `least-waste`, `priority` | random | 
 | skip-nodes-with-local-storage    | Wenn „true“, löscht die Cluster-Autoskalierung nie Knoten mit Pods mit lokalem Speicher, z. B. „EmptyDir“ oder „HostPath“. | true |
 | skip-nodes-with-system-pods      | Wenn „true“, löscht die Cluster-Autoskalierung nie Knoten mit Pods aus kube-system (außer bei „DaemonSet“ oder Spiegelpods). | true | 
-| max-empty-bulk-delete            | Maximale Anzahl leerer Knoten, die gleichzeitig gelöscht werden können.                      | 10 Knoten      |
-| new-pod-scale-up-delay           | Für Szenarien wie Burst-/Batchskalierung, bei denen die Zertifizierungsstelle nicht agieren soll, bevor der Kubernetes-Scheduler alle Pods planen konnte, können Sie die Zertifizierungsstelle anweisen, nicht geplante Pods zu ignorieren, bevor sie ein bestimmtes Alter erreicht haben.                                                                                                                | 10 Sekunden    |
-| max-total-unready-percentage     | Maximaler Prozentsatz der nicht fertigen Knoten im Cluster. Wenn dieser Prozentsatz überschritten wird, hält die Zertifizierungsstelle alle Vorgänge an. | 45 % | 
+| max-empty-bulk-delete            | Maximale Anzahl leerer Knoten, die gleichzeitig gelöscht werden können                       | 10 Knoten      |
+| new-pod-scale-up-delay           | Für Szenarien wie die Burst-/Batchskalierung, bei denen die Zertifizierungsstelle nicht tätig werden soll, bevor der Kubernetes-Scheduler alle Pods planen konnte, können Sie wie folgt vorgehen: Weisen Sie die Zertifizierungsstelle an, nicht geplante Pods zu ignorieren, bis sie ein bestimmtes Alter erreicht haben.                                                                                                                | 0 Sekunden    |
+| max-total-unready-percentage     | Maximaler Prozentsatz der nicht fertigen Knoten im Cluster. Wenn dieser Prozentsatz überschritten wird, hält die Zertifizierungsstelle alle Vorgänge an. | 45 % |
+| max-node-provision-time          | Maximale Wartezeit der Autoskalierung auf die Bereitstellung eines Knotens                           | 15 Minuten    |   
 | ok-total-unready-count           | Anzahl der zulässigen nicht fertigen Knoten, unabhängig von „max-total-unready-percentage“.            | 3 Knoten       |
 
 > [!IMPORTANT]
 > Das Profil der Clusterautoskalierung betrifft alle Knotenpools, die die Clusterautoskalierung verwenden. Sie können kein Autoskalierungsprofil pro Knotenpool festlegen.
 >
-> Für das Clusterautoskalierungsprofil ist die Azure CLI-Version  *2.11.1* oder höher erforderlich. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sie bei Bedarf unter [Installieren der Azure CLI][azure-cli-install].
+> Für das Clusterautoskalierungsprofil ist die Azure CLI-Version *2.11.1* oder höher erforderlich. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sie bei Bedarf unter [Installieren der Azure CLI][azure-cli-install].
 
 ### <a name="set-the-cluster-autoscaler-profile-on-an-existing-aks-cluster"></a>Festlegen des Profils für die Clusterautoskalierung in einem vorhandenen AKS-Cluster
 
-Verwenden Sie den Befehl [az aks update][az-aks-update-preview] mit dem Parameter *cluster-autoscaler-profile* , um das Clusterautoskalierungsprofil für Ihren Cluster festzulegen. Das folgende Beispiel konfiguriert die Einstellung des Scanintervalls im Profil auf 30 Sekunden.
+Verwenden Sie den Befehl [az aks update][az-aks-update-preview] mit dem Parameter *cluster-autoscaler-profile*, um das Clusterautoskalierungsprofil für Ihren Cluster festzulegen. Das folgende Beispiel konfiguriert die Einstellung des Scanintervalls im Profil auf 30 Sekunden.
 
 ```azurecli-interactive
 az aks update \

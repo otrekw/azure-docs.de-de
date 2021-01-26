@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/01/2019
-ms.openlocfilehash: 53277f64c3d1b03572732157756da1fececbcd43
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 69f00416f180f83c761be5ed444e80903e9fcbb6
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96184568"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98234442"
 ---
 # <a name="import-azure-monitor-log-data-into-power-bi"></a>Importieren von Azure Monitor-Protokolldaten in Power BI
 
@@ -27,6 +27,9 @@ Zum Importieren von Daten aus einem [Log Analytics-Arbeitsbereich](manage-access
 
 ## <a name="export-query"></a>Exportieren einer Abfrage
 Erstellen Sie zunächst eine [Protokollabfrage](../log-query/log-query-overview.md), die die Daten zurückgibt, mit denen das Power BI-Dataset aufgefüllt werden soll.  Anschließend exportieren Sie die Abfrage in der [Power Query-Sprache (M)](/powerquery-m/power-query-m-language-specification), die von Power BI Desktop verwendet werden kann.
+
+> [!WARNING]
+> Denken Sie daran, die [Abfrage zu optimieren](../log-query/query-optimization.md), damit die Ausführung nicht übermäßig lange dauert, da sonst ein Timeout auftreten kann. Beachten Sie den **timespan**-Wert in der exportierten Abfrage, der die Zeitspanne der Daten definiert, die von der Abfrage abgerufen werden. Verwenden Sie die kleinste Zeitspanne, die Sie benötigen, um die von der Abfrage zurückgegebene Datenmenge einzuschränken.
 
 1. [Erstellen Sie die Protokollabfrage in Log Analytics](../log-query/log-analytics-tutorial.md) zum Extrahieren der Daten für das Dataset.
 2. Wählen Sie **Exportieren** > **Power BI Query (M)** (Power BI-Abfrage (M)) aus.  Damit wird die Abfrage in eine Textdatei mit dem Namen **PowerBIQuery.txt** exportiert. 

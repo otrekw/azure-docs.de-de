@@ -6,13 +6,13 @@ ms.service: virtual-machines-windows
 ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 1/24/2018
-ms.author: xujing
-ms.openlocfilehash: 101f2cfe57624502764d145351a6343cfdd2a334
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.author: mimckitt
+ms.openlocfilehash: 444c6a9c131916a2a07f41fd5c1ff38fc1e7bfb2
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96572863"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98210323"
 ---
 # <a name="how-to-deploy-windows-10-on-azure-with-multitenant-hosting-rights"></a>Informationen zum Bereitstellen von Windows 10 unter Azure mit mehrinstanzenfähigen Hostingrechten 
 Für Kunden mit Windows 10 Enterprise E3/E5 pro Benutzer oder Windows Virtual Desktop Access pro Benutzer (Benutzerabonnementlizenzen oder Add-On-Benutzerabonnementlizenzen) können Sie Ihre Windows 10-Lizenzen mittels mehrinstanzenfähiger Hostingrechte für Windows 10 in der Cloud verwenden und virtuelle Windows 10-Computer in Azure ausführen, ohne eine weitere Lizenz erwerben zu müssen. Weitere Informationen finden Sie unter [Mehrinstanzenfähiges Hosting für Windows 10](https://www.microsoft.com/en-us/CloudandHosting/licensing_sca.aspx).
@@ -24,14 +24,22 @@ Für Kunden mit Windows 10 Enterprise E3/E5 pro Benutzer oder Windows Virtual De
 >
 
 ## <a name="deploying-windows-10-image-from-azure-marketplace"></a>Bereitstellen des Windows 10-Image aus dem Azure Marketplace 
-Für PowerShell-, CLI- und Azure Resource Manager-Vorlagenbereitstellungen enthält das Windows 10-Image folgende Angaben zu Herausgebername, Angebot und SKU.
+Für PowerShell-, CLI- und Azure Resource Manager-Vorlagenbereitstellungen können Windows 10-Images mithilfe von `PublisherName: MicrosoftWindowsDesktop` und `Offer: Windows-10` gefunden werden.
 
-| OS  |      PublisherName      |  Angebot | Sku |
-|:----------|:-------------:|:------|:------|
-| Windows 10 Pro    | MicrosoftWindowsDesktop | Windows-10  | RS2-Pro   |
-| Windows 10 Pro N  | MicrosoftWindowsDesktop | Windows-10  | RS2-ProN  |
-| Windows 10 Pro    | MicrosoftWindowsDesktop | Windows-10  | RS3-Pro   |
-| Windows 10 Pro N  | MicrosoftWindowsDesktop | Windows-10  | RS3-ProN  |
+```powershell
+Get-AzVmImageSku -Location '$location' -PublisherName 'MicrosoftWindowsDesktop' -Offer 'Windows-10'
+
+Skus                        Offer      PublisherName           Location 
+----                        -----      -------------           -------- 
+rs4-pro                     Windows-10 MicrosoftWindowsDesktop eastus   
+rs4-pron                    Windows-10 MicrosoftWindowsDesktop eastus   
+rs5-enterprise              Windows-10 MicrosoftWindowsDesktop eastus   
+rs5-enterprisen             Windows-10 MicrosoftWindowsDesktop eastus   
+rs5-pro                     Windows-10 MicrosoftWindowsDesktop eastus   
+rs5-pron                    Windows-10 MicrosoftWindowsDesktop eastus  
+```
+
+Weitere Informationen zu verfügbaren Images finden Sie unter [Suchen und Verwenden von VM-Images im Azure Marketplace mit Azure PowerShell](https://docs.microsoft.com/azure/virtual-machines/windows/cli-ps-findimage).
 
 ## <a name="qualify-for-multi-tenant-hosting-rights"></a>Qualifizieren für Rechte für mehrinstanzenfähiges Hosten 
 Benutzer müssen über eines der folgenden Abonnements verfügen, um sich für Rechte für das mehrinstanzenfähige Hosten und für die Ausführung von Windows 10-Images in Azure zu qualifizieren: 

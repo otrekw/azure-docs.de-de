@@ -10,13 +10,13 @@ ms.topic: troubleshooting
 author: danimir
 ms.author: danil
 ms.reviewer: wiassaf, sstein
-ms.date: 06/12/2020
-ms.openlocfilehash: c42db1445c939069f334d04ea26d54cdb843c336
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.date: 1/14/2021
+ms.openlocfilehash: 3b57172daeffd1766da456e56cb5e445427a4858
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96488832"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98220387"
 ---
 # <a name="troubleshoot-azure-sql-database-and-azure-sql-managed-instance-performance-issues-with-intelligent-insights"></a>Behandeln von Problemen mit der Leistung von Azure SQL-Datenbank und Azure SQL Managed Instance mithilfe von Intelligent Insights
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -128,7 +128,9 @@ Das Diagnoseprotokoll gibt Details zu Sperren aus, die Sie als Grundlage für di
 
 Die einfachste und sicherste Möglichkeit, das Problem zu beseitigen, besteht darin, Transaktionen kurz zu halten und den Sperrumfang der aufwändigsten Abfragen zu verkleinern. Sie können eine große Anzahl von Vorgängen in kleinere Vorgänge aufteilen. Eine bewährte Methode zum Verringern des Umfangs von Abfragesperren ist, die Abfrage so effizient wie möglich zu gestalten. Reduzieren Sie umfangreiche Scanvorgänge, da sie die Wahrscheinlichkeit von Deadlocks erhöhen und sich negativ auf die allgemeine Datenbankleistung auswirken. Für ermittelte Abfragen, die Sperren verursachen, können Sie neue Indizes erstellen oder Spalten zum vorhandenen Index hinzufügen, um Tabellenscans zu vermeiden.
 
-Weitere Vorschläge finden Sie unter [Behebung von Blockierungsproblemen, die durch eine Sperrenausweitung in SQL Server verursacht werden](https://support.microsoft.com/help/323630/how-to-resolve-blocking-problems-that-are-caused-by-lock-escalation-in).
+Weitere Vorschläge finden Sie unter:
+- [Verstehen und Beheben von Problemen durch Blockierungen in Azure SQL](understand-resolve-blocking.md)
+- [Behebung von Blockierungsproblemen, die durch eine Sperrenausweitung in SQL Server verursacht werden](https://support.microsoft.com/help/323630/how-to-resolve-blocking-problems-that-are-caused-by-lock-escalation-in)
 
 ## <a name="increased-maxdop"></a>Erhöhter Wert für „Maximaler Grad an Parallelität“
 

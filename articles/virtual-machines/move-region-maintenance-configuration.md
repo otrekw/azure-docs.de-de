@@ -7,18 +7,18 @@ ms.topic: how-to
 ms.tgt_pltfrm: vm
 ms.date: 03/04/2020
 ms.author: shants
-ms.openlocfilehash: 4cff7eb4a69005f2e74747b6e58447f100c69b60
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 91a6adecc9cf0db56fa4c433f388b05aa1bdef6a
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86501601"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98202911"
 ---
 # <a name="move-a-maintenance-control-configuration-to-another-region"></a>Verschieben einer Wartungssteuerungskonfiguration in eine andere Region
 
 In diesem Artikel wird beschrieben, wie Sie eine Wartungssteuerungskonfiguration in eine andere Azure-Region verschieben. Eine Konfiguration kann aus verschiedenen Gründen verschoben werden. Beispielsweise, um eine neue Region zu nutzen, um Features oder Dienste bereitzustellen, die in einer bestimmten Region verfügbar sind, um interne Richtlinien- und Governanceanforderungen zu erfüllen oder als Reaktion auf die Kapazitätsplanung.
 
-Mit der Wartungssteuerung können Sie mit angepassten Wartungskonfigurationen steuern, wie Plattformupdates auf [Windows](./maintenance-control-cli.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json)- und [Linux](./maintenance-control-cli.md?toc=%2Fazure%2Fvirtual-machines%2Flinux%2Ftoc.json&bc=%2Fazure%2Fvirtual-machines%2Flinux%2Fbreadcrumb%2Ftoc.json&view=azure-java-stable)-VMs und auf Azure Dedicated Hosts angewendet werden. Es gibt eine Reihe von Szenarien, in denen die Wartungssteuerung regionsübergreifend verschoben wird:
+Mit der [Wartungssteuerung](maintenance-control.md) können Sie mit angepassten Wartungskonfigurationen steuern, wie Plattformupdates auf virtuelle Computer und auf Azure Dedicated Host-Instanzen angewendet werden. Es gibt eine Reihe von Szenarien, in denen die Wartungssteuerung regionsübergreifend verschoben wird:
 
 - Wenn Sie Ihre Wartungssteuerungskonfiguration, nicht aber die der Konfiguration zugeordneten Ressourcen verschieben möchten, befolgen Sie die Anweisungen in diesem Artikel.
 - Befolgen Sie die [diese Anweisungen](move-region-maintenance-configuration-resources.md), um die einer Wartungskonfiguration zugeordneten Ressourcen, nicht aber die Konfiguration selbst zu verschieben.
@@ -38,7 +38,7 @@ Bevor Sie mit dem Verschieben einer Wartungssteuerungskonfiguration beginnen:
 
 ## <a name="prepare-and-move"></a>Vorbereiten und Verschieben 
 
-1. Rufen Sie alle Wartungskonfigurationen in den einzelnen Abonnements ab. Führen Sie den CLI-Befehl [az maintenance configuration list](/cli/azure/ext/maintenance/maintenance/configuration?view=azure-cli-latest#ext-maintenance-az-maintenance-configuration-list) aus, und ersetzen Sie dabei $subId durch Ihre Abonnement-ID.
+1. Rufen Sie alle Wartungskonfigurationen in den einzelnen Abonnements ab. Führen Sie den CLI-Befehl [az maintenance configuration list](/cli/azure/ext/maintenance/maintenance/configuration#ext-maintenance-az-maintenance-configuration-list) aus, und ersetzen Sie dabei $subId durch Ihre Abonnement-ID.
 
     ```
     az maintenance configuration list --subscription $subId --query "[*].{Name:name, Location:location, ResGroup:resourceGroup}" --output table

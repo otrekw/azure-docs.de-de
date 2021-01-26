@@ -8,12 +8,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 07/02/2020
-ms.openlocfilehash: 6bc9f69440be772910ea8200b5ccf7d5a5122ae6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9894da7486ec3c0dfb92c94c7c7f4db2247ebeb7
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90907806"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98210204"
 ---
 # <a name="train-vowpal-wabbit-model"></a>Trainieren von Vowpal Wabbit-Modellen
 In diesem Artikel wird beschrieben, wie Sie das Modul **Train Vowpal Wabbit Model** (Vowpal Wabbit-Modell trainieren) im Azure Machine Learning-Designer verwenden, um mithilfe von Vowpal Wabbit ein Machine Learning-Modell zu erstellen.  

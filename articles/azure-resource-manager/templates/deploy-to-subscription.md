@@ -2,13 +2,13 @@
 title: Bereitstellen von Ressourcen in einem Abonnement
 description: In diesem Artikel wird beschrieben, wie Sie eine Ressourcengruppe in einer Azure Resource Manager-Vorlage erstellen. Außerdem wird veranschaulicht, wie Sie Ressourcen für den Bereich des Azure-Abonnements bereitstellen.
 ms.topic: conceptual
-ms.date: 11/24/2020
-ms.openlocfilehash: 2d4bd0db32a4bf0224b9da3af6e03ca86d7b496e
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.date: 01/13/2021
+ms.openlocfilehash: 1daf95945f619d0e904880d8a8a778810a685d9a
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95807712"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98183981"
 ---
 # <a name="subscription-deployments-with-arm-templates"></a>Abonnementbereitstellungen mit ARM-Vorlagen
 
@@ -142,7 +142,8 @@ Bei der Bereitstellung in ein Abonnement können Sie Ressourcen an folgenden Ort
 * in einem beliebigen Abonnement im Mandanten
 * in anderen Ressourcengruppen im Abonnement oder in anderen Abonnements
 * im Mandanten für das Abonnement
-* [Erweiterungsressourcen](scope-extension-resources.md) können auf Ressourcen angewendet werden.
+
+Für eine [Erweiterungsressource](scope-extension-resources.md) kann der Bereich auf ein Ziel festgelegt werden, das sich vom Bereitstellungsziel unterscheidet.
 
 Der Benutzer, der die Vorlage bereitstellt, muss Zugriff auf den angegebenen Bereich besitzen.
 
@@ -181,6 +182,8 @@ Sie können eine geschachtelte Bereitstellung mit festgelegtem `scope` und `loca
 Alternativ können Sie den Bereich für einige Ressourcentypen wie z. B. Verwaltungsgruppen auf `/` festlegen.
 
 :::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/subscription-create-mg.json" highlight="12,15":::
+
+Weitere Informationen finden Sie unter [Verwaltungsgruppe](deploy-to-management-group.md#management-group).
 
 ## <a name="resource-groups"></a>Ressourcengruppen
 

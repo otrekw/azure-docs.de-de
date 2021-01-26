@@ -6,16 +6,16 @@ ms.author: rahugup
 ms.manager: bsiva
 ms.topic: conceptual
 ms.date: 06/14/2020
-ms.openlocfilehash: a1203133d8749b43a92d89e7251539a1e002bfd8
-ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
+ms.openlocfilehash: a3e8b19810a58031b4d11cc6e361215afbc85de2
+ms.sourcegitcommit: 61d2b2211f3cc18f1be203c1bc12068fc678b584
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97968567"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98562639"
 ---
 # <a name="support-matrix-for-physical-server-migration"></a>Unterstützungsmatrix für die Migration physischer Server
 
-Dieser Artikel enthält eine Zusammenfassung der Unterstützungseinstellungen und Einschränkungen bei der Migration physischer Server mit [Azure Migrate: Server Migration](migrate-services-overview.md#azure-migrate-server-migration-tool) (Azure Migrate: Servermigration). Informationen zur Bewertung physischer Server für die Migration zu Azure finden Sie in der [Unterstützungsmatrix für die Bewertung physischer Server](migrate-support-matrix-physical.md).
+Dieser Artikel enthält eine Zusammenfassung der Unterstützungseinstellungen und Einschränkungen bei der Migration physischer Server zu Azure mit [Azure Migrate: Servermigration](migrate-services-overview.md#azure-migrate-server-migration-tool). Informationen zur Bewertung physischer Server für die Migration zu Azure finden Sie in der [Unterstützungsmatrix für die Bewertung physischer Server](migrate-support-matrix-physical.md).
 
 ## <a name="migrating-machines-as-physical"></a>Migrieren von Computern als physische Computer
 
@@ -25,7 +25,7 @@ Lokale Computer können mithilfe der Agent-basierten Replikation als physische S
 - Virtuelle Computer, die über eine Plattform wie Xen oder KVM virtualisiert werden
 - Virtuelle Hyper-V- oder VMware-Computer, falls Sie aus irgendeinem Grund nicht die Standardvorgehensweise für [Hyper-V](tutorial-migrate-hyper-v.md) oder [VMware](server-migrate-overview.md) verwenden möchten
 - Virtuelle Computer, die in privaten Clouds ausgeführt werden
-- Virtuelle Computer, die in öffentlichen Clouds wie Amazon Web Services (AWS) oder Google Cloud Platform (GCP) ausgeführt werden
+- Virtuelle Computer, die in öffentlichen Clouds ausgeführt werden, etwa Amazon Web Services (AWS) oder Google Cloud Platform (GCP)
 
 
 ## <a name="migration-limitations"></a>Einschränkungen bei der Migration
@@ -57,7 +57,6 @@ Die Tabelle enthält eine Übersicht über die Unterstützung für physische Ser
 **NFS** | NFS-Volumes, die auf den Computern als Volumes eingebunden sind, werden nicht repliziert.
 **iSCSI-Ziele** | Computer mit iSCSI-Zielen werden bei der Migration ohne Agent nicht unterstützt.
 **Multipfad-E/A** | Wird nicht unterstützt.
-**Storage vMotion** | Unterstützt
 **Kombinierte Netzwerkadapter** | Wird nicht unterstützt.
 **IPv6** | Wird nicht unterstützt.
 

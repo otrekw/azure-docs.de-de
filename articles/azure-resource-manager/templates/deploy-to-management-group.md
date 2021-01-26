@@ -2,13 +2,13 @@
 title: Bereitstellen von Ressourcen in einer Verwaltungsgruppe
 description: In diesem Artikel wird beschrieben, wie Sie Ressourcen auf der Verwaltungsgruppenebene in einer Azure Resource Manager-Vorlage bereitstellen.
 ms.topic: conceptual
-ms.date: 11/24/2020
-ms.openlocfilehash: 79cdb35de40501dfc0794155dcf807cced94bfa7
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.date: 01/13/2021
+ms.openlocfilehash: d6c6b925ad1533fc1f3bf490a9b996280164bd57
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95798588"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98184015"
 ---
 # <a name="management-group-deployments-with-arm-templates"></a>Bereitstellung von Verwaltungsgruppen mit ARM-Vorlagen
 
@@ -44,6 +44,8 @@ Verwenden Sie für geschachtelte Vorlagen, die in Abonnements oder Ressourcengru
 Verwenden Sie für die Verwaltung Ihrer Ressourcen:
 
 * [Tags](/azure/templates/microsoft.resources/tags)
+
+Bei Verwaltungsgruppen handelt es sich um Ressourcen auf Mandantenebene. Sie haben aber die Möglichkeit, Verwaltungsgruppen in einer Verwaltungsgruppenbereitstellung zu erstellen, indem Sie den Bereich der neuen Verwaltungsgruppe auf den Mandanten festlegen. Weitere Informationen finden Sie unter [Verwaltungsgruppe](#management-group).
 
 ## <a name="schema"></a>Schema
 
@@ -123,7 +125,8 @@ Bei der Bereitstellung in einer Verwaltungsgruppe können Sie Ressourcen an folg
 * In Abonnements in der Verwaltungsgruppe
 * In Ressourcengruppen in der Verwaltungsgruppe
 * Im Mandanten für die Ressourcengruppe
-* [Erweiterungsressourcen](scope-extension-resources.md) können auf Ressourcen angewendet werden.
+
+Für eine [Erweiterungsressource](scope-extension-resources.md) kann der Bereich auf ein Ziel festgelegt werden, das sich vom Bereitstellungsziel unterscheidet.
 
 Der Benutzer, der die Vorlage bereitstellt, muss Zugriff auf den angegebenen Bereich besitzen.
 
@@ -161,15 +164,61 @@ Informationen zur Verwendung einer Verwaltungsgruppenbereitstellung zum Erstelle
 
 ### <a name="scope-to-tenant"></a>Bereich: Mandant
 
-Sie können Ressourcen im Mandanten erstellen, indem Sie den `scope` auf `/` festlegen. Der Benutzer, der die Vorlage bereitstellt, muss über den [erforderlichen Zugriff zum Bereitstellen im Mandanten](deploy-to-tenant.md#required-access) verfügen.
+Sie können Ressourcen im Mandanten erstellen, indem Sie den `scope` auf `/` festlegen. Der Benutzer, der die Vorlage bereitstellt, muss über den [zum Bereitstellen erforderlichen Zugriff auf dem Mandanten](deploy-to-tenant.md#required-access) verfügen.
 
 Sie können eine geschachtelte Bereitstellung mit festgelegtem `scope` und `location` verwenden.
 
 :::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/management-group-to-tenant.json" highlight="9,10,14":::
 
-Alternativ können Sie den Bereich für einige Ressourcentypen wie z. B. Verwaltungsgruppen auf `/` festlegen.
+Alternativ können Sie den Bereich für einige Ressourcentypen wie z. B. Verwaltungsgruppen auf `/` festlegen. Die Erstellung einer neuen Verwaltungsgruppe ist im nächsten Abschnitt beschrieben.
+
+## <a name="management-group"></a>Verwaltungsgruppe
+
+Zum Erstellen einer Verwaltungsgruppe in einer Verwaltungsgruppenbereitstellung müssen Sie den Bereich für die Verwaltungsgruppe auf `/` festlegen.
+
+Im folgenden Beispiel wird in der Stammverwaltungsgruppe eine neue Verwaltungsgruppe erstellt.
 
 :::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/management-group-create-mg.json" highlight="12,15":::
+
+Im nächsten Beispiel wird eine neue Verwaltungsgruppe in der Verwaltungsgruppe erstellt, die als übergeordnetes Element angegeben ist. Beachten Sie, dass der Bereich hierbei auf `/` festgelegt ist.
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "mgName": {
+            "type": "string",
+            "defaultValue": "[concat('mg-', uniqueString(newGuid()))]"
+        },
+        "parentMG": {
+            "type": "string"
+        }
+    },
+    "resources": [
+        {
+            "name": "[parameters('mgName')]",
+            "type": "Microsoft.Management/managementGroups",
+            "apiVersion": "2020-05-01",
+            "scope": "/",
+            "location": "eastus",
+            "properties": {
+                "details": {
+                    "parent": {
+                        "id": "[tenantResourceId('Microsoft.Management/managementGroups', parameters('parentMG'))]"
+                    }
+                }
+            }
+        }
+    ],
+    "outputs": {
+        "output": {
+            "type": "string",
+            "value": "[parameters('mgName')]"
+        }
+    }
+}
+```
 
 ## <a name="azure-policy"></a>Azure Policy
 

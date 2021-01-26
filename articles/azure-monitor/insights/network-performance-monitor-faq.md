@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: vinynigam
 ms.author: vinigam
 ms.date: 10/12/2018
-ms.openlocfilehash: dd6c6248fcdf30350daecaa4857a81447bbdb7a8
-ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
+ms.openlocfilehash: 8e26a4d996e4c1767856b3dd98ae318d8992a89b
+ms.sourcegitcommit: 61d2b2211f3cc18f1be203c1bc12068fc678b584
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93280324"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98562691"
 ---
 # <a name="network-performance-monitor-solution-faq"></a>Netzwerkleistungsmonitor-Lösung: häufig gestellte Fragen
 
@@ -34,7 +34,7 @@ Nachfolgend sind die Plattformanforderungen für die verschiedenen Funktionen de
 - Die Funktion „ExpressRoute-Monitor“ des Netzwerkleistungsmonitors unterstützt nur das Windows Server-Betriebssystem (2008 SP1 oder höher).
 
 ### <a name="can-i-use-linux-machines-as-monitoring-nodes-in-npm"></a>Kann ich Linux-Computer als Überwachungsknoten im Netzwerkleistungsmonitor verwenden?
-Die Funktion zum Überwachen von Netzwerken mithilfe von Linux-basierten Knoten befindet sich derzeit in der Vorschau. Greifen Sie [hier](../../virtual-machines/extensions/oms-linux.md) auf den Agent zu. Wenden Sie sich an Ihren Account Manager, um mehr zu erfahren. Linux-Agents bieten die Überwachungsfunktion nur für die Funktion „Systemmonitor“ des Netzwerkleistungsmonitors und sind für die Funktionen „Dienstkonnektivitätsmonitor“ und „ExpressRoute-Monitor“ nicht verfügbar.
+Die Funktion zum Überwachen von Netzwerken mithilfe von Linux-basierten Knoten ist jetzt allgemein verfügbar. Greifen Sie [hier](../../virtual-machines/extensions/oms-linux.md) auf den Agent zu. Linux-Agents bieten die Überwachungsfunktion nur für die Funktion „Systemmonitor“ des Netzwerkleistungsmonitors und sind für die Funktionen „Dienstkonnektivitätsmonitor“ und „ExpressRoute-Monitor“ nicht verfügbar.
 
 ### <a name="what-are-the-size-requirements-of-the-nodes-to-be-used-for-monitoring-by-npm"></a>Welche Größenanforderungen gelten für die vom Netzwerkleistungsmonitor zur Überwachung verwendeten Knoten?
 Zur Ausführung der Netzwerkleistungsmonitor-Lösung auf virtuellen Knotencomputern zum Überwachen von Netzwerken müssen die Knoten mindestens einen Speicher von 500 MB und einen Kern aufweisen. Zum Ausführen des Netzwerkleistungsmonitors müssen Sie keine separaten Knoten verwenden. Die Lösung kann auf Knoten ausgeführt werden, auf denen andere Workloads ausgeführt werden. Die Lösung bietet die Möglichkeit, den Überwachungsprozess zu beenden, falls er mehr als 5% der CPU-Ressourcen nutzt.

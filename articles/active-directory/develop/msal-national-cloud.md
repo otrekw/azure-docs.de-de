@@ -13,12 +13,12 @@ ms.date: 11/22/2019
 ms.author: negoe
 ms.reviewer: marsma, nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 22b3ea9eb0e4c3379438b6c3fb58ccfb13b4ed32
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: 5a032f45027cc4bffc7f2bc46c6ea1a69a1b83e4
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98064792"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98178618"
 ---
 # <a name="use-msal-in-a-national-cloud-environment"></a>Verwenden der MSAL in einer nationalen Cloudumgebung
 
@@ -70,19 +70,21 @@ So aktivieren Sie Ihre MSAL.js-Anwendung für Sovereign Clouds
 
 ### <a name="step-1-register-your-application"></a>Schritt 1: Anwendung registrieren
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.us/) an.
+1. Melden Sie sich beim <a href="https://portal.azure.us/" target="_blank">Azure-Portal<span class="docon docon-navigate-external x-hidden-focus"></span></a> an.
 
    Azure-Portalendpunkte für andere nationale Clouds finden Sie unter [App-Registrierungsendpunkte](authentication-national-cloud.md#app-registration-endpoints).
 
-1. Wenn Sie mit Ihrem Konto auf mehrere Mandanten zugreifen können, klicken Sie rechts oben auf Ihr Konto, und legen Sie Ihre Portalsitzung auf den gewünschten Azure AD-Mandanten fest.
-1. Navigieren Sie in Microsoft Identity Platform für Entwickler zur Seite [App-Registrierungen](https://aka.ms/ra/ff).
-1. Geben Sie auf der daraufhin angezeigten Seite **Anwendung registrieren** einen Namen für Ihre Anwendung ein.
+1. Wenn Sie Zugriff auf mehrere Mandanten haben, verwenden Sie im Menü am oberen Rand den Filter **Verzeichnis + Abonnement** :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::, um den Mandanten auszuwählen, für den Sie eine Anwendung registrieren möchten.
+1. Suchen Sie nach **Azure Active Directory**, und wählen Sie diese Option aus.
+1. Wählen Sie unter **Verwalten** Folgendes aus: **App-Registrierungen** > **Neue Registrierung**.
+1. Geben Sie einen **Namen** für Ihre Anwendung ein. Benutzern Ihrer App wird wahrscheinlich dieser Namen angezeigt. Sie können ihn später ändern.
 1. Wählen Sie unter **Unterstützte Kontotypen** die Option **Konten in einem beliebigen Organisationsverzeichnis** aus.
 1. Wählen Sie im Abschnitt **Umleitungs-URI** die Plattform **Web** aus, und legen Sie den Wert auf die URL der Anwendung fest (basierend auf Ihrem Webserver). Eine Anleitung zum Festlegen und Abrufen der Umleitungs-URL in Visual Studio und Node finden Sie in den nächsten Abschnitten.
 1. Wählen Sie **Registrieren**.
-1. Notieren Sie sich auf der Seite **Übersicht** den Wert von **Anwendungsclient-ID**.
-1. In diesem Tutorial muss der [Flow zur impliziten Genehmigung](v2-oauth2-implicit-grant-flow.md) aktiviert werden. Wählen Sie im linken Bereich der registrierten Anwendung die Option **Authentifizierung** aus.
-1. Aktivieren Sie unter **Erweiterte Einstellungen** und **Implizite Gewährung** die Kontrollkästchen **ID-Token** und **Zugriffstoken**. ID-Token und Zugriffstoken sind erforderlich, da diese App Benutzer anmelden und eine API aufrufen muss.
+1. Notieren Sie sich für die spätere Verwendung auf der Seite **Übersicht** den Wert von **Anwendungs-ID (Client)** .
+    In diesem Tutorial muss der [Flow zur impliziten Genehmigung](v2-oauth2-implicit-grant-flow.md) aktiviert werden. 
+1. Wählen Sie unter **Verwalten** die Option **Authentifizierung** aus.
+1. Wählen Sie unter **Implizite Genehmigungen** die Optionen **ID-Token** und **Zugriffstoken** aus. ID-Token und Zugriffstoken sind erforderlich, da diese App Benutzer anmelden und eine API aufrufen muss.
 1. Wählen Sie **Speichern** aus.
 
 ### <a name="step-2--set-up-your-web-server-or-project"></a>Schritt 2:  Einrichten Ihres Webservers oder Projekts

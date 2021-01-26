@@ -10,13 +10,13 @@ ms.topic: how-to
 author: danimir
 ms.author: danil
 ms.reviewer: wiassaf, sstein
-ms.date: 03/10/2020
-ms.openlocfilehash: a016781e5b05c8f43c043bf1f3368a58064e43ad
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.date: 1/14/2021
+ms.openlocfilehash: db24f280f66e567572821297cfc9bb9b1e19743b
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96501259"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222342"
 ---
 # <a name="query-performance-insight-for-azure-sql-database"></a>Query Performance Insight für Azure SQL-Datenbank
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -155,7 +155,7 @@ So zeigen Sie die Details von Abfragen an
 
 Zwei Metriken in Query Performance Insight können Ihnen helfen, potenzielle Engpässe zu finden: Dauer und Anzahl von Ausführungen.
 
-Abfragen mit langer Ausführungsdauer besitzen das größte Potenzial, Ressourcen länger zu blockieren, andere Benutzer zu blockieren und die Skalierbarkeit einzuschränken. Sie sind auch die besten Kandidaten für eine Optimierung.
+Abfragen mit langer Ausführungsdauer besitzen das größte Potenzial, Ressourcen länger zu blockieren, andere Benutzer zu blockieren und die Skalierbarkeit einzuschränken. Sie sind auch die besten Kandidaten für eine Optimierung. Weitere Informationen finden Sie unter [Verstehen und Beheben von Problemen durch Blockierungen in Azure SQL](understand-resolve-blocking.md).
 
 So ermitteln Sie Abfragen mit langer Ausführungsdauer:
 

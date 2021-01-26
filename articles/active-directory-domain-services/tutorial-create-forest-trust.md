@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/06/2020
 ms.author: justinha
-ms.openlocfilehash: 0231689acef3345fb2b0f25170522d59552171ba
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: faa46178262777454d4d67d23bbd0bb013974ab5
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96618330"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98208487"
 ---
 # <a name="tutorial-create-an-outbound-forest-trust-to-an-on-premises-domain-in-azure-active-directory-domain-services"></a>Tutorial: Erstellen einer ausgehenden Gesamtstruktur-Vertrauensstellung zu einer lokalen Domäne in Azure Active Directory Domain Services
 
@@ -73,7 +73,7 @@ Bevor Sie eine Gesamtstruktur-Vertrauensstellung in Azure AD DS konfigurieren, s
 
 Um die verwaltete Domäne ordnungsgemäß aus der lokalen Umgebung aufzulösen, müssen Sie möglicherweise Weiterleitungen zu den vorhandenen DNS-Servern hinzufügen. Wenn Sie die lokale Umgebung nicht für die Kommunikation mit der verwalteten Domäne konfiguriert haben, führen Sie auf einer Verwaltungsarbeitsstation die folgenden Schritte für die lokale AD DS-Domäne aus:
 
-1. Wählen Sie **Start | Verwaltung | DNS** aus.
+1. Wählen Sie **Start** > **Verwaltung** > **DNS** aus.
 1. Klicken Sie mit der rechten Maustaste auf den DNS-Server (beispielsweise *myAD01*), und wählen Sie **Eigenschaften** aus.
 1. Wählen Sie **Weiterleitungen** und dann **Bearbeiten** aus, um weitere Weiterleitungen hinzuzufügen.
 1. Fügen Sie die IP-Adressen der verwalteten Domäne hinzu, z. B. *10.0.2.4* und *10.0.2.5*.
@@ -86,13 +86,13 @@ Um die eingehende Vertrauensstellung in der lokalen AD DS-Domäne zu konfigurier
 
 1. Wählen Sie **Start | Verwaltung | Active Directory-Domänen und -Vertrauensstellungen** aus.
 1. Klicken Sie mit der rechten Maustaste auf eine Domäne (beispielsweise *onprem.contoso.com*), und wählen Sie anschließend **Eigenschaften** aus.
-1. Wählen Sie die Registerkarte **Vertrauensstellungen** aus, und wählen Sie dann **Neue Vertrauensstellung** aus.
+1. Wählen Sie die Registerkarte **Vertrauensstellungen** und dann **Neue Vertrauensstellung** aus.
 1. Geben Sie einen Namen für die Azure AD DS-Domäne ein (beispielsweise *aaddscontoso.com*), und wählen Sie anschließend **Weiter** aus.
 1. Wählen Sie die Option zum Erstellen einer **Gesamtstruktur-Vertrauenswürdigkeit** und dann die Option zum Erstellen einer **Unidirektional: eingehend**-Vertrauensstellung aus.
 1. Wählen Sie die Option aus, mit der die Vertrauensstellung **Nur für diese Domäne** erstellt wird. Im nächsten Schritt erstellen Sie die Vertrauensstellung im Azure-Portal für die verwaltete Domäne.
 1. Wählen Sie die Option zum Verwenden von **Gesamtstrukturweite Authentifizierung** aus, und geben Sie dann ein Vertrauensstellungskennwort ein. Dasselbe Kennwort wird auch im Azure-Portal im nächsten Abschnitt eingegeben.
 1. Durchlaufen Sie die nächsten Fenster mit Standardoptionen, und aktivieren Sie dann die Option **Nein, ausgehende Vertrauensstellung nicht bestätigen**.
-1. Wählen Sie **Fertig stellen**.
+1. Wählen Sie **Fertig stellen** aus.
 
 ## <a name="create-outbound-forest-trust-in-azure-ad-ds"></a>Erstellen einer ausgehenden Gesamtstruktur-Vertrauensstellung in Azure AD DS
 
@@ -100,13 +100,13 @@ Nachdem Sie die lokale AD DS-Domäne konfiguriert haben, um die verwaltete Dom�
 
 Führen Sie die folgenden Schritte aus, um die ausgehende Vertrauensstellung für die verwaltete Domäne im Azure-Portal zu erstellen:
 
-1. Suchen Sie im Azure-Portal nach **Azure AD Domain Services**, und wählen Sie dann Ihre verwaltete Domäne aus, z. B. *aaddscontoso.com*.
+1. Suchen Sie im Azure-Portal nach **Azure AD Domain Services**, und wählen Sie den entsprechenden Eintrag und dann Ihre verwaltete Domäne aus, z. B. *aaddscontoso.com*.
 1. Wählen Sie im Menü auf der linken Seite der verwalteten Domäne die Option **Vertrauensstellungen** und dann **+ Hinzufügen** aus.
 
    > [!NOTE]
    > Wenn die Menüoption **Vertrauensstellungen** nicht angezeigt wird, suchen Sie unter **Eigenschaften** nach dem *Gesamtstrukturtyp*. Nur *Ressourcengesamtstrukturen* können Vertrauensstellungen erstellen. Wenn der Gesamtstrukturtyp *Benutzer* lautet, können Sie keine Vertrauensstellungen erstellen. Es gibt derzeit keine Möglichkeit, den Gesamtstrukturtyp einer verwalteten Domäne zu ändern. Sie müssen die verwaltete Domäne löschen und als eine Ressourcengesamtstruktur neu erstellen.
 
-1. Geben Sie einen Anzeigenamen ein, der Ihre Vertrauensstellung kennzeichnet, und geben Sie dann den lokalen DNS-Namen der vertrauenswürdigen Gesamtstruktur ein, z. B. *onprem.contoso.com*.
+1. Geben Sie einen Anzeigenamen, der Ihre Vertrauensstellung kennzeichnet, und dann den lokalen DNS-Namen der vertrauenswürdigen Gesamtstruktur ein, z. B. *onprem.contoso.com*.
 1. Geben Sie dasselbe Vertrauensstellungskennwort an, das beim Konfigurieren der eingehenden Gesamtstruktur-Vertrauensstellung für die lokale AD DS-Domäne im vorherigen Abschnitt verwendet wurde.
 1. Geben Sie mindestens zwei DNS-Server für die lokale AD DS-Domäne an, z. B. *10.1.1.4* und *10.1.1.5*.
 1. Wählen Sie dann **Speichern** aus, um die ausgehende Gesamtstruktur-Vertrauensstellung zu speichern.
@@ -181,7 +181,7 @@ Mit dem virtuellen Windows Server-Computer, der mit der Azure AD DS-Ressourcenge
 1. Wählen Sie im Dialogfeld *Berechtigungen für GesamtstrukturFreigabe* die Option **Hinzufügen** aus.
 1. Geben Sie *Dateiserverzugriff* in das Feld **Geben Sie die zu verwendenden Objektnamen ein** ein, und wählen Sie dann **OK** aus.
 1. Wählen Sie *Dateiserverzugriff* in der Liste **Gruppen- oder Benutzernamen** aus. Wählen Sie in der Liste **Berechtigungen für GesamtstrukturFreigabe** die Option *Zulassen* für die Berechtigungen **Ändern** und **Schreiben** aus, und wählen Sie dann **OK** aus.
-1. Wählen Sie die Registerkarte **Freigabe** aus, und wählen Sie dann **Erweiterte Freigabe...** aus.
+1. Wählen Sie die Registerkarte **Freigabe** und dann **Erweiterte Freigabe...** aus.
 1. Wählen Sie **Diesen Ordner freigeben** aus, und geben Sie dann einen Namen für die Dateifreigabe in **Freigabename** ein, z. B. *GesamtstrukturFreigabe*.
 1. Wählen Sie **Berechtigungen** aus. Wählen Sie in der Liste **Berechtigungen für Jeder** die Option **Zulassen** für die Berechtigung **Ändern** aus.
 1. Wählen Sie zweimal **OK** und dann **Schließen** aus.

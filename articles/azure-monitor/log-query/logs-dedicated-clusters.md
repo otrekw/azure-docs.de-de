@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 09/16/2020
-ms.openlocfilehash: 34524626cc213233c3db2ca438261b238eb18a2a
-ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
+ms.openlocfilehash: 93b05a5535b80d0e0d1a07c88aa9b19052f1b703
+ms.sourcegitcommit: 61d2b2211f3cc18f1be203c1bc12068fc678b584
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97831770"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98562674"
 ---
 # <a name="azure-monitor-logs-dedicated-clusters"></a>Dedizierte Azure Monitor-Protokollcluster
 
@@ -58,7 +58,7 @@ Weitere Informationen zur Abrechnung für dedizierte Log Analytics-Cluster finde
 
 ## <a name="asynchronous-operations-and-status-check"></a>Asynchrone Vorgänge und Statusüberprüfung
 
-Einige Konfigurationsschritte werden asynchron ausgeführt, da sie nicht schnell abgeschlossen werden können. Der Status in der Antwort enthält eine der folgenden Angaben: „Wird ausgeführt“, „Wird aktualisiert“, „Wird gelöscht“, „Erfolgreich“ oder „Fehler“ einschließlich des Fehlercodes. Wenn REST verwendet und akzeptiert wird, gibt die Antwort anfänglich den HTTP-Statuscode 200 (OK) und einen Header mit der Eigenschaft Azure-AsyncOperation zurück:
+Einige Konfigurationsschritte werden asynchron ausgeführt, da sie nicht schnell abgeschlossen werden können. Der Status in der Antwort enthält eine der folgenden Angaben: „Wird ausgeführt“, „Wird aktualisiert“, „Wird gelöscht“, „Erfolgreich“ oder „Fehler“ einschließlich des Fehlercodes. Wenn REST verwendet wird, gibt die Antwort anfänglich den HTTP-Statuscode 202 (Akzeptiert) und einen Header mit der Eigenschaft „Azure-AsyncOperation“ zurück:
 
 ```JSON
 "Azure-AsyncOperation": "https://management.azure.com/subscriptions/subscription-id/providers/Microsoft.OperationalInsights/locations/region-name/operationStatuses/operation-id?api-version=2020-08-01"
@@ -125,7 +125,7 @@ Content-type: application/json
 
 *Antwort*
 
-200 OK und ein Header
+202 (Akzeptiert) und ein Header
 
 ### <a name="check-cluster-provisioning-status"></a>Überprüfen des Bereitstellungsstatus für den Cluster
 
@@ -229,7 +229,7 @@ Content-type: application/json
 
 *Antwort*
 
-200 OK und Header.
+202 (Akzeptiert) und Header
 
 ### <a name="check-workspace-link-status"></a>Überprüfen des Verknüpfungsstatus des Arbeitsbereichs
   

@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 10/02/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: a47126a48ea63efd4e49097428679b85b7a95a61
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9ec900f0537030d3ed0d1c875e8125806159bd51
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91667162"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251453"
 ---
 # <a name="create-a-windows-virtual-desktop-host-pool-with-powershell"></a>Erstellen eines Windows Virtual Desktop-Hostpools mit PowerShell
 
@@ -124,7 +124,7 @@ Führen Sie auf jedem virtuellen Computer die folgenden Schritte aus, um die Win
 
 Sie müssen den Agent in folgenden Situationen aktualisieren:
 
-- Sie möchten eine zuvor registrierte Sitzung zu einem neuen Hostpool migrieren.
+- Sie möchten einen zuvor registrierten Sitzungshost zu einem neuen Hostpool migrieren.
 - Der Sitzungshost wird nach einer Aktualisierung nicht in Ihrem Hostpool angezeigt.
 
 Zum Aktualisieren des Agents führen Sie die folgenden Schritte aus:

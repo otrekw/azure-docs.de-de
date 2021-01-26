@@ -1,18 +1,18 @@
 ---
-title: Vertraulichkeitsbezeichnungs-Berichterstellung zu Ihren Daten in Azure Blob Storage
-description: In dieser Schrittanleitung ist beschrieben, wie Sie die Purview-Vertraulichkeitsbezeichnungs-Berichterstellung zu Ihren Daten anzeigen und verwenden, die in Azure Blob Storage vorliegen.
+title: Berichterstellung zu Vertraulichkeitsbezeichnungen für Ihre Daten in Azure Purview mit Purview-Erkenntnissen
+description: In dieser Schrittanleitung wird beschrieben, wie Sie die Berichterstellung zu Vertraulichkeitsbezeichnungen für Ihre Daten in Purview anzeigen und verwenden.
 author: batamig
 ms.author: bagol
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/24/2020
-ms.openlocfilehash: e6a92282d2bcd316a771742048dacd9a7181de4f
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: dffecb48a8faa869cb3df450cc220e86195bbc87
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96746181"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98199375"
 ---
 # <a name="sensitivity-label-insights-about-your-data-in-azure-purview"></a>Vertraulichkeitsbezeichnungs-Erkenntnisse zu Ihren Daten in Azure Purview
 
@@ -27,6 +27,11 @@ In dieser Schrittanleitung lernen Sie Folgendes:
 > - Anzeigen von Vertraulichkeitsbezeichnungs-Erkenntnissen zu Ihren Daten
 > - Ausführen von Drilldowns zu weiteren Vertraulichkeitsbezeichnungsdetails zu Ihren Daten
 
+> [!NOTE]
+> Vertraulichkeitsbezeichnungen in [Power BI-Ressourcen](register-scan-power-bi-tenant.md), die mit Purview überprüft werden, werden im Bericht zu den Erkenntnissen für Vertraulichkeitsbezeichnungen derzeit nicht angezeigt. 
+>
+> Sehen Sie sich die entsprechende Ressource im [Purview-Datenkatalog](how-to-search-catalog.md) an, um Vertraulichkeitsbezeichnungen in Power BI-Ressourcen anzuzeigen.
+> 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Stellen Sie vor dem Beginn mit Purview-Erkenntnissen sicher, dass Sie die folgenden Schritte ausgeführt haben:
@@ -37,6 +42,8 @@ Stellen Sie vor dem Beginn mit Purview-Erkenntnissen sicher, dass Sie die folgen
 
 - Einrichten und Abschließen einer Überprüfung der Testdaten in den einzelnen Datenquellen
 
+- Anmeldung bei Purview mit einem Konto mit der Rolle [„Datenleser“ oder „Datenkurator“](catalog-permissions.md#azure-purviews-pre-defined-data-plane-roles)
+
 Weitere Informationen finden Sie unter [Verwalten von Datenquellen in Azure Purview (Vorschau)](manage-data-sources.md) und [Automatisches Bezeichnen Ihrer Daten in Azure Purview](create-sensitivity-label.md).
 
 ## <a name="use-purview-sensitivity-labeling-insights"></a>Verwenden von Purview-Vertraulichkeitsbezeichnungs-Erkenntnissen
@@ -45,9 +52,11 @@ In Purview ähneln Klassifizierungen Betrefftags und werden zum Kennzeichnen und
 
 Vertraulichkeitsbezeichnungen ermöglichen es Ihnen anzugeben, wie vertraulich bestimmte Daten in Ihrer Organisation sind. Beispielsweise kann ein bestimmter Projektname in Ihrer Organisation streng vertraulich sein, während derselbe Begriff in anderen Organisationen nicht vertraulich ist. 
 
-Während Klassifizierungen direkt abgeglichen werden (eine Sozialversicherungsnummer ist als **Sozialversicherungsnummer** klassifiziert), werden Vertraulichkeitsbezeichnungen angewendet, wenn ein(e) oder mehrere Klassifizierungen und Szenarios zusammen gefunden werden. 
+Klassifizierungen werden direkt abgeglichen, z. B. eine Sozialversicherungsnummer, die über die Klassifizierung **Sozialversicherungsnummer** verfügt. 
 
-Purview verwendet die gleichen Klassifizierungen, auch als vertrauliche Informationstypen bezeichnet, wie Microsoft 365. Dies ermöglicht Ihnen, Ihre vorhandenen Vertraulichkeitsbezeichnungen auf Ihre Azure Purview-Ressourcen auszuweiten.
+Im Gegensatz dazu werden Vertraulichkeitsbezeichnungen angewendet, wenn eine oder mehrere Klassifizierungen und Bedingungen gleichzeitig gefunden werden. In diesem Kontext beziehen sich [Bedingungen](/microsoft-365/compliance/apply-sensitivity-label-automatically) auf alle Parameter, die Sie für unstrukturierte Daten definieren können, z. B. **Nähe zu einer anderen Klassifizierung** und **% Konfidenz**. 
+
+In Purview werden die gleichen Klassifizierungen (auch als [vertrauliche Informationstypen](/microsoft-365/compliance/sensitive-information-type-entity-definitions) bezeichnet) wie in Microsoft 365 verwendet. Dies ermöglicht Ihnen, Ihre vorhandenen Vertraulichkeitsbezeichnungen auf Ihre Azure Purview-Ressourcen auszuweiten.
 
 > [!NOTE]
 > Nachdem Sie Ihre Quelltypen überprüft haben, geben Sie den Erkenntnissen zur **Vertraulichkeitsbezeichnung** einige Stunden Zeit, um die neuen Ressourcen zu berücksichtigen.
@@ -94,7 +103,7 @@ Beispiel:
 
 Führen Sie einen der folgenden Schritte aus, um weitere Informationen zu erhalten:
 
-|Option  |BESCHREIBUNG  |
+|Option  |Beschreibung  |
 |---------|---------|
 |**Filtern der Daten**     |  Verwenden Sie die Filter oberhalb des Rasters, um die angezeigten Daten zu filtern, einschließlich des Bezeichnungsnamens, des Abonnementnamens oder des Quellentyps. <br><br>Wenn Sie sich bezüglich des genauen Bezeichnungsnamens nicht sicher sind, können Sie einen Teil oder den ganzen Namen in das Feld **Nach Schlüsselwort filtern** eingeben.       |
 |**Sortieren des Rasters** |Wählen Sie einen Spaltenheader aus, um das Raster nach dieser Spalte zu sortieren. | 

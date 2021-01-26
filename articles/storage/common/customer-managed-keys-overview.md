@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.openlocfilehash: 8eaadc031039b22e209db1023c65da39e1e096b1
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 9afce964652d2bedbe105a8a750a93d2f37eef85
+ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96483282"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98179030"
 ---
 # <a name="customer-managed-keys-for-azure-storage-encryption"></a>Kundenseitig verwaltete Schlüssel für die Azure Storage-Verschlüsselung
 
@@ -78,7 +78,7 @@ Wenn Sie die Verschlüsselung mit kundenseitig verwalteten Schlüsseln konfiguri
 
     Wenn die Schlüsselversion direkt angegeben wird, müssen Sie das Speicherkonto manuell für die Verwendung des neuen Schlüsselversions-URI aktualisieren, nachdem eine neue Version erstellt wurde. Informationen dazu, wie Sie das Speicherkonto für die Verwendung einer neuen Version des Schlüssels aktualisieren, finden Sie unter [Konfigurieren der Verschlüsselung mit kundenseitig verwalteten Schlüsseln, die in Azure Key Vault gespeichert sind](customer-managed-keys-configure-key-vault.md) und [Konfigurieren der Verschlüsselung mit kundenseitig verwalteten Schlüsseln, die in Azure Key Vault Managed HSM (Vorschau) gespeichert sind](customer-managed-keys-configure-key-vault-hsm.md).
 
-Durch das Aktualisieren der Schlüsselversion eines kundenseitig verwalteten Schlüssels werden die Daten im Speicherkonto nicht neu verschlüsselt. Es ist keine weitere Aktion durch den Benutzer erforderlich.
+Wenn Sie die Schlüsselversion aktualisieren, ändert sich der Schutz des Stammverschlüsselungsschlüssels, die Daten in Ihrem Azure Storage-Konto werden jedoch nicht erneut verschlüsselt. Es ist keine weitere Aktion durch den Benutzer erforderlich.
 
 > [!NOTE]
 > Um einen Schlüssel zu rotieren, erstellen Sie eine neue Version des Schlüssels im Schlüsseltresor oder im verwalteten HSM entsprechend Ihren Compliancerichtlinien. Sie können den Schlüssel manuell rotieren oder eine Funktion erstellen, um ihn nach einem Zeitplan zu rotieren.

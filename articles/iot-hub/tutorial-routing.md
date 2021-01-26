@@ -13,12 +13,12 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: Data Analytics'
 - devx-track-azurecli
-ms.openlocfilehash: 892dad3963e9da3560acc2c782c3d14db246ea78
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 13130a7ea473b260ddc4f0ebca2ef5b496b34c66
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87500588"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98202991"
 ---
 # <a name="tutorial-use-the-azure-cli-and-azure-portal-to-configure-iot-hub-message-routing"></a>Tutorial: Verwenden der Azure CLI und des Azure-Portals zum Konfigurieren des IoT Hub-Nachrichtenroutings
 
@@ -140,13 +140,13 @@ Richten Sie jetzt die Weiterleitung für das Speicherkonto ein. Wechseln Sie zum
 
 2. Wählen Sie in der Liste mit den Ressourcen Ihren IoT-Hub aus. In diesem Tutorial wird **ContosoTestHub** verwendet.
 
-3. Wählen Sie **Nachrichtenrouting**. Wählen Sie im Bereich **Nachrichtenrouting** die Option **+ Hinzufügen**. Wählen Sie im Bereich **Route hinzufügen** neben dem Feld „Endpunkt“ die Option **+ Hinzufügen** aus, um die unterstützten Endpunkte anzuzeigen. Dies ist in der folgenden Abbildung dargestellt:
+3. Wählen Sie **Nachrichtenrouting**. Wählen Sie im Bereich **Nachrichtenrouting** die Option **+ Hinzufügen**. Wählen Sie im Bereich **Route hinzufügen** neben dem Feld „Endpunkt“ die Option **+ Endpunkt hinzufügen** aus, um die unterstützten Endpunkte anzuzeigen. Dies ist in der folgenden Abbildung dargestellt:
 
-   ![Beginnen mit dem Hinzufügen eines Endpunkts für eine Route](./media/tutorial-routing/message-routing-add-a-route-w-storage-ep.png)
+   ![Beginnen mit dem Hinzufügen eines Endpunkts für eine Route](./media/tutorial-routing/message-routing-add-a-route-with-storage-endpoint-ver2.png)
 
-4. Wählen Sie **Blob Storage** aus. Der Bereich **Speicherendpunkt hinzufügen** wird angezeigt.
+4. Wählen Sie **Speicher**. Der Bereich **Speicherendpunkt hinzufügen** wird angezeigt.
 
-   ![Hinzufügen eines Endpunkts](./media/tutorial-routing/message-routing-add-storage-ep.png)
+   ![Hinzufügen eines Endpunkts](./media/tutorial-routing/message-routing-add-storage-endpoint-ver2.png)
 
 5. Geben Sie einen Namen für den Endpunkt ein. In diesem Tutorial wird **ContosoStorageEndpoint** verwendet.
 

@@ -9,13 +9,13 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.subservice: monitoring
 ms.topic: tutorial
-ms.date: 10/15/2020
-ms.openlocfilehash: c2260cc0d2c6b889b44c738576e33abceebe23f1
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.date: 12/31/2020
+ms.openlocfilehash: 8c0cdcad9a7803e0d8063362ca62887990045c86
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96444407"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98209813"
 ---
 # <a name="monitor-your-synapse-workspace"></a>Überwachen Ihres Synapse-Arbeitsbereichs
 
@@ -36,15 +36,15 @@ In diesem Tutorial erfahren Sie, wie Sie Aktivitäten in Ihrem Synapse-Arbeitsbe
 
 ## <a name="apache-spark-activities"></a>Apache Spark-Aktivitäten
 
-1. Navigieren Sie zu **Integration > Aktivitäten > Apache Spark-Anwendungen**. Nun sehen Sie alle Spark-Anwendungen, die in Ihrem Arbeitsbereich ausgeführt werden oder wurden.
+1. Navigieren Sie zu **Aktivitäten > Apache Spark-Anwendungen**. Nun sehen Sie alle Spark-Anwendungen, die in Ihrem Arbeitsbereich ausgeführt werden oder wurden.
 1. Suchen Sie nach einer Anwendung, die nicht mehr ausgeführt wird, und klicken Sie auf den **Anwendungsnamen**. Sie sehen nun die Details der Spark-Anwendung.
 1. Wenn Sie mit Apache Spark vertraut sind, können Sie zur Standardbenutzeroberfläche des Apache Spark-Verlaufsservers navigieren, indem Sie auf **Spark-Verlaufsserver** klicken.
 
 ## <a name="sql-activities"></a>SQL-Aktivitäten
 
-1. Navigieren Sie zu **Integration > Aktivitäten > SQL-Anforderungen**.
+1. Navigieren Sie zu **Aktivitäten > SQL-Anforderungen**.
 1. In dieser Ansicht können Sie SQL-Anforderungen anzeigen.
-1. Wählen Sie einen zu überwachenden **Pool** aus. Nun sehen Sie alle SQL-Anforderungen, die in Ihrem Arbeitsbereich in diesem Pool ausgeführt werden oder wurden.
+1. Wählen Sie mithilfe des **Poolfilters** einen zu überwachenden **Pool** aus. Nun sehen Sie alle SQL-Anforderungen, die in Ihrem Arbeitsbereich in diesem Pool ausgeführt werden oder wurden.
 1. Suchen Sie eine bestimmte SQL-Anforderung, und zeigen Sie mit der Maus auf das betreffende Element. Wenn Sie mit der Maus darauf zeigen, wird ein SQL-Skriptsymbol angezeigt.
 1. Klicken Sie auf das SQL-Skriptsymbol, um den vollständigen Text der SQL-Anforderung anzuzeigen.
 

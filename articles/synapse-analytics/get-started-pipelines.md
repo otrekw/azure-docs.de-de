@@ -9,13 +9,13 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.subservice: pipeline
 ms.topic: tutorial
-ms.date: 10/27/2020
-ms.openlocfilehash: af01d5b5e424dd5ea229115f7aa3570d0b7cd511
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.date: 12/31/2020
+ms.openlocfilehash: 2ea7c3c440fcf95e4512464333efe8461788bceb
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92744927"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98219401"
 ---
 # <a name="integrate-with-pipelines"></a>Integrieren mit Pipelines
 
@@ -26,14 +26,19 @@ In diesem Tutorial erfahren Sie, wie Pipelines und Aktivitäten mithilfe von Syn
 Sie können eine Vielzahl verschiedener Aufgaben in Azure Synapse integrieren.
 
 1. Navigieren Sie in Synapse Studio zum Hub **Integrieren**.
-1. Wählen Sie **+**  > **Pipeline** aus, um eine neue Pipeline zu erstellen.
-1. Navigieren Sie zum Hub **Entwickeln** , und wählen Sie eins der zuvor erstellten Notebooks aus.
-1. Ziehen Sie dieses Notebook in die Pipeline. ( **Hinweis** : Schritt zum Importieren von Modulen im Notebook, wie in [diesem Dokument](https://docs.microsoft.com/azure/synapse-analytics/spark/synapse-spark-sql-pool-import-export#transfer-data-to-or-from-a-sql-pool-attached-with-the-workspace) angegeben. Erforderlich bei der Ausführung über die Pipeline.)
+1. Wählen Sie **+**  > **Pipeline** aus, um eine neue Pipeline zu erstellen. Klicken Sie auf das neue Pipelineobjekt, um den Pipeline-Designer zu öffnen.
+1. Erweitern Sie unter **Aktivitäten** den Ordner **Synapse**, und ziehen Sie ein Objekt vom Typ **Notebook** in den Designer.
+1. Wählen Sie die Registerkarte **Einstellungen** der Notebook-Aktivitätseigenschaften aus. Verwenden Sie die Dropdownliste, um ein beliebiges Notebook aus Ihrem aktuellen Synapse-Arbeitsbereich auszuwählen. 
 1. Wählen Sie in der Pipeline **Trigger hinzufügen** > **Neu/Bearbeiten** aus.
 1. Wählen Sie unter **Choose trigger** (Trigger auswählen) die Option **Neu** aus, und legen Sie **Wiederholung** auf „1 Stunde“ fest.
 1. Klicken Sie auf **OK**. 
-1. Wählen Sie **Alle veröffentlichen**.
-1. Wählen Sie zum sofortigen Ausführen der Pipeline, ohne den Ablauf der Stunde abzuwarten, die Option **Trigger hinzufügen** > **Jetzt auslösen** aus.
+1. Wählen Sie **Alle veröffentlichen**. 
+
+
+## <a name="monitor-pipeline"></a>Überwachen der Pipeline
+
+1. Nach der Veröffentlichung der Pipeline wählen Sie zum sofortigen Ausführen der Pipeline (ohne bis zur nächsten Ausführung nach einer Stunde zu warten) die Option **Trigger hinzufügen** > **Jetzt auslösen** aus.
+1. Navigieren Sie in Synapse Studio zum Hub **Überwachen**, und wählen Sie **Pipelineausführungen** aus, um den Status der Pipelineausführung zu überwachen.
 
 
 
@@ -41,4 +46,3 @@ Sie können eine Vielzahl verschiedener Aufgaben in Azure Synapse integrieren.
 
 > [!div class="nextstepaction"]
 > [Visualisieren von Daten mit Power BI](get-started-visualize-power-bi.md)
-                                 

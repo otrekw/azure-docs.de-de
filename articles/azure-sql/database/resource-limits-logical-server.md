@@ -10,13 +10,13 @@ ms.topic: reference
 author: stevestein
 ms.author: sstein
 ms.reviewer: sashan,moslake,josack
-ms.date: 09/15/2020
-ms.openlocfilehash: 9dfe70cf6c91a0c12604f91e583a9a4eb9b4e088
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.date: 1/14/2021
+ms.openlocfilehash: e21a5a5be03ffa4ada362247c488ee7d12bd50f7
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93308827"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222223"
 ---
 # <a name="resource-limits-for-azure-sql-database-and-azure-synapse-analytics-servers"></a>Ressourcenlimits für Azure SQL-Datenbank und Azure Synapse Analytics-Server.
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -80,7 +80,7 @@ Wenn eine hohe Sitzungs- oder Workernutzung festgestellt wird, stehen folgende O
 - Erhöhen der Dienstebene oder Computegröße der Datenbank oder des Pools für elastische Datenbanken. Siehe [Skalieren der Ressourcen für einzelne Datenbanken](single-database-scale.md) und [Skalieren der Ressourcen für elastische Pools in Azure SQL-Datenbank](elastic-pool-scale.md).
 - Optimieren von Abfragen, um die Ressourcenverwendung durch die einzelnen Abfragen zu verringern, wenn die Ursache der zunehmenden Auslastung durch Worker Konflikte bezüglich der Computeressourcen sind. Weitere Informationen finden Sie unter [Abfrageoptimierung/Abfragehinweise](performance-guidance.md#query-tuning-and-hinting).
 - Verringern der Einstellung [MAXDOP](/sql/database-engine/configure-windows/configure-the-max-degree-of-parallelism-server-configuration-option#Guidelines) (maximaler Grad an Parallelität).
-- Optimieren der Abfragearbeitsauslastung, um die Anzahl von Vorkommen und die Dauer der Abfrageblockierung zu verringern.
+- Optimieren der Abfragearbeitsauslastung, um die Anzahl von Vorkommen und die Dauer der Abfrageblockierung zu verringern. Weitere Informationen finden Sie unter [Verstehen und Beheben von Problemen durch Blockierungen in Azure SQL](understand-resolve-blocking.md).
 
 ### <a name="memory"></a>Arbeitsspeicher
 

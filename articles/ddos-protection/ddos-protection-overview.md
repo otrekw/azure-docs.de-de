@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/9/2020
 ms.author: yitoh
-ms.openlocfilehash: 5e633b5e4b2ff2ce884bfaf99e3730968150cbed
-ms.sourcegitcommit: 6e2d37afd50ec5ee148f98f2325943bafb2f4993
+ms.openlocfilehash: 114c723b127a17ffdd9c7ed91c6e777838d68e8e
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97746370"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98223345"
 ---
 # <a name="azure-ddos-protection-standard-overview"></a>Übersicht über Azure DDoS Protection Standard
 
@@ -36,7 +36,7 @@ In Azure DDoS Protection werden keine Kundendaten gespeichert.
 - **Sofort einsatzbereiter Schutz:** Dank vereinfachter Konfiguration sind alle Ressourcen in einem virtuellen Netzwerk sofort geschützt, sobald DDoS Protection Standard aktiviert wird. Es sind weder Benutzereingriffe noch Benutzerdefinitionen erforderlich. 
 - **Stets verfügbare Überwachung des Datenverkehrs:** Die Datenverkehrsmuster Ihrer Anwendungen werden 24 Stunden am Tag und 7 Tage die Woche auf Anzeichen für DDoS-Angriffe überwacht. DDoS Protection Standard wehrt einen Angriff sofort automatisch ab, sobald er entdeckt wurde.
 - **Adaptive Optimierung:** Dank einer intelligenten Profilerstellung lernt die Funktion den Datenverkehr Ihrer Anwendung kontinuierlich besser kennen. Auf dieser Basis wird das Profil ausgewählt und aktualisiert, das am besten zu Ihrem Dienst passt. Das Profil passt sich den Veränderungen des Datenverkehrs mit der Zeit an.
-- **Mehrschichtiger Schutz**: Bietet umfassenden DDoS-Schutz in Kombination mit einer Web Application Firewall (WAF) zum Schutz sowohl auf Netzwerkebene (Ebene 3 und 4, angeboten von Azure DDoS Protection Standard) als auch auf Anwendungsebene (Schicht 7, angeboten von einer WAF). WAF-Angebote umfassen [Azure Application Gateway-WAF-SKU](../web-application-firewall/ag/ag-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) sowie Web Application Firewall-Angebote von Drittanbietern, die in [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps?page=1&search=web%20application%20firewall) verfügbar sind.
+- **Mehrschichtiger Schutz**: Bei der Bereitstellung mit einer Web Application Firewall (WAF) sorgt DDoS Protection Standard für Schutz sowohl auf Netzwerkebene (Ebene 3 und 4, angeboten von Azure DDoS Protection Standard) als auch auf Anwendungsebene (Schicht 7, angeboten von einer WAF). WAF-Angebote umfassen [Azure Application Gateway-WAF-SKU](../web-application-firewall/ag/ag-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) sowie Web Application Firewall-Angebote von Drittanbietern, die in [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps?page=1&search=web%20application%20firewall) verfügbar sind.
 - **Umfangreiche Angriffsabwehr:** Über 60 verschiedene Angriffstypen können mit einer weltweiten Kapazität zum Schutz vor den größten bekannten DDoS-Angriffen abgewehrt werden.
 - **Angriffsanalysen**: Rufen Sie während eines Angriffs detaillierte Berichte in 5-Minuten-Inkrementen und nach dem Angriff eine vollständige Zusammenfassung ab. Streamen Sie Datenflussprotokolle der Entschärfung an [Azure Sentinel](../sentinel/connect-azure-ddos-protection.md) oder an ein Offline-SIEM-System (Security Information and Event Management), um einen Angriff annähernd in Echtzeit zu überwachen.
 - **Angriffsmetriken:** Mit Azure Monitor kann auf eine Zusammenfassung der Metriken für jeden Angriff zugegriffen werden.
@@ -45,6 +45,10 @@ In Azure DDoS Protection werden keine Kundendaten gespeichert.
 - **Kostengarantie:** Sie erhalten eine Gutschrift für die Datenübertragungen und die horizontale Skalierung von Anwendungen auf Ressourcenkosten, die infolge von dokumentierten DDoS-Angriffen entstehen.
 
 ## <a name="pricing"></a>Preise
+
+Für DDoS-Schutzpläne gilt eine feste monatliche Gebühr von 2.944 USD, die bis zu 100 öffentliche IP-Adressen abdeckt. Der Schutz weiterer Ressourcen kostet pro Ressource zusätzlich 30 USD pro Monat.
+
+Innerhalb eines Mandanten kann ein einzelner DDoS-Schutzplan für mehrere Abonnements verwendet werden, damit nicht mehrere DDoS-Schutzpläne erstellt werden müssen.
 
 Informationen zu den Preisen für Azure DDoS Protection Standard finden Sie unter [Azure DDoS Protection Standard: Preisübersicht](https://azure.microsoft.com/pricing/details/ddos-protection/).
 

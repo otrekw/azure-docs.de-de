@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 12/01/2020
-ms.openlocfilehash: feda969a5818402f4a5f2dadc80c70c324ad7492
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: eafa2187308c0324b85596ce25e8310fd8506a97
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97559963"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98249601"
 ---
 # <a name="tutorial-scan-data-with-azure-purview-preview"></a>Tutorial: Überprüfen von Daten mit Azure Purview (Vorschau)
 
@@ -189,6 +189,8 @@ Bei der Erstellung Ihres Kontos wird automatisch eine verwaltete Identität erst
 1. Wiederholen Sie die vorherigen Schritte für Azure Data Lake Storage Gen2.
 
 ### <a name="scan-your-data-sources"></a>Überprüfen der Datenquellen
+
+1. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Ihrer Azure Purview-Ressource, und wählen Sie *Open Purview Studio* (Purview Studio öffnen) aus. Sie werden automatisch zur Startseite von Purview Studio weitergeleitet.
 
 1. Wählen Sie auf der Webseite des Katalogs **Quellen** und dann **Registrieren** aus. Wählen Sie anschließend **Azure Blob Storage** und **Weiter** aus.
 

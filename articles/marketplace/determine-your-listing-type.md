@@ -6,21 +6,15 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: trkeya
 ms.author: trkeya
-ms.date: 12/18/2020
-ms.openlocfilehash: 091af70383eb3cab32a0453d7f7542d8a4395d0b
-ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
+ms.date: 01/14/2021
+ms.openlocfilehash: 89cd9f46474e8e311f003f317b90bdb21eae55fe
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98107394"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98247545"
 ---
 # <a name="introduction-to-listing-options"></a>Einführung in Auflistungsoptionen
-
-Sie können die im kommerziellen Marketplace verfügbaren _Auflistungsoptionen_ verwenden, um potenzielle Kunden auf verschiedene Weise anzusprechen. Nachdem das Angebot veröffentlicht wurde, wird die von Ihnen gewählte Auflistungsoption in den Onlineshops als Schaltfläche in der linken oberen Ecke der Auflistungsseite Ihres Angebots angezeigt. Der folgende Screenshot zeigt z. B. die Auflistungsseite eines Angebots im Microsoft AppSource-Onlineshop mit den Schaltflächen **Kontakt mit mir aufnehmen** und **Testversion**.
-
-:::image type="content" source="./media/listing-options.png" alt-text="Screenshot der Auflistungsseite für ein Angebot. Die Schaltflächen „Kontakt mit mir aufnehmen“ und „Testversion“ werden angezeigt.":::
-
-## <a name="available-listing-options-by-offer-type"></a>Je nach Angebotstyp verfügbare Auflistungsoptionen
 
 Wenn Sie einen Angebotstyp erstellen, wählen Sie mindestens eine Auflistungsoption aus. Nach diesen Optionen richtet sich, welche Schaltflächen den Kunden auf der Auflistungsseite des Angebots in den Onlineshops angezeigt werden. Die Auflistungsoptionen sind _Kostenlos testen_, _Testversion_, _Kontakt mit mir aufnehmen_ und _Jetzt abrufen_.
 
@@ -42,7 +36,7 @@ In dieser Tabelle ist aufgeführt, welche Auflistungsoptionen für die einzelnen
 | Software-as-a-Service | &#10004; | &#10004; | &#10004; | &#10004; |
 ||||||
 
-`*` Die Auflistungsoption „Jetzt abrufen“ umfasst die Optionen „Jetzt abrufen (kostenlos)“, „BYOL“ (Bring Your Own License), „Abonnement“ und „Nutzungsbasierte Preise“. Ausführliche Informationen finden Sie unter [Jetzt abrufen](#get-it-now).
+&#42; Die Auflistungsoption „Jetzt abrufen“ umfasst die Optionen „Jetzt abrufen (kostenlos)“, „BYOL“ (Bring Your Own License), „Abonnement“ und „Nutzungsbasierte Preise“. Ausführliche Informationen finden Sie unter [Jetzt abrufen](#get-it-now).
 
 ### <a name="free-trial"></a>Kostenlose Testversion
 
@@ -102,9 +96,15 @@ Diese Tabelle zeigt, welche Angebotstypen die zusätzlichen Preisoptionen unters
 
 Verwenden Sie diese Auflistungsoption, um Ihre Anwendung kostenlos anzubieten. Kunden verwenden die Schaltfläche _Jetzt abrufen_, um das kostenlose Angebot zu nutzen.
 
-#### <a name="byol"></a>BYOL
+> [!NOTE]
+> Für Angebote vom Typ „Jetzt abrufen (kostenlos)“ können keine Marketplace-Prämienvorteile für transaktionsfähige Angebote genutzt werden. Da keine Transaktion über die Storefront erfolgt, werden diese als „Testversion“ kategorisiert. Siehe [Marketplace-Prämien](#marketplace-rewards) weiter unten.
 
-Verwenden Sie den kommerziellen Marketplace, um die Auffindbarkeit zu verbessern, die Bereitstellung Ihrer Lösung zu automatisieren und die Finanztransaktion außerhalb des Marketplace durchzuführen. Die Auflistungsoption „BYOL“ (Bring Your Own License) eignet sich ideal für Migrationen von lokalen Standorten zur Cloud. Kunden verwenden die Schaltfläche _Jetzt abrufen_, um Ihr Angebot mit einer zuvor bei Ihnen erworbenen Lizenz zu kaufen.
+#### <a name="bring-your-own-license-byol"></a>Bring Your Own License (BYOL)
+
+Verwenden Sie diese Auflistungsoption, damit Kunden Ihr Angebot mithilfe einer Lizenz bereitstellen können, die außerhalb des kommerziellen Marketplace erworben wurde. Diese Option ist ideal für Migrationen von der lokalen Umgebung zur Cloud geeignet. Kunden verwenden die Schaltfläche _Jetzt abrufen_, um Ihr Angebot mit einer zuvor von Ihnen erworbenen Lizenz zu kaufen.
+
+> [!NOTE]
+> Für Angebote vom Typ „BYOL“ können keine Marketplace-Prämienvorteile für transaktionsfähige Angebote genutzt werden. Da diese erfordern, dass ein Kunde die Lizenz vom Partner erwirbt, und keine Transaktion über die Storefront des kommerziellen Marketplace erfolgt, werden sie als Auflistungsangebote kategorisiert. Siehe [Marketplace-Prämien](#marketplace-rewards) weiter unten.
 
 #### <a name="subscription"></a>Subscription
 
@@ -117,11 +117,17 @@ Sie können für diese Angebotstypen eine Pauschale berechnen:
 
 Die folgenden Angebotstypen unterstützen nutzungsbasierte Preise:
 
-- Der Angebotstyp „Azure-Anwendung (verwaltete App)“ bietet Unterstützung für eine getaktete Abrechnung. Weitere Informationen finden Sie unter [Getaktete Abrechnung für verwaltete Anwendungen](./partner-center-portal/azure-app-metered-billing.md).
-- SaaS-Angebote unterstützen die Preise für eine getaktete Abrechnung und pro Benutzer (pro Arbeitsplatz). Weitere Informationen zur Volumenabrechnung finden Sie unter [Volumenabrechnung für SaaS mit dem Messungsdienst für den kommerziellen Marketplace](./partner-center-portal/saas-metered-billing.md).
+- Der Angebotstyp „Azure-Anwendung (verwaltete App)“ bietet Unterstützung für eine getaktete Abrechnung. Weitere Informationen finden Sie unter [Getaktete Abrechnung für verwaltete Anwendungen](partner-center-portal/azure-app-metered-billing.md).
+- SaaS-Angebote unterstützen die Preise für eine getaktete Abrechnung und pro Benutzer (pro Arbeitsplatz). Weitere Informationen zur Volumenabrechnung finden Sie unter [Volumenabrechnung für SaaS mit dem Messungsdienst für den kommerziellen Marketplace](partner-center-portal/saas-metered-billing.md).
 - Der Angebotstyp „Virtuelle Azure-Computer“ bietet Unterstützung pro Kern, pro Kerngröße sowie pro Markt und Kerngröße. Diese Preisoptionen werden pro Stunde erhoben und monatlich abgerechnet.
 
 Wenn Sie ein transaktionsfähiges Angebot erstellen möchten, sollten Sie sich zunächst mit der Preisgestaltung, Abrechnung, Rechnungsstellung und Auszahlung vertraut machen, bevor Sie einen Angebotstyp auswählen und Ihr Angebot erstellen. Weitere Informationen finden Sie unter [Kommerzielle Marketplace-Onlineshops](overview.md#commercial-marketplace-online-stores).
+
+## <a name="sample-offer"></a>Beispielangebot
+
+Nachdem Ihr Angebot veröffentlicht wurde, werden die von Ihnen ausgewählten Auflistungsoptionen in den Onlineshops in der oberen linken Ecke der Auflistungsseite als Schaltflächen angezeigt. Der folgende Bildschirm zeigt z. B. die Auflistungsseite eines Angebots im Microsoft AppSource-Onlineshop mit den Schaltflächen **Jetzt abrufen** und **Testversion**:
+
+:::image type="content" source="media/listing-options.png" alt-text="Veranschaulicht die Auflistungsseite für ein Angebot mit den Schaltflächen „Kontakt mit mir aufnehmen“ und „Testversion“.":::
 
 ## <a name="listing-and-pricing-options-by-online-store"></a>Auflistungs- und Preisoptionen nach Onlineshop
 
@@ -153,6 +159,10 @@ In der folgenden Tabelle ist aufgeführt, welche Optionen für verschiedene Ange
 
 Ihre Marketplace-Prämien unterscheiden sich je nach der von Ihnen gewählten Auflistungsoption. Weitere Informationen finden Sie unter [Ihre Vorteile des kommerziellen Marketplace](gtm-your-marketplace-benefits.md).
 
+Wenn Ihr Angebot transaktionsfähig ist, erlangen Sie Vorteile, wenn Ihre abgerechneten Umsätze zunehmen.
+
+Bei nicht transaktionsfähigen Angeboten erlangen Sie Vorteile je nachdem, ob eine kostenlose Testversion angefügt wird.
+
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Der [Leitfaden zur Veröffentlichung nach Angebotstyp](./publisher-guide-by-offer-type.md) hilft Ihnen bei der Entscheidung für den zu erstellenden Angebotstyp.
+- Der [Leitfaden zur Veröffentlichung nach Angebotstyp](publisher-guide-by-offer-type.md) hilft Ihnen bei der Entscheidung für den zu erstellenden Angebotstyp.

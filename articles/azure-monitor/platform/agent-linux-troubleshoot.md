@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/21/2019
-ms.openlocfilehash: 2b811b1ace646cc4e0a93b937fbb90cfbf7aec0f
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: 26fb70592a75910ae21d327e53569eda12dfea97
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97704893"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98197369"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-linux"></a>Behandeln von Problemen mit dem Log Analytics-Agent für Linux 
 
@@ -96,6 +96,7 @@ Wir haben festgestellt, dass eine saubere Neuinstallation des Agents die meisten
 | 5 | Das Shellbündel muss als Root-Benutzer ausgeführt werden, ODER während des Onboardings wurde ein Fehler 403 zurückgegeben. Führen Sie den Befehl mit `sudo` aus. |
 | 6 | Ungültige Paketarchitektur ODER während des Onboardings wurde ein Fehler 200 zurückgegeben. omsagent-*x64.sh-Pakete können nur auf 64-Bit-Systemen installiert werden, und omsagent-* x86.sh-Pakete können nur auf 32-Bit-Systemen installiert werden. Laden Sie das richtige Paket für Ihre Architektur aus der [aktuellen Version](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/latest) herunter. |
 | 17 | Fehler bei der Installation des OMS-Pakets. Suchen Sie in der Ausgabe des Befehls nach der Grundursache des Fehlers. |
+| 18 | Fehler bei der Installation des OMSConfig-Pakets. Suchen Sie in der Ausgabe des Befehls nach der Grundursache des Fehlers. |
 | 19 | Fehler bei der Installation des OMI-Pakets. Suchen Sie in der Ausgabe des Befehls nach der Grundursache des Fehlers. |
 | 20 | Fehler bei der Installation des SCX-Pakets. Suchen Sie in der Ausgabe des Befehls nach der Grundursache des Fehlers. |
 | 21 | Fehler bei der Installation von Anbieterkits. Suchen Sie in der Ausgabe des Befehls nach der Grundursache des Fehlers. |

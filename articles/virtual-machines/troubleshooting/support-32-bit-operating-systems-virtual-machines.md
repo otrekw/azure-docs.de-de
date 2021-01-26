@@ -13,16 +13,20 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 09/18/2019
 ms.author: v-miegge
-ms.openlocfilehash: 91e5ca10e97e8fc1646367ac6d575d6813f3a291
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 81b7efdd6bca0471719c11d130be95405f4d54e1
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87079858"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98210187"
 ---
 # <a name="support-for-32-bit-operating-systems-in-azure-virtual-machines"></a>Unterstützung für 32-Bit-Betriebssysteme auf virtuellen Azure-Computern
 
 Microsoft Azure ermöglicht es Benutzern jetzt, ihre 32-Bit-Windows-Betriebssysteme in Azure zu übernehmen. Es werden ausschließlich spezialisierte VHDs unterstützt, und generalisierte Images funktionieren in Azure nicht. Da einige dieser Betriebssysteme das Ende des Supportlebensdauer-Vertrags erreicht haben, bietet Microsoft möglicherweise keinen weiteren Support für diese an. Ebenfalls kein Support wird für auf Linux oder BSD (Berkeley Software Distribution) basierende Betriebssysteme geboten, die auf einem virtuellen Microsoft Azure-Computer (VM) ausgeführt werden.
+
+> [!NOTE]
+> Die Azure-Plattform weist eine Beschränkung des Arbeitsspeicheradressraums für VMs mit 32-Bit-Betriebssystemen auf, bei der der VM möglicherweise nur 1 GB Arbeitsspeicher zur Verfügung gestellt wird (*insbesondere bei Client-SKUs wie Win7 oder Win10*), und der Rest des Arbeitsspeichers für die VM wird innerhalb der Gast-VM als reserviert angezeigt. Es handelt sich um ein bekanntes Problem, für das es derzeit keine ETA für eine voraussichtliche Lösung gibt. Wir empfehlen den Umstieg auf 64-Bit-Betriebssystemversionen.
+> 
 
 ## <a name="more-information"></a>Weitere Informationen
 
@@ -43,4 +47,4 @@ Weitere Informationen zu den auf virtuellen Azure-Computern unterstützten Betri
 
 Wenn Sie beim Lesen dieses Artikels feststellen, dass Sie weitere Hilfe benötigen, wenden Sie sich an die Azure-Experten im [MSDN Azure-Forum oder im Stack Overflow-Forum](https://azure.microsoft.com/support/forums/).
 
-Alternativ dazu können Sie eine Azure-Supportanfrage erstellen. Rufen Sie die [Azure-Support-Website](https://azure.microsoft.com/support/options/) auf, und wählen Sie **Support erhalten**aus.
+Alternativ dazu können Sie eine Azure-Supportanfrage erstellen. Rufen Sie die [Azure-Support-Website](https://azure.microsoft.com/support/options/) auf, und wählen Sie **Support erhalten** aus.

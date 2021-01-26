@@ -3,14 +3,14 @@ title: 'Tutorial zu Kubernetes in Azure: Bereitstellen eines Clusters'
 description: In diesem Azure Kubernetes Service-Tutorial (AKS) erstellen Sie einen AKS-Cluster und verwenden „kubectl“ für die Verbindung mit dem Kubernetes-Masterknoten.
 services: container-service
 ms.topic: tutorial
-ms.date: 09/30/2020
+ms.date: 01/12/2021
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 0e034ebede39a3fd9046ced9716323d0c7d874df
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: a8e0ddcd77c26a00cf784fb8c2372734314dc0bb
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94684069"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98250637"
 ---
 # <a name="tutorial-deploy-an-azure-kubernetes-service-aks-cluster"></a>Tutorial: Bereitstellen eines Azure Kubernetes Service-Clusters (AKS)
 
@@ -21,7 +21,7 @@ Kubernetes bietet eine verteilte Plattform für containerbasierte Anwendungen. M
 > * Installieren der Kubernetes-Befehlszeilenschnittstelle (kubectl)
 > * Konfigurieren von „kubectl“ für die Verbindung mit Ihrem AKS-Cluster
 
-In den weiteren Tutorials wird die Anwendung Azure Vote im Cluster bereitgestellt, skaliert und aktualisiert.
+In nachfolgenden Tutorials wird die Anwendung Azure Vote im Cluster bereitgestellt, skaliert und aktualisiert.
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
@@ -33,9 +33,9 @@ Für dieses Tutorial müssen Sie mindestens Version 2.0.53 der Azure CLI ausfüh
 
 AKS-Cluster können die rollenbasierte Zugriffssteuerung von Kubernetes (Kubernetes Role-Based Access Control, Kubernetes RBAC) verwenden. Mit diesen Steuerungen können Sie den Zugriff auf Ressourcen basierend auf Rollen definieren, die Benutzern zugewiesen sind. Berechtigungen werden kombiniert, wenn einem Benutzer mehrere Rollen zugewiesen sind, und Berechtigungen können auf einen einzelnen Namespace begrenzt sein oder für den gesamten Cluster gelten. Standardmäßig wird Kubernetes RBAC bei der Erstellung eines AKS-Clusters von der Azure CLI automatisch aktiviert.
 
-Erstellen Sie mit [az aks create][] einen AKS-Cluster. Im folgenden Beispiel wird ein Cluster mit dem Namen *myAKSCluster* in der Ressourcengruppe mit dem Namen *myResourceGroup* erstellt. Diese Ressourcengruppe wurde im [vorherigen Tutorial][aks-tutorial-prepare-acr] in der Region *eastus* erstellt. Im folgenden Beispiel wird keine Region angegeben, sodass der AKS-Cluster auch in der Region *eastus* erstellt wird. Weitere Informationen zu Ressourcenbeschränkungen und regionale Verfügbarkeit für AKS finden Sie unter [Kontingente, Größeneinschränkungen für virtuelle Computer und regionale Verfügbarkeit in Azure Kubernetes Service (AKS)][quotas-skus-regions].
+Erstellen Sie mit [az aks create][] einen AKS-Cluster. Im folgenden Beispiel wird ein Cluster mit dem Namen *myAKSCluster* in der Ressourcengruppe mit dem Namen *myResourceGroup* erstellt. Diese Ressourcengruppe wurde im [vorherigen Tutorial][aks-tutorial-prepare-acr] in der Region *eastus* erstellt. Im folgenden Beispiel wird keine Region angegeben, sodass der AKS-Cluster auch in der Region *eastus* erstellt wird. Weitere Informationen zu Ressourcenbeschränkungen und regionaler Verfügbarkeit für AKS finden Sie unter [Kontingente, Größeneinschränkungen für virtuelle Computer und regionale Verfügbarkeit in Azure Kubernetes Service (AKS)][quotas-skus-regions].
 
-Damit ein AKS-Cluster mit anderen Azure-Ressourcen interagieren kann, wird automatisch ein Azure Active Directory-Dienstprinzipal erstellt, da Sie keinen angegeben haben. Hier wird diesem Dienstprinzipal die [Berechtigung zum Pullen von Images][container-registry-integration] aus der ACR-Instanz (Azure Container Registry) gewährt, die Sie im vorherigen Tutorial erstellt haben. Beachten Sie, dass Sie anstelle eines Dienstprinzipals zur einfacheren Verwaltung eine [verwaltete Identität](use-managed-identity.md) verwenden können.
+Damit ein AKS-Cluster mit anderen Azure-Ressourcen interagieren kann, wird automatisch ein Azure Active Directory-Dienstprinzipal erstellt, da Sie keinen angegeben haben. Hier wird diesem Dienstprinzipal die [Berechtigung zum Pullen von Images][container-registry-integration] aus der ACR-Instanz (Azure Container Registry) gewährt, die Sie im vorherigen Tutorial erstellt haben. Damit der Befehl erfolgreich ausgeführt werden kann, müssen Sie über die Rolle **Besitzer** oder **Azure-Kontoadministrator** für das Azure-Abonnement verfügen.
 
 ```azurecli
 az aks create \
@@ -46,7 +46,7 @@ az aks create \
     --attach-acr <acrName>
 ```
 
-Sie können auch manuell einen Dienstprinzipal zum Pullen von Images aus ACR konfigurieren. Weitere Informationen finden Sie unter [Azure Container Registry-Authentifizierung mit Dienstprinzipalen](../container-registry/container-registry-auth-service-principal.md) oder unter [Abrufen von Images aus einer Azure-Containerregistrierung per Pull in einem Kubernetes-Cluster](../container-registry/container-registry-auth-kubernetes.md).
+Um zu vermeiden, dass die Rolle **Besitzer** oder **Azure-Kontoadministrator** benötigt wird, können Sie auch manuell einen Dienstprinzipal konfigurieren, um Images aus ACR zu pullen. Weitere Informationen finden Sie unter [Azure Container Registry-Authentifizierung mit Dienstprinzipalen](../container-registry/container-registry-auth-service-principal.md) oder unter [Abrufen von Images aus einer Azure-Containerregistrierung per Pull in einem Kubernetes-Cluster](../container-registry/container-registry-auth-kubernetes.md). Alternativ können Sie anstelle eines Dienstprinzipals zur einfacheren Verwaltung eine [verwaltete Identität](use-managed-identity.md) verwenden.
 
 Nach einigen Minuten ist die Bereitstellung abgeschlossen, und es werden Informationen zur AKS-Bereitstellung im JSON-Format zurückgegeben.
 
@@ -76,8 +76,9 @@ az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 ```
 $ kubectl get nodes
 
-NAME                       STATUS   ROLES   AGE   VERSION
-aks-nodepool1-12345678-0   Ready    agent   32m   v1.14.8
+NAME                                STATUS   ROLES   AGE     VERSION
+aks-nodepool1-37463671-vmss000000   Ready    agent   2m37s   v1.18.10
+aks-nodepool1-37463671-vmss000001   Ready    agent   2m28s   v1.18.10
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte

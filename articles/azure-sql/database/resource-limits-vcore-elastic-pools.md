@@ -10,13 +10,13 @@ ms.topic: reference
 author: oslake
 ms.author: moslake
 ms.reviewer: sstein
-ms.date: 10/15/2020
-ms.openlocfilehash: e706f64a7caab6873a3eec86505eaee11374ae2c
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.date: 01/15/2021
+ms.openlocfilehash: 2daa07315be85e1fcd543480cd30a57c118d8547
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97882302"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251487"
 ---
 # <a name="resource-limits-for-elastic-pools-using-the-vcore-purchasing-model"></a>Ressourcenlimits für Pools für elastische Datenbanken, die das V-Kern-Kaufmodell verwenden
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -235,6 +235,39 @@ Sie können im [Azure-Portal](elastic-pool-manage.md#azure-portal), mit [PowerSh
 
 <sup>3</sup> Den Wert für die maximale Anzahl von gleichzeitigen Workern (Anforderungen) für einzelne Datenbanken finden Sie unter [Ressourceneinschränkungen für einzelne Datenbanken](resource-limits-vcore-single-databases.md). Wenn für den Pool für elastische Datenbanken beispielsweise Gen5 verwendet wird und die maximale Anzahl von V-Kernen pro Datenbank auf 2 festgelegt ist, ist der Wert für die Anzahl von gleichzeitigen Workern 200.  Wenn die maximale Anzahl von V-Kernen pro Datenbank auf 0,5 festgelegt ist, beträgt der Wert für die Anzahl von gleichzeitigen Workern 50, da unter Gen5 maximal 100 gleichzeitige Worker pro V-Kern verwendet werden. Für andere Einstellungen zur maximalen Anzahl von V-Kernen pro Datenbank (1 V-Kern oder weniger), wird die maximale Anzahl von gleichzeitigen Workern auf ähnliche Weise neu skaliert.
 
+
+## <a name="general-purpose---provisioned-compute---dc-series"></a>Universell – bereitgestelltes Computing – DC-Serie
+
+|Computegröße (Dienstziel)|GP_DC_2|GP_DC_4|GP_DC_6|GP_DC_8|
+|:--- | --: |--: |--: |--: |
+|Computegeneration|DC|DC|DC|DC|
+|V-Kerne|2|4|6|8|
+|Arbeitsspeicher (GB)|9|18|27|36|
+|Max. Anzahl von Datenbanken pro Pool <sup>1</sup>|100|400|400|400|
+|Columnstore-Unterstützung|Ja|Ja|Ja|Ja|
+|In-Memory-OLTP-Speicher (GB)|–|Nicht zutreffend|Nicht zutreffend|–|
+|Maximale Datengröße (GB)|756|1536|2048|2048|
+|Maximale Protokollgröße (GB)|227|461|614|614|
+|Max. Datengröße von TempDB (GB)|64|128|192|256|
+|Speichertyp|Storage Premium (Remote)|Storage Premium (Remote)|Storage Premium (Remote)|Storage Premium (Remote)|
+|E/A-Wartezeit (ungefähr)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|5-7 ms (Schreiben)<br>5-10 ms (Lesen)|
+|Max. IOPS für Daten pro Pool <sup>2</sup>|800|1600|2400|3200|
+|Maximale Protokollrate pro Pool (MBit/s)|9,4|18,8|28,1|32,8|
+|Max. gleichzeitige Worker pro Pool (Anforderungen) <sup>3</sup>|168|336|504|672|
+|Maximale Anzahl von gleichzeitigen Anmeldungen pro Pool (Anforderungen) <sup>3</sup>|168|336|504|672|
+|Max. gleichzeitige Sitzungen|30.000|30.000|30.000|30.000|
+|Min/Max. V-Kern-Auswahl pro Datenbank für Pools für elastische Datenbanken|2|2...4|2...6|2...8|
+|Anzahl von Replikaten|1|1|1|1|
+|Multi-AZ|–|Nicht zutreffend|Nicht zutreffend|–|
+|Horizontale Leseskalierung|–|Nicht zutreffend|Nicht zutreffend|–|
+|Enthaltener Sicherungsspeicher|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|
+
+<sup>1</sup> Weitere Überlegungen finden Sie unter [Ressourcenverwaltung in umfangreichen Pools für elastische Datenbanken](elastic-pool-resource-management.md).
+
+<sup>2</sup> Der maximale Wert für E/A-Größen im Bereich von 8 KB bis 64 KB. Die tatsächlichen IOPS sind von der Arbeitsauslastung abhängig. Weitere Informationen finden Sie unter [Daten-E/A-Governance](resource-limits-logical-server.md#resource-governance).
+
+<sup>3</sup> Den Wert für die maximale Anzahl von gleichzeitigen Workern (Anforderungen) für einzelne Datenbanken finden Sie unter [Ressourceneinschränkungen für einzelne Datenbanken](resource-limits-vcore-single-databases.md). Wenn für den Pool für elastische Datenbanken beispielsweise Gen5 verwendet wird und die maximale Anzahl von V-Kernen pro Datenbank auf 2 festgelegt ist, ist der Wert für die Anzahl von gleichzeitigen Workern 200.  Wenn die maximale Anzahl von V-Kernen pro Datenbank auf 0,5 festgelegt ist, beträgt der Wert für die Anzahl von gleichzeitigen Workern 50, da unter Gen5 maximal 100 gleichzeitige Worker pro V-Kern verwendet werden. Für andere Einstellungen zur maximalen Anzahl von V-Kernen pro Datenbank (1 V-Kern oder weniger), wird die maximale Anzahl von gleichzeitigen Workern auf ähnliche Weise neu skaliert.
+
 ## <a name="business-critical---provisioned-compute---gen4"></a>Unternehmenskritisch – bereitgestelltes Computing – Gen4
 
 > [!IMPORTANT]
@@ -280,7 +313,7 @@ Sie können im [Azure-Portal](elastic-pool-manage.md#azure-portal), mit [PowerSh
 |V-Kerne|7|8|9|10|16|24|
 |Arbeitsspeicher (GB)|49|56|63|70|112|159,5|
 |Max. Anzahl von Datenbanken pro Pool <sup>1</sup>|100|100|100|100|100|100|
-|Columnstore-Unterstützung|–|N/V|N/V|N/V|N/V|–|
+|Columnstore-Unterstützung|–|Nicht zutreffend|Nicht zutreffend|Nicht zutreffend|Nicht zutreffend|–|
 |In-Memory-OLTP-Speicher (GB)|7|8|9.5|11|20|36|
 |Speichertyp|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|
 |Maximale Datengröße (GB)|1024|1024|1024|1024|1024|1024|
@@ -355,8 +388,8 @@ Sie können im [Azure-Portal](elastic-pool-manage.md#azure-portal), mit [PowerSh
 |E/A-Wartezeit (ungefähr)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|
 |Max. IOPS für Daten pro Pool <sup>2</sup>|72.000|81.000|90.000|108.000|144.000|180.000|256.000|
 |Maximale Protokollrate pro Pool (MBit/s)|120|120|120|120|120|120|120|
-|Max. gleichzeitige Worker pro Pool (Anforderungen) <sup>3</sup>|1680|1890|2100|2520|3360|4\.200|8\.400|
-|Maximale Anzahl von gleichzeitigen Anmeldungen pro Pool (Anforderungen) <sup>3</sup>|1680|1890|2100|2520|3360|4\.200|8\.400|
+|Max. gleichzeitige Worker pro Pool (Anforderungen) <sup>3</sup>|1680|1890|2100|2520|3360|4.200|8.400|
+|Maximale Anzahl von gleichzeitigen Anmeldungen pro Pool (Anforderungen) <sup>3</sup>|1680|1890|2100|2520|3360|4.200|8.400|
 |Max. gleichzeitige Sitzungen|30.000|30.000|30.000|30.000|30.000|30.000|30.000|
 |Min/Max. V-Kern-Auswahl pro Datenbank für Pools für elastische Datenbanken|0, 0,25, 0,5, 1...16|0, 0,25, 0,5, 1...18|0, 0,25, 0,5, 1...20|0, 0,25, 0,5, 1...20, 24|0, 0,25, 0,5, 1...20, 24, 32|0, 0,25, 0,5, 1...20, 24, 32, 40|0, 0,25, 0,5, 1...20, 24, 32, 40, 80|
 |Anzahl von Replikaten|4|4|4|4|4|4|4|
@@ -406,8 +439,6 @@ Sie können im [Azure-Portal](elastic-pool-manage.md#azure-portal), mit [PowerSh
 
 Wenn alle virtuellen Kerne eines Pools für elastische Datenbanken verwendet werden, erhält jede Datenbank im Pool gleich viel Computeressourcen zum Verarbeiten von Abfragen. Azure SQL-Datenbank bietet eine faire gemeinsame Nutzung von Ressourcen durch Datenbanken, indem gleiche Slices an Computezeit zugesichert werden. Diese faire gemeinsame Nutzung in Pools für elastische Datenbanken ergänzt die Ressourcen, die jeder Datenbank auf andere Weise garantiert werden, wenn die Mindestanzahl von virtuellen Kernen pro Datenbank auf einen Wert ungleich null festgelegt ist.
 
-
-
 ### <a name="m-series-compute-generation-part-2"></a>Computegeneration der M-Serie (Teil 2)
 
 |Computegröße (Dienstziel)|BC_M_20|BC_M_24|BC_M_32|BC_M_64|BC_M_128|
@@ -441,6 +472,37 @@ Wenn alle virtuellen Kerne eines Pools für elastische Datenbanken verwendet wer
 
 Wenn alle virtuellen Kerne eines Pools für elastische Datenbanken verwendet werden, erhält jede Datenbank im Pool gleich viel Computeressourcen zum Verarbeiten von Abfragen. Azure SQL-Datenbank bietet eine faire gemeinsame Nutzung von Ressourcen durch Datenbanken, indem gleiche Slices an Computezeit zugesichert werden. Diese faire gemeinsame Nutzung in Pools für elastische Datenbanken ergänzt die Ressourcen, die jeder Datenbank auf andere Weise garantiert werden, wenn die Mindestanzahl von virtuellen Kernen pro Datenbank auf einen Wert ungleich null festgelegt ist.
 
+## <a name="business-critical---provisioned-compute---dc-series"></a>Unternehmenskritisch – bereitgestelltes Computing – DC-Serie
+
+|Computegröße (Dienstziel)|BC_DC_2|BC_DC_4|BC_DC_6|BC_DC_8|
+|:--- | --: |--: |--: |--: |
+|Computegeneration|DC|DC|DC|DC|
+|V-Kerne|2|4|6|8|
+|Arbeitsspeicher (GB)|9|18|27|36|
+|Max. Anzahl von Datenbanken pro Pool <sup>1</sup>|50|100|100|100|
+|Columnstore-Unterstützung|Ja|Ja|Ja|Ja|
+|In-Memory-OLTP-Speicher (GB)|1.7|3,7|5.9|8,2|
+|Maximale Datengröße (GB)|768|768|768|768|
+|Maximale Protokollgröße (GB)|230|230|230|230|
+|Max. Datengröße von TempDB (GB)|64|128|192|256|
+|Speichertyp|Lokale SSD|Lokale SSD|Lokale SSD|Lokale SSD|
+|E/A-Wartezeit (ungefähr)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|1-2 ms (Schreiben)<br>1-2 ms (Lesen)|
+|Max. IOPS für Daten pro Pool <sup>2</sup>|15750|31500|47250|56000|
+|Maximale Protokollrate pro Pool (MBit/s)|20|60|90|120|
+|Max. gleichzeitige Worker pro Pool (Anforderungen) <sup>3</sup>|168|336|504|672|
+|Maximale Anzahl von gleichzeitigen Anmeldungen pro Pool (Anforderungen) <sup>3</sup>|168|336|504|672|
+|Max. gleichzeitige Sitzungen|30.000|30.000|30.000|30.000|
+|Min/Max. V-Kern-Auswahl pro Datenbank für Pools für elastische Datenbanken|2|2...4|2...6|2...8|
+|Anzahl von Replikaten|4|4|4|4|
+|Multi-AZ|Nein|Nein|Nein|Nein|
+|Horizontale Leseskalierung|Ja|Ja|Ja|Ja|
+|Enthaltener Sicherungsspeicher|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|1 × Datenbankgröße|
+
+<sup>1</sup> Weitere Überlegungen finden Sie unter [Ressourcenverwaltung in umfangreichen Pools für elastische Datenbanken](elastic-pool-resource-management.md).
+
+<sup>2</sup> Der maximale Wert für E/A-Größen im Bereich von 8 KB bis 64 KB. Die tatsächlichen IOPS sind von der Arbeitsauslastung abhängig. Weitere Informationen finden Sie unter [Daten-E/A-Governance](resource-limits-logical-server.md#resource-governance).
+
+<sup>3</sup> Den Wert für die maximale Anzahl von gleichzeitigen Workern (Anforderungen) für einzelne Datenbanken finden Sie unter [Ressourceneinschränkungen für einzelne Datenbanken](resource-limits-vcore-single-databases.md). Wenn für den Pool für elastische Datenbanken beispielsweise Gen5 verwendet wird und die maximale Anzahl von V-Kernen pro Datenbank auf 2 festgelegt ist, ist der Wert für die Anzahl von gleichzeitigen Workern 200.  Wenn die maximale Anzahl von V-Kernen pro Datenbank auf 0,5 festgelegt ist, beträgt der Wert für die Anzahl von gleichzeitigen Workern 50, da unter Gen5 maximal 100 gleichzeitige Worker pro V-Kern verwendet werden. Für andere Einstellungen zur maximalen Anzahl von V-Kernen pro Datenbank (1 V-Kern oder weniger), wird die maximale Anzahl von gleichzeitigen Workern auf ähnliche Weise neu skaliert.
 
 ## <a name="database-properties-for-pooled-databases"></a>Eigenschaften von Pooldatenbanken
 

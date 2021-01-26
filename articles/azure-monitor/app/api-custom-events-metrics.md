@@ -4,12 +4,12 @@ description: Fügen Sie einige Codezeilen in Ihrer Geräte- oder Desktop-App, We
 ms.topic: conceptual
 ms.date: 05/11/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: ae64888669fb9a3c053802ee4f7ad7db6316265d
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: d553c192d62baedb93c7f8270c56526fbf8edb62
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96780500"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98233745"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>Application Insights-API für benutzerdefinierte Ereignisse und Metriken
 
@@ -146,7 +146,9 @@ telemetry.trackEvent({name: "WinGame"});
 
 ### <a name="custom-events-in-analytics"></a>Benutzerdefinierte Ereignisse in Analytics
 
-Die Telemetrie ist in der Tabelle `customEvents` in [Application Insights Analytics](../log-query/log-query-overview.md) verfügbar. Jede Zeile stellt einen Aufruf von `trackEvent(..)` in der App dar.
+Die Telemetrie ist in der Tabelle `customEvents` auf der [Registerkarte mit Application Insights-Protokollen](../log-query/log-query-overview.md) oder auf der [Oberfläche zur Verwendungsanalyse](usage-overview.md) verfügbar. Ereignisse können aus `trackEvent(..)` oder dem [Plug-In für die automatische Erfassung von Klickanalysen](javascript-click-analytics-plugin.md) stammen.
+
+ 
 
 Wenn die [Stichprobenentnahme](./sampling.md) aktiv ist, wird für die itemCount-Eigenschaft ein Wert größer 1 angezeigt. itemCount==10 bedeutet beispielsweise, dass bei der Stichprobenentnahme von 10 Aufrufen von trackEvent() nur einer übertragen wurde. Zum Abrufen der richtigen Anzahl benutzerdefinierter Ereignisse sollten Sie daher Code wie `customEvents | summarize sum(itemCount)` verwenden.
 
@@ -1122,4 +1124,3 @@ Informationen dazu, wie lange Daten aufbewahrt werden, finden Sie unter [Datensp
 
 * [Durchsuchen von Ereignissen und Protokollen](./diagnostic-search.md)
 * [Problembehandlung](../faq.md)
-

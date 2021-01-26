@@ -6,17 +6,17 @@ ms.topic: how-to
 ms.date: 11/10/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 101b3a05591a7815ba28756bb5b07e855b64e769
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: 85026092e513ecc9ec3c23e292a416297774a2e4
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94505545"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98217837"
 ---
 # <a name="use-microsoft-teams-on-windows-virtual-desktop"></a>Verwenden von Microsoft Teams in Windows Virtual Desktop
 
 >[!IMPORTANT]
->Die Medienoptimierung für Teams wird für Microsoft 365 Government-Umgebungen (GCC) unterstützt. Die Medienoptimierung für Teams wird für GCC-High oder DoD nicht unterstützt.
+>Die Medienoptimierung für Teams wird für Microsoft 365 Government- (GCC) und GCC-High-Umgebungen unterstützt. Die Medienoptimierung für Teams wird für GCC-High oder DoD nicht unterstützt.
 
 >[!NOTE]
 >Die Medienoptimierung für Microsoft Teams steht nur für den Windows Desktop-Client auf Windows 10-Computern zur Verfügung. Medienoptimierungen erfordern Windows Desktop-Clientversion 1.2.1026.0 oder höher.
@@ -140,7 +140,7 @@ Die Verwendung von Teams in einer virtualisierten Umgebung unterscheidet sich vo
 
 ### <a name="calls-and-meetings"></a>Anrufe und Besprechungen
 
-- Der Desktopclient für Teams in Windows Virtual Desktop-Umgebungen unterstützt keine Liveereignisse. Sie sollten derzeit stattdessen über den [Teams-Webclient](https://teams.microsoft.com) an Liveereignissen in Ihrer Remotesitzung teilnehmen.
+- Der Teams-Desktopclient in Windows Virtual Desktop-Umgebungen unterstützt nicht das Erstellen von Liveereignissen, aber Sie können Liveereignissen beitreten. Sie sollten derzeit stattdessen über den [Teams-Webclient](https://teams.microsoft.com) Liveereignisse in Ihrer Remotesitzung erstellen.
 - Anrufe oder Besprechungen unterstützen derzeit keine Anwendungsfreigabe. Desktopsitzungen unterstützen die Desktopfreigabe.
 - Übergabe und Übernahme der Steuerung werden derzeit nicht unterstützt.
 - Auf Windows Virtual Desktop unterstützt Teams nur jeweils eine eingehende Videoeingabe. Dies bedeutet, dass immer dann, wenn jemand versucht, seinen Bildschirm zu teilen, der Bildschirm desjenigen anstelle des Bildschirms des Besprechungsleiters angezeigt wird.

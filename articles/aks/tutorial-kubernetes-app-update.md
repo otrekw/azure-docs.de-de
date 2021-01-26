@@ -3,14 +3,14 @@ title: 'Tutorial zu Kubernetes in Azure: Aktualisieren einer Anwendung'
 description: In diesem Azure Kubernetes Service-Tutorial (AKS) erfahren Sie, wie eine vorhandene Bereitstellung der Anwendung in AKS mit einer neuen Version des Anwendungscodes aktualisiert wird.
 services: container-service
 ms.topic: tutorial
-ms.date: 09/30/2020
-ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: c8401a81a36d86b871df9fc428c393007b97c400
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.date: 01/12/2021
+ms.custom: mvc
+ms.openlocfilehash: b969e3ec1c670c0a12129289c8ff7eb81df51ff9
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94833910"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98250654"
 ---
 # <a name="tutorial-update-an-application-in-azure-kubernetes-service-aks"></a>Tutorial: Aktualisieren einer Anwendung in Azure Kubernetes Service (AKS)
 
@@ -64,7 +64,7 @@ docker-compose up --build -d
 
 Öffnen Sie `http://localhost:8080` in einem lokalen Webbrowser, um sicherzustellen, dass das aktualisierte Containerimage Ihre Änderungen anzeigt.
 
-:::image type="content" source="media/container-service-kubernetes-tutorials/vote-app-updated.png" alt-text="Screenshot: Beispiel des aktualisierten Containerimages – mit lokalem Webbrowser und lokalem Host geöffnete Azure-Abstimmungs-App":::
+:::image type="content" source="media/container-service-kubernetes-tutorials/vote-app-updated.png" alt-text="Screenshot: Beispiel der lokal ausgeführten aktualisierten Azure-Abstimmungs-App mit Containerimage, geöffnet in einem lokalen Webbrowser":::
 
 Die in der Datei *config_file.cfg* angegebenen aktualisierten Werte werden in Ihrer ausgeführten Anwendung angezeigt.
 
@@ -143,9 +143,9 @@ Zum Anzeigen der aktualisierten Anwendung rufen Sie zunächst die externe IP-Adr
 kubectl get service azure-vote-front
 ```
 
-Öffnen Sie jetzt die IP-Adresse Ihres Diensts in einem lokalen Webbrowser:
+Öffnen Sie jetzt die IP-Adresse Ihres Diensts in einem Webbrowser:
 
-:::image type="content" source="media/container-service-kubernetes-tutorials/vote-app-updated-external.png" alt-text="Screenshot: Beispiel der aktualisierten Anwendung – in einem lokalen Webbrowser geöffnete Azure-Abstimmungs-App":::
+:::image type="content" source="media/container-service-kubernetes-tutorials/vote-app-updated-external.png" alt-text="Screenshot: Beispiel der in einem lokalen AKS-Cluster ausgeführten aktualisierten Azure-Abstimmungs-App mit Image, geöffnet in einem lokalen Webbrowser":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 12/13/2019
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40
-ms.openlocfilehash: 63d56d8afc584a760f4b31c6021d4c764afd52b3
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: bbcebfd69789eb6ec03e565b347d05533043781c
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98064418"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98232334"
 ---
 # <a name="tutorial-call-the-microsoft-graph-api-from-a-universal-windows-platform-uwp-application"></a>Tutorial: Aufrufen der Microsoft Graph-API über eine UWP-Anwendung (UWP = Universelle Windows-Plattform)
 
@@ -59,8 +59,8 @@ Dieser Abschnitt enthält detaillierte Anweisungen zum Integrieren einer Windows
 
 In diesem Leitfaden wird eine Anwendung mit einer Schaltfläche zum Abfragen der Microsoft Graph-API sowie mit einer Schaltfläche zum Abmelden erstellt. Darüber hinaus werden Textfelder mit den Ergebnissen der Aufrufe angezeigt.
 
-> [!NOTE]
-> Möchten Sie lieber das Visual Studio-Projekt dieses Beispiels herunterladen, anstatt die Erstellung durchzuführen? [Laden Sie ein Projekt herunter](https://github.com/Azure-Samples/active-directory-dotnet-native-uwp-v2/archive/msal3x.zip), und fahren Sie direkt mit dem Schritt [Anwendungsregistrierung](#register-your-application "Anwendungsregistrierungsschritt") fort, um das Codebeispiel vor der Ausführung zu konfigurieren.
+> [!Tip]
+> Eine vollständige Version des in diesem Tutorial erstellten Projekts können Sie von [GitHub herunterladen](https://github.com/Azure-Samples/active-directory-dotnet-native-uwp-v2/archive/msal3x.zip).
 
 ### <a name="create-your-application"></a>Erstellen der Anwendung
 
@@ -292,8 +292,7 @@ private async void SignOutButton_Click(object sender, RoutedEventArgs e)
     }
 ```
 
-> [!NOTE]
-> Bei MSAL.NET werden asynchrone Methoden zum Abrufen von Token oder Bearbeiten von Konten verwendet. Sie müssen dafür sorgen, dass UI-Aktionen im UI-Thread unterstützt werden. Dies ist der Grund für den `Dispatcher.RunAsync`-Aufruf und die Vorsichtsmaßnahmen zum Aufrufen von `ConfigureAwait(false)`.
+Bei MSAL.NET werden asynchrone Methoden zum Abrufen von Token oder Bearbeiten von Konten verwendet. Sie müssen dafür sorgen, dass UI-Aktionen im UI-Thread unterstützt werden. Dies ist der Grund für den `Dispatcher.RunAsync`-Aufruf und die Vorsichtsmaßnahmen zum Aufrufen von `ConfigureAwait(false)`.
 
 #### <a name="more-information-about-signing-out"></a>Weitere Informationen zum Abmelden<a name="more-information-on-sign-out"></a>
 
@@ -466,7 +465,7 @@ Es werden Benutzerprofilinformationen angezeigt, die vom Microsoft Graph-API-Auf
 
 Grundlegende Informationen zum Token, das über `AcquireTokenInteractive` oder `AcquireTokenSilent` abgerufen wurde, werden im Feld **Tokeninformationen** angezeigt:
 
-|Eigenschaft  |Format  |Beschreibung |
+|Eigenschaft  |Format  |BESCHREIBUNG |
 |---------|---------|---------|
 |`Username` |`user@domain.com` |Der zur Identifizierung des Benutzers verwendete Benutzername|
 |`Token Expires` |`DateTime` |Die Uhrzeit, zu der das Token abläuft. Das Token wird bei Bedarf von der Microsoft-Authentifizierungsbibliothek verlängert, um die Ablauffrist zu verlängern.|
@@ -477,8 +476,7 @@ Die Microsoft Graph-API benötigt den Bereich `user.read`, um ein Benutzerprofil
 
 Fügen Sie den Informationen für die Anwendungsregistrierung die delegierte Berechtigung `Calendars.Read` hinzu, um auf die Kalender des Benutzers im Kontext einer Anwendung zugreifen zu können. Fügen Sie dem Aufruf `acquireTokenSilent` anschließend den Bereich `Calendars.Read` hinzu.
 
-> [!NOTE]
-> Wenn Sie die Anzahl der Bereiche erhöhen, werden Benutzer ggf. zu weiteren Genehmigungen aufgefordert.
+Wenn Sie die Anzahl der Bereiche erhöhen, werden Benutzer ggf. zu weiteren Genehmigungen aufgefordert.
 
 ## <a name="known-issues"></a>Bekannte Probleme
 

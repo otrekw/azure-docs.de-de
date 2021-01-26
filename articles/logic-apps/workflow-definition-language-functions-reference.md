@@ -4,14 +4,14 @@ description: Referenzhandbuch für Funktionen in Ausdrücken für Azure Logic Ap
 services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm, azla
-ms.topic: conceptual
-ms.date: 09/04/2020
-ms.openlocfilehash: 222f6ebacb6139ca26a6f1cdd0f896270c9b2fc2
-ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
+ms.topic: reference
+ms.date: 01/13/2021
+ms.openlocfilehash: fe40cbe84e8e3341b03c6c8e11701fe3db6bc3d0
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98034294"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98234221"
 ---
 # <a name="reference-guide-to-using-functions-in-expressions-for-azure-logic-apps-and-power-automate"></a>Referenzhandbuch für die Verwendung von Funktionen in Ausdrücken für Azure Logic Apps und Power Automate
 
@@ -2532,11 +2532,17 @@ In diesem Beispiel wird eine Zählervariable erstellt, die dann bei jeder Iterat
 
 ### <a name="json"></a>json
 
-Gibt den JSON-Typwert oder das JSON-Objekt (JSON = JavaScript Object Notation) für eine Zeichenfolge oder XML zurück.
+Gibt den Typwert, das Objekt oder ein Array aus Objekten im JSON-Format (JavaScript Object Notation) für eine Zeichenfolge oder XML-Daten zurück.
 
 ```
 json('<value>')
+json(xml('value'))
 ```
+
+> [!IMPORTANT]
+> Ohne XML-Schema, das die Struktur der Ausgabe definiert, gibt die Funktion möglicherweise Ergebnisse zurück, bei denen die Struktur je nach Eingabe stark vom erwarteten Format abweicht.
+>  
+> Durch dieses Verhalten ist diese Funktion nicht für Szenarien geeignet, in denen die Ausgabe einem klar definierten Vertrag entsprechen muss, beispielsweise in kritischen Geschäftssystemen oder -lösungen.
 
 | Parameter | Erforderlich | Typ | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
@@ -2545,12 +2551,12 @@ json('<value>')
 
 | Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
-| <*JSON-result*> | Nativer JSON-Typ oder natives JSON-Objekt | Der Wert des nativen JSON-Typs oder das native JSON-Objekt für die angegebene Zeichenfolge oder das angegebene XML-Objekt. Hat die Zeichenfolge den Nullwert (NULL), gibt die Funktion ein leeres Objekt zurück. |
+| <*JSON-result*> | Nativer JSON-Typ, natives JSON-Objekt oder natives JSON-Array | Der native JSON-Typwert, das native JSON-Objekt oder ein natives JSON-Objektarray aus der Eingabezeichenfolge oder den XML-Daten. <p><p>– Wenn Sie XML-Daten mit einem einzelnen untergeordneten Element im Stammelement übergeben, gibt die Funktion ein einzelnes JSON-Objekt für dieses untergeordnete Element zurück. <p> – Wenn Sie XML-Daten mit mehreren untergeordneten Elementen im Stammelement übergeben, gibt die Funktion ein Array zurück, das JSON-Objekte für diese untergeordneten Elemente enthält. <p>– Wenn die Zeichenfolge NULL ist, gibt die Funktion ein leeres Objekt zurück. |
 ||||
 
 *Beispiel 1*
 
-In diesem Beispiel wird diese Zeichenfolge in den JSON-Wert konvertiert:
+Dieses Beispiel konvertiert diese Zeichenfolge in einen JSON-Wert:
 
 ```
 json('[1, 2, 3]')
@@ -2560,7 +2566,7 @@ Dies ist das zurückgegebene Ergebnis: `[1, 2, 3]`
 
 *Beispiel 2*
 
-In diesem Beispiel wird diese Zeichenfolge in JSON konvertiert:
+Dieses Beispiel konvertiert diese Zeichenfolge in JSON:
 
 ```
 json('{"fullName": "Sophia Owen"}')
@@ -2568,7 +2574,7 @@ json('{"fullName": "Sophia Owen"}')
 
 Dies ist das zurückgegebene Ergebnis:
 
-```
+```json
 {
   "fullName": "Sophia Owen"
 }
@@ -2576,23 +2582,53 @@ Dies ist das zurückgegebene Ergebnis:
 
 *Beispiel 3*
 
-In diesem Beispiel wird dieses XML-Objekt in JSON konvertiert:
+Dieses Beispiel verwendet die Funktionen `json()` und `xml()`, um XML-Daten mit einem einzelnen untergeordneten Element im Stammelement in ein JSON-Objekt namens `person` für dieses untergeordnete Element zu konvertieren:
 
-```
-json(xml('<?xml version="1.0"?> <root> <person id='1'> <name>Sophia Owen</name> <occupation>Engineer</occupation> </person> </root>'))
-```
+`json(xml('<?xml version="1.0"?> <root> <person id='1'> <name>Sophia Owen</name> <occupation>Engineer</occupation> </person> </root>'))`
 
 Dies ist das zurückgegebene Ergebnis:
 
 ```json
 {
-   "?xml": { "@version": "1.0" },
+   "?xml": { 
+      "@version": "1.0" 
+   },
    "root": {
-      "person": [ {
+      "person": {
          "@id": "1",
          "name": "Sophia Owen",
          "occupation": "Engineer"
-      } ]
+      }
+   }
+}
+```
+
+*Beispiel 4*
+
+Dieses Beispiel verwendet die Funktionen `json()` und `xml()`, um XML-Daten mit mehreren untergeordneten Elementen im Stammelement in ein Array namens `person` zu konvertieren, das JSON-Objekte für diese untergeordneten Elemente enthält:
+
+`json(xml('<?xml version="1.0"?> <root> <person id='1'> <name>Sophia Owen</name> <occupation>Engineer</occupation> </person> <person id='2'> <name>John Doe</name> <occupation>Engineer</occupation> </person> </root>'))`
+
+Dies ist das zurückgegebene Ergebnis:
+
+```json
+{
+   "?xml": {
+      "@version": "1.0"
+   },
+   "root": {
+      "person": [
+         {
+            "@id": "1",
+            "name": "Sophia Owen",
+            "occupation": "Engineer"
+         },
+         {
+            "@id": "2",
+            "name": "John Doe",
+            "occupation": "Engineer"
+         }
+      ]
    }
 }
 ```
@@ -2610,7 +2646,7 @@ intersection([<collection1>], [<collection2>], ...)
 intersection('<collection1>', '<collection2>', ...)
 ```
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
 | <*collection1*>, <*collection2*>, ... | Ja | Array oder Objekt, aber nicht beide | Die Sammlungen, aus denen Sie *nur* die gemeinsame Elemente wünschen |
 |||||
@@ -2672,7 +2708,7 @@ last('<collection>')
 last([<collection>])
 ```
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
 | <*collection*> | Ja | Zeichenfolge oder Array | Die Sammlung, aus der das letzte Element abgerufen werden soll |
 |||||
@@ -2783,7 +2819,7 @@ less(<value>, <compareTo>)
 less('<value>', '<compareTo>')
 ```
 
-| Parameter | Erforderlich | type | BESCHREIBUNG |
+| Parameter | Erforderlich | Typ | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
 | <*value*> | Ja | Integer, Float oder Zeichenfolge | Der Wert (erster Wert), für den überprüft werden soll, ob er kleiner ist als der zweite Wert |
 | <*compareTo*> | Ja | Integer, Float bzw. Zeichenfolge | Das Vergleichselement |
@@ -2820,7 +2856,7 @@ lessOrEquals(<value>, <compareTo>)
 lessOrEquals('<value>', '<compareTo>')
 ```
 
-| Parameter | Erforderlich | type | BESCHREIBUNG |
+| Parameter | Erforderlich | Typ | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
 | <*value*> | Ja | Integer, Float oder Zeichenfolge | Der Wert (erster Wert), für den überprüft werden soll, ob er kleiner gleich dem zweiten Wert ist. |
 | <*compareTo*> | Ja | Integer, Float bzw. Zeichenfolge | Das Vergleichselement |
@@ -2878,7 +2914,7 @@ max(<number1>, <number2>, ...)
 max([<number1>, <number2>, ...])
 ```
 
-| Parameter | Erforderlich | type | BESCHREIBUNG |
+| Parameter | Erforderlich | Typ | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
 | <*number1*>, <*number2*>, ... | Ja | Integer, Float oder beide | Die Menge der Zahlen, aus denen Sie den größten Wert abrufen möchten |
 | [<*number1*>, <*number2*>, ...] | Ja | Array: Integer, Float oder beide | Das Array mit den Zahlen, aus denen Sie den größten Wert abrufen möchten |
@@ -2911,7 +2947,7 @@ min(<number1>, <number2>, ...)
 min([<number1>, <number2>, ...])
 ```
 
-| Parameter | Erforderlich | type | BESCHREIBUNG |
+| Parameter | Erforderlich | Typ | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
 | <*number1*>, <*number2*>, ... | Ja | Integer, Float oder beide | Die Menge der Zahlen, aus denen Sie den kleinsten Wert abrufen möchten |
 | [<*number1*>, <*number2*>, ...] | Ja | Array: Integer, Float oder beide | Das Array mit den Zahlen, aus denen Sie den kleinsten Wert abrufen möchten |
@@ -2944,7 +2980,7 @@ Informationen zum Abrufen des Ganzzahlergebnisses finden Sie unter [div()](#div)
 mod(<dividend>, <divisor>)
 ```
 
-| Parameter | Erforderlich | type | BESCHREIBUNG |
+| Parameter | Erforderlich | Typ | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
 | <*dividend*> | Ja | Integer oder Float | Die Zahl, die durch den *Divisor* dividiert werden soll. |
 | <*divisor*> | Ja | Integer oder Float | Die Zahl, durch die der *Dividend* geteilt wird; darf nicht 0 sein |
@@ -2975,7 +3011,7 @@ Gibt das Produkt aus der Multiplikation zweier Zahlen zurück.
 mul(<multiplicand1>, <multiplicand2>)
 ```
 
-| Parameter | Erforderlich | type | BESCHREIBUNG |
+| Parameter | Erforderlich | Typ | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
 | <*multiplicand1*> | Ja | Integer oder Float | Die Zahl, mit der *multiplicand2* multipliziert werden soll. |
 | <*multiplicand2*> | Ja | Integer oder Float | Die Zahl, mit der *multiplicand1* multipliziert werden soll. |
@@ -3010,7 +3046,7 @@ Gibt den Textteil für einen bestimmten Teil einer Aktionsausgabe zurück, die m
 multipartBody('<actionName>', <index>)
 ```
 
-| Parameter | Erforderlich | type | BESCHREIBUNG |
+| Parameter | Erforderlich | Typ | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
 | <*actionName*> | Ja | String | Der Name der Aktion, für die es Ausgabe mit mehreren Teilen gibt |
 | <*index*> | Ja | Integer | Der Indexwert des von Ihnen gewünschten Teils |
@@ -3230,7 +3266,7 @@ Gibt eine zufällige Ganzzahl  aus einem angegebenen Bereich zurück, wobei nur 
 rand(<minValue>, <maxValue>)
 ```
 
-| Parameter | Erforderlich | type | BESCHREIBUNG |
+| Parameter | Erforderlich | Typ | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
 | <*minValue*> | Ja | Integer | Die kleinste ganze Zahl im Bereich |
 | <*maxValue*> | Ja | Integer | Die ganze Zahl, die im Bereich auf die größte Zahl folgt, die die Funktion zurückgeben kann |
@@ -3261,7 +3297,7 @@ Gibt ein Array mit ganzen Zahlen zurück, das mit einer angegebenen ganzen Zahl 
 range(<startIndex>, <count>)
 ```
 
-| Parameter | Erforderlich | type | BESCHREIBUNG |
+| Parameter | Erforderlich | Typ | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
 | <*startIndex*> | Ja | Integer | Ein ganzzahliger Wert, der das erste Element im Array ist |
 | <*count*> | Ja | Integer | Die Anzahl von ganzen Zahlen im Array |
@@ -3292,7 +3328,7 @@ Ersetzt eine Teilzeichenfolge durch die angegebene Zeichenfolge und gibt die res
 replace('<text>', '<oldText>', '<newText>')
 ```
 
-| Parameter | Erforderlich | type | BESCHREIBUNG |
+| Parameter | Erforderlich | Typ | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
 | <*text*> | Ja | String | Die Zeichenfolge, die die Teilzeichenfolge enthält, die ersetzt werden soll |
 | <*oldText*> | Ja | String | Die Teilzeichenfolge, die ersetzt werden soll |
@@ -3324,7 +3360,7 @@ Entfernt eine Eigenschaft aus einem Objekt und gibt das aktualisierte Objekt zur
 removeProperty(<object>, '<property>')
 ```
 
-| Parameter | Erforderlich | type | BESCHREIBUNG |
+| Parameter | Erforderlich | Typ | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
 | <*object*> | Ja | Object | Das JSON-Objekt, aus dem Sie eine Eigenschaft entfernen möchten |
 | <*property*> | Ja | String | Der Name der zu Eigenschaft, die entfernt werden soll |
@@ -3341,7 +3377,7 @@ Verwenden Sie die folgende Syntax, um eine untergeordnete Eigenschaft aus einer 
 removeProperty(<object>['<parent-property>'], '<child-property>')
 ```
 
-| Parameter | Erforderlich | type | BESCHREIBUNG |
+| Parameter | Erforderlich | Typ | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
 | <*object*> | Ja | Object | Das JSON-Objekt, dessen Eigenschaft Sie entfernen möchten |
 | <*parent-property*> | Ja | String | Der Name der übergeordneten Eigenschaft mit der untergeordneten Eigenschaft, die Sie entfernen möchten |
@@ -3542,7 +3578,7 @@ Legt den Wert für eine Eigenschaft eines JSON-Objekts fest und gibt das aktuali
 setProperty(<object>, '<property>', <value>)
 ```
 
-| Parameter | Erforderlich | type | BESCHREIBUNG |
+| Parameter | Erforderlich | Typ | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
 | <*object*> | Ja | Object | Das JSON-Objekt, dessen Eigenschaft Sie festlegen möchten |
 | <*property*> | Ja | String | Der Name der vorhandenen oder neuen Eigenschaft, die festgelegt werden soll |
@@ -3555,7 +3591,7 @@ Wenn Sie die untergeordnete Eigenschaft in einem untergeordneten Objekt festlege
 setProperty(<object>['<parent-property>'], '<parent-property>', setProperty(<object>['parentProperty'], '<child-property>', <value>))
 ```
 
-| Parameter | Erforderlich | type | BESCHREIBUNG |
+| Parameter | Erforderlich | Typ | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
 | <*object*> | Ja | Object | Das JSON-Objekt, dessen Eigenschaft Sie festlegen möchten |
 | <*parent-property*> | Ja | String | Der Name der übergeordneten Eigenschaft mit der untergeordneten Eigenschaft, die Sie festlegen möchten |
@@ -3634,7 +3670,7 @@ Entfernt Elemente vom Anfang einer Sammlung und gibt *alle anderen* Elemente zur
 skip([<collection>], <count>)
 ```
 
-| Parameter | Erforderlich | type | BESCHREIBUNG |
+| Parameter | Erforderlich | Typ | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
 | <*collection*> | Ja | Array | Die Sammlung, aus der Sie Elemente entfernen möchten |
 | <*count*> | Ja | Integer | Eine positive ganze Zahl für die Anzahl von Elementen, die am Anfang entfernt werden sollen |
@@ -3665,7 +3701,7 @@ Gibt ein Array mit Teilzeichenfolgen, die durch Trennzeichen getrennt sind, basi
 split('<text>', '<delimiter>')
 ```
 
-| Parameter | Erforderlich | type | BESCHREIBUNG |
+| Parameter | Erforderlich | Typ | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
 | <*text*> | Ja | String | Die Zeichenfolge, die auf Grundlage des angegebenen Trennzeichens in der ursprünglichen Zeichenfolge in Teilzeichenfolgen unterteilt wird |
 | <*delimiter*> | Ja | String | Das Zeichen in der ursprünglichen Zeichenfolge, das als Trennzeichen verwendet wird |
@@ -3696,7 +3732,7 @@ Gibt den Beginn des Tages für einen Zeitstempel zurück.
 startOfDay('<timestamp>', '<format>'?)
 ```
 
-| Parameter | Erforderlich | type | BESCHREIBUNG |
+| Parameter | Erforderlich | Typ | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
 | <*timestamp*> | Ja | String | Die Zeichenfolge, die den Zeitstempel enthält |
 | <*format*> | Nein | String | Entweder ein [einzelner Formatbezeichner](/dotnet/standard/base-types/standard-date-and-time-format-strings) oder ein [benutzerdefiniertes Formatmuster](/dotnet/standard/base-types/custom-date-and-time-format-strings). Das Standardformat für den Zeitstempel ist [„o“](/dotnet/standard/base-types/standard-date-and-time-format-strings) (JJJJ-MM-TTT hh:mm:ss.fffffffK), das mit [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) übereinstimmt und in dem Zeitzoneninformationen erhalten bleiben. |
@@ -3727,7 +3763,7 @@ Gibt den Beginn der Stunde für einen Zeitstempel zurück.
 startOfHour('<timestamp>', '<format>'?)
 ```
 
-| Parameter | Erforderlich | type | BESCHREIBUNG |
+| Parameter | Erforderlich | Typ | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
 | <*timestamp*> | Ja | String | Die Zeichenfolge, die den Zeitstempel enthält |
 | <*format*> | Nein | String | Entweder ein [einzelner Formatbezeichner](/dotnet/standard/base-types/standard-date-and-time-format-strings) oder ein [benutzerdefiniertes Formatmuster](/dotnet/standard/base-types/custom-date-and-time-format-strings). Das Standardformat für den Zeitstempel ist [„o“](/dotnet/standard/base-types/standard-date-and-time-format-strings) (JJJJ-MM-TTT hh:mm:ss.fffffffK), das mit [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) übereinstimmt und in dem Zeitzoneninformationen erhalten bleiben. |
@@ -3758,7 +3794,7 @@ Gibt den Beginn des Monats für einen Zeitstempel zurück.
 startOfMonth('<timestamp>', '<format>'?)
 ```
 
-| Parameter | Erforderlich | type | BESCHREIBUNG |
+| Parameter | Erforderlich | Typ | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
 | <*timestamp*> | Ja | String | Die Zeichenfolge, die den Zeitstempel enthält |
 | <*format*> | Nein | String | Entweder ein [einzelner Formatbezeichner](/dotnet/standard/base-types/standard-date-and-time-format-strings) oder ein [benutzerdefiniertes Formatmuster](/dotnet/standard/base-types/custom-date-and-time-format-strings). Das Standardformat für den Zeitstempel ist [„o“](/dotnet/standard/base-types/standard-date-and-time-format-strings) (JJJJ-MM-TTT hh:mm:ss.fffffffK), das mit [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) übereinstimmt und in dem Zeitzoneninformationen erhalten bleiben. |
@@ -3801,7 +3837,7 @@ Für diese Funktion wird die Groß-/Kleinschreibung nicht beachtet.
 startsWith('<text>', '<searchText>')
 ```
 
-| Parameter | Erforderlich | type | BESCHREIBUNG |
+| Parameter | Erforderlich | Typ | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
 | <*text*> | Ja | String | Die Zeichenfolge, die überprüft werden soll |
 | <*searchText*> | Ja | String | Die beginnende Zeichenfolge, nach der gesucht werden soll |
@@ -3842,7 +3878,7 @@ Gibt die Zeichenfolgenversion für einen Wert zurück.
 string(<value>)
 ```
 
-| Parameter | Erforderlich | type | BESCHREIBUNG |
+| Parameter | Erforderlich | Typ | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
 | <*value*> | Ja | Any | Der zu konvertierende Wert. Wenn dieser Wert NULL ist oder NULL ergibt, wird der Wert in einen leeren Zeichenfolgenwert (`""`) konvertiert. <p><p>Wenn Sie z. B. einer nicht vorhandenen Eigenschaft, auf die Sie mit dem `?`-Operator zugreifen können, eine Zeichenfolgenvariable zuweisen, wird der NULL-Wert in eine leere Zeichenfolge konvertiert. Das Vergleichen eines NULL-Werts ist jedoch nicht mit dem Vergleich einer leeren Zeichenfolge identisch. |
 |||||
@@ -3886,7 +3922,7 @@ Gibt das Ergebnis aus der Subtraktion der zweiten Zahl von der ersten Zahl zurü
 sub(<minuend>, <subtrahend>)
 ```
 
-| Parameter | Erforderlich | type | BESCHREIBUNG |
+| Parameter | Erforderlich | Typ | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
 | <*minuend*> | Ja | Integer oder Float | Die Zahl, von der *subtrahend* subtrahiert werden soll |
 | <*subtrahend*> | Ja | Integer oder Float | Die Zahl, die von *minuend* subtrahiert werden soll |
@@ -3917,7 +3953,7 @@ Gibt Zeichen aus einer Zeichenfolge zurück, beginnend mit dem angegebenen Index
 substring('<text>', <startIndex>, <length>)
 ```
 
-| Parameter | Erforderlich | type | BESCHREIBUNG |
+| Parameter | Erforderlich | Typ | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
 | <*text*> | Ja | String | Die Zeichenfolge, aus der die Zeichen zurückgegeben werden sollen |
 | <*startIndex*> | Ja | Integer | Eine positive Zahl gleich oder größer als 0, die Sie als Ausgangswert oder Indexwert verwenden können. |
@@ -3954,7 +3990,7 @@ Siehe auch [getPastTime](#getPastTime).
 subtractFromTime('<timestamp>', <interval>, '<timeUnit>', '<format>'?)
 ```
 
-| Parameter | Erforderlich | type | BESCHREIBUNG |
+| Parameter | Erforderlich | Typ | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
 | <*timestamp*> | Ja | String | Die Zeichenfolge, die den Zeitstempel enthält |
 | <*interval*> | Ja | Integer | Die Anzahl der angegebenen Zeiteinheiten, die subtrahiert werden sollen |
@@ -3998,7 +4034,7 @@ take('<collection>', <count>)
 take([<collection>], <count>)
 ```
 
-| Parameter | Erforderlich | type | BESCHREIBUNG |
+| Parameter | Erforderlich | Typ | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
 | <*collection*> | Ja | Zeichenfolge oder Array | Die Sammlung, aus der Sie Elemente abrufen möchten |
 | <*count*> | Ja | Integer | Eine positive ganze Zahl für die Anzahl von Elementen, die ab dem Anfang abgerufen werden sollen |
@@ -4592,7 +4628,7 @@ utcNow('<format>')
 Optional können Sie mit dem <*format*>-Parameter ein anderes Format angeben.
 
 
-| Parameter | Erforderlich | type | BESCHREIBUNG |
+| Parameter | Erforderlich | Typ | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
 | <*format*> | Nein | String | Entweder ein [einzelner Formatbezeichner](/dotnet/standard/base-types/standard-date-and-time-format-strings) oder ein [benutzerdefiniertes Formatmuster](/dotnet/standard/base-types/custom-date-and-time-format-strings). Das Standardformat für den Zeitstempel ist [„o“](/dotnet/standard/base-types/standard-date-and-time-format-strings) (JJJJ-MM-TTT hh:mm:ss.fffffffK), das mit [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) übereinstimmt und in dem Zeitzoneninformationen erhalten bleiben. |
 |||||
@@ -4665,7 +4701,7 @@ Gibt sämtliche Details zum Workflow selbst zur Laufzeit zurück.
 workflow().<property>
 ```
 
-| Parameter | Erforderlich | type | BESCHREIBUNG |
+| Parameter | Erforderlich | Typ | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
 | <*property*> | Nein | String | Der Name der Workfloweigenschaft, deren Wert Sie abrufen möchten <p>Ein Workflowobjekt hat diese Eigenschaften: **name**, **type**, **id**, **location** und **run**. Der Wert der **run**-Eigenschaft ist ebenfalls ein Objekt, das diese Eigenschaften hat: **name**, **type** und **id**. |
 |||||
@@ -4688,7 +4724,7 @@ Gibt die XML-Version einer Zeichenfolge zurück, die ein JSON-Objekt enthält.
 xml('<value>')
 ```
 
-| Parameter | Erforderlich | type | BESCHREIBUNG |
+| Parameter | Erforderlich | Typ | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
 | <*value*> | Ja | String | Die Zeichenfolge mit dem JSON-Objekt, das konvertiert werden soll. <p>Das JSON-Objekt darf nur eine Stammeigenschaft haben, die kein Array sein darf. <br>Verwenden Sie den umgekehrten Schrägstrich (\\) als Escapezeichen für das doppelte Anführungszeichen ("). |
 |||||
@@ -4746,7 +4782,7 @@ Dies ist das zurückgegebene XML-Objekt:
 xpath('<xml>', '<xpath>')
 ```
 
-| Parameter | Erforderlich | type | BESCHREIBUNG |
+| Parameter | Erforderlich | Typ | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
 | <*xml*> | Ja | Any | Die XML-Zeichenfolge, in der nach Knoten oder Werten gesucht werden soll, die mit einem XPath-Ausdruckswert übereinstimmen |
 | <*xpath*> | Ja | Any | Der XPath-Ausdruck, der für die Suche nach übereinstimmenden XML-Knoten oder -Werten verwendet wird |

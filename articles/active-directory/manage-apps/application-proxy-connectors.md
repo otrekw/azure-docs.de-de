@@ -12,12 +12,12 @@ ms.date: 11/15/2018
 ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8086bd2a193ac52e76bf8da245063163ab2ea2f9
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: a2d4cec57eb6ac23c191e504c305c2c6d11268ac
+ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97591054"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98165001"
 ---
 # <a name="understand-azure-ad-application-proxy-connectors"></a>Grundlegendes zu Azure AD-Anwendungsproxyconnectors
 
@@ -25,7 +25,7 @@ Connectors sind die Komponenten, die den Azure AD-Anwendungsproxy erst möglich 
 
 ## <a name="what-is-an-application-proxy-connector"></a>Was ist ein Anwendungsproxyconnector?
 
-Bei Connectors handelt es sich um einfache Agents, die lokal eingerichtet sind und die ausgehende Verbindung zum Anwendungsproxydienst vereinfachen. Connectors müssen auf einem Windows-Server installiert sein, der auf die Back-End-Anwendung zugreifen kann. Sie können Connectors in Connectorgruppen organisieren, wobei jede Gruppe für den Datenverkehr an bestimmte Anwendungen zuständig ist.
+Bei Connectors handelt es sich um einfache Agents, die lokal eingerichtet sind und die ausgehende Verbindung zum Anwendungsproxydienst vereinfachen. Connectors müssen auf einem Windows-Server installiert sein, der auf die Back-End-Anwendung zugreifen kann. Sie können Connectors in Connectorgruppen organisieren, wobei jede Gruppe für den Datenverkehr an bestimmte Anwendungen zuständig ist. Weitere Informationen zu Anwendungsproxys und einer schematischen Darstellung der Anwendungsproxyarchitektur finden Sie unter [Veröffentlichen von lokalen Apps für Remotebenutzer mit dem Azure AD-Anwendungsproxy](what-is-application-proxy.md#application-proxy-connectors).
 
 ## <a name="requirements-and-deployment"></a>Anforderungen und Bereitstellung
 
@@ -96,7 +96,7 @@ Im Allgemeinen gilt: Je mehr Benutzer Sie haben, desto größer muss der Compute
 | ----- | ----- | ----- | ----- |
 |2|8|325|586|
 |4|16|320|1150|
-|8|32|270|1\.190|
+|8|32|270|1.190|
 |16|64|245|1200*|
 
 \* Dieser Computer hat eine benutzerdefinierte Einstellung verwendet, um einige der Standardgrenzwerte für Verbindungen über die für .NET empfohlenen Einstellungen zu erhöhen. Es wird empfohlen, vor der Kontaktaufnahme mit dem Support einen Test mit den Standardeinstellungen durchzuführen, um diesen Grenzwert für Ihren Mandanten ändern zu lassen.

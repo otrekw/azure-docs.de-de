@@ -2,24 +2,24 @@
 title: Tutorial zum Bestellen einer Azure Data Box | Microsoft-Dokumentation
 description: In diesem Tutorial erfahren Sie mehr über die Hybridlösung Azure Data Box, mit der Sie lokale Daten in Azure importieren können. Darüber hinaus wird erläutert, wie Sie Azure Data Box bestellen.
 services: databox
-author: alkohli
+author: v-dalc
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 11/19/2020
+ms.date: 01/13/2021
 ms.author: alkohli
-ms.openlocfilehash: aad6a3ef754b5ba2c65a9b93fbdfcfdc26348487
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: fd165795be85c26cdfcaee3c4fd01427274a7316
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 01/14/2021
-ms.locfileid: "98186157"
+ms.locfileid: "98210340"
 ---
 # <a name="tutorial-order-azure-data-box"></a>Tutorial: Bestellen von Azure Data Box
 
 Azure Data Box ist eine Hybridlösung, mit der Sie Ihre lokalen Daten auf schnelle, einfache und zuverlässige Weise in Azure importieren können. Sie übertragen Ihre Daten auf ein von Microsoft bereitgestelltes Speichergerät mit 80 TB nutzbarer Kapazität und senden das Gerät anschließend zurück. Diese Daten werden dann in Azure hochgeladen.
 
-In diesem Tutorial wird beschrieben, wie Sie eine Azure Data Box bestellen können. In diesem Tutorial lernen Sie Folgendes kennen:
+In diesem Tutorial wird beschrieben, wie Sie eine Azure Data Box bestellen können. In diesem Tutorial lernen Sie Folgendes kennen:  
 
 > [!div class="checklist"]
 >
@@ -245,7 +245,7 @@ Führen Sie die folgenden Schritte im Azure-Portal aus, um ein Gerät zu bestell
     |Resource group    | Die Ressourcengruppe, die Sie zuvor ausgewählt haben. |
     |Name des Importauftrags | Geben Sie einen Anzeigenamen an, um die Bestellung nachzuverfolgen. <br> Der Name kann zwischen 3 und 24 Zeichen lang sein und darf nur Buchstaben, Zahlen und Bindestriche enthalten. <br> Der Name muss mit einem Buchstaben oder einer Zahl beginnen und enden.    |
 
-    ![Assistent für Data Box-Importaufträge, Bildschirm „Grundlagen“ mit den richtigen Informationen](media/data-box-deploy-ordered/select-data-box-import-06.png)<!--Generic subscription. Cut note. Box command.-->
+    ![Assistent für Data Box-Importaufträge, Bildschirm „Grundlagen“ mit den richtigen Informationen](media/data-box-deploy-ordered/select-data-box-import-06.png)
 
 7. Wählen Sie auf dem Bildschirm **Datenziel** das **Datenziel** aus: entweder Speicherkonten oder verwaltete Datenträger.
 
@@ -253,7 +253,11 @@ Führen Sie die folgenden Schritte im Azure-Portal aus, um ein Gerät zu bestell
 
     ![Assistent für Data Box-Importaufträge, Bildschirm „Datenziel“ mit ausgewählten Speicherkonten](media/data-box-deploy-ordered/select-data-box-import-07.png)
 
-    Wählen Sie basierend auf der angegebenen Azure-Region mindestens ein Speicherkonto in der gefilterten Liste eines vorhandenen Speicherkontos aus. Data Box kann mit bis zu zehn Speicherkonten verknüpft werden. Sie können auch ein neues Speicherkonto vom Typ **Universell V1** oder **Universell V2** oder ein **Blob Storage-Konto** erstellen.
+    Wählen Sie basierend auf der angegebenen Azure-Region mindestens ein Speicherkonto in der gefilterten Liste vorhandener Speicherkonten aus. Data Box kann mit bis zu zehn Speicherkonten verknüpft werden. Sie können auch ein neues Speicherkonto vom Typ **Universell V1** oder **Universell V2** oder ein **Blob Storage-Konto** erstellen.
+
+   > [!NOTE]
+   > - Bei der Auswahl von Azure-Premium-FileStorage-Konten wird das bereitgestellte Kontingent für die Azure-Speicherkontofreigabe auf die Größe der Daten erhöht, die auf die Dateifreigaben kopiert werden. Nach der Erhöhung des Kontingents wird es nicht erneut angepasst, wenn die Data Box beispielsweise aus irgendeinem Grund die Daten nicht kopieren kann.
+   > - Dieses Kontingent wird für die Abrechnung verwendet. Nachdem die Daten in das Rechenzentrum hochgeladen wurden, sollten Sie das Kontingent an Ihre Anforderungen anpassen. Weitere Informationen finden Sie unter [Grundlegendes zur Abrechnung für Azure Files](../../articles/storage/files/understanding-billing.md).
 
     Speicherkonten mit virtuellen Netzwerken werden unterstützt. Aktivieren Sie in den Netzwerkfirewalleinstellungen des Speicherkontos die vertrauenswürdigen Dienste, um dem Data Box-Dienst die Verwendung geschützter Speicherkonten zu ermöglichen. Weitere Informationen zum Hinzufügen von Azure Data Box als vertrauenswürdiger Dienst finden Sie [hier](../storage/common/storage-network-security.md#exceptions).
 
@@ -419,7 +423,7 @@ Führen Sie für die Azure CLI die folgenden Schritte aus, um ein Gerät zu best
    |sku| Das spezifische Data Box-Gerät, das Sie bestellen. Gültige Werte sind: „DataBox“, „DataBoxDisk“ und „DataBoxHeavy“| „DataBox“ |
    |email-list| Die E-Mail-Adressen, die der Bestellung zugeordnet sind.| "gusp@contoso.com" |
    |street-address1| Die Straße, an die die Bestellung gesendet wird. | „15700 NE 39th St“ |
-   |street-address2| Die zusätzlichen Adressinformationen, z. B. Apartment- oder Gebäudenummer. | „Bld 123“ |
+   |street-address2| Die zusätzlichen Adressinformationen, z. B. Apartment- oder Gebäudenummer. | „Building 123“ |
    |city| Der Ort, an den das Gerät gesendet wird. | „Redmond“ |
    |state-or-province| Das Bundesland oder der Kanton, an das bzw. den das Gerät gesendet wird (in diesem Beispiel: Bundesstaat).| „WA“ |
    |country| Das Land/die Region, an das/die das Gerät gesendet wird. | „USA“ |
@@ -538,7 +542,7 @@ Führen Sie für Azure PowerShell die folgenden Schritte aus, um ein Gerät zu b
     |DataBoxType [Erforderlich]| Das spezifische Data Box-Gerät, das Sie bestellen. Gültige Werte sind: „DataBox“, „DataBoxDisk“ und „DataBoxHeavy“| „DataBox“ |
     |EmailId [Erforderlich]| Die E-Mail-Adressen, die der Bestellung zugeordnet sind.| "gusp@contoso.com" |
     |StreetAddress1 [Erforderlich]| Die Straße, an die die Bestellung gesendet wird. | „15700 NE 39th St“ |
-    |StreetAddress2| Die zusätzlichen Adressinformationen, z. B. Apartment- oder Gebäudenummer. | „Bld 123“ |
+    |StreetAddress2| Die zusätzlichen Adressinformationen, z. B. Apartment- oder Gebäudenummer. | „Building 123“ |
     |StreetAddress3| Die tertiären Adressinformationen. | |
     |City [Erforderlich]| Der Ort, an den das Gerät gesendet wird. | „Redmond“ |
     |StateOrProvinceCode [Erforderlich]| Das Bundesland oder der Kanton, an das bzw. den das Gerät gesendet wird (in diesem Beispiel: Bundesstaat).| „WA“ |
@@ -601,7 +605,7 @@ Microsoft bereitet dann Ihr Gerät vor und versendet es über einen regionalen K
 
 ### <a name="track-a-single-order"></a>Nachverfolgen einer einzelnen Bestellung
 
-Führen Sie [az databox job show](/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-show&preserve-view=true) aus, um Nachverfolgungsinformationen zu einer einzelnen vorhandenen Azure Data Box-Bestellung zu erhalten. Mit dem Befehl werden Informationen zur Bestellung angezeigt, z. B. Name, Ressourcengruppe, Nachverfolgungsinformationen, Abonnement-ID, Kontaktinformationen, Versandtyp und Geräte-SKU.
+Führen Sie [`az databox job show`](/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-show&preserve-view=true) aus, um Nachverfolgungsinformationen zu einer einzelnen vorhandenen Azure Data Box-Bestellung zu erhalten. Mit dem Befehl werden Informationen zur Bestellung angezeigt, z. B. Name, Ressourcengruppe, Nachverfolgungsinformationen, Abonnement-ID, Kontaktinformationen, Versandtyp und Geräte-SKU.
 
    ```azurecli
    az databox job show --resource-group <resource-group> --name <order-name>
@@ -642,7 +646,7 @@ Führen Sie [az databox job show](/cli/azure/ext/databox/databox/job?view=azure-
 
 ### <a name="list-all-orders"></a>Auflisten aller Bestellungen
 
-Wenn Sie mehrere Geräte bestellt haben, können Sie [az databox job list](/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-list&preserve-view=true) ausführen, um Ihre gesamten Azure Data Box-Bestellungen anzuzeigen. Mit dem Befehl werden alle Bestellungen aufgelistet, die zu einer bestimmten Ressourcengruppe gehören. Weitere angezeigte Elemente in der Ausgabe: Name der Bestellung, Versandstatus, Azure-Region, Übermittlungstyp, Bestellstatus. Stornierte Bestellungen sind ebenfalls in der Liste enthalten.
+Wenn Sie mehrere Geräte bestellt haben, können Sie [`az databox job list`](/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-list&preserve-view=true) ausführen, um Ihre gesamten Azure Data Box-Bestellungen anzuzeigen. Mit dem Befehl werden alle Bestellungen aufgelistet, die zu einer bestimmten Ressourcengruppe gehören. Weitere angezeigte Elemente in der Ausgabe: Name der Bestellung, Versandstatus, Azure-Region, Übermittlungstyp, Bestellstatus. Stornierte Bestellungen sind ebenfalls in der Liste enthalten.
 Mit dem Befehl werden auch die Zeitstempel der einzelnen Bestellungen angezeigt.
 
 ```azurecli
@@ -718,7 +722,7 @@ Führen Sie [Get-AzDataBoxJob](/powershell/module/az.databox/Get-AzDataBoxJob) a
 
 ### <a name="list-all-orders"></a>Auflisten aller Bestellungen
 
-Wenn Sie mehrere Geräte bestellt haben, können Sie [Get-AzDataBoxJob](/powershell/module/az.databox/Get-AzDataBoxJob) ausführen, um Ihre gesamten Azure Data Box-Bestellungen anzuzeigen. Mit dem Befehl werden alle Bestellungen aufgelistet, die zu einer bestimmten Ressourcengruppe gehören. Weitere angezeigte Elemente in der Ausgabe: Name der Bestellung, Versandstatus, Azure-Region, Übermittlungstyp, Bestellstatus. Stornierte Bestellungen sind ebenfalls in der Liste enthalten.
+Wenn Sie mehrere Geräte bestellt haben, können Sie [`Get-AzDataBoxJob`](/powershell/module/az.databox/Get-AzDataBoxJob) ausführen, um Ihre gesamten Azure Data Box-Bestellungen anzuzeigen. Mit dem Befehl werden alle Bestellungen aufgelistet, die zu einer bestimmten Ressourcengruppe gehören. Weitere angezeigte Elemente in der Ausgabe: Name der Bestellung, Versandstatus, Azure-Region, Übermittlungstyp, Bestellstatus. Stornierte Bestellungen sind ebenfalls in der Liste enthalten.
 Mit dem Befehl werden auch die Zeitstempel der einzelnen Bestellungen angezeigt.
 
 ```azurepowershell
@@ -761,7 +765,7 @@ Um eine stornierte Bestellung zu löschen, navigieren Sie zu **Übersicht** und 
 
 ### <a name="cancel-an-order"></a>Abbrechen eines Auftrags
 
-Führen Sie zum Stornieren einer Azure Data Box-Bestellung den Befehl [az databox job cancel](/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-cancel&preserve-view=true) aus. Sie müssen den Grund für die Stornierung der Bestellung angeben.
+Führen Sie zum Stornieren einer Azure Data Box-Bestellung den Befehl [`az databox job cancel`](/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-cancel&preserve-view=true) aus. Sie müssen den Grund für die Stornierung der Bestellung angeben.
 
    ```azurecli
    az databox job cancel --resource-group <resource-group> --name <order-name> --reason <cancel-description>
@@ -798,7 +802,7 @@ Führen Sie zum Stornieren einer Azure Data Box-Bestellung den Befehl [az databo
 
 ### <a name="delete-an-order"></a>Löschen einer Bestellung
 
-Wenn Sie eine Azure Data Box-Bestellung storniert haben, können Sie [az databox job delete](/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-delete&preserve-view=true) ausführen, um die Bestellung zu löschen.
+Wenn Sie eine Azure Data Box-Bestellung storniert haben, können Sie [`az databox job delete`](/cli/azure/ext/databox/databox/job?view=azure-cli-latest#ext-databox-az-databox-job-delete&preserve-view=true) ausführen, um die Bestellung zu löschen.
 
    ```azurecli
    az databox job delete --name [-n] <order-name> --resource-group <resource-group> [--yes] [--verbose]
@@ -871,7 +875,7 @@ PS C:\WINDOWS\system32>
 
 ### <a name="delete-an-order"></a>Löschen einer Bestellung
 
-Wenn Sie eine Azure Data Box-Bestellung abgebrochen haben, können Sie [Remove-AzDataBoxJob](/powershell/module/az.databox/remove-azdataboxjob) ausführen, um die Bestellung zu löschen.
+Wenn Sie eine Azure Data Box-Bestellung storniert haben, können Sie [`Remove-AzDataBoxJob`](/powershell/module/az.databox/remove-azdataboxjob) ausführen, um die Bestellung zu löschen.
 
 ```azurepowershell
 Remove-AzDataBoxJob -Name <String> -ResourceGroup <String>

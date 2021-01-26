@@ -12,12 +12,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: sstein
 ms.date: 06/17/2020
-ms.openlocfilehash: ce528e268e0ed1e34f53e32196bceef5ad8a2fcb
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: e85c97df29bbbcc5d446d788cc190f3c90f24024
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96452489"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98602223"
 ---
 # <a name="azure-sql-database-and-azure-synapse-ip-firewall-rules"></a>Azure SQL-Datenbank- und Azure Synapse-IP-Firewallregeln
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -43,6 +43,9 @@ IP-Firewallregeln auf Serverebene können über das Azure-Portal, mithilfe von P
 
 - Wenn Sie das Portal oder PowerShell verwenden möchten, müssen Sie der Besitzer oder ein Mitwirkender des Abonnements sein.
 - Wenn Sie Transact-SQL verwenden möchten, müssen Sie mithilfe einer Prinzipalanmeldung auf Serverebene oder als Azure Active Directory-Administrator eine Verbindung mit der *Masterdatenbank* herstellen. (Eine IP-Firewallregel auf Serverebene muss zuerst von einem Benutzer erstellt werden, der über Berechtigungen auf Azure-Ebene verfügt.)
+
+> [!NOTE]
+> Bei der Erstellung einer neuen logischen SQL Server-Instanz im Azure-Portal ist die Einstellung **Azure-Diensten und -Ressourcen den Zugriff auf diesen Server erlauben** standardmäßig auf **Nein** festgelegt.
 
 ### <a name="database-level-ip-firewall-rules"></a>Firewallregeln auf Datenbankebene
 
@@ -270,7 +273,7 @@ In diesem Abschnitt finden Sie einige Punkte für den Fall, dass sich der Zugrif
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Vergewissern Sie sich, dass die Netzwerkumgebung Ihres Unternehmens eingehende Kommunikation aus den Compute-IP-Adressbereichen (einschließlich SQL-Bereichen) zulässt, die von den Azure-Rechenzentren verwendet werden. Diese IP-Adressen müssen ggf. der Zulassungsliste hinzugefügt werden. Weitere Informationen finden Sie unter [IP-Bereiche für Microsoft Azure-Rechenzentren](https://www.microsoft.com/download/details.aspx?id=41653).  
-- Eine Schnellstartanleitung zum Erstellen einer IP-Firewallregel auf Serverebene finden Sie unter [Erstellen einer einzelnen Datenbank in Azure SQL-Datenbank](single-database-create-quickstart.md).
+- Weitere Informationen finden Sie in unserem Schnellstart zum [Erstellen einer Einzeldatenbank in Azure SQL-Datenbank](single-database-create-quickstart.md).
 - Hilfe beim Herstellen einer Verbindung mit einer Datenbank in Azure SQL-Datenbank über Open-Source-Anwendungen oder Drittanbieteranwendungen finden Sie unter [Clientschnellstart: Codebeispiele für Azure SQL-Datenbank](connect-query-content-reference-guide.md#libraries).
 - Informationen zu zusätzlichen Ports, die Sie ggf. öffnen müssen, finden Sie im Abschnitt „Außerhalb im Vergleich zu innerhalb“ des Artikels [Andere Ports als 1433 für ADO.NET 4.5](adonet-v12-develop-direct-route-ports.md).
 - Eine Übersicht über die Sicherheitsfunktionen von Azure SQL-Datenbank finden Sie [hier](security-overview.md).

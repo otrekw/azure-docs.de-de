@@ -12,12 +12,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: sstein
 ms.date: 10/13/2020
-ms.openlocfilehash: b4a8b809fc135a4af26fae10912890f2017153f4
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: cacd43502a01352c24f8fcfd85b12aac781dccbd
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92780919"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98602513"
 ---
 # <a name="save-costs-for-resources-with-reserved-capacity---azure-sql-database--sql-managed-instance"></a>Sparen von Kosten für Ressourcen mit reservierter Kapazität – Azure SQL-Datenbank und SQL Managed Instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)] 
@@ -47,7 +47,7 @@ Nehmen Sie beispielsweise an, Sie führen einen universellen Pool für elastisch
 ## <a name="buy-reserved-capacity"></a>Erwerben von reservierter Kapazität
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-2. Klicken Sie auf **Alle Dienste** > **Reservierungen** .
+2. Klicken Sie auf **Alle Dienste** > **Reservierungen**.
 3. Wählen Sie **Hinzufügen** und dann im Bereich **Reservierungen erwerben** die Option **SQL-Datenbank** aus, um eine neue Reservierung für SQL-Datenbank zu erwerben.
 4. Füllen Sie die erforderlichen Felder aus. Bei vorhandenen Datenbanken in SQL-Datenbank und SQL Managed Instance, die den von Ihnen ausgewählten Attributen entsprechen, wird der Rabatt für reservierte Kapazitäten angewendet. Die tatsächliche Anzahl von Datenbanken oder verwalteten Instanzen, die den Rabatt erhalten, hängt vom ausgewählten Bereich und der ausgewählten Menge ab.
 
@@ -55,19 +55,19 @@ Nehmen Sie beispielsweise an, Sie führen einen universellen Pool für elastisch
 
     In der folgenden Tabelle werden die erforderlichen Felder beschrieben.
     
-    | Feld      | Beschreibung|
+    | Feld      | BESCHREIBUNG|
     |------------|--------------|
-    |Subscription|Das zum Bezahlen für die Kapazitätsreservierung verwendete Abonnement. Die Zahlungsmethode für das Abonnement wird mit Vorauszahlungen für die Reservierung belastet. Als Abonnementtyp muss „Enterprise Agreement“ (Angebotsnummer MS-AZR-0017P oder MS-AZR-0148P) oder ein Einzelvertrag mit nutzungsbasierter Bezahlung (Angebotsnummer MS-AZR-0003P oder MS-AZR-0023P) festgelegt werden. Bei einem Enterprise-Abonnement werden die Gebühren vom Verpflichtungsguthaben der Reservierung abgezogen oder als Überschreitung belastet. Bei einem individuellen Abonnement mit Preisen für nutzungsbasierte Zahlung wird die Kreditkarte mit den Gebühren belastet, oder die Gebühren werden für Zahlung auf Rechnung für das Abonnement in Rechnung gestellt.|
-    |`Scope`       |Die Reservierung virtueller Kerne kann ein Abonnement oder mehrere Abonnements (freigegebener Bereich) umfassen. Optionen: <br/><br/>**Gemeinsam** : Der Rabatt auf die Reservierung virtueller Kerne wird auf die Datenbank oder verwaltete Instanz angewendet, die in einem beliebigen Abonnement innerhalb des Abrechnungskontexts ausgeführt wird. Für Enterprise-Kunden stellt der freigegebene Bereich die Registrierung dar und umfasst alle Abonnements in der Registrierung. Für Kunden mit nutzungsbasierter Zahlung stellt der freigegebene Bereich alle Abonnements mit nutzungsbasierter Zahlung dar, die vom Kontoadministrator erstellt wurden.<br/><br/>**Einzelabonnement** : Der Rabatt auf die Reservierung virtueller Kerne wird auf die Datenbank oder verwaltete Instanz in diesem Abonnement angewendet. <br/><br/>**Einzelne Ressourcengruppe** : Der Reservierungsrabatt wird auf die Datenbankinstanzen oder die verwalteten Instanzen im ausgewählten Abonnement und die ausgewählte Ressourcengruppe in diesem Abonnement angewendet.|
+    |Subscription|Das zum Bezahlen für die Kapazitätsreservierung verwendete Abonnement. Die Zahlungsmethode für das Abonnement wird mit Vorauszahlungen für die Reservierung belastet. Als Abonnementtyp muss „Enterprise Agreement“ (Angebotsnummer MS-AZR-0017P oder MS-AZR-0148P) oder ein Einzelvertrag mit nutzungsbasierter Bezahlung (Angebotsnummer MS-AZR-0003P oder MS-AZR-0023P) festgelegt werden. Bei einem Enterprise-Abonnement werden die Gebühren vom Saldo der Azure-Vorauszahlung (zuvor als „Mindestverbrauch“ bezeichnet) der Registrierung abgezogen oder als Überschreitung berechnet. Bei einem individuellen Abonnement mit Preisen für nutzungsbasierte Zahlung wird die Kreditkarte mit den Gebühren belastet, oder die Gebühren werden für Zahlung auf Rechnung für das Abonnement in Rechnung gestellt.|
+    |`Scope`       |Die Reservierung virtueller Kerne kann ein Abonnement oder mehrere Abonnements (freigegebener Bereich) umfassen. Optionen: <br/><br/>**Gemeinsam**: Der Rabatt auf die Reservierung virtueller Kerne wird auf die Datenbank oder verwaltete Instanz angewendet, die in einem beliebigen Abonnement innerhalb des Abrechnungskontexts ausgeführt wird. Für Enterprise-Kunden stellt der freigegebene Bereich die Registrierung dar und umfasst alle Abonnements in der Registrierung. Für Kunden mit nutzungsbasierter Zahlung stellt der freigegebene Bereich alle Abonnements mit nutzungsbasierter Zahlung dar, die vom Kontoadministrator erstellt wurden.<br/><br/>**Einzelabonnement**: Der Rabatt auf die Reservierung virtueller Kerne wird auf die Datenbank oder verwaltete Instanz in diesem Abonnement angewendet. <br/><br/>**Einzelne Ressourcengruppe**: Der Reservierungsrabatt wird auf die Datenbankinstanzen oder die verwalteten Instanzen im ausgewählten Abonnement und die ausgewählte Ressourcengruppe in diesem Abonnement angewendet.|
     |Region      |Die Azure-Region, die durch die Kapazitätsreservierung abgedeckt wird.|
     |Bereitstellungstyp|Der SQL-Ressourcentyp, für den Sie die Reservierung erwerben möchten.|
     |Leistungsstufe|Die Dienstebene für die Datenbanken oder verwalteten Instanzen. |
     |Begriff        |Ein Jahr oder drei Jahre|
     |Menge    |Die Menge an Computeressourcen, die innerhalb der Kapazitätsreservierung erworben werden. Die Menge entspricht einer Anzahl von virtuellen Kernen in der ausgewählten Azure-Region und der Leistungsstufe, die reserviert werden und den Abrechnungsrabatt erhalten. Wenn Sie beispielsweise mehrere Datenbanken mit der gesamten Computekapazität von 16 virtuellen Gen5-Kernen in der Region „USA, Osten“ ausführen oder ausführen möchten, geben Sie als Menge „16“ an, um die Vorteile für alle Datenbanken zu maximieren. |
 
-1. Überprüfen Sie die Kosten für die Kapazitätsreservierung im Abschnitt **Kosten** .
-1. Wählen Sie die Option **Kaufen** .
-1. Klicken Sie auf **Diese Reservierung anzeigen** , um den Status des Einkaufs anzuzeigen.
+1. Überprüfen Sie die Kosten für die Kapazitätsreservierung im Abschnitt **Kosten**.
+1. Wählen Sie die Option **Kaufen**.
+1. Klicken Sie auf **Diese Reservierung anzeigen**, um den Status des Einkaufs anzuzeigen.
 
 ## <a name="cancel-exchange-or-refund-reservations"></a>Stornieren, Umtauschen oder Rückerstatten von Reservierungen
 

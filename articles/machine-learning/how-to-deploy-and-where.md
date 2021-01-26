@@ -1,26 +1,26 @@
 ---
-title: Wie und wo Modelle bereitgestellt werden
+title: Bereitstellen von Machine Learning-Modellen
 titleSuffix: Azure Machine Learning
-description: Erfahren Sie, wie und wo Sie Ihre Azure Machine Learning-Modelle bereitstellen können, einschließlich Azure Container Instances, Azure Kubernetes Service, Azure IoT Edge und Field Programmable Gate Arrays (FPGAs).
+description: Es wird beschrieben, wie und wo Sie Machine Learning-Modelle bereitstellen können. Die Bereitstellung ist für Azure Container Instances, Azure Kubernetes Service, Azure IoT Edge und FPGA möglich.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.author: gopalv
 author: gvashishtha
 ms.reviewer: larryfr
-ms.date: 12/11/2020
+ms.date: 01/13/2021
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, deploy, devx-track-azurecli
-ms.openlocfilehash: 195f1c527185fbd55450b6151f26525074db75f7
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: e9c691485eb0ec1a0b3c0564f9a8f9a5d2aa255d
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98070421"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98185800"
 ---
-# <a name="deploy-models-with-azure-machine-learning"></a>Bereitstellen von Modellen mit Azure Machine Learning
+# <a name="deploy-machine-learning-models-to-azure"></a>Bereitstellen von Machine Learning-Modellen für Azure
 
-Erfahren Sie, wie Sie Ihr Machine Learning-Modell als Webdienst in der Azure-Cloud oder auf Azure IoT Edge-Geräten bereitstellen.
+Es wird beschrieben, wie Sie Ihr Machine Learning- oder Deep Learning-Modell als Webdienst in der Azure-Cloud bereitstellen. Darüber hinaus ist auch die Bereitstellung auf Azure IoT Edge-Geräten möglich.
 
 Der Workflow ist unabhängig vom Bereitstellungsort Ihres Modells sehr ähnlich:
 
@@ -31,7 +31,7 @@ Der Workflow ist unabhängig vom Bereitstellungsort Ihres Modells sehr ähnlich:
 1. Stellen Sie das Modell auf dem Computeziel bereit.
 1. Testen des resultierenden Webdiensts
 
-Weitere Informationen zu den am Bereitstellungsworkflow beteiligten Konzepten finden Sie unter [Verwalten, Bereitstellen und Überwachen von Modellen mit Azure Machine Learning](concept-model-management-and-deployment.md).
+Weitere Informationen zu den Konzepten, die für den Workflow zur Bereitstellung von Machine Learning-Modellen gelten, finden Sie unter [Verwalten, Bereitstellen und Überwachen von Modellen mit Azure Machine Learning](concept-model-management-and-deployment.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -197,7 +197,7 @@ Eine Konfiguration für minimalen Rückschluss kann wie folgt geschrieben werden
 }
 ```
 
-Dadurch wird angegeben, dass die Bereitstellung die Datei `score.py` im Verzeichnis `./working_dir` verwendet, um eingehende Anforderungen zu verarbeiten.
+Hiermit wird angegeben, dass bei der Machine Learning-Bereitstellung die Datei `score.py` im Verzeichnis `./working_dir` verwendet wird, um eingehende Anforderungen zu verarbeiten.
 
 [In diesem Artikel](./reference-azure-machine-learning-cli.md#inference-configuration-schema) finden Sie eine ausführliche Erörterung von Rückschlusskonfigurationen. 
 
@@ -269,7 +269,7 @@ from azureml.core.webservice import AciWebservice, AksWebservice, LocalWebservic
 
 ---
 
-## <a name="deploy-your-model"></a>Bereitstellen Ihres Modells
+## <a name="deploy-your-machine-learning-model"></a>Bereitstellen Ihres Machine Learning-Modells
 
 Sie können Ihr Modell jetzt bereitstellen. 
 

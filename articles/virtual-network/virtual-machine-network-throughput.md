@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 4/26/2019
 ms.author: steveesp
 ms.reviewer: kumud, mareat
-ms.openlocfilehash: f0bad935c7c3d44f57dd171f714f31856bc2089c
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: 280b3cbef8307691b0d50c4a26f6dca18b7fb65b
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91361312"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98233864"
 ---
 # <a name="virtual-machine-network-bandwidth"></a>Netzwerkdurchsatz virtueller Computer
 
@@ -32,11 +32,11 @@ Der eingehende Datenverkehr wird nicht gemessen oder direkt beschränkt. Es gibt
 
 Der beschleunigte Netzwerkbetrieb ist ein Feature, das der Verbesserung der Netzwerkleistung, einschließlich Latenz, Durchsatz und CPU-Auslastung, dient. Zwar kann durch den beschleunigten Netzwerkbetrieb der Durchsatz eines virtuellen Computers verbessert werden, doch ist dies nur im Rahmen der Bandbreite möglich, die dem virtuellen Computer zugewiesen ist. Weitere Informationen zur Verwendung des beschleunigten Netzwerkbetriebs finden Sie unter den entsprechenden Abschnitten für virtuelle [Windows](create-vm-accelerated-networking-powershell.md)- oder [Linux](create-vm-accelerated-networking-cli.md)-Computer.
  
-Virtuellen Azure-Computern muss eine Netzwerkschnittstelle angefügt sein, doch können es auch mehrere sein. Die einem virtuellen Computer zugewiesene Bandbreite umfasst die Summe des gesamten ausgehenden Datenverkehrs aller Netzwerkschnittstellen, die an einen virtuellen Computer angefügt sind. Anders ausgedrückt: Die zugewiesene Bandbreite gilt pro virtuellem Computer, unabhängig davon, wie viele Netzwerkschnittstellen an den virtuellen Computer angefügt sind. Informationen dazu, wie viele Netzwerkschnittstellen von virtuellen Azure-Computern verschiedener Größen unterstützt werden, finden Sie unter den Größen für virtuelle [Windows](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)- und [Linux](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)-Computer in Azure. 
+Virtuellen Azure-Computern muss eine Netzwerkschnittstelle angefügt sein, doch können es auch mehrere sein. Die einem virtuellen Computer zugewiesene Bandbreite umfasst die Summe des gesamten ausgehenden Datenverkehrs aller Netzwerkschnittstellen, die an einen virtuellen Computer angefügt sind. Anders ausgedrückt: Die zugewiesene Bandbreite gilt pro virtuellem Computer, unabhängig davon, wie viele Netzwerkschnittstellen an den virtuellen Computer angefügt sind. Informationen dazu, wie viele Netzwerkschnittstellen von virtuellen Azure-Computern verschiedener Größen unterstützt werden, finden Sie unter den Größen für virtuelle [Windows](../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)- und [Linux](../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)-Computer in Azure. 
 
 ## <a name="expected-network-throughput"></a>Erwartete Netzwerkdurchsatz
 
-Der erwartete ausgehende Durchsatz und die Anzahl der Netzwerkschnittstellen, die von der jeweiligen Größe des virtuellen Computers unterstützt werden, ist unter den Größen für virtuelle [Windows](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)- und [Linux](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)-Computer in Azure angegeben. Wählen Sie einen Typ aus (z. B. „Allgemeiner Zweck“), und wählen Sie dann auf der daraufhin angezeigten Seite eine Größenserie aus (z. B. die Dv2-Serie). Jede Serie weist eine Tabelle mit Netzwerkspezifikationen in der letzten Spalte mit dem Titel **Maximale Anzahl NICs/Erwartete Netzwerkbandbreite (Mbps)** auf. 
+Der erwartete ausgehende Durchsatz und die Anzahl der Netzwerkschnittstellen, die von der jeweiligen Größe des virtuellen Computers unterstützt werden, ist unter den Größen für virtuelle [Windows](../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)- und [Linux](../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)-Computer in Azure angegeben. Wählen Sie einen Typ aus (z. B. „Allgemeiner Zweck“), und wählen Sie dann auf der daraufhin angezeigten Seite eine Größenserie aus (z. B. die Dv2-Serie). Jede Serie weist eine Tabelle mit Netzwerkspezifikationen in der letzten Spalte mit dem Titel **Maximale Anzahl NICs/Erwartete Netzwerkbandbreite (Mbps)** auf. 
 
 Die Durchsatzbegrenzung gilt für den virtuellen Computer. Der Durchsatz wird durch folgende Faktoren nicht beeinflusst:
 - **Anzahl der Netzwerkschnittstellen**: Der Bandbreitengrenzwert ist ein kumulativer Wert des gesamten ausgehenden Datenverkehrs vom virtuellen Computer.
@@ -52,15 +52,13 @@ Datenübertragungen zwischen Endpunkten erfordern die Erstellung von mehreren Fl
 
 ![Anzahl von Flows für die TCP-Konversation über ein Weiterleitungsgerät](media/virtual-machine-network-throughput/flow-count-through-network-virtual-appliance.png)
 
-## <a name="flow-limits-and-recommendations"></a>Grenzwerte und Empfehlungen für Flows
+## <a name="flow-limits-and-active-connections-recommendations"></a>Empfehlungen für Flowgrenzwerte und aktive Verbindungen
 
-Zurzeit unterstützt der Azure-Netzwerkstapel 250.000 Netzwerkflows insgesamt mit guter Leistung für virtuelle Computer mit mehr als 8 CPU-Kernen und 100.000 Flows insgesamt mit guter Leistung für virtuelle Computer mit weniger als 8 CPU-Kernen. Jenseits dieses Grenzwerts nimmt die Leistung für weitere Flows nach und nach ab. Dies gilt bis zur absoluten Obergrenze von 500.000 Flows (250.000 eingehend und 250.000 ausgehend), ab der weitere Flows verworfen werden.
+Heute unterstützt der Azure-Netzwerkstapel insgesamt 1 Million Flows (500.000 eingehend und 500.000 ausgehend) für einen virtuellen Computer. Die Gesamtzahl der aktiven Verbindungen, die von einem virtuellen Computer in verschiedenen Szenarien verarbeitet werden können, lauten wie folgt.
+- Virtuelle Computer, die zu VNET gehören, können 500.000 **_aktive Verbindungen_* _ für alle VM-Größen mit 500.000 _*_aktiven Flows in jeder Richtung_*_ verarbeiten.  
+- Virtuelle Computer mit virtuellen Netzwerkgeräten (Network Virtual Appliances, NVAs) wie Gateway, Proxy, Firewall können 250.000 _*_aktive Verbindungen_*_ mit 500.000 _ *_aktiven Flows in jeder Richtung_** aufgrund der Weiterleitung und zusätzlichen Erstellung neuer Flows beim Einrichten der neuen Verbindung zum nächsten Hop verarbeiten, wie in der obigen Abbildung dargestellt. 
 
-| Leistungsstufe | VMs mit weniger als 8 CPU-Kernen | VMs mit mehr als 8 CPU-Kernen |
-| ----------------- | --------------------- | --------------------- |
-|<b>Gute Leistung</b>|100.000 Flows |250.000 Flows|
-|<b>Abgeminderte Leistung</b>|Über 100.000 Flows|Über 250.000 Flows|
-|<b>Grenzwert für Flows</b>|500.000 Flows|500.000 Flows|
+Nachdem dieser Grenzwert erreicht wurde, werden weitere Verbindungen getrennt. Die Raten für die Verbindungsherstellung und -beendigung können sich ebenfalls auf die Netzwerkleistung auswirken, da für die Verbindungsherstellung und -beendigung CPU-Ressourcen mit der Paketverarbeitung geteilt werden. Es wird empfohlen, Benchmarktests für Ihre Workloads mit den zu erwartenden Datenverkehrsmustern durchzuführen und die Workloads entsprechend den Leistungsanforderungen aufzuskalieren.
 
 In [Azure Monitor](../azure-monitor/platform/metrics-supported.md#microsoftcomputevirtualmachines) stehen Metriken zum Nachverfolgen der Anzahl von Netzwerkflows und der Rate der Erstellung von Flows auf Ihren virtuellen Computern oder VMSS-Instanzen zur Verfügung.
 

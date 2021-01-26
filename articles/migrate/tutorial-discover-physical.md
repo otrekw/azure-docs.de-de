@@ -7,12 +7,12 @@ ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: mvc
-ms.openlocfilehash: 639b810cbb99496f84b76fc96124145a019fb625
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: 548cee262d874f5bc0f6024a857c2bb8a5466106
+ms.sourcegitcommit: 949c0a2b832d55491e03531f4ced15405a7e92e3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97705539"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98541341"
 ---
 # <a name="tutorial-discover-physical-servers-with-server-assessment"></a>Tutorial: Ermitteln physischer Server mit der Serverbewertung
 
@@ -40,7 +40,7 @@ Bevor Sie mit diesem Tutorial beginnen, überprüfen Sie, ob die folgenden Vorau
 
 **Anforderung** | **Details**
 --- | ---
-**Appliance** | Sie benötigen einen Computer für die Ausführung der Azure Migrate-Appliance. Der Computer sollte über Folgendes verfügen:<br/><br/> - Installation von Windows Server 2016. _(Derzeit wird die Bereitstellung einer Appliance nur unter Windows Server 2016 unterstützt.)_<br/><br/> - 16 GB RAM, 8 virtuelle CPUs, ungefähr 80 GB Speicherplatz auf dem Datenträger<br/><br/> - eine statische oder dynamische IP-Adresse sowie Internetzugriff (entweder direkt oder über einen Proxy)
+**Appliance** | Sie benötigen einen Computer für die Ausführung der Azure Migrate-Appliance. Der Computer sollte über Folgendes verfügen:<br/><br/> - Installation von Windows Server 2016.<br/> _(Derzeit wird die Bereitstellung einer Appliance nur unter Windows Server 2016 unterstützt.)_<br/><br/> - 16 GB RAM, acht vCPUs, ungefähr 80 GB Speicherplatz auf dem Datenträger<br/><br/> - eine statische oder dynamische IP-Adresse sowie Internetzugriff (entweder direkt oder über einen Proxy)
 **Windows-Server** | Lassen Sie eingehende Verbindungen am WinRM-Port 5985 (HTTP) zu, sodass die Appliance Konfigurations- und Leistungsmetadaten pullen kann.
 **Linux-Server** | Lassen Sie eingehende Verbindungen über Port 22 (TCP) zu.
 
@@ -48,7 +48,7 @@ Bevor Sie mit diesem Tutorial beginnen, überprüfen Sie, ob die folgenden Vorau
 
 Zum Erstellen eines Azure Migrate-Projekts und Registrieren der Azure Migrate-Appliance benötigen Sie ein Konto mit den folgenden Berechtigungen:
 - Berechtigungen vom Typ „Mitwirkender“ oder „Besitzer“ für ein Azure-Abonnement
-- Berechtigungen zum Registrieren von Azure Active Directory-Apps
+- Berechtigungen zum Registrieren von AAD-Apps (Azure Active Directory)
 
 Wenn Sie gerade erst ein kostenloses Azure-Konto erstellt haben, sind Sie der Besitzer Ihres Abonnements. Wenn Sie nicht der Besitzer des Abonnements sind, müssen Sie mit dem Besitzer zusammenarbeiten, um die Berechtigungen wie folgt zuzuweisen:
 
@@ -67,19 +67,20 @@ Wenn Sie gerade erst ein kostenloses Azure-Konto erstellt haben, sind Sie der Be
 
     ![Die Seite „Rollenzuweisung“ wird geöffnet, auf der Sie dem Konto eine Rolle zuweisen können.](./media/tutorial-discover-physical/assign-role.png)
 
-7. Suchen Sie im Portal nach Benutzern, und wählen Sie unter **Dienste** die Option **Benutzer** aus.
-8. Vergewissern Sie sich unter **Benutzereinstellungen**, dass Azure AD-Benutzer Anwendungen registrieren können (standardmäßig auf **Ja** festgelegt).
+1. Ihr Azure-Konto benötigt **Berechtigungen zum Registrieren von AAD-Apps**, um die Appliance registrieren zu können.
+1. Navigieren Sie im Azure-Portal zu **Azure Active Directory** > **Benutzer** > **Benutzereinstellungen**.
+1. Vergewissern Sie sich unter **Benutzereinstellungen**, dass Azure AD-Benutzer Anwendungen registrieren können (standardmäßig auf **Ja** festgelegt).
 
     ![Überprüfen unter „Benutzereinstellungen“, ob Benutzer Active Directory-Apps registrieren können](./media/tutorial-discover-physical/register-apps.png)
 
-9. Als Alternative kann der Mandantenadministrator/globale Administrator einem Konto die Rolle **Anwendungsentwickler** zuweisen, um die Registrierung von AAD-Apps zuzulassen. [Weitere Informationen](../active-directory/fundamentals/active-directory-users-assign-role-azure-portal.md)
+9. Wenn die Einstellungen für „App-Registrierungen“ auf „Nein“ festgelegt sind, fordern Sie den Mandantenadministrator/globalen Administrator auf, die erforderliche Berechtigung zuzuweisen. Alternativ kann der Mandantenadministrator/globale Administrator einem Konto die Rolle **Anwendungsentwickler** zuweisen, um die Registrierung von AAD-Apps zuzulassen. [Weitere Informationen](../active-directory/fundamentals/active-directory-users-assign-role-azure-portal.md)
 
 ## <a name="prepare-physical-servers"></a>Vorbereiten physischer Server
 
 Richten Sie ein Konto ein, das von der Appliance für den Zugriff auf die physischen Server verwendet werden kann.
 
-- Verwenden Sie für Windows-Server ein Domänenkonto für in die Domäne eingebundene Computer und ein lokales Konto für nicht in die Domäne eingebundene Computer. Das Benutzerkonto sollte diesen Gruppen hinzugefügt werden: Remoteverwaltungsbenutzer, Leistungsüberwachungsbenutzer und Leistungsprotokollbenutzer.
-- Linux-Server: Sie benötigen ein root-Konto auf den Linux-Servern, die Sie ermitteln möchten. Alternativ dazu können Sie auch mithilfe der folgenden Befehle ein Konto mit den erforderlichen Funktionen festlegen, bei dem es sich nicht um das root-Konto handelt:
+- Verwenden Sie für **Windows-Server** ein Domänenkonto für in die Domäne eingebundene Computer und ein lokales Konto für nicht in die Domäne eingebundene Computer. Das Benutzerkonto sollte diesen Gruppen hinzugefügt werden: Remoteverwaltungsbenutzer, Leistungsüberwachungsbenutzer und Leistungsprotokollbenutzer.
+- Für **Linux-Server** benötigen Sie ein root-Konto auf den Linux-Servern, die Sie ermitteln möchten. Alternativ dazu können Sie auch mithilfe der folgenden Befehle ein Konto mit den erforderlichen Funktionen festlegen, bei dem es sich nicht um das root-Konto handelt:
 
 **Befehl** | **Zweck**
 --- | --- |
@@ -102,23 +103,25 @@ Richten Sie ein neues Azure Migrate-Projekt ein.
    ![Felder für Projektname und Region](./media/tutorial-discover-physical/new-project.png)
 
 7. Klicken Sie auf **Erstellen**.
-8. Warten Sie einige Minuten, bis das Azure Migrate-Projekt bereitgestellt wurde.
-
-Das Tool **Azure Migrate- Serverbewertung** wird dem neuen Projekt standardmäßig hinzugefügt.
+8. Warten Sie einige Minuten, bis das Azure Migrate-Projekt bereitgestellt wurde. Das Tool **Azure Migrate- Serverbewertung** wird dem neuen Projekt standardmäßig hinzugefügt.
 
 ![Seite mit dem standardmäßig hinzugefügten Serverbewertungstool](./media/tutorial-discover-physical/added-tool.png)
 
+> [!NOTE]
+> Wenn Sie bereits ein Projekt erstellt haben, können Sie dieses Projekt zum Registrieren zusätzlicher Appliances verwenden, um mehr Server zu ermitteln und zu bewerten. [Weitere Informationen](create-manage-projects.md#find-a-project)
 
 ## <a name="set-up-the-appliance"></a>Einrichten der Appliance
 
-Die Einrichtung der Appliance umfasst Folgendes:
-- Geben Sie einen Appliancenamen ein, und generieren Sie einen Azure Migrate-Projektschlüssel im Portal.
-- Herunterladen einer gezippten Datei mit dem Azure Migrate-Installationsskript aus dem Azure-Portal.
-- Extrahieren der Inhalte aus der gezippten Datei. Starten der PowerShell-Konsole mit Administratorrechten.
-- Ausführen des PowerShell-Skripts zum Starten der Appliancewebanwendung.
-- Führen Sie eine Erstkonfiguration für die Appliance aus, und registrieren Sie die Appliance beim Azure Migrate-Projekt unter Verwendung des Azure Migrate-Projektschlüssels.
+Die Azure Migrate-Appliance ermittelt Server und sendet Konfigurations- und Leistungsmetadaten zu Servern an Azure Migrate. Die Appliance kann durch Ausführung eines PowerShell-Skripts eingerichtet werden, das aus dem Azure Migrate-Projekt heruntergeladen werden kann.
 
-### <a name="generate-the-azure-migrate-project-key"></a>Generieren des Azure Migrate-Projektschlüssels
+Die Einrichtung der Appliance umfasst Folgendes:
+1. Geben Sie einen Appliancenamen ein, und generieren Sie einen Azure Migrate-Projektschlüssel im Portal.
+2. Herunterladen einer gezippten Datei mit dem Azure Migrate-Installationsskript aus dem Azure-Portal.
+3. Extrahieren der Inhalte aus der gezippten Datei. Starten der PowerShell-Konsole mit Administratorrechten.
+4. Ausführen des PowerShell-Skripts zum Starten der Appliancewebanwendung.
+5. Führen Sie eine Erstkonfiguration für die Appliance aus, und registrieren Sie die Appliance beim Azure Migrate-Projekt unter Verwendung des Azure Migrate-Projektschlüssels.
+
+### <a name="1-generate-the-azure-migrate-project-key"></a>1. Generieren des Azure Migrate-Projektschlüssels
 
 1. Klicken Sie unter **Migrationsziele** > **Server** > **Azure Migrate: Server Assessment** (Azure Migrate-Serverbewertung) auf **Ermitteln**.
 2. Wählen Sie unter **Computer ermitteln** > **Sind Ihre Computer virtualisiert?** die Option **Physisch/Andere (AWS, GCP, Xen usw.)** aus.
@@ -127,10 +130,9 @@ Die Einrichtung der Appliance umfasst Folgendes:
 1. Nach der erfolgreichen Erstellung der Azure-Ressourcen wird ein **Azure Migrate-Projektschlüssel** generiert.
 1. Kopieren Sie den Schlüssel, da Sie ihn benötigen, um die Registrierung der Appliance während der Konfiguration abzuschließen.
 
-### <a name="download-the-installer-script"></a>Herunterladen des Installationsskripts
+### <a name="2-download-the-installer-script"></a>2. Herunterladen des Installationsskripts
 
 Klicken Sie in **2: Azure Migrate-Appliance herunterladen** auf **Herunterladen**.
-
 
 ### <a name="verify-security"></a>Überprüfen der Sicherheit
 
@@ -155,7 +157,7 @@ Vergewissern Sie sich vor der Bereitstellung, dass die gezippte Datei sicher ist
         Physisch (85,8 MB) | [Aktuelle Version](https://go.microsoft.com/fwlink/?linkid=2140338) | ae132ebc574caf231bf41886891040ffa7abbe150c8b50436818b69e58622276
  
 
-### <a name="run-the-azure-migrate-installer-script"></a>Ausführen des Azure Migrate-Installationsskripts
+### <a name="3-run-the-azure-migrate-installer-script"></a>3. Ausführen des Azure Migrate-Installationsskripts
 Das Installationsskript führt folgende Schritte aus:
 
 - Installation der Agents und einer Webanwendung für die Ermittlung und Bewertung physischer Server.
@@ -184,13 +186,11 @@ Führen Sie das Skript wie folgt aus:
 
 Bei Problemen können Sie zum Troubleshooting unter „C:\ProgramData\Microsoft Azure\Logs\AzureMigrateScenarioInstaller_<em>Zeitstempel</em>.log“ auf die Skriptprotokolle zugreifen.
 
-
-
 ### <a name="verify-appliance-access-to-azure"></a>Überprüfen des Appliancezugriffs auf Azure
 
 Stellen Sie sicher, dass die Appliance-VM eine Verbindung mit Azure-URLs für [öffentliche](migrate-appliance.md#public-cloud-urls) und [Government](migrate-appliance.md#government-cloud-urls)-Clouds herstellen kann.
 
-### <a name="configure-the-appliance"></a>Konfigurieren der Appliance
+### <a name="4-configure-the-appliance"></a>4. Konfigurieren der Appliance
 
 Führen Sie die Ersteinrichtung der Appliance durch.
 
@@ -214,12 +214,12 @@ Führen Sie die Ersteinrichtung der Appliance durch.
 
     ![Modales Dialogfeld mit Gerätecode](./media/tutorial-discover-vmware/device-code.png)
 
-1. Klicken Sie auf **Copy code & Login** (Code kopieren und anmelden), um den Gerätecode zu kopieren und eine Azure-Anmeldeaufforderung in einem neuen Browsertab zu öffnen. Sollte keine Anmeldung angezeigt werden, vergewissern Sie sich, dass Sie den Popupblocker im Browser deaktiviert haben.
-1. Fügen Sie im neuen Tab den Gerätecode ein, und melden Sie sich mit Ihrem Azure-Benutzernamen und dem zugehörigen Kennwort an.
+1. Klicken Sie auf **Copy code & Login** (Code kopieren und anmelden), um den Gerätecode zu kopieren und eine Azure-Anmeldeaufforderung in einer neuen Browserregisterkarte zu öffnen. Sollte keine Anmeldung angezeigt werden, vergewissern Sie sich, dass Sie den Popupblocker im Browser deaktiviert haben.
+1. Fügen Sie auf der neuen Registerkarte den Gerätecode ein, und melden Sie sich mit Ihrem Azure-Benutzernamen und dem zugehörigen Kennwort an.
    
    Die Anmeldung mit einer PIN wird nicht unterstützt.
-3. Falls Sie den Tab für die Anmeldung versehentlich schließen, ohne die Anmeldung durchzuführen, müssen Sie den Browsertab des Appliance-Konfigurations-Managers aktualisieren, um die Schaltfläche „Anmelden“ wieder zu aktivieren.
-1. Wechseln Sie nach der erfolgreichen Anmeldung wieder zum vorherigen Tab mit dem Appliance-Konfigurations-Manager.
+3. Falls Sie die Registerkarte für die Anmeldung versehentlich schließen, ohne die Anmeldung durchzuführen, müssen Sie die Browserregisterkarte des Appliance-Konfigurations-Managers aktualisieren, um die Schaltfläche „Anmelden“ wieder zu aktivieren.
+1. Wechseln Sie nach der erfolgreichen Anmeldung wieder zur vorherigen Registerkarte mit dem Appliance-Konfigurations-Manager.
 4. Wenn das für die Protokollierung verwendete Azure-Benutzerkonto über die richtigen [Berechtigungen]() für die während der Schlüsselgenerierung erstellten Azure-Ressourcen verfügt, wird die Registrierung der Appliance initiiert.
 1. Nachdem die Appliance erfolgreich registriert wurde, können Sie die Registrierungsdetails anzeigen, indem Sie auf **Details anzeigen** klicken.
 

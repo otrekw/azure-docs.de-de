@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 01/03/2021
-ms.openlocfilehash: 5eb58c48acc7974a4379cf1993a73228c99f5e6d
-ms.sourcegitcommit: 697638c20ceaf51ec4ebd8f929c719c1e630f06f
+ms.openlocfilehash: 03a16bfbcb3a8d46a6cb4faa03aa6b6e96cf3db3
+ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97857557"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98165959"
 ---
 # <a name="configure-azure-to-connect-itsm-tools-using-secure-export"></a>Konfigurieren von Azure für Verbindungen mit ITSM-Tools unter Verwendung von Secure Export
 
@@ -39,9 +39,9 @@ Führen Sie diese Schritte aus, um die Anwendung bei Azure AD zu registrieren:
 
 ## <a name="define-service-principal"></a>Definieren eines Dienstprinzipals
 
-Der Aktionsgruppendienst benötigt die Berechtigung zum Abrufen von Authentifizierungstoken von Ihrer AAD-Anwendung, um eine Authentifizierung mit ServiceNow durchführen zu können. Zum Erteilen dieser Berechtigungen müssen Sie einen Dienstprinzipal für den Aktionsgruppendienst in Ihrem Mandanten erstellen.
-Sie können dafür diese [PowerShell-Befehle](./action-groups.md#secure-webhook-powershell-script) verwenden. (Erfordert Administratorberechtigungen)
-Als optionalen Schritt können Sie im Manifest der erstellten App eine Anwendungsrolle definieren, um den Zugriff so einzuschränken, dass nur bestimmte Anwendungen mit dieser Rolle Nachrichten senden können. Diese Rolle muss dann dem Dienstprinzipal der Aktionsgruppe zugewiesen werden. \
+Der Aktionsgruppendienst ist eine Erstanbieteranwendung und verfügt daher über die Berechtigung zum Abrufen von Authentifizierungstoken von Ihrer AAD-Anwendung, um eine Authentifizierung mit ServiceNow durchführen zu können.
+Als optionalen Schritt können Sie im Manifest der erstellten App eine Anwendungsrolle definieren, um den Zugriff so einzuschränken, dass nur bestimmte Anwendungen mit dieser Rolle Nachrichten senden können. Diese Rolle muss dann dem Dienstprinzipal der Aktionsgruppe zugewiesen werden (erfordert Mandantenadministratorrechte).
+
 Dieser Schritt kann mithilfe derselben [PowerShell-Befehle](./action-groups.md#secure-webhook-powershell-script) ausgeführt werden.
 
 ## <a name="create-a-secure-webhook-action-group"></a>Erstellen einer Aktionsgruppe „Sicherer Webhook“

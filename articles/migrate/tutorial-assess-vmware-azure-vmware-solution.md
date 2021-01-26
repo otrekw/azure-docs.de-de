@@ -7,12 +7,12 @@ ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: MVC
-ms.openlocfilehash: f6d3c6f77b062939a88e7277cb7f0ab6ecff9fcb
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: e57084dab00210802edbd46e3380313e034eb036
+ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96753075"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98566734"
 ---
 # <a name="tutorial-assess-vmware-vms-for-migration-to-avs"></a>Tutorial: Bewerten von virtuellen VMware-Computern für die Migration zu AVS
 
@@ -58,58 +58,63 @@ Führen Sie eine Bewertung wie folgt aus:
 
    ![Ort der Schaltfläche „Server bewerten und migrieren“](./media/tutorial-assess-vmware-azure-vmware-solution/assess.png)
 
-2. Klicken Sie in **Azure Migrate: Server Assessment** (Azure Migrate-Serverbewertung) auf **Bewerten**.
+1. Klicken Sie in **Azure Migrate: Server Assessment** (Azure Migrate-Serverbewertung) auf **Bewerten**.
 
-3. Wählen Sie unter **Server bewerten** > **Bewertungstyp** die Option **Azure VMware Solution (AVS) (Vorschau)** aus.
-4. Unter **Ermittlungsquelle**:
+1. Wählen Sie unter **Server bewerten** > **Bewertungstyp** die Option **Azure VMware Solution (AVS) (Vorschau)** aus.
+
+1. Unter **Ermittlungsquelle**:
 
     - Wählen Sie die Option **Von Azure Migrate-Appliance erkannte Computer** aus, falls Sie Computer mit der Appliance ermittelt haben.
     - Wählen Sie die Option **Importierte Computer** aus, falls Sie Computer mit einer importierten CSV-Datei ermittelt haben. 
     
-5. Geben Sie einen Namen für die Bewertung an. 
-6. Klicken Sie auf **Alle anzeigen**, um die Eigenschaften für die Bewertung zu überprüfen.
+1. Klicken Sie auf **Bearbeiten**, um die Eigenschaften für die Bewertung zu überprüfen.
 
-    ![Seite zum Auswählen der Bewertungseinstellungen](./media/tutorial-assess-vmware-azure-vmware-solution/assess-servers.png)
+    :::image type="content" source="./media/tutorial-assess-vmware-azure-vmware-solution/assess-servers.png" alt-text="Seite zum Auswählen der Bewertungseinstellungen":::
+ 
 
-
-7. Unter **Bewertungseigenschaften** > **Zieleigenschaften**:
+1. Unter **Bewertungseigenschaften** > **Zieleigenschaften**:
 
     - Geben Sie unter **Zielspeicherort** die Azure-Region an, zu der Sie die Migration durchführen möchten.
        - Empfehlungen zur Größe und zu den Kosten basieren auf dem von Ihnen angegebenen Standort.
-       - Derzeit können Sie die Bewertung für drei Regionen („USA, Osten“, „USA, Westen“, „Europa, Westen“) durchführen.
-   - Übernehmen Sie unter **Speichertyp** die Option **vSAN**. Dies ist der Standardspeichertyp für eine private AVS-Cloud.
+       - Derzeit können Sie die Bewertung für vier Regionen („Australien, Osten“, „USA, Osten“, „Europa, Westen“, „USA, Westen“) durchführen.
+   - Der **Speichertyp** wird standardmäßig auf **vSAN** festgelegt. Dies ist der Standardspeichertyp für eine private AVS-Cloud.
    - **Reservierte Instanzen** werden für AVS-Knoten derzeit nicht unterstützt.
-8. Unter **VM-Größe**:
-    - Wählen Sie unter **Knotentyp** einen Knotentyp basierend auf den Workloads aus, die auf den lokalen VMs ausgeführt werden.
-        - Azure Migrate empfiehlt aus der Gruppe der Knoten denjenigen Knoten, der zum Migrieren der VMs zu AVS benötigt wird.
-        - Der Standardknotentyp ist AV36.
-    - **FTT-Einstellung, RAID-Ebene**: Wählen Sie die Kombination für tolerierbare Fehler (Failure to Tolerate, FTT) und RAID aus.  Die ausgewählte FTT-Option in Kombination mit der lokalen VM-Datenträgeranforderung bestimmt den insgesamt in AVS erforderlichen vSAN-Speicher.
+1. Unter **VM-Größe**:
+    - Der **Knotentyp** wird standardmäßig auf **AV36** festgelegt. Azure Migrate empfiehlt aus der Gruppe der Knoten denjenigen Knoten, der zum Migrieren der VMs zu AVS benötigt wird.
+    - Wählen Sie unter **FTT-Einstellung, RAID-Ebene** die Kombination für tolerierbare Fehler (Failure to Tolerate, FTT) und RAID aus.  Die ausgewählte FTT-Option in Kombination mit der lokalen VM-Datenträgeranforderung bestimmt den insgesamt in AVS erforderlichen vSAN-Speicher.
     - Geben Sie unter **CPU-Überzeichnung** das Verhältnis der virtuellen Kerne an, die auf dem AVS-Knoten einem physischen Kern zugeordnet sind. Eine höhere Überzeichnung als 4:1 kann unter Umständen zwar zu einer Leistungsbeeinträchtigung führen, aber sie kann für Workloads vom Typ „Webserver“ verwendet werden.
 
-9. Unter **Knotengröße**: 
+1. Unter **Knotengröße**: 
     - Wählen Sie unter **Größenkriterium** aus, ob die Bewertung auf statischen Metadaten oder leistungsbezogenen Daten basieren soll. Bei Verwendung von Leistungsdaten:
         - Geben Sie unter **Leistungsverlauf** die Datendauer an, auf der die Bewertung basieren soll.
         - Geben Sie unter **Perzentilwert der Nutzung** den Perzentilwert an, den Sie für das Leistungsbeispiel verwenden möchten. 
     - Geben Sie unter **Komfortfaktor** den Puffer an, den Sie während der Bewertung verwenden möchten. Hierbei werden Aspekte wie saisonale Nutzung, ein kurzer Leistungsverlauf und eine voraussichtliche Zunahme der zukünftigen Nutzung berücksichtigt. Beispiel für einen Komfortfaktor von „2“:
     
         **Komponente** | **Tatsächliche Auslastung** | **Komfortfaktor hinzufügen (2.0)**
-        --- | --- | ---  
-        Kerne | 2 | 4
-        Arbeitsspeicher | 8 GB | 16 GB     
+        --- | --- | ---
+        Kerne | 2  | 4
+        Arbeitsspeicher | 8 GB | 16 GB  
 
-10. Unter **Preise**:
+1. Unter **Preise**:
     - Unter **Angebot** wird das [Azure-Angebot](https://azure.microsoft.com/support/legal/offer-details/) angezeigt, für das Sie registriert sind. Bei der Serverbewertung werden die Kosten für dieses Angebot geschätzt.
     - Wählen Sie unter **Währung** die Abrechnungswährung für Ihr Konto aus.
     - Fügen Sie unter **Abzug (%)** alle abonnementspezifischen Rabatte hinzu, die Sie zusätzlich zum Azure-Angebot erhalten. Die Standardeinstellung ist 0 %.
 
-11. Klicken Sie auf **Speichern**, falls Sie Änderungen vorgenommen haben.
+1. Klicken Sie auf **Speichern**, falls Sie Änderungen vorgenommen haben.
 
-    ![Bewertungseigenschaften](./media/tutorial-assess-vmware-azure-vmware-solution/view-all.png)
+    :::image type="content" source="./media/tutorial-assess-vmware-azure-vmware-solution/avs-view-all.png" alt-text="Bewertungseigenschaften":::
 
-12. Klicken Sie unter **Server bewerten** auf **Weiter**.
-13. Wählen Sie zum Erstellen einer neuen Gruppe mit Servern für die Bewertung unter **Server bewerten** > **Computer für die Bewertung auswählen** die Option **Neu erstellen** aus, und geben Sie einen Gruppennamen an. 
-14. Wählen Sie die Appliance und dann die VMs aus, die Sie der Gruppe hinzufügen möchten. Klicken Sie dann auf **Weiter**.
-15. Sehen Sie sich unter **Überprüfen + Bewertung erstellen** die Bewertungsdetails an, und klicken Sie auf **Bewertung erstellen**, um die Gruppe zu erstellen und die Bewertung durchzuführen.
+1. Klicken Sie unter **Server bewerten** auf **Weiter**.
+
+1. Geben Sie in **Computer für die Bewertung auswählen** > **Bewertungsname** einen Namen für die Bewertung an. 
+ 
+1. Wählen Sie unter **Gruppe auswählen oder erstellen** die Option **Neu erstellen** aus, und geben Sie einen Namen für die Gruppe ein. 
+    
+    :::image type="content" source="./media/tutorial-assess-vmware-azure-vmware-solution/assess-group.png" alt-text="Hinzufügen von VMs zu einer Gruppe":::
+ 
+1. Wählen Sie die Appliance und dann die VMs aus, die Sie der Gruppe hinzufügen möchten. Klicken Sie dann auf **Weiter**.
+
+1. Sehen Sie sich unter **Überprüfen + Bewertung erstellen** die Bewertungsdetails an, und klicken Sie auf **Bewertung erstellen**, um die Gruppe zu erstellen und die Bewertung durchzuführen.
 
     > [!NOTE]
     > Bei leistungsbezogenen Bewertungen empfehlen wir Ihnen, nach dem Starten einer Ermittlung mindestens einen Tag zu warten, bevor Sie eine Bewertung erstellen. Dies ermöglicht einen längeren Zeitraum zum Sammeln von Leistungsdaten mit höherer Zuverlässigkeit. Idealerweise sollten Sie nach dem Starten der Ermittlung den Zeitraum der Leistungsdauer abwarten, den Sie angegeben haben (Tag/Woche/Monat), um eine Bewertung mit einer hohen Zuverlässigkeit zu erzielen.
@@ -121,6 +126,8 @@ Mit einer AVS-Bewertung wird Folgendes beschrieben:
 - AVS-Bereitschaft: Ermittelt, ob die lokalen virtuellen Computer für die Migration zu Azure VMware Solution (AVS) geeignet sind.
 - Anzahl der AVS-Knoten: Geschätzte Anzahl der AVS-Knoten, die zur Ausführung der virtuellen Computer erforderlich sind.
 - Übergreifende Nutzung auf AVS-Knoten: Projizierte CPU-, Arbeitsspeicher- und Speicherauslastung über alle Knoten hinweg.
+    - Die Nutzung beinhaltet Voraus-Factoring in den folgenden Mehraufwandsbereichen der Clusterverwaltung wie vCenter Server, NSX-Manager (groß) und NSX Edge, wenn HCX bereitgestellt ist, außerdem den HCX-Manager und die IX-Appliance, das ~44vCPU (11 CPU), 75 GB RAM und 722 GB Speicher vor Komprimierung und Deduplizierung beansprucht. 
+    - Arbeitsspeicher, Deduplizierung und Komprimierung sind zurzeit auf 100 % Auslastung für den Arbeitsspeicher und 1,5 Deduplizierung und Komprimierung festgelegt, wobei es sich in zukünftigen Versionen um eine benutzerdefinierte Eingabe handeln wird, mit der der Benutzer seine erforderlichen Dimensionierungen anpassen kann.
 - Geschätzte monatliche Kosten: Die geschätzten monatlichen Kosten für alle AVS-Knoten (Azure VMware Solution), auf denen die lokalen virtuellen Computer ausgeführt werden.
 
 ## <a name="view-an-assessment"></a>Anzeigen einer Bewertung
@@ -128,8 +135,12 @@ Mit einer AVS-Bewertung wird Folgendes beschrieben:
 So zeigen Sie eine Bewertung an:
 
 1. Klicken Sie unter **Server** > **Azure Migrate: Serverbewertung** auf die Zahl neben **Bewertungen**.
-2. Wählen Sie unter **Bewertungen** eine Bewertung aus, um sie zu öffnen. 
-3. Sehen Sie sich die Zusammenfassung der Bewertung an. Sie können auch die Bewertungseigenschaften bearbeiten oder die Bewertung neu berechnen.
+
+1. Wählen Sie unter **Bewertungen** eine Bewertung aus, um sie zu öffnen. Beispiel (Schätzungen und Kosten gelten nur für das Beispiel): 
+
+    :::image type="content" source="./media/tutorial-assess-vmware-azure-vmware-solution/avs-assessment-summary.png" alt-text="Zusammenfassung der AVS-Bewertung":::
+
+1. Sehen Sie sich die Zusammenfassung der Bewertung an. Sie können auch die Bewertungseigenschaften bearbeiten oder die Bewertung neu berechnen.
  
 
 ### <a name="review-readiness"></a>Überprüfen der Bereitschaft

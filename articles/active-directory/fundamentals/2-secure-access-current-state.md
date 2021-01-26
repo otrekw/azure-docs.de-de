@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ff656887081681a804285e9a96352feef15fc675
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: 7557985b23991f1a53d45f6f2d2283500c0d73f3
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97743735"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222410"
 ---
 # <a name="discover-the-current-state-of-external-collaboration-in-your-organization"></a>Ermitteln des aktuellen Status der Zusammenarbeit mit externen Benutzern in Ihrer Organisation 
 
@@ -46,9 +46,9 @@ Externe Organisationen können durch die Domänennamen der E-Mail-Adressen exter
 
 ### <a name="use-allow-or-deny-lists"></a>Verwenden von Zulassungs- oder Verweigerungslisten
 
-Eine andere Möglichkeit zum Ermitteln von Personen, mit denen Sie derzeit zusammenarbeiten bzw. für die Sie die Zusammenarbeit blockiert haben, besteht darin, zu überprüfen, ob Sie Ihren [Zulassungs- oder Verweigerungslisten](../external-identities/allow-deny-list.md) eine Organisation hinzugefügt haben.
+Unter Umständen soll in Ihrer Organisation nur die Zusammenarbeit mit bestimmten Organisationen erlaubt sein. Es kann auch sein, dass die Zusammenarbeit mit bestimmten Organisationen blockiert werden soll.  Auf der Mandantenebene befindet sich eine [Zulassungs- oder Verweigerungsliste](../external-identities/allow-deny-list.md), mit der alle B2B-Einladungen und Einlösungen unabhängig von der Quelle (z. B. Teams, SharePoint und Azure-Portal) kontrolliert werden können.
+Bei Verwendung der Berechtigungsverwaltung können Sie Zugriffspakete auch auf einen Teil Ihrer Partner begrenzen, indem Sie wie unten gezeigt die Einstellung „Bestimmte verbundene Organisationen“ verwenden.
 
-Angenommen, Ihre Organisation möchte nur die Zusammenarbeit mit bestimmten Organisationen erlauben. Außerdem soll die Kollaboration mit bestimmten Organisationen blockiert werden. Diese Einstellungen können für die gesamte B2B-Einlösung oder nur für ein bestimmtes Zugriffspaket angewendet werden.
 
 ![Screenshot: Zulassungs- bzw. Verweigerungsliste beim Erstellen eines neuen Zugriffspakets](media/secure-external-access/2-new-access-package.png)
 

@@ -7,12 +7,12 @@ author: bwren
 ms.author: bwren
 ms.date: 12/22/2020
 ms.custom: references_regions
-ms.openlocfilehash: ce90ab160696e2c38d917a391eecb0d51a31282f
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: 655a146ccde9c75629d0a991a6a3aafa91f40764
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97740588"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98233966"
 ---
 # <a name="enable-azure-monitor-for-vms-overview"></a>Aktivieren von Azure Monitor für VMs: Übersicht
 
@@ -52,6 +52,9 @@ Azure Monitor für VMs ist für Azure Arc-fähige Server in Regionen verfügbar,
 
 Azure Monitor für VMs unterstützt alle Betriebssysteme, die den Log Analytics-Agent und den Dependency-Agent unterstützen. Eine vollständige Liste finden Sie unter [Übersicht über Azure Monitor-Agents](../platform/agents-overview.md#supported-operating-systems).
 
+> [!IMPORTANT]
+> Das Feature „Gastintegrität“ von Azure Monitor für VMs weist eine eingeschränktere Betriebssystemunterstützung auf, während es sich in der öffentlichen Vorschau befindet. Eine ausführliche Liste finden Sie unter [Aktivieren des Features „Gastintegrität“ von Azure Monitor für VMs (Vorschau)](vminsights-health-enable.md).
+
 In der folgenden Liste finden Sie Überlegungen zur Linux-Unterstützung des Dependency-Agents, der Azure Monitor für VMs unterstützt:
 
 - Es werden nur die Standardversion und SMP-Version des Linux-Kernels unterstützt.
@@ -63,7 +66,7 @@ In der folgenden Liste finden Sie Überlegungen zur Linux-Unterstützung des Dep
 ## <a name="log-analytics-workspace"></a>Log Analytics-Arbeitsbereich
 Für Azure Monitor für VMs wird ein Log Analytics-Arbeitsbereich benötigt. Ausführliche Informationen sowie Anforderungen dieses Arbeitsbereichs finden Sie unter [Konfigurieren eines Log Analytics-Arbeitsbereichs für Azure Monitor für VMs](vminsights-configure-workspace.md).
 ## <a name="agents"></a>Agents
-Für Azure Monitor für VMs müssen die folgenden beiden Agents auf jeder zu überwachenden VM oder VM-Skalierungsgruppe installiert sein. Das Installieren dieser Agents und das Herstellen einer Verbindung zwischen ihnen und dem Arbeitsbereich sind die einzigen Voraussetzungen für das Onboarding der Ressource.
+Für Azure Monitor für VMs müssen die folgenden beiden Agents auf jeder zu überwachenden VM oder VM-Skalierungsgruppe installiert sein. Zum Onboarding der Ressource installieren Sie diese Agents, und verbinden Sie sie mit dem Arbeitsbereich.  Informationen zu den Netzwerkanforderungen für diese Agents finden Sie unter [Netzwerkanforderungen](../platform/log-analytics-agent.md#network-requirements).
 
 - [Log Analytics-Agent:](../platform/log-analytics-agent.md) Dieser Agent erfasst Ereignisse und Leistungsdaten für die VM oder VM-Skalierungsgruppe und übergibt sie an den Log Analytics-Arbeitsbereich. Bei Bereitstellungsmethoden für den Log Analytics-Agent in Azure-Ressourcen wird die VM-Erweiterung für [Windows](../../virtual-machines/extensions/oms-windows.md) und [Linux](../../virtual-machines/extensions/oms-linux.md) verwendet.
 - Dependency-Agent: Dieser Agent erfasst ermittelte Daten zu Prozessen, die auf dem virtuellen Computer ausgeführt werden, sowie zu Abhängigkeiten von externen Prozessen. Diese Daten werden vom [Zuordnungsfeature in Azure Monitor für VMs](vminsights-maps.md) genutzt. Der Dependency-Agent verwendet den Log Analytics-Agent, um die Daten an Azure Monitor zu senden. Bei Bereitstellungsmethoden für den Dependency-Agent in Azure-Ressourcen wird die VM-Erweiterung für [Windows](../../virtual-machines/extensions/agent-dependency-windows.md) und [Linux](../../virtual-machines/extensions/agent-dependency-linux.md) verwendet.

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0d80b8f41e11f2fffa86dc7597fdf44dd27825fc
-ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
+ms.openlocfilehash: c169847c96d10d1c9fb47b210bc85a15e0690e32
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98028895"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98183114"
 ---
 # <a name="frequently-asked-questions-identity-protection-in-azure-active-directory"></a>Häufig gestellte Fragen zu Identity Protection in Azure Active Directory
 
@@ -31,7 +31,7 @@ Derzeit verursacht ein bekanntes Problem Wartezeit beim Ablauf des Schließvorga
 
 ## <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
 
-### <a name="why-is-a-user-is-at-risk"></a>Warum ist ein Benutzer risikobehaftet?
+### <a name="why-is-a-user-at-risk"></a>Warum ist ein Benutzer risikobehaftet?
 
 Wenn Sie ein Azure AD Identity Protection-Kunde sind, wechseln Sie zur Ansicht [Riskante Benutzer](howto-identity-protection-investigate-risk.md#risky-users), und klicken Sie auf einen risikobehafteten Benutzer. In der Taskleiste am unteren Rand wird die Registerkarte „Risikoverlauf“ angezeigt. Sie enthält alle Ereignisse, die zu einer Änderung des Benutzerrisikos geführt haben. Um alle risikobehafteten Anmeldungen für den Benutzer anzuzeigen, klicken Sie auf „Riskante Anmeldungen“ des Benutzers. Klicken Sie auf „Risikoerkennungen“, um alle Risikoerkennungen für den Benutzer anzuzeigen.
 

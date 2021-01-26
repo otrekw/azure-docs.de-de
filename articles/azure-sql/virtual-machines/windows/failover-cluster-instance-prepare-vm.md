@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
-ms.openlocfilehash: 52d6bc97245423a4add392ab05634d21bcf83a0d
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 1b8d88167dac6b2d0b1ba2afc90c443fd80b9e46
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97358009"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98223158"
 ---
 # <a name="prepare-virtual-machines-for-an-fci-sql-server-on-azure-vms"></a>Vorbereiten virtueller Computer für eine FCI (SQL Server auf Azure-VMs)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -68,7 +68,7 @@ In einem Azure-VM-Gast-Failovercluster werden eine einzelne Netzwerkkarte pro Se
 Platzieren Sie beide virtuellen Computer wie folgt:
 
 - In derselben Azure-Ressourcengruppe wie Ihre Verfügbarkeitsgruppe, wenn Sie mit Verfügbarkeitsgruppen arbeiten.
-- Im selben virtuellen Netzwerk wie der Domänencontroller.
+- Im selben virtuellen Netzwerk wie der Domänencontroller oder in einem virtuellen Netzwerk, das über eine geeignete Verbindung mit Ihrem Domänencontroller verfügt.
 - In einem Subnetz mit einem genügend großen IP-Adressraum für beide virtuellen Computer und alle FCIs, die in diesem Cluster unter Umständen verwendet werden sollen
 - In der Azure-Verfügbarkeitsgruppe oder- Verfügbarkeitszone.
 

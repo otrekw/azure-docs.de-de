@@ -2,13 +2,13 @@
 title: Bereitstellen von Ressourcen in Ressourcengruppen
 description: In diesem Artikel wird beschrieben, wie Sie Ressourcen in einer Azure Resource Manager-Vorlage bereitstellen. Es wird gezeigt, wie Sie mehrere Ressourcengruppen als Ziel festlegen.
 ms.topic: conceptual
-ms.date: 11/24/2020
-ms.openlocfilehash: 9d0bec51fa55ee377eb647a11fb554ec3b81e9eb
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.date: 01/13/2021
+ms.openlocfilehash: 9eb70e5ce69a2c7bc7ac9b8c9a7a558d09ecbef0
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95807722"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98186225"
 ---
 # <a name="resource-group-deployments-with-arm-templates"></a>Bereitstellung von Ressourcengruppen mit ARM-Vorlagen
 
@@ -85,7 +85,8 @@ Bei der Bereitstellung in einer Ressourcengruppe können Sie Ressourcen an folge
 * In anderen Ressourcengruppen im selben Abonnement oder in anderen Abonnements
 * in einem beliebigen Abonnement im Mandanten
 * im Mandanten für die Ressourcengruppe
-* [Erweiterungsressourcen](scope-extension-resources.md) können auf Ressourcen angewendet werden.
+
+Für eine [Erweiterungsressource](scope-extension-resources.md) kann der Bereich auf ein Ziel festgelegt werden, das sich vom Bereitstellungsziel unterscheidet.
 
 Der Benutzer, der die Vorlage bereitstellt, muss Zugriff auf den angegebenen Bereich besitzen.
 
@@ -136,6 +137,8 @@ Sie können eine geschachtelte Bereitstellung mit festgelegtem `scope` und `loca
 Alternativ können Sie den Bereich für einige Ressourcentypen wie z. B. Verwaltungsgruppen auf `/` festlegen.
 
 :::code language="json" source="~/resourcemanager-templates/azure-resource-manager/scope/resource-group-create-mg.json" highlight="12,15":::
+
+Weitere Informationen finden Sie unter [Verwaltungsgruppe](deploy-to-management-group.md#management-group).
 
 ## <a name="deploy-to-target-resource-group"></a>Bereitstellen in der Zielressourcengruppe
 

@@ -3,14 +3,14 @@ title: 'Tutorial zu Kubernetes in Azure: Bereitstellen einer Anwendung'
 description: In diesem Azure Kubernetes Service-Tutorial (AKS) stellen Sie mithilfe eines in Azure Container Registry gespeicherten benutzerdefinierten Images eine Anwendung mit mehreren Containern in Ihrem Cluster bereit.
 services: container-service
 ms.topic: tutorial
-ms.date: 09/30/2020
+ms.date: 01/12/2021
 ms.custom: mvc
-ms.openlocfilehash: 8114aa0b6c2483d543376727a44d14041ed02b37
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a0de097a545a831e39a671fe4cf5eadcd336ce24
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91576488"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98250178"
 ---
 # <a name="tutorial-run-applications-in-azure-kubernetes-service-aks"></a>Tutorial: Ausführen von Anwendungen in Azure Kubernetes Service (AKS)
 
@@ -21,7 +21,7 @@ Kubernetes bietet eine verteilte Plattform für containerbasierte Anwendungen. S
 > * Ausführen einer Anwendung in Kubernetes
 > * Testen der Anwendung
 
-In weiteren Tutorials wird diese Anwendung erweitert und aktualisiert.
+In nachfolgenden Tutorials wird diese Anwendung aufskaliert und aktualisiert.
 
 Für diese Schnellstartanleitung werden Grundkenntnisse in Bezug auf die Kubernetes-Konzepte vorausgesetzt. Weitere Informationen finden Sie unter [Grundlegende Kubernetes-Konzepte für Azure Kubernetes Service (AKS)][kubernetes-concepts].
 
@@ -49,7 +49,7 @@ Die im ersten Tutorial geklonte Beispielmanifestdatei aus dem Git-Repository ver
 vi azure-vote-all-in-one-redis.yaml
 ```
 
-Ersetzen Sie *microsoft* durch Ihren ACR-Anmeldeservernamen. Der Imagename befindet sich in Zeile 51 der Manifestdatei. Im folgenden Beispiel wird der standardmäßige Imagename angezeigt:
+Ersetzen Sie *microsoft* durch Ihren ACR-Anmeldeservernamen. Der Imagename befindet sich in Zeile 60 der Manifestdatei. Im folgenden Beispiel wird der standardmäßige Imagename angezeigt:
 
 ```yaml
 containers:
@@ -77,7 +77,7 @@ kubectl apply -f azure-vote-all-in-one-redis.yaml
 
 Die folgende Beispielausgabe zeigt die Ressourcen, die erfolgreich im AKS-Cluster erstellt wurden:
 
-```
+```console
 $ kubectl apply -f azure-vote-all-in-one-redis.yaml
 
 deployment "azure-vote-back" created
@@ -98,19 +98,19 @@ kubectl get service azure-vote-front --watch
 
 Die *EXTERNAL-IP*-Adresse für den Dienst *azure-vote-front* wird zunächst als *ausstehend* angezeigt:
 
-```
+```output
 azure-vote-front   LoadBalancer   10.0.34.242   <pending>     80:30676/TCP   5s
 ```
 
 Sobald die externe IP-Adresse (*EXTERNAL-IP*) von *ausstehend* in eine tatsächliche öffentliche IP-Adresse geändert wurde, wird, verwenden Sie `CTRL-C`, um die `kubectl`-Überwachung zu beenden. Die folgende Beispielausgabe zeigt eine gültige öffentliche IP-Adresse, die dem Dienst zugewiesen ist:
 
-```
+```output
 azure-vote-front   LoadBalancer   10.0.34.242   52.179.23.131   80:30676/TCP   67s
 ```
 
 Öffnen Sie die externe IP-Adresse Ihres Diensts in einem Webbrowser, um die Anwendung in Aktion zu sehen:
 
-![Abbildung: Kubernetes-Cluster in Azure](media/container-service-kubernetes-tutorials/azure-vote.png)
+:::image type="content" source="./media/container-service-kubernetes-tutorials/azure-vote.png" alt-text="Screenshot: Ausführung der Azure-Abstimmungs-App mit dem Containerimage in einem AKS-Cluster, geöffnet in einem lokalen Webbrowser" lightbox="./media/container-service-kubernetes-tutorials/azure-vote.png":::
 
 Wurde die Anwendung nicht geladen, liegt möglicherweise ein Autorisierungsproblem mit Ihrer Imageregistrierung vor. Verwenden Sie den Befehl `kubectl get pods`, um den Status Ihrer Container anzuzeigen. Können die Containerimages nicht gepullt werden, lesen Sie die Informationen unter [Authentifizieren bei Azure Container Registry aus Azure Kubernetes Service](cluster-container-registry-integration.md).
 

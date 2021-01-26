@@ -1,6 +1,6 @@
 ---
 title: Inkrementelles Kopieren einer Tabelle mithilfe von PowerShell
-description: In diesem Tutorial erstellen Sie eine Azure Data Factory-Pipeline, die Daten inkrementell aus Azure SQL-Datenbank in Azure Blob Storage kopiert.
+description: In diesem Tutorial erstellen Sie eine Azure Data Factory-Pipeline, die Daten inkrementell aus Azure SQL-Datenbank in Azure Blob Storage kopiert.
 services: data-factory
 author: dearandyxu
 ms.author: yexu
@@ -11,18 +11,18 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-dt-2019
 ms.date: 01/22/2018
-ms.openlocfilehash: 65a2d06acc3461d881ad6f100f3720b217ef7634
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 50608870fa397ad5586c626f1d1fe5c9d893b4ca
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97510208"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98222818"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-powershell"></a>Inkrementelles Laden von Daten aus Azure SQL-Datenbank in Azure Blob Storage mithilfe von PowerShell
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-In diesem Tutorial erstellen Sie eine Azure Data Factory mit einer Pipeline, bei der Deltadaten aus einer Tabelle in Azure SQL-Datenbank in Azure Blob Storage geladen werden.
+In diesem Tutorial erstellen Sie mithilfe von Azure Data Factory eine Pipeline, die Deltadaten aus einer Tabelle in Azure SQL-Datenbank in Azure Blob Storage lädt.
 
 In diesem Tutorial führen Sie die folgenden Schritte aus:
 

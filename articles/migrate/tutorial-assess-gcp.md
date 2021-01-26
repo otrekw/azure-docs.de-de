@@ -7,12 +7,12 @@ ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: MVC
-ms.openlocfilehash: 0ba72754362d5a0d9e1b6c95dcc2e1ff7f452207
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: b5e6a0cd58fca954646640e43a81155822cdba04
+ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96753313"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98567002"
 ---
 # <a name="tutorial-assess-google-cloud-platform-gcp-vm-instances-for-migration-to-azure"></a>Tutorial: Bewerten von GCP-VM-Instanzen (Google Cloud Platform) für die Migration zu Azure
 
@@ -51,25 +51,25 @@ Führen Sie eine Bewertung wie folgt aus:
 
 1. Klicken Sie auf der Seite **Server** unter **Windows- und Linux-Server** auf **Server bewerten und migrieren**.
 
-   ![Ort der Schaltfläche „Server bewerten und migrieren“](./media/tutorial-assess-gcp/assess.png)
+   ![Ort der Schaltfläche „Server bewerten und migrieren“](./media/tutorial-assess-vmware-azure-vm/assess.png)
 
-2. Klicken Sie unter „Azure Migrate-Serverbewertung“ auf **Bewerten**.
+2. Klicken Sie in **Azure Migrate: Server Assessment** (Azure Migrate-Serverbewertung) auf **Bewerten**.
 
-    ![Position der Schaltfläche „Bewerten“](./media/tutorial-assess-gcp/assess-servers.png)
+    ![Position der Schaltfläche „Bewerten“](./media/tutorial-assess-vmware-azure-vm/assess-servers.png)
 
 3. Wählen Sie unter **Server bewerten** > **Bewertungstyp** die Option **Azure-VM** aus.
 4. Unter **Ermittlungsquelle**:
 
     - Wählen Sie die Option **Von Azure Migrate-Appliance erkannte Computer** aus, falls Sie Computer mit der Appliance ermittelt haben.
     - Wählen Sie die Option **Importierte Computer** aus, falls Sie Computer mit einer importierten CSV-Datei ermittelt haben. 
-5. Geben Sie einen Namen für die Bewertung an. 
-6. Klicken Sie auf **Alle anzeigen**, um die Eigenschaften für die Bewertung zu überprüfen.
+    
+1. Klicken Sie auf **Bearbeiten**, um die Eigenschaften für die Bewertung zu überprüfen.
 
-    ![Ort der Schaltfläche „Alle anzeigen“ zum Anzeigen der Bewertungseigenschaften](./media/tutorial-assess-gcp/assessment-name.png)
+    :::image type="content" source="./media/tutorial-assess-vmware-azure-vm/assessment-name.png" alt-text="Ort der Schaltfläche „Bearbeiten“ zum Überprüfen der Bewertungseigenschaften":::
 
-7. Unter **Bewertungseigenschaften** > **Zieleigenschaften**:
+1. Unter **Bewertungseigenschaften** > **Zieleigenschaften**:
     - Geben Sie unter **Zielspeicherort** die Azure-Region an, zu der Sie die Migration durchführen möchten.
-        - Empfehlungen zur Größe und zu den Kosten basieren auf dem von Ihnen angegebenen Standort.
+        - Empfehlungen zur Größe und zu den Kosten basieren auf dem von Ihnen angegebenen Standort. Nachdem Sie den Standardwert des Zielstandorts geändert haben, werden Sie aufgefordert, **Reservierte Instanzen** und **VM-Serien** anzugeben.
         - Bei Azure Government können Sie Bewertungen in [diesen Regionen](migrate-support-matrix.md#supported-geographies-azure-government) durchführen.
     - Unter **Speichertyp**:
         - Wählen Sie bei Verwendung von leistungsbezogenen Daten in der Bewertung die Option **Automatisch** für Azure Migrate aus, um basierend auf dem IOPS-Wert und dem Durchsatz des Datenträgers eine Empfehlung zum Speichertyp anzuzeigen.
@@ -77,17 +77,21 @@ Führen Sie eine Bewertung wie folgt aus:
     - Geben Sie unter **Reservierte Instanzen** an, ob Sie für die VM beim Migrieren reservierte Instanzen verwenden möchten.
         - Wenn Sie die Verwendung einer reservierten Instanz auswählen, können Sie nicht **Abzug (%)** oder **VM-Betriebszeit** angeben. 
         - [Weitere Informationen](https://aka.ms/azurereservedinstances)
-8. Unter **VM-Größe**:
- 
-    - Wählen Sie unter **Größenkriterium** aus, ob die Bewertung auf Daten bzw. Metadaten für die Computerkonfiguration oder leistungsbezogenen Daten basieren soll. Bei Verwendung von Leistungsdaten:
+ 1. Unter **VM-Größe**:
+     - Wählen Sie unter **Größenkriterium** aus, ob die Bewertung auf Daten bzw. Metadaten für die Computerkonfiguration oder leistungsbezogenen Daten basieren soll. Bei Verwendung von Leistungsdaten:
         - Geben Sie unter **Leistungsverlauf** die Datendauer an, auf der die Bewertung basieren soll.
         - Geben Sie unter **Perzentilwert der Nutzung** den Perzentilwert an, den Sie für das Leistungsbeispiel verwenden möchten. 
     - Geben Sie unter **VM-Serie** die gewünschte Azure-VM-Serie an.
         - Bei Verwendung der leistungsbezogenen Bewertung wird Ihnen von Azure Migrate ein Wert vorgeschlagen.
         - Optimieren Sie die Einstellungen nach Bedarf. Wenn Sie beispielsweise in der Produktionsumgebung keine virtuellen Computer der A-Serie in Azure benötigen, können Sie die A-Serie aus der Liste der Serien ausschließen.
-    - Geben Sie unter **Komfortfaktor** den Puffer an, den Sie während der Bewertung verwenden möchten. Hierbei werden Aspekte wie saisonale Nutzung, ein kurzer Leistungsverlauf und eine voraussichtliche Zunahme der zukünftigen Nutzung berücksichtigt. Beispiel für einen Komfortfaktor von „2“: **Details** | **Auslastung** | **Komfortfaktor hinzufügen (2.0)** Lese-IOPS | 100 | 200 Schreib-IOPS | 100 | 200 Lesedurchsatz | 100 MBit/s | 200 MBit/s Schreibdurchsatz | 100 MBit/s | 200 MBit/s
+    - Geben Sie unter **Komfortfaktor** den Puffer an, den Sie während der Bewertung verwenden möchten. Hierbei werden Aspekte wie saisonale Nutzung, ein kurzer Leistungsverlauf und eine voraussichtliche Zunahme der zukünftigen Nutzung berücksichtigt. Beispiel für einen Komfortfaktor von „2“:
+    
+        **Komponente** | **Tatsächliche Auslastung** | **Komfortfaktor hinzufügen (2.0)**
+        --- | --- | ---
+        Kerne | 2  | 4
+        Arbeitsspeicher | 8 GB | 16 GB
    
-9. Unter **Preise**:
+1. Unter **Preise**:
     - Geben Sie unter **Angebot** das [Azure-Angebot](https://azure.microsoft.com/support/legal/offer-details/) ein, wenn Sie registriert sind. Bei der Serverbewertung werden die Kosten für dieses Angebot geschätzt.
     - Wählen Sie unter **Währung** die Abrechnungswährung für Ihr Konto aus.
     - Fügen Sie unter **Abzug (%)** alle abonnementspezifischen Rabatte hinzu, die Sie zusätzlich zum Azure-Angebot erhalten. Die Standardeinstellung ist 0 %.
@@ -95,20 +99,30 @@ Führen Sie eine Bewertung wie folgt aus:
         - Dies ist für Azure-VMs hilfreich, die nicht dauerhaft ausgeführt werden.
         - Die Kostenschätzungen basieren auf der angegebenen Dauer.
         - Der Standardwert ist „31 Tage pro Monat/24 Stunden pro Tag“.
-
     - Geben Sie unter **EA-Abonnement** an, ob bei der Kostenschätzung ein Rabatt für ein EA-Abonnement (Enterprise Agreement) berücksichtigt werden soll. 
     - Geben Sie unter **Azure-Hybridvorteil** an, ob Sie bereits über eine Windows Server-Lizenz verfügen. Wenn dies der Fall ist und eine aktive Software Assurance-Abdeckung für Windows Server-Abonnements besteht, können Sie sich für den [Azure-Hybridvorteil](https://azure.microsoft.com/pricing/hybrid-use-benefit/) bewerben, sofern Sie eigene Lizenzen für Azure mitbringen.
 
-10. Klicken Sie auf **Speichern**, falls Sie Änderungen vorgenommen haben.
+1. Klicken Sie auf **Speichern**, falls Sie Änderungen vorgenommen haben.
 
-    ![Bewertungseigenschaften](./media/tutorial-assess-gcp/assessment-properties.png)
+    ![Bewertungseigenschaften](./media/tutorial-assess-vmware-azure-vm/assessment-properties.png)
 
-11. Klicken Sie unter **Server bewerten** auf **Weiter**.
-12. Wählen Sie unter **Computer für die Bewertung auswählen** die Option **Neu erstellen** aus, und geben Sie einen Gruppennamen an. 
-13. Wählen Sie die Appliance und dann die VMs aus, die Sie der Gruppe hinzufügen möchten. Klicken Sie dann auf **Weiter**.
-14. Sehen Sie sich unter „Überprüfen + Bewertung erstellen“ die Bewertungsdetails an, und klicken Sie auf **Bewertung erstellen**, um die Gruppe zu erstellen und die Bewertung durchzuführen.
+1. Klicken Sie unter **Server bewerten** auf **Weiter**.
+
+1. Geben Sie in **Computer für die Bewertung auswählen** > **Bewertungsname** einen Namen für die Bewertung an. 
+
+1. Wählen Sie unter **Gruppe auswählen oder erstellen** die Option **Neu erstellen** aus, und geben Sie einen Namen für die Gruppe ein. 
+    
+    :::image type="content" source="./media/tutorial-assess-physical/assess-group.png" alt-text="Hinzufügen von VMs zu einer Gruppe":::
 
 
+1. Wählen Sie die Appliance und dann die VMs aus, die Sie der Gruppe hinzufügen möchten. Klicken Sie dann auf **Weiter**.
+
+
+1. Sehen Sie sich unter **Überprüfen + Bewertung erstellen** die Bewertungsdetails an, und klicken Sie auf **Bewertung erstellen**, um die Gruppe zu erstellen und die Bewertung durchzuführen.
+
+1. Zeigen Sie die erstellte Bewertung unter **Server** > **Azure Migrate: Server Assessment** (Azure Migrate-Serverbewertung) > **Bewertungen** an.
+
+1. Klicken Sie auf **Bewertung exportieren**, um sie als Excel-Datei herunterzuladen.
     > [!NOTE]
     > Bei leistungsbezogenen Bewertungen empfehlen wir Ihnen, nach dem Starten einer Ermittlung mindestens einen Tag zu warten, bevor Sie eine Bewertung erstellen. Dies ermöglicht einen längeren Zeitraum zum Sammeln von Leistungsdaten mit höherer Zuverlässigkeit. Idealerweise sollten Sie nach dem Starten der Ermittlung den Zeitraum der Leistungsdauer abwarten, den Sie angegeben haben (Tag/Woche/Monat), um eine Bewertung mit einer hohen Zuverlässigkeit zu erzielen.
 

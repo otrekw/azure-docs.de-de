@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 09/29/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python,contperf-fy21q1, automl
-ms.openlocfilehash: f2170aad9bc0218d39244d08f5cc838235f8fee9
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 9021d933e3808867ec784ad3c6d0f8810d608ea3
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98134363"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98600062"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Konfigurieren automatisierter ML-Experimente in Python
 
@@ -65,7 +65,7 @@ automl_config = AutoMLConfig(task = "classification")
 
 Das automatisierte Machine Learning unterstützt Daten, die sich auf dem lokalen Desktop oder in der Cloud (z. B. in Azure Blob Storage) befinden. Die Daten können in einen **Pandas DataFrame** oder ein **Azure Machine Learning-TabularDataset** eingelesen werden. [Erfahren Sie mehr über Datasets](how-to-create-register-datasets.md).
 
-Anforderungen für Trainingsdaten:
+Anforderungen für das Trainieren von Daten beim maschinellen Lernen:
 - Die Daten müssen in Tabellenform vorliegen.
 - Der Wert, der vorhergesagt werden soll (Zielspalte), muss in den Daten vorhanden sein.
 
@@ -96,9 +96,9 @@ dataset = Dataset.Tabular.from_delimited_files(data)
 
 ## <a name="training-validation-and-test-data"></a>Trainieren, Überprüfen und Testen von Daten
 
-Sie können separate **Datasets für das Training und die Überprüfung** direkt im `AutoMLConfig`-Konstruktor angeben. Erfahren Sie mehr über das [Konfigurieren von Datenaufteilungen und Kreuzvalidierung](how-to-configure-cross-validation-data-splits.md) für Ihre AutoML-Experimente. 
+Sie können separate **Trainingsdaten und Datasets für die Überprüfung** direkt im `AutoMLConfig`-Konstruktor angeben. Erfahren Sie mehr über das [Konfigurieren von Datenaufteilungen und Kreuzvalidierung](how-to-configure-cross-validation-data-splits.md) für Ihre AutoML-Experimente. 
 
-Wenn Sie keinen `validation_data`- oder `n_cross_validation`-Parameter explizit angeben, wendet AutoML Standardverfahren an, um zu bestimmen, wie die Überprüfung durchgeführt wird. Diese Bestimmung hängt von der Anzahl der Zeilen im Dataset ab, das Ihrem `training_data`-Parameter zugewiesen wird. 
+Wenn Sie keinen `validation_data`- oder `n_cross_validation`-Parameter explizit angeben, wendet das automatisierte maschinelle Lernen Standardverfahren an, um zu bestimmen, wie die Überprüfung durchgeführt wird. Diese Bestimmung hängt von der Anzahl der Zeilen im Dataset ab, das Ihrem `training_data`-Parameter zugewiesen wird. 
 
 |Größe der Trainings&nbsp;daten&nbsp;| Validierungsverfahren |
 |---|-----|

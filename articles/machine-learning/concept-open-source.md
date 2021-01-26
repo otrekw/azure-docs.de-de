@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: conceptual
 author: luisquintanilla
 ms.author: luquinta
-ms.date: 12/16/2020
-ms.openlocfilehash: d987d21700e5f19ad8228b08508e8da842cc39eb
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.date: 01/14/2020
+ms.openlocfilehash: 983e037376be48f497118b06cce8b23c430b1501
+ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97914109"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98223073"
 ---
 # <a name="open-source-integration-with-azure-machine-learning-projects"></a>Open-Source-Integration in Azure Machine Learning-Projekte
 
@@ -42,11 +42,11 @@ Open-Source-Algorithmen für maschinelles Lernen, bekannt als neuronale Netze, e
 
 Open-Source-Deep Learning-Frameworks und -Schrittanleitungen umfassen Folgendes:
 
- *  [PyTorch](https://github.com/pytorch/pytorch): [Trainieren eines Deep Learning-Bildklassifizierungsmodells mithilfe von Lerntransfer in PyTorch](how-to-train-pytorch.md) 
+ *  [PyTorch](https://github.com/pytorch/pytorch): [Trainieren eines Deep Learning-Bildklassifizierungsmodells mithilfe von Lerntransfer](how-to-train-pytorch.md) 
  *  [TensorFlow](https://github.com/tensorflow/tensorflow): [Erkennen von handschriftlichen Ziffern mithilfe von TensorFlow](how-to-train-tensorflow.md)
  *  [Keras](https://github.com/keras-team/keras): [Erstellen eines neuronalen Netzwerks zur Analyse von Bildern mithilfe von Keras](how-to-train-keras.md)
 
-Das Trainieren eines Deep Learning-Modells von Grund auf erfordert oft viel Zeit sowie große Mengen an Daten und Computeressourcen. Sie können das Training abkürzen, indem Sie den Lerntransfer verwenden. Lerntransfer ist ein Verfahren, bei dem das bei der Lösung eines Problems gewonnene Wissen auf ein anderes, aber verwandtes Problem angewandt wird. Dies bedeutet, dass Sie ein vorhandenes Modell verwenden und es umfunktionieren können. Weitere Informationen zum Lerntransfer finden Sie im [Deep Learning-Artikel](concept-deep-learning-vs-machine-learning.md#transfer-learning).
+Das Trainieren eines Deep Learning-Modells von Grund auf erfordert oft viel Zeit sowie große Mengen an Daten und Computeressourcen. Sie können das Training abkürzen, indem Sie den Lerntransfer verwenden. Lerntransfer ist ein Verfahren, bei dem das bei der Lösung eines Problems gewonnene Wissen auf ein anderes, aber verwandtes Problem angewandt wird. Dies bedeutet, dass Sie ein vorhandenes Modell verwenden und es umfunktionieren können. Weitere Informationen zum Lerntransfer finden Sie im Artikel [Deep Learning im Vergleich zu maschinellem Lernen](concept-deep-learning-vs-machine-learning.md#what-is-transfer-learning).
 
 ### <a name="reinforcement-learning-ray-rllib"></a>Vertiefendes Lernen: Ray RLLib
 

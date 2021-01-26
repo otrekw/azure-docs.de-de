@@ -10,12 +10,12 @@ author: likebupt
 ms.author: keli19
 ms.date: 10/14/2020
 ms.custom: designer
-ms.openlocfilehash: a27e18d9b6f6307f1cc8ed48ca897dd4d1f0f1f3
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: 4d594115139321c8a4ad2b3aa6b065474bd426fa
+ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94555497"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98556170"
 ---
 # <a name="example-pipelines--datasets-for-azure-machine-learning-designer"></a>Beispiele für Pipelines und Datasets für Azure Machine Learning Designer
 
@@ -72,7 +72,7 @@ Durchsuchen Sie diese integrierten Regressionsbeispiele.
 
 ## <a name="classification"></a>Klassifizierung
 
-Durchsuchen Sie diese integrierten Klassifizierungsbeispiele. Anstelle der Dokumentationslinks können Sie auch die Beispiele öffnen und sich die Modulkommentare ansehen, um mehr über die Beispiele zu erfahren.
+Durchsuchen Sie diese integrierten Klassifizierungsbeispiele. Sie können die Beispiele öffnen und sich die Modulkommentare im Designer ansehen, um mehr über die Beispiele zu erfahren.
 
 | Beispieltitel | BESCHREIBUNG | 
 | --- | --- |
@@ -84,13 +84,15 @@ Durchsuchen Sie diese integrierten Klassifizierungsbeispiele. Anstelle der Dokum
 
 ## <a name="computer-vision"></a>Maschinelles Sehen
 
-Durchsuchen Sie diese integrierten Beispiele für maschinelles Sehen. Anstelle der Dokumentationslinks können Sie auch die Beispiele öffnen und sich die Modulkommentare ansehen, um mehr über die Beispiele zu erfahren.
+Durchsuchen Sie diese integrierten Beispiele für maschinelles Sehen. Sie können die Beispiele öffnen und sich die Modulkommentare im Designer ansehen, um mehr über die Beispiele zu erfahren.
 
+| Beispieltitel | BESCHREIBUNG | 
+| --- | --- |
 | Bildklassifizierung mithilfe von DenseNet | Verwenden Sie Module für maschinelles Sehen zum Erstellen eines Bildklassifizierungsmodells, das auf PyTorch DenseNet basiert.| 
 
 ## <a name="recommender"></a>Empfehlung (Recommender)
 
-Durchsuchen Sie diese integrierten Empfehlungsbeispiele. Anstelle der Dokumentationslinks können Sie auch die Beispiele öffnen und sich die Modulkommentare ansehen, um mehr über die Beispiele zu erfahren.
+Durchsuchen Sie diese integrierten Empfehlungsbeispiele. Sie können die Beispiele öffnen und sich die Modulkommentare im Designer ansehen, um mehr über die Beispiele zu erfahren.
 
 | Beispieltitel | BESCHREIBUNG | 
 | --- | --- |
@@ -99,7 +101,7 @@ Durchsuchen Sie diese integrierten Empfehlungsbeispiele. Anstelle der Dokumentat
 
 ## <a name="utility"></a>Hilfsprogramm
 
-Hier finden Sie weitere Informationen zu den Beispielen, mit denen ML-Hilfsprogramme und -Features veranschaulicht werden. Anstelle der Dokumentationslinks können Sie auch die Beispiele öffnen und sich die Modulkommentare ansehen, um mehr über die Beispiele zu erfahren.
+Hier finden Sie weitere Informationen zu den Beispielen, mit denen ML-Hilfsprogramme und -Features veranschaulicht werden. Sie können die Beispiele öffnen und sich die Modulkommentare im Designer ansehen, um mehr über die Beispiele zu erfahren.
 
 | Beispieltitel | BESCHREIBUNG | 
 | --- | --- |

@@ -8,12 +8,12 @@ ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: banders
-ms.openlocfilehash: a527b75d376f05ab6190187b7a03d6da775055ab
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5a4f7de0cacb17087e346123f53dad45ae1de357
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81759287"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98602620"
 ---
 # <a name="prepay-for-azure-software-plans"></a>Vorauszahlen für Azure-Softwarepläne
 
@@ -32,7 +32,7 @@ Sie können SUSE- und Red Hat-Softwarepläne im Azure-Portal erwerben. Gehen Sie
 Füllen Sie die erforderlichen Felder aus. Alle SUSE Linux- oder Red Hat-VMs, die den Attributen des erworbenen Plans entsprechen, erhalten den Rabatt. Die tatsächliche Anzahl der Bereitstellungen, die den Rabatt erhalten, hängt vom ausgewählten Bereich und von der ausgewählten Menge ab.
 3. Wählen Sie ein Abonnement aus. Es wird zum Bezahlen des Plans verwendet.
 Die Zahlungsmethode für das Abonnement wird mit Vorauszahlungen für die Reservierung belastet. Der Abonnementtyp muss „Enterprise Agreement“ (Angebotsnummern: MS-AZR-0017P oder MS-AZR-0148P) oder ein Einzelvertrag mit nutzungsbasierter Bezahlung (Angebotsnummern: MS-AZR-0003P oder MS-AZR-0023P) sein.
-    - Bei einem Enterprise-Abonnement werden die Gebühren vom Verpflichtungsguthaben der Reservierung abgezogen oder als Überschreitung belastet.
+    - Bei einem Enterprise-Abonnement werden die Gebühren vom Saldo der Azure-Vorauszahlung (zuvor als „Mindestverbrauch“ bezeichnet) der Reservierung abgezogen oder als Überschreitung belastet.
     - Bei einem Einzelabonnement mit nutzungsbasierter Bezahlung werden die Gebühren über die Kreditkarte des Abonnenten abgerechnet oder in Rechnung gestellt.
 4. Wählen Sie einen Bereich aus. Der Bereich kann ein Abonnement oder mehrere Abonnements (freigegebener Bereich) umfassen.
     - Einzelabonnement: Der Rabatt für den Plan wird auf die übereinstimmende Nutzung im Abonnement angewandt.

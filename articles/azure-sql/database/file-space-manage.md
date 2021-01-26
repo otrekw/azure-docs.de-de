@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: oslake
 ms.author: moslake
 ms.reviewer: jrasnick, sstein
-ms.date: 03/12/2019
-ms.openlocfilehash: 3a46e47d6e12d52113bf63342c84a58ca98743d0
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.date: 12/22/2020
+ms.openlocfilehash: 08cab806d6ad8b75821a92994dde0fa07db8b960
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92789606"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98233592"
 ---
 # <a name="manage-file-space-for-databases-in-azure-sql-database"></a>Verwalten von Dateispeicherplatz für Datenbanken in Azure SQL-Datenbank
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -84,7 +84,7 @@ Die folgenden Abfragen können verwendet werden, um die Speicherplatzmengen für
 SELECT TOP 1 storage_in_megabytes AS DatabaseDataSpaceUsedInMB
 FROM sys.resource_stats
 WHERE database_name = 'db1'
-ORDER BY end_time DESC
+ORDER BY end_time DESC;
 ```
 
 ### <a name="database-data-space-allocated-and-unused-allocated-space"></a>Zugeordneter Datenbank-Datenspeicherplatz und ungenutzter zugeordneter Speicherplatz
@@ -98,7 +98,7 @@ SELECT SUM(size/128.0) AS DatabaseDataSpaceAllocatedInMB,
 SUM(size/128.0 - CAST(FILEPROPERTY(name, 'SpaceUsed') AS int)/128.0) AS DatabaseDataSpaceAllocatedUnusedInMB
 FROM sys.database_files
 GROUP BY type_desc
-HAVING type_desc = 'ROWS'
+HAVING type_desc = 'ROWS';
 ```
 
 ### <a name="database-data-max-size"></a>Max. Größe für Datenbankdaten
@@ -108,7 +108,7 @@ HAVING type_desc = 'ROWS'
 ```sql
 -- Connect to database
 -- Database data max size in bytes
-SELECT DATABASEPROPERTYEX('db1', 'MaxSizeInBytes') AS DatabaseDataMaxSizeInBytes
+SELECT DATABASEPROPERTYEX('db1', 'MaxSizeInBytes') AS DatabaseDataMaxSizeInBytes;
 ```
 
 ## <a name="understanding-types-of-storage-space-for-an-elastic-pool"></a>Grundlegendes zu den Arten von Speicherplatz für einen Pool für elastische Datenbanken
@@ -121,6 +121,9 @@ Es wichtig, dass Sie mit den folgenden Speicherplatzmengen vertraut sind, damit 
 |**Zugeordneter Datenspeicherplatz**|Die Summierung des Datenspeicherplatzes, der von allen Datenbanken im Pool für elastische Datenbanken zugeordnet wird.||
 |**Zugeordneter Datenspeicherplatz (ungenutzt)**|Die Differenz zwischen der Menge an zugeordnetem Datenspeicherplatz und dem Datenspeicherplatz, der von allen Datenbanken im Pool für elastische Datenbanken verwendet wird.|Diese Menge gibt die maximale Menge von Speicherplatz an, der für den Pool für elastische Datenbanken zugeordnet wird und freigegeben werden kann, indem die Datenbank-Datendateien verkleinert werden.|
 |**Maximale Datengröße**|Die maximale Menge an Datenspeicherplatz, der vom Pool für elastische Datenbanken für alle seine Datenbanken verwendet werden kann.|Der zugeordnete Speicherplatz des Pools für elastische Datenbanken darf die maximale Größe des Pools nicht überschreiten.  In diesem Fall kann zugeordneter Speicherplatz, der nicht genutzt wird, freigegeben werden, indem Datenbank-Datendateien verkleinert werden.|
+
+> [!NOTE]
+> Die Fehlermeldung „Der Speichergrenzwert des Pools für elastische Datenbanken wurde erreicht“ ist ein Hinweis darauf, dass den Datenbankobjekten zwar genügend Speicherplatz zur Einhaltung des Speicherplatzlimits für Pools für elastische Datenbanken zugeteilt wurde, aber die Zuteilung ggf. ungenutzten Datenspeicherplatz aufweist. Erwägen Sie, das Speicherplatzlimit des Pools für elastische Datenbanken zu erhöhen. Eine alternative kurzfristige Lösung besteht darin, Speicherplatz für Daten freizugeben, indem Sie die Informationen unten im Abschnitt [**Freigeben von ungenutztem zugewiesenem Speicherplatz**](#reclaim-unused-allocated-space) verwenden. Sie sollten sich auch über die möglichen negativen Auswirkungen auf die Leistung bewusst sein, die sich bei einer Verkleinerung von Datenbankdateien ergeben können. Informationen hierzu finden Sie unten im Abschnitt [**Neuerstellen von Indizes**](#rebuild-indexes).
 
 ## <a name="query-an-elastic-pool-for-storage-space-information"></a>Abfragen von Speicherplatzinformationen für einen Pools für elastische Datenbanken
 
@@ -136,7 +139,7 @@ Die folgenden Abfragen können verwendet werden, um die Speicherplatzmengen für
 SELECT TOP 1 avg_storage_percent / 100.0 * elastic_pool_storage_limit_mb AS ElasticPoolDataSpaceUsedInMB
 FROM sys.elastic_pool_resource_stats
 WHERE elastic_pool_name = 'ep1'
-ORDER BY end_time DESC
+ORDER BY end_time DESC;
 ```
 
 ### <a name="elastic-pool-data-space-allocated-and-unused-allocated-space"></a>Zugeordneter Datenspeicherplatz für Pool für elastische Datenbanken und ungenutzter zugeordneter Speicherplatz
@@ -187,7 +190,7 @@ Der folgende Screenshot zeigt ein Beispiel für die Ausgabe des Skripts:
 
 ### <a name="elastic-pool-data-max-size"></a>Maximale Größe der Daten des Pools für elastische Datenbanken
 
-Ändern Sie die folgende T-SQL-Abfrage, um die maximale Größe der Daten des Pools für elastische Datenbanken zurückzugeben.  Als Einheit für das Abfrageergebnis wird MB verwendet.
+Ändern Sie die folgende T-SQL-Abfrage, um die zuletzt aufgezeichnete maximale Größe der Daten des Pools für elastische Datenbanken zurückzugeben.  Als Einheit für das Abfrageergebnis wird MB verwendet.
 
 ```sql
 -- Connect to master
@@ -195,13 +198,13 @@ Der folgende Screenshot zeigt ein Beispiel für die Ausgabe des Skripts:
 SELECT TOP 1 elastic_pool_storage_limit_mb AS ElasticPoolMaxSizeInMB
 FROM sys.elastic_pool_resource_stats
 WHERE elastic_pool_name = 'ep1'
-ORDER BY end_time DESC
+ORDER BY end_time DESC;
 ```
 
 ## <a name="reclaim-unused-allocated-space"></a>Freigeben von ungenutztem zugewiesenem Speicherplatz
 
 > [!NOTE]
-> Dieser Befehl kann die Datenbankleistung beeinträchtigen, während er ausgeführt wird, und sollte daher nur zu Zeiten mit geringer Auslastung ausgeführt werden.
+> Verkleinerungsbefehle können während der Ausführung der Datenbank zu einer Beeinträchtigung der Leistung führen und sollten daher nur zu Zeiten mit geringer Auslastung ausgeführt werden.
 
 ### <a name="dbcc-shrink"></a>DBCC-Verkleinerung
 
@@ -209,24 +212,28 @@ Nachdem die Datenbanken für das Freigeben von ungenutztem zugeordnetem Speicher
 
 ```sql
 -- Shrink database data space allocated.
-DBCC SHRINKDATABASE (N'db1')
+DBCC SHRINKDATABASE (N'db1');
 ```
 
-Dieser Befehl kann die Datenbankleistung beeinträchtigen, während er ausgeführt wird, und sollte daher nur zu Zeiten mit geringer Auslastung ausgeführt werden.  
+Verkleinerungsbefehle können während der Ausführung der Datenbank zu einer Beeinträchtigung der Leistung führen und sollten daher nur zu Zeiten mit geringer Auslastung ausgeführt werden.  
 
-Weitere Informationen zu diesem Befehl finden Sie unter [SHRINKDATABASE](/sql/t-sql/database-console-commands/dbcc-shrinkdatabase-transact-sql).
+Sie sollten sich auch über die möglichen negativen Auswirkungen auf die Leistung bewusst sein, die sich bei einer Verkleinerung von Datenbankdateien ergeben können. Informationen hierzu finden Sie unten im Abschnitt [**Neuerstellen von Indizes**](#rebuild-indexes).
+
+Weitere Informationen zu diesem Befehl finden Sie unter [SHRINKDATABASE](/sql/t-sql/database-console-commands/dbcc-shrinkdatabase-transact-sql.md).
 
 ### <a name="auto-shrink"></a>Automatisches Verkleinern
 
 Alternativ kann für die Datenbank auch das automatische Verkleinern aktiviert werden.  Automatisches Verkleinern vereinfacht die Dateiverwaltung und wirkt sich im Vergleich zu `SHRINKDATABASE` oder `SHRINKFILE` weniger stark auf die Datenbankleistung aus.  Insbesondere beim Verwalten von Pools für elastische Datenbanken mit zahlreichen Datenbanken kann automatisches Verkleinern äußerst hilfreich sein.  Verglichen mit `SHRINKDATABASE` und `SHRINKFILE` ist das automatische Verkleinern allerdings beim Freigeben von Dateispeicherplatz unter Umständen weniger effizient.
+Das automatische Verkleinern ist standardmäßig deaktiviert. Dies ist für die meisten Datenbanken die empfohlene Einstellung. Weitere Informationen finden Sie im Abschnitt unter [Überlegungen zu AUTO_SHRINK](/troubleshoot/sql/admin/considerations-autogrow-autoshrink#considerations-for-auto_shrink).
+
 Wenn Sie automatisches Verkleinern aktivieren möchten, ändern Sie im folgenden Befehl den Namen der Datenbank.
 
 ```sql
 -- Enable auto-shrink for the database.
-ALTER DATABASE [db1] SET AUTO_SHRINK ON
+ALTER DATABASE [db1] SET AUTO_SHRINK ON;
 ```
 
-Weitere Informationen zu diesem Befehl finden Sie in den Optionen für [DATABASE SET](/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-current).
+Weitere Informationen zu diesem Befehl finden Sie in den Optionen für [DATABASE SET](/sql/t-sql/statements/alter-database-transact-sql-set-options).
 
 ### <a name="rebuild-indexes"></a>Neuerstellen von Indizes
 

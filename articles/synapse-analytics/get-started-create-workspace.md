@@ -9,13 +9,13 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.subservice: workspace
 ms.topic: tutorial
-ms.date: 11/21/2020
-ms.openlocfilehash: c9b7d796612981f0e8194be84b0ed141721f644d
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.date: 12/31/2020
+ms.openlocfilehash: 3a2636ec73d20f3011d8413c794e68ef41b1829c
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96862376"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98209184"
 ---
 # <a name="creating-a-synapse-workspace"></a>Erstellen eines Synapse-Arbeitsbereichs
 
@@ -30,11 +30,12 @@ Um die Schritte dieses Tutorials ausführen zu können, benötigen Sie Zugriff a
 1. Öffnen Sie das [Azure-Portal](https://portal.azure.com), und suchen Sie oben nach **Synapse**.
 1. Wählen Sie in den Suchergebnissen unter **Dienste** den Eintrag **Azure Synapse Analytics** aus.
 1. Wählen Sie **Hinzufügen** aus, um einen Arbeitsbereich zu erstellen.
-1. Geben Sie unter **Grundlagen** die bevorzugten Werte für **Abonnement**, **Ressourcengruppe** und **Region** ein, und wählen Sie dann einen Arbeitsbereichsnamen aus. In diesem Tutorial wird **myworkspace** verwendet.
-1. Navigieren Sie zu **Data Lake Storage Gen 2 auswählen**. 
-1. Klicken Sie auf **Neu erstellen**, und geben Sie den Namen **contosolake** ein.
-1. Klicken Sie auf **Dateisystem**, und nennen Sie es **Benutzer**. Dadurch wird ein Container namens **Benutzer** erstellt.
+1. Geben Sie auf der Registerkarte **Grundlagen** unter „Projektdetails“ die bevorzugten Werte für **Abonnement**, **Ressourcengruppe** und **Region** ein, und wählen Sie dann einen Arbeitsbereichsnamen aus. In diesem Tutorial wird **myworkspace** verwendet.
+1. Klicken Sie unter **Data Lake Storage Gen 2 auswählen** auf die Schaltfläche für **From subscription** (Aus Abonnement).
+1. Klicken Sie unter **Kontoname** auf **Neu erstellen**, und geben Sie für das neue Speicherkonto den Namen **contosolake** oder einen ähnlichen Namen ein. Dieser Name muss eindeutig sein.
+1. Klicken Sie unter **Dateisystemname** auf **Neu erstellen**, und geben Sie den Namen **Benutzer** ein. Dadurch wird ein Speichercontainer namens **Benutzer** erstellt.
 1. Der Arbeitsbereich verwendet dieses Speicherkonto als primäres Speicherkonto für Spark-Tabellen und Spark-Anwendungsprotokolle.
+1. Aktivieren Sie das Kästchen „Mir die Rolle "Mitwirkender an Storage-Blobdaten" für das Data Lake Storage Gen2-Konto zuweisen“. 
 1. Wählen Sie **Bewerten + erstellen** > **Erstellen** aus. Ihr Arbeitsbereich steht nach wenigen Minuten zur Verfügung.
 
 > [!NOTE]
@@ -45,8 +46,14 @@ Um die Schritte dieses Tutorials ausführen zu können, benötigen Sie Zugriff a
 
 Nachdem Ihr Azure Synapse-Arbeitsbereich erstellt wurde, haben Sie zwei Möglichkeiten zum Öffnen von Synapse Studio:
 
-* Öffnen Sie Ihren Synapse-Arbeitsbereich im [Azure-Portal](https://portal.azure.com). Wählen Sie oben im Abschnitt **Übersicht** die Option **Synapse Studio öffnen** aus.
+* Öffnen Sie Ihren Synapse-Arbeitsbereich im [Azure-Portal](https://portal.azure.com), und wählen Sie im Abschnitt **Übersicht** des Synapse-Arbeitsbereichs im Feld „Synapse Studio öffnen“ den Eintrag **Öffnen** aus.
 * Navigieren Sie zu `https://web.azuresynapse.net`, und melden Sie sich bei Ihrem Arbeitsbereich an.
+
+
+## <a name="the-built-in-serverless-sql-pool"></a>Der serverlose SQL-Pool „Built-in“
+
+Jeder Arbeitsbereich wird mit einem bereits erstellten serverlosen SQL-Pool namens **Built-in** (Integriert) bereitgestellt. Dieser Pool kann nicht gelöscht werden. Mit serverlosen SQL-Pools können Sie SQL verwenden, ohne dass Sie Kapazität über dedizierte SQL-Pools reservieren müssen. Im Gegensatz zu dedizierten SQL-Pools basiert die Abrechnung für einen serverlosen SQL-Pool auf der Menge der Daten, die zum Ausführen der Abfrage durchsucht werden, und nicht auf der Kapazität, die dem Pool zugeordnet ist.
+
 
 ## <a name="create-a-dedicated-sql-pool"></a>Erstellen eines dedizierten SQL-Pools
 
@@ -61,6 +68,7 @@ Ein dedizierter SQL-Pool nutzt abrechenbare Ressourcen, solange er aktiv ist. Si
 > [!NOTE] 
 > Wenn Sie in Ihrem Arbeitsbereich einen neuen dedizierten SQL-Pool (ehemals SQL DW) erstellen, wird die Bereitstellungsseite für den dedizierten SQL-Pool geöffnet. Die Bereitstellung erfolgt auf dem logischen SQL-Server.
 
+
 ## <a name="create-a-serverless-apache-spark-pool"></a>Erstellen eines serverlosen Apache Spark-Pools
 
 1. Wählen Sie in Synapse Studio im linken Bereich die Option **Verwalten** > **Apache Spark-Pools** aus.
@@ -72,9 +80,6 @@ Ein dedizierter SQL-Pool nutzt abrechenbare Ressourcen, solange er aktiv ist. Si
 
 Der Spark-Pool informiert Azure Synapse, wie viele Spark-Ressourcen verwendet werden sollen. Sie zahlen nur für die Ressourcen, die Sie verwenden. Wenn Sie die Verwendung des Pools aktiv beenden, erfolgt automatisch ein Timeout für die Ressourcen, und sie werden wiederverwendet.
 
-## <a name="the-built-in-serverless-sql-pool"></a>Der serverlose SQL-Pool „Built-in“
-
-Jeder Arbeitsbereich wird mit einem bereits erstellten serverlosen SQL-Pool namens **Built-in** (Integriert) bereitgestellt. Dieser Pool kann nicht gelöscht werden. Mit serverlosen SQL-Pools können Sie SQL verwenden, ohne dass Sie Kapazität über dedizierte SQL-Pools reservieren müssen. Im Gegensatz zu dedizierten SQL-Pools basiert die Abrechnung für einen serverlosen SQL-Pool auf der Menge der Daten, die zum Ausführen der Abfrage durchsucht werden, und nicht auf der Kapazität, die dem Pool zugeordnet ist.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

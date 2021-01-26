@@ -1,14 +1,14 @@
 ---
 title: Bereitstellen einer Richtlinie, die gewartet werden kann
 description: Zum Bereitstellen von Richtlinien, die einen Wartungstask über Azure Lighthouse verwenden, müssen Sie eine verwaltete Identität im Mandanten des Kunden erstellen.
-ms.date: 12/17/2020
+ms.date: 01/14/2021
 ms.topic: how-to
-ms.openlocfilehash: eb473fe2f589cf719e3944c887d46e75e9e7fdbf
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: 01070133241117596bdf2b8e1e7c3fa101fc656c
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97670490"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98233881"
 ---
 # <a name="deploy-a-policy-that-can-be-remediated-within-a-delegated-subscription"></a>Bereitstellen einer Richtlinie, die innerhalb eines delegierten Abonnements gewartet werden kann
 
@@ -19,9 +19,9 @@ Mit [Azure Lighthouse](../overview.md) können Dienstanbieter Richtliniendefinit
 
 ## <a name="create-a-user-who-can-assign-roles-to-a-managed-identity-in-the-customer-tenant"></a>Erstellen eines Benutzers, der einer verwalteten Identität im Kundenmandanten Rollen zuweisen kann
 
-Im Rahmen des Kunden-Onboardings für Azure Lighthouse verwenden Sie eine [Azure Resource Manager-Vorlage](onboard-customer.md#create-an-azure-resource-manager-template) sowie eine Parameterdatei, die die Benutzer, Benutzergruppen und Dienstprinzipale in Ihrem Verwaltungsmandanten definiert, der auf die delegierten Ressourcen im Kundenmandanten zugreifen kann. In Ihrer Parameterdatei wird jedem dieser Benutzer (**principalId**) eine [integrierte Rolle](../../role-based-access-control/built-in-roles.md) (**roleDefinitionId**) zugewiesen, die die Zugriffsebene definiert.
+Beim Onboarding eines Kunden für Azure Lighthouse verwenden Sie eine [Azure Resource Manager-Vorlage](onboard-customer.md#create-an-azure-resource-manager-template) zusammen mit einer Parameterdatei, um Autorisierungen zu definieren, mit denen der Zugriff auf delegierte Ressourcen auf dem Kundenmandanten gewährt wird. Bei jeder Autorisierung wird eine **principalId** angegeben, die für einen Benutzer, eine Gruppe oder einen Dienstprinzipal von Azure AD auf dem verwaltenden Mandanten steht. Darüber hinaus wird eine **roleDefinitionId** für die [integrierte Azure-Rolle](../../role-based-access-control/built-in-roles.md) angegeben, die gewährt wird.
 
-Damit von einer Prinzipal-ID (**principalId**) eine verwaltete Identität im Kundenmandanten erstellt werden kann, muss die zugehörige Rollendefinitions-ID (**roleDefinitionId**) auf **Benutzerzugriffsadministrator** festgelegt werden. Diese Rolle wird zwar nicht allgemein unterstützt, kann aber in diesem speziellen Szenario verwendet werden. Benutzer mit dieser Berechtigung können verwalteten Identitäten spezifische integrierte Rollen zuweisen. Diese Rollen werden in der Eigenschaft **delegatedRoleDefinitionIds** definiert. Sie können hier jede beliebige integrierte Rolle einschließen (mit Ausnahme von „Benutzerzugriffsadministrator“ und „Besitzer“).
+Damit von einer Prinzipal-ID (**principalId**) eine verwaltete Identität im Kundenmandanten erstellt werden kann, muss die zugehörige Rollendefinitions-ID (**roleDefinitionId**) auf **Benutzerzugriffsadministrator** festgelegt werden. Diese Rolle wird zwar nicht allgemein unterstützt, kann aber in diesem speziellen Szenario verwendet werden. Benutzerkonten mit dieser Berechtigung können verwalteten Identitäten spezifische integrierte Rollen zuweisen. Diese Rollen sind in der Eigenschaft **delegatedRoleDefinitionIds** definiert und können eine beliebige [unterstützte integrierte Azure-Rolle](../concepts/tenants-users-roles.md#role-support-for-azure-lighthouse) enthalten (mit Ausnahme von „Benutzerzugriffsadministrator“ und „Besitzer“).
 
 Nach Abschluss des Kunden-Onboardings kann die in dieser Autorisierung erstellte Prinzipal-ID (**principalId**) verwalteten Identitäten im Kundenmandanten diese integrierten Rollen zuweisen. Sie verfügen jedoch über keine der anderen Berechtigungen, die normalerweise der Rolle „Benutzerzugriffsadministrator“ zugeordnet sind.
 

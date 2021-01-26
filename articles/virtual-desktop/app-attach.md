@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 12/14/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: f625b7dd68d4b5a5e1af68aeb53dac453ff8cbfd
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: 5e45c51735e0b7ab4b263d3f3047b5848c82439d
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97400827"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98185766"
 ---
 # <a name="create-powershell-scripts-for-msix-app-attach-preview"></a>Erstellen von PowerShell-Skripts für MSIX App Attach (Vorschau)
 
@@ -39,6 +39,17 @@ Wenn Ihre App ein Zertifikat verwendet, das nicht öffentlich vertrauenswürdig 
 6. Wählen Sie **Alle Zertifikate in folgendem Speicher speichern** und dann **Durchsuchen** aus.
 7. Wenn das Fenster zum Auswählen des Zertifikatspeichers angezeigt wird, wählen Sie **Vertrauenswürdige Personen** aus, und klicken Sie dann auf **OK**.
 8. Klicken Sie auf **Weiter** und dann auf **Fertig stellen**.
+
+## <a name="enable-microsoft-hyper-v"></a>Aktivieren von Microsoft Hyper-V
+
+Microsoft Hyper-V muss aktiviert sein, da der Befehl `Mount-VHD` für das Staging und der Befehl `Dismount-VHD` zum Aufheben des Stagings erforderlich ist.
+
+```powershell
+Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V -All
+```
+
+>[!NOTE]
+>Diese Änderung erfordert, dass Sie den virtuellen Computer neu starten.
 
 ## <a name="prepare-powershell-scripts-for-msix-app-attach"></a>Vorbereiten von PowerShell-Skripts für das MSIX-Feature zum Anfügen von Apps
 

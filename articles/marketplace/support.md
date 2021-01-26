@@ -1,80 +1,64 @@
 ---
-title: Support für das Portal des kommerziellen Marketplace in Partner Center
-description: Erfahren Sie mehr über Ihre Supportoptionen im Partner Center, einschließlich der Möglichkeit, eine Supportanfrage zu stellen.
+title: Support für das Programm „Kommerzieller Marketplace“ im Partner Center
+description: Erfahren Sie mehr über Ihre Supportoptionen für das Programm „Kommerzieller Marketplace“ im Partner Center, einschließlich der Möglichkeit, eine Supportanfrage zu stellen.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: navits09
 ms.author: navits
-ms.date: 09/18/2020
-ms.openlocfilehash: b042d1e1f38b2a4a84522d58ad482d4262f69a4a
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.date: 01/19/2020
+ms.openlocfilehash: 6075027124352746a3adbb8f6937d3787eb22b9d
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94488892"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98602599"
 ---
 # <a name="support-for-the-commercial-marketplace-program-in-partner-center"></a>Support für das Programm „Kommerzieller Marketplace“ in Partner Center
 
 Microsoft bietet Support für eine Vielzahl von Produkten und Diensten. Um eine hilfreiche und zeitnahe Antwort zu erhalten, muss Ihre Anfrage natürlich das richtige Support-Team erreichen. Die folgenden Szenarien sollen Ihnen dabei helfen, Ihre Anfrage an das richtige Team zu richten:
 
 - Wenn Sie als Herausgeber eine Frage von einem Kunden erhalten haben, bitten Sie ihn darum, über die Supportlinks im  [Azure-Portal](https://portal.azure.com/) Unterstützung anzufordern.
+- Wenn Sie ein Herausgeber sind und ein Sicherheitsproblem mit einer in Azure ausgeführten Anwendung festgestellt haben, finden Sie weitere Informationen unter [Erstellen eines Tickets beim Support für Sicherheitsereignisse](/azure/security/fundamentals/event-support-ticket). Herausgeber müssen mutmaßliche sicherheitsrelevante Ereignisse einschließlich Sicherheitsincidents und Sicherheitsrisiken, die ihre Azure Marketplace-Software und Dienstangebote betreffen, bei nächstmöglicher Gelegenheit melden.
 - Wenn Sie ein Herausgeber sind und eine Frage hinsichtlich Ihrer App oder Ihres Diensts haben, nutzen Sie die folgenden Supportoptionen.
 
-## <a name="support-options-for-publishers"></a>Supportoptionen für Herausgeber
+## <a name="get-help-or-open-a-support-ticket"></a>Anfordern von Hilfe oder Eröffnen eines Supporttickets
 
-1. Melden Sie sich mit Ihrem Geschäftskonto beim [kommerziellen Marketplace-Programm in Partner Center](https://partner.microsoft.com/dashboard/commercial-marketplace/overview) an (wenn Sie dies noch nicht getan haben, müssen Sie ein [Partner Center-Konto erstellen](partner-center-portal/create-account.md)).
+1. Melden Sie sich mit Ihrem Geschäftskonto an. [Erstellen Sie ein Partner Center-Konto](partner-center-portal/create-account.md), falls Sie dies noch nicht getan haben.
 
-2. Wählen Sie im oberen Menü auf der rechten Seite das Symbol **Support** aus.
+1. Wählen Sie im Menü oben rechts auf der Seite das Symbol **Support** aus. Der Bereich **Hilfe und Support** wird rechts auf der Seite angezeigt.
 
-3. Der Bereich **Hilfe und Support** wird auf der rechten Seite der Seite angezeigt.
+1. Wenn Sie Hilfe zum kommerziellen Marketplace benötigen, wählen Sie **Kommerzieller Marketplace** aus.
 
    ![Dropdownmenü „Support“](./media/support/commercial-marketplace-support-pane.png)
 
-    Oder wechseln Sie in den Bereich **Startseite** , und wählen Sie **Hilfe und Support** aus.
+1. Geben Sie im Feld **Problemzusammenfassung** eine kurze Beschreibung des Problems ein.
 
-   ![Hilfe und Support über die Startseite](./media/support/homepage-help-support.png)
+1. Führen Sie im Feld **Problemtyp** einen der folgenden Schritte aus:
 
-4. Wählen Sie **[Dokumentation](../index.yml)** aus, um umfassende Antworten auf Fragen sowie Ressourcen zu erhalten.
+    - **Option 1**: Geben Sie Schlüsselwörter wie die Folgenden ein: Marketplace, Azure-App, SaaS-Angebot, Kontoverwaltung, Leadverwaltung, Bereitstellungsproblem, Auszahlung oder Migration eines Co-Selling-Angebots. Wählen Sie dann in der eingeblendeten Liste mit Empfehlungen einen Problemtyp aus.
 
-5. Wählen Sie das **[Marketplace Partner-Communityforum](https://www.microsoftpartnercommunity.com/t5/Azure-Marketplace-and-AppSource/bd-p/2222)** aus, um Ihre Fragen mithilfe des Wissens anderer Microsoft-Herausgeber zu beantworten.
+    - **Option 2**: Wählen Sie in der Liste **Kategorie** die Option **Themen durchsuchen** aus, und wählen Sie dann **Kommerzieller Marketplace** aus. Wählen Sie dann das geeignete **Thema** und **Unterthema** aus.
 
-6. Wählen Sie **[Zusätzliche Hilfe](https://aka.ms/marketplacepublishersupport)** aus, um ein **neues Supportanfrageticket** zu öffnen.  
+1. Nachdem Sie das gewünschte Thema gefunden haben, wählen Sie **Lösungen überprüfen** aus.
 
-## <a name="how-to-open-a-support-ticket"></a>Öffnen eines Supporttickets
+    ![Nächster Schritt](./media/support/next-step.png)
 
-Jetzt können Sie ein Supportticket auf dem Bildschirm **Hilfe und Support** öffnen.
+Die folgenden Optionen werden angezeigt:
 
-![Hilfe und Support](./media/support/help-and-support.png)
+- Wenn Sie ein anderes Thema auswählen möchten, klicken Sie auf **Select a different issue** (Anderes Problem auswählen).
+- Um das Problem zu beheben, lesen Sie die empfohlenen Schritte und Dokumente, falls verfügbar.
 
->[!Note]
->Wenn Sie im Partner Center angemeldet sind, erhalten Sie eine bessere Benutzererfahrung mit dem Support.
+    ![Empfohlene Lösungen](./media/support/recommended-solutions.png)
 
-**Option 1:** Geben Sie Schlüsselwörter wie die Folgenden ein: Marketplace, Azure-App, SaaS-Angebot, Kontoverwaltung, Leadverwaltung, Bereitstellungsproblem, Auszahlung, usw.
-
-**Option 2:** Themen durchsuchen -> wählen Sie **Kategorie** = kommerzieller Marketplace -> wählen Sie das entsprechende **Thema** und dann **Unterthema** aus.
-
-Wenn Sie das Thema Ihrer Wahl gefunden haben, wählen Sie **Lösungen überprüfen** aus.
-
-![Nächster Schritt](./media/support/next-step.png)
-
-Die folgenden Optionen werden zur Verfügung gestellt:
-
-- Um ein anderes Thema auszuwählen, wählen Sie unter **ausgewähltes Problem** einen anderen Themenlink.
-- Überprüfen Sie die Beschreibung für dieses Problem, falls verfügbar.  Es handelt sich um den über den **empfohlenen Schritten** dargestellten Text.
-- Überprüfen Sie die **empfohlenen Schritte** , falls verfügbar.
-- Überprüfen Sie die **empfohlenen Dokumente** , falls verfügbar.
-
-![Empfohlene Lösungen](./media/support/recommended-solutions.png)
-
-Falls Sie Ihre Antwort nicht unter **Empfohlene Lösungen** finden, klicken Sie auf **Provide issue details** (Problemdetails angeben). Füllen Sie alle erforderlichen Felder aus, um den Lösungsprozess zu beschleunigen, und klicken Sie dann auf **Übermitteln**.
+Falls Sie in der Selbsthilfe keine Antwort finden, wählen Sie **Problemdetails angeben** aus. Füllen Sie alle erforderlichen Felder aus, um den Lösungsprozess zu beschleunigen, und wählen Sie dann **Übermitteln** aus.
 
 >[!Note]
->Wenn Sie sich nicht im Partner Center angemeldet haben und das Thema eine Authentifizierung erfordert, werden Sie aufgefordert, sich anzumelden, bevor Sie fortfahren können.  Für öffentliche Themen ist keine Authentifizierung erforderlich.
+>Wenn Sie sich noch nicht beim Partner Center angemeldet haben, müssen Sie sich möglicherweise anmelden, bevor Sie ein Ticket erstellen können.
 
 ## <a name="track-your-existing-support-requests"></a>Verfolgen Sie Ihre vorhandene Supportanfragen
 
-Wechseln Sie zu **Commercial Marketplace** in der linken Navigationsleiste und wählen Sie dann **Support** aus, um alle Ihre offenen und geschlossenen Tickets zu überprüfen.
+Wählen Sie im linken Navigationsmenü **Kommerzieller Marketplace** > **Support** aus, um Ihre geöffneten und geschlossenen Tickets zu überprüfen.
 
 ## <a name="record-issue-details-with-a-har-file"></a>Aufzeichnen von Problemdetails mit einer HAR-Datei
 
@@ -123,7 +107,7 @@ Generieren Sie eine HAR-Datei mit **Mozilla Firefox** wie folgt:
 
 Generieren Sie eine HAR-Datei mit **Safari** wie folgt:
 
-1. Aktivieren Sie die Entwicklertools in Safari: Wählen Sie **Safari** > **Einstellungen** aus. Navigieren Sie zur Registerkarte **Erweitert** , und wählen Sie dann **Entwicklungsmenü in Menüleiste anzeigen** aus.
+1. Aktivieren Sie die Entwicklertools in Safari: Wählen Sie **Safari** > **Einstellungen** aus. Navigieren Sie zur Registerkarte **Erweitert**, und wählen Sie dann **Entwicklungsmenü in Menüleiste anzeigen** aus.
 1. Navigieren Sie zu der Webseite, auf der das Problem aufgetreten ist.
 1. Wählen Sie **Entwicklung** aus, und wählen Sie dann **Webinformationen anzeigen** aus.
 1. Wählen Sie die Registerkarte **Netzwerkanalyse** und dann **Netzwerkelemente löschen** aus, um die vorhandenen Protokolle zu entfernen.

@@ -1,14 +1,14 @@
 ---
 title: Informationen zum Überwachen der Inhalte virtueller Computer
 description: Hier erfahren Sie, wie Azure Policy mithilfe des Gastkonfigurationsclients Einstellungen in VMs überwacht.
-ms.date: 10/14/2020
+ms.date: 01/14/2021
 ms.topic: conceptual
-ms.openlocfilehash: 5ec43516c60d2fe5d923a7b87cddbea0ad640453
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: c141169545379f1ac0dd18a97e85652f97b90e6f
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98071832"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98210119"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Informationen zu Guest Configuration von Azure Policy
 
@@ -101,11 +101,11 @@ Lassen Sie für über Arc verbundene Server in privaten Rechenzentren Datenverke
 
 ## <a name="managed-identity-requirements"></a>Anforderungen für verwaltete Identitäten
 
-Durch Richtliniendefinitionen in der Initiative [Voraussetzungen zum Aktivieren der Gastkonfigurationsrichtlinien auf VMs bereitstellen](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F12794019-7a00-42cf-95c2-882eed337cc8) wird eine systemseitig zugewiesene verwaltete Identität aktiviert, falls noch nicht vorhanden. Die Initiative enthält zwei Richtliniendefinitionen, durch die die Identitätserstellung verwaltet wird. Die IF-Bedingungen in den Richtliniendefinitionen gewährleisten das korrekte Verhalten basierend auf dem aktuellen Zustand der Computerressource in Azure.
+Durch Richtliniendefinitionen in der Initiative _Voraussetzungen zum Aktivieren der Gastkonfigurationsrichtlinien auf VMs bereitstellen_ wird eine systemseitig zugewiesene verwaltete Identität aktiviert, falls noch nicht vorhanden. Die Initiative enthält zwei Richtliniendefinitionen, durch die die Identitätserstellung verwaltet wird. Die IF-Bedingungen in den Richtliniendefinitionen gewährleisten das korrekte Verhalten basierend auf dem aktuellen Zustand der Computerressource in Azure.
 
-Wenn der Computer derzeit keine verwalteten Identitäten aufweist, lautet die effektive Richtlinie: [\[Vorschau\]: Systemseitig zugewiesene verwaltete Identität hinzufügen, um Gastkonfigurationszuweisungen auf VMs ohne Identität zu aktivieren](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F3cf2ab00-13f1-4d0c-8971-2ac904541a7e)
+Wenn der Computer derzeit keine verwalteten Identitäten aufweist, lautet die effektive Richtlinie: [Systemseitig zugewiesene verwaltete Identität hinzufügen, um Gastkonfigurationszuweisungen auf VMs ohne Identität zu aktivieren](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F3cf2ab00-13f1-4d0c-8971-2ac904541a7e)
 
-Wenn der Computer derzeit über eine benutzerseitig zugewiesene Systemidentität verfügt, lautet die effektive Richtlinie: [\[Vorschau\]: Systemseitig zugewiesene verwaltete Identität hinzufügen, um Gastkonfigurationszuweisungen auf VMs mit einer benutzerseitig zugewiesenen Identität zu aktivieren](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F497dff13-db2a-4c0f-8603-28fa3b331ab6)
+Wenn der Computer derzeit über eine benutzerseitig zugewiesene Systemidentität verfügt, lautet die effektive Richtlinie: [Systemseitig zugewiesene verwaltete Identität hinzufügen, um Gastkonfigurationszuweisungen auf VMs mit einer benutzerseitig zugewiesenen Identität zu aktivieren](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F497dff13-db2a-4c0f-8603-28fa3b331ab6)
 
 ## <a name="guest-configuration-definition-requirements"></a>Anforderungen an die Guest Configuration-Definition
 
@@ -120,7 +120,7 @@ Azure Policy verwendet die Eigenschaft **complianceStatus** des Gastkonfiguratio
 
 #### <a name="auditing-operating-system-settings-following-industry-baselines"></a>Überwachen von Betriebssystemeinstellungen anhand von Branchenrichtlinien
 
-Eine Initiative in Azure Policy bietet die Möglichkeit, Betriebssystemeinstellungen anhand einer „Baseline“ zu überwachen. Die Definition _\[Vorschau\]: Überwachen von Windows-VMs, die nicht den Einstellungen für Azure-Sicherheitsbaselines entsprechen_ enthält einen Satz von Regeln, die der Active Directory-Gruppenrichtlinie basieren.
+Eine Initiative in Azure Policy überwacht Betriebssystemeinstellungen anhand einer „Baseline“. Die Definition _\[Vorschau\]: Windows-Computer müssen die Anforderungen für die Azure-Sicherheitsbaseline erfüllen_ enthält einen Satz von Regeln, die auf der Active Directory-Gruppenrichtlinie basieren.
 
 Die meisten Einstellungen sind als Parameter verfügbar. Mithilfe von Parametern können Sie anpassen, was überwacht werden soll.
 Passen Sie die Richtlinie an Ihre Anforderungen an, oder ordnen Sie die Richtlinie Drittanbieterinformationen (z. B. branchenspezifischen Standards) zu.

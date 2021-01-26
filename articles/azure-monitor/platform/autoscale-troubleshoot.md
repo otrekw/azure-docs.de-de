@@ -4,12 +4,12 @@ description: Hier wird das Behandeln von Problemen mit der automatischen Skalier
 ms.topic: conceptual
 ms.date: 11/4/2019
 ms.subservice: autoscale
-ms.openlocfilehash: a29b5d11a6ea06af9d5b6a8b5120c6f0caa6601e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8c4589acd17e76d1341d5aceada67e565c8f8c37
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90979046"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251266"
 ---
 # <a name="troubleshooting-azure-autoscale"></a>Problembehandlung für automatische Skalierung in Azure
  
@@ -51,13 +51,13 @@ Betrachten wir nun die Metriken aus dem Autoskalierungsdienst.
 
 ![Beispiel für CPU-Prozentsatz – VM-Skalierungsgruppe](media/autoscale-troubleshoot/autoscale-vmss-CPU-ex-full-2.png)
 
-***Abbildung 1a: Metrik „CPU in Prozent“ für VM-Skalierungsgruppe und Metrik „Beobachteter Metrikwert“ für Autoskalierungseinstellung***
+**_Abbildung 1a: Metrik „CPU in Prozent“ für VM-Skalierungsgruppe und Metrik „Beobachteter Metrikwert“ für Autoskalierungseinstellung_* _
 
 ![„Schwellenwert der Metrik“ und „Beobachtete Kapazität“](media/autoscale-troubleshoot/autoscale-metric-threshold-capacity-ex-full.png)
 
-***Abbildung 1b: „Schwellenwert der Metrik“ und „Beobachtete Kapazität“***
+_*_Abbildung 1b: „Schwellenwert der Metrik“ und „Beobachtete Kapazität“_*_
 
-In Abbildung 1b ist der **Schwellenwert der Metrik** (hellblaue Linie) für die Regel für die horizontale Skalierung gleich 70.  Die **Beobachtete Kapazität** (dunkelblaue Linie) zeigt die Anzahl der aktiven Instanzen; derzeit sind drei Instanzen aktiv. 
+In Abbildung 1b ist der _ *Schwellenwert der Metrik** (hellblaue Linie) für die Regel für die horizontale Skalierung gleich 70.  Die **Beobachtete Kapazität** (dunkelblaue Linie) zeigt die Anzahl der aktiven Instanzen; derzeit sind drei Instanzen aktiv. 
 
 > [!NOTE]
 > Sie müssen den **Schwellenwert der Metrik** anhand der Regel für das Aufskalieren (Vergrößern) der Metriktriggerregel-Dimension filtern, um den Schwellenwert für Aufskalierung anzuzeigen, sowie anhand der Regel für das Abskalieren (Verringern). 
@@ -76,18 +76,18 @@ In diesem Fall wird der beobachtete Metrikwert des Autoskalierungsmoduls berechn
 
 ![Beispiel für Diagramme mit Metriken der automatischen Skalierung für VM-Skalierungsgruppe](media/autoscale-troubleshoot/autoscale-vmss-metric-chart-ex-2.png)
 
-***Abbildung 2: Beispiel für Diagramme mit Metriken der automatischen Skalierung für VM-Skalierungsgruppe***
+**_Abbildung 2: Beispiel für Diagramme mit Metriken der automatischen Skalierung für VM-Skalierungsgruppe_* _
 
 In Abbildung 2 sehen Sie zwei Metrikdiagramme. 
 
-Das Diagramm oben zeigt den tatsächlichen Wert der Metrik **Ausgehende Datenflüsse** an. Der tatsächliche Wert ist 6. 
+Das Diagramm oben zeigt den tatsächlichen Wert der Metrik _ *Ausgehende Datenflüsse** an. Der tatsächliche Wert ist 6. 
 
 Im Diagramm unten werden einige Werte dargestellt. 
  - **Beobachteter Metrikwert** (hellblau) ist 3, da zwei aktive Instanzen vorhanden sind und 6 dividiert durch 2 ist gleich 3. 
  - Die **Beobachtete Kapazität** (lila) zeigt die Anzahl der Instanzen, die vom Autoskalierungsmodul festgestellt wurde. 
  - Der **Metrikschwellenwert** (hellgrün) ist auf 10 festgelegt. 
 
-Wenn mehrere Regeln für Skalierungsaktionen vorhanden sind, können Sie die Teilungsoption oder die Option **Filter hinzufügen** im Diagramm des Metrik-Explorers verwenden, um Metriken nach einer bestimmten Quelle oder Regel anzeigen zu lassen. Weitere Informationen zum Teilen eines Metrikdiagramms finden Sie unter [Erweiterte Funktionen von Azure Metrik-Explorer – Teilen](metrics-charts.md#apply-splitting-to-a-chart).
+Wenn mehrere Regeln für Skalierungsaktionen vorhanden sind, können Sie die Teilungsoption oder die Option **Filter hinzufügen** im Diagramm des Metrik-Explorers verwenden, um Metriken nach einer bestimmten Quelle oder Regel anzeigen zu lassen. Weitere Informationen zum Teilen eines Metrikdiagramms finden Sie unter [Erweiterte Funktionen von Azure Metrik-Explorer – Teilen](metrics-charts.md#apply-splitting).
 
 ## <a name="example-3---understanding-autoscale-events"></a>Beispiel 3: Verstehen von Autoskalierungsereignissen
 

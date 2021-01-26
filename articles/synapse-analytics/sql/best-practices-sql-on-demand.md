@@ -10,12 +10,12 @@ ms.subservice: sql
 ms.date: 05/01/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: b8b93471b6d7f2555cfd71e524718ed0ea1ee191
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: c752bc6ae49f009056067545fde292dc29027d5d
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96457906"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98208130"
 ---
 # <a name="best-practices-for-serverless-sql-pool-in-azure-synapse-analytics"></a>Best Practices für serverlose SQL-Pools in Azure Synapse Analytics
 
@@ -25,9 +25,9 @@ In diesem Artikel finden Sie eine Sammlung von bewährten Methoden für die Verw
 
 Ein serverloser SQL-Pool ermöglicht es Ihnen, Dateien in Ihren Azure-Speicherkonten abzufragen. Es verfügt nicht über lokale Speicher- oder Erfassungsfunktionen. Somit sind alle Dateien, auf die die Abfrage ausgerichtet ist, extern zum serverlosen SQL-Pool. Alles, was mit dem Lesen von Dateien aus dem Speicher zusammenhängt, kann sich auf die Abfrageleistung auswirken.
 
-## <a name="colocate-your-azure-storage-account-and-serverless-sql-pool"></a>Zusammenstellen Ihres Azure-Speicherkontos und eines serverlosen SQL-Pools
+## <a name="colocate-your-storage-and-serverless-sql-pool"></a>Anordnen Ihres Speichers und des serverlosen SQL-Pools an demselben Ort
 
-Stellen Sie Ihr Azure-Speicherkonto und den Endpunkt Ihres serverlosen SQL-Pools zusammen, um die Wartezeit zu minimieren. Speicherkonten und Endpunkte, die während der Einrichtung des Arbeitsbereichs bereitgestellt werden, befinden sich in derselben Region.
+Ordnen Sie Ihr Azure-Speicherkonto bzw. den Cosmos DB-Analysespeicher und den Endpunkt Ihres serverlosen SQL-Pools an demselben Ort an, um die Latenz zu verringern. Speicherkonten und Endpunkte, die während der Einrichtung des Arbeitsbereichs bereitgestellt werden, befinden sich in derselben Region.
 
 Wenn Sie mit einem serverlosen SQL-Pool auf andere Speicherkonten zugreifen, stellen Sie für eine optimale Leistung sicher, dass sie sich in derselben Region befinden. Wenn sie sich nicht in derselben Region befinden, erhöht sich die Wartezeit für die Netzwerkübertragung der Daten zwischen der Remote- und der Endpunktregion.
 
@@ -44,9 +44,9 @@ Wenn eine Drosselung erkannt wird, verfügt der serverlose SQL-Pool über eine i
 
 Wenn möglich, können Sie Dateien für eine bessere Leistung vorbereiten:
 
-- Konvertieren Sie das CSV- und das JSON-Format in Parquet. Bei Parquet handelt es sich um ein Spaltenformat. Da es komprimiert ist, sind die Dateien kleiner als CSV- oder JSON-Dateien mit denselben Daten. Der serverlose SQL-Pool benötigt weniger Zeit und Speicheranforderungen, um es zu lesen.
+- Konvertieren Sie umfangreiche CSV- und JSON-Daten in das Parquet-Format. Bei Parquet handelt es sich um ein Spaltenformat. Da es komprimiert ist, sind die Dateien kleiner als CSV- oder JSON-Dateien mit denselben Daten. Beim Lesen von Parquet-Dateien können die Spalten und Zeilen, die in der Abfrage nicht benötigt werden, vom serverlosen SQL-Pool übersprungen werden. Der serverlose SQL-Pool benötigt weniger Zeit und Speicheranforderungen, um es zu lesen.
 - Wenn eine Abfrage auf eine einzelne große Datei ausgerichtet ist, lohnt es sich, diese in mehrere kleinere Dateien aufzuteilen.
-- Versuchen Sie, die Größe Ihrer CSV-Datei unter 10 GB zu halten.
+- Versuchen Sie sicherzustellen, dass die Größe von CSV-Dateien im Bereich zwischen 100 MB und 10 GB liegt.
 - Es ist besser, gleich große Dateien für einen einzelnen OPENROWSET-Pfad oder einen Speicherort für die Tabelle zu verwenden.
 - Partitionieren Sie Ihre Daten, indem Sie Partitionen in verschiedenen Ordnern oder unter unterschiedlichen Dateinamen speichern. Unter [Verwenden von Dateiname und Dateipfadfunktionen zum Ausrichten auf bestimmte Partitionen](#use-filename-and-filepath-functions-to-target-specific-partitions) finden Sie weitere Informationen.
 
@@ -88,7 +88,7 @@ Das Ergebnis lautet wie folgt:
 
 |is_hidden|column_ordinal|name|system_type_name|max_length|
 |----------------|---------------------|----------|--------------------|-------------------||
-|0|1|vendor_id|varchar(8000)|8\.000|
+|0|1|vendor_id|varchar(8000)|8.000|
 |0|2|pickup_datetime|datetime2(7)|8|
 |0|3|passenger_count|INT|4|
 

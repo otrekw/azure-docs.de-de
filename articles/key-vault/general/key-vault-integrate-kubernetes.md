@@ -7,12 +7,12 @@ ms.service: key-vault
 ms.subservice: general
 ms.topic: tutorial
 ms.date: 09/25/2020
-ms.openlocfilehash: f0699ed065da4c63bc88945d75a866abcfbb9053
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: f4981036ca92f6efe2d3e23ea1f507a3a1f3c70a
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98121361"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98234255"
 ---
 # <a name="tutorial-configure-and-run-the-azure-key-vault-provider-for-the-secrets-store-csi-driver-on-kubernetes"></a>Tutorial: Konfigurieren und Ausführen des Azure Key Vault-Anbieters für den Secrets Store CSI-Treiber auf Kubernetes
 
@@ -37,6 +37,8 @@ In diesem Tutorial lernen Sie Folgendes:
 * Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
 * Installieren Sie die [Azure CLI](/cli/azure/install-azure-cli-windows?view=azure-cli-latest), bevor Sie mit diesem Tutorial beginnen.
+
+In diesem Tutorial wird davon ausgegangen, dass Sie Azure Kubernetes Service auf Linux-Knoten ausführen.
 
 ## <a name="use-managed-identities"></a>Verwenden verwalteter Identitäten
 
@@ -77,6 +79,8 @@ Führen Sie die Abschnitte „Erstellen einer Ressourcengruppe“, „Erstellen 
     ![Screenshot der Azure CLI mit hervorgehobenen Werten von „principalId“ und „clientId“](../media/kubernetes-key-vault-2.png) ![Screenshot der Azure CLI mit hervorgehobenen Werten von „subscriptionId“ und „nodeResourceGroup“](../media/kubernetes-key-vault-3.png)
     
 ## <a name="install-helm-and-the-secrets-store-csi-driver"></a>Installieren von Helm und des Secrets Store CSI-Treibers
+> [!NOTE]
+> Die folgende Installation funktioniert nur in AKS unter Linux. Weitere Informationen zur Installation des Secrets Store CSI-Treibers finden Sie unter [Azure Key Vault-Anbieter für den Secrets Store CSI-Treiber](https://github.com/Azure/secrets-store-csi-driver-provider-azure). 
 
 Um den Secrets Store CSI-Treibers zu installieren, müssen Sie zuerst [Helm](https://helm.sh/docs/intro/install/) installieren.
 

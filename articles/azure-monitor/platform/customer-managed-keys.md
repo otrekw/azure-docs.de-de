@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 01/10/2021
-ms.openlocfilehash: 6c1f323828eb48b61b38370bc2fe56d4c93bf036
-ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
+ms.openlocfilehash: 889ee48c43119086047d6f52737266f4c611fc8d
+ms.sourcegitcommit: 61d2b2211f3cc18f1be203c1bc12068fc678b584
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98127208"
+ms.lasthandoff: 01/18/2021
+ms.locfileid: "98562742"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Kundenseitig verwaltete Schlüssel in Azure Monitor 
 
@@ -95,7 +95,7 @@ Einige Konfigurationsschritte werden asynchron ausgeführt, da sie nicht schnell
 
 # <a name="rest"></a>[REST](#tab/rest)
 
-Wenn REST verwendet und akzeptiert wird, gibt die Antwort anfänglich den HTTP-Statuscode 200 (OK) und einen Header mit der Eigenschaft *Azure-AsyncOperation* zurück:
+Wenn REST verwendet wird, gibt die Antwort anfänglich den HTTP-Statuscode 202 (Akzeptiert) und einen Header mit der Eigenschaft *Azure-AsyncOperation* zurück:
 ```json
 "Azure-AsyncOperation": "https://management.azure.com/subscriptions/subscription-id/providers/Microsoft.OperationalInsights/locations/region-name/operationStatuses/operation-id?api-version=2020-08-01"
 ```
@@ -200,7 +200,7 @@ Die Weitergabe des Schlüssels dauert einige Minuten. Sie können den Aktualisie
 1. Kopieren Sie den URL-Wert von „Azure-AsyncOperation“ aus der Antwort, und befolgen Sie die [Überprüfung des Status asynchroner Vorgänge](#asynchronous-operations-and-status-check).
 2. Senden Sie eine GET-Anforderung für den Cluster, und überprüfen Sie die Eigenschaften *KeyVaultProperties*. In der Antwort sollte der soeben aktualisierte Schlüssel zurückgegeben werden.
 
-Nach Abschluss der Aktualisierung des Schlüssels sollte die Antwort auf die GET-Anforderung wie folgt aussehen: 200 OK und Header
+Nach Abschluss der Aktualisierung des Schlüssels sollte die Antwort auf die GET-Anforderung wie folgt aussehen: 202 (Akzeptiert) und Header
 ```json
 {
   "identity": {

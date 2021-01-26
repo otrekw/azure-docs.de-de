@@ -4,12 +4,12 @@ description: Rufen Sie die Anzahl der Seitenaufrufe und Sitzungen, Webclientdate
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 6678c662c4646a8181b1617ccddf9b8718c957bf
-ms.sourcegitcommit: 89c0482c16bfec316a79caa3667c256ee40b163f
+ms.openlocfilehash: 60b3e9229adb93ce32c97c2822a465f7f629d47d
+ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97858551"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98234357"
 ---
 # <a name="application-insights-for-web-pages"></a>Application Insights für Webseiten
 
@@ -196,7 +196,7 @@ Die meisten Konfigurationsfelder werden so benannt, dass sie standardmäßig auf
 | correlationHeaderDomains |  | Korrelations-Header für bestimmte Domänen aktivieren |
 | disableFlushOnBeforeUnload | false | Die Standardeinstellung ist „false“. Bei „true“ wird die Methode „Flush“ (Leeren) beim Auslösen eines „onBeforeUnload“-Ereignisses nicht aufgerufen. |
 | enableSessionStorageBuffer | true | Die Standardeinstellung ist „true“. Bei „true“ wird der Puffer mit allen nicht gesendeten Telemetriedaten im Sitzungsspeicher gespeichert. Der Puffer wird beim Laden der Seite wiederhergestellt. |
-| isCookieUseDisabled | false | Die Standardeinstellung ist „false“. Bei „true“ speichert oder liest das SDK keine Daten aus Cookies.|
+| isCookieUseDisabled | false | Die Standardeinstellung ist „false“. Bei „true“ speichert oder liest das SDK keine Daten aus Cookies. Beachten Sie, dass dadurch die Benutzer- und Sitzungscookies deaktiviert werden und die Nutzungsblätter und Benutzeroberflächen unbrauchbar werden. |
 | cookieDomain | NULL | Benutzerdefinierte Cookiedomäne. Diese ist hilfreich, wenn Sie Application Insights-Cookies über untergeordnete Domänen hinweg freigeben möchten. |
 | isRetryDisabled | false | Die Standardeinstellung ist „false“. Bei „false“ wiederholen Sie den Vorgang für 206 (teilweise erfolgreich), 408 (Timeout), 429 (zu viele Anforderungen), 500 (interner Serverfehler), 503 (Dienst nicht verfügbar) und 0 (offline, nur wenn erkannt). |
 | isStorageUseDisabled | false | Bei „true“ speichert und liest das SDK keine Daten aus dem lokalen Speicher und dem Sitzungsspeicher. Der Standardwert ist "false". |
@@ -266,7 +266,8 @@ Wir bieten derzeit ein separates [React-Plug-In](javascript-react-plugin.md) an,
 |---------------|
 | [React](javascript-react-plugin.md)|
 | [React Native](javascript-react-native-plugin.md)|
-| [Angular](javascript-angular-plugin.md) |
+| [Angular](javascript-angular-plugin.md)|
+| [Automatische Erfassung von Klickanalysen](javascript-click-analytics-plugin.md)|
 
 ## <a name="explore-browserclient-side-data"></a>Browser-/clientseitige Daten erkunden
 

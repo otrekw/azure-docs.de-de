@@ -6,13 +6,13 @@ ms.author: jonels
 ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
-ms.date: 7/1/2020
-ms.openlocfilehash: 8dc70eaeb9e2c2f5d4cdfef37619e4b04217782e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 1/12/2021
+ms.openlocfilehash: 48537483501165d4a978afdbd05560613170d187
+ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85964514"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98165610"
 ---
 # <a name="azure-database-for-postgresql--hyperscale-citus-configuration-options"></a>Azure Database for PostgreSQL – Konfigurationsoptionen für Hyperscale (Citus)
 
@@ -118,6 +118,10 @@ Der Speicher auf Koordinator- und Workerknoten kann hochskaliert (vergrößert) 
 ### <a name="storage-size"></a>Speichergröße
 
 Für Koordinator- und Workerknoten wird eine Speicherkapazität von bis zu 2 TiB unterstützt. Weitere Informationen finden Sie in den verfügbaren Speicheroptionen und der IOPS-Berechnung [oben](#compute-and-storage) für Knoten- und Clustergrößen.
+
+### <a name="database-creation"></a>Datenbankerstellung
+
+Im Azure-Portal werden Anmeldeinformationen bereitgestellt, um eine Verbindung mit genau einer Datenbank pro Hyperscale (Citus)-Servergruppe herzustellen, der `citus`-Datenbank. Das Erstellen einer anderen Datenbank ist zurzeit nicht zulässig, und der CREATE DATABASE-Befehl verursacht einen Fehler.
 
 ## <a name="pricing"></a>Preise
 Aktuelle Preisinformationen finden Sie auf der Seite [Azure-Datenbank für MySQL – Preise](https://azure.microsoft.com/pricing/details/postgresql/).

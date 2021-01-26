@@ -6,12 +6,12 @@ ms.service: site-recovery
 ms.date: 12/07/2020
 ms.topic: conceptual
 ms.author: ramamill
-ms.openlocfilehash: 7e4f18b5d4f074d6596b375cbc11f40c2ab69d68
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: 19a98b5786f35839d84e1e969c29e45e2b5e8dea
+ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97616608"
+ms.lasthandoff: 01/19/2021
+ms.locfileid: "98573393"
 ---
 # <a name="enable-replication-to-azure-for-vmware-vms"></a>Aktivieren der Replikation in Azure für VMware-VMs
 
@@ -141,7 +141,7 @@ Nachdem der Auftrag „Replikation aktivieren“ abgeschlossen wurde, wird für 
    :::image type="content" source="./media/vmware-azure-enable-replication/vmproperties.png" alt-text="Fenster „Compute- und Netzwerkeigenschaften“":::
 
    - **Name des virtuellen Azure-Computers**: Ändern Sie ggf. den Namen, damit er den Azure-Anforderungen entspricht.
-   - **Größe oder Typ des virtuellen Zielcomputers**: Die Standard-VM-Größe wird basierend auf einigen Parametern ausgewählt, zu denen Anzahl der Datenträger, NIC-Anzahl, Anzahl der CPU-Kerne, Arbeitsspeicher und verfügbare VM-Rollengrößen in der Azure-Zielregion zählen. Azure Site Recovery wählt die erste verfügbare VM-Größe aus, die alle Kriterien erfüllt. Sie können je nach Bedarf jederzeit vor dem Failover eine andere VM-Größe auswählen. Die VM-Datenträgergröße basiert auch auf der Größe des Quelldatenträgers. Diese kann nur nach einem Failover geändert werden. Weitere Informationen zu Datenträgergrößen und IOPS-Raten finden Sie unter [Skalierbarkeits- und Leistungsziele für VM-Datenträger unter Windows](../virtual-machines/windows/disk-scalability-targets.md).
+   - **Größe oder Typ des virtuellen Zielcomputers**: Die Standard-VM-Größe wird basierend auf einigen Parametern ausgewählt, zu denen Anzahl der Datenträger, NIC-Anzahl, Anzahl der CPU-Kerne, Arbeitsspeicher und verfügbare VM-Rollengrößen in der Azure-Zielregion zählen. Azure Site Recovery wählt die erste verfügbare VM-Größe aus, die alle Kriterien erfüllt. Sie können je nach Bedarf jederzeit vor dem Failover eine andere VM-Größe auswählen. Die VM-Datenträgergröße basiert auch auf der Größe des Quelldatenträgers. Diese kann nur nach einem Failover geändert werden. Weitere Informationen zu Datenträgergrößen und IOPS-Raten finden Sie unter [Skalierbarkeits- und Leistungsziele für VM-Datenträger](../virtual-machines/disks-scalability-targets.md).
    - **Ressourcengruppe**: Sie können eine [Ressourcengruppe](../azure-resource-manager/management/overview.md#resource-groups) auswählen, der ein virtueller Computer nach einem Failover angehören soll. Sie können diese Einstellung jederzeit vor dem Failover ändern. Wenn Sie den virtuellen Computer nach dem Failover zu einer anderen Ressourcengruppe migrieren, funktionieren die Schutzeinstellungen des virtuellen Computers nicht mehr.
    - **Verfügbarkeitsgruppe**: Sie können eine [Verfügbarkeitsgruppe](../virtual-machines/windows/tutorial-availability-sets.md) auswählen, wenn der virtuelle Computer nach dem Failover einer Verfügbarkeitsgruppe angehören muss. Bei Auswahl einer Verfügbarkeitsgruppe sollten Sie Folgendes beachten:
      - Es werden nur Verfügbarkeitsgruppen aufgelistet, die der angegebenen Ressourcengruppe angehören.

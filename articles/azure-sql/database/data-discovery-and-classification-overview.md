@@ -13,17 +13,17 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 12/01/2020
 tags: azure-synapse
-ms.openlocfilehash: ece76f0017a72484f5c4e66b2ab8c7e71d32f1a7
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 41ad711de81f075727e4c177c318054677cb0ece
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98132034"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98185354"
 ---
 # <a name="data-discovery--classification"></a>Datenermittlung und -klassifizierung
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
-Datenermittlung und -klassifizierung ist in Azure SQL-Datenbank, verwaltete Azure SQL-Instanzen und Azure Synapse Analytics integriert. Sie bietet erweiterte Funktionen zum Ermitteln, Klassifizieren und Bezeichnen vertraulicher Daten in Ihren Datenbanken und zum Erstellen von Berichten zu diesen.
+Datenermittlung und -klassifizierung ist in Azure SQL-Datenbank, verwaltete Azure SQL-Instanzen und Azure Synapse Analytics integriert. Sie bietet grundlegende Funktionen zum Ermitteln, Klassifizieren und Bezeichnen vertraulicher Daten in Ihren Datenbanken und zum Erstellen von Berichten zu diesen Daten.
 
 Zu den vertraulichsten Daten gehören Geschäfts-, Finanz-, Gesundheits- und personenbezogene Informationen. Das Ermitteln und Klassifizieren dieser Daten kann eine entscheidende Rolle beim Ansatz Ihrer Organisation zum Schutz von Daten spielen. Sie kann für Folgendes als Infrastruktur gelten:
 
@@ -36,11 +36,11 @@ Zu den vertraulichsten Daten gehören Geschäfts-, Finanz-, Gesundheits- und per
 
 ## <a name="what-is-data-discovery--classification"></a><a id="what-is-dc"></a>Was ist die Datenermittlung und -klassifizierung?
 
-Mit der Datenermittlung und -klassifizierung wird eine Reihe erweiterter Dienste und neuer Funktionen in Azure eingeführt. Dies ist ein neues Paradigma für den Schutz von Informationen für SQL-Datenbank, verwaltete Azure SQL-Instanzen und Azure Synapse, das den Schutz der eigentlichen Daten und nicht nur der Datenbank zum Ziel hat. Dieses Paradigma umfasst Folgendes:
+Mit der Datenermittlung und -klassifizierung werden eine Reihe grundlegender Dienste und neuer Funktionen in Azure eingeführt. Dies ist ein neues Paradigma für den Schutz von Informationen für SQL-Datenbank, verwaltete Azure SQL-Instanzen und Azure Synapse, das den Schutz der eigentlichen Daten und nicht nur der Datenbank zum Ziel hat. Dieses Paradigma umfasst Folgendes:
 
 - **Ermittlung und Empfehlungen:** Das Klassifizierungsmodul scannt Ihre Datenbank und identifiziert Spalten, die unter Umständen vertrauliche Daten enthalten. Es bietet dann eine einfache Möglichkeit, die Ergebnisse zu überprüfen und die empfohlenen Klassifizierungen über das Azure-Portal anzuwenden.
 
-- **Bezeichnung:** Sie können Klassifizierungsbezeichnungen nach der Vertraulichkeit der Daten dauerhaft auf Spalten anwenden, indem Sie neue Metadatenattribute nutzen, die der SQL Server-Datenbank-Engine hinzugefügt wurden. Diese Metadaten können dann für erweiterte Überwachungs- und Schutzszenarien auf Grundlage der Vertraulichkeit genutzt werden.
+- **Bezeichnung:** Sie können Klassifizierungsbezeichnungen nach der Vertraulichkeit der Daten dauerhaft auf Spalten anwenden, indem Sie neue Metadatenattribute nutzen, die der SQL Server-Datenbank-Engine hinzugefügt wurden. Diese Metadaten können dann für Überwachungs- und Schutzszenarien auf Grundlage der Vertraulichkeit genutzt werden.
 
 - **Vertraulichkeit von Abfrageergebnissen:** Die Vertraulichkeit von Abfrageergebnissen wird zu Überwachungszwecken in Echtzeit berechnet.
 

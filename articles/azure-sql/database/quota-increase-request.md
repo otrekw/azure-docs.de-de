@@ -9,17 +9,17 @@ author: sachinpMSFT
 ms.author: sachinp
 ms.reviewer: sstein
 ms.date: 06/04/2020
-ms.openlocfilehash: 44a37a912c5c7a882d21631b8ce2da2c7ba9c05e
-ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
+ms.openlocfilehash: 27719663acfbdbcd7293defc4b746153359adb61
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97967700"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98251850"
 ---
 # <a name="request-quota-increases-for-azure-sql-database-and-sql-managed-instance"></a>Anfordern von Kontingenterhöhungen für Azure SQL-Datenbank und SQL Managed Instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-In diesem Artikel wird erläutert, wie Sie eine Erhöhung des Kontingents für Azure SQL-Datenbank und Azure SQL Managed Instance anfordern. Außerdem wird erläutert, wie Sie den Abonnementzugriff auf eine Region aktivieren.
+In diesem Artikel wird erläutert, wie Sie eine Erhöhung des Kontingents für Azure SQL-Datenbank und Azure SQL Managed Instance anfordern. Außerdem wird erläutert, wie Sie den Abonnementzugriff auf eine Region aktivieren und die Aktivierung bestimmter Hardware in einer Region anfordern.
 
 ## <a name="create-a-new-support-request"></a><a id="newquota"></a> Erstellen einer neuen Supportanfrage
 
@@ -62,8 +62,7 @@ In den folgenden Abschnitten werden die Optionen zum Erhöhen der Kontingente f�
 
 - Datenbanktransaktionseinheiten (DTUs) pro Server
 - Server pro Abonnement
-- Regionszugriff für die M-Serie
-- Regionszugriff
+- Regionszugriff für Abonnements oder bestimmte Hardware
 
 ### <a name="database-transaction-units-dtus-per-server"></a>Datenbanktransaktionseinheiten (DTUs) pro Server
 
@@ -109,30 +108,15 @@ Wenn Ihr Abonnement Zugriff auf eine bestimmte Region benötigt, wählen Sie die
 
    ![Anfordern des Zugriffs auf eine Region](./media/quota-increase-request/quota-request.png)
 
-<!--
-### <a id="mseries"></a> Enable M-series access to a region
+### <a name="request-enabling-specific-hardware-in-a-region"></a>Anfordern der Aktivierung bestimmter Hardware in einer Region
 
-To enable M-series hardware for a subscription and region, a support request must be opened.
+Wenn eine [Hardwaregeneration](service-tiers-vcore.md#hardware-generations), die Sie verwenden möchten, in Ihrer Region nicht verfügbar ist (siehe [Hardwareverfügbarkeit](service-tiers-vcore.md#hardware-availability)), können Sie diese mithilfe der folgenden Schritte anfordern.
 
-1. Select the **M-series region access** quota type.
+1. Wählen Sie den Kontingenttyp **Andere Kontingentanforderung** aus.
 
-1. In the **Select a location** list, select the Azure region to use. The quota is per subscription in each region.
+1. Geben Sie im Feld **Beschreibung** Ihre Anfrage an, einschließlich des Namens der Hardwaregeneration und des Namens der Region, in der sie benötigt wird.
 
-
-   ![Request M-series region access](./media/quota-increase-request/quota-m-series.png)
--->
-
-## <a name="sql-managed-instance-quota-type"></a><a id="sqlmiquota"></a> Kontingenttyp für SQL Managed Instance
-
-Führen Sie für den Kontingenttyp **SQL Managed Instance** die folgenden Schritte aus:
-
-1. Wählen Sie in der Liste **Region** die Azure-Zielregion aus.
-
-1. Geben Sie die neuen Grenzwerte ein, die Sie für **Subnetz** und **Virtuelle Kerne** anfordern möchten.
-
-   ![Kontingentdetails für SQL Managed Instance](./media/quota-increase-request/quota-details-managed-instance.png)
-
-Weitere Informationen finden Sie unter [Übersicht über Ressourceneinschränkungen für Azure SQL Managed Instance](../managed-instance/resource-limits.md).
+   ![Anfordern von Hardware in einer neuen Region](./media/quota-increase-request/hardware-in-new-region.png)
 
 ## <a name="submit-your-request"></a>Senden der Anforderung
 

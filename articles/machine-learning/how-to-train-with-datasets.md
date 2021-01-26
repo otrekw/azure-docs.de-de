@@ -1,7 +1,7 @@
 ---
-title: Trainieren mit „azureml-datasets“
+title: Trainieren mit Machine Learning-Datasets
 titleSuffix: Azure Machine Learning
-description: Hier erfahren Sie, wie Sie Ihre Daten für das ML-Modelltraining mit Azure Machine Learning-Datasets lokal oder remote verfügbar machen.
+description: Hier erfahren Sie, wie Sie Ihre Daten für das Modelltraining mit Azure Machine Learning-Datasets lokal oder remote verfügbar machen.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -12,15 +12,14 @@ ms.reviewer: nibaccam
 ms.date: 07/31/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, data4ml
-ms.openlocfilehash: 52b52c4c19b22fb1afd76d1e8dfa4163326c0244
-ms.sourcegitcommit: 48e5379c373f8bd98bc6de439482248cd07ae883
+ms.openlocfilehash: 2d6282c527293abdb8b21e0591548cb51e1339a9
+ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98108589"
+ms.lasthandoff: 01/17/2021
+ms.locfileid: "98539679"
 ---
-# <a name="train-with-datasets-in-azure-machine-learning"></a>Trainieren mit Datasets in Azure Machine Learning
-
+# <a name="train-models-with-azure-machine-learning-datasets"></a>Trainieren von Modellen mit Azure Machine Learning-Datasets 
 
 In diesem Artikel erfahren Sie, wie Sie [Azure Machine Learning-Datasets](/python/api/azureml-core/azureml.core.dataset%28class%29?preserve-view=true&view=azure-ml-py) zum Trainieren von Machine Learning-Modellen einsetzen.  Sie können Datasets in Ihrem Lokal- oder Remotecomputeziel verwenden, ohne sich Gedanken über Verbindungszeichenfolgen oder Datenpfade machen zu müssten. 
 
@@ -41,7 +40,7 @@ Sie benötigen Folgendes, um Datasets zu erstellen und für das Training zu nutz
 > [!Note]
 > Einige Datasetklassen sind vom Paket [azureml-dataprep](/python/api/azureml-dataprep/?preserve-view=true&view=azure-ml-py) abhängig. Für Linux-Benutzer werden diese Klassen nur unter den folgenden Distributionen unterstützt:  Red Hat Enterprise Linux, Ubuntu, Fedora und CentOS.
 
-## <a name="use-datasets-directly-in-training-scripts"></a>Direktes Verwenden von Datasets in Trainingsskripts
+## <a name="consume-datasets-in-machine-learning-training-scripts"></a>Nutzen von Datasets in Trainingsskripts für maschinelles Lernen
 
 Wenn Sie strukturierte Daten besitzen, die noch nicht als Dataset registriert wurden, können Sie eine TabularDataset-Klasse erstellen und diese direkt im Trainingsskript für das Lokal- oder Remoteexperiment verwenden.
 
@@ -90,6 +89,7 @@ df = dataset.to_pandas_dataframe()
 ```
 
 ### <a name="configure-the-training-run"></a>Konfigurieren der Trainingsausführung
+
 Zum Konfigurieren und Übermitteln der Trainingsausführung wird ein Objekt vom Typ [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrun?preserve-view=true&view=azure-ml-py) verwendet.
 
 Dieser Code erstellt ein ScriptRunConfig-Objekt (`src`), das Folgendes festlegt:
@@ -141,6 +141,7 @@ mnist_ds = Dataset.File.from_files(path = web_paths)
 ```
 
 ### <a name="configure-the-training-run"></a>Konfigurieren der Trainingsausführung
+
 Es wird empfohlen, das Dataset bei der Einbindung als Argument über den Parameter `arguments` des Konstruktors `ScriptRunConfig` zu übergeben. Auf diese Weise erhalten Sie den Datenpfad (Bereitstellungspunkt) im Trainingsskript über Argumente. So können Sie dasselbe Trainingsskript für lokales Debugging und Remotetraining auf jeder Cloudplattform verwenden.
 
 Im folgenden Beispiel wird ein ScriptRunConfig-Element erstellt, das das FileDataset-Element über `arguments` übergibt. Nach dem Übermitteln der Ausführung werden Datendateien, auf die das `mnist_ds`-Dataset verweist, auf dem Computeziel eingebunden.
@@ -160,7 +161,7 @@ run = experiment.submit(src)
 run.wait_for_completion(show_output=True)
 ```
 
-### <a name="retrieve-the-data-in-your-training-script"></a>Abrufen der Daten im Trainingsskript
+### <a name="retrieve-data-in-your-training-script"></a>Abrufen von Daten im Trainingsskript
 
 Der folgende Code zeigt, wie Sie die Daten in Ihrem Skript abrufen können.
 
@@ -222,10 +223,9 @@ print(os.listdir(mounted_path))
 print (mounted_path)
 ```
 
+## <a name="get-datasets-in-machine-learning-scripts"></a>Abrufen von Datasets in Machine Learning-Skripts
 
-## <a name="directly-access-datasets-in-your-script"></a>Direktes Zugreifen auf Datasets in Ihrem Skript
-
-Auf registrierte Datasets kann sowohl lokal als auch remote in Computeclustern wie Azure Machine Learning Compute zugegriffen werden. Verwenden Sie für den experimentübergreifenden Zugriff auf Ihr registriertes Dataset den folgenden Code, um anhand des Namens auf Ihren Arbeitsbereich und das registrierte Dataset zuzugreifen. Die Methode [`get_by_name()`](/python/api/azureml-core/azureml.core.dataset.dataset?preserve-view=true&view=azure-ml-py#&preserve-view=trueget-by-name-workspace--name--version--latest--) für die Klasse `Dataset` gibt standardmäßig die neueste Version des im Arbeitsbereich registrierten Datasets zurück.
+Auf registrierte Datasets kann sowohl lokal als auch remote in Computeclustern wie Azure Machine Learning Compute zugegriffen werden. Um experimentübergreifend auf Ihr registriertes Dataset zuzugreifen, verwenden Sie den folgenden Code, um auf Ihren Arbeitsbereich zuzugreifen und das Dataset abzurufen, das in Ihrer zuvor übermittelten Ausführung verwendet wurde. Die Methode [`get_by_name()`](/python/api/azureml-core/azureml.core.dataset.dataset?preserve-view=true&view=azure-ml-py#&preserve-view=trueget-by-name-workspace--name--version--latest--) für die Klasse `Dataset` gibt standardmäßig die neueste Version des im Arbeitsbereich registrierten Datasets zurück.
 
 ```Python
 %%writefile $script_folder/train.py
@@ -244,7 +244,7 @@ titanic_ds = Dataset.get_by_name(workspace=workspace, name=dataset_name)
 df = titanic_ds.to_pandas_dataframe()
 ```
 
-## <a name="accessing-source-code-during-training"></a>Zugreifen auf den Quellcode während des Trainings
+## <a name="access-source-code-during-training"></a>Zugreifen auf den Quellcode während des Trainings
 
 Azure Blob Storage verfügt über eine höhere Durchsatzgeschwindigkeit als die Azure-Dateifreigabe und wird auf eine hohe Anzahl parallel gestarteter Aufträge skaliert. Aus diesem Grund empfiehlt es sich, Ausführungen so zu konfigurieren, dass für die Übertragung von Quellcodedateien Blobspeicher verwendet wird.
 

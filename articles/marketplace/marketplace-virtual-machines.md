@@ -8,12 +8,12 @@ ms.topic: conceptual
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 10/19/2020
-ms.openlocfilehash: 433875e52e77a8992197b47fe0424cd0b7e9f50c
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: d9e26b6388223ae252a5e85e6e9fb9783a3b8429
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94628287"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98600398"
 ---
 # <a name="how-to-plan-a-virtual-machine-offer"></a>Planen eines VM-Angebots
 
@@ -73,7 +73,7 @@ Für VM-Angebote ist mindestens ein Plan erforderlich. Ein Plan definiert den Um
 VMs können vollständig kommerziell genutzt werden, wobei dafür das Modell der nutzungsbasierten Bezahlung oder das Bring-Your-Own-Licence-Lizenzierungsmodell (BYOL) verwendet wird. Microsoft hostet die kommerzielle Transaktion und führt für Sie die Abrechnung mit Ihrem Kunden durch. Sie haben den Vorteil, dass Sie die bevorzugte Zahlungsmethoden zwischen Ihrem Kunden und Microsoft, einschließlich des Enterprise Agreements, nutzen können. Weitere Informationen finden Sie unter [Transaktionsfunktionen im kommerziellen Marketplace](./marketplace-commercial-transaction-capabilities-and-considerations.md).
 
 > [!NOTE]
-> Der mit einem Enterprise Agreement verbundene Mindestverbrauch kann auf die Azure-Nutzung Ihrer VM angewendet werden, aber nicht auf Ihre Softwarelizenzgebühren.
+> Die mit einem Enterprise Agreement verbundene Azure-Vorauszahlung (zuvor als „Mindestverbrauch“ bezeichnet) kann auf die Azure-Nutzung Ihrer VM angewendet werden, aber nicht auf Ihre Softwarelizenzgebühren.
 
 ### <a name="licensing-options"></a>Lizenzierungsoptionen
 

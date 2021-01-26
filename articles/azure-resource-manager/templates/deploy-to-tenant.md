@@ -2,13 +2,13 @@
 title: Bereitstellen von Ressourcen für einen Mandanten
 description: Hier erfahren Sie, wie Sie Ressourcen im Mandantenbereich in einer Azure Resource Manager-Vorlage bereitstellen.
 ms.topic: conceptual
-ms.date: 11/24/2020
-ms.openlocfilehash: 5733c5d6eb6cbd86207589244c22badc17fe7073
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.date: 01/13/2021
+ms.openlocfilehash: 0b3ddc63e49b272c93349ada91e9a1599ea4be4f
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95807630"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98186208"
 ---
 # <a name="tenant-deployments-with-arm-templates"></a>Mandantenbereitstellungen mit ARM-Vorlagen
 
@@ -145,7 +145,8 @@ Bei der Bereitstellung auf einem Mandanten können Sie Ressourcen an folgenden O
 * in Verwaltungsgruppen innerhalb des Mandanten
 * subscriptions
 * Ressourcengruppen
-* [Erweiterungsressourcen](scope-extension-resources.md) können auf Ressourcen angewendet werden.
+
+Für eine [Erweiterungsressource](scope-extension-resources.md) kann der Bereich auf ein Ziel festgelegt werden, das sich vom Bereitstellungsziel unterscheidet.
 
 Der Benutzer, der die Vorlage bereitstellt, muss Zugriff auf den angegebenen Bereich besitzen.
 
@@ -184,6 +185,8 @@ Um eine Ressourcengruppe innerhalb des Mandanten als Bereitstellungsziel zu verw
 Die folgende Vorlage dient zum Erstellen einer Verwaltungsgruppe:
 
 :::code language="json" source="~/quickstart-templates/tenant-deployments/new-mg/azuredeploy.json":::
+
+Verfügt Ihr Konto nicht über die Berechtigung zum Bereitstellen im Mandanten, können Sie durch die Bereitstellung in einem anderen Bereich dennoch Verwaltungsgruppen erstellen. Weitere Informationen finden Sie unter [Verwaltungsgruppe](deploy-to-management-group.md#management-group).
 
 ## <a name="assign-role"></a>Zuweisen einer Rolle
 

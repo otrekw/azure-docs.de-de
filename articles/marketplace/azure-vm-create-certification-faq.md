@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: troubleshooting
 author: iqshahmicrosoft
 ms.author: iqshah
-ms.date: 10/19/2020
-ms.openlocfilehash: bc1ae4bc2cf64c3e2f996709c086eb23cb8b8385
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.date: 01/18/2021
+ms.openlocfilehash: 80dc19a58d212bb6ab8d608e222cd3a0bd3990d1
+ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96602596"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98600986"
 ---
 # <a name="troubleshoot-virtual-machine-certification"></a>Problembehandlung bei der Zertifizierung von virtuellen Computern
 
@@ -22,20 +22,6 @@ In diesem Artikel werden Fehlermeldungen, die häufig bei der Veröffentlichung 
 
 > [!NOTE]
 > Wenden Sie sich an den [Partner Center-Support](https://aka.ms/marketplacepublishersupport), falls Sie Fragen zu diesem Artikel oder Verbesserungsvorschläge haben.
-
-## <a name="approved-base-image"></a>Genehmigtes Basisimage
-
-Wenn Sie eine Anforderung zur erneuten Veröffentlichung des Images mit Updates einreichen, schlägt der Testfall für die Überprüfung der Teilenummer möglicherweise fehl. In diesem Fall wird das Image nicht genehmigt.
-
-Dieser Fehler tritt auf, wenn Sie ein Basisimage verwenden, das einem anderen Herausgeber gehört, und Sie das Image aktualisiert haben. In dieser Situation können Sie das Image nicht veröffentlichen.
-
-Rufen Sie zum Beheben des Problems das Image aus Azure Marketplace ab, und nehmen Sie Änderungen daran vor. Weitere Informationen finden Sie in den folgenden Artikeln:
-
-- [Linux-Images](../virtual-machines/linux/endorsed-distros.md?toc=/azure/virtual-machines/linux/toc.json)
-- [Windows-Images](azure-vm-create-using-approved-base.md)
-
-> [!Note]
-> Wenn Sie ein Linux-Basisimage verwenden, das nicht aus dem Azure Marketplace stammt, können Sie die erste Partition um 2048 KB versetzen. Der nicht formatierte Speicherplatz kann so zum Hinzufügen neuer Abrechnungsinformationen verwendet werden, und Azure kann mit der Veröffentlichung Ihres virtuellen Computers im Azure Marketplace fortfahren.  
 
 ## <a name="vm-extension-failure"></a>Fehler bei einer VM-Erweiterung
 
@@ -73,18 +59,18 @@ Bereitstellungsprobleme können auf folgende Fehler zurückzuführen sein:
 |1|Ungültige virtuelle Festplatte (VHD)|Wenn der angegebene Cookie-Wert in der VHD-Fußzeile nicht korrekt ist, wird die VHD als ungültig eingestuft.|Erstellen Sie das Image neu, und senden Sie die Anforderung.|
 |2|Ungültiger Blobtyp|Fehler bei der VM-Bereitstellung, weil der verwendete Block ein Blobtyp und kein Seitentyp ist.|Erstellen Sie das Image neu, und senden Sie die Anforderung.|
 |3|Timeout bei der Bereitstellung oder nicht ordnungsgemäß generalisiert|Es liegt ein Problem mit der VM-Generalisierung vor.|Erstellen Sie das Image mit Generalisierung neu, und senden Sie die Anforderung.|
+|
 
 > [!NOTE]
 > Weitere Informationen zur VM-Generalisierung finden Sie in den folgenden Ressourcen:
 > - [Generalisieren des Images](azure-vm-create-using-approved-base.md#generalize-the-image)
 > - [Generalisieren der Windows-VM mithilfe von Sysprep](../virtual-machines/windows/capture-image-resource.md#generalize-the-windows-vm-using-sysprep)
 
-
 ## <a name="vhd-specifications"></a>VHD-Spezifikationen
 
 ### <a name="conectix-cookie-and-other-vhd-specifications"></a>Conectix-Cookie und andere VHD-Spezifikationen
 
-Die Zeichenfolge „conectix“ ist Teil der VHD-Spezifikation. Sie wird als 8-Byte-Cookie in der VHD-Fußzeile für die Identifizierung des Dateierstellers definiert. Alle von Microsoft erstellten VHD-Dateien verfügen über dieses Cookie. 
+Die Zeichenfolge „conectix“ ist Teil der VHD-Spezifikation. Sie wird als 8-Byte-Cookie in der VHD-Fußzeile für die Identifizierung des Dateierstellers definiert. Alle von Microsoft erstellten VHD-Dateien verfügen über dieses Cookie.
 
 Ein Blob mit VHD-Formatierung sollte eine 512-Byte-Fußzeile mit dem folgenden Format aufweisen:
 
@@ -106,7 +92,7 @@ Checksum|4
 Eindeutige ID|16
 Gespeicherter Zustand|1
 Reserviert|427
-
+|
 
 ### <a name="vhd-specifications"></a>VHD-Spezifikationen
 
@@ -152,6 +138,7 @@ In der folgenden Liste sind die Linux-Testfälle aufgelistet, die vom Toolkit au
 |8|Client-Alive-Intervall|Legen Sie das ClientAliveInterval auf 180 fest. Je nach Anforderung der Anwendung kann es auf einen Wert zwischen 30 und 235 festgelegt werden. Wenn Sie SSH für Ihre Endbenutzer aktivieren, muss dieser Wert gemäß der Beschreibung festgelegt werden.|
 |9|Betriebssystemarchitektur|Es werden nur 64-Bit-Betriebssysteme unterstützt.|
 |10|Automatische Aktualisierung|Gibt an, ob die automatische Aktualisierung des Linux-Agents aktiviert ist.|
+|
 
 ### <a name="common-test-case-errors"></a>Häufige Testfallfehler
 
@@ -163,14 +150,14 @@ In der folgenden Tabelle sind die häufigen Fehler angegeben, die beim Ausführe
 | 2 | Bashverlauf-Testfall | Es tritt ein Fehler auf, wenn die Größe des Bashverlaufs in Ihrem gesendeten Image 1 Kilobyte (KB) überschreitet. Die Größe ist auf 1 KB beschränkt, um sicherzustellen, dass in Ihrer Datei mit dem Bashverlauf keine potenziell vertraulichen Informationen erfasst werden. | Stellen Sie die VHD hierfür auf einer anderen funktionierenden VM bereit, und nehmen Sie Änderungen vor, um die Größe auf maximal 1 KB zu reduzieren. Löschen Sie beispielsweise die `.bash`-Verlaufsdateien. |
 | 3 | Testfall für erforderliche Kernelparameter | Dieser Fehler wird angezeigt, wenn der Wert für `console` nicht auf `ttyS0` festgelegt ist. Überprüfen Sie die Änderung, indem Sie den folgenden Befehl ausführen: <br /> `cat /proc/cmdline` | Legen Sie den Wert für `console` auf `ttyS0` fest, und senden Sie die Anforderung noch einmal. |
 | 4 | Testfall für das Client-Alive-Intervall | Falls im Toolkit-Ergebnis für diesen Testfall ein Fehler zurückgegeben wird, ist für `ClientAliveInterval` ein unzulässiger Wert vorhanden. | Legen Sie den Wert für `ClientAliveInterval` auf maximal 235 fest, und senden Sie die Anforderung noch einmal. |
-
+|
 
 ### <a name="windows-test-cases"></a>Windows-Testfälle
 
 Die folgende Tabelle enthält die Windows-Testfälle, die vom Toolkit ausgeführt werden, sowie eine Beschreibung der Testüberprüfung:
 
 |Szenario |Testfälle|BESCHREIBUNG|
-|---|---|---|---|
+|---|---|---|
 |1|Betriebssystemarchitektur|Azure unterstützt nur 64-Bit-Betriebssysteme.|
 |2|Abhängigkeit von Benutzerkonten|Die Ausführung der Anwendung sollte nicht vom Administratorkonto abhängen.|
 |3|Failovercluster|Das Feature „Windows Server-Failoverclustering“ wird noch nicht unterstützt. Die Anwendung sollte nicht von diesem Feature abhängen.|
@@ -188,8 +175,9 @@ Die folgende Tabelle enthält die Windows-Testfälle, die vom Toolkit ausgeführ
 |15|SNMP-Dienste|Das Feature „SNMP-Dienste“ (Simple Network Management-Protokoll) wird noch nicht unterstützt. Die Anwendung sollte nicht von diesem Feature abhängen.|
 |16|WINS (Windows Internet Name Service)|WINS (Windows Internet Name Service). Diese Serverfunktion wird noch nicht unterstützt. Die Anwendung sollte nicht von diesem Feature abhängen.|
 |17|WLAN-Dienst|WLAN-Dienst. Diese Serverfunktion wird noch nicht unterstützt. Die Anwendung sollte nicht von diesem Feature abhängen.|
+|
 
-Wenn im Zusammenhang mit den obigen Testfällen Fehler auftreten, finden Sie in der Tabelle in der Spalte **Beschreibung** Hinweise zur Fehlerbehebung. Wenden Sie sich an das Supportteam, falls Sie weitere Informationen benötigen. 
+Wenn im Zusammenhang mit den obigen Testfällen Fehler auftreten, finden Sie in der Tabelle in der Spalte **Beschreibung** Hinweise zur Fehlerbehebung. Wenden Sie sich an das Supportteam, falls Sie weitere Informationen benötigen.
 
 ## <a name="data-disk-size-verification"></a>Überprüfung der Datenträgergröße
 
@@ -205,6 +193,7 @@ In den folgenden Regeln finden Sie Einschränkungen hinsichtlich der Betriebssys
 |---|---|
 |Linux|1 GB bis 1.023 GB|
 |Windows|30 GB bis 250 GB|
+|
 
 Da VMs den Zugriff auf das zugrunde liegende Betriebssystem zulassen, sollten Sie sich vergewissern, dass die Größe der VHD ausreicht. Datenträger können erweitert werden, ohne dass es zu Ausfallzeiten kommt. Verwenden Sie eine Datenträgergröße zwischen 30 und 50 GB.
 
@@ -212,6 +201,7 @@ Da VMs den Zugriff auf das zugrunde liegende Betriebssystem zulassen, sollten Si
 |---|---|---|
 |Mehr als 500 Tebibyte (TiB)|–|Wenden Sie sich wegen einer Ausnahmegenehmigung an das Supportteam.|
 |250-500 TiB|Differenz von mehr als 200 Gibibyte (GiB) zur Blobgröße|Wenden Sie sich wegen einer Ausnahmegenehmigung an das Supportteam.|
+|
 
 > [!NOTE]
 > Größere Datenträger führen zu höheren Kosten und während der Einrichtung und Replikation zu einer Verzögerung. Aufgrund dieser Verzögerung und Kosten kann das Supportteam eine begründete Ausnahmegenehmigung erteilen.
@@ -222,7 +212,7 @@ Um einen potenziellen Angriff im Zusammenhang mit dem WannaCry-Virus zu verhinde
 
 Sie können die Version der Imagedatei unter `C:\windows\system32\drivers\srv.sys` oder `srv2.sys` überprüfen.
 
-In der folgenden Tabelle ist die gepatchte Mindestversion von Windows Server angegeben: 
+In der folgenden Tabelle ist die gepatchte Mindestversion von Windows Server angegeben:
 
 |OS|Version|
 |---|---|
@@ -231,6 +221,7 @@ In der folgenden Tabelle ist die gepatchte Mindestversion von Windows Server ang
 |Windows Server 2012 R2|6.3.9600.18604|
 |Windows Server 2016|10.0.14393.953|
 |Windows Server 2019|Nicht verfügbar|
+|
 
 > [!NOTE]
 > Für WindowsServer2019 gelten keine obligatorischen Versionsanforderungen.
@@ -243,14 +234,14 @@ Aktualisieren Sie den Kernel mit einer genehmigten Version, und senden Sie die A
 
 Wenn das Image nicht mit einer der folgenden Kernelversionen installiert ist, aktualisieren Sie es mit den richtigen Patches. Fordern Sie die nötige Genehmigung vom Supportteam an, nachdem das Image mit diesen erforderlichen Patches aktualisiert wurde:
 
-- CVE-2019-11477 
-- CVE-2019-11478 
+- CVE-2019-11477
+- CVE-2019-11478
 - CVE-2019-11479
 
 |Betriebssystemfamilie|Version|Kernel|
 |---|---|---|
 |Ubuntu|14.04 LTS|4.4.0-151| 
-||14.04 LTS|4.15.0-1049-*-azure|
+||14.04 LTS|4.15.0-1049-\*-azure|
 ||16.04 LTS|4.15.0-1049|
 ||18.04 LTS|4.18.0-1023|
 ||18.04 LTS|5.0.0-1025|
@@ -283,14 +274,15 @@ Wenn das Image nicht mit einer der folgenden Kernelversionen installiert ist, ak
 |Oracle|6.10|UEK2 2.6.39-400.312.2<br>UEK3 3.8.13-118.35.2<br>RHCK 2.6.32-754.15.3 
 ||7.0-7.5|UEK3 3.8.13-118.35.2<br>UEK4 4.1.12-124.28.3<br>RHCK folgt auf obiges RHEL|
 ||7.6|RHCK 3.10.0-957.21.3<br>UEK5 4.14.35-1902.2.0|
-|CoreOS Stable 2079.6.0|4.19.43*|
-||Beta 2135.3.1|4.19.50*|
-||Alpha 2163.2.1|4.19.50*|
+|CoreOS Stable 2079.6.0|4.19.43\*|
+||Beta 2135.3.1|4.19.50\*|
+||Alpha 2163.2.1|4.19.50\*|
 |Debian|Jessie (Sicherheit)|3.16.68-2|
 ||Jessie-Backports|4.9.168-1+deb9u3|
 ||Stretch (Sicherheit)|4.9.168-1+deb9u3|
 ||Debian GNU/Linux 10 (Buster)|Debian 6.3.0-18+deb9u1|
 ||Buster, SID (Stretch-Backports)|4.19.37-5|
+|
 
 ## <a name="image-size-should-be-in-multiples-of-megabytes"></a>Die Imagegröße muss ein Megabyte-Vielfaches sein.
 
@@ -316,26 +308,24 @@ Ein Problem vom Typ _Zugriff verweigert_ beim Ausführen eines Testfalls auf der
 3. Übermitteln Sie Ihre Zertifizierungsanforderung erneut.
 
 ## <a name="download-failure"></a>Fehler beim Herunterladen
-    
+
 In der Tabelle unten finden Sie alle Probleme, die auftreten können, wenn Sie das VM-Image mit einer SAS-URL (Shared Access Signature) herunterladen.
 
-|Szenario|Fehler|`Reason`|Lösung|
-|---|---|---|---|
-|1|Nicht gefundenes Blob|Die VHD wurde entweder gelöscht oder vom angegebenen Speicherort verschoben.|| 
-|2|Blob wird verwendet|Die VHD wird von einem anderen internen Prozess verwendet.|Die VHD muss sich beim Herunterladen über eine SAS-URL im Status „Verwendet“ befinden.|
-|3|Ungültige SAS-URL|Die zugehörige SAS-URL für die VHD ist falsch.|Rufen Sie die richtige SAS-URL ab.|
-|4|Ungültige Signatur|Die zugehörige SAS-URL für die VHD ist falsch.|Rufen Sie die richtige SAS-URL ab.|
-|6|Bedingter HTTP-Header|Die SAS-URL ist ungültig.|Rufen Sie die richtige SAS-URL ab.|
-|7|Ungültiger VHD-Name|Überprüfen Sie, ob Sonderzeichen wie das Prozentzeichen (`%`) oder Anführungszeichen (`"`) im VHD-Namen enthalten sind.|Benennen Sie die VHD-Datei um, und entfernen Sie die Sonderzeichen.|
+|Fehler|`Reason`|Lösung|
+|---|---|---|
+|Nicht gefundenes Blob|Die VHD wurde entweder gelöscht oder vom angegebenen Speicherort verschoben.|| 
+|Blob wird verwendet|Die VHD wird von einem anderen internen Prozess verwendet.|Die VHD muss sich beim Herunterladen über eine SAS-URL im Status „Verwendet“ befinden.|
+|Ungültige SAS-URL|Die zugehörige SAS-URL für die VHD ist falsch.|Rufen Sie die richtige SAS-URL ab.|
+|Ungültige Signatur|Die zugehörige SAS-URL für die VHD ist falsch.|Rufen Sie die richtige SAS-URL ab.|
+|Bedingter HTTP-Header|Die SAS-URL ist ungültig.|Rufen Sie die richtige SAS-URL ab.|
+|Ungültiger VHD-Name|Überprüfen Sie, ob Sonderzeichen wie das Prozentzeichen (`%`) oder Anführungszeichen (`"`) im VHD-Namen enthalten sind.|Benennen Sie die VHD-Datei um, und entfernen Sie die Sonderzeichen.|
+|
 
-## <a name="first-mb-2048-kb-partition-linux-only"></a>„Erste MB“-Partition (2.048 KB) (nur Linux)
+## <a name="first-partition-starts-at-1-mb-2048-sectors"></a>Die erste Partition beginnt bei 1 MB (2048 Sektoren).
 
-Stellen Sie beim Senden der VHD sicher, dass die ersten 2.048 KB der VHD leer sind. Andernfalls schlägt die Anforderung fehl.
+Wenn Sie ein [eigenes Image erstellen](azure-vm-create-using-own-image.md), stellen Sie sicher, dass die ersten 2048 Sektoren (1 MB) des Betriebssystemdatenträgers leer sind. Andernfalls tritt bei der Veröffentlichung ein Fehler auf. Diese Anforderung gilt nur für den Betriebssystemdatenträger (nicht für andere Datenträger). Wenn Sie Ihr Image von [einem genehmigten Basisimage](azure-vm-create-using-approved-base.md) erstellen, können Sie diese Anforderung ignorieren.
 
->[!NOTE]
->Für bestimmte besondere Images, z. B. die zusätzlich zu Azure-Windows-Basisimages aus Azure Marketplace erstellt werden, wird nach einem Abrechnungstag gesucht. Die MB-Partition wird ignoriert, wenn das Abrechnungstag vorhanden ist und unseren internen verfügbaren Werten entspricht.
-
-### <a name="create-a-first-mb-2048-kb-partition-on-an-empty-vhd"></a>Erstellen einer „Erste MB“-Partition (2.048 KB) auf einer leeren VHD
+### <a name="create-a-1-mb-2048-sectors-each-sector-of-512-bytes-partition-on-an-empty-vhd"></a>Erstellen Sie eine Partition von 1 MB (2048 Sektoren mit jeweils 512 Bytes) auf einer leeren VHD.
 
 Diese Schritte gelten nur für Linux.
 
@@ -386,21 +376,21 @@ Diese Schritte gelten nur für Linux.
    1. Geben Sie „2048“ als Wert für den ersten Sektor (_First sector_) ein. Sie können _Last sector_ (Letzter Sektor) als Standardwert beibehalten.
 
       >[!IMPORTANT]
-      >Alle vorhandenen Daten bis 2.048 KB werden gelöscht. Erstellen Sie eine Sicherung der VHD, bevor Sie eine neue Partition erstellen.
+      >Alle vorhandenen Daten werden gelöscht, bis 2048 Sektoren (mit jeweils 512 Bytes) frei sind. Erstellen Sie eine Sicherung der VHD, bevor Sie eine neue Partition erstellen.
 
       ![Screenshot: Befehlszeile im PuTTY-Client mit den Befehlen und der Ausgabe für gelöschte Daten](./media/create-vm/vm-certification-issues-solutions-22.png)
 
-   1. Geben Sie `w` ein, um die Erstellung der Partition zu bestätigen. 
+   1. Geben Sie `w` ein, um die Erstellung der Partition zu bestätigen.
 
       ![Screenshot: Befehlszeile im PuTTY-Client mit den Befehlen zum Erstellen einer Partition](./media/create-vm/vm-certification-issues-solutions-23.png)
 
-   1. Sie können die Partitionstabelle überprüfen, indem Sie den Befehl `n fdisk /dev/sdb` ausführen und `p` eingeben. Sie sehen, dass die Partition mit dem Offsetwert „2048“ erstellt wurde. 
+   1. Sie können die Partitionstabelle überprüfen, indem Sie den Befehl `n fdisk /dev/sdb` ausführen und `p` eingeben. Sie sehen, dass die Partition mit dem Offsetwert „2048“ erstellt wurde.
 
       ![Screenshot: Befehlszeile im PuTTY-Client mit den Befehlen zum Erstellen des Offsets von 2048](./media/create-vm/vm-certification-issues-solutions-24.png)
 
 1. Trennen Sie die VHD vom virtuellen Computer, und löschen Sie den virtuellen Computer.
 
-### <a name="create-a-first-mb-2048-kb-partition-by-moving-existing-data-on-vhd"></a>Erstellen einer „Erste MB“-Partition (2.048 KB) durch das Verschieben von vorhandenen Daten auf der VHD
+### <a name="create-a-1-mb-2048-sectors-each-sector-of-512-bytes-partition-by-moving-existing-data-on-vhd"></a>Erstellen Sie eine Partition von 1 MB (2048 Sektoren mit jeweils 512 Bytes), indem Sie vorhandene Daten auf der VHD verschieben.
 
 Diese Schritte gelten nur für Linux.
 
@@ -468,11 +458,11 @@ Beim Erstellen eines Images kann dieses der falschen Betriebssystembezeichnung z
 
 Wenn alle Images aus Azure Marketplace wiederverwendet werden sollen, muss die Betriebssystem-VHD generalisiert werden.
 
-* Unter **Linux** wird mit dem folgenden Prozess eine Linux-VM generalisiert und als separate VM erneut bereitgestellt.
+- Unter **Linux** wird mit dem folgenden Prozess eine Linux-VM generalisiert und als separate VM erneut bereitgestellt.
 
   Geben Sie im SSH-Fenster den folgenden Befehl ein: `sudo waagent -deprovision+user`
 
-* Unter **Windows** generalisieren Sie Windows-Images mithilfe von `sysreptool`.
+- Unter **Windows** generalisieren Sie Windows-Images mithilfe von `sysreptool`.
 
   Weitere Informationen zum Tool `sysreptool` finden Sie unter [Übersicht über Sysprep (Systemvorbereitung)](/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview).
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/18/2019
 ms.author: glenga
-ms.openlocfilehash: 8694c403b14234a70b0a67f9f4defb7817ba3ae3
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 9999b2fa116a2336f8e50fb166e5d870ae4b5a5f
+ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96005383"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98165058"
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Anleitung mit den ersten Schritten für Azure-Entwickler
 
@@ -105,6 +105,21 @@ Service Fabric unterstützt WebAPI mit Open Web Interface für .NET (OWIN) und A
 > **Einsatzgebiete:** Service Fabric ist eine gute Wahl, wenn Sie eine Anwendung erstellen oder eine vorhandenen Anwendung neu erstellen, um eine Microservice-Architektur zu verwenden. Verwenden Sie Service Fabric, wenn Sie mehr Kontrolle über oder direkten Zugriff auf die zugrunde liegende Infrastruktur benötigen.
 >
 > **Erste Schritte:** [Erstellen Ihrer ersten Azure Service Fabric-Anwendung](../../service-fabric/service-fabric-tutorial-create-dotnet-app.md).
+
+#### <a name="azure-spring-cloud"></a>Azure Spring Cloud
+
+Azure Spring Cloud ist eine serverlose Microserviceplattform, mit deren Hilfe Sie Anwendungen in der Cloud erstellen, bereitstellen, skalieren und überwachen können. Stellen Sie moderne Microservicemuster mithilfe von Spring Cloud in Spring Boot-Apps bereit. Auf diese Weise können Sie schnell stabile Java-Apps erstellen, ohne dass Codebausteine erforderlich sind.
+
+- Nutzen Sie die verwalteten Versionen von Spring Cloud Service Discovery und Config Server. Wir stellen sicher, dass diese kritischen Komponenten unter optimalen Bedingungen ausgeführt werden.
+- Konzentrieren Sie sich auf die Entwicklung Ihrer Geschäftslogik. Überlassen Sie es uns, Ihre Dienstruntime in Bezug auf Sicherheitspatches, Compliancestandards und Hochverfügbarkeit zu optimieren.
+- Verwalten Sie den Lebenszyklus von Anwendungen (z. B. Bereitstellung, Start, Stopp und Skalierung), die in Azure Kubernetes Service gehostet werden.
+- Stellen Sie auf einfache Weise Verbindungen zwischen Ihren Apps und Azure-Diensten wie Azure Database for MySQL und Azure Cache for Redis her.
+- Überwachen Sie Microservices, und beheben Sie auftretende Fehler, indem Sie die für Unternehmen entwickelten zentralen Überwachungstools nutzen. Diese Tools ermöglichen tiefe Einblicke in die Anwendungsabhängigkeiten und die Telemetriedaten zum Betrieb.
+
+> **Einsatzgebiete:** Als vollständig verwalteter Dienst ist Azure Spring Cloud eine gute Wahl, um die Betriebskosten für die Ausführung von Microservices in Azure, die auf Spring Boot bzw. Spring Cloud basieren, zu reduzieren. 
+>
+> **Erste Schritte:** [Bereitstellen Ihrer ersten Azure Spring Cloud-Anwendung](../../spring-cloud/spring-cloud-quickstart.md)
+
 
 ### <a name="enhance-your-applications-with-azure-services"></a>Verbessern Ihrer Anwendungen mit Azure-Diensten
 

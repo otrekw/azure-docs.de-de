@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 10/18/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 5d950598e4a0af86ac37b53722e80eb4ef0a71a4
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 53c0d37d4a25c2f2092a9e52bcae8ea494046bb0
+ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96183055"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98210017"
 ---
 # <a name="app-service-networking-features"></a>App Service-Netzwerkfunktionen
 
@@ -110,7 +110,7 @@ Diese Funktion ermöglicht Ihnen, eine Liste von zulässigen und abgelehnten Reg
 
 Das Feature zur IP-basierten Zugriffseinschränkung ist nützlich, wenn Sie die IP-Adressen einschränken möchten, über die Ihre App erreicht werden kann. Sowohl IPv4 als auch IPv6 werden unterstützt. Einige Anwendungsfälle für diese Funktion:
 * Beschränken des Zugriffs auf Ihre App aus einem Satz klar definierter Adressen. 
-* Beschränken des Zugriffs auf Datenverkehr, der über einen Lastenausgleichsdienst eingeht, z. B. über Azure Front Door. Wenn Sie Ihren eingehenden Datenverkehr an Azure Front Door sperren möchten, erstellen Sie Regeln, um Datenverkehr von 147.243.0.0/16 und 2a01:111:2050::/44 zuzulassen. 
+* Beschränken Sie den Zugriff auf Datenverkehr, der über ein externes Lastenausgleichsmodul oder andere Netzwerkgeräte mit bekannten IP-Ausgangsadressen erfolgt. 
 
 Informationen, wie Sie diese Funktion aktivieren, finden Sie unter [Konfigurieren von Zugriffseinschränkungen][iprestrictions].
 
@@ -126,7 +126,20 @@ Einige Anwendungsfälle für diese Funktion:
 ![Diagramm, das die Verwendung von Dienstendpunkten mit Application Gateway veranschaulicht.](media/networking-features/service-endpoints-appgw.png)
 
 Weitere Informationen zum Konfigurieren von Dienstendpunkten mit Ihrer App finden Sie unter [Azure App Service-Zugriffseinschränkungen][serviceendpoints].
+#### <a name="access-restriction-rules-based-on-service-tags-preview"></a>Auf Diensttags basierende Zugriffseinschränkungsregeln (Vorschau)
+Bei [Azure-Diensttags][servicetags] handelt es sich um gut definierte Sätze mit IP-Adressen für Azure-Dienste. Mit Diensttags werden die IP-Adressbereiche gruppiert, die in den verschiedenen Azure-Diensten genutzt werden. Häufig sind sie auch auf bestimmte Regionen festgelegt. Dies ermöglicht es Ihnen, den *eingehenden* Datenverkehr bestimmter Azure-Dienste zu filtern. 
 
+Eine vollständige Liste mit Tags und weiteren Informationen finden Sie oben unter dem Link zu Diensttags. Informationen, wie Sie diese Funktion aktivieren, finden Sie unter [Konfigurieren von Zugriffseinschränkungen][iprestrictions].
+#### <a name="http-header-filtering-for-access-restriction-rules-preview"></a>Filterung von HTTP-Headern für Zugriffseinschränkungsregeln (Vorschau)
+Für jede Zugriffseinschränkungsregel können Sie eine zusätzliche Filterung von HTTP-Headern hinzufügen. Dies ermöglicht Ihnen die weitere Untersuchung der eingehenden Anforderung und die Filterung basierend auf bestimmten HTTP-Headerwerten. Jeder Header kann bis zu acht Werte pro Regel umfassen. Derzeit werden HTTP-Header unterstützt, die in der folgenden Liste enthalten sind: 
+* X-Forwarded-For
+* X-Forwarded-Host
+* X-Azure-FDID
+* X-FD-HealthProbe
+
+Beispiele für Anwendungsfälle für die Filterung von HTTP-Headern:
+* Einschränken des Zugriffs auf Datenverkehr von Proxyservern, die den Hostnamen weiterleiten
+* Einschränken des Zugriffs auf eine bestimmte Azure Front Door-Instanz mit einer Diensttagregel und X-Azure-FDID-Headereinschränkung
 ### <a name="private-endpoint"></a>Privater Endpunkt
 
 Ein privater Endpunkt ist eine Netzwerkschnittstelle, die Sie über eine private und sichere Verbindung mit Azure Private Link mit Ihrer Web-App verbindet. Ein privater Endpunkt verwendet eine private IP-Adresse aus Ihrem virtuellen Netzwerk und bindet die Web-App dadurch in Ihr virtuelles Netzwerk ein. Diese Funktion gilt nur für bei Ihrer Web-App *eingehenden* Flows.
@@ -299,3 +312,4 @@ Wenn Sie App Service überprüfen, finden Sie mehrere Ports, die für eingehende
 [networkinfo]: ./environment/network-info.md
 [appgwserviceendpoints]: ./networking/app-gateway-with-service-endpoints.md
 [privateendpoints]: ./networking/private-endpoint.md
+[servicetags]: ../virtual-network/service-tags-overview.md

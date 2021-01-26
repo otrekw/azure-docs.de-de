@@ -8,14 +8,14 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
-ms.date: 11/25/2020
+ms.date: 01/15/2021
 ms.custom: designer
-ms.openlocfilehash: 14be695f2f58b9738af11a3d2ca3f06592a1cc6e
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 6bba5ad17cbb6f1ed72d06b37c6d6af9ebd26495
+ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96575957"
+ms.lasthandoff: 01/15/2021
+ms.locfileid: "98246467"
 ---
 # <a name="tutorial-deploy-a-machine-learning-model-with-the-designer"></a>Tutorial: Bereitstellen eines Machine Learning-Modells mit dem Designer
 
@@ -97,11 +97,30 @@ Kehren Sie nach Abschluss der Bereitstellung des AKS-Diensts zur Echtzeit-Rücks
 
 1. Wählen Sie den erstellten AKS-Cluster aus.
 
-1. Klicken Sie auf **Bereitstellen**.
-    
     :::image type="content" source="./media/tutorial-designer-automobile-price-deploy/setup-endpoint.png"alt-text="Screenshot: Einrichtung eines neuen Echtzeit-Endpunkts":::
 
+    Sie können auch die Einstellung **Erweitert** für Ihren Echtzeitendpunkt ändern.
+    
+    |Einstellung „Erweitert“|BESCHREIBUNG|
+    |---|---|
+    |Application Insights-Diagnose und -Datensammlung aktivieren| Gibt an, ob Azure Application Ingishts zum Sammeln von Daten von den bereitgestellten Endpunkten aktiviert werden soll. </br> Standardwert: false |
+    |Zeitlimit für Bewertung| Ein Timeout in Millisekunden, das für Bewertungsaufrufe an den Webdienst erzwungen werden soll</br>Standardmäßig gilt: 60000|
+    |Automatische Skalierung aktiviert|   Gibt an, ob die automatische Skalierung für den Webdienst aktiviert werden soll.</br>Standardwert: true|
+    |Mindestanzahl Replikate| Die Mindestanzahl von Containern, die bei der automatischen Skalierung dieses Webdiensts verwendet werden sollen.</br>Standardmäßig gilt: 1|
+    |Maximale Anzahl Replikate| Die maximale Anzahl von Containern, die bei der automatischen Skalierung dieses Webdiensts verwendet werden sollen.</br> Standardmäßig gilt: 10|
+    |Zielauslastung|Die Zielauslastung (in Prozent), die von der automatischen Skalierung für diesen Webdienst beibehalten werden soll.</br> Standardmäßig gilt: 70|
+    |Aktualisierungszeitraum|Gibt an, wie oft (in Sekunden) die automatische Skalierung versucht, diesen Webdienst zu skalieren.</br> Standardmäßig gilt: 1|
+    |CPU-Reservekapazität|Die Anzahl der CPU-Kerne, die für diesen Webdienst zuzuordnen sind.</br> Standardmäßig gilt: 0,1|
+    |Arbeitsspeicher-Reservekapazität|Der Arbeitsspeicherumfang (in GB), der für diesen Webdienst zugeordnet werden soll.</br> Standardmäßig gilt: 0.5|
+        
+
+1. Klicken Sie auf **Bereitstellen**. 
+
     Nach Abschluss der Bereitstellung wird über der Canvas eine Erfolgsbenachrichtigung angezeigt. Dies kann einige Minuten dauern.
+
+> [!TIP]
+> Sie können auch eine Bereitstellung in **Azure Container Instances** (ACI) ausführen, wenn Sie im Feld mit den Einstellungen für den Echtzeitendpunkt unter **Computetyp** die Option **Azure Container Instances** auswählen.
+> Azure Container Instances wird für Tests oder für die Entwicklung verwendet. Verwenden Sie ACI für CPU-basierte Workloads im kleinen Maßstab, die weniger als 48 GB Arbeitsspeicher erfordern.
 
 ## <a name="view-the-real-time-endpoint"></a>Anzeigen des Echtzeitendpunkts
 

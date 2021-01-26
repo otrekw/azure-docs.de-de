@@ -3,14 +3,14 @@ title: 'Tutorial zu Kubernetes in Azure: Erstellen einer Containerregistrierung'
 description: In diesem Azure Kubernetes Service-Tutorial (AKS) erstellen Sie eine Azure Container Registry-Instanz und laden das Containerimage einer Beispielanwendung hoch.
 services: container-service
 ms.topic: tutorial
-ms.date: 09/30/2020
+ms.date: 01/12/2021
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: b0f78c3969f3d02c19824fdb6d1e3b786dceb43c
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: d1dce1c59c4bf40eaead89e4a8a088e9a8ea4f76
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92747069"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98250620"
 ---
 # <a name="tutorial-deploy-and-use-azure-container-registry"></a>Tutorial: Bereitstellen und Verwenden von Azure Container Registry
 
@@ -22,7 +22,7 @@ Bei Azure Container Registry (ACR) handelt es sich um eine private Registrierung
 > * Hochladen des Images in die ACR-Instanz
 > * Anzeigen von Images in der Registrierung
 
-In den nachfolgenden Tutorials wird diese ACR-Instanz in einen Kubernetes-Cluster in AKS integriert, und eine Anwendung wird anhand des Images bereitgestellt.
+In nachfolgenden Tutorials wird diese ACR-Instanz in einen Kubernetes-Cluster in AKS integriert, und eine Anwendung wird anhand des Images bereitgestellt.
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
@@ -40,7 +40,7 @@ Erstellen Sie mithilfe des Befehls [az group create][az-group-create] eine Resso
 az group create --name myResourceGroup --location eastus
 ```
 
-Erstellen Sie mit dem Befehl [az acr create][az-acr-create] eine Azure Container Registry-Instanz, und geben Sie einen eigenen Registrierungsnamen an. Der Registrierungsname muss innerhalb von Azure eindeutig sein und zwischen 5 und 50 alphanumerische Zeichen enthalten. Im weiteren Verlauf dieses Tutorials wird `<acrName>` als Platzhalter für den Namen der Containerregistrierung verwendet. Geben Sie Ihren eigenen eindeutigen Registrierungsnamen an. Die *Basic* -SKU ist ein kostenoptimierter Einstiegspunkt für Entwicklungszwecke, der ein ausgewogenes Verhältnis von Speicher und Durchsatz bietet.
+Erstellen Sie mit dem Befehl [az acr create][az-acr-create] eine Azure Container Registry-Instanz, und geben Sie einen eigenen Registrierungsnamen an. Der Registrierungsname muss innerhalb von Azure eindeutig sein und zwischen 5 und 50 alphanumerische Zeichen enthalten. Im weiteren Verlauf dieses Tutorials wird `<acrName>` als Platzhalter für den Namen der Containerregistrierung verwendet. Geben Sie Ihren eigenen eindeutigen Registrierungsnamen an. Die *Basic*-SKU ist ein kostenoptimierter Einstiegspunkt für Entwicklungszwecke, der ein ausgewogenes Verhältnis von Speicher und Durchsatz bietet.
 
 ```azurecli
 az acr create --resource-group myResourceGroup --name <acrName> --sku Basic
@@ -60,12 +60,12 @@ Nach Abschluss des Vorgangs wird eine *Erfolgsmeldung* zurückgegeben.
 
 Verwenden Sie den Befehl [docker images][docker-images], um eine Liste Ihrer aktuellen lokalen Images anzuzeigen:
 
-```azurecli
+```console
 $ docker images
 ```
 Die Befehlsausgabe oben enthält eine Liste der aktuellen lokalen Images:
 
-```
+```output
 REPOSITORY                                     TAG                 IMAGE ID            CREATED             SIZE
 mcr.microsoft.com/azuredocs/azure-vote-front   v1                  84b41c268ad9        7 minutes ago       944MB
 mcr.microsoft.com/oss/bitnami/redis            6.0.8               3a54a920bb6c        2 days ago          103MB
@@ -74,13 +74,13 @@ tiangolo/uwsgi-nginx-flask                     python3.6           a16ce562e863 
 
 Zur Verwendung des Containerimages *azure-vote-front* mit ACR muss das Image mit der Anmeldeserveradresse Ihrer Registrierung markiert werden. Dieses Tag wird beim Übertragen von Containerimages per Push in eine Imageregistrierung für das Routing verwendet.
 
-Führen Sie den Befehl [az acr list][az-acr-list] aus, um die Anmeldeserveradresse abzurufen, und fragen Sie die *loginServer* -Adresse wie folgt ab:
+Führen Sie den Befehl [az acr list][az-acr-list] aus, um die Anmeldeserveradresse abzurufen, und fragen Sie die *loginServer*-Adresse wie folgt ab:
 
 ```azurecli
 az acr list --resource-group myResourceGroup --query "[].{acrLoginServer:loginServer}" --output table
 ```
 
-Markieren Sie jetzt Ihr lokales Image *azure-vote-front* mit der *acrLoginServer* -Adresse der Containerregistrierung. Fügen Sie am Ende des Imagenamens *:v1* hinzu, um die Imageversion anzugeben:
+Markieren Sie jetzt Ihr lokales Image *azure-vote-front* mit der *acrLoginServer*-Adresse der Containerregistrierung. Fügen Sie am Ende des Imagenamens *:v1* hinzu, um die Imageversion anzugeben:
 
 ```console
 docker tag mcr.microsoft.com/azuredocs/azure-vote-front:v1 <acrLoginServer>/azure-vote-front:v1
@@ -104,7 +104,7 @@ tiangolo/uwsgi-nginx-flask                      python3.6           a16ce562e863
 
 ## <a name="push-images-to-registry"></a>Übertragen von Images in die Registrierung per Push
 
-Nachdem das Image erstellt und markiert wurde, können Sie das Image *azure-vote-front* per Push an Ihre ACR-Instanz übertragen. Verwenden Sie [docker push][docker-push], und geben Sie Ihre eigene *acrLoginServer* -Adresse wie folgt als Imagename an:
+Nachdem das Image erstellt und markiert wurde, können Sie das Image *azure-vote-front* per Push an Ihre ACR-Instanz übertragen. Verwenden Sie [docker push][docker-push], und geben Sie Ihre eigene *acrLoginServer*-Adresse wie folgt als Imagename an:
 
 ```console
 docker push <acrLoginServer>/azure-vote-front:v1
@@ -122,7 +122,7 @@ az acr repository list --name <acrName> --output table
 
 Die folgende Beispielausgabe listet das Image *azure-vote-front* in der Registrierung als verfügbar auf:
 
-```
+```output
 Result
 ----------------
 azure-vote-front
@@ -134,9 +134,9 @@ Verwenden Sie den Befehl [az acr repository show-tags][az-acr-repository-show-ta
 az acr repository show-tags --name <acrName> --repository azure-vote-front --output table
 ```
 
-Die folgende Beispielausgabe zeigt das in einem vorherigen Schritt markierte *v1* -Image:
+Die folgende Beispielausgabe zeigt das in einem vorherigen Schritt markierte *v1*-Image:
 
-```
+```output
 Result
 --------
 v1

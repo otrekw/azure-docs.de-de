@@ -11,12 +11,12 @@ ms.author: amsaied
 ms.reviewer: sgilley
 ms.date: 09/15/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 2f33fe4fafbe194238fcfbd4942807ed2fc4d6ff
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: 0d099d31db3619e14da4fe66e26b25a0e36ee39c
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98183539"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98250688"
 ---
 # <a name="tutorial-get-started-with-azure-machine-learning-in-your-development-environment-part-1-of-4"></a>Tutorial: Erste Schritte mit Azure Machine Learning in Ihrer Entwicklungsumgebung (Teil 1 von 4)
 
@@ -37,7 +37,8 @@ In Teil 1 dieser Tutorialreihe führen Sie die folgenden Aktionen aus:
 ## <a name="prerequisites"></a>Voraussetzungen
 
 - Ein Azure-Abonnement. Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie ein kostenloses Konto erstellen, bevor Sie beginnen. Probieren Sie [Azure Machine Learning](https://aka.ms/AMLFree) aus.
-- [Anaconda](https://www.anaconda.com/download/) oder [Miniconda](https://www.anaconda.com/download/) zum Verwalten virtueller Python-Umgebungen und zum Installieren von Paketen
+- [Anaconda](https://www.anaconda.com/download/) oder [Miniconda](https://www.anaconda.com/download/) zum Verwalten virtueller Python-Umgebungen und zum Installieren von Paketen  
+- Wenn Sie mit der Verwendung von Conda nicht vertraut sind, finden Sie weitere Informationen unter [Erste Schritte mit Conda](https://conda.io/projects/conda/en/latest/user-guide/getting-started.html).
 
 ## <a name="install-the-azure-machine-learning-sdk"></a>Installieren des Azure Machine Learning SDK
 

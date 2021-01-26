@@ -4,17 +4,17 @@ description: In diesem Artikel erfahren Sie, wie Sie Ihre Blobs aus dem Archivsp
 services: storage
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 04/08/2020
+ms.date: 01/08/2021
 ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: hux
-ms.openlocfilehash: f74d4ffdd724039354a311234317dac889cd7cfe
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 5a89e5a9eca653a2d15e5b09605b78bc18d76b8f
+ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95545930"
+ms.lasthandoff: 01/13/2021
+ms.locfileid: "98165670"
 ---
 # <a name="rehydrate-blob-data-from-the-archive-tier"></a>Aktivieren von Blobdaten aus der Archivzugriffsebene
 
@@ -29,9 +29,13 @@ Während ein Blob sich auf der Archivzugriffsebene befindet, wird es als offline
 
 [!INCLUDE [storage-blob-rehydration](../../../includes/storage-blob-rehydrate-include.md)]
 
+## <a name="monitor-rehydration-progress"></a>Überwachen des Aktivierungsstatus
+
+Verwenden Sie während der Aktivierung den Vorgang „Get Blob Properties“, um das Attribut **Archive Status** (Archivstatus) zu überprüfen und zu ermitteln, wann die Ebenenänderung abgeschlossen ist. Je nach Zielebene lautet der Status entweder „rehydrate-pending-to-hot“ (Aktivierung für Ebene „Hot“ ausstehend) oder „rehydrate-pending-to-cool“ (Aktivierung für Ebene „Cool“ ausstehend). Nach Abschluss des Vorgangs wird die Eigenschaft „Archive Status“ (Archivstatus) entfernt, und die Eigenschaft **Access Tier** (Zugriffsebene) des Blobs spiegelt die neue Ebene vom Typ „Hot“ oder „Cool“ wider.
+
 ## <a name="copy-an-archived-blob-to-an-online-tier"></a>Kopieren eines archivierten Blobs auf eine Onlineebene
 
-Wenn Sie das Archivblob nicht aktivieren möchten, können Sie einen Vorgang vom Typ [Blob kopieren](/rest/api/storageservices/copy-blob) ausführen. Das ursprüngliche Blob bleibt unverändert im Archiv, während ein neues Blobs auf der heißen oder kalten Onlineebene erstellt wird, mit dem Sie arbeiten können. Beim Vorgang „Blob kopieren“ können Sie auch die optionale Eigenschaft *x-ms-rehydrate-priority* auf „Standard“ oder „Hoch“ festlegen, um die Priorität anzugeben, mit der die Blobkopie erstellt werden soll.
+Wenn Sie das Archivblob nicht aktivieren möchten, können Sie einen Vorgang vom Typ [Blob kopieren](/rest/api/storageservices/copy-blob) ausführen. Das ursprüngliche Blob bleibt unverändert im Archiv, während ein neues Blobs auf der heißen oder kalten Onlineebene erstellt wird, mit dem Sie arbeiten können. Beim Vorgang **Blob kopieren** können Sie auch die optionale Eigenschaft *x-ms-rehydrate-priority* auf „Standard“ oder „Hoch“ festlegen, um die Priorität anzugeben, mit der die Blobkopie erstellt werden soll.
 
 Das Kopieren eines Blobs aus dem Archiv kann je nach ausgewählter Aktivierungspriorität mehrere Stunden dauern. Im Hintergrund liest der Vorgang **Blob kopieren** das Archivblob, um ein neues Onlineblob auf der ausgewählten Zielebene zu erstellen. Das neue Blob ist beim Auflisten von Blobs möglicherweise sichtbar, aber die Daten sind erst verfügbar, wenn der Lesevorgang aus dem Quellarchivblob abgeschlossen ist und Daten in das neue Onlinezielblob geschrieben werden. Das neue Blob ist eine unabhängige Kopie, und jegliche Änderungen oder Löschungen wirken sich nicht auf das Quellarchivblob aus.
 

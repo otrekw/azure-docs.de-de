@@ -2,26 +2,21 @@
 title: 'Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Adobe Identity Management | Microsoft-Dokumentation'
 description: Hier erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und Adobe Identity Management konfigurieren.
 services: active-directory
-documentationCenter: na
 author: jeevansd
-manager: mtillman
-ms.reviewer: barbkess
-ms.assetid: 9db7f01d-7f15-492f-a839-55963790a12e
+manager: CelesteDG
+ms.reviewer: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 09/26/2019
+ms.date: 01/15/2021
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 96a49df85f02083571e84ec884b37fb43b0d4001
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: 18c626a11724b585bf699f8be470b439177991ae
+ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97618377"
+ms.lasthandoff: 01/16/2021
+ms.locfileid: "98250845"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-adobe-identity-management"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Adobe Identity Management
 
@@ -30,8 +25,6 @@ In diesem Tutorial erfahren Sie, wie Sie Adobe Identity Management in Azure Acti
 * Steuern Sie in Azure AD, wer Zugriff auf Adobe Identity Management hat.
 * Ermöglichen Sie es Ihren Benutzern, sich mit ihren Azure AD-Konten automatisch bei Adobe Identity Management anzumelden.
 * Verwalten Sie Ihre Konten zentral im Azure-Portal.
-
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -50,18 +43,18 @@ In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure
 
 Um die Integration von Adobe Identity Management in Azure AD zu konfigurieren, müssen Sie Adobe Identity Management aus dem Katalog Ihrer Liste mit den verwalteten SaaS-Apps hinzufügen.
 
-1. Melden Sie sich mit einem Geschäfts-, Schul- oder Unikonto oder mit einem persönlichen Microsoft-Konto beim [Azure-Portal](https://portal.azure.com) an.
+1. Melden Sie sich mit einem Geschäfts-, Schul- oder Unikonto oder mit einem persönlichen Microsoft-Konto beim Azure-Portal an.
 1. Wählen Sie im linken Navigationsbereich den Dienst **Azure Active Directory** aus.
 1. Navigieren Sie zu **Unternehmensanwendungen**, und wählen Sie dann **Alle Anwendungen** aus.
 1. Wählen Sie zum Hinzufügen einer neuen Anwendung **Neue Anwendung** aus.
 1. Geben Sie im Abschnitt **Aus Katalog hinzufügen** den Suchbegriff **Adobe Identity Management** in das Suchfeld ein.
 1. Wählen Sie im Ergebnisbereich **Adobe Identity Management** aus, und fügen Sie dann die App hinzu. Warten Sie einige Sekunden, während die App Ihrem Mandanten hinzugefügt wird.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-adobe-identity-management"></a>Konfigurieren und Testen des einmaligen Anmeldens von Azure AD für Adobe Identity Management
+## <a name="configure-and-test-azure-ad-sso-for-adobe-identity-management"></a>Konfigurieren und Testen des einmaligen Anmeldens von Azure AD für Adobe Identity Management
 
 Konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit Adobe Identity Management mithilfe eines Testbenutzers mit dem Namen **B. Simon**. Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Adobe Identity Management eingerichtet werden.
 
-Führen Sie zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD mit Adobe Identity Management die folgenden Schritte aus:
+Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD mit Adobe Identity Management zu konfigurieren und zu testen:
 
 1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-sso)** , um Ihren Benutzern die Verwendung dieses Features zu ermöglichen.
     1. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD mit dem Testbenutzer B. Simon zu testen.
@@ -74,15 +67,15 @@ Führen Sie zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD 
 
 Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal zu aktivieren.
 
-1. Navigieren Sie im [Azure-Portal](https://portal.azure.com/) auf der Anwendungsintegrationsseite für **Adobe Identity Management** zum Abschnitt **Verwalten**, und wählen Sie **Einmaliges Anmelden** aus.
+1. Navigieren Sie im Azure-Portal auf der Anwendungsintegrationsseite für **Adobe Identity Management** zum Abschnitt **Verwalten**, und wählen Sie **Einmaliges Anmelden** aus.
 1. Wählen Sie auf der Seite **SSO-Methode auswählen** die Methode **SAML** aus.
-1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Bearbeitungs- bzw. Stiftsymbol für **Grundlegende SAML-Konfiguration**, um die Einstellungen zu bearbeiten.
+1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Stiftsymbol für **Grundlegende SAML-Konfiguration**, um die Einstellungen zu bearbeiten.
 
    ![Bearbeiten der SAML-Basiskonfiguration](common/edit-urls.png)
 
 1. Geben Sie im Abschnitt **Grundlegende SAML-Konfiguration** die Werte für die folgenden Felder ein:
 
-    a. Geben Sie im Textfeld **Anmelde-URL** die URL wie folgt ein: `https://adobe.com`.
+    a. Geben Sie im Textfeld **Anmelde-URL** die URL ein: `https://adobe.com`.
 
     b. Geben Sie im Textfeld **Bezeichner (Entitäts-ID)** eine URL im folgenden Format ein: `https://federatedid-na1.services.adobe.com/federated/saml/metadata/alias/<CUSTOM_ID>`.
 
@@ -116,38 +109,63 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 1. Wählen Sie im Azure-Portal **Unternehmensanwendungen** > **Alle Anwendungen** aus.
 1. Wählen Sie in der Anwendungsliste **Adobe Identity Management** aus.
 1. Navigieren Sie auf der Übersichtsseite der App zum Abschnitt **Verwalten**, und wählen Sie **Benutzer und Gruppen** aus.
-
-   ![Link „Benutzer und Gruppen“](common/users-groups-blade.png)
-
 1. Wählen Sie **Benutzer hinzufügen** und anschließend im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
-
-    ![Link „Benutzer hinzufügen“](common/add-assign-user.png)
-
 1. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Liste „Benutzer“ den Eintrag **B. Simon** aus, und klicken Sie dann unten auf dem Bildschirm auf die Schaltfläche **Auswählen**.
-1. Wenn Sie einen beliebigen Rollenwert in der SAML-Assertion erwarten, wählen Sie im Dialogfeld **Rolle auswählen** die entsprechende Rolle für den Benutzer in der Liste aus, und klicken Sie dann im unteren Bildschirmbereich auf die Schaltfläche **Auswählen**.
+1. Wenn den Benutzern eine Rolle zugewiesen werden soll, können Sie sie im Dropdownmenü **Rolle auswählen** auswählen. Wurde für diese App keine Rolle eingerichtet, ist die Rolle „Standardzugriff“ ausgewählt.
 1. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen**.
 
 ## <a name="configure-adobe-identity-management-sso"></a>Konfigurieren des einmaligen Anmeldens für Adobe Identity Management
 
-Zum Konfigurieren des einmaligen Anmeldens aufseiten von **Adobe Identity Management** müssen Sie die heruntergeladene **Verbundmetadaten-XML** und die kopierten URLs aus dem Azure-Portal an das [Supportteam von Adobe Identity Management](mailto:identity@adobe.com) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
+1. Wenn Sie die Konfiguration in Adobe Identity Management automatisieren möchten, müssen Sie die **Browsererweiterung „Meine Apps“ für die sichere Anmeldung** installieren, indem Sie auf **Erweiterung installieren** klicken.
+
+    ![Erweiterung „Meine Apps“](common/install-myappssecure-extension.png)
+
+2. Klicken Sie nach dem Hinzufügen der Erweiterung zum Browser auf **Adobe Identity Management einrichten**, um zur Adobe Identity Management-Anwendung weitergeleitet zu werden. Geben Sie dort die Administratoranmeldeinformationen ein, um sich bei Adobe Identity Management anzumelden. Die Browsererweiterung konfiguriert die Anwendung automatisch für Sie und automatisiert die Schritte 3 bis 8.
+
+    ![Einrichtungskonfiguration](common/setup-sso.png)
+
+3. Wenn Sie Adobe Identity Management manuell einrichten möchten, melden Sie sich in einem anderen Webbrowserfenster als Administrator bei der Adobe Identity Management-Unternehmenswebsite an.
+
+4. Navigieren Sie zur Registerkarte **Settings** (Einstellungen), und klicken Sie auf **Create Directory** (Verzeichnis erstellen).
+
+    ![Adobe Identity Management-Einstellungen](./media/adobe-identity-management-tutorial/settings.png)
+
+5. Geben Sie den Verzeichnisnamen in das Textfeld ein, wählen Sie **Federated ID** (Verbund-ID) aus, und klicken Sie auf **Next** (Weiter).
+
+    ![Adobe Identity Management: Erstellen eines Verzeichnisses](./media/adobe-identity-management-tutorial/create-directory.png)
+
+6. Wählen Sie **Other SAML Providers** (Andere SAML-Anbieter) aus, und klicken Sie auf **Next** (Weiter).
+ 
+    ![Adobe Identity Management: SAML-Anbieter](./media/adobe-identity-management-tutorial/saml-providers.png)
+
+7. Klicken Sie auf den Link zum **Auswählen**, um die **Metadaten-XML-Datei** hochzuladen, die Sie aus dem Azure-Portal heruntergeladen haben.
+
+    ![Adobe Identity Management: SAML-Konfiguration](./media/adobe-identity-management-tutorial/saml-configuration.png)
+
+8. Klicken Sie auf **Done** (Fertig).
 
 ### <a name="create-adobe-identity-management-test-user"></a>Erstellen eines Adobe Identity Management-Testbenutzers
 
-In diesem Abschnitt erstellen Sie in Adobe Identity Management einen Benutzer namens B. Simon. Wenden Sie sich an das [Adobe Identity Management-Supportteam](mailto:identity@adobe.com), um die Benutzer der Adobe Identity Management-Plattform hinzuzufügen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
+1. Navigieren Sie zur Registerkarte **Users** (Benutzer), und klicken Sie auf **Add User** (Benutzer hinzufügen).
 
-## <a name="test-sso"></a>Testen des einmaligen Anmeldens 
+    ![Adobe Identity Management: Hinzufügen von Benutzern](./media/adobe-identity-management-tutorial/add-user.png)
 
-In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
+2. Geben Sie im Textfeld **Enter user’s email address** (E-Mail-Adresse des Benutzers eingeben) die **E-Mail-Adresse** ein.
 
-Wenn Sie im Zugriffsbereich auf die Kachel „Adobe Identity Management“ klicken, sollten Sie automatisch bei der Adobe Identity Management-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+    ![Adobe Identity Management: Speichern des Benutzers](./media/adobe-identity-management-tutorial/save-user.png)
 
-## <a name="additional-resources"></a>Zusätzliche Ressourcen
+3. Klicken Sie auf **Speichern**.
 
-- [Liste mit den Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+## <a name="test-sso"></a>Testen des einmaligen Anmeldens
 
-- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden mit den folgenden Optionen:
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+* Klicken Sie im Azure-Portal auf **Diese Anwendung testen**. Dadurch werden Sie zur Anmelde-URL für Adobe Identity Management weitergeleitet, wo Sie den Anmeldeflow initiieren können.
 
-- [Adobe Identity Management mit Azure AD ausprobieren](https://aad.portal.azure.com/)
+* Rufen Sie direkt die Adobe Identity Management-Anmelde-URL auf, und initiieren Sie den Anmeldeflow.
 
+* Sie können „Meine Apps“ von Microsoft verwenden. Wenn Sie unter „Meine Apps“ auf die Kachel „Adobe Identity Management“ klicken, werden Sie zur Anmelde-URL für Adobe Identity Management weitergeleitet. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+
+## <a name="next-steps"></a>Nächste Schritte
+
+Nach dem Konfigurieren von Adobe Identity Management können Sie die Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](/cloud-app-security/proxy-deployment-any-app) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.

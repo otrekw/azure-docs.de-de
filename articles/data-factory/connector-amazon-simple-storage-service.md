@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 12/08/2020
-ms.openlocfilehash: 925a0270c50d20790c093eaf193d66e0acd4cd11
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.date: 01/14/2021
+ms.openlocfilehash: 82871a09916b2b64f74e25088f5e75ac60a40678
+ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97347403"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98202503"
 ---
 # <a name="copy-data-from-amazon-simple-storage-service-by-using-azure-data-factory"></a>Kopieren von Daten aus Amazon Simple Storage Service mithilfe von Azure Data Factory
 > [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version des Data Factory-Diensts aus:"]
@@ -71,6 +71,7 @@ Folgende Eigenschaften werden für einen mit Amazon S3 verknüpften Dienst unter
 | secretAccessKey | Der geheime Zugriffsschlüssel selbst. Markieren Sie dieses Feld als **SecureString**, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). |Ja |
 | sessionToken | Trifft zu, wenn für die Authentifizierung [temporäre Sicherheitsanmeldeinformationen](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp.html) verwendet werden. Erfahren Sie, wie Sie [temporäre Sicherheitsanmeldeinformationen](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_request.html#api_getsessiontoken) von AWS anfordern.<br>Beachten Sie, dass die temporären AWS-Anmeldeinformationen je nach Einstellung nach 15 Minuten bis 36 Stunden ablaufen. Stellen Sie sicher, dass Ihre Anmeldeinformationen während der Aktivitätsausführung gültig sind. Dies gilt insbesondere für operationalisierte Workloads. Sie können sie z. B. regelmäßig aktualisieren und in Azure Key Vault speichern.<br>Markieren Sie dieses Feld als **SecureString**, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). |Nein |
 | serviceUrl | Geben Sie den benutzerdefinierten S3-Endpunkt an, wenn Sie Daten von einem anderen S3-kompatiblen Speicheranbieter als dem offiziellen Amazon S3-Dienst kopieren. Um beispielsweise Daten aus Google Cloud Storage zu kopieren, geben Sie `https://storage.googleapis.com` an. | Nein |
+| forcePathStyle | Gibt an, ob anstelle des Zugriffs mit virtuellem Hosting der [Zugriff im S3-Pfadstil](https://docs.aws.amazon.com/AmazonS3/latest/dev/VirtualHosting.html#path-style-access) verwendet wird. Zulässige Werte sind **false** (Standard) und **true**.<br>Legen Sie diese Eigenschaft auf „true“ fest, wenn Sie eine Verbindung mit einem S3-kompatiblen Speicheranbieter herstellen, bei dem es sich nicht um den offiziellen Amazon S3-Dienst handelt, und für den Datenspeicher der Zugriff im Pfadstil (z. B. [Oracle Cloud Storage](https://docs.oracle.com/iaas/Content/Object/Tasks/s3compatibleapi.htm)) erforderlich ist. Sehen Sie in der Dokumentation des jeweiligen Datenspeichers nach, ob der Zugriff im Pfadstil verwendet werden muss. |Nein |
 | connectVia | Die [Integration Runtime](concepts-integration-runtime.md), die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden soll. Sie können die Azure Integration Runtime oder eine selbstgehostete Integration Runtime verwenden (sofern sich Ihr Datenspeicher in einem privaten Netzwerk befindet). Wenn diese Eigenschaft nicht angegeben ist, verwendet der Dienst die normale Azure Integration Runtime. |Nein |
 
 >[!TIP]

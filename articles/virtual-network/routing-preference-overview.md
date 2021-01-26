@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/02/2020
 ms.author: mnayak
-ms.openlocfilehash: 656f8a0e0530a20807fc8fddd4cd96d1d955c8ac
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: fa83c51469636eb269aa5dc3192ff7e65b53ce89
+ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97912698"
+ms.lasthandoff: 01/14/2021
+ms.locfileid: "98186140"
 ---
 # <a name="what-is-routing-preference-preview"></a>Was ist Routingpräferenz (Vorschau)?
 
@@ -74,7 +74,7 @@ Der Preisunterschied zwischen beiden Optionen spiegelt sich in den Preisen für 
 
 ## <a name="limitations"></a>Einschränkungen
 
-* Die Routingpräferenz ist nur mit der Standard-SKU der öffentlichen IP-Adresse kompatibel. Die Basic-SKU der öffentlichen IP-Adresse wird nicht unterstützt.
+* Die Routingpräferenz ist nur mit der zonenredundanten Standard-SKU der öffentlichen IP-Adresse kompatibel. Die Basic-SKU der öffentlichen IP-Adresse wird nicht unterstützt.
 * Die Routingpräferenz unterstützt derzeit nur öffentliche IPv4-IP-Adressen. Öffentliche IPv6 IP-Adressen werden nicht unterstützt.
 * Virtuelle Computer mit mehreren Netzwerkschnittstellen (NICs) können nur eine Art von Routingpräferenz aufweisen.
 
