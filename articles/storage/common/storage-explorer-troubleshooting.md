@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: troubleshooting
 ms.date: 07/28/2020
 ms.author: delhan
-ms.openlocfilehash: 4e87e99f16a89cab95f9bd07b75b80f1c13d47f1
-ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
+ms.openlocfilehash: 9a20db58846ca48afb4fb256adae58e1fccdff3a
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97900653"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98875735"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Azure Storage-Explorer – Leitfaden zur Problembehandlung
 
@@ -70,13 +70,13 @@ Für andere Ressourcentypen verfügen wir derzeit nicht über eine Azure RBAC-be
 ### <a name="recommended-azure-built-in-roles"></a>Empfohlene in Azure integrierte Rollen
 
 Es gibt mehrere integrierte Azure-Rollen, die die Berechtigungen bereitstellen können, die für die Verwendung von Storage-Explorer erforderlich sind. Einige dieser Rollen sind:
-- [Besitzer:](/azure/role-based-access-control/built-in-roles#owner) Sie können alles verwalten, einschließlich des Zugriffs auf Ressourcen.
-- [Mitwirkender](/azure/role-based-access-control/built-in-roles#contributor): Sie können alles verwalten, ausgenommen den Zugriff auf Ressourcen.
-- [Leser:](/azure/role-based-access-control/built-in-roles#reader) Lesen und Auflisten von Ressourcen.
-- [Speicherkontomitwirkender:](/azure/role-based-access-control/built-in-roles#storage-account-contributor) Vollständige Verwaltung von Speicherkonten.
-- [Besitzer von Speicherblobdaten](/azure/role-based-access-control/built-in-roles#storage-blob-data-owner): Vollzugriff auf Azure Storage-Blobcontainer und -Daten.
-- [Mitwirkender an Speicherblobdaten](/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor): Lesen, Schreiben und Löschen von Azure Storage-Containern und -Blobs.
-- [Leser von Speicherblobdaten](/azure/role-based-access-control/built-in-roles#storage-blob-data-reader): Lesen und Auflisten von Azure Storage-Containern und -Blobs.
+- [Besitzer:](../../role-based-access-control/built-in-roles.md#owner) Sie können alles verwalten, einschließlich des Zugriffs auf Ressourcen.
+- [Mitwirkender](../../role-based-access-control/built-in-roles.md#contributor): Sie können alles verwalten, ausgenommen den Zugriff auf Ressourcen.
+- [Leser:](../../role-based-access-control/built-in-roles.md#reader) Lesen und Auflisten von Ressourcen.
+- [Speicherkontomitwirkender:](../../role-based-access-control/built-in-roles.md#storage-account-contributor) Vollständige Verwaltung von Speicherkonten.
+- [Besitzer von Speicherblobdaten](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner): Vollzugriff auf Azure Storage-Blobcontainer und -Daten.
+- [Mitwirkender an Speicherblobdaten](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor): Lesen, Schreiben und Löschen von Azure Storage-Containern und -Blobs.
+- [Leser von Speicherblobdaten](../../role-based-access-control/built-in-roles.md#storage-blob-data-reader): Lesen und Auflisten von Azure Storage-Containern und -Blobs.
 
 > [!NOTE]
 > Die Rollen „Besitzer“, „Mitwirkender“ und „Speicherkontomitwirkender“ gewähren Zugriff auf den Kontoschlüssel.

@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/19/2020
-ms.openlocfilehash: 3370215e9a69e62596f214ba4330fc4914a2837f
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: 5f42b5f2b2a7660ee0de975068f64572c470503a
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98539690"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98874905"
 ---
 # <a name="register-and-scan-a-power-bi-tenant-preview"></a>Registrieren und Überprüfen eines Power BI-Mandanten (Vorschau)
 
@@ -26,7 +26,7 @@ In diesem Artikel wird gezeigt, wie Sie das Azure Purview-Portal zum Registriere
 Erstellen Sie zum Einrichten der Authentifizierung eine Sicherheitsgruppe, und fügen Sie ihr die verwaltete Identität des Katalogs hinzu.
 
 1. Suchen Sie im [Azure-Portal](https://portal.azure.com) nach **Azure Active Directory**.
-1. Erstellen Sie eine neue Sicherheitsgruppe in Ihrem Azure Active Directory-System, indem Sie gemäß [Erstellen einer Basisgruppe und Hinzufügen von Mitgliedern mit Azure Active Directory](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-groups-create-azure-portal) vorgehen.
+1. Erstellen Sie eine neue Sicherheitsgruppe in Ihrem Azure Active Directory-System, indem Sie gemäß [Erstellen einer Basisgruppe und Hinzufügen von Mitgliedern mit Azure Active Directory](../active-directory/fundamentals/active-directory-groups-create-azure-portal.md) vorgehen.
 
     > [!Tip]
     > Sie können diesen Schritt überspringen, wenn Sie bereits über eine Sicherheitsgruppe verfügen, die Sie verwenden möchten.

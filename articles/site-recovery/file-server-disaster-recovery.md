@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/31/2019
 ms.author: sharrai
 ms.custom: mvc
-ms.openlocfilehash: 1c88a7e78d37556f0f1f89e16154dc1808f24323
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9cef163c1b53360222ca32a827552fa361e9dd40
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89425516"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98874246"
 ---
 # <a name="protect-a-file-server-by-using-azure-site-recovery"></a>Schützen eines Dateiservers mit Azure Site Recovery 
 
@@ -77,7 +77,7 @@ Da die Site Recovery-Replikation anwendungsunabhängig ist, gelten diese Empfehl
 
 
 
-**Site-to-Site-Konnektivität**: Es muss eine direkte Verbindung zwischen dem lokalen Standort und dem Azure-Netzwerk hergestellt werden, um die Kommunikation zwischen Servern zu ermöglichen. Verwenden Sie eine sichere Site-to-Site-VPN-Verbindung mit einem virtuellen Azure-Netzwerk, das als Notfallwiederherstellungsstandort dient. Weitere Informationen finden Sie im Artikel zum [Herstellen einer Site-to-Site-VPN-Verbindung zwischen einem lokalen Standort und einem virtuellen Azure-Netzwerk](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md).
+**Site-to-Site-Konnektivität**: Es muss eine direkte Verbindung zwischen dem lokalen Standort und dem Azure-Netzwerk hergestellt werden, um die Kommunikation zwischen Servern zu ermöglichen. Verwenden Sie eine sichere Site-to-Site-VPN-Verbindung mit einem virtuellen Azure-Netzwerk, das als Notfallwiederherstellungsstandort dient. Weitere Informationen finden Sie im Artikel zum [Herstellen einer Site-to-Site-VPN-Verbindung zwischen einem lokalen Standort und einem virtuellen Azure-Netzwerk](../vpn-gateway/tutorial-site-to-site-portal.md).
 
 **Active Directory**: DFSR ist von Active Directory abhängig. Dies bedeutet, dass die Active Directory-Gesamtstruktur mit lokalen Domänencontrollern auf den Notfallwiederherstellungsstandort in Azure ausgedehnt wird. Selbst wenn Sie DSFR nicht verwenden, müssen Sie diese Schritte ausführen, falls den entsprechenden Benutzern Zugriff gewährt oder der Zugriff dieser Benutzer überprüft werden muss. Weitere Informationen finden Sie unter [Verwenden von Azure Site Recovery zum Schützen von Active Directory und DNS](./site-recovery-active-directory.md).
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: storage
 ms.subservice: blobs
 ms.reviewer: dineshm
-ms.openlocfilehash: 00a7a081f29458ae81d8d8ea4dd8f7abef42f78f
-ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
+ms.openlocfilehash: 31b2d562d4d0c53b23e8e3f454057b4e26e41ba9
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96519007"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98875245"
 ---
 # <a name="reacting-to-blob-storage-events"></a>Reaktion auf Blob Storage-Ereignisse
 
@@ -96,7 +96,7 @@ Anwendungen, die Blob Storage-Ereignisse behandeln, sollten einige bewährte Met
 > [!div class="checklist"]
 > * Da mehrere Abonnements zum Weiterleiten von Ereignissen an den gleichen Ereignishandler konfiguriert werden können, ist es wichtig, nicht davon auszugehen, dass Ereignisse aus einer bestimmten Quelle stammen, sondern das Thema der Nachricht zu überprüfen, um sicherzustellen, dass es aus dem Speicherkonto stammt, das Sie erwarten.
 > * Überprüfen Sie auf ähnliche Weise, ob Sie auf die Verarbeitung des eventType vorbereitet sind, und gehen Sie nicht davon aus, dass alle Ereignisse, die Sie empfangen, den von Ihnen erwarteten Typen entsprechen.
-> * Da Nachrichten mit Verzögerung eintreffen können, verwenden Sie die etag-Felder, um zu verstehen, ob Ihre Informationen zu Objekten weiterhin auf dem neuesten Stand sind. Informationen zur Verwendung des etag-Felds finden Sie unter [Verwalten von Parallelität in Blob Storage](../common/storage-concurrency.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#managing-concurrency-in-blob-storage).
+> * Da Nachrichten mit Verzögerung eintreffen können, verwenden Sie die etag-Felder, um zu verstehen, ob Ihre Informationen zu Objekten weiterhin auf dem neuesten Stand sind. Informationen zur Verwendung des etag-Felds finden Sie unter [Verwalten von Parallelität in Blob Storage](./concurrency-manage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#managing-concurrency-in-blob-storage).
 > * Da Nachrichten in falscher Reihenfolge eintreffen können, verwenden Sie die sequencer-Felder, um die Reihenfolge der Ereignisse für ein bestimmtes Objekt zu verstehen. Das sequencer-Feld ist ein Zeichenfolgenwert, der die logische Reihenfolge von Ereignissen für einen bestimmten Blobnamen darstellt. Sie können anhand des standardmäßigen Zeichenfolgenvergleichs die relative Reihenfolge von zwei Ereignissen unter dem gleichen Blobnamen nachvollziehen.
 > * Storage-Ereignisse gewährleisten eine At-Least-Once-Zustellung an Abonnenten, wodurch sichergestellt wird, dass alle Nachrichten ausgegeben werden. Aufgrund von Wiederholungen oder abhängig von der Verfügbarkeit von Abonnements kommt es jedoch möglicherweise gelegentlich zu doppelten Nachrichten. Weitere Informationen zur Übermittlung und Wiederholung von Nachrichten finden Sie unter [Event Grid – Übermittlung und Wiederholung von Nachrichten](../../event-grid/delivery-and-retry.md).
 > * Verwenden Sie das blobType-Feld, um zu verstehen, welche Arten von Vorgängen für das Blob zulässig sind, und welche Typen von Clientbibliotheken Sie für den Zugriff auf das Blob verwenden sollten. Gültige Werte sind `BlockBlob` oder `PageBlob`. 

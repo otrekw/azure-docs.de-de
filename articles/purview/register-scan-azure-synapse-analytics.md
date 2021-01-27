@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 10/22/2020
-ms.openlocfilehash: 3ba43b83166b5548dee4ea4e52c7411db48d23f5
-ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
+ms.openlocfilehash: 62ca32ab4e348e1488fbb87672e582436b91d05d
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98567268"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98875008"
 ---
 # <a name="register-and-scan-azure-synapse-analytics"></a>Registrieren und Überprüfen von Azure Synapse Analytics
 
@@ -45,7 +45,7 @@ Es gibt drei Möglichkeiten, die Authentifizierung für Azure Synapse Analytics 
 
 ### <a name="managed-identity-recommended"></a>Verwaltete Identität (empfohlen) 
    
-Ihr Purview-Konto verfügt über eine eigene verwaltete Identität, bei der es sich im Grunde genommen um den Purview-Namen handelt, den Sie bei der Erstellung eingegeben haben. Sie müssen einen Azure AD-Benutzer in Azure Synapse Analytics (vormals SQL DW) erstellen, indem Sie genau den Namen der verwalteten Identität von Purview angeben. Erfüllen Sie hierfür die Voraussetzungen unter [Tutorial: Erstellen von Azure AD-Benutzern mithilfe von Azure AD-Anwendungen](/azure/azure-sql/database/authentication-aad-service-principal-tutorial), und arbeiten Sie das Tutorial durch.
+Ihr Purview-Konto verfügt über eine eigene verwaltete Identität, bei der es sich im Grunde genommen um den Purview-Namen handelt, den Sie bei der Erstellung eingegeben haben. Sie müssen einen Azure AD-Benutzer in Azure Synapse Analytics (vormals SQL DW) erstellen, indem Sie genau den Namen der verwalteten Identität von Purview angeben. Erfüllen Sie hierfür die Voraussetzungen unter [Tutorial: Erstellen von Azure AD-Benutzern mithilfe von Azure AD-Anwendungen](../azure-sql/database/authentication-aad-service-principal-tutorial.md), und arbeiten Sie das Tutorial durch.
 
 SQL-Beispielsyntax für das Erstellen eines Benutzers und das Gewähren der Berechtigung:
 
@@ -87,7 +87,7 @@ Es ist erforderlich, die Anwendungs-ID und das Geheimnis des Dienstprinzipals ab
 
 #### <a name="granting-the-service-principal-access-to-your-azure-synapse-analytics-formerly-sql-dw"></a>Gewähren des Zugriffs auf Ihre Azure Synapse Analytics-Instanz (vormals SQL DW) für den Dienstprinzipal
 
-Darüber hinaus müssen Sie auch in Azure Synapse Analytics einen Azure AD-Benutzer erstellen, indem Sie die Voraussetzungen unter [Tutorial: Erstellen von Azure AD-Benutzern mithilfe von Azure AD-Anwendungen](https://docs.microsoft.com/azure/azure-sql/database/authentication-aad-service-principal-tutorial) erfüllen und das Tutorial durcharbeiten. SQL-Beispielsyntax für das Erstellen eines Benutzers und das Gewähren der Berechtigung:
+Darüber hinaus müssen Sie auch in Azure Synapse Analytics einen Azure AD-Benutzer erstellen, indem Sie die Voraussetzungen unter [Tutorial: Erstellen von Azure AD-Benutzern mithilfe von Azure AD-Anwendungen](../azure-sql/database/authentication-aad-service-principal-tutorial.md) erfüllen und das Tutorial durcharbeiten. SQL-Beispielsyntax für das Erstellen eines Benutzers und das Gewähren der Berechtigung:
 
 ```sql
 CREATE USER [ServicePrincipalName] FROM EXTERNAL PROVIDER
@@ -140,4 +140,3 @@ Gehen Sie unter **Register sources (Azure Synapse Analytics)** (Quellen registri
 
 - [Browsen im Azure Purview-Datenkatalog](how-to-browse-catalog.md)
 - [Suchen im Azure Purview-Datenkatalog](how-to-search-catalog.md)
-

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/05/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: cbc22f9b55f8d20880b43516a2a5bc8f55d389f5
-ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
+ms.openlocfilehash: b4b2a3bf8c9a3a2e2ec7f1b22785a037f8dedc60
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97814498"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98873959"
 ---
 # <a name="azure-security-baseline-for-azure-ddos-protection-standard"></a>Azure-Sicherheitsbaseline für Azure DDoS Protection Standard
 
@@ -164,7 +164,7 @@ Zusätzlich können Sie, um den Überblick über dedizierte Verwaltungskonten zu
 
 **Leitfaden**: Verwenden Sie eine sichere, von Azure verwaltete Arbeitsstation mit Azure AD Multi-Factor Authentication (MFA), um sich anzumelden und Ihre Anforderungen für die Azure-Kunden-Lockbox zu konfigurieren.
 
-- [Bereitstellen einer sicheren, von Azure verwalteten Arbeitsstation](../../active-directory/devices/howto-azure-managed-workstation.md)
+- [Bereitstellen einer sicheren, von Azure verwalteten Arbeitsstation](/security/compass/privileged-access-deployment)
 
 - [Planen einer cloudbasierten Azure AD Multi-Factor Authentication-Bereitstellung](../../active-directory/authentication/howto-mfa-getstarted.md)
 
