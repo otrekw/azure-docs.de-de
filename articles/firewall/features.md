@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: conceptual
 ms.date: 10/08/2020
 ms.author: victorh
-ms.openlocfilehash: 6c71d9325ff7c1c5d2e7eff03a587a28335efd72
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 69eaf3ca60378afd810d712d85ea7ef732e41e3e
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94652143"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98788229"
 ---
 # <a name="azure-firewall-features"></a>Azure Firewall-Features
 
@@ -101,7 +101,7 @@ Dies ermöglicht die folgenden Szenarien:
 
 ## <a name="azure-monitor-logging"></a>Azure Monitor-Protokollierung
 
-Alle Ereignisse sind in Azure Monitor integriert, sodass Sie Protokolle in einem Speicherkonto archivieren sowie Ereignisse an Ihren Event Hub streamen oder an Azure Monitor-Protokolle senden können. Azure Monitor-Protokollbeispiele finden Sie unter [Azure Monitor-Protokolle für Azure Firewall](log-analytics-samples.md).
+Alle Ereignisse sind in Azure Monitor integriert, sodass Sie Protokolle in einem Speicherkonto archivieren sowie Ereignisse an Ihren Event Hub streamen oder an Azure Monitor-Protokolle senden können. Azure Monitor-Protokollbeispiele finden Sie unter [Azure Monitor-Protokolle für Azure Firewall](./firewall-workbook.md).
 
 Weitere Informationen finden Sie im [Tutorial: Überwachen von Azure Firewall-Protokollen und -Metriken](./firewall-diagnostics.md). 
 

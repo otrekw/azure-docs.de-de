@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/05/2020
 ms.author: allensu
-ms.openlocfilehash: fcfd3da30ef9ace723b4204f5924591b1e2717f8
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: 59359cdd3e3c035d4cb6789295d41bb3908019bb
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97503164"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98785819"
 ---
 # <a name="azure-monitor-logs-for-azure-standard-load-balancer"></a>Azure Monitor-Protokolle für Azure Load Balancer Standard
 
@@ -74,7 +74,7 @@ Die Aktivitätsprotokollierung ist automatisch für alle Resource Manager-Ressou
 
 ## <a name="view-and-analyze-the-activity-log"></a>Anzeigen und Analysieren des Aktivitätsprotokolls
 
-Das Aktivitätsprotokoll wird standardmäßig generiert. Es kann konfiguriert werden, um auf Abonnementebene [gemäß der folgenden Anweisungen in diesem Artikel](https://docs.microsoft.com/azure/azure-monitor/platform/activity-log) exportiert zu werden. Mehr zu diesen Protokollen können Sie im Artikel [Anzeigen von Aktivitätsprotokollen zur Überwachung von Aktionen in Ressourcen](../azure-resource-manager/management/view-activity-logs.md) erfahren.
+Das Aktivitätsprotokoll wird standardmäßig generiert. Es kann konfiguriert werden, um auf Abonnementebene [gemäß der folgenden Anweisungen in diesem Artikel](../azure-monitor/platform/activity-log.md) exportiert zu werden. Mehr zu diesen Protokollen können Sie im Artikel [Anzeigen von Aktivitätsprotokollen zur Überwachung von Aktionen in Ressourcen](../azure-resource-manager/management/view-activity-logs.md) erfahren.
 
 Mit einer der folgenden Methoden können Sie die Aktivitätsprotokolldaten anzeigen und analysieren:
 
@@ -112,5 +112,5 @@ Bei der Verwendung der Funktion zum Exportieren von Metriken in Protokolle für 
 * Metriken für verwendete SNAT-Ports und zugeordnete SNAT-Ports sind zurzeit nicht für den Export als Protokolle verfügbar.
 
 ## <a name="next-steps"></a>Nächste Schritte
-* [Überprüfen der verfügbaren Metriken für Ihren Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-diagnostics)
-* [Erstellen und Testen von Abfragen anhand von Azure Monitor-Anweisungen](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview)
+* [Überprüfen der verfügbaren Metriken für Ihren Load Balancer](./load-balancer-standard-diagnostics.md)
+* [Erstellen und Testen von Abfragen anhand von Azure Monitor-Anweisungen](../azure-monitor/log-query/log-query-overview.md)

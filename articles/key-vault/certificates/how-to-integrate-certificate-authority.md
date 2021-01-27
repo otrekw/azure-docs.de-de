@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: how-to
 ms.date: 06/02/2020
 ms.author: sebansal
-ms.openlocfilehash: 4635bcc51d2ab626b16ddcf02e772bf3df3cad4d
-ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
+ms.openlocfilehash: c36353448c140450044f352062c3349939e3f7b5
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96763739"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98789009"
 ---
 # <a name="integrating-key-vault-with-digicert-certificate-authority"></a>Integrieren von Key Vault in die DigiCert-Zertifizierungsstelle
 
@@ -129,7 +129,7 @@ Wenn das ausgestellte Zertifikat im Azure-Portal den Status „Deaktiviert“ ha
  ![Zertifikatvorgang](../media/certificates/how-to-integrate-certificate-authority/certificate-operation-select.png)
 
 Fehlermeldung „Führen Sie eine Zusammenführung aus, um diese Zertifikatanforderung abzuschließen.“
-Für die von der Zertifizierungsstelle signierte Zertifikatsignieranforderung muss eine Zusammenführung ausgeführt werden, um diese Anforderung abzuschließen. [Hier](https://docs.microsoft.com/azure/key-vault/certificates/create-certificate-signing-request) erhalten Sie weitere Informationen.
+Für die von der Zertifizierungsstelle signierte Zertifikatsignieranforderung muss eine Zusammenführung ausgeführt werden, um diese Anforderung abzuschließen. [Hier](./create-certificate-signing-request.md) erhalten Sie weitere Informationen.
 
 Weitere Informationen finden Sie unter den [Zertifikatvorgängen in der Referenz zur REST-API für Azure Key Vault](/rest/api/keyvault). Informationen zum Einrichten von Berechtigungen finden Sie unter [Tresore – Erstellen oder Aktualisieren](/rest/api/keyvault/vaults/createorupdate) und [Vaults – Aktualisieren der Zugriffsrichtlinie](/rest/api/keyvault/vaults/updateaccesspolicy).
 

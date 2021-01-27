@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: how-to
 ms.date: 10/14/2020
 ms.author: alkohli
-ms.openlocfilehash: 994e5a11cd3b42de339ed11a9d2517c81856e672
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: c4e2894d193309c169adbea96491e0754d479a8a
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96580991"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98786807"
 ---
 # <a name="manage-access-power-and-connectivity-mode-for-your-azure-data-box-gateway"></a>Verwalten des Zugriffs, der Energieeinstellungen und des Konnektivitätsmodus für Azure Data Box Gateway
 
@@ -68,7 +68,7 @@ Wenn Sie den Aktivierungsschlüssel für das Gerät generieren oder Vorgänge au
 
 Sie sollten `User`-Zugriff auf den Active Directory-Mandanten haben, um die `Read all directory objects`-Berechtigung zu erhalten. Ein Gastbenutzer hat keine `Read all directory objects`-Berechtigungen. Wenn Sie ein Gast sind, können Sie Vorgänge wie Generieren eines Aktivierungsschlüssels, Erstellen einer Freigabe auf Ihrem Gerät und Erstellen eines Benutzers nicht ausführen.
 
-Weitere Informationen dazu, wie Sie Benutzern Zugriff auf die Microsoft Graph-API gewähren, finden Sie unter [Referenz zu Microsoft Graph-Berechtigungen](https://docs.microsoft.com/graph/permissions-reference).
+Weitere Informationen dazu, wie Sie Benutzern Zugriff auf die Microsoft Graph-API gewähren, finden Sie unter [Referenz zu Microsoft Graph-Berechtigungen](/graph/permissions-reference).
 
 ### <a name="register-resource-providers"></a>Registrieren von Ressourcenanbietern
 
@@ -95,7 +95,7 @@ Für ein Data Box Gateway-Gerät muss `Microsoft.DataBoxEdge` registriert sein
 Register-AzResourceProvider -ProviderNamespace Microsoft.DataBoxEdge
 ```
 
-Weitere Informationen zum Registrieren eines Ressourcenanbieters finden Sie unter [Beheben von Fehlern bei der Ressourcenanbieterregistrierung](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-register-provider-errors).
+Weitere Informationen zum Registrieren eines Ressourcenanbieters finden Sie unter [Beheben von Fehlern bei der Ressourcenanbieterregistrierung](../azure-resource-manager/templates/error-register-resource-provider.md).
 
 ## <a name="manage-connectivity-mode"></a>Verwalten des Konnektivitätsmodus
 

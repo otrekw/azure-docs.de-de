@@ -8,12 +8,12 @@ ms.author: jehollan
 ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 03/15/2018
-ms.openlocfilehash: 2fae7d2526e6c95efe83ca8fa742a6d92457b897
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 22e0c7304f7a53a86bc5c6739a2061352d738d29
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86520748"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98784811"
 ---
 # <a name="create-a-streaming-customer-insights-dashboard-with-azure-logic-apps-and-azure-functions"></a>Erstellen eines Streaming-Customer Insights-Dashboards mit Azure Logic Apps und Azure Functions
 
@@ -67,7 +67,7 @@ Sie können auch eine Azure-Funktion erstellen und hinzufügen, um eine benutzer
 
 ## <a name="process-data-with-azure-functions"></a>Verarbeiten von Daten mit Azure Functions
 
-Erstellen Sie vor dem Erstellen einer Funktion eine Funktions-App in Ihrem Azure-Abonnement. Darüber hinaus muss die Funktion, damit Ihre Logik-App eine Funktion direkt aufrufen kann, eine HTTP-Triggerbindung aufweisen (verwenden Sie beispielsweise die Vorlage **HttpTrigger**). Erfahren Sie, [wie Sie Ihre erste Funktions-App im Azure-Portal erstellen](../azure-functions/functions-create-first-azure-function.md).
+Erstellen Sie vor dem Erstellen einer Funktion eine Funktions-App in Ihrem Azure-Abonnement. Darüber hinaus muss die Funktion, damit Ihre Logik-App eine Funktion direkt aufrufen kann, eine HTTP-Triggerbindung aufweisen (verwenden Sie beispielsweise die Vorlage **HttpTrigger**). Erfahren Sie, [wie Sie Ihre erste Funktions-App im Azure-Portal erstellen](../azure-functions/functions-get-started.md).
 
 Für dieses Szenario verwenden Sie den Tweettext als Anforderungstext für Ihre Azure-Funktion. Definieren Sie im Funktionscode die Logik, die ermittelt, ob der Tweettext ein Schlüsselwort oder einen Schlüsselbegriff enthält. Verwenden Sie für das Szenario je nach Bedarf eine einfache oder komplexe Funktion.
 Geben Sie am Ende der Funktion eine Antwort mit einigen Daten an die Logik-App zurück, beispielsweise einen einfachen booleschen Wert wie `containsKeyword` oder ein komplexes Objekt.

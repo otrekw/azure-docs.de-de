@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 01/23/2019
 ms.author: pepogors
-ms.openlocfilehash: 90ffd1c01411982f56aed3332c499aa0c10b8a94
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b7af0a4c26a47644973e936eb37e221853d74c03
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86257601"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98784662"
 ---
 # <a name="azure-service-fabric-security"></a>Azure Service Fabric-Sicherheit 
 
@@ -56,7 +56,7 @@ Verwenden Sie zum Bereitstellen von Zertifikaten aus einem in derselben Region a
 
 ## <a name="apply-an-access-control-list-acl-to-your-certificate-for-your-service-fabric-cluster"></a>Anwenden einer Zugriffssteuerungsliste (Access Control List, ACL) auf Ihr Zertifikat für Ihren Service Fabric-Cluster
 
-Der Microsoft.Azure.ServiceFabric-Herausgeber für [VM-Skalierungsgruppenerweiterungen](/cli/azure/vmss/extension?view=azure-cli-latest) wird verwendet, um Ihre Knotensicherheit zu konfigurieren.
+Der Microsoft.Azure.ServiceFabric-Herausgeber für [VM-Skalierungsgruppenerweiterungen](/cli/azure/vmss/extension) wird verwendet, um Ihre Knotensicherheit zu konfigurieren.
 Verwenden Sie die folgenden Resource Manager-Vorlageneigenschaften, um eine ACL auf die Zertifikate für Ihre Service Fabric-Clusterprozesse anzuwenden:
 
 ```json

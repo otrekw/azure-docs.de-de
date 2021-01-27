@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 11/28/2017
-ms.openlocfilehash: 2e6da1783c3bec4958783494cb6928f5a6a69a58
-ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
+ms.openlocfilehash: 63d46298de2f480d97d25de2ec7e1ec78fbebd8d
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97822351"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98789462"
 ---
 # <a name="use-azure-toolkit-for-intellij-to-debug-apache-spark-applications-remotely-in-hdinsight-through-vpn"></a>Verwenden des Azure-Toolkits für IntelliJ zum Remotedebuggen von Apache Spark-Anwendungen über VPN
 
@@ -41,7 +41,7 @@ Dieser Artikel enthält eine schrittweise Anleitung, in der erläutert wird, wie
 
 Führen Sie die Anweisungen unter den folgenden Links aus, um ein virtuelles Azure-Netzwerk zu erstellen, und überprüfen Sie anschließend die Konnektivität zwischen dem Desktopcomputer und dem virtuellen Netzwerk:
 
-* [Erstellen eines VNet mit einer Site-to-Site-VPN-Verbindung über das Azure-Portal](../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)
+* [Erstellen eines VNet mit einer Site-to-Site-VPN-Verbindung über das Azure-Portal](../../vpn-gateway/tutorial-site-to-site-portal.md)
 * [Erstellen eines VNet mit einer Site-to-Site-VPN-Verbindung per PowerShell](../../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md)
 * [Konfigurieren einer Punkt-zu-Standort-VPN-Verbindung mit einem virtuellen Netzwerk mithilfe von PowerShell](../../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md)
 

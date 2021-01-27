@@ -3,12 +3,12 @@ title: Transaktionen und Sperrmodi in Reliable Collections
 description: Transaktionen und Sperren in Azure Service Fabric Reliable State Manager und Reliable Collections.
 ms.topic: conceptual
 ms.date: 5/1/2017
-ms.openlocfilehash: 57ca46047641b79d5e4c50ede4a27e16dcec5d89
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 5d2cbb517ea5ca45697cd9124b82e9ef13dd32db
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96576722"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98784341"
 ---
 # <a name="transactions-and-lock-modes-in-azure-service-fabric-reliable-collections"></a>Transaktionen und Sperrmodi in Azure Service Fabric Reliable Collections
 
@@ -18,7 +18,7 @@ Eine Transaktion ist eine Folge von Operationen, die als einzelne logische Arbei
 
 * **Unteilbarkeit**: Eine Transaktion muss eine unteilbare Arbeitseinheit sein. Dies bedeutet, dass entweder alle oder keine Datenänderungen ausgeführt werden.
 * **Konsistenz:** Am Ende einer Transaktion müssen sich alle Daten in einem konsistenten Status befinden. Alle internen Datenstrukturen müssen am Ende der Transaktion korrekt sein.
-* **Isolation:** : Änderungen, die von gleichzeitigen Transaktionen ausgeführt werden, müssen von allen Änderungen, die von anderen gleichzeitigen Transaktionen ausgeführt werden, isoliert sein. Die Isolationsstufe, die innerhalb einer [ITransaction](/dotnet/api/microsoft.servicefabric.data.itransaction?view=azure-dotnet) für einen Vorgang verwendet wird, ist durch den [IReliableState](/dotnet/api/microsoft.servicefabric.data.ireliablestate?view=azure-dotnet) festgelegt, der den betreffenden Vorgang ausführt.
+* **Isolation:** : Änderungen, die von gleichzeitigen Transaktionen ausgeführt werden, müssen von allen Änderungen, die von anderen gleichzeitigen Transaktionen ausgeführt werden, isoliert sein. Die Isolationsstufe, die innerhalb einer [ITransaction](/dotnet/api/microsoft.servicefabric.data.itransaction) für einen Vorgang verwendet wird, ist durch den [IReliableState](/dotnet/api/microsoft.servicefabric.data.ireliablestate) festgelegt, der den betreffenden Vorgang ausführt.
 * **Dauerhaftigkeit**: Nach dem Abschluss einer Transaktion sind deren Auswirkungen dauerhaft im System vorhanden. Die Änderungen bleiben auch bei einem Systemfehler persistent.
 
 ### <a name="isolation-levels"></a>Isolationsgrade
@@ -84,4 +84,4 @@ In diesem Fall tritt bei einem oder beiden Vorgängen ein Timeout auf. In diesem
 * [Reliable Services – Benachrichtigungen](service-fabric-reliable-services-notifications.md)
 * [Sichern und Wiederherstellen von Reliable Services (Notfallwiederherstellung)](service-fabric-reliable-services-backup-restore.md)
 * [Konfigurieren des Reliable State Managers](service-fabric-reliable-services-configuration.md)
-* [Entwicklerreferenz für zuverlässige Auflistungen](/dotnet/api/microsoft.servicefabric.data.collections?view=azure-dotnet#microsoft_servicefabric_data_collections)
+* [Entwicklerreferenz für zuverlässige Auflistungen](/dotnet/api/microsoft.servicefabric.data.collections#microsoft_servicefabric_data_collections)

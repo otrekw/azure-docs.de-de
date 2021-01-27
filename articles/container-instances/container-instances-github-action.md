@@ -4,16 +4,16 @@ description: Konfigurieren Sie eine GitHub Actions-Aktion, die die Schritte für
 ms.topic: article
 ms.date: 08/20/2020
 ms.custom: github-actions-azure, devx-track-azurecli
-ms.openlocfilehash: c6c030e05953dc98c82c573704018c3b482d2fea
-ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
+ms.openlocfilehash: 1409d8fc1430cd9bf67bd735d9826a74979d495b
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97814277"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98762965"
 ---
 # <a name="configure-a-github-action-to-create-a-container-instance"></a>Konfigurieren einer GitHub Actions-Aktion zum Erstellen einer Containerinstanz
 
-Bei [GitHub Actions](https://docs.github.com/en/free-pro-team@latest/actions) handelt es sich um eine Featuresammlung in GitHub, mit der sich Ihre Softwareentwicklungsworkflows am selben Ort automatisieren lassen, an dem Sie auch den Code speichern und gemeinsam an Pull Requests und Problemen arbeiten.
+Bei [GitHub Actions](https://docs.github.com/en/actions) handelt es sich um eine Featuresammlung in GitHub, mit der sich Ihre Softwareentwicklungsworkflows am selben Ort automatisieren lassen, an dem Sie auch den Code speichern und gemeinsam an Pull Requests und Problemen arbeiten.
 
 Mit der GitHub-Aktion zum [Bereitstellen in Azure Container Instances](https://github.com/azure/aci-deploy) können Sie die Bereitstellung eines einzelnen Containers in Azure Container Instances automatisieren. Die Aktion ermöglicht es Ihnen, Eigenschaften für eine Containerinstanz festzulegen, ähnlich wie der [Befehl „az container create“][az-container-create].
 
@@ -177,7 +177,7 @@ Nachdem Sie die Workflowdatei committet haben, wird der Workflow ausgelöst. Wen
 
 ![Aufrufen des Workflowfortschritts](./media/container-instances-github-action/github-action-progress.png)
 
-Weitere Informationen zum Anzeigen des Status und der Ergebnisse der einzelnen Workflowschritte finden Sie unter [Viewing workflow run history](https://docs.github.com/en/free-pro-team@latest/actions/managing-workflow-runs/viewing-workflow-run-history) (Anzeigen eines Workflowausführungsverlaufs). Wenn der Workflow nicht abgeschlossen wird, lesen Sie [Viewing logs to diagnose failures](https://docs.github.com/en/free-pro-team@latest/actions/managing-workflow-runs/using-workflow-run-logs#viewing-logs-to-diagnose-failures) (Anzeigen von Protokollen zur Diagnose von Fehlern).
+Weitere Informationen zum Anzeigen des Status und der Ergebnisse der einzelnen Workflowschritte finden Sie unter [Viewing workflow run history](https://docs.github.com/en/actions/managing-workflow-runs/viewing-workflow-run-history) (Anzeigen eines Workflowausführungsverlaufs). Wenn der Workflow nicht abgeschlossen wird, lesen Sie [Viewing logs to diagnose failures](https://docs.github.com/en/actions/managing-workflow-runs/using-workflow-run-logs#viewing-logs-to-diagnose-failures) (Anzeigen von Protokollen zur Diagnose von Fehlern).
 
 Nach erfolgreicher Beendigung des Workflows müssen Sie die Informationen zur Containerinstanz namens *aci-sampleapp* abrufen, indem Sie den Befehl [az container show][az-container-show] ausführen. Ersetzen Sie den Namen Ihrer Ressourcengruppe: 
 
@@ -237,7 +237,7 @@ az container app up \
 
 ### <a name="command-progress"></a>Befehlsausführung
 
-* Stellen Sie bei Aufforderung Ihre GitHub-Anmeldeinformationen oder ein [persönliches GitHub-Zugriffstoken](https://docs.github.com/en/free-pro-team@latest/github/authenticating-to-github/creating-a-personal-access-token) bereit, das über den Rollenumfang *Repository* und *Benutzer* verfügt, um sich bei Ihrem GitHub-Konto zu authentifizieren. Wenn Sie GitHub-Anmeldeinformationen angeben, erstellt der Befehl ein persönliches Zugriffstoken für Sie. Befolgen Sie weitere Aufforderungen, um den Workflow zu konfigurieren.
+* Stellen Sie bei Aufforderung Ihre GitHub-Anmeldeinformationen oder ein [persönliches GitHub-Zugriffstoken](https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token) bereit, das über den Rollenumfang *Repository* und *Benutzer* verfügt, um sich bei Ihrem GitHub-Konto zu authentifizieren. Wenn Sie GitHub-Anmeldeinformationen angeben, erstellt der Befehl ein persönliches Zugriffstoken für Sie. Befolgen Sie weitere Aufforderungen, um den Workflow zu konfigurieren.
 
 * Der Befehl erstellt Repositorygeheimnisse für den Workflow:
 
@@ -258,7 +258,7 @@ Workflow succeeded
 Your app is deployed at:  http://acr-build-helloworld-node.eastus.azurecontainer.io:8080/
 ```
 
-Wie Sie den Workflowstatus und die Ergebnissen der einzelnen Schritte in der GitHub-Benutzeroberfläche aufrufen, erfahren Sie unter [Viewing workflow run history](https://docs.github.com/en/free-pro-team@latest/actions/managing-workflow-runs/viewing-workflow-run-history) (Anzeigen eines Workflowausführungsverlaufs).
+Wie Sie den Workflowstatus und die Ergebnissen der einzelnen Schritte in der GitHub-Benutzeroberfläche aufrufen, erfahren Sie unter [Viewing workflow run history](https://docs.github.com/en/actions/managing-workflow-runs/viewing-workflow-run-history) (Anzeigen eines Workflowausführungsverlaufs).
 
 ### <a name="validate-workflow"></a>Überprüfen des Workflows
 

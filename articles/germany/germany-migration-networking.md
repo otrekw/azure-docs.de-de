@@ -7,12 +7,12 @@ author: gitralf
 ms.author: ralfwi
 ms.service: germany
 ms.custom: bfmigrate, devx-track-azurecli
-ms.openlocfilehash: 1a10311974404a072feb535e5a4f562be2925504
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 3d66a429ab46335ebaeddda182c6167124714367
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "96002775"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98787326"
 ---
 # <a name="migrate-network-resources-to-global-azure"></a>Migrieren von Netzwerkressourcen zu Azure weltweit
 
@@ -22,7 +22,7 @@ Die meisten Netzwerkdienste unterstützen keine Migration von Azure Deutschland 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Die Schritte zum Einrichten eines Site-to-Site-VPNs zwischen Clouds sind mit den Schritten vergleichbar, die Sie zum Bereitstellen eines Site-to-Site-VPN zwischen Ihrem lokalen Netzwerk und Azure ausführen. Definieren Sie ein Gateway in beiden Clouds, und geben Sie dann an, wie die VPNs miteinander kommunizieren sollen. Im Artikel [Erstellen einer Site-to-Site-Verbindung im Azure-Portal](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md) werden die Schritte beschrieben, die Sie zum Bereitstellen eines Site-to-Site-VPNs ausführen müssen. Zusammenfassung der Schritte:
+Die Schritte zum Einrichten eines Site-to-Site-VPNs zwischen Clouds sind mit den Schritten vergleichbar, die Sie zum Bereitstellen eines Site-to-Site-VPN zwischen Ihrem lokalen Netzwerk und Azure ausführen. Definieren Sie ein Gateway in beiden Clouds, und geben Sie dann an, wie die VPNs miteinander kommunizieren sollen. Im Artikel [Erstellen einer Site-to-Site-Verbindung im Azure-Portal](../vpn-gateway/tutorial-site-to-site-portal.md) werden die Schritte beschrieben, die Sie zum Bereitstellen eines Site-to-Site-VPNs ausführen müssen. Zusammenfassung der Schritte:
 
 1. Definieren Sie ein virtuelles Netzwerk.
 1. Definieren Sie den Adressraum.
@@ -93,7 +93,7 @@ Stellen Sie sicher, dass Sie Ihre lokale Konfiguration aktualisieren. Löschen S
 Weitere Informationen finden Sie unter:
 
 - Frischen Sie Ihre Kenntnisse auf, indem Sie die [Tutorials zu VPN Gateway](../vpn-gateway/index.yml) durcharbeiten.
-- Im Artikel [Herstellen einer Site-to-Site-Verbindung](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md) finden Sie weitere Informationen zu diesem Thema.
+- Im Artikel [Herstellen einer Site-to-Site-Verbindung](../vpn-gateway/tutorial-site-to-site-portal.md) finden Sie weitere Informationen zu diesem Thema.
 - Lesen Sie auch den Artikel über die PowerShell-Cmdlets [Get-AzVirtualNetworkGateway](/powershell/module/az.network/get-azvirtualnetworkgateway).
 - Lesen Sie den Blogbeitrag [Herstellen einer Site-to-Site-Verbindung](/archive/blogs/ralfwi/connecting-clouds).
  

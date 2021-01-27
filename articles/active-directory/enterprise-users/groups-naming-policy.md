@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a4c1c30e4651136ada7264cad8ff4d3921c3aeeb
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 894a90c50f968c892a76160a7375f11fe09390d6
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96547915"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98784998"
 ---
 # <a name="enforce-a-naming-policy-on-microsoft-365-groups-in-azure-active-directory"></a>Durchsetzen einer Benennungsrichtlinie für Microsoft 365-Gruppen in Azure Active Directory
 
@@ -72,6 +72,7 @@ Regeln für die Liste blockierter Wörter:
 Zum Konfigurieren der Benennungsrichtlinie ist eine der folgenden Rollen erforderlich:
 - Globaler Administrator
 - Gruppenadministrator
+- Verzeichnisautor
 
 
 Ausgewählte Administratoren können von diesen Richtlinien für alle Gruppenworkloads und Endpunkte ausgenommen werden, sodass sie Gruppen erstellen können, die blockierte Wörter enthalten oder ihren eigenen Namenskonventionen entsprechen. Die folgende Liste enthält die Administratorrollen, die von der Benennungsrichtlinie für Gruppen ausgenommen sind.

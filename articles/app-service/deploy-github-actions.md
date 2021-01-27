@@ -7,16 +7,16 @@ ms.date: 09/14/2020
 ms.author: jafreebe
 ms.reviewer: ushan
 ms.custom: devx-track-python, github-actions-azure, devx-track-azurecli
-ms.openlocfilehash: 0c10cc683d8c8c2496ca8fdbd00f0e5065e2db35
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: 59eb56dd188edf258c3631cde957c0864454ad76
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97604922"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98762654"
 ---
 # <a name="deploy-to-app-service-using-github-actions"></a>Bereitstellen in App Service mithilfe von GitHub Actions
 
-Verwenden Sie [GitHub Actions](https://docs.github.com/en/free-pro-team@latest/actions/learn-github-actions) zum Automatisieren Ihres Workflows und zum Bereitstellen im [Azure App Service](overview.md) aus GitHub. 
+Verwenden Sie [GitHub Actions](https://docs.github.com/en/actions/learn-github-actions) zum Automatisieren Ihres Workflows und zum Bereitstellen im [Azure App Service](overview.md) aus GitHub. 
 
 ## <a name="prerequisites"></a>Voraussetzungen 
 
@@ -63,7 +63,7 @@ Sie können einen Workflow auch ohne das Deployment Center bereitstellen. Dazu m
 
 Die empfohlene Vorgehensweise für die Authentifizierung mit Azure App Services für GitHub Actions verwendet ein Veröffentlichungsprofil. Sie können sich auch mit einem Dienstprinzipal authentifizieren, für diesen Vorgang sind jedoch weitere Schritte erforderlich. 
 
-Speichern Sie die Anmeldeinformationen des Veröffentlichungsprofils oder den Dienstprinzipal als [GitHub-Geheimnis](https://docs.github.com/en/free-pro-team@latest/actions/reference/encrypted-secrets), um sich bei Azure zu authentifizieren. In Ihrem Workflow greifen Sie auf das Geheimnis zu. 
+Speichern Sie die Anmeldeinformationen des Veröffentlichungsprofils oder den Dienstprinzipal als [GitHub-Geheimnis](https://docs.github.com/en/actions/reference/encrypted-secrets), um sich bei Azure zu authentifizieren. In Ihrem Workflow greifen Sie auf das Geheimnis zu. 
 
 # <a name="publish-profile"></a>[Veröffentlichungsprofil](#tab/applevel)
 
@@ -746,7 +746,7 @@ Die verfügbaren Aktionen sind auf verschiedene GitHub-Repositorys verteilt, jew
 
 - [Docker-Anmeldung/-Abmeldung](https://github.com/Azure/docker-login)
 
-- [Ereignisse zum Auslösen von Workflows](https://docs.github.com/en/free-pro-team@latest/actions/reference/events-that-trigger-workflows)
+- [Ereignisse zum Auslösen von Workflows](https://docs.github.com/en/actions/reference/events-that-trigger-workflows)
 
 - [Kubernetes-Bereitstellung](https://github.com/Azure/k8s-deploy)
 

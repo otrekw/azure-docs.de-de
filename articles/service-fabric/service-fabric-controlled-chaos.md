@@ -6,17 +6,17 @@ ms.topic: conceptual
 ms.date: 02/05/2018
 ms.author: motanv
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9e9127d9776169131c2ed7f4778052646e84f8b6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 34ec43593d50e359f09059cd3d51522df62cf567
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89013111"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98789650"
 ---
 # <a name="induce-controlled-chaos-in-service-fabric-clusters"></a>Auslösen von kontrolliertem Chaos in Service Fabric-Clustern
 Große verteilte Systeme wie Cloudinfrastrukturen sind grundsätzlich unzuverlässig. Azure Service Fabric ermöglicht Entwicklern, aufbauend auf einer unzuverlässigen Infrastruktur zuverlässige verteilte Dienste zu erstellen. Um robuste, verteilte Dienste in einer unzuverlässigen Infrastruktur zu schreiben, müssen Entwickler in der Lage sein, die Stabilität ihrer Dienste zu testen, während die zugrunde liegende unzuverlässige Infrastruktur komplizierte Statusübergänge aufgrund von Fehlern durchläuft.
 
-Der [Fault Injection and Cluster Analysis Service](./service-fabric-testability-overview.md) (auch als Fault Analysis Service (FAS) bezeichnet) gibt Entwicklern die Möglichkeit, Fehler einzuschleusen, um ihre Dienste zu testen. Solche zielgerichteten simulierten Fehler, wie z.B. das [Neustarten einer Partition](/powershell/module/servicefabric/start-servicefabricpartitionrestart?view=azureservicefabricps), können dazu beitragen, die am häufigsten auftretenden Zustandsübergänge zu üben. Zielgerichtete simulierte Fehler sind jedoch definitionsgemäß nicht objektiv und können damit keine Fehler aufzeigen, die nur bei schwierig vorherzusagenden, langen und komplizierten Abfolgen von Zustandsübergängen auftreten. Für ausgewogene Tests können Sie Chaos verwenden.
+Der [Fault Injection and Cluster Analysis Service](./service-fabric-testability-overview.md) (auch als Fault Analysis Service (FAS) bezeichnet) gibt Entwicklern die Möglichkeit, Fehler einzuschleusen, um ihre Dienste zu testen. Solche zielgerichteten simulierten Fehler, wie z.B. das [Neustarten einer Partition](/powershell/module/servicefabric/start-servicefabricpartitionrestart), können dazu beitragen, die am häufigsten auftretenden Zustandsübergänge zu üben. Zielgerichtete simulierte Fehler sind jedoch definitionsgemäß nicht objektiv und können damit keine Fehler aufzeigen, die nur bei schwierig vorherzusagenden, langen und komplizierten Abfolgen von Zustandsübergängen auftreten. Für ausgewogene Tests können Sie Chaos verwenden.
 
 Mithilfe von Chaos werden im Cluster über längere Zeiträume hinweg periodische verschachtelte Fehler simuliert (sowohl ordnungsgemäß als auch nicht ordnungsgemäß). Ein ordnungsgemäßer Fehler besteht aus einer Reihe von Aufrufen der Service Fabric-API. Beispielsweise ist der Fehler „Replikat neu starten“ ein ordnungsgemäßer Fehler, da hier auf das Schließen das Öffnen eines Replikats folgt. „Replikat entfernen“, „primäres Replikat verschieben“ und „sekundäres Replikat verschieben“ sind andere ordnungsgemäße Fehler, die von Chaos angewendet werden. Nicht ordnungsgemäße Fehler sind Prozessabbrüche wie „Knoten neu starten“ und „Codepaket neu starten“. 
 

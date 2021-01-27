@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 07/08/2020
+ms.date: 01/25/2021
 ms.author: marsma
 ms.reviewer: saeeda
-ms.openlocfilehash: 4a902ed53e92cd073d81626e80bdb3c8629ad072
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 78932e5852453fe996e26a278f8a1859a8ecf546
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89437869"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98755014"
 ---
 # <a name="authentication-flows"></a>Authentifizierungsflows
 
@@ -223,7 +223,7 @@ Dies bedeutet, dass eine der folgenden Aussagen zutrifft:
 - Sie haben eine Möglichkeit für Benutzer eingeräumt, der Anwendung zuzustimmen (siehe [Anfordern der Zustimmung einzelner Benutzer](v2-permissions-and-consent.md#requesting-individual-user-consent)).
 - Sie haben eine Möglichkeit für den Mandantenadministrator eingeräumt, der Anwendung zuzustimmen (siehe [Zustimmung des Administrators](v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant)).
 
-Der IWA-Flow ist für .NET-Desktop-, .NET Core- und UWP-Apps (universelle Windows-Plattform) aktiviert. In .NET Core müssen Sie den Benutzernamen für IWA angeben, da .NET Core keine Benutzernamen vom Betriebssystem abrufen kann.
+Der IWA-Flow ist für .NET-Desktop-, .NET Core- und UWP-Apps (universelle Windows-Plattform) aktiviert.
 
 Weitere Informationen zur Zustimmung finden Sie unter [Berechtigungen und Zustimmung für v2.0](v2-permissions-and-consent.md).
 

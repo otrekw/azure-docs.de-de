@@ -13,17 +13,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/30/2020
 ms.author: irenehua
-ms.openlocfilehash: f8f664375e53a1cef28b0c7b95207770434f67fa
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: d5614490bfd2cfb67b6b7afd7b7b8643bbf754bd
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97893238"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98790088"
 ---
 # <a name="how-to-updatedelete-azure-load-balancer-used-by-virtual-machine-scale-sets"></a>Aktualisieren oder Löschen von Azure Load Balancer, der von einer VM-Skalierungsgruppe verwendet wird
 
 ## <a name="how-to-set-up-azure-load-balancer-for-scaling-out-virtual-machine-scale-sets"></a>Einrichten von Azure Load Balancer zum Aufskalieren von VM-Skalierungsgruppen
-  * Stellen Sie sicher, dass für den Load Balancer ein [NAT-Pool für eingehenden Datenverkehr](https://docs.microsoft.com/cli/azure/network/lb/inbound-nat-pool?view=azure-cli-latest) eingerichtet wurde und dass die VM-Skalierungsgruppe im Back-End-Pool des Load Balancer platziert ist. Azure Load Balancer erstellt automatisch neue NAT-Regeln für eingehenden Datenverkehr im NAT-Pool für eingehenden Datenverkehr, wenn der VM-Skalierungsgruppe neue VM-Instanzen hinzugefügt werden. 
+  * Stellen Sie sicher, dass für den Load Balancer ein [NAT-Pool für eingehenden Datenverkehr](/cli/azure/network/lb/inbound-nat-pool?view=azure-cli-latest) eingerichtet wurde und dass die VM-Skalierungsgruppe im Back-End-Pool des Load Balancer platziert ist. Azure Load Balancer erstellt automatisch neue NAT-Regeln für eingehenden Datenverkehr im NAT-Pool für eingehenden Datenverkehr, wenn der VM-Skalierungsgruppe neue VM-Instanzen hinzugefügt werden. 
   * So überprüfen Sie, ob ein eingehender NAT-Pool ordnungsgemäß eingerichtet wurde 
   1. Melden Sie sich unter https://portal.azure.com beim Azure-Portal an.
   
@@ -35,7 +35,7 @@ Wenn im rechten Bereich eine Liste der Regeln angezeigt wird, die für jede einz
 ## <a name="how-to-add-inbound-nat-rules"></a>Hinzufügen von NAT-Regeln für eingehenden Datenverkehr 
   * Es kann keine einzelne NAT-Regel für eingehenden Datenverkehr hinzugefügt werden. Sie können jedoch einen Satz von NAT-Regeln für eingehenden Datenverkehr mit definiertem Front-End-Portbereich und Back-End-Port für alle Instanzen in der VM-Skalierungsgruppe hinzufügen.
   * Zum Hinzufügen eines ganzen Satzes von NAT-Regeln für eingehenden Datenverkehr für die VM-Skalierungsgruppen müssen Sie zunächst einen NAT-Pool für eingehenden Datenverkehr im Load Balancer erstellen und dann aus dem Netzwerkprofil der VM-Skalierungsgruppe auf den NAT-Pool für eingehenden Datenverkehr verweisen. Ein vollständiges Beispiel unter Verwendung der CLI ist nachfolgend dargestellt.
-  * Der neue NAT-Pool für eingehenden Datenverkehr darf keinen überlappenden Front-End-Portbereich mit vorhandenen NAT-Pools für eingehenden Datenverkehr aufweisen. Wenn Sie vorhandene eingerichtete NAT-Pools für eingehenden Datenverkehr anzeigen möchten, können Sie diesen [CLI-Befehl](https://docs.microsoft.com/cli/azure/network/lb/inbound-nat-pool?view=azure-cli-latest#az_network_lb_inbound_nat_pool_list) verwenden.
+  * Der neue NAT-Pool für eingehenden Datenverkehr darf keinen überlappenden Front-End-Portbereich mit vorhandenen NAT-Pools für eingehenden Datenverkehr aufweisen. Wenn Sie vorhandene eingerichtete NAT-Pools für eingehenden Datenverkehr anzeigen möchten, können Sie diesen [CLI-Befehl](/cli/azure/network/lb/inbound-nat-pool?view=azure-cli-latest#az_network_lb_inbound_nat_pool_list) verwenden.
 ```azurecli-interactive
 az network lb inbound-nat-pool create 
         -g MyResourceGroup 
@@ -92,7 +92,7 @@ az network lb inbound-nat-pool update
    
 1. Geben Sie auf der Seite **Front-End-IP-Adresse hinzufügen** die Werte ein, und wählen Sie **OK** aus.
 
-1. Führen Sie [Schritt 5](https://docs.microsoft.com/azure/load-balancer/load-balancer-multiple-ip#step-5-configure-the-health-probe) und [Schritt 6](https://docs.microsoft.com/azure/load-balancer/load-balancer-multiple-ip#step-5-configure-the-health-probe) in diesem Tutorial aus, wenn neue Load Balancer-Regeln erforderlich sind.
+1. Führen Sie [Schritt 5](./load-balancer-multiple-ip.md#step-5-configure-the-health-probe) und [Schritt 6](./load-balancer-multiple-ip.md#step-5-configure-the-health-probe) in diesem Tutorial aus, wenn neue Load Balancer-Regeln erforderlich sind.
 
 1. Erstellen Sie bei Bedarf einen neuen Satz von NAT-Regeln für eingehenden Datenverkehr unter Verwendung der neu erstellten Front-End-IP-Konfigurationen. Ein Beispiel finden Sie hier im [vorherigen Abschnitt].
 

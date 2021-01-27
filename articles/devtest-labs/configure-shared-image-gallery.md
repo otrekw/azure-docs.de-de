@@ -3,27 +3,27 @@ title: Konfigurieren eines Katalogs mit freigegebenen Images in Azure DevTest L
 description: Hier erfahren Sie, wie Sie einen freigegebenen Imagekatalog in Azure DevTest Labs konfigurieren, mit dem Benutzer beim Erstellen von Labressourcen von einem freigegebenen Speicherort aus auf Images zugreifen können.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 96563b1dcfac171af38b229bb81d12b3afda2e2f
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: febcff640efc29eb4916250366641635f9d8721e
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92327976"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98788420"
 ---
 # <a name="configure-a-shared-image-gallery-in-azure-devtest-labs"></a>Konfigurieren eines gemeinsamen Image-Katalogs in Azure DevTest Labs
-DevTest Labs unterstützt jetzt die Funktion [Katalog mit freigegebenen Images](../virtual-machines/windows/shared-image-galleries.md). Diese Funktion ermöglicht es Labbenutzern, beim Erstellen von Labressourcen auf Images an einem freigegebenen Speicherort zuzugreifen. Außerdem hilft sie Ihnen, Ihre benutzerdefinierten verwalteten VM-Images zu strukturieren und zu organisieren. Die Funktion „Katalog mit freigegebenen Images“ unterstützt Folgendes:
+DevTest Labs unterstützt jetzt die Funktion [Katalog mit freigegebenen Images](../virtual-machines/shared-image-galleries.md). Diese Funktion ermöglicht es Labbenutzern, beim Erstellen von Labressourcen auf Images an einem freigegebenen Speicherort zuzugreifen. Außerdem hilft sie Ihnen, Ihre benutzerdefinierten verwalteten VM-Images zu strukturieren und zu organisieren. Die Funktion „Katalog mit freigegebenen Images“ unterstützt Folgendes:
 
 - Verwaltete globale Replikation von Images.
 - Versionsverwaltung und Gruppierung von Images zur einfacheren Verwaltung.
 - Hochverfügbarkeit für Images mithilfe von ZRS-Konten (Zone Redundant Storage, zonenredundanter Speicher) in Regionen, die Verfügbarkeitszonen unterstützen. ZRS bietet bessere Ausfallsicherheit bei zonenbezogenen Fehlern.
 - Abonnement- und sogar mandantenübergreifende Freigabe von Images mithilfe der rollenbasierten Zugriffssteuerung in Azure (Role-Based Access Control, Azure RBAC).
 
-Weitere Informationen finden Sie in der [Dokumentation zum Katalog mit freigegebenen Images](../virtual-machines/windows/shared-image-galleries.md). 
+Weitere Informationen finden Sie in der [Dokumentation zum Katalog mit freigegebenen Images](../virtual-machines/shared-image-galleries.md). 
  
 Wenn Sie eine große Anzahl verwalteter Images haben, die Sie pflegen müssen und im gesamten Unternehmen zur Verfügung stellen möchten, können Sie einen Katalog mit geteilten Images als Repository verwenden, mit dem sie Ihre Images ganz einfach aktualisieren und teilen können. Als Labbesitzer können Sie einen vorhandenen Katalog mit freigegebenen Images an Ihr Lab anfügen. Nachdem der Katalog angefügt wurde, können Labbenutzer mit diesen aktuellen Images VMs erstellen. Ein Hauptvorteil dieser Funktion ist, dass Azure DevTest Labs Images jetzt lab-, abonnement- und regionsübergreifend freigeben kann. 
 
 > [!NOTE]
-> Weitere Informationen zu den Kosten für den Shared Image Gallery-Dienst finden Sie unter [Abrechnung für Shared Image Gallery](../virtual-machines/windows/shared-image-galleries.md#billing).
+> Weitere Informationen zu den Kosten für den Shared Image Gallery-Dienst finden Sie unter [Abrechnung für Shared Image Gallery](../virtual-machines/shared-image-galleries.md#billing).
 
 ## <a name="considerations"></a>Überlegungen
 - Sie können jeweils nur einen Katalog mit freigegebenen Images an ein Lab anfügen. Wenn Sie einen anderen Katalog anfügen möchten, müssen Sie zuvor den vorhandenen Katalog trennen. 

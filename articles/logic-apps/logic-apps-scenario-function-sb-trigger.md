@@ -7,12 +7,12 @@ ms.reviewer: jehollan, klam, logicappspm
 ms.topic: article
 ms.date: 11/08/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 25f761d85ebfd0ac16f182941c5b5c29636066bf
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: a7df9ba1318f40de8af392cfaedbe51d7a5df755
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96000333"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98784932"
 ---
 # <a name="call-or-trigger-logic-apps-by-using-azure-functions-and-azure-service-bus"></a>Aufrufen oder Auslösen von Logik-Apps mithilfe von Azure Functions und Azure Service Bus
 
@@ -24,7 +24,7 @@ Sie können [Azure Functions](../azure-functions/functions-overview.md) verwende
 
 * Ein Azure Service Bus-Namespace. Wenn Sie keinen Namespace besitzen, [erstellen Sie zunächst Ihren Namespace](../service-bus-messaging/service-bus-create-namespace-portal.md).
 
-* Eine Funktions-App, bei der es sich um einen Container für Ihre Funktionen handelt. Wenn Sie keine Funktions-App besitzen, [erstellen Sie zuerst Ihre Funktions-App](../azure-functions/functions-create-first-azure-function.md), und stellen Sie sicher, dass Sie .NET als Laufzeitstapel auswählen.
+* Eine Funktions-App, bei der es sich um einen Container für Ihre Funktionen handelt. Wenn Sie keine Funktions-App besitzen, [erstellen Sie zuerst Ihre Funktions-App](../azure-functions/functions-get-started.md), und stellen Sie sicher, dass Sie .NET als Laufzeitstapel auswählen.
 
 * Grundlegende Kenntnisse über die [Erstellung von Logik-Apps](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 

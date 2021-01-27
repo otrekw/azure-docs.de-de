@@ -2,23 +2,23 @@
 title: Zuweisen einer Rolle zu einer Cloudgruppe in Azure Active Directory | Microsoft-Dokumentation
 description: Weisen Sie einer Gruppe mit Rollenzuweisung im Azure-Portal, mit PowerShell oder über die Graph-API eine Azure AD-Rolle zu.
 services: active-directory
-author: curtand
+author: rolyon
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: roles
 ms.topic: article
 ms.date: 11/05/2020
-ms.author: curtand
+ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fb81b5dc98bf75a17e55abafdebfbeca68774a99
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: 816009abb688525cd7663311c79300a6d12cf146
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93379144"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98742946"
 ---
 # <a name="assign-a-role-to-a-cloud-group-in-azure-active-directory"></a>Zuweisen einer Rolle zu einer Cloudgruppe in Azure Active Directory
 
@@ -30,7 +30,7 @@ Das Zuweisen einer Gruppe zu einer Azure AD-Rolle ähnelt der Zuweisung von Benu
 
 1. Melden Sie sich bei [Azure AD Admin Center](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) mit Berechtigungen vom Typ „Administrator für privilegierte Rollen“ oder „Globaler Administrator“ in der Azure AD-Organisation an.
 
-1. Klicken Sie auf **Azure Active Directory** > **Rollen und Administratoren** , und wählen Sie die Rolle aus, die Sie zuweisen möchten.
+1. Klicken Sie auf **Azure Active Directory** > **Rollen und Administratoren**, und wählen Sie die Rolle aus, die Sie zuweisen möchten.
 
 1. Wählen Sie auf der Seite **_Rollenname_*die Option* Zuweisung hinzufügen** aus.
 

@@ -1,6 +1,6 @@
 ---
 title: Verbinden von Syslog-Daten mit Azure Sentinel | Microsoft-Dokumentation
-description: Verbinden Sie einen Computer oder eine Appliance mit Syslog-Unterstützung mit Azure Sentinel, indem Sie einen Agent auf einem Linux-Computer zwischen Appliance und Sentinel verwenden. 
+description: Verbinden Sie einen Computer oder eine Appliance mit Syslog-Unterstützung mit Azure Sentinel, indem Sie einen Agent auf einem Linux-Computer zwischen Appliance und Sentinel verwenden.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/17/2020
 ms.author: yelevin
-ms.openlocfilehash: 7670d00a2dd25961a51d18c50c102e0f92b30975
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8c3cf4c3c135b3f275542af4f531d1071e180ebe
+ms.sourcegitcommit: 3c8964a946e3b2343eaf8aba54dee41b89acc123
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88566147"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98747189"
 ---
 # <a name="collect-data-from-linux-based-sources-using-syslog"></a>Sammeln von Daten aus Linux-basierten Quellen mithilfe von Syslog
 
@@ -67,7 +67,7 @@ Weitere Informationen finden Sie unter [Syslog-Datenquellen in Azure Monitor](..
 
 ### <a name="configure-the-log-analytics-agent"></a>Konfigurieren des Log Analytics-Agent
 
-1. Klicken Sie unten auf dem Blatt des Syslog-Connectors auf den Link**Konfiguration der erweiterten Einstellungen für den Arbeitsbereich öffnen >** .
+1. Klicken Sie unten auf dem Blatt des Syslog-Connectors auf den Link **Konfiguration der erweiterten Einstellungen für den Arbeitsbereich öffnen >** .
 
 1. Wählen Sie auf dem Blatt **Erweiterte Einstellungen** die Option **Daten** > **Syslog** aus. Fügen Sie dann die Einrichtungen hinzu, die der Connector erfassen soll.
     
@@ -120,8 +120,12 @@ Diese Erkennung erfordert eine bestimmte Konfiguration des Syslog-Datenconnector
 
 2. Lassen Sie ausreichend Zeit zum Sammeln der Syslog-Informationen. Navigieren Sie dann zu **Azure Sentinel – Protokolle**, kopieren Sie die folgende Abfrage, und fügen Sie sie ein:
     
-    ```console
-    Syslog |  where Facility in ("authpriv","auth")| extend c = extract( "Accepted\\s(publickey|password|keyboard-interactive/pam)\\sfor ([^\\s]+)",1,SyslogMessage)| where isnotempty(c) | count 
+    ```kusto
+    Syslog
+    | where Facility in ("authpriv","auth")
+    | extend c = extract( "Accepted\\s(publickey|password|keyboard-interactive/pam)\\sfor ([^\\s]+)",1,SyslogMessage)
+    | where isnotempty(c)
+    | count 
     ```
     
     Ändern Sie bei Bedarf den **Zeitbereich**, und wählen Sie **Ausführen** aus.

@@ -4,12 +4,12 @@ description: Bereitstellen und Entfernen von Anwendungen in Service Fabric mithi
 ms.topic: conceptual
 ms.date: 01/19/2018
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 565e6b8f23f159a5c231295694830917217a3d19
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 343a37c983b1d64a4b1986913d9d6fd648a113fe
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89009299"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98785548"
 ---
 # <a name="deploy-and-remove-applications-using-fabricclient"></a>Bereitstellen und Entfernen von Anwendungen mithilfe von FabricClient
 > [!div class="op_single_selector"]
@@ -47,7 +47,7 @@ FabricClient fabricClient = new FabricClient();
 ## <a name="upload-the-application-package"></a>Hochladen des Anwendungspakets
 Angenommen, Sie erstellen und verpacken eine Anwendung namens *MyApplication* in Visual Studio. Der Name des Anwendungstyps ist in der Datei „ApplicationManifest.xml“ standardmäßig als „MyApplicationType“ aufgeführt.  Das Anwendungspaket mit den erforderlichen Anwendungs- und Dienstmanifesten sowie Code-/Konfigurations-/Datenpaketen befindet sich unter *C:\Benutzer\&lt;Benutzername&gt;\Eigene Dokumente\Visual Studio 2019\Projekte\MeineAnwendung\MeineAnwendung\pkg\Debuggen*.
 
-Beim Hochladen des Anwendungspakets wird das Paket an einem Speicherort gespeichert, an dem die internen Service Fabric-Komponenten auf das Paket zugreifen können. Service Fabric überprüft das Anwendungspaket während der Registrierung des Pakets. Wenn Sie das Anwendungspaket aber lokal überprüfen möchten (also vor dem Hochladen), müssen Sie das Cmdlet [Test-ServiceFabricApplicationPackage](/powershell/module/servicefabric/test-servicefabricapplicationpackage?view=azureservicefabricps) verwenden.
+Beim Hochladen des Anwendungspakets wird das Paket an einem Speicherort gespeichert, an dem die internen Service Fabric-Komponenten auf das Paket zugreifen können. Service Fabric überprüft das Anwendungspaket während der Registrierung des Pakets. Wenn Sie das Anwendungspaket aber lokal überprüfen möchten (also vor dem Hochladen), müssen Sie das Cmdlet [Test-ServiceFabricApplicationPackage](/powershell/module/servicefabric/test-servicefabricapplicationpackage) verwenden.
 
 Mit der [CopyApplicationPackage](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.copyapplicationpackage)-API wird das Anwendungspaket in den Clusterimagespeicher hochgeladen. 
 
@@ -92,7 +92,7 @@ Wird eine bestimmte Version eines Anwendungstyps nicht mehr benötigt, sollten S
 
 ## <a name="troubleshooting"></a>Problembehandlung
 ### <a name="copy-servicefabricapplicationpackage-asks-for-an-imagestoreconnectionstring"></a>Copy-ServiceFabricApplicationPackage fordert einen ImageStoreConnectionString an
-Die Service Fabric-SDK-Umgebung sollte bereits mit den richtigen Standardeinstellungen eingerichtet sein. Wichtig ist, dass der ImageStoreConnectionString für alle Befehle mit dem vom Service Fabric-Cluster verwendeten Wert übereinstimmt. Sie finden „ImageStoreConnectionString“ im Clustermanifest, das über die Befehle [Get-ServiceFabricClusterManifest](/powershell/module/servicefabric/get-servicefabricclustermanifest?view=azureservicefabricps) und „Get-ImageStoreConnectionStringFromClusterManifest“ abgerufen wird:
+Die Service Fabric-SDK-Umgebung sollte bereits mit den richtigen Standardeinstellungen eingerichtet sein. Wichtig ist, dass der ImageStoreConnectionString für alle Befehle mit dem vom Service Fabric-Cluster verwendeten Wert übereinstimmt. Sie finden „ImageStoreConnectionString“ im Clustermanifest, das über die Befehle [Get-ServiceFabricClusterManifest](/powershell/module/servicefabric/get-servicefabricclustermanifest) und „Get-ImageStoreConnectionStringFromClusterManifest“ abgerufen wird:
 
 ```powershell
 PS C:\> Get-ImageStoreConnectionStringFromClusterManifest(Get-ServiceFabricClusterManifest)

@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 6/29/2017
 ms.author: mcoskun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 4a336daf9bd7400d049233a22a04d64d561b42c9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f5b48cc6cca2e143c48ed7bdfc99de936be2a227
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89021951"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98784578"
 ---
 # <a name="reliable-services-notifications"></a>Reliable Services – Benachrichtigungen
 Mit Benachrichtigungen können Clients Änderungen an einem Objekt verfolgen, an dem sie interessiert sind. Zwei Typen von Objekten unterstützen Benachrichtigungen: *Reliable State Manager* und *Reliable Dictionary*.
@@ -40,7 +40,7 @@ Die Sammlung des Reliable State Manager wird in drei Fällen neu erstellt:
 
 * Wiederherstellung: Wenn ein Replikat gestartet wird, stellt es den vorherigen Zustand vom Datenträger wieder her. Nach Abschluss der Wiederherstellung wird **NotifyStateManagerChangedEventArgs** zum Auslösen eines Ereignisses verwendet, das den Satz mit den wiederhergestellten Reliable States enthält.
 * Vollständige Kopie: Bevor ein Replikat dem Konfigurationssatz hinzugefügt werden kann, muss es erstellt werden. In einigen Fällen muss eine vollständige Kopie des Reliable State Manager-Zustands vom primären Replikat auf das inaktive sekundäre Replikat angewendet werden. Reliable State Manager auf dem sekundären Replikat nutzt **NotifyStateManagerChangedEventArgs** zum Auslösen eines Ereignisses, das den Satz mit den Reliable States enthält, die über das primäre Replikat beschafft wurden.
-* Wiederherstellung: Bei einer Notfallwiederherstellung kann der Replikatzustand mit **RestoreAsync**aus einer Sicherung wiederhergestellt werden. In solchen Fällen nutzt Reliable State Manager auf dem primären Replikat **NotifyStateManagerChangedEventArgs** zum Auslösen eines Ereignisses, das den Satz mit den Reliable States enthält, die aus der Sicherung wiederhergestellt wurden.
+* Wiederherstellung: Bei einer Notfallwiederherstellung kann der Replikatzustand mit **RestoreAsync** aus einer Sicherung wiederhergestellt werden. In solchen Fällen nutzt Reliable State Manager auf dem primären Replikat **NotifyStateManagerChangedEventArgs** zum Auslösen eines Ereignisses, das den Satz mit den Reliable States enthält, die aus der Sicherung wiederhergestellt wurden.
 
 Um sich für Transaktionsbenachrichtigungen und/oder Zustands-Manager-Benachrichtigungen zu registrieren, müssen Sie sich bei den Ereignissen **TransactionChanged** oder **StateManagerChanged** im Reliable State Manager registrieren. Üblicherweise wird die Registrierung bei diesen Ereignishandlern im Konstruktor Ihres zustandsbehafteten Diensts durchgeführt. Wenn Sie sich auf dem Konstruktor registrieren, entgeht Ihnen keine Benachrichtigung, die durch eine Änderung während der Lebensdauer von **IReliableStateManager** verursacht wird.
 
@@ -56,7 +56,7 @@ public MyService(StatefulServiceContext context)
 Der **TransactionChanged**-Ereignishandler verwendet **NotifyTransactionChangedEventArgs**, um Details zum Ereignis bereitzustellen. Darin ist die Action-Eigenschaft enthalten (z.B. **NotifyTransactionChangedAction.Commit**), mit der die Art der Änderung angegeben wird. Außerdem ist die Transaction-Eigenschaft enthalten, mit der ein Verweis auf die geänderte Transaktion bereitgestellt wird.
 
 > [!NOTE]
-> **TransactionChanged** -Ereignisse werden derzeit nur ausgelöst, wenn für die Transaktion ein Commit durchgeführt wird. Die Aktion ist dann mit **NotifyTransactionChangedAction.Commit**identisch. In Zukunft können Ereignisse aber auch für andere Arten von Änderungen des Transaktionsstatus ausgelöst werden. Wir empfehlen Ihnen, die Aktion zu überprüfen und das Ereignis nur zu verarbeiten, wenn es sich um das erwartete Ereignis handelt.
+> **TransactionChanged** -Ereignisse werden derzeit nur ausgelöst, wenn für die Transaktion ein Commit durchgeführt wird. Die Aktion ist dann mit **NotifyTransactionChangedAction.Commit** identisch. In Zukunft können Ereignisse aber auch für andere Arten von Änderungen des Transaktionsstatus ausgelöst werden. Wir empfehlen Ihnen, die Aktion zu überprüfen und das Ereignis nur zu verarbeiten, wenn es sich um das erwartete Ereignis handelt.
 > 
 > 
 
@@ -211,4 +211,4 @@ Hier folgen einige Punkte, die es zu beachten gilt:
 * [Zuverlässige Auflistungen](service-fabric-work-with-reliable-collections.md)
 * [Reliable Services – Schnellstart](service-fabric-reliable-services-quick-start.md)
 * [Sichern und Wiederherstellen von Reliable Services (Notfallwiederherstellung)](service-fabric-reliable-services-backup-restore.md)
-* [Entwicklerreferenz für zuverlässige Auflistungen](/dotnet/api/microsoft.servicefabric.data.collections?view=azure-dotnet#microsoft_servicefabric_data_collections)
+* [Entwicklerreferenz für zuverlässige Auflistungen](/dotnet/api/microsoft.servicefabric.data.collections#microsoft_servicefabric_data_collections)

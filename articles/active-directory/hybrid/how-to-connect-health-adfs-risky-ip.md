@@ -16,12 +16,12 @@ ms.date: 02/26/2019
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 57d74272d77183baa2284265aee298967f641250
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: e0b76d2f943f254eb06208e2c190bae4d4088030
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97504881"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98746069"
 ---
 # <a name="risky-ip-report-public-preview"></a>Bericht über riskante IP-Adressen (öffentliche Vorschauversion)
 AD FS-Kunden können Endpunkte für die Kennwortauthentifizierung für den Zugriff über das Internet verfügbar machen, um Authentifizierungsdienste für Endbenutzer bereitzustellen, damit diese auf SaaS-Anwendungen wie Microsoft 365 zugreifen können. In diesem Fall ist es möglich, dass ein böswilliger Benutzer versucht, sich an Ihrem AD FS-System anzumelden, um das Kennwort eines Endbenutzers zu erraten und Zugriff auf Anwendungsressourcen zu erhalten. AD FS verfügt seit der Einbindung in Windows Server 2012 R2 über die Funktion zum Sperren von Extranet-Konten, um diese Arten von Angriffen zu verhindern. Falls Sie eine frühere Version verwenden, empfehlen wir Ihnen dringend, Ihr AD FS-System auf Windows Server 2016 zu aktualisieren. <br />
@@ -37,9 +37,6 @@ Außerdem ist es möglich, dass von einer einzelnen IP-Adresse versucht wird, me
 > Für die Verwendung dieses Berichts muss die AD FS-Überwachung aktiviert sein. Weitere Informationen finden Sie unter [Aktivieren der Überwachung für AD FS](how-to-connect-health-agent-install.md#enable-auditing-for-ad-fs). <br />
 > Zugriff auf die Vorschauversion erhalten nur globale Administratoren und [Sicherheitsleseberechtigte](../../role-based-access-control/built-in-roles.md#security-reader).  
 >
-
-> [!NOTE]
-> Dieser Artikel enthält Verweise auf den Begriff *Whitelist*, den Microsoft nicht länger verwendet. Sobald der Begriff aus der Software entfernt wurde, wird er auch aus diesem Artikel entfernt.
 
 ## <a name="what-is-in-the-report"></a>Inhalt des Berichts
 Die IP-Adressen der Clients mit fehlgeschlagenen Anmeldeaktivitäten werden über Webanwendungsproxy-Server aggregiert. Jeder Eintrag im Bericht über riskante IP-Adressen enthält aggregierte Informationen zu fehlgeschlagenen AD FS-Anmeldeaktivitäten, für die der angegebene Schwellenwert überschritten wurde. Er enthält die folgenden Informationen: ![Screenshot: Bericht über riskante IP-Adressen mit hervorgehobenen Spaltenüberschriften](./media/how-to-connect-health-adfs/report4a.png)

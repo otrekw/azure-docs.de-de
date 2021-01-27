@@ -3,15 +3,15 @@ title: ReliableConcurrentQueue in Azure Service Fabric
 description: ReliableConcurrentQueue ist eine Warteschlange mit hohem Durchsatz, die paralleles Einreihen in die und Entfernen aus der Warteschlange ermöglicht.
 ms.topic: conceptual
 ms.date: 5/1/2017
-ms.openlocfilehash: 423ef3d1898176d7c25c596ad186a9c000108aa4
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: d6852982621d3efd3f4a8597a2959fceb13abd12
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95997119"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98784290"
 ---
 # <a name="introduction-to-reliableconcurrentqueue-in-azure-service-fabric"></a>Einführung in ReliableConcurrentQueue in Azure Service Fabric
-ReliableConcurrentQueue ist eine asynchrone, transaktionsbasierte und replizierte Warteschlange, die ein hohes Maß an Parallelität für Einreihungs- und Entfernungsvorgänge bietet. Die Warteschlange bietet hohen Durchsatz und niedrige Latenz, indem die strikte FIFO-Reihenfolge von [ReliableQueue](/dotnet/api/microsoft.servicefabric.data.collections.ireliablequeue-1?view=azure-dotnet#microsoft_servicefabric_data_collections_ireliablequeue_1) gelockert wird. Stattdessen wird eine Reihenfolge nach dem Prinzip „beste Leistung“ angewendet.
+ReliableConcurrentQueue ist eine asynchrone, transaktionsbasierte und replizierte Warteschlange, die ein hohes Maß an Parallelität für Einreihungs- und Entfernungsvorgänge bietet. Die Warteschlange bietet hohen Durchsatz und niedrige Latenz, indem die strikte FIFO-Reihenfolge von [ReliableQueue](/dotnet/api/microsoft.servicefabric.data.collections.ireliablequeue-1#microsoft_servicefabric_data_collections_ireliablequeue_1) gelockert wird. Stattdessen wird eine Reihenfolge nach dem Prinzip „beste Leistung“ angewendet.
 
 ## <a name="apis"></a>APIs
 
@@ -21,11 +21,11 @@ ReliableConcurrentQueue ist eine asynchrone, transaktionsbasierte und repliziert
 | bool TryDequeue(out T result)  | Task< ConditionalValue < T > > TryDequeueAsync(ITransaction tx)  |
 | int Count()                    | long Count()                                                     |
 
-## <a name="comparison-with-reliable-queue"></a>Vergleich mit [ReliableQueue](/dotnet/api/microsoft.servicefabric.data.collections.ireliablequeue-1?view=azure-dotnet#microsoft_servicefabric_data_collections_ireliablequeue_1)
+## <a name="comparison-with-reliable-queue"></a>Vergleich mit [ReliableQueue](/dotnet/api/microsoft.servicefabric.data.collections.ireliablequeue-1#microsoft_servicefabric_data_collections_ireliablequeue_1)
 
-ReliableConcurrentQueue wird als Alternative zu [ReliableQueue](/dotnet/api/microsoft.servicefabric.data.collections.ireliablequeue-1?view=azure-dotnet#microsoft_servicefabric_data_collections_ireliablequeue_1) angeboten. Dieser Warteschlangentyp sollte verwendet werden, wenn eine strikte FIFO-Reihenfolge nicht erforderlich ist, da eine garantierte FIFO-Reihenfolge Abstriche bei der Parallelität bedeutet.  [ReliableQueue](/dotnet/api/microsoft.servicefabric.data.collections.ireliablequeue-1?view=azure-dotnet#microsoft_servicefabric_data_collections_ireliablequeue_1) verwendet Sperren, um die FIFO-Reihenfolge zu erzwingen. Dabei darf maximal je eine Transaktion gleichzeitig in die Warteschlange eingereiht und aus der Warteschlange entfernt werden. Im Vergleich dazu lockert ReliableConcurrentQueue die Einschränkung hinsichtlich der Reihenfolge und macht es möglich, dass sich die Einreihungs- und Entfernungsvorgänge einer beliebigen Anzahl von gleichzeitigen Transaktionen überschneiden. Es wird eine Reihenfolge nach dem Prinzip „beste Leistung“ angewendet, die relative Reihenfolge von zwei Werten in ReliableConcurrentQueue kann jedoch nie garantiert werden.
+ReliableConcurrentQueue wird als Alternative zu [ReliableQueue](/dotnet/api/microsoft.servicefabric.data.collections.ireliablequeue-1#microsoft_servicefabric_data_collections_ireliablequeue_1) angeboten. Dieser Warteschlangentyp sollte verwendet werden, wenn eine strikte FIFO-Reihenfolge nicht erforderlich ist, da eine garantierte FIFO-Reihenfolge Abstriche bei der Parallelität bedeutet.  [ReliableQueue](/dotnet/api/microsoft.servicefabric.data.collections.ireliablequeue-1#microsoft_servicefabric_data_collections_ireliablequeue_1) verwendet Sperren, um die FIFO-Reihenfolge zu erzwingen. Dabei darf maximal je eine Transaktion gleichzeitig in die Warteschlange eingereiht und aus der Warteschlange entfernt werden. Im Vergleich dazu lockert ReliableConcurrentQueue die Einschränkung hinsichtlich der Reihenfolge und macht es möglich, dass sich die Einreihungs- und Entfernungsvorgänge einer beliebigen Anzahl von gleichzeitigen Transaktionen überschneiden. Es wird eine Reihenfolge nach dem Prinzip „beste Leistung“ angewendet, die relative Reihenfolge von zwei Werten in ReliableConcurrentQueue kann jedoch nie garantiert werden.
 
-ReliableConcurrentQueue bietet einen höheren Durchsatz und eine niedrigere Latenz als [ReliableQueue](/dotnet/api/microsoft.servicefabric.data.collections.ireliablequeue-1?view=azure-dotnet#microsoft_servicefabric_data_collections_ireliablequeue_1), wenn mehrere parallel ausgeführte Transaktionen Einreihungs- oder Entfernungsvorgänge durchführen.
+ReliableConcurrentQueue bietet einen höheren Durchsatz und eine niedrigere Latenz als [ReliableQueue](/dotnet/api/microsoft.servicefabric.data.collections.ireliablequeue-1#microsoft_servicefabric_data_collections_ireliablequeue_1), wenn mehrere parallel ausgeführte Transaktionen Einreihungs- oder Entfernungsvorgänge durchführen.
 
 Ein Beispiel für ReliableConcurrentQueue ist ein Szenario mit [Nachrichtenwarteschlangen](https://en.wikipedia.org/wiki/Message_queue). In diesem Szenario erstellt mindestens ein Nachrichtenproducer Elemente in der Warteschlange und fügt der Warteschlange Elemente hinzu. Gleichzeitig ruft mindestens ein Nachrichtenconsumer Nachrichten aus der Warteschlange ab und verarbeitet sie. Mehrere Producer und Consumer können unabhängig voneinander arbeiten und verwenden gleichzeitige Transaktionen, um die Warteschlange zu verarbeiten.
 
@@ -340,4 +340,4 @@ using (var txn = this.StateManager.CreateTransaction())
 * [Konfigurieren des Reliable State Managers](service-fabric-reliable-services-configuration.md)
 * [Erste Schritte mit Web-API-Diensten von Service Fabric](./service-fabric-reliable-services-communication-aspnetcore.md)
 * [Erweiterte Verwendung des Reliable Services-Programmiermodells](./service-fabric-reliable-services-lifecycle.md)
-* [Entwicklerreferenz für Reliable Collections](/dotnet/api/microsoft.servicefabric.data.collections?view=azure-dotnet#microsoft_servicefabric_data_collections)
+* [Entwicklerreferenz für Reliable Collections](/dotnet/api/microsoft.servicefabric.data.collections#microsoft_servicefabric_data_collections)

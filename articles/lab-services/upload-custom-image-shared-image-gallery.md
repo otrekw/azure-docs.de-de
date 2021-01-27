@@ -3,12 +3,12 @@ title: Azure Lab Services – Hochladen eines benutzerdefinierten Images in Shar
 description: Beschreibt das Hochladen eines benutzerdefinierten Images in Shared Image Gallery. Die IT-Abteilungen von Universitäten werden das Importieren von Images besonders vorteilhaft finden.
 ms.date: 09/30/2020
 ms.topic: how-to
-ms.openlocfilehash: 93b4141636b629168e9bb7a73e71a9fe4bfc39f5
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 3e2f38b0cab87eab27181ddef79d0c02bd8c9bdb
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94654642"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98787162"
 ---
 # <a name="upload-a-custom-image-to-shared-image-gallery"></a>Hochladen eines benutzerdefiniertes Image in Shared Image Gallery
 
@@ -66,5 +66,5 @@ Viele Optionen sind für das Erstellen einer virtuellen Festplatte aus einer phy
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Übersicht über den Katalog mit freigegebenen Images](../virtual-machines/windows/shared-image-galleries.md)
+* [Übersicht über den Katalog mit freigegebenen Images](../virtual-machines/shared-image-galleries.md)
 * [Verwenden eines Katalogs mit freigegebenen Images in Azure Lab Services](how-to-use-shared-image-gallery.md)

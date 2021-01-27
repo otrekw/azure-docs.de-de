@@ -17,16 +17,14 @@ ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: rdhillon
 ms.custom: ''
-ms.openlocfilehash: 1d4fcc280ba2e34d2fa81584846441ad6fe81431
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d8e300c9be8f3e59dc9443bf1f1806e4228992ad
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84708194"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98790370"
 ---
 # <a name="manage-data-exfiltration-to-azure-storage-accounts-with-virtual-network-service-endpoint-policies-using-azure-powershell"></a>Verwalten der Datenexfiltration in Azure Storage-Konten mit VNET-Dienstendpunktrichtlinien mithilfe von Azure PowerShell
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 Mithilfe von VNET-Dienstendpunktrichtlinien können Sie Zugriffssteuerung auf Azure Storage-Konten innerhalb eines virtuellen Netzwerks über Dienstendpunkte anwenden. Dies ist ein wichtiger Aspekt zum Sichern von Workloads und zum Verwalten der zulässigen Speicherkonten sowie der Situationen mit zulässiger Datenexfiltration.
 In diesem Artikel werden folgende Vorgehensweisen behandelt:
@@ -38,6 +36,8 @@ In diesem Artikel werden folgende Vorgehensweisen behandelt:
 * Bereitstellen eines virtuellen Computers im Subnetz
 * Bestätigen des Zugriffs auf das zulässige Speicherkonto aus dem Subnetz
 * Bestätigen der Verweigerung des Zugriffs auf das unzulässige Speicherkonto aus dem Subnetz
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 

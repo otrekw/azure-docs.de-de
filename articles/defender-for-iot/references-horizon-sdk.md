@@ -8,12 +8,12 @@ ms.author: shhazam
 ms.date: 1/13/2021
 ms.topic: article
 ms.service: azure
-ms.openlocfilehash: d6105f65508eff59164246020d9a3f286b68c5a1
-ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
+ms.openlocfilehash: 53aafc4146680c89dd01174ec5fde765f1cc0c01
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98210426"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98746018"
 ---
 # <a name="horizon-proprietary-protocol-dissector"></a>Proprietäre Horizon-Protokollzergliederung
 
@@ -885,7 +885,7 @@ Sie können auch Werte aus zuvor analysierten Protokollen verwenden, um zusätzl
 
 Für den auf TCP basierenden Wert können Sie z. B. die Werte von der IPv4-Ebene verwenden. Von dieser Ebene können Sie Werte wie die Quelle des Pakets und das Ziel extrahieren.
 
-Um dies zu erreichen, muss die JSON-Konfigurationsdatei unter Verwendung der `whitelist`-Eigenschaft aktualisiert werden.
+Um dies zu erreichen, muss die JSON-Konfigurationsdatei unter Verwendung der `whitelists`-Eigenschaft aktualisiert werden.
 
 ## <a name="allow-list-data-mining-fields"></a>Felder von Positivlisten (Data Mining)
 

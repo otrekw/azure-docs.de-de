@@ -9,14 +9,15 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 5/21/2017
 ms.author: raiye
-ms.openlocfilehash: 6de03969a22c5b699fdfd2be17a6ba65905d23e6
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 7f6d3feee95d4cce654b2cc1547b8bd7f4eb45d2
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92073392"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98743014"
 ---
 # <a name="guest-os-family-1-retirement-notice"></a>Deaktivierungsinformationen für die Azure-Gastbetriebssystemfamilie 1
+
 Die Deaktivierung der Betriebssystemfamilie 1 wurde erstmals am 1. Juni 2013 angekündigt.
 
 **2. September 2014** Die Azure-Gastbetriebssystemfamilie 1.x, die auf dem Betriebssystem Windows Server 2008 basiert, wurde offiziell außer Betrieb gestellt. Alle Versuche der Bereitstellung neuer Dienste oder der Aktualisierung vorhandener Dienste mithilfe von Familie 1 führen zu einer Fehlermeldung, die Sie darüber informiert, dass die Gastbetriebssystemfamilie 1 eingestellt wurde.

@@ -3,12 +3,12 @@ title: Azure-Sicherheitsbaseline für Azure DevTest Labs
 description: Azure-Sicherheitsbaseline für Azure DevTest Labs
 ms.topic: conceptual
 ms.date: 07/23/2020
-ms.openlocfilehash: eabb55956f97f40312c894ccabd7a341ecc5688c
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 09b4e28437c79961d53cf07b068e3169d20fe0c4
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98202010"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98789903"
 ---
 # <a name="azure-security-baseline-for-azure-devtest-labs"></a>Azure-Sicherheitsbaseline für Azure DevTest Labs
 
@@ -619,7 +619,7 @@ Von Microsoft im Azure Marketplace veröffentlichte VM-Images werden außerdem v
 
 - [Implementieren von Empfehlungen für die Sicherheitsrisikobewertung aus Azure Security Center](../security-center/deploy-vulnerability-assessment-vm.md)
 - [Übersicht über die Azure Automation-Zustandskonfiguration](../automation/automation-dsc-overview.md)
-- [Beispielskript zum Hochladen einer generalisierten virtuellen Festplatte nach Azure und Erstellen eines neuen virtuellen Computers](../virtual-machines/scripts/virtual-machines-windows-powershell-upload-generalized-script.md)
+- [Beispielskript zum Hochladen einer generalisierten virtuellen Festplatte nach Azure und Erstellen eines neuen virtuellen Computers](/previous-versions/azure/virtual-machines/scripts/virtual-machines-windows-powershell-upload-generalized-script)
 - [Erstellen einer Image Factory in DevTest Labs](image-factory-create.md)
 
 **Azure Security Center-Überwachung:** Ja

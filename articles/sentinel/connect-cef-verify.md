@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/05/2021
 ms.author: yelevin
-ms.openlocfilehash: 557f53e39781406674b9903dcf0bb3cb536cd804
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.openlocfilehash: f9fb1c917a0719cb9d250b997329d3415b5872eb
+ms.sourcegitcommit: 3c8964a946e3b2343eaf8aba54dee41b89acc123
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97897483"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98747473"
 ---
 # <a name="step-3-validate-connectivity"></a>SCHRITT 3: Überprüfen der Konnektivität
 
@@ -44,7 +44,7 @@ Achten Sie darauf, dass es etwa 20 Minuten dauern kann, bis Ihre Protokolle in 
 1. Führen Sie das folgende Skript für die Protokollweiterleitung aus (geben Sie die Arbeitsbereichs-ID anstelle des Platzhalters ein), um die Konnektivität zwischen Ihrer Sicherheitslösung, der Protokollweiterleitung und Azure Sentinel zu überprüfen. Das Skript überprüft, ob der Daemon an den richtigen Ports lauscht, die Weiterleitung ordnungsgemäß konfiguriert ist und die Kommunikation zwischen dem Daemon und dem Log Analytics-Agent nicht blockiert wird. Außerdem sendet es auch TestCommonEventFormat-Pseudonachrichten, um die End-to-End-Konnektivität zu überprüfen. <br>
 
     ```bash
-    sudo wget -O https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/DataConnectors/CEF/cef_troubleshoot.py&&sudo python cef_troubleshoot.py [WorkspaceID]
+    sudo wget -O cef_troubleshoot.py https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/DataConnectors/CEF/cef_troubleshoot.py&&sudo python cef_troubleshoot.py [WorkspaceID]
     ```
 
    - Möglicherweise werden Sie in einer Meldung aufgefordert, einen Befehl auszuführen, um ein Problem mit der **Zuordnung im Feld *Computer*** zu beheben. Ausführliche Informationen finden Sie in der [Erläuterung im Validierungsskript](#mapping-command).

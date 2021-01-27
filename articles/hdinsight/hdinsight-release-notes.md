@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 11/12/2020
-ms.openlocfilehash: d749c901b21651eec7b3e25ce111fb107e09b754
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: 5c414a11085a6a37dee6be522dcf513e8990e5e2
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97883349"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98786350"
 ---
 # <a name="azure-hdinsight-release-notes"></a>Versionshinweise zu Azure HDInsight
 
@@ -48,7 +48,7 @@ Ab dem 16. November 2020 hindert HDInsight neue Kunden daran, Cluster mit den 
 
 ## <a name="behavior-changes"></a>Verhaltensänderungen
 ### <a name="add-nsg-rule-checking-before-scaling-operation"></a>Hinzufügen der NSG-Regelüberprüfung vor dem Skalierungsvorgang
-HDInsight hat die Überprüfung von Netzwerksicherheitsgruppen (NSGs) und benutzerdefinierten Routen (UDRs, User-Defined Routes) mit dem Skalierungsvorgang hinzugefügt. Die gleiche Überprüfung erfolgt neben der Clustererstellung auch für die Clusterskalierung. Diese Überprüfung hilft, unvorhersehbare Fehler zu vermeiden. Wenn die Überprüfung nicht bestanden wird, tritt bei der Skalierung ein Fehler auf. Weitere Informationen zum ordnungsgemäßen Konfigurieren von NSGs und UDRs finden Sie unter [HDInsight-Verwaltungs-IP-Adressen](https://docs.microsoft.com/azure/hdinsight/hdinsight-management-ip-addresses).
+HDInsight hat die Überprüfung von Netzwerksicherheitsgruppen (NSGs) und benutzerdefinierten Routen (UDRs, User-Defined Routes) mit dem Skalierungsvorgang hinzugefügt. Die gleiche Überprüfung erfolgt neben der Clustererstellung auch für die Clusterskalierung. Diese Überprüfung hilft, unvorhersehbare Fehler zu vermeiden. Wenn die Überprüfung nicht bestanden wird, tritt bei der Skalierung ein Fehler auf. Weitere Informationen zum ordnungsgemäßen Konfigurieren von NSGs und UDRs finden Sie unter [HDInsight-Verwaltungs-IP-Adressen](./hdinsight-management-ip-addresses.md).
 
 ## <a name="upcoming-changes"></a>Bevorstehende Änderungen
 Die folgenden Änderungen werden in kommenden Versionen durchgeführt.
@@ -84,4 +84,3 @@ HDInsight stellt für beide Probleme Fixes bereit und wendet Patches auf alle la
 https://hdiconfigactions.blob.core.windows.net/linuxospatchingrebootconfigv02/replace_cacert_script.sh
 https://healingscriptssa.blob.core.windows.net/healingscripts/ChangeOOMPolicyAndApplyLatestConfigForClamav.sh
 ```
-

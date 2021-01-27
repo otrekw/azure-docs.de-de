@@ -5,12 +5,12 @@ author: masnider
 ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 162ad87f79109cf38d3d0013608812155c6988a7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6ea8fa6933052374721d8d205d5b07386c807ae2
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86252248"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98784595"
 ---
 # <a name="reliable-services-lifecycle-overview"></a>Übersicht über den Lebenszyklus von Reliable Services
 > [!div class="op_single_selector"]
@@ -113,7 +113,7 @@ Service Fabric ändert das primäre Replikat eines zustandsbehafteten Diensts au
 
 Bei Diensten ohne ordnungsgemäße Abbruchbehandlung können mehrere Probleme auftreten. Diese Vorgänge werden verlangsamt, da Service Fabric auf eine ordnungsgemäße Beendigung der Dienste wartet. Dies kann letztendlich zu nicht erfolgreichen Upgrades mit Timeout und Rollback führen. Wenn das Abbruchtoken nicht berücksichtigt wird, können auch unausgeglichene Cluster entstehen. Cluster sind unausgeglichen, da Knoten ausgelastet werden, die Dienste aber nicht ausgeglichen werden können, weil ihre Verschiebung zu lange dauert. 
 
-Da es sich um zustandsbehaftete Dienste handelt, ist es auch wahrscheinlich, dass sie die [zuverlässigen Sammlungen](service-fabric-reliable-services-reliable-collections.md) verwenden. Beim Tieferstufen eines primären Replikats wird in Service Fabric als eine der ersten Maßnahmen der Schreibzugriff auf den zugrunde liegenden Zustand entzogen. Dies führt zu weiteren Problemen, die Einfluss auf den Lebenszyklus des Diensts haben können. Die Sammlungen geben Ausnahmen auf der Grundlage des Timings und abhängig davon zurück, ob das Replikat verschoben oder heruntergefahren wird. Diese Ausnahmen müssen korrekt behandelt werden. Von Service Fabric ausgelöste Ausnahmen können dauerhaft [(`FabricException`)](/dotnet/api/system.fabric.fabricexception?view=azure-dotnet) oder vorübergehend [(`FabricTransientException`)](/dotnet/api/system.fabric.fabrictransientexception?view=azure-dotnet) sein. Dauerhafte Ausnahmen müssen protokolliert und ausgelöst werden. Vorgänge mit vorübergehenden Ausnahmen können hingegen mit einer Wiederholungslogik wiederholt werden.
+Da es sich um zustandsbehaftete Dienste handelt, ist es auch wahrscheinlich, dass sie die [zuverlässigen Sammlungen](service-fabric-reliable-services-reliable-collections.md) verwenden. Beim Tieferstufen eines primären Replikats wird in Service Fabric als eine der ersten Maßnahmen der Schreibzugriff auf den zugrunde liegenden Zustand entzogen. Dies führt zu weiteren Problemen, die Einfluss auf den Lebenszyklus des Diensts haben können. Die Sammlungen geben Ausnahmen auf der Grundlage des Timings und abhängig davon zurück, ob das Replikat verschoben oder heruntergefahren wird. Diese Ausnahmen müssen korrekt behandelt werden. Von Service Fabric ausgelöste Ausnahmen können dauerhaft [(`FabricException`)](/dotnet/api/system.fabric.fabricexception) oder vorübergehend [(`FabricTransientException`)](/dotnet/api/system.fabric.fabrictransientexception) sein. Dauerhafte Ausnahmen müssen protokolliert und ausgelöst werden. Vorgänge mit vorübergehenden Ausnahmen können hingegen mit einer Wiederholungslogik wiederholt werden.
 
 Die Behandlung von Ausnahmen, die auf die Verwendung von `ReliableCollections` in Verbindung mit Dienstlebenszyklusereignissen zurückzuführen sind, ist ein wichtiger Bestandteil der Tests und Prüfungen für einen zuverlässigen Dienst. Es empfiehlt sich, den Dienst während der Durchführung von Upgrades und [Chaostests](service-fabric-controlled-chaos.md) immer unter Last auszuführen, bevor Sie ihn in einer Produktionsumgebung bereitstellen. Mit diesen einfachen Schritten können Sie sicherstellen, dass Ihr Dienst ordnungsgemäß implementiert ist und Lebenszyklusereignisse korrekt behandelt.
 

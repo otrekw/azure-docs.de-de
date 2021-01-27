@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 11/12/2020
 ms.author: alkohli
-ms.openlocfilehash: 342f6a2c4761104823694f2181b3ffa8726a441e
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 53ef73c70f5d20133e7b408ad7af91c3778e5568
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96449413"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98787450"
 ---
 # <a name="enable-azure-arc-on-kubernetes-cluster-on-your-azure-stack-edge-pro-gpu-device"></a>Aktivieren von Azure Arc in einem Kubernetes-Cluster auf einem Azure Stack Edge Pro-GPU-Gerät
 
@@ -39,7 +39,7 @@ Stellen Sie sicher, dass die folgenden Voraussetzungen auf dem Azure Stack Edge 
 
 1. Sie verfügen über ein Windows-Clientsystem, das für den Zugriff auf das Azure Stack Edge Pro-Gerät verwendet wird.
   
-    - Auf dem Client wird Windows PowerShell 5.0 oder höher ausgeführt. Informationen zum Herunterladen der neuesten Version von Windows PowerShell finden Sie unter [Installieren von Windows PowerShell](https://docs.microsoft.com/powershell/scripting/install/installing-powershell-core-on-windows).
+    - Auf dem Client wird Windows PowerShell 5.0 oder höher ausgeführt. Informationen zum Herunterladen der neuesten Version von Windows PowerShell finden Sie unter [Installieren von Windows PowerShell](/powershell/scripting/install/installing-powershell-core-on-windows).
     
     - Sie können auch einen anderen Client mit einem [unterstützten Betriebssystem](azure-stack-edge-gpu-system-requirements.md#supported-os-for-clients-connected-to-device) verwenden. In diesem Artikel wird die Vorgehensweise bei Verwendung eines Windows-Clients beschrieben. 
     

@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 07/27/2020
 ms.author: alkohli
-ms.openlocfilehash: 730774f33d43754d4ca198ed170159fa4f872e09
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0c35bde40cac9629f084d69d52f119651b5655f7
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90903666"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98784476"
 ---
 # <a name="return-your-azure-stack-edge-pro-device"></a>Zurückgeben Ihres Azure Stack Edge Pro-Geräts
 
@@ -101,7 +101,7 @@ Beginnen Sie den Rückgabeprozess mit den folgenden Schritten.
 Führen Sie die folgenden Schritte aus, um eine Abholung zu planen:
 
 1. Fahren Sie das Gerät herunter. Wechseln Sie auf der lokalen Webbenutzeroberfläche zu **Wartung > Power settings** (Energieeinstellungen).
-2. Wählen Sie **Herunterfahren** aus. Wenn Sie zur Bestätigung aufgefordert werden, klicken Sie auf **Ja**, um fortzufahren. Weitere Informationen finden Sie unter [Verwalten der Energieeinstellungen](data-box-gateway-manage-access-power-connectivity-mode.md#manage-power).
+2. Wählen Sie **Herunterfahren** aus. Wenn Sie zur Bestätigung aufgefordert werden, klicken Sie auf **Ja**, um fortzufahren. Weitere Informationen finden Sie unter [Verwalten der Energieeinstellungen](../databox-gateway/data-box-gateway-manage-access-power-connectivity-mode.md#manage-power).
 3. Trennen Sie die Netzkabel, und entfernen Sie alle Netzwerkkabel vom Gerät.
 4. Bereiten Sie das Versandpaket vor, indem Sie Ihren eigenen Karton verwenden oder den leeren, den Sie von Azure erhalten haben. Bringen Sie das Gerät und die mitgelieferten Netzkabel im Karton unter.
 5. Bringen Sie das Adressetikett, das Sie von Azure erhalten haben, auf dem Paket an.

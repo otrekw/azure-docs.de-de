@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: how-to
 ms.date: 12/18/2020
 ms.author: alkohli
-ms.openlocfilehash: ac86dfba02b54730773a1d243981e85d563517e7
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: 42476e2689cc503edc19e8e299a01ce922f1bf42
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98183829"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98789194"
 ---
 # <a name="tutorial-create-export-order-for-azure-data-box"></a>Tutorial: Erstellen eines Exportauftrags für Azure Data Box
 
@@ -100,7 +100,7 @@ Führen Sie die folgenden Schritte im Azure-Portal aus, um ein Gerät zu bestell
     |---------|---------|
     |Speicherkonto     | Das Azure Storage-Konto, aus dem Sie Daten exportieren möchten. |
     |Exporttyp     | Gibt den Typ der aus **Alle Objekte** zu exportierenden Daten und **XML-Datei verwenden** an.<ul><li> **Alle Objekte**: Gibt an, dass der Auftrag alle Daten abhängig von Ihrer Auswahl für **Übertragungsoptionen** exportiert.</li><li> **XML-Datei verwenden**: Gibt eine XML-Datei an, die eine Reihe von Pfaden und Präfixen für Blobs und/oder Dateien enthält, die aus dem Speicherkonto exportiert werden sollen. Die XML-Datei muss sich im Container des ausgewählten Speicherkontos befinden, und die Auswahl aus Dateifreigaben wird derzeit nicht unterstützt. Die Datei muss eine nicht leere XML-Datei sein.</li></ul>        |
-    |Übertragungsoptionen     |  Gibt die Datenübertragungsoptionen **Alle auswählen**, **Alle Blobs** und **Alle Dateien** an. <ul><li> **Alle auswählen**: Gibt an, dass alle Blobdateien und Azure Files exportiert werden. Wenn Sie ein Speicherkonto verwenden, das nur Blobs (Blobspeicherkonten) unterstützt, ist die Option **Alle Dateien** nicht auswählbar.</li><li> **Alle Blobs**: Gibt an, dass nur Block- und Seitenblobs exportiert werden.</li><li> **Alle Dateien**: Gibt an, dass alle Dateien außer Blobs exportiert werden. Der Typ Ihres Speicherkontos (GPv1 und GPv2, Storage Premium oder Blobspeicher) bestimmt, welche Datentypen Sie exportieren können. Weitere Informationen finden Sie unter [Unterstützte Speichertypen](../storage/common/storage-import-export-requirements.md#supported-storage-types).</li></ul>         |
+    |Übertragungsoptionen     |  Gibt die Datenübertragungsoptionen **Alle auswählen**, **Alle Blobs** und **Alle Dateien** an. <ul><li> **Alle auswählen**: Gibt an, dass alle Blobdateien und Azure Files exportiert werden. Wenn Sie ein Speicherkonto verwenden, das nur Blobs (Blobspeicherkonten) unterstützt, ist die Option **Alle Dateien** nicht auswählbar.</li><li> **Alle Blobs**: Gibt an, dass nur Block- und Seitenblobs exportiert werden.</li><li> **Alle Dateien**: Gibt an, dass alle Dateien außer Blobs exportiert werden. Der Typ Ihres Speicherkontos (GPv1 und GPv2, Storage Premium oder Blobspeicher) bestimmt, welche Datentypen Sie exportieren können. Weitere Informationen finden Sie unter [Unterstützte Speichertypen](../import-export/storage-import-export-requirements.md#supported-storage-types).</li></ul>         |
     |Ausführliches Protokoll einschließen     | Gibt an, ob Sie eine ausführliche Protokolldatei mit einer Liste aller Dateien wünschen, die erfolgreich exportiert wurden.        |
 
     > [!NOTE]
@@ -179,7 +179,7 @@ Führen Sie die folgenden Schritte im Azure-Portal aus, um ein Gerät zu bestell
 
 15. Wählen Sie eine Benutzeridentität aus, die Sie zum Verwalten des Zugriffs auf diese Ressource verwenden. Wählen Sie die Option **Benutzeridentität auswählen** aus. Wählen Sie im Bereich auf der rechten Seite das zu verwendende Abonnement und die verwaltete Identität aus. Wählen Sie anschließend **Auswählen** aus.
 
-    Eine vom Benutzer zugewiesene verwaltete Identität ist eine eigenständige Azure-Ressource, die zum Verwalten mehrerer Ressourcen verwendet werden kann. Weitere Informationen finden Sie unter [Arten von verwalteten Identitäten](/azure/active-directory/managed-identities-azure-resources/overview).  
+    Eine vom Benutzer zugewiesene verwaltete Identität ist eine eigenständige Azure-Ressource, die zum Verwalten mehrerer Ressourcen verwendet werden kann. Weitere Informationen finden Sie unter [Arten von verwalteten Identitäten](../active-directory/managed-identities-azure-resources/overview.md).  
 
     Befolgen Sie die Anleitung unter [Erstellen, Auflisten, Löschen oder Zuweisen einer Rolle zu einer vom Benutzer zugewiesenen verwalteten Identität über das Azure-Portal](../../articles/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md), wenn Sie eine neue verwaltete Identität erstellen müssen.
     

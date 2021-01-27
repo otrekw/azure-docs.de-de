@@ -7,12 +7,12 @@ author: gitralf
 ms.author: ralfwi
 ms.service: germany
 ms.custom: bfmigrate
-ms.openlocfilehash: 10d52899195f6dfc1598bc95a07c22a68ef8c278
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: db8c13e214145df91f4b385f95c54e8084f3206c
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "96006534"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98787308"
 ---
 # <a name="migrate-security-resources-to-global-azure"></a>Migrieren von Sicherheitsressourcen zu Azure weltweit
 
@@ -62,7 +62,7 @@ Stellen Sie sicher, dass Sie Ihre lokale Konfiguration aktualisieren. Löschen S
 Weitere Informationen finden Sie unter:
 
 - Frischen Sie Ihre Kenntnisse auf, indem Sie die [Tutorials zu VPN Gateway](../vpn-gateway/index.yml) durcharbeiten.
-- Im Artikel [Herstellen einer Site-to-Site-Verbindung](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md) finden Sie weitere Informationen zu diesem Thema.
+- Im Artikel [Herstellen einer Site-to-Site-Verbindung](../vpn-gateway/tutorial-site-to-site-portal.md) finden Sie weitere Informationen zu diesem Thema.
 - Lesen Sie auch den Artikel über die PowerShell-Cmdlets [Get-AzVirtualNetworkGateway](/powershell/module/az.network/get-azvirtualnetworkgateway).
 - Lesen Sie den Blogbeitrag [Herstellen einer Site-to-Site-Verbindung](/archive/blogs/ralfwi/connecting-clouds).
   

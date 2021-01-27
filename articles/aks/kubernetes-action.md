@@ -7,16 +7,16 @@ ms.topic: article
 ms.date: 11/06/2020
 ms.author: atulmal
 ms.custom: github-actions-azure
-ms.openlocfilehash: d03acab340e593a925f042ca41f9e8967b468858
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: 94134360de49a066f825cbb0c85712995d90b37f
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97605444"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98761453"
 ---
 # <a name="github-actions-for-deploying-to-kubernetes-service"></a>GitHub Actions für die Bereitstellung im Kubernetes Service
 
-[GitHub Actions](https://docs.github.com/en/free-pro-team@latest/actions) bietet Ihnen die Flexibilität, einen automatisierten Workflow für den Softwareentwicklungs-Lebenszyklus zu erstellen. Sie können mehrere Kubernetes-Aktionen verwenden, um Container von Azure Container Registry zu Azure Kubernetes Service mit GitHub Actions bereitzustellen. 
+[GitHub Actions](https://docs.github.com/en/actions) bietet Ihnen die Flexibilität, einen automatisierten Workflow für den Softwareentwicklungs-Lebenszyklus zu erstellen. Sie können mehrere Kubernetes-Aktionen verwenden, um Container von Azure Container Registry zu Azure Kubernetes Service mit GitHub Actions bereitzustellen. 
 
 ## <a name="prerequisites"></a>Voraussetzungen 
 

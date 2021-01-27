@@ -3,15 +3,15 @@ title: Diagnose für zustandsbehaftete zuverlässige Dienste in Azure Service Fa
 description: Diagnosefunktionen für zustandsbehaftete zuverlässige Dienste in Azure Service Fabric
 ms.topic: conceptual
 ms.date: 8/24/2018
-ms.openlocfilehash: 5a3831dd4f8d5402980fac3daf8c35d9884c852d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 774a771d0c9701076a5d6c070963bf6224a571dd
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91840760"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98789329"
 ---
 # <a name="diagnostic-functionality-for-stateful-reliable-services"></a>Diagnosefunktionen für zustandsbehaftete Reliable Services
-Die StatefulServiceBase-Klasse der zustandsbehafteten zuverlässigen Dienste in Azure Service Fabric gibt [EventSource](/dotnet/api/system.diagnostics.tracing.eventsource?view=netcore-3.1)-Ereignisse aus. Diese können verwendet werden, um den Dienst zu debuggen, Einblicke in den Laufzeitbetrieb zu erhalten und Fehler zu beheben.
+Die StatefulServiceBase-Klasse der zustandsbehafteten zuverlässigen Dienste in Azure Service Fabric gibt [EventSource](/dotnet/api/system.diagnostics.tracing.eventsource)-Ereignisse aus. Diese können verwendet werden, um den Dienst zu debuggen, Einblicke in den Laufzeitbetrieb zu erhalten und Fehler zu beheben.
 
 ## <a name="eventsource-events"></a>EventSource-Ereignisse
 Der Name des EventSource-Ereignisses für die Klasse „StatefulServiceBase“ der zustandsbehafteten zuverlässigen Dienste lautet „Microsoft-ServiceFabric-Services“. Ereignisse aus dieser Ereignisquelle werden beim [Debuggen des Diensts in Visual Studio](service-fabric-debugging-your-application.md) im Fenster für [Diagnoseereignisse](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md#view-service-fabric-system-events-in-visual-studio) angezeigt.
@@ -58,7 +58,7 @@ Für die Kategorie `Service Fabric Transactional Replicator`haben die Namen von 
 
 `ServiceFabricPartitionId:ServiceFabricReplicaId`
 
-*ServiceFabricPartitionId* ist die Zeichenfolgendarstellung der Service Fabric-Partitions-ID, mit der die Leistungsindikatorinstanz verknüpft ist. Die Partitions-ID ist eine GUID. Ihre Zeichenfolgendarstellung wird mithilfe von [`Guid.ToString`](/dotnet/api/system.guid.tostring?view=netcore-3.1#System_Guid_ToString_System_String_) mit dem Formatbezeichner „D“ generiert.
+*ServiceFabricPartitionId* ist die Zeichenfolgendarstellung der Service Fabric-Partitions-ID, mit der die Leistungsindikatorinstanz verknüpft ist. Die Partitions-ID ist eine GUID. Ihre Zeichenfolgendarstellung wird mithilfe von [`Guid.ToString`](/dotnet/api/system.guid.tostring#System_Guid_ToString_System_String_) mit dem Formatbezeichner „D“ generiert.
 
 *ServiceFabricReplicaId* die ID, die einem bestimmten Replikat eines Reliable Service zugeordnet ist. Die Replikat-ID wird in den Namen der Leistungsindikatorinstanz eingefügt, um deren Eindeutigkeit sicherzustellen und Konflikte mit anderen, von derselben Partition generierten Leistungsindikatorinstanzen zu vermeiden. Weitere Details zu Replikaten und ihrer Rolle in Reliable Services finden Sie [hier](service-fabric-concepts-replica-lifecycle.md).
 
@@ -73,7 +73,7 @@ Für die Kategorie `Service Fabric TStore`haben die Namen von Leistungsindikator
 
 `ServiceFabricPartitionId:ServiceFabricReplicaId:StateProviderId_PerformanceCounterInstanceDifferentiator_StateProviderName`
 
-*ServiceFabricPartitionId* ist die Zeichenfolgendarstellung der Service Fabric-Partitions-ID, mit der die Leistungsindikatorinstanz verknüpft ist. Die Partitions-ID ist eine GUID. Ihre Zeichenfolgendarstellung wird mithilfe von [`Guid.ToString`](/dotnet/api/system.guid.tostring?view=netcore-3.1#System_Guid_ToString_System_String_) mit dem Formatbezeichner „D“ generiert.
+*ServiceFabricPartitionId* ist die Zeichenfolgendarstellung der Service Fabric-Partitions-ID, mit der die Leistungsindikatorinstanz verknüpft ist. Die Partitions-ID ist eine GUID. Ihre Zeichenfolgendarstellung wird mithilfe von [`Guid.ToString`](/dotnet/api/system.guid.tostring#System_Guid_ToString_System_String_) mit dem Formatbezeichner „D“ generiert.
 
 *ServiceFabricReplicaId* die ID, die einem bestimmten Replikat eines Reliable Service zugeordnet ist. Die Replikat-ID wird in den Namen der Leistungsindikatorinstanz eingefügt, um deren Eindeutigkeit sicherzustellen und Konflikte mit anderen, von derselben Partition generierten Leistungsindikatorinstanzen zu vermeiden. Weitere Details zu Replikaten und ihrer Rolle in Reliable Services finden Sie [hier](service-fabric-concepts-replica-lifecycle.md).
 

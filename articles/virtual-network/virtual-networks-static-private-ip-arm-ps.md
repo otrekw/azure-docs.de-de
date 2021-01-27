@@ -4,7 +4,6 @@ description: Erfahren Sie, wie Sie mithilfe von PowerShell einen virtuellen Comp
 services: virtual-network
 documentationcenter: na
 author: KumudD
-manager: twooley
 editor: ''
 tags: azure-resource-manager
 ms.assetid: d5f18929-15e3-40a2-9ee3-8188bc248ed8
@@ -17,18 +16,18 @@ ms.workload: infrastructure-services
 ms.date: 02/07/2019
 ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: 2825d8d9f8be7c56d7beea767a1afb7a290eafa2
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 43c2e2c8905ca60e59caed3fdf1b4920f509fd88
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98222597"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98783783"
 ---
 # <a name="create-a-virtual-machine-with-a-static-private-ip-address-using-powershell"></a>Erstellen eines virtuellen Computers mit einer statischen privaten IP-Adresse mithilfe von PowerShell
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-
 Sie können einen virtuellen Computer (VM) mit einer statischen privaten IP-Adresse erstellen. Weisen Sie eine statische private IP-Adresse anstelle einer dynamischen Adresse zu, wenn Sie auswählen möchten, welche Adresse aus einem Subnetz einem virtuellen Computer zugewiesen wird. Erfahren Sie mehr über [statische private IP-Adressen](./public-ip-addresses.md#allocation-method). Um eine dynamische private IP-Adresse, die einem vorhandenen virtuellen Computer zugewiesen ist, in eine statische Adresse zu ändern oder mit öffentlichen IP-Adressen zu arbeiten, lesen Sie [Hinzufügen, Ändern oder Entfernen von IP-Adressen](virtual-network-network-interface-addresses.md).
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="create-a-virtual-machine"></a>Erstellen eines virtuellen Computers
 

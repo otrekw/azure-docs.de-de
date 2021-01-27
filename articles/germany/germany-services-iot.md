@@ -7,12 +7,12 @@ author: gitralf
 ms.author: ralfwi
 ms.service: germany
 ms.custom: bfdocs
-ms.openlocfilehash: 730256e315e04489892030e39fef0b6d27879f5a
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 16259a816413bcf7f57475b12f46c9410cb3ca44
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95018491"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98788766"
 ---
 # <a name="azure-germany-iot-services"></a>IoT-Dienste von Azure Deutschland
 
@@ -40,7 +40,7 @@ Beide Lösungen können auf zwei Arten bereitgestellt werden: über die Website 
 
 ### <a name="deploy-via-website"></a>Bereitstellen über die Website
 
-Befolgen Sie die Anweisungen im [Tutorial für die vorkonfigurierten Lösungen](../iot-accelerators/quickstart-remote-monitoring-deploy.md), das über die zuvor erwähnte Homepage abgerufen werden kann.
+Befolgen Sie die Anweisungen im [Tutorial für die vorkonfigurierten Lösungen](/previous-versions/azure/iot-accelerators/about-iot-accelerators), das über die zuvor erwähnte Homepage abgerufen werden kann.
 
 ### <a name="deploy-via-powershell"></a>Bereitstellen über PowerShell
 

@@ -3,12 +3,12 @@ title: Azure DevTest Labs-Nutzung für mehrere Labs und Abonnements
 description: Es wird beschrieben, wie Sie die Azure DevTest Labs-Nutzung für mehrere Labs und Abonnements melden.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 9640dc3fd74095a737f382994201dc5610af921a
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: d789b9849ec798a396e99420649792937422470f
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92152200"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98789937"
 ---
 # <a name="report-azure-devtest-labs-usage-across-multiple-labs-and-subscriptions"></a>Melden der Azure DevTest Labs-Nutzung für mehrere Labs und Abonnements
 
@@ -82,5 +82,5 @@ Nachdem das System eingerichtet wurde und die Verschiebung der Daten in den Lang
     Wählen Benutzer VM-Größen für Hochleistung aus (höhere Kosten)?
 -   Welche Marketplace-Images werden verwendet?
 
-    Werden benutzerdefinierte Images am häufigsten als VM-Basis verwendet, und sollte ein gemeinsamer Imagespeicher erstellt werden, z. B. [Shared Image Gallery](../virtual-machines/windows/shared-image-galleries.md) oder [Image Factory](image-factory-create.md)?
+    Werden benutzerdefinierte Images am häufigsten als VM-Basis verwendet, und sollte ein gemeinsamer Imagespeicher erstellt werden, z. B. [Shared Image Gallery](../virtual-machines/shared-image-galleries.md) oder [Image Factory](image-factory-create.md)?
 -   Welche benutzerdefinierten Images werden verwendet bzw. nicht verwendet?

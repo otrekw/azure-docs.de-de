@@ -3,12 +3,12 @@ title: Erstellen eines eigenständigen Azure Service Fabric-Clusters
 description: Erstellen Sie einen Azure Service Fabric-Cluster auf einem beliebigen Computer (physisch oder virtuell) unter Windows Server – lokal oder in einer Cloud.
 ms.topic: conceptual
 ms.date: 2/21/2019
-ms.openlocfilehash: 36883f2c8b09fa3f8f013e0267dafa2a8220e5d2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 41af655be07ccae2b66e75f5bfe87629cdb54924
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91843191"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98785683"
 ---
 # <a name="create-a-standalone-cluster-running-on-windows-server"></a>Erstellen eines eigenständigen Clusters unter Windows Server
 Mithilfe von Azure Service Fabric können Sie Service Fabric-Cluster auf beliebigen virtuellen oder physischen Computern erstellen, auf denen Windows Server ausgeführt wird. So können Sie Service Fabric-Anwendungen in jeder Umgebung bereitstellen und ausführen, in der sich miteinander verbundene Windows Server-Computer befinden – lokal oder bei einem Cloudanbieter. Service Fabric stellt ein Setuppaket zum Erstellen von Service Fabric-Clustern bereit. Es wird als eigenständiges Paket für Windows Server bezeichnet. Herkömmliche Service Fabric-Cluster in Azure stehen als verwalteter Dienst zur Verfügung, während eigenständige Service Fabric-Cluster Self-Service sind. Weitere Informationen zu den Unterschieden finden Sie unter [Azure-Cluster und eigenständige Service Fabric-Cluster im Vergleich](./service-fabric-deploy-anywhere.md).
@@ -116,7 +116,7 @@ Das Laufzeitpaket kann über einen anderen Computer, der über eine Internetverb
 *.\ClusterConfig.json* und *.\MicrosoftAzureServiceFabric.cab* sind hierbei die Pfade zur Clusterkonfiguration bzw. zur CAB-Datei der Laufzeit.
 
 ### <a name="step-2-connect-to-the-cluster"></a>Schritt 2: Herstellen einer Verbindung mit dem Cluster
-Verbinden Sie sich mit dem Cluster, um sicherzustellen, dass der Cluster ausgeführt wird und verfügbar ist. Das ServiceFabric-PowerShell-Modul wird zusammen mit der Laufzeit installiert.  Sie können sich über einen der Clusterknoten oder über einen Remotecomputer mit einer Service Fabric-Laufzeit mit dem Cluster verbinden.  Das Cmdlet [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) stellt eine Verbindung mit dem Cluster her.
+Verbinden Sie sich mit dem Cluster, um sicherzustellen, dass der Cluster ausgeführt wird und verfügbar ist. Das ServiceFabric-PowerShell-Modul wird zusammen mit der Laufzeit installiert.  Sie können sich über einen der Clusterknoten oder über einen Remotecomputer mit einer Service Fabric-Laufzeit mit dem Cluster verbinden.  Das Cmdlet [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster) stellt eine Verbindung mit dem Cluster her.
 
 Führen Sie den folgenden PowerShell-Befehl aus, um eine Verbindung mit einem unsicheren Cluster herzustellen:
 
@@ -129,7 +129,7 @@ Beispiel:
 Connect-ServiceFabricCluster -ConnectionEndpoint 192.13.123.234:19000
 ```
 
-Weitere Beispiele für die Herstellung einer Clusterverbindung finden Sie unter [Herstellen einer Verbindung mit einem sicheren Cluster](service-fabric-connect-to-secure-cluster.md). Verwenden Sie nach dem Herstellen einer Verbindung mit dem Cluster das Cmdlet [Get-ServiceFabricNode](/powershell/module/servicefabric/get-servicefabricnode?view=azureservicefabricps), um eine Liste mit den Knoten des Clusters sowie Statusinformationen für die einzelnen Knoten anzuzeigen. **HealthState** muss für jeden Knoten *OK* lauten.
+Weitere Beispiele für die Herstellung einer Clusterverbindung finden Sie unter [Herstellen einer Verbindung mit einem sicheren Cluster](service-fabric-connect-to-secure-cluster.md). Verwenden Sie nach dem Herstellen einer Verbindung mit dem Cluster das Cmdlet [Get-ServiceFabricNode](/powershell/module/servicefabric/get-servicefabricnode), um eine Liste mit den Knoten des Clusters sowie Statusinformationen für die einzelnen Knoten anzuzeigen. **HealthState** muss für jeden Knoten *OK* lauten.
 
 ```powershell
 PS C:\temp\Microsoft.Azure.ServiceFabric.WindowsServer> Get-ServiceFabricNode |Format-Table

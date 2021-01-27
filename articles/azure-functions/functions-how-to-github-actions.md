@@ -6,18 +6,18 @@ ms.topic: conceptual
 ms.date: 10/07/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python, github-actions-azure
-ms.openlocfilehash: bc80a4f5c6c2919f0cb3faa15958fb75eed70270
-ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
+ms.openlocfilehash: cc356b307a752b10ba6f1c1a7151381c5644ca1e
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98035222"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98762732"
 ---
 # <a name="continuous-delivery-by-using-github-action"></a>Continuous Delivery mit GitHub Actions
 
 Verwenden Sie [GitHub Actions](https://github.com/features/actions), um einen Workflow zum automatischen Erstellen und Bereitstellen von Code in Ihrer Funktions-App in Azure Functions zu definieren. 
 
-In GitHub Actions ist ein [Workflow](https://docs.github.com/en/free-pro-team@latest/actions/learn-github-actions/introduction-to-github-actions#the-components-of-github-actions) ein automatisierter Prozess, den Sie in Ihrem GitHub-Repository definieren. Dieser Prozess informiert GitHub darüber, wie Ihr Funktions-App-Projekt in GitHub erstellt und bereitgestellt werden soll. 
+In GitHub Actions ist ein [Workflow](https://docs.github.com/en/actions/learn-github-actions/introduction-to-github-actions#the-components-of-github-actions) ein automatisierter Prozess, den Sie in Ihrem GitHub-Repository definieren. Dieser Prozess informiert GitHub darüber, wie Ihr Funktions-App-Projekt in GitHub erstellt und bereitgestellt werden soll. 
 
 Ein Workflow wird durch eine YAML-Datei im Pfad `/.github/workflows/` in Ihrem Repository definiert. Diese Definition enthält die verschiedenen Schritte und Parameter, die den Workflow bilden. 
 
@@ -40,7 +40,7 @@ Bei einem Azure Functions-Workflow umfasst die Datei drei Abschnitte:
 
 Die empfohlene Vorgehensweise für die Authentifizierung mit Azure Functions für GitHub Actions ist die Verwendung eines Veröffentlichungsprofils. Sie können sich auch mit einem Dienstprinzipal authentifizieren. Weitere Informationen finden Sie in [diesem GitHub Actions-Repository](https://github.com/Azure/functions-action). 
 
-Nachdem Sie die Anmeldeinformationen des Veröffentlichungsprofils als [GitHub-Geheimnis](https://docs.github.com/en/free-pro-team@latest/actions/reference/encrypted-secrets) gespeichert haben, verwenden Sie dieses Geheimnis in Ihrem Workflow, um sich bei Azure zu authentifizieren. 
+Nachdem Sie die Anmeldeinformationen des Veröffentlichungsprofils als [GitHub-Geheimnis](https://docs.github.com/en/actions/reference/encrypted-secrets) gespeichert haben, verwenden Sie dieses Geheimnis in Ihrem Workflow, um sich bei Azure zu authentifizieren. 
 
 #### <a name="download-your-publish-profile"></a>Herunterladen des Veröffentlichungsprofils
 

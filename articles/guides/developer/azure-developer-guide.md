@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/18/2019
 ms.author: glenga
-ms.openlocfilehash: 9999b2fa116a2336f8e50fb166e5d870ae4b5a5f
-ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
+ms.openlocfilehash: a193ccd060c75cf4031449ddf3318af6e4691436
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98165058"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98786468"
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Anleitung mit den ersten Schritten für Azure-Entwickler
 
@@ -84,7 +84,7 @@ Anstatt sich darum zu kümmern, eine ganze Anwendung oder die Infrastruktur zum 
 
 > **Einsatzgebiete**: Verwenden Sie Azure Functions, wenn Sie über Code verfügen, der von anderen Azure-Diensten, von webbasierten-Ereignissen oder nach einem Zeitplan ausgelöst wird. Sie können Functions auch verwenden, wenn Sie den Mehraufwand eines vollständigen gehosteten Projekts nicht brauchen oder wenn nur für den Zeitraum zahlen wollen, in dem Ihr Code ausgeführt wird. Weitere Informationen finden Sie in der [Übersicht über Azure Functions](../../azure-functions/functions-overview.md).
 >
-> **Erste Schritte**: Befolgen Sie das Schnellstart-Tutorial für Functions, um [Ihre erste Funktion](../../azure-functions/functions-create-first-azure-function.md) im Portal zu erstellen.
+> **Erste Schritte**: Befolgen Sie das Schnellstart-Tutorial für Functions, um [Ihre erste Funktion](../../azure-functions/functions-get-started.md) im Portal zu erstellen.
 >
 > **Jetzt testen**: Mit Azure Functions können Sie Ihren Code ausführen, ohne sich für ein Azure-Konto registrieren zu müssen. Probieren Sie es jetzt aus, und [erstellen Sie Ihre erste Azure-Funktion](https://tryappservice.azure.com/).
 

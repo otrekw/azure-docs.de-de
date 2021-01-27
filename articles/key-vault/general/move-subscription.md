@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 05/05/2020
 ms.author: mbaldwin
 Customer intent: As a key vault administrator, I want to move my vault to another subscription.
-ms.openlocfilehash: d881394391b7967fe602155eefc9844e013de34e
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: 23be8e667d435c2d91d32ebeac30b1e96b45a77e
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97724747"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98790290"
 ---
 # <a name="moving-an-azure-key-vault-to-another-subscription"></a>Verschieben einer Azure Key Vault-Instanz in ein anderes Abonnement
 
@@ -29,7 +29,7 @@ ms.locfileid: "97724747"
 > Stellen Sie sicher, dass Ihnen die Auswirkungen dieser Änderung bekannt sind, und befolgen Sie die Anleitungen in diesem Artikel sorgfältig, bevor Sie sich entscheiden, einen Schlüsseltresor in ein neues Abonnement zu verschieben.
 > Wenn Sie verwaltete Dienstidentitäten (Managed Service Identities, MSI) verwenden, lesen Sie die Anweisungen für Aktionen im Anschluss an das Verschieben am Ende des Dokuments. 
 
-[Azure Key Vault](overview.md) wird automatisch an die standardmäßige [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis)-Mandanten-ID für das Abonnement gebunden, in dem die Instanz erstellt wurde. Die Mandanten-ID, die Ihrem Abonnement zugeordnet ist, finden Sie in diesem [Leitfaden](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-how-to-find-tenant). Außerdem werden auch alle Zugriffsrichtlinieneinträge und Rollenzuweisung an diese Mandanten-ID gebunden.  Wenn Sie Ihr Azure-Abonnement aus Mandant A in Mandant B verschieben, können die Dienstprinzipale (Benutzer und Anwendungen) in Mandant B nicht auf Ihre vorhandenen Schlüsseltresore zugreifen. Gehen Sie wie folgt vor, um dies zu beheben:
+[Azure Key Vault](overview.md) wird automatisch an die standardmäßige [Azure Active Directory](../../active-directory/fundamentals/active-directory-whatis.md)-Mandanten-ID für das Abonnement gebunden, in dem die Instanz erstellt wurde. Die Mandanten-ID, die Ihrem Abonnement zugeordnet ist, finden Sie in diesem [Leitfaden](../../active-directory/fundamentals/active-directory-how-to-find-tenant.md). Außerdem werden auch alle Zugriffsrichtlinieneinträge und Rollenzuweisung an diese Mandanten-ID gebunden.  Wenn Sie Ihr Azure-Abonnement aus Mandant A in Mandant B verschieben, können die Dienstprinzipale (Benutzer und Anwendungen) in Mandant B nicht auf Ihre vorhandenen Schlüsseltresore zugreifen. Gehen Sie wie folgt vor, um dies zu beheben:
 
 * Ändern Sie die Mandanten-ID, die allen vorhandenen Schlüsseltresoren im Abonnement zugeordnet ist, in den Mandanten B.
 * Entfernen Sie alle vorhandenen Zugriffsrichtlinieneinträge.
@@ -37,8 +37,8 @@ ms.locfileid: "97724747"
 
 Weitere Informationen zu Azure Key Vault und Azure Active Directory finden Sie in folgenden Artikeln:
 - [Informationen zu Azure Key Vault](overview.md)
-- [Was ist Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis)
-- [Ermitteln der Mandanten-ID](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-how-to-find-tenant)
+- [Was ist Azure Active Directory?](../../active-directory/fundamentals/active-directory-whatis.md)
+- [Ermitteln der Mandanten-ID](../../active-directory/fundamentals/active-directory-how-to-find-tenant.md)
 
 ## <a name="limitations"></a>Einschränkungen
 
@@ -49,11 +49,11 @@ Einige Dienstprinzipale (Benutzer und Anwendungen) sind an einen bestimmten Mand
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Zugriffsebene [Mitwirkender](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#contributor) oder höher für das aktuelle Abonnement mit dem Schlüsseltresor Sie können eine Rolle über das [Azure-Portal](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal), die [Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) oder [PowerShell](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell) zuweisen.
-* Zugriffsebene [Mitwirkender](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#contributor) oder höher für das Abonnement, in das Sie Ihren Schlüsseltresor verschieben möchten. Sie können eine Rolle über das [Azure-Portal](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal), die [Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) oder [PowerShell](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell) zuweisen.
-* Eine Ressourcengruppe im neuen Abonnement Sie können eine über das [Azure-Portal](https://docs.microsoft.com/azure/azure-resource-manager/management/manage-resource-groups-portal) oder per [PowerShell](https://docs.microsoft.com/azure/azure-resource-manager/management/manage-resource-groups-powershell) bzw. die [Azure CLI](https://docs.microsoft.com/azure/azure-resource-manager/management/manage-resource-groups-cli) erstellen.
+* Zugriffsebene [Mitwirkender](../../role-based-access-control/built-in-roles.md#contributor) oder höher für das aktuelle Abonnement mit dem Schlüsseltresor Sie können eine Rolle über das [Azure-Portal](../../role-based-access-control/role-assignments-portal.md), die [Azure CLI](../../role-based-access-control/role-assignments-cli.md) oder [PowerShell](../../role-based-access-control/role-assignments-powershell.md) zuweisen.
+* Zugriffsebene [Mitwirkender](../../role-based-access-control/built-in-roles.md#contributor) oder höher für das Abonnement, in das Sie Ihren Schlüsseltresor verschieben möchten. Sie können eine Rolle über das [Azure-Portal](../../role-based-access-control/role-assignments-portal.md), die [Azure CLI](../../role-based-access-control/role-assignments-cli.md) oder [PowerShell](../../role-based-access-control/role-assignments-powershell.md) zuweisen.
+* Eine Ressourcengruppe im neuen Abonnement Sie können eine über das [Azure-Portal](../../azure-resource-manager/management/manage-resource-groups-portal.md) oder per [PowerShell](../../azure-resource-manager/management/manage-resource-groups-powershell.md) bzw. die [Azure CLI](../../azure-resource-manager/management/manage-resource-groups-cli.md) erstellen.
 
-Benutzerdefinierte Rollen können mit dem [Azure-Portal](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-list-portal), [PowerShell](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-list-powershell), der [Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-list-cli) oder der [REST-API](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-list-rest) erstellt werden.
+Benutzerdefinierte Rollen können mit dem [Azure-Portal](../../role-based-access-control/role-assignments-list-portal.md), [PowerShell](../../role-based-access-control/role-assignments-list-powershell.md), der [Azure CLI](../../role-based-access-control/role-assignments-list-cli.md) oder der [REST-API](../../role-based-access-control/role-assignments-list-rest.md) erstellt werden.
 
 
 ## <a name="moving-a-key-vault-to-a-new-subscription"></a>Verschieben eines Schlüsseltresors in ein neues Abonnement.
@@ -96,7 +96,7 @@ az keyvault update -n myvault --set Properties.tenantId=$tenantId          # Upd
 ### <a name="update-access-policies-and-role-assignments"></a>Aktualisieren von Zugriffsrichtlinien und Rollenzuweisungen
 
 > [!NOTE]
-> Wenn Key Vault das Berechtigungsmodell [Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview) verwendet, müssen Sie zudem Rollenzuweisungen für den Schlüsseltresor entfernen. Sie können Rollenzuweisungen über das [Azure-Portal](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal), die [Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli) oder [PowerShell](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell) entfernen. 
+> Wenn Key Vault das Berechtigungsmodell [Azure RBAC](../../role-based-access-control/overview.md) verwendet, müssen Sie zudem Rollenzuweisungen für den Schlüsseltresor entfernen. Sie können Rollenzuweisungen über das [Azure-Portal](../../role-based-access-control/role-assignments-portal.md), die [Azure CLI](../../role-based-access-control/role-assignments-cli.md) oder [PowerShell](../../role-based-access-control/role-assignments-powershell.md) entfernen. 
 
 Nachdem Sie Ihren Tresor nun der richtigen Mandanten-ID zugeordnet haben und alte Zugriffsrichtlinieneinträge und Rollenzuweisungen entfernt wurden, können Sie neue Zugriffsrichtlinieneinträge bzw. Rollenzuweisungen festlegen.
 
@@ -106,9 +106,9 @@ Informationen zum Zuweisen von Richtlinien finden Sie unter:
 - [Zuweisen einer Key Vault-Zugriffsrichtlinie mit Azure PowerShell](assign-access-policy-powershell.md)
 
 Informationen zum Hinzufügen von Rollenzuweisungen finden Sie unter:
-- [Hinzufügen oder Entfernen von Azure-Rollenzuweisungen über das Azure-Portal](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
-- [Hinzufügen oder Entfernen von Azure-Rollenzuweisungen mithilfe der Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli)
-- [Hinzufügen oder Entfernen von Azure-Rollenzuweisungen mithilfe von Azure PowerShell](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell)
+- [Hinzufügen oder Entfernen von Azure-Rollenzuweisungen über das Azure-Portal](../../role-based-access-control/role-assignments-portal.md)
+- [Hinzufügen oder Entfernen von Azure-Rollenzuweisungen mithilfe der Azure-Befehlszeilenschnittstelle](../../role-based-access-control/role-assignments-cli.md)
+- [Hinzufügen oder Entfernen von Azure-Rollenzuweisungen mithilfe von Azure PowerShell](../../role-based-access-control/role-assignments-powershell.md)
 
 
 ### <a name="update-managed-identities"></a>Aktualisieren von verwalteten Identitäten

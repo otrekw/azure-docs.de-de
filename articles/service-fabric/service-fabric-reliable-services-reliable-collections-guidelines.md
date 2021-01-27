@@ -3,12 +3,12 @@ title: Richtlinien für zuverlässige Sammlungen
 description: Richtlinien und Empfehlungen für die Verwendung von zuverlässigen Sammlungen (Reliable Collections) in Service Fabric in einer Azure Service Fabric-Anwendung.
 ms.topic: conceptual
 ms.date: 03/10/2020
-ms.openlocfilehash: 63e6de436bdaceed7f1d2a78e8385dd14bfc0ed6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f12db76f324d07c178b49150d4e574476e7d9929
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86260910"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98784324"
 ---
 # <a name="guidelines-and-recommendations-for-reliable-collections-in-azure-service-fabric"></a>Richtlinien und Empfehlungen für Reliable Collections in Azure Service Fabric
 Dieser Abschnitt enthält Richtlinien für die Verwendung von Reliable State Manager und Reliable Collections. Er soll Benutzern helfen, häufige Fehlerquellen zu vermeiden.
@@ -64,4 +64,4 @@ Beachten Sie Folgendes, wenn Sie sich für die Verwendung von flüchtigen zuverl
   * [Konfigurieren des Reliable State Managers](service-fabric-reliable-services-configuration.md)
 * Andere
   * [Reliable Services – Schnellstart](service-fabric-reliable-services-quick-start.md)
-  * [Entwicklerreferenz für zuverlässige Auflistungen](/dotnet/api/microsoft.servicefabric.data.collections?view=azure-dotnet#microsoft_servicefabric_data_collections)
+  * [Entwicklerreferenz für zuverlässige Auflistungen](/dotnet/api/microsoft.servicefabric.data.collections#microsoft_servicefabric_data_collections)

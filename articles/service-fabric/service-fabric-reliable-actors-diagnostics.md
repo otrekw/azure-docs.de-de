@@ -5,15 +5,15 @@ author: abhishekram
 ms.topic: conceptual
 ms.date: 10/26/2017
 ms.author: abhisram
-ms.openlocfilehash: a38a11d9cf062cd0a45890d43afe9b2530b2b7bb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ebaedb5369f3b39372262bfde526706e8d069418
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86258460"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98789615"
 ---
 # <a name="diagnostics-and-performance-monitoring-for-reliable-actors"></a>Diagnose und Leistungsüberwachung für Reliable Actors
-Die Reliable Actors-Laufzeit gibt [EventSource](/dotnet/api/system.diagnostics.tracing.eventsource?view=netcore-3.1)-Ereignisse und [Leistungsindikatoren](/dotnet/api/system.diagnostics.performancecounter?view=dotnet-plat-ext-3.1) aus. Diese bieten Einblicke in den Laufzeitbetrieb und Hilfe bei der Problembehandlung und Leistungsüberwachung.
+Die Reliable Actors-Laufzeit gibt [EventSource](/dotnet/api/system.diagnostics.tracing.eventsource)-Ereignisse und [Leistungsindikatoren](/dotnet/api/system.diagnostics.performancecounter) aus. Diese bieten Einblicke in den Laufzeitbetrieb und Hilfe bei der Problembehandlung und Leistungsüberwachung.
 
 ## <a name="eventsource-events"></a>EventSource-Ereignisse
 Der EventSource-Anbietername für die Reliable Actors-Laufzeit lautet „Microsoft-ServiceFabric-Actors“. Ereignisse aus dieser Ereignisquelle werden beim [Debuggen der Actor-Anwendung in Visual Studio](service-fabric-debugging-your-application.md) im Fenster für [Diagnoseereignisse](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md#view-service-fabric-system-events-in-visual-studio) angezeigt.
@@ -50,7 +50,7 @@ Für die Kategorie `Service Fabric Actor`haben die Namen von Leistungsindikatori
 
 `ServiceFabricPartitionID_ActorsRuntimeInternalID`
 
-*ServiceFabricPartitionID* ist die Zeichenfolgendarstellung der Service Fabric-Partitions-ID, mit der die Leistungsindikatorinstanz verknüpft ist. Die Partitions-ID ist eine GUID. Ihre Zeichenfolgendarstellung wird mithilfe der [`Guid.ToString`](/dotnet/api/system.guid.tostring?view=netcore-3.1#System_Guid_ToString_System_String_)-Methode mit dem Formatbezeichner „D“ generiert.
+*ServiceFabricPartitionID* ist die Zeichenfolgendarstellung der Service Fabric-Partitions-ID, mit der die Leistungsindikatorinstanz verknüpft ist. Die Partitions-ID ist eine GUID. Ihre Zeichenfolgendarstellung wird mithilfe der [`Guid.ToString`](/dotnet/api/system.guid.tostring#System_Guid_ToString_System_String_)-Methode mit dem Formatbezeichner „D“ generiert.
 
 *ActorRuntimeInternalID* ist die Zeichenfolgendarstellung einer 64-Bit-Ganzzahl, die von der Fabric Actors-Laufzeit zur internen Verwendung generiert wird. Sie wird in den Namen der Leistungsindikatorinstanz eingefügt, um deren Eindeutigkeit sicherzustellen und Konflikte mit anderen Namen von Leistungsindikatorinstanzen zu vermeiden. Benutzer sollten nicht versuchen, diesen Teil des Namens der Leistungsindikatorinstanz zu interpretieren.
 
@@ -69,7 +69,7 @@ Für die Kategorie `Service Fabric Actor Method`haben die Namen von Leistungsind
 
 *ActorsRuntimeMethodId* ist die Zeichenfolgendarstellung einer 32-Bit-Ganzzahl, die von der Fabric Actors-Laufzeit zur internen Verwendung generiert wird. Sie wird in den Namen der Leistungsindikatorinstanz eingefügt, um deren Eindeutigkeit sicherzustellen und Konflikte mit anderen Namen von Leistungsindikatorinstanzen zu vermeiden. Benutzer sollten nicht versuchen, diesen Teil des Namens der Leistungsindikatorinstanz zu interpretieren.
 
-*ServiceFabricPartitionID* ist die Zeichenfolgendarstellung der Service Fabric-Partitions-ID, mit der die Leistungsindikatorinstanz verknüpft ist. Die Partitions-ID ist eine GUID. Ihre Zeichenfolgendarstellung wird mithilfe der [`Guid.ToString`](/dotnet/api/system.guid.tostring?view=netcore-3.1#System_Guid_ToString_System_String_)-Methode mit dem Formatbezeichner „D“ generiert.
+*ServiceFabricPartitionID* ist die Zeichenfolgendarstellung der Service Fabric-Partitions-ID, mit der die Leistungsindikatorinstanz verknüpft ist. Die Partitions-ID ist eine GUID. Ihre Zeichenfolgendarstellung wird mithilfe der [`Guid.ToString`](/dotnet/api/system.guid.tostring#System_Guid_ToString_System_String_)-Methode mit dem Formatbezeichner „D“ generiert.
 
 *ActorRuntimeInternalID* ist die Zeichenfolgendarstellung einer 64-Bit-Ganzzahl, die von der Fabric Actors-Laufzeit zur internen Verwendung generiert wird. Sie wird in den Namen der Leistungsindikatorinstanz eingefügt, um deren Eindeutigkeit sicherzustellen und Konflikte mit anderen Namen von Leistungsindikatorinstanzen zu vermeiden. Benutzer sollten nicht versuchen, diesen Teil des Namens der Leistungsindikatorinstanz zu interpretieren.
 
