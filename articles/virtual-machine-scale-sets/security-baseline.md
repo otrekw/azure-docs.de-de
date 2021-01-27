@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 68dc7c36159523bcc46e93a4784e9d038037a919
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: b5ce8e3d6482c13a8ba02065f2a97074610c25bb
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98201211"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98877713"
 ---
 # <a name="azure-security-baseline-for-virtual-machine-scale-sets"></a>Azure-Sicherheitsbaseline für VM-Skalierungsgruppen
 
@@ -848,7 +848,7 @@ Derzeit ist die adaptive Anwendungssteuerung für VM-Skalierungsgruppen nicht ve
 
 * [Konfigurieren und Verwalten von Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-* [Herunterladen einer Vorlage für einen virtuellen Computer](../virtual-machines/windows/download-template.md)
+* [Herunterladen einer Vorlage für einen virtuellen Computer](/previous-versions/azure/virtual-machines/windows/download-template)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -892,7 +892,7 @@ Derzeit ist die adaptive Anwendungssteuerung für VM-Skalierungsgruppen nicht ve
 
 In den meisten Fällen sind die Microsoft-Basisvorlagen in Kombination mit Azure Automation Desired State Configuration beim Erfüllen und Verwalten der Sicherheitsanforderungen nützlich.
 
-* [Herunterladen einer Vorlage für einen virtuellen Computer](../virtual-machines/windows/download-template.md)
+* [Herunterladen einer Vorlage für einen virtuellen Computer](/previous-versions/azure/virtual-machines/windows/download-template)
 
 * [Informationen zum Erstellen von ARM-Vorlagen](../virtual-machines/windows/ps-template.md)
 

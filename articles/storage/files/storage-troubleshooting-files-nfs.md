@@ -8,12 +8,12 @@ ms.date: 09/15/2020
 ms.author: jeffpatt
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: 2a37c86268d2424971058021044c60185a25348f
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: ed86cc76984388618c177590b3f6358421f09f65
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97916455"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878492"
 ---
 # <a name="troubleshoot-azure-nfs-file-shares"></a>Behandeln von Problemen mit Azure NFS-Dateifreigaben
 
@@ -25,7 +25,7 @@ In diesem Artikel sind einige allgemeine Probleme aufgeführt, die im Zusammenha
 Azure Files lässt keine alphanumerische UID/GID zu. Daher muss idmapping deaktiviert sein. 
 
 ### <a name="cause-2-idmapping-was-disabled-but-got-re-enabled-after-encountering-bad-filedir-name"></a>Ursache 2: idmapping wurde deaktiviert, wurde jedoch wieder aktiviert, nachdem ein ungültiger Datei-/Verzeichnisname gefunden wurde.
-Auch wenn idmapping ordnungsgemäß deaktiviert wurde, werden die Einstellungen zum Deaktivieren von idmapping in einigen Fällen überschrieben. Wenn Azure Files beispielsweise auf einen ungültigen Dateinamen stößt, wird ein Fehler zurückgegeben. Wenn dieser bestimmte Fehlercode erkannt wird, wird idmapping erneut durch den NFS v4.1-Linux-Client aktiviert, und die zukünftigen Anforderungen werden wieder mit alphanumerischer UID/GID gesendet. Eine Liste der bei Azure Files nicht unterstützten Zeichen finden Sie in diesem [Artikel](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#:~:text=The%20Azure%20File%20service%20naming%20rules%20for%20directory,be%20no%20more%20than%20255%20characters%20in%20length). Der Doppelpunkt ist eines der nicht unterstützten Zeichen. 
+Auch wenn idmapping ordnungsgemäß deaktiviert wurde, werden die Einstellungen zum Deaktivieren von idmapping in einigen Fällen überschrieben. Wenn Azure Files beispielsweise auf einen ungültigen Dateinamen stößt, wird ein Fehler zurückgegeben. Wenn dieser bestimmte Fehlercode erkannt wird, wird idmapping erneut durch den NFS v4.1-Linux-Client aktiviert, und die zukünftigen Anforderungen werden wieder mit alphanumerischer UID/GID gesendet. Eine Liste der bei Azure Files nicht unterstützten Zeichen finden Sie in diesem [Artikel](/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata). Der Doppelpunkt ist eines der nicht unterstützten Zeichen. 
 
 ### <a name="workaround"></a>Problemumgehung
 Überprüfen Sie, ob idmapping deaktiviert ist und nicht erneut aktiviert wird. Führen Sie dann Folgendes aus:
@@ -68,7 +68,7 @@ NFS ist nur für Speicherkonten mit der folgenden Konfiguration verfügbar:
 - Ebene – Premium
 - Kontoart – FileStorage
 - Redundanz – LRS
-- Regionen – [Liste der unterstützten Regionen](https://docs.microsoft.com/azure/storage/files/storage-files-how-to-create-nfs-shares?tabs=azure-portal#regional-availability)
+- Regionen – [Liste der unterstützten Regionen](./storage-files-how-to-create-nfs-shares.md?tabs=azure-portal#regional-availability)
 
 #### <a name="solution"></a>Lösung
 

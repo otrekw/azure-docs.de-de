@@ -9,16 +9,16 @@ ms.topic: how-to
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 22bd1ed88f61689eec9312392f7f58d137f703e0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9edade1aa54d6f4f8160a107f84e6da2e6cf316e
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91331521"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878018"
 ---
 # <a name="create-a-scale-set-from-a-generalized-image-using-powershell"></a>Erstellen einer Skalierungsgruppe aus einem generalisierten Image mit PowerShell 
 
-Erstellen Sie eine VM aus einer generalisierten Imageversion, die in einer [Shared Image Gallery](shared-image-galleries.md) gespeichert wird. Wenn Sie eine Skalierungsgruppe mit einem spezialisierten Image erstellen möchten, finden Sie weitere Informationen unter [Erstellen von Skalierungsgruppeninstanzen aus einem spezialisierten Image](instance-specialized-image-version-powershell.md).
+Erstellen Sie eine VM aus einer generalisierten Imageversion, die in einer [Shared Image Gallery](../virtual-machines/shared-image-galleries.md) gespeichert wird. Wenn Sie eine Skalierungsgruppe mit einem spezialisierten Image erstellen möchten, finden Sie weitere Informationen unter [Erstellen von Skalierungsgruppeninstanzen aus einem spezialisierten Image](instance-specialized-image-version-powershell.md).
 
 Nachdem Sie ein generalisiertes Image erstellt haben, können Sie mithilfe des Cmdlets [New-AzVmss](/powershell/module/az.compute/new-azvmss) eine VM-Skalierungsgruppe erstellen. 
 
@@ -173,7 +173,7 @@ New-AzVmss `
 Die Erstellung und Konfiguration aller Ressourcen und virtuellen Computer der Skalierungsgruppe dauert einige Minuten.
 
 ## <a name="next-steps"></a>Nächste Schritte
-[Azure Image Builder (Vorschauversion)](../virtual-machines/linux/image-builder-overview.md) hilft beim Automatisieren der Erstellung von Imageversionen. Sie können den Dienst sogar zum Aktualisieren und [Erstellen einer neuen Imageversion aus einer vorhandenen](../virtual-machines/linux/image-builder-gallery-update-image-version.md) verwenden. 
+[Azure Image Builder (Vorschauversion)](../virtual-machines/image-builder-overview.md) hilft beim Automatisieren der Erstellung von Imageversionen. Sie können den Dienst sogar zum Aktualisieren und [Erstellen einer neuen Imageversion aus einer vorhandenen](../virtual-machines/linux/image-builder-gallery-update-image-version.md) verwenden. 
 
 Sie können auch mithilfe von Vorlagen eine Ressource im Katalog für freigegebene Images erstellen. Es stehen mehrere Azure-Schnellstartvorlagen zur Verfügung: 
 
@@ -181,4 +181,4 @@ Sie können auch mithilfe von Vorlagen eine Ressource im Katalog für freigegebe
 - [Erstellen einer Imagedefinition in einem Katalog mit freigegebenen Images](https://azure.microsoft.com/resources/templates/101-sig-image-definition-create/)
 - [Erstellen einer Imageversion in einem Katalog mit freigegebenen Images](https://azure.microsoft.com/resources/templates/101-sig-image-version-create/)
 
-Weitere Informationen zu Katalogen mit geteilten Images finden Sie in der [Übersicht](shared-image-galleries.md). Sollten Probleme auftreten, sehen Sie unter [Problembehandlung für Kataloge mit freigegebenen Images](../virtual-machines/troubleshooting-shared-images.md) nach.
+Weitere Informationen zu Katalogen mit geteilten Images finden Sie in der [Übersicht](../virtual-machines/shared-image-galleries.md). Sollten Probleme auftreten, sehen Sie unter [Problembehandlung für Kataloge mit freigegebenen Images](../virtual-machines/troubleshooting-shared-images.md) nach.

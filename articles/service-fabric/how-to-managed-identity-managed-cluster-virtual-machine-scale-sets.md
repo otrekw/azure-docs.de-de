@@ -4,19 +4,19 @@ description: In diesem Artikel wird gezeigt, wie Sie einem verwalteten Service F
 ms.topic: how-to
 ms.date: 11/24/2020
 ms.custom: references_regions
-ms.openlocfilehash: 00e679b07a44b799b6ac6677201bb59eeddcd6cf
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: 9edcf75451f43f2a00cd01d5ca7f385704b1ea7f
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96839716"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878425"
 ---
 # <a name="add-a-managed-identity-to-a-service-fabric-managed-cluster-node-type-preview"></a>Hinzufügen einer verwalteten Identität zu einem verwalteten Service Fabric-Clusterknotentyp (Vorschau)
 
-Jeder Knotentyp in einem verwalteten Service Fabric-Cluster wird von einer VM-Skalierungsgruppe unterstützt. Damit verwaltete Identitäten mit einem verwalteten Clusterknotentyp verwendet werden können, wurde den Knotentypdefinitionen die `vmManagedIdentity`-Eigenschaft hinzugefügt. Diese enthält eine Liste der Identitäten, die verwendet werden können (`userAssignedIdentities`). Die Funktionalität ähnelt der, mit der verwaltete Identitäten in nicht verwalteten Clustern verwendet werden und die Sie z. B. bei der Verwendung einer verwalteten Identität mit der [Azure Key Vault-Erweiterung für VM-Skalierungsgruppen](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-windows) finden.
+Jeder Knotentyp in einem verwalteten Service Fabric-Cluster wird von einer VM-Skalierungsgruppe unterstützt. Damit verwaltete Identitäten mit einem verwalteten Clusterknotentyp verwendet werden können, wurde den Knotentypdefinitionen die `vmManagedIdentity`-Eigenschaft hinzugefügt. Diese enthält eine Liste der Identitäten, die verwendet werden können (`userAssignedIdentities`). Die Funktionalität ähnelt der, mit der verwaltete Identitäten in nicht verwalteten Clustern verwendet werden und die Sie z. B. bei der Verwendung einer verwalteten Identität mit der [Azure Key Vault-Erweiterung für VM-Skalierungsgruppen](../virtual-machines/extensions/key-vault-windows.md) finden.
 
 
-Ein Beispiel für eine Bereitstellung eines verwalteten Service Fabric-Clusters, der eine verwaltete Identität für einen Knotentyp nutzt, finden Sie in [dieser Vorlage](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/SF-Managed-Standard-SKU-1-NT-MI). Eine Liste der unterstützten Regionen finden Sie in den [häufig gestellten Fragen zu verwalteten Clustern](https://docs.microsoft.com/azure/service-fabric/faq-managed-cluster#what-regions-are-supported-in-the-preview).
+Ein Beispiel für eine Bereitstellung eines verwalteten Service Fabric-Clusters, der eine verwaltete Identität für einen Knotentyp nutzt, finden Sie in [dieser Vorlage](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/SF-Managed-Standard-SKU-1-NT-MI). Eine Liste der unterstützten Regionen finden Sie in den [häufig gestellten Fragen zu verwalteten Clustern](./faq-managed-cluster.md#what-regions-are-supported-in-the-preview).
 
 > [!NOTE]
 > Für dieses Feature werden derzeit nur vom Benutzer zugewiesene Identitäten unterstützt.
@@ -26,7 +26,7 @@ Ein Beispiel für eine Bereitstellung eines verwalteten Service Fabric-Clusters,
 Vorbereitungen
 
 * Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
-* Wenn Sie PowerShell verwenden möchten, [installieren](https://docs.microsoft.com/cli/azure/install-azure-cli) Sie die Azure-Befehlszeilenschnittstelle, um CLI-Verweisbefehle auszuführen.
+* Wenn Sie PowerShell verwenden möchten, [installieren](/cli/azure/install-azure-cli) Sie die Azure-Befehlszeilenschnittstelle, um CLI-Verweisbefehle auszuführen.
 
 ## <a name="create-a-user-assigned-managed-identity"></a>Erstellen einer benutzerseitig zugewiesenen verwalteten Identität 
 
@@ -131,4 +131,4 @@ Wenn eine Rollenzuweisung nicht ordnungsgemäß ausgeführt werden kann, tritt b
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Bereitstellen einer App in einem verwalteten Service Fabric-Cluster](https://docs.microsoft.com/azure/service-fabric/tutorial-managed-cluster-deploy-app) 
+> [Bereitstellen einer App in einem verwalteten Service Fabric-Cluster](./tutorial-managed-cluster-deploy-app.md)

@@ -10,16 +10,16 @@ ms.date: 05/01/2020
 ms.author: cynthn
 ms.reviewer: akjosh
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: f0f9b79e193c06b6492cfffcbf25811edb5c40d3
-ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
+ms.openlocfilehash: 2ecc2bfe6bdc06ede61e6c4d1e6eccfc9ef6323a
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97967020"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878001"
 ---
 # <a name="create-a-scale-set-using-a-specialized-image-version-with-the-azure-cli"></a>Erstellen einer Skalierungsgruppe mithilfe einer spezialisierten Imageversion mithilfe der Azure CLI
 
-Erstellen Sie eine Skalierungsgruppe aus einer [spezialisierten Imageversion](../virtual-machines/linux/shared-image-galleries.md#generalized-and-specialized-images), die in einer Shared Image Gallery gespeichert wird. Wenn Sie eine Skalierungsgruppe mit einer generalisierten Imageversion erstellen möchten, finden Sie weitere Informationen unter [Erstellen einer Skalierungsgruppe aus einem generalisierten Image](instance-generalized-image-version-cli.md).
+Erstellen Sie eine Skalierungsgruppe aus einer [spezialisierten Imageversion](../virtual-machines/shared-image-galleries.md#generalized-and-specialized-images), die in einer Shared Image Gallery gespeichert wird. Wenn Sie eine Skalierungsgruppe mit einer generalisierten Imageversion erstellen möchten, finden Sie weitere Informationen unter [Erstellen einer Skalierungsgruppe aus einem generalisierten Image](instance-generalized-image-version-cli.md).
 
 Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für dieses Tutorial Version 2.4.0 oder höher der Azure CLI ausführen. Führen Sie `az --version` aus, um die Version zu ermitteln. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sie bei Bedarf unter [Installieren der Azure CLI]( /cli/azure/install-azure-cli).
 
@@ -54,7 +54,7 @@ az vmss create \
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-[Azure Image Builder (Vorschauversion)](../virtual-machines/linux/image-builder-overview.md) hilft beim Automatisieren der Erstellung von Imageversionen. Sie können den Dienst sogar zum Aktualisieren und [Erstellen einer neuen Imageversion aus einer vorhandenen](../virtual-machines/linux/image-builder-gallery-update-image-version.md) verwenden. 
+[Azure Image Builder (Vorschauversion)](../virtual-machines/image-builder-overview.md) hilft beim Automatisieren der Erstellung von Imageversionen. Sie können den Dienst sogar zum Aktualisieren und [Erstellen einer neuen Imageversion aus einer vorhandenen](../virtual-machines/linux/image-builder-gallery-update-image-version.md) verwenden. 
 
 Sie können auch mithilfe von Vorlagen eine Ressource im Katalog für freigegebene Images erstellen. Es stehen mehrere Azure-Schnellstartvorlagen zur Verfügung: 
 

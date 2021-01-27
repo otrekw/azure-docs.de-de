@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 09/13/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 8e657386c417ce3407aea9b3765419e1d2b70bb9
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.openlocfilehash: 242c0819e916f3ea7912d4d57b7d3e338152e4d9
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97962447"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878509"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows-smb"></a>Behandeln von Azure Files-Problemen unter Windows (SMB)
 
@@ -263,7 +263,7 @@ Die Leistung ist möglicherweise langsam, wenn Sie versuchen, Dateien in den Azu
 -   Wenn Sie die endgültige Größe einer Datei kennen, die Sie mit Schreibvorgängen erweitern, und Ihre Software keine Kompatibilitätsprobleme aufweist, wenn das noch nicht geschriebene Fragment in der Datei Nullen enthält, legen Sie die Dateigröße im Voraus fest (anstatt jeden Schreibvorgang zu einem Erweiterungsschreibvorgang zu machen).
 -   Verwenden Sie die richtige Kopiermethode:
     -   Verwenden Sie [AzCopy](../common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) für Übertragungen zwischen zwei Dateifreigaben.
-    -   Verwenden Sie [Robocopy](./storage-files-deployment-guide.md#robocopy) zwischen Dateifreigaben auf einem lokalen Computer.
+    -   Verwenden Sie [Robocopy](./storage-how-to-create-file-share.md) zwischen Dateifreigaben auf einem lokalen Computer.
 
 ### <a name="considerations-for-windows-81-or-windows-server-2012-r2"></a>Überlegungen zu Windows 8.1 oder Windows Server 2012 R2
 
@@ -406,8 +406,8 @@ Das Cmdlet führt diese nachfolgenden Überprüfungen der Reihe nach durch und b
 5. CheckSidHasAadUser: Überprüfung, ob der angemeldete AD-Benutzer mit Azure AD synchronisiert ist. Wenn Sie nachschlagen möchten, ob ein bestimmter AD-Benutzer mit Azure AD synchronisiert ist, können Sie den Benutzernamen und die Domäne in den Eingabeparametern angeben. 
 6. CheckGetKerberosTicket: Versuch, ein Kerberos-Ticket für die Verbindung mit dem Speicherkonto zu erhalten. Wenn kein gültiges Kerberos-Token vorhanden ist, führen Sie das Cmdlet „klist get cifs/storage-account-name.file.core.windows.net“ aus, und betrachten Sie den Fehlercode, um die Ursache für den Fehler beim Ticketabruf zu ermitteln.
 7. CheckStorageAccountDomainJoined: Überprüfung, ob die AD-Authentifizierung aktiviert wurde und die AD-Eigenschaften des Kontos eingegeben wurden. Wenn dies nicht der Fall ist, finden Sie [hier](./storage-files-identity-ad-ds-enable.md) eine Anleitung zum Aktivieren der AD DS-Authentifizierung für Azure Files. 
-8. CheckUserRbacAssignment: Überprüfen Sie, ob der AD-Benutzer über die richtige RBAC-Rollenzuweisung verfügt, um Berechtigungen für den Zugriff auf Azure Files auf Freigabeebene zu erteilen. Wenn nicht, lesen Sie [diese Anweisung](https://docs.microsoft.com/azure/storage/files/storage-files-identity-ad-ds-assign-permissions), um die Berechtigung auf Freigabeebene zu konfigurieren. (Unterstützt von AzFilesHybrid, Version 0.2.3 und höher)
-9. CheckUserFileAccess: Überprüfen Sie, ob der AD-Benutzer über die richtige Verzeichnis-/Dateiberechtigung (Windows ACLs) für den Zugriff auf Azure Files verfügt. Wenn nicht, lesen Sie [diese Anweisung](https://docs.microsoft.com/azure/storage/files/storage-files-identity-ad-ds-configure-permissions), um die Berechtigung auf Verzeichnis-/Dateiebene zu konfigurieren. (Unterstützt von AzFilesHybrid, Version 0.2.3 und höher)
+8. CheckUserRbacAssignment: Überprüfen Sie, ob der AD-Benutzer über die richtige RBAC-Rollenzuweisung verfügt, um Berechtigungen für den Zugriff auf Azure Files auf Freigabeebene zu erteilen. Wenn nicht, lesen Sie [diese Anweisung](./storage-files-identity-ad-ds-assign-permissions.md), um die Berechtigung auf Freigabeebene zu konfigurieren. (Unterstützt von AzFilesHybrid, Version 0.2.3 und höher)
+9. CheckUserFileAccess: Überprüfen Sie, ob der AD-Benutzer über die richtige Verzeichnis-/Dateiberechtigung (Windows ACLs) für den Zugriff auf Azure Files verfügt. Wenn nicht, lesen Sie [diese Anweisung](./storage-files-identity-ad-ds-configure-permissions.md), um die Berechtigung auf Verzeichnis-/Dateiebene zu konfigurieren. (Unterstützt von AzFilesHybrid, Version 0.2.3 und höher)
 
 ## <a name="unable-to-configure-directoryfile-level-permissions-windows-acls-with-windows-file-explorer"></a>Berechtigungen auf Verzeichnis-/Dateiebene (Windows-ACLs) können nicht mit Windows-Datei-Explorer konfiguriert werden
 

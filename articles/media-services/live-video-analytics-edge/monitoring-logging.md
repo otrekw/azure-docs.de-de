@@ -3,12 +3,12 @@ title: 'Überwachung und Protokollierung: Azure'
 description: Dieser Artikel bietet eine Übersicht der Überwachung und Protokollierung in Live Video Analytics in IoT Edge.
 ms.topic: reference
 ms.date: 04/27/2020
-ms.openlocfilehash: 6a7251b62421642ad9f5dba4f4c2a15ce74cd5cf
-ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
+ms.openlocfilehash: 6dc0a6d499d06c95bdccbc9e386d7f9288971ee8
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97900874"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878103"
 ---
 # <a name="monitoring-and-logging"></a>Überwachung und Protokollierung
 
@@ -269,7 +269,7 @@ Führen Sie die folgenden Schritte aus, um die Erfassung von Metriken aus dem Mo
 
 1. Erstellen Sie mit Docker CLI-Befehlen die Docker-Datei, und veröffentlichen Sie das Image in Ihrer Azure Container Registry-Instanz.
     
-   Weitere Informationen zur Verwendung der Docker CLI zum Pushen in eine Containerregistrierung finden Sie unter [Pushübertragung des ersten Images an eine private Containerregistrierung mit der Docker CLI](https://docs.microsoft.com/azure/container-registry/container-registry-get-started-docker-cli). Weitere Informationen zu Azure Container Registry finden Sie in der [Dokumentation](https://docs.microsoft.com/azure/container-registry/).
+   Weitere Informationen zur Verwendung der Docker CLI zum Pushen in eine Containerregistrierung finden Sie unter [Pushübertragung des ersten Images an eine private Containerregistrierung mit der Docker CLI](../../container-registry/container-registry-get-started-docker-cli.md). Weitere Informationen zu Azure Container Registry finden Sie in der [Dokumentation](../../container-registry/index.yml).
 
 
 1. Fügen Sie nach Abschluss des Pushens in Azure Container Registry den folgenden Knoten ihrer Bereitstellungsmanifestdatei hinzu:

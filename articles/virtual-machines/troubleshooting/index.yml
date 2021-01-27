@@ -10,12 +10,12 @@ metadata:
   author: genlin
   ms.author: genli
   ms.date: 09/09/2019
-  ms.openlocfilehash: 4f1fd0f88c7165a409644029f247b090df285138
-  ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+  ms.openlocfilehash: ad47bde23a7125bac60c9f61687e3ff4e94b7a01
+  ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 11/11/2020
-  ms.locfileid: "94506038"
+  ms.lasthandoff: 01/27/2021
+  ms.locfileid: "98877695"
 landingContent:
 - title: Behandeln von Bereitstellungsfehlern
   linkLists:
@@ -48,7 +48,7 @@ landingContent:
     - text: Behandeln von RDP-Verbindungsfehlern bei virtuellen Azure-Computern anhand der Ereignis-ID
       url: ./event-id-troubleshoot-vm-rdp-connecton.md
     - text: Problembehandlung von Authentifizierungsfehlern bei der Verwendung von RDP für das Herstellen von Verbindungen mit Azure-VMs
-      url: ./troubleshoot-authentication-error-rdp-vm.md
+      url: /troubleshoot/azure/virtual-machines/cannot-connect-rdp-azure-vm
     - text: VM-Gastnetzwerkkarte deaktiviert
       url: ./troubleshoot-rdp-nic-disabled.md
 - title: Zurücksetzen von Kennwörtern

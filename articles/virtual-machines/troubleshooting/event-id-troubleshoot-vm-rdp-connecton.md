@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/01/2018
 ms.author: delhan
-ms.openlocfilehash: 507cd6cfe9f251dbc304b579d634ff986b001264
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c293945a52dd810975b36144f224278163166ba8
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87088596"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878442"
 ---
 # <a name="troubleshoot-azure-vm-rdp-connection-issues-by-event-id"></a>Behandeln von RDP-Verbindungsfehlern bei virtuellen Azure-Computern anhand der Ereignis-ID 
 
@@ -235,7 +235,7 @@ Dieses Problem wird durch Sicherheitsrichtlinien verursacht. Wenn ältere Versio
 
 RDP verwendet TLS 1.0 als Standardprotokoll. Allerdings kann das Protokoll in TLS 1.1 geändert werden, das den neuen Standard darstellt.
 
-Informationen zur Behandlung dieses Problems finden Sie unter [Problembehandlung von Authentifizierungsfehlern bei der Verwendung von RDP für das Herstellen von Verbindungen mit Azure-VMs](troubleshoot-authentication-error-rdp-vm.md#tls-version).
+Informationen zur Behandlung dieses Problems finden Sie unter [Problembehandlung von Authentifizierungsfehlern bei der Verwendung von RDP für das Herstellen von Verbindungen mit Azure-VMs](/troubleshoot/azure/virtual-machines/cannot-connect-rdp-azure-vm#tls-version).
 
 ## <a name="scenario-3"></a>Szenario 3
 

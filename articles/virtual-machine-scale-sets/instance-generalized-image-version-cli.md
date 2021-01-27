@@ -9,16 +9,16 @@ ms.topic: how-to
 ms.date: 05/01/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 841247c03d9f3b151a0c75430715c03b009d831a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: e360ae3cf0c463add9e6445a96c118d9f40ce9cb
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91287065"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878035"
 ---
 # <a name="create-a-scale-set-from-a-generalized-image-with-azure-cli"></a>Erstellen einer Skalierungsgruppe aus einem generalisierten Image mit Azure CLI
 
-Erstellen Sie eine Skalierungsgruppe aus einer generalisierten Imageversion in einem [Katalog mit freigegebenen Images](shared-image-galleries.md) mithilfe der Azure-Befehlszeilenschnittstelle. Wenn Sie eine Skalierungsgruppe mit einer spezialisierten Imageversion erstellen möchten, finden Sie weitere Informationen unter [Erstellen von Skalierungsgruppeninstanzen aus einem spezialisierten Image](instance-specialized-image-version-cli.md).
+Erstellen Sie eine Skalierungsgruppe aus einer generalisierten Imageversion in einem [Katalog mit freigegebenen Images](../virtual-machines/shared-image-galleries.md) mithilfe der Azure-Befehlszeilenschnittstelle. Wenn Sie eine Skalierungsgruppe mit einer spezialisierten Imageversion erstellen möchten, finden Sie weitere Informationen unter [Erstellen von Skalierungsgruppeninstanzen aus einem spezialisierten Image](instance-specialized-image-version-cli.md).
 
 Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für dieses Tutorial Version 2.4.0 oder höher der Azure CLI ausführen. Führen Sie `az --version` aus, um die Version zu ermitteln. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sie bei Bedarf unter [Installieren der Azure CLI]( /cli/azure/install-azure-cli).
 
@@ -55,7 +55,7 @@ az vmss create \
 Die Erstellung und Konfiguration aller Ressourcen und virtuellen Computer der Skalierungsgruppe dauert einige Minuten.
 
 ## <a name="next-steps"></a>Nächste Schritte
-[Azure Image Builder (Vorschauversion)](../virtual-machines/linux/image-builder-overview.md) hilft beim Automatisieren der Erstellung von Imageversionen. Sie können den Dienst sogar zum Aktualisieren und [Erstellen einer neuen Imageversion aus einer vorhandenen](../virtual-machines/linux/image-builder-gallery-update-image-version.md) verwenden. 
+[Azure Image Builder (Vorschauversion)](../virtual-machines/image-builder-overview.md) hilft beim Automatisieren der Erstellung von Imageversionen. Sie können den Dienst sogar zum Aktualisieren und [Erstellen einer neuen Imageversion aus einer vorhandenen](../virtual-machines/linux/image-builder-gallery-update-image-version.md) verwenden. 
 
 Sie können auch mithilfe von Vorlagen eine Ressource im Katalog für freigegebene Images erstellen. Es stehen mehrere Azure-Schnellstartvorlagen zur Verfügung: 
 
@@ -63,4 +63,4 @@ Sie können auch mithilfe von Vorlagen eine Ressource im Katalog für freigegebe
 - [Erstellen einer Imagedefinition in einem Katalog mit freigegebenen Images](https://azure.microsoft.com/resources/templates/101-sig-image-definition-create/)
 - [Erstellen einer Imageversion in einem Katalog mit freigegebenen Images](https://azure.microsoft.com/resources/templates/101-sig-image-version-create/)
 
-Weitere Informationen zu Katalogen mit geteilten Images finden Sie in der [Übersicht](shared-image-galleries.md). Sollten Probleme auftreten, sehen Sie unter [Problembehandlung für Kataloge mit freigegebenen Images](../virtual-machines/troubleshooting-shared-images.md) nach.
+Weitere Informationen zu Katalogen mit geteilten Images finden Sie in der [Übersicht](../virtual-machines/shared-image-galleries.md). Sollten Probleme auftreten, sehen Sie unter [Problembehandlung für Kataloge mit freigegebenen Images](../virtual-machines/troubleshooting-shared-images.md) nach.
