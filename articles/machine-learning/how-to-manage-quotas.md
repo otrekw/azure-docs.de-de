@@ -5,17 +5,18 @@ description: Enthält eine Beschreibung der Kontingente und Grenzwerte für Azur
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-author: nishankgu
-ms.author: nigup
+ms.reviewer: jmartens
+author: SimranArora904
+ms.author: siarora
 ms.date: 12/1/2020
 ms.topic: conceptual
 ms.custom: troubleshooting,contperf-fy20q4, contperf-fy21q2
-ms.openlocfilehash: 3f08f401f24d95431bcd3bba48976641cebb28e9
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: aa25a81068b25b7b8696a7472eb04542e8bb1a60
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98072206"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878951"
 ---
 # <a name="manage-and-increase-quotas-for-resources-with-azure-machine-learning"></a>Verwalten und Erhöhen der Kontingente für Ressourcen mit Azure Machine Learning
 
@@ -81,7 +82,7 @@ Verfügbare Ressourcen:
 + Für **Cluster pro Region** gilt der Standardgrenzwert 200. Diese werden von einem Trainingscluster und einer Compute-Instanz gemeinsam verwendet. (Eine Compute-Instanz wird in Bezug auf Kontingente als Cluster mit nur einem Knoten angesehen.)
 
 > [!TIP]
-> Weitere Informationen dazu, für welche VM-Serie eine Erhöhung des Kontingents angefordert werden sollte, finden Sie unter [Größen virtueller Computer in Azure](https://docs.microsoft.com/azure/virtual-machines/sizes). Beispielsweise beginnen VMs der GPU-VM-Serien mit einem „N“ in der Hauptbezeichnung (z. B. NCv3-Serie).
+> Weitere Informationen dazu, für welche VM-Serie eine Erhöhung des Kontingents angefordert werden sollte, finden Sie unter [Größen virtueller Computer in Azure](../virtual-machines/sizes.md). Beispielsweise beginnen VMs der GPU-VM-Serien mit einem „N“ in der Hauptbezeichnung (z. B. NCv3-Serie).
 
 In der folgenden Tabelle sind weitere Grenzwerte der Plattform angegeben. Wenden Sie sich über ein **technisches** Supportticket an das Produktteam von Azure ML, um eine Ausnahme anzufordern.
 

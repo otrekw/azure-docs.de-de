@@ -11,23 +11,23 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 11/17/2020
 ms.author: axelg
-ms.openlocfilehash: 247324c30bbe0edaef78c0b0d5e6a6d593e8cac9
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 62b462d8e75fc291ac599ac99dbe4fb3a74fde2b
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97586396"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878696"
 ---
 # <a name="troubleshoot-the-azure-linux-agent"></a>Behandeln von Problemen mit dem Azure Linux-Agent
 
-Der [Azure Linux-Agent](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux) ermöglicht einem virtuellen Computer (VM) die Kommunikation mit dem Fabric Controller (dem zugrunde liegenden physischen Server, auf dem die VM gehostet wird) über die IP-Adresse 168.63.129.16.
+Der [Azure Linux-Agent](../extensions/agent-linux.md) ermöglicht einem virtuellen Computer (VM) die Kommunikation mit dem Fabric Controller (dem zugrunde liegenden physischen Server, auf dem die VM gehostet wird) über die IP-Adresse 168.63.129.16.
 
 >[!NOTE]
 >Diese IP-Adresse ist eine virtuelle öffentliche IP-Adresse, die die Kommunikation erleichtert und nicht gesperrt werden darf. Unter [Was ist die IP-Adresse 168.63.129.16?](../../virtual-network/what-is-ip-address-168-63-129-16.md) finden Sie weitere Informationen.
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
-Überprüfen Sie Status und Version des Agents, um sicherzustellen, dass er nach wie vor unterstützt wird. Informationen zur Überprüfung der Unterstützung von Versionen finden Sie unter [Unterstützte Mindestversion für VM-Agents in Azure](https://docs.microsoft.com/troubleshoot/azure/virtual-machines/support-extensions-agent-version). Anweisungen zum Ermitteln von Status und Version finden Sie unter [Häufig gestellte Fragen zu WALinuxAgent](https://github.com/Azure/WALinuxAgent/wiki/FAQ#what-does-goal-state-agent-mean-in-waagent---version-output).
+Überprüfen Sie Status und Version des Agents, um sicherzustellen, dass er nach wie vor unterstützt wird. Informationen zur Überprüfung der Unterstützung von Versionen finden Sie unter [Unterstützte Mindestversion für VM-Agents in Azure](/troubleshoot/azure/virtual-machines/support-extensions-agent-version). Anweisungen zum Ermitteln von Status und Version finden Sie unter [Häufig gestellte Fragen zu WALinuxAgent](https://github.com/Azure/WALinuxAgent/wiki/FAQ#what-does-goal-state-agent-mean-in-waagent---version-output).
 
 ## <a name="troubleshoot-a-not-ready-status"></a>Problembehandlung beim Status „Nicht bereit“
 
@@ -64,7 +64,7 @@ Der [Azure Linux-Agent](https://docs.microsoft.com/azure/virtual-machines/extens
    AutoUpdate.Enabled=y
    ```
 
-   Weitere Informationen zum Aktualisieren des Azure Linux-Agents finden Sie unter [Aktualisieren des Azure Linux-Agents auf einer VM](https://docs.microsoft.com/azure/virtual-machines/extensions/update-linux-agent).
+   Weitere Informationen zum Aktualisieren des Azure Linux-Agents finden Sie unter [Aktualisieren des Azure Linux-Agents auf einer VM](../extensions/update-linux-agent.md).
 
 1. Vergewissern Sie sich, dass die VM eine Verbindung mit dem Fabric Controller herstellen kann. Testen Sie mit einem Tool wie cURL, ob sich die VM mit 168.63.129.16 an den Ports 80, 443 und 32526 verbinden kann. Wenn die VM nicht wie erwartet eine Verbindung herstellt, prüfen Sie, ob ausgehende Kommunikation über die Ports 80, 443 und 32526 in Ihrer lokalen Firewall auf der VM möglich ist. Wenn diese IP-Adresse blockiert wurde, zeigt der VM-Agent möglicherweise unerwartetes Verhalten.
 

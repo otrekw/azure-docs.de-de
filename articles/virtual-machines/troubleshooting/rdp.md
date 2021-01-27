@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 12/13/2018
 ms.author: genli
-ms.openlocfilehash: 2fd2efa9de3deff1fcf983ac0fa45e412357d312
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 512130928c8e18aad90bce351e3be85d6fbe03f0
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "71057267"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878645"
 ---
 # <a name="troubleshoot-rdp-issues"></a>Behandeln von RDP-Problemen
 
@@ -36,7 +36,7 @@ Die folgenden Probleme beim Erstellen einer RDP-Verbindung mit einer VM werden i
 - [Beheben eines internen Fehlers](Troubleshoot-rdp-internal-error.md)
 - [Problembehandlung bei häufigem Trennen der Verbindung](troubleshoot-rdp-intermittent-connectivity.md)
 - [Beheben eines allgemeinen Fehlers](troubleshoot-rdp-general-error.md)
-- [Behandeln von Authentifizierungsfehlern](troubleshoot-authentication-error-rdp-vm.md)
+- [Behandeln von Authentifizierungsfehlern](/troubleshoot/azure/virtual-machines/cannot-connect-rdp-azure-vm)
 - [Behandeln von RDP-Verbindungsfehlern bei virtuellen Azure-Computern anhand der Ereignis-ID](event-id-troubleshoot-vm-rdp-connecton.md)
 - [Behandeln eines RDP-Fehlers auf einem virtuellen Computer, der auf eine statische IP-Adresse zurückzuführen ist](troubleshoot-rdp-static-ip.md)
 - [Behandeln eines RDP-Fehlers auf einem virtuellen Computer, der auf den deaktivierten Netzwerkadapter zurückzuführen ist](troubleshoot-rdp-nic-disabled.md)
@@ -46,4 +46,3 @@ Die folgenden Probleme beim Erstellen einer RDP-Verbindung mit einer VM werden i
 - [Blockierung von eingehendem Datenverkehr durch die Firewall des Gastbetriebssystems](guest-os-firewall-blocking-inbound-traffic.md)
 - [Falsch konfigurierte Firewall des Gastbetriebssystems](guest-os-firewall-misconfigured.md) 
 - [Behandeln eines RDP-Fehlers, der auf „netvsc.sys“ zurückzuführen ist](troubleshoot-rdp-driver-netvsc.md)
-

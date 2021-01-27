@@ -8,12 +8,12 @@ ms.topic: conceptual
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 10/19/2020
-ms.openlocfilehash: d9e26b6388223ae252a5e85e6e9fb9783a3b8429
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 9169d691b58ad4a59796123c64f856128a0f8c83
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98600398"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879325"
 ---
 # <a name="how-to-plan-a-virtual-machine-offer"></a>Planen eines VM-Angebots
 
@@ -30,10 +30,10 @@ Das Entwerfen, Erstellen und Testen von Angeboten nimmt einiges an Zeit in Anspr
   - [Virtuelle Windows-Computer](../virtual-machines/windows/tutorial-manage-vm.md)
 
 - Beispiele
-  - [Azure CLI-Beispiele für Linux-VMs](../virtual-machines/linux/cli-samples.md)
-  - [Azure PowerShell für Linux-VMs](../virtual-machines/linux/powershell-samples.md)
-  - [Azure CLI-Beispiele für Windows-VMs](../virtual-machines/windows/cli-samples.md)
-  - [Azure PowerShell für Windows-VMs](../virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm-quick.md)
+  - [Azure CLI-Beispiele für Linux-VMs](https://github.com/Azure-Samples/azure-cli-samples/tree/master/virtual-machine)
+  - [Azure PowerShell für Linux-VMs](https://github.com/Azure/azure-docs-powershell-samples/tree/master/virtual-machine)
+  - [Azure CLI-Beispiele für Windows-VMs](https://github.com/Azure-Samples/azure-cli-samples/tree/master/virtual-machine)
+  - [Azure PowerShell für Windows-VMs](/previous-versions/azure/virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm-quick)
 
 ## <a name="technical-requirements"></a>Technische Anforderungen
 

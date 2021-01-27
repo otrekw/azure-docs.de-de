@@ -39,8 +39,6 @@
       href: restart-resize-error-troubleshooting.md
     - name: 'Neustarten, Herunterfahren oder Beenden von Diensten'
       href: boot-error-troubleshoot-windows.md
-    - name: Probleme mit einem vollen Betriebssystemdatenträger auf einer Linux-VM
-      href: os-disk-full-linux.md
 - name: Unerwarteter Neustart
   items:
     - name: Unerwartete Neustarts von virtuellen Computern mit angefügten VHDs
@@ -153,7 +151,7 @@
         - name: Beheben eines allgemeinen Fehlers
           href: troubleshoot-rdp-general-error.md
         - name: Behandeln von Authentifizierungsfehlern
-          href: troubleshoot-authentication-error-rdp-vm.md
+          href: /troubleshoot/azure/virtual-machines/cannot-connect-rdp-azure-vm
         - name: Behandeln von RDP-Verbindungsfehlern bei virtuellen Azure-Computern anhand der Ereignis-ID
           href: event-id-troubleshoot-vm-rdp-connecton.md
         - name: 'Behandeln eines RDP-Fehlers auf einem virtuellen Computer, der auf eine statische IP-Adresse zurückzuführen ist'

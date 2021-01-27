@@ -7,19 +7,19 @@ ms.topic: conceptual
 author: navits09
 ms.author: navits
 ms.date: 01/19/2020
-ms.openlocfilehash: 6075027124352746a3adbb8f6937d3787eb22b9d
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: a1726b29c153bf680d29fe821ac34aa958064335
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98602599"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879240"
 ---
 # <a name="support-for-the-commercial-marketplace-program-in-partner-center"></a>Support für das Programm „Kommerzieller Marketplace“ in Partner Center
 
 Microsoft bietet Support für eine Vielzahl von Produkten und Diensten. Um eine hilfreiche und zeitnahe Antwort zu erhalten, muss Ihre Anfrage natürlich das richtige Support-Team erreichen. Die folgenden Szenarien sollen Ihnen dabei helfen, Ihre Anfrage an das richtige Team zu richten:
 
 - Wenn Sie als Herausgeber eine Frage von einem Kunden erhalten haben, bitten Sie ihn darum, über die Supportlinks im  [Azure-Portal](https://portal.azure.com/) Unterstützung anzufordern.
-- Wenn Sie ein Herausgeber sind und ein Sicherheitsproblem mit einer in Azure ausgeführten Anwendung festgestellt haben, finden Sie weitere Informationen unter [Erstellen eines Tickets beim Support für Sicherheitsereignisse](/azure/security/fundamentals/event-support-ticket). Herausgeber müssen mutmaßliche sicherheitsrelevante Ereignisse einschließlich Sicherheitsincidents und Sicherheitsrisiken, die ihre Azure Marketplace-Software und Dienstangebote betreffen, bei nächstmöglicher Gelegenheit melden.
+- Wenn Sie ein Herausgeber sind und ein Sicherheitsproblem mit einer in Azure ausgeführten Anwendung festgestellt haben, finden Sie weitere Informationen unter [Erstellen eines Tickets beim Support für Sicherheitsereignisse](../security/fundamentals/event-support-ticket.md). Herausgeber müssen mutmaßliche sicherheitsrelevante Ereignisse einschließlich Sicherheitsincidents und Sicherheitsrisiken, die ihre Azure Marketplace-Software und Dienstangebote betreffen, bei nächstmöglicher Gelegenheit melden.
 - Wenn Sie ein Herausgeber sind und eine Frage hinsichtlich Ihrer App oder Ihres Diensts haben, nutzen Sie die folgenden Supportoptionen.
 
 ## <a name="get-help-or-open-a-support-ticket"></a>Anfordern von Hilfe oder Eröffnen eines Supporttickets

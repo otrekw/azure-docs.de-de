@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/06/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 1af80f208c72af9434d596f2c1219c08c0e3f719
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: e7a4af2c18bfc2b8fbd6149dab12c0bcfc665341
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96015990"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878821"
 ---
 ## <a name="create-an-image-gallery"></a>Erstellen eines Imagekatalogs
 
@@ -35,7 +35,7 @@ Im folgenden Beispiel wird der Katalog *myGallery* in der Ressourcengruppe *myGa
 
 ## <a name="create-an-image-definition"></a>Erstellen einer Imagedefinition 
 
-Imagedefinitionen erstellen eine logische Gruppierung von Images. Sie werden verwendet, um Informationen über die Imageversionen zu verwalten, die in ihnen erstellt werden. Namen für Imagedefinition können aus Groß- und Kleinbuchstaben, Zahlen, Punkten und (Binde)Strichen bestehen. Weitere Informationen zu den Werten, die Sie für eine Imagedefinition angeben können, finden Sie unter [Imagedefinitionen](../articles/virtual-machines/windows/shared-image-galleries.md#image-definitions).
+Imagedefinitionen erstellen eine logische Gruppierung von Images. Sie werden verwendet, um Informationen über die Imageversionen zu verwalten, die in ihnen erstellt werden. Namen für Imagedefinition können aus Groß- und Kleinbuchstaben, Zahlen, Punkten und (Binde)Strichen bestehen. Weitere Informationen zu den Werten, die Sie für eine Imagedefinition angeben können, finden Sie unter [Imagedefinitionen](../articles/virtual-machines/shared-image-galleries.md#image-definitions).
 
 Erstellen Sie die Definition des Katalogimages innerhalb Ihres Katalogs. In diesem Beispiel heißt das Katalogimage *myImageDefinition*.
 
@@ -44,7 +44,7 @@ Erstellen Sie die Definition des Katalogimages innerhalb Ihres Katalogs. In dies
 1. Geben Sie für **Name der Imagedefinition** *myImageDefinition* ein.
 1. Wählen Sie für **Betriebssystem** die richtige Option basierend auf Ihrer Quell-VM.  
 1. Wählen Sie für **VM-Generation** die Option basierend auf Ihrer Quell-VM aus. In den meisten Fällen wird dies *1. Generation* sein. Weitere Informationen finden Sie unter [Unterstützung für VMs der Generation 2 in Azure](../articles/virtual-machines/generation-2.md).
-1. Wählen Sie für **Betriebssystemstatus** die richtige Option basierend auf Ihrer Quell-VM. Weitere Informationen finden Sie unter [Generalisierte und spezialisierte Images](../articles/virtual-machines/linux/shared-image-galleries.md#generalized-and-specialized-images).
+1. Wählen Sie für **Betriebssystemstatus** die richtige Option basierend auf Ihrer Quell-VM. Weitere Informationen finden Sie unter [Generalisierte und spezialisierte Images](../articles/virtual-machines/shared-image-galleries.md#generalized-and-specialized-images).
 1. Geben Sie für **Herausgeber** *myPublisher* ein. 
 1. Geben Sie für **Angebot** *myOffer* ein.
 1. Geben Sie für **SKU** *mySKU* ein.

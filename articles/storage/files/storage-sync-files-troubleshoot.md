@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 1/15/2021
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 71de1d17731e086d012da5365fa6671bcb9e6e3b
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: 49184778c7d6592f074e04df535b9bc221f3162e
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98539250"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878798"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Problembehandlung für Azure-Dateisynchronisierung
 Mit der Azure-Dateisynchronisierung können Sie die Dateifreigaben Ihrer Organisation in Azure Files zentralisieren, ohne auf die Flexibilität, Leistung und Kompatibilität eines lokalen Dateiservers verzichten zu müssen. Mit der Azure-Dateisynchronisierung werden Ihre Windows Server-Computer zu einem schnellen Cache für Ihre Azure-Dateifreigabe. Sie können ein beliebiges Protokoll verwenden, das unter Windows Server verfügbar ist, um lokal auf Ihre Daten zuzugreifen, z.B. SMB, NFS und FTPS. Sie können weltweit so viele Caches wie nötig nutzen.
@@ -206,8 +206,8 @@ Dieses Problem kann auftreten, wenn der Überwachungsprozess für die Speichersy
     - Wenn sich der Server hinter einem Proxy befindet, konfigurieren Sie die computerweiten oder App-spezifischen Proxyeinstellungen, indem Sie den Schritten in der Proxy-[Dokumentation](./storage-sync-files-firewall-and-proxy.md#proxy) folgen.
     - Verwenden Sie das Test-Cmdlet „StorageSyncNetworkConnectivity“ zum Überprüfen der Netzwerkkonnektivität mit den Dienstendpunkten. Wenn Sie weitere Informationen benötigen, lesen Sie [Testen der Netzwerkkonnektivität mit Dienstendpunkten](./storage-sync-files-firewall-and-proxy.md#test-network-connectivity-to-service-endpoints).
     - Wenn die Reihenfolge der TLS-Verschlüsselungssammlung auf dem Server konfiguriert ist, können Sie Verschlüsselungssammlungen mithilfe von Gruppenrichtlinien oder TLS-Cmdlets hinzufügen:
-        - Informationen zur Verwendung von Gruppenrichtlinien finden Sie unter [Konfigurieren der Reihenfolge von TLS-Verschlüsselungssammlungen mithilfe von Gruppenrichtlinien](https://docs.microsoft.com/windows-server/security/tls/manage-tls#configuring-tls-cipher-suite-order-by-using-group-policy).
-        - Informationen zur Verwendung von TLS-Cmdlets finden Sie unter [Konfigurieren der Reihenfolge von TLS-Verschlüsselungssammlungen mithilfe von TLS-Cmdlets in PowerShell](https://docs.microsoft.com/windows-server/security/tls/manage-tls#configuring-tls-cipher-suite-order-by-using-tls-powershell-cmdlets).
+        - Informationen zur Verwendung von Gruppenrichtlinien finden Sie unter [Konfigurieren der Reihenfolge von TLS-Verschlüsselungssammlungen mithilfe von Gruppenrichtlinien](/windows-server/security/tls/manage-tls#configuring-tls-cipher-suite-order-by-using-group-policy).
+        - Informationen zur Verwendung von TLS-Cmdlets finden Sie unter [Konfigurieren der Reihenfolge von TLS-Verschlüsselungssammlungen mithilfe von TLS-Cmdlets in PowerShell](/windows-server/security/tls/manage-tls#configuring-tls-cipher-suite-order-by-using-tls-powershell-cmdlets).
     
         Die Azure-Dateisynchronisierung unterstützt derzeit die folgenden Verschlüsselungssammlungen für das TLS 1.2-Protokoll:  
         - TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384_P384  
@@ -931,7 +931,7 @@ Dieser Fehler tritt auf, wenn das als Serverendpunktpfad verwendete Verzeichnis 
 Wenn das Verzeichnis gelöscht wurde, führen Sie die folgenden Schritte aus, um den vorhandenen Serverendpunkt zu entfernen und einen neuen Serverendpunkt mit einem neuen Pfad zu erstellen:
 
 1. Entfernen Sie den Serverendpunkt in der Synchronisierungsgruppe, indem Sie die Schritte unter [Entfernen eines Serverendpunkts](./storage-sync-files-server-endpoint.md#remove-a-server-endpoint) ausführen.
-2. Erstellen Sie einen neuen Serverendpunkt in der Synchronisierungsgruppe, indem Sie die Schritte unter [Hinzufügen eines Serverendpunkts](https://docs.microsoft.com/azure/storage/files/storage-sync-files-server-endpoint#add-a-server-endpoint) ausführen.
+2. Erstellen Sie einen neuen Serverendpunkt in der Synchronisierungsgruppe, indem Sie die Schritte unter [Hinzufügen eines Serverendpunkts](./storage-sync-files-server-endpoint.md#add-a-server-endpoint) ausführen.
 
 ### <a name="common-troubleshooting-steps"></a>Allgemeine Schritte zur Problembehandlung
 <a id="troubleshoot-storage-account"></a>**Überprüfen Sie, ob das Speicherkonto vorhanden ist.**  

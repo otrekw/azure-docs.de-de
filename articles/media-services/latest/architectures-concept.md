@@ -12,12 +12,12 @@ ms.workload: ''
 ms.topic: conceptual
 ms.date: 11/20/2020
 ms.author: inhenkel
-ms.openlocfilehash: c14dbe4253696e01e99111a24319e455c1d551e9
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: ff8704feb2997cd89bbd2bf8cb8801818112732f
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96533994"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879206"
 ---
 # <a name="media-services-architectures"></a>Media Services-Architekturen
 
@@ -29,7 +29,7 @@ Mit einer Livestreaminglösung können Sie Videos in Echtzeit erfassen und in Ec
 
 Diese Lösung basiert auf den folgenden verwalteten Azure-Diensten: Media Services und Content Delivery Network. Diese Dienste werden in einer Hochverfügbarkeitsumgebung ausgeführt, gepatcht und unterstützt, sodass Sie sich auf die Lösung selbst konzentrieren können und nicht auf die Umgebung, in der sie ausgeführt werden, konzentrieren müssen.
 
-Weitere Informationen finden Sie im Azure Architecture Center unter [Livestreaming von digitalen Medien](https://docs.microsoft.com/azure/architecture/solution-ideas/articles/digital-media-live-stream).
+Weitere Informationen finden Sie im Azure Architecture Center unter [Livestreaming von digitalen Medien](/azure/architecture/solution-ideas/articles/digital-media-live-stream).
 
 ## <a name="video-on-demand-digital-media"></a>Digitale Video on Demand-Medien
 
@@ -37,13 +37,13 @@ Eine einfache Video-on-Demand-Lösung, die Ihnen die Möglichkeit bietet, aufgez
 
 Diese Lösung basiert auf den folgenden verwalteten Azure-Diensten: Blob Storage, Content Delivery Network und Azure Media Player. Diese Dienste werden in einer Hochverfügbarkeitsumgebung ausgeführt, gepatcht und unterstützt, sodass Sie sich auf die Lösung selbst konzentrieren können und nicht auf die Umgebung, in der sie ausgeführt werden, konzentrieren müssen.
 
-Weitere Informationen finden Sie im Azure Architecture Center unter [Digitale Video on Demand-Medien](https://docs.microsoft.com/azure/architecture/solution-ideas/articles/digital-media-video).
+Weitere Informationen finden Sie im Azure Architecture Center unter [Digitale Video on Demand-Medien](/azure/architecture/solution-ideas/articles/digital-media-video).
 
 ## <a name="gridwich-media-processing-system"></a>Gridwich-Medienverarbeitungssystem
 
 Das Gridwich-System umfasst Best Practices für die Verarbeitung und Veröffentlichung von Medienobjekten in Azure. Obwohl das Gridwich-System medienspezifisch ist, kann das Framework für Nachrichtenverarbeitung und Ereignisse auf jeden beliebigen zustandslosen Ereignisverarbeitungsworkflow angewendet werden.
 
-Weitere Informationen finden Sie im Azure Architecture Center unter [Gridwich-Medienverarbeitungssystem](https://docs.microsoft.com/azure/architecture/reference-architectures/media-services/gridwich-architecture).
+Weitere Informationen finden Sie im Azure Architecture Center unter [Gridwich-Medienverarbeitungssystem](/azure/architecture/reference-architectures/media-services/gridwich-architecture).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

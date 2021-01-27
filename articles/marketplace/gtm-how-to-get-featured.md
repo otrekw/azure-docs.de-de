@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 04/16/2020
-ms.openlocfilehash: 4a3d0ef3c112da87e73f83c6c87de8f3fce1fea0
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 465f00400c28de9642a95ebcb7bc6b2349d64bc5
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96621364"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878713"
 ---
 # <a name="how-to-get-featured-in-appsource-and-azure-marketplace"></a>So präsentieren Sie sich in AppSource und im Marketplace
 
@@ -30,7 +30,7 @@ Sie können die folgenden Maßnahmen ergreifen, um Ihre Punktzahl zu verbessern:
 1. *Stellen Sie sicher, dass Ihre App oder Ihr Dienst angemessen kategorisiert ist*: Wählen Sie drei Kategorien aus, die die Funktionen Ihrer App oder Ihres Diensts darstellen.
 2. *Azure Marketplace-Apps: Steigern Sie Ihren Azure-Verbrauch von Monat zu Monat.* Wenn Sie 1.000 Stunden Azure-Verbrauch pro Monat erreichen können, werden Ihre Chancen, vorgestellt zu werden, erheblich steigen.
 3. *AppSource-Apps: Erhöhen Sie die Akquisitionen für Ihr Angebot.* Wenn Sie in der Lage sind, 10 Akquisitionen pro Monat zu erzielen, werden Ihre Chancen, vorgestellt zu werden, erheblich steigen.
-4. *Erreichen Sie den Co-Sell Ready-Status*: Erfüllen Sie die [Anforderungen für IP-Co-Sell Ready](https://aka.ms/CertificationPolicies#3000-requirements-for-co-sell-status).
+4. *Erreichen Sie den Co-Sell Ready-Status*: Erfüllen Sie die [Anforderungen für IP-Co-Sell Ready](/legal/marketplace/certification-policies#3000-requirements-for-co-sell-status).
 5. *Verbessern Sie die Qualität Ihres Angebots*: Informationen darüber, wie Sie Ihr Angebot ändern können, finden Sie unter [Richtlinien für die Listung von Inhalten](marketplace-criteria-content-validation.md).
 6. Veröffentlichen Sie mehrere Angebote auf dem Marketplace: Sind alle Ihre wichtigsten Apps und Dienste gelistet? Verfügen Sie über eine Testumgebung?
 7. Ermuntern Sie Ihre Kunden, Rezensionen zu schreiben.

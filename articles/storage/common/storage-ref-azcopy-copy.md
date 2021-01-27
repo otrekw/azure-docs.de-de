@@ -8,12 +8,12 @@ ms.date: 12/11/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 6390aafca4937a480e4d92ff04003a294b9c0e20
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: c4e85195ace0a24aa11d4a03b8f429f2714399b0
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97356173"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879155"
 ---
 # <a name="azcopy-copy"></a>azcopy copy
 
@@ -37,7 +37,7 @@ Weitere Informationen finden Sie im Abschnitt mit den Beispielen in diesem Artik
 ## <a name="related-conceptual-articles"></a>Verwandte konzeptionelle Artikel
 
 - [Erste Schritte mit AzCopy](storage-use-azcopy-v10.md)
-- [Übertragen von Daten mit AzCopy und Blobspeicher](storage-use-azcopy-blobs.md)
+- [Übertragen von Daten mit AzCopy und Blobspeicher](./storage-use-azcopy-v10.md#transfer-data)
 - [Übertragen von Daten mit AzCopy und Dateispeicher](storage-use-azcopy-files.md)
 - [Konfigurieren, Optimieren und Problembehandlung in AzCopy](storage-use-azcopy-configure.md)
 
@@ -284,7 +284,7 @@ Kopieren einer Teilmenge der Buckets unter Verwendung eines Platzhaltersymbols (
 
 **--include-pattern** string: schließt nur diese Dateien beim Kopieren ein. Diese Option unterstützt Platzhalterzeichen (*). Trennen Sie Dateien durch `;` voneinander ab.
 
-**--list-of-versions** string: gibt eine Datei an, bei der jede Versions-ID in einer separaten Zeile steht. Beachten Sie, dass die Quelle auf ein einzelnes Blob verweisen muss und dass alle in der Datei mit diesem Flag angegebenen Versions-IDs nur zum Quellblob gehören dürfen. AzCopy lädt die angegebenen Versionen in den bereitgestellten Zielordner herunter. Weitere Informationen finden Sie unter [Herunterladen früherer Versionen eines Blobs](storage-use-azcopy-blobs.md#download-previous-versions-of-a-blob).
+**--list-of-versions** string: gibt eine Datei an, bei der jede Versions-ID in einer separaten Zeile steht. Beachten Sie, dass die Quelle auf ein einzelnes Blob verweisen muss und dass alle in der Datei mit diesem Flag angegebenen Versions-IDs nur zum Quellblob gehören dürfen. AzCopy lädt die angegebenen Versionen in den bereitgestellten Zielordner herunter. Weitere Informationen finden Sie unter [Herunterladen früherer Versionen eines Blobs](./storage-use-azcopy-v10.md#transfer-data).
 
 **--log-level** string: definiert, wie ausführlich die Protokolldatei sein soll. Verfügbare Stufen: INFO (alle Anforderungen/Antworten), WARNING (langsame Antworten), ERROR (nur fehlgeschlagene Anforderungen) und NONE (keine Ausgabeprotokolle). (Standardwert: `INFO`) 
 

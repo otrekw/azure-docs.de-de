@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/13/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: f0ae4ac4cf50eb6e54d41ff25e1cc671e76819ee
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 62030d1c208fc778476f49e5b3165e46e6aa0d66
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98200803"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878849"
 ---
 # <a name="azure-security-baseline-for-linux-virtual-machines"></a>Azure-Sicherheitsbaseline für Virtuelle Linux-Computer
 
@@ -852,7 +852,7 @@ Zusätzlich zur Änderungsnachverfolgung für die Überwachung von Softwareanwen
 
 * [Konfigurieren und Verwalten von Azure Policy](../../governance/policy/tutorials/create-and-manage.md)
 
-* [Herunterladen einer Vorlage für einen virtuellen Computer](../windows/download-template.md)
+* [Herunterladen einer Vorlage für einen virtuellen Computer](/previous-versions/azure/virtual-machines/windows/download-template)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar.
 
@@ -896,7 +896,7 @@ Zusätzlich zur Änderungsnachverfolgung für die Überwachung von Softwareanwen
 
 In den meisten Fällen sind die Microsoft-Basisvorlagen in Kombination mit Azure Automation Desired State Configuration beim Erfüllen und Verwalten der Sicherheitsanforderungen nützlich.
 
-* [Herunterladen einer Vorlage für einen virtuellen Computer](../windows/download-template.md)
+* [Herunterladen einer Vorlage für einen virtuellen Computer](/previous-versions/azure/virtual-machines/windows/download-template)
 
 * [Informationen zum Erstellen von ARM-Vorlagen](../windows/ps-template.md)
 
