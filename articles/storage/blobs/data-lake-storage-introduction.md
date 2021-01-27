@@ -8,12 +8,12 @@ ms.date: 02/25/2020
 ms.author: normesta
 ms.reviewer: jamesbak
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: 5f2f3cfc5ccbdd6a3d3d3ede5bb39a3f6f548b19
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 1c4d04e25bf8f7d981c998baafb468f04b66eaf1
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95913095"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879897"
 ---
 # <a name="introduction-to-azure-data-lake-storage-gen2"></a>Einführung in Azure Data Lake Storage Gen2
 
@@ -39,7 +39,7 @@ Data Lake Storage Gen2 ist darüber hinaus sehr kostengünstig, da diese SKU auf
 
 ## <a name="key-features-of-data-lake-storage-gen2"></a>Besondere Features von Data Lake Storage Gen2
 
--   **Hadoop-kompatibler Zugriff:** Data Lake Storage Gen2 ermöglicht einen mit einem [Hadoop Distributed File System (HDFS)](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html) vergleichbaren Zugriff auf Daten sowie deren Verwaltung. Der neue [ABFS-Treiber](data-lake-storage-abfs-driver.md) (für den Datenzugriff) ist in allen Apache Hadoop-Umgebungen verfügbar. Zu diesen Umgebungen zählen unter anderem [Azure HDInsight](../../hdinsight/index.yml) *,* [Azure Databricks](/azure/databricks/) und [Azure Synapse Analytics](/azure/synapse-analytics).
+-   **Hadoop-kompatibler Zugriff:** Data Lake Storage Gen2 ermöglicht einen mit einem [Hadoop Distributed File System (HDFS)](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html) vergleichbaren Zugriff auf Daten sowie deren Verwaltung. Der neue [ABFS-Treiber](data-lake-storage-abfs-driver.md) (für den Datenzugriff) ist in allen Apache Hadoop-Umgebungen verfügbar. Zu diesen Umgebungen zählen unter anderem [Azure HDInsight](../../hdinsight/index.yml) *,* [Azure Databricks](/azure/databricks/) und [Azure Synapse Analytics](../../synapse-analytics/index.yml).
 
 -   **Obermenge von POSIX-Berechtigungen:** Das Sicherheitsmodell für Data Lake Gen2 unterstützt Zugriffssteuerungslisten und POSIX-Berechtigungen sowie zusätzliche Granularität speziell für Data Lake Storage Gen2. Die Einstellungen können über den Storage-Explorer oder Frameworks wie Hive und Spark konfiguriert werden.
 

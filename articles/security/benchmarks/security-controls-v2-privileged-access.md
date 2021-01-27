@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 7721100d902948364c9e4b1373f1fa805c680a50
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 619f2c2670d8e376ad0bca7cf8b93b971be067a0
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98202214"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880724"
 ---
 # <a name="security-control-v2-privileged-access"></a>Sicherheitskontrolle V2: Privilegierter Zugriff
 
@@ -159,7 +159,7 @@ Gesicherte, isolierte Arbeitsstationen sind von entscheidender Bedeutung für di
 
 - [Informationen zu sicheren, von Azure verwalteten Arbeitsstationen](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
-- [Bereitstellen einer sicheren, von Azure verwalteten Arbeitsstation](../../active-directory/devices/howto-azure-managed-workstation.md)
+- [Bereitstellen einer sicheren, von Azure verwalteten Arbeitsstation](/security/compass/privileged-access-deployment)
 
 **Verantwortlichkeit**: Kunde
 
@@ -217,4 +217,3 @@ In Supportszenarien, bei denen Microsoft auf Kundendaten zugreifen muss, bietet 
 - [Sicherheitscomplianceverwaltung](/azure/cloud-adoption-framework/organize/cloud-security-compliance-management) 
 
 - [Funktion von Identitäts- und Schlüsselverwaltung in der Cloud](/azure/cloud-adoption-framework/organize/cloud-security-identity-keys)
-

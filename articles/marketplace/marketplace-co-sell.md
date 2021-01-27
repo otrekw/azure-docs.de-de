@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: vamahtan
 ms.author: vamahtan
 ms.date: 12/2/2020
-ms.openlocfilehash: 3693ff8ea213d0823237956c532e65d5094bf1ce
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 7969f5ffd3064a5af97a101185b6229c81c7613d
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96746317"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880286"
 ---
 # <a name="co-sell-partner-engagement"></a>Partner-Engagement für Co-Selling
 
@@ -49,7 +49,7 @@ In dieser Tabelle sind die Schritte und Anforderungen zur Qualifizierung Ihres M
 ||Dynamics|<ul><li>Sie haben sich aktiv für den ISV Connect-Premium-Tarif registriert.</li></ul>|Business Applications – Co-Sell Incentivized|
 |||
 
-Weitere Informationen zu den Anforderungen für Angebote für Co-Selling-Lösungen finden Sie unter [Requirements for Co-sell Status](https://aka.ms/CertificationPolicies#3000-requirements-for-co-sell-status) (Anforderungen für den Co-Selling-Status).
+Weitere Informationen zu den Anforderungen für Angebote für Co-Selling-Lösungen finden Sie unter [Requirements for Co-sell Status](/legal/marketplace/certification-policies#3000-requirements-for-co-sell-status) (Anforderungen für den Co-Selling-Status).
 
 ## <a name="how-to-submit-co-sell-materials-in-partner-center"></a>Übermitteln von Co-Selling-Materialien im Partner Center
 

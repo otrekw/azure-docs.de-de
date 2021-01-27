@@ -6,12 +6,12 @@ ms.author: rajosh
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 06/25/2020
-ms.openlocfilehash: f52c0296023098c755feb1bf0baba980f2988bd7
-ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
+ms.openlocfilehash: a489902372b0b88a0ffec07fa685ee745ec59c50
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98567712"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880456"
 ---
 # <a name="server-assessment-overview-migrate-to-azure-vmware-solution"></a>Serverbewertungsübersicht (Migration zu Azure VMware Solution)
 
@@ -207,7 +207,7 @@ Nachdem der Wert für die effektive Auslastung festgelegt wurde, werden Speicher
 
 Wenn Sie die Größenanpassung *Wie lokal* verwenden, wird der Leistungsverlauf der VMs und Datenträger von der Serverbewertung nicht berücksichtigt. Stattdessen werden AVS-Knoten basierend auf der lokal zugeordneten Größe zugewiesen. Der Standardspeichertyp in AVS ist vSAN.
 
-[Weitere Informationen](https://docs.microsoft.com/azure/migrate/tutorial-assess-vmware-azure-vmware-solution#review-an-assessment) zum Überprüfen einer Bewertung vom Typ „Azure VMware Solution (AVS)“.
+[Weitere Informationen](./tutorial-assess-vmware-azure-vmware-solution.md#review-an-assessment) zum Überprüfen einer Bewertung vom Typ „Azure VMware Solution (AVS)“.
 
 ## <a name="confidence-ratings"></a>Zuverlässigkeitsstufen
 

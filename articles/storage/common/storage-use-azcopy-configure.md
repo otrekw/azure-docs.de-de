@@ -8,12 +8,12 @@ ms.date: 07/27/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: 23c62562299768afb5f5d87bbcf4f7b19b3235ce
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.openlocfilehash: 1a319c728b918dbad7dd5f240bc7a0bfeb0c4c09
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97897857"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881043"
 ---
 # <a name="configure-optimize-and-troubleshoot-azcopy"></a>Konfigurieren, Optimieren und Problembehandlung in AzCopy
 
@@ -22,7 +22,7 @@ AzCopy ist ein Befehlszeilenhilfsprogramm, das Sie verwenden können, um Blobs o
 > [!NOTE]
 > Wenn Sie nach Inhalten suchen, die Ihnen bei den ersten Schritten mit AzCopy helfen, sehen Sie in den folgenden Artikeln nach:
 > - [Erste Schritte mit AzCopy](storage-use-azcopy-v10.md)
-> - [Übertragen von Daten mit AzCopy und Blob Storage](storage-use-azcopy-blobs.md)
+> - [Übertragen von Daten mit AzCopy und Blob Storage](./storage-use-azcopy-v10.md#transfer-data)
 > - [Übertragen von Daten mit AzCopy und Dateispeicher](storage-use-azcopy-files.md)
 > - [Übertragen von Daten mit AzCopy und Amazon S3-Buckets](storage-use-azcopy-s3.md)
 
@@ -220,5 +220,3 @@ Verfügbare Protokolliergrade sind: `NONE`, `DEBUG`, `INFO`, `WARNING`, `ERROR`,
 Wenn Sie alle Plan- und Protokolldateien von Ihrem lokalen Computer entfernen möchten, um Speicherplatz zu sparen, verwenden Sie den Befehl `azcopy jobs clean`.
 
 Verwenden Sie `azcopy jobs rm <job-id>`, um die Plan- und Protokolldateien zu entfernen, die nur einem Auftrag zugeordnet sind. Ersetzen Sie den Platzhalter `<job-id>` in diesem Beispiel durch die Auftrags-ID des Auftrags.
-
-

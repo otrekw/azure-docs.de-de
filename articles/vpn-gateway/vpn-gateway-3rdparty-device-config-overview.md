@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: yushwang
-ms.openlocfilehash: 01ceb067f589ef04b04ff0bf05e2971ee30f407c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 484dad65310efaa60e8744b2f122b5e44ae13565
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89400159"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880151"
 ---
 # <a name="overview-of-partner-vpn-device-configurations"></a>Übersicht über Konfigurationen von VPN-Partnergeräten
 Dieser Artikel bietet eine Übersicht über das Konfigurieren von lokalen VPN-Geräten für die Verbindung mit Azure-VPN-Gateways. Um sich mit denselben Parametern mit verschiedenen lokalen VPN-Geräten zu verbinden, werden ein virtuelles Azure-Beispielnetzwerk und die VPN-Gatewayeinrichtung verwendet.
@@ -27,7 +27,7 @@ Die erste Konfiguration im Beispiel besteht aus einem einmaligen Site-to-Site-VP
 
 ![Diagramm eines einzelnen S2S-VPN-Tunnels](./media/vpn-gateway-3rdparty-device-config-overview/singletunnel.png)
 
-Ausführliche Anleitungen zum Einrichten eines VPN-Tunnels finden Sie unter [Konfigurieren einer Site-to-Site-Verbindung](vpn-gateway-howto-site-to-site-resource-manager-portal.md). In den folgenden Abschnitten werden die Verbindungsparameter für die Beispielkonfiguration angegeben und ein PowerShell-Skript bereitgestellt, um Ihnen beim Einstieg zu helfen.
+Ausführliche Anleitungen zum Einrichten eines VPN-Tunnels finden Sie unter [Konfigurieren einer Site-to-Site-Verbindung](./tutorial-site-to-site-portal.md). In den folgenden Abschnitten werden die Verbindungsparameter für die Beispielkonfiguration angegeben und ein PowerShell-Skript bereitgestellt, um Ihnen beim Einstieg zu helfen.
 
 ### <a name="connection-parameters"></a>Verbindungsparameter
 In diesem Abschnitt werden die Parameter für die Beispiele aufgelistet, die in den vorherigen Abschnitten beschrieben werden.
@@ -150,4 +150,3 @@ Wenn Sie die S2S-VPN-Verbindung erstellen, können Sie optional [BGP für das VP
 
 ## <a name="next-steps"></a>Nächste Schritte
 Eine ausführliche Anleitung zum Einrichten von Aktiv/Aktiv-VPN-Gateways finden Sie unter [Konfigurieren von Aktiv/Aktiv-VPN-Gateways für standortübergreifende und VNET-zu-VNET-Verbindungen](vpn-gateway-activeactive-rm-powershell.md).
-

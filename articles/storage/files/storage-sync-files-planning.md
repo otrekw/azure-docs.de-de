@@ -8,12 +8,12 @@ ms.date: 01/15/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: 32aa94c986c90b7bd46b9f5561021c34c0f142af
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: cfeb124aeb614906cef1dc710eb8485e63806539
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96492091"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880574"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Planung für die Bereitstellung einer Azure-Dateisynchronisierung
 
@@ -50,6 +50,9 @@ Synchronisierungsgruppen werden in **Speichersynchronisierungsdiensten** bereitg
 Bevor Sie eine Synchronisierungsgruppe in einem Speichersynchronisierungsdienst erstellen können, müssen Sie zunächst einen Windows-Server beim Speichersynchronisierungsdienst registrieren. Dadurch wird ein **registriertes Serverobjekt** erstellt, das eine Vertrauensstellung zwischen Ihrem Server oder Cluster und dem Speichersynchronisierungsdienst darstellt. Um einen Speichersynchronisierungsdienst zu registrieren, müssen Sie zunächst den Azure-Dateisynchronisierungs-Agent auf dem Server installieren. Ein einzelner Server oder Cluster kann zu einem beliebigen Zeitpunkt jeweils nur bei einem Speichersynchronisierungsdienst registriert sein.
 
 Eine Synchronisierungsgruppe enthält einen Cloudendpunkt oder eine Azure-Dateifreigabe und mindestens einen Serverendpunkt. Das Serverendpunktobjekt enthält die Einstellungen, die die **Cloudtieringfunktion** konfigurieren, die die Zwischenspeicherungsfunktion der Azure-Dateisynchronisierung bereitstellt. Um eine Synchronisierung mit einer Azure-Dateifreigabe durchführen zu können, muss sich das Speicherkonto, das die Azure-Dateifreigabe enthält, in der gleichen Azure-Region befinden wie der Speichersynchronisierungsdienst.
+
+> [!Important]  
+> Sie können Änderungen an jedem Cloudendpunkt oder Serverendpunkt in der Synchronisierungsgruppe vornehmen und Ihre Dateien mit den anderen Endpunkten in der Synchronisierungsgruppe synchronisieren. Wenn Sie eine Änderung direkt am Cloudendpunkt (Azure-Dateifreigabe) vornehmen, müssen Änderungen zunächst von einem Azure-Dateisynchronisierungsauftrag zum Erkennen von Änderungen entdeckt werden. Ein Auftrag zum Erkennen von Änderungen für einen Cloudendpunkt wird nur einmal alle 24 Stunden gestartet. Weitere Informationen finden Sie unter [Häufig gestellte Fragen zu Azure Files](storage-files-faq.md#afs-change-detection).
 
 ### <a name="management-guidance"></a>Leitfaden zur Verwaltung
 Beim Bereitstellen von Azure-Dateisynchronisierung wird Folgendes empfohlen:
@@ -384,6 +387,6 @@ Wenn Sie eine lokale Sicherungslösung bevorzugen, sollten die Sicherungen auf e
 ## <a name="next-steps"></a>Nächste Schritte
 * [Berücksichtigen von Firewall- und Proxyeinstellungen](storage-sync-files-firewall-and-proxy.md)
 * [Planung für eine Azure Files-Bereitstellung](storage-files-planning.md)
-* [Bereitstellen von Azure Files](storage-files-deployment-guide.md)
+* [Bereitstellen von Azure Files](./storage-how-to-create-file-share.md)
 * [Bereitstellen der Azure-Dateisynchronisierung](storage-sync-files-deployment-guide.md)
 * [Überwachen der Azure-Dateisynchronisierung](storage-sync-files-monitoring.md)

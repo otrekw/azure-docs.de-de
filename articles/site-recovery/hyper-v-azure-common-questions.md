@@ -3,12 +3,12 @@ title: Allgemeine Fragen zur Hyper-V-Notfallwiederherstellung mit Azure Site Rec
 description: In diesem Artikel werden häufig gestellte Fragen zum Einrichten der Notfallwiederherstellung für lokale virtuelle Hyper-V-Computer in Azure mithilfe des Azure Site Recovery-Diensts zusammengefasst.
 ms.date: 11/12/2019
 ms.topic: conceptual
-ms.openlocfilehash: e4f5ee71fc56cad247b57f94bf08a68bed8775f9
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 649bd69f14cdf8d81fe05d3a5f5cac3389419fc3
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96754350"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879443"
 ---
 # <a name="common-questions---hyper-v-to-azure-disaster-recovery"></a>Allgemeine Fragen: Hyper-V-Notfallwiederherstellung in Azure
 
@@ -167,7 +167,7 @@ Hyper-V-VMs können alle 30 Sekunden (außer bei Storage Premium) oder alle 5 
 
 ### <a name="can-azure-site-recovery-and-hyper-v-replica-be-configured-together-on-a-hyper-v-machine"></a>Können Azure Site Recovery und das Hyper-V-Replikat auf einem Hyper-V-Computer gleichzeitig konfiguriert werden?
 
-Ja, Azure Site Recovery und das Hyper-V-Replikat können zusammen für einen Computer konfiguriert werden. Der Computer muss jedoch als physischer Computer geschützt werden und wird mithilfe eines Konfigurations-/Prozessservers in Azure repliziert. Weitere Informationen zum Schützen physischer Computer finden Sie [hier](https://docs.microsoft.com/azure/site-recovery/physical-azure-architecture).
+Ja, Azure Site Recovery und das Hyper-V-Replikat können zusammen für einen Computer konfiguriert werden. Der Computer muss jedoch als physischer Computer geschützt werden und wird mithilfe eines Konfigurations-/Prozessservers in Azure repliziert. Weitere Informationen zum Schützen physischer Computer finden Sie [hier](./physical-azure-architecture.md).
 
 ### <a name="can-i-extend-replication"></a>Kann ich die Replikation erweitern?
 Eine erweiterte oder verkettete Replikation wird nicht unterstützt. Fordern Sie dieses Feature im [Feedbackforum](https://feedback.azure.com/forums/256299-site-recovery/suggestions/6097959).

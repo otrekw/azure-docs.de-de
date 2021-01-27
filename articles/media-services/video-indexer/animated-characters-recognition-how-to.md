@@ -11,12 +11,12 @@ ms.custom: references_regions
 ms.topic: how-to
 ms.date: 12/07/2020
 ms.author: juliako
-ms.openlocfilehash: 1ee179efbe936c742f1eb51b998c10f9349c14fb
-ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
+ms.openlocfilehash: 29dbdb896d1a6063fec277afa33327c84cb2f0cd
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97763386"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880926"
 ---
 # <a name="use-the-animated-character-detection-preview-with-portal-and-api"></a>Verwenden der Erkennung animierter Figuren (Vorschau) mithilfe des Portals und der API 
 
@@ -35,7 +35,7 @@ Wenn Sie über ein kostenpflichtiges Video Indexer-Konto verfügen, müssen Sie
 > [!NOTE]
 > Beide Konten müssen sich in derselben Region befinden. Die Custom Vision-Integration wird in der Region „Japan“ derzeit nicht unterstützt.
 
-Bei kostenpflichtigen Konten mit Zugriff auf das Custom Vision-Konto können die Modelle und getaggten Bilder dort angezeigt werden. Weitere Informationen zur Verbesserung Ihrer Klassifizierung in Custom Vision finden Sie  [hier](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-improving-your-classifier). 
+Bei kostenpflichtigen Konten mit Zugriff auf das Custom Vision-Konto können die Modelle und getaggten Bilder dort angezeigt werden. Weitere Informationen zur Verbesserung Ihrer Klassifizierung in Custom Vision finden Sie  [hier](../../cognitive-services/custom-vision-service/getting-started-improving-your-classifier.md). 
 
 Beachten Sie, dass das Training des Modells nur über Video Indexer und nicht über die Custom Vision-Website erfolgen sollte. 
 
@@ -108,7 +108,7 @@ Vor dem Taggen und Trainieren des Modells werden alle Figuren mit „Unknown #X
 1. Nur kostenpflichtige Konten: Überprüfen der Gruppen in Custom Vision 
 
     > [!NOTE]
-    > Bei kostenpflichtigen Konten mit Zugriff auf das Custom Vision-Konto können die Modelle und getaggten Bilder dort angezeigt werden. Weitere Informationen zur Verbesserung Ihrer Klassifizierung in Custom Vision finden Sie  [hier](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-improving-your-classifier). Beachten Sie unbedingt, dass das Training des Modells nur (wie in diesem Thema beschrieben) über Video Indexer und nicht über die Custom Vision-Website erfolgen sollte. 
+    > Bei kostenpflichtigen Konten mit Zugriff auf das Custom Vision-Konto können die Modelle und getaggten Bilder dort angezeigt werden. Weitere Informationen zur Verbesserung Ihrer Klassifizierung in Custom Vision finden Sie  [hier](../../cognitive-services/custom-vision-service/getting-started-improving-your-classifier.md). Beachten Sie unbedingt, dass das Training des Modells nur (wie in diesem Thema beschrieben) über Video Indexer und nicht über die Custom Vision-Website erfolgen sollte. 
 
     1. Wechseln Sie in Video Indexer zur Seite **Benutzerdefinierte Modelle**, und wählen Sie die Registerkarte **Animierte Figuren** aus. 
     1. Klicken Sie auf die Schaltfläche „Bearbeiten“ für das Modell, an dem Sie arbeiten, um es in Custom Vision zu verwalten. 

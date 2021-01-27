@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 11/16/2020
 ms.author: cherylmc
-ms.openlocfilehash: 62ceafad0210065700e5c9734cfe9a055208ef35
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 01d87bcb5697326fa87b25b20354897049900d9d
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94657889"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880524"
 ---
 # <a name="configure-a-site-to-site-vpn-connection-over-expressroute-private-peering"></a>Konfigurieren einer Site-to-Site-VPN-Verbindung über privates ExpressRoute-Peering
 
@@ -72,7 +72,7 @@ In diesen beiden Beispielen sendet Azure den Datenverkehr über die VPN-Verbindu
 
 ## <a name="portal-steps"></a><a name="portal"></a>Portalschritte
 
-1. Konfigurieren Sie eine Site-to-Site-Verbindung. Informationen zu den Schritten finden Sie im Artikel [Site-to-Site-Konfiguration](vpn-gateway-howto-site-to-site-resource-manager-portal.md). Achten Sie darauf, eine zonenredundante Gateway-SKU für das Gateway auszuwählen. 
+1. Konfigurieren Sie eine Site-to-Site-Verbindung. Informationen zu den Schritten finden Sie im Artikel [Site-to-Site-Konfiguration](./tutorial-site-to-site-portal.md). Achten Sie darauf, eine zonenredundante Gateway-SKU für das Gateway auszuwählen. 
 
    Zonenredundante SKUs enthalten „AZ“ am Ende der SKUs. Zum Beispiel **VpnGw1AZ**. Zonenredundante Gateways sind nur in Regionen verfügbar, in denen der Verfügbarkeitszonendienst verfügbar ist. Informationen über die Regionen, in denen Verfügbarkeitszonen unterstützt werden, finden Sie unter [Regionen, die Verfügbarkeitszonen in Azure unterstützen](../availability-zones/az-region.md).
 
@@ -89,7 +89,7 @@ In diesen beiden Beispielen sendet Azure den Datenverkehr über die VPN-Verbindu
 
 ## <a name="powershell-steps"></a><a name="powershell"></a>PowerShell-Schritte
 
-1. Konfigurieren Sie eine Site-to-Site-Verbindung. Informationen zu den Schritten finden Sie im Artikel [Konfigurieren eines Site-to-Site-VPNs](vpn-gateway-howto-site-to-site-resource-manager-portal.md). Achten Sie darauf, eine zonenredundante Gateway-SKU für das Gateway auszuwählen. Zonenredundante SKUs enthalten „AZ“ am Ende der SKUs. Beispiel: VpnGw1AZ.
+1. Konfigurieren Sie eine Site-to-Site-Verbindung. Informationen zu den Schritten finden Sie im Artikel [Konfigurieren eines Site-to-Site-VPNs](./tutorial-site-to-site-portal.md). Achten Sie darauf, eine zonenredundante Gateway-SKU für das Gateway auszuwählen. Zonenredundante SKUs enthalten „AZ“ am Ende der SKUs. Beispiel: VpnGw1AZ.
 1. Legen Sie das Flag zur Verwendung der privaten IP-Adresse auf dem Gateway mithilfe der folgenden PowerShell-Befehle fest:
 
    ```azurepowershell-interactive
