@@ -3,15 +3,15 @@ title: Private Link – Azure Database for MariaDB
 description: Erfahren Sie, wie Private Link für Azure Database for MariaDB funktioniert.
 author: mksuni
 ms.author: sumuth
-ms.service: mariadb
+ms.service: jroth
 ms.topic: conceptual
 ms.date: 03/10/2020
-ms.openlocfilehash: ec43fa995fc9772964db399baa0b6f8c2a7db1db
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.openlocfilehash: 12f52cd497d606fda6bbea9b54f467522373eeb7
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93241496"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98665139"
 ---
 # <a name="private-link-for-azure-database-for-mariadb"></a>Private Link für Azure Database for MariaDB
 
@@ -114,7 +114,7 @@ Folgende Fälle und Ergebnisse sind bei Verwendung von Private Link in Verbindun
 
 ## <a name="deny-public-access-for-azure-database-for-mariadb"></a>Verweigern des öffentlichen Zugriffs für Azure Database for MariaDB
 
-Wenn Sie sich für den Zugriff auf Ihre Azure Database for MariaDB-Instanz nur auf private Endpunkte verlassen möchten, können Sie das Festlegen aller öffentlichen Endpunkte ( [Firewallregeln](concepts-firewall-rules.md) und [VNET-Dienstendpunkte](concepts-data-access-security-vnet.md)) deaktivieren, indem Sie die Konfiguration **Zugriff auf öffentliches Netzwerk verweigern** auf dem Datenbankserver festlegen. 
+Wenn Sie sich für den Zugriff auf Ihre Azure Database for MariaDB-Instanz nur auf private Endpunkte verlassen möchten, können Sie das Festlegen aller öffentlichen Endpunkte ([Firewallregeln](concepts-firewall-rules.md) und [VNET-Dienstendpunkte](concepts-data-access-security-vnet.md)) deaktivieren, indem Sie die Konfiguration **Zugriff auf öffentliches Netzwerk verweigern** auf dem Datenbankserver festlegen. 
 
 Wenn diese Einstellung auf *Ja* festgelegt ist, sind nur Verbindungen über private Endpunkte mit Ihrer Azure Database for MariaDB-Instanz zulässig. Wenn diese Einstellung auf *NEIN* festgelegt ist, können Clients basierend auf Ihren Firewall- oder VNET-Dienstendpunkt-Einstellungen eine Verbindung mit Ihrer Azure Database for MariaDB-Instanz herstellen. Sobald der Wert des privaten Netzwerkzugriffs festgelegt ist, können Kunden außerdem weder Firewall- oder VNET-Dienstendpunkt-Regeln hinzufügen noch vorhandene aktualisieren.
 

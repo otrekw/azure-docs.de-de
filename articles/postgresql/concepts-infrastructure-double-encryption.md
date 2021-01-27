@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 6/30/2020
-ms.openlocfilehash: 03d52611c89012d1132b4a27820f7f47e6cdd512
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.openlocfilehash: 83635b732318a4ada76d1d71c1ce419cae8b35e9
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93242023"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98630142"
 ---
 # <a name="azure-database-for-postgresql-infrastructure-double-encryption"></a>Azure Database for PostgreSQL: doppelte Infrastrukturverschlüsselung
 
@@ -33,8 +33,8 @@ Die Implementierung auf Infrastrukturebene unterstützt zudem eine Vielfalt von 
 
 Die doppelte Infrastrukturverschlüsselung für Azure Database for PostgreSQL bietet die folgenden Vorteile:
 
-1. **Mehr Vielfalt bei der Implementierung von Kryptografie** : Durch die geplante Umstellung auf hardwarebasierte Verschlüsselung werden die Implementierungen weiter diversifiziert, indem zusätzlich zur softwarebasierten Implementierung eine hardwarebasierte Implementierung bereitgestellt wird.
-2. **Implementierungsfehler** : Zwei Verschlüsselungsebenen auf Infrastrukturebene schützen vor Fehlern bei der Zwischenspeicherung oder Speicherverwaltung auf höheren Ebenen, die Klartextdaten verfügbar machen. Darüber hinaus gewährleisten die beiden Ebenen auch Schutz vor Fehlern bei der Implementierung der Verschlüsselung im Allgemeinen.
+1. **Mehr Vielfalt bei der Implementierung von Kryptografie**: Durch die geplante Umstellung auf hardwarebasierte Verschlüsselung werden die Implementierungen weiter diversifiziert, indem zusätzlich zur softwarebasierten Implementierung eine hardwarebasierte Implementierung bereitgestellt wird.
+2. **Implementierungsfehler**: Zwei Verschlüsselungsebenen auf Infrastrukturebene schützen vor Fehlern bei der Zwischenspeicherung oder Speicherverwaltung auf höheren Ebenen, die Klartextdaten verfügbar machen. Darüber hinaus gewährleisten die beiden Ebenen auch Schutz vor Fehlern bei der Implementierung der Verschlüsselung im Allgemeinen.
 
 Diese Kombination bietet einen wirksamen Schutz gegen häufige Bedrohungen und Schwachstellen, die für Angriffe auf die Kryptographie ausgenutzt werden.
 
@@ -46,7 +46,7 @@ Die Verschlüsselungsfunktionen, die von Azure Database for PostgreSQL geboten w
 |:------|:------------------:|:--------------------------------:|:--------------------------------------------:|
 | 1     | *Ja*              | *Nein*                             | *Nein*                                         |
 | 2     | *Ja*              | *Ja*                            | *Nein*                                         |
-| 3     | *Ja*              | *Nein*                             | *Ja*                                        |
+| 3     | *Ja*              | *No*                             | *Ja*                                        |
 | 4     | *Ja*              | *Ja*                            | *Ja*                                        |
 |       |                    |                                  |                                              |
 
@@ -59,12 +59,6 @@ Die Verschlüsselungsfunktionen, die von Azure Database for PostgreSQL geboten w
 Bei Azure Database for PostgreSQL unterliegt die Unterstützung der doppelten Infrastrukturverschlüsselung mit dienstseitig verwaltetem Schlüssel den folgenden Einschränkungen:
 
 * Die Unterstützung dieser Funktionalität ist auf die Tarife **Universell** und **Arbeitsspeicheroptimiert** beschränkt.
-* Sie können ein Instanz von Azure Database for PostgreSQL mit aktivierter doppelter Infrastrukturverschlüsselung in folgenden Regionen erstellen:
-
-   * East US
-   * USA Süd Mitte
-   * USA, Westen 2
-   
 * Diese Funktion wird nur in Regionen und auf Servern unterstützt, die eine Speicherkapazität bis zu 16 TB unterstützen. Eine Liste der Azure-Regionen, die Speicher mit bis zu 16 TB unterstützen, finden Sie in der [Speicherdokumentation](concepts-pricing-tiers.md#storage).
 
     > [!NOTE]

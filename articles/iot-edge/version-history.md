@@ -8,12 +8,12 @@ ms.date: 11/08/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: cdb84f817f63e6401d17f18319e161f4c3477293
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: e7b85f3e01a1c9a9c354599cfed8359b4a56d549
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95024652"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98631453"
 ---
 # <a name="azure-iot-edge-versions-and-release-notes"></a>Azure IoT Edge-Versionen und Versionshinweise
 
@@ -25,7 +25,7 @@ Die IoT Edge-Dokumentation auf dieser Website ist für zwei unterschiedliche Ver
 
 * **IoT Edge 1.0.10** deckt alle Funktionen bis zur neuesten allgemein verfügbaren Version ab: [1.0.10](https://github.com/Azure/azure-iotedge/releases/tag/1.0.10).
 * **IoT Edge 1.2 (Vorschauversion)** enthält zusätzliche Inhalte für Funktionen, die in der neuesten Vorschauversion enthalten sind: [1.2-rc1](https://github.com/Azure/azure-iotedge/releases/tag/1.2.0-rc1)
-  * Während sich IoT Edge 1.2 in der Vorschauphase befindet, müssen Sie die Release Candidate Versionen installieren. Weitere Informationen finden Sie unter [Offlineinstallation oder Installation einer bestimmten Version](how-to-install-iot-edge.md?tabs=linux#offline-or-specific-version-installation).
+  * Während sich IoT Edge 1.2 in der Vorschauphase befindet, müssen Sie die Release Candidate Versionen installieren. Weitere Informationen finden Sie unter [Offlineinstallation oder Installation einer bestimmten Version](how-to-install-iot-edge.md?tabs=linux#offline-or-specific-version-installation-optional).
 
 ## <a name="version-history"></a>Versionsverlauf
 
@@ -34,7 +34,7 @@ Diese Tabelle enthält den aktuellen Versionsverlauf für IoT Edge-Paketreleases
 | Versionshinweise und Ressourcen | type | Date | Highlights |
 | ------------------------ | ---- | ---- | ---------- |
 | [1.2-rc1](https://github.com/Azure/azure-iotedge/releases/tag/1.2.0-rc1) | Vorschau | November 2020 | [IoT Edge-Geräte hinter Gateways](how-to-connect-downstream-iot-edge-device.md?view=iotedge-2020-11&preserve-view=true)<br>[IoT Edge-MQTT-Broker](how-to-publish-subscribe.md?view=iotedge-2020-11&preserve-view=true) |
-| [1.0.10](https://github.com/Azure/azure-iotedge/releases/tag/1.0.10) | Stable | Oktober 2020 | [UploadSupportBundle (direkte Methode)](how-to-retrieve-iot-edge-logs.md#upload-support-bundle-diagnostics)<br>[Hochladen von Laufzeitmetriken](how-to-access-built-in-metrics.md)<br>[Routenpriorität und Gültigkeitsdauer](module-composition.md#priority-and-time-to-live)<br>[Startreihenfolge für Module](module-composition.md#configure-modules)<br>[Manuelle X.509-Bereitstellung](how-to-manual-provision-x509.md) |
+| [1.0.10](https://github.com/Azure/azure-iotedge/releases/tag/1.0.10) | Stable | Oktober 2020 | [UploadSupportBundle (direkte Methode)](how-to-retrieve-iot-edge-logs.md#upload-support-bundle-diagnostics)<br>[Hochladen von Laufzeitmetriken](how-to-access-built-in-metrics.md)<br>[Routenpriorität und Gültigkeitsdauer](module-composition.md#priority-and-time-to-live)<br>[Startreihenfolge für Module](module-composition.md#configure-modules)<br>[Manuelle X.509-Bereitstellung](how-to-register-device.md) |
 | [1.0.9](https://github.com/Azure/azure-iotedge/releases/tag/1.0.9) | Stable | März 2020 | [Automatische X.509-Bereitstellung mit DPS](how-to-auto-provision-x509-certs.md)<br>[RestartModule (direkte Methode)](how-to-edgeagent-direct-method.md#restart-module)<br>[Befehl „support-bundle“](troubleshoot.md#gather-debug-information-with-support-bundle-command) |
 
 ## <a name="next-steps"></a>Nächste Schritte

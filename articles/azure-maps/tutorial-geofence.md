@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: ee32749e2c6f0118507fcfc6d4994a04ea3a6d69
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 759adea3cf34b79c76b6facec3bd4626ca54107e
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95997272"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98625031"
 ---
 # <a name="tutorial-set-up-a-geofence-by-using-azure-maps"></a>Tutorial: Einrichten eines Geofence mit Azure Maps
 
@@ -471,6 +471,10 @@ In der obigen GeoJSON-Antwort wurde das Gerät aus dem Geofence für den Hauptbe
 
 
 Sie können mithilfe von Azure Maps außerdem [E-Mail-Benachrichtigungen mithilfe von Event Grid und Logic Apps senden](../event-grid/publish-iot-hub-events-to-logic-apps.md) und die [unterstützten Ereignishandler in Event Grid](../event-grid/event-handlers.md) überprüfen.
+
+## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
+
+Es sind keine zu bereinigenden Ressourcen vorhanden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

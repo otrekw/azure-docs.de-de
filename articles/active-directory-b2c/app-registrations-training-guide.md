@@ -11,12 +11,12 @@ ms.date: 05/25/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 7c9e3344ed819f607feeab88ac43a9dc286a61e0
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 430da23986fc36a0e94c049512ef716aff1fed5c
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97109095"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98660249"
 ---
 # <a name="the-new-app-registrations-experience-for-azure-active-directory-b2c"></a>Neue Benutzeroberfläche für App-Registrierungen in Azure Active Directory B2C
 
@@ -66,9 +66,10 @@ In der Legacyoberfläche wurden alle Apps als kundenseitige Anwendungen erstellt
 Über diese Option können Sie auch Azure AD B2C als SAML-Dienstanbieter verwenden. [Weitere Informationen](identity-provider-adfs.md)
 
 ## <a name="applications-for-devops-scenarios"></a>Anwendungen für DevOps-Szenarios
+
 Mit den anderen Kontotypen können Sie eine App erstellen, mit der Sie DevOps-Szenarios, wie z. B. das Hochladen von Identity Experience Framework-Richtlinien oder das Bereitstellen von Benutzern mithilfe von Microsoft Graph, verwalten können. Informationen zum Registrieren einer Microsoft Graph-Anwendung zur Verwaltung von Azure AD B2C-Ressourcen finden Sie [hier](microsoft-graph-get-started.md).
 
-Möglicherweise werden nicht alle Microsoft Graph-Berechtigungen angezeigt, da viele dieser Berechtigungen für Azure B2C-Consumerbenutzer nicht gelten. Informationen zur Verwaltung von Benutzern mit Microsoft Graph finden Sie [hier](manage-user-accounts-graph-api.md).
+Möglicherweise werden nicht alle Microsoft Graph-Berechtigungen angezeigt, da viele dieser Berechtigungen für Azure B2C-Consumerbenutzer nicht gelten. Informationen zur Verwaltung von Benutzern mit Microsoft Graph finden Sie [hier](microsoft-graph-operations.md).
 
 ## <a name="admin-consent-and-offline_accessopenid-scopes"></a>Administratoreinwilligung und die Bereiche „offline_access“ und „openid“
 <!-- Azure AD B2C doesn't support user consent. That is, when a user signs into an application, the user doesn't see a screen requesting consent for the application permissions. All permissions have to be granted through admin consent.  -->

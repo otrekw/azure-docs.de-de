@@ -12,12 +12,12 @@ ms.date: 01/12/2021
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: c4db7bf989a0062f87a5c3e6303ba64224996554
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 2956f0ffb562214477249da3198ebbe42ef9bb45
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98224232"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98660368"
 ---
 # <a name="set-up-a-sign-in-flow-in-azure-active-directory-b2c"></a>Einrichten eines Anmeldeflows in Azure Active Directory B2C
 
@@ -30,7 +30,7 @@ Die Anmelderichtlinie ermöglicht Benutzern Folgendes:
 * Benutzer können sich mit einem lokalen Azure AD B2C-Konto anmelden.
 * Registrieren oder Anmelden mit einem Social Media-Konto
 * Zurücksetzen von Kennwörtern
-* Benutzer können sich nicht für ein lokales Azure AD B2C-Konto registrieren. Zum Erstellen eines Kontos kann ein Administrator die [Microsoft Graph-API](manage-user-accounts-graph-api.md) verwenden.
+* Benutzer können sich nicht für ein lokales Azure AD B2C-Konto registrieren. Zum Erstellen eines Kontos kann ein Administrator die [Microsoft Graph-API](microsoft-graph-operations.md) verwenden.
 
 ![Profilbearbeitungsflow](./media/add-sign-in-policy/sign-in-user-flow.png)
 

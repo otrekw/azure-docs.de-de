@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: 2f383876963e3e1d310e7d93f7dc99bb58b189d3
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.openlocfilehash: 78b0cbbdccc7d6853d4ce2821bf659e888680a5f
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97681291"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98674642"
 ---
 # <a name="create-a-data-source-android-sdk"></a>Erstellen einer Datenquelle (Android SDK)
 
@@ -355,10 +355,10 @@ Eine Vektorkachelquelle beschreibt, wie auf eine Vektorkachelebene zugegriffen w
 
 Azure Maps hält den offenen Standard [Mapbox Vector Tile Specification](https://github.com/mapbox/vector-tile-spec) ein. Azure Maps bietet als Teil der Plattform die folgenden Dienste für Vektorkacheln an:
 
-- Straßenkacheln: [Dokumentation](https://docs.microsoft.com/rest/api/maps/renderv2/getmaptilepreview) | [Details zum Datenformat](https://developer.tomtom.com/maps-api/maps-api-documentation-vector/tile)
-- Verkehrsmeldungen: [Dokumentation](https://docs.microsoft.com/rest/api/maps/traffic/gettrafficincidenttile) | [Details zum Datenformat](https://developer.tomtom.com/traffic-api/traffic-api-documentation-traffic-incidents/vector-incident-tiles)
-- Verkehrsfluss: [Dokumentation](https://docs.microsoft.com/rest/api/maps/traffic/gettrafficflowtile) | [Details zum Datenformat](https://developer.tomtom.com/traffic-api/traffic-api-documentation-traffic-flow/vector-flow-tiles)
-- In Azure Maps Creator können Sie über [Render V2 – Get Map Tiles](https://docs.microsoft.com/rest/api/maps/renderv2/getmaptilepreview) auch benutzerdefinierte Vektorkacheln erstellen und auf diese zugreifen.
+- Straßenkacheln: [Dokumentation](/rest/api/maps/renderv2/getmaptilepreview) | [Details zum Datenformat](https://developer.tomtom.com/maps-api/maps-api-documentation-vector/tile)
+- Verkehrsmeldungen: [Dokumentation](/rest/api/maps/traffic/gettrafficincidenttile) | [Details zum Datenformat](https://developer.tomtom.com/traffic-api/traffic-api-documentation-traffic-incidents/vector-incident-tiles)
+- Verkehrsfluss: [Dokumentation](/rest/api/maps/traffic/gettrafficflowtile) | [Details zum Datenformat](https://developer.tomtom.com/traffic-api/traffic-api-documentation-traffic-flow/vector-flow-tiles)
+- In Azure Maps Creator können Sie über [Render V2 – Get Map Tiles](/rest/api/maps/renderv2/getmaptilepreview) auch benutzerdefinierte Vektorkacheln erstellen und auf diese zugreifen.
 
 Um Daten aus einer Vektorkachelquelle auf der Karte anzuzeigen, verbinden Sie die Quelle mit einer der Datenrenderingebenen. Für alle Ebenen, die eine Vektorquelle verwenden, muss in den Optionen einen `sourceLayer`-Wert angegeben sein. Der folgende Code lädt den Azure Maps-Vektorkacheldienst für den Verkehrsfluss als Vektorkachelquelle und zeigt den Vektor dann auf einer Linienebene auf einer Karte an. Diese Vektorkachelquelle verfügt über einen einzigen Datensatz in der Quellebene namens „Verkehrsfluss“. Die Liniendaten in diesem Dataset besitzen eine Eigenschaft namens `traffic_level`, die in diesem Code zum Auswählen der Farbe und Skalieren der Linienstärke verwendet wird.
 
@@ -523,4 +523,4 @@ In den folgenden Artikeln finden Sie weitere Codebeispiele, die Sie Ihren Karten
 > [Hinzufügen eines Wärmebilds](map-add-heat-map-layer-android.md)
 
 > [!div class="nextstepaction"]
-> [Web SDK-Codebeispiele](https://docs.microsoft.com/samples/browse/?products=azure-maps)
+> [Web SDK-Codebeispiele](/samples/browse/?products=azure-maps)

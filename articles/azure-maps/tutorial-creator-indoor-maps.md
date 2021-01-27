@@ -8,20 +8,18 @@ ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: eab8a2729209bb0023662b652f862b4fa678470e
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: dac5a434d7f7c62d7a20e971294992ea91c79d2b
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96905722"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98625014"
 ---
 # <a name="tutorial-use-creator-preview-to-create-indoor-maps"></a>Tutorial: Erstellen von Gebäudeplänen mithilfe von Creator (Vorschau)
 
 > [!IMPORTANT]
 > Azure Maps Creator-Dienste befinden sich derzeit in der Public Preview-Phase.
 > Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
-
 
 In diesem Tutorial wird die Erstellung von Gebäudeplänen gezeigt. Sie erfahren in diesem Tutorial, wie Sie mithilfe der API folgende Aktionen ausführen:
 
@@ -411,6 +409,10 @@ Bei einem Kachelset handelt es sich um eine Gruppe von Vektorkacheln, die auf de
 Mit der [API zum Abrufen von Featurezuständen](/rest/api/maps/featurestate/getstatespreview) können Sie den Zustand eines Features unter Verwendung der zugehörigen Feature-ID (`ID`) abrufen. Mit der [API zum Löschen von Featurezuständen](/rest/api/maps/featurestate/deletestatesetpreview) können Sie das Zustandsset und die zugehörigen Ressourcen löschen.
 
 Weitere Informationen zu den verschiedenen Azure Maps Creator-Diensten (Vorschau) aus diesem Artikel finden Sie unter [Creator (Vorschau) für Gebäudepläne](creator-indoor-maps.md).
+
+## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
+
+Es sind keine zu bereinigenden Ressourcen vorhanden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

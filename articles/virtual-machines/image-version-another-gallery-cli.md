@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: e8aabcd1c68272a78b3c1fe88913c5a62496f681
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 753e7503612502cde12f821ea331625406daa7a8
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88225834"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98675976"
 ---
 # <a name="copy-an-image-from-another-gallery-using-the-azure-cli"></a>Kopieren eines Images aus einem anderen Katalog mithilfe der Azure CLI
 
@@ -161,6 +161,6 @@ az sig image-version create \
 
 Erstellen Sie eine VM aus einer [generalisierten](vm-generalized-image-version-cli.md) oder einer [spezialisierten](vm-specialized-image-version-cli.md) Imageversion.
 
-Probieren Sie auch [Azure VM Image Builder (Vorschauversion)](./linux/image-builder-overview.md) aus, das Ihnen beim Automatisieren der Erstellung von Imageversionen helfen kann. Sie können es sogar zum Aktualisieren und [Erstellen einer neuen Imageversion aus einer vorhandenen](./linux/image-builder-gallery-update-image-version.md) verwenden. 
+Probieren Sie auch [Azure VM Image Builder (Vorschauversion)](./image-builder-overview.md) aus, das Ihnen beim Automatisieren der Erstellung von Imageversionen helfen kann. Sie können es sogar zum Aktualisieren und [Erstellen einer neuen Imageversion aus einer vorhandenen](./linux/image-builder-gallery-update-image-version.md) verwenden. 
 
 Weitere Informationen zur Bereitstellung von Erwerbsplaninformationen finden Sie unter [Bereitstellen von Azure Marketplace-Erwerbsplaninformationen beim Erstellen von Images](marketplace-images.md).

@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 09/08/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 995d10b3c7064e462500e0bec4d5d8aa010afe64
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0ea0db1faf8c452958b8d95c193d45506057777c
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90888775"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98673331"
 ---
 # <a name="authenticate-azure-spring-cloud-with-key-vault-in-github-actions"></a>Authentifizieren von Azure Spring Cloud mit Schlüsseltresor in GitHub Actions
 
@@ -22,13 +22,14 @@ Ein Schlüsseltresor ist ein sicherer Ort zum Speichern von Schlüsseln. Unterne
 
 ## <a name="generate-credential"></a>Generieren von Anmeldeinformationen
 Führen Sie auf Ihrem lokalen Computer den folgenden Befehl aus, um den Schlüssel für den Zugriff auf den Schlüsseltresor zu generieren:
-```
+
+```azurecli
 az ad sp create-for-rbac --role contributor --scopes /subscriptions/<SUBSCRIPTION_ID>/resourceGroups/<RESOURCE_GROUP>/providers/Microsoft.KeyVault/vaults/<KEY_VAULT> --sdk-auth
 ```
 Der durch den Parameter `--scopes` angegebene Bereich beschränkt den Schlüsselzugriff auf die Ressource.  Er kann nur auf das Schließfach zugreifen.
 
 Ergebnisse:
-```
+```output
 {
     "clientId": "<GUID>",
     "clientSecret": "<GUID>",
@@ -59,12 +60,12 @@ Kopieren Sie den Anmeldeinformationsnamen (beispielsweise `azure-cli-2020-01-19-
 ## <a name="generate-full-scope-azure-credential"></a>Generieren von Azure-Anmeldeinformationen für den gesamten Bereich
 Dies ist der Hauptschlüssel, mit dem alle Türen im Gebäude geöffnet werden können. Die Vorgehensweise ähnelt dem vorherigen Schritt. In diesem Fall ändern wir aber den Bereich, um den Hauptschlüssel zu generieren:
 
-```
+```azurecli
 az ad sp create-for-rbac --role contributor --scopes /subscriptions/<SUBSCRIPTION_ID> --sdk-auth
 ```
 
 Ergebnisse:
-```
+```output
 {
     "clientId": "<GUID>",
     "clientSecret": "<GUID>",
@@ -84,7 +85,7 @@ Kopieren Sie die gesamte JSON-Zeichenfolge.  Kehren Sie zum Dashboard **Key Vaul
 ## <a name="combine-credentials-in-github-actions"></a>Kombinieren von Anmeldeinformationen in GitHub Actions
 Legen Sie die Anmeldeinformationen fest, die beim Ausführen der CI/CD-Pipeline verwendet werden:
 
-```
+```console
 on: [push]
 
 jobs:

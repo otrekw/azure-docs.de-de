@@ -9,12 +9,12 @@ ms.subservice: azure-sentinel
 ms.topic: how-to
 ms.date: 06/24/2020
 ms.author: yelevin
-ms.openlocfilehash: 69ab76bf213653ea10db8dfd181b615a7e0f47b5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f420e80f10072c440f5401c042d6370a061b1a7f
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85564483"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632240"
 ---
 # <a name="connect-data-from-azure-active-directory-azure-ad-identity-protection"></a>Verbinden von Daten aus Azure AD Identity Protection
 
@@ -24,7 +24,6 @@ Sie können Protokolle aus [Azure AD Identity Protection](../active-directory/id
 
 - Sie müssen über ein [Azure AD Premium P2-Abonnement](https://azure.microsoft.com/pricing/details/active-directory/) verfügen.
 - Sie müssen über einen Benutzer mit globalen Administrator- oder Sicherheitsadministratorberechtigungen verfügen.
-
 
 ## <a name="connect-to-azure-ad-identity-protection"></a>Herstellen einer Verbindung mit Azure AD Identity Protection
 

@@ -9,12 +9,12 @@ ms.date: 2/22/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurecli, references_regions
-ms.openlocfilehash: 705910a9e2f4ebc80a63ab22ac4edecc5ae03cd0
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: 3ff7b3cd29740461a4f94f3c1d433086db119a09
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97724798"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98673805"
 ---
 # <a name="create-an-azure-file-share"></a>Erstellen einer Azure-Dateifreigabe
 Um eine Azure-Dateifreigabe zu erstellen, müssen Sie drei Fragen zur Verwendung beantworten:
@@ -129,7 +129,7 @@ Um ein Speicherkonto über die Azure-Befehlszeilenschnittstelle zu erstellen, ve
 
 Zur Vereinfachung der Erstellung des Speicherkontos und der nachfolgenden Dateifreigabe speichern wir Parameter in Variablen. Sie können den Inhalt der Variablen durch beliebige Werte ersetzen. Beachten Sie hierbei aber, dass der Name des Speicherkontos global eindeutig sein muss.
 
-```bash
+```azurecli
 resourceGroupName="myResourceGroup"
 storageAccountName="mystorageacct$RANDOM"
 region="westus2"
@@ -137,7 +137,7 @@ region="westus2"
 
 Wir verwenden den folgenden Befehl, um ein Speicherkonto zu erstellen, mit dem Azure-Dateifreigaben vom Typ „Standard“ gespeichert werden können. Der Parameter `--sku` bezieht sich auf den gewünschten Redundanztyp. Wenn Sie ein georedundantes oder geozonenredundantes Speicherkonto verwenden möchten, müssen Sie auch den Parameter `--enable-large-file-share` entfernen.
 
-```bash
+```azurecli
 az storage account create \
     --resource-group $resourceGroupName \
     --name $storageAccountName \
@@ -149,7 +149,7 @@ az storage account create \
 
 Wir verwenden den folgenden Befehl, um ein Speicherkonto zu erstellen, mit dem Azure-Dateifreigaben vom Typ „Premium“ gespeichert werden können. Beachten Sie, dass sich der Parameter `--sku` geändert hat und nun sowohl `Premium` als auch die gewünschte Redundanzebene „Lokale Redundanz“ (`LRS`) enthält. Für den Parameter `--kind` wird `FileStorage` anstelle von `StorageV2` verwendet, da Premium-Dateifreigaben nicht unter einem GPv2-Speicherkonto, sondern unter einem FileStorage-Speicherkonto erstellt werden müssen.
 
-```bash
+```azurecli
 az storage account create \
     --resource-group $resourceGroupName \
     --name $storageAccountName \
@@ -172,7 +172,7 @@ Die **quota**-Eigenschaft unterscheidet sich leicht zwischen Premium- und Standa
 
 - Bei Standard-Dateifreigaben ist dies eine Obergrenze für die Azure-Dateifreigabe, die von Endbenutzern nicht überschritten werden darf. Der Hauptgrund bei der Verwendung eines Kontingents für eine Standard-Dateifreigabe ist das Budget: „Ich möchte nicht, dass die Größe dieser Dateifreigabe diese Grenze überschreitet.“ Wenn kein Kontingent angegeben wird, kann eine Standard-Dateifreigabe eine Größe von bis zu 100 TiB haben (bzw. 5 TiB, wenn die Eigenschaft für große Dateifreigaben für ein Speicherkonto nicht festgelegt wurde).
 
-- Für Premium-Dateifreigaben ist mit dem Kontingent die **bereitgestellte Größe** gemeint. Die bereitgestellte Größe ist die Menge, die Ihnen unabhängig von der tatsächlichen Nutzung berechnet wird. Es ist ratsam, beim Bereitstellen einer Premium-Dateifreigabe zwei Faktoren zu berücksichtigen: 1) zukünftiges Wachstum der Freigabe aus Sicht der Speicherplatzauslastung und 2) erforderlicher IOPS-Wert für Ihre Workload. Für jedes bereitgestellte GiB haben Sie Anspruch auf zusätzliche reservierte bzw. Burst-IOPS-Kapazität. Weitere Informationen zur Planung einer Premium-Dateifreigabe finden Sie im Abschnitt zum [Bereitstellen von Premium-Dateifreigaben](understanding-billing.md#provisioned-billing).
+- Für Premium-Dateifreigaben ist mit dem Kontingent die **bereitgestellte Größe** gemeint. Die bereitgestellte Größe ist die Menge, die Ihnen unabhängig von der tatsächlichen Nutzung berechnet wird. Es ist ratsam, beim Bereitstellen einer Premium-Dateifreigabe zwei Faktoren zu berücksichtigen: 1) zukünftiges Wachstum der Freigabe aus Sicht der Speicherplatzauslastung und 2) erforderlicher IOPS-Wert für Ihre Workload. Für jedes bereitgestellte GiB haben Sie Anspruch auf zusätzliche reservierte bzw. Burst-IOPS-Kapazität. Weitere Informationen zur Planung einer Premium-Dateifreigabe finden Sie im Abschnitt zum [Bereitstellen von Premium-Dateifreigaben](understanding-billing.md#provisioned-model).
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 Wenn Sie Ihr Speicherkonto gerade erstellt haben, können Sie vom Bereitstellungsbildschirm dorthin navigieren, indem Sie **Zu Ressource wechseln** auswählen. Falls Sie das Speicherkonto schon vorher erstellt haben, können Sie darauf über die Ressourcengruppe zugreifen, in der es enthalten ist. Wählen Sie im Speicherkonto die Kachel **Dateifreigaben** aus. (Sie können auch über das Inhaltsverzeichnis des Speicherkontos zu **Dateifreigaben** navigieren.)
@@ -233,7 +233,7 @@ Die Funktionalität zum Erstellen oder Verschieben einer Dateifreigabe in eine b
 > [!Important]  
 > Bei Premium-Dateifreigaben verweist der Parameter `--quota` auf die bereitgestellte Größe der Dateifreigabe. Die bereitgestellte Größe der Dateifreigabe ist die Menge, die Ihnen unabhängig von der Nutzung berechnet wird. Standard-Dateifreigaben werden nicht basierend auf der Nutzung, sondern auf der bereitgestellten Größe berechnet.
 
-```bash
+```azurecli
 shareName="myshare"
 
 az storage share-rm create \
@@ -285,7 +285,7 @@ Update-AzRmStorageShare `
 # <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 Der folgende Azure CLI-Befehl setzt voraus, dass Sie die Variablen `$resourceGroupName`, `$storageAccountName` und `$shareName` wie in den früheren Abschnitten dieses Dokuments beschrieben festgelegt haben.
 
-```bash
+```azurecli
 az storage share-rm update \
     --resource-group $resourceGroupName \
     --storage-account $storageAccountName \

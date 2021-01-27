@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 11/23/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 19aa847ce7ce1a6ba727a4733aefcdfad845e8c6
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: 282ec6a25dc381dc51f28534d272bae57d2e792e
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97629390"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98674992"
 ---
 # <a name="tutorial-to-configure-nevis-with-azure-active-directory-b2c-for-passwordless-authentication"></a>Tutorial zum Konfigurieren von Nevis mit Azure Active Directory B2C für die kennwortlose Authentifizierung
 
@@ -30,9 +30,9 @@ Zunächst benötigen Sie Folgendes:
 
 - Ein Azure AD-Abonnement Falls Sie noch kein Konto haben, können Sie eine [kostenloses Konto](https://azure.microsoft.com/free/) verwenden.
 
-- Einen [Azure AD B2C-Mandanten](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-tenant), der mit Ihrem Azure-Abonnement verknüpft ist
+- Einen [Azure AD B2C-Mandanten](./tutorial-create-tenant.md), der mit Ihrem Azure-Abonnement verknüpft ist
 
-- Eine für die Verwendung von [benutzerdefinierten Richtlinien](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started) konfigurierte Azure AD B2C-Umgebung, wenn Sie Nevis in Ihren Registrierungsrichtlinienflow integrieren möchten.
+- Eine für die Verwendung von [benutzerdefinierten Richtlinien](./custom-policy-get-started.md) konfigurierte Azure AD B2C-Umgebung, wenn Sie Nevis in Ihren Registrierungsrichtlinienflow integrieren möchten.
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
 
@@ -134,9 +134,9 @@ Sie erhalten zwei E-Mails:
 
 4. **Speichern** Sie die Änderungen an der Datei.
 
-5. Befolgen Sie die [Anweisungen](https://docs.microsoft.com/azure/active-directory-b2c/customize-ui-with-html#2-create-an-azure-blob-storage-account), und laden Sie die Datei **nevis.html** in Ihre Azure Blob Storage-Instanz hoch.
+5. Befolgen Sie die [Anweisungen](./customize-ui-with-html.md#2-create-an-azure-blob-storage-account), und laden Sie die Datei **nevis.html** in Ihre Azure Blob Storage-Instanz hoch.
 
-6. Befolgen Sie die [Anweisungen](https://docs.microsoft.com/azure/active-directory-b2c/customize-ui-with-html#3-configure-cors), und aktivieren Sie CORS (Cross-Origin Resource Sharing) für diese Datei.
+6. Befolgen Sie die [Anweisungen](./customize-ui-with-html.md#3-configure-cors), und aktivieren Sie CORS (Cross-Origin Resource Sharing) für diese Datei.
 
 7. Wenn der Upload vollständig und CORS aktiviert ist, wählen Sie die Datei **nevis.html** in der Liste aus.
 
@@ -268,6 +268,6 @@ Sie erhalten zwei E-Mails:
 
 Weitere Informationen finden Sie in den folgenden Artikeln:
 
-- [Benutzerdefinierte Richtlinien in Azure AD B2C](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-overview)
+- [Benutzerdefinierte Richtlinien in Azure AD B2C](./custom-policy-overview.md)
 
-- [Erste Schritte mit benutzerdefinierten Richtlinien in Azure AD B2C](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started?tabs=applications)
+- [Erste Schritte mit benutzerdefinierten Richtlinien in Azure AD B2C](./custom-policy-get-started.md?tabs=applications)

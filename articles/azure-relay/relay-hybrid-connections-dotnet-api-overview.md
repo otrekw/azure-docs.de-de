@@ -4,12 +4,12 @@ description: In diesem Artikel wird eine Übersicht über die .NET Standard-API 
 ms.topic: article
 ms.custom: devx-track-csharp
 ms.date: 06/23/2020
-ms.openlocfilehash: 44d5800c08b49118e99a678e31d02e5b7a1f550c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 724fb1a62b82036b4a0fa8b9f4f3608293f608a9
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88935669"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98625130"
 ---
 # <a name="azure-relay-hybrid-connections-net-standard-api-overview"></a>Übersicht über die .NET Standard-APIs für Hybrid Connections in Azure Relay
 
@@ -83,7 +83,7 @@ var hybridConnectionStream = await client.CreateConnectionAsync();
 
 ### <a name="receiving-data"></a>Empfangen von Daten
 
-Die [HybridConnectionStream][HCStream]-Klasse ermöglicht bidirektionale Kommunikation. In den meisten Fällen werden von Stream kontinuierlich Daten empfangen. Wenn Sie Text aus dem Stream lesen, sollten Sie auch ein [StreamReader](/dotnet/api/system.io.streamreader?view=netcore-3.1)-Objekt verwenden, das eine einfachere Analyse der Daten ermöglicht. Beispielsweise können Sie Daten als Text lesen statt als `byte[]`.
+Die [HybridConnectionStream][HCStream]-Klasse ermöglicht bidirektionale Kommunikation. In den meisten Fällen werden von Stream kontinuierlich Daten empfangen. Wenn Sie Text aus dem Stream lesen, sollten Sie auch ein [StreamReader](/dotnet/api/system.io.streamreader)-Objekt verwenden, das eine einfachere Analyse der Daten ermöglicht. Beispielsweise können Sie Daten als Text lesen statt als `byte[]`.
 
 Der folgende Code liest einzelne Textzeilen aus dem Stream, bis ein Abbruch angefordert wird:
 
@@ -110,14 +110,14 @@ while (!cancellationToken.IsCancellationRequested)
 
 ### <a name="sending-data"></a>Senden von Daten
 
-Sobald Sie eine Verbindung hergestellt haben, können Sie eine Nachricht an den Relay-Endpunkt senden. Da das Verbindungsobjekt den [Stream](/dotnet/api/system.io.stream?view=netcore-3.1) vererbt, senden Sie Ihre Daten als `byte[]`. Dies wird anhand des folgenden Beispiels veranschaulicht:
+Sobald Sie eine Verbindung hergestellt haben, können Sie eine Nachricht an den Relay-Endpunkt senden. Da das Verbindungsobjekt den [Stream](/dotnet/api/system.io.stream) vererbt, senden Sie Ihre Daten als `byte[]`. Dies wird anhand des folgenden Beispiels veranschaulicht:
 
 ```csharp
 var data = Encoding.UTF8.GetBytes("hello");
 await clientConnection.WriteAsync(data, 0, data.Length);
 ```
 
-Wenn Sie Text jedoch direkt senden möchten, ohne jedes Mal die Zeichenfolge codieren zu müssen, können Sie das `hybridConnectionStream`-Objekt mit einem [StreamWriter](/dotnet/api/system.io.streamwriter?view=netcore-3.1)-Objekt umschließen.
+Wenn Sie Text jedoch direkt senden möchten, ohne jedes Mal die Zeichenfolge codieren zu müssen, können Sie das `hybridConnectionStream`-Objekt mit einem [StreamWriter](/dotnet/api/system.io.streamwriter)-Objekt umschließen.
 
 ```csharp
 // The StreamWriter object only needs to be created once

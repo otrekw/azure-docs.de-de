@@ -4,16 +4,16 @@ description: Ein Tutorial, in dem gezeigt wird, wie Nachrichtenanreicherungen f�
 author: robinsh
 ms.service: iot-hub
 services: iot-hub
-ms.topic: conceptual
+ms.topic: tutorial
 ms.date: 12/20/2019
 ms.author: robinsh
 ms.custom: mqtt, devx-track-azurecli, devx-track-csharp
-ms.openlocfilehash: 60bd416cf330676485f83720be4365b56c56baaf
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: ddc212e99c0e55156f56df6bf77e122408a727f9
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96436707"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624054"
 ---
 # <a name="tutorial-use-azure-iot-hub-message-enrichments"></a>Tutorial: Verwenden von Azure IoT Hub-Nachrichtenanreicherungen
 
@@ -386,7 +386,7 @@ Wenn Sie alle für dieses Tutorial erstellten Ressourcen entfernen möchten, lö
 
 ### <a name="use-the-azure-cli-to-clean-up-resources"></a>Verwenden der Azure CLI zum Bereinigen von Ressourcen
 
-Um die Ressourcengruppe zu entfernen, verwenden Sie den Befehl [az group delete](/cli/azure/group?view=azure-cli-latest#az-group-delete). Zur Erinnerung: `$resourceGroup` wurde am Anfang dieses Tutorials auf **ContosoResourcesMsgEn** festgelegt.
+Um die Ressourcengruppe zu entfernen, verwenden Sie den Befehl [az group delete](/cli/azure/group?view=azure-cli-latest#az-group-delete&preserve-view=true). Zur Erinnerung: `$resourceGroup` wurde am Anfang dieses Tutorials auf **ContosoResourcesMsgEn** festgelegt.
 
 ```azurecli-interactive
 az group delete --name $resourceGroup
@@ -397,6 +397,7 @@ az group delete --name $resourceGroup
 In diesem Tutorial haben Sie mit folgenden Schritten das Hinzufügen von Nachrichtenanreicherungen zu IoT Hub-Nachrichten konfiguriert und getestet:
 
 **Verwenden von IoT Hub-Nachrichtenanreicherungen**
+
 > [!div class="checklist"]
 > * Erste Methode: Erstellen Sie Ressourcen, und konfigurieren Sie das Nachrichtenrouting über die Azure CLI. Konfigurieren Sie die Nachrichtenanreicherungen manuell über das [Azure-Portal](https://portal.azure.com).
 > * Zweite Methode: Erstellen Sie Ressourcen, und konfigurieren Sie das Nachrichtenrouting und die Nachrichtenanreicherungen mithilfe einer Azure Resource Manager-Vorlage.
@@ -407,5 +408,8 @@ Weitere Informationen zu Nachrichtenanreicherungen finden Sie unter [Übersicht 
 
 Weitere Informationen zum Nachrichtenrouting finden Sie in diesen Artikeln:
 
-* [Verwenden des IoT Hub-Nachrichtenroutings zum Senden von Gerät-zu-Cloud-Nachrichten an verschiedene Endpunkte](iot-hub-devguide-messages-d2c.md)
-* [Tutorial: IoT Hub-Routing](tutorial-routing.md)
+> [!div class="nextstepaction"]
+> [Verwenden des IoT Hub-Nachrichtenroutings zum Senden von Gerät-zu-Cloud-Nachrichten an verschiedene Endpunkte](iot-hub-devguide-messages-d2c.md)
+
+> [!div class="nextstepaction"]
+> [Tutorial: IoT Hub-Routing](tutorial-routing.md)

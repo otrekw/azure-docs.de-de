@@ -4,12 +4,12 @@ description: Beschreibung von Warteschlangen für unzustellbare Nachrichten in A
 ms.topic: article
 ms.date: 06/23/2020
 ms.custom: fasttrack-edit, devx-track-csharp
-ms.openlocfilehash: 4dbd1216d3ff81e785f16ebed6ceabfa5d5897db
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: ad62f946584071e7ce6fd55f48b5f7ee8db44a2f
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91301022"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98630097"
 ---
 # <a name="overview-of-service-bus-dead-letter-queues"></a>Übersicht über Service Bus-Warteschlangen für unzustellbare Nachrichten
 
@@ -30,7 +30,7 @@ Es ist nicht möglich, auf Themenebene die Anzahl von Nachrichten in der Wartesc
 
 ![Nachrichtenanzahl der Warteschlange für unzustellbare Nachrichten](./media/service-bus-dead-letter-queues/dead-letter-queue-message-count.png)
 
-Sie können die Anzahl von Nachrichten in der Warteschlange für unzustellbare Nachrichten auch abrufen, indem Sie den folgenden Azure CLI-Befehl verwenden: [`az servicebus topic subscription show`](/cli/azure/servicebus/topic/subscription?view=azure-cli-latest#az-servicebus-topic-subscription-show). 
+Sie können die Anzahl von Nachrichten in der Warteschlange für unzustellbare Nachrichten auch abrufen, indem Sie den folgenden Azure CLI-Befehl verwenden: [`az servicebus topic subscription show`](/cli/azure/servicebus/topic/subscription#az-servicebus-topic-subscription-show). 
 
 ## <a name="moving-messages-to-the-dlq"></a>Verschieben von Nachrichten in die Warteschlange für unzustellbare Nachrichten
 

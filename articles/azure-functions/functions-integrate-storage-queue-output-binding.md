@@ -5,12 +5,12 @@ ms.assetid: 0b609bc0-c264-4092-8e3e-0784dcc23b5d
 ms.topic: how-to
 ms.date: 04/24/2020
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: 9c635b01bcd04bd03191fca2590b0189bad0f544
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d2821a16e0b72b32cc392b7ae626d782734458a6
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90982017"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98674200"
 ---
 # <a name="add-messages-to-an-azure-storage-queue-using-functions"></a>Hinzufügen von Meldungen in die Warteschlange von Azure Storage mithilfe von Functions
 
@@ -22,13 +22,13 @@ So führen Sie diesen Schnellstart durch:
 
 - Ein Azure-Abonnement. Sollten Sie kein Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
-- Folgen Sie der Anleitung unter [Erstellen Ihrer ersten Funktion im Azure-Portal](functions-create-first-azure-function.md), lassen Sie dabei aber den Schritt **Bereinigen von Ressourcen** weg. In dieser Schnellstartanleitung werden die Funktions-App und die Funktion erstellt, die hier verwendet werden.
+- Folgen Sie der Anleitung unter [Erstellen Ihrer ersten Funktion im Azure-Portal](./functions-get-started.md), lassen Sie dabei aber den Schritt **Bereinigen von Ressourcen** weg. In dieser Schnellstartanleitung werden die Funktions-App und die Funktion erstellt, die hier verwendet werden.
 
 ## <a name="add-an-output-binding"></a><a name="add-binding"></a>Ausgabebindung hinzufügen
 
 In diesem Abschnitt verwenden Sie die Benutzeroberfläche des Portals, um der zuvor erstellten Funktion eine Queue Storage-Ausgabebindung hinzuzufügen. Durch diese Bindung können Sie mit minimalem Programmieraufwand eine Meldung in einer Warteschlange erstellen. Sie müssen keinen Code für Aufgaben wie das Öffnen einer Speicherverbindung, das Erstellen einer Warteschlange oder das Abrufen eines Verweises auf eine Warteschlange schreiben. Die Azure Functions-Laufzeit und die Warteschlangen-Ausgabebindung nehmen Ihnen diese Aufgaben ab.
 
-1. Öffnen Sie im Azure-Portal die Seite „Funktions-App“ für die Funktions-App, die Sie in [Erstellen Ihrer ersten Funktion im Azure-Portal](functions-create-first-azure-function.md) erstellt haben. Um die Seite zu öffnen, suchen Sie nach **Funktions-App** und wählen die Option dann aus. Wählen Sie Ihre Funktions-App dann aus.
+1. Öffnen Sie im Azure-Portal die Seite „Funktions-App“ für die Funktions-App, die Sie in [Erstellen Ihrer ersten Funktion im Azure-Portal](./functions-get-started.md) erstellt haben. Um die Seite zu öffnen, suchen Sie nach **Funktions-App** und wählen die Option dann aus. Wählen Sie Ihre Funktions-App dann aus.
 
 1. Wählen Sie Ihre Funktions-App und dann die Funktion aus, die Sie im Rahmen der vorherigen Schnellstartanleitung erstellt haben.
 
@@ -38,7 +38,7 @@ In diesem Abschnitt verwenden Sie die Benutzeroberfläche des Portals, um der zu
 
 1. Wählen Sie den Bindungstyp **Azure Queue Storage** aus, und fügen Sie die Einstellungen aus der Tabelle nach dem folgenden Screenshot hinzu: 
 
-    :::image type="content" source="./media/functions-integrate-storage-queue-output-binding/function-create-output-binding-details.png" alt-text="Erstellen einer Ausgabebindung für die Funktion." border="true":::
+    :::image type="content" source="./media/functions-integrate-storage-queue-output-binding/function-create-output-binding-details.png" alt-text="Hinzufügen einer Ausgabebindung von Queue Storage zu einer Funktion im Azure-Portal." border="true":::
     
     | Einstellung      |  Vorgeschlagener Wert   | BESCHREIBUNG                              |
     | ------------ |  ------- | -------------------------------------------------- |
@@ -94,11 +94,11 @@ In diesem Abschnitt fügen Sie Code hinzu, der eine Meldung in die Ausgabewartes
 1. Nachdem die Codeänderungen gespeichert wurden, klicken Sie auf **Testen**.
 1. Vergewissern Sie sich, dass der Test der folgenden Abbildung entspricht, und wählen Sie **Ausführen** aus. 
 
-    :::image type="content" source="./media/functions-integrate-storage-queue-output-binding/functions-test-run-function.png" alt-text="Erstellen einer Ausgabebindung für die Funktion." border="true":::
+    :::image type="content" source="./media/functions-integrate-storage-queue-output-binding/functions-test-run-function.png" alt-text="Testen der Queue Storage-Bindung im Azure-Portal." border="true":::
 
     Beachten Sie, dass der **Anforderungstext** den `name`-Wert *Azure* enthält. Dieser Wert erscheint in der Warteschlangenmeldung, die erstellt wird, wenn die Funktion aufgerufen wird.
     
-    Anstatt auf **Ausführen** zu klicken, können Sie die Funktion auch aufrufen, indem Sie eine URL in einen Browser eingeben und den `name`-Wert in der Abfragezeichenfolge angeben. Die Browsermethode wird in der [vorherigen Schnellstartanleitung](functions-create-first-azure-function.md#test-the-function) gezeigt.
+    Anstatt auf **Ausführen** zu klicken, können Sie die Funktion auch aufrufen, indem Sie eine URL in einen Browser eingeben und den `name`-Wert in der Abfragezeichenfolge angeben. Die Browsermethode wird in der [vorherigen Schnellstartanleitung](./functions-get-started.md) gezeigt.
 
 1. Überprüfen Sie die Protokolle, um sicherzustellen, dass die Funktion erfolgreich durchgeführt wurde. 
 
@@ -111,11 +111,11 @@ Eine neue Warteschlange mit dem Namen **outqueue** wird in Ihrem Speicherkonto v
 
 1. Wählen Sie unter **Anwendungseinstellungen** die Option **AzureWebJobsStorage** aus.
 
-    :::image type="content" source="./media/functions-integrate-storage-queue-output-binding/function-find-storage-account.png" alt-text="Erstellen einer Ausgabebindung für die Funktion." border="true":::
+    :::image type="content" source="./media/functions-integrate-storage-queue-output-binding/function-find-storage-account.png" alt-text="Screenshot der Seite „Konfiguration“ mit Auswahl von AzureWebJobsStorage." border="true":::
 
 1. Ermitteln Sie den Kontonamen, und notieren Sie ihn sich.
 
-    :::image type="content" source="./media/functions-integrate-storage-queue-output-binding/function-storage-account-name.png" alt-text="Erstellen einer Ausgabebindung für die Funktion." border="true":::
+    :::image type="content" source="./media/functions-integrate-storage-queue-output-binding/function-storage-account-name.png" alt-text="Suchen nach dem mit AzureWebJobsStorage verbundenen Speicherkonto." border="true":::
 
 ### <a name="examine-the-output-queue"></a>Überprüfen der Ausgabewarteschlange
 

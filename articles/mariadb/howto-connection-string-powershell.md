@@ -3,16 +3,16 @@ title: 'Generieren einer Verbindungszeichenfolge mit PowerShell: Azure Database 
 description: Dieser Artikel enthält ein Azure PowerShell-Beispiel zum Generieren einer Verbindungszeichenfolge für die Verbindungsherstellung mit Azure Database for MariaDB.
 author: savjani
 ms.author: pariks
-ms.service: mariadb
+ms.service: jroth
 ms.custom: mvc, devx-track-azurepowershell
 ms.topic: how-to
 ms.date: 8/5/2020
-ms.openlocfilehash: 9dee109c701d3760c93f39e639dcfd7cae07b595
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 79109a7f39debfa14c8a11d9014685382151ab3b
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94538052"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98663722"
 ---
 # <a name="how-to-generate-an-azure-database-for-mariadb-connection-string-with-powershell"></a>Generieren einer Azure Database for MariaDB-Verbindungszeichenfolge mit PowerShell
 

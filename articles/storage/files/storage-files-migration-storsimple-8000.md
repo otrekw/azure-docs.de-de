@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/16/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 08ed07adbfe0fc4b22d8a3d0afcfc9ab1312dba4
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 76a244810042adf3cec64b15fe847c5b684527c2
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98134346"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98631183"
 ---
 # <a name="storsimple-8100-and-8600-migration-to-azure-file-sync"></a>StorSimple 8100- und 8600-Migration zur Azure-Dateisynchronisierung
 
@@ -160,7 +160,7 @@ Sie haben die Möglichkeit, Storage Premium (SSD) für Azure-Dateifreigaben oder
 
 Sie sind immer noch nicht sicher?
 
-* Wählen Sie Storage Premium aus, wenn Sie die [Leistung einer Premium-Azure-Dateifreigabe](understanding-billing.md#provisioned-billing) benötigen.
+* Wählen Sie Storage Premium aus, wenn Sie die [Leistung einer Premium-Azure-Dateifreigabe](understanding-billing.md#provisioned-model) benötigen.
 * Wählen Sie Standardspeicher für allgemeine Dateiserverworkloads aus, einschließlich heißer Daten und Archivdaten. Wählen Sie Standardspeicher auch aus, wenn Azure-Dateisynchronisierung die einzige Workload auf der Freigabe in der Cloud ist.
 
 #### <a name="account-kind"></a>Kontoart

@@ -3,16 +3,16 @@ title: Zugreifen auf Überwachungsprotokolle – Azure CLI – Azure Database fo
 description: In diesem Artikel wird beschrieben, wie Sie über die Azure CLI die Überwachungsprotokolle in Azure Database for MariaDB konfigurieren und darauf zugreifen.
 author: savjani
 ms.author: pariks
-ms.service: mariadb
+ms.service: jroth
 ms.topic: how-to
 ms.date: 6/24/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: c1d446d8ee2863077ad84c361876758336f5a3cb
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 57fc79e88e3268c37dd932a5618bd661f000e09c
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94540959"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98665173"
 ---
 # <a name="configure-and-access-azure-database-for-maria-db-audit-logs-in-the-azure-cli"></a>Konfigurieren von Überwachungsprotokollen für Azure Database for Maria DB und Zugreifen darauf in der Azure CLI
 

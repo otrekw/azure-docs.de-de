@@ -9,16 +9,16 @@ ms.subservice: sql-dw
 ms.date: 07/10/2020
 ms.author: kevin
 ms.reviewer: jrasnick
-ms.openlocfilehash: 25c692ea9a2dce4723472f6812ac46d82b2b318d
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 1551e85bd45d4d64861b43bf53dd0c155520861f
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98120987"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98673636"
 ---
 # <a name="securely-load-data-using-synapse-sql"></a>Sicheres Laden von Daten mithilfe von Synapse SQL
 
-In diesem Artikel werden sichere Authentifizierungsmechanismen für die [COPY-Anweisung](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) erläutert und Beispiele dazu bereitgestellt. Die COPY-Anweisung ist die flexibelste und sicherste Methode zum Massenladen von Daten in Synapse SQL.
+In diesem Artikel werden sichere Authentifizierungsmechanismen für die [COPY-Anweisung](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true) erläutert und Beispiele dazu bereitgestellt. Die COPY-Anweisung ist die flexibelste und sicherste Methode zum Massenladen von Daten in Synapse SQL.
 ## <a name="supported-authentication-mechanisms"></a>Unterstützte Authentifizierungsmechanismen
 
 In der nachstehenden Matrix werden die unterstützten Authentifizierungsmethoden für jeden Dateityp und jedes Speicherkonto beschrieben. Dies gilt für den Quellspeicherort und den Speicherort der Fehlerdatei.
@@ -176,5 +176,5 @@ Eine Authentifizierung der verwalteten Identität ist erforderlich, wenn Ihr Spe
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Informieren Sie sich im [Artikel „COPY-Anweisung“](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest#syntax) über alle Details der Syntax.
+- Informieren Sie sich im [Artikel „COPY-Anweisung“](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true#syntax) über alle Details der Syntax.
 - Informieren Sie sich im Artikel [data loading overview](./design-elt-data-loading.md#what-is-elt) (Übersicht über das Laden von Daten) über bewährte Methoden zum Laden von Daten.

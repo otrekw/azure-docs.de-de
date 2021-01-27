@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/25/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 3f56fc1b321396c5cc6aa93e3f47fcaafcbe4ae4
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 0fbd7cda4723b62863d7d9bb0fe6aa2fac32dcd9
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98202333"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98633102"
 ---
 # <a name="azure-security-baseline-for-event-hubs"></a>Azure-Sicherheitsbaseline für Event Hubs
 
@@ -293,9 +293,9 @@ Ausführen des Onboardings für Azure Sentinel: https://docs.microsoft.com/azure
 
 **Leitfaden**: Azure Active Directory (AAD) umfasst integrierte Rollen, die explizit zugewiesen werden müssen und abgefragt werden können. Verwenden Sie das Azure AD PowerShell-Modul, um Ad-hoc-Abfragen zum Ermitteln von Konten auszuführen, die Mitglieder von administrativen Gruppen sind. 
 
-Abrufen einer Verzeichnisrolle in Azure AD mit PowerShell: https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0
+Abrufen einer Verzeichnisrolle in Azure AD mit PowerShell: https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole
 
-Abrufen von Mitgliedern einer Verzeichnisrolle in Azure AD mit PowerShell: https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0
+Abrufen von Mitgliedern einer Verzeichnisrolle in Azure AD mit PowerShell: https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember
 
 **Azure Security Center-Überwachung**: Ja
 
@@ -633,7 +633,7 @@ Erstellen von Warnungen für Ereignisse des Azure-Aktivitätsprotokolls: https:/
 
 Erstellen von Abfragen mit Azure Resource Graph: https://docs.microsoft.com/azure/governance/resource-graph/first-query-portal
 
-Anzeigen Ihrer Azure-Abonnements: https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0
+Anzeigen Ihrer Azure-Abonnements: https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription
 
 Grundlegendes zu Azure RBAC: https://docs.microsoft.com/azure/role-based-access-control/overview
 
@@ -779,7 +779,7 @@ Konfigurieren des bedingten Zugriffs, um den Zugriff auf Azure Resource Manager 
 
 Integrierte Azure-Richtlinie für Event Hubs-Namespace: https://docs.microsoft.com/azure/governance/policy/samples/built-in-policies#event-hub
 
-Anzeigen verfügbarer Azure Policy-Aliase: https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0
+Anzeigen verfügbarer Azure Policy-Aliase: https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias
 
 Konfigurieren und Verwalten von Azure Policy: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
@@ -820,9 +820,9 @@ Weitere Informationen zu den Azure Policy-Effekten: https://docs.microsoft.com/a
 
 **Leitfaden**: Wenn Sie für Ihre Event Hubs oder verwandte Ressourcen benutzerdefinierte Azure Policy-Definitionen verwenden, nutzen Sie Azure Repos, um Code sicher zu speichern und zu verwalten.
 
-Speichern von Code in Azure DevOps: https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops
+Speichern von Code in Azure DevOps: https://docs.microsoft.com/azure/devops/repos/git/gitworkflow
 
-Dokumentation zu Azure Repos: https://docs.microsoft.com/azure/devops/repos/index?view=azure-devops
+Dokumentation zu Azure Repos: https://docs.microsoft.com/azure/devops/repos/index
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -986,7 +986,7 @@ Sichern von Key Vault-Geheimnissen: https://docs.microsoft.com/powershell/module
 
  
 
-Wiederherstellen von Key Vault-Schlüsseln in Azure: https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0
+Wiederherstellen von Key Vault-Schlüsseln in Azure: https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 

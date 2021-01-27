@@ -11,12 +11,12 @@ ms.date: 03/18/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: f65c1d6fda09d7762a59fb5a932a72ad706a767a
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 8a59c24100b433719ccfd3a9ea1b6a676695d381
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96448024"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98673433"
 ---
 # <a name="partitioning-tables-in-dedicated-sql-pool"></a>Partitionierungstabellen im dedizierten SQL-Pool
 
@@ -58,9 +58,9 @@ Weitere Informationen finden Sie im Artikel zur [Indizierung](sql-data-warehouse
 
 Ein dedizierter SQL-Pool bietet eine einfachere Möglichkeit zum Definieren von Partitionen als SQL Server. Partitionierungsfunktionen und -schemas werden in einem dedizierten SQL-Pool nicht so wie in SQL Server verwendet. Stattdessen müssen Sie lediglich die partitionierte Spalte und die Grenzpunkte identifizieren. 
 
-Die Syntax der Partitionierung kann gegenüber SQL Server leicht variieren, aber die grundlegenden Konzepte sind identisch. SQL Server und ein dedizierter SQL-Pool unterstützen eine Partitionsspalte pro Tabelle, bei der es sich um eine Bereichspartition handeln kann. Weitere Informationen zur Partitionierung finden Sie unter [Partitionierte Tabellen und Indizes](/sql/relational-databases/partitions/partitioned-tables-and-indexes?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
+Die Syntax der Partitionierung kann gegenüber SQL Server leicht variieren, aber die grundlegenden Konzepte sind identisch. SQL Server und ein dedizierter SQL-Pool unterstützen eine Partitionsspalte pro Tabelle, bei der es sich um eine Bereichspartition handeln kann. Weitere Informationen zur Partitionierung finden Sie unter [Partitionierte Tabellen und Indizes](/sql/relational-databases/partitions/partitioned-tables-and-indexes?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true).
 
-Im folgenden Beispiel wird mit der [CREATE TABLE](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)-Anweisung die Tabelle „FactInternetSales“ nach der Spalte „OrderDateKey“ partitioniert:
+Im folgenden Beispiel wird mit der [CREATE TABLE](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)-Anweisung die Tabelle „FactInternetSales“ nach der Spalte „OrderDateKey“ partitioniert:
 
 ```sql
 CREATE TABLE [dbo].[FactInternetSales]
@@ -90,8 +90,8 @@ WITH
 
 Gehen Sie wie folgt vor, um SQL Server-Partitionsdefinitionen zu einem dedizierten SQL-Pool zu migrieren:
 
-- Entfernen Sie das SQL Server-[Partitionsschema](/sql/t-sql/statements/create-partition-scheme-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
-- Fügen Sie die Definition der [Partitionsfunktion](/sql/t-sql/statements/create-partition-function-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) zu CREATE TABLE hinzu.
+- Entfernen Sie das SQL Server-[Partitionsschema](/sql/t-sql/statements/create-partition-scheme-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true).
+- Fügen Sie die Definition der [Partitionsfunktion](/sql/t-sql/statements/create-partition-function-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) zu CREATE TABLE hinzu.
 
 Wenn Sie eine partitionierte Tabelle von einer SQL Server-Instanz migrieren, können Sie mit dem unten angegebenen SQL-Code die Anzahl von Zeilen in jeder Partition ermitteln. Beachten Sie Folgendes: Wenn für einen dedizierten SQL-Pool die gleiche Partitionierungsgranularität verwendet wird, verringert sich die Anzahl von Zeilen pro Partition um den Faktor 60.  
 
@@ -131,7 +131,7 @@ GROUP BY    s.[name]
 
 ## <a name="partition-switching"></a>Partitionswechsel
 
-Ein dedizierter SQL-Pool unterstützt das Aufteilen, Zusammenführen und Wechseln von Partitionen. Jede dieser Funktionen wird mithilfe der [ALTER TABLE](/sql/t-sql/statements/alter-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)-Anweisung ausgeführt.
+Ein dedizierter SQL-Pool unterstützt das Aufteilen, Zusammenführen und Wechseln von Partitionen. Jede dieser Funktionen wird mithilfe der [ALTER TABLE](/sql/t-sql/statements/alter-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)-Anweisung ausgeführt.
 
 Für den Wechsel zweier Partitionen zwischen zwei Tabellen müssen Sie sicherstellen, dass die Partitionen an ihren jeweiligen Grenzen ausgerichtet sind und die Tabellendefinitionen übereinstimmen. Da keine Überprüfungseinschränkungen verfügbar sind, um den Bereich der Werte in einer Tabelle zu erzwingen, muss die Quelltabelle die gleichen Partitionsgrenzen enthalten wie die Zieltabelle. Ist dies nicht der Fall, tritt ein Fehler beim Partitionswechsel auf, da die Partitionsmetadaten nicht synchronisiert werden.
 

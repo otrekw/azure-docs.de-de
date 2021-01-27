@@ -4,12 +4,12 @@ description: Verfügbarkeit von Compute- und Arbeitsspeicherressourcen für den 
 ms.topic: article
 ms.date: 04/27/2020
 ms.custom: references_regions
-ms.openlocfilehash: 8651a1cc2c2ba41e2c28e9f63dc78c091a6af61d
-ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
+ms.openlocfilehash: 63ec7c9027f957714108263dcbb4300a3cc68388
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96763892"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98661373"
 ---
 # <a name="resource-availability-for-azure-container-instances-in-azure-regions"></a>Ressourcenverfügbarkeit für Azure Container Instances in Azure-Regionen
 
@@ -40,6 +40,7 @@ Die folgenden Regionen und maximalen Ressourcen sind für Containergruppen mit L
 | East US | 4 | 16 | 4 | 16 | 50 | K80, P100, V100 |
 | USA (Ost) 2 | 4 | 16 | 4 | 16 | 50 | – |
 | Frankreich, Mitte | 4 | 16 | 4 | 16 | 50 | – |
+| Deutschland, Westen-Mitte | 3 | 16 | – | – | 50 | – |
 | Japan, Osten | 2 | 8 | 4 | 16 | 50 | – |
 | Korea, Mitte | 4 | 16 | – | – | 50 | – |
 | USA Nord Mitte | 2 | 3,5 | 4 | 16 | 50 | K80, P100, V100 |
@@ -48,6 +49,7 @@ Die folgenden Regionen und maximalen Ressourcen sind für Containergruppen mit L
 | Asien, Südosten | 4 | 16 | 4 | 16 | 50 | P100, V100 |
 | Indien (Süden) | 4 | 16 | – | – | 50 | – |
 | UK, Süden | 4 | 16 | 4 | 16 | 50 | – |
+| Vereinigte Arabische Emirate, Norden | 3 | 16 | – | – | 50 | – |
 | USA, Westen-Mitte| 4 | 16 | 4 | 16 | 50 | – |
 | Europa, Westen | 4 | 16 | 4 | 16 | 50 | K80, P100, V100 |
 | USA, Westen | 4 | 16 | 4 | 16 | 50 | – |

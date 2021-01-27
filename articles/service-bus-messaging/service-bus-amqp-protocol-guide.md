@@ -3,12 +3,12 @@ title: AMQP 1.0 in Azure Service Bus und Event Hubs – Protokollleitfaden | Mic
 description: Enthält einen Protokollleitfaden für Ausdrücke und eine Beschreibung von AMQP 1.0 in Azure Service Bus und Event Hubs.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: e001327c2c7da08cb9a3552f97fc9a7d8b7921a2
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: 2154221ebfe69b659ff83100ed614133e178ccdb
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95736713"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624488"
 ---
 # <a name="amqp-10-in-azure-service-bus-and-event-hubs-protocol-guide"></a>AMQP 1.0 in Azure Service Bus und Event Hubs – Protokollleitfaden
 
@@ -73,7 +73,7 @@ Verbindungen, Kanäle und Sitzungen sind flüchtig. Wenn die zugrunde liegende V
 
 ### <a name="amqp-outbound-port-requirements"></a>Anforderungen für ausgehende Ports für AMQP-Verbindungen
 
-Bei Clients, auf denen AMQP-Verbindungen über TCP verwendet werden, müssen die Ports 5671 und 5672 in der lokalen Firewall geöffnet werden. Zusammen mit diesen Ports ist es möglicherweise notwendig, zusätzliche Ports zu öffnen, wenn die Funktion [EnableLinkRedirect](/dotnet/api/microsoft.servicebus.messaging.amqp.amqptransportsettings.enablelinkredirect?view=azure-dotnet) aktiviert ist. `EnableLinkRedirect` ist eine neue Messagingfunktion, mit der beim Empfangen von Nachrichten ein Hop übersprungen und so der Durchsatz gesteigert werden kann. Der Client kommuniziert wie in der folgenden Abbildung gezeigt direkt mit dem Back-End-Dienst über den Portbereich 104XX. 
+Bei Clients, auf denen AMQP-Verbindungen über TCP verwendet werden, müssen die Ports 5671 und 5672 in der lokalen Firewall geöffnet werden. Zusammen mit diesen Ports ist es möglicherweise notwendig, zusätzliche Ports zu öffnen, wenn die Funktion [EnableLinkRedirect](/dotnet/api/microsoft.servicebus.messaging.amqp.amqptransportsettings.enablelinkredirect) aktiviert ist. `EnableLinkRedirect` ist eine neue Messagingfunktion, mit der beim Empfangen von Nachrichten ein Hop übersprungen und so der Durchsatz gesteigert werden kann. Der Client kommuniziert wie in der folgenden Abbildung gezeigt direkt mit dem Back-End-Dienst über den Portbereich 104XX. 
 
 ![Liste der Zielports][4]
 
@@ -240,14 +240,14 @@ Einige andere Service Bus-Nachrichteneigenschaften sind nicht Teil der AMQP-Nach
 
 | Anmerkungszuordnungsschlüssel | Verwendung | API-Name |
 | --- | --- | --- |
-| x-opt-scheduled-enqueue-time | Deklariert den Zeitpunkt, zu dem die Nachricht auf der Entität angezeigt werden soll. |[ScheduledEnqueueTime](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.scheduledenqueuetimeutc?view=azure-dotnet) |
-| x-opt-partition-key | Anwendungsdefinierter Schlüssel, der bestimmt, in welcher Partition die Nachricht aufgenommen werden sollte. | [PartitionKey](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.partitionkey?view=azure-dotnet) |
-| x-opt-via-partition-key | Anwendungsdefinierter Partitionsschlüsselwert, wenn eine Transaktion zum Senden von Nachrichten über eine Übertragungswarteschlange verwendet werden soll. | [ViaPartitionKey](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.viapartitionkey?view=azure-dotnet) |
-| x-opt-enqueued-time | Vom Dienst definierte UTC-Zeit, die den tatsächlichen Zeitpunkt des Einreihens der Nachricht darstellt. Wird bei der Eingabe ignoriert. | [EnqueuedTimeUtc](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.enqueuedtimeutc?view=azure-dotnet) |
-| x-opt-sequence-number | Vom Dienst definierte eindeutige Nummer, die einer Nachricht zugewiesen ist. | [SequenceNumber](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.sequencenumber?view=azure-dotnet) |
-| x-opt-offset | Vom Dienst definierte Warteschlangen-Sequenznummer der Nachricht. | [EnqueuedSequenceNumber](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.enqueuedsequencenumber?view=azure-dotnet) |
-| x-opt-locked-until | Vom Dienst definiert. Der Zeitpunkt (Datum und Uhrzeit), bis zu dem die Nachricht in der Warteschlange / im Abonnement gesperrt wird. | [LockedUntilUtc](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.lockeduntilutc?view=azure-dotnet) |
-| x-opt-deadletter-source | Vom Dienst definiert. Die Quelle der ursprünglichen Nachricht, wenn die Nachricht von der Warteschlange für unzustellbare Nachrichten empfangen wird. | [DeadLetterSource](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.deadlettersource?view=azure-dotnet) |
+| x-opt-scheduled-enqueue-time | Deklariert den Zeitpunkt, zu dem die Nachricht auf der Entität angezeigt werden soll. |[ScheduledEnqueueTime](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.scheduledenqueuetimeutc) |
+| x-opt-partition-key | Anwendungsdefinierter Schlüssel, der bestimmt, in welcher Partition die Nachricht aufgenommen werden sollte. | [PartitionKey](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.partitionkey) |
+| x-opt-via-partition-key | Anwendungsdefinierter Partitionsschlüsselwert, wenn eine Transaktion zum Senden von Nachrichten über eine Übertragungswarteschlange verwendet werden soll. | [ViaPartitionKey](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.viapartitionkey) |
+| x-opt-enqueued-time | Vom Dienst definierte UTC-Zeit, die den tatsächlichen Zeitpunkt des Einreihens der Nachricht darstellt. Wird bei der Eingabe ignoriert. | [EnqueuedTimeUtc](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.enqueuedtimeutc) |
+| x-opt-sequence-number | Vom Dienst definierte eindeutige Nummer, die einer Nachricht zugewiesen ist. | [SequenceNumber](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.sequencenumber) |
+| x-opt-offset | Vom Dienst definierte Warteschlangen-Sequenznummer der Nachricht. | [EnqueuedSequenceNumber](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.enqueuedsequencenumber) |
+| x-opt-locked-until | Vom Dienst definiert. Der Zeitpunkt (Datum und Uhrzeit), bis zu dem die Nachricht in der Warteschlange / im Abonnement gesperrt wird. | [LockedUntilUtc](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.lockeduntilutc) |
+| x-opt-deadletter-source | Vom Dienst definiert. Die Quelle der ursprünglichen Nachricht, wenn die Nachricht von der Warteschlange für unzustellbare Nachrichten empfangen wird. | [DeadLetterSource](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.deadlettersource) |
 
 ### <a name="transaction-capability"></a>Transaktionsfunktion
 

@@ -3,16 +3,16 @@ title: Automatische Speichervergrößerung – Azure PowerShell – Azure Databa
 description: In diesem Artikel wird beschrieben, wie Sie die automatische Speichervergrößerung in Azure Database for MariaDB mithilfe von PowerShell aktivieren können.
 author: savjani
 ms.author: pariks
-ms.service: mariadb
+ms.service: jroth
 ms.topic: how-to
 ms.date: 5/26/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 87438c406ea2b31942003d9211cf5e285628f15d
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: ef495fc884b1930f8510b6b2443bde40e269a8f1
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94540993"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98665156"
 ---
 # <a name="auto-grow-storage-in-azure-database-for-mariadb-server-using-powershell"></a>Automatische Speichervergrößerung für einen Azure Database for MariaDB-Server mithilfe von PowerShell
 

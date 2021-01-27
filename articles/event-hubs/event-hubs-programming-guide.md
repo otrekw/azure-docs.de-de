@@ -4,12 +4,12 @@ description: Dieser Artikel enthält Informationen zum Schreiben von Code für A
 ms.topic: article
 ms.date: 06/23/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 46bd0c3c1488d6dd7afbae5e88e0b83f56654bb8
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: a299813620ee90591d8c9491991237f75f2e9382
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98131235"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98623047"
 ---
 # <a name="net-programming-guide-for-azure-event-hubs-legacy-microsoftazureeventhubs-package"></a>.NET-Programmierleitfaden für Azure Event Hubs (Microsoft.Azure.EventHubs-Legacypaket)
 Dieser Artikel erörtert einige gängige Szenarien zum Schreiben von Code mit Azure Event Hubs. Hierbei wird ein grundlegendes Verständnis von Event Hubs vorausgesetzt. Eine konzeptuelle Übersicht über Event Hubs finden Sie unter [Übersicht über Event Hubs](./event-hubs-about.md).
@@ -97,7 +97,7 @@ Ein einzelner Batch darf den Grenzwert von 1 MB für ein Ereignis nicht übersch
 
 ## <a name="send-asynchronously-and-send-at-scale"></a>Asynchrones Senden und Senden mit Skalierung
 
-Sie senden Ereignisse asynchron an einen Event Hub. Beim asynchronen Senden wird die Rate erhöht, mit der ein Client Ereignisse senden kann. [SendAsync](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.sendasync) gibt ein [Task](/dotnet/api/system.threading.tasks.task?view=netcore-3.1)-Objekt zurück. Sie können die [RetryPolicy](/dotnet/api/microsoft.servicebus.retrypolicy)-Klasse auf dem Client verwenden, um Wiederholungsversuche des Clients zu steuern.
+Sie senden Ereignisse asynchron an einen Event Hub. Beim asynchronen Senden wird die Rate erhöht, mit der ein Client Ereignisse senden kann. [SendAsync](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.sendasync) gibt ein [Task](/dotnet/api/system.threading.tasks.task)-Objekt zurück. Sie können die [RetryPolicy](/dotnet/api/microsoft.servicebus.retrypolicy)-Klasse auf dem Client verwenden, um Wiederholungsversuche des Clients zu steuern.
 
 ## <a name="event-consumers"></a>Ereignisconsumer
 Die [EventProcessorHost][] -Klasse verarbeitet Daten aus Event Hubs. Sie sollten diese Implementierung verwenden, wenn Sie Ereignisleser auf der .NET-Plattform erstellen. [EventProcessorHost][] wird eine threadsichere Laufzeitumgebung mit mehreren Prozessen für Ereignisprozessorimplementierungen bereitgestellt, die auch die Erstellung von Prüfpunkten und die Leaseverwaltung für Partitionen ermöglicht.

@@ -11,16 +11,16 @@ ms.topic: how-to
 ms.date: 02/14/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: fea8d93121fcb5622f86257febcc7d834b444098
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: 34bc50f5f95725b59c0d2b30b529e12abb6aa7fa
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98178805"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98661152"
 ---
 # <a name="migrate-users-to-azure-ad-b2c"></a>Migrieren von Benutzern zu Azure AD B2C
 
-Bei der Migration von einem anderen Identitätsanbieter zu Azure Active Directory B2C (Azure AD B2C) müssen unter Umständen auch bereits vorhandene Benutzerkonten migriert werden. Hier werden zwei Migrationsmethoden behandelt: *Prämigration* und *nahtlose Migration*. Bei beiden Methoden muss eine Anwendung oder ein Skript geschrieben werden, um Benutzerkonten unter Verwendung der [Microsoft Graph-API](manage-user-accounts-graph-api.md) in Azure AD B2C zu erstellen.
+Bei der Migration von einem anderen Identitätsanbieter zu Azure Active Directory B2C (Azure AD B2C) müssen unter Umständen auch bereits vorhandene Benutzerkonten migriert werden. Hier werden zwei Migrationsmethoden behandelt: *Prämigration* und *nahtlose Migration*. Bei beiden Methoden muss eine Anwendung oder ein Skript geschrieben werden, um Benutzerkonten unter Verwendung der [Microsoft Graph-API](microsoft-graph-operations.md) in Azure AD B2C zu erstellen.
 
 ## <a name="pre-migration"></a>Prämigration
 
@@ -34,7 +34,7 @@ Die Prämigration kann in folgenden Situationen verwendet werden:
 - Sie haben Zugriff auf die Klartextanmeldeinformationen (Benutzername und Kennwort) eines Benutzers.
 - Die Anmeldeinformationen sind verschlüsselt, können aber von Ihnen entschlüsselt werden.
 
-Informationen zum programmgesteuerten Erstellen von Benutzerkonten finden Sie unter [Verwalten von Azure AD B2C-Benutzerkonten mit Microsoft Graph](manage-user-accounts-graph-api.md).
+Informationen zum programmgesteuerten Erstellen von Benutzerkonten finden Sie unter [Verwalten von Azure AD B2C-Benutzerkonten mit Microsoft Graph](microsoft-graph-operations.md).
 
 ## <a name="seamless-migration"></a>Nahtlose Migration
 

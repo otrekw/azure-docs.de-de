@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: overview
 ms.service: digital-twins
-ms.openlocfilehash: 49b7bae1a0cc224b92f292b891fae210f2cffa4e
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: 91915f204a68d59a603b8bdea383b497a5b33d34
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97400606"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664026"
 ---
 # <a name="what-is-azure-digital-twins"></a>Was ist Azure Digital Twins?
 
@@ -33,6 +33,8 @@ Nachfolgend sind die von Azure Digital Twins bereitgestellten Funktionen zusamme
 In Azure Digital Twins werden die digitalen Entitäten zur Darstellung von Menschen, Orten und Objekten in Ihrer physischen Umgebung mithilfe von zwei benutzerdefinierten Zwillingstypen definiert, die als [**Modelle**](concepts-models.md) bezeichnet werden. 
 
 Sie können sich diese Modelldefinitionen als eine Art spezialisiertes Vokabular zum Beschreiben Ihres Unternehmens vorstellen. Für eine Gebäudeverwaltungslösung können Sie z. B. Modelle wie „Gebäude“, „Etage“ und „Fahrstuhl“ definieren. Anschließend erstellen Sie basierend auf diesen Modellen **digitale Zwillinge** zur Darstellung Ihrer Umgebung.
+
+[!INCLUDE [digital-twins-versus-device-twins](../../includes/digital-twins-versus-device-twins.md)]
 
 Modelle werden mit der JSON-ähnlichen Sprache [Digital Twins Definition Language (DTDL)](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md) definiert. Sie enthalten Angaben wie Statuseigenschaften, Telemetrieereignisse, Befehle, Komponenten und Beziehungen zum Beschreiben der Zwillinge.
 * Darüber hinaus werden mit Modellen semantische **Beziehungen** zwischen ihren Entitäten definiert. Mit diesen Beziehungen lassen sich Zwillinge in einem Diagramm verbinden, das Aufschluss über die Interaktionen der Zwillinge gibt. In einer Beschreibung Ihrer Umgebung können Modelle als Nomen und die Beziehungen als Verben betrachtet werden.

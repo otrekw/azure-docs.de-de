@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 12/14/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: ed477a931ed63c0db378ff84f85544072492ef96
-ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
+ms.openlocfilehash: 644192de74a888daa0391b31dd42eb6028403fd8
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97387036"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98674473"
 ---
 # <a name="azure-ad-b2c-custom-policy-overview"></a>Übersicht über Benutzerdefinierte Azure AD B2C-Richtlinien
 
@@ -53,7 +53,7 @@ Beim Ausführen der Richtlinie sendet Azure AD B2C Ansprüche an interne und ex
 
 ### <a name="customize-and-localize-your-ui"></a>Anpassen und Lokalisieren Ihrer Benutzeroberfläche
 
-Wenn Sie Informationen von Ihren Benutzern sammeln möchten, indem Sie eine Seite in ihrem Webbrowser anzeigen, verwenden Sie das [selbstbestätigte technische Profil](self-asserted-technical-profile.md). Sie können Ihr selbstbestätigtes technisches Profil bearbeiten, indem Sie [Ansprüche hinzufügen und Benutzereingaben anpassen](custom-policy-configure-user-input.md).
+Wenn Sie Informationen von Ihren Benutzern sammeln möchten, indem Sie eine Seite in ihrem Webbrowser anzeigen, verwenden Sie das [selbstbestätigte technische Profil](self-asserted-technical-profile.md). Sie können Ihr selbstbestätigtes technisches Profil bearbeiten, indem Sie [Ansprüche hinzufügen und Benutzereingaben anpassen](./configure-user-input.md).
 
 Zum [Anpassen der Benutzeroberfläche](customize-ui-with-html.md) für Ihr selbstbestätigtes technisches Profil geben Sie im [ContentDefinition](contentdefinitions.md)-Element eine URL mit benutzerdefiniertem HTML-Inhalt an. Verweisen Sie im selbstbestätigten technischen Profil auf die ID dieser Inhaltsdefinition.
 
@@ -133,11 +133,11 @@ Sie können eigene Geschäftslogik in eine benutzerdefinierte Azure AD B2C-Rich
 
 - Erstellen Sie Ihre Logik innerhalb der **Erweiterungsrichtlinie** oder der **Richtlinie der vertrauenden Seite**. Sie können neue Elemente hinzufügen, die die Basisrichtlinie überschreiben, indem Sie auf dieselbe ID verweisen. Auf diese Weise können Sie Ihr Projekt aufskalieren und gleichzeitig spätere Upgrades der Basisrichtlinie vereinfachen, wenn Microsoft neue Starter Packs veröffentlicht.
 - Es wird dringend davon abgeraten, Änderungen an der **Basisrichtlinie** vorzunehmen.  Falls dennoch Änderungen vorgenommen werden müssen, fügen Sie an den entsprechenden Stellen Kommentare ein.
-- Falls Sie ein Element überschreiben (z. B. die Metadaten eines technischen Profils), vermeiden Sie das Kopieren des gesamten technischen Profils aus der Basisrichtlinie. Kopieren Sie stattdessen nur den benötigten Abschnitt des Elements. Ein Beispiel für diese Änderung finden Sie unter [Deaktivieren der E-Mail-Überprüfung während der Kundenregistrierung in Azure Active Directory B2C](custom-policy-disable-email-verification.md).
+- Falls Sie ein Element überschreiben (z. B. die Metadaten eines technischen Profils), vermeiden Sie das Kopieren des gesamten technischen Profils aus der Basisrichtlinie. Kopieren Sie stattdessen nur den benötigten Abschnitt des Elements. Ein Beispiel für diese Änderung finden Sie unter [Deaktivieren der E-Mail-Überprüfung während der Kundenregistrierung in Azure Active Directory B2C](./disable-email-verification.md).
 - Um doppelte technische Profile mit identischer Kernfunktionalität zu minimieren, nutzen Sie die [Inklusion technischer Profile](technicalprofiles.md#include-technical-profile).
 - Vermeiden Sie es, während der Anmeldung in das Azure AD-Verzeichnis zu schreiben, da dies zu Drosselungsproblemen führen kann.
 - Wenn Ihre Richtlinie externe Abhängigkeiten aufweist (z. B. zur REST-API), stellen Sie sicher, dass sie hochverfügbar sind.
-- Für mehr Benutzerfreundlichkeit stellen Sie durch [Online-Content Delivery](https://docs.microsoft.com/azure/cdn/) sicher, dass Ihre benutzerdefinierten HTML-Vorlagen global bereitgestellt werden. Mit Azure Content Delivery Network (CDN) können Sie die Ladezeiten reduzieren, Bandbreite sparen und die Reaktionsgeschwindigkeit erhöhen.
+- Für mehr Benutzerfreundlichkeit stellen Sie durch [Online-Content Delivery](../cdn/index.yml) sicher, dass Ihre benutzerdefinierten HTML-Vorlagen global bereitgestellt werden. Mit Azure Content Delivery Network (CDN) können Sie die Ladezeiten reduzieren, Bandbreite sparen und die Reaktionsgeschwindigkeit erhöhen.
 - Wenn Sie eine Änderung an einer User Journey vornehmen möchten, gehen Sie wie folgt vor: Kopieren Sie die gesamte User Journey aus der Basisrichtlinie in die Erweiterungsrichtlinie. Weisen Sie der kopierten User Journey eine eindeutige User Journey-ID zu. Ändern Sie dann in der [Richtlinien der vertrauenden Seite](relyingparty.md) das [DefaultUserJourney](relyingparty.md#defaultuserjourney)-Element so, dass es auf die neue User Journey verweist.
 
 ## <a name="troubleshooting"></a>Problembehandlung
@@ -168,9 +168,9 @@ Erste Schritte mit benutzerdefinierten Richtlinien in Azure AD B2C:
 
 Nachdem Sie Ihre Azure AD B2C-Richtlinie eingerichtet und getestet haben, können Sie mit der Anpassung Ihrer Richtlinie beginnen. Die Vorgehensweise erfahren Sie in den folgenden Artikeln:
 
-- [Hinzufügen von Ansprüchen und Anpassen von Benutzereingaben mit benutzerdefinierten Richtlinien](custom-policy-configure-user-input.md). Erfahren Sie, wie Sie einen Anspruch definieren und der Benutzeroberfläche hinzufügen, indem Sie einige der technischen Profile des Starter Packs anpassen.
+- [Hinzufügen von Ansprüchen und Anpassen von Benutzereingaben mit benutzerdefinierten Richtlinien](./configure-user-input.md). Erfahren Sie, wie Sie einen Anspruch definieren und der Benutzeroberfläche hinzufügen, indem Sie einige der technischen Profile des Starter Packs anpassen.
 - [Anpassen der Benutzeroberfläche Ihrer Anwendung mit einer benutzerdefinierten Richtlinie](customize-ui-with-html.md). Erfahren Sie, wie Sie eigene HTML-Inhalte erstellen und die Inhaltsdefinition anpassen.
-- [Lokalisieren der Benutzeroberfläche Ihrer Anwendung mit einer benutzerdefinierten Richtlinie](custom-policy-localization.md). Erfahren Sie, wie Sie eine Liste mit unterstützten Sprachen einrichten und sprachspezifische Bezeichnungen bereitstellen, indem Sie das Element mit lokalisierten Ressourcen hinzufügen.
-- Sie können die [E-Mail-Verifizierung deaktivieren](custom-policy-disable-email-verification.md), während Sie Ihre Richtlinie entwickeln und testen. Erfahren Sie, wie Sie die Metadaten eines technischen Profils überschreiben.
-- [Einrichten der Anmeldung mit einem Google-Konto mithilfe benutzerdefinierter Richtlinien](identity-provider-google-custom.md). Erfahren Sie, wie Sie einen neuen Anspruchsanbieter mit einem technischen OAuth2-Profil erstellen. Passen Sie dann die User Journey so an, dass sie eine Option zur Anmeldung mit Google bietet.
+- [Lokalisieren der Benutzeroberfläche Ihrer Anwendung mit einer benutzerdefinierten Richtlinie](./language-customization.md). Erfahren Sie, wie Sie eine Liste mit unterstützten Sprachen einrichten und sprachspezifische Bezeichnungen bereitstellen, indem Sie das Element mit lokalisierten Ressourcen hinzufügen.
+- Sie können die [E-Mail-Verifizierung deaktivieren](./disable-email-verification.md), während Sie Ihre Richtlinie entwickeln und testen. Erfahren Sie, wie Sie die Metadaten eines technischen Profils überschreiben.
+- [Einrichten der Anmeldung mit einem Google-Konto mithilfe benutzerdefinierter Richtlinien](./identity-provider-google.md). Erfahren Sie, wie Sie einen neuen Anspruchsanbieter mit einem technischen OAuth2-Profil erstellen. Passen Sie dann die User Journey so an, dass sie eine Option zur Anmeldung mit Google bietet.
 - Um Probleme mit Ihren benutzerdefinierten Richtlinien zu diagnostizieren, können Sie [Azure Active Directory B2C-Protokolle mit Application Insights sammeln](troubleshoot-with-application-insights.md). Erfahren Sie, wie Sie neue technische Profile hinzufügen und die Richtlinie für die vertrauende Seite konfigurieren.

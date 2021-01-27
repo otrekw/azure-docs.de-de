@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 09/24/2020
 author: palma21
-ms.openlocfilehash: bc756994cf0f6e12af1c1ad5a6c8db304b4253e3
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 026da4237fe14726766b265e55930346293c71df
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91968782"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98662896"
 ---
 # <a name="stop-and-start-an-azure-kubernetes-service-aks-cluster-preview"></a>Beenden und Starten eines AKS-Clusters (Azure Kubernetes Service) (Vorschau)
 
@@ -28,7 +28,6 @@ Es wird vorausgesetzt, dass Sie über ein AKS-Cluster verfügen. Wenn Sie einen 
 Wenn Sie das Feature zum Starten/Beenden von Clustern verwenden, gelten die folgenden Einschränkungen:
 
 - Diese Funktion wird nur für Back-End-Cluster für Virtual Machine Scale Sets unterstützt.
-- In der Vorschauversion wird dieses Feature für private Cluster nicht unterstützt.
 - Der Clusterstatus eines beendeten AKS-Clusters wird bis zu 12 Monate beibehalten. Wenn Ihr Cluster länger als 12 Monate angehalten wird, kann der Clusterstatus danach nicht mehr wiederhergestellt werden. Weitere Informationen finden Sie unter [Unterstützungsrichtlinien für Azure Kubernetes Service](support-policies.md).
 - In der Vorschauversion müssen Sie die automatische Clusterskalierung beenden, bevor Sie den Cluster anhalten.
 - Nun ein angehaltener AKS-Cluster kann gestartet oder gelöscht werden. Wenn Sie einen Vorgang wie eine Skalierung oder ein Upgrade ausführen möchten, müssen Sie zuerst den Cluster starten.

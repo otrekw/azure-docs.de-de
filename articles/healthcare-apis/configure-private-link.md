@@ -8,17 +8,14 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 10/12/2020
 ms.author: matjazl
-ms.openlocfilehash: bfbdb98e691312db5665261743f8ce698541d4cc
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: cdb41f12e8f050e3c74fccddb392d7a816c15b2f
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93398214"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98621877"
 ---
 # <a name="configure-private-link"></a>Konfigurieren von Private Link
-
-> [!IMPORTANT]
-> Diese Funktion befindet sich in der öffentlichen Vorschauphase, wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Private Link ermöglicht Ihnen den Zugriff auf Azure API for FHIR über einen privaten Endpunkt, eine Netzwerkschnittstelle, die Sie privat und sicher über eine private IP-Adresse aus Ihrem virtuellen Netzwerk verbindet. Mit Private Link können Sie sicher aus Ihrem VNet auf unsere Dienste als Erstanbieterdienst zugreifen, ohne ein öffentliches DNS passieren zu müssen. Dieser Artikel führt Sie durch die Schritte zum Erstellen, Testen und Verwalten Ihres privaten Endpunkts für die Azure API for FHIR.
 
@@ -90,6 +87,6 @@ Private Endpunkte und die zugeordnete NIC sind in Azure-Portal aus der Ressource
 
 ### <a name="delete"></a>Löschen
 
-Private Endpunkte können im Azure-Portal nur über das Blatt „Übersicht“ (wie unten) oder über die Option „Löschen“ auf der Registerkarte „Private Endpunktverbindungen“ von Netzwerk (Vorschau) gelöscht werden. Wenn Sie auf die Schaltfläche „Löschen“ klicken, werden der private Endpunkt und die zugehörige NIC gelöscht. Wenn Sie alle privaten Endpunkte zu der FHIR-Ressource löschen und der Zugriff aus dem öffentlichen Netzwerk deaktiviert ist, erreicht keine Anforderung mehr Ihren FHIR-Server. Alle privaten Endpunkte müssen aus der FHIR-Ressource gelöscht werden, bevor die FHIR-Ressource gelöscht oder verschoben werden kann.
+Private Endpunkte können im Azure-Portal nur über das Blatt „Übersicht“ (wie unten) oder über die Option „Löschen“ auf der Registerkarte „Private Endpunktverbindungen“ von Netzwerk (Vorschau) gelöscht werden. Wenn Sie auf die Schaltfläche „Löschen“ klicken, werden der private Endpunkt und die zugehörige NIC gelöscht. Wenn Sie alle privaten Endpunkte zu der FHIR-Ressource löschen und der Zugriff aus dem öffentlichen Netzwerk deaktiviert ist, erreicht keine Anforderung mehr Ihren FHIR-Server.
 
 ![Löschen eines privaten Endpunkts](media/private-link/private-link-delete.png)

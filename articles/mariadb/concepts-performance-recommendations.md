@@ -3,15 +3,15 @@ title: Leistungsempfehlungen – Azure Database for MariaDB
 description: In diesem Artikel wird das Feature „Leistungsempfehlung“ in Azure Database for MariaDB beschrieben.
 author: savjani
 ms.author: pariks
-ms.service: mariadb
+ms.service: jroth
 ms.topic: conceptual
 ms.date: 6/3/2020
-ms.openlocfilehash: a20b8a43c8955e1afea7a7157e3e73425fb0d806
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 5949c6ba1ed176a609d3ceed4150ac06855440e9
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94540466"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664315"
 ---
 # <a name="performance-recommendations-in-azure-database-for-mariadb"></a>Leistungsempfehlungen in Azure Database for MariaDB
 

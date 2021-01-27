@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 05/26/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 97741423fa8b689a92bd9db78b810e6b86aefcbd
-ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
+ms.openlocfilehash: 56fc11583bcdd271d0225de90ef7ab06bcf87cbf
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98247062"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98625113"
 ---
 # <a name="create-a-windows-server-container-on-an-azure-kubernetes-service-aks-cluster-using-powershell"></a>Erstellen eines Windows Server-Containers auf einem Azure Kubernetes Service (AKS)-Cluster mit PowerShell
 
@@ -97,7 +97,7 @@ Nach wenigen Minuten ist die Ausführung des Befehls abgeschlossen, und es werde
 Standardmäßig wird ein AKS-Cluster mit einem Knotenpool erstellt, der Linux-Container ausführen kann. Verwenden Sie das Cmdlet `New-AzAksNodePool`, um einen Knotenpool hinzuzufügen, der Windows Server-Container neben dem Linux-Knotenpool ausführen kann.
 
 ```azurepowershell-interactive
-New-AzAksNodePool -ResourceGroupName myResourceGroup -ClusterName myAKSCluster -OsType Windows -Name npwin -KubernetesVersion 1.16.7
+New-AzAksNodePool -ResourceGroupName myResourceGroup -ClusterName myAKSCluster -VmSetType VirtualMachineScaleSets -OsType Windows -Name npwin -KubernetesVersion 1.16.7
 ```
 
 Der obige Befehl erstellt einen neuen Knotenpool namens **npwin** und fügt ihn dem **myAKSCluster** hinzu. Wenn Sie einen Knotenpool erstellen, um Windows Server-Container auszuführen, hat **VmSize** den Standardwert **Standard_D2s_v3**. Wenn Sie den Parameter **VmSize** festlegen, überprüfen Sie die Liste mit den [eingeschränkten VM-Größen][restricted-vm-sizes]. Die empfohlene Mindestgröße ist **Standard_D2s_v3**. Der vorherige Befehl verwendet auch das Standardsubnetz im Standard-Vnet, das beim Ausführen von `New-AzAks` erstellt wurde.

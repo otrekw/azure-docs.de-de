@@ -14,19 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
-ms.openlocfilehash: aaedbfdd3b1bbbc653756d74ee86fc277b21caec
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9e0aa186e742318ab5793fa8390251d94327bf08
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "77588500"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632706"
 ---
 # <a name="connect-barracuda-cloudgen-firewall"></a>Verknüpfen von Barracuda CloudGen Firewall
 
 Der Barracuda CloudGen Firewall-Connector (CGFW) ermöglicht Ihnen, Ihre Barracuda CGFW-Protokolle auf einfache Weise mit Azure Sentinel zu verknüpfen, um Dashboards anzuzeigen, benutzerdefinierte Warnungen zu erstellen und die Untersuchung von Daten zu verbessern. So erhalten Sie einen besseren Einblick in das Netzwerk Ihrer Organisation und bessere Möglichkeiten für Sicherheitsvorgänge.
-
-
-
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -38,15 +35,14 @@ Der Barracuda CloudGen Firewall-Connector (CGFW) ermöglicht Ihnen, Ihre Barracu
 
 1. Navigieren Sie im Azure-Portal zu **Azure Sentinel** > **Datenconnectors**, und wählen Sie dann den Connector **Barracuda CloudGen Firewall** aus.
 
-2. Wählen Sie **Connectorseite öffnen** aus.
+1. Wählen Sie **Connectorseite öffnen** aus.
 
-3. Befolgen Sie die Anweisungen auf der Seite **Barracuda CloudGen Firewall**.
-
+1. Befolgen Sie die Anweisungen auf der Seite **Barracuda CloudGen Firewall**.
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 In diesem Artikel haben Sie gelernt, wie Sie Barracuda CloudGen Firewall mit Azure Sentinel verknüpfen. Weitere Informationen zu Azure Sentinel finden Sie in den folgenden Artikeln:
+
 - Erfahren Sie, wie Sie [Einblick in Ihre Daten und potenzielle Bedrohungen erhalten](quickstart-get-visibility.md).
 - Beginnen Sie mit der [Erkennung von Bedrohungen mithilfe von Azure Sentinel](tutorial-detect-threats-built-in.md).
 - [Verwenden Sie Arbeitsmappen](tutorial-monitor-your-data.md), um Ihre Daten zu überwachen.
-
-
