@@ -33,8 +33,6 @@
       href: spring-cloud-tutorial-custom-domain.md
     - name: 'Verwenden einer verwalteten Identität, um eine Verbindung zwischen Key Vault und einer Azure Spring Cloud-App herzustellen'
       href: spring-cloud-tutorial-managed-identities-key-vault.md
-    - name: Bereitstellen von Azure Spring Cloud im virtuellen Netzwerk
-      href: spring-cloud-tutorial-deploy-in-azure-virtual-network.md
     - name: Verwenden einer verwalteten Identität zum Aufrufen von Azure Functions über eine Azure Spring Cloud-App
       href: spring-cloud-tutorial-managed-identities-functions.md
 - name: Konzepte
@@ -101,6 +99,18 @@
           href: spring-cloud-howto-application-insights.md
         - name: Metriken zum Resilience4J-Trennschalter
           href: spring-cloud-howto-circuit-breaker-metrics.md
+    - name: Netzwerk
+      items:
+        - name: Bereitstellen von Azure Spring Cloud in einem virtuellen Netzwerk
+          href: spring-cloud-tutorial-deploy-in-azure-virtual-network.md
+        - name: Zugreifen auf eine Anwendung im privaten Netzwerk
+          href: spring-cloud-access-app-virtual-network.md
+        - name: Verfügbarmachen von Anwendungen für das Internet
+          href: spring-cloud-expose-apps-gateway-azure-firewall.md
+        - name: Kundenzuständigkeiten für die Ausführung von Azure Spring Cloud im VNET
+          href: spring-cloud-vnet-customer-responsibilities.md
+        - name: Problembehandlung für Azure Spring Cloud in virtuellen Netzwerken
+          href: spring-cloud-troubleshooting-vnet.md
     - name: Sicher
       items:
         - name: Aktivieren einer systemseitig zugewiesenen verwalteten Identität
@@ -140,7 +150,7 @@
         - name: Spring Boot
           href: /azure/developer/java/migration/migrate-spring-boot-to-azure-spring-cloud
         - name: Tomcat
-          href: 'https://docs.microsoft.com/azure/developer/java/migration/migrate-tomcat-to-azure-spring-cloud'
+          href: /azure/developer/java/migration/migrate-tomcat-to-azure-spring-cloud
 - name: DevOps-Bereitstellung
   items:
     - name: CI/CD mit Azure DevOps

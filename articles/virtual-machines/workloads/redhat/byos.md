@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/10/2020
 ms.author: alsin
 ms.reviewer: cynthn
-ms.openlocfilehash: 9a53eb1004d68045781903b71d02c3416f494be2
-ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
+ms.openlocfilehash: 7006096154d8958e13e7a86783bd07067b95d293
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97803815"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98872891"
 ---
 # <a name="red-hat-enterprise-linux-bring-your-own-subscription-gold-images-in-azure"></a>Bring-Your-Own-Subscription-Gold-Images für Red Hat Enterprise Linux in Azure
 
@@ -194,7 +194,7 @@ Schritte zum Anwenden von Azure Disk Encryption sind unter [Azure Disk Encryptio
 
     Wenden Sie sich in diesem Fall an Microsoft oder Red Hat, um Ihr Abonnement aktivieren zu lassen.
 
-- Wenn Sie eine Momentaufnahme aus einem BYOS-Image für RHEL ändern und versuchen, das Image in der [Shared Image Gallery](../../linux/shared-image-galleries.md) zu veröffentlichen, müssen Sie Planinformationen bereitstellen, die mit der ursprünglichen Quelle der Momentaufnahme übereinstimmen. Ein Beispielbefehl:
+- Wenn Sie eine Momentaufnahme aus einem BYOS-Image für RHEL ändern und versuchen, das Image in der [Shared Image Gallery](../../shared-image-galleries.md) zu veröffentlichen, müssen Sie Planinformationen bereitstellen, die mit der ursprünglichen Quelle der Momentaufnahme übereinstimmen. Ein Beispielbefehl:
 
     ```azurecli
     az vm create –image \

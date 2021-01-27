@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 10/19/2020
 ms.author: cherylmc
-ms.openlocfilehash: fe0280e302882fd5e50830950b531ea9ca169618
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 465d877da48e0d7027dbba6615302af32c6bb154
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94660541"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98872399"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-by-using-the-azure-portal"></a>Konfigurieren einer VNET-zu-VNET-VPN-Gatewayverbindung über das Azure-Portal
 
@@ -44,7 +44,7 @@ Beim Herstellen einer VNET-zu-VNET-Verbindung wird der Adressraum des lokalen Ne
 
 ### <a name="site-to-site-ipsec"></a>Site-to-Site (IPsec)
 
-Wenn Sie mit einer komplizierten Netzwerkkonfiguration arbeiten, empfiehlt es sich unter Umständen, die Verbindung zwischen Ihren VNETs stattdessen mit einer [Site-to-Site-Verbindung](vpn-gateway-howto-site-to-site-resource-manager-portal.md) herzustellen. Bei Verwendung der Site-to-Site-Schritte (IPsec) erstellen und konfigurieren Sie die lokalen Netzwerkgateways manuell. Das lokale Netzwerkgateway für die einzelnen VNets behandelt das andere VNet als lokalen Standort. Mit diesen Schritten können Sie zusätzliche Adressräume für das lokale Netzwerkgateway angeben, um Datenverkehr weiterzuleiten. Wenn sich der Adressraum für ein VNET ändert, müssen Sie das dazugehörige lokale Netzwerkgateway manuell aktualisieren.
+Wenn Sie mit einer komplizierten Netzwerkkonfiguration arbeiten, empfiehlt es sich unter Umständen, die Verbindung zwischen Ihren VNETs stattdessen mit einer [Site-to-Site-Verbindung](./tutorial-site-to-site-portal.md) herzustellen. Bei Verwendung der Site-to-Site-Schritte (IPsec) erstellen und konfigurieren Sie die lokalen Netzwerkgateways manuell. Das lokale Netzwerkgateway für die einzelnen VNets behandelt das andere VNet als lokalen Standort. Mit diesen Schritten können Sie zusätzliche Adressräume für das lokale Netzwerkgateway angeben, um Datenverkehr weiterzuleiten. Wenn sich der Adressraum für ein VNET ändert, müssen Sie das dazugehörige lokale Netzwerkgateway manuell aktualisieren.
 
 ### <a name="vnet-peering"></a>VNet-Peering
 
@@ -200,7 +200,7 @@ Erstellen Sie als Nächstes eine Verbindung zwischen VNet4 und VNet1. Ermitteln 
 
 ## <a name="add-additional-connections"></a>Hinzufügen zusätzlicher Verbindungen
 
-Wenn Sie zusätzliche Verbindungen hinzufügen möchten, navigieren Sie zum Gateway für virtuelle Netzwerke, über das Sie die Verbindung herstellen möchten, und wählen Sie **Verbindungen** aus. Sie können eine weitere VNET-to-VNET-Verbindung oder eine IPsec-S2S-Verbindung mit einem lokalen Standort erstellen. Denken Sie daran, den **Verbindungstyp** entsprechend dem gewünschten Verbindungstyp einzustellen. Stellen Sie vor dem Erstellen weiterer Verbindungen sicher, dass sich der Adressraum für Ihr virtuelles Netzwerk nicht mit den Adressräumen überlappt, mit denen Sie eine Verbindung herstellen möchten. Anweisungen zum Erstellen einer S2S-Verbindung finden Sie unter [Erstellen einer Site-to-Site-Verbindung](vpn-gateway-howto-site-to-site-resource-manager-portal.md).
+Wenn Sie zusätzliche Verbindungen hinzufügen möchten, navigieren Sie zum Gateway für virtuelle Netzwerke, über das Sie die Verbindung herstellen möchten, und wählen Sie **Verbindungen** aus. Sie können eine weitere VNET-to-VNET-Verbindung oder eine IPsec-S2S-Verbindung mit einem lokalen Standort erstellen. Denken Sie daran, den **Verbindungstyp** entsprechend dem gewünschten Verbindungstyp einzustellen. Stellen Sie vor dem Erstellen weiterer Verbindungen sicher, dass sich der Adressraum für Ihr virtuelles Netzwerk nicht mit den Adressräumen überlappt, mit denen Sie eine Verbindung herstellen möchten. Anweisungen zum Erstellen einer S2S-Verbindung finden Sie unter [Erstellen einer Site-to-Site-Verbindung](./tutorial-site-to-site-portal.md).
 
 ## <a name="vnet-to-vnet-faq"></a>FAQs zu VNet-zu-VNet
 
