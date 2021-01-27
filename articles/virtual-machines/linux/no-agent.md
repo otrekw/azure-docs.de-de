@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 09/01/2020
 ms.author: danis
 ms.reviewer: cynthn
-ms.openlocfilehash: 9f0309f4e8273c2ef19ea86636de8e3aa6b6c4bc
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: edbcabfe4d0b633a784163562f52b303120916ca
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96435099"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98685060"
 ---
 # <a name="creating-generalized-images-without-a-provisioning-agent"></a>Erstellen generalisierter Images ohne Bereitstellungs-Agent
 
@@ -180,7 +180,7 @@ Wenn Python nicht in Ihrer VM installiert oder verfügbar ist, können Sie die o
 
 In dieser Demo wird systemd verwendet, das häufigste Initialisierungssystem moderner Linux-Distributionen. Die einfachste und nativste Möglichkeit sicherzustellen, dass dieser Mechanismus zum Melden von „Bereit“ zum richtigen Zeitpunkt ausgeführt wird, ist also die Erstellung einer Diensteinheit für systemd. Sie können `/etc/systemd/system` die folgende Einheitsdatei hinzufügen (in diesem Beispiel wird die Einheitsdatei `azure-provisioning.service` genannt):
 
-```
+```bash
 [Unit]
 Description=Azure Provisioning
 
@@ -204,7 +204,7 @@ Dieser Dienst systemd führt zur grundlegenden Bereitstellung drei Aufgaben aus:
 
 Wenn sich die Einheit im Dateisystem befindet, führen Sie folgenden Befehl aus, um sie zu aktivieren:
 
-```
+```bash
 $ sudo systemctl enable azure-provisioning.service
 ```
 
@@ -214,14 +214,14 @@ Nun kann die VM generalisiert und ein Image von ihr erstellt werden.
 
 Führen Sie auf Ihrem Entwicklungscomputer die folgenden Schritte aus, um das Erstellen des Images anhand der Basis-VM vorzubereiten:
 
-```
+```bash
 $ az vm deallocate --resource-group demo1 --name demo1
 $ az vm generalize --resource-group demo1 --name demo1
 ```
 
 Erstellen Sie das Image anhand dieser VM:
 
-```
+```bash
 $ az image create \
     --resource-group demo1 \
     --source demo1 \
@@ -231,7 +231,7 @@ $ az image create \
 
 Jetzt sind wir bereit, eine neue VM (oder mehrere VMs) anhand des Images zu erstellen:
 
-```
+```bash
 $ IMAGE_ID=$(az image show -g demo1 -n demo1img --query id -o tsv)
 $ az vm create \
     --resource-group demo12 \
@@ -249,7 +249,7 @@ $ az vm create \
 
 Diese VM sollte erfolgreich bereitgestellt werden. Nach dem Anmelden bei der neu bereitgestellten VM sollten die Ausgabe des Diensts systemd den Status „Bereit“ melden:
 
-```
+```bash
 $ sudo journalctl -u azure-provisioning.service
 -- Logs begin at Thu 2020-06-11 20:28:45 UTC, end at Thu 2020-06-11 20:31:24 UTC. --
 Jun 11 20:28:49 thstringnopa systemd[1]: Starting Azure Provisioning...

@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 45e1ae5b8a1084334b7596f62c272e16294c4c14
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 6df8c3238ed6dfeb37fd10d0a7e97aa839e7bf26
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98118760"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98681076"
 ---
 # <a name="query-nested-types-in-parquet-and-json-files-by-using-serverless-sql-pool-in-azure-synapse-analytics"></a>Abfragen von geschachtelten Typen in Parquet und JSON-Dateien mit einem serverlosen SQL-Pool in Azure Synapse Analytics
 
@@ -147,7 +147,7 @@ FROM
 
 ## <a name="access-elements-from-repeated-columns"></a>Zugreifen auf Elemente aus wiederholten Spalten
 
-Die folgende Abfrage liest die Datei „justSimpleArray.parquet“ und verwendet [JSON_VALUE](/sql/t-sql/functions/json-value-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest), um ein skalares Element aus einer sich wiederholenden Spalte, z. B. einem Array oder einer Zuordnung, abzurufen:
+Die folgende Abfrage liest die Datei „justSimpleArray.parquet“ und verwendet [JSON_VALUE](/sql/t-sql/functions/json-value-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true), um ein skalares Element aus einer sich wiederholenden Spalte, z. B. einem Array oder einer Zuordnung, abzurufen:
 
 ```sql
 SELECT
@@ -172,7 +172,7 @@ Das Ergebnis lautet wie folgt:
 
 ## <a name="access-sub-objects-from-complex-columns"></a>Zugreifen auf Teilobjekte aus komplexen Spalten
 
-Die folgende Abfrage liest die Datei „mapExample.parquet“ und verwendet [JSON_QUERY](/sql/t-sql/functions/json-query-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest), um ein nicht skalares Element aus einer sich wiederholenden Spalte, z. B. einem Array oder einer Zuordnung, abzurufen:
+Die folgende Abfrage liest die Datei „mapExample.parquet“ und verwendet [JSON_QUERY](/sql/t-sql/functions/json-query-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true), um ein nicht skalares Element aus einer sich wiederholenden Spalte, z. B. einem Array oder einer Zuordnung, abzurufen:
 
 ```sql
 SELECT

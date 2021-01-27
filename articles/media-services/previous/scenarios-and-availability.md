@@ -13,19 +13,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/3/2020
 ms.author: inhenkel
-ms.openlocfilehash: 001c535a2b39898673f2d587ee807d43b4d5f60a
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: d195ad6715c47b9b4c14dc2e65ba1d07ebf79ce8
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93348541"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98696260"
 ---
 # <a name="microsoft-azure-media-services-common-scenarios"></a>Gängige Szenarien für Microsoft Azure Media Services
 
 [!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
-> Media Services v2 werden derzeit keine neuen Features oder Funktionen hinzugefügt. Sehen Sie sich die neuste Version – [Media Services v3](../latest/media-services-overview.md) – an. Lesen Sie außerdem die [Hinweise zur Migration von v2 zu v3](../latest/migrate-from-v2-to-v3.md).
+> Media Services v2 werden derzeit keine neuen Features oder Funktionen hinzugefügt. Sehen Sie sich die neuste Version – [Media Services v3](../latest/media-services-overview.md) – an. Lesen Sie außerdem die [Hinweise zur Migration von v2 zu v3](../latest/migrate-v-2-v-3-migration-introduction.md).
 
 Mit Microsoft Azure Media Services (AMS) können Sie Video- oder Audioinhalte auf sichere Weise hochladen, speichern, codieren, verpacken und bedarfsgesteuert oder als Livestream auf verschiedenen Clients (wie Fernsehern, PCs und mobilen Geräten) bereitstellen.
 
@@ -39,7 +39,7 @@ Dieser Artikel zeigt gängige Szenarien für die Übermittlung von Inhalten (liv
 * Ein Azure Media Services-Konto. Weitere Informationen finden Sie unter [Erstellen von Konten](media-services-portal-create-account.md).
 * Der Streamingendpunkt, von dem aus Sie die Inhalte streamen möchten, muss sich im Status **Wird ausgeführt** befinden.
 
-    Beim Erstellen Ihres AMS-Kontos wird dem Konto ein **Standard** -Streamingendpunkt mit dem Zustand **Beendet** hinzugefügt. Um mit dem Streamen der Inhalte zu beginnen und die dynamische Paketerstellung und dynamische Verschlüsselung zu nutzen, muss sich der Streamingendpunkt im Zustand **Wird ausgeführt** befinden.
+    Beim Erstellen Ihres AMS-Kontos wird dem Konto ein **Standard**-Streamingendpunkt mit dem Zustand **Beendet** hinzugefügt. Um mit dem Streamen der Inhalte zu beginnen und die dynamische Paketerstellung und dynamische Verschlüsselung zu nutzen, muss sich der Streamingendpunkt im Zustand **Wird ausgeführt** befinden.
 
 ### <a name="commonly-used-objects-when-developing-against-the-ams-odata-model"></a>Häufig verwendete Objekte bei der Entwicklung mit dem AMS-OData-Modell
 
@@ -128,11 +128,11 @@ Von Media Services wird die Integration mit Azure CDN unterstützt. Informatione
 
 AMS-Kunden können Streamingendpunkte, Medienverarbeitung und Speicherung in ihren AMS-Konten skalieren.
 
-* Media Services-Kunden haben die Wahl zwischen einem **Standard** -Streamingendpunkt und einem **Premium** -Streamingendpunkt. Ein **Standard** -Streamingendpunkt ist für die meisten Streamingworkloads geeignet. Er bietet die gleichen Features wie ein **Premium** -Streamingendpunkt und skaliert die ausgehende Bandbreite automatisch.
+* Media Services-Kunden haben die Wahl zwischen einem **Standard**-Streamingendpunkt und einem **Premium**-Streamingendpunkt. Ein **Standard**-Streamingendpunkt ist für die meisten Streamingworkloads geeignet. Er bietet die gleichen Features wie ein **Premium**-Streamingendpunkt und skaliert die ausgehende Bandbreite automatisch.
 
-    **Premium** -Streamingendpunkte eignen sich für komplexere Workloads und bieten eine dedizierte und skalierbare Bandbreitenkapazität. Kunden mit einem **Premium** -Streamingendpunkt erhalten standardmäßig eine einzelne Streamingeinheit (Streaming Unit, SU). Der Streamingendpunkt kann durch Hinzufügen von SUs skaliert werden. Jede SU stellt zusätzliche Bandbreitenkapazität für die Anwendung bereit. Weitere Informationen zur Skalierung von **Premium** -Streamingendpunkten finden Sie im Thema [Skalieren von Streamingendpunkten mithilfe des Azure-Portals](media-services-portal-scale-streaming-endpoints.md).
+    **Premium**-Streamingendpunkte eignen sich für komplexere Workloads und bieten eine dedizierte und skalierbare Bandbreitenkapazität. Kunden mit einem **Premium**-Streamingendpunkt erhalten standardmäßig eine einzelne Streamingeinheit (Streaming Unit, SU). Der Streamingendpunkt kann durch Hinzufügen von SUs skaliert werden. Jede SU stellt zusätzliche Bandbreitenkapazität für die Anwendung bereit. Weitere Informationen zur Skalierung von **Premium**-Streamingendpunkten finden Sie im Thema [Skalieren von Streamingendpunkten mithilfe des Azure-Portals](media-services-portal-scale-streaming-endpoints.md).
 
-* Ein Media Services-Konto ist dem Typ einer reservierten Einheit zugeordnet, der die Geschwindigkeit bestimmt, mit der Medienverarbeitungsaufgaben erfolgen. Sie können zwischen den folgenden reservierten Einheitentypen wählen: **S1** , **S2** oder **S3**. Derselbe Codierungsauftrag wird bei Verwendung der reservierten Einheit **S2** beispielsweise schneller ausgeführt als mit dem Typ **S1**.
+* Ein Media Services-Konto ist dem Typ einer reservierten Einheit zugeordnet, der die Geschwindigkeit bestimmt, mit der Medienverarbeitungsaufgaben erfolgen. Sie können zwischen den folgenden reservierten Einheitentypen wählen: **S1**, **S2** oder **S3**. Derselbe Codierungsauftrag wird bei Verwendung der reservierten Einheit **S2** beispielsweise schneller ausgeführt als mit dem Typ **S1**.
 
     Neben der Art der reservierten Einheit können Sie angeben, dass für Ihr Konto **reservierte Einheiten** (Reserved Units, RUs) bereitgestellt werden sollen. Die Anzahl bereitgestellter RUs bestimmt die Anzahl von Medienaufgaben, die gleichzeitig unter einem bestimmten Konto verarbeitet werden können.
 

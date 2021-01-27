@@ -9,12 +9,12 @@ ms.subservice: management
 ms.date: 06/26/2020
 ms.reviewer: jushiman
 ms.custom: avverma, devx-track-azurecli
-ms.openlocfilehash: 4ebb16186e613affdb886a8819240d47f944c42f
-ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
+ms.openlocfilehash: ff1a29577c0778d6ef88d3523c726f7a48739cdc
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97763539"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98684609"
 ---
 # <a name="azure-virtual-machine-scale-set-automatic-os-image-upgrades"></a>Automatische Betriebssystemimageupgrades mit Azure-VM-Skalierungsgruppen
 
@@ -49,7 +49,7 @@ Der Upgradeorchestrator für das Skalierungsgruppen-Betriebssystem überprüft d
 >Das automatische Betriebssystemupgrade führt kein Upgrade der Referenzimage-SKU für die Skalierungsgruppe durch. Um die SKU zu ändern (z. B. Ubuntu 16.04-LTS auf 18.04-LTS), müssen Sie das [Skalierungsgruppenmodell](virtual-machine-scale-sets-upgrade-scale-set.md#the-scale-set-model) direkt mit der gewünschten Image-SKU aktualisieren. Imageherausgeber und Angebot können bei einer vorhandenen Skalierungsgruppe nicht geändert werden.  
 
 ## <a name="supported-os-images"></a>Unterstützte Betriebssystemimages
-Derzeit werden nur bestimmte Betriebssystemplattform-Images unterstützt. Benutzerdefinierte Images [werden unterstützt](virtual-machine-scale-sets-automatic-upgrade.md#automatic-os-image-upgrade-for-custom-images), wenn die Skalierungsgruppe benutzerdefinierte Images über [Shared Image Gallery](shared-image-galleries.md) nutzt.
+Derzeit werden nur bestimmte Betriebssystemplattform-Images unterstützt. Benutzerdefinierte Images [werden unterstützt](virtual-machine-scale-sets-automatic-upgrade.md#automatic-os-image-upgrade-for-custom-images), wenn die Skalierungsgruppe benutzerdefinierte Images über [Shared Image Gallery](../virtual-machines/shared-image-galleries.md) nutzt.
 
 Derzeit werden die folgenden Plattform-SKUs unterstützt (weitere werden regelmäßig hinzugefügt):
 
@@ -89,11 +89,11 @@ Stellen Sie sicher, dass die Dauerhaftigkeitseinstellungen im Service Fabric-Clu
 
 ## <a name="automatic-os-image-upgrade-for-custom-images"></a>Automatisches Upgrade von Betriebssystemimages für benutzerdefinierte Images
 
-Das automatische Upgrade von Betriebssystemimages für benutzerdefinierte Images wird für benutzerdefinierte Images unterstützt, die über [Shared Image Gallery](shared-image-galleries.md) bereitgestellt wurden. Andere benutzerdefinierte Images werden für automatische Upgrades von Betriebssystemimages nicht unterstützt.
+Das automatische Upgrade von Betriebssystemimages für benutzerdefinierte Images wird für benutzerdefinierte Images unterstützt, die über [Shared Image Gallery](../virtual-machines/shared-image-galleries.md) bereitgestellt wurden. Andere benutzerdefinierte Images werden für automatische Upgrades von Betriebssystemimages nicht unterstützt.
 
 ### <a name="additional-requirements-for-custom-images"></a>Weitere Anforderungen für benutzerdefinierte Images
 - Der Einrichtungs- und Konfigurationsprozess für das automatische Upgrade von Betriebssystemimages ist für alle Skalierungsgruppen identisch (siehe Beschreibung im [Konfigurationsabschnitt](virtual-machine-scale-sets-automatic-upgrade.md#configure-automatic-os-image-upgrade) dieser Seite).
-- Skalierungsgruppeninstanzen, die für automatische Upgrades von Betriebssystemimages konfiguriert sind, werden auf die neueste Version des Shared Image Gallery-Images aktualisiert, wenn eine neue Version des Images veröffentlicht und in die Region der betreffenden Skalierungsgruppe [repliziert](shared-image-galleries.md#replication) wird. Wenn das neue Image nicht in der Region repliziert wird, in der die Skalierung bereitgestellt wird, erfolgt kein Upgrade der Skalierungsgruppeninstanzen auf die neueste Version. Die regionale Imagereplikation ermöglicht es Ihnen, das Rollout des neuen Images für Ihre Skalierungsgruppen zu steuern.
+- Skalierungsgruppeninstanzen, die für automatische Upgrades von Betriebssystemimages konfiguriert sind, werden auf die neueste Version des Shared Image Gallery-Images aktualisiert, wenn eine neue Version des Images veröffentlicht und in die Region der betreffenden Skalierungsgruppe [repliziert](../virtual-machines/shared-image-galleries.md#replication) wird. Wenn das neue Image nicht in der Region repliziert wird, in der die Skalierung bereitgestellt wird, erfolgt kein Upgrade der Skalierungsgruppeninstanzen auf die neueste Version. Die regionale Imagereplikation ermöglicht es Ihnen, das Rollout des neuen Images für Ihre Skalierungsgruppen zu steuern.
 - Die neue Imageversion sollte nicht aus der aktuellen Version für das betreffende Katalogimage ausgeschlossen werden. Für Imageversionen, die aus der aktuellen Version des Katalogimages ausgeschlossen werden, erfolgt durch das automatische Upgrade von Betriebssystemimages kein Rollout in der Skalierungsgruppe.
 
 > [!NOTE]

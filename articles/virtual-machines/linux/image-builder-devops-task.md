@@ -7,12 +7,12 @@ ms.date: 08/10/2020
 ms.topic: article
 ms.service: virtual-machines
 ms.subservice: imaging
-ms.openlocfilehash: 43447454b82b74c10b1d53c41c7883b0b9bef242
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 634fc183cc27db1ae949959c3ae7fae8eda5b644
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98196502"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98684541"
 ---
 # <a name="azure-image-builder-service-devops-task"></a>DevOps-Task des Azure Image Builder-Diensts
 
@@ -71,10 +71,10 @@ Verwenden Sie die Ressourcengruppe, in der das Artefakt der temporären Imagevor
  
 ### <a name="location"></a>Standort
 
-Der Standort entspricht der Region, in der Image Builder ausgeführt wird. Es wird nur eine festgelegte Anzahl von [Regionen](../windows/image-builder-overview.md#regions) unterstützt. Die Quellimages müssen an diesem Standort vorhanden sein. Wenn Sie zum Beispiel Shared Image Gallery verwenden, muss in der Region ein Replikat vorhanden sein.
+Der Standort entspricht der Region, in der Image Builder ausgeführt wird. Es wird nur eine festgelegte Anzahl von [Regionen](../image-builder-overview.md#regions) unterstützt. Die Quellimages müssen an diesem Standort vorhanden sein. Wenn Sie zum Beispiel Shared Image Gallery verwenden, muss in der Region ein Replikat vorhanden sein.
 
 ### <a name="managed-identity-required"></a>Verwaltete Identität (erforderlich)
-Image Builder erfordert eine verwaltete Identität, die zum Lesen von benutzerdefinierten Quellimages, zum Herstellen einer Verbindung mit Azure Storage und zum Erstellen von benutzerdefinierten Images verwendet wird. Ausführlichere Informationen finden Sie [hier](./image-builder-overview.md#permissions).
+Image Builder erfordert eine verwaltete Identität, die zum Lesen von benutzerdefinierten Quellimages, zum Herstellen einer Verbindung mit Azure Storage und zum Erstellen von benutzerdefinierten Images verwendet wird. Ausführlichere Informationen finden Sie [hier](../image-builder-overview.md#permissions).
 
 ### <a name="vnet-support"></a>VNET-Unterstützung
 
@@ -335,4 +335,4 @@ Das Ressourcenartefakt der Imagevorlage befindet sich in der anfangs in dem Task
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen finden Sie unter [Übersicht über Azure Image Builder](image-builder-overview.md).
+Weitere Informationen finden Sie unter [Übersicht über Azure Image Builder](../image-builder-overview.md).

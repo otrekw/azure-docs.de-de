@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 07/23/2020
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: 52071b964412071d820745b173e8835c6f9e7d0e
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 62f89106538ab7f57047e211fc8715878f889af1
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97510990"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98684558"
 ---
 # <a name="ephemeral-os-disks-for-azure-vms"></a>Kurzlebige Betriebssystemdatenträger für virtuelle Azure-Computer
 
@@ -26,7 +26,7 @@ Die wichtigsten Features von kurzlebigen Datenträgern sind:
 - Geringere Latenz ähnlich wie bei einem temporären Datenträger. 
 - Kurzlebige Betriebssystem-Datenträger sind kostenlos, es fallen keine Speicherkosten für den Betriebssystem-Datenträger an.
 - Sie sind in allen Azure-Regionen verfügbar. 
-- Kurzlebige Betriebssystem-Datenträger werden von [Shared Image Gallery](./linux/shared-image-galleries.md) unterstützt. 
+- Kurzlebige Betriebssystem-Datenträger werden von [Shared Image Gallery](./shared-image-galleries.md) unterstützt. 
  
 
  

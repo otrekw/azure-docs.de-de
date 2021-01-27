@@ -9,12 +9,12 @@ ms.subservice: management
 ms.date: 03/10/2020
 ms.reviewer: mimckitt
 ms.custom: mimckitt, devx-track-azurecli
-ms.openlocfilehash: c255a3d68b1a24e25c1c0e308faa3fd364a15861
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: bd16f0ef330d1d4a33dd796af0ec3e94dda5acfc
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97358740"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98684592"
 ---
 # <a name="modify-a-virtual-machine-scale-set"></a>Ändern einer VM-Skalierungsgruppe
 
@@ -350,7 +350,7 @@ Einige Eigenschaften können mit Ausnahmen je nach aktuellem Wert geändert werd
 
 - **singlePlacementGroup:** Wenn für singlePlacementGroup die Option „true“ festgelegt ist, kann diese in „false“ geändert werden. Wenn für „singlePlacementGroup“ jedoch „false“ festgelegt ist, kann die Einstellung **nicht** in „true“ geändert werden.
 - **Subnetz:** Das Subnetz einer Skalierungsgruppe kann geändert werden, solange sich das ursprüngliche und das neue Subnetz im selben virtuellen Netzwerk befinden.
-- **imageReferenceSku:** Imageverweis-SKU kann für unterstützte [Linux-Distributionen](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros), Server-/Clientimages unter Windows und Images ohne [Planinformationen](https://docs.microsoft.com/azure/virtual-machines/linux/cli-ps-findimage#view-plan-properties) aktualisiert werden. 
+- **imageReferenceSku:** Imageverweis-SKU kann für unterstützte [Linux-Distributionen](../virtual-machines/linux/endorsed-distros.md), Server-/Clientimages unter Windows und Images ohne [Planinformationen](../virtual-machines/linux/cli-ps-findimage.md#view-plan-properties) aktualisiert werden. 
 
 ### <a name="properties-that-require-deallocation-to-change"></a>Eigenschaften, für die zur Änderung die Aufhebung der Zuordnung erforderlich ist
 Einige Eigenschaften können nur in bestimmte Werte geändert werden, wenn die Zuordnung der virtuellen Computer in der Skalierungsgruppe aufgehoben wird. Zu diesen Eigenschaften zählen folgende:

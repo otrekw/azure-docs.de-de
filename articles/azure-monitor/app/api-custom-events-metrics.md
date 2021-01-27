@@ -4,12 +4,12 @@ description: Fügen Sie einige Codezeilen in Ihrer Geräte- oder Desktop-App, We
 ms.topic: conceptual
 ms.date: 05/11/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: d553c192d62baedb93c7f8270c56526fbf8edb62
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: 8fecca4875ba291da093bf1eea596eef290f80c8
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98233745"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98678111"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>Application Insights-API für benutzerdefinierte Ereignisse und Metriken
 
@@ -534,7 +534,7 @@ Wenn die [Stichprobenentnahme](./sampling.md) aktiv ist, wird für die itemCount
 Verwenden Sie den TrackDependency-Aufruf zum Nachverfolgen der Antwortzeiten und der Erfolgsraten beim Aufrufen einer externen Codepassage. Die Ergebnisse werden in den Abhängigkeitsdiagrammen im Portal angezeigt. Der folgende Codeausschnitt muss immer dann hinzugefügt werden, wenn ein Abhängigkeitsaufruf ausgeführt wird.
 
 > [!NOTE]
-> Für .NET und .NET Core können Sie alternativ die `TelemetryClient.StartOperation`-Methode (der Erweiterung) verwenden, die die für die Korrelation benötigten `DependencyTelemetry`-Eigenschaften sowie einige weitere Eigenschaften wie die Startzeit und die Dauer auffüllt. Dadurch müssen Sie keinen benutzerdefinierten Timer wie in den folgenden Beispielen erstellen. Weitere Informationen finden Sie in diesem Artikel im [Abschnitt zur Nachverfolgung von ausgehenden Abhängigkeiten](https://docs.microsoft.com/azure/azure-monitor/app/custom-operations-tracking#outgoing-dependencies-tracking).
+> Für .NET und .NET Core können Sie alternativ die `TelemetryClient.StartOperation`-Methode (der Erweiterung) verwenden, die die für die Korrelation benötigten `DependencyTelemetry`-Eigenschaften sowie einige weitere Eigenschaften wie die Startzeit und die Dauer auffüllt. Dadurch müssen Sie keinen benutzerdefinierten Timer wie in den folgenden Beispielen erstellen. Weitere Informationen finden Sie in diesem Artikel im [Abschnitt zur Nachverfolgung von ausgehenden Abhängigkeiten](./custom-operations-tracking.md#outgoing-dependencies-tracking).
 
 *C#*
 

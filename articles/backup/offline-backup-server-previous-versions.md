@@ -3,12 +3,12 @@ title: 'Offlinesicherung für Data Protection Manager (DPM) und Microsoft Azure 
 description: Mit Azure Backup können Sie Daten unter Verwendung des Azure Import/Export-Diensts aus dem Netzwerk senden. In diesem Artikel wird der Offlinesicherungsworkflow für frühere Versionen von DPM und Azure Backup Server erläutert.
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: b747fd3c682dc1caf7312ba7279470a1e6b38bd5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0405ab66b7714f00349419e94bb064267ca711a6
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88890092"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98702184"
 ---
 # <a name="offline-backup-workflow-for-dpm-and-azure-backup-server-previous-versions"></a>Offlinesicherungsworkflow für DPM und Azure Backup Server (vorherige Versionen)
 
@@ -17,7 +17,7 @@ ms.locfileid: "88890092"
 
 Azure Backup verfügt über mehrere integrierte effizienzsteigernde Funktionen, die die Netzwerk- und Speicherkosten bei den ersten vollständigen Datensicherungen in Azure reduzieren. Bei den ersten vollständigen Sicherungen werden meist große Datenmengen übertragen, sodass eine höhere Netzwerkbandbreite als bei den nachfolgenden Sicherungen erforderlich ist, bei denen nur die Deltamengen bzw. Inkremente übertragen werden. Azure Backup komprimiert die Erstsicherungen. Durch den Prozess des Offlineseedings kann Azure Backup Datenträger verwenden, um die komprimierten Daten der Erstsicherungen offline in Azure hochzuladen.
 
-Der Offlineseedingvorgang von Azure Backup ist eng in den [Azure Import/Export-Dienst](../storage/common/storage-import-export-service.md) integriert. Sie können diesen Dienst verwenden, um die Daten mithilfe von Datenträgern an Azure zu übertragen. Wenn Sie bei der Erstsicherung mehrere Terabytes an Daten über ein Netzwerk mit hoher Wartezeit und geringer Bandbreite übertragen müssen, können Sie die erste Sicherungskopie mithilfe des Offlineseeding-Workflows auf einer oder mehreren Festplatten speichern und an ein Azure-Datencenter senden. Dieser Artikel bietet eine Übersicht und weitere Schritte zum Abschließen dieses Workflows für System Center Data Protection Manager (DPM) und Microsoft Azure Backup Server (MABS).
+Der Offlineseedingvorgang von Azure Backup ist eng in den [Azure Import/Export-Dienst](../import-export/storage-import-export-service.md) integriert. Sie können diesen Dienst verwenden, um die Daten mithilfe von Datenträgern an Azure zu übertragen. Wenn Sie bei der Erstsicherung mehrere Terabytes an Daten über ein Netzwerk mit hoher Wartezeit und geringer Bandbreite übertragen müssen, können Sie die erste Sicherungskopie mithilfe des Offlineseeding-Workflows auf einer oder mehreren Festplatten speichern und an ein Azure-Datencenter senden. Dieser Artikel bietet eine Übersicht und weitere Schritte zum Abschließen dieses Workflows für System Center Data Protection Manager (DPM) und Microsoft Azure Backup Server (MABS).
 
 > [!NOTE]
 > Der Prozess der Offlinesicherung für den MARS-Agent (Microsoft Azure Recovery Services) unterscheidet sich vom Prozess für DPM und MABS. Informationen zur Verwendung der Offlinesicherung mit dem MARS-Agent finden Sie unter [Offlinesicherungsworkflow in Azure Backup](backup-azure-backup-import-export.md). Die Offlinesicherung wird für Sicherungen des Systemstatus mithilfe des Azure Backup-Agents nicht unterstützt.
@@ -66,7 +66,7 @@ Stellen Sie sicher, dass die folgenden Voraussetzungen erfüllt sind, bevor Sie 
   ![Erstellen eines Speicherkontos mit Resource Manager-Entwicklung](./media/offline-backup-dpm-mabs-previous-versions/storage-account-resource-manager.png)
 
 * Es wurde ein Stagingspeicherort, bei dem es sich um eine Netzwerkfreigabe oder ein zusätzliches Laufwerk auf dem Computer (intern oder extern) handeln kann, mit genügend Speicherplatz zum Speichern der Erstkopie erstellt. Wenn Sie beispielsweise einen 500-GB-Dateiserver sichern möchten, muss der Stagingbereich mindestens 500 GB groß sein. (Aufgrund der Komprimierung wird weniger Speicherplatz genutzt.)
-* Bei Datenträgern, die an Azure gesendet werden, stellen Sie sicher, dass nur interne 2,5-Zoll-SSD- oder 2,5-Zoll- bzw. 3,5-Zoll-SATA II/III-Festplatten verwendet werden. Sie können Festplatten mit bis zu 10 TB verwenden. Schlagen Sie in der [Dokumentation zum Azure Import/Export-Dienst](../storage/common/storage-import-export-requirements.md#supported-hardware) die aktuell vom Dienst unterstützten Laufwerke nach.
+* Bei Datenträgern, die an Azure gesendet werden, stellen Sie sicher, dass nur interne 2,5-Zoll-SSD- oder 2,5-Zoll- bzw. 3,5-Zoll-SATA II/III-Festplatten verwendet werden. Sie können Festplatten mit bis zu 10 TB verwenden. Schlagen Sie in der [Dokumentation zum Azure Import/Export-Dienst](../import-export/storage-import-export-requirements.md#supported-hardware) die aktuell vom Dienst unterstützten Laufwerke nach.
 * Die SATA-Laufwerke müssen mit einem Computer verbunden sein (als *Kopiercomputer* bezeichnet), auf dem die Sicherungsdaten vom Stagingspeicherort auf die SATA Laufwerke kopiert werden. Stellen Sie sicher, dass BitLocker auf dem Kopiercomputer aktiviert ist.
 
 ## <a name="prepare-the-server-for-the-offline-backup-process"></a>Vorbereiten des Servers für die Offlinesicherung
@@ -133,7 +133,7 @@ Führen Sie die folgenden Schritte aus, um das Offlinesicherungszertifikat manue
 
 ## <a name="workflow"></a>Workflow
 
-In diesem Abschnitt wird erläutert, wie Sie den Workflow zur Offlinesicherung abschließen, sodass Ihre Daten an ein Azure-Datencenter gesendet und in Azure Storage hochgeladen werden können. Falls Sie Fragen zum Import-Dienst oder zu einem anderen Aspekt des Prozesses haben, finden Sie in der oben erwähnten Dokumentation eine [Übersicht über den Import-Dienst](../storage/common/storage-import-export-service.md).
+In diesem Abschnitt wird erläutert, wie Sie den Workflow zur Offlinesicherung abschließen, sodass Ihre Daten an ein Azure-Datencenter gesendet und in Azure Storage hochgeladen werden können. Falls Sie Fragen zum Import-Dienst oder zu einem anderen Aspekt des Prozesses haben, finden Sie in der oben erwähnten Dokumentation eine [Übersicht über den Import-Dienst](../import-export/storage-import-export-service.md).
 
 ### <a name="initiate-offline-backup"></a>Initiieren der Offlinesicherung
 
@@ -271,7 +271,7 @@ So überprüfen Sie den Status des Importauftrags
 
     ![Importauftragsstatus überprüfen](./media/offline-backup-dpm-mabs-previous-versions/import-job-status-reporting.png)<br/>
 
-Weitere Informationen zu den verschiedenen Status von Azure-Importaufträgen finden Sie unter [Anzeigen des Status von Azure Import/Export-Aufträgen](../storage/common/storage-import-export-view-drive-status.md).
+Weitere Informationen zu den verschiedenen Status von Azure-Importaufträgen finden Sie unter [Anzeigen des Status von Azure Import/Export-Aufträgen](../import-export/storage-import-export-view-drive-status.md).
 
 ### <a name="finish-the-workflow"></a>Workflow abschließen
 
@@ -283,4 +283,4 @@ Zum nächsten geplanten Sicherungszeitpunkt führt Azure Backup eine inkrementel
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Falls Sie Fragen zum Workflow des Azure Import/Export-Diensts haben, finden Sie unter [Verwenden des Microsoft Azure Import/Export-Diensts zum Übertragen von Daten in den Blobspeicher](../storage/common/storage-import-export-service.md) weitere Informationen.
+* Falls Sie Fragen zum Workflow des Azure Import/Export-Diensts haben, finden Sie unter [Verwenden des Microsoft Azure Import/Export-Diensts zum Übertragen von Daten in den Blobspeicher](../import-export/storage-import-export-service.md) weitere Informationen.

@@ -4,12 +4,12 @@ description: Es wird beschrieben, wie Sie Ihre Funktions-App zur Überwachung mi
 ms.date: 8/31/2020
 ms.topic: how-to
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 24350eb07481db66907d199cd96f84a02cc98c9e
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 73ed679288d9d03b81a0b01670aa0f574a14839f
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97937279"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98684707"
 ---
 # <a name="how-to-configure-monitoring-for-azure-functions"></a>Konfigurieren der Überwachung für Azure Functions
 
@@ -233,7 +233,7 @@ az functionapp config appsettings delete --name <FUNCTION_APP_NAME> \
 
 Damit eine Funktionen-App Daten an Application Insights senden kann, muss sie den Instrumentierungsschlüssel einer Application Insights-Ressource kennen. Der Schlüssel muss in der App-Einstellung **APPINSIGHTS_INSTRUMENTATIONKEY** angegeben werden.
 
-Unabhängig davon, ob Sie Ihre Funktions-App [im Azure-Portal](functions-create-first-azure-function.md), über die Befehlszeile mithilfe der [Azure Functions Core Tools](./create-first-function-cli-csharp.md) oder mit [Visual Studio Code](./create-first-function-vs-code-csharp.md) erstellen, wird die Integration mit Application Insights automatisch aktiviert. Die Application Insights-Ressource hat den gleichen Namen wie Ihre Funktions-App und wird entweder in der gleichen oder nächstgelegenen Region erstellt.
+Unabhängig davon, ob Sie Ihre Funktions-App [im Azure-Portal](./functions-get-started.md), über die Befehlszeile mithilfe der [Azure Functions Core Tools](./create-first-function-cli-csharp.md) oder mit [Visual Studio Code](./create-first-function-vs-code-csharp.md) erstellen, wird die Integration mit Application Insights automatisch aktiviert. Die Application Insights-Ressource hat den gleichen Namen wie Ihre Funktions-App und wird entweder in der gleichen oder nächstgelegenen Region erstellt.
 
 ### <a name="new-function-app-in-the-portal"></a>Neue Funktions-App im Azure-Portal
 

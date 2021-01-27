@@ -8,14 +8,14 @@ ms.service: azure-cdn
 ms.topic: how-to
 ms.date: 9/06/2020
 ms.author: allensu
-ms.openlocfilehash: f9293206526778f8c3de8a368a1916a2cb3f88c2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6e433950c04c4494201b090063b17a10e54a4822
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89504672"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98685770"
 ---
-# <a name="azure-cdn-endpoint-multi-origin-preview"></a>Azure CDN-Endpunkt mit mehreren Ursprüngen (Vorschau)
+# <a name="azure-cdn-endpoint-multi-origin"></a>Azure CDN-Endpunkt mit mehreren Ursprüngen
 
 Die Unterstützung für mehrere Ursprünge beseitigt Ausfallzeiten und sorgt für globale Redundanz. 
 
@@ -25,10 +25,6 @@ Richten Sie eine oder mehrere Ursprungsgruppen ein, und wählen Sie eine Standar
 
 > [!NOTE]
 > Dieses Feature ist derzeit nur über Azure CDN von Microsoft verfügbar. 
-
-> [!IMPORTANT]
-> Azure CDN-Endpunkt mit mehreren Ursprüngen befindet sich aktuell in der öffentlichen Vorschauphase.
-> Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="create-the-origin-group"></a>Erstellen der Ursprungsgruppe
 
@@ -42,7 +38,7 @@ Richten Sie eine oder mehrere Ursprungsgruppen ein, und wählen Sie eine Standar
 
 4. Zum Aktivieren von mehreren Ursprüngen benötigen Sie mindestens eine Ursprungsgruppe. Wählen Sie **Ursprungsgruppe erstellen** aus:
 
-    :::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-2.png" alt-text="CDN-Endpunkt" border="true":::
+    :::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-2.png" alt-text="Ursprungseinstellungen" border="true":::
 
 5. Geben Sie unter der Konfiguration **Ursprungsgruppe hinzufügen** die folgenden Informationen ein, oder wählen Sie sie aus:
 
@@ -56,7 +52,7 @@ Richten Sie eine oder mehrere Ursprungsgruppen ein, und wählen Sie eine Standar
    | Testmethode      | Wählen Sie **Head** oder **Get** aus.                                           |
    | Standardursprungsgruppe | Aktivieren Sie das Kontrollkästchen, um die Standardursprungsgruppe festzulegen.
     
-   :::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-3.png" alt-text="CDN-Endpunkt" border="true":::
+   :::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-3.png" alt-text="Hinzufügen einer Ursprungsgruppe" border="true":::
 
 6. Wählen Sie **Hinzufügen**.
 
@@ -64,7 +60,7 @@ Richten Sie eine oder mehrere Ursprungsgruppen ein, und wählen Sie eine Standar
 
 1. Wählen Sie unter den Ursprungseinstellungen für Ihren Endpunkt die Option **+ Ursprung erstellen** aus:
 
-    :::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-5.png" alt-text="CDN-Endpunkt" border="true":::
+    :::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-5.png" alt-text="Erstellen eines Ursprungs" border="true":::
 
 2. Geben Sie unter der Konfiguration **Ursprung hinzufügen** die folgenden Informationen ein, oder wählen Sie sie aus:
 
@@ -82,13 +78,13 @@ Richten Sie eine oder mehrere Ursprungsgruppen ein, und wählen Sie eine Standar
     > [!NOTE]
     > Wenn ein Ursprung innerhalb einer Ursprungsgruppe erstellt wird, muss ihm eine Priorität und Gewichtung zugewiesen werden. Wenn eine Ursprungsgruppe nur einen Ursprung enthält, wird die Standardpriorität und die Standardgewichtung auf 1 festgelegt. Der Datenverkehr wird an die Ursprünge mit der höchsten Priorität weitergeleitet, sofern der Ursprung fehlerfrei ist. Wenn ein Ursprung als fehlerhaft erkannt wird, werden die Verbindungen an einen anderen Ursprung in Reihenfolge der Priorität umgeleitet. Wenn zwei Ursprünge dieselbe Priorität aufweisen, wird der Datenverkehr gemäß der für den Ursprung festgelegten Gewichtung verteilt. 
 
-    :::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-6.png" alt-text="CDN-Endpunkt" border="true":::
+    :::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-6.png" alt-text="Hinzufügen eines zusätzlichen Ursprungs" border="true":::
 
 3. Wählen Sie **Hinzufügen**.
 
 4. Wählen Sie **Ursprung konfigurieren** aus, um den Ursprungspfad für alle Ursprünge festzulegen:
 
-    :::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-7.png" alt-text="CDN-Endpunkt" border="true":::
+    :::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-7.png" alt-text="Konfigurieren des Ursprungspfads" border="true":::
 
 5. Klicken Sie auf **OK**.
 
@@ -98,27 +94,27 @@ Sobald Sie über mehrere Ursprünge und eine Ursprungsgruppe verfügen, können 
 
 1. Wählen Sie unter den Ursprungseinstellungen für den Azure CDN-Endpunkt den Namen der Ursprungsgruppe aus, die Sie konfigurieren möchten:
 
-    :::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-8.png" alt-text="CDN-Endpunkt" border="true":::
+    :::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-8.png" alt-text="Konfigurieren von Ursprüngen und Ursprungsgruppeneinstellungen" border="true":::
 
 2. Wählen Sie unter **Ursprungsgruppe aktualisieren** die Option **+ Ursprung auswählen** aus:
 
-    :::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-9.png" alt-text="CDN-Endpunkt" border="true":::
+    :::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-9.png" alt-text="Aktualisieren einer Ursprungsgruppe" border="true":::
 
 4. Wählen Sie im Pulldownfeld den Ursprung aus, den Sie der Gruppe hinzufügen möchten, und wählen Sie dann **OK** aus.
 
 5. Vergewissern Sie sich, dass der Ursprung der Gruppe hinzugefügt wurde, und wählen Sie dann **Speichern** aus:
 
-    :::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-10.png" alt-text="CDN-Endpunkt" border="true":::
+    :::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-10.png" alt-text="Überprüfen des einer Gruppe zusätzlich hinzugefügten Ursprungs" border="true":::
 
 ## <a name="remove-origin-from-origin-group"></a>Entfernen eines Ursprung aus der Ursprungsgruppe
 
 1. Wählen Sie unter den Ursprungseinstellungen für den Azure CDN-Endpunkt den Namen der Ursprungsgruppe aus:
 
-    :::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-8.png" alt-text="CDN-Endpunkt" border="true":::
+    :::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-8.png" alt-text="Entfernen eines Ursprungs aus einer Gruppe" border="true":::
 
 2. Um einen Ursprung aus der Ursprungsgruppe zu entfernen, wählen Sie das Papierkorbsymbol neben dem Ursprung und dann **Speichern** aus:
 
-    :::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-11.png" alt-text="CDN-Endpunkt" border="true":::
+    :::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-11.png" alt-text="Aktualisieren einer Ursprungsgruppe durch Löschen eines Ursprungs" border="true":::
 
 ## <a name="override-origin-group-with-rules-engine"></a>Außerkraftsetzen einer Ursprungsgruppe mit der Regel-Engine
 
@@ -128,7 +124,7 @@ Verteilen Sie den Datenverkehr basierend auf der Anforderungs-URL auf eine ander
 
 1. Wählen Sie an Ihrem CDN-Endpunkt die Option **Regel-Engine** unter **Einstellungen** aus:
 
-:::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-12.png" alt-text="CDN-Endpunkt" border="true":::
+:::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-12.png" alt-text="Regel-Engine" border="true":::
 
 2. Wählen Sie **+ Regel hinzufügen** aus.
 
@@ -144,7 +140,7 @@ Verteilen Sie den Datenverkehr basierend auf der Anforderungs-URL auf eine ander
 
 8. Wählen Sie im Pulldownmenü in **Ursprungsgruppe** Ihre Ursprungsgruppe aus.
 
-:::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-13.png" alt-text="CDN-Endpunkt" border="true":::
+:::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-13.png" alt-text="Bedingungen der Regel-Engine" border="true":::
 
 Für alle eingehenden Anforderungen gilt: Wenn der URL-Pfad **/images** enthält, wird die Anforderung der Ursprungsgruppe im Aktionsabschnitt **(myorigingroup)** zugewiesen. 
 

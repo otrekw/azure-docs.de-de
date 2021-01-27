@@ -11,12 +11,12 @@ ms.date: 04/17/2018
 ms.author: emtehran
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: cdac3b1e502a203c272db75eb4345446b0f7c0c8
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 3f0879aa9b6f9e084d0c51f0bb371740d333c1b6
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96462764"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98683255"
 ---
 # <a name="group-by-options-for-dedicated-sql-pools-in-azure-synapse-analytics"></a>GROUP BY-Optionen für dedizierte SQL-Pools in Azure Synapse Analytics
 
@@ -24,7 +24,7 @@ In diesem Artikel finden Sie Tipps für das Implementieren von GROUP BY-Optionen
 
 ## <a name="what-does-group-by-do"></a>Wozu dient GROUP BY?
 
-Die T-SQL-Klausel [GROUP BY](/sql/t-sql/queries/select-group-by-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) fasst Daten zu einer Gruppe von Zeilen zusammen. GROUP BY bietet einige Optionen, die der dedizierte SQL-Pool nicht unterstützt. Für diese Optionen gibt es jedoch Problemumgehungen, die wie folgt lauten:
+Die T-SQL-Klausel [GROUP BY](/sql/t-sql/queries/select-group-by-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) fasst Daten zu einer Gruppe von Zeilen zusammen. GROUP BY bietet einige Optionen, die der dedizierte SQL-Pool nicht unterstützt. Für diese Optionen gibt es jedoch Problemumgehungen, die wie folgt lauten:
 
 * GROUP BY mit ROLLUP
 * GROUPING SETS

@@ -10,12 +10,12 @@ ms.subservice: core
 ms.reviewer: larryfr
 ms.topic: conceptual
 ms.date: 10/22/2020
-ms.openlocfilehash: 3490e3004e5f5dd99795967f0deb8510200fa50b
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: b0b0c43039648737b229edc79dd4e0a3dc45f38e
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93311035"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98683339"
 ---
 # <a name="use-managed-identities-with-azure-machine-learning-preview"></a>Verwenden von verwalteten Identitäten mit Azure Machine Learning (Vorschau)
 
@@ -38,7 +38,7 @@ In diesem Artikel erfahren Sie, wie Sie verwaltete Identitäten für Folgendes v
 - Ein Azure Machine Learning-Arbeitsbereich. Weitere Informationen finden Sie unter [Erstellen eines Azure Machine Learning-Arbeitsbereichs](how-to-manage-workspace.md).
 - Die [Azure CLI-Erweiterung für den Machine Learning Service](reference-azure-machine-learning-cli.md)
 - Das [Python-SDK für Azure Machine Learning](/python/api/overview/azure/ml/intro?view=azure-ml-py)
-- Zum Zuweisen von Rollen muss die Anmeldung für Ihr Azure-Abonnement die Rolle [Operator für verwaltete Identität](../role-based-access-control/built-in-roles.md#managed-identity-operator) oder eine andere Rolle aufweisen, die die erforderlichen Aktionen zulässt (z. B. __Besitzer__ ).
+- Zum Zuweisen von Rollen muss die Anmeldung für Ihr Azure-Abonnement die Rolle [Operator für verwaltete Identität](../role-based-access-control/built-in-roles.md#managed-identity-operator) oder eine andere Rolle aufweisen, die die erforderlichen Aktionen zulässt (z. B. __Besitzer__).
 - Sie müssen mit dem Erstellen und Arbeiten mit [verwalteten Identitäten](../active-directory/managed-identities-azure-resources/overview.md) vertraut sein.
 
 ## <a name="configure-managed-identities"></a>Konfigurieren von verwalteten Identitäten
@@ -59,7 +59,7 @@ Wenn der ACR-Administratorbenutzer durch die Abonnementrichtlinie nicht zugelass
 [Erstellen Sie ACR über die Azure CLI](../container-registry/container-registry-get-started-azure-cli.md), ohne das Argument ```--admin-enabled``` festzulegen, oder über das Azure-Portal, ohne den Administratorbenutzer zu aktivieren. Geben Sie dann beim Erstellen des Azure Machine Learning-Arbeitsbereichs die Azure-Ressourcen-ID der ACR an. Das folgende Beispiel veranschaulicht das Erstellen eines neuen Azure ML-Arbeitsbereichs unter Verwendung einer vorhandenen ACR:
 
 > [!TIP]
-> Um den Wert für den Parameter `--container-registry` abzurufen, verwenden Sie den Befehl [az acr show](/cli/azure/acr?view=azure-cli-latest#az_acr_show), um Informationen für Ihre ACR anzuzeigen. Das Feld `id` enthält die Ressourcen-ID für Ihre ACR.
+> Um den Wert für den Parameter `--container-registry` abzurufen, verwenden Sie den Befehl [az acr show](/cli/azure/acr#az_acr_show), um Informationen für Ihre ACR anzuzeigen. Das Feld `id` enthält die Ressourcen-ID für Ihre ACR.
 
 ```azurecli-interactive
 az ml workspace create -w <workspace name> \
@@ -90,7 +90,7 @@ Wenn Sie keine eigene ACR bereitstellen, wird der Azure Machine Learning Service
 
     Dieser Befehl gibt einen Wert zurück, der in etwa wie folgt aussieht. Sie benötigen nur den letzten Teil des Texts, d. h. den Namen der ACR-Instanz:
 
-    ```text
+    ```output
     /subscriptions/<subscription id>/resourceGroups/<my resource group>/providers/MicrosoftContainerReggistry/registries/<ACR instance name>
     ```
 
@@ -173,7 +173,7 @@ env.python.user_managed_dependencies = True
 
 In diesem Szenario erstellt Azure Machine Learning Service die Trainings- oder Rückschlussumgebung auf einem Basisimage, das Sie von einer privaten ACR zur Verfügung stellen. Da die Imageerstellungsaufgabe mithilfe von ACR-Aufgaben in der ACR des Arbeitsbereichs erfolgt, müssen Sie zusätzliche Schritte durchführen, um den Zugriff zu ermöglichen.
 
-1. Erstellen Sie eine __benutzerseitig zugewiesene verwaltete Identität__ , und erteilen Sie der Identität den ACRPull-Zugriff auf die __private ACR__.  
+1. Erstellen Sie eine __benutzerseitig zugewiesene verwaltete Identität__, und erteilen Sie der Identität den ACRPull-Zugriff auf die __private ACR__.  
 1. Gewähren Sie der __systemseitig zugewiesenen verwalteten Identität__ des Arbeitsbereichs die Rolle „Operator für verwaltete Identität“ für die __benutzerseitig zugewiesene verwaltete Identität__ aus dem vorherigen Schritt. Diese Rolle ermöglicht es dem Arbeitsbereich, die benutzerseitig zugewiesene verwaltete Identität der ACR-Aufgabe zum Erstellen der verwalteten Umgebung zuzuweisen. 
 
     1. Abrufen der Prinzipal-ID der systemseitig zugewiesenen verwalteten Identität des Arbeitsbereichs:

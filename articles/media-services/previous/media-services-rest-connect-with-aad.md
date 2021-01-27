@@ -14,26 +14,26 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.reviewer: willzhan; johndeu
-ms.openlocfilehash: 8bea4c049c3d7ea17e173f069a3e99cbcca1fe48
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: 28719046c9a8ccc65d231244ef8b5b3f8e116282
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93041991"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98694729"
 ---
 # <a name="use-azure-ad-authentication-to-access-the-media-services-api-with-rest"></a>Verwenden der Azure AD-Authentifizierung zum Zugreifen auf die Media Services-API mit REST
 
 [!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
-> Media Services v2 werden derzeit keine neuen Features oder Funktionen hinzugefügt. <br/>Sehen Sie sich die neuste Version – [Media Services v3](../latest/index.yml) – an. Lesen Sie außerdem die [Hinweise zur Migration von v2 zu v3](../latest/migrate-from-v2-to-v3.md).
+> Media Services v2 werden derzeit keine neuen Features oder Funktionen hinzugefügt. <br/>Sehen Sie sich die neuste Version – [Media Services v3](../latest/index.yml) – an. Lesen Sie außerdem die [Hinweise zur Migration von v2 zu v3](../latest/migrate-v-2-v-3-migration-introduction.md).
 
 Bei Verwendung der Azure AD-Authentifizierung mit Azure Media Services können Sie auf zwei Arten authentifizieren:
 
 - Die **Benutzerauthentifizierung** dient der Authentifizierung einer Person, die die App zum Interagieren mit Azure Media Services-Ressourcen verwendet. Die interaktive Anwendung soll den Benutzer zuerst zur Eingabe seiner Anmeldeinformationen auffordern. Ein Beispiel hierfür ist eine Verwaltungskonsolen-App, die von autorisierten Benutzern zum Überwachen von Codierungsaufträgen oder Livestreaming verwendet wird. 
 - Die **Dienstprinzipalauthentifizierung** dient der Authentifizierung eines Diensts. Anwendungen, für die diese Authentifizierungsmethode normalerweise verwendet wird, sind Apps, die Daemondienste, Dienste der mittleren Ebene oder geplante Aufträge wie Web-Apps, Funktions-Apps, Logik-Apps, APIs oder Microservices ausführen.
 
-    In diesem Tutorial wird gezeigt, wie Sie die Azure AD- **Dienstprinzipal** authentifizierung für den Zugriff auf die AMS-API mit REST verwenden. 
+    In diesem Tutorial wird gezeigt, wie Sie die Azure AD-**Dienstprinzipal** authentifizierung für den Zugriff auf die AMS-API mit REST verwenden. 
 
     > [!NOTE]
     > **Dienstprinzipale** werden als Best Practice für die meisten Anwendungen empfohlen, die eine Verbindung mit Azure Media Services herstellen. 
@@ -43,7 +43,7 @@ In diesem Tutorial lernen Sie Folgendes:
 > [!div class="checklist"]
 > * Abrufen der Authentifizierungsinformationen aus dem Azure-Portal
 > * Abrufen des Zugriffstokens mithilfe von Postman
-> * Testen der **Assets** -API unter Verwendung des Zugriffstokens
+> * Testen der **Assets**-API unter Verwendung des Zugriffstokens
 
 
 > [!IMPORTANT]
@@ -124,11 +124,11 @@ Sie können Werte für AD-Verbindungsparameter für Ihre Datei „web.config“ 
 
 ## <a name="get-the-access-token-using-postman"></a>Abrufen des Zugriffstokens mithilfe von Postman
 
-In diesem Abschnitt wird gezeigt, wie Sie mithilfe von **Postman** eine REST-API ausführen, die ein JWT-Bearertoken (Zugriffstoken) zurückgibt. Um eine beliebige Media Services-REST-API aufzurufen, müssen Sie Ihren Aufrufen den Autorisierungsheader und den Wert „Bearer *Ihr_Zugriffstoken* “ hinzufügen (wie im nächsten Abschnitt dieses Tutorials gezeigt). 
+In diesem Abschnitt wird gezeigt, wie Sie mithilfe von **Postman** eine REST-API ausführen, die ein JWT-Bearertoken (Zugriffstoken) zurückgibt. Um eine beliebige Media Services-REST-API aufzurufen, müssen Sie Ihren Aufrufen den Autorisierungsheader und den Wert „Bearer *Ihr_Zugriffstoken*“ hinzufügen (wie im nächsten Abschnitt dieses Tutorials gezeigt). 
 
 1. Öffnen Sie **Postman**.
 2. Wählen Sie **POST** aus.
-3. Geben Sie die URL mit Ihrem Mandantennamen im folgenden Format ein: Der Mandantenname muss auf **.onmicrosoft.com** , die URL muss auf **oauth2/token** enden: 
+3. Geben Sie die URL mit Ihrem Mandantennamen im folgenden Format ein: Der Mandantenname muss auf **.onmicrosoft.com**, die URL muss auf **oauth2/token** enden: 
 
     `https://login.microsoftonline.com/{your-aad-tenant-name.onmicrosoft.com}/oauth2/token`
 
@@ -162,11 +162,11 @@ In diesem Abschnitt wird gezeigt, wie Sie mithilfe von **Postman** eine REST-API
 
     ![Screenshot des Textfelds „Veröffentlichen“ und der Registerkarten „Header“ und „Text“ mit hervorgehobener Option „access_token“ und ausgewählter Schaltfläche „Senden“](./media/connect-with-rest/connect-with-rest04.png)
 
-Die zurückgegebene Antwort enthält das **Zugriffstoken** , das Sie für den Zugriff auf beliebige AMS-APIs verwenden.
+Die zurückgegebene Antwort enthält das **Zugriffstoken**, das Sie für den Zugriff auf beliebige AMS-APIs verwenden.
 
-## <a name="test-the-assets-api-using-the-access-token"></a>Testen der **Assets** -API unter Verwendung des Zugriffstokens
+## <a name="test-the-assets-api-using-the-access-token"></a>Testen der **Assets**-API unter Verwendung des Zugriffstokens
 
-In diesem Abschnitt wird gezeigt, wie Sie mithilfe von **Postman** auf die **Assets** -API zugreifen.
+In diesem Abschnitt wird gezeigt, wie Sie mithilfe von **Postman** auf die **Assets**-API zugreifen.
 
 1. Öffnen Sie **Postman**.
 2. Wählen Sie **GET** aus.
@@ -178,7 +178,7 @@ In diesem Abschnitt wird gezeigt, wie Sie mithilfe von **Postman** auf die **Ass
     ![Tokenabruf](./media/connect-with-rest/connect-with-rest05.png)
 
     > [!NOTE]
-    > Die Postman-Benutzeroberfläche für einen Mac und einen PC unterscheidet sich möglicherweise. Wenn die Mac-Version im Abschnitt **Authentication** (Authentifizierung) keine Option „Bearer Token“ (Bearertoken) in der Dropdownliste aufweist, müssen Sie den **Authorization** -Header auf dem Mac-Client manuell hinzufügen.
+    > Die Postman-Benutzeroberfläche für einen Mac und einen PC unterscheidet sich möglicherweise. Wenn die Mac-Version im Abschnitt **Authentication** (Authentifizierung) keine Option „Bearer Token“ (Bearertoken) in der Dropdownliste aufweist, müssen Sie den **Authorization**-Header auf dem Mac-Client manuell hinzufügen.
 
    ![Autorisierungsheader](./media/connect-with-rest/auth-header.png)
 

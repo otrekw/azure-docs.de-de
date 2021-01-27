@@ -10,12 +10,12 @@ ms.reviewer: veyalla
 ms.service: iot-edge
 ms.custom: devx-track-azurecli
 services: iot-edge
-ms.openlocfilehash: 4ff4d5a810eb79fb11e66591cd0b695062b1c9f6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 45df700cc1772250e42a0e007fb4ea91b49471ba
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91450180"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98684202"
 ---
 # <a name="monitor-iot-edge-deployments"></a>Überwachen von IoT Edge-Bereitstellungen
 
@@ -41,7 +41,7 @@ So zeigen Sie ausführliche Informationen zu einer Bereitstellung an und überwa
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und navigieren Sie zu Ihrer IoT Hub-Instanz.
 1. Wählen Sie im Menü auf der linken Seite die Option **IoT Edge** aus.
 1. Wählen Sie die Registerkarte **IoT Edge-Bereitstellungen** aus.
-1. Prüfen Sie die Bereitstellungsliste. Für jede Bereitstellung können Sie die folgenden Details anzeigen:
+1. Prüfen Sie die Bereitstellungsliste.  Für jede Bereitstellung können Sie die folgenden Details anzeigen:
 
     | Column | BESCHREIBUNG |
     | --- | --- |
@@ -54,7 +54,7 @@ So zeigen Sie ausführliche Informationen zu einer Bereitstellung an und überwa
     | Benutzerdefinierte Metriken | Die Anzahl von IoT Edge-Geräten, die Daten für in der Bereitstellung definierte Metriken melden. |
     | Erstellungszeit | Der Zeitstempel der Bereitstellungserstellung. Dieser Zeitstempel wird zur Konfliktlösung verwendet, wenn zwei Bereitstellungen dieselbe Priorität haben. |
 
-1. Wählen Sie die Bereitstellung aus, die Sie überwachen möchten.  
+1. Wählen Sie die Bereitstellung aus, die Sie überwachen möchten.  
 1. Führen Sie auf der Seite **Bereitstellungsdetails** einen Bildlauf zum unteren Abschnitt durch, und wählen Sie die Registerkarte **Zielbedingung** aus. Wählen Sie **Anzeigen** aus, um eine Liste mit Geräten anzuzeigen, die der Zielbedingung entsprechen. Sie können die Bedingung ändern und auch die **Priorität** festlegen. Wählen Sie **Speichern** aus, wenn Sie Änderungen vorgenommen haben.
 
    ![Anzeigen von Zielgeräten für eine Bereitstellung](./media/how-to-monitor-iot-edge-deployments/target-devices.png)
@@ -69,7 +69,7 @@ Informationen zum Durchführen von Änderungen an Ihrer Bereitstellung finden Si
 
 Mit dem Befehl [az IoT Edge deployment show](/cli/azure/ext/azure-iot/iot/edge/deployment#ext-azure-iot-az-iot-edge-deployment-show) können Sie die Details einer einzelnen Bereitstellung anzeigen:
 
-```cli
+```azurecli
 az iot edge deployment show --deployment-id [deployment id] --hub-name [hub name]
 ```
 
@@ -78,7 +78,7 @@ Für diesen Befehl werden die folgenden Parameter verwendet:
 * **--deployment-id**: Der Name der Bereitstellung, die im IoT-Hub vorhanden ist Erforderlicher Parameter.
 * **--hub-name** – Name des IoT Hub, in dem die Bereitstellung vorhanden ist. Der Hub muss aus dem aktuellen Abonnement stammen. Wechseln Sie mit dem Befehl `az account set -s [subscription name]` zum gewünschten Abonnement.
 
-Überprüfen Sie die Bereitstellung im Befehlsfenster. Die Eigenschaft **metrics** enthält eine Anzahl für jede Metrik, die von den einzelnen Hubs ausgewertet wird:
+Überprüfen Sie die Bereitstellung im Befehlsfenster.  Die Eigenschaft **metrics** enthält eine Anzahl für jede Metrik, die von den einzelnen Hubs ausgewertet wird:
 
 * **targetedCount** – eine Systemmetrik, die die Anzahl der Gerätezwillinge in IoT Hub angibt, die die Zielbedingung erfüllen.
 * **appliedCount**: Eine Systemmetrik, die die Anzahl von Geräten angibt, auf deren Modulzwillinge in IoT Hub die Bereitstellungsinhalte angewendet wurden.
@@ -87,7 +87,7 @@ Für diesen Befehl werden die folgenden Parameter verwendet:
 
 Sie können mit dem Befehl [az IoT Edge deployment show-metric](/cli/azure/ext/azure-iot/iot/edge/deployment#ext-azure-iot-az-iot-edge-deployment-show-metric) eine Liste der Geräte-IDs oder Objekte für jede der Metriken anzeigen:
 
-```cli
+```azurecli
 az iot edge deployment show-metric --deployment-id [deployment id] --metric-id [metric id] --hub-name [hub name]
 ```
 

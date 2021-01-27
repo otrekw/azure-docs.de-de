@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 12/07/2020
+ms.date: 01/21/2021
 ms.author: tamram
 ms.reviewer: fryu
-ms.openlocfilehash: 6a24713a6027c38d2b9817928f3a82161bd37314
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: e4a5803b3d04b59316f71e50af24945efc87cb69
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96936725"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98677562"
 ---
 # <a name="prevent-shared-key-authorization-for-an-azure-storage-account-preview"></a>Verhindern der Autorisierung mit gemeinsam verwendeten Schlüsseln für ein Azure Storage-Konto (Vorschau)
 
@@ -239,8 +239,6 @@ Einige Azure-Tools bieten die Möglichkeit, die Azure AD-Autorisierung für den
 ## <a name="about-the-preview"></a>Informationen zur Vorschau
 
 Die Vorschauversion für das Verhindern der Autorisierung mit gemeinsam verwendeten Schlüsseln ist in der öffentlichen Azure-Cloud verfügbar. Sie ist nur für Speicherkonten verfügbar, die das Azure Resource Manager-Bereitstellungsmodell verwenden. Informationen dazu, welche Speicherkonten das Azure Resource Manager-Bereitstellungsmodell verwenden, finden Sie unter [Typen von Speicherkonten](storage-account-overview.md#types-of-storage-accounts).
-
-Informationen zum Registrieren für die Vorschauversion finden Sie unter [Azure Storage Allow Shared Key Access Limited Public Preview](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRxW65f1VQyNCuBHMIMBV8qlUN1o4TUtUUzZBV0JYVlhKQ1FITDlVUUU0Ui4u) (Azure Storage: Zulassen den Zugriffs mit gemeinsam verwendeten Schlüsseln – eingeschränkte Public Preview).
 
 > [!IMPORTANT]
 > Diese Vorschau ist nur für die Verwendung außerhalb der Produktion bestimmt.

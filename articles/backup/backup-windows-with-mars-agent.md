@@ -3,12 +3,12 @@ title: Sichern von Windows-Computern mit dem MARS-Agent
 description: Verwenden Sie den Microsoft Azure Recovery Services-Agent (MARS) zum Sichern von Windows-Computern.
 ms.topic: conceptual
 ms.date: 03/03/2020
-ms.openlocfilehash: d2cdd5d1fa98462a70d72fd9f8723685952b665a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 54932192d61633da55657e2ba57adf4e30c4fbc7
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90052221"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98702767"
 ---
 # <a name="back-up-windows-server-files-and-folders-to-azure"></a>Sichern von Windows Server-Dateien und -Ordnern in Azure
 
@@ -38,7 +38,7 @@ Bei Azure Backup wird die Sommerzeit nicht automatisch berücksichtigt. Dieser S
 
 So erstellen Sie eine Sicherungsrichtlinie
 
-1. Nachdem Sie den MARS-Agent heruntergeladen und registriert haben, öffnen Sie die Agent-Konsole. Den Agent finden Sie, indem Sie auf Ihrem Computer nach **Microsoft Azure Backup**suchen.  
+1. Nachdem Sie den MARS-Agent heruntergeladen und registriert haben, öffnen Sie die Agent-Konsole. Den Agent finden Sie, indem Sie auf Ihrem Computer nach **Microsoft Azure Backup** suchen.  
 
 1. Wählen Sie unter **Aktionen** die Option **Sicherung planen** aus.
 
@@ -53,7 +53,7 @@ So erstellen Sie eine Sicherungsrichtlinie
     ![Auswählen von Elementen für die Sicherung](./media/backup-azure-manage-mars/selected-items-to-backup.png)
 
 1. Wählen Sie auf der Seite **Elemente für Sicherung auswählen** die Option **Weiter** aus.
-1. Geben Sie auf der Seite **Sicherungszeitplan angeben** an, wann tägliche oder wöchentliche Sicherungen erstellt werden sollen. Wählen Sie **Weiter**aus.
+1. Geben Sie auf der Seite **Sicherungszeitplan angeben** an, wann tägliche oder wöchentliche Sicherungen erstellt werden sollen. Wählen Sie **Weiter** aus.
 
     * Ein Wiederherstellungspunkt wird gleichzeitig mit einer Sicherung erstellt.
     * Die Anzahl der in Ihrer Umgebung erstellten Wiederherstellungspunkte hängt von Ihrem Sicherungszeitplan ab.
@@ -65,7 +65,7 @@ So erstellen Sie eine Sicherungsrichtlinie
 
         ![Einrichten eines wöchentlichen Sicherungszeitplans](./media/backup-configure-vault/week-schedule.png)
 
-1. Legen Sie auf der Seite **Aufbewahrungsrichtlinie auswählen** fest, wie historische Kopien Ihrer Daten gespeichert werden. Wählen Sie **Weiter**aus.
+1. Legen Sie auf der Seite **Aufbewahrungsrichtlinie auswählen** fest, wie historische Kopien Ihrer Daten gespeichert werden. Wählen Sie **Weiter** aus.
 
     * Aufbewahrungseinstellungen geben an, welche Wiederherstellungspunkte gespeichert und wie lange sie gespeichert werden sollen.
     * Für die Einstellung einer täglichen Aufbewahrung geben Sie an, dass zu dem für die tägliche Aufbewahrung angegebenen Zeitpunkt der neueste Wiederherstellungspunkt für die angegebene Anzahl von Tagen beibehalten wird. Oder Sie können eine monatliche Aufbewahrungsrichtlinie angeben, die angibt, dass der am 30. eines jeden Monats erstellte Wiederherstellungspunkt für 12 Monate gespeichert werden soll.
@@ -104,7 +104,7 @@ Ausführen einer Offlineübertragung:
 1. Schreiben Sie die Sicherungsdaten an einen Stagingspeicherort.
 1. Verwenden Sie das Tool „AzureOfflineBackupDiskPrep“, um die Daten vom Stagingspeicherort auf einen oder mehrere SATA-Datenträger zu kopieren.
 
-    Das Tool erstellt einen Azure-Importauftrag. Weitere Informationen finden Sie unter [Was ist der Azure Import/Export-Dienst?](../storage/common/storage-import-export-service.md).
+    Das Tool erstellt einen Azure-Importauftrag. Weitere Informationen finden Sie unter [Was ist der Azure Import/Export-Dienst?](../import-export/storage-import-export-service.md).
 1. Senden Sie die SATA-Datenträger an ein Azure-Rechenzentrum.
 
     Im Rechenzentrum werden die Daten auf den Datenträgern in ein Azure-Speicherkonto kopiert. Azure Backup kopiert die Daten aus dem Speicherkonto in den Tresor, und inkrementelle Sicherungen werden geplant.

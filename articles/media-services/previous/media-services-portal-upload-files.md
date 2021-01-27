@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: 00035782a17936405b2b042035220dde87da12b1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fdb301cd719d98d806e2a9e539cd81e6778461bb
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89257057"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98695305"
 ---
 # <a name="upload-files-to-a-media-services-account-in-the-azure-portal"></a>Hochladen von Dateien in ein Media Services-Konto über das Azure-Portal
 
@@ -32,7 +32,7 @@ ms.locfileid: "89257057"
 > 
 
 > [!NOTE]
-> Media Services v2 werden derzeit keine neuen Features oder Funktionen hinzugefügt. Informationen zum Hochladen der aktuellen Dateien mithilfe des Portals finden Sie unter [Hochladen, Codieren und Streamen von Inhalten mithilfe des Portals](../latest/manage-assets-quickstart.md).<br/>Lesen Sie außerdem: [Media Services v3](../latest/index.yml). Lesen Sie außerdem die [Hinweise zur Migration von v2 zu v3](../latest/migrate-from-v2-to-v3.md).
+> Media Services v2 werden derzeit keine neuen Features oder Funktionen hinzugefügt. Informationen zum Hochladen der aktuellen Dateien mithilfe des Portals finden Sie unter [Hochladen, Codieren und Streamen von Inhalten mithilfe des Portals](../latest/manage-assets-quickstart.md).<br/>Lesen Sie außerdem: [Media Services v3](../latest/index.yml). Lesen Sie außerdem die [Hinweise zur Migration von v2 zu v3](../latest/migrate-v-2-v-3-migration-introduction.md).
 
 In Azure Media Services laden Sie Ihre digitalen Dateien in ein Medienobjekt hoch. Das Medienobjekt kann Videos, Audiodateien, Bilder, Miniaturansichtssammlungen, Texttitel und Untertiteldateien (und die dazugehörigen Metadaten) enthalten. Nachdem die Dateien hochgeladen wurden, werden Ihre Inhalte zur weiteren Verarbeitung und für das Streaming sicher in der Cloud gespeichert.
 

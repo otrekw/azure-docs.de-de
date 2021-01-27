@@ -6,12 +6,12 @@ ms.service: virtual-machines-linux
 ms.topic: how-to
 ms.date: 05/24/2017
 ms.author: guybo
-ms.openlocfilehash: 08b18dae6cec3f30ba9ecc69a3537eec428cc9ee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: efa38384778bb63857d3c867d74ace7f4f199118
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87372721"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98685088"
 ---
 # <a name="create-and-upload-an-openbsd-disk-image-to-azure"></a>Erstellen und Hochladen eines OpenBSD-Datenträgerimages in Azure
 In diesem Artikel erfahren Sie, wie Sie eine virtuelle Festplatte (Virtual Hard Disk, VHD) mit dem OpenBSD-Betriebssystem erstellen und hochladen. Nach dem Hochladen können Sie sie als eigenes Image verwenden, um über Azure CLI einen virtuellen Computer (Virtual Machine, VM) in Azure zu erstellen.
@@ -56,7 +56,7 @@ Führen Sie auf dem virtuellen Computer, auf dem Sie das Betriebssystem OpenBSD 
     ln -sf /usr/local/bin/python2.7 /usr/local/bin/python
     ln -sf /usr/local/bin/python2.7-2to3 /usr/local/bin/2to3
     ln -sf /usr/local/bin/python2.7-config /usr/local/bin/python-config
-    ln -sf /usr/local/bin/pydoc2.7  /usr/local/bin/pydoc
+    ln -sf /usr/local/bin/pydoc2.7  /usr/local/bin/pydoc
     ```
 
 6. Die neueste Version des Azure-Agents finden Sie stets auf [GitHub](https://github.com/Azure/WALinuxAgent/releases). Installieren Sie den Agent wie folgt:
@@ -140,7 +140,7 @@ az storage blob upload \
 
 
 ## <a name="create-vm-from-your-vhd"></a>Erstellen eines virtuellen Computers von der virtuellen Festplatte
-Sie können einen virtuellen Computer mit einem [Beispielskript](../scripts/virtual-machines-linux-cli-sample-create-vm-vhd.md) oder direkt mit [az vm create](/cli/azure/vm) erstellen. Um die hochgeladene OpenBSD-VHD anzugeben, verwenden Sie den `--image`-Parameter wie folgt:
+Sie können einen virtuellen Computer mit einem [Beispielskript](/previous-versions/azure/virtual-machines/scripts/virtual-machines-linux-cli-sample-create-vm-vhd) oder direkt mit [az vm create](/cli/azure/vm) erstellen. Um die hochgeladene OpenBSD-VHD anzugeben, verwenden Sie den `--image`-Parameter wie folgt:
 
 ```azurecli
 az vm create \
@@ -168,4 +168,4 @@ ssh azureuser@<ip address>
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zur Hyper-V-Unterstützung unter OpenBSD 6.1 finden Sie unter [OpenBSD 6.1](https://www.openbsd.org/61.html) und [hyperv.4](https://man.openbsd.org/hyperv.4).
 
-Informationen zum Erstellen eines virtuellen Computers aus verwalteten Datenträgern finden Sie unter [az disk](/cli/azure/disk). 
+Informationen zum Erstellen eines virtuellen Computers aus verwalteten Datenträgern finden Sie unter [az disk](/cli/azure/disk).

@@ -14,19 +14,19 @@ ms.topic: conceptual
 ms.date: 11/03/2020
 ms.author: inhenkel
 ms.custom: references_regions
-ms.openlocfilehash: cf84e45ff43643c7e9a983b867194a7920aa1b57
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 458927afc78c46ad365d437a574d0b40b32fc11e
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93351843"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98695796"
 ---
 # <a name="media-services-regional-availability"></a>Regionale Verfügbarkeit von Media Services
 
 [!INCLUDE [media services api v2 logo](./includes/v2-hr.md)]
 
 > [!NOTE]
-> Media Services v2 werden derzeit keine neuen Features oder Funktionen hinzugefügt. Sehen Sie sich die neuste Version – [Media Services v3](../latest/media-services-overview.md) – an. Lesen Sie außerdem die [Hinweise zur Migration von v2 zu v3](../latest/migrate-from-v2-to-v3.md).
+> Media Services v2 werden derzeit keine neuen Features oder Funktionen hinzugefügt. Sehen Sie sich die neuste Version – [Media Services v3](../latest/media-services-overview.md) – an. Lesen Sie außerdem die [Hinweise zur Migration von v2 zu v3](../latest/migrate-v-2-v-3-migration-introduction.md).
 
 Mit Microsoft Azure Media Services (AMS) können Sie Video- oder Audioinhalte auf sichere Weise hochladen, speichern, codieren, verpacken und bedarfsgesteuert oder als Livestream auf verschiedenen Clients (wie Fernsehern, PCs und mobilen Geräten) bereitstellen.
 
@@ -40,7 +40,7 @@ Mithilfe der Informationen unter [Azure-Produkte nach Region](https://azure.micr
 
 ## <a name="streaming-endpoints"></a>Streamingendpunkte
 
-Media Services-Kunden haben die Wahl zwischen einem **Standard** -Streamingendpunkt und einem **Premium** -Streamingendpunkt.
+Media Services-Kunden haben die Wahl zwischen einem **Standard**-Streamingendpunkt und einem **Premium**-Streamingendpunkt.
 
 |Name|Status|Region
 |---|---|---|

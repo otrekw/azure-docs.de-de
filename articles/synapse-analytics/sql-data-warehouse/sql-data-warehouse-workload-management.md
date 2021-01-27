@@ -11,12 +11,12 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 761976741bf794a21182e8f962b274ae32925060
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 5640c1e254c4738ab53881544a09808b4894a462
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93324482"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98676968"
 ---
 # <a name="what-is-workload-management"></a>Worum geht es bei der Workloadverwaltung?
 
@@ -44,7 +44,7 @@ Wenn Sie z.B. eine Ad-hoc-Benutzerrollenmitgliedschaft für „smallrc“ gewäh
 
 Die Workloadverwaltung für dedizierte SQL-Pools in Azure Synapse besteht aus drei grundlegenden Konzepten: [Workloadklassifizierung](sql-data-warehouse-workload-classification.md), [Workloadpriorität](sql-data-warehouse-workload-importance.md) und [Workloadisolation](sql-data-warehouse-workload-isolation.md).  Mit diesen Funktionen können Sie besser steuern, wie Systemressourcen von der Workload genutzt werden.
 
-Die Workloadklassifizierung ist das Konzept, bei dem eine Anforderung einer Arbeitsauslastungsgruppe zugewiesen wird und Prioritätsstufen festgelegt werden.  Bisher erfolgte diese Zuweisung über die Rollenmitgliedschaft mithilfe von [sp_addrolemember](resource-classes-for-workload-management.md#change-a-users-resource-class).  Diese Aktion ist nun über [CREATE WORKLOAD CLASSIFER](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) möglich.  Die Klassifizierungsfunktion bietet einen umfassenderen Satz von Optionen, wie z.B. Bezeichnung, Sitzung und Zeit zum Klassifizieren von Anforderungen.
+Die Workloadklassifizierung ist das Konzept, bei dem eine Anforderung einer Arbeitsauslastungsgruppe zugewiesen wird und Prioritätsstufen festgelegt werden.  Bisher erfolgte diese Zuweisung über die Rollenmitgliedschaft mithilfe von [sp_addrolemember](resource-classes-for-workload-management.md#change-a-users-resource-class).  Diese Aktion ist nun über [CREATE WORKLOAD CLASSIFER](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) möglich.  Die Klassifizierungsfunktion bietet einen umfassenderen Satz von Optionen, wie z.B. Bezeichnung, Sitzung und Zeit zum Klassifizieren von Anforderungen.
 
 Die Workloadpriorität wirkt sich auf die Reihenfolge aus, in der eine Anforderung Zugriff auf Ressourcen erhält.  Auf einem ausgelasteten System hat eine Anforderung mit höherer Priorität zuerst Zugriff auf Ressourcen.  Durch die Priorität kann auch der geordnete Zugriff auf Sperren sichergestellt werden.
 

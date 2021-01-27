@@ -4,12 +4,12 @@ description: Überwachen Sie Ihre Web-App mit benutzerdefinierten Metriken in Ec
 ms.topic: conceptual
 ms.date: 04/22/2019
 ms.reviewer: sdash
-ms.openlocfilehash: c50f7e57c520321d752d6d46e36c45c615b5e785
-ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
+ms.openlocfilehash: 865de94f1d9b4012a908643bbf87f38aeb8594a0
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97803577"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98679465"
 ---
 # <a name="live-metrics-stream-monitor--diagnose-with-1-second-latency"></a>Live Metrics Stream: Überwachung und Diagnose mit einer Latenzzeit von 1 Sekunde
 
@@ -36,7 +36,7 @@ Livemetriken werden derzeit für ASP.NET-, ASP.NET Core-, Azure Functions-, Java
    * [ASP.NET Core](./asp-net-core.md): Livemetriken sind standardmäßig aktiviert.
    * [.NET-/.NET Core-Konsole bzw. -Worker](./worker-service.md): Livemetriken sind standardmäßig aktiviert.
    * [.NET-Anwendungen](#enable-livemetrics-using-code-for-any-net-application): Aktivieren Sie diese mithilfe von Code.
-    * [Java](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent): Livemetriken sind standardmäßig aktiviert.
+    * [Java](./java-in-process-agent.md): Livemetriken sind standardmäßig aktiviert.
    * [Node.js](./nodejs.md#live-metrics)
 
 2. Öffnen Sie im [Azure-Portal](https://portal.azure.com) die Application Insights-Ressource für Ihre App und anschließend Live Stream.

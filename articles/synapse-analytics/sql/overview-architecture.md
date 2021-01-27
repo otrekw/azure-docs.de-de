@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: da6c9f6df0e9e74de297cf6c8f655b62e3446bad
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: bd911868028825164cdd9627bf6b5c6d56de7164
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96462718"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98679617"
 ---
 # <a name="azure-synapse-sql-architecture"></a>Azure Synapse SQL-Architektur 
 
@@ -67,7 +67,7 @@ Im serverlosen SQL-Pool wird die DQP-Engine zur Optimierung und Koordinierung de
 
 Die Serverknoten liefern die Rechnerleistung. 
 
-Im dedizierten SQL-Pool werden Verteilungen Serverknoten zur Verarbeitung zugeordnet. Wenn Sie für weitere Computeressourcen bezahlen, ordnet der Pool die Verteilungen den verfügbaren Serverknoten neu zu. Die Anzahl der Serverknoten liegt zwischen 1 und 60 und wird durch die Dienstebene für den dedizierten SQL-Pool vorgegeben. Jedem Serverknoten ist eine Knoten-ID zugewiesen, die in Systemsichten sichtbar ist. Sie können die Serverknoten-ID anzeigen, indem Sie in den Systemsichten, deren Namen mit „sys.pdw_nodes“ beginnen, nach der Spalte „node_id“ suchen. Eine Liste dieser Systemsichten finden Sie unter [Synapse SQL-Systemsichten](/sql/relational-databases/system-catalog-views/sql-data-warehouse-and-parallel-data-warehouse-catalog-views?view=azure-sqldw-latest).
+Im dedizierten SQL-Pool werden Verteilungen Serverknoten zur Verarbeitung zugeordnet. Wenn Sie für weitere Computeressourcen bezahlen, ordnet der Pool die Verteilungen den verfügbaren Serverknoten neu zu. Die Anzahl der Serverknoten liegt zwischen 1 und 60 und wird durch die Dienstebene für den dedizierten SQL-Pool vorgegeben. Jedem Serverknoten ist eine Knoten-ID zugewiesen, die in Systemsichten sichtbar ist. Sie können die Serverknoten-ID anzeigen, indem Sie in den Systemsichten, deren Namen mit „sys.pdw_nodes“ beginnen, nach der Spalte „node_id“ suchen. Eine Liste dieser Systemsichten finden Sie unter [Synapse SQL-Systemsichten](/sql/relational-databases/system-catalog-views/sql-data-warehouse-and-parallel-data-warehouse-catalog-views?view=azure-sqldw-latest&preserve-view=true).
 
 Im serverlosen SQL-Pool wird jedem Serverknoten eine Aufgabe und ein Satz von Dateien zugewiesen, für die die Aufgabe ausgeführt werden soll. „Aufgabe“ ist eine verteilte Abfrageausführungseinheit, die eigentlich Teil der vom Benutzer eingereichten Abfrage ist. Es erfolgt eine automatische Skalierung, um sicherzustellen, dass genügend Computeknoten zur Ausführung der Benutzerabfrage verwendet werden.
 

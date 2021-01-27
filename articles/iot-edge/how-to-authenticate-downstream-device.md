@@ -8,12 +8,12 @@ ms.date: 10/15/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: f2dd7cac8370c261f24f5587e801bd621fbdb0f0
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 3876b44bc6bb1ddbc5398126421fb9651003838f
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96016997"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98678822"
 ---
 # <a name="authenticate-a-downstream-device-to-azure-iot-hub"></a>Authentifizieren eines nachgeschalteten Geräts bei Azure IoT Hub
 
@@ -71,7 +71,7 @@ Geben Sie beim Erstellen der neuen Geräteidentität die folgenden Informationen
 
 Sie können auch die [IoT-Erweiterung für die Azure-Befehlszeilenschnittstelle](https://github.com/Azure/azure-iot-cli-extension) verwenden, um diesen Vorgang abzuschließen. Im folgenden Beispiel wird mithilfe des Befehls [az iot hub device-identity](/cli/azure/ext/azure-iot/iot/hub/device-identity) ein neues IoT-Gerät mit Authentifizierung mit symmetrischem Schlüssel erstellt und ein übergeordnetes Gerät zugewiesen:
 
-```cli
+```azurecli
 az iot hub device-identity create -n {iothub name} -d {new device ID} --pd {existing gateway device ID}
 ```
 
@@ -126,7 +126,7 @@ Für die selbstsignierte X.509-Authentifizierung (manchmal auch als „Authentif
 
 Sie können auch die [IoT-Erweiterung für die Azure-Befehlszeilenschnittstelle](https://github.com/Azure/azure-iot-cli-extension) verwenden, um den Vorgang zur Geräteerstellung abzuschließen. Im folgenden Beispiel wird mithilfe des Befehls [az iot hub device-identity](/cli/azure/ext/azure-iot/iot/hub/device-identity) ein neues IoT-Gerät mit selbstsignierter X.509-Zertifizierung erstellt und ein übergeordnetes Gerät zugewiesen:
 
-```cli
+```azurecli
 az iot hub device-identity create -n {iothub name} -d {device ID} --pd {gateway device ID} --am x509_thumbprint --ptp {primary thumbprint} --stp {secondary thumbprint}
 ```
 
@@ -170,7 +170,7 @@ Dieser Abschnitt baut auf den Anweisungen im IoT Hub-Artikel [Einrichten der X.5
 
 Sie können auch die [IoT-Erweiterung für die Azure-Befehlszeilenschnittstelle](https://github.com/Azure/azure-iot-cli-extension) verwenden, um den Vorgang zur Geräteerstellung abzuschließen. Im folgenden Beispiel wird mithilfe des Befehls [az iot hub device-identity](/cli/azure/ext/azure-iot/iot/hub/device-identity) ein neues IoT-Gerät mit Authentifizierung mit einem X.509-Zertifikat, das von einer Zertifizierungsstelle signiert wurde, erstellt und ein übergeordnetes Gerät zugewiesen:
 
-```cli
+```azurecli
 az iot hub device-identity create -n {iothub name} -d {device ID} --pd {gateway device ID} --am x509_ca
 ```
 
@@ -191,19 +191,19 @@ Verbindungszeichenfolgen für nachgeschaltete Geräte müssen folgende Komponent
 
 Insgesamt sieht eine vollständige Verbindungszeichenfolge wie folgt aus:
 
-```
+```console
 HostName=myiothub.azure-devices.net;DeviceId=myDownstreamDevice;SharedAccessKey=xxxyyyzzz;GatewayHostName=myGatewayDevice
 ```
 
 Oder:
 
-```
+```console
 HostName=myiothub.azure-devices.net;DeviceId=myDownstreamDevice;x509=true;GatewayHostName=myGatewayDevice
 ```
 
 Dank der Beziehung zwischen über- und untergeordneten Geräten können Sie die Verbindungszeichenfolge vereinfachen, indem Sie das Gateway direkt als Verbindungshost aufrufen. Beispiel:
 
-```
+```console
 HostName=myGatewayDevice;DeviceId=myDownstreamDevice;SharedAccessKey=xxxyyyzzz
 ```
 

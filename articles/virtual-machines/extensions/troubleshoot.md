@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/29/2016
 ms.author: kundanap
-ms.openlocfilehash: b8b7a03d5176f5dbd8500b5ff9044c2f22ecbfc0
-ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
+ms.openlocfilehash: 343ddb109de41a0959533b16b11762841b5b1105
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98127140"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98676758"
 ---
 # <a name="troubleshooting-azure-windows-vm-extension-failures"></a>Problembehandlung bei Fehlern im Zusammenhang mit Azure Windows-VM-Erweiterungen
 [!INCLUDE [virtual-machines-common-extensions-troubleshoot](../../../includes/virtual-machines-common-extensions-troubleshoot.md)]
@@ -85,7 +85,7 @@ Dieses Zertifikat wird automatisch erneut generiert, indem der Windows-Gast-Agen
 - Klicken Sie mit der rechten Maustaste darauf, und wählen Sie „Task beenden“ aus. Der Prozess wird automatisch neu gestartet.
 
 
-Ferner können Sie für die VM einen neuen GoalState auslösen, indem Sie ein „VM Reapply“ ausführen. VM [Reapply](https://docs.microsoft.com/rest/api/compute/virtualmachines/reapply) ist eine API, die 2020 eingeführt wurde und dazu dient, den Zustand einer VM erneut anzuwenden. Wir empfehlen Ihnen, dies zu einem Zeitpunkt durchzuführen, an dem eine kurze Ausfallzeit der VM akzeptabel ist. Zwar löst Reapply seinerseits keinen Neustart der VM aus, und in der überwiegenden Mehrzahl der Fälle führt das Aufrufen von Reapply nicht zu einem Neustart der VM, es besteht jedoch das sehr kleine Risiko, dass ein anderes ausstehendes Update des VM-Modells angewendet wird, wenn Reapply einen neuen Zielzustand auslöst, und diese andere Änderung macht möglicherweise einen Neustart erforderlich. 
+Ferner können Sie für die VM einen neuen GoalState auslösen, indem Sie ein „VM Reapply“ ausführen. VM [Reapply](/rest/api/compute/virtualmachines/reapply) ist eine API, die 2020 eingeführt wurde und dazu dient, den Zustand einer VM erneut anzuwenden. Wir empfehlen Ihnen, dies zu einem Zeitpunkt durchzuführen, an dem eine kurze Ausfallzeit der VM akzeptabel ist. Zwar löst Reapply seinerseits keinen Neustart der VM aus, und in der überwiegenden Mehrzahl der Fälle führt das Aufrufen von Reapply nicht zu einem Neustart der VM, es besteht jedoch das sehr kleine Risiko, dass ein anderes ausstehendes Update des VM-Modells angewendet wird, wenn Reapply einen neuen Zielzustand auslöst, und diese andere Änderung macht möglicherweise einen Neustart erforderlich. 
 
 Azure-Portal:
 

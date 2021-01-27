@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: a303f5e6177d0dc4205eaec8c3b1911e8e004fe3
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: d14eda84144105bf2e04f1238284bc58a91c4c03
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98602437"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98684054"
 ---
 # <a name="request-elevation-data-using-the-azure-maps-elevation-service-preview"></a>Anfordern von Höhendaten mithilfe des Azure Maps-Höhenangabendiensts (Vorschau)
 
@@ -22,7 +22,7 @@ ms.locfileid: "98602437"
 > Der Azure Maps-Höhenangabendienst befindet sich derzeit in der öffentlichen Vorschau.
 > Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Der Azure Maps-[Höhenangabendienst](https://docs.microsoft.com/rest/api/maps/elevation) umfasst APIs, über die Höhendaten an beliebigen Punkten auf der Erdoberfläche abgefragt werden können. Sie können Stichproben für Höhenangaben entlang von Routen, innerhalb eines definierten Begrenzungsrahmens oder an bestimmten Koordinaten anfordern. Außerdem können Sie die [Render V2-API zum Abrufen von Kartenkacheln](https://docs.microsoft.com/rest/api/maps/renderv2) verwenden, um Höhendaten im Kachelformat abzurufen. Die Kacheln werden im GeoTIFF-Rasterformat bereitgestellt. In diesem Artikel erfahren Sie, wie Sie mit dem Azure Maps-Höhenangabendienst und der API zum Abrufen von Kartenkacheln Höhendaten anfordern. Die Höhendaten können im GeoJSON- und im GeoTIFF-Format angefordert werden.
+Der Azure Maps-[Höhenangabendienst](/rest/api/maps/elevation) umfasst APIs, über die Höhendaten an beliebigen Punkten auf der Erdoberfläche abgefragt werden können. Sie können Stichproben für Höhenangaben entlang von Routen, innerhalb eines definierten Begrenzungsrahmens oder an bestimmten Koordinaten anfordern. Außerdem können Sie die [Render V2-API zum Abrufen von Kartenkacheln](/rest/api/maps/renderv2) verwenden, um Höhendaten im Kachelformat abzurufen. Die Kacheln werden im GeoTIFF-Rasterformat bereitgestellt. In diesem Artikel erfahren Sie, wie Sie mit dem Azure Maps-Höhenangabendienst und der API zum Abrufen von Kartenkacheln Höhendaten anfordern. Die Höhendaten können im GeoJSON- und im GeoTIFF-Format angefordert werden.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -35,7 +35,7 @@ In diesem Artikel wird die Anwendung [Postman](https://www.postman.com/) verwend
 
 ## <a name="request-elevation-data-in-raster-tiled-format"></a>Anfordern von Höhendaten im Rasterkachelformat
 
-Verwenden Sie die [Render V2-API zum Abrufen von Kartenkacheln](https://docs.microsoft.com/rest/api/maps/renderv2), um Höhendaten im Rasterkachelformat abzurufen. Wenn die Kachel gefunden wird, wird sie von der API im GeoTIFF-Format zurückgegeben. Andernfalls wird „0“ (null) zurückgegeben. Alle DEM-Rasterkacheln verwenden den GeoID-Modus (Meeresspiegel). In diesem Beispiel werden Höhendaten für den Mount Everest angefordert.
+Verwenden Sie die [Render V2-API zum Abrufen von Kartenkacheln](/rest/api/maps/renderv2), um Höhendaten im Rasterkachelformat abzurufen. Wenn die Kachel gefunden wird, wird sie von der API im GeoTIFF-Format zurückgegeben. Andernfalls wird „0“ (null) zurückgegeben. Alle DEM-Rasterkacheln verwenden den GeoID-Modus (Meeresspiegel). In diesem Beispiel werden Höhendaten für den Mount Everest angefordert.
 
 >[!TIP]
 >Zum Abrufen einer Kachel in einem bestimmten Bereich der Weltkarte müssen Sie die richtige Kachel in der entsprechenden Zoomstufe suchen. Beachten Sie auch, dass WorldDEM die gesamte globale Landmasse, jedoch keine Ozeane abdeckt.  Weitere Informationen finden Sie unter [Zoomstufen und Grobraster](zoom-levels-and-tile-grid.md).
@@ -58,9 +58,9 @@ Verwenden Sie die APIs des Höhenangabendiensts (Vorschau), um Höhendaten im Ge
 
 * [Abrufen von Daten für Punkte](/rest/api/maps/elevation/getdataforpoints)
 * [Veröffentlichen von Daten für Punkte](/rest/api/maps/elevation/postdataforpoints)
-* [Abrufen von Daten für Polylinie](https://docs.microsoft.com/rest/api/maps/elevation/getdataforpolyline)
-* [Veröffentlichen von Daten für Polylinie](https://docs.microsoft.com/rest/api/maps/elevation/postdataforpolyline)
-* [Abrufen von Daten für Begrenzungsrahmen](https://docs.microsoft.com/rest/api/maps/elevation/getdataforboundingbox)
+* [Abrufen von Daten für Polylinie](/rest/api/maps/elevation/getdataforpolyline)
+* [Veröffentlichen von Daten für Polylinie](/rest/api/maps/elevation/postdataforpolyline)
+* [Abrufen von Daten für Begrenzungsrahmen](/rest/api/maps/elevation/getdataforboundingbox)
 
 >[!IMPORTANT]
 > Wenn keine Daten zurückgegeben werden können, geben alle APIs `0` zurück.
@@ -126,11 +126,11 @@ In diesem Beispiel werden über die [API zum Abrufen von Daten für Punkte](/res
 
 ### <a name="request-elevation-data-samples-along-a-polyline"></a>Anfordern von Stichproben für Höhenangaben entlang einer Polylinie
 
-In diesem Beispiel werden über die [API zum Abrufen von Daten für Polylinie](https://docs.microsoft.com/rest/api/maps/elevation/getdataforpolyline) fünf gleichmäßig verteilte Stichproben für Höhenangaben entlang einer geraden Linie zwischen den Koordinaten für den Mount Everest und den Chamlang angefordert. Beide Koordinaten müssen im Längen- und Breitenformat definiert sein. Wenn Sie keinen Wert für den `samples`-Parameter angeben, wird die Anzahl der Stichproben standardmäßig auf 10 festgelegt. Die maximale Anzahl der Stichproben liegt bei 2.000.
+In diesem Beispiel werden über die [API zum Abrufen von Daten für Polylinie](/rest/api/maps/elevation/getdataforpolyline) fünf gleichmäßig verteilte Stichproben für Höhenangaben entlang einer geraden Linie zwischen den Koordinaten für den Mount Everest und den Chamlang angefordert. Beide Koordinaten müssen im Längen- und Breitenformat definiert sein. Wenn Sie keinen Wert für den `samples`-Parameter angeben, wird die Anzahl der Stichproben standardmäßig auf 10 festgelegt. Die maximale Anzahl der Stichproben liegt bei 2.000.
 
 Anschließend werden über die API zum Abrufen von Daten für Polylinie drei gleichmäßig verteilte Stichproben für Höhenangaben entlang einer Route angefordert. Sie definieren die genaue Position für die Stichproben durch Übergeben der drei Koordinatenpaare im Längen- und Breitenformat.
 
-Schließlich werden über die [API zum Veröffentlichen von Daten für Polylinie](https://docs.microsoft.com/rest/api/maps/elevation/postdataforpolyline) Höhendaten für dieselben drei gleichmäßig verteilten Stichproben angefordert.
+Schließlich werden über die [API zum Veröffentlichen von Daten für Polylinie](/rest/api/maps/elevation/postdataforpolyline) Höhendaten für dieselben drei gleichmäßig verteilten Stichproben angefordert.
 
 Es wird davon ausgegangen, dass die Längen- und Breitenangaben in der URL in WGS84-Dezimalgrad (World Geodetic System) angegeben werden.
 
@@ -229,7 +229,7 @@ Es wird davon ausgegangen, dass die Längen- und Breitenangaben in der URL in WG
     }
     ```
 
-7. Nun wird die [API zum Veröffentlichen von Daten für Polylinie](https://docs.microsoft.com/rest/api/maps/elevation/postdataforpolyline) aufgerufen, um die Höhendaten für die drei gleichen Punkte abzurufen. Wählen Sie auf der Registerkarte „Builder“ (Generator) die HTTP-Methode **POST** aus, und geben Sie die folgende URL ein. Ersetzen Sie bei dieser Anforderung sowie bei den anderen in diesem Artikel angegebenen Anforderungen jeweils `{Azure-Maps-Primary-Subscription-key}` durch Ihren primären Abonnementschlüssel.
+7. Nun wird die [API zum Veröffentlichen von Daten für Polylinie](/rest/api/maps/elevation/postdataforpolyline) aufgerufen, um die Höhendaten für die drei gleichen Punkte abzurufen. Wählen Sie auf der Registerkarte „Builder“ (Generator) die HTTP-Methode **POST** aus, und geben Sie die folgende URL ein. Ersetzen Sie bei dieser Anforderung sowie bei den anderen in diesem Artikel angegebenen Anforderungen jeweils `{Azure-Maps-Primary-Subscription-key}` durch Ihren primären Abonnementschlüssel.
 
     ```http
     https://atlas.microsoft.com/elevation/line/json?api-version=1.0&subscription-key={Azure-Maps-Primary-Subscription-key}&samples=5
@@ -256,7 +256,7 @@ Es wird davon ausgegangen, dass die Längen- und Breitenangaben in der URL in WG
 
 ### <a name="request-elevation-data-by-bounding-box"></a>Anfordern von Höhendaten nach Begrenzungsrahmen
 
-Nun verwenden Sie die [API zum Abrufen von Daten für Begrenzungsrahmen](https://docs.microsoft.com/rest/api/maps/elevation/getdataforboundingbox), um Höhendaten in der Nähe von Mount Rainier im US-Bundesstaat Washington anzufordern. Die Höhendaten werden an gleichmäßig verteilten Positionen innerhalb eines Begrenzungsrahmens zurückgegeben. Der durch zwei (2) Sätze von Längen- und Breitenkoordinaten (südliche Breite, westliche Länge | nördliche Breite, östliche Länge) definierte Begrenzungsrahmen wird in Zeilen und Spalten unterteilt. Die Ränder des Begrenzungsrahmens umfassen zwei (2) der Zeilen und zwei (2) der Spalten. Für die an den Zeilen- und Spaltenschnittpunkten generierten Rasterpunkte werden Höhenangaben zurückgegeben. In einer Anforderung können bis zu 2.000 Höhenangaben zurückgegeben werden.
+Nun verwenden Sie die [API zum Abrufen von Daten für Begrenzungsrahmen](/rest/api/maps/elevation/getdataforboundingbox), um Höhendaten in der Nähe von Mount Rainier im US-Bundesstaat Washington anzufordern. Die Höhendaten werden an gleichmäßig verteilten Positionen innerhalb eines Begrenzungsrahmens zurückgegeben. Der durch zwei (2) Sätze von Längen- und Breitenkoordinaten (südliche Breite, westliche Länge | nördliche Breite, östliche Länge) definierte Begrenzungsrahmen wird in Zeilen und Spalten unterteilt. Die Ränder des Begrenzungsrahmens umfassen zwei (2) der Zeilen und zwei (2) der Spalten. Für die an den Zeilen- und Spaltenschnittpunkten generierten Rasterpunkte werden Höhenangaben zurückgegeben. In einer Anforderung können bis zu 2.000 Höhenangaben zurückgegeben werden.
 
 In diesem Beispiel wird „Rows = 3“ und „Columns = 6“ angegeben. In der Antwort werden 18 Höhenwerte zurückgegeben. Im folgenden Diagramm sind die Höhenwerte beginnend in der südwestlichen Ecke und dann von Westen nach Osten und von Süden nach Norden angeordnet.  Die Höhenpunkte sind in der Reihenfolge nummeriert, in der sie zurückgegeben werden.
 
@@ -488,15 +488,15 @@ Weitere Informationen zu den APIs des Azure Maps-Höhenangabendiensts (Vorschau)
 > [Höhenangabendienst (Vorschau): Abrufen von Daten für Längen- und Breitenkoordinaten](/rest/api/maps/elevation/getdataforpoints)
 
 > [!div class="nextstepaction"]
-> [Höhenangabendienst (Vorschau): Abrufen von Daten für Begrenzungsrahmen](https://docs.microsoft.com/rest/api/maps/elevation/getdataforboundingbox)
+> [Höhenangabendienst (Vorschau): Abrufen von Daten für Begrenzungsrahmen](/rest/api/maps/elevation/getdataforboundingbox)
 
 > [!div class="nextstepaction"]
-> [Höhenangabendienst (Vorschau): Abrufen von Daten für Polylinie](https://docs.microsoft.com/rest/api/maps/elevation/getdataforpolyline)
+> [Höhenangabendienst (Vorschau): Abrufen von Daten für Polylinie](/rest/api/maps/elevation/getdataforpolyline)
 
 > [!div class="nextstepaction"]
-> [Render V2: Abrufen von Kartenkacheln](https://docs.microsoft.com/rest/api/maps/renderv2)
+> [Render V2: Abrufen von Kartenkacheln](/rest/api/maps/renderv2)
 
 Eine vollständige Liste mit Azure Maps-REST-APIs finden Sie unter:
 
 > [!div class="nextstepaction"]
-> [Azure Maps-REST-APIs](https://docs.microsoft.com/rest/api/maps/)
+> [Azure Maps-REST-APIs](/rest/api/maps/)

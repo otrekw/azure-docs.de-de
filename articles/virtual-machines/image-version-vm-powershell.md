@@ -9,18 +9,18 @@ ms.workload: infrastructure
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 1a0bfb79b03b778696faef29597cabbcff47e6df
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: a7b8cb10f75d7a99198ddfdc1a1bbef3c34a03da
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98601665"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98685105"
 ---
 # <a name="create-an-image-from-a-vm"></a>Erstellen von VM-Images
 
 Wenn Sie über eine VM verfügen, die Sie verwenden möchten, um mehrere identische VMs zu erstellen, können Sie mithilfe von Azure PowerShell ein Image dieser VM in Shared Image Gallery erstellen. Ebenso können Sie auch die [Azure CLI](image-version-vm-cli.md) verwenden, um ein VM-Image zu erstellen.
 
-Mithilfe von Azure PowerShell können Sie sowohl für [spezialisierte als auch für generalisierte](./windows/shared-image-galleries.md#generalized-and-specialized-images) VMs ein Image erstellen. 
+Mithilfe von Azure PowerShell können Sie sowohl für [spezialisierte als auch für generalisierte](./shared-image-galleries.md#generalized-and-specialized-images) VMs ein Image erstellen. 
 
 Images in Imagekatalogen verfügen über zwei Komponenten, die in diesem Beispiel erstellt werden:
 - Eine **Imagedefinition** enthält Informationen zum Image und zu den Anforderungen für dessen Verwendung. Dies umfasst Angaben dazu, ob es sich um ein Windows- oder Linux-Image handelt, ob es spezialisiert oder generalisiert ist sowie welche Mindest- und Höchstanforderungen für den Arbeitsspeicher gelten. Außerdem sind Versionshinweise enthalten. Es ist eine Definition eines Imagetyps. 
@@ -77,7 +77,7 @@ Imagedefinitionen erstellen eine logische Gruppierung von Images. Sie werden zum
 
 Stellen Sie beim Erstellen der Imagedefinition sicher, dass diese alle zutreffenden Informationen beinhaltet. Wenn Sie die VM generalisiert haben (über Sysprep für Windows oder waagent-deprovision für Linux) sollten Sie unter Verwendung von `-OsState generalized` eine Imagedefinition erstellen. Wenn Sie die VM nicht generalisiert haben, erstellen Sie unter Verwendung von `-OsState specialized` eine Imagedefinition.
 
-Weitere Informationen zu den Werten, die Sie für eine Imagedefinition angeben können, finden Sie unter [Imagedefinitionen](./windows/shared-image-galleries.md#image-definitions).
+Weitere Informationen zu den Werten, die Sie für eine Imagedefinition angeben können, finden Sie unter [Imagedefinitionen](./shared-image-galleries.md#image-definitions).
 
 Erstellen Sie die Imagedefinition mit [New-AzGalleryImageDefinition](/powershell/module/az.compute/new-azgalleryimageversion). 
 

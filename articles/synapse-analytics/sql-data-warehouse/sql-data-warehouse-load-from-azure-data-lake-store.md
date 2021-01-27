@@ -11,16 +11,16 @@ ms.date: 11/20/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 4f881dcc0d26589c4029246019119fa0555dcd5d
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 0974e880b75cce69f2b5ac82e3c4b39de53e03ce
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98117774"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98677103"
 ---
 # <a name="load-data-from-azure-data-lake-storage-into-dedicated-sql-pools-in-azure-synapse-analytics"></a>Laden von Daten aus Azure Data Lake Storage in dedizierte SQL-Pools in Azure Synapse Analytics
 
-In diesem Leitfaden erfahren Sie, wie Sie die [COPY-Anweisung](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) verwenden, um Daten aus Azure Data Lake Storage zu laden. Kurze Beispiele zur Verwendung der COPY-Anweisung für alle Authentifizierungsmethoden finden Sie in der folgenden Dokumentation: [Sicheres Laden von Daten mithilfe dedizierter SQL-Pools](./quickstart-bulk-load-copy-tsql-examples.md).
+In diesem Leitfaden erfahren Sie, wie Sie die [COPY-Anweisung](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true) verwenden, um Daten aus Azure Data Lake Storage zu laden. Kurze Beispiele zur Verwendung der COPY-Anweisung für alle Authentifizierungsmethoden finden Sie in der folgenden Dokumentation: [Sicheres Laden von Daten mithilfe dedizierter SQL-Pools](./quickstart-bulk-load-copy-tsql-examples.md).
 
 > [!NOTE]  
 > Wenn Sie Feedback zur COPY-Anweisung geben oder Probleme melden möchten, senden Sie eine E-Mail an die folgende Verteilerliste: sqldwcopypreview@service.microsoft.com.
@@ -34,7 +34,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
-Bevor Sie mit diesem Tutorial beginnen, laden Sie die neueste Version von [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (SSMS) herunter, und installieren Sie sie.
+Bevor Sie mit diesem Tutorial beginnen, laden Sie die neueste Version von [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) (SSMS) herunter, und installieren Sie sie.
 
 Für dieses Tutorial benötigen Sie Folgendes:
 
@@ -133,6 +133,6 @@ Das Laden von Daten ist der erste Schritt bei der Entwicklung einer Data Warehou
 > [Erfahren Sie, wie Tabellen für Data Warehousing entwickelt werden.](sql-data-warehouse-tables-overview.md)
 
 Weitere Ladebeispiele und Verweise finden Sie in der folgenden Dokumentation:
-- [COPY-Anweisung – Referenzdokumentation](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest#syntax)
+- [COPY-Anweisung – Referenzdokumentation](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true#syntax)
 - [COPY-Beispiele für jede Authentifizierungsmethode](./quickstart-bulk-load-copy-tsql-examples.md)
 - [Schnellstart: COPY-Anweisung für eine einzelne Tabelle](./quickstart-bulk-load-copy-tsql.md)

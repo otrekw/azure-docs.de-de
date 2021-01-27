@@ -11,12 +11,12 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: fb0a5fbf33b48521882646bf8fb5eb3fe5dacca6
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 12b75ad3746cd0f54e27e474e0fd13bb0bba0e05
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96459201"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98685241"
 ---
 # <a name="manage-and-monitor-workload-importance-in-dedicated-sql-pool-for-azure-synapse-analytics"></a>Verwalten und Überwachen der Workloadpriorität in dedizierten SQL-Pools für Azure Synapse Analytics
 
@@ -24,7 +24,7 @@ Verwalten und überwachen Sie die Priorität für die Anforderungsebene in dediz
 
 ## <a name="monitor-importance"></a>Überwachen der Priorität
 
-Überwachen Sie die Priorität in der dynamischen Verwaltungssicht [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) über die neue Spalte für Priorität.
+Überwachen Sie die Priorität in der dynamischen Verwaltungssicht [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) über die neue Spalte für Priorität.
 Die nachstehende Überwachungsabfrage zeigt die Übermittlungszeit und Startzeit für Abfragen. Überprüfen Sie die Übermittlungszeit und Startzeit zusammen mit der Priorität, um zu erfahren, wie Planung die Priorität beeinflusst.
 
 ```sql
@@ -47,7 +47,7 @@ SELECT *
   WHERE classifier_id > 12
 ```
 
-Die Katalogsicht, [sys.workload_management_workload_classifier_details](/sql/relational-databases/system-catalog-views/sys-workload-management-workload-classifier-details-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest), enthält Informationen zu den Parametern, die bei der Erstellung des Klassifizierers verwendet werden.  Die nachstehende Abfrage zeigt, dass „ExecReportsClassifier“ beim Parameter ```membername``` für Werte mit „ExecutiveReports“ erstellt wurde:
+Die Katalogsicht, [sys.workload_management_workload_classifier_details](/sql/relational-databases/system-catalog-views/sys-workload-management-workload-classifier-details-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true), enthält Informationen zu den Parametern, die bei der Erstellung des Klassifizierers verwendet werden.  Die nachstehende Abfrage zeigt, dass „ExecReportsClassifier“ beim Parameter ```membername``` für Werte mit „ExecutiveReports“ erstellt wurde:
 
 ```sql
 SELECT c.name,cd.classifier_type, classifier_value

@@ -10,12 +10,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: devx-track-js
-ms.openlocfilehash: c39104912c99b199d38cf489bb61d64e83b89286
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 3b647a02731a4fa404aab4bb648853eea766d92e
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92895595"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98684071"
 ---
 # <a name="how-to-secure-a-single-page-application-with-non-interactive-sign-in"></a>Schützen einer Single-Page-Webanwendung mit nicht interaktiver Anmeldung
 
@@ -30,7 +30,7 @@ Die folgende Anleitung bezieht sich auf eine Anwendung, die Azure Active Directo
 
 Erstellen Sie eine gesicherte Webdienstanwendung, die für die Authentifizierung bei Azure AD zuständig ist. 
 
-1. Erstellen Sie eine Funktion im Azure-Portal. Weitere Informationen finden Sie unter [Erstellen einer Azure-Funktion](../azure-functions/functions-create-first-azure-function.md).
+1. Erstellen Sie eine Funktion im Azure-Portal. Weitere Informationen finden Sie unter [Erstellen einer Azure-Funktion](../azure-functions/functions-get-started.md).
 
 2. Konfigurieren Sie die CORS-Richtlinie für die Azure-Funktion so, dass Sie die Single-Page-Webanwendung darauf zugreifen kann. Dadurch werden Browserclients auf die zulässigen Ursprünge Ihrer Webanwendung gesichert. Siehe [Hinzufügen der CORS-Funktion](../app-service/app-service-web-tutorial-rest-api.md#add-cors-functionality).
 
@@ -104,12 +104,12 @@ Erstellen Sie eine gesicherte Webdienstanwendung, die für die Authentifizierung
 
 Sie gewähren die *rollenbasierte Zugriffssteuerung in Azure (Azure RBAC)* , indem Sie die systemseitig zugewiesene Identität einer oder mehreren Azure-Rollendefinitionen zuweisen. Informationen über die für Azure Maps verfügbaren Rollendefinitionen für die rollenbasierte Zugriffssteuerung von Azure finden Sie unter **Zugriffssteuerung (IAM)** . Wählen Sie **Rollen** aus, und suchen Sie dann nach Rollen, die mit *Azure Maps* beginnen.
 
-1. Navigieren Sie zu Ihrem **Azure Maps-Konto** . Wählen Sie **Zugriffssteuerung (IAM)**  > **Rollenzuweisungen** aus.
+1. Navigieren Sie zu Ihrem **Azure Maps-Konto**. Wählen Sie **Zugriffssteuerung (IAM)**  > **Rollenzuweisungen** aus.
 
     > [!div class="mx-imgBorder"]
     > ![Gewähren von Zugriff mithilfe von Azure RBAC](./media/how-to-manage-authentication/how-to-grant-rbac.png)
 
-2. Wählen Sie auf der Registerkarte **Rollenzuweisungen** unter **Rolle** eine integrierte Azure Maps-Rollendefinition aus, z. B. **Azure Maps-Datenleser** oder **Azure Maps-Datenmitwirkender** . Wählen Sie unter **Zugriff zuweisen zu** die Option **Funktions-App** aus. Wählen Sie den Prinzipal nach Namen aus. Klicken Sie dann auf **Speichern** .
+2. Wählen Sie auf der Registerkarte **Rollenzuweisungen** unter **Rolle** eine integrierte Azure Maps-Rollendefinition aus, z. B. **Azure Maps-Datenleser** oder **Azure Maps-Datenmitwirkender**. Wählen Sie unter **Zugriff zuweisen zu** die Option **Funktions-App** aus. Wählen Sie den Prinzipal nach Namen aus. Klicken Sie dann auf **Speichern**.
 
    * Lesen Sie die Details zum [Hinzufügen oder Entfernen von Rollenzuweisungen](../role-based-access-control/role-assignments-portal.md).
 

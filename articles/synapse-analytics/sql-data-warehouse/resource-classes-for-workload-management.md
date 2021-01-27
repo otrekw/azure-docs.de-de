@@ -11,12 +11,12 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: a557d4045b18b5c0ff71b3e47f0c189028702863
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7714ce748eb172565357723924ab2212e9559e1f
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91289530"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98685326"
 ---
 # <a name="workload-management-with-resource-classes-in-azure-synapse-analytics"></a>Workloadverwaltung mit Ressourcenklassen in Azure Synapse Analytics
 
@@ -162,13 +162,13 @@ WHERE  name LIKE '%rc%' AND type_desc = 'DATABASE_ROLE';
 
 Ressourcenklassen werden implementiert, indem Benutzer Datenbankrollen zugewiesen werden. Wenn ein Benutzer eine Abfrage ausführt, wird die Abfrage mit der Ressourcenklasse des Benutzers ausgeführt. Ist ein Benutzer beispielsweise Mitglied der Datenbankrolle „staticrc10“, werden die dazugehörigen Abfragen mit kleinen Arbeitsspeichermengen ausgeführt. Wenn ein Datenbankbenutzer Mitglied der Datenbankrollen „xlargerc“ oder „staticrc80“ ist, werden die dazugehörigen Abfragen mit großen Arbeitsspeichermengen ausgeführt.
 
-Verwenden Sie [sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest), um die Ressourcenklasse eines Benutzers zu erhöhen und den Benutzer zu einer Datenbankrolle einer großen Ressourcenklasse hinzuzufügen.  Der folgende Code fügt einen Benutzer zur Datenbankrolle „largerc“ hinzu.  Jede Anforderung ruft 22 % des Systemspeichers ab.
+Verwenden Sie [sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true), um die Ressourcenklasse eines Benutzers zu erhöhen und den Benutzer zu einer Datenbankrolle einer großen Ressourcenklasse hinzuzufügen.  Der folgende Code fügt einen Benutzer zur Datenbankrolle „largerc“ hinzu.  Jede Anforderung ruft 22 % des Systemspeichers ab.
 
 ```sql
 EXEC sp_addrolemember 'largerc', 'loaduser';
 ```
 
-Verwenden Sie [sp_droprolemember](/sql/relational-databases/system-stored-procedures/sp-droprolemember-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest), um die Ressourcenklasse herabzusetzen.  Wenn „Loaduser“ kein Mitglied und keine andere Ressourcenklasse ist, wechseln Sie in die Standardressourcenklasse „smallrc“ mit einer Speicherzuweisung von 3 %.  
+Verwenden Sie [sp_droprolemember](/sql/relational-databases/system-stored-procedures/sp-droprolemember-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true), um die Ressourcenklasse herabzusetzen.  Wenn „Loaduser“ kein Mitglied und keine andere Ressourcenklasse ist, wechseln Sie in die Standardressourcenklasse „smallrc“ mit einer Speicherzuweisung von 3 %.  
 
 ```sql
 EXEC sp_droprolemember 'largerc', 'loaduser';

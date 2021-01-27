@@ -3,12 +3,12 @@ title: Einrichten von Azure Backup Server für Azure VMware Solution
 description: Richten Sie Ihre Azure VMware Solution-Umgebung so ein, dass virtuelle Computer über Azure Backup Server gesichert werden.
 ms.topic: how-to
 ms.date: 10/23/2020
-ms.openlocfilehash: e71ec19402d22643d51f1435d1abcf56b20a290b
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 7885c0bc73bd5f7cd802e76ed9db470f77eda30d
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92517377"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98703401"
 ---
 # <a name="set-up-azure-backup-server-for-azure-vmware-solution"></a>Einrichten von Azure Backup Server für Azure VMware Solution
 
@@ -16,8 +16,8 @@ Azure Backup Server unterstützt Ihre Strategie für Geschäftskontinuität und 
 
 Azure Backup Server kann Sicherungsdaten speichern auf:
 
-- **Datenträger** : Für eine kurzfristige Speicherung sichert Azure Backup Server Daten in Datenträgerpools.
-- **Azure** : Sowohl für eine kurzfristige als auch für eine langfristige externe Speicherung können Azure Backup Server-Daten, die in Datenträgerpools gespeichert sind, über Azure Backup in der Microsoft Azure-Cloud gesichert werden.
+- **Datenträger**: Für eine kurzfristige Speicherung sichert Azure Backup Server Daten in Datenträgerpools.
+- **Azure**: Sowohl für eine kurzfristige als auch für eine langfristige externe Speicherung können Azure Backup Server-Daten, die in Datenträgerpools gespeichert sind, über Azure Backup in der Microsoft Azure-Cloud gesichert werden.
 
 Verwenden Sie Azure Backup Server, um Daten am Quell- oder einem alternativen Speicherort wiederherzustellen. Auf diese Weise können Sie, wenn die Originaldaten aufgrund vorhersehbarer oder unerwarteter Probleme nicht verfügbar sind, Daten an einem alternativen Speicherort wiederherstellen.
 
@@ -118,8 +118,8 @@ Erstellen bzw. verwenden Sie einen Recovery Services-Tresor, um Sicherungsdaten 
 
 Wenn Sie Ihre Bereitstellung skalieren möchten, haben Sie die folgenden Optionen:
 
-- **Hochskalieren** : Erhöhen Sie die Größe der Azure Backup Server-VM aus der A-Serie in die DS3-Serie, und vergrößern Sie den lokalen Speicher.
-- **Auslagern von Daten** : Senden Sie ältere Daten an Azure, und behalten Sie nur die neuesten Daten in dem Speicher bei, der der Azure Backup Server-VM angefügt ist.
+- **Hochskalieren**: Erhöhen Sie die Größe der Azure Backup Server-VM aus der A-Serie in die DS3-Serie, und vergrößern Sie den lokalen Speicher.
+- **Auslagern von Daten**: Senden Sie ältere Daten an Azure, und behalten Sie nur die neuesten Daten in dem Speicher bei, der der Azure Backup Server-VM angefügt ist.
 - **Aufskalieren:** Fügen Sie weitere Azure Backup Server-Computer hinzu, um die Workloads zu schützen.
 
 ### <a name="net-framework"></a>.NET Framework
@@ -154,14 +154,14 @@ Bei einem Recovery Services-Tresor handelt es sich um eine Speicherentität zum
 
    Das Dialogfeld **Recovery Services-Tresor** wird geöffnet.
 
-1. Geben Sie Werte für **Name** , **Abonnement** , **Ressourcengruppe** und **Speicherort** ein.
+1. Geben Sie Werte für **Name**, **Abonnement**, **Ressourcengruppe** und **Speicherort** ein.
 
    ![Konfigurieren des Recovery Services-Tresors.](../backup/media/backup-create-rs-vault/create-new-vault-dialog.png)
 
-   - **Name** : Geben Sie einen Anzeigenamen ein, über den der Tresor identifiziert wird. Der Name muss für das Azure-Abonnement eindeutig sein. Geben Sie einen Namen ein, der mindestens zwei, aber nicht mehr als 50 Zeichen enthält. Der Name muss mit einem Buchstaben beginnen und darf nur Buchstaben, Zahlen und Bindestriche enthalten.
-   - **Abonnement** : Wählen Sie das zu verwendende Abonnement aus. Wenn Sie nur in einem Abonnement Mitglied sind, wird dessen Name angezeigt. Falls Sie nicht sicher sind, welches Abonnement geeignet ist, können Sie das Standardabonnement bzw. das vorgeschlagene Abonnement verwenden. Es sind nur dann mehrere Auswahlmöglichkeiten verfügbar, wenn Ihr Geschäfts-, Schul- oder Unikonto mehreren Azure-Abonnements zugeordnet ist.
-   - **Ressourcengruppe** : Verwenden Sie eine vorhandene Ressourcengruppe, oder erstellen Sie eine neue Ressourcengruppe. Um eine Liste der verfügbaren Ressourcengruppen in Ihrem Abonnement anzuzeigen, wählen Sie **Vorhandene verwenden** und dann eine Ressource in der Dropdownliste aus. Wählen Sie zum Erstellen einer neuen Ressourcengruppe **Neu erstellen** aus, und geben Sie den Namen ein.
-   - **Standort** : Wählen Sie die geografische Region für den Tresor aus. Um einen Tresor zu erstellen, mit dem virtuelle Azure VMware Solution-Computer geschützt werden sollen, *muss* sich der Tresor in derselben Region befinden wie die private Azure VMware Solution-Cloud.
+   - **Name**: Geben Sie einen Anzeigenamen ein, über den der Tresor identifiziert wird. Der Name muss für das Azure-Abonnement eindeutig sein. Geben Sie einen Namen ein, der mindestens zwei, aber nicht mehr als 50 Zeichen enthält. Der Name muss mit einem Buchstaben beginnen und darf nur Buchstaben, Zahlen und Bindestriche enthalten.
+   - **Abonnement**: Wählen Sie das zu verwendende Abonnement aus. Wenn Sie nur in einem Abonnement Mitglied sind, wird dessen Name angezeigt. Falls Sie nicht sicher sind, welches Abonnement geeignet ist, können Sie das Standardabonnement bzw. das vorgeschlagene Abonnement verwenden. Es sind nur dann mehrere Auswahlmöglichkeiten verfügbar, wenn Ihr Geschäfts-, Schul- oder Unikonto mehreren Azure-Abonnements zugeordnet ist.
+   - **Ressourcengruppe**: Verwenden Sie eine vorhandene Ressourcengruppe, oder erstellen Sie eine neue Ressourcengruppe. Um eine Liste der verfügbaren Ressourcengruppen in Ihrem Abonnement anzuzeigen, wählen Sie **Vorhandene verwenden** und dann eine Ressource in der Dropdownliste aus. Wählen Sie zum Erstellen einer neuen Ressourcengruppe **Neu erstellen** aus, und geben Sie den Namen ein.
+   - **Standort**: Wählen Sie die geografische Region für den Tresor aus. Um einen Tresor zu erstellen, mit dem virtuelle Azure VMware Solution-Computer geschützt werden sollen, *muss* sich der Tresor in derselben Region befinden wie die private Azure VMware Solution-Cloud.
 
 1. Wenn Sie den Recovery Services-Tresor erstellen möchten, wählen Sie **Erstellen** aus.
 
@@ -196,7 +196,7 @@ Führen Sie die Schritte in diesem Abschnitt aus, um das Softwarepaket herunterz
 
    1. Geben Sie in der Liste mit den Ressourcen **Recovery Services** ein.
 
-   1. Sobald Sie mit der Eingabe beginnen, wird die Liste auf der Grundlage Ihrer Eingabe gefiltert. Wählen Sie **Recovery Services-Tresore** , wenn der Eintrag angezeigt wird.
+   1. Sobald Sie mit der Eingabe beginnen, wird die Liste auf der Grundlage Ihrer Eingabe gefiltert. Wählen Sie **Recovery Services-Tresore**, wenn der Eintrag angezeigt wird.
 
    ![Erstellen eines Recovery Services-Tresors – Schritt 1](../backup/media/backup-azure-microsoft-azure-backup/open-recovery-services-vault.png)
 
@@ -230,7 +230,7 @@ Führen Sie die Schritte in diesem Abschnitt aus, um das Softwarepaket herunterz
 
    1. Wählen Sie den Link **Herunterladen** aus, um Azure Backup Server zu installieren.
 
-   1. 1. Aktivieren Sie das Kontrollkästchen **Bereits heruntergeladen oder Verwendung der neuesten Installation von Azure Backup Server** , und wählen Sie dann **Herunterladen** aus, um die Anmeldeinformationen des Tresors herunterzuladen. Sie verwenden diese Anmeldeinformationen, wenn Sie die Azure Backup Server-Instanz beim Recovery Services-Tresor registrieren. Mit den Links gelangen Sie zum Download Center, aus dem Sie das Softwarepaket herunterladen.
+   1. Aktivieren Sie das Kontrollkästchen **Bereits heruntergeladen oder Verwendung der neuesten Installation von Azure Backup Server**, und wählen Sie dann **Herunterladen** aus, um die Anmeldeinformationen des Tresors herunterzuladen. Sie verwenden diese Anmeldeinformationen, wenn Sie die Azure Backup Server-Instanz beim Recovery Services-Tresor registrieren. Mit den Links gelangen Sie zum Download Center, aus dem Sie das Softwarepaket herunterladen.
 
    :::image type="content" source="media/azure-vmware-solution-backup/deploy-mabs-prepare-infrastructure2.png" alt-text="Infrastruktur vorbereiten: Azure Backup Server":::
 
@@ -248,7 +248,7 @@ Wenn Sie das Softwarepaket auf einen anderen Server heruntergeladen haben, kopie
 > [!WARNING]
 > Zum Extrahieren der Setupdateien sind mindestens 4 GB freier Speicherplatz erforderlich.
 
-1. Nachdem Sie alle Dateien heruntergeladen haben, doppelklicken Sie auf **MicrosoftAzureBackupInstaller.exe** , um den **Microsoft Azure Backup** -Setup-Assistenten zu öffnen, und wählen Sie dann **Weiter** aus.
+1. Nachdem Sie alle Dateien heruntergeladen haben, doppelklicken Sie auf **MicrosoftAzureBackupInstaller.exe**, um den **Microsoft Azure Backup**-Setup-Assistenten zu öffnen, und wählen Sie dann **Weiter** aus.
 
 1. Wählen Sie den Speicherort aus, in den die Dateien extrahiert werden sollen, und dann **Weiter** aus.
 
@@ -267,7 +267,7 @@ Wenn Sie das Softwarepaket auf einen anderen Server heruntergeladen haben, kopie
 
    ![Wählen Sie im Setupfenster unter Installieren die Option Microsoft Azure Backup aus, um den Setup-Assistenten zu öffnen.](../backup/media/backup-azure-microsoft-azure-backup/launch-screen2.png)
 
-1. Wählen Sie auf dem **Willkommen** -Bildschirm die Schaltfläche **Weiter** aus, um zur Seite **Überprüfungen der Voraussetzungen** zu gelangen.
+1. Wählen Sie auf dem **Willkommen**-Bildschirm die Schaltfläche **Weiter** aus, um zur Seite **Überprüfungen der Voraussetzungen** zu gelangen.
 
 1. Wählen Sie **Erneut überprüfen** aus, um zu ermitteln, ob die Hardware- und Softwarevoraussetzungen für Azure Backup Server erfüllt sind. Ist dies der Fall, wählen Sie **Weiter** aus.
 
@@ -302,10 +302,10 @@ Wenn Sie das Softwarepaket auf einen anderen Server heruntergeladen haben, kopie
 
    Verwenden Sie für die SSRS-Konfiguration die folgenden Werte:
 
-   * **Dienstkonto** : **Integriertes Konto verwenden** sollte **Netzwerkdienst** lauten.
-   * **Webdienst-URL** : **Virtuelles Verzeichnis** sollte **ReportServer_\<SQLInstanceName>** lauten.
-   * **Datenbank** : **DatabaseName** sollte **ReportServer$\<SQLInstanceName>** lauten.
-   * **Webportal-URL** : **Virtuelles Verzeichnis** sollte **Reports_\<SQLInstanceName>** lauten.
+   * **Dienstkonto**: **Integriertes Konto verwenden** sollte **Netzwerkdienst** lauten.
+   * **Webdienst-URL**: **Virtuelles Verzeichnis** sollte **ReportServer_\<SQLInstanceName>** lauten.
+   * **Datenbank**: **DatabaseName** sollte **ReportServer$\<SQLInstanceName>** lauten.
+   * **Webportal-URL**: **Virtuelles Verzeichnis** sollte **Reports_\<SQLInstanceName>** lauten.
 
    Weitere Informationen zur SSRS-Konfiguration finden Sie [hier](/sql/reporting-services/report-server/configure-and-administer-a-report-server-ssrs-native-mode).
 
@@ -332,7 +332,7 @@ Wenn Sie das Softwarepaket auf einen anderen Server heruntergeladen haben, kopie
 
    ![Bestimmen Sie, ob Sie mit Microsoft Update nach Updates suchen möchten, und wählen Sie „Weiter“ aus.](../backup/media/backup-azure-microsoft-azure-backup/update-opt-screen2.png)
 
-1. Überprüfen Sie die **Zusammenfassung der Einstellungen** , und wählen Sie **Installieren** aus.
+1. Überprüfen Sie die **Zusammenfassung der Einstellungen**, und wählen Sie **Installieren** aus.
 
    Die Installation erfolgt in mehreren Phasen. 
    - In der ersten Phase wird der Microsoft Azure Recovery Services-Agent installiert.

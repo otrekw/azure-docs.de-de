@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: 897df7f07a349457c49929b69993c75345f52241
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 5564051ae11a1237cc924ee6bf557e3c85d8866a
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92017810"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98696412"
 ---
 # <a name="media-services-terminology-and-concepts"></a>Media Services – Terminologie und Konzepte
 
@@ -38,7 +38,7 @@ Es empfiehlt sich, sich vor Entwicklungsbeginn mit den grundlegenden Konzepten v
 
 |Begriff|BESCHREIBUNG|
 |---|---|
-|Liveereignis|Ein **Liveereignis** stellt eine Pipeline zum Erfassen, Transcodieren (optional) und Packen von Video- und Audiolivestreams sowie von Echtzeit-Metadaten dar.<br/><br/>Für Kunden, die von Media Services v2-APIs migrieren, ersetzt das **Liveereignis** die **Channel**-Entität in v2. Weitere Informationen finden Sie unter [Hinweise zur Migration von Media Services v2 zu v3](migrate-from-v2-to-v3.md).|
+|Liveereignis|Ein **Liveereignis** stellt eine Pipeline zum Erfassen, Transcodieren (optional) und Packen von Video- und Audiolivestreams sowie von Echtzeit-Metadaten dar.<br/><br/>Für Kunden, die von Media Services v2-APIs migrieren, ersetzt das **Liveereignis** die **Channel**-Entität in v2. Weitere Informationen finden Sie unter [Hinweise zur Migration von Media Services v2 zu v3](migrate-v-2-v-3-migration-introduction.md).|
 |Streamingendpunkt/Paketerstellung/Ursprung|Ein **Streamingendpunkt** stellt einen dynamischen Just-in-Time-Paketerstellungs- und Ursprungsdienst dar, der Ihre Live- und On-Demand-Inhalte direkt in einer Clientplayer-Anwendung bereitstellen kann. Er verwendet eins der allgemeinen Protokolle für Streamingmedien (HLS oder DASH). Zudem sorgt der **Streamingendpunkt** für eine dynamische (Just-In-Time-)Verschlüsselung zu branchenführenden Digital Rights Management-Systemen (DRMs).<br/><br/>In der Medienstreamingbranche wird dieser Dienst häufig als **Paketerstellungs-Manager** oder **Ursprung** bezeichnet.  JITP (Just-in-time-Packager, Just-In-Time-Paketerstellungs-Manager) oder JITE (Just-in-time-Encryption, Just-In-Time-Verschlüsselung) sind weitere in der Branche häufig verwendete Begriffe für diese Funktion.
 
 ## <a name="media-services-v3-concepts"></a>Azure Media Services v3 – Konzepte

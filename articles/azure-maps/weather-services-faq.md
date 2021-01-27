@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 8b7726e4e8fee0044a7865c8c494ef6451425676
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 9c8e971b4fda313ffede58455dd6d057d6848ce4
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96903869"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98678128"
 ---
 # <a name="azure-maps-weather-services-preview-frequently-asked-questions-faq"></a>Häufig gestellte Fragen (FAQ) zu Microsoft Azure Maps-Wetterinfodiensten (Vorschau)
 
@@ -21,7 +21,7 @@ ms.locfileid: "96903869"
 > Die Azure Maps-Wetterinfodienste befinden sich derzeit in der öffentlichen Vorschau.
 > Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-In diesem Artikel finden Sie Antworten auf häufig gestellte Fragen zu den Daten und Funktionen der Azure Maps-[Wetterinfodienste](https://docs.microsoft.com/rest/api/maps/weather). Die folgenden Themen werden erörtert:
+In diesem Artikel finden Sie Antworten auf häufig gestellte Fragen zu den Daten und Funktionen der Azure Maps-[Wetterinfodienste](/rest/api/maps/weather). Die folgenden Themen werden erörtert:
 
 * Datenquellen und Datenmodelle
 * Umfang und Verfügbarkeit der Wetterinfodienste
@@ -59,7 +59,7 @@ Für das Erstellen globaler Vorhersagen werden zahlreiche Leitsysteme für Wette
 
 **Welchen Umfang kann ich für verschiedene Länder und Regionen erwarten?**
 
-Der Umfang der Wetterinfodienste variiert je nach Land und Region. Nicht alle Funktionen sind in jedem Land und jeder Region verfügbar. Weitere Informationen finden Sie in der [Dokumentation zum Umfang](https://docs.microsoft.com/azure/azure-maps/weather-coverage).
+Der Umfang der Wetterinfodienste variiert je nach Land und Region. Nicht alle Funktionen sind in jedem Land und jeder Region verfügbar. Weitere Informationen finden Sie in der [Dokumentation zum Umfang](./weather-coverage.md).
 
 ## <a name="data-update-frequency"></a>Aktualisierungshäufigkeit der Daten
 
@@ -79,7 +79,7 @@ Die Vorhersage-APIs in Azure Maps werden bis zu 30 Minuten zwischengespeichert.
 
 **Bietet das Azure Maps Web SDK native Unterstützung für die Integration von Wetterinfodiensten (Vorschau)?**
 
-Das Web SDK für Azure Maps stellt das Modul „Dienste“ bereit. Das Modul „Dienste“ ist eine Hilfsbibliothek, die die Verwendung der REST-Dienste von Azure Maps in Web- oder Node.js-Anwendungen vereinfacht, indem JavaScript oder TypeScript verwendet wird. Informationen zu den ersten Schritten finden Sie in unserer [Dokumentation](https://docs.microsoft.com/azure/azure-maps/how-to-use-services-module).
+Das Web SDK für Azure Maps stellt das Modul „Dienste“ bereit. Das Modul „Dienste“ ist eine Hilfsbibliothek, die die Verwendung der REST-Dienste von Azure Maps in Web- oder Node.js-Anwendungen vereinfacht, indem JavaScript oder TypeScript verwendet wird. Informationen zu den ersten Schritten finden Sie in unserer [Dokumentation](./how-to-use-services-module.md).
 
 **Bietet das Azure Maps Android SDK native Unterstützung für die Integration von Wetterinfodiensten (Vorschau)?**
 
@@ -91,26 +91,26 @@ Die Erstellung des Moduls „Dienste“ für Java und Android ähnlich dem Web S
 
 **Unterstützt das Azure Maps-Visual in Power BI Azure Maps-Wetterinfokacheln?**
 
-Ja. Informationen zum Migrieren von Radar- und Infrarot-Satellitenkacheln zum Microsoft Power BI-Visual finden Sie unter [Hinzufügen einer Kachelebene im Power BI-Visual](https://docs.microsoft.com/azure/azure-maps/power-bi-visual-add-tile-layer). 
+Ja. Informationen zum Migrieren von Radar- und Infrarot-Satellitenkacheln zum Microsoft Power BI-Visual finden Sie unter [Hinzufügen einer Kachelebene im Power BI-Visual](./power-bi-visual-add-tile-layer.md). 
 
 **Wie sind die für Radar- und Satellitenkacheln verwendeten Farben zu interpretieren?**
 
-Der Artikel [Konzepte für Wetterdienste in Azure Maps](https://docs.microsoft.com/azure/azure-maps/weather-services-concepts#radar-and-satellite-imagery-color-scale) enthält einen Leitfaden zur Interpretation der für Radar- und Satellitenkacheln verwendeten Farben. In diesem Artikel werden Farbbeispiele und hexadezimale Farbcodes beschrieben.
+Der Artikel [Konzepte für Wetterdienste in Azure Maps](./weather-services-concepts.md#radar-and-satellite-imagery-color-scale) enthält einen Leitfaden zur Interpretation der für Radar- und Satellitenkacheln verwendeten Farben. In diesem Artikel werden Farbbeispiele und hexadezimale Farbcodes beschrieben.
  
 **Kann ich Animationen in Radar- und Satellitenkacheln erstellen?**
 
-Ja. Zusätzlich zu den Radar- und Satellitenkacheln in Echtzeit können Azure Maps-Kunden frühere und zukünftige Kacheln anfordern, um Datenvisualisierungen mit Kartenüberlagerungen zu erweitern. Dies kann durch direktes Aufrufen der [Render V2-API zum Abrufen von Kartenkacheln](https://aka.ms/AzureMapsWeatherTiles ) oder durch Anfordern von Kacheln über das Azure Maps Web SDK erfolgen. Radarkacheln werden für bis zu 1,5 Stunden in der Vergangenheit und für bis zu 2 Stunden in der Zukunft bereitgestellt. Die Kacheln sind in 5-Minuten-Intervallen verfügbar. Infrarotkacheln werden für bis zu 3 Stunden in der Vergangenheit bereitgestellt und sind in 10-Minuten-Intervallen verfügbar. Weitere Informationen finden Sie im Open-Source-[Codebeispiel](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Animated%20tile%20layer) zur Animation für Wetterkacheln.  
+Ja. Zusätzlich zu den Radar- und Satellitenkacheln in Echtzeit können Azure Maps-Kunden frühere und zukünftige Kacheln anfordern, um Datenvisualisierungen mit Kartenüberlagerungen zu erweitern. Dies kann durch direktes Aufrufen der [Render V2-API zum Abrufen von Kartenkacheln](/rest/api/maps/renderv2/getmaptilepreview) oder durch Anfordern von Kacheln über das Azure Maps Web SDK erfolgen. Radarkacheln werden für bis zu 1,5 Stunden in der Vergangenheit und für bis zu 2 Stunden in der Zukunft bereitgestellt. Die Kacheln sind in 5-Minuten-Intervallen verfügbar. Infrarotkacheln werden für bis zu 3 Stunden in der Vergangenheit bereitgestellt und sind in 10-Minuten-Intervallen verfügbar. Weitere Informationen finden Sie im Open-Source-[Codebeispiel](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Animated%20tile%20layer) zur Animation für Wetterkacheln.  
 
 **Werden Symbole für unterschiedliche Wetterbedingungen angeboten?**
 
-Ja. Die Symbole und die entsprechenden Codes finden Sie [hier](https://docs.microsoft.com/azure/azure-maps/weather-services-concepts#weather-icons). Beachten Sie, dass nur einige der APIs des Wetterinfodiensts (Vorschau), z. B. die [API zum Abrufen der aktuellen Bedingungen](https://aka.ms/azuremapsweathercurrentconditions), den *iconCode* in der Antwort zurückgeben. Weitere Informationen finden Sie im Open-Source-[Codebeispiel](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Get%20current%20weather%20at%20a%20location) zum Abrufen der aktuellen Wetterbedingungen.
+Ja. Die Symbole und die entsprechenden Codes finden Sie [hier](./weather-services-concepts.md#weather-icons). Beachten Sie, dass nur einige der APIs des Wetterinfodiensts (Vorschau), z. B. die [API zum Abrufen der aktuellen Bedingungen](/rest/api/maps/weather/getcurrentconditionspreview), den *iconCode* in der Antwort zurückgeben. Weitere Informationen finden Sie im Open-Source-[Codebeispiel](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Get%20current%20weather%20at%20a%20location) zum Abrufen der aktuellen Wetterbedingungen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Wenn Sie in diesen FAQs keine Antwort auf Ihre Frage finden, können Sie sich über die folgenden Kanäle an uns wenden (Eskalationsreihenfolge):
 
 * Im Abschnitt „Kommentare“ dieses Artikels.
-* [MSFT Q&A-Seite für Azure Maps](https://docs.microsoft.com/answers/topics/azure-maps.html).
+* [MSFT Q&A-Seite für Azure Maps](/answers/topics/azure-maps.html).
 * Microsoft-Support. Wählen Sie zum Erstellen einer neuen Supportanfrage im Azure-Portal auf der Registerkarte [Hilfe](https://portal.azure.com/) die Schaltfläche **Hilfe und Support** und anschließend die Option **Neue Supportanfrage** aus.
 * [Azure Maps UserVoice](https://feedback.azure.com/forums/909172-azure-maps) zum Übermitteln von Funktionsanfragen.
 
