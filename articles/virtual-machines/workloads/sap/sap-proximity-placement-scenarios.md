@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 12/29/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1e6aaf1b37073bf93e0aca8237161bf11af3a872
-ms.sourcegitcommit: 42922af070f7edf3639a79b1a60565d90bb801c0
+ms.openlocfilehash: ee28f25e766940eb51e92b61fd782b97fd888705
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97827222"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879611"
 ---
 # <a name="azure-proximity-placement-groups-for-optimal-network-latency-with-sap-applications"></a>Azure-Näherungsplatzierungsgruppen für optimale Netzwerklatenz mit SAP-Anwendungen
 SAP-Anwendungen, die auf der SAP NetWeaver- oder SAP S/4HANA-Architektur basieren, sind von der Netzwerklatenz zwischen der SAP-Anwendungsschicht und der SAP-Datenbankschicht abhängig. Diese Abhängigkeit ist das Ergebnis davon, dass der größte Teil der Geschäftslogik in der Anwendungsschicht ausgeführt wird. Da die SAP-Anwendungsschicht die Geschäftslogik ausführt, gibt sie mit einer hohen Frequenz Abfragen an die Datenbankschicht aus (tausende oder zehntausende von Abfragen pro Sekunde). In den meisten Fällen handelt es sich um einfache Abfragen. Sie können oft in 500 Mikrosekunden oder noch kürzerer Zeit in der Datenbankschicht ausgeführt werden.
@@ -30,11 +30,11 @@ Die Zeit, die im Netzwerk verbracht wird, um eine solche Abfrage von der Anwendu
 
 In vielen Azure-Regionen ist die Zahl der Rechenzentren gestiegen. Gleichzeitig nutzen Kunden (insbesondere für High-End-SAP-Systeme) speziellere VM-SKUs der M- oder Mv2-Serie oder HANA Large Instances. Diese Typen virtueller Azure-Computer sind nicht immer in allen Rechenzentren verfügbar, die eine Azure-Region ergänzen. Diese Tatsachen können die Chance eröffnen, die Netzwerklatenz zwischen der SAP-Anwendungsschicht und der SAP DBMS-Schicht zu optimieren.
 
-Damit Sie die Möglichkeit zum Optimieren der Netzwerklatenz erhalten, bietet Azure [Näherungsplatzierungsgruppen](../../linux/co-location.md). Näherungsplatzierungsgruppen können verwendet werden, um die Gruppierung verschiedener VM-Typen in einem einzelnen Azure-Rechenzentrum zu erzwingen, um die Netzwerklatenz zwischen diesen verschiedenen VM-Typen so gut wie möglich zu optimieren. Im Prozess der Bereitstellung der ersten VM in einer solchen Näherungsplatzierungsgruppe wird die VM an ein bestimmtes Rechenzentrum gebunden. So reizvoll diese Aussicht klingt, die Nutzung dieses Konstrukts bringt auch einige Einschränkungen mit sich:
+Damit Sie die Möglichkeit zum Optimieren der Netzwerklatenz erhalten, bietet Azure [Näherungsplatzierungsgruppen](../../co-location.md). Näherungsplatzierungsgruppen können verwendet werden, um die Gruppierung verschiedener VM-Typen in einem einzelnen Azure-Rechenzentrum zu erzwingen, um die Netzwerklatenz zwischen diesen verschiedenen VM-Typen so gut wie möglich zu optimieren. Im Prozess der Bereitstellung der ersten VM in einer solchen Näherungsplatzierungsgruppe wird die VM an ein bestimmtes Rechenzentrum gebunden. So reizvoll diese Aussicht klingt, die Nutzung dieses Konstrukts bringt auch einige Einschränkungen mit sich:
 
 - Sie können nicht davon ausgehen, dass alle Azure VM-Typen in jedem und allen Azure-Rechenzentren verfügbar sind. Das hat zur Folge, dass die Kombination verschiedener VM-Typen innerhalb einer Näherungsplatzierungsgruppe eingeschränkt sein kann. Diese Einschränkungen treten auf, weil die Hosthardware, die zum Ausführen eines bestimmten VM-Typs erforderlich ist, möglicherweise nicht in dem Rechenzentrum vorhanden ist, in dem Näherungsplatzierungsgruppe bereitgestellt wurde.
 - Wenn Sie die Größe der virtuellen Computer innerhalb einer Näherungsplatzierungsgruppe ändern, können Sie nicht automatisch davon ausgehen, dass der neue VM-Typ unter allen Umständen in demselben Rechenzentrum wie die anderen VMs verfügbar ist, die Teil der Näherungsplatzierungsgruppe sind.
-- Wenn Azure Hardware außer Betrieb nimmt, werden bestimmte VMs einer Näherungsplatzierungsgruppe möglicherweise in andere Azure-Rechenzentren gezwungen. Ausführliche Informationen zu diesem Fall finden Sie im Dokument [Zusammenstellen von Ressourcen für geringe Latenz](../../linux/co-location.md#planned-maintenance-and-proximity-placement-groups)  
+- Wenn Azure Hardware außer Betrieb nimmt, werden bestimmte VMs einer Näherungsplatzierungsgruppe möglicherweise in andere Azure-Rechenzentren gezwungen. Ausführliche Informationen zu diesem Fall finden Sie im Dokument [Zusammenstellen von Ressourcen für geringe Latenz](../../co-location.md#planned-maintenance-and-proximity-placement-groups)  
 
 > [!IMPORTANT]
 > Als Ergebnis der potenziellen Einschränkungen sollten diese Regeln für die Verwendung von Näherungsplatzierungsgruppen beachtet werden:

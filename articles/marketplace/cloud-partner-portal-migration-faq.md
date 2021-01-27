@@ -7,12 +7,12 @@ ms.topic: article
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 07/14/2020
-ms.openlocfilehash: 8346edd0f6016f1751a392213e5d6321f875baf2
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 091feacceb510038786ae487c0895f9ff1e47aba
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96455654"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880337"
 ---
 # <a name="frequently-asked-questions-about-transitioning-from-the-cloud-partner-portal-to-partner-center"></a>Häufig gestellte Fragen zur Umstellung vom Cloud-Partnerportal auf Partner Center
 
@@ -87,7 +87,7 @@ Für die in Partner Center unterstützten Angebotstypen wurden alle Angebote una
 | IoT Edge-Modul | Ja | Melden Sie sich bei Partner Center an, um neue Angebote zu erstellen und Angebote, die im Cloud-Partnerportal erstellt wurden, zu verwalten. Weitere Informationen finden Sie unter [Erstellen, Konfigurieren und Veröffentlichen eines IoT Edge-Modulangebots im Azure Marketplace](partner-center-portal/azure-iot-edge-module-creation.md). |
 | Container | Ja | Melden Sie sich bei Partner Center an, um neue Angebote zu erstellen und Angebote, die im Cloud-Partnerportal erstellt wurden, zu verwalten. Weitere Informationen finden Sie unter [Erstellen eines Azure-Containerangebots](./create-azure-container-offer.md). |
 | Beratungsdienst | Ja | Melden Sie sich bei Partner Center an, um neue Angebote zu erstellen und Angebote, die im Cloud-Partnerportal erstellt wurden, zu verwalten. Weitere Informationen finden Sie unter [Erstellen eines Beratungsdienstangebots](./create-consulting-service-offer.md). |
-| Verwalteter Dienst | Ja | Melden Sie sich bei Partner Center an, um neue Angebote zu erstellen und Angebote, die im Cloud-Partnerportal erstellt wurden, zu verwalten. Weitere Informationen finden Sie unter [Erstellen eines Angebots für einen verwalteten Dienst](partner-center-portal/create-new-managed-service-offer.md). |
+| Verwalteter Dienst | Ja | Melden Sie sich bei Partner Center an, um neue Angebote zu erstellen und Angebote, die im Cloud-Partnerportal erstellt wurden, zu verwalten. Weitere Informationen finden Sie unter [Erstellen eines Angebots für einen verwalteten Dienst](./plan-managed-service-offer.md). |
 | Verwalteter Dynamics NAV-Dienst | Nein | Microsoft hat „Verwalteter Dynamics NAV-Dienst“ zu [Dynamics 365 Business Central](/dynamics365/business-central/) weiterentwickelt. Aus diesem Grund wurden Liveangebote für „Verwalteter Dynamics NAV-Dienst“ aus AppSource entfernt. Diese Angebote sind für Kunden nicht mehr auffindbar und wurden nicht nach Partner Center verschoben. Passen Sie Ihre Angebote an die Dynamics 365 Business Central-Angebote an, und übermitteln Sie sie im [Partner Center](https://partner.microsoft.com/), um sie in AppSource verfügbar zu machen. Weitere Informationen finden Sie unter [Erstellen eines Angebots für Dynamics 365 Business Central](partner-center-portal/create-new-business-central-offer.md). |
 | Cortana Intelligence | Nein | Da Microsoft die Produktroadmap für Cortana Intelligence weiterentwickelt hat, wurden Cortana Intelligence-Liveangebote aus AppSource entfernt. Diese Angebote sind für Kunden nicht mehr auffindbar und wurden nicht nach Partner Center verschoben. Passen Sie Ihre Angebote an die SaaS-Angebote (Software-as-a-Service) an, und übermitteln Sie sie im [Partner Center](https://partner.microsoft.com/), um sie auf dem kommerziellen Marketplace verfügbar zu machen. Weitere Informationen finden Sie unter [Prüfliste für die Erstellung von SaaS-Angeboten](./plan-saas-offer.md). |
 

@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: yushwang
-ms.openlocfilehash: 70d9a8069979a299ad3031de37c525438ab0159d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d2593c656e17310c5afb4a897b94cc8c12a618f0
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89394600"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879493"
 ---
 # <a name="download-vpn-device-configuration-scripts-for-s2s-vpn-connections"></a>Herunterladen von VPN-Gerätekonfigurationsskripts für S2S-VPN-Verbindungen
 
@@ -34,7 +34,7 @@ Eine standortübergreifende VPN-Verbindung besteht aus einem Azure-VPN-Gateway, 
 3. Erstellen und Konfigurieren einer Azure-VPN-Verbindung zwischen dem Azure-VPN-Gateway und dem lokalen Netzwerkgateway
 4. Konfigurieren des durch das lokale Netzwerkgateway dargestellten lokalen VPN-Geräts, um den eigentlichen S2S-VPN-Tunnel mit dem Azure-VPN-Gateway einzurichten
 
-Für die Schritte 1 bis 3 können Sie das [Azure-Portal](vpn-gateway-howto-site-to-site-resource-manager-portal.md), [PowerShell](vpn-gateway-create-site-to-site-rm-powershell.md) oder die [Befehlszeilenschnittstelle](vpn-gateway-howto-site-to-site-resource-manager-cli.md) verwenden. Im letzten Schritt müssen die lokalen VPN-Geräte außerhalb von Azure konfiguriert werden. Dieses Feature ermöglicht das Herunterladen eines Konfigurationsskripts für Ihr VPN-Gerät, in dem die Werte Ihres Azure-VPN-Gateways und Ihres virtuellen Netzwerks sowie die Adresspräfixe Ihres lokalen Netzwerks, die VPN-Verbindungseigenschaften und Ähnliches bereits angegeben sind. Sie können dieses Skript weiter bearbeiten oder es über die Konfigurationskonsole direkt auf Ihre lokalen VPN-Geräte anwenden.
+Für die Schritte 1 bis 3 können Sie das [Azure-Portal](./tutorial-site-to-site-portal.md), [PowerShell](vpn-gateway-create-site-to-site-rm-powershell.md) oder die [Befehlszeilenschnittstelle](vpn-gateway-howto-site-to-site-resource-manager-cli.md) verwenden. Im letzten Schritt müssen die lokalen VPN-Geräte außerhalb von Azure konfiguriert werden. Dieses Feature ermöglicht das Herunterladen eines Konfigurationsskripts für Ihr VPN-Gerät, in dem die Werte Ihres Azure-VPN-Gateways und Ihres virtuellen Netzwerks sowie die Adresspräfixe Ihres lokalen Netzwerks, die VPN-Verbindungseigenschaften und Ähnliches bereits angegeben sind. Sie können dieses Skript weiter bearbeiten oder es über die Konfigurationskonsole direkt auf Ihre lokalen VPN-Geräte anwenden.
 
 > [!IMPORTANT]
 > * Die Syntax des VPN-Gerätekonfigurationsskripts ist jeweils unterschiedlich und hängt von den Modellen und Firmwareversionen ab. Achten Sie bei den verfügbaren Vorlagen besonders auf die Angaben zu Gerätemodell und -version.
@@ -49,7 +49,7 @@ Für die Schritte 1 bis 3 können Sie das [Azure-Portal](vpn-gateway-howto-site-
 
 Erstellen Sie ein Azure-VPN-Gateway, ein lokales Netzwerkgateway und eine Verbindungsressource, die die beiden verbindet. Eine entsprechende Anleitung finden Sie auf der folgenden Seite:
 
-* [Erstellen einer Standort-zu-Standort-Verbindung im Azure-Portal](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
+* [Erstellen einer Standort-zu-Standort-Verbindung im Azure-Portal](./tutorial-site-to-site-portal.md)
 
 Führen Sie nach der Erstellung der Verbindungsressource die folgenden Schritte aus, um die VPN-Gerätekonfigurationsskripts herunterzuladen:
 
@@ -99,4 +99,4 @@ Nachdem Sie das Konfigurationsskript heruntergeladen und überprüft haben, kön
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Setzen Sie die Konfiguration Ihrer [Site-to-Site-Verbindung](vpn-gateway-howto-site-to-site-resource-manager-portal.md) fort.
+Setzen Sie die Konfiguration Ihrer [Site-to-Site-Verbindung](./tutorial-site-to-site-portal.md) fort.

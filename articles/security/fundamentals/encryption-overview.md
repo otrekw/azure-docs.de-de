@@ -9,12 +9,12 @@ ms.subservice: security-fundamentals
 ms.topic: article
 ms.date: 07/20/2020
 ms.author: mbaldwin
-ms.openlocfilehash: ff023ad98c7ffa269223b5d0b4a1cecc5fde1feb
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: d7d438b369c863660a032f101e466b6fadf639fa
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94410214"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879713"
 ---
 # <a name="azure-encryption-overview"></a>Übersicht über die Azure-Verschlüsselung
 
@@ -181,7 +181,7 @@ Sie können eine Site-to-Site-VPN-Verbindung mit einem virtuellen Netzwerk über
 
 Weitere Informationen finden Sie unter
 
-[Erstellen einer Site-zu-Site-Verbindung im Azure-Portal](../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)
+[Erstellen einer Site-zu-Site-Verbindung im Azure-Portal](../../vpn-gateway/tutorial-site-to-site-portal.md)
 
 [Erstellen einer Site-zu-Site-Verbindung in PowerShell](../../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md)
 

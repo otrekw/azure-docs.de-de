@@ -8,12 +8,12 @@ ms.service: web-application-firewall
 ms.date: 12/04/2020
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: 36f04b02774a01814811ea131388629de27e9f07
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 2de8a47b841a4a5c82aaeb92419ec3d9714268ea
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96621024"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879426"
 ---
 # <a name="what-is-azure-web-application-firewall-on-azure-application-gateway"></a>Was ist Azure Web Application Firewall in Azure Application Gateway?
 
@@ -157,7 +157,7 @@ Application Gateway-Protokolle sind in [Azure Monitor](../../azure-monitor/overv
 
 #### <a name="azure-security-center"></a>Azure Security Center
 
-Mit [Security Center](../../security-center/security-center-introduction.md) können Sie Bedrohungen verhindern, erkennen und beheben. Security Center sorgt für eine größere Transparenz und bessere Kontrolle der Sicherheit Ihrer Azure-Ressourcen. Application Gateway ist [in Azure Security Center](../../application-gateway/application-gateway-integration-security-center.md) integriert. Security Center scannt die Umgebung, um ungeschützte Webanwendungen zu ermitteln. Security Center kann der Application Gateway-WAF die Empfehlung geben, diese ungeschützten Ressourcen zu schützen. Sie erstellen die Firewalls direkt von Security Center aus. Diese WAF-Instanzen sind in Security Center integriert. Sie senden Warnungen und Integritätsinformationen für die Berichterstellung an Security Center.
+Mit [Security Center](../../security-center/security-center-introduction.md) können Sie Bedrohungen verhindern, erkennen und beheben. Security Center sorgt für eine größere Transparenz und bessere Kontrolle der Sicherheit Ihrer Azure-Ressourcen. Application Gateway ist [in Azure Security Center](../../security-center/security-center-partner-integration.md#integrated-azure-security-solutions) integriert. Security Center scannt die Umgebung, um ungeschützte Webanwendungen zu ermitteln. Security Center kann der Application Gateway-WAF die Empfehlung geben, diese ungeschützten Ressourcen zu schützen. Sie erstellen die Firewalls direkt von Security Center aus. Diese WAF-Instanzen sind in Security Center integriert. Sie senden Warnungen und Integritätsinformationen für die Berichterstellung an Security Center.
 
 ![Security Center-Übersichtsfenster](../media/ag-overview/figure1.png)
 

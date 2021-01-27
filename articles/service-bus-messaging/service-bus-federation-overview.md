@@ -3,12 +3,12 @@ title: 'Nachrichtenreplikation und regionsübergreifender Verbund: Azure Service
 description: Dieser Artikel bietet eine Übersicht über Ereignisreplikation und regionsübergreifenden Verbund mit Azure Service Bus.
 ms.topic: article
 ms.date: 12/12/2020
-ms.openlocfilehash: d5153820feab8b7901356838ec435d992aa82116
-ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
+ms.openlocfilehash: e47f633fcd9248eab6f47936aa7c45877decc1fe
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97803271"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880826"
 ---
 # <a name="message-replication-and-cross-region-federation"></a>Nachrichtenreplikation und regionsübergreifender Verbund
 
@@ -150,7 +150,7 @@ Azure Functions kann unter einer [verwalteten Azure-Identität](../active-direct
 
 Azure Functions ermöglicht den Replikationstasks außerdem die direkte Integration in virtuelle Azure-Netzwerke und [Dienstendpunkte](../virtual-network/virtual-network-service-endpoints-overview.md) für alle Azure-Messagingdienste und ist bereits in [Azure Monitor](../azure-monitor/overview.md) integriert.
 
-Am wichtigsten ist, dass Azure Functions vordefinierte, skalierbare Trigger und Ausgabebindungen für [Azure Event Hubs](../azure-functions/functions-bindings-service-bus.md), [Azure IoT Hub](../azure-functions/functions-bindings-event-iot.md), [Azure Service Bus](../azure-functions/functions-bindings-service-bus.md), [Azure Event Grid](../azure-functions/functions-bindings-event-grid.md) und [Azure Queue Storage](/azure/azure-functions/functions-bindings-storage-queue) sowie benutzerdefinierte Erweiterungen für [RabbitMQ](https://github.com/azure/azure-functions-rabbitmq-extension) und [Apache Kafka](https://github.com/azure/azure-functions-kafka-extension) bietet. Die meisten Trigger werden dynamisch an die Durchsatzanforderungen angepasst, indem die Anzahl der gleichzeitig ausgeführten Instanzen basierend auf dokumentierten Metriken zentral hoch- oder herunterskaliert wird. 
+Am wichtigsten ist, dass Azure Functions vordefinierte, skalierbare Trigger und Ausgabebindungen für [Azure Event Hubs](../azure-functions/functions-bindings-service-bus.md), [Azure IoT Hub](../azure-functions/functions-bindings-event-iot.md), [Azure Service Bus](../azure-functions/functions-bindings-service-bus.md), [Azure Event Grid](../azure-functions/functions-bindings-event-grid.md) und [Azure Queue Storage](../azure-functions/functions-bindings-storage-queue.md) sowie benutzerdefinierte Erweiterungen für [RabbitMQ](https://github.com/azure/azure-functions-rabbitmq-extension) und [Apache Kafka](https://github.com/azure/azure-functions-kafka-extension) bietet. Die meisten Trigger werden dynamisch an die Durchsatzanforderungen angepasst, indem die Anzahl der gleichzeitig ausgeführten Instanzen basierend auf dokumentierten Metriken zentral hoch- oder herunterskaliert wird. 
 
 Mit dem Azure Functions-Verbrauchsplan können die vordefinierten Trigger sogar auf null skaliert werden, wenn keine Nachrichten für die Replikation verfügbar sind. Dies bedeutet, dass keine Kosten verursacht werden, obwohl die Konfiguration für die erneute Hochskalierung bereit ist. Der wichtigste Nachteil bei Verwendung des Verbrauchsplans besteht darin, dass die Latenzzeit für Replikationstasks, die sich aus diesem Zustand „reaktivieren“, deutlich höher ist als bei den Hostingplänen, in denen die Infrastruktur weiterhin ausgeführt wird.  
 
@@ -167,4 +167,4 @@ Als nächstes sollten Sie sich darüber informieren, wie Sie eine Replikatoranwe
 - [Weiterleiten von Ereignissen an Azure Event Hubs](https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/functions/config/ServiceBusCopyToEventHub)
 - [Abrufen von Ereignissen aus Azure Event Hubs](https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/functions/config/EventHubCopyToServiceBus)
 
-[1]: ./media/service-bus-auto-forwarding/IC628632.gif 
+[1]: ./media/service-bus-auto-forwarding/IC628632.gif

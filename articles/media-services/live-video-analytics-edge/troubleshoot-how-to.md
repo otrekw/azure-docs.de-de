@@ -5,12 +5,12 @@ author: IngridAtMicrosoft
 ms.topic: how-to
 ms.author: inhenkel
 ms.date: 12/04/2020
-ms.openlocfilehash: d49f048df7a624dc490acf7cb4c8e5f33aa5f1c6
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.openlocfilehash: d23294c21d49b1c2ab83c4bf8f110d5d4bc7aafb
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2021
-ms.locfileid: "98060230"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878289"
 ---
 # <a name="troubleshoot-live-video-analytics-on-iot-edge"></a>Troubleshooting Live Video Analytics in IoT Edge
 
@@ -66,7 +66,7 @@ Sie können das Azure-Portal verwenden, um eine Diagnose des Mediengraphs mithil
     * 500 – in der IoT Edge-Runtime ist ein Fehler aufgetreten.
 
     > [!TIP]
-    > Wenn in Ihrer Umgebung Probleme bei der Ausführung von Azure IoT Edge-Modulen auftreten, nutzen Sie **[Azure IoT Edge: Standarddiagnoseschritte](https://docs.microsoft.com/azure/iot-edge/troubleshoot?view=iotedge-2018-06&preserve-view=true)** als Leitfaden zur Problembehandlung und Diagnose.
+    > Wenn in Ihrer Umgebung Probleme bei der Ausführung von Azure IoT Edge-Modulen auftreten, nutzen Sie **[Azure IoT Edge: Standarddiagnoseschritte](../../iot-edge/troubleshoot.md?preserve-view=true&view=iotedge-2018-06)** als Leitfaden zur Problembehandlung und Diagnose.
 ### <a name="post-deployment-direct-method-error-code"></a>Nach der Bereitstellung: Fehlercode der direkten Methode
 1. Wenn Sie einen Status `501 code` empfangen, überprüfen Sie, ob der Name der direkten Methode korrekt ist. Wenn der Methodenname und die Anforderungsnutzlast korrekt sind, sollten Sie Ergebnisse mit dem Erfolgscode „200“ erhalten. 
 1. Wenn die Angabe der Anforderungsnutzlast ungenau ist, erhalten Sie den Status „`400 code`“ und eine Antwortnutzlast, die den Fehlercode und eine Meldung angibt, die Sie bei der Diagnose des Problems bei Ihrem direkten Methodenaufrufe unterstützen soll.
@@ -96,7 +96,7 @@ Live Video Analytics wird als IoT Edge-Modul auf dem IoT Edge-Gerät bereitgeste
 * [Das IoT Edge-Modul wird erfolgreich bereitgestellt und verschwindet dann vom Gerät](../../iot-edge/troubleshoot-common-errors.md#iot-edge-module-deploys-successfully-then-disappears-from-device).
 
     > [!TIP]
-    > Wenn in Ihrer Umgebung Probleme bei der Ausführung von Azure IoT Edge-Modulen auftreten, nutzen Sie **[Azure IoT Edge: Standarddiagnoseschritte](https://docs.microsoft.com/azure/iot-edge/troubleshoot?view=iotedge-2018-06&preserve-view=true)** als Leitfaden zur Problembehandlung und Diagnose.
+    > Wenn in Ihrer Umgebung Probleme bei der Ausführung von Azure IoT Edge-Modulen auftreten, nutzen Sie **[Azure IoT Edge: Standarddiagnoseschritte](../../iot-edge/troubleshoot.md?preserve-view=true&view=iotedge-2018-06)** als Leitfaden zur Problembehandlung und Diagnose.
 ### <a name="live-video-analytics-working-with-external-modules"></a>Live Video Analytics bei der Arbeit mit externen Modulen
 
 Live Video Analytics kann den Mediengraph über die Mediengraph-Erweiterungsprozessoren erweitern, um mithilfe von REST Daten über HTTP an andere IoT Edge-Module zu senden und von diesen zu empfangen. Ein [spezifisches Beispiel](https://github.com/Azure/live-video-analytics/tree/master/MediaGraph/topologies/httpExtension): Dieser Mediengraph kann Videoeinzelbilder als Bilder an ein externes Rückschlussmodul wie Yolo v3 senden und als Rückgabe JSON-basierte Analyseergebnisse erhalten. In einer solchen Topologie bildet in den meisten Fällen der IoT Hub das Ziel für die Ereignisse. In Situationen, in denen Sie keine Rückschlussereignisse auf dem Hub sehen können, prüfen Sie die folgenden Punkte:
@@ -272,7 +272,7 @@ public static IHostBuilder CreateHostBuilder(string[] args) =>
 
 ``` 
 
-[Protokollierung und Diagnose in gRPC auf .NET](https://docs.microsoft.com/aspnet/core/grpc/diagnostics?view=aspnetcore-3.1&preserve-view=true) bietet einige Anleitungen zum Sammeln von Diagnoseprotokollen von einem gRPC-Server. 
+[Protokollierung und Diagnose in gRPC auf .NET](/aspnet/core/grpc/diagnostics?preserve-view=true&view=aspnetcore-3.1) bietet einige Anleitungen zum Sammeln von Diagnoseprotokollen von einem gRPC-Server. 
 
 ### <a name="a-failed-grpc-connection"></a>Fehlerhafte gRPC-Verbindung 
 
@@ -282,7 +282,7 @@ Wenn ein Graph aktiv ist und von einer Kamera gestreamt wird, wird die Verbindun
 
 Live Video Analytics überwacht keine Hardwareressourcen und stellt auch keine Optionen dafür zur Verfügung. Entwickler müssen die Lösungen des Hardwareherstellers verwenden. Wenn Sie jedoch Kubernetes-Container verwenden, können Sie das Gerät mithilfe des [Kubernetes-Dashboards](https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/) überwachen. 
 
-Die Dokumentation zu gRPC in .NET Core enthält außerdem einige wertvolle Informationen zu [Bewährten Methoden für die Leistung](https://docs.microsoft.com/aspnet/core/grpc/performance?view=aspnetcore-3.1&preserve-view=true) und zum [Lastenausgleich](https://docs.microsoft.com/aspnet/core/grpc/performance?view=aspnetcore-3.1#load-balancing&preserve-view=true).  
+Die Dokumentation zu gRPC in .NET Core enthält außerdem einige wertvolle Informationen zu [Bewährten Methoden für die Leistung](/aspnet/core/grpc/performance?preserve-view=true&view=aspnetcore-3.1) und zum [Lastenausgleich](/aspnet/core/grpc/performance?preserve-view=true&view=aspnetcore-3.1#load-balancing).  
 
 ### <a name="troubleshooting-an-inference-server-when-it-does-not-receive-any-frames-and-you-are-receiving-an-unknown-protocol-error"></a>Problembehandlung eines Rückschlussservers, wenn dieser keine Frames empfängt und Sie einen „unbekannten“ Protokollfehler erhalten 
 
@@ -296,7 +296,7 @@ Sie haben verschiedene Möglichkeiten, weitere Informationen zu diesem Problem z
    ```
 
    Wenn der Befehl eine kurze Zeichenfolge ungeordneter Zeichen zurückgibt, konnte Telnet erfolgreich eine Verbindung zu Ihrem Rückschlussserver herstellen und einen binären gRPC-Kanal öffnen. Wenn Sie dies nicht sehen, meldet Telnet einen Netzwerkfehler. 
-* Auf Ihrem Rückschlussserver können Sie zusätzliche Protokollierung in der gRPC-Bibliothek aktivieren. Diese können Ihnen weitere Informationen über den gRPC-Kanal selbst geben. Die dazu erforderlichen Aktionen unterscheiden sich je nach Sprache; hier sind die Anweisungen für [C#](https://docs.microsoft.com/aspnet/core/grpc/diagnostics?view=aspnetcore-3.1&preserve-view=true). 
+* Auf Ihrem Rückschlussserver können Sie zusätzliche Protokollierung in der gRPC-Bibliothek aktivieren. Diese können Ihnen weitere Informationen über den gRPC-Kanal selbst geben. Die dazu erforderlichen Aktionen unterscheiden sich je nach Sprache; hier sind die Anweisungen für [C#](/aspnet/core/grpc/diagnostics?preserve-view=true&view=aspnetcore-3.1). 
 
 ### <a name="picking-more-images-from-buffer-of-grpc-without-sending-back-result-for-first-buffer"></a>Auswählen weiterer Bilder aus dem gRPC-Puffer, ohne das Ergebnis für den ersten Puffer zurückzusenden
 

@@ -7,16 +7,16 @@ ms.topic: conceptual
 author: palanis-MSFT
 ms.author: palanis
 ms.date: 12/08/2020
-ms.openlocfilehash: b5001898fa18834ce7c04403de70879084df85f1
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: ca090d9bd4f5968b0404cb73af9f8d21197e695d
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96904907"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880960"
 ---
 # <a name="co-sell-option-in-the-commercial-marketplace"></a>Co-Selling-Option im kommerziellen Marketplace
 
-Die Bereitstellung von Informationen auf der Registerkarte **Co-Selling mit Microsoft** ist vollkommen optional. Sie sind erforderlich, um die Status [Co-Sell Ready](https://aka.ms/CertificationPolicies#3000-requirements-for-co-sell-status) und „IP Co-Sell Incentivized“ zu erreichen. Die von Ihnen angegebenen Informationen werden von den Microsoft-Vertriebsteams verwendet, um mehr über Ihr Angebot zu erfahren, wenn sie dessen Eignung für die Anforderungen Ihrer Kunden auswerten. Sie sind nicht direkt für Kunden verfügbar. Weitere Informationen finden Sie unter [Co-Selling mit Microsoft](https://partner.microsoft.com/membership/co-sell-with-microsoft).
+Die Bereitstellung von Informationen auf der Registerkarte **Co-Selling mit Microsoft** ist vollkommen optional. Sie sind erforderlich, um die Status [Co-Sell Ready](/legal/marketplace/certification-policies#3000-requirements-for-co-sell-status) und „IP Co-Sell Incentivized“ zu erreichen. Die von Ihnen angegebenen Informationen werden von den Microsoft-Vertriebsteams verwendet, um mehr über Ihr Angebot zu erfahren, wenn sie dessen Eignung für die Anforderungen Ihrer Kunden auswerten. Sie sind nicht direkt für Kunden verfügbar. Weitere Informationen finden Sie unter [Co-Selling mit Microsoft](https://partner.microsoft.com/membership/co-sell-with-microsoft).
 
 Die Co-Selling-Option im Partner Center ist für die folgenden Angebotstypen verfügbar.
 

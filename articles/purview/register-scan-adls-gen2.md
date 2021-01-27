@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/17/2020
-ms.openlocfilehash: 0232682661387e635e6ce8bfb5fc6e03301d130c
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.openlocfilehash: 4b7f71b5405708cc1988fafa5ca9c4628fe0d80b
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/19/2020
-ms.locfileid: "97694795"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98882398"
 ---
 # <a name="register-and-scan-azure-data-lake-storage-gen2"></a>Registrieren und Überprüfen von Azure Data Lake Storage Gen2
 
@@ -48,7 +48,7 @@ Wenn Sie **Verwaltete Identität** auswählen, müssen Sie Ihrem Purview-Konto z
 1. Legen Sie die **Rolle** auf **Leser von Speicherblobdaten** fest, und geben Sie unter **Auswählen** den Namen Ihres Azure Purview-Kontos ein. Wählen Sie dann **Speichern** aus, um diese Rollenzuweisung für Ihr Purview-Konto festzulegen.
 
 > [!Note]
-> Weitere Informationen finden Sie in den Schritten unter [Autorisieren des Zugriffs auf Blobs und Warteschlangen mit Azure Active Directory](https://docs.microsoft.com/azure/storage/common/storage-auth-aad).
+> Weitere Informationen finden Sie in den Schritten unter [Autorisieren des Zugriffs auf Blobs und Warteschlangen mit Azure Active Directory](../storage/common/storage-auth-aad.md).
 
 #### <a name="account-key"></a>Kontoschlüssel
 

@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: cherylmc
-ms.openlocfilehash: eb31bb09c1e09e4799715fc5a1cbca4b216b28a2
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 469d7ba9e86751312ebf6a6c82b35f065ee6cb50
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96922953"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880371"
 ---
 # <a name="connect-a-vpn-gateway-virtual-network-gateway-to-virtual-wan"></a>Herstellen einer Verbindung zwischen einem VPN Gateway (VNet-Gateway) und Virtual WAN
 
@@ -91,7 +91,7 @@ In diesem Abschnitt laden Sie die VPN-Konfigurationsdatei für die beiden Stando
 
 In diesem Abschnitt erstellen Sie zwei lokale Azure VPN Gateway Netzwerkgateways. Die Konfigurationsdateien aus dem vorherigen Schritt enthalten die Gatewaykonfigurationseinstellungen. Verwenden Sie diese Einstellungen, um die lokalen Azure VPN Gateway Netzwerkgateways zu erstellen und zu konfigurieren.
 
-1. Erstellen Sie das Netzwerkgateway mit diesen Einstellungen. Informationen zum Erstellen eines lokalen VPN Gateway Netzwerkgateways finden Sie im VPN Gateway-Artikel [Erstellen eines lokalen Netzwerkgateways](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md#LocalNetworkGateway).
+1. Erstellen Sie das Netzwerkgateway mit diesen Einstellungen. Informationen zum Erstellen eines lokalen VPN Gateway Netzwerkgateways finden Sie im VPN Gateway-Artikel [Erstellen eines lokalen Netzwerkgateways](../vpn-gateway/tutorial-site-to-site-portal.md#LocalNetworkGateway).
 
    * **IP-Adresse**: Verwenden Sie die IP-Adresse von Instance0 für *gatewayconfiguration* aus der Konfigurationsdatei.
    * **BGP**: Wenn die Verbindung über BGP erfolgt, wählen Sie **BGP-Einstellungen konfigurieren** aus und geben Sie die ASN „65515“ ein. Geben Sie die BGP-Peer-IP-Adresse ein. Verwenden Sie „Instance0 BgpPeeringAddresses“ für *gatewayconfiguration* aus der Konfigurationsdatei.
@@ -105,7 +105,7 @@ In diesem Abschnitt erstellen Sie zwei lokale Azure VPN Gateway Netzwerkgateways
 
 ## <a name="5-create-connections"></a><a name="createlocalgateways"></a>5. Erstellen von Verbindungen
 
-In diesem Abschnitt erstellen Sie eine Verbindung zwischen den lokalen VPN Gateway Netzwerkgateways und dem VNet-Gateway. Weitere Informationen zu den Schritten zum Erstellen einer VPN Gateway-Verbindung finden Sie unter [Konfigurieren einer Verbindung](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md#CreateConnection).
+In diesem Abschnitt erstellen Sie eine Verbindung zwischen den lokalen VPN Gateway Netzwerkgateways und dem VNet-Gateway. Weitere Informationen zu den Schritten zum Erstellen einer VPN Gateway-Verbindung finden Sie unter [Konfigurieren einer Verbindung](../vpn-gateway/tutorial-site-to-site-portal.md#CreateConnection).
 
 1. Navigieren Sie im Portal zum VNet-Gateway und klicken Sie auf **Verbindungen**. Klicken Sie oben auf der Seite „Verbindungen“ auf **+Hinzufügen**, um die Seite **Verbindung hinzufügen** zu öffnen.
 2. Konfigurieren Sie auf der Seite **Verbindung hinzufügen** die folgenden Werte für Ihre Verbindung:

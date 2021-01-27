@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 11/23/2020
-ms.openlocfilehash: c29c043a3af46086751629b31ce68217e7226442
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 30176e2df850e6d2794ab9c1542bcb6a89d8f89f
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96354872"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880405"
 ---
 # <a name="best-practices-for-optimal-performance-of-your-azure-database-for-mysql---single-server"></a>Best Practices für eine optimale Leistung von Azure Database for MySQL: Einzelserver
 
@@ -46,9 +46,9 @@ Das Einrichten einer neuen Verbindung ist immer eine arbeits- und zeitaufwendige
 
 Eine bewährte Methode zur Verbesserung der Leistung von Azure Database for MySQL besteht darin, genügend Arbeitsspeicher (RAM) zuzuweisen, damit sich der bearbeitete Satz nahezu vollständig im Arbeitsspeicher befindet. 
 
-- Anhand der [Metriken für den MySQL-Server](https://docs.microsoft.com/azure/mysql/concepts-monitoring) können Sie überprüfen, ob der Prozentsatz an Arbeitsspeicher die [Grenzwerte](https://docs.microsoft.com/azure/mysql/concepts-pricing-tiers) erreicht. 
+- Anhand der [Metriken für den MySQL-Server](./concepts-monitoring.md) können Sie überprüfen, ob der Prozentsatz an Arbeitsspeicher die [Grenzwerte](./concepts-pricing-tiers.md) erreicht. 
 - Richten Sie Warnungen zu solchen Messwerten ein, damit Sie bei Erreichen der Servergrenzwerte Maßnahmen zur Behebung ergreifen können. Überprüfen Sie basierend auf den definierten Grenzwerten, ob das Hochskalieren der Datenbank-SKU – auf eine höhere Computegröße oder einen besseren Tarif – zu einer deutlichen Leistungssteigerung führt. 
-- Setzen Sie das Hochskalieren so lange fort, bis Ihre Leistungsdaten nach einem Skalierungsvorgang nicht mehr deutlich sinken. Weitere Informationen zum Überwachen der Metriken einer Datenbankinstanz finden Sie unter [Metriken für Azure Database for MySQL](https://docs.microsoft.com/azure/mysql/concepts-monitoring#metrics).
+- Setzen Sie das Hochskalieren so lange fort, bis Ihre Leistungsdaten nach einem Skalierungsvorgang nicht mehr deutlich sinken. Weitere Informationen zum Überwachen der Metriken einer Datenbankinstanz finden Sie unter [Metriken für Azure Database for MySQL](./concepts-monitoring.md#metrics).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

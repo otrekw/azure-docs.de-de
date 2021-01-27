@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 349456b0a4de65520dd633efe0573d24ea1c89c4
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: f945699256b4de9bd87ee4ab7500268302e93089
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94409024"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880168"
 ---
 # <a name="security-control-secure-configuration"></a>Sicherheitskontrolle: Sichere Konfiguration
 
@@ -88,9 +88,9 @@ Beachten Sie hierbei auch, dass von Microsoft im Azure Marketplace veröffentlic
 
 - [Erstellen eines virtuellen Windows-Computers im Azure-Portal](../../virtual-machines/windows/quick-create-portal.md)
 
-- [Herunterladen einer Vorlage für einen virtuellen Computer](../../virtual-machines/windows/download-template.md)
+- [Herunterladen einer Vorlage für einen virtuellen Computer](/previous-versions/azure/virtual-machines/windows/download-template)
 
-- [Beispielskript zum Hochladen einer generalisierten virtuellen Festplatte nach Azure und Erstellen eines neuen virtuellen Computers](../../virtual-machines/scripts/virtual-machines-windows-powershell-upload-generalized-script.md)
+- [Beispielskript zum Hochladen einer generalisierten virtuellen Festplatte nach Azure und Erstellen eines neuen virtuellen Computers](/previous-versions/azure/virtual-machines/scripts/virtual-machines-windows-powershell-upload-generalized-script)
 
 ## <a name="75-securely-store-configuration-of-azure-resources"></a>7.5: Sicheres Speichern der Konfiguration von Azure-Ressourcen
 
@@ -118,7 +118,7 @@ Wenn benutzerdefinierte Images verwendet werden, sollten Sie durch die Nutzung d
 
 - [Konfigurieren von Azure RBAC](../../role-based-access-control/quickstart-assign-role-user-portal.md)
 
-- [Übersicht über den Katalog mit freigegebenen Images](../../virtual-machines/windows/shared-image-galleries.md)
+- [Übersicht über den Katalog mit freigegebenen Images](../../virtual-machines/shared-image-galleries.md)
 
 ## <a name="77-deploy-configuration-management-tools-for-azure-resources"></a>7.7: Bereitstellen von Konfigurationsverwaltungstools für Azure-Ressourcen
 

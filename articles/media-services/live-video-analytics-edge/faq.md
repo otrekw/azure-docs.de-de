@@ -3,12 +3,12 @@ title: 'Häufig gestellte Fragen zu Live Video Analytics in IoT Edge: Azure'
 description: Dieser Artikel bietet Antworten auf häufig gestellte Fragen zu Live Video Analytics in IoT Edge.
 ms.topic: conceptual
 ms.date: 12/01/2020
-ms.openlocfilehash: f9ef26b9b64bd8a0bad7c83960f2d235ed6461cb
-ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
+ms.openlocfilehash: 0cb378bf614582070dd1bdd0a11706b26437af53
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97762876"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880049"
 ---
 # <a name="live-video-analytics-on-iot-edge-faq"></a>Häufig gestellte Fragen zu Live Video Analytics in IoT Edge
 
@@ -230,7 +230,7 @@ Ja. Sie können die Prometheus-Metriken nutzen und in Event Grid veröffentliche
 
 **Kann ich Azure Monitor verwenden, um Integrität, Metriken und Leistung meiner Mediendiagramme in der Cloud oder am Edge anzuzeigen?**
 
-Ja, diese Vorgehensweise wird unterstützt. Weitere Informationen finden Sie in der [Übersicht über Azure Monitor-Metriken](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform-metrics).
+Ja, diese Vorgehensweise wird unterstützt. Weitere Informationen finden Sie in der [Übersicht über Azure Monitor-Metriken](../../azure-monitor/platform/data-platform-metrics.md).
 
 **Gibt es Tools, die das Überwachen des IoT Edge-Moduls für Media Services vereinfachen?**
 
