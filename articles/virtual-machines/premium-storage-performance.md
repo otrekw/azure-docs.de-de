@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/05/2020
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 26ef07269c9451c2e9d05d42e2247fbfcdae4844
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 7e93c659ad58db8d82e68380ab6a0855af27e1bf
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98201959"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98882381"
 ---
 # <a name="azure-premium-storage-design-for-high-performance"></a>Azure Storage Premium: Entwurf für hohe Leistung
 
@@ -35,8 +35,8 @@ Wir stellen diese Leitlinien speziell für Storage Premium bereit, da in Storage
 >
 > Wenn Sie für Ihren Datenträger einen Benchmarktest durchführen möchten, finden Sie weitere Informationen in diesem Artikel:
 >
-> * Linux: [Benchmarktests für Ihre Anwendung in Azure Disk Storage](linux/disks-benchmarks.md)
-> * Windows: [Benchmarktests für einen Datenträger](windows/disks-benchmarks.md)
+> * Linux: [Benchmarktests für Ihre Anwendung in Azure Disk Storage](./disks-benchmarks.md)
+> * Windows: [Benchmarktests für einen Datenträger](./disks-benchmarks.md)
 >
 > Wenn Ihr virtueller Computer den beschleunigten Netzwerkbetrieb unterstützt, stellen Sie sicher, dass dieser aktiviert ist. Wenn er nicht aktiviert ist, können Sie ihn sowohl unter [Windows](../virtual-network/create-vm-accelerated-networking-powershell.md#enable-accelerated-networking-on-existing-vms) als auch [Linux](../virtual-network/create-vm-accelerated-networking-cli.md#enable-accelerated-networking-on-existing-vms) auf bereits bereitgestellten virtuellen Computern aktivieren.
 
@@ -380,8 +380,8 @@ Azure Storage Premium stellt abhängig von den gewählten VM- und Datenträgergr
 
 Wenn Sie für Ihren Datenträger einen Benchmarktest durchführen möchten, finden Sie weitere Informationen in diesem Artikel:
 
-* Linux: [Benchmarktests für Ihre Anwendung in Azure Disk Storage](linux/disks-benchmarks.md)
-* Windows: [Benchmarktests für einen Datenträger](windows/disks-benchmarks.md)
+* Linux: [Benchmarktests für Ihre Anwendung in Azure Disk Storage](./disks-benchmarks.md)
+* Windows: [Benchmarktests für einen Datenträger](./disks-benchmarks.md)
 
 Weitere Informationen zu den verfügbaren Datenträgertypen finden Sie unter
 

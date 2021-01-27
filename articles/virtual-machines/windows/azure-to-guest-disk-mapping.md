@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 11/17/2020
 ms.author: tibasham
-ms.openlocfilehash: f16e34f372016f284d4af79443e84d9d5cdea957
-ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
+ms.openlocfilehash: 373fd26c36bf2f77de6a376f738bd3caaf735f00
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96523320"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881871"
 ---
 # <a name="how-to-map-azure-disks-to-windows-vm-guest-disks"></a>Zuordnen von Azure-Datenträgern zu Windows-VM-Gastdatenträgern
 
@@ -29,11 +29,11 @@ Für diese Übung benötigen Sie nur die LUN.
 
 ## <a name="finding-the-lun"></a>Ermitteln der logischen Gerätenummer
 
-Es gibt zwei Methoden zum Ermitteln der logischen Gerätenummer, deren Auswahl davon abhängt, ob Sie [Speicherplätze](https://docs.microsoft.com/windows-server/storage/storage-spaces/overview) verwenden oder nicht.
+Es gibt zwei Methoden zum Ermitteln der logischen Gerätenummer, deren Auswahl davon abhängt, ob Sie [Speicherplätze](/windows-server/storage/storage-spaces/overview) verwenden oder nicht.
 
 ### <a name="disk-management"></a>Datenträgerverwaltung
 
-Wenn Sie keine Speicherpools verwenden, können Sie die logische Gerätenummer mithilfe der [Datenträgerverwaltung](https://docs.microsoft.com/windows-server/storage/disk-management/overview-of-disk-management) ermitteln.
+Wenn Sie keine Speicherpools verwenden, können Sie die logische Gerätenummer mithilfe der [Datenträgerverwaltung](/windows-server/storage/disk-management/overview-of-disk-management) ermitteln.
 
 1. Stellen Sie eine Verbindung mit der VM her, und öffnen Sie die Datenträgerverwaltung. Klicken Sie mit der rechten Maustaste auf die Schaltfläche „Start“, und wählen Sie „Datenträgerverwaltung“ aus. Sie können auch `diskmgmt.msc` in das Suchfeld im Startmenü eingeben.
 1. Klicken Sie im unteren Bereich mit der rechten Maustaste auf einen der Datenträger, und wählen Sie „Eigenschaften“ aus.

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/19/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 380aa826030df14b4b88b86ac2962c988796c0f9
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 025a94cf7d163d41486ef218e70d9eb48e93d31c
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98202639"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881315"
 ---
 # <a name="azure-security-baseline-for-azure-machine-learning"></a>Azure-Sicherheitsbaseline für Azure Machine Learning
 
@@ -879,9 +879,9 @@ Beachten Sie, dass von Microsoft in Azure Marketplace veröffentlichte VM-Images
 
 - [Erstellen eines virtuellen Windows-Computers im Azure-Portal](../virtual-machines/windows/quick-create-portal.md)
 
-- [Herunterladen einer Vorlage für einen virtuellen Computer](../virtual-machines/windows/download-template.md)
+- [Herunterladen einer Vorlage für einen virtuellen Computer](/previous-versions/azure/virtual-machines/windows/download-template)
 
-- [Beispielskript zum Hochladen einer generalisierten virtuellen Festplatte nach Azure und Erstellen eines neuen virtuellen Computers](../virtual-machines/scripts/virtual-machines-windows-powershell-upload-generalized-script.md)
+- [Beispielskript zum Hochladen einer generalisierten virtuellen Festplatte nach Azure und Erstellen eines neuen virtuellen Computers](/previous-versions/azure/virtual-machines/scripts/virtual-machines-windows-powershell-upload-generalized-script)
 
 **Azure Security Center-Überwachung**: Nicht zutreffend
 
@@ -911,7 +911,7 @@ Azure Machine Learning unterstützt Git-Repositorys zur Nachverfolgung der Arbei
 
 - [Konfigurieren von Azure RBAC](../role-based-access-control/quickstart-assign-role-user-portal.md)
 
-- [Übersicht über den Katalog mit freigegebenen Images](../virtual-machines/windows/shared-image-galleries.md)
+- [Übersicht über den Katalog mit freigegebenen Images](../virtual-machines/shared-image-galleries.md)
 
 - [Verwenden von Azure RBAC für die Kubernetes-Autorisierung](../aks/manage-azure-rbac.md)
 

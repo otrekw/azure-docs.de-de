@@ -7,12 +7,12 @@ ms.manager: bsiva
 ms.topic: tutorial
 ms.date: 01/02/2021
 ms.custom: MVC
-ms.openlocfilehash: c0f4f1d7f0213ad24d25d8d34235475bbdb0316a
-ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
+ms.openlocfilehash: 3e098e64eacf8b126d6a6d72b1f242443e88d55c
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98567094"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881094"
 ---
 # <a name="migrate-machines-as-physical-servers-to-azure"></a>Migrieren von Computern als physische Server zu Azure
 
@@ -55,7 +55,7 @@ Bereiten Sie Azure für die Migration mit der Servermigration vor.
 
 **Aufgabe** | **Details**
 --- | ---
-**Erstellen eines Azure Migrate-Projekts** | Ihr Azure-Konto benötigt zum [Erstellen eines neuen Projekts](https://docs.microsoft.com/azure/migrate/create-manage-projects) Berechtigungen vom Typ „Mitwirkender“ oder „Besitzer“.
+**Erstellen eines Azure Migrate-Projekts** | Ihr Azure-Konto benötigt zum [Erstellen eines neuen Projekts](./create-manage-projects.md) Berechtigungen vom Typ „Mitwirkender“ oder „Besitzer“.
 **Überprüfen der Berechtigungen für Ihr Azure-Konto** | Ihr Azure-Konto benötigt Berechtigungen zum Erstellen eines virtuellen Computers sowie zum Schreiben auf einen verwalteten Azure-Datenträger.
 
 
@@ -239,7 +239,7 @@ Wählen Sie nun Computer für die Migration aus.
     - Mehrfachverschlüsselung mit plattformseitig und kundenseitig verwalteten Schlüsseln
 
    > [!NOTE]
-   > Um VMs mit CMK zu replizieren, müssen Sie unter der Zielressourcengruppe einen [Datenträgerverschlüsselungssatz erstellen](https://go.microsoft.com/fwlink/?linkid=2151800). Ein Datenträgerverschlüsselungssatz-Objekt ordnet verwaltete Datenträger einer Key Vault-Instanz zu, die den für SSE zu verwendenden CMK enthält.
+   > Um VMs mit CMK zu replizieren, müssen Sie unter der Zielressourcengruppe einen [Datenträgerverschlüsselungssatz erstellen](../virtual-machines/disks-enable-customer-managed-keys-portal.md#set-up-your-disk-encryption-set). Ein Datenträgerverschlüsselungssatz-Objekt ordnet verwaltete Datenträger einer Key Vault-Instanz zu, die den für SSE zu verwendenden CMK enthält.
   
 13. Wählen Sie unter **Azure-Hybridvorteil**
 

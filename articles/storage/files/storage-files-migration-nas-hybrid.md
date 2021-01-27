@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 03/19/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 0d8d19256dfca21cc805c2689557099a6785f76b
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: 2d531edeeae9e0dd7e392cae66d9e4d41c68dfa2
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94629205"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98882262"
 ---
 # <a name="migrate-from-network-attached-storage-nas-to-a-hybrid-cloud-deployment-with-azure-file-sync"></a>Migrieren von Network Attached Storage (NAS) zu einer Hybrid Cloud-Bereitstellung mit der Azure-Dateisynchronisierung
 
@@ -227,5 +227,5 @@ Unter dem Link im folgenden Abschnitt finden Sie Informationen zur Problembehand
 Machen Sie sich weiter mit Azure-Dateifreigaben und der Azure-Dateisynchronisierung vertraut. In den folgenden Artikeln werden erweiterte Optionen, bewährte Methoden und auch Hilfe zur Problembehandlung erläutert. Diese Artikel sind mit der entsprechenden [Dokumentation zur Azure-Dateifreigabe](storage-files-introduction.md) verlinkt.
 
 * [AFS-Übersicht](./storage-sync-files-planning.md)
-* [AFS-Bereitstellungshandbuch](storage-files-deployment-guide.md)
+* [AFS-Bereitstellungshandbuch](./storage-how-to-create-file-share.md)
 * [AFS-Problembehandlung](storage-sync-files-troubleshoot.md)

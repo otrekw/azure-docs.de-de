@@ -3,12 +3,12 @@ title: Verwaltete Identitäten für Azure
 description: Erfahren Sie mehr über die Verwendung von verwalteten Identitäten für Azure mit Service Fabric.
 ms.topic: conceptual
 ms.date: 12/09/2019
-ms.openlocfilehash: 28c992792d4572a43e12f5d32855f8411b0f4c6f
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 71fa9ef4da8081a167b68553e2e3eac8477e8aee
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96574750"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881719"
 ---
 # <a name="using-managed-identities-for-azure-with-service-fabric"></a>Verwenden verwalteter Identitäten für Azure mit Service Fabric
 
@@ -56,7 +56,7 @@ Die folgenden Szenarien werden nicht unterstützt oder nicht empfohlen. Beachten
 
 - Entfernen oder Ändern der Identitäten, die einer Anwendung zugewiesen sind. Wenn Sie Änderungen vornehmen möchten, übermitteln Sie separate Bereitstellungen, um zunächst die Zuweisung einer neuen Identität hinzuzufügen und dann eine zuvor zugewiesene Identität zu entfernen. Das Entfernen einer Identität aus einer vorhandenen Anwendung kann unerwünschte Auswirkungen haben und z. B. die Anwendung in einen nicht aktualisierbaren Zustand bringen. Die Anwendung kann vollständig gelöscht werden, wenn das Entfernen einer Identität erforderlich ist. Beachten Sie, dass dadurch die der Anwendung zugeordnete vom System zugewiesene Identität gelöscht wird (sofern definiert) und alle Zuordnungen mit den der Anwendung vom Benutzer zugewiesenen Identitäten entfernt werden.
 
-- Die Unterstützung für verwaltete Identitäten durch Service Fabric ist zurzeit nicht in [AzureServiceTokenProvider](../key-vault/general/service-to-service-authentication.md) integriert.
+- Die Unterstützung für verwaltete Identitäten durch Service Fabric ist zurzeit nicht in [AzureServiceTokenProvider](/dotnet/api/overview/azure/service-to-service-authentication) integriert.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 12/08/2020
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 050e6b5007b9fbaedc412d8062430f1c2c1691fd
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 7bca683ea075710aa6fc677fcf457ceb2e0e5098
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96923942"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881010"
 ---
 # <a name="transfer-data-with-azcopy-and-file-storage"></a>Übertragen von Daten mit AzCopy und Dateispeicher 
 
@@ -236,7 +236,7 @@ Ausführliche Informationen finden Sie in den [azcopy copy](storage-ref-azcopy-c
 
 #### <a name="download-from-a-share-snapshot"></a>Herunterladen von einer Freigabemomentaufnahme
 
-Sie können eine bestimmte Version einer Datei oder eines Verzeichnisses herunterladen, indem Sie auf den **DateTime**-Wert einer Freigabemomentaufnahme verweisen. Weitere Informationen zu Freigabemomentaufnahmen finden Sie unter [Übersicht über Freigabemomentaufnahmen für Azure Files](/azure/storage/files/storage-snapshots-files). 
+Sie können eine bestimmte Version einer Datei oder eines Verzeichnisses herunterladen, indem Sie auf den **DateTime**-Wert einer Freigabemomentaufnahme verweisen. Weitere Informationen zu Freigabemomentaufnahmen finden Sie unter [Übersicht über Freigabemomentaufnahmen für Azure Files](../files/storage-snapshots-files.md). 
 
 |    |     |
 |--------|-----------|
@@ -251,7 +251,7 @@ Sie können AzCopy verwenden, um Dateien in andere Speicherkonten zu kopieren. D
 
 AzCopy verwendet die [Server-zu-Server](/rest/api/storageservices/put-block-from-url)-[APIs](/rest/api/storageservices/put-page-from-url), sodass Daten direkt zwischen Speicherservern kopiert werden. Für diese Kopiervorgänge wird nicht die Netzwerkbandbreite Ihres Computers genutzt. Sie können den Durchsatz dieser Vorgänge erhöhen, indem Sie den Wert der Umgebungsvariable `AZCOPY_CONCURRENCY_VALUE` festlegen. Weitere Informationen finden Sie unter [Optimieren des Durchsatzes](storage-use-azcopy-configure.md#optimize-throughput).
 
-Sie können auch bestimmte Versionen von Dateien herunterladen, indem Sie auf den **DateTime**-Wert einer Freigabemomentaufnahme verweisen. Weitere Informationen zu Freigabemomentaufnahmen finden Sie unter [Übersicht über Freigabemomentaufnahmen für Azure Files](/azure/storage/files/storage-snapshots-files). 
+Sie können auch bestimmte Versionen von Dateien herunterladen, indem Sie auf den **DateTime**-Wert einer Freigabemomentaufnahme verweisen. Weitere Informationen zu Freigabemomentaufnahmen finden Sie unter [Übersicht über Freigabemomentaufnahmen für Azure Files](../files/storage-snapshots-files.md). 
 
 Dieser Abschnitt enthält folgende Beispiele:
 

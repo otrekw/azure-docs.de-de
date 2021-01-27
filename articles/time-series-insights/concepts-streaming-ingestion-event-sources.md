@@ -8,13 +8,13 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 10/01/2020
-ms.openlocfilehash: ee13b2fbe4abbaf9bddf4975f8e25d746dc78f5e
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.date: 01/19/2021
+ms.openlocfilehash: ae07f51a91745acdaf2601d3a50bf282129dac71
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98232181"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881804"
 ---
 # <a name="azure-time-series-insights-gen2-event-sources"></a>Azure Time Series Insights Gen2-Ereignisquellen
 
@@ -45,7 +45,7 @@ Wenn Sie eine Ereignisquelle verbinden, liest Ihre Azure Time Series Insights Ge
 
 - Überschreiten Sie nicht den [Grenzwert Ihrer Umgebung für die Durchsatzrate](./concepts-streaming-ingress-throughput-limits.md) oder den Durchsatz pro Partition.
 
-- Konfigurieren Sie eine [Verzögerungswarnung](./time-series-insights-environment-mitigate-latency.md#monitor-latency-and-throttling-with-alerts), damit Sie benachrichtigt werden, wenn in Ihrer Umgebung Probleme beim Verarbeiten von Daten auftreten. Unter [Produktionsworkloads](./concepts-streaming-ingestion-event-sources.md#production-workloads) unten finden Sie Vorschläge für Warnungsbedingungen. 
+- Konfigurieren Sie eine [Verzögerungswarnung](./time-series-insights-environment-mitigate-latency.md#monitor-latency-and-throttling-with-alerts), damit Sie benachrichtigt werden, wenn in Ihrer Umgebung Probleme beim Verarbeiten von Daten auftreten. Unter [Produktionsworkloads](./concepts-streaming-ingestion-event-sources.md#production-workloads) unten finden Sie Vorschläge für Warnungsbedingungen.
 
 - Verwenden Sie die Streamingerfassung nur für Daten in Quasi-Echtzeit und für aktuelle Daten. Das Streamen historischer Daten wird nicht unterstützt.
 
@@ -55,14 +55,14 @@ Wenn Sie eine Ereignisquelle verbinden, liest Ihre Azure Time Series Insights Ge
 
 ## <a name="production-workloads"></a>Produktionsworkloads
 
-Zusätzlich zu den oben beschriebenen bewährten Methoden sollten Sie die folgenden geschäftskritischen Workloads implementieren. 
+Zusätzlich zu den oben beschriebenen bewährten Methoden sollten Sie die folgenden geschäftskritischen Workloads implementieren.
 
 - Erhöhen Sie Ihre IoT Hub- oder Event Hub-Datenaufbewahrungsdauer auf maximal 7 Tage.
 
-- Erstellen von Umgebungswarnungen im Azure-Portal Mithilfe von Warnungen, die auf [Plattformmetriken basieren](https://docs.microsoft.com/azure/time-series-insights/how-to-monitor-tsi-reference#metrics), können Sie das Verhalten von End-to-End-Pipelines überprüfen. Die Anweisungen zum Erstellen und Verwalten von Warnungen finden Sie [hier](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-environment-mitigate-latency#monitor-latency-and-throttling-with-alerts). Vorgeschlagene Warnungsbedingungen:
+- Erstellen von Umgebungswarnungen im Azure-Portal Mithilfe von Warnungen, die auf [Plattformmetriken basieren](./how-to-monitor-tsi-reference.md#metrics), können Sie das Verhalten von End-to-End-Pipelines überprüfen. Die Anweisungen zum Erstellen und Verwalten von Warnungen finden Sie [hier](./time-series-insights-environment-mitigate-latency.md#monitor-latency-and-throttling-with-alerts). Vorgeschlagene Warnungsbedingungen:
 
-     - IngressReceivedMessagesTimeLag überschreitet 5 Minuten.
-     - IngressReceivedBytes ist 0.
+  - IngressReceivedMessagesTimeLag überschreitet 5 Minuten.
+  - IngressReceivedBytes ist 0.
 - Sorgen Sie dafür, dass die Erfassungslast zwischen Ihren IoT Hub- oder Event Hub-Partitionen ausgeglichen ist.
 
 ### <a name="historical-data-ingestion"></a>Erfassung historischer Daten

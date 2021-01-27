@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 10/01/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9a907f2a6fc54c96dbef9f2091a91cac50bbd4ca
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 6e28b23f20a0336498abbc357f4c96bdfa5b089f
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96486520"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881837"
 ---
 # <a name="sap-hana-infrastructure-configurations-and-operations-on-azure"></a>SAP HANA-Infrastrukturkonfigurationen und -Vorgänge in Azure
 Dieses Dokument enthält Anleitungen für die Konfiguration der Azure-Infrastruktur und SAP HANA-Betriebssystemen, die auf nativen virtuellen Azure-Computern bereitgestellt werden. Das Dokument enthält auch Informationen zur Konfiguration für die horizontale SAP HANA-Skalierung für die M128s-VM-SKU. Dieses Dokument ist nicht als Ersatz für die SAP-Standarddokumentation gedacht, zu der folgende Inhalte gehören:
@@ -46,7 +46,7 @@ In den folgenden Abschnitten werden grundlegende Einrichtungsüberlegungen für 
 Wie im [Planungshandbuch für virtuelle Azure-Computer](./planning-guide.md) dokumentiert, gibt es zwei grundlegende Methoden zum Herstellen einer Verbindung mit virtuellen Azure-Computern:
 
 - Herstellen einer Verbindung über das Internet und öffentliche Endpunkte auf einer Jump-VM oder auf dem virtuellen Computer, auf dem SAP HANA ausgeführt wird
-- Herstellen einer Verbindung über eine [VPN](../../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md) oder Azure [ExpressRoute](https://azure.microsoft.com/services/expressroute/)
+- Herstellen einer Verbindung über eine [VPN](../../../vpn-gateway/tutorial-site-to-site-portal.md) oder Azure [ExpressRoute](https://azure.microsoft.com/services/expressroute/)
 
 Site-to-Site-Konnektivität über VPN oder ExpressRoute ist für Produktionsszenarien erforderlich. Dieser Typ von Verbindung ist auch für Nicht-Produktionsszenarien erforderlich, die in Produktionsszenarien übertragen, in denen SAP-Software verwendet wird. Die folgende Abbildung zeigt ein Beispiel zu standortübergreifender Konnektivität:
 

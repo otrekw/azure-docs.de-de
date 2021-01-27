@@ -9,12 +9,12 @@ ms.subservice: security-fundamentals
 ms.topic: article
 ms.date: 11/10/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 4e64d866b5bd2f725db3be31d0fdd2f8663cfd7c
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.openlocfilehash: bb49523858f07e54887a67d9df68eb894e27ad34
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96029692"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881247"
 ---
 # <a name="azure-tls-certificate-changes"></a>TLS-Zertifikatänderungen für Azure  
 
@@ -30,7 +30,7 @@ Dienstspezifische Details:
 - [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub) und [DPS](../../iot-dps/index.yml) verbleiben in der Baltimore CyberTrust Root-Zertifizierungsstelle, die Zwischenzertifizierungsstellen ändern sich jedoch. Klicken Sie [hier](https://techcommunity.microsoft.com/t5/internet-of-things/azure-iot-tls-changes-are-coming-and-why-you-should-care/ba-p/1658456), um ausführliche Informationen zu erhalten.
 - [Azure Storage](../../storage/index.yml) verbleibt in der Baltimore CyberTrust Root-Zertifizierungsstelle, die Zwischenzertifizierungsstellen ändern sich jedoch. Klicken Sie [hier](https://techcommunity.microsoft.com/t5/azure-storage/azure-storage-tls-changes-are-coming-and-why-you-care/ba-p/1705518), um ausführliche Informationen zu erhalten.
 - [Azure Cache for Redis](../../azure-cache-for-redis/index.yml) verbleibt in der Baltimore CyberTrust Root-Zertifizierungsstelle, die Zwischenzertifizierungsstellen ändern sich jedoch. Klicken Sie [hier](../../azure-cache-for-redis/cache-whats-new.md), um ausführliche Informationen zu erhalten.
-- Azure Instance Metadata Service verbleibt in der Baltimore CyberTrust-Stammzertifizierungsstelle, die Zwischenzertifizierungsstellen ändern sich jedoch. Klicken Sie [hier](https://docs.microsoft.com/answers/questions/172717/action-required-for-attested-data-tls-with-azure-i.html), um ausführliche Informationen zu erhalten.
+- Azure Instance Metadata Service verbleibt in der Baltimore CyberTrust-Stammzertifizierungsstelle, die Zwischenzertifizierungsstellen ändern sich jedoch. Klicken Sie [hier](/answers/questions/172717/action-required-for-attested-data-tls-with-azure-i.html), um ausführliche Informationen zu erhalten.
 
 > [!IMPORTANT]
 > Kunden müssen ihre Anwendungen nach dieser Änderung ggf. aktualisieren, um Konnektivitätsfehler beim Herstellen einer Verbindung mit Azure-Diensten zu vermeiden.

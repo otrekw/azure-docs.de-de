@@ -7,12 +7,12 @@ ms.date: 10/02/2020
 ms.topic: troubleshooting
 ms.service: virtual-machines
 ms.subservice: imaging
-ms.openlocfilehash: 7c937353c645ee5d977a52ec0f8e935eba19a940
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 52801d0d7b02bb3637b5edb03072bde04a023de9
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91969975"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881787"
 ---
 # <a name="troubleshoot-azure-image-builder-service"></a>Problembehandlung für den Azure Image Builder-Dienst
 
@@ -586,7 +586,7 @@ Es kann vorkommen, dass Sie erfolgreiche Builds untersuchen müssen und sich das
 
 Wenn der Build nicht von einem Benutzer abgebrochen wurde, wurde er vom Azure DevOps-Benutzer-Agent abgebrochen. Höchstwahrscheinlich ist das Timeout nach einer Stunde aufgrund der Azure DevOps-Funktionen aufgetreten. Wenn Sie ein privates Projekt und einen Agent verwenden, erhalten Sie eine Buildzeit von 60 Minuten. Wenn das Timeout für den Build überschritten wird, wird der laufende Task von DevOps abgebrochen.
 
-Weitere Informationen zu Azure DevOps-Funktionen und -Einschränkungen finden Sie im Abschnitt zu den [von Microsoft gehosteten Agents](/azure/devops/pipelines/agents/hosted?view=azure-devops#capabilities-and-limitations).
+Weitere Informationen zu Azure DevOps-Funktionen und -Einschränkungen finden Sie im Abschnitt zu den [von Microsoft gehosteten Agents](/azure/devops/pipelines/agents/hosted#capabilities-and-limitations).
  
 #### <a name="solution"></a>Lösung
 
@@ -674,4 +674,4 @@ Support Subtopic: Azure Image Builder
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen finden Sie unter [Übersicht über Azure Image Builder](image-builder-overview.md).
+Weitere Informationen finden Sie unter [Übersicht über Azure Image Builder](../image-builder-overview.md).

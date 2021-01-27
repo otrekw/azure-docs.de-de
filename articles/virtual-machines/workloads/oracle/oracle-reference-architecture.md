@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 12/13/2019
 ms.author: kegorman
 ms.reviewer: cynthn
-ms.openlocfilehash: 83da8cbf3a87570cfb967e0a6c8da3f0f2ed1766
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 27a1c57c234d3450cee606c4ffb7484f7b63e732
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96486741"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98882296"
 ---
 # <a name="reference-architectures-for-oracle-database-enterprise-edition-on-azure"></a>Referenzarchitekturen für Oracle Database Enterprise Edition in Azure
 
@@ -207,7 +207,7 @@ Während der ersten Anforderung stellt der Anwendungsserver eine Verbindung mit 
 
 Beim Bereitstellen Ihrer Oracle-Workloads in Azure übernimmt Microsoft das gesamte Patchen auf der Ebene des Hostbetriebssystems. Kunden werden im Voraus über alle geplanten Wartungsarbeiten auf Betriebssystemebene informiert, damit sich der Kunde darauf einstellen kann. Zwei Server, die in zwei unterschiedlichen Verfügbarkeitszonen angeordnet sind, werden niemals gleichzeitig gepatcht. Weitere Informationen zur Wartung und zum Patchen von virtuellen Computern finden Sie unter [Verwalten der Verfügbarkeit virtueller Computer](../../manage-availability.md). 
 
-Das Patchen des Betriebssystems Ihres virtuellen Computers kann mit der [Updateverwaltung von Azure Automation](../../../automation/update-management/overview.md) automatisiert werden. Das Patchen und Warten Ihrer Oracle-Datenbank kann mit [Azure Pipelines](/azure/devops/pipelines/get-started/what-is-azure-pipelines?view=azure-devops) oder der [Updateverwaltung von Azure Automation](../../../automation/update-management/overview.md) automatisiert und geplant werden, um das Auftreten von Ausfallzeiten zu minimieren. Im Artikel zum Thema [Continuous Delivery und Blau/Grün-Bereitstellung](/azure/devops/learn/what-is-continuous-delivery) können Sie sich damit vertraut machen, wie Sie dies für Ihre Oracle-Datenbanken nutzen können.
+Das Patchen des Betriebssystems Ihres virtuellen Computers kann mit der [Updateverwaltung von Azure Automation](../../../automation/update-management/overview.md) automatisiert werden. Das Patchen und Warten Ihrer Oracle-Datenbank kann mit [Azure Pipelines](/azure/devops/pipelines/get-started/what-is-azure-pipelines) oder der [Updateverwaltung von Azure Automation](../../../automation/update-management/overview.md) automatisiert und geplant werden, um das Auftreten von Ausfallzeiten zu minimieren. Im Artikel zum Thema [Continuous Delivery und Blau/Grün-Bereitstellung](/azure/devops/learn/what-is-continuous-delivery) können Sie sich damit vertraut machen, wie Sie dies für Ihre Oracle-Datenbanken nutzen können.
 
 ## <a name="architecture-and-design-considerations"></a>Architektur- und Entwurfsaspekte
 
@@ -216,7 +216,7 @@ Das Patchen des Betriebssystems Ihres virtuellen Computers kann mit der [Updatev
 - Verwenden Sie Verfügbarkeitszonen, um für eine Region Hochverfügbarkeit zu erzielen.
 - Verwenden Sie ggf. Ultra Disks (falls verfügbar) oder Premium-Datenträger für Ihre Oracle-Datenbank.
 - Erwägen Sie, mit Oracle Data Guard eine Oracle-Standbydatenbank in einer anderen Azure-Region einzurichten.
-- Erwägen Sie den Einsatz von [Näherungsplatzierungsgruppen](../../../virtual-machines/linux/co-location.md#proximity-placement-groups), um die Latenz zwischen Ihrer Anwendungs- und Datenbankebene zu reduzieren.
+- Erwägen Sie den Einsatz von [Näherungsplatzierungsgruppen](../../co-location.md#proximity-placement-groups), um die Latenz zwischen Ihrer Anwendungs- und Datenbankebene zu reduzieren.
 - Richten Sie [Oracle Enterprise Manager](https://docs.oracle.com/en/enterprise-manager/) für die Verwaltung, Überwachung und Protokollierung ein.
 - Erwägen Sie, Oracle Automatic Storage Management (ASM) zu verwenden, um eine optimierte Speicherverwaltung für Ihre Datenbank zu ermöglichen.
 - Nutzen Sie [Azure Pipelines](/azure/devops/pipelines/get-started/what-is-azure-pipelines), um das Patchen und Updates für Ihre Datenbank ohne Ausfallzeiten zu verwalten.

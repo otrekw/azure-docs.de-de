@@ -3,12 +3,12 @@ title: 'Entwickeln und Bereitstellen eines gRPC-Rückschlussservers: Azure'
 description: Dieser Artikel enthält eine Anleitung zum Entwickeln und Bereitstellen eines gRPC-Rückschlussservers.
 ms.topic: how-to
 ms.date: 12/02/2020
-ms.openlocfilehash: 3f732a7432dacebeeefddd1822fec7d95dfbaa97
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: 6184a369e73c26d3a8a716f9daf1c0420a5239fe
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97417463"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881651"
 ---
 # <a name="how-to-guide--develop-and-deploy-a-grpc-inference-server"></a>Schrittanleitung: Entwickeln und Bereitstellen eines gRPC-Rückschlussservers
 
@@ -26,9 +26,9 @@ In diesem Artikel erfahren Sie, wie Sie KI-Modelle Ihrer Wahl innerhalb eines gR
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Ein x86-64- oder ARM64-Gerät, auf dem eines der [unterstützten Linux-Betriebssysteme ausgeführt wird](https://docs.microsoft.com/azure/iot-edge/support#operating-systems), oder ein Windows-Gerät
+* Ein x86-64- oder ARM64-Gerät, auf dem eines der [unterstützten Linux-Betriebssysteme ausgeführt wird](../../iot-edge/support.md#operating-systems), oder ein Windows-Gerät
 * [Docker-Installation](https://docs.docker.com/desktop/#download-and-install) auf Ihrem Gerät
-* Installation der [IoT Edge-Runtime](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge?tabs=linux)
+* Installation der [IoT Edge-Runtime](../../iot-edge/how-to-install-iot-edge.md?tabs=linux)
 
 ## <a name="grpc-implementation-steps"></a>Schritte zur gRPC-Implementierung
 
@@ -197,7 +197,7 @@ Nachdem Sie die Portverbindungen des gRPC-Servers konfiguriert und initialisiert
         1. Konvertieren Sie das Bild in einem Bytearray zur Verarbeitung. Siehe die Methode `GetBytes(Bitmap image)`
         
             Der von Ihnen verwendete Beispielprozessor unterstützt nur JPG-codierte Bildframes und „None“ als Pixelformat. Für den Fall, dass der benutzerdefinierte Prozessor eine andere Codierung und/oder ein anderes Format unterstützt, aktualisieren Sie die Methode `IsMediaFormatSupported` der Prozessorklasse.
-        1. Konvertieren Sie das Bild mithilfe der [ColorMatrix-Klasse](https://docs.microsoft.com/dotnet/api/system.drawing.imaging.colormatrix?redirectedfrom=MSDN&view=dotnet-plat-ext-3.1&preserve-view=true) in eine Graustufe. Siehe die Methode `ToGrayScale(Image source)`
+        1. Konvertieren Sie das Bild mithilfe der [ColorMatrix-Klasse](/dotnet/api/system.drawing.imaging.colormatrix?preserve-view=true&view=dotnet-plat-ext-3.1) in eine Graustufe. Siehe die Methode `ToGrayScale(Image source)`
         1. Wenn das Graustufenbild erstellt wurde, berechnen Sie den Durchschnitt der Graustufenbytes.
         1. Wenn der Durchschnittswert unter 127 liegt, wird das Bild als „dunkel“ klassifiziert, andernfalls wird es mit einem Konfidenzwert von 1,0 als „hell“ eingestuft. Siehe die Methode `ProcessImage(List<Image> images)`
 
@@ -213,7 +213,7 @@ Nachdem Sie die Portverbindungen des gRPC-Servers konfiguriert und initialisiert
 
 Nach der Erstellung des gRPC-Erweiterungsmoduls erstellen Sie nun die Mediengraphtopologie und stellen sie bereit.
 
-1. Führen Sie in Visual Studio Code [diese Anweisungen](https://docs.microsoft.com/azure/iot-edge/tutorial-develop-for-linux#build-and-push-your-solution) aus, um sich bei Docker anzumelden.
+1. Führen Sie in Visual Studio Code [diese Anweisungen](../../iot-edge/tutorial-develop-for-linux.md#build-and-push-your-solution) aus, um sich bei Docker anzumelden.
 1. Navigieren Sie in Visual Studio Code zu src/edge. Ihre ENV-Datei und einige Bereitstellungsvorlagendateien werden angezeigt.
 
     Die Bereitstellungsvorlage verweist auf das Bereitstellungsmanifest für das Edge-Gerät. Es enthält einige Platzhalterwerte. Die ENV-Datei enthält die Werte für diese Variablen.
@@ -309,4 +309,3 @@ In dieser Phase hat die Bereitstellung von Edge-Modulen auf Ihrem IoT Edge-Gerä
 ## <a name="next-steps"></a>Nächste Schritte
 
 Führen Sie die Schritte zum **Vorbereiten der Überwachung von Ereignissen** unter [Schnellstart: Analysieren von Livevideos mithilfe eines eigenen HTTP-Modells](use-your-model-quickstart.md) aus, um das Beispiel auszuführen und die Ereignisse zu interpretieren. Sehen Sie sich auch unsere gRPC-Beispieltopologien an: [gRPCExtension](https://github.com/Azure/live-video-analytics/blob/master/MediaGraph/topologies/grpcExtension/topology.json), [CVRWithGrpcExtension](https://github.com/Azure/live-video-analytics/blob/master/MediaGraph/topologies/cvr-with-grpcExtension/topology.json), EVRtoAssetsByGrpcExtension und [EVROnMotionPlusGrpcExtension](https://github.com/Azure/live-video-analytics/blob/master/MediaGraph/topologies/motion-with-grpcExtension/topology.json).
-
