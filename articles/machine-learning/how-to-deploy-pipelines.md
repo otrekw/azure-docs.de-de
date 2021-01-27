@@ -11,12 +11,12 @@ author: lobrien
 ms.date: 8/25/2020
 ms.topic: conceptual
 ms.custom: how-to, contperf-fy21q1
-ms.openlocfilehash: 9eb07721f9d507d69de10b6de6c8c2a358dab020
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 5dc14873f8863332d37a6ced6ce4013e76640dea
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97034087"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879392"
 ---
 # <a name="publish-and-track-machine-learning-pipelines"></a>Veröffentlichen und Nachverfolgen von Pipelines des maschinellen Lernens
 
@@ -32,7 +32,7 @@ Pipelines des maschinellen Lernens sind wiederverwendbare Workflows für Aufgabe
 
 * [Konfigurieren Sie Ihre Entwicklungsumgebung](how-to-configure-environment.md) für die Installation des Azure Machine Learning SDK, oder verwenden Sie eine [Azure Machine Learning-Computeinstanz](concept-compute-instance.md) mit bereits installiertem SDK.
 
-* Erstellen Sie eine Pipeline des maschinellen Lernens, und führen Sie sie aus, z. B. durch Befolgen der Schritte im [Tutorial: Erstellen einer Azure Machine Learning-Pipeline für die Batchbewertung](tutorial-pipeline-batch-scoring-classification.md). Weitere Optionen finden Sie unter [Erstellen und Ausführen von Pipelines des maschinellen Lernens mit dem Azure Machine Learning SDK](how-to-create-your-first-pipeline.md).
+* Erstellen Sie eine Pipeline des maschinellen Lernens, und führen Sie sie aus, z. B. durch Befolgen der Schritte im [Tutorial: Erstellen einer Azure Machine Learning-Pipeline für die Batchbewertung](tutorial-pipeline-batch-scoring-classification.md). Weitere Optionen finden Sie unter [Erstellen und Ausführen von Pipelines des maschinellen Lernens mit dem Azure Machine Learning SDK](./how-to-create-machine-learning-pipelines.md).
 
 ## <a name="publish-a-pipeline"></a>Veröffentlichen einer Pipeline
 

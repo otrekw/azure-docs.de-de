@@ -8,12 +8,12 @@ ms.date: 07/24/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: de97640ab462ac8ea7342d235d0fad802c232179
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: dc3451a4b46a317dccda0e4292dcb1712b4171f0
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92783367"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878306"
 ---
 # <a name="azcopy-sync"></a>azcopy sync
 
@@ -38,7 +38,7 @@ Der Befehl „sync“ unterscheidet sich auf mehrere Arten vom Befehl „copy“
 ## <a name="related-conceptual-articles"></a>Verwandte konzeptionelle Artikel
 
 - [Erste Schritte mit AzCopy](storage-use-azcopy-v10.md)
-- [Übertragen von Daten mit AzCopy und Blobspeicher](storage-use-azcopy-blobs.md)
+- [Übertragen von Daten mit AzCopy und Blobspeicher](./storage-use-azcopy-v10.md#transfer-data)
 - [Übertragen von Daten mit AzCopy und Dateispeicher](storage-use-azcopy-files.md)
 - [Konfigurieren, Optimieren und Problembehandlung in AzCopy](storage-use-azcopy-configure.md)
 

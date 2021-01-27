@@ -68,7 +68,7 @@ Anschließend müssen Sie den **Delegierungsendpunkt** einrichten. Dieser Endpun
 5. Falls sich der Benutzer registriert, müssen Sie das entsprechende Konto in API Management erstellen. [Erstellen Sie einen Benutzer] mit der REST-API für API Management. Achten Sie dabei darauf, die Benutzer-ID auf den Wert aus Ihrem Benutzerspeicher oder eine andere für Sie nachverfolgbare ID festzulegen.
 6. Nach erfolgreicher Authentifizierung des Benutzers:
    
-   * [Fordern Sie ein SAS-Token an]. Verwenden Sie hierzu die REST-API von API Management.
+   * [Request a shared access token]. Verwenden Sie hierzu die REST-API von API Management.
    * Hängen Sie einen returnUrl-Abfrageparameter an die SSO-URL an, die Sie aus dem obigen API-Aufruf erhalten haben:
      
      > Beispiel: `https://<developer portal domain, for example: contoso.developer.azure-api.net>/signin-sso?token=<URL-encoded token>&returnUrl=<URL-encoded URL, for example: %2Freturn%2Furl>` 
@@ -127,7 +127,7 @@ Stellen Sie anschließend sicher, dass der Delegierungsendpunkt die folgenden Ak
      > 
    * Vergleichen Sie den generierten Hash mit dem Wert des **sig**-Abfrageparameters. Fahren Sie mit dem nächsten Schritt fort, wenn die Hashes übereinstimmen. Lehnen Sie die Anfrage andernfalls ab.
 3. Verarbeiten Sie das Produktabonnement basierend auf dem im Parameter **operation** angeforderten Vorgang, z. B. Abrechnung, weitere Fragen usw.
-4. Nachdem der Benutzer das Produkt auf Ihrer Seite erfolgreich abonniert hat, abonnieren Sie das Produkt in API Management für den Benutzer, indem Sie die [REST-API für Abonnements] aufrufen.
+4. Nachdem der Benutzer das Produkt auf Ihrer Seite erfolgreich abonniert hat, abonnieren Sie das Produkt in API Management für den Benutzer, indem Sie die [calling the REST API for subscriptions] aufrufen.
 
 ## <a name="example-code"></a><a name="delegate-example-code"> </a> Beispielcode
 

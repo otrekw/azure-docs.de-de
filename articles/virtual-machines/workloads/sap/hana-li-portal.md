@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 12/31/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e5adb8edbeafa4d77e24bf865338e111c455cb80
-ms.sourcegitcommit: 42922af070f7edf3639a79b1a60565d90bb801c0
+ms.openlocfilehash: b03f3f93e8f829c6ab7dec965850117895a8b52d
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97827511"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98882483"
 ---
 # <a name="azure-hana-large-instances-control-through-azure-portal"></a>Steuerung von HANA in Azure (große Instanzen) über das Azure-Portal
 
@@ -94,7 +94,7 @@ Weitere Daten auf der rechten unteren Seite sind die Revision des Stamps von SAP
 - Revision 4
 
 Revision 4 ist die neueste Architektur von SAP HANA (große Instanzen) mit wesentlichen Verbesserungen in der Netzwerklatenz zwischen Azure-VMs und Einheiten von SAP HANA (große Instanzen), die in Revision 4-Stamps oder -Reihen bereitgestellt werden.
-Eine weitere sehr wichtige Information finden Sie in der rechten unteren Ecke der Übersicht mit dem Namen der Azure-Näherungsplatzierungsgruppe, die automatisch für jede bereitgestellte Einheit von SAP HANA (große Instanzen) erstellt wird. Diese Näherungsplatzierungsgruppe muss bei der Bereitstellung der Azure-VMs referenziert werden, die die SAP-Anwendungsschicht hosten. Durch die Verwendung der [Azure-Näherungsplatzierungsgruppe](../../linux/co-location.md), die der Einheit von SAP HANA (große Instanzen) zugeordnet ist, stellen Sie sicher, dass die Azure-VMs in unmittelbarer Nähe der Einheit von SAP HANA (große Instanzen) bereitgestellt werden. Die Art und Weise, wie Näherungsplatzierungsgruppen verwendet werden können, um die SAP-Anwendungsschicht im gleichen Azure-Rechenzentrum wie die als Revision 4 gehosteten Einheiten von SAP HANA (große Instanzen) unterzubringen, ist in [Azure-Näherungsplatzierungsgruppen für optimale Netzwerklatenz mit SAP-Anwendungen](sap-proximity-placement-scenarios.md) beschrieben.
+Eine weitere sehr wichtige Information finden Sie in der rechten unteren Ecke der Übersicht mit dem Namen der Azure-Näherungsplatzierungsgruppe, die automatisch für jede bereitgestellte Einheit von SAP HANA (große Instanzen) erstellt wird. Diese Näherungsplatzierungsgruppe muss bei der Bereitstellung der Azure-VMs referenziert werden, die die SAP-Anwendungsschicht hosten. Durch die Verwendung der [Azure-Näherungsplatzierungsgruppe](../../co-location.md), die der Einheit von SAP HANA (große Instanzen) zugeordnet ist, stellen Sie sicher, dass die Azure-VMs in unmittelbarer Nähe der Einheit von SAP HANA (große Instanzen) bereitgestellt werden. Die Art und Weise, wie Näherungsplatzierungsgruppen verwendet werden können, um die SAP-Anwendungsschicht im gleichen Azure-Rechenzentrum wie die als Revision 4 gehosteten Einheiten von SAP HANA (große Instanzen) unterzubringen, ist in [Azure-Näherungsplatzierungsgruppen für optimale Netzwerklatenz mit SAP-Anwendungen](sap-proximity-placement-scenarios.md) beschrieben.
 
 Ein zusätzliches Feld in der rechten Spalte des Headers informiert Sie über den Energiezustand der Einheit von HANA (große Instanzen).
 

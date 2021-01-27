@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 07/15/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c1403c514f5a278fd406769f1d5271cc95a5c1df
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 5ed932488551918bb0bfeb7dc9ffcb2f59b6d152
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98195737"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878900"
 ---
 # <a name="sap-hana-large-instances-network-architecture"></a>SAP HANA-Netzwerkarchitektur (große Instanzen)
 
@@ -76,7 +76,7 @@ Für SAP-Bereitstellungen in Azure gelten folgende Unterschiede:
 
 Mit Revision 3 der Stamps von SAP HANA (große Instanzen) kann die Netzwerklatenz zwischen VMs und Einheiten von SAP HANA (große Instanzen) höher sein als die typische Roundtriplatenz zwischen VMs in einem Netzwerk. Je nach Azure-Region können die gemessenen Werte die Roundtriplatenz von 0,7 ms übersteigen, die im [SAP-Hinweis 1100926 – Häufig gestellte Fragen: Netzwerkleistung](https://launchpad.support.sap.com/#/notes/1100926/E) als unterdurchschnittlich klassifiziert ist. Je nach Azure-Region und Tool zum Messen der Netzwerkroundtrip-Wartezeit zwischen einem virtuellen Azure-Computer und einer HANA-Einheit (große Instanzen) kann die gemessene Wartezeit bis zu ca. 2 Millisekunden betragen. Trotzdem stellen Kunden SAP HANA-basierte SAP-Produktionsanwendungen erfolgreich unter SAP HANA (große Instanz) bereit. Sie sollten Ihre Geschäftsprozesse unbedingt gründlich in SAP HANA in Azure (große Instanzen) testen. Mit der neuen Funktionalität „ExpressRoute Fast Path“ kann die Netzwerklatenz zwischen HANA (große Instanzen) und VMs auf der Anwendungsschicht in Azure erheblich reduziert werden (siehe unten). 
 
-Mit Revision 4 der Stamps von SAP HANA (große Instanzen) kann die Netzwerklatenz zwischen Azure-VMs, die in der Nähe des Stamps von SAP HANA (große Instanzen) bereitgestellt werden, der durchschnittlichen Klassifizierung entsprechen oder besser sein, wie in [SAP Note #1100926 – FAQ: Network performance](https://launchpad.support.sap.com/#/notes/1100926/E) (SAP-Hinweis 1100926 – FAQ: Netzwerkleistung) dokumentiert, wenn der Azure ExpressRoute Fast Path konfiguriert ist (siehe unten). Um Azure-VMs in unmittelbarer Nähe zu Einheiten von SAP HANA (große Instanzen) der Revision 4 bereitzustellen, müssen Sie [Azure-Näherungsplatzierungsgruppen](../../linux/co-location.md) nutzen. Die Art und Weise, wie Näherungsplatzierungsgruppen verwendet werden können, um die SAP-Anwendungsschicht im gleichen Azure-Rechenzentrum wie die als Revision 4 gehosteten Einheiten von SAP HANA (große Instanzen) unterzubringen, ist in [Azure-Näherungsplatzierungsgruppen für optimale Netzwerklatenz mit SAP-Anwendungen](sap-proximity-placement-scenarios.md) beschrieben.
+Mit Revision 4 der Stamps von SAP HANA (große Instanzen) kann die Netzwerklatenz zwischen Azure-VMs, die in der Nähe des Stamps von SAP HANA (große Instanzen) bereitgestellt werden, der durchschnittlichen Klassifizierung entsprechen oder besser sein, wie in [SAP Note #1100926 – FAQ: Network performance](https://launchpad.support.sap.com/#/notes/1100926/E) (SAP-Hinweis 1100926 – FAQ: Netzwerkleistung) dokumentiert, wenn der Azure ExpressRoute Fast Path konfiguriert ist (siehe unten). Um Azure-VMs in unmittelbarer Nähe zu Einheiten von SAP HANA (große Instanzen) der Revision 4 bereitzustellen, müssen Sie [Azure-Näherungsplatzierungsgruppen](../../co-location.md) nutzen. Die Art und Weise, wie Näherungsplatzierungsgruppen verwendet werden können, um die SAP-Anwendungsschicht im gleichen Azure-Rechenzentrum wie die als Revision 4 gehosteten Einheiten von SAP HANA (große Instanzen) unterzubringen, ist in [Azure-Näherungsplatzierungsgruppen für optimale Netzwerklatenz mit SAP-Anwendungen](sap-proximity-placement-scenarios.md) beschrieben.
 
 Die Auswahl der ExpressRoute-Gateway-SKU ist entscheidend, um eine deterministische Netzwerklatenz zwischen VMs und HANA (große Instanz) bereitzustellen. Im Gegensatz zu den Datenverkehrsmustern zwischen lokalen Systemen und VMs kann das Datenverkehrsmuster zwischen VMs und HANA (große Instanz) kleine, aber hohe Bursts von zu übertragenden Anforderungen und Datenvolumen hervorbringen. Damit solche Bursts korrekt verarbeitet werden, empfehlen wir die Verwendung der UltraPerformance-Gateway-SKU. Für die Typ-II-Klasse-SKUs von HANA (große Instanz) muss die UltraPerformance-Gateway-SKU als ExpressRoute-Gateway verwendet werden.
 

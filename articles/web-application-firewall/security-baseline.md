@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/13/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: b44ea6f55717712cfba4045205e02bd9f2b851df
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 4bda3622c1bb1cb66e83b82df0d13cbfee9e20a3
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98202656"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878120"
 ---
 # <a name="azure-security-baseline-for-azure-web-application-firewall"></a>Azure-Sicherheitsbaseline für Azure Web Application Firewall
 
@@ -406,7 +406,7 @@ Befolgen Sie ggf. die Empfehlungen von Security Center zur Verschlüsselung ruhe
 
 Die Azure WAF blockiert im Präventionsmodus Eindringlinge und Angriffe, die von den Regeln erkannt werden. Der Angreifer erhält eine Ausnahme vom Typ 403 (nicht autorisierter Zugriff), und die Verbindung wird getrennt. Der Schutzmodus hält solche Angriffe weiterhin in den WAF-Protokollen fest.
 
-- [Übersicht über die Integration von Application Gateway in Azure Security Center](../application-gateway/application-gateway-integration-security-center.md#overview)
+- [Übersicht über die Integration von Application Gateway in Azure Security Center](../security-center/security-center-partner-integration.md)
 
 - [WAF-Modi für Application Gateway](ag/ag-overview.md#waf-modes)
 
