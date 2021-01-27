@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 12/14/2020
 ms.author: phjensen
-ms.openlocfilehash: c8532637e695b506e372817e6f4531f9a323936b
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: 25f555038c1ce0d960266eacc673a62a1ffd5ac0
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97632128"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98736361"
 ---
 # <a name="get-started-with-azure-application-consistent-snapshot-tool-preview"></a>Erste Schritte mit dem Tool für konsistente Momentaufnahmen in Azure-Anwendungen (Vorschau)
 
@@ -126,7 +126,7 @@ Die Momentaufnahmetools können in den folgenden Szenarien verwendet werden:
 - SKU-TYP I
 - SKU-TYP II
 
-Weitere Informationen finden Sie unter [Unterstützte Szenarien für große HANA-Instanzen](/azure/virtual-machines/workloads/sap/hana-supported-scenario).
+Weitere Informationen finden Sie unter [Unterstützte Szenarien für große HANA-Instanzen](../virtual-machines/workloads/sap/hana-supported-scenario.md).
 
 ## <a name="snapshot-support-matrix-from-sap"></a>Unterstützungsmatrix für Momentaufnahmen von SAP
 

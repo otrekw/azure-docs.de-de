@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: troubleshooting
 ms.date: 09/02/2020
 ms.author: genli
-ms.openlocfilehash: 390cda604b71404735b7c14382d30067e154ef70
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: e409211c167f7b29128faf9fdfc02aa5c0a7d0e3
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91976182"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98736253"
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>Vorbereiten einer Windows-VHD oder -VHDX zum Hochladen in Azure
 
@@ -433,7 +433,7 @@ Sysprep erfordert insbesondere, dass die Laufwerke vor der Ausführung vollstän
 Jetzt kann die VHD hochgeladen werden. Weitere Informationen zum Erstellen einer VM aus einem generalisierten Datenträger finden Sie unter [Hochladen einer generalisierten VHD in Azure und Erstellen einer neuen VM](/previous-versions/azure/virtual-machines/windows/sa-upload-generalized).
 
 >[!NOTE]
-> Eine benutzerdefinierte Datei *unattend.xml* wird nicht unterstützt. Wir unterstützen aber die **AdditionalUnattendContent**-Eigenschaft, die nur eingeschränkte Unterstützung für das Hinzufügen von [microsoft-windows-shell-setup](/windows-hardware/customize/desktop/unattend/microsoft-windows-shell-setup)-Optionen in die Datei *unattend.xml* bietet, die der Azure-Bereitstellungs-Agent verwendet. Sie können z. B. [additionalUnattendContent](/dotnet/api/microsoft.azure.management.compute.models.additionalunattendcontent?view=azure-dotnet&preserve-view=true) verwenden, um FirstLogonCommands und LogonCommands hinzuzufügen. Weitere Informationen finden Sie unter [Beispiel für additionalUnattendContent FirstLogonCommands](https://github.com/Azure/azure-quickstart-templates/issues/1407).
+> Eine benutzerdefinierte Datei *unattend.xml* wird nicht unterstützt. Wir unterstützen aber die **AdditionalUnattendContent**-Eigenschaft, die nur eingeschränkte Unterstützung für das Hinzufügen von [microsoft-windows-shell-setup](/windows-hardware/customize/desktop/unattend/microsoft-windows-shell-setup)-Optionen in die Datei *unattend.xml* bietet, die der Azure-Bereitstellungs-Agent verwendet. Sie können z. B. [additionalUnattendContent](/dotnet/api/microsoft.azure.management.compute.models.additionalunattendcontent) verwenden, um FirstLogonCommands und LogonCommands hinzuzufügen. Weitere Informationen finden Sie unter [Beispiel für additionalUnattendContent FirstLogonCommands](https://github.com/Azure/azure-quickstart-templates/issues/1407).
 
 ## <a name="convert-the-virtual-disk-to-a-fixed-size-vhd"></a>Konvertieren des virtuellen Datenträgers in eine VHD mit fester Größe
 

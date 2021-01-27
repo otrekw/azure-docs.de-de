@@ -4,12 +4,12 @@ description: Lassen Sie sich per SMS, Webhook und E-Mail usw. benachrichtigen, w
 ms.subservice: alerts
 ms.topic: conceptual
 ms.date: 09/17/2018
-ms.openlocfilehash: e0d71c014780637b490c745ed829078d138df675
-ms.sourcegitcommit: d488a97dc11038d9cef77a0235d034677212c8b3
+ms.openlocfilehash: 8a30c0a0527f98cc00f7888299c09f1f26c3dd09
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2020
-ms.locfileid: "97708431"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98735213"
 ---
 # <a name="alerts-on-activity-log"></a>Warnungen zum Aktivitätsprotokoll
 
@@ -19,7 +19,7 @@ Aktivitätsprotokollwarnungen sind Warnungen, die aktiviert werden, wenn ein neu
 
 > [!NOTE]
 > * Warnungen können **nicht** für Ereignisse in der Kategorie „Warnung“ des Aktivitätsprotokolls erstellt werden.
-> * Aktivitätsprotokollwarnungen mit der Kategorie „Sicherheit“ können auch in einem [neuen aktualisierten Flow](https://docs.microsoft.com/azure/security-center/continuous-export?tabs=azure-portal) auf [ServiceNow](https://docs.microsoft.com/azure/security-center/export-to-siem) festgelegt werden.
+> * Aktivitätsprotokollwarnungen mit der Kategorie „Sicherheit“ können auch in einem [neuen aktualisierten Flow](../../security-center/continuous-export.md?tabs=azure-portal) auf [ServiceNow](../../security-center/export-to-siem.md) festgelegt werden.
 
 Normalerweise erstellen Sie Aktivitätsprotokollwarnungen, um Benachrichtigungen zu empfangen, wenn Folgendes geschieht:
 

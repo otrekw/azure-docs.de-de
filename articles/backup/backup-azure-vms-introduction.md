@@ -3,12 +3,12 @@ title: Informationen zur Sicherung von Azure-VMs
 description: In diesem Artikel erfahren Sie, wie der Azure Backup-Dienst virtuelle Azure-Computer sichert und wie bewährte Methoden befolgt werden können.
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: 291c50d4ac52d34a218b1b7cc76d625da3119d25
-ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
+ms.openlocfilehash: 691fe991ad141696c0c68e915d7225001a1befd0
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97968992"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98733569"
 ---
 # <a name="an-overview-of-azure-vm-backup"></a>Ein Überblick über die Sicherung von Azure-VMs
 
@@ -121,7 +121,7 @@ Berücksichtigen Sie beim Konfigurieren von VM-Sicherungen die folgenden bewähr
 - Wenn Sie VMs in einem einzigen Tresor wiederherstellen, sollten Sie unbedingt verschiedene [„Allgemein v2“-Speicherkonten](../storage/common/storage-account-upgrade.md) verwenden, um sicherzustellen, dass das Zielspeicherkonto nicht gedrosselt wird. Beispielsweise muss jeder virtuelle Computer über ein anderes Speicherkonto verfügen. Wenn also 10 virtuelle Computer wiederhergestellt werden, verwenden Sie 10 verschiedene Speicherkonten.
 - Wenn Sie virtuelle Storage Premium-Computer mit der sofortigen Wiederherstellung sichern, empfiehlt es sich, *50 %* freien Speicherplatz des gesamten zugeordneten Speicherplatzes zuzuordnen. Er wird **nur** für die erste Sicherung benötigt. Der freie Speicherplatz von 50 % ist keine Voraussetzung für Sicherungen, die nach Abschluss der ersten Sicherung ausgeführt werden.
 - Die maximale Anzahl von Datenträgern pro Speicherkonto hängt davon ab, wie stark Anwendungen, die auf einer IaaS-VM (Infrastructure-as-a-Service) ausgeführt werden, auf den Datenträger zugreifen. Wenn 5 bis 10 Datenträger oder mehr in einem einzelnen Speicherkonto vorhanden sind, sollten Sie grundsätzlich die Last ausgleichen, indem Sie einige Datenträger in getrennte Speicherkonten verschieben.
-- Wenn Sie virtuelle Computer mit verwalteten Datenträgern mithilfe von PowerShell wiederherstellen möchten, geben Sie den zusätzlichen Parameter **_TargetResourceGroupName_* _ an, um die Ressourcengruppe anzugeben, in der verwaltete Datenträger wiederhergestellt werden. Weitere Informationen finden Sie [hier](https://docs.microsoft.com/azure/backup/backup-azure-vms-automation#restore-managed-disks).
+- Wenn Sie virtuelle Computer mit verwalteten Datenträgern mithilfe von PowerShell wiederherstellen möchten, geben Sie den zusätzlichen Parameter **_TargetResourceGroupName_* _ an, um die Ressourcengruppe anzugeben, in der verwaltete Datenträger wiederhergestellt werden. Weitere Informationen finden Sie [hier](./backup-azure-vms-automation.md#restore-managed-disks).
 
 ## <a name="backup-costs"></a>Sicherungskosten
 

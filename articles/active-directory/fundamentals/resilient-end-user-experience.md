@@ -13,12 +13,12 @@ ms.reviewer: ''
 ms.date: 11/30/2020
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4c695466fbd50435a85c63842ceb50ce80765760
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: f6896a812ec173994a1299a28ff2e99a0f351391
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97630291"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98724440"
 ---
 # <a name="resilient-end-user-experience"></a>Resiliente Endbenutzerumgebung
 
@@ -34,19 +34,19 @@ Die Benutzerumgebung für die Registrierung und Anmeldung besteht aus den folgen
 
 ## <a name="choose-between-user-flow-and-custom-policy"></a>Auswählen zwischen Benutzerflow und benutzerdefinierter Richtlinie  
 
-Um Ihnen bei der Einrichtung der gängigsten Identitätsaufgaben zu helfen, stellt Azure AD B2C integrierte konfigurierbare [Benutzerflows](https://docs.microsoft.com/azure/active-directory-b2c/user-flow-overview) bereit. Sie können auch eigene [benutzerdefinierte Richtlinien](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-overview) erstellen, um maximale Flexibilität zu nutzen. Es wird jedoch empfohlen, benutzerdefinierte Richtlinien nur für komplexe Szenarien zu verwenden.
+Um Ihnen bei der Einrichtung der gängigsten Identitätsaufgaben zu helfen, stellt Azure AD B2C integrierte konfigurierbare [Benutzerflows](../../active-directory-b2c/user-flow-overview.md) bereit. Sie können auch eigene [benutzerdefinierte Richtlinien](../../active-directory-b2c/custom-policy-overview.md) erstellen, um maximale Flexibilität zu nutzen. Es wird jedoch empfohlen, benutzerdefinierte Richtlinien nur für komplexe Szenarien zu verwenden.
 
 ### <a name="how-to-decide-between-user-flow-and-custom-policy"></a>Entscheidung zwischen Benutzerflow und benutzerdefinierter Richtlinie
 
 Wählen Sie integrierte Benutzerflows aus, wenn Ihre Geschäftsanforderungen durch diese erfüllt werden können. Da sie von Microsoft ausgiebig getestet wurden, können Sie den Testaufwand für die Validierung der Funktion, Leistung oder Skalierung dieser Identitätsbenutzerflows auf Richtlinienebene minimieren. Sie müssen Ihre Anwendungen weiterhin auf Funktionalität, Leistung und Skalierung testen.
 
-Sollten Sie sich aufgrund Ihrer Geschäftsanforderungen für [benutzerdefinierte Richtlinien](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started) entscheiden, stellen Sie sicher, dass Sie zusätzlich zu den Tests auf Anwendungsebene auch Tests auf Richtlinienebene hinsichtlich Funktionalität, Leistung oder Skalierung durchführen.
+Sollten Sie sich aufgrund Ihrer Geschäftsanforderungen für [benutzerdefinierte Richtlinien](../../active-directory-b2c/custom-policy-get-started.md) entscheiden, stellen Sie sicher, dass Sie zusätzlich zu den Tests auf Anwendungsebene auch Tests auf Richtlinienebene hinsichtlich Funktionalität, Leistung oder Skalierung durchführen.
 
-Lesen Sie den Artikel, in dem [Benutzerflows und benutzerdefinierte Richtlinien verglichen werden](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-overview#comparing-user-flows-and-custom-policies), um Sie bei Ihrer Entscheidung zu unterstützen.
+Lesen Sie den Artikel, in dem [Benutzerflows und benutzerdefinierte Richtlinien verglichen werden](../../active-directory-b2c/custom-policy-overview.md#comparing-user-flows-and-custom-policies), um Sie bei Ihrer Entscheidung zu unterstützen.
 
 ## <a name="choose-multiple-idps"></a>Auswählen mehrerer IDPs
 
-Wenn Sie einen [externen Identitätsanbieter](https://docs.microsoft.com/azure/active-directory-b2c/technical-overview#external-identity-providers) wie Facebook verwenden, stellen Sie sicher, dass Sie einen Ausweichplan für den Fall haben, dass der externe Anbieter nicht verfügbar ist.
+Wenn Sie einen [externen Identitätsanbieter](../../active-directory-b2c/technical-overview.md#external-identity-providers) wie Facebook verwenden, stellen Sie sicher, dass Sie einen Ausweichplan für den Fall haben, dass der externe Anbieter nicht verfügbar ist.
 
 ### <a name="how-to-set-up-multiple-idps"></a>Einrichten mehrerer IDPs
 
@@ -58,11 +58,11 @@ Schließen Sie als Teil des Registrierungsprozesses des externen Identitätsanbi
 
  2. Konfigurieren Sie eine Profilrichtlinie, um Benutzern zu ermöglichen, die [andere Identität mit Ihrem Konto zu verknüpfen](https://github.com/Azure-Samples/active-directory-b2c-advanced-policies/tree/master/account-linking), nachdem sie sich angemeldet haben.
 
- 3. Benachrichtigen Sie die Benutzer und erlauben Sie ihnen, während eines Ausfalls [zu einem alternativen IDP zu wechseln](https://docs.microsoft.com/azure/active-directory-b2c/customize-ui-with-html#configure-dynamic-custom-page-content-uri).
+ 3. Benachrichtigen Sie die Benutzer und erlauben Sie ihnen, während eines Ausfalls [zu einem alternativen IDP zu wechseln](../../active-directory-b2c/customize-ui-with-html.md#configure-dynamic-custom-page-content-uri).
 
 ## <a name="availability-of-multi-factor-authentication"></a>Verfügbarkeit von Multi-Factor Authentication
 
-Wenn Sie einen [Telefondienst für Multi-Factor Authentication (MFA)](https://docs.microsoft.com/azure/active-directory-b2c/phone-authentication) verwenden, stellen Sie sicher, einen alternativen Dienstanbieter zu berücksichtigen. Beim lokalen Telco- oder Telefondienstanbieter können Unterbrechungen im Dienst auftreten.
+Wenn Sie einen [Telefondienst für Multi-Factor Authentication (MFA)](../../active-directory-b2c/phone-authentication.md) verwenden, stellen Sie sicher, einen alternativen Dienstanbieter zu berücksichtigen. Beim lokalen Telco- oder Telefondienstanbieter können Unterbrechungen im Dienst auftreten.
 
 ### <a name="how-to-choose-an-alternate-mfa"></a>Auswählen einer alternativen MFA  
 

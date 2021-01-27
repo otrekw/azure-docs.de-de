@@ -13,12 +13,12 @@ ms.reviewer: ''
 ms.date: 11/30/2020
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ecde474abf3c814b7c3afa4ae18d044868785cf5
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: ff7505e7c47b93f32efd9de60463873026247329
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95919073"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98724924"
 ---
 # <a name="resilience-through-developer-best-practices"></a>Resilienz durch Best Practices für Entwickler
 
@@ -28,7 +28,7 @@ In diesem Artikel möchten wir einige Erkenntnisse aus unserer langjährigen Erf
 
 ## <a name="use-the-microsoft-authentication-library-msal"></a>Verwenden der Microsoft Authentication Library (MSAL)
 
-Die [Microsoft Authentication Library (MSAL)](https://docs.microsoft.com/azure/active-directory/develop/msal-overview) und die [Microsoft Identity-Webauthentifizierungsbibliothek für ASP.NET](https://docs.microsoft.com/azure/active-directory/develop/reference-v2-libraries) vereinfachen das Abrufen, Verwalten, Zwischenspeichern und Aktualisieren der Token, die für eine Anwendung erforderlich sind. Diese Bibliotheken sind speziell für die Unterstützung von Microsoft Identity optimiert und bieten Features zur Verbesserung der Anwendungsresilienz.
+Die [Microsoft Authentication Library (MSAL)](../develop/msal-overview.md) und die [Microsoft Identity-Webauthentifizierungsbibliothek für ASP.NET](../develop/reference-v2-libraries.md) vereinfachen das Abrufen, Verwalten, Zwischenspeichern und Aktualisieren der Token, die für eine Anwendung erforderlich sind. Diese Bibliotheken sind speziell für die Unterstützung von Microsoft Identity optimiert und bieten Features zur Verbesserung der Anwendungsresilienz.
 
 Entwickler sollten die neuesten Versionen der MSAL verwenden und diese stets aktualisieren. Erfahren Sie, wie Sie die [Resilienz bei Authentifizierung und Autorisierung](resilience-app-development-overview.md) in Ihren Anwendungen erhöhen können. Vermeiden Sie nach Möglichkeit die Implementierung eines eigenen Authentifizierungsstapels, und verwenden Sie stattdessen eingeführte und bewährte Bibliotheken.
 
@@ -40,7 +40,7 @@ Der Microsoft Azure AD B2C-Verzeichnisdienst unterstützt Milliarden von Authe
 
 - **Vermeiden Sie das Schreiben von Funktionen in das Verzeichnis während der Anmeldung**: Führen Sie in Ihren benutzerdefinierten Richtlinien einen Schreibvorgang bei der Anmeldung niemals ohne Vorbedingung (if-Klausel) aus. Ein Anwendungsfall, der während der Anmeldung einen Schreibvorgang erfordert, ist die [Just-In-Time-Migration von Benutzerkennwörtern](https://github.com/azure-ad-b2c/user-migration/tree/master/seamless-account-migration). Vermeiden Sie alle Szenarien, die bei jeder Anmeldung einen Schreibvorgang erfordern.
 
-  - [Vorbedingungen](https://docs.microsoft.com/azure/active-directory-b2c/userjourneys) in einer User Journey sehen wie folgt aus:
+  - [Vorbedingungen](../../active-directory-b2c/userjourneys.md) in einer User Journey sehen wie folgt aus:
 
   ``
   <Precondition Type="ClaimEquals" ExecuteActionsIf="true"> 
@@ -50,7 +50,7 @@ Der Microsoft Azure AD B2C-Verzeichnisdienst unterstützt Milliarden von Authe
   ``
   - Erhöhen Sie die Widerstandsfähigkeit gegen botgesteuerte Anmeldungen [durch Integration eines CAPTCHA-Systems](https://github.com/azure-ad-b2c/samples/tree/master/policies/captcha-integration).
 
-  - Nutzen Sie ein [Beispiel für Auslastungstests](https://docs.microsoft.com/azure/active-directory-b2c/best-practices#testing), um Registrierungen und Anmeldungen zu simulieren. 
+  - Nutzen Sie ein [Beispiel für Auslastungstests](../../active-directory-b2c/best-practices.md#testing), um Registrierungen und Anmeldungen zu simulieren. 
 
 - **Grundlegendes zur Drosselung**: Das Verzeichnis implementiert Drosselungsregeln sowohl auf Anwendungs- als auch auf Mandantenebene. Es gibt weitere Ratenbegrenzungen für die Vorgänge zum Lesen/GET, Schreiben/POST, Aktualisieren/PUT und Löschen/DELETE. Für jeden Vorgang gilt ein anderes Limit.
 
@@ -62,11 +62,11 @@ Der Microsoft Azure AD B2C-Verzeichnisdienst unterstützt Milliarden von Authe
 
   - Erarbeiten Sie einen Zeitplan für die Migration. Wenn Sie planen, Benutzer mithilfe von Microsoft Graph zu Azure AD B2C zu migrieren, berücksichtigen Sie die Grenzwerte für Anwendung und Mandant, um die Zeit zu berechnen, die für die vollständige Migration der Benutzer benötigt wird. Wenn Sie den Auftrag oder das Skript zum Erstellen von Benutzern auf zwei Anwendungen aufteilen, können einen anwendungsbasierten Grenzwert verwenden. Dieser Grenzwert muss jedoch unter dem Schwellenwert pro Mandant liegen.
 
-  - Informieren Sie sich gründlich über die Auswirkungen des Migrationsauftrags auf andere Anwendungen. Berücksichtigen Sie den Livedatenverkehr aus anderen abhängigen Anwendungen, um sicherzustellen, dass Sie keine Drosselung auf Mandantenebene und keine Ressourcenknappheit für Ihre Liveanwendung verursachen. Weitere Informationen finden Sie im [Leitfaden zu Einschränkungen in Microsoft Graph](https://docs.microsoft.com/graph/throttling).
+  - Informieren Sie sich gründlich über die Auswirkungen des Migrationsauftrags auf andere Anwendungen. Berücksichtigen Sie den Livedatenverkehr aus anderen abhängigen Anwendungen, um sicherzustellen, dass Sie keine Drosselung auf Mandantenebene und keine Ressourcenknappheit für Ihre Liveanwendung verursachen. Weitere Informationen finden Sie im [Leitfaden zu Einschränkungen in Microsoft Graph](/graph/throttling).
   
 ## <a name="extend-token-lifetimes"></a>Verlängern der Tokenlebensdauer
 
-Für unwahrscheinliche Szenarien – wenn beispielsweise der Azure AD B2C-Authentifizierungsdienst keine neuen Registrierungen und Anmeldungen durchführen kann – können Sie dennoch eine Problementschärfung für bereits angemeldete Benutzer bereitstellen. Per [Konfiguration](https://docs.microsoft.com/azure/active-directory-b2c/configure-tokens) können Sie es bereits angemeldeten Benutzern ermöglichen, die Anwendung ohne spürbare Unterbrechung weiter zu nutzen, bis sie sich von der Anwendung abmelden oder für die [Sitzung](https://docs.microsoft.com/azure/active-directory-b2c/session-behavior) aufgrund von Inaktivität ein Timeout auftritt.
+Für unwahrscheinliche Szenarien – wenn beispielsweise der Azure AD B2C-Authentifizierungsdienst keine neuen Registrierungen und Anmeldungen durchführen kann – können Sie dennoch eine Problementschärfung für bereits angemeldete Benutzer bereitstellen. Per [Konfiguration](../../active-directory-b2c/configure-tokens.md) können Sie es bereits angemeldeten Benutzern ermöglichen, die Anwendung ohne spürbare Unterbrechung weiter zu nutzen, bis sie sich von der Anwendung abmelden oder für die [Sitzung](../../active-directory-b2c/session-behavior.md) aufgrund von Inaktivität ein Timeout auftritt.
 
 Geschäftsanforderungen und das gewünschte Endbenutzererlebnis bestimmen die Häufigkeit der Tokenaktualisierung für Webanwendungen und Single-Page-Anwendungen (SPAs).
 
@@ -82,7 +82,7 @@ Geschäftsanforderungen und das gewünschte Endbenutzererlebnis bestimmen die H�
 
   - Konfigurieren Sie Ihre Anwendung so, dass sie ein API-Gateway als Authentifizierungsproxy verwendet. In dieser Konfiguration wird die SPA ohne Authentifizierung geladen, und die API-Aufrufe erfolgen an das API-Gateway. Das API-Gateway leitet den Benutzer basierend auf einer Richtlinie per [Zuweisung eines Autorisierungscodes](https://oauth.net/2/grant-types/authorization-code/) durch einen Anmeldevorgang und authentifiziert den Benutzer. Anschließend wird die Authentifizierungssitzung zwischen API-Gateway und Client über ein Authentifizierungscookie beibehalten. Die APIs werden über das API-Gateway unter Verwendung des Tokens bedient, das vom API-Gateway oder anderen direkten Authentifizierungsmethoden abgerufen wird, wie etwa Zertifikaten, Clientanmeldeinformationen oder API-Schlüsseln.
 
-  - [Migrieren Sie Ihre SPA von implizite Genehmigungen](https://developer.microsoft.com/identity/blogs/msal-js-2-0-supports-authorization-code-flow-is-now-generally-available/) zu einem [Genehmigungsflow per Autorisierungscode](https://docs.microsoft.com/azure/active-directory-b2c/implicit-flow-single-page-application) mit Unterstützung für PKCE (Proof Key for Code Exchange) und CORS (Cross-Origin Resource Sharing). Migrieren Sie Ihre Anwendung von MSAL.js 1.x zu MSAL.js 2.x, um Resilienz für Ihre Webanwendungen zu erzielen.
+  - [Migrieren Sie Ihre SPA von implizite Genehmigungen](https://developer.microsoft.com/identity/blogs/msal-js-2-0-supports-authorization-code-flow-is-now-generally-available/) zu einem [Genehmigungsflow per Autorisierungscode](../../active-directory-b2c/implicit-flow-single-page-application.md) mit Unterstützung für PKCE (Proof Key for Code Exchange) und CORS (Cross-Origin Resource Sharing). Migrieren Sie Ihre Anwendung von MSAL.js 1.x zu MSAL.js 2.x, um Resilienz für Ihre Webanwendungen zu erzielen.
 
   - Für mobile Anwendungen empfiehlt es sich, die Lebensdauer sowohl des Aktualisierungs- als auch des Zugriffstokens zu verlängern.
 
@@ -90,25 +90,25 @@ Geschäftsanforderungen und das gewünschte Endbenutzererlebnis bestimmen die H�
 
 ## <a name="configure-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens
 
-Mit dem Feature [Einmaliges Anmelden](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on) (Single Sign-On, SSO) melden sich Benutzer einmal mit einem einzigen Konto an und erhalten Zugriff auf mehrere Anwendungen. Dabei kann es sich um eine mobile Anwendung, eine Webanwendung oder eine Single-Page-Anwendung handeln. Plattform und Domänenname spielen keine Rolle. Wenn ein Benutzer sich erstmals bei einer Anwendung anmeldet, speichert Azure AD B2C eine [cookiebasierte Sitzung](https://docs.microsoft.com/azure/active-directory-b2c/session-overview).
+Mit dem Feature [Einmaliges Anmelden](../manage-apps/what-is-single-sign-on.md) (Single Sign-On, SSO) melden sich Benutzer einmal mit einem einzigen Konto an und erhalten Zugriff auf mehrere Anwendungen. Dabei kann es sich um eine mobile Anwendung, eine Webanwendung oder eine Single-Page-Anwendung handeln. Plattform und Domänenname spielen keine Rolle. Wenn ein Benutzer sich erstmals bei einer Anwendung anmeldet, speichert Azure AD B2C eine [cookiebasierte Sitzung](../../active-directory-b2c/session-behavior.md).
 
 Bei nachfolgenden Authentifizierungsanforderungen liest und überprüft Azure AD B2C die cookiebasierte Sitzung und stellt ein Zugriffstoken aus, ohne den Benutzer zur erneuten Anmeldung aufzufordern. Wenn SSO mit eingeschränktem Gültigkeitsbereich auf Richtlinien- oder Anwendungsebene konfiguriert ist, wird für einen späteren Zugriff auf andere Richtlinien und Anwendungen eine erneute Authentifizierung benötigt.
 
 ### <a name="how-to-configure-sso"></a>So konfigurieren Sie SSO
 
-[Konfigurieren Sie SSO](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sso-quick-start) mandantenweit (dies ist die Standardeinstellung), sodass mehrere Anwendungen und Benutzerflows in Ihrem Mandanten dieselbe Benutzersitzung gemeinsam nutzen können. Eine mandantenweite Konfiguration bietet das höchste Maß an Resilienz für neue Authentifizierungen.  
+[Konfigurieren Sie SSO](../hybrid/how-to-connect-sso-quick-start.md) mandantenweit (dies ist die Standardeinstellung), sodass mehrere Anwendungen und Benutzerflows in Ihrem Mandanten dieselbe Benutzersitzung gemeinsam nutzen können. Eine mandantenweite Konfiguration bietet das höchste Maß an Resilienz für neue Authentifizierungen.  
 
 ## <a name="safe-deployment-practices"></a>Sichere Bereitstellungsmethoden
 
-Änderungen an Code und Konfiguration sind die häufigsten Gründe für Dienstunterbrechungen. CI/CD-Prozesse und -Tools (Continuous Integration und Continuous Delivery) helfen bei einer schnellen Bereitstellung in großem Stil und reduzieren menschliche Fehler während der Test-, Bereitstellungs- und Produktionsphase. Nutzen Sie CI/CD, um Fehler zu minimieren und mehr Effizienz und Konsistenz zu erzielen. [Azure Pipelines](https://docs.microsoft.com/azure/devops/pipelines/apps/cd/azure/cicd-data-overview) ist ein Beispiel für CI/CD.
+Änderungen an Code und Konfiguration sind die häufigsten Gründe für Dienstunterbrechungen. CI/CD-Prozesse und -Tools (Continuous Integration und Continuous Delivery) helfen bei einer schnellen Bereitstellung in großem Stil und reduzieren menschliche Fehler während der Test-, Bereitstellungs- und Produktionsphase. Nutzen Sie CI/CD, um Fehler zu minimieren und mehr Effizienz und Konsistenz zu erzielen. [Azure Pipelines](/azure/devops/pipelines/apps/cd/azure/cicd-data-overview) ist ein Beispiel für CI/CD.
 
 ## <a name="web-application-firewall"></a>Web Application Firewall
 
 Schützen Sie Ihre Anwendungen vor bekannten Sicherheitsrisiken wie DDoS-Angriffen (Distributed Denial of Service), Einschleusung von SQL-Befehlen, Cross-Site Scripting, Remotecodeausführung und vielen weiteren. Eine Dokumentation dieser Risiken finden Sie unter [OWASP Top 10](https://owasp.org/www-project-top-ten/). Mit einer Web Application Firewall (WAF) können Sie Ihre Systeme und Benutzer vor gängigen Exploits und Sicherheitsrisiken schützen.
 
-- Nutzen Sie die Azure [WAF](https://docs.microsoft.com/azure/web-application-firewall/overview), die zentralen Schutz vor Angriffen bietet.
+- Nutzen Sie die Azure [WAF](../../web-application-firewall/overview.md), die zentralen Schutz vor Angriffen bietet.
 
-- Verwenden Sie die WAF mit [Identity Protection und bedingtem Zugriff für Azure AD B2C](https://docs.microsoft.com/azure/active-directory-b2c/conditional-access-identity-protection-overview), um bei Verwendung von Azure AD B2C Schutz auf mehreren Ebenen bereitzustellen.  
+- Verwenden Sie die WAF mit [Identity Protection und bedingtem Zugriff für Azure AD B2C](../../active-directory-b2c/conditional-access-identity-protection-overview.md), um bei Verwendung von Azure AD B2C Schutz auf mehreren Ebenen bereitzustellen.  
 
 ## <a name="secrets-rotation"></a>Geheimnisrotation
 
@@ -116,9 +116,9 @@ Azure AD B2C verwendet Geheimnisse für Anwendungen, APIs, Richtlinien und Ver
 
 ### <a name="how-to-implement-secret-rotation"></a>So implementieren Sie die Geheimnisrotation
 
-- Verwenden Sie [verwaltete Identitäten](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview), damit sich unterstützte Ressourcen bei jedem Dienst authentifizieren können, der die Azure AD-Authentifizierung unterstützt. Mithilfe von verwalteten Identitäten können Sie Ressourcen automatisch verwalten, einschließlich der Rotation von Anmeldeinformationen.
+- Verwenden Sie [verwaltete Identitäten](../managed-identities-azure-resources/overview.md), damit sich unterstützte Ressourcen bei jedem Dienst authentifizieren können, der die Azure AD-Authentifizierung unterstützt. Mithilfe von verwalteten Identitäten können Sie Ressourcen automatisch verwalten, einschließlich der Rotation von Anmeldeinformationen.
 
-- Legen Sie ein Inventar sämtlicher [Schlüssel und Zertifikate](https://docs.microsoft.com/azure/active-directory-b2c/policy-keys-overview) an, die in Azure AD B2C konfiguriert sind. Diese Liste enthält wahrscheinlich Schlüssel, die in benutzerdefinierten Richtlinien, [APIs](https://docs.microsoft.com/azure/active-directory-b2c/secure-rest-api), signierenden ID-Token und Zertifikaten für SAML verwendet werden.
+- Legen Sie ein Inventar sämtlicher [Schlüssel und Zertifikate](../../active-directory-b2c/policy-keys-overview.md) an, die in Azure AD B2C konfiguriert sind. Diese Liste enthält wahrscheinlich Schlüssel, die in benutzerdefinierten Richtlinien, [APIs](../../active-directory-b2c/secure-rest-api.md), signierenden ID-Token und Zertifikaten für SAML verwendet werden.
 
 - Rotieren Sie über CI/CD Geheimnisse, die innerhalb von zwei Monaten vor dem erwarteten Spitzenzeitraum ablaufen werden. Die empfohlene maximale Kryptoperiode für private Schlüssel, die einem Zertifikat zugeordnet sind, beträgt ein Jahr.
 
@@ -130,7 +130,7 @@ Im Kontext der Resilienz muss das Testen von REST-APIs die Überprüfung von HTT
 
 ### <a name="how-to-test-apis"></a>So testen Sie APIs
 
-Ihr Testplan sollte [umfassende API-Tests](https://docs.microsoft.com/azure/active-directory-b2c/best-practices#testing) beinhalten. Wenn Sie einen bevorstehenden Anstieg des Datenverkehrs aufgrund von Werbeaktionen oder Feiertagen planen, müssen Sie Ihre Auslastungstests mit den neuen Schätzungen überarbeiten. Führen Sie die Auslastungstests Ihrer APIs und des CDN (Content Delivery Network) in einer Entwicklerumgebung durch, nicht in der Produktionsumgebung.
+Ihr Testplan sollte [umfassende API-Tests](../../active-directory-b2c/best-practices.md#testing) beinhalten. Wenn Sie einen bevorstehenden Anstieg des Datenverkehrs aufgrund von Werbeaktionen oder Feiertagen planen, müssen Sie Ihre Auslastungstests mit den neuen Schätzungen überarbeiten. Führen Sie die Auslastungstests Ihrer APIs und des CDN (Content Delivery Network) in einer Entwicklerumgebung durch, nicht in der Produktionsumgebung.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

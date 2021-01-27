@@ -3,18 +3,18 @@ title: Erstellen und Bereitstellen von Ressourcengruppenprojekten in Visual Stud
 description: Verwenden Sie Visual Studio, um ein Azure-Ressourcengruppenprojekt zu erstellen und die Ressourcen in Azure bereitzustellen.
 ms.topic: conceptual
 ms.date: 10/16/2019
-ms.openlocfilehash: 479dbed1f288148c24fc8464f7895cd3e2b182f9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f1a06a3e89c5fd2ea8906ff9a438c170f135d6ec
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91372645"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98704413"
 ---
 # <a name="creating-and-deploying-azure-resource-groups-through-visual-studio"></a>Erstellen und Bereitstellen von Azure-Ressourcengruppen mit Visual Studio
 
 Mit Visual Studio können Sie ein Projekt erstellen, das Ihre Infrastruktur und Ihren Code in Azure bereitstellt. Beispielsweise können Sie den Webhost, die Website und den Code für die Website bereitstellen. Visual Studio bietet viele verschiedene Starter-Vorlagen für die Bereitstellung gängiger Szenarien. In diesem Artikel stellen Sie eine Web-App bereit.
 
-Informationen zur Verwendung von Visual Studio 2019 oder höher mit den installierten Workloads für ASP.NET und die Azure-Entwicklung finden Sie in [diesem Artikel](/visualstudio/install/install-visual-studio?view=vs-2019). Bei Verwendung von Visual Studio 2017 ist der Ablauf größtenteils identisch.
+Informationen zur Verwendung von Visual Studio 2019 oder höher mit den installierten Workloads für ASP.NET und die Azure-Entwicklung finden Sie in [diesem Artikel](/visualstudio/install/install-visual-studio). Bei Verwendung von Visual Studio 2017 ist der Ablauf größtenteils identisch.
 
 ## <a name="create-azure-resource-group-project"></a>Erstellen eines Azure-Ressourcengruppenprojekts
 
@@ -203,7 +203,7 @@ Jetzt haben Sie die Infrastruktur für Ihre App bereitgestellt, im Projekt ist j
 
     ![Ressource hinzufügen](./media/create-visual-studio-deployment-project/add-resource-2.png)
 
-1. Wählen Sie nun **Web Deploy für Web Apps**aus.
+1. Wählen Sie nun **Web Deploy für Web Apps** aus.
 
     ![Hinzufügen von Web Deploy](./media/create-visual-studio-deployment-project/add-web-deploy.png)
 

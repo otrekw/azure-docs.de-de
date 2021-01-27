@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 40738f8fcb14c48ccfe3bc7869e5176c4ab63165
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 202f2190e68b89d790c628248ae89f0cb274ff76
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98222329"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98725210"
 ---
 # <a name="3-create-a-security-plan-for-external-access"></a>3. Erstellen eines Sicherheitsplans für den externen Zugriff 
 
@@ -93,7 +93,7 @@ Die Anmeldeanforderungen werden über den [bedingten Zugriff in Azure AD](../co
 | Hohes Risiko| Mehrstufige Authentifizierung immer erforderlich für externe Benutzer |
 
 
-Derzeit können Sie die [mehrstufige Authentifizierung für B2B-Benutzer in Ihrem Mandanten erzwingen](https://docs.microsoft.com/azure/active-directory/external-identities/b2b-tutorial-require-mfa). 
+Derzeit können Sie die [mehrstufige Authentifizierung für B2B-Benutzer in Ihrem Mandanten erzwingen](../external-identities/b2b-tutorial-require-mfa.md). 
 
 **Benutzer- und gerätebasierte Anmeldebedingungen**
 
@@ -106,11 +106,11 @@ Derzeit können Sie die [mehrstufige Authentifizierung für B2B-Benutzer in Ihre
 
 Um den Gerätestatus als Eingabe für eine Richtlinie verwenden zu können, muss das Gerät in Ihrem Mandanten registriert oder verknüpft sein. 
 
-Es können [risikobasierte Richtlinien in Identity Protection](https://docs.microsoft.com/azure/active-directory/conditional-access/howto-conditional-access-policy-risk) angewandt werden. Probleme müssen jedoch im Basismandanten des Benutzers behoben werden.
+Es können [risikobasierte Richtlinien in Identity Protection](../conditional-access/howto-conditional-access-policy-risk.md) angewandt werden. Probleme müssen jedoch im Basismandanten des Benutzers behoben werden.
 
-Für [Netzwerkstandorte](https://docs.microsoft.com/azure/active-directory/conditional-access/howto-conditional-access-policy-location) können Sie den Zugriff auf einen beliebigen IP-Adressbereich in Ihrem Besitz beschränken. Sie können diese Vorgehensweise nutzen, wenn Sie festlegen möchten, dass externe Partner nur auf eine Anwendung zugreifen können, wenn sie sich am Standort Ihrer Organisation befinden.
+Für [Netzwerkstandorte](../conditional-access/howto-conditional-access-policy-location.md) können Sie den Zugriff auf einen beliebigen IP-Adressbereich in Ihrem Besitz beschränken. Sie können diese Vorgehensweise nutzen, wenn Sie festlegen möchten, dass externe Partner nur auf eine Anwendung zugreifen können, wenn sie sich am Standort Ihrer Organisation befinden.
 
-[Weitere Informationen zu Richtlinien für bedingten Zugriff](https://docs.microsoft.com/azure/active-directory/conditional-access/overview).
+[Weitere Informationen zu Richtlinien für bedingten Zugriff](../conditional-access/overview.md).
 
 ## <a name="document-access-review-policies"></a>Dokumentieren von Richtlinien für die Zugriffsüberprüfung
 
@@ -126,13 +126,13 @@ Auch wenn die Richtlinien spezifisch an Ihre Anforderungen angepasst sind, sollt
 
 * **Zugriffsüberprüfungen in der Berechtigungsverwaltung:** Verwenden Sie die Funktionen in der Berechtigungsverwaltung für Folgendes:
 
-   * [Automatischer Ablauf von Zugriffspaketen](https://docs.microsoft.com/azure/active-directory/governance/entitlement-management-access-package-lifecycle-policy) und somit des Zugriffs von externen Benutzern auf die enthaltenen Ressourcen.
+   * [Automatischer Ablauf von Zugriffspaketen](../governance/entitlement-management-access-package-lifecycle-policy.md) und somit des Zugriffs von externen Benutzern auf die enthaltenen Ressourcen.
 
-   * Festlegen einer [erforderlichen Überprüfungshäufigkeit](https://docs.microsoft.com/azure/active-directory/governance/entitlement-management-access-reviews-create) für Zugriffsüberprüfungen.
+   * Festlegen einer [erforderlichen Überprüfungshäufigkeit](../governance/entitlement-management-access-reviews-create.md) für Zugriffsüberprüfungen.
 
-   * Planen regelmäßiger Überprüfungen mit dem Geschäftsinhaber und dem Partnervertreter, wenn Sie [verbundene Organisationen](https://docs.microsoft.com/azure/active-directory/governance/entitlement-management-organization) verwenden, um alle Benutzer von einem einzelnen Partner zu gruppieren.
+   * Planen regelmäßiger Überprüfungen mit dem Geschäftsinhaber und dem Partnervertreter, wenn Sie [verbundene Organisationen](../governance/entitlement-management-organization.md) verwenden, um alle Benutzer von einem einzelnen Partner zu gruppieren.
 
-* **Microsoft 365-Gruppen:** Legen Sie eine [Gruppenablaufrichtlinie](https://docs.microsoft.com/microsoft-365/solutions/microsoft-365-groups-expiration-policy?view=o365-worldwide) für Microsoft 365-Gruppen fest, zu denen externe Benutzer eingeladen werden. 
+* **Microsoft 365-Gruppen:** Legen Sie eine [Gruppenablaufrichtlinie](/microsoft-365/solutions/microsoft-365-groups-expiration-policy?view=o365-worldwide) für Microsoft 365-Gruppen fest, zu denen externe Benutzer eingeladen werden. 
 
 * **Weitere Optionen:** Wenn externe Benutzer über Zugriffspakete in der Berechtigungsverwaltung oder Microsoft 365-Gruppen hinaus Zugriff erhalten, richten Sie einen Geschäftsprozess ein, um zu prüfen, wann Konten inaktiv gemacht oder gelöscht werden sollen. Beispiel:
 
@@ -146,9 +146,9 @@ Auch wenn die Richtlinien spezifisch an Ihre Anforderungen angepasst sind, sollt
 
 Da Sie nun wissen, auf welche Ressourcen der Zugriff gesteuert werden soll, wie diese Ressourcen für den allgemeinen Zugriff gruppiert werden sollen und welche Richtlinien für die Anmeldung und Zugriffsüberprüfung erforderlich sind, können Sie entscheiden, wie Sie Ihren Plan umsetzen möchten. 
 
-Einige Funktionen, z. B. für die [Berechtigungsverwaltung](https://docs.microsoft.com/azure/active-directory/governance/entitlement-management-overview), sind nur mit Azure AD Premium 2-Lizenzen (P2) verfügbar. Die Lizenzen für Microsoft 365 E5 und Office 365 E5 enthalten Azure AD P2-Lizenzen. 
+Einige Funktionen, z. B. für die [Berechtigungsverwaltung](../governance/entitlement-management-overview.md), sind nur mit Azure AD Premium 2-Lizenzen (P2) verfügbar. Die Lizenzen für Microsoft 365 E5 und Office 365 E5 enthalten Azure AD P2-Lizenzen. 
 
-Auch andere Kombinationen von Microsoft 365, Office 365 und Azure AD ermöglichen bestimmte Funktionen zur Verwaltung externer Benutzer. Weitere Informationen finden Sie unter [Information Protection](https://docs.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-365-security-compliance-licensing-guidance).
+Auch andere Kombinationen von Microsoft 365, Office 365 und Azure AD ermöglichen bestimmte Funktionen zur Verwaltung externer Benutzer. Weitere Informationen finden Sie unter [Information Protection](/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-tenantlevel-services-licensing-guidance/microsoft-365-security-compliance-licensing-guidance).
 
 > [!NOTE]
 > Lizenzen gelten jeweils pro Benutzer. Daher können Sie an bestimmte Benutzer, einschließlich Administratoren und Unternehmensbesitzern, die Zugriffssteuerung auf Ebene von Azure AD P2 oder Microsoft 365 E5 delegieren, ohne diese Lizenzen für alle Benutzer zu aktivieren. Die ersten 50.000 externen Benutzer sind kostenlos. Wenn Sie P2-Lizenzen für Ihre anderen internen Benutzer nicht aktivieren, können diese keine Funktionen der Berechtigungsverwaltung wie z. B. Zugriffspakete verwenden. 
@@ -180,7 +180,7 @@ Azure AD P2 und Microsoft 365 E5 umfassen die vollständige Suite von Sicher
 
 ### <a name="entitlement-management"></a>Berechtigungsverwaltung 
 
-[Zugriffspakete in der Berechtigungsverwaltung](https://docs.microsoft.com/azure/active-directory/governance/entitlement-management-access-package-create) ermöglichen die Bereitstellung und Aufhebung der Bereitstellung von Gruppen und Teams, Anwendungen und SharePoint-Websites. Sie können definieren, welchen verbundenen Organisationen der Zugriff gewährt wird, ob Self-Service-Anforderungen zulässig sind und welche Genehmigungsworkflows gegebenenfalls erforderlich sind, um Zugriff zu gewähren. Um sicherzustellen, dass der Zugriff nicht länger als nötig bestehen bleibt, können Sie Ablaufrichtlinien und Zugriffsüberprüfungen für die einzelnen Zugriffspakete definieren. 
+[Zugriffspakete in der Berechtigungsverwaltung](../governance/entitlement-management-access-package-create.md) ermöglichen die Bereitstellung und Aufhebung der Bereitstellung von Gruppen und Teams, Anwendungen und SharePoint-Websites. Sie können definieren, welchen verbundenen Organisationen der Zugriff gewährt wird, ob Self-Service-Anforderungen zulässig sind und welche Genehmigungsworkflows gegebenenfalls erforderlich sind, um Zugriff zu gewähren. Um sicherzustellen, dass der Zugriff nicht länger als nötig bestehen bleibt, können Sie Ablaufrichtlinien und Zugriffsüberprüfungen für die einzelnen Zugriffspakete definieren. 
 
  
 

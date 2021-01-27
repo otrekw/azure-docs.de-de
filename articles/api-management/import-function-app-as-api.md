@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 04/22/2020
 ms.author: apimpm
-ms.openlocfilehash: 01ac59ec435b19f5da56ca345840628964263a47
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: f66395b1e0f45f1e80cd0ac93bf8c9ae8674a0f2
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93147027"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98732957"
 ---
 # <a name="import-an-azure-function-app-as-an-api-in-azure-api-management"></a>Importieren einer Azure-Funktionen-App als API in Azure API Management
 
@@ -38,7 +38,7 @@ Sie lernen Folgendes:
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * Absolvieren Sie den Schnellstart [Erstellen einer neuen Azure API Management-Dienstinstanz](get-started-create-service-instance.md).
-* Stellen Sie sicher, dass Ihr Abonnement eine Azure Functions-App enthält. Weitere Informationen finden Sie unter [Erstellen Ihrer ersten Funktion im Azure-Portal](../azure-functions/functions-create-first-azure-function.md#create-a-function-app). Sie muss Funktionen mit einem HTTP-Trigger enthalten, und die Einstellung für die Autorisierungsstufe muss auf *Anonym* oder *Funktion* festgelegt sein.
+* Stellen Sie sicher, dass Ihr Abonnement eine Azure Functions-App enthält. Weitere Informationen finden Sie unter [Erstellen Ihrer ersten Funktion im Azure-Portal](../azure-functions/functions-get-started.md). Sie muss Funktionen mit einem HTTP-Trigger enthalten, und die Einstellung für die Autorisierungsstufe muss auf *Anonym* oder *Funktion* festgelegt sein.
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
@@ -52,11 +52,11 @@ Führen Sie die folgenden Schritte aus, um auf der Grundlage einer Azure-Funktio
 
     ![Screenshot: Kachel „Funktions-App“](./media/import-function-app-as-api/add-01.png)
 
-3. Klicken Sie auf **Durchsuchen** , um eine Funktionen-App für den Import auszuwählen.
+3. Klicken Sie auf **Durchsuchen**, um eine Funktionen-App für den Import auszuwählen.
 
     ![Screenshot, auf dem die Schaltfläche „Durchsuchen“ hervorgehoben ist](./media/import-function-app-as-api/add-02.png)
 
-4. Klicken Sie auf den Abschnitt **Funktionen-App** , um in der Liste der verfügbaren Funktionen-Apps eine App auszuwählen.
+4. Klicken Sie auf den Abschnitt **Funktionen-App**, um in der Liste der verfügbaren Funktionen-Apps eine App auszuwählen.
 
     ![Screenshot, auf dem der Abschnitt „Funktions-App“ hervorgehoben ist](./media/import-function-app-as-api/add-03.png)
 
@@ -71,14 +71,14 @@ Führen Sie die folgenden Schritte aus, um auf der Grundlage einer Azure-Funktio
     > [!NOTE]
     > Sie können nur Funktionen importieren, die auf dem HTTP-Trigger basieren und deren Einstellung für die Autorisierungsstufe auf *Anonym* oder *Funktion* festgelegt ist.
 
-7. Wechseln Sie zur Ansicht **Vollständig** , und weisen Sie Ihrer neuen API **Produkt** zu. Geben Sie bei Bedarf während der Erstellung andere Felder an, oder konfigurieren Sie sie später über die Registerkarte **Einstellungen**. Die Einstellungen werden im Tutorial [Importieren und Veröffentlichen Ihrer ersten API](import-and-publish.md#import-and-publish-a-backend-api) erläutert.
+7. Wechseln Sie zur Ansicht **Vollständig**, und weisen Sie Ihrer neuen API **Produkt** zu. Geben Sie bei Bedarf während der Erstellung andere Felder an, oder konfigurieren Sie sie später über die Registerkarte **Einstellungen**. Die Einstellungen werden im Tutorial [Importieren und Veröffentlichen Ihrer ersten API](import-and-publish.md#import-and-publish-a-backend-api) erläutert.
 8. Klicken Sie auf **Erstellen**.
 
 ## <a name="append-azure-function-app-to-an-existing-api"></a><a name="append-azure-function-app-to-api"></a> Anfügen einer Azure-Funktionen-App an eine vorhandene API
 
 Führen Sie die folgenden Schritte aus, um eine Azure-Funktionen-App zu einer vorhandenen API hinzuzufügen.
 
-1. Klicken Sie in Ihrer **Azure API Management** -Dienstinstanz im Menü auf der linken Seite auf **APIs**.
+1. Klicken Sie in Ihrer **Azure API Management**-Dienstinstanz im Menü auf der linken Seite auf **APIs**.
 
 2. Wählen Sie eine API aus, in die Sie eine Azure-Funktionen-App importieren möchten. Klicken Sie auf **...** , und klicken Sie im Kontextmenü auf **Importieren**.
 
@@ -92,7 +92,7 @@ Führen Sie die folgenden Schritte aus, um eine Azure-Funktionen-App zu einer vo
 
     ![Screenshot: Schaltfläche „Durchsuchen“](./media/import-function-app-as-api/append-03.png)
 
-5. Klicken Sie auf den Abschnitt **Funktionen-App** , um in der Liste der verfügbaren Funktionen-Apps eine App auszuwählen.
+5. Klicken Sie auf den Abschnitt **Funktionen-App**, um in der Liste der verfügbaren Funktionen-Apps eine App auszuwählen.
 
     ![Screenshot, auf dem die Liste der Funktions-Apps hervorgehoben ist](./media/import-function-app-as-api/add-03.png)
 
@@ -112,10 +112,10 @@ Führen Sie die folgenden Schritte aus, um eine Azure-Funktionen-App zu einer vo
 
 Beim Importieren einer Azure-Funktionen-App wird automatisch Folgendes generiert:
 
-* Hostschlüssel in der Funktionen-App mit dem Namen „apim-{ *Name Ihrer Azure API Management-Dienstinstanz* }“
-* Benannter Wert in der Azure API Management-Instanz mit dem Namen „{ *Name der Instanz Ihrer Azure-Funktionen-App* }-key“, die den erstellten Hostschlüssel enthält
+* Hostschlüssel in der Funktionen-App mit dem Namen „apim-{*Name Ihrer Azure API Management-Dienstinstanz*}“
+* Benannter Wert in der Azure API Management-Instanz mit dem Namen „{*Name der Instanz Ihrer Azure-Funktionen-App*}-key“, die den erstellten Hostschlüssel enthält
 
-Bei APIs, die nach dem 4. April 2019 erstellt werden, wird der Hostschlüssel in HTTP-Anforderungen von API Management in einem Header an die Funktionen-App übergeben. Bei älteren APIs wird der Hostschlüssel als [Abfrageparameter](../azure-functions/functions-bindings-http-webhook-trigger.md#api-key-authorization) übergeben. Dieses Verhalten kann durch den `PATCH Backend`- [REST-API-Aufruf](/rest/api/apimanagement/2019-12-01/backend/update#backendcredentialscontract) für die der Funktions-App zugeordnete *Back-End-Entität* geändert werden.
+Bei APIs, die nach dem 4. April 2019 erstellt werden, wird der Hostschlüssel in HTTP-Anforderungen von API Management in einem Header an die Funktionen-App übergeben. Bei älteren APIs wird der Hostschlüssel als [Abfrageparameter](../azure-functions/functions-bindings-http-webhook-trigger.md#api-key-authorization) übergeben. Dieses Verhalten kann durch den `PATCH Backend`-[REST-API-Aufruf](/rest/api/apimanagement/2019-12-01/backend/update#backendcredentialscontract) für die der Funktions-App zugeordnete *Back-End-Entität* geändert werden.
 
 > [!WARNING]
 > Wenn Sie den Wert des Hostschlüssels der Azure-Funktionen-App oder den benannten Wert von Azure API Management entfernen oder ändern, wird die Kommunikation zwischen den Diensten unterbrochen. Die Werte werden nicht automatisch synchronisiert.

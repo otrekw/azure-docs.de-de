@@ -7,12 +7,12 @@ author: mimckitt
 ms.author: mimckitt
 ms.topic: conceptual
 ms.date: 11/06/2020
-ms.openlocfilehash: 3ae300ca2746ab9e3478d3fe14fd6fc49c95a93d
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: dc9f7dfdf33411f11d51734b48105be200874d02
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98071730"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98738117"
 ---
 # <a name="azure-boot-diagnostics"></a>Azure-Startdiagnose
 
@@ -45,7 +45,7 @@ Wenn Sie eine VM im Azure-Portal erstellen, ist die Startdiagnose mithilfe eines
 :::image type="content" source="./media/boot-diagnostics/boot-diagnostics-enable-portal.png" alt-text="Screenshot der Aktivierung der verwalteten Startdiagnose während der VM-Erstellung":::
 
 ### <a name="enable-managed-boot-diagnostics-using-cli"></a>Aktivieren der verwalteten Startdiagnose mithilfe der Befehlszeilenschnittstelle
-Die Startdiagnose mit einem verwalteten Speicherkonto wird ab Version 2.12.0 der Azure-Befehlszeilenschnittstelle unterstützt. Wenn Sie keinen Namen oder URI für ein Speicherkonto eingeben, wird ein verwaltetes Konto verwendet. Weitere Informationen und Codebeispiele finden Sie in der [Dokumentation der Befehlszeilenschnittstelle zur Startdiagnose](/cli/azure/vm/boot-diagnostics?preserve-view=true&view=azure-cli-latest).
+Die Startdiagnose mit einem verwalteten Speicherkonto wird ab Version 2.12.0 der Azure-Befehlszeilenschnittstelle unterstützt. Wenn Sie keinen Namen oder URI für ein Speicherkonto eingeben, wird ein verwaltetes Konto verwendet. Weitere Informationen und Codebeispiele finden Sie in der [Dokumentation der Befehlszeilenschnittstelle zur Startdiagnose](/cli/azure/vm/boot-diagnostics).
 
 ### <a name="enable-managed-boot-diagnostics-using-azure-resource-manager-arm-templates"></a>Aktivieren der verwalteten Startdiagnose mithilfe von ARM-Vorlagen (Azure Resource Manager)
 Ab API-Version 2020-06-01 wird die verwaltete Startdiagnose unterstützt. Weitere Informationen finden Sie unter [Instanzansicht der Startdiagnose](/rest/api/compute/virtualmachines/createorupdate#bootdiagnostics).

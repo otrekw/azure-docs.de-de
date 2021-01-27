@@ -3,22 +3,22 @@ title: 'Verwenden von „Meine Mitarbeiter“ zum Delegieren der Benutzerverwalt
 description: Es wird beschrieben, wie Sie die Benutzerverwaltung mit „Meine Mitarbeiter“ und mit Verwaltungseinheiten delegieren.
 services: active-directory
 documentationcenter: ''
-author: curtand
+author: rolyon
 manager: daveba
 ms.topic: how-to
 ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
 ms.date: 05/08/2020
-ms.author: curtand
+ms.author: rolyon
 ms.reviewer: sahenry
 ms.custom: oldportal;it-pro;
-ms.openlocfilehash: 927d1f6dff9a24fb8427bb9c353e6cc61ac6a1f0
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 304d88dfcf0c72769f27911186df04c66224419e
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92373193"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98740141"
 ---
 # <a name="manage-your-users-with-my-staff-preview"></a>Verwalten Ihrer Benutzer mit „Meine Mitarbeiter“ (Vorschau)
 
@@ -54,7 +54,7 @@ Für diesen Artikel benötigen Sie die folgenden Ressourcen und Berechtigungen:
 Nachdem Sie die Verwaltungseinheiten konfiguriert haben, können Sie diesen Bereich auf Ihre Benutzer anwenden, die auf „Meine Mitarbeiter“ zugreifen. Nur Benutzer, denen eine Administratorrolle zugewiesen ist, können auf „Meine Mitarbeiter“ zugreifen. Führen Sie die folgenden Schritte aus, um „Meine Mitarbeiter“ zu aktivieren:
 
 1. Melden Sie sich als Benutzeradministrator beim Azure-Portal an.
-2. Navigieren Sie zu **Azure Active Directory** > **Benutzereinstellungen** > **Vorschauen für Benutzerfeatures** > **Vorschaueinstellungen für Benutzerfeatures verwalten** .
+2. Navigieren Sie zu **Azure Active Directory** > **Benutzereinstellungen** > **Vorschauen für Benutzerfeatures** > **Vorschaueinstellungen für Benutzerfeatures verwalten**.
 3. Unter **Administratoren können auf „Meine Mitarbeiter“ zugreifen** können Sie dies für alle Benutzer, ausgewählte Benutzer oder keine Benutzer aktivieren.
 
 > [!Note]

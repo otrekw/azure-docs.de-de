@@ -14,12 +14,12 @@ author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: ''
 ms.date: 1/14/2020
-ms.openlocfilehash: d3bd63566daaf6e1d3e3343b5956d8a8d5fc8ea5
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: b73e72969a851428034499d447ecb162a61aa9ab
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98224252"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98725785"
 ---
 # <a name="understand-and-resolve-azure-sql-database-blocking-problems"></a>Verstehen und Beheben von Problemen durch Blockierungen in Azure SQL-Datenbank
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -345,7 +345,7 @@ Die folgenden Szenarien bauen auf diese Szenarien auf.
     Nach dem Senden einer Abfrage an den Server müssen alle Anwendungen sofort alle Ergebniszeilen vollständig abrufen. Wenn eine Anwendung nicht alle Ergebniszeilen abruft, können Sperren auf den Tabellen verbleiben, die andere Benutzer blockieren. Sollten Sie eine Anwendung nutzen, die SQL-Anweisungen transparent an den Server übermittelt, muss die Anwendung sämtliche Ergebniszeilen abrufen. Andernfalls (oder wenn die Anwendung nicht dafür konfiguriert werden kann) lässt sich das Blockierproblem möglicherweise nicht lösen. Um dieses Problem zu vermeiden, können Sie entsprechende Anwendungen auf eine Berichtsdatenbank oder eine Datenbank zur Entscheidungsfindung beschränken.
     
     > [!NOTE]
-    > Weitere Informationen zu Anwendungen, die eine Verbindung mit Azure SQL-Datenbank herstellen, finden Sie unter [Wiederholungslogik für vorübergehende Fehler](/azure/azure-sql/database/troubleshoot-common-connectivity-issues#retry-logic-for-transient-errors). 
+    > Weitere Informationen zu Anwendungen, die eine Verbindung mit Azure SQL-Datenbank herstellen, finden Sie unter [Wiederholungslogik für vorübergehende Fehler](./troubleshoot-common-connectivity-issues.md#retry-logic-for-transient-errors). 
     
     **Lösung:** Die Anwendung muss so umgeschrieben werden, dass sie alle Zeilen des Ergebnisses vollständig abruft. Dies schließt das [Verwenden von OFFSET und FETCH in der ORDER BY-Klausel](/sql/t-sql/queries/select-order-by-clause-transact-sql#using-offset-and-fetch-to-limit-the-rows-returned) einer Abfrage nicht aus, um ein serverseitiges Paging auszuführen.
 

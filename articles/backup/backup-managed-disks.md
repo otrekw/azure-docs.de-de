@@ -3,12 +3,12 @@ title: Sichern von Azure Managed Disks
 description: Erfahren Sie, wie Sie Azure Managed Disks über das Azure-Portal sichern können.
 ms.topic: conceptual
 ms.date: 01/07/2021
-ms.openlocfilehash: 2169e2f44e3ffb2c05c674d633efabed2c531878
-ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
+ms.openlocfilehash: ca86550c4dec4b51c60d9ecdef124e38783a3764
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98573121"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98738151"
 ---
 # <a name="back-up-azure-managed-disks-in-preview"></a>Sichern von Azure Managed Disks (Vorschau)
 
@@ -17,7 +17,7 @@ ms.locfileid: "98573121"
 >
 >[Füllen Sie dieses Formular aus](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR1vE8L51DIpDmziRt_893LVUNFlEWFJBN09PTDhEMjVHS05UWFkxUlUzUS4u), wenn Sie sich für die Vorschau registrieren möchten.
 
-In diesem Artikel wird beschrieben, wie Sie [Azure Managed Disk](https://docs.microsoft.com/azure/virtual-machines/managed-disks-overview) über das Azure-Portal sichern.
+In diesem Artikel wird beschrieben, wie Sie [Azure Managed Disk](../virtual-machines/managed-disks-overview.md) über das Azure-Portal sichern.
 
 In diesem Artikel lernen Sie Folgendes:
 
@@ -46,7 +46,7 @@ Ein Sicherungstresor ist eine Speicherentität in Azure, die Sicherungsdaten fü
 
    ![Initiieren: Tresor erstellen](./media/backup-managed-disks/initiate-create-vault.png)
 
-1. Geben Sie auf der Registerkarte **Grundlagen** das Abonnement, die Ressourcengruppe, den Namen des Sicherungstresors, die Region und die Sicherungsspeicherredundanz an. Wählen Sie anschließend **Überprüfen und erstellen** aus. Weitere Informationen finden Sie unter [Erstellen eines Sicherungstresors](https://docs.microsoft.com/azure/backup/backup-vault-overview#create-a-backup-vault).
+1. Geben Sie auf der Registerkarte **Grundlagen** das Abonnement, die Ressourcengruppe, den Namen des Sicherungstresors, die Region und die Sicherungsspeicherredundanz an. Wählen Sie anschließend **Überprüfen und erstellen** aus. Weitere Informationen finden Sie unter [Erstellen eines Sicherungstresors](./backup-vault-overview.md#create-a-backup-vault).
 
    ![Tresor überprüfen und erstellen](./media/backup-managed-disks/review-and-create.png)
 
@@ -67,7 +67,7 @@ Ein Sicherungstresor ist eine Speicherentität in Azure, die Sicherungsdaten fü
 
    ![Sicherungszeitplan-Häufigkeit auswählen](./media/backup-managed-disks/backup-schedule-frequency.png)
 
-   Azure Disk Backup ermöglicht mehrere Sicherungen pro Tag. Wenn Sie häufigere Sicherungen benötigen, wählen Sie die **stündliche** Sicherungshäufigkeit mit der Möglichkeit, Sicherungen mit Intervallen von alle 4, 6, 8 oder 12 Stunden zu erstellen. Die Sicherungen werden basierend auf dem unter **Zeit** ausgewählten Intervall geplant. Wenn Sie z. B. **Alle vier Stunden** auswählen, werden die Sicherungen im Intervall von ungefähr 4 Stunden durchgeführt, sodass die Sicherungen gleichmäßig über den Tag verteilt sind. Wenn eine Sicherung pro Tag ausreichend ist, wählen Sie als Sicherungshäufigkeit **Täglich** aus. Bei der Sicherungshäufigkeit „Täglich“ können Sie die Uhrzeit angeben, zu der die Sicherungen erstellt werden. Es ist wichtig zu beachten, dass mit der Uhrzeit die Startzeit der Sicherung angegeben wird und nicht die Zeit, zu der die Sicherung abgeschlossen ist. Die für den Abschluss des Sicherungsvorgangs erforderliche Zeit hängt von verschiedenen Faktoren ab, einschließlich der Datenträgergröße und des Churns zwischen aufeinanderfolgenden Sicherungen. Azure Disk Backup ist jedoch ein agentloser Sicherungsdienst, der [inkrementelle Momentaufnahmen](https://docs.microsoft.com/azure/virtual-machines/windows/disks-incremental-snapshots-portal) verwendet, die sich nicht auf die Leistung der Anwendung in der Produktion auswirkt.
+   Azure Disk Backup ermöglicht mehrere Sicherungen pro Tag. Wenn Sie häufigere Sicherungen benötigen, wählen Sie die **stündliche** Sicherungshäufigkeit mit der Möglichkeit, Sicherungen mit Intervallen von alle 4, 6, 8 oder 12 Stunden zu erstellen. Die Sicherungen werden basierend auf dem unter **Zeit** ausgewählten Intervall geplant. Wenn Sie z. B. **Alle vier Stunden** auswählen, werden die Sicherungen im Intervall von ungefähr 4 Stunden durchgeführt, sodass die Sicherungen gleichmäßig über den Tag verteilt sind. Wenn eine Sicherung pro Tag ausreichend ist, wählen Sie als Sicherungshäufigkeit **Täglich** aus. Bei der Sicherungshäufigkeit „Täglich“ können Sie die Uhrzeit angeben, zu der die Sicherungen erstellt werden. Es ist wichtig zu beachten, dass mit der Uhrzeit die Startzeit der Sicherung angegeben wird und nicht die Zeit, zu der die Sicherung abgeschlossen ist. Die für den Abschluss des Sicherungsvorgangs erforderliche Zeit hängt von verschiedenen Faktoren ab, einschließlich der Datenträgergröße und des Churns zwischen aufeinanderfolgenden Sicherungen. Azure Disk Backup ist jedoch ein agentloser Sicherungsdienst, der [inkrementelle Momentaufnahmen](../virtual-machines/disks-incremental-snapshots.md) verwendet, die sich nicht auf die Leistung der Anwendung in der Produktion auswirkt.
 
 1. Wählen Sie auf der Registerkarte **Sicherungsrichtlinie** die Aufbewahrungseinstellungen aus, die die Recovery Point Objective (RPO) erfüllen.
 
@@ -80,7 +80,7 @@ Ein Sicherungstresor ist eine Speicherentität in Azure, die Sicherungsdaten fü
    ![Aufbewahrungseinstellungen](./media/backup-managed-disks/retention-settings.png)
 
    >[!NOTE]
-   >Azure Backup für verwaltete Datenträger verwendet inkrementelle Momentaufnahmen, die auf 200 Momentaufnahmen pro Datenträger beschränkt sind. Um zusätzlich zu den geplanten Sicherungen noch bedarfsgesteuerte Sicherungen zu ermöglichen, schränkt die Sicherungsrichtlinie die Gesamtanzahl der Sicherungen auf 180 ein. Weitere Informationen finden Sie unter [Inkrementelle Momentaufnahmen](https://docs.microsoft.com/azure/virtual-machines/windows/disks-incremental-snapshots-portal#restrictions) für verwaltete Datenträger.
+   >Azure Backup für verwaltete Datenträger verwendet inkrementelle Momentaufnahmen, die auf 200 Momentaufnahmen pro Datenträger beschränkt sind. Um zusätzlich zu den geplanten Sicherungen noch bedarfsgesteuerte Sicherungen zu ermöglichen, schränkt die Sicherungsrichtlinie die Gesamtanzahl der Sicherungen auf 180 ein. Weitere Informationen finden Sie unter [Inkrementelle Momentaufnahmen](../virtual-machines/disks-incremental-snapshots.md#restrictions) für verwaltete Datenträger.
 
 1. Schließen Sie die Erstellung der Sicherungsrichtlinie ab, indem Sie **Überprüfen und erstellen** auswählen.
 
@@ -88,7 +88,7 @@ Ein Sicherungstresor ist eine Speicherentität in Azure, die Sicherungsdaten fü
 
 Der Sicherungstresor verwendet die verwaltete Identität für den Zugriff auf andere Azure-Ressourcen. Zum Konfigurieren der Sicherung verwalteter Datenträger benötigt die verwaltete Identität des Sicherungstresors einen Satz von Berechtigungen für die Quelldatenträger und Ressourcengruppen, in denen Momentaufnahmen erstellt und verwaltet werden.
 
-Eine systemseitig zugewiesene verwaltete Identität ist auf eine Ressource beschränkt und an den Lebenszyklus dieser Ressource gebunden. Sie können der verwalteten Identität mithilfe der rollenbasierten Zugriffssteuerung von Azure (Azure RBAC) Berechtigungen erteilen. Eine verwaltete Identität ist ein spezieller Dienstprinzipal, der nur zusammen mit Azure-Ressourcen verwendet werden kann. Informieren Sie sich ausführlicher über [verwaltete Identitäten](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview).
+Eine systemseitig zugewiesene verwaltete Identität ist auf eine Ressource beschränkt und an den Lebenszyklus dieser Ressource gebunden. Sie können der verwalteten Identität mithilfe der rollenbasierten Zugriffssteuerung von Azure (Azure RBAC) Berechtigungen erteilen. Eine verwaltete Identität ist ein spezieller Dienstprinzipal, der nur zusammen mit Azure-Ressourcen verwendet werden kann. Informieren Sie sich ausführlicher über [verwaltete Identitäten](../active-directory/managed-identities-azure-resources/overview.md).
 
 Die folgenden Voraussetzungen müssen erfüllt sein, um das Sichern von verwalteten Datenträgern zu konfigurieren:
 
@@ -115,7 +115,7 @@ Die folgenden Voraussetzungen müssen erfüllt sein, um das Sichern von verwalte
 
    - Sie können diese Ressourcengruppe zum Speichern von Momentaufnahmen auf mehreren Datenträgern verwenden, die gesichert werden (oder deren Sicherung geplant ist).  
 
-   - Sie können keine inkrementelle Momentaufnahme für einen bestimmten Datenträger außerhalb des Abonnements dieses Datenträgers erstellen. Wählen Sie deshalb eine Ressourcengruppe im selben Abonnement wie der zu sichernde Datenträger aus. Weitere Informationen finden Sie unter [Inkrementelle Momentaufnahmen](https://docs.microsoft.com/azure/virtual-machines/windows/disks-incremental-snapshots-portal#restrictions) für verwaltete Datenträger.
+   - Sie können keine inkrementelle Momentaufnahme für einen bestimmten Datenträger außerhalb des Abonnements dieses Datenträgers erstellen. Wählen Sie deshalb eine Ressourcengruppe im selben Abonnement wie der zu sichernde Datenträger aus. Weitere Informationen finden Sie unter [Inkrementelle Momentaufnahmen](../virtual-machines/disks-incremental-snapshots.md#restrictions) für verwaltete Datenträger.
 
    Gehen Sie wie folgt vor, um eine Rolle zuzuweisen:
 
@@ -129,8 +129,6 @@ Die folgenden Voraussetzungen müssen erfüllt sein, um das Sichern von verwalte
    >Geben Sie den Namen des Sicherungstresors ein, um die verwaltete Identität des Tresors auszuwählen.
 
    ![Rolle „Mitwirkender für die Datenträgermomentaufnahme“ hinzufügen](./media/backup-managed-disks/disk-snapshot-contributor-role.png)
-
-1. Wenn der zu sichernde Datenträger mit [vom Kunden verwalteten Schlüsseln (Customer-Managed Keys, CMK)](https://docs.microsoft.com/azure/virtual-machines/disks-enable-customer-managed-keys-portal) oder mit [Mehrfachverschlüsselung mithilfe von über die Plattform verwalteten Schlüsseln und vom Kunden verwalteten Schlüsseln](https://docs.microsoft.com/azure/virtual-machines/disks-enable-double-encryption-at-rest-portal) verschlüsselt wurde, weisen Sie der verwalteten Identität des Sicherungstresors auf der Ressource **Datenträgerverschlüsselungssatz** die Rolle **Leser** zu.
 
 1. Vergewissern Sie sich, dass die verwaltete Identität des Sicherungstresors über den richtigen Satz an Rollenzuweisungen für den Quelldatenträger und die Ressourcengruppe, die als Momentaufnahmen-Datenspeicher verfügt, fungiert.
 
@@ -154,7 +152,7 @@ Die folgenden Voraussetzungen müssen erfüllt sein, um das Sichern von verwalte
    ![Azure-Datenträger auswählen](./media/backup-managed-disks/select-azure-disk.png)
 
    >[!NOTE]
-   >Azure Backup verwendet [inkrementelle Momentaufnahmen](https://docs.microsoft.com/azure/virtual-machines/windows/disks-incremental-snapshots-portal#restrictions) von verwalteten Datenträgern, auf denen nur die Deltaänderungen auf dem Datenträger seit der letzten Momentaufnahme im HDD Standard-Speicher gespeichert werden. Dies ist auch unabhängig vom Speichertyp des übergeordneten Datenträgers. Für höhere Zuverlässigkeit werden inkrementelle Momentaufnahmen standardmäßig in zonenredundantem Speicher (ZRS) in Regionen gespeichert, die ZRS unterstützen. Derzeit unterstützt Azure Disk Backup operative Sicherungen von verwalteten Datenträgern, die die Sicherungen nicht in den Speicher des Sicherungstresors kopieren. Die Redundanzeinstellung für den Sicherungsspeicher des Sicherungstresors gilt daher nicht für die Wiederherstellungspunkte.
+   >Azure Backup verwendet [inkrementelle Momentaufnahmen](../virtual-machines/disks-incremental-snapshots.md#restrictions) von verwalteten Datenträgern, auf denen nur die Deltaänderungen auf dem Datenträger seit der letzten Momentaufnahme im HDD Standard-Speicher gespeichert werden. Dies ist auch unabhängig vom Speichertyp des übergeordneten Datenträgers. Für höhere Zuverlässigkeit werden inkrementelle Momentaufnahmen standardmäßig in zonenredundantem Speicher (ZRS) in Regionen gespeichert, die ZRS unterstützen. Derzeit unterstützt Azure Disk Backup operative Sicherungen von verwalteten Datenträgern, die die Sicherungen nicht in den Speicher des Sicherungstresors kopieren. Die Redundanzeinstellung für den Sicherungsspeicher des Sicherungstresors gilt daher nicht für die Wiederherstellungspunkte.
 
 1. Wählen Sie auf der Registerkarte **Sicherungsrichtlinie** eine Sicherungsrichtlinie aus.
 

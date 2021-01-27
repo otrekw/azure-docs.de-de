@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2c0d63df3e5525b200723db209d05e5eb5013e23
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 654e1c163a16f427958320ea081c38338e0ab4e1
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98222359"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98725391"
 ---
 # <a name="transition-to-governed-collaboration-with-azure-active-directory-b2b-collaboration"></a>Umstellung auf gesteuerte Zusammenarbeit mit Azure Active Directory B2B Collaboration 
 
@@ -100,7 +100,7 @@ Legen Sie fest, wer Gastbenutzer für den Zugriff auf Ressourcen einladen kann.
 
 Wenn Sie die Berechtigungsverwaltung in Azure AD verwenden, können Sie Fragen konfigurieren, die externe Benutzer beantworten müssen. Die Fragen werden dann den genehmigenden Personen angezeigt, um ihnen die Entscheidung zu erleichtern. Sie können verschiedene Fragesätze für die einzelnen [Zugriffspaketrichtlinien](../governance/entitlement-management-access-package-approval-policy.md) konfigurieren, damit die genehmigenden Personen relevante Informationen für den zu genehmigenden Zugriff erhalten. Wenn ein Zugriffspaket beispielsweise für den Zugriff von Anbietern vorgesehen ist, kann der Anforderer nach seiner Anbietervertragsnummer gefragt werden. In einem anderen Zugriffspaket für Lieferanten kann z. B. nach dem Ursprungsland gefragt werden.
 
-Bei Verwendung eines Self-Service-Portals können Sie [API-Connectors](../external-identities/api-connectors-overview.md) verwenden, um zusätzliche Attribute zu Benutzern zu erfassen, wenn diese sich registrieren. Sie können diese Attribute dann gegebenenfalls verwenden, um den Zugriff zuzuweisen. Wenn Sie z. B. während des Registrierungsvorgangs die Lieferanten-ID der Benutzer erfassen, können Sie dieses Attribut verwenden, um sie dynamisch einer Gruppe oder einem Zugriffspaket für den Lieferanten zuzuweisen. Im Azure-Portal können Sie benutzerdefinierte Attribute erstellen und in den Benutzerflows für die Self-Service-Registrierung verwenden. Außerdem können Sie diese Attribute mit der [Microsoft Graph-API](https://docs.microsoft.com/azure/active-directory-b2c/manage-user-accounts-graph-api) lesen und schreiben. 
+Bei Verwendung eines Self-Service-Portals können Sie [API-Connectors](../external-identities/api-connectors-overview.md) verwenden, um zusätzliche Attribute zu Benutzern zu erfassen, wenn diese sich registrieren. Sie können diese Attribute dann gegebenenfalls verwenden, um den Zugriff zuzuweisen. Wenn Sie z. B. während des Registrierungsvorgangs die Lieferanten-ID der Benutzer erfassen, können Sie dieses Attribut verwenden, um sie dynamisch einer Gruppe oder einem Zugriffspaket für den Lieferanten zuzuweisen. Im Azure-Portal können Sie benutzerdefinierte Attribute erstellen und in den Benutzerflows für die Self-Service-Registrierung verwenden. Außerdem können Sie diese Attribute mit der [Microsoft Graph-API](../../active-directory-b2c/manage-user-accounts-graph-api.md) lesen und schreiben. 
 
 ### <a name="troubleshoot-invitation-redemption-to-azure-ad-users"></a>Problembehandlung beim Einlösen der Einladung für Azure AD-Benutzer
 
@@ -132,7 +132,7 @@ Für Gastbenutzer werden die folgenden Einschränkungen empfohlen.
 
 * **Blockieren Sie den Zugriff auf das Azure-Portal. Seltene erforderliche Ausnahmen können jedoch festgelegt werden.** 
 
-   * Erstellen Sie eine Richtlinie für bedingten Zugriff, die alle Gastbenutzer und externen Benutzer umfasst, und [implementieren Sie dann eine Richtlinie zum Blockieren des Zugriffs](https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management).
+   * Erstellen Sie eine Richtlinie für bedingten Zugriff, die alle Gastbenutzer und externen Benutzer umfasst, und [implementieren Sie dann eine Richtlinie zum Blockieren des Zugriffs](../../role-based-access-control/conditional-access-azure-management.md).
 
  
 
@@ -185,7 +185,7 @@ Standardmäßig ist der externe Zugriff in Teams zulässig. Das heißt, die Komm
 
 ### <a name="direct-sharing-through-sharepoint-and-onedrive"></a>Direkte Freigabe über SharePoint und OneDrive
 
-Mit der direkten Freigabe über SharePoint und OneDrive können Benutzer außerhalb des Berechtigungsverwaltungsprozesses hinzugefügt werden. Ausführliche Informationen zu diesen Konfigurationen finden Sie unter [Verwalten des Zugriffs mit Microsoft Teams, SharePoint und OneDrive for Business](9-secure-access-teams-sharepoint.md). Bei Bedarf können Sie auch [die Verwendung des persönlichen OneDrive-Kontos eines Benutzers blockieren](https://docs.microsoft.com/office365/troubleshoot/group-policy/block-onedrive-use-from-office).
+Mit der direkten Freigabe über SharePoint und OneDrive können Benutzer außerhalb des Berechtigungsverwaltungsprozesses hinzugefügt werden. Ausführliche Informationen zu diesen Konfigurationen finden Sie unter [Verwalten des Zugriffs mit Microsoft Teams, SharePoint und OneDrive for Business](9-secure-access-teams-sharepoint.md). Bei Bedarf können Sie auch [die Verwendung des persönlichen OneDrive-Kontos eines Benutzers blockieren](/office365/troubleshoot/group-policy/block-onedrive-use-from-office).
 
 ### <a name="sending-documents-through-email"></a>Senden von Dokumenten per E-Mail
 
@@ -197,9 +197,9 @@ Die Palette der verfügbaren Zusammenarbeitstools ist riesig. Ihre Benutzer verw
 
 Weitere Informationen zum Verwalten von nicht sanktionierten Anwendungen finden Sie in folgenden Artikeln:
 
-* [Steuern verbundener Apps](https://docs.microsoft.com/cloud-app-security/governance-actions)
+* [Steuern verbundener Apps](/cloud-app-security/governance-actions)
 
-* [Sanktionierung und Aufheben der Sanktionierung einer Anwendung](https://docs.microsoft.com/cloud-app-security/governance-discovery)
+* [Sanktionierung und Aufheben der Sanktionierung einer Anwendung](/cloud-app-security/governance-discovery)
 
  
 ### <a name="next-steps"></a>Nächste Schritte

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 12/14/2020
 ms.author: phjensen
-ms.openlocfilehash: 86d7b1a6d361ebbc0d8419d184f9a11d390a37f1
-ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
+ms.openlocfilehash: 08edd86fd19e7698a791e411f42a2a89084a91f7
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97803186"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737132"
 ---
 # <a name="tips-and-tricks-for-using-azure-application-consistent-snapshot-tool-preview"></a>Tipps und Tricks zur Verwendung des Tools für konsistente Momentaufnahmen in Azure-Anwendungen für Azure NetApp Files (Vorschau)
 
@@ -27,7 +27,7 @@ Dieser Artikel enthält Tipps und Tricks, die bei der Verwendung von AzAcSnap hi
 
 ## <a name="limit-service-principal-permissions"></a>Begrenzen von Dienstprinzipalberechtigungen
 
-Möglicherweise ist es erforderlich, den Berechtigungsbereich des AzAcSnap-Dienstprinzipals einzuschränken.  Weitere Informationen zur fein abgestuften Zugriffsverwaltung von Azure-Ressourcen finden Sie in der [Azure RBAC-Dokumentation](https://docs.microsoft.com/azure/role-based-access-control/).  
+Möglicherweise ist es erforderlich, den Berechtigungsbereich des AzAcSnap-Dienstprinzipals einzuschränken.  Weitere Informationen zur fein abgestuften Zugriffsverwaltung von Azure-Ressourcen finden Sie in der [Azure RBAC-Dokumentation](../role-based-access-control/index.yml).  
 
 Im Folgenden finden Sie eine Beispielrollendefinition mit den mindestens erforderlichen Aktionen, die für die Funktion von AzAcSnap erforderlich sind.
 

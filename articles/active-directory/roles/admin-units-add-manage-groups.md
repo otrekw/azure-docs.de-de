@@ -3,23 +3,23 @@ title: Hinzufügen, Entfernen und Auflisten von Gruppen in einer Verwaltungseinh
 description: Es wird beschrieben, wie Sie Gruppen und deren Rollenberechtigungen in einer Verwaltungseinheit in Azure Active Directory verwalten.
 services: active-directory
 documentationcenter: ''
-author: curtand
+author: rolyon
 manager: daveba
 ms.service: active-directory
 ms.topic: how-to
 ms.subservice: roles
 ms.workload: identity
 ms.date: 11/04/2020
-ms.author: curtand
+ms.author: rolyon
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 092604429cf5a527d7ee62b412e879ad9991eace
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: d628903f98f96fc205c9a6c9196a90b251e52af2
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93394746"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98740549"
 ---
 # <a name="add-and-manage-groups-in-an-administrative-unit-in-azure-active-directory"></a>Hinzufügen und Verwalten von Gruppen in einer Verwaltungseinheit in Azure Active Directory
 
@@ -35,7 +35,7 @@ Sie können Gruppen einer Verwaltungseinheit hinzufügen, indem Sie das Azure-Po
 
 Sie können Gruppen einer Verwaltungseinheit nur einzeln zuweisen. Eine Option zum Zuweisen von Gruppen per Massenvorgang ist nicht vorhanden. Es gibt zwei Möglichkeiten, wie Sie im Azure-Portal eine Gruppe einer Verwaltungseinheit zuweisen können:
 
-* Im Bereich **Gruppen** :
+* Im Bereich **Gruppen**:
 
   1. Navigieren Sie im Azure-Portal zu **Azure AD**.
   1. Wählen Sie die Option **Gruppen** und dann die Gruppe aus, die Sie der Verwaltungseinheit zuweisen möchten. 
@@ -46,7 +46,7 @@ Sie können Gruppen einer Verwaltungseinheit nur einzeln zuweisen. Eine Option z
   1. Wählen Sie die Option **Der Verwaltungseinheit zuweisen** aus.
   1. Wählen Sie im rechten Bereich die Verwaltungseinheit aus.
 
-* Im Bereich **Verwaltungseinheiten** > **Alle Gruppen** :
+* Im Bereich **Verwaltungseinheiten** > **Alle Gruppen**:
 
   1. Navigieren Sie im Azure-Portal zu **Azure AD**.
   

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/18/2018
-ms.openlocfilehash: 2bb1e667758a1430e34d222b9a5c537381c07624
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: 40ea367c1298a916df541d362b85e8d485d193f1
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97505272"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98734931"
 ---
 # <a name="guidance-for-personal-data-stored-in-log-analytics-and-application-insights"></a>Leitfaden für personenbezogene Daten, die in Log Analytics und Application Insights gespeichert sind
 
@@ -91,7 +91,7 @@ Sowohl für das Anzeigen als auch für das Exportieren von Datenanforderungen so
 Im Rahmen der Vorgehensweisen für den Datenschutz haben wir einen API-Pfad für die *Bereinigung* verfügbar gemacht. Dieser Pfad sollte aufgrund der Risiken im Zusammenhang mit seiner Verwendung, möglichen Leistungseinbußen sowie einer möglichen Verzerrung von Aggregationen, Messungen und anderen Aspekten Ihrer Log Analytics-Daten möglichst selten verwendet werden. Alternative Methoden für den Umgang mit personenbezogenen Daten finden Sie im Abschnitt [Strategie für den Umgang mit personenbezogenen Daten](#strategy-for-personal-data-handling).
 
 > [!NOTE]
-> Nachdem der Löschvorgang durchgeführt wurde, kann nicht auf die Daten zugegriffen werden, solange der [Status des Löschvorgangs](https://docs.microsoft.com/rest/api/loganalytics/workspacepurge/getpurgestatus) *ausstehend* lautet. 
+> Nachdem der Löschvorgang durchgeführt wurde, kann nicht auf die Daten zugegriffen werden, solange der [Status des Löschvorgangs](/rest/api/loganalytics/workspacepurge/getpurgestatus) *ausstehend* lautet. 
 
 Das Bereinigen ist ein Vorgang, der hohe Berechtigungen erfordert, und weder eine App noch ein Benutzer in Azure (einschließlich des Ressourcenbesitzers) ist zur Ausführung berechtigt, sofern nicht in Azure Resource Manager explizit eine entsprechende Rolle zugewiesen wurde. Dies ist die Rolle _Datenpurger_, die aufgrund des möglichen Datenverlusts sehr zurückhaltend vergeben werden sollte. 
 
@@ -129,4 +129,3 @@ Nachdem die Azure Resource Manager-Rolle zugewiesen wurde, sind zwei neue API-Pf
 ## <a name="next-steps"></a>Nächste Schritte
 - Weitere Informationen zum Sammeln, Verarbeiten und Schützen von Daten in Log Analytics finden Sie unter [Log Analytics – Datensicherheit](./data-security.md).
 - Weitere Informationen zum Sammeln, Verarbeiten und Sichern von Daten in Application Insights finden Sie unter [Application Insights – Datensicherheit](../app/data-retention-privacy.md).
-

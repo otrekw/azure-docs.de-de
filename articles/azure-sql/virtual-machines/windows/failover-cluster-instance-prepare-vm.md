@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
-ms.openlocfilehash: 1b8d88167dac6b2d0b1ba2afc90c443fd80b9e46
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 10f01fd5943928eda1f1e4518f30c8e3ccf56b46
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98223158"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737794"
 ---
 # <a name="prepare-virtual-machines-for-an-fci-sql-server-on-azure-vms"></a>Vorbereiten virtueller Computer für eine FCI (SQL Server auf Azure-VMs)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -44,7 +44,7 @@ Die Konfigurationseinstellungen für Ihren virtuellen Computer variieren je nach
 
 ## <a name="configure-vm-availability"></a>Konfigurieren der VM-Verfügbarkeit 
 
-Für das Feature „Failovercluster“ müssen virtuelle Computer in einer [Verfügbarkeitsgruppe](../../../virtual-machines/linux/tutorial-availability-sets.md) oder [Verfügbarkeitszone](../../../availability-zones/az-overview.md#availability-zones) platziert werden. Wenn Sie Verfügbarkeitsgruppen wählen, können Sie [Näherungsplatzierungsgruppen](../../../virtual-machines/windows/co-location.md#proximity-placement-groups) verwenden, um die VMs näher zueinander zu positionieren. Tatsächlich sind Näherungsplatzierungsgruppen eine Voraussetzung für den Einsatz freigegebener Azure-Datenträger. 
+Für das Feature „Failovercluster“ müssen virtuelle Computer in einer [Verfügbarkeitsgruppe](../../../virtual-machines/linux/tutorial-availability-sets.md) oder [Verfügbarkeitszone](../../../availability-zones/az-overview.md#availability-zones) platziert werden. Wenn Sie Verfügbarkeitsgruppen wählen, können Sie [Näherungsplatzierungsgruppen](../../../virtual-machines/co-location.md#proximity-placement-groups) verwenden, um die VMs näher zueinander zu positionieren. Tatsächlich sind Näherungsplatzierungsgruppen eine Voraussetzung für den Einsatz freigegebener Azure-Datenträger. 
 
 Wählen Sie die VM-Verfügbarkeitsoption sorgfältig aus, die Ihrer beabsichtigten Clusterkonfiguration entspricht: 
 

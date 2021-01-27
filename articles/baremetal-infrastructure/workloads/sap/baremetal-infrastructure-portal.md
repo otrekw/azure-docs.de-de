@@ -3,12 +3,12 @@ title: BareMetal-Instanzeinheiten in Azure
 description: Hier erfahren Sie, wie Sie BareMetal-Instanzeinheiten über das Azure-Portal identifizieren und mit ihnen interagieren.
 ms.topic: how-to
 ms.date: 1/4/2021
-ms.openlocfilehash: 30e1661e82546dbaf6d8dc4288ad896df89f401e
-ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
+ms.openlocfilehash: b089b45c35ff05f10ae59f8ce793645361be1e9b
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97861039"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98733262"
 ---
 # <a name="manage-baremetal-instances-through-the-azure-portal"></a>Verwalten von BareMetal-Instanzen über das Azure-Portal
  
@@ -97,7 +97,7 @@ Mögliche Hardwarerevisionen:
 >[!NOTE]
 >Rev 4.2 ist die neueste BareMetal Infrastructure-Revision mit neuem Branding, die die vorhandene Architektur von Rev 4 verwendet. Rev 4 befindet sich näher an den Azure-VM-Hosts (virtuelle Computer). Sie bietet wesentliche Verbesserungen bei der Netzwerklatenz zwischen Azure-VMs und BareMetal-Instanzeinheiten, die in Rev 4-Stamps oder -Reihen bereitgestellt werden. Sie können über das Azure-Portal auf Ihre BareMetal-Instanzen zugreifen und diese verwalten. Weitere Informationen finden Sie unter [Was ist BareMetal Infrastructure (Vorschau) in Azure?](baremetal-overview-architecture.md).
  
-Auf der rechten Seite sehen Sie den Namen der [Azure-Näherungsplatzierungsgruppe](../../../virtual-machines/linux/co-location.md), die automatisch für jede bereitgestellte BareMetal-Instanzeinheit erstellt wird. Referenzieren Sie die Näherungsplatzierungsgruppe bei der Bereitstellung der Azure-VMs, die die Anwendungsschicht hosten. Durch die Verwendung der Näherungsplatzierungsgruppe, die der BareMetal-Instanzeinheit zugeordnet ist, stellen Sie sicher, dass die Azure-VMs in unmittelbarer Nähe der BareMetal-Instanzeinheit bereitgestellt werden.
+Auf der rechten Seite sehen Sie den Namen der [Azure-Näherungsplatzierungsgruppe](../../../virtual-machines/co-location.md), die automatisch für jede bereitgestellte BareMetal-Instanzeinheit erstellt wird. Referenzieren Sie die Näherungsplatzierungsgruppe bei der Bereitstellung der Azure-VMs, die die Anwendungsschicht hosten. Durch die Verwendung der Näherungsplatzierungsgruppe, die der BareMetal-Instanzeinheit zugeordnet ist, stellen Sie sicher, dass die Azure-VMs in unmittelbarer Nähe der BareMetal-Instanzeinheit bereitgestellt werden.
  
 >[!TIP]
 >Informationen darüber, wie Sie die Anwendungsschicht im gleichen Azure-Rechenzentrum wie Revision 4.x unterbringen, finden Sie unter [Azure-Näherungsplatzierungsgruppen für optimale Netzwerklatenz](../../../virtual-machines/workloads/sap/sap-proximity-placement-scenarios.md).

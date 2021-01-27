@@ -2,23 +2,23 @@
 title: Benutzerdefinierte Rollenberechtigungen für Zugriffszuweisungen für Unternehmens-Apps – Azure Active Directory | Microsoft-Dokumentation
 description: Erstellen und Zuweisen benutzerdefinierter Azure AD-Rollen für den Zugriff auf Unternehmens-Apps in Azure Active Directory
 services: active-directory
-author: curtand
+author: rolyon
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: roles
 ms.topic: how-to
 ms.date: 11/04/2020
-ms.author: curtand
+ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0932e4b6163264b0b514958e1e898b297e249870
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: d3cb65503ffab610f9545acb313f7284ffb11ed1
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93378549"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98741144"
 ---
 # <a name="assign-custom-roles-to-manage-enterprise-apps-in-azure-active-directory"></a>Zuweisen benutzerdefinierter Rollen zum Verwalten von Unternehmens-Apps in Azure Active Directory
 
@@ -58,7 +58,7 @@ Das Erteilen der Berechtigung zum Aktualisieren erfolgt in zwei Schritten:
 
     ![Hinzufügen der Berechtigungen für die benutzerdefinierte Rolle](./media/custom-enterprise-apps/role-custom-permissions.png)
 
-1. Überprüfen Sie die Berechtigungen auf der Registerkarte **Überprüfen + erstellen** , und wählen Sie **Erstellen** aus.
+1. Überprüfen Sie die Berechtigungen auf der Registerkarte **Überprüfen + erstellen**, und wählen Sie **Erstellen** aus.
 
     ![Jetzt können Sie die benutzerdefinierte Rolle erstellen.](./media/custom-enterprise-apps/role-custom-create.png)
 
@@ -70,7 +70,7 @@ Das Erteilen der Berechtigung zum Aktualisieren erfolgt in zwei Schritten:
 
     ![„Rollen und Administratoren“ öffnen und nach der benutzerdefinierten Rolle suchen](./media/custom-enterprise-apps/select-custom-role.png)
 
-1. Wählen Sie **Zuweisung hinzufügen** aus, wählen Sie den gewünschten Benutzer aus, und klicken Sie dann auf **Auswählen** , um dem Benutzer eine Rollenzuweisung hinzuzufügen.
+1. Wählen Sie **Zuweisung hinzufügen** aus, wählen Sie den gewünschten Benutzer aus, und klicken Sie dann auf **Auswählen**, um dem Benutzer eine Rollenzuweisung hinzuzufügen.
 
     ![Dem Benutzer eine Zuweisung für die benutzerdefinierte Rolle hinzufügen](./media/custom-enterprise-apps/assign-user-to-role.png)
 

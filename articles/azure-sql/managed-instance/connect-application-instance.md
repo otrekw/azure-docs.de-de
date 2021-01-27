@@ -12,12 +12,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, vanto
 ms.date: 11/09/2018
-ms.openlocfilehash: dd5c6527cd6a0beea291dce94ff0e5949ba00671
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 965e765e22a4da8f2ac3b7151337cf62b65be4fe
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791255"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98732610"
 ---
 # <a name="connect-your-application-to-azure-sql-managed-instance"></a>Herstellen einer Verbindung zwischen einer Anwendung und SQL Managed Instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -48,7 +48,7 @@ Es gibt zwei Optionen zum Verbinden virtueller Netzwerke:
 Dabei ist Peering vorzuziehen, da dabei das Microsoft-Backbonenetzwerk verwendet wird, sodass es im Hinblick auf die Konnektivität keinen spürbaren Unterschied bei der Latenz zwischen virtuellen Computern im Peering-VNET und im selben VNET gibt. VNET-Peering wird zwischen Netzwerken in der gleichen Region unterstützt. Globales Peering virtueller Netzwerke wird ebenfalls unterstützt. Die einzige Einschränkung ist im folgenden Hinweis beschrieben.  
 
 > [!IMPORTANT]
-> [Am 22.09.2020 haben wir globales Peering virtueller Netzwerke für neu erstellte virtuelle Cluster angekündigt](https://azure.microsoft.com/en-us/updates/global-virtual-network-peering-support-for-azure-sql-managed-instance-now-available/). Dies bedeutet, dass globales Peering virtueller Netzwerke sowohl für SQL Managed Instance-Bereitstellungen, die nach dem Ankündigungsdatum in leeren Subnetzen erstellt wurden, als auch für alle späteren verwalteten Instanzen, die in diesen Subnetzen erstellt werden, unterstützt wird. Für alle anderen SQL Managed Instance-Bereitstellungen ist die Peeringunterstützung aufgrund der [Einschränkungen beim globalen Peering virtueller Netzwerke](../../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints) auf die Netzwerke in derselben Region beschränkt. Ausführliche Informationen finden Sie im entsprechenden Abschnitt des Artikels [Azure Virtual Network – häufig gestellte Fragen](../../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers). 
+> [Am 22.09.2020 haben wir globales Peering virtueller Netzwerke für neu erstellte virtuelle Cluster angekündigt](https://azure.microsoft.com/en-us/updates/global-virtual-network-peering-support-for-azure-sql-managed-instance-now-available/). Dies bedeutet, dass globales Peering virtueller Netzwerke sowohl für SQL Managed Instances, die nach dem Ankündigungsdatum in leeren Subnetzen erstellt wurden, als auch für alle späteren verwalteten Instanzen, die in diesen Subnetzen erstellt werden, unterstützt wird. Für alle anderen SQL Managed Instances ist die Peeringunterstützung aufgrund der [Einschränkungen beim globalen Peering virtueller Netzwerke](../../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints) auf die Netzwerke in derselben Region beschränkt. Ausführliche Informationen finden Sie im entsprechenden Abschnitt des Artikels [Azure Virtual Network – häufig gestellte Fragen](../../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers). 
 
 ## <a name="connect-from-on-premises"></a>Herstellen einer Verbindung mit einer lokalen Anwendung 
 
@@ -56,7 +56,7 @@ Sie können auch Ihre lokale Anwendung mit SQL Managed Instance verbinden. Auf S
 
 Es gibt zwei Optionen, um lokal eine Verbindung mit einem virtuellen Azure-Netzwerk herzustellen:
 
-- Site-to-Site-VPN-Verbindung ([Azure-Portal](../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md), [PowerShell](../../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md), [Azure CLI](../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli.md))
+- Site-to-Site-VPN-Verbindung ([Azure-Portal](../../vpn-gateway/tutorial-site-to-site-portal.md), [PowerShell](../../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md), [Azure CLI](../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli.md))
 - [Azure ExpressRoute](../../expressroute/expressroute-introduction.md)-Verbindung  
 
 Wenn Sie lokal eine Verbindung mit Azure hergestellt haben und keine Verbindung mit SQL Managed Instance herstellen können, prüfen Sie, ob für die Firewall eine geöffnete ausgehende Verbindung am SQL-Port 1433 und der Portbereich 11000-11999 für die Umleitung festgelegt sind.
@@ -73,8 +73,8 @@ Ein weiteres Szenario von Kunden ist die Installation eines VPN-Gateways in eine
 
 Nachdem Sie die grundlegende Infrastruktur eingerichtet haben, müssen Sie einige Einstellungen ändern, damit das VPN-Gateway die IP-Adressen im virtuellen Netzwerk, das SQL Managed Instance hostet, erkennen kann. Nehmen Sie zu diesem Zweck die folgenden sehr spezifischen Änderungen unter **Peeringeinstellungen** vor.
 
-1. Navigieren Sie im virtuelle Netzwerk, das das VPN-Gateway hostet, zu **Peerings** und dann zur Verbindung, die mittels Peering zwischen SQL Managed Instance und dem virtuellen Netzwerk hergestellt wurde. Klicken Sie dann auf **Gatewaytransit zulassen** .
-2. Navigieren Sie im virtuellen Netzwerk, das SQL Managed Instance hostet, zu **Peerings** und dann zur Verbindung, die mittels Peering zwischen dem VPN-Gateway und dem virtuellen Netzwerk hergestellt wurde. Klicken Sie dann auf **Remotegateways verwenden** .
+1. Navigieren Sie im virtuelle Netzwerk, das das VPN-Gateway hostet, zu **Peerings** und dann zur Verbindung, die mittels Peering zwischen SQL Managed Instance und dem virtuellen Netzwerk hergestellt wurde. Klicken Sie dann auf **Gatewaytransit zulassen**.
+2. Navigieren Sie im virtuellen Netzwerk, das SQL Managed Instance hostet, zu **Peerings** und dann zur Verbindung, die mittels Peering zwischen dem VPN-Gateway und dem virtuellen Netzwerk hergestellt wurde. Klicken Sie dann auf **Remotegateways verwenden**.
 
 ## <a name="connect-azure-app-service"></a>Herstellen einer Verbindung mit Azure App Service 
 

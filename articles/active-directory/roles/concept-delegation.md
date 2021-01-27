@@ -3,7 +3,7 @@ title: Grundlagen der Delegierung der Administratorrolle – Azure Active Direct
 description: Delegierungsmodelle, Beispiele und Rollensicherheit in Azure Active Directory
 services: active-directory
 documentationcenter: ''
-author: curtand
+author: rolyon
 manager: mtillman
 editor: ''
 ms.service: active-directory
@@ -11,16 +11,16 @@ ms.workload: identity
 ms.subservice: roles
 ms.topic: conceptual
 ms.date: 11/05/2020
-ms.author: curtand
+ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6f4512bea533b6394fcef025ddc19bb7989292a4
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: 77ba93b9017fa75f7247bda639880415eda1d280
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93378362"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98740311"
 ---
 # <a name="delegate-administration-in-azure-active-directory"></a>Delegieren der Administration in Azure Active Directory (Azure AD)
 
@@ -66,8 +66,8 @@ Jede Aufgabe sollte nach Häufigkeit, Wichtigkeit und Schwierigkeit bewertet wer
 
 Die Verbreitung von Apps in Ihrer Organisation kann Ihr Delegierungsmodell komplizierter gestalten. Wenn der Aufwand der Zugriffsverwaltung für die Anwendung ausschließlich dem globalen Administrator zufällt, erhöht sich die Verwaltung des Modells wahrscheinlich im Lauf der Zeit. Wenn Sie Benutzern die globale Administratorrolle für Aufgaben wie das Konfigurieren von Geschäftsanwendungen zugeteilt haben, können Sie diese nun an folgende weniger privilegierte Rollen auslagern. So können Sie den Sicherheitsstatus verbessern und das Fehlerpotenzial verringern. Folgende Rollen für Anwendungsadministratoren besitzen die meisten Privilegien:
 
-* Die Rolle **Anwendungsadministrator** , durch die alle Anwendungen im Verzeichnis verwaltet werden können, einschließlich Registrierungen, Einstellungen für einmaliges Anmelden, Benutzer- und Gruppenzuweisungen und -lizenzierung, Anwendungsproxyeinstellungen und Zustimmungen. Durch diese Rolle kann der bedingte Zugriff nicht verwaltet werden.
-* Die Rolle **Cloudanwendungsadministrator** , die alle Berechtigungen des Anwendungsadministrators außer dem Zugriff auf die Anwendungsproxyeinstellungen gewährt, da sie nicht über lokale Berechtigungen verfügt.
+* Die Rolle **Anwendungsadministrator**, durch die alle Anwendungen im Verzeichnis verwaltet werden können, einschließlich Registrierungen, Einstellungen für einmaliges Anmelden, Benutzer- und Gruppenzuweisungen und -lizenzierung, Anwendungsproxyeinstellungen und Zustimmungen. Durch diese Rolle kann der bedingte Zugriff nicht verwaltet werden.
+* Die Rolle **Cloudanwendungsadministrator**, die alle Berechtigungen des Anwendungsadministrators außer dem Zugriff auf die Anwendungsproxyeinstellungen gewährt, da sie nicht über lokale Berechtigungen verfügt.
 
 ## <a name="delegate-app-registration"></a>Delegieren der App-Registrierung
 

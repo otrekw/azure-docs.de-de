@@ -8,12 +8,12 @@ ms.custom: REST
 ms.topic: how-to
 ms.date: 06/13/2018
 ms.author: routlaw
-ms.openlocfilehash: 0a448d4b4538d62c1631cf16d88ec0a7e7f2a399
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 9430eaeb3ba22bd0d9fc0675ab97c84944a0cf7c
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97508032"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737845"
 ---
 # <a name="get-virtual-machine-usage-metrics-using-the-rest-api"></a>Abrufen von VM-Nutzungsmetriken mithilfe der REST-API
 
@@ -42,7 +42,7 @@ Die folgenden Header sind erforderlich:
 
 | Name | BESCHREIBUNG |
 | :--- | :---------- |
-| subscriptionId | Abonnement-ID für ein Azure-Abonnement. Wenn Sie über mehrere Abonnements verfügen, lesen Sie [Verwenden mehrerer Abonnements](/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest): |
+| subscriptionId | Abonnement-ID für ein Azure-Abonnement. Wenn Sie über mehrere Abonnements verfügen, lesen Sie [Verwenden mehrerer Abonnements](/cli/azure/manage-azure-subscriptions-azure-cli): |
 | resourceGroupName | Name der Azure-Ressourcengruppe, die der Ressource zugeordnet ist. Dieser Wert kann über die Azure Resource Manager-API, die Befehlszeilenschnittstelle oder das Portal abgerufen werden. |
 | vmname | Name des virtuellen Azure-Computers. |
 | metricnames | Durch Trennzeichen getrennte Liste der gültigen [Load Balancer-Metriken](../../load-balancer/load-balancer-standard-diagnostics.md). |

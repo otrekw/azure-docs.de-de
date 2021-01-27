@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5c45b362bc37df71346fc3b635c8ae4a51f62cdc
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: de01788c01d4d6dedd9563faaaac07bff30bbd97
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95919049"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98724758"
 ---
 # <a name="build-resilience-in-your-hybrid-architecture"></a>Erzielen von Resilienz in Ihrer Hybridarchitektur
 
@@ -82,7 +82,7 @@ Informationen zum Implementieren von Passthrough-Authentifizierung finden Sie in
 
 Der Verbund umfasst das Erstellen einer Vertrauensstellung zwischen Azure AD und dem Verbunddienst, die den Austausch von Endpunkten, Tokensignaturzertifikaten und anderen Metadaten umfasst. Wenn eine Anforderung an Azure AD gesendet wird, wird die Konfiguration gelesen und der Benutzer an die konfigurierten Endpunkte umgeleitet. Zu diesem Zeitpunkt interagiert der Benutzer mit dem Verbunddienst, der eine durch Azure AD validierte SAML-Assertion ausstellt. 
 
-Das folgende Diagramm zeigt die Topologie einer Unternehmensbereitstellung der Active Directory-Verbunddienste (AD FS), die redundante Verbund- und Webanwendungs-Proxyserver über mehrere lokale Rechenzentren hinweg umfasst. Diese Konfiguration basiert auf Infrastrukturkomponenten für Unternehmensnetzwerke wie DNS, Netzwerklastenausgleich mit Geoaffinitätsfunktionen, Firewalls usw. Alle lokalen Komponenten und Verbindungen sind anfällig für Ausfälle. Weitere Informationen finden Sie in der [Dokumentation zur AD FS-Kapazitätsplanung](https://docs.microsoft.com/windows-server/identity/ad-fs/design/planning-for-ad-fs-server-capacity).
+Das folgende Diagramm zeigt die Topologie einer Unternehmensbereitstellung der Active Directory-Verbunddienste (AD FS), die redundante Verbund- und Webanwendungs-Proxyserver über mehrere lokale Rechenzentren hinweg umfasst. Diese Konfiguration basiert auf Infrastrukturkomponenten für Unternehmensnetzwerke wie DNS, Netzwerklastenausgleich mit Geoaffinitätsfunktionen, Firewalls usw. Alle lokalen Komponenten und Verbindungen sind anfällig für Ausfälle. Weitere Informationen finden Sie in der [Dokumentation zur AD FS-Kapazitätsplanung](/windows-server/identity/ad-fs/design/planning-for-ad-fs-server-capacity).
 
 > [!NOTE]
 >  Der Verbund verfügt über die höchste Anzahl von lokalen Abhängigkeiten und somit über die meisten potenziellen Fehlerquellen. Dieses Diagramm zeigt AD FS. Andere lokale Identitätsanbieter unterliegen aber ähnlichen Entwurfsüberlegungen, um Hochverfügbarkeit, Skalierbarkeit und Failover zu erzielen.
@@ -99,9 +99,9 @@ Wenn Sie eine Verbundauthentifizierungsstrategie implementieren oder diese robus
 
 * [Azure AD-Verbund – Kompatibilitätsliste](../hybrid/how-to-connect-fed-compatibility.md)
 
-* Befolgen der [Dokumentation zur AD FS-Kapazitätsplanung](https://docs.microsoft.com/windows-server/identity/ad-fs/design/planning-for-ad-fs-server-capacity)
+* Befolgen der [Dokumentation zur AD FS-Kapazitätsplanung](/windows-server/identity/ad-fs/design/planning-for-ad-fs-server-capacity)
 
-* [Bereitstellen von AD FS in Azure IaaS](https://docs.microsoft.com/windows-server/identity/ad-fs/deployment/how-to-connect-fed-azure-adfs)
+* [Bereitstellen von AD FS in Azure IaaS](/windows-server/identity/ad-fs/deployment/how-to-connect-fed-azure-adfs)
 
 * [Aktivieren von PHS](../hybrid/tutorial-phs-backup.md) zusammen mit dem Verbund
 

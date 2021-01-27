@@ -3,16 +3,16 @@ title: Migrieren der Batch-Poolkonfiguration von Cloud Services zu Virtual Machi
 description: Erfahren Sie, wie Sie Ihre Poolkonfiguration auf die neueste und empfohlene Konfiguration aktualisieren.
 ms.topic: how-to
 ms.date: 1/6/2021
-ms.openlocfilehash: d987a185efb6593fd541dd14fa74b6c4d3ca41be
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: 417738be2c69101129079b8ff3a3d80634f9f99c
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98234306"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98731498"
 ---
 # <a name="migrate-batch-pool-configuration-from-cloud-services-to-virtual-machines"></a>Migrieren der Batch-Poolkonfiguration von Cloud Services zu Virtual Machines
 
-Batch-Pools können entweder mit [cloudServiceConfiguration](https://docs.microsoft.com/rest/api/batchservice/pool/add#cloudserviceconfiguration) oder mit [virtualMachineConfiguration](https://docs.microsoft.com/rest/api/batchservice/pool/add#virtualmachineconfiguration) erstellt werden. „virtualMachineConfiguration“ ist die empfohlene Konfiguration, da sie alle Batch-Funktionen unterstützt. Pools mit „cloudServiceConfiguration“ unterstützen nicht alle Features, und es sind keine neuen Features geplant.
+Batch-Pools können entweder mit [cloudServiceConfiguration](/rest/api/batchservice/pool/add#cloudserviceconfiguration) oder mit [virtualMachineConfiguration](/rest/api/batchservice/pool/add#virtualmachineconfiguration) erstellt werden. „virtualMachineConfiguration“ ist die empfohlene Konfiguration, da sie alle Batch-Funktionen unterstützt. Pools mit „cloudServiceConfiguration“ unterstützen nicht alle Features, und es sind keine neuen Features geplant.
 
 Wenn Sie Pools mit „cloudServiceConfiguration“ verwenden, wird dringend empfohlen, zu Pools mit „virtualMachineConfiguration“ zu wechseln. So können Sie von allen Batch-Funktionen profitieren, wie z. B.: erweiterte [Auswahl von VM-Serien](batch-pool-vm-sizes.md), Linux-VMs, [Container](batch-docker-container-workloads.md), [virtuelle Azure Resource Manager-Netzwerke](batch-virtual-network.md) und [Datenträgerverschlüsselung auf Knoten](disk-encryption.md).
 
@@ -41,4 +41,4 @@ Beim Aktualisieren von Poolkonfiguration sind folgende Aspekte zu berücksichtig
 
 - Erfahren Sie mehr über [Poolkonfigurationen](nodes-and-pools.md#configurations).
 - Erfahren Sie mehr über [bewährte Methoden für Pools](best-practices.md#pools).
-- Lesen Sie die REST-API-Referenz zum [Hinzufügen von Pools](https://docs.microsoft.com/rest/api/batchservice/pool/add) und zu [virtualMachineConfiguration](https://docs.microsoft.com/rest/api/batchservice/pool/add#virtualmachineconfiguration).
+- Lesen Sie die REST-API-Referenz zum [Hinzufügen von Pools](/rest/api/batchservice/pool/add) und zu [virtualMachineConfiguration](/rest/api/batchservice/pool/add#virtualmachineconfiguration).

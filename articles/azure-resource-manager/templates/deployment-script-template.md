@@ -7,12 +7,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 12/28/2020
 ms.author: jgao
-ms.openlocfilehash: 4d2a55355318a1bf916017fa77026a87a95b7f57
-ms.sourcegitcommit: 31d242b611a2887e0af1fc501a7d808c933a6bf6
+ms.openlocfilehash: 574dcf50111c14f4924f009a74ed6f2ac2bb31e9
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97809716"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98733839"
 ---
 # <a name="use-deployment-scripts-in-arm-templates"></a>Verwenden von Bereitstellungsskripts in ARM-Vorlagen
 
@@ -542,7 +542,7 @@ Der Lebenszyklus dieser Ressourcen wird durch die folgenden Eigenschaften in der
 > [!NOTE]
 > Es wird nicht empfohlen, das Speicherkonto und die Containerinstanz zu verwenden, die vom Skriptdienst für andere Zwecke generiert werden. Die beiden Ressourcen werden abhängig vom Lebenszyklus des Skripts möglicherweise entfernt.
 
-Die Containerinstanz und das Speicherkonto werden gemäß der Option `cleanupPreference` gelöscht. Wenn das Skript jedoch fehlschlägt und `cleanupPreference` nicht auf **Always** (Immer) festgelegt ist, führt der Bereitstellungsprozess den Container automatisch eine Stunde lang aus. Sie können diese Stunde für die Problembehandlung des Skripts nutzen. Wenn Sie den Container nach erfolgreichen Bereitstellungen beibehalten möchten, fügen Sie dem Skript einen Energiesparmodusschritt hinzu. Fügen Sie z. B. [Start-Sleep](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/start-sleep) am Ende des Skripts hinzu. Wenn Sie den Energiesparmodusschritt nicht hinzufügen, wird der Container auf einen Terminalzustand festgelegt. Auf ihn kann dann nicht zugegriffen werden, auch wenn er noch nicht gelöscht wurde.
+Die Containerinstanz und das Speicherkonto werden gemäß der Option `cleanupPreference` gelöscht. Wenn das Skript jedoch fehlschlägt und `cleanupPreference` nicht auf **Always** (Immer) festgelegt ist, führt der Bereitstellungsprozess den Container automatisch eine Stunde lang aus. Sie können diese Stunde für die Problembehandlung des Skripts nutzen. Wenn Sie den Container nach erfolgreichen Bereitstellungen beibehalten möchten, fügen Sie dem Skript einen Energiesparmodusschritt hinzu. Fügen Sie z. B. [Start-Sleep](/powershell/module/microsoft.powershell.utility/start-sleep) am Ende des Skripts hinzu. Wenn Sie den Energiesparmodusschritt nicht hinzufügen, wird der Container auf einen Terminalzustand festgelegt. Auf ihn kann dann nicht zugegriffen werden, auch wenn er noch nicht gelöscht wurde.
 
 ## <a name="run-script-more-than-once"></a>Mehrmaliges Ausführen des Skripts
 

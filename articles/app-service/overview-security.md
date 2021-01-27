@@ -5,12 +5,12 @@ keywords: Azure App Service, Web-App, mobile App, API-App, Funktions-App, Sicher
 ms.topic: article
 ms.date: 08/24/2018
 ms.custom: seodec18
-ms.openlocfilehash: 55ffb2d03a42809a41583e6be25066b0b8e104b1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 61bffcfa8b98ed666e450c344023258b752e4880
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88961498"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98736104"
 ---
 # <a name="security-in-azure-app-service"></a>Sicherheit in Azure App Service
 
@@ -85,8 +85,8 @@ Wenn Sie die Ressourcenkonnektivität vollständig von den gemeinsam genutzten N
 Für den sicheren Zugriff auf lokale Ressourcen (beispielsweise Datenbanken) stehen drei Optionen zur Verfügung: 
 
 - [Hybridverbindungen:](app-service-hybrid-connections.md) Bei dieser Option wird über einen TCP-Tunnel eine Point-to-Point-Verbindung mit Ihrer Remoteressource hergestellt. Für den TCP-Tunnel wird TLS 1.2 mit SAS-Schlüsseln (Shared Access Signature) verwendet.
-- [Virtual Network-Integration](web-sites-integrate-with-vnet.md) mit Site-to-Site-VPN: Diese Option entspricht der Beschreibung unter [Ressourcen in einer Azure Virtual Network-Instanz](#resources-inside-an-azure-virtual-network), die Virtual Network-Instanz kann allerdings über ein [Site-to-Site-VPN](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md) mit Ihrem lokalen Netzwerk verbunden werden. In dieser Netzwerktopologie kann Ihre App auf die gleiche Weise eine Verbindung mit lokalen Ressourcen herstellen wie mit anderen Ressourcen in der Virtual Network-Instanz.
-- [App Service-Umgebung](environment/intro.md) mit Site-to-Site-VPN: Diese Option entspricht der Beschreibung unter [Ressourcen in einer Azure Virtual Network-Instanz](#resources-inside-an-azure-virtual-network), die Virtual Network-Instanz kann allerdings über ein [Site-to-Site-VPN](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md) mit Ihrem lokalen Netzwerk verbunden werden. In dieser Netzwerktopologie kann Ihre App auf die gleiche Weise eine Verbindung mit lokalen Ressourcen herstellen wie mit anderen Ressourcen in der Virtual Network-Instanz.
+- [Virtual Network-Integration](web-sites-integrate-with-vnet.md) mit Site-to-Site-VPN: Diese Option entspricht der Beschreibung unter [Ressourcen in einer Azure Virtual Network-Instanz](#resources-inside-an-azure-virtual-network), die Virtual Network-Instanz kann allerdings über ein [Site-to-Site-VPN](../vpn-gateway/tutorial-site-to-site-portal.md) mit Ihrem lokalen Netzwerk verbunden werden. In dieser Netzwerktopologie kann Ihre App auf die gleiche Weise eine Verbindung mit lokalen Ressourcen herstellen wie mit anderen Ressourcen in der Virtual Network-Instanz.
+- [App Service-Umgebung](environment/intro.md) mit Site-to-Site-VPN: Diese Option entspricht der Beschreibung unter [Ressourcen in einer Azure Virtual Network-Instanz](#resources-inside-an-azure-virtual-network), die Virtual Network-Instanz kann allerdings über ein [Site-to-Site-VPN](../vpn-gateway/tutorial-site-to-site-portal.md) mit Ihrem lokalen Netzwerk verbunden werden. In dieser Netzwerktopologie kann Ihre App auf die gleiche Weise eine Verbindung mit lokalen Ressourcen herstellen wie mit anderen Ressourcen in der Virtual Network-Instanz.
 
 ## <a name="application-secrets"></a>Anwendungsgeheimnisse
 

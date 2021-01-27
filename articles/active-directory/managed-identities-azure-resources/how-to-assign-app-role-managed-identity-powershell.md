@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 12/10/2020
 ms.author: jodowns
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 409ba7a954830bb2370ce83989b9e8b08b742fe7
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: f2d844054e3744aafa01f43ded354a5b5d9f8b4b
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97631175"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98732064"
 ---
 # <a name="assign-a-managed-identity-access-to-an-application-role-using-powershell"></a>Zuweisen des Zugriffs einer verwalteten Identität auf eine Anwendungsrolle mithilfe von PowerShell
 
@@ -36,7 +36,7 @@ In diesem Artikel erfahren Sie, wie Sie einer Anwendungsrolle, die durch eine an
 - Wenn Sie noch kein Azure-Konto haben, sollten Sie sich [für ein kostenloses Konto registrieren](https://azure.microsoft.com/free/), bevor Sie fortfahren.
 - Zum Ausführen der Beispielskripts haben Sie zwei Möglichkeiten:
     - Verwenden Sie die [Azure Cloud Shell](../../cloud-shell/overview.md), die Sie über die Schaltfläche **Testen** in der rechten oberen Ecke der Codeblöcke öffnen können.
-    - Führen Sie Skripts lokal aus, indem Sie die neueste Version von [Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2) installieren.
+    - Führen Sie Skripts lokal aus, indem Sie die neueste Version von [Azure AD PowerShell](/powershell/azure/active-directory/install-adv2) installieren.
 
 ## <a name="assign-a-managed-identity-access-to-another-applications-app-role"></a>Zuweisen des Zugriffs einer verwalteten Identität auf die App-Rolle einer anderen Anwendung
 

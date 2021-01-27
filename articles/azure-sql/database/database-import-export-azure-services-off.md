@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/08/2020
-ms.openlocfilehash: be966a651df0c896ac7e1973d7783bb7fb686be3
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 3a02876234d43df2e98a3a4e60453fc3f1f74ef6
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92676498"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98724168"
 ---
 # <a name="import-or-export-an-azure-sql-database-without-allowing-azure-services-to-access-the-server"></a>Importieren oder Exportieren einer Azure SQL-Datenbank, ohne Azure-Diensten Zugriff auf den Server zu erlauben
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -46,7 +46,7 @@ In den folgenden Schritten wird gezeigt, wie Sie eine Remotedesktopverbindung zu
 
    ![Der Screenshot zeigt eine Seite „Übersicht über virtuelle Computer“ mit der Schaltfläche „Verbinden“.](./media/database-import-export-azure-services-off/vm.png)  
 
-2. Wählen Sie **Verbinden** .
+2. Wählen Sie **Verbinden**.
 
    Eine Formular für eine RDP-Datei (Remotedesktopprotokoll) wird mit der öffentlichen IP-Adresse und der Portnummer für den virtuellen Computer angezeigt.
 
@@ -57,7 +57,7 @@ In den folgenden Schritten wird gezeigt, wie Sie eine Remotedesktopverbindung zu
    > [!NOTE]
    > Sie können für die Verbindung mit Ihrem virtuellen Computer auch SSH verwenden.
 
-4. Schließen Sie das Formular **Mit virtuellem Computer verbinden** .
+4. Schließen Sie das Formular **Mit virtuellem Computer verbinden**.
 5. Öffnen Sie die heruntergeladene RDP-Datei, um eine Verbindung mit Ihrem virtuellen Computer herzustellen.
 6. Wenn Sie dazu aufgefordert werden, wählen Sie **Connect** aus. Auf einem Macintosh benötigen Sie einen RDP-Client, z. B. diesen [Remotedesktopclien](https://apps.apple.com/app/microsoft-remote-desktop-10/id1295203466?mt=12)t aus dem Mac App Store.
 
@@ -77,13 +77,13 @@ Fügen Sie die öffentliche IP-Adresse des virtuellen Computers der Firewall des
 
 Mit den folgenden Schritten wird eine IP-Firewallregel auf Serverebene für die öffentliche IP-Adresse Ihres virtuellen Computers erstellt, um eine Verbindung zum virtuellen Computer zu ermöglichen.
 
-1. Wählen Sie im Menü auf der linken Seite die Option **SQL-Datenbanken** und dann auf der Seite **SQL-Datenbanken** Ihre Datenbank aus. Die Übersichtsseite für Ihre Datenbank wird geöffnet. Diese enthält den vollqualifizierten Servernamen (z. B. **servername.database.windows.net** ) und Optionen für die weitere Konfiguration.
+1. Wählen Sie im Menü auf der linken Seite die Option **SQL-Datenbanken** und dann auf der Seite **SQL-Datenbanken** Ihre Datenbank aus. Die Übersichtsseite für Ihre Datenbank wird geöffnet. Diese enthält den vollqualifizierten Servernamen (z. B. **servername.database.windows.net**) und Optionen für die weitere Konfiguration.
 
 2. Kopieren Sie diesen vollqualifizierten Servernamen, damit Sie ihn beim Herstellen der Verbindung mit Ihrem Server und den zugehörigen Datenbanken verwenden können.
 
    ![Servername](./media/database-import-export-azure-services-off/server-name.png)
 
-3. Wählen Sie in der Symbolleiste die Option **Serverfirewall festlegen** . Die Seite **Firewalleinstellungen** für den Server wird geöffnet.
+3. Wählen Sie in der Symbolleiste die Option **Serverfirewall festlegen**. Die Seite **Firewalleinstellungen** für den Server wird geöffnet.
 
    ![IP-Firewallregel auf Serverebene](./media/database-import-export-azure-services-off/server-firewall-rule.png)
 
@@ -91,7 +91,7 @@ Mit den folgenden Schritten wird eine IP-Firewallregel auf Serverebene für die 
 
 5. Wählen Sie **Speichern** aus. Für die öffentliche IP-Adresse des virtuellen Computers wird eine IP-Firewallregel auf Serverebene erstellt, die auf dem Server den Port 1433 öffnet.
 
-6. Schließen Sie die Seite **Firewalleinstellungen** .
+6. Schließen Sie die Seite **Firewalleinstellungen**.
 
 ## <a name="export-a-database-using-sqlpackage"></a>Exportieren einer Datenbank mit SqlPackage
 
@@ -111,7 +111,7 @@ Informationen zum Importieren einer SQL Server-Datenbank mit dem Befehlszeilenpr
 
 Aus Gründen der Skalierbarkeit und Leistung wird die Verwendung von SqlPackage (statt des Azure-Portals) für die meisten Produktionsumgebungen empfohlen. Einen Blogbeitrag des SQL Server-Kundenberatungsteams zur Migration mithilfe von `BACPAC`-Dateien finden Sie unter [Migrating from SQL Server to Azure SQL Database using BACPAC Files](/archive/blogs/sqlcat/migrating-from-sql-server-to-azure-sql-database-using-bacpac-files) (Migrieren von SQL Server zu Azure SQL-Datenbank mithilfe von BACPAC-Dateien).
 
-Mit dem folgenden SqlPackage-Befehl wird die Datenbank **AdventureWorks2017** aus dem lokalen Speicher in eine Azure SQL-Datenbank importiert. Er erstellt eine neue Datenbank namens **myMigratedDatabase** mit der **Premium** -Dienstebene und dem Dienstziel **P6** . Ändern Sie diese Werte entsprechend Ihrer Umgebung.
+Mit dem folgenden SqlPackage-Befehl wird die Datenbank **AdventureWorks2017** aus dem lokalen Speicher in eine Azure SQL-Datenbank importiert. Er erstellt eine neue Datenbank namens **myMigratedDatabase** mit der **Premium**-Dienstebene und dem Dienstziel **P6**. Ändern Sie diese Werte entsprechend Ihrer Umgebung.
 
 ```cmd
 sqlpackage.exe /a:import /tcs:"Data Source=<serverName>.database.windows.net;Initial Catalog=myMigratedDatabase>;User Id=<userId>;Password=<password>" /sf:AdventureWorks2017.bacpac /p:DatabaseEdition=Premium /p:DatabaseServiceObjective=P6
@@ -147,7 +147,7 @@ Verwenden Sie Azure Files, um optimale Leistung zu erzielen. SqlPackage arbeitet
 
 Verwenden Sie Azure-Blobs, die kostengünstiger sind als eine Azure Premium-Dateifreigabe, um die Kosten zu reduzieren. Allerdings müssen Sie die [BACPAC-Datei](/sql/relational-databases/data-tier-applications/data-tier-applications#bacpac) vor dem Import- oder Exportvorgang zwischen dem Blob und dem lokalen Dateisystem kopieren. Daher dauert der Prozess länger.
 
-Weitere Informationen zum Hochladen oder Herunterladen von BACPAC-Dateien finden Sie unter [Übertragen von Daten mit AzCopy und Blobspeicher](../../storage/common/storage-use-azcopy-blobs.md) und [Übertragen von Daten mit AzCopy und Dateispeicher](../../storage/common/storage-use-azcopy-files.md).
+Weitere Informationen zum Hochladen oder Herunterladen von BACPAC-Dateien finden Sie unter [Übertragen von Daten mit AzCopy und Blobspeicher](../../storage/common/storage-use-azcopy-v10.md#transfer-data) und [Übertragen von Daten mit AzCopy und Dateispeicher](../../storage/common/storage-use-azcopy-files.md).
 
 Abhängig von Ihrer Umgebung müssen Sie u. U. [Azure Storage-Firewalls und virtuelle Netzwerke konfigurieren](../../storage/common/storage-network-security.md).
 

@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f8bfc3fb239f30911eddf0aa27496a465e36c486
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 8fed78d7d2250d749ced7fe343689df76329b60d
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95919043"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98724659"
 ---
 # <a name="build-resilience-in-application-access-with-application-proxy"></a>Erzielen von Resilienz beim Anwendungszugriff mit dem Anwendungsproxy
 
@@ -27,7 +27,7 @@ Der Anwendungsproxy ist ein Feature von Azure AD, mit dem Benutzer von einem Rem
 Benutzer greifen über eine URL, die über den Anwendungsproxy veröffentlicht wird, auf lokale Ressourcen zu. Sie werden zur Azure AD-Anmeldeseite umgeleitet. Der Anwendungsproxydienst in Azure AD sendet dann ein Token an den Anwendungsproxyconnector im Unternehmensnetzwerk, der das Token an das lokale Active Directory übergibt. Der authentifizierte Benutzer kann dann auf die lokale Ressource zugreifen. In der folgenden Abbildung werden [Connectors](../manage-apps/application-proxy-connectors.md) in einer [Connectorgruppe](../manage-apps/application-proxy-connector-groups.md) angezeigt.
 
 > [!IMPORTANT]
-> Wenn Sie Ihre Anwendungen über den Anwendungsproxy veröffentlichen, müssen Sie [Kapazitätsplanung und geeignete Redundanz für die Anwendungsproxyconnectors](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-connectors#capacity-planning) implementieren.
+> Wenn Sie Ihre Anwendungen über den Anwendungsproxy veröffentlichen, müssen Sie [Kapazitätsplanung und geeignete Redundanz für die Anwendungsproxyconnectors](../manage-apps/application-proxy-connectors.md#capacity-planning) implementieren.
 
 ![Architekturdiagramm von Anwendung Y](./media/resilience-on-prem-access/admin-resilience-app-proxy.png))
 

@@ -3,12 +3,12 @@ title: Verbessern der Leistung von Azure-Anwendungen mit Advisor
 description: Anhand der Empfehlungen zur Leistung in Azure Advisor können Sie die Geschwindigkeit und Reaktionszeit Ihrer unternehmenskritischen Anwendungen verbessern.
 ms.topic: article
 ms.date: 07/29/2020
-ms.openlocfilehash: d7d4e87670ca529f38465e928c4067daec802b8f
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: f546527011402b9ea33321d56356d8aabe2412c1
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98248427"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98735527"
 ---
 # <a name="improve-the-performance-of-azure-applications-by-using-azure-advisor"></a>Verbessern der Leistung von Azure-Anwendungen mit Azure Advisor
 
@@ -179,7 +179,7 @@ Weitere Informationen zum [Immersive Reader SDK](../cognitive-services/immersive
 
 Advisor erkennt, dass Sie über einen Hostpool verfügen, für den als Lastenausgleichsalgorithmus „Tiefensuche“ festgelegt ist und dessen maximales Sitzungslimit größer oder gleich 999999 ist. Beim tiefenorientierten Lastenausgleich wird die Option für die maximale Anzahl von Sitzungen verwendet, um die maximale Anzahl von Benutzern zu bestimmen, für die gleichzeitige Sitzungen auf einem einzelnen Sitzungshost vorhanden sein können. Ist die maximale Anzahl von Sitzungen zu hoch, werden alle Benutzersitzungen an denselben Sitzungshost weitergeleitet. Dies beeinträchtigt die Leistung und Zuverlässigkeit. Wenn Sie also einen Hostpool mit tiefenorientiertem Lastenausgleich konfigurieren, müssen Sie auch eine geeignete maximale Anzahl von Sitzungen festlegen. Orientieren Sie sich hierbei an der Konfiguration Ihrer Bereitstellung und an der Kapazität Ihrer VMs. 
 
-Weitere Informationen zum Lastenausgleich in Windows Virtual Desktop finden Sie unter [Konfigurieren der Lastenausgleichsmethode für Windows Virtual Desktop](/azure/virtual-desktop/troubleshoot-set-up-overview).
+Weitere Informationen zum Lastenausgleich in Windows Virtual Desktop finden Sie unter [Konfigurieren der Lastenausgleichsmethode für Windows Virtual Desktop](../virtual-desktop/troubleshoot-set-up-overview.md).
 
 ## <a name="how-to-access-performance-recommendations-in-advisor"></a>Zugreifen auf Advisor-Empfehlungen zur Leistung
 

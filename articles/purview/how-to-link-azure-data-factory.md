@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/22/2020
-ms.openlocfilehash: 01af7b251c9ce3bfebb87016c85ea3efd9c0e8ac
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: dbd7937667a3c4d5af9f13e15cdd4ff2081241f0
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96928765"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98723879"
 ---
 # <a name="how-to-connect-azure-data-factory-and-azure-purview"></a>Verbinden von Azure Data Factory und Azure Purview
 
@@ -99,9 +99,9 @@ Die Integration zwischen Data Factory und Purview unterstützt nur eine Teilmeng
 
 | Datenspeichersystem | Als Quelle unterstützt | Als Senke unterstützt |
 | ------------------- | ------------------- | ----------------- |
-| ADLS Gen1 (keine JSON-Unterstützung) | Ja | Ja (nur nicht-binäre Kopien) |
-| ADLS Gen2 (keine JSON-Unterstützung) | Ja | Ja |
-| Azure Blob (keine JSON-Unterstützung) | Ja | Ja |
+| ADLS Gen1 | Ja | Ja (nur nicht-binäre Kopien) |
+| ADLS Gen2 | Ja | Ja |
+| Azure Blob | Ja | Ja |
 | Azure Cosmos DB (SQL-API) | Ja | Ja |
 | Azure Cosmos DB (Mongo-API) | Ja | Ja |
 | Azure Cognitive Search | Ja | Ja |

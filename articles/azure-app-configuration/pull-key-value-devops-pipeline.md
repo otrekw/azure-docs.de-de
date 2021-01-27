@@ -7,12 +7,12 @@ ms.service: azure-app-configuration
 ms.topic: how-to
 ms.date: 11/17/2020
 ms.author: drewbat
-ms.openlocfilehash: fbe517c766b3835bf4265a1309b8737a25925b7c
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 4d80c034ab03fed6b9ae2ed0c4c0420afe6f7e32
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97914959"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98728090"
 ---
 # <a name="pull-settings-to-app-configuration-with-azure-pipelines"></a>Pullen von Einstellungen aus App Configuration mit Azure Pipelines
 
@@ -47,7 +47,7 @@ Suchen Sie im Anschluss an die Erstellung der Dienstverbindung nach dem Namen de
 
 Weisen Sie der für die Aufgabe verwendeten Dienstverbindung die passende App Configuration-Rolle zu, damit von der Aufgabe auf den App Configuration-Speicher zugegriffen werden kann.
 
-1. Navigieren Sie zu Ihrem App Configuration-Zielspeicher. Eine exemplarische Vorgehensweise zum Einrichten eines App Configuration-Speichers finden Sie unter [Erstellen eines App Configuration-Speichers](/azure/azure-app-configuration/quickstart-dotnet-core-app#create-an-app-configuration-store) in einem der Schnellstarts zu Azure App Configuration.
+1. Navigieren Sie zu Ihrem App Configuration-Zielspeicher. Eine exemplarische Vorgehensweise zum Einrichten eines App Configuration-Speichers finden Sie unter [Erstellen eines App Configuration-Speichers](./quickstart-dotnet-core-app.md#create-an-app-configuration-store) in einem der Schnellstarts zu Azure App Configuration.
 1. Wählen Sie auf der linken Seite **Zugriffssteuerung (IAM)** aus.
 1. Wählen Sie im oberen Bereich **+ Hinzufügen** und anschließend **Rollenzuweisung hinzufügen** aus.
 1. Wählen Sie unter **Rolle** die Option **App Configuration-Datenleser** aus. Diese Rolle ermöglicht der Aufgabe das Lesen im App Configuration-Speicher. 

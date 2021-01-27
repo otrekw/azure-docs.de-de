@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: ninarn, sstein
 ms.date: 12/9/2020
-ms.openlocfilehash: d1ba9445441f38c55b40a8f8ca55471ea8b0a06d
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.openlocfilehash: f50042caf21630c5054ead76825e49b820405c5b
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97008587"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98732693"
 ---
 # <a name="elastic-pools-help-you-manage-and-scale-multiple-databases-in-azure-sql-database"></a>Pools für elastische Datenbanken als Hilfe beim Verwalten und Skalieren vieler Datenbanken in Azure SQL-Datenbank
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -156,7 +156,7 @@ Wenn Sie die Konfiguration des Pools abgeschlossen haben, können Sie auf „Anw
 
 Im Azure-Portal können Sie die Verwendung eines Pools für elastische Datenbanken sowie der darin enthaltenen Datenbanken überwachen. Außerdem können Sie einen Änderungssatz für Ihren Pool für elastische Datenbanken erstellen und alle Änderungen gleichzeitig übermitteln. So können Sie etwa Datenbanken hinzufügen oder entfernen, die Einstellungen des Pools für elastische Datenbanken ändern oder Ihre Datenbankeinstellungen anpassen.
 
-Sie können die integrierte [Leistungsüberwachung](https://docs.microsoft.com/azure/azure-sql/database/performance-guidance) und die [Warnungstools](https://docs.microsoft.com/azure/azure-sql/database/alerts-insights-configure-portal) in Kombination mit den Leistungsbewertungen verwenden.  Darüber hinaus kann SQL-Datenbank zur einfacheren Überwachung [Metriken und Ressourcenprotokolle ausgeben](https://docs.microsoft.com/azure/azure-sql/database/metrics-diagnostic-telemetry-logging-streaming-export-configure?tabs=azure-portal).
+Sie können die integrierte [Leistungsüberwachung](./performance-guidance.md) und die [Warnungstools](./alerts-insights-configure-portal.md) in Kombination mit den Leistungsbewertungen verwenden.  Darüber hinaus kann SQL-Datenbank zur einfacheren Überwachung [Metriken und Ressourcenprotokolle ausgeben](./metrics-diagnostic-telemetry-logging-streaming-export-configure.md?tabs=azure-portal).
 
 ## <a name="customer-case-studies"></a>Fallstudien
 

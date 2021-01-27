@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: alkemper
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: f407f9ee2ea0ca73b29e4fde9d542c005f78a929
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 1e5a04d385ba6c6dda5b52b23fd4793860f991dc
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98200446"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737200"
 ---
 # <a name="azure-app-configuration-best-practices"></a>Bewährte Methoden für Azure App Configuration
 
@@ -92,7 +92,7 @@ App Configuration ist ein regionaler Dienst. Bei Anwendungen mit unterschiedlich
 
 ## <a name="client-applications-in-app-configuration"></a>Clientanwendungen in App Configuration 
 
-Übermäßige Anforderungen an die App-Konfiguration können zur Drosselung oder zu Überschreitungsgebühren führen. Anwendungen profitieren von der Zwischenspeicherung und intelligenten Aktualisierung, die derzeit verfügbar ist, um die Anzahl der gesendeten Anforderungen zu optimieren. Dieser Prozess kann in Clientanwendungen mit hohem Volumen abgebildet werden, indem direkte Verbindungen mit dem Konfigurationsspeicher vermieden werden. Stattdessen stellen Clientanwendungen eine Verbindung mit einem benutzerdefinierten Dienst her, und dieser Dienst kommuniziert mit dem Konfigurationsspeicher. Diese Proxylösung kann sicherstellen, dass die Clientanwendungen den Einschränkungsgrenzwert für den Konfigurationsspeicher nicht erreichen. Weitere Informationen zu Einschränkungen finden Sie in den [Häufig gestellten Fragen (FAQ)](https://docs.microsoft.com/azure/azure-app-configuration/faq#are-there-any-limits-on-the-number-of-requests-made-to-app-configuration).  
+Übermäßige Anforderungen an die App-Konfiguration können zur Drosselung oder zu Überschreitungsgebühren führen. Anwendungen profitieren von der Zwischenspeicherung und intelligenten Aktualisierung, die derzeit verfügbar ist, um die Anzahl der gesendeten Anforderungen zu optimieren. Dieser Prozess kann in Clientanwendungen mit hohem Volumen abgebildet werden, indem direkte Verbindungen mit dem Konfigurationsspeicher vermieden werden. Stattdessen stellen Clientanwendungen eine Verbindung mit einem benutzerdefinierten Dienst her, und dieser Dienst kommuniziert mit dem Konfigurationsspeicher. Diese Proxylösung kann sicherstellen, dass die Clientanwendungen den Einschränkungsgrenzwert für den Konfigurationsspeicher nicht erreichen. Weitere Informationen zu Einschränkungen finden Sie in den [Häufig gestellten Fragen (FAQ)](./faq.md#are-there-any-limits-on-the-number-of-requests-made-to-app-configuration).  
 
 ## <a name="next-steps"></a>Nächste Schritte
 

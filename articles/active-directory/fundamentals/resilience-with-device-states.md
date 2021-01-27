@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: faa334c21e23ecddad287846d34aaf0d72af66cc
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: 6d476be7a417cfc31cca76d3409074aaaa281a56
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96602183"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98724609"
 ---
 # <a name="build-resilience-with-device-states"></a>Erzielen von Resilienz mithilfe des Gerätestatus
 
@@ -40,11 +40,11 @@ Wenn ein primäres Aktualisierungstoken verwendet wird, um den Zugriff auf eine 
 
   Wenn in Ihrer Organisation ältere Versionen von Windows vorhanden sind, aktualisieren Sie diese Geräte auf Windows 10.
 
-* Legen Sie als Standard für den Browserzugriff für die Benutzer die Verwendung von [Microsoft Edge](https://docs.microsoft.com/deployedge/microsoft-edge-security-identity) oder Google Chrome mit [unterstützten](https://chrome.google.com/webstore/detail/windows-10-accounts/ppnbnpeolgkicgegkbkbjmhlideopiji) [Erweiterungen](https://chrome.google.com/webstore/detail/office/ndjpnladcallmjemlbaebfadecfhkepb) fest, bei denen das nahtlose einmalige Anmelden bei Webanwendungen mit dem primären Aktualisierungstoken (PRT) aktiviert ist.
+* Legen Sie als Standard für den Browserzugriff für die Benutzer die Verwendung von [Microsoft Edge](/deployedge/microsoft-edge-security-identity) oder Google Chrome mit [unterstützten](https://chrome.google.com/webstore/detail/windows-10-accounts/ppnbnpeolgkicgegkbkbjmhlideopiji) [Erweiterungen](https://chrome.google.com/webstore/detail/office/ndjpnladcallmjemlbaebfadecfhkepb) fest, bei denen das nahtlose einmalige Anmelden bei Webanwendungen mit dem primären Aktualisierungstoken (PRT) aktiviert ist.
 
-* Stellen Sie für private oder unternehmenseigene iOS- und Android-Geräte die [Microsoft Authenticator-App](../user-help/user-help-auth-app-overview.md) bereit. Neben der mehrstufigen Authentifizierung (MFA) und den kennwortlosen Anmeldefunktionen ermöglicht die Microsoft Authenticator-App durch die [Brokerauthentifizierung](../develop/brokered-auth.md) (mit weniger Authentifizierungsaufforderungen für den Endbenutzer) das einmalige Anmelden, und zwar anwendungsübergreifend für native Anwendungen.
+* Stellen Sie für private oder unternehmenseigene iOS- und Android-Geräte die [Microsoft Authenticator-App](../user-help/user-help-auth-app-overview.md) bereit. Neben der mehrstufigen Authentifizierung (MFA) und den kennwortlosen Anmeldefunktionen ermöglicht die Microsoft Authenticator-App durch die [Brokerauthentifizierung](../develop/msal-android-single-sign-on.md) (mit weniger Authentifizierungsaufforderungen für den Endbenutzer) das einmalige Anmelden, und zwar anwendungsübergreifend für native Anwendungen.
 
-* Verwenden Sie bei privaten oder unternehmenseigenen iOS- und Android-Geräten die [mobile Anwendungsverwaltung](https://docs.microsoft.com/mem/intune/apps/app-management) für den sicheren Zugriff auf Unternehmensressourcen mit weniger Authentifizierungsanforderungen. 
+* Verwenden Sie bei privaten oder unternehmenseigenen iOS- und Android-Geräten die [mobile Anwendungsverwaltung](/mem/intune/apps/app-management) für den sicheren Zugriff auf Unternehmensressourcen mit weniger Authentifizierungsanforderungen. 
 
 * [Verwenden Sie das Microsoft Enterprise SSO-Plug-In für Apple-Geräte (Vorschau)](../develop/apple-sso-plugin.md). Dieses registriert das Gerät und stellt einmaliges Anmelden (browser- und anwendungsübergreifend) für native Azure AD-Anwendungen bereit. 
 

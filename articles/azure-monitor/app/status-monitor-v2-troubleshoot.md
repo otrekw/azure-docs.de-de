@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
-ms.openlocfilehash: 472a7f128ea19cdcc9df5a03d171f345c7d601de
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: 7a6fc27321fa924b7ef8f9bd39b5824bb6fe3c72
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97616829"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98732577"
 ---
 # <a name="troubleshooting-application-insights-agent-formerly-named-status-monitor-v2"></a>Behandeln von Problemen mit dem Application Insights-Agent (ehemals „Statusmonitor v2“)
 
@@ -55,7 +55,7 @@ Sie können mithilfe von Problembehandlungstools symptomatisches Verhalten anzei
 ### <a name="powershell-versions"></a>PowerShell-Versionen
 Dieses Produkt wurde mithilfe von PowerShell v5.1 geschrieben und getestet.
 Dieses Modul ist nicht kompatibel mit den PowerShell-Versionen 6 oder 7.
-Wir empfehlen die Verwendung von PowerShell v5.1 parallel zu neueren Versionen. Weitere Informationen finden Sie unter [Parallele Nutzung von PowerShell 7 mit Windows PowerShell 5.1](https://docs.microsoft.com/powershell/scripting/install/migrating-from-windows-powershell-51-to-powershell-7?view=powershell-7.1#using-powershell-7-side-by-side-with-windows-powershell-51).
+Wir empfehlen die Verwendung von PowerShell v5.1 parallel zu neueren Versionen. Weitere Informationen finden Sie unter [Parallele Nutzung von PowerShell 7 mit Windows PowerShell 5.1](/powershell/scripting/install/migrating-from-windows-powershell-51-to-powershell-7?view=powershell-7.1#using-powershell-7-side-by-side-with-windows-powershell-51).
 
 ### <a name="conflict-with-iis-shared-configuration"></a>Konflikt mit IIS-Freigabekonfiguration
 

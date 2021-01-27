@@ -3,23 +3,23 @@ title: Hinzufügen und Entfernen von Verwaltungseinheiten – Azure Active Dire
 description: Verwenden Sie Verwaltungseinheiten, um den Geltungsbereich der Rollenberechtigungen in Azure Active Directory einzuschränken.
 services: active-directory
 documentationcenter: ''
-author: curtand
+author: rolyon
 manager: daveba
 ms.service: active-directory
 ms.topic: how-to
 ms.subservice: roles
 ms.workload: identity
 ms.date: 11/04/2020
-ms.author: curtand
+ms.author: rolyon
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bbe76d21d948525421790f574830da7b3a163216
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 537847d84b417814bddb16cf5b961bdb221af488
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93395392"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98740447"
 ---
 # <a name="manage-administrative-units-in-azure-active-directory"></a>Verwalten von Verwaltungseinheiten in Azure Active Directory
 
@@ -85,9 +85,9 @@ In Azure AD können Sie eine Verwaltungseinheit entfernen, die nicht mehr als B
 
 ### <a name="use-the-azure-portal"></a>Verwenden des Azure-Portals
 
-1. Navigieren Sie im Azure-Portal zu **Azure AD** , und wählen Sie **Verwaltungseinheiten** aus. 
+1. Navigieren Sie im Azure-Portal zu **Azure AD**, und wählen Sie **Verwaltungseinheiten** aus. 
 1. Wählen Sie die zu löschende Verwaltungseinheit und dann **Löschen** aus. 
-1. Klicken Sie auf **Ja** , um zu bestätigen, dass Sie die Verwaltungseinheit löschen möchten. Die Verwaltungseinheit wird gelöscht.
+1. Klicken Sie auf **Ja**, um zu bestätigen, dass Sie die Verwaltungseinheit löschen möchten. Die Verwaltungseinheit wird gelöscht.
 
 ![Screenshot: Schaltfläche „Löschen“ und Bestätigungsfenster für eine Verwaltungseinheit](./media/admin-units-manage/select-admin-unit-to-delete.png)
 

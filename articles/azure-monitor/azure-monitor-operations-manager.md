@@ -6,15 +6,15 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/11/2021
-ms.openlocfilehash: 877251ba7e0c1f3c33cab37e20d609479b69520c
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: c213a38286de05df5c3be8e3498bcca4ab6e1fbf
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98251827"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98736143"
 ---
 # <a name="azure-monitor-for-existing-operations-manager-customers"></a>Azure Monitor für bestehende Operations Manager-Kunden
-Dieser Artikel enthält Anleitungen für Kunden, die derzeit [System Center Operations Manager](https://docs.microsoft.com/system-center/scom/welcome) verwenden und bei der Migration von Geschäftsanwendungen und anderen Ressourcen zu Azure einen Übergang zu [Azure Monitor](overview.md) planen. Es wird davon ausgegangen, dass das letztendliche Ziel ein vollständiger Übergang in die Cloud ist, bei dem so viele Operations Manager-Funktionen wie möglich durch Azure Monitor ersetzt werden, ohne dass die betrieblichen Anforderungen Ihres Geschäfts- und IT-Bereichs beeinträchtigt werden. 
+Dieser Artikel enthält Anleitungen für Kunden, die derzeit [System Center Operations Manager](/system-center/scom/welcome) verwenden und bei der Migration von Geschäftsanwendungen und anderen Ressourcen zu Azure einen Übergang zu [Azure Monitor](overview.md) planen. Es wird davon ausgegangen, dass das letztendliche Ziel ein vollständiger Übergang in die Cloud ist, bei dem so viele Operations Manager-Funktionen wie möglich durch Azure Monitor ersetzt werden, ohne dass die betrieblichen Anforderungen Ihres Geschäfts- und IT-Bereichs beeinträchtigt werden. 
 
 Die in diesem Artikel genannten Empfehlungen ändern sich, sobald Funktionen von Azure Monitor und Operations Manager hinzugefügt werden. Die grundlegende Strategie bleibt jedoch unverändert.
 
@@ -22,13 +22,13 @@ Die in diesem Artikel genannten Empfehlungen ändern sich, sobald Funktionen von
 > Die Implementierung einiger der hier beschriebenen Azure Monitor-Funktionen ist mit Kosten verbunden. Deshalb sollten Sie deren Wert vor der Bereitstellung in der gesamten Umgebung abschätzen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
-In diesem Artikel wird davon ausgegangen, dass Sie [Operations Manager](https://docs.microsoft.com/system-center/scom) bereits verwenden und zumindest über grundlegende Kenntnisse von [Azure Monitor](overview.md)verfügen. Einen umfassenden Vergleich zwischen den beiden Plattformen finden Sie unter [Leitfaden zur Cloudüberwachung: Übersicht über Überwachungsplattformen](/azure/cloud-adoption-framework/manage/monitor/platform-overview). In diesem Artikel werden bestimmte Funktionsunterschiede zwischen den beiden Plattformen erläutert, damit Sie einige der hier genannten Empfehlungen besser verstehen können. 
+In diesem Artikel wird davon ausgegangen, dass Sie [Operations Manager](/system-center/scom) bereits verwenden und zumindest über grundlegende Kenntnisse von [Azure Monitor](overview.md)verfügen. Einen umfassenden Vergleich zwischen den beiden Plattformen finden Sie unter [Leitfaden zur Cloudüberwachung: Übersicht über Überwachungsplattformen](/azure/cloud-adoption-framework/manage/monitor/platform-overview). In diesem Artikel werden bestimmte Funktionsunterschiede zwischen den beiden Plattformen erläutert, damit Sie einige der hier genannten Empfehlungen besser verstehen können. 
 
 
 ## <a name="general-strategy"></a>Allgemeine Strategie
 Es gibt keine Migrationstools zum Konvertieren von Ressourcen von Operations Manager zu Azure Monitor, da sich die Plattformen grundlegend unterscheiden. Bei der Migration handelt es sich stattdessen um eine [Azure Monitor-Standardimplementierung](deploy.md), wobei Sie Operations Manager weiterhin verwenden. Während Sie Azure Monitor entsprechend Ihren Anforderungen für verschiedene Anwendungen und Komponenten anpassen und immer mehr Funktionen hinzukommen, können Sie damit beginnen, die Nutzung verschiedener Management Packs und Agents in Operations Manager einzustellen.
 
-Die in diesem Artikel empfohlene allgemeine Strategie entspricht derjenigen im [Leitfaden zur Cloudüberwachung](https://docs.microsoft.com/azure/cloud-adoption-framework/manage/monitor/), die ein [Überwachen der Hybrid Cloud](/azure/cloud-adoption-framework/manage/monitor/cloud-models-monitor-overview#hybrid-cloud-monitoring) empfiehlt und Ihnen somit einen schrittweisen Übergang zur Cloud ermöglicht. Obwohl sich einige Funktionen überlappen können, bietet Ihnen diese Strategie die Möglichkeit, die vorhandenen Geschäftsprozesse beizubehalten, während Sie sich mit der neuen Plattform vertraut machen. Stellen Sie die Verwendung von Operations Manager-Funktionen lediglich dann ein, wenn Sie sie durch Azure Monitor ersetzen können. Die Verwendung mehrerer Überwachungstools erhöht zwar die Komplexität, bietet Ihnen jedoch die Möglichkeit, die Vorteile von Azure Monitor zur Überwachung von Cloudworkloads der nächsten Generation zu nutzen und gleichzeitig die Überwachung von Serversoftware und Infrastrukturkomponenten, die möglicherweise lokal oder in anderen Clouds vorhanden sind, durch Operations Manager beizubehalten. 
+Die in diesem Artikel empfohlene allgemeine Strategie entspricht derjenigen im [Leitfaden zur Cloudüberwachung](/azure/cloud-adoption-framework/manage/monitor/), die ein [Überwachen der Hybrid Cloud](/azure/cloud-adoption-framework/manage/monitor/cloud-models-monitor-overview#hybrid-cloud-monitoring) empfiehlt und Ihnen somit einen schrittweisen Übergang zur Cloud ermöglicht. Obwohl sich einige Funktionen überlappen können, bietet Ihnen diese Strategie die Möglichkeit, die vorhandenen Geschäftsprozesse beizubehalten, während Sie sich mit der neuen Plattform vertraut machen. Stellen Sie die Verwendung von Operations Manager-Funktionen lediglich dann ein, wenn Sie sie durch Azure Monitor ersetzen können. Die Verwendung mehrerer Überwachungstools erhöht zwar die Komplexität, bietet Ihnen jedoch die Möglichkeit, die Vorteile von Azure Monitor zur Überwachung von Cloudworkloads der nächsten Generation zu nutzen und gleichzeitig die Überwachung von Serversoftware und Infrastrukturkomponenten, die möglicherweise lokal oder in anderen Clouds vorhanden sind, durch Operations Manager beizubehalten. 
 
 
 ## <a name="components-to-monitor"></a>Zu überwachende Komponenten
@@ -37,7 +37,7 @@ Es ist hilfreich, die verschiedenen Typen von Workloads, die Sie überwachen mü
 Vor dem Übergang in die Cloud haben Sie Operations Manager zur Überwachung aller Ebenen verwendet. Wenn Sie die Umstellung mit Infrastructure-as-a-Service (IaaS) beginnen, verwenden Sie weiterhin Operations Manager für Ihre virtuellen Computer, beginnen aber mit der Nutzung von Azure Monitor für Ihre Cloudressourcen. Beim weiteren Übergang zu modernen Anwendungen mithilfe von Platform-as-a-Service (PaaS) können Sie sich stärker auf Azure Monitor konzentrieren und mit der Einstellung von Operations Manager-Funktionalität beginnen.
 
 
-![Cloudmodelle](https://docs.microsoft.com/azure/cloud-adoption-framework/strategy/media/monitoring-strategy/cloud-models.png)
+![Cloudmodelle](/azure/cloud-adoption-framework/strategy/media/monitoring-strategy/cloud-models.png)
 
 Diese Ebenen können zur Vereinfachung in die folgenden Kategorien eingeteilt werden, die im weiteren Verlauf dieses Artikels näher beschrieben werden. Zwar lässt sich möglicherweise nicht jede Überwachungsworkload in Ihrer Umgebung exakt in eine dieser Kategorien einordnen, doch sollte jede einer bestimmten Kategorie so nahe kommen, dass die allgemeinen Empfehlungen angewendet werden können.
 

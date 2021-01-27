@@ -7,15 +7,15 @@ ms.reviewer: bwren
 ms.subservice: logs
 ms.topic: conceptual
 ms.date: 12/02/2020
-ms.openlocfilehash: 1a35b80ceec12b378a01555f42b7a0500b8f6229
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.openlocfilehash: 5671ec68901be289a87c23b6883160f9cda2b651
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2021
-ms.locfileid: "98060451"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98733182"
 ---
 # <a name="cross-resource-query-azure-data-explorer-by-using-azure-monitor"></a>Ressourcenübergreifende Abfrage: Azure Data Explorer mithilfe von Azure Monitor
-Azure Monitor unterstützt dienstübergreifende Abfragen zwischen Azure Data Explorer, [Application Insights](/azure/azure-monitor/app/app-insights-overview) und [Log Analytics](/azure/azure-monitor/platform/data-platform-logs). Anschließend können Sie den Azure Data Explorer-Cluster mit Log Analytics/Application Insights-Tools abfragen und in einer dienstübergreifenden Abfrage darauf verweisen. Der Artikel zeigt, wie eine dienstübergreifende Abfrage durchgeführt wird.
+Azure Monitor unterstützt dienstübergreifende Abfragen zwischen Azure Data Explorer, [Application Insights](../app/app-insights-overview.md) und [Log Analytics](./data-platform-logs.md). Anschließend können Sie den Azure Data Explorer-Cluster mit Log Analytics/Application Insights-Tools abfragen und in einer dienstübergreifenden Abfrage darauf verweisen. Der Artikel zeigt, wie eine dienstübergreifende Abfrage durchgeführt wird.
 
 Das folgende Diagramm zeigt den dienstübergreifenden Azure Monitor-Flow:
 
@@ -62,8 +62,8 @@ Mandantenübergreifende Abfragen zwischen den Diensten werden nicht unterstützt
 
 Wenn sich die Azure Data Explorer-Ressource im Mandanten A und der Log Analytics-Arbeitsbereich im Mandanten B befindet, sollten Sie eine der folgenden Methoden verwenden:
 
-*  Mit Azure Data Explorer können Sie Rollen für Prinzipale auf unterschiedlichen Mandanten hinzufügen. Fügen Sie Ihre Benutzer-ID in Mandant B als autorisierten Benutzer im Azure Data Explorer-Cluster hinzu. Vergewissern Sie sich, dass die Eigenschaft [TrustedExternalTenant](https://docs.microsoft.com/powershell/module/az.kusto/update-azkustocluster) im Azure Data Explorer-Cluster den Mandanten B enthält. Führen Sie die übergreifende Abfrage vollständig in Mandant B aus.
-*  Verwenden Sie [Lighthouse](https://docs.microsoft.com/azure/lighthouse/), um die Azure Monitor-Ressource in Mandant A zu projizieren.
+*  Mit Azure Data Explorer können Sie Rollen für Prinzipale auf unterschiedlichen Mandanten hinzufügen. Fügen Sie Ihre Benutzer-ID in Mandant B als autorisierten Benutzer im Azure Data Explorer-Cluster hinzu. Vergewissern Sie sich, dass die Eigenschaft [TrustedExternalTenant](/powershell/module/az.kusto/update-azkustocluster) im Azure Data Explorer-Cluster den Mandanten B enthält. Führen Sie die übergreifende Abfrage vollständig in Mandant B aus.
+*  Verwenden Sie [Lighthouse](../../lighthouse/index.yml), um die Azure Monitor-Ressource in Mandant A zu projizieren.
 
 ## <a name="connect-to-azure-data-explorer-clusters-from-different-tenants"></a>Herstellen einer Verbindung mit Azure Data Explorer-Clustern von unterschiedlichen Mandanten
 
@@ -72,6 +72,6 @@ Bei Kusto-Explorer werden Sie automatisch bei dem Mandanten angemeldet, zu dem d
 `Data Source=https://ade.applicationinsights.io/subscriptions/SubscriptionId/resourcegroups/ResourceGroupName;Initial Catalog=NetDefaultDB;AAD Federated Security=True;Authority ID=TenantId`
 
 ## <a name="next-steps"></a>Nächste Schritte
-* [Write queries](https://docs.microsoft.com/azure/data-explorer/write-queries) (Schreiben von Abfragen)
-* [Abfragen von Daten in Azure Monitor mit Azure Data Explorer](https://docs.microsoft.com/azure/data-explorer/query-monitor-data)
-* [Ausführen ressourcenübergreifender Protokollabfragen in Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/log-query/cross-workspace-query)
+* [Write queries](/azure/data-explorer/write-queries) (Schreiben von Abfragen)
+* [Abfragen von Daten in Azure Monitor mit Azure Data Explorer](/azure/data-explorer/query-monitor-data)
+* [Ausführen ressourcenübergreifender Protokollabfragen in Azure Monitor](../log-query/cross-workspace-query.md)

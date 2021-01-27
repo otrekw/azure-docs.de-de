@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 12/14/2020
 ms.author: phjensen
-ms.openlocfilehash: 5c2182fc80c3745e0238c378c1cade0530393181
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: 00aaa5bdc0d48adb735679fc4a71b3431970ef09
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97632127"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737166"
 ---
 # <a name="install-azure-application-consistent-snapshot-tool-preview"></a>Installieren des Tools für anwendungskonsistente Momentaufnahmen in Azure (Vorschau)
 
@@ -34,9 +34,9 @@ Das Programm versucht, anhand der Konfiguration des Benutzers, der die Installat
 
 Befolgen Sie die Richtlinien zum Einrichten und Ausführen der Befehle für Momentaufnahmen und Notfallwiederherstellung. Es empfiehlt sich, die folgenden Schritte als root-Benutzer auszuführen, bevor Sie die Momentaufnahmetools installieren und verwenden.
 
-1. **Das Betriebssystem ist gepatcht**: Informationen zum Patchen und SMT-Setup finden Sie unter [Installieren und Konfigurieren von SAP HANA in Azure (große Instanzen)](/azure/virtual-machines/workloads/sap/hana-installation#setting-up-smt-server-for-suse-linux).
+1. **Das Betriebssystem ist gepatcht**: Informationen zum Patchen und SMT-Setup finden Sie unter [Installieren und Konfigurieren von SAP HANA in Azure (große Instanzen)](../virtual-machines/workloads/sap/hana-installation.md#operating-system).
 1. **Zeitsynchronisierung ist eingerichtet**: Der Kunde muss einen mit NTP kompatiblen Zeitserver bereitstellen und das Betriebssystem entsprechend konfigurieren.
-1. **HANA ist installiert**: Anweisungen zum Installieren von HANA finden Sie unter [SAP NetWeaver-Installation in einer HANA-Datenbank](https://blogs.msdn.microsoft.com/saponsqlserver/2017/11/21/sap-netweaver-installation-on-hana-database/).
+1. **HANA ist installiert**: Anweisungen zum Installieren von HANA finden Sie unter [SAP NetWeaver-Installation in einer HANA-Datenbank](/archive/blogs/saponsqlserver/sap-netweaver-installation-on-hana-database).
 1. **[Aktivieren der Kommunikation mit dem Speicher](#enable-communication-with-storage)** (Details dazu finden Sie im entsprechenden Abschnitt): Der Kunde muss SSH mit einem Paar aus privatem/öffentlichem Schlüssel einrichten und dem Microsoft-Betriebsteam den öffentlichen Schlüssel für jeden Knoten zur Verfügung stellen, auf dem die Ausführung der Momentaufnahmetools geplant ist, damit das Team die Schlüssel im Speicher-Back-End einrichten kann.
    1. **Für Azure NetApp Files (Details dazu finden Sie im entsprechenden Abschnitt)** : Der Kunde muss die Authentifizierungsdatei für den Dienstprinzipal generieren.
    1. **Für große Azure-Instanzen (Details dazu finden Sie im entsprechenden Abschnitt)** : Der Kunde muss SSH mit einem Paar aus privatem/öffentlichem Schlüssel einrichten und dem Microsoft-Betriebsteam den öffentlichen Schlüssel für jeden Knoten zur Verfügung stellen, auf dem die Ausführung der Momentaufnahmetools geplant ist, damit das Team die Schlüssel im Speicher-Back-End einrichten kann.

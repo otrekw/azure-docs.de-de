@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/11/2020
-ms.openlocfilehash: 87cdecd29d684c712853970c8246002132d274ac
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: a618a5d94513f7d648d118ae3bebdb34e4f5b1c4
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97094334"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98728858"
 ---
 # <a name="log-analytics-data-security"></a>Log Analytics-Datensicherheit
 Dieses Dokument dient der Bereitstellung von spezifischen Informationen zu Log Analytics, einem Feature von Azure Monitor, in Ergänzung der Informationen im [Azure Trust Center](https://www.microsoft.com/en-us/trust-center?rtc=1).  
@@ -183,11 +183,10 @@ Mithilfe dieser zusätzlichen Sicherheitsfunktionen können Sie Ihre Azure Monit
 - [Kundenseitig verwaltete Schlüssel (Sicherheitsschlüssel)](customer-managed-keys.md): Mithilfe von kundenseitig verwalteten Schlüsseln können Sie Daten verschlüsseln, die an Ihre Log Analytics-Arbeitsbereiche gesendet werden. Dies erfordert die Verwendung von Azure Key Vault. 
 - [Privater/kundenseitig verwalteter Speicher](private-storage.md): Verwalten Sie Ihr persönlich verschlüsseltes Speicherkonto, und weisen Sie Log Analytics an, dieses zum Speichern von Überwachungsdaten zu verwenden. 
 - [Private Link-Netzwerk](private-link-security.md): Mit Azure Private Link können Sie Azure-PaaS-Dienste (einschließlich Azure Monitor) über private Endpunkte sicher mit Ihrem virtuellen Netzwerk verknüpfen. 
-- [Azure Kunden-Lockbox](/azure/security/fundamentals/customer-lockbox-overview#supported-services-and-scenarios-in-preview): Kunden-Lockbox für Microsoft Azure bietet eine Oberfläche, auf der Kunden Anforderungen für den Zugriff auf Kundendaten prüfen und dann genehmigen oder ablehnen können. Das Feature wird in Fällen verwendet, in denen ein Microsoft-Techniker während einer Supportanfrage auf Kundendaten zugreifen muss.
+- [Azure Kunden-Lockbox](../../security/fundamentals/customer-lockbox-overview.md#supported-services-and-scenarios-in-preview): Kunden-Lockbox für Microsoft Azure bietet eine Oberfläche, auf der Kunden Anforderungen für den Zugriff auf Kundendaten prüfen und dann genehmigen oder ablehnen können. Das Feature wird in Fällen verwendet, in denen ein Microsoft-Techniker während einer Supportanfrage auf Kundendaten zugreifen muss.
 
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Im [Schnellstart zu virtuellen Azure-Computern](../learn/quick-collect-azurevm.md) erfahren Sie, wie Sie mit Log Analytics Daten für Ihre virtuellen Azure-Computer sammeln.  
 
 *  Wenn Sie Daten von physischen oder virtuellen Windows- oder Linux-Computern in Ihrer Umgebung sammeln möchten, finden Sie entsprechende Informationen im [Schnellstart für Linux-Computer](../learn/quick-collect-linux-computer.md) bzw. im [Schnellstart für Windows-Computer](../learn/quick-collect-windows-computer.md).
-

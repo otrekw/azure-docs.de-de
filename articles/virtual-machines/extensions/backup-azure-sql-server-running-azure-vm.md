@@ -8,12 +8,12 @@ ms.subservice: extensions
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: dacurwin
-ms.openlocfilehash: 66675f77d480ce8d9f21e5ffb507c475337c9dab
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: c6a071956565a8bbc31e5be362c41a7c39d8f551
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92490729"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98738049"
 ---
 # <a name="azure-backup-for-sql-server-running-in-azure-vm"></a>Azure Backup für auf einer Azure-VM ausgeführten SQL Server
 
@@ -102,14 +102,14 @@ Wir empfehlen, die Erweiterung AzureBackupWindowsWorkload zu einem virtuellen Co
 
 ## <a name="powershell-deployment"></a>PowerShell-Bereitstellung
 
-Sie müssen die Azure-VM, die die SQL-Anwendung enthält, bei einem Recovery Services-Tresor „registrieren“. Während der Registrierung wird die Erweiterung „AzureBackupWindowsWorkload“ auf der VM installiert. Verwenden Sie das Cmdlet  [Register-AzRecoveryServicesBackupContainerPS](/powershell/module/az.recoveryservices/register-azrecoveryservicesbackupcontainer?view=azps-1.5.0), um die VM zu registrieren.
+Sie müssen die Azure-VM, die die SQL-Anwendung enthält, bei einem Recovery Services-Tresor „registrieren“. Während der Registrierung wird die Erweiterung „AzureBackupWindowsWorkload“ auf der VM installiert. Verwenden Sie das Cmdlet  [Register-AzRecoveryServicesBackupContainerPS](/powershell/module/az.recoveryservices/register-azrecoveryservicesbackupcontainer), um die VM zu registrieren.
 
 ```powershell
 $myVM = Get-AzVM -ResourceGroupName <VMRG Name> -Name <VMName>
 Register-AzRecoveryServicesBackupContainer -ResourceId $myVM.ID -BackupManagementType AzureWorkload -WorkloadType MSSQL -VaultId $targetVault.ID -Force
 ```
 
-Der Befehl gibt einen **Sicherungscontainer** dieser Ressource zurück, und der Status lautet **registriert** .
+Der Befehl gibt einen **Sicherungscontainer** dieser Ressource zurück, und der Status lautet **registriert**.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

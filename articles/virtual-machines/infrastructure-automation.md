@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.workload: infrastructure
 ms.date: 07/17/2020
 ms.author: cynthn
-ms.openlocfilehash: 96c68850cfd8b03f7d1457eb0f1ca9ce5880c926
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 7a702fbf405011a9df3e7e77936a9a37f0fdfad7
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98197998"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98730637"
 ---
 # <a name="use-infrastructure-automation-tools-with-virtual-machines-in-azure"></a>Verwenden von Infrastrukturautomatisierungstools mit virtuellen Computern in Azure
 
@@ -87,8 +87,8 @@ Skripts können aus Azure-Speicher oder von einem anderen öffentlichen Speicher
 
 In diesem Artikel werden folgende Themen erläutert:
 
-- [Erstellen eines virtuellen Linux-Computers mit der Azure-Befehlszeilenschnittstelle und Verwenden der benutzerdefinierten Skripterweiterung](./scripts/virtual-machines-linux-cli-sample-create-vm-nginx.md?toc=%2fcli%2fazure%2ftoc.json)
-- [Erstellen eines virtuellen Windows-Computers mit Azure PowerShell und Verwenden der benutzerdefinierten Skripterweiterung](./scripts/virtual-machines-windows-powershell-sample-create-vm-iis.md)
+- [Erstellen eines virtuellen Linux-Computers mit der Azure-Befehlszeilenschnittstelle und Verwenden der benutzerdefinierten Skripterweiterung](/previous-versions/azure/virtual-machines/scripts/virtual-machines-linux-cli-sample-create-vm-nginx?toc=%2fcli%2fazure%2ftoc.json)
+- [Erstellen eines virtuellen Windows-Computers mit Azure PowerShell und Verwenden der benutzerdefinierten Skripterweiterung](/previous-versions/azure/virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm-iis)
 
 
 ## <a name="packer"></a>Packer
@@ -126,7 +126,7 @@ In diesem Artikel werden folgende Themen erläutert:
 
 Weitere Informationen:
 
-- [Azure DevOps Services](/azure/devops/user-guide/index?view=vsts).
+- [Azure DevOps Services](/azure/devops/user-guide/index).
 
 
 ## <a name="jenkins"></a>Jenkins
@@ -144,7 +144,7 @@ In diesem Artikel werden folgende Themen erläutert:
 
 - [Bereitstellen von Spot-VMs mithilfe einer Resource Manager-Vorlage](./linux/spot-template.md)
 - [Erstellen eines virtuellen Windows-Computers mit einer Resource Manager-Vorlage](./windows/ps-template.md)
-- [Herunterladen einer Vorlage für einen virtuellen Computer](./windows/download-template.md)
+- [Herunterladen einer Vorlage für einen virtuellen Computer](/previous-versions/azure/virtual-machines/windows/download-template)
 - [Erstellen einer Azure Image Builder-Vorlage](./linux/image-builder-json.md)
 
 ## <a name="next-steps"></a>Nächste Schritte

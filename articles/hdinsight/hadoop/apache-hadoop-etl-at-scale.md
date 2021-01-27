@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/28/2020
-ms.openlocfilehash: d6c3dbc28da7bee0bc24a6dc24608c78e480c20e
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: e7a8a72d0669f39cc27c997d83af1e6272d045a6
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96462162"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98704151"
 ---
 # <a name="extract-transform-and-load-etl-at-scale"></a>Bedarfsorientiertes Extrahieren, Transformieren und Laden (ETL)
 
@@ -82,7 +82,7 @@ Beim Hochladen von Datasets im Terabyte-Bereich kann die Netzwerklatenz ein gro�
 
 - **Azure ExpressRoute:** Erstellen Sie private Verbindungen zwischen Azure-Rechenzentren und Ihrer lokalen Infrastruktur. Diese Verbindungen bieten eine zuverlässige Möglichkeit zur Übertragung großer Datenmengen. Weitere Informationen finden Sie in der [Dokumentation zu Azure ExpressRoute](../../expressroute/expressroute-introduction.md).
 
-- **Hochladen von Daten von Festplattenlaufwerken:** Sie können über den [Azure Import/Export-Dienst](../../storage/common/storage-import-export-service.md) Festplattenlaufwerke mit Ihren Daten an ein Azure-Rechenzentrum senden. Ihre Daten werden zunächst in Azure Blob Storage hochgeladen. Anschließend können Sie mit Azure Data Factory oder dem Tool AdlCopy Daten aus Azure Blob Storage in Data Lake Storage kopieren.
+- **Hochladen von Daten von Festplattenlaufwerken:** Sie können über den [Azure Import/Export-Dienst](../../import-export/storage-import-export-service.md) Festplattenlaufwerke mit Ihren Daten an ein Azure-Rechenzentrum senden. Ihre Daten werden zunächst in Azure Blob Storage hochgeladen. Anschließend können Sie mit Azure Data Factory oder dem Tool AdlCopy Daten aus Azure Blob Storage in Data Lake Storage kopieren.
 
 ### <a name="azure-synapse-analytics"></a>Azure Synapse Analytics
 

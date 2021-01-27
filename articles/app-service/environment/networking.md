@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 11/16/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 680b1f3b6af186eba27a4dd926016a04cd863760
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 0a1221a8de10fd18768a1a0f0ac08277dc2901d6
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98013486"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98735032"
 ---
 # <a name="app-service-environment-networking"></a>Netzwerk in der App Service-Umgebung
 
@@ -52,7 +52,7 @@ Im Gegensatz zu ASEv2 können Sie mit ASEv3 Netzwerksicherheitsgruppen (NSGs) un
 
 ## <a name="dns"></a>DNS
 
-Die Apps in Ihrer ASE verwenden das DNS, mit dem Ihr VNet konfiguriert ist. Befolgen Sie die Anweisungen in [verwenden einer App Service-Umgebung](https://docs.microsoft.com/azure/app-service/environment/using#dns-configuration), um Ihren DNS-Server so zu konfigurieren, dass er auf Ihre ASE verweist. Wenn Sie möchten, dass einige Apps einen anderen DNS-Server als den, mit dem Ihr VNet konfiguriert ist, verwenden, können Sie diesen mit den App-Einstellungen WEBSITE_DNS_SERVER und WEBSITE_DNS_ALT_SERVER manuell pro App festlegen. Die App-Einstellung WEBSITE_DNS_ALT_SERVER konfiguriert den sekundären DNS-Server. Der sekundäre DNS-Server wird nur verwendet, wenn keine Antwort vom primären DNS-Server vorliegt. 
+Die Apps in Ihrer ASE verwenden das DNS, mit dem Ihr VNet konfiguriert ist. Befolgen Sie die Anweisungen in [verwenden einer App Service-Umgebung](./using.md#dns-configuration), um Ihren DNS-Server so zu konfigurieren, dass er auf Ihre ASE verweist. Wenn Sie möchten, dass einige Apps einen anderen DNS-Server als den, mit dem Ihr VNet konfiguriert ist, verwenden, können Sie diesen mit den App-Einstellungen WEBSITE_DNS_SERVER und WEBSITE_DNS_ALT_SERVER manuell pro App festlegen. Die App-Einstellung WEBSITE_DNS_ALT_SERVER konfiguriert den sekundären DNS-Server. Der sekundäre DNS-Server wird nur verwendet, wenn keine Antwort vom primären DNS-Server vorliegt. 
 
 ## <a name="preview-limitation"></a>Einschränkungen der Vorschauversion
 
@@ -61,4 +61,3 @@ In ASEv3 sind ein paar Netzwerkfunktionen nicht verfügbar.  Zu den in ASEv3 nic
 • FTP • Remote Debuggen • Bereitstellung des externen Lastenausgleichs • Möglichkeit des Zugriffs auf eine private Containerregistrierung für Containerbereitstellungen • Möglichkeit zum Ausführen von Aufrufen an global gepeerte VNets • Möglichkeit zum Sichern/Wiederherstellen eines mit einem Dienstendpunkt oder einem privaten Endpunkt gesicherten Speicherkontos • Möglichkeit von App-Einstellungen keyvault-Verweisen auf mit einem Dienstendpunkt oder einem privaten Endpunkt gesicherte keyvault-Konten • Möglichkeit zur Verwendung von BYOS zu einem mit einem Dienstendpunkt oder einem privaten Endpunkt gesicherten Speicherkonto • Verwendung von Network Watcher oder NSG Flow für ausgehenden Datenverkehr
     
     
-

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: reference
 ms.date: 12/14/2020
 ms.author: phjensen
-ms.openlocfilehash: 1051859d514c77bad1aa5f14becc2218a923df44
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: 17c29fdf88495f6ecc40963eda08858887173fd1
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97632197"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98730937"
 ---
 # <a name="back-up-using-azure-application-consistent-snapshot-tool-preview"></a>Sichern mithilfe des Tools für konsistente Momentaufnahmen in Azure-Anwendungen (Vorschau)
 
@@ -143,7 +143,7 @@ Der Name der *Protokolldatei* in diesem Beispiel lautet `azacsnap-backup-bootVol
 > Der Name der Protokolldatei besteht aus dem „(Befehlsnamen-(der Option `-c`)-(dem Konfigurationsdateinamen)“.  Wenn Sie z. B. die Option `-c backup` mit dem Protokolldateinamen `h80.json` verwenden, wird die Protokolldatei `azacsnap-backup-h80.log` aufgerufen.  Oder wenn Sie die Option `-c test` mit derselben Konfigurationsdatei verwenden, wird die Protokolldatei `azacsnap-test-h80.log` aufgerufen.
 
 - Typ der großen HANA-Instanz: Es gibt zwei gültige Werte mit `TYPEI` bzw. `TYPEII`, je nach der großen HANA-Instanzeinheit.
-- Die verfügbaren SKUs können Sie unter [Verfügbare SKUs für große HANA-Instanzen](/azure/virtual-machines/workloads/sap/hana-available-skus) bestätigen.
+- Die verfügbaren SKUs können Sie unter [Verfügbare SKUs für große HANA-Instanzen](../virtual-machines/workloads/sap/hana-available-skus.md) bestätigen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

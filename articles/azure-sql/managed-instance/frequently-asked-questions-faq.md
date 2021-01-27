@@ -12,12 +12,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 09/21/2020
-ms.openlocfilehash: 6b217e77310224779ea3ea840e613e28da6c86a3
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 5d15947254d80d97b6a241a717fb7d33a3d5ccb5
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92779865"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98724015"
 ---
 # <a name="azure-sql-managed-instance-frequently-asked-questions-faq"></a>Häufig gestellte Fragen (FAQ) zu Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -118,9 +118,9 @@ Die Namensänderung für eine verwaltete Instanz wird nicht unterstützt.
 
 Ja. Die DNS-Standardzone *.database.windows.net* einer verwalteten Instanz kann geändert werden. 
 
-So verwenden Sie statt der Standardzone eine andere DNS-Zone, z. B. *.contoso.com* : 
+So verwenden Sie statt der Standardzone eine andere DNS-Zone, z. B. *.contoso.com*: 
 - Verwenden Sie „CliConfig“ zum Definieren eines Alias. Weil das Tool nur ein Wrapper für Registrierungseinstellungen ist, kann es auch mithilfe einer Gruppenrichtlinie oder eines Skripts ausgeführt werden.
-- Verwenden Sie *CNAME* mit der Option *TrustServerCertificate=true* .
+- Verwenden Sie *CNAME* mit der Option *TrustServerCertificate=true*.
 
 ## <a name="migration-options"></a>Migrationsoptionen
 
@@ -337,9 +337,9 @@ Nein, diese Option ist nicht verfügbar.  Für den privaten Datenendpunkt verwen
 Das Express Route-Leitungspeering ist die bevorzugte Methode. Globales Peering virtueller Netzwerke wird unterstützt. Die einzige Einschränkung ist im folgenden Hinweis beschrieben.  
 
 > [!IMPORTANT]
-> [Am 22.09.2020 haben wir globales Peering virtueller Netzwerke für neu erstellte virtuelle Cluster angekündigt](https://azure.microsoft.com/en-us/updates/global-virtual-network-peering-support-for-azure-sql-managed-instance-now-available/). Dies bedeutet, dass globales Peering virtueller Netzwerke sowohl für SQL Managed Instance-Bereitstellungen, die nach dem Ankündigungsdatum in leeren Subnetzen erstellt wurden, als auch für alle späteren verwalteten Instanzen, die in diesen Subnetzen erstellt werden, unterstützt wird. Für alle anderen SQL Managed Instance-Bereitstellungen ist die Peeringunterstützung aufgrund der [Einschränkungen beim globalen Peering virtueller Netzwerke](../../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints) auf die Netzwerke in derselben Region beschränkt. Ausführliche Informationen finden Sie im entsprechenden Abschnitt des Artikels [Azure Virtual Network – häufig gestellte Fragen](../../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers). 
+> [Am 22.09.2020 haben wir globales Peering virtueller Netzwerke für neu erstellte virtuelle Cluster angekündigt](https://azure.microsoft.com/en-us/updates/global-virtual-network-peering-support-for-azure-sql-managed-instance-now-available/). Dies bedeutet, dass globales Peering virtueller Netzwerke sowohl für SQL Managed Instances, die nach dem Ankündigungsdatum in leeren Subnetzen erstellt wurden, als auch für alle späteren verwalteten Instanzen, die in diesen Subnetzen erstellt werden, unterstützt wird. Für alle anderen SQL Managed Instances ist die Peeringunterstützung aufgrund der [Einschränkungen beim globalen Peering virtueller Netzwerke](../../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints) auf die Netzwerke in derselben Region beschränkt. Ausführliche Informationen finden Sie im entsprechenden Abschnitt des Artikels [Azure Virtual Network – häufig gestellte Fragen](../../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers). 
 
-Wenn Express Route-Leitungspeering und globales Peering virtueller Netzwerke nicht möglich sind, besteht die einzige Option darin, eine Site-to-Site-VPN-Verbindung zu erstellen ([Azure-Portal](../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md), [PowerShell](../../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md), [Azure CLI](../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli.md)).
+Wenn Express Route-Leitungspeering und globales Peering virtueller Netzwerke nicht möglich sind, besteht die einzige Option darin, eine Site-to-Site-VPN-Verbindung zu erstellen ([Azure-Portal](../../vpn-gateway/tutorial-site-to-site-portal.md), [PowerShell](../../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md), [Azure CLI](../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli.md)).
 
 ## <a name="mitigate-data-exfiltration-risks"></a>Mindern von Risiken bei der Datenexfiltration  
 
@@ -409,8 +409,8 @@ Sie können die TDE-Schutzvorrichtung für SQL Managed Instance per Azure Cloud 
 
 Ja. Sie müssen die Datenbank nicht entschlüsseln, um sie in SQL Managed Instance wiederherzustellen. Sie müssen ein Zertifikat bzw. einen Schlüssel als Verschlüsselungsschlüssel-Schutzvorrichtung im Quellsystem für SQL Managed Instance bereitstellen, um Daten aus der verschlüsselten Sicherungsdatei lesen zu können. Dies kann auf zwei Arten erreicht werden:
 
-- *Laden Sie die Zertifikatschutzvorrichtung in SQL Managed Instance hoch* . Das kann nur mithilfe von PowerShell geschehen. Im [Beispielskript](./tde-certificate-migrate.md) wird der gesamte Prozess beschrieben.
-- *Laden Sie eine asymmetrische Schlüsselschutzvorrichtung in Azure Key Vault hoch, und verweisen Sie in SQL Managed Instance darauf* . Dieser Ansatz ähnelt dem TDE-Anwendungsfall „Bring-Your-Own-Key“ (BYOK), in dem ebenfalls die Key Vault-Integration zum Speichern des Verschlüsselungsschlüssels verwendet wird. Wenn Sie den Schlüssel nicht als Schutzvorrichtung für den Verschlüsselungsschlüssel verwenden, sondern nur für SQL Managed Instance zum Wiederherstellen verschlüsselter Datenbanken zur Verfügung stellen möchten, befolgen Sie die Anweisungen zum [Einrichten von BYOK-TDE](../database/transparent-data-encryption-tde-overview.md#manage-transparent-data-encryption), und aktivieren Sie nicht das Kontrollkästchen **Legen Sie den ausgewählten Schlüssel als TDE-Standardschutzvorrichtung fest** .
+- *Laden Sie die Zertifikatschutzvorrichtung in SQL Managed Instance hoch*. Das kann nur mithilfe von PowerShell geschehen. Im [Beispielskript](./tde-certificate-migrate.md) wird der gesamte Prozess beschrieben.
+- *Laden Sie eine asymmetrische Schlüsselschutzvorrichtung in Azure Key Vault hoch, und verweisen Sie in SQL Managed Instance darauf*. Dieser Ansatz ähnelt dem TDE-Anwendungsfall „Bring-Your-Own-Key“ (BYOK), in dem ebenfalls die Key Vault-Integration zum Speichern des Verschlüsselungsschlüssels verwendet wird. Wenn Sie den Schlüssel nicht als Schutzvorrichtung für den Verschlüsselungsschlüssel verwenden, sondern nur für SQL Managed Instance zum Wiederherstellen verschlüsselter Datenbanken zur Verfügung stellen möchten, befolgen Sie die Anweisungen zum [Einrichten von BYOK-TDE](../database/transparent-data-encryption-tde-overview.md#manage-transparent-data-encryption), und aktivieren Sie nicht das Kontrollkästchen **Legen Sie den ausgewählten Schlüssel als TDE-Standardschutzvorrichtung fest**.
 
 Nachdem Sie die Verschlüsselungsschutzvorrichtung für SQL Managed Instance verfügbar gemacht haben, können Sie mit dem Standardverfahren für die Datenbankwiederherstellung fortfahren.
 
@@ -443,9 +443,9 @@ Informationen zu den Preisoptionen für SQL Managed Instance finden Sie auf der 
 
 **Wie kann ich die Abrechnungskosten für meine verwaltete Instanz nachverfolgen?**
 
-Sie können zu diesem Zweck die [Azure Cost Management-Lösung](../../cost-management-billing/index.yml) verwenden. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu **Abonnements** , und wählen Sie **Kostenanalyse** aus. 
+Sie können zu diesem Zweck die [Azure Cost Management-Lösung](../../cost-management-billing/index.yml) verwenden. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu **Abonnements**, und wählen Sie **Kostenanalyse** aus. 
 
-Verwenden Sie die Option **Kumulierte Kosten** , und filtern Sie dann nach dem **Ressourcentyp** als `microsoft.sql/managedinstances`.
+Verwenden Sie die Option **Kumulierte Kosten**, und filtern Sie dann nach dem **Ressourcentyp** als `microsoft.sql/managedinstances`.
 
 **Welche Kosten fallen für automatisierte Sicherungen an?**
 

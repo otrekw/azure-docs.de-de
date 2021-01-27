@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/12/2020
 ms.author: gasinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6c03009b08dcf33bf4b84bc91232af96e7ba2c71
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: f962bf131b87f17712186145b8c8b8e6090f7002
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97095184"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98730655"
 ---
 # <a name="tutorial-to-deploy-f5-big-ip-virtual-edition-vm-in-azure-iaas-for-secure-hybrid-access"></a>Tutorial zum Bereitstellen von VMs mit F5 BIG-IP Virtual Edition in Azure IaaS für sicheren Hybridzugriff
 
@@ -264,7 +264,7 @@ BIG-IP-Systeme werden über die Benutzeroberfläche für die Webkonfiguration ve
 
 - Von einem VPN-Client, der mit dem internen Netzwerk der BIG-IP-VM verbunden ist
 
-- Veröffentlicht über den [Azure AD-Anwendungsproxy](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-add-on-premises-application)
+- Veröffentlicht über den [Azure AD-Anwendungsproxy](./application-proxy-add-on-premises-application.md)
 
 Sie müssen sich für die am besten geeignete Methode entscheiden, bevor Sie mit der restlichen Konfigurationen fortfahren können. Falls erforderlich, können Sie auch eine direkte Verbindung mit der Webkonfiguration über das Internet herstellen, indem Sie als primäre IP-Adresse von BIG-IP eine öffentliche IP-Adresse konfigurieren. Fügen Sie dann eine NSG-Regel hinzu, um Datenverkehr an diese primäre IP-Adresse über Port 8443 zuzulassen. Stellen Sie sicher, dass Sie die Quelle auf Ihre eigene vertrauenswürdige IP-Adresse beschränken. Andernfalls kann jeder Benutzer eine Verbindung herstellen.
 
@@ -276,7 +276,7 @@ Vergewissern Sie sich anschließend, dass Sie eine Verbindung mit der Webkonfigu
 
 Ein BIG-IP-System kann auch über die zugrunde liegende SSH-Umgebung verwaltet werden, die in der Regel für Befehlszeilenaufgaben (CLI) und den root-Zugriff verwendet wird. Zum Herstellen einer Verbindung mit der Befehlszeilenschnittstelle gibt es mehrere Optionen:
 
-- [Azure Bastion-Dienst:](https://docs.microsoft.com/azure/bastion/bastion-overview) Ermöglicht schnelle und sichere Verbindungen mit beliebigen VMs in einem VNET von jedem beliebigen Standort aus
+- [Azure Bastion-Dienst:](../../bastion/bastion-overview.md) Ermöglicht schnelle und sichere Verbindungen mit beliebigen VMs in einem VNET von jedem beliebigen Standort aus
 
 - Direkte Verbindungen über einen SSH-Client wie PuTTY über den JIT-Ansatz
 
@@ -423,7 +423,7 @@ Nachdem die Bereitstellung des BIG-IP-Systems nun abgeschlossen ist, sollten Sie
 
 6. Speichern Sie das Archiv für den Benutzerkonfigurationssatz lokal, indem Sie den Link der Sicherung und dann **Download** (Herunterladen) auswählen.
 
-Als optionalen Schritt können Sie auch eine Sicherung des gesamten Systemdatenträgers mithilfe einer [Azure-Momentaufnahme](https://docs.microsoft.com/azure/virtual-machines/windows/snapshot-copy-managed-disk) erstellen. Dies würde im Gegensatz zur Webkonfigurationssicherung eine gewisse Notfalllösung für Tests zwischen TMOS-Versionen oder ein Rollback zu einem neuen System bereitstellen.
+Als optionalen Schritt können Sie auch eine Sicherung des gesamten Systemdatenträgers mithilfe einer [Azure-Momentaufnahme](../../virtual-machines/windows/snapshot-copy-managed-disk.md) erstellen. Dies würde im Gegensatz zur Webkonfigurationssicherung eine gewisse Notfalllösung für Tests zwischen TMOS-Versionen oder ein Rollback zu einem neuen System bereitstellen.
 
 ```PowerShell
 # Install modules

@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 06/01/2018
 ms.author: cynthn
-ms.openlocfilehash: 074a088e0fb342b5d1064d385d819c48ee089c5e
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: ecc3f5934e4dd37cc27a1715ea39f86619d581ff
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98201806"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98730205"
 ---
 # <a name="common-powershell-commands-for-creating-and-managing-azure-virtual-machines"></a>Häufige PowerShell-Befehle zum Erstellen und Verwalten virtueller Azure-Computer
 
@@ -40,7 +40,7 @@ Diese Variablen könnten hilfreich sein, wenn Sie mehr als einen der Befehle aus
 | Aufgabe | Get-Help |
 | ---- | ------- |
 | Erstellen einer VM-Konfiguration |$vm = [New-AzVMConfig](/powershell/module/az.compute/new-azvmconfig) -VMName $myVM -VMSize "Standard_D1_v1"<BR></BR><BR></BR>Die VM-Konfiguration wird verwendet, um Einstellungen für die VM zu definieren oder zu aktualisieren. Die Konfiguration wird mit dem Namen der VM und ihrer [Größe](../sizes.md) initialisiert. |
-| Hinzufügen von Konfigurationseinstellungen |$vm = [Set-AzVMOperatingSystem](/powershell/module/az.compute/set-azvmoperatingsystem) -VM $vm -Windows -ComputerName $myVM -Credential $cred -ProvisionVMAgent -EnableAutoUpdate<BR></BR><BR></BR>Betriebssystemeinstellungen einschließlich der [Anmeldeinformationen](/powershell/module/microsoft.powershell.security/get-credential?view=powershell-5.1&preserve-view=true) werden dem Konfigurationsobjekt hinzugefügt, das Sie zuvor mit „New-AzVMConfig“ erstellt haben. |
+| Hinzufügen von Konfigurationseinstellungen |$vm = [Set-AzVMOperatingSystem](/powershell/module/az.compute/set-azvmoperatingsystem) -VM $vm -Windows -ComputerName $myVM -Credential $cred -ProvisionVMAgent -EnableAutoUpdate<BR></BR><BR></BR>Betriebssystemeinstellungen einschließlich der [Anmeldeinformationen](/powershell/module/microsoft.powershell.security/get-credential) werden dem Konfigurationsobjekt hinzugefügt, das Sie zuvor mit „New-AzVMConfig“ erstellt haben. |
 | Hinzufügen einer Netzwerkschnittstelle |$vm = [Add-AzVMNetworkInterface](/powershell/module/az.compute/add-azvmnetworkinterface) -VM $vm -Id $nic.Id<BR></BR><BR></BR>Eine VM muss über eine [Netzwerkschnittstelle](./quick-create-powershell.md?toc=/azure/virtual-machines/windows/toc.json) für die Kommunikation in einem virtuellen Netzwerk verfügen. Sie können auch [Get-AzNetworkInterface](/powershell/module/az.compute/add-azvmnetworkinterface) verwenden, um ein vorhandenes Netzwerkschnittstellenobjekt abzurufen. |
 | Angeben eines Plattformimage |$vm = [Set-AzVMSourceImage](/powershell/module/az.compute/set-azvmsourceimage) -VM $vm -PublisherName "publisher_name" -Offer "publisher_offer" -Skus "product_sku" -Version "latest"<BR></BR><BR></BR>[Imageinformationen](cli-ps-findimage.md) werden dem Konfigurationsobjekt hinzugefügt, das Sie zuvor mit „New-AzVMConfig“ erstellt haben. Das von diesem Befehl zurückgegebene Objekt wird nur verwendet, wenn Sie für den Betriebssystem-Datenträger die Verwendung eines Plattformimage festlegen. |
 | Erstellen einer VM |[New-AzVM](/powershell/module/az.compute/new-azvm) -ResourceGroupName $myResourceGroup -Location $location -VM $vm<BR></BR><BR></BR>Alle Ressourcen werden in einer [Ressourcengruppe](../../azure-resource-manager/management/manage-resource-groups-powershell.md) erstellt. Führen Sie vor dem Ausführen dieses Befehls „New-AzVMConfig“, „Set-AzVMOperatingSystem“, „Set-AzVMSourceImage“, „Add-AzVMNetworkInterface“ und „Set-AzVMOSDisk“ aus. |

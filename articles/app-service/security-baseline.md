@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/17/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 1ea8f3bccd97e1aaa15a21ae605a163b11c8ae39
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 758f7de46c524406f31a40072250eb7d59745d42
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98197930"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98736087"
 ---
 # <a name="azure-security-baseline-for-app-service"></a>Azure-Sicherheitsbaseline für App Service
 
@@ -71,7 +71,7 @@ Nutzen Sie Azure Firewall für das Weiterleiten von Datenverkehr und das Erstell
 
 - [Grundlegendes zu der von Azure Security Center bereitgestellten Netzwerksicherheit](../security-center/security-center-network-recommendations.md)
 
-- [Aktivieren der Überwachung und des Schutzes von App Service](/azure/security-center/defender-for-app-service-introduction)
+- [Aktivieren der Überwachung und des Schutzes von App Service](../security-center/defender-for-app-service-introduction.md)
 
 **Azure Security Center-Überwachung**: Ja
 
@@ -168,7 +168,7 @@ Weitere Informationen finden Sie unter den angegebenen Links.
 
 - [Konfigurieren von End-to-End-TLS mit Application Gateway im Azure-Portal](../application-gateway/end-to-end-ssl-portal.md)
 
-- [Schützen der ASE wie unter „Sperren einer App Service-Umgebung“ beschrieben](/azure/app-service/environment/firewall-integration)
+- [Schützen der ASE wie unter „Sperren einer App Service-Umgebung“ beschrieben](./environment/firewall-integration.md)
 
 **Azure Security Center-Überwachung**: Ja
 
@@ -205,7 +205,7 @@ Weitere Informationen finden Sie unter den angegebenen Links.
 
 - [Konfigurieren von End-to-End-TLS mit Application Gateway im Azure-Portal](../application-gateway/end-to-end-ssl-portal.md)
 
-- [Schützen der ASE wie unter „Sperren einer App Service-Umgebung“ beschrieben](/azure/app-service/environment/firewall-integration)
+- [Schützen der ASE wie unter „Sperren einer App Service-Umgebung“ beschrieben](./environment/firewall-integration.md)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -221,7 +221,7 @@ Wenden Sie eine der integrierten Azure Policy-Definitionen für das Tagging an (
 
 - [Erstellen und Verwenden von Tags](../azure-resource-manager/management/tag-resources.md)
 
-- [Azure App Service-Zugriffseinschränkungen](/azure/app-service/app-service-ip-restrictions)
+- [Azure App Service-Zugriffseinschränkungen](./app-service-ip-restrictions.md)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 

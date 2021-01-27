@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 12/04/2020
 ms.author: jovanpop
 ms.reviewer: jrasnick
-ms.openlocfilehash: 4681039f60154b95eeb7e40196ca33055a192c74
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 2059608faa8ce148e5823e48eff6abf9e71c9b01
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98222104"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98735432"
 ---
 # <a name="query-azure-cosmos-db-data-with-a-serverless-sql-pool-in-azure-synapse-link-preview"></a>Abfragen von Azure Cosmos DB-Daten mithilfe eines serverlosen SQL-Pools in Azure Synapse Link (Vorschau)
 
@@ -24,7 +24,7 @@ ms.locfileid: "98222104"
 
 Mit einem serverlosen SQL-Pool können Sie Daten in Ihren Azure Cosmos DB-Containern, die für [Azure Synapse Link](../../cosmos-db/synapse-link.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) aktiviert sind, nahezu in Echtzeit analysieren, ohne dass sich dies auf die Leistung Ihrer Transaktionsarbeitsauslastungen auswirkt. Dieses Verfahren bietet eine vertraute T-SQL-Syntax zum Abfragen von Daten aus dem [Analysespeicher](../../cosmos-db/analytical-store-introduction.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) sowie integrierte Konnektivität mit einer Vielzahl von BI-Tools (Business Intelligence) und Ad-hoc-Abfragetools über die T-SQL-Schnittstelle.
 
-Zum Abfragen von Azure Cosmos DB wird die gesamte [SELECT](/sql/t-sql/queries/select-transact-sql?view=sql-server-ver15)-Oberfläche durch die [OPENROWSET](develop-openrowset.md)-Funktion unterstützt, einschließlich eines Großteils der [SQL-Funktionen und -Operatoren](overview-features.md). Mit [CREATE EXTERNAL TABLE AS SELECT](develop-tables-cetas.md#cetas-in-serverless-sql-pool) (CETAS) können Sie die Ergebnisse der Abfrage, die Daten aus Azure Cosmos DB liest, auch zusammen mit Daten in Azure Blob Storage oder Azure Data Lake Storage speichern. Das Speichern der Abfrageergebnisse aus einem serverlosen SQL-Pool in Azure Cosmos DB mithilfe von CETAS ist derzeit nicht möglich.
+Zum Abfragen von Azure Cosmos DB wird die gesamte [SELECT](/sql/t-sql/queries/select-transact-sql?view=azure-sqldw-latest&preserve-view=true)-Oberfläche durch die [OPENROWSET](develop-openrowset.md)-Funktion unterstützt, einschließlich eines Großteils der [SQL-Funktionen und -Operatoren](overview-features.md). Mit [CREATE EXTERNAL TABLE AS SELECT](develop-tables-cetas.md#cetas-in-serverless-sql-pool) (CETAS) können Sie die Ergebnisse der Abfrage, die Daten aus Azure Cosmos DB liest, auch zusammen mit Daten in Azure Blob Storage oder Azure Data Lake Storage speichern. Das Speichern der Abfrageergebnisse aus einem serverlosen SQL-Pool in Azure Cosmos DB mithilfe von CETAS ist derzeit nicht möglich.
 
 In diesem Artikel erfahren Sie, wie Sie eine Abfrage für einen serverlosen SQL-Pool erstellen, die Daten aus für Azure Synapse Link aktivierten Azure Cosmos DB-Containern abfragt. Danach können Sie sich in [diesem Tutorial](./tutorial-data-analyst.md) darüber informieren, wie Sie Sichten serverloser SQL-Pools über Azure Cosmos DB-Container erstellen und diese Sichten mit Power BI-Modellen verbinden.
 

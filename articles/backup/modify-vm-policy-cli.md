@@ -3,12 +3,12 @@ title: Aktualisieren der vorhandenen VM-Sicherungsrichtlinie mit der Befehlszeil
 description: Hier erfahren Sie, wie Sie die vorhandene VM-Sicherungsrichtlinie mit Azure-Befehlszeilenschnittstelle aktualisieren.
 ms.topic: conceptual
 ms.date: 12/31/2020
-ms.openlocfilehash: ba4ded4c82a1eaea7c20ea94da580a8702467b85
-ms.sourcegitcommit: 89c0482c16bfec316a79caa3667c256ee40b163f
+ms.openlocfilehash: 33083d6585d2b9296cd184ba258b8d2143d685b4
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97858819"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98728577"
 ---
 # <a name="update-the-existing-vm-backup-policy-using-cli"></a>Aktualisieren der vorhandenen VM-Sicherungsrichtlinie mit der Befehlszeilenschnittstelle
 
@@ -18,7 +18,7 @@ Sie können eine vorhandene VM-Sicherungsrichtlinie mithilfe der Azure-Befehlsze
 
 Gehen Sie folgendermaßen vor, um eine vorhandene VM-Sicherungsrichtlinie zu ändern:
 
-1. Führen Sie den Befehl [az backup policy show](https://docs.microsoft.com/cli/azure/backup/policy#az_backup_policy_show) aus, um die Details der zu aktualisierenden Richtlinie abzurufen.
+1. Führen Sie den Befehl [az backup policy show](/cli/azure/backup/policy#az_backup_policy_show) aus, um die Details der zu aktualisierenden Richtlinie abzurufen.
 
     Beispiel:
 
@@ -101,14 +101,14 @@ Gehen Sie folgendermaßen vor, um eine vorhandene VM-Sicherungsrichtlinie zu än
     ```
 
 1. Speichern Sie die Änderungen.
-1. Führen Sie den Befehl [az backup policy set](https://docs.microsoft.com/cli/azure/backup/policy#az_backup_policy_set) aus, und übergeben Sie den vollständigen Pfad der aktualisierten JSON-Datei als Wert für den Parameter **- - policy**.
+1. Führen Sie den Befehl [az backup policy set](/cli/azure/backup/policy#az_backup_policy_set) aus, und übergeben Sie den vollständigen Pfad der aktualisierten JSON-Datei als Wert für den Parameter **- - policy**.
 
     ```azurecli
     az backup policy set --resource-group rg1234 --vault-name testvault --policy C:\temp2\Policy.json --name testing123
     ```
 
 >[!NOTE]
->Sie können die JSON-Beispielrichtlinie auch abrufen, indem Sie den Befehl [az backup policy get-default-for-vm](https://docs.microsoft.com/cli/azure/backup/policy#az_backup_policy_get_default_for_vm) ausführen.
+>Sie können die JSON-Beispielrichtlinie auch abrufen, indem Sie den Befehl [az backup policy get-default-for-vm](/cli/azure/backup/policy#az_backup_policy_get_default_for_vm) ausführen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

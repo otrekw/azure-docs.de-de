@@ -7,16 +7,16 @@ ms.reviewer: bwren
 ms.subservice: logs
 ms.topic: conceptual
 ms.date: 10/13/2020
-ms.openlocfilehash: 8942735ed65f8aa0cf6d315568e00412adcb353a
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.openlocfilehash: a31ef69d84f64e4bcaa46adac26a29d2cc367351
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2021
-ms.locfileid: "98060536"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98731699"
 ---
 # <a name="query-data-in-azure-monitor-using-azure-data-explorer-preview"></a>Abfragen von Daten in Azure Monitor mit Azure Data Explorer (Vorschau)
 
-Azure Data Explorer unterstützt dienstübergreifende Abfragen zwischen Azure Data Explorer, [Application Insights (AI)](/azure/azure-monitor/app/app-insights-overview) und [Log Analytics (LA)](/azure/azure-monitor/platform/data-platform-logs). Anschließend können Sie den Log Analytics/Application Insights-Arbeitsbereich mithilfe von Azure Data Explorer-Tools abfragen und in einer dienstübergreifenden Abfrage darauf verweisen. In diesem Artikel wird gezeigt, wie Sie eine dienstübergreifende Abfrage erstellen und den Log Analytics/Application Insights-Arbeitsbereich zur Azure Data Explorer-Webbenutzeroberfläche hinzufügen.
+Azure Data Explorer unterstützt dienstübergreifende Abfragen zwischen Azure Data Explorer, [Application Insights (AI)](../app/app-insights-overview.md) und [Log Analytics (LA)](./data-platform-logs.md). Anschließend können Sie den Log Analytics/Application Insights-Arbeitsbereich mithilfe von Azure Data Explorer-Tools abfragen und in einer dienstübergreifenden Abfrage darauf verweisen. In diesem Artikel wird gezeigt, wie Sie eine dienstübergreifende Abfrage erstellen und den Log Analytics/Application Insights-Arbeitsbereich zur Azure Data Explorer-Webbenutzeroberfläche hinzufügen.
 
 Ablauf dienstübergreifender Abfragen mit Azure Data Explorer: :::image type="content" source="media\azure-data-explorer-monitor-proxy\azure-data-explorer-monitor-flow.png" alt-text="Azure Data Explorer-Proxyflow":::
 
@@ -62,7 +62,7 @@ Sie können die Abfragen mithilfe von Clienttools ausführen, die Kusto-Abfragen
 > * Datenbanken müssen den gleichen Namen wie die in der dienstübergreifenden Abfrage angegebene Ressource haben. Bei Namen wird die Groß-/Kleinschreibung beachtet.
 > * Achten Sie bei clusterübergreifenden Abfragen auf eine korrekte Benennung der Application Insights-Apps und Log Analytics-Arbeitsbereiche.
 > * Wenn Namen Sonderzeichen enthalten, werden diese in der dienstübergreifenden Abfrage durch URL-Codierung ersetzt.
-> * Wenn Namen Zeichen enthalten, die nicht den [KQL-Regeln für Bezeichnernamen](https://docs.microsoft.com/azure/data-explorer/kusto/query/schema-entities/entity-names) entsprechen, werden sie durch einen Bindestrich ( **-** ) ersetzt.
+> * Wenn Namen Zeichen enthalten, die nicht den [KQL-Regeln für Bezeichnernamen](/azure/data-explorer/kusto/query/schema-entities/entity-names) entsprechen, werden sie durch einen Bindestrich ( **-** ) ersetzt.
 
 ### <a name="direct-query-on-your-log-analytics-or-application-insights-workspaces-from-azure-data-explorer-client-tools"></a>Direkte Abfrage der Log Analytics- oder Application Insights-Arbeitsbereiche über Azure Data Explorer-Clienttools
 
@@ -90,7 +90,7 @@ union <Azure Data Explorer table>, cluster(CL1).database(<workspace-name>).<tabl
 
 :::image type="content" source="media\azure-data-explorer-monitor-proxy\azure-data-explorer-cross-query-proxy.png" alt-text="Dienstübergreifende Abfrage über Azure Data Explorer":::
 
-Wenn Sie anstelle von „union“ den [`join`-Operator](https://docs.microsoft.com/azure/data-explorer/kusto/query/joinoperator) verwenden, ist möglicherweise ein [`hint`](https://docs.microsoft.com/azure/data-explorer/kusto/query/joinoperator#join-hints) erforderlich, um die Abfrage für einen nativen Azure Data Explorer-Cluster auszuführen.
+Wenn Sie anstelle von „union“ den [`join`-Operator](/azure/data-explorer/kusto/query/joinoperator) verwenden, ist möglicherweise ein [`hint`](/azure/data-explorer/kusto/query/joinoperator#join-hints) erforderlich, um die Abfrage für einen nativen Azure Data Explorer-Cluster auszuführen.
 
 ### <a name="join-data-from-an-azure-data-explorer-cluster-in-one-tenant-with-an-azure-monitor-resource-in-another"></a>Verknüpfen von Daten eines Azure Data Explorer-Clusters in einem Mandanten mit einer Azure Monitor-Ressource in einem anderen Mandanten
 
@@ -98,9 +98,9 @@ Mandantenübergreifende Abfragen zwischen den Diensten werden nicht unterstützt
 
 Wenn sich die Azure Data Explorer-Ressource im Mandanten „A“ und der Log Analytics-Arbeitsbereich im Mandanten „B“ befindet, sollten Sie eine der beiden folgenden Methoden verwenden:
 
-1. Mit Azure Data Explorer können Sie Rollen für Prinzipale auf unterschiedlichen Mandanten hinzufügen. Fügen Sie Ihre Benutzer-ID auf Mandant „B“ als autorisierten Benutzer im Azure Data Explorer-Cluster hinzu. Vergewissern Sie sich, dass die Eigenschaft *[ExternalTrustedTenant](https://docs.microsoft.com/powershell/module/az.kusto/update-azkustocluster)* im Azure Data Explorer-Cluster den Mandanten „B“ enthält. Führen Sie die übergreifende Abfrage vollständig auf Mandant „B“ aus.
+1. Mit Azure Data Explorer können Sie Rollen für Prinzipale auf unterschiedlichen Mandanten hinzufügen. Fügen Sie Ihre Benutzer-ID auf Mandant „B“ als autorisierten Benutzer im Azure Data Explorer-Cluster hinzu. Vergewissern Sie sich, dass die Eigenschaft *[ExternalTrustedTenant](/powershell/module/az.kusto/update-azkustocluster)* im Azure Data Explorer-Cluster den Mandanten „B“ enthält. Führen Sie die übergreifende Abfrage vollständig auf Mandant „B“ aus.
 
-2. Verwenden Sie [Lighthouse](https://docs.microsoft.com/azure/lighthouse/), um die Azure Monitor-Ressource auf Mandant „A“ zu projizieren.
+2. Verwenden Sie [Lighthouse](../../lighthouse/index.yml), um die Azure Monitor-Ressource auf Mandant „A“ zu projizieren.
 ### <a name="connect-to-azure-data-explorer-clusters-from-different-tenants"></a>Herstellen einer Verbindung mit Azure Data Explorer-Clustern von unterschiedlichen Mandanten
 
 Bei Kusto-Explorer werden Sie automatisch bei dem Mandanten angemeldet, zu dem das Benutzerkonto ursprünglich gehört. Für den Zugriff auf Ressourcen in anderen Mandanten mit demselben Benutzerkonto muss `tenantId` explizit in der Verbindungszeichenfolge angegeben werden: `Data Source=https://ade.applicationinsights.io/subscriptions/SubscriptionId/resourcegroups/ResourceGroupName;Initial Catalog=NetDefaultDB;AAD Federated Security=True;Authority ID=`**TenantId**
@@ -134,4 +134,4 @@ Beim Aufrufen der Log Analytics- oder Application Insights-Cluster sind die folg
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Lesen Sie den Artikel zur [Datenstruktur von Log Analytics-Arbeitsbereichen und Application Insights](data-platform-logs.md).
-- Informieren Sie sich über das [Schreiben von Abfragen für Azure Data Explorer](https://docs.microsoft.com/azure/data-explorer/write-queries).
+- Informieren Sie sich über das [Schreiben von Abfragen für Azure Data Explorer](/azure/data-explorer/write-queries).

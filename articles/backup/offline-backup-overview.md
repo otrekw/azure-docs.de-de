@@ -4,12 +4,12 @@ description: Erfahren Sie mehr über die Komponenten der Offlinesicherung. Dazu 
 ms.topic: conceptual
 ms.date: 1/28/2020
 ms.custom: references_regions
-ms.openlocfilehash: c5e0f4e722e2dd15b7277a484af2a101844344e6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7c65cf6b36af3057fb06c6a6584fa458b1030c72
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86503624"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98704134"
 ---
 # <a name="overview-of-offline-backup"></a>Übersicht über die Offlinesicherung
 
@@ -45,7 +45,7 @@ Informationen zur Verwendung der Offlinesicherung basierend auf Azure Data Box f
 
 ## <a name="offline-backup-based-on-the-azure-importexport-service"></a>Offlinesicherung basierend auf dem Azure Import/Export-Dienst
 
-Diese Option wird von Microsoft Azure Backup Server (MABS), System Center Data Protection Manager (DPM) DPM-A und dem MARS-Agent unterstützt. Sie verwendet den [Azure Import/Export-Dienst](../storage/common/storage-import-export-service.md). Sie können die anfänglichen Sicherungsdaten mithilfe Ihrer eigenen Azure-kompatiblen Datenträger und Connectors nach Azure übertragen. Diese Vorgehensweise erfordert die Bereitstellung eines temporären Speichers, der als Stagingspeicherort bezeichnet wird, sowie die Verwendung von vorgefertigten Dienstprogrammen zum Formatieren und Kopieren der Sicherungsdaten auf Datenträger von Kunden.
+Diese Option wird von Microsoft Azure Backup Server (MABS), System Center Data Protection Manager (DPM) DPM-A und dem MARS-Agent unterstützt. Sie verwendet den [Azure Import/Export-Dienst](../import-export/storage-import-export-service.md). Sie können die anfänglichen Sicherungsdaten mithilfe Ihrer eigenen Azure-kompatiblen Datenträger und Connectors nach Azure übertragen. Diese Vorgehensweise erfordert die Bereitstellung eines temporären Speichers, der als Stagingspeicherort bezeichnet wird, sowie die Verwendung von vorgefertigten Dienstprogrammen zum Formatieren und Kopieren der Sicherungsdaten auf Datenträger von Kunden.
 
 Nachfolgend ist eine Architektur dargestellt, die die Verschiebung von Sicherungsdaten mithilfe dieser Option veranschaulicht.
 
@@ -73,7 +73,7 @@ In der folgenden Tabelle werden die beiden verfügbaren Optionen verglichen, sod
 | Maximale Sicherungsdaten pro Server (MARS) oder pro Schutzgruppe (MABS, DPM-A) | [Azure Data Box Disk:](../databox/data-box-disk-overview.md) 7,2 TB <br> [Azure Data Box:](../databox/data-box-overview.md) 80 TB       | 80 TB (bis zu 10 Datenträger mit jeweils 8 TB)                          |
 | Sicherheit (Daten, Gerät und Dienst)                           | [Daten:](../databox/data-box-security.md#data-box-data-protection) AES-256-Bit-Verschlüsselung <br> [Gerät:](../databox/data-box-security.md#data-box-device-protection) robustes Gehäuse, proprietäre und auf Anmeldeinformationen basierende Schnittstelle zum Kopieren von Daten <br> [Dienst:](../databox/data-box-security.md#data-box-service-protection) Schutz durch Azure-Sicherheitsfeatures | Daten: BitLocker-verschlüsselt                                 |
 | Bereitstellung von temporärem Stagingspeicherort                     | Nicht erforderlich                                                | Umfang größer oder gleich der geschätzten Größe der Sicherungsdaten        |
-| Unterstützte Regionen                                           | [Azure Data Box Disk-Regionen](../databox/data-box-disk-overview.md#region-availability) <br> [Azure Data Box-Regionen](../databox/data-box-disk-overview.md#region-availability) | [Azure Import/Export-Dienst: Regionen](../storage/common/storage-import-export-service.md#region-availability) |
+| Unterstützte Regionen                                           | [Azure Data Box Disk-Regionen](../databox/data-box-disk-overview.md#region-availability) <br> [Azure Data Box-Regionen](../databox/data-box-disk-overview.md#region-availability) | [Azure Import/Export-Dienst: Regionen](../import-export/storage-import-export-service.md#region-availability) |
 | Länderübergreifender Versand                                     | Nicht unterstützt  <br>    Die Quelladresse und das Azure-Zielrechenzentrum müssen sich im selben Land/derselben Region befinden.* | Unterstützt                                                    |
 | Transportlogistik (Lieferung, Transport und Abholung)           | Vollständig von Microsoft verwaltet                                     | Vom Kunden verwaltet                                            |
 | Preise                                                      | [Azure Data Box: Preise](https://azure.microsoft.com/pricing/details/databox/) <br> [Azure Data Box Disk: Preise](https://azure.microsoft.com/pricing/details/databox/disk/) | [Azure Import/Export-Dienst: Preise](https://azure.microsoft.com/pricing/details/storage-import-export/) |

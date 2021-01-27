@@ -3,12 +3,12 @@ title: Bewährte Methoden
 description: Erfahren Sie, welche bewährten Methoden und nützlichen Tipps es für das Entwickeln Ihrer Azure Batch-Lösungen gibt.
 ms.date: 12/18/2020
 ms.topic: conceptual
-ms.openlocfilehash: 7e2a49c8307af89fb3898f5f2513fb493d0f5d90
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 95dca907f9380de29bd3c9b0e52b120c9114b5ee
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97934287"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98732410"
 ---
 # <a name="azure-batch-best-practices"></a>Azure Batch: bewährte Methoden
 
@@ -149,7 +149,7 @@ Wie andere Aufgaben auch sollte die [Knotenstartaufgabe](jobs-and-tasks.md#start
 
 ### <a name="isolated-nodes"></a>Isolierte Knoten
 
-Ziehen Sie die Verwendung von isolierten VM-Größen für Workloads mit Compliance- oder regulatorischen Anforderungen in Betracht. Zu den unterstützten isolierten Größen im Konfigurationsmodus des virtuellen Computers gehören `Standard_E80ids_v4`, `Standard_M128ms`, `Standard_F72s_v2`, `Standard_G5`, `Standard_GS5` und `Standard_E64i_v3`. Weitere Informationen zu isolierten VM-Größen finden Sie unter [Isolation von virtuellen Computern in Azure](https://docs.microsoft.com/azure/virtual-machines/isolation).
+Ziehen Sie die Verwendung von isolierten VM-Größen für Workloads mit Compliance- oder regulatorischen Anforderungen in Betracht. Zu den unterstützten isolierten Größen im Konfigurationsmodus des virtuellen Computers gehören `Standard_E80ids_v4`, `Standard_M128ms`, `Standard_F72s_v2`, `Standard_G5`, `Standard_GS5` und `Standard_E64i_v3`. Weitere Informationen zu isolierten VM-Größen finden Sie unter [Isolation von virtuellen Computern in Azure](../virtual-machines/isolation.md).
 
 ### <a name="manage-long-running-services-via-the-operating-system-services-interface"></a>Verwalten zeitintensiver Dienste über die Betriebssystem-Diensteschnittstelle
 

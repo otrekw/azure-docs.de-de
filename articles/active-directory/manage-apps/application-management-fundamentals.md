@@ -16,12 +16,12 @@ ms.date: 11/13/2019
 ms.subservice: app-mgmt
 ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2f5aaf4bbff4c093872228d647d3850667fb9777
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: d7a570fb322d24bf0d32efcb6f1a2ee515862755
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94656406"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98736968"
 ---
 # <a name="application-management-best-practices"></a>Bewährte Methoden für die Anwendungsverwaltung
 
@@ -33,9 +33,9 @@ Dieser Artikel enthält Empfehlungen und bewährte Methoden für das Verwalten v
 | Durchsuchen des Azure AD-Anwendungskatalogs nach Apps  | Azure AD enthält einen Katalog mit Tausenden von vorab integrierten Anwendungen mit Enterprise Single Sign-On (Einmaliges Anmelden für Unternehmen (SSO)). App-spezifische Einrichtungsanleitungen finden Sie in der [Liste der Tutorials für SaaS-Anwendungen](../saas-apps/tutorial-list.md).  | 
 | Verwenden von SAML-basiertem Verbund-SSO  | Verwenden Sie SAML-basiertes Verbund-SSO mit Azure AD anstelle von kennwortbasiertem SSO und ADFS, wenn eine Anwendung dies unterstützt.  | 
 | Verwenden von SHA-256 für die Zertifikatsignatur  | Azure AD verwendet standardmäßig den Algorithmus SHA-256 zum Signieren der SAML-Antwort. Verwenden Sie SHA-256, sofern die Anwendung nicht SHA-1 erfordert. (Weitere Informationen finden Sie unter [Optionen für die Zertifikatsignatur](certificate-signing-options.md) und [Problem bei der Anwendungsanmeldung](application-sign-in-problem-application-error.md).)  | 
-| Erfordern der Benutzerzuweisung  | Standardmäßig können Benutzer auf Ihre Unternehmensanwendungen zugreifen, ohne diesen zugewiesen zu sein. Falls die Anwendung jedoch Rollen verfügbar macht oder Sie möchten, dass die Anwendung unter „Meine Apps“ für einen Benutzer angezeigt wird, müssen Sie Benutzerzuweisungen erforderlich machen. (Weitere Informationen finden Sie im [Entwicklerleitfaden zum Integrieren von Anwendungen](developer-guidance-for-integrating-applications.md).)  | 
+| Erfordern der Benutzerzuweisung  | Standardmäßig können Benutzer auf Ihre Unternehmensanwendungen zugreifen, ohne diesen zugewiesen zu sein. Falls die Anwendung jedoch Rollen verfügbar macht oder Sie möchten, dass die Anwendung unter „Meine Apps“ für einen Benutzer angezeigt wird, müssen Sie Benutzerzuweisungen erforderlich machen.  | 
 | Bereitstellen von „Meine Apps“ für Ihre Benutzer | [Meine Apps](end-user-experiences.md) unter `https://myapps.microsoft.com` ist ein webbasiertes Portal, das Benutzern einen einzigen Einstiegspunkt für die ihnen zugewiesenen cloudbasierten Anwendungen bietet. Wenn zusätzliche Funktionen wie Gruppenverwaltung und Self-Service-Kennwortzurücksetzung hinzugefügt werden, können Benutzer diese in „Meine Apps“ finden. Informationen finden Sie unter [Planen einer Bereitstellung von „Meine Apps“](access-panel-deployment-plan.md).
-| Verwenden der Gruppenzuweisung  | Wenn die Option in Ihrem Abonnement enthalten ist, weisen Sie einer Anwendung Gruppen zu, damit Sie die laufende Zugriffsverwaltung an den Gruppenbesitzer delegieren können. (Weitere Informationen finden Sie im [Entwicklerleitfaden zum Integrieren von Anwendungen](developer-guidance-for-integrating-applications.md).)   | 
+| Verwenden der Gruppenzuweisung  | Wenn die Option in Ihrem Abonnement enthalten ist, weisen Sie einer Anwendung Gruppen zu, damit Sie die laufende Zugriffsverwaltung an den Gruppenbesitzer delegieren können.  | 
 | Einrichten eines Prozesses für das Verwalten von Zertifikaten | Die maximale Lebensdauer eines Signaturzertifikats beträgt drei Jahre. Um Ausfälle aufgrund eines ablaufenden Zertifikats zu verhindern oder zu minimieren, verwenden Sie Rollen und E-Mail-Verteilerlisten, damit sichergestellt werden kann, dass zertifikatbezogene Änderungsbenachrichtigungen genau überwacht werden. |
 
 ## <a name="provisioning-recommendations"></a>Bereitstellungsempfehlungen

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/10/2019
 ms.author: jeedes
-ms.openlocfilehash: 71f4cfa9e7b69e51bafa5364f857f8ab689f2ad0
-ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
+ms.openlocfilehash: 928b8118c614d7d16293c8d6e0cec194a270314e
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97955466"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98729922"
 ---
 # <a name="tutorial-configure-servicenow-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von ServiceNow für die automatische Benutzerbereitstellung
 
@@ -155,7 +155,7 @@ Nachdem Sie die Bereitstellung konfiguriert haben, können Sie mit den folgenden
 
 * **IP-Bereiche** 
 
-   Der Azure AD-Bereitstellungsdienst wird zurzeit unter bestimmten IP-Adressbereichen betrieben. Sie können daher ggf. andere IP-Adressbereiche einschränken und diese bestimmten IP-Adressbereiche der Positivliste Ihrer Anwendung hinzufügen, um den Datenverkehrsfluss vom Azure AD-Bereitstellungsdienst an Ihre Anwendung zuzulassen. Entsprechende Informationen finden Sie in der Dokumentation unter [IP-Bereiche](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups#ip-ranges).
+   Der Azure AD-Bereitstellungsdienst wird zurzeit unter bestimmten IP-Adressbereichen betrieben. Sie können daher ggf. andere IP-Adressbereiche einschränken und diese bestimmten IP-Adressbereiche der Positivliste Ihrer Anwendung hinzufügen, um den Datenverkehrsfluss vom Azure AD-Bereitstellungsdienst an Ihre Anwendung zuzulassen. Entsprechende Informationen finden Sie in der Dokumentation unter [IP-Bereiche](../app-provisioning/use-scim-to-provision-users-and-groups.md#ip-ranges).
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

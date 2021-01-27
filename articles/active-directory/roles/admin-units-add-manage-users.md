@@ -3,23 +3,23 @@ title: Hinzufügen, Entfernen und Auflisten von Benutzern in einer Verwaltungsei
 description: Verwalten von Benutzern und deren Rollenberechtigungen in einer Verwaltungseinheit in Azure Active Directory
 services: active-directory
 documentationcenter: ''
-author: curtand
+author: rolyon
 manager: daveba
 ms.service: active-directory
 ms.topic: how-to
 ms.subservice: roles
 ms.workload: identity
 ms.date: 11/04/2020
-ms.author: curtand
+ms.author: rolyon
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b490e03ea7ac0a3bc780fa731629217126b6828a
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: d3dc7b37c96d2d82ae42d9bce32a97beab2d91e9
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93395528"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98740515"
 ---
 # <a name="add-and-manage-users-in-an-administrative-unit-in-azure-active-directory"></a>Hinzufügen und Verwalten von Benutzern in einer Verwaltungseinheit in Azure Active Directory
 
@@ -49,7 +49,7 @@ Sie können Benutzer Verwaltungseinheiten einzeln oder per Massenvorgang zuweise
 
    1. Melden Sie sich beim [Azure AD Admin Center](https://portal.azure.com) mit Berechtigungen „Administrator für privilegierte Rollen“ an.
    1. Wählen Sie **Verwaltungseinheiten** und dann die Verwaltungseinheit aus, für die der Benutzer zugewiesen werden sollen.
-   1. Wählen Sie **Alle Benutzer** , **Mitglied hinzufügen** und dann im Bereich **Mitglied hinzufügen** einen oder mehrere Benutzer aus, die Sie der Verwaltungseinheit zuweisen möchten.
+   1. Wählen Sie **Alle Benutzer**, **Mitglied hinzufügen** und dann im Bereich **Mitglied hinzufügen** einen oder mehrere Benutzer aus, die Sie der Verwaltungseinheit zuweisen möchten.
 
         ![Screenshot: Bereich „Benutzer“ der Verwaltungseinheit zum Zuweisen eines Benutzers zu einer Verwaltungseinheit](./media/admin-units-add-manage-users/assign-to-admin-unit.png)
 
@@ -103,7 +103,7 @@ Beispiel:
 
 Im Azure-Portal können Sie das Profil eines Benutzers öffnen, indem Sie wie folgt vorgehen:
 
-1. Navigieren Sie zu **Azure AD** , und wählen Sie **Benutzer** aus.
+1. Navigieren Sie zu **Azure AD**, und wählen Sie **Benutzer** aus.
 
 1. Wählen Sie den Benutzer aus, dessen Profil Sie anzeigen möchten.
 
@@ -135,13 +135,13 @@ https://graph.microsoft.com/v1.0/users/{id}/memberOf/$/Microsoft.Graph.Administr
 
 Es gibt zwei Möglichkeiten, einen Benutzer aus einer Verwaltungseinheit zu entfernen: 
 
-* Navigieren Sie im Azure-Portal zu **Azure AD** , und wählen Sie die Option **Benutzer** aus. 
+* Navigieren Sie im Azure-Portal zu **Azure AD**, und wählen Sie die Option **Benutzer** aus. 
   1. Wählen Sie den Benutzer aus, um dessen Profil zu öffnen. 
   1. Wählen Sie die Verwaltungseinheit aus, aus der Sie den Benutzer entfernen möchten, und wählen Sie dann die Option **Aus Verwaltungseinheit entfernen** aus.
 
      ![Screenshot: Entfernen eines Benutzers aus einer Verwaltungseinheit über den Profilbereich des Benutzers](./media/admin-units-add-manage-users/user-remove-admin-units.png)
 
-* Navigieren Sie im Azure-Portal zu **Azure AD** , und wählen Sie **Verwaltungseinheiten** aus.
+* Navigieren Sie im Azure-Portal zu **Azure AD**, und wählen Sie **Verwaltungseinheiten** aus.
   1. Wählen Sie die Verwaltungseinheit aus, aus der Sie den Benutzer entfernen möchten. 
   1. Wählen Sie den Benutzer und dann die Option **Mitglied entfernen** aus.
   

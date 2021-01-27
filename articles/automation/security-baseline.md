@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 1626ee074d51048dbf45c629f261a550822d746c
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: ea984e527eb526e49c87ce5385ba5715803cc72d
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98200837"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737251"
 ---
 # <a name="azure-security-baseline-for-automation"></a>Azure-Sicherheitsbaseline für Automation
 
@@ -556,7 +556,7 @@ Befolgen Sie ggf. die Empfehlungen von Azure Security Center zur Verschlüsselun
 
 * [Grundlegendes zur Verschlüsselung während der Übertragung mit Azure](../security/fundamentals/encryption-overview.md#encryption-of-data-in-transit)
 
-* [Erzwingen von TLS 1.2 für Azure Automation](/azure/active-directory/hybrid/reference-connect-tls-enforcement)
+* [Erzwingen von TLS 1.2 für Azure Automation](../active-directory/hybrid/reference-connect-tls-enforcement.md)
 
 **Azure Security Center-Überwachung**: Ja
 
@@ -938,7 +938,7 @@ Wenn Sie die Hybrid Runbook Worker-Funktion verwenden, können Sie mehrere Optio
 
 In den meisten Fällen sind die Microsoft-Basisvorlagen in Kombination mit Azure Automation State Configuration beim Erfüllen und Verwalten der Sicherheitsanforderungen nützlich.
 
-* [Herunterladen einer Vorlage für einen virtuellen Computer](../virtual-machines/windows/download-template.md)
+* [Herunterladen einer Vorlage für einen virtuellen Computer](/previous-versions/azure/virtual-machines/windows/download-template)
 
 * [Informationen zum Erstellen von ARM-Vorlagen](../virtual-machines/windows/ps-template.md)
 

@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9de0ce5e83b33cd793953e2b863f26dffafe58ee
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: f06a54f59405d9833194b2e7d4488bc93d2437ae
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98222393"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98725177"
 ---
 # <a name="manage-external-access-with-entitlement-management"></a>Verwalten des Zugriffs mit der Berechtigungsverwaltung 
 
@@ -94,15 +94,15 @@ Weitere Informationen zu Zugriffsüberprüfungen finden Sie unter [Planen der Be
 
 ## <a name="using-automation-in-entitlement-management"></a>Verwenden von Automatisierungen in der Berechtigungsverwaltung
 
-Sie können [Berechtigungsverwaltungsfunktionen ausführen, indem Sie Microsoft Graph](https://docs.microsoft.com/graph/tutorial-access-package-api) verwenden, einschließlich
+Sie können [Berechtigungsverwaltungsfunktionen ausführen, indem Sie Microsoft Graph](/graph/tutorial-access-package-api) verwenden, einschließlich
 
-* [Verwalten von Zugriffspaketen](https://docs.microsoft.com/graph/api/resources/accesspackage?view=graph-rest-beta)
+* [Verwalten von Zugriffspaketen](/graph/api/resources/accesspackage?view=graph-rest-beta)
 
-* [Verwalten von Zugriffsüberprüfungen](https://docs.microsoft.com/graph/api/resources/accessreviewsv2-root?view=graph-rest-beta)
+* [Verwalten von Zugriffsüberprüfungen](/graph/api/resources/accessreviewsv2-root?view=graph-rest-beta)
 
-* [Verwalten von verbundenen Organisationen](https://docs.microsoft.com/graph/api/resources/connectedorganization?view=graph-rest-beta)
+* [Verwalten von verbundenen Organisationen](/graph/api/resources/connectedorganization?view=graph-rest-beta)
 
-* [Verwalten der Einstellungen für die Berechtigungsverwaltung](https://docs.microsoft.com/graph/api/resources/entitlementmanagementsettings?view=graph-rest-beta)
+* [Verwalten der Einstellungen für die Berechtigungsverwaltung](/graph/api/resources/entitlementmanagementsettings?view=graph-rest-beta)
 
 ## <a name="recommendations"></a>Empfehlungen 
 
@@ -112,7 +112,7 @@ Es wird empfohlen, den externen Zugriff über die Berechtigungsverwaltung zu ste
 
 * Wenn in Ihrem Verzeichnis bereits B2B-Benutzer vorhanden sind, können Sie diese auch direkt den entsprechenden Zugriffspaketen zuweisen.
 
-* Sie können den Zugriff im [Azure-Portal](../governance/entitlement-management-access-package-assignments.md) oder über [Microsoft Graph](https://docs.microsoft.com/graph/api/resources/accesspackageassignmentrequest?view=graph-rest-beta) zuweisen.
+* Sie können den Zugriff im [Azure-Portal](../governance/entitlement-management-access-package-assignments.md) oder über [Microsoft Graph](/graph/api/resources/accesspackageassignmentrequest?view=graph-rest-beta) zuweisen.
 
 **Verwenden Sie Ihre Identity Governance-Einstellungen, um Benutzer aus Ihrem Verzeichnis zu entfernen, wenn deren Zugriffspakete ablaufen**.
 
@@ -173,4 +173,3 @@ In den folgenden Artikeln finden Sie Informationen zum Sichern des externen Zugr
 
  
 
- 

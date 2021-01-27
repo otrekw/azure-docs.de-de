@@ -12,12 +12,12 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, sstein
 ms.date: 08/17/2020
-ms.openlocfilehash: 2c7db937905baed94c6fe81adeb44c8b3f5be52b
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: e19bf5b4ee5b6c48f002ca79711646cca7b0ec5f
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97936072"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98729123"
 ---
 # <a name="configure-and-manage-azure-ad-authentication-with-azure-sql"></a>Konfigurieren und Verwalten der Azure Active Directory-Authentifizierung mit Azure SQL
 
@@ -257,7 +257,7 @@ Die beiden folgenden Verfahren zeigen, wie Sie einen Azure Active Directory-Admi
 
     ![Auswählen des Azure Active Directory-Administrators](./media/authentication-aad-configure/select-azure-active-directory-admin.png)  
 
-6. Wählen Sie oben auf der Seite **Active Directory-Administrator** **SPEICHERN** aus.
+6. Wählen Sie oben auf der Seite **Active Directory-Administrator** die Option **Speichern** aus.
 
     ![Administrator speichern](./media/authentication-aad-configure/save-admin.png)
 

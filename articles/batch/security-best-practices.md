@@ -3,12 +3,12 @@ title: Best Practices für Sicherheit und Compliance in Batch
 description: Informieren Sie sich über Best Practices und nützliche Tipps für die Verbesserung der Sicherheit Ihrer Azure Batch-Lösungen.
 ms.date: 12/18/2020
 ms.topic: conceptual
-ms.openlocfilehash: b9732ffb810a1038a6f402a46fa8b809f180f0a8
-ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
+ms.openlocfilehash: 6ec4a1d89ebaa9318986fc0d51e832652ba51683
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97802285"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98723811"
 ---
 # <a name="batch-security-and-compliance-best-practices"></a>Best Practices für Sicherheit und Compliance in Batch
 
@@ -137,8 +137,8 @@ Batch-Computeknoten weisen standardmäßig zwei Datenträger auf: einen Betriebs
 
 Um für zusätzliche Sicherheit zu sorgen, verschlüsseln Sie diese Datenträger mithilfe einer der folgenden Azure-Funktionen für die Datenträgerverschlüsselung:
 
-- [Verschlüsselung von verwalteten Datenträgern im Ruhezustand mit plattformseitig verwalteten Schlüsseln](../virtual-machines/windows/disk-encryption.md#platform-managed-keys)
-- [Verschlüsselung auf dem Host mithilfe eines plattformseitig verwalteten Schlüssels](../virtual-machines/windows/disk-encryption.md#encryption-at-host---end-to-end-encryption-for-your-vm-data)
+- [Verschlüsselung von verwalteten Datenträgern im Ruhezustand mit plattformseitig verwalteten Schlüsseln](../virtual-machines/disk-encryption.md#platform-managed-keys)
+- [Verschlüsselung auf dem Host mithilfe eines plattformseitig verwalteten Schlüssels](../virtual-machines/disk-encryption.md#encryption-at-host---end-to-end-encryption-for-your-vm-data)
 - [Azure-Datenträgerverschlüsselung](disk-encryption.md)
 
 ## <a name="securely-access-services-from-compute-nodes"></a>Sicherer Zugriff auf Dienste von Computeknoten

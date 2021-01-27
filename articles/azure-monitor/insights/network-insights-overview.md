@@ -6,16 +6,16 @@ ms.topic: conceptual
 author: KumudD
 ms.author: kumud
 ms.date: 11/25/2020
-ms.openlocfilehash: e4b555f4727d2d1fb5b64814ae07aa15b78da42c
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 4a273170a1f3842a9a11a61d41d4150eb98eace4
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97510922"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98734147"
 ---
 # <a name="azure-monitor-for-networks"></a>Azure Monitor für Netzwerke
 
-Azure Monitor für Netzwerke bietet eine umfassende Ansicht der [Integrität](../../service-health/resource-health-checks-resource-types.md) und [Metriken](../platform/metrics-supported.md) für alle bereitgestellten Netzwerkressourcen ohne jegliche Konfiguration. Außerdem erhalten Sie Zugriff auf Netzwerküberwachungsfunktionen wie [Verbindungsmonitor](../../network-watcher/connection-monitor-preview.md), [Datenflussprotokollierung für Netzwerksicherheitsgruppen (NSGs)](../../network-watcher/network-watcher-nsg-flow-logging-overview.md) und [Traffic Analytics](../../network-watcher/traffic-analytics.md). Zudem werden weitere Features für die [Netzwerkdiagnose](../../network-watcher/network-watcher-monitoring-overview.md#diagnostics) bereitgestellt.
+Azure Monitor für Netzwerke bietet eine umfassende Ansicht der [Integrität](../../service-health/resource-health-checks-resource-types.md) und [Metriken](../platform/metrics-supported.md) für alle bereitgestellten Netzwerkressourcen ohne jegliche Konfiguration. Außerdem erhalten Sie Zugriff auf Netzwerküberwachungsfunktionen wie [Verbindungsmonitor](../../network-watcher/connection-monitor-overview.md), [Datenflussprotokollierung für Netzwerksicherheitsgruppen (NSGs)](../../network-watcher/network-watcher-nsg-flow-logging-overview.md) und [Traffic Analytics](../../network-watcher/traffic-analytics.md). Zudem werden weitere Features für die [Netzwerkdiagnose](../../network-watcher/network-watcher-monitoring-overview.md#diagnostics) bereitgestellt.
 
 Azure Monitor für Netzwerke umfasst die folgenden Hauptkomponenten der Überwachung:
 - [Netzwerkintegrität und Metriken](#networkhealth)

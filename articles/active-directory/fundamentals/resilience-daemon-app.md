@@ -11,12 +11,12 @@ author: knicholasa
 ms.author: nichola
 manager: martinco
 ms.date: 11/23/2020
-ms.openlocfilehash: 74bfc9eeeb8375fca2c88a3fd3c31f17e130fc99
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: a7b8f893026bb96c8d768d2e6d07d0240ecb81fa
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95919062"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98724840"
 ---
 # <a name="increase-the-resilience-of-authentication-and-authorization-in-daemon-applications-you-develop"></a>Erhöhen der Resilienz von Authentifizierung und Autorisierung in Daemon-Anwendungen, die Sie entwickeln
 
@@ -26,7 +26,7 @@ Dieser Artikel enthält Anleitungen dazu, wie Entwickler Microsoft Identity Plat
 
 ## <a name="use-managed-identities-for-azure-resources"></a>Verwenden von verwalteten Identitäten für Azure-Ressourcen
 
-Entwickler, die Daemon-Apps in Microsoft Azure entwickeln, können [verwaltete Identitäten für Azure-Ressourcen](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) verwenden. Durch verwaltete Identitäten müssen Entwickler keine Geheimnisse und Anmeldeinformationen verwalten. Das Feature verbessert die Resilienz, indem Fehler im Zusammenhang mit dem Zertifikatablauf, Rotationsfehlern oder Vertrauensstellungen vermieden werden. Außerdem sind mehrere integrierte Features enthalten, die speziell zur Erhöhung der Resilienz dienen.
+Entwickler, die Daemon-Apps in Microsoft Azure entwickeln, können [verwaltete Identitäten für Azure-Ressourcen](../managed-identities-azure-resources/overview.md) verwenden. Durch verwaltete Identitäten müssen Entwickler keine Geheimnisse und Anmeldeinformationen verwalten. Das Feature verbessert die Resilienz, indem Fehler im Zusammenhang mit dem Zertifikatablauf, Rotationsfehlern oder Vertrauensstellungen vermieden werden. Außerdem sind mehrere integrierte Features enthalten, die speziell zur Erhöhung der Resilienz dienen.
 
 Verwaltete Identitäten verwenden langlebige Zugriffstoken und Informationen von Microsoft Identity, um in einem großen Zeitfenster proaktiv neue Token abzurufen, bevor das vorhandene Token abläuft. Ihre App kann weiterhin ausgeführt werden, während versucht wird, ein neues Token abzurufen.
 
@@ -34,11 +34,11 @@ Verwaltete Identitäten verwenden auch regionale Endpunkte, um die Leistung und 
 
 ## <a name="use-the-microsoft-authentication-library"></a>Verwenden der Microsoft-Authentifizierungsbibliothek
 
-Entwickler von Daemon-Apps, die keine verwalteten Identitäten verwenden, können [Microsoft Authentication Library (MSAL)](https://docs.microsoft.com/azure/active-directory/develop/msal-overview) verwenden, durch die die Implementierung von Authentifizierung und Autorisierung vereinfacht wird und automatisch bewährte Methoden für Resilienz verwendet werden. MSAL vereinfacht die Bereitstellung der erforderlichen Clientanmeldeinformationen. Beispielsweise muss Ihre Anwendung beim Verwenden von zertifikatbasierten Anmeldeinformationen keine Erstellung und Signierung von JSON-Webtokenassertionen implementieren.
+Entwickler von Daemon-Apps, die keine verwalteten Identitäten verwenden, können [Microsoft Authentication Library (MSAL)](../develop/msal-overview.md) verwenden, durch die die Implementierung von Authentifizierung und Autorisierung vereinfacht wird und automatisch bewährte Methoden für Resilienz verwendet werden. MSAL vereinfacht die Bereitstellung der erforderlichen Clientanmeldeinformationen. Beispielsweise muss Ihre Anwendung beim Verwenden von zertifikatbasierten Anmeldeinformationen keine Erstellung und Signierung von JSON-Webtokenassertionen implementieren.
 
 ### <a name="use-microsoftidentityweb-for-net-developers"></a>Verwenden von Microsoft.Identity.Web für .NET-Entwickler
 
-Entwickler, die Daemon-Apps mit ASP.NET Core erstellen, können die [Microsoft.Identity.Web](https://docs.microsoft.com/azure/active-directory/develop/microsoft-identity-web)-Bibliothek verwenden. Diese Bibliothek setzt auf MSAL auf, um die Implementierung von Autorisierung für ASP.NET Core-Apps noch einfacher zu gestalten. Sie umfasst mehrere [verteilte Tokencachestrategien](https://github.com/AzureAD/microsoft-identity-web/wiki/token-cache-serialization#distributed-token-cache) für verteilte Apps, die in mehreren Regionen ausgeführt werden können.
+Entwickler, die Daemon-Apps mit ASP.NET Core erstellen, können die [Microsoft.Identity.Web](../develop/microsoft-identity-web.md)-Bibliothek verwenden. Diese Bibliothek setzt auf MSAL auf, um die Implementierung von Autorisierung für ASP.NET Core-Apps noch einfacher zu gestalten. Sie umfasst mehrere [verteilte Tokencachestrategien](https://github.com/AzureAD/microsoft-identity-web/wiki/token-cache-serialization#distributed-token-cache) für verteilte Apps, die in mehreren Regionen ausgeführt werden können.
 
 ## <a name="cache-and-store-tokens"></a>Zwischenspeichern und Speichern von Token
 

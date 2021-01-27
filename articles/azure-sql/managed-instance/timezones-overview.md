@@ -11,12 +11,12 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: ''
 ms.date: 10/12/2020
-ms.openlocfilehash: bf0cfd70c9850cc6a5ff4482b494d68700022ad8
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 8a4c1b2ac53679153c8d9485443a231b817df77a
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92790626"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98734578"
 ---
 # <a name="time-zones-in-azure-sql-managed-instance"></a>Zeitzonen in Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -32,7 +32,7 @@ Bei T-SQL-Funktionen wie [GETDATE()](/sql/t-sql/functions/getdate-transact-sql) 
 
 Vom zugrunde liegenden Betriebssystem der verwalteten Instanz werden verschiedene unterstützte Zeitzonen geerbt. Es wird regelmäßig eine Aktualisierung durchgeführt, um neue Zeitzonendefinitionen einzubinden und Änderungen an vorhandenen Definitionen widerzuspiegeln.
 
-Die [Richtlinie zur Sommerzeit/Zeitzonenänderung](https://aka.ms/time) garantiert historische Genauigkeit ab dem Jahr 2010.
+Die [Richtlinie zur Sommerzeit/Zeitzonenänderung](/troubleshoot/windows-client/system-management-components/daylight-saving-time-help-support) garantiert historische Genauigkeit ab dem Jahr 2010.
 
 Eine Liste mit Namen der unterstützten Zeitzonen wird über die Systemansicht [sys.time_zone_info](/sql/relational-databases/system-catalog-views/sys-time-zone-info-transact-sql) verfügbar gemacht.
 

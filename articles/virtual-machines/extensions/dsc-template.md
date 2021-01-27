@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 10/05/2018
 ms.author: robreed
-ms.openlocfilehash: 01a41e9acccdb40bf198031d13c3ea3f13c079ce
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: 8b862238c0c04fae72659d644dbaf882d00cca19
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98180148"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98735689"
 ---
 # <a name="desired-state-configuration-extension-with-azure-resource-manager-templates"></a>Erweiterung zum Konfigurieren des gewünschten Zustands mit Azure Resource Manager-Vorlagen
 
@@ -32,7 +32,7 @@ Dieser Artikel beschreibt die Azure Resource Manager-Vorlage für den [Handler d
 
 Der folgende Codeausschnitt wird in den **Ressourcenabschnitt** der Vorlage eingefügt.
 Die DSC-Erweiterung erbt die Standardwerte für die Erweiterungseigenschaften.
-Weitere Informationen finden Sie unter [VirtualMachineExtension Class](/dotnet/api/microsoft.azure.management.compute.models.virtualmachineextension?view=azure-dotnet) (VirtualMachineExtension-Klasse).
+Weitere Informationen finden Sie unter [VirtualMachineExtension Class](/dotnet/api/microsoft.azure.management.compute.models.virtualmachineextension) (VirtualMachineExtension-Klasse).
 
 ```json
 {
@@ -85,7 +85,7 @@ Ein Knoten einer VM-Skalierungsgruppe weist den Abschnitt **properties** mit dem
 Fügen Sie unter **Erweiterungen** die Details für die DSC-Erweiterung hinzu.
 
 Die DSC-Erweiterung erbt die Standardwerte für die Erweiterungseigenschaften.
-Weitere Informationen finden Sie unter [VirtualMachineScaleSetExtension Class](/dotnet/api/microsoft.azure.management.compute.models.virtualmachinescalesetextension?view=azure-dotnet) (VirtualMachineScaleSetExtension-Klasse).
+Weitere Informationen finden Sie unter [VirtualMachineScaleSetExtension Class](/dotnet/api/microsoft.azure.management.compute.models.virtualmachinescalesetextension) (VirtualMachineScaleSetExtension-Klasse).
 
 ```json
 "extensionProfile": {

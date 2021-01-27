@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 01/05/2021
 author: lgayhardt
 ms.author: lagayhar
-ms.openlocfilehash: 6f25ff02dee16812898d77d0e801f927b354dc78
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 11e21f376ea3b5cf580d54780509529b4536718b
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97917965"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98734173"
 ---
 # <a name="azure-monitor-for-azure-data-explorer-preview"></a>Azure Monitor für Azure Data Explorer (Vorschau)
 
@@ -49,7 +49,7 @@ Auf der Registerkarte **Übersicht** für das ausgewählte Abonnement zeigt die 
 
 Die Zählerkachel unter der Dropdownliste gibt Aufschluss über die Gesamtanzahl von Azure Data Explorer-Clustern in den ausgewählten Abonnements sowie über die Anzahl ausgewählter Cluster. Es gibt bedingte Farbcodierungen für die Spalten: Keepalive, Auslastung der Erfassung und Cacheauslastung. Orange hinterlegte Zellen weisen Werte auf, die für den Cluster nicht nachhaltig sind. 
 
-Informationen zum besseren Verständnis der einzelnen Metriken finden Sie in der Dokumentation zu [Azure Data Explorer-Metriken](https://docs.microsoft.com/azure/data-explorer/using-metrics#cluster-metrics).
+Informationen zum besseren Verständnis der einzelnen Metriken finden Sie in der Dokumentation zu [Azure Data Explorer-Metriken](/azure/data-explorer/using-metrics#cluster-metrics).
 
 ### <a name="query-performance-tab"></a>Registerkarte „Abfrageleistung“
 
@@ -81,7 +81,7 @@ So greifen Sie direkt aus einem Azure Data Explorer-Cluster auf Azure Monitor f�
 
 Sie können auch auf diese Ansichten zugreifen, indem Sie in der Insights-Ansicht von Azure Monitor den Ressourcennamen eines Azure Data Explorer-Clusters auswählen.
 
-Azure Monitor für Azure Data Explorer kombiniert Protokolle und Metriken, um eine globale Überwachungslösung bereitzustellen. Um protokollbasierte Visualisierungen einzuschließen, müssen Benutzer die [Diagnoseprotokollierung ihres Azure Data Explorer-Clusters aktivieren und die Protokolle an einem Log Analytics-Arbeitsbereich senden](https://docs.microsoft.com/azure/data-explorer/using-diagnostic-logs?tabs=commands-and-queries#enable-diagnostic-logs). Folgende Diagnoseprotokolle sollten aktiviert werden: **Command**, **Query**, **TableDetails** und **TableUsageStatistics**.
+Azure Monitor für Azure Data Explorer kombiniert Protokolle und Metriken, um eine globale Überwachungslösung bereitzustellen. Um protokollbasierte Visualisierungen einzuschließen, müssen Benutzer die [Diagnoseprotokollierung ihres Azure Data Explorer-Clusters aktivieren und die Protokolle an einem Log Analytics-Arbeitsbereich senden](/azure/data-explorer/using-diagnostic-logs?tabs=commands-and-queries#enable-diagnostic-logs). Folgende Diagnoseprotokolle sollten aktiviert werden: **Command**, **Query**, **TableDetails** und **TableUsageStatistics**.
 
 ![Screenshot der blauen Schaltfläche mit dem Text „Protokolle für die Überwachung konfigurieren“](./media/data-explorer/enable-logs.png)
 
@@ -90,7 +90,7 @@ Azure Monitor für Azure Data Explorer kombiniert Protokolle und Metriken, um ei
 
 - Metrikkacheln mit Verfügbarkeit und Gesamtstatus des Clusters, sodass Sie schnell auf Informationen zur Integrität zugreifen können.
 
-- Eine Zusammenfassung aktiver [Advisor-Empfehlungen](https://docs.microsoft.com/azure/data-explorer/azure-advisor) und des Status der [Ressourcenintegrität](https://docs.microsoft.com/azure/data-explorer/monitor-with-resource-health).
+- Eine Zusammenfassung aktiver [Advisor-Empfehlungen](/azure/data-explorer/azure-advisor) und des Status der [Ressourcenintegrität](/azure/data-explorer/monitor-with-resource-health).
 
 - Diagramme der wichtigsten CPU- und Arbeitsspeicherconsumer und die Anzahl eindeutiger Benutzer im Lauf der Zeit.
 
@@ -114,7 +114,7 @@ Auf der Registerkarte **Verbrauch** können Benutzer Details zur Leistung der Be
 
 Die Registerkarte **Tabellen** zeigt die neuesten und bisherigen Eigenschaften von Tabellen im Cluster. Sie können feststellen, welche Tabellen den meisten Platz beanspruchen und den Wachstumsverlauf anhand von Tabellengröße, heißen Daten und der Anzahl von Zeilen im Lauf der Zeit nachverfolgen.
 
-Auf der Registerkarte **Cache** können Benutzer die tatsächlichen Suchmuster ihrer Abfragen analysieren und mit der konfigurierten Cacherichtlinie vergleichen (für jede Tabelle). Sie können sowohl Tabellen identifizieren, die von sehr vielen Abfragen verwendet werden, als auch Tabellen, die gar nicht abgefragt werden. Dann können Sie die Cacherichtlinie entsprechend anpassen. Sie können in Azure Advisor bestimmte Empfehlungen zu Cacherichtlinien für bestimmte Tabellen abrufen (derzeit sind Cacheempfehlungen nur auf dem [Hauptdashboard von Azure Advisor](https://docs.microsoft.com/azure/data-explorer/azure-advisor#use-the-azure-advisor-recommendations) verfügbar). Die Empfehlungen basieren auf den tatsächlichen Suchvorgängen der Abfragen in den letzten 30 Tagen und einer nicht optimierten Cacherichtlinie für mindestens 95 % der Abfragen. Die Empfehlungen von Azure Advisor zur Cachereduzierung sind für Cluster verfügbar, die „datengebunden“ sind (das bedeutet, dass der Cluster eine geringe CPU- und Erfassungsauslastung aufweist, aufgrund einer hohen Datenkapazität jedoch nicht ab- oder herunterskaliert werden konnte).
+Auf der Registerkarte **Cache** können Benutzer die tatsächlichen Suchmuster ihrer Abfragen analysieren und mit der konfigurierten Cacherichtlinie vergleichen (für jede Tabelle). Sie können sowohl Tabellen identifizieren, die von sehr vielen Abfragen verwendet werden, als auch Tabellen, die gar nicht abgefragt werden. Dann können Sie die Cacherichtlinie entsprechend anpassen. Sie können in Azure Advisor bestimmte Empfehlungen zu Cacherichtlinien für bestimmte Tabellen abrufen (derzeit sind Cacheempfehlungen nur auf dem [Hauptdashboard von Azure Advisor](/azure/data-explorer/azure-advisor#use-the-azure-advisor-recommendations) verfügbar). Die Empfehlungen basieren auf den tatsächlichen Suchvorgängen der Abfragen in den letzten 30 Tagen und einer nicht optimierten Cacherichtlinie für mindestens 95 % der Abfragen. Die Empfehlungen von Azure Advisor zur Cachereduzierung sind für Cluster verfügbar, die „datengebunden“ sind (das bedeutet, dass der Cluster eine geringe CPU- und Erfassungsauslastung aufweist, aufgrund einer hohen Datenkapazität jedoch nicht ab- oder herunterskaliert werden konnte).
 
 [![Screenshot von Cachedetails](./media/data-explorer/cache-tab.png)](./media/data-explorer/cache-tab.png#lightbox)
 
@@ -153,7 +153,7 @@ Es werden nur Abonnements angezeigt, die Azure Data Explorer-Cluster enthalten (
 
 ### <a name="why-do-i-not-see-any-data-for-my-azure-data-explorer-cluster-under-the-usage-tables-or-cache-sections"></a>Warum werden mir in den Abschnitten „Verbrauch“, „Tabellen“ oder „Cache“ keine Daten für meinen Azure Data Explorer-Cluster angezeigt?
 
-Zum Anzeigen Ihrer protokollbasierten Daten müssen Sie [Diagnoseprotokolle aktivieren](https://docs.microsoft.com/azure/data-explorer/using-diagnostic-logs?tabs=commands-and-queries#enable-diagnostic-logs), und zwar für jeden Azure Data Explorer-Cluster, den Sie überwachen möchten. Dies kann in den Diagnoseeinstellungen für den jeweiligen Cluster konfiguriert werden. Sie müssen Ihre Daten an einen Log Analytics-Arbeitsbereich senden. Folgende Diagnoseprotokolle sollten aktiviert werden: Command, Query, TableDetails und TableUsageStatistics.
+Zum Anzeigen Ihrer protokollbasierten Daten müssen Sie [Diagnoseprotokolle aktivieren](/azure/data-explorer/using-diagnostic-logs?tabs=commands-and-queries#enable-diagnostic-logs), und zwar für jeden Azure Data Explorer-Cluster, den Sie überwachen möchten. Dies kann in den Diagnoseeinstellungen für den jeweiligen Cluster konfiguriert werden. Sie müssen Ihre Daten an einen Log Analytics-Arbeitsbereich senden. Folgende Diagnoseprotokolle sollten aktiviert werden: Command, Query, TableDetails und TableUsageStatistics.
 
 ### <a name="i-have-already-enabled-logs-for-my-azure-data-explorer-cluster-why-am-i-still-unable-to-see-my-data-under-commands-and-queries"></a>Ich habe bereits Protokolle für meinen Azure Data Explorer-Cluster aktiviert. Warum kann ich meine Daten unter „Befehle und Abfragen“ immer noch nicht sehen?
 

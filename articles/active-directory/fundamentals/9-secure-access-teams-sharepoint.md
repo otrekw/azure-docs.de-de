@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 18036644dc4df51bfacc5019f70ae7694757f753
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 218208891cccb4f606a574a9c1c09f30c4ac0b11
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98222240"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98725077"
 ---
 # <a name="secure-external-access-to-microsoft-teams-sharepoint-and-onedrive-for-business"></a>Schützen des externen Zugriffs auf Microsoft Teams, SharePoint und OneDrive for Business 
 
@@ -77,7 +77,7 @@ Die Einschränkungen für die Zusammenarbeit umfassen drei Auswahlmöglichkeiten
 
 ## <a name="govern-access-in-teams"></a>Steuern des Zugriffs in Teams
 
-[In Teams wird zwischen externen Benutzern (Personen außerhalb Ihrer Organisation) und Gastbenutzern (Benutzer mit Gastkonten) unterschieden](https://docs.microsoft.com/microsoftteams/communicate-with-users-from-other-organizations?WT.mc_id=TeamsAdminCenterCSH). Sie verwalten die Einstellungen für die Zusammenarbeit im [Teams-Verwaltungsportal](https://admin.teams.microsoft.com/company-wide-settings/external-communications) unter „Organisationsweite Einstellungen“. 
+[In Teams wird zwischen externen Benutzern (Personen außerhalb Ihrer Organisation) und Gastbenutzern (Benutzer mit Gastkonten) unterschieden](/microsoftteams/communicate-with-users-from-other-organizations?WT.mc_id=TeamsAdminCenterCSH%e2%80%8b). Sie verwalten die Einstellungen für die Zusammenarbeit im [Teams-Verwaltungsportal](https://admin.teams.microsoft.com/company-wide-settings/external-communications) unter „Organisationsweite Einstellungen“. 
 
 > [!NOTE]
 > Über die External Identities-Einstellungen für die Zusammenarbeit in Azure Active Directory werden die gültigen Berechtigungen gesteuert. Sie können die Einschränkungen in Teams erweitern, jedoch gegenüber den in Azure AD festgelegten Einstellungen nicht verringern.
@@ -88,13 +88,13 @@ Die Einschränkungen für die Zusammenarbeit umfassen drei Auswahlmöglichkeiten
 
 Weitere Informationen zum Verwalten des externen Zugriffs in Teams finden Sie in den folgenden Ressourcen.
 
-* [Verwaltung des externen Zugriffs in Microsoft Teams](https://docs.microsoft.com/microsoftteams/manage-external-access)
+* [Verwaltung des externen Zugriffs in Microsoft Teams](/microsoftteams/manage-external-access)
 
-* [Microsoft 365-Identitätsmodelle und Azure Active Directory](https://docs.microsoft.com/microsoft-365/enterprise/about-microsoft-365-identity?view=o365-worldwide)
+* [Microsoft 365-Identitätsmodelle und Azure Active Directory](/microsoft-365/enterprise/about-microsoft-365-identity?view=o365-worldwide)
 
-* [Identitätsmodelle und Authentifizierung für Microsoft Teams](https://docs.microsoft.com/MicrosoftTeams/identify-models-authentication)
+* [Identitätsmodelle und Authentifizierung für Microsoft Teams](/MicrosoftTeams/identify-models-authentication)
 
-* [Vertraulichkeitsbezeichnungen für Microsoft Teams](https://docs.microsoft.com/MicrosoftTeams/sensitivity-labels)
+* [Vertraulichkeitsbezeichnungen für Microsoft Teams](/MicrosoftTeams/sensitivity-labels)
 
 ## <a name="govern-access-in-sharepoint-and-onedrive"></a>Steuern des Zugriffs in SharePoint und OneDrive
 
@@ -102,9 +102,9 @@ In SharePoint stehen den Administratoren viele Einstellungen für die Zusammenar
 
 ### <a name="integrating-sharepoint-and-one-drive-with-azure-ad-b2b"></a>Integrieren von SharePoint und OneDrive in Azure AD B2B
 
-Als Teil Ihrer allgemeinen Strategie zum Steuern der externen Zusammenarbeit empfiehlt es sich, die [Vorschauversion der SharePoint- und OneDrive-Integration in Azure AD B2B zu aktivieren](https://docs.microsoft.com/sharepoint/sharepoint-azureb2b-integration-preview).
+Als Teil Ihrer allgemeinen Strategie zum Steuern der externen Zusammenarbeit empfiehlt es sich, die [Vorschauversion der SharePoint- und OneDrive-Integration in Azure AD B2B zu aktivieren](/sharepoint/sharepoint-azureb2b-integration-preview).
 
-Azure AD B2B ermöglicht die Authentifizierung und Verwaltung von Gastbenutzern. Bei der Integration von SharePoint und OneDrive werden [Azure AD B2B-Einmalkennungen](https://docs.microsoft.com/azure/active-directory/external-identities/one-time-passcode) für die externe Freigabe von Dateien, Ordnern, Listenelementen, Dokumentbibliotheken und Websites verwendet. Diese Funktion wurde gegenüber der bestehenden [sicheren externen Freigabe für Empfänger](https://docs.microsoft.com/sharepoint/what-s-new-in-sharing-in-targeted-release) optimiert.
+Azure AD B2B ermöglicht die Authentifizierung und Verwaltung von Gastbenutzern. Bei der Integration von SharePoint und OneDrive werden [Azure AD B2B-Einmalkennungen](../external-identities/one-time-passcode.md) für die externe Freigabe von Dateien, Ordnern, Listenelementen, Dokumentbibliotheken und Websites verwendet. Diese Funktion wurde gegenüber der bestehenden [sicheren externen Freigabe für Empfänger](/sharepoint/what-s-new-in-sharing-in-targeted-release) optimiert.
 
 > [!NOTE]
 > Wenn Sie die Vorschauversion für die Azure AD B2B-Integration aktivieren, hängt die SharePoint- und OneDrive-Freigabe von den Einstellungen für Organisationsbeziehungen in Azure AD ab, z. B. **Mitglieder können einladen** und **Gäste können einladen**.
@@ -171,9 +171,9 @@ Es wird nicht empfohlen, Jeder-Links zu aktivieren. Wenn Sie sie jedoch aktivier
 
 Weitere Informationen zum Steuern des externen Zugriffs auf SharePoint finden Sie in folgenden Artikeln:
 
-* [Übersicht über die externe Freigabe in SharePoint](https://docs.microsoft.com/sharepoint/external-sharing-overview)
+* [Übersicht über die externe Freigabe in SharePoint](/sharepoint/external-sharing-overview)
 
-* [SharePoint- und OneDrive-Integration in Azure AD B2B](https://docs.microsoft.com/sharepoint/sharepoint-azureb2b-integration-preview)
+* [SharePoint- und OneDrive-Integration in Azure AD B2B](/sharepoint/sharepoint-azureb2b-integration-preview)
 
 #### <a name="next-steps"></a>Nächste Schritte
 

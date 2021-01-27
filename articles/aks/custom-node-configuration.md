@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 12/03/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: f1e9d65baacb9c712b92ef6f00abda169031b47e
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: d60a241506dbcf3e038f79c99830ef1a81c06b88
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96581082"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98735263"
 ---
 # <a name="customize-node-configuration-for-azure-kubernetes-service-aks-node-pools-preview"></a>Anpassen der Knotenkonfiguration für AKS-Knotenpools (Azure Kubernetes Service) (Vorschau)
 
@@ -132,7 +132,7 @@ Die folgenden Einstellungen können verwendet werden, um den Betrieb des VM-Subs
 | `transparentHugePageDefrag` | `always`, `defer`, `defer+madvise`, `madvise`, `never` | `madvise` | Dieser Wert steuert, ob der Kernel Speicherkomprimierung aggressiv verwenden soll, um weitere `hugepages` zur Verfügung zu stellen. | 
 
 > [!IMPORTANT]
-> Um die Suche und Lesbarkeit zu vereinfachen, werden die Betriebssystemeinstellungen in diesem Dokument anhand ihres Namens angezeigt, sollten aber der JSON- Konfigurationsdatei oder der AKS-API in [camelCase-Schreibweise](https://docs.microsoft.com/dotnet/standard/design-guidelines/capitalization-conventions) hinzugefügt werden.
+> Um die Suche und Lesbarkeit zu vereinfachen, werden die Betriebssystemeinstellungen in diesem Dokument anhand ihres Namens angezeigt, sollten aber der JSON- Konfigurationsdatei oder der AKS-API in [camelCase-Schreibweise](/dotnet/standard/design-guidelines/capitalization-conventions) hinzugefügt werden.
 
 Erstellen Sie eine Datei `kubeletconfig.json` mit folgendem Inhalt:
 

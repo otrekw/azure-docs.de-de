@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 03/23/2018
 ms.author: akjosh
 ms.reviewer: cynthn
-ms.openlocfilehash: 26874c33c496b57bf6317a7b837b3afddc2f5e37
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 41457f26c22e3b8ed529ce77cfaf452618b03655
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94955649"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737641"
 ---
 # <a name="use-azure-policy-to-restrict-extensions-installation-on-linux-vms"></a>Verwenden von Azure Policy, um die Installation von Erweiterungen auf virtuellen Linux-Computern einzuschränken
 
@@ -98,7 +98,7 @@ Wenn Sie fertig sind, drücken Sie die **Esc** Taste, und geben Sie dann **:wq**
 
 ## <a name="create-the-policy"></a>Erstellen der Richtlinie
 
-Eine Richtliniendefinition ist ein Objekt, mit dem die Konfiguration gespeichert wird, die Sie verwenden möchten. Die Richtliniendefinition verwendet die Regeln und Parameterdateien zum Definieren der Richtlinie. Erstellen Sie die Richtliniendefinition mit [az policy definition create](/cli/azure/role/assignment?view=azure-cli-latest).
+Eine Richtliniendefinition ist ein Objekt, mit dem die Konfiguration gespeichert wird, die Sie verwenden möchten. Die Richtliniendefinition verwendet die Regeln und Parameterdateien zum Definieren der Richtlinie. Erstellen Sie die Richtliniendefinition mit [az policy definition create](/cli/azure/role/assignment).
 
 In diesem Beispiel sind die Regeln und Parameter die Dateien, die Sie erstellt und als JSON-Dateien in Ihrer Cloud Shell gespeichert haben.
 
@@ -117,7 +117,7 @@ az policy definition create \
 
 In diesem Beispiel wird die Richtlinie mit [az policy assignment create](/cli/azure/policy/assignment) einer Ressourcengruppe zugewiesen. Alle in der Ressourcengruppe **myResourceGroup** erstellten virtuellen Computer werden nicht in der Lage sein, die Linux VM Access- oder Custom Script-Erweiterungen für Linux zu installieren. Die Ressourcengruppe muss vorhanden sein, damit Sie die Richtlinie zuweisen können.
 
-Rufen Sie mit [az account list](/cli/azure/account?view=azure-cli-latest) Ihre Abonnement-ID ab, die Sie anstelle der im Beispiel verwendeten nutzen.
+Rufen Sie mit [az account list](/cli/azure/account) Ihre Abonnement-ID ab, die Sie anstelle der im Beispiel verwendeten nutzen.
 
 
 ```azurecli-interactive

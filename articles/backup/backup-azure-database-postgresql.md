@@ -4,12 +4,12 @@ description: Weitere Informationen zur Azure Database for PostgreSQL-Sicherung m
 ms.topic: conceptual
 ms.date: 09/08/2020
 ms.custom: references_regions
-ms.openlocfilehash: 628f43788c11558185a7b8a735373f0a663fdad1
-ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
+ms.openlocfilehash: 1e2d83d4a5e21ed747ec9d4dcf2fa03d1e3935cc
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98569486"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737571"
 ---
 # <a name="azure-database-for-postgresql-backup-with-long-term-retention-preview"></a>Azure Database for PostgreSQL-Sicherung mit Langzeitaufbewahrung (Vorschau)
 
@@ -31,7 +31,7 @@ Sie können diese Lösung unabhängig oder zusätzlich zur nativen Sicherungslö
 
 |Support  |Details  |
 |---------|---------|
-|Unterstützte Bereitstellungen   |  [Azure Database for PostgreSQL: Einzelserver](https://docs.microsoft.com/azure/postgresql/overview#azure-database-for-postgresql---single-server)     |
+|Unterstützte Bereitstellungen   |  [Azure Database for PostgreSQL: Einzelserver](../postgresql/overview.md#azure-database-for-postgresql---single-server)     |
 |Unterstützte Azure-Regionen |  USA, Osten, USA, Osten 2, USA, Mitte, USA, Süden-Mitte, USA, Westen, USA, Westen 2; USA, Westen-Mitte, Brasilien, Süden; Kanada, Mitte, Europa, Norden, Europa, Westen, Vereinigtes Königreich, Süden, Vereinigtes Königreich, Westen, Deutschland, Westen-Mitte, Schweiz, Norden, Schweiz, Westen, Asien, Osten,Asien, Südosten, Japan, Osten, Japan, Westen, Südkorea, Mitte, Südkorea, Süden, Indien, Mitte, Australien, Osten, Australien, Mitte, Australien, Mitte 2, VAE, Norden  |
 |Unterstützte Azure PostgreSQL-Versionen    |   9.5, 9.6, 10, 11      |
 

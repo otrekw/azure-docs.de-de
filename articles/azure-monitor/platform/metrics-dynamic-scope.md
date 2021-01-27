@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/14/2020
 ms.author: riroloff
 ms.subservice: metrics
-ms.openlocfilehash: 4c895b287f72929e2a0571ccc2cae8cc4f673388
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: 5f5f75e63a0b201144329a6e2b7c0d503de54692
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98250484"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98736472"
 ---
 # <a name="view-multiple-resources-in-the-azure-metrics-explorer"></a>Anzeigen mehrerer Ressourcen im Azure-Metrik-Explorer
 
@@ -33,7 +33,7 @@ Einige Ressourcentypen können Metriken über mehrere Ressourcen abfragen. Die M
 ![Screenshot eines Menüs mit Ressourcen, die mit mehreren Ressourcen kompatibel sind.](./media/metrics-charts/020.png)
 
 > [!WARNING] 
-> Sie müssen über die Berechtigung „Überwachungsleser“ auf der Abonnementebene verfügen, um Metriken für mehrere Ressourcen, Ressourcengruppen oder ein Abonnement visuell darstellen zu können. Weitere Informationen finden Sie unter [Hinzufügen oder Entfernen von Azure-Rollenzuweisungen über das Azure-Portal](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal).
+> Sie müssen über die Berechtigung „Überwachungsleser“ auf der Abonnementebene verfügen, um Metriken für mehrere Ressourcen, Ressourcengruppen oder ein Abonnement visuell darstellen zu können. Weitere Informationen finden Sie unter [Hinzufügen oder Entfernen von Azure-Rollenzuweisungen über das Azure-Portal](../../role-based-access-control/role-assignments-portal.md).
 
 Um Metriken für mehrere Ressourcen zu visualisieren, müssen Sie zunächst in der Ressourcenbereichsauswahl mehrere Ressourcen auswählen. 
 
@@ -81,13 +81,12 @@ In diesem Beispiel filtern wir nach TailspinToysDemo. Hier entfernt der Filter M
 
 ## <a name="pin-multiple-resource-charts"></a>Anheften mehrerer Ressourcendiagramme 
 
-Diagramme über mehrere Ressourcen, die Metriken Ressourcengruppen und Abonnements übergreifend visualisieren, setzen beim Benutzer die Berechtigung *Überwachungsleser* auf der Abonnementebene voraus. Stellen Sie sicher, dass alle Benutzer der Dashboards, denen Sie mehrere Ressourcendiagramme anheften, über ausreichende Berechtigungen verfügen. Weitere Informationen finden Sie unter [Hinzufügen oder Entfernen von Azure-Rollenzuweisungen über das Azure-Portal](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal).
+Diagramme über mehrere Ressourcen, die Metriken Ressourcengruppen und Abonnements übergreifend visualisieren, setzen beim Benutzer die Berechtigung *Überwachungsleser* auf der Abonnementebene voraus. Stellen Sie sicher, dass alle Benutzer der Dashboards, denen Sie mehrere Ressourcendiagramme anheften, über ausreichende Berechtigungen verfügen. Weitere Informationen finden Sie unter [Hinzufügen oder Entfernen von Azure-Rollenzuweisungen über das Azure-Portal](../../role-based-access-control/role-assignments-portal.md).
 
-Informationen zum Anheften des Diagramms über mehrere Ressourcen an ein Dashboard finden Sie unter [Anheften von Diagrammen an Dashboards](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-charts#pinning-to-dashboards). 
+Informationen zum Anheften des Diagramms über mehrere Ressourcen an ein Dashboard finden Sie unter [Anheften von Diagrammen an Dashboards](./metrics-charts.md#pinning-to-dashboards). 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Problembehandlung für Metrikdiagramme](metrics-troubleshoot.md)
 * [Unterstützte Metriken von Azure Monitor](metrics-supported.md)
 * [Beispiele für Metrikdiagramme](metric-chart-samples.md)
-

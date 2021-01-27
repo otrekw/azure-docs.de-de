@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 12/14/2020
 ms.author: phjensen
-ms.openlocfilehash: c34ca08ae2ede9430804f6b8bb33f2bfcb0b39ab
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: 70e1823b30814d7dc29fef69215fcb53a2a2ab96
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97632126"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98730869"
 ---
 # <a name="disaster-recovery-using-azure-application-consistent-snapshot-tool-preview"></a>Notfallwiederherstellung mithilfe des Tools für anwendungskonsistente Momentaufnahmen in Azure (Vorschau)
 
@@ -40,7 +40,7 @@ Bevor Sie ein Failover für die Notfallwiederherstellung (Disaster Recovery, DR)
 - Die Speicherreplikation funktioniert. Das Microsoft-Betriebsteam führt das Setup der Speicherreplikation zum Zeitpunkt der DR-Bereitstellung automatisch durch. Sie können die Speicherreplikation mithilfe des Befehls `azacsnap -c details --details replication` am DR-Standort überwachen.
 - Sie haben Speichermomentaufnahmen am primären Standort eingerichtet und konfiguriert.
 - Sie haben für die primäre Instanz eine HANA-Instanz am DR-Standort installiert, die über dieselbe SID verfügt wie die primäre Instanz.
-- Sie haben das unter [Hochverfügbarkeit und Notfallwiederherstellung für SAP HANA in Azure (große Instanzen)](/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery#disaster-recovery-failover-procedure) beschriebene Failoververfahren für die Notfallwiederherstellung gelesen und verstanden.
+- Sie haben das unter [Hochverfügbarkeit und Notfallwiederherstellung für SAP HANA in Azure (große Instanzen)](../virtual-machines/workloads/sap/hana-failover-procedure.md) beschriebene Failoververfahren für die Notfallwiederherstellung gelesen und verstanden.
 - Sie haben Speichermomentaufnahmen am DR-Standort eingerichtet und konfiguriert.
 - Es wurde eine Konfigurationsdatei (z. B. `DR.json`) mit den Speichervolumes für die Notfallwiederherstellung und den zugehörigen Informationen auf dem DR-Server erstellt.
 - Sie haben die folgenden Schritte am Standort für die Notfallwiederherstellung vollständig ausgeführt:

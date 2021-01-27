@@ -11,12 +11,12 @@ ms.date: 08/13/2020
 ms.author: rortloff
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: b82342ffb76f8bb58b8f6875751601094d6131ca
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 1207f4856882d8aa0e6d1e41712071536bfecf29
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96461896"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98728555"
 ---
 # <a name="convert-resource-classes-to-workload-groups"></a>Konvertieren von Ressourcenklassen in Arbeitsauslastungsgruppen
 
@@ -56,7 +56,7 @@ CREATE WORKLOAD GROUP wgDataLoads WITH
 
 ## <a name="create-the-classifier"></a>Erstellen des Klassifizierers
 
-Zuvor erfolgte die Zuordnung von Abfragen zu Ressourcenklassen über [sp_addrolemember](resource-classes-for-workload-management.md#change-a-users-resource-class).  Um dieselbe Funktionalität zu erreichen und Arbeitsauslastungsgruppen Anforderungen zuzuordnen, verwenden Sie die Syntax [CREATE WORKLOAD CLASSIFIER](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).  Mit „sp_addrolemember“ konnten Sie einer Anforderung nur Ressourcen basierend auf einer Anmeldung zuordnen.  Ein Klassifizierer bietet neben der Anmeldung noch weitere Optionen. Dies sind:
+Zuvor erfolgte die Zuordnung von Abfragen zu Ressourcenklassen über [sp_addrolemember](resource-classes-for-workload-management.md#change-a-users-resource-class).  Um dieselbe Funktionalität zu erreichen und Arbeitsauslastungsgruppen Anforderungen zuzuordnen, verwenden Sie die Syntax [CREATE WORKLOAD CLASSIFIER](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true).  Mit „sp_addrolemember“ konnten Sie einer Anforderung nur Ressourcen basierend auf einer Anmeldung zuordnen.  Ein Klassifizierer bietet neben der Anmeldung noch weitere Optionen. Dies sind:
     - label
     - session
     - time. Im folgenden Beispiel werden Abfragen von der Anmeldung `AdfLogin` zugewiesen, bei denen außerdem die [Optionsbezeichnung](sql-data-warehouse-develop-label.md) auf `factloads` für die oben erstellte Arbeitsauslastungsgruppe `wgDataLoads` festgelegt ist.
@@ -90,5 +90,5 @@ SELECT request_id, [label], classifier_name, group_name, command
 
 - [Workloadisolation](sql-data-warehouse-workload-isolation.md)
 - [Gewusst wie: Erstellen von Arbeitsauslastungsgruppen](quickstart-configure-workload-isolation-tsql.md)
-- [CREATE WORKLOAD CLASSIFIER (Transact-SQL)](/sql/t-sql/statements/create-workload-classifier-transact-sql?&view=azure-sqldw-latest)
-- [CREATE WORKLOAD GROUP (Transact-SQL)](/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest)
+- [CREATE WORKLOAD CLASSIFIER (Transact-SQL)](/sql/t-sql/statements/create-workload-classifier-transact-sql??view=azure-sqldw-latest&preserve-view=true)
+- [CREATE WORKLOAD GROUP (Transact-SQL)](/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest&preserve-view=true)

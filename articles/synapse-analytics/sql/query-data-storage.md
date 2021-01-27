@@ -9,18 +9,18 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 967250cf29d1f0248f296cb545a764bd8e611773
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: b5025aa322ae26f9dd7c683d0e54762fd33eb355
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96462652"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98735380"
 ---
 # <a name="query-storage-files-with-serverless-sql-pool-in-azure-synapse-analytics"></a>Abfragen von Speicherdateien mit einem serverlosen SQL-Pool in Azure Synapse Analytics
 
 Ein serverloser SQL-Pool ermöglicht Ihnen das Abfragen von Daten in Ihrem Data Lake. Dieses Feature bietet eine T-SQL-Abfrageoberfläche, die semistrukturierte und unstrukturierte Datenabfragen verarbeiten kann. Für Abfragen werden die folgenden T-SQL-Aspekte unterstützt:
 
-- Vollständige [SELECT](/sql/t-sql/queries/select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)-Oberfläche, einschließlich der meisten [SQL-Funktionen und -Operatoren](overview-features.md).
+- Vollständige [SELECT](/sql/t-sql/queries/select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)-Oberfläche, einschließlich der meisten [SQL-Funktionen und -Operatoren](overview-features.md).
 - CREATE EXTERNAL TABLE AS SELECT ([CETAS](develop-tables-cetas.md)) erstellt eine [externe Tabelle](develop-tables-external-tables.md) und exportiert parallel die Ergebnisse einer Transact-SQL-SELECT-Anweisung in Azure Storage.
 
 Weitere Informationen zu unterstützten und nicht unterstützten Aspekten finden Sie im Artikel [Übersicht über serverlose SQL-Pools](on-demand-workspace-overview.md) oder in den Artikeln zu folgenden Themen:
@@ -184,21 +184,21 @@ Standardmäßig gleicht die Funktion `OPENROWSET` den Namen und Pfad des Quellfe
 - Diese Funktion gibt für alle Parquet-Typen, die sich nicht in der Gruppe „Geschachtelter Typ“ befinden, einen Skalarwert wie „int“, „decimal“ oder „varchar“ aus dem angegebenen Element im angegebenen Pfad zurück.
 - Wenn der Pfad auf ein Element eines geschachtelten Typs zeigt, gibt die Funktion ein JSON-Fragment zurück, das im obersten Element im angegebenen Pfad beginnt. Das JSON-Fragment weist den Typ „varchar(8000)“ auf.
 - Wenn die Eigenschaft im angegebenen column_name-Element nicht gefunden wird, gibt die Funktion einen Fehler zurück.
-- Wenn die Eigenschaft im angegebenen column_path-Element nicht gefunden wird, gibt die Funktion je nach [Pfadmodus](/sql/relational-databases/json/json-path-expressions-sql-server?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest#PATHMODE) im Strict-Modus einen Fehler oder im Lax-Modus NULL zurück.
+- Wenn die Eigenschaft im angegebenen column_path-Element nicht gefunden wird, gibt die Funktion je nach [Pfadmodus](/sql/relational-databases/json/json-path-expressions-sql-server?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true#PATHMODE) im Strict-Modus einen Fehler oder im Lax-Modus NULL zurück.
 
 Beispiele für Abfragen finden Sie im Abschnitt „Zugreifen auf Elemente aus geschachtelten Spalten“ im Artikel [Abfragen von geschachtelten Parquet-Typen](query-parquet-nested-types.md#read-properties-from-nested-object-columns).
 
 #### <a name="access-elements-from-repeated-columns"></a>Zugreifen auf Elemente aus wiederholten Spalten
 
-Um auf Elemente aus einer wiederholten Spalte zuzugreifen – z. B. ein Element eines Arrays oder einer Zuordnung –, verwenden Sie die [JSON_VALUE](/sql/t-sql/functions/json-value-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)-Funktion für jedes skalare Element, das Sie projizieren und bereitstellen müssen:
+Um auf Elemente aus einer wiederholten Spalte zuzugreifen – z. B. ein Element eines Arrays oder einer Zuordnung –, verwenden Sie die [JSON_VALUE](/sql/t-sql/functions/json-value-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)-Funktion für jedes skalare Element, das Sie projizieren und bereitstellen müssen:
 
 - Geschachtelte oder wiederholte Spalte als erster Parameter
-- Ein [JSON-Pfad](/sql/relational-databases/json/json-path-expressions-sql-server?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest), der das Element oder die Eigenschaft angibt, auf das bzw. die zugegriffen werden soll, als zweiter Parameter
+- Ein [JSON-Pfad](/sql/relational-databases/json/json-path-expressions-sql-server?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true), der das Element oder die Eigenschaft angibt, auf das bzw. die zugegriffen werden soll, als zweiter Parameter
 
-Um auf nicht skalare Elemente aus einer wiederholten Spalte zuzugreifen, verwenden Sie die [JSON_QUERY](/sql/t-sql/functions/json-query-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)-Funktion für jedes nicht skalare Element, das Sie projizieren und bereitstellen müssen:
+Um auf nicht skalare Elemente aus einer wiederholten Spalte zuzugreifen, verwenden Sie die [JSON_QUERY](/sql/t-sql/functions/json-query-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)-Funktion für jedes nicht skalare Element, das Sie projizieren und bereitstellen müssen:
 
 - Geschachtelte oder wiederholte Spalte als erster Parameter
-- Ein [JSON-Pfad](/sql/relational-databases/json/json-path-expressions-sql-server?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest), der das Element oder die Eigenschaft angibt, auf das bzw. die zugegriffen werden soll, als zweiter Parameter
+- Ein [JSON-Pfad](/sql/relational-databases/json/json-path-expressions-sql-server?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true), der das Element oder die Eigenschaft angibt, auf das bzw. die zugegriffen werden soll, als zweiter Parameter
 
 Hier finden Sie das entsprechende Syntaxfragment:
 

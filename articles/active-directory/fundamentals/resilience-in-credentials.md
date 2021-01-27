@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b5fd5cf419adb137df5c578e3b17b88749215be5
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 399d2f71fa20d63dce89cf3be5c12ffd63264895
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95919060"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98724709"
 ---
 # <a name="build-resilience-with-credential-management"></a>Erzielen von Resilienz durch Verwaltung von Anmeldeinformationen
 
@@ -61,7 +61,7 @@ Zusätzlich zu der oben beschriebenen Benutzerresilienz sollten Unternehmen Notf
 
 * Aktivieren Sie [Kennworthashsynchronisierung](../hybrid/whatis-phs.md) für Hybridkonten, die über Windows Server Active Directory synchronisiert werden. Diese Option kann neben Verbunddiensten wie AD FS aktiviert werden und bietet eine Fallbackmöglichkeit für den Fall, dass der Verbunddienst ausfällt.
 
-* [Analysieren Sie die Verwendung von Multi-Factor Authentication-Methoden](https://docs.microsoft.com/samples/azure-samples/azure-mfa-authentication-method-analysis/azure-mfa-authentication-method-analysis/), um die Erfahrung der Benutzer zu verbessern.
+* [Analysieren Sie die Verwendung von Multi-Factor Authentication-Methoden](/samples/azure-samples/azure-mfa-authentication-method-analysis/azure-mfa-authentication-method-analysis/), um die Erfahrung der Benutzer zu verbessern.
 
 * [Implementieren Sie eine robuste Zugriffsseuerungsstrategie](../authentication/concept-resilient-controls.md).
 

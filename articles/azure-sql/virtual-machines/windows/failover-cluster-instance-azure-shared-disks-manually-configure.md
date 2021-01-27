@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/26/2020
 ms.author: mathoma
-ms.openlocfilehash: becf9f8c7f6a967ed63cfd3040de90de76e32fff
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: 8daec71745c9eff9a7db5bb34cb3596973def4aa
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97607268"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98736411"
 ---
 # <a name="create-an-fci-with-azure-shared-disks-sql-server-on-azure-vms"></a>Erstellen einer FCI mit freigegebenen Azure-Datenträgern (SQL Server auf Azure-VMs)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -32,7 +32,7 @@ Weitere Informationen finden Sie in der Übersicht zu [FCI mit SQL Server auf A
 Bevor Sie die in diesem Artikel aufgeführten Anweisungen ausführen, sollten Sie über Folgendes verfügen:
 
 - Ein Azure-Abonnement. [Kostenlos](https://azure.microsoft.com/free/) einsteigen. 
-- [Zwei oder mehr virtuelle Windows Azure-Computer](failover-cluster-instance-prepare-vm.md). [Verfügbarkeitsgruppen](../../../virtual-machines/windows/tutorial-availability-sets.md) und [Näherungsplatzierungsgruppe](../../../virtual-machines/windows/co-location.md#proximity-placement-groups) werden für SSD Premium und [Verfügbarkeitszonen](../../../virtual-machines/windows/create-portal-availability-zone.md#confirm-zone-for-managed-disk-and-ip-address) werden für Ultra Disks unterstützt. Wenn Sie eine PPG verwenden, müssen alle Knoten in derselben Gruppe vorhanden sein.
+- [Zwei oder mehr virtuelle Windows Azure-Computer](failover-cluster-instance-prepare-vm.md). [Verfügbarkeitsgruppen](../../../virtual-machines/windows/tutorial-availability-sets.md) und [Näherungsplatzierungsgruppe](../../../virtual-machines/co-location.md#proximity-placement-groups) werden für SSD Premium und [Verfügbarkeitszonen](../../../virtual-machines/windows/create-portal-availability-zone.md#confirm-zone-for-managed-disk-and-ip-address) werden für Ultra Disks unterstützt. Wenn Sie eine PPG verwenden, müssen alle Knoten in derselben Gruppe vorhanden sein.
 - Ein Konto mit Berechtigungen zum Erstellen von Objekten auf virtuellen Azure-Computern und in Active Directory
 - Die neueste Version von [PowerShell](/powershell/azure/install-az-ps). 
 

@@ -6,12 +6,12 @@ author: cweining
 ms.author: cweining
 ms.date: 03/07/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 3e45b5a48f9a7fb66d7539e83f385203ae371ad7
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: 6e926211a0d86fef55608ede574dca53487f267c
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97673551"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98732726"
 ---
 # <a name="troubleshoot-problems-enabling-application-insights-snapshot-debugger-or-viewing-snapshots"></a><a id="troubleshooting"></a> Behandeln von Problemen beim Aktivieren des Application Insights-Momentaufnahmedebuggers oder Anzeigen von Momentaufnahmen
 Wenn Sie den Application Insights-Momentaufnahmedebugger für Ihre Anwendung aktiviert haben, aber keine Momentaufnahmen für Ausnahmen angezeigt werden, können Sie diese Anweisungen zur Problembehandlung verwenden.
@@ -272,4 +272,4 @@ Wenn trotzdem keine Ausnahme mit dieser Momentaufnahme-ID angezeigt wird, wurde 
 
 Wenn Ihre Anwendung über einen Proxy oder über eine Firewall mit dem Internet verbunden ist, müssen Sie unter Umständen die Regeln aktualisieren, damit sie mit dem Momentaufnahmedebugger-Dienst kommunizieren kann.
 
-Die vom Application Insights-Momentaufnahmedebugger verwendeten IP-Adressen sind im Azure Monitor-Diensttag enthalten. Weitere Informationen finden Sie in der [Dokumentation zu Diensttags](https://docs.microsoft.com/azure/virtual-network/service-tags-overview).
+Die vom Application Insights-Momentaufnahmedebugger verwendeten IP-Adressen sind im Azure Monitor-Diensttag enthalten. Weitere Informationen finden Sie in der [Dokumentation zu Diensttags](../../virtual-network/service-tags-overview.md).

@@ -11,12 +11,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviwer: vanto
 ms.date: 01/15/2021
-ms.openlocfilehash: e8cb423d4d700c4b6b6caa30a02eac3e7ef10cb6
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: 51431bf0da9145e1b61da708942b675e4c3eea78
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98253241"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98733815"
 ---
 # <a name="configure-azure-attestation-for-your-azure-sql-logical-server"></a>Konfigurieren von Azure Attestation für Ihren logischen Azure SQL-Server
 
@@ -27,7 +27,7 @@ ms.locfileid: "98253241"
 
 [Microsoft Azure Attestation](../../attestation/overview.md) ist eine Lösung für Trusted Execution Environment-Nachweise (TEE), einschließlich Intel Software Guard Extensions-Enclaves (Intel SGX). 
 
-Um Azure Attestation für Nachweise von Intel SGX-Enclaves, die für [Always Encrypted mit Secure Enclaves](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-enclaves) verwendet werden, in Azure SQL-Datenbank zu verwenden, führen Sie folgende Schritte aus:
+Um Azure Attestation für Nachweise von Intel SGX-Enclaves, die für [Always Encrypted mit Secure Enclaves](/sql/relational-databases/security/encryption/always-encrypted-enclaves) verwendet werden, in Azure SQL-Datenbank zu verwenden, führen Sie folgende Schritte aus:
 
 1. Erstellen Sie einen [Nachweisanbieter](../../attestation/basic-concepts.md#attestation-provider), und konfigurieren Sie ihn mit der empfohlenen Nachweisrichtlinie.
 
@@ -114,7 +114,7 @@ Während des Nachweisworkflows ruft der logische Azure SQL-Server, der Ihre Date
 
 ### <a name="use-azure-portal-to-assign-permission"></a>Zuweisen der Berechtigung über das Azure-Portal
 
-Um die Identität eines Azure SQL-Servers der Rolle „Nachweisleser“ für einen Nachweisanbieter zuzuweisen, befolgen Sie die allgemeinen Anweisungen unter [Hinzufügen oder Entfernen von Azure-Rollenzuweisungen über das Azure-Portal](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal). Gehen Sie im Bereich **Rollenzuweisung hinzufügen** wie folgt vor:
+Um die Identität eines Azure SQL-Servers der Rolle „Nachweisleser“ für einen Nachweisanbieter zuzuweisen, befolgen Sie die allgemeinen Anweisungen unter [Hinzufügen oder Entfernen von Azure-Rollenzuweisungen über das Azure-Portal](../../role-based-access-control/role-assignments-portal.md). Gehen Sie im Bereich **Rollenzuweisung hinzufügen** wie folgt vor:
 
 1. Wählen Sie in der Dropdownliste **Rolle** die Rolle **Nachweisleser** aus.
 1. Geben Sie im Feld **Auswählen** den Namen Ihres Azure SQL-Servers ein, um ihn zu suchen.
@@ -143,11 +143,11 @@ $attestationResourceGroupName = "<attestation provider resource group name>"
 New-AzRoleAssignment -ObjectId $server.Identity.PrincipalId -RoleDefinitionName "Attestation Reader" -ResourceGroupName $attestationResourceGroupName
 ```
 
-Weitere Informationen finden Sie unter [Hinzufügen oder Entfernen von Azure-Rollenzuweisungen mithilfe der Azure PowerShell](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell#add-a-role-assignment).
+Weitere Informationen finden Sie unter [Hinzufügen oder Entfernen von Azure-Rollenzuweisungen mithilfe der Azure PowerShell](../../role-based-access-control/role-assignments-powershell.md#add-role-assignment-examples).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Verwalten von Schlüsseln für Always Encrypted mit Secure Enclaves](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-enclaves-manage-keys)
+- [Verwalten von Schlüsseln für Always Encrypted mit Secure Enclaves](/sql/relational-databases/security/encryption/always-encrypted-enclaves-manage-keys)
 
 ## <a name="see-also"></a>Weitere Informationen
 

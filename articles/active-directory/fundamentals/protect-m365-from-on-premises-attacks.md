@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 97893dece068dfdde85159f734095401288231d2
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: ecddb950c06c9f8e61f31e104051f5e3b3640ae5
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98201347"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98725009"
 ---
 # <a name="protecting-microsoft-365-from-on-premises-attacks"></a>Schützen von Microsoft 365 vor lokalen Angriffen
 
@@ -60,7 +60,7 @@ Um den oben beschriebenen Angriffsvektoren Rechnung zu tragen, empfiehlt es sich
 
      *  Der Zugriff erfolgt nur über verwaltete Azure-Arbeitsstationen.
 
-Dabei handelt es sich um Konten mit eingeschränkter Verwendung. **In Microsoft 365 dürfen keine lokalen Konten mit Administratorrechten vorhanden sein.** Weitere Informationen finden Sie in dieser [Übersicht der Administratorrollen in Microsoft 365](https://docs.microsoft.com/microsoft-365/admin/add-users/about-admin-roles?view=o365-worldwide).
+Dabei handelt es sich um Konten mit eingeschränkter Verwendung. **In Microsoft 365 dürfen keine lokalen Konten mit Administratorrechten vorhanden sein.** Weitere Informationen finden Sie in dieser [Übersicht der Administratorrollen in Microsoft 365](/microsoft-365/admin/add-users/about-admin-roles?view=o365-worldwide).
 Lesen Sie außerdem [Rollen für Microsoft 365 in Azure Active Directory](../roles/m365-workload-docs.md).
 
 *  **Verwalten von Geräten aus Microsoft 365.** Verwenden Sie Azure AD Join und die cloudbasierte Verwaltung mobiler Geräte (Mobile Device Management, MDM), um Abhängigkeiten von Ihrer lokalen Infrastruktur für die Geräteverwaltung zu beseitigen, die Geräte- und Sicherheitskontrollen gefährden kann.
@@ -82,7 +82,7 @@ In Azure AD bilden Benutzer mit privilegierten Rollen, z. B. Administratoren, d
 
 * Verwenden Sie reine Cloudkonten für privilegierte Rollen in Azure AD und Microsoft 365.
 
-* Stellen Sie [privilegierte Zugriffsgeräte](https://docs.microsoft.com/security/compass/privileged-access-devices#device-roles-and-profiles) für den privilegierten Zugriff zum Verwalten von Microsoft 365 und Azure AD bereit.
+* Stellen Sie [privilegierte Zugriffsgeräte](/security/compass/privileged-access-devices#device-roles-and-profiles) für den privilegierten Zugriff zum Verwalten von Microsoft 365 und Azure AD bereit.
 
 *  Stellen Sie [Azure AD Privileged Identity Management](../privileged-identity-management/pim-configure.md) (PIM) für den Echtzeitzugriff (JIT) auf alle menschlichen Konten bereit, die über privilegierte Rollen verfügen, und schreiben Sie für die Aktivierung von Rollen starke Authentifizierung vor.
 
@@ -92,7 +92,7 @@ In Azure AD bilden Benutzer mit privilegierten Rollen, z. B. Administratoren, d
 
 * Stellen Sie [Konten für den Notfallzugriff](../roles/security-emergency-access.md) bereit, und verwenden Sie KEINE lokalen Kennworttresore zum Speichern von Anmeldeinformationen.
 
-Weitere Informationen finden Sie unter [Schützen des privilegierten Zugriffs](https://aka.ms/SPA), wo Sie eine ausführliche Anleitung zu diesem Thema finden. Lesen Sie außerdem [Sichere Zugriffsmethoden für Administratoren in Azure AD](../roles/security-planning.md).
+Weitere Informationen finden Sie unter [Schützen des privilegierten Zugriffs](/security/compass/overview), wo Sie eine ausführliche Anleitung zu diesem Thema finden. Lesen Sie außerdem [Sichere Zugriffsmethoden für Administratoren in Azure AD](../roles/security-planning.md).
 
 ### <a name="use-cloud-authentication"></a>Verwenden von Cloudauthentifizierung 
 
@@ -100,15 +100,15 @@ Anmeldeinformationen stellen einen primären Angriffsvektor dar. Implementieren 
 
 * [Bereitstellen der kennwortlosen Authentifizierung](../authentication/howto-authentication-passwordless-deployment.md): Verringern Sie die Verwendung von Kennwörtern so weit wie möglich, indem Sie kennwortlose Anmeldeinformationen bereitstellen. Diese Anmeldeinformationen werden nativ in der Cloud verwaltet und überprüft. Es stehen die folgenden Optionen zur Auswahl:
 
-   * [Windows Hello for Business](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/passwordless-strategy)
+   * [Windows Hello for Business](/windows/security/identity-protection/hello-for-business/passwordless-strategy)
 
    * [Authenticator-App](../authentication/howto-authentication-passwordless-phone.md)
 
    * [FIDO2-Sicherheitsschlüssel](../authentication/howto-authentication-passwordless-security-key-windows.md)
 
-* [Bereitstellen von mehrstufiger Authentifizierung](https://aka.ms/deploymentplans/mfa): Stellen Sie [mehrere starke Anmeldeinformationen mithilfe von Azure AD MFA](../fundamentals/resilience-in-credentials.md) bereit. Auf diese Weise sind für den Zugriff auf Cloudressourcen Anmeldeinformationen erforderlich, die in Azure AD verwaltet werden, zusätzlich zu einem lokalen Kennwort, das bearbeitet werden kann.
+* [Bereitstellen von mehrstufiger Authentifizierung](../authentication/howto-mfa-getstarted.md): Stellen Sie [mehrere starke Anmeldeinformationen mithilfe von Azure AD MFA](../fundamentals/resilience-in-credentials.md) bereit. Auf diese Weise sind für den Zugriff auf Cloudressourcen Anmeldeinformationen erforderlich, die in Azure AD verwaltet werden, zusätzlich zu einem lokalen Kennwort, das bearbeitet werden kann.
 
-   * Weitere Informationen finden Sie unter [Erstellen einer robusten Verwaltungsstrategie für die Zugriffssteuerung mit Azure Active Directory](https://aka.ms/resilientaad).
+   * Weitere Informationen finden Sie unter [Erstellen einer robusten Verwaltungsstrategie für die Zugriffssteuerung mit Azure Active Directory](./resilience-overview.md).
 
 **Einschränkungen und Kompromisse**
 
@@ -131,7 +131,7 @@ Die Bereitstellung bezieht sich auf die Erstellung von Benutzerkonten und Gruppe
 
    *  Schränken Sie den Gastzugriff auf die Navigation von Gruppen und anderen Eigenschaften im Verzeichnis ein. Verwenden Sie die Einstellungen für externe Zusammenarbeit, um die Fähigkeit von Gästen einzuschränken, Gruppen zu lesen, bei denen sie nicht Mitglied sind. 
 
-    *   Blockieren Sie den Zugriff auf das Azure-Portal. Seltene erforderliche Ausnahmen können jedoch festgelegt werden.  Erstellen Sie eine Richtlinie für bedingten Zugriff, die alle Gäste und externen Benutzer einschließt, und [implementieren Sie dann eine Richtlinie zum Blockieren des Zugriffs](/azure/role-based-access-control/conditional-access-azure-management). 
+    *   Blockieren Sie den Zugriff auf das Azure-Portal. Seltene erforderliche Ausnahmen können jedoch festgelegt werden.  Erstellen Sie eine Richtlinie für bedingten Zugriff, die alle Gäste und externen Benutzer einschließt, und [implementieren Sie dann eine Richtlinie zum Blockieren des Zugriffs](../../role-based-access-control/conditional-access-azure-management.md). 
 
 * **Getrennte Gesamtstrukturen:** Verwenden Sie [Azure AD-Cloudbereitstellung](../cloud-provisioning/what-is-cloud-provisioning.md). Dies ermöglicht Ihnen das Herstellen einer Verbindung mit nicht verbundenen Gesamtstrukturen. Dadurch entfällt die Notwendigkeit, gesamtstrukturübergreifende Verbindungen oder Vertrauensstellungen einzurichten, wodurch die Auswirkungen einer lokalen Sicherheitsverletzung ausgeweitet werden können. * 
  
@@ -143,7 +143,7 @@ Die Bereitstellung bezieht sich auf die Erstellung von Benutzerkonten und Gruppe
 
 Cloudgruppen ermöglichen es Ihnen, Zusammenarbeit und Zugriff von Ihrer lokalen Infrastruktur zu entkoppeln.
 
-* **Zusammenarbeit:** Verwenden Sie Microsoft 365-Gruppen und Microsoft Teams für die moderne Zusammenarbeit. Setzen Sie lokale Verteilerlisten außer Kraft, und führen Sie ein [Upgrade von Verteilerlisten auf Microsoft 365-Gruppen in Outlook](https://docs.microsoft.com/office365/admin/manage/upgrade-distribution-lists?view=o365-worldwide) durch.
+* **Zusammenarbeit:** Verwenden Sie Microsoft 365-Gruppen und Microsoft Teams für die moderne Zusammenarbeit. Setzen Sie lokale Verteilerlisten außer Kraft, und führen Sie ein [Upgrade von Verteilerlisten auf Microsoft 365-Gruppen in Outlook](/office365/admin/manage/upgrade-distribution-lists?view=o365-worldwide) durch.
 
 * **Zugriff:** Verwenden Sie Azure AD-Sicherheitsgruppen oder Microsoft 365-Gruppen, um den Zugriff auf Anwendungen in Azure AD zu autorisieren.
 * **Office 365-Lizenzierung:** Verwenden Sie die gruppenbasierte Lizenzierung, um Office 365 mithilfe von reinen Cloudgruppen bereitzustellen. Dadurch wird die Steuerung der Gruppenmitgliedschaft von der lokalen Infrastruktur entkoppelt.
@@ -156,7 +156,7 @@ Die Übernahme schließt die direkte Manipulation der lokalen Gruppenmitgliedsch
 
 Verwenden Sie Azure AD-Funktionen für die sichere Geräteverwaltung.
 
--   **Verwenden von Windows 10-Arbeitsstationen:** [Stellen Sie Geräte mit Azure AD-Mitgliedschaft](../devices/azureadjoin-plan.md) mithilfe von MDM-Richtlinien bereit. Aktivieren Sie [Windows Autopilot](https://docs.microsoft.com/mem/autopilot/windows-autopilot), um eine vollständig automatisierte Bereitstellung zu ermöglichen.
+-   **Verwenden von Windows 10-Arbeitsstationen:** [Stellen Sie Geräte mit Azure AD-Mitgliedschaft](../devices/azureadjoin-plan.md) mithilfe von MDM-Richtlinien bereit. Aktivieren Sie [Windows Autopilot](/mem/autopilot/windows-autopilot), um eine vollständig automatisierte Bereitstellung zu ermöglichen.
 
     -   Markieren Sie Computer mit Windows 8.1 und früheren Versionen als veraltet.
 
@@ -164,7 +164,7 @@ Verwenden Sie Azure AD-Funktionen für die sichere Geräteverwaltung.
 
     -   Verwenden Sie [Microsoft Intune](https://www.microsoft.com/en/microsoft-365/enterprise-mobility-security/microsoft-intune) als Autorisierungsquelle für alle Workloads zur Geräteverwaltung.
 
--   [**Stellen Sie privilegierte Zugriffsgeräte**](https://docs.microsoft.com/security/compass/privileged-access-devices#device-roles-and-profiles) für den privilegierten Zugriff zum Verwalten von Microsoft 365 und Azure AD bereit.
+-   [**Stellen Sie privilegierte Zugriffsgeräte**](/security/compass/privileged-access-devices#device-roles-and-profiles) für den privilegierten Zugriff zum Verwalten von Microsoft 365 und Azure AD bereit.
 
  ## <a name="workloads-applications-and-resources"></a>Workloads, Anwendungen und Ressourcen 
 
@@ -181,19 +181,19 @@ Verwenden Sie Azure AD-Funktionen für die sichere Geräteverwaltung.
 
 *  **Anwendungs- und Workloadserver**
 
-   * Anwendungen oder Ressourcen, für die Server erforderlich waren, können zu Azure IaaS migriert werden und [Azure AD Domain Services](https://docs.microsoft.com/azure/active-directory-domain-services/overview) (Azure AD DS) verwenden, um die Vertrauensstellung und Abhängigkeit vom lokalen AD zu entkoppeln. Zum Erreichen dieser Entkoppelung sollten virtuelle Netzwerke, die für Azure AD DS verwendet werden, keine Verbindung mit Unternehmensnetzwerken aufweisen.
+   * Anwendungen oder Ressourcen, für die Server erforderlich waren, können zu Azure IaaS migriert werden und [Azure AD Domain Services](../../active-directory-domain-services/overview.md) (Azure AD DS) verwenden, um die Vertrauensstellung und Abhängigkeit vom lokalen AD zu entkoppeln. Zum Erreichen dieser Entkoppelung sollten virtuelle Netzwerke, die für Azure AD DS verwendet werden, keine Verbindung mit Unternehmensnetzwerken aufweisen.
 
-   * Befolgen Sie die Anweisungen zur [Berechtigungseinstufung](https://aka.ms/TierModel). Anwendungsserver gelten in der Regel als Ressourcen der Ebene 1.
+   * Befolgen Sie die Anweisungen zur [Berechtigungseinstufung](/security/compass/privileged-access-access-model#ADATM_BM). Anwendungsserver gelten in der Regel als Ressourcen der Ebene 1.
 
  ## <a name="conditional-access-policies"></a>Richtlinien für bedingten Zugriff
 
-Verwenden Sie den bedingten Zugriff von Azure AD, um Signale zu interpretieren und auf dieser Grundlage Authentifizierungsentscheidungen zu treffen. Weitere Informationen finden Sie unter [Bereitstellungsplan für bedingten Zugriff](https://aka.ms/deploymentplans/ca).
+Verwenden Sie den bedingten Zugriff von Azure AD, um Signale zu interpretieren und auf dieser Grundlage Authentifizierungsentscheidungen zu treffen. Weitere Informationen finden Sie unter [Bereitstellungsplan für bedingten Zugriff](../conditional-access/plan-conditional-access.md).
 
 * [Ältere Authentifizierungsprotokolle](../fundamentals/auth-sync-overview.md): Verwenden Sie bedingten Zugriff, um [Legacy-Authentifizierungsprotokolle](../conditional-access/howto-conditional-access-policy-block-legacy.md) wo immer möglich zu blockieren. Deaktivieren Sie darüber hinaus Legacy-Authentifizierungsprotokolle auf Anwendungsebene mithilfe von anwendungsspezifischer Konfiguration.
 
-   * Mehr dazu finden Sie in den spezifischen Details für [Exchange Online](https://docs.microsoft.com/exchange/clients-and-mobile-in-exchange-online/disable-basic-authentication-in-exchange-online#how-basic-authentication-works-in-exchange-online) und [SharePoint Online](https://docs.microsoft.com/powershell/module/sharepoint-online/set-spotenant?view=sharepoint-ps).
+   * Mehr dazu finden Sie in den spezifischen Details für [Exchange Online](/exchange/clients-and-mobile-in-exchange-online/disable-basic-authentication-in-exchange-online#how-basic-authentication-works-in-exchange-online) und [SharePoint Online](/powershell/module/sharepoint-online/set-spotenant?view=sharepoint-ps).
 
-* Implementieren Sie die empfohlenen [Konfigurationen für den Identitäts- und Gerätezugriff.](https://docs.microsoft.com/microsoft-365/security/office-365-security/identity-access-policies?view=o365-worldwide)
+* Implementieren Sie die empfohlenen [Konfigurationen für den Identitäts- und Gerätezugriff.](/microsoft-365/security/office-365-security/identity-access-policies?view=o365-worldwide)
 
 * Wenn Sie eine Version von Azure AD verwenden, die keinen bedingten Zugriff beinhaltet, achten Sie darauf, dass Sie die [Azure AD-Sicherheitsstandards](../fundamentals/concept-fundamentals-security-defaults.md) verwenden.
 
@@ -206,13 +206,13 @@ Nachdem Sie Ihre Umgebung so konfiguriert haben, dass Ihr Microsoft 365 vor lok
 
 Überwachen Sie die folgenden wichtigen Szenarien, zusätzlich zu den Szenarien, die für Ihre Organisation spezifisch sind. Beispielsweise sollten Sie den Zugriff auf unternehmenskritische Anwendungen und Ressourcen proaktiv überwachen.
 
-* **Verdächtige Aktivitäten**: Alle [Azure AD-Risikoereignisse](https://docs.microsoft.com/azure/active-directory/identity-protection/overview-identity-protection#risk-detection-and-remediation) sollten auf verdächtige Aktivitäten überwacht werden. [Azure AD Identity Protection](https://docs.microsoft.com/azure/active-directory/identity-protection/overview-identity-protection) ist nativ in das Azure Security Center integriert.
+* **Verdächtige Aktivitäten**: Alle [Azure AD-Risikoereignisse](../identity-protection/overview-identity-protection.md#risk-detection-and-remediation) sollten auf verdächtige Aktivitäten überwacht werden. [Azure AD Identity Protection](../identity-protection/overview-identity-protection.md) ist nativ in das Azure Security Center integriert.
 
    * Definieren Sie die [benannten Standorte](../reports-monitoring/quickstart-configure-named-locations.md) im Netzwerk, um die aufwändige Erkennung anhand von standortbasierten Signalen zu vermeiden. 
 *  **UEBA (User Entity Behavioral Analytics)-Warnungen** Verwenden Sie UEBA, um Erkenntnisse zur Anomalieerkennung zu erhalten.
-   * Microsoft Cloud App Discovery (MCAS) bietet [UEBA in der Cloud](https://docs.microsoft.com/cloud-app-security/tutorial-ueba).
+   * Microsoft Cloud App Discovery (MCAS) bietet [UEBA in der Cloud](/cloud-app-security/tutorial-ueba).
 
-   * Sie können das [lokale UEBA aus Azure ATP integrieren](https://docs.microsoft.com/defender-for-identity/install-step2). MCAS liest Signale aus der Azure AD Identity Protection. 
+   * Sie können das [lokale UEBA aus Azure ATP integrieren](/defender-for-identity/install-step2). MCAS liest Signale aus der Azure AD Identity Protection. 
 
 * **Aktivität bei Konten für den Notfallzugriff**: Jeder Zugriff, der mithilfe von [Konten für den Notfallzugriff](../roles/security-emergency-access.md) erfolgt, sollte überwacht werden, und es sollten Benachrichtigungen für Untersuchungen erstellt werden. Diese Überwachung muss Folgendes umfassen: 
 
@@ -223,7 +223,7 @@ Nachdem Sie Ihre Umgebung so konfiguriert haben, dass Ihr Microsoft 365 vor lok
    * Alle Aktualisierungen von Gruppenmitgliedschaften. 
 
    *    Zuweisungen von Anwendungen. 
-* **Aktivität bei privilegierten Rollen**: Konfigurieren und überprüfen Sie die [von Azure AD PIM generierten Sicherheitswarnungen](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/pim-how-to-configure-security-alerts?tabs=new#security-alerts).
+* **Aktivität bei privilegierten Rollen**: Konfigurieren und überprüfen Sie die [von Azure AD PIM generierten Sicherheitswarnungen](../privileged-identity-management/pim-how-to-configure-security-alerts.md?tabs=new#security-alerts).
     Überwachen Sie die direkte Zuweisung von privilegierten Rollen außerhalb von PIM, indem Sie Warnungen generieren, wenn eine direkte Zuweisung an Benutzer erfolgt.
 * **Mandantenweite Konfigurationen in Azure AD**: Für jede Änderung an mandantenweiten Konfigurationen sollten Warnungen im System generiert werden. Dazu gehören unter anderem die Folgenden:
   *  Aktualisieren von benutzerdefinierten Domänen  
@@ -254,11 +254,11 @@ Definieren Sie eine Protokollspeicher- und Aufbewahrungsstrategie, den Entwurf u
 
    * Risikoereignisse 
 
-Azure AD bietet [Azure Monitor-Integration](../reports-monitoring/concept-activity-logs-azure-monitor.md) für die Protokolle zu Anmeldeaktivitäten und Überwachungsprotokolle. Risikoereignisse können mithilfe der [Microsoft Graph-API](https://aka.ms/AzureADSecuredAzure/32b) erfasst werden. Sie können [Azure AD-Protokolle zu Azure-Überwachungsprotokollen streamen](../reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md).
+Azure AD bietet [Azure Monitor-Integration](../reports-monitoring/concept-activity-logs-azure-monitor.md) für die Protokolle zu Anmeldeaktivitäten und Überwachungsprotokolle. Risikoereignisse können mithilfe der [Microsoft Graph-API](/graph/api/resources/identityriskevent) erfasst werden. Sie können [Azure AD-Protokolle zu Azure-Überwachungsprotokollen streamen](../reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md).
 
 * **Sicherheitsprotokolle des Betriebssystems bei hybrider Infrastruktur.** Bei einer hybriden Identitätsinfrastruktur sollten alle Betriebssystemprotokolle archiviert und sorgfältig als <br>System der Ebene 0 überwacht werden, angesichts der Auswirkungen auf die Oberfläche. Dies schließt Folgendes ein: 
 
-   *  Azure AD Connect. [Azure AD Connect Health](https://aka.ms/AzureADSecuredAzure/32e) muss bereitgestellt werden, um die Identitätssynchronisation zu überwachen.
+   *  Azure AD Connect. [Azure AD Connect Health](../hybrid/whatis-azure-ad-connect.md) muss bereitgestellt werden, um die Identitätssynchronisation zu überwachen.
 
    *  Anwendungsproxy-Agents 
 

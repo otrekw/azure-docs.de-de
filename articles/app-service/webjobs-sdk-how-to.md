@@ -7,12 +7,12 @@ ms.custom: devx-track-csharp
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
-ms.openlocfilehash: f941c394c3dab0e5e6997898a48a248f6a0cfe42
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 5666a489cfd0f0d92120c9ec7e3c8d3c2d083b5e
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96352438"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737268"
 ---
 # <a name="how-to-use-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Verwenden des WebJobs SDK für die ereignisgesteuerte Hintergrundverarbeitung
 
@@ -794,7 +794,7 @@ public static void RemoveItem([QueueTrigger("remove-item")] string message)
 
 ### <a name="viewing-lease-blobs"></a>Anzeigen von Lease-Blobs
 
-Das WebJobs SDK verwendet [Azure-Blob-Leases](../storage/common/storage-concurrency.md#pessimistic-concurrency-for-blobs) im Hintergrund, um eine verteilte Sperre zu implementieren. Die von Singleton verwendeten Lease-Blobs finden Sie im `azure-webjobs-host`-Container im `AzureWebJobsStorage`-Speicherkonto unter dem Pfad „locks“ (Sperren). Beispielsweise könnte der Lease-Blob-Pfad für das erste zuvor dargestellte `ProcessImage`-Beispiel `locks/061851c758f04938a4426aa9ab3869c0/WebJobs.Functions.ProcessImage` lauten. Alle Pfade enthalten die JobHost-ID, in diesem Fall „061851c758f04938a4426aa9ab3869c0“.
+Das WebJobs SDK verwendet [Azure-Blob-Leases](../storage/blobs/concurrency-manage.md#pessimistic-concurrency-for-blobs) im Hintergrund, um eine verteilte Sperre zu implementieren. Die von Singleton verwendeten Lease-Blobs finden Sie im `azure-webjobs-host`-Container im `AzureWebJobsStorage`-Speicherkonto unter dem Pfad „locks“ (Sperren). Beispielsweise könnte der Lease-Blob-Pfad für das erste zuvor dargestellte `ProcessImage`-Beispiel `locks/061851c758f04938a4426aa9ab3869c0/WebJobs.Functions.ProcessImage` lauten. Alle Pfade enthalten die JobHost-ID, in diesem Fall „061851c758f04938a4426aa9ab3869c0“.
 
 ## <a name="async-functions"></a>Asynchrone Funktionen
 

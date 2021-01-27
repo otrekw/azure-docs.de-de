@@ -13,22 +13,22 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 71031c7f5db299fbb1b7c99014c30590fec89f03
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 0dcb6d24eacbe594a907f084874e76fea963c561
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98222291"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98725127"
 ---
 # <a name="control-access-with-sensitivity-labels"></a>Steuern des Zugriffs mit Vertraulichkeitsbezeichnungen 
 
-Mit [Vertraulichkeitsbezeichnungen](https://docs.microsoft.com/microsoft-365/compliance/sensitivity-labels?view=o365-worldwide) können Sie den Zugriff auf Ihre Inhalte in Office 365-Anwendungen und in Containern wie Microsoft Teams, Microsoft 365-Gruppen und SharePoint-Websites steuern. Dies ermöglicht den Schutz Ihrer Inhalte, ohne die Zusammenarbeit und Produktion Ihrer Benutzer zu behindern. Mit Vertraulichkeitsbezeichnungen können Sie die Inhalte Ihrer Organisation zwischen Geräten, Apps und Diensten versenden, während gleichzeitig für den Schutz Ihrer Daten und die Einhaltung Ihrer Konformitäts- und Sicherheitsrichtlinien gesorgt ist. 
+Mit [Vertraulichkeitsbezeichnungen](/microsoft-365/compliance/sensitivity-labels?view=o365-worldwide) können Sie den Zugriff auf Ihre Inhalte in Office 365-Anwendungen und in Containern wie Microsoft Teams, Microsoft 365-Gruppen und SharePoint-Websites steuern. Dies ermöglicht den Schutz Ihrer Inhalte, ohne die Zusammenarbeit und Produktion Ihrer Benutzer zu behindern. Mit Vertraulichkeitsbezeichnungen können Sie die Inhalte Ihrer Organisation zwischen Geräten, Apps und Diensten versenden, während gleichzeitig für den Schutz Ihrer Daten und die Einhaltung Ihrer Konformitäts- und Sicherheitsrichtlinien gesorgt ist. 
 
 Vertraulichkeitsbezeichnungen ermöglichen Ihnen Folgendes:
 
 * **Klassifizieren von Inhalten ohne Hinzufügen von Schutzeinstellungen**: Sie können Inhalten eine Klassifizierung (z. B. einen Sticker) zuweisen, die erhalten bleibt, während die Inhalte genutzt und geteilt werden. Sie können diese Klassifizierung verwenden, um Nutzungsberichte zu generieren und Aktivitätsdaten für Ihre vertraulichen Inhalte anzuzeigen.
 
-* **Erzwingen von Schutzeinstellungen, z. B. Verschlüsselung, Wasserzeichen und Zugriffseinschränkungen**: Benutzer können beispielsweise die Bezeichnung „Vertraulich“ auf ein Dokument oder eine E-Mail anwenden. Mit dieser Bezeichnung kann der [Inhalt verschlüsselt](https://docs.microsoft.com/microsoft-365/compliance/encryption-sensitivity-labels?view=o365-worldwide) und das Wasserzeichen „Vertraulich“ hinzugefügt werden. Darüber hinaus können Sie [eine Vertraulichkeitsbezeichnung auch auf einen Container anwenden](https://docs.microsoft.com/microsoft-365/compliance/sensitivity-labels-teams-groups-sites?view=o365-worldwide), z. B. eine SharePoint-Website, und festlegen, ob externe Benutzer auf die Inhalte zugreifen können.
+* **Erzwingen von Schutzeinstellungen, z. B. Verschlüsselung, Wasserzeichen und Zugriffseinschränkungen**: Benutzer können beispielsweise die Bezeichnung „Vertraulich“ auf ein Dokument oder eine E-Mail anwenden. Mit dieser Bezeichnung kann der [Inhalt verschlüsselt](/microsoft-365/compliance/encryption-sensitivity-labels?view=o365-worldwide) und das Wasserzeichen „Vertraulich“ hinzugefügt werden. Darüber hinaus können Sie [eine Vertraulichkeitsbezeichnung auch auf einen Container anwenden](/microsoft-365/compliance/sensitivity-labels-teams-groups-sites?view=o365-worldwide), z. B. eine SharePoint-Website, und festlegen, ob externe Benutzer auf die Inhalte zugreifen können.
 
 Vertraulichkeitsbezeichnungen von E-Mails und anderen Inhalten bleiben fest zugeordnet. Mit Vertraulichkeitsbezeichnungen von Containern kann der Zugriff auf den Container eingeschränkt werden, aber die Bezeichnung wird nicht an die Inhalte des Containers vererbt. Beispielsweise kann ein Benutzer Inhalte von einer geschützten Website herunterladen und dann ohne Einschränkungen freigeben. Dies ist aber nicht möglich, wenn die Inhalte auch über eine Vertraulichkeitsbezeichnung verfügen.
 
@@ -52,7 +52,7 @@ Ermitteln Sie in Bezug auf die Steuerung des externen Zugriffs auf Ihre Inhalte 
 
 * Wie soll definiert werden, was als hohe (HBI), mittlere (MBI) oder geringe (LBI) geschäftliche Auswirkung deklariert wird? Erwägen Sie, welche Auswirkungen sich für Ihre Organisation ergeben, falls bestimmte Inhalte auf unerwünschte Weise freigegeben werden.
 
-   * Inhalte mit bestimmten Arten von inhärent [vertraulichen Daten](https://docs.microsoft.com/microsoft-365/compliance/apply-sensitivity-label-automatically?view=o365-worldwide), z. B. Kreditkarten oder Reisepassnummern
+   * Inhalte mit bestimmten Arten von inhärent [vertraulichen Daten](/microsoft-365/compliance/apply-sensitivity-label-automatically?view=o365-worldwide), z. B. Kreditkarten oder Reisepassnummern
 
    * Inhalte, die von bestimmten Gruppen oder Personen erstellt werden (z. B. Mitarbeitern aus dem Konformitäts- oder Finanzbereich oder Führungskräften)
 
@@ -66,21 +66,21 @@ Ermitteln Sie in Bezug auf die Steuerung des externen Zugriffs auf Ihre Inhalte 
 
 * Welche Standardeinstellungen sollten für Daten, Websites oder Microsoft 365-Gruppen gelten, die mit hohen Auswirkungen verbunden sind?
 
-* Wo sollen Vertraulichkeitsbezeichnungen verwendet werden, um Inhalte zu [bezeichnen und zu überwachen](https://docs.microsoft.com/microsoft-365/compliance/label-analytics?view=o365-worldwide), und wo sollen sie zum [Erzwingen der Verschlüsselung](https://docs.microsoft.com/microsoft-365/compliance/encryption-sensitivity-labels?view=o365-worldwide) oder [Erzwingen von Zugriffseinschränkungen für Container](https://docs.microsoft.com/microsoft-365/compliance/sensitivity-labels-teams-groups-sites?view=o365-worldwide) genutzt werden?
+* Wo sollen Vertraulichkeitsbezeichnungen verwendet werden, um Inhalte zu [bezeichnen und zu überwachen](/microsoft-365/compliance/label-analytics?view=o365-worldwide), und wo sollen sie zum [Erzwingen der Verschlüsselung](/microsoft-365/compliance/encryption-sensitivity-labels?view=o365-worldwide) oder [Erzwingen von Zugriffseinschränkungen für Container](/microsoft-365/compliance/sensitivity-labels-teams-groups-sites?view=o365-worldwide) genutzt werden?
 
 **Für E-Mails und Inhalte**
 
-* Sollen [Vertraulichkeitsbezeichnungen automatisch auf Inhalte angewendet werden](https://docs.microsoft.com/microsoft-365/compliance/apply-sensitivity-label-automatically?view=o365-worldwide), oder soll dies manuell durchgeführt werden?
+* Sollen [Vertraulichkeitsbezeichnungen automatisch auf Inhalte angewendet werden](/microsoft-365/compliance/apply-sensitivity-label-automatically?view=o365-worldwide), oder soll dies manuell durchgeführt werden?
 
-   * Bei Verwendung des manuellen Ansatzes: Soll [Benutzern das Anwenden einer Bezeichnung empfohlen werden](https://docs.microsoft.com/microsoft-365/compliance/apply-sensitivity-label-automatically?view=o365-worldwide)?
+   * Bei Verwendung des manuellen Ansatzes: Soll [Benutzern das Anwenden einer Bezeichnung empfohlen werden](/microsoft-365/compliance/apply-sensitivity-label-automatically?view=o365-worldwide)?
 
 **Für Container**
 
 * Anhand welcher Kriterien soll bestimmt werden, ob für M365-Gruppen, Teams oder SharePoint-Websites der Zugriff mit Vertraulichkeitsbezeichnungen eingeschränkt werden soll?
 
-* Sollen die Inhalte dieser Container nur ab dem entsprechenden Startzeitpunkt bezeichnet werden, oder sollen auch vorhandene Dateien unter SharePoint und OneDrive [automatisch bezeichnet](https://docs.microsoft.com/microsoft-365/compliance/apply-sensitivity-label-automatically?view=o365-worldwide) werden?
+* Sollen die Inhalte dieser Container nur ab dem entsprechenden Startzeitpunkt bezeichnet werden, oder sollen auch vorhandene Dateien unter SharePoint und OneDrive [automatisch bezeichnet](/microsoft-365/compliance/apply-sensitivity-label-automatically?view=o365-worldwide) werden?
 
-Weitere Ideen zur Nutzung von Vertraulichkeitsbezeichnungen finden Sie auf der Seite mit den [häufigen Szenarien für Vertraulichkeitsbezeichnungen](https://docs.microsoft.com/microsoft-365/compliance/get-started-with-sensitivity-labels?view=o365-worldwide).
+Weitere Ideen zur Nutzung von Vertraulichkeitsbezeichnungen finden Sie auf der Seite mit den [häufigen Szenarien für Vertraulichkeitsbezeichnungen](/microsoft-365/compliance/get-started-with-sensitivity-labels?view=o365-worldwide).
 
 ### <a name="sensitivity-labels-on-email-and-content"></a>Vertraulichkeitsbezeichnungen für E-Mails und Inhalte
 
@@ -100,7 +100,7 @@ Wenn Sie einem Dokument oder einer E-Mail eine Vertraulichkeitsbezeichnung zuwei
 
 ### <a name="sensitivity-labels-on-containers"></a>Vertraulichkeitsbezeichnungen in Containern
 
-Sie können Vertraulichkeitsbezeichnungen auf Container anwenden, z. B. [Microsoft 365-Gruppen](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-assign-sensitivity-labels), [Microsoft Teams](https://docs.microsoft.com/microsoft-365/compliance/sensitivity-labels-teams-groups-sites?view=o365-worldwide) und [SharePoint-Websites](https://docs.microsoft.com/microsoft-365/compliance/sensitivity-labels-teams-groups-sites?view=o365-worldwide). Wenn Sie diese Vertraulichkeitsbezeichnung auf einen unterstützten Container anwenden, werden die Klassifizierungs- und Schutzeinstellungen von der Bezeichnung automatisch auf die verbundene Website oder Gruppe angewendet. Mit Vertraulichkeitsbezeichnungen können in diesen Containern die folgenden Aspekte gesteuert werden:
+Sie können Vertraulichkeitsbezeichnungen auf Container anwenden, z. B. [Microsoft 365-Gruppen](../enterprise-users/groups-assign-sensitivity-labels.md), [Microsoft Teams](/microsoft-365/compliance/sensitivity-labels-teams-groups-sites?view=o365-worldwide) und [SharePoint-Websites](/microsoft-365/compliance/sensitivity-labels-teams-groups-sites?view=o365-worldwide). Wenn Sie diese Vertraulichkeitsbezeichnung auf einen unterstützten Container anwenden, werden die Klassifizierungs- und Schutzeinstellungen von der Bezeichnung automatisch auf die verbundene Website oder Gruppe angewendet. Mit Vertraulichkeitsbezeichnungen können in diesen Containern die folgenden Aspekte gesteuert werden:
 
 * **Datenschutz:** Sie können angeben, von wem die Website angezeigt werden kann: bestimmten Benutzern, allen internen Benutzern oder allen Benutzer.
 
@@ -116,25 +116,25 @@ Sie können Vertraulichkeitsbezeichnungen auf Container anwenden, z. B. [Micros
 
 Wenn Sie eine Vertraulichkeitsbezeichnung auf einen Container, z. B. eine SharePoint-Website, anwenden, gilt die Anwendung nicht für dessen Inhalte. Mit Vertraulichkeitsbezeichnungen für Container wird der Zugriff auf die Inhalte des Containers gesteuert. 
 
-* Falls Sie Bezeichnungen automatisch auf die Inhalte des Containers anwenden möchten, helfen Ihnen die Informationen unter [Automatisches Anwenden einer Vertraulichkeitsbezeichnung auf Inhalte](https://docs.microsoft.com/microsoft-365/compliance/apply-sensitivity-label-automatically?view=o365-worldwide) weiter.
+* Falls Sie Bezeichnungen automatisch auf die Inhalte des Containers anwenden möchten, helfen Ihnen die Informationen unter [Automatisches Anwenden einer Vertraulichkeitsbezeichnung auf Inhalte](/microsoft-365/compliance/apply-sensitivity-label-automatically?view=o365-worldwide) weiter.
 
-* Wenn Sie möchten, dass Benutzer die Möglichkeit zum manuellen Anwenden von Bezeichnungen auf diese Inhalte haben sollen, sollten Sie sich vergewissern, dass Sie [Vertraulichkeitsbezeichnungen für Office-Dateien in SharePoint und OneDrive aktiviert haben](https://docs.microsoft.com/microsoft-365/compliance/sensitivity-labels-sharepoint-onedrive-files?view=o365-worldwide).
+* Wenn Sie möchten, dass Benutzer die Möglichkeit zum manuellen Anwenden von Bezeichnungen auf diese Inhalte haben sollen, sollten Sie sich vergewissern, dass Sie [Vertraulichkeitsbezeichnungen für Office-Dateien in SharePoint und OneDrive aktiviert haben](/microsoft-365/compliance/sensitivity-labels-sharepoint-onedrive-files?view=o365-worldwide).
 
 ### <a name="plan-to-implement-sensitivity-labels"></a>Planen der Implementierung von Vertraulichkeitsbezeichnungen
 
 Nachdem Sie ermittelt haben, wie Sie Vertraulichkeitsbezeichnungen einsetzen möchten und auf welche Inhalte und Websites diese angewendet werden sollen, helfen Ihnen die Artikel zu den folgenden Themen bei der Implementierung weiter.
 
-1. [Erste Schritte mit Vertraulichkeitsbezeichnungen](https://docs.microsoft.com/microsoft-365/compliance/get-started-with-sensitivity-labels?view=o365-worldwide)
+1. [Erste Schritte mit Vertraulichkeitsbezeichnungen](/microsoft-365/compliance/get-started-with-sensitivity-labels?view=o365-worldwide)
 
-2. [Erstellen einer Bereitstellungsstrategie](https://docs.microsoft.com/microsoft-365/compliance/get-started-with-sensitivity-labels?view=o365-worldwide)
+2. [Erstellen einer Bereitstellungsstrategie](/microsoft-365/compliance/get-started-with-sensitivity-labels?view=o365-worldwide)
 
-3. [Erstellen und Konfigurieren von Vertraulichkeitsbezeichnungen und deren Richtlinien](https://docs.microsoft.com/microsoft-365/compliance/create-sensitivity-labels?view=o365-worldwide)
+3. [Erstellen und Konfigurieren von Vertraulichkeitsbezeichnungen und deren Richtlinien](/microsoft-365/compliance/create-sensitivity-labels?view=o365-worldwide)
 
-4. [Einschränken des Zugriffs auf Inhalte mithilfe von Vertraulichkeitsbezeichnungen zur Verschlüsselung](https://docs.microsoft.com/microsoft-365/compliance/encryption-sensitivity-labels?view=o365-worldwide)
+4. [Einschränken des Zugriffs auf Inhalte mithilfe von Vertraulichkeitsbezeichnungen zur Verschlüsselung](/microsoft-365/compliance/encryption-sensitivity-labels?view=o365-worldwide)
 
-5. [Verwenden von Vertraulichkeitsbezeichnungen zum Schützen von Inhalten in Microsoft Teams, Microsoft 365-Gruppen und SharePoint-Websites](https://docs.microsoft.com/microsoft-365/compliance/sensitivity-labels-teams-groups-sites?view=o365-worldwide)
+5. [Verwenden von Vertraulichkeitsbezeichnungen zum Schützen von Inhalten in Microsoft Teams, Microsoft 365-Gruppen und SharePoint-Websites](/microsoft-365/compliance/sensitivity-labels-teams-groups-sites?view=o365-worldwide)
 
-6. [Aktivieren von Vertraulichkeitsbezeichnungen für Office-Dateien in SharePoint und OneDrive](https://docs.microsoft.com/microsoft-365/compliance/sensitivity-labels-sharepoint-onedrive-files?view=o365-worldwide)
+6. [Aktivieren von Vertraulichkeitsbezeichnungen für Office-Dateien in SharePoint und OneDrive](/microsoft-365/compliance/sensitivity-labels-sharepoint-onedrive-files?view=o365-worldwide)
 
 ### <a name="next-steps"></a>Nächste Schritte
 

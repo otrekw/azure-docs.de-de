@@ -8,12 +8,12 @@ author: mlearned
 ms.author: mlearned
 description: Verwenden von GitOps zum Konfigurieren eines Azure Arc-fähigen Kubernetes-Clusters (Vorschau)
 keywords: GitOps, Kubernetes, K8s, Azure, Arc, Azure Kubernetes Service, AKS, Container
-ms.openlocfilehash: 906021377cbfd6960769f98f9dbd15a5c430c71f
-ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
+ms.openlocfilehash: a068ed90ea53b3b25a1f41cebd9a5b8e607afa54
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97955330"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737183"
 ---
 # <a name="deploy-configurations-using-gitops-on-arc-enabled-kubernetes-cluster-preview"></a>Bereitstellen von Konfigurationen mithilfe von GitOps in Arc-fähigen Kubernetes-Clustern (Vorschauversion)
 
@@ -48,7 +48,7 @@ Stellen Sie sicher, dass Sie auch die Schritte unter [Anwenden der Konfiguration
 
 Verwenden Sie die Azure CLI-Erweiterung für `k8sconfiguration`, um einen verbundenen Cluster mit dem [Git-Beispielrepository](https://github.com/Azure/arc-k8s-demo) zu verknüpfen. Wir geben dieser Konfiguration den Namen `cluster-config`, weisen den Agent an, den Operator im `cluster-config`-Namespace bereitzustellen, und erteilen ihm `cluster-admin`-Berechtigungen.
 
-```console
+```azurecli
 az k8sconfiguration create --name cluster-config --cluster-name AzureArcTest1 --resource-group AzureArcTest --operator-instance-name cluster-config --operator-namespace cluster-config --repository-url https://github.com/Azure/arc-k8s-demo --scope cluster --cluster-type connectedClusters
 ```
 
@@ -138,7 +138,7 @@ Command group 'k8sconfiguration' is in preview. It may be changed/removed in a f
 > [!NOTE]
 > Die private Authentifizierung von HTTPS Helm Release wird nur mit der Chartversion >= 1.2.0 des Helm-Operators unterstützt.  Version 1.2.0 wird standardmäßig verwendet.
 > Die private Authentifizierung von HTTPS Helm Release wird für verwaltete Azure Kubernetes Services-Cluster derzeit nicht unterstützt.
-> Wenn Sie Flux benötigen, um über Ihren Proxy auf das Git-Repository zuzugreifen, müssen Sie die Azure Arc-Agents mit den Proxyeinstellungen aktualisieren. [Weitere Informationen](https://docs.microsoft.com/azure/azure-arc/kubernetes/connect-cluster#connect-using-an-outbound-proxy-server)
+> Wenn Sie Flux benötigen, um über Ihren Proxy auf das Git-Repository zuzugreifen, müssen Sie die Azure Arc-Agents mit den Proxyeinstellungen aktualisieren. [Weitere Informationen](./connect-cluster.md#connect-using-an-outbound-proxy-server)
 
 #### <a name="additional-parameters"></a>Zusätzliche Parameter
 
@@ -179,7 +179,7 @@ Weitere Informationen finden Sie in der [Flux-Dokumentation](https://aka.ms/Flux
 
 Überprüfen Sie mithilfe der Azure CLI, ob die `sourceControlConfiguration`-Ressource erfolgreich erstellt wurde.
 
-```console
+```azurecli
 az k8sconfiguration show --name cluster-config --cluster-name AzureArcTest1 --resource-group AzureArcTest --cluster-type connectedClusters
 ```
 
@@ -351,7 +351,7 @@ Löschen Sie eine `sourceControlConfiguration`-Ressource mithilfe der Azure CLI 
 > Nachdem eine sourceControlConfiguration mit Namespacebereich erstellt wurde, können Benutzer mit der `edit`-Rollenbindung an den Namespace Workloads für diesen Namespace bereitstellen. Wenn diese `sourceControlConfiguration`-Ressource mit Namespacebereich gelöscht wird, bleibt der Namespace intakt und wird nicht gelöscht, um zu vermeiden, dass diese anderen Workloads unterbrochen werden.  Bei Bedarf können Sie diesen Namespace manuell mit kubectl löschen.
 > Alle Änderungen am Cluster, die das Ergebnis von Bereitstellungen aus dem nachverfolgten Git-Repository sind, werden beim Löschen der `sourceControlConfiguration`-Ressource nicht gelöscht.
 
-```console
+```azurecli
 az k8sconfiguration delete --name cluster-config --cluster-name AzureArcTest1 --resource-group AzureArcTest --cluster-type connectedClusters
 ```
 

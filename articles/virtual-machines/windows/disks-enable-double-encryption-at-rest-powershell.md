@@ -8,12 +8,12 @@ ms.author: rogarana
 ms.service: virtual-machines-windows
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: c231aab47f154b6150368b504872d87317c790cc
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 9f0642d3421e775d1c6930b672b37643a961178f
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93359951"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98736287"
 ---
 # <a name="use-the-azure-powershell-module-to-enable-double-encryption-at-rest-for-managed-disks"></a>Verwenden des Azure PowerShell-Moduls zum Aktivieren der doppelten Verschlüsselung von ruhenden Daten auf verwalteten Datenträgern
 
@@ -21,7 +21,7 @@ Azure Disk Storage unterstützt die doppelte Verschlüsselung von ruhenden Daten
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Installieren Sie die aktuelle [Azure PowerShell-Version](/powershell/azure/install-az-ps), und melden Sie sich in einem Azure-Konto mithilfe von [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount?view=azps-4.3.0) an.
+Installieren Sie die aktuelle [Azure PowerShell-Version](/powershell/azure/install-az-ps), und melden Sie sich in einem Azure-Konto mithilfe von [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) an.
 
 ## <a name="getting-started"></a>Erste Schritte
 

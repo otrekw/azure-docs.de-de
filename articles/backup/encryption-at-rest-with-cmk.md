@@ -3,12 +3,12 @@ title: Verschlüsselung von Sicherungsdaten mit von Kunden verwalteten Schlüsse
 description: Hier erfahren Sie, wie Sie mit Azure Backup Sicherungsdaten mithilfe von kundenseitig verwalteten Schlüsseln (Customer-Managed Keys, CMK) verschlüsseln können.
 ms.topic: conceptual
 ms.date: 07/08/2020
-ms.openlocfilehash: 30bcf907e1a2759c8a9977e50cb4880c2e254ca2
-ms.sourcegitcommit: 61d2b2211f3cc18f1be203c1bc12068fc678b584
+ms.openlocfilehash: d5daa88475e3becde6e513391c555471f80396c5
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98562759"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98735859"
 ---
 # <a name="encryption-of-backup-data-using-customer-managed-keys"></a>Verschlüsselung von Sicherungsdaten mit von Kunden verwalteten Schlüsseln
 
@@ -77,7 +77,7 @@ Azure Backup verwendet die vom System zugewiesene verwaltete Identität, um den 
 
 **Mit PowerShell:**
 
-Verwenden Sie den Befehl [Update-AzRecoveryServicesVault](https://docs.microsoft.com/powershell/module/az.recoveryservices/update-azrecoveryservicesvault), um die systemseitig zugewiesene verwaltete Identität für den Recovery Services-Tresor zu aktivieren.
+Verwenden Sie den Befehl [Update-AzRecoveryServicesVault](/powershell/module/az.recoveryservices/update-azrecoveryservicesvault), um die systemseitig zugewiesene verwaltete Identität für den Recovery Services-Tresor zu aktivieren.
 
 Beispiel:
 
@@ -121,7 +121,7 @@ Sie müssen jetzt dem Recovery Services-Tresor gestatten, auf den Azure Key Vaul
 
 **Mit PowerShell:**
 
-Verwenden Sie den Befehl [Set-AzRecoveryServicesVaultProperty](https://docs.microsoft.com/powershell/module/az.recoveryservices/set-azrecoveryservicesvaultproperty), um die Verschlüsselung mithilfe von kundenseitig verwalteten Schlüsseln zu aktivieren und den zu verwendenden Verschlüsselungsschlüssel zuzuweisen oder zu aktualisieren.
+Verwenden Sie den Befehl [Set-AzRecoveryServicesVaultProperty](/powershell/module/az.recoveryservices/set-azrecoveryservicesvaultproperty), um die Verschlüsselung mithilfe von kundenseitig verwalteten Schlüsseln zu aktivieren und den zu verwendenden Verschlüsselungsschlüssel zuzuweisen oder zu aktualisieren.
 
 Beispiel:
 
@@ -290,7 +290,7 @@ Der Datenträgerverschlüsselungssatz wird im Bereich „Wiederherstellung“ un
 
 **Mit PowerShell:**
 
-Verwenden Sie den Befehl [Get-AzRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupitem) mit dem Parameter [`-DiskEncryptionSetId <string>`], um [den DES anzugeben](https://docs.microsoft.com/powershell/module/az.compute/get-azdiskencryptionset), der zum Verschlüsseln des wiederhergestellten Datenträgers verwendet werden soll. Weitere Informationen zum Wiederherstellen von Datenträgern aus einer VM-Sicherung finden Sie in [diesem Artikel](https://docs.microsoft.com/azure/backup/backup-azure-vms-automation#restore-an-azure-vm).
+Verwenden Sie den Befehl [Get-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupitem) mit dem Parameter [`-DiskEncryptionSetId <string>`], um [den DES anzugeben](/powershell/module/az.compute/get-azdiskencryptionset), der zum Verschlüsseln des wiederhergestellten Datenträgers verwendet werden soll. Weitere Informationen zum Wiederherstellen von Datenträgern aus einer VM-Sicherung finden Sie in [diesem Artikel](./backup-azure-vms-automation.md#restore-an-azure-vm).
 
 Beispiel:
 

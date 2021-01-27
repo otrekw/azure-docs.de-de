@@ -3,12 +3,12 @@ title: Azure-Dateifreigabe für Azure Batch-Pools
 description: Hier erfahren Sie, wie Sie eine Azure Files-Freigabe von Computeknoten in einen Linux- oder Windows-Pool in Azure Batch einbinden.
 ms.topic: how-to
 ms.date: 05/24/2018
-ms.openlocfilehash: 6bbaba20512a17de563e74ba095057c5c3f71f6b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e5682e7ba853973592c3a650a06ce72615cec7b6
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87986422"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98735493"
 ---
 # <a name="use-an-azure-file-share-with-a-batch-pool"></a>Verwenden einer Azure-Dateifreigabe mit einem Batch-Pool
 
@@ -20,7 +20,7 @@ ms.locfileid: "87986422"
 
 * Azure-Dateifreigaben sind [kostengünstig](https://azure.microsoft.com/pricing/details/storage/files/). Für die Freigaben kann eine Datenreplikation in eine andere Region konfiguriert werden, sodass sie global redundant sind. 
 
-* Sie können eine Azure-Dateifreigabe parallel von einem lokalen Computer aus einbinden. Stellen Sie jedoch sicher, dass Sie insbesondere bei Verwendung von REST-APIs die [Auswirkungen auf die Parallelität](../storage/common/storage-concurrency.md) verstehen.
+* Sie können eine Azure-Dateifreigabe parallel von einem lokalen Computer aus einbinden. Stellen Sie jedoch sicher, dass Sie insbesondere bei Verwendung von REST-APIs die [Auswirkungen auf die Parallelität](../storage/blobs/concurrency-manage.md) verstehen.
 
 * Sehen Sie sich auch die allgemeinen [Planungsüberlegungen](../storage/files/storage-files-planning.md) für Azure-Dateifreigaben an.
 

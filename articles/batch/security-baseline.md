@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/01/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: c27ef1af3e439b22f00f9247b5270118bbe9ca89
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 3678ead9f3e1ba2556fde3c2fbe30df4e7dc2225
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98197709"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737234"
 ---
 # <a name="azure-security-baseline-for-batch"></a>Azure-Sicherheitsbaseline für Batch
 
@@ -62,9 +62,9 @@ Deaktivieren Sie ggf. den Zugriff auf das öffentliche Netzwerk mithilfe von Azu
 
 **Leitfaden**: Aktivieren Sie den Azure DDoS-Standardschutz (Distributed Denial-of-Service) im virtuellen Netzwerk, der Ihren Azure Batch-Pool vor DDoS-Angriffen schützt. Verwenden Sie die in Azure Security Center integrierte Threat Intelligence, um die Kommunikation mit bekannten schädlichen oder nicht genutzten IP-Adressen zu verweigern.
 
-- [Konfigurieren von DDoS-Schutz](/azure/virtual-network/manage-ddos-protection)
+- [Konfigurieren von DDoS-Schutz](../ddos-protection/manage-ddos-protection.md)
 
-- [Grundlegendes zur integrierten Threat Intelligence in Azure Security Center](/azure/security-center/security-center-alerts-service-layer)
+- [Grundlegendes zur integrierten Threat Intelligence in Azure Security Center](../security-center/azure-defender.md)
 
 **Azure Security Center-Überwachung**: Ja
 
@@ -126,7 +126,7 @@ Verwenden Sie eine der integrierten Azure Policy-Definitionen zum Tagging, z. B
 
 Sie können Azure PowerShell oder die Azure-Befehlszeilenschnittstelle verwenden, um Ressourcen basierend auf ihren Tags zu suchen oder Aktionen auszuführen.
 
-- [Erstellen und Verwenden von Tags](/azure/azure-resource-manager/resource-group-using-tags)
+- [Erstellen und Verwenden von Tags](../azure-resource-manager/management/tag-resources.md)
 
 - [Erstellen eines virtuellen Netzwerks](../virtual-network/quick-create-portal.md)
 
@@ -140,7 +140,7 @@ Sie können Azure PowerShell oder die Azure-Befehlszeilenschnittstelle verwenden
 
 **Leitfaden**: Verwenden Sie das Azure-Aktivitätsprotokoll zum Überwachen der Konfigurationen von Netzwerkressourcen und zum Erkennen von Änderungen bei Netzwerkressourcen, die sich auf Ihre Azure Batch-Pools beziehen. Erstellen Sie Warnungen in Azure Monitor, die bei Änderungen an wichtigen Netzwerkressourcen ausgelöst werden.
 
-- [Anzeigen und Abrufen von Azure-Aktivitätsprotokollereignissen](/azure/azure-monitor/platform/activity-log-view) 
+- [Anzeigen und Abrufen von Azure-Aktivitätsprotokollereignissen](../azure-monitor/platform/activity-log.md#view-the-activity-log) 
 
 - [Erstellen von Warnungen in Azure Monitor](../azure-monitor/platform/alerts-activity-log.md)
 
@@ -188,7 +188,7 @@ Falls erforderlich, stellen Sie möglicherweise eine Verbindung mit Ihren einzel
 
 - [Erfassen von Diagnoseprotokollen aus Ihrem Azure Batch-Konto](batch-diagnostics.md#batch-diagnostics)
 
-- [Herstellen einer Remoteverbindung mit Ihren Azure Batch-Poolknoten](/azure/batch/batch-api-basics#error-handling)
+- [Herstellen einer Remoteverbindung mit Ihren Azure Batch-Poolknoten](./batch-service-workflow-features.md#basic-workflow)
 
 **Azure Security Center-Überwachung**: Ja
 
@@ -260,9 +260,9 @@ Falls erforderlich, stellen Sie möglicherweise eine Verbindung mit Ihren einzel
 
 Außerdem können Sie Empfehlungen für die Identitäts- und Zugriffsverwaltung in Azure Security Center anwenden.
 
-- [Abrufen einer Verzeichnisrolle in Azure AD mit PowerShell](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0&amp;preserve-view=true)
+- [Abrufen einer Verzeichnisrolle in Azure AD mit PowerShell](/powershell/module/azuread/get-azureaddirectoryrole?preserve-view=true&view=azureadps-2.0)
 
-- [Abrufen von Mitgliedern einer Verzeichnisrolle in Azure AD mit PowerShell](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0&amp;preserve-view=true)
+- [Abrufen von Mitgliedern einer Verzeichnisrolle in Azure AD mit PowerShell](/powershell/module/azuread/get-azureaddirectoryrolemember?preserve-view=true&view=azureadps-2.0)
 
 - [Überwachen der Identität und des Zugriffs](../security-center/security-center-identity-access.md)
 
@@ -324,7 +324,7 @@ Außerdem können Sie Empfehlungen für die Identitäts- und Zugriffsverwaltung 
 
 **Leitfaden**: Wenn Sie über integrierte Authentifizierung für Azure Batch-Anwendungen mit Azure Active Directory verfügen, verwenden Sie Azure Active Directory-Sicherheitsberichte für die Generierung von Protokollen und Warnungen, wenn verdächtige oder unsichere Aktivitäten in der Umgebung auftreten. Verwenden Sie Azure Security Center zum Überwachen von identitäts- und zugriffsbezogenen Aktivitäten.
 
-- [Identifizieren von Azure AD-Benutzern, die aufgrund riskanter Aktivitäten gekennzeichnet wurden](/azure/active-directory/reports-monitoring/concept-user-at-risk)
+- [Identifizieren von Azure AD-Benutzern, die aufgrund riskanter Aktivitäten gekennzeichnet wurden](../active-directory/identity-protection/overview-identity-protection.md)
 
 - [Überwachen der identitäts- und zugriffsbezogenen Aktivitäten von Benutzern in Azure Security Center](../security-center/security-center-identity-access.md)
 
@@ -378,7 +378,7 @@ Außerdem können Sie Empfehlungen für die Identitäts- und Zugriffsverwaltung 
 
 **Leitfaden**: Mit den Funktionen zur Risikoerkennung und zum Identitätsschutz von Azure Active Directory können Sie automatische Antworten auf erkannte verdächtige Aktionen im Zusammenhang mit Benutzeridentitäten konfigurieren. Außerdem können Sie Daten zur weiteren Untersuchung in Azure Sentinel erfassen.
 
-- [Anzeigen riskanter Azure AD-Anmeldungen](/azure/active-directory/reports-monitoring/concept-risky-sign-ins)
+- [Anzeigen riskanter Azure AD-Anmeldungen](../active-directory/identity-protection/overview-identity-protection.md)
 
 - [Konfigurieren und Aktivieren von Risikorichtlinien für den Identitätsschutz](../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md)
 
@@ -406,7 +406,7 @@ Außerdem können Sie Empfehlungen für die Identitäts- und Zugriffsverwaltung 
 
 **Leitfaden**: Verwenden Sie Tags für die Nachverfolgung von Azure-Ressourcen, die vertrauliche Informationen speichern oder verarbeiten.
 
-- [Erstellen und Verwenden von Tags](/azure/azure-resource-manager/resource-group-using-tags)
+- [Erstellen und Verwenden von Tags](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center-Überwachung**: Zurzeit nicht verfügbar
 
@@ -418,7 +418,7 @@ Außerdem können Sie Empfehlungen für die Identitäts- und Zugriffsverwaltung 
 
 - [Erstellen eines Azure Batch-Pools in einem virtuellen Netzwerk](batch-virtual-network.md)
 
-- [Schützen von Azure Storage-Konten](/azure/storage/common/storage-security-guide)
+- [Schützen von Azure Storage-Konten](../storage/blobs/security-recommendations.md)
 
 **Azure Security Center-Überwachung**: Ja
 
@@ -434,7 +434,7 @@ Für die zugrundeliegende Plattform, die von Microsoft verwaltet wird, behandelt
 
 - [Grundlegendes zum Schutz von Kundendaten in Azure](../security/fundamentals/protection-customer-data.md)
 
-- [Schützen von Azure Storage-Konten](/azure/storage/common/storage-security-guide)
+- [Schützen von Azure Storage-Konten](../storage/blobs/security-recommendations.md)
 
 **Azure Security Center-Überwachung**: Zurzeit nicht verfügbar
 
@@ -462,7 +462,7 @@ Für die zugrundeliegende Plattform, die von Microsoft verwaltet wird, behandelt
 
 - [Grundlegendes zum Schutz von Kundendaten in Azure](../security/fundamentals/protection-customer-data.md)
 
-- [Schützen von Azure Storage-Konten](/azure/storage/common/storage-security-guide)
+- [Schützen von Azure Storage-Konten](../storage/blobs/security-recommendations.md)
 
 **Azure Security Center-Überwachung**: Zurzeit nicht verfügbar
 
@@ -498,9 +498,9 @@ Für die zugrundeliegende Plattform, die von Microsoft verwaltet wird, behandelt
 
 Die Azure-Datenträgerverschlüsselung unterstützt Sie beim Schutz Ihrer Daten gemäß den Sicherheits- und Complianceanforderungen einer Organisation. Alle verwalteten Datenträger, Momentaufnahmen, Images und Daten, die auf vorhandene Datenträger geschrieben wurden, werden im Ruhezustand automatisch mit plattformseitig verwalteten Schlüsseln verschlüsselt.
 
-- [Verwalten von Verschlüsselungsschlüsseln für Azure Storage-Konten](/azure/storage/common/storage-encryption-keys-portal)
+- [Verwalten von Verschlüsselungsschlüsseln für Azure Storage-Konten](../storage/common/customer-managed-keys-configure-key-vault.md)
 
-- [Konfigurieren von kundenseitig verwalteten Schlüsseln mit Azure Key Vault über das Azure-Portal](/azure/storage/common/storage-encryption-keys-portal)
+- [Konfigurieren von kundenseitig verwalteten Schlüsseln mit Azure Key Vault über das Azure-Portal](../storage/common/customer-managed-keys-configure-key-vault.md)
 
 - [Erstellen eines Pools mit aktivierter Datenträgerverschlüsselung](disk-encryption.md)
 
@@ -580,7 +580,7 @@ Obwohl klassische Azure-Ressourcen über Azure Resource Graph Explorer ermittelt
 
 - [Schnellstart: Ausführen Ihrer ersten Resource Graph-Abfrage mithilfe des Azure Resource Graph-Explorers](../governance/resource-graph/first-query-portal.md)
 
-- [Anzeigen Ihrer Azure-Abonnements](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-4.8.0&amp;preserve-view=true)
+- [Anzeigen Ihrer Azure-Abonnements](/powershell/module/az.accounts/get-azsubscription?preserve-view=true&view=azps-4.8.0)
 
 - [Grundlegendes zu Azure RBAC](../role-based-access-control/overview.md)
 
@@ -592,7 +592,7 @@ Obwohl klassische Azure-Ressourcen über Azure Resource Graph Explorer ermittelt
 
 **Leitfaden**: Wenden Sie Tags auf Ihre Azure-Ressourcen an, die Metadaten erzeugen, um sie logisch in einer Taxonomie zu organisieren.
 
-- [Erstellen und Verwenden von Tags](/azure/azure-resource-manager/resource-group-using-tags)
+- [Erstellen und Verwenden von Tags](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center-Überwachung**: Zurzeit nicht verfügbar
 
@@ -602,11 +602,11 @@ Obwohl klassische Azure-Ressourcen über Azure Resource Graph Explorer ermittelt
 
 **Leitfaden**: Verwenden Sie nach Bedarf Tagging, Verwaltungsgruppen und separate Abonnements zum Organisieren und Nachverfolgen von Ressourcen. Stimmen Sie den Bestand regelmäßig ab, und stellen Sie sicher, dass nicht autorisierte Ressourcen rechtzeitig aus dem Abonnement gelöscht werden.
 
-- [Erstellen zusätzlicher Azure-Abonnements](/azure/billing/billing-create-subscription)
+- [Erstellen zusätzlicher Azure-Abonnements](../cost-management-billing/manage/create-subscription.md)
 
-- [Erstellen von Verwaltungsgruppen](/azure/governance/management-groups/create)
+- [Erstellen von Verwaltungsgruppen](../governance/management-groups/create-management-group-portal.md)
 
-- [Erstellen und Verwenden von Tags](/azure/azure-resource-manager/resource-group-using-tags)
+- [Erstellen und Verwenden von Tags](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -701,7 +701,7 @@ Verwenden Sie Azure Resource Graph, um Ressourcen in Ihren Abonnements abzufrage
 
 **Leitfaden**: Verwenden Sie Azure Policy-Aliase im Namespace „Microsoft.Batch“, um benutzerdefinierte Richtlinien zum Überwachen oder Erzwingen der Konfiguration Ihrer Azure Batch-Konten und -Pools zu erstellen.
 
-- [Anzeigen verfügbarer Azure Policy-Aliase](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-4.8.0&amp;preserve-view=true)
+- [Anzeigen verfügbarer Azure Policy-Aliase](/powershell/module/az.resources/get-azpolicyalias?preserve-view=true&view=azps-4.8.0)
 
 - [Konfigurieren und Verwalten von Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
@@ -747,9 +747,9 @@ Verwenden Sie Azure Resource Graph, um Ressourcen in Ihren Abonnements abzufrage
 
 **Leitfaden**: Wenn Sie benutzerdefinierte Azure Policy-Definitionen für Azure Batch-Konten, -Pools oder verwandte Ressourcen verwenden, nutzen Sie Azure Repos, um Code sicher zu speichern und zu verwalten.
 
-- [Speichern von Code in Azure DevOps](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops&amp;preserve-view=true)
+- [Speichern von Code in Azure DevOps](/azure/devops/repos/git/gitworkflow?preserve-view=true&view=azure-devops)
 
-- [Dokumentation zu Azure Repos](https://docs.microsoft.com/azure/devops/repos/?view=azure-devops&amp;preserve-view=true)
+- [Dokumentation zu Azure Repos](/azure/devops/repos/?preserve-view=true&view=azure-devops)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -791,7 +791,7 @@ Verwenden Sie Azure Resource Graph, um Ressourcen in Ihren Abonnements abzufrage
 - Subnetze sollten einer Netzwerksicherheitsgruppe zugeordnet sein, und Speicherkonten sollten einen Dienstendpunkt eines virtuellen Netzwerks verwenden.
 - Diagnoseprotokolle in Batch-Konten sollten aktiviert sein.
 
-- [Anzeigen verfügbarer Azure Policy-Aliase](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-4.8.0&amp;preserve-view=true)
+- [Anzeigen verfügbarer Azure Policy-Aliase](/powershell/module/az.resources/get-azpolicyalias?preserve-view=true&view=azps-4.8.0)
 
 - [Konfigurieren und Verwalten von Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
@@ -884,7 +884,7 @@ Führen Sie eine Vorabprüfung aller Dateien durch, die in computefremde Azure-R
 
 - [Konfigurieren der Speicherredundanz für Azure Storage-Konten](../storage/common/storage-redundancy.md)
 
-- [Sichern von Schlüsseltresorschlüsseln in Azure](https://docs.microsoft.com/powershell/module/az.keyvault/backup-azkeyvaultkey?view=azps-4.8.0&amp;preserve-view=true)
+- [Sichern von Schlüsseltresorschlüsseln in Azure](/powershell/module/az.keyvault/backup-azkeyvaultkey?preserve-view=true&view=azps-4.8.0)
 
 **Azure Security Center-Überwachung**: Ja
 
@@ -894,9 +894,9 @@ Führen Sie eine Vorabprüfung aller Dateien durch, die in computefremde Azure-R
 
 **Leitfaden**: Wenn Sie Ihre eigenen Schlüssel für Azure Storage-Konten oder eine andere Ressource verwalten, die sich auf Ihre Azure Batch-Implementierung bezieht, testen Sie regelmäßig die Wiederherstellung gesicherter Schlüssel.
 
-- [Sichern von Schlüsseltresorschlüsseln in Azure](https://docs.microsoft.com/powershell/module/az.keyvault/backup-azkeyvaultkey?view=azps-4.8.0&amp;preserve-view=true)
+- [Sichern von Schlüsseltresorschlüsseln in Azure](/powershell/module/az.keyvault/backup-azkeyvaultkey?preserve-view=true&view=azps-4.8.0)
 
-- [Wiederherstellen eines kundenseitig verwalteten Schlüssels mit PowerShell](https://docs.microsoft.com/powershell/module/az.keyvault/restore-azkeyvaultkey?view=azps-4.8.0&amp;preserve-view=true)
+- [Wiederherstellen eines kundenseitig verwalteten Schlüssels mit PowerShell](/powershell/module/az.keyvault/restore-azkeyvaultkey?preserve-view=true&view=azps-4.8.0)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -906,7 +906,7 @@ Führen Sie eine Vorabprüfung aller Dateien durch, die in computefremde Azure-R
 
 **Leitfaden**: Wenn Azure Key Vault zum Speichern von Schlüsseln verwendet wird, die sich auf Azure Batch-Poolspeicherkonten beziehen, aktivieren Sie vorläufiges Löschen in Azure Key Vault, um Schlüssel vor versehentlichem oder böswilligem Löschen zu schützen.
 
-- [Aktivieren des vorläufigen Löschens in Azure Key Vault](/azure/key-vault/key-vault-soft-delete-powershell)
+- [Aktivieren des vorläufigen Löschens in Azure Key Vault](../key-vault/general/key-vault-recovery.md)
 
 **Azure Security Center-Überwachung**: Ja
 
@@ -994,5 +994,5 @@ Weitere Informationen zur Microsoft-Strategie im Zusammenhang mit Red Team- und
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Sehen Sie sich die [Übersicht über Version 2 des Azure-Sicherheitsvergleichstests](/azure/security/benchmarks/overview) an.
-- Erfahren Sie mehr über [Azure-Sicherheitsbaselines](/azure/security/benchmarks/security-baselines-overview).
+- Sehen Sie sich die [Übersicht über Version 2 des Azure-Sicherheitsvergleichstests](../security/benchmarks/overview.md) an.
+- Erfahren Sie mehr über [Azure-Sicherheitsbaselines](../security/benchmarks/security-baselines-overview.md).

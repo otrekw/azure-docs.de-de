@@ -5,19 +5,19 @@ services: container-service
 manager: gwallace
 ms.topic: article
 ms.date: 10/19/2020
-ms.openlocfilehash: fa81e293bc5e53a852bdb404f9e6d41c4297647b
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: c30051008474a32ae6c847ee3f840c8ae35b469b
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93349034"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98726803"
 ---
 # <a name="reduce-latency-with-proximity-placement-groups"></a>Verringern der Wartezeit mithilfe von Näherungsplatzierungsgruppen
 
 > [!Note]
 > Wenn Sie Näherungsplatzierungsgruppen mit AKS verwenden, betrifft die Colocation nur die Agent-Knoten. Die Wartezeit zwischen Knoten und die entsprechende Wartezeit zwischen gehosteten Pods werden verbessert. Die Colocation hat keine Auswirkung auf die Platzierung der Steuerungsebene eines Clusters.
 
-Wenn Sie Ihre Anwendung in Azure bereitstellen, führt die Verteilung von VM-Instanzen (Virtual Machine, virtueller Computer) auf Regionen oder Verfügbarkeitszonen zu Netzwerkwartezeit, die die Gesamtleistung Ihrer Anwendung beeinträchtigen kann. Eine Näherungsplatzierungsgruppe ist eine logische Gruppierung, die dazu dient, eine geringe physische Entfernung zwischen Azure-Computeressourcen sicherzustellen. Einige Anwendungsbereiche wie Spiele, technische Simulationen und Hochfrequenzhandel (High-Frequency Trading, HFT) erfordern geringe Wartezeiten und eine schnelle Aufgabenausführung. In solchen HPC-Szenarien (High Performance Computing) empfiehlt sich ggf. der Einsatz von [Näherungsplatzierungsgruppen](../virtual-machines/linux/co-location.md#proximity-placement-groups) (PPG) für die Knotenpools Ihres Clusters.
+Wenn Sie Ihre Anwendung in Azure bereitstellen, führt die Verteilung von VM-Instanzen (Virtual Machine, virtueller Computer) auf Regionen oder Verfügbarkeitszonen zu Netzwerkwartezeit, die die Gesamtleistung Ihrer Anwendung beeinträchtigen kann. Eine Näherungsplatzierungsgruppe ist eine logische Gruppierung, die dazu dient, eine geringe physische Entfernung zwischen Azure-Computeressourcen sicherzustellen. Einige Anwendungsbereiche wie Spiele, technische Simulationen und Hochfrequenzhandel (High-Frequency Trading, HFT) erfordern geringe Wartezeiten und eine schnelle Aufgabenausführung. In solchen HPC-Szenarien (High Performance Computing) empfiehlt sich ggf. der Einsatz von [Näherungsplatzierungsgruppen](../virtual-machines/co-location.md#proximity-placement-groups) (PPG) für die Knotenpools Ihres Clusters.
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
@@ -65,7 +65,7 @@ Führen Sie den folgenden Befehl aus, und speichern Sie die zurückgegebene ID:
 az ppg create -n myPPG -g myResourceGroup -l centralus -t standard
 ```
 
-Die Ausgabe des Befehls enthält den für anstehende CLI-Befehle erforderlichen *ID-Wert* :
+Die Ausgabe des Befehls enthält den für anstehende CLI-Befehle erforderlichen *ID-Wert*:
 
 ```output
 {
@@ -83,7 +83,7 @@ Die Ausgabe des Befehls enthält den für anstehende CLI-Befehle erforderlichen 
 }
 ```
 
-Verwenden Sie im folgenden Befehl die Ressourcen-ID der Näherungsplatzierungsgruppe für den Wert *myPPGResourceID* :
+Verwenden Sie im folgenden Befehl die Ressourcen-ID der Näherungsplatzierungsgruppe für den Wert *myPPGResourceID*:
 
 ```azurecli-interactive
 # Create an AKS cluster that uses a proximity placement group for the initial system node pool only. The PPG has no effect on the cluster control plane.
@@ -133,7 +133,7 @@ az group delete --name myResourceGroup --yes --no-wait
 [nodepool-upgrade]: use-multiple-node-pools.md#upgrade-a-node-pool
 [az-extension-add]: /cli/azure/extension#az-extension-add
 [az-extension-update]: /cli/azure/extension#az-extension-update
-[proximity-placement-groups]: ../virtual-machines/linux/co-location.md#proximity-placement-groups
+[proximity-placement-groups]: ../virtual-machines/co-location.md#proximity-placement-groups
 [az-aks-create]: /cli/azure/aks#az-aks-create
 [system-pool]: ./use-system-pools.md
 [az-aks-nodepool-add]: /cli/azure/aks/nodepool?view=azure-cli-latest#az-aks-nodepool-add

@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: vincesm
 ms.custom: it-pro, seodec18, contperf-fy21q1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2c556940ace02f2e7bf0354e67d32df7c5c6714e
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: eb01a3e0fc5bc11a4d3de62b16aafb7dd308e34a
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97032761"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98724270"
 ---
 # <a name="what-are-the-default-user-permissions-in-azure-active-directory"></a>Welche Standardbenutzerberechtigungen gibt es in Azure Active Directory?
 In Azure Active Directory (Azure AD) wird allen Benutzern ein Satz mit Standardberechtigungen gewährt. Der Zugriffsumfang eines Benutzers basiert auf dem Benutzertyp, den [Rollenzuweisungen](active-directory-users-assign-role-azure-portal.md) und dem Besitz einzelner Objekte. In diesem Artikel werden diese Standardberechtigungen beschrieben, und es werden die Standardberechtigungen für Mitglieder und Gastbenutzer miteinander verglichen. Die Standardberechtigungen für Benutzer können nur in den Benutzereinstellungen in Azure AD geändert werden.
@@ -63,7 +63,7 @@ Die Standardberechtigungen für Gastbenutzer können auf folgende Weise eingesch
 
 Berechtigung | Erläuterung der Einstellung
 ---------- | ------------
-Zugriffseinschränkungen für Gastbenutzer (Vorschau) | Wenn Sie diese Option auf **Gastbenutzer haben denselben Zugriff wie Mitglieder** festlegen, werden Gastbenutzern standardmäßig alle Berechtigungen von Mitgliedsbenutzern gewährt.<p>Wenn Sie diese Option auf **Der Gastbenutzerzugriff ist auf Eigenschaften und Mitgliedschaften eigener Verzeichnisobjekte beschränkt** festlegen, ist der Gastzugriff standardmäßig auf das eigene Benutzerprofil beschränkt. Der Zugriff auf andere Benutzer ist auch bei der Suche nach Benutzerprinzipalname, ObjectId oder Anzeigename nicht mehr zulässig. Der Zugriff auf Gruppeninformationen einschließlich Gruppenmitgliedschaften ist ebenfalls nicht mehr zulässig.<p>**Hinweis**: Diese Einstellung verhindert nicht den Zugriff auf eingebundene Gruppen in einigen Microsoft 365-Diensten wie z. B. Microsoft Teams. Weitere Informationen finden Sie unter [Gastzugriff auf Microsoft Teams](https://docs.microsoft.com/MicrosoftTeams/guest-access).<p>Gastbenutzer können unabhängig von diesen Berechtigungseinstellungen weiterhin Administratorrollen hinzugefügt werden.
+Zugriffseinschränkungen für Gastbenutzer (Vorschau) | Wenn Sie diese Option auf **Gastbenutzer haben denselben Zugriff wie Mitglieder** festlegen, werden Gastbenutzern standardmäßig alle Berechtigungen von Mitgliedsbenutzern gewährt.<p>Wenn Sie diese Option auf **Der Gastbenutzerzugriff ist auf Eigenschaften und Mitgliedschaften eigener Verzeichnisobjekte beschränkt** festlegen, ist der Gastzugriff standardmäßig auf das eigene Benutzerprofil beschränkt. Der Zugriff auf andere Benutzer ist auch bei der Suche nach Benutzerprinzipalname, ObjectId oder Anzeigename nicht mehr zulässig. Der Zugriff auf Gruppeninformationen einschließlich Gruppenmitgliedschaften ist ebenfalls nicht mehr zulässig.<p>**Hinweis**: Diese Einstellung verhindert nicht den Zugriff auf eingebundene Gruppen in einigen Microsoft 365-Diensten wie z. B. Microsoft Teams. Weitere Informationen finden Sie unter [Gastzugriff auf Microsoft Teams](/MicrosoftTeams/guest-access).<p>Gastbenutzer können unabhängig von diesen Berechtigungseinstellungen weiterhin Administratorrollen hinzugefügt werden.
 Gäste können einladen | Wenn Sie diese Option auf „Ja“ festlegen, können Gäste andere Gäste einladen. Weitere Informationen finden Sie unter [Delegieren von Einladungen zur B2B-Zusammenarbeit](../external-identities/delegate-invitations.md#configure-b2b-external-collaboration-settings).
 Mitglieder können einladen | Wenn Sie diese Option auf „Ja“ festlegen, können Mitglieder Ihres Verzeichnisses, die keine Administratoren sind, Gäste einladen. Weitere Informationen finden Sie unter [Delegieren von Einladungen zur B2B-Zusammenarbeit](../external-identities/delegate-invitations.md#configure-b2b-external-collaboration-settings).
 Administratoren und Benutzer mit der Rolle „Gasteinladender“ können einladen | Wenn Sie diese Option auf „Ja“ festlegen, können Administratoren und Benutzer, die der Rolle „Gasteinladender“ zugewiesen sind, Gäste einladen. Ist diese Option auf „Ja“ festgelegt, können Benutzer, die der Rolle „Gasteinladender“ zugewiesen sind, Gäste auch unabhängig davon einladen, was für die Einstellung „Mitglieder können einladen“ festgelegt ist. Weitere Informationen finden Sie unter [Delegieren von Einladungen zur B2B-Zusammenarbeit](../external-identities/delegate-invitations.md#assign-the-guest-inviter-role-to-a-user).
