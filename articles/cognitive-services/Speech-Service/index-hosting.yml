@@ -11,12 +11,12 @@ metadata:
   ms.topic: landing-page
   ms.date: 03/23/2020
   ms.author: trbye
-  ms.openlocfilehash: 028116979a700ebe04a6e008be38656204b2ce2f
-  ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+  ms.openlocfilehash: ff8f98b67b2d9cab5745b141364c42ff49751413
+  ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 11/21/2020
-  ms.locfileid: "95015432"
+  ms.lasthandoff: 01/26/2021
+  ms.locfileid: "98786257"
 landingContent:
 - title: Informationen zum Hosting
   linkLists:
@@ -27,7 +27,7 @@ landingContent:
     - text: Speech-Container mit Kubernetes und Helm
       url: speech-container-howto-on-premises.md
     - text: Speech-Container in Azure Container Instances
-      url: deploy-speech-on-container-instances.md
+      url: ../containers/azure-container-instance-recipe.md
 - title: Erstellen und Konfigurieren
   linkLists:
   - linkListType: how-to-guide

@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 05/17/2020
-ms.openlocfilehash: fc4475eb64744688e901d2b37e30632d044b0115
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 2f6ed85416cc5d7c3c2baba2b2cfe489e301d7e5
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95019312"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98788484"
 ---
 # <a name="best-practices-for-building-a-language-understanding-luis-app"></a>Bewährte Methoden zum Erstellen von LUIS-Apps (Language Understanding)
 Verwenden Sie den App-Erstellungsprozess zur Erstellung der LUIS-App:
@@ -141,7 +141,7 @@ Verwenden Sie beim [aktiven Lernen](luis-how-to-review-endpoint-utterances.md) r
 
 ## <a name="do-monitor-the-performance-of-your-app"></a>Überwachen Sie die Leistung Ihrer App.
 
-Überwachen Sie die Vorhersagegenauigkeit mithilfe eines [Batchtestsatzes](luis-concept-batch-test.md).
+Überwachen Sie die Vorhersagegenauigkeit mithilfe eines [Batchtestsatzes](./luis-how-to-batch-test.md).
 
 Reservieren Sie eine separate Menge von Äußerungen, die nicht als [Beispieläußerungen](luis-concept-utterance.md) oder Endpunktäußerungen verwendet werden. Optimieren Sie die App immer weiter mit Ihrem Testsatz. Passen Sie den Testsatz an die tatsächlichen Benutzeräußerungen an. Verwenden Sie diesen Testsatz, um die einzelnen Iterationen oder Versionen der App zu bewerten.
 

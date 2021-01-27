@@ -10,16 +10,16 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 08/17/2019
 ms.author: pafarley
-ms.openlocfilehash: 43eae43d11a48ee6c395e4a86b8e8c1353843991
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 7173efd3dab0e8d2fd3c948a3a9bac07641e78f3
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98131446"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98792081"
 ---
 # <a name="form-recognizer-prebuilt-receipt-model"></a>Vordefiniertes Belegmodell der Formularerkennung
 
-Die Azure-Formularerkennung kann Informationen aus Belegen mithilfe der dazugehörigen vordefinierten Belegmodelle analysieren und extrahieren. Sie kombiniert unsere leistungsstarken Funktionen zur [optischen Zeichenerkennung (Optical Character Recognition, OCR)](https://docs.microsoft.com/azure/cognitive-services/computer-vision/concept-recognizing-text) mit Deep-Learning-Modellen zur Beleganalyse, um wichtige Informationen aus Belegen in englischer Sprache zu extrahieren. Die Beleg-API extrahiert wichtige Informationen aus Verkaufsbelegen in englischer Sprache, z. B. Händlername, Transaktionsdatum, Transaktionssumme, Einzelposten und mehr. 
+Die Azure-Formularerkennung kann Informationen aus Belegen mithilfe der dazugehörigen vordefinierten Belegmodelle analysieren und extrahieren. Sie kombiniert unsere leistungsstarken Funktionen zur [optischen Zeichenerkennung (Optical Character Recognition, OCR)](../computer-vision/concept-recognizing-text.md) mit Deep-Learning-Modellen zur Beleganalyse, um wichtige Informationen aus Belegen in englischer Sprache zu extrahieren. Die Beleg-API extrahiert wichtige Informationen aus Verkaufsbelegen in englischer Sprache, z. B. Händlername, Transaktionsdatum, Transaktionssumme, Einzelposten und mehr. 
 
 ## <a name="understanding-receipts"></a>Informationen zu Belegen 
 

@@ -9,12 +9,12 @@ ms.date: 09/08/2020
 ms.topic: how-to
 ms.author: nitinme
 author: nitinme
-ms.openlocfilehash: b8382b76496976054ebb452e39866765d986ccbb
-ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
+ms.openlocfilehash: 8a4b86fb8fa5a87283178d957e07617b908e6286
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2020
-ms.locfileid: "97368176"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98790900"
 ---
 # <a name="sign-in-to-luis-portal"></a>Anmelden beim LUIS-Portal
 
@@ -47,8 +47,8 @@ Verwenden Sie diesen Artikel für die ersten Schritte mit dem LUIS-Portal, und e
     * **Mandantenname**: Der Mandant, dem Ihr Azure-Abonnement zugeordnet ist. Sie können die Mandanten nicht über das bestehende Fenster wechseln. Sie können den Mandanten wechseln, indem Sie dieses Fenster schließen und den Avatar mit Ihren Initialen oben rechts auf dem Bildschirm auswählen. Wählen Sie oben die Option **Andere Erstellungsressource auswählen** aus, um das Fenster erneut zu öffnen.
     * **Azure-Ressourcengruppenname**: Ein benutzerdefinierter Ressourcengruppenname, den Sie in Ihrem Abonnement auswählen. Mit Ressourcengruppen können Sie Azure-Ressourcen für den Zugriff und die Verwaltung gruppieren. Wenn Sie derzeit nicht über eine Ressourcengruppe in Ihrem Abonnement verfügen, können Sie im LUIS-Portal keine Ressourcengruppe erstellen. Wechseln Sie zum [Azure-Portal](https://ms.portal.azure.com/#create/Microsoft.ResourceGroup), um eine zu erstellen, und wechseln Sie dann zu LUIS, um den Anmeldevorgang fortzusetzen.
     * **Azure-Ressourcenname**: Ein von Ihnen gewählter benutzerdefinierter Name, der als Teil der URL für Ihre Erstellungstransaktionen verwendet wird. Ihr Ressourcenname darf nur alphanumerische Zeichen und „`-`“ enthalten und darf nicht mit „`-`“ beginnen oder enden. Wenn andere Symbole im Namen enthalten sind, wird beim Erstellen einer Ressource ein Fehler auftreten.
-    * **Standort**: Wählen Sie aus, ob Sie Ihre Anwendungen an einem der [drei Erstellungsstandorte](https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions) erstellen möchten, die derzeit von LUIS unterstützt werden, einschließlich: „USA, Westen“, „Europa, Westen“ und „Australien, Osten“.
-    * **Tarif**: Standardmäßig ist der Erstellungstarif F0 ausgewählt, da dies der empfohlene Tarif ist. Erstellen Sie einen [kundenseitig verwalteten Schlüssel](https://docs.microsoft.com/azure/cognitive-services/luis/luis-encryption-of-data-at-rest#customer-managed-keys-for-language-understanding) über das Azure-Portal, wenn Sie nach einer zusätzlichen Ebene der Sicherheit suchen.
+    * **Standort**: Wählen Sie aus, ob Sie Ihre Anwendungen an einem der [drei Erstellungsstandorte](./luis-reference-regions.md) erstellen möchten, die derzeit von LUIS unterstützt werden, einschließlich: „USA, Westen“, „Europa, Westen“ und „Australien, Osten“.
+    * **Tarif**: Standardmäßig ist der Erstellungstarif F0 ausgewählt, da dies der empfohlene Tarif ist. Erstellen Sie einen [kundenseitig verwalteten Schlüssel](./luis-encryption-of-data-at-rest.md#customer-managed-keys-for-language-understanding) über das Azure-Portal, wenn Sie nach einer zusätzlichen Ebene der Sicherheit suchen.
 8. Jetzt haben Sie sich erfolgreich bei LUIS angemeldet. Sie können jetzt damit beginnen, Anwendungen zu erstellen.
 
 ## <a name="troubleshooting"></a>Problembehandlung

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/15/2020
 ms.author: alexeyo
-ms.openlocfilehash: 61be4b45df94c902c0473b94a6dd83237c72da3c
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: 51989a9219cdbfebf833c99849dba67c939cf77a
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98196117"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98786841"
 ---
 # <a name="use-speech-services-through-a-private-endpoint"></a>Verwenden von Speech-Diensten über einen privaten Endpunkt
 
@@ -293,7 +293,7 @@ Die Speech-Dienste beinhalten REST-APIs für die [Spracherkennung](rest-speech-t
 Für die Spracherkennung gibt es zwei REST-APIs. Jede API dient einem anderen Zweck, verwendet unterschiedliche Endpunkte und erfordert einen anderen Ansatz, wenn sie in einem Szenario mit aktivierten privaten Endpunkten verwendet wird.
 
 Es gibt folgende REST-APIs für die Spracherkennung:
-- Die [Spracherkennungs-REST-API 3.0](rest-speech-to-text.md#speech-to-text-rest-api-v30) wird für die [Batchtranskription](batch-transcription.md) und [Custom Speech eingesetzt](custom-speech-overview.md). Version 3.0 ist die [Nachfolgeversion von Version 2.0](/azure/cognitive-services/speech-service/migrate-v2-to-v3).
+- Die [Spracherkennungs-REST-API 3.0](rest-speech-to-text.md#speech-to-text-rest-api-v30) wird für die [Batchtranskription](batch-transcription.md) und [Custom Speech eingesetzt](custom-speech-overview.md). Version 3.0 ist die [Nachfolgeversion von Version 2.0](./migrate-v2-to-v3.md).
 - Die [Spracherkennungs-REST-API für kurze Audiodaten](rest-speech-to-text.md#speech-to-text-rest-api-for-short-audio) wird für die Onlinetranskription eingesetzt. 
 
 Die Verwendung der Spracherkennungs-REST-API für kurze Audiodaten und der Sprachsynthese-REST-API ist in Szenarios mit privaten Endpunkten identisch. Sie entspricht dem [Speech-SDK-Ansatz](#speech-resource-with-a-custom-domain-name-and-a-private-endpoint-usage-with-the-speech-sdk), der im Verlauf dieses Artikels erläutert wird. 

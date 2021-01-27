@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 06/3/2020
-ms.openlocfilehash: f002bfdd5aeb784b5b10b549389e663216fa0361
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: cd2fd8dc8c10864089b198db1ca1089f994a3ffb
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97561221"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98788450"
 ---
 # <a name="testing-for-luis-devops"></a>Testen für LUIS DevOps
 
@@ -28,7 +28,7 @@ Es gibt zwei verschiedene Arten von Tests für eine LUIS-App, die Sie in Continu
 Diese Art Test ähnelt den [interaktiven Tests](./luis-concept-test.md), die Sie im [LUIS-Portal](https://www.luis.ai/) ausführen können.
 
 - **Batchtests**: Das Testen in Batches stellt umfassende Tests Ihres aktuellen trainierten Modells dar, um seine Leistung zu messen. Im Gegensatz zu Komponententests liegt Batchtests nicht die Unterscheidung „bestanden|nicht bestanden“ zugrunde. Die Erwartung beim Testen in Batches richtet sich nicht darauf, dass jeder Test die erwartete Absicht und die erwarteten Entitäten zurückgibt. Stattdessen hilft Ihnen das Testen in Batches, die Genauigkeit jeder Absicht und jeder Entität in Ihrer App darzustellen und im zeitlichen Verlauf zu vergleichen, wenn Sie Verbesserungen vornehmen.  
-Diese Tests sind von der gleichen Art wie das [Testen in Batches](./luis-concept-batch-test.md), das Sie interaktiv im LUIS-Portal ausführen können.
+Diese Tests sind von der gleichen Art wie das [Testen in Batches](./luis-how-to-batch-test.md), das Sie interaktiv im LUIS-Portal ausführen können.
 
 Sie können Komponententests vom Beginn Ihres Projekts an einsetzen. Testen in Batches ist erst wirklich von Nutzen, wenn Sie das Schema Ihrer LUIS-App entwickelt haben und an der Verbesserung ihrer Genauigkeit arbeiten.
 
@@ -42,7 +42,7 @@ Wenn Sie einen Satz von Tests schreiben, müssen Sie Folgendes für jeden von ih
 * Erwartete Absicht
 * Erwartete Entitäten
 
-Verwenden Sie die [Batchdateisyntax](./luis-concept-batch-test.md#batch-syntax-template-for-intents-with-entities) von LUIS, um eine Gruppe von Tests in einer Datei im JSON-Format zu definieren. Beispiel:
+Verwenden Sie die [Batchdateisyntax](./luis-how-to-batch-test.md#batch-syntax-template-for-intents-with-entities) von LUIS, um eine Gruppe von Tests in einer Datei im JSON-Format zu definieren. Beispiel:
 
 ```JSON
 [
@@ -85,7 +85,7 @@ In Komponententest empfiehlt es sich, zu testen, ob Ihre Schlüsselentitäten in
 
 #### <a name="designing-batch-tests"></a>Entwerfen des Testens in Batches
 
-Das Testen in Batches sollte eine große Anzahl von Testfällen umfassen, die dafür ausgelegt sind, alle Absichten und alle Entitäten in Ihrer LUIS-App abzudecken. Informationen zum Definieren eines Satzes für das Testen in Batches finden Sie unter [Batch testing in the LUIS portal](./luis-concept-batch-test.md) (Testen in Batches im LUIS-Portal).
+Das Testen in Batches sollte eine große Anzahl von Testfällen umfassen, die dafür ausgelegt sind, alle Absichten und alle Entitäten in Ihrer LUIS-App abzudecken. Informationen zum Definieren eines Satzes für das Testen in Batches finden Sie unter [Batch testing in the LUIS portal](./luis-how-to-batch-test.md) (Testen in Batches im LUIS-Portal).
 
 ### <a name="running-tests"></a>Ausführen von Tests
 
@@ -93,7 +93,7 @@ Das LUIS-Portal bietet Funktionen zur Unterstützung von interaktiven Tests:
 
 * [**Interaktive Tests**](./luis-concept-test.md) ermöglichen es Ihnen, eine Beispieläußerung zu senden und die von LUIS erkannten Absichten und Entitäten in der Antwort zu erhalten. Der Erfolg des Tests wird durch visuelle Untersuchung überprüft.
 
-* Beim [**Testen in Batches**](./luis-concept-batch-test.md) wird eine Batchtestdatei als Eingabe verwendet, um Ihre aktive trainierte Version zu überprüfen, um ihre Vorhersagegenauigkeit zu messen. Ein Batchtest zeigt die Ergebnisse in einem Diagramm an, sodass Sie einen besseren Einblick in die Genauigkeit der einzelnen Absichten und Entitäten in Ihrer aktuellen Version erhalten.
+* Beim [**Testen in Batches**](./luis-how-to-batch-test.md) wird eine Batchtestdatei als Eingabe verwendet, um Ihre aktive trainierte Version zu überprüfen, um ihre Vorhersagegenauigkeit zu messen. Ein Batchtest zeigt die Ergebnisse in einem Diagramm an, sodass Sie einen besseren Einblick in die Genauigkeit der einzelnen Absichten und Entitäten in Ihrer aktuellen Version erhalten.
 
 #### <a name="running-tests-in-an-automated-build-workflow"></a>Ausführen von Tests in einem automatisierten Buildworkflow
 

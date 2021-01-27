@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: troubleshooting
 ms.date: 05/06/2020
-ms.openlocfilehash: e803fa393d85f7f0b4849aed96356b7a4e77d83f
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: e4de77a8a56ce21511ad099af59a77e10ab1815d
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "96000129"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98787535"
 ---
 # <a name="language-understanding-frequently-asked-questions-faq"></a>Language Understanding: häufig gestellte Fragen (FAQ)
 
@@ -177,7 +177,7 @@ Diese Fehler deuten darauf hin, dass eine Diskrepanz zwischen den Bezeichnungen 
 * Fügen Sie weitere Bezeichnungen hinzu, damit LUIS Absichten besser unterscheiden kann.
 * Fügen Sie Begriffslistenfeatures mit Fachwortschatz hinzu, damit LUIS schneller lernt.
 
-Informationen hierzu finden Sie im Tutorial [Batchtests](luis-tutorial-batch-testing.md).
+Informationen hierzu finden Sie im Tutorial [Batchtests](./luis-how-to-batch-test.md).
 
 ### <a name="when-an-app-is-exported-then-reimported-into-a-new-app-with-a-new-app-id-the-luis-prediction-scores-are-different-why-does-this-happen"></a>Wenn eine App exportiert und anschließend in eine neue App (mit einer neuen App-ID) reimportiert wird, unterscheiden sich die LUIS-Vorhersagebewertungen. Was ist dafür die Ursache?
 

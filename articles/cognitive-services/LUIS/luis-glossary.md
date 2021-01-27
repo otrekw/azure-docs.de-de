@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 05/08/2020
-ms.openlocfilehash: cc7dac3767ca5c9e2429f4691a458f88ad1af707
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 7c65c8272172cab9f5361d16141bf7b229037480
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92151971"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98786943"
 ---
 # <a name="language-understanding-glossary-of-common-vocabulary-and-concepts"></a>Language Understanding-Glossar mit allgemeinem Vokabular und Konzepten
 In diesem Glossar für Language Understanding (LUIS) werden Begriffe erläutert, auf die Sie möglicherweise beim Arbeiten mit dem LUIS-Dienst stoßen.
@@ -50,12 +50,13 @@ Die Erstellungsressource weist die Azure-Art `LUIS-Authoring` auf.
 
 ## <a name="batch-test"></a>Batchtest
 
-Batchtests ermöglichen die Überprüfung der Modelle einer aktuellen LUIS-App mit einem konsistenten und bekannten Testsatz von Benutzeräußerungen. Der Batchtest ist in einer [Datei im JSON-Format](luis-concept-batch-test.md#batch-file-format) definiert.
+Batchtests ermöglichen die Überprüfung der Modelle einer aktuellen LUIS-App mit einem konsistenten und bekannten Testsatz von Benutzeräußerungen. Der Batchtest ist in einer [Datei im JSON-Format](./luis-how-to-batch-test.md#batch-test-file) definiert.
+
 
 Weitere Informationen:
-* [Konzepte](luis-concept-batch-test.md)
+* [Konzepte](./luis-how-to-batch-test.md)
 * [Vorgehensweise](luis-how-to-batch-test.md) zum Ausführen eines Batchtests
-* [Tutorial](luis-tutorial-batch-testing.md): Erstellen und Ausführen eines Batchtests
+* [Tutorial](./luis-how-to-batch-test.md): Erstellen und Ausführen eines Batchtests
 
 ### <a name="f-measure"></a>F-Measure
 

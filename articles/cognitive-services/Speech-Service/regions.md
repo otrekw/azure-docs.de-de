@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: panosper
 ms.custom: seodec18,references_regions
-ms.openlocfilehash: f11ccafd58cc64e6186ef590bbbccbfab3335ea4
-ms.sourcegitcommit: c538b6e4cf27b992500c079ad9c914c05d55eb7f
+ms.openlocfilehash: 646d29e72b91cd6afcde8e70ad8fd8715442b88e
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2021
-ms.locfileid: "97854858"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98786790"
 ---
 # <a name="speech-service-supported-regions"></a>Vom Speech-Dienst unterstützte Regionen
 
@@ -69,7 +69,7 @@ Dies ist eine Teilmenge der Veröffentlichungsregionen, die vom [Language Unders
 
 ### <a name="voice-assistants"></a>Sprachassistenten
 
-Das [Speech SDK](speech-sdk.md) unterstützt Funktionen des **Sprach-Assistenten** mithilfe von [Direct Line Speech](https://docs.microsoft.com/azure/cognitive-services/speech-service/direct-line-speech) in diesen Regionen:
+Das [Speech SDK](speech-sdk.md) unterstützt Funktionen des **Sprach-Assistenten** mithilfe von [Direct Line Speech](./direct-line-speech.md) in diesen Regionen:
 
 | Globale Region | Region           | Regionsbezeichner    |
 | ------------- | ---------------- | -------------------- |

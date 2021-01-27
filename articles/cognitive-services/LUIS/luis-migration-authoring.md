@@ -11,12 +11,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 12/14/2020
-ms.openlocfilehash: 086bc17938064571e8759ecda633fb5f87d1060f
-ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
+ms.openlocfilehash: 3ff48ff5a3f46d8ec0fbf81b4cd20d20c217344b
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97616812"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98787636"
 ---
 # <a name="migrate-to-an-azure-resource-authoring-key"></a>Migrieren zu einem Schlüssel einer Azure-Erstellungsressource
 
@@ -81,7 +81,7 @@ Ein `*`-Symbol wird neben dem Anwendungsnamen angezeigt, wenn Sie einer Anwendun
    > ![Exportieren Sie Ihre Anwendungen.](./media/migrate-authoring-key/migration-export-apps.png)
 
 
-4. Im Fenster für die Migration von Regionen werden Sie aufgefordert, Ihre Anwendungen zu einer Azure-Ressource in derselben Region zu migrieren, in der sie erstellt wurden. LUIS verfügt über drei Erstellungsregionen [und Portale](https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions#luis-authoring-regions). Das Fenster zeigt die Regionen an, in denen Ihre eigenen Anwendungen erstellt wurden. Die angezeigten Migrationsregionen können je nach dem von Ihnen verwendeten regionalen Portal und den von Ihnen erstellten Apps unterschiedlich sein. 
+4. Im Fenster für die Migration von Regionen werden Sie aufgefordert, Ihre Anwendungen zu einer Azure-Ressource in derselben Region zu migrieren, in der sie erstellt wurden. LUIS verfügt über drei Erstellungsregionen [und Portale](./luis-reference-regions.md#luis-authoring-regions). Das Fenster zeigt die Regionen an, in denen Ihre eigenen Anwendungen erstellt wurden. Die angezeigten Migrationsregionen können je nach dem von Ihnen verwendeten regionalen Portal und den von Ihnen erstellten Apps unterschiedlich sein. 
 
    > [!div class="mx-imgBorder"]
    > ![Migration für mehrere Regionen.](./media/migrate-authoring-key/migration-regional-flow.png)

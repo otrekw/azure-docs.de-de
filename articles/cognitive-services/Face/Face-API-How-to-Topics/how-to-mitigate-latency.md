@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 1/5/2021
 ms.author: v-jawe
-ms.openlocfilehash: 07c9bd12664a94c64a0d0b37d638b5668cc7f61e
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: b4035e2039afb6fe66d2658ebfcd3206d46e1de5
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98606733"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98682461"
 ---
 # <a name="how-to-mitigate-latency-when-using-the-face-service"></a>Vorgehensweise: Verringern der Wartezeit bei Verwendung des Diensts „Gesichtserkennung“
 
@@ -42,7 +42,11 @@ var faces = await client.Face.DetectWithUrlAsync("https://www.biography.com/.ima
 
 Der Dienst „Gesichtserkennung“ muss das Bild dann vom Remoteserver herunterladen. Wenn die Verbindung zwischen dem Dienst „Gesichtserkennung“ und dem Remoteserver langsam ist, wirkt sich dies auf die Antwortzeit der Erkennungsmethode aus.
 
-[Das Bild sollte ggf. in Azure Blob Storage Premium gespeichert werden](https://docs.microsoft.com/azure/storage/blobs/storage-upload-process-images?tabs=dotnet), um diese Zeit zu verkürzen.
+[Das Bild sollte ggf. in Azure Blob Storage Premium gespeichert werden](https://docs.microsoft.com/azure/storage/blobs/storage-upload-process-images?tabs=dotnet), um diese Zeit zu verkürzen. Beispiel:
+
+``` csharp
+var faces = await client.Face.DetectWithUrlAsync("https://csdx.blob.core.windows.net/resources/Face/Images/Family1-Daughter1.jpg");
+```
 
 ### <a name="large-upload-size"></a>Große Uploadgröße
 
@@ -58,7 +62,10 @@ Wenn die hochzuladende Datei groß ist, wirkt sich dies aus den folgenden Gründ
 - Der Dienst benötigt proportional zur Dateigröße mehr Zeit für die Verarbeitung der Datei.
 
 Gegenmaßnahmen:
-- [Das Bild sollte ggf. in Azure Blob Storage Premium gespeichert werden.](https://docs.microsoft.com/azure/storage/blobs/storage-upload-process-images?tabs=dotnet)
+- [Das Bild sollte ggf. in Azure Blob Storage Premium gespeichert werden.](https://docs.microsoft.com/azure/storage/blobs/storage-upload-process-images?tabs=dotnet) Beispiel:
+``` csharp
+var faces = await client.Face.DetectWithUrlAsync("https://csdx.blob.core.windows.net/resources/Face/Images/Family1-Daughter1.jpg");
+```
 - Laden Sie ggf. eine kleinere Datei hoch.
     - Lesen Sie die Richtlinien hinsichtlich der Eingabedaten für die Gesichtserkennung unter [Gesichtserkennung und -attribute](https://docs.microsoft.com/azure/cognitive-services/face/concepts/face-detection#input-data) und [Konzepte der Gesichtserkennung](https://docs.microsoft.com/azure/cognitive-services/face/concepts/face-recognition#input-data).
     - Wird bei der Gesichtserkennung das Erkennungsmodell `DetectionModel.Detection01` verwendet, erhöht sich die Verarbeitungsgeschwindigkeit bei einer Verkleinerung der Bildgröße. Wenn Sie das Erkennungsmodell `DetectionModel.Detection02` verwenden, führt eine Verringerung der Bildgröße nur zu einer Erhöhung der Verarbeitungsgeschwindigkeit, wenn die Bilddatei kleiner als 1920 × 1080 ist.

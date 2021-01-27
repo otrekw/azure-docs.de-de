@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/08/2021
 ms.author: trbye
 ms.custom: references_regions
-ms.openlocfilehash: d858474eca34243a007d0d0ac1e023a4a0fab8ec
-ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
+ms.openlocfilehash: 53be2f6795593bf44cafde149242b13ed4fdfe50
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98572339"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98790476"
 ---
 # <a name="text-to-speech-rest-api"></a>Text-to-Speech-REST-API
 
@@ -60,11 +60,9 @@ Der Endpunkt `voices/list` ermöglicht es Ihnen, eine vollständige Liste der St
 | Korea, Mitte | `https://koreacentral.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | USA Nord Mitte | `https://northcentralus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Nordeuropa | `https://northeurope.tts.speech.microsoft.com/cognitiveservices/voices/list` |
-| Südafrika, Norden | `https://southafricanorth.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | USA Süd Mitte | `https://southcentralus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Asien, Südosten | `https://southeastasia.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | UK, Süden | `https://uksouth.tts.speech.microsoft.com/cognitiveservices/voices/list` |
-| USA, Westen-Mitte | `https://westcentralus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | Europa, Westen | `https://westeurope.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | USA (Westen) | `https://westus.tts.speech.microsoft.com/cognitiveservices/voices/list` |
 | USA, Westen 2 | `https://westus2.tts.speech.microsoft.com/cognitiveservices/voices/list` |
@@ -279,5 +277,5 @@ Wenn der HTTP-Status `200 OK` ist, enthält der Text der Antwort eine Audiodatei
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Erstellen Sie ein kostenloses Azure-Konto.](https://azure.microsoft.com/free/cognitive-services/)
-- [Asynchrone Synthese für lange Audioinhalte](quickstarts/text-to-speech/async-synthesis-long-form-audio.md)
+- [Asynchrone Synthese für lange Audioinhalte](./long-audio-api.md)
 - [Erste Schritte mit Custom Voice](how-to-custom-voice.md)

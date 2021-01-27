@@ -4,15 +4,15 @@ description: QnA Maker ist ein cloudbasierter NLP-Dienst zur mühelosen Erstell
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: overview
-ms.date: 05/26/2020
+ms.date: 01/22/2021
 ms.custom: cog-serv-seo-aug-2020
 keywords: QnA Maker, Chatbots mit wenig Code, Konversationen mit Mehrfachdurchläufen
-ms.openlocfilehash: 9655f64da455fb7a7124a97e6dc2d1d8437d05b7
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 16f30801d52aa46184c4eb394f3d1cfebecd4be6
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96353135"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98700714"
 ---
 # <a name="what-is-qna-maker"></a>Was ist QnA Maker?
 
@@ -85,8 +85,6 @@ Wir stellen Schnellstartanleitungen für die gängigsten Programmiersprachen ber
 
 * [Erste Schritte mit der QnA Maker-Clientbibliothek](../quickstarts/quickstart-sdk.md)
 * [Erste Schritte mit dem QnA Maker-Portal](../quickstarts/create-publish-knowledge-base.md)
-* [Erste Schritte mit QnA Maker-REST-APIs](../quickstarts/quickstart-rest-curl.md)
-
 
 ## <a name="next-steps"></a>Nächste Schritte
 QnA Maker bietet alles, was Sie zum Erstellen, Verwalten und Bereitstellen Ihrer benutzerdefinierten Wissensdatenbank benötigen.

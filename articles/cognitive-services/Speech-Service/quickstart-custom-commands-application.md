@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: sausin
 ms.custom: references_regions
-ms.openlocfilehash: 2cc37cc66c06dc9e6997c6a031a9c60ad050c01a
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: ea32358aa86a6093cd72adf959d5fe731cf1e125
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98601762"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98786875"
 ---
 # <a name="create-a-voice-assistant-using-custom-commands"></a>Erstellen eines Sprachassistenten mithilfe von benutzerdefinierten Befehlen
 
@@ -136,4 +136,4 @@ Im Rahmen dieses Artikels werden wir den Windows-Sprachassistent-Client verwende
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Artikel haben Sie eine vorhandene Anwendung verwendet. Als nächstes lernen Sie in den [Abschnitten zur Vorgehensweise](how-to-custom-commands-create-application-with-simple-commands.md) wie Sie eine Anwendung für benutzerdefinierte Befehle von Grund auf entwerfen, entwickeln, debuggen, testen und integrieren.
+In diesem Artikel haben Sie eine vorhandene Anwendung verwendet. Als nächstes lernen Sie in den [Abschnitten zur Vorgehensweise](./how-to-develop-custom-commands-application.md) wie Sie eine Anwendung für benutzerdefinierte Befehle von Grund auf entwerfen, entwickeln, debuggen, testen und integrieren.

@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 06/30/2020
-ms.openlocfilehash: 59cf250a9db5a1f6759495c1b5a3c48cb07cde15
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 59dfa439f6428f2db972a8f848887e1a74bc2622
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95018785"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624302"
 ---
 # <a name="prediction-endpoint-changes-for-v3"></a>Änderungen an Vorhersageendpunkten in V3
 
@@ -66,9 +66,6 @@ Diese API wird auf V3-Vorhersageendpunkten nicht unterstützt. Verwenden Sie fü
 
 Verwenden Sie weiterhin den Vorhersageendpunkt der V2-API, bis V4.7 von Bot Framework veröffentlicht wird.
 
-## <a name="v2-api-deprecation"></a>Eingestellte Unterstützung der V2-API
-
-Die V2-Vorhersage-API wird für mindestens neun Monate nach der V3-Vorschau am 8. Juni 2020 nicht eingestellt.
 
 ## <a name="endpoint-url-changes"></a>Änderungen der Endpunkt-URL
 
@@ -268,9 +265,6 @@ In V3 wird das gleiche Ergebnis mit dem `verbose`-Flag zur Rückgabe von Entitä
 
 Lernen Sie [Konzepte](schema-change-prediction-runtime.md) kennen, wie Sie die Anwendung zur Vorhersagelaufzeit erweitern können.
 
-## <a name="deprecation"></a>Eingestellte Unterstützung
-
-Die V2-API wird mindestens neun Monate nach der V3-Vorschau nicht eingestellt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

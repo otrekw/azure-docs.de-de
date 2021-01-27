@@ -7,12 +7,12 @@ ms.subservice: language-understanding
 ms.topic: overview
 ms.date: 11/23/2020
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: fb36ab8a86a89d6383f93ad58c23956472841de2
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: f21a2cc8218dde8b0cf7203a1fcb1f5cfb9424a2
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95539259"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98790866"
 ---
 # <a name="what-is-language-understanding-luis"></a>Worum handelt es sich bei Language Understanding (LUIS)?
 
@@ -66,7 +66,7 @@ Entwerfen Sie Ihr Modell mit Kategorien von Benutzerabsichten, die als **[Absich
 |`When does your store open?`|GeschäftszeitenUndStandorte|öffnen|
 |`Schedule a meeting at 1pm with Bob in Distribution`|BesprechungPlanen|13 Uhr, Robert|
 
-Erstellen Sie das Modell mit den [Dokumenterstellungs](https://go.microsoft.com/fwlink/?linkid=2092087 "authoring")-APIs, dem **[LUIS-Portal](https://www.luis.ai "LUIS-Portal")** oder mit beidem. Erfahren Sie mehr über das Erstellen mit dem [Portal](get-started-portal-build-app.md "Portal") und den [SDK-Clientbibliotheken](azure-sdk-quickstart.md "SDK-Clientbibliotheken").
+Erstellen Sie das Modell mit den [Dokumenterstellungs](https://go.microsoft.com/fwlink/?linkid=2092087 "authoring")-APIs, dem **[LUIS-Portal](https://www.luis.ai "LUIS-Portal")** oder mit beidem. Erfahren Sie mehr über das Erstellen mit dem [Portal](get-started-portal-build-app.md "Portal") und den [SDK-Clientbibliotheken](./client-libraries-rest-api.md?pivots=rest-api "SDK-Clientbibliotheken").
 
 ## <a name="step-2-get-the-query-prediction"></a>Schritt 2: Abrufen der Abfragevorhersage
 
@@ -128,7 +128,7 @@ LUIS stellt Funktionen der Textanalyse als Teil Ihrer vorhandenen LUIS-Ressource
 
 ## <a name="learn-with-the-quickstarts"></a>Lernen mit den Schnellstartanleitungen
 
-Erfahren Sie mit praktischen Schnellstarts, in denen das [Portal](get-started-portal-build-app.md "Portal") und die [SDK-Clientbibliotheken](azure-sdk-quickstart.md "SDK-Clientbibliotheken") verwendet werden, mehr über LUIS.
+Erfahren Sie mit praktischen Schnellstarts, in denen das [Portal](get-started-portal-build-app.md "Portal") und die [SDK-Clientbibliotheken](./client-libraries-rest-api.md?pivots=rest-api "SDK-Clientbibliotheken") verwendet werden, mehr über LUIS.
 
 
 ## <a name="deploy-on-premises-using-docker-containers"></a>Lokales Bereitstellen unter Verwendung von Docker-Containern

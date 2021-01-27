@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 10/10/2019
-ms.openlocfilehash: ef63bf68fec592b768986a1329663508443c514b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b33f765e936d7c0db301a5b2fcf38ccaf137f771
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91535847"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98787552"
 ---
 # <a name="testing-example-utterances-in-luis"></a>Testen von Beispieläußerungen in LUIS
 
@@ -33,7 +33,7 @@ Weitere Informationen zu Vorhersagebewertungen finden Sie unter [Vorhersageergeb
 Interaktive Tests werden im **Testbereich** des LUIS-Portals durchgeführt. Sie können eine Äußerung eingeben, um zu ermitteln, wie Absichten und Entitäten identifiziert und bewertet werden. Wenn LUIS die Absichten und Entitäten für eine Äußerung im Testbereich nicht wie erwartet vorhersagt, kopieren Sie sie als neue Äußerung auf die Seite **Absicht**. Bezeichnen Sie dann die Teile dieser Äußerung nach Entitäten, und trainieren Sie LUIS. 
 
 ## <a name="batch-testing"></a>Testen in Batches
-Lesen Sie unter [Testen in Batches](luis-concept-batch-test.md) nach, wenn Sie mehrere Äußerungen gleichzeitig testen möchten.
+Lesen Sie unter [Testen in Batches](./luis-how-to-batch-test.md) nach, wenn Sie mehrere Äußerungen gleichzeitig testen möchten.
 
 ## <a name="endpoint-testing"></a>Testen an Endpunkten
 Sie können den Test mithilfe des [Endpunkts](luis-glossary.md#endpoint) durchführen. Dabei können Sie maximal zwei Versionen der App einsetzen. Die Haupt- oder Liveversion Ihrer App wird dabei als **Produktionsendpunkt** festgelegt, und eine zweite Version wird auf dem **Stagingendpunkt** hinzugefügt. Mit diesem Ansatz erhalten Sie drei Versionen einer Äußerung: das aktuelle Modell im Testbereich der [LUIS](luis-reference-regions.md)-Website und die beiden Versionen auf zwei unterschiedlichen Endpunkten. 

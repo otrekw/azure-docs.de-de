@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 02/20/2020
-ms.openlocfilehash: d6e52da7fce39a259107fe60a21fb5ead7b18709
-ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
+ms.openlocfilehash: 36724e518f1bae636c2d2602a227b53a11257591
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98127820"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791053"
 ---
 # <a name="add-a-secured-sharepoint-data-source-to-your-knowledge-base"></a>Hinzufügen einer geschützten SharePoint-Datenquelle zu Ihrer Wissensdatenbank
 
@@ -132,7 +132,7 @@ The Active Directory manager will get a pop-up window requesting permissions to 
 
 Es gibt eine Umgehung, wie aktuelle SharePoint-Inhalte über APIs mithilfe von Azure Blob Storage hinzugefügt werden können. Unten finden Sie die entsprechenden Schritte: 
 1.  Laden Sie die SharePoint-Dateien lokal herunter. Der Benutzer, der die API aufruft, benötigt Zugriff auf SharePoint. 
-1.  Laden Sie sie in den Blobspeicher in Azure hoch. Durch [Verwendung eines SAS-Token](https://docs.microsoft.com/azure/storage/common/storage-sas-overview#how-a-shared-access-signature-works) wird so ein sicherer gemeinsamer Zugriff ermöglicht. 
+1.  Laden Sie sie in den Blobspeicher in Azure hoch. Durch [Verwendung eines SAS-Token](../../../storage/common/storage-sas-overview.md#how-a-shared-access-signature-works) wird so ein sicherer gemeinsamer Zugriff ermöglicht. 
 1. Übergeben Sie die mit dem SAS-Token generierte Blob-URL an die QnA Maker-API. Damit die Fragen und Antworten aus den Dateien extrahiert werden können, müssen Sie als Typ der Suffixdatei '&ext=pdf' oder '&ext=doc' am Ende der URL hinzufügen, bevor Sie sie an die QnA Maker-API übergeben.  
 
 

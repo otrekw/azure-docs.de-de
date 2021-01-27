@@ -12,12 +12,12 @@ ms.date: 11/17/2020
 ms.author: aahi
 ms.custom: cog-serv-seo-aug-2020
 keywords: Lokal, Docker, Container
-ms.openlocfilehash: 829514637b72582dbb317970b0d23f92eb11bcad
-ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
+ms.openlocfilehash: 79e53bf39e411569f87a46bfc275c784ce84babc
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97862298"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98703325"
 ---
 # <a name="install-and-run-docker-containers-for-the-speech-service-apis"></a>Installieren und Ausführen von Docker-Containern für die APIs des Speech-Diensts 
 
@@ -373,13 +373,6 @@ Wenn Sie mehrere Ausdrücke hinzufügen möchten, rufen Sie `.addPhrase()` für 
 # <a name="custom-speech-to-text"></a>[Benutzerdefinierte Spracherkennung](#tab/cstt)
 
 Der Container für *benutzerdefinierte Spracherkennung* basiert auf einem benutzerdefinierten Sprachmodell. Das benutzerdefinierte Modell muss über das [Custom Speech-Portal](https://speech.microsoft.com/customspeech)[trainiert](how-to-custom-speech-train-model.md) worden sein.
-
-> [!IMPORTANT]
-> Das benutzerdefinierte Sprachmodell muss von einer der folgenden Modellversionen trainiert werden:
-> * **20181201 (v3.3 Einheitlich)**
-> * **20190520 (v4.14 Einheitlich)**
-> * **20190701 (v4.17 Einheitlich)**<br>
-> ![Custom Speech-Containermodell für das Training](media/custom-speech/custom-speech-train-model-container-scoped.png)
 
 Die **Modell-ID** für Custom Speech ist zur Ausführung des Containers erforderlich. Sie finden diese auf der Seite **Training** des Custom Speech-Portals. Navigieren Sie im Custom Speech-Portal zur Seite **Training**, und wählen Sie das Modell aus.
 <br>

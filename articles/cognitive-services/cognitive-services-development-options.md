@@ -8,12 +8,12 @@ ms.author: erhopf
 ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 10/22/2020
-ms.openlocfilehash: a952bfa45515b9d35549d03d18fd94103679344d
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 975f7eec31839aefcb1782f573d0210df29a4d00
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96349468"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98873568"
 ---
 # <a name="cognitive-services-development-options"></a>Entwicklungsoptionen für Cognitive Services
 
@@ -125,7 +125,7 @@ Die Tools, die Sie zum Trainieren und Konfigurieren von Modellen verwenden, unte
 | Säule | Dienst | Benutzeroberfläche für die Anpassung | Schnellstart |
 |--------|---------|------------------|------------|
 | Bildanalyse | Custom Vision | https://www.customvision.ai/ | [Schnellstart](./custom-vision-service/quickstarts/image-classification.md?pivots=programming-language-csharp) | 
-| Bildanalyse | Formularerkennung | Tool für die Beschriftung von Beispielen | [Schnellstart](./form-recognizer/quickstarts/label-tool.md?tabs=v2-0) |
+| Bildanalyse | Formularerkennung | [Tool für die Beschriftung von Beispielen](https://fott-preview.azurewebsites.net/) | [Schnellstart](./form-recognizer/quickstarts/label-tool.md?tabs=v2-0) |
 | Entscheidung | Content Moderator | https://contentmoderator.cognitive.microsoft.com/dashboard | [Schnellstart](./content-moderator/review-tool-user-guide/human-in-the-loop.md) |
 | Entscheidung | Metrics Advisor | https://metricsadvisor.azurewebsites.net/  | [Schnellstart](./metrics-advisor/quickstarts/web-portal.md) |
 | Entscheidung | Personalisierung | Eine Benutzeroberfläche steht im Azure-Portal unter Ihrer Personalisierungsressource zur Verfügung. | [Schnellstart](./personalizer/quickstart-personalizer-sdk.md) |

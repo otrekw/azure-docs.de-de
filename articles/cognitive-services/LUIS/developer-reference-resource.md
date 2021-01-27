@@ -6,12 +6,12 @@ ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 01/12/2021
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 0e8da4d490ef5c9afb2ac363b62f0f1a4fe66f5e
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: db9a915749799ee366d645994bd0d18c53530f40
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98133309"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98730903"
 ---
 # <a name="sdk-rest-and-cli-developer-resources-for-language-understanding-luis"></a>SDK-, REST- und CLI-Entwicklerressourcen für LUIS (Language Understanding)
 
@@ -88,11 +88,11 @@ Das [App-Schema](app-schema-definition.md) wird im Format `.json` oder `.lu` imp
 
 |Sprache |Referenzdokumentation|Paket|Schnellstarts|
 |--|--|--|--|
-|C#|[Erstellung](/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring?view=azure-dotnet)</br>[Vorhersage](/dotnet/api/microsoft.azure.cognitiveservices.language.luis.runtime?view=azure-dotnet)|[NuGet-Erstellung](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Authoring/)<br>[NuGet-Vorhersage](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Runtime/)|[Erstellung](azure-sdk-quickstart.md?pivots=programming-language-csharp)<br>[Abfragevorhersage](azure-sdk-quickstart.md?pivots=programming-language-csharp)|
+|C#|[Erstellung](/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring?view=azure-dotnet)</br>[Vorhersage](/dotnet/api/microsoft.azure.cognitiveservices.language.luis.runtime?view=azure-dotnet)|[NuGet-Erstellung](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Authoring/)<br>[NuGet-Vorhersage](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Runtime/)|[Erstellung](./client-libraries-rest-api.md?pivots=rest-api)<br>[Abfragevorhersage](./client-libraries-rest-api.md?pivots=rest-api)|
 |Go|[Erstellung und Vorhersage](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.0/luis)|[SDK](https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v2.0/luis)||
 |Java|[Erstellung und Vorhersage](/java/api/overview/azure/cognitiveservices/client/languageunderstanding?view=azure-java-stable)|[Maven-Erstellung](https://search.maven.org/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-luis-authoring)<br>[Maven-Vorhersage](https://search.maven.org/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-luis-runtime)|
-|JavaScript|[Erstellung](/javascript/api/@azure/cognitiveservices-luis-authoring/?view=azure-node-latest)<br>[Vorhersage](/javascript/api/@azure/cognitiveservices-luis-runtime/?view=azure-node-latest)|[NPM-Erstellung](https://www.npmjs.com/package/@azure/cognitiveservices-luis-authoring)<br>[NPM-Vorhersage](https://www.npmjs.com/package/@azure/cognitiveservices-luis-runtime)|[Erstellung](azure-sdk-quickstart.md?pivots=programming-language-javascript)<br>[Vorhersage](azure-sdk-quickstart.md?pivots=programming-language-javascript)|
-|Python|[Erstellung und Vorhersage](azure-sdk-quickstart.md?pivots=programming-language-python)|[Pip](https://pypi.org/project/azure-cognitiveservices-language-luis/)|[Erstellung](azure-sdk-quickstart.md?pivots=programming-language-python)<br>[Vorhersage](azure-sdk-quickstart.md?pivots=programming-language-python)|
+|JavaScript|[Erstellung](/javascript/api/@azure/cognitiveservices-luis-authoring/?view=azure-node-latest)<br>[Vorhersage](/javascript/api/@azure/cognitiveservices-luis-runtime/?view=azure-node-latest)|[NPM-Erstellung](https://www.npmjs.com/package/@azure/cognitiveservices-luis-authoring)<br>[NPM-Vorhersage](https://www.npmjs.com/package/@azure/cognitiveservices-luis-runtime)|[Erstellung](./client-libraries-rest-api.md?pivots=rest-api)<br>[Vorhersage](./client-libraries-rest-api.md?pivots=rest-api)|
+|Python|[Erstellung und Vorhersage](./client-libraries-rest-api.md?pivots=rest-api)|[Pip](https://pypi.org/project/azure-cognitiveservices-language-luis/)|[Erstellung](./client-libraries-rest-api.md?pivots=rest-api)<br>[Vorhersage](./client-libraries-rest-api.md?pivots=rest-api)|
 
 
 ### <a name="containers"></a>Container

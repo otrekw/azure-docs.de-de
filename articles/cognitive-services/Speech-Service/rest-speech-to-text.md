@@ -11,19 +11,19 @@ ms.topic: conceptual
 ms.date: 01/08/2021
 ms.author: trbye
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 1577d63822bdb21eff7fcbb3e1343243a3004409
-ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
+ms.openlocfilehash: 70c5593f29b5e83d5d3f318179d365a9235849ca
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98033641"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98790612"
 ---
 # <a name="speech-to-text-rest-api"></a>Spracherkennungs-REST-API
 
 Für die Spracherkennung gibt es zwei unterschiedliche REST-APIs. Jede API dient einem speziellen Zweck und verwendet unterschiedliche Gruppen von Endpunkten.
 
 Es gibt folgende REST-APIs für die Spracherkennung:
-- Die [Spracherkennungs-REST-API 3.0](#speech-to-text-rest-api-v30) wird für die [Batchtranskription](batch-transcription.md) und [Custom Speech](custom-speech-overview.md) eingesetzt. Version 3.0 ist die [Nachfolgeversion von Version 2.0](/azure/cognitive-services/speech-service/migrate-v2-to-v3).
+- Die [Spracherkennungs-REST-API 3.0](#speech-to-text-rest-api-v30) wird für die [Batchtranskription](batch-transcription.md) und [Custom Speech](custom-speech-overview.md) eingesetzt. Version 3.0 ist die [Nachfolgeversion von Version 2.0](./migrate-v2-to-v3.md).
 - Die [Spracherkennungs-REST-API für kurze Audiodaten](#speech-to-text-rest-api-for-short-audio) wird für die Onlinetranskription als Alternative zum [Speech-SDK](speech-sdk.md) eingesetzt. Anforderungen, die diese API verwenden, können pro Anforderung nur bis zu 60 Sekunden Audiodaten übertragen. 
 
 ## <a name="speech-to-text-rest-api-v30"></a>Spracherkennungs-REST-API 3.0
@@ -45,7 +45,7 @@ Die REST-API 3.0 enthält unter anderem folgende Features:
 
 Beispiele zur Verwendung der REST-API 3.0 mit der Batchtranskription finden Sie in [diesem Artikel](batch-transcription.md).
 
-Wenn Sie die Spracherkennungs-REST-API 2.0 verwenden, finden Sie weitere Informationen zur Migration zu Version 3.0 in [diesem Leitfaden](/azure/cognitive-services/speech-service/migrate-v2-to-v3).
+Wenn Sie die Spracherkennungs-REST-API 2.0 verwenden, finden Sie weitere Informationen zur Migration zu Version 3.0 in [diesem Leitfaden](./migrate-v2-to-v3.md).
 
 Die gesamte Referenz zur Spracherkennungs-REST-API 3.0 finden Sie [hier](https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0).
 

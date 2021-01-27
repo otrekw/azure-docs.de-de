@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 12/29/2020
-ms.openlocfilehash: 0834b8f00e4c414b3a36314b80f6c99fb8f2aea2
-ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
+ms.openlocfilehash: b297330f3562babf9e83d36934827f7b92d5ea35
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97955211"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98787011"
 ---
 # <a name="batch-testing-with-a-set-of-example-utterances"></a>Batchtests mit einem Satz von Beispieläußerungen
 
@@ -99,7 +99,7 @@ Der JSON-Beispielcode enthält eine Äußerung mit einer bezeichneten Entität, 
 
 Wählen Sie zum Überprüfen der Batchtestergebnisse **See results** (Ergebnisse anzeigen) aus. Die Testergebnisse zeigen grafisch, wie die Testäußerungen für die aktive Version vorhergesagt wurden.
 
-Das Batchdiagramm zeigt die Ergebnisse in vier Quadranten an. Rechts neben dem Diagramm befindet sich ein Filter. Der Filter enthält Absichten und Entitäten. Wenn Sie einen [Diagrammabschnitt](luis-concept-batch-test.md#batch-test-results) oder einen Punkt innerhalb des Diagramms auswählen, werden die zugehörigen Äußerungen unterhalb des Diagramms angezeigt.
+Das Batchdiagramm zeigt die Ergebnisse in vier Quadranten an. Rechts neben dem Diagramm befindet sich ein Filter. Der Filter enthält Absichten und Entitäten. Wenn Sie einen [Diagrammabschnitt](#review-batch-results-for-intents) oder einen Punkt innerhalb des Diagramms auswählen, werden die zugehörigen Äußerungen unterhalb des Diagramms angezeigt.
 
 Wenn Sie auf das Diagramm zeigen, können Sie mit dem Mausrad die Ansicht im Diagramm vergrößern oder verkleinern. Dies ist hilfreich, wenn es viele Punkte im Diagramm gibt, die nah beieinander gruppiert sind.
 
@@ -166,7 +166,7 @@ In den beiden Abschnitten des Diagramms in Grün entsprach die Vorhersage der Er
 
 ## <a name="batch-testing-using-the-rest-api"></a>Batchtests mithilfe der REST-API 
 
-LUIS ermöglicht Ihnen Batchtests im LUIS-Portal und mithilfe der REST-API. Die Endpunkte für die REST-API sind unten aufgeführt. Informationen zu Batchtests im LUIS-Portal finden Sie unter [Tutorial: Batchtests von Datasets](luis-tutorial-batch-testing.md). Verwenden Sie die unten aufgeführten vollständigen URLs, und ersetzen Sie die Platzhalterwerte durch Ihren eigenen LUIS-Vorhersageschlüssel und Ihren Endpunkt. 
+LUIS ermöglicht Ihnen Batchtests im LUIS-Portal und mithilfe der REST-API. Die Endpunkte für die REST-API sind unten aufgeführt. Informationen zu Batchtests im LUIS-Portal finden Sie unter [Tutorial: Batchtests von Datasets](). Verwenden Sie die unten aufgeführten vollständigen URLs, und ersetzen Sie die Platzhalterwerte durch Ihren eigenen LUIS-Vorhersageschlüssel und Ihren Endpunkt. 
 
 Vergessen Sie nicht, im Header Ihren LUIS-Schlüssel zu `Ocp-Apim-Subscription-Key` hinzuzufügen, und legen Sie `Content-Type` auf `application/json` fest.
 
@@ -265,5 +265,3 @@ Wenn sich in Tests herausstellt, dass Ihre LUIS-App nicht die richtige Absichten
 
 * [Bezeichnen von vorgeschlagenen Äußerungen mit LUIS](luis-how-to-review-endpoint-utterances.md)
 * [Verwenden von Features zum Verbessern der Leistung Ihrer LUIS-App](luis-how-to-add-features.md)
-* [Tutorial zu Grundlagen von Batchtests](luis-tutorial-batch-testing.md)
-* [Erfahren Sie etwas über Batchtestkonzepte](luis-concept-batch-test.md).
