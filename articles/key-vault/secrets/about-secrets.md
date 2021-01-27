@@ -10,12 +10,12 @@ ms.subservice: secrets
 ms.topic: overview
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 4ded48fe8f04d2cdba40650974fd5002d659e381
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: 78e9c50cb0601f6be69ae61f3a8e02621c7dd808
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97705267"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98786038"
 ---
 # <a name="about-azure-key-vault-secrets"></a>Informationen zu Azure Key Vault-Geheimnissen
 
@@ -84,7 +84,7 @@ Sie können zusätzliche anwendungsspezifische Metadaten in Form von Tags angebe
 
 ## <a name="azure-storage-account-key-management"></a>Verwaltung eines Azure-Speicherkontoschlüssels
 
-Key Vault kann [Azure-Speicherkontoschlüssel](https://docs.microsoft.com/azure/storage/common/storage-account-overview) verwalten:
+Key Vault kann [Azure-Speicherkontoschlüssel](../../storage/common/storage-account-overview.md) verwalten:
 
 - Intern kann Key Vault die Schlüssel eines Azure-Speicherkontos auflisten (synchronisieren). 
 - Key Vault kann die Schlüssel in regelmäßigen Abständen erneut generieren (rotieren).
@@ -92,7 +92,7 @@ Key Vault kann [Azure-Speicherkontoschlüssel](https://docs.microsoft.com/azure/
 - Key Vault verwaltet Schlüssel von Speicherkonten und klassischen Speicherkonten.
 
 Weitere Informationen finden Sie unter
-- [Speicherkonto-Zugriffsschlüssel](https://docs.microsoft.com/azure/storage/common/storage-account-keys-manage)
+- [Speicherkonto-Zugriffsschlüssel](../../storage/common/storage-account-keys-manage.md)
 - [Verwaltung von Speicherkontoschlüsseln in Azure Key Vault](../secrets/overview-storage-keys.md)
 
 

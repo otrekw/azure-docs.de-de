@@ -8,12 +8,12 @@ ms.topic: overview
 author: peterclu
 ms.author: peterlu
 ms.date: 08/24/2020
-ms.openlocfilehash: f59ed16f98a22f77b2e67ec2bf829f58dccef611
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: 4212c76d052fe1f272963003e836425b50d6f105
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97740503"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98677613"
 ---
 # <a name="what-is-azure-machine-learning-studio"></a>Was ist Azure Machine Learning Studio?
 
@@ -90,7 +90,7 @@ In der folgenden Tabelle sind die wichtigsten Unterschiede zwischen ML Studio (C
 | Funktion | ML Studio (klassisch) | Azure Machine Learning |
 |---| --- | --- |
 | Drag & Drop-Oberfläche | Klassische Umgebung | Aktualisierte Umgebung – [Azure Machine Learning-Designer](concept-designer.md)| 
-| Code SDKs | Nicht unterstützt | Vollständig integriert in [Azure Machine Learning Python](/python/api/overview/azure/ml/) und [R](tutorial-1st-r-experiment.md) SDKs |
+| Code SDKs | Nicht unterstützt | Vollständig integriert in [Azure Machine Learning Python](/python/api/overview/azure/ml/) und [R](https://github.com/Azure/azureml-sdk-for-r) SDKs |
 | Experiment | Skalierbar (Limit für Trainingsdaten: 10 GB) | Skalieren mit Computeziel |
 | Trainieren von Computezielen | Proprietäres Computeziel, nur CPU-Unterstützung | Viele anpassbare [Computeziele für das Training](concept-compute-target.md#train). GPU- und CPU-Unterstützung | 
 | Computeziele für die Bereitstellung | Proprietäres Webdienstformat, nicht anpassbar | Viele anpassbare [Computeziele für die Bereitstellung](concept-compute-target.md#deploy). GPU- und CPU-Unterstützung |

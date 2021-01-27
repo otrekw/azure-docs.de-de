@@ -11,12 +11,12 @@ ms.date: 04/27/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: ae21368269a2c098b4e35bf83b8c9fdf2749a297
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 9d69c1708e73ad7ce5610a0683835e9f304c3f54
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96460553"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98679753"
 ---
 # <a name="quickstart-configure-workload-isolation-in-a-dedicated-sql-pool-using-t-sql"></a>Schnellstart: Konfigurieren der Workloadisolation in einem dedizierten SQL-Pool mithilfe von T-SQL
 
@@ -33,7 +33,7 @@ In dieser Schnellstartanleitung wird vorausgesetzt, dass Sie bereits über eine 
 
 ## <a name="create-login-for-dataloads"></a>Erstellen einer Anmeldung für „DataLoads“
 
-Erstellen Sie eine SQL Server-Authentifizierungsanmeldung in der `master`-Datenbank, indem Sie [CREATE LOGIN](/sql/t-sql/statements/create-login-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) für „ELTLogin“ verwenden.
+Erstellen Sie eine SQL Server-Authentifizierungsanmeldung in der `master`-Datenbank, indem Sie [CREATE LOGIN](/sql/t-sql/statements/create-login-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) für „ELTLogin“ verwenden.
 
 ```sql
 IF NOT EXISTS (SELECT * FROM sys.sql_logins WHERE name = 'ELTLogin')
@@ -45,7 +45,7 @@ END
 
 ## <a name="create-user"></a>Benutzer erstellen
 
-[Erstellen Sie den Benutzer](/sql/t-sql/statements/create-user-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) „ELTLogin“ in „mySampleDataWarehouse“.
+[Erstellen Sie den Benutzer](/sql/t-sql/statements/create-user-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) „ELTLogin“ in „mySampleDataWarehouse“.
 
 ```sql
 IF NOT EXISTS (SELECT * FROM sys.database_principals WHERE name = 'ELTLogin')
@@ -57,7 +57,7 @@ END
 
 ## <a name="create-a-workload-group"></a>Erstellen einer Arbeitsauslastungsgruppe
 
-Erstellen Sie eine [Arbeitsauslastungsgruppe](/sql/t-sql/statements/create-workload-group-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) für „DataLoads“ mit einer Isolation von 20 %.
+Erstellen Sie eine [Arbeitsauslastungsgruppe](/sql/t-sql/statements/create-workload-group-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) für „DataLoads“ mit einer Isolation von 20 %.
 
 ```sql
 CREATE WORKLOAD GROUP DataLoads
@@ -69,7 +69,7 @@ WITH ( MIN_PERCENTAGE_RESOURCE = 20
 
 ## <a name="create-a-workload-classifier"></a>Erstellen eines Workloadklassifizierers
 
-Erstellen Sie einen [Workloadklassifizierer](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest), um „ELTLogin“ der Arbeitsauslastungsgruppe „DataLoads“ zuzuordnen.
+Erstellen Sie einen [Workloadklassifizierer](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true), um „ELTLogin“ der Arbeitsauslastungsgruppe „DataLoads“ zuzuordnen.
 
 ```sql
 CREATE WORKLOAD CLASSIFIER [wgcELTLogin]
@@ -110,5 +110,5 @@ Ihnen werden Gebühren für Data Warehouse-Einheiten und die in Ihrem dediziert
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Sie haben nun eine Arbeitsauslastungsgruppe erstellt. Führen Sie einige Abfragen als ELTLogin durch, um zu ermitteln, welche Leistung erzielt wird. Sie können die Abfragen und die zugewiesene Arbeitsauslastungsgruppe unter [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql/?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) anzeigen.
+- Sie haben nun eine Arbeitsauslastungsgruppe erstellt. Führen Sie einige Abfragen als ELTLogin durch, um zu ermitteln, welche Leistung erzielt wird. Sie können die Abfragen und die zugewiesene Arbeitsauslastungsgruppe unter [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql/?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) anzeigen.
 - Weitere Informationen zur Synapse SQL-Workloadverwaltung finden Sie unter [Workloadverwaltung](sql-data-warehouse-workload-management.md) und [Workloadisolation](sql-data-warehouse-workload-isolation.md).

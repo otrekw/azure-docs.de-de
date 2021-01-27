@@ -7,12 +7,12 @@ ms.service: attestation
 ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 52c0dd6825c8576d97e10d3f0568ca5fb81e789e
-ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
+ms.openlocfilehash: 3ab1e6011a1c127c9ac5a2c7652a4bf458372e1e
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98210801"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98733936"
 ---
 # <a name="quickstart-set-up-azure-attestation-with-azure-portal"></a>Schnellstart: Einrichten von Azure Attestation über das Azure-Portal
 
@@ -58,7 +58,7 @@ Führen Sie die folgenden Schritte aus, um einen Nachweisanbieter über das Azur
 
     d. **Standort**: Wählen Sie einen Standort aus. 
     
-    e. **Datei für Richtlinien-Signaturgeberzertifikate**: Laden Sie die Zertifikatdatei hoch, um den Nachweisanbieter mit Richtlinien-Signaturgeberzertifikaten zu konfigurieren. Hilfreiche Beispiele finden Sie [hier](/azure/attestation/policy-signer-examples). 
+    e. **Datei für Richtlinien-Signaturgeberzertifikate**: Laden Sie die Zertifikatdatei hoch, um den Nachweisanbieter mit Richtlinien-Signaturgeberzertifikaten zu konfigurieren. Hilfreiche Beispiele finden Sie [hier](./policy-signer-examples.md). 
 6.  Klicken Sie auf **Überprüfen und erstellen**, nachdem Sie die erforderlichen Daten eingegeben haben.
 7.  Beheben Sie die Probleme bei der Überprüfung, falls vorhanden, und klicken Sie auf **Erstellen**.
 
@@ -98,7 +98,7 @@ a.  Überprüfen Sie die Anzahl von Zertifikaten und die heruntergeladenen Zerti
 3.  Wählen Sie den Nachweisanbieter aus, und navigieren Sie zur Übersichtsseite.
 4.  Klicken Sie links im Ressourcenmenü oder im unteren Bereich auf **Richtlinien-Signaturgeberzertifikate**.
 5.  Klicken Sie im obersten Menü auf **Hinzufügen**. (Für Nachweisanbieter, die ohne obligatorische Signierung von Richtlinien erstellt wurden, ist die Schaltfläche deaktiviert.)
-6.  Laden Sie die Datei für Richtlinien-Signaturgeberzertifikate hoch, und klicken Sie auf **Hinzufügen**. Hilfreiche Beispiele finden Sie [hier](/azure/attestation/policy-signer-examples).
+6.  Laden Sie die Datei für Richtlinien-Signaturgeberzertifikate hoch, und klicken Sie auf **Hinzufügen**. Hilfreiche Beispiele finden Sie [hier](./policy-signer-examples.md).
 
 ### <a name="delete-policy-signer-certificate"></a>Löschen des Richtlinien-Signaturgeberzertifikats
 
@@ -107,7 +107,7 @@ a.  Überprüfen Sie die Anzahl von Zertifikaten und die heruntergeladenen Zerti
 3.  Wählen Sie den Nachweisanbieter aus, und navigieren Sie zur Übersichtsseite.
 4.  Klicken Sie links im Ressourcenmenü oder im unteren Bereich auf **Richtlinien-Signaturgeberzertifikate**.
 5.  Klicken Sie im obersten Menü auf **Löschen**. (Für Nachweisanbieter, die ohne obligatorische Signierung von Richtlinien erstellt wurden, ist die Schaltfläche deaktiviert.)
-6.  Laden Sie die Datei für Richtlinien-Signaturgeberzertifikate hoch, und klicken Sie auf **Löschen**. Hilfreiche Beispiele finden Sie [hier](/azure/attestation/policy-signer-examples). 
+6.  Laden Sie die Datei für Richtlinien-Signaturgeberzertifikate hoch, und klicken Sie auf **Löschen**. Hilfreiche Beispiele finden Sie [hier](./policy-signer-examples.md). 
 
 ## <a name="attestation-policy"></a>Nachweisrichtlinie
 
@@ -132,7 +132,7 @@ a.  Überprüfen Sie die Anzahl von Zertifikaten und die heruntergeladenen Zerti
 5.  Klicken Sie im obersten Menü auf **Konfigurieren**.
 6.  Nachdem der Nachweisanbieter ohne obligatorische Signierung von Richtlinien erstellt wurde, kann der Benutzer eine Richtlinie im Format **JWT** oder **Text** hochladen.
 7.  Wählen Sie unter **Richtlinienformat** die Option **JWT** aus.
-8.  Laden Sie eine Richtliniendatei mit Richtlinieninhalten im Format **Unsigniertes/Signiertes JWT** hoch, und klicken Sie auf **Speichern**. Beispiele finden Sie [hier](/azure/attestation/policy-examples).
+8.  Laden Sie eine Richtliniendatei mit Richtlinieninhalten im Format **Unsigniertes/Signiertes JWT** hoch, und klicken Sie auf **Speichern**. Beispiele finden Sie [hier](./policy-examples.md).
     
     Bei der Option zum Hochladen von Dateien wird die Richtlinienvorschau im Textformat angezeigt und kann nicht bearbeitet werden.
 
@@ -147,7 +147,7 @@ a.  Überprüfen Sie die Anzahl von Zertifikaten und die heruntergeladenen Zerti
 5.  Klicken Sie im obersten Menü auf **Konfigurieren**.
 6.  Nachdem der Nachweisanbieter ohne obligatorische Signierung von Richtlinien erstellt wurde, kann der Benutzer eine Richtlinie im Format **JWT** oder **Text** hochladen.
 7.  Wählen Sie unter **Richtlinienformat** die Option **Text** aus.
-8.  Laden Sie die Richtliniendatei mit den entsprechenden Inhalten im Format **Text** hoch, oder geben Sie die Richtlinieninhalte im Textbereich ein, und klicken Sie auf **Speichern**. Beispiele finden Sie [hier](/azure/attestation/policy-examples).
+8.  Laden Sie die Richtliniendatei mit den entsprechenden Inhalten im Format **Text** hoch, oder geben Sie die Richtlinieninhalte im Textbereich ein, und klicken Sie auf **Speichern**. Beispiele finden Sie [hier](./policy-examples.md).
 
     Bei der Option zum Hochladen von Dateien wird die Richtlinienvorschau im Textformat angezeigt und kann nicht bearbeitet werden.
 
@@ -163,20 +163,9 @@ a.  Überprüfen Sie die Anzahl von Zertifikaten und die heruntergeladenen Zerti
 4.  Klicken Sie links im Ressourcenmenü oder im unteren Bereich auf **Richtlinie**.
 5.  Klicken Sie im obersten Menü auf **Konfigurieren**.
 6.  Nachdem der Nachweisanbieter mit obligatorischer Signierung von Richtlinien erstellt wurde, kann der Benutzer eine Richtlinie nur im Format **Signiertes JWT** hochladen.
-7.  Laden Sie die Richtliniendatei im Format **Signiertes JWT** hoch, und klicken Sie auf **Speichern**. Beispiele finden Sie [hier](/azure/attestation/policy-examples).
+7.  Laden Sie die Richtliniendatei im Format **Signiertes JWT** hoch, und klicken Sie auf **Speichern**. Beispiele finden Sie [hier](./policy-examples.md).
 
     Bei der Option zum Hochladen von Dateien wird die Richtlinienvorschau im Textformat angezeigt und kann nicht bearbeitet werden.
     
 8.  Klicken Sie auf **Aktualisieren**, um die konfigurierte Richtlinie anzuzeigen.
-
- 
-
-
-
-
-
-
-
-
-
 

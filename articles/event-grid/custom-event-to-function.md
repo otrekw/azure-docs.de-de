@@ -3,12 +3,12 @@ title: 'Schnellstart: Senden von benutzerdefinierten Ereignissen an eine Azure-F
 description: 'Schnellstart: Verwenden Sie Azure Event Grid und die Azure CLI oder das Portal, um ein Thema zu veröffentlichen und dieses Ereignis zu abonnieren. Als Endpunkt wird eine Azure-Funktion verwendet.'
 ms.date: 07/07/2020
 ms.topic: quickstart
-ms.openlocfilehash: aea52bcaa94d6f288e86e44e1a0f294796d8e4a3
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 4fe4753de41443a0537636933364c7b69b25cb27
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95996343"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791726"
 ---
 # <a name="quickstart-route-custom-events-to-an-azure-function-with-event-grid"></a>Schnellstart: Weiterleiten von benutzerdefinierten Ereignissen an eine Azure-Funktion mit Event Grid
 
@@ -19,7 +19,7 @@ Azure Event Grid ist ein Ereignisdienst für die Cloud. Azure Functions ist eine
 ## <a name="create-azure-function"></a>Azure-Funktion erstellen
 Vor dem Abonnieren des benutzerdefinierten Themas erstellen wir zunächst eine Funktion zur Verarbeitung der Ereignisse. 
 
-1. Erstellen Sie eine Funktions-App mithilfe der Anweisungen unter [Erstellen einer Funktions-App](../azure-functions/functions-create-first-azure-function.md#create-a-function-app).
+1. Erstellen Sie eine Funktions-App mithilfe der Anweisungen unter [Erstellen einer Funktions-App](../azure-functions/functions-get-started.md).
 2. Erstellen Sie eine Funktion mithilfe des **Event Grid-Triggers**. Wenn Sie diesen Trigger zum ersten Mal verwenden, müssen Sie möglicherweise auf „Installieren“ klicken, um die Erweiterung zu installieren.
     1. Wählen Sie auf der Seite **Funktions-App** im linken Menü **Funktionen** aus, suchen Sie in den Vorlagen nach **Event Grid**,und wählen Sie dann **Azure Event Grid-Trigger** aus. 
 

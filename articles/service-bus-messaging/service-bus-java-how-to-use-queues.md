@@ -5,12 +5,12 @@ ms.devlang: Java
 ms.topic: quickstart
 ms.date: 11/09/2020
 ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: d95c96e76a3463a77cc64234a909cc1e3d093837
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: a910f61389183b77af1f73f8d3553f6c5bbc8452
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97630223"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881583"
 ---
 # <a name="send-messages-to-and-receive-messages-from-azure-service-bus-queues-java"></a>Senden und Empfangen von Nachrichten für Azure Service Bus-Warteschlangen (Java)
 In dieser Schnellstartanleitung erstellen Sie eine Java-App zum Senden und Empfangen von Nachrichten für eine Azure Service Bus-Warteschlange. 
@@ -220,7 +220,7 @@ Wählen Sie die Warteschlange auf der Seite **Übersicht** aus, um zur Seite **S
 Weitere Informationen finden Sie in der folgenden Dokumentation bzw. unter den folgenden Beispielen:
 
 - [Azure Service Bus-Clientbibliothek für Java: Infodatei](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/servicebus/azure-messaging-servicebus/README.md)
-- [Beispiele bei GitHub](https://docs.microsoft.com/samples/azure/azure-sdk-for-java/servicebus-samples/)
+- [Beispiele bei GitHub](/samples/azure/azure-sdk-for-java/servicebus-samples/)
 - [Java-API-Referenz](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-messaging-servicebus/7.0.0/index.html)
 
 [Azure SDK for Java]: /azure/developer/java/sdk/java-sdk-azure-get-started

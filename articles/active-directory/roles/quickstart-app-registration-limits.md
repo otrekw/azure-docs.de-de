@@ -2,23 +2,23 @@
 title: Entfernen von Einschränkungen beim Erstellen von App-Registrierungen – Azure AD | Microsoft-Dokumentation
 description: Hier erfahren Sie, wie Sie eine benutzerdefinierte Rolle zuweisen, um uneingeschränkte App-Registrierungen in Azure Active Directory (AD) zuzulassen.
 services: active-directory
-author: curtand
+author: rolyon
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: roles
 ms.topic: quickstart
 ms.date: 11/05/2020
-ms.author: curtand
+ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro, devx-track-azurepowershell
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4a78296d3fd040b047c2a6cc3761d429883aa9d1
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: 260b0621bf204c6d7593b3696c602665c42ad77e
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93378787"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98740855"
 ---
 # <a name="quickstart-grant-permission-to-create-unlimited-app-registrations"></a>Schnellstart: Erteilen einer Berechtigung zum Erstellen unbegrenzter App-Registrierungen
 
@@ -41,14 +41,14 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
     ![Auswählen der Berechtigungen für eine benutzerdefinierte Rolle auf der Registerkarte „Berechtigungen“](./media/quickstart-app-registration-limits/permissions-tab.png)
 
-1. Überprüfen Sie die Berechtigungen auf der Registerkarte **Überprüfen + erstellen** , und wählen Sie **Erstellen** aus.
+1. Überprüfen Sie die Berechtigungen auf der Registerkarte **Überprüfen + erstellen**, und wählen Sie **Erstellen** aus.
 
 ### <a name="assign-the-role-in-the-azure-ad-portal"></a>Zuweisen der Rolle im Azure AD-Portal
 
 1. Melden Sie sich beim [Azure AD Admin Center](https://aad.portal.azure.com) mit Berechtigungen vom Typ „Administrator für privilegierte Rollen“ oder „Globaler Administrator“ in der Azure AD-Organisation an.
 1. Wählen Sie **Azure Active Directory** > **Rollen und Administratoren** aus.
 1. Wählen Sie die Rolle „Application Registration Creator“ (Anwendungsregistrierungsersteller) und anschließend **Zuweisung hinzufügen** aus.
-1. Wählen Sie den gewünschten Benutzer aus, und klicken Sie auf **Auswählen** , um ihn der Rolle hinzuzufügen.
+1. Wählen Sie den gewünschten Benutzer aus, und klicken Sie auf **Auswählen**, um ihn der Rolle hinzuzufügen.
 
 Das war's! In dieser Schnellstartanleitung haben Sie eine benutzerdefinierte Rolle mit der Berechtigung zum Erstellen einer unbegrenzten Anzahl von App-Registrierungen erstellt und sie anschließend einem Benutzer zugewiesen.
 

@@ -11,12 +11,12 @@ ms.date: 05/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 302249b7d8490e43b841116c52500e686626433d
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 5773691852ddc723ec84503edee37c678bbbcfd9
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96460626"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98677503"
 ---
 # <a name="quickstart-configure-dedicated-sql-pool-workload-isolation-using-a-workload-group-in-the-azure-portal"></a>Schnellstart: Konfigurieren der Workloadisolation eines dedizierten SQL-Pools mithilfe einer Arbeitsauslastungsgruppe im Azure-Portal
 
@@ -93,7 +93,7 @@ Führen Sie die folgenden Schritte aus, um Ressourcen zu bereinigen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Zur Verwendung der Arbeitsauslastungsgruppe `DataLoads` muss ein [Workloadklassifizierer](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) erstellt werden, um Anforderungen an die Arbeitsauslastungsgruppe weiterzuleiten.  Fahren Sie mit dem Tutorial zum [Erstellen eines Workloadklassifizierers](quickstart-create-a-workload-classifier-portal.md) fort, um einen Workloadklassifizierer für `DataLoads` zu erstellen.
+Zur Verwendung der Arbeitsauslastungsgruppe `DataLoads` muss ein [Workloadklassifizierer](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) erstellt werden, um Anforderungen an die Arbeitsauslastungsgruppe weiterzuleiten.  Fahren Sie mit dem Tutorial zum [Erstellen eines Workloadklassifizierers](quickstart-create-a-workload-classifier-portal.md) fort, um einen Workloadklassifizierer für `DataLoads` zu erstellen.
 
 ## <a name="see-also"></a>Weitere Informationen
 Ausführliche Informationen zum Überwachen von Workloads für die Workloadverwaltung finden Sie im Artikel [Verwalten und Überwachen der Workloadpriorität in Azure Synapse Analytics](sql-data-warehouse-how-to-manage-and-monitor-workload-importance.md).

@@ -8,12 +8,12 @@ ms.subservice: security
 ms.topic: quickstart
 ms.date: 05/17/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 3a9c859c32ef9ad387c56d5fc20f2173ee14fac5
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: addfa90f5ec793600072aaaaf2786cfe3d5dad38
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91975177"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737014"
 ---
 # <a name="quickstart-create-and-encrypt-a-linux-vm-with-the-azure-cli"></a>Schnellstart: Erstellen und Verschlüsseln einer Linux-VM mit der Azure CLI
 
@@ -25,7 +25,7 @@ Wenn Sie die Azure-Befehlszeilenschnittstelle lokal installieren und verwenden m
 
 ## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 
-Erstellen Sie mithilfe des Befehls [az group create](/cli/azure/group?view=azure-cli-latest#az-group-create) eine Ressourcengruppe. Eine Azure-Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden. Im folgenden Beispiel wird eine Ressourcengruppe mit dem Namen *myResourceGroup* am Standort *eastus* erstellt:
+Erstellen Sie mithilfe des Befehls [az group create](/cli/azure/group#az-group-create) eine Ressourcengruppe. Eine Azure-Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden. Im folgenden Beispiel wird eine Ressourcengruppe mit dem Namen *myResourceGroup* am Standort *eastus* erstellt:
 
 ```azurecli-interactive
 az group create --name "myResourceGroup" --location "eastus"
@@ -33,7 +33,7 @@ az group create --name "myResourceGroup" --location "eastus"
 
 ## <a name="create-a-virtual-machine"></a>Erstellen eines virtuellen Computers
 
-Erstellen Sie mit [az vm create](/cli/azure/vm?view=azure-cli-latest#az-vm-create) einen virtuellen Computer. Im folgenden Beispiel wird ein virtueller Computer namens *myVM* erstellt:
+Erstellen Sie mit [az vm create](/cli/azure/vm#az_vm_create) einen virtuellen Computer. Im folgenden Beispiel wird ein virtueller Computer namens *myVM* erstellt:
 
 ```azurecli-interactive
 az vm create \
@@ -61,7 +61,7 @@ Das Erstellen des virtuellen Computers und der unterstützenden Ressourcen dauer
 
 ## <a name="create-a-key-vault-configured-for-encryption-keys"></a>Erstellen eines für Verschlüsselungsschlüssel konfigurierten Schlüsseltresors
 
-Bei der Azure-Datenträgerverschlüsselung werden die Verschlüsselungsschlüssel in Azure Key Vault gespeichert. Erstellen Sie mit [az keyvault create](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-create) einen Schlüsseltresor. Um dem Schlüsseltresor die Speicherung von Verschlüsselungscodes zu ermöglichen, verwenden Sie den Parameter „--enabled-for-disk-encryption“.
+Bei der Azure-Datenträgerverschlüsselung werden die Verschlüsselungsschlüssel in Azure Key Vault gespeichert. Erstellen Sie mit [az keyvault create](/cli/azure/keyvault#az_keyvault_create) einen Schlüsseltresor. Um dem Schlüsseltresor die Speicherung von Verschlüsselungscodes zu ermöglichen, verwenden Sie den Parameter „--enabled-for-disk-encryption“.
 
 > [!Important]
 > Jeder Schlüsseltresor muss einen Namen aufweisen, der in Azure eindeutig ist. Ersetzen Sie in den Beispielen unten <your-unique-keyvault-name> durch einen von Ihnen gewählten Namen.
@@ -72,7 +72,7 @@ az keyvault create --name "<your-unique-keyvault-name>" --resource-group "myReso
 
 ## <a name="encrypt-the-virtual-machine"></a>Verschlüsseln des virtuellen Computers
 
-Verschlüsseln Sie Ihre VM mit [az vm encryption](/cli/azure/vm/encryption?view=azure-cli-latest), und geben Sie dem Parameter „--disk-encryption-keyvault“ Ihren eindeutigen Schlüsseltresornamen an.
+Verschlüsseln Sie Ihre VM mit [az vm encryption](/cli/azure/vm/encryption), und geben Sie dem Parameter „--disk-encryption-keyvault“ Ihren eindeutigen Schlüsseltresornamen an.
 
 ```azurecli-interactive
 az vm encryption enable -g "MyResourceGroup" --name "myVM" --disk-encryption-keyvault "<your-unique-keyvault-name>"

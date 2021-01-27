@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 06/22/2020
 ms.author: danis
 ms.reviewer: cynthn
-ms.openlocfilehash: e364578cdec8696688cf19e14fd0529f1ca3fbb3
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 223fdc215bc391bea5cad5d4cb9999b9d14ba570
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94842616"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878781"
 ---
 # <a name="bringing-and-creating-linux-images-in-azure"></a>Bereitstellen und Erstellen von Linux-Images in Azure
 
@@ -29,7 +29,7 @@ Azure ermöglicht Ihnen das Bereitstellen einer virtuellen Festplatte (Virtual H
 
 Verwaltete Azure-Datenträger sind einzelne VHDs. Sie können entweder anhand einer vorhandenen VHD einen verwalteten Datenträger erstellen oder einen leeren verwalteten Datenträger von Grund auf erstellen. Sie können VMs von verwalteten Datenträgern erstellen, indem Sie den Datenträger an den virtuellen Computer anfügen, aber Sie können nur eine VHD mit einem virtuellen Computer verwenden. Sie können keine Betriebssystemeigenschaften ändern. Azure versucht lediglich, den virtuellen Computer zu aktivieren und mit diesem Datenträger zu starten. 
 
-Azure-Images können aus mehreren Betriebssystemdatenträgern und Datenträgern bestehen. Wenn Sie ein verwaltetes Image zum Erstellen eines virtuellen Computers verwenden, erstellt die Plattform eine Kopie des Image und verwendet diese, um den virtuellen Computer zu erstellen. Verwaltete Images unterstützen also die Wiederverwendung desselben Image für mehrere VMs. Azure bietet auch erweiterte Verwaltungsfunktionen für Images wie die globale Replikation und die Versionsverwaltung über [Shared Image Gallery](shared-image-galleries.md). 
+Azure-Images können aus mehreren Betriebssystemdatenträgern und Datenträgern bestehen. Wenn Sie ein verwaltetes Image zum Erstellen eines virtuellen Computers verwenden, erstellt die Plattform eine Kopie des Image und verwendet diese, um den virtuellen Computer zu erstellen. Verwaltete Images unterstützen also die Wiederverwendung desselben Image für mehrere VMs. Azure bietet auch erweiterte Verwaltungsfunktionen für Images wie die globale Replikation und die Versionsverwaltung über [Shared Image Gallery](../shared-image-galleries.md). 
 
 
 
@@ -65,7 +65,7 @@ Für diese Images sind keine Bereitstellungs-Agents erforderlich. Möglicherweis
 Für die Bereitstellung Ihres Linux-Image stehen Ihnen zwei Optionen zur Verfügung:
 
 - Verwaltete Images für die einfache VM-Erstellung in einer Entwicklungs- und Testumgebung.
-- [Shared Image Gallery](shared-image-galleries.md) für das bedarfsorientierte Erstellen und Freigeben von Images.
+- [Shared Image Gallery](../shared-image-galleries.md) für das bedarfsorientierte Erstellen und Freigeben von Images.
 
 
 ### <a name="managed-images"></a>Verwaltete Images
@@ -76,7 +76,7 @@ Verwaltete Images können in Entwicklungs- und Testumgebungen verwendet werden, 
 
 ### <a name="azure-shared-image-gallery-sig"></a>Azure Shared Image Gallery (SIG)
 
-Die Verwendung von [Katalogen mit freigegebenen Images](shared-image-galleries.md) (Shared Image Galleries, SIGs) wird für das bedarfsorientierte Erstellen, Verwalten und Freigeben von Images empfohlen. Kataloge mit freigegebenen Images unterstützen Sie dabei, Ihre Images zu strukturieren und zu organisieren.  
+Die Verwendung von [Katalogen mit freigegebenen Images](../shared-image-galleries.md) (Shared Image Galleries, SIGs) wird für das bedarfsorientierte Erstellen, Verwalten und Freigeben von Images empfohlen. Kataloge mit freigegebenen Images unterstützen Sie dabei, Ihre Images zu strukturieren und zu organisieren.  
 
 - Unterstützung von generalisierten und spezialisierten Images
 - Unterstützung von Images der Generation 1 und 2

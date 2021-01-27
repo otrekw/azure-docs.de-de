@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: quickstart
 ms.date: 10/23/2020
-ms.openlocfilehash: 6aeb4e29390b5b456d3aa820e4b3b8be762dbddd
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: dea881acc4cec90c4a8ad6169d94734f24d5b759
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98115785"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880032"
 ---
 # <a name="quickstart-create-an-azure-purview-account-in-the-azure-portal"></a>Schnellstart: Erstellen eines Azure Purview-Kontos im Azure-Portal
 
@@ -25,7 +25,7 @@ In dieser Schnellstartanleitung wird ein Azure Purview-Konto erstellt.
 
 * Ein Azure-Konto mit einem aktiven Abonnement. Sie können [kostenlos ein Konto erstellen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-* Ihr eigener [Azure Active Directory-Mandant](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant).
+* Ihr eigener [Azure Active Directory-Mandant](../active-directory/fundamentals/active-directory-access-create-new-tenant.md).
 
 * Ihr Konto muss zum Erstellen von Ressourcen im Abonnement berechtigt sein.
 
@@ -35,7 +35,7 @@ In dieser Schnellstartanleitung wird ein Azure Purview-Konto erstellt.
     > Sie müssen diesen Schritt nicht ausführen, wenn Sie nicht über Azure Policy verfügen oder eine vorhandene Azure Policy-Instanz die Erstellung eines **Speicherkontos** und **EventHub-Namespaces** nicht blockiert.
 
     1. Suchen Sie im Azure-Portal nach **Policy**.
-    1. Gehen Sie wie unter [Tutorial: Erstellen einer benutzerdefinierten Richtliniendefinition](https://docs.microsoft.com/azure/governance/policy/tutorials/create-custom-policy-definition) beschrieben vor, oder ändern Sie die vorhandene Richtlinie, um zwei Ausnahmen mit dem Operator `not` und dem Tag `resourceBypass` hinzuzufügen:
+    1. Gehen Sie wie unter [Tutorial: Erstellen einer benutzerdefinierten Richtliniendefinition](../governance/policy/tutorials/create-custom-policy-definition.md) beschrieben vor, oder ändern Sie die vorhandene Richtlinie, um zwei Ausnahmen mit dem Operator `not` und dem Tag `resourceBypass` hinzuzufügen:
 
         ```json
         {
@@ -83,7 +83,7 @@ In dieser Schnellstartanleitung wird ein Azure Purview-Konto erstellt.
 
         :::image type="content" source="./media/create-catalog-portal/policy-definition.png" alt-text="Screenshot: Erstellen der Richtliniendefinition":::
 
-    1. [Erstellen Sie eine Richtlinienzuweisung](https://docs.microsoft.com/azure/governance/policy/assign-policy-portal) mit der erstellten benutzerdefinierten Richtlinie.
+    1. [Erstellen Sie eine Richtlinienzuweisung](../governance/policy/assign-policy-portal.md) mit der erstellten benutzerdefinierten Richtlinie.
 
         [ ![Screenshot: Erstellen der Richtlinienzuweisung](./media/create-catalog-portal/policy-assignment.png)](./media/create-catalog-portal/policy-assignment.png#lightbox)
 
@@ -155,7 +155,7 @@ Sollten nach dem Klicken auf „Hinzufügen“ zwei Optionen angezeigt werden, d
 
 1. Wählen Sie **Rollenzuweisung hinzufügen** aus.
 
-1. Geben Sie für den Rollentyp der Rolle **Datenkurator für Purview** oder **Datenquellenadministrator für Purview** einen entsprechenden Wert an – abhängig davon, wofür der Sicherheitsprinzipal verwendet werden soll (weitere Informationen finden Sie unter [Katalogberechtigungen](catalog-permissions.md) und [Anwendungs- und Dienstprinzipalobjekte in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals)).
+1. Geben Sie für den Rollentyp der Rolle **Datenkurator für Purview** oder **Datenquellenadministrator für Purview** einen entsprechenden Wert an – abhängig davon, wofür der Sicherheitsprinzipal verwendet werden soll (weitere Informationen finden Sie unter [Katalogberechtigungen](catalog-permissions.md) und [Anwendungs- und Dienstprinzipalobjekte in Azure Active Directory](../active-directory/develop/app-objects-and-service-principals.md)).
 
 1. Behalten Sie unter **Zugriff zuweisen zu** den Standardwert **Benutzer, Gruppe oder Dienstprinzipal** bei.
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/10/2020
 ms.author: memildin
-ms.openlocfilehash: 4ecd436b548c29c520a7538970d4d703cc8488d2
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.openlocfilehash: 31472b0a0eedee03d5cfcb6ff47a97033a8c78e0
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "93027566"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98796063"
 ---
 # <a name="enable-security-center-on-all-subscriptions-in-a-management-group"></a>Aktivieren von Security Center in allen Abonnements einer Verwaltungsgruppe
 
@@ -25,7 +25,7 @@ Sie können Azure Policy verwenden, um Azure Security Center in allen Azure-Abon
 
 Führen Sie das Onboarding einer Verwaltungsgruppe und aller zugehörigen Abonnements wie folgt durch:
 
-1. Öffnen Sie Azure Policy als Benutzer mit Berechtigungen vom Typ **Sicherheitsadministrator** , und suchen Sie nach der Definition **Azure Security Center für Ihr Abonnement aktivieren**.
+1. Öffnen Sie Azure Policy als Benutzer mit Berechtigungen vom Typ **Sicherheitsadministrator**, und suchen Sie nach der Definition **Azure Security Center für Ihr Abonnement aktivieren**.
 
     :::image type="content" source="./media/security-center-get-started/enable-security-center-policy.png" alt-text="Azure Policy-Definition „Azure Security Center für Ihr Abonnement aktivieren“":::
 
@@ -55,7 +55,7 @@ Führen Sie das Onboarding einer Verwaltungsgruppe und aller zugehörigen Abonne
 
 Es gibt verschiedene Möglichkeiten, wie Sie die Azure Policy-Definition ändern können: 
 
-- **Abweichendes Definieren von Konformität** : Mit der bereitgestellten Richtlinie werden alle Abonnements der Verwaltungsgruppe, die noch nicht bei Security Center registriert sind, als „nicht konform“ klassifiziert. Sie können auch angeben, dass dies für alle Abonnements ohne Azure Defender gelten soll.
+- **Abweichendes Definieren von Konformität**: Mit der bereitgestellten Richtlinie werden alle Abonnements der Verwaltungsgruppe, die noch nicht bei Security Center registriert sind, als „nicht konform“ klassifiziert. Sie können auch angeben, dass dies für alle Abonnements ohne Azure Defender gelten soll.
 
     Mit der bereitgestellten Definition werden *beide* unten angegebenen Preiseinstellungen als konform festgelegt. Dies bedeutet, dass ein Abonnement, das auf „Standard“ oder „Free“ festgelegt ist, konform ist.
 
@@ -88,7 +88,7 @@ Es gibt verschiedene Möglichkeiten, wie Sie die Azure Policy-Definition ändern
     },
     ```
 
-- **Definieren von einigen Azure Defender-Plänen zum Anwenden beim Aktivieren von Security Center** : Mit der bereitgestellten Richtlinie wird Security Center ohne die optionalen Azure Defender-Pläne aktiviert. Sie können einen oder mehrere davon aktivieren.
+- **Definieren von einigen Azure Defender-Plänen zum Anwenden beim Aktivieren von Security Center**: Mit der bereitgestellten Richtlinie wird Security Center ohne die optionalen Azure Defender-Pläne aktiviert. Sie können einen oder mehrere davon aktivieren.
 
     Im Abschnitt `deployment` der bereitgestellten Definition wird der Parameter `pricingTier` verwendet. Standardmäßig ist er auf `free` festgelegt, aber Sie können dies ändern. 
 
@@ -98,4 +98,4 @@ Es gibt verschiedene Möglichkeiten, wie Sie die Azure Policy-Definition ändern
 Nachdem Sie nun das Onboarding für eine komplette Verwaltungsgruppe durchgeführt haben, aktivieren Sie als Nächstes den erweiterten Schutz von Azure Defender. 
 
 > [!div class="nextstepaction"]
-> [Aktivieren von Azure Defender](security-center-pricing.md)
+> [Aktivieren von Azure Defender](security-center-pricing.md#enable-azure-defender)

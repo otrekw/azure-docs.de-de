@@ -8,12 +8,12 @@ ms.custom: devx-track-csharp
 ms.topic: quickstart
 ms.date: 8/26/2020
 ms.author: alkemper
-ms.openlocfilehash: 6996fdd9dce4314e9365177815d7d310ac80c7cb
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 96efc0ea6300e482ddeeda8fa177847f02b7e126
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98046072"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98724249"
 ---
 # <a name="quickstart-add-feature-flags-to-an-azure-functions-app"></a>Schnellstart: Hinzufügen von Featureflags zu einer Azure Functions-App
 
@@ -46,7 +46,7 @@ Die .NET-Bibliotheken für die Featureverwaltung erweitern das Framework um Unte
 
 ## <a name="connect-to-an-app-configuration-store"></a>Herstellen einer Verbindung mit einem App Configuration-Speicher
 
-Bei diesem Projekt wird die [Abhängigkeitsinjektion in Azure Functions (.NET)](/azure/azure-functions/functions-dotnet-dependency-injection) genutzt. Hierbei wird Azure App Configuration als zusätzliche Konfigurationsquelle hinzugefügt, in der Ihre Featureflags gespeichert werden.
+Bei diesem Projekt wird die [Abhängigkeitsinjektion in Azure Functions (.NET)](../azure-functions/functions-dotnet-dependency-injection.md) genutzt. Hierbei wird Azure App Configuration als zusätzliche Konfigurationsquelle hinzugefügt, in der Ihre Featureflags gespeichert werden.
 
 1. Klicken Sie mit der rechten Maustaste auf Ihr Projekt, und wählen Sie **NuGet-Pakete verwalten** aus. Suchen Sie auf der Registerkarte **Durchsuchen** nach den folgenden NuGet-Paketen, und fügen Sie sie Ihrem Projekt hinzu.
    - [Microsoft.Extensions.Configuration.AzureAppConfiguration](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.AzureAppConfiguration/): Version 4.1.0 oder höher

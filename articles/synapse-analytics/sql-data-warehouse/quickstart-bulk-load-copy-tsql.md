@@ -11,16 +11,16 @@ ms.date: 11/20/2020
 ms.author: kevin
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 939a74a2bbedf6b00159f0c33a50eeb93595cda4
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 547f697c4f8ffb903006e48e94086433d64225c7
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98116074"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98681335"
 ---
 # <a name="quickstart-bulk-load-data-using-the-copy-statement"></a>Schnellstart: Massenladen von Daten mit der COPY-Anweisung
 
-In dieser Schnellstartanleitung verwenden Sie das Massenladen von Daten in Ihren dedizierten SQL-Pool mithilfe der einfachen und flexiblen [COPY-Anweisung](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) für die Datenerfassung mit hohem Durchsatz. Die COPY-Anweisung ist das empfohlene Ladehilfsprogramm, da sie Ihnen mit folgender Funktionalität das nahtlose und flexible Laden von Daten ermöglicht:
+In dieser Schnellstartanleitung verwenden Sie das Massenladen von Daten in Ihren dedizierten SQL-Pool mithilfe der einfachen und flexiblen [COPY-Anweisung](/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest&preserve-view=true) für die Datenerfassung mit hohem Durchsatz. Die COPY-Anweisung ist das empfohlene Ladehilfsprogramm, da sie Ihnen mit folgender Funktionalität das nahtlose und flexible Laden von Daten ermöglicht:
 
 - Benutzer mit niedrigeren Berechtigungen können ohne strikte Berechtigungen zur STEUERUNG im Data Warehouse laden
 - Nutzen einer einzelnen T-SQL-Anweisung, ohne dass zusätzliche Datenbankobjekte erstellt werden müssen

@@ -8,12 +8,12 @@ ms.date: 08/24/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 68a308952b63d15aa6db90021400f826ef575c0c
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: b80100216003e91fde54b5e555bafb755c942810
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94537185"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98682918"
 ---
 # <a name="use-the-azure-portal-to-restrict-importexport-access-for-managed-disks-with-private-links"></a>Verwenden Sie das Azure-Portal zum Einschränken des Import-/Exportzugriffs für verwaltete Datenträger mit privaten Links.
 
@@ -92,4 +92,4 @@ Die Konfiguration privater Links ist nun abgeschlossen, und Sie können sie beim
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Häufig gestellte Fragen zu privaten Links](./faq-for-disks.md#private-links-for-securely-exporting-and-importing-managed-disks)
-- [Exportieren/Kopieren verwalteter Momentaufnahmen als VHD in ein Speicherkonto in einer anderen Region mit PowerShell](./scripts/virtual-machines-powershell-sample-copy-snapshot-to-storage-account.md)
+- [Exportieren/Kopieren verwalteter Momentaufnahmen als VHD in ein Speicherkonto in einer anderen Region mit PowerShell](/previous-versions/azure/virtual-machines/scripts/virtual-machines-powershell-sample-copy-snapshot-to-storage-account)

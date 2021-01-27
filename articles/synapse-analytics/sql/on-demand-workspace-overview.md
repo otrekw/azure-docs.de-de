@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 34ce36f0ff348f896b7c2ea680c113b5e9e4ea09
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 87f592f0cff8504fbafba392d20f405640e2578a
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96463164"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98682969"
 ---
 # <a name="serverless-sql-pool-in-azure-synapse-analytics"></a>Serverloser SQL-Pool in Azure Synapse Analytics 
 
@@ -75,7 +75,7 @@ Verfügbare Sicherheitsmaßnahmen:
 
 T-SQL-Unterstützung:
 
-- Vollständige Unterstützung der Oberfläche [SELECT](/sql/t-sql/queries/select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest), einschließlich der meisten SQL-Funktionen
+- Vollständige Unterstützung der Oberfläche [SELECT](/sql/t-sql/queries/select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true), einschließlich der meisten SQL-Funktionen
 - CETAS (CREATE EXTERNAL TABLE AS SELECT)
 - Sicht- und sicherheitsbezogene DDL-Anweisungen
 
@@ -89,7 +89,7 @@ Ein serverloser SQL-Pool verfügt über keinen lokalen Speicher, und es werden n
 
 ### <a name="extensions"></a>Erweiterungen
 
-Ein serverloser SQL-Pool erweitert die vorhandene Funktion [OPENROWSET](/sql/t-sql/functions/openrowset-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) mit folgenden Funktionen, um reibungslose Abfragen für Daten zu ermöglichen, die sich in Dateien im Data Lake befinden:
+Ein serverloser SQL-Pool erweitert die vorhandene Funktion [OPENROWSET](/sql/t-sql/functions/openrowset-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) mit folgenden Funktionen, um reibungslose Abfragen für Daten zu ermöglichen, die sich in Dateien im Data Lake befinden:
 
 [Abfragen mehrerer Dateien oder Ordner](query-data-storage.md#query-multiple-files-or-folders)
 
@@ -125,7 +125,7 @@ Die Authentifizierung mit einem serverlosen SQL-Pool bezieht sich darauf, auf we
 
 - **Azure Active Directory-Authentifizierung**:
 
-  Bei dieser Authentifizierungsmethode werden von Azure Active Directory verwaltete Identitäten verwendet. Für Azure AD-Benutzer kann die mehrstufige Authentifizierung aktiviert werden. Verwenden Sie immer die Active Directory-Authentifizierung (integrierte Sicherheit), [sofern dies möglich ist](/sql/relational-databases/security/choose-an-authentication-mode?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest).
+  Bei dieser Authentifizierungsmethode werden von Azure Active Directory verwaltete Identitäten verwendet. Für Azure AD-Benutzer kann die mehrstufige Authentifizierung aktiviert werden. Verwenden Sie immer die Active Directory-Authentifizierung (integrierte Sicherheit), [sofern dies möglich ist](/sql/relational-databases/security/choose-an-authentication-mode?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true).
 
 #### <a name="authorization"></a>Authorization
 

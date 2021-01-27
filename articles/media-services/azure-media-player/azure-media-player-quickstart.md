@@ -6,12 +6,12 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: quickstart
 ms.date: 04/20/2020
-ms.openlocfilehash: 3d8ff1d2f121501152673c8375ef3d26aab10f1a
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 1634731381be6ebbb8750746f88b8ff9e761025d
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97511738"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879189"
 ---
 # <a name="azure-media-player-quickstart"></a>Schnellstart für Azure Media Player
 Die Einrichtung von Azure Media Player ist einfach. Es dauert nur wenige Minuten, bis die einfache Wiedergabe von Medieninhalten über Ihr Azure Media Services-Konto möglich ist. In diesem Abschnitt werden die grundlegenden Schritte beschrieben, ohne zu sehr ins Detail zu gehen. Die nachfolgenden Abschnitte enthalten dann genauere Informationen zur Einrichtung und Konfiguration von Azure Media Player.  Fügen Sie dem `<head>`-Element Ihres Dokuments einfach Folgendes hinzu:
@@ -63,4 +63,4 @@ Wenn Sie nicht die automatische Einrichtung verwenden möchten, können Sie das 
 
 ## <a name="next-steps"></a>Nächste Schritte ##
 
-- [Vollständiges Setup von Azure Media Player](https://docs.microsoft.com/azure/media-services/azure-media-player/azure-media-player-full-setup)
+- [Vollständiges Setup von Azure Media Player](./azure-media-player-full-setup.md)

@@ -4,12 +4,12 @@ description: In dieser Schnellstartanleitung erstellen Sie ein Docker-Image mit 
 ms.topic: quickstart
 ms.date: 07/22/2019
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 27d9c96643feb805a785e1e535cd8cac2602082b
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: f58b8feda0e88d8a5e7cddaabbc650b0f0ab3973
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92741910"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98788161"
 ---
 # <a name="quickstart-deploy-linux-containers-to-service-fabric"></a>Schnellstart: Bereitstellen von Linux-Containern in Service Fabric
 
@@ -25,7 +25,7 @@ So führen Sie diesen Schnellstart durch:
 
 1. Falls Sie über kein Abonnement verfügen, können Sie ein [kostenloses Azure-Konto erstellen](https://azure.microsoft.com/free/), bevor Sie beginnen.
 
-2. Installieren Sie die [Azure CLI](/cli/azure/install-azure-cli-apt?view=azure-cli-latest).
+2. Installieren Sie die [Azure CLI](/cli/azure/install-azure-cli-apt).
 
 3. Installieren Sie das [Service Fabric SDK und die CLI](service-fabric-get-started-linux.md#installation-methods).
 
@@ -89,7 +89,7 @@ Service Fabric bietet mehrere Tools, mit denen Sie einen Cluster und die dazugeh
 
 In dieser Schnellstartanleitung verwenden Sie die Service Fabric-Befehlszeilenschnittstelle sowie Service Fabric Explorer (ein webbasiertes Tool). Damit Sie Service Fabric Explorer verwenden können, müssen Sie die PFX-Zertifikatdatei in den Browser importieren. Für die PFX-Datei ist standardmäßig kein Kennwort festgelegt.
 
-Der Standardbrowser in Ubuntu 16.04 ist Mozilla Firefox. Klicken Sie zum Importieren des Zertifikats rechts oben in Firefox auf die Menüschaltfläche und anschließend auf **Einstellungen** . Suchen Sie über das Suchfeld auf der Seite **Einstellungen** nach „Zertifikate“. Klicken Sie auf **Zertifikate anzeigen** , klicken Sie auf die Registerkarte **Ihre Zertifikate** , klicken Sie auf **Importieren** , und befolgen Sie die Anweisungen zum Importieren des Zertifikats.
+Der Standardbrowser in Ubuntu 16.04 ist Mozilla Firefox. Klicken Sie zum Importieren des Zertifikats rechts oben in Firefox auf die Menüschaltfläche und anschließend auf **Einstellungen**. Suchen Sie über das Suchfeld auf der Seite **Einstellungen** nach „Zertifikate“. Klicken Sie auf **Zertifikate anzeigen**, klicken Sie auf die Registerkarte **Ihre Zertifikate**, klicken Sie auf **Importieren**, und befolgen Sie die Anweisungen zum Importieren des Zertifikats.
 
    ![Installieren des Zertifikats in Firefox](./media/service-fabric-quickstart-containers-linux/install-cert-firefox.png)
 
@@ -107,9 +107,9 @@ Der Standardbrowser in Ubuntu 16.04 ist Mozilla Firefox. Klicken Sie zum Importi
     ./install.sh
     ```
 
-3. Navigieren Sie in einem Webbrowser zum Service Fabric Explorer-Endpunkt für Ihren Cluster. Der Endpunkt weist das folgende Format auf: **https://\<my-azure-service-fabric-cluster-url>:19080/Explorer** , beispielsweise `https://containertestcluster.eastus.cloudapp.azure.com:19080/Explorer`. </br>
+3. Navigieren Sie in einem Webbrowser zum Service Fabric Explorer-Endpunkt für Ihren Cluster. Der Endpunkt weist das folgende Format auf: **https://\<my-azure-service-fabric-cluster-url>:19080/Explorer**, beispielsweise `https://containertestcluster.eastus.cloudapp.azure.com:19080/Explorer`. </br>
 
-4. Erweitern Sie den Knoten **Anwendungen** , um zu prüfen, ob nun ein Eintrag für den Voting-Anwendungstyp und die von Ihnen erstellte Instanz vorhanden ist.
+4. Erweitern Sie den Knoten **Anwendungen**, um zu prüfen, ob nun ein Eintrag für den Voting-Anwendungstyp und die von Ihnen erstellte Instanz vorhanden ist.
 
     ![Service Fabric Explorer][sfx]
 
@@ -130,8 +130,8 @@ Bei einem Ausfall sorgt Service Fabric dafür, dass Ihre Containerinstanzen auto
 Führen Sie die folgenden Schritte aus, um für den Front-End-Container ein Failover auszuführen:
 
 1. Öffnen Sie Service Fabric Explorer in Ihrem Cluster. Beispiel: `https://containertestcluster.eastus.cloudapp.azure.com:19080/Explorer`.
-2. Klicken Sie in der Strukturansicht auf den Knoten **fabric:/Voting/azurevotefront** , und erweitern Sie den (durch eine GUID dargestellten) Partitionsknoten. Beachten Sie den Knotennamen in der Strukturansicht. Hier werden die Knoten angezeigt, auf denen der Container derzeit ausgeführt wird (beispielsweise `_nodetype_1`).
-3. Erweitern Sie in der Strukturansicht den Knoten **Knoten** . Klicken Sie neben dem Knoten, auf dem der Container ausgeführt wird, auf die Auslassungspunkte.
+2. Klicken Sie in der Strukturansicht auf den Knoten **fabric:/Voting/azurevotefront**, und erweitern Sie den (durch eine GUID dargestellten) Partitionsknoten. Beachten Sie den Knotennamen in der Strukturansicht. Hier werden die Knoten angezeigt, auf denen der Container derzeit ausgeführt wird (beispielsweise `_nodetype_1`).
+3. Erweitern Sie in der Strukturansicht den Knoten **Knoten**. Klicken Sie neben dem Knoten, auf dem der Container ausgeführt wird, auf die Auslassungspunkte.
 4. Wählen Sie **Neu starten** aus, um den Knoten neu zu starten, und bestätigen Sie die Neustartaktion. Der Neustart bewirkt, dass für den Container ein Failover auf einen anderen Knoten im Cluster ausgeführt wird.
 
     ![Knotenansicht in Service Fabric Explorer][sfxquickstartshownodetype]
@@ -149,8 +149,8 @@ Führen Sie die folgenden Schritte aus, um den Web-Front-End-Dienst zu skalieren
 
     Sie können jetzt angeben, dass die Anzahl von Instanzen des Web-Front-End-Diensts skaliert werden soll.
 
-3. Ändern Sie die Anzahl in **2** , und klicken Sie auf **Scale Service** (Dienst skalieren).
-4. Klicken Sie in der Strukturansicht auf den Knoten **fabric:/Voting/azurevotefront** , und erweitern Sie den (durch eine GUID dargestellten) Partitionsknoten.
+3. Ändern Sie die Anzahl in **2**, und klicken Sie auf **Scale Service** (Dienst skalieren).
+4. Klicken Sie in der Strukturansicht auf den Knoten **fabric:/Voting/azurevotefront**, und erweitern Sie den (durch eine GUID dargestellten) Partitionsknoten.
 
     ![Service Fabric Explorer: Dienstskalierung abgeschlossen][containersquickstartscaledone]
 
@@ -168,7 +168,7 @@ Verwenden Sie das Deinstallationsskript (uninstall.sh) aus der Vorlage, um die A
 
 Die einfachste Möglichkeit zum Löschen des Clusters und aller darin genutzten Ressourcen besteht darin, die Ressourcengruppe zu löschen.
 
-Melden Sie sich bei Azure an, und wählen Sie die Abonnement-ID aus, mit der Sie den Cluster entfernen möchten. Melden Sie sich beim Azure-Portal an, um Ihre Abonnement-ID zu ermitteln. Löschen Sie die Ressourcengruppe und alle Clusterressourcen mithilfe des Befehls [az group delete](/cli/azure/group?view=azure-cli-latest).
+Melden Sie sich bei Azure an, und wählen Sie die Abonnement-ID aus, mit der Sie den Cluster entfernen möchten. Melden Sie sich beim Azure-Portal an, um Ihre Abonnement-ID zu ermitteln. Löschen Sie die Ressourcengruppe und alle Clusterressourcen mithilfe des Befehls [az group delete](/cli/azure/group).
 
 ```azurecli
 az login

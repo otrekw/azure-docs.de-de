@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 11/18/2020
 ms.author: spelluru
 ms.custom: devx-track-python
-ms.openlocfilehash: 43f633e427e20cfb0b044bd42b77f866e4cc0c61
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 4eba3ea055e78888d482927fa6eed5c7d41fa0ba
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96489410"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98630046"
 ---
 # <a name="send-messages-to-an-azure-service-bus-topic-and-receive-messages-from-subscriptions-to-the-topic-python"></a>Senden von Nachrichten an ein Azure Service Bus-Thema und Empfangen von Nachrichten von Abonnements für das Thema (Python)
 In diesem Artikel wird veranschaulicht, wie Sie Python zum Senden von Nachrichten an ein Service Bus-Thema und Empfangen von Nachrichten von einem Abonnement für das Thema verwenden. 
@@ -217,4 +217,4 @@ Weitere Informationen finden Sie in der folgenden Dokumentation bzw. unter den f
 - [Beispiele:](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/servicebus/azure-servicebus/samples) 
     - Der Ordner **sync_samples** enthält Beispiele zur synchronen Interaktion mit Service Bus. In dieser Schnellstartanleitung haben Sie diese Methode verwendet. 
     - Der Ordner **async_samples** enthält Beispiele zur asynchronen Interaktion mit Service Bus. 
-- [azure-servicebus: Referenzdokumentation](/python/api/azure-servicebus/azure.servicebus?preserve-view=true&view=azure-python-preview)
+- [azure-servicebus: Referenzdokumentation](/python/api/azure-servicebus/azure.servicebus?preserve-view=true)

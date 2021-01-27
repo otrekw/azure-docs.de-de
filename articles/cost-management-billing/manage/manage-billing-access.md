@@ -7,15 +7,15 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 08/20/2020
+ms.date: 01/26/2021
 ms.author: banders
 ms.custom: seodec18
-ms.openlocfilehash: e174a0539a75945cc0a2595e28a60d928e10acf4
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 23e3adad12a726b03f6efe309dde0ec4a93bcd5b
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92166215"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98897424"
 ---
 # <a name="manage-access-to-billing-information-for-azure"></a>Verwalten des Zugriffs auf Abrechnungsinformationen für Azure
 
@@ -38,7 +38,7 @@ Der Kontoadministrator kann anderen Personen Zugriff auf Azure-Abrechnungsinform
 - Leser
 - Abrechnungsleser
 
-Diese Rollen haben Zugriff auf Abrechnungsinformationen im [Azure-Portal](https://portal.azure.com/). Benutzer, denen diese Rollen zugewiesen sind, können auch die [Abrechnungs-APIs](usage-rate-card-overview.md) verwenden, um Rechnungen und Nutzungsdetails programmgesteuert abzurufen.
+Diese Rollen haben Zugriff auf Abrechnungsinformationen im [Azure-Portal](https://portal.azure.com/). Benutzer, denen diese Rollen zugewiesen sind, können auch die [Abrechnungs-APIs](consumption-api-overview.md#usage-details-api) verwenden, um Rechnungen und Nutzungsdetails programmgesteuert abzurufen.
 
 Informationen über das Zuweisen von Rollen finden Sie unter [Hinzufügen oder Entfernen von Rollenzuweisungen mithilfe des Azure-Portals](../../role-based-access-control/role-assignments-portal.md).
 
@@ -51,15 +51,15 @@ Nachdem ein Kontoadministrator anderen Benutzern die entsprechenden Rollen zugew
 
 1. Melden Sie sich als Kontoadministrator beim [Azure-Portal](https://portal.azure.com/) an.
 
-1. Suchen Sie nach **Kostenverwaltung + Abrechnung** .
+1. Suchen Sie nach **Kostenverwaltung + Abrechnung**.
 
     ![Screenshot mit hervorgehobener „Kostenverwaltung + Abrechnung“ im Abschnitt „Dienste“](./media/manage-billing-access/billing-search-cost-management-billing.png)
 
-1. Wählen Sie links die Option **Abonnements** . Je nach Zugriff müssen Sie unter Umständen einen Abrechnungsbereich und dann **Abonnements** auswählen.
+1. Wählen Sie links die Option **Abonnements**. Je nach Zugriff müssen Sie unter Umständen einen Abrechnungsbereich und dann **Abonnements** auswählen.
 
     ![Screenshot: Auswahl von „Abonnements“](./media/manage-billing-access/billing-select-subscriptions.png)
 
-1. Wählen Sie **Rechnungen** und dann **Zugriff auf Rechnung** .
+1. Wählen Sie **Rechnungen** und dann **Zugriff auf Rechnung**.
 
     ![Der Screenshot zeigt das Delegieren des Zugriffs auf Rechnungen](./media/manage-billing-access/aa-optin01.png)
 
@@ -77,16 +77,16 @@ Das Feature Abrechnungsleser befindet sich in der Vorschauversion und unterstüt
 
 1. Melden Sie sich als Kontoadministrator beim [Azure-Portal](https://portal.azure.com/) an.
 
-1. Suchen Sie nach **Kostenverwaltung + Abrechnung** .
+1. Suchen Sie nach **Kostenverwaltung + Abrechnung**.
 
     ![Screenshot, der die Suche im Azure-Portal zeigt](./media/manage-billing-access/billing-search-cost-management-billing.png)
 
-1. Wählen Sie links die Option **Abonnements** . Je nach Zugriff müssen Sie unter Umständen einen Abrechnungsbereich und dann **Abonnements** auswählen.
+1. Wählen Sie links die Option **Abonnements**. Je nach Zugriff müssen Sie unter Umständen einen Abrechnungsbereich und dann **Abonnements** auswählen.
 
     ![Screenshot: Auswahl von „Abonnements“](./media/manage-billing-access/billing-select-subscriptions.png)
 
 1. Wählen Sie die Option **Zugriffssteuerung (IAM)** aus.
-1. Wählen Sie oben auf der Seite die Option **Hinzufügen** .
+1. Wählen Sie oben auf der Seite die Option **Hinzufügen**.
 
     ![Screenshot: Klicken auf „Rollenzuweisung hinzufügen“](./media/manage-billing-access/billing-click-add-role-assignment.png)
 

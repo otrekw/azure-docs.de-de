@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: b8738b46359287ce1d4e410292cdce213ab80999
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 9077ce35065b1bf45646496cc4c43d6def82d958
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98115819"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98685224"
 ---
 # <a name="what-is-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>Was ist ein dedizierter SQL-Pool (vormals SQL DW) in Azure Synapse Analytics?
 
@@ -29,7 +29,7 @@ Azure Synapse Analytics ist ein Analysedienst, der Data Warehousing für Unterne
 
 Ein dedizierter SQL-Pool (vormals SQL DW) ist eine Sammlung von Analyseressourcen, die bei Verwendung von Synapse SQL bereitgestellt werden. Die Größe eines dedizierten SQL-Pools (vormals SQL DW) wird durch Data Warehouse-Einheiten (Data Warehouse Units, DWUs) bestimmt.
 
-Nach der Erstellung des dedizierten SQL-Pools können Sie Big Data mit einfachen [PolyBase](/sql/relational-databases/polybase/polybase-guide?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)-T-SQL-Abfragen importieren und anschließend die Vorteile der Engine für verteilte Abfragen für Hochleistungsanalysen nutzen. Bei der Integration und Analyse der Daten wird der dedizierte SQL-Pool (vormals SQL DW) für Ihr Unternehmen somit zur alleinigen zuverlässigen Quelle für die Gewinnung schneller und besser fundierter Erkenntnisse.
+Nach der Erstellung des dedizierten SQL-Pools können Sie Big Data mit einfachen [PolyBase](/sql/relational-databases/polybase/polybase-guide?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)-T-SQL-Abfragen importieren und anschließend die Vorteile der Engine für verteilte Abfragen für Hochleistungsanalysen nutzen. Bei der Integration und Analyse der Daten wird der dedizierte SQL-Pool (vormals SQL DW) für Ihr Unternehmen somit zur alleinigen zuverlässigen Quelle für die Gewinnung schneller und besser fundierter Erkenntnisse.
 
 > [!NOTE]
 >Informieren Sie sich ausführlicher in der [Dokumentation zu Azure Synapse Analytics](../overview-what-is.md).
