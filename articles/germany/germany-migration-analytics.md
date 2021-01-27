@@ -7,12 +7,12 @@ author: gitralf
 ms.author: ralfwi
 ms.service: germany
 ms.custom: bfmigrate
-ms.openlocfilehash: d1bb03d1d4ad7a66a2726721de11c40875a78131
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 93630f536127971e922ddceaf5d1e5fa82ea3ad4
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95018587"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791434"
 ---
 # <a name="migrate-analytics-resources-to-global-azure"></a>Migrieren von Analyseressourcen zu Azure weltweit
 
@@ -37,7 +37,7 @@ Die folgenden Metadatenelemente werden neu erstellt werden, wenn Sie eine Event 
 
 - Namespaces
 - Event Hubs
-- Verbrauchergruppen
+- Consumergruppen
 - Autorisierungsregeln
 
 Weitere Informationen finden Sie unter:
@@ -70,7 +70,7 @@ Um Azure Stream Analytics-Dienste von Azure Deutschland zu Azure weltweit zu mig
 
 Weitere Informationen finden Sie unter:
 
-- Frischen Sie Ihre Kenntnisse auf, indem Sie die [Tutorials zu Stream Analytics](../stream-analytics/stream-analytics-manage-job.md) durcharbeiten.
+- Frischen Sie Ihre Kenntnisse auf, indem Sie die [Tutorials zu Stream Analytics](../stream-analytics/stream-analytics-real-time-fraud-detection.md) durcharbeiten.
 - Lesen Sie die [Übersicht über Stream Analytics](../stream-analytics/stream-analytics-introduction.md).
 - Erfahren Sie, wie Sie [einen Stream Analytics-Auftrag über PowerShell erstellen](../stream-analytics/stream-analytics-quick-create-powershell.md).
 

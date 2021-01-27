@@ -1,18 +1,18 @@
 ---
 title: Integrierte Richtliniendefinitionen für Azure-VM-Skalierungsgruppen
 description: Hier finden Sie eine Liste der integrierten Azure Policy-Richtliniendefinitionen für Azure-VM-Skalierungsgruppen. Diese integrierten Richtliniendefinitionen bieten allgemeine Ansätze für die Verwaltung von Azure-Ressourcen.
-ms.date: 01/08/2021
+ms.date: 01/25/2021
 ms.topic: reference
 author: ju-shim
 ms.author: jushiman
 ms.service: virtual-machine-scale-sets
 ms.custom: subject-policy-reference
-ms.openlocfilehash: c20ad40889f6cfb0df99300d4fe8ac397b430539
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 5e6fbfd9f55def3517cf07ee5b743cc80ccf43bd
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98048809"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98807007"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-virtual-machine-scale-sets"></a>Integrierte Azure Policy-Definitionen für Azure-VM-Skalierungsgruppen
 

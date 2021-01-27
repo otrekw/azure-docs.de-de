@@ -5,12 +5,12 @@ author: masnider
 ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 9c258d8d0a7aa26c96ab4f64017770ebdd153e60
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8d99b4d1fbf227d850de387b7ca24dcd3fd40646
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86257518"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791154"
 ---
 # <a name="disaster-recovery-in-azure-service-fabric"></a>Notfallwiederherstellung in Azure Service Fabric
 Zur Gewährleistung von hoher Verfügbarkeit muss unter anderem sichergestellt werden, dass Dienste verschiedenste Arten von Ausfällen überstehen können. Dies ist besonders wichtig bei Ausfällen, die überraschend auftreten oder sich Ihrer Kontrolle entziehen. 
@@ -172,7 +172,7 @@ Die folgenden Aktionen könnten zu Datenverlusten führen. Berücksichtigen Sie 
 >
 
 - Verwenden Sie die `Repair-ServiceFabricPartition -PartitionId`- oder `System.Fabric.FabricClient.ClusterManagementClient.RecoverPartitionAsync(Guid partitionId)`-API. Diese API ermöglicht die Angabe der ID für die Partition, die aus Quorumverlust in den potenziellen Datenverlust überführt werden soll.
-- Wenn in Ihrem Cluster häufig Fehler auftreten, die zu einem Quorumverlust von Diensten führen und potenzielle _Datenverluste akzeptabel sind_, kann die automatische Wiederherstellung des Diensts durch Angabe eines entsprechenden Werts für [QuorumLossWaitDuration](/powershell/module/servicefabric/update-servicefabricservice?view=azureservicefabricps) unterstützt werden. Service Fabric wartet die durch `QuorumLossWaitDuration` angegebene Zeit (der Standardwert ist unendlich), bevor die Wiederherstellung durchgeführt wird. Diese Methode wird *nicht* empfohlen, da sie zu unerwarteten Datenverlusten führen kann.
+- Wenn in Ihrem Cluster häufig Fehler auftreten, die zu einem Quorumverlust von Diensten führen und potenzielle _Datenverluste akzeptabel sind_, kann die automatische Wiederherstellung des Diensts durch Angabe eines entsprechenden Werts für [QuorumLossWaitDuration](/powershell/module/servicefabric/update-servicefabricservice) unterstützt werden. Service Fabric wartet die durch `QuorumLossWaitDuration` angegebene Zeit (der Standardwert ist unendlich), bevor die Wiederherstellung durchgeführt wird. Diese Methode wird *nicht* empfohlen, da sie zu unerwarteten Datenverlusten führen kann.
 
 ## <a name="availability-of-the-service-fabric-cluster"></a>Verfügbarkeit des Service Fabric-Clusters
 Der Service Fabric-Cluster ist im Großen und Ganzen eine hochgradig verteilte Umgebung ohne Single Points of Failure. Der Ausfall eines Knotens führt nicht zu Problemen mit der Verfügbarkeit oder Zuverlässigkeit des Clusters. Das liegt in erster Linie daran, dass die Service Fabric-Systemdienste den zuvor angegebenen Richtlinien folgen. Das bedeutet, dass sie standardmäßig immer mit mindestens drei Replikaten betrieben werden, und zustandslose Systemdienste werden auf allen Knoten ausgeführt. 

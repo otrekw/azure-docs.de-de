@@ -3,12 +3,12 @@ title: Sichern eines Clusters unter Windows mithilfe von Zertifikaten
 description: Sichern Sie die Kommunikation in einem eigenständigen oder lokalen Azure Service Fabric-Cluster sowie zwischen Clients und dem Cluster.
 ms.topic: conceptual
 ms.date: 10/15/2017
-ms.openlocfilehash: 34ba457ce0f39705393962d5c5ec8fa11668f413
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: d75c644be47ea44f6a8a6ccac91b785af0132833
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94686122"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791036"
 ---
 # <a name="secure-a-standalone-cluster-on-windows-by-using-x509-certificates"></a>Schützen eines eigenständigen Windows-Clusters mithilfe von X.509-Zertifikaten
 In diesem Artikel wird beschrieben, wie Sie die Kommunikation zwischen verschiedenen Knoten eines eigenständigen Windows-Clusters sichern. Außerdem wird beschrieben, wie Sie mithilfe von X.509-Zertifikaten Clients authentifizieren, die sich mit diesem Cluster verbinden. Mit der Authentifizierung wird sichergestellt, dass nur autorisierte Benutzer auf den Cluster und bereitgestellte Anwendungen zugreifen und Verwaltungsaufgaben ausführen können. Die Zertifikatsicherheit sollte auf dem Cluster aktiviert werden, wenn der Cluster erstellt wird.  
@@ -355,7 +355,7 @@ $ConnectArgs = @{  ConnectionEndpoint = '10.7.0.5:19000';  X509Credential = $Tru
 Connect-ServiceFabricCluster $ConnectArgs
 ```
 
-Sie können dann andere PowerShell-Befehle zum Arbeiten mit diesem Cluster ausführen. Führen Sie beispielsweise [Get-ServiceFabricNode](/powershell/module/servicefabric/get-servicefabricnode?view=azureservicefabricps) aus, um eine Liste von Knoten in diesem sicheren Cluster anzuzeigen.
+Sie können dann andere PowerShell-Befehle zum Arbeiten mit diesem Cluster ausführen. Führen Sie beispielsweise [Get-ServiceFabricNode](/powershell/module/servicefabric/get-servicefabricnode) aus, um eine Liste von Knoten in diesem sicheren Cluster anzuzeigen.
 
 
 Stellen Sie zum Entfernen des Clusters eine Verbindung mit dem Knoten im Cluster her, in den Sie das Service Fabric-Paket heruntergeladen haben, öffnen Sie eine Befehlszeile, und navigieren Sie zum Paketordner. Führen Sie jetzt den folgenden Befehl aus:

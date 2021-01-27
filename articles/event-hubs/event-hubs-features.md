@@ -3,12 +3,12 @@ title: 'Übersicht über die Features: Azure Event Hubs | Microsoft-Dokumentatio
 description: Dieser Artikel enthält Details zu Features und Terminologie von Azure Event Hubs.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 60dc964d1b827eec75ee4f65a5776710e57fd6eb
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 8860a8aa83a17b12236dd47d79479a82846fa8a8
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98195788"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791945"
 ---
 # <a name="features-and-terminology-in-azure-event-hubs"></a>Features und Terminologie in Azure Event Hubs
 
@@ -56,7 +56,7 @@ Veröffentlichte Ereignisse werden basierend auf einer konfigurierbaren, zeitbas
 >
 > [Event Hubs Capture](event-hubs-capture-overview.md) ist direkt in Azure Blob Storage und Azure Data Lake Storage integriert und ermöglicht daher auch das [direkte Senden von Ereignissen an Azure Synapse](store-captured-data-data-warehouse.md).
 >
-> Falls Sie das Muster [Ereignissourcing](https://docs.microsoft.com/azure/architecture/patterns/event-sourcing) für Ihre Anwendung nutzen möchten, sollten Sie Ihre Strategie für Momentaufnahmen an den Grenzwerten für die Aufbewahrung von Event Hubs ausrichten. Vermeiden Sie es, materialisierte Sichten aus den Rohereignissen des gesamten Anfangsdatenbestands neu zu erstellen. Sie würden die Verwendung dieser Strategie sicherlich bereuen, nachdem Sie Ihre Anwendung eine Weile in der Produktion eingesetzt haben und diese stark genutzt wurde, weil Ihr Projektionsgenerator dann die Änderungsereignisse vieler Jahre durchgehen muss, um zu den aktuellen Änderungen zu gelangen. 
+> Falls Sie das Muster [Ereignissourcing](/azure/architecture/patterns/event-sourcing) für Ihre Anwendung nutzen möchten, sollten Sie Ihre Strategie für Momentaufnahmen an den Grenzwerten für die Aufbewahrung von Event Hubs ausrichten. Vermeiden Sie es, materialisierte Sichten aus den Rohereignissen des gesamten Anfangsdatenbestands neu zu erstellen. Sie würden die Verwendung dieser Strategie sicherlich bereuen, nachdem Sie Ihre Anwendung eine Weile in der Produktion eingesetzt haben und diese stark genutzt wurde, weil Ihr Projektionsgenerator dann die Änderungsereignisse vieler Jahre durchgehen muss, um zu den aktuellen Änderungen zu gelangen. 
 
 
 ### <a name="publisher-policy"></a>Herausgeberrichtlinie

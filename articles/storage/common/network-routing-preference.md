@@ -10,12 +10,13 @@ ms.date: 05/12/2020
 ms.author: santoshc
 ms.reviewer: tamram
 ms.subservice: common
-ms.openlocfilehash: 5b4a1b1f27dff059090d78e24a6a0eca0bbbf01f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: references_regions
+ms.openlocfilehash: 9afe58434d60280f635deab75b763077bc76b93c
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85514191"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98797631"
 ---
 # <a name="configure-network-routing-preference-for-azure-storage-preview"></a>Konfigurieren der Netzwerkroutingpräferenz für Azure Storage (Vorschau)
 
@@ -65,9 +66,36 @@ Die Verbindungszeichenfolgen für die veröffentlichten routenspezifischen Endpu
 
 Routingpräferenz für Azure Storage ist in den folgenden Regionen verfügbar:
 
-- Frankreich, Süden
-- USA Nord Mitte
+- USA (Mitte) 
+- USA, Mitte (EUAP)
+- East US 
+- USA (Ost) 2
+- USA (Ost) 2 
+- USA, Osten 2 (EUAP)
+- USA Süd Mitte
 - USA, Westen-Mitte
+- USA (Westen) 
+- USA, Westen 2 
+- Frankreich, Mitte 
+- Frankreich, Süden 
+- Deutschland, Norden 
+- Deutschland, Westen-Mitte 
+- USA Nord Mitte
+- Nordeuropa 
+- Norwegen, Osten 
+- Schweiz, Norden
+- Schweiz, Westen
+- UK, Süden 
+- UK, Westen 
+- Europa, Westen 
+- VAE, Mitte
+- Asien, Osten 
+- Asien, Südosten 
+- Japan, Osten 
+- Japan, Westen 
+- Indien, Westen
+- Australien (Osten) 
+- Australien, Südosten 
 
 Die folgenden bekannten Probleme betreffen die Routingpräferenzvorschau für Azure Storage:
 

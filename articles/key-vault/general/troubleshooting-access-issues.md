@@ -7,19 +7,19 @@ ms.date: 08/10/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.openlocfilehash: 8e4e64cd872794354479c29d4aaa000cee45c5a3
-ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
+ms.openlocfilehash: c5fab8b856ff9c82a0de887dc9c322dbf541348b
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97901214"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791406"
 ---
 # <a name="troubleshooting-azure-key-vault-access-policy-issues"></a>Behandeln von Problemen mit Schlüsseltresor-Zugriffsrichtlinien
 
 ## <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
 
 ### <a name="i-am-not-able-to-list-or-get-secretskeyscertificate-i-am-seeing-something-went-wrong-error"></a>Ich kann Geheimnisse/Schlüssel/Zertifikate nicht auflisten oder abrufen. „Leider ist ein Problem aufgetreten“ wird angezeigt. Fehler.
-Wenn Probleme beim Auflisten/Abrufen/Erstellen eines Geheimnisses oder beim Zugreifen auf ein Geheimnis auftreten, vergewissern Sie sich, dass Sie eine Zugriffsrichtlinie zum Ausführen des entsprechenden Vorgangs definiert haben: [Bereitstellen der Key Vault-Authentifizierung mit einer Zugriffssteuerungsrichtlinie](https://docs.microsoft.com/azure/key-vault/general/group-permissions-for-apps)
+Wenn Probleme beim Auflisten/Abrufen/Erstellen eines Geheimnisses oder beim Zugreifen auf ein Geheimnis auftreten, vergewissern Sie sich, dass Sie eine Zugriffsrichtlinie zum Ausführen des entsprechenden Vorgangs definiert haben: [Bereitstellen der Key Vault-Authentifizierung mit einer Zugriffssteuerungsrichtlinie](./assign-access-policy-cli.md)
 
 ### <a name="how-can-i-identify-how-and-when-key-vaults-are-accessed"></a>Wie kann ich ermitteln, wie und wann auf Schlüsseltresore zugegriffen wird?
 

@@ -4,12 +4,12 @@ description: Einführung in das Erstellen einer Microsoft Azure Service Fabric-A
 ms.topic: conceptual
 ms.date: 07/10/2019
 ms.custom: sfrev, devx-track-csharp
-ms.openlocfilehash: 1de77f870bce5766ab704249034d6d7b6c8b098e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 45341c98a40cbcabfa8b96f2016f02f1755fe2b3
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89012737"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791526"
 ---
 # <a name="get-started-with-reliable-services"></a>Erste Schritte mit Reliable Services
 
@@ -42,7 +42,7 @@ Erstellen Sie anschließend ein Projekt für einen zustandslosen Dienst mit **.N
 
 Die Projektmappe enthält jetzt zwei Projekte:
 
-* *HelloWorld*. Dies ist das *Anwendung*sprojekt, das Ihre *Dienste* enthält. Darüber hinaus enthält es das Anwendungsmanifest zum Beschreiben der Anwendung sowie eine Reihe von PowerShell-Skripts, mit deren Hilfe Sie die Anwendung bereitstellen.
+* *HelloWorld*. Dies ist das *Anwendung* sprojekt, das Ihre *Dienste* enthält. Darüber hinaus enthält es das Anwendungsmanifest zum Beschreiben der Anwendung sowie eine Reihe von PowerShell-Skripts, mit deren Hilfe Sie die Anwendung bereitstellen.
 * *HelloWorldStateless*. Dies ist das Dienstprojekt. Es enthält die Implementierung des zustandslosen Diensts.
 
 ## <a name="implement-the-service"></a>Implementieren des Diensts
@@ -169,11 +169,11 @@ protected override async Task RunAsync(CancellationToken cancellationToken)
 var myDictionary = await this.StateManager.GetOrAddAsync<IReliableDictionary<string, long>>("myDictionary");
 ```
 
-[IReliableDictionary](/dotnet/api/microsoft.servicefabric.data.collections.ireliabledictionary-2?view=azure-dotnet#microsoft_servicefabric_data_collections_ireliabledictionary_2) ist eine Wörterbuchimplementierung, die Sie nutzen können, um den Zustand im Dienst zuverlässig zu speichern. Mit Service Fabric und Reliable Collections können Sie Daten direkt in Ihrem Dienst speichern. Ein externer persistenter Speicher ist nicht erforderlich. Reliable Collections stellen die hohe Verfügbarkeit Ihrer Daten her. Service Fabric erreicht dies, indem mehrere *Replikate* Ihres Diensts für Sie erstellt und verwaltet werden. Außerdem wird eine API bereitgestellt, mit der die komplexen Verwaltungsanforderungen dieser Replikate und der damit verbundenen Zustandsübergänge beseitigt werden.
+[IReliableDictionary](/dotnet/api/microsoft.servicefabric.data.collections.ireliabledictionary-2#microsoft_servicefabric_data_collections_ireliabledictionary_2) ist eine Wörterbuchimplementierung, die Sie nutzen können, um den Zustand im Dienst zuverlässig zu speichern. Mit Service Fabric und Reliable Collections können Sie Daten direkt in Ihrem Dienst speichern. Ein externer persistenter Speicher ist nicht erforderlich. Reliable Collections stellen die hohe Verfügbarkeit Ihrer Daten her. Service Fabric erreicht dies, indem mehrere *Replikate* Ihres Diensts für Sie erstellt und verwaltet werden. Außerdem wird eine API bereitgestellt, mit der die komplexen Verwaltungsanforderungen dieser Replikate und der damit verbundenen Zustandsübergänge beseitigt werden.
 
 Reliable Collections können mit gewissen Einschränkungen beliebige .NET-Typen – einschließlich benutzerdefinierten Typen – speichern:
 
-* Service Fabric macht Ihren Zustand hoch verfügbar, indem der Zustand über verschiedene Knoten *repliziert* wird und Reliable Collections Ihre Daten an jedem Replikat auf einem lokalen Datenträger speichert. Dies bedeutet, dass alle Elemente, die in Reliable Collections gespeichert werden, *serialisierbar* sein müssen. Reliable Collections verwenden standardmäßig [DataContract](/dotnet/api/system.runtime.serialization.datacontractattribute?view=netcore-3.1) für die Serialisierung. Stellen Sie daher bei Verwendung des Standardserialisierers unbedingt sicher, dass die Typen [vom Datenverwaltungsserialisierer unterstützt](/dotnet/framework/wcf/feature-details/types-supported-by-the-data-contract-serializer) werden.
+* Service Fabric macht Ihren Zustand hoch verfügbar, indem der Zustand über verschiedene Knoten *repliziert* wird und Reliable Collections Ihre Daten an jedem Replikat auf einem lokalen Datenträger speichert. Dies bedeutet, dass alle Elemente, die in Reliable Collections gespeichert werden, *serialisierbar* sein müssen. Reliable Collections verwenden standardmäßig [DataContract](/dotnet/api/system.runtime.serialization.datacontractattribute) für die Serialisierung. Stellen Sie daher bei Verwendung des Standardserialisierers unbedingt sicher, dass die Typen [vom Datenverwaltungsserialisierer unterstützt](/dotnet/framework/wcf/feature-details/types-supported-by-the-data-contract-serializer) werden.
 * Objekte werden zum Zweck der Hochverfügbarkeit repliziert, wenn Sie Transaktionen auf Reliable Collections anwenden. In Reliable Collections gespeicherte Objekte werden in Ihrem Dienst im lokalen Speicher vorgehalten. Dies bedeutet, dass Sie über einen lokalen Verweis auf das Objekt verfügen.
   
    Es ist wichtig, dass Sie lokale Instanzen dieser Objekte nicht ändern, ohne ein Update für die Reliable Collection in einer Transaktion durchzuführen. Das liegt daran, dass Änderungen an lokalen Instanzen von Objekten nicht automatisch repliziert werden. Sie müssen das Objekt wieder zurück in das Wörterbuch einfügen oder eine der Methoden zur *Aktualisierung* auf das Wörterbuch anwenden.
@@ -198,7 +198,7 @@ Zuverlässige Sammlungen verfügen über viele der gleichen Vorgänge, die auch 
 Reliable Collection-Vorgänge sind *transaktional*, damit Sie den Zustand über mehrere Reliable Collections und Vorgänge hinweg beibehalten können. Sie können beispielsweise ein Arbeitselement aus einer zuverlässigen Warteschlange entfernen, einen Vorgang daran ausführen und das Ergebnis in einem zuverlässigen Wörterbuch speichern – alles in einer Transaktion. Dies wird als atomischer Vorgang behandelt und es wird sichergestellt, dass entweder der gesamte Vorgang erfolgreich ist oder ein Rollback für den gesamten Vorgang ausgeführt wird. Wenn nach dem Entfernen des Elements aus der Warteschlange und vor dem Speichern des Ergebnisses ein Fehler auftritt, wird für die gesamte Transaktion ein Rollback ausgeführt, und das Element bleibt zur Verarbeitung in der Warteschlange enthalten.
 
 ## <a name="run-the-application"></a>Ausführen der Anwendung
-Wir kehren nun zur Anwendung *HelloWorld* zurück. Sie können jetzt Dienste erstellen und bereitstellen. Wenn Sie **F5**drücken, wird die Anwendung erstellt und im lokalen Cluster bereitgestellt.
+Wir kehren nun zur Anwendung *HelloWorld* zurück. Sie können jetzt Dienste erstellen und bereitstellen. Wenn Sie **F5** drücken, wird die Anwendung erstellt und im lokalen Cluster bereitgestellt.
 
 Nach dem Beginn der Dienstausführung können Sie die generierten ETW-Ereignisse (Ereignisablaufverfolgung für Windows) in einem Fenster für **Diagnoseereignisse** ansehen. Beachten Sie, dass sowohl Ereignisse des zustandslosen Diensts als auch des zustandsbehafteten Diensts in der Anwendung angezeigt werden. Sie können den Datenstrom anhalten, indem Sie auf die Schaltfläche **Anhalten** klicken. Sie können die Details einer Nachricht dann prüfen, indem Sie sie erweitern.
 

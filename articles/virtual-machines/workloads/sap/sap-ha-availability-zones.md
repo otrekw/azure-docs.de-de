@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 12/29/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7418e5578450367e9fa37a87adb6e7036619877b
-ms.sourcegitcommit: 42922af070f7edf3639a79b1a60565d90bb801c0
+ms.openlocfilehash: e098256a43add6df026ab136bcd6a6b549c147e7
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97827448"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98871314"
 ---
 # <a name="sap-workload-configurations-with-azure-availability-zones"></a>SAP-Workloadkonfigurationen mit Azure-Verfügbarkeitszonen
 Zusätzlich zur Bereitstellung der verschiedenen SAP-Architekturebenen in Azure-Verfügbarkeitsgruppen können für SAP-Workloadbereitstellungen auch die vor Kurzem eingeführten [Azure-Verfügbarkeitszonen](../../../availability-zones/az-overview.md) verwendet werden. Eine Azure-Verfügbarkeitszone ist wie folgt definiert: „Physische Orte innerhalb einer Region. Jede Zone besteht aus mindestens einem Rechenzentrum, dessen Stromversorgung, Kühlung und Netzwerkbetrieb unabhängig funktionieren.“ Azure-Verfügbarkeitszonen sind nicht in allen Regionen verfügbar. Azure-Regionen, die Verfügbarkeitszonen bereitstellen, finden Sie unter [Karte mit Azure-Regionen](https://azure.microsoft.com/global-infrastructure/geographies/). Auf dieser Karte sehen Sie, in welchen Regionen bereits Verfügbarkeitszonen bereitgestellt werden und für welche Regionen die Bereitstellung angekündigt ist. 
@@ -56,7 +56,7 @@ Bei der Bereitstellung von Azure-VMs über Verfügbarkeitszonen hinweg und der E
 
 - Sie müssen [Azure Managed Disks](https://azure.microsoft.com/services/managed-disks/) verwenden, wenn Sie eine Bereitstellung in Azure-Verfügbarkeitszonen durchführen. 
 - Die Zuordnung der Zonenaufzählungen zu den physischen Zonen liegt auf einer Azure-Abonnementbasis fest. Wenn Sie für die Bereitstellung Ihrer SAP-Systeme verschiedene Abonnements verwenden, müssen Sie die idealen Zonen für jedes Abonnement definieren.
-- Sie können Azure-Verfügbarkeitsgruppen nicht in einer Azure-Verfügbarkeitszone bereitstellen, solange Sie keine [Azure-Näherungsplatzierungsgruppe](../../linux/co-location.md) verwenden. Wie Sie die SAP DBMS-Schicht und die zentralen Dienste zonenübergreifend bereitstellen, gleichzeitig die SAP-Anwendungsschicht mit Hilfe von Verfügbarkeitsgruppen bereitstellen und dennoch große Nähe der VMs erreichen können, ist im Artikel [Azure-Näherungsplatzierungsgruppen für optimale Netzwerklatenz mit SAP-Anwendungen](sap-proximity-placement-scenarios.md) dokumentiert. Wenn Sie die Azure-Näherungsplatzierungsgruppen nicht nutzen, müssen Sie die eine oder andere als Bereitstellungsframework für VMs auswählen.
+- Sie können Azure-Verfügbarkeitsgruppen nicht in einer Azure-Verfügbarkeitszone bereitstellen, solange Sie keine [Azure-Näherungsplatzierungsgruppe](../../co-location.md) verwenden. Wie Sie die SAP DBMS-Schicht und die zentralen Dienste zonenübergreifend bereitstellen, gleichzeitig die SAP-Anwendungsschicht mit Hilfe von Verfügbarkeitsgruppen bereitstellen und dennoch große Nähe der VMs erreichen können, ist im Artikel [Azure-Näherungsplatzierungsgruppen für optimale Netzwerklatenz mit SAP-Anwendungen](sap-proximity-placement-scenarios.md) dokumentiert. Wenn Sie die Azure-Näherungsplatzierungsgruppen nicht nutzen, müssen Sie die eine oder andere als Bereitstellungsframework für VMs auswählen.
 - Sie können den [Azure Basic Load Balancer](../../../load-balancer/load-balancer-overview.md) nicht zum Erstellen von Failoverclusterlösungen auf der Grundlage von Windows Server-Failoverclustering oder Pacemaker unter Linux verwenden. Stattdessen müssen Sie die [Azure-SKU Load Balancer Standard](../../../load-balancer/load-balancer-standard-availability-zones.md) verwenden.
 
 
@@ -130,7 +130,7 @@ Ein vereinfachtes Schema einer Aktiv/Aktiv-Bereitstellung über zwei Zonen könn
 
 Die folgenden Überlegungen gelten für diese Konfiguration:
 
-- Wenn Sie keine [Azure-Näherungsplatzierungsgruppe](../../linux/co-location.md) verwenden, behandeln Sie die Azure-Verfügbarkeitszonen als Fehler- und Updatedomänen für alle virtuellen Computer, da Verfügbarkeitsgruppen nicht in Azure-Verfügbarkeitszonen bereitgestellt werden können.
+- Wenn Sie keine [Azure-Näherungsplatzierungsgruppe](../../co-location.md) verwenden, behandeln Sie die Azure-Verfügbarkeitszonen als Fehler- und Updatedomänen für alle virtuellen Computer, da Verfügbarkeitsgruppen nicht in Azure-Verfügbarkeitszonen bereitgestellt werden können.
 - Wenn Sie zonale Bereitstellungen für die DBMS-Schicht und zentrale Dienste kombinieren möchten, aber Azure-Verfügbarkeitsgruppen für die Anwendungsschicht verwenden möchten, müssen Sie Azure-Näherungsplatzierungsgruppen verwenden, wie im Artikel [Azure-Näherungsplatzierungsgruppen für optimale Netzwerklatenz mit SAP-Anwendungen](sap-proximity-placement-scenarios.md) beschrieben.
 - Die Lastenausgleichsmodule für die Failovercluster von SAP Central Services und die DBMS-Ebene müssen [Azure Load Balancer-Instanzen der Standard-SKU](../../../load-balancer/load-balancer-standard-availability-zones.md) sein. Der Load Balancer Basic funktioniert nicht zonenübergreifend.
 - Das virtuelle Azure-Netzwerk, das Sie zum Hosten des SAP-Systems bereitgestellt haben, wird gemeinsam mit seinen Subnetzen über Zonen verteilt. Sie benötigen keine separaten virtuellen Netzwerke für jede Zone.

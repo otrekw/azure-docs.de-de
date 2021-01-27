@@ -4,12 +4,12 @@ description: In diesem Artikel lernen Sie die selektive Datenträgersicherung un
 ms.topic: conceptual
 ms.date: 07/17/2020
 ms.custom: references_regions , devx-track-azurecli
-ms.openlocfilehash: 1f4d27563cf292632c6b14c82e36542b86c5d356
-ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
+ms.openlocfilehash: 38ead1591bf2ecadc8bfca5875ac1fa3e69d56ef
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98127718"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98806366"
 ---
 # <a name="selective-disk-backup-and-restore-for-azure-virtual-machines"></a>Selektive Datenträgersicherung und -wiederherstellung für Azure-VMs
 
@@ -337,4 +337,4 @@ Das Feature „Selektive Datenträgersicherung“ ist eine Funktion, die basiere
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Unterstützungsmatrix für die Sicherung virtueller Azure-Computer](backup-support-matrix-iaas.md)
-- [Häufig gestellte Fragen – Sicherung von Azure-VMs](backup-azure-vm-backup-faq.md)
+- [Häufig gestellte Fragen – Sicherung von Azure-VMs](backup-azure-vm-backup-faq.yml)

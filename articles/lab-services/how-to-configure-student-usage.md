@@ -3,12 +3,12 @@ title: Konfigurieren von Nutzungseinstellungen in Labs von Azure Lab Services
 description: Erfahren Sie, wie Sie die Anzahl der Kursteilnehmer für ein Lab konfigurieren, sie beim Lab registrieren, die Anzahl der Stunden steuern, in denen sie den virtuellen Computer verwenden können, und vieles mehr.
 ms.topic: article
 ms.date: 12/01/2020
-ms.openlocfilehash: 3b05246445aea708312891ec631a35da3bc1eb8e
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: 380a587eecb276c457b93ca3c3f3ac08b2239275
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96602630"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791962"
 ---
 # <a name="add-and-manage-lab-users"></a>Hinzufügen und Verwalten von Labbenutzern
 
@@ -24,7 +24,7 @@ In diesem Artikel wird beschrieben, wie Sie Benutzer einem Lab hinzufügen.
 
 Sie können eine Lab-Benutzerliste jetzt mit einer vorhandenen Azure AD-Gruppe (Azure Active Directory) synchronisieren, damit Sie Benutzer nicht manuell hinzufügen oder löschen müssen. 
 
-In der Azure Active Directory-Instanz Ihrer Organisation kann eine Azure AD-Gruppe erstellt werden, um den Zugriff auf Organisationsressourcen und cloudbasierte Apps zu verwalten. Weitere Informationen finden Sie unter [Verwalten des Zugriffs auf Apps und Ressourcen mithilfe von Azure Active Directory-Gruppen](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-manage-groups). Wenn in Ihrer Organisation Microsoft Office 365- oder Azure-Dienste verwendet werden, verfügt Ihre Organisation bereits über Administratoren, die ihre Azure Active Directory-Instanz verwalten. 
+In der Azure Active Directory-Instanz Ihrer Organisation kann eine Azure AD-Gruppe erstellt werden, um den Zugriff auf Organisationsressourcen und cloudbasierte Apps zu verwalten. Weitere Informationen finden Sie unter [Verwalten des Zugriffs auf Apps und Ressourcen mithilfe von Azure Active Directory-Gruppen](../active-directory/fundamentals/active-directory-manage-groups.md). Wenn in Ihrer Organisation Microsoft Office 365- oder Azure-Dienste verwendet werden, verfügt Ihre Organisation bereits über Administratoren, die ihre Azure Active Directory-Instanz verwalten. 
 
 ### <a name="sync-users-with-azure-ad-group"></a>Synchronisieren von Benutzern mit der Azure AD-Gruppe
 

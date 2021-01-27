@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 11/03/2017
 ms.author: bharatn
 ms.custom: devx-track-csharp
-ms.openlocfilehash: fd8e6dd712801de49971c1ef27cea664d73a4cb0
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 012a49762596adee39988614ed0c1020cd8bc104
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96005910"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791103"
 ---
 # <a name="reverse-proxy-in-azure-service-fabric"></a>Reverseproxy in Azure Service Fabric
 Über den in Azure Service Fabric integrierten Reverseproxy können die in einem Service Fabric-Cluster ausgeführten Microservices andere Dienste mit HTTP-Endpunkten ermitteln und mit ihnen kommunizieren.
@@ -118,7 +118,7 @@ Der Service Fabric-Reverseproxy versucht erneut, eine Dienstadresse aufzulösen 
 
 Allerdings können Replikate oder Dienstinstanzen einen Hostprozess und auch einen Port freigeben, wenn ein http.sys-basierter Webserver als Host fungiert, wie z.B.:
 
-* [System.Net.HttpListener](/dotnet/api/system.net.httplistener?view=netcore-3.1)
+* [System.Net.HttpListener](/dotnet/api/system.net.httplistener)
 * [ASP.NET Core WebListener](https://docs.asp.net/latest/fundamentals/servers.html#weblistener)
 * [Katana](https://www.nuget.org/packages/Microsoft.AspNet.WebApi.OwinSelfHost/)
 

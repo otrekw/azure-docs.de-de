@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: 8abbe575e855347714c19c40155d890af484d5d6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0cece3f531d50356fdefb81a598109d7c067c5ed
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91822329"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98805956"
 ---
 # <a name="routes-in-azure-static-web-apps-preview"></a>Routen in Azure Static Web Apps (Vorschau)
 
@@ -210,7 +210,7 @@ Wenn Sie einen Wert für einen Header angeben, wird der Header entweder hinzugef
 }
 ```
 
-Im obigen Beispiel wird ein neuer `content-security-policy`-Header hinzugefügt, der `cache-control`-Header ändert den Serverstandardwert, und der `x-dns-prefectch-control`-Header wird entfernt.
+Im obigen Beispiel wird ein neuer `content-security-policy`-Header hinzugefügt, der `cache-control`-Header ändert den Serverstandardwert, und der `x-dns-prefetch-control`-Header wird entfernt.
 
 Die folgenden Überlegungen sind wichtig, wenn Sie mit Headern arbeiten:
 

@@ -410,7 +410,7 @@
       displayName: 'FAQ, import'
     - name: Preise und Einschränkungen
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/'
-    - name: Kompatibilität
+    - name: Compliance
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: Verschlüsselung
       href: luis-encryption-of-data-at-rest.md

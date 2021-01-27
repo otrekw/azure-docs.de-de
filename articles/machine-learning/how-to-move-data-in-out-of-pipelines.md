@@ -10,12 +10,12 @@ author: lobrien
 ms.date: 01/11/2021
 ms.topic: conceptual
 ms.custom: how-to, contperf-fy20q4, devx-track-python, data4ml
-ms.openlocfilehash: 7285ab338e978f0de467f79bbce1d41409683b1e
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 80a995b488f335ac2eb60ae18621acb2b1df58e2
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98132952"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98871535"
 ---
 # <a name="moving-data-into-and-between-ml-pipeline-steps-python"></a>Verschieben von Daten in ML-Pipelineschritte und zwischen ML-Pipelineschritten (Python)
 
@@ -53,7 +53,7 @@ Sie benötigen Folgendes:
 
 - Einige bereits vorhandene Daten. In diesem Artikel wird kurz die Verwendung eines [Azure-Blobcontainers](../storage/blobs/storage-blobs-overview.md) erläutert.
 
-- Optional: Eine vorhandene Pipeline für maschinelles Lernen, wie die in [Erstellen und Ausführen von Machine Learning-Pipelines mit dem Azure Machine Learning SDK](how-to-create-your-first-pipeline.md) beschriebene Pipeline.
+- Optional: Eine vorhandene Pipeline für maschinelles Lernen, wie die in [Erstellen und Ausführen von Machine Learning-Pipelines mit dem Azure Machine Learning SDK](./how-to-create-machine-learning-pipelines.md) beschriebene Pipeline.
 
 ## <a name="use-dataset-objects-for-pre-existing-data"></a>Verwenden von `Dataset`-Objekten für bereits vorhandene Daten 
 
@@ -154,7 +154,7 @@ ds = Dataset.get_by_name(workspace=ws, name='mnist_opendataset')
 
 ## <a name="use-outputfiledatasetconfig-for-intermediate-data"></a>Verwenden von `OutputFileDatasetConfig` für Zwischendaten
 
-Während `Dataset`-Objekte nur persistente Daten darstellen, können [`OutputFileDatasetConfig`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.outputfiledatasetconfig?view=azure-ml-py&preserve-view=true)-Objekte zur temporären Datenausgabe von Pipelineschritten **und** für persistente Ausgabedaten verwendet werden. `OutputFileDatasetConfig` unterstützt das Schreiben von Daten in Blob-Speicher, Dateifreigaben, adlsgen1 oder adlsgen2. Sowohl der Einbindungsmodus als auch der Hochlademodus werden unterstützt. Im Einbindungsmodus werden Dateien, die in das eingebundene Verzeichnis geschrieben werden, beim Schließen der Datei dauerhaft gespeichert. Im Hochlademodus werden Dateien, die in das Ausgabeverzeichnis geschrieben werden, zum Auftragsende hochgeladen. Wenn beim Auftrag ein Fehler auftritt oder er abgebrochen wird, wird das Ausgabeverzeichnis nicht hochgeladen.
+Während `Dataset`-Objekte nur persistente Daten darstellen, können [`OutputFileDatasetConfig`](/python/api/azureml-core/azureml.data.outputfiledatasetconfig?preserve-view=true&view=azure-ml-py)-Objekte zur temporären Datenausgabe von Pipelineschritten **und** für persistente Ausgabedaten verwendet werden. `OutputFileDatasetConfig` unterstützt das Schreiben von Daten in Blob-Speicher, Dateifreigaben, adlsgen1 oder adlsgen2. Sowohl der Einbindungsmodus als auch der Hochlademodus werden unterstützt. Im Einbindungsmodus werden Dateien, die in das eingebundene Verzeichnis geschrieben werden, beim Schließen der Datei dauerhaft gespeichert. Im Hochlademodus werden Dateien, die in das Ausgabeverzeichnis geschrieben werden, zum Auftragsende hochgeladen. Wenn beim Auftrag ein Fehler auftritt oder er abgebrochen wird, wird das Ausgabeverzeichnis nicht hochgeladen.
 
  Das Standardverhalten des `OutputFileDatasetConfig`-Objekts besteht darin, in den Standarddatenspeicher des Arbeitsbereichs zu schreiben. Übergeben Sie die `OutputFileDatasetConfig`-Objekte mit dem `arguments`-Parameter an Ihren `PythonScriptStep`.
 
@@ -244,4 +244,4 @@ step1_output_ds = step1_output_data.register_on_complete(name='processed_data',
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Erstellen eines Azure Machine Learning-Datasets](how-to-create-register-datasets.md)
-* [Erstellen und Ausführen von Machine Learning-Pipelines mit dem Azure Machine Learning SDK](how-to-create-your-first-pipeline.md)
+* [Erstellen und Ausführen von Machine Learning-Pipelines mit dem Azure Machine Learning SDK](./how-to-create-machine-learning-pipelines.md)

@@ -3,18 +3,18 @@ title: Service Fabric-Anwendungsupgrade
 description: Dieser Artikel bietet eine Einführung in das Upgrade einer Service Fabric-Anwendung, einschließlich Wahl des Upgrademodus und der Durchführung der Integritätsüberprüfungen.
 ms.topic: conceptual
 ms.date: 8/5/2020
-ms.openlocfilehash: 8eecd923b009ecbe9f4e607ad57a99b3f20955b9
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: f3fad8d0ede92004706d9a1f4e14353715361b63
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92309853"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98792013"
 ---
 # <a name="service-fabric-application-upgrade"></a>Service Fabric-Anwendungsupgrade
 Eine Azure Service Fabric Anwendung ist eine Sammlung von Diensten. Während eines Upgrades vergleicht Service Fabric das neue [Anwendungsmanifest](service-fabric-application-and-service-manifests.md) mit der vorherigen Version und ermittelt, welche Dienste in der Anwendung aktualisiert werden müssen. Service Fabric vergleicht die Versionsnummern in den Dienstmanifesten mit den Versionsnummern in der vorherigen Version. Wenn sich ein Dienst nicht geändert hat, wird er nicht aktualisiert.
 
 > [!NOTE]
-> [ApplicationParameter](/dotnet/api/system.fabric.description.applicationdescription.applicationparameters?view=azure-dotnet#System_Fabric_Description_ApplicationDescription_ApplicationParameters) (Anwendungsparameter) bleiben bei einem Anwendungsupgrade nicht erhalten. Um die aktuellen Anwendungsparameter beizubehalten, sollte der Benutzer zuerst die Parameter abrufen und diese dann wie unten beschrieben an den Upgrade-API-Aufruf übergeben:
+> [ApplicationParameter](/dotnet/api/system.fabric.description.applicationdescription.applicationparameters#System_Fabric_Description_ApplicationDescription_ApplicationParameters) (Anwendungsparameter) bleiben bei einem Anwendungsupgrade nicht erhalten. Um die aktuellen Anwendungsparameter beizubehalten, sollte der Benutzer zuerst die Parameter abrufen und diese dann wie unten beschrieben an den Upgrade-API-Aufruf übergeben:
 ```powershell
 $myApplication = Get-ServiceFabricApplication -ApplicationName fabric:/myApplication
 $appParamCollection = $myApplication.ApplicationParameters
@@ -40,7 +40,7 @@ Nicht parallele Upgrades sind möglich, wenn das Upgrade auf alle Knoten im Clus
 Nach Abschluss des Upgrades verbleiben alle Dienste und Replikate (Instanzen) in derselben Version. Dies bedeutet: Wenn das Upgrade erfolgreich durchgeführt wird, werden sie auf die neue Version aktualisiert. Wenn beim Upgrade ein Fehler auftritt und ein Rollback durchgeführt wird, werden sie auf die alte Version zurückgesetzt.
 
 ## <a name="health-checks-during-upgrades"></a>Integritätsprüfungen bei Upgrades
-Für ein Upgrade müssen Integritätsrichtlinien festgelegt (oder Standardwerte verwendet) werden. Ein Upgrade wird als erfolgreich bezeichnet, wenn alle Updatedomänen innerhalb der angegebenen Timeouts aktualisiert werden und wenn alle Updatedomänen als fehlerfrei gelten.  Eine fehlerfreie Updatedomäne bedeutet, dass die Aktualisierungsdomäne alle in der Integritätsrichtlinie angegebenen Integritätsprüfungen bestanden hat. Eine Integritätsrichtlinie kann beispielsweise vorgeben, dass alle Dienste in einer Anwendungsinstanz *fehlerfrei*laufen müssen, so wie die Integrität von Service Fabric definiert ist.
+Für ein Upgrade müssen Integritätsrichtlinien festgelegt (oder Standardwerte verwendet) werden. Ein Upgrade wird als erfolgreich bezeichnet, wenn alle Updatedomänen innerhalb der angegebenen Timeouts aktualisiert werden und wenn alle Updatedomänen als fehlerfrei gelten.  Eine fehlerfreie Updatedomäne bedeutet, dass die Aktualisierungsdomäne alle in der Integritätsrichtlinie angegebenen Integritätsprüfungen bestanden hat. Eine Integritätsrichtlinie kann beispielsweise vorgeben, dass alle Dienste in einer Anwendungsinstanz *fehlerfrei* laufen müssen, so wie die Integrität von Service Fabric definiert ist.
 
 Integritätsrichtlinien und -prüfungen während eines Upgrades von Service Fabric sind dienst- und anwendungsunabhängig. Das heißt, es werden keine dienstspezifischen Tests durchgeführt.  Beispiel: Für Ihren Dienst gilt ggf. eine Durchsatzanforderung, doch Service Fabric hat nicht die Informationen zum Überprüfen des Durchsatzes. Nähere Informationen zu den durchgeführten Tests finden Sie in den [Artikeln zur Integrität](service-fabric-health-introduction.md). Die Überprüfungen, die während eines Upgrades durchgeführt werden, beinhalten Tests, die prüfen, ob das Anwendungspaket richtig kopiert wurde, ob die Instanz gestartet wurde, und so weiter.
 
@@ -52,7 +52,7 @@ Der Modus, den wir für Upgrades von Anwendungen empfehlen, ist der überwachte 
 Der nicht überwachte manuelle Modus benötigt nach jedem Upgrade in einer Updatedomäne einen manuellen Eingriff, um das Upgrade für die nächste Updatedomäne zu starten. Es werden keine Service Fabric-Integritätsprüfungen ausgeführt. Der Administrator überprüft den Zustand oder Status vor dem Upgrade in der nächsten Updatedomäne.
 
 ## <a name="upgrade-default-services"></a>Durchführen eines Upgrades von Standarddiensten
-Einige im [Anwendungsmanifest](service-fabric-application-and-service-manifests.md) definierte Standarddienstparameter können auch als Teil eines Anwendungsupgrades aktualisiert werden. Es können nur die Dienstparameter, die über [Update-ServiceFabricService](/powershell/module/servicefabric/update-servicefabricservice?view=azureservicefabricps) geändert werden können, als Teil eines Upgrades geändert werden. Das Ändern von Standarddiensten während des Anwendungsupgrades gestaltet sich wie folgt:
+Einige im [Anwendungsmanifest](service-fabric-application-and-service-manifests.md) definierte Standarddienstparameter können auch als Teil eines Anwendungsupgrades aktualisiert werden. Es können nur die Dienstparameter, die über [Update-ServiceFabricService](/powershell/module/servicefabric/update-servicefabricservice) geändert werden können, als Teil eines Upgrades geändert werden. Das Ändern von Standarddiensten während des Anwendungsupgrades gestaltet sich wie folgt:
 
 1. Standarddienste im neuen Anwendungsmanifest, die im Cluster nicht bereits vorhanden sind, werden erstellt.
 2. Standarddienste, die im vorherigen und im neuen Anwendungsmanifest vorhanden sind, werden aktualisiert. Die Parameter des vorhandenen Diensts werden durch die Parameter des Standarddiensts im neuen Anwendungsmanifest überschrieben. Das Anwendungsupgrade wird bei einem Fehler beim Aktualisieren des Standarddiensts automatisch zurückgesetzt.
@@ -64,7 +64,7 @@ Wenn ein Anwendungsupgrade zurückgesetzt wird, werden die Standarddienstparamet
 > Die Clusterkonfigurationseinstellung [EnableDefaultServicesUpgrade](service-fabric-cluster-fabric-settings.md) muss auf *true* festgelegt werden, damit die Regeln 2) und 3) oben (Aktualisieren und Löschen von Standarddiensten) gelten. Dieses Feature wird ab Service Fabric Version 5.5 unterstützt.
 
 ## <a name="upgrading-multiple-applications-with-https-endpoints"></a>Aktualisieren von mehreren Anwendungen mit HTTPS-Endpunkten
-Sie müssen darauf achten, nicht **denselben Port** für verschiedene Instanzen der gleichen Anwendung zu verwenden, wenn Sie HTTP**S** verwenden. Der Grund ist, dass Service Fabric das Zertifikat für eine der Anwendungsinstanzen nicht aktualisieren kann. Wenn beispielsweise sowohl Anwendung 1 als auch Anwendung 2 ihr Zertifikat 1 auf Zertifikat 2 aktualisieren möchten. Wenn das Upgrade erfolgt, könnte Service Fabric möglicherweise die Zertifikat-1-Registrierung mit http.sys bereinigt haben, obwohl die andere Anwendung es immer noch verwendet. Um dies zu verhindern, erkennt Service Fabric, dass bereits eine andere Anwendungsinstanz auf dem Port mit dem Zertifikat registriert ist (aufgrund von http.sys) und der Vorgang schlägt fehl.
+Sie müssen darauf achten, nicht **denselben Port** für verschiedene Instanzen der gleichen Anwendung zu verwenden, wenn Sie HTTP **S** verwenden. Der Grund ist, dass Service Fabric das Zertifikat für eine der Anwendungsinstanzen nicht aktualisieren kann. Wenn beispielsweise sowohl Anwendung 1 als auch Anwendung 2 ihr Zertifikat 1 auf Zertifikat 2 aktualisieren möchten. Wenn das Upgrade erfolgt, könnte Service Fabric möglicherweise die Zertifikat-1-Registrierung mit http.sys bereinigt haben, obwohl die andere Anwendung es immer noch verwendet. Um dies zu verhindern, erkennt Service Fabric, dass bereits eine andere Anwendungsinstanz auf dem Port mit dem Zertifikat registriert ist (aufgrund von http.sys) und der Vorgang schlägt fehl.
 
 Da Service Fabric das Aktualisieren von zwei verschiedenen Diensten mit **dem gleichen Port** in verschiedenen Anwendungsinstanzen nicht unterstützt. Mit anderen Worten: Sie können das gleiche Zertifikat nicht für verschiedene Dienste auf demselben Port verwenden. Falls Sie ein gemeinsam genutztes Zertifikat auf demselben Port benötigen, müssen Sie sicherstellen, dass die Dienste auf unterschiedlichen Computern mit Platzierungseinschränkungen platziert werden. Oder verwenden Sie nach Möglichkeit, für jeden Dienst in jeder Anwendungsinstanz, dynamische Ports von Service Fabric. 
 

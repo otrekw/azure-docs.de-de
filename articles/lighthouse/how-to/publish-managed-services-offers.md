@@ -3,12 +3,12 @@ title: Veröffentlichen eines Angebots für verwaltete Dienste im Azure Marketpl
 description: Erfahren Sie, wie Sie ein Angebot für verwaltete Dienste veröffentlichen, das das Onboarding von Kunden in Azure Lighthouse durchführt.
 ms.date: 12/17/2020
 ms.topic: how-to
-ms.openlocfilehash: a003e671631e9f23654eb524c7c2d937339a9588
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: f6bd504185fab3fc698019a3eb8c530ba93f8abc
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97673153"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791372"
 ---
 # <a name="publish-a-managed-service-offer-to-azure-marketplace"></a>Veröffentlichen eines Angebots für verwaltete Dienste im Azure Marketplace
 
@@ -18,7 +18,7 @@ In diesem Artikel erfahren Sie, wie Sie ein öffentliches oder privates Angebot 
 
 Sie benötigen ein gültiges [Konto in Partner Center](../../marketplace/partner-center-portal/create-account.md), um Angebote zu erstellen und zu veröffentlichen. Wenn Sie noch nicht über ein Konto verfügen, führt Sie der [Registrierungsvorgang](https://aka.ms/joinmarketplace) durch die Schritte zum Erstellen eines Kontos in Partner Center und die Registrierung beim kommerziellen Marketplace-Programm.
 
-Gemäß den [Zertifizierungsanforderungen für Angebote für verwaltete Dienste](/legal/marketplace/certification-policies#7004-business-requirements) müssen Sie über die [Cloudplattform-Kompetenzebene Silver oder Gold](/partner-center/learn-about-competencies) verfügen oder ein [Azure Expert MSP](https://partner.microsoft.com/membership/azure-expert-msp) sein, um ein Angebot für verwaltete Dienste zu veröffentlichen. Sie müssen außerdem [eine Leadzielgruppe eingeben, die zur Erstellung eines Datensatzes in Ihrem CRM-System führt](../../marketplace/partner-center-portal/create-new-managed-service-offer.md#customer-leads), wann immer ein Kunde Ihr Angebot bereitstellt.
+Gemäß den [Zertifizierungsanforderungen für Angebote für verwaltete Dienste](/legal/marketplace/certification-policies#7004-business-requirements) müssen Sie über die [Cloudplattform-Kompetenzebene Silver oder Gold](/partner-center/learn-about-competencies) verfügen oder ein [Azure Expert MSP](https://partner.microsoft.com/membership/azure-expert-msp) sein, um ein Angebot für verwaltete Dienste zu veröffentlichen. Sie müssen außerdem [eine Leadzielgruppe eingeben, die zur Erstellung eines Datensatzes in Ihrem CRM-System führt](../../marketplace/plan-managed-service-offer.md#customer-leads), wann immer ein Kunde Ihr Angebot bereitstellt.
 
 Ihre MPN-ID (Microsoft Partner Network) den von Ihnen veröffentlichten Angeboten [automatisch zugeordnet](../../cost-management-billing/manage/link-partner-id.md), um ihre Wirksamkeit hinsichtlich der Kundenbindung zu verfolgen.
 
@@ -38,7 +38,7 @@ Die folgende Tabelle kann bei der Ermittlung helfen, ob das Onboarding der Kunde
 
 ## <a name="create-your-offer"></a>Erstellen Ihres Angebots
 
-Ausführliche Anweisungen zum Erstellen Ihres Angebots, einschließlich aller Informationen und Ressourcen, die Sie bereitstellen müssen, finden Sie unter [Erstellen eines Angebots für einen verwalteten Dienst](../../marketplace/partner-center-portal/create-new-managed-service-offer.md).
+Ausführliche Anweisungen zum Erstellen Ihres Angebots, einschließlich aller Informationen und Ressourcen, die Sie bereitstellen müssen, finden Sie unter [Erstellen eines Angebots für einen verwalteten Dienst](../../marketplace/plan-managed-service-offer.md).
 
 Informationen zum allgemeinen Veröffentlichungsprozess finden Sie im [Veröffentlichungsleitfaden für Azure Marketplace und AppSource](../../marketplace/overview.md). Sehen Sie sich darüber hinaus die Informationen zu [Zertifizierungsrichtlinien für den kommerziellen Marketplace](/legal/marketplace/certification-policies) (insbesondere den Abschnitt [Managed Services](/legal/marketplace/certification-policies#700-managed-services) (Verwaltete Dienste)) an.
 
@@ -49,7 +49,7 @@ Wenn ein Kunde Ihr Angebot hinzufügt, kann er ein oder mehrere Abonnements oder
 
 ## <a name="publish-your-offer"></a>Veröffentlichen Ihres Angebots
 
-Nach der Vervollständigung aller Abschnitte besteht Ihr nächster Schritt darin, das Angebot im Azure Marketplace zu veröffentlichen. Wählen Sie die Schaltfläche **Veröffentlichen** aus, um den Vorgang zu starten, mit dem Ihr Angebot live geschaltet wird. Weitere Informationen zu diesem Prozess finden Sie [hier](../../marketplace/partner-center-portal/create-new-managed-service-offer.md#publish). 
+Nach der Vervollständigung aller Abschnitte besteht Ihr nächster Schritt darin, das Angebot im Azure Marketplace zu veröffentlichen. Wählen Sie die Schaltfläche **Veröffentlichen** aus, um den Vorgang zu starten, mit dem Ihr Angebot live geschaltet wird. Weitere Informationen zu diesem Prozess finden Sie [hier](../../marketplace/plan-managed-service-offer.md). 
 
 Sie können jederzeit [eine aktualisierte Version Ihres Angebots veröffentlichen](../..//marketplace/partner-center-portal/update-existing-offer.md). Beispielsweise können Sie einem zuvor veröffentlichten Angebot eine neue Rollendefinition hinzufügen. Kunden, die das Angebot bereits hinzugefügt haben, wird dann auf der Seite [**Dienstanbieter**](view-manage-service-providers.md) im Azure-Portal ein Symbol angezeigt, das darauf hinweist, dass eine Aktualisierung verfügbar ist. Jeder Kunde kann die [Änderungen überprüfen](view-manage-service-providers.md#update-service-provider-offers) und entscheiden, ob er auf die neue Version aktualisieren möchte. 
 

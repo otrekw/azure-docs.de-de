@@ -4,12 +4,12 @@ description: Hier erfahren Sie, wie Sie mithilfe der Azure CLI einen Service Fab
 ms.topic: conceptual
 ms.date: 02/14/2019
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 52eba2e5780b1a66f3884a764631908335372273
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 77cc49c1b79e5c24e78a67a69493aa0b0059d565
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92738951"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791070"
 ---
 # <a name="deploy-a-linux-service-fabric-cluster-into-an-azure-virtual-network"></a>Bereitstellen eines Service Fabric-Linux-Clusters in einem virtuellen Azure-Netzwerk
 
@@ -43,10 +43,10 @@ Für Ubuntu 18.04 LTS:
 
 Für Ubuntu 18.04 LTS umfasst der Unterschied zwischen den beiden Vorlagen Folgendes: 
 * Attribut **vmImageSku** ist auf „18.04-LTS“ festgelegt
-* **typeHandlerVersion** -Element jedes Knotens ist auf 1.1 festgelegt
+* **typeHandlerVersion**-Element jedes Knotens ist auf 1.1 festgelegt
 * Für die Ressource „Microsoft.ServiceFabric/clusters“:
    - **apiVersion** ist auf „2019-03-01“ oder höher festgelegt
-   - **vmImage** -Eigenschaft ist auf „Ubuntu18_04“ festgelegt
+   - **vmImage**-Eigenschaft ist auf „Ubuntu18_04“ festgelegt
 
 Diese Vorlage stellt einen sicheren Cluster mit sieben virtuellen Computern und drei Knotentypen in einem virtuellen Netzwerk bereit.  Weitere Beispielvorlagen finden Sie auf [GitHub](https://github.com/Azure-Samples/service-fabric-cluster-templates). Die Datei [AzureDeploy.json][template] stellt verschiedene Ressourcen bereit, einschließlich der folgenden.
 
@@ -84,7 +84,7 @@ Wenn keine anderen Anwendungsports benötigt werden, müssen Sie die Ressource �
 
 ## <a name="set-template-parameters"></a>Festlegen von Vorlagenparametern
 
-In der **AzureDeploy.Parameters** -Datei werden viele Werte deklariert, die zum Bereitstellen des Clusters und der zugehörigen Ressourcen verwendet werden. Hier sind einige Parameter angegeben, die Sie für Ihre Bereitstellung ggf. ändern müssen:
+In der **AzureDeploy.Parameters**-Datei werden viele Werte deklariert, die zum Bereitstellen des Clusters und der zugehörigen Ressourcen verwendet werden. Hier sind einige Parameter angegeben, die Sie für Ihre Bereitstellung ggf. ändern müssen:
 
 |Parameter|Beispielwert|Notizen|
 |---|---||
@@ -106,7 +106,7 @@ Mit der Vorlage in diesem Artikel wird ein Cluster bereitgestellt, der das Clust
 
 ### <a name="create-a-cluster-using-an-existing-certificate"></a>Erstellen eines Clusters mit einem vorhandenen Zertifikat
 
-Im folgenden Skript werden der Befehl [az sf cluster create](/cli/azure/sf/cluster?view=azure-cli-latest) und eine Vorlage verwendet, um einen neuen Cluster bereitzustellen, der durch ein vorhandenes Zertifikat geschützt ist. Außerdem wird mit dem Befehl ein neuer Schlüsseltresor in Azure erstellt und Ihr Zertifikat hochgeladen.
+Im folgenden Skript werden der Befehl [az sf cluster create](/cli/azure/sf/cluster) und eine Vorlage verwendet, um einen neuen Cluster bereitzustellen, der durch ein vorhandenes Zertifikat geschützt ist. Außerdem wird mit dem Befehl ein neuer Schlüsseltresor in Azure erstellt und Ihr Zertifikat hochgeladen.
 
 ```azurecli
 ResourceGroupName="sflinuxclustergroup"
@@ -132,7 +132,7 @@ az sf cluster create --resource-group $ResourceGroupName --location $Location \
 
 ### <a name="create-a-cluster-using-a-new-self-signed-certificate"></a>Erstellen eines Clusters mit einem neuen selbstsignierten Zertifikat
 
-Das folgende Skript verwendet den Befehl [az sf cluster create](/cli/azure/sf/cluster?view=azure-cli-latest) und eine Vorlage, um einen neuen Cluster in Azure bereitzustellen. Der Befehl erstellt auch einen neuen Schlüsseltresor in Azure, fügt diesem ein neues selbstsigniertes Zertifikat hinzu und lädt das Zertifikat an einen lokalen Speicherort herunter.
+Das folgende Skript verwendet den Befehl [az sf cluster create](/cli/azure/sf/cluster) und eine Vorlage, um einen neuen Cluster in Azure bereitzustellen. Der Befehl erstellt auch einen neuen Schlüsseltresor in Azure, fügt diesem ein neues selbstsigniertes Zertifikat hinzu und lädt das Zertifikat an einen lokalen Speicherort herunter.
 
 ```azurecli
 ResourceGroupName="sflinuxclustergroup"
@@ -152,7 +152,7 @@ az sf cluster create --resource-group $ResourceGroupName --location $Location \
 
 ## <a name="connect-to-the-secure-cluster"></a>Herstellen einer Verbindung mit dem sicheren Cluster
 
-Stellen Sie mit dem Service Fabric-CLI-Befehl `sfctl cluster select` unter Verwendung Ihres Schlüssels eine Verbindung mit dem Cluster her.  Verwenden Sie für ein selbstsigniertes Zertifikat nur die Option **--no-verify** .
+Stellen Sie mit dem Service Fabric-CLI-Befehl `sfctl cluster select` unter Verwendung Ihres Schlüssels eine Verbindung mit dem Cluster her.  Verwenden Sie für ein selbstsigniertes Zertifikat nur die Option **--no-verify**.
 
 ```console
 sfctl cluster select --endpoint https://aztestcluster.southcentralus.cloudapp.azure.com:19080 \

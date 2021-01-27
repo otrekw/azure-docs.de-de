@@ -3,12 +3,12 @@ title: Antworten auf häufig gestellte Fragen
 description: 'Antworten auf häufig gestellte Fragen zu: Azure Backup-Features wie Azure Recovery Services-Tresoren, zu sicherbaren Elementen sowie zu Funktionsweise, Verschlüsselung und Grenzwerten. '
 ms.topic: conceptual
 ms.date: 07/07/2019
-ms.openlocfilehash: bd84ff553b486d200ec4501b89b42335335b223f
-ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
+ms.openlocfilehash: f819440001180a3c446f366e61e3ac0f983fa67f
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98572526"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98806644"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure Backup – häufig gestellte Fragen
 
@@ -60,7 +60,7 @@ Wenn Sie die Sicherung bereits konfiguriert haben und von GRS zu LRS wechseln m�
 
 ### <a name="how-can-i-move-data-from-the-recovery-services-vault-to-on-premises"></a>Wie kann ich Daten aus dem Recovery Services-Tresor in eine lokale Umgebung verschieben?
 
-Das direkte Exportieren von Daten aus dem Recovery Services-Tresor in eine lokale Umgebung mithilfe von Data Box wird nicht unterstützt. Die Daten müssen in einem Speicherkonto wiederhergestellt werden und können dann über [Data Box](../databox/data-box-overview.md) oder [Import/Export](../storage/common/storage-import-export-service.md) in eine lokale Umgebung verschoben werden.
+Das direkte Exportieren von Daten aus dem Recovery Services-Tresor in eine lokale Umgebung mithilfe von Data Box wird nicht unterstützt. Die Daten müssen in einem Speicherkonto wiederhergestellt werden und können dann über [Data Box](../databox/data-box-overview.md) oder [Import/Export](../import-export/storage-import-export-service.md) in eine lokale Umgebung verschoben werden.
 
 ### <a name="what-is-the-difference-between-a-geo-redundant-storage-grs-vault-with-and-without-the-cross-region-restore-crr-capability-enabled"></a>Worin besteht der Unterschied zwischen einem georedundanten Speichertresor (GRS) mit und ohne aktivierter Funktion „Regionsübergreifende Wiederherstellung (Cross Region Restore, CRR)“?
 
@@ -70,7 +70,7 @@ Im Falle eines [GRS](azure-backup-glossary.md#grs)-Tresors ohne aktivierte [CRR]
 
 ### <a name="where-can-i-find-common-questions-about-the-azure-backup-agent-for-azure-vm-backup"></a>Wo finde ich verbreitete Fragen zum Azure Backup-Agent für die Azure-VM-Sicherung?
 
-- Informationen zu den auf virtuellen Azure-Computern ausgeführten Agents finden Sie in diesen [häufig gestellten Fragen](backup-azure-vm-backup-faq.md).
+- Informationen zu den auf virtuellen Azure-Computern ausgeführten Agents finden Sie in diesen [häufig gestellten Fragen](backup-azure-vm-backup-faq.yml).
 - Informationen zu den Agents für das Sichern von Azure-Dateiordnern finden Sie in diesen [häufig gestellten Fragen](backup-azure-file-folder-backup-faq.md).
 
 ## <a name="general-backup"></a>Allgemeine Sicherung
@@ -236,5 +236,5 @@ Der Schlüssel zum Verschlüsseln der Sicherungsdaten ist nur an Ihrem Standort 
 
 Lesen Sie die anderen häufig gestellten Fragen:
 
-- [Gängige Fragen](backup-azure-vm-backup-faq.md) zu Azure VM-Sicherungen
+- [Gängige Fragen](backup-azure-vm-backup-faq.yml) zu Azure VM-Sicherungen
 - [Gängige Fragen](backup-azure-file-folder-backup-faq.md) zum Azure Backup-Agent

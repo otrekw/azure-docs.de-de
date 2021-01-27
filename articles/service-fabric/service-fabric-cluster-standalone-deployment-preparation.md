@@ -3,12 +3,12 @@ title: Vorbereitung der Bereitstellung von eigenständigen Clustern
 description: Diese Dokumentation erläutert die Vorbereitung der Umgebung und Erstellung der Clusterkonfiguration. Diese Aktionen müssen vor der Bereitstellung eines Clusters durchgeführt werden, der eine Produktionsworkload verarbeiten soll.
 ms.topic: conceptual
 ms.date: 9/11/2018
-ms.openlocfilehash: 277c7e047815b3b4171f7cced203ecbe5b68b155
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 18b8b0ce8c0e877bf9dd274596b19f85b1febe12
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97509171"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98790951"
 ---
 # <a name="plan-and-prepare-your-service-fabric-standalone-cluster-deployment"></a>Planen und Vorbereiten der Bereitstellung eines eigenständigen Service Fabric-Clusters
 
@@ -57,7 +57,7 @@ Die folgenden Spezifikationen werden für Computer in einem Service Fabric-Clust
 * Verbindung mit einem sicheren Netzwerk oder sicheren Netzwerken für alle Computer
 * Windows Server-Betriebssystem installiert (gültige Versionen: 2012 R2, 2016, 1709 oder 1803). Service Fabric Version 6.4.654.9590 und höher unterstützt auch Server 2019 und 1809.
 * [.NET Framework 4.5.1 oder höher](https://www.microsoft.com/download/details.aspx?id=40773), vollständig installiert
-* [Windows PowerShell 3.0](/powershell/scripting/windows-powershell/install/installing-windows-powershell?view=powershell-7)
+* [Windows PowerShell 3.0](/powershell/scripting/windows-powershell/install/installing-windows-powershell)
 * Der [RemoteRegistry-Dienst](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc754820(v=ws.11)) muss auf allen Computern ausgeführt werden.
 * **Service Fabric-Installationslaufwerk muss ein NTFS-Dateisystem sein**
 * **Die Windows-Dienste *Leistungsprotokolle und Warnungen* und *Windows-Ereignisprotokoll* müssen [aktiviert](/previous-versions/windows/it-pro/windows-server-2008-r2-and-2008/cc755249(v=ws.11)) sein**.

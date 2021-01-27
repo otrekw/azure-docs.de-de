@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: article
 ms.date: 05/12/2020
 ms.author: victorh
-ms.openlocfilehash: e51cc8905a7b4a88bb7f7dabaf24bb30159ff86c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 77e36d5ab98f1177b5a0b89ee10b3e6bd22560c2
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83655064"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791458"
 ---
 # <a name="azure-firewall-threat-intelligence-based-filtering"></a>Threat Intelligence-gestütztes Filtern für Azure Firewall
 
@@ -27,7 +27,7 @@ Beim Auslösen einer Regel können Sie wahlweise nur eine Warnung protokollieren
 
 Für das Threat Intelligence-gestützte Filtern ist standardmäßig der Warnmodus aktiviert. Bis die Portalschnittstelle in Ihrer Region verfügbar wird, können Sie diese Funktion nicht deaktivieren oder den Modus ändern.
 
-:::image type="content" source="media/threat-intel/threat-intel-ui.png" alt-text="Threat Intelligence für die Firewall":::
+:::image type="content" source="media/threat-intel/threat-intel-ui.png" alt-text="Portalschnittstelle für Threat-Intelligence-gestütztes Filtern":::
 
 ## <a name="logs"></a>Protokolle
 
@@ -53,6 +53,6 @@ Der folgende Protokollausschnitt zeigt eine ausgelöste Regel:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Siehe [Log Analytics-Beispiele für Azure Firewall](log-analytics-samples.md)
+- Siehe [Log Analytics-Beispiele für Azure Firewall](./firewall-workbook.md)
 - Erfahren Sie, wie Sie eine [Azure Firewall bereitstellen und konfigurieren](tutorial-firewall-deploy-portal.md).
 - Lesen Sie den [Microsoft Security Intelligence Report](https://www.microsoft.com/en-us/security/operations/security-intelligence-report).

@@ -3,12 +3,12 @@ title: Hinzufügen oder Entfernen von Knoten für einen eigenständigen Service 
 description: Enthält Informationen zum Hinzufügen oder Entfernen von Knoten für einen Azure Service Fabric-Cluster auf einem physischen oder virtuellen Computer mit Windows Server, der lokal oder in einer Cloud angeordnet sein kann.
 ms.topic: conceptual
 ms.date: 11/02/2017
-ms.openlocfilehash: 3e5f32274d2263bc5bf1bbec8f1626d519f8ca3f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 26945b4785a0591d997139f2427b0ae6b59fa742
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91842919"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98790595"
 ---
 # <a name="add-or-remove-nodes-to-a-standalone-service-fabric-cluster-running-on-windows-server"></a>Hinzufügen oder Entfernen von Knoten für einen eigenständigen Service Fabric-Cluster unter Windows Server
 Nachdem Sie Ihren [eigenständigen Service Fabric-Cluster auf Windows Server-Computern erstellt haben](service-fabric-cluster-creation-for-windows-server.md), können sich Ihre geschäftlichen Anforderungen ändern, und Sie müssen Ihrem Cluster wie in diesem Artikel beschrieben Knoten hinzufügen oder daraus entfernen.
@@ -47,9 +47,9 @@ Nachdem Sie Ihren [eigenständigen Service Fabric-Cluster auf Windows Server-Com
 
    ```
 
-   Nachdem das Skript ausgeführt wurde, können Sie prüfen, ob der neue Knoten hinzugefügt wurde, indem Sie das Cmdlet [Get-ServiceFabricNode](/powershell/module/servicefabric/get-servicefabricnode?view=azureservicefabricps) ausführen.
+   Nachdem das Skript ausgeführt wurde, können Sie prüfen, ob der neue Knoten hinzugefügt wurde, indem Sie das Cmdlet [Get-ServiceFabricNode](/powershell/module/servicefabric/get-servicefabricnode) ausführen.
 
-7. Zur Gewährleistung der Konsistenz über verschiedene Knoten im Cluster müssen Sie ein Konfigurationsupgrade initiieren. Führen Sie [Get-ServiceFabricClusterConfiguration](/powershell/module/servicefabric/get-servicefabricclusterconfiguration?view=azureservicefabricps) aus, um die neueste Konfigurationsdatei abzurufen, und fügen Sie den neu hinzugefügten Knoten zum Abschnitt „Knoten“ hinzu. Sie sollten zudem für den Fall immer über die neueste Clusterkonfiguration verfügen, dass Sie einen Cluster mit der gleichen Konfiguration erneut bereitstellen müssen.
+7. Zur Gewährleistung der Konsistenz über verschiedene Knoten im Cluster müssen Sie ein Konfigurationsupgrade initiieren. Führen Sie [Get-ServiceFabricClusterConfiguration](/powershell/module/servicefabric/get-servicefabricclusterconfiguration) aus, um die neueste Konfigurationsdatei abzurufen, und fügen Sie den neu hinzugefügten Knoten zum Abschnitt „Knoten“ hinzu. Sie sollten zudem für den Fall immer über die neueste Clusterkonfiguration verfügen, dass Sie einen Cluster mit der gleichen Konfiguration erneut bereitstellen müssen.
 
    ```
     {
@@ -61,17 +61,17 @@ Nachdem Sie Ihren [eigenständigen Service Fabric-Cluster auf Windows Server-Com
     }
    ```
 
-8. Führen Sie [Start-ServiceFabricClusterConfigurationUpgrade](/powershell/module/servicefabric/start-servicefabricclusterconfigurationupgrade?view=azureservicefabricps) aus, um mit dem Upgrade zu beginnen.
+8. Führen Sie [Start-ServiceFabricClusterConfigurationUpgrade](/powershell/module/servicefabric/start-servicefabricclusterconfigurationupgrade) aus, um mit dem Upgrade zu beginnen.
 
    ```
    Start-ServiceFabricClusterConfigurationUpgrade -ClusterConfigPath <Path to Configuration File>
    ```
 
-   Sie können den Fortschritt des Upgrades in Service Fabric Explorer überwachen. Alternativ können Sie [Get-ServiceFabricClusterUpgrade](/powershell/module/servicefabric/get-servicefabricclusterupgrade?view=azureservicefabricps) ausführen.
+   Sie können den Fortschritt des Upgrades in Service Fabric Explorer überwachen. Alternativ können Sie [Get-ServiceFabricClusterUpgrade](/powershell/module/servicefabric/get-servicefabricclusterupgrade) ausführen.
 
 ### <a name="add-nodes-to-clusters-configured-with-windows-security-using-gmsa"></a>Hinzufügen von Knoten zu mit Windows-Sicherheit über gMSA konfigurierten Clustern
 Bei Clustern, die über ein gMSA (Group Managed Service Account, gruppenverwaltetes Dienstkonto) (https://technet.microsoft.com/library/hh831782.aspx) konfiguriert wurden, kann ein neuer Knoten mit einem Konfigurationsupgrade hinzugefügt werden:
-1. Führen Sie auf allen vorhandenen Knoten [Get-ServiceFabricClusterConfiguration](/powershell/module/servicefabric/get-servicefabricclusterconfiguration?view=azureservicefabricps) aus, um die neueste Konfigurationsdatei abzurufen und im Abschnitt „Knoten“ Details zum neuen Knoten hinzuzufügen. Stellen Sie sicher, dass der neue Knoten zu demselben gruppenverwalteten Konto gehört. Dieses Konto sollte ein Administratorkonto auf allen Computern sein.
+1. Führen Sie auf allen vorhandenen Knoten [Get-ServiceFabricClusterConfiguration](/powershell/module/servicefabric/get-servicefabricclusterconfiguration) aus, um die neueste Konfigurationsdatei abzurufen und im Abschnitt „Knoten“ Details zum neuen Knoten hinzuzufügen. Stellen Sie sicher, dass der neue Knoten zu demselben gruppenverwalteten Konto gehört. Dieses Konto sollte ein Administratorkonto auf allen Computern sein.
 
     ```
         {
@@ -82,20 +82,20 @@ Bei Clustern, die über ein gMSA (Group Managed Service Account, gruppenverwalte
             "upgradeDomain": "UD1"
         }
     ```
-2. Führen Sie [Start-ServiceFabricClusterConfigurationUpgrade](/powershell/module/servicefabric/start-servicefabricclusterconfigurationupgrade?view=azureservicefabricps) aus, um mit dem Upgrade zu beginnen.
+2. Führen Sie [Start-ServiceFabricClusterConfigurationUpgrade](/powershell/module/servicefabric/start-servicefabricclusterconfigurationupgrade) aus, um mit dem Upgrade zu beginnen.
 
     ```
     Start-ServiceFabricClusterConfigurationUpgrade -ClusterConfigPath <Path to Configuration File>
     ```
-    Sie können den Fortschritt des Upgrades in Service Fabric Explorer überwachen. Alternativ können Sie [Get-ServiceFabricClusterUpgrade](/powershell/module/servicefabric/get-servicefabricclusterupgrade?view=azureservicefabricps) ausführen.
+    Sie können den Fortschritt des Upgrades in Service Fabric Explorer überwachen. Alternativ können Sie [Get-ServiceFabricClusterUpgrade](/powershell/module/servicefabric/get-servicefabricclusterupgrade) ausführen.
 
 ### <a name="add-node-types-to-your-cluster"></a>Hinzufügen von Knotentypen zum Cluster
-Ändern Sie Ihre Konfiguration, um im Abschnitt „NodeTypes“ unter „Eigenschaften“ einen neuen Knotentyp hinzuzufügen, und starten Sie über [Start-ServiceFabricClusterConfigurationUpgrade](/powershell/module/servicefabric/start-servicefabricclusterconfigurationupgrade?view=azureservicefabricps) ein Konfigurationsupgrade. Nachdem das Upgrade abgeschlossen wurde, können Sie mit diesem Knotentyp neue Knoten zum Cluster hinzufügen.
+Ändern Sie Ihre Konfiguration, um im Abschnitt „NodeTypes“ unter „Eigenschaften“ einen neuen Knotentyp hinzuzufügen, und starten Sie über [Start-ServiceFabricClusterConfigurationUpgrade](/powershell/module/servicefabric/start-servicefabricclusterconfigurationupgrade) ein Konfigurationsupgrade. Nachdem das Upgrade abgeschlossen wurde, können Sie mit diesem Knotentyp neue Knoten zum Cluster hinzufügen.
 
 ## <a name="remove-nodes-from-your-cluster"></a>Entfernen von Knoten aus dem Cluster
 Ein Knoten kann auf folgende Weise mit einem Konfigurationsupgrade aus einem Cluster entfernt werden:
 
-1. Führen Sie [Get-ServiceFabricClusterConfiguration](/powershell/module/servicefabric/get-servicefabricclusterconfiguration?view=azureservicefabricps) aus, um die neueste Konfigurationsdatei abzurufen, und *entfernen* Sie den Knoten aus dem Abschnitt „Knoten“.
+1. Führen Sie [Get-ServiceFabricClusterConfiguration](/powershell/module/servicefabric/get-servicefabricclusterconfiguration) aus, um die neueste Konfigurationsdatei abzurufen, und *entfernen* Sie den Knoten aus dem Abschnitt „Knoten“.
 Fügen Sie im Abschnitt „FabricSettings“ den Parameter „NodesToBeRemoved“ zum Abschnitt „Setup“ hinzu. Der „Wert“ sollte eine durch Trennzeichen getrennte Liste mit Namen der zu entfernenden Knoten sein.
 
     ```
@@ -119,13 +119,13 @@ Fügen Sie im Abschnitt „FabricSettings“ den Parameter „NodesToBeRemoved�
             }
         ]
     ```
-2. Führen Sie [Start-ServiceFabricClusterConfigurationUpgrade](/powershell/module/servicefabric/start-servicefabricclusterconfigurationupgrade?view=azureservicefabricps) aus, um mit dem Upgrade zu beginnen.
+2. Führen Sie [Start-ServiceFabricClusterConfigurationUpgrade](/powershell/module/servicefabric/start-servicefabricclusterconfigurationupgrade) aus, um mit dem Upgrade zu beginnen.
 
     ```
     Start-ServiceFabricClusterConfigurationUpgrade -ClusterConfigPath <Path to Configuration File>
 
     ```
-    Sie können den Fortschritt des Upgrades in Service Fabric Explorer überwachen. Alternativ können Sie [Get-ServiceFabricClusterUpgrade](/powershell/module/servicefabric/get-servicefabricclusterupgrade?view=azureservicefabricps) ausführen.
+    Sie können den Fortschritt des Upgrades in Service Fabric Explorer überwachen. Alternativ können Sie [Get-ServiceFabricClusterUpgrade](/powershell/module/servicefabric/get-servicefabricclusterupgrade) ausführen.
 
 > [!NOTE]
 > Durch das Entfernen von Knoten werden möglicherweise mehrere Upgrades initiiert. Einige Knoten sind mit dem Tag `IsSeedNode=”true”` gekennzeichnet und können durch Abfragen des Clustermanifests über `Get-ServiceFabricClusterManifest` ermittelt werden. Das Entfernen solcher Knoten dauert möglicherweise länger als bei anderen Knoten, da die Seed-Knoten in einem solchen Szenario verschoben werden müssen. Der Cluster muss mindestens 3 primäre Knotentypen verwalten.
@@ -133,7 +133,7 @@ Fügen Sie im Abschnitt „FabricSettings“ den Parameter „NodesToBeRemoved�
 > 
 
 ### <a name="remove-node-types-from-your-cluster"></a>Entfernen von Knotentypen aus dem Cluster
-Überprüfen Sie vor dem Entfernen eines Knotentyps, ob andere Knoten auf den Knotentyp verweisen. Entfernen Sie diese Knoten, bevor Sie den entsprechenden Knotentyp entfernen. Nachdem alle zugehörigen Knoten entfernt wurden, können Sie den NodeType aus der Clusterkonfiguration entfernen und über [Start-ServiceFabricClusterConfigurationUpgrade](/powershell/module/servicefabric/start-servicefabricclusterconfigurationupgrade?view=azureservicefabricps) ein Konfigurationsupgrade starten.
+Überprüfen Sie vor dem Entfernen eines Knotentyps, ob andere Knoten auf den Knotentyp verweisen. Entfernen Sie diese Knoten, bevor Sie den entsprechenden Knotentyp entfernen. Nachdem alle zugehörigen Knoten entfernt wurden, können Sie den NodeType aus der Clusterkonfiguration entfernen und über [Start-ServiceFabricClusterConfigurationUpgrade](/powershell/module/servicefabric/start-servicefabricclusterconfigurationupgrade) ein Konfigurationsupgrade starten.
 
 
 ### <a name="replace-primary-nodes-of-your-cluster"></a>Ersetzen primärer Knoten im Cluster

@@ -79,7 +79,7 @@
         - name: 'Häufig gestellte Fragen: Backup Center'
           href: backup-center-faq.yml
         - name: 'Häufig gestellte Fragen: Azure-VM-Sicherung'
-          href: backup-azure-vm-backup-faq.md
+          href: backup-azure-vm-backup-faq.yml
         - name: 'Häufig gestellte Fragen: MARS-Agent'
           href: backup-azure-file-folder-backup-faq.md
         - name: 'Häufig gestellte Fragen: Sichern von Azure Files'

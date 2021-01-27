@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 08/10/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 601f268f81c222ada5a4f99b05ae8ffcdfc13a23
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 944e687c27d46a9cf3250cb21024b4e5a52dc62c
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97916285"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98871518"
 ---
 # <a name="sap-workloads-on-azure-planning-and-deployment-checklist"></a>Prüfliste für die Planung und Bereitstellung von SAP-Workloads in Azure
 
@@ -66,7 +66,7 @@ In dieser Phase planen Sie die Migration Ihrer SAP-Workload zur Azure-Plattform.
     - Hochverfügbarkeits- und Notfallwiederherstellungs-Architektur
         - Definieren Sie auf der Grundlage von RTO und RPO, wie die Architektur für Hochverfügbarkeit und Notfallwiederherstellung aussehen muss.
         - Überprüfen Sie für Hochverfügbarkeit innerhalb einer Zone, welche Funktionen das gewünschte DBMS in Azure bietet. Die meisten DBMS-Pakete bieten synchrone Methoden eines synchronen unmittelbar betriebsbereiten Standbyservers, die für Produktionssysteme empfohlen werden. Lesen Sie auch die SAP-bezogene Dokumentation zu den verschiedenen Datenbanken, angefangen mit [Azure Virtual Machines – DBMS-Bereitstellung für SAP-Workload](./dbms_guide_general.md) und zugehörigen Dokumenten.
-           Die Verwendung von Windows Server-Failoverclustern mit freigegebenen Datenträgern als DBMS-Schicht, wie z.B. [für SQL Server beschrieben](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server?view=sql-server-2017&preserve-view=true), wird NICHT unterstützt. Verwenden Sie stattdessen Lösungen wie
+           Die Verwendung von Windows Server-Failoverclustern mit freigegebenen Datenträgern als DBMS-Schicht, wie z.B. [für SQL Server beschrieben](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server), wird NICHT unterstützt. Verwenden Sie stattdessen Lösungen wie
            - [SQL Server Always On](/previous-versions/azure/virtual-machines/windows/sqlclassic/virtual-machines-windows-classic-ps-sql-alwayson-availability-groups)
            - [Oracle Data Guard](../oracle/configure-oracle-dataguard.md)
            - [HANA-Systemreplikation](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.01/en-US/b74e16a9e09541749a745f41246a065e.html)
@@ -137,7 +137,7 @@ Es empfiehlt sich, im Rahmen einer Pilotbereitstellung eine vollständige HADR-L
         - Testen und evaluieren Sie die Netzwerklatenz zwischen VMs der SAP-Anwendungsschicht und DBMS-VMs gemäß SAP-Supporthinweis [Nr. 500235](https://launchpad.support.sap.com/#/notes/500235) und SAP Supporthinweis [Nr. 1100926](https://launchpad.support.sap.com/#/notes/1100926/E). Werten Sie die Ergebnisse anhand der Hinweise zur Netzwerklatenz im SAP-Supporthinweis [Nr. 1100926](https://launchpad.support.sap.com/#/notes/1100926/E) aus. Die Netzwerklatenz sollte in einem mittleren oder guten Bereich liegen. Ausnahmen gelten für den Datenverkehr zwischen virtuellen Computern und Einheiten großer HANA-Instanzen, wie in [diesem Artikel](./hana-network-architecture.md#networking-architecture-for-hana-large-instance) beschrieben.
         - Vergewissern Sie sich, dass ILB-Bereitstellungen für die Verwendung von Direct Server Return eingerichtet wurden. Diese Einstellung verringert die Latenz, wenn Azure-ILBs für Konfigurationen mit Hochverfügbarkeit in der DBMS-Schicht verwendet werden
         - Wenn Sie Azure Load Balancer in Verbindung mit Linux-Gastbetriebssystemen verwenden, überprüfen Sie, ob der Linux-Netzwerkparameter **net.ipv4.tcp_timestamps** auf **0** festgelegt ist. Diese Empfehlung steht im Widerspruch zu Empfehlungen in älteren Versionen von [SAP-Hinweis Nr. 2382421](https://launchpad.support.sap.com/#/notes/2382421). Der SAP-Hinweis wurde jetzt aktualisiert und gibt an, dass dieser Parameter auf **0** festgelegt werden muss, damit er mit Azure Load Balancern funktioniert.
-        - Erwägen Sie den Einsatz von [Azure-Näherungsplatzierungsgruppen](../../linux/co-location.md) zum Erreichen einer optimalen Netzwerklatenz. Weitere Informationen finden Sie unter [Azure-Näherungsplatzierungsgruppen für optimale Netzwerklatenz bei SAP-Anwendungen](sap-proximity-placement-scenarios.md)
+        - Erwägen Sie den Einsatz von [Azure-Näherungsplatzierungsgruppen](../../co-location.md) zum Erreichen einer optimalen Netzwerklatenz. Weitere Informationen finden Sie unter [Azure-Näherungsplatzierungsgruppen für optimale Netzwerklatenz bei SAP-Anwendungen](sap-proximity-placement-scenarios.md)
    4. Bereitstellungen mit Hochverfügbarkeit und Notfallwiederherstellung
         - Wenn Sie die SAP-Anwendungsschicht bereitstellen, ohne eine bestimmte Azure-Verfügbarkeitszone zu definieren, stellen Sie sicher, dass alle virtuellen Computer, auf denen SAP-Dialoginstanzen oder Middlewareinstanzen eines einzelnen SAP-System ausgeführt werden, in einer [Verfügbarkeitsgruppe](../../manage-availability.md) bereitgestellt werden.
         - Falls Sie für die SAP Central Services und das DBMS keine Hochverfügbarkeit benötigen, können Sie diese virtuellen Computer in derselben Verfügbarkeitsgruppe wie die SAP-Anwendungsschicht bereitstellen.
@@ -209,7 +209,7 @@ In dieser Phase stellen Sie in der Regel Entwicklungssysteme, Komponententestsys
 8.  Prüfen Sie auf neue HANA-zertifizierte SKUs in Azure auf [der SAP-Website](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure). Vergleichen Sie die Preise neuer SKUs mit denen, deren Einsatz Sie geplant haben. Nehmen Sie ggf. die erforderlichen Änderungen vor, um die SKUs mit dem besten Preis-Leistungsverhältnis zu verwenden.
 9.  Passen Sie die Bereitstellungsskripts für die Verwendung neuer VM-Typen und die Einbeziehung neuer Azure-Funktionen an, die Sie nutzen möchten.
 10. Testen und evaluieren Sie nach der Bereitstellung der Infrastruktur die Netzwerklatenz zwischen VMs der SAP-Anwendungsschicht und DBMS-VMs gemäß den SAP-Supporthinweisen [Nr. 500235](https://launchpad.support.sap.com/#/notes/500235) und [Nr. 1100926](https://launchpad.support.sap.com/#/notes/1100926/E). Werten Sie die Ergebnisse anhand der Hinweise zur Netzwerklatenz im SAP-Supporthinweis [Nr. 1100926](https://launchpad.support.sap.com/#/notes/1100926/E) aus. Die Netzwerklatenz sollte in einem mittleren oder guten Bereich liegen. Ausnahmen gelten für den Datenverkehr zwischen virtuellen Computern und Einheiten großer HANA-Instanzen, wie in [diesem Artikel](./hana-network-architecture.md#networking-architecture-for-hana-large-instance) beschrieben. Stellen Sie sicher, dass für Ihre Bereitstellung keine der Einschränkungen in [Azure Virtual Machines – DBMS-Bereitstellung für SAP-Workloads](./dbms_guide_general.md#azure-network-considerations) und [SAP HANA-Infrastrukturkonfigurationen und -Vorgänge in Azure](./hana-vm-operations.md) gelten.
-11. Stellen Sie sicher, dass Ihre VMs in der richtigen [Azure-Näherungsplatzierungsgruppe](../../linux/co-location.md) bereitgestellt werden, wie im Artikel [Azure-Näherungsplatzierungsgruppen für optimale Netzwerklatenz mit SAP-Anwendungen](sap-proximity-placement-scenarios.md) beschrieben.
+11. Stellen Sie sicher, dass Ihre VMs in der richtigen [Azure-Näherungsplatzierungsgruppe](../../co-location.md) bereitgestellt werden, wie im Artikel [Azure-Näherungsplatzierungsgruppen für optimale Netzwerklatenz mit SAP-Anwendungen](sap-proximity-placement-scenarios.md) beschrieben.
 11. Führen Sie vor dem Anwenden der Workload alle anderen Überprüfungen durch, die für die Pilotphase (Proof of Concept) aufgeführt werden.
 12. Zeichnen Sie beim Anwenden der Workload den Ressourcenverbrauch der Systeme in Azure auf. Vergleichen Sie diesen Verbrauch mit Aufzeichnungen aus Ihrer alten Plattform. Passen Sie die VM-Dimensionierung künftiger Bereitstellungen an, wenn Sie große Unterschiede verzeichnen. Beachten Sie, dass beim Downsizing auch die Speicher- und Netzwerkbandbreiten von virtuellen Computern reduziert werden.
     - [Größen für virtuelle Windows-Computer in Azure](../../sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
@@ -251,7 +251,7 @@ Sammeln Sie in dieser Phase alle Ihre Erkenntnisse aus den Nicht-Produktionsbere
     - Es befinden sich keine [virtuellen Azure-Netzwerkgeräte](https://azure.microsoft.com/solutions/network-appliances/) im Kommunikationspfad zwischen der SAP-Anwendung und der DBMS-Schicht von SAP-Systemen, die auf NetWeaver, Hybris oder S/4HANA aufbauen.
     - Die Regeln von Anwendungssicherheitsgruppen und Netzwerksicherheitsgruppen erlauben die Kommunikation wie gewünscht und geplant und blockieren die Kommunikation, wo dies erforderlich ist.
     - Die Timeouteinstellungen wurden ordnungsgemäß festgelegt, wie weiter oben beschrieben.
-    - Ihre VMs wurden in der richtigen [Azure-Näherungsplatzierungsgruppe](../../linux/co-location.md) bereitgestellt, wie im Artikel [Azure-Näherungsplatzierungsgruppen für optimale Netzwerklatenz mit SAP-Anwendungen](sap-proximity-placement-scenarios.md) beschrieben.
+    - Ihre VMs wurden in der richtigen [Azure-Näherungsplatzierungsgruppe](../../co-location.md) bereitgestellt, wie im Artikel [Azure-Näherungsplatzierungsgruppen für optimale Netzwerklatenz mit SAP-Anwendungen](sap-proximity-placement-scenarios.md) beschrieben.
     - Die Netzwerklatenz zwischen VMs der SAP-Anwendungsschicht und DBMS-VMs wurde getestet und überprüft, wie in den SAP-Supporthinweisen [Nr. 500235](https://launchpad.support.sap.com/#/notes/500235) und [Nr. 1100926](https://launchpad.support.sap.com/#/notes/1100926/E) beschrieben. Werten Sie die Ergebnisse anhand der Hinweise zur Netzwerklatenz im SAP-Supporthinweis [Nr. 1100926](https://launchpad.support.sap.com/#/notes/1100926/E) aus. Die Netzwerklatenz sollte in einem mittleren oder guten Bereich liegen. Ausnahmen gelten für den Datenverkehr zwischen virtuellen Computern und Einheiten großer HANA-Instanzen, wie in [diesem Artikel](./hana-network-architecture.md#networking-architecture-for-hana-large-instance) beschrieben.
     - Es wurde Verschlüsselung mit den geeigneten Verschlüsselungsmethoden implementiert, wo dies erforderlich ist.
     - Schnittstellen und andere Anwendungen können eine Verbindung mit der neu bereitgestellten Infrastruktur herstellen.

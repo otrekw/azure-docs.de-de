@@ -3,15 +3,15 @@ title: Verwenden eines Katalogs mit freigegebenen Images in Azure Lab Services |
 description: Hier erfahren Sie, wie Sie ein Labkonto für die Verwendung eines Katalogs mit freigegebenen Images konfigurieren, sodass ein Benutzer ein Image für andere freigeben und ein anderer Benutzer mithilfe dieses Images eine Vorlage für virtuelle Computer im Lab erstellen kann.
 ms.topic: article
 ms.date: 09/11/2020
-ms.openlocfilehash: d9f4e75163f591680cc8f85ac42c1b6ada5f2365
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 984cb4c47099928ffab327895a728cbe8a8f9604
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94647765"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791389"
 ---
 # <a name="use-a-shared-image-gallery-in-azure-lab-services"></a>Verwenden eines Katalogs mit freigegebenen Images in Azure Lab Services
-In diesem Artikel wird erläutert, wie Lehrer/Dozenten und Lab-Administratoren ein VM-Vorlagenimage in einem [Katalog mit freigegebenen Images](../virtual-machines/windows/shared-image-galleries.md) speichern können, damit es von anderen Benutzern zum Erstellen von Labs verwendet werden kann. 
+In diesem Artikel wird erläutert, wie Lehrer/Dozenten und Lab-Administratoren ein VM-Vorlagenimage in einem [Katalog mit freigegebenen Images](../virtual-machines/shared-image-galleries.md) speichern können, damit es von anderen Benutzern zum Erstellen von Labs verwendet werden kann. 
 
 > [!IMPORTANT]
 > Bei Verwendung einer Shared Image Gallery unterstützt Azure Lab Services nur Images mit weniger als 128 GB Betriebssystem-Speicherplatz. Images mit mehr als 128 GB Speicherplatz auf dem Datenträger oder mehreren Datenträgern werden während der Erstellung des Labs nicht in der Liste der Images virtueller Computer angezeigt.
@@ -48,7 +48,7 @@ Nachdem ein Katalog mit freigegebenen Images angefügt wurde, kann ein Lab-Konto
     Nachdem Sie das Image in dem Katalog mit freigegebenen Images gespeichert haben, können Sie dieses Image beim Erstellen eines anderen Labs aus dem Katalog verwenden. Sie können ein Image auch außerhalb des Kontexts eines Labs in den Katalog mit freigegebenen Images hochladen. Weitere Informationen finden Sie unter [Katalog mit freigegebenen Images: Übersicht](../virtual-machines/shared-images-powershell.md). 
 
     > [!IMPORTANT]
-    > Wenn Sie in Azure Lab Services ein [Vorlagenimage eines Labs in einem Katalog mit freigegebenen Images speichern](how-to-use-shared-image-gallery.md#save-an-image-to-the-shared-image-gallery), wird das Image als ein **spezialisiertes Image** in den Katalog hochgeladen. Bei [spezialisierten Images](../virtual-machines/windows/shared-image-galleries.md#generalized-and-specialized-images) werden computerspezifische Informationen und Benutzerprofile beibehalten. Sie können weiterhin ein generalisiertes Image direkt in den Katalog außerhalb von Azure Lab Services hochladen.    
+    > Wenn Sie in Azure Lab Services ein [Vorlagenimage eines Labs in einem Katalog mit freigegebenen Images speichern](how-to-use-shared-image-gallery.md#save-an-image-to-the-shared-image-gallery), wird das Image als ein **spezialisiertes Image** in den Katalog hochgeladen. Bei [spezialisierten Images](../virtual-machines/shared-image-galleries.md#generalized-and-specialized-images) werden computerspezifische Informationen und Benutzerprofile beibehalten. Sie können weiterhin ein generalisiertes Image direkt in den Katalog außerhalb von Azure Lab Services hochladen.    
 
 ## <a name="use-an-image-from-the-shared-image-gallery"></a>Verwenden eines Images aus dem Katalog mit freigegebenen Images
 Lehrer/Dozenten können beim Erstellen eines neuen Labs ein benutzerdefiniertes Image aus dem Katalog mit freigegebenen Images als Vorlage auswählen.
@@ -60,4 +60,4 @@ Lehrer/Dozenten können beim Erstellen eines neuen Labs ein benutzerdefiniertes 
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Informationen zu Katalogen mit freigegebenen Images finden Sie in der [Übersicht über den Katalog mit freigegebenen Images](../virtual-machines/windows/shared-image-galleries.md).
+Weitere Informationen zu Katalogen mit freigegebenen Images finden Sie in der [Übersicht über den Katalog mit freigegebenen Images](../virtual-machines/shared-image-galleries.md).

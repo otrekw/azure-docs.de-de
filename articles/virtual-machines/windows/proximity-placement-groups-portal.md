@@ -7,16 +7,16 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 04/24/2020
 ms.author: cynthn
-ms.openlocfilehash: 6a14e2bd7385430c3d0fbec06259a876af556e38
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 45d7977dda4870be9a087b3277dd1db828c91178
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96010723"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98871433"
 ---
 # <a name="create-a-proximity-placement-group-using-the-portal"></a>Erstellen einer Näherungsplatzierungsgruppe über das Portal
 
-Um den Abstand zwischen den VMs so stark wie möglich zu verringern und somit die geringstmögliche Latenz zu erzielen, sollten Sie sie in einer [Näherungsplatzierungsgruppe](co-location.md#proximity-placement-groups) bereitstellen.
+Um den Abstand zwischen den VMs so stark wie möglich zu verringern und somit die geringstmögliche Latenz zu erzielen, sollten Sie sie in einer [Näherungsplatzierungsgruppe](../co-location.md#proximity-placement-groups) bereitstellen.
 
 Eine Näherungsplatzierungsgruppe ist eine logische Gruppierung, mit der ein möglichst geringer Abstand zwischen Azure-Compute-Ressourcen sichergestellt wird. Näherungsplatzierungsgruppen sind für Workloads hilfreich, die eine geringe Latenz erfordern.
 
@@ -77,4 +77,3 @@ Wenn die VM Teil der Verfügbarkeitsgruppe ist, müssen Sie die Verfügbarkeitsg
 ## <a name="next-steps"></a>Nächste Schritte
 
 Sie können auch die [Azure PowerShell](proximity-placement-groups.md) zum Erstellen von Näherungsplatzierungsgruppen verwenden.
-

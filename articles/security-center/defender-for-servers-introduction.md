@@ -7,12 +7,12 @@ ms.date: 9/23/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 711963a60d5c75031ff676a9c7f1db47f20fe895
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: b7457e258cf8a9936e9a63ab9eec9edc0b54d3eb
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92275247"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98797739"
 ---
 # <a name="introduction-to-azure-defender-for-servers"></a>Einführung in Azure Defender für Server
 
@@ -20,7 +20,7 @@ Azure Defender für Server stattet Ihre Windows- und Linux-Computer mit Bedrohun
 
 Unter Windows wird Azure Defender zur Überwachung und zum Schutz Ihrer Windows-basierten Computer in Azure-Dienste integriert. In Security Center werden die Warnungen und Behandlungsvorschläge aus allen diesen Diensten in einem benutzerfreundlichen Format präsentiert.
 
-Unter Linux sammelt Azure Defender Überwachungsdatensätze von Linux-Computern mithilfe von **auditd** , einem der am häufigsten verwendeten Linux-Überwachungsframeworks. auditd befindet sich im Mainline-Kernel. 
+Unter Linux sammelt Azure Defender Überwachungsdatensätze von Linux-Computern mithilfe von **auditd**, einem der am häufigsten verwendeten Linux-Überwachungsframeworks. auditd befindet sich im Mainline-Kernel. 
 
 
 ## <a name="what-are-the-benefits-of-azure-defender-for-servers"></a>Welche Vorteile bietet die Nutzung von Azure Defender für Server?
@@ -32,7 +32,7 @@ Zu den Funktionen für Bedrohungserkennung und Schutz von Azure Defender für Se
     Wenn Defender für Endpunkt eine Bedrohung erkennt, wird eine Warnung ausgelöst. Die Warnung wird in Security Center angezeigt. Über Security Center können Sie auch zur Defender für Endpunkt-Konsole wechseln und eine ausführliche Untersuchung durchführen, um das Ausmaß des Angriffs zu ermitteln. Erfahren Sie mehr zu Microsoft Defender für Endpunkt.
 
     > [!IMPORTANT]
-    > Der **Microsoft Defender für Endpunkt** -Sensor wird automatisch auf Windows-Servern aktiviert, für die Security Center verwendet wird.
+    > Der **Microsoft Defender für Endpunkt**-Sensor wird automatisch auf Windows-Servern aktiviert, für die Security Center verwendet wird.
 
 - **Überprüfung auf Sicherheitsrisiken für VMs:** Die in Azure Security Center enthaltene Überprüfung auf Sicherheitsrisiken basiert auf Qualys. 
 
@@ -97,4 +97,4 @@ Weitere Informationen finden Sie in den folgenden Artikeln:
 - Sie können Warnungen exportieren, und zwar unabhängig davon, ob sie von Security Center generiert oder von Security Center über ein anderes Sicherheitsprodukt empfangen wurden. Befolgen Sie die Anweisungen unter [Exportieren von Sicherheitswarnungen und -empfehlungen (Vorschau)](continuous-export.md), um die Warnungen zu Azure Sentinel (oder ein Drittanbieter-SIEM) bzw. ein beliebiges anderes externes Tool zu exportieren.
 
 - > [!div class="nextstepaction"]
-    > [Aktivieren von Azure Defender](security-center-pricing.md)
+    > [Aktivieren von Azure Defender](security-center-pricing.md#enable-azure-defender)

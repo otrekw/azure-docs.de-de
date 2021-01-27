@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 10/05/2020
 ms.author: depadia
-ms.openlocfilehash: da04e7704274336f7f92237c1d7c30459caa7bc8
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: a7361dafce30b07e76d971bdcda41cf4b3cd9e6e
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97936480"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98806170"
 ---
 # <a name="sap-businessobjects-bi-platform-deployment-guide-for-linux-on-azure"></a>Bereitstellungsleitfaden für die SAP BusinessObjects BI-Plattform für Linux in Azure
 
@@ -555,7 +555,7 @@ Im folgenden Abschnitt wird beschrieben, wie die Sicherungs- und Wiederherstellu
 
 In Azure ist die einfachste Möglichkeit zur Sicherung von Anwendungsservern und allen angeschlossenen Datenträgern die Verwendung des [Azure Backup](../../../backup/backup-overview.md)-Diensts. Er bietet unabhängige und isolierte Sicherungen zum Schutz vor dem versehentlichen Löschen der Daten auf Ihren VMs. Sicherungen werden in einem Recovery Services-Tresor mit integrierter Verwaltung von Wiederherstellungspunkten gespeichert. Konfiguration und Skalierung sind unkompliziert. Die Sicherungen sind optimiert und können bei Bedarf problemlos wiederhergestellt werden.
 
-Im Rahmen des Sicherungsvorgangs wird eine Momentaufnahme erstellt, und die Daten werden ohne Auswirkung auf Produktionsworkloads in den Recovery Services-Tresor übertragen. Die Momentaufnahme bietet einen anderen Grad an Konsistenz, wie im Artikel [Konsistenz von Momentaufnahmen](../../../backup/backup-azure-vms-introduction.md#snapshot-consistency) beschrieben. Sie können sich auch dafür entscheiden, eine Teilmenge der Datenträger einer VM zu sichern, indem Sie die Sicherungs- und Wiederherstellungsfunktionen für selektive Datenträger verwenden. Weitere Informationen finden Sie im Dokument [Azure-VM-Sicherung](../../../backup/backup-azure-vms-introduction.md) und unter [Häufig gestellte Fragen: Sichern von virtuellen Azure-Computern](../../../backup/backup-azure-vm-backup-faq.md).
+Im Rahmen des Sicherungsvorgangs wird eine Momentaufnahme erstellt, und die Daten werden ohne Auswirkung auf Produktionsworkloads in den Recovery Services-Tresor übertragen. Die Momentaufnahme bietet einen anderen Grad an Konsistenz, wie im Artikel [Konsistenz von Momentaufnahmen](../../../backup/backup-azure-vms-introduction.md#snapshot-consistency) beschrieben. Sie können sich auch dafür entscheiden, eine Teilmenge der Datenträger einer VM zu sichern, indem Sie die Sicherungs- und Wiederherstellungsfunktionen für selektive Datenträger verwenden. Weitere Informationen finden Sie im Dokument [Azure-VM-Sicherung](../../../backup/backup-azure-vms-introduction.md) und unter [Häufig gestellte Fragen: Sichern von virtuellen Azure-Computern](../../../backup/backup-azure-vm-backup-faq.yml).
 
 #### <a name="backup--restore-for-file-repository-server"></a>Sicherung und Wiederherstellung für File Repository Server
 

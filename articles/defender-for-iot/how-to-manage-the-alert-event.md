@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/07/2020
 ms.service: azure
 ms.topic: how-to
-ms.openlocfilehash: 023b33732b80198c4ed187328e8d18314f385f94
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: ad09bcb1ea4aa32bdd04af47d3503f74c850a10b
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97836050"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98803515"
 ---
 # <a name="manage-alert-events"></a>Verwalten von Warnungsereignissen
 
@@ -108,6 +108,4 @@ Wenn ein Ereignis stummgeschaltet wird, wird es immer dann ignoriert, wenn die Q
 
 ## <a name="see-also"></a>Weitere Informationen
 
-[Generieren von Berichten](how-to-generate-reports.md)
-
-[Steuern der Datenverkehr-Überwachung](how-to-control-what-traffic-is-monitored.md)
+[Steuern des zu überwachenden Datenverkehrs](how-to-control-what-traffic-is-monitored.md)

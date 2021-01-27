@@ -12,12 +12,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein, danil
 ms.date: 11/13/2020
-ms.openlocfilehash: a70571dcf380fc2186565a40778991ac70a218d6
-ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
+ms.openlocfilehash: 0c3db3b3f22f9f2639012068924708537f9ada77
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/28/2020
-ms.locfileid: "97797212"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98795329"
 ---
 # <a name="recover-using-automated-database-backups---azure-sql-database--sql-managed-instance"></a>Azure SQL-Datenbank und SQL Managed Instance: Wiederherstellen automatisierter Datenbanksicherungen
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -53,8 +53,8 @@ Für ein einzelnes Abonnement gibt es Einschränkungen hinsichtlich der Anzahl g
 
 | **Bereitstellungsoption** | **Max. Anzahl gleichzeitiger Anforderungen, die verarbeitet werden** | **Max. Anzahl gleichzeitiger Anforderungen, die übermittelt werden** |
 | :--- | --: | --: |
-|**Einzeldatenbank (pro Abonnement)**|10|60|
-|**Pool für elastische Datenbanken (pro Pool)**|4|200|
+|**Einzeldatenbank (pro Abonnement)**|30|100|
+|**Pool für elastische Datenbanken (pro Pool)**|4|2000|
 
 
 Es gibt keine integrierte Methode zum Wiederherstellen des gesamten Servers. Ein Beispiel zum Ausführen dieser Aufgabe finden Sie unter [Azure SQL Database: Full server recovery](https://gallery.technet.microsoft.com/Azure-SQL-Database-Full-82941666) (Azure SQL-Datenbank: Wiederherstellen des gesamten Servers).

@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 04/15/2017
 ms.author: harahma
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5f3f6238bb72704d13fef4a7171aeaebee5f9141
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9932c11332a616928d59c213d4f4806feb81cfe2
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91708695"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791644"
 ---
 # <a name="azure-service-fabric-hosting-model"></a>Azure Service Fabric-Hostingmodell
 Dieser Artikel bietet einen Überblick über von Azure Service Fabric bereitgestellte Anwendungshostingmodelle und beschreibt die Unterschiede zwischen dem Modell mit einem **gemeinsam genutzten Prozess** und dem Modell mit einem **exklusiven Prozess**. Er veranschaulicht grafisch die Bereitstellung einer Anwendung auf einem Service Fabric-Knoten beschreibt und die Beziehung zwischen Replikaten (oder Instanzen) des Diensts und dem Dienst-Host-Prozess.
@@ -172,7 +172,7 @@ Sie könnten einwenden, dass im vorangehenden Beispiel keine redundante *CodePac
 
 ### <a name="reliable-services-and-actor-forking-subprocesses"></a>Reliable Services und akteurforkende Unterprozesse
 
-Service Fabric unterstützt keine Reliable Services und daher auch keine Reliable akteurforkende Unterprozesse. Ein Beispiel für den Grund der fehlenden Unterstützung ist [CodePackageActivationContext](/dotnet/api/system.fabric.codepackageactivationcontext?view=azure-dotnet), der nicht verwendet werden kann, um einen nicht unterstützten Unterprozess zu registrieren, und Abbruchtoken werden nur an registrierte Prozesse gesendet. Dies führt zu allen möglichen Problemen, z.B. zu Upgradefehlern, wenn Unterprozesse nicht geschlossen werden, nachdem der übergeordnete Prozess ein Abbruchtoken empfangen hat.
+Service Fabric unterstützt keine Reliable Services und daher auch keine Reliable akteurforkende Unterprozesse. Ein Beispiel für den Grund der fehlenden Unterstützung ist [CodePackageActivationContext](/dotnet/api/system.fabric.codepackageactivationcontext), der nicht verwendet werden kann, um einen nicht unterstützten Unterprozess zu registrieren, und Abbruchtoken werden nur an registrierte Prozesse gesendet. Dies führt zu allen möglichen Problemen, z.B. zu Upgradefehlern, wenn Unterprozesse nicht geschlossen werden, nachdem der übergeordnete Prozess ein Abbruchtoken empfangen hat.
 
 ## <a name="next-steps"></a>Nächste Schritte
 [Packen][a4] und Vorbereiten einer Anwendung für die Bereitstellung

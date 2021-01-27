@@ -1,15 +1,15 @@
 ---
 title: Integrierte Richtliniendefinitionen für Azure Lighthouse
 description: Hier finden Sie eine Liste der integrierten Azure Policy-Richtliniendefinitionen für Azure Lighthouse. Diese integrierten Richtliniendefinitionen bieten allgemeine Ansätze für die Verwaltung von Azure-Ressourcen.
-ms.date: 01/08/2021
+ms.date: 01/25/2021
 ms.topic: reference
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 113df182914ac7fe6a68fcd2894edb85fb02e038
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 557d6b08be75032747c8f535b2f537da07607d19
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98045637"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98806494"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-lighthouse"></a>Integrierte Azure Policy-Definitionen für Azure Lighthouse
 

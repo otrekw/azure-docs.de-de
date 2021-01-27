@@ -3,12 +3,12 @@ title: Wiederherstellen von Daten von einer Azure Backup Server-Instanz
 description: Stellen Sie die Daten wieder her, die Sie in einem Recovery Services-Tresor auf einer beliebigen, bei diesem Tresor registrierten Azure Backup Server-Instanz gesichert haben.
 ms.topic: conceptual
 ms.date: 07/09/2019
-ms.openlocfilehash: 0cce45fbaaedad4cfcee0cda768aae2fa294312b
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: ed8c937f97ec7a74662a8b46a354b0a6db39a2b0
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96002969"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98806019"
 ---
 # <a name="recover-data-from-azure-backup-server"></a>Wiederherstellen von Daten von Azure Backup Server
 
@@ -89,5 +89,5 @@ So stellen Sie Daten von einer Azure Backup Server-Instanz wieder her:
 
 Lesen Sie die anderen häufig gestellten Fragen:
 
-* [Gängige Fragen](backup-azure-vm-backup-faq.md) zu Azure VM-Sicherungen
+* [Gängige Fragen](backup-azure-vm-backup-faq.yml) zu Azure VM-Sicherungen
 * [Gängige Fragen](backup-azure-file-folder-backup-faq.md) zum Azure Backup-Agent

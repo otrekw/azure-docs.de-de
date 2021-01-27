@@ -1,18 +1,18 @@
 ---
 title: Integrierte Richtliniendefinitionen für Azure App Configuration
 description: Hier finden Sie eine Liste der integrierten Azure Policy-Richtliniendefinitionen für Azure App Configuration. Diese integrierten Richtliniendefinitionen bieten allgemeine Ansätze für die Verwaltung von Azure-Ressourcen.
-ms.date: 01/08/2021
+ms.date: 01/25/2021
 ms.topic: reference
 author: AlexandraKemperMS
 ms.author: alkemper
 ms.service: azure-app-configuration
 ms.custom: subject-policy-reference
-ms.openlocfilehash: b496728f38ee92450bf66c22489f32a8720bdb44
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 903a5d012d4a0ba35914e5fae6aea0b7f4eda884
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98043868"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98804968"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-app-configuration"></a>Integrierte Azure Policy-Definitionen für Azure App Configuration
 

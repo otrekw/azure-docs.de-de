@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/01/2019
 ms.author: atsenthi
-ms.openlocfilehash: 8f92501bdb8261a67d3dc2b8aefbe1fb1498ef1e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d64c6383b9a83b759dd8368a4e3e0f1847b5ee16
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91445896"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791222"
 ---
 # <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>Patchen des Windows-Betriebssystem in Ihrem Service Fabric-Cluster
 
@@ -271,17 +271,17 @@ In diesem Abschnitt wird erläutert, wie das Debuggen oder die Diagnose von Prob
 > [!NOTE]
 > Um viele der folgenden angegebenen Verbesserungen zur Selbstdiagnose nutzen zu können, muss POA Version 1.4.0 oder höher installiert sein.
 
-Der Knoten-Agent-NT-Dienst erstellt [Reparaturtasks](/dotnet/api/system.fabric.repair.repairtask?view=azure-dotnet) zum Installieren von Updates auf den Knoten. Jeder Task wird dann im Koordinatordienst anhand der Richtlinie zur Taskgenehmigung vorbereitet. Die vorbereiteten Tasks werden schließlich in Repair Manager genehmigt. In diesem Dienst wird kein Task genehmigt, wenn der Cluster sich in einem fehlerhaften Zustand befindet. 
+Der Knoten-Agent-NT-Dienst erstellt [Reparaturtasks](/dotnet/api/system.fabric.repair.repairtask) zum Installieren von Updates auf den Knoten. Jeder Task wird dann im Koordinatordienst anhand der Richtlinie zur Taskgenehmigung vorbereitet. Die vorbereiteten Tasks werden schließlich in Repair Manager genehmigt. In diesem Dienst wird kein Task genehmigt, wenn der Cluster sich in einem fehlerhaften Zustand befindet. 
 
 Sie erfahren nun Schritt für Schritt, wie Updates auf einem Knoten durchgeführt werden:
 
 1. Der auf jedem Knoten ausgeführte NodeAgentNTService sucht zum geplanten Zeitpunkt nach verfügbaren Windows-Updates. Wenn Updates verfügbar sind, werden sie auf den Knoten heruntergeladen.
 
-1. Nachdem die Updates heruntergeladen wurden, erstellt der Knoten-Agent-NT-Dienst einen entsprechenden Reparaturtask für den Knoten mit dem Namen *POS___\<unique_id>* . Sie können diese Reparaturtasks mithilfe des Cmdlets [Get-ServiceFabricRepairTask](/powershell/module/servicefabric/get-servicefabricrepairtask?view=azureservicefabricps) oder mithilfe von SFX im Detailbereich des Knotens anzeigen. Nach dem Erstellen des Reparaturtasks wechselt dieser schnell in den [Status *Claimed*](/dotnet/api/system.fabric.repair.repairtaskstate?view=azure-dotnet).
+1. Nachdem die Updates heruntergeladen wurden, erstellt der Knoten-Agent-NT-Dienst einen entsprechenden Reparaturtask für den Knoten mit dem Namen *POS___\<unique_id>* . Sie können diese Reparaturtasks mithilfe des Cmdlets [Get-ServiceFabricRepairTask](/powershell/module/servicefabric/get-servicefabricrepairtask) oder mithilfe von SFX im Detailbereich des Knotens anzeigen. Nach dem Erstellen des Reparaturtasks wechselt dieser schnell in den [Status *Claimed*](/dotnet/api/system.fabric.repair.repairtaskstate).
 
 1. Der Koordinatordienst sucht in regelmäßigen Abständen nach Reparaturtasks mit dem Status *Claimed* und aktualisiert sie basierend auf TaskApprovalPolicy in den Status *Preparing*. Wenn TaskApprovalPolicy als NodeWise konfiguriert ist, wird ein Reparaturtask, der einem Knoten entspricht, nur dann vorbereitet, wenn sich derzeit kein anderer Reparaturtask im Status *Preparing*, *Approved*, *Executing* oder *Restoring* befindet. 
 
-   Ebenso sind, wenn TaskApprovalPolicy als UpgradeWise konfiguriert ist, Tasks mit den vorherigen Statuswerten nur für Knoten vorhanden, die zu derselben Updatedomäne gehören. Nachdem ein Reparaturtask in den Status *Preparing* versetzt wurde, wird der entsprechende Service Fabric-Knoten [deaktiviert](/powershell/module/servicefabric/disable-servicefabricnode?view=azureservicefabricps) (Status „Disabled“) und die Absicht auf *Restart* festgelegt.
+   Ebenso sind, wenn TaskApprovalPolicy als UpgradeWise konfiguriert ist, Tasks mit den vorherigen Statuswerten nur für Knoten vorhanden, die zu derselben Updatedomäne gehören. Nachdem ein Reparaturtask in den Status *Preparing* versetzt wurde, wird der entsprechende Service Fabric-Knoten [deaktiviert](/powershell/module/servicefabric/disable-servicefabricnode) (Status „Disabled“) und die Absicht auf *Restart* festgelegt.
 
    POA Version 1.4.0 und höher sendet Ereignisse mit der ClusterPatchingStatus-Eigenschaft an den Koordinatordienst, um die Knoten anzuzeigen, die gepatcht werden. Die Updates werden wie in der folgenden Abbildung gezeigt auf „_poanode_0“ installiert:
 
@@ -300,7 +300,7 @@ Sie erfahren nun Schritt für Schritt, wie Updates auf einem Knoten durchgeführ
 
    [![Screenshot: Konsolenfenster des Windows Update-Vorgangsstatus mit hervorgehobenem Element poanode_1.](media/service-fabric-patch-orchestration-application/wuoperationstatusb.png)](media/service-fabric-patch-orchestration-application/wuoperationstatusb.png#lightbox)
 
-   Sie können die Details auch mithilfe von PowerShell ermitteln. Stellen Sie dazu eine Verbindung mit dem Cluster her, und rufen Sie den Status des Reparaturtasks mithilfe von [Get-ServiceFabricRepairTask](/powershell/module/servicefabric/get-servicefabricrepairtask?view=azureservicefabricps) ab. 
+   Sie können die Details auch mithilfe von PowerShell ermitteln. Stellen Sie dazu eine Verbindung mit dem Cluster her, und rufen Sie den Status des Reparaturtasks mithilfe von [Get-ServiceFabricRepairTask](/powershell/module/servicefabric/get-servicefabricrepairtask) ab. 
    
    Im folgenden Beispiel befindet sich der Task „POS__poanode_2_125f2969-933c-4774-85d1-ebdf85e79f15“ im Status *DownloadComplete*. Das bedeutet, dass Updates auf den Knoten *poanode_2* heruntergeladen wurden und versucht wird, sie zu installieren, wenn der Task in den Status *Executing* gesetzt ist.
 
@@ -334,7 +334,7 @@ Sie erfahren nun Schritt für Schritt, wie Updates auf einem Knoten durchgeführ
 
 Patch Orchestration Application-Protokolle werden innerhalb der Service Fabric-Laufzeitprotokolle erfasst.
 
-Sie können Protokolle mit einem Diagnosetool oder einer Diagnosepipeline Ihrer Wahl erfassen. In POA werden die folgenden festen Anbieter-IDs verwendet, um Ereignisse über die [Ereignisquelle](/dotnet/api/system.diagnostics.tracing.eventsource?view=netframework-4.5.1) zu protokollieren:
+Sie können Protokolle mit einem Diagnosetool oder einer Diagnosepipeline Ihrer Wahl erfassen. In POA werden die folgenden festen Anbieter-IDs verwendet, um Ereignisse über die [Ereignisquelle](/dotnet/api/system.diagnostics.tracing.eventsource) zu protokollieren:
 
 - e39b723c-590c-4090-abb0-11e3e6616346
 - fc0028ff-bfdc-499f-80dc-ed922c52c5e9
@@ -379,7 +379,7 @@ A: POA installiert keine Updates, solange der Cluster sich in einem fehlerhaften
 
 **F: Soll ich TaskApprovalPolicy für meinen Cluster auf „NodeWise“ oder „UpgradeDomainWise“ festlegen?**
 
-A: Die Einstellung „UpgradeDomainWise“ beschleunigt die gesamte Clusterreparatur, weil alle Knoten einer Updatedomäne gleichzeitig gepatcht werden. Während des Vorgangs sind Knoten, die zu einer vollständigen Updatedomäne gehören, nicht verfügbar ([Status *Disabled*](/dotnet/api/system.fabric.query.nodestatus?view=azure-dotnet#System_Fabric_Query_NodeStatus_Disabled)).
+A: Die Einstellung „UpgradeDomainWise“ beschleunigt die gesamte Clusterreparatur, weil alle Knoten einer Updatedomäne gleichzeitig gepatcht werden. Während des Vorgangs sind Knoten, die zu einer vollständigen Updatedomäne gehören, nicht verfügbar ([Status *Disabled*](/dotnet/api/system.fabric.query.nodestatus#System_Fabric_Query_NodeStatus_Disabled)).
 
 Im Gegensatz dazu wird mit der Einstellung „NodeWise“ nur jeweils ein Knoten gepatcht, d. h., dass das gesamte Patchen des Clusters mehr Zeit in Anspruch nimmt. Jedoch ist während des Patchvorgangs nur maximal ein Knoten nicht verfügbar (Status *Disabled*).
 
@@ -405,9 +405,9 @@ A: Die zum Patchen eines kompletten Clusters benötigte Zeit hängt von folgende
     - Bei „NodeWise“: ca. 20 Stunden
     - Bei „UpgradeDomainWise“: ca. 5 Stunden
 
-- Der Clusterlast: Bei jedem Patchvorgang muss die Kundenworkload auf andere verfügbare Knoten im Cluster verschoben werden. Knoten, die gerade gepatcht werden, haben während dieser Zeit den [Status *Disabling*](/dotnet/api/system.fabric.query.nodestatus?view=azure-dotnet#System_Fabric_Query_NodeStatus_Disabling). Wenn der Cluster in der Nähe der Spitzenlast ausgeführt wird, dauert die Deaktivierung länger. Daher scheint der gesamte Patchprozess unter solchen Belastungsbedingungen langsam zu sein.
+- Der Clusterlast: Bei jedem Patchvorgang muss die Kundenworkload auf andere verfügbare Knoten im Cluster verschoben werden. Knoten, die gerade gepatcht werden, haben während dieser Zeit den [Status *Disabling*](/dotnet/api/system.fabric.query.nodestatus#System_Fabric_Query_NodeStatus_Disabling). Wenn der Cluster in der Nähe der Spitzenlast ausgeführt wird, dauert die Deaktivierung länger. Daher scheint der gesamte Patchprozess unter solchen Belastungsbedingungen langsam zu sein.
 
-- Clusterintegritätsfehlern während des Patchens: Der Patchprozess wird durch jede [Beeinträchtigung](/dotnet/api/system.fabric.health.healthstate?view=azure-dotnet#System_Fabric_Health_HealthState_Error) der [Integrität des Clusters](./service-fabric-health-introduction.md) unterbrochen. Durch dieses Problem erhöht sich die zum Patchen des gesamten Clusters erforderliche Zeit.
+- Clusterintegritätsfehlern während des Patchens: Der Patchprozess wird durch jede [Beeinträchtigung](/dotnet/api/system.fabric.health.healthstate#System_Fabric_Health_HealthState_Error) der [Integrität des Clusters](./service-fabric-health-introduction.md) unterbrochen. Durch dieses Problem erhöht sich die zum Patchen des gesamten Clusters erforderliche Zeit.
 
 **F: Warum werden in den über REST-APIs abgerufenen Windows Update-Ergebnissen Updates angezeigt, nicht aber im Windows Update-Verlauf auf dem Computer?**
 

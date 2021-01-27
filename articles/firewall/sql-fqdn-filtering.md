@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: how-to
 ms.date: 06/18/2020
 ms.author: victorh
-ms.openlocfilehash: 2b1b68b32ccd5a4dda0b71736da4e2d1e2566b6b
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.openlocfilehash: c65f32cc3ce56ddf3fd235de8c002528e7a3cebd
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97348015"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791441"
 ---
 # <a name="configure-azure-firewall-application-rules-with-sql-fqdns"></a>Konfigurieren von Azure Firewall-Anwendungsregeln mit SQL-FQDNs
 
@@ -96,7 +96,7 @@ Wenn Sie nicht standardmäßige Ports für SQL-IaaS-Datenverkehr verwenden, kön
 3. Fügen Sie die Anwendungsregel mit den entsprechenden Angaben für Protokoll, Port und SQL-FQDN hinzu, und wählen Sie anschließend **Speichern** aus.
    ![Anwendungsregel mit SQL-FQDN](media/sql-fqdn-filtering/application-rule-sql.png)
 4. Greifen Sie über einen virtuellen Computer in einem VNET mit firewallbasierter Datenverkehrsfilterung auf SQL zu. 
-5. Vergewissern Sie sich anhand von [Azure Firewall-Protokollen](log-analytics-samples.md), dass der Datenverkehr zugelassen wird.
+5. Vergewissern Sie sich anhand von [Azure Firewall-Protokollen](./firewall-workbook.md), dass der Datenverkehr zugelassen wird.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

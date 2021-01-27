@@ -3,12 +3,12 @@ title: Erstellen eines Azure Service Fabric-Clusters
 description: Hier erfahren Sie, wie mithilfe von Azure Resource Manager ein sicherer Service Fabric-Cluster in Azure eingerichtet wird.  Sie können eine Standardvorlage oder Ihre eigene Clustervorlage zum Erstellen eines Clusters verwenden.
 ms.topic: conceptual
 ms.date: 08/16/2018
-ms.openlocfilehash: fd2c472d24f305e42f1706e5fc49168ccde2a580
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: d4daa75fd9383bc19da1b09104ebddff5712c5b4
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96008666"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791810"
 ---
 # <a name="create-a-service-fabric-cluster-using-azure-resource-manager"></a>Erstellen eines Service Fabric-Clusters in Azure mithilfe von Azure Resource Manager 
 > [!div class="op_single_selector"]
@@ -34,7 +34,7 @@ Verwenden Sie in diesem Artikel die Service Fabric-RM-Powershell- oder Azure CLI
 
 Die Referenzdokumentation für die Service Fabric-Module finden Sie hier:
 * [Az.ServiceFabric](/powershell/module/az.servicefabric)
-* [az SF CLI module](/cli/azure/sf?view=azure-cli-latest)
+* [az SF CLI module](/cli/azure/sf)
 
 ### <a name="sign-in-to-azure"></a>Anmelden bei Azure
 
@@ -285,6 +285,6 @@ Informationen zur JSON-Syntax und zu den Eigenschaften, die in einer Vorlage ver
 
 <!-- Links -->
 [azure-powershell]:https://docs.microsoft.com/powershell/azure/install-Az-ps
-[azure-CLI]:https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest
+[azure-CLI]:https://docs.microsoft.com/cli/azure/get-started-with-azure-cli
 [service-fabric-cluster-security]: service-fabric-cluster-security.md
 [customize-your-cluster-template]: service-fabric-cluster-creation-create-template.md

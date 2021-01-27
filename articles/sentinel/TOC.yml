@@ -223,14 +223,26 @@
           href: bookmarks.md
         - name: Suchen mithilfe eines Livestreams
           href: livestream.md
-        - name: Verwalten von Hunting-Abfragen mit der REST-API
-          href: hunting-with-rest-api.md
     - name: Entfernen von Azure Sentinel
       href: offboard.md
 - name: Referenz (Neu!)
   items:
+    - name: Azure RBAC-Rollen
+      items:
+        - name: Alle Azure-Rollen
+          href: /azure/role-based-access-control/built-in-roles#all
+        - name: Azure Sentinel-Rollen
+          href: /azure/role-based-access-control/built-in-roles#security
     - name: REST-APIs
-      href: /rest/api/securityinsights/
+      items:
+        - name: Azure Sentinel-REST-API
+          href: /rest/api/securityinsights/
+        - name: Verwalten von Hunting-Abfragen mit der REST-API
+          href: hunting-with-rest-api.md
+        - name: Verwalten von Watchlists mit der REST-API
+          href: watchlist-with-rest-api.md
+    - name: Azure Sentinel Logic Apps-Connector
+      href: /connectors/azuresentinel/
     - name: Schema zur Netzwerknormalisierung
       href: normalization-schema.md
     - name: UEBA-Anreicherungen

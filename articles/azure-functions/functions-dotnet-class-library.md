@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Azure Functions mithilfe von C# entwickelt wird.
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 07/24/2020
-ms.openlocfilehash: 77ae736c787666df5e78358bc78e06eee9b7d4f9
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 335cc3017e7b016666324306181c90a0e405a956
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97936922"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98806322"
 ---
 # <a name="azure-functions-c-developer-reference"></a>C#-Entwicklerreferenz zu Azure Functions
 
@@ -21,7 +21,7 @@ Für C#-Entwickler sind möglicherweise auch folgende Artikel interessant:
 
 | Erste Schritte | Konzepte| Geführte Tutorials/Beispiele |
 | -- | -- | -- | 
-| <ul><li>[Verwenden von Visual Studio](functions-create-your-first-function-visual-studio.md)</li><li>[Verwendung von Visual Studio Code](create-first-function-vs-code-csharp.md)</li><li>[Verwenden von Befehlszeilentools](create-first-function-cli-csharp.md)</li></ul> | <ul><li>[Hostingoptionen](functions-scale.md)</li><li>[Überlegungen zur &nbsp;Leistung](functions-best-practices.md)</li><li>[Visual Studio-Entwicklung](functions-develop-vs.md)</li><li>[Dependency Injection](functions-dotnet-dependency-injection.md)</li></ul> | <ul><li>[Erstellen serverloser Anwendungen](/learn/paths/create-serverless-applications/)</li><li>[Beispiele für C#](/samples/browse/?products=azure-functions&languages=csharp)</li></ul> |
+| <ul><li>[Verwenden von Visual Studio](functions-create-your-first-function-visual-studio.md)</li><li>[Verwendung von Visual Studio Code](create-first-function-vs-code-csharp.md)</li><li>[Verwenden von Befehlszeilentools](create-first-function-cli-csharp.md)</li></ul> | <ul><li>[Hostingoptionen](functions-scale.md)</li><li>[Überlegungen&nbsp;zur Leistung](functions-best-practices.md)</li><li>[Visual Studio-Entwicklung](functions-develop-vs.md)</li><li>[Dependency Injection](functions-dotnet-dependency-injection.md)</li></ul> | <ul><li>[Erstellen serverloser Anwendungen](/learn/paths/create-serverless-applications/)</li><li>[Beispiele für C#](/samples/browse/?products=azure-functions&languages=csharp)</li></ul> |
 
 Azure Functions unterstützt die Programmiersprachen C# und C#-Skript. Wenn Sie nach Anleitungen zum [Verwenden von C# im Azure-Portal](functions-create-function-app-portal.md) suchen, lesen Sie [C#-Skriptentwicklerreferenz (C#-Skript, CSX) zu Azure Functions](functions-reference-csharp.md).
 

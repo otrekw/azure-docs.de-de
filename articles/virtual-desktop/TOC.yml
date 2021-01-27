@@ -120,6 +120,10 @@
       href: azure-monitor.md
     - name: Einrichten eines Notfallwiederherstellungsplans
       href: disaster-recovery.md
+    - name: Einrichten des KDC-Proxys
+      href: key-distribution-center-proxy.md
+    - name: Einrichten der RD-Gatewayrolle
+      href: rd-gateway-role.md
 - name: Konzepte
   items:
     - name: Integrierte Rollen
@@ -170,6 +174,10 @@
       href: azure-monitor-glossary.md
     - name: Datenspeicherorte
       href: data-locations.md
+    - name: Sicherheit
+      items:
+        - name: Sicherheitsbaseline
+          href: security-baseline.md
 - name: Problembehandlung
   items:
     - name: 'Problembehandlung: Übersicht, Feedback und Support'

@@ -5,15 +5,15 @@ author: suchiagicha
 ms.topic: conceptual
 ms.date: 06/29/2017
 ms.author: pepogors
-ms.openlocfilehash: 89a7a545dd334f892ee27b97995de40d7b6416dc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9c7d466d6e8fd36b4445966b92ee753becf96c64
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86245924"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791760"
 ---
 # <a name="diagnostics-and-performance-monitoring-for-reliable-service-remoting"></a>Diagnose und Leistungsüberwachung für Reliable ServiceRemoting
-Die Reliable ServiceRemoting-Runtime gibt [Leistungsindikatoren](/dotnet/api/system.diagnostics.performancecounter?view=dotnet-plat-ext-3.1) aus. Diese bieten einen Einblick in die Funktion von ServiceRemoting und unterstützen bei der Problembehandlung und Leistungsüberwachung.
+Die Reliable ServiceRemoting-Runtime gibt [Leistungsindikatoren](/dotnet/api/system.diagnostics.performancecounter) aus. Diese bieten einen Einblick in die Funktion von ServiceRemoting und unterstützen bei der Problembehandlung und Leistungsüberwachung.
 
 
 ## <a name="performance-counters"></a>Leistungsindikatoren
@@ -36,7 +36,7 @@ Für die Kategorie `Service Fabric Service`haben die Namen von Leistungsindikato
 
 `ServiceFabricPartitionID_ServiceReplicaOrInstanceId_ServiceRuntimeInternalID`
 
-*ServiceFabricPartitionID* ist die Zeichenfolgendarstellung der Service Fabric-Partitions-ID, mit der die Leistungsindikatorinstanz verknüpft ist. Die Partitions-ID ist eine GUID. Ihre Zeichenfolgendarstellung wird mithilfe der [`Guid.ToString`](/dotnet/api/system.guid.tostring?view=netcore-3.1#System_Guid_ToString_System_String_)-Methode mit dem Formatbezeichner „D“ generiert.
+*ServiceFabricPartitionID* ist die Zeichenfolgendarstellung der Service Fabric-Partitions-ID, mit der die Leistungsindikatorinstanz verknüpft ist. Die Partitions-ID ist eine GUID. Ihre Zeichenfolgendarstellung wird mithilfe der [`Guid.ToString`](/dotnet/api/system.guid.tostring#System_Guid_ToString_System_String_)-Methode mit dem Formatbezeichner „D“ generiert.
 
 *ServiceReplicaOrInstanceId* ist die Zeichenfolgendarstellung der Service Fabric-Replikat-/-Instanz-ID, der die Leistungsindikatorinstanz zugeordnet ist.
 
@@ -57,7 +57,7 @@ Für die Kategorie `Service Fabric Service Method`haben die Namen von Leistungsi
 
 *ServiceRuntimeMethodId* ist die Zeichenfolgendarstellung einer 32-Bit-Ganzzahl, die von der Fabric-Dienst-Runtime zur internen Verwendung generiert wird. Sie wird in den Namen der Leistungsindikatorinstanz eingefügt, um deren Eindeutigkeit sicherzustellen und Konflikte mit anderen Namen von Leistungsindikatorinstanzen zu vermeiden. Benutzer sollten nicht versuchen, diesen Teil des Namens der Leistungsindikatorinstanz zu interpretieren.
 
-*ServiceFabricPartitionID* ist die Zeichenfolgendarstellung der Service Fabric-Partitions-ID, mit der die Leistungsindikatorinstanz verknüpft ist. Die Partitions-ID ist eine GUID. Ihre Zeichenfolgendarstellung wird mithilfe der [`Guid.ToString`](/dotnet/api/system.guid.tostring?view=netcore-3.1#System_Guid_ToString_System_String_)-Methode mit dem Formatbezeichner „D“ generiert.
+*ServiceFabricPartitionID* ist die Zeichenfolgendarstellung der Service Fabric-Partitions-ID, mit der die Leistungsindikatorinstanz verknüpft ist. Die Partitions-ID ist eine GUID. Ihre Zeichenfolgendarstellung wird mithilfe der [`Guid.ToString`](/dotnet/api/system.guid.tostring#System_Guid_ToString_System_String_)-Methode mit dem Formatbezeichner „D“ generiert.
 
 *ServiceReplicaOrInstanceId* ist die Zeichenfolgendarstellung der Service Fabric-Replikat-/-Instanz-ID, der die Leistungsindikatorinstanz zugeordnet ist.
 

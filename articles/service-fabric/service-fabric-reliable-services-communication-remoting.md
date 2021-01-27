@@ -4,12 +4,12 @@ description: Service Fabric-Remoting ermöglicht Clients und Diensten die Kommun
 ms.topic: conceptual
 ms.date: 09/20/2017
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c3659fea73abae3c9c5264f227b90d0af95a93e7
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: a0486a27d76c978a65c4a3cfd81df52a12e4ea1d
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96576654"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791576"
 ---
 # <a name="service-remoting-in-c-with-reliable-services"></a>Dienstremoting in C# mit Reliable Services
 
@@ -160,7 +160,7 @@ Diese Schritte ändern den Vorlagencode so, dass der V2-Stapel mit expliziten V2
    </Resources>
    ```
 
-2. Verwenden Sie [FabricTransportServiceRemotingListener](/dotnet/api/microsoft.servicefabric.services.remoting.v2.fabrictransport.runtime.fabrictransportserviceremotinglistener?view=azure-dotnet) aus dem Namespace `Microsoft.ServiceFabric.Services.Remoting.V2.FabricTransport.Runtime`.
+2. Verwenden Sie [FabricTransportServiceRemotingListener](/dotnet/api/microsoft.servicefabric.services.remoting.v2.fabrictransport.runtime.fabrictransportserviceremotinglistener) aus dem Namespace `Microsoft.ServiceFabric.Services.Remoting.V2.FabricTransport.Runtime`.
 
    ```csharp
    protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceListeners()
@@ -176,7 +176,7 @@ Diese Schritte ändern den Vorlagencode so, dass der V2-Stapel mit expliziten V2
     }
    ```
 
-3. Verwenden Sie [FabricTransportServiceRemotingClientFactory](/dotnet/api/microsoft.servicefabric.services.remoting.v2.fabrictransport.client.fabrictransportserviceremotingclientfactory?view=azure-dotnet) aus dem Namespace `Microsoft.ServiceFabric.Services.Remoting.V2.FabricTransport.Client`, um Clients zu erstellen.
+3. Verwenden Sie [FabricTransportServiceRemotingClientFactory](/dotnet/api/microsoft.servicefabric.services.remoting.v2.fabrictransport.client.fabrictransportserviceremotingclientfactory) aus dem Namespace `Microsoft.ServiceFabric.Services.Remoting.V2.FabricTransport.Client`, um Clients zu erstellen.
 
    ```csharp
    var proxyFactory = new ServiceProxyFactory((c) =>
@@ -255,7 +255,7 @@ Gehen Sie folgendermaßen vor, um zu einem V2_1-Stapel zu wechseln.
     }
    ```
 
-3. Fügen Sie Remotingschnittstellen ein [assembly-Attribut](/dotnet/api/microsoft.servicefabric.services.remoting.fabrictransport.fabrictransportserviceremotingproviderattribute?view=azure-dotnet) hinzu.
+3. Fügen Sie Remotingschnittstellen ein [assembly-Attribut](/dotnet/api/microsoft.servicefabric.services.remoting.fabrictransport.fabrictransportserviceremotingproviderattribute) hinzu.
 
    ```csharp
     [assembly:  FabricTransportServiceRemotingProvider(RemotingListenerVersion=  RemotingListenerVersion.V2_1, RemotingClientVersion= RemotingClientVersion.V2_1)]
@@ -279,7 +279,7 @@ Folgen Sie diesen Schritten:
    </Resources>
    ```
 
-2. Verwenden Sie den [Remoting V2-Listener](/dotnet/api/microsoft.servicefabric.services.remoting.v2.fabrictransport.runtime.fabrictransportserviceremotinglistener?view=azure-dotnet). Der Standardname für die Dienstendpunktressource lautet „ServiceEndpointV2_1“. Er muss im Dienstmanifest definiert werden.
+2. Verwenden Sie den [Remoting V2-Listener](/dotnet/api/microsoft.servicefabric.services.remoting.v2.fabrictransport.runtime.fabrictransportserviceremotinglistener). Der Standardname für die Dienstendpunktressource lautet „ServiceEndpointV2_1“. Er muss im Dienstmanifest definiert werden.
 
    ```csharp
    protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceListeners()
@@ -297,7 +297,7 @@ Folgen Sie diesen Schritten:
     }
    ```
 
-3. Verwenden Sie die V2-[Clientfactory](/dotnet/api/microsoft.servicefabric.services.remoting.v2.fabrictransport.client.fabrictransportserviceremotingclientfactory?view=azure-dotnet).
+3. Verwenden Sie die V2-[Clientfactory](/dotnet/api/microsoft.servicefabric.services.remoting.v2.fabrictransport.client.fabrictransportserviceremotingclientfactory).
    ```csharp
    var proxyFactory = new ServiceProxyFactory((c) =>
           {
