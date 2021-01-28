@@ -13,7 +13,7 @@
       href: invite-users.md
 - name: Tutorials
   items:
-    - name: Erstellen eines neuen mit Azure verbundenen Kontos
+    - name: Erstellen eines neuen Kontos
       href: connect-to-azure.md
     - name: Verwenden der Video Indexer-API
       href: video-indexer-use-apis.md

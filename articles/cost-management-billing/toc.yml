@@ -393,7 +393,7 @@
     - name: Abrechnungsautomatisierungsszenarien
       href: manage/cost-management-automation-scenarios.md
     - name: 'Azure-Abrechnungs-API: Übersicht'
-      href: manage/usage-rate-card-overview.md
+      href: /rest/api/cost-management/retail-prices/azure-retail-prices
     - name: Azure-Abrechnungs-REST-API
       href: /rest/api/billing
     - name: 'Azure-Nutzungs-API: Übersicht'
