@@ -3,17 +3,17 @@ title: Azure Enterprise-REST-APIs
 description: In diesem Artikel werden die REST-APIs beschrieben, die Sie mit Ihrer Azure Enterprise-Registrierung verwenden können.
 author: bandersmsft
 ms.author: banders
-ms.date: 09/03/2020
+ms.date: 01/21/2021
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.reviewer: boalcsva
-ms.openlocfilehash: c4c99142c64278514066efa8925ed8e3f6617235
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: 1fdf64053a55eb33d80ed461c231e8c6dd84d63b
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92132583"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98677730"
 ---
 # <a name="azure-enterprise-rest-apis"></a>Azure Enterprise-REST-APIs
 
@@ -93,14 +93,6 @@ Wenn Sie eine API verwenden, werden die Antwortstatuscodes angezeigt. Sie sind i
 
 Nutzungs- und Abrechnungsdatendateien werden für den aktuellen Abrechnungsmonat alle 24 Stunden aktualisiert. Die Datenlatenz kann jedoch bis zu drei Tage betragen. Beispiel: Bei einer Nutzung am Montag erscheinen die Daten in der Datendatei unter Umständen erst am Donnerstag.
 
-### <a name="test-enrollment-for-development"></a>Testregistrierung für die Entwicklung
-
-Wenn Sie ein Partner oder Entwickler ohne Azure Enterprise-Registrierung sind und auf die API zugreifen möchten, können Sie die Testregistrierung verwenden. Der Registrierungsname lautet _EnrollmentNumber 100_. Sie können Nutzungsinformationen bis Juni 2018 suchen und testen. Anschließend können Sie den folgenden Schlüssel verwenden, um die API aufzurufen und Beispieldaten anzuzeigen.
-
-```
-eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6ImpoeXA2UU9DWlZmY1pmdmhDVGR1OFdxeTJ5byJ9.eyJFbnJvbGxtZW50TnVtYmVyIjoiMTAwIiwiSWQiOiI1ZTc2ZmNiMy0xN2I4LTQ5ZDItYjdkOC0zMDU0YjUwOWY0MWYiLCJSZXBvcnRWaWV3IjoiU3lzdGVtIiwiUGFydG5lcklkIjoiIiwiRGVwYXJ0bWVudElkIjoiIiwiQWNjb3VudElkIjoiIiwiaXNzIjoiZWEubWljcm9zb2Z0YXp1cmUuY29tIiwiYXVkIjoiY2xpZW50LmVhLm1pY3Jvc29mdGF6dXJlLmNvbSIsImV4cCI6MTU4NjM5MDA2OSwibmJmIjoxNTcwNTc4ODY5fQ.lENR5pCBph6iZCVexUlN1b-j7StaILCyBewVHoILD-_fn8S2o2bHY1qUseGOkBwNlaFQfk2OZIo-jQYvnf3eP3UNrNVTCINT0APbc1RqgwSjZSxugVVHH9jnSzEjONkJaSKmi4tlidk6zkF1-uY-TPJkKxYN_9ar7BgLshF9JGXk7t8OZhxSCxDZc-smntu6ORFDl4gRZZVBKXhqOGjOAdYX5tPiGDF2Bxb68RSzh9Xyr5PXxKLx5yivZzUdo0-GFHo13V9w6a5VQM4R1w4_ro8jF8WAo3mpGZ_ovx_U5IY6zMNmi_AoA1mUyvTGotgcu94RragutoJRxAGHbNJZ0Q
-```
-
 ### <a name="azure-service-catalog"></a>Azure-Dienstkatalog
 
 Alle Azure-Dienste werden im CSV-Format in einem Azure Storage-Blob in einem Katalog veröffentlicht. Dieser Katalog ist hilfreich, wenn Sie einen Katalog mit allen Azure-Diensten für Ihr System zusammenstellen müssen. Der aktuelle Katalog befindet sich unter [https://azurecatalog.blob.core.windows.net/catalog/AzureCatalog.csv](https://azurecatalog.blob.core.windows.net/catalog/AzureCatalog.csv).
@@ -120,28 +112,28 @@ Das JSON-Format wird aus dem CSV-Bericht generiert. Somit entspricht das Format 
 | ServiceAdministratorId | ServiceAdministratorLiveId | ServiceAdministratorLiveId |   |
 | SubscriptionId | SubscriptionId | SubscriptionId |   |
 | SubscriptionGuid | MOCPSubscriptionGuid | SubscriptionGuid |   |
-| Abonnementname | SubscriptionName | SubscriptionName |   |
+| Subscription Name | SubscriptionName | SubscriptionName |   |
 | Date | Date | Date | Zeigt das Datum an, an dem der Dienstkatalogbericht ausgeführt wurde. Das Format ist eine Datumszeichenfolge ohne Zeitstempel. |
-| Month (Monat) | Month (Monat) | Month (Monat) |   |
-| Day (Tag) | Day (Tag) | Day (Tag) |   |
+| Month | Month | Month (Monat) |   |
+| Tag | Tag | Tag |   |
 | Jahr | Jahr | Jahr |   |
-| Produkt | BillableItemName | Produkt |   |
-| Meter ID | ResourceGUID | MeterId |   |
+| Product | BillableItemName | Product |   |
+| Messungs-ID | ResourceGUID | MeterId |   |
 | Meter Category | Dienst | MeterCategory | Dient zum Finden von Diensten. Relevant für Dienste mit mehr als einem ServiceType. Beispiel: Virtual Machines. |
-| Meter Sub-Category | ServiceType | MeterSubCategory | Stellt eine zweite Detailebene für einen Dienst bereit. Beispiel: A1 VM (außer Windows).  |
-| Meter Region | ServiceRegion | MeterRegion | Die dritte Detailebene, die für einen Dienst erforderlich ist. Hilfreich, um den Regionskontext von ResourceGUID zu finden. |
+| Unterkategorie für Messung | ServiceType | MeterSubCategory | Stellt eine zweite Detailebene für einen Dienst bereit. Beispiel: A1 VM (außer Windows).  |
+| Messbereich | ServiceRegion | MeterRegion | Die dritte Detailebene, die für einen Dienst erforderlich ist. Hilfreich, um den Regionskontext von ResourceGUID zu finden. |
 | Meter Name | ServiceResource | MeterName | Der Name des Diensts. |
-| Consumed Quantity | ResourceQtyConsumed | ConsumedQuantity |   |
+| Verbrauchte Menge | ResourceQtyConsumed | ConsumedQuantity |   |
 | ResourceRate | ResourceRate | ResourceRate |   |
 | ExtendedCost | ExtendedCost | ExtendedCost |   |
-| Resource Location | ServiceSubRegion | ResourceLocation |   |
-| Consumed Service | ServiceInfo | ConsumedService |   |
-| Instance ID | Komponente | InstanceId |   |
+| Ressourcenspeicherort | ServiceSubRegion | ResourceLocation |   |
+| Genutzter Dienst | ServiceInfo | ConsumedService |   |
+| Instanzen-ID | Komponente | InstanceId |   |
 | ServiceInfo1 | ServiceInfo1 | ServiceInfo1 |   |
 | ServiceInfo2 | ServiceInfo2 | ServiceInfo2 |   |
 | AdditionalInfo | AdditionalInfo | AdditionalInfo |   |
 | `Tags` | `Tags` | `Tags` |   |
-| Store Service Identifier   | OrderNumber | StoreServiceIdentifier   |   |
+| Dienstbezeichner speichern   | OrderNumber | StoreServiceIdentifier   |   |
 | Department Name | DepartmentName | DepartmentName |   |
 | Kostenstelle | CostCenter | CostCenter |   |
 | Berechnungseinheit | UnitOfMeasure | UnitOfMeasure | Beispielwerte: Stunden, GB, Ereignisse, Pushvorgänge, Einheiten, Einheit Stunden, MB, tägliche Einheiten |
@@ -155,20 +147,20 @@ Das JSON-Format wird aus dem CSV-Bericht generiert. Somit entspricht das Format 
 | Kontoname | AccountName | AccountName |
 | SubscriptionId | SubscriptionId | SubscriptionId |
 | SubscriptionGuid | SubscriptionGuid | SubscriptionGuid |
-| Abonnementname | SubscriptionName |  SubscriptionName |
+| Subscription Name | SubscriptionName |  SubscriptionName |
 | Date | BillingCycle |  Datum (nur Datumszeichenfolge. Kein Zeitstempel)
-| Month (Monat) | Month (Monat) |  Month (Monat) |
-| Day (Tag) | Day (Tag) |  Day (Tag) |
+| Month | Month |  Month (Monat) |
+| Tag | Tag |  Tag |
 | Jahr | Jahr |  Jahr |
-| Meter ID | MeterResourceId |  MeterId |
+| Messungs-ID | MeterResourceId |  MeterId |
 | Name des Herausgebers | PublisherFriendlyName |  PublisherName |
 | Angebotsname | OfferFriendlyName |  OfferName |
 | Plan Name | PlanFriendlyName |  PlanName |
-| Consumed Quantity | BilledQty |  ConsumedQuantity |
+| Verbrauchte Menge | BilledQty |  ConsumedQuantity |
 | ResourceRate | ResourceRate | ResourceRate |
 | ExtendedCost | ExtendedCost | ExtendedCost |
 | Berechnungseinheit | UnitOfMeasure | UnitOfMeasure |
-| Instance ID | InstanceId | InstanceId |
+| Instanzen-ID | InstanceId | InstanceId |
 | Zusätzliche Informationen | AdditionalInfo | AdditionalInfo |
 | `Tags` | `Tags` | `Tags` |
 | Order Number | OrderNumber | OrderNumber |
