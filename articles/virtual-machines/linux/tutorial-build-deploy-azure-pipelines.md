@@ -11,12 +11,12 @@ ms.workload: infrastructure
 ms.date: 1/3/2020
 ms.author: ushan
 ms.custom: devops, devx-track-js
-ms.openlocfilehash: 3d26da693d83fd680c644849d581ea35ca7b49af
-ms.sourcegitcommit: 44844a49afe8ed824a6812346f5bad8bc5455030
+ms.openlocfilehash: 4ca431290fe168f8fc073908bb3735ecb5992562
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/23/2020
-ms.locfileid: "97739704"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98731250"
 ---
 # <a name="tutorial-deploy-your-app-to-linux-virtual-machines-in-azure-using-azure-devops-services-and-azure-pipelines"></a>Tutorial: Bereitstellen der App auf virtuellen Linux-Computern in Azure mithilfe von Azure DevOps Services und Azure Pipelines
 
@@ -24,7 +24,7 @@ Continuous Integration (CI) und Continuous Deployment (CD) bilden eine Pipeline,
 
 Azure Pipelines bietet einen umfassenden Satz an CI/CD-Automatisierungstools für Bereitstellungen auf virtuellen Computern – sowohl lokal als auch in einer beliebigen Cloud.
 
-In diesem Tutorial richten Sie eine YAML-basierte CI/CD-Pipeline ein, um Ihre App in einer Azure Pipelines-[Umgebung](/azure/devops/pipelines/process/environments?view=azure-devops) bereitzustellen. Als Ressourcen verwenden Sie virtuelle Linux-Computer, die jeweils als Webserver zum Ausführen der App dienen.
+In diesem Tutorial richten Sie eine YAML-basierte CI/CD-Pipeline ein, um Ihre App in einer Azure Pipelines-[Umgebung](/azure/devops/pipelines/process/environments) bereitzustellen. Als Ressourcen verwenden Sie virtuelle Linux-Computer, die jeweils als Webserver zum Ausführen der App dienen.
 
 Folgendes wird vermittelt:
 
@@ -41,7 +41,7 @@ Folgendes wird vermittelt:
   Sie können eine [kostenlose Azure DevOps-Organisation](https://go.microsoft.com/fwlink/?LinkId=307137&clcid=0x409&wt.mc_id=o~msft~vscom~home-vsts-hero~27308&campaign=o~msft~vscom~home-vsts-hero~27308) erhalten.
 
   > [!NOTE]
-  > Weitere Informationen finden Sie unter [Herstellen einer Verbindung mit Azure DevOps Services](/azure/devops/organizations/projects/connect-to-projects?view=vsts).
+  > Weitere Informationen finden Sie unter [Herstellen einer Verbindung mit Azure DevOps Services](/azure/devops/organizations/projects/connect-to-projects).
 
 *  Sie benötigen einen virtuellen Linux-Computer für ein Bereitstellungsziel.  Weitere Informationen finden Sie unter [Erstellen und Verwalten virtueller Linux-Computer mit der Azure-Befehlszeilenschnittstelle](./tutorial-manage-vm.md).
 
@@ -222,7 +222,7 @@ Weitere Anleitungen erhalten Sie in den Schritten im Artikel [Erstellen Ihrer No
        tags: web
    ```
 2. Sie können bestimmte Gruppen von virtuellen Computern aus der Umgebung auswählen, die die Bereitstellung erhalten sollen. Geben Sie dazu die **Tags** an, die Sie für jeden virtuellen Computer in der Umgebung definiert haben.
-[Hier](/azure/devops/pipelines/yaml-schema?view=azure-devops&tabs=schema#deployment-job) finden Sie das vollständige YAML-Schema für den Bereitstellungsauftrag.
+[Hier](/azure/devops/pipelines/yaml-schema?tabs=schema#deployment-job) finden Sie das vollständige YAML-Schema für den Bereitstellungsauftrag.
 
 3. Sie können entweder `runOnce` oder `rolling` als Bereitstellungsstrategie angeben. 
 

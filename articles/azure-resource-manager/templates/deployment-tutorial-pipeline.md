@@ -4,12 +4,12 @@ description: Hier finden Sie Informationen zum kontinuierlichen Erstellen, Teste
 ms.date: 08/24/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 8e9f047497f493752947d8115084dcfe86f5e040
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: e7e2cda0524e4d754fbf879c046fee2d43c44cb3
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97588130"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98701711"
 ---
 # <a name="tutorial-continuous-integration-of-arm-templates-with-azure-pipelines"></a>Tutorial: Continuous Integration von ARM-Vorlagen mit Azure Pipelines
 
@@ -39,12 +39,12 @@ Damit Sie die Anweisungen in diesem Artikel ausführen können, benötigen Sie F
 
 * **Ein GitHub-Konto** zum Erstellen eines Repositorys für Ihre Vorlagen. Falls Sie keines haben, können Sie [kostenlos eines erstellen](https://github.com). Weitere Informationen zur Verwendung von GitHub-Repositorys finden Sie unter [Build GitHub repositories](/azure/devops/pipelines/repos/github) (Erstellen von GitHub-Repositorys).
 * **Git installieren**. In diesem Tutorial wird *Git Bash* oder *Git Shell* verwendet. Eine entsprechende Anleitung finden Sie unter [Install Git](https://www.atlassian.com/git/tutorials/install-git) (Installieren von Git).
-* **Eine Azure DevOps-Organisation.** Sollten Sie über keine Organisation verfügen, können Sie kostenlos eine Organisation erstellen. Weitere Informationen finden Sie unter [Quickstart: Create an organization or project collection](/azure/devops/organizations/accounts/create-organization?view=azure-devops) (Schnellstart: Erstellen einer Organisation oder einer Projektsammlung).
+* **Eine Azure DevOps-Organisation.** Sollten Sie über keine Organisation verfügen, können Sie kostenlos eine Organisation erstellen. Weitere Informationen finden Sie unter [Quickstart: Create an organization or project collection](/azure/devops/organizations/accounts/create-organization) (Schnellstart: Erstellen einer Organisation oder einer Projektsammlung).
 * (Optional) **Visual Studio Code mit der Erweiterung „Azure Resource Manager-Tools“** . Weitere Informationen finden Sie unter [Schnellstart: Erstellen von ARM-Vorlagen mit Visual Studio Code](quickstart-create-templates-use-visual-studio-code.md).
 
 ## <a name="prepare-a-github-repository"></a>ein GitHub-Repository erstellen
 
-GitHub wird zum Speichern Ihres Projektquellcodes (einschließlich Resource Manager-Vorlagen) verwendet. Informationen zu weiteren unterstützten Repositorys finden Sie unter [Supported repository types](/azure/devops/pipelines/repos/?view=azure-devops) (Unterstützte Repositorytypen).
+GitHub wird zum Speichern Ihres Projektquellcodes (einschließlich Resource Manager-Vorlagen) verwendet. Informationen zu weiteren unterstützten Repositorys finden Sie unter [Supported repository types](/azure/devops/pipelines/repos/) (Unterstützte Repositorytypen).
 
 ### <a name="create-a-github-repository"></a>Erstellen eines GitHub-Repositorys
 

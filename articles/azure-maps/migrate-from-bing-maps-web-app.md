@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: devx-track-js
-ms.openlocfilehash: ef2c69409ce3f479338ffc9d418b3469f197ad30
-ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
+ms.openlocfilehash: db53e4407674abc1e6c81090dc4a50afa784940d
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97679391"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98684824"
 ---
 # <a name="tutorial-migrate-a-web-app-from-bing-maps"></a>Tutorial: Migrieren einer Web-App aus Bing Karten
 
@@ -85,7 +85,7 @@ Azure Maps bietet außerdem viele zusätzliche [Open Source-Module für das Web-
 
 Hier finden Sie einige der wichtigsten Unterschiede zwischen den Web-SDKs für Bing Karten und Azure Maps, die Sie beachten sollten:
 
-* Zusätzlich zur Bereitstellung eines gehosteten Endpunkts für den Zugriff auf das Azure Maps Web SDK hinaus steht außerdem ein NPM-Paket zum Einbetten des Web SDKs in Apps zur Verfügung. Weitere Informationen finden Sie in dieser [Dokumentation](https://docs.microsoft.com/azure/azure-maps/how-to-use-map-control). Dieses Paket enthält außerdem TypeScript-Definitionen.
+* Zusätzlich zur Bereitstellung eines gehosteten Endpunkts für den Zugriff auf das Azure Maps Web SDK hinaus steht außerdem ein NPM-Paket zum Einbetten des Web SDKs in Apps zur Verfügung. Weitere Informationen finden Sie in dieser [Dokumentation](./how-to-use-map-control.md). Dieses Paket enthält außerdem TypeScript-Definitionen.
 * Für Bing Karten sind zwei gehostete Branches des SDKs verfügbar, Release und Experimental. Im Experimental-Branch können mehrere Updates pro Tag erfolgen, wenn neue Entwicklungen durchgeführt werden. Für Azure Maps ist nur ein Releasebranch verfügbar, experimentelle Funktionen werden aber als benutzerdefinierte Module im Azure Maps-Beispielcodeprojekt (Open Source) erstellt. Für Bing Karten war auch ein fixierter Branch verfügbar, der weniger häufig Updates erfuhr, was die Gefahr nicht abwärtskompatibler Änderungen in Folge einer Veröffentlichung verringerte. In Azure Maps können Sie das NPM-Modul verwenden und auf ein beliebiges früheres Nebenversionsrelease verweisen.
 
 > [!TIP]
@@ -95,7 +95,7 @@ Hier finden Sie einige der wichtigsten Unterschiede zwischen den Web-SDKs für B
 * Beide Plattformen verwenden ein ähnliches System der Anordnung für die Basiskarten, jedoch messen die Kacheln in Bing Karten 256 Pixel, während die Kacheln in Azure Maps 512 Pixel groß sind. Daher muss, um in Azure Maps die gleiche Kartenansicht wie in Bing Karten zu erreichen, eine in Bing Karten verwendete Zoomstufe von der Zoomstufe in Azure Maps subtrahiert werden.
 * Koordinaten werden in Bing Karten als `latitude, longitude` angegeben, während Azure Maps `longitude, latitude` verwendet. Dieses Format orientiert sich am Standard `[x, y]`, der von den meisten GIS-Plattformen zugrunde gelegt wird.
 
-* Formen im Azure Maps Web-SDK basieren auf dem GeoJSON-Schema. Hilfsklassen werden über den [atlas.data-Namespace](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data) verfügbar gemacht. Es gibt ferner die [atlas.Shape](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.shape)-Klasse, die zum Umschließen von GeoJSON-Objekten verwendet werden kann, damit sie sich leicht in einer Weise aktualisieren und warten lassen, die Datenbindungen zulässt.
+* Formen im Azure Maps Web-SDK basieren auf dem GeoJSON-Schema. Hilfsklassen werden über den [atlas.data-Namespace](/javascript/api/azure-maps-control/atlas.data) verfügbar gemacht. Es gibt ferner die [atlas.Shape](/javascript/api/azure-maps-control/atlas.shape)-Klasse, die zum Umschließen von GeoJSON-Objekten verwendet werden kann, damit sie sich leicht in einer Weise aktualisieren und warten lassen, die Datenbindungen zulässt.
 * Koordinaten werden in Azure Maps als Positionsobjekte definiert, die als einfaches Zahlenarray im Format `[longitude, latitude]` oder `new atlas.data.Position(longitude, latitude)` angegeben werden können.
 
 > [!TIP]

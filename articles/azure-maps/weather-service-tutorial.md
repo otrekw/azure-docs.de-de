@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc, devx-track-python
-ms.openlocfilehash: 259db10aa8f5cd2b711eca001bc6d48057d5280d
-ms.sourcegitcommit: e0ec3c06206ebd79195d12009fd21349de4a995d
+ms.openlocfilehash: 276dd5b7eba33081c5131eba722df91d8685adff
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97683205"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98678162"
 ---
 # <a name="tutorial-join-sensor-data-with-weather-forecast-data-by-using-azure-notebooks-python"></a>Tutorial: Verknüpfen von Sensordaten mit Wettervorhersagedaten unter Verwendung von Azure Notebooks (Python)
 
@@ -27,7 +27,7 @@ Windenergie ist eine alternative Energiequelle zu fossilen Brennstoffen im Kampf
 In diesem Lernprogramm lernen Sie Folgendes:
 
 > [!div class="checklist"]
-> * Verwenden von Datendateien in [Azure Notebooks](../notebooks/index.yml) in der Cloud
+> * Verwenden von Datendateien in [Azure Notebooks](https://notebooks.azure.com) in der Cloud
 > * Laden von Demodaten aus einer Datei
 > * Aufrufen von Azure Maps-REST-APIs in Python
 > * Rendern von Standortdaten auf der Karte
@@ -197,9 +197,13 @@ Informationen zu den in diesem Tutorial verwendeten Azure Maps-APIs finden Sie u
 
 Eine vollständige Liste mit den Azure Maps-REST-APIs finden Sie unter [Azure Maps-Dokumentation](./consumption-model.md).
 
+## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
+
+Es sind keine zu bereinigenden Ressourcen vorhanden.
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 Weitere Informationen zu Azure Notebooks finden Sie hier
 
 > [!div class="nextstepaction"]
-> [Azure Notebooks](../notebooks/index.yml)
+> [Azure Notebooks](https://notebooks.azure.com)

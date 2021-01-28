@@ -3,17 +3,17 @@ title: 'CLI-Skript: Erstellen eines Servers – Azure Database for MariaDB'
 description: Dieses CLI-Beispielskript erstellt einen Azure Database for MariaDB-Server und konfiguriert eine Firewallregel auf Serverebene.
 author: savjani
 ms.author: pariks
-ms.service: mariadb
+ms.service: jroth
 ms.devlang: azurecli
 ms.topic: sample
 ms.custom: mvc, devx-track-azurecli
 ms.date: 11/28/2018
-ms.openlocfilehash: a9a0ce595da1aecc3cd2ebdc071c99e42944ef9f
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 8b414b5d483f4662bf8fdeb144a9cc8ef99d02dd
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94536794"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664614"
 ---
 # <a name="create-a-mariadb-server-and-configure-a-firewall-rule-using-the-azure-cli"></a>Erstellen eines MariaDB-Servers und Konfigurieren einer Firewallregel mit der Azure CLI
 Dieses CLI-Beispielskript erstellt einen Azure Database for MariaDB-Server und konfiguriert eine Firewallregel auf Serverebene. Nach der erfolgreichen Ausführung des Skripts ist der MariaDB-Server für alle Azure-Dienste und die konfigurierte IP-Adresse erreichbar.

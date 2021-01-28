@@ -14,12 +14,12 @@ ms.service: azure
 ms.tgt_pltfrm: multiple
 ms.topic: tutorial
 ms.workload: web
-ms.openlocfilehash: 65d8ade438228d7af71de1fc66639e5b6de2edda
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: 735c0955a25a3995c94c73bd6471643ce2783df3
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93040804"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98682613"
 ---
 # <a name="create-a-pivotal-cloud-foundry-cluster-on-azure"></a>Erstellen eines Pivotal Cloud Foundry-Clusters in Azure
 
@@ -42,11 +42,13 @@ Weitere Informationen finden Sie unter [Verwenden von SSH-Schlüsseln mit Window
 
 > [!NOTE]
 >
-> Zum Erstellen eines Dienstprinzipals ist die Berechtigung „Kontobesitzer“ erforderlich. Sie können auch ein Skript schreiben, um die Erstellung des Dienstprinzipals zu automatisieren. Sie können beispielsweise den Azure CLI-Befehl [az ad sp create-for-rbac](/cli/azure/ad/sp?view=azure-cli-latest) verwenden.
+> Zum Erstellen eines Dienstprinzipals ist die Berechtigung „Kontobesitzer“ erforderlich. Sie können auch ein Skript schreiben, um die Erstellung des Dienstprinzipals zu automatisieren. Sie können beispielsweise den Azure CLI-Befehl [az ad sp create-for-rbac](/cli/azure/ad/sp) verwenden.
 
 1. Melden Sie sich bei Ihrem Azure-Konto an.
 
-    `az login`
+    ```azurecli
+    az login
+    ```
 
     ![Azure CLI-Anmeldung](media/deploy/az-login-output.png )
  
@@ -54,11 +56,15 @@ Weitere Informationen finden Sie unter [Verwenden von SSH-Schlüsseln mit Window
 
 2. Legen Sie Ihr Standardabonnement für diese Konfiguration fest.
 
-    `az account set -s {id}`
+    ```azurecli
+    az account set -s {id}
+    ```
 
 3. Erstellen Sie eine Azure Active Directory-Anwendung für Ihre PCF-Instanz. Geben Sie ein eindeutiges alphanumerisches Kennwort an. Speichern Sie das Kennwort als **clientSecret** zur späteren Verwendung.
 
-    `az ad app create --display-name "Svc Principal for OpsManager" --password {enter-your-password} --homepage "{enter-your-homepage}" --identifier-uris {enter-your-homepage}`
+    ```azurecli
+    az ad app create --display-name "Svc Principal for OpsManager" --password {enter-your-password} --homepage "{enter-your-homepage}" --identifier-uris {enter-your-homepage}
+    ```
 
     Kopieren Sie den Wert von „appId“ in der Ausgabe als **clientID** zur späteren Verwendung.
 
@@ -68,23 +74,31 @@ Weitere Informationen finden Sie unter [Verwenden von SSH-Schlüsseln mit Window
 
 4. Erstellen Sie einen Dienstprinzipal mit Ihrer neuen App-ID (appId).
 
-    `az ad sp create --id {appId}`
+    ```azurecli
+    az ad sp create --id {appId}
+    ```
 
 5. Legen Sie als Berechtigung für den Dienstprinzipal die Rolle „Mitwirkender“ fest.
 
-    `az role assignment create --assignee "{enter-your-homepage}" --role "Contributor"`
+    ```azurecli
+    az role assignment create --assignee "{enter-your-homepage}" --role "Contributor"
+    ```
 
     Sie können stattdessen auch den folgenden Befehl verwenden.
 
-    `az role assignment create --assignee {service-principal-name} --role "Contributor"`
+    ```azurecli
+    az role assignment create --assignee {service-principal-name} --role "Contributor"
+    ```
 
     ![Rollenzuweisung für den Dienstprinzipal](media/deploy/svc-princ.png )
 
 6. Vergewissern Sie sich, dass Sie sich mit der App-ID (appID), dem Kennwort (password) und der Mandanten-ID (tenantID) erfolgreich bei Ihrem Dienstprinzipal anmelden können.
 
-    `az login --service-principal -u {appId} -p {your-password}  --tenant {tenantId}`
+    ```azurecli
+    az login --service-principal -u {appId} -p {your-password}  --tenant {tenantId}
+    ```
 
-7. Erstellen Sie eine JSON-Datei im folgenden Format. Verwenden Sie die Werte für **subscriptionID** , **tenantID** , **clientID** und **clientSecret** , die Sie zuvor kopiert haben. Speichern Sie die Datei .
+7. Erstellen Sie eine JSON-Datei im folgenden Format. Verwenden Sie die Werte für **subscriptionID**, **tenantID**, **clientID** und **clientSecret**, die Sie zuvor kopiert haben. Speichern Sie die Datei .
 
     ```json
     {
@@ -99,7 +113,7 @@ Weitere Informationen finden Sie unter [Verwenden von SSH-Schlüsseln mit Window
 
 1. Melden Sie sich bei Ihrem Konto für das [Pivotal-Netzwerk](https://network.pivotal.io) an, oder führen Sie die Registrierung dafür durch.
 2. Klicken Sie oben rechts auf der Seite auf Ihren Profilnamen. Wählen Sie **Profil bearbeiten** aus.
-3. Scrollen Sie zum unteren Rand der Seite, und kopieren Sie den Wert von **LEGACY API TOKEN**. Dies ist der Wert für das **Token für das Pivotal-Netzwerk** , den Sie später verwenden.
+3. Scrollen Sie zum unteren Rand der Seite, und kopieren Sie den Wert von **LEGACY API TOKEN**. Dies ist der Wert für das **Token für das Pivotal-Netzwerk**, den Sie später verwenden.
 
 ## <a name="provision-your-cloud-foundry-cluster-on-azure"></a>Bereitstellen des Cloud Foundry-Clusters in Azure
 
@@ -112,8 +126,8 @@ Geben Sie die Parameter ein, und erstellen Sie Ihren PCF-Cluster.
 
     ![Azure-Bereitstellungsstatus](media/deploy/deployment.png )
 
-2. Klicken Sie im Navigationsbereich auf der linken Seite auf den Link **Bereitstellungen** , um Anmeldeinformationen für PCF Operations Manager abzurufen. Wählen Sie auf der nächsten Seite den **Bereitstellungsnamen** aus.
-3. Klicken Sie im linken Navigationsbereich auf den Link **Ausgaben** , um die URL, den Benutzernamen und das Kennwort für PCF Operations Manager anzuzeigen. Der Wert von „OPSMAN-FQDN“ ist die URL.
+2. Klicken Sie im Navigationsbereich auf der linken Seite auf den Link **Bereitstellungen**, um Anmeldeinformationen für PCF Operations Manager abzurufen. Wählen Sie auf der nächsten Seite den **Bereitstellungsnamen** aus.
+3. Klicken Sie im linken Navigationsbereich auf den Link **Ausgaben**, um die URL, den Benutzernamen und das Kennwort für PCF Operations Manager anzuzeigen. Der Wert von „OPSMAN-FQDN“ ist die URL.
  
     ![Ausgabe der Cloud Foundry-Bereitstellung](media/deploy/deploy-outputs.png )
  
@@ -123,7 +137,7 @@ Geben Sie die Parameter ein, und erstellen Sie Ihren PCF-Cluster.
          
     > [!NOTE]
     >
-    > Wenn im Internet Explorer-Browser ein Fehler mit der Warnmeldung „Website ist nicht sicher“ auftritt, können Sie auf **Weitere Informationen** klicken und die Webseite aufrufen. Klicken Sie im Firefox-Browser auf **Erweitert** , und fügen Sie die Zertifizierung hinzu, um fortzufahren.
+    > Wenn im Internet Explorer-Browser ein Fehler mit der Warnmeldung „Website ist nicht sicher“ auftritt, können Sie auf **Weitere Informationen** klicken und die Webseite aufrufen. Klicken Sie im Firefox-Browser auf **Erweitert**, und fügen Sie die Zertifizierung hinzu, um fortzufahren.
 
 5. In PCF Operations Manager werden die bereitgestellten Azure-Instanzen angezeigt. Jetzt können Sie Ihre Anwendungen hier bereitstellen und verwalten.
                

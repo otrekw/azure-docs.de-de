@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc, devx-track-js
-ms.openlocfilehash: 125ca501dbad74263f32632db44eebd097c3b0a1
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: dbf2331dc6bcd3187175554b61d347e8bb2c04a4
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896700"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624998"
 ---
 # <a name="tutorial-find-and-display-routes-for-different-modes-of-travel-using-azure-maps"></a>Tutorial: Ermitteln und Anzeigen von Routen für verschiedene Reisemodi mithilfe von Azure Maps
 
@@ -39,7 +39,7 @@ Sie können den vollständigen Quellcode für das Beispiel [hier](https://github
 
 In den folgenden Schritten wird gezeigt, wie Sie das Kartensteuerelement erstellen und auf einer Webseite anzeigen.
 
-1. Erstellen Sie auf dem lokalen Computer eine neue Datei, und nennen Sie sie **MapTruckRoute.html** .
+1. Erstellen Sie auf dem lokalen Computer eine neue Datei, und nennen Sie sie **MapTruckRoute.html**.
 2. Kopieren Sie das folgende HTML-Markup, und fügen Sie es in die Datei ein.
 
     ```HTML
@@ -119,9 +119,9 @@ In den folgenden Schritten wird gezeigt, wie Sie das Kartensteuerelement erstell
 
     Im Kartenereignishandler `ready` ist die Verkehrsflusseinstellung für die Karte auf `relative` (Geschwindigkeit der Straße relativ zum freien Fluss) festgelegt. Weitere Datenverkehrsoptionen finden Sie unter [TrafficOptions-Schnittstelle](/javascript/api/azure-maps-control/atlas.trafficoptions?preserve-view=false&view=azure-maps-typescript-latest).
 
-2. Speichern Sie die Datei **MapTruckRoute.html** , und aktualisieren Sie die Seite in Ihrem Browser. Wenn Sie eine beliebige Stadt vergrößern (beispielsweise Los Angeles), sehen Sie, dass die Straßen mit den aktuellen Verkehrsdaten angezeigt werden.
+2. Speichern Sie die Datei **MapTruckRoute.html**, und aktualisieren Sie die Seite in Ihrem Browser. Wenn Sie eine beliebige Stadt vergrößern (beispielsweise Los Angeles), sehen Sie, dass die Straßen mit den aktuellen Verkehrsdaten angezeigt werden.
 
-    :::image type="content" source="./media/tutorial-prioritized-routes/traffic-map.png" alt-text="Einfaches Kartenrendern des Kartensteuerelements":::
+    :::image type="content" source="./media/tutorial-prioritized-routes/traffic-map.png" alt-text="Anzeigen der Verkehrsinfo auf einer Karte":::
 
 <a id="queryroutes"></a>
 
@@ -195,9 +195,9 @@ In diesem Tutorial werden zwei Routen berechnet und auf der Karte dargestellt: D
 
     Mit dem letzten Codeblock wird mithilfe der Breiten- und Längengrade von Start- und Endpunkt die Kameraperspektive festgelegt. Die Start- und Endpunkte werden der Datenquelle hinzugefügt. Das umgebende Rechteck für die Start- und Endpunkte wird mithilfe der Funktion `atlas.data.BoundingBox.fromData` berechnet. Dieses umgebende Rechteck dient dazu, die Kameraansicht der Karte mithilfe der Funktion `map.setCamera` auf die gesamte Route zu platzieren. Zur Kompensierung der Pixeldimensionen der Symbole wird Abstand hinzugefügt. Weitere Informationen zur setCamera-Eigenschaft des Kartensteuerelements finden Sie unter [setCamera(CameraOptions | CameraBoundsOptions & AnimationOptions)](/javascript/api/azure-maps-control/atlas.map?view=azure-maps-typescript-latest#setcamera-cameraoptions---cameraboundsoptions---animationoptions-&preserve-view=false).
 
-3. Speichern Sie die Datei **TruckRoute.html** , und aktualisieren Sie Ihren Browser. Die Karte ist nun auf Seattle zentriert. Der blaue Teardrop-Pin markiert den Startpunkt. Der runde blaue Pin markiert den Endpunkt.
+3. Speichern Sie die Datei **TruckRoute.html**, und aktualisieren Sie Ihren Browser. Die Karte ist nun auf Seattle zentriert. Der blaue Teardrop-Pin markiert den Startpunkt. Der runde blaue Pin markiert den Endpunkt.
 
-   :::image type="content" source="./media/tutorial-prioritized-routes/pins-map.png" alt-text="Einfaches Kartenrendern des Kartensteuerelements":::
+   :::image type="content" source="./media/tutorial-prioritized-routes/pins-map.png" alt-text="Anzeigen der Karte mit Start- und Endpunkten":::
 
 <a id="multipleroutes"></a>
 
@@ -206,7 +206,7 @@ In diesem Tutorial werden zwei Routen berechnet und auf der Karte dargestellt: D
 In diesem Abschnitt erfahren Sie, wie Sie den Routendienst von Azure Maps verwenden, um Wegbeschreibungen zwischen Punkten auf der Grundlage der Fortbewegungsart zu erhalten. Hier werden zwei Fortbewegungsarten verwendet: LKW und PKW.
 
 >[!TIP]
->Der Routendienst stellt APIs zum Planen der *schnellsten* , *kürzesten* , *umweltfreundlichsten* oder *schönsten* Route unter Berücksichtigung von Entfernung, Verkehrslage und verwendeter Fortbewegungsart bereit. Mit dem Dienst können Benutzer auch zukünftige Routen auf der Grundlage historischer Verkehrsbedingungen planen. Benutzer können die Vorhersage der Routendauer für einen beliebigen Zeitpunkt sehen. Weitere Informationen finden Sie unter [Abrufen von Wegbeschreibungen](/rest/api/maps/route/getroutedirections).
+>Der Routendienst stellt APIs zum Planen der *schnellsten*, *kürzesten*, *umweltfreundlichsten* oder *schönsten* Route unter Berücksichtigung von Entfernung, Verkehrslage und verwendeter Fortbewegungsart bereit. Mit dem Dienst können Benutzer auch zukünftige Routen auf der Grundlage historischer Verkehrsbedingungen planen. Benutzer können die Vorhersage der Routendauer für einen beliebigen Zeitpunkt sehen. Weitere Informationen finden Sie unter [Abrufen von Wegbeschreibungen](/rest/api/maps/route/getroutedirections).
 
 1. Fügen Sie in der `GetMap`-Funktion innerhalb des `ready`-Ereignishandlers des Steuerelements dem JavaScript-Code Folgendes hinzu.
 
@@ -275,9 +275,9 @@ In diesem Abschnitt erfahren Sie, wie Sie den Routendienst von Azure Maps verwen
 
     Im obigen Code wird der Routendienst von Azure Maps über die Methode der [Wegbeschreibungs-API von Azure Maps](/javascript/api/azure-maps-rest/atlas.service.routeurl#calculateroutedirections-aborter--geojson-position----calculateroutedirectionsoptions-) abgerufen. Die Routenlinie wird dann aus der GeoJSON-Funktionssammlung der Antwort extrahiert, die mit der `geojson.getFeatures()`-Methode extrahiert wird. Abschließend wird die Routenlinie der Datenquelle hinzugefügt. Der LKW-Routenlinie werden zwei Eigenschaften hinzugefügt: eine Strichfarbe (Violett) und eine Strichstärke (fünf Pixel).
 
-4. Speichern Sie die Datei **TruckRoute.html** , und aktualisieren Sie Ihren Webbrowser. Auf der Karte sollten nun die LKW- und die PKW-Route angezeigt werden.
+4. Speichern Sie die Datei **TruckRoute.html**, und aktualisieren Sie Ihren Webbrowser. Auf der Karte sollten nun die LKW- und die PKW-Route angezeigt werden.
 
-    :::image type="content" source="./media/tutorial-prioritized-routes/prioritized-routes.png" alt-text="Einfaches Kartenrendern des Kartensteuerelements":::
+    :::image type="content" source="./media/tutorial-prioritized-routes/prioritized-routes.png" alt-text="PKW- und LKW-Route auf einer Karte mit Azure-Routendienst":::
 
     Die LKW-Route wird als dicke blaue Linie dargestellt. Die PKW-Route wird als dünne violette Linie dargestellt. Die PKW-Route verläuft über den Lake Washington auf der I-90, die durch Tunnel unter Wohngebieten hindurch führt. Da sich die Tunnel nahe an Wohngebieten befinden, ist diese Strecke nicht für Gefahrguttransporte geeignet. Die LKW-Route für den Frachttyp `USHazmatClass2` verläuft daher über eine andere Autobahn.
 
@@ -285,7 +285,9 @@ Sie können den vollständigen Quellcode für das Beispiel [hier](https://github
 
 Sie können ferner [datengestützte Formatvorlagenausdrücke](data-driven-style-expressions-web-sdk.md) verwenden
 
+## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
+Es sind keine zu bereinigenden Ressourcen vorhanden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
