@@ -1,11 +1,11 @@
 - name: Dokumentation zu Azure Data Box Gateway
-  href: /azure/databox-gateway/
+  href: ./index.yml
 - name: Übersicht
   Expanded: true
   items:
     - name: Was ist Data Box Gateway?
       href: data-box-gateway-overview.md
-- name: Lernprogramme
+- name: Tutorials
   items:
     - name: 1 – Vorbereiten
       href: data-box-gateway-deploy-prep.md
