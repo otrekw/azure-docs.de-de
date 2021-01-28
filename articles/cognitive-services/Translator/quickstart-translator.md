@@ -12,12 +12,12 @@ ms.date: 09/14/2020
 ms.author: erhopf
 ms.custom: cog-serv-seo-aug-2020
 keywords: Textübersetzung, Übersetzerdienst, Text übersetzen, Text transkribieren, Sprachenerkennung
-ms.openlocfilehash: 68bbb31ae87ebbb84cda752c2f4a7c1bd1116dda
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 38bd4d28a8ae4c737155cd74bcb39d1acfaf699c
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94369527"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98733493"
 ---
 # <a name="quickstart-get-started-with-translator"></a>Schnellstart: Erste Schritte mit der Textübersetzung
 
@@ -123,7 +123,7 @@ Beim Aufrufen des Textübersetzungsdiensts über REST müssen Sie sicherstellen,
 
 ## <a name="keys-and-endpoints"></a>Keys and endpoints (Schlüssel und Endpunkte)
 
-In den Beispielen auf dieser Seite werden aus Gründen der Einfachheit hartcodierte Schlüssel und Endpunkte verwendet. Denken Sie daran, **den Schlüssel aus Ihrem Code zu entfernen, wenn Sie fertig sind** , und ihn **niemals zu veröffentlichen**. In der Produktionsumgebung sollten Sie eine sichere Methode zum Speichern Ihrer Anmeldeinformationen sowie zum Zugriff darauf verwenden. Weitere Informationen finden Sie im Cognitive Services-Artikel zur [Sicherheit](../cognitive-services-security.md).
+In den Beispielen auf dieser Seite werden aus Gründen der Einfachheit hartcodierte Schlüssel und Endpunkte verwendet. Denken Sie daran, **den Schlüssel aus Ihrem Code zu entfernen, wenn Sie fertig sind**, und ihn **niemals zu veröffentlichen**. In der Produktionsumgebung sollten Sie eine sichere Methode zum Speichern Ihrer Anmeldeinformationen sowie zum Zugriff darauf verwenden. Weitere Informationen finden Sie im Cognitive Services-Artikel zur [Sicherheit](../cognitive-services-security.md).
 
 ## <a name="translate-text"></a>Text übersetzen 
 
@@ -968,7 +968,8 @@ Wenn Sie in eine Sprache übersetzen, die ein anderes Alphabet (oder andere Phon
 
 Zum Abrufen einer Übersetzung vom `translate`-Endpunkt verwenden Sie den Parameter `toScript`.
 
-> ![HINWEIS] Eine vollständige Liste der verfügbaren Sprachen und Transliterationen finden Sie unter [Sprachunterstützung](language-support.md).
+> [!NOTE]
+> Eine vollständige Liste der verfügbaren Sprachen und Transliterationen finden Sie unter [Sprachunterstützung](language-support.md).
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -1247,7 +1248,8 @@ Nach einem erfolgreichen Aufruf sollten Sie die folgende Antwort sehen. Beachten
 
 Sie können ferner den `transliterate`-Endpunkt verwenden, um eine Transliteration abzurufen. Beim Verwenden des Transliterationsendpunkts müssen Sie die Ausgangssprache (`language`), die Ausgangsschrift/das Ausgangsalphabet (`fromScript`) und die Zielschrift/das Zielalphabet (`toScript`) als Parameter angeben. In diesem Beispiel rufen wir die Transliteration für สวัสดี ab. 
 
-> ![HINWEIS] Eine vollständige Liste der verfügbaren Sprachen und Transliterationen finden Sie unter [Sprachunterstützung](language-support.md).
+> [!NOTE]
+> Eine vollständige Liste der verfügbaren Sprachen und Transliterationen finden Sie unter [Sprachunterstützung](language-support.md).
 
 # <a name="c"></a>[C#](#tab/csharp)
 

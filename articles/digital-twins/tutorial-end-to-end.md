@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/15/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 09ce611b5bca6c04d55da95a82a8fcd7ae348db3
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 8933dd6655223db092597aedf839fd800119864a
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98049215"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98684004"
 ---
 # <a name="tutorial-build-out-an-end-to-end-solution"></a>Tutorial: Erstellen einer End-to-End-Lösung
 
@@ -117,49 +117,9 @@ Der NuGet-Paket-Manager wird geöffnet. Wählen Sie die Registerkarte *Updates* 
 
 ### <a name="publish-the-app"></a>Veröffentlichen der App
 
-Wählen Sie im Visual Studio-Fenster mit dem geöffneten Projekt _**AdtE2ESample**_ im *Projektmappen-Explorer* mit der rechten Maustaste die Projektdatei _**SampleFunctionsApp**_ aus, und klicken Sie dann auf **Veröffentlichen**.
+Kehren Sie zu Ihrem Visual Studio-Fenster zurück, in dem das Projekt _**AdtE2ESample**_ geöffnet ist, und navigieren Sie im Bereich *Projektmappen-Explorer* zum Projekt _**SampleFunctionsApp**_.
 
-:::image type="content" source="media/tutorial-end-to-end/publish-azure-function-1.png" alt-text="Visual Studio: Projekt veröffentlichen":::
-
-Behalten Sie auf der angezeigten Seite *Veröffentlichen* die Auswahl des Standardziels **Azure** bei, und wählen Sie die Option *Weiter* aus. 
-
-Wenn Sie ein bestimmtes Ziel angeben möchten, müssen Sie **Azure-Funktions-App (Windows)** und dann *Weiter* auswählen.
-
-:::image type="content" source="media/tutorial-end-to-end/publish-azure-function-2.png" alt-text="Azure-Funktion „Veröffentlichen“ in Visual Studio: Bestimmtes Ziel":::
-
-Wählen Sie auf der Seite *Functions-Instanz* Ihr Abonnement aus. In einem Feld sollten die *Ressourcengruppen* Ihres Abonnements angezeigt werden.
-
-Wählen Sie die Ressourcengruppe Ihrer Instanz aus, und klicken Sie auf *+* , um eine neue Azure-Funktion zu erstellen.
-
-:::image type="content" source="media/tutorial-end-to-end/publish-azure-function-3.png" alt-text="Azure-Funktion „Veröffentlichen“ in Visual Studio: Functions-Instanz (vor Funktions-App)":::
-
-Füllen Sie die Felder im Fenster *Funktions-App (Windows): Neu erstellen* wie folgt aus:
-* **Name** ist der Name des Verbrauchsplans, der von Azure zum Hosten Ihrer Azure Functions-App verwendet wird. Dies ist dann auch der Name der Funktions-App, in der Ihre eigentliche Funktion enthalten ist. Sie können Ihren eigenen eindeutigen Wert auswählen oder den Standardvorschlag übernehmen.
-* Achten Sie darauf, dass unter **Abonnement** das gewünschte Abonnement angegeben ist. 
-* Achten Sie darauf, dass unter **Ressourcengruppe** die gewünschte Ressourcengruppe angegeben ist.
-* Behalten Sie unter **Plantyp** die Option *Verbrauch* bei.
-* Wählen Sie den **Standort** aus, der dem Standort Ihrer Ressourcengruppe entspricht.
-* Erstellen Sie eine neue **Azure Storage**-Ressource, indem Sie den Link *Neu...* verwenden. Geben Sie denselben Standort wie für Ihre Ressourcengruppe an, behalten Sie die anderen Standardwerte bei, und klicken Sie auf „OK“.
-
-:::image type="content" source="media/tutorial-end-to-end/publish-azure-function-4.png" alt-text="Azure-Funktion „Veröffentlichen“ in Visual Studio: Funktions-App (Windows): Neu erstellen":::
-
-Wählen Sie anschließend **Erstellen**.
-
-Sie sollten wieder auf die Seite *Functions-Instanz* gelangen, auf der Ihre neue Funktions-App jetzt unterhalb Ihrer Ressourcengruppe angezeigt wird. Klicken Sie auf *Fertig stellen*.
-
-:::image type="content" source="media/tutorial-end-to-end/publish-azure-function-5.png" alt-text="Azure-Funktion „Veröffentlichen“ in Visual Studio: Functions-Instanz (nach Funktions-App)":::
-
-Vergewissern Sie sich im Bereich *Veröffentlichen*, der im Visual Studio-Fenster geöffnet wird, dass alle Informationen stimmen, und wählen Sie **Veröffentlichen** aus.
-
-:::image type="content" source="media/tutorial-end-to-end/publish-azure-function-6.png" alt-text="Azure-Funktion „Veröffentlichen“ in Visual Studio: Veröffentlichen":::
-
-> [!NOTE]
-> Gehen Sie wie folgt vor, wenn dieses Popupfenster angezeigt wird: :::image type="content" source="media/tutorial-end-to-end/publish-azure-function-7.png" alt-text="Azure-Funktion „Veröffentlichen“ in Visual Studio: Anmeldeinformationen veröffentlichen" border="false":::
-> Wählen Sie die Option **Attempt to retrieve credentials from Azure** (Versuchtes Abrufen von Anmeldeinformationen aus Azure) und dann **Speichern** aus.
->
-> Gehen Sie wie folgt vor, falls Warnungen wie *Upgrade für Functions-Version in Azure* oder *Ihre Version der Functions-Runtime stimmt nicht mit der in Azure ausgeführten Version überein* angezeigt werden:
->
-> Befolgen Sie die Anweisungen zum Durchführen des Upgrades auf die neueste Version der Azure Functions-Runtime. Dieses Problem kann auftreten, wenn Sie eine ältere Version von Visual Studio als die im Abschnitt *Voraussetzungen* am Anfang dieses Tutorials empfohlene verwenden.
+[!INCLUDE [digital-twins-publish-azure-function.md](../../includes/digital-twins-publish-azure-function.md)]
 
 ### <a name="assign-permissions-to-the-function-app"></a>Zuweisen von Berechtigungen zur Funktions-App
 
@@ -167,11 +127,13 @@ Um für die Funktions-App den Zugriff auf Azure Digital Twins zu ermöglichen, m
 
 [!INCLUDE [digital-twins-role-rename-note.md](../../includes/digital-twins-role-rename-note.md)]
 
-Verwenden Sie in Azure Cloud Shell den folgenden Befehl, um eine Anwendungseinstellung festzulegen, die von Ihrer Funktions-App zum Verweisen auf Ihre Azure Digital Twins-Instanz verwendet wird.
+Verwenden Sie in Azure Cloud Shell den folgenden Befehl, um eine Anwendungseinstellung festzulegen, die von Ihrer Funktions-App zum Verweisen auf Ihre Azure Digital Twins-Instanz verwendet wird. Geben Sie für die Platzhalter die Details Ihrer Ressourcen an. (Zur Erinnerung: Die URL der Azure Digital Twins-Instanz setzt sich aus *https://* und dem Hostnamen zusammen.)
 
 ```azurecli-interactive
 az functionapp config appsettings set -g <your-resource-group> -n <your-App-Service-(function-app)-name> --settings "ADT_SERVICE_URL=<your-Azure-Digital-Twins-instance-URL>"
 ```
+
+Bei der Ausgabe handelt es sich um die Liste der Einstellungen für die Azure-Funktion. Diese sollte nun einen Eintrag namens *ADT_SERVICE_URL* enthalten.
 
 Verwenden Sie den folgenden Befehl, um die vom System verwaltete Identität zu erstellen. Beachten Sie in der Ausgabe das Feld *principalId*.
 
@@ -285,7 +247,7 @@ iotHubConnectionString = <your-hub-connection-string>
 deviceConnectionString = <your-device-connection-string>
 ```
 
-Speichern Sie die Datei .
+Speichern Sie die Datei.
 
 Führen Sie nun das Projekt **DeviceSimulator** mit der folgenden Symbolleistenschaltfläche aus, um die Ergebnisse der von Ihnen eingerichteten Datensimulation anzuzeigen:
 

@@ -10,12 +10,12 @@ ms.topic: include
 ms.date: 12/15/2020
 ms.author: pafarley
 ms.custom: devx-track-js
-ms.openlocfilehash: 50d1222f5c33b327c92799ccf27ed0650ba0226c
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 8fd7c820a25f098799f1c2fa69ba700a334e932d
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97560864"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98697934"
 ---
 <a name="HOLTop"></a>
 
@@ -58,6 +58,12 @@ Installieren Sie die NPM-Pakete `ms-rest-azure` und `@azure/cognitiveservices-co
 npm install @azure/cognitiveservices-computervision
 ```
 
+Installieren Sie außerdem das asynchrone Modul:
+
+```console
+npm install async
+```
+
 Die Datei `package.json` Ihrer App wird mit den Abhängigkeiten aktualisiert.
 
 Erstellen Sie die neue Datei *index.js*, und öffnen Sie sie in einem Text-Editor. Fügen Sie die folgenden import-Anweisungen hinzu.
@@ -72,7 +78,7 @@ Erstellen Sie Variablen für den Azure-Endpunkt und -Schlüssel Ihrer Ressource.
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_vars)]
 
 > [!IMPORTANT]
-> Öffnen Sie das Azure-Portal. Wenn die im Abschnitt **Voraussetzungen** erstellte [Produktname]-Ressource erfolgreich bereitgestellt wurde, klicken Sie unter **Nächste Schritte** auf die Schaltfläche **Zu Ressource wechseln**. Schlüssel und Endpunkt finden Sie auf der Seite mit dem **Schlüssel und dem Endpunkt** der Ressource unter **Ressourcenverwaltung**. 
+> Öffnen Sie das Azure-Portal. Wenn die im Abschnitt **Voraussetzungen** erstellte Ressource für maschinelles Sehen erfolgreich bereitgestellt wurde, klicken Sie unter **Nächste Schritte** auf die Schaltfläche **Zu Ressource wechseln**. Schlüssel und Endpunkt finden Sie auf der Seite mit dem **Schlüssel und dem Endpunkt** der Ressource unter **Ressourcenverwaltung**. 
 >
 > Denken Sie daran, den Schlüssel aus Ihrem Code zu entfernen, wenn Sie fertig sind, und ihn niemals zu veröffentlichen. In der Produktionsumgebung sollten Sie eine sichere Methode zum Speichern Ihrer Anmeldeinformationen sowie zum Zugriff darauf verwenden. Weitere Informationen finden Sie im Cognitive Services-Artikel zur [Sicherheit](../../../cognitive-services-security.md).
 
