@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/15/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 1e88aac4209f7960b2589cf43f59ead4bd129134
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 383b5bb5c7295fe54efda883e47b9b2338286de5
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90605072"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624724"
 ---
 # <a name="availability-zone-support-for-app-service-environments"></a>Unterstützung für Verfügbarkeitszonen in App Service-Umgebungen
 
@@ -30,14 +30,12 @@ Wenn Sie die in diesem Artikel beschriebenen Schritte nicht befolgen, werden ILB
 Zonale ILB-ASEs können in den folgenden Regionen erstellt werden:
 
 - Australien (Osten)
-- Brasilien Süd
 - Kanada, Mitte
 - USA (Mitte)
 - East US
 - USA (Ost) 2
 - USA, Osten 2 (EUAP)
 - Frankreich, Mitte 
-- Deutschland, Westen-Mitte
 - Japan, Osten
 - Nordeuropa
 - Europa, Westen
@@ -51,9 +49,9 @@ In einer zonalen ILB-ASE bereitgestellte Anwendungen werden weiterhin in dieser 
 
 Zonale ILB-ASEs müssen mithilfe von ARM-Vorlagen erstellt werden. Sobald eine zonale ILB-ASE über eine ARM-Vorlage erstellt wurde, kann sie über das Azure-Portal und die Befehlszeilenschnittstelle angezeigt werden und ist für Interaktionen verfügbar.  Eine ARM-Vorlage wird nur für die anfängliche Erstellung einer zonalen ILB-ASE benötigt.
 
-Die einzige erforderliche Änderung in einer ARM-Vorlage zum Angeben einer zonalen ILB-ASE ist die neue ***zones***-Eigenschaft. Die ***zones***-Eigenschaft sollte abhängig von der logischen Verfügbarkeitszone, an die die ILB-ASE angeheftet werden soll, auf einen der Werte „1“, „2“ oder „3“ festgelegt werden.
+Die einzige erforderliche Änderung in einer ARM-Vorlage zum Angeben einer zonalen ILB-ASE ist die neue **zones** _-Eigenschaft. Die _*_zones_*_-Eigenschaft sollte abhängig von der logischen Verfügbarkeitszone, an die die ILB-ASE angeheftet werden soll, auf einen der Werte „1“, „2“ oder „3“ festgelegt werden.
 
-Der nachstehende Beispielcodeausschnitt für die ARM-Vorlage zeigt die neue ***zones***-Eigenschaft, die angibt, dass die ILB-ASE an Zone 2 angeheftet werden soll.
+Der nachstehende Beispielcodeausschnitt für die ARM-Vorlage zeigt die neue _*_zones_*_-Eigenschaft, die angibt, dass die ILB-ASE an Zone 2 angeheftet werden soll.
 
 ```
    "resources": [
@@ -91,6 +89,6 @@ Kunden können für Data Residency in einer einzelnen Region sorgen, indem sie d
 
 Kunden können sich mit den folgenden Schritten vergewissern, dass eine App Service-Umgebung ordnungsgemäß zum Speichern von Daten in einer einzelnen Region konfiguriert ist: 
 
-1. Navigieren Sie im [Ressourcen-Explorer](https://resources.azure.com) zu der ARM-Ressource für die App Service-Umgebung.  ASEs werden unter *providers/Microsoft.Web/hostingEnvironments* aufgelistet.
+1. Navigieren Sie im [Ressourcen-Explorer](https://resources.azure.com) zu der ARM-Ressource für die App Service-Umgebung.  ASEs werden unter „_providers/Microsoft.Web/hostingEnvironments*“ aufgelistet.
 2. Wenn eine *zones*-Eigenschaft in der Ansicht der ARM-JSON-Syntax vorhanden ist und ein JSON-Array mit einem einzelnen Wert „1“, „2“ oder „3“ enthält, wird die ASE zonal bereitgestellt, und die Kundendaten verbleiben in derselben Region.
 2. Wenn keine *zones*-Eigenschaft vorhanden ist oder die Eigenschaft keinen gültigen Zonenwert wie zuvor angegeben aufweist, wird die ASE nicht zonal bereitgestellt, und die Kundendaten werden nicht exklusiv in derselben Region gespeichert.

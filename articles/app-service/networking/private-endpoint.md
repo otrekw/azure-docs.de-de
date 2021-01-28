@@ -9,12 +9,12 @@ ms.author: ericg
 ms.service: app-service
 ms.workload: web
 ms.custom: fasttrack-edit, references_regions
-ms.openlocfilehash: bebc7dcbc18a25b0d6d0761a8ca3ac476e83e581
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 4534a315429a120af45dfd495df4a8c29b233de7
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96183038"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98763028"
 ---
 # <a name="using-private-endpoints-for-azure-web-app"></a>Verwenden von Private Endpoint für eine Azure-Web-App
 
@@ -116,7 +116,7 @@ Ausführliche Preisinformationen finden Sie unter [Azure Private Link – Preise
 
 Wenn Sie die Azure Functions in einem elastischen Premium-Plan mit einem privaten Endpunkt verwenden, um die Funktion im Azure-Webportal auszuführen, benötigen Sie direkten Netzwerkzugriff, oder Sie erhalten einen HTTP 403-Fehler. Anders ausgedrückt, muss Ihr Browser den privaten Endpunkt erreichen können, um die Funktion aus dem Azure-Webportal ausführen zu können. 
 
-Sie können bis zu 100 Private Endpoint-Instanzen mit einer bestimmten Web-App verbinden.
+Sie können bis zu 100 private Endpunkte mit einer bestimmten Web-App verbinden.
 
 Für Einschubfächer kann Private Endpoint nicht verwendet werden.
 

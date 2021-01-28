@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: how-to
-ms.date: 8/15/2018
+ms.date: 01/20/2021
 ms.author: victorh
-ms.openlocfilehash: 413ae2ee19f0b8e427de9167b52971e413cdf573
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: f0c06a94498f4d2481a6e953b959d766c60415fb
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93397211"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98622179"
 ---
 # <a name="renew-application-gateway-certificates"></a>Verlängern von Application Gateway-Zertifikaten
 
@@ -22,11 +22,11 @@ Sie können ein Zertifikat, das einem Listener zugeordnet ist, verlängern, inde
 
 ## <a name="azure-portal"></a>Azure-Portal
 
-Navigieren Sie zu Ihren Anwendungsgateway-Listenern, um ein Listenerzertifikat über das Portal zu verlängern. Klicken Sie auf den Listener, der über ein zu verlängerndes Zertifikat verfügt, und klicken Sie anschließend auf **Ausgewähltes Zertifikat erneuern oder bearbeiten**.
+Navigieren Sie zu Ihren Anwendungsgateway-Listenern, um ein Listenerzertifikat über das Portal zu verlängern. Wählen Sie den Listener aus, der über ein zu verlängerndes Zertifikat verfügt, und wählen Sie anschließend **Ausgewähltes Zertifikat erneuern oder bearbeiten** aus.
 
-![Verlängern des Zertifikats](media/renew-certificate/ssl-cert.png)
+:::image type="content" source="media/renew-certificate/ssl-cert.png" alt-text="Verlängern eines Zertifikats":::
 
-Laden Sie Ihr neues PFX-Zertifikat hoch, geben Sie ihm einen Namen, geben Sie das Kennwort ein, und klicken Sie dann auf **Speichern**.
+Laden Sie Ihr neues PFX-Zertifikat hoch, geben Sie ihm einen Namen, geben Sie das Kennwort ein, und wählen Sie dann **Speichern** aus.
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 

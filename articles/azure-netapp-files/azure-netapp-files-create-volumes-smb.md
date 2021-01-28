@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 12/01/2020
 ms.author: b-juche
-ms.openlocfilehash: cd2a293ebcc35d4884211f50783738a502dcc7de
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: 48ee05eebd91c60fa2cfecc80898d3be54367269
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96854824"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98762668"
 ---
 # <a name="create-an-smb-volume-for-azure-netapp-files"></a>Erstellen eines SMB-Volumes für Azure NetApp Files
 
@@ -74,7 +74,7 @@ Ein Subnetz muss an Azure NetApp Files delegiert werden.
 
     Weitere Informationen zu AD-Standorten und -Diensten finden Sie unter [Entwerfen der Standorttopologie](/windows-server/identity/ad-ds/plan/designing-the-site-topology). 
     
-* Sie können AES-Verschlüsselung für ein SMB-Volume aktivieren, indem Sie im Fenster [Active Directory beitreten](#create-an-active-directory-connection) das Kontrollkästchen **AES-Verschlüsselung** aktivieren. Azure NetApp Files unterstützt die Verschlüsselungstypen DES, Kerberos AES 128 und Kerberos AES 256 (von der niedrigsten hin zur höchsten Sicherheitsstufe). Wenn Sie AES-Verschlüsselung aktivieren, muss für die für den Beitritt zu Active Directory verwendeten Anmeldeinformationen die höchste entsprechende Kontooption aktiviert sein, die den für Ihr Active Directory aktivierten Funktionen entspricht.    
+* Sie können AES-Verschlüsselung für die AD-Authentifizierung aktivieren, indem Sie im Fenster [Active Directory beitreten](#create-an-active-directory-connection) das Kontrollkästchen **AES-Verschlüsselung** aktivieren. Azure NetApp Files unterstützt die Verschlüsselungstypen DES, Kerberos AES 128 und Kerberos AES 256 (von der niedrigsten hin zur höchsten Sicherheitsstufe). Wenn Sie AES-Verschlüsselung aktivieren, muss für die für den Beitritt zu Active Directory verwendeten Anmeldeinformationen die höchste entsprechende Kontooption aktiviert sein, die den für Ihr Active Directory aktivierten Funktionen entspricht.    
 
     Wenn Ihr Active Directory beispielsweise nur über die AES-128-Funktion verfügt, müssen Sie die AES-128-Kontooption für die Anmeldeinformationen des Benutzers aktivieren. Wenn Ihr Active Directory die AES-256-Funktion aufweist, müssen Sie die AES-256-Kontooption aktivieren (die auch AES-128 unterstützt). Wenn Ihr Active Directory keine Kerberos-Verschlüsselungsfunktion besitzt, verwendet Azure NetApp Files standardmäßig DES.  
 

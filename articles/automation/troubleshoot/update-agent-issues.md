@@ -4,17 +4,17 @@ description: In diesem Artikel erfahren Sie, wie Sie Fehler und Probleme mit dem
 services: automation
 author: mgoedtel
 ms.author: magoedte
-ms.date: 01/16/2020
+ms.date: 01/25/2020
 ms.topic: conceptual
 ms.service: automation
 ms.subservice: update-management
 manager: carmonm
-ms.openlocfilehash: 92020313fccf1b8be0add58a7bafab62b5daa4d5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d5c2cc014c87a345507e9c0f99c507d151d59b86
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86187131"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98762123"
 ---
 # <a name="troubleshoot-windows-update-agent-issues"></a>Beheben von Problemen mit dem Windows Update-Agent
 
@@ -27,10 +27,10 @@ Es gibt viele mögliche Gründe dafür, warum Ihr Computer bei einer Bereitstell
 > [!NOTE]
 > Möglicherweise gibt es eine kleine Verzögerung zwischen der Anzeige im Azure-Portal und dem aktuellen Zustand eines Computers.
 
-In diesem Artikel wird erläutert, wie Sie die Problembehandlung für Azure-Computer im Azure-Portal und für Nicht-Azure-Computer im [Offlineszenario](#troubleshoot-offline) ausführen. 
+In diesem Artikel wird erläutert, wie Sie die Problembehandlung für Azure-Computer im Azure-Portal und für Nicht-Azure-Computer im [Offlineszenario](#troubleshoot-offline) ausführen.
 
 > [!NOTE]
-> Das Problembehandlungsskript umfasst nun Überprüfungen für Windows Server Update Services (WSUS) sowie für automatische Downloads und Installationsschlüssel. 
+> Das Problembehandlungsskript umfasst nun Überprüfungen für Windows Server Update Services (WSUS) sowie für automatische Downloads und Installationsschlüssel.
 
 ## <a name="start-the-troubleshooter"></a>Starten der Problembehandlung
 
@@ -110,7 +110,7 @@ Bei der Überprüfung des Zugriffs auf den Crypto-Ordner wird untersucht, ob das
 
 ## <a name="troubleshoot-offline"></a><a name="troubleshoot-offline"></a>Offlineproblembehandlung
 
-Sie können die Problembehandlung offline auf einem Hybrid Runbook Worker ausführen, indem Sie das Skript lokal ausführen. Laden Sie das folgende Skript aus dem PowerShell-Katalog herunter: [Troubleshoot-WindowsUpdateAgentRegistration](https://www.powershellgallery.com/packages/Troubleshoot-WindowsUpdateAgentRegistration). Damit Sie das Skript ausführen können, muss WMF 4.0 oder höher installiert sein. Informationen zum Herunterladen der neueste Version von PowerShell finden Sie unter [Installieren verschiedener Versionen von PowerShell](/powershell/scripting/install/installing-powershell).
+Sie können die Problembehandlung offline auf einem Hybrid Runbook Worker ausführen, indem Sie das Skript lokal ausführen. Rufen Sie das folgende Skript von GitHub ab: [UM_Windows_Troubleshooter_Offline.ps1](https://github.com/Azure/updatemanagement/blob/main/UM_Windows_Troubleshooter_Offline.ps1). Damit Sie das Skript ausführen können, muss WMF 4.0 oder höher installiert sein. Informationen zum Herunterladen der neueste Version von PowerShell finden Sie unter [Installieren verschiedener Versionen von PowerShell](/powershell/scripting/install/installing-powershell).
 
 Die Ausgabe dieses Skripts ähnelt dem folgenden Beispiel:
 

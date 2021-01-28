@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm, azla, rarayudu
 ms.topic: conceptual
-ms.date: 01/15/2021
-ms.openlocfilehash: c889498d6341875682055e9d67b8d2b958bac70a
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.date: 01/20/2021
+ms.openlocfilehash: 337e242e3c194c8ec9f66e1888926e6a8f6a8375
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98251062"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98633077"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>Schützen des Zugriffs und der Daten in Azure Logic Apps
 
@@ -966,7 +966,7 @@ Wenn die Option [Clientzertifikat](../active-directory/authentication/active-dir
 | Eigenschaft (Designer) | Eigenschaft (JSON) | Erforderlich | Wert | BESCHREIBUNG |
 |---------------------|-----------------|----------|-------|-------------|
 | **Authentifizierung** | `type` | Ja | **Clientzertifikat** <br>oder <br>`ClientCertificate` | Der zu verwendende Authentifizierungstyp. Sie können Zertifikate mit [Azure API Management](../api-management/api-management-howto-mutual-certificates.md) verwalten. <p></p>**Hinweis**: Benutzerdefinierte Connectors unterstützen sowohl für eingehende als auch für ausgehende Aufrufe keine zertifikatbasierte Authentifizierung. |
-| **Pfx** | `pfx` | Ja | <*encoded-pfx-file-content*> | Der base64-codierte Inhalt aus einer Personal Information Exchange-Datei (PFX) <p><p>Zum Konvertieren der PFX-Datei in ein base64-codiertes Format können Sie PowerShell verwenden, indem Sie die folgenden Schritte ausführen: <p>1. Speichern Sie den Zertifikatsinhalt in einer Variablen: <p>   `$pfx_cert = get-content 'c:\certificate.pfx' -Encoding Byte` <p>2. Konvertieren Sie den Zertifikatsinhalt mithilfe der `ToBase64String()`-Funktion, und speichern Sie den Inhalt in einer Textdatei: <p>   `[System.Convert]::ToBase64String($pfx_cert) | Out-File 'pfx-encoded-bytes.txt'` |
+| **Pfx** | `pfx` | Ja | <*encoded-pfx-file-content*> | Der base64-codierte Inhalt aus einer Personal Information Exchange-Datei (PFX) <p><p>Zum Konvertieren der PFX-Datei in ein base64-codiertes Format können Sie PowerShell verwenden, indem Sie die folgenden Schritte ausführen: <p>1. Speichern Sie den Zertifikatsinhalt in einer Variablen: <p>   `$pfx_cert = get-content 'c:\certificate.pfx' -Encoding Byte` <p>2. Konvertieren Sie den Zertifikatsinhalt mithilfe der `ToBase64String()`-Funktion, und speichern Sie den Inhalt in einer Textdatei: <p>   `[System.Convert]::ToBase64String($pfx_cert) | Out-File 'pfx-encoded-bytes.txt'` <p><p>**Problembehandlung**: Wenn Sie den Befehl `cert mmc/PowerShell` verwenden, erhalten Sie möglicherweise folgenden Fehler: <p><p>`Could not load the certificate private key. Please check the authentication certificate password is correct and try again.` <p><p>Um diesen Fehler zu beheben, versuchen Sie, die PFX-Datei in eine PEM-Datei und zurück zu konvertieren, indem Sie den Befehl `openssl` verwenden: <p><p>`openssl pkcs12 -in certificate.pfx -out certificate.pem` <br>`openssl pkcs12 -in certificate.pem -export -out certificate2.pfx` <p><p>Anschließend, wenn Sie die base64-codierte Zeichenfolge für die neu konvertierte PFX-Datei des Zertifikats erhalten, funktioniert die Zeichenfolge nun in Azure Logic Apps. |
 | **Kennwort** | `password`| Nein | <*password-for-pfx-file*> | Der Parameter für den Zugriff auf die PFX-Datei |
 |||||
 
@@ -1122,7 +1122,7 @@ Wenn die Option [Verwaltete Identität](../active-directory/managed-identities-a
 
    | Eigenschaft (Designer) | Erforderlich | Wert | BESCHREIBUNG |
    |---------------------|----------|-------|-------------|
-   | **Verbindungsname** | Ja | <*connection-name*> ||
+   | **Verbindungsname** | Yes | <*connection-name*> ||
    | **Verwaltete Identität** | Yes | **Systemseitig zugewiesene verwaltete Identität** <br>oder <br> <*user-assigned-managed-identity-name*> | Der zu verwendende Authentifizierungstyp |
    |||||
 

@@ -3,12 +3,12 @@ title: Knoten und Pools in Azure Batch
 description: Erfahren Sie mehr über Computeknoten und Pools und deren Verwendung in einem Azure Batch-Workflow aus Entwicklersicht.
 ms.topic: conceptual
 ms.date: 11/20/2020
-ms.openlocfilehash: c229381ba1019a5a40a4ca6b7db88f534f57de29
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: e55be57968eae2a371a21b214dbd15921641e31f
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97934644"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98741773"
 ---
 # <a name="nodes-and-pools-in-azure-batch"></a>Knoten und Pools in Azure Batch
 
@@ -114,7 +114,7 @@ Informationen zu den Preisen für beide dedizierte Knoten und Knoten mit niedrig
 
 ## <a name="node-size"></a>Knotengröße
 
-Wenn Sie einen Azure Batch-Pool erstellen, können Sie aus fast allen in Azure verfügbaren VM-Familien und -Größen wählen. Azure bietet verschiedene VM-Größen für unterschiedliche Workloads, u.a. spezialisierte [HPC-](../virtual-machines/sizes-hpc.md)- oder [GPU-fähige](../virtual-machines/sizes-gpu.md) VM-Größen. 
+Wenn Sie einen Azure Batch-Pool erstellen, können Sie aus fast allen in Azure verfügbaren VM-Familien und -Größen wählen. Azure bietet verschiedene VM-Größen für unterschiedliche Workloads, u.a. spezialisierte [HPC-](../virtual-machines/sizes-hpc.md)- oder [GPU-fähige](../virtual-machines/sizes-gpu.md) VM-Größen. Beachten Sie, dass Knotengrößen nur zum Zeitpunkt der Erstellung eines Pools ausgewählt werden können. Mit anderen Worten: Sobald ein Pool erstellt wurde, kann seine Knotengröße nicht mehr geändert werden.
 
 Weitere Informationen finden Sie unter [Choose a VM size for compute nodes in an Azure Batch pool](batch-pool-vm-sizes.md) (Auswählen einer VM-Größe für Computeknoten in einem Azure Batch-Pool).
 

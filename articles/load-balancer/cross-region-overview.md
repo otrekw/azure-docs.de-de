@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 09/22/2020
 ms.author: allensu
 ms.custom: references_regions
-ms.openlocfilehash: 8a2ad6cea4ab97742261b1cfd84975b243a46e87
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: fb03d0f8c2dc1f3812d417bc5a5d49857f3c1051
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96938714"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737675"
 ---
 # <a name="cross-region-load-balancer-preview"></a>Regionsübergreifender Lastenausgleich (Vorschau)
 
@@ -35,7 +35,7 @@ Azure Load Balancer Standard unterstützt regionsübergreifenden Lastenausgleich
 * [Aufbauen auf vorhandener Lastenausgleichslösung](#build-cross-region-solution-on-existing-azure-load-balancer) ohne Lernkurve
 
 > [!IMPORTANT]
-> Der regionsübergreifende Lastenausgleich befindet sich derzeit in der Vorschauphase und wird im Vorschauportal nicht angezeigt. Melden Sie sich bei **https://preview.portal.azure.com** an, um das Feature anzuzeigen und bereitzustellen. </br> </br>
+> Der regionsübergreifende Lastenausgleich befindet sich derzeit in der Vorschauphase und kann im Portal bereitgestellt werden. Melden Sie sich bei **https://preview.portal.azure.com** an, um das Feature anzuzeigen und bereitzustellen. </br> </br>
 > Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Der regionsübergreifende Lastenausgleich bietet die gleichen Vorteile wie Hochleistung und niedrige Latenz wie der regionale Standardlastenausgleich. 

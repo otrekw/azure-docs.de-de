@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 07/16/2020
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: e46bb87788de27916860720284087643db7153dc
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: a63c309c8e728e3f76ad904d479557b368388954
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95913401"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624774"
 ---
 # <a name="use-azure-storage-explorer-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>Verwenden von Azure Storage-Explorer zum Verwalten von Verzeichnissen, Dateien und Zugriffssteuerungslisten in Azure Data Lake Storage Gen2
 
@@ -80,7 +80,7 @@ Wählen Sie auf dem Menüband bei ausgewählter Datei die Option **Herunterladen
 
 Sie können Berechtigungen im Stammverzeichnis Ihres Containers festlegen. Hierzu müssen Sie mit Ihrem individuellen Konto mit entsprechenden Rechten beim Azure Storage-Explorer angemeldet sein (anstatt über eine Verbindungszeichenfolge). Klicken Sie mit der rechten Maustaste auf Ihren Container, und wählen Sie **Berechtigungen verwalten** aus, um das Dialogfeld **Berechtigung verwalten** zu öffnen.
 
-![Microsoft Azure Storage-Explorer – Verzeichniszugriff verwalten](media/storage-quickstart-blobs-storage-Explorer/manageperms.png)
+![Microsoft Azure Storage-Explorer – Verzeichniszugriff verwalten](media/storage-quickstart-blobs-storage-explorer/manageperms.png)
 
 Das Dialogfeld **Berechtigung verwalten** ermöglicht es Ihnen, Berechtigungen für den Besitzer und die Besitzergruppe zu verwalten. Sie können auch neue Benutzer und Gruppen zur Zugriffssteuerungsliste hinzufügen, für die Sie dann die Berechtigungen verwalten können.
 
@@ -105,6 +105,10 @@ Innerhalb dieser beiden Kategorien gibt es drei Berechtigungen, die Sie dann Dat
 > Wenn Sie hier eine Auswahl treffen, werden keine Berechtigungen für ein aktuell vorhandenes Element im Verzeichnis festgelegt. Sie müssen jedes einzelne Element aufrufen und die Berechtigungen manuell festlegen, wenn die Datei bereits existiert.
 
 Sie können Berechtigungen für einzelne Verzeichnisse sowie einzelne Dateien verwalten, was Ihnen eine differenzierte Zugriffssteuerung ermöglicht. Der Prozess zur Verwaltung von Berechtigungen für Verzeichnisse und Dateien ist derselbe wie oben beschrieben. Klicken Sie mit der rechten Maustaste auf die Datei oder das Verzeichnis, für das Sie die Berechtigungen verwalten möchten, und folgen Sie dem gleichen Prozess.
+
+## <a name="private-endpoints-in-azure-data-lake-storage-gen2"></a>Private Endpunkte in Azure Data Lake Storage Gen2
+
+Storage Explorer nutzt bei Verwendung von Azure Data Lake Storage Gen2 sowohl den Blob-[Endpunkt](../common/storage-private-endpoints.md#private-endpoints-for-azure-storage) (blob) als auch den Data Lake Storage Gen2-Endpunkt (dfs). Wenn der Zugriff auf Azure Data Lake Storage Gen2 über private Endpunkte konfiguriert wird, stellen Sie sicher, dass zwei private Endpunkte für das Speicherkonto erstellt werden: einer mit der Zielunterressource `blob` und der andere mit der Zielunterressource `dfs`.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

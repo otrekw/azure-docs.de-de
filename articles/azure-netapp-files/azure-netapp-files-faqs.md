@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/05/2020
+ms.date: 01/21/2021
 ms.author: b-juche
-ms.openlocfilehash: 913d61c506505d18fff416291e7f3b718f1d92f3
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: ec6a03673112dfb5397f6fae947f1fbf65fd6791
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97913497"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881417"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>Häufig gestellte Fragen zu Azure NetApp Files
 
@@ -258,6 +258,16 @@ Nein. Azure Data Box unterstützt Azure NetApp Files derzeit nicht.
 ### <a name="is-migration-with-azure-importexport-service-supported"></a>Wird die Migration mit dem Azure Import/Export-Dienst unterstützt?
 
 Nein. Der Azure Import/Export-Dienst unterstützt Azure NetApp Files derzeit nicht.
+
+## <a name="product-faqs"></a>Häufig gestellte Fragen (FAQs) zu Produkten
+
+### <a name="can-i-use-azure-netapp-files-nfs-or-smb-volumes-with-azure-vmware-solution-avs"></a>Kann ich NFS- oder SMB-Volumes von Azure NetApp Files mit Azure VMware Solution (AVS) verwenden?
+
+Sie können NFS-Volumes von Azure NetApp Files auf Windows-VMs oder Linux-VMs von AVS einbinden. Sie können SMB-Freigaben von Azure NetApp Files auf Windows-VMs von AVS zuordnen. Weitere Informationen finden Sie unter [Azure NetApp Files mit Azure VMware Solution]( ../azure-vmware/netapp-files-with-azure-vmware-solution.md).  
+
+### <a name="what-regions-are-supported-for-using-azure-netapp-files-nfs-or-smb-volumes-with-azure-vmware-solution-avs"></a>Welche Regionen werden für die Verwendung von NFS- oder SMB-Volumes von Azure NetApp Files mit Azure VMware Solution (AVS) unterstützt?
+
+Die Verwendung von NFS- oder SMB-Volumes von Azure NetApp Files mit AVS wird in den folgenden Regionen unterstützt: „USA, Osten“, „USA, Westen“, „Europa, Westen“ und „Australien, Osten“.
 
 ## <a name="next-steps"></a>Nächste Schritte  
 

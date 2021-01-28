@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/19/2021
+ms.date: 01/22/2021
 ms.author: b-juche
-ms.openlocfilehash: f50cde2fa67351552d1f31500da09a5f800b2bcc
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 5984727f123da6e1d35d862c3f396bd85ce9e7f2
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98600124"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881451"
 ---
 # <a name="solution-architectures-using-azure-netapp-files"></a>Lösungsarchitekturen mit Azure NetApp Files
 Dieser Artikel enthält Verweise auf bewährte Methoden, die Ihnen helfen können, die Lösungsarchitekturen für die Verwendung von Azure NetApp Files zu verstehen.  
@@ -76,6 +76,7 @@ Dieser Abschnitt enthält Referenzen zu Lösungen für SAP in Azure.
 * [Hochverfügbarkeit bei hochskalierten SAP HANA-Lösungen mit Azure NetApp Files unter Red Hat Enterprise Linux](../virtual-machines/workloads/sap/sap-hana-high-availability-netapp-files-red-hat.md)
 * [Horizontale SAP HANA-Skalierung mit Standbyknoten auf Azure VMs mit Azure NetApp Files auf SUSE Linux Enterprise Server](../virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-suse.md)
 * [Horizontale SAP HANA-Skalierung mit Standbyknoten auf Azure-VMs mithilfe von Azure NetApp Files auf RedHat Enterprise Linux](../virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-rhel.md)
+* [Tool für konsistente Momentaufnahmen in Azure-Anwendungen (AzAcSnap)](azacsnap-introduction.md)
 
 ### <a name="sap-anydb"></a>SAP AnyDB
 
@@ -92,6 +93,10 @@ Dieser Abschnitt enthält Referenzen zu Lösungen für SAP in Azure.
 * [Azure NetApp Files – SAP HANA-Abladung der Sicherung mit Cloudsynchronisierung](https://blog.netapp.com/azure-netapp-files-sap-hana)
 * [Beschleunigen Sie Ihre SAP HANA-Systemkopien mithilfe von Azure NetApp Files](https://blog.netapp.com/sap-hana-faster-using-azure-netapp-files/)
 * [Cloudvolumes ONTAP und unter Azure NetApp Files: SAP HANA-Systemmigration leicht gemacht](https://blog.netapp.com/cloud-volumes-ontap-and-azure-netapp-files-sap-hana-system-migration-made-easy/)
+
+## <a name="azure-vmware-solutions"></a>Azure VMware Solutions
+
+* [Azure NetApp Files mit Azure VMware Solution – Einbinden von Gastbetriebssystemen](../azure-vmware/netapp-files-with-azure-vmware-solution.md)
 
 ## <a name="virtual-desktop-infrastructure-solutions"></a>Lösungen für virtuelle Desktopinfrastrukturen
 
