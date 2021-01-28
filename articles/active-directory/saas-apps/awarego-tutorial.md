@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/07/2020
 ms.author: jeedes
-ms.openlocfilehash: 6599abd6282d0d1eb7cb81002c34ddd5158dab6b
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 4682396f68d6ff1af0b2fb6a5b1a8419d6963529
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97511058"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98735335"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-integration-with-awarego"></a>Tutorial: Integration des einmaligen Anmeldens von Azure Active Directory in AwareGo
 
@@ -139,11 +139,9 @@ In diesem Abschnitt können Sie die Konfiguration des einmaligen Anmeldens von A
 
 * Rufen Sie direkt die AwareGo-Anmeldeseite auf, und initiieren Sie von dort den Anmeldeflow.
 
-* Navigieren Sie zu „Meine Apps“ von Microsoft. Wenn Sie unter „Meine Apps“ die Kachel **AwareGo** auswählen, werden Sie auf die Anmeldeseite von AwareGo umgeleitet. Weitere Informationen finden Sie unter [Anmelden beim Portal „Meine Apps“ und Starten von Apps über dieses](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+* Navigieren Sie zu „Meine Apps“ von Microsoft. Wenn Sie unter „Meine Apps“ die Kachel **AwareGo** auswählen, werden Sie auf die Anmeldeseite von AwareGo umgeleitet. Weitere Informationen finden Sie unter [Anmelden beim Portal „Meine Apps“ und Starten von Apps über dieses](../user-help/my-apps-portal-end-user-access.md).
 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nach dem Konfigurieren von AwareGo können Sie die Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf der App-Steuerung für bedingten Zugriff. Weitere Informationen finden Sie im Artikel zum [Erzwingen der Sitzungssteuerung mit Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
-
-
+Nach dem Konfigurieren von AwareGo können Sie die Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf der App-Steuerung für bedingten Zugriff. Weitere Informationen finden Sie im Artikel zum [Erzwingen der Sitzungssteuerung mit Microsoft Cloud App Security](/cloud-app-security/proxy-deployment-any-app).

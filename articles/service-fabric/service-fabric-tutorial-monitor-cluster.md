@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 07/22/2019
 ms.author: srrengar
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: f9ad0f443b1647499f7085693f34f4da9ec85398
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: ecd05a838425d57e0eaff2fa571d72b5a87e92a6
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92331990"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791777"
 ---
 # <a name="tutorial-monitor-a-service-fabric-cluster-in-azure"></a>Tutorial: Überwachen eines Service Fabric-Clusters in Azure
 
@@ -240,7 +240,7 @@ Wählen Sie das Diagramm **Containermetrik** aus, um weitere Details anzuzeigen.
 ## <a name="query-the-eventstore-service"></a>Abfragen des EventStore-Diensts
 Der [EventStore-Dienst](service-fabric-diagnostics-eventstore.md) bietet eine Möglichkeit, den Zustand Ihres Clusters oder Ihrer Workloads zu einem bestimmten Zeitpunkt zu ermitteln und zu verstehen. EventStore ist ein zustandsbehafteter Service Fabric-Dienst, der Ereignisse vom Cluster verwaltet. Die Ereignisse werden über [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md), REST und APIs bereitgestellt. EventStore fragt den Cluster direkt ab, um Diagnosedaten für jede Entität in Ihrem Cluster abzurufen. Eine vollständige Liste der in EventStore verfügbaren Ereignisse finden Sie unter [Service Fabric-Ereignisse](service-fabric-diagnostics-event-generation-operational.md).
 
-Die EventStore-APIs können mithilfe der [Service Fabric-Clientbibliothek](/dotnet/api/overview/azure/service-fabric?view=azure-dotnet#client-library) programmgesteuert abgefragt werden.
+Die EventStore-APIs können mithilfe der [Service Fabric-Clientbibliothek](/dotnet/api/overview/azure/service-fabric#client-library) programmgesteuert abgefragt werden.
 
 Nachfolgend finden Sie eine Beispielanforderung für alle über die Funktion „GetClusterEventListAsync“ zurückgegebenen Clusterereignisse zwischen „2018-04-03T18:00:00Z“ und „2018-04-04T18:00:00Z“.
 
@@ -299,10 +299,10 @@ Mit Service Fabric wird ein [Integritätsmodell](service-fabric-health-introduct
 
 Der Cluster wird automatisch mit von den Systemkomponenten gesendeten Integritätsberichten aufgefüllt. Weitere Informationen erhalten Sie unter [Verwenden von Systemintegritätsberichten für die Problembehandlung](service-fabric-understand-and-troubleshoot-with-system-health-reports.md).
 
-Service Fabric macht für jeden unterstützten [Entitätstyp](service-fabric-health-introduction.md#health-entities-and-hierarchy)Integritätsabfragen verfügbar. Es kann über die API (mit Methoden von [FabricClient.HealthManager](/dotnet/api/system.fabric.fabricclient.healthmanager?view=azure-dotnet)), mit PowerShell-Cmdlets und mit REST darauf zugegriffen werden. Mit diesen Abfragen werden vollständige Integritätsinformationen zur Entität zurückgegeben: der zusammengefasste Integritätsstatus, Integritätsereignisse der Entität, untergeordnete Integritätsstatus (falls verfügbar), Fehlerauswertungen (sofern Fehler für die Entität auftreten) und Statistiken zur Integrität untergeordneter Elemente (sofern zutreffend).
+Service Fabric macht für jeden unterstützten [Entitätstyp](service-fabric-health-introduction.md#health-entities-and-hierarchy)Integritätsabfragen verfügbar. Es kann über die API (mit Methoden von [FabricClient.HealthManager](/dotnet/api/system.fabric.fabricclient.healthmanager)), mit PowerShell-Cmdlets und mit REST darauf zugegriffen werden. Mit diesen Abfragen werden vollständige Integritätsinformationen zur Entität zurückgegeben: der zusammengefasste Integritätsstatus, Integritätsereignisse der Entität, untergeordnete Integritätsstatus (falls verfügbar), Fehlerauswertungen (sofern Fehler für die Entität auftreten) und Statistiken zur Integrität untergeordneter Elemente (sofern zutreffend).
 
 ### <a name="get-cluster-health"></a>Abrufen der Clusterintegrität
-Das Cmdlet [Get-ServiceFabricClusterHealth](/powershell/module/servicefabric/get-servicefabricclusterhealth) gibt die Integrität der Clusterentität zurück und enthält die Integritätsstatusangaben von Anwendungen und Knoten (untergeordneten Elementen des Clusters).  Stellen Sie zuerst mithilfe des Cmdlets [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) eine Verbindung mit dem Cluster her.
+Das Cmdlet [Get-ServiceFabricClusterHealth](/powershell/module/servicefabric/get-servicefabricclusterhealth) gibt die Integrität der Clusterentität zurück und enthält die Integritätsstatusangaben von Anwendungen und Knoten (untergeordneten Elementen des Clusters).  Stellen Sie zuerst mithilfe des Cmdlets [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster) eine Verbindung mit dem Cluster her.
 
 Der Status des Clusters umfasst 11 Knoten, die Systemanwendung und „fabric:/Voting“ in der beschriebenen Konfiguration.
 
@@ -454,7 +454,7 @@ HealthEvents            : None
 ```
 
 ### <a name="get-node-health"></a>Abrufen der Integrität von Knoten
-Das Cmdlet [Get-ServiceFabricNodeHealth](/powershell/module/servicefabric/get-servicefabricnodehealth) gibt die Integrität einer Knotenentität zurück und enthält die für den Knoten gemeldeten Integritätsereignisse. Stellen Sie zuerst mithilfe des Cmdlets [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) eine Verbindung mit dem Cluster her. Im folgenden Beispiel wird die Integrität eines bestimmten Knotens mithilfe von Standardintegritätsrichtlinien abgerufen:
+Das Cmdlet [Get-ServiceFabricNodeHealth](/powershell/module/servicefabric/get-servicefabricnodehealth) gibt die Integrität einer Knotenentität zurück und enthält die für den Knoten gemeldeten Integritätsereignisse. Stellen Sie zuerst mithilfe des Cmdlets [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster) eine Verbindung mit dem Cluster her. Im folgenden Beispiel wird die Integrität eines bestimmten Knotens mithilfe von Standardintegritätsrichtlinien abgerufen:
 
 ```powershell
 Get-ServiceFabricNodeHealth _nt1vm_3

@@ -3,12 +3,12 @@ title: Einrichten eines Classroom-Labs in Azure Lab Services | Microsoft-Dokumen
 description: In diesem Tutorial richten Sie unter Verwendung von Azure Lab Services ein Classroom-Lab mit virtuellen Computern für Kursteilnehmer ein.
 ms.topic: tutorial
 ms.date: 12/03/2020
-ms.openlocfilehash: 3abbf5221382b46dbf4e73f9f4dc3b639bc5ecbd
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: 8093a1fd270cdba8bdccaf48737bf6737bdd394d
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96602495"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98787417"
 ---
 # <a name="tutorial-set-up-a-classroom-lab"></a>Tutorial: Einrichten eines Classroom-Labs 
 In diesem Tutorial richten Sie ein Classroom-Lab mit virtuellen Computern ein, die von den Teilnehmern im Classroom verwendet werden.  
@@ -127,7 +127,7 @@ Wenn Sie Benutzer hinzufügen, ist die Option **Zugriff einschränken** standard
 
 Sie können eine Labbenutzerliste mit einer vorhandenen Azure AD-Gruppe (Azure Active Directory) synchronisieren, damit Sie Benutzer nicht manuell hinzufügen oder löschen müssen. 
 
-In der Azure Active Directory-Instanz Ihrer Organisation kann eine Azure AD-Gruppe erstellt werden, um den Zugriff auf Organisationsressourcen und cloudbasierte Apps zu verwalten. Weitere Informationen finden Sie unter [Verwalten des Zugriffs auf Apps und Ressourcen mithilfe von Azure Active Directory-Gruppen](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-manage-groups). Wenn in Ihrer Organisation Microsoft Office 365- oder Azure-Dienste verwendet werden, verfügt Ihre Organisation bereits über Administratoren, die Ihre Azure Active Directory-Instanz verwalten. 
+In der Azure Active Directory-Instanz Ihrer Organisation kann eine Azure AD-Gruppe erstellt werden, um den Zugriff auf Organisationsressourcen und cloudbasierte Apps zu verwalten. Weitere Informationen finden Sie unter [Verwalten des Zugriffs auf Apps und Ressourcen mithilfe von Azure Active Directory-Gruppen](../active-directory/fundamentals/active-directory-manage-groups.md). Wenn in Ihrer Organisation Microsoft Office 365- oder Azure-Dienste verwendet werden, verfügt Ihre Organisation bereits über Administratoren, die Ihre Azure Active Directory-Instanz verwalten. 
 
 > [!IMPORTANT]
 > Stellen Sie sicher, dass die Benutzerliste leer ist. Wenn in einem Lab Benutzer vorhanden sind, die Sie manuell oder durch Importieren einer CSV-Datei hinzugefügt haben, wird die Option zum Synchronisieren des Labs mit einer vorhandenen Gruppe nicht angezeigt. 
@@ -204,4 +204,3 @@ In diesem Tutorial haben Sie ein Lab für Ihre Klasse in Azure erstellt. Um zu e
 
 > [!div class="nextstepaction"]
 > [Herstellen einer Verbindung mit einem virtuellen Computer im Classroom-Lab](tutorial-connect-virtual-machine-classroom-lab.md)
-

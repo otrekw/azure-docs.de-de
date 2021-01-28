@@ -5,12 +5,12 @@ author: jjbfour
 ms.topic: tutorial
 ms.date: 06/19/2019
 ms.author: jobreen
-ms.openlocfilehash: 6e11e08d861538ddf395f522495798546e04ca7c
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 55554678047faeedd16b78dea61a42d50fd59491
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91948951"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737319"
 ---
 # <a name="set-up-azure-functions-for-azure-custom-providers"></a>Einrichten von Azure-Funktionen für benutzerdefinierte Azure-Anbieter
 
@@ -21,7 +21,7 @@ Ein benutzerdefinierter Anbieter ist ein Vertrag zwischen Azure und einem Endpun
 > [!NOTE]
 > In diesem Tutorial erstellen Sie einen einfachen Dienstendpunkt, der eine Azure-Funktions-App verwendet. Ein benutzerdefinierter Anbieter kann jedoch jeden öffentlich zugänglichen Endpunkt verwenden. Zu den Alternativen gehören Azure Logic Apps, Azure API Management und die Web-Apps-Funktion von Azure App Service.
 
-Als Einstieg in dieses Tutorial sollten Sie zuerst das Tutorial [Erstellen Ihrer ersten Funktion im Azure-Portal](../../azure-functions/functions-create-first-azure-function.md) durcharbeiten. In diesem Tutorial wird eine .NET Core-Webhookfunktion erstellt, die im Azure-Portal geändert werden kann. Sie dient auch als Grundlage für das aktuelle Tutorial.
+Als Einstieg in dieses Tutorial sollten Sie zuerst das Tutorial [Erstellen Ihrer ersten Funktion im Azure-Portal](../../azure-functions/functions-get-started.md) durcharbeiten. In diesem Tutorial wird eine .NET Core-Webhookfunktion erstellt, die im Azure-Portal geändert werden kann. Sie dient auch als Grundlage für das aktuelle Tutorial.
 
 ## <a name="install-azure-table-storage-bindings"></a>Installieren von Azure-Tabellenspeicherbindungen
 

@@ -10,23 +10,23 @@ ms.topic: tutorial
 ms.date: 05/06/2020
 ms.author: mbaldwin
 ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: 2504efcbd79ab0e43f958b86564709b6ac6295a6
-ms.sourcegitcommit: a89a517622a3886b3a44ed42839d41a301c786e0
+ms.openlocfilehash: 2960726cf687908e8e4aed9333fce490dd7ff006
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97733055"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98788736"
 ---
 # <a name="tutorial-use-a-managed-identity-to-connect-key-vault-to-an-azure-web-app-in-net"></a>Tutorial: Verwenden einer verwalteten Identität für die Verbindungsherstellung zwischen Key Vault und einer Azure-Web-App in .NET
 
 [Azure Key Vault](./overview.md) ermöglicht das Speichern von Anmeldeinformationen und anderen Geheimnissen mit erhöhter Sicherheit. Für Ihren Code muss aber die Authentifizierung bei Key Vault erfolgen, damit der Abruf möglich ist. Mit den [verwalteten Identitäten für Azure-Ressourcen](../../active-directory/managed-identities-azure-resources/overview.md) kann dieses Problem gelöst werden, indem für Azure-Dienste eine automatisch verwaltete Identität in Azure Active Directory (Azure AD) bereitgestellt wird. Sie können diese Identität für die Authentifizierung bei jedem Dienst verwenden, der die Azure AD-Authentifizierung, einschließlich Key Vault, unterstützt. Hierfür müssen im Code keine Anmeldeinformationen angezeigt werden.
 
-In diesem Tutorial führen Sie die Erstellung und Bereitstellung einer Azure-Webanwendung für [Azure App Service](https://docs.microsoft.com/azure/app-service/overview) durch. Sie verwenden eine verwaltete Identität zum Authentifizieren Ihrer Azure-Web-App für einen Azure-Schlüsseltresor, indem Sie die [Azure Key Vault-Geheimnisclientbibliothek](/dotnet/api/overview/azure/key-vault) und die [Azure CLI](/cli/azure/get-started-with-azure-cli) nutzen. Die gleichen grundlegenden Prinzipien gelten auch, wenn Sie eine Entwicklungssprache Ihrer Wahl, Azure PowerShell bzw. das Azure-Portal nutzen.
+In diesem Tutorial führen Sie die Erstellung und Bereitstellung einer Azure-Webanwendung für [Azure App Service](../../app-service/overview.md) durch. Sie verwenden eine verwaltete Identität zum Authentifizieren Ihrer Azure-Web-App für einen Azure-Schlüsseltresor, indem Sie die [Azure Key Vault-Geheimnisclientbibliothek](/dotnet/api/overview/azure/key-vault) und die [Azure CLI](/cli/azure/get-started-with-azure-cli) nutzen. Die gleichen grundlegenden Prinzipien gelten auch, wenn Sie eine Entwicklungssprache Ihrer Wahl, Azure PowerShell bzw. das Azure-Portal nutzen.
 
 Weitere Informationen zu Azure App Service-Webanwendungen und zur Bereitstellung in diesem Tutorial finden Sie unter:
-- [App Service: Übersicht](https://docs.microsoft.com/azure/app-service/overview)
-- [Schnellstart: Erstellen von ASP.NET Core-Web-Apps in Azure](https://docs.microsoft.com/azure/app-service/quickstart-dotnetcore)
-- [Lokale Git-Bereitstellung in Azure App Service](https://docs.microsoft.com/azure/app-service/deploy-local-git)
+- [App Service: Übersicht](../../app-service/overview.md)
+- [Schnellstart: Erstellen von ASP.NET Core-Web-Apps in Azure](../../app-service/quickstart-dotnetcore.md)
+- [Lokale Git-Bereitstellung in Azure App Service](../../app-service/deploy-local-git.md)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -67,7 +67,7 @@ Wechseln Sie in einem Webbrowser unter `http://localhost:5000` zur App.
 
 Die Nachricht „Hello World!“ aus der Beispiel-App wird auf der Seite angezeigt.
 
-Weitere Informationen zur Erstellung von Webanwendungen für Azure finden Sie unter [Schnellstart: Erstellen von ASP.NET Core-Web-Apps in Azure](https://docs.microsoft.com/azure/app-service/quickstart-dotnetcore).
+Weitere Informationen zur Erstellung von Webanwendungen für Azure finden Sie unter [Schnellstart: Erstellen von ASP.NET Core-Web-Apps in Azure](../../app-service/quickstart-dotnetcore.md).
 
 ## <a name="deploy-the-app-to-azure"></a>Bereitstellen der Anwendung in Azure
 
@@ -228,7 +228,7 @@ http://<your-webapp-name>.azurewebsites.net
 
 Die Nachricht „Hello World!“ wird angezeigt, die Sie schon vom Zugriff auf `http://localhost:5000` kennen.
 
-Weitere Informationen zur Bereitstellung einer Webanwendung per Git finden Sie unter [Lokale Git-Bereitstellung in Azure App Service](https://docs.microsoft.com/azure/app-service/deploy-local-git).
+Weitere Informationen zur Bereitstellung einer Webanwendung per Git finden Sie unter [Lokale Git-Bereitstellung in Azure App Service](../../app-service/deploy-local-git.md).
  
 ## <a name="configure-the-web-app-to-connect-to-key-vault"></a>Konfigurieren der Web-App für die Verbindungsherstellung mit Key Vault
 
@@ -264,7 +264,7 @@ Sie können auch Zugriffsrichtlinien über das [Azure-Portal](./assign-access-po
 
 ### <a name="modify-the-app-to-access-your-key-vault"></a>Anpassen der App für den Zugriff auf Ihren Schlüsseltresor
 
-In diesem Tutorial verwenden Sie zu Demonstrationszwecken die [Azure Key Vault-Geheimnisclientbibliothek](https://docs.microsoft.com/dotnet/api/overview/azure/security.keyvault.secrets-readme). Sie können auch die [Azure Key Vault-Zertifikatclientbibliothek](https://docs.microsoft.com/dotnet/api/overview/azure/security.keyvault.certificates-readme) oder die [Azure Key Vault-Schlüsselclientbibliothek](https://docs.microsoft.com/dotnet/api/overview/azure/security.keyvault.keys-readme) verwenden.
+In diesem Tutorial verwenden Sie zu Demonstrationszwecken die [Azure Key Vault-Geheimnisclientbibliothek](/dotnet/api/overview/azure/security.keyvault.secrets-readme). Sie können auch die [Azure Key Vault-Zertifikatclientbibliothek](/dotnet/api/overview/azure/security.keyvault.certificates-readme) oder die [Azure Key Vault-Schlüsselclientbibliothek](/dotnet/api/overview/azure/security.keyvault.keys-readme) verwenden.
 
 #### <a name="install-the-packages"></a>Installieren der Pakete
 

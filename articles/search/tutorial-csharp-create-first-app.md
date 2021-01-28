@@ -7,14 +7,14 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 09/30/2020
+ms.date: 01/26/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ec98762ac5918437e8fdb8426b54b79b1fb5b222
-ms.sourcegitcommit: 541bb46e38ce21829a056da880c1619954678586
+ms.openlocfilehash: 961e30cf17bf385647f4482c6f767641c6b891af
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2020
-ms.locfileid: "91939720"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791677"
 ---
 # <a name="tutorial-create-your-first-search-app-using-the-net-sdk"></a>Tutorial: Erstellen Ihrer ersten Such-App mit dem .NET SDK
 
@@ -77,7 +77,7 @@ Wenn Sie gleich mit einer funktionierenden App arbeiten möchten, führen Sie di
 
 1. Dabei handelt es sich um einen Hotelindex. Geben Sie also einige Wörter ein, die Sie bei einer Suche nach Hotels verwenden würden (z. B. „WiFi“, „View“, „Bar“, „Parking“), und überprüfen Sie die Ergebnisse.
 
-    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-wifi.png" alt-text="Suchen nach *pool*" border="true":::
+    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-wifi.png" alt-text="Suchen nach *wifi*" border="true":::
 
 Dieses Projekt und Ihre Web-App werden hoffentlich reibungslos ausgeführt. Viele der grundlegenden Komponenten für komplexere Suchen sind in dieser einen App enthalten. Es ist also hilfreich, die App durchzugehen und Schritt für Schritt neu zu erstellen. Diese Schritte werden in den folgenden Abschnitten beschrieben.
 
@@ -87,17 +87,17 @@ Beginnen Sie mit einem Visual Studio-Projekt, um dieses Projekt von Grund auf ne
 
 1. Wählen Sie in Visual Studio **Neu** > **Projekt** und dann **ASP.NET Core-Webanwendung**.
 
-    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-project1.png" alt-text="Suchen nach *pool*" border="true":::
+    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-project1.png" alt-text="Erstellen eines Cloudprojekts" border="true":::
 
 1. Benennen Sie das Projekt, z. B. „FirstSearchApp“, und legen Sie den Speicherort fest. Klicken Sie auf **Erstellen**.
 
 1. Wählen Sie die Projektvorlage **Webanwendung (Model-View-Controller)** aus.
 
-    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-project2.png" alt-text="Suchen nach *pool*" border="true":::
+    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-project2.png" alt-text="Erstellen eines MVC-Projekts" border="true":::
 
 1. Installieren der Clientbibliothek Wählen Sie **Tools** > **NuGet-Paket-Manager** > **NuGet-Pakete für Lösung verwalten...** und dann **Durchsuchen** aus. Suchen Sie anschließend nach „azure.search.documents“. Installieren Sie **Azure.Search.Documents** (Version 11 oder höher), und akzeptieren Sie die Lizenzverträge und die Abhängigkeiten.
 
-    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-nuget-azure.png" alt-text="Suchen nach *pool*" border="true":::
+    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-nuget-azure.png" alt-text="Hinzufügen von Azure-Bibliotheken per NuGet" border="true":::
 
 ### <a name="initialize-azure-cognitive-search"></a>Initialisieren von Azure Cognitive Search
 
@@ -114,7 +114,7 @@ Für dieses Beispiel verwenden Sie öffentlich verfügbare Hoteldaten. Diese Dat
 
 1. Wählen Sie im Projektmappen-Explorer die Datei aus, und ändern Sie in „Eigenschaften“ die Einstellung **In Ausgabeverzeichnis kopieren** in **Kopieren, wenn neuer**.
 
-    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-copy-if-newer.png" alt-text="Suchen nach *pool*" border="true":::
+    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-copy-if-newer.png" alt-text="Kopieren der App-Einstellungen in die Ausgabe" border="true":::
 
 ## <a name="model-data-structures"></a>Modellieren von Datenstrukturen
 
@@ -327,7 +327,7 @@ Löschen Sie den gesamten Inhalt von „Index.cshtml“, und erstellen Sie die D
     </body>
     ```
 
-1. Fügen Sie das Stylesheet hinzu. Wählen Sie in Visual Studio **Datei**> **Neu** > **Datei** und dann **Stylesheet** aus (wobei**Allgemein** ausgewählt ist).
+1. Fügen Sie das Stylesheet hinzu. Wählen Sie in Visual Studio **Datei**> **Neu** > **Datei** und dann **Stylesheet** aus (wobei **Allgemein** ausgewählt ist).
 
    Ersetzen Sie den Standardcode durch Folgendes. Wir gehen auf diese Datei nicht näher ein. Bei den Formaten handelt es sich um HTML-Standardformate.
 
@@ -534,11 +534,11 @@ Der Azure Cognitive Search-Aufruf ist in unserer **RunQueryAsync**-Methode gekap
 
 1. Wählen Sie **Debuggen** > **Ohne Debuggen starten** aus, oder drücken Sie **F5**. Wenn die App erwartungsgemäß ausgeführt wird, sollten Sie die Ausgangsindexansicht erhalten.
 
-     :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-index.png" alt-text="Suchen nach *pool*" border="true":::
+     :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-index.png" alt-text="Öffnen der App" border="true":::
 
 1. Geben Sie eine Abfragezeichenfolge ein, z. B. „beach“ (oder anderen Text, der Ihnen gerade einfällt), und klicken Sie auf das Suchsymbol, um die Anforderung zu senden.
 
-     :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-beach.png" alt-text="Suchen nach *pool*" border="true":::
+     :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-beach.png" alt-text="Suchen nach *beach*" border="true":::
 
 1. Versuchen Sie, „five star“ einzugeben. Beachten Sie, dass diese Abfrage keine Ergebnisse zurückgibt. Bei einer anspruchsvolleren Suche würde „five star“ als Synonym für „luxury“ erkannt werden, und die entsprechenden Ergebnisse würden angezeigt werden. Unterstützung für [Synonyme](search-synonyms.md) ist in Azure Cognitive Search verfügbar, wird in dieser Tutorialreihe jedoch nicht behandelt.
 
@@ -554,7 +554,7 @@ Es ist wichtig zu überprüfen, ob unsere Features für die Fehlerbehandlung wie
 
 2. Führen Sie die App aus, geben Sie „bar“ als Suchtext ein, und klicken Sie auf das Suchsymbol. Die Ausnahme sollte in der Fehleransicht angezeigt werden.
 
-     :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-error.png" alt-text="Suchen nach *pool*" border="true":::
+     :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-error.png" alt-text="Erzwingen eines Fehlers" border="true":::
 
     > [!Important]
     > Es wird als Sicherheitsrisiko angesehen, interne Fehlernummern auf Fehlerseiten zurückzugeben. Falls Ihre App für die allgemeine Nutzung bestimmt ist, sollten Sie sich über die sicheren und bewährten Methoden informieren, die beim Auftreten eines Fehlers befolgt werden sollten.

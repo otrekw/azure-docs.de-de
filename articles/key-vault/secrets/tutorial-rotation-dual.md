@@ -10,12 +10,12 @@ ms.subservice: secrets
 ms.topic: tutorial
 ms.date: 06/22/2020
 ms.author: jalichwa
-ms.openlocfilehash: 39081bc7bec7cfd76ccfc9107d5c2286affb7df0
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: e7e63ea56edc2b76383ee4c034fd39dd8b8259c1
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97913769"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98786004"
 ---
 # <a name="automate-the-rotation-of-a-secret-for-resources-that-have-two-sets-of-authentication-credentials"></a>Automatisieren der Geheimnisrotation für Ressourcen, die über zwei Sätze mit Anmeldeinformationen für die Authentifizierung verfügen
 
@@ -234,8 +234,8 @@ Vorlage für Rotationsfunktionen für zwei Sätze von Anmeldeinformationen und e
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Tutorial: [Geheimnisrotation für einen Satz von Anmeldeinformationen](https://docs.microsoft.com/azure/key-vault/secrets/tutorial-rotation)
+- Tutorial: [Geheimnisrotation für einen Satz von Anmeldeinformationen](./tutorial-rotation.md)
 - Übersicht: [Überwachen von Key Vault mit Azure Event Grid](../general/event-grid-overview.md)
-- Gewusst wie: [Erstellen Ihrer ersten Funktion im Azure-Portal](../../azure-functions/functions-create-first-azure-function.md)
+- Gewusst wie: [Erstellen Ihrer ersten Funktion im Azure-Portal](../../azure-functions/functions-get-started.md)
 - Vorgehensweise: [Verwenden von Logic Apps zum Empfangen einer E-Mail bei Statusänderungen von Key Vault-Geheimnissen](../general/event-grid-logicapps.md)
 - Referenz: [Azure Event Grid-Ereignisschema für Azure Key Vault](../../event-grid/event-schema-key-vault.md)

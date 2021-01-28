@@ -4,12 +4,12 @@ description: In diesem Tutorial erfahren Sie, wie Sie einen Service Fabric-Clus
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 063c83818ec2e98491f9062e936b9a1e7b2c4356
-ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
+ms.openlocfilehash: cdc7ba8d6c83ae72ffb8f1afae3954b3a46dc6ec
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/20/2020
-ms.locfileid: "97702173"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98788009"
 ---
 # <a name="tutorial-scale-a-service-fabric-cluster-in-azure"></a>Tutorial: Skalieren eines Service Fabric-Clusters in Azure
 
@@ -809,7 +809,7 @@ Nachdem Sie einen Service Fabric-Cluster erstellt haben, können Sie einen Clus
 > [!WARNING]
 > Es wird nicht empfohlen, regelmäßig „Remove-AzServiceFabricNodeType“ zu verwenden, um einen Knotentyp aus einem Produktionscluster zu entfernen. Es handelt sich um einen sehr gefährlichen Befehl, da er die VM-Skalierungsgruppenressource hinter dem Knotentyp löscht. 
 
-Führen Sie das Cmdlet [Remove-AzServiceFabricNodeType](/powershell/module/az.servicefabric/remove-azservicefabricnodetype) aus, um den Knotentyp zu entfernen.  Der Knotentyp muss die [Dauerhaftigkeitsstufe][durability] „Silber“ oder „Gold“ haben. Das Cmdlet löscht die dem Knotentyp zugeordnete Skalierungsgruppe, was einige Zeit in Anspruch nimmt.  Führen Sie dann das Cmdlet [Remove-ServiceFabricNodeState](/powershell/module/servicefabric/remove-servicefabricnodestate?view=azureservicefabricps) auf jedem der zu entfernenden Knoten aus, wodurch der Knotenzustand gelöscht und die Knoten aus dem Cluster entfernt werden. Wenn auf den Knoten Dienste vorhanden sind, werden die Dienste zuerst auf einen anderen Knoten verschoben. Wenn der Cluster-Manager keinen Knoten für das Replikat bzw. den Dienst finden kann, wird der Vorgang verzögert/blockiert.
+Führen Sie das Cmdlet [Remove-AzServiceFabricNodeType](/powershell/module/az.servicefabric/remove-azservicefabricnodetype) aus, um den Knotentyp zu entfernen.  Der Knotentyp muss die [Dauerhaftigkeitsstufe][durability] „Silber“ oder „Gold“ haben. Das Cmdlet löscht die dem Knotentyp zugeordnete Skalierungsgruppe, was einige Zeit in Anspruch nimmt.  Führen Sie dann das Cmdlet [Remove-ServiceFabricNodeState](/powershell/module/servicefabric/remove-servicefabricnodestate) auf jedem der zu entfernenden Knoten aus, wodurch der Knotenzustand gelöscht und die Knoten aus dem Cluster entfernt werden. Wenn auf den Knoten Dienste vorhanden sind, werden die Dienste zuerst auf einen anderen Knoten verschoben. Wenn der Cluster-Manager keinen Knoten für das Replikat bzw. den Dienst finden kann, wird der Vorgang verzögert/blockiert.
 
 ```powershell
 $groupname = "sfclustertutorialgroup"

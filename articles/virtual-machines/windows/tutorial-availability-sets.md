@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 11/30/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 2617308d342be19f74e1f3145a1137fadb04d073
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: e1c9cf0a60446fba6fae5c850231b0805e7ea135
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97914687"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98736651"
 ---
 # <a name="tutorial-create-and-deploy-highly-available-virtual-machines-with-azure-powershell"></a>Tutorial: Erstellen und Bereitstellen hoch verfügbarer virtueller Computer mit Azure PowerShell
 
@@ -75,7 +75,7 @@ Virtuelle Computer müssen in der Verfügbarkeitsgruppe erstellt werden, um sich
 
 Verwenden Sie beim Erstellen eines virtuellen Computers mit [New-AzVM](/powershell/module/az.compute/new-azvm) den Parameter `-AvailabilitySetName`, um den Namen der Verfügbarkeitsgruppe anzugeben.
 
-Legen Sie mit [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential?view=powershell-5.1&preserve-view=true) zuerst den Benutzernamen und das Kennwort des VM-Administrators fest:
+Legen Sie mit [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential) zuerst den Benutzernamen und das Kennwort des VM-Administrators fest:
 
 ```azurepowershell-interactive
 $cred = Get-Credential
