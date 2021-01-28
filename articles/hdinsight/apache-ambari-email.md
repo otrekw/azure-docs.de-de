@@ -1,18 +1,15 @@
 ---
 title: 'Tutorial: Konfigurieren von Apache Ambari-E-Mail-Benachrichtigungen in Azure HDInsight'
 description: In diesem Artikel wird beschrieben, wie Sie SendGrid mit Apache Ambari für E-Mail-Benachrichtigungen verwenden.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 03/10/2020
-ms.openlocfilehash: bdce735bdacbe7ff0752650c6949fdb361342c73
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 63d0f87925f14fddf3dbd722fa72326ee8b04f31
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92542555"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946965"
 ---
 # <a name="tutorial-configure-apache-ambari-email-notifications-in-azure-hdinsight"></a>Tutorial: Konfigurieren von Apache Ambari-E-Mail-Benachrichtigungen in Azure HDInsight
 
@@ -38,11 +35,11 @@ In diesem Tutorial lernen Sie Folgendes:
 
     ![SendGrid-Übersicht im Azure-Portal](./media/apache-ambari-email/azure-portal-sendgrid-manage.png)
 
-1. Navigieren Sie im Menü auf der linken Seite zu Ihrem Kontonamen und dann zu **Kontodetails** .
+1. Navigieren Sie im Menü auf der linken Seite zu Ihrem Kontonamen und dann zu **Kontodetails**.
 
     ![Navigation auf dem SendGrid-Dashboard](./media/apache-ambari-email/sendgrid-dashboard-navigation.png)
 
-1. Notieren Sie auf der Seite **Kontodetails** den Wert unter **Benutzername** .
+1. Notieren Sie auf der Seite **Kontodetails** den Wert unter **Benutzername**.
 
     ![SendGrid-Kontodetails](./media/apache-ambari-email/sendgrid-account-details.png)
 
@@ -64,7 +61,7 @@ In diesem Tutorial lernen Sie Folgendes:
     |Gruppen|Nehmen Sie die Konfiguration nach Bedarf vor.|
     |severity|Nehmen Sie die Konfiguration nach Bedarf vor.|
     |BESCHREIBUNG|Optional.|
-    |Methode|Übernehmen Sie die Option **E-MAIL** .|
+    |Methode|Übernehmen Sie die Option **E-MAIL**.|
     |Email To (E-Mail an)|Geben Sie E-Mail-Adressen getrennt durch Komma ein, an die Benachrichtigungen gesendet werden sollen.|
     |SMTP-Server|`smtp.sendgrid.net`|
     |SMTP-Port|25 oder 587 (für unverschlüsselte Verbindungen oder TLS-Verbindungen)|
