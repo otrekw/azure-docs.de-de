@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: tutorial
 ms.date: 10/14/2020
 ms.author: alkohli
-ms.openlocfilehash: aaa75988e1177590a0ff6f4ca2e00f92de68789f
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 0c0ef6157ebf70c896fbac5ff692246e4fad2c14
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96580363"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98937203"
 ---
 # <a name="tutorial-transfer-data-with-azure-data-box-gateway"></a>Tutorial: Übertragen von Daten mit Azure Data Box Gateway
 
@@ -57,7 +57,7 @@ Gehen Sie wie folgt vor, um eine Freigabe zu erstellen:
 
     3. Geben Sie das gewünschte Speicherkonto für die Freigabe an. Wenn ein Container noch nicht vorhanden ist, wird er im Speicherkonto mit dem neu erstellten Freigabenamen angelegt. Wenn er bereits vorhanden ist, wird der vorhandene Container verwendet.
        > [!IMPORTANT]
-       > Stellen Sie sicher, dass für das von Ihnen genutzte Azure Storage-Konto keine Unveränderlichkeitsrichtlinien festgelegt sind, falls Sie es mit einem Data Box Gateway-Gerät verwenden. Weitere Informationen finden Sie unter [Festlegen und Verwalten von Unveränderlichkeitsrichtlinien für Blobspeicher](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutability-policies-manage).
+       > Stellen Sie sicher, dass für das von Ihnen genutzte Azure Storage-Konto keine Unveränderlichkeitsrichtlinien festgelegt sind, falls Sie es mit einem Data Box Gateway-Gerät verwenden. Weitere Informationen finden Sie unter [Festlegen und Verwalten von Unveränderlichkeitsrichtlinien für Blobspeicher](../storage/blobs/storage-blob-immutability-policies-manage.md).
     
     4. Wählen Sie für **Speicherdienst** die Option „Blockblob“, „Seitenblob“ oder „Dateien“ aus. Der ausgewählte Diensttyp hängt von dem Format ab, in dem die Daten in Azure gespeichert werden sollen. In diesem Fall sollen die Daten beispielsweise als Blobblöcke in Azure gespeichert werden. Daher wählen wir „Blockblob“ aus. Wenn Sie „Seitenblob“ auswählen, müssen Sie sicherstellen, dass Ihre Daten ganzzahlige Vielfache von 512 Bytes sind. VHDX-Daten sind beispielsweise immer ganzzahlige Vielfache von 512 Bytes.
    

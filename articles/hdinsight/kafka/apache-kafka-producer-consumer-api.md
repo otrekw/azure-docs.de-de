@@ -1,19 +1,16 @@
 ---
 title: 'Tutorial: Apache Kafka Producer- und Consumer-APIs – Azure HDInsight'
 description: Erfahren Sie, wie Sie die Apache Kafka Producer- und Consumer-APIs mit Kafka in HDInsight verwenden. In diesem Tutorial erfahren Sie, wie Sie diese APIs mit Kafka auf HDInsight aus einer Java-Anwendung verwenden.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 05/19/2020
-ms.openlocfilehash: b942fb321d2bceef64930bea0c660f66747508b6
-ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
+ms.openlocfilehash: e5a635a8837aadaf423c6f3a0925dbac4080e60f
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92629305"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945179"
 ---
 # <a name="tutorial-use-the-apache-kafka-producer-and-consumer-apis"></a>Tutorial: Verwenden der Apache Kafka Producer- und Consumer-APIs
 
@@ -184,7 +181,7 @@ Wenn Sie diesen Schritt überspringen möchten, können Sie vorgefertigte JAR-Da
 
     Die gelesenen Datensätze und die Anzahl von Datensätzen wird angezeigt.
 
-1. Drücken Sie __STRG+C__ , um den Consumer zu beenden.
+1. Drücken Sie __STRG+C__, um den Consumer zu beenden.
 
 ### <a name="multiple-consumers"></a>Mehrere Consumer
 
@@ -196,7 +193,7 @@ Die Consumer-Anwendung akzeptiert einen Parameter, der als Gruppen-ID verwendet 
 java -jar kafka-producer-consumer.jar consumer myTest $KAFKABROKERS myGroup
 ```
 
-Drücken Sie __STRG+C__ , um den Consumer zu beenden.
+Drücken Sie __STRG+C__, um den Consumer zu beenden.
 
 Führen Sie den folgenden Befehl aus, um diesen Vorgang in Aktion zu sehen:
 
@@ -206,7 +203,7 @@ tmux new-session 'java -jar kafka-producer-consumer.jar consumer myTest $KAFKABR
 \; attach
 ```
 
-Dieser Befehl teilt das Terminal mit `tmux` in zwei Spalten auf. In jeder Spalte wird ein Consumer mit dem gleichen Gruppen-ID-Wert gestartet. Beachten Sie nach Abschluss des Lesens durch die Consumer, dass jeder nur einen Teil der Datensätze gelesen hat. Drücken Sie zweimal __STRG+C__ , um `tmux` zu beenden.
+Dieser Befehl teilt das Terminal mit `tmux` in zwei Spalten auf. In jeder Spalte wird ein Consumer mit dem gleichen Gruppen-ID-Wert gestartet. Beachten Sie nach Abschluss des Lesens durch die Consumer, dass jeder nur einen Teil der Datensätze gelesen hat. Drücken Sie zweimal __STRG+C__, um `tmux` zu beenden.
 
 Der Verbrauch durch die Clients in derselben Gruppe wird über die Partitionen für das Thema gesteuert. In diesem Codebeispiel besitzt das zuvor erstellte Thema `test` acht Partitionen. Wenn Sie acht Consumer starten, liest jeder Consumer Datensätze aus einer einzelnen Partition für das Thema.
 
@@ -227,9 +224,9 @@ Zum Bereinigen der im Rahmen dieses Tutorials erstellten Ressourcen können Sie 
 
 So entfernen Sie die Ressourcengruppe über das Azure-Portal:
 
-1. Erweitern Sie im Azure-Portal das Menü auf der linken Seite, um das Menü mit den Diensten zu öffnen, und klicken Sie auf __Ressourcengruppen__ , um die Liste mit Ihren Ressourcengruppen anzuzeigen.
+1. Erweitern Sie im Azure-Portal das Menü auf der linken Seite, um das Menü mit den Diensten zu öffnen, und klicken Sie auf __Ressourcengruppen__, um die Liste mit Ihren Ressourcengruppen anzuzeigen.
 2. Suchen Sie die zu löschende Ressourcengruppe, und klicken Sie mit der rechten Maustaste rechts neben dem Eintrag auf die Schaltfläche __Mehr__ (...).
-3. Klicken Sie auf __Ressourcengruppe löschen__ , und bestätigen Sie den Vorgang.
+3. Klicken Sie auf __Ressourcengruppe löschen__, und bestätigen Sie den Vorgang.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

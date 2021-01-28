@@ -7,19 +7,19 @@ author: bwren
 ms.author: bwren
 ms.date: 05/16/2018
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: abfac23ad37d750a6d7ef84e5dec2559904ebb1f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 196a1d580bd5888a6604c3f98b108e39c08a3412
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87496303"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945025"
 ---
 # <a name="azure-monitor-cli-samples"></a>CLI-Beispiele für Azure Monitor
 In diesem Artikel werden Beispielbefehle für die Befehlszeilenschnittstelle (Command Line Interface, CLI) beschrieben, mit denen Sie auf Azure Monitor-Features zugreifen können. Azure Monitor ermöglicht die automatische Skalierung von Clouddiensten, virtuellen Computern und Web-Apps sowie das Senden von Warnbenachrichtigungen oder das Aufrufen von Web-URLs basierend auf Werten konfigurierter Telemetriedaten.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Wenn Sie die Azure CLI noch nicht installiert haben, befolgen Sie die Anweisungen zum [Installieren der Azure CLI](/cli/azure/install-azure-cli). Sie können auch [Azure Cloud Shell](/azure/cloud-shell) für die Ausführung der CLI als interaktive Oberfläche in Ihrem Browser verwenden. Eine vollständige Referenz aller verfügbaren Befehle finden Sie in der [Azure Monitor-CLI-Referenz](/cli/azure/monitor?view=azure-cli-latest). 
+Wenn Sie die Azure CLI noch nicht installiert haben, befolgen Sie die Anweisungen zum [Installieren der Azure CLI](/cli/azure/install-azure-cli). Sie können auch [Azure Cloud Shell](/azure/cloud-shell) für die Ausführung der CLI als interaktive Oberfläche in Ihrem Browser verwenden. Eine vollständige Referenz aller verfügbaren Befehle finden Sie in der [Azure Monitor-CLI-Referenz](/cli/azure/monitor). 
 
 ## <a name="log-in-to-azure"></a>Anmelden an Azure
 Der erste Schritt besteht darin, sich beim Azure-Konto anzumelden.

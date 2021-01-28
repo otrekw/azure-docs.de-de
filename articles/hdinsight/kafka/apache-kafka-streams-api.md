@@ -1,19 +1,16 @@
 ---
 title: 'Tutorial: Verwenden der Apache Kafka Streams-API – Azure HDInsight '
 description: 'Tutorial: Erfahren Sie, wie Sie die Apache Kafka Streams-API mit Kafka in HDInsight verwenden. Mit dieser API können Sie eine Streamverarbeitung zwischen Themen in Kafka ausführen.'
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: hdinsightactive
 ms.date: 03/20/2020
-ms.openlocfilehash: 7a5982cb96891b3c0724007aa98527a07daba0fe
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 5a1548cdf1d05a1f9d42f5c64b7fdc18f514518e
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92532553"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98939205"
 ---
 # <a name="tutorial-use-apache-kafka-streams-api-in-azure-hdinsight"></a>Tutorial: Verwenden der Apache Kafka Streams-API in Azure HDInsight
 
@@ -249,7 +246,7 @@ Führen Sie die folgenden Schritte aus, um das Projekt in Ihrem Cluster für Kaf
 
     Der Parameter `--from-beginning` konfiguriert den Consumer so, dass er am Anfang der im Thema gespeicherten Datensätze beginnt. Die Anzahl erhöht sich jedes Mal, wenn ein Wort angetroffen wird, sodass das Thema mehrere Einträge für jedes Wort enthält – mit zunehmender Anzahl.
 
-4. Drücken Sie __STRG+C__ , um den Producer zu beenden. Drücken Sie __STRG+C__ erneut, um die Anwendung und den Consumer zu beenden.
+4. Drücken Sie __STRG+C__, um den Producer zu beenden. Drücken Sie __STRG+C__ erneut, um die Anwendung und den Consumer zu beenden.
 
 5. Verwenden Sie die folgenden Befehle, um die vom Streamingvorgang verwendeten Themen zu löschen:
 
@@ -266,9 +263,9 @@ Zum Bereinigen der im Rahmen dieses Tutorials erstellten Ressourcen können Sie 
 
 So entfernen Sie die Ressourcengruppe über das Azure-Portal:
 
-1. Erweitern Sie im Azure-Portal das Menü auf der linken Seite, um das Menü mit den Diensten zu öffnen, und klicken Sie auf __Ressourcengruppen__ , um die Liste mit Ihren Ressourcengruppen anzuzeigen.
+1. Erweitern Sie im Azure-Portal das Menü auf der linken Seite, um das Menü mit den Diensten zu öffnen, und klicken Sie auf __Ressourcengruppen__, um die Liste mit Ihren Ressourcengruppen anzuzeigen.
 2. Suchen Sie die zu löschende Ressourcengruppe, und klicken Sie mit der rechten Maustaste rechts neben dem Eintrag auf die Schaltfläche __Mehr__ (...).
-3. Klicken Sie auf __Ressourcengruppe löschen__ , und bestätigen Sie den Vorgang.
+3. Klicken Sie auf __Ressourcengruppe löschen__, und bestätigen Sie den Vorgang.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

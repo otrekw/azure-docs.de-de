@@ -1,19 +1,16 @@
 ---
 title: 'Tutorial: Verwenden von R in einem Spark-Computekontext in Azure HDInsight'
 description: 'Tutorial: Erste Schritte mit R und Spark in einem Azure HDInsight Machine Learning Services-Cluster'
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 06/21/2019
-ms.openlocfilehash: 6e727bc7ad8b7f0b8a04c48f3abd1f1ac0806c66
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: bd6015529fb521e3b157e46ee808aea43e993dee
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92545904"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98935667"
 ---
 # <a name="tutorial-use-r-in-a-spark-compute-context-in-azure-hdinsight"></a>Tutorial: Verwenden von R in einem Spark-Computekontext in Azure HDInsight
 
@@ -43,7 +40,7 @@ RStudio Server wird auf dem Edgeknoten des Clusters ausgeführt. Navigieren Sie 
 https://CLUSTERNAME.azurehdinsight.net/rstudio/
 ```
 
-Bei der ersten Anmeldung authentifizieren Sie sich zweimal. Geben Sie bei der ersten Authentifizierungseingabeaufforderung den Administratorbenutzernamen und das Kennwort für den Cluster an. (Der Standardwert lautet *admin* .) Geben Sie bei der zweiten Authentifizierungseingabeaufforderung den Benutzernamen und das Kennwort für SSH an. (Der Standardwert lautet *sshuser* .) Für nachfolgende Anmeldungen sind nur noch die SSH-Anmeldeinformationen erforderlich.
+Bei der ersten Anmeldung authentifizieren Sie sich zweimal. Geben Sie bei der ersten Authentifizierungseingabeaufforderung den Administratorbenutzernamen und das Kennwort für den Cluster an. (Der Standardwert lautet *admin*.) Geben Sie bei der zweiten Authentifizierungseingabeaufforderung den Benutzernamen und das Kennwort für SSH an. (Der Standardwert lautet *sshuser*.) Für nachfolgende Anmeldungen sind nur noch die SSH-Anmeldeinformationen erforderlich.
 
 ## <a name="download-the-sample-data-to-local-storage"></a>Herunterladen der Beispieldaten in den lokalen Speicher
 

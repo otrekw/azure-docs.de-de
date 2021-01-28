@@ -1,19 +1,16 @@
 ---
 title: 'Tutorial: ETL-Vorgänge (Extrahieren, Transformieren und Laden) mit Interactive Query: Azure HDInsight'
 description: 'Tutorial: Erfahren Sie, wie Sie Daten aus einem unformatierten CSV-Dataset extrahieren. Transformieren Sie sie mit einer interaktiven Abfrage in HDInsight. Laden Sie die transformierten Daten anschließend mit Apache Sqoop in Azure SQL-Datenbank.'
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: hdinsightactive,mvc
 ms.date: 07/02/2019
-ms.openlocfilehash: 730a6bfa627eafcab799fc811db4e20a1d4cec48
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 13b6b8658aa2d896ec154cfa3c7a961e37df6cbf
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92534582"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98935911"
 ---
 # <a name="tutorial-extract-transform-and-load-data-using-interactive-query-in-azure-hdinsight"></a>Tutorial: Extrahieren, Transformieren und Laden von Daten mithilfe von Interactive Query in Azure HDInsight
 
@@ -95,7 +92,7 @@ Daten können auf unterschiedliche Weise in den zugeordneten Speicher eines HDIn
 
 Ein Hive-Auftrag kann auf verschiedenste Arten in einem HDInsight-Cluster ausgeführt werden. In diesem Abschnitt verwenden Sie [Beeline](https://cwiki.apache.org/confluence/display/Hive/HiveServer2+Clients#HiveServer2Clients-Beeline%E2%80%93CommandLineShell), um einen Hive-Auftrag auszuführen. Informationen zu anderen Ausführungsmethoden für Hive-Aufträge finden Sie unter [Was sind Apache Hive und HiveQL in Azure HDInsight?](../hadoop/hdinsight-use-hive.md).
 
-Im Rahmen des Hive-Auftrags importieren Sie die Daten aus der CSV-Datei in eine Hive-Tabelle namens **Delays** .
+Im Rahmen des Hive-Auftrags importieren Sie die Daten aus der CSV-Datei in eine Hive-Tabelle namens **Delays**.
 
 1. Verwenden Sie an der SSH-Eingabeaufforderung, die bereits für den HDInsight-Cluster geöffnet ist, den folgenden Befehl, um eine neue Datei namens **flightdelays.hql** zu erstellen und zu bearbeiten:
 
@@ -165,7 +162,7 @@ Im Rahmen des Hive-Auftrags importieren Sie die Daten aus der CSV-Datei in eine 
     FROM delays_raw;
     ```
 
-3. Um die Datei zu speichern, drücken Sie **STRG+X** , dann **Y** und schließlich die EINGABETASTE.
+3. Um die Datei zu speichern, drücken Sie **STRG+X**, dann **Y** und schließlich die EINGABETASTE.
 
 4. Starten Sie Hive mit dem folgenden Befehl, und führen Sie die Datei **flightdelays.hql** aus:
 

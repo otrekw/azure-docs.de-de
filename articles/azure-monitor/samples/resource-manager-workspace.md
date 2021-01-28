@@ -6,12 +6,12 @@ ms.topic: sample
 author: bwren
 ms.author: bwren
 ms.date: 05/18/2020
-ms.openlocfilehash: 3cc79edf50c4f056f413292d2d43aa8cf8e65136
-ms.sourcegitcommit: e0ec3c06206ebd79195d12009fd21349de4a995d
+ms.openlocfilehash: c755ee0ee91156da9910a9d43c891c87f86cd430
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97683475"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945039"
 ---
 # <a name="resource-manager-template-samples-for-log-analytics-workspaces-in-azure-monitor"></a>Beispiele für Resource Manager-Vorlagen für Log Analytics-Arbeitsbereiche in Azure Monitor
 Dieser Artikel enthält Beispiele für [Azure Resource Manager-Vorlagen](../../azure-resource-manager/templates/template-syntax.md) zum Erstellen und Konfigurieren von Log Analytics-Arbeitsbereichen in Azure Monitor. Jedes Beispiel umfasst eine Vorlagendatei und eine Parameterdatei mit Beispielwerten für die Vorlage.
@@ -610,7 +610,7 @@ Im folgenden Beispiel wird einem vorhandenen Arbeitsbereich die Erfassung [benut
 
 ### <a name="notes"></a>Hinweise
 
-- Die Konfiguration von Trennzeichen und Extraktionen kann komplex sein. Zur Unterstützung können Sie ein benutzerdefiniertes Protokoll mithilfe des Azure-Portal definieren und dann dessen Konfiguration mithilfe von [Get-AzOperationalInsightsDataSource](/powershell/module/az.operationalinsights/get-azoperationalinsightsdatasource?view=azps-3.8.0) abrufen, wobei **-Kind** auf **CustomLog** festgelegt ist.
+- Die Konfiguration von Trennzeichen und Extraktionen kann komplex sein. Zur Unterstützung können Sie ein benutzerdefiniertes Protokoll mithilfe des Azure-Portal definieren und dann dessen Konfiguration mithilfe von [Get-AzOperationalInsightsDataSource](/powershell/module/az.operationalinsights/get-azoperationalinsightsdatasource) abrufen, wobei **-Kind** auf **CustomLog** festgelegt ist.
 
   
 ### <a name="template-file"></a>Vorlagendatei

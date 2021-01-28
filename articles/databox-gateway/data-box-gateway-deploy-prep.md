@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: tutorial
 ms.date: 10/15/2020
 ms.author: alkohli
-ms.openlocfilehash: f1b00273314c845a36c7efdb9cf9f4de9d5cdd46
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 40de216a9bcb173d9dfebf39d05fb9cb12579301
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96580304"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98937334"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-data-box-gateway"></a>Tutorial: Vorbereiten der Bereitstellung von Azure Data Box Gateway
 
@@ -50,11 +50,11 @@ Im Folgenden finden Sie die Konfigurationsvoraussetzungen für die Data Box Gate
 
 Stellen Sie Folgendes sicher, bevor Sie beginnen:
 
-* Ihr Microsoft Azure-Abonnement ist für eine Azure Stack Edge-Ressource aktiviert. Stellen Sie sicher, dass Sie ein unterstütztes Abonnement verwendet haben, z. B. [Microsoft Enterprise Agreement (EA)](https://azure.microsoft.com/overview/sales-number/), [Cloud Solution Provider (CSP)](https://docs.microsoft.com/partner-center/azure-plan-lp) oder [Microsoft Azure Sponsorship](https://azure.microsoft.com/offers/ms-azr-0036p/).
+* Ihr Microsoft Azure-Abonnement ist für eine Azure Stack Edge-Ressource aktiviert. Stellen Sie sicher, dass Sie ein unterstütztes Abonnement verwendet haben, z. B. [Microsoft Enterprise Agreement (EA)](https://azure.microsoft.com/overview/sales-number/), [Cloud Solution Provider (CSP)](/partner-center/azure-plan-lp) oder [Microsoft Azure Sponsorship](https://azure.microsoft.com/offers/ms-azr-0036p/).
 * Sie verfügen für die Azure Stack Edge-/Data Box Gateway-, IoT Hub- und Azure Storage-Ressourcen über Zugriff als Besitzer oder Mitwirkender auf der Ressourcengruppenebene.
     - Für die Erstellung von Azure Stack Edge-/Data Box Gateway-Ressourcen müssen Sie mindestens über Berechtigungen als Mitwirkender auf der Ressourcengruppenebene verfügen. Vergewissern Sie sich außerdem, dass der Anbieter `Microsoft.DataBoxEdge` registriert ist. Eine Registrierungsanleitung finden Sie unter [Register resource provider](data-box-gateway-manage-access-power-connectivity-mode.md#register-resource-providers) (Registrieren des Ressourcenanbieters).
     - Für die Erstellung von Speicherkontoressourcen sind ebenfalls mindestens Berechtigungen als Mitwirkender auf der Ressourcengruppenebene erforderlich. Azure Storage ist standardmäßig als Ressourcenanbieter registriert.
-- Sie verfügen über Administrator- oder Benutzerzugriff auf die Microsoft Graph-API. Weitere Informationen finden Sie in der [Microsoft Graph-Referenz zu Berechtigungen](https://docs.microsoft.com/graph/permissions-reference).
+- Sie verfügen über Administrator- oder Benutzerzugriff auf die Microsoft Graph-API. Weitere Informationen finden Sie in der [Microsoft Graph-Referenz zu Berechtigungen](/graph/permissions-reference).
 - Sie besitzen ein Microsoft Azure-Speicherkonto mit Anmeldeinformationen für den Zugriff.
 
 ### <a name="for-the-data-box-gateway-device"></a>Für das Data Box Gateway-Gerät
@@ -90,7 +90,7 @@ Führen Sie im Azure-Portal die folgenden Schritte aus, um eine Data Box Gateway
 1. Melden Sie sich mit Ihren Microsoft Azure-Anmeldeinformationen bei einem der folgenden Portale an:
 
     - Azure-Portal (URL: [https://portal.azure.com](https://portal.azure.com))
-    - Azure Government-Portal (URL: [https://portal.azure.us](https://portal.azure.us)). Ausführliche Informationen finden Sie unter [Schnellstart: Herstellen einer Verbindung mit Azure Government über das Portal](https://docs.microsoft.com/azure/azure-government/documentation-government-get-started-connect-with-portal).
+    - Azure Government-Portal (URL: [https://portal.azure.us](https://portal.azure.us)). Ausführliche Informationen finden Sie unter [Schnellstart: Herstellen einer Verbindung mit Azure Government über das Portal](../azure-government/documentation-government-get-started-connect-with-portal.md).
     
 2. Wählen Sie **+ Ressource erstellen**.
 
@@ -193,5 +193,3 @@ oder
 
 > [!div class="nextstepaction"]
 > [Bereitstellen eines Data Box Gateway in VMware](./data-box-gateway-deploy-provision-vmware.md)
-
-

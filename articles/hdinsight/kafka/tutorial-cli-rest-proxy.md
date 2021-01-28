@@ -1,19 +1,16 @@
 ---
 title: 'Tutorial: Erstellen eines für Apache Kafka-REST-Proxys geeigneten Clusters in HDInsight per Azure CLI'
 description: Erfahren Sie, wie Sie Apache Kafka-Vorgänge mithilfe eines Kafka-REST-Proxys in Azure HDInsight ausführen.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 02/27/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 68dddcbc5771ef1a8b5d6ea423674a1c6845a5e6
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: ff11b8461b483f5a66df19bb1b108a1fe1168fb9
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92539478"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944026"
 ---
 # <a name="tutorial-create-an-apache-kafka-rest-proxy-enabled-cluster-in-hdinsight-using-azure-cli"></a>Tutorial: Erstellen eines für Apache Kafka-REST-Proxys geeigneten Clusters in HDInsight per Azure CLI
 
@@ -56,8 +53,8 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
     |location|Ersetzen Sie LOCATION durch eine Region, in der der Cluster erstellt werden soll. Verwenden Sie den Befehl `az account list-locations`, um eine Liste mit gültigen Standorten zu erhalten.|
     |clusterName|Ersetzen Sie CLUSTERNAME durch einen global eindeutigen Namen für Ihren neuen Cluster.|
     |storageAccount|Ersetzen Sie STORAGEACCOUNTNAME durch einen Namen für Ihr neues Speicherkonto.|
-    |httpPassword|Ersetzen Sie PASSWORD durch ein Kennwort für die Clusteranmeldung per **admin** .|
-    |sshPassword|Ersetzen Sie PASSWORD durch ein Kennwort für den Secure Shell-Benutzernamen **sshuser** .|
+    |httpPassword|Ersetzen Sie PASSWORD durch ein Kennwort für die Clusteranmeldung per **admin**.|
+    |sshPassword|Ersetzen Sie PASSWORD durch ein Kennwort für den Secure Shell-Benutzernamen **sshuser**.|
     |securityGroupName|Ersetzen Sie SECURITYGROUPNAME durch den Namen der AAD-Clientsicherheitsgruppe für den Kafka-REST-Proxy. Die Variable wird an den Parameter `--kafka-client-group-name` für `az-hdinsight-create` übergeben.|
     |securityGroupID|Ersetzen Sie SECURITYGROUPID durch die ID der AAD-Clientsicherheitsgruppe für den Kafka-REST-Proxy. Die Variable wird an den Parameter `--kafka-client-group-id` für `az-hdinsight-create` übergeben.|
     |storageContainer|Der Speichercontainer, der vom Cluster verwendet wird. Lassen Sie die Einstellung für dieses Tutorial unverändert. Diese Variable wird anhand des Namens des Clusters festgelegt.|
