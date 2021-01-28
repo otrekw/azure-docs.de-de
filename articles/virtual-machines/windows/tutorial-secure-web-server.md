@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 02/09/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 7d6c992023eeb4b17fe3c83de20b49c73476a54d
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 4e5bbe179c43508033e0747bc2c03089f283b6e2
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97912715"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98873078"
 ---
 # <a name="tutorial-secure-a-web-server-on-a-windows-virtual-machine-in-azure-with-tlsssl-certificates-stored-in-key-vault"></a>Tutorial: Schützen eines Webservers auf einem virtuellen Windows-Computer in Azure mit in Key Vault gespeicherten TLS/SSL-Zertifikaten
 
@@ -80,7 +80,7 @@ Add-AzKeyVaultCertificate `
 
 
 ## <a name="create-a-virtual-machine"></a>Erstellen eines virtuellen Computers
-Legen Sie mit [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential?view=powershell-5.1&preserve-view=true) den Benutzernamen und das Kennwort des Administrators des virtuellen Computers fest:
+Legen Sie mit [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential) den Benutzernamen und das Kennwort des Administrators des virtuellen Computers fest:
 
 ```azurepowershell-interactive
 $cred = Get-Credential
@@ -177,4 +177,4 @@ In diesem Tutorial haben Sie einen IIS-Webserver mit einem in Azure Key Vault ge
 Folgen Sie diesem Link, um sich vordefinierte Skriptbeispiele für virtuelle Computer anzusehen.
 
 > [!div class="nextstepaction"]
-> [Virtueller Azure-Computer – PowerShell-Beispiele](./powershell-samples.md)
+> [Virtueller Azure-Computer – PowerShell-Beispiele](https://github.com/Azure/azure-docs-powershell-samples/tree/master/virtual-machine)

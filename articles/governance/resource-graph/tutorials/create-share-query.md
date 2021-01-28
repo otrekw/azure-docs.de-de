@@ -1,14 +1,14 @@
 ---
 title: 'Tutorial: Verwalten von Abfragen im Azure-Portal'
 description: In diesem Tutorial erstellen Sie im Azure-Portal eine Resource Graph-Abfrage und geben die neue Abfrage für andere Benutzer frei.
-ms.date: 10/14/2020
+ms.date: 01/27/2021
 ms.topic: tutorial
-ms.openlocfilehash: 98d4c7d0493686a45bdfef9d85823432cb637a66
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 7240a843cfa041137b28284e396c8a4b62a81926
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92057925"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98916678"
 ---
 # <a name="tutorial-create-and-share-an-azure-resource-graph-query-in-the-azure-portal"></a>Tutorial: Erstellen und Freigeben einer Azure Resource Graph-Abfrage im Azure-Portal
 
@@ -46,7 +46,7 @@ Private Abfragen sind nur für das Konto sichtbar und zugänglich, das die Abfra
 
    Weitere Informationen über diese Abfrage finden Sie unter [Beispiele: Zählen von virtuellen Computern nach Betriebssystemtyp](../samples/starter.md#count-os).
 
-1. Wählen Sie **Speichern** oder **Speichern unter** aus, geben Sie**VMs nach Betriebssystem zählen** als Namen ein, behalten Sie den Typ **Private Abfrage** bei, und klicken Sie dann unten im Bereich **Abfrage speichern** auf **Speichern**. Der Titel der Registerkarte ändert sich von **Abfrage 1** zu **VMs nach Betriebssystem zählen**.
+1. Wählen Sie **Speichern** oder **Speichern unter** aus, geben Sie **VMs nach Betriebssystem zählen** als Namen ein, behalten Sie den Typ **Private Abfrage** bei, und klicken Sie dann unten im Bereich **Abfrage speichern** auf **Speichern**. Der Titel der Registerkarte ändert sich von **Abfrage 1** zu **VMs nach Betriebssystem zählen**.
 
 1. Verlassen Sie den Azure Resource Graph-Explorer im Azure-Portal, und kehren Sie wieder zurück. Beachten Sie, dass die gespeicherte Abfrage nicht mehr angezeigt wird, und die Registerkarte **Abfrage 1** wieder zu sehen ist.
 
@@ -88,7 +88,7 @@ Im Gegensatz zu einer privaten Abfrage ist eine freigegebene Abfrage eine Resour
 
 1. Klicken Sie unten im Bereich **Abfrage speichern** auf **Speichern**. Der Titel der Registerkarte ändert sich von **Abfrage 1** zu **VMs nach Betriebssystem zählen**. Wenn die Ressourcengruppe **resource-graph-queries** zum ersten Mal verwendet wird, dauert der Speichervorgang länger als erwartet, weil die Ressourcengruppe zuerst erstellt werden muss.
    
-   :::image type="content" source="../media/create-share-query/save-shared-query-window.png" alt-text="Speichern der neuen Abfrage mit der Schaltfläche „Speichern“" border="false":::
+   :::image type="content" source="../media/create-share-query/save-shared-query-window.png" alt-text="Speichern der neuen Abfrage als freigegebene Abfrage" border="false":::
 
    > [!NOTE] 
    > Sie können das Kontrollkästchen **In Ressourcengruppe „resource-graph-queries“ veröffentlichen** deaktivieren, wenn Sie den Namen einer vorhandenen Ressourcengruppe angeben möchten, in der die Abfrage gespeichert werden soll. Die Verwendung des Standardnamens für Ressourcengruppen für Abfragen vereinfacht die Entdeckung von freigegebenen Abfragen. Dadurch wird auch der Zweck dieser Ressourcengruppe offensichtlicher. Sie können jedoch aus Sicherheitsgründen eine vorhandene Ressourcengruppe basierend auf vorhandenen Berechtigungen auswählen.
@@ -97,7 +97,7 @@ Im Gegensatz zu einer privaten Abfrage ist eine freigegebene Abfrage eine Resour
 
 1. Wählen Sie **Abfrage öffnen** aus. Vergewissern Sie sich beim Speichern von Abfragen, dass der Typ auf **Freigegebene Abfrage** festgelegt ist und die Kombination aus **Abonnement** und **Ressourcengruppe** stimmt. Das gespeicherte Element **VMs nach Betriebssystem zählen** wird jetzt in der Liste **Abfragename** angezeigt. Wählen Sie den Titellink der gespeicherten Abfrage aus, um diese in einer neuen Registerkarte mit dem Namen dieser Abfrage zu laden. Auf der Registerkarte wird ein Symbol neben dem Titel angezeigt, das darauf hinweist, dass es sich um eine freigegebene Abfrage handelt.
 
-   :::image type="content" source="../media/create-share-query/show-saved-shared-query.png" alt-text="Speichern der neuen Abfrage mit der Schaltfläche „Speichern“" border="false":::
+   :::image type="content" source="../media/create-share-query/show-saved-shared-query.png" alt-text="Anzeige der freigegebenen Abfrage mit Symbol" border="false":::
 
    > [!NOTE] 
    > Wenn eine gespeicherte Abfrage offen ist und die Registerkarte ihren Namen angezeigt, wird die Abfrage beim Klicken auf die Schaltfläche **Speichern** mit allen vorgenommenen Änderungen gespeichert. Um eine neue gespeicherte Abfrage zu erstellen, wählen Sie **Speichern unter** aus, und fahren Sie so fort, als würden Sie eine ganz neue Abfrage speichern.

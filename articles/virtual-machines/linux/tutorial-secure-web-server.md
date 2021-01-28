@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 04/30/2018
 ms.author: cynthn
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 4a790c51cd0caa2c81275e7eafdd663f2f2f0116
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: e4e80990b32175842556059d005563a220d14688
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92740192"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878459"
 ---
 # <a name="tutorial-secure-a-web-server-on-a-linux-virtual-machine-in-azure-with-tlsssl-certificates-stored-in-key-vault"></a>Tutorial: Schützen eines Webservers auf einem virtuellen Linux-Computer in Azure mit in Key Vault gespeicherten TLS/SSL-Zertifikaten
 Als Schutz für Webserver kann ein TLS-Zertifikat (Transport Layer Security) verwendet werden, um Webdatenverkehr zu verschlüsseln. „Transport Layer Security“ wurde früher als „Secure Sockets Layer“ (SSL) bezeichnet. Diese TLS/SSL-Zertifikate können in Azure Key Vault gespeichert werden. Sie ermöglichen sichere Bereitstellungen von Zertifikaten auf virtuellen Linux-Computern in Azure. In diesem Tutorial lernen Sie Folgendes:
@@ -84,7 +84,7 @@ vm_secret=$(az vm secret format --secrets "$secret" -g myResourceGroupSecureWeb 
 
 Wenn Sie einen virtuellen Computer erstellen, werden Zertifikate und Schlüssel im geschützten Verzeichnis */var/lib/waagent/* gespeichert. Verwenden Sie cloud-init, um die Vorgänge zum Hinzufügen des Zertifikats zum virtuellen Computer und zum Konfigurieren des Webservers zu automatisieren. In diesem Beispiel installieren und konfigurieren Sie den NGINX-Webserver. Dasselbe Verfahren kann zum Installieren und Konfigurieren von Apache verwendet werden. 
 
-Erstellen Sie eine Datei namens *cloud-init-web-server.txt* , und fügen Sie die folgende Konfiguration ein:
+Erstellen Sie eine Datei namens *cloud-init-web-server.txt*, und fügen Sie die folgende Konfiguration ein:
 
 ```yaml
 #cloud-config
@@ -157,4 +157,4 @@ In diesem Tutorial haben Sie einen NGINX-Webserver mit einem in Azure Key Vault 
 Folgen Sie diesem Link, um sich vordefinierte Skriptbeispiele für virtuelle Computer anzusehen.
 
 > [!div class="nextstepaction"]
-> [Virtueller Linux-Computer – Skriptbeispiele](./cli-samples.md)
+> [Virtueller Linux-Computer – Skriptbeispiele](https://github.com/Azure-Samples/azure-cli-samples/tree/master/virtual-machine)

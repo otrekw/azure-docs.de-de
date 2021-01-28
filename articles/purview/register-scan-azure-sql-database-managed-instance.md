@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 12/01/2020
-ms.openlocfilehash: 3513ba0cd1a894b55da604d54964affa79b6adf4
-ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
+ms.openlocfilehash: 2391a36c02e0bdfe0ea98be7f19fc64f1fbb676f
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98555966"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879931"
 ---
 # <a name="register-and-scan-an-azure-sql-database-managed-instance"></a>Registrieren und Überprüfen einer verwalteten Azure SQL-Datenbank-Instanz
 
@@ -34,13 +34,13 @@ Azure Purview unterstützt nicht die Überprüfung von [Ansichten](/sql/relation
 
 - Erstellen Sie ein neues Purview-Konto, wenn Sie noch keines besitzen.
 
-- [Konfigurieren des öffentlichen Endpunkts in der verwalteten Azure SQL-Instanz](/azure/azure-sql/managed-instance/public-endpoint-configure)
+- [Konfigurieren des öffentlichen Endpunkts in der verwalteten Azure SQL-Instanz](../azure-sql/managed-instance/public-endpoint-configure.md)
     > [!Note]
     > Ihre Organisation muss in der Lage sein, einen öffentlichen Endpunkt zuzulassen, da von Purview **private Endpunkte noch nicht unterstützt werden**. Wenn Sie einen privaten Endpunkt verwenden, ist die Überprüfung nicht erfolgreich.
 
 ### <a name="setting-up-authentication-for-a-scan"></a>Einrichten der Authentifizierung für eine Überprüfung
 
-Authentifizierung zum Überprüfen einer verwalteten Azure SQL-Datenbank-Instanz Wenn Sie eine neue Authentifizierung erstellen müssen, müssen Sie [den Datenbankzugriff auf die verwaltete Azure SQL-Datenbank-Instanz](/azure/azure-sql/database/logins-create-manage) autorisieren. Es gibt drei Authentifizierungsmethoden, die von Purview aktuell unterstützt werden:
+Authentifizierung zum Überprüfen einer verwalteten Azure SQL-Datenbank-Instanz Wenn Sie eine neue Authentifizierung erstellen müssen, müssen Sie [den Datenbankzugriff auf die verwaltete Azure SQL-Datenbank-Instanz](../azure-sql/database/logins-create-manage.md) autorisieren. Es gibt drei Authentifizierungsmethoden, die von Purview aktuell unterstützt werden:
 
 - SQL-Authentifizierung
 - Dienstprinzipal
@@ -85,8 +85,8 @@ Zur Nutzung eines Dienstprinzipals können Sie einen vorhandenen Dienstprinzipal
 ##### <a name="configure-azure-ad-authentication-in-the-database-account"></a>Konfigurieren der Azure AD-Authentifizierung im Datenbankkonto
 
 Der Dienstprinzipal oder die verwaltete Identität muss über die Berechtigung zum Abrufen von Metadaten für die Datenbank, die Schemas und die Tabellen verfügen. Darüber hinaus muss das Abfragen der Tabellen möglich sein, damit Stichproben für die Klassifizierung genommen werden können.
-- [Konfigurieren und Verwalten der Azure Active Directory-Authentifizierung mit Azure SQL](/azure/azure-sql/database/authentication-aad-configure)
-- Erstellen Sie einen Azure AD-Benutzer in der verwalteten Azure SQL-Datenbank-Instanz, indem Sie die Voraussetzungen erfüllen und das Tutorial unter [Erstellen eigenständiger Benutzer mit Zuordnung zu Azure AD-Identitäten](/azure/azure-sql/database/authentication-aad-configure?tabs=azure-powershell#create-contained-users-mapped-to-azure-ad-identities) durcharbeiten.
+- [Konfigurieren und Verwalten der Azure Active Directory-Authentifizierung mit Azure SQL](../azure-sql/database/authentication-aad-configure.md)
+- Erstellen Sie einen Azure AD-Benutzer in der verwalteten Azure SQL-Datenbank-Instanz, indem Sie die Voraussetzungen erfüllen und das Tutorial unter [Erstellen eigenständiger Benutzer mit Zuordnung zu Azure AD-Identitäten](../azure-sql/database/authentication-aad-configure.md?tabs=azure-powershell#create-contained-users-mapped-to-azure-ad-identities) durcharbeiten.
 - Weisen Sie der Identität die Berechtigung `db_owner` (**empfohlen**) zu.
 
 ##### <a name="add-service-principal-to-key-vault-and-purviews-credential"></a>Hinzufügen des Dienstprinzipals zum Schlüsseltresor und zu den Anmeldeinformationen von Purview

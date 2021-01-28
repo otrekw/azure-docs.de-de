@@ -2,18 +2,15 @@
 title: 'Tutorial: HDInsight Apache Storm in Storage – Azure/Data Lake'
 description: Tutorial – Erfahren Sie, wie Sie mit Apache Storm in den HDFS-kompatiblen Speicher für Azure HDInsight schreiben.
 ms.service: hdinsight
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 06/24/2019
-ms.openlocfilehash: 8cdcc60e6eeec22e202d670c3fc057711bd432a6
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 4e648c57be699620e669ce7db0845dad2b876095
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92545445"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98932552"
 ---
 # <a name="tutorial-write-to-apache-hadoop-hdfs-from-apache-storm-on-azure-hdinsight"></a>Tutorial: Schreiben in Apache Hadoop HDFS aus Apache Storm auf Azure HDInsight
 
@@ -160,7 +157,7 @@ Informationen zum Verwenden dieses Skripts mit Ihrem Cluster finden Sie im Dokum
     hdfs.url: wasbs:///
     ```
 
-    Verwenden Sie __STRG + X__ , um die Datei zu speichern. Geben Sie dann __Y__ ein, und drücken Sie die __EINGABETASTE__ . Mit den Werten in dieser Datei bestimmen Sie die Speicher-URL und den Namen des Verzeichnisses, in das Daten geschrieben werden.
+    Verwenden Sie __STRG + X__, um die Datei zu speichern. Geben Sie dann __Y__ ein, und drücken Sie die __EINGABETASTE__. Mit den Werten in dieser Datei bestimmen Sie die Speicher-URL und den Namen des Verzeichnisses, in das Daten geschrieben werden.
 
 1. Verwenden Sie den folgenden Befehl, um die Topologie zu starten:
 
@@ -205,9 +202,9 @@ Zum Bereinigen der im Rahmen dieses Tutorials erstellten Ressourcen können Sie 
 
 So entfernen Sie die Ressourcengruppe über das Azure-Portal:
 
-1. Erweitern Sie im Azure-Portal das Menü auf der linken Seite, um das Menü mit den Diensten zu öffnen, und klicken Sie auf __Ressourcengruppen__ , um die Liste mit Ihren Ressourcengruppen anzuzeigen.
+1. Erweitern Sie im Azure-Portal das Menü auf der linken Seite, um das Menü mit den Diensten zu öffnen, und klicken Sie auf __Ressourcengruppen__, um die Liste mit Ihren Ressourcengruppen anzuzeigen.
 2. Suchen Sie die zu löschende Ressourcengruppe, und klicken Sie mit der rechten Maustaste rechts neben dem Eintrag auf die Schaltfläche __Mehr__ (...).
-3. Klicken Sie auf __Ressourcengruppe löschen__ , und bestätigen Sie den Vorgang.
+3. Klicken Sie auf __Ressourcengruppe löschen__, und bestätigen Sie den Vorgang.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

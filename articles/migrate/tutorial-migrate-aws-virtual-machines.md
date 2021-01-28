@@ -7,12 +7,12 @@ ms.manager: bsiva
 ms.topic: tutorial
 ms.date: 08/19/2020
 ms.custom: MVC
-ms.openlocfilehash: cab7bc7f79cccb1704d7046f79a2000028ffb729
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: 430ece58bd3dc1651ac391ba0e29515085ee507b
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98233252"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878188"
 ---
 # <a name="discover-assess-and-migrate-amazon-web-services-aws-vms-to-azure"></a>Ermitteln, Bewerten und Migrieren von virtuellen AWS-Computern (Amazon Web Services) zu Azure
 
@@ -80,7 +80,7 @@ Vorbereiten von Azure für die Migration mit Azure Migrate: Servermigration“ k
 
 **Aufgabe** | **Details**
 --- | ---
-**Erstellen eines Azure Migrate-Projekts** | Zum [Erstellen eines neuen Projekts](https://docs.microsoft.com/azure/migrate/create-manage-projects) benötigt Ihr Azure-Konto Berechtigungen vom Typ „Mitwirkender“ oder „Besitzer“.
+**Erstellen eines Azure Migrate-Projekts** | Zum [Erstellen eines neuen Projekts](./create-manage-projects.md) benötigt Ihr Azure-Konto Berechtigungen vom Typ „Mitwirkender“ oder „Besitzer“.
 **Überprüfen der Berechtigungen für Ihr Azure-Konto** | Ihr Azure-Konto benötigt Berechtigungen zum Erstellen eines virtuellen Computers sowie zum Schreiben auf einen verwalteten Azure-Datenträger.
 
 ### <a name="assign-permissions-to-create-project"></a>Zuweisen von Berechtigungen für die Projekterstellung
@@ -256,7 +256,7 @@ Ein Mobilitätsdienst-Agent muss auf den AWS-VMs installiert sein, die migriert 
     - Mehrfachverschlüsselung mit plattformseitig und kundenseitig verwalteten Schlüsseln
 
    > [!NOTE]
-   > Um VMs mit CMK zu replizieren, müssen Sie unter der Zielressourcengruppe einen [Datenträgerverschlüsselungssatz erstellen](https://go.microsoft.com/fwlink/?linkid=2151800). Ein Datenträgerverschlüsselungssatz-Objekt ordnet verwaltete Datenträger einer Key Vault-Instanz zu, die den für SSE zu verwendenden CMK enthält.
+   > Um VMs mit CMK zu replizieren, müssen Sie unter der Zielressourcengruppe einen [Datenträgerverschlüsselungssatz erstellen](../virtual-machines/disks-enable-customer-managed-keys-portal.md#set-up-your-disk-encryption-set). Ein Datenträgerverschlüsselungssatz-Objekt ordnet verwaltete Datenträger einer Key Vault-Instanz zu, die den für SSE zu verwendenden CMK enthält.
   
 12. Wählen Sie unter **Azure-Hybridvorteil**
 

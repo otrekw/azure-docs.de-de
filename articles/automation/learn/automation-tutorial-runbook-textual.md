@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/19/2020
 ms.topic: tutorial
-ms.openlocfilehash: 613ce41820dc5f388af441836bdb4a93e43e5d07
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e822e17f154b72854c5150e071301d7bbd53072e
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90987636"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98890814"
 ---
 # <a name="tutorial-create-a-powershell-workflow-runbook"></a>Tutorial: Erstellen eines PowerShell-Workflow-Runbooks
 
@@ -113,13 +113,13 @@ Das erstellte Runbook befindet sich immer noch im Entwurfsmodus. Sie müssen das
 
 7. Wenn der Runbookstatus „Abgeschlossen“ lautet, klicken Sie auf **Ausgabe**. Die Seite „Ausgabe“ wird geöffnet, auf der Ihre Nachricht `Hello World` angezeigt wird.
 
-   :::image type="content" source="../media/automation-tutorial-runbook-textual/job-pane-status-blade-outputtile.png" alt-text="Screenshot: Bereich für den Runbookauftrag mit hervorgehobenem Abschnitt „Auftragszusammenfassung“":::
+   :::image type="content" source="../media/automation-tutorial-runbook-textual/job-pane-status-blade-outputtile.png" alt-text="Screenshot: Bereich für den Runbookauftrag mit hervorgehobener Schaltfläche „Ausgabe“":::
 
 8. Schließen Sie die Seite „Ausgabe“.
 
 9. Klicken Sie auf **Alle Protokolle**, um den Bereich „Datenströme“ für den Runbookauftrag zu öffnen. Im Ausgabestream sollte nur `Hello World` angezeigt werden. Beachten Sie, dass im Bereich „Streams“ auch andere Streams für einen Runbookauftrag, etwa ausführliche Streams und Fehlerstreams, angezeigt werden können, sofern das Runbook in diese schreibt.
 
-   :::image type="content" source="../media/automation-tutorial-runbook-textual/job-pane-status-blade-alllogstile.png" alt-text="Screenshot: Bereich für den Runbookauftrag mit hervorgehobenem Abschnitt „Auftragszusammenfassung“":::
+   :::image type="content" source="../media/automation-tutorial-runbook-textual/job-pane-status-blade-alllogstile.png" alt-text="Screenshot: Bereich für den Runbookauftrag mit hervorgehobener Schaltfläche „Alle Protokolle“":::
 
 10. Schließen Sie den Bereich „Streams“ und den Bereich „Auftrag“, um zur Seite „MyFirstRunbook“ zurückzukehren.
 
@@ -131,7 +131,7 @@ Das erstellte Runbook befindet sich immer noch im Entwurfsmodus. Sie müssen das
 
 ## <a name="step-5---add-authentication-to-manage-azure-resources"></a>Schritt 5: Hinzufügen von Authentifizierungsfunktionen für die Verwaltung von Azure-Ressourcen
 
-Sie haben Ihr Runbook inzwischen zwar getestet und veröffentlicht, bislang ist es aber noch nicht sonderlich hilfreich. Sie möchten damit ja eigentlich Azure-Ressourcen verwalten. Dies ist nur möglich, wenn die Authentifizierung mit den Anmeldeinformationen für das Abonnement erfolgt. Für die Authentifizierung wird das Cmdlet [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount?view=azps-3.7.0) verwendet.
+Sie haben Ihr Runbook inzwischen zwar getestet und veröffentlicht, bislang ist es aber noch nicht sonderlich hilfreich. Sie möchten damit ja eigentlich Azure-Ressourcen verwalten. Dies ist nur möglich, wenn die Authentifizierung mit den Anmeldeinformationen für das Abonnement erfolgt. Für die Authentifizierung wird das Cmdlet [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) verwendet.
 
 >[!NOTE]
 >Für PowerShell-Runbooks sind `Add-AzAccount` und `Add-AzureRMAccount` Aliase für `Connect-AzAccount`. Sie können diese Cmdlets verwenden, oder Sie können Ihre Module in Ihrem Automation-Konto auf die aktuellen Versionen [aktualisieren](../automation-update-azure-modules.md). Möglicherweise müssen Sie Ihre Module auch dann aktualisieren, wenn Sie gerade ein neues Automation-Konto erstellt haben.
@@ -165,7 +165,7 @@ Sie haben Ihr Runbook inzwischen zwar getestet und veröffentlicht, bislang ist 
 
 Nachdem das Runbook jetzt im Azure-Abonnement authentifiziert ist, können Sie Ressourcen verwalten. Fügen Sie nun einen Befehl zum Starten eines virtuellen Computers hinzu. Sie können eine beliebige VM in Ihrem Azure-Abonnement auswählen. Vorerst geben Sie diesen Namen im Runbook fest ein. Wenn Sie Ressourcen über mehrere Abonnements verwalten, müssen Sie das Cmdlet [Get-AzContext](/powershell/module/az.accounts/get-azcontext) mit dem Parameter `AzContext` verwenden.
 
-1. Geben Sie den Namen und den Ressourcengruppennamen der VM an, die gestartet werden soll, indem Sie wie unten gezeigt einen Aufruf des Cmdlets [Start-AzVM](/powershell/module/Az.Compute/Start-AzVM?view=azps-3.5.0) eingeben. 
+1. Geben Sie den Namen und den Ressourcengruppennamen der VM an, die gestartet werden soll, indem Sie wie unten gezeigt einen Aufruf des Cmdlets [Start-AzVM](/powershell/module/Az.Compute/Start-AzVM) eingeben. 
 
    ```powershell-interactive
    workflow MyFirstRunbook-Workflow
@@ -227,7 +227,7 @@ Ihr Runbook startet derzeit die im Runbook hartcodierte VM. Es ist nützlicher, 
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Weitere Informationen zu PowerShell, einschließlich Sprachreferenz und Lernmodulen, finden Sie in der [PowerShell-Dokumentation](/powershell/scripting/overview).
-* Eine Referenz zu den PowerShell-Cmdlets finden Sie unter [Az.Automation](/powershell/module/az.automation/?view=azps-3.7.0#automation).
+* Eine Referenz zu den PowerShell-Cmdlets finden Sie unter [Az.Automation](/powershell/module/az.automation).
 * Informationen zu den ersten Schritten mit grafischen Runbooks finden Sie unter [Erstellen eines grafischen Runbooks](automation-tutorial-runbook-graphical.md).
 * Informationen zu den ersten Schritten mit PowerShell-Runbooks finden Sie unter [Erstellen eines PowerShell-Runbooks](automation-tutorial-runbook-textual-powershell.md).
 * Informationen zu den verschiedenen Runbooktypen mit ihren Vorteilen und Einschränkungen finden Sie unter [Azure Automation-Runbooktypen](../automation-runbook-types.md).

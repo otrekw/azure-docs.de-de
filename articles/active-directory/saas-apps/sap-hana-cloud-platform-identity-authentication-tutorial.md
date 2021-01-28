@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/18/2020
+ms.date: 01/18/2021
 ms.author: jeedes
-ms.openlocfilehash: d2a7b27c7678f604c7f09febac67bf0879e34c3a
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: dc0cd57eb32baaeac0850337bbead3a73dec9292
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97724186"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98897337"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sap-cloud-platform-identity-authentication"></a>Tutorial: Integration des einmaligen Anmeldens von Azure Active Directory mit SAP Cloud Platform Identity Authentication
 
@@ -174,7 +174,7 @@ In diesem Abschnitt ermöglichen Sie B. Simon das einmalige Anmelden bei Azure,
 
 4. Wählen Sie im Azure-Portal auf der Anwendungsintegrationsseite für **SAP Cloud Platform Identity Authentication** die Option **Anmeldung über Link** aus.
 
-    ![Konfigurieren der Anmeldung über Link](./media/sap-hana-cloud-platform-identity-authentication-tutorial/linked_sign_on.png)
+    ![Konfigurieren der Anmeldung über Link](./media/sap-hana-cloud-platform-identity-authentication-tutorial/linked-sign-on.png)
 
 5. Speichern Sie die Konfiguration.
 
@@ -205,7 +205,7 @@ In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmel
 
 * Klicken Sie im Azure-Portal auf **Diese Anwendung testen**. Sie sollten automatisch bei der SAP Cloud Platform Identity Authentication-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben.
 
-Sie können auch den Microsoft-Bereich „Meine Apps“ verwenden, um die Anwendung in einem beliebigen Modus zu testen. Beim Klicken auf die Kachel „SAP Cloud Platform Identity Authentication“ in „Meine Apps“ passiert Folgendes: Wenn Sie den SP-Modus konfiguriert haben, werden Sie zum Initiieren des Anmeldeablaufs zur Anmeldeseite der Anwendung weitergeleitet, und wenn Sie den IDP-Modus konfiguriert haben, sollten Sie automatisch bei der SAP Cloud Platform Identity Authentication-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Sie können auch den Microsoft-Bereich „Meine Apps“ verwenden, um die Anwendung in einem beliebigen Modus zu testen. Beim Klicken auf die Kachel „SAP Cloud Platform Identity Authentication“ in „Meine Apps“ passiert Folgendes: Wenn Sie den SP-Modus konfiguriert haben, werden Sie zum Initiieren des Anmeldeablaufs zur Anmeldeseite der Anwendung weitergeleitet, und wenn Sie den IDP-Modus konfiguriert haben, sollten Sie automatisch bei der SAP Cloud Platform Identity Authentication-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

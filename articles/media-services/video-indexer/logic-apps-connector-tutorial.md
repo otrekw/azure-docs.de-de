@@ -8,12 +8,12 @@ ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: tutorial
 ms.date: 09/21/2020
-ms.openlocfilehash: 5c545fa7d58d925dfcb9fa98b301c3bb0a20833e
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: f3504ca4a706e92081209f4eaaa86af9f71c52b3
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97358570"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880910"
 ---
 # <a name="tutorial-use-video-indexer-with-logic-app-and-power-automate"></a>Tutorial: Verwenden von Video Indexer mit Logic Apps und Power Automate
 
@@ -137,4 +137,4 @@ In diesem Tutorial wurde nur ein Beispiel für Video Indexer-Connectors veransch
 > [!div class="nextstepaction"]
 > [Verwenden der Video Indexer-API](video-indexer-use-apis.md)
 
-Weitere Ressourcen finden Sie in diesem Dokument zu [Video-Indexern](https://docs.microsoft.com/connectors/videoindexer-v2/).
+Weitere Ressourcen finden Sie in diesem Dokument zu [Video-Indexern](/connectors/videoindexer-v2/).

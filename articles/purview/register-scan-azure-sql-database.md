@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 10/02/2020
-ms.openlocfilehash: 36781e7f975ee9d4a03cf899650701bf2d3940ac
-ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
+ms.openlocfilehash: b3503dead21eeca32d82e896f889b99d11435642
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98555949"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879730"
 ---
 # <a name="register-and-scan-an-azure-sql-database"></a>Registrieren und Überprüfen von Azure SQL-Datenbank
 
@@ -39,7 +39,7 @@ Azure Purview unterstützt nicht die Überprüfung von [Ansichten](/sql/relation
 
 ### <a name="set-up-authentication-for-a-scan"></a>Einrichten der Authentifizierung für eine Überprüfung
 
-Authentifizierung zum Überprüfen von Azure SQL-Datenbank Wenn Sie eine neue Authentifizierung erstellen müssen, müssen Sie [den Datenbankzugriff auf SQL-Datenbank](https://docs.microsoft.com/azure/azure-sql/database/logins-create-manage) autorisieren. Es gibt drei Authentifizierungsmethoden, die von Purview aktuell unterstützt werden:
+Authentifizierung zum Überprüfen von Azure SQL-Datenbank Wenn Sie eine neue Authentifizierung erstellen müssen, müssen Sie [den Datenbankzugriff auf SQL-Datenbank](../azure-sql/database/logins-create-manage.md) autorisieren. Es gibt drei Authentifizierungsmethoden, die von Purview aktuell unterstützt werden:
 
 - SQL-Authentifizierung
 - Dienstprinzipal
@@ -88,8 +88,8 @@ Zur Nutzung eines Dienstprinzipals können Sie einen vorhandenen Dienstprinzipal
 
 Der Dienstprinzipal oder die verwaltete Identität muss über die Berechtigung zum Abrufen von Metadaten für die Datenbank, die Schemas und die Tabellen verfügen. Darüber hinaus muss das Abfragen der Tabellen möglich sein, damit Stichproben für die Klassifizierung genommen werden können.
 
-- [Konfigurieren und Verwalten der Azure Active Directory-Authentifizierung mit Azure SQL](https://docs.microsoft.com/azure/azure-sql/database/authentication-aad-configure)
-- Bei Verwendung einer verwalteten Identität verfügt Ihr Purview-Konto über eine eigene verwaltete Identität, bei der es sich im Grunde um den Purview-Namen handelt, den Sie bei der Erstellung eingegeben haben. Sie müssen einen Azure AD-Benutzer in Azure SQL-Datenbank erstellen, indem Sie genau den Namen der verwalteten Identität von Purview oder Ihren eigenen Dienstprinzipal angeben. Führen Sie dazu die Schritte im Tutorial unter [Erstellen des Dienstprinzipalbenutzers in Azure SQL-Datenbank](https://docs.microsoft.com/azure/azure-sql/database/authentication-aad-service-principal-tutorial#create-the-service-principal-user-in-azure-sql-database) aus. Sie müssen der Identität die richtige Berechtigung (z. B. `db_owner` oder `db_datareader`) zuweisen. SQL-Beispielsyntax für das Erstellen eines Benutzers und Gewähren der Berechtigung:
+- [Konfigurieren und Verwalten der Azure Active Directory-Authentifizierung mit Azure SQL](../azure-sql/database/authentication-aad-configure.md)
+- Bei Verwendung einer verwalteten Identität verfügt Ihr Purview-Konto über eine eigene verwaltete Identität, bei der es sich im Grunde um den Purview-Namen handelt, den Sie bei der Erstellung eingegeben haben. Sie müssen einen Azure AD-Benutzer in Azure SQL-Datenbank erstellen, indem Sie genau den Namen der verwalteten Identität von Purview oder Ihren eigenen Dienstprinzipal angeben. Führen Sie dazu die Schritte im Tutorial unter [Erstellen des Dienstprinzipalbenutzers in Azure SQL-Datenbank](../azure-sql/database/authentication-aad-service-principal-tutorial.md#create-the-service-principal-user-in-azure-sql-database) aus. Sie müssen der Identität die richtige Berechtigung (z. B. `db_owner` oder `db_datareader`) zuweisen. SQL-Beispielsyntax für das Erstellen eines Benutzers und Gewähren der Berechtigung:
 
     ```sql
     CREATE USER [Username] FROM EXTERNAL PROVIDER

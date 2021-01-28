@@ -1,19 +1,16 @@
 ---
 title: 'Tutorial: Erstellen einer End-to-End-ETL-Pipeline zum Gewinnen von Erkenntnissen aus Vertriebsdaten in Azure HDInsight'
 description: Hier erfahren Sie, wie Sie ETL-Pipelines mit Azure HDInsight erstellen, um mithilfe von bedarfsgesteuerten Spark-Clustern und Power BI Erkenntnisse aus Vertriebsdaten zu gewinnen.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: hdinsightactive, devx-track-azurecli
 ms.date: 04/15/2020
-ms.openlocfilehash: 1031c34a44a253c7458ef78c6371b88014e882ed
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 7d026d93ebe6f6a0bd9afbd277294d58d7a2a69b
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92746467"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98932045"
 ---
 # <a name="tutorial-create-an-end-to-end-data-pipeline-to-derive-sales-insights-in-azure-hdinsight"></a>Tutorial: Erstellen einer End-to-End-Datenpipeline zum Gewinnen von Erkenntnissen aus Vertriebsdaten in Azure HDInsight
 
@@ -252,19 +249,19 @@ Weitere Möglichkeiten zum Transformieren von Daten mithilfe von HDInsight finde
 
 1. Öffnen Sie Power BI Desktop.
 
-1. Navigieren Sie im Menü zu **Daten abrufen** > **Mehr...**  > **Azure** > **HDInsight Interactive Query** .
+1. Navigieren Sie im Menü zu **Daten abrufen** > **Mehr...**  > **Azure** > **HDInsight Interactive Query**.
 
-1. Wählen Sie **Verbinden** .
+1. Wählen Sie **Verbinden**.
 
 1. Führen Sie im Dialogfeld **HDInsight Interactive Query** die folgenden Schritte aus:
     1. Geben Sie im Textfeld **Server** den Namen Ihres LLAP-Clusters im folgenden Format ein: `https://LLAPCLUSTERNAME.azurehdinsight.net`.
     1. Geben Sie im Textfeld **Datenbank** die Zeichenfolge `default` ein.
-    1. Klicken Sie auf **OK** .
+    1. Klicken Sie auf **OK**.
 
 1. Führen Sie im Dialogfeld **AzureHive** die folgenden Schritte aus:
     1. Geben Sie im Textfeld **Benutzername** den Namen `admin` ein.
     1. Geben Sie in das Textfeld **Kennwort** das Kennwort `Thisisapassword1` ein.
-    1. Wählen Sie **Verbinden** .
+    1. Wählen Sie **Verbinden**.
 
 1. Wählen Sie im **Navigator** den Eintrag `sales` und/oder `sales_raw` aus, um eine Vorschau der Daten anzuzeigen. Nachdem die Daten geladen wurden, können Sie mit dem Dashboard experimentieren, das Sie erstellen möchten. Informationen zu den ersten Schritten mit Power BI-Dashboards finden Sie unter den folgenden Links:
 

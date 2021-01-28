@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 author: cartacioS
 ms.date: 12/21/2020
 ms.custom: automl
-ms.openlocfilehash: 31e9ff3fd07a7d305c88d28629f3252db5d857c8
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.openlocfilehash: 2653161b5828d89858234a9ca98fe432e0eacb5c
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/19/2020
-ms.locfileid: "97695444"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879359"
 ---
 # <a name="tutorial-forecast-demand-with-automated-machine-learning"></a>Tutorial: Vorhersage des Bedarfs mithilfe von automatisiertem maschinellem Lernen
 
@@ -240,7 +240,7 @@ In diesem Tutorial haben Sie automatisiertes ML in Azure Machine Learning Studio
 Im folgenden Artikel erfahren Sie, wie Sie ein von Power BI unterstütztes Schema erstellen, um die Nutzung Ihres neu bereitstellten Webdiensts zu vereinfachen:
 
 > [!div class="nextstepaction"]
-> [Verwenden eines Webdiensts](https://docs.microsoft.com/power-bi/connect-data/service-aml-integrate?context=azure/machine-learning/context/ml-context)
+> [Verwenden eines Webdiensts](/power-bi/connect-data/service-aml-integrate?context=azure%2fmachine-learning%2fcontext%2fml-context)
 
 + Weitere Informationen zu [automatisiertem Machine Learning](concept-automated-ml.md).
 + Weitere Informationen zu Klassifizierungsmetriken und Diagrammen finden Sie im Artikel [Grundlegendes zu den Ergebnissen des automatisierten maschinellen Lernens](how-to-understand-automated-ml.md).

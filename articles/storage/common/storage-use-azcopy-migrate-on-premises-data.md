@@ -8,12 +8,12 @@ ms.date: 05/14/2019
 ms.author: normesta
 ms.reviewer: seguler
 ms.subservice: common
-ms.openlocfilehash: eddee58d70cf621bd6c82d54fe75434f4e596d9e
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 682394329205d74859c1af0c0a68a37539da7872
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96498165"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881027"
 ---
 #  <a name="tutorial-migrate-on-premises-data-to-cloud-storage-with-azcopy"></a>Tutorial: Migrieren von lokalen Daten zu Cloudspeicher mit AzCopy
 
@@ -108,7 +108,7 @@ azcopy sync "<local-folder-path>" "https://<storage-account-name>.blob.core.wind
 
 * Ersetzen Sie den Platzhalter `<container-name>` durch den Namen des erstellten Containers.
 
-Weitere Informationen zum Befehl `sync` finden Sie unter [Transfer data with AzCopy and Blob storage](storage-use-azcopy-blobs.md#synchronize-files) (Übertragen von Daten mit AzCopy und Blob Storage).
+Weitere Informationen zum Befehl `sync` finden Sie unter [Transfer data with AzCopy and Blob storage](./storage-use-azcopy-v10.md#transfer-data) (Übertragen von Daten mit AzCopy und Blob Storage).
 
 ## <a name="create-a-scheduled-task"></a>Erstellen einer geplanten Aufgabe
 
@@ -182,7 +182,7 @@ Weitere Informationen zu AzCopy finden Sie in den folgenden Artikeln:
 
 * [Erste Schritte mit AzCopy](storage-use-azcopy-v10.md)
 
-* [Übertragen von Daten mit AzCopy und Blob Storage](storage-use-azcopy-blobs.md)
+* [Übertragen von Daten mit AzCopy und Blob Storage](./storage-use-azcopy-v10.md#transfer-data)
 
 * [Übertragen von Daten mit AzCopy und Dateispeicher](storage-use-azcopy-files.md)
 

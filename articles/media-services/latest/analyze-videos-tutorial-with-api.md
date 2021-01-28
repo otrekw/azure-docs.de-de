@@ -1,6 +1,5 @@
 ---
 title: Analysieren von Videos mit Media Services v3
-titleSuffix: Azure Media Services
 description: Hier erfahren Sie, wie Sie Videos mithilfe von Azure Media Services analysieren.
 services: media-services
 documentationcenter: ''
@@ -13,12 +12,12 @@ ms.topic: tutorial
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18
-ms.openlocfilehash: 7bdc658ab5db9a3ffb27f3c155272f8928bbfb04
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c3ca3197e786bbfac20bec2370d2aa920ad2c4df
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89265863"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98891521"
 ---
 # <a name="tutorial-analyze-videos-with-media-services-v3"></a>Tutorial: Analysieren von Videos mit Media Services v3
 
