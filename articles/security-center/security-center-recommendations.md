@@ -11,30 +11,39 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/25/2020
+ms.date: 01/24/2021
 ms.author: memildin
-ms.openlocfilehash: 115d89783a849a9c4c7adb2fceceaf8d1575c785
-ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
+ms.openlocfilehash: dbda0aecdadd81da0f7681a5fc9b140157d5e8f3
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/28/2020
-ms.locfileid: "97795983"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98756809"
 ---
 # <a name="security-recommendations-in-azure-security-center"></a>Sicherheitsempfehlungen in Azure Security Center 
+
 In diesem Thema wird erläutert, wie Sie die Empfehlungen in Azure Security Center anzeigen und nutzen können, mit denen Sie Ihre Azure-Ressourcen schützen.
 
 
 ## <a name="what-are-security-recommendations"></a>Was sind Sicherheitsempfehlungen?
 
-Empfehlungen sind Maßnahmen, die Sie ergreifen sollten, um Ihre Ressourcen zu schützen.
-
 Azure Security Center analysiert in regelmäßigen Abständen den Sicherheitsstatus der Azure-Ressourcen, um mögliche Sicherheitsrisiken zu erkennen. Anschließend erhalten Sie Empfehlungen dazu, wie Sie diese Sicherheitsrisiken beheben können.
+
+Empfehlungen sind Maßnahmen, die Sie ergreifen sollten, um Ihre Ressourcen zu härten und zu schützen. 
 
 Jede Empfehlung beinhaltet Folgendes:
 
 - Eine kurze Problembeschreibung
 - Die Schritte zur Bereinigung, die zum Implementieren der Empfehlung ausgeführt werden müssen
 - Die betroffenen Ressourcen
+
+## <a name="how-does-microsoft-decide-what-needs-securing-and-hardening"></a>Wie entscheidet Microsoft, was gesichert und gehärtet werden muss?
+
+Security Center-Empfehlungen beruhen auf dem Azure Security-Vergleichstest. 
+
+Beim Azure-Sicherheitsvergleichstest handelt es sich um einen von Microsoft erstellten Satz Azure-spezifischer Richtlinien zu bewährten Methoden für Sicherheit und Compliance, die auf allgemeinen Complianceframeworks basieren. Diese weit verbreitete Benchmark basiert auf den Kontrollen des [Center for Internet Security (CIS)](https://www.cisecurity.org/benchmark/azure/) und des [National Institute of Standards and Technology (NIST)](https://www.nist.gov/) und konzentriert sich auf cloudzentrierte Sicherheit.
+
+Informieren Sie sich über [Azure Security-Vergleichstests](../security/benchmarks/introduction.md).
 
 ## <a name="monitor-recommendations"></a>Überwachen von Empfehlungen<a name="monitor-recommendations"></a>
 

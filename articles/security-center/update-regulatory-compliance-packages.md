@@ -11,39 +11,44 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/15/2020
+ms.date: 01/24/2021
 ms.author: memildin
-ms.openlocfilehash: e7e1567a487dc6cadc94a42f02c597ff0e02665b
-ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
+ms.openlocfilehash: 6fb2e5c0193bc4e66f8fb4215732a69c43731146
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94372760"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98756623"
 ---
 # <a name="customizing-the-set-of-standards-in-your-regulatory-compliance-dashboard"></a>Anpassen der Standards in Ihrem Dashboard für die Einhaltung gesetzlicher Bestimmungen
 
-Azure Security Center vergleicht die Konfiguration Ihrer Ressourcen kontinuierlich mit den Anforderungen von Branchenstandards, Vorschriften und Benchmarks. Das **Dashboard für die Einhaltung gesetzlicher Bestimmungen** bietet Erkenntnisse zu Ihrem Compliancestatus basierend auf der Erfüllung bestimmter Compliancevorgaben und -anforderungen.
+Azure Security Center vergleicht die Konfiguration Ihrer Ressourcen kontinuierlich mit den Anforderungen von Branchenstandards, Vorschriften und Benchmarks. Das **Dashboard für die Einhaltung gesetzlicher Bestimmungen** bietet Erkenntnisse zu Ihrem Compliancestatus basierend auf der Erfüllung bestimmter Complianceanforderungen.
 
 
-## <a name="overview-of-compliance-packages"></a>Überblick über Compliancepakete
+## <a name="how-are-regulatory-compliance-standards-represented-in-security-center"></a>Wie werden die Standards für die Einhaltung gesetzlicher Bestimmungen in Azure Security Center dargestellt?
 
-Industriestandards, gesetzliche Standards und Benchmarks werden im Security Center als *Compliancepakete* dargestellt.  Jedes Paket kann als eine in Azure Policy definierte Initiative verstanden werden. Fügen Sie der Verwaltungsgruppe oder dem Abonnement auf der Seite **Sicherheitsrichtlinie** ein Compliancepaket hinzu, um Compliancedaten als zugeordnete Bewertungen in Ihrem Dashboard anzuzeigen. Weitere Informationen zu Azure Policy und Initiativen erhalten Sie unter [Arbeiten mit Sicherheitsrichtlinien](tutorial-security-policy.md).
+Branchenstandards, gesetzliche Standards und Benchmarks werden im Security Center im Dashboard für die Einhaltung gesetzlicher Bestimmungen dargestellt. Jeder Standard kann als eine in Azure Policy definierte Initiative verstanden werden.
 
-Nachdem Sie das Onboarding für einen Standard oder einen Benchmarkwert für einen ausgewählten Bereich durchgeführt haben, wird die Initiative dem Bereich zugeordnet und in Ihrem Dashboard für die Einhaltung gesetzlicher Bestimmungen mit allen zugeordneten Compliancedaten in Form von Bewertungen angezeigt. Ein zusammenfassender Bericht für alle Standards, für die das Onboarding durchgeführt wurde, wird als Download bereitgestellt.
+Fügen Sie der Verwaltungsgruppe oder dem Abonnement auf der Seite **Sicherheitsrichtlinie** ein Compliancestandard hinzu, um Compliancedaten als zugeordnete Bewertungen in Ihrem Dashboard anzuzeigen. Weitere Informationen zu Azure Policy und Initiativen finden Sie unter [Arbeiten mit Sicherheitsrichtlinien](tutorial-security-policy.md).
 
-Microsoft überwacht die gesetzlichen Standards auch selbst und passt die Pakete im Laufe der Zeit entsprechend an. Wenn Microsoft neue Inhalte für die Initiative veröffentlicht (neue Richtlinien, die mehr Regeln im Standard entsprechen), werden die zusätzlichen Inhalte automatisch in Ihrem Dashboard hinzugefügt.
+Nachdem Sie dem ausgewählten Bereich einen Standard oder Vergleichstest zugewiesen haben, wird der Standard in Ihrem Dashboard für die Einhaltung gesetzlicher Bestimmungen mit allen zugeordneten Compliancedaten in Form von Bewertungen angezeigt. Für alle Standards, die Sie zugewiesen haben, können Sie einen zusammenfassenden Bericht herunterladen.
 
-> [!TIP]
-> Ein Standard, der im Laufe der Zeit immer weiterentwickelt wird und von Microsoft in Form von Releases veröffentlicht wird, ist **Azure CIS 1.1.0 (neu)** . Dieser Standard wird formell auch als [CIS Microsoft Azure Foundations Benchmark v1.1.0](https://www.cisecurity.org/benchmark/azure/) bezeichnet. Fügen Sie neue Inhalte zusammen mit „Azure CIS 1.1.0“, also die Azure CIS-Repräsentation, die standardmäßig in jeder Security Center-Umgebung konfiguriert ist, Ihrem Dashboard hinzu. Dieses Paket basiert auf statischen Regeln. Das neuere Paket beinhaltet mehr Richtlinien und führt im Laufe der Zeit automatisch Updates durch. Aktualisieren Sie wie unten beschrieben auf das neue dynamische Paket.
+Microsoft überwacht die gesetzlichen Standards selbst und passt die Pakete im Laufe der Zeit entsprechend an. Wenn Microsoft neue Inhalte für die Initiative veröffentlicht,werden diese in Ihrem Dashboard automatisch als neue Richtlinien, die Regeln im Standard entsprechen, hinzugefügt.
 
 
-## <a name="available-packages"></a>Verfügbare Pakete
+## <a name="what-regulatory-compliance-standards-are-available-in-security-center"></a>Welche Standards für die Einhaltung gesetzlicher Bestimmungen sind im Azure Security Center verfügbar?
 
-Sie können Standards wie NIST SP 800-53 R4, SWIFT CSP CSCF-v2020, UK Official & UK NHS, Canada Federal PBMM sowie Azure CIS 1.1.0 (neu) hinzufügen. Dabei handelt es sich um eine vollständigere Repräsentation für Azure CIS 1.1.0. 
+Standardmäßig ist jedem Abonnement der **Azure Security-Vergleichstest** zugewiesen. Hierbei handelt es sich um von Microsoft erstellte, Azure-spezifische Richtlinien zu bewährten Methoden für Sicherheit und Compliance, die auf allgemeinen Complianceframeworks basieren. [Weitere Informationen zum Azure-Sicherheitsvergleichstest](../security/benchmarks/introduction.md)
 
-Zusätzlich können Sie den **Azure-Sicherheitsvergleichstest** hinzufügen. Dabei handelt es sich um von Microsoft erstellte Azure-spezifische Richtlinien zu den Best Practices für Sicherheit und Compliance, die auf allgemeinen Complianceframeworks basieren. Unter [Einführung zum Azure Security-Vergleichstest](../security/benchmarks/introduction.md) erhalten Sie weitere Informationen.
+Sie können auch beispielsweise folgende Standards hinzufügen:
 
-Weitere Standards werden im Dashboard unterstützt, sobald sie verfügbar sind. 
+- NIST SP 800-53 R4
+- SWIFT CSP CSCF-v2020
+- UK Official und UK NHS
+- Canada Federal PBMM
+- Azure CIS 1.1.0
+
+Standards werden dem Dashboard hinzugefügt, sobald Sie verfügbar werden.
 
 
 ## <a name="add-a-regulatory-standard-to-your-dashboard"></a>Hinzufügen eines gesetzlichen Standards in Ihrem Dashboard
@@ -51,7 +56,7 @@ Weitere Standards werden im Dashboard unterstützt, sobald sie verfügbar sind.
 In den folgenden Schritten wird erklärt, wie Sie ein Paket hinzufügen, um Ihre Compliance mit einem der unterstützten gesetzlichen Standards zu überwachen.
 
 > [!NOTE]
-> Nur Benutzer, die Besitzer oder Mitwirkende an Richtlinien sind, haben die erforderlichen Berechtigungen zum Hinzufügen von Compliancestandards. 
+> Um dem Dashboard Standards hinzufügen zu können, muss Azure Defender für das Abonnement aktiviert sein. Zudem haben nur Benutzer, die Besitzer oder Mitwirkende an Richtlinien sind, die erforderlichen Berechtigungen zum Hinzufügen von Compliancestandards. 
 
 1. Wählen Sie auf der Seitenleiste in Security Center **Einhaltung gesetzlicher Bestimmungen** aus, um das Dashboard für die Einhaltung gesetzlicher Bestimmungen zu öffnen. Hier sehen Sie die Compliancestandards, die den aktuell ausgewählten Abonnements zugeordnet sind.   
 
@@ -64,22 +69,21 @@ In den folgenden Schritten wird erklärt, wie Sie ein Paket hinzufügen, um Ihre
 
 1. Wenn Sie die für Ihre Organisation relevanten Standards hinzufügen möchten, klicken Sie auf **Weitere Standards hinzufügen**. 
 
-1. Auf der Seite **Standards zur Einhaltung gesetzlicher Bestimmungen hinzufügen** können Sie nach Paketen für alle verfügbaren Standards suchen. Unten finden Sie Beispiele für verfügbare Standards:
+1. Auf der Seite **Standards zur Einhaltung gesetzlicher Bestimmungen hinzufügen** können Sie nach verfügbaren Standards suchen, z. B.:
 
-    - **Azure-Sicherheitsvergleichstest**
     - **NIST SP 800-53 R4**
     - **NIST SP 800 171 R2**
     - **SWIFT CSP CSCF-v2020**
     - **UKO und UK NHS**
     - **Canada PBMM**
     
-    ![Hinzufügen von Compliancepaketen zum Dashboard für die Einhaltung gesetzlicher Bestimmungen in Azure Security Center](./media/update-regulatory-compliance-packages/dynamic-regulatory-compliance-additional-standards.png)
+    ![Hinzufügen von Compliancestandards zum Dashboard für die Einhaltung gesetzlicher Bestimmungen in Azure Security Center](./media/update-regulatory-compliance-packages/dynamic-regulatory-compliance-additional-standards.png)
 
-1. Klicken Sie auf **Hinzufügen** , und geben Sie alle notwendigen Details für die jeweilige Initiative ein, z. B. Bereich, Parameter und Wartung.
+1. Klicken Sie auf **Hinzufügen**, und geben Sie alle notwendigen Details für die jeweilige Initiative ein, z. B. Bereich, Parameter und Wartung.
 
 1. Wählen Sie auf der Seitenleiste in Security Center erneut **Einhaltung gesetzlicher Bestimmungen** aus, um zum Dashboard für die Einhaltung gesetzlicher Bestimmungen zurückzukehren.
-    * Ihr neuer Standard wird jetzt in der Liste der Branchen- und gesetzlichen Standards aufgeführt. 
-    * Wenn Sie **Azure CIS 1.1.0 (neu)** hinzugefügt haben, bleibt die ursprüngliche *statische* Ansicht Ihrer Azure CIS 1.1.0-Compliance ebenfalls erhalten. Sie wird möglicherweise zukünftig automatisch entfernt.
+
+    Ihr neuer Standard wird jetzt in der Liste der Branchen- und gesetzlichen Standards aufgeführt. 
 
     > [!NOTE]
     > Es kann einige Stunden dauern, bis ein neu hinzugefügter Standard im Compliance-Dashboard angezeigt wird.
@@ -89,7 +93,7 @@ In den folgenden Schritten wird erklärt, wie Sie ein Paket hinzufügen, um Ihre
 
 ## <a name="removing-a-standard-from-your-dashboard"></a>Entfernen eines Standards aus Ihrem Dashboard
 
-Falls einer der angegebenen gesetzlichen Standards für Ihre Organisation nicht relevant ist, ist es problemlos möglich, ihn einfach aus der Benutzeroberfläche zu entfernen. Auf diese Weise können Sie das Dashboard für die Einhaltung gesetzlicher Bestimmungen weiter anpassen und nur die Standards nutzen, die für Sie zutreffen.
+Falls einer der angegebenen gesetzlichen Standards für Ihre Organisation nicht relevant ist, ist es problemlos möglich, ihn aus der Benutzeroberfläche zu entfernen. Auf diese Weise können Sie das Dashboard für die Einhaltung gesetzlicher Bestimmungen weiter anpassen und nur die Standards nutzen, die für Sie zutreffen.
 
 Entfernen Sie einen Standard wie folgt:
 
@@ -113,9 +117,9 @@ Entfernen Sie einen Standard wie folgt:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Artikel haben Sie Informationen zum **Hinzufügen von Compliancepaketen** zum Überwachen Ihrer Compliance mit zusätzlichen Standards erhalten. 
+In diesem Artikel haben Sie Informationen zum **Hinzufügen von Compliancestandards** zum Überwachen Ihrer Compliance mit gesetzlichen und Branchenstandards erhalten.
 
-Weitere verwandte Informationen finden Sie in den folgenden Artikeln: 
+Verwandte Informationen finden Sie auf den folgenden Seiten:
 
 - [Einführung zum Azure Security-Vergleichstest](../security/benchmarks/introduction.md)
 - [Security Center-Dashboard für die Einhaltung gesetzlicher Bestimmungen](security-center-compliance-dashboard.md)
