@@ -9,19 +9,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: infrastructure
-ms.date: 03/16/2018
+ms.date: 01/22/2021
 ms.author: duau
 ms.custom: ''
-ms.openlocfilehash: b20357413c62460aba55a2d354b90995a2aa4815
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: 66376655c61903761d93ea228c6d72fa05734353
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98183692"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98743048"
 ---
 # <a name="traffic-manager-traffic-view"></a>Traffic Manager-Datenverkehrsansicht
 
-Traffic Manager stellt Ihnen ein Routing auf DNS-Ebene zur Verfügung, sodass Ihre Endbenutzer auf Grundlage der Routingmethode, die Sie beim Erstellen des Profils angegeben haben, an fehlerfreie Endpunkte weitergeleitet werden. Die Datenverkehrsansicht bietet Traffic Manager einen Überblick über Ihre Benutzergruppen (auf Granularitätsebene des DNS-Resolvers) und deren Datenverkehrsmuster. Wenn Sie die Datenverkehrsansicht aktivieren, werden diese Informationen verarbeitet, um Ihnen verwertbare Erkenntnisse zu liefern. 
+Traffic Manager stellt Ihnen Routing auf DNS-Ebene (Domain Name System) bereit. Dieser Dienst ermöglicht es Ihren Endbenutzern, auf Grundlage der Routingmethode Ihrer Wahl an fehlerfreie Endpunkte weitergeleitet zu werden. Die Datenverkehrsansicht bietet Traffic Manager einen Überblick über Ihre Benutzergruppen (auf Granularitätsebene des DNS-Resolvers) und deren Datenverkehrsmuster. Wenn Sie die Datenverkehrsansicht aktivieren, werden diese Informationen verarbeitet, um Ihnen verwertbare Erkenntnisse zu liefern. 
 
 Die Datenverkehrsansicht ermöglicht Folgendes:
 - Verstehen, wo sich Ihre Benutzergruppen befinden (bis zur Granularitätsebene eines lokalen DNS-Resolvers)
@@ -29,14 +29,15 @@ Die Datenverkehrsansicht ermöglicht Folgendes:
 - Erhalten von Einblicken hinsichtlich der repräsentativen Wartezeit dieser Benutzer.
 - Detailliertes Untersuchen der spezifischen Datenverkehrsmuster jeder Benutzergruppen in Azure-Regionen, in denen Sie Endpunkte haben 
 
-So können Sie z.B. in der Datenverkehrsansicht nachvollziehen, welche Regionen zwar ein großes Volumen an Datenverkehr haben, aber unter längeren Wartezeiten leiden. Als Nächstes können Sie diese Informationen nutzen, um Ihre Expansion in neue Azure-Regionen zu planen, damit diese Benutzer kürzere Wartezeiten haben.
+So können Sie z. B. in der Datenverkehrsansicht nachvollziehen, welche Regionen zwar ein großes Volumen an Datenverkehr haben, aber unter längeren Wartezeiten leiden. Diese Informationen können Sie dann nutzen, um die Erweiterung Ihres Speicherbedarfs in neue Azure-Regionen zu planen. Auf diese Weise kommt es bei der Erfahrung Ihrer Benutzer zu geringeren Wartezeiten.
 
 ## <a name="how-traffic-view-works"></a>Funktionsweise der Datenverkehrsansicht
 
-Grundlage der Datenverkehrsansicht ist das Vergleichen der in den letzten sieben Tagen eingegangenen Abfragen durch Traffic Manager mit einem Profil, für das dieses Feature aktiviert ist. Aus den Informationen der eingegangenen Abfragen extrahiert die Datenverkehrsansicht die Quell-IP-Adresse des DNS-Resolvers, die als Darstellung des Standorts der Benutzer verwendet wird. Diese werden anschließend mit einer Granularität auf DNS-Resolverebene gruppiert, um Regionen von Benutzergruppen zu erstellen, indem die geografischen Informationen der von Traffic Manager verwalteten IP-Adressen verwendet werden. Traffic Manager sieht sich dann die Azure-Regionen an, an die die Abfrage geleitet wurde, und erstellt eine Karte des Datenverkehrsflusses der Benutzer aus diesen Regionen.  
-Im nächsten Schritt korreliert Traffic Manager die Benutzergruppenregion mit der Azure-Regionskarte mithilfe der Informationen in den Tabellen mit den Netzwerkwartezeiten. Diese werden für verschiedene Endbenutzernetzwerke verwaltet, um die durchschnittliche Wartezeit für Benutzer aus diesen Regionen zu ermitteln, wenn eine Verbindung mit Azure-Regionen hergestellt wird. Alle diese Berechnungen werden dann kombiniert, und zwar pro lokaler IP-Adressebene des DNS-Resolvers, bevor sie Ihnen angezeigt werden. Sie können die Informationen auf verschiedene Weise nutzen.
+Die Datenverkehrsansicht funktioniert so, dass sie die eingehenden Abfragen berücksichtigt, die in den letzten sieben Tagen für ein Profil empfangen wurden. Aus den Informationen der eingegangenen Abfragen extrahiert die Datenverkehrsansicht die Quell-IP-Adresse des verwendeten DNS-Resolvers, um den Standort der Benutzer darzustellen. Diese Informationen werden auf der Ebene des DNS-Resolvers gruppiert, um Benutzerbasisregionen zu erstellen. Traffic Manager verwaltet die geografischen Informationen von IP-Adressen. Traffic Manager untersucht dann die Azure-Regionen, an die die Abfrage geleitet wird, und erstellt eine Karte des Datenverkehrsflusses der Benutzer aus diesen Regionen.
+ 
+Im nächsten Schritt korreliert Traffic Manager die Zuordnung zwischen Benutzerbasisregion und Azure-Region mit den Wartezeittabellen der Network Intelligence. Diese Tabelle wird für verschiedene Endbenutzernetzwerke verwaltet, um die durchschnittliche Wartezeit für Benutzer aus diesen Regionen zu verstehen, wenn sie eine Verbindung mit Azure-Regionen herstellen. Alle diese Berechnungen werden dann kombiniert, und zwar pro lokaler IP-Adressebene des DNS-Resolvers, bevor sie Ihnen angezeigt werden. Sie können die Informationen auf verschiedene Weise nutzen.
 
-Die Häufigkeit der Datenaktualisierung in der Datenverkehrsanzeige hängt von mehreren internen Dienstvariablen ab. Allerdings werden die Daten in der Regel einmal alle 24 Stunden aktualisiert.
+Die Häufigkeit der Datenaktualisierung in der Datenverkehrsanzeige hängt von mehreren internen Dienstvariablen ab. Allerdings werden die Daten einmal alle 24 Stunden aktualisiert.
 
 >[!NOTE]
 >Die in der Datenverkehrsansicht beschriebene Wartezeit ist eine repräsentative Wartezeit zwischen dem Endbenutzer und den Azure-Regionen, mit denen eine Verbindung hergestellt wurde, und nicht die Wartezeit von DNS-Lookup. Die Datenverkehrsansicht liefert eine bestmögliche Schätzung der Wartezeit zwischen der lokalen DNS-Auflösung und der Azure-Region, an die die Abfrage weitergeleitet wurde. Sollten nicht genügend Daten zur Verfügung stehen, wird für die Wartezeit ein Nullwert zurückgegeben. 
@@ -59,12 +60,20 @@ Wenn Sie auf den Standort eines DNS-Resolvers auf der Karte zeigen, wird Folgend
 
 ### <a name="endpoint-information"></a>Endpunktinformationen
 
-Die Azure-Regionen, in denen sich die Endpunkte befinden, werden als blaue Punkte auf der Karte angezeigt. Externe Endpunkte ohne zugeordnete Azure-Region werden am oberen Rand der Karte angezeigt. Klicken Sie auf einen beliebigen Endpunkt, um die verschiedenen Standorte anzuzeigen (basierend auf dem verwendeten DNS-Resolver), von denen Datenverkehr an diesen Endpunkt weitergeleitet wurde. Die Verbindungen werden als Linie zwischen dem Endpunkt und dem Standort des DNS-Resolvers angezeigt, und die Farbe entspricht der repräsentativen Wartezeit zwischen diesen beiden. Darüber hinaus sehen Sie den Namen des Endpunkts, die Azure-Region, in der er ausgeführt wird, und das Gesamtvolumen der Anforderungen, die von diesem Traffic Manager-Profil hierhin weitergeleitet wurden.
+Die Azure-Regionen, in denen sich die Endpunkte befinden, werden als blaue Punkte auf der Karte angezeigt. Externe Endpunkte ohne zugeordnete Azure-Region werden am oberen Rand der Karte angezeigt. Wählen Sie einen beliebigen Endpunkt aus, um die verschiedenen Standorte anzuzeigen (basierend auf dem verwendeten DNS-Resolver), von denen Datenverkehr an diesen Endpunkt weitergeleitet wurde. Die Verbindungen werden als Linie zwischen dem Endpunkt und dem Standort des DNS-Resolvers angezeigt. Ihre Farbe entspricht der repräsentativen Wartezeit zwischen dem jeweiligen Paar. Der Name des Endpunkts und die Azure-Region, in der er ausgeführt wird, werden angezeigt. Die Gesamtmenge der Anforderungen, die von diesem Traffic Manager-Profil an ihn umgeleitet werden, wird ebenfalls angezeigt.
 
 
 ## <a name="tabular-listing-and-raw-data-download"></a>Tabellarische Auflistung und Rohdatendownload
 
-Sie können die Daten der Datenverkehrsansicht in einem tabellarischen Format im Azure-Portal anzeigen. Für jede Kombination aus IP-Adresse der DNS-Auflösung und Endpunkt steht ein Eintrag mit Folgendem zur Verfügung: IP-Adresse der DNS-Auflösung, Name und geografischer Standort der Azure-Region, in der sich der Endpunkt befindet (sofern vorhanden), Anforderungsvolumen im Zusammenhang mit dieser DNS-Auflösung für diesen Endpunkt und repräsentative Wartezeit für Endbenutzer, die diesen DNS verwenden (sofern verfügbar). Sie können die Daten der Datenverkehrsansicht auch als CSV-Datei herunterladen, die dann als Teil eines gewünschten Analyseworkflows verwendet werden kann.
+Sie können die Daten der Datenverkehrsansicht in einem tabellarischen Format im Azure-Portal anzeigen. Es gibt für jedes IP/Endpunkt-Paar des DNS-Resolvers einen Eintrag, der Folgendes anzeigt:
+
+* Die IP-Adresse des DNS-Resolvers.
+* Der Name.
+* Den geografischen Standort der Azure-Region, in der sich der Endpunkt befindet (falls verfügbar).
+* Das Volumen der Anforderungen an diesen Endpunkt, die diesem DNS-Resolver zugeordnet sind.
+* Die repräsentative Wartezeit von Endbenutzern, die dieses DNS verwenden (sofern verfügbar). 
+
+Sie können die Daten der Datenverkehrsansicht auch als CSV-Datei herunterladen, die dann als Teil eines gewünschten Analyseworkflows verwendet werden kann.
 
 ## <a name="billing"></a>Abrechnung
 
@@ -78,7 +87,7 @@ Wenn Sie die Datenverkehrsansicht verwenden, erfolgt die Abrechnung anhand der A
 
 * [Inwiefern unterscheidet sich die Datenverkehrsansicht von den Traffic Manager-Metriken, die über Azure Monitor verfügbar sind?](./traffic-manager-faqs.md#how-is-traffic-view-different-from-the-traffic-manager-metrics-available-through-azure-monitor)
 
-* [Werden für die Datenverkehrsansicht EDNS-Clientsubnetzinformationen verwendet?](./traffic-manager-faqs.md#does-traffic-view-use-edns-client-subnet-information)
+* [Werden für die Datenverkehrsansicht EDNS-Clientsubnetz-Informationen verwendet?](./traffic-manager-faqs.md#does-traffic-view-use-edns-client-subnet-information)
 
 * [Wie viele Tage mit Daten werden von der Datenverkehrsansicht genutzt?](./traffic-manager-faqs.md#how-many-days-of-data-does-traffic-view-use)
 
