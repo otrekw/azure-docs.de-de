@@ -12,14 +12,18 @@ ms.tgt_pltfrm: na
 ms.workload: ''
 ms.date: 03/16/2020
 ms.author: tagore
-ms.openlocfilehash: ae284a6afa1f2e396aef8177229c344b569be6ec
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 70bcf5bce1c8c07633baf070149a9bb80c331d9c
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92075670"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98742572"
 ---
 # <a name="troubleshooting-applications-that-dont-support-tls-12"></a>Problembehandlung für Anwendungen, die TLS 1.2 nicht unterstützen
+
+> [!IMPORTANT]
+> [Azure Cloud Services (erweiterter Support)](../cloud-services-extended-support/overview.md) ist ein neues auf Azure Resource Manager basierendes Bereitstellungsmodell für Azure Cloud Services. Im Zuge dieser Änderung wurden Azure Cloud Services-Instanzen, die unter dem Azure Service Manager-basierten Bereitstellungsmodell ausgeführt werden, in „Cloud Services (klassisch)“ umbenannt. Für alle neuen Bereitstellungen wird [Azure Cloud Services (erweiterter Support)](../cloud-services-extended-support/overview.md) verwendet.
+
 In diesem Artikel wird beschrieben, wie Sie die älteren TLS-Protokolle (TLS 1.0 und 1.1) aktivieren und Legacyverschlüsselungssammlungen anwenden, um die zusätzlichen Protokolle für die Web- und Workerrollen des Windows Server 2019-Clouddiensts zu unterstützen. 
 
 Obwohl TLS 1.0 und TLS 1.1 als veraltet eingestuft werden, müssen Kunden die älteren Protokolle und Verschlüsselungssammlungen möglicherweise unterstützen, bis sie ihre Veraltung selbst planen können.  Das Aktivieren dieser Legacyprotokolle wird zwar nicht empfohlen, es werden aber dennoch Anleitungen für Kunden bereitgestellt. Es wird empfohlen, dass Kunden das Risiko dieser Regression abwägen, bevor sie die in diesem Artikel beschriebenen Änderungen vornehmen. 
@@ -49,7 +53,7 @@ Außerdem verfügt der Server standardmäßig über eine begrenzte Anzahl von Ve
     TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384 
 ```
 
-## <a name="step-1-create-the-powershell-script-to-enable-tls-10-and-tls-11"></a>Schritt 1: Erstellen eines PowerShell-Skripts zum Aktivieren von TLS 1.0 und TLS 1.1 
+## <a name="step-1-create-the-powershell-script-to-enable-tls-10-and-tls-11"></a>Schritt 1: Erstellen eines PowerShell-Skripts zum Aktivieren von TLS 1.0 und TLS 1.1 
 
 Verwenden Sie das folgende Codebeispiel, um ein Skript zu erstellen, das die älteren Protokolle und Verschlüsselungssammlungen aktiviert. Für die Zwecke dieser Dokumentation wird das Skript folgendermaßen benannt: **TLSsettings.ps1**. Speichern Sie dieses Skript auf Ihrem lokalen Desktop für den einfachen Zugriff in späteren Schritten. 
 
@@ -347,7 +351,7 @@ Im folgenden Beispiel werden sowohl die Worker- als auch die Webrolle veranschau
 4) Navigieren Sie im Datei-Explorer zu Ihrem Desktop, wo Sie die Dateien **TLSsettings.ps1** und **RunTLSSettings.cmd** gespeichert haben. 
 5) Wählen Sie die beiden Dateien aus, um sie zu Ihrem Clouddienstprojekt hinzuzufügen.
 
-## <a name="step-5-enable-copy-to-output-directory"></a>Schritt 5: Aktivieren Sie „In Ausgabeverzeichnis kopieren“.
+## <a name="step-5-enable-copy-to-output-directory"></a>Schritt 5: Aktivieren Sie „In Ausgabeverzeichnis kopieren“.
 
 Um sicherzustellen, dass die Skripts bei jedem Update, das von Visual Studio aus gepusht wird, hochgeladen werden, muss die Einstellung *In Ausgabeverzeichnis kopieren* auf *Immer kopieren* festgelegt werden.
 
@@ -356,7 +360,7 @@ Um sicherzustellen, dass die Skripts bei jedem Update, das von Visual Studio aus
 3) Ändern Sie auf der Registerkarte „Eigenschaften“ die Option *In Ausgabeverzeichnis kopieren* in *Immer kopieren*.
 4) Wiederholen Sie die Schritte für **TLSsettings.ps1**.
 
-## <a name="step-6-publish--validate"></a>Schritt 6: Veröffentlichen und Überprüfen
+## <a name="step-6-publish--validate"></a>Schritt 6: Veröffentlichen und Überprüfen
 
 Nachdem die oben genannten Schritte abgeschlossen sind, veröffentlichen Sie nun das Update für Ihren bestehenden Clouddienst. 
 
