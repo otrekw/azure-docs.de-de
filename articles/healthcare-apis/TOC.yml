@@ -127,6 +127,10 @@
           href: iot-data-flow.md
         - name: Zuordnungsvorlagen von Azure IoT-Konnektor für FHIR (Vorschauversion)
           href: iot-mapping-templates.md
+    - name: Sicherheit
+      items:
+        - name: Sicherheitskontrollen von Azure Policy
+          href: ./security-controls-policy.md
 - name: Ressourcen
   items:
     - name: Häufig gestellte Fragen
