@@ -57,6 +57,14 @@
           href: security-baseline.md
 - name: Anleitungen
   items:
+    - name: Vorschauversion von Azure Logic Apps
+      items:
+        - name: Übersicht über die Vorschauversion von Azure Logic Apps
+          href: logic-apps-overview-preview.md
+        - name: 'Erstellen zustandsbehafteter und zustandsloser Workflows: Azure-Portal'
+          href: create-stateful-stateless-workflows-azure-portal.md
+        - name: 'Erstellen zustandsbehafteter und zustandsloser Workflows: Visual Studio Code'
+          href: create-stateful-stateless-workflows-visual-studio-code.md
     - name: Entwickeln
       items:
         - name: Erstellen auf der Grundlage von vorgefertigten Vorlagen
@@ -67,14 +75,6 @@
           href: logic-apps-move-from-mabs.md
         - name: Exportieren von Flows aus Power Automate und Bereitstellen in Azure Logic Apps
           href: export-from-microsoft-flow-logic-app-template.md
-        - name: Vorschauversion von Azure Logic Apps
-          items:
-            - name: Übersicht über die Vorschauversion von Azure Logic Apps
-              href: logic-apps-overview-preview.md
-            - name: 'Erstellen zustandsbehafteter und zustandsloser Workflows: Azure-Portal'
-              href: create-stateful-stateless-workflows-azure-portal.md
-            - name: 'Erstellen zustandsbehafteter und zustandsloser Workflows: Visual Studio Code'
-              href: create-stateful-stateless-workflows-visual-studio-code.md
         - name: Aufrufen von Logik-Apps über Power Automate und Power Apps
           href: call-from-power-automate-power-apps.md
         - name: Steuern der Workflowausführung
@@ -330,6 +330,8 @@
           href: logic-apps-enterprise-integration-create-integration-account.md
         - name: Verwalten von Integrationsdienstumgebungen
           href: ise-manage-integration-service-environment.md
+        - name: Planen und Verwalten von Kosten
+          href: plan-manage-costs.md
         - name: Verschieben von Logik-App-Ressourcen
           href: move-logic-app-resources.md
         - name: Migrieren zum aktuellen Schema

@@ -157,6 +157,7 @@
               href: container-registry-troubleshoot-performance.md
             - name: Erkennen allgemeiner Probleme
               href: container-registry-check-health.md
+              displayName: 'check, health'
             - name: Häufig gestellte Fragen
               href: container-registry-faq.md
 - name: Aufgaben

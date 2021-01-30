@@ -43,9 +43,11 @@
   items:
     - name: Grundlegende Konzepte
       href: basic-concepts.md
+    - name: Bewährte Methoden
+      href: best-practices.md
     - name: Sicherheit
       items:
-        - name: Sicherheitsübersicht
+        - name: Übersicht
           href: security-overview.md
         - name: Sicherer Zugriff auf einen Schlüsseltresor
           href: secure-your-key-vault.md
@@ -160,7 +162,7 @@
       href: versions.md
     - name: Azure PowerShell
       href: /powershell/module/az.keyvault/?view=azps-1.2.0#key_vault
-    - name: Azure-Befehlszeilenschnittstelle
+    - name: Azure CLI
       href: /cli/azure/keyvault
     - name: .NET
       href: /dotnet/api/overview/azure/key-vault?view=azure-dotnet

@@ -64,6 +64,8 @@
           href: api-management-error-handling-policies.md
     - name: Sicherheit
       items:
+        - name: Sicherheitskontrollen von Azure Policy
+          href: ./security-controls-policy.md
         - name: Sicherheitsbaseline
           href: security-baseline.md
     - name: Abonnements

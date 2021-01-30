@@ -1742,7 +1742,7 @@
         - name: Sichern von mehreren virtuellen Computern
           href: ../backup/tutorial-backup-vm-at-scale.md
         - name: Wiederherstellungsoptionen
-          href: ../backup/backup-azure-arm-restore-vms.md
+          href: /azure/backup/backup-azure-arm-restore-vms
         - name: Unterstützungsmatrix
           href: ../backup/backup-support-matrix-iaas.md
         - name: Preise

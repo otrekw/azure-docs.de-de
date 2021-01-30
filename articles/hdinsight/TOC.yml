@@ -278,6 +278,8 @@
           href: /rest/api/hdinsightspark/
         - name: Resource Manager-Vorlage
           href: /azure/templates/microsoft.hdinsight/allversions
+        - name: Azure Policy-Integrationen
+          href: ./policy-reference.md
     - name: Ressourcen
       items:
         - name: Releases

@@ -76,6 +76,8 @@
               items:
                 - name: Sicherheitsbaseline
                   href: security-baseline.md
+                - name: Sicherheitskontrollen von Azure Policy
+                  href: ./security-controls-policy.md
                 - name: Sicherheit überprüfen
                   href: data-box-security.md
             - name: Übertragen von ACLs und Metadaten
@@ -241,7 +243,7 @@
           href: /powershell/module/az.databox
         - name: .NET-APIs
           href: /dotnet/api/overview/azure/databox/management
-        - name: Azure Policy-Integrationen
+        - name: Integrierte Azure Policy-Aktionen
           displayName: 'samples, policies, definitions'
           href: ./policy-reference.md
     - name: Ressourcen
