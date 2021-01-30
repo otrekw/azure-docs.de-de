@@ -188,14 +188,17 @@
       items:
         - name: Konfigurieren der Benutzereingabe
           href: configure-user-input.md
-        - name: Anpassen der Benutzeroberfläche mit Unternehmensbranding
-          href: company-branding.md
+        - name: Anpassen der Benutzeroberfläche
+          displayName: company branding
+          href: customize-ui.md
         - name: Anpassen der Benutzeroberfläche mit einer HTML-Vorlage
+          displayName: content definitions
           href: customize-ui-with-html.md
         - name: JavaScript und Seitenlayouts
           href: javascript-and-page-layout.md
         - name: Anpassen der Sprache
           href: language-customization.md
+          displayName: localization
         - name: Kennwortkomplexität
           href: password-complexity.md
         - name: Deaktivieren der E-Mail-Überprüfung
@@ -259,12 +262,13 @@
           items:
             - name: Erfassen von Protokollen mit Application Insights
               href: troubleshoot-with-application-insights.md
-              displayName: troubleshooting
+              displayName: 'troubleshooting, app insights'
             - name: Richtlinienüberprüfung
               href: troubleshoot-custom-policies.md
               displayName: troubleshooting
         - name: Nutzungsanalyse
           href: analytics-with-application-insights.md
+          displayName: 'application insights, app insights'
         - name: Verweis
           items:
             - name: TrustFrameworkPolicy
@@ -452,6 +456,8 @@
           href: user-migration.md
 - name: Verweis
   items:
+    - name: Dienstgrenzwerte und Einschränkungen
+      href: service-limits.md
     - name: App-Registrierungen
       href: app-registrations-training-guide.md
     - name: Abrechnungsmodell

@@ -41,22 +41,22 @@
       items:
         - name: Informationen zum Routing virtueller Hubs
           href: about-virtual-hub-routing.md
-        - name: Routingszenarien
-          items:
-            - name: Any-to-Any
-              href: scenario-any-to-any.md
-            - name: Isolieren von virtuellen Netzwerken (VNETs)
-              href: scenario-isolate-vnets.md
-            - name: 'Isolieren von virtuellen Netzwerken: benutzerdefiniert'
-              href: scenario-isolate-vnets-custom.md
-            - name: VNETs für gemeinsam genutzte Dienste
-              href: scenario-shared-services-vnet.md
-            - name: Weiterleiten über ein NVA
-              href: scenario-route-through-nva.md
-            - name: 'Weiterleiten über ein NVA: benutzerdefiniert'
-              href: scenario-route-through-nvas-custom.md
-            - name: 'Azure Firewall: Benutzerdefiniert'
-              href: scenario-route-between-vnets-firewall.md
+    - name: Routingszenarien
+      items:
+        - name: Any-to-Any
+          href: scenario-any-to-any.md
+        - name: Isolieren von virtuellen Netzwerken (VNETs)
+          href: scenario-isolate-vnets.md
+        - name: 'Isolieren von virtuellen Netzwerken: benutzerdefiniert'
+          href: scenario-isolate-vnets-custom.md
+        - name: VNETs für gemeinsam genutzte Dienste
+          href: scenario-shared-services-vnet.md
+        - name: Weiterleiten über ein NVA
+          href: scenario-route-through-nva.md
+        - name: 'Weiterleiten über ein NVA: benutzerdefiniert'
+          href: scenario-route-through-nvas-custom.md
+        - name: 'Azure Firewall: Benutzerdefiniert'
+          href: scenario-route-between-vnets-firewall.md
     - name: Überwachung
       items:
         - name: Informationen zu Azure Monitor Insights für Virtual WAN

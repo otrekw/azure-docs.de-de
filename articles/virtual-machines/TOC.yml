@@ -957,8 +957,6 @@
               href: ./linux/cloudinit-configure-swapfile.md
             - name: Ausführen des vorhandenen Bash-Skripts
               href: ./linux/cloudinit-bash-script.md
-            - name: Vorbereiten von vorhandenen virtuellen Computer für Cloud-init
-              href: ./linux/cloudinit-prepare-custom-image.md
         - name: Erstellen von Linux-Images ohne Bereitstellungs-Agent
           href: ./linux/no-agent.md
         - name: Deaktivieren der Linux-Agent-Bereitstellung
@@ -1070,6 +1068,10 @@
               href: ./windows/image-builder.md
         - name: PowerShell
           href: ./windows/image-builder-powershell.md
+        - name: Sicherheit
+          items:
+            - name: Sicherheitskontrollen von Azure Policy
+              href: ./security-controls-policy-image-builder.md
         - name: Verwenden eines VNET
           items:
             - name: Befehlszeilenschnittstelle (CLI)
@@ -1508,7 +1510,6 @@
               href: ../bastion/create-host-cli.md
             - name: 'Bastion: SSH-Verbindung'
               href: ../bastion/bastion-connect-vm-ssh.md
-              items: null
             - name: 'Bastion: RDP-Verbindung'
               href: ../bastion/bastion-connect-vm-rdp.md
         - name: Verwenden der Zugriffssteuerung
@@ -1741,7 +1742,7 @@
         - name: Sichern von mehreren virtuellen Computern
           href: ../backup/tutorial-backup-vm-at-scale.md
         - name: Wiederherstellungsoptionen
-          href: /backup/backup-azure-arm-restore-vms.md
+          href: ../backup/backup-azure-arm-restore-vms.md
         - name: Unterstützungsmatrix
           href: ../backup/backup-support-matrix-iaas.md
         - name: Preise

@@ -113,6 +113,8 @@
           href: reference-data-guidelines.md
     - name: Anzeigeformat
       href: reference-markdown-format.md
+    - name: Private Links
+      href: reference-private-endpoint.md
     - name: Format von Batchtests
       href: reference-tsv-format-batch-testing.md
     - name: Verschlüsselung
@@ -169,7 +171,7 @@
       href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/qnamaker/context/context
     - name: Regionale Verfügbarkeit
       href: 'https://azure.microsoft.com/global-infrastructure/services/'
-    - name: Kompatibilität
+    - name: Compliance
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: Azure-Roadmap
       href: 'https://azure.microsoft.com/roadmap/'

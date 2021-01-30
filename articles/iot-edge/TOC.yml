@@ -110,14 +110,14 @@
         - name: IoT Edge-Zertifikate
           href: iot-edge-certs.md
         - name: Confidential Computing
-          href: deploy-trusted-applications.md
+          href: deploy-confidential-applications.md
     - name: Plattformunterstützung
       href: support.md
     - name: Prüfliste für die Produktionsbereitstellung
       href: production-checklist.md
     - name: IoT Edge-Glossar
       href: iot-edge-glossary.md
-- name: Anleitungen
+- name: Exemplarische Vorgehensweisen
   items:
     - name: Erstellen eines IoT Edge-Geräts
       items:
