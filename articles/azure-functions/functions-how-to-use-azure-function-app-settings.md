@@ -5,12 +5,12 @@ ms.assetid: 81eb04f8-9a27-45bb-bf24-9ab6c30d205c
 ms.topic: conceptual
 ms.date: 04/13/2020
 ms.custom: cc996988-fb4f-47, devx-track-azurecli
-ms.openlocfilehash: 4db6abeb3e6f4a07780268a6455177e0ca237205
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 5080d16a7b14506b24e07e2ee4ba862c645f83a8
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98598492"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98875448"
 ---
 # <a name="manage-your-function-app"></a>Verwalten Ihrer Funktions-App 
 
@@ -37,6 +37,8 @@ Anwendungseinstellungen können über das [Azure-Portal](functions-how-to-use-az
 Diese Einstellungen werden verschlüsselt gespeichert. Weitere Informationen finden Sie unter [Anwendungseinstellungen](security-concepts.md#application-settings).
 
 # <a name="portal"></a>[Portal](#tab/portal)
+
+Informationen zu den Anwendungseinstellungen finden Sie unter [Erste Schritte im Azure-Portal](#get-started-in-the-azure-portal). 
 
 Die Registerkarte **Anwendungseinstellungen** verwaltet Einstellungen, die von Ihrer Funktions-App verwendet werden. Sie müssen **Werte anzeigen** auswählen, um die Werte im Portal anzuzeigen. Wählen Sie zum Hinzufügen einer Einstellung im Portal **Neue Anwendungseinstellung** aus, und fügen Sie das neue Schlüssel-Wert-Paar hinzu.
 

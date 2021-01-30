@@ -3,16 +3,16 @@ title: SQL-Filtersyntax für Azure Service Bus-Abonnementregeln | Microsoft-Doku
 description: Dieser Artikel enthält Details zur SQL-Filtersyntax. SQL-Filter unterstützen eine Teilmenge des SQL-92-Standards.
 ms.topic: article
 ms.date: 11/24/2020
-ms.openlocfilehash: 9bff18b2161e419d728c360c9ed950ac2867fea8
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 810d17d458de79c851b6f1ada4556a231bfd20eb
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96498675"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98742980"
 ---
 # <a name="subscription-rule-sql-filter-syntax"></a>SQL-Filtersyntax für Abonnementregeln
 
-*SQL-Filter* ist einer der verfügbaren Filtertypen für Service Bus-Themenabonnements. Es handelt sich dabei um einen Textausdruck, der auf einer Teilmenge des SQL-92-Standards basiert. Filterausdrücke werden mit dem `sqlExpression`-Element der sqlFilter-Eigenschaft einer Service Bus-`Rule` in einer [Azure Resource Manager-Vorlage](service-bus-resource-manager-namespace-topic-with-rule.md) oder dem [`--filter-sql-expression`](/cli/azure/servicebus/topic/subscription/rule?preserve-view=true&view=azure-cli-latest#az_servicebus_topic_subscription_rule_create)-Argument eines `az servicebus topic subscription rule create`-Befehls in der Azure-Befehlszeilenschnittstelle sowie mehreren SDK-Funktionen für das Verwalten von Abonnementregeln verwendet.
+*SQL-Filter* ist einer der verfügbaren Filtertypen für Service Bus-Themenabonnements. Es handelt sich dabei um einen Textausdruck, der auf einer Teilmenge des SQL-92-Standards basiert. Filterausdrücke werden mit dem `sqlExpression`-Element der sqlFilter-Eigenschaft einer Service Bus-`Rule` in einer [Azure Resource Manager-Vorlage](service-bus-resource-manager-namespace-topic-with-rule.md) oder dem [`--filter-sql-expression`](/cli/azure/servicebus/topic/subscription/rule#az_servicebus_topic_subscription_rule_create)-Argument eines `az servicebus topic subscription rule create`-Befehls in der Azure-Befehlszeilenschnittstelle sowie mehreren SDK-Funktionen für das Verwalten von Abonnementregeln verwendet.
 
 Service Bus Premium unterstützt auch die [JMS-SQL-Nachrichtenselektorsyntax](https://docs.oracle.com/javaee/7/api/javax/jms/Message.html) über die JMS 2.0-API.
 
@@ -270,56 +270,7 @@ Beachten Sie die folgende [SqlFilter](/dotnet/api/microsoft.servicebus.messaging
 -   Arithmetische Operatoren wie `+`, `-`, `*`, `/` und `%` folgen der gleichen Semantik wie der C#-Operator, der Datentypaktionen und implizite Konvertierungen einbindet.
 
 
-## <a name="examples"></a>Beispiele
-
-### <a name="set-rule-action-for-a-sql-filter"></a>Festlegen der Regelaktion für einen SQL-Filter
-
-```csharp
-// instantiate the ManagementClient
-this.mgmtClient = new ManagementClient(connectionString);
-
-// create the SQL filter
-var sqlFilter = new SqlFilter("source = @stringParam");
-
-// assign value for the parameter
-sqlFilter.Parameters.Add("@stringParam", "orders");
-
-// instantiate the Rule = Filter + Action
-var filterActionRule = new RuleDescription
-{
-    Name = "filterActionRule",
-    Filter = sqlFilter,
-    Action = new SqlRuleAction("SET source='routedOrders'")
-};
-
-// create the rule on Service Bus
-await this.mgmtClient.CreateRuleAsync(topicName, subscriptionName, filterActionRule);
-```
-
-### <a name="sql-filter-on-a-system-property"></a>SQL-Filter für eine Systemeigenschaft
-
-```csharp
-sys.Label LIKE '%bus%'`
-```
-
-### <a name="using-or"></a>Verwenden von ODER 
-
-```csharp
- sys.Label LIKE '%bus%'` OR `user.tag IN ('queue', 'topic', 'subscription')
-```
-
-### <a name="using-in-and-not-in"></a>Verwenden von IN und NOT IN
-
-```csharp
-StoreId IN('Store1', 'Store2', 'Store3')"
-
-sys.To IN ('Store5','Store6','Store7') OR StoreId = 'Store8'
-
-sys.To NOT IN ('Store1','Store2','Store3','Store4','Store5','Store6','Store7','Store8') OR StoreId NOT IN ('Store1','Store2','Store3','Store4','Store5','Store6','Store7','Store8')
-```
-
-Ein C# Beispiel finden Sie im [Beispiel für Themenfilter auf GitHub](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Azure.Messaging.ServiceBus/BasicSendReceiveTutorialwithFilters).
-
+[!INCLUDE [service-bus-filter-examples](../../includes/service-bus-filter-examples.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -327,5 +278,5 @@ Ein C# Beispiel finden Sie im [Beispiel für Themenfilter auf GitHub](https://gi
 - [SQLFilter-Klasse (.NET Standard)](/dotnet/api/microsoft.azure.servicebus.sqlfilter)
 - [SqlFilter-Klasse (Java)](/java/api/com.microsoft.azure.servicebus.rules.SqlFilter)
 - [SqlRuleFilter (JavaScript)](/javascript/api/@azure/service-bus/sqlrulefilter)
-- [Azure Service Bus-Themenabonnementregel](/cli/azure/servicebus/topic/subscription/rule)
+- [`az servicebus topic subscription rule`](/cli/azure/servicebus/topic/subscription/rule)
 - [New-AzServiceBusRule](/powershell/module/az.servicebus/new-azservicebusrule)

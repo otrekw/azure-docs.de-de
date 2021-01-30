@@ -1,22 +1,25 @@
 ---
-title: Kommunikation für Rollen in Clouddiensten | Microsoft-Dokumentation
+title: Kommunikation für Rollen in Cloud Services (klassisch) | Microsoft-Dokumentation
 description: Rolleninstanzen in Clouddiensten können Endgeräte (HTTP, HTTPS, TCP und UDP) besitzen, die mit der Außenseite oder anderen Rolleninstanzen kommunizieren.
-services: cloud-services
-documentationcenter: ''
-author: tgore03
-manager: carmonm
-ms.service: cloud-services
 ms.topic: article
-ms.date: 12/14/2016
+ms.service: cloud-services
+ms.date: 10/14/2020
 ms.author: tagore
-ms.openlocfilehash: 094e08becf4f3a60c98d89bfae7e7c3a69b677f8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 82aa1579a1f7feb36732153341e1eacf266a7218
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75386339"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98743031"
 ---
-# <a name="enable-communication-for-role-instances-in-azure"></a>Ermöglichen der Kommunikation für Rolleninstanzen in Azure
+# <a name="enable-communication-for-role-instances-in-azure-cloud-services-classic"></a>Aktivieren der Kommunikation für Rolleninstanzen in Azure Cloud Services (klassisch)
+
+> [!IMPORTANT]
+> [Azure Cloud Services (erweiterter Support)](../cloud-services-extended-support/overview.md) ist ein neues auf Azure Resource Manager basierendes Bereitstellungsmodell für Azure Cloud Services. Im Zuge dieser Änderung wurden Azure Cloud Services-Instanzen, die unter dem Azure Service Manager-basierten Bereitstellungsmodell ausgeführt werden, in „Cloud Services (klassisch)“ umbenannt. Für alle neuen Bereitstellungen wird [Azure Cloud Services (erweiterter Support)](../cloud-services-extended-support/overview.md) verwendet.
+
 Clouddienstrollen kommunizieren über interne und externe Verbindungen miteinander. Externe Verbindungen werden als **Eingabeendpunkte** bezeichnet, interne Verbindungen dagegen als **interne Endpunkte**. In diesem Thema wird beschrieben, wie Sie die [Dienstdefinition](cloud-services-model-and-package.md#csdef) zum Erstellen von Endgeräten ändern.
 
 ## <a name="input-endpoint"></a>Eingabeendpunkt
@@ -106,7 +109,7 @@ Die **Instances**-Eigenschaft gibt eine Sammlung von **RoleInstance**-Objekten z
 > 
 > 
 
-Um die Portnummer für einen internen Endpunkt einer Rolleninstanz zu bestimmen, können Sie mithilfe der [InstanceEndpoints](/previous-versions/azure/reference/ee741917(v=azure.100)) -Eigenschaft ein Dictionary-Objekt zurückgeben, das Endpunktnamen und die entsprechenden IP-Adressen und Ports enthält. Die [IPEndpoint](/previous-versions/azure/reference/ee741919(v=azure.100)) -Eigenschaft gibt die IP-Adresse und den Port für einen angegebenen Endpunkt zurück. Die **PublicIPEndpoint** -Eigenschaft gibt den Port für einen Endpunkt mit Lastenausgleich zurück. Der IP-Adressteil der **PublicIPEndpoint** -Eigenschaft wird nicht verwendet.
+Um die Portnummer für einen internen Endpunkt einer Rolleninstanz zu bestimmen, können Sie mit der [`InstanceEndpoints`](/previous-versions/azure/reference/ee741917(v=azure.100))-Eigenschaft ein Dictionary-Objekt zurückgeben, das Endpunktnamen und ihre entsprechenden IP-Adressen und Ports enthält. Die [`IPEndpoint`](/previous-versions/azure/reference/ee741919(v=azure.100))-Eigenschaft gibt die IP-Adresse und den Port für einen angegebenen Endpunkt zurück. Die `PublicIPEndpoint`-Eigenschaft gibt den Port für einen Endpunkt mit Lastenausgleich zurück. Der IP-Adressteil der `PublicIPEndpoint`-Eigenschaft wird nicht verwendet.
 
 Hier sehen Sie ein Beispiel, das Rolleninstanzen durchläuft.
 

@@ -2,13 +2,13 @@
 title: Verknüpfen von Vorlagen für die Bereitstellung
 description: Beschreibt, wie verknüpfte Vorlagen in einer Azure Resource Manager-Vorlage (ARM-Vorlage) zum Erstellen einer modularen Vorlagenlösung verwendet werden. Zeigt, wie Parameterwerte übergeben, eine Parameterdatei festgelegt und URLs dynamisch erstellt werden.
 ms.topic: conceptual
-ms.date: 12/07/2020
-ms.openlocfilehash: cac63ccdd13e245baf97695e9b138c29d3db4958
-ms.sourcegitcommit: 6cca6698e98e61c1eea2afea681442bd306487a4
+ms.date: 01/26/2021
+ms.openlocfilehash: aae3947656e475d15bc4f0da770d0398fafa13c5
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97760621"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880429"
 ---
 # <a name="using-linked-and-nested-templates-when-deploying-azure-resources"></a>Verwenden von verknüpften und geschachtelten Vorlagen bei der Bereitstellung von Azure-Ressourcen
 
@@ -112,6 +112,10 @@ Der Bereich wird durch die `expressionEvaluationOptions`-Eigenschaft festgelegt.
   ...
 ```
 
+> [!NOTE]
+>
+> Wenn der Bereich auf `outer` festgelegt ist, können Sie die `reference`-Funktion nicht im Ausgabeabschnitt einer geschachtelten Vorlage für eine Ressource verwenden, die Sie in der geschachtelten Vorlage bereitgestellt haben. Um die Werte für eine bereitgestellte Ressource in einer geschachtelten Vorlage zurückzugeben, verwenden Sie den Bereich `inner`, oder konvertieren Sie die geschachtelte Vorlage in eine verknüpfte Vorlage.
+
 Die folgende Vorlage veranschaulicht, wie Vorlagenausdrücke entsprechend dem Bereich aufgelöst werden. Sie enthält eine Variable mit dem Namen `exampleVar`, die sowohl in der übergeordneten als auch in der geschachtelten Vorlage definiert ist. Sie gibt den Wert der Variable zurück.
 
 ```json
@@ -162,7 +166,7 @@ Die folgende Vorlage veranschaulicht, wie Vorlagenausdrücke entsprechend dem Be
 
 Der Wert von `exampleVar` ändert sich abhängig vom Wert der Eigenschaft `scope` in `expressionEvaluationOptions`. In der folgenden Tabelle werden die Ergebnisse für beide Bereiche angezeigt.
 
-| Bereich `expressionEvaluationOptions` | Output |
+| Auswertungsbereich | Output |
 | ----- | ------ |
 | Innerer Join | aus der geschachtelten Vorlage |
 | äußerer (oder Standard) | aus der übergeordneten Vorlage |
@@ -277,9 +281,128 @@ Im folgenden Beispiel wird eine SQL Server-Instanz bereitgestellt, und ein Schl�
 }
 ```
 
-> [!NOTE]
->
-> Wenn der Bereich auf `outer` festgelegt ist, können Sie die `reference`-Funktion nicht im Ausgabeabschnitt einer geschachtelten Vorlage für eine Ressource verwenden, die Sie in der geschachtelten Vorlage bereitgestellt haben. Um die Werte für eine bereitgestellte Ressource in einer geschachtelten Vorlage zurückzugeben, verwenden Sie den Bereich `inner`, oder konvertieren Sie die geschachtelte Vorlage in eine verknüpfte Vorlage.
+Gehen Sie bei der Verwendung von sicheren Parameterwerten in einer geschachtelten Vorlage vorsichtig vor. Wenn Sie den äußeren Bereich festlegen, werden die sicheren Werte im Bereitstellungsverlauf als Nur-Text gespeichert. Ein Benutzer, der die Vorlage im Bereitstellungsverlauf anzeigt, kann die sicheren Werte ggf. sehen. Verwenden Sie stattdessen den inneren Gültigkeitsbereich, oder fügen Sie der übergeordneten Vorlage die Ressourcen hinzu, die sichere Werte benötigen.
+
+Der folgende Auszug zeigt, welche Werte sicher sind und welche nicht.
+
+```json
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "adminUsername": {
+      "type": "string",
+      "metadata": {
+        "description": "Username for the Virtual Machine."
+      }
+    },
+    "adminPasswordOrKey": {
+      "type": "securestring",
+      "metadata": {
+        "description": "SSH Key or password for the Virtual Machine. SSH key is recommended."
+      }
+    }
+  },
+  ...
+  "resources": [
+    {
+      "type": "Microsoft.Compute/virtualMachines",
+      "apiVersion": "2020-06-01",
+      "name": "mainTemplate",
+      "properties": {
+        ...
+        "osProfile": {
+          "computerName": "mainTemplate",
+          "adminUsername": "[parameters('adminUsername')]",
+          "adminPassword": "[parameters('adminPasswordOrKey')]" // Yes, secure because resource is in parent template
+        }
+      }
+    },
+    {
+      "name": "outer",
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2019-10-01",
+      "properties": {
+        "expressionEvaluationOptions": {
+          "scope": "outer"
+        },
+        "mode": "Incremental",
+        "template": {
+          "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+          "contentVersion": "1.0.0.0",
+          "resources": [
+            {
+              "type": "Microsoft.Compute/virtualMachines",
+              "apiVersion": "2020-06-01",
+              "name": "outer",
+              "properties": {
+                ...
+                "osProfile": {
+                  "computerName": "outer",
+                  "adminUsername": "[parameters('adminUsername')]",
+                  "adminPassword": "[parameters('adminPasswordOrKey')]" // No, not secure because resource is in nested template with outer scope
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "inner",
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2019-10-01",
+      "properties": {
+        "expressionEvaluationOptions": {
+          "scope": "inner"
+        },
+        "mode": "Incremental",
+        "parameters": {
+          "adminPasswordOrKey": {
+              "value": "[parameters('adminPasswordOrKey')]"
+          },
+          "adminUsername": {
+              "value": "[parameters('adminUsername')]"
+          }
+        },
+        "template": {
+          "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+          "contentVersion": "1.0.0.0",
+          "parameters": {
+            "adminUsername": {
+              "type": "string",
+              "metadata": {
+                "description": "Username for the Virtual Machine."
+              }
+            },
+            "adminPasswordOrKey": {
+              "type": "securestring",
+              "metadata": {
+                "description": "SSH Key or password for the Virtual Machine. SSH key is recommended."
+              }
+            }
+          },
+          "resources": [
+            {
+              "type": "Microsoft.Compute/virtualMachines",
+              "apiVersion": "2020-06-01",
+              "name": "inner",
+              "properties": {
+                ...
+                "osProfile": {
+                  "computerName": "inner",
+                  "adminUsername": "[parameters('adminUsername')]",
+                  "adminPassword": "[parameters('adminPasswordOrKey')]" // Yes, secure because resource is in nested template and scope is inner
+                }
+              }
+            }
+          ]
+        }
+      }
+    }
+  ]
+}
+```
 
 ## <a name="linked-template"></a>Verknüpfte Vorlage
 
@@ -372,6 +495,91 @@ Um Parameterwerte inline zu übergeben, verwenden Sie die `parameters`-Eigenscha
 ```
 
 Sie können nicht sowohl Inlineparameter als auch einen Link auf eine Parameterdatei verwenden. Bei der Bereitstellung tritt ein Fehler auf, wenn sowohl `parametersLink` als auch `parameters` angegeben sind.
+
+### <a name="use-relative-path-for-linked-templates"></a>Verwenden eines relativen Pfads für verknüpfte Vorlagen
+
+Mit der `relativePath`-Eigenschaft von `Microsoft.Resources/deployments` können verknüpfte Vorlagen einfacher erstellt werden. Diese Eigenschaft kann verwendet werden, um eine remote verknüpfte Vorlage an einem Speicherort relativ zum übergeordneten Element bereitzustellen. Diese Funktion erfordert, dass das Staging und die Verfügbarkeit aller Vorlagendateien unter einem Remote-URI erfolgt, z. B. auf GitHub oder in einem Azure-Speicherkonto. Wenn die Hauptvorlage mithilfe eines URI aus Azure PowerShell oder der Azure CLI aufgerufen wird, besteht der URI der untergeordneten Bereitstellung aus einer Kombination aus dem übergeordneten URI und relativePath.
+
+> [!NOTE]
+> Wenn Sie eine templateSpec erstellen, werden alle Vorlagen, auf die durch die `relativePath`-Eigenschaft verwiesen wird, von Azure PowerShell oder der Azure CLI in der templateSpec-Ressource gepackt. Es ist nicht erforderlich, dass ein Staging der Dateien erfolgt. Weitere Informationen finden Sie unter [Erstellen einer Vorlagenspezifikation mit verknüpften Vorlagen](./template-specs.md#create-a-template-spec-with-linked-templates).
+
+Gehen Sie von einer Ordnerstruktur wieder folgenden aus:
+
+![Relativer Pfad der verknüpften Resource Manager-Vorlage](./media/linked-templates/resource-manager-linked-templates-relative-path.png)
+
+Die folgende Vorlage zeigt, wie *mainTemplate.json* die in der Abbildung oben gezeigte Datei *nestedChild.json* bereitstellt.
+
+```json
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {},
+  "functions": [],
+  "variables": {},
+  "resources": [
+    {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2020-10-01",
+      "name": "childLinked",
+      "properties": {
+        "mode": "Incremental",
+        "templateLink": {
+          "relativePath": "children/nestedChild.json"
+        }
+      }
+    }
+  ],
+  "outputs": {}
+}
+```
+
+In der folgenden Bereitstellung ist der URI der verknüpften Vorlage in der Vorlage oben **https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/linked-template-relpath/children/nestedChild.json** .
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+```azurepowershell
+New-AzResourceGroupDeployment `
+  -Name linkedTemplateWithRelativePath `
+  -ResourceGroupName "myResourceGroup" `
+  -TemplateUri "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/linked-template-relpath/mainTemplate.json"
+```
+
+# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+
+```azurecli
+az deployment group create \
+  --name linkedTemplateWithRelativePath \
+  --resource-group myResourceGroup \
+  --template-uri "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/linked-template-relpath/mainTemplate.json"
+```
+
+---
+
+Um verknüpfte Vorlagen mit einem relativen Pfad bereitzustellen, der in einem Azure-Speicherkonto gespeichert ist, verwenden Sie den Parameter `QueryString`/`query-string`, um das SAS-Token anzugeben, das mit dem templateUri-Parameter verwendet wird. Dieser Parameter wird nur von der Azure CLI-Version 2.18 oder höher und der Azure PowerShell-Version 5.4 oder höher unterstützt.
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+```azurepowershell
+New-AzResourceGroupDeployment `
+  -Name linkedTemplateWithRelativePath `
+  -ResourceGroupName "myResourceGroup" `
+  -TemplateUri "https://stage20210126.blob.core.windows.net/template-staging/mainTemplate.json" `
+  -QueryString $sasToken
+```
+
+# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+
+```azurecli
+az deployment group create \
+  --name linkedTemplateWithRelativePath \
+  --resource-group myResourceGroup \
+  --template-uri "https://stage20210126.blob.core.windows.net/template-staging/mainTemplate.json" \
+  --query-string $sasToken
+```
+
+---
+
+Stellen Sie sicher, dass kein führendes „?“ in QueryString vorhanden ist. Die Bereitstellung fügt ein solches Fragezeichen hinzu, wenn der URI für die Bereitstellungen generiert wird.
 
 ## <a name="template-specs"></a>Vorlagenspezifikationen
 

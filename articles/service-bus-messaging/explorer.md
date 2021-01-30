@@ -2,13 +2,13 @@
 title: Verwenden des Azure Service Bus-Explorers zum Ausführen von Datenvorgängen für Service Bus (Vorschauversion)
 description: In diesem Artikel erhalten Sie Informationen, wie Sie den Azure Service Bus-Explorer verwenden können, um auf Azure Service Bus-Daten zuzugreifen.
 ms.topic: conceptual
-ms.date: 06/23/2020
-ms.openlocfilehash: e5e97c6860c2cc01048f4f7caf9f40f9e07592d0
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.date: 01/20/2020
+ms.openlocfilehash: eb6610945ba4b09543308ab351d3a36ec7e587dd
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91295599"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98684840"
 ---
 # <a name="use-service-bus-explorer-to-perform-data-operations-on-service-bus-preview"></a>Verwenden des Service Bus-Explorers zum Ausführen von Datenvorgängen für Service Bus (Vorschauversion)
 
@@ -25,25 +25,28 @@ Der Azure Service Bus-Explorer erweitert die Funktionen des Portals über die Ve
 > [!NOTE]
 > In diesem Artikel werden die Funktionen des Azure Service Bus-Explorers erläutert, die über das Azure-Portal zur Verfügung stehen.
 >
-> Das Explorertool in Azure Service Bus ist ***nicht*** identisch mit dem OSS-Tool [Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer), das sich im Besitz der Community befindet.
+> Das Explorertool in Azure Service Bus ist **nicht** identisch mit dem OSS-Tool [Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer), das sich im Besitz der Community befindet.
 >
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Zur Verwendung des Service Bus-Explorertools müssen Sie einen Azure Service Bus-Namespace bereitstellen. 
+Um das Service Bus Explorer-Tool zu verwenden, müssen Sie die folgenden Aufgaben ausführen: 
 
-Sobald der Service Bus-Namespace bereitgestellt wurde, müssen Sie eine Warteschlange erstellen, an die und von der Nachrichten gesendet und empfangen werden können, oder Sie erstellen ein Thema mit einem Abonnement, um die Funktionen zu testen.
-
-Weitere Informationen zum Erstellen von Warteschlangen, Themen und Abonnements finden Sie hinter den folgenden Links:
-   * [Schnellstart: Erstellen einer Service Bus-Warteschlange mithilfe des Azure-Portals](service-bus-quickstart-portal.md)
-   * [Schnellstart: Erstellen eines Service Bus-Themas und eines oder mehrerer Abonnements dieses Themas im Azure-Portal](service-bus-quickstart-topics-subscriptions-portal.md)
+- Bereitstellen eines Azure Service Bus-Namespace.
+- Erstellen einer Warteschlange, an die und von der Nachrichten gesendet und empfangen werden können oder Erstellen eines Themas mit einem Abonnement, um die Funktionen zu testen. Informationen zum Erstellen von Warteschlangen, Themen und Abonnements finden Sie in den folgenden Artikeln: 
+    - [Schnellstart: Erstellen einer Service Bus-Warteschlange mithilfe des Azure-Portals](service-bus-quickstart-portal.md)
+    - [Schnellstart: Erstellen eines Service Bus-Themas und eines oder mehrerer Abonnements dieses Themas im Azure-Portal](service-bus-quickstart-topics-subscriptions-portal.md)
+- Stellen Sie sicher, dass Sie Mitglied einer dieser Rollen für den Namespace sind: 
+    - [Service Bus-Datenbesitzer](../role-based-access-control/built-in-roles.md#azure-service-bus-data-owner) 
+    - [Mitwirkender](../role-based-access-control/built-in-roles.md#contributor) 
+    - [Besitzer](/role-based-access-control/built-in-roles.md#owner)
 
 
 ## <a name="using-the-service-bus-explorer"></a>Verwenden des Service Bus-Explorers
 
 Zur Verwendung des Azure Service Bus-Explorers müssen Sie zum Service Bus-Namespace navigieren, in dem Sie Sende-, Einsicht- und Empfangsvorgänge durchführen möchten.
 
-Wenn Sie Vorgänge für eine Warteschlange ausführen möchten, klicken Sie im Navigationsmenü auf die Option **Warteschlangen**. Wenn Sie Vorgänge für ein Thema und die dazugehörigen Abonnements ausführen möchten, klicken Sie auf die Option **Themen**. 
+Wenn Sie Vorgänge für eine Warteschlange ausführen möchten, klicken Sie im Navigationsmenü auf die Option *Warteschlangen*. Wenn Sie Vorgänge für ein Thema und die dazugehörigen Abonnements ausführen möchten, klicken Sie auf die Option **Themen**. 
 
 :::image type="content" source="./media/service-bus-explorer/queue-topics-left-navigation.png"alt-text="Auswahl der Entität":::
 
@@ -51,134 +54,134 @@ Nachdem Sie die Option **Warteschlangen** oder **Themen** ausgewählt haben, kö
 
 Klicken Sie im linken Navigationsmenü auf **Service Bus-Explorer (Vorschau)** .
 
-:::image type="content" source="./media/service-bus-explorer/left-navigation-menu-selected.png" alt-text="Auswahl der Entität":::
+:::image type="content" source="./media/service-bus-explorer/left-navigation-menu-selected.png" alt-text="Linkes Navigationsmenü des Service Bus-Explorers":::
 
 ### <a name="sending-a-message-to-a-queue-or-topic"></a>Senden einer Nachricht an eine Warteschlange oder ein Thema
 
-Zum Senden einer Nachricht an eine **Warteschlange** oder ein **Thema** klicken Sie auf die Registerkarte ***Senden*** im Service Bus-Explorer.
+Zum Senden einer Nachricht an eine **Warteschlange** oder ein **Thema** klicken Sie in Service Bus Explorer auf die Registerkarte *_Senden_*.
 
 Führen Sie die folgenden Schritte aus, um dort eine Nachricht zu erstellen: 
 
-1. Wählen Sie den **Inhaltstyp** aus: entweder „Text/unformatiert“, „application/xml“ oder „application/json“.
+1. Wählen Sie den *Inhaltstyp* aus: entweder „Text/Plain“ (Text/unformatiert), „application/xml“ (Anwendung/XML) oder „application/json“ (Application/Json).
 2. Fügen Sie den **Nachrichteninhalt** hinzu. Achten Sie darauf, dass dieser dem zuvor festgelegten **Inhaltstyp** entspricht.
 3. Legen Sie optional **Erweiterte Eigenschaften** fest: Korrelations-ID, Nachrichten-ID, ReplyTo, Gültigkeitsdauer (TTL) und geplante Zeit in Warteschlange (für geplante Nachrichten).
 4. Legen Sie die **benutzerdefinierten Eigenschaften** fest: Das können alle Benutzereigenschaften sein, die für einen Wörterbuchschlüssel festgelegt wurden.
 
 Sobald Sie das Erstellen der Nachricht abgeschlossen haben, können Sie auf „Senden“ klicken.
 
-:::image type="content" source="./media/service-bus-explorer/send-experience.png" alt-text="Auswahl der Entität":::
+:::image type="content" source="./media/service-bus-explorer/send-experience.png" alt-text="Erstellen einer Nachricht":::
 
 Wenn der Sendevorgang erfolgreich ausgeführt wurde, geschieht Folgendes: 
 
 * Wenn der Sendevorgang an eine Warteschlange gerichtet war, wird der Metrikzähler **Aktive Nachrichten** um eins inkrementiert.
 
-    :::image type="content" source="./media/service-bus-explorer/queue-after-send-metrics.png" alt-text="Auswahl der Entität":::
+    :::image type="content" source="./media/service-bus-explorer/queue-after-send-metrics.png" alt-text="Warteschlangenmetrik nach dem Sendevorgang":::
 
 * Wenn der Sendevorgang an ein Thema gerichtet war, wird der Metrikzähler **Aktive Nachrichten** für das Abonnement, an das die Nachricht weitergeleitet wurde, um eins inkrementiert.
 
-    :::image type="content" source="./media/service-bus-explorer/topic-after-send-metrics.png" alt-text="Auswahl der Entität":::
+    :::image type="content" source="./media/service-bus-explorer/topic-after-send-metrics.png" alt-text="Themenmetrik nach dem Sendevorgang":::
 
 ### <a name="receiving-a-message-from-a-queue"></a>Empfangen einer Nachricht von einer Warteschlange
 
 Die Funktion zum Empfangen von Nachrichten im Service Bus-Explorer ermöglicht nur das Empfangen jeweils einer Nachricht. Der Empfangsvorgang wird mithilfe des Modus **ReceiveAndDelete** ausgeführt.
 
 > [!IMPORTANT]
-> Beachten Sie, dass es sich beim vom Service Bus-Explorer ausgeführten Empfangsvorgang um einen ***destruktiven Empfang*** handelt, d. h. die Nachricht wird aus der Warteschlange entfernt, sobald sie im Service Bus-Explorertool angezeigt wird.
+> Beachten Sie, dass es sich beim von Service Bus Explorer ausgeführten Empfangsvorgang um einen *_destruktiven Empfang_* handelt, d. h. die Nachricht wird aus der Warteschlange entfernt, sobald sie im Service Bus Explorer-Tool angezeigt wird.
 >
-> Wenn Sie sich Nachrichten ansehen möchten, ohne dass sie aus der Warteschlange entfernt werden, können Sie die Funktion zum ***Einsehen*** verwenden.
+> Wenn Sie Nachrichten durchsuchen möchten, ohne dass sie aus der Warteschlange entfernt werden, können Sie die Funktion zum _*_Einsehen_*_ verwenden.
 >
 
 Führen Sie die folgenden Schritte aus, um eine Nachricht von einer Warteschlange (oder einer untergeordneten Warteschlange mit unzustellbaren Nachrichten) zu empfangen: 
 
-1. Klicken Sie auf die Registerkarte ***Empfangen*** im Service Bus-Explorer.
-2. Überprüfen Sie die Metriken, um zu sehen, ob es **aktive Nachrichten** oder **unzustellbaren Nachrichten** gibt, die empfangen werden können.
+1. Klicken Sie auf die Registerkarte _*_Empfangen_*_ in Service Bus Explorer.
+2. Überprüfen Sie die Metriken, um zu sehen, ob es *aktive Nachrichten* oder **unzustellbare Nachrichten** gibt, die empfangen werden können.
 
-    :::image type="content" source="./media/service-bus-explorer/queue-after-send-metrics.png" alt-text="Auswahl der Entität":::
+    :::image type="content" source="./media/service-bus-explorer/queue-after-send-metrics.png" alt-text="Warteschlangenmetrik nach dem Sendevorgang":::
 
-3. Wählen Sie entweder die ***Warteschlange*** oder die untergeordnete Warteschlange mit ***unzustellbaren Nachrichten*** aus.
+3. Wählen Sie entweder die *_Warteschlange_* oder die untergeordnete Warteschlange für _*_unzustellbaren Nachrichten_*_ aus.
 
-    :::image type="content" source="./media/service-bus-explorer/queue-or-deadletter.png" alt-text="Auswahl der Entität":::
+    :::image type="content" source="./media/service-bus-explorer/queue-or-deadletter.png" alt-text="Warteschlange oder unzustellbare Nachrichten":::
 
-4. Klicken Sie auf die Schaltfläche ***Empfangen*** und anschließend auf ***Ja***, um den Empfang- und Löschvorgang zu bestätigen.
+4. Klicken Sie auf die Schaltfläche _*_Empfangen_*_ und anschließend auf _*_Ja_*_, um den Empfangs- und Löschvorgang zu bestätigen.
 
 
 Sobald der Empfangsvorgang erfolgreich war, werden die Nachrichtendetails wie unten dargestellt auf dem Raster angezeigt. Sie können eine Nachricht im Raster auswählen, damit Details dazu angezeigt werden.
 
-:::image type="content" source="./media/service-bus-explorer/receive-message-from-queue-2.png" alt-text="Auswahl der Entität":::
+:::image type="content" source="./media/service-bus-explorer/receive-message-from-queue-2.png" alt-text="Screenshot: Fenster „Warteschlangen“ im Azure Service Bus Explorer mit Nachrichtendetails, die für eine in der Warteschlange ausgewählte aktive Nachricht angezeigt werden":::
 
 
 ### <a name="peeking-a-message-from-a-queue"></a>Einsehen einer Nachricht aus einer Warteschlange
 
 Mit der Funktion zum Einsehen können Sie den Service Bus-Explorer verwenden, um die obersten 32 Nachrichten in einer Warteschlange oder einer Warteschlange mit unzustellbaren Nachrichten anzuzeigen.
 
-1. Wenn Sie eine Nachricht in der Warteschlange einsehen möchten, klicken Sie auf die Registerkarte ***Einsehen*** im Service Bus-Explorer.
+1. Wenn Sie eine Nachricht in der Warteschlange einsehen möchten, klicken Sie auf die Registerkarte _*_Einsehen_*_ in Service Bus Explorer.
 
-    :::image type="content" source="./media/service-bus-explorer/peek-tab-selected.png" alt-text="Auswahl der Entität":::
+    :::image type="content" source="./media/service-bus-explorer/peek-tab-selected.png" alt-text="Registerkarte „Einsehen“":::
 
-2. Überprüfen Sie die Metriken, um zu sehen, ob es **aktive Nachrichten** oder **unzustellbare Nachrichten** gibt, die Sie einsehen können.
+2. Überprüfen Sie die Metriken, um zu sehen, ob es *aktive Nachrichten* oder **unzustellbare Nachrichten** gibt, die Sie einsehen können.
 
-    :::image type="content" source="./media/service-bus-explorer/queue-after-send-metrics.png" alt-text="Auswahl der Entität":::
+    :::image type="content" source="./media/service-bus-explorer/queue-after-send-metrics.png" alt-text="Warteschlangenmetrik nach dem Sendevorgang":::
 
-3. Wählen Sie entweder die ***Warteschlange*** oder die untergeordnete Warteschlange mit ***unzustellbaren Nachrichten*** aus.
+3. Wählen Sie entweder die *_Warteschlange_* oder die untergeordnete Warteschlange mit _*_unzustellbaren Nachrichten_*_ aus.
 
-    :::image type="content" source="./media/service-bus-explorer/queue-or-deadletter.png" alt-text="Auswahl der Entität":::
+    :::image type="content" source="./media/service-bus-explorer/queue-or-deadletter.png" alt-text="Warteschlange oder unzustellbare Nachrichten":::
 
-4. Klicken Sie auf die Schaltfläche ***Einsehen***. 
+4. Klicken Sie auf die Schaltfläche _*_Einsehen_*_. 
 
 Sobald der Einsehvorgang abgeschlossen ist, werden auf dem Raster wie unten dargestellt bis zu 32 Nachrichten angezeigt. Wenn Sie sich die Details einer bestimmten Nachricht ansehen möchten, wählen Sie sie im Raster aus. 
 
-:::image type="content" source="./media/service-bus-explorer/peek-message-from-queue-2.png" alt-text="Auswahl der Entität":::
+:::image type="content" source="./media/service-bus-explorer/peek-message-from-queue-2.png" alt-text="Einsehen einer Nachricht in der Warteschlange":::
 
 > [!NOTE]
 >
-> Da es sich beim Einsehen um keinen destruktiven Vorgang handelt, wird die Nachricht **nicht** aus der Warteschlange entfernt.
+> Da es sich beim Einsehen um keinen destruktiven Vorgang handelt, wird die Nachricht *nicht* aus der Warteschlange entfernt.
 >
 
 ### <a name="receiving-a-message-from-a-subscription"></a>Empfangen einer Nachricht aus einem Abonnement
 
-Wie bei einer Warteschlange kann der ***Empfangsvorgang*** auch für ein Abonnement oder eine Entität mit unzustellbaren Nachrichten ausgeführt werden. Da ein Abonnement jedoch im Kontext eines Themas existiert, wird der Empfangsvorgang durchgeführt, indem für ein bestimmtes Thema zum Service Bus-Explorer navigiert wird.
+Wie bei einer Warteschlange kann der *_Empfangsvorgang_* auch für ein Abonnement oder eine Entität mit unzustellbaren Nachrichten ausgeführt werden. Da ein Abonnement jedoch im Kontext eines Themas existiert, wird der Empfangsvorgang durchgeführt, indem für ein bestimmtes Thema zum Service Bus-Explorer navigiert wird.
 
 > [!IMPORTANT]
-> Beachten Sie, dass es sich beim vom Service Bus-Explorer ausgeführten Empfangsvorgang um einen ***destruktiven Empfang*** handelt, d. h. die Nachricht wird aus der Warteschlange entfernt, sobald sie im Service Bus-Explorertool angezeigt wird.
+> Beachten Sie, dass es sich beim von Service Bus Explorer ausgeführten Empfangsvorgang um einen _*_destruktiven Empfang_*_ handelt, d. h. die Nachricht wird aus der Warteschlange entfernt, sobald sie im Service Bus Explorer-Tool angezeigt wird.
 >
-> Wenn Sie sich Nachrichten ansehen möchten, ohne dass sie aus der Warteschlange entfernt werden, können Sie die Funktion zum ***Einsehen*** verwenden.
+> Wenn Sie Nachrichten durchsuchen möchten, ohne dass sie aus der Warteschlange entfernt werden, können Sie die Funktion zum _*_Einsehen_*_ verwenden.
 >
 
-1. Klicken Sie auf die Registerkarte ***Empfangen***, und wählen Sie beim Dropdownselektor ein gewünschtes ***Abonnement*** aus.
+1. Klicken Sie auf die Registerkarte _*_Empfangen_*_, und wählen Sie beim Dropdownselektor ein gewünschtes _*_Abonnement_*_ aus.
 
-    :::image type="content" source="./media/service-bus-explorer/receive-subscription-tab-selected.png" alt-text="Auswahl der Entität":::
+    :::image type="content" source="./media/service-bus-explorer/receive-subscription-tab-selected.png" alt-text="Ausgewählte Registerkarte „Empfangen“":::
 
-2. Wählen Sie entweder das ***Abonnement*** oder die untergeordnete Entität ***Unzustellbar*** aus.
+2. Wählen Sie entweder das _*_Abonnement_*_ oder die untergeordnete Entität _*_Unzustellbar_*_ aus.
 
-    :::image type="content" source="./media/service-bus-explorer/subscription-or-deadletter.png" alt-text="Auswahl der Entität":::
+    :::image type="content" source="./media/service-bus-explorer/subscription-or-deadletter.png" alt-text="Abonnement oder „Unzustellbar“":::
 
-3. Klicken Sie auf die Schaltfläche ***Empfangen*** und anschließend auf ***Ja***, um den Empfang- und Löschvorgang zu bestätigen.
+3. Klicken Sie auf die Schaltfläche _*_Empfangen_*_ und anschließend auf _*_Ja_*_, um den Empfangs- und Löschvorgang zu bestätigen.
 
 Sobald der Empfangsvorgang erfolgreich war, wird die empfangene Nachricht wie unten dargestellt auf dem Raster angezeigt. Wenn Sie sich die Nachrichtendetails ansehen möchten, klicken Sie auf die Nachricht.
 
-:::image type="content" source="./media/service-bus-explorer/receive-message-from-subscription.png" alt-text="Auswahl der Entität":::
+:::image type="content" source="./media/service-bus-explorer/receive-message-from-subscription.png" alt-text="Screenshot: Registerkarte „Empfangen“ im Azure Service Bus Explorer mit Nachrichtendetails, die für eine empfangene aktive Nachricht angezeigt werden":::
 
 ### <a name="peeking-a-message-from-a-subscription"></a>Einsehen einer Nachricht aus einem Abonnement
 
-Wenn Sie sich die Nachrichten in einem Abonnement oder einer untergeordneten Entität mit unzustellbaren Nachrichten einfach nur ansehen möchten, kann die Funktion ***Einsehen*** für ein Abonnement ebenfalls verwendet werden.
+Wenn Sie sich die Nachrichten in einem Abonnement oder einer untergeordneten Entität mit unzustellbaren Nachrichten einfach nur ansehen möchten, kann die Funktion _*_Einsehen_*_ für ein Abonnement ebenfalls verwendet werden.
 
-1. Klicken Sie auf die Registerkarte ***Einsehen***, und wählen Sie beim Dropdownselektor ein gewünschtes ***Abonnement*** aus.
+1. Klicken Sie auf die Registerkarte _*_Einsehen_*_, und wählen Sie beim Dropdownselektor ein gewünschtes _*_Abonnement_*_ aus.
 
-    :::image type="content" source="./media/service-bus-explorer/peek-subscription-tab-selected.png" alt-text="Auswahl der Entität":::
+    :::image type="content" source="./media/service-bus-explorer/peek-subscription-tab-selected.png" alt-text="Ausgewählte Registerkarte „Einsehen“":::
 
-2. Wählen Sie entweder das ***Abonnement*** oder die untergeordnete Entität ***Unzustellbar*** aus.
+2. Wählen Sie entweder das _*_Abonnement_*_ oder die untergeordnete Entität _*_Unzustellbar_*_ aus.
 
-    :::image type="content" source="./media/service-bus-explorer/subscription-or-deadletter.png" alt-text="Auswahl der Entität":::
+    :::image type="content" source="./media/service-bus-explorer/subscription-or-deadletter.png" alt-text="Abonnement oder „Unzustellbar“":::
 
-3. Klicken Sie auf die Schaltfläche ***Einsehen***.
+3. Klicken Sie auf die Schaltfläche _*_Einsehen_*_.
 
 Sobald der Einsehvorgang abgeschlossen ist, werden auf dem Raster wie unten dargestellt bis zu 32 Nachrichten angezeigt. Wenn Sie sich die Details einer bestimmten Nachricht ansehen möchten, wählen Sie sie im Raster aus. 
 
-:::image type="content" source="./media/service-bus-explorer/peek-message-from-subscription.png" alt-text="Auswahl der Entität":::
+:::image type="content" source="./media/service-bus-explorer/peek-message-from-subscription.png" alt-text="Einsehen der Nachricht im Abonnement":::
 
 > [!NOTE]
 >
-> Da es sich beim Einsehen um keinen destruktiven Vorgang handelt, wird die Nachricht **nicht** aus der Warteschlange entfernt.
+> Da es sich beim Einsehen um keinen destruktiven Vorgang handelt, wird die Nachricht *nicht* aus der Warteschlange entfernt.
 >
 
 ## <a name="next-steps"></a>Nächste Schritte

@@ -2,13 +2,13 @@
 title: Übersicht über Vorlagen
 description: Beschreibung der Vorteile der Verwendung von Azure Resource Manager-Vorlagen (ARM-Vorlagen) für die Bereitstellung von Ressourcen
 ms.topic: conceptual
-ms.date: 12/17/2020
-ms.openlocfilehash: c4995791b784351219458c546442d082e2396315
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.date: 01/20/2021
+ms.openlocfilehash: dd9207ca1d0397b7dce63eb826567f07b1d0b892
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97657310"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98621838"
 ---
 # <a name="what-are-arm-templates"></a>Was sind ARM-Vorlagen?
 
@@ -125,6 +125,12 @@ Wenn Ihre Ebenen über separate Lebenszyklen verfügen sollen, können Sie die d
 ![Ebenenvorlage](./media/overview/tier-templates.png)
 
 Informationen zu geschachtelten Vorlagen finden Sie unter [Verwenden von verknüpften Vorlagen mit Azure Resource Manager](linked-templates.md).
+
+## <a name="share-templates"></a>Freigeben von Vorlagen
+
+Nachdem Sie die Vorlage erstellt haben, können Sie sie für andere Benutzer in Ihrer Organisation freigeben. [Vorlagenspezifikationen](template-specs.md) ermöglichen das Speichern einer Vorlage als Ressourcentyp. Mit rollenbasierter Zugriffssteuerung können Sie Zugriff auf die Vorlagenspezifikation gewähren. Benutzer mit Lesezugriff auf die Vorlagenspezifikation können diese bereitstellen, die Vorlage aber nicht ändern.
+
+Dieser Ansatz bedeutet, dass Sie problemlos Vorlagen freigeben können, die die Standards Ihrer Organisation erfüllen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

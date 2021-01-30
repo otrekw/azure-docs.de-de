@@ -1,16 +1,16 @@
 ---
 title: Netzwerkoptionen von Azure Functions
 description: Enthält eine Übersicht über alle Netzwerkoptionen, die in Azure Functions verfügbar sind.
-author: jeffhollan
+author: cachai2
 ms.topic: conceptual
-ms.date: 10/27/2020
-ms.author: jehollan
-ms.openlocfilehash: f4d7611f285535680469f3a334ab889b0b644bfe
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.date: 1/21/2021
+ms.author: cachai
+ms.openlocfilehash: 2c3f207e98f574bb6c43f87d34b0a404e263e83c
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97936861"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98806977"
 ---
 # <a name="azure-functions-networking-options"></a>Netzwerkoptionen von Azure Functions
 
@@ -85,12 +85,9 @@ Um eine höhere Sicherheitsstufe zu gewährleisten, können Sie eine Reihe von A
 
 Weitere Informationen finden Sie unter [VNET-Dienstendpunkte](../virtual-network/virtual-network-service-endpoints-overview.md).
 
-## <a name="restrict-your-storage-account-to-a-virtual-network-preview"></a>Einschränken Ihres Speicherkontos auf ein virtuelles Netzwerk (Vorschau)
+## <a name="restrict-your-storage-account-to-a-virtual-network"></a>Einschränken Ihres Speicherkontos auf ein virtuelles Netzwerk 
 
-Beim Erstellen einer Funktions-App müssen Sie ein allgemeines Azure Storage-Konto erstellen oder verknüpfen, das Blob-, Queue- und Table Storage unterstützt.  Sie können dieses Speicherkonto durch eines ersetzen, das mit Dienstendpunkten oder einem privaten Endpunkt geschützt ist.  Diese Previewfunktion kann aktuell nur mit Premium-Tarifen von Windows in der Region „Europa, Westen“ verwendet werden.  Einrichten einer Funktion mit einem auf ein privates Netzwerk beschränkten Speicherkonto:
-
-> [!NOTE]
-> Das Beschränken des Speicherkontos ist aktuell nur für Premium-Funktionen mit Windows in der Region „Europa, Westen“ möglich.
+Beim Erstellen einer Funktions-App müssen Sie ein allgemeines Azure Storage-Konto erstellen oder verknüpfen, das Blob-, Queue- und Table Storage unterstützt.  Sie können dieses Speicherkonto durch eines ersetzen, das mit Dienstendpunkten oder einem privaten Endpunkt geschützt ist.  Dieses Feature funktioniert zurzeit nur mit Windows Premium-Tarifen.  Einrichten einer Funktion mit einem auf ein privates Netzwerk beschränkten Speicherkonto:
 
 1. Erstellen Sie eine Funktion mit einem Speicherkonto, für das keine Dienstendpunkte aktiviert sind.
 1. Konfigurieren Sie die Funktion so, dass eine Verbindung zum virtuellen Netzwerk hergestellt wird.

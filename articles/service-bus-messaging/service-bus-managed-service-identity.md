@@ -2,13 +2,13 @@
 title: Verwaltete Identitäten für Azure-Ressourcen mit Service Bus
 description: In diesem Artikel wird beschrieben, wie Sie mit verwalteten Identitäten auf Azure Service Bus-Entitäten (Warteschlangen, Themen und Abonnements) zugreifen.
 ms.topic: article
-ms.date: 10/21/2020
-ms.openlocfilehash: 1efcd3c48e7e4a431a0c72c4b3b84531b44e973e
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.date: 01/21/2021
+ms.openlocfilehash: dac12820adf863a7e51457d34f9180543089fc7b
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92425520"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881566"
 ---
 # <a name="authenticate-a-managed-identity-with-azure-active-directory-to-access-azure-service-bus-resources"></a>Authentifizieren einer verwalteten Identität mit Azure Active Directory für den Zugriff auf Azure Service Bus-Ressourcen
 [Verwaltete Identitäten für Azure-Ressourcen](../active-directory/managed-identities-azure-resources/overview.md) ist ein Azure-übergreifendes Feature, mit dem Sie eine sichere Identität für die Bereitstellung erstellen können, in der Ihr Anwendungscode ausgeführt wird. Sie können dieser Identität dann Zugriffssteuerungsrollen zuordnen, um benutzerdefinierte Berechtigungen für den Zugriff auf bestimmte Azure-Ressourcen zu gewähren, die Ihre Anwendung benötigt.
@@ -45,7 +45,7 @@ Bevor Sie einem Sicherheitsprinzipal eine Azure-Rolle zuweisen, legen Sie den Zu
 
 In der folgenden Liste werden die Ebenen beschrieben, auf denen Sie den Zugriff auf Service Bus-Ressourcen einschränken können, beginnend mit dem kleinstmöglichen Bereich:
 
-- **Warteschlange** , **Thema** oder **Abonnement** : Die Rollenzuweisung gilt für die jeweilige Service Bus-Entität. Derzeit wird das Zuweisen von Benutzern/Gruppen/verwalteten Identitäten zu Service Bus Azure-Rollen auf Abonnementebene vom Azure-Portal nicht unterstützt. Im Folgenden finden Sie ein Beispiel für die Verwendung des Azure CLI-Befehls [az-role-assignment-create](/cli/azure/role/assignment?#az-role-assignment-create) für das Zuweisen einer Identität zu einer Service Bus-Azure-Rolle: 
+- **Warteschlange**, **Thema** oder **Abonnement**: Die Rollenzuweisung gilt für die jeweilige Service Bus-Entität. Derzeit wird das Zuweisen von Benutzern/Gruppen/verwalteten Identitäten zu Service Bus Azure-Rollen auf Abonnementebene vom Azure-Portal nicht unterstützt. Im Folgenden finden Sie ein Beispiel für die Verwendung des Azure CLI-Befehls [az-role-assignment-create](/cli/azure/role/assignment?#az-role-assignment-create) für das Zuweisen einer Identität zu einer Service Bus-Azure-Rolle: 
 
     ```azurecli
     az role assignment create \
@@ -54,8 +54,8 @@ In der folgenden Liste werden die Ebenen beschrieben, auf denen Sie den Zugriff 
         --scope /subscriptions/$subscription_id/resourceGroups/$resource_group/providers/Microsoft.ServiceBus/namespaces/$service_bus_namespace/topics/$service_bus_topic/subscriptions/$service_bus_subscription
     ```
 - **Service Bus-Namespace:** Die Rollenzuweisung umfasst die gesamte Topologie von Service Bus unter dem Namespace und für die zugeordnete Consumergruppe.
-- **Ressourcengruppe** : Die Rollenzuweisung gilt für alle Service Bus-Ressourcen unter der Ressourcengruppe.
-- **Abonnement** : Die Rollenzuweisung gilt für alle Service Bus-Ressourcen in allen Ressourcengruppen im Abonnement.
+- **Ressourcengruppe**: Die Rollenzuweisung gilt für alle Service Bus-Ressourcen unter der Ressourcengruppe.
+- **Abonnement**: Die Rollenzuweisung gilt für alle Service Bus-Ressourcen in allen Ressourcengruppen im Abonnement.
 
 > [!NOTE]
 > Denken Sie daran, dass die Weitergabe von Azure-Rollenzuweisungen bis zu fünf Minuten dauern kann. 
@@ -83,9 +83,9 @@ Hier verwenden wir eine einfache Beispielwebanwendung, die in [Azure App Service
 
 Führen Sie nach der Erstellung der Anwendung die folgenden Schritte aus: 
 
-1. Navigieren Sie zu **Einstellungen** , und wählen Sie **Identität** aus. 
+1. Navigieren Sie zu **Einstellungen**, und wählen Sie **Identität** aus. 
 1. Legen Sie den **Status** auf **Ein** fest. 
-1. Klicken Sie auf **Speichern** , um die Einstellung zu speichern. 
+1. Klicken Sie auf **Speichern**, um die Einstellung zu speichern. 
 
     ![Verwaltete Identität für eine Web-App](./media/service-bus-managed-service-identity/identity-web-app.png)
 
@@ -107,23 +107,25 @@ Um einem Service Bus-Namespace eine Rolle zuzuweisen, navigieren Sie im Azure-Po
 1. Navigieren Sie im Azure-Portal zu Ihrem Service Bus-Namespace, und zeigen Sie die **Übersicht** für den Namespace an. 
 1. Wählen Sie im linken Menü **Zugriffssteuerung (IAM)** aus, um Zugriffssteuerungseinstellungen für den Service Bus-Namespace anzuzeigen.
 1.  Wählen Sie die Registerkarte **Rollenzuweisungen** aus, um die Liste mit den Rollenzuweisungen anzuzeigen.
-3.  Klicken Sie auf **Hinzufügen** , um eine neue Rolle hinzuzufügen.
-4.  Wählen Sie auf der Seite **Rollenzuweisung hinzufügen** die Azure Service Bus-Rollen aus, die Sie zuweisen möchten. Suchen Sie dann nach der Dienstidentität, die Sie registriert haben, um die Rolle zuzuweisen.
-    
-    ![Seite „Rollenzuweisung hinzufügen“](./media/service-bus-managed-service-identity/add-role-assignment-page.png)
-5.  Wählen Sie **Speichern** aus. Die Identität, der Sie die Rolle zugewiesen haben, wird unter dieser Rolle angezeigt. Die folgende Abbildung zeigt, dass die Dienstidentität den Besitzer „Azure Service Bus-Daten“ verwendet.
-    
-    ![Identität, die einer Rolle zugewiesen ist](./media/service-bus-managed-service-identity/role-assigned.png)
+3.  Wählen Sie **Hinzufügen** und dann **Rollenzuweisung hinzufügen** aus.
+4.  Führen Sie auf der Seite **Rollenzuweisung hinzufügen** die folgenden Schritte aus:
+    1. Wählen Sie als **Rolle** die Service Bus-Rolle aus, die Sie zuweisen möchten. In diesem Beispiel wird die Rolle **Azure Service Bus-Datenbesitzer** verwendet.
+    1. Wählen Sie für das Feld **Zugriff zuweisen zu** unter **Systemseitig zugewiesene verwaltete Identität** die Option **App Service** aus. 
+    1. Wählen Sie das **Abonnement** aus, in dem die verwaltete Identität für die Web-App erstellt wurde.
+    1. Wählen Sie die **verwaltete Identität** für die Web-App aus, die Sie erstellt haben. Der Standardname für die Identität ist identisch mit dem Namen der Web-App. 
+    1. Wählen Sie anschließend **Speichern** aus.
+        
+        ![Seite „Rollenzuweisung hinzufügen“](./media/service-bus-managed-service-identity/add-role-assignment-page.png)
 
-Nachdem Sie die Rolle zugewiesen haben, verfügt die Webanwendung über Zugriff auf die Service Bus-Entitäten unter dem definierten Bereich. 
+    Nachdem Sie die Rolle zugewiesen haben, verfügt die Webanwendung über Zugriff auf die Service Bus-Entitäten unter dem definierten Bereich. 
 
-
-
+    > [!NOTE]
+    > Eine Liste der Dienste, die verwaltete Identitäten unterstützen, finden Sie unter [Dienste, die verwaltete Identitäten für Azure-Ressourcen unterstützen](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md).
 
 ### <a name="run-the-app"></a>Ausführen der App
 Bearbeiten Sie jetzt die Standardseite der von Ihnen erstellten ASP.NET-Anwendung. Sie können den Webanwendungscode aus [diesem GitHub-Repository](https://github.com/Azure-Samples/app-service-msi-servicebus-dotnet) verwenden.  
 
-Die Seite „Default.aspx“ ist Ihre Zielseite. Sie finden den Code in der Datei „Default.aspx.cs“. Das Ergebnis ist eine kleine Webanwendung mit einigen wenigen Eingabefeldern sowie Schaltflächen zum **Senden** und **Empfangen** , mit denen eine Verbindung mit Service Bus hergestellt wird, um Nachrichten zu senden oder zu empfangen.
+Die Seite „Default.aspx“ ist Ihre Zielseite. Sie finden den Code in der Datei „Default.aspx.cs“. Das Ergebnis ist eine kleine Webanwendung mit einigen wenigen Eingabefeldern sowie Schaltflächen zum **Senden** und **Empfangen**, mit denen eine Verbindung mit Service Bus hergestellt wird, um Nachrichten zu senden oder zu empfangen.
 
 Beachten Sie, wie das Objekt [MessagingFactory](/dotnet/api/microsoft.servicebus.messaging.messagingfactory) initialisiert wird. Der Code verwendet nicht den SAS-Tokenanbieter (Shared Access Signature), sondern erstellt mit dem Aufruf `var msiTokenProvider = TokenProvider.CreateManagedIdentityTokenProvider();` einen Tokenanbieter für die verwaltete Identität. Daher müssen keine Geheimnisse aufbewahrt und verwendet werden. Der Flow vom Kontext der verwalteten Identität zu Service Bus und der Autorisierungshandshake werden automatisch vom Tokenanbieter verarbeitet. Dies ist ein einfacheres Modell als die Verwendung von SAS.
 
@@ -135,7 +137,7 @@ Um Nachrichten zu senden oder zu empfangen, geben Sie den Namen des Namespace un
 
 
 > [!NOTE]
-> - Die verwaltete Identität kann nur in der Azure-Umgebung, in App Services, auf virtuellen Azure-Computern und in Skalierungsgruppen verwendet werden. Für .NET-Anwendungen bietet die vom Service Bus-NuGet-Paket verwendete Bibliothek „Microsoft.Azure.Services.AppAuthentication“ eine Abstraktion über dieses Protokoll und unterstützt eine lokale Entwicklungsumgebung. Mithilfe dieser Bibliothek können Sie zudem Ihren Code lokal auf dem Entwicklungscomputer testen. Hierzu verwenden Sie Ihr Benutzerkonto aus Visual Studio, aus der Azure CLI 2.0 oder der integrierten Active Directory-Authentifizierung. Weitere Informationen zu Optionen für die lokale Entwicklung mit dieser Bibliothek finden Sie unter [Dienst-zu-Dienst-Authentifizierung in Azure Key Vault mithilfe von .NET](../key-vault/general/service-to-service-authentication.md).  
+> - Die verwaltete Identität kann nur in der Azure-Umgebung, in App Services, auf virtuellen Azure-Computern und in Skalierungsgruppen verwendet werden. Für .NET-Anwendungen bietet die vom Service Bus-NuGet-Paket verwendete Bibliothek „Microsoft.Azure.Services.AppAuthentication“ eine Abstraktion über dieses Protokoll und unterstützt eine lokale Entwicklungsumgebung. Mithilfe dieser Bibliothek können Sie zudem Ihren Code lokal auf dem Entwicklungscomputer testen. Hierzu verwenden Sie Ihr Benutzerkonto aus Visual Studio, aus der Azure CLI 2.0 oder der integrierten Active Directory-Authentifizierung. Weitere Informationen zu Optionen für die lokale Entwicklung mit dieser Bibliothek finden Sie unter [Dienst-zu-Dienst-Authentifizierung in Azure Key Vault mithilfe von .NET](/dotnet/api/overview/azure/service-to-service-authentication).  
 > 
 > - Verwaltete Identitäten funktionieren zurzeit nicht mit App Service-Bereitstellungsslots.
 

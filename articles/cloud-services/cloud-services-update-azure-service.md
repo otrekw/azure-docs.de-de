@@ -1,20 +1,24 @@
 ---
-title: Aktualisieren eines Clouddiensts | Microsoft Docs
+title: Aktualisieren eines Clouddiensts (klassisch) | Microsoft-Dokumentation
 description: Hier erfahren Sie, wie Sie Clouddienste in Azure aktualisieren. Erfahren Sie, wie die Aktualisierung eines Clouddiensts ausgeführt wird, damit die Verfügbarkeit sichergestellt ist.
-services: cloud-services
-author: tgore03
-ms.service: cloud-services
 ms.topic: article
-ms.date: 04/19/2017
+ms.service: cloud-services
+ms.date: 10/14/2020
 ms.author: tagore
-ms.openlocfilehash: f12e5b6b0b2902d69936b9cf2695b7ee21db88e2
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 5d85003ca7b4307c308914484502ae03269f66ac
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92075041"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98741110"
 ---
-# <a name="how-to-update-a-cloud-service"></a>Aktualisieren eines Clouddiensts
+# <a name="how-to-update-an-azure-cloud-service-classic"></a>Aktualisieren einer Azure Cloud Service-Instanz (erweiterter Support)
+
+> [!IMPORTANT]
+> [Azure Cloud Services (erweiterter Support)](../cloud-services-extended-support/overview.md) ist ein neues auf Azure Resource Manager basierendes Bereitstellungsmodell für Azure Cloud Services. Im Zuge dieser Änderung wurden Azure Cloud Services-Instanzen, die unter dem Azure Service Manager-basierten Bereitstellungsmodell ausgeführt werden, in „Cloud Services (klassisch)“ umbenannt. Für alle neuen Bereitstellungen wird [Azure Cloud Services (erweiterter Support)](../cloud-services-extended-support/overview.md) verwendet.
 
 Das Aktualisieren eines Clouddiensts einschließlich Rollen und Gastbetriebssysteme besteht aus drei Schritten. Zuerst müssen die Binär- und Konfigurationsdateien für den neuen Clouddienst oder die Version des Betriebssystems hochgeladen werden. Dann reserviert Azure Compute- und Netzwerkressourcen für den Clouddienst je nach den Erfordernissen der neuen der Clouddienstversion. Und zuletzt führt Azure ein paralleles Update aus, um den Mandanten inkrementell auf die neue Version oder das Gastbetriebssystem zu aktualisieren und Ihre Verfügbarkeit dabei beizubehalten. Dieser Artikel behandelt diesen letzten Schritt – das parallele Upgrade.
 
@@ -114,10 +118,10 @@ Stellen Sie einen neuen Dienst mit mehreren Instanzen auf dem Staging-Server ber
 <a name="RollbackofanUpdate"></a>
 
 ## <a name="rollback-of-an-update"></a>Zurücksetzen eines Updates
-Azure ist bei der Verwaltung von Diensten während einer Aktualisierung flexibel, da Sie weitere Vorgänge für einen Dienst initiieren können, nachdem die ursprüngliche Aktualisierungsanforderung vom Azure Fabric Controller akzeptiert wurde. Eine Zurücksetzung ist nur möglich, wenn eine Aktualisierung (Konfigurationsänderung) oder ein Upgrade in der Bereitstellung den Status **In Bearbeitung** hat. Eine Aktualisierung oder ein Upgrade gilt als in Bearbeitung, wenn mindestens eine Instanz des Diensts noch nicht auf die neue Version aktualisiert wurde. Um zu testen, ob eine Zurücksetzung zulässig ist, prüfen Sie, ob der Wert des Flags „RollbackAllowed“, der von den Vorgängen [Bereitstellung abrufen](/previous-versions/azure/reference/ee460804(v=azure.100)) und [Clouddiensteigenschaften abrufen](/previous-versions/azure/reference/ee460806(v=azure.100)) zurückgegeben wird, auf „true“ festgelegt ist.
+Azure ist bei der Verwaltung von Diensten während einer Aktualisierung flexibel, da Sie weitere Vorgänge für einen Dienst initiieren können, nachdem die ursprüngliche Aktualisierungsanforderung vom Azure Fabric Controller akzeptiert wurde. Eine Zurücksetzung kann nur ausgeführt werden, wenn sich ein Update (Konfigurationsänderung) oder ein Upgrade für die Bereitstellung im Status **In Bearbeitung** befindet. Eine Aktualisierung oder ein Upgrade gilt als in Bearbeitung, wenn mindestens eine Instanz des Diensts noch nicht auf die neue Version aktualisiert wurde. Um zu testen, ob eine Zurücksetzung zulässig ist, prüfen Sie, ob der Wert des Flags „RollbackAllowed“, der von den Vorgängen [Bereitstellung abrufen](/previous-versions/azure/reference/ee460804(v=azure.100)) und [Clouddiensteigenschaften abrufen](/previous-versions/azure/reference/ee460806(v=azure.100)) zurückgegeben wird, auf „true“ festgelegt ist.
 
 > [!NOTE]
-> Eine Zurücksetzung ist nur für eine **direkte** Aktualisierung (bzw. ein direktes Upgrade) sinnvoll, da ein VIP-Austausch das Ersetzen einer gesamten ausgeführten Instanz Ihres Diensts durch eine andere beinhaltet.
+> Es ist nur sinnvoll, eine Zurücksetzung für ein **direktes** Update oder Upgrade aufzurufen, da bei Upgrades per VIP-Austausch die gesamte ausgeführte Instanz des Diensts durch eine andere ersetzt wird.
 >
 >
 
@@ -149,7 +153,7 @@ Rufen Sie während der Zurücksetzung des Upgrades im manuellen Modus [Upgrade f
 <a name="multiplemutatingoperations"></a>
 
 ## <a name="initiating-multiple-mutating-operations-on-an-ongoing-deployment"></a>Initiieren mehrerer Änderungsvorgänge für eine laufende Bereitstellung
-In einigen Fällen sollen möglicherweise mehrere Änderungsvorgänge gleichzeitig für eine laufende Bereitstellung initiiert werden. Sie führen beispielsweise eine Dienstaktualisierung aus, und während die Aktualisierung auf den gesamten Dienst angewandt wird, möchten Sie einige Änderungen vornehmen, z. B. die Aktualisierung zurücksetzen, eine andere Aktualisierung anwenden oder die Bereitstellung löschen. Dies ist möglicherweise erforderlich, wenn ein Dienstupgrade fehlerhaften Code enthält, und die aktualisierte Rolleninstanz daher wiederholt abstürzt. In diesem Fall macht der Azure Fabric Controller keine Fortschritte beim Anwenden des Upgrades, da eine nicht ausreichende Anzahl an Instanzen in der aktualisierten Domäne fehlerfrei sind. Dieser Status wird als *unterbrochene Bereitstellung* bezeichnet. Sie können die Bereitstellung fortsetzen, indem Sie die Aktualisierung zurücksetzen oder eine neue Aktualisierung über das fehlerhafte Aktualisierung anwenden.
+In einigen Fällen sollen möglicherweise mehrere Änderungsvorgänge gleichzeitig für eine laufende Bereitstellung initiiert werden. Sie führen beispielsweise eine Dienstaktualisierung aus, und während die Aktualisierung auf den gesamten Dienst angewandt wird, möchten Sie einige Änderungen vornehmen, z. B. die Aktualisierung zurücksetzen, eine andere Aktualisierung anwenden oder die Bereitstellung löschen. Dies ist möglicherweise erforderlich, wenn ein Dienstupgrade fehlerhaften Code enthält, und die aktualisierte Rolleninstanz daher wiederholt abstürzt. In diesem Fall macht der Azure Fabric Controller keine Fortschritte beim Anwenden des Upgrades, da eine nicht ausreichende Anzahl an Instanzen in der aktualisierten Domäne fehlerfrei sind. Dieser Status wird als eine *unterbrochene Bereitstellung* bezeichnet. Sie können die Bereitstellung fortsetzen, indem Sie die Aktualisierung zurücksetzen oder eine neue Aktualisierung über das fehlerhafte Aktualisierung anwenden.
 
 Sobald Azure Fabric Controller die ursprüngliche Aktualisierungs- oder Upgradeanforderung des Diensts erhalten hat, können Sie Änderungen vornehmen. Das heißt, Sie müssen nicht warten, bis der erste Vorgang abgeschlossen ist, bevor Sie einen anderen Änderungsvorgang starten können.
 

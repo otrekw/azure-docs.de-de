@@ -3,12 +3,12 @@ title: Erstellen eines Azure Functions-Premium-Plans im Portal
 description: Erfahren Sie, wie Sie im Azure-Portal eine Funktions-App erstellen, die im Premium-Plan ausgeführt wird.
 ms.topic: how-to
 ms.date: 10/30/2020
-ms.openlocfilehash: 20921423247dda3cbb39b58dcc805dac6d367390
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 9cab67f096665c9333fa40bcb790896fcbebd8d5
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97937520"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98676585"
 ---
 # <a name="create-a-premium-plan-function-app-in-the-azure-portal"></a>Erstellen einer Funktions-App für den Premium-Plan im Azure-Portal
 
@@ -35,4 +35,4 @@ An diesem Punkt können Sie Funktionen in der neuen Funktions-App erstellen. Die
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Hinzufügen einer durch HTTP ausgelösten Funktion](functions-create-first-azure-function.md#create-function)
+> [Hinzufügen einer durch HTTP ausgelösten Funktion](./functions-get-started.md

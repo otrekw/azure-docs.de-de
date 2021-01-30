@@ -3,12 +3,12 @@ title: IP-Adressen in Azure Functions
 description: Erfahren Sie, wie Sie eingehende und ausgehende IP-Adressen für Funktionen-Apps finden und wodurch diese geändert werden.
 ms.topic: conceptual
 ms.date: 12/03/2018
-ms.openlocfilehash: 291a1cda7b8a2acc5426ea255519e1c2e58a2d7c
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: fcc92e61e180d25bc67d5ca3f9e2bff4af01fd3f
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97936718"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98726730"
 ---
 # <a name="ip-addresses-in-azure-functions"></a>IP-Adressen in Azure Functions
 
@@ -27,8 +27,7 @@ Jede Funktionen-App verfügt über eine einzelne eingehende IP-Adresse. So finde
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 2. Navigieren Sie zur Funktionen-App.
-3. Wählen Sie **Plattformfeatures**.
-4. Wenn Sie **Eigenschaften** wählen, wird die eingehende IP-Adresse unter **Virtuelle IP-Adresse** angezeigt.
+3. Wählen Sie unter **Einstellungen** die Option **Eigenschaften** aus. Die eingehende IP-Adresse wird unter **Virtuelle IP-Adresse** angezeigt.
 
 ## <a name="function-app-outbound-ip-addresses"></a><a name="find-outbound-ip-addresses"></a>Ausgehende IP-Adressen einer Funktions-App
 

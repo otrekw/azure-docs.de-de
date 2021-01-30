@@ -1,22 +1,25 @@
 ---
-title: Azure Cloud Services – Definition LoadBalancerProbe-Schema | Microsoft-Dokumentation
+title: 'Azure Cloud Services (klassisch): Definition LoadBalancerProbe-Schema | Microsoft-Dokumentation'
 description: Der vom Kunden definierte LoadBalancerProbe ist ein Integritätstest von Endpunkten in Rolleninstanzen. Er wird mit Web- oder Workerrollen in einer Dienstdefinitionsdatei kombiniert.
-ms.custom: ''
-ms.date: 04/14/2015
-services: cloud-services
+ms.topic: article
 ms.service: cloud-services
-ms.topic: reference
-caps.latest.revision: 14
-author: georgewallace
+ms.date: 10/14/2020
 ms.author: tagore
-ms.openlocfilehash: 6d0e84b6724d9df4162d4be3e06a9952087a53a6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 3dca519f7fb4523ce9d9267f7629c1177cc5e3b6
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "79537345"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98739785"
 ---
-# <a name="azure-cloud-services-definition-loadbalancerprobe-schema"></a>Azure Cloud Services-Definition LoadBalancerProbe-Schema
+# <a name="azure-cloud-services-classic-definition-loadbalancerprobe-schema"></a>Azure Cloud Services (klassisch): Definition des LoadBalancerProbe-Schemas
+
+> [!IMPORTANT]
+> [Azure Cloud Services (erweiterter Support)](../cloud-services-extended-support/overview.md) ist ein neues auf Azure Resource Manager basierendes Bereitstellungsmodell für Azure Cloud Services. Im Zuge dieser Änderung wurden Azure Cloud Services-Instanzen, die unter dem Azure Service Manager-basierten Bereitstellungsmodell ausgeführt werden, in „Cloud Services (klassisch)“ umbenannt. Für alle neuen Bereitstellungen wird [Azure Cloud Services (erweiterter Support)](../cloud-services-extended-support/overview.md) verwendet.
+
 Der Lastenausgleichstest ist ein vom Kunden definierter Integritätstest von UDP-Endpunkten und Endpunkten in Rolleninstanzen. `LoadBalancerProbe` ist kein eigenständiges Element; es wird mit der Webrolle oder der Workerrolle in einer Dienstdefinitionsdatei kombiniert. Ein `LoadBalancerProbe` kann von mehreren Rollen verwendet werden.
 
 Die Standarderweiterung für die Dienstdefinitionsdatei lautet „.csdef“.
@@ -55,11 +58,11 @@ Das Element `LoadBalancerProbe` definiert den Integritätstest für ein Modell. 
 
 In der folgenden Tabelle sind die Attribute des `LoadBalancerProbe`-Elements beschrieben:
 
-|attribute|type|BESCHREIBUNG|
+|Attribut|type|Beschreibung|
 | ------------------- | -------- | -----------------|
 | `name`              | `string` | Erforderlich. Der Name des Lastenausgleichstests. Der Name muss eindeutig sein.|
 | `protocol`          | `string` | Erforderlich. Gibt das Protokoll des Endpunkts an. Mögliche Werte sind `http` oder `tcp`. Wenn `tcp` angegeben wird, ist der Empfang einer Bestätigung erforderlich, damit der Test erfolgreich ist. Wenn `http` angegeben wird, ist eine 200 OK-Antwort vom angegebenen URI erforderlich, damit der Test erfolgreich ist.|
-| `path`              | `string` | Der URI, mit dem der Integritätsstatus über den virtuellen Computer angefordert wird. `path` ist erforderlich, wenn `protocol` auf `http` festgelegt ist. Andernfalls ist die Angabe nicht zulässig.<br /><br /> Es gibt keinen Standardwert.|
+| `path`              | `string` | Der URI, mit dem der Integritätsstatus über den virtuellen Computer angefordert wird. `path` ist erforderlich, wenn `protocol` auf `http` festgelegt ist. Andernfalls ist die Angabe nicht zulässig.<br /><br /> Es ist kein Standardwert vorhanden.|
 | `port`              | `integer` | Optional. Der Port für die Übertragung des Tests. Dies ist für jeden Endpunkt optional, da derselbe Port anschließend für den Test verwendet wird. Sie können einen anderen Port für die Ausführung des Tests konfigurieren. Mögliche Werte reichen von 1 bis einschließlich 65535.<br /><br /> Der Standardwert wird vom Endpunkt festgelegt.|
 | `intervalInSeconds` | `integer` | Optional. Das Intervall in Sekunden, in dem der Endpunkt auf den Integritätsstatus getestet werden soll. In der Regel ist das Intervall etwas kleiner als die Hälfte des zugeordneten Zeitlimits (in Sekunden). Dies ermöglicht die Durchführung von zwei vollständigen Tests, bevor die Instanz von der Rotation ausgenommen wird.<br /><br /> Der Standardwert beträgt 15, der Mindestwert 5.|
 | `timeoutInSeconds`  | `integer` | Optional. Das Zeitlimit in Sekunden für den Test, bei dem keine Antwort dazu führt, dass die Übermittlung von weiterem Datenverkehr an den Endpunkt beendet wird. Mit diesem Wert können Endpunkte schneller oder langsamer als bei den typischen, in Azure verwendeten Zeiten (Standardwerte) von der Rotation ausgenommen werden.<br /><br /> Der Standardwert beträgt 31, der Mindestwert 11.|
