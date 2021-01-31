@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 09/30/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: cffa6b1200b7236b3c0a3e48b50c58275cf4c57b
-ms.sourcegitcommit: 5ae2f32951474ae9e46c0d46f104eda95f7c5a06
+ms.openlocfilehash: 01ac42cce29f941a90631936ece025f02afedeaf
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95316619"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98673619"
 ---
 # <a name="azure-file-sync-proxy-and-firewall-settings"></a>Proxy- und Firewalleinstellungen der Azure-Dateisynchronisierung
 Die Azure-Dateisynchronisierung verbindet Ihre lokalen Server mit Azure Files, wodurch Synchronisierung für mehrere Standorte und Cloudtiering-Funktionalität ermöglicht werden. Daher muss ein lokaler Server eine Verbindung mit dem Internet haben. Ein IT-Administrator muss den besten Weg festlegen, auf dem der Server zu den Azure-Clouddiensten gelangt.
@@ -133,6 +133,8 @@ Für Business Continuity und Disaster Recovery (BCDR) haben Sie Ihre Azure-Datei
 | Öffentlich | USA Süd Mitte | https:\//southcentralus01.afs.azure.net | USA Nord Mitte | https:\//tm-southcentralus01.afs.azure.net |
 | Öffentlich | Indien (Süden) | https:\//southindia01.afs.azure.net<br>https:\//kailani-sin.one.microsoft.com | Indien, Mitte | https:\//tm-southindia01.afs.azure.net<br>https:\//tm-kailani-sin.one.microsoft.com |
 | Öffentlich | Asien, Südosten | https:\//southeastasia01.afs.azure.net<br>https:\//kailani10.one.microsoft.com | Asien, Osten | https:\//tm-southeastasia01.afs.azure.net<br>https:\//tm-kailani10.one.microsoft.com |
+| Öffentlich | Schweiz, Norden | https:\//switzerlandnorth01.afs.azure.net<br>https:\//tm-switzerlandnorth01.afs.azure.net | Schweiz, Westen | https:\//switzerlandwest01.afs.azure.net<br>https:\//tm-switzerlandwest01.afs.azure.net |
+| Öffentlich | Schweiz, Westen | https:\//switzerlandwest01.afs.azure.net<br>https:\//tm-switzerlandwest01.afs.azure.net | Schweiz, Norden | https:\//switzerlandnorth01.afs.azure.net<br>https:\//tm-switzerlandnorth01.afs.azure.net |
 | Öffentlich | UK, Süden | https:\//uksouth01.afs.azure.net<br>https:\//kailani-uks.one.microsoft.com | UK, Westen | https:\//tm-uksouth01.afs.azure.net<br>https:\//tm-kailani-uks.one.microsoft.com |
 | Öffentlich | UK, Westen | https:\//ukwest01.afs.azure.net<br>https:\//kailani-ukw.one.microsoft.com | UK, Süden | https:\//tm-ukwest01.afs.azure.net<br>https:\//tm-kailani-ukw.one.microsoft.com |
 | Öffentlich | USA, Westen-Mitte | https:\//westcentralus01.afs.azure.net | USA, Westen 2 | https:\//tm-westcentralus01.afs.azure.net |

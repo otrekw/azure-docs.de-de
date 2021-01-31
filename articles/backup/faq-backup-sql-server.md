@@ -4,12 +4,12 @@ description: Enthält Antworten auf häufig gestellte Fragen zur Sicherung von S
 ms.reviewer: vijayts
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.openlocfilehash: 7518fc49f7d6d728bd8faa0de4cf0edc1c6d5831
-ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
+ms.openlocfilehash: ca785e217da4355a44ffbb26b813d55d942c5c14
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97734112"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98787619"
 ---
 # <a name="faq-about-sql-server-databases-that-are-running-on-an-azure-vm-backup"></a>Häufig gestellte Fragen zu SQL Server-Datenbanken, die auf einer Azure VM-Sicherungsinstanz ausgeführt werden
 
@@ -101,14 +101,17 @@ Sie können die umbenannte Datenbank auswählen und den Schutz dafür konfigurie
 Eine Datenbank, die Sie [einer automatisch geschützten Instanz hinzufügen](backup-sql-server-database-azure-vms.md#enable-auto-protection), wird ggf. nicht sofort unter den geschützten Elementen angezeigt. Dies liegt daran, dass die Ermittlung in der Regel alle 8 Stunden ausgeführt wird. Sie können neue Datenbanken aber sofort erkennen und schützen, wenn Sie manuell eine Ermittlung durchführen, indem Sie **Datenbanken neu ermitteln**  auswählen. Dies ist in der folgenden Abbildung dargestellt:
 
   ![Manuelles Ermitteln einer neu hinzugefügten Datenbank](./media/backup-azure-sql-database/view-newly-added-database.png)
-  
+
+## <a name="can-i-protect-databases-on-virtual-machines-that-have-azure-disk-encryption-ade-enabled"></a>Kann ich Datenbanken auf virtuellen Computern schützen, auf denen Azure Disk Encryption (ADE) aktiviert ist?
+Ja, Sie können Datenbanken auf virtuellen Computern schützen, auf denen Azure Disk Encryption (ADE) aktiviert ist.
+
 ## <a name="can-i-protect-databases-that-have-tde-transparent-data-encryption-turned-on-and-will-the-database-stay-encrypted-through-the-entire-backup-process"></a>Kann ich Datenbanken schützen, für die TDE (Transparent Data Encryption) aktiviert ist, und bleibt die Datenbank während des gesamten Sicherungsprozesses verschlüsselt?
 
 Ja, Azure Backup unterstützt die Sicherung von Datenbanken und Servern in SQL Server mit aktivierter TDE. Backup unterstützt [TDE](/sql/relational-databases/security/encryption/transparent-data-encryption) mit Schlüsseln, die von Azure verwaltet werden, oder mit kundenseitig verwalteten Schlüssen (Bring Your Own Key, BYOK).  Backup führt im Rahmen des Sicherungsprozesses keine SQL-Verschlüsselung durch, daher bleibt die Datenbank bei der Sicherung verschlüsselt.
 
 ## <a name="does-azure-backup-perform-a-checksum-operation-on-the-data-stream"></a>Führt Azure Backup einen Prüfsummenvorgang für den Datenstrom aus?
 
-Wir führen einen Prüfsummenvorgang für den Datenstrom aus. Dies sollte jedoch nicht mit der [SQL-Prüfsumme](https://docs.microsoft.com/sql/relational-databases/backup-restore/enable-or-disable-backup-checksums-during-backup-or-restore-sql-server) verwechselt werden.
+Wir führen einen Prüfsummenvorgang für den Datenstrom aus. Dies sollte jedoch nicht mit der [SQL-Prüfsumme](/sql/relational-databases/backup-restore/enable-or-disable-backup-checksums-during-backup-or-restore-sql-server) verwechselt werden.
 Bei Azure-Workloadsicherungen wird die Prüfsumme für den Datenstrom während des Sicherungsvorgangs berechnet und explizit gespeichert. Diese Prüfsumme des Datenstroms wird dann als Referenz übernommen und während des Wiederherstellungsvorgangs mit der Prüfsumme des Datenstroms verglichen, um die Datenkonsistenz sicherzustellen.
 
 ## <a name="next-steps"></a>Nächste Schritte

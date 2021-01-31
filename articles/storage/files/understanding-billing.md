@@ -4,22 +4,22 @@ description: Erfahren Sie, wie Sie die Abrechnungsmodelle „Bereitgestellt“ u
 author: roygara
 ms.service: storage
 ms.topic: how-to
-ms.date: 12/1/2020
+ms.date: 01/20/2021
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 880ec90ce1cf0efffce0cfd6800bdbaed23f8dd0
-ms.sourcegitcommit: beacda0b2b4b3a415b16ac2f58ddfb03dd1a04cf
+ms.openlocfilehash: 19ecbea70d9cb6b8cc31c72ed3c1294cd137ce93
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97831464"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632477"
 ---
 # <a name="understanding-azure-files-billing"></a>Grundlegendes zur Abrechnung für Azure Files
 Für Azure Files gibt es zwei Abrechnungsmodelle: „Bereitgestellt“ und „Nutzungsbasierte Zahlung“. Das Modell „Bereitgestellt“ ist nur für Premium-Dateifreigaben verfügbar, d. h. für Dateifreigaben, die in einem Speicherkonto des Typs **FileStorage** bereitgestellt werden. Das Modell „Nutzungsbasierte Zahlung“ ist nur für Standarddateifreigaben verfügbar, d. h. für Dateifreigaben, die in einem Speicherkonto des Typs **Universell, Version 2** bereitgestellt werden. In diesem Artikel wird die Funktionsweise beider Modelle erklärt, um Ihnen zu helfen, Ihre monatliche Azure Files-Rechnung zu verstehen.
 
 Die aktuellen Preise für Azure Files finden Sie auf der [Seite mit den Preisen für Azure Files](https://azure.microsoft.com/pricing/details/storage/files/).
 
-## <a name="provisioned-billing"></a>Abrechnung beim Modell „Bereitgestellt“
+## <a name="provisioned-model"></a>Bereitgestelltes Modell
 Azure Files verwendet für Premium-Dateifreigaben das Modell „Bereitgestellt“. Beim diesem Geschäftsmodell geben Sie dem Azure Files-Dienst aktiv an, wie hoch Ihr Speicherbedarf ist, anstatt nach Inanspruchnahme abgerechnet zu werden. Dies ist vergleichbar mit dem Kauf lokaler Hardware. Wenn Sie eine Azure-Dateifreigabe mit einer bestimmten Menge Speicherplatz bereitstellen, zahlen Sie für diesen Speicher unabhängig davon, ob Sie ihn nutzen oder nicht, genauso wie Sie nicht anfangen, Kosten für lokale physische Medien zu zahlen, wenn Sie beginnen, Speicherplatz zu belegen. Im Gegensatz zum Kauf lokaler physischer Medien können bereitgestellte Dateifreigaben je nach Speicher- und E/A-Leistungsmerkmalen dynamisch hoch- oder herunterskaliert werden.
 
 Wenn Sie eine Premium-Dateifreigabe bereitstellen, geben Sie an, wie viele GiBs Ihre Workload benötigt. Jedes GiB, das Sie bereitstellen, berechtigt Sie zu mehr IOPS und Durchsatz in einem festen Verhältnis. Zusätzlich zum garantierten IOPS-Grundwert unterstützt jede Premium-Dateifreigabe Bursting nach dem Prinzip der bestmöglichen Leistung. Die Formeln für IOPS und Durchsatz sind wie folgt:
@@ -63,7 +63,7 @@ Freigabeguthaben können drei Zustände aufweisen:
 
 Neue Dateifreigaben beginnen mit der vollen Anzahl von Guthaben im Burstbucket. Burstguthaben werden nicht angesammelt, wenn der Freigabe-IOPS aufgrund einer Einschränkung durch den Server unter den IOPS-Grundwert fällt.
 
-## <a name="pay-as-you-go-billing"></a>Abrechnung bei nutzungsbasierter Zahlung
+## <a name="pay-as-you-go-model"></a>Modell für die nutzungsbasierte Bezahlung
 Azure Files verwendet für Standarddateifreigaben das Geschäftsmodell „Nutzungsbasierte Zahlung“. Bei diesem Geschäftsmodell wird der zu zahlende Betrag dadurch bestimmt, wie viel Sie tatsächlich in Anspruch nehmen, und nicht auf Grundlage einer bereitgestellten Menge. Grundsätzlich zahlen Sie die Kosten einer auf Datenträgern gespeicherte Datenmenge und dann für zusätzliche Transaktionen, die auf der Nutzung dieser Daten basieren. Ein Modell mit nutzungsbasierter Zahlung kann wirtschaftlich sein, da Sie keine Überdimensionierung vornehmen müssen, um künftiges Wachstum oder Leistungsanforderungen zu berücksichtigen. Es muss auch keine Aufhebung von Bereitstellung erfolgen, wenn sich die Workload oder der Datenspeicherbedarf im Laufe der Zeit ändert. Andererseits kann ein Modell mit nutzungsbasierter Zahlung im Rahmen eines Budgetierungsprozesses schwierig zu planen sein, da das Abrechnungsmodell mit nutzungsbasierter Zahlung der Inanspruchnahme durch Endbenutzer unterliegt.
 
 ### <a name="differences-in-standard-tiers"></a>Unterschiede bei den Standardtarifen

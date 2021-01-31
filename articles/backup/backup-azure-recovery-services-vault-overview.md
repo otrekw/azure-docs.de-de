@@ -3,12 +3,12 @@ title: Übersicht über Recovery Services-Tresore
 description: Übersicht über Recovery Services-Tresore
 ms.topic: conceptual
 ms.date: 08/17/2020
-ms.openlocfilehash: ab6b27bdc7ac9b01385ed43830d0af5900210d43
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 0ed37446e1ccf0780f924143c8f063964adf0004
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96017320"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98755125"
 ---
 # <a name="recovery-services-vaults-overview"></a>Übersicht über Recovery Services-Tresore
 
@@ -22,7 +22,7 @@ In diesem Artikel werden die Funktionen eines Recovery Services-Tresors beschrie
 
 - **Vorläufiges Löschen:**  Beim vorläufigen Löschen werden die Sicherungsdaten 14 Tage länger aufbewahrt, damit das jeweilige Sicherungselement auch dann ohne Datenverluste wiederhergestellt werden kann, wenn ein böswilliger Akteur eine Sicherung löscht oder die Sicherungsdaten versehentlich gelöscht werden. Für die zusätzlichen 14 Tage der Aufbewahrung von Sicherungsdaten mit dem Status „Vorläufiges Löschen“ fallen für Sie keine Kosten an. [Weitere Informationen](backup-azure-security-feature-cloud.md)
 
-- **Regionsübergreifende Wiederherstellung:**  Die regionsübergreifende Wiederherstellung (Cross-Region Restore, CRR) ermöglicht es Ihnen, virtuelle Azure-Computer in einer sekundären Region wiederherzustellen, bei der es sich um eine gekoppelte Azure-Region handelt. Wenn Azure einen Notfall in der primären Region feststellt, stehen die in der sekundären Region replizierten Daten für eine Wiederherstellung in der sekundären Region zur Verfügung, um auf einen Notfall mit echter Downtime in der primären Region für die Umgebung zu reagieren. [Weitere Informationen](backup-azure-arm-restore-vms.md#cross-region-restore)
+- **Regionsübergreifende Wiederherstellung:**  Die regionsübergreifende Wiederherstellung (Cross-Region Restore, CRR) ermöglicht es Ihnen, virtuelle Azure-Computer in einer sekundären Region wiederherzustellen, bei der es sich um eine gekoppelte Azure-Region handelt. Wenn Sie dieses Feature auf [Tresorebene](backup-create-rs-vault.md#set-cross-region-restore) aktivieren, können Sie die replizierten Daten in der sekundären Region jederzeit bei Bedarf wiederherstellen. Dadurch können Sie die Daten der sekundären Region zur Überwachung der Konformität und bei Ausfallszenarien wiederherstellen, ohne darauf warten zu müssen, dass Azure den Notfall deklariert (im Gegensatz zu den GRS-Einstellungen des Tresors). [Weitere Informationen](backup-azure-arm-restore-vms.md#cross-region-restore)
 
 ## <a name="storage-settings-in-the-recovery-services-vault"></a>Speichereinstellungen im Recovery Services-Tresor
 
