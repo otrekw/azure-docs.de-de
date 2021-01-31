@@ -1,0 +1,43 @@
+---
+title: 'Azure AD Connect-Cloudsynchronisierung: Fehlercodes und Beschreibungen'
+description: Referenzartikel zu Fehlercodes der Cloudsynchronisierung
+services: active-directory
+author: billmath
+manager: daveba
+ms.service: active-directory
+ms.workload: identity
+ms.topic: reference
+ms.date: 01/14/2021
+ms.subservice: hybrid
+ms.author: billmath
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 22e677e5a86f60627552161f7b2115c08695dbf0
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98612527"
+---
+# <a name="azure-ad-connect-cloud-sync-error-codes-and-descriptions"></a>Azure AD Connect-Cloudsynchronisierung: Fehlercodes und Beschreibungen
+Nachfolgend finden Sie eine Liste von Fehlercodes und deren Beschreibung.
+
+
+## <a name="error-codes"></a>Fehlercodes
+
+|Fehlercode|Details|Szenario|Lösung|
+|-----|-----|-----|-----|
+|TimeOut|Fehlermeldung: Beim Kontaktieren des lokalen Agents und Synchronisieren der Konfiguration wurde ein Anforderungstimeoutfehler festgestellt. Informationen zu weiteren Problemen im Zusammenhang mit Ihrem Cloudsynchronisierungs-Agent finden Sie in unserer Anleitung zur Problembehandlung.|Timeout bei der Anforderung an HIS. Der aktuelle Timeoutwert beträgt 10 Minuten.|Siehe [Anleitung zur Problembehandlung](how-to-troubleshoot.md)|
+|HybridSynchronizationActiveDirectoryInternalServerError|Fehlermeldung: Wir konnten diese Anforderung zu diesem Zeitpunkt nicht verarbeiten. Wenn dieses Problem weiterhin besteht, wenden Sie sich an den Support, und geben Sie die folgende Auftragskennung an: AD2AADProvisioning.30b500eaf9c643b2b78804e80c1421fe.5c291d3c-d29f-4570-9d6b-f0c2fa3d5926. Weitere Details: Die Verarbeitung der HTTP-Anforderung hat zu einer Ausnahme geführt. |Die in der SCIM-Anforderung empfangenen Parameter konnten nicht für eine Suchanforderung verarbeitet werden.|Weitere Informationen finden Sie in der HTTP-Antwort, die von der „Response“-Eigenschaft dieser Ausnahme zurückgegeben wurde.|
+|HybridIdentityServiceNoAgentsAssigned|Fehlermeldung: Wir können keinen aktiven Agent für die Domäne finden, die Sie synchronisieren möchten. Überprüfen Sie, ob die Agents entfernt wurden. Wenn dies der Fall ist, installieren Sie den Agent erneut.|Es werden keine Agents ausgeführt. Die Agents wurden wahrscheinlich entfernt. Registrieren Sie einen neuen Agent.|"In diesem Fall wird im Portal kein Agent angezeigt, der der Domäne zugewiesen ist.|
+|HybridIdentityServiceNoActiveAgents|Fehlermeldung: Wir können keinen aktiven Agent für die Domäne finden, die Sie synchronisieren möchten. Überprüfen Sie, ob der Agent ausgeführt wird. Wechseln Sie dazu zu dem Server, auf dem der Agent installiert ist, und überprüfen Sie, ob der Microsoft Azure AD-Cloudsynchronisierungs-Agent (Microsoft Azure AD Cloud Sync Agent) unter Dienste ausgeführt wird.|"Agents lauschen nicht am ServiceBus-Endpunkt. [Der Agent befindet sich hinter einer Firewall, die keine Verbindungen mit Service Bus zulässt](../../active-directory/manage-apps/application-proxy-configure-connectors-with-proxy-servers.md#use-the-outbound-proxy-server)|
+|HybridIdentityServiceInvalidResource|Fehlermeldung: Wir konnten diese Anforderung zu diesem Zeitpunkt nicht verarbeiten. Wenn dieses Problem weiterhin besteht, wenden Sie sich an den Support, und geben Sie die folgende Auftragskennung an: AD2AADProvisioning.3a2a0d8418f34f54a03da5b70b1f7b0c.d583d090-9cd3-4d0a-aee6-8d666658c3e9. Weitere Details: Es scheint ein Problem mit Ihrer Cloudsynchronisierungseinrichtung vorzuliegen. Registrieren Sie Ihren Cloudsynchronisierungs-Agent in Ihrer lokalen AD-Domäne erneut, und starten Sie die Konfiguration im Azure-Portal neu.|Der Ressourcenname muss festgelegt werden, damit HIS weiß, welcher Agent kontaktiert werden muss.|Registrieren Sie Ihren Cloudsynchronisierungs-Agent in Ihrer lokalen AD-Domäne erneut, und starten Sie die Konfiguration im Azure-Portal neu.|
+|HybridIdentityServiceAgentSignalingError|Fehlermeldung: Wir konnten diese Anforderung zu diesem Zeitpunkt nicht verarbeiten. Wenn dieses Problem weiterhin besteht, wenden Sie sich an den Support, und geben Sie die folgende Auftragskennung an: AD2AADProvisioning.92d2e8750f37407fa2301c9e52ad7e9b.efb835ef-62e8-42e3-b495-18d5272eb3f9. Weitere Details: Wir konnten diese Anforderung zu diesem Zeitpunkt nicht verarbeiten. Wenn dieses Problem weiterhin besteht, wenden Sie sich unter Angabe der Auftrags-ID (aus dem Statusbereich Ihrer Konfiguration) an den Support.|Service Bus kann keine Nachricht an den Agent senden. Möglicherweise liegt ein Service Bus-Ausfall vor, oder der Agent reagiert nicht.|Wenn dieses Problem weiterhin besteht, wenden Sie sich unter Angabe der Auftrags-ID (aus dem Statusbereich Ihrer Konfiguration) an den Support.|
+|AzureDirectoryServiceServerBusy|Fehlermeldung: Ein Fehler ist aufgetreten. Fehlercode: 81. Fehlerbeschreibung: Azure Active Directory ist derzeit ausgelastet. Dieser Vorgang wird automatisch wiederholt. Sollte dieses Problem länger als 24 Stunden fortbestehen, wenden Sie sich an den technischen Support. Nachverfolgungs-ID: 8a4ab3b5-3664-4278-ab64-9cff37fd3f4f Servername:|Azure Active Directory ist derzeit ausgelastet.|Sollte dieses Problem länger als 24 Stunden fortbestehen, wenden Sie sich an den technischen Support.|
+|AzureActiveDirectoryInvalidCredential|Fehlermeldung: Es wurde ein Problem mit dem Dienstkonto gefunden, das für die Ausführung der Azure AD Connect-Cloudsynchronisierung verwendet wird. Sie können das Clouddienstkonto reparieren, indem Sie die [hier angegebenen Anweisungen](https://go.microsoft.com/fwlink/?linkid=2150988) befolgen. Wenn der Fehler weiterhin besteht, wenden Sie sich unter Angabe der Auftrags-ID (aus dem Statusbereich Ihrer Konfiguration) an den Support. Zusätzliche Fehlerdetails: CredentialsInvalid AADSTS50034: Das Benutzerkonto {EmailHidden} ist im skydrive365.onmicrosoft.com-Verzeichnis nicht vorhanden. Um sich bei dieser Anwendung anmelden zu können, muss das Konto dem Verzeichnis hinzugefügt werden. Ablaufverfolgungs-ID: 14b63033-3bc9-4bd4-b871-5eb4b3500200 Korrelations-ID: 57d93ed1-be4d-483c-997c-a3b6f03deb00 Zeitstempel: 2021-01-12 21:08:29Z |Dieser Fehler wird ausgelöst, wenn das Synchronisierungsdienstkonto „ADToAADSyncServiceAccount“ im Mandanten nicht vorhanden ist. Dies kann auf ein versehentliches Löschen des Kontos zurückzuführen sein.|Verwenden Sie [Repair-AADCloudSyncToolsAccount](reference-powershell.md#repair-aadcloudsynctoolsaccount), um das Dienstkonto zu reparieren.|
+|AzureActiveDirectoryExpiredCredentials|Fehlermeldung: Wir konnten diese Anforderung zu diesem Zeitpunkt nicht verarbeiten. Wenn dieses Problem weiterhin besteht, wenden Sie sich unter Angabe der Auftrags-ID (aus dem Statusbereich Ihrer Konfiguration) an den Support. Zusätzliche Fehlerdetails: CredentialsExpired AADSTS50055: Das Kennwort ist abgelaufen. Ablaufverfolgungs-ID: 989b1841-dbe5-49c9-ab6c-9aa25f7b0e00 Korrelations-ID: 1c69b196-1c3a-4381-9187-c84747807155 Zeitstempel: 2021-01-12 20:59:31Z | Der Antwortstatuscode gibt keinen Erfolg an: 401 (Nicht autorisiert).|Die Anmeldeinformationen für das AAD Sync-Dienstkonto sind abgelaufen.|Sie können das Clouddienstkonto reparieren, indem Sie die unter https://go.microsoft.com/fwlink/?linkid=2150988 angegebenen Anweisungen befolgen. Wenn der Fehler weiterhin besteht, wenden Sie sich unter Angabe der Auftrags-ID (aus dem Statusbereich Ihrer Konfiguration) an den Support.  Zusätzliche Fehlerdetails: Ihre Administratoranmeldeinformationen für den Azure Active Directory-Mandanten wurden gegen ein OAuth-Token ausgetauscht, das inzwischen abgelaufen ist."|
+|AzureActiveDirectoryAuthenticationFailed|Fehlermeldung: Wir konnten diese Anforderung zu diesem Zeitpunkt nicht verarbeiten. Wenn dieses Problem weiterhin besteht, wenden Sie sich an den Support, und geben Sie die folgende Auftragskennung an: AD2AADProvisioning.60b943e88f234db2b887f8cb91dee87c.707be0d2-c6a9-405d-a3b9-de87761dc3ac. Weitere Details: Wir konnten diese Anforderung zu diesem Zeitpunkt nicht verarbeiten. Wenn dieses Problem weiterhin besteht, wenden Sie sich unter Angabe der Auftrags-ID (aus dem Statusbereich Ihrer Konfiguration) an den Support. Zusätzliche Fehlerdetails: UnexpectedError.|Unbekannter Fehler.|Wenn dieses Problem weiterhin besteht, wenden Sie sich unter Angabe der Auftrags-ID (aus dem Statusbereich Ihrer Konfiguration) an den Support.|
+
+## <a name="next-steps"></a>Nächste Schritte 
+
+- [Was ist die Identitätsbereitstellung?](what-is-provisioning.md)
+- [Worum handelt es sich bei der Azure AD Connect-Cloudsynchronisierung?](what-is-cloud-sync.md)

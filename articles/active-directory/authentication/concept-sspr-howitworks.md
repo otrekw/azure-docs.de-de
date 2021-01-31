@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e5bcc6503af5f5f685ee589ed7671b4715834fef
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: 496a8dba9b9ea7fb82ad9016479154d6a61cb767
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96779361"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98703274"
 ---
 # <a name="how-it-works-azure-ad-self-service-password-reset"></a>So funktioniert's: Self-Service-Kennwortzurücksetzung in Azure AD
 
@@ -137,7 +137,7 @@ Wenn Sie für die Kennwortzurücksetzung eine mobile App wie die Microsoft Authe
 Benutzer können ihre mobile App nicht registrieren, wenn sie sich unter [https://aka.ms/ssprsetup](https://aka.ms/ssprsetup) für die Self-Service-Kennwortzurücksetzung registrieren. Die Benutzer haben die Möglichkeit, ihre mobile App unter [https://aka.ms/mfasetup](https://aka.ms/mfasetup) oder bei der kombinierten Registrierung von Sicherheitsinformationen unter [https://aka.ms/setupsecurityinfo](https://aka.ms/setupsecurityinfo) zu registrieren.
 
 > [!IMPORTANT]
-> Die Authenticator-App kann nicht als einzige Authentifizierungsmethode ausgewählt werden, wenn nur eine einzelne Methode erforderlich ist. Ebenso können nicht die Authenticator-App und nur eine zusätzliche Methode ausgewählt werden, wenn zwei Methoden festgelegt werden müssen.
+> Die Authenticator-App kann nicht als Authentifizierungsmethode ausgewählt werden, wenn nur eine einzige Methode erforderlich ist. Ebenso können nicht die Authenticator-App und nur eine zusätzliche Methode ausgewählt werden, wenn zwei Methoden festgelegt werden müssen.
 >
 > Wenn Sie SSPR-Richtlinien konfigurieren, die die Authenticator-App als Methode vorsehen, sollten bei einer oder zwei erforderlichen Methoden jeweils eine bzw. zwei zusätzliche Methoden konfiguriert werden.
 >

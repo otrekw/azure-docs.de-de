@@ -1,26 +1,22 @@
 ---
-title: Erste Schritte bei der Integration von Apps in Azure AD | Microsoft-Dokumentation
+title: Erste Schritte bei der Integration von Apps in Azure AD
 description: In diesem Artikel sind die ersten Schritte für die Integration von lokalen Anwendungen und Cloudanwendungen in Azure Active Directory (AD)  aufgeführt.
 services: active-directory
-documentationcenter: ''
 author: kenwith
 manager: celestedg
 ms.service: active-directory
-ms.subservice: app-mgmt
-ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/16/2018
 ms.author: kenwith
 ms.reviewer: asteen
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 913b7975de4598bba7240647c1d9e8c81cd1cec9
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: db3d3623e175d582a2fe271d73aa452ca07b8e8d
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94659096"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98735065"
 ---
 # <a name="integrating-azure-active-directory-with-applications-getting-started-guide"></a>Erste Schritte zur Integration von Anwendungen in Azure Active Directory
 
@@ -77,9 +73,7 @@ Für jede Ihrer Anwendungen gelten möglicherweise unterschiedliche Authentifizi
 Mit dem Microsoft Azure AD-Anwendungsproxy können Sie sicheren Zugriff von jedem Ort und mit jedem Gerät auf Anwendungen bereitstellen, die sich in Ihrem privaten Netzwerk befinden. Nachdem Sie einen Anwendungsproxy-Connector in Ihrer Umgebung installiert haben, können Sie ihn mit Azure AD leicht konfigurieren.
 
 ### <a name="integrating-custom-applications"></a>Integrieren benutzerdefinierter Anwendungen
-Wenn Sie eine neue Anwendung schreiben und Entwickler beim Nutzen der Leistungsfähigkeit von Azure AD unterstützen möchten, finden Sie unter [Leitfaden für Entwickler](./developer-guidance-for-integrating-applications.md) weitere Informationen.
-
-Wenn Sie Ihre benutzerdefinierte Anwendung dem Azure-Anwendungskatalog hinzufügen möchten, finden Sie weitere Informationen unter [“Bring your own app” with Azure AD Self-Service SAML configuration](https://cloudblogs.microsoft.com/enterprisemobility/2015/06/17/bring-your-own-app-with-azure-ad-self-service-saml-configuration-now-in-preview/)(„Bring your own app“ mit Azure AD-Konfiguration für Self-Service SAML).
+Wenn Sie Ihre benutzerdefinierte Anwendung zum Azure-Anwendungskatalog hinzufügen möchten, lesen Sie [Veröffentlichen Ihrer App im Azure AD-App-Katalog](../develop/v2-howto-app-gallery-listing.md).
 
 ## <a name="managing-access-to-applications"></a>Verwalten des Zugriffs auf Anwendungen
 In den folgenden Artikeln werden Möglichkeiten zur Verwaltung des Zugriffs auf Anwendungen beschrieben, nachdem sie mithilfe von Azure AD-Connectors und Azure AD in Azure AD integriert wurden.

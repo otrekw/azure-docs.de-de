@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 0a8e08d0045d0520241341cc08fb800468ed6897
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: c3e6c1d6bfa83ef238ef38b25b189510cf142a38
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96928612"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98661084"
 ---
 # <a name="overview-of-user-accounts-in-azure-active-directory-b2c"></a>Übersicht über Benutzerkonten in Azure Active Directory B2C
 
@@ -38,7 +38,7 @@ Beim Hinzufügen eines neuen Geschäftskontos müssen Sie die folgenden Konfigur
 
 - **Name** und **Benutzername**: Die Eigenschaft **Name** enthält den Vor- und Nachnamen des Benutzers. Der **Benutzername** ist der Bezeichner, den der Benutzer eingibt, um sich anzumelden. Der Benutzername enthält den vollständigen Domänennamen. Der Domänennamensteil des Benutzernamens muss entweder der anfängliche Standarddomänenname *Ihre_Domäne.onmicrosoft.com* oder ein bestätigter, nicht im Verbund konfigurierter [benutzerdefinierter Domänenname](../active-directory/fundamentals/add-custom-domain.md) wie *contoso.com* sein.
 - **Profil**: Das Konto wird mit einem Profil mit Daten des Benutzers eingerichtet. Sie haben die Möglichkeit, einen Vornamen, Nachnamen, eine Position und einen Abteilungsnamen einzugeben. Sie können das Profil bearbeiten, nachdem das Konto erstellt wurde.
-- **Gruppen**: Sie verwenden eine Gruppe zum Durchführen von Verwaltungsaufgaben, z.B. Zuweisen von Lizenzen oder Berechtigungen für mehrere Benutzer oder Geräte in einem Arbeitsschritt. Sie können das neue Konto einer bestehenden [Gruppe](../active-directory/fundamentals/active-directory-groups-create-azure-portal.md) in Ihrem Mandanten zuordnen.
+- **Gruppen**: Verwenden Sie Gruppen zum Ausführen von Verwaltungsaufgaben, z. B. zum gleichzeitigen Zuweisen von Lizenzen oder Berechtigungen für viele Benutzer oder Geräte. Sie können das neue Konto einer bestehenden [Gruppe](../active-directory/fundamentals/active-directory-groups-create-azure-portal.md) in Ihrem Mandanten zuordnen.
 - **Verzeichnisrolle**: Sie müssen die Zugriffsebene angeben, die das Benutzerkonto auf Ressourcen in Ihrem Mandanten hat. Die folgenden Berechtigungsebenen sind verfügbar:
 
     - **Benutzer**: Benutzer können auf zugewiesene Ressourcen zugreifen, aber die meisten Mandantenressourcen nicht verwalten.
@@ -70,7 +70,7 @@ Befolgen Sie zum Zurücksetzen des Kennworts eines Benutzers die folgenden Angab
 
 Sie können in Ihrem Mandanten externe Benutzer als Gastbenutzer einladen. Ein typisches Szenario für das Einladen von Gastbenutzern in Ihren Azure AD B2C-Mandanten ist das Teilen von Systemadministratoraufgaben. Ein Beispiel der Nutzung eines Gastkontos finden Sie unter [Eigenschaften eines Azure Active Directory B2B-Zusammenarbeitsbenutzers](../active-directory/external-identities/user-properties.md).
 
-Wenn Sie Gastbenutzer in Ihren Mandanten eingeladen haben, geben Sie die E-Mail-Adresse des Empfängers und eine Nachricht ein, die die Einladung beschreibt. Der Einladungslink führt den Benutzer zur Zustimmungsseite, auf der die Schaltfläche **Erste Schritte** ausgewählt und die Überprüfung der Berechtigungen akzeptiert wird. Wenn an die E-Mail-Adresse kein Posteingang angefügt ist, kann der Benutzer zur Zustimmungsseite navigieren, indem er mit den Anmeldeinformationen der Einladung zu einer Microsoft-Seite wechselt. Der Benutzer ist dann gezwungen, die Einladung in gleicher Weise wie beim Klicken auf den Link in der E-Mail einzulösen. Beispiel: `https://myapps.microsoft.com/B2CTENANTNAME`.
+Wenn Sie Gastbenutzer in Ihren Mandanten eingeladen haben, geben Sie die E-Mail-Adresse des Empfängers und eine Nachricht ein, die die Einladung beschreibt. Über den Einladungslink gelangt der Benutzer zur Zustimmungsseite. Wenn an die E-Mail-Adresse kein Posteingang angefügt ist, kann der Benutzer zur Zustimmungsseite navigieren, indem er mit den Anmeldeinformationen der Einladung zu einer Microsoft-Seite wechselt. Der Benutzer ist dann gezwungen, die Einladung in gleicher Weise wie beim Klicken auf den Link in der E-Mail einzulösen. Beispiel: `https://myapps.microsoft.com/B2CTENANTNAME`.
 
 Sie können auch mit der [Microsoft Graph-API](/graph/api/invitation-post?view=graph-rest-beta) Gastbenutzer einladen.
 
@@ -78,7 +78,7 @@ Sie können auch mit der [Microsoft Graph-API](/graph/api/invitation-post?view=g
 
 Der Consumerbenutzer kann sich bei Anwendungen anmelden, die mit Azure AD B2C geschützt sind, kann aber nicht auf Azure-Ressourcen wie das Azure-Portal zugreifen. Der Consumerbenutzer kann ein lokales oder Verbundkonto wie Facebook oder Twitter verwenden. Ein Consumerkonto wird durch Verwendung eines [Registrierungs- oder Anmeldebenutzerflows](user-flow-overview.md), mithilfe der Microsoft Graph-API oder im Azure-Portal erstellt.
 
-Sie können die Daten angeben, die beim Erstellen eines Consumerbenutzerkontos gesammelt werden, indem Sie benutzerdefinierte Benutzerattribute verwenden. Weitere Informationen finden Sie unter [Definieren benutzerdefinierter Attribute in Azure Active Directory B2C](user-flow-custom-attributes.md).
+Sie können die Daten angeben, die beim Erstellen eines Consumerbenutzerkontos gesammelt werden. Weitere Informationen finden Sie unter [Hinzufügen von Benutzerattributen und Anpassen der Benutzereingabe](configure-user-input.md).
 
 Weitere Informationen zum Verwalten von Benutzerkonten finden Sie unter [Verwalten von Azure AD B2C-Benutzerkonten mit Microsoft Graph](manage-user-accounts-graph-api.md).
 

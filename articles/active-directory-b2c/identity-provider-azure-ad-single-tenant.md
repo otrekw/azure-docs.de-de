@@ -8,17 +8,17 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/07/2020
+ms.date: 01/19/2021
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit, project-no-code
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 05c4d36f266fb526a1d0232cc32f0408e4322c80
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 4fa15196deba2bc1fbfdf43b2347903fdc2b101e
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97654386"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98674231"
 ---
 # <a name="set-up-sign-in-for-a-specific-azure-active-directory-organization-in-azure-active-directory-b2c"></a>Einrichten der Anmeldung für eine bestimmte Azure Active Directory-Organisation in Azure Active Directory B2C
 
@@ -38,7 +38,7 @@ In diesem Artikel erfahren Sie, wie Sie die Anmeldung für Benutzer einer bestim
 
 ## <a name="register-an-azure-ad-app"></a>Registrieren einer Azure AD-App
 
-Um die Anmeldung für Benutzer von einer bestimmten Azure AD-Organisation zu aktivieren, müssen Sie eine Anwendung im Azure AD-Mandanten der Organisation registrieren.
+Wenn Sie die Anmeldung für Benutzer mit einem Azure AD-Konto einer bestimmten Azure AD-Organisation in Azure Active Directory B2C (Azure AD B2C) aktivieren möchten, müssen Sie im [Azure-Portal](https://portal.azure.com) eine Anwendung erstellen. Weitere Informationen finden Sie unter [Registrieren einer Anwendung bei Microsoft Identity Platform](../active-directory/develop/quickstart-register-app.md).
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 1. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD-Organisationsmandanten (z. B. „contoso.com“) enthält. Wählen Sie im oberen Menü den Filter **Verzeichnis und Abonnement** aus, und wählen Sie dann das Verzeichnis aus, das Ihren Azure AD-Mandanten enthält.
@@ -103,6 +103,16 @@ Wenn Sie die Ansprüche `family_name` und `given_name` von Azure AD erhalten m�
 
 1. Wählen Sie **Speichern** aus.
 
+## <a name="add-azure-ad-identity-provider-to-a-user-flow"></a>Hinzufügen von Azure AD als Identitätsanbieter zu einem Benutzerflow 
+
+1. Wählen Sie in Ihrem Azure AD B2C-Mandanten die Option **Benutzerflows** aus.
+1. Klicken Sie auf den Benutzerflow, dem Sie Azure AD als Identitätsanbieter hinzufügen möchten.
+1. Wählen Sie unter **Soziales Netzwerk als Identitätsanbieter** die Option **Contoso Azure AD** aus.
+1. Wählen Sie **Speichern** aus.
+1. Um die Richtlinie zu testen, wählen Sie **Benutzerflow ausführen** aus.
+1. Wählen Sie für **Anwendung** die Webanwendung *testapp1* aus, die Sie zuvor registriert haben. Als **Antwort-URL** sollte `https://jwt.ms` angezeigt werden.
+1. Klicken Sie auf **Benutzerflow ausführen**.
+
 ::: zone-end
 
 ::: zone pivot="b2c-custom-policy"
@@ -121,9 +131,9 @@ Sie müssen den von Ihnen erstellten Anwendungsschlüssel in Ihrem Azure AD B2C-
 1. Wählen Sie für **Schlüsselverwendung** die Option `Signature` aus.
 1. Klicken Sie auf **Erstellen**.
 
-## <a name="add-a-claims-provider"></a>Hinzufügen eines Anspruchsanbieters
+## <a name="configure-azure-ad-as-an-identity-provider"></a>Konfigurieren von Azure AD als Identitätsanbieter
 
-Wenn Sie möchten, dass sich Benutzer mithilfe von Azure AD anmelden, müssen Sie Azure AD als Anspruchsanbieter definieren, mit dem Azure AD B2C über einen Endpunkt kommunizieren kann. Der Endpunkt bietet eine Reihe von Ansprüchen, mit denen Azure AD B2C überprüft, ob ein bestimmter Benutzer authentifiziert wurde.
+Damit sich Benutzer mit einem Azure AD-Konto anmelden können, müssen Sie Azure AD als Anspruchsanbieter definieren, mit dem Azure AD B2C über einen Endpunkt kommunizieren kann. Der Endpunkt bietet eine Reihe von Ansprüchen, mit denen Azure AD B2C überprüft, ob ein bestimmter Benutzer authentifiziert wurde.
 
 Sie können Azure AD als Anspruchsanbieter definieren, indem Sie Azure AD in der Erweiterungsdatei Ihrer Richtlinie dem Element **ClaimsProvider** hinzufügen.
 
@@ -135,7 +145,7 @@ Sie können Azure AD als Anspruchsanbieter definieren, indem Sie Azure AD in der
       <Domain>Contoso</Domain>
       <DisplayName>Login using Contoso</DisplayName>
       <TechnicalProfiles>
-        <TechnicalProfile Id="OIDC-Contoso">
+        <TechnicalProfile Id="AADContoso-OpenIdConnect">
           <DisplayName>Contoso Employee</DisplayName>
           <Description>Login with your Contoso account</Description>
           <Protocol Name="OpenIdConnect"/>
@@ -179,7 +189,7 @@ Sie können Azure AD als Anspruchsanbieter definieren, indem Sie Azure AD in der
 
 Um ein Token vom Azure AD-Endpunkt zu erhalten, müssen Sie die Protokolle definieren, die Azure AD B2C zur Kommunikation mit Azure AD verwenden soll. Dies erfolgt im **TechnicalProfile**-Element von **ClaimsProvider**.
 
-1. Aktualisieren Sie die ID des **TechnicalProfile**-Elements. Diese ID wird als Verweis auf dieses technische Profil aus anderen Teilen der Richtlinie verwendet, z. B. `OIDC-Contoso`.
+1. Aktualisieren Sie die ID des **TechnicalProfile**-Elements. Diese ID wird als Verweis auf dieses technische Profil aus anderen Teilen der Richtlinie verwendet, z. B. `AADContoso-OpenIdConnect`.
 1. Aktualisieren Sie den Wert für **DisplayName**. Dieser Wert wird auf dem Anmeldebildschirm auf der Anmeldeschaltfläche angezeigt.
 1. Aktualisieren Sie den Wert von **Beschreibung**.
 1. Azure AD verwendet das OpenID Connect-Protokoll. Stellen Sie daher sicher, dass der Wert für **Protokoll**`OpenIdConnect` lautet.
@@ -187,84 +197,28 @@ Um ein Token vom Azure AD-Endpunkt zu erhalten, müssen Sie die Protokolle defin
 1. Legen Sie **client_id** auf die Anwendungs-ID aus der Anwendungsregistrierung fest.
 1. Aktualisieren Sie unter **CryptographicKeys** den Wert von **StorageReferenceId** auf den Namen des zuvor erstellten Richtlinienschlüssels. Beispiel: `B2C_1A_ContosoAppSecret`.
 
-### <a name="upload-the-extension-file-for-verification"></a>Hochladen der Erweiterungsdatei zur Überprüfung
 
-Nun haben Sie Ihre Richtlinie so konfiguriert, dass Azure AD B2C mit Ihrem Azure AD-Verzeichnis kommunizieren kann. Versuchen Sie, die Erweiterungsdatei Ihrer Richtlinie hochzuladen, um sich zu vergewissern, dass soweit keine Probleme vorliegen.
-
-1. Wählen Sie in Ihrem Azure AD B2C-Mandanten auf der Seite **Benutzerdefinierte Richtlinien** die Option **Richtlinie hochladen** aus.
-1. Aktivieren Sie **Richtlinie überschreiben, sofern vorhanden**, navigieren Sie dann zur Datei *TrustFrameworkExtensions.xml*, und wählen Sie die Datei aus.
-1. Klicken Sie auf **Hochladen**.
-
-## <a name="register-the-claims-provider"></a>Registrieren des Anspruchsanbieters
-
-Der Identitätsanbieter wurde nun eingerichtet, aber er ist noch auf keiner der Registrierungs-/Anmeldeseiten verfügbar. Um ihn verfügbar zu machen, erstellen Sie ein Duplikat einer vorhandenen User Journey-Vorlage und ändern diese dann so, dass sie auch den Azure AD-Identitätsanbieter aufweist:
-
-1. Öffnen Sie die Datei *TrustFrameworkBase.xml* aus dem Starter Pack.
-1. Suchen und kopieren Sie den gesamten Inhalt des **UserJourney**-Elements, das `Id="SignUpOrSignIn"` enthält.
-1. Öffnen Sie die Datei *TrustFrameworkExtensions.xml*, und suchen Sie nach dem **UserJourneys**-Element. Wenn das Element nicht vorhanden ist, fügen Sie ein solches hinzu.
-1. Fügen Sie den gesamten Inhalt des kopierten **UserJourney**-Element als untergeordnetes Element des **UserJourneys**-Elements ein.
-1. Benennen Sie die ID der User Journey um. Beispiel: `SignUpSignInContoso`.
-
-### <a name="display-the-button"></a>Anzeigen der Schaltfläche
-
-Das **ClaimsProviderSelection**-Element entspricht einer Schaltfläche für einen Identitätsanbieter auf einer Registrierungs-/Anmeldeseite. Wenn Sie ein **ClaimsProviderSelection**-Element für Azure AD hinzufügen, wird eine neue Schaltfläche angezeigt, wenn ein Benutzer zu der Seite gelangt.
-
-1. Suchen Sie nach dem **OrchestrationStep**-Element, das `Order="1"` in der User Journey enthält, die Sie in der Datei *TrustFrameworkExtensions.xml* erstellt haben.
-1. Fügen Sie unter **ClaimsProviderSelections** das folgende Element hinzu. Legen Sie den Wert von **TargetClaimsExchangeId** auf einen geeigneten Wert (z.B. auf `ContosoExchange`) fest:
-
-    ```xml
-    <ClaimsProviderSelection TargetClaimsExchangeId="ContosoExchange" />
-    ```
-
-### <a name="link-the-button-to-an-action"></a>Verknüpfen der Schaltfläche mit einer Aktion
-
-Nachdem Sie eine Schaltfläche implementiert haben, müssen Sie sie mit einer Aktion verknüpfen. In diesem Fall soll bei der Aktion Azure AD B2C mit Azure AD kommunizieren, um ein Token zu empfangen. Dies gelingt Ihnen, indem Sie das technische Profil für Ihren Azure AD-Anspruchsanbieter verknüpfen:
-
-1. Suchen Sie nach dem **OrchestrationStep**-Element, das `Order="2"` in der User Journey enthält.
-1. Fügen Sie das folgende **ClaimsExchange**-Element hinzu, um sicherzustellen, dass Sie für **Id** den gleichen Wert verwenden, den Sie für **TargetClaimsExchangeId** verwendet haben:
-
-    ```xml
-    <ClaimsExchange Id="ContosoExchange" TechnicalProfileReferenceId="OIDC-Contoso" />
-    ```
-
-    Ändern Sie den Wert von **TechnicalProfileReferenceId** in die **Id** des technischen Profils, das Sie zuvor erstellt haben. Beispiel: `OIDC-Contoso`.
-
-1. Speichern Sie die Datei *TrustFrameworkExtensions.xml*, und laden Sie die Datei zur Überprüfung erneut hoch.
-
-::: zone-end
-
-::: zone pivot="b2c-user-flow"
-
-## <a name="add-azure-ad-identity-provider-to-a-user-flow"></a>Hinzufügen von Azure AD als Identitätsanbieter zu einem Benutzerflow 
-
-1. Wählen Sie in Ihrem Azure AD B2C-Mandanten die Option **Benutzerflows** aus.
-1. Klicken Sie auf den Benutzerflow, dem Sie Azure AD als Identitätsanbieter hinzufügen möchten.
-1. Wählen Sie unter **Soziales Netzwerk als Identitätsanbieter** die Option **Contoso Azure AD** aus.
-1. Wählen Sie **Speichern** aus.
-1. Um die Richtlinie zu testen, wählen Sie **Benutzerflow ausführen** aus.
-1. Wählen Sie für **Anwendung** die Webanwendung *testapp1* aus, die Sie zuvor registriert haben. Als **Antwort-URL** sollte `https://jwt.ms` angezeigt werden.
-1. Klicken Sie auf **Benutzerflow ausführen**.
-
-::: zone-end
-
-::: zone pivot="b2c-custom-policy"
+[!INCLUDE [active-directory-b2c-add-identity-provider-to-user-journey](../../includes/active-directory-b2c-add-identity-provider-to-user-journey.md)]
 
 
-## <a name="update-and-test-the-relying-party-file"></a>Aktualisieren und Testen der Datei der vertrauenden Seite
+```xml
+<OrchestrationStep Order="1" Type="CombinedSignInAndSignUp" ContentDefinitionReferenceId="api.signuporsignin">
+  <ClaimsProviderSelections>
+    ...
+    <ClaimsProviderSelection TargetClaimsExchangeId="AzureADContosoExchange" />
+  </ClaimsProviderSelections>
+  ...
+</OrchestrationStep>
 
-Aktualisieren Sie als Nächstes die Datei der vertrauenden Seite, mit der die erstellte User Journey initiiert wird.
+<OrchestrationStep Order="2" Type="ClaimsExchange">
+  ...
+  <ClaimsExchanges>
+    <ClaimsExchange Id="AzureADContosoExchange" TechnicalProfileReferenceId="AADContoso-OpenIdConnect" />
+  </ClaimsExchanges>
+</OrchestrationStep>
+```
 
-1. Erstellen Sie in Ihrem Arbeitsverzeichnis eine Kopie der Datei *SignUpOrSignIn.xml*, und benennen Sie sie um. Benennen Sie die Datei z. B. in *SignUpSignInContoso.xml* um.
-1. Öffnen Sie die neue Datei, und aktualisieren Sie den Wert des Attributs **PolicyId** für **TrustFrameworkPolicy** mit einem eindeutigen Wert. Beispiel: `SignUpSignInContoso`.
-1. Aktualisieren Sie den Wert von **PublicPolicyUri** mit dem URI für die Richtlinie. Beispiel: `http://contoso.com/B2C_1A_signup_signin_contoso`.
-1. Aktualisieren Sie den Wert des Attributs **ReferenceId** im Element **DefaultUserJourney**,damit dieser der Kennung der User Journey entspricht, die Sie zuvor erstellt haben. Beispielsweise *SignUpSignInContoso*.
-1. Speichern Sie die Änderungen, und laden Sie die Datei hoch.
-1. Wählen Sie unter **Benutzerdefinierte Richtlinien** die neue Richtlinie in der Liste aus.
-1. Wählen Sie in der Dropdownliste **Anwendung auswählen** die Azure AD B2C-Anwendung aus, die Sie zuvor erstellt haben. Zum Beispiel *testapp1*.
-1. Kopieren Sie den **Endpunkt für sofortige Ausführung**, und öffnen Sie ihn in einem privaten Browserfenster, z. B. in Google Chrome im Inkognitomodus oder in Microsoft Edge in einem InPrivate-Fenster. Durch das Öffnen in einem privaten Browserfenster können Sie die vollständige User Journey testen, indem Sie keine aktuell zwischengespeicherten Azure AD-Anmeldeinformationen verwenden.
-1. Wählen Sie die Schaltfläche für die Azure AD-Anmeldung (z. B. *Contoso-Mitarbeiter*) aus, und geben Sie dann die Anmeldeinformationen für einen Benutzer in Ihrem Azure AD-Organisationsmandanten ein. Sie werden aufgefordert, die Anwendung zu autorisieren und dann Informationen für Ihr Profil einzugeben.
-
-Wenn der Anmeldevorgang erfolgreich verlaufen ist, wird der Browser an `https://jwt.ms` umgeleitet, wodurch der Inhalt des von Azure AD B2C zurückgegebenen Tokens angezeigt wird.
+[!INCLUDE [active-directory-b2c-create-relying-party-policy](../../includes/active-directory-b2c-configure-relying-party-policy-user-journey.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte
 
