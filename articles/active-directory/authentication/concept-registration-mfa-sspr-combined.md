@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 12/04/2020
+ms.date: 01/19/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c8dce284c0fffe10fe077fcb6c6713ba65c45751
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 9442489efd2a84ac8a31dfb2efb5718e1fd4f594
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96743903"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98621792"
 ---
 # <a name="combined-security-information-registration-for-azure-active-directory-overview"></a>Übersicht über die kombinierte Registrierung von Sicherheitsinformationen in Azure Active Directory
 
@@ -30,18 +30,18 @@ In diesem Artikel wird beschrieben, was die kombinierte Registrierung von Sicher
 > [!div class="nextstepaction"]
 > [Aktivieren der kombinierten Registrierung von Sicherheitsinformationen](howto-registration-mfa-sspr-combined.md)
 
-![Eigenes Profil zeigt registrierte Sicherheitsinformationen für einen Benutzer an](media/concept-registration-mfa-sspr-combined/combined-security-info-defualts-registered.png)
+![„Mein Konto“ mit registrierten Sicherheitsinformationen für einen Benutzer](media/concept-registration-mfa-sspr-combined/combined-security-info-defaults-registered.png)
 
 Lesen Sie vor dem Aktivieren der neuen Funktion diese an Administratoren gerichtete Dokumentation und die benutzerorientierte Dokumentation, um sich mit der Funktionalität und den Auswirkungen dieser Funktion vertraut zu machen. Ziehen Sie für Ihre Schulungen die [Benutzerdokumentation](../user-help/security-info-setup-signin.md) heran, um Ihre Benutzer auf die neue Oberfläche vorzubereiten und so einen erfolgreichen Rollout sicherzustellen.
 
 Die kombinierte Azure AD-Registrierung von Sicherheitsinformationen ist für nationale Clouds wie Azure Deutschland oder Azure China 21Vianet derzeit nicht verfügbar. Sie ist jedoch für Azure US Government verfügbar.
 
 > [!IMPORTANT]
-> Benutzern, die für die ursprüngliche Vorschau und für die erweiterte kombinierte Registrierungsumgebung aktiviert sind, wird das neue Verhalten angezeigt. Benutzern, die für beide Umgebungen aktiviert sind, wird nur die neue Umgebung „Mein Profil“ angezeigt. Die neue Oberfläche *Mein Profil* entspricht dem Erscheinungsbild der kombinierten Registrierung und bietet Benutzern eine nahtlose Umgebung. Benutzer können „Mein Profil“ anzeigen, indem sie zu [https://myprofile.microsoft.com](https://myprofile.microsoft.com) navigieren.
+> Benutzern, die für die ursprüngliche Vorschau und für die erweiterte kombinierte Registrierungsumgebung aktiviert sind, wird das neue Verhalten angezeigt. Benutzern, die für beide Umgebungen aktiviert sind, wird nur die Oberfläche „Mein Konto“ angezeigt. *Mein Konto* entspricht dem Aussehen und Verhalten der kombinierten Registrierung und bietet Benutzern eine einheitliche Oberfläche. Benutzer können „Mein Konto“ anzeigen, indem sie zu [https://myaccount.microsoft.com](https://myaccount.microsoft.com) navigieren.
 >
 > Möglicherweise erhalten Sie eine Fehlermeldung (z. B. „Anmeldung nicht möglich“), wenn Sie versuchen, auf die Option „Sicherheitsinformation“ zuzugreifen. Vergewissern Sie sich in diesem Fall, dass Cookies von Drittanbietern im Webbrowser nicht durch ein Konfigurations- oder Gruppenrichtlinienobjekt blockiert werden.
 
-Die Seiten von *Mein Profil* sind entsprechend den Spracheinstellungen auf dem Computer lokalisiert, der für den Zugriff auf die Seite verwendet wird. Microsoft speichert die aktuell verwendete Sprache im Browsercache, sodass nachfolgende Zugriffsversuche auf die Seiten weiterhin in der zuletzt verwendeten Sprache angezeigt werden. Wenn Sie den Cache löschen, werden die Seiten neu gerendert.
+Die Seiten von *Mein Konto* sind entsprechend den Spracheinstellungen auf dem Computer lokalisiert, der für den Zugriff auf die Seite verwendet wird. Microsoft speichert die aktuell verwendete Sprache im Browsercache, sodass nachfolgende Zugriffsversuche auf die Seiten weiterhin in der zuletzt verwendeten Sprache angezeigt werden. Wenn Sie den Cache löschen, werden die Seiten neu gerendert.
 
 Wenn Sie eine bestimmte Sprache erzwingen möchten, können Sie am Ende der URL `?lng=<language>` hinzufügen. Dabei ist `<language>` der Code der Sprache, in der Sie rendern möchten.
 
@@ -116,7 +116,7 @@ Wenn Benutzer über die SSPR-Richtlinie in regelmäßigen Abständen aufgeforder
 
 ### <a name="manage-mode"></a>Verwaltungsmodus
 
-Benutzer haben Zugriff auf den Verwaltungsmodus, indem sie zu [https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo) navigieren oder unter „Mein Profil“ die Option **Sicherheitsinformation** auswählen. Dort können Benutzer Methoden hinzufügen, vorhandene Methoden löschen oder ändern, die verwendete Standardmethode ändern und vieles mehr.
+Benutzer können auf den Verwaltungsmodus zugreifen, indem sie zu [https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo) navigieren oder unter „Mein Konto“ die Option **Sicherheitsinformation** auswählen. Dort können Benutzer Methoden hinzufügen, vorhandene Methoden löschen oder ändern, die verwendete Standardmethode ändern und vieles mehr.
 
 ## <a name="key-usage-scenarios"></a>Wichtige Verwendungsszenarien
 
@@ -126,17 +126,17 @@ Ein Administrator hat die Registrierung erzwungen.
 
 Ein Benutzer hat nicht alle erforderlichen Sicherheitsinformationen eingerichtet und navigiert zum Azure-Portal. Nach der Eingabe des Benutzernamens und Kennworts wird der Benutzer aufgefordert, die Sicherheitsinformationen einzurichten. Der Benutzer führt dann die im Assistenten angezeigten Schritte zum Einrichten der erforderlichen Sicherheitsinformationen aus. Wenn es Ihre Einstellungen zulassen, kann der Benutzer auch andere Methoden als die standardmäßig angezeigten einrichten. Nach Abschluss des Assistenten überprüfen die Benutzer die eingerichteten Methoden sowie ihre Standardmethode für die mehrstufige Authentifizierung. Um den Einrichtungsvorgang abzuschließen, bestätigt der Benutzer die Informationen und navigiert dann zum Azure-Portal.
 
-### <a name="set-up-security-info-from-my-profile"></a>Einrichten der Sicherheitsinformationen unter „Mein Profil“
+### <a name="set-up-security-info-from-my-account"></a>Einrichten der Sicherheitsinformationen unter „Mein Konto“
 
 Ein Administrator hat die Registrierung nicht erzwungen.
 
-Ein Benutzer, der noch nicht alle erforderlichen Sicherheitsinformationen eingerichtet hat, navigiert zu [https://myprofile.microsoft.com](https://myprofile.microsoft.com). Der Benutzer wählt im linken Bereich **Sicherheitsinformation** aus. Dort gibt der Benutzer das Hinzufügen einer Methode an, wählt eine der verfügbaren Methoden aus und führt die Schritte zum Einrichten dieser Methode aus. Nach Abschluss des Vorgangs wird dem Benutzer die eingerichtete Methode auf der Seite „Sicherheitsinformation“ angezeigt.
+Ein Benutzer, der noch nicht alle erforderlichen Sicherheitsinformationen eingerichtet hat, navigiert zu [https://myaccount.microsoft.com](https://myaccount.microsoft.com). Der Benutzer wählt im linken Bereich **Sicherheitsinformation** aus. Dort gibt der Benutzer das Hinzufügen einer Methode an, wählt eine der verfügbaren Methoden aus und führt die Schritte zum Einrichten dieser Methode aus. Nach Abschluss des Vorgangs wird dem Benutzer die eingerichtete Methode auf der Seite „Sicherheitsinformation“ angezeigt.
 
-### <a name="delete-security-info-from-my-profile"></a>Löschen der Sicherheitsinformationen unter „Mein Profil“
+### <a name="delete-security-info-from-my-account"></a>Löschen der Sicherheitsinformationen unter „Mein Konto“
 
 Ein Benutzer, der zuvor mindestens eine Methode eingerichtet hat, navigiert zu [https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo). Der Benutzer löscht eine der zuvor registrierten Methoden. Anschließend wird diese Methode nicht mehr auf der Seite „Sicherheitsinformation“ angezeigt.
 
-### <a name="change-the-default-method-from-my-profile"></a>Ändern der Standardmethode unter „Mein Profil“
+### <a name="change-the-default-method-from-my-account"></a>Ändern der Standardmethode unter „Mein Konto“
 
 Ein Benutzer, der zuvor mindestens eine Methode eingerichtet hat, die für die mehrstufige Authentifizierung verwendet werden kann, navigiert zu [https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo). Der Benutzer ändert die aktuell verwendete Standardmethode in eine andere Standardmethode. Anschließend wird die neue Standardmethode auf der Seite „Sicherheitsinformation“ angezeigt.
 

@@ -1,21 +1,24 @@
 ---
-title: Erfassen von Leistungsindikatoren in Azure-Clouddiensten | Microsoft-Dokumentation
+title: Erfassen von Leistungsindikatoren in Azure Cloud Services (klassisch) | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie mithilfe von Azure-Diagnose und Application Insights Leistungsindikatoren in Clouddiensten ermitteln, verwenden und erstellen.
-services: cloud-services
-documentationcenter: .net
-author: tgore03
-ms.service: cloud-services
 ms.topic: article
-ms.date: 02/02/2018
+ms.service: cloud-services
+ms.date: 10/14/2020
 ms.author: tagore
-ms.openlocfilehash: 39843ad83830a72b5d6b01cc00ecd65269c02e12
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 16b54e8a59eb42c6e2351d37ec0a29d775161493
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92078594"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98739835"
 ---
-# <a name="collect-performance-counters-for-your-azure-cloud-service"></a>Erfassen von Leistungsindikatoren für Ihren Azure-Clouddienst
+# <a name="collect-performance-counters-for-your-azure-cloud-service-classic"></a>Erfassen von Leistungsindikatoren für Ihre Azure Cloud Services-Instanz (klassisch)
+
+> [!IMPORTANT]
+> [Azure Cloud Services (erweiterter Support)](../cloud-services-extended-support/overview.md) ist ein neues auf Azure Resource Manager basierendes Bereitstellungsmodell für Azure Cloud Services. Im Zuge dieser Änderung wurden Azure Cloud Services-Instanzen, die unter dem Azure Service Manager-basierten Bereitstellungsmodell ausgeführt werden, in „Cloud Services (klassisch)“ umbenannt. Für alle neuen Bereitstellungen wird [Azure Cloud Services (erweiterter Support)](../cloud-services-extended-support/overview.md) verwendet.
 
 Leistungsindikatoren ermöglichen es Ihnen, die Leistung Ihrer Anwendungen und Hosts nachzuverfolgen. Windows Server stellt viele unterschiedliche Leistungsindikatoren zu Hardware, Anwendungen, Betriebssystem uvm. zur Verfügung. Durch das Erfassen und Senden von Leistungsindikatoren an Azure können Sie diese Informationen analysieren, um bessere Entscheidungen zu treffen. 
 
@@ -125,7 +128,7 @@ Weitere Informationen zum Schemaelement `PerformanceCounters` finden Sie unter [
 
 Der durch das Attribut `sampleRate` definierte Zeitraum verwendet den XML-Zeitraumdatentyp, um anzugeben, wie häufig der Leistungsindikator abgerufen wird. Im nachstehenden Beispiel ist die Rate auf `PT3M` festgelegt, dies bedeutet `[P]eriod[T]ime[3][M]inutes`: alle drei Minuten.
 
-Weitere Informationen zur Definition von `sampleRate` und `scheduledTransferPeriod` finden Sie im Abschnitt **Duration Data Type** (Zeitraumdatentyp) im Tutorial[W3 XML Date and Time Date Types](https://www.w3schools.com/XML/schema_dtypes_date.asp) (W3 XML-Zeitraum- und Uhrzeitdatentypen).
+Weitere Informationen zur Definition von `sampleRate` und `scheduledTransferPeriod` finden Sie im Abschnitt **Duration Data Type** (Zeitraumdatentyp) im Tutorial [W3 XML Date and Time Date Types](https://www.w3schools.com/XML/schema_dtypes_date.asp) (W3 XML-Zeitraum- und Uhrzeitdatentypen).
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>

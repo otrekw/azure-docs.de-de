@@ -1,9 +1,9 @@
 ---
 title: Gerätekonnektivität in Azure IoT Central | Microsoft-Dokumentation
 description: In diesem Artikel werden die wichtigsten Konzepte in Bezug auf die Gerätekonnektivität in Azure IoT Central vorgestellt.
-author: dominicbetts
-ms.author: dobett
-ms.date: 10/22/2020
+author: TheJasonAndrew
+ms.author: v-anjaso
+ms.date: 1/15/2020
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
@@ -12,12 +12,12 @@ ms.custom:
 - amqp
 - mqtt
 - device-developer
-ms.openlocfilehash: 90246459663980de25e301817f651e7719e8f380
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: c633b488fab521947e4f34abb95ada2342dc2eb3
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033176"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98789769"
 ---
 # <a name="get-connected-to-azure-iot-central"></a>Herstellen einer Verbindung mit Azure IoT Central
 
@@ -234,13 +234,18 @@ Die Azure-Geräte-SDKs bieten Ihnen die einfachste Möglichkeit, Ihren Geräteco
 Bei der gesamten Gerätekommunikation mit IoT Hub werden die folgenden IoT Hub-Konnektivitätsoptionen verwendet:
 
 - [Nachrichten, die von Geräten an die Cloud gesendet werden](../../iot-hub/iot-hub-devguide-messages-d2c.md)
+- [Cloud-zu-Gerät-Messaging](../../iot-hub/iot-hub-csharp-csharp-c2d.md)
 - [Gerätezwillinge](../../iot-hub/iot-hub-devguide-device-twins.md)
+
+> [!NOTE]
+> Azure unterstützt jetzt
 
 In der folgenden Tabelle wird die Zuordnung von Azure IoT Central-Gerätefeatures zu IoT Hub-Features zusammengefasst:
 
 | Azure IoT Central | Azure IoT Hub |
 | ----------- | ------- |
 | Telemetrie | Nachrichten, die von Geräten an die Cloud gesendet werden |
+| Offlinebefehle | Senden von Nachrichten aus der Cloud an Geräte |
 | Eigenschaft | Gemeldete Eigenschaften von Gerätezwillingen |
 | Eigenschaft (schreibbar) | Gewünschte und gemeldete Eigenschaften von Gerätezwillingen |
 | Get-Help | Direkte Methoden |

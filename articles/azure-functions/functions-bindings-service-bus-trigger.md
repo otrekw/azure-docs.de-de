@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 02/19/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: cd0b73dd22e5e2cab720bb1a33e58e25e517b1f6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f2a514af99baa2d828df1aee35a0e6339d39e617
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90605035"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98788552"
 ---
 # <a name="azure-service-bus-trigger-for-azure-functions"></a>Azure Service Bus-Trigger für Azure Functions
 
@@ -83,9 +83,42 @@ public static void Run(string myQueueItem,
 }
 ```
 
+# <a name="java"></a>[Java](#tab/java)
+
+Die folgende Java-Funktion verwendet die `@ServiceBusQueueTrigger`-Anmerkung aus der [Java-Funktions-Laufzeitbibliothek](/java/api/overview/azure/functions/runtime), um die Konfiguration für einen Service Bus-Warteschlangentrigger zu beschreiben. Die Funktion greift die Nachricht aus der Warteschlange ab und fügt sie den Protokollen hinzu.
+
+```java
+@FunctionName("sbprocessor")
+ public void serviceBusProcess(
+    @ServiceBusQueueTrigger(name = "msg",
+                             queueName = "myqueuename",
+                             connection = "myconnvarname") String message,
+   final ExecutionContext context
+ ) {
+     context.getLogger().info(message);
+ }
+```
+
+Java-Funktionen können auch dadurch ausgelöst werden, dass eine Nachricht einem Service Bus-Thema hinzugefügt wird. Im folgenden Beispiel wird die `@ServiceBusTopicTrigger`-Anmerkung verwendet, um die Triggerkonfiguration zu beschreiben.
+
+```java
+@FunctionName("sbtopicprocessor")
+    public void run(
+        @ServiceBusTopicTrigger(
+            name = "message",
+            topicName = "mytopicname",
+            subscriptionName = "mysubscription",
+            connection = "ServiceBusConnection"
+        ) String message,
+        final ExecutionContext context
+    ) {
+        context.getLogger().info(message);
+    }
+```
+
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-Das folgende Beispiel zeigt eine Service Bus-Triggerbindung in einer Datei vom Typ *function.json* sowie eine [JavaScript-Funktion](functions-reference-node.md), die die Bindung verwendet. Die Funktion liest [Nachrichtenmetadaten](#message-metadata) und protokolliert eine Service Bus-Warteschlangennachricht. 
+Das folgende Beispiel zeigt eine Service Bus-Triggerbindung in einer Datei vom Typ *function.json* sowie eine [JavaScript-Funktion](functions-reference-node.md), die die Bindung verwendet. Die Funktion liest [Nachrichtenmetadaten](#message-metadata) und protokolliert eine Service Bus-Warteschlangennachricht.
 
 Bindungsdaten in der Datei *function.json*:
 
@@ -114,6 +147,35 @@ module.exports = function(context, myQueueItem) {
     context.log('MessageId =', context.bindingData.messageId);
     context.done();
 };
+```
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+Das folgende Beispiel zeigt eine Service Bus-Triggerbindung in einer Datei *function.json* sowie eine [PowerShell-Funktion](functions-reference-powershell.md), die die Bindung verwendet. 
+
+Bindungsdaten in der Datei *function.json*:
+
+```json
+{
+  "bindings": [
+    {
+      "name": "mySbMsg",
+      "type": "serviceBusTrigger",
+      "direction": "in",
+      "topicName": "mytopic",
+      "subscriptionName": "mysubscription",
+      "connection": "AzureServiceBusConnectionString"
+    }
+  ]
+}
+```
+
+Dies ist die Funktion, die ausgeführt wird, wenn eine Service Bus-Nachricht gesendet wird.
+
+```powershell
+param([string] $mySbMsg, $TriggerMetadata)
+
+Write-Host "PowerShell ServiceBus queue trigger function processed message: $mySbMsg"
 ```
 
 # <a name="python"></a>[Python](#tab/python)
@@ -166,39 +228,6 @@ def main(msg: func.ServiceBusMessage):
     })
 
     logging.info(result)
-```
-
-# <a name="java"></a>[Java](#tab/java)
-
-Die folgende Java-Funktion verwendet die `@ServiceBusQueueTrigger`-Anmerkung aus der [Java-Funktions-Laufzeitbibliothek](/java/api/overview/azure/functions/runtime), um die Konfiguration für einen Service Bus-Warteschlangentrigger zu beschreiben. Die Funktion greift die Nachricht aus der Warteschlange ab und fügt sie den Protokollen hinzu.
-
-```java
-@FunctionName("sbprocessor")
- public void serviceBusProcess(
-    @ServiceBusQueueTrigger(name = "msg",
-                             queueName = "myqueuename",
-                             connection = "myconnvarname") String message,
-   final ExecutionContext context
- ) {
-     context.getLogger().info(message);
- }
-```
-
-Java-Funktionen können auch dadurch ausgelöst werden, dass eine Nachricht einem Service Bus-Thema hinzugefügt wird. Im folgenden Beispiel wird die `@ServiceBusTopicTrigger`-Anmerkung verwendet, um die Triggerkonfiguration zu beschreiben.
-
-```java
-@FunctionName("sbtopicprocessor")
-    public void run(
-        @ServiceBusTopicTrigger(
-            name = "message",
-            topicName = "mytopicname",
-            subscriptionName = "mysubscription",
-            connection = "ServiceBusConnection"
-        ) String message,
-        final ExecutionContext context
-    ) {
-        context.getLogger().info(message);
-    }
 ```
 
 ---
@@ -268,14 +297,6 @@ Das zu verwendende Service Bus-Konto wird in der folgendem Reihenfolge bestimmt:
 
 Attribute werden von C#-Skript nicht unterstützt.
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
-
-Attribute werden von JavaScript nicht unterstützt.
-
-# <a name="python"></a>[Python](#tab/python)
-
-Attribute werden von Python nicht unterstützt.
-
 # <a name="java"></a>[Java](#tab/java)
 
 Mit der `ServiceBusQueueTrigger`-Anmerkung können Sie eine Funktion erstellen, die ausgeführt wird, wenn eine Service Bus-Warteschlangennachricht erstellt wird. Zu den verfügbaren Konfigurationsoptionen zählen Warteschlangenname und Verbindungszeichenfolgenname.
@@ -283,6 +304,18 @@ Mit der `ServiceBusQueueTrigger`-Anmerkung können Sie eine Funktion erstellen, 
 Mit der `ServiceBusTopicTrigger`-Anmerkung können Sie ein Thema und ein Abonnement festlegen, um zu bestimmen, welche Daten die Funktion auslösen.
 
 Weitere Details finden Sie unter [Trigger – Beispiel](#example).
+
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+Attribute werden von JavaScript nicht unterstützt.
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+Attribute werden von PowerShell nicht unterstützt.
+
+# <a name="python"></a>[Python](#tab/python)
+
+Attribute werden von Python nicht unterstützt.
 
 ---
 
@@ -313,8 +346,8 @@ Die folgenden Parametertypen sind für die Warteschlangen- oder Themanachricht v
 * `string`: Wenn es sich bei der Nachricht um Text handelt.
 * `byte[]`: Nützlich für Binärdaten.
 * Ein benutzerdefinierter Typ: Wenn die Nachricht JSON enthält, versucht Azure Functions, die JSON-Daten zu deserialisieren.
-* `BrokeredMessage`: Gibt die deserialisierte Nachricht mit der [BrokeredMessage.GetBody\<T>()](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.getbody?view=azure-dotnet#Microsoft_ServiceBus_Messaging_BrokeredMessage_GetBody__1)-Methode zurück.
-* [`MessageReceiver`](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver?view=azure-dotnet): Wird zum Empfangen und Bestätigen von Nachrichten aus dem Nachrichtencontainer verwendet (erforderlich, wenn [`autoComplete`](functions-bindings-service-bus-output.md#hostjson-settings) auf `false` festgelegt ist).
+* `BrokeredMessage`: Gibt die deserialisierte Nachricht mit der [BrokeredMessage.GetBody\<T>()](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.getbody?view=azure-dotnet#Microsoft_ServiceBus_Messaging_BrokeredMessage_GetBody__1&preserve-view=true)-Methode zurück.
+* [`MessageReceiver`](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver?view=azure-dotnet&preserve-view=true): Wird zum Empfangen und Bestätigen von Nachrichten aus dem Nachrichtencontainer verwendet (erforderlich, wenn [`autoComplete`](functions-bindings-service-bus-output.md#hostjson-settings) auf `false` festgelegt ist).
 
 Diese Parametertypen gelten für Azure Functions Version 1.x. Verwenden Sie für 2.x und höhere Versionen [`Message`](/dotnet/api/microsoft.azure.servicebus.message) anstelle von `BrokeredMessage`.
 
@@ -325,23 +358,27 @@ Die folgenden Parametertypen sind für die Warteschlangen- oder Themanachricht v
 * `string`: Wenn es sich bei der Nachricht um Text handelt.
 * `byte[]`: Nützlich für Binärdaten.
 * Ein benutzerdefinierter Typ: Wenn die Nachricht JSON enthält, versucht Azure Functions, die JSON-Daten zu deserialisieren.
-* `BrokeredMessage`: Gibt die deserialisierte Nachricht mit der [BrokeredMessage.GetBody\<T>()](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.getbody?view=azure-dotnet#Microsoft_ServiceBus_Messaging_BrokeredMessage_GetBody__1)-Methode zurück.
+* `BrokeredMessage`: Gibt die deserialisierte Nachricht mit der [BrokeredMessage.GetBody\<T>()](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.getbody?view=azure-dotnet#Microsoft_ServiceBus_Messaging_BrokeredMessage_GetBody__1&preserve-view=true)-Methode zurück.
 
 Diese Parameter gelten für Azure Functions Version 1.x. Verwenden Sie für 2.x und höhere Versionen [`Message`](/dotnet/api/microsoft.azure.servicebus.message) anstelle von `BrokeredMessage`.
-
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
-
-Greifen Sie auf die Warteschlangen- oder Themanachricht mithilfe von `context.bindings.<name from function.json>` zu. Die Service Bus-Nachricht wird als Zeichenfolge oder als JSON-Objekt an die Funktion übergeben.
-
-# <a name="python"></a>[Python](#tab/python)
-
-Die Warteschlangennachricht ist über einen als `func.ServiceBusMessage` typisierten Parameter für die Funktion verfügbar. Die Service Bus-Nachricht wird als Zeichenfolge oder als JSON-Objekt an die Funktion übergeben.
 
 # <a name="java"></a>[Java](#tab/java)
 
 Die eingehende Service Bus-Nachricht ist über einen `ServiceBusQueueMessage`- oder `ServiceBusTopicMessage`-Parameter verfügbar.
 
 [Detail finden Sie in dem Beispiel](#example).
+
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+Greifen Sie auf die Warteschlangen- oder Themanachricht mithilfe von `context.bindings.<name from function.json>` zu. Die Service Bus-Nachricht wird als Zeichenfolge oder als JSON-Objekt an die Funktion übergeben.
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+Die Service Bus-Instanz ist über den Parameter verfügbar, der in der name-Eigenschaft der Datei *function.json* konfiguriert ist.
+
+# <a name="python"></a>[Python](#tab/python)
+
+Die Warteschlangennachricht ist über einen als `func.ServiceBusMessage` typisierten Parameter für die Funktion verfügbar. Die Service Bus-Nachricht wird als Zeichenfolge oder als JSON-Objekt an die Funktion übergeben.
 
 ---
 
@@ -351,13 +388,13 @@ Die Verarbeitung von nicht verarbeitbaren Nachricht kann nicht in Azure Function
 
 ## <a name="peeklock-behavior"></a>PeekLock-Verhalten
 
-Die Functions-Laufzeit empfängt eine Nachricht im [PeekLock Modus](../service-bus-messaging/service-bus-performance-improvements.md#receive-mode). Sie ruft bei erfolgreicher Ausführung der Funktion `Complete` für die Nachricht auf. Ist die Ausführung nicht erfolgreich, wird `Abandon` aufgerufen. Wenn die Funktion länger als im `PeekLock`-Timeout angegeben ausgeführt wird, wird die Sperre automatisch verlängert, solange die Funktion ausgeführt wird. 
+Die Functions-Laufzeit empfängt eine Nachricht im [PeekLock Modus](../service-bus-messaging/service-bus-performance-improvements.md#receive-mode). Sie ruft bei erfolgreicher Ausführung der Funktion `Complete` für die Nachricht auf. Ist die Ausführung nicht erfolgreich, wird `Abandon` aufgerufen. Wenn die Funktion länger als im `PeekLock`-Timeout angegeben ausgeführt wird, wird die Sperre automatisch verlängert, solange die Funktion ausgeführt wird.
 
-Die `maxAutoRenewDuration` kann in der Datei *host.json* konfiguriert werden, die [OnMessageOptions.MaxAutoRenewDuration](/dotnet/api/microsoft.azure.servicebus.messagehandleroptions.maxautorenewduration?view=azure-dotnet) zugeordnet ist. Der maximal zulässige Wert für diese Einstellung beträgt entsprechend der Service Bus-Dokumentation 5 Minuten, wohingegen Sie den Standardwert von 5 Minuten für das Functions-Zeitlimit auf 10 Minuten erhöhen können. Bei Service Bus-Funktionen sollten Sie dies nicht tun, da Sie den Service Bus-Verlängerungsgrenzwert übersteigen würden.
+Die `maxAutoRenewDuration` kann in der Datei *host.json* konfiguriert werden, die [OnMessageOptions.MaxAutoRenewDuration](/dotnet/api/microsoft.azure.servicebus.messagehandleroptions.maxautorenewduration?view=azure-dotnet&preserve-view=true) zugeordnet ist. Der maximal zulässige Wert für diese Einstellung beträgt entsprechend der Service Bus-Dokumentation 5 Minuten, wohingegen Sie den Standardwert von 5 Minuten für das Functions-Zeitlimit auf 10 Minuten erhöhen können. Bei Service Bus-Funktionen sollten Sie dies nicht tun, da Sie den Service Bus-Verlängerungsgrenzwert übersteigen würden.
 
 ## <a name="message-metadata"></a>Metadaten von Nachrichten
 
-Der Service Bus-Trigger stellt mehrere [Metadateneigenschaften](./functions-bindings-expressions-patterns.md#trigger-metadata) bereit. Diese Eigenschaften können als Teil der Bindungsausdrücke in anderen Bindungen oder als Parameter im Code verwendet werden. Diese Eigenschaften sind Member der [Message](/dotnet/api/microsoft.azure.servicebus.message?view=azure-dotnet)-Klasse.
+Der Service Bus-Trigger stellt mehrere [Metadateneigenschaften](./functions-bindings-expressions-patterns.md#trigger-metadata) bereit. Diese Eigenschaften können als Teil der Bindungsausdrücke in anderen Bindungen oder als Parameter im Code verwendet werden. Diese Eigenschaften sind Member der [Message](/dotnet/api/microsoft.azure.servicebus.message?view=azure-dotnet&preserve-view=true)-Klasse.
 
 |Eigenschaft|type|BESCHREIBUNG|
 |--------|----|-----------|

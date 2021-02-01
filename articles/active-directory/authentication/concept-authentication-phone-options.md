@@ -5,21 +5,21 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 11/18/2020
+ms.date: 01/22/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fdff7e62753e75a14d6711b77dd451603353dae5
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 6a5e8b933f617d767f017f73fb6778a45b5a1ce3
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98012834"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98725588"
 ---
 # <a name="authentication-methods-in-azure-active-directory---phone-options"></a>Authentifizierungsmethoden in Azure Active Directory – Telefonoptionen
 
-Informationen zur direkten Authentifizierung mit Textnachrichten finden Sie unter [Konfigurieren und Aktivieren der SMS-basierten Authentifizierung von Benutzern (Vorschau)](howto-authentication-sms-signin.md). Die SMS-basierte Anmeldung eignet sich hervorragend für Außendienstmitarbeiter. Bei der SMS-basierten Anmeldung brauchen sich Benutzer keine Benutzernamen und Kennwörter zu merken, um auf Anwendungen und Dienste zuzugreifen. Der Benutzer gibt stattdessen seine registrierte Mobiltelefonnummer ein, empfängt eine Textnachricht mit einem Prüfcode und gibt diesen Code im Anmeldebildschirm ein.
+Informationen zur direkten Authentifizierung mit Textnachrichten finden Sie unter [Konfigurieren und Aktivieren der SMS-basierten Authentifizierung von Benutzern](howto-authentication-sms-signin.md). Die SMS-basierte Anmeldung eignet sich hervorragend für Außendienstmitarbeiter. Bei der SMS-basierten Anmeldung brauchen sich Benutzer keine Benutzernamen und Kennwörter zu merken, um auf Anwendungen und Dienste zuzugreifen. Der Benutzer gibt stattdessen seine registrierte Mobiltelefonnummer ein, empfängt eine Textnachricht mit einem Prüfcode und gibt diesen Code im Anmeldebildschirm ein.
 
 Benutzer können bei Azure AD Multi-Factor Authentication oder der Self-Service-Kennwortzurücksetzung (SSPR) als zweite Authentifizierungsmethode auch eine Mobiltelefonnummer oder eine geschäftliche Telefonnummer verwenden.
 

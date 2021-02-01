@@ -3,30 +3,22 @@ title: Erneutes Bereitstellen von Geräten mit dem Azure IoT Hub Device Provisio
 description: Hier erfahren Sie, wie Sie Geräte mit Ihrer Instanz von Hub Device Provisioning Service (DPS) nochmal bereitstellen und warum dies notwendig sein kann.
 author: wesmc7777
 ms.author: wesmc
-ms.date: 04/04/2019
+ms.date: 01/25/2021
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: e5cc5b557aa4dff793f7e87093eeb65028da4f8c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: d704e8f9687f3987d80018d84b41c0fd519da172
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96010944"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791895"
 ---
 # <a name="how-to-reprovision-devices"></a>Erneutes Bereitstellen von Geräten
 
-Im Lauf des Lebenszyklus einer IoT-Lösung kommt es häufig vor, dass Geräte von einem IoT-Hub zu einem anderen verlagert werden. Folgende Szenarien können der Grund für eine solche Verlagerung sein:
+Im Lauf des Lebenszyklus einer IoT-Lösung kommt es häufig vor, dass Geräte von einem IoT-Hub zu einem anderen verlagert werden. Dieses Thema wurde zur Unterstützung von Lösungsoperatoren bei der Konfiguration von Richtlinien für die erneute Bereitstellung geschrieben.
 
-* **Geolocation**: Wenn ein Gerät von einem Standort zu einem anderen verlagert wird, lässt sich die Netzwerklatenz verbessern, indem das Gerät zu einem jeweils näher gelegenen IoT-Hub migriert wird.
-
-* **Mehrinstanzenfähigkeit**: Ein Gerät wird innerhalb der gleichen IoT-Lösung verwendet werden, jedoch auch einem neuen Kunden oder Kundenstandort zugewiesen oder geleast werden. Die Dienstbereitstellung für diesen neuen Kunden erfolgt möglicherweise über einen anderen IoT-Hub.
-
-* **Änderung einer Lösung**: Ein Gerät wird in eine neue oder aktualisierte IoT-Lösung verlagert. Aufgrund der Neuzuweisung muss das Gerät möglicherweise mit einem neuen IoT-Hub kommunizieren, der mit anderen Back-End-Komponenten verbunden ist. 
-
-* **Quarantäne**: Dieses Szenario ähnelt der Änderung einer Lösung. Ein Gerät, das Fehlfunktionen aufweist, eine Sicherheitslücke darstellt oder veraltet ist, kann einem IoT-Hub zugewiesen werden, an dem es ausschließlich Updates ausführen kann, um die Compliance wiederherzustellen. Sobald das Gerät wieder ordnungsgemäß funktioniert, wird es wieder zu seinem primären Hub migriert.
-
-Eine ausführlichere Übersicht über die erneute Bereitstellung finden Sie unter [IoT Hub Device-Konzepte für die erneute Bereitstellung](concepts-device-reprovision.md).
+Eine ausführlichere Übersicht über Szenarien der erneuten Bereitstellung finden Sie unter [IoT Hub Device-Konzepte für die erneute Bereitstellung](concepts-device-reprovision.md).
 
 
 ## <a name="configure-the-enrollment-allocation-policy"></a>Konfigurieren der Registrierungszuordnungsrichtlinie

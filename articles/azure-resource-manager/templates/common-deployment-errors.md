@@ -3,13 +3,13 @@ title: Beheben von häufigen Bereitstellungsfehlern
 description: Informationen zum Beheben gängiger Fehler beim Bereitstellen von Ressourcen in Azure mit Azure Resource Manager.
 tags: top-support-issue
 ms.topic: troubleshooting
-ms.date: 09/09/2020
-ms.openlocfilehash: 785a74184cae8523b99da7f647ca87fda53c8648
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.date: 01/20/2021
+ms.openlocfilehash: 61a306cd36c55a005ee9ebd897fcfc9a6c88d7c9
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96185826"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98696395"
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-resource-manager"></a>Beheben gängiger Azure-Bereitstellungsfehler mit Azure Resource Manager
 
@@ -34,10 +34,10 @@ Wenn Sie Informationen zu einem Fehlercode suchen und diese Informationen in die
 | DeploymentNameLengthLimitExceeded | Die Länge von Bereitstellungsnamen ist auf 64 Zeichen beschränkt.  | |
 | DeploymentFailed | „DeploymentFailed“ ist ein allgemeiner Fehler, der nicht die Informationen bereitstellt, die Sie zum Beheben des Fehlers benötigen. Suchen Sie in den Fehlerdetails nach einem Fehlercode, der weitere Informationen bereitstellt. | [Ermitteln des Fehlercodes](#find-error-code) |
 | DeploymentQuotaExceeded | Wenn der Grenzwert von 800 Bereitstellungen pro Ressourcengruppe erreicht ist, löschen Sie nicht mehr benötigte Bereitstellungen aus dem Verlauf. | [Beheben des Fehlers, dass die Anzahl der Bereitstellungen 800 überschreitet](deployment-quota-exceeded.md) |
-| DeploymentSizeExceeded | Vereinfachen Sie die Vorlage, um die Größe zu verringern. | [Beheben von Fehlern bei der Vorlagengröße](error-job-size-exceeded.md) |
+| DeploymentJobSizeExceeded | Vereinfachen Sie die Vorlage, um die Größe zu verringern. | [Beheben von Fehlern bei der Vorlagengröße](error-job-size-exceeded.md) |
 | DnsRecordInUse | Der Name des DNS-Eintrags muss eindeutig sein. Geben Sie einen anderen Namen ein. | |
 | ImageNotFound | Überprüfen Sie die Einstellungen für das VM-Image. |  |
-| InUseSubnetCannotBeDeleted | Dieser Fehler tritt gegebenenfalls auf, wenn versucht wird, eine Ressource zu aktualisieren, die Anforderung jedoch durch Löschen und Erstellen der Ressource verarbeitet wird. Stellen Sie sicher, dass Sie alle unveränderten Werte angeben. | [Aktualisieren von Ressourcen](/azure/architecture/building-blocks/extending-templates/update-resource) |
+| InUseSubnetCannotBeDeleted | Dieser Fehler tritt gegebenenfalls auf, wenn versucht wird, eine Ressource zu aktualisieren, die Anforderung jedoch durch Löschen und Erstellen der Ressource verarbeitet wird. Stellen Sie sicher, dass Sie alle unveränderten Werte angeben. | [Aktualisieren von Ressourcen](/azure/architecture/guide/azure-resource-manager/advanced-templates/update-resource) |
 | InvalidAuthenticationTokenTenant | Rufen Sie das Zugriffstoken für den entsprechenden Mandanten ab. Sie können das Token nur von dem Mandanten erhalten, zu dem Ihr Konto gehört. | |
 | InvalidContentLink | Sie haben wahrscheinlich versucht, eine Verknüpfung mit einer geschachtelten Vorlage herzustellen, die nicht verfügbar ist. Überprüfen Sie den URI, den Sie für die geschachtelte Vorlage angegeben haben. Wenn die Vorlage in einem Speicherkonto vorhanden ist, stellen Sie sicher, dass auf den URI zugegriffen werden kann. Möglicherweise müssen Sie ein SAS-Token übergeben. Derzeit ist es nicht möglich, eine Verknüpfung mit einer Vorlage zu erstellen, die sich in einem Speicherkonto hinter einer [Azure Storage-Firewall](../../storage/common/storage-network-security.md) befindet. Erwägen Sie, Ihre Vorlage in ein anderes Repository, etwa GitHub, zu verschieben. | [Verknüpfte Vorlagen](linked-templates.md) |
 | InvalidDeploymentLocation | Beim Bereitstellen auf der Abonnementebene haben Sie einen anderen Ort für einen zuvor verwendeten Bereitstellungsnamen angegeben. | [Bereitstellungen auf Abonnementebene](deploy-to-subscription.md) |
@@ -64,7 +64,7 @@ Wenn Sie Informationen zu einem Fehlercode suchen und diese Informationen in die
 | PasswordTooLong | Möglicherweise haben Sie ein Kennwort mit zu vielen Zeichen ausgewählt, oder Sie haben Ihr Kennwort eventuell in eine sichere Zeichenfolge konvertiert, bevor es als Parameter übergeben wurde. Wenn die Vorlage einen Parameter **Sichere Zeichenfolge** enthält, müssen Sie den Wert nicht in eine sichere Zeichenfolge konvertieren. Geben Sie den Kennwortwert als Text an. |  |
 | PrivateIPAddressInReservedRange | Die angegebene IP-Adresse enthält einen Adressbereich, der für Azure benötigt wird. Ändern Sie die IP-Adresse, um die Nutzung des reservierten Bereichs zu vermeiden. | [IP-Adressen](../../virtual-network/public-ip-addresses.md) |
 | PrivateIPAddressNotInSubnet | Die angegebene IP-Adresse liegt außerhalb des Subnetzbereichs. Ändern Sie die IP-Adresse so, das Sie innerhalb des Subnetzbereichs liegt. | [IP-Adressen](../../virtual-network/public-ip-addresses.md) |
-| PropertyChangeNotAllowed | Einige Eigenschaften können in einer bereitgestellten Ressource nicht geändert werden. Beschränken Sie Ihre Änderungen beim Aktualisieren einer Ressource auf die zulässigen Eigenschaften. | [Aktualisieren von Ressourcen](/azure/architecture/building-blocks/extending-templates/update-resource) |
+| PropertyChangeNotAllowed | Einige Eigenschaften können in einer bereitgestellten Ressource nicht geändert werden. Beschränken Sie Ihre Änderungen beim Aktualisieren einer Ressource auf die zulässigen Eigenschaften. | [Aktualisieren von Ressourcen](/azure/architecture/guide/azure-resource-manager/advanced-templates/update-resource) |
 | RequestDisallowedByPolicy | Ihr Abonnement enthält eine Ressourcenrichtlinie, durch die eine Aktion verhindert wird, die Sie während der Bereitstellung ausführen möchten. Suchen Sie nach der Richtlinie, die die Aktion blockiert. Ändern Sie die Bereitstellung nach Möglichkeit so, dass die Einschränkungen der Richtlinie beachtet werden. | [Beheben von Fehlern für Richtlinien](error-policy-requestdisallowedbypolicy.md) |
 | ReservedResourceName | Geben Sie einen Ressourcennamen an, der keinen reservierten Name enthält. | [Resolve reserved resource name errors](error-reserved-resource-name.md) (Beheben von Fehlern mit reservierten Ressourcennamen) |
 | ResourceGroupBeingDeleted | Warten Sie, bis der Löschvorgang abgeschlossen ist. | |

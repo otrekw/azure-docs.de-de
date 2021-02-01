@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 12/14/2020
+ms.date: 01/22/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy20q4
-ms.openlocfilehash: 24b29cfb1f58a61193f67ba924e583d4264dfc51
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 1459dd41fcdc30a29a5f9f93ec9704083767a342
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97562122"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98725670"
 ---
 # <a name="what-authentication-and-verification-methods-are-available-in-azure-active-directory"></a>Welche Authentifizierungs- und Prüfmethoden stehen in Azure Active Directory zur Verfügung?
 
@@ -70,7 +70,7 @@ Aus der folgenden Tabelle geht hervor, wann eine Authentifizierungsmethode bei e
 | FIDO2-Sicherheitsschlüssel (Vorschau)   | Ja                    | MFA                       |
 | OATH-Hardwaretoken (Vorschau) | Nein                     | MFA                       |
 | OATH-Softwaretoken           | Nein                     | MFA                       |
-| SMS                            | Ja (Vorschau)          | MFA und SSPR              |
+| SMS                            | Ja                    | MFA und SSPR              |
 | Anruf                     | Nein                     | MFA und SSPR              |
 | Kennwort                       | Ja                    |                           |
 
@@ -83,7 +83,7 @@ Weitere Informationen zur Funktionsweise der einzelnen Authentifizierungsmethode
 * [FIDO2-Sicherheitsschlüssel (Vorschau)](concept-authentication-passwordless.md#fido2-security-keys)
 * [OATH-Hardwaretoken (Vorschau)](concept-authentication-oath-tokens.md#oath-hardware-tokens-preview)
 * [Oath-Softwaretoken](concept-authentication-oath-tokens.md#oath-software-tokens)
-* [Anmeldung (Vorschau)](howto-authentication-sms-signin.md) und [Überprüfung](concept-authentication-phone-options.md#mobile-phone-verification) mit SMS
+* [SMS-basierte Anmeldung](howto-authentication-sms-signin.md) und [Überprüfung](concept-authentication-phone-options.md#mobile-phone-verification)
 * [Überprüfung mit Sprachanruf](concept-authentication-phone-options.md)
 * Kennwort
 

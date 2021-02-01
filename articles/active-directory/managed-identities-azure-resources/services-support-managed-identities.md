@@ -11,12 +11,12 @@ ms.subservice: msi
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.custom: references_regions
-ms.openlocfilehash: 2da0407f848b0795414b071b9e082c7ed60a633d
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: 1861a4e75f34cfd7fe386c094cce3a638b3e1a1e
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96861883"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880792"
 ---
 # <a name="services-that-support-managed-identities-for-azure-resources"></a>Dienste, die verwaltete Identitäten für Azure-Ressourcen unterstützen
 
@@ -159,8 +159,6 @@ Konfigurieren Sie die verwaltete Identität für Azure Data Factory V2 anhand de
 - [REST](~/articles/data-factory/data-factory-service-identity.md#generate-managed-identity-using-rest-api)
 - [SDK](~/articles/data-factory/data-factory-service-identity.md#generate-managed-identity-using-sdk)
 
-
-
 ### <a name="azure-event-grid"></a>Azure Event Grid
 
 Typ der verwalteten Identität |Allgemein verfügbar<br>Globale Azure-Regionen | Azure Government | Azure Deutschland | Azure China 21Vianet |
@@ -168,13 +166,12 @@ Typ der verwalteten Identität |Allgemein verfügbar<br>Globale Azure-Regionen |
 | Vom System zugewiesen | Vorschau | Vorschau | Nicht verfügbar | Vorschau |
 | Vom Benutzer zugewiesen | Nicht verfügbar | Nicht verfügbar  | Nicht verfügbar  | Nicht verfügbar |
 
+### <a name="azure-firewall-policy"></a>Azure Firewall-Richtlinien
 
-
-
-
-
-
-
+Typ der verwalteten Identität |Allgemein verfügbar<br>Globale Azure-Regionen | Azure Government | Azure Deutschland | Azure China 21Vianet |
+| --- | :-: | :-: | :-: | :-: |
+| Vom System zugewiesen | Nicht verfügbar | Nicht verfügbar | Nicht verfügbar | Nicht verfügbar |
+| Vom Benutzer zugewiesen | Vorschau | Nicht verfügbar  | Nicht verfügbar  | Nicht verfügbar |
 
 ### <a name="azure-functions"></a>Azure-Funktionen
 
@@ -326,9 +323,9 @@ Konfigurieren Sie die verwaltete Identität für Azure Virtual Machines anhand d
 | Typ der verwalteten Identität | Allgemein verfügbar<br>Globale Azure-Regionen | Azure Government | Azure Deutschland | Azure China 21Vianet |
 | --- | :-: | :-: | :-: | :-: |
 | Vom System zugewiesen | Nicht verfügbar. | Nicht verfügbar. | Nicht verfügbar. | Nicht verfügbar. |
-| Vom Benutzer zugewiesen | [Verfügbar in unterstützten Regionen](../../virtual-machines/windows/image-builder-overview.md#regions) | Nicht verfügbar. | Nicht verfügbar. | Nicht verfügbar. |
+| Vom Benutzer zugewiesen | [Verfügbar in unterstützten Regionen](../../virtual-machines/image-builder-overview.md#regions) | Nicht verfügbar. | Nicht verfügbar. | Nicht verfügbar. |
 
-Informationen zum Konfigurieren der verwalteten Identität für Azure VM Image Builder (in Regionen, in denen sie verfügbar ist) finden Sie in der [Übersicht über Image Builder](../../virtual-machines/windows/image-builder-overview.md#permissions).
+Informationen zum Konfigurieren der verwalteten Identität für Azure VM Image Builder (in Regionen, in denen sie verfügbar ist) finden Sie in der [Übersicht über Image Builder](../../virtual-machines/image-builder-overview.md#permissions).
 ### <a name="azure-signalr-service"></a>Azure SignalR Service
 
 Typ der verwalteten Identität | Allgemein verfügbar<br>Globale Azure-Regionen | Azure Government | Azure Deutschland | Azure China 21Vianet |

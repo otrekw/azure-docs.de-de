@@ -3,12 +3,12 @@ title: Erkennung doppelter Nachrichten von Azure Service Bus | Microsoft-Dokumen
 description: In diesem Artikel wird erläutert, wie Sie Duplikate in Azure Service Bus-Nachrichten erkennen können. Die doppelte Nachricht kann ignoriert und gelöscht werden.
 ms.topic: article
 ms.date: 01/13/2021
-ms.openlocfilehash: 29972f756c66f524cc2e4684fcb7afd1ca628820
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: 8ff98b3a052be6004a2dc070f10d6f8c9ca0617f
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98184678"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98684807"
 ---
 # <a name="duplicate-detection"></a>Duplikaterkennung
 
@@ -17,6 +17,9 @@ Tritt bei einer Anwendung unmittelbar nach dem Senden einer Nachricht ein schwer
 Es ist auch möglich, dass kurz zuvor ein Fehler auf Client- oder Netzwerkebene aufgetreten ist, sodass eine gesendete Nachricht in die Warteschlange eingereiht wird, ohne dass die Bestätigung erfolgreich an den Client zurückgesendet werden kann. In diesem Fall weiß der Client nicht sicher, welches Ergebnis der Sendevorgang hatte.
 
 Durch die Erkennung von Duplikaten werden diese Situationen aufgelöst, indem der Absender die gleiche Nachricht erneut senden kann, während die Warteschlange oder das Thema mögliche Duplikate verwirft.
+
+> [!NOTE]
+> Der Basic-Tarif von Service Bus unterstützt keine Duplikaterkennung. Die Standard- und Premium-Tarife unterstützen Duplikaterkennung. Informationen zu den Unterschieden zwischen diesen Tarifen finden Sie unter [Service Bus-Preise](https://azure.microsoft.com/pricing/details/service-bus/).
 
 ## <a name="how-it-works"></a>So funktioniert's 
 Das Aktivieren der Erkennung von Duplikaten unterstützt das Nachverfolgen der anwendungsgesteuerten *MessageId* aller in einem angegebenen Zeitfenster an eine Warteschlange oder ein Thema gesendeten Nachrichten. Wenn eine neue Nachricht mit einer *MessageId* gesendet wird, die während des Zeitfensters erfasst wurde, wird die Nachricht als akzeptiert gemeldet (der Sendevorgang war erfolgreich). Die neu gesendete Nachricht wird jedoch sofort ignoriert und verworfen. Es werden keine anderen Teile der Nachricht außer der *MessageId* ausgewertet.
