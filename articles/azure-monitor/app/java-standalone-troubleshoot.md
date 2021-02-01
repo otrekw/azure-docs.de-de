@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie Probleme mit dem Java-Agent für Azure Monito
 ms.topic: conceptual
 ms.date: 11/30/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 2876abd3749c9e56cef462e41b8268135f82cd12
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: 90e0ceb6ba9d696eb446d607ed2f2f134733618e
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98232215"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881135"
 ---
 # <a name="troubleshooting-guide-azure-monitor-application-insights-for-java"></a>Handbuch zur Problembehandlung: Azure Monitor Application Insights für Java
 
@@ -17,7 +17,7 @@ In diesem Artikel werden einige der häufigsten Probleme behandelt, die beim Ins
 
 ## <a name="check-the-self-diagnostic-log-file"></a>Überprüfen der Protokolldatei zur Selbstdiagnose
 
-Standardmäßig wird vom Java 3.0-Agent für Application Insights eine Protokolldatei mit dem Namen `applicationinsights.log` in dem Verzeichnis erstellt, in dem sich auch die Datei `applicationinsights-agent-3.0.1.jar` befindet.
+Standardmäßig wird vom Java 3.0-Agent für Application Insights eine Protokolldatei mit dem Namen `applicationinsights.log` in dem Verzeichnis erstellt, in dem sich auch die Datei `applicationinsights-agent-3.0.2.jar` befindet.
 
 Diese Protokolldatei sollten Sie als Erstes auf Hinweise auf aufgetretene Probleme untersuchen.
 
@@ -49,36 +49,66 @@ Weitere Informationen finden Sie unter [Automatisch gesammelte Protokolle](./jav
 
 ## <a name="import-ssl-certificates"></a>Importieren von SSL-Zertifikaten
 
-Wenn Sie den standardmäßigen Java-Keystore verwenden, verfügt dieser bereits über alle Stammzertifikate der Zertifizierungsstelle. Es sollte daher nicht erforderlich sein, weitere SSL-Zertifikate zu importieren.
+Dieser Abschnitt hilft Ihnen bei der Problembehandlung und möglichen Behebung von Ausnahmen im Zusammenhang mit SSL-Zertifikaten bei Verwendung des Java-Agents.
 
-Wenn Sie einen benutzerdefinierten Java-Keystore verwenden, müssen Sie ggf. die SSL-Zertifikate für den Application Insights-Endpunkt importieren.
+Es gibt zwei verschiedene Pfade zur Problembehandlung.
 
-### <a name="key-terminology"></a>Wesentliche Terminologie
-Ein *Keystore* ist ein Repository mit Zertifikaten sowie öffentlichen und privaten Schlüsseln. Normalerweise verfügen JDK-Distributionen (Java Development Kit) über eine ausführbare Datei für ihre Verwaltung: `keytool`.
+### <a name="if-using-a-default-java-keystore"></a>Bei Verwendung eines standardmäßigen Java-Keystores:
 
-Das folgende Beispiel ist ein einfacher Befehl zum Importieren eines SSL-Zertifikats in den Keystore:
+Der standardmäßige Java-Keystore verfügt in der Regel bereits über alle Stammzertifikate der Zertifizierungsstelle. Es kann jedoch einige Ausnahmen geben, z. B. kann das Zertifikat für den Erfassungsendpunkt von einem anderen Stammzertifikat signiert sein. Deshalb werden die folgenden drei Schritte zur Behebung dieses Problems empfohlen:
 
-`keytool -importcert -alias your_ssl_certificate -file "your downloaded SSL certificate name".cer -keystore "Your KeyStore name" -storepass "Your keystore password" -noprompt`
+1.  Überprüfen Sie, ob das Stammzertifikat, das zum Signieren des Application Insights-Endpunkts verwendet wurde, bereits im standardmäßigen Keystore vorhanden ist. Die Zertifikate der vertrauenswürdigen Zertifizierungsstelle sind standardmäßig in `$JAVA_HOME/jre/lib/security/cacerts` gespeichert. Verwenden Sie den folgenden Befehl, um Zertifikate in einem Java-Keystore aufzulisten:
+    > `keytool -list -v -keystore $PATH_TO_KEYSTORE_FILE`
+ 
+    Sie können die Ausgabe wie folgt in eine temporäre Datei umleiten (ist später leicht zu durchsuchen):
+    > `keytool -list -v -keystore $JAVA_HOME/jre/lib/security/cacerts > temp.txt`
 
-### <a name="steps-to-download-and-add-an-ssl-certificate"></a>Schritte zum Herunterladen und Hinzufügen eines SSL-Zertifikats
+2. Sobald Sie über die Liste der Zertifikate verfügen, führen Sie [diese Schritte](#steps-to-download-ssl-certificate) aus, um das Stammzertifikat herunterzuladen, das zum Signieren des Application Insights-Endpunkts verwendet wurde.
+
+    Nachdem Sie das Zertifikat heruntergeladen haben, generieren Sie mit dem folgenden Befehl einen SHA-1-Hash für das Zertifikat:
+    > `keytool -printcert -v -file "your_downloaded_root_certificate.cer"`
+ 
+    Kopieren Sie den SHA-1-Wert, und prüfen Sie, ob dieser Wert in der Datei „temp.txt“ enthalten ist, die Sie zuvor gespeichert haben.  Wenn Sie den SHA-1-Wert in der temporären Datei nicht finden können, weist dies darauf hin, dass das heruntergeladene Stammzertifikat im standardmäßigen Java-Keystore fehlt.
+
+
+3. Importieren Sie das Stammzertifikat mithilfe des folgenden Befehls in den standardmäßigen Java-Keystore:
+    >   `keytool -import -file "the cert file" -alias "some meaningful name" -keystore "path to cacerts file"`
+ 
+    In diesem Fall lautet der Befehl:
+ 
+    > `keytool -import -file "your downloaded root cert file" -alias "some meaningful name" $JAVA_HOME/jre/lib/security/cacerts`
+
+
+### <a name="if-using-a-custom-java-keystore"></a>Bei Verwendung eines benutzerdefinierten Java-Keystores:
+
+Wenn Sie einen benutzerdefinierten Java-Keystore verwenden, müssen Sie ggf. die SSL-Stammzertifikate für die Application Insights-Endpunkte importieren.
+Es werden die folgenden zwei Schritte zur Behebung dieses Problems empfohlen:
+1. Führen Sie [diese Schritte](#steps-to-download-ssl-certificate) aus, um das Stammzertifikat vom Application Insights-Endpunkt herunterzuladen.
+2. Verwenden Sie den folgenden Befehl, um das SSL-Stammzertifikat in den benutzerdefinierten Java-Keystore zu importieren:
+    > `keytool -importcert -alias your_ssl_certificate -file "your downloaded SSL certificate name.cer" -keystore "Your KeyStore name" -storepass "Your keystore password" -noprompt`
+
+### <a name="steps-to-download-ssl-certificate"></a>Schritte zum Herunterladen des SSL-Zertifikats
 
 1.  Öffnen Sie Ihren bevorzugten Browser, und navigieren Sie zur `IngestionEndpoint`-URL in der Verbindungszeichenfolge, die zum Instrumentieren Ihrer Anwendung verwendet wird.
 
-    :::image type="content" source="media/java-ipa/troubleshooting/ingestion-endpoint-url.png" alt-text="Screenshot einer Application Insights-Verbindungszeichenfolge":::
+    :::image type="content" source="media/java-ipa/troubleshooting/ingestion-endpoint-snippet.png" alt-text="Screenshot einer Application Insights-Verbindungszeichenfolge" lightbox="media/java-ipa/troubleshooting/ingestion-endpoint-snippet.png":::
 
 2.  Wählen Sie im Browser das Symbol **Websiteinformationen anzeigen** (Schlosssymbol) und dann die Option **Zertifikat** aus.
 
-    :::image type="content" source="media/java-ipa/troubleshooting/certificate-icon-capture.png" alt-text="Screenshot der Option „Zertifikat“ in den Websiteinformationen":::
+    :::image type="content" source="media/java-ipa/troubleshooting/certificate-icon-capture.png" alt-text="Screenshot der Option „Zertifikat“ in den Websiteinformationen" lightbox="media/java-ipa/troubleshooting/certificate-icon-capture.png":::
 
-3.  Wechseln Sie zur Registerkarte **Details**, und wählen Sie **In Datei kopieren** aus.
-4.  Wählen Sie die Schaltfläche **Weiter**, anschließend das Format **Base64-codiert X.509 (.CER)** und dann erneut **Weiter** aus.
+3.  Anstelle des untergeordneten Zertifikats sollten Sie das Stammzertifikat wie nachfolgend gezeigt herunterladen. Später müssen Sie auf „Zertifikatpfad“ klicken, das Stammzertifikat auswählen und dann auf „Zertifikat anzeigen“ klicken. Daraufhin wird ein neues Zertifikatmenü angezeigt, und Sie können das Zertifikat aus dem neuen Menü herunterladen.
 
-    :::image type="content" source="media/java-ipa/troubleshooting/certificate-export-wizard.png" alt-text="Screenshot des Zertifikatexport-Assistenten mit ausgewähltem Format":::
+    :::image type="content" source="media/java-ipa/troubleshooting/root-certificate-selection.png" alt-text="Screenshot zum Auswählen des Stammzertifikats" lightbox="media/java-ipa/troubleshooting/root-certificate-selection.png":::
 
-5.  Geben Sie die Datei an, in der Sie das SSL-Zertifikat speichern möchten. Wählen Sie anschließend **Weiter** > **Fertig stellen** aus. Die Meldung „Der Exportvorgang wurde erfolgreich abgeschlossen“ sollte angezeigt werden.
-6.  Wenn Sie über das Zertifikat verfügen, können Sie es in einen Java-Keystore importieren. Verwenden Sie den [obigen Befehl](#key-terminology), um Zertifikate zu importieren.
+4.  Wechseln Sie zur Registerkarte **Details**, und wählen Sie **In Datei kopieren** aus.
+5.  Wählen Sie die Schaltfläche **Weiter**, anschließend das Format **Base64-codiert X.509 (.CER)** und dann erneut **Weiter** aus.
+
+    :::image type="content" source="media/java-ipa/troubleshooting/certificate-export-wizard.png" alt-text="Screenshot des Zertifikatexport-Assistenten mit ausgewähltem Format" lightbox="media/java-ipa/troubleshooting/certificate-export-wizard.png":::
+
+6.  Geben Sie die Datei an, in der Sie das SSL-Zertifikat speichern möchten. Wählen Sie anschließend **Weiter** > **Fertig stellen** aus. Die Meldung „Der Exportvorgang wurde erfolgreich abgeschlossen“ sollte angezeigt werden.
 
 > [!WARNING]
 > Sie müssen diese Schritte erneut ausführen, um vor Ablauf des aktuellen Zertifikats ein neues Zertifikat zu erhalten. Informationen zum Ablauf finden Sie im Dialogfeld **Zertifikat** auf der Registerkarte **Details**.
 >
-> :::image type="content" source="media/java-ipa/troubleshooting/certificate-details.png" alt-text="Screenshot mit Details zum SSL-Zertifikat":::
+> :::image type="content" source="media/java-ipa/troubleshooting/certificate-details.png" alt-text="Screenshot mit Details zum SSL-Zertifikat" lightbox="media/java-ipa/troubleshooting/certificate-details.png":::

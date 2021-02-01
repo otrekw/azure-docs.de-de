@@ -12,12 +12,12 @@ ms.date: 04/24/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jmprieur, saeeda, jesakowi, nacanuma
-ms.openlocfilehash: b02329d624eda440230fb99e02e08c841c5580f2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 77a4e7389952b81df13dae929dc1aec664fcc0b7
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90705995"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98755648"
 ---
 # <a name="microsoft-identity-platform-developer-glossary"></a>Microsoft Identity Platform – Glossar für Entwickler
 
@@ -117,7 +117,7 @@ Weitere Details finden Sie unter [Microsoft Identity Platform – Tokenreferenz]
 
 ## <a name="microsoft-identity-platform"></a>Microsoft Identity Platform
 
-Microsoft Identity Platform ist eine Weiterentwicklung des Azure AD-Identitätsdiensts (Azure Active Directory) und der zugehörigen Entwicklerplattform. Sie ermöglicht Entwicklern das Erstellen von Anwendungen, mit denen alle Microsoft-Identitäten angemeldet werden, und das Abrufen von Token zum Aufrufen von Microsoft Graph, anderen Microsoft-APIs oder von Entwicklern erstellten APIs. Es handelt sich um eine Plattform mit vollem Funktionsumfang, die einen Authentifizierungsdienst, Bibliotheken, Anwendungsregistrierung und -konfiguration, eine vollständige Entwicklerdokumentation, Codebeispiele und andere Inhalte für Entwickler umfasst. Microsoft Identity Platform unterstützt die branchenüblichen Protokolle, z.B. OAuth 2.0 und OpenID Connect.
+Microsoft Identity Platform ist eine Weiterentwicklung des Azure Active Directory-Identitätsdiensts (Azure AD) und der Entwicklerplattform. Sie ermöglicht Entwicklern das Erstellen von Anwendungen, mit denen alle Microsoft-Identitäten angemeldet werden, und das Abrufen von Token zum Aufrufen von Microsoft Graph, anderen Microsoft-APIs oder von Entwicklern erstellten APIs. Es handelt sich um eine Plattform mit vollem Funktionsumfang, die einen Authentifizierungsdienst, Bibliotheken, Anwendungsregistrierung und -konfiguration, eine vollständige Entwicklerdokumentation, Codebeispiele und andere Inhalte für Entwickler umfasst. Microsoft Identity Platform unterstützt die branchenüblichen Protokolle, z.B. OAuth 2.0 und OpenID Connect.
 
 ## <a name="multi-tenant-application"></a>Mehrinstanzenfähige Anwendung
 
@@ -222,7 +222,7 @@ Eine Art von [Clientanwendung](#client-application) , die sämtlichen Code auf e
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Das [Entwicklerhandbuch zu Microsoft Identity Platform][AAD-Dev-Guide] ist die Einstiegsseite für alle relevanten Themen rund um die Microsoft Identity Platform-Entwicklung. Es enthält unter anderem eine Übersicht über die [Anwendungsintegration][AAD-How-To-Integrate] sowie grundlegende Informationen zur [Authentifizierung in Microsoft Identity Platform und zu unterstützten Authentifizierungsszenarien][AAD-Auth-Scenarios]. Codebeispiele und Tutorials zur schnellen Einrichtung und Ausführung finden Sie auch auf [GitHub](https://github.com/azure-samples?utf8=%E2%9C%93&q=active%20directory&type=&language=).
+Das [Entwicklerhandbuch zu Microsoft Identity Platform][AAD-Dev-Guide] ist die Landing Page für alle relevanten Themen rund um die Microsoft Identity Platform-Entwicklung. Es enthält unter anderem eine Übersicht über die [Anwendungsintegration][AAD-How-To-Integrate] sowie grundlegende Informationen zur [Authentifizierung in Microsoft Identity Platform und zu unterstützten Authentifizierungsszenarien][AAD-Auth-Scenarios]. Codebeispiele und Tutorials zur schnellen Einrichtung und Ausführung finden Sie auch auf [GitHub](https://github.com/azure-samples?utf8=%E2%9C%93&q=active%20directory&type=&language=).
 
 Senden Sie uns im folgenden Abschnitt für Kommentare Ihr Feedback, und unterstützen Sie uns bei der Verbesserung dieser Inhalte. Dabei sind Anregungen für neue Definitionen oder zur Aktualisierung bereits vorhandener Definitionen willkommen.
 
@@ -235,7 +235,7 @@ Senden Sie uns im folgenden Abschnitt für Kommentare Ihr Feedback, und unterst�
 [AAD-Dev-Guide]:azure-ad-developers-guide.md
 [Graph-Perm-Scopes]: /graph/permissions-reference
 [Graph-App-Resource]: /graph/api/resources/application
-[Graph-Sp-Resource]: /graph/api/resources/serviceprincipal?view=graph-rest-beta
+[Graph-Sp-Resource]: /graph/api/resources/serviceprincipal?view=graph-rest-beta&preserve-view=true
 [Graph-User-Resource]: /graph/api/resources/user
 [AAD-How-Subscriptions-Assoc]:../fundamentals/active-directory-how-subscriptions-associated-directory.md
 [AAD-How-To-Integrate]: ./active-directory-how-to-integrate.md

@@ -6,12 +6,12 @@ ms.date: 10/29/2020
 author: kryalama
 ms.custom: devx-track-java
 ms.author: kryalama
-ms.openlocfilehash: 39897e490e4653fbaad7a64ecc0b33f161d1264b
-ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
+ms.openlocfilehash: c0745dd4069c64292fbcaef666d843ae2d25f7b3
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98165789"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632579"
 ---
 # <a name="telemetry-processors-preview---azure-monitor-application-insights-for-java"></a>Telemetrieprozessoren (Vorschau): Azure Monitor Application Insights für Java
 
@@ -241,7 +241,7 @@ Für die `hash`-Aktion wird Folgendes benötigt:
 ### `extract`
 
 > [!NOTE]
-> Dieses Feature ist erst ab Version 3.0.1 verfügbar.
+> Dieses Feature ist erst ab Version 3.0.2 verfügbar.
 
 Hiermit werden Werte mithilfe einer regEx-Regel aus dem Eingabeschlüssel in den in der Regel angegebenen Zielschlüssel extrahiert. Wenn ein Zielschlüssel bereits vorhanden ist, wird er überschrieben. Dieses Attribut verhält sich ähnlich wie die `toAttributes`-Einstellung des [span-Prozessors](#extract-attributes-from-span-name), wobei das vorhandene Attribut als Quelle dient.
 

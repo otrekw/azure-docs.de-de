@@ -13,12 +13,12 @@ ms.date: 05/19/2020
 ms.author: hirsin
 ms.reviewer: kkrishna
 ms.custom: aaddev
-ms.openlocfilehash: 064c9a00e1cd7c139f3f42a053dcf8a5db13f161
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: eed4e919684575bb2c63170d91517b661fac4acf
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92104579"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98753972"
 ---
 # <a name="handle-itp-in-safari-and-other-browsers-where-third-party-cookies-are-blocked"></a>Umgang mit ITP in Safari und anderen Browsern, in denen Cookies von Drittanbietern blockiert werden
 
@@ -26,7 +26,7 @@ Viele Browser blockieren mittlerweile Cookies von Drittanbietern – Cookies bei
 
 ## <a name="what-is-intelligent-tracking-protection-itp"></a>Was ist Intelligent Tracking Prevention (ITP)?
 
-Apple Safari verfügt über eine standardmäßig aktivierte Datenschutzfunktion namens [Intelligent Tracking Prevention](https://webkit.org/tracking-prevention-policy/) oder *ITP* . ITP blockiert Cookies von „Drittanbietern“. Das sind Cookies bei domänenübergreifenden Anforderungen.
+Apple Safari verfügt über eine standardmäßig aktivierte Datenschutzfunktion namens [Intelligent Tracking Prevention](https://webkit.org/tracking-prevention-policy/) oder *ITP*. ITP blockiert Cookies von „Drittanbietern“. Das sind Cookies bei domänenübergreifenden Anforderungen.
 
 Eine gängige Form der Benutzernachverfolgung erfolgt durch das Laden eines IFrames auf eine Drittanbieterwebsite im Hintergrund und das Verwenden von Cookies, um den Benutzer über das Internet zu korrelieren. Leider handelt es sich bei diesem Muster auch um die Standardmethode für das Implementieren des [impliziten Flusses](v2-oauth2-implicit-grant-flow.md) in Single-Page-Webanwendungen (Single-Page Apps, SPAs). Wenn ein Browser Cookies von Drittanbietern blockiert, um die Benutzernachverfolgung zu verhindern, werden auch SPAs unterbrochen.
 
@@ -41,7 +41,7 @@ Damit Benutzer in SPAs weiterhin authentifiziert werden können, müssen App-Ent
 In Bezug auf die Microsoft Identity Platform gelten für SPAs und native Clients ähnliche Protokollleitlinien:
 
 * Verwendung einer [PKCE-Codeabfrage](https://tools.ietf.org/html/rfc7636)
-    * PKCE ist für SPAs auf der Microsoft Identity Platform *erforderlich* . Für native und vertrauliche Clients wird PKCE *empfohlen* .
+    * PKCE ist für SPAs auf der Microsoft Identity Platform *erforderlich*. Für native und vertrauliche Clients wird PKCE *empfohlen*.
 * Keine Verwendung eines geheimen Clientschlüssels
 
 Für SPAs gelten zwei zusätzliche Einschränkungen:
@@ -77,7 +77,7 @@ Ein gängiges Muster in Web-Apps ist die Verwendung eines IFrames zum Einbetten 
 
 Das Ausstellen von Aktualisierungstoken für den Browser wird als Sicherheitsproblem angesehen. Angriffe durch websiteübergreifendes Skripting (Cross-Site Scripting, XSS) oder kompromittierte JS-Pakete können das Aktualisierungstoken stehlen und es remote verwenden, bis es abläuft oder widerrufen wird. Um das Risiko durch gestohlene Aktualisierungstoken zu minimieren, werden für SPAs nur 24 Stunden gültige Token ausgestellt. Nach 24 Stunden muss die App durch Aufrufen der Anmeldeseite in einem Frame der obersten Ebene einen neuen Autorisierungscode abrufen.
 
-Dieses Muster für Aktualisierungstoken mit begrenzter Lebensdauer wurde als Kompromiss zwischen Sicherheit und verminderter Benutzerfreundlichkeit ausgewählt. Ohne Aktualisierungstoken oder Cookies von Drittanbietern wird der Autorisierungscodeflow (wie im [Entwurf der aktuellen bewährten Sicherheitsverfahren für OAuth](https://tools.ietf.org/html/draft-ietf-oauth-security-topics-14) empfohlen) aufwändig, wenn neue oder zusätzliche Token erforderlich sind. Eine vollständige Seitenumleitung oder ein Popup ist für jedes einzelne Token erforderlich, jedes Mal, wenn ein Token abläuft (im Fall von Microsoft Identity Platform-Token normalerweise stündlich).
+Dieses Muster für Aktualisierungstoken mit begrenzter Lebensdauer wurde als Kompromiss zwischen Sicherheit und verminderter Benutzerfreundlichkeit ausgewählt. Ohne Aktualisierungstoken oder Cookies von Drittanbietern wird der Autorisierungscodeflow (wie im [Entwurf der aktuellen bewährten Sicherheitsverfahren für OAuth](https://tools.ietf.org/html/draft-ietf-oauth-security-topics-14) empfohlen) aufwändig, wenn neue oder zusätzliche Token erforderlich sind. Jedes Mal, wenn ein Token abläuft (bei Microsoft Identity Platform-Token normalerweise stündlich) ist eine vollständige Seitenumleitung oder ein Popup für jedes einzelne Token erforderlich.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

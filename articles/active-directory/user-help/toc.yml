@@ -50,6 +50,8 @@
       href: auth-app-android-china.md
     - name: Sichern und Wiederherstellen Ihrer Konten
       href: user-help-auth-app-backup-recovery.md
+    - name: Importieren von Kennwörtern in die Authenticator-App
+      href: user-help-authenticator-app-import-passwords.md
     - name: Häufig gestellte Fragen
       href: user-help-auth-app-faq.md
 - name: Hilfe zum Portal „Mein Konto“

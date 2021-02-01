@@ -14,12 +14,12 @@ ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
 ms:custom: fasttrack-edit
-ms.openlocfilehash: eec24ca19af8c41a842b1db3db4b9e16f748f029
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 6a1f4a02ebf42c0f181b595aae0a5fa0bcc9b41d
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97653247"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98755909"
 ---
 # <a name="microsoft-identity-platform-id-tokens"></a>Microsoft Identity Platform – ID-Token
 
@@ -89,7 +89,7 @@ Diese Liste zeigt die JWT-Ansprüche, die (sofern nicht anders angegeben) standa
 |`groups:src1`|JSON-Objekt | Für Tokenanforderungen ohne Längenbeschränkung (siehe `hasgroups` oben), die aber dennoch zu groß für das Token sind, ist ein Link zur Liste der vollständigen Gruppen für den Benutzer enthalten. Für JWTs als verteilter Anspruch, für SAML als neuer Anspruch anstelle des Anspruchs `groups`. <br><br>**JWT-Beispielwert**: <br> `"groups":"src1"` <br> `"_claim_sources`: `"src1" : { "endpoint" : "https://graph.microsoft.com/v1.0/users/{userID}/getMemberObjects" }`<br><br> Weitere Informationen finden Sie unter [Gruppenüberschreitungsanspruch](#groups-overage-claim).|
 
 > [!NOTE]
-> Die ID-Token der Versionen 1.0 und 2.0 weisen Unterschiede in der Menge der enthaltenen Informationen auf, wie aus den obigen Beispielen hervorgeht. Die Version basiert auf dem Endpunkt, von dem aus die Anforderung erfolgt ist. Obwohl vorhandene Anwendungen wahrscheinlich den Azure AD-Endpunkt verwenden, sollten neue Anwendungen den v2.0-Endpunkt „Microsoft Identity Platform“ verwenden.
+> Die ID-Token der Versionen 1.0 und 2.0 weisen Unterschiede in der Menge der enthaltenen Informationen auf, wie aus den obigen Beispielen hervorgeht. Die Version basiert auf dem Endpunkt, von dem aus die Anforderung erfolgt ist. Obwohl vorhandene Anwendungen wahrscheinlich den Azure AD-Endpunkt verwenden, sollten neue Anwendungen Microsoft Identity Platform verwenden.
 >
 > - v1.0: Azure AD-Endpunkte: `https://login.microsoftonline.com/common/oauth2/authorize`
 > - v2.0: Microsoft Identity Platform-Endpunkte: `https://login.microsoftonline.com/common/oauth2/v2.0/authorize`

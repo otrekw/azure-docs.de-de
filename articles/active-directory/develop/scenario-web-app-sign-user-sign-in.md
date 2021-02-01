@@ -1,5 +1,6 @@
 ---
-title: Schreiben einer Web-App für die Benutzeranmeldung und -abmeldung – Microsoft Identity Platform | Azure
+title: Schreiben einer Web-App, die Benutzer an- und abmeldet | Azure
+titleSuffix: Microsoft identity platform
 description: Erfahren Sie, wie Sie eine Web-App zur Benutzeranmeldung und -abmeldung erstellen.
 services: active-directory
 author: jmprieur
@@ -11,12 +12,12 @@ ms.workload: identity
 ms.date: 07/14/2020
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: e7397f6d02d71a6344953b8210b0349b9ee26360
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 5b0b86321f7f2b320c3fea8e7c5bfa45bd936b77
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94443550"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98753000"
 ---
 # <a name="web-app-that-signs-in-users-sign-in-and-sign-out"></a>Web-App für Benutzeranmeldungen: An- und Abmeldung
 
@@ -213,7 +214,7 @@ Nachdem der Benutzer sich bei Ihrer App angemeldet hat, sollten Sie ihm auch das
 Beim Abmelden von einer Web-App geht es um mehr als um das Entfernen der Informationen zum angemeldeten Konto aus dem Status der Web-App.
 Die Web-App muss den Benutzer für die Abmeldung außerdem an den `logout`-Endpunkt von Microsoft Identity Platform umleiten.
 
-Wenn Ihre Web-App den Benutzer an den `logout`-Endpunkt umleitet, löscht dieser Endpunkt die Sitzung des Benutzers aus dem Browser. Wenn Ihre App nicht den `logout`-Endpunkt erreicht hat, kann sich der Benutzer erneut bei Ihrer App authentifizieren, ohne die Anmeldeinformationen erneut eingeben zu müssen. Der Grund hierfür ist, dass er über eine gültige Sitzung für einmaliges Anmelden mit dem Microsoft Identity Platform-Endpunkt verfügt.
+Wenn Ihre Web-App den Benutzer an den `logout`-Endpunkt umleitet, löscht dieser Endpunkt die Sitzung des Benutzers aus dem Browser. Wenn Ihre App nicht den `logout`-Endpunkt erreicht hat, kann sich der Benutzer erneut bei Ihrer App authentifizieren, ohne die Anmeldeinformationen erneut eingeben zu müssen. Der Grund hierfür ist, dass er über eine gültige Sitzung für einmaliges Anmelden mit Microsoft Identity Platform verfügt.
 
 Weitere Informationen finden Sie im Abschnitt [Senden einer Abmeldeanforderung](v2-protocols-oidc.md#send-a-sign-out-request) in der Dokumentation zu [Microsoft Identity Platform und OpenID Connect-Protokoll](v2-protocols-oidc.md).
 

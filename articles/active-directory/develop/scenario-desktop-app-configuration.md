@@ -1,5 +1,6 @@
 ---
-title: Konfigurieren von Desktop-Apps, die Web-APIs aufrufen – Microsoft Identity Platform | Azure
+title: Konfigurieren von Desktop-Apps, die Web-APIs aufrufen | Azure
+titleSuffix: Microsoft identity platform
 description: Erfahren Sie, wie Sie den Code einer Desktop-App konfigurieren, die Web-APIs aufruft
 services: active-directory
 author: jmprieur
@@ -11,12 +12,12 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: 27c9f2ab8b02c96d016fea66acd2b3840d79d09d
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 5b74c817a974378a7fefc71e4eed67e6564765be
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94444122"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98756556"
 ---
 # <a name="desktop-app-that-calls-web-apis-code-configuration"></a>Desktop-App, die Web-APIs aufruft: Codekonfiguration
 

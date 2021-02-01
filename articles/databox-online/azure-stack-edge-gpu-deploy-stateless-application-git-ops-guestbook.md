@@ -1,31 +1,31 @@
 ---
-title: Bereitstellen einer PHP-Gästebuch-App in einer für Arc aktivierten Kubernetes-Implementierung auf einem Azure Stack Edge Pro-GPU-Gerät | Microsoft-Dokumentation
-description: Hier wird beschrieben, wie Sie eine zustandslose PHP-Gästebuchanwendung mit Redis unter Verwendung von GitOps in einem für Arc aktivierten Kubernetes-Cluster Ihres Azure Stack Edge Pro-Geräts bereitstellen.
+title: Bereitstellen einer `PHP Guestbook`-App in einer für Arc aktivierten Kubernetes-Implementierung auf einem Azure Stack Edge Pro-GPU-Gerät | Microsoft-Dokumentation
+description: Hier wird beschrieben, wie Sie eine zustandslose PHP `Guestbook`-Anwendung mit Redis unter Verwendung von GitOps in einem für Arc aktivierten Kubernetes-Cluster Ihres Azure Stack Edge Pro-Geräts bereitstellen.
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 08/25/2020
+ms.date: 01/25/2021
 ms.author: alkohli
-ms.openlocfilehash: 4e974d93b5b7550081abcd7e251c7eda265a2397
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: ba72617444a2c7ec30e4d1d25afe1edcda16ff35
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97882958"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98804880"
 ---
-# <a name="deploy-a-php-guestbook-stateless-application-with-redis-on-arc-enabled-kubernetes-cluster-on-azure-stack-edge-pro-gpu"></a>Bereitstellen einer zustandslosen PHP-Gästebuchanwendung mit Redis in einem für Arc aktivierten Kubernetes-Cluster auf einem Azure Stack Edge Pro-GPU-Gerät
+# <a name="deploy-a-php-guestbook-stateless-application-with-redis-on-arc-enabled-kubernetes-cluster-on-azure-stack-edge-pro-gpu"></a>Bereitstellen einer zustandslosen PHP `Guestbook`-Anwendung mit Redis in einem für Arc aktivierten Kubernetes-Cluster auf einem Azure Stack Edge Pro-GPU-Gerät
 
 In diesem Artikel wird erläutert, wie Sie eine einfache Multi-Tier-Webanwendung unter Verwendung von Kubernetes und Azure Arc erstellen und bereitstellen. Dieses Beispiel umfasst die folgenden Komponenten:
 
-- Einen Redis-Master (Einzelinstanz) zum Speichern von Gästebucheinträgen
+- Einen Redis-Master (Einzelinstanz) zum Speichern von `guestbook`-Einträgen
 - Mehrere replizierte Redis-Instanzen für Lesevorgänge
 - Mehrere Front-End-Webinstanzen
 
 Die Bereitstellung erfolgt unter Verwendung von GitOps in dem für Arc aktivierten Kubernetes-Cluster auf Ihrem Azure Stack Edge Pro-Gerät. 
 
-Dieses Verfahren ist für Benutzer gedacht, die den Artikel [Kubernetes-Workloads auf einem Azure Stack Edge Pro-Gerät](azure-stack-edge-gpu-kubernetes-workload-management.md) gelesen haben und mit den Konzepten von [Was ist Kubernetes mit Azure Arc-Unterstützung (Vorschauversion)?](../azure-arc/kubernetes/overview.md) vertraut sind.
+Dieses Verfahren ist für Personen gedacht, die den Artikel [Kubernetes-Workloads auf einem Azure Stack Edge Pro-Gerät](azure-stack-edge-gpu-kubernetes-workload-management.md) gelesen haben und mit den in [Was ist Kubernetes mit Azure Arc-Unterstützung (Vorschauversion)?](../azure-arc/kubernetes/overview.md) beschriebenen Konzepten vertraut sind.
 
 > [!NOTE]
 > Dieser Artikel enthält Verweise auf den Begriff Slave, einen Begriff, den Microsoft nicht mehr verwendet. Sobald der Begriff aus der Software entfernt wird, wird er auch aus diesem Artikel entfernt.
@@ -49,18 +49,18 @@ Stellen Sie vor der Bereitstellung der zustandslosen Anwendung sicher, dass die 
 
 1. Sie verfügen über ein Windows-Clientsystem, das für den Zugriff auf das Azure Stack Edge Pro-Gerät verwendet wird.
   
-    - Auf dem Client wird Windows PowerShell 5.0 oder höher ausgeführt. Informationen zum Herunterladen der neuesten Version von Windows PowerShell finden Sie unter [Installieren von Windows PowerShell](/powershell/scripting/install/installing-windows-powershell?view=powershell-7).
+    - Auf dem Client wird Windows PowerShell 5.0 oder höher ausgeführt. Informationen zum Herunterladen der neuesten Version von Windows PowerShell finden Sie unter [Installieren von Windows PowerShell](/powershell/scripting/install/installing-windows-powershell?view=powershell-7&preserve-view = true).
     
     - Sie können auch einen anderen Client mit einem [unterstützten Betriebssystem](azure-stack-edge-gpu-system-requirements.md#supported-os-for-clients-connected-to-device) verwenden. In diesem Artikel wird die Vorgehensweise bei Verwendung eines Windows-Clients beschrieben. 
     
 1. Sie haben die unter [Zugreifen auf den Kubernetes-Cluster auf dem Azure Stack Edge Pro-Gerät](azure-stack-edge-gpu-create-kubernetes-cluster.md) beschriebenen Schritte ausgeführt. Sie haben:
     
-    - `kubectl` auf dem Client installiert.  <!--and saved the `kubeconfig` file with the user configuration to C:\\Users\\&lt;username&gt;\\.kube. -->
+    - `kubectl` auf dem Client installiert. <!--and saved the `kubeconfig` file with the user configuration to C:\\Users\\&lt;username&gt;\\.kube. -->
     
     - Stellen Sie sicher, dass die `kubectl`-Clientversion um nicht mehr als eine Version von der Kubernetes-Masterversion abweicht, die auf dem Azure Stack Edge Pro-Gerät ausgeführt wird. 
       - Verwenden Sie `kubectl version`, um die kubectl-Version zu überprüfen, die auf dem Client ausgeführt wird. Notieren Sie sich den gesamten Versionsnamen.
       - Navigieren Sie auf der lokalen Benutzeroberfläche des Azure Stack Edge Pro-Geräts zu **Übersicht**, und notieren Sie sich die Kubernetes-Softwarenummer. 
-      - Überprüfen Sie anhand der Zuordnungen in der Liste der unterstützten Kubernetes-Versionen, ob diese beiden Versionen kompatibel sind. <!--insert link-->.
+      - Überprüfen Sie anhand der Zuordnungen in der Liste der unterstützten Kubernetes-Versionen, ob diese beiden Versionen kompatibel sind. <!--insert link-->
 
 1. Sie verfügen über eine [GitOps-Konfiguration, die Sie zum Ausführen einer Azure Arc-Bereitstellung verwenden können](https://github.com/kagoyal/dbehaikudemo). In diesem Beispiel werden die folgenden `yaml`-Dateien für die Bereitstellung auf Ihrem Azure Stack Edge Pro-Gerät verwendet.
 
@@ -86,18 +86,18 @@ Führen Sie diese Schritte aus, um die Azure Arc-Ressource für die Bereitstell
 
     ![Screenshot: Kubernetes-Cluster mit Azure Arc-Unterstützung und ausgewählter Option „Konfiguration hinzufügen“](media/azure-stack-edge-gpu-connect-powershell-interface/select-configurations-1.png)
 
-1. Geben Sie unter **Konfiguration hinzufügen** die geeigneten Werte für die Felder ein, und wählen Sie **Anwenden** aus.
+1. Geben Sie unter **Konfiguration hinzufügen** die geeigneten Werte für die Felder ein, und wählen Sie dann **Anwenden** aus.
 
     |Parameter  |BESCHREIBUNG |
     |---------|---------|
     |Konfigurationsname     | Name der Konfigurationsressource.        |
     |Name der Operatorinstanz     |Instanzname des Operators zur Identifizierung einer bestimmten Konfiguration. Dieser Name ist eine Zeichenfolge aus maximal 253 Zeichen, bei denen es sich ausschließlich um Kleinbuchstaben, alphanumerische Zeichen, Bindestriche und Punkte handeln darf.         |
-    |Operatornamespace     | Legen Sie diesen Namespace auf **demotestguestbook** fest, da dieser Name dem in der Bereitstellung `yaml` angegebenen Namespace entspricht. <br> Das Feld definiert den Namespace, in dem der Operator installiert ist. Dieser Name ist eine Zeichenfolge aus maximal 253 Zeichen, bei denen es sich ausschließlich um Kleinbuchstaben, alphanumerische Zeichen, Bindestriche und Punkte handeln darf.         |
+    |Operatornamespace     | Legen Sie diesen Namespace auf **demotestguestbook** fest, sodass er dem in der Bereitstellung `yaml` angegebenen Namespace entspricht. <br> Das Feld definiert den Namespace, in dem der Operator installiert ist. Dieser Name ist eine Zeichenfolge aus maximal 253 Zeichen, bei denen es sich ausschließlich um Kleinbuchstaben, alphanumerische Zeichen, Bindestriche und Punkte handeln darf.         |
     |Repository-URL     |<br>Pfad zum Git-Repository im `http://github.com/username/repo`- oder `git://github.com/username/repo`-Format, in dem sich Ihre GitOps-Konfiguration befindet.         |
-    |Operatorbereich     | Wählen Sie **Namespace** aus. <br>Über diese Einstellung wird der Bereich definiert, in dem der Operator installiert ist. Wählen Sie „Namespace“ aus. Ihr Operator wird in dem Namespace installiert, der in den YAML-Bereitstellungsdateien angegeben ist.       |
-    |Operatortyp     | Übernehmen Sie die Standardeinstellung. <br>Über dieses Feld wird der Typ des Operators angegeben. Standardmäßig ist „flux“ festgelegt.        |
-    |Operatorparameter     | Lassen Sie dieses Feld leer. <br>Dieses Feld enthält Parameter zum Übergeben des Flux-Operators.        |
-    |Helm     | Legen Sie für dieses Feld **Deaktiviert** fest. <br>Aktivieren Sie diese Option, wenn Sie Chart-basierte Bereitstellungen vornehmen.        |
+    |Operatorbereich     | Wählen Sie **Namespace** aus. <br>Dieser Parameter definiert den Bereich, in dem der Operator installiert ist. Wählen Sie „Namespace“ aus, um Ihren Operator in dem Namespace zu installieren, der in den YAML-Bereitstellungsdateien angegeben ist.       |
+    |Operatortyp     | Übernehmen Sie die Standardeinstellung. <br>Dieser Parameter gibt den Typ des Operators an. Standardmäßig ist „flux“ festgelegt.        |
+    |Operatorparameter     | Lassen Sie dieses Feld leer. <br>Dieser Parameter enthält die Parameter zum Übergeben des Flux-Operators.        |
+    |Helm     | Legen Sie diesen Parameter auf **Deaktiviert** fest. <br>Aktivieren Sie diese Option, wenn Sie Chart-basierte Bereitstellungen vornehmen.        |
 
 
     ![Hinzufügen einer Konfiguration](media/azure-stack-edge-gpu-connect-powershell-interface/add-configuration-1.png)
@@ -136,7 +136,7 @@ Bei der Bereitstellung über die GitOps-Konfiguration wird ein `demotestguestboo
     [10.128.44.240]: PS>
     ```  
 
-1. In diesem Beispiel wurde der Front-End-Dienst als „type:LoadBalancer“ bereitgestellt. Zum Anzeigen des Gästebuchs müssen Sie die IP-Adresse dieses Diensts ermitteln. Führen Sie den folgenden Befehl aus.
+1. In diesem Beispiel wurde der Front-End-Dienst als „type:LoadBalancer“ bereitgestellt. Zum Anzeigen von `guestbook` müssen Sie die IP-Adresse dieses Diensts ermitteln. Führen Sie den folgenden Befehl aus.
 
     `kubectl get service -n <your-namespace>`
     
@@ -149,13 +149,13 @@ Bei der Bereitstellung über die GitOps-Konfiguration wird ein `demotestguestboo
     redis-slave    ClusterIP      10.104.215.146   <none>          6379/TCP       85m
     [10.128.44.240]: PS>
     ```
-1. Der Front-End-Dienst von `type:LoadBalancer` verfügt über eine externe IP-Adresse. Diese IP-Adresse stammt aus dem IP-Adressbereich, den Sie beim Konfigurieren der Computenetzwerkeinstellungen auf dem Gerät für externe Dienste angegeben haben. Verwenden Sie diese IP-Adresse, um das Gästebuch unter der folgenden URL anzuzeigen: `https://<external-IP-address>`.
+1. Der Front-End-Dienst von `type:LoadBalancer` verfügt über eine externe IP-Adresse. Diese IP-Adresse stammt aus dem IP-Adressbereich, den Sie beim Konfigurieren der Computenetzwerkeinstellungen auf dem Gerät für externe Dienste angegeben haben. Verwenden Sie diese IP-Adresse, um `guestbook` unter der folgenden URL anzuzeigen: `https://<external-IP-address>`.
 
     ![Anzeige des Gästebuchs](media/azure-stack-edge-gpu-connect-powershell-interface/view-guestbook-1.png)
 
 ## <a name="delete-deployment"></a>Löschen der Bereitstellung
 
-Um die Bereitstellung zu löschen, können Sie die Konfiguration im Azure-Portal löschen. Dadurch werden die erstellten Objekte gelöscht (einschließlich Bereitstellungen und Dienste).
+Um die Bereitstellung zu löschen, können Sie die Konfiguration im Azure-Portal löschen. Durch Löschen der Konfiguration werden die erstellten Objekte, einschließlich Bereitstellungen und Dienste, gelöscht.
 
 1. Navigieren Sie im Azure-Portal zur Azure Arc-Ressource und dann zu „Konfigurationen“. 
 1. Suchen Sie nach der Konfiguration, die Sie löschen möchten. Wählen Sie die Auslassungspunkte (...) aus, um das Kontextmenü zu öffnen, und wählen Sie dann **Löschen** aus.

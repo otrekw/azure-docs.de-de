@@ -42,6 +42,8 @@
       href: ../container-registry/container-registry-event-grid-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json
     - name: Behandeln von Azure Communication Services-Ereignissen
       href: ../communication-services/quickstarts/telephony-sms/handle-sms-events.md?toc=%2fazure%2fevent-grid%2ftoc.json
+    - name: Azure Cache for Redis-Ereignisse
+      href: ../azure-cache-for-redis/cache-event-grid-quickstart-portal.md?toc=%2fazure%2fevent-grid%2ftoc.json
 - name: Tutorials
   items:
     - name: Senden einer E-Mail bei VM-Änderungen
@@ -138,6 +140,8 @@
               href: event-schema-azure-signalr.md
             - name: Azure-Abonnements
               href: event-schema-subscriptions.md
+            - name: Azure Cache for Redis
+              href: event-schema-azure-cache.md
     - name: Partnerereignisse
       items:
         - name: Übersicht über Partnerereignisse
@@ -188,6 +192,8 @@
       items:
         - name: Sicherheitsbaseline
           href: security-baseline.md
+        - name: Sicherheitskontrollen von Azure Policy
+          href: ./security-controls-policy.md
         - name: Authentifizieren der Ereignisübermittlung an Ereignishandler
           href: security-authentication.md
         - name: Authentifizieren von Veröffentlichungsclients

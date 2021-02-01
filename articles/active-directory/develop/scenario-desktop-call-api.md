@@ -1,5 +1,6 @@
 ---
-title: 'Aufrufen von Web-APIs über eine Desktop-App: Microsoft Identity Platform | Azure'
+title: Aufrufen von Web-APIs über eine Desktop-App | Azure
+titleSuffix: Microsoft identity platform
 description: Hier erfahren Sie, wie Sie eine Desktop-App erstellen, die Web-APIs aufruft.
 services: active-directory
 author: jmprieur
@@ -11,12 +12,12 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 274dc731b69686a67a9ac5dba25a5d9c98581652
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 51619fe049d580c21b338af2f86b2afea6765b04
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94444043"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98756528"
 ---
 # <a name="desktop-app-that-calls-web-apis-call-a-web-api"></a>Desktop-App, die Web-APIs aufruft: Aufrufen einer Web-API
 

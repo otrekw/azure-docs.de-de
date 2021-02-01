@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 1667c21b9a35b8e93feffb8cf1b37d4409da73c3
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 1552401953a8cba9dda787a0f0e461adb7972920
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98044304"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664451"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-scripted"></a>Einrichten einer Azure Digital Twins-Instanz und -Authentifizierung (per Skript)
 
@@ -29,11 +29,13 @@ Bei dieser Version dieses Artikels werden die Schritte durchgeführt, indem ein 
 
 ## <a name="prerequisites-download-the-script"></a>Voraussetzungen: Herunterladen des Skripts
 
-Das Beispielskript ist in PowerShell geschrieben. Es ist Teil der [**End-to-End-Beispiele für Azure Digital Twins**](/samples/azure-samples/digital-twins-samples/digital-twins-samples/), die Sie auf Ihren Computer herunterladen können, indem Sie dem Beispiellink folgen und unterhalb des Titels auf die Schaltfläche *ZIP herunterladen* klicken.
+Das Beispielskript ist in PowerShell geschrieben. Es ist Teil der [**End-to-End-Beispiele für Azure Digital Twins**](/samples/azure-samples/digital-twins-samples/digital-twins-samples/), die Sie auf Ihren Computer herunterladen können, indem Sie dem Beispiellink folgen und unterhalb des Titels auf die Schaltfläche *Code durchsuchen* klicken. Dadurch gelangen Sie zum GitHub-Repository für die Beispiele, die Sie als *ZIP-Datei* herunterladen können. Wählen Sie hierzu die Schaltfläche *Code* und anschließend *ZIP herunterladen* aus.
 
-Dadurch wird das Beispielprojekt als _**Azure_Digital_Twins_end_to_end_samples.zip**_ auf Ihren Computer heruntergeladen. Navigieren Sie zu dem Ordner auf Ihrem Computer, und entpacken Sie ihn, um die Dateien zu extrahieren.
+:::image type="content" source="media/includes/download-repo-zip.png" alt-text="GitHub-Repository „digital-twins-samples“. Die Schaltfläche „Code“ wurde ausgewählt, und ein kleines Dialogfeld wird angezeigt, in dem die Schaltfläche „ZIP herunterladen“ hervorgehoben ist." lightbox="media/includes/download-repo-zip.png":::
 
-Im entpackten Ordner befindet sich das Bereitstellungsskript unter _Azure_Digital_Twins_end_to_end_samples > scripts > **deploy.ps1**_.
+Dadurch wird ein *ZIP*-Ordner als **digital-twins-samples-master.zip** auf Ihren Computer heruntergeladen. Navigieren Sie zu dem Ordner auf Ihrem Computer, und entpacken Sie ihn, um die Dateien zu extrahieren.
+
+Im entpackten Ordner befindet sich das Bereitstellungsskript unter _digital-twins-samples-master > scripts > **deploy.ps1**_.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -56,7 +58,7 @@ Im Folgenden sind die Schritte zum Ausführen des Bereitstellungsskripts in Clou
 
     :::image type="content" source="media/how-to-set-up-instance/cloud-shell/cloud-shell-upload.png" alt-text="Cloud Shell-Fenster: Auswahl des Symbols „Hochladen“":::
 
-    Navigieren Sie zur Datei _**deploy.ps1**_ auf Ihrem Computer (in _Azure_Digital_Twins_end_to_end_samples > scripts > **deploy.ps1**_), und klicken Sie auf „Öffnen“. Dadurch wird die Datei in Cloud Shell hochgeladen, sodass Sie diese im Cloud Shell-Fenster ausführen können.
+    Navigieren Sie auf Ihrem Computer zur Datei _**deploy.ps1**_ (in _digital-twins-samples-master > scripts > **deploy.ps1**_), und klicken Sie auf „Öffnen“. Dadurch wird die Datei in Cloud Shell hochgeladen, sodass Sie diese im Cloud Shell-Fenster ausführen können.
 
 4. Führen Sie das Skript aus, indem Sie im Cloud Shell-Fenster den Befehl `./deploy.ps1` absenden. Sie können den Befehl unten kopieren (denken Sie daran, dass Sie zum Einfügen in Cloud Shell **STRG+UMSCHALT+V** unter Windows und Linux oder **CMD+UMSCHALT+V** unter macOS verwenden können. Sie können auch das Kontextmenü verwenden).
 

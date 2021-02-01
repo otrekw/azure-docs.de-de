@@ -12,16 +12,16 @@ ms.date: 09/23/2020
 ms.author: ryanwi
 ms.reviewer: hirsin, jesakowi, jmprieur, marsma
 ms.custom: aaddev, fasttrack-edit, contperf-fy21q1, identityplatformtop40
-ms.openlocfilehash: 35499810ae13a8ddc5b7bb6306deafef0ef24e0f
-ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
+ms.openlocfilehash: aa8c00d1ee2a0dc3d019cc75b4e411ede984e74a
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98246790"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98756056"
 ---
-# <a name="permissions-and-consent-in-the-microsoft-identity-platform-endpoint"></a>Berechtigungen und Zustimmung im Microsoft Identity Platform-Endpunkt
+# <a name="permissions-and-consent-in-the-microsoft-identity-platform"></a>Berechtigungen und Zustimmung im Microsoft Identity Platform-Endpunkt
 
-Anwendungen, die sich in die Microsoft Identity Platform integrieren lassen, folgen einem bestimmten Autorisierungsmodell, mit dem Benutzer und Administratoren den Zugriff auf Daten steuern können. Die Implementierung des Autorisierungsmodells wurde für den Microsoft Identity Platform-Endpunkt aktualisiert. Dadurch muss eine App auf andere Weise mit Microsoft Identity Platform interagieren. Dieser Artikel behandelt die grundlegenden Konzepte dieses Autorisierungsmodells einschließlich der Bereiche, Berechtigungen und Zustimmung.
+In Microsoft Identity Platform integrierte Anwendungen folgen einem Autorisierungsmodell, mit dem Benutzer und Administratoren den Zugriff auf Daten steuern können. Die Implementierung des Autorisierungsmodells wurde in Microsoft Identity Platform aktualisiert. Dadurch muss eine App auf andere Weise mit Microsoft Identity Platform interagieren. Dieser Artikel behandelt die grundlegenden Konzepte dieses Autorisierungsmodells einschließlich der Bereiche, Berechtigungen und Zustimmung.
 
 ## <a name="scopes-and-permissions"></a>Bereiche und Berechtigungen
 
@@ -53,7 +53,7 @@ Eine App fordert diese Berechtigungen meist durch Angabe der Bereiche in Anforde
 
 ## <a name="permission-types"></a>Berechtigungstypen
 
-Die Microsoft Identity Platform unterstützt zwei Arten von Berechtigungen: *delegierte Berechtigungen* und *Anwendungsberechtigungen*.
+Microsoft Identity Platform unterstützt zwei Arten von Berechtigungen: *delegierte Berechtigungen* und *Anwendungsberechtigungen*.
 
 * **Delegierte Berechtigungen** werden von Apps verwendet, bei denen ein angemeldeter Benutzer vorhanden ist. Bei diesen Apps willigt entweder der Benutzer oder ein Administrator in die von der App angeforderten Berechtigungen ein. An die App wird die Berechtigung delegiert, bei an die Zielressource gerichteten Aufrufen als angemeldeter Benutzer zu fungieren. 
 
@@ -128,7 +128,7 @@ https%3A%2F%2Fgraph.microsoft.com%2Fmail.send
 
 Der `scope`-Parameter ist eine durch Leerzeichen getrennte Liste von delegierten Berechtigungen, die von der App angefordert werden. Die einzelnen Berechtigungen werden jeweils durch Anfügen des Berechtigungswerts an den Ressourcenbezeichner (Anwendungs-ID-URI) angegeben. Die Anforderung im Beispiel gibt an, dass die Anwendung eine Berechtigung zum Lesen des Kalenders des Benutzers und Senden von E-Mails als Benutzer benötigt.
 
-Nachdem der Benutzer seine Anmeldeinformationen eingegeben hat, überprüft der Microsoft Identity Platform-Endpunkt, ob es einen übereinstimmenden Datensatz der *Benutzerzustimmung* gibt. Wenn der Benutzer in der Vergangenheit für keine der angeforderten Berechtigungen seine Einwilligung erteilt und kein Administrator in die Erteilung dieser Berechtigungen für die gesamte Organisation eingewilligt hat, wird der Benutzer durch den Microsoft Identity Platform-Endpunkt aufgefordert, die angeforderten Berechtigungen zu gewähren.
+Nachdem der Benutzer seine Anmeldeinformationen eingegeben hat, überprüft Microsoft Identity Platform, ob es einen übereinstimmenden Eintrag für die *Benutzerzustimmung* gibt. Wenn der Benutzer in der Vergangenheit für keine der angeforderten Berechtigungen seine Zustimmung erteilt und der Administrator im Namen der gesamten Organisation diesen Berechtigungen nicht zugestimmt hat, wird der Benutzer durch Microsoft Identity Platform aufgefordert, die angeforderten Berechtigungen zu gewähren.
 
 Zu diesem Zeitpunkt werden die Berechtigungen `offline_access` („Zugriff auf Daten erhalten, auf die Sie Zugriff gewährt haben“) und `user.read` („Anmelden und Ihr Profil lesen“) automatisch in die erste Einwilligung für eine Anwendung aufgenommen.  Diese Berechtigungen sind im Allgemeinen für die ordnungsgemäße Funktionalität der App erforderlich. Die Berechtigung `offline_access` ermöglicht der App den Zugriff auf Aktualisierungstoken, die für native und Web-Apps entscheidend sind. Die Berechtigung `user.read` ermöglicht den Zugriff auf den Anspruch `sub`. Dadurch kann der Client oder die App den Benutzer im Laufe der Zeit korrekt identifizieren und auf rudimentäre Benutzerinformationen zugreifen.
 
@@ -335,7 +335,7 @@ response_type=token            //Code or a hybrid flow is also possible here
 
 In diesem Codebeispiel wird eine Einwilligungsseite für alle registrierten Berechtigungen generiert, wenn die obigen Beschreibungen von Einwilligung und `/.default` für das Szenario gelten. Anschließend gibt der Code kein Zugriffstoken, sondern ein ID-Token (`id_token`) zurück.  
 
-Dieses Verhalten ist für einige Legacyclients geeignet, die von der Azure Active Directory-Authentifizierungsbibliothek (Azure AD Authentication Library, ADAL) zur Microsoft-Authentifizierungsbibliothek (Microsoft Authentication Library, MSAL) migriert werden. Dieses Setup sollte *nicht* von neuen Clients verwendet werden, die für den Microsoft Identity Platform-Endpunkt konzipiert sind.
+Dieses Verhalten ist für einige Legacyclients geeignet, die von der Azure AD-Authentifizierungsbibliothek (ADAL) zur Microsoft-Authentifizierungsbibliothek (MSAL) migriert werden. Dieses Setup sollte *nicht* für neue Clients verwendet werden, die für Microsoft Identity Platform konzipiert sind.
 
 ### <a name="client-credentials-grant-flow-and-default"></a>Flow zum Gewähren von Clientanmeldeinformationen und Verwenden von „/.default“  
 
@@ -358,4 +358,4 @@ Problembehandlungsschritte finden Sie unter [Unerwarteter Fehler beim Vorgang de
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Microsoft Identity Platform – ID-Token](id-tokens.md)
-* [Microsoft Identity Platform-Zugriffstoken](access-tokens.md)
+* [Microsoft Identity Platform – Zugriffstoken](access-tokens.md)

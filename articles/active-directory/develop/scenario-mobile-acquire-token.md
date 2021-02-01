@@ -13,12 +13,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: 946908bf28a50bc8b523c4efd853e8720b115c7b
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: c071cb9a8a27964a93e039e4d1536e078730bfc9
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98063075"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98753634"
 ---
 # <a name="get-a-token-for-a-mobile-app-that-calls-web-apis"></a>Abrufen eines Tokens für eine mobile App, die Web-APIs aufruft
 
@@ -243,7 +243,7 @@ Die Klasse definiert die folgenden Konstanten:
 
 ##### <a name="withextrascopetoconsent"></a>WithExtraScopeToConsent
 
-Verwenden Sie den `WithExtraScopeToConsent`-Modifizierer in einem erweiterten Szenario, in dem Sie möchten, dass der Benutzer vorab seine Zustimmung zu mehreren Ressourcen erteilt. Sie können diesen Modifizierer verwenden, wenn Sie keine inkrementelle Zustimmung verwenden möchten, die normalerweise mit MSAL.NET oder Microsoft Identity Platform 2.0 verwendet wird. Weitere Informationen finden Sie unter [Einholen der Vorauseinwilligung des Benutzers für verschiedene Ressourcen](scenario-desktop-production.md#have-the-user-consent-upfront-for-several-resources).
+Verwenden Sie den `WithExtraScopeToConsent`-Modifizierer in einem erweiterten Szenario, in dem Sie möchten, dass der Benutzer vorab seine Zustimmung zu mehreren Ressourcen erteilt. Sie können diesen Modifizierer verwenden, wenn Sie keine inkrementelle Zustimmung verwenden möchten, die normalerweise mit MSAL.NET oder Microsoft Identity Platform verwendet wird. Weitere Informationen finden Sie unter [Einholen der Vorauseinwilligung des Benutzers für verschiedene Ressourcen](scenario-desktop-production.md#have-the-user-consent-upfront-for-several-resources).
 
 Hier sehen Sie ein Codebeispiel:
 

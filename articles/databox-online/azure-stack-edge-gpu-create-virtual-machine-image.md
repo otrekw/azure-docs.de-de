@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 12/08/2020
+ms.date: 01/25/2021
 ms.author: alkohli
-ms.openlocfilehash: fd55110bbfaed72051bfc388692421cd8209609d
-ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
+ms.openlocfilehash: 0985779aeb14fd4f3d6a12cf152e4c63c909d613
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97763673"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98806677"
 ---
 # <a name="create-custom-vm-images-for-your-azure-stack-edge-pro-device"></a>Erstellen benutzerdefinierter VM-Images für Ihr Azure Stack Edge Pro-Gerät
 
@@ -23,7 +23,7 @@ Wenn Sie virtuelle Computer auf Ihrem Azure Stack Edge Pro-Gerät bereitstellen 
 
 ## <a name="vm-image-workflow"></a>Workflow für VM-Images
 
-Der Workflow erfordert, dass Sie einen virtuellen Computer in Azure erstellen, den virtuellen Computer anpassen und generalisieren und dann die virtuelle Festplatte (VHD) für diesen virtuellen Computer herunterladen. Diese generalisierte virtuelle Festplatte wird in Azure Stack Edge Pro hochgeladen. Es wird ein verwalteter Datenträger auf der Grundlage dieser virtuellen Festplatte erstellt, und das Image wird auf der Grundlage des verwalteten Datenträgers erstellt. Abschließend werden virtuelle Computer auf der Grundlage dieses Images erstellt.   
+Der Workflow erfordert, dass Sie einen virtuellen Computer in Azure erstellen, den virtuellen Computer anpassen und generalisieren und dann die virtuelle Festplatte (VHD) für diesen virtuellen Computer herunterladen. Diese generalisierte VHD wird in Azure Stack Edge Pro hochgeladen. Es wird ein verwalteter Datenträger auf Grundlage dieser VHD erstellt. Auf Grundlage des verwalteten Datenträgers wird ein Image erstellt. Zum Schluss werden virtuelle Computer auf Grundlage dieses Images erstellt.
 
 Weitere Informationen finden Sie unter [Bereitstellen von VMs auf Ihrem Azure Stack Edge Pro-Gerät mithilfe von Azure PowerShell](azure-stack-edge-gpu-deploy-virtual-machine-powershell.md).
 
@@ -76,7 +76,7 @@ Verwenden Sie diese virtuelle Festplatte, um jetzt einen virtuellen Computer zu 
 |[Ubuntu Server](https://azuremarketplace.microsoft.com/marketplace/apps/canonical.ubuntuserver) |Ubuntu Server ist das weltweit beliebteste Linux für Cloudumgebungen.|Canonical|
 |[Debian 8 „Jessie“](https://azuremarketplace.microsoft.com/marketplace/apps/credativ.debian) |Debian GNU/Linux ist eine der am häufigsten verwendeten Linux-Distributionen.     |credativ|
 
-Eine vollständige Liste der Azure Marketplace-Images, die funktionieren könnten (derzeit noch nicht getestet), finden Sie unter [Für Azure Stack Hub verfügbare Azure Marketplace-Elemente](/azure-stack/operator/azure-stack-marketplace-azure-items?view=azs-1910).
+Eine vollständige Liste der Azure Marketplace-Images, die funktionieren könnten (derzeit noch nicht getestet), finden Sie unter [Für Azure Stack Hub verfügbare Azure Marketplace-Elemente](/azure-stack/operator/azure-stack-marketplace-azure-items?view=azs-1910&preserve-view=true).
 
 
 ## <a name="next-steps"></a>Nächste Schritte

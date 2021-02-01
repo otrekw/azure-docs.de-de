@@ -13,14 +13,14 @@ ms.date: 01/04/2021
 ms.author: ryanwi
 ms.custom: aaddev, identityplatformtop40, content-perf, FY21Q1, contperf-fy21q1
 ms.reviewer: hirsin, jlu, annaba
-ms.openlocfilehash: ec925ce165c1de98fe920381e1b51e3388c1e4ad
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: f4ae26a489b823e2347841cf72690d6cd8462611
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98232402"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98755311"
 ---
-# <a name="configurable-token-lifetimes-in-microsoft-identity-platform-preview"></a>Konfigurierbare Tokengültigkeitsdauer in Microsoft Identity Platform (Vorschau)
+# <a name="configurable-token-lifetimes-in-the-microsoft-identity-platform-preview"></a>Konfigurierbare Tokengültigkeitsdauer in Microsoft Identity Platform (Vorschau)
 
 Sie können die Gültigkeitsdauer eines Zugriffs-, ID- oder SAML-Tokens angeben, das von Microsoft Identity Platform ausgestellt wird. Die Tokengültigkeitsdauer können Sie für alle Apps Ihrer Organisation, für eine mehrinstanzenfähige Anwendung (Multiorganisationsanwendung) oder für einen bestimmten Dienstprinzipal in Ihrer Organisation festlegen. Allerdings unterstützen wir derzeit nicht das Konfigurieren der Tokenlebensdauer bei [Dienstprinzipalen für verwaltete Identitäten](../managed-identities-azure-resources/overview.md).
 
@@ -58,7 +58,7 @@ Die im Element `<SubjectConfirmationData>` angegebene Antragstellerbestätigung 
 
 ### <a name="id-tokens"></a>ID-Token
 
-ID-Token werden an Websites und native Clients übergeben. ID-Token enthalten Profilinformationen zu einem Benutzer. Ein ID-Token ist an eine bestimmte Kombination von Benutzer und Client gebunden. ID-Token werden bis zu ihrem Ablaufdatum als gültig betrachtet. In der Regel passt eine Webanwendung die Gültigkeitsdauer der Sitzung eines Benutzers in der Anwendung an die Gültigkeitsdauer des für den Benutzer ausgegebenen ID-Tokens an. Sie können die Gültigkeitsdauer eines ID-Tokens anpassen, um zu steuern, wie oft die Webanwendung den Ablauf der Anwendungssitzung veranlasst und wie oft der Benutzer sich erneut bei der Microsoft Identity Platform authentifizieren muss (entweder im Hintergrund oder interaktiv).
+ID-Token werden an Websites und native Clients übergeben. ID-Token enthalten Profilinformationen zu einem Benutzer. Ein ID-Token ist an eine bestimmte Kombination von Benutzer und Client gebunden. ID-Token werden bis zu ihrem Ablaufdatum als gültig betrachtet. In der Regel passt eine Webanwendung die Gültigkeitsdauer der Sitzung eines Benutzers in der Anwendung an die Gültigkeitsdauer des für den Benutzer ausgegebenen ID-Tokens an. Sie können die Gültigkeitsdauer eines ID-Tokens anpassen, um zu steuern, wie oft die Webanwendung den Ablauf der Anwendungssitzung veranlasst und wie oft der Benutzer sich erneut bei Microsoft Identity Platform authentifizieren muss (entweder im Hintergrund oder interaktiv).
 
 ### <a name="token-lifetime-policy-properties"></a>Eigenschaften von Tokengültigkeitsdauer-Richtlinien
 
@@ -82,9 +82,11 @@ Sie können Richtlinien für die Tokenlebensdauer für Aktualisierungstoken und 
 > [!IMPORTANT]
 > Ab Mai 2020 können neue Mandanten die Gültigkeitsdauer von Aktualisierungen und Sitzungstoken nicht mehr konfigurieren.  Mandanten mit vorhandenen Konfigurationen können die Richtlinien für Aktualisierungs- und Sitzungstoken bis zum 30. Januar 2021 ändern.   Nach dem 30. Januar 2021 berücksichtigt Azure Active Directory vorhandene Konfigurationen von Aktualisierungs- und Sitzungstoken in Richtlinien nicht mehr. Die Gültigkeitsdauer von Zugriffs-, SAML- und ID-Token kann jedoch auch nach der Einstellung weiterhin konfiguriert werden.
 >
-> Wenn Sie weiterhin definieren möchten, nach welcher Zeit ein Benutzer zur erneuten Anmeldung aufgefordert werden soll, können Sie die Anmeldehäufigkeit im bedingten Zugriff konfigurieren. Weitere Informationen zum bedingten Zugriff finden Sie unter [Konfigurieren der Verwaltung von Authentifizierungssitzungen mit bedingtem Zugriff](/azure/active-directory/conditional-access/howto-conditional-access-session-lifetime).
+> Wenn Sie weiterhin definieren möchten, nach welcher Zeit ein Benutzer zur erneuten Anmeldung aufgefordert werden soll, können Sie die Anmeldehäufigkeit im bedingten Zugriff konfigurieren. Weitere Informationen zum bedingten Zugriff finden Sie unter [Konfigurieren der Verwaltung von Authentifizierungssitzungen mit bedingtem Zugriff](../conditional-access/howto-conditional-access-session-lifetime.md).
 >
 > Wenn Sie den bedingten Zugriff nach dem Einstellungsdatum nicht verwenden möchten, werden die Aktualisierungs- und Sitzungstoken an diesem Datum auf die [Standardkonfiguration](#configurable-token-lifetime-properties-after-the-retirement) festgelegt, und Sie können ihre Gültigkeitsdauer nicht mehr ändern.
+>
+> Die Gültigkeitsdauer des vorhandenen Tokens wird nicht geändert. Nach dem Ablauf des Tokens wird auf Basis des Standardwerts ein neues Token ausgegeben.
 
 :::image type="content" source="./media/active-directory-configurable-token-lifetimes/roadmap.svg" alt-text="Informationen zur Ausmusterung":::
 

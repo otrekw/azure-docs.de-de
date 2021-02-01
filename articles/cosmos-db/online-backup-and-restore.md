@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/13/2020
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 43625a80df76ff35b8bb1804df5f5fd1524326c5
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: ba66013e37c196c58291a6bcd979be7fb5fa0130
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93097531"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98684575"
 ---
 # <a name="online-backup-and-on-demand-data-restore-in-azure-cosmos-db"></a>Onlinesicherung und bedarfsgesteuerte Wiederherstellung in Azure Cosmos DB
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -60,7 +60,7 @@ Wenn Sie während der Kontoerstellung Sicherungsoptionen konfigurieren, können 
 
 ## <a name="request-data-restore-from-a-backup"></a>Anfordern der Datenwiederherstellung aus einer Sicherung
 
-Falls Sie Ihre Datenbank oder einen Container versehentlich löschen, können Sie ein [Supportticket erstellen](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) oder [sich an den Azure Support wenden](https://azure.microsoft.com/support/options/), um die Daten aus automatischen Onlinesicherungen wiederherstellen zu lassen. Der Azure-Support steht nur in ausgewählten Tarifen wie **Standard** und **Developer** sowie in höheren Tarifen zur Verfügung. Für den **Basic** -Tarif ist kein Azure-Support verfügbar. Weitere Informationen zu anderen Supportplänen finden Sie auf der Seite [Azure-Supportpläne](https://azure.microsoft.com/support/plans/).
+Falls Sie Ihre Datenbank oder einen Container versehentlich löschen, können Sie ein [Supportticket erstellen](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) oder [sich an den Azure Support wenden](https://azure.microsoft.com/support/options/), um die Daten aus automatischen Onlinesicherungen wiederherstellen zu lassen. Der Azure-Support steht nur in ausgewählten Tarifen wie **Standard** und **Developer** sowie in höheren Tarifen zur Verfügung. Für den **Basic**-Tarif ist kein Azure-Support verfügbar. Weitere Informationen zu anderen Supportplänen finden Sie auf der Seite [Azure-Supportpläne](https://azure.microsoft.com/support/plans/).
 
 Für die Wiederherstellung einer bestimmten Momentaufnahme der Sicherung setzt Azure Cosmos DB voraus, dass die Daten für die Dauer des Sicherungszyklus dieser Momentaufnahme verfügbar sind.
 Sie benötigen für das Anfordern einer Wiederherstellung die folgenden Informationen:
@@ -115,6 +115,13 @@ Wenn Sie Ihre Daten versehentlich gelöscht oder beschädigt haben, sollten Sie 
 
 Wenn Sie den Durchsatz auf Datenbankebene bereitstellen, erfolgen die Sicherungs- und Wiederherstellungsprozesse auf der Ebene der gesamten Datenbank und nicht der einzelnen Container. In solchen Fällen können Sie keine Teilmenge der Container für die Wiederherstellung auswählen.
 
+## <a name="required-permissions-to-change-retention-or-restore-from-the-portal"></a>Erforderliche Berechtigungen zum Ändern der Aufbewahrung oder Wiederherstellung über das Portal
+Prinzipale, die Teil der Rolle [CosmosdbBackupOperator](../role-based-access-control/built-in-roles.md#cosmosbackupoperator) sind, Besitzer oder Mitwirkende haben die Berechtigung zum Anfordern einer Wiederherstellung oder Ändern des Aufbewahrungszeitraums.
+
+## <a name="understanding-costs-of-extra-backups"></a>Grundlegendes zu den Kosten zusätzlicher Sicherungen
+Zwei Sicherungen werden kostenlos bereitgestellt. Zusätzliche Sicherungen werden zu den regionsbasierten Preisen für den Sicherungsspeicher berechnet, die unter den [Preisen für Sicherungsspeicher](https://azure.microsoft.com/en-us/pricing/details/cosmos-db/) angegeben sind. Hier ein Beispiel: Die Aufbewahrungsdauer für Sicherungen ist auf 240 Stunden (10 Tage) und das Sicherungsintervall auf 24 Stunden festgelegt. Dies ergibt zehn Kopien der Sicherungsdaten. Bei 1 TB Daten in der Region „USA, Westen 2“ bedeutet das 1000 * 0,12 ~ 120 USD für den Sicherungsspeicher im Monat. 
+
+
 ## <a name="options-to-manage-your-own-backups"></a>Optionen für das Verwalten Ihrer eigenen Sicherungen
 
 Mithilfe von Azure Cosmos DB-SQL-API-Konten können Sie auch Ihre eigenen Sicherungen verwalten. Nutzen Sie dazu eine der folgenden Vorgehensweisen:
@@ -147,4 +154,3 @@ Informieren Sie sich als Nächstes darüber, wie Sie Daten aus einem Azure Cosmo
 * Wenn Sie eine Wiederherstellungsanforderung übermitteln möchten, kontaktieren Sie den Azure-Support, und [erstellen Sie im Azure-Portal ein Ticket](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 * [Verwenden des Änderungsfeeds von Cosmos DB](change-feed.md) zum Verschieben von Daten in Azure Cosmos DB
 * [Verwenden von Azure Data Factory](../data-factory/connector-azure-cosmos-db.md) zum Verschieben von Daten in Azure Cosmos DB
-

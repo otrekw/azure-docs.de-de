@@ -13,12 +13,12 @@ ms.date: 08/28/2019
 ms.author: marsma
 ms.reviewer: oldalton
 ms.custom: aaddev
-ms.openlocfilehash: fb66d8a4bf97a6f8a10534c9c4459123ad6a2654
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 7dc3241198fbc6eeddba059251f28c6dc35c8a29
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97107918"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98754931"
 ---
 # <a name="migrate-applications-to-msal-for-ios-and-macos"></a>Migrieren von Anwendungen zu MSAL für iOS und macOS
 
@@ -38,14 +38,14 @@ Microsoft Identity Platform weist einige wesentliche Unterschiede im Vergleich z
 
 ### <a name="standards-compliance"></a>Einhaltung von Standards
 
-* Der Microsoft Identity Platform-Endpunkt ist mit den Standards OAuth 2.0 und OpenID Connect konform.
+* Microsoft Identity Platform ist mit den Standards OAuth 2.0 und OpenID Connect konform.
 
 ### <a name="incremental-and-dynamic-consent"></a>Inkrementelle und dynamische Zustimmung
 
 * Für den Azure Active Directory v1.0-Endpunkt müssen alle Berechtigungen während der Anwendungsregistrierung im Voraus deklariert werden. Dies bedeutet, dass diese Berechtigungen statisch sind.
 * Microsoft Identity Platform ermöglicht das dynamische Anfordern von Berechtigungen. Apps dürfen nur bei Bedarf Berechtigungen anfordern.
 
-Weitere Informationen zu den Unterschieden zwischen Azure Active Directory v1.0 und Microsoft Identity Platform finden Sie unter [Gründe für eine Aktualisierung auf Microsoft Identity Platform (v2.0)](../azuread-dev/azure-ad-endpoint-comparison.md).
+Weitere Informationen zu den Unterschieden zwischen Azure Active Directory v1.0 und Microsoft Identity Platform finden Sie unter [Gründe für eine Aktualisierung auf Microsoft Identity Platform](../azuread-dev/azure-ad-endpoint-comparison.md).
 
 ## <a name="adal-and-msal-library-differences"></a>Unterschiede zwischen der ADAL- und MSAL-Bibliothek
 

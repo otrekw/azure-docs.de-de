@@ -66,14 +66,20 @@
           href: automation-create-standalone-account.md
         - name: "Erstellen eines Automation-Kontos mit einer Resource\_Manager-Vorlage"
           href: quickstart-create-automation-account-template.md
+        - name: Ausführendes Konto
+          items:
+            - name: Erstellen eines ausführenden Kontos
+              href: create-run-as-account.md
+            - name: Löschen des ausführenden Azure-Kontos
+              href: delete-run-as-account.md
+            - name: Verwalten eines ausführenden Kontos
+              href: manage-runas-account.md
         - name: Konfigurieren der Authentifizierung mit Amazon Web Services
           href: automation-config-aws-account.md
         - name: Konfigurieren der Authentifizierung mit Azure AD
           href: automation-use-azure-ad.md
-        - name: Verwalten des von Automation verwendeten DNS-Eintrags
+        - name: Verwalten der von Automation verwendeten DNS-Einträge
           href: how-to/automation-region-dns-records.md
-        - name: Verwalten eines ausführenden Automation-Kontos
-          href: manage-runas-account.md
         - name: Herstellen einer privaten Verbindung mit einem Automation-Konto
           href: how-to/private-link-security.md
         - name: Verwalten von Berechtigungen und Sicherheit für Rollen

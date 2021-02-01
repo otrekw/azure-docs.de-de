@@ -6,29 +6,29 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 12/11/2020
+ms.date: 01/19/2021
 ms.author: alkohli
-ms.openlocfilehash: 004c84387c51233542b1bbbf11d33cdff42259af
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: 7db2d2721359d9796b19b3fd6abe32ff16beaec2
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97359148"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98761805"
 ---
 # <a name="update-your-azure-stack-edge-pro-gpu"></a>Aktualisieren Ihrer Azure Stack Edge Pro-GPU 
 
-In diesem Artikel werden die Schritte beschrieben, die ausgeführt werden müssen, um Updates über die lokale Webbenutzeroberfläche und über das Azure-Portal auf Ihrem Azure Stack Edge Pro-Gerät mit GPU zu installieren. Softwareupdates oder Hotfixes werden angewandt, um Ihr Azure Stack Edge Pro-Gerät und den zugehörigen Kubernetes-Cluster auf dem Gerät auf dem neuesten Stand zu halten. 
+In diesem Artikel werden die Schritte beschrieben, die ausgeführt werden müssen, um Updates über die lokale Webbenutzeroberfläche und über das Azure-Portal auf Ihrem Azure Stack Edge Pro-Gerät mit GPU zu installieren. Softwareupdates oder Hotfixes werden angewandt, um Ihr Azure Stack Edge Pro-Gerät und den zugehörigen Kubernetes-Cluster auf dem Gerät auf dem neuesten Stand zu halten.
 
 Das in diesem Artikel beschriebene Verfahren wurde mit einer anderen Version der Software ausgeführt, die Vorgehensweise bleibt bei der aktuellen Softwareversion aber dieselbe.
 
 > [!IMPORTANT]
-> - Update **2012** ist das aktuelle Update und entspricht:
->   - Gerätesoftwareversion: **2.2.1438.2470**
+> - Update **2101** ist das aktuelle Update und entspricht:
+>   - Gerätesoftwareversion: **2.2.1473.2521**
 >   - Kubernetes-Serverversion: **v1.17.3**
 >   - IoT Edge-Version: **0.1.0-beta10**
 >    
->    Informationen zu Neuerungen in diesem Update finden Sie in den [Versionshinweisen](azure-stack-edge-gpu-2012-release-notes.md).
-> - Damit Sie das Update 2012 anwenden können, muss auf Ihrem Gerät Release 2010 ausgeführt werden.
+>    Informationen zu Neuerungen in diesem Update finden Sie in den [Versionshinweisen](azure-stack-edge-gpu-2101-release-notes.md).
+> - Damit Sie das Update 2101 anwenden können, muss auf Ihrem Gerät Release 2010 ausgeführt werden.
 > - Beachten Sie, dass das Gerät bei der Installation des Updates oder Hotfixes neu gestartet wird. Dieses Update enthält die Gerätesoftwareupdates und die Kubernetes-Updates. Da es sich bei Azure Stack Edge Pro um ein Gerät mit einem einzelnen Knoten handelt, werden beim Aktualisieren alle ausgeführten E/A-Vorgänge unterbrochen, und es kommt zu einer Gerätedowntime von bis zu 1,5 Stunden.
 
 Für die Installation von Updates auf Ihrem Gerät müssen Sie zunächst den Ort des Updateservers konfigurieren. Nach dem Konfigurieren des Updateservers können Sie die Updates über die Benutzeroberfläche des Azure-Portals oder über die lokale Webbenutzeroberfläche anwenden.
@@ -37,7 +37,7 @@ Die einzelnen Schritte werden in den folgenden Abschnitten beschrieben.
 
 ## <a name="configure-update-server"></a>Konfigurieren des Updateservers
 
-1. Navigieren Sie auf der lokalen Webbenutzeroberfläche zu **Konfiguration** > **Updateserver**. 
+1. Navigieren Sie auf der lokalen Webbenutzeroberfläche zu **Konfiguration** > **Updateserver**.
    
     ![Konfigurieren von Updates 1](./media/azure-stack-edge-gpu-install-update/configure-update-server-1.png)
 
@@ -53,7 +53,7 @@ Die einzelnen Schritte werden in den folgenden Abschnitten beschrieben.
 
 ## <a name="use-the-azure-portal"></a>Verwenden des Azure-Portals
 
-Die Installation von Updates über das Azure-Portal wird empfohlen. Das Gerät sucht einmal täglich automatisch nach Updates. Sobald Updates verfügbar sind, wird im Portal eine Benachrichtigung angezeigt. Sie können die Updates dann herunterladen und installieren. 
+Die Installation von Updates über das Azure-Portal wird empfohlen. Das Gerät sucht einmal täglich automatisch nach Updates. Sobald Updates verfügbar sind, wird im Portal eine Benachrichtigung angezeigt. Sie können die Updates dann herunterladen und installieren.
 
 > [!NOTE]
 > Stellen Sie sicher, dass das Gerät fehlerfrei ist und als Status **Online** angezeigt wird, bevor Sie mit der Installation der Updates fortfahren.
@@ -66,23 +66,23 @@ Die Installation von Updates über das Azure-Portal wird empfohlen. Das Gerät s
 
     Sie können auswählen, ob Sie die Updates **herunterladen und installieren** oder nur **herunterladen** möchten. Sie können diese Updates dann später installieren.
 
-    ![Softwareversion nach dem Update 2](./media/azure-stack-edge-gpu-install-update/portal-update-2a.png)    
+    ![Softwareversion nach dem Update 2](./media/azure-stack-edge-gpu-install-update/portal-update-2-a.png)    
 
     Wenn Sie die Updates herunterladen und installieren möchten, aktivieren Sie die Option zum automatischen Installieren der Updates nach Abschluss des Downloads.
 
-    ![Softwareversion nach dem Update 3](./media/azure-stack-edge-gpu-install-update/portal-update-2b.png)
+    ![Softwareversion nach dem Update 3](./media/azure-stack-edge-gpu-install-update/portal-update-2-b.png)
 
 3. Der Download der Updates wird gestartet. Es wird eine Benachrichtigung angezeigt, dass der Download läuft.
 
     ![Softwareversion nach dem Update 4](./media/azure-stack-edge-gpu-install-update/portal-update-3.png)
 
-    Außerdem wird im Azure-Portal ein Benachrichtigungsbanner angezeigt. Dies zeigt den Downloadstatus an. 
+    Außerdem wird im Azure-Portal ein Benachrichtigungsbanner angezeigt. Dies zeigt den Downloadstatus an.
 
     ![Softwareversion nach dem Update 5](./media/azure-stack-edge-gpu-install-update/portal-update-4.png)
 
     Sie können diese Benachrichtigung oder **Gerät aktualisieren** auswählen, um den ausführlichen Status des Updates anzuzeigen.
 
-    ![Softwareversion nach dem Update 6](./media/azure-stack-edge-gpu-install-update/portal-update-5.png)   
+    ![Softwareversion nach dem Update 6](./media/azure-stack-edge-gpu-install-update/portal-update-5.png)
 
 
 4. Nachdem der Download abgeschlossen ist, wird das Benachrichtigungsbanner aktualisiert, um den Abschluss anzuzeigen. Wenn Sie ausgewählt haben, dass die Updates heruntergeladen und installiert werden sollen, wird die Installation automatisch gestartet.
@@ -93,7 +93,7 @@ Die Installation von Updates über das Azure-Portal wird empfohlen. Das Gerät s
   
     ![Softwareversion nach dem Update 8](./media/azure-stack-edge-gpu-install-update/portal-update-7.png)
 
-5. Es wird eine Benachrichtigung angezeigt, dass die Installation läuft. 
+5. Es wird eine Benachrichtigung angezeigt, dass die Installation läuft.
 
     ![Softwareversion nach dem Update 9](./media/azure-stack-edge-gpu-install-update/portal-update-8.png)
  
@@ -166,9 +166,9 @@ Führen Sie die folgenden Schritte aus, um das Softwareupdate aus dem Microsoft 
 
 2. Geben Sie im Suchfeld des Microsoft Update-Katalogs die KB-Nummer (Knowledge Base) des Hotfixes oder der Nutzungsbedingungen des Updates ein, das Sie herunterladen möchten. Geben Sie beispielsweise **Azure Stack Edge Pro** ein, und klicken Sie dann auf **Suchen**.
    
-    Der Updateeintrag lautet **Azure Stack Edge-Update 2012**.
+    Der Updateeintrag lautet **Azure Stack Edge-Update 2101**.
    
-    <!--![Search catalog 2](./media/azure-stack-edge-gpu-install-update/download-update-2b.png)-->
+    <!--![Search catalog 2](./media/azure-stack-edge-gpu-install-update/download-update-2-b.png)-->
 
 4. Wählen Sie **Herunterladen** aus. Es müssen zwei Dateien mit dem Suffix *SoftwareUpdatePackage.exe* (für Gerätesoftwareupdates) bzw. *Kubernetes_Package.exe* (für Kubernetes-Updates) heruntergeladen werden. Laden Sie die Dateien in einen Ordner des lokalen Systems herunter. Sie können den Ordner auch in eine Netzwerkfreigabe kopieren, auf die vom Gerät aus zugegriffen werden kann.
 
@@ -179,7 +179,7 @@ Vergewissern Sie sich vor dem Installieren des Updates oder Hotfixes, dass Folge
  - Das Update oder der Hotfix wurde lokal auf Ihren Host heruntergeladen, oder auf das Update oder den Hotfix kann über eine Netzwerkfreigabe zugegriffen werden.
  - Der Gerätestatus ist fehlerfrei, wie auf der Seite **Übersicht** der lokalen Webbenutzeroberfläche angezeigt wird.
 
-   ![Gerät aktualisieren](./media/azure-stack-edge-gpu-install-update/local-ui-update-1.png) 
+   ![Gerät aktualisieren](./media/azure-stack-edge-gpu-install-update/local-ui-update-1.png)
 
 Dieser Vorgang dauert etwa 20 Minuten. Führen Sie die folgenden Schritte aus, um Updates oder Hotfixes zu installieren.
 
@@ -189,9 +189,9 @@ Dieser Vorgang dauert etwa 20 Minuten. Führen Sie die folgenden Schritte aus, u
 
 2. Geben Sie den Pfad zur Updatedatei an. Sie können auch zur Installationsdatei des Updates navigieren, sofern sie auf einer Netzwerkfreigabe platziert wurde. Wählen Sie die Softwareupdatedatei mit dem Suffix *SoftwareUpdatePackage.exe* aus.
 
-   ![Aktualisieren des Geräts 3](./media/azure-stack-edge-gpu-install-update/local-ui-update-3a.png)
+   ![Aktualisieren des Geräts 3](./media/azure-stack-edge-gpu-install-update/local-ui-update-3-a.png)
 
-3. Wählen Sie **Übernehmen**. 
+3. Wählen Sie **Übernehmen**.
 
    ![Aktualisieren des Geräts 4](./media/azure-stack-edge-gpu-install-update/local-ui-update-4.png)
 
@@ -201,21 +201,21 @@ Dieser Vorgang dauert etwa 20 Minuten. Führen Sie die folgenden Schritte aus, u
 
 5. Das Update wird gestartet. Nachdem das Gerät erfolgreich aktualisiert wurde, wird es neu gestartet. Auf die lokale Benutzeroberfläche kann währenddessen nicht zugegriffen werden.
    
-6. Nach dem Neustart wird die Seite **Anmelden** angezeigt. Um sicherzustellen, dass die Gerätesoftware aktualisiert wurde, wechseln Sie auf der lokalen Webbenutzeroberfläche zu **Wartung** >  **Softwareupdate**. Für das aktuelle Release sollte die Softwareversion **Azure Stack Edge 2012** angezeigt werden.
+6. Nach dem Neustart wird die Seite **Anmelden** angezeigt. Um sicherzustellen, dass die Gerätesoftware aktualisiert wurde, wechseln Sie auf der lokalen Webbenutzeroberfläche zu **Wartung** >  **Softwareupdate**. Für das aktuelle Release sollte die Softwareversion **Azure Stack Edge 2101** angezeigt werden. 
 
-   <!--![update device 6](./media/azure-stack-edge-gpu-install-update/local-ui-update-6.png)--> 
+   <!--![update device 6](./media/azure-stack-edge-gpu-install-update/local-ui-update-6.png)-->
 
 7. Als Nächstes wird die Kubernetes-Softwareversion aktualisiert. Wiederholen Sie die obigen Schritte. Geben Sie einen Pfad zur Kubernetes-Updatedatei mit dem Suffix *Kubernetes_Package.exe* an.  
 
-   <!--![update device](./media/azure-stack-edge-gpu-install-update/local-ui-update-7.png)--> 
+   <!--![update device](./media/azure-stack-edge-gpu-install-update/local-ui-update-7.png)-->
 
-8. Wählen Sie **Übernehmen**. 
+8. Wählen Sie **Update anwenden** aus.
 
    ![Aktualisieren des Geräts 7](./media/azure-stack-edge-gpu-install-update/local-ui-update-8.png)
 
-9. Wenn Sie zur Bestätigung aufgefordert werden, klicken Sie auf **Ja**, um fortzufahren. 
+9. Wenn Sie zur Bestätigung aufgefordert werden, klicken Sie auf **Ja**, um fortzufahren.
 
-10. Nach erfolgreicher Installation des Kubernetes-Updates bleibt die unter **Wartung** > **Softwareupdate** angezeigte Software unverändert. 
+10. Nach erfolgreicher Installation des Kubernetes-Updates bleibt die unter **Wartung** > **Softwareupdate** angezeigte Software unverändert.
 
 
 ## <a name="next-steps"></a>Nächste Schritte

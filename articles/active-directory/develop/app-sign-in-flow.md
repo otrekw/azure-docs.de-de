@@ -1,7 +1,7 @@
 ---
 title: App-Anmeldeflow mit Microsoft Identity Platform | Azure
 titleSuffix: Microsoft identity platform
-description: Lernen Sie den Anmeldeflow von Web-, Desktop- und mobilen Apps in Microsoft Identity Platform (v 2.0) kennen.
+description: Lernen Sie den Anmeldeflow von Web-, Desktop- und mobilen Apps in Microsoft Identity Platform kennen.
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -13,14 +13,14 @@ ms.date: 05/18/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: af5b27dc85a276c731a61135ab59ab81f5aaf3c2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1f9f330ab140fa66b5a66a112c47ca2a68ba56bf
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83772198"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98755700"
 ---
-# <a name="app-sign-in-flow-with-microsoft-identity-platform"></a>App-Anmeldeflow mit Microsoft Identity Platform
+# <a name="app-sign-in-flow-with-the-microsoft-identity-platform"></a>App-Anmeldeflow mit Microsoft Identity Platform | Azure
 
 In diesem Thema wird der grundlegende Anmeldeflow für Web-, Desktop- und mobile Apps mit Microsoft Identity Platform erläutert. Informationen zu Anmeldeszenarien, die von Microsoft Identity Platform unterstützt werden, finden Sie unter [Authentifizierungsflows und App-Szenarien](authentication-flows-app-scenarios.md).
 
@@ -48,7 +48,7 @@ Web-App-Entwickler können angeben, ob für alle oder nur für bestimmte Seiten 
 
 Dieses Attribut bewirkt, dass für ASP.NET überprüft wird, ob ein Sitzungscookie mit der Identität des Benutzers vorhanden ist. Falls kein Cookie vorhanden ist, leitet ASP.NET die Authentifizierung an den angegebenen Identitätsanbieter um. Wenn Azure AD als Identitätsanbieter verwendet wird, leitet die Web-App die Authentifizierung an `https://login.microsoftonline.com` um, und es wird ein Dialogfeld für die Anmeldung angezeigt.
 
-### <a name="how-a-web-app-delegates-sign-in-to-microsoft-identity-platform-and-obtains-a-token"></a>Delegieren der Anmeldung an Microsoft Identity Platform und Abrufen eines Tokens durch die Web-App
+### <a name="how-a-web-app-delegates-sign-in-to-the-microsoft-identity-platform-and-obtains-a-token"></a>Delegieren der Anmeldung an Microsoft Identity Platform und Abrufen eines Tokens durch die Web-App
 
 Die Benutzerauthentifizierung erfolgt über den Browser. Für das OpenID-Protokoll werden die üblichen HTTP-Protokollnachrichten verwendet.
 

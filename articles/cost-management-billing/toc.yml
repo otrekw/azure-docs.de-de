@@ -384,15 +384,15 @@
       href: /rest/api/cost-management
     - name: Azure-Nutzungs-REST-API
       href: /rest/api/consumption
-    - name: Resource Manager-Vorlage
+    - name: ARM-Budgetvorlage für die Nutzungs-REST-API
       href: /azure/templates/microsoft.consumption/budgets
     - name: Cost Management-REST-API-Beispiele
       href: 'https://github.com/Azure-Samples/Cost-Management-Samples'
-    - name: 'Cost Management: Azure PowerShell'
+    - name: Azure PowerShell-Cmdlets für Cost Management
       href: /powershell/module/Az.CostManagement
     - name: Abrechnungsautomatisierungsszenarien
       href: manage/cost-management-automation-scenarios.md
-    - name: 'Azure-Abrechnungs-API: Übersicht'
+    - name: REST-API für Azure-Einzelhandelspreise
       href: /rest/api/cost-management/retail-prices/azure-retail-prices
     - name: Azure-Abrechnungs-REST-API
       href: /rest/api/billing
@@ -400,25 +400,21 @@
       href: manage/consumption-api-overview.md
     - name: Azure-Nutzungs-REST-API
       href: /rest/api/consumption
-    - name: RateCard-REST-API
-      href: /previous-versions/azure/reference/mt219005(v=azure.100)
-    - name: Nutzungs-REST-API
-      href: /previous-versions/azure/reference/mt219003(v=azure.100)
-    - name: Übersicht über Unternehmensberichte
-      href: manage/enterprise-api.md
     - name: Übersicht über die REST-API für Unternehmensberichte
+      href: manage/enterprise-api.md
+    - name: REST-APIs für Unternehmensberichte
       href: /rest/api/billing/enterprise/billing-enterprise-api-balance-summary
     - name: Reservations
       items:
         - name: 'Reservierungen: REST-API'
           href: reservations/reservation-apis.md?toc=/azure/cost-management-billing/toc.json
-        - name: 'Reservierungen: Azure PowerShell'
+        - name: Azure PowerShell-Cmdlets für Reservierungen
           href: /powershell/module/azurerm.reservations
-        - name: 'Reservierungen: Befehlszeilenschnittstelle'
+        - name: Azure CLI für Reservierungen
           href: /cli/azure/reservations/reservation
-        - name: 'Cost Management: Nutzungs-REST-API (Nutzungsdetails)'
+        - name: Nutzungsdetails-REST-API
           href: /rest/api/consumption/usagedetails
-        - name: 'Cost Management: Nutzungs-REST-API (Reservierungsdetails)'
+        - name: Reservierungsdetails-REST-API
           href: /rest/api/consumption/reservationsdetails
 - name: Ressourcen
   items:

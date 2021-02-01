@@ -13,16 +13,16 @@ ms.date: 05/22/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 71e930898f1f86622357f9e02da69be7bf2f8088
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: de1fcdc259de3f72e35feb411bcc836354352eb4
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91256584"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98752593"
 ---
 # <a name="microsoft-identity-platform-and-openid-connect-protocol"></a>Microsoft Identity Platform und das OpenID Connect-Protokoll
 
-OpenID Connect (OIDC) ist ein Authentifizierungsprotokoll auf Grundlage von OAuth 2.0, mit dem Benutzer sicher bei einer Anwendung angemeldet werden können. Die Implementierung von OpenID Connect im Microsoft Identity Platform-Endpunkt ermöglicht es Ihnen, Anmeldungen und API-Zugriff für Ihre Apps hinzuzufügen. In diesem Artikel wird beschrieben, wie dies sprachunabhängig funktioniert. Außerdem wird beschrieben, wie HTTP-Nachrichten gesendet und empfangen werden, ohne [Open Source-Bibliotheken von Microsoft](reference-v2-libraries.md) zu verwenden.
+OpenID Connect (OIDC) ist ein Authentifizierungsprotokoll auf Grundlage von OAuth 2.0, mit dem Benutzer sicher bei einer Anwendung angemeldet werden können. Die Implementierung von OpenID Connect in Microsoft Identity Platform ermöglicht es Ihnen, Anmeldungen und API-Zugriffe für Ihre Apps hinzuzufügen. In diesem Artikel wird beschrieben, wie dies sprachunabhängig funktioniert. Außerdem wird beschrieben, wie HTTP-Nachrichten gesendet und empfangen werden, ohne [Open Source-Bibliotheken von Microsoft](reference-v2-libraries.md) zu verwenden.
 
 Mit [OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html) wird das OAuth 2.0-*Autorisierungsprotokoll* auf die Nutzung als *Authentifizierungsprotokoll* erweitert, damit einmaliges Anmelden per OAuth funktioniert. OpenID Connect führt das Konzept eines *ID-Tokens* ein. Hierbei handelt es sich um ein Sicherheitstoken, mit dem der Client die Identität des Benutzers überprüfen kann. Ferner ruft das ID-Token auch Basisprofilinformationen über den Benutzer ab. Darüber hinaus wird der [UserInfo-Endpunkt](userinfo.md) eingeführt. Hierbei handelt es sich um eine API, die Informationen zum Benutzer zurückgibt. 
 
@@ -88,7 +88,7 @@ Bei den Metadaten handelt es sich um ein einfaches JavaScript Object Notation-Do
 
 Wenn Ihre App durch die Verwendung der Funktion [Anspruchszuordnung](active-directory-claims-mapping.md) über benutzerdefinierte Signaturschlüssel verfügt, müssen Sie einen `appid`-Abfrageparameter mit der App-ID anfügen, um einen `jwks_uri` abzurufen, der auf die Signaturschlüsselinformationen Ihrer App verweist. Beispiel: `https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration?appid=6731de76-14a6-49ae-97bc-6eba6914391e` enthält einen `jwks_uri` von `https://login.microsoftonline.com/{tenant}/discovery/v2.0/keys?appid=6731de76-14a6-49ae-97bc-6eba6914391e`.
 
-In der Regel verwenden Sie dieses Metadatendokument zum Konfigurieren einer OpenID Connect-Bibliothek oder eines SDKs; die Bibliothek führt ihre Aufgaben mithilfe der Metadaten durch. Wenn Sie jedoch keine OpenID Connect-Prä-Build-Bibliothek verwenden, können Sie die Schritte weiter unten in diesem Artikel ausführen, um die Anmeldung bei einer Web-App mithilfe des Microsoft Identity Platform-Endpunkts durchzuführen.
+In der Regel verwenden Sie dieses Metadatendokument zum Konfigurieren einer OpenID Connect-Bibliothek oder eines SDKs; die Bibliothek führt ihre Aufgaben mithilfe der Metadaten durch. Wenn Sie jedoch keine vordefinierte OpenID Connect-Bibliothek verwenden, können Sie die Schritte weiter unten in diesem Artikel ausführen, um die Anmeldung bei einer Web-App über Microsoft Identity Platform durchzuführen.
 
 ## <a name="send-the-sign-in-request"></a>Senden der Anmeldeanforderung
 
@@ -126,13 +126,13 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | `nonce` | Erforderlich | Ein Wert in der Anforderung, der von der App erzeugt wird und im resultierenden ID-Tokenwert als Anspruch enthalten ist. Die App kann diesen Wert überprüfen, um die Gefahr von Tokenwiedergabeangriffen zu reduzieren. Der Wert ist in der Regel eine zufällige, eindeutige Zeichenfolge, die verwendet werden kann, um den Ursprung der Anforderung zu identifizieren. |
 | `response_mode` | Empfohlen | Gibt die Methode an, die zum Senden des resultierenden Autorisierungscodes zurück an Ihre App verwendet werden soll. Kann `form_post` oder `fragment` sein. Bei Webanwendungen empfiehlt sich die Verwendung von `response_mode=form_post`, um eine möglichst sichere Tokenübertragung an die Anwendung zu gewährleisten. |
 | `state` | Empfohlen | Ein in der Anforderung enthaltener Wert, der auch in der Tokenantwort zurückgegeben wird. Es kann sich um eine Zeichenfolge mit jedem beliebigen Inhalt handeln. Normalerweise wird ein zufällig generierter eindeutiger Wert verwendet, um [websiteübergreifende Anforderungsfälschungsangriffe zu verhindern](https://tools.ietf.org/html/rfc6749#section-10.12). Der Status wird außerdem verwendet, um Informationen über den Status des Benutzers in der App zu codieren, bevor die Authentifizierungsanforderung aufgetreten ist, z.B. Informationen zu der Seite oder Ansicht, die der Benutzer besucht hat. |
-| `prompt` | Optional | Gibt den Typ der erforderlichen Benutzerinteraktion an. Die einzigen gültigen Werte sind gegenwärtig `login`, `none` und `consent`. Der Anspruch `prompt=login` zwingt den Benutzer, seine Anmeldeinformationen bei dieser Anforderung einzugeben. Einmaliges Anmelden ist dadurch nicht möglich. Der Anspruch `prompt=none` verhält sich genau entgegengesetzt. Dieser Anspruch stellt sicher, dass dem Benutzer keine interaktive Eingabeaufforderung angezeigt wird. Wenn die Anforderung nicht über einmaliges Anmelden im Hintergrund abgeschlossen werden kann, gibt der Microsoft Identity Platform-Endpunkt einen Fehler zurück. Der Anspruch `prompt=consent` löst das OAuth-Zustimmungsdialogfeld aus, sobald sich der Benutzer angemeldet hat. Das Dialogfeld fordert den Benutzer zum Erteilen von Berechtigungen für die App auf. |
+| `prompt` | Optional | Gibt den Typ der erforderlichen Benutzerinteraktion an. Die einzigen gültigen Werte sind gegenwärtig `login`, `none` und `consent`. Der Anspruch `prompt=login` zwingt den Benutzer, seine Anmeldeinformationen bei dieser Anforderung einzugeben. Einmaliges Anmelden ist dadurch nicht möglich. Der Anspruch `prompt=none` verhält sich genau entgegengesetzt. Dieser Anspruch stellt sicher, dass dem Benutzer keine interaktive Eingabeaufforderung angezeigt wird. Wenn die Anforderung nicht über einmaliges Anmelden im Hintergrund abgeschlossen werden kann, gibt Microsoft Identity Platform einen Fehler zurück. Der Anspruch `prompt=consent` löst das OAuth-Zustimmungsdialogfeld aus, sobald sich der Benutzer angemeldet hat. Das Dialogfeld fordert den Benutzer zum Erteilen von Berechtigungen für die App auf. |
 | `login_hint` | Optional | Sie können diesen Parameter verwenden, um das Feld für den Benutzernamen und die E-Mail-Adresse auf der Anmeldeseite vorab für den Benutzer auszufüllen, wenn dessen Benutzername im Vorfeld bekannt ist. Apps verwenden diesen Parameter häufig für die erneute Authentifizierung, nachdem sie den Benutzernamen bereits aus einer vorherigen Anmeldung mithilfe des `preferred_username`-Anspruchs extrahiert haben. |
 | `domain_hint` | Optional | Der Bereich des Benutzers in einem Verbundverzeichnis.  Mit diesem Parameter wird der E-Mail-basierte Ermittlungsvorgang übersprungen, den der Benutzer auf der Anmeldeseite durchläuft, was die Benutzerfreundlichkeit verbessert. Für Mandanten, die über ein lokales Verzeichnis wie z. B. AD FS verbunden sind, führt dies wegen der vorhandenen Anmeldesitzung häufig zu einer nahtlosen Anmeldung. |
 
-An dieser Stelle wird der Benutzer dazu aufgefordert, seine Anmeldeinformationen einzugeben und die Authentifizierung abzuschließen. Der Microsoft Identity Platform-Endpunkt überprüft, ob der Benutzer den Berechtigungen zugestimmt hat, die im `scope`-Abfrageparameter angegeben sind. Wenn der Benutzer keiner dieser Berechtigungen zugestimmt hat, wird er vom Microsoft Identity Platform-Endpunkt aufgefordert, den erforderlichen Berechtigungen zuzustimmen. Lesen Sie mehr über [Berechtigungen, die Zustimmung und mehrinstanzenfähige Apps](v2-permissions-and-consent.md).
+An dieser Stelle wird der Benutzer dazu aufgefordert, seine Anmeldeinformationen einzugeben und die Authentifizierung abzuschließen. Microsoft Identity Platform überprüft, ob der Benutzer den Berechtigungen zugestimmt hat, die im Abfrageparameter `scope` angegeben sind. Wenn der Benutzer keiner dieser Berechtigungen zugestimmt hat, wird er von Microsoft Identity Platform aufgefordert, den erforderlichen Berechtigungen zuzustimmen. Lesen Sie mehr über [Berechtigungen, die Zustimmung und mehrinstanzenfähige Apps](v2-permissions-and-consent.md).
 
-Sobald der Benutzer authentifiziert wurde und seine Zustimmung erteilt hat, gibt der Microsoft Identity Platform-Endpunkt mithilfe der im Parameter `response_mode` festgelegten Methode eine Antwort über den angegebenen Umleitungs-URI an Ihre App zurück.
+Sobald der Benutzer authentifiziert wurde und seine Zustimmung erteilt hat, gibt Microsoft Identity Platform mithilfe der im Parameter `response_mode` festgelegten Methode eine Antwort über den angegebenen Umleitungs-URI an Ihre App zurück.
 
 ### <a name="successful-response"></a>Erfolgreiche Antwort
 
@@ -184,7 +184,7 @@ Die folgende Tabelle beschreibt die Fehlercodes, die im Parameter `error` der Fe
 
 ## <a name="validate-the-id-token"></a>Überprüfen des ID-Tokens
 
-Das Empfangen eines ID-Tokens (id_token) allein reicht nicht immer aus, um den Benutzer zu authentifizieren. Unter Umständen müssen Sie auch die Signatur des ID-Tokens validieren und die Ansprüche im Token anhand der App-Anforderungen überprüfen. Wie bei allen OIDC-Plattformen gilt Folgendes: Der Microsoft Identity Platform-Endpunkt verwendet [JSON-Webtoken (JWTs)](https://tools.ietf.org/html/rfc7519) und die Verschlüsselung mit öffentlichem Schlüssel, um ID-Token zu signieren und deren Gültigkeit zu überprüfen.
+Das Empfangen eines ID-Tokens (id_token) allein reicht nicht immer aus, um den Benutzer zu authentifizieren. Unter Umständen müssen Sie auch die Signatur des ID-Tokens validieren und die Ansprüche im Token anhand der App-Anforderungen überprüfen. Wie bei allen OIDC-Plattformen gilt Folgendes: Microsoft Identity Platform verwendet [JSON-Webtoken (JWTs)](https://tools.ietf.org/html/rfc7519) und die Verschlüsselung mit öffentlichem Schlüssel, um ID-Token zu signieren und deren Gültigkeit zu überprüfen.
 
 Nicht alle Apps profitieren von der Überprüfung des ID-Tokens. Für native Apps und Einzelseiten-Apps ergeben sich aus der Überprüfung des ID-Tokens nur selten Vorteile.  Personen mit physischem Zugang zum Gerät (oder Browser) können die Überprüfung auf unterschiedliche Arten umgehen. Beispiele hierfür sind die Bearbeitung des Webdatenverkehrs für das Gerät, um falsche Token und Schlüssel bereitzustellen, oder das simple Debuggen der Anwendung, um die Überprüfungslogik zu überspringen.  Andererseits muss das ID-Token von Web-Apps und APIs, die dieses für Autorisierungszwecke nutzen, sorgfältig überprüft werden, weil sie die Kontrolle des Zugriffs auf Daten durchführen müssen.
 
@@ -283,7 +283,7 @@ Die [UserInfo-Dokumentation](userinfo.md#calling-the-api) enthält Informationen
 
 ## <a name="send-a-sign-out-request"></a>Senden einer Abmeldeanforderung
 
-Wenn Sie den Benutzer bei der App abmelden möchten, reicht es nicht, die Cookies der App zu löschen oder die Sitzung des Benutzers auf andere Weise zu beenden. Sie müssen den Benutzer für die Abmeldung außerdem an den Microsoft Identity Platform-Endpunkt umleiten. Andernfalls kann sich der Benutzer erneut für Ihre App authentifizieren, ohne die Anmeldeinformationen erneut einzugeben, da der Benutzer nach wie vor über eine gültige SSO-Sitzung (Single Sign-On, Einmaliges Anmelden) beim Microsoft Identity Platform-Endpunkt verfügt.
+Wenn Sie den Benutzer bei der App abmelden möchten, reicht es nicht, die Cookies der App zu löschen oder die Sitzung des Benutzers auf andere Weise zu beenden. Sie müssen den Benutzer für die Abmeldung außerdem an Microsoft Identity Platform umleiten. Andernfalls kann sich der Benutzer erneut für Ihre App authentifizieren, ohne die Anmeldeinformationen erneut einzugeben, da der Benutzer nach wie vor über eine gültige SSO-Sitzung (Single Sign-On, Einmaliges Anmelden) bei Microsoft Identity Platform verfügt.
 
 Sie können den Benutzer an den `end_session_endpoint` umleiten, der im OpenID Connect-Metadatendokument aufgeführt wird:
 
@@ -294,11 +294,11 @@ post_logout_redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F
 
 | Parameter | Bedingung | BESCHREIBUNG |
 | ----------------------- | ------------------------------- | ------------ |
-| `post_logout_redirect_uri` | Empfohlen | Die URL, an die der Benutzer nach erfolgreicher Abmeldung umgeleitet wird. Wenn der Parameter nicht enthalten ist, wird dem Benutzer eine generische Meldung angezeigt, die vom Microsoft Identity Platform-Endpunkt generiert wird. Diese URL muss mit einem der Umleitungs-URIs übereinstimmen, die im App-Registrierungsportal für Ihre Anwendung registriert wurden. |
+| `post_logout_redirect_uri` | Empfohlen | Die URL, an die der Benutzer nach erfolgreicher Abmeldung umgeleitet wird. Wenn der Parameter nicht enthalten ist, wird dem Benutzer eine generische Meldung angezeigt, die von Microsoft Identity Platform generiert wird. Diese URL muss mit einem der Umleitungs-URIs übereinstimmen, die im App-Registrierungsportal für Ihre Anwendung registriert wurden. |
 
 ## <a name="single-sign-out"></a>Einmaliges Abmelden
 
-Wenn Sie den Benutzer an `end_session_endpoint` umleiten, löscht der Microsoft Identity Platform-Endpunkt die Sitzung des Benutzers aus dem Browser. Allerdings kann der Benutzer weiterhin bei anderen Anwendungen angemeldet sein, die Microsoft-Konten für die Authentifizierung verwenden. Damit diese Anwendungen den Benutzer gleichzeitig abmelden können, sendet der Microsoft Identity Platform-Endpunkt eine HTTP GET-Anforderung an die registrierte `LogoutUrl` aller Anwendungen, bei denen der Benutzer zurzeit angemeldet ist. Anwendungen müssen auf diese Anforderung antworten, indem sie alle Sitzungen löschen, mit denen der Benutzer identifiziert wird, und eine `200`-Antwort zurückgeben. Wenn Sie das einmalige Abmelden in Ihrer Anwendung unterstützen möchten, müssen Sie eine solche `LogoutUrl` im Code Ihrer Anwendung implementieren. Sie können die `LogoutUrl` über das App-Registrierungsportal festlegen.
+Wenn Sie den Benutzer an `end_session_endpoint` umleiten, löscht Microsoft Identity Platform die Sitzung des Benutzers aus dem Browser. Allerdings kann der Benutzer weiterhin bei anderen Anwendungen angemeldet sein, die Microsoft-Konten für die Authentifizierung verwenden. Damit diese Anwendungen den Benutzer gleichzeitig abmelden können, sendet Microsoft Identity Platform eine HTTP GET-Anforderung an die registrierte `LogoutUrl` aller Anwendungen, bei denen der Benutzer derzeit angemeldet ist. Anwendungen müssen auf diese Anforderung antworten, indem sie alle Sitzungen löschen, mit denen der Benutzer identifiziert wird, und eine `200`-Antwort zurückgeben. Wenn Sie das einmalige Abmelden in Ihrer Anwendung unterstützen möchten, müssen Sie eine solche `LogoutUrl` im Code Ihrer Anwendung implementieren. Sie können die `LogoutUrl` über das App-Registrierungsportal festlegen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

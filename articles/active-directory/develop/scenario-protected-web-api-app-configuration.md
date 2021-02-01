@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/15/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: f1277972480f504d9d2df67930d9385cbe8c06b4
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: 3a26157949ff6ef69c9c009dfdd40781b47bc761
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98063194"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98753575"
 ---
 # <a name="protected-web-api-code-configuration"></a>Geschützte Web-API: Codekonfiguration
 
@@ -55,7 +55,7 @@ HttpResponseMessage response = await _httpClient.GetAsync(apiUri);
 ```
 
 > [!IMPORTANT]
-> Eine Clientanwendung fordert das Bearertoken für den Microsoft Identity Platform-Endpunkt *für die Web-API* an. Die Web-API ist die einzige Anwendung, die das Token verifizieren und die darin enthaltenen Ansprüche anzeigen sollte. Client-Apps dürfen niemals versuchen, die Ansprüche in Token zu überprüfen.
+> Eine Clientanwendung fordert das Bearertoken für Microsoft Identity Platform *für die Web-API* an. Die Web-API ist die einzige Anwendung, die das Token verifizieren und die darin enthaltenen Ansprüche anzeigen sollte. Client-Apps dürfen niemals versuchen, die Ansprüche in Token zu überprüfen.
 >
 > Die Web-API kann später ggf. die Verschlüsselung des Tokens erforderlich machen. Diese Anforderung würde den Zugriff durch Client-Apps verhindern, die Zugriffstoken anzeigen können.
 
@@ -140,7 +140,7 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
- Aktuell erstellen die ASP.NET Core-Vorlagen Azure Active Directory-Web-APIs, die Benutzer innerhalb Ihrer Organisation oder einer anderen Organisation anmelden. Benutzer werden nicht mit persönlichen Konten angemeldet. Sie können jedoch die Vorlagen so ändern, dass der Microsoft Identity Platform-Endpunkt verwendet wird, indem Sie [Microsoft.Identity.Web](https://www.nuget.org/packages/Microsoft.Identity.Web) verwenden. Ersetzen Sie dabei den Code in der Datei *Startup.cs*:
+ Aktuell erstellen die ASP.NET Core-Vorlagen Azure Active Directory-Web-APIs, die Benutzer innerhalb Ihrer Organisation oder einer anderen Organisation anmelden. Benutzer werden nicht mit persönlichen Konten angemeldet. Sie können jedoch die Vorlagen so ändern, dass Microsoft Identity Platform verwendet wird, indem Sie [Microsoft.Identity.Web](https://www.nuget.org/packages/Microsoft.Identity.Web) verwenden. Ersetzen Sie dabei den Code in der Datei *Startup.cs*:
 
 ```csharp
 using Microsoft.Identity.Web;
@@ -175,7 +175,7 @@ services.AddControllers();
 > - `$"api://{ClientId}` in allen anderen Fällen (für v1.0-[Zugriffstoken](access-tokens.md)).
 > Die Details finden Sie im Microsoft.Identity.Web-[Quellcode](https://github.com/AzureAD/microsoft-identity-web/blob/d2ad0f5f830391a34175d48621a2c56011a45082/src/Microsoft.Identity.Web/Resource/RegisterValidAudience.cs#L70-L83).
 
-Der vorstehende Codeausschnitt wurde aus dem [inkrementellen Tutorial zu ASP.NET Core-Web-API](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2/blob/63087e83326e6a332d05fee6e1586b66d840b08f/1.%20Desktop%20app%20calls%20Web%20API/TodoListService/Startup.cs#L23-L28) extrahiert. Die Details zu **AddMicrosoftIdentityWebApiAuthentication** sind in [Microsoft.Identity.Web](microsoft-identity-web.md) verfügbar. Diese Methode ruft die [AddMicrosoftIdentityWebAPI](https://docs.microsoft.com/dotnet/api/microsoft.identity.web.microsoftidentitywebapiauthenticationbuilderextensions.addmicrosoftidentitywebapi?view=azure-dotnet-preview&preserve-view=true) auf, die wiederum die Middleware anweist, wie das Token überprüft werden soll.
+Der vorstehende Codeausschnitt wurde aus dem [inkrementellen Tutorial zu ASP.NET Core-Web-API](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2/blob/63087e83326e6a332d05fee6e1586b66d840b08f/1.%20Desktop%20app%20calls%20Web%20API/TodoListService/Startup.cs#L23-L28) extrahiert. Die Details zu **AddMicrosoftIdentityWebApiAuthentication** sind in [Microsoft.Identity.Web](microsoft-identity-web.md) verfügbar. Diese Methode ruft die [AddMicrosoftIdentityWebAPI](/dotnet/api/microsoft.identity.web.microsoftidentitywebapiauthenticationbuilderextensions.addmicrosoftidentitywebapi?preserve-view=true&view=azure-dotnet-preview) auf, die wiederum die Middleware anweist, wie das Token überprüft werden soll.
 
 ## <a name="token-validation"></a>Tokenüberprüfung
 

@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: sandeo
 ms.custom: references_regions, devx-track-azurecli
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ef2c9d7e2388d2da7a807fbf6b579360115a8323
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: 3e22e5fc4bc7211d905dbe8775b0ef6e893bd2cc
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97629798"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98760994"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Anmelden bei einem virtuellen Windows-Computer in Azure mit der Azure Active Directory-Authentifizierung (Vorschau)
 
@@ -335,7 +335,7 @@ Beim Initiieren einer Remotedesktopverbindung mit dem virtuellen Computer wird d
 Überprüfen Sie, ob Sie für den virtuellen Computer [Azure RBAC-Richtlinien konfiguriert](../../virtual-machines/linux/login-using-aad.md) haben, mit denen dem Benutzer die Rolle „VM-Administratoranmeldung“ oder „VM-Benutzeranmeldung“ zugewiesen wird:
 
 > [!NOTE]
-> Wenn Probleme mit Azure-Rollenzuweisungen auftreten, finden Sie weitere Informationen unter [Behandeln von Problemen bei Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/troubleshooting#azure-role-assignments-limit).
+> Wenn Probleme mit Azure-Rollenzuweisungen auftreten, finden Sie weitere Informationen unter [Behandeln von Problemen bei Azure RBAC](../../role-based-access-control/troubleshooting.md#azure-role-assignments-limit).
  
 #### <a name="unauthorized-client"></a>Nicht autorisierter Client
 
@@ -350,7 +350,9 @@ Vergewissern Sie sich, dass der Windows 10-PC, den Sie zum Initiieren der Remot
 > [!NOTE]
 > Im Build 20H1 für Windows 10 wurde Unterstützung für einen für Azure AD registrierten Computer hinzugefügt, um RDP-Verbindungen zu Ihrer VM zu initiieren. Bei Verwendung eines für Azure AD registrierten (nicht über Azure AD regulär oder hybrid eingebundenen) Computers als RDP-Client zum Initiieren von Verbindungen zu Ihrer VM müssen Sie Anmeldeinformationen im Format AzureAD\UPn (z. B. AzureAD\john@contoso.com) eingeben.
 
-Vergewissern Sie sich außerdem, dass die Erweiterung AADLoginForWindows nach Abschluss der Azure AD-Einbindung nicht deinstalliert wurde.
+Vergewissern Sie sich, dass die Erweiterung „AADLoginForWindows“ nach Abschluss der Azure AD-Einbindung nicht deinstalliert wurde.
+
+Stellen Sie außerdem sicher, dass die Sicherheitsrichtlinie „Netzwerksicherheit: Lässt an diesen Computer gerichtete PKU2U-Authentifizierungsanforderungen zu, um die Verwendung von Online-Identitäten zu ermöglichen“ sowohl auf dem Server *als auch* auf dem Client aktiviert ist.
  
 #### <a name="mfa-sign-in-method-required"></a>MFA-Anmeldemethode erforderlich
 

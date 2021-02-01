@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: erhopf
-ms.openlocfilehash: cc373a67ee0f4ed2e900e7b41cbcb96d31d67b34
-ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
+ms.openlocfilehash: eafdebc795d5bede7fa52a3562d33c806035697f
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98126885"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98704430"
 ---
 # <a name="how-to-create-human-labeled-transcriptions"></a>Erstellen von menschenmarkierten Transkriptionen
 
@@ -47,6 +47,8 @@ Textnormalisierung ist die Transformation von Wörtern in ein konsistentes Forma
 - Nicht alphabetische Zeichen oder gemischte alphanumerische Zeichen müssen entsprechend ihrer Aussprache transkribiert werden.
 - Abkürzungen, die als Wörter ausgesprochen werden, dürfen nicht bearbeitet werden (z.B. „Radar“, „Laser“, „RAM“ oder „NATO“).
 - Schreiben Sie Abkürzungen, die als einzelne Buchstaben ausgesprochen werden, mit jeweils einem Leerzeichen zwischen den einzelnen Buchstaben aus.
+- Wenn Sie Audiodaten verwenden, transkribieren Sie Zahlen als Worte, die mit der Tonspur übereinstimmen, zum Beispiel kann „101“ auf Englisch als „one oh one“ oder „one hundred and one“ ausgesprochen werden.
+- Vermeiden Sie es, mehr als dreimal Zeichen, Wörter oder Wortgruppen zu wiederholen, zum Beispiel „yeah yeah yeah yeah“. Zeilen mit solchen Wiederholungen können vom Sprachdienst gelöscht werden.
 
 Es folgen einige Beispiele für die Normalisierung, die Sie für die Transkription durchführen sollten:
 

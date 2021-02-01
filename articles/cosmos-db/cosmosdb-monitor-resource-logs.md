@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 01/06/2021
 ms.author: sngun
-ms.openlocfilehash: bfc17af99a435c7c17f308f913346045aa22b18d
-ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
+ms.openlocfilehash: d78ddf983f1c8f2bfeaf733c273afc1cc98b1185
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98165551"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98684857"
 ---
 # <a name="monitor-azure-cosmos-db-data-by-using-diagnostic-settings-in-azure"></a>Überwachen der Azure Cosmos DB-Daten mithilfe der Diagnoseeinstellungen in Azure
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -33,7 +33,7 @@ Plattformmetriken und das Aktivitätsprotokoll werden automatisch gesammelt, abe
 
 1. Wenn Sie eine Diagnoseeinstellung erstellen, legen Sie fest, welche Kategorie von Protokollen gesammelt werden soll. Die Kategorien der von Azure Cosmos DB unterstützten Protokolle sind unten aufgelistet, zusammen mit den von ihnen gesammelten Beispielprotokollen:
 
- * **DataPlaneRequests**: Verwenden Sie diese Option, um Back-End-Anforderungen an alle APIs in Azure Cosmos DB zu protokollieren, worin SQL-, Graph-, MongoDB-, Cassandra- und Tabellen-API-Konten einbezogen sind. Diese wichtigen Eigenschaften müssen Sie beachten: `Requestcharge`, `statusCode`, `clientIPaddress`, `partitionID`, `resourceTokenPermissionId` und `resourceTokenPermissionMode`.
+ * **DataPlaneRequests**: Wählen Sie diese Option aus, um Back-End-Anforderungen für die SQL-API-Konten in Azure Cosmos DB zu protokollieren. Diese wichtigen Eigenschaften müssen Sie beachten: `Requestcharge`, `statusCode`, `clientIPaddress`, `partitionID`, `resourceTokenPermissionId` und `resourceTokenPermissionMode`.
 
    ```json
     { "time": "2019-04-23T23:12:52.3814846Z", "resourceId": "/SUBSCRIPTIONS/<your_subscription_ID>/RESOURCEGROUPS/<your_resource_group>/PROVIDERS/MICROSOFT.DOCUMENTDB/DATABASEACCOUNTS/<your_database_account>", "category": "DataPlaneRequests", "operationName": "ReadFeed", "properties": {"activityId": "66a0c647-af38-4b8d-a92a-c48a805d6460","requestResourceType": "Database","requestResourceId": "","collectionRid": "","statusCode": "200","duration": "0","userAgent": "Microsoft.Azure.Documents.Common/2.2.0.0","clientIpAddress": "10.0.0.24","requestCharge": "1.000000","requestLength": "0","responseLength": "372", "resourceTokenPermissionId": "perm-prescriber-app","resourceTokenPermissionMode": "all", "resourceTokenUserRid": "","region": "East US","partitionId": "062abe3e-de63-4aa5-b9de-4a77119c59f8","keyType": "PrimaryReadOnlyMasterKey","databaseName": "","collectionName": ""}}

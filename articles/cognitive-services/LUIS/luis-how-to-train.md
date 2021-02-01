@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 11/15/2019
-ms.openlocfilehash: a53857061110d5a77ac3d166277e7076f4f7f9c6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 47b006932aace3149dd94e136e334c1b6e5bfcef
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91541372"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98762711"
 ---
 # <a name="train-your-active-version-of-the-luis-app"></a>Trainieren Ihrer aktiven Version der LUIS-App
 
@@ -40,9 +40,15 @@ Das Datum und die Uhrzeit für das Training werden in der Zeitzone GMT + 2 angeg
 
 ## <a name="train-with-all-data"></a>Trainieren mit allen Daten
 
-Das Training verwendet einen kleinen Prozentsatz negativer Stichproben. Wenn Sie anstelle der kleinen negativen Stichprobenentnahme alle Daten verwenden möchten, verwenden Sie die [API](#version-settings-api-use-of-usealltrainingdata).
+Das Training verwendet einen kleinen Prozentsatz negativer Stichproben. Sie können stattdessen alle verfügbaren Daten verwenden, indem Sie entweder das Portal oder die API verwenden. 
 
-### <a name="version-settings-api-use-of-usealltrainingdata"></a>Verwendung von UseAllTrainingData durch die Versionseinstellungs- API
+### <a name="using-the-luis-portal"></a>Mithilfe des LUIS-Portals
+
+Melden Sie sich beim [LUIS-Portal](https://www.luis.ai/) an, und klicken Sie auf Ihre App. Wählen Sie oben auf dem Bildschirm **Verwalten** und dann **Einstellungen** aus, und aktivieren oder deaktivieren Sie die Option **Use non-deterministic training** (Nicht deterministisches Training verwenden). Wenn diese Option deaktiviert ist, werden alle verfügbaren Daten im Training verwendet.
+
+![Eine Schaltfläche zum Aktivieren oder Deaktivieren nicht deterministischer Trainings](./media/non-determinstic-training.png)
+
+### <a name="using-the-version-settings-api"></a>Verwenden der API für Versionseinstellungen
 
 Verwenden Sie die [Versionseinstellungs-API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/versions-update-application-version-settings) mit der Option `UseAllTrainingData` (auf TRUE festgelegt), um dieses Feature zu deaktivieren.
 

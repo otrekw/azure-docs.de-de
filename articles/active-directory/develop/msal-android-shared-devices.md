@@ -13,12 +13,12 @@ ms.date: 03/31/2020
 ms.author: marsma
 ms.reviewer: hahamil
 ms.custom: aaddev, identitypla | Azuretformtop40
-ms.openlocfilehash: fc32b4f583aea2fa9a34ab8b235f3f99fe4def9d
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 85f8b340635354d4bb0f28f2b3d79b617bd897f8
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94562167"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98754877"
 ---
 # <a name="shared-device-mode-for-android-devices"></a>Modus für gemeinsam genutzte Geräte für Android-Geräte
 
@@ -40,7 +40,7 @@ Bei der Erstellung einer App für den Modus für gemeinsam genutzte Geräte arbe
 
 ## <a name="single-vs-multiple-account-applications"></a>Anwendungen für einzelne Konten und Anwendungen für mehrere Konten
 
-In Anwendungen, die mit dem Microsoft Authentication Library SDK (MSAL) geschrieben wurden, können ein einzelnes Konto oder mehrere Konten verwaltet werden. Weitere Informationen finden Sie unter [Modus für einzelne und mehrere Konten](single-multi-account.md). Die in Ihrer App verfügbaren Microsoft Identity Platform-Funktionen hängen davon ab, ob die Anwendung im Modus für einzelne Konten oder im Modus für mehrere Konten ausgeführt wird.
+In Anwendungen, die mit dem Microsoft Authentication Library SDK (MSAL) geschrieben wurden, können ein einzelnes Konto oder mehrere Konten verwaltet werden. Weitere Informationen finden Sie unter [Modus für einzelne und mehrere Konten](single-multi-account.md). Die in Ihrer App verfügbaren Microsoft Identity Platform-Funktionen hängen davon ab, ob die Anwendung im Einzelkontomodus oder im Modus für mehrere Konten ausgeführt wird.
 
 **Apps mit dem Modus für gemeinsam genutzte Geräte können nur im Modus für einzelne Konten verwendet werden**.
 

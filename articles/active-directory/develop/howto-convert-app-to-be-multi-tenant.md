@@ -13,12 +13,12 @@ ms.date: 10/27/2020
 ms.author: ryanwi
 ms.reviewer: marsma, jmprieur, lenalepa, sureshja, kkrishna
 ms.custom: aaddev
-ms.openlocfilehash: 22d6cacc36363b17f9bc32d354982eb71974b31d
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: 4f87c3fd0cfda2db535b2c8f7f7330a273e6b767
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96779752"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98755333"
 ---
 # <a name="how-to-sign-in-any-azure-active-directory-user-using-the-multi-tenant-application-pattern"></a>Gewusst wie: Anmelden von Azure Active Directory-Benutzern mit dem mehrinstanzenfähigen Anwendungsmuster
 
@@ -52,7 +52,7 @@ Bei einer Anwendung mit einem einzelnen Mandanten werden Anmeldeanforderungen an
 
 Bei einer mehrinstanzenfähigen Anwendung weiß die Anwendung zunächst nicht, von welchem Mandanten der Benutzer stammt. Deshalb können Sie keine Anforderungen an den Endpunkt eines Mandanten senden. Stattdessen werden Anforderungen an einen Endpunkt gesendet, der sie per Multiplexverfahren an alle Azure AD-Mandanten verteilt: `https://login.microsoftonline.com/common`
 
-Wenn Microsoft Identity Platform eine Anforderung am Endpunkt „/common“ erhält, wird der Benutzer angemeldet, und dadurch wird der Mandant ermittelt, von dem der Benutzer stammt. Der Endpunkt „/common“ funktioniert mit allen von Azure AD unterstützten Authentifizierungsprotokollen:  OpenID Connect, OAuth 2.0, SAML 2.0 und WS-Verbund.
+Wenn Microsoft Identity Platform eine Anforderung am Endpunkt „/common“ erhält, wird der Benutzer angemeldet und dadurch auch der Mandant für den Benutzer ermittelt. Der Endpunkt „/common“ funktioniert mit allen von Azure AD unterstützten Authentifizierungsprotokollen:  OpenID Connect, OAuth 2.0, SAML 2.0 und WS-Verbund.
 
 Die Anmeldeantwort an die Anwendung enthält dann ein Token, das den Benutzer darstellt. Anhand des Ausstellerwerts im Token erfährt eine Anwendung, von welchem Mandanten der Benutzer stammt. Wenn eine Antwort vom Endpunkt „/common“ zurückgegeben wird, entspricht der Ausstellerwert im Token dem Mandanten des Benutzers.
 
@@ -110,7 +110,7 @@ Bei einer mehrinstanzenfähigen Anwendung erfolgt die erste Registrierung für d
 
 ![Darstellung der Zustimmung zur App mit einer Ebene][Consent-Single-Tier]
 
-Dieser Zustimmungsprozess wird durch die von der Anwendung angeforderten Berechtigungen beeinflusst. Microsoft Identity Platform unterstützt zwei Arten von Berechtigungen – nur für eine App geltende und delegierte Berechtigungen.
+Dieser Zustimmungsprozess wird durch die von der Anwendung angeforderten Berechtigungen beeinflusst. Microsoft Identity Platform unterstützt zwei Arten von Berechtigungen: nur für eine App geltende und delegierte Berechtigungen.
 
 * Eine delegierte Berechtigung gewährt einer Anwendung die Möglichkeit, für einen Teil der Funktionen, die der Benutzer ausführen kann, als angemeldeter Benutzer zu agieren. Sie können einer Anwendung z.B. die delegierte Berechtigung zum Lesen des Kalenders des angemeldeten Benutzers erteilen.
 * Eine nur für die App geltende Berechtigung wird der Identität der Anwendung direkt gewährt. Beispielsweise können Sie einer Anwendung die nur für die App geltende Berechtigung zum Lesen der Liste der Benutzer in einem Mandanten erteilen, unabhängig davon, wer sich bei der Anwendung angemeldet hat.
