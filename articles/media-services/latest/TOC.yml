@@ -431,7 +431,7 @@
       displayName: schema
     - name: REST
       href: /rest/api/media/
-    - name: Azure CLI
+    - name: Azure-Befehlszeilenschnittstelle
       href: /cli/azure/ams
     - name: SDKs
       items:
@@ -459,7 +459,8 @@
       displayName: 'forums, twitter, feedback'
       href: media-services-community.md
     - name: Azure-Roadmap
-      href: 'https://azure.microsoft.com/roadmap/?category=web-mobile'
+      displayName: azure updates
+      href: 'https://azure.microsoft.com/updates/?category=media'
     - name: Preise
       href: 'https://azure.microsoft.com/pricing/details/media-services/'
     - name: Videos
@@ -468,7 +469,7 @@
       href: 'https://aka.ms/ams-v3-rest-sdk'
     - name: SDKs/Tools
       items:
-        - name: Azure CLI
+        - name: Azure-Befehlszeilenschnittstelle
           href: /cli/azure/install-azure-cli
         - name: .NET
           href: 'https://aka.ms/ams-v3-dotnet-sdk'
