@@ -7,12 +7,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 1/21/2021
 ms.author: cavoeg
-ms.openlocfilehash: 48dbd0892c9ec02f203edba55d1104f1ab0118a8
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 8ad5ee78a525b3798bbf613168ff74a9e21fe99b
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98737607"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98920256"
 ---
 # <a name="how-to-export-fhir-data"></a>Exportieren von FHIR-Daten
 
@@ -46,7 +46,8 @@ Es gibt zwei erforderliche Headerparameter, die für $export-Aufträge festgeleg
 
 ### <a name="query-parameters"></a>Abfrageparameter
 Die Azure API for FHIR unterstützt die folgenden Abfrageparameter, die alle optional sind:
-|Query parameter (Abfrageparameter)        | Definiert durch die FHIR-Spezifikation?    |  Beschreibung|
+
+|Query parameter (Abfrageparameter)        | Definiert durch die FHIR-Spezifikation?    |  BESCHREIBUNG|
 |------------------------|---|------------|
 | \_outputFormat | Ja | Unterstützt derzeit drei Werte gemäß FHIR-Spezifikation: „application/fhir+ndjson“, „application/ndjson“ oder nur „ndjson“. Alle Exportaufträge geben `ndjson` zurück, und der übergebene Wert hat keine Auswirkung auf das Codeverhalten. |
 | \_since | Ja | Ermöglicht nur das Exportieren von Ressourcen, die seit dem angegebenen Zeitpunkt geändert wurden |
