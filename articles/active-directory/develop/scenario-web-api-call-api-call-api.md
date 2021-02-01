@@ -1,5 +1,6 @@
 ---
-title: 'Web-API, die Web-APIs aufruft: Microsoft Identity Platform | Azure'
+title: Web-API, die Web-APIs aufruft | Azure
+titleSuffix: Microsoft identity platform
 description: Hier erfahren Sie, wie Sie eine Web-API erstellen, die Web-APIs aufruft.
 services: active-directory
 author: jmprieur
@@ -11,12 +12,12 @@ ms.workload: identity
 ms.date: 09/26/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: b8eb737752741dc55da24ad6b605b081053b8a11
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 2c69cea7055476bcc4c4a28cea0a0cf8c8f66f88
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94443700"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98753464"
 ---
 # <a name="a-web-api-that-calls-web-apis-call-an-api"></a>Eine Web-API, die Web-APIs aufruft: Aufrufen einer API
 

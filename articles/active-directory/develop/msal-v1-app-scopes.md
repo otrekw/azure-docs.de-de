@@ -12,12 +12,12 @@ ms.date: 11/25/2019
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 61d07c1ba912a0e24b2f4e5fa67243b4525db367
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b35b39d7072b22d9cc3f7b4f4ef8886431b06f69
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81536181"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98754671"
 ---
 # <a name="scopes-for-a-web-api-accepting-v10-tokens"></a>Geltungsbereiche für eine Web-API, die v1.0-Token akzeptiert
 
@@ -64,7 +64,7 @@ var result = await app.AcquireTokenInteractive(scopes).ExecuteAsync();
 Die von Azure AD verwendete Logik lautet wie folgt:
 
 - Für einen Endpunkt zu einer Active Directory-Authentifizierungsbibliothek (v1.0) mit einem v1.0-Zugriffstoken (einzige Möglichkeit): aud=resource
-- Für einen MSAL-Endpunkt (Microsoft Identity Platform v2.0), der ein Zugriffstoken für eine Ressource abfragt, die v2.0-Token akzeptiert: `aud=resource.AppId`
+- Für MSAL (Microsoft Identity Platform) bei der Abfrage eines Zugriffstokens für eine Ressource, die v2.0-Token akzeptiert: `aud=resource.AppId`
 - Für einen MSAL-Endpunkt (v2.0), der ein Zugriffstoken für eine Ressource abfragt, die ein v1.0-Zugriffstoken akzeptiert (wie im Fall oben), analysiert Azure AD die gewünschte Zielgruppe aus dem angeforderten Geltungsbereich, indem alles vor dem letzten Schrägstrich als Ressourcenbezeichner interpretiert wird. Wenn „https:\//database.windows.net“ die Zielgruppe „https:\//database.windows.net/“ erwartet, müssen Sie daher den Geltungsbereich „https:\//database.windows.net//.default“ anfordern. Siehe auch GitHub-Problem [#747: Resource url's trailing slash is omitted, which caused sql auth failure](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/747) (Bei der URL der Ressource wurde der nachgestellte Schrägstrich ausgelassen, wodurch bei der SQL-Authentifizierung ein Fehler aufgetreten ist).
 
 ## <a name="scopes-to-request-access-to-all-the-permissions-of-a-v10-application"></a>Geltungsbereiche, mit denen der Zugriff auf alle Berechtigungen einer v1.0-Anwendung angefordert wird

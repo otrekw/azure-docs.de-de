@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: troubleshooting
-ms.date: 08/11/2020
+ms.date: 01/21/2021
 ms.author: alkohli
-ms.openlocfilehash: f668136713024ba57d72bf5a457cd249742a3b11
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e6fd69d7016a364d92e1873e0df1521a27612b79
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91742025"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791475"
 ---
 # <a name="troubleshoot-your-azure-stack-edge-pro-issues"></a>Behandeln von Problemen mit Azure Stack Edge Pro
 
@@ -26,6 +26,7 @@ In diesem Artikel werden folgende Vorgehensweisen behandelt:
 > * Ausführen von Diagnosen
 > * Zusammenstellen des Unterstützungspaket
 > * Behandeln von Problemen anhand von Protokollen
+> * Behandeln von IoT Edge-Fehlern
 
 ## <a name="run-diagnostics"></a>Ausführen von Diagnosen
 
@@ -82,6 +83,10 @@ Alle Fehler, die während der Upload- und Aktualisierungsprozesse aufgetreten si
 
     [!INCLUDE [data-box-edge-edge-upload-error-reference](../../includes/data-box-edge-gateway-upload-error-reference.md)]
 
+## <a name="troubleshoot-iot-edge-errors"></a>Behandeln von IoT Edge-Fehlern
+
+[!INCLUDE [Troubleshoot IoT Edge runtime](../../includes/azure-stack-edge-iot-troubleshoot-compute.md)]
+
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Erfahren Sie mehr über die [bekannten Probleme in dieser Version](data-box-gateway-release-notes.md).
+* Erfahren Sie mehr über die [bekannten Probleme in dieser Version](../databox-gateway/data-box-gateway-release-notes.md).

@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 8/11/2020
 ms.author: swmachan
-ms.openlocfilehash: f8175cbd469c8a3933526d01f433e1def714783b
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: c93b8254e1fc80865d9889072b33cbf3fc94326d
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95024499"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880775"
 ---
 # <a name="translator-v30"></a>Translator v3.0
 
@@ -39,9 +39,9 @@ Der Microsoft Translator wird aus mehreren Rechenzentren unterstützt. Momentan 
 
 Anforderungen an Microsoft Translator werden in den meisten Fällen von dem Rechenzentrum bearbeitet, das dem Ursprungsort der Anforderung am nächsten liegt. Bei einem Rechenzentrumsausfall kann die Anforderung außerhalb der Azure-Geografie weitergeleitet werden.
 
-Um zu erzwingen, dass die Anforderung von einer bestimmten Azure-Geografie bearbeitet wird, ändern Sie den globalen Endpunkt in der API-Anforderung auf den gewünschten regionalen Endpunkt:
+Um zu erzwingen, dass die Anforderung von einer bestimmten Azure-Geografie bearbeitet wird, ändern Sie den globalen Endpunkt in der API-Anforderung auf den gewünschten geografischen Endpunkt:
 
-|BESCHREIBUNG|Azure-Geografie|Basis-URL|
+|BESCHREIBUNG|Azure-Geografie|Basis-URL (geografischer Endpunkt)|
 |:--|:--|:--|
 |Azure|Global (nicht regional)|   api.cognitive.microsofttranslator.com|
 |Azure|USA|   api-nam.cognitive.microsofttranslator.com|

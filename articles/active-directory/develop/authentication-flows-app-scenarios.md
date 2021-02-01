@@ -12,16 +12,16 @@ ms.workload: identity
 ms.date: 03/03/2020
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: 383bdaebaa8a1795a9bfddb7da23e172aea111a0
-ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
+ms.openlocfilehash: c441d8e9fa5a3375b1ec4cd3e68d92e92738261d
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96762933"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98755785"
 ---
 # <a name="authentication-flows-and-application-scenarios"></a>Authentifizierungsflows und Anwendungsszenarien
 
-Der Microsoft Identity Platform (v2.0)-Endpunkt unterstützt die Authentifizierung für verschiedene moderne Anwendungsarchitekturen. Diese Architekturen basieren jeweils auf den branchenüblichen Protokollen [OAuth 2.0 und OpenID Connect](active-directory-v2-protocols.md). Durch die Verwendung der [Authentifizierungsbibliotheken für die Microsoft Identity Platform](reference-v2-libraries.md) authentifizieren Anwendungen die Identitäten und rufen Token für den Zugriff auf geschützte APIs ab.
+Microsoft Identity Platform unterstützt die Authentifizierung für verschiedene Arten moderner Anwendungsarchitekturen. Diese Architekturen basieren jeweils auf den branchenüblichen Protokollen [OAuth 2.0 und OpenID Connect](active-directory-v2-protocols.md). Durch die Verwendung der [Authentifizierungsbibliotheken für die Microsoft Identity Platform](reference-v2-libraries.md) authentifizieren Anwendungen die Identitäten und rufen Token für den Zugriff auf geschützte APIs ab.
 
 In diesem Artikel werden Authentifizierungsflows und Anwendungsszenarien beschrieben, in denen sie verwendet werden.
 
@@ -79,9 +79,9 @@ Weitere Informationen finden Sie unter [Unterstützte Kontotypen](v2-supported-a
 
 ## <a name="application-scenarios"></a>Anwendungsszenarien
 
-Der Microsoft Identity Platform-Endpunkt unterstützt die Authentifizierung für folgende App-Architekturen:
+Microsoft Identity Platform unterstützt die Authentifizierung für folgende App-Architekturen:
 
-- Einseitige Apps
+- Single-Page-Apps
 - Web-Apps
 - Web-APIs
 - Mobile Apps
@@ -95,7 +95,7 @@ Anwendungen verwenden die verschiedenen Authentifizierungsflows, um Benutzer anz
 
 Viele moderne Web-Apps werden als clientseitige Single-Page-Anwendungen (SPAs) erstellt. Diese Anwendungen verwenden JavaScript oder ein Framework wie Angular, Vue und React. Diese Anwendungen werden in einem Webbrowser ausgeführt.
 
-Single-Page-Webanwendungen unterscheiden sich im Hinblick auf die Authentifizierungsmerkmale von herkömmlichen serverseitigen Web-Apps. Durch die Nutzung von Microsoft Identity Platform können Single-Page-Webanwendungen Benutzer anmelden und Token für den Zugriff auf Back-End-Dienste oder Web-APIs beziehen. Die Microsoft Identity Platform bietet zwei Gewährungstypen für JavaScript-Anwendungen: 
+Single-Page-Webanwendungen unterscheiden sich im Hinblick auf die Authentifizierungsmerkmale von herkömmlichen serverseitigen Web-Apps. Durch die Nutzung von Microsoft Identity Platform können Single-Page-Webanwendungen Benutzer anmelden und Token für den Zugriff auf Back-End-Dienste oder Web-APIs beziehen. Microsoft Identity Platform bietet zwei Gewährungstypen für JavaScript-Anwendungen: 
 
 | MSAL.js (2.x) | MSAL.js (1.x) |
 |---|---|
@@ -160,7 +160,7 @@ Weitere Informationen finden Sie unter [Szenario: Mobile App, die Web-APIs aufru
 
 ### <a name="protected-web-api"></a>Geschützte Web-API
 
-Mit dem Microsoft Identity Plattform-Endpunkt können Sie Webdienste wie etwa die RESTful-Web-API Ihrer App schützen. Eine geschützte Web-API wird über ein Zugriffstoken aufgerufen. Das Token schützt die Daten der API und authentifiziert eingehende Anforderungen. Der Aufrufer einer Web-API fügt an den Autorisierungsheader einer HTTP-Anforderung ein Zugriffstoken an.
+Mit Microsoft Identity Platform können Sie Webdienste wie etwa die RESTful-Web-API Ihrer App schützen. Eine geschützte Web-API wird über ein Zugriffstoken aufgerufen. Das Token schützt die Daten der API und authentifiziert eingehende Anforderungen. Der Aufrufer einer Web-API fügt an den Autorisierungsheader einer HTTP-Anforderung ein Zugriffstoken an.
 
 Wenn Sie Ihre ASP.NET- oder ASP.NET Core-Web-API schützen möchten, müssen Sie das Zugriffstoken validieren. Für diese Validierung wird die JWT-Middleware für ASP.NET verwendet. Die Validierung wird nicht von MSAL.NET, sondern von der Bibliothek [IdentityModel-Erweiterungen für .NET](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet/wiki) durchgeführt.
 

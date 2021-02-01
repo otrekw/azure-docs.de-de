@@ -1,6 +1,7 @@
 ---
-title: SSO zwischen ADAL- und MSAL-Apps (iOS/macOS) – Microsoft Identity Platform | Azure
-description: ''
+title: Einmaliges Anmelden (SSO) zwischen ADAL- und MSAL-Apps (iOS/macOS) | Azure
+titleSuffix: Microsoft identity platform
+description: Erfahren Sie, wie Sie einmaliges Anmelden zwischen ADAL- und MSAL-Apps realisieren
 services: active-directory
 author: mmacy
 manager: CelesteDG
@@ -12,14 +13,14 @@ ms.date: 08/28/2019
 ms.author: marsma
 ms.reviewer: ''
 ms.custom: aaddev
-ms.openlocfilehash: 7a8a1667ba1ca2a99c053c6941e3ba778299fd53
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 60189b8ba952bc3315bf514c5d0786601840665a
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80880749"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98756207"
 ---
-# <a name="how-to-sso-between-adal-and-msal-apps-on-macos-and-ios"></a>Gewusst wie: SSO zwischen ADAL- und MSAL-Apps auf macOS und iOS
+# <a name="how-to-sso-between-adal-and-msal-apps-on-macos-and-ios"></a>Vorgehensweise: SSO zwischen ADAL- und MSAL-Apps auf macOS und iOS
 
 Die Microsoft Authentication Library (MSAL) für iOS kann den SSO-Zustand mit [ADAL Objective-C](https://github.com/AzureAD/azure-activedirectory-library-for-objc) zwischen Anwendungen teilen. Sie können Ihre Apps in Ihrem eigenen Tempo zu MSAL migrieren, sodass Ihre Benutzer weiterhin von App-übergreifendem SSO profitieren – sogar bei einer Kombination aus ADAL- und MSAL-basierten Apps.
 
@@ -48,8 +49,8 @@ Die folgende Tabelle fasst die Unterschiede bei Kontobezeichnern zwischen ADAL u
 | Kontobezeichner                | MSAL                                                         | ADAL 2.7.x      | Ältere ADAL-Versionen (vor ADAL 2.7.x) |
 | --------------------------------- | ------------------------------------------------------------ | --------------- | ------------------------------ |
 | darstellbarer Bezeichner            | `username`                                                   | `userId`        | `userId`                       |
-| eindeutiger nicht darstellbarer Bezeichner | `identifier`                                                 | `homeAccountId` | –                            |
-| Konto-ID nicht bekannt               | Abfrage aller Konten über die `allAccounts:`-API in `MSALPublicClientApplication` | –             | –                            |
+| eindeutiger nicht darstellbarer Bezeichner | `identifier`                                                 | `homeAccountId` | Nicht zutreffend                            |
+| Konto-ID nicht bekannt               | Abfrage aller Konten über die `allAccounts:`-API in `MSALPublicClientApplication` | –             | Nicht zutreffend                            |
 
 Dies ist die `MSALAccount`-Schnittstelle mit den Bezeichnern:
 

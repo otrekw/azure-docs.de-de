@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/27/2020
 ms.author: trbye
-ms.openlocfilehash: ed79d9fb3be192d300587eda5198d9b153109241
-ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
+ms.openlocfilehash: 605bae706bbc1db2e008b8d050cbba9eacd16933
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98209779"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98702201"
 ---
 # <a name="prepare-data-for-custom-speech"></a>Vorbereiten von Daten für Custom Speech
 
@@ -174,7 +174,7 @@ Stellen Sie anhand der folgenden Tabelle sicher, dass die zugehörige Datendatei
 
 Darüber hinaus sollten Sie die folgenden Einschränkungen beachten:
 
-* Vermeiden Sie mehr als vier Wiederholungen eines Zeichens, z.B. „aaaa“ oder „uuuu“.
+* Vermeiden Sie es, mehr als dreimal Zeichen, Wörter oder Wortgruppen zu wiederholen. Zum Beispiel: „aaaa“, „yeah yeah yeah yeah“ oder „that's it that's it that's it that's it“. Der Sprachdienst kann Zeilen mit zu vielen Wiederholungen löschen.
 * Verwenden Sie keine Sonderzeichen oder UTF-8-Zeichen über `U+00A1`.
 * URIs werden zurückgewiesen.
 

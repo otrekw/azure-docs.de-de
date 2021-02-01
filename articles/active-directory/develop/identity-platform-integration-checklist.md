@@ -12,12 +12,12 @@ ms.date: 05/08/2020
 ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja, jesakowi
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: 011acdf98c8430bfb7ba1b02ec24a170f829e48f
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: cefcf6b1bcd7ac5f81fa4e872b30660183a46a82
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98063789"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98755261"
 ---
 # <a name="microsoft-identity-platform-best-practices-and-recommendations"></a>Bewährte Methoden und Empfehlungen für Microsoft Identity Platform
 
@@ -104,7 +104,7 @@ Stellen Sie anhand der folgenden Checkliste sicher, dass Ihre Anwendung effektiv
 
 Hier erhalten Sie detaillierte Informationen zu v2.0:
 
-* [Microsoft Identity Platform (Übersicht über v2.0)](v2-overview.md)
+* [Microsoft Identity Platform (Übersicht )](v2-overview.md)
 * [Referenz zu Microsoft Identity Platform-Protokollen](active-directory-v2-protocols.md)
 * [Zugriffstokenreferenz](access-tokens.md)
 * [ID-Tokenreferenz](id-tokens.md)

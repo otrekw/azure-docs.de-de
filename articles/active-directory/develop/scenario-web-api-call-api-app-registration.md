@@ -1,5 +1,6 @@
 ---
-title: Registrieren einer Web-API, die Web-APIs aufruft – Microsoft Identity Platform | Azure
+title: Registrieren einer Web-API, die Web-APIs aufruft | Azure
+titleSuffix: Microsoft identity platform
 description: Erfahren Sie, wie Sie eine Web-API erstellen, die Downstream-Web-APIs aufruft (App-Registrierung).
 services: active-directory
 author: jmprieur
@@ -11,12 +12,12 @@ ms.workload: identity
 ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 790580160ec236d1923dc28b9990d2675c253b44
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 8349b7a53eb7b03b27c695bb24c8cb9bc665a1ac
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94442683"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98756363"
 ---
 # <a name="a-web-api-that-calls-web-apis-app-registration"></a>Web-API, die Web-APIs aufruft: App-Registrierung
 

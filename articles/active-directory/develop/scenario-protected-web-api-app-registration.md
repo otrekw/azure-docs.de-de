@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/15/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 7a38e2384c5f24bc3a72e1ef8e8f7119b2db0f2f
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: c3d9cd5e710eb263707e87c4afe0f08809b8d50c
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94443941"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98756456"
 ---
 # <a name="protected-web-api-app-registration"></a>Geschützte Web-API: App-Registrierung
 
@@ -27,7 +27,7 @@ Die allgemeinen Schritte zum Registrieren einer App sind beschrieben in [Schnell
 
 ## <a name="accepted-token-version"></a>Akzeptierte Tokenversion
 
-Der Microsoft Identity Platform-Endpunkt kann v1.0-Token und v2.0-Token ausgeben. Weitere Informationen zu diesen Token finden Sie unter [Zugriffstoken](access-tokens.md).
+Microsoft Identity Platform kann v1.0-Token und v2.0-Token ausgeben. Weitere Informationen zu diesen Token finden Sie unter [Zugriffstoken](access-tokens.md).
 
 Die Tokenversion, die von Ihrer API akzeptiert wird, richtet sich nach den **unterstützten Kontotypen**, die Sie beim Erstellen der Registrierung Ihrer Web-API-Anwendung im Azure-Portal ausgewählt haben.
 
@@ -44,7 +44,7 @@ Nachdem Sie die Anwendung erstellt haben, können Sie die akzeptierte Tokenversi
 1. Falls Sie die Tokenversion geändert haben, wählen Sie **Speichern** aus.
 
 > [!NOTE]
-> Die Web-API gibt an, welche Tokenversion akzeptiert wird. Wenn ein Client ein Token für Ihre Web-API vom Microsoft Identity Platform-Endpunkt (v2.0) anfordert, erhält er ein Token, das angibt, welche Tokenversion die Web-API akzeptiert.
+> Die Web-API gibt an, welche Tokenversion akzeptiert wird. Wenn ein Client ein Token für Ihre Web-API von Microsoft Identity Platform anfordert, erhält er ein Token, das angibt, welche Tokenversion die Web-API akzeptiert.
 
 ## <a name="no-redirect-uri"></a>Kein Umleitungs-URI
 

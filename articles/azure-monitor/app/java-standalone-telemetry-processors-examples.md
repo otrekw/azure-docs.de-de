@@ -6,12 +6,12 @@ ms.date: 12/29/2020
 author: kryalama
 ms.custom: devx-track-java
 ms.author: kryalama
-ms.openlocfilehash: b9ad5347e146fc94b513180c591b00c4f449619f
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 9b29c9611359c97c4097ad0b90ee2673bb28f37c
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98146416"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98696311"
 ---
 # <a name="telemetry-processors-examples---azure-monitor-application-insights-for-java"></a>Beispiele für Telemetrieprozessoren: Azure Monitor Application Insights für Java
 
@@ -330,7 +330,7 @@ Im folgenden Beispiel wird das Erstellen eines Hash aus vorhandenen Attributwert
 ### <a name="extract"></a>Extract
 
 Im folgenden Beispiel wird gezeigt, wie Sie mit regulären Ausdrücken neue Attribute auf der Grundlage des Werts eines anderen Attributs erstellen.
-Wenn z. B. „http.url = http://example.com/path?queryParam1=value1,queryParam2=value2“ lautet, werden die folgenden Attribute eingefügt:
+Wenn z. B. „http.url“ = „http://example.com/path?queryParam1=value1,queryParam2=value2“, werden die folgenden Attribute eingefügt:
 * httpProtocol: http
 * httpDomain: example.com
 * httpPath: Pfad

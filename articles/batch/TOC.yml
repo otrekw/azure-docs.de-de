@@ -143,6 +143,8 @@
           href: batch-sig-images.md
         - name: Erstellen eines Pools mit einer verwalteten Imageressource
           href: batch-custom-images.md
+        - name: Verfügbarkeitszonenübergreifendes Erstellen eines Pools
+          href: create-pool-availability-zones.md
         - name: Erstellen eines Pools mit aktivierter Datenträgerverschlüsselung
           href: disk-encryption.md
         - name: Erstellen eines Pools in einem virtuellen Netzwerk

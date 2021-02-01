@@ -1,5 +1,6 @@
 ---
-title: Problembehandlung bei der Herausgeberüberprüfung – Microsoft Identity Platform | Azure
+title: Behandeln von Problemen bei der Herausgeberüberprüfung | Azure
+titleSuffix: Microsoft identity platform
 description: Hier wird die Behandlung von Problemen bei der Herausgeberüberprüfung für Microsoft Identity Platform durch Aufrufen von Microsoft Graph-APIs beschrieben.
 services: active-directory
 author: rwike77
@@ -12,12 +13,12 @@ ms.date: 05/08/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jesakowi
-ms.openlocfilehash: 857659cdd97666dba585c1ec22c750e29bf28879
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 10609f2706d257dbe5d8f43b85da5f06cb986cae
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96169170"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98756186"
 ---
 # <a name="troubleshoot-publisher-verification"></a>Problembehandlung bei der Herausgeberüberprüfung
 Wenn Sie den Vorgang nicht ausführen können oder bei der [Herausgeberüberprüfung](publisher-verification-overview.md) unerwartetes Verhalten auftritt, sollten Sie zunächst die folgenden Schritte ausführen, wenn Sie Fehlermeldungen erhalten oder unerwartetes Verhalten feststellen: 

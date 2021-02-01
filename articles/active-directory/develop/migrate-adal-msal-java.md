@@ -14,12 +14,12 @@ ms.date: 11/04/2019
 ms.author: sagonzal
 ms.reviewer: nacanuma, twhitney
 ms.custom: aaddev, devx-track-java
-ms.openlocfilehash: 0183471db274bb7fca59ed8f24aa87b2bf997fb6
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: 1d1512447b5d0474f8fabe92dbc7a36259f4618c
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98063738"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98754978"
 ---
 # <a name="adal-to-msal-migration-guide-for-java"></a>Leitfaden für die Migration von ADAL zu MSAL für Java
 
@@ -29,7 +29,7 @@ Sowohl die Microsoft-Authentifizierungsbibliothek für Java (MSAL4J) als auch di
 
 MSAL bietet folgende Vorteile:
 
-- Da der neuere Microsoft Identity Platform-Endpunkt verwendet wird, können Sie eine größere Gruppe von Microsoft-Identitäten wie Azure AD-Identitäten, Microsoft-Konten sowie Social Media- und lokale Konten über Azure AD Business to Consumer (B2C) authentifizieren.
+- Da das neue Microsoft Identity Platform verwendet wird, können Sie eine größere Gruppe von Microsoft-Identitäten wie Azure AD-Identitäten, Microsoft-Konten sowie Social Media- und lokale Konten über Azure AD B2C (Business to Consumer) authentifizieren.
 - Ihre Benutzer erhalten die besten Funktionen für einmalige Anmelden (Single Sign-On, SSO).
 - Ihre Anwendung kann inkrementelle Zustimmung aktivieren, und Unterstützung des bedingten Zugriffs ist einfacher.
 
@@ -37,13 +37,13 @@ MSAL für Java ist die empfohlene Authentifizierungsbibliothek für die Verwendu
 
 ## <a name="differences"></a>Unterschiede
 
-Wenn Sie bereits mit dem Azure AD für Entwickler (v1.0)-Endpunkt (und ADAL4J) gearbeitet haben, könnte Sie der Artikel zu den [Neuerungen des Microsoft Identity Platform (v2.0)-Endpunkts](../azuread-dev/azure-ad-endpoint-comparison.md) interessieren.
+Wenn Sie bereits mit dem Azure AD für Entwickler (v1.0)-Endpunkt und ADAL4J gearbeitet haben, könnte Sie der Artikel [Neuerungen in Microsoft Identity Platform](../azuread-dev/azure-ad-endpoint-comparison.md) interessieren.
 
 ## <a name="scopes-not-resources"></a>Geltungsbereiche im Gegensatz zu Ressourcen
 
 ADAL4J ruft Token für Ressourcen auf, während MSAL für Java Token für Geltungsbereiche abruft. Eine Reihe von Klassen in MSAL für Java erfordern einen scopes-Parameter. Bei diesem Parameter handelt es sich um eine Liste von Zeichenfolgen, die die gewünschten Berechtigungen und Ressourcen deklarieren, die angefordert werden. Beispiele für Geltungsbereiche finden Sie unter [Geltungsbereiche von Microsoft Graph](/graph/permissions-reference).
 
-Sie können der Ressource das Bereichssuffix `/.default` hinzufügen, um die Migration Ihrer Apps vom v1.0-Endpunkt (ADAL) zum Microsoft Identity Platform-Endpunkt (MSAL) zu unterstützen. Beispielsweise entspricht dem Ressourcenwert `https://graph.microsoft.com` der entsprechende Bereichswert `https://graph.microsoft.com/.default`.  Wenn sich die Ressource nicht im URL-Format befindet, aber eine Ressourcen-ID im Format `XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXX` vorliegt, können Sie weiterhin den Bereichswert `XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXX/.default` verwenden.
+Sie können der Ressource das Bereichssuffix`/.default` hinzufügen, damit Sie Ihre Apps besser von ADAL zu MSAL migrieren können. Beispielsweise entspricht dem Ressourcenwert `https://graph.microsoft.com` der entsprechende Bereichswert `https://graph.microsoft.com/.default`.  Wenn sich die Ressource nicht im URL-Format befindet, aber eine Ressourcen-ID im Format `XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXX` vorliegt, können Sie weiterhin den Bereichswert `XXXXXXXX-XXXX-XXXX-XXXXXXXXXXXX/.default` verwenden.
 
 Weitere Informationen zu den verschiedenen Bereichstypen finden Sie in den Artikeln [Berechtigungen und Zustimmung im Microsoft Identity Platform-Endpunkt](./v2-permissions-and-consent.md) und [Geltungsbereiche für eine Web-API, die v1.0-Token akzeptiert](./msal-v1-app-scopes.md).
 

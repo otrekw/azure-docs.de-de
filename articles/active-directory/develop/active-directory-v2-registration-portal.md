@@ -14,12 +14,12 @@ ms.author: ryanwi
 ms.reviewer: lenalepa
 ms.custom: aaddev
 ROBOTS: NOINDEX
-ms.openlocfilehash: b165cd4abd55026e10aa43eb20faa85b887de194
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: 6a33da602eaa9bee20f155eaa550e558e5dcbeca
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98065042"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98755554"
 ---
 # <a name="app-registration-reference"></a>Referenz zur App-Registrierung
 
@@ -27,7 +27,7 @@ Dieses Dokument enthält Kontext und Beschreibungen zu verschiedenen Features de
 
 ## <a name="my-applications-or-converged-applications"></a>Eigene Anwendungen oder konvergente Anwendungen
 
-Diese Liste enthält all Ihre Anwendungen, die für die Verwendung mit dem Endpunkt der Microsoft Identity Platform (v2.0) registriert sind. Diese Anwendungen können Benutzer sowohl über persönliche Microsoft-Konten als auch über Geschäfts-, Schul- oder Unikonten von Azure Active Directory anmelden. Weitere Informationen zum Endpunkt der Identiy Platform finden Sie in der [v2.0-Übersicht](./v2-overview.md). Diese Anwendungen können auch für die Integration in den Microsoft-Konto-Authentifizierungsendpunkt, `https://login.live.com`, verwendet werden.
+Diese Liste enthält all Ihre Anwendungen, die für die Verwendung mit Microsoft Identity Platform registriert sind. Diese Anwendungen können Benutzer sowohl über persönliche Microsoft-Konten als auch über Geschäfts-, Schul- oder Unikonten von Azure Active Directory anmelden. Weitere Informationen zu Microsoft Identiy Platform finden Sie in der [Übersicht über Microsoft Identity Platform v2.0](./v2-overview.md). Diese Anwendungen können auch für die Integration in den Microsoft-Konto-Authentifizierungsendpunkt, `https://login.live.com`, verwendet werden.
 
 ## <a name="azure-ad-only-applications"></a>Nur Azure AD-Anwendungen
 
@@ -39,7 +39,7 @@ Diese Liste enthält all Ihre Anwendungen, die für die ausschließliche Verwend
 
 ## <a name="application-secrets"></a>Geheime Schlüssel für Anwendungen
 
-Anwendungsgeheimnisse sind Anmeldeinformationen, mit denen Ihre Anwendung eine zuverlässige [Clientauthentifizierung](https://tools.ietf.org/html/rfc6749#section-2.3) bei Microsoft Identity Platform durchführen kann. In OAuth und OpenID Connect werden Anwendungsgeheimnisse gemeinhin als `client_secret` bezeichnet. Im v2.0-Protokoll muss jede Anwendung, die an einem adressierbaren Webspeicherort (nach `https`-Schema) ein Sicherheitstoken empfängt, ein Anwendungsgeheimis verwenden, um sich beim Einlösen dieses Sicherheitstokens bei Microsoft Identity Platform zu identifizieren. Darüber hinaus wird jedem nativen Client, der auf einem Gerät Token empfängt, die Verwendung eines Anwendungsgeheimnisses zur Clientauthentifizierung untersagt. Dadurch wird die Speicherung von Geheimnissen in unsicheren Umgebungen verhindert.
+Anwendungsgeheimnisse sind Anmeldeinformationen, mit denen Ihre Anwendung eine zuverlässige [Clientauthentifizierung](https://tools.ietf.org/html/rfc6749#section-2.3) bei Microsoft Identity Platform durchführen kann. In OAuth und OpenID Connect werden Anwendungsgeheimnisse gemeinhin als `client_secret` bezeichnet. Im v2.0-Protokoll muss jede Anwendung, die an einem adressierbaren Webspeicherort (nach `https`-Schema) ein Sicherheitstoken empfängt, ein Anwendungsgeheimnis verwenden, um sich beim Einlösen dieses Sicherheitstokens bei Microsoft Identity Platform zu identifizieren. Darüber hinaus wird jedem nativen Client, der auf einem Gerät Token empfängt, die Verwendung eines Anwendungsgeheimnisses zur Clientauthentifizierung untersagt. Dadurch wird die Speicherung von Geheimnissen in unsicheren Umgebungen verhindert.
 
 Jede App kann immer nur zwei gültige Anwendungsgeheimnisse enthalten. Durch das Verwalten von zwei Geheimnissen haben Sie die Möglichkeit, in der gesamten Umgebung Ihrer Anwendung regelmäßige Schlüsselrollover durchzuführen. Nachdem Sie Ihre Anwendung vollständig zu einem neuen Geheimnis migriert haben, können Sie das alte Geheimnis löschen und ein neues bereitstellen.
 

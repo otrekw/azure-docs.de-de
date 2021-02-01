@@ -10,12 +10,12 @@ ms.author: abnarain
 manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 07/31/2018
-ms.openlocfilehash: 37eac4acab7232e44f94e852b1c04c5549447b09
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 43a035662cc76dc6de1de3fa990e06f2e00cfd66
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92637682"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632324"
 ---
 # <a name="transform-data-in-azure-data-factory"></a>Transformieren von Data in Azure Data Factory
 
@@ -47,9 +47,9 @@ Data Factory unterstützt die folgenden Transformationsaktivitäten, die [Pipeli
 
 Mapping Data Flows (Zuordnungsdatenflüsse) sind visuell entworfene Datentransformationen in Azure Data Factory. Mit Data Flows können Data Engineers grafische Datentransformationslogik entwickeln, ohne Code schreiben zu müssen. Die daraus resultierenden Datenflüsse werden als Aktivitäten in Azure Data Factory-Pipelines ausgeführt, für die horizontal hochskalierte Spark-Cluster verwendet werden. Datenflussaktivitäten können über vorhandene Planungs-, Steuerungs-, Fluss- und Überwachungsfunktionen in Data Factory operationalisiert werden. Weitere Informationen finden Sie unter [Mapping Data Flows (Zuordnungsdatenflüsse)](concepts-data-flow-overview.md).
 
-### <a name="wrangling-data-flows"></a>Wranglingdatenflüsse
+### <a name="data-wrangling"></a>Data Wrangling
 
-Wranglingdatenflüsse in Azure Data Factory ermöglicht Ihnen das iterative Vorbereiten von Daten ohne Code für die Cloud. Wranglingdatenflüsse können in [Power Query Online](/power-query/) integriert werden und stellen Power Query M-Funktionen für Data Wrangling in der Cloud über Spark-Ausführung bereit. Weitere Informationen finden Sie unter [Wranglingdatenflüsse](wrangling-data-flow-overview.md).
+Power Query in Azure Data Factory ermöglicht Data Wrangling auf Cloudebene, das Ihnen die Möglichkeit zum iterativen Vorbereiten von Daten ohne Code für die Cloud bietet. Data Wrangling kann in [Power Query Online](/power-query/) integriert werden und stellt Power Query M-Funktionen für Data Wrangling in der Cloud über Spark-Ausführung bereit. Weitere Informationen finden Sie unter [Data Wrangling in ADF](wrangling-overview.md).
 
 ## <a name="external-transformations"></a>Externe Transformationen
 
@@ -70,7 +70,7 @@ Die HDInsight-Streamingaktivität in einer Data Factory-Pipeline wendet Hadoop-S
 ### <a name="hdinsight-spark-activity"></a>HDInsight Spark-Aktivität
 Die HDInsight Spark-Aktivität in einer Data Factory-Pipeline führt Spark-Programme in Ihrem eigenen HDInsight-Cluster aus. Weitere Informationen finden Sie unter [Aufrufen von Spark-Programmen aus Azure Data Factory](transform-data-using-spark.md). 
 
-### <a name="azure-machine-learning-studio-classic-activities"></a>Aktivitäten in Azure Machine Learning Studio (Classic)
+### <a name="azure-machine-learning-studio-classic-activities"></a>Aktivitäten von Azure Machine Learning Studio (Classic)
 Azure Data Factory ermöglicht die einfache Erstellung von Pipelines, die einen veröffentlichten Azure Machine Learning Studio (Classic)-Webdienst für Predictive Analytics nutzen. Mithilfe der [Batchausführungsaktivität](transform-data-using-machine-learning.md) in einer Azure Data Factory-Pipeline können Sie einen Studio (Classic)-Webdienst aufrufen, um Vorhersagen für die Daten im Batch zu treffen.
 
 Im Laufe der Zeit müssen die Vorhersagemodelle in den Bewertungsexperimenten von Azure Machine Learning Studio (Classic) mit neuen Eingabedatasets neu trainiert werden. Wenn Sie mit dem erneuten Trainieren fertig sind, sollten Sie den Bewertungswebdienst mit dem neu trainierten Machine Learning-Modell aktualisieren. Verwenden Sie die [Ressourcenaktualisierungsaktivität](update-machine-learning-models.md), um den Webdienst mit dem neu trainierten Modell zu aktualisieren.  
@@ -78,7 +78,7 @@ Im Laufe der Zeit müssen die Vorhersagemodelle in den Bewertungsexperimenten vo
 Ausführliche Informationen zu diesen Aktivitäten in Studio (Classic) finden Sie unter [Erstellen einer Vorhersagepipeline mithilfe von Azure Machine Learning Studio (Classic) und Azure Data Factory](transform-data-using-machine-learning.md). 
 
 ### <a name="stored-procedure-activity"></a>Aktivität „Gespeicherte Prozedur“
-Sie können die SQL Server-Aktivität „Gespeicherte Prozedur“ in einer Data Factory-Pipeline verwenden, um eine gespeicherte Prozedur in einem der folgenden Datenspeicher aufzurufen: Azure SQL-Datenbank, Azure Synapse Analytics (ehemals SQL Data Warehouse), SQL Server-Datenbank in Ihrem Unternehmen oder auf einem virtuellen Azure-Computer. Unter [Aktivität „Gespeicherte Prozedur“](transform-data-using-stored-procedure.md) finden Sie Details.  
+Sie können die SQL Server-Aktivität „Gespeicherte Prozedur“ in einer Data Factory-Pipeline verwenden, um eine gespeicherte Prozedur in einem der folgenden Datenspeicher aufzurufen: Azure SQL-Datenbank, Azure Synapse Analytics, SQL Server-Datenbank in Ihrem Unternehmen oder auf einem virtuellen Azure-Computer. Unter [Aktivität „Gespeicherte Prozedur“](transform-data-using-stored-procedure.md) finden Sie Details.  
 
 ### <a name="data-lake-analytics-u-sql-activity"></a>U-SQL-Aktivität für Data Lake Analytics
 Die U-SQL-Aktivität für Data Lake Analytics wendet ein U-SQL-Skript auf einen Azure Data Lake Analytics-Cluster an. Unter [U-SQL-Aktivität für Data Lake Analytics](transform-data-using-data-lake-analytics.md) finden Sie Details. 

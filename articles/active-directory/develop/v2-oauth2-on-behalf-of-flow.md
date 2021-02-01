@@ -13,12 +13,12 @@ ms.date: 08/7/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 8c8167142876dfac0ae0aeff51e85b66c65c607b
-ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
+ms.openlocfilehash: ff8e03b813e2cb890192667e3466d920eaabc72c
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98208847"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98756088"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-on-behalf-of-flow"></a>Microsoft Identity Platform und der On-Behalf-Of-Fluss von OAuth2.0
 
@@ -130,7 +130,7 @@ Eine erfolgreiche Antwort enthält eine JSON OAuth 2.0-Antwort mit den folgenden
 
 | Parameter | Beschreibung |
 | --- | --- |
-| `token_type` | Gibt den Wert des Tokentyps an. Die Microsoft Identity Platform unterstützt nur den Typ `Bearer`. Weitere Informationen zu Bearertoken finden Sie unter [OAuth 2.0-Autorisierungsframework: Verwendung von Bearertoken (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt). |
+| `token_type` | Gibt den Wert des Tokentyps an. Microsoft Identity Platform unterstützt nur den Typ `Bearer`. Weitere Informationen zu Bearertoken finden Sie unter [OAuth 2.0-Autorisierungsframework: Verwendung von Bearertoken (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt). |
 | `scope` | Der durch das Token gewährte Zugriffsbereich. |
 | `expires_in` | Gibt an, wie lange das Zugriffstoken in Sekunden gültig ist. |
 | `access_token` | Das angeforderte Zugriffstoken. Der aufrufende Dienst kann dieses Token verwenden, um die Authentifizierung für den empfangenden Dienst durchzuführen. |
@@ -151,7 +151,7 @@ Das folgende Beispiel zeigt eine erfolgreiche Antwort auf eine Anforderung eines
 }
 ```
 
-Das obige Zugriffstoken ist ein Token mit v1.0-Formatierung für Microsoft Graph. Dies liegt daran, dass das Tokenformat auf der **Ressource** basiert, auf die zugegriffen wird, und nicht mit den Endpunkten in Zusammenhang steht, die für deren Anforderung verwendet werden. Microsoft Graph akzeptiert entsprechend seiner Einrichtung v1.0-Token. Microsoft Identity Platform erzeugt daher v1.0-Zugriffstoken, wenn ein Client Token für Microsoft Graph anfordert. Andere Apps können signalisieren, dass sie Token im v2.0- oder v1.0-Format oder sogar proprietäre oder verschlüsselte Tokenformate bevorzugen.  Die Endpunkte der Versionen 1.0 und 2.0 können jedes beliebige Tokenformat ausgeben. Dadurch kann die Ressource immer das richtige Tokenformat abrufen, unabhängig davon, wie oder wo das Token vom Client angefordert wurde. 
+Das obige Zugriffstoken ist ein Token mit v1.0-Formatierung für Microsoft Graph. Dies liegt daran, dass das Tokenformat auf der **Ressource** basiert, auf die zugegriffen wird, und nicht mit den Endpunkten in Zusammenhang steht, die für deren Anforderung verwendet werden. Microsoft Graph akzeptiert gemäß seiner Einrichtung v1.0-Token. Microsoft Identity Platform erzeugt daher v1.0-Zugriffstoken, wenn ein Client Token für Microsoft Graph anfordert. Andere Apps können signalisieren, dass sie Token im v2.0- oder v1.0-Format oder sogar proprietäre oder verschlüsselte Tokenformate bevorzugen.  Die Endpunkte der Versionen 1.0 und 2.0 können jedes beliebige Tokenformat ausgeben. Dadurch kann die Ressource immer das richtige Tokenformat abrufen, unabhängig davon, wie oder wo das Token vom Client angefordert wurde. 
 
 Nur Anwendungen sollten Zugriffstoken betrachten. Clients **dürfen sie nicht** überprüfen. Das Überprüfen von Zugriffstoken für andere Apps in Ihrem Code hat zur Folge, dass Ihre App unerwartet angehalten wird, wenn diese das Format ihrer Token ändert oder mit deren Verschlüsselung beginnt. 
 
@@ -201,7 +201,7 @@ Abhängig von der Architektur oder der Verwendung Ihrer Anwendung können Sie ve
 
 ### <a name="default-and-combined-consent"></a>/.default und kombinierten Einwilligung
 
-Die Anwendung der mittleren Ebene fügt den Client in ihrem Manifest der Liste der bekannten Clientanwendungen hinzu, und dann kann der Client einen kombinierten Einwilligungsfluss für sich selbst und die Anwendung der mittleren Ebene auslösen. Für den Microsoft Identity Platform-Endpunkt erfolgt dies mit dem [`/.default`-Bereich](v2-permissions-and-consent.md#the-default-scope). Wenn Sie einen Zustimmungsbildschirm mit bekannten Clientanwendungen und `/.default` auslösen, zeigt der Bildschirm die Berechtigungen des Client für die API der mittleren Ebene an **und** fordert auch die von der API der mittleren Ebene benötigten Berechtigungen an. Der Benutzer gibt die Einwilligung für beide Anwendungen, und dann funktioniert der OBO-Fluss.
+Die Anwendung der mittleren Ebene fügt den Client in ihrem Manifest der Liste der bekannten Clientanwendungen hinzu, und dann kann der Client einen kombinierten Einwilligungsfluss für sich selbst und die Anwendung der mittleren Ebene auslösen. Für Microsoft Identity Platform erfolgt dies mithilfe des [`/.default`-Bereichs](v2-permissions-and-consent.md#the-default-scope). Wenn Sie einen Zustimmungsbildschirm mit bekannten Clientanwendungen und `/.default` auslösen, zeigt der Bildschirm die Berechtigungen des Client für die API der mittleren Ebene an **und** fordert auch die von der API der mittleren Ebene benötigten Berechtigungen an. Der Benutzer gibt die Einwilligung für beide Anwendungen, und dann funktioniert der OBO-Fluss.
 
 ### <a name="pre-authorized-applications"></a>Vorautorisierte Anwendungen
 

@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 03/06/2020
 ms.author: shono
-ms.openlocfilehash: 0dbd6ea13069b72e6bca5c065af92568a5c7cdb8
-ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
+ms.openlocfilehash: 2259d0114d91af2e688df66ff8dc4e8d293c2b03
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/01/2021
-ms.locfileid: "97844951"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624832"
 ---
 # <a name="select-a-domain-for-a-custom-vision-project"></a>Auswählen einer Domäne für ein Custom Vision-Projekt
 
@@ -26,6 +26,7 @@ Auf der Registerkarte „Einstellungen“ Ihres Custom Vision-Projekt können Si
 |Domain|Zweck|
 |---|---|
 |__Allgemein__| Für eine breite Palette von Aufgaben in der Bildklassifizierung optimiert. Wenn keine der anderen Domänen geeignet erscheint oder Sie unsicher sind, welche Domäne Sie wählen sollen, verwenden Sie die allgemeine Domäne. ID: `ee85a74c-405e-4adc-bb47-ffa8ca0c9f31`|
+|__General [A1]__ (Allgemein [A1])| Diese ist optimiert für eine bessere Genauigkeit mit vergleichbarer Rückschlusszeit wie die allgemeine Domäne. Sie wird für größere Datasets oder schwierigere Benutzerszenarios empfohlen. Diese Domäne erfordert mehr Trainingszeit. ID: `a8e3c40f-fb4a-466f-832a-5e457ae4a344`|
 |__Food (Lebensmittel)__|Für Fotos von Gerichten optimiert, wie sie beispielsweise auf der Speisekarte von Restaurants abgebildet werden. Wenn Sie Fotos von einzelnen Früchten oder Gemüsen klassifizieren möchten, verwenden Sie die Domäne „Food“. ID: `c151d5b5-dd07-472a-acc8-15d29dea8518`|
 |__Landmarks (Wahrzeichen)__|Optimiert für erkennbare Wahrzeichen (Naturdenkmäler oder künstlich geschaffene Wahrzeichen). Diese Domäne funktioniert am besten, wenn das Wahrzeichen im Foto deutlich zu sehen ist. Die Domäne funktioniert auch, wenn das Wahrzeichen etwas von Personen im Vordergrund verdeckt wird. ID: `ca455789-012d-4b50-9fec-5bb63841c793`|
 |__Retail (Einzelhandel)__|Für Bilder optimiert, wie man sie in einem Einkaufskatalog oder auf einer Einkaufswebsite findet. Wenn Sie eine präzise Klassifizierung zwischen Kleidern, Hosen und Hemden wünschen, verwenden Sie diese Domäne. ID: `b30a91ae-e3c1-4f73-a81e-c270bff27c39`|
@@ -36,6 +37,7 @@ Auf der Registerkarte „Einstellungen“ Ihres Custom Vision-Projekt können Si
 |Domain|Zweck|
 |---|---|
 |__Allgemein__| Für eine Vielzahl von Aufgaben der Objekterkennung optimiert. Wenn keine der anderen Domänen geeignet erscheint oder Sie unsicher sind, welche Domäne Sie wählen sollen, verwenden Sie die allgemeine Domäne. ID: `da2e3a8a-40a5-4171-82f4-58522f70fbc1`|
+|__General [A1]__ (Allgemein [A1])| Diese ist optimiert für eine bessere Genauigkeit mit vergleichbarer Rückschlusszeit wie die allgemeine Domäne. Sie wird für genauere Anforderungen an die Region, größere Datasets oder schwierigere Benutzerszenarios empfohlen. Diese Domäne erfordert mehr Trainingszeit, und die Ergebnisse sind nicht deterministisch. Sie können einen mAP-Unterschied (Mean Average Precision, Präzision des gewogenen Mittelwerts) von +-1 % mit denselben bereitgestellten Trainingsdaten erwarten. ID: `9c616dff-2e7d-ea11-af59-1866da359ce6`|
 |__Logo__|Für die Suche nach Markenlogos in Bildern optimiert. ID: `1d8ffafe-ec40-4fb2-8f90-72b3b6cecea4`|
 |__Produkte in Regalen__|Für die Erkennung und Klassifizierung von Produkten in Regalen optimiert. ID: `3780a898-81c3-4516-81ae-3a139614e1f3`|
 |__Kompaktdomänen__| Für die Bedingungen der Echtzeitobjekterkennung auf Edgegeräten optimiert.|
@@ -48,7 +50,8 @@ Die Modellleistung variiert je nach ausgewählter Domäne. In der folgenden Tabe
 
 |Aufgabe|Domain|id|Modellgröße|CPU-Rückschlusszeit|GPU-Rückschlusszeit|
 |---|---|---|---|---|---|
-|Klassifizierung|General (compact) (Allgemein (kompakt))|`0732100f-1a38-4e49-a514-c9b44c697ab5`|5 MB|13 ms|5 ms|
+|Klassifizierung|General (compact) (Allgemein (kompakt))|`0732100f-1a38-4e49-a514-c9b44c697ab5`|6 MB|10 ms|5 ms|
+|Klassifizierung|Allgemein (kompakt) [$1]|`a1db07ca-a19a-4830-bae8-e004a42dc863`|43 MB|50 ms|5 ms|
 |Objekterkennung|General (compact) (Allgemein (kompakt))|`a27d5ca5-bb19-49d8-a70a-fec086c47f5b`|45 MB|35 ms|5 ms|
 |Objekterkennung|Allgemein (kompakt) [$1]|`7ec2ac80-887b-48a6-8df9-8b1357765430`|14 MB|27 ms|7 ms|
 

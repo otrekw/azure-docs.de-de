@@ -8,12 +8,12 @@ ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: aa6429e27faf92f047c580986d5b434c9a418730
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: d38e631a5a12381b407dca4dd9e2f2ae63365453
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98044372"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98882444"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-portal"></a>Einrichten einer Azure Digital Twins-Instanz und der Authentifizierung (Portal)
 
@@ -71,13 +71,13 @@ Die Azure Digital Twins-Instanz ist jetzt einsatzbereit. Im nächsten Schritt st
 
 [!INCLUDE [digital-twins-setup-role-assignment.md](../../includes/digital-twins-setup-role-assignment.md)]
 
-Öffnen Sie zunächst die Seite für Ihre Azure Digital Twins-Instanz im Azure-Portal. Wählen Sie im Menü der Instanz *Zugriffssteuerung (IAM)* aus. Wählen Sie unter *Rollenzuweisung hinzufügen* die Schaltfläche *Hinzufügen* aus.
+Öffnen Sie zunächst die Seite für Ihre Azure Digital Twins-Instanz im Azure-Portal. Wählen Sie im Menü der Instanz *Zugriffssteuerung (IAM)* aus. Klicken Sie auf die Schaltfläche **+ Hinzufügen**, um eine neue Rollenzuweisung hinzuzufügen.
 
 :::image type="content" source="media/how-to-set-up-instance/portal/add-role-assignment-1.png" alt-text="Auswählen der Option zum Hinzufügen einer Rollenzuweisung auf der Seite „Zugriffssteuerung (IAM)“":::
 
 Geben Sie auf der folgenden Seite *Rollenzuweisung hinzufügen* die Werte ein (dies muss ein Benutzer im Azure-Abonnement mit [ausreichenden Berechtigungen](#prerequisites-permission-requirements) erledigen):
 * **Rolle**: Wählen Sie im Dropdownmenü *Azure Digital Twins Data Owner* (Azure Digital Twins-Datenbesitzer) aus.
-* **Zugriff zuweisen zu**: Wählen Sie im Dropdownmenü *Azure AD-Benutzer, -Gruppe oder -Dienstprinzipal* aus.
+* **Zugriff zuweisen zu**: Verwenden Sie *Benutzer, Gruppe oder Dienstprinzipal*.
 * **Select**: Suchen Sie nach dem Namen oder der E-Mail-Adresse des Benutzers, der zugewiesen werden soll. Wenn Sie das Ergebnis auswählen, wird der Benutzer im Abschnitt *Ausgewählte Mitglieder* angezeigt.
 
 :::row:::

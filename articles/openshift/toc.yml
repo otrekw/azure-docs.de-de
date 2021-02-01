@@ -16,6 +16,10 @@
       href: tutorial-delete-cluster.md
 - name: Anleitungen
   items:
+    - name: Clustervorgänge
+      items:
+        - name: Aktualisieren eines ARO-Clusters
+          href: howto-upgrade.md
     - name: Netzwerk
       items:
         - name: Erstellen eines privaten ARO-Clusters
@@ -28,6 +32,8 @@
           href: howto-create-a-storageclass.md
         - name: Verwenden der integrierten Containerregistrierung
           href: built-in-container-registry.md
+        - name: Verwenden von Azure Container Registry
+          href: howto-use-acr-with-aro.md
     - name: Sicherheit und Authentifizierung
       items:
         - name: Konfigurieren der Azure Active Directory-Authentifizierung (CLI)

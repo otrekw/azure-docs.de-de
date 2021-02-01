@@ -3,12 +3,12 @@ title: Grundlegendes zur Abfragesprache
 description: Beschreibt Resource Graph-Tabellen und die verfügbaren Kusto-Datentypen, -Operatoren und -Funktionen, die mit Azure Resource Graph verwendet werden können.
 ms.date: 01/14/2021
 ms.topic: conceptual
-ms.openlocfilehash: f94023d47153dc64ca78e0386edd87a9821515be
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: 137b5c40097d7de82e156b4a0869d7257d3e9964
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98251725"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624757"
 ---
 # <a name="understanding-the-azure-resource-graph-query-language"></a>Grundlegendes zur Azure Resource Graph-Abfragesprache
 
@@ -27,7 +27,7 @@ In diesem Artikel werden die von Resource Graph unterstützten Sprachkomponenten
 Resource Graph umfasst mehrere Tabellen für die Daten, die in Bezug auf Azure Resource Manager-Ressourcentypen und deren Eigenschaften gespeichert werden. Einige Tabellen können mit den Operatoren `join` oder `union` verwendet werden, um Eigenschaften von verknüpften Ressourcentypen zu erhalten. Es folgt eine Liste der in Resource Graph verfügbaren Tabellen:
 
 |Resource Graph-Tabelle |Ist ein `join` für andere Tabellen möglich? |BESCHREIBUNG |
-|---|---|
+|---|---|---|
 |Ressourcen |Ja |Die Standardtabelle, wenn keine in der Abfrage definiert ist. Die meisten Resource Manager-Ressourcentypen und -Eigenschaften sind hier enthalten. |
 |ResourceContainers |Ja |Umfasst die Ressourcentypen und Daten des Abonnements (in der Vorschauphase – `Microsoft.Resources/subscriptions`) und der Ressourcengruppe (`Microsoft.Resources/subscriptions/resourcegroups`). |
 |AdvisorResources |Ja (Vorschau) |Umfasst Ressourcen, die mit `Microsoft.Advisor`_in Zusammenhang stehen_. |
@@ -132,7 +132,7 @@ Es folgt eine Liste der von Resource Graph unterstützten tabellarischen KQL-Ope
 |[join](/azure/kusto/query/joinoperator) |[Schlüsseltresor mit Abonnementname](../samples/advanced.md#join) |Unterstützte Joinvarianten: [innerunique](/azure/kusto/query/joinoperator#default-join-flavor), [inner](/azure/kusto/query/joinoperator#inner-join), [leftouter](/azure/kusto/query/joinoperator#left-outer-join). Begrenzt auf 3 `join` in einer einzelnen Abfrage, von denen einer ein tabellenübergreifender `join` sein kann. Wenn alle tabellenübergreifenden `join`-Vorgänge zwischen _Resource_ und _ResourceContainers_ stattfinden, sind drei tabellenübergreifende `join` zulässig. Benutzerdefinierte Joinstrategien wie Broadcastjoin sind nicht zulässig. Welche Tabellen `join` verwenden können, erfahren Sie unter [Resource Graph-Tabellen](#resource-graph-tables). |
 |[limit](/azure/kusto/query/limitoperator) |[Liste der öffentlichen IP-Adressen](../samples/starter.md#list-publicip) |Synonym für `take`. Funktioniert nicht für [Skip](./work-with-data.md#skipping-records). |
 |[mvexpand](/azure/kusto/query/mvexpandoperator) | | Legacy-Operator, verwenden Sie stattdessen `mv-expand`. _RowLimit_ maximal 400. Der Standardwert ist 128. |
-|[mv-expand](/azure/kusto/query/mvexpandoperator) |[Auflisten von Cosmos DB mit bestimmten Schreibstandorten](../samples/advanced.md#mvexpand-cosmosdb) |_RowLimit_ maximal 400. Der Standardwert ist 128. |
+|[mv-expand](/azure/kusto/query/mvexpandoperator) |[Auflisten von Cosmos DB mit bestimmten Schreibstandorten](../samples/advanced.md#mvexpand-cosmosdb) |_RowLimit_ maximal 400. Der Standardwert ist 128. Maximal drei `mv-expand`-Elemente in einer einzelnen Abfrage.|
 |[order](/azure/kusto/query/orderoperator) |[Auflisten von Ressourcen nach Namen sortiert](../samples/starter.md#list-resources) |Synonym für `sort` |
 |[project](/azure/kusto/query/projectoperator) |[Auflisten von Ressourcen nach Namen sortiert](../samples/starter.md#list-resources) | |
 |[project-away](/azure/kusto/query/projectawayoperator) |[Entfernen von Spalten aus den Ergebnissen](../samples/advanced.md#remove-column) | |
@@ -142,6 +142,10 @@ Es folgt eine Liste der von Resource Graph unterstützten tabellarischen KQL-Ope
 |[top](/azure/kusto/query/topoperator) |[Anzeigen der ersten fünf virtuellen Computer nach Name und BS-Typ](../samples/starter.md#show-sorted) | |
 |[union](/azure/kusto/query/unionoperator) |[Vereinen von Ergebnissen aus zwei Abfragen in einem einzigen Ergebnis](../samples/advanced.md#unionresults) |Einzelne Tabelle zulässig: _T_ `| union` \[`kind=` `inner`\|`outer`\] \[`withsource=`_ColumnName_\] _Table_. Maximal drei `union`-Verzweigungen in einer einzelnen Abfrage. Fuzzyauflösung von `union`-Verzweigungstabellen ist nicht zulässig. Kann innerhalb einer einzelnen Tabelle oder zwischen den Tabellen _Resources_ und _ResourceContainers_ verwendet werden. |
 |[where](/azure/kusto/query/whereoperator) |[Anzeigen von Ressourcen, die Speicher enthalten](../samples/starter.md#show-storage) | |
+
+Es gibt eine Standardbegrenzung auf 3 `join` und 3 `mv-expand`-Operatoren in einer einzelnen Resource Graph-SDK-Abfrage. Sie können eine Erhöhung dieser Grenzwerte für Ihren Mandanten über **Hilfe und Support** anfordern.
+
+Zur Unterstützung der Portalfunktion „Abfrage öffnen“ weist der Azure Resource Graph-Explorer einen höheren globalen Grenzwert als das Resource Graph-SDK auf.
 
 ## <a name="query-scope"></a>Abfragebereich
 

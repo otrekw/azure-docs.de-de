@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/17/2020
 ms.author: hahamil
 ms.custom: aaddev, devx-track-js
-ms.openlocfilehash: 2c03e6940d392e3e2c03bf6508de41a7a19aef3b
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: e6bbebafab45080a2076f33d66dd96296a761e4f
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98063772"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98754960"
 ---
 # <a name="migrate-a-javascript-single-page-app-from-implicit-grant-to-auth-code-flow"></a>Migrieren von JavaScript-Single-Page-Webanwendungen vom impliziten Genehmigungsflow zum Autorisierungscodeflow
 
@@ -90,7 +90,7 @@ Deaktivieren Sie den impliziten Genehmigungsflow **nicht**, bevor Sie alle Anwen
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zum Authentifizierungscodefluss, einschließlich der Unterschiede zwischen den impliziten und Autorisierungscodeflüssen finden Sie unter [Microsoft Identity Platform und der OAuth 2.0-Autorisierungscodefluss](v2-oauth2-auth-code-flow.md).
+Weitere Informationen zum Autorisierungscodeflow sowie zu den Unterschieden zwischen dem impliziten Genehmigungsflow und dem Autorisierungscodeflow finden Sie unter [Microsoft Identity Platform und der OAuth 2.0-Autorisierungscodeflow](v2-oauth2-auth-code-flow.md).
 
 Wenn Sie sich eingehender mit der Entwicklung von Single-Page-Webanwendungen auf der Microsoft Identity Platform beschäftigen möchten, kann Ihnen die mehrteilige Artikelreihe [Szenario: Single-Page-Webanwendung](scenario-spa-overview.md) den Einstieg erleichtern.
 

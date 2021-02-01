@@ -13,12 +13,12 @@ ms.date: 11/20/2020
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 9ec8a5fe5de751e40ebaa17629ff72c5f6b2adca
-ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
+ms.openlocfilehash: 46626c3ebe9d70600be1cc5f73c43677f67bcd09
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94979985"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98761370"
 ---
 # <a name="application-configuration-options"></a>Anwendungskonfigurationsoptionen
 
@@ -147,8 +147,20 @@ Für Daemon-Apps müssen Sie keinen Umleitungs-URI angeben.
 Diese Option gibt den geheimen Clientschlüssel für die vertrauliche Client-App an. Dieser geheime Schlüssel (das App-Kennwort) wird vom Anwendungsregistrierungsportal bereitgestellt oder während der App-Registrierung über PowerShell Azure AD, PowerShell AzureRM oder die Azure CLI an Azure AD übermittelt.
 
 ## <a name="logging"></a>Protokollierung
+Zum Debuggen und für die Problembehandlung von Authentifizierungsfehlern stellt MSAL eine integrierte Unterstützung für die Protokollierung bereit. Die Protokollierung in den einzelnen Bibliotheken wird in den folgenden Artikeln behandelt:
 
-Die weiteren Konfigurationsoptionen aktivieren die Protokollierung und Problembehandlung. Informationen zur Verwendung finden Sie im Artikel [Protokollierung](msal-logging.md).
+:::row:::
+    :::column:::
+        - [Protokollierung in MSAL.NET](msal-logging-dotnet.md)
+        - [Protokollierung in MSAL für Android](msal-logging-android.md)
+        - [Protokollierung in MSAL.js](msal-logging-js.md)
+    :::column-end:::
+    :::column:::
+        - [Protokollierung in MSAL für iOS/macOS](msal-logging-ios.md)
+        - [Protokollierung in MSAL für Java](msal-logging-java.md)
+        - [Protokollierung in MSAL für Python](msal-logging-python.md)
+    :::column-end:::
+:::row-end:::
 
 ## <a name="next-steps"></a>Nächste Schritte
 

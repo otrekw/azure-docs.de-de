@@ -1,5 +1,6 @@
 ---
-title: 'Konfigurieren einer Web-App, die Benutzer anmeldet: Microsoft Identity Platform | Azure'
+title: Konfigurieren einer Web-App, die Benutzer anmeldet | Azure
+titleSuffix: Microsoft identity platform
 description: Erfahren Sie, wie Sie eine Web-App erstellen, die Benutzer anmeldet (Codekonfiguration)
 services: active-directory
 author: jmprieur
@@ -11,12 +12,12 @@ ms.workload: identity
 ms.date: 07/14/2020
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: dad7b0563fd1ca0dbf60403bc6172e7616e278b2
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 45f3a066283a921f60909a4aa3cfdc76f3faad06
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94443652"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98753268"
 ---
 # <a name="web-app-that-signs-in-users-code-configuration"></a>Web-App für Benutzeranmeldungen: Codekonfiguration
 
@@ -202,7 +203,7 @@ SESSION_TYPE = "filesystem"  # So the token cache will be stored in a server-sid
 
 ## <a name="initialization-code"></a>Initialisierungscode
 
-Der Initialisierungscode ist je nach Plattform unterschiedlich. Für ASP.NET Core und ASP.NET wird die Anmeldung von Benutzern an die OpenID Connect-Middleware delegiert. Die ASP.NET-/ASP.NET Core-Vorlage generiert Webanwendungen für den Azure AD v1.0-Endpunkt (Azure Active Directory). Es müssen Konfigurationsänderungen vorgenommen werden, um diese an den Microsoft Identity Platform-Endpunkt (v2.0) anzupassen. Bei Java erfolgt dies von Spring in Zusammenarbeit mit der Anwendung.
+Der Initialisierungscode ist je nach Plattform unterschiedlich. Für ASP.NET Core und ASP.NET wird die Anmeldung von Benutzern an die OpenID Connect-Middleware delegiert. Die ASP.NET-/ASP.NET Core-Vorlage generiert Webanwendungen für den Azure AD v1.0-Endpunkt (Azure Active Directory). Es müssen Konfigurationsänderungen vorgenommen werden, um diese an Microsoft Identity Platform anzupassen. Bei Java erfolgt dies von Spring in Zusammenarbeit mit der Anwendung.
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/aspnetcore)
 
@@ -262,7 +263,7 @@ Im obigen Code gilt Folgendes:
 - Die `AddMicrosoftIdentityWebAppAuthentication`-Erweiterungsmethode ist im Paket **Microsoft.Identity.Web** definiert. Sie hat folgende Aufgaben:
   - Hinzufügen des Authentifizierungsdiensts
   - Konfigurieren von Optionen zum Lesen der Konfigurationsdatei (hier aus dem Abschnitt „AzureAD“)
-  - Konfigurieren der OpenID Connect-Optionen, damit die verwendete Autorität der Microsoft Identity Platform-Endpunkt ist
+  - Konfigurieren der OpenID Connect-Optionen, damit Microsoft Identity Platform die verwendete Autorität ist
   - Validieren des Ausstellers des Tokens
   - Sicherstellen der Zuordnung der dem Namen entsprechenden Ansprüche aus dem Anspruch `preferred_username` im ID-Token
 
@@ -291,7 +292,7 @@ Der Code für die Authentifizierung in ASP.NET-Web-Apps und -Web-APIs befindet s
   app.UseOpenIdConnectAuthentication(
     new OpenIdConnectAuthenticationOptions
     {
-     // `Authority` represents the identity platform endpoint - https://login.microsoftonline.com/common/v2.0.
+     // Authority` represents the identity platform endpoint - https://login.microsoftonline.com/common/v2.0.
      // `Scope` describes the initial permissions that your app will need.
      //  See https://azure.microsoft.com/documentation/articles/active-directory-v2-scopes/.
      ClientId = clientId,

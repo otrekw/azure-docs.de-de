@@ -1,5 +1,6 @@
 ---
-title: Erstellen einer Daemon-App, die Web-APIs aufruft – Microsoft Identity Platform | Azure
+title: Erstellen einer Daemon-App, die Web-APIs aufruft | Azure
+titleSuffix: Microsoft identity platform
 description: Erfahren Sie, wie Sie eine Daemon-App erstellen, die Web-APIs aufruft.
 services: active-directory
 author: jmprieur
@@ -11,12 +12,12 @@ ms.workload: identity
 ms.date: 01/31/2020
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: e63a948260863c93a92e4241044be5e0baf8afca
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 45af940382a261f1793583e471871b9cceed0a57
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94443261"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98753823"
 ---
 # <a name="scenario-daemon-application-that-calls-web-apis"></a>Szenario: Daemon-App zum Aufrufen von Web-APIs
 
@@ -45,7 +46,7 @@ Für Anwendungen, die ein Token für ihre eigenen Identitäten abrufen, gilt Fol
 
 > [!IMPORTANT]
 >
-> - Benutzer können nicht mit einer Daemonanwendung in Interaktion treten. Eine Daemonanwendung erfordert eine eigene Identität. Diese Art von Anwendung fordert auf der Grundlage ihrer Anwendungsidentität ein Zugriffstoken an und gibt dabei gegenüber Azure AD ihre Anwendungs-ID, ihre Anmeldeinformationen (Kennwort oder Zertifikat) sowie ihren Anwendungs-ID-URI an. Nach erfolgreicher Authentifizierung erhält der Daemon ein Zugriffstoken (und ein Aktualisierungstoken) vom Microsoft Identity Platform-Endpunkt. Dieses Token wird dann zum Aufrufen der Web-API verwendet (und nach Bedarf aktualisiert).
+> - Benutzer können nicht mit einer Daemonanwendung in Interaktion treten. Eine Daemonanwendung erfordert eine eigene Identität. Diese Art von Anwendung fordert auf der Grundlage ihrer Anwendungsidentität ein Zugriffstoken an und gibt dabei gegenüber Azure AD ihre Anwendungs-ID, ihre Anmeldeinformationen (Kennwort oder Zertifikat) sowie ihren Anwendungs-ID-URI an. Nach erfolgreicher Authentifizierung erhält der Daemon von Microsoft Identity Platform ein Zugriffstoken (und ein Aktualisierungstoken). Dieses Token wird dann zum Aufrufen der Web-API verwendet (und nach Bedarf aktualisiert).
 > - Da Benutzer nicht mit Daemonanwendungen interagieren können, ist keine inkrementelle Zustimmung möglich. Alle erforderlichen API-Berechtigungen müssen bei der Anwendungsregistrierung konfiguriert werden. Der Anwendungscode fordert nur statisch definierte Berechtigungen an. Dies bedeutet auch, dass Daemonanwendungen die inkrementelle Einwilligung nicht unterstützen.
 
 Für Entwickler umfasst die End-to-End-Umgebung für dieses Szenario die folgenden Aspekte:

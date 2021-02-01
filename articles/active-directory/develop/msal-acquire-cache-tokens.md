@@ -13,12 +13,12 @@ ms.date: 11/04/2020
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 34cdaa42f3a41ae04c73c570bb4fede01a786af2
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: 98ae81626db637f5b0bd6bfe9e294c32293d09e5
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97107837"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98755077"
 ---
 # <a name="acquire-and-cache-tokens-using-the-microsoft-authentication-library-msal"></a>Abrufen und Zwischenspeichern von Token mithilfe der Microsoft-Authentifizierungsbibliothek (Microsoft Authentication Library, MSAL)
 
@@ -30,7 +30,7 @@ Sie können den Inhalt des Tokencaches auch löschen, indem Sie die Konten aus d
 
 ## <a name="scopes-when-acquiring-tokens"></a>Geltungsbereiche beim Abrufen von Token
 
-[Geltungsbereiche](v2-permissions-and-consent.md) sind die Berechtigungen, die von einer Web-API verfügbar gemacht werden und auf die Clientanwendungen Zugriff anfordern können. Clientanwendungen fordern die Benutzereinwilligung für diese Geltungsbereiche an, wenn sie Authentifizierungsanforderungen zum Tokenabruf senden, um auf die Web-APIs zuzugreifen. Über MSAL können Sie Token für den Zugriff auf APIs für Azure AD für Entwickler (v1.0) und Microsoft Identity Platform (v2.0) abrufen. Das v2.0-Protokoll verwendet in den Anforderungen Geltungsbereiche anstelle von Ressourcen. Weitere Informationen finden Sie unter [Vergleich von v1.0 und v2.0](../azuread-dev/azure-ad-endpoint-comparison.md). Abhängig von der Web-API-Konfiguration der akzeptierten Tokenversion gibt der v2.0-Endpunkt das Zugriffstoken an MSAL zurück.
+[Geltungsbereiche](v2-permissions-and-consent.md) sind die Berechtigungen, die von einer Web-API verfügbar gemacht werden und auf die Clientanwendungen Zugriff anfordern können. Clientanwendungen fordern die Benutzereinwilligung für diese Geltungsbereiche an, wenn sie Authentifizierungsanforderungen zum Tokenabruf senden, um auf die Web-APIs zuzugreifen. Über MSAL können Sie Token für den Zugriff auf die APIs für Azure AD für Entwickler (v1.0) und die Microsoft Identity Platform-APIs abrufen. Das v2.0-Protokoll verwendet in den Anforderungen Geltungsbereiche anstelle von Ressourcen. Weitere Informationen finden Sie unter [Vergleich von v1.0 und v2.0](../azuread-dev/azure-ad-endpoint-comparison.md). Abhängig von der Web-API-Konfiguration der akzeptierten Tokenversion gibt der v2.0-Endpunkt das Zugriffstoken an MSAL zurück.
 
 Einige der Tokenabrufmethoden von MSAL erfordern den Parameter `scopes`. Bei dem Parameter `scopes` handelt es sich um eine Liste von Zeichenfolgen, die die gewünschten Berechtigungen und die angeforderten Ressourcen deklarieren. Bekannte Geltungsbereiche sind die [Microsoft Graph-Berechtigungen](/graph/permissions-reference).
 

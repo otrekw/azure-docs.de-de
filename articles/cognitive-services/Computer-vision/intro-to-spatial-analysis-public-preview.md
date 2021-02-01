@@ -10,16 +10,16 @@ ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 12/14/2020
-ms.openlocfilehash: 402ee6d5efdd489914cb7d283c7c46d4f7d175f6
-ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
+ms.openlocfilehash: f90e4e5e187977f0ee77a565ff9143902ea3a10d
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97968057"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98736834"
 ---
 # <a name="introduction-to-computer-vision-spatial-analysis"></a>Einführung in die räumliche Analyse für maschinelles Sehen
 
-Die räumliche Analyse für maschinelles Sehen ist ein neues Feature der Funktion für maschinelles Sehen von Azure Cognitive Services, mit dem Organisationen den ihnen zur Verfügung stehenden Platz in vollem Umfang nutzen können, indem sie Informationen zu den Wegen der Menschen und ihrem Aufenthalt in bestimmten Bereichen erhalten. Das Feature bietet Ihnen die Möglichkeit, Videos von Überwachungskameras zu erfassen, KI-Skills zu nutzen, um Erkenntnisse aus Videostreams zu gewinnen, und Ereignisse zu generieren, die von anderen Systemen verwendet werden können. Mithilfe von Videos von Kamerastreams können KI-Skills beispielsweise die Personen zählen, die einen bestimmten Bereich betreten, oder messen, ob die geltenden Abstandsregeln eingehalten werden.
+Die räumliche Analyse für maschinelles Sehen ist ein neues Feature der Funktion für maschinelles Sehen von Azure Cognitive Services, mit dem Organisationen den ihnen zur Verfügung stehenden Platz in vollem Umfang nutzen können, indem sie Informationen zu den Wegen der Menschen und ihrem Aufenthalt in bestimmten Bereichen erhalten. Das Feature bietet Ihnen die Möglichkeit, Videos von Überwachungskameras zu erfassen, KI-Vorgänge durchzuführen, um Erkenntnisse aus Videostreams zu gewinnen, und Ereignisse zu generieren, die von anderen Systemen verwendet werden können. Mithilfe von Videos von Kamerastreams können KI-Vorgänge beispielsweise die Personen zählen, die einen bestimmten Bereich betreten, oder messen, ob eine Mund-Nasen-Bedeckung getragen wird und die geltenden Abstandsregeln eingehalten werden.
 
 ## <a name="the-basics-of-spatial-analysis"></a>Grundlagen der räumlichen Analyse
 
@@ -30,9 +30,10 @@ Heute basieren die grundlegenden Vorgänge der räumlichen Analyse auf einer Pip
 | Begriff | Definition |
 |------|------------|
 | Personenerkennung | Diese Komponente beantwortet die Frage, wo sich die Personen auf einem Bild befinden. Sie findet Personen in einem Bild und übergibt einen Begrenzungsrahmen, der die Aufenthaltsorte der einzelnen Personen markiert, an die Komponente zur Personenverfolgung. |
-| Personenverfolgung | Diese Komponente verbindet die erkannten Personen im Laufe der Zeit, während sich diese vor der Kamera bewegen. Dafür verwendet sie temporale Logik zu den üblichen Wegen der Menschen und grundlegende Informationen zu ihrem äußeren Erscheinungsbild. Diese Komponente kann die Personen nicht über mehrere Kameras hinweg nachverfolgen oder wiedererkennen, wenn sie für länger als etwa eine Minute verschwunden sind. Die Personenverfolgungskomponente verwendet keine biometrischen Merkmale wie die Gesichtserkennung oder die Nachverfolgung der Gangart. |
-| Relevanter Bereich | Hierbei handelt es sich um eine Zone oder Linie, die im Eingabevideo als Teil der Konfiguration definiert ist. Wenn eine Person mit dem relevanten Bereich des Videos interagiert, generiert das System ein Ereignis. Beispielsweise ist für den Skill „PersonCrossingLine“ eine Linie im Video definiert. Wenn eine Person diese Linie überquert, wird ein Ereignis generiert. |
-| Ereignis | Ereignisse stellen die primäre Ausgabe der räumlichen Analyse dar. Jeder Skill gibt entweder in regelmäßigen Abständen (z. B. einmal pro Minute) oder wenn ein Trigger ausgelöst wird ein bestimmtes Ereignis aus. Das Ereignis umfasst Informationen darüber, was im Eingabevideo passiert ist, enthält aber keine Bilder oder Videos. Beispielsweise kann der PeopleCount-Skill jedes Mal, wenn sich die Anzahl der Personen ändert (Trigger) oder einmal pro Minute (regelmäßig) ein Ereignis ausgeben, das die aktuelle Anzahl enthält. |
+| Personenverfolgung | Diese Komponente verbindet die erkannten Personen im Laufe der Zeit, während sich diese vor der Kamera bewegen. Dafür verwendet sie temporale Logik zu den üblichen Wegen der Menschen und grundlegende Informationen zu ihrem äußeren Erscheinungsbild. Personen werden nicht über mehrere Kameras hinweg beobachtet. Wenn eine Person aus dem Sichtfeld einer Kamera für etwas länger als eine Minute hinaustritt und dann wieder in das Sichtfeld läuft, wird diese vom System als neue Person wahrgenommen. Durch das Tracking von Personen können keine Personen kameraübergreifend eindeutig identifiziert werden. Die Gesichtserkennung oder die Nachverfolgung der Gangart werden nicht genutzt. |
+| Gesichtsmaskenerkennung | Diese Komponente erkennt die Position des Gesichts einer Person im Kamerasichtfeld und identifiziert das Vorhandensein einer Gesichtsmaske. Zu diesem Zweck scannt der KI-Vorgang Bilder aus einem Video. Immer dann, wenn ein Gesicht erkannt wird, stellt der Dienst einen Begrenzungsrahmen um das Gesicht bereit. Mithilfe der Objekterkennungsfunktionen kann nun im Begrenzungsrahmen identifiziert werden, ob die Person eine Gesichtsmaske trägt. Die Gesichtsmaskenerkennung kann nicht zwischen Gesichtern unterscheiden oder Gesichtsmerkmale vorhersagen oder erkennen sowie eine Gesichtserkennung durchführen. |
+| Relevanter Bereich | Hierbei handelt es sich um eine Zone oder Linie, die im Eingabevideo als Teil der Konfiguration definiert ist. Wenn eine Person mit dem relevanten Bereich des Videos interagiert, generiert das System ein Ereignis. Beispielsweise ist für den Vorgang „PersonCrossingLine“ eine Linie im Video definiert. Wenn eine Person diese Linie überquert, wird ein Ereignis generiert. |
+| Ereignis | Ereignisse stellen die primäre Ausgabe der räumlichen Analyse dar. Jeder Vorgang gibt entweder in regelmäßigen Abständen (z. B. einmal pro Minute) oder wenn ein Trigger ausgelöst wird ein bestimmtes Ereignis aus. Das Ereignis umfasst Informationen darüber, was im Eingabevideo passiert ist, enthält aber keine Bilder oder Videos. Beispielsweise kann der PeopleCount-Vorgang jedes Mal, wenn sich die Anzahl der Personen ändert (Trigger) oder einmal pro Minute (regelmäßig) ein Ereignis ausgeben, das die aktuelle Anzahl enthält. |
 
 ## <a name="example-use-cases-for-spatial-analysis"></a>Beispielanwendungsfälle für räumliche Analysen
 
@@ -43,6 +44,8 @@ Im Folgenden werden einige Beispielanwendungsfälle beschrieben, die wir beim En
 **Kundenanalyse:** Ein Supermarkt verwendet Kameras, die auf die ausgestellten Produkte gerichtet sind, um herauszufinden, welche Auswirkungen neue Produkte auf den Kundenverkehr haben. Mithilfe des Systems kann die Filialleitung ermitteln, welche neuen Produkte die Kunden am stärksten ansprechen.
 
 **Warteschlangenverwaltung:** Kameras, die auf die Warteschlangen an den Kassen ausgerichtet sind, benachrichtigen die Filialleitung, wenn die Wartezeiten zu lang sind. Dann können sie weitere Kassen öffnen. Verlaufsdaten zum Verlassen von Warteschlangen bieten Einblicke in das Verbraucherverhalten.
+
+**Gesichtsmaskenkonformität:** Einzelhandelsfilialen können Kameras verwenden, die Richtung Ladenfront ausgerichtet sind, um zu überprüfen, ob Kunden, die den Laden betreten, eine Gesichtsmaske tragen. So kann die Sicherheitskonformität eingehalten und Aggregatstatistiken zum Gewinnen von Erkenntnissen zu Trends bei der Verwendung von Gesichtsmasken analysiert werden. 
 
 **Gebäudenutzung und -analyse:** In einem Bürogebäude werden Kameras verwendet, die auf die Eingänge von wichtigen Bereichen gerichtet sind, um die Anzahl der eintretenden Personen sowie deren Nutzung des Arbeitsbereichs zu messen. Mithilfe der dadurch gewonnen Erkenntnisse kann das Gebäudemanagement seinen Service und die Anordnung der Arbeitsplätze den Bedürfnissen der Gebäudenutzer entsprechend anpassen.
 
@@ -73,4 +76,4 @@ Der Zugriff auf die öffentliche Vorschauversion der räumlichen Analyse unterli
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Merkmale und Einschränkungen der räumlichen Analyse](https://docs.microsoft.com/legal/cognitive-services/computer-vision/accuracy-and-limitations?context=%2fazure%2fcognitive-services%2fComputer-vision%2fcontext%2fcontext)
+> [Merkmale und Einschränkungen der räumlichen Analyse](/legal/cognitive-services/computer-vision/accuracy-and-limitations?context=%2fazure%2fcognitive-services%2fComputer-vision%2fcontext%2fcontext)

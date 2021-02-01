@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 06/10/2020
 ms.author: swmachan
-ms.openlocfilehash: 6163f059581c2699d0b2780545c3ad5ec80f2907
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: a359c4f0de6dab70b334da7e7d29ad4b273385ab
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97882414"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98789278"
 ---
 # <a name="language-and-region-support-for-text-and-speech-translation"></a>Sprach- und Regionsunterstützung für Text- und Sprachübersetzung
 
@@ -91,7 +91,7 @@ Der Translator unterstützt die folgenden Sprachen für die Übersetzung von Tex
 | Paschtu | `ps` |
 | Persisch | `fa` |
 | Polnisch | `pl` |
-| Portugiesisch (Brasilien) | `pt-br` |
+| Portugiesisch (Brasilien) | `pt` |
 | Portugiesisch (Portugal) | `pt-pt` |
 | Pandschabi | `pa` |
 | Queretaro-Otomi | `otq` |
@@ -194,25 +194,42 @@ Die „Transliterate“-Methode unterstützt die folgenden Sprachen. In der Spal
 | Sprache    | Sprachcode | Skript | Von/In | Skript|
 |:----------- |:-------------:|:-------------:|:-------------:|:-------------:|
 | Arabisch | `ar` | Arabisch `Arab` | <--> | Latein `Latn` |
+| Assamesisch | `as` | Bangla `Beng` | <--> | Latein `Latn` |
 | Bengalisch  | `bn` | Bangla `Beng` | <--> | Latein `Latn` |
+|Belarussisch| `be` | Kyrillisch `Cyrl`  | <--> | Latein `Latn` |
+|Bulgarisch| `bg` | Kyrillisch `Cyrl`  | <--> | Latein `Latn` |
 | Chinesisch (vereinfacht) | `zh-Hans` | Chinesisch (vereinfacht) `Hans`| <--> | Latein `Latn` |
 | Chinesisch (vereinfacht) | `zh-Hans` | Chinesisch (vereinfacht) `Hans`| <--> | Chinesisch (traditionell) `Hant`|
 | Chinesisch (traditionell) | `zh-Hant` | Chinesisch (traditionell) `Hant`| <--> | Latein `Latn` |
 | Chinesisch (traditionell) | `zh-Hant` | Chinesisch (traditionell) `Hant`| <--> | Chinesisch (vereinfacht) `Hans` |
+|Griechisch| `el` | Griechisch `Grek`  | <--> | Latein `Latn` |
 | Gujarati | `gu`  | Gujarati `Gujr` | <--> | Latein `Latn` |
 | Hebräisch | `he` | Hebräisch `Hebr` | <--> | Latein `Latn` |
 | Hindi | `hi` | Devanagari `Deva` | <--> | Latein `Latn` |
 | Japanisch | `ja` | Japanisch `Jpan` | <--> | Latein `Latn` |
 | Kannada | `kn` | Kannada `Knda` | <--> | Latein `Latn` |
+|Kasachisch| `kk` | Kyrillisch `Cyrl`  | <--> | Latein `Latn` |
+|Koreanisch| `ko` | Koreanisch `Kore`  | <--> | Latein `Latn` |
+|Kirgisisch| `ky` | Kyrillisch `Cyrl`  | <--> | Latein `Latn` |
+|Mazedonisch| `mk` | Kyrillisch `Cyrl`  | <--> | Latein `Latn` |
 | Malayalam | `ml` | Malayalam `Mlym` | <--> | Latein `Latn` |
 | Marathi | `mr` | Devanagari `Deva` | <--> | Latein `Latn` |
+|Mongolisch| `mn` | Kyrillisch `Cyrl`  | <--> | Latein `Latn` |
 | Odia | `or` | Oriya `Orya` | <--> | Latein `Latn` |
+|Persisch| `fa` | Arabisch `Arab`  | <--> | Latein `Latn` |
 | Pandschabi | `pa` | Gurmukhi `Guru`  | <--> | Latein `Latn`  |
+|Russisch| `ru` | Kyrillisch `Cyrl`  | <--> | Latein `Latn` |
 | Serbisch (Kyrillisch) | `sr-Cyrl` | Kyrillisch `Cyrl`  | --> | Latein `Latn` |
 | Serbisch (Lateinisch) | `sr-Latn` | Latein `Latn` | --> | Kyrillisch `Cyrl`|
+|Sindhi| `sd` | Arabisch `Arab`  | <--> | Latein `Latn` |
+|Singhalesisch| `si` | Singhalesisch `Sinh`  | <--> | Latein `Latn` |
+|Tadschikisch| `tg` | Kyrillisch `Cyrl`  | <--> | Latein `Latn` |
 | Tamilisch | `ta` | Tamilisch `Taml` | <--> | Latein `Latn` |
+|Tatarisch| `tt` | Kyrillisch `Cyrl`  | <--> | Latein `Latn` |
 | Telugu | `te` | Telugu `Telu` | <--> | Latein `Latn` |
 | Thailändisch | `th` | Thailändisch `Thai` | --> | Latein `Latn` |
+|Ukrainisch| `uk` | Kyrillisch `Cyrl`  | <--> | Latein `Latn` |
+|Urdu| `ur` | Arabisch `Arab`  | <--> | Latein `Latn` |
 
 ### <a name="dictionary"></a>Wörterbuch
 
@@ -326,7 +343,7 @@ Die folgenden Sprachen sind für die Anpassung an das Englische oder aus dem Eng
 | Norwegisch      | `nb`          |
 | Persisch      | `fa`          |
 | Polnisch      | `pl`          |
-| Portugiesisch (Brasilien) | `pt-br` |
+| Portugiesisch (Brasilien) | `pt` |
 | Pandschabi|`pa`|
 | Rumänisch      | `ro`          |
 | Russisch      | `ru`          |

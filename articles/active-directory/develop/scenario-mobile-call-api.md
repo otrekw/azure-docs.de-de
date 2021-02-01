@@ -13,12 +13,12 @@ ms.date: 05/18/2020
 ms.author: jmprieur
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: 018b5396563ac3a4b92b371d396c38afa3d2962f
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: 601eefa7957972daa2d538e6ba0d9b7a5311c79d
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98064265"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98756470"
 ---
 # <a name="call-a-web-api-from-a-mobile-app"></a>Aufrufen einer Web-API aus einer mobilen App
 
@@ -119,7 +119,7 @@ task.resume()
 
 Wenn Sie die gleiche API mehrmals oder mehrere APIs aufrufen müssen, berücksichtigen Sie beim Erstellen Ihrer App Folgendes:
 
-- **Inkrementelle Zustimmung**: Microsoft Identity Platform ermöglicht es Apps, Benutzereinwilligungen bei Bedarf einzuholen, wenn Berechtigungen erforderlich sind, statt alle direkt am Anfang einzuholen. Jedes Mal, wenn Ihre App für den Aufruf einer API bereit ist, sollte sie nur die Bereiche anfordern, die sie benötigt.
+- **Inkrementelle Zustimmung**: Mit Microsoft Identity Platform können Apps bei Bedarf (wenn Berechtigungen erforderlich sind) Benutzerzustimmungen einholen. Daher brauchen nicht alle Zustimmungen direkt am Anfang zu erfolgen. Jedes Mal, wenn Ihre App für den Aufruf einer API bereit ist, sollte sie nur die Bereiche anfordern, die sie benötigt.
 
 - **Bedingter Zugriff**: Wenn Sie mehrere API-Anforderungen ausgeben, müssen Sie in bestimmten Szenarien zusätzlichen Anforderungen für bedingten Zugriff genügen. Auf diese Weise können sich die Anforderungen erhöhen, wenn für die erste Anforderung keine bedingten Zugriffsrichtlinien gelten und Ihre App im Hintergrund versucht, auf eine neue API-zuzugreifen, die bedingten Zugriff erfordert. Stellen Sie zur Lösung dieses Problems sicher, dass Sie Fehler bei automatischen Anforderungen erkennen, und bereiten Sie sich auf eine interaktive Anforderung vor.  Weitere Informationen finden Sie unter [Anleitung für bedingten Zugriff](../azuread-dev/conditional-access-dev-guide.md).
 
