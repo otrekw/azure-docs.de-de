@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/08/2018
 ms.author: genli
-ms.openlocfilehash: 8c3e76f1a7edffefc8773dfa548773ec0932fae6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a937528e3bfd8bea16912d614133988763748bab
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86129852"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632958"
 ---
 # <a name="windows-shows-critical-service-failed-on-blue-screen-when-booting-an-azure-vm"></a>Unter Windows wird beim Starten eines virtuellen Azure-Computers der Bluescreenfehler „CRITICAL SERVICE FAILED“ (FEHLER BEIM KRITISCHEN DIENST) angezeigt.
 Dieser Artikel beschreibt den Fehler „CRITICAL SERVICE FAILED“ (FEHLER BEIM KRITISCHEN DIENST), der unter Umständen beim Starten eines virtuellen Windows-Computers in Microsoft Azure angezeigt wird. Er enthält Schritte zum Beheben des Problems. 
@@ -38,6 +38,9 @@ Es gibt verschiedene Gründe für Abbruchfehler. Folgende Ursachen sind am häuf
 - Zugriff auf einen unzulässigen Sektor des Arbeitsspeichers durch eine Anwendung
 
 ## <a name="solution"></a>Lösung 
+
+> [!TIP]
+> Wenn Sie über eine aktuelle Sicherung der VM verfügen, können Sie versuchen, die [VM aus der Sicherung wiederherzustellen](../../backup/backup-azure-arm-restore-vms.md), um das Startproblem zu beheben.
 
 Um das Problem zu beheben, [wenden Sie sich an den Support, und senden Sie ihm eine Dumpdatei](./troubleshoot-common-blue-screen-error.md#collect-memory-dump-file), mit der das Problem schneller diagnostiziert werden kann. Probieren Sie alternativ die folgende Lösung zur Selbsthilfe aus:
 
@@ -142,7 +145,7 @@ Führen Sie die folgenden Schritte aus, um die Absturzabbilder selbst zu analysi
 9. [Trennen Sie den Betriebssystemdatenträger, und fügen Sie ihn dann erneut an den betroffenen virtuellen Computer an.](troubleshoot-recovery-disks-portal-windows.md)
 10. Starten Sie den virtuellen Computer, um festzustellen, ob eine Absturzabbildanalyse angezeigt wird. Suchen Sie die Datei, die nicht geladen wurde. Sie müssen diese Datei durch eine Datei vom funktionierenden virtuellen Computer ersetzen. 
 
-    Nachfolgend sehen Sie ein Beispiel für die Absturzabbildanalyse. Sie sehen, dass der**FEHLER** in „filecrypt.sys“ vorliegt: "FAILURE_BUCKET_ID: 0x5A_c0000428_IMAGE_filecrypt.sys".
+    Nachfolgend sehen Sie ein Beispiel für die Absturzabbildanalyse. Sie sehen, dass der **FEHLER** in „filecrypt.sys“ aufgetreten ist: FAILURE_BUCKET_ID: 0x5A_c0000428_IMAGE_filecrypt.sys.
 
     ```
     kd> !analyze -v 

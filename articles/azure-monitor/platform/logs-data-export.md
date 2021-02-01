@@ -7,18 +7,18 @@ ms.custom: references_regions, devx-track-azurecli
 author: bwren
 ms.author: bwren
 ms.date: 10/14/2020
-ms.openlocfilehash: 8e310ea487818f6d82869fe1973c8e9ed0b04195
-ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
+ms.openlocfilehash: bb4987550e4962ba044e0a6aafbfd00145319e94
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/28/2020
-ms.locfileid: "97797110"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98804942"
 ---
 # <a name="log-analytics-workspace-data-export-in-azure-monitor-preview"></a>Datenexport im Log Analytics-Arbeitsbereich in Azure Monitor (Vorschau)
 Der Datenexport im Log Analytics-Arbeitsbereich in Azure Monitor ermöglicht es Ihnen, Daten aus ausgewählten Tabellen in Ihrem Log Analytics-Arbeitsbereich bei der Sammlung fortlaufend in ein Azure Storage-Konto oder in Azure Event Hubs zu exportieren. In diesem Artikel werden dieses Feature und die Schritte zum Konfigurieren des Datenexports in Ihren Arbeitsbereichen ausführlich beschrieben.
 
 ## <a name="overview"></a>Übersicht
-Nachdem der Datenexport für den Log Analytics-Arbeitsbereich konfiguriert wurde, werden alle neuen Daten, die an die ausgewählten Tabellen im Arbeitsbereich gesendet werden, automatisch stündlich in Ihr Speicherkonto oder nahezu in Echtzeit in Ihren Event Hub exportiert.
+Nachdem der Datenexport für den Log Analytics-Arbeitsbereich konfiguriert wurde, werden alle neuen Daten, die an die ausgewählten Tabellen im Arbeitsbereich gesendet werden, automatisch in Ihr Speicherkonto oder nahezu in Echtzeit in Ihren Event Hub exportiert.
 
 ![Übersicht über den Datenexport](media/logs-data-export/data-export-overview.png)
 
@@ -33,15 +33,18 @@ Mit dem Datenexport im Log Analytics-Arbeitsbereich werden kontinuierlich Daten 
 - Einmaliger Export auf lokalen Computer mit einem PowerShell-Skript. Informationen hierzu finden Sie unter [Invoke-AzOperationalInsightsQueryExport](https://www.powershellgallery.com/packages/Invoke-AzOperationalInsightsQueryExport).
 
 
-## <a name="current-limitations"></a>Aktuelle Einschränkungen
+## <a name="limitations"></a>Einschränkungen
 
-- Die Konfiguration kann zurzeit nur mithilfe von CLI oder über REST-Anforderungen vorgenommen werden. Das Azure-Portal und PowerShell können nicht verwendet werden.
+- Die Konfiguration kann zurzeit mithilfe der Befehlszeilenschnittstelle oder über REST-Anforderungen vorgenommen werden. Azure-Portal oder PowerShell werden noch nicht unterstützt.
 - Die Option ```--export-all-tables``` in CLI und REST wird nicht unterstützt und entfernt. Sie müssen die Liste der Tabellen in den Exportregeln explizit angeben.
-- Unterstützte Tabellen sind zurzeit auf die im Abschnitt [Unterstützte Tabellen](#supported-tables) weiter unten beschränkt. Wenn die Datenexportregel eine nicht unterstützte Tabelle umfasst, wird der Vorgang erfolgreich ausgeführt, es werden jedoch für diese Tabelle keine Daten exportiert. Wenn die Datenexportregel eine nicht vorhandene Tabelle enthält, schlägt sie mit dem Fehler ```Table <tableName> does not exist in the workspace.``` fehl.
+- Unterstützte Tabellen sind zurzeit auf die im Abschnitt [Unterstützte Tabellen](#supported-tables) weiter unten beschränkt. 
+- Wenn die Datenexportregel eine nicht unterstützte Tabelle umfasst, wird der Vorgang erfolgreich ausgeführt, es werden jedoch für diese Tabelle keine Daten exportiert bis die Tabelle unterstützt wird. 
+- Wenn die Datenexportregel eine nicht vorhandene Tabelle enthält, verursacht sie den Fehler ```Table <tableName> does not exist in the workspace```.
 - Ihr Log Analytics-Arbeitsbereich kann sich in einer beliebigen Region mit Ausnahme der folgenden befinden:
   - Schweiz, Norden
   - Schweiz, Westen
   - Azure Government-Regionen
+- Sie können zwei Exportregeln in einem Arbeitsbereich erstellen: eine Regel für den Event Hub und eine Regel für das Speicherkonto.
 - Das Zielspeicherkonto oder der Ziel-Event Hub muss sich in derselben Region wie der Log Analytics-Arbeitsbereich befinden.
 - Die Namen der zu exportierenden Tabellen dürfen bei einem Speicherkonto nicht länger als 60 Zeichen und bei einem Event Hub nicht länger als 47 Zeichen sein. Tabellen mit längeren Namen werden nicht exportiert.
 
@@ -64,7 +67,7 @@ Für die Datenexportfunktion fallen zurzeit keine zusätzlichen Gebühren an. Di
 ## <a name="export-destinations"></a>Exportziele
 
 ### <a name="storage-account"></a>Speicherkonto
-Daten werden stündlich an Speicherkonten gesendet. Die Datenexportkonfiguration erstellt für jede Tabelle im Speicherkonto einen Container mit dem Namen *am-* , gefolgt vom Namen der Tabelle. Beispielsweise würde die Tabelle *SecurityEvent* an einen Container mit dem Namen *am-SecurityEvent* gesendet.
+Daten werden, sobald sie Azure Monitor erreichen, nahezu in Echtzeit an Speicherkonten gesendet. Die Datenexportkonfiguration erstellt für jede Tabelle im Speicherkonto einen Container mit dem Namen *am-* , gefolgt vom Namen der Tabelle. Beispielsweise würde die Tabelle *SecurityEvent* an einen Container mit dem Namen *am-SecurityEvent* gesendet.
 
 Der Blobpfad im Speicherkonto lautet *WorkspaceResourceId=/subscriptions/subscription-id/resourcegroups/\<resource-group\>/providers/microsoft.operationalinsights/workspaces/\<workspace\>/y=\<four-digit numeric year\>/m=\<two-digit numeric month\>/d=\<two-digit numeric day\>/h=\<two-digit 24-hour clock hour\>/m=00/PT1H.json*. Da Anfügeblobs auf 50.000 Schreibvorgänge im Speicher beschränkt sind, kann sich die Anzahl der exportierten Blobs erhöhen, wenn die Anzahl der Anfügevorgänge hoch ist. Das Benennungsmuster für Blobs ist in diesem Fall „PT1H_#.json“, wobei # die inkrementelle Blobanzahl ist.
 
@@ -115,7 +118,7 @@ Wenn Sie Ihr Speicherkonto so konfiguriert haben, dass der Zugriff von ausgewäh
 
 
 ### <a name="create-or-update-data-export-rule"></a>Erstellen oder Aktualisieren der Datenexportregel
-Eine Datenexportregel definiert Daten, die für eine Gruppe von Tabellen an ein bestimmtes Ziel exportiert werden sollen. Sie können für jedes Ziel eine Regel erstellen.
+Eine Datenexportregel definiert Daten, die für eine Gruppe von Tabellen an ein bestimmtes Ziel exportiert werden sollen. Sie können für jedes Ziel eine einzelne Regel erstellen.
 
 
 # <a name="azure-portal"></a>[Azure portal](#tab/portal)

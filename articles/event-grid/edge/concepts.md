@@ -7,12 +7,12 @@ ms.author: vkukke
 ms.reviewer: spelluru
 ms.date: 07/08/2020
 ms.topic: article
-ms.openlocfilehash: b3babfe93012fae15e79362ba34f3f48856bc833
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8314447e7d5d282eb428ec9316c4eef6844a7423
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86171736"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98682378"
 ---
 # <a name="event-grid-concepts"></a>Event Grid-Konzepte
 
@@ -48,7 +48,7 @@ Informationen zum Verwalten von Abonnements in Event Grid finden Sie unter [REST
 
 ## <a name="event-handlers"></a>Ereignishandler
 
-In Bezug auf Event Grid ist ein Ereignishandler das Ziel, an den das Ereignis gesendet wird. Der Handler ergreift zur Verarbeitung des Ereignisses weitere Maßnahmen. Event Grid unterstützt verschiedene Handlertypen. Sie können einen unterstützten Azure-Dienst oder einen eigenen Webhook als Handler verwenden. Je nach Handlertyp übermittelt Event Grid die Ereignisse auf unterschiedliche Art und Weise. Wenn der Zieleventhandler ein HTTP-Webhook ist, wird das Ereignis wiederholt, wenn der Handler einen Statuscode von `200 – OK` zurückgibt. Der Edge Hub interpretiert das Ereignis, wenn es ohne eine Ausnahme übermittelt wird, als erfolgreich.
+In Bezug auf Event Grid ist ein Ereignishandler das Ziel, an den das Ereignis gesendet wird. Der Handler ergreift zur Verarbeitung des Ereignisses weitere Maßnahmen. Event Grid unterstützt verschiedene Handlertypen. Sie können einen unterstützten Azure-Dienst oder einen eigenen Webhook als Handler verwenden. Je nach Handlertyp übermittelt Event Grid die Ereignisse auf unterschiedliche Art und Weise. Wenn der Zieleventhandler ein HTTP-Webhook ist, wird das Ereignis wiederholt, bis der Handler den Statuscode `200 – OK` zurückgibt. Der Edge Hub interpretiert das Ereignis, wenn es ohne eine Ausnahme übermittelt wird, als erfolgreich.
 
 ## <a name="security"></a>Sicherheit
 

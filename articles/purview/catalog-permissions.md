@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: conceptual
 ms.date: 10/20/2020
-ms.openlocfilehash: e87c9efc910d08307d40d42e58f8272a01902a41
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: b351be1e7212dc9923f701599dd951a73254afe0
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96550460"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98610368"
 ---
 # <a name="role-based-access-control-in-azure-purviews-data-plane"></a>Rollenbasierte Zugriffssteuerung auf der Datenebene von Azure Purview
 
@@ -77,8 +77,8 @@ Benutzer, die Zugriff auf das [Azure-Portal](https://portal.azure.com) des Unter
 |Ich muss einen Dienstprinzipal oder eine andere programmgesteuerte Identität aktivieren, um Überprüfungen in Azure Purview einzurichten und zu überwachen, ohne dass die programmgesteuerte Identität Zugriff auf die Informationen des Katalogs hat |Rolle „Datenquellenadministrator für Purview“|
 |Ich muss Benutzern in Azure Purview Rollen zuweisen | „Besitzer“ oder „Benutzerzugriffsadministrator“ |
 
-Fahren Sie mit dem nächsten Artikel fort, um zu erfahren, wie Sie einen Sicherheitsprinzipal einer Rolle hinzufügen.
+Weitere Informationen zum Hinzufügen eines Sicherheitsprinzipals zu einer Rolle finden Sie im [Schnellstart: Erstellen eines Azure Purview-Kontos](create-catalog-portal.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Schnellstart: Erstellen eines Azure Purview-Kontos im Azure-Portal](create-catalog-portal.md)
+* [Datenerkenntnisse](concept-insights.md)

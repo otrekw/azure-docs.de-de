@@ -1,32 +1,35 @@
 ---
-title: Behandlung von Lebenszyklusereignissen für Clouddienste | Microsoft-Dokumentation
+title: Behandeln von Lebenszyklusereignissen für Cloud Services (klassisch) | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie die Lebenszyklusmethoden einer Clouddienstrolle in .NET einschließlich RoleEntryPoint verwenden, die Methoden bereitstellt, um auf Lebenszyklusereignisse zu reagieren.
-services: cloud-services
-documentationcenter: .net
-author: tgore03
-ms.service: cloud-services
-ms.custom: devx-track-csharp
 ms.topic: article
-ms.date: 07/18/2017
+ms.service: cloud-services
+ms.date: 10/14/2020
 ms.author: tagore
-ms.openlocfilehash: d64414abfbc62e52b172a2c42796ec8d89d1719f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: b5aa4bd061647f63ebcc70109f0ba21b39e814cc
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88930059"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98741331"
 ---
 # <a name="customize-the-lifecycle-of-a-web-or-worker-role-in-net"></a>Anpassen des Lebenszyklus einer Web- oder Workerrolle in .NET
+
+> [!IMPORTANT]
+> [Azure Cloud Services (erweiterter Support)](../cloud-services-extended-support/overview.md) ist ein neues auf Azure Resource Manager basierendes Bereitstellungsmodell für Azure Cloud Services. Im Zuge dieser Änderung wurden Azure Cloud Services-Instanzen, die unter dem Azure Service Manager-basierten Bereitstellungsmodell ausgeführt werden, in „Cloud Services (klassisch)“ umbenannt. Für alle neuen Bereitstellungen wird [Azure Cloud Services (erweiterter Support)](../cloud-services-extended-support/overview.md) verwendet.
+
 Wenn Sie eine Workerrolle erstellen, erweitern Sie die [RoleEntryPoint](/previous-versions/azure/reference/ee758619(v=azure.100)) -Klasse, die Methoden zum Außerkraftsetzen bereitstellt, sodass Sie auf Lebenszyklusereignisse reagieren können. Für Webrollen ist diese Klasse optional, daher wird sie in erster Linie für die Reaktion auf Lebenszyklusereignisse verwendet.
 
 ## <a name="extend-the-roleentrypoint-class"></a>Erweitern der RoleEntryPoint-Klasse
 Die [RoleEntryPoint](/previous-versions/azure/reference/ee758619(v=azure.100))-Klasse enthält Methoden, die von Azure beim **Starten**, **Ausführen** oder **Beenden** einer Web- oder Workerrolle aufgerufen werden. Sie können diese Methoden optional außer Kraft setzen, um die Rolleninitialisierung, Herunterfahrsequenzen für Rollen oder den Ausführungsthread der Rolle zu verwalten. 
 
-Berücksichtigen Sie beim Erweitern von **RoleEntryPoint**das folgende Verhalten der Methoden:
+Berücksichtigen Sie beim Erweitern von **RoleEntryPoint** das folgende Verhalten der Methoden:
 
 * Da die [OnStart](/previous-versions/azure/reference/ee772851(v=azure.100))-Methode einen booleschen Wert zurückgibt, kann sie **false** zurückgeben.
   
-   Wenn Ihr Code **false**zurückgibt, wird der Rollenvorgang abrupt beendet, ohne dass eine möglicherweise eingerichtete Herunterfahrsequenz ausgeführt wird. Im Allgemeinen sollte das Zurückgeben von **false** durch die **OnStart**-Methode vermieden werden.
+   Wenn Ihr Code **false** zurückgibt, wird der Rollenvorgang abrupt beendet, ohne dass eine möglicherweise eingerichtete Herunterfahrsequenz ausgeführt wird. Im Allgemeinen sollte das Zurückgeben von **false** durch die **OnStart**-Methode vermieden werden.
 * Jede nicht abgefangene Ausnahme in einer Überladung einer **RoleEntryPoint** -Methode wird als nicht behandelte Ausnahme behandelt.
   
    Wenn in einer der Lebenszyklusmethoden eine Ausnahme auftritt, löst Azure das [UnhandledException](/dotnet/api/system.appdomain.unhandledexception) -Ereignis aus, und der Prozess wird beendet. Nachdem die Rolle offline geschaltet wurde, wird sie von Azure neu gestartet. Wenn eine nicht behandelte Ausnahme auftritt, wird das [Stopping](/previous-versions/azure/reference/ee758136(v=azure.100)) -Ereignis nicht ausgelöst, und die **OnStop** -Methode wird nicht aufgerufen.

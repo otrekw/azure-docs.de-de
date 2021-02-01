@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 10/05/2020
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: d39d72a79d4b273918986d0d350df4706592c77d
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: c30d8a66cf9deffaa32e5ec0356a9067575b77e8
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95503184"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98660701"
 ---
 # <a name="header-based-single-sign-on-for-on-premises-apps-with-azure-ad-app-proxy-preview"></a>Headerbasiertes einmaliges Anmelden für lokale Apps mit dem Azure AD-Anwendungsproxy (Vorschau)
 
@@ -88,6 +88,10 @@ Nachdem Sie alle Schritte abgeschlossen haben, sollte Ihre App betriebsbereit un
 1. Öffnen Sie ein neues Browserfenster oder ein privates Browserfenster, um sicherzustellen, dass zuvor zwischengespeicherte Header gelöscht werden. Navigieren Sie dann in den Einstellungen für den Anwendungsproxy zu  **Externe URL**.
 2. Melden Sie sich mit dem Testkonto an, das Sie der App zugewiesen haben. Wenn Sie die Anwendung laden und sich per SSO anmelden können, ist alles in Ordnung! 
 
+## <a name="considerations"></a>Überlegungen
+
+- Über den Anwendungsproxy wird der Remotezugriff auf Apps am lokalen Standort oder in einer privaten Cloud bereitgestellt. Der Anwendungsproxy ist nicht dafür vorgesehen, Datenverkehr aus dem internen Unternehmensnetzwerk zu verarbeiten.
+- Der Zugriff auf headerbasierte Authentifizierungsanwendungen sollte ausschließlich auf Datenverkehr vom Connector oder einer anderen zugelassenen headerbasierten Authentifizierungslösung beschränkt werden. Dies erfolgt in der Regel durch Einschränken des Netzwerkzugriffs auf die Anwendung mithilfe einer Firewall oder einer IP-Einschränkung auf dem Anwendungsserver.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

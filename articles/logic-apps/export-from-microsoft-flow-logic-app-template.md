@@ -3,17 +3,19 @@ title: Exportieren von Flows aus Power Automate in Azure Logic Apps
 description: Migrieren von Flows aus Power Automate zu Azure Logic Apps durch Exportieren als Azure Resource Manager-Vorlagen
 services: logic-apps
 ms.suite: integration
-ms.reviewer: jonfan, logicappspm
+ms.reviewer: estfan, sneshaf, pinath, logicappspm
 ms.topic: conceptual
-ms.date: 06/03/2020
-ms.openlocfilehash: 1c2f0a2c54be7adbc7b8babd596f18e08c67a024
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.date: 01/20/2021
+ms.openlocfilehash: 2192ae5f3de551cb8ff2b6c36e233804c3c56bf1
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96014413"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98633246"
 ---
 # <a name="export-flows-from-power-automate-and-deploy-to-azure-logic-apps"></a>Exportieren von Flows aus Power Automate und Bereitstellen in Azure Logic Apps
+
+> Bei Flows, die nach Oktober 2020 erstellt wurden, können Sie nicht mehr aus Power Automate exportieren und in Azure Logic Apps bereitstellen.
 
 Sie können diesen Flow aus [Microsoft Flow](https://flow.microsoft.com) zu [Power Automate](../logic-apps/logic-apps-overview.md) migrieren, um die Funktionen des Flows zu erweitern. Sie können den Flow als Azure Resource Manager-Vorlage für eine Logik-App exportieren, diese Logik-App-Vorlage in einer Azure-Ressourcengruppe bereitstellen und dann die Logik-App im Logik-App-Designer öffnen.
 
@@ -66,7 +68,7 @@ Weitere Informationen finden Sie unter [Verwenden von Azure Logic Apps](https://
 
    1. Wählen Sie die Eingabeparameterwerte für Ihre Vorlage aus, oder geben Sie diese an.
 
-      | Eigenschaft | BESCHREIBUNG |
+      | Eigenschaft | Beschreibung |
       |----------|-------------|
       | **Abonnement** | Das für die Abrechnung verwendete Azure-Abonnement |
       | **Ressourcengruppe** | Die Ressourcengruppe für Ihre Logik-App. Sie können eine bestehende Ressourcengruppe verwenden oder eine neue erstellen. |

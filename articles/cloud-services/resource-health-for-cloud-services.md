@@ -1,20 +1,25 @@
 ---
 title: Resource Health für Cloud Services (Classic)
 description: In diesem Artikel wird die Unterstützung der Ressourcenintegritätsprüfung (Resource Health Check, RHC) für Microsoft Azure Cloud Services (Classic) beschrieben.
-services: cloud-services
-author: tanmaygore
-ms.service: cloud-services
 ms.topic: article
-ms.date: 9/1/2020
+ms.service: cloud-services
+ms.date: 10/14/2020
 ms.author: tagore
-ms.openlocfilehash: f99dd8131df9f8bc5d3e4013d4438faa8c25e53b
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 37294e681066eb27ace69bcacee3a813b750b8eb
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92072712"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98743507"
 ---
 # <a name="resource-health-check-rhc-support-for-azure-cloud-services-classic"></a>Unterstützung der Ressourcenintegritätsprüfung (RHC) für Azure Cloud Services (Classic)
+
+> [!IMPORTANT]
+> [Azure Cloud Services (erweiterter Support)](../cloud-services-extended-support/overview.md) ist ein neues auf Azure Resource Manager basierendes Bereitstellungsmodell für Azure Cloud Services. Im Zuge dieser Änderung wurden Azure Cloud Services-Instanzen, die unter dem Azure Service Manager-basierten Bereitstellungsmodell ausgeführt werden, in „Cloud Services (klassisch)“ umbenannt. Für alle neuen Bereitstellungen wird [Azure Cloud Services (erweiterter Support)](../cloud-services-extended-support/overview.md) verwendet.
+
 In diesem Artikel wird die Unterstützung der Ressourcenintegritätsprüfung (Resource Health Check, RHC) für [Microsoft Azure Cloud Services (Classic)](https://azure.microsoft.com/services/cloud-services) beschrieben.
 
 Mithilfe von [Azure Resource Health](../service-health/resource-health-overview.md) für Cloud Services erhalten Sie bei Problemen mit der Bereitstellung, mit Rollen und Rolleninstanzen von Cloud Services Unterstützung und Hilfe bei der Diagnose. Sie werden über die aktuelle und frühere Integrität von Cloud Services auf der Bereitstellungs-, Rollen- und Rolleninstanzebene informiert.

@@ -1,27 +1,25 @@
 ---
-title: Behandeln von Problemen mit der Clouddienstbereitstellung | Microsoft-Dokumentation
+title: Behandeln von Bereitstellungsproblemen bei Cloud Services (klassisch) | Microsoft-Dokumentation
 description: Bei der Bereitstellung eines Clouddiensts in Azure können einige allgemeine Probleme auftreten. Dieser Artikel bietet Lösungen für einige dieser Probleme.
-services: cloud-services
-documentationcenter: ''
-author: simonxjx
-manager: dcscontentpm
-editor: ''
-tags: top-support-issue
-ms.assetid: a18ae415-0d1c-4bc4-ab6c-c1ddea02c870
+ms.topic: article
 ms.service: cloud-services
-ms.topic: troubleshooting
-ms.tgt_pltfrm: na
-ms.workload: tbd
-ms.date: 06/15/2018
-ms.author: v-six
-ms.openlocfilehash: 0e7cd496f031f76320df5127d7e1aa3f2f7b06c7
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.date: 10/14/2020
+ms.author: tagore
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 7b3d7a9a674aab3976da9399f71ff4d8df08eb62
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92075075"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98741076"
 ---
-# <a name="troubleshoot-cloud-service-deployment-problems"></a>Behandeln von Problemen mit der Clouddienstbereitstellung
+# <a name="troubleshoot-azure-cloud-services-classic-deployment-problems"></a>Behandeln von Bereitstellungsproblemen mit Azure Cloud Services (klassisch)
+
+> [!IMPORTANT]
+> [Azure Cloud Services (erweiterter Support)](../cloud-services-extended-support/overview.md) ist ein neues auf Azure Resource Manager basierendes Bereitstellungsmodell für Azure Cloud Services. Im Zuge dieser Änderung wurden Azure Cloud Services-Instanzen, die unter dem Azure Service Manager-basierten Bereitstellungsmodell ausgeführt werden, in „Cloud Services (klassisch)“ umbenannt. Für alle neuen Bereitstellungen wird [Azure Cloud Services (erweiterter Support)](../cloud-services-extended-support/overview.md) verwendet.
+
 Wenn Sie ein Anwendungspaket für einen Clouddienst in Azure bereitstellen, können Sie im Bereich **Eigenschaften** des Azure-Portals Informationen zu der Bereitstellung abrufen. Mit den Informationen in diesem Bereich können Sie Probleme mit dem Clouddienst behandeln, und Sie können dem Azure-Support diese Informationen bereitstellen, wenn Sie eine neue Supportanfrage eröffnen.
 
 Sie finden den Bereich **Eigenschaften** wie folgt:
@@ -60,7 +58,7 @@ Ein VIP-Austausch ist nicht zulässig, während ein Bereitstellungsupdate ausgef
 So finden Sie heraus, ob ein automatisches Update den VIP-Austausch verhindert
 
 1. Klicken Sie im Azure-Portal auf die Bereitstellung Ihres Clouddiensts.
-2. Sehen Sie sich im Bereich **Eigenschaften** des Azure-Portals den Wert von **Status** an. Lautet der Wert **Bereit**, überprüfen Sie den Wert **Letzter Vorgang**, um festzustellen, ob kürzlich ein Vorgang ausgeführt wurde, der den VIP-Austausch möglicherweise verhindert hat.
+2. Sehen Sie sich im Bereich **Eigenschaften** des Azure-Portals den Wert von **Status** an. Wenn er **Bereit** lautet, überprüfen Sie unter **Letzter Vorgang**, ob vor Kurzem ein Vorgang ausgeführt wurde, der möglicherweise den VIP-Swap verhindert.
 3. Wiederholen Sie die Schritte 1 und 2 für die Produktionsbereitstellung.
 4. Wenn ein automatisches Update ausgeführt wird, warten Sie, bis der Vorgang beendet ist, bevor Sie erneut versuchen, den VIP-Austausch durchzuführen.
 
@@ -72,8 +70,8 @@ Weitere Informationen zum Behandeln dieses Problems finden Sie im Blogbeitrag [A
 ## <a name="problem-my-application-stopped-working"></a>Problem: Meine Anwendung funktioniert nicht mehr.
 1. Klicken Sie im Azure-Portal auf die Rolleninstanz.
 2. Sehen Sie sich im Bereich **Eigenschaften** des Azure-Portals die folgenden Bedingungen an, die Ihnen bei der Problembehebung helfen können:
-   * Wenn die Rolleninstanz kürzlich beendet wurde (prüfen Sie die **Anzahl der Abbrüche**), wird die Bereitstellung möglicherweise gerade aktualisiert. Warten Sie, ob die Rolleninstanz ihre Funktionsweise selbstständig wieder aufnimmt.
-   * Wenn die Rolleninstanz **ausgelastet**ist, überprüfen Sie den Anwendungscode, um festzustellen, ob das [StatusCheck](/previous-versions/azure/reference/ee758135(v=azure.100)) -Ereignis verarbeitet wird. Möglicherweise müssen Sie Code hinzufügen oder korrigieren, der dieses Ereignis verarbeitet.
+   * Wenn die Rolleninstanz vor Kurzem beendet wurde (Sie können den Wert unter **Anzahl abgebrochener Nachrichten** überprüfen), wird möglicherweise die Bereitstellung aktualisiert. Warten Sie, ob die Rolleninstanz ihre Funktionsweise selbstständig wieder aufnimmt.
+   * Wenn die Rolleninstanz **ausgelastet** ist, überprüfen Sie den Anwendungscode, um festzustellen, ob das [StatusCheck](/previous-versions/azure/reference/ee758135(v=azure.100)) -Ereignis verarbeitet wird. Möglicherweise müssen Sie Code hinzufügen oder korrigieren, der dieses Ereignis verarbeitet.
    * Weitere Informationen erhalten Sie in den Diagnosedaten und Problembehandlungsszenarios im Blogbeitrag [Azure PaaS Compute Diagnostics Data](/archive/blogs/kwill/windows-azure-paas-compute-diagnostics-data)(in englischer Sprache).
 
 > [!WARNING]

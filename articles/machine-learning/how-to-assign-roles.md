@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.reviewer: Blackmist
 ms.author: nigup
 author: nishankgu
-ms.date: 11/09/2020
+ms.date: 01/20/2020
 ms.custom: how-to, seodec18, devx-track-azurecli, contperf-fy21q2
-ms.openlocfilehash: 636f63b3f7e43bd8f27d1df58ab82d24bd19a616
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 8420aecbc160fa6df2640d2ba0ae8a8b77702b67
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97033747"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624539"
 ---
 # <a name="manage-access-to-an-azure-machine-learning-workspace"></a>Verwalten des Zugriffs auf einen Azure Machine Learning-Arbeitsbereich
 
@@ -160,6 +160,10 @@ Sie müssen über Berechtigungen für den gesamten Bereich der neuen Rollendefin
 
 > [!NOTE]
 > Es kann bei einem Rollenupdate zwischen 15 Minuten und einer Stunde dauern, alle Rollenzuweisungen in diesem Bereich anzuwenden.
+
+## <a name="use-azure-resource-manager-templates-for-repeatability"></a>Verwenden von Azure Resource Manager-Vorlagen für Wiederholbarkeit
+
+Wenn Sie davon ausgehen, dass Sie komplexe Rollenzuweisungen mehrfach erstellen müssen, kann eine Azure Resource Manager-Vorlage eine große Hilfe sein. Die Vorlage [201-machine-learning-dependencies-role-assignment](https://github.com/Azure/azure-quickstart-templates/tree/master/201-machine-learning-dependencies-role-assignment) zeigt, wie Rollenzuweisungen im Quellcode für die Wiederverwendung angegeben werden können. 
 
 ## <a name="common-scenarios"></a>Häufige Szenarios
 

@@ -6,12 +6,12 @@ ms.date: 11/04/2020
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: 953a9cfeed558291fba1cb517039f26860444904
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: 397c650d1d7a593a855c8f26e61dbf12ec6360fa
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98233660"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98631320"
 ---
 # <a name="configuration-options---azure-monitor-application-insights-for-java"></a>Konfigurationsoptionen – Azure Monitor Application Insights für Java
 
@@ -39,14 +39,14 @@ Weitere Informationen und zusätzliche Konfigurationsoptionen finden Sie unten.
 
 ## <a name="configuration-file-path"></a>Pfad der Konfigurationsdatei
 
-Standardmäßig erwartet Application Insights Java 3.0 eine Konfigurationsdatei mit dem Namen `applicationinsights.json`, die sich im gleichen Verzeichnis wie `applicationinsights-agent-3.0.1.jar` befindet.
+Standardmäßig erwartet Application Insights Java 3.0 eine Konfigurationsdatei mit dem Namen `applicationinsights.json`, die sich im gleichen Verzeichnis wie `applicationinsights-agent-3.0.2.jar` befindet.
 
 Verwenden Sie eines der folgenden Elemente, um einen eigenen Pfad für Ihre Konfigurationsdatei anzugeben:
 
 * Umgebungsvariable `APPLICATIONINSIGHTS_CONFIGURATION_FILE` oder
 * Java-Systemeigenschaft `applicationinsights.configuration.file`
 
-Wenn Sie einen relativen Pfad angeben, wird dieser relativ zum Verzeichnis von `applicationinsights-agent-3.0.1.jar` aufgelöst.
+Wenn Sie einen relativen Pfad angeben, wird dieser relativ zum Verzeichnis von `applicationinsights-agent-3.0.2.jar` aufgelöst.
 
 ## <a name="connection-string"></a>Verbindungszeichenfolge
 
@@ -170,7 +170,7 @@ Verwenden Sie den folgenden JSON-Code, wenn Sie benutzerdefinierte Dimensionen z
 `${...}` kann zum Lesen des Werts aus der angegebenen Umgebungsvariable beim Start verwendet werden.
 
 > [!NOTE]
-> Wenn Sie ab Version 3.0.1 eine benutzerdefinierte Dimension mit dem Namen `service.version` hinzufügen, wird der Wert in der Spalte `application_Version` in der Tabelle „Application Insights-Protokolle“ und nicht als benutzerdefinierte Dimension gespeichert.
+> Wenn Sie ab Version 3.0.2 eine benutzerdefinierte Dimension mit dem Namen `service.version` hinzufügen, wird der Wert in der Spalte `application_Version` in der Tabelle „Application Insights-Protokolle“ und nicht als benutzerdefinierte Dimension gespeichert.
 
 ## <a name="telemetry-processors-preview"></a>Telemetrieprozessoren (Vorschauversion)
 
@@ -241,7 +241,7 @@ So deaktivieren Sie die automatische Erfassung von Micrometer-Metriken (einschli
 
 ## <a name="suppressing-specific-auto-collected-telemetry"></a>Unterdrücken bestimmter automatisch erfasster Telemetriedaten
 
-Ab Version 3.0.1 können bestimmte automatisch erfasste Telemetriedaten mithilfe der folgenden Konfigurationsoptionen unterdrückt werden:
+Ab Version 3.0.2 können bestimmte automatisch erfasste Telemetriedaten mithilfe der folgenden Konfigurationsoptionen unterdrückt werden:
 
 ```json
 {
@@ -296,7 +296,9 @@ Wenn sich Ihre Anwendung hinter einer Firewall befindet und nicht direkt mit App
 }
 ```
 
-[//]: # "HINWEIS: Die Unterstützung von OpenTelemetry wird nicht beworben, bis Version 0.10.0 unterstützt wird, die gravierende Breaking Changes gegenüber Version 0.9.0 aufweist."
+Application Insights Java 3.0 respektiert auch die globalen Werte `-Dhttps.proxyHost` und `-Dhttps.proxyPort`, wenn diese festgelegt sind.
+
+[//]: # "HINWEIS: Die OpenTelemetry-Unterstützung befindet sich in der privaten Vorschau, bis die OpenTelemetry-API Version 1.0 erreicht."
 
 [//]: # "## Unterstützung von Releases der OpenTelemetry-API vor Version 1.0"
 
@@ -338,11 +340,13 @@ Application Insights Java 3.0 protokolliert standardmäßig auf Ebene `INFO` in
 
 `level` kann `OFF`, `ERROR`, `WARN`, `INFO`, `DEBUG` oder `TRACE` sein.
 
-`path` kann ein absoluter oder ein relativer Pfad sein. Relative Pfade werden anhand des Verzeichnisses aufgelöst, in dem sich `applicationinsights-agent-3.0.1.jar` befindet.
+`path` kann ein absoluter oder ein relativer Pfad sein. Relative Pfade werden anhand des Verzeichnisses aufgelöst, in dem sich `applicationinsights-agent-3.0.2.jar` befindet.
 
 `maxSizeMb` entspricht der maximalen Größe der Protokolldatei, bevor ein Rollover durchgeführt wird.
 
 `maxHistory` entspricht der Anzahl der beibehaltenen Protokolldateien, für die ein Rollover durchgeführt wurde (zusätzlich zur aktuellen Protokolldatei).
+
+Ab Version 3.0.2 können Sie auch das `level` der Selbstdiagnose mithilfe der Umgebungsvariable `APPLICATIONINSIGHTS_SELF_DIAGNOSTICS_LEVEL` festlegen.
 
 ## <a name="an-example"></a>Beispiel
 

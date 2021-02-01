@@ -1,5 +1,5 @@
 ---
-title: 'Anmeldungsvorgang mit SMS für Telefonnummer (Vorschauversion): Azure AD'
+title: 'Anmeldevorgang mit SMS für Telefonnummer: Azure AD'
 description: Erfahren Sie mehr über den Anmeldungsvorgang mit SMS für neue oder vorhandene Telefonnummern.
 services: active-directory
 author: curtand
@@ -8,18 +8,18 @@ ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
 ms.topic: end-user-help
-ms.date: 04/14/2020
+ms.date: 01/21/2021
 ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: a4dcb6774990c03ce3d55fb6c519b0600a1086f9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1a50f2032a978a552205d1bba602249f34f0478a
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91536884"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98661590"
 ---
-# <a name="use-your-phone-number-as-a-user-name-preview"></a>Verwenden Ihrer Telefonnummer als Benutzername (Vorschau)
+# <a name="use-your-phone-number-as-a-user-name"></a>Verwenden Ihrer Telefonnummer als Benutzername
 
 Durch das Registrieren eines Geräts erhält Ihr Telefon Zugriff auf die Dienste Ihrer Organisation, ohne dass Ihre Organisation auf Ihr Telefon zugreifen kann. Wenn Sie Administrator sind, finden Sie weitere Informationen unter [Konfigurieren und Aktivieren der SMS-basierten Authentifizierung von Benutzern](../authentication/howto-authentication-sms-signin.md).
 
@@ -36,7 +36,7 @@ Wenn Sie ein neues Telefon oder eine neue Nummer erhalten und dieses bzw. diese 
 1. Es wird eine Eingabeaufforderung mit folgendem Text angezeigt: „Die SMS wurde verifiziert. Ihr Telefon wurde erfolgreich registriert.“
 
 > [!Important]
-> Aufgrund eines bekannten Problems in der Vorschauversion wird die Nummer beim Hinzufügen der Telefonnummer für kurze Zeit nicht für die SMS-Anmeldung registriert. Sie müssen sich mit der hinzugefügten Nummer anmelden und dann den Eingabeaufforderungen folgen, um die Nummer für die SMS-Anmeldung zu registrieren.
+> Aufgrund eines bekannten Problems wird die Nummer beim Hinzufügen der Telefonnummer für kurze Zeit nicht für die SMS-Anmeldung registriert. Sie müssen sich mit der hinzugefügten Nummer anmelden und dann den Eingabeaufforderungen folgen, um die Nummer für die SMS-Anmeldung zu registrieren.
 
 ### <a name="when-the-phone-number-is-in-use"></a>Wenn die Telefonnummer bereits verwendet wird
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/22/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: b4feb177abbdbfb9666be0ea0746c8316acdf5ae
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: 2f8dc9f53c36f59a152fc34361b3726ea2cc001c
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98250756"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98797058"
 ---
 # <a name="advanced-features-of-the-azure-metrics-explorer"></a>Erweiterte Funktionen des Azure-Metrik-Explorers
 
@@ -129,16 +129,19 @@ Sie können Filter auf Diagramme anwenden, die Metriken mit Dimensionen aufweise
 
    ![Screenshot der Eigenschaften, nach denen gefiltert werden kann](./media/metrics-charts/028.png)
 
-3. Wählen Sie die Dimensionswerte aus, die Sie beim Zeichnen des Diagramms einschließen möchten. Im folgenden Beispiel werden die erfolgreichen Speichertransaktionen herausgefiltert:
+3. Wählen Sie den Operator aus, den Sie auf die Dimension anwenden möchten (Eigenschaft). Der Standardoperator ist „=“ (ist gleich).
+
+   ![Screenshot des Operators, den Sie mit dem Filter verwenden können](./media/metrics-charts/filter-operator.png)
+
+4. Wählen Sie beim Zeichnen des Diagramms aus, welche Dimensionswerte auf den Filter angewandt werden sollen (in diesem Beispiel werden die Filterergebnisse erfolgreicher Speichertransaktionen gezeigt):
 
    ![Screenshot des Herausfilterns erfolgreicher Speichertransaktionen](./media/metrics-charts/029.png)
 
-4. Klicken Sie auf eine Stelle außerhalb der **Filterauswahl**, um sie zu schließen. Nun zeigt das Diagramm an, wie viele Speichertransaktionen fehlerhaft sind:
+5. Klicken Sie nach der Auswahl der Filterwerte außerhalb des Filterselektors, um ihn zu schließen. Nun zeigt das Diagramm an, wie viele Speichertransaktionen fehlerhaft sind:
 
    ![Screenshot der Anzahl der fehlerhaften Speichertransaktionen](./media/metrics-charts/030.png)
 
-Sie können diese Schritte wiederholen, um mehrere Filter auf dieselben Diagramme anzuwenden.
-
+6. Sie können die Schritte 1 bis 5 wiederholen, um mehrere Filter auf dieselben Diagramme anzuwenden.
 
 
 ## <a name="metric-splitting"></a>Teilen von Metriken
@@ -158,9 +161,18 @@ Sie können eine Metrik nach Dimension teilen, um die verschiedenen Segmente der
 
    Das Diagramm zeigt nun mehrere Linien an, eine Linie für jedes Dimensionssegment:
 
-   ![Screenshot der Linien für die einzelnen Dimensionssegmente](./media/metrics-charts/032.png)
+   ![Screenshot, der mehrere Zeilen anzeigt: eine Zeile für jedes Segment der Dimension.](./media/metrics-charts/segment-dimension.png)
+   
+3. Wählen Sie einen Grenzwert für die Anzahl der Werte aus, die nach der Aufteilung nach der ausgewählten Dimension angezeigt werden sollen. Der Standardgrenzwert ist 10, wie im Diagramm oben gezeigt. Der Grenzwert kann zwischen 1 und 50 liegen.
+   
+   ![Screenshot des Aufteilungsgrenzwerts zum Einschränken der Anzahl der Werte nach dem Aufteilen](./media/metrics-charts/segment-dimension-limit.png)
+   
+4. Wählen Sie die Sortierreihenfolge für Segmente aus: „Aufsteigend“ oder „Absteigend“. Die Standardauswahl ist „Absteigend“.
+   
+   ![Screenshot der Sortierreihenfolge für die aufgeteilten Werte](./media/metrics-charts/segment-dimension-sort.png)
 
-3. Klicken Sie auf eine Stelle außerhalb der **Gruppierungsauswahl**, um sie zu schließen.
+5. Klicken Sie außerhalb des **Gruppierungsselektors**, um ihn zu schließen.
+   
 
    > [!NOTE]
    > Um Segmente auszublenden, die für Ihr Szenario nicht relevant sind, und um Ihre Diagramme übersichtlicher zu gestalten, verwenden Sie sowohl das Filtern als auch das Teilen für dieselbe Dimension.

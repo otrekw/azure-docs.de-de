@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, bonova, danil
 ms.date: 11/10/2020
 ms.custom: seoapril2019, sqldbrb=1
-ms.openlocfilehash: e6dc4656e33b55a2cc695874376baf1cd816a838
-ms.sourcegitcommit: ab829133ee7f024f9364cd731e9b14edbe96b496
+ms.openlocfilehash: 0a462c7d713ea9285096db48b4a3bb5c5b0d9874
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/28/2020
-ms.locfileid: "97796294"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737386"
 ---
 # <a name="t-sql-differences-between-sql-server--azure-sql-managed-instance"></a>Unterschiede bei T-SQL zwischen SQL Server und Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -168,7 +168,7 @@ SQL Managed Instance kann nicht auf Dateien zugreifen. Daher können keine Krypt
     - Exportieren einer Datenbank aus SQL Managed Instance und Importieren in SQL-Datenbank innerhalb derselben Azure AD-Domäne 
     - Exportieren einer Datenbank aus SQL-Datenbank und Importieren in SQL Managed Instance innerhalb derselben Azure AD-Domäne
     - Exportieren einer Datenbank aus SQL Managed Instance und Importieren in SQL Server (ab Version 2012).
-      - Bei dieser Konfiguration werden alle Azure AD Benutzer als SQL Server-Datenbankprinzipale (Benutzer) ohne Anmeldungen erstellt. Der Benutzertyp wird als `SQL` aufgeführt und in sys.database_principals als `SQL_USER` angezeigt. Ihre Berechtigungen und Rollen verbleiben in den Metadaten der SQL Server-Datenbank und können für Identitätswechsel verwendet werden. Sie können jedoch nicht für den Zugriff und die Anmeldung bei SQL Server mithilfe der Anmeldeinformationen verwendet werden.
+      - Bei dieser Konfiguration werden alle Azure AD-Benutzer als SQL Server-Datenbankprinzipale (Benutzer) ohne Anmeldungen erstellt. Der Benutzertyp wird als `SQL` aufgeführt und in „sys.database_principals“ als `SQL_USER` angezeigt. Ihre Berechtigungen und Rollen verbleiben in den Metadaten der SQL Server-Datenbank und können für Identitätswechsel verwendet werden. Sie können jedoch nicht für den Zugriff und die Anmeldung bei SQL Server mithilfe der Anmeldeinformationen verwendet werden.
 
 - Nur die Prinzipalanmeldung auf Serverebene, die vom Bereitstellungsprozess von SQL Managed Instance, von Mitgliedern der Serverrollen (z. B. `securityadmin` oder `sysadmin`) oder von anderen Anmeldungen mit der Berechtigung ALTER ANY LOGIN auf Serverebene erstellt wurde, kann Azure AD-Serverprinzipale (Anmeldungen) in der Masterdatenbank für SQL Managed Instance erstellen.
 - Wenn es sich bei der Anmeldung um einen SQL-Prinzipal handelt, können nur Anmeldungen, die der Rolle `sysadmin` angehören, den Befehl „create“ verwenden, um Anmeldungen für ein Azure AD-Konto zu erstellen.
@@ -277,6 +277,8 @@ Die folgenden Optionen können nicht geändert werden:
 - `SINGLE_USER`
 - `WITNESS`
 
+Einige `ALTER DATABASE`-Anweisungen (z. B. [SET CONTAINMENT](https://docs.microsoft.com/sql/relational-databases/databases/migrate-to-a-partially-contained-database?#converting-a-database-to-partially-contained-using-transact-sql)) können vorübergehend Fehler verursachen, z. B. während der automatisierten Datenbanksicherung oder direkt nach dem Erstellen einer Datenbank. In diesem Fall sollte die `ALTER DATABASE`-Anweisung wiederholt werden. Weitere Informationen zu zugehörigen Fehlermeldungen finden Sie im Abschnitt [Hinweise](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-mi-current&preserve-view=true&tabs=sqlpool#remarks-2).
+
 Weitere Informationen finden Sie unter [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql-file-and-filegroup-options).
 
 ### <a name="sql-server-agent"></a>SQL Server-Agent
@@ -303,7 +305,7 @@ Weitere Informationen finden Sie unter [ALTER DATABASE](/sql/t-sql/statements/al
   - Warnungen werden noch nicht unterstützt.
   - Proxys werden nicht unterstützt.
 - EventLog wird nicht unterstützt.
-- Der Benutzer muss dem Azure AD-Serverprinzipal (Anmeldung) direkt zugeordnet sein, um SQL-Agent-Aufträge zu erstellen, zu ändern oder auszuführen. Benutzer, die nicht direkt zugeordnet sind, z. B. Benutzer, die einer Azure AD-Gruppe angehören, die über die Berechtigungen zum Erstellen, Ändern oder Ausführen von SQL-Agent-Aufträgen verfügt, können diese Aktionen nicht effektiv ausführen. Dies liegt an Einschränkungen beim Identitätswechsel für verwaltete Instanzen und bei [EXECUTE AS](#logins-and-users).
+- Der Benutzer muss dem Azure AD-Serverprinzipal (Anmeldung) direkt zugeordnet sein, um SQL-Agent-Aufträge zu erstellen, zu ändern oder auszuführen. Benutzer, die nicht direkt zugeordnet sind, z. B. Benutzer, die einer Azure AD-Gruppe angehören, die über die Berechtigungen zum Erstellen, Ändern oder Ausführen von SQL-Agent-Aufträgen verfügt, können diese Aktionen nicht effektiv ausführen. Dies liegt an Einschränkungen beim Identitätswechsel für verwaltete Instanzen und bei [EXECUTE AS](#logins-and-users).
 
 Die folgenden SQL-Agent-Funktionen werden derzeit nicht unterstützt:
 
@@ -398,12 +400,12 @@ Die [semantische Suche](/sql/relational-databases/search/semantic-search-sql-ser
 Verbindungsserver in SQL Managed Instance unterstützen eine begrenzte Anzahl von Zielen:
 
 - Unterstützte Ziele sind Instanzen von SQL Managed Instance, SQL-Datenbank, [serverlosen](https://devblogs.microsoft.com/azure-sql/linked-server-to-synapse-sql-to-implement-polybase-like-scenarios-in-managed-instance/) und dedizierten Azure Synapse SQL-Pools und SQL Server. 
-- Verbindungsserver unterstützen keine verteilten beschreibbaren Transaktionen (MS DTC).
+- Verteilte beschreibbare Transaktionen sind nur in verwalteten Instanzen möglich. Weitere Informationen finden Sie unter [Verteilte Transaktionen](https://docs.microsoft.com/azure/azure-sql/database/elastic-transactions-overview). MS DTC wird jedoch nicht unterstützt.
 - Nicht unterstützte Ziele sind Dateien, Analysis Services und andere RDBMS. Verwenden Sie den nativen CSV-Import von Azure Blob Storage mit `BULK INSERT` oder `OPENROWSET` als Alternative zum Dateiimport, oder laden Sie Dateien mithilfe eines [serverlosen SQL-Pools in Azure Synapse Analytics](https://devblogs.microsoft.com/azure-sql/linked-server-to-synapse-sql-to-implement-polybase-like-scenarios-in-managed-instance/).
 
 Vorgänge: 
 
-- Instanzübergreifende Schreibtransaktionen werden nicht unterstützt.
+- [Instanzenübergreifende](https://docs.microsoft.com/azure/azure-sql/database/elastic-transactions-overview) Schreibtransaktionen werden nur für verwaltete Instanzen unterstützt.
 - `sp_dropserver` wird zum Löschen eines Verbindungsservers unterstützt. Siehe [sp_dropserver](/sql/relational-databases/system-stored-procedures/sp-dropserver-transact-sql).
 - Die `OPENROWSET`-Funktion kann verwendet werden, um Abfragen nur auf SQL Server-Instanzen auszuführen. Diese Instanzen können verwaltet sein oder sich auf lokalen oder virtuellen Computern befinden. Siehe [OPENROWSET](/sql/t-sql/functions/openrowset-transact-sql).
 - Die `OPENDATASOURCE`-Funktion kann verwendet werden, um Abfragen nur auf SQL Server-Instanzen auszuführen. Diese Instanzen können verwaltet sein oder sich auf lokalen oder virtuellen Computern befinden. Als Anbieter werden nur die Werte `SQLNCLI`, `SQLNCLI11` und `SQLOLEDB` unterstützt. z. B. `SELECT * FROM OPENDATASOURCE('SQLNCLI', '...').AdventureWorks2012.HumanResources.Employee`. Siehe [OPENDATASOURCE](/sql/t-sql/functions/opendatasource-transact-sql).
@@ -506,15 +508,14 @@ Die folgenden Variablen, Funktionen und Sichten geben abweichende Ergebnisse zur
 
 ### <a name="subnet"></a>Subnet
 -  Sie können keine anderen Ressourcen (z. B. virtuelle Computer) in dem Subnetz platzieren, in dem Sie SQL Managed Instance bereitgestellt haben. Stellen Sie diese Ressourcen in einem anderen Subnetz bereit.
-- Das Subnetz muss eine ausreichende Anzahl verfügbarer [IP-Adressen](connectivity-architecture-overview.md#network-requirements) aufweisen. Der Mindestwert ist 16, wir empfehlen jedoch, mindestens 32 IP-Adressen im Subnetz vorzusehen.
-- [Dem Subnetz von SQL Managed Instance können keine Dienstendpunkte zugeordnet werden](connectivity-architecture-overview.md#network-requirements). Wenn Sie das virtuelle Netzwerk erstellen, überprüfen Sie, ob die Option „Dienstendpunkte“ auf „Deaktiviert“ festgelegt ist.
+- Das Subnetz muss eine ausreichende Anzahl verfügbarer [IP-Adressen](connectivity-architecture-overview.md#network-requirements) aufweisen. Es müssen mindestens 32 IP-Adressen im Subnetz vorhanden sein.
 - Für die Anzahl von virtuellen Kernen und die Typen der Instanzen, die Sie in einer Region platzieren können, gibt es einige [Einschränkungen und Grenzwerte](resource-limits.md#regional-resource-limitations).
-- Es gibt eine Reihe von [Sicherheitsregeln, die auf das Subnetz angewendet werden müssen](connectivity-architecture-overview.md#network-requirements).
+- Es gibt eine [Netzwerkkonfiguration](connectivity-architecture-overview.md#network-requirements), die auf das Subnetz angewandt werden muss.
 
 ### <a name="vnet"></a>VNET
 - VNet kann mithilfe des Ressourcenmodells bereitgestellt werden – das klassische Modell wird für VNets nicht unterstützt.
 - Nachdem eine Instanz von SQL Managed Instance erstellt wurde, wird das Verschieben dieser Instanz oder des VNET in eine andere Ressourcengruppe oder ein anderes Abonnement nicht unterstützt.
-- Einige Dienste, wie App Service-Umgebungen, Logik-Apps und SQL Managed Instance (die für Georeplikation, Transaktionsreplikation oder über Verbindungsserver verwendet werden), können nicht auf SQL Managed Instance in anderen Regionen zugreifen, wenn ihre VNETs mithilfe von [globalem Peering](../../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers) verbunden sind. Sie können sich mit diesen Ressourcen über ExpressRoute oder VNET-zu-VNET über VNet-Gateways verbinden.
+- Für verwaltete SQL-Instanzen, die in virtuellen Clustern gehostet werden und vor dem 22.9.2020 erstellt wurden, wird [globales Peering](../../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers) nicht unterstützt. Sie können sich mit diesen Ressourcen über ExpressRoute oder VNET-zu-VNET über VNet-Gateways verbinden.
 
 ### <a name="failover-groups"></a>Failovergruppen
 Systemdatenbanken werden nicht auf die sekundäre Instanz in einer Failovergruppe repliziert. Daher sind Szenarien, die von Objekten aus den Systemdatenbanken abhängen, auf der sekundären Instanz nicht möglich, es sei denn, die Objekte werden manuell auf der sekundären Instanz erstellt.

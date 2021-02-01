@@ -16,21 +16,18 @@ ms.date: 04/16/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eadb20bc570545356508d82c05e1746424a14b71
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: 59cc50274b291c23aeec4620ec7a09312cc0c1fb
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97504388"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98762252"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quickstart"></a>Nahtloses einmaliges Anmelden mit Azure Active Directory: Schnellstart
 
 ## <a name="deploy-seamless-single-sign-on"></a>Bereitstellen des nahtlosen einmaligen Anmeldens
 
 Mit dem nahtlosen einmaligen Anmelden von Azure Active Directory (Azure AD Seamless Single Sign-On) werden Benutzer automatisch angemeldet, wenn sie an ihren mit dem Unternehmensnetzwerk verbundenen Unternehmens-Desktops arbeiten. Nahtloses SSO ermöglicht Ihren Benutzern einen einfachen Zugriff auf Ihre cloudbasierten Anwendungen, ohne dass zusätzliche lokale Komponenten erforderlich sind.
-
-> [!NOTE]
-> Dieser Artikel enthält Verweise auf den Begriff *Whitelist*, den Microsoft nicht länger verwendet. Sobald der Begriff aus der Software entfernt wurde, wird er auch aus diesem Artikel entfernt.
 
 Um die nahtlose einmalige Anmeldung bereitzustellen, führen Sie die folgenden Schritte aus:
 
@@ -40,7 +37,7 @@ Stellen Sie sicher, dass die folgenden Voraussetzungen erfüllt werden:
 
 * **Richten Sie Ihren Azure AD Connect-Server ein:** Wenn Sie die [Pass-Through-Authentifizierung](how-to-connect-pta.md) als Anmeldemethode verwenden, ist keine zusätzliche Überprüfung der Voraussetzungen erforderlich. Wenn die [Kennworthashsynchronisierung](how-to-connect-password-hash-synchronization.md) Ihre Anmeldemethode ist und eine Firewall zwischen Azure AD Connect und Azure AD vorhanden ist, sollten Sie Folgendes sicherstellen:
    - Sie verwenden Azure AD Connect 1.1.644.0 oder eine höhere Version. 
-   - Wenn es Ihre Firewall oder Ihr Proxy zulässt, fügen Sie die Verbindungen zur Zulassungsliste für **\*.msappproxy.net**-URLs über Port 443 hinzu. Aktivieren Sie andernfalls den Zugriff auf die [IP-Adressbereiche für das Azure-Rechenzentrum](https://www.microsoft.com/download/details.aspx?id=41653), die wöchentlich aktualisiert werden. Diese Voraussetzung gilt nur, wenn Sie das Feature aktivieren. Sie ist für tatsächliche Benutzeranmeldungen nicht erforderlich.
+   - Wenn es Ihre Firewall oder Ihr Proxy zulässt, fügen Sie die Verbindungen zur Zulassungsliste für **\*.msappproxy.net**-URLs über Port 443 hinzu. Wenn Sie anstelle eines Platzhalters für die Proxykonfiguration eine bestimmte URL benötigen, können Sie **tenantid.registration.msappproxy.net** konfigurieren, wobei „tenantid“ die GUID des Mandanten ist, in dem Sie das Feature konfigurieren. Wenn in Ihrer Organisation URL-basierte Proxyausnahmen nicht möglich sind, können Sie stattdessen den Zugriff auf die [IP-Adressbereiche der Azure-Rechenzentren](https://www.microsoft.com/download/details.aspx?id=41653) zulassen, die wöchentlich aktualisiert werden. Diese Voraussetzung gilt nur, wenn Sie das Feature aktivieren. Sie ist für tatsächliche Benutzeranmeldungen nicht erforderlich.
 
     >[!NOTE]
     >Die Azure AD Connect-Versionen 1.1.557.0, 1.1.558.0, 1.1.561.0 und 1.1.614.0 weisen ein Problem in Bezug auf die Kennworthashsynchronisierung auf. Wenn Sie die Kennworthashsynchronisierung _nicht_ zusammen mit der Passthrough-Authentifizierung verwenden möchten, finden Sie weitere Informationen dazu in den [Versionshinweisen zu Azure AD Connect](./reference-connect-version-history.md).

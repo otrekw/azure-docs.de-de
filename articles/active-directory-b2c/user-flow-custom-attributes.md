@@ -12,12 +12,12 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 9759c1109c7be279520fa187bd3366bcac505d46
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: 5552c93c1c65f08f70ed8929d81126035aa2a357
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97503742"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98661203"
 ---
 # <a name="define-custom-attributes-in-azure-active-directory-b2c"></a>Definieren benutzerdefinierter Attribute in Azure Active Directory B2C
 
@@ -31,7 +31,7 @@ Ihr Azure AD B2C-Verzeichnis verfügt über [mehrere integrierte Attribute](user
 * Ein Identitätsanbieter hat eine eindeutige Benutzer-ID, die persistent gespeichert werden muss, z. B. **uniqueUserGUID**.
 * Für eine benutzerdefinierte User Journey muss der Status eines Benutzers persistent gespeichert werden, z. B. **migrationStatus**.
 
-Azure AD B2C ermöglicht Ihnen, die für die einzelnen Benutzerkonten gespeicherte Gruppe von Attributen zu erweitern. Außerdem können Sie diese Attribute mit der [Microsoft Graph-API](manage-user-accounts-graph-api.md) lesen und schreiben.
+Azure AD B2C ermöglicht Ihnen, die für die einzelnen Benutzerkonten gespeicherte Gruppe von Attributen zu erweitern. Außerdem können Sie diese Attribute mit der [Microsoft Graph-API](microsoft-graph-operations.md) lesen und schreiben.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -60,7 +60,7 @@ Das benutzerdefinierte Attribut steht jetzt in der Liste der **Benutzerattribute
 1. Wählen Sie **Anwendungsansprüche** und dann das benutzerdefinierte Attribut aus.
 1. Klicken Sie auf **Speichern**.
 
-Nach dem Erstellen eines neuen Benutzers über einen Benutzerflow, der das neu erstellte benutzerdefinierte Attribut verwendet, kann das Objekt im [Microsoft Graph-Explorer](https://developer.microsoft.com/graph/graph-explorer) abgefragt werden. Alternativ können Sie mit der Funktion [Benutzerflow ausführen](./tutorial-create-user-flows.md) für den Benutzerflow die Benutzerfreundlichkeit überprüfen. **ShoeSize** sollte jetzt in der Liste der Attribute, die während der Registrierung erfasst werden, sowie in dem Token angezeigt werden, das zurück an die Anwendung gesendet wird.
+Nach dem Erstellen eines neuen Benutzers über einen Benutzerflow, der das neu erstellte benutzerdefinierte Attribut verwendet, kann das Objekt im [Microsoft Graph-Tester](https://developer.microsoft.com/graph/graph-explorer) abgefragt werden. Alternativ können Sie mit der Funktion [Benutzerflow ausführen](./tutorial-create-user-flows.md) für den Benutzerflow die Benutzerfreundlichkeit überprüfen. **ShoeSize** sollte jetzt in der Liste der Attribute, die während der Registrierung erfasst werden, sowie in dem Token angezeigt werden, das zurück an die Anwendung gesendet wird.
 
 ::: zone-end
 
@@ -135,7 +135,7 @@ Sie können diese Attribute auf der Portalbenutzeroberfläche erstellen, bevor S
 |Name     |Verwendung in |
 |---------|---------|
 |`extension_loyaltyId`  | Benutzerdefinierte Richtlinie|
-|`extension_<b2c-extensions-app-guid>_loyaltyId`  | [Microsoft Graph-API](manage-user-accounts-graph-api.md)|
+|`extension_<b2c-extensions-app-guid>_loyaltyId`  | [Microsoft Graph-API](microsoft-graph-operations.md)|
 
 Das folgende Beispiel veranschaulicht die Verwendung benutzerdefinierter Attribute in einer benutzerdefinierten Azure AD B2C-Anspruchsdefinition für eine Richtlinie.
 

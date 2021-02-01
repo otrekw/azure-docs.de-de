@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 1/12/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: d344b3d9ea54243d61cc6a1f3f0982eb5ab1d238
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: 94a1db30419e5d7e52f369392d94b817d0dc273a
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98538584"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98623753"
 ---
 # <a name="activate-and-set-up-your-on-premises-management-console"></a>Aktivieren und Einrichten der lokalen Verwaltungskonsole 
 
@@ -147,13 +147,13 @@ So richten Sie Tunneln auf dem Sensor ein:
 
 ## <a name="set-up-a-site"></a>Einrichten eines Standorts
 
-Die Standardkarte für Unternehmen bietet eine allgemeine Ansicht Ihrer Ressourcen entsprechend mehreren Ebenen geografischer Standorte.
+Die Standardzuordnung für Unternehmen bietet eine allgemeine Ansicht Ihrer Geräte auf mehreren Ebenen geografischer Standorte.
 
-Möglicherweise wird die Ansicht Ihrer Ressourcen benötigt, in der die Organisationsstruktur und die Benutzerberechtigungen komplex sind. In diesen Fällen könnte die Standorteinrichtung – zusätzlich zur Standardstruktur von Standort oder Zone – durch eine globale Organisationsstruktur bestimmt werden.
+Möglicherweise wird eine Ansicht Ihrer Geräte benötigt, in der die Organisationsstruktur und die Benutzerberechtigungen komplex sind. In diesen Fällen könnte die Standorteinrichtung – zusätzlich zur Standardstruktur von Standort oder Zone – durch eine globale Organisationsstruktur bestimmt werden.
 
 Zur Unterstützung dieser Umgebung müssen Sie eine globale Unternehmenstopologie erstellen, die auf den Geschäftseinheiten, Regionen, Standorten und Zonen Ihrer Organisation basiert. Außerdem müssen Sie die Benutzerzugriffsberechtigungen für diese Entitäten mithilfe von Zugriffsgruppen definieren.
 
-Zugriffsgruppen ermöglichen eine bessere Kontrolle darüber, wo Benutzer Ressourcen in der Defender für IoT-Plattform verwalten und analysieren.
+Zugriffsgruppen ermöglichen eine bessere Kontrolle darüber, wo Benutzer Geräte auf der Defender für IoT-Plattform verwalten und analysieren.
 
 ### <a name="how-it-works"></a>Funktionsweise
 
@@ -215,7 +215,7 @@ So löschen Sie einen Standort:
 
 ## <a name="create-enterprise-zones"></a>Erstellen von Unternehmenszonen
 
-Zonen sind logische Entitäten, mit denen Sie Ressourcen innerhalb eines Standorts entsprechend verschiedenen Merkmalen in Gruppen aufteilen können. So können Sie beispielsweise Gruppen für Produktionslinien, Unterstationen, Standortbereiche oder Ressourcentypen erstellen. Sie können Zonen basierend auf allen Merkmalen definieren, die für Ihre Organisation geeignet sind.
+Zonen sind logische Entitäten, mit denen Sie Geräte innerhalb eines Standorts entsprechend verschiedenen Merkmalen in Gruppen aufteilen können. So können Sie beispielsweise Gruppen für Produktionslinien, Unterstationen, Standortbereiche oder Gerätetypen erstellen. Sie können Zonen basierend auf allen Merkmalen definieren, die für Ihre Organisation geeignet sind.
 
 Sie konfigurieren Zonen im Rahmen des Standortkonfigurationsprozesses.
 
@@ -231,7 +231,7 @@ In der folgenden Tabelle werden die Parameter im Fenster **Standortverwaltung** 
 | Konnektivität | Der Konnektivitätsstatus des Sensors. Der Status kann **Verbunden** oder **Getrennt** lauten. |
 | Letztes Upgrade | Das Datum des letzten Upgrades. |
 | Upgradestatus | Die Statusanzeige zeigt den Status des Upgradeprozesses so an:<br />– Paket wird hochgeladen.<br />– Installation wird vorbereitet.<br />– Prozesse werden angehalten.<br />– Daten werden gesichert.<br />– Momentaufnahme wird erstellt.<br />– Konfiguration wird aktualisiert.<br />– Abhängigkeiten werden aktualisiert.<br />– Bibliotheken werden aktualisiert.<br />– Datenbanken werden gepatcht.<br />– Prozesse werden gestartet.<br />– Systemintegrität wird überprüft.<br />– Überprüfung war erfolgreich.<br />– Erfolg<br />– Fehler<br />– Upgrade wurde gestartet.<br />– Installation wird gestartet.ogress bar shows the status of the upgrade process, as follows:<br />- Uploading package<br />- Preparing to install<br />- Stopping processes<br />- Backing up data<br />- Taking snapshot<br />- Updating configuration<br />- Updating dependencies<br />- Updating libraries<br />- Patching databases<br />- Starting processes<br />- Validating system sanity<br />- Validation succeeded<br />- Success<br />- Failure<br />- Upgrade started<br />- Starting installation<br /></br >Falls Sie Informationen zum Upgrade benötigen, bitten Sie den [Microsoft-Support](https://support.microsoft.com/) um Hilfe. |
-| Objekte | Die Anzahl von OT-Ressourcen, die der Sensor überwacht. |
+| Geräte | Die Anzahl von OT-Geräten, die der Sensor überwacht |
 | Alerts | Die Anzahl von Warnungen auf dem Sensor. |
 | :::image type="icon" source="media/how-to-activate-and-set-up-your-on-premises-management-console/assign-icon.png" border="false"::: | Ermöglicht das Zuweisen eines Sensors zu Zonen. |
 | :::image type="icon" source="media/how-to-activate-and-set-up-your-on-premises-management-console/delete-icon.png" border="false":::| Ermöglicht das Löschen eines nicht verbundenen Sensors aus dem Standort. |

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 08/24/2020
 ms.author: v-miegge
-ms.openlocfilehash: 7d1233c97ec80d5a2efa8b53c68e9e07a823165d
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 8d501bcc745ef19d15564951b8c0f29f9e2678ab
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91977030"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98661305"
 ---
 # <a name="windows-stop-error---0x00000074-bad-system-config-info"></a>Windows-kritischer Fehler: 0x00000074 Fehlerhafte Systemkonfigurationsinformationen
 
@@ -34,7 +34,7 @@ Wenn Sie die [Startdiagnose](./boot-diagnostics.md) verwenden, um den Screenshot
 *Halten Sie folgende Infos bereit, wenn Sie den Support anrufen:* 
 *Stillstandcode: BAD_SYSTEM_CONFIG_INFO*
 
-  ![Der Windows-Stillstandcode 0x00000074, der auch als „BAD_SYSTEM_CONFIG_INFO“ angezeigt wird. Windows informiert den Benutzer, dass auf dem PC ein Problem aufgetreten ist und er neu gestartet werden muss.](./media/windows-stop-error-bad-system-config-info/1.png)
+  ![Der Windows-Stillstandcode 0x00000074, der auch als „BAD_SYSTEM_CONFIG_INFO“ angezeigt wird. Windows informiert den Benutzer, dass auf dem PC ein Problem aufgetreten ist und er neu gestartet werden muss.](./media/windows-stop-error-bad-system-config-info/stop-code-0x00000074.png)
 
 ## <a name="cause"></a>Ursache
 
@@ -48,13 +48,16 @@ Der Stillstandcode **BAD_SYSTEM_CONFIG_INFO** tritt auf, wenn die Registrierungs
 
 ### <a name="process-overview"></a>Prozessübersicht:
 
+> [!TIP]
+> Wenn Sie über eine aktuelle Sicherung der VM verfügen, können Sie versuchen, die [VM aus der Sicherung wiederherzustellen](../../backup/backup-azure-arm-restore-vms.md), um das Startproblem zu beheben.
+
 1. Erstellen Sie eine Reparatur-VM, und greifen Sie darauf zu.
 1. Prüfen Sie auf eine Beschädigung der Struktur.
 1. Aktivieren Sie die serielle Konsole und die Speicherabbilderfassung.
 1. Erstellen Sie den virtuellen Computer neu.
 
-> [!NOTE]
-> Wenn dieser Fehler auftritt, ist das Gastbetriebssystem nicht funktionsfähig. Sie führen die Problembehandlung im Offlinemodus durch, um dieses Problem zu beheben.
+   > [!NOTE]
+   > Wenn dieser Fehler auftritt, ist das Gastbetriebssystem nicht funktionsfähig. Sie führen die Problembehandlung im Offlinemodus durch, um dieses Problem zu beheben.
 
 ### <a name="create-and-access-a-repair-vm"></a>Erstellen und Aufrufen einer Reparatur-VM
 
@@ -63,8 +66,8 @@ Der Stillstandcode **BAD_SYSTEM_CONFIG_INFO** tritt auf, wenn die Registrierungs
 1. Stellen Sie über die Remotedesktopverbindung eine Verbindung mit der Reparatur-VM her.
 1. Kopieren Sie den Ordner `<VOLUME LETTER OF BROKEN OS DISK>:\windows\system32\config`, und speichern Sie ihn entweder in der fehlerfreien Datenträgerpartition oder an einem anderen sicheren Speicherort. Sichern Sie diesen Ordner vorsichtshalber, da Sie kritische Registrierungsdateien bearbeiten werden. 
 
-> [!NOTE]
-> Erstellen Sie eine Kopie des Ordners `<VOLUME LETTER OF BROKEN OS DISK>:\windows\system32\config` als Sicherung für den Fall, dass Sie an der Registrierung vorgenommene Änderungen rückgängig machen müssen.
+   > [!NOTE]
+   > Erstellen Sie eine Kopie des Ordners `<VOLUME LETTER OF BROKEN OS DISK>:\windows\system32\config` als Sicherung für den Fall, dass Sie an der Registrierung vorgenommene Änderungen rückgängig machen müssen.
 
 ### <a name="check-for-hive-corruption"></a>Prüfen auf Beschädigung der Struktur
 
@@ -77,7 +80,7 @@ Mithilfe der folgenden Anweisungen können Sie feststellen, ob die Ursache eine 
 
    1. Wenn die Struktur nicht geöffnet werden kann oder leer ist, dann ist sie beschädigt. Falls die Struktur beschädigt ist, [öffnen Sie ein Supportticket](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 
-     ![Es wird ein Fehler angezeigt, der besagt, dass der Registrierungs-Editor die Struktur nicht laden kann.](./media/windows-stop-error-bad-system-config-info/2.png)
+      ![Es wird ein Fehler angezeigt, der besagt, dass der Registrierungs-Editor die Struktur nicht laden kann.](./media/windows-stop-error-bad-system-config-info/cannot-load-hive-error.png)
 
    1. Wenn die Struktur normal geöffnet wird, wurde sie nicht ordnungsgemäß geschlossen. Fahren Sie mit Schritt 5 fort.
 
@@ -92,7 +95,7 @@ Mithilfe der folgenden Anweisungen können Sie feststellen, ob die Ursache eine 
 
    **Aktivieren der seriellen Konsole**:
    
-   ```
+   ```ps
    bcdedit /store <VOLUME LETTER WHERE THE BCD FOLDER IS>:\boot\bcd /ems {<BOOT LOADER IDENTIFIER>} ON 
    bcdedit /store <VOLUME LETTER WHERE THE BCD FOLDER IS>:\boot\bcd /emssettings EMSPORT:1 EMSBAUDRATE:115200
    ```
@@ -105,13 +108,13 @@ Mithilfe der folgenden Anweisungen können Sie feststellen, ob die Ursache eine 
 
    **Laden der Registrierungsstruktur vom beschädigten Betriebssystem-Datenträger:**
 
-   ```
+   ```ps
    REG LOAD HKLM\BROKENSYSTEM <VOLUME LETTER OF BROKEN OS DISK>:\windows\system32\config\SYSTEM
    ```
 
    **Aktivieren für „ControlSet001“** :
 
-   ```
+   ```ps
    REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\CrashControl" /v CrashDumpEnabled /t REG_DWORD /d 1 /f 
    REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\CrashControl" /v DumpFile /t REG_EXPAND_SZ /d "%SystemRoot%\MEMORY.DMP" /f 
    REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\CrashControl" /v NMICrashDump /t REG_DWORD /d 1 /f 
@@ -119,7 +122,7 @@ Mithilfe der folgenden Anweisungen können Sie feststellen, ob die Ursache eine 
 
    **Aktivieren für „ControlSet002“** :
 
-   ```
+   ```ps
    REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\CrashControl" /v CrashDumpEnabled /t REG_DWORD /d 1 /f 
    REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\CrashControl" /v DumpFile /t REG_EXPAND_SZ /d "%SystemRoot%\MEMORY.DMP" /f 
    REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\CrashControl" /v NMICrashDump /t REG_DWORD /d 1 /f 
@@ -127,7 +130,7 @@ Mithilfe der folgenden Anweisungen können Sie feststellen, ob die Ursache eine 
 
    **Entladen des beschädigten Betriebssystemdatenträgers**:
 
-   ```
+   ```ps
    REG UNLOAD HKLM\BROKENSYSTEM
    ```
    

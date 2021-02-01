@@ -3,12 +3,12 @@ title: Wiederherstellen von Azure Managed Disks
 description: Erfahren Sie, wie Sie Azure Managed Disks über das Azure-Portal wiederherstellen können.
 ms.topic: conceptual
 ms.date: 01/07/2021
-ms.openlocfilehash: 043a10a7359c95529ff1c4dcc181ea4aba75cb5f
-ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
+ms.openlocfilehash: b9c9a22f25a8003151217bec15b618e3c380e67e
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98556749"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737375"
 ---
 # <a name="restore-azure-managed-disks-in-preview"></a>Wiederherstellen von Azure Managed Disks (Vorschau)
 
@@ -17,7 +17,7 @@ ms.locfileid: "98556749"
 >
 >[Füllen Sie dieses Formular aus](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR1vE8L51DIpDmziRt_893LVUNFlEWFJBN09PTDhEMjVHS05UWFkxUlUzUS4u), wenn Sie sich für die Vorschau registrieren möchten.
 
-In diesem Artikel wird erklärt, wie Sie [Azure Managed Disks](https://docs.microsoft.com/azure/virtual-machines/managed-disks-overview) aus einem von Azure Backup erstellten Wiederherstellungspunkt wiederherstellen.
+In diesem Artikel wird erklärt, wie Sie [Azure Managed Disks](../virtual-machines/managed-disks-overview.md) aus einem von Azure Backup erstellten Wiederherstellungspunkt wiederherstellen.
 
 Derzeit wird die Wiederherstellungsoption „Wiederherstellung am ursprünglichen Speicherort“, bei der die Wiederherstellung die vorhandene Instanz auf dem Quelldatenträger, von dem die Sicherungen erstellt wurden, ersetzt, nicht unterstützt. Sie können eine Wiederherstellung aus einem Wiederherstellungspunkt vornehmen, um einen neuen Datenträger entweder in derselben Ressourcengruppe wie der Quelldatenträger, von dem die Sicherungen erstellt wurden, oder in einer beliebigen anderen Ressourcengruppe zu erstellen. Dies wird als „Wiederherstellung an einem anderen Speicherort“ bezeichnet und hilft, sowohl den Quelldatenträger als auch den wiederhergestellten (neuen) Datenträger zu behalten.
 
@@ -31,7 +31,7 @@ In diesem Artikel lernen Sie Folgendes:
 
 Der Sicherungstresor verwendet die verwaltete Identität für den Zugriff auf andere Azure-Ressourcen. Um die Wiederherstellung aus einer Sicherung vornehmen, erfordert die verwaltete Identität des Sicherungstresors einen Satz von Berechtigungen für die Ressourcengruppe, in der der Datenträger wiederhergestellt werden soll.
 
-Der Sicherungstresor verwendet eine systemseitig zugewiesene verwaltete Identität, die auf eine Ressource beschränkt und an den Lebenszyklus dieser Ressource gebunden ist. Sie können der verwalteten Identität mithilfe der rollenbasierten Zugriffssteuerung von Azure (Azure RBAC) Berechtigungen erteilen. Eine verwaltete Identität ist ein spezieller Dienstprinzipal, der nur zusammen mit Azure-Ressourcen verwendet werden kann. Informieren Sie sich ausführlicher über [verwaltete Identitäten](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview).
+Der Sicherungstresor verwendet eine systemseitig zugewiesene verwaltete Identität, die auf eine Ressource beschränkt und an den Lebenszyklus dieser Ressource gebunden ist. Sie können der verwalteten Identität mithilfe der rollenbasierten Zugriffssteuerung von Azure (Azure RBAC) Berechtigungen erteilen. Eine verwaltete Identität ist ein spezieller Dienstprinzipal, der nur zusammen mit Azure-Ressourcen verwendet werden kann. Informieren Sie sich ausführlicher über [verwaltete Identitäten](../active-directory/managed-identities-azure-resources/overview.md).
 
 Der Wiederherstellungsvorgang setzt voraus, dass folgende Schritte ausgeführt werden:
 
@@ -66,6 +66,8 @@ Der Wiederherstellungsvorgang setzt voraus, dass folgende Schritte ausgeführt w
     >
     >Bei geplanten oder bedarfsgesteuerten Sicherungen speichert Azure Backup die inkrementellen Momentaufnahmen des Datenträgers in der Momentaufnahme-Ressourcengruppe, die beim Konfigurieren der Sicherung des Datenträgers bereitgestellt wird. Azure Backup verwendet diese inkrementellen Momentaufnahmen während des Wiederherstellungsvorgangs. Wenn die Momentaufnahmen gelöscht oder aus der Momentaufnahme-Ressourcengruppe verschoben werden oder wenn die Rollenzuweisungen des Sicherungstresors für die Ressourcengruppe für die Momentaufnahme aufgehoben werden, tritt beim Wiederherstellungsvorgang ein Fehler auf.
 
+1. Wenn der wiederherzustellende Datenträger mit [kundenseitig verwalteten Schlüsseln (Customer-Managed Keys, CMK)](https://docs.microsoft.com/azure/virtual-machines/disks-enable-customer-managed-keys-portal) oder mit [Mehrfachverschlüsselung mithilfe von über die Plattform verwalteten Schlüsseln und kundenseitig verwalteten Schlüsseln](https://docs.microsoft.com/azure/virtual-machines/disks-enable-double-encryption-at-rest-portal) verschlüsselt wurde, weisen Sie der verwalteten Identität des Sicherungstresors auf der Ressource **Datenträgerverschlüsselungssatz** die Rolle **Leser** zu.
+
 Sobald die Voraussetzungen erfüllt sind, führen Sie die folgenden Schritte aus, um den Wiederherstellungsvorgang zu starten.
 
 1. Wechseln Sie im [Azure-Portal](https://portal.azure.com/) zu **Backup Center**. Wählen Sie im Abschnitt **Verwalten** die Option **Sicherungsinstanzen** aus. Wählen Sie aus der Liste der Sicherungsinstanzen die gewünschte Sicherungsinstanz aus, für die Sie den Wiederherstellungsvorgang durchführen möchten.
@@ -87,7 +89,7 @@ Sobald die Voraussetzungen erfüllt sind, führen Sie die folgenden Schritte aus
     ![Wiederherstellungsparameter](./media/restore-managed-disks/restore-parameters.png)
 
     >[!TIP]
-    >Datenträger, die durch Azure Backup mithilfe der Lösung für die Datenträgersicherung gesichert werden, können auch durch Azure Backup mithilfe der Azure VM-Sicherungslösung mit dem Recovery Services-Tresor gesichert werden. Wenn Sie den Schutz des virtuellen Azure-Computers, an den dieser Datenträger angefügt ist, konfiguriert haben, können Sie auch den Wiederherstellungsvorgang des virtuellen Azure-Computers verwenden. Sie können wählen, ob Sie den virtuellen Computer oder Datenträger und Dateien oder Ordner aus dem Wiederherstellungspunkt der entsprechenden Sicherungsinstanz des Azure-Computers wiederherstellen möchten. Weitere Informationen finden Sie auf der [Sicherung von virtuellen Azure-Computern](https://docs.microsoft.com/azure/backup/about-azure-vm-restore).
+    >Datenträger, die durch Azure Backup mithilfe der Lösung für die Datenträgersicherung gesichert werden, können auch durch Azure Backup mithilfe der Azure VM-Sicherungslösung mit dem Recovery Services-Tresor gesichert werden. Wenn Sie den Schutz des virtuellen Azure-Computers, an den dieser Datenträger angefügt ist, konfiguriert haben, können Sie auch den Wiederherstellungsvorgang des virtuellen Azure-Computers verwenden. Sie können wählen, ob Sie den virtuellen Computer oder Datenträger und Dateien oder Ordner aus dem Wiederherstellungspunkt der entsprechenden Sicherungsinstanz des Azure-Computers wiederherstellen möchten. Weitere Informationen finden Sie auf der [Sicherung von virtuellen Azure-Computern](./about-azure-vm-restore.md).
 
 1. Nachdem die Überprüfung erfolgreich war, wählen Sie **Wiederherstellen** aus, um den Wiederherstellungsvorgang zu starten.
 
@@ -107,9 +109,9 @@ Durch die Wiederherstellung wird in der während des Wiederherstellungsvorgangs 
 
     ![Betriebssystem-Datenträger tauschen](./media/restore-managed-disks/swap-os-disks.png)
 
-- Wenn der wiederhergestellte Datenträger bei virtuellen Windows-Computern ein regulärer Datenträger ist, befolgen Sie die Anweisungen, um [den ursprünglichen regulären Datenträger](https://docs.microsoft.com/azure/virtual-machines/windows/detach-disk#detach-a-data-disk-using-the-portal) vom virtuellen Computer zu trennen. Anschließend können Sie [den wiederhergestellten Datenträger an den virtuellen Computer anfügen](https://docs.microsoft.com/azure/virtual-machines/windows/attach-managed-disk-portal). Befolgen Sie die Anweisungen zum [Tauschen des Betriebssystem-Datenträgers](https://docs.microsoft.com/azure/virtual-machines/windows/os-disk-swap) des virtuellen Computers gegen den wiederhergestellten Datenträger.
+- Wenn der wiederhergestellte Datenträger bei virtuellen Windows-Computern ein regulärer Datenträger ist, befolgen Sie die Anweisungen, um [den ursprünglichen regulären Datenträger](../virtual-machines/windows/detach-disk.md#detach-a-data-disk-using-the-portal) vom virtuellen Computer zu trennen. Anschließend können Sie [den wiederhergestellten Datenträger an den virtuellen Computer anfügen](../virtual-machines/windows/attach-managed-disk-portal.md). Befolgen Sie die Anweisungen zum [Tauschen des Betriebssystem-Datenträgers](../virtual-machines/windows/os-disk-swap.md) des virtuellen Computers gegen den wiederhergestellten Datenträger.
 
-- Wenn der wiederhergestellte Datenträger bei virtuellen Linux-Computern ein regulärer Datenträger ist, befolgen Sie die Anweisungen, um [den ursprünglichen regulären Datenträger](https://docs.microsoft.com/azure/virtual-machines/linux/detach-disk#detach-a-data-disk-using-the-portal) vom virtuellen Computer zu trennen. Anschließend können Sie [den wiederhergestellten Datenträger an den virtuellen Computer anfügen](https://docs.microsoft.com/azure/virtual-machines/linux/attach-disk-portal#attach-an-existing-disk). Befolgen Sie die Anweisungen zum [Tauschen des Betriebssystem-Datenträgers](https://docs.microsoft.com/azure/virtual-machines/linux/os-disk-swap) des virtuellen Computers gegen den wiederhergestellten Datenträger.
+- Wenn der wiederhergestellte Datenträger bei virtuellen Linux-Computern ein regulärer Datenträger ist, befolgen Sie die Anweisungen, um [den ursprünglichen regulären Datenträger](../virtual-machines/linux/detach-disk.md#detach-a-data-disk-using-the-portal) vom virtuellen Computer zu trennen. Anschließend können Sie [den wiederhergestellten Datenträger an den virtuellen Computer anfügen](../virtual-machines/linux/attach-disk-portal.md#attach-an-existing-disk). Befolgen Sie die Anweisungen zum [Tauschen des Betriebssystem-Datenträgers](../virtual-machines/linux/os-disk-swap.md) des virtuellen Computers gegen den wiederhergestellten Datenträger.
 
 Es wird empfohlen, die Rollenzuweisung **Operator für die Datenträgerwiederherstellung** aus der verwalteten Identität des Sicherungstresors in der **Zielressourcengruppe** zu widerrufen.
 

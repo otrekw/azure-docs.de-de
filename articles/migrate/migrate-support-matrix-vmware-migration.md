@@ -6,12 +6,12 @@ ms.author: anvar
 ms.manager: bsiva
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: b263d3e62ae97914fc8e06580486bddd0cb9b3b7
-ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
+ms.openlocfilehash: 0b671fbdfe16848012ac94671ce68e8a33a8b3e8
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97968448"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98703868"
 ---
 # <a name="support-matrix-for-vmware-migration"></a>Unterstützungsmatrix für die VMware-Migration
 
@@ -166,7 +166,7 @@ Architektur des Gastbetriebssystems | 64 Bit.
 Größe des Betriebssystem-Datenträgers | Bis zu 2.048 GB. 
 Anzahl von Betriebssystem-Datenträgern | 1 
 Anzahl von Datenträgern für Daten | Maximal 64. 
-Datenträgergröße | Bis zu 8.095 GB
+Datenträgergröße | Bis zu 32 TB
 Netzwerkadapter | Es werden mehrere Adapter unterstützt.
 Freigegebene VHD | Wird nicht unterstützt. 
 Fiber-Channel-Datenträger | Wird nicht unterstützt. 

@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 01/06/2021
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: e15dce586dc4dd43cf56fd1cbb08b84ebcda1787
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: c58f4a553073eb3ed062ef9ec2a66c8e4f40e57b
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98232300"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98785124"
 ---
 # <a name="desktop-app-that-calls-web-apis-acquire-a-token"></a>Desktop-App, die Web-APIs aufruft: Abrufen eines Token
 
@@ -439,7 +439,7 @@ Wenn Sie einen Domänenbenutzer in einer Domäne oder einen in Azure AD eingebun
 
 - Dieser Flow ist aktiviert für .NET Desktop-, .NET Core- und UWP-Apps.
 
-Weitere Informationen zur Zustimmung finden Sie unter [Berechtigungen und Zustimmung in Microsoft Identity Platform](./v2-permissions-and-consent.md).
+Weitere Informationen zur Einwilligung finden Sie unter [Berechtigungen und Einwilligung in Microsoft Identity Platform](./v2-permissions-and-consent.md).
 
 ### <a name="learn-how-to-use-it"></a>Informationen zur Verwendung
 
@@ -451,7 +451,7 @@ In MSAL.NET müssen Sie Folgendes verwenden:
 AcquireTokenByIntegratedWindowsAuth(IEnumerable<string> scopes)
 ```
 
-Normalerweise benötigen Sie nur einen Parameter (`scopes`). Je nach Einrichtung der Richtlinien durch Ihren Windows-Administrator kann es jedoch möglich sein, dass Anwendungen auf dem Windows-Computer den angemeldeten Benutzer nicht abfragen dürfen. Verwenden Sie in diesem Fall eine zweite Methode (`.WithUsername()`), und übergeben Sie den Benutzernamen des angemeldeten Benutzers im UPN-Format, z. B. `joe@contoso.com`. Für .NET Core ist nur die Überladung mit dem Benutzernamen verfügbar, da die .NET Core-Plattform den Benutzernamen für das Betriebssystem nicht anfordern kann.
+Normalerweise benötigen Sie nur einen Parameter (`scopes`). Je nach Einrichtung der Richtlinien durch Ihren Windows-Administrator kann es jedoch möglich sein, dass Anwendungen auf dem Windows-Computer den angemeldeten Benutzer nicht abfragen dürfen. Verwenden Sie in diesem Fall eine zweite Methode (`.WithUsername()`), und übergeben Sie den Benutzernamen des angemeldeten Benutzers im UPN-Format, z. B. `joe@contoso.com`.
 
 Im folgenden Beispiel wird der aktuelle Fall veranschaulicht. Außerdem erhalten Sie Erläuterungen zu den Ausnahmearten und den entsprechenden Problembehandlungen.
 
@@ -1181,7 +1181,7 @@ Die Anpassung der Tokencacheserialisierung für die gemeinsame Verwendung des SS
 
 ### <a name="simple-token-cache-serialization-msal-only"></a>Einfache Serialisierung des Tokencaches (nur MSAL)
 
-Das folgende Beispiel zeigt eine einfache Implementierung der benutzerdefinierten Serialisierung eines Tokencaches für Desktopanwendungen. Hier befindet sich der Benutzertokencache in einer Datei, die sich im selben Ordner wie die Anwendung oder bei einer [gepackten Desktopanwendung](https://docs.microsoft.com/windows/msix/desktop/desktop-to-uwp-behind-the-scenes) in einem benutzerspezifischen App-Ordner befindet. Den vollständigen Code finden Sie im folgenden Beispiel: [active-directory-dotnet-desktop-msgraph-v2](https://github.com/Azure-Samples/active-directory-dotnet-desktop-msgraph-v2).
+Das folgende Beispiel zeigt eine einfache Implementierung der benutzerdefinierten Serialisierung eines Tokencaches für Desktopanwendungen. Hier befindet sich der Benutzertokencache in einer Datei, die sich im selben Ordner wie die Anwendung oder bei einer [gepackten Desktopanwendung](/windows/msix/desktop/desktop-to-uwp-behind-the-scenes) in einem benutzerspezifischen App-Ordner befindet. Den vollständigen Code finden Sie im folgenden Beispiel: [active-directory-dotnet-desktop-msgraph-v2](https://github.com/Azure-Samples/active-directory-dotnet-desktop-msgraph-v2).
 
 Nach dem Erstellen der Anwendung aktivieren Sie die Serialisierung durch den Aufruf von ``TokenCacheHelper.EnableSerialization()`` und übergeben den `UserTokenCache` der Anwendung.
 

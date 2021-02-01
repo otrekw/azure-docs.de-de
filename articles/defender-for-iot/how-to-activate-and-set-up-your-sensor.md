@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 1/12/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 4ad1562bdd9853b6ff3c537790a54dbeab96b5b8
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: 908460bd0a034e21524b6ea6d3042f362cc810d4
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98538566"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98623588"
 ---
 # <a name="activate-and-set-up-your-sensor"></a>Aktivieren und Einrichten des Sensors
 
@@ -134,9 +134,9 @@ Nach der Anmeldung wird die Azure Defender für IoT-Konsole geöffnet.
 
 ## <a name="initial-setup-and-learning-for-administrators"></a>Anfängliches Setup und Lernmodus (für Administratoren)
 
-Nach Ihrer ersten Anmeldung beginnt der Azure Defender für IoT-Sensor automatisch mit der Überwachung Ihres Netzwerks. Netzwerkressourcen werden in den Abschnitten „Asset Map“ (Ressourcenübersicht) und „Asset Inventory“ (Ressourcenbestand) angezeigt. Azure Defender für IoT beginnt mit der Erkennung und Warnung bei allen Sicherheits- und Betriebsvorfällen, die in Ihrem Netzwerk auftreten. Sie können anschließend Berichte und Abfragen auf Grundlage der erkannten Informationen erstellen.
+Nach Ihrer ersten Anmeldung beginnt der Azure Defender für IoT-Sensor automatisch mit der Überwachung Ihres Netzwerks. Netzwerkgeräte werden in den Abschnitten mit der Gerätezuordnung und dem Gerätebestand angezeigt. Azure Defender für IoT beginnt mit der Erkennung und Warnung bei allen Sicherheits- und Betriebsvorfällen, die in Ihrem Netzwerk auftreten. Sie können anschließend Berichte und Abfragen auf Grundlage der erkannten Informationen erstellen.
 
-Zunächst erfolgt diese Aktivität im Lernmodus, der Ihren Sensor anweist, die übliche Aktivität Ihres Netzwerks zu erfassen. Der Sensor erfasst z. B. in Ihrem Netzwerk entdeckte Ressourcen, im Netzwerk erkannte Protokolle und zwischen bestimmten Ressourcen stattfindende Dateiübertragungen. Diese Aktivität wird zur Baselineaktivität Ihres Netzwerks.
+Zunächst erfolgt diese Aktivität im Lernmodus, der Ihren Sensor anweist, die übliche Aktivität Ihres Netzwerks zu erfassen. Der Sensor erfasst z. B. in Ihrem Netzwerk entdeckte Geräte, im Netzwerk erkannte Protokolle und zwischen bestimmten Geräten stattfindende Dateiübertragungen. Diese Aktivität wird zur Baselineaktivität Ihres Netzwerks.
 
 ### <a name="review-and-update-basic-system-settings"></a>Überprüfen und Aktualisieren grundlegender Systemeinstellungen
 

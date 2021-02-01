@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/28/2020
 ms.author: yitoh
-ms.openlocfilehash: b53501bf5aa4bafb0229158edfe0cb244116b909
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 89685d1b8c3a57fa142bbbfd1114f9aa0ff0c400
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 01/20/2021
-ms.locfileid: "98600843"
+ms.locfileid: "98611116"
 ---
 # <a name="azure-ddos-protection-standard-frequent-asked-questions"></a>Azure DDoS Protection Standard: häufig gestellte Fragen
 
@@ -79,4 +79,7 @@ Weitere Informationen finden Sie unter [Durchführen von Simulationstests](test-
 
 ## <a name="how-long-does-it-take-for-the-metrics-to-load-on-portal"></a>Wie lange dauert das Laden der Metriken in das Portal?
 Die Metriken sollten binnen 5 Minuten im Portal sichtbar sein. Wenn Ihre Ressource angegriffen wird, werden andere Metriken innerhalb von 5-7 Minuten im Portal angezeigt. 
+
+## <a name="does-the-service-store-customer-data"></a>Speichert der Dienst Kundendaten?
+Nein, in Azure DDoS Protection werden keine Kundendaten gespeichert.
     

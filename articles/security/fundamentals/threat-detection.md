@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/21/2017
+ms.date: 01/24/2021
 ms.author: TomSh
-ms.openlocfilehash: b9770a43309f5471760dc2482833e4bab45c6f5b
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: c8fbb2f6d858b2f654ff404bef3b415bf170ab37
+ms.sourcegitcommit: 3c8964a946e3b2343eaf8aba54dee41b89acc123
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94409925"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98747272"
 ---
 # <a name="azure-advanced-threat-detection"></a>Erweiterte Bedrohungserkennung von Azure
 
@@ -135,21 +135,25 @@ Sie können DSC-Ressourcen erstellen und verwalten, die in Azure gehostet werden
 
 ## <a name="azure-security-center"></a>Azure Security Center
 
-Azure Security Center unterstützt Sie beim Schützen Ihrer Azure-Ressourcen. Es bietet eine integrierte Sicherheitsüberwachung und Richtlinienverwaltung für Ihre Azure-Abonnements. Im Dienst können Sie Richtlinien sowohl für Ihre Azure-Abonnements als auch für [Ressourcengruppen](../../azure-resource-manager/management/manage-resources-portal.md) definieren, um eine bessere Granularität zu erzielen.
+Azure Security Center unterstützt Sie beim Schützen Ihrer Hybrid Cloud-Umgebung. Durch die Durchführung von kontinuierlichen Sicherheitsbewertungen Ihrer verbundenen Ressourcen können detaillierte Sicherheitsempfehlungen für die ermittelten Sicherheitslücken bereitgestellt werden.
 
-![Azure Security Center-Diagramm](./media/threat-detection/azure-threat-detection-fig8.png)
+Die Empfehlungen von Security Center basieren auf dem [Azure-Sicherheitsvergleichstest](../benchmarks/introduction.md). Dabei handelt es sich um einen von Microsoft erstellten Satz Azure-spezifischer Richtlinien zu bewährten Methoden für Sicherheit und Compliance, die auf allgemeinen Complianceframeworks basieren. Diese weit verbreitete Benchmark basiert auf den Kontrollen des [Center for Internet Security (CIS)](https://www.cisecurity.org/benchmark/azure/) und des [National Institute of Standards and Technology (NIST)](https://www.nist.gov/) und konzentriert sich auf cloudzentrierte Sicherheit.
+
+Die in Security Center integrierte Cloudworkloadschutz-Plattform (CWPP), **Azure Defender**, bietet erweiterten, intelligenten Schutz für Ihre Azure- und Hybridressourcen und -workloads. Durch die Aktivierung von Azure Defender wird eine Reihe zusätzlicher Sicherheitsfeatures bereitgestellt (siehe [Einführung in Azure Defender](../../security-center/azure-defender.md)). Das Azure Defender-Dashboard in Security Center bietet Transparenz und Kontrolle der CWP-Features für Ihre Umgebung:
+
+:::image type="content" source="../../security-center/media/azure-defender/sample-defender-dashboard.png" alt-text="Beispiel für das Azure Defender-Dashboard" lightbox="../../security-center/media/azure-defender/sample-defender-dashboard.png":::
 
 Microsoft-Sicherheitsexperten suchen ständig nach neuen Bedrohungen. Sie haben Zugriff auf umfassende Telemetriedaten, die auf der globalen Präsenz von Microsoft in der Cloud und in lokalen Umgebungen basieren. Aufgrund dieser weit reichenden und verschiedenartigen Sammlung von Datasets kann Microsoft neue Angriffsmuster und Trends für seine lokalen Privatkunden- und Unternehmensprodukte sowie für seine Onlinedienste erkennen.
 
 Auf diese Weise können die Erkennungsalgorithmen von Security Center schnell aktualisiert werden, wenn Angreifer neue und immer anspruchsvollere Exploit-Verfahren nutzen. So können Sie mit der rasanten Entwicklung von Bedrohungen Schritt halten.
 
-![Security Center-Bedrohungserkennung](./media/threat-detection/azure-threat-detection-fig9.jpg)
+:::image type="content" source="../../security-center/media/security-center-managing-and-responding-alerts/alerts-page.png" alt-text="Liste der Sicherheitswarnungen von Azure Security Center":::
 
-Bei der Bedrohungserkennung von Security Center werden automatisch Sicherheitsinformationen von Ihren Azure-Ressourcen, aus dem Netzwerk und von verbundenen Partnerlösungen gesammelt. Diese Informationen, bei denen es sich um korrelierende Informationen aus mehreren Quellen handelt, werden analysiert, um Bedrohungen zu identifizieren.
+Azure Defender sammelt automatisch Sicherheitsinformationen von Ihren Azure-Ressourcen, aus dem Netzwerk und von verbundenen Partnerlösungen. Diese Informationen, bei denen es sich um korrelierende Informationen aus mehreren Quellen handelt, werden analysiert, um Bedrohungen zu identifizieren.
 
-Sicherheitswarnungen werden in Security Center zusammen mit Empfehlungen zur Lösung der Bedrohung priorisiert.
+Warnungen von Azure Defender werden in Security Center zusammen mit Empfehlungen zur Lösung der Bedrohung priorisiert.
 
-Für Security Center werden professionelle Sicherheitsanalysen genutzt, die weit über signaturbasierte Ansätze hinausgehen. Bahnbrechende Neuerungen der Big Data- und [Machine Learning](https://azure.microsoft.com/blog/machine-learning-in-azure-security-center/)-Technologie werden genutzt, um Ereignisse übergreifend für die gesamte Cloud-Fabric auszuwerten. Mit der erweiterten Analyse können Bedrohungen erkannt werden, die mit manuellen Ansätzen und der Vorhersage zur Entwicklung von Angriffen nicht identifiziert werden können. Diese Arten von Lösungen für die Sicherheitsanalyse werden in den nächsten Abschnitten beschrieben.
+Für Security Center werden professionelle Sicherheitsanalysen genutzt, die weit über signaturbasierte Ansätze hinausgehen. Bahnbrechende Neuerungen bei Big Data- und [Machine Learning](https://azure.microsoft.com/blog/machine-learning-in-azure-security-center/)-Technologien werden genutzt, um Ereignisse übergreifend für die gesamte Cloud auszuwerten. Mit der erweiterten Analyse können Bedrohungen erkannt werden, die mit manuellen Ansätzen und der Vorhersage zur Entwicklung von Angriffen nicht identifiziert werden können. Diese Arten von Lösungen für die Sicherheitsanalyse werden in den nächsten Abschnitten beschrieben.
 
 ### <a name="threat-intelligence"></a>Bedrohungsanalyse
 
@@ -182,33 +186,33 @@ Die Muster werden auch anhand einer sorgfältigen Analyse von schädlichem Verha
 Außerdem werden Muster mit anderen Signalen korreliert, damit weitere Beweise für eine größere Aktion ermittelt werden können. So können Ereignisse identifiziert werden, die mit vorhandenen Indikatoren für eine Kompromittierung übereinstimmen.
 
 Beispiele hierfür sind:
--   **Ausführung von verdächtigen Prozessen** : Angreifer nutzen verschiedene Verfahren, um unbemerkt Schadsoftware auszuführen. Beispielsweise können Angreifer Schadsoftware mit dem Namen regulärer Systemdateien versehen, diese dann aber an einem anderen Speicherort ablegen. Alternativ können sie einen Namen verwenden, der dem Namen einer unbedenklichen Datei ähnelt, oder die tatsächliche Dateinamenerweiterung verschleiern. Security Center modelliert Prozessverhalten und überwacht die Prozessausführung, um Ausreißer dieser Art zu erkennen.
+-   **Ausführung von verdächtigen Prozessen**: Angreifer nutzen verschiedene Verfahren, um unbemerkt Schadsoftware auszuführen. Beispielsweise können Angreifer Schadsoftware mit dem Namen regulärer Systemdateien versehen, diese dann aber an einem anderen Speicherort ablegen. Alternativ können sie einen Namen verwenden, der dem Namen einer unbedenklichen Datei ähnelt, oder die tatsächliche Dateinamenerweiterung verschleiern. Security Center modelliert Prozessverhalten und überwacht die Prozessausführung, um Ausreißer dieser Art zu erkennen.
 
--   **Versteckte Schadsoftware und versuchte Ausnutzung von Schwachstellen** : Ausgereifte Schadsoftware kann herkömmliche Antischadsoftware-Produkte umgehen, indem sie entweder nie auf den Datenträger schreibt oder auf dem Datenträger gespeicherte Softwarekomponenten verschlüsselt. Schadsoftware dieser Art kann aber mithilfe der Arbeitsspeicheranalyse erkannt werden, da die Schadsoftware Spuren im Arbeitsspeicher hinterlassen muss, um funktionieren zu können. Beim Absturz von Software wird in einem Absturzabbild ein Teil des Arbeitsspeichers zum Zeitpunkt des Absturzes erfasst. Indem die Arbeitsspeicherdaten im Absturzabbild analysiert werden, kann Azure Security Center Verfahren erkennen, die für folgende Zwecke verwendet werden: Ausnutzen von Schwachstellen in Software, Zugreifen auf vertrauliche Daten und Bewegen auf einem kompromittierten Computer ohne Auswirkung auf die Leistung des Computers.
+-   **Versteckte Schadsoftware und versuchte Ausnutzung von Schwachstellen**: Ausgereifte Schadsoftware kann herkömmliche Antischadsoftware-Produkte umgehen, indem sie entweder nie auf den Datenträger schreibt oder auf dem Datenträger gespeicherte Softwarekomponenten verschlüsselt. Schadsoftware dieser Art kann aber mithilfe der Arbeitsspeicheranalyse erkannt werden, da die Schadsoftware Spuren im Arbeitsspeicher hinterlassen muss, um funktionieren zu können. Beim Absturz von Software wird in einem Absturzabbild ein Teil des Arbeitsspeichers zum Zeitpunkt des Absturzes erfasst. Indem die Arbeitsspeicherdaten im Absturzabbild analysiert werden, kann Azure Security Center Verfahren erkennen, die für folgende Zwecke verwendet werden: Ausnutzen von Schwachstellen in Software, Zugreifen auf vertrauliche Daten und Bewegen auf einem kompromittierten Computer ohne Auswirkung auf die Leistung des Computers.
 
--   **Seitwärtsbewegung und interne Aufklärung** : Um wertvolle Daten in einem kompromittierten Netzwerk ausfindig machen und abschöpfen zu können, versuchen Angreifer häufig, vom kompromittierten Computer aus auf andere Computer im selben Netzwerk zuzugreifen. Security Center überwacht die Verarbeitungs- und Anmeldeaktivitäten, um versuchte Aktionen aufzudecken, mit denen Angreifer ihre Basis im Netzwerk ausbauen möchten, z. B. Ausführung von Remotebefehlen im Netzwerk und Kontoauflistung.
+-   **Seitwärtsbewegung und interne Aufklärung**: Um wertvolle Daten in einem kompromittierten Netzwerk ausfindig machen und abschöpfen zu können, versuchen Angreifer häufig, vom kompromittierten Computer aus auf andere Computer im selben Netzwerk zuzugreifen. Security Center überwacht die Verarbeitungs- und Anmeldeaktivitäten, um versuchte Aktionen aufzudecken, mit denen Angreifer ihre Basis im Netzwerk ausbauen möchten, z. B. Ausführung von Remotebefehlen im Netzwerk und Kontoauflistung.
 
 -   **Schädliche PowerShell-Skripts:** PowerShell wird von Angreifern verwendet, um zu unterschiedlichen Zwecken Schadcode auf virtuellen Zielcomputern auszuführen. Security Center untersucht die PowerShell-Aktivitäten auf Beweise für verdächtige Vorgänge.
 
--   **Ausgehende Angriffe** : Angreifer nehmen häufig Cloudressourcen ins Visier, um diese zur Durchführung weiterer Angriffe zu nutzen. Kompromittierte virtuelle Computer können beispielsweise verwendet werden, um Brute-Force-Angriffe auf andere virtuelle Computer zu starten, Spam zu senden oder nach offenen Ports und anderen Geräten im Internet zu suchen. Indem Machine Learning-Verfahren auf den Netzwerkdatenverkehr angewendet werden, kann Security Center erkennen, wenn ausgehende Netzwerkkommunikation außerhalb der Norm liegt. Bei der Erkennung von Spam korreliert Security Center außerdem ungewöhnlichen E-Mail-Datenverkehr mit Informationen aus Microsoft 365, um zu ermitteln, ob die E-Mail vermutlich schädlich oder das Ergebnis einer legitimen E-Mail-Kampagne ist.
+-   **Ausgehende Angriffe**: Angreifer nehmen häufig Cloudressourcen ins Visier, um diese zur Durchführung weiterer Angriffe zu nutzen. Kompromittierte virtuelle Computer können beispielsweise verwendet werden, um Brute-Force-Angriffe auf andere virtuelle Computer zu starten, Spam zu senden oder nach offenen Ports und anderen Geräten im Internet zu suchen. Indem Machine Learning-Verfahren auf den Netzwerkdatenverkehr angewendet werden, kann Security Center erkennen, wenn ausgehende Netzwerkkommunikation außerhalb der Norm liegt. Bei der Erkennung von Spam korreliert Security Center außerdem ungewöhnlichen E-Mail-Datenverkehr mit Informationen aus Microsoft 365, um zu ermitteln, ob die E-Mail vermutlich schädlich oder das Ergebnis einer legitimen E-Mail-Kampagne ist.
 
 ### <a name="anomaly-detection"></a>Anomalieerkennung
 
 Azure Security Center nutzt auch die Anomalieerkennung, um Bedrohungen zu identifizieren. Im Gegensatz zur Verhaltensanalyse (basiert auf bekannten Mustern, die aus großen Datasets abgeleitet werden) ist die Anomalieerkennung „personalisierter“ und nutzt Baselines, die speziell für Ihre Bereitstellungen gelten. Machine Learning wird angewendet, um die normale Aktivität für Ihre Bereitstellungen zu ermitteln. Anschließend werden Regeln generiert, um Ausreißerbedingungen zu definieren, die ein Sicherheitsereignis darstellen können. Hier ist ein Beispiel angegeben:
 
--   **Eingehende RDP/SSH-Brute-Force-Angriffe** : Es kann sein, dass Ihre Bereitstellungen gleichzeitig stark ausgelastete virtuelle Computer mit vielen täglichen Anmeldungen und andere virtuelle Computer mit wenigen oder gar keinen Anmeldungen umfassen. Azure Security Center kann eine Baseline der Anmeldeaktivität für diese virtuellen Computer ermitteln und anhand von Machine Learning-Verfahren definieren, welche Aktionen normale Anmeldeaktivitäten sind. Wenn es Abweichungen bei der Baseline gibt, die für anmeldungsbezogene Eigenschaften definiert ist, wird unter Umständen eine Warnung generiert. Auch hier wird wieder per Machine Learning-Verfahren ermittelt, was relevant ist.
+-   **Eingehende RDP/SSH-Brute-Force-Angriffe**: Es kann sein, dass Ihre Bereitstellungen gleichzeitig stark ausgelastete virtuelle Computer mit vielen täglichen Anmeldungen und andere virtuelle Computer mit wenigen oder gar keinen Anmeldungen umfassen. Azure Security Center kann eine Baseline der Anmeldeaktivität für diese virtuellen Computer ermitteln und anhand von Machine Learning-Verfahren definieren, welche Aktionen normale Anmeldeaktivitäten sind. Wenn es Abweichungen bei der Baseline gibt, die für anmeldungsbezogene Eigenschaften definiert ist, wird unter Umständen eine Warnung generiert. Auch hier wird wieder per Machine Learning-Verfahren ermittelt, was relevant ist.
 
 ### <a name="continuous-threat-intelligence-monitoring"></a>Fortlaufende Threat Intelligence-Überwachung
 
 Azure Security Center arbeitet mit Sicherheitsforschungs- und Data Science-Teams auf der ganzen Welt, die ständig Änderungen der Bedrohungslandschaft überwachen. Dies umfasst Folgendes:
 
--   **Threat Intelligence-Überwachung** : Informationen zu Bedrohungen (Threat Intelligence) umfassen Mechanismen, Indikatoren, Auswirkungen und nützliche Hinweise zu vorhandenen oder neuen Bedrohungen. Diese Informationen werden in der Sicherheitscommunity bereitgestellt, und Microsoft überwacht fortlaufend Threat Intelligence-Feeds von internen und externen Quellen.
+-   **Threat Intelligence-Überwachung**: Informationen zu Bedrohungen (Threat Intelligence) umfassen Mechanismen, Indikatoren, Auswirkungen und nützliche Hinweise zu vorhandenen oder neuen Bedrohungen. Diese Informationen werden in der Sicherheitscommunity bereitgestellt, und Microsoft überwacht fortlaufend Threat Intelligence-Feeds von internen und externen Quellen.
 
--   **Signalaustausch** : Die Erkenntnisse der Sicherheitsteams des gesamten umfangreichen Microsoft-Portfolios mit Clouddiensten und lokalen Diensten, Servern und Clientendpunkt-Geräten werden ausgetauscht und analysiert.
+-   **Signalaustausch**: Die Erkenntnisse der Sicherheitsteams des gesamten umfangreichen Microsoft-Portfolios mit Clouddiensten und lokalen Diensten, Servern und Clientendpunkt-Geräten werden ausgetauscht und analysiert.
 
--   **Microsoft-Sicherheitsexperten** : Ständiger Austausch mit Teams von Microsoft, die sich mit speziellen Sicherheitsfeldern beschäftigen, z.B. Forensik und Erkennung von Webangriffen.
+-   **Microsoft-Sicherheitsexperten**: Ständiger Austausch mit Teams von Microsoft, die sich mit speziellen Sicherheitsfeldern beschäftigen, z.B. Forensik und Erkennung von Webangriffen.
 
--   **Erkennungsoptimierung** : Algorithmen werden für echte Kundendatasets ausgeführt, und Sicherheitsexperten werten die Ergebnisse zusammen mit den Kunden aus. Richtige und falsche Positivmeldungen werden verwendet, um Machine Learning-Algorithmen zu verfeinern.
+-   **Erkennungsoptimierung**: Algorithmen werden für echte Kundendatasets ausgeführt, und Sicherheitsexperten werten die Ergebnisse zusammen mit den Kunden aus. Richtige und falsche Positivmeldungen werden verwendet, um Machine Learning-Algorithmen zu verfeinern.
 
 Diese kombinierten Verfahren führen zu neuen und verbesserten Erkennungsergebnissen, von denen Sie sofort profitieren können. Sie müssen hierfür nichts unternehmen.
 
@@ -222,25 +226,25 @@ Diese kombinierten Verfahren führen zu neuen und verbesserten Erkennungsergebni
 
 Hier sind die Features von Azure zum Bereitstellen und Aktivieren von Microsoft Antimalware für Ihre Anwendungen aufgeführt:
 
--   **Echtzeitschutz** : Überwacht die Aktivitäten in Cloud Services und auf virtuellen Computern, um die Ausführung von Schadsoftware zu erkennen und zu blockieren.
+-   **Echtzeitschutz**: Überwacht die Aktivitäten in Cloud Services und auf virtuellen Computern, um die Ausführung von Schadsoftware zu erkennen und zu blockieren.
 
--   **Geplantes Scannen** : Führt regelmäßig gezielte Scans aus, um Schadsoftware, einschließlich aktiv ausgeführter Programme, zu erkennen.
+-   **Geplantes Scannen**: Führt regelmäßig gezielte Scans aus, um Schadsoftware, einschließlich aktiv ausgeführter Programme, zu erkennen.
 
--   **Schadsoftwarebehandlung** : Führt automatisch Aktionen für erkannte Schadsoftware aus, z.B. Löschen schädlicher Dateien, Unter-Quarantäne-Stellen schädlicher Dateien und Bereinigen schädlicher Registrierungseinträge.
+-   **Schadsoftwarebehandlung**: Führt automatisch Aktionen für erkannte Schadsoftware aus, z.B. Löschen schädlicher Dateien, Unter-Quarantäne-Stellen schädlicher Dateien und Bereinigen schädlicher Registrierungseinträge.
 
--   **Signaturaktualisierungen** : Installiert automatisch mit einer vordefinierten Häufigkeit die neuesten Schutzsignaturen (Virendefinitionen), um sicherzustellen, dass der Schutz auf dem neuesten Stand ist.
+-   **Signaturaktualisierungen**: Installiert automatisch mit einer vordefinierten Häufigkeit die neuesten Schutzsignaturen (Virendefinitionen), um sicherzustellen, dass der Schutz auf dem neuesten Stand ist.
 
 -   **Aktualisierungen des Antischadsoftware-Moduls:** Führt eine automatische Aktualisierung des Microsoft Antimalware-Moduls durch.
 
--   **Aktualisierungen der Antimalware-Plattform** : Führt eine automatische Aktualisierung der Microsoft Antimalware-Plattform durch.
+-   **Aktualisierungen der Antimalware-Plattform**: Führt eine automatische Aktualisierung der Microsoft Antimalware-Plattform durch.
 
--   **Aktiver Schutz** : Übermittelt Telemetriemetadaten über erkannte Bedrohungen und verdächtige Ressourcen an Microsoft Azure, um eine schnelle Reaktion auf die ständig zunehmenden Bedrohungen sicherzustellen. Auf diese Weise wird eine synchrone Echtzeitübermittlung von Signaturen über das aktive Schutzsystem von Microsoft ermöglicht.
+-   **Aktiver Schutz**: Übermittelt Telemetriemetadaten über erkannte Bedrohungen und verdächtige Ressourcen an Microsoft Azure, um eine schnelle Reaktion auf die ständig zunehmenden Bedrohungen sicherzustellen. Auf diese Weise wird eine synchrone Echtzeitübermittlung von Signaturen über das aktive Schutzsystem von Microsoft ermöglicht.
 
--   **Übermittlung von Stichproben** : Übermittelt Stichproben an den Microsoft Antimalware-Dienst, um den Dienst zu optimieren und eine Problembehandlung zu ermöglichen.
+-   **Übermittlung von Stichproben**: Übermittelt Stichproben an den Microsoft Antimalware-Dienst, um den Dienst zu optimieren und eine Problembehandlung zu ermöglichen.
 
--   **Ausschlüsse** : Ermöglicht es Anwendungs- und Dienstadministratoren, aus Gründen der Leistung oder anderen Gründen bestimmte Dateien, Prozesse und Laufwerke vom Schutz und von Scans auszuschließen.
+-   **Ausschlüsse**: Ermöglicht es Anwendungs- und Dienstadministratoren, aus Gründen der Leistung oder anderen Gründen bestimmte Dateien, Prozesse und Laufwerke vom Schutz und von Scans auszuschließen.
 
--   **Antischadsoftware-Ereigniserfassung** : Zeichnet die Integrität des Antimalware-Diensts, verdächtige Aktivitäten und durchgeführte Wiederherstellungsaktionen im Ereignisprotokoll des Betriebssystems auf und erfasst sie im Azure Storage-Konto des Kunden.
+-   **Antischadsoftware-Ereigniserfassung**: Zeichnet die Integrität des Antimalware-Diensts, verdächtige Aktivitäten und durchgeführte Wiederherstellungsaktionen im Ereignisprotokoll des Betriebssystems auf und erfasst sie im Azure Storage-Konto des Kunden.
 
 ### <a name="azure-sql-database-threat-detection"></a>Bedrohungserkennung von Azure SQL-Datenbank
 
@@ -306,7 +310,7 @@ Die [API zur Anomalieerkennung](../../machine-learning/team-data-science-process
 
 -   **Spitzen und Abfälle:** Beim Überwachen der Anzahl von fehlerhaften Anmeldeversuchen bei einem Dienst oder der Anzahl von Auscheckvorgängen einer E-Commerce-Website können ungewöhnliche Spitzen oder Abfälle auf Sicherheitsangriffe oder Dienstunterbrechungen hinweisen.
 
--   **Positive und negative Trends** : Beim Überwachen der Computing-Speicherauslastung deutet eine stärkere Verringerung des freien Speichers auf einen potenziellen Arbeitsspeicherverlust hin. In Bezug auf die Überwachung der Dienstwarteschlangenlänge kann ein beständiger Aufwärtstrend auf ein zugrunde liegendes Softwareproblem hinweisen.
+-   **Positive und negative Trends**: Beim Überwachen der Computing-Speicherauslastung deutet eine stärkere Verringerung des freien Speichers auf einen potenziellen Arbeitsspeicherverlust hin. In Bezug auf die Überwachung der Dienstwarteschlangenlänge kann ein beständiger Aufwärtstrend auf ein zugrunde liegendes Softwareproblem hinweisen.
 
 -   **Niveauänderungen und Änderungen am dynamischen Bereich von Werten:** Niveauänderungen bei den Latenzzeiten eines Diensts nach einem Dienstupgrade oder ein geringerer Grad an Ausnahmen nach dem Upgrade können für die Überwachung interessant sein.
 

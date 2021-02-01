@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/05/2021
 ms.author: memildin
-ms.openlocfilehash: 1e6b66fce6b22dfd12c162d469ce44137c94ab87
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: e881c61d16cd167ace78abb96dca7e714436cfc0
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97916370"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98752225"
 ---
 # <a name="secure-score-in-azure-security-center"></a>Secure Score in Azure Security Center
 
@@ -54,7 +54,7 @@ Ihre Sicherheitsbewertung insgesamt sowie Ihre Bewertung pro Abonnement können 
 
 ### <a name="get-your-secure-score-from-the-portal"></a>Abrufen ihrer Sicherheitsbewertung aus dem Portal
 
-Von Security Center wird Ihre Bewertung im Portal auf der Übersichtsseite als erste Hauptkachel gut sichtbar angezeigt. Wenn Sie diese Kachel auswählen, gelangen Sie zur dedizierten Seite mit der Sicherheitsbewertung, auf der Sie die Bewertung nach Abonnement aufgeschlüsselt sehen. Wählen Sie ein einzelnes Abonnement aus, um die detaillierte Liste mit priorisierten Empfehlungen und die möglichen Auswirkungen anzuzeigen, die eine Umsetzung dieser Empfehlungen auf die Bewertung des Abonnements hat.
+Von Security Center wird Ihre Bewertung im Portal auf der Übersichtsseite als erste Hauptkachel gut sichtbar angezeigt. Wenn Sie diese Kachel auswählen, gelangen Sie zur dedizierten Seite mit der Sicherheitsbewertung, auf der Sie die Bewertung nach Abonnement aufgeschlüsselt sehen. Wählen Sie ein einzelnes Abonnement aus, um die detaillierte Liste mit priorisierten Empfehlungen und die möglichen Auswirkungen anzuzeigen, die eine Umsetzung dieser Empfehlungen auf die Bewertung des Abonnements hat. 
 
 Zur Wiederholung: Ihre Sicherheitsbewertung wird auf Seiten des Security Center-Portals an den folgenden Stellen gezeigt.
 
@@ -62,9 +62,14 @@ Zur Wiederholung: Ihre Sicherheitsbewertung wird auf Seiten des Security Center-
 
     :::image type="content" source="./media/secure-score-security-controls/score-on-main-dashboard.png" alt-text="Die Sicherheitsbewertung auf dem Security Center-Dashboard":::
 
-- Auf der dedizierten Seite **Sicherheitsbewertung**:
+- Auf der Seite mit der dedizierten **Sicherheitsbewertung** können Sie die Sicherheitsbewertung für Ihr Abonnement und Ihre Verwaltungsgruppen sehen:
 
-    :::image type="content" source="./media/secure-score-security-controls/score-on-dedicated-dashboard.png" alt-text="Die Sicherheitsbewertung auf der Security Center-Seite „Sicherheitsbewertung“":::
+    :::image type="content" source="./media/secure-score-security-controls/score-on-dedicated-dashboard.png" alt-text="Sicherheitsbewertung für Abonnements auf der Security Center-Seite „Sicherheitsbewertung“":::
+
+    :::image type="content" source="./media/secure-score-security-controls/secure-score-management-groups.png" alt-text="Sicherheitsbewertung für Verwaltungsgruppen auf der Security Center-Seite „Sicherheitsbewertung“":::
+
+    > [!NOTE]
+    > Für alle Verwaltungsgruppen, für die Sie nicht über ausreichende Berechtigungen verfügen, wird als Bewertung „Eingeschränkt“ angezeigt. 
 
 - Oben auf der Seite **Empfehlungen**:
 

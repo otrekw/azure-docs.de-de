@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/21/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: 6466647056535635b67cd53012d051f11e9b484c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: eaba099725530f24dcd6aa5da7eb59cb233efd46
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91323310"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98695644"
 ---
 # <a name="azure-functions-http-trigger"></a>HTTP-Trigger in Azure Functions
 
@@ -43,11 +43,15 @@ public static async Task<IActionResult> Run(
     log.LogInformation("C# HTTP trigger function processed a request.");
 
     string name = req.Query["name"];
-
-    string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
+    
+    string requestBody = String.Empty;
+    using (StreamReader streamReader =  new  StreamReader(req.Body))
+    {
+        requestBody = await streamReader.ReadToEndAsync();
+    }
     dynamic data = JsonConvert.DeserializeObject(requestBody);
     name = name ?? data?.name;
-
+    
     return name != null
         ? (ActionResult)new OkObjectResult($"Hello, {name}")
         : new BadRequestObjectResult("Please pass a name on the query string or in the request body");
@@ -100,11 +104,15 @@ public static async Task<IActionResult> Run(HttpRequest req, ILogger log)
     log.LogInformation("C# HTTP trigger function processed a request.");
 
     string name = req.Query["name"];
-
-    string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
+    
+    string requestBody = String.Empty;
+    using (StreamReader streamReader =  new  StreamReader(req.Body))
+    {
+        requestBody = await streamReader.ReadToEndAsync();
+    }
     dynamic data = JsonConvert.DeserializeObject(requestBody);
     name = name ?? data?.name;
-
+    
     return name != null
         ? (ActionResult)new OkObjectResult($"Hello, {name}")
         : new BadRequestObjectResult("Please pass a name on the query string or in the request body");
@@ -741,6 +749,10 @@ Die folgende Konfiguration zeigt, wie der Parameter `{id}` an das `rowKey`-Eleme
 }
 ```
 
+Wenn Sie Routenparameter verwenden, wird automatisch eine `invoke_URL_template` für Ihre Funktion erstellt. Die Clients können die URL-Vorlage verwenden, um zu wissen, welche Parameter sie beim Aufrufen Ihrer Funktion an die URL übergeben müssen. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu einer der durch HTTP ausgelösten Funktionen, und wählen Sie **Funktions-URL abrufen** aus.
+
+Sie können programmgesteuert auf die `invoke_URL_template` zugreifen, indem Sie die Azure Resource Manager-APIs [Funktionen auflisten](https://docs.microsoft.com/rest/api/appservice/webapps/listfunctions) oder [Funktionen abrufen](https://docs.microsoft.com/rest/api/appservice/webapps/getfunction) verwenden.
+
 ## <a name="working-with-client-identities"></a>Arbeiten mit Clientidentitäten
 
 Wenn Ihre Funktions-App [App Service-Authentifizierung/-Autorisierung](../app-service/overview-authentication-authorization.md) verwendet, können Sie Informationen über authentifizierte Clients aus Ihrem Code anzeigen. Diese Informationen sind als [von der Plattform eingefügter Anforderungsheader](../app-service/app-service-authentication-how-to.md#access-user-claims) verfügbar.
@@ -838,11 +850,17 @@ Der authentifizierte Benutzer ist über [HTTP-Header](../app-service/app-service
 
 ## <a name="obtaining-keys"></a>Abrufen von Schlüsseln
 
-Schlüssel werden als Teil Ihrer Funktionen-App in Azure gespeichert und sind im Ruhezustand verschlüsselt. Um vorhandene Schlüssel anzuzeigen, neue Schlüssel zu erstellen oder Schlüsseln neue Werte zuzuweisen, navigieren Sie im [Azure-Portal](https://portal.azure.com) zu einer Ihrer über HTTP ausgelösten Funktionen, und wählen Sie **Verwalten** aus.
+Schlüssel werden als Teil Ihrer Funktionen-App in Azure gespeichert und sind im Ruhezustand verschlüsselt. Um vorhandene Schlüssel anzuzeigen, neue Schlüssel zu erstellen oder Schlüsseln neue Werte zuzuweisen, navigieren Sie im [Azure-Portal](https://portal.azure.com) zu einer Ihrer über HTTP ausgelösten Funktionen, und wählen Sie **Funktionsschlüssel** aus.
 
-![Verwalten Sie Funktionsschlüssel im Portal.](./media/functions-bindings-http-webhook/manage-function-keys.png)
+Sie können auch Hostschlüssel verwalten. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zur Funktions-App, und wählen Sie **App-Schlüssel** aus.
 
-Funktionsschlüssel können mithilfe der [Schlüsselverwaltungs-APIs](https://github.com/Azure/azure-functions-host/wiki/Key-management-API) programmgesteuert abgerufen werden.
+Sie können Funktions- und Hostschlüssel programmgesteuert über die Azure Resource Manager-APIs abrufen. Es gibt APIs zum [Auflisten von Funktionsschlüsseln](/rest/api/appservice/webapps/listfunctionkeys) und zum [Auflisten von Hostschlüsseln](/rest/api/appservice/webapps/listhostkeys). Wenn Sie Bereitstellungsslots verwenden, nutzen Sie entsprechend die APIs zum [Auflisten von Funktionsschlüsseln für Slots](/rest/api/appservice/webapps/listfunctionkeysslot) bzw. zum [Auflisten von Hostschlüsseln für Slots](/rest/api/appservice/webapps/listhostkeysslot).
+
+Sie können mit den APIs [Funktionsgeheimnis erstellen oder aktualisieren](/rest/api/appservice/webapps/createorupdatefunctionsecret), [Funktionsgeheimnis für Slots erstellen oder aktualisieren](/rest/api/appservice/webapps/createorupdatefunctionsecretslot), [Hostgeheimnis erstellen oder aktualisieren](/rest/api/appservice/webapps/createorupdatehostsecret) und [Hostgeheimnis für Slots erstellen oder aktualisieren](/rest/api/appservice/webapps/createorupdatehostsecretslot) auch programmgesteuert neue Funktions- und Hostschlüssel erstellen.
+
+Löschen können Sie Funktions- und Hostschlüssel programmgesteuert über die APIs [Funktionsgeheimnis löschen](/rest/api/appservice/webapps/deletefunctionsecret), [Funktionsgeheimnis für Slots löschen](/rest/api/appservice/webapps/deletefunctionsecretslot), [Hostgeheimnis löschen](/rest/api/appservice/webapps/deletehostsecret) und [Hostgeheimnis für Slots löschen](/rest/api/appservice/webapps/deletehostsecretslot).
+
+Sie können auch die [Legacy-APIs für die Schlüsselverwaltung verwenden, um Funktionsschlüssel abzurufen](https://github.com/Azure/azure-functions-host/wiki/Key-management-API). Es wird jedoch empfohlen, die Azure Resource Manager-APIs zu verwenden.
 
 ## <a name="api-key-authorization"></a>Autorisierung per API-Schlüssel
 

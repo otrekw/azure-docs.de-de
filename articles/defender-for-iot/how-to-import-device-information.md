@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/06/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 0a443ba7b41615fc62882bd8de6bf077c6b5a137
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 7cb805f60ba9feb0ae2d1483b2ab2df4e03639d8
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97836179"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98625413"
 ---
 # <a name="import-device-information-to-a-sensor"></a>Importieren von Geräteinformationen in einen Sensor
 
@@ -67,7 +67,7 @@ In diesem Abschnitt wird beschrieben, wie die IP-Adresse, das Betriebssystem, di
 
 Zum Importieren von IP-Adresse, Betriebssystem und Patchebene gehen Sie folgendermaßen vor:
 
-1. Laden Sie die Datei [assets_info_2.2.8 and up.csv](https://cyberx-labs.zendesk.com/hc/en-us/articles/360008658272-How-To-Import-Data) aus dem [Hilfecenter](https://cyberx-labs.zendesk.com/hc/en-us) herunter, und geben Sie die Informationen wie folgt ein:
+1. Laden Sie die Datei [devices_info_2.2.8 and up.csv](https://cyberx-labs.zendesk.com/hc/en-us/articles/360008658272-How-To-Import-Data) aus dem [Hilfecenter](https://cyberx-labs.zendesk.com/hc/en-us) herunter, und geben Sie die Informationen wie folgt ein:
 
    - **IP-Adresse**: Geben Sie die IP-Adresse des Geräts ein.
 
@@ -85,7 +85,7 @@ Zum Importieren von IP-Adresse, Betriebssystem und Patchebene gehen Sie folgende
 
 Zum Importieren des Autorisierungsstatus gehen Sie folgendermaßen vor:
 
-1. Laden Sie die Datei [authorized_assets.csv](https://cyberx-labs.zendesk.com/hc/en-us/articles/360008658272-How-To-Import-Data) aus dem Defender für IoT-Hilfecenter herunter, und speichern Sie sie. Vergewissern Sie sich, dass Sie die Datei als CSV-Datei gespeichert haben.
+1. Laden Sie die Datei [authorized_devices.csv](https://cyberx-labs.zendesk.com/hc/en-us/articles/360008658272-How-To-Import-Data) aus dem Defender für IoT-Hilfecenter herunter, und speichern Sie sie. Vergewissern Sie sich, dass Sie die Datei als CSV-Datei gespeichert haben.
 
 2. Geben Sie die Informationen wie folgt ein:
 
@@ -154,7 +154,7 @@ In diesem Abschnitt wird beschrieben, wie die IP-Adresse, das Betriebssystem, di
 
 Zum Importieren von IP-Adresse, Betriebssystem und Patchebene gehen Sie folgendermaßen vor:
 
-1. Laden Sie die Datei [assets_info_2.2.8 and up.csv](https://cyberx-labs.zendesk.com/hc/en-us/articles/360008658272-How-To-Import-Data) aus dem [Hilfecenter](https://cyberx-labs.zendesk.com/hc/en-us) herunter, und geben Sie die Informationen wie folgt ein:
+1. Laden Sie die Datei [devices_info_2.2.8 and up.csv](https://cyberx-labs.zendesk.com/hc/en-us/articles/360008658272-How-To-Import-Data) aus dem [Hilfecenter](https://cyberx-labs.zendesk.com/hc/en-us) herunter, und geben Sie die Informationen wie folgt ein:
 
    - **IP-Adresse**: Die IP-Adresse des Geräts.
 
@@ -172,7 +172,7 @@ Zum Importieren von IP-Adresse, Betriebssystem und Patchebene gehen Sie folgende
 
 Zum Importieren des Autorisierungsstatus gehen Sie folgendermaßen vor:
 
-1. Laden Sie die Datei [authorized_assets.csv](https://cyberx-labs.zendesk.com/hc/en-us/articles/360008658272-How-To-Import-Data) aus dem Defender für IoT-Hilfecenter herunter, und speichern Sie sie. Vergewissern Sie sich, dass Sie die Datei als CSV-Datei gespeichert haben.
+1. Laden Sie die Datei [authorized_devices.csv](https://cyberx-labs.zendesk.com/hc/en-us/articles/360008658272-How-To-Import-Data) aus dem Defender für IoT-Hilfecenter herunter, und speichern Sie sie. Vergewissern Sie sich, dass Sie die Datei als CSV-Datei gespeichert haben.
 
 2. Geben Sie die Informationen wie folgt ein:
 

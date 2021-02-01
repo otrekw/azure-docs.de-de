@@ -3,12 +3,12 @@ title: Hosting des Azure Functions-Verbrauchstarifs
 description: Erfahren Sie, wie Sie mit dem Hosting des Azure Function-Verbrauchstarifs Ihren Code in einer Umgebung ausführen können, die dynamisch skaliert wird, wobei Sie nur für die während der Ausführung genutzten Ressourcen bezahlen.
 ms.date: 8/31/2020
 ms.topic: conceptual
-ms.openlocfilehash: c0619def4687935cd9e403563966b35b84f13c7c
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: d292a70a8dfaa4cebdb99f2bcb5420c8b8ab9cd8
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97937524"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98760539"
 ---
 # <a name="azure-functions-consumption-plan-hosting"></a>Hosting des Azure Functions-Verbrauchstarifs
 
@@ -16,7 +16,7 @@ Bei Verwendung des Verbrauchstarifs werden Instanzen des Azure Functions-Hosts d
 
 ## <a name="benefits"></a>Vorteile
 
-Der Verbrauchstarif wird automatisch skaliert, auch in Zeiten hoher Auslastung. Wenn Funktionen in einem Verbrauchstarif ausgeführt werden, werden Ihnen nur dann Computeressourcen berechnet, wenn Ihre Funktionen ausgeführt werden. In einem Verbrauchsplan tritt für eine Funktionsausführung nach einem konfigurierbaren Zeitraum ein Timeout auf.
+Im Verbrauchstarif erfolgt eine automatische Skalierung, auch in Zeiten hoher Last. Wenn Funktionen in einem Verbrauchstarif ausgeführt werden, werden Ihnen nur dann Computeressourcen berechnet, wenn Ihre Funktionen ausgeführt werden. In einem Verbrauchsplan tritt für eine Funktionsausführung nach einem konfigurierbaren Zeitraum ein Timeout auf.
 
 Einen Vergleich des Verbrauchstarifs mit anderen Plänen und Hostingtypen finden Sie unter [Funktionsskalierung und Hostingoptionen](functions-scale.md).
 
@@ -33,10 +33,10 @@ Wenn Sie eine Funktions-App im Azure-Portal erstellen, gilt standardmäßig der 
 Verwenden Sie die folgenden Links, um zu erfahren, wie Sie eine serverlose Funktions-App in einem Verbrauchstarif erstellen, entweder programmgesteuert oder im Azure-Portal:
 
 + [Azure-Befehlszeilenschnittstelle](./scripts/functions-cli-create-serverless.md)
-+ [Azure portal](functions-create-first-azure-function.md)
++ [Azure portal](./functions-get-started.md)
 + [Azure Resource Manager-Vorlage](functions-create-first-function-resource-manager.md)
 
-Sie können Funktions-Apps auch in einem Verbrauchstarif erstellen, wenn Sie ein Functions-Projekt aus [Visual Studio Code](functions-create-first-function-vs-code.md#publish-the-project-to-azure) oder [Visual Studio](functions-create-your-first-function-visual-studio.md#publish-the-project-to-azure) veröffentlichen.
+Sie können Funktions-Apps auch in einem Verbrauchstarif erstellen, wenn Sie ein Functions-Projekt aus [Visual Studio Code](./create-first-function-vs-code-csharp.md#publish-the-project-to-azure) oder [Visual Studio](functions-create-your-first-function-visual-studio.md#publish-the-project-to-azure) veröffentlichen.
 
 ## <a name="multiple-apps-in-the-same-plan"></a>Mehrere Apps im gleichen Tarif
 

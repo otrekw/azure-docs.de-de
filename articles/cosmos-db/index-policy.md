@@ -5,14 +5,14 @@ author: timsander1
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 12/07/2020
+ms.date: 01/21/2021
 ms.author: tisande
-ms.openlocfilehash: 00c80fa311837918a78f26e941f00cb17f1dc279
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 4d2ad9cf6b47d8307d9652419b82de8ffcbcb099
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98019175"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98681649"
 ---
 # <a name="indexing-policies-in-azure-cosmos-db"></a>Indizierungsrichtlinien in Azure Cosmos DB
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -35,6 +35,17 @@ Azure Cosmos DB unterstützt zwei Indizierungsmodi:
 > Azure Cosmos DB unterstützt auch einen verzögerten Indizierungsmodus. Bei der verzögerten Indizierung werden Updates des Indexes mit einer wesentlich niedrigeren Prioritätsstufe ausgeführt, wenn die Engine keine andere Arbeit ausführt. Dies kann zu **inkonsistenten oder unvollständigen** Abfrageergebnissen führen. Wenn Sie beabsichtigen, einen Cosmos-Container abzufragen, sollten Sie nicht die verzögerte Indizierung verwenden. Für neue Container kann keine verzögerte Indizierung ausgewählt werden. Sie können eine Ausnahme beantragen, indem Sie sich an den [Azure-Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) wenden (außer wenn Sie ein Azure Cosmos-Konto im [serverlosen](serverless.md) Modus verwenden, der keine verzögerte Indizierung unterstützt).
 
 Diese Indizierungsrichtlinie ist standardmäßig auf `automatic` festgelegt. Hierzu wird die `automatic`-Eigenschaft der Indizierungsrichtlinie auf `true` festgelegt. Ist diese Eigenschaft auf `true` festgelegt, kann Azure Cosmos DB Dokumente automatisch indizieren, während sie geschrieben werden.
+
+## <a name="index-size"></a><a id="index-size"></a>Indexgröße
+
+In Azure Cosmos DB ist die Summe des Speicherverbrauchs die Kombination von Datengröße und Indexgröße. Im Folgenden sind einige Merkmale der Indexgröße aufgeführt:
+
+* Die Indexgröße hängt von der Indizierungsrichtlinie ab. Wenn alle Eigenschaften indiziert werden, kann der Index größer als die Daten sein.
+* Wenn die Daten gelöscht werden, werden die Indizes nahezu fortlaufend komprimiert. Bei kleinen Datenlöschungen erkennen Sie jedoch möglicherweise nicht sofort eine Verringerung der Indexgröße.
+* Die Indexgröße kann in den folgenden Fällen zunehmen:
+
+  * Dauer der Partitionsaufteilung: Der Speicherplatz für den Index wird freigegeben, nachdem die Partitionsaufteilung abgeschlossen wurde.
+  * Beim Aufteilen einer Partition erhöht sich der Indexspeicher während des Vorgangs vorübergehend. 
 
 ## <a name="including-and-excluding-property-paths"></a><a id="include-exclude-paths"></a>Ein- und Ausschließen von Eigenschaftenpfaden
 

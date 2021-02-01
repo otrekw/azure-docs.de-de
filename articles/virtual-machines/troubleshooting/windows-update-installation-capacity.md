@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 05/11/2020
 ms.author: v-miegge
-ms.openlocfilehash: f83a1820eb931fa075681da7a9661b304059cd2a
-ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
+ms.openlocfilehash: 0c0ec45eee86031e1533b97ccf352de0ecf70e38
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94635704"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98633153"
 ---
 # <a name="troubleshoot-os-start-up--windows-update-installation-capacity"></a>Beheben von Problemen beim Betriebssystemstart: Windows Update-Installationskapazität
 
@@ -38,6 +38,9 @@ In dieser Situation ist das Betriebssystem (OS) nicht in der Lage, eine Windows 
 ## <a name="solution"></a>Lösung
 
 ### <a name="process-overview"></a>Prozessübersicht:
+
+> [!TIP]
+> Wenn Sie über eine aktuelle Sicherung der VM verfügen, können Sie versuchen, die [VM aus der Sicherung wiederherzustellen](../../backup/backup-azure-arm-restore-vms.md), um das Startproblem zu beheben.
 
 1. Erstellen und Aufrufen einer Reparatur-VM.
 1. Freigeben von Speicherplatz auf dem Datenträger.

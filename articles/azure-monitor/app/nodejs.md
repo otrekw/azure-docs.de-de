@@ -4,12 +4,12 @@ description: Es wird beschrieben, wie Sie die Leistung überwachen und Probleme 
 ms.topic: conceptual
 ms.date: 06/01/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 7aea6c03b0ce35fa0e74c39ff5f94f714447ad6f
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 0d414ce44a8d6ab308bd31f7372bb1c146fac9f5
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96920585"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98611014"
 ---
 # <a name="monitor-your-nodejs-services-and-apps-with-application-insights"></a>Überwachen Ihrer Node.js-Dienste und -Apps mit Application Insights
 
@@ -334,6 +334,12 @@ server.on("listening", () => {
   appInsights.defaultClient.trackMetric({name: "server startup time", value: duration});
 });
 ```
+
+### <a name="flush"></a>Leerung
+
+Standardmäßig wird die Telemetrie 15 Sekunden lang gepuffert, bevor sie an den Erfassungsserver gesendet wird. Wenn Ihre Anwendung eine kurze Lebensdauer hat (z. B. bei Befehlszeilenschnittstellentools), ist es möglicherweise erforderlich, die gepufferten Telemetriedaten manuell zu leeren, wenn die Anwendung beendet wird: `appInsights.defaultClient.flush()`.
+
+Wenn das SDK erkennt, dass die Anwendung abstürzt, ruft sie flush() für Sie auf: `appInsights.defaultClient.flush({ isAppCrashing: true })`. Wenn die Option `isAppCrashing` von flush() angegeben wird, wird angenommen, dass sich die Anwendung in einem nicht ordnungsgemäßen Zustand befindet und die Telemetriedaten nicht senden kann. Stattdessen speichert das SDK alle gepufferten Telemetriedaten im [persistenten Speicher](./data-retention-privacy.md#nodejs) und beendet die Anwendung. Wenn Ihre Anwendung erneut gestartet wird, versucht sie, alle Telemetriedaten zu senden, die im persistenten Speicher gespeichert wurden.
 
 ### <a name="preprocess-data-with-telemetry-processors"></a>Vorverarbeiten von Daten mit Telemetrieprozessoren
 

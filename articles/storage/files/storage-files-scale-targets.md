@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 43d593a65fd08542eb2829fcebcea81ea0c99986
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: e10f45af89e19f6fe62ff729f96d870e008c96ec
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91995450"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98611099"
 ---
 # <a name="azure-files-scalability-and-performance-targets"></a>Skalierbarkeits- und Leistungsziele für Azure Files
 
@@ -87,16 +87,16 @@ Wenn Sie die Bereitstellung für jede der Phasen planen, sehen Sie sich im Folge
 | Anzahl der Objekte | 25 Millionen Objekte |
 | Datasetgröße| ca. 4,7 TiB |
 | Durchschnittliche Dateigröße | ca. 200 KiB (größte Datei: 100 GiB) |
-| Anfängliche Enumeration von Cloudänderungen | 7 Objekte pro Sekunde  |
+| Anfängliche Enumeration von Cloudänderungen | 20 Objekte pro Sekunde  |
 | Uploaddurchsatz | 20 Objekte pro Sekunde pro Synchronisierungsgruppe |
 | Durchsatz beim Download von Namespaces | 400 Objekte pro Sekunde |
 
 ### <a name="initial-one-time-provisioning"></a>Erste einmalige Bereitstellung
 
 **Anfängliche Enumeration von Cloudänderungen**: Wenn eine neue Synchronisierungsgruppe erstellt wird, ist die anfängliche Enumeration von Cloudänderungen der erste durchgeführte Schritt. In diesem Prozess listet das System alle Elemente in der Azure-Dateifreigabe auf. Während dieses Prozesses findet keine Synchronisierungsaktivität statt. Es werden also keine Elemente vom Cloudendpunkt auf den Serverendpunkt heruntergeladen und keine Elemente vom Serverendpunkt auf den Cloudendpunkt hochgeladen. Die Synchronisierungsaktivität beginnt erst, wenn die anfängliche Enumeration von Cloudänderungen abgeschlossen ist.
-Der Durchsatz liegt bei 7 Objekten pro Sekunde. Kunden können die Dauer der anfänglichen Enumeration von Cloudänderungen schätzen, indem sie die Anzahl von Elementen in der Cloudfreigabe bestimmen und den Zeitraum (in Tagen) anhand der folgenden Formel berechnen. 
+Der Durchsatz liegt bei 20 Objekten pro Sekunde. Kunden können die Dauer der anfänglichen Enumeration von Cloudänderungen schätzen, indem sie die Anzahl von Elementen in der Cloudfreigabe bestimmen und den Zeitraum (in Tagen) anhand der folgenden Formel berechnen. 
 
-   **Zeitraum (in Tagen) für die anfängliche Cloudenumeration = (Anzahl von Objekten im Cloudendpunkt)/(7 × 60 × 60 × 24)**
+   **Zeitraum (in Tagen) für die anfängliche Cloudenumeration = (Anzahl von Objekten am Cloudendpunkt) / (20 × 60 × 60 × 24)**
 
 **Durchsatz beim Download von Namespaces**: Wenn einer vorhandenen Synchronisierungsgruppe ein neuer Serverendpunkt hinzugefügt wird, lädt der Azure-Dateisynchronisierungs-Agent keine Dateiinhalte vom Cloudendpunkt herunter. Zuerst synchronisiert er den vollständigen Namespace und löst dann im Hintergrund einen Rückruf aus, um die Dateien herunterzuladen, entweder in ihrer Gesamtheit oder bei aktiviertem Cloudtiering in der Cloudtieringrichtliniengruppe für den Serverendpunkt.
 

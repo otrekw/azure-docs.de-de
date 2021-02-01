@@ -2,13 +2,13 @@
 title: Azure Service Bus-Nachrichtensitzungen | Microsoft-Dokumentation
 description: In diesem Artikel wird erläutert, wie Nachrichtensitzungen zum Ermöglichen der gemeinsamen und geordneten Verarbeitung unbegrenzter Sequenzen verwandter Nachrichten verwendet werden.
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: 05efc550e119186a2925c13d3fcfed11bec17251
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 01/20/2021
+ms.openlocfilehash: 6d316571d69d2e1e73ddca4ccca53c116ee8fa5f
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86511295"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98680752"
 ---
 # <a name="message-sessions"></a>Nachrichtensitzungen
 Microsoft Azure Service Bus-Sitzungen ermöglichen die gemeinsame und geordnete Verarbeitung unbegrenzter Sequenzen zusammengehöriger Nachrichten. Sitzungen können mit **FIFO**-Mustern (First in, First Out) und **Anforderung/Antwort**-Mustern verwendet werden. In diesem Artikel wird gezeigt, wie Sie diese Muster mithilfe von Sitzungen implementieren, wenn Sie Service Bus verwenden. 
@@ -34,9 +34,9 @@ Im Portal legen Sie das Flag mit dem folgenden Kontrollkästchen fest:
 ![Screenshot: Dialogfeld „Warteschlange erstellen“ mit aktivierter und rot umrandeter Option „Sitzungen aktivieren“][2]
 
 > [!NOTE]
-> Wenn Sitzungen für eine Warteschlange oder ein Abonnement aktiviert sind, können die Clientanwendungen ***keine*** regulären Nachrichten mehr senden/empfangen. Alle Nachrichten müssen im Rahmen einer Sitzung (durch Festlegen der Sitzungs-ID) gesendet und durch Empfangen der Sitzung empfangen werden.
+> Wenn Sitzungen für eine Warteschlange oder ein Abonnement aktiviert sind, können die Clientanwendungen ***keine** _ regulären Nachrichten mehr senden oder empfangen. Alle Nachrichten müssen im Rahmen einer Sitzung (durch Festlegen der Sitzungs-ID) gesendet und durch Empfangen der Sitzung empfangen werden.
 
-Die APIs für Sitzungen sind für Warteschlangen- und Abonnementclients vorhanden. Es gibt ein verbindliches Modell, das steuert, wann Sitzungen und Nachrichten empfangen werden, und ein auf einem Handler basierendes Modell, ähnlich *OnMessage*, das die Komplexität der Verwaltung der Empfangsschleife verbirgt.
+Die APIs für Sitzungen sind für Warteschlangen- und Abonnementclients vorhanden. Es gibt ein verbindliches Modell, das steuert, wann Sitzungen und Nachrichten empfangen werden, und ein auf einem Handler basierendes Modell, ähnlich _OnMessage*, das die Komplexität bei der Verwaltung der Empfangsschleife verbirgt.
 
 ### <a name="session-features"></a>Sitzungsfeatures
 

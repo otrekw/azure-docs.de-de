@@ -6,20 +6,20 @@ ms.topic: conceptual
 author: nolavime
 ms.author: nolavime
 ms.date: 01/18/2021
-ms.openlocfilehash: 7240c1b0f19dc49ab4130c5ee2516dcfefb2e2c2
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: c3e6408a6a3473380edbe2966eba41970bd73562
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98602185"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98762758"
 ---
-# <a name="errors-in-the-connector-status"></a>Fehler im Connectorstatus
+# <a name="errors-in-the-connector-status-section"></a>Fehler im Abschnitt „Connectorstatus“
 
-Die Connectorstatusliste kann Fehler enthalten, die Ihnen beim Beheben von Problemen in Ihrem ITSM-Connector behilflich sein können.
+Der Abschnitt mit der Connectorstatusliste auf dem Dashboard kann Fehler enthalten, die Ihnen beim Beheben von Problemen in Ihrem ITSM-Connector helfen können.
 
 ## <a name="status-common-errors"></a>Allgemeine Fehler im Status
 
-Dieser Abschnitt enthält die allgemeinen Fehler, die im Abschnitt mit dem Connectorstatus angegeben werden, sowie Informationen zu deren Behebung:
+Dieser Abschnitt enthält häufig auftretende Fehler, die im Abschnitt mit dem Connectorstatus angegeben werden, sowie Informationen zu deren Behebung:
 
 * **Fehler:** „Unerwartete Antwort von ServiceNow zusammen mit Erfolgsstatuscode. Antwort: { "import_set": "{import_set_id}", "staging_table": "x_mioms_microsoft_oms_incident", "result": [ { "transform_map": "OMS Incident", "table": "incident", "status": "error", "error_message": "{Target record not found|Invalid table|Invalid staging table" }“
 
@@ -27,7 +27,7 @@ Dieser Abschnitt enthält die allgemeinen Fehler, die im Abschnitt mit dem Conne
   * Ein in der ServiceNow-Instanz bereitgestelltes benutzerdefiniertes Skript bewirkt, dass Incidents ignoriert werden.
   * Der „OMS Integrator App"-Code selbst wurde auf ServiceNow-Seite geändert, z. B. das onBefore-Skript.
 
-    **Lösung:** Deaktivieren Sie alle benutzerdefinierten Skripts oder Codeänderungen des Datenimportpfads.
+  **Lösung:** Deaktivieren Sie alle benutzerdefinierten Skripts oder Codeänderungen.
 
 * **Fehler**: „{"error":{"message":"Operation Failed","detail":"ACL Exception Update Failed due to security constraints"}“
 
@@ -58,7 +58,7 @@ Dieser Abschnitt enthält die allgemeinen Fehler, die im Abschnitt mit dem Conne
     **Ursache:** Der ITSM-Connector wurde gelöscht.
 
     **Lösung:** Der ITSM-Connector wurde gelöscht, es sind aber noch zugeordnete ITSM-Aktionsgruppen definiert. Es gibt zwei Möglichkeiten zur Behebung dieses Problems:
-  * Suchen und Deaktivieren oder Löschen dieser Aktion
+  * Suchen und Deaktivieren oder Löschen dieser Aktionsgruppen
   * [Konfigurieren Sie die Aktionsgruppe neu,](./itsmc-definition.md#create-itsm-work-items-from-azure-alerts) um einen vorhandenen ITSM-Connector zu verwenden.
   * [Erstellen Sie einen neuen ITSM-Connector](./itsmc-definition.md#create-an-itsm-connection), und [konfigurieren Sie die Aktionsgruppe neu, damit sie diesen verwendet](itsmc-definition.md#create-itsm-work-items-from-azure-alerts).
 

@@ -4,20 +4,20 @@ ms.service: storage
 ms.topic: include
 ms.date: 08/10/2020
 ms.author: rogarana
-ms.openlocfilehash: 8dcb58499113b0b7ae0814419f0a76965a0ed945
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 86bf4911026e46c997469b956f9e7c75c4f17164
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94680937"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98698126"
 ---
 #### <a name="additional-premium-file-share-level-limits"></a>Zusätzliche Freigabegrenzwerte für Dateien auf Premiumebene
 
 |Bereich  |Ziel  |
 |---------|---------|
 |Mindestgröße vergrößern/verkleinern    |1 GiB      |
-|IOPS-Grundwert    |1 IOPS pro GiB, bis zu 100.000|
-|IOPS-Bursting    |3 x IOPS pro GiB, bis zu 100.000|
+|IOPS-Grundwert    |400 + 1 IOPS pro GiB, bis zu 100.000|
+|IOPS-Bursting    |Max. (4.000, 3 × IOPS pro GiB), bis zu 100.000|
 |Ausgangsrate         |60 MiB/s + 0,06 * bereitgestelltes GiB        |
 |Eingangsrate| 40 MiB/s + 0,04 * bereitgestelltes GiB |
 

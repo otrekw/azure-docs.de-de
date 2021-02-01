@@ -8,12 +8,12 @@ ms.date: 10/06/2020
 ms.topic: reference
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: a082ccb62103ab5bd027bf49b9ee05bc48c63115
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 2878d682d0f2025a50f26baf87476f66aa236e2c
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91979222"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98630615"
 ---
 # <a name="powershell-scripts-for-iot-edge-on-windows"></a>PowerShell-Skripts für IoT Edge unter Windows
 
@@ -41,7 +41,7 @@ Das bereitgestellte Skript ist signiert, um die Sicherheit zu erhöhen. Sie kön
 Get-AuthenticodeSignature "C:\<path>\IotEdgeSecurityDaemon.ps1"
 ```
 
-Der Ausgabestatus lautet **Gültig** , wenn die Signatur überprüft wird.
+Der Ausgabestatus lautet **Gültig**, wenn die Signatur überprüft wird.
 
 ## <a name="deploy-iotedge"></a>Deploy-IoTEdge
 
@@ -61,7 +61,7 @@ Der Initialize-IoTEdge-Befehl konfiguriert IoT Edge mit Ihrer Geräte-Verbindung
 
 | Parameter | Zulässige Werte | Kommentare |
 | --------- | --------------- | -------- |
-| **ManualConnectionString** | Keine | **Switch-Parameter:** **Standardwert** . Wenn kein Bereitstellungstyp angegeben wird, ist die manuelle Bereitstellung mithilfe einer Verbindungszeichenfolge der Standardwert.<br><br>Gibt an, dass Sie eine Geräteverbindungszeichenfolge angeben, um das Gerät manuell bereitzustellen. |
+| **ManualConnectionString** | Keine | **Switch-Parameter:** **Standardwert**. Wenn kein Bereitstellungstyp angegeben wird, ist die manuelle Bereitstellung mithilfe einer Verbindungszeichenfolge der Standardwert.<br><br>Gibt an, dass Sie eine Geräteverbindungszeichenfolge angeben, um das Gerät manuell bereitzustellen. |
 | **ManualX509** | Keine | **Switch-Parameter:** Wenn kein Bereitstellungstyp angegeben wird, ist die manuelle Bereitstellung mithilfe einer Verbindungszeichenfolge der Standardwert.<br><br>Gibt an, dass Sie ein Identitätszertifikat und einen privaten Schlüssel bereitstellen werden, um das Gerät manuell bereitzustellen.
 | **DpsTpm** | Keine | **Switch-Parameter:** Wenn kein Bereitstellungstyp angegeben wird, ist die manuelle Bereitstellung mithilfe einer Verbindungszeichenfolge der Standardwert.<br><br>Gibt an, dass Sie eine Bereichs-ID von einem Gerätebereitstellungsdienst (Device Provisioning Service, DPS) und die Registrierungs-ID Ihres Geräts angeben, damit die Bereitstellung über einen Gerätebereitstellungsdienst durchgeführt wird.  |
 | **DpsSymmetricKey** | Keine | **Switch-Parameter:** Wenn kein Bereitstellungstyp angegeben wird, ist die manuelle Bereitstellung mithilfe einer Verbindungszeichenfolge der Standardwert.<br><br>Gibt an, dass Sie eine Bereichs-ID von einem Device Provisioning Service (DPS) und die Registrierungs-ID Ihres Geräts zusammen mit einem symmetrischen Schlüssel für den Nachweis angeben, damit die Bereitstellung über DPS durchgeführt wird. |
@@ -70,7 +70,7 @@ Der Initialize-IoTEdge-Befehl konfiguriert IoT Edge mit Ihrer Geräte-Verbindung
 | **IotHubHostName** | Der Hostname des IoT-Hubs, mit dem ein Gerät eine Verbindung herstellt. | **Erforderlich** für die manuelle Bereitstellung mit X.509-Zertifikaten. Weist das Format *{Hubname}.azure-devices.net* auf. |
 | **DeviceId** | Die Geräte-ID einer in IoT Hub registrierten Geräteidentität. | **Erforderlich** für die manuelle Bereitstellung mit X.509-Zertifikaten. |
 | **ScopeId** | Eine Bereichs-ID, die aus der Instanz des Gerätebereitstellungsdiensts stammt, die Ihrem IoT-Hub zugeordnet ist. | **Erforderlich** für die DPS-Bereitstellung. Wenn Sie in den Skriptparametern keine Bereichs-ID angeben, werden Sie dazu aufgefordert. |
-| **RegistrationId** | Eine Registrierungs-ID, die von Ihrem Gerät generiert wurde. | **Erforderlich** für die DPS-Bereitstellung, wenn TPM oder der Nachweis des symmetrischen Schlüssels verwendet wird. **Optional** , wenn der X.509-Zertifikatnachweis verwendet wird. |
+| **RegistrationId** | Eine Registrierungs-ID, die von Ihrem Gerät generiert wurde. | **Erforderlich** für die DPS-Bereitstellung, wenn TPM oder der Nachweis des symmetrischen Schlüssels verwendet wird. **Optional**, wenn der X.509-Zertifikatnachweis verwendet wird. |
 | **X509IdentityCertificate** | Der URI-Pfad zum X.509-Geräteidentitätszertifikat auf dem Gerät. | **Erforderlich** für die manuelle Bereitstellung oder die Bereitstellung mit einem Device Provisioning Service, wenn ein X.509-Zertifikatnachweis verwendet wird. |
 | **X509IdentityPrivateKey** | Der URI-Pfad zum Schlüssel für das X.509-Geräteidentitätszertifikat auf dem Gerät. | **Erforderlich** für die manuelle Bereitstellung oder die Bereitstellung mit einem Device Provisioning Service, wenn ein X.509-Zertifikatnachweis verwendet wird. |
 | **SymmetricKey** | Der symmetrische Schlüssel, der bei der Verwendung von IoT Hub Device Provisioning Service für die Bereitstellung der IoT Edge-Geräteidentität verwendet wird. | **Erforderlich** für die DPS-Bereitstellung, wenn der Nachweis des symmetrischen Schlüssels verwendet wird. |
@@ -101,8 +101,6 @@ Der Initialize-IoTEdge-Befehl konfiguriert IoT Edge mit Ihrer Geräte-Verbindung
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Informationen zur Verwendung dieser Befehle finden Sie in den folgenden Artikeln:
+Informationen zur Verwendung dieser Befehle finden Sie im folgenden Artikel:
 
-* [Installieren oder Deinstallieren der Azure IoT Edge-Runtime](how-to-install-iot-edge.md)
-* [Bereitstellen eines Azure IoT Edge-Geräts mit Authentifizierung mit symmetrischem Schlüssel](how-to-manual-provision-symmetric-key.md)
-* [Bereitstellen eines Azure IoT Edge-Geräts mit der Authentifizierung mit X.509-Zertifikat](how-to-manual-provision-x509.md)
+* [Installieren oder Deinstallieren von Azure IoT Edge für Windows](how-to-install-iot-edge-windows-on-windows.md)

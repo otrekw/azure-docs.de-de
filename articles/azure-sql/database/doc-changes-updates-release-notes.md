@@ -11,12 +11,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 06/17/2020
 ms.author: sstein
-ms.openlocfilehash: 36c12fa7dd37ce1ffebde16cf6ca856d9fcdca0a
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 607b588d3371b20c2b3fa9854e27a7ccdfe2e551
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93391992"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98703766"
 ---
 # <a name="whats-new-in-azure-sql-database--sql-managed-instance"></a>Welche Neuerungen gibt es in Azure SQL-Datenbank und SQL Managed Instance?
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -92,12 +92,13 @@ Die folgenden Funktionen sind im SQL Managed Instance-Bereitstellungsmodell in d
   - Konfigurieren von SQL Managed Instance für die Verwendung von [öffentlichen Endpunkten](../managed-instance/public-endpoint-configure.md), einer Verbindung zur [Proxy-Außerkraftsetzung](connectivity-architecture.md#connection-policy) für eine bessere Netzwerkleistung und <a href="https://aka.ms/four-cores-sql-mi-update">vier virtuellen Kernen bei der Gen5-Hardwaregenerierung</a> oder <a href="/azure/azure-sql/database/automated-backups-overview">Konfigurieren der Beibehaltung der Sicherung bis zu 35 Tage</a> für eine Point-in-Time-Wiederherstellung. [Die langfristige Sicherungsaufbewahrung](long-term-retention-overview.md#sql-managed-instance-support) (bis zu 10 Jahre) ist zurzeit in der eingeschränkten Public Preview verfügbar.  
   - Neue Funktionen ermöglichen Ihnen die <a href="https://medium.com/@jocapc/geo-restore-your-databases-on-azure-sql-instances-1451480e90fa">Geowiederherstellung Ihrer Datenbank in einem anderen Rechenzentrum mithilfe von PowerShell </a>, das [Umbenennen einer Datenbank](https://azure.microsoft.com/updates/azure-sql-database-managed-instance-database-rename-is-supported/) und das [Löschen eines virtuellen Clusters](../managed-instance/virtual-cluster-delete.md).
   - Die neue integrierte [Rolle „Mitwirkender für Instanzen“](../../role-based-access-control/built-in-roles.md#sql-managed-instance-contributor) ermöglicht SoD-Einhaltung (Separation of Duty, Aufgabentrennung) von Sicherheitsprinzipien und Einhaltung von Unternehmensstandards.
-  - SQL Managed Instance ist in den folgenden Azure Government-Regionen für GA (US Gov Texas, US Gov Arizona) sowie in China, Norden 2, und China, Osten 2, verfügbar. Außerdem ist sie in den folgenden öffentlichen Regionen verfügbar: Australien, Mitte; Australien, Mitte 2; Brasilien, Süden; Frankreich, Süden; VAE, Mitte; VAE, Norden; Südafrika, Norden; Südafrika, Westen.
+  - SQL Managed Instance ist in den folgenden Azure Government-Regionen („US Gov Texas“, „US Gov Arizona“) sowie in „China, Norden 2“ und „China, Osten 2“ allgemein verfügbar. Außerdem ist sie in den folgenden öffentlichen Regionen verfügbar: Australien, Mitte; Australien, Mitte 2; Brasilien, Süden; Frankreich, Süden; VAE, Mitte; VAE, Norden; Südafrika, Norden; Südafrika, Westen.
 
 ## <a name="known-issues"></a>Bekannte Probleme
 
 |Problem  |Entdeckt am  |Status  |Gelöst am  |
 |---------|---------|---------|---------|
+|[Die Prozedur „sp_send_dbmail“ kann zu vorübergehenden Fehlern führen, wenn der Parameter @query verwendet wird.](#procedure-sp_send_dbmail-may-transiently-fail-when--parameter-is-used)|Jan 2021|Mit Problemumgehung||
 |[Verteilte Transaktionen können auch nach dem Entfernen einer verwalteten Instanz aus der Serververtrauensstellungsgruppe ausgeführt werden.](#distributed-transactions-can-be-executed-after-removing-managed-instance-from-server-trust-group)|Oktober 2020|Mit Problemumgehung||
 |[Verteilte Transaktionen können nach einem Managed Instance-Skalierungsvorgang nicht ausgeführt werden.](#distributed-transactions-cannot-be-executed-after-managed-instance-scaling-operation)|Oktober 2020|Mit Problemumgehung||
 |[BULK INSERT](/sql/t-sql/statements/bulk-insert-transact-sql)/[OPENROWSET](/sql/t-sql/functions/openrowset-transact-sql?view=sql-server-ver15)-Anweisung in Azure SQL und die `BACKUP`/`RESTORE`-Anweisung in Managed Instance können keine verwalteten Azure AD-Identitäten verwenden, um sich für Azure Storage zu authentifizieren.|Sep 2020|Mit Problemumgehung||
@@ -115,7 +116,7 @@ Die folgenden Funktionen sind im SQL Managed Instance-Bereitstellungsmodell in d
 |[Resource Governor auf Dienstebene „Unternehmenskritisch“ muss nach einem Failover möglicherweise neu konfiguriert werden](#resource-governor-on-business-critical-service-tier-might-need-to-be-reconfigured-after-failover)|September 2019|Mit Problemumgehung||
 |[Datenbankübergreifende Service Broker-Dialoge müssen nach einem Upgrade der Dienstebene erneut initialisiert werden](#cross-database-service-broker-dialogs-must-be-reinitialized-after-service-tier-upgrade)|August 2019|Mit Problemumgehung||
 |[Identitätswechsel für Azure AD-Anmeldetypen wird nicht unterstützt.](#impersonation-of-azure-ad-login-types-is-not-supported)|Juli 2019|Keine Problemumgehung||
-|[@queryParameter wird in „sp_send_db_mail“ nicht unterstützt](#-parameter-not-supported-in-sp_send_db_mail)|April 2019|Keine Problemumgehung||
+|[@queryParameter wird in „sp_send_db_mail“ nicht unterstützt](#-parameter-not-supported-in-sp_send_db_mail)|April 2019|Gelöst|Jan 2021|
 |[Transaktionsreplikation muss nach einem geografischen Failover neu konfiguriert werden](#transactional-replication-must-be-reconfigured-after-geo-failover)|März 2019|Keine Problemumgehung||
 |[Temporäre Datenbank wird während des RESTORE-Vorgangs verwendet](#temporary-database-is-used-during-restore-operation)||Mit Problemumgehung||
 |[Struktur und Inhalt von TEMPDB werden neu erstellt](#tempdb-structure-and-content-is-re-created)||Keine Problemumgehung||
@@ -128,6 +129,29 @@ Die folgenden Funktionen sind im SQL Managed Instance-Bereitstellungsmodell in d
 |Die Point-in-Time-Wiederherstellung einer Datenbank von der Dienstebene „Unternehmenskritisch“ in die Dienstebene „Universell“ wird nicht gelingen, wenn die Quelldatenbank In-Memory-OLTP-Objekte enthält.||Gelöst|Oktober 2019|
 |Datenbank-E-Mail-Feature bei externen (Nicht-Azure-)E-Mail-Servern über sichere Verbindung||Gelöst|Oktober 2019|
 |Eigenständige Datenbanken werden in SQL Managed Instance nicht unterstützt||Gelöst|August 2019|
+
+### <a name="procedure-sp_send_dbmail-may-transiently-fail-when-query-parameter-is-used"></a>Die Prozedur „sp_send_dbmail“ kann zu vorübergehenden Fehlern führen, wenn der Parameter @query verwendet wird.
+
+Die Prozedur „sp_send_dbmail“ kann zu vorübergehenden Fehlern führen, wenn der Parameter `@query` verwendet wird. Wenn dieses Problem besteht, tritt bei jeder zweiten Ausführung der Prozedur „sp_send_dbmail“ der Fehler `Msg 22050, Level 16, State 1` mit der Meldung `Failed to initialize sqlcmd library with error number -2147467259` auf. Damit dieser Fehler ordnungsgemäß angezeigt werden kann, sollte die Prozedur mit dem Standardwert 0 für den Parameter `@exclude_query_output` aufgerufen werden. Andernfalls wird der Fehler nicht weitergegeben.
+Dieses Problem wird durch eine bekanntes Problem bei „sp_send_dbmail“ bei der Verwendung von Identitätswechseln und Verbindungspooling verursacht.
+Um dieses Problem zu umgehen, umschließen Sie den Code für das Senden von E-Mails in einer Wiederholungslogik, die auf dem Ausgabeparameter `@mailitem_id` basiert. Wenn die Ausführung zu einem Fehler führt, ist der Parameterwert NULL. Dies zeigt an, dass „sp_send_dbmail“ noch einmal aufgerufen werden muss, um erfolgreich eine E-Mail zu senden. Im Folgenden finden Sie ein Beispiel für diese Wiederholungslogik.
+```sql
+CREATE PROCEDURE send_dbmail_with_retry AS
+BEGIN
+    DECLARE @miid INT
+    EXEC msdb.dbo.sp_send_dbmail
+        @recipients = 'name@mail.com', @subject = 'Subject', @query = 'select * from dbo.test_table',
+        @profile_name ='AzureManagedInstance_dbmail_profile', @execute_query_database = 'testdb',
+        @mailitem_id = @miid OUTPUT
+
+    -- If sp_send_dbmail returned NULL @mailidem_id then retry sending email.
+    --
+    IF (@miid is NULL)
+    EXEC msdb.dbo.sp_send_dbmail
+        @recipients = 'name@mail.com', @subject = 'Subject', @query = 'select * from dbo.test_table',
+        @profile_name ='AzureManagedInstance_dbmail_profile', @execute_query_database = 'testdb',
+END
+```
 
 ### <a name="distributed-transactions-can-be-executed-after-removing-managed-instance-from-server-trust-group"></a>Verteilte Transaktionen können auch nach dem Entfernen einer verwalteten Instanz aus der Vertrauensstellungsgruppe des Servers ausgeführt werden
 
@@ -156,7 +180,7 @@ BULK INSERT Sales.Invoices FROM 'inv-2017-12-08.csv' WITH (DATA_SOURCE = 'MyAzur
 
 In einigen Fällen kann ein Problem bei dem Dienstprinzipal auftreten, der für den Zugriff auf Azure AD- und Azure Key Vault-Dienste (AKV) verwendet wird. Dieses Problem beeinträchtigt die Verwendung von Azure AD-Authentifizierung und Transparent Database Encryption (TDE) mit SQL Managed Instance. Dabei kann es sich um ein vorübergehendes Konnektivitätsproblem handeln, oder Anweisungen, z. B. „CREATE LOGIN/USER FROM EXTERNAL PROVIDER“ oder „EXECUTE AS LOGIN/USER“, können nicht ausgeführt werden. In manchen Fällen ist es eventuell nicht möglich, TDE mit einem kundenseitig verwalteten Schlüssel in einer neuen Azure SQL Managed Instance einzurichten.
 
-**Problemumgehung**: Wenn Sie verhindern möchten, dass dieses Problem in Ihrer Instanz von SQL Managed Instance auftritt, bevor Sie Updatebefehle ausführen, oder falls dieses Problem bereits nach Updatebefehlen aufgetreten ist, wechseln Sie zum Azure-Portal, und öffnen Sie in SQL Managed Instance das [Blatt „Active Directory-Administrator“](./authentication-aad-configure.md?tabs=azure-powershell#azure-portal). Überprüfen Sie, ob die Fehlermeldung „Die verwaltete Instanz benötigt einen Dienstprinzipal für den Zugriff auf Azure Active Directory. Klicken Sie hier, um einen Dienstprinzipal zu erstellen.“ angezeigt wird. Falls diese Fehlermeldung auftritt, klicken Sie darauf, und befolgen Sie die Schritt-für-Schritt-Anweisungen, die so lange angezeigt werden, bis der Fehler behoben wurde.
+**Problemumgehung**: Wenn Sie verhindern möchten, dass dieses Problem in Ihrer Instanz von SQL Managed Instance auftritt, bevor Sie Updatebefehle ausführen, oder falls dieses Problem bereits nach Updatebefehlen aufgetreten ist, wechseln Sie zum Azure-Portal, und öffnen Sie in SQL Managed Instance das [Blatt „Active Directory-Administrator“](./authentication-aad-configure.md?tabs=azure-powershell#azure-portal). Überprüfen Sie, ob die Fehlermeldung „Die verwaltete Instanz benötigt einen Dienstprinzipal für den Zugriff auf Azure Active Directory. Klicken Sie hier, um einen Dienstprinzipal zu erstellen.“ angezeigt wird. Falls diese Fehlermeldung auftritt, klicken Sie darauf, und befolgen Sie die Schrittanleitung, die so lange angezeigt wird, bis der Fehler behoben wurde.
 
 ### <a name="restoring-manual-backup-without-checksum-might-fail"></a>Wiederherstellen der manuellen Sicherung ohne CHECKSUM schlägt möglicherweise fehl
 

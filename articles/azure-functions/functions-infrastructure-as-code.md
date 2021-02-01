@@ -5,12 +5,12 @@ ms.assetid: d20743e3-aab6-442c-a836-9bcea09bfd32
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.custom: fasttrack-edit
-ms.openlocfilehash: dbb380dca231f75f6d6e77676c9059ef3762dac5
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: a1b621b5d5601e6d8bffef48e23d217e0eee1d6a
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98050934"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98725818"
 ---
 # <a name="automate-resource-deployment-for-your-function-app-in-azure-functions"></a>Automatisieren der Ressourcenbereitstellung für Ihre Funktions-App in Azure Functions
 
@@ -212,9 +212,11 @@ Wenn Sie Ihren Verbrauchstarif explizit definieren, müssen Sie die `serverFarmI
 
 ### <a name="create-a-function-app"></a>Erstellen einer Funktionen-App
 
+Die erforderlichen Einstellungen für eine Funktions-App, die im Verbrauchstarif ausgeführt wird, unterscheiden sich zwischen Windows und Linux. 
+
 #### <a name="windows"></a>Windows
 
-Unter Windows erfordert ein Verbrauchsplan zwei zusätzliche Einstellungen in der Standortkonfiguration: `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING` und `WEBSITE_CONTENTSHARE`. Diese Eigenschaften konfigurieren das Speicherkonto und den Dateipfad zu dem Speicherort von Funktions-App-Code und Konfiguration.
+Unter Windows erfordert der Verbrauchstarif eine zusätzliche Einstellung in der Websitekonfiguration: [`WEBSITE_CONTENTAZUREFILECONNECTIONSTRING`](functions-app-settings.md#website_contentazurefileconnectionstring). Diese Eigenschaft legt das Speicherkonto fest, in dem der Code der Funktions-App und die Konfiguration gespeichert werden.
 
 ```json
 {
@@ -238,10 +240,6 @@ Unter Windows erfordert ein Verbrauchsplan zwei zusätzliche Einstellungen in de
                     "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountid'),'2019-06-01').keys[0].value)]"
                 },
                 {
-                    "name": "WEBSITE_CONTENTSHARE",
-                    "value": "[toLower(variables('functionAppName'))]"
-                },
-                {
                     "name": "FUNCTIONS_WORKER_RUNTIME",
                     "value": "node"
                 },
@@ -259,9 +257,12 @@ Unter Windows erfordert ein Verbrauchsplan zwei zusätzliche Einstellungen in de
 }
 ```
 
+> [!IMPORTANT]
+> Legen Sie die Einstellung [`WEBSITE_CONTENTSHARE`](functions-app-settings.md#website_contentshare) nicht fest, da der Wert beim Erstellen der Website generiert wird.  
+
 #### <a name="linux"></a>Linux
 
-Unter Linux muss `kind` der Funktions-App auf `functionapp,linux` festgelegt werden, und die `reserved`-Eigenschaft muss auf `true` festgelegt werden:
+Unter Linux muss `kind` der Funktions-App auf `functionapp,linux` festgelegt werden, und die `reserved`-Eigenschaft muss auf `true` festgelegt werden. 
 
 ```json
 {
@@ -299,8 +300,9 @@ Unter Linux muss `kind` der Funktions-App auf `functionapp,linux` festgelegt wer
 }
 ```
 
-<a name="premium"></a>
+Die Einstellungen [`WEBSITE_CONTENTAZUREFILECONNECTIONSTRING`](functions-app-settings.md#website_contentazurefileconnectionstring) und [`WEBSITE_CONTENTSHARE`](functions-app-settings.md#website_contentshare) werden unter Linux nicht unterstützt.
 
+<a name="premium"></a>
 ## <a name="deploy-on-premium-plan"></a>Bereitstellen im Premium-Plan
 
 Der Premium-Tarif bietet die gleiche Skalierung wie der Verbrauchstarif, umfasst jedoch dedizierte Ressourcen und zusätzliche Funktionen. Weitere Informationen finden Sie unter [Premium-Tarif für Azure Functions](./functions-premium-plan.md).
@@ -332,7 +334,7 @@ Ein Premium-Plan ist eine besondere Art von „Serverfarm“-Ressource. Sie kön
 
 ### <a name="create-a-function-app"></a>Erstellen einer Funktionen-App
 
-Für die `serverFarmId`-Eigenschaft einer Funktions-App in einem Premium-Plan muss die Ressourcen-ID des zuvor erstellten Plans festgelegt werden. Darüber hinaus erfordert ein Premium-Plan zwei zusätzliche Einstellungen in der Standortkonfiguration: `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING` und `WEBSITE_CONTENTSHARE`. Diese Eigenschaften konfigurieren das Speicherkonto und den Dateipfad zu dem Speicherort von Funktions-App-Code und Konfiguration.
+Für die `serverFarmId`-Eigenschaft einer Funktions-App in einem Premium-Plan muss die Ressourcen-ID des zuvor erstellten Plans festgelegt werden. Darüber hinaus erfordert ein Premium-Plan eine zusätzliche Einstellung in der Websitekonfiguration: [`WEBSITE_CONTENTAZUREFILECONNECTIONSTRING`](functions-app-settings.md#website_contentazurefileconnectionstring). Diese Eigenschaft legt das Speicherkonto fest, in dem der Code der Funktions-App und die Konfiguration gespeichert werden.
 
 ```json
 {
@@ -358,10 +360,6 @@ Für die `serverFarmId`-Eigenschaft einer Funktions-App in einem Premium-Plan mu
                     "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountid'),'2019-06-01').keys[0].value)]"
                 },
                 {
-                    "name": "WEBSITE_CONTENTSHARE",
-                    "value": "[toLower(variables('functionAppName'))]"
-                },
-                {
                     "name": "FUNCTIONS_WORKER_RUNTIME",
                     "value": "node"
                 },
@@ -378,6 +376,8 @@ Für die `serverFarmId`-Eigenschaft einer Funktions-App in einem Premium-Plan mu
     }
 }
 ```
+> [!IMPORTANT]
+> Legen Sie die Einstellung [`WEBSITE_CONTENTSHARE`](functions-app-settings.md#website_contentshare) nicht fest, da der Wert beim Erstellen der Website generiert wird.  
 
 <a name="app-service-plan"></a>
 
@@ -692,7 +692,7 @@ Machen Sie sich näher mit dem Entwickeln und Konfigurieren von Azure Functions 
 
 * [Entwicklerreferenz zu Azure Functions](functions-reference.md)
 * [Konfigurieren von Azure-Funktions-App-Einstellungen](functions-how-to-use-azure-function-app-settings.md)
-* [Erstellen Sie Ihre erste Funktion in Azure Functions](functions-create-first-azure-function.md)
+* [Erstellen Sie Ihre erste Funktion in Azure Functions](./functions-get-started.md)
 
 <!-- LINKS -->
 

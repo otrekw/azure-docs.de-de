@@ -17,19 +17,19 @@ ms.date: 1/19/2021
 ms.author: markvi
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 05a514debcf8036a296bbe66b2dd75c7dacacdc2
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: deab3460baf9c46e2a3073eb41b738b0e7ad586f
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98600746"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98726300"
 ---
 # <a name="provisioning-reports-in-the-azure-active-directory-portal-preview"></a>Bereitstellungsberichte im Azure Active Directory-Portal (Vorschau)
 
 Die Architektur für die Berichterstellung in Azure Active Directory (Azure AD) umfasst die folgenden Komponenten:
 
 - **Aktivität** 
-    - **Anmeldungen**: Informationen zur Nutzung von verwalteten Anwendungen und Aktivitäten der Benutzeranmeldung.
+    - **Anmeldungen:** Informationen zur Nutzung von verwalteten Anwendungen und Aktivitäten der Benutzeranmeldung
     - **Überwachungsprotokolle** - [Überwachungsprotokolle](concept-audit-logs.md) stellen Systemaktivitätsinformationen zu Benutzern und zur Gruppenverwaltung, zu verwalteten Anwendungen und zu Verzeichnisaktivitäten bereit.
     - **Bereitstellungsprotokolle:** enthalten Systemaktivitäten zu Benutzern, Gruppen und Rollen, die mit dem Azure AD-Bereitstellungsdienst bereitgestellt werden. 
 
@@ -37,14 +37,18 @@ Die Architektur für die Berichterstellung in Azure Active Directory (Azure AD) 
     - **Riskante Anmeldungen**: Eine [riskante Anmeldung](../identity-protection/overview-identity-protection.md) ist ein Indikator für einen Anmeldeversuch von einem Benutzer, der nicht der rechtmäßige Besitzer eines Benutzerkontos ist.
     - **Benutzer mit Risikomarkierung**: Ein [Benutzer mit Risikomarkierung](../identity-protection/overview-identity-protection.md) ist ein Indikator für ein ggf. kompromittiertes Benutzerkonto.
 
-In diesem Thema erhalten Sie einen Überblick über den Bereitstellungsbericht.
+In diesem Thema finden Sie eine Übersicht über Bereitstellungsprotokolle. Es werden u. a. folgende Fragen beantwortet: 
+
+* Welche Gruppen wurden erfolgreich in ServiceNow erstellt?
+* Welche Benutzer wurden erfolgreich aus Adobe entfernt?
+* Welche Benutzer aus Workday wurden in Active Directory erfolgreich erstellt? 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 ### <a name="who-can-access-the-data"></a>Wer kann auf die Daten zugreifen?
 * Anwendungsbesitzer können Protokolle für Anwendungen in ihrem Besitz anzeigen.
 * Benutzer mit den Rollen „Sicherheitsadministrator“, „Sicherheitsleseberechtigter“, „Berichtsleser“, „Anwendungsadministrator“ und „Cloudanwendungsadministrator“
-* Benutzer in einer benutzerdefinierten Rolle mit der Berechtigung [provisioningLogs](https://docs.microsoft.com/azure/active-directory/roles/custom-enterprise-app-permissions#full-list-of-permissions)
+* Benutzer in einer benutzerdefinierten Rolle mit der Berechtigung [provisioningLogs](../roles/custom-enterprise-app-permissions.md#full-list-of-permissions)
 * Globale Administratoren
 
 
@@ -52,14 +56,16 @@ In diesem Thema erhalten Sie einen Überblick über den Bereitstellungsbericht.
 
 Ihrem Mandanten muss eine Azure AD Premium-Lizenz zugewiesen sein, damit der Gesamtbericht für Bereitstellungsaktivitäten angezeigt werden kann. Unter [Erste Schritte mit Azure Active Directory Premium](../fundamentals/active-directory-get-started-premium.md) erfahren Sie, wie Sie ein Upgrade für Ihre Azure Active Directory-Edition durchführen. 
 
-## <a name="provisioning-logs"></a>Bereitstellungsprotokolle
 
-Die Bereitstellungsprotokolle bieten Antworten auf die folgenden Fragen:
+## <a name="ways-of-interacting-with-the-provisioning-logs"></a>Möglichkeiten der Interaktion mit den Bereitstellungsprotokollen 
+Kunden haben vier Möglichkeiten für die Arbeit mit den Bereitstellungsprotokollen:
 
-* Welche Gruppen wurden erfolgreich in ServiceNow erstellt?
-* Welche Benutzer wurden erfolgreich aus Adobe entfernt?
-* Welche Benutzer konnten in Dropbox nicht erstellt werden?
+1. Zugreifen auf die Protokolle über das Azure-Portal wie unten beschrieben
+1. Streamen der Bereitstellungsprotokolle in [Azure Monitor](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-log-analytics) für eine verlängerte Datenaufbewahrung und das Entwickeln benutzerdefinierter Dashboards, Warnungen und Abfragen
+1. Abfragen der [Microsoft Graph-API](https://docs.microsoft.com/graph/api/resources/provisioningobjectsummary?view=graph-rest-beta) für die Bereitstellungsprotokolle
+1. Herunterladen der Bereitstellungsprotokolle als CSV- oder JSON-Dateien
 
+## <a name="access-the-logs-from-the-azure-portal"></a>Zugreifen auf die Protokolle über das Azure-Portal
 Sie können auf die Bereitstellungsprotokolle zugreifen, indem Sie im [Azure-Portal](https://portal.azure.com) auf dem Blatt **Azure Active Directory** im Abschnitt **Überwachung** die Option **Bereitstellungsprotokolle** auswählen. Bei einigen Bereitstellungsdatensätzen kann es bis zu zwei Stunden dauern, bis sie im Portal angezeigt werden.
 
 ![Bereitstellungsprotokolle](./media/concept-provisioning-logs/access-provisioning-logs.png "Bereitstellungsprotokolle")
@@ -205,10 +211,57 @@ Auf der Registerkarte **Problembehandlung und Empfehlungen** werden der Fehlerco
 
 Auf der Registerkarte **Geänderte Eigenschaften** werden der alte und der neue Wert angezeigt. Wenn kein alter Wert vorhanden ist, bleibt die entsprechende Spalte leer. 
 
-
 ### <a name="summary"></a>Zusammenfassung
 
 Die Registerkarte **Zusammenfassung** bietet eine Übersicht über die Vorgänge und die Bezeichner für das Objekt im Quell- und Zielsystem. 
+
+## <a name="download-logs-as-csv-or-json"></a>Herunterladen von Protokollen als CSV- oder JSON-Datei
+
+Sie können die Bereitstellungsprotokolle für die spätere Verwendung herunterladen. Navigieren Sie dazu im Azure-Portal zu den Protokollen, und klicken Sie auf „Herunterladen“. Die Datei wird basierend auf den ausgewählten Filterkriterien gefiltert. Sie sollten die Filter so spezifisch wie möglich gestalten, um Dauer und Größe des Downloads zu minimieren. Der CSV-Download ist in drei Dateien unterteilt:
+
+* ProvisioningLogs: Lädt alle Protokolle mit Ausnahme der Bereitstellungsschritte und der geänderten Eigenschaften herunter
+* ProvisioningLogs_ProvisioningSteps: Enthält die Bereitstellungsschritte und die Änderungs-ID. Mithilfe der Änderungs-ID können Sie ein Ereignis mit den anderen beiden Dateien verknüpfen.
+* ProvisioningLogs_ModifiedProperties: Enthält die geänderten Attribute und die Änderungs-ID. Mithilfe der Änderungs-ID können Sie ein Ereignis mit den anderen beiden Dateien verknüpfen.
+
+#### <a name="opening-the-json-file"></a>Öffnen der JSON-Datei
+Verwenden Sie zum Öffnen der JSON-Datei einen Text-Editor wie [Microsoft Visual Studio Code](https://aka.ms/vscode). Visual Studio Code vereinfacht das Lesen durch die Syntaxhervorhebung. Die JSON-Datei kann auch mit Browsern wie z. B. [Microsoft Edge](https://aka.ms/msedge) geöffnet werden. Sie kann dann aber nicht bearbeitet werden. 
+
+#### <a name="prettifying-the-json-file"></a>Formatieren der JSON-Datei
+Die JSON-Datei wird in einem sehr minimalistischen Format heruntergeladen, um die Größe des Downloads zu verringern. Dies kann wiederum das Lesen der Nutzdaten erschweren. Es gibt zwei Optionen zum Formatieren der Datei:
+
+1. Formatieren der JSON-Datei mit Visual Studio Code
+
+Befolgen Sie [diese Anweisungen](https://code.visualstudio.com/docs/languages/json#_formatting), um die JSON-Datei mit Visual Studio Code zu formatieren.
+
+2. Verwenden von PowerShell zum Formatieren der JSON-Datei
+
+Dieses Skript gibt den JSON-Code in einem besser lesbaren Format mit Tabulatoren und Leerzeichen aus. 
+
+` $JSONContent = Get-Content -Path "<PATH TO THE PROVISIONING LOGS FILE>" | ConvertFrom-JSON`
+
+`$JSONContent | ConvertTo-Json > <PATH TO OUTPUT THE JSON FILE>`
+
+#### <a name="parsing-the-json-file"></a>Analysieren der JSON-Datei
+
+Im Folgenden finden Sie einige Beispielbefehle für die Arbeit mit der JSON-Datei mit PowerShell. Sie können jede beliebige Programmiersprache verwenden, mit der Sie vertraut sind.  
+
+Zunächst [lesen Sie die JSON-Datei](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/convertfrom-json?view=powershell-7.1), indem Sie Folgendes ausführen:
+
+` $JSONContent = Get-Content -Path "<PATH TO THE PROVISIONING LOGS FILE>" | ConvertFrom-JSON`
+
+Nun können Sie die Daten gemäß Ihrem Szenario analysieren. Hier sind einige Beispiele: 
+
+1. Ausgeben aller Auftrags-IDs in der JSON-Datei
+
+`foreach ($provitem in $JSONContent) { $provitem.jobId }`
+
+2. Ausgeben aller changeIds (Änderungs-IDs) für Ereignisse mit der Aktion „Create“ (Erstellen)
+
+`foreach ($provitem in $JSONContent) { `
+`   if ($provItem.action -eq 'Create') {`
+`       $provitem.changeId `
+`   }`
+`}`
 
 ## <a name="what-you-should-know"></a>Wichtige Informationen
 
@@ -234,14 +287,14 @@ Anhand der folgenden Tabelle können Sie besser verstehen, wie Sie mögliche Feh
 |InsufficientRights, MethodNotAllowed, NotPermitted, Unauthorized| Azure AD konnte sich zwar bei der Zielanwendung authentifizieren, war aber nicht zum Ausführen der Aktualisierung autorisiert. Überprüfen Sie alle Anweisungen, die von der Zielanwendung bereitgestellt werden, sowie das entsprechende [Tutorial](../saas-apps/tutorial-list.md) für die Anwendung.|
 |UnprocessableEntity|Die Zielanwendung hat eine unerwartete Antwort zurückgegeben. Die Konfiguration der Zielanwendung ist möglicherweise nicht korrekt, oder es gibt ein Dienstproblem mit der Zielanwendung, das ein ordnungsgemäßes Funktionieren verhindert.|
 |WebExceptionProtocolError |Beim Herstellen einer Verbindung mit der Zielanwendung ist ein HTTP-Protokollfehler aufgetreten. Sie brauchen nichts zu tun. Dieser Versuch wird automatisch in 40 Minuten wiederholt.|
-|InvalidAnchor|Ein Benutzer, der zuvor vom Bereitstellungsdienst erstellt oder abgeglichen wurde, ist nicht mehr vorhanden. Stellen Sie sicher, dass der Benutzer vorhanden ist. Um einen erneuten Abgleich aller Benutzer zu erzwingen, verwenden Sie die Microsoft Graph-API, um [den Auftrag neu zu starten](/graph/api/synchronization-synchronizationjob-restart?tabs=http&view=graph-rest-beta). Beachten Sie, dass durch den Neustart der Bereitstellung ein Startzyklus auslöst wird, der einige Zeit dauern kann. Außerdem wird der Cache gelöscht, der vom Bereitstellungsdienst für den Betrieb verwendet wird. Dies bedeutet, dass alle Benutzer und Gruppen im Mandanten erneut ausgewertet werden müssen. Möglicherweise werden auch bestimmte Bereitstellungsereignisse gelöscht.|
-|NotImplemented | Die Ziel-App hat eine unerwartete Antwort zurückgegeben. Die Konfiguration der App ist möglicherweise nicht korrekt, oder es gibt ein Dienstproblem mit der Ziel-App, das deren ordnungsgemäßes Funktionieren verhindert. Überprüfen Sie alle Anweisungen, die von der Zielanwendung bereitgestellt werden, sowie das entsprechende [Tutorial](../saas-apps/tutorial-list.md) für die Anwendung. |
+|InvalidAnchor|Ein Benutzer, der zuvor vom Bereitstellungsdienst erstellt oder abgeglichen wurde, ist nicht mehr vorhanden. Stellen Sie sicher, dass der Benutzer vorhanden ist. Um einen erneuten Abgleich aller Benutzer zu erzwingen, verwenden Sie die Microsoft Graph-API, um [den Auftrag neu zu starten](/graph/api/synchronization-synchronizationjob-restart?tabs=http&view=graph-rest-beta). Durch den Neustart der Bereitstellung wird ein Startzyklus auslöst, der einige Zeit dauern kann. Außerdem wird der Cache gelöscht, der vom Bereitstellungsdienst für den Betrieb verwendet wird. Dies bedeutet, dass alle Benutzer und Gruppen im Mandanten erneut ausgewertet werden müssen. Möglicherweise werden auch bestimmte Bereitstellungsereignisse gelöscht.|
+|NotImplemented | Die Ziel-App hat eine unerwartete Antwort zurückgegeben. Die Konfiguration der App ist möglicherweise nicht korrekt, oder es gibt ein Dienstproblem mit der Ziel-App, das deren ordnungsgemäßes Funktionieren verhindert. Lesen Sie alle Anweisungen von der Zielanwendung sowie das entsprechende [Tutorial](../saas-apps/tutorial-list.md) für die Anwendung. |
 |MandatoryFieldsMissing, MissingValues |Der Benutzer konnte nicht erstellt werden, da erforderliche Werte fehlten. Korrigieren Sie die fehlenden Attributwerte im Quelldatensatz, oder überprüfen Sie die Konfiguration der übereinstimmenden Attribute, um sicherzustellen, dass die erforderlichen Felder nicht ausgelassen wurden. [Erfahren Sie mehr](../app-provisioning/customize-application-attributes.md) über das Konfigurieren von übereinstimmenden Attributen.|
 |SchemaAttributeNotFound |Der Vorgang konnte nicht durchgeführt werden, da ein Attribut angegeben wurde, das in der Zielanwendung nicht vorhanden ist. In der [Dokumentation](../app-provisioning/customize-application-attributes.md) finden Sie Informationen zum Anpassen von Attributen. Stellen Sie außerdem sicher, dass Ihre Konfiguration korrekt ist.|
 |InternalError |Im Azure AD-Bereitstellungsdienst ist ein interner Dienstfehler aufgetreten. Sie brauchen nichts zu tun. Dieser Versuch wird automatisch in 40 Minuten wiederholt.|
 |InvalidDomain |Der Vorgang konnte aufgrund eines Attributwerts mit einem ungültigen Domänennamen nicht ausgeführt werden. Aktualisieren Sie den Domänennamen für den Benutzer, oder fügen Sie ihn der Liste zulässiger Domänen in der Zielanwendung hinzu. |
 |Timeout |Der Vorgang konnte nicht abgeschlossen werden, da die Antwort der Zielanwendung zu lange gedauert hat. Sie brauchen nichts zu tun. Dieser Versuch wird automatisch in 40 Minuten wiederholt.|
-|LicenseLimitExceeded|Der Benutzer konnte in der Zielanwendung nicht erstellt werden, da für diesen Benutzer keine Lizenzen verfügbar sind. Erwerben Sie entweder zusätzliche Lizenzen für die Zielanwendung, oder überprüfen Sie die Konfiguration der Benutzerzuweisungen und Attributzuordnungen, um sicherzustellen, dass die richtigen Attribute den richtigen Benutzern zugewiesen sind.|
+|LicenseLimitExceeded|Der Benutzer konnte in der Zielanwendung nicht erstellt werden, da für diesen Benutzer keine Lizenzen verfügbar sind. Erwerben Sie entweder mehr Lizenzen für die Zielanwendung, oder überprüfen Sie die Konfiguration der Benutzerzuweisungen und Attributzuordnungen, um sicherzustellen, dass die richtigen Attribute den richtigen Benutzern zugewiesen sind.|
 |DuplicateTargetEntries  |Der Vorgang konnte nicht abgeschlossen werden, da in der Zielanwendung mehr als ein Benutzer mit den konfigurierten übereinstimmenden Attributen gefunden wurde. Entfernen Sie entweder den doppelten Benutzer aus der Zielanwendung, oder konfigurieren Sie die Attributzuordnungen neu, wie [hier](../app-provisioning/customize-application-attributes.md) beschrieben.|
 |DuplicateSourceEntries | Der Vorgang konnte nicht abgeschlossen werden, da mehr als ein Benutzer mit den konfigurierten übereinstimmenden Attributen gefunden wurde. Entfernen Sie entweder den doppelten Benutzer, oder konfigurieren Sie die Attributzuordnungen neu, wie [hier](../app-provisioning/customize-application-attributes.md) beschrieben.|
 |ImportSkipped | Nachdem jeder Benutzer ausgewertet wurde, wird versucht, die Benutzer aus dem Quellsystem zu importieren. Dieser Fehler tritt häufig auf, wenn für den zu importierenden Benutzer die in den Attributzuordnungen definierte Übereinstimmungseigenschaft fehlt. Wenn für das Benutzerobjekt zum entsprechenden Attribut kein Wert vorhanden ist, können keine Bereichs-, Vergleichs- oder Exportänderungen ausgewertet werden. Beachten Sie, dass dieser Fehler nicht darauf hinweist, dass sich der Benutzer im Gültigkeitsbereich befindet, da der Bereich für den Benutzer noch nicht ausgewertet wurde.|

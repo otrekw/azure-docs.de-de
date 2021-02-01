@@ -11,26 +11,28 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to,automl,contperf-fy21q2
 ms.date: 12/18/2020
-ms.openlocfilehash: 5fcb57d1ef909d7c15e21b34c3f584c6615a6a44
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: c90ef9fe49a87c18c7f4f55175bafaebfd31d722
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98134414"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98610300"
 ---
 # <a name="data-featurization-in-automated-machine-learning"></a>Datenfeaturisierung mit automatisiertem maschinellem Lernen
 
-
-
-Erfahren Sie mehr über die Einstellungen der Datenfeaturisierung in Azure Machine Learning und wie Sie diese Features für Experimente mit [automatisiertem maschinellen Lernen](concept-automated-ml.md) anpassen können.
+Erfahren Sie mehr über die Einstellungen der Datenfeaturisierung in Azure Machine Learning und wie Sie diese Features für [Experimente mit automatisiertem maschinellen Lernen](concept-automated-ml.md) anpassen können.
 
 ## <a name="feature-engineering-and-featurization"></a>Feature Engineering und Featurisierung
 
-Beim *Feature Engineering* werden Domänenkenntnisse der Daten zum Erstellen von Features verwendet, mit denen ML-Algorithmen (Machine Learning) besser lernen können. In Azure Machine Learning wird das Feature Engineering mithilfe von Datenskalierungs- und Normalisierungstechniken vereinfacht. Zusammen werden diese Techniken und das Feature Engineering als *Featurisierung* in Experimenten mit automatisiertem maschinellem Lernen bzw. *AutoML* bezeichnet.
+Die Trainingsdaten bestehen aus Zeilen und Spalten. Jede Zeile ist eine Beobachtung oder ein Datensatz, und die Spalten jeder Zeile sind die Features, mit denen die einzelnen Datensätze beschrieben werden. In der Regel werden zum Erstellen von Vorhersagemodellen die Features ausgewählt, die die Muster in den Daten am besten beschreiben.
+
+Obwohl viele der Rohdatenfelder direkt zum Trainieren eines Modells verwendet werden können, ist es häufig erforderlich, zusätzliche (entwickelte) Features zu erstellen, mit denen die Muster in den Daten besser unterschieden werden können. Dieser Prozess wird **Feature Engineering** oder Featurisierung genannt. Dabei werden Kenntnisse zum Themenbereich der Daten genutzt, um Features zu erstellen, die das Lernen der Algorithmen für das maschinelle Lernen unterstützen. 
+
+In Azure Machine Learning wird das Feature Engineering mithilfe von Datenskalierungs- und Normalisierungstechniken vereinfacht. Zusammen werden diese Techniken und das Feature Engineering als **Featurisierung** in Experimenten mit automatisiertem maschinellem Lernen bezeichnet.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-In diesem Artikel wird davon ausgegangen, dass Sie bereits mit der Konfiguration eines AutoML-Experiments vertraut sind. Weitere Informationen zur Konfiguration finden Sie in den folgenden Artikeln:
+In diesem Artikel wird davon ausgegangen, dass Sie bereits mit der Konfiguration eines Experiments für automatisiertes maschinelles Lernen vertraut sind. Weitere Informationen zur Konfiguration finden Sie in den folgenden Artikeln:
 
 - Für ein Code First-Konzept: [Konfigurieren automatisierter ML-Experimente in Python](how-to-configure-auto-train.md)
 - Für ein Konzept mit wenig Code oder ohne Code: [Erstellen, Überprüfen und Bereitstellen von automatisierten Machine Learning-Modellen mit Azure Machine Learning](how-to-use-automated-ml-for-ml-models.md)
@@ -59,7 +61,7 @@ In der folgenden Tabelle sind die akzeptierten Einstellungen für `featurization
 In der folgenden Tabelle sind die Verfahren zusammengefasst, die automatisch auf die Daten angewendet werden. Diese Verfahren werden für Experimente angewendet, die mit dem SDK oder Studio konfiguriert werden. Um dieses Verhalten zu deaktivieren, legen Sie `"featurization": 'off'` in Ihrem `AutoMLConfig`-Objekt fest.
 
 > [!NOTE]
-> Wenn Sie Ihre mit ML automatisch erstellten Modelle in ein [ONNX-Modell](concept-onnx.md) exportieren möchten, beachten Sie, dass nur die mit einem Sternchen („*“) gekennzeichneten Optionen zur Featurisierung im ONNX-Format unterstützt werden. Erfahren Sie mehr über das [Konvertieren von Modellen zu ONNX](concept-automated-ml.md#use-with-onnx).
+> Wenn Sie Ihre mit ML automatisch erstellten Modelle in ein [ONNX-Modell](concept-onnx.md) exportieren möchten, beachten Sie, dass nur die mit einem Sternchen („*“) gekennzeichneten Optionen zur Featurisierung im ONNX-Format unterstützt werden. Erfahren Sie mehr über das [Konvertieren von Modellen zu ONNX](how-to-use-automl-onnx-model-dotnet.md).
 
 |Schritte zur&nbsp;Featurisierung| BESCHREIBUNG |
 | ------------- | ------------- |
@@ -104,7 +106,7 @@ Schutzmaßnahme|Status|Bedingung&nbsp;für&nbsp;Auslösung
 **Ergänzen fehlender Featurewerte durch Imputation** |Erfolgreich <br><br><br> Vorgehensweise| Es wurden keine fehlenden Featurewerte in Ihren Trainingsdaten festgestellt. Erfahren Sie mehr über die [Imputation fehlender Werte](./how-to-use-automated-ml-for-ml-models.md#customize-featurization). <br><br> Fehlende Featurewerte wurden in Ihren Trainingsdaten festgestellt und imputiert.
 **Behandeln von Features mit hoher Kardinalität** |Erfolgreich <br><br><br> Vorgehensweise| Ihre Eingaben wurden analysiert, und es wurden keine Features mit hoher Kardinalität gefunden. <br><br> Features mit hoher Kardinalität wurden in Ihren Eingaben erkannt und behandelt.
 **Verarbeitung der Überprüfungsaufteilung** |Vorgehensweise| Die Überprüfungskonfiguration wurde auf `'auto'` festgelegt, und die Trainingsdaten enthielten *mehr als 20.000 Zeilen*. <br> Jede Iteration des trainierten Modells wurde durch Kreuzvalidierung überprüft. Erfahren Sie mehr über [Überprüfungsdaten](./how-to-configure-auto-train.md#training-validation-and-test-data). <br><br> Die Überprüfungskonfiguration wurde auf `'auto'` festgelegt, und die Trainingsdaten enthielten *weniger als 20.000 Zeilen*. <br> Die Eingabedaten wurden zur Überprüfung des Modells in ein Trainingsdataset und ein Validierungsdataset aufgeteilt.
-**Ausgewogenheitserkennung für Klassen** |Erfolgreich <br><br><br><br>Benachrichtigt <br><br><br>Vorgehensweise | Ihre Eingaben wurden analysiert, und alle Klassen in Ihren Trainingsdaten sind ausgeglichen. Ein Dataset gilt als ausgewogen, wenn jede Klasse im Datensatz gemessen an Anzahl und Verhältnis der Stichproben gut repräsentiert ist. <br><br> In Ihren Eingaben wurden unausgeglichene Klassen erkannt. Beheben Sie das Ausgleichsproblem, um den Modelltrend zu beheben. Erfahren Sie mehr über [unausgeglichene Daten](./concept-manage-ml-pitfalls.md#identify-models-with-imbalanced-data).<br><br> In Ihren Eingaben wurden unausgeglichene Klassen festgestellt, und die Sweeping-Logik hat beschlossen, einen Ausgleich anzuwenden.
+**Ausgewogenheitserkennung für Klassen** |Erfolgreich <br><br><br><br>Benachrichtigt <br><br><br>Fertig | Ihre Eingaben wurden analysiert, und alle Klassen in Ihren Trainingsdaten sind ausgeglichen. Ein Dataset gilt als ausgewogen, wenn jede Klasse im Datensatz gemessen an Anzahl und Verhältnis der Stichproben gut repräsentiert ist. <br><br> In Ihren Eingaben wurden unausgeglichene Klassen erkannt. Beheben Sie das Ausgleichsproblem, um den Modelltrend zu beheben. Erfahren Sie mehr über [unausgeglichene Daten](./concept-manage-ml-pitfalls.md#identify-models-with-imbalanced-data).<br><br> In Ihren Eingaben wurden unausgeglichene Klassen festgestellt, und die Sweeping-Logik hat beschlossen, einen Ausgleich anzuwenden.
 **Erkennung von Arbeitsspeicherproblemen** |Erfolgreich <br><br><br><br> Fertig |<br> Die ausgewählten Werte (Horizont, Verzögerung und rollierendes Zeitfenster) wurden analysiert, und es wurden keine potenziellen Probleme aufgrund von unzureichendem Speicherplatz erkannt. Erfahren Sie mehr über [Vorhersagekonfigurationen](./how-to-auto-train-forecast.md#configuration-settings) von Zeitreihen. <br><br><br>Die ausgewählten Werte (Horizont, Verzögerung und rollierendes Zeitfenster) wurden analysiert, und für Ihr Experiment steht unter Umständen nicht genügend Speicherplatz zur Verfügung. Die Konfigurationen für Verzögerung oder rollierende Zeitfenster wurden deaktiviert.
 **Häufigkeitserkennung** |Erfolgreich <br><br><br><br> Vorgehensweise |<br> Die Zeitreihe wurde analysiert, und alle Datenpunkte entsprechen der erkannten Häufigkeit. <br> <br> Die Zeitreihe wurde analysiert, und es wurden Datenpunkte ermittelt, die nicht mit der erkannten Häufigkeit übereinstimmen. Diese Datenpunkte wurden aus dem Dataset entfernt. Erfahren Sie mehr über die [Datenaufbereitung für die Zeitreihenvorhersage](./how-to-auto-train-forecast.md#preparing-data).
 

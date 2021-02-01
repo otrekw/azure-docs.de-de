@@ -8,12 +8,12 @@ ms.date: 08/31/2020
 ms.service: storage
 ms.reviewer: stewu
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: 6b63933fc625079bb490942cf3a32232a484fe38
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 712f1dc0679ee49791831e782fb68c39a757870a
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89269885"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624336"
 ---
 # <a name="create-a-storage-account-to-use-with-azure-data-lake-storage-gen2"></a>Erstellen eines Speicherkontos für die Verwendung mit Azure Data Lake Storage Gen2
 
@@ -39,7 +39,10 @@ In der folgenden Abbildung wird diese Einstellung auf der Seite **Speicherkonto 
 > [!div class="mx-imgBorder"]
 > ![Einstellung „Hierarchischer Namespace“](./media/create-data-lake-storage-account/hierarchical-namespace-feature.png)
 
-Wenn Sie ein vorhandenes Speicherkonto mit Data Lake Storage verwenden möchten und die Einstellung „Hierarchischer Namespace“ deaktiviert ist, müssen Sie die Daten zu einem neuen Speicherkonto mit aktivierter Einstellung migrieren.
+Wenn Sie ein vorhandenes Speicherkonto mit Data Lake Storage verwenden möchten und die Einstellung „Hierarchischer Namespace“ deaktiviert ist, müssen Sie die Daten zu einem neuen Speicherkonto migrieren, in dem die Einstellung aktiviert ist.
+
+> [!NOTE]
+> **Schutz von Daten** und **hierarchische Namespaces** können nicht gleichzeitig aktiviert werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

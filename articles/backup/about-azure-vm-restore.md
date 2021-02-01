@@ -3,12 +3,12 @@ title: Informationen zur Wiederherstellung virtueller Azure-Computer
 description: Erfahren Sie, wie virtuelle Azure-Computer mit dem Dienst „Azure Backup“ wiederhergestellt werden.
 ms.topic: conceptual
 ms.date: 05/20/2020
-ms.openlocfilehash: 67af1ed193c289358f929953bc3caa5d04ef7e09
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 436859bfb3cee37501e0605465d8e19856a846d6
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92171755"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98806828"
 ---
 # <a name="about-azure-vm-restore"></a>Informationen zur Wiederherstellung von Azure-VMs
 
@@ -34,7 +34,7 @@ In diesem Artikel wird beschrieben, wie virtuelle Azure-Computer (VMs) mit dem D
   - [Geografisch redundanter Speicher (Geo-Redundant Storage, GRS)](../storage/common/storage-redundancy.md#geo-redundant-storage) ist die standardmäßige und empfohlene Replikationsoption. GRS repliziert Ihre Daten in einer sekundären Region, die mehrere hundert Kilometer vom primären Speicherort der Quelldaten entfernt ist. GRS führt zu höheren Kosten als LRS, bietet aber eine höhere Dauerhaftigkeit Ihrer Daten (auch im Falle eines regionalen Ausfalls).
   - [Zonenredundanter Speicher (ZRS)](../storage/common/storage-redundancy.md#zone-redundant-storage) repliziert Ihre Daten in [Verfügbarkeitszonen](../availability-zones/az-overview.md#availability-zones) und gewährleistet dadurch Data Residency und Resilienz in derselben Region. Bei ZRS gibt es keine Downtime. Daher können Ihre kritischen Workloads, die [Data Residency](https://azure.microsoft.com/resources/achieving-compliant-data-residency-and-security-with-azure/) erfordern und bei denen keine Downtime auftreten darf, in ZRS gesichert werden.
 
-- **Regionsübergreifende Wiederherstellung**: Als eine der [Wiederherstellungsoptionen](./backup-azure-arm-restore-vms.md#restore-options) ermöglicht die regionsübergreifende Wiederherstellung die Wiederherstellung von Azure-VMs in einer sekundären Region, bei der es sich um eine [gekoppelte Azure-Region](../best-practices-availability-paired-regions.md#what-are-paired-regions) handelt.
+- **Regionsübergreifende Wiederherstellung**: Als eine der [Wiederherstellungsoptionen](./backup-azure-arm-restore-vms.md#restore-options) ermöglicht die regionsübergreifende Wiederherstellung das Wiederherstellen von Azure-VMs in einer sekundären Region, bei der es sich um eine [gekoppelte Azure-Region](../best-practices-availability-paired-regions.md#what-are-paired-regions) handelt. Sie können die Daten jederzeit – bei partiellen oder vollständigen Ausfällen oder zu jedem anderen beliebigen Zeitpunkt – in der sekundären Region wiederherstellen. 
 
 ## <a name="restore-scenarios"></a>Wiederherstellungsszenarien
 
@@ -50,6 +50,6 @@ In diesem Artikel wird beschrieben, wie virtuelle Azure-Computer (VMs) mit dem D
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Häufig gestellte Fragen zur VM-Wiederherstellung](./backup-azure-vm-backup-faq.md#restore)
+- [Häufig gestellte Fragen zur VM-Wiederherstellung](https://docs.microsoft.com/azure/backup/backup-azure-vm-backup-faq#restore)
 - [Unterstützte Wiederherstellungsmethoden](./backup-support-matrix-iaas.md#supported-restore-methods)
 - [Problembehandlung bei der Wiederherstellung](./backup-azure-vms-troubleshoot.md#restore)

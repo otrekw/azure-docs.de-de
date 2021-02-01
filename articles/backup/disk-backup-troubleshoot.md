@@ -3,12 +3,12 @@ title: Problembehandlung bei Sicherungsfehlern in Azure Disk Backup
 description: Informationen zur Problembehandlung bei Sicherungsfehlern in Azure Disk Backup
 ms.topic: conceptual
 ms.date: 01/07/2021
-ms.openlocfilehash: 0a2ef1ea20ee8d6b7a3f32e244d3e00f3add80a2
-ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
+ms.openlocfilehash: 855c6c5b19b10bdb699a25f89ebc29001b7941ac
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98557096"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737726"
 ---
 # <a name="troubleshooting-backup-failures-in-azure-disk-backup-in-preview"></a>Problembehandlung bei Sicherungsfehlern in Azure Disk Backup (Vorschau)
 
@@ -115,7 +115,7 @@ Empfohlene Maßnahme: Erteilen Sie der verwalteten Identität des Sicherungstres
 
 Fehlermeldung: Fehler beim Vorgang, weil die Obergrenze des Datenträgerkontingents für das Abonnement erreicht wurde.
 
-Empfohlene Maßnahme: Weitere Informationen finden Sie in der [Dokumentation zu Grenzwerten und Kontingenten für Azure-Abonnements und -Dienste](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits), oder wenden Sie sich an den Microsoft-Support.
+Empfohlene Maßnahme: Weitere Informationen finden Sie in der [Dokumentation zu Grenzwerten und Kontingenten für Azure-Abonnements und -Dienste](../azure-resource-manager/management/azure-subscription-service-limits.md), oder wenden Sie sich an den Microsoft-Support.
 
 ### <a name="error-code-usererrordiskbackuprestorergormsipermissionsnotpresent"></a>Fehlercode: UserErrorDiskBackupRestoreRGOrMSIPermissionsNotPresent
 
@@ -153,11 +153,29 @@ Fehlermeldung: Die Metadaten der Datenträger-Momentaufnahme für diesen Wiederh
 
 Empfohlene Maßnahme: Wählen Sie ggf. einen anderen Wiederherstellungspunkt für die Wiederherstellung aus. Weitere Informationen finden Sie in der [Dokumentation zur Wiederherstellung](restore-managed-disks.md).
 
+### <a name="error-code-backupagentpluginhostvalidateprotectionerror"></a>Fehlercode: BackupAgentPluginHostValidateProtectionError
+
+Fehlermeldung: Die Datenträgersicherung ist in der Region des Sicherungstresors, in dem die Konfiguration des Schutzes versucht wird, noch nicht verfügbar.
+
+Empfohlene Maßnahme: Der Sicherungstresor muss sich in einer von der Vorschauversion unterstützten Region befinden. Informationen zur regionalen Verfügbarkeit finden Sie in der [Unterstützungsmatrix](disk-backup-support-matrix.md).
+
+### <a name="error-code-usererrordppdatasourcealreadyhasbackupinstance"></a>Fehlercode: UserErrorDppDatasourceAlreadyHasBackupInstance
+
+Fehlermeldung: Der Datenträger, den Sie für die Sicherung konfigurieren möchten, wird bereits geschützt. Der Datenträger ist bereits einer Sicherungsinstanz in einem Sicherungstresor zugeordnet.
+
+Empfohlene Maßnahme: Dieser Datenträger ist bereits einer Sicherungsinstanz in einem Sicherungstresor zugeordnet. Wenn Sie diesen Datenträger erneut schützen möchten, löschen Sie die Sicherungsinstanz aus dem Sicherungstresor, in dem sie zurzeit geschützt wird, und schützen Sie den Datenträger in einem anderen Tresor erneut.
+
+### <a name="error-code-usererrordppdatasourcealreadyprotected"></a>Fehlercode: UserErrorDppDatasourceAlreadyProtected
+
+Fehlermeldung: Der Datenträger, den Sie für die Sicherung konfigurieren möchten, wird bereits geschützt. Der Datenträger ist bereits einer Sicherungsinstanz in einem Sicherungstresor zugeordnet.
+
+Empfohlene Maßnahme: Dieser Datenträger ist bereits einer Sicherungsinstanz in einem Sicherungstresor zugeordnet. Wenn Sie diesen Datenträger erneut schützen möchten, löschen Sie die Sicherungsinstanz aus dem Sicherungstresor, in dem sie zurzeit geschützt wird, und schützen Sie den Datenträger in einem anderen Tresor erneut.
+
 ### <a name="error-code-usererrormaxconcurrentoperationlimitreached"></a>Fehlercode: UserErrorMaxConcurrentOperationLimitReached
 
-Fehlermeldung: Der Vorgang kann nicht gestartet werden, weil die maximale Anzahl zulässiger gleichzeitiger Vorgänge für diesen Vorgangstyp erreicht wurde.
+Fehlermeldung: Der Vorgang kann nicht gestartet werden, da die maximale Anzahl zulässiger gleichzeitiger Sicherungen erreicht wurde.
 
-Empfohlene Maßnahme: Warten Sie, bis die vorherigen Vorgänge abgeschlossen sind.
+Empfohlene Maßnahme: Warten Sie, bis die frühere laufende Sicherung abgeschlossen ist.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

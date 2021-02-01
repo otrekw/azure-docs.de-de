@@ -1,25 +1,25 @@
 ---
-title: Implementieren des differenziellen Datenschutzes mit dem SmartNoise-Paket (Vorschauversion)
+title: Differenzieller Datenschutz beim maschinellen Lernen (Vorschau)
 titleSuffix: Azure Machine Learning
-description: Hier erfahren Sie, was differenzieller Datenschutz ist und wie das SmartNoise-Paket Ihnen helfen kann, differenzielle private Systeme zu implementieren, die den Datenschutz bewahren.
+description: Erfahren Sie, was differenzieller Datenschutz ist und wie Sie differenzielle private Systeme implementieren, die den Datenschutz bewahren.
 author: luisquintanilla
 ms.author: luquinta
-ms.date: 12/21/2020
+ms.date: 01/21/2020
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.custom: responsible-ml
-ms.openlocfilehash: 22ba505a2e13b2f88f212f2fe1b85d07f79f77e5
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 39f4b1a7b9eb1ad7a87097240dd772e4f2dadf17
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98218959"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98683537"
 ---
-# <a name="preserve-data-privacy-by-using-differential-privacy-and-the-smartnoise-package-preview"></a>Bewahren des Datenschutzes durch differenziellen Datenschutz und das SmartNoise-Paket (Vorschauversion)
+# <a name="what-is-differential-privacy-in-machine-learning-preview"></a>Was ist differenzieller Datenschutz beim maschinellen Lernen (Vorschau)?
 
-Erfahren Sie, was differenzieller Datenschutz ist und wie das SmartNoise-Paket Ihnen helfen kann, differenzielle private Systeme zu implementieren.
+Erfahren Sie etwas über den differenziellen Datenschutz beim maschinellen Lernen und seine Funktionsweise.
 
 In dem Maße, wie die von einer Organisation gesammelten und für Analysen verwendeten Datenmengen zunehmen, nehmen auch die Bedenken hinsichtlich des Datenschutzes und der Sicherheit zu. Analysen erfordern Daten. Je mehr Daten für das Training von Modellen verwendet werden, desto genauer sind sie in der Regel. Wenn für diese Analysen persönliche Informationen verwendet werden, ist es besonders wichtig, dass die Daten während ihrer gesamten Verwendung privat (geschützt) bleiben.
 
@@ -28,9 +28,9 @@ In dem Maße, wie die von einer Organisation gesammelten und für Analysen verwe
 Der differenzielle Datenschutz umfasst eine Reihe von Systemen und Methoden, die dazu beitragen, die Daten von Einzelpersonen sicher und privat zu halten.
 
 > [!div class="mx-imgBorder"]
-> ![Prozess des differenziellen Datenschutzes](./media/concept-differential-privacy/differential-privacy-process.jpg)
+> ![Prozess des differenziellen Datenschutzes beim maschinellen Lernen](./media/concept-differential-privacy/differential-privacy-machine-learning.jpg)
 
-In herkömmlichen Szenarien werden die Rohdaten in Dateien und Datenbanken gespeichert. Wenn Benutzer Daten analysieren, verwenden sie in der Regel diese Rohdaten. Dies ist bedenklich, da dadurch die Privacy- und Datenschutzgesetze des Einzelnen verletzt werden könnten. Der differenzielle Datenschutz versucht, diesem Problem zu begegnen, indem er den Daten entsprechende „Stördaten“ oder Zufallselemente hinzufügt, sodass die Benutzer keine einzelnen Datenpunkte identifizieren können. Zumindest bietet ein solches System eine plausible Ablehnbarkeit.
+In herkömmlichen Szenarien werden die Rohdaten in Dateien und Datenbanken gespeichert. Wenn Benutzer Daten analysieren, verwenden sie in der Regel diese Rohdaten. Dies ist bedenklich, da dadurch die Privacy- und Datenschutzgesetze des Einzelnen verletzt werden könnten. Der differenzielle Datenschutz versucht, diesem Problem zu begegnen, indem er den Daten entsprechende „Stördaten“ oder Zufallselemente hinzufügt, sodass die Benutzer keine einzelnen Datenpunkte identifizieren können. Zumindest bietet ein solches System eine plausible Ablehnbarkeit. Daher wird mit eingeschränkten Auswirkungen auf die Genauigkeit der Daten der Datenschutz von Einzelpersonen beibehalten.
 
 In differenziellen privaten Systemen werden Daten durch Anforderungen freigegeben, die als **Abfragen** bezeichnet werden. Wenn ein Benutzer eine Datenabfrage übermittelt, fügen Operationen, die als **Datenschutzmechanismen** bezeichnet werden, Stördaten zu den angeforderten Daten hinzu. Datenschutzmechanismen geben statt der Rohdaten eine *Angleichung der Daten* zurück. Dieses den Datenschutz wahrende Ergebnis wird in einem **Bericht** festgehalten. Berichte bestehen aus zwei Teilen, den eigentlichen Daten, die berechnet wurden, und einer Beschreibung, wie die Daten erstellt wurden.
 
@@ -42,22 +42,22 @@ Epsilon-Werte sind nicht negativ. Werte unter 1 bieten die völlige plausible Ab
 
 Ein weiterer direkt mit Epsilon korrelierter Wert ist **Delta**. Delta ist ein Maß für die Wahrscheinlichkeit, dass ein Bericht nicht vollständig privat ist. Je höher das Delta, desto höher das Epsilon. Da diese Werte korreliert sind, wird Epsilon häufiger eingesetzt.
 
-## <a name="privacy-budget"></a>Datenschutzbudget
+## <a name="limit-queries-with-a-privacy-budget"></a>Begrenzen von Abfragen mit einem Datenschutzbudget
 
-Um den Datenschutz in Systemen sicherzustellen, in denen mehrere Abfragen erlaubt sind, definiert der differenzielle Datenschutz eine Obergrenze für die Anzahl der Abfragen. Diese Obergrenze wird als **Datenschutzbudget** bezeichnet. Datenschutzbudgets wird ein Epsilon-Betrag zugewiesen, normalerweise zwischen 1 und 3, um das Risiko einer erneuten Identifizierung zu begrenzen. Bei der Erstellung von Berichten wird in den Datenschutzbudgets der Epsilon-Wert der einzelnen Berichte sowie der Gesamtwert für alle Berichte erfasst. Nachdem ein Datenschutzbudget aufgebraucht oder abgelaufen ist, können Benutzer nicht mehr auf Daten zugreifen.  
+Um den Datenschutz in Systemen sicherzustellen, in denen mehrere Abfragen erlaubt sind, definiert der differenzielle Datenschutz eine Obergrenze für die Anzahl der Abfragen. Diese Obergrenze wird als **Datenschutzbudget** bezeichnet. Datenschutzbudgets verhindern, dass Daten über mehrere Abfragen hinweg neu erstellt werden. Datenschutzbudgets wird ein Epsilon-Betrag zugewiesen, normalerweise zwischen 1 und 3, um das Risiko einer erneuten Identifizierung zu begrenzen. Bei der Erstellung von Berichten wird in den Datenschutzbudgets der Epsilon-Wert der einzelnen Berichte sowie der Gesamtwert für alle Berichte erfasst. Nachdem ein Datenschutzbudget aufgebraucht oder abgelaufen ist, können Benutzer nicht mehr auf Daten zugreifen. 
 
 ## <a name="reliability-of-data"></a>Zuverlässigkeit von Daten
 
-Obwohl die Wahrung des Datenschutzes das Ziel sein sollte, gibt es einen Kompromiss, wenn es um die Anwendbarkeit und Zuverlässigkeit der Daten geht. In der Datenanalyse kann die Genauigkeit als ein Maß der Unsicherheit angesehen werden, die durch Fehler bei der Stichprobenentnahme (Sampling) eingeführt wird. Diese Unsicherheit hält sich tendenziell in gewissen Grenzen. **Genauigkeit** aus Sicht des differenziellen Datenschutzes misst stattdessen die Zuverlässigkeit der Daten, die durch die Unsicherheit beeinträchtigt wird, die durch die Datenschutzmechanismen eingeführt wurde. Kurz gesagt, ein höheres Maß an Stördaten oder Datenschutz führt zu Daten, die einen niedrigeren Epsilon-Wert sowie eine geringere Genauigkeit und Zuverlässigkeit aufweisen. Obwohl die Daten privater (da nicht zuverlässig) sind, ist die Wahrscheinlichkeit, dass sie verwendet werden, umso geringer.
+Obwohl die Wahrung des Datenschutzes das Ziel sein sollte, gibt es einen Kompromiss, wenn es um die Anwendbarkeit und Zuverlässigkeit der Daten geht. In der Datenanalyse kann die Genauigkeit als ein Maß der Unsicherheit angesehen werden, die durch Fehler bei der Stichprobenentnahme (Sampling) eingeführt wird. Diese Unsicherheit hält sich tendenziell in gewissen Grenzen. **Genauigkeit** aus Sicht des differenziellen Datenschutzes misst stattdessen die Zuverlässigkeit der Daten, die durch die Unsicherheit beeinträchtigt wird, die durch die Datenschutzmechanismen eingeführt wurde. Kurz gesagt, ein höheres Maß an Stördaten oder Datenschutz führt zu Daten, die einen niedrigeren Epsilon-Wert sowie eine geringere Genauigkeit und Zuverlässigkeit aufweisen. 
 
-## <a name="implementing-differentially-private-systems"></a>Implementieren differenzieller privater Systeme
+## <a name="open-source-differential-privacy-libraries"></a>Open-Source-Bibliotheken für den differenziellen Datenschutz
 
-Das Implementieren differenzieller privater Systeme ist schwierig. SmartNoise ist ein Open-Source-Projekt, das verschiedene Komponenten zum Erstellen globaler, differenzieller privater Systeme enthält. SmartNoise umfasst folgende allgemeine Komponenten:
+SmartNoise ist ein Open-Source-Projekt, das verschiedene Komponenten zum Erstellen globaler, differenzieller privater Systeme enthält. SmartNoise umfasst folgende allgemeine Komponenten:
 
-- Kernspeicher
-- SDK
+- SmartNoise-Kernbibliothek
+- SmartNoise SDK-Bibliothek
 
-### <a name="core"></a>Core
+### <a name="smartnoise-core"></a>SmartNoise-Kernbibliothek
 
 Die Kernbibliothek umfasst die folgenden Datenschutzmechanismen zur Implementierung eines differenziellen privaten Systems:
 
@@ -68,7 +68,7 @@ Die Kernbibliothek umfasst die folgenden Datenschutzmechanismen zur Implementier
 |Typ     | Das Medium zur Durchführung der Analyse. Die Referenzruntime ist in Rust geschrieben, aber die Runtimes können je nach Datenbedarf mit jedem beliebigen Berechnungsframework wie SQL und Spark geschrieben werden.        |
 |Bindungen     | Sprachbindungen und Hilfsbibliotheken zur Erstellung von Analysen. Gegenwärtig stellt SmartNoise Python-Bindungen zur Verfügung. |
 
-### <a name="sdk"></a>SDK
+### <a name="smartnoise-sdk"></a>SmartNoise SDK
 
 Die Systembibliothek stellt die folgenden Tools und Dienste für die Arbeit mit Tabellen- und relationalen Daten bereit:
 
@@ -80,6 +80,6 @@ Die Systembibliothek stellt die folgenden Tools und Dienste für die Arbeit mit 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Sicherstellen des Datenschutzes](how-to-differential-privacy.md) in Azure Machine Learning.
+[Erstellen Sie ein System mit differenziellem Datenschutz](how-to-differential-privacy.md) in Azure Machine Learning.
 
-Weitere Informationen zu den Komponenten von SmartNoise finden Sie in den GitHub-Repositorys für das [SmartNoise Core-Paket](https://github.com/opendifferentialprivacy/smartnoise-core), für das [SmartNoise SDK](https://github.com/opendifferentialprivacy/smartnoise-sdk) und für die [SmartNoise-Beispiele](https://github.com/opendifferentialprivacy/smartnoise-samples).
+Weitere Informationen zu den Komponenten von SmartNoise finden Sie in den GitHub-Repositorys für [SmartNoise Core](https://github.com/opendifferentialprivacy/smartnoise-core), [SmartNoise SDK](https://github.com/opendifferentialprivacy/smartnoise-sdk) und [SmartNoise-Beispiele](https://github.com/opendifferentialprivacy/smartnoise-samples).

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2020
 ms.author: yelevin
-ms.openlocfilehash: 4b34477a40530a0e6f26b59dd9707c019418b2a4
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 6010242e7fbd14aa117c481dee0d05e92928ef1b
+ms.sourcegitcommit: 3c8964a946e3b2343eaf8aba54dee41b89acc123
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94655849"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98747490"
 ---
 # <a name="connect-your-external-solution-using-common-event-format"></a>Verbinden der externen Lösung mithilfe von Common Event Format
 
@@ -77,6 +77,12 @@ Vergewissern Sie sich, dass auf dem Linux-Computer, den Sie für die Protokollwe
   - Syslog RFC 5424
  
 Stellen Sie sicher, dass Ihr Computer auch die folgenden Anforderungen erfüllt: 
+
+- Capacity
+  - Ihr Computer muss mindestens **4 CPU-Kerne und 8 GB RAM** aufweisen.
+
+    > [!NOTE]
+    > - Ein einzelner Computer für die Protokollweiterleitung, der den **rsyslog**-Daemon verwendet, unterstützt insgesamt eine Kapazität von **bis zu 8.500 Ereignissen pro Sekunde (EPS)** .
 
 - Berechtigungen
   - Sie müssen über erhöhte Berechtigungen (sudo) auf dem Computer verfügen. 

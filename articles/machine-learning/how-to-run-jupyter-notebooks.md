@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 01/19/2021
-ms.openlocfilehash: 7bb1ce8141f609feb4f354aa85f202915e197f37
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: d6832238b0c76059079e2a1330d31eed3212b242
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98599219"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98685577"
 ---
 # <a name="how-to-run-jupyter-notebooks-in-your-workspace"></a>Ausführen von Jupyter Notebooks in Ihrem Arbeitsbereich
 
@@ -230,6 +230,7 @@ Das Notebook findet automatisch alle Jupyter-Kernel, die auf der verbundenen Com
     conda install -y ipykernel
     python -m ipykernel install --user --name newenv --display-name "Python (newenv)"
     ```
+1. Nachdem Sie den Kernel installiert haben, aktualisieren Sie die Seite, und öffnen Sie ein Notebook. Der neue Kernel wird nun in der Kernelliste angezeigt.
 
 > [!NOTE]
 > Für die Paketverwaltung innerhalb eines Notebooks verwenden Sie die magischen Funktionen **%pip** oder **%conda**, um Pakete automatisch in den **aktuell aktiven Kernel** zu installieren, anstatt **!pip** oder **!conda**, die sich auf alle Pakete beziehen (einschließlich der Pakete außerhalb des aktuell aktiven Kernels).
@@ -342,7 +343,14 @@ Mithilfe der folgenden Tastenkombinationen können Sie in Azure Machine Learning
 
 Hier finden Sie Details zu ihren Computeinstanzen auf der **Compute**-Seite in [Studio](https://ml.azure.com).
 
+## <a name="troubleshooting"></a>Problembehandlung
+
+* Wenn Sie keine Verbindung mit einem Notebook herstellen können, stellen Sie sicher, dass die WebSocket-Kommunikation **nicht** deaktiviert ist. Damit die Jupyter-Funktionen für Compute-Instanzen eingesetzt werden können, muss die WebSocket-Kommunikation aktiviert sein. Stellen Sie sicher, dass Ihr Netzwerk WebSocket-Verbindungen mit *.instances.azureml.net und *.instances.azureml.ms zulässt. 
+
+* Wenn eine Compute-Instanz in einem Private Link-Arbeitsbereich bereitgestellt wird, kann nur im virtuellen Netzwerk darauf zugegriffen werden. Wenn Sie benutzerdefiniertes DNS oder HOSTS-Dateien verwenden, fügen Sie einen Eintrag für „<Instanzname>.<region>.instances.azureml.ms“ mit der privaten IP-Adresse des privaten Endpunkts des Arbeitsbereichs hinzu. Weitere Informationen finden Sie im Artikel [Benutzerdefiniertes DNS](https://docs.microsoft.com/azure/machine-learning/how-to-custom-dns?tabs=azure-cli).
+    
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Ausführen Ihres ersten Experiments](tutorial-1st-experiment-sdk-train.md)
 * [Sichern des Dateispeichers mit Momentaufnahmen](../storage/files/storage-snapshots-files.md)
+* [Arbeiten in sicheren Umgebungen](https://docs.microsoft.com/azure/machine-learning/how-to-secure-training-vnet#compute-instance)

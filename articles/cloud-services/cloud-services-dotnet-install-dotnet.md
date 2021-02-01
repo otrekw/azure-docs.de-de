@@ -1,24 +1,25 @@
 ---
-title: Installieren von .NET in Rollen in Azure Cloud Services | Microsoft-Dokumentation
+title: Installieren von .NET in Rollen in Azure Cloud Services (klassisch) | Microsoft-Dokumentation
 description: Dieser Artikel beschreibt die manuelle Installation von .NET Framework in Clouddienstweb- und -workerrollen.
-services: cloud-services
-documentationcenter: .net
-author: tgore03
-manager: carmonm
-ms.service: cloud-services
-ms.devlang: dotnet
-ms.custom: devx-track-dotnet
 ms.topic: article
-ms.date: 06/22/2018
+ms.service: cloud-services
+ms.date: 10/14/2020
 ms.author: tagore
-ms.openlocfilehash: 6de4b79560557fc86edb9e1a25e32a6a1983ceb0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 18665fabad079a8759f26be8834b2fe029ab5f49
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88932235"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98742776"
 ---
-# <a name="install-net-on-azure-cloud-services-roles"></a>Installieren von .NET in Rollen in Azure Cloud Services
+# <a name="install-net-on-azure-cloud-services-classic-roles"></a>Installieren von .NET in Rollen in Azure Cloud Services (klassisch)
+
+> [!IMPORTANT]
+> [Azure Cloud Services (erweiterter Support)](../cloud-services-extended-support/overview.md) ist ein neues auf Azure Resource Manager basierendes Bereitstellungsmodell für Azure Cloud Services. Im Zuge dieser Änderung wurden Azure Cloud Services-Instanzen, die unter dem Azure Service Manager-basierten Bereitstellungsmodell ausgeführt werden, in „Cloud Services (klassisch)“ umbenannt. Für alle neuen Bereitstellungen wird [Azure Cloud Services (erweiterter Support)](../cloud-services-extended-support/overview.md) verwendet.
+
 Dieser Artikel beschreibt die Installation von .NET Framework-Versionen, die nicht im Funktionsumfang des Azure-Gastbetriebssystems vorhanden sind. Sie können .NET im Gastbetriebssystem zum Konfigurieren Ihrer Clouddienstweb- und -workerrollen nutzen.
 
 Sie können .NET Framework 4.6.2 für die Gastbetriebssystemfamilie 4 installieren, die keine Version von .NET Framework 4.6 enthält. (Die Gastbetriebssystemfamilie 5 ist in .NET Framework 4.6 enthalten.) Aktuelle Informationen zu Versionen von Azure-Gastbetriebssystemversionen finden Sie unter [Neuigkeiten zur Version des Azure-Gastbetriebssystems](cloud-services-guestos-update-matrix.md). 

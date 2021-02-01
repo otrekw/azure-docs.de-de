@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 6/30/2020
-ms.openlocfilehash: 233dcbeee0bccc714e3b4fe93e7c8b19aa9f2df0
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.openlocfilehash: e9182a2a0b88f85af5305f5794fec2ffe7935701
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93242448"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98631732"
 ---
 # <a name="azure-database-for-mysql-infrastructure-double-encryption"></a>Azure Database for MySQL: doppelte Infrastrukturverschlüsselung
 
@@ -20,7 +20,7 @@ Azure Database for MySQL arbeitet mit der [Verschlüsselung gespeicherter ruhend
 Die doppelte Infrastrukturverschlüsselung fügt eine zweite Verschlüsselungsebene mit dienstseitig verwalteten Schlüsseln hinzu. Sie bedient sich eines gemäß FIPS 140-2 validierten kryptografischen Moduls, jedoch mit einem anderen Verschlüsselungsalgorithmus. Dies bietet eine zusätzliche Schutzebene für Ihre ruhenden Daten. Der bei der doppelten Infrastrukturverschlüsselung verwendete Schlüssel wird auch vom Dienst Azure Database for MySQL verwaltet. Die doppelte Infrastrukturverschlüsselung ist nicht standardmäßig aktiviert, da die zusätzliche Verschlüsselungsebene die Leistung beeinträchtigen kann.
 
 > [!NOTE]
-> Dieses Feature wird nur in den Tarifen „Universell“ und „Arbeitsspeicheroptimiert“ in Azure Database for PostgreSQL unterstützt.
+> Dieses Feature wird nur in den Tarifen „Universell“ und „Arbeitsspeicheroptimiert“ in Azure Database for MySQL unterstützt.
 
 Die Verschlüsselung auf Infrastrukturebene hat den Vorteil, dass sie auf der Ebene implementiert wird, die dem Speichergerät oder den Netzwerkleitungen am nächsten ist. Azure Database for MySQL implementiert die beiden Verschlüsselungsebenen mithilfe dienstseitig verwalteter Schlüssel. Obwohl technisch gesehen immer noch auf Dienstebene, ist sie sehr nahe an der Hardware, die die ruhenden Daten speichert. Optional können Sie weiterhin die Verschlüsselung ruhender Daten aktivieren, indem Sie einen [kundenseitig verwalteten Schlüssel](concepts-data-encryption-mysql.md) für den bereitgestellten MySQL-Server verwenden. 
 
@@ -33,8 +33,8 @@ Die Implementierung auf Infrastrukturebene unterstützt zudem eine Vielfalt von 
 
 Die doppelte Infrastrukturverschlüsselung für Azure Database for MySQL bietet die folgenden Vorteile:
 
-1. **Mehr Vielfalt bei der Implementierung von Kryptografie** : Durch die geplante Umstellung auf hardwarebasierte Verschlüsselung werden die Implementierungen weiter diversifiziert, indem zusätzlich zur softwarebasierten Implementierung eine hardwarebasierte Implementierung bereitgestellt wird.
-2. **Implementierungsfehler** : Zwei Verschlüsselungsebenen auf Infrastrukturebene schützen vor Fehlern bei der Zwischenspeicherung oder Speicherverwaltung auf höheren Ebenen, die Klartextdaten verfügbar machen. Darüber hinaus gewährleisten die beiden Ebenen auch Schutz vor Fehlern bei der Implementierung der Verschlüsselung im Allgemeinen.
+1. **Mehr Vielfalt bei der Implementierung von Kryptografie**: Durch die geplante Umstellung auf hardwarebasierte Verschlüsselung werden die Implementierungen weiter diversifiziert, indem zusätzlich zur softwarebasierten Implementierung eine hardwarebasierte Implementierung bereitgestellt wird.
+2. **Implementierungsfehler**: Zwei Verschlüsselungsebenen auf Infrastrukturebene schützen vor Fehlern bei der Zwischenspeicherung oder Speicherverwaltung auf höheren Ebenen, die Klartextdaten verfügbar machen. Darüber hinaus gewährleisten die beiden Ebenen auch Schutz vor Fehlern bei der Implementierung der Verschlüsselung im Allgemeinen.
 
 Diese Kombination bietet einen wirksamen Schutz gegen häufige Bedrohungen und Schwachstellen, die für Angriffe auf die Kryptographie ausgenutzt werden.
 
@@ -46,7 +46,7 @@ Die Verschlüsselungsfunktionen, die von Azure Database for MySQL geboten werden
 |:------|:------------------:|:--------------------------------:|:--------------------------------------------:|
 | 1     | *Ja*              | *Nein*                             | *Nein*                                         |
 | 2     | *Ja*              | *Ja*                            | *Nein*                                         |
-| 3     | *Ja*              | *Nein*                             | *Ja*                                        |
+| 3     | *Ja*              | *No*                             | *Ja*                                        |
 | 4     | *Ja*              | *Ja*                            | *Ja*                                        |
 |       |                    |                                  |                                              |
 
@@ -59,13 +59,7 @@ Die Verschlüsselungsfunktionen, die von Azure Database for MySQL geboten werden
 Bei Azure Database for MySQL unterliegt die Unterstützung der doppelten Infrastrukturverschlüsselung mit dienstseitig verwaltetem Schlüssel den folgenden Einschränkungen:
 
 * Die Unterstützung dieser Funktionalität ist auf die Tarife **Universell** und **Arbeitsspeicheroptimiert** beschränkt.
-* Sie können eine Instanz von Azure Database for MySQL mit aktivierter Infrastrukturverschlüsselung in folgenden Regionen erstellen:
-
-   * East US
-   * USA Süd Mitte
-   * USA, Westen 2
-   
-* * Diese Funktion wird nur in Regionen und auf Servern unterstützt, die eine Speicherkapazität bis zu 16 TB unterstützen. Eine Liste der Azure-Regionen, die Speicher mit bis zu 16 TB unterstützen, finden Sie in der [Speicherdokumentation](concepts-pricing-tiers.md#storage).
+* Diese Funktion wird nur in Regionen und auf Servern unterstützt, die eine Speicherkapazität bis zu 16 TB unterstützen. Eine Liste der Azure-Regionen, die Speicher mit bis zu 16 TB unterstützen, finden Sie in der [Speicherdokumentation](concepts-pricing-tiers.md#storage).
 
     > [!NOTE]
     > - Alle **neuen** MySQL-Server, die in den oben aufgeführten Regionen erstellt wurden, unterstützen die Verschlüsselung mit kundenseitig verwalteten Schlüsseln. In diesem Fall gelten Server, die über eine Zeitpunktwiederherstellung oder Lesereplikate erstellt wurden, nicht als „neu“.

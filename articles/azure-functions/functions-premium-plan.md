@@ -9,12 +9,12 @@ ms.custom:
 - references_regions
 - fasttrack-edit
 - devx-track-azurecli
-ms.openlocfilehash: d944512e5f6126920ab4fba99fb70513b93177ba
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 26dd3f7df5a71c687bfb4935f290e7a54b4e01fe
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97936820"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98610266"
 ---
 # <a name="azure-functions-premium-plan"></a>Premium-Tarif für Azure Functions
 
@@ -153,6 +153,8 @@ Wenn Sie Ihren Plan erstellen oder skalieren, können Sie zwischen drei Instanzg
 Das Ausführen auf einem Computer mit mehr Arbeitsspeicher bedeutet nicht immer, dass Ihre Funktions-App den gesamten verfügbaren Arbeitsspeicher auch verwendet.
 
 Beispielsweise wird eine JavaScript-Funktions-App durch das standardmäßige Arbeitsspeicherlimit in „Node.js“ eingeschränkt. Um dieses feste Arbeitsspeicherlimit zu erhöhen, fügen Sie die App-Einstellung `languageWorkers:node:arguments` mit dem Wert `--max-old-space-size=<max memory in MB>` hinzu.
+
+Stellen Sie bei Plänen mit mehr als 4 GB Arbeitsspeicher sicher, dass die Einstellung für die Bitanzahl der Plattform unter [Allgemeine Einstellungen](/azure/app-service/configure-common#configure-general-settings) auf `64 Bit` festgelegt ist.
 
 ## <a name="region-max-scale-out"></a>Maximale horizontale Hochskalierung der Region
 

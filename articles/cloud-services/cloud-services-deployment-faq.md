@@ -1,28 +1,24 @@
 ---
 title: Probleme mit der Bereitstellung in Microsoft Azure Cloud Services – Häufig gestellte Fragen | Microsoft-Dokumentation
 description: Dieser Artikel behandelt häufig gestellte Fragen zur Bereitstellung in Microsoft Azure Cloud Services.
-services: cloud-services
-documentationcenter: ''
-author: genlin
-manager: dcscontentpm
-editor: ''
-tags: top-support-issue
-ms.assetid: 84985660-2cfd-483a-8378-50eef6a0151d
-ms.service: cloud-services
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 10/31/2018
-ms.author: genli
-ms.openlocfilehash: 63a219078927e9001a8eb4085c722e7ec8d2fac9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.service: cloud-services
+ms.date: 10/14/2020
+ms.author: tagore
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 67c20823d1f80360b2ab23dc3f208673d36a7374
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75980630"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98742215"
 ---
-# <a name="deployment-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Bereitstellungsprobleme bei Azure Cloud Services: Häufig gestellte Fragen (FAQs)
+# <a name="deployment-issues-for-azure-cloud-services-classic-frequently-asked-questions-faqs"></a>Bereitstellungsprobleme bei Azure Cloud Services (klassisch): Häufig gestellte Fragen (FAQs)
 
+> [!IMPORTANT]
+> [Azure Cloud Services (erweiterter Support)](../cloud-services-extended-support/overview.md) ist ein neues auf Azure Resource Manager basierendes Bereitstellungsmodell für Azure Cloud Services. Im Zuge dieser Änderung wurden Azure Cloud Services-Instanzen, die unter dem Azure Service Manager-basierten Bereitstellungsmodell ausgeführt werden, in „Cloud Services (klassisch)“ umbenannt. Für alle neuen Bereitstellungen wird [Azure Cloud Services (erweiterter Support)](../cloud-services-extended-support/overview.md) verwendet.
 Dieser Artikel enthält häufig gestellte Fragen zu Problemen mit der Bereitstellung in [Microsoft Azure Cloud Services](https://azure.microsoft.com/services/cloud-services). Informationen zur Größe finden sie auch unter [Größen für Clouddienste](cloud-services-sizes-specs.md) .
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
@@ -63,9 +59,9 @@ Die Größe eines virtuellen Clouddienstcomputers kann nicht ohne erneute Bereit
 
 Weitere Informationen finden Sie unter [Aktualisieren eines Clouddiensts](cloud-services-update-azure-service.md).
 
-## <a name="why-am-i-not-able-to-deploy-cloud-services-through-service-management-apis-or-powershell-when-using-azure-resource-manager-storage-account"></a>Warum kann ich bei Verwendung eines Azure Resource Manager-Speicherkontos Cloud Services nicht über Dienstverwaltungs-APIs oder PowerShell bereitstellen? 
+## <a name="why-am-i-not-able-to-deploy-cloud-services-through-service-management-apis-or-powershell-when-using-azure-resource-manager-storage-account"></a>Warum kann ich bei Verwendung eines Azure Resource Manager-Speicherkontos Cloud Services nicht über Dienstverwaltungs-APIs oder PowerShell bereitstellen? 
 
-Da es sich bei Cloud Services um eine klassische Ressource handelt, die nicht direkt mit dem Azure Resource Manager-Modell kompatibel ist, können Sie Cloud Services nicht mit den Azure Resource Manager-Speicherkonten verknüpfen. Hier sind einige Optionen angegeben: 
+Da es sich bei Cloud Services um eine klassische Ressource handelt, die nicht direkt mit dem Azure Resource Manager-Modell kompatibel ist, können Sie Cloud Services nicht mit den Azure Resource Manager-Speicherkonten verknüpfen. Hier sind einige Optionen angegeben: 
 
 - Bereitstellen über die REST-API
 
@@ -73,7 +69,7 @@ Da es sich bei Cloud Services um eine klassische Ressource handelt, die nicht di
 
 - Bereitstellen über das [Azure-Portal](https://portal.azure.com)
 
-    Die Bereitstellung ist über das [Azure-Portal](https://portal.azure.com) möglich, da der Aufruf über einen Proxy/Shim erfolgt, wodurch die Kommunikation zwischen Azure Resource Manager-Ressourcen und klassischen Ressourcen ermöglicht wird. 
+    Die Bereitstellung ist über das [Azure-Portal](https://portal.azure.com) möglich, da der Aufruf über einen Proxy/Shim erfolgt, wodurch die Kommunikation zwischen Azure Resource Manager-Ressourcen und klassischen Ressourcen ermöglicht wird. 
 
 ## <a name="why-does-azure-portal-require-me-to-provide-a-storage-account-for-deployment"></a>Warum verlangt das Azure-Portal von mir die Angabe eines Speicherkontos für die Bereitstellung?
 
