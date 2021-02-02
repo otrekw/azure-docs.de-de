@@ -3,16 +3,16 @@ title: Verbinden Ihres GCP-Kontos mit Azure Security Center
 description: Überwachen von GCP-Ressourcen über Azure Security Center
 author: memildin
 ms.author: memildin
-ms.date: 9/22/2020
+ms.date: 01/24/2021
 ms.topic: quickstart
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 1095222f332e7a66f684feddf1fdab17704ca658
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: d5f8278765c3f62fded44e4b89fb5fded6137c94
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96573543"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98757609"
 ---
 #  <a name="connect-your-gcp-accounts-to-azure-security-center"></a>Verbinden Ihrer GCP-Konten mit Azure Security Center
 
@@ -36,7 +36,7 @@ Im nachstehenden Screenshot sehen Sie GCP-Projekte, die auf dem Übersichtsdashb
 
 |Aspekt|Details|
 |----|:----|
-|Status des Release:|Vorschau<br>[!INCLUDE [Legalese](../../includes/security-center-preview-legal-text.md)] |
+|Status des Release:|Allgemeine Verfügbarkeit (General Availability, GA)|
 |Preise:|Erfordert [Azure Defender für Server](defender-for-servers-introduction.md)|
 |Erforderliche Rollen und Berechtigungen:|**Besitzer** oder **Mitwirkender** für das entsprechende Azure-Abonnement|
 |Clouds:|![Ja](./media/icons/yes-icon.png) Kommerzielle Clouds<br>![Nein](./media/icons/no-icon.png) National/Sovereign (US Gov, China Gov, andere Gov)|

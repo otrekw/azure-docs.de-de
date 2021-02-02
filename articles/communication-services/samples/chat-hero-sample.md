@@ -9,12 +9,12 @@ ms.author: dademath
 ms.date: 07/20/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: fc757e1310369c48de24c0cc9253c668ca27495c
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: 80fdedb29f70c961431c987558a42d5fa46dfa7d
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94888571"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98760801"
 ---
 # <a name="get-started-with-the-group-chat-hero-sample"></a>Erste Schritte mit dem Hero-Beispiel für Gruppenchats
 
@@ -100,7 +100,7 @@ Sie können das Beispiel lokal testen, indem Sie mehrere Browsersitzungen mit de
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Wenn Sie ein Communication Services-Abonnement bereinigen und entfernen möchten, können Sie die Ressource oder die Ressourcengruppe löschen. Wenn Sie die Ressourcengruppe löschen, werden auch alle anderen Ressourcen gelöscht, die ihr zugeordnet sind. Erfahren Sie mehr über das [Bereinigen von Ressourcen](../quickstarts/create-communication-resource.md#clean-up-resources).
+Wenn Sie ein Communication Services-Abonnement bereinigen und entfernen möchten, können Sie die Ressource oder die Ressourcengruppe löschen. Wenn Sie die Ressourcengruppe löschen, werden auch alle anderen Ressourcen gelöscht, die ihr zugeordnet sind. Weitere Informationen zum Bereinigen von Ressourcen finden Sie [hier](../quickstarts/create-communication-resource.md#clean-up-resources).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -111,6 +111,7 @@ Weitere Informationen finden Sie in den folgenden Artikeln:
 
 - Informieren Sie sich über [Chatkonzepte](../concepts/chat/concepts.md).
 - Machen Sie sich mit unserer [Chatclientbibliothek](../concepts/chat/sdk-features.md) vertraut.
+- Sehen Sie sich das Beispiel für die [Contoso Med-App](https://github.com/Azure-Samples/communication-services-contoso-med-app) an.
 
 ## <a name="additional-reading"></a>Zusätzliche Lektüre
 
