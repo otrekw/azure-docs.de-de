@@ -7,12 +7,12 @@ ms.date: 02/26/2018
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: 50e8dfd2998b50bfff7341e49ac4d0770c115166
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2020205357c68e007a1a375c4853e8c04afd2019
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90530861"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98789059"
 ---
 # <a name="how-to-do-proof-of-possession-for-x509-ca-certificates-with-your-device-provisioning-service"></a>Nachweis des Besitzes für X.509-Zertifizierungsstellenzertifikate mit Ihrem Device Provisioning-Dienst
 
@@ -58,7 +58,7 @@ Microsoft bietet Tools und Beispiele, die Ihnen dabei helfen können, ein signie
 > [!IMPORTANT]
 > Zusätzlich zum Ausführen des Besitznachweises ermöglichen die zuvor genannten PowerShell- und Bash-Skripts auch, Stammzertifikate, Zwischenzertifikate und untergeordnete Zertifikate zu erstellen, um Geräte zu authentifizieren und bereitzustellen. Diese Zertifikate sollten nur für die Entwicklung verwendet werden. Sie sollten nie in einer Produktionsumgebung verwendet werden. 
 
-Die in der Dokumentation und den SDKs bereitgestellten PowerShell- und Bash-Skripts benötigen [OpenSSL](https://www.openssl.org/). Sie können auch OpenSSL oder andere Tools von Drittanbietern verwenden, um den Besitznachweis auszuführen. Weitere Informationen zu Tools in den SDKs finden Sie unter [Verwenden von Tools in den SDKs](how-to-use-sdk-tools.md). 
+Die in der Dokumentation und den SDKs bereitgestellten PowerShell- und Bash-Skripts benötigen [OpenSSL](https://www.openssl.org/). Sie können auch OpenSSL oder andere Tools von Drittanbietern verwenden, um den Besitznachweis auszuführen. Ein Beispiel für die Verwendung der mit den SDKs bereitgestellten Tools finden Sie unter [Erstellen einer X.509-Zertifikatkette](tutorial-custom-hsm-enrollment-group-x509.md#create-an-x509-certificate-chain). 
 
 
 ## <a name="upload-the-signed-verification-certificate"></a>Hochladen des signierten Verifizierungszertifikats

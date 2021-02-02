@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 02/05/2020
 ms.author: kenwith
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 462f60bbae9fd7b61993a2ccccd40fa5ca4ccc28
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: e87211789280c3439d71d8fa63da09416eaaf18e
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98012966"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98805134"
 ---
 # <a name="reference-for-writing-expressions-for-attribute-mappings-in-azure-ad"></a>Referenz zum Schreiben von Ausdrücken für Attributzuordnungen in Azure AD
 
@@ -483,7 +483,7 @@ Gibt „Joh“ zurück.
  - Dies ist eine Funktion der obersten Ebene, die nicht geschachtelt werden kann.
  - Diese Funktion kann nicht auf Attribute angewandt werden, die über eine Rangfolge für den Abgleich verfügen.   
  - Diese Funktion darf nur für die Erstellung von Einträgen verwendet werden. Legen Sie die Eigenschaft **Zuordnung anwenden** auf **Nur beim Erstellen von Objekten** fest.
- - Diese Funktion wird derzeit nur für die „Benutzerbereitstellung von Workday in Active Directory“ unterstützt. Sie kann nicht für andere Bereitstellungsanwendungen verwendet werden. 
+ - Diese Funktion wird derzeit nur für die Benutzerbereitstellung von Workday in Active Directory und für die Benutzerbereitstellung von SuccessFactors in Active Directory unterstützt. Sie kann nicht für andere Bereitstellungsanwendungen verwendet werden. 
 
 
 **Parameter:** 

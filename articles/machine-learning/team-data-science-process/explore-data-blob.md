@@ -1,5 +1,5 @@
 ---
-title: Untersuchen von Daten in Azure Blob Storage mit „pandas“ – Team Data Science-Prozess
+title: 'Untersuchen von Daten in Azure Blob Storage mit „pandas“: Team Data Science-Prozess'
 description: Erfahren Sie, wie Sie in einem Azure-Blobcontainer gespeicherte Daten mithilfe des Python-Pakets „pandas“ untersuchen.
 services: machine-learning
 author: marktab
@@ -11,14 +11,14 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 3d80ff9f5f96bbc642aed6598c86cb682d606695
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 855998b887f1d446ee8d196ff4628e066cb5d675
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94410673"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98805673"
 ---
-# <a name="explore-data-in-azure-blob-storage-with-pandas"></a>Untersuchen von Daten in Azure Blob Storage mit Pandas
+# <a name="explore-data-in-azure-blob-storage-with-pandas"></a>Untersuchen von Daten in Azure Blob Storage mit „pandas“
 
 In diesem Artikel wird erläutert, wie Sie in einem Azure-Blobcontainer gespeicherte Daten mithilfe des Python-Pakets [pandas](https://pandas.pydata.org/) untersuchen.
 
@@ -28,7 +28,7 @@ Dieser Task ist ein Schritt im [Team Data Science-Prozess](overview.md).
 In diesem Artikel wird davon ausgegangen, dass Sie Folgendes abgeschlossen haben:
 
 * Sie haben ein Azure-Speicherkonto erstellt. Anweisungen finden Sie unter [Erstellen eines Azure-Speicherkontos](../../storage/common/storage-account-create.md).
-* Die Daten wurden in einem Azure Blob Storage-Konto gespeichert. Anweisungen finden Sie unter [Verschieben von Daten in und aus Azure Storage](../../storage/common/storage-choose-data-transfer-solution.md)
+* Die Daten wurden in einem Azure Blob Storage-Konto gespeichert. Anweisungen finden Sie unter [Verschieben von Daten in und aus Azure Storage](../../storage/common/storage-choose-data-transfer-solution.md)
 
 ## <a name="load-the-data-into-a-pandas-dataframe"></a>Laden der Daten in ein Pandas-DataFrame
 Damit ein Dataset untersucht und bearbeitet werden kann, muss es zuerst aus der Blobquelle in eine lokale Datei heruntergeladen werden, die anschließend in ein Pandas-DataFrame geladen werden kann. Nachfolgend sehen Sie für dieses Verfahren erforderlichen Schritte:

@@ -1,7 +1,7 @@
 ---
-title: Bewahren des Datenschutzes mithilfe der SmartNoise-Pakete (Vorschau)
+title: 'Anleitung zu differenziellem Datenschutz: SmartNoise (Vorschau)'
 titleSuffix: Azure Machine Learning
-description: Erfahren Sie, wie Sie anhand der SmartNoise-Pakete unterschiedliche bewährte Datenschutzmethoden auf Azure Machine Learning-Modelle anwenden können.
+description: Hier erfahren Sie, wie Sie mithilfe der Open-Source-basierten SmartNoise-Bibliotheken verschiedene bewährte Datenschutzmethoden auf Azure Machine Learning-Modelle anwenden können.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,19 +10,19 @@ ms.custom: how-to, responsible-ml
 ms.author: slbird
 author: slbird
 ms.reviewer: luquinta
-ms.date: 12/21/2020
-ms.openlocfilehash: ebc14d6c9d0ebaa6e0258578f94771c9f286bdb4
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.date: 01/21/2020
+ms.openlocfilehash: 62a002569696da4ef18e7bd967f027eb8247ef65
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98221934"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98681403"
 ---
 # <a name="use-differential-privacy-in-azure-machine-learning-preview"></a>Verwenden von differenziellem Datenschutz in Azure Machine Learning (Vorschau)
 
-Erfahren Sie, wie Sie anhand der SmartNoise-Python-Pakete unterschiedliche bewährte Datenschutzmethoden auf Azure Machine Learning-Modelle anwenden können.
+Hier erfahren Sie, wie Sie mithilfe der Open-Source-basierten SmartNoise-Python-Bibliotheken verschiedene bewährte Datenschutzmethoden auf Azure Machine Learning-Modelle anwenden können.
 
-Der differenzielle Datenschutz ist die Premiumdefinition des Datenschutzes. Systeme, die sich an diese Definition des Datenschutzes halten, bieten umfassende Schutzmaßnahmen gegen ein breites Spektrum von Angriffen durch Datenwiederherstellung und erneute Identifizierung, einschließlich Angriffen von Angreifern, die über zusätzliche Informationen verfügen. Erfahren Sie mehr darüber, wie der [differenzielle Datenschutz funktioniert](./concept-differential-privacy.md).
+Der differenzielle Datenschutz ist die Premiumdefinition des Datenschutzes. Systeme, die sich an diese Definition des Datenschutzes halten, bieten umfassende Schutzmaßnahmen gegen ein breites Spektrum von Angriffen durch Datenwiederherstellung und erneute Identifizierung, einschließlich Angriffen von Angreifern, die über zusätzliche Informationen verfügen. Weitere Informationen zur Funktionsweise des differenziellen Datenschutzes finden Sie [hier](./concept-differential-privacy.md).
 
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -30,7 +30,7 @@ Der differenzielle Datenschutz ist die Premiumdefinition des Datenschutzes. Syst
 - Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie ein kostenloses Konto erstellen, bevor Sie beginnen. Probieren Sie die [kostenlose oder kostenpflichtige Version von Azure Machine Learning](https://aka.ms/AMLFree) noch heute aus.
 - [Python 3](https://www.python.org/downloads/)
 
-## <a name="install-smartnoise-packages"></a>Installieren der SmartNoise-Pakete
+## <a name="install-smartnoise-python-libraries"></a>Installieren der SmartNoise-Python-Bibliotheken
 
 ### <a name="standalone-installation"></a>Eigenständige Installation
 
@@ -51,7 +51,7 @@ import opendp.smartnoise.sql
 
 Wenn die Importe erfolgreich durchgeführt wurden, sind die Bibliotheken installiert und einsatzbereit.
 
-### <a name="docker-image"></a>Docker-Image
+### <a name="docker-image-installation"></a>Docker-Imageinstallation
 
 Sie können die SmartNoise-Pakete auch mit Docker verwenden.
 

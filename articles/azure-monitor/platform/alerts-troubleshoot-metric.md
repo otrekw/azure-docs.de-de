@@ -4,14 +4,14 @@ description: In diesem Artikel werden gängige Probleme mit Azure Monitor-Metrik
 author: harelbr
 ms.author: harelbr
 ms.topic: troubleshooting
-ms.date: 01/11/2021
+ms.date: 01/21/2021
 ms.subservice: alerts
-ms.openlocfilehash: e4e876b58c82605df0c005b225dcf2cdbcda1b34
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: 11dc71578b3d94ce41fe040557184ff32bcf3240
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98070728"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98661796"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-metric-alerts"></a>Behandeln von Problemen mit Azure Monitor-Metrikwarnungen 
 
@@ -24,8 +24,9 @@ Azure Monitor-Warnungen informieren Sie proaktiv, wenn wichtige Bedingungen in I
 Wenn Sie der Meinung sind, dass eine Metrikwarnung hätte ausgelöst werden sollen, dies aber nicht der Fall war und sie nicht im Azure-Portal angezeigt wird, versuchen Sie Folgendes:
 
 1. **Konfiguration:** Überprüfen Sie die Konfiguration der Metrikwarnungsregel, um sicherzustellen, dass sie richtig konfiguriert ist:
-    - Stellen Sie sicher, dass die Einstellungen für **Aggregationstyp**, **Aggregationsgranularität (Zeitraum)** und **Schwellenwert** oder **Sensitivität** wie gewünscht konfiguriert sind.
-    - Überprüfen Sie bei einer Regel, die dynamische Schwellwerte verwendet, ob die erweiterten Einstellungen konfiguriert sind, da **Anzahl von Verstößen** ein Filtern von Warnungen bewirken kann und die Option **Vor dem folgenden Datum liegende Daten ignorieren** sich darauf auswirken kann, wie die Schwellenwerte berechnet werden.
+    - Überprüfen Sie, ob die Optionen **Aggregationstyp** und **Aggregationsgranularität (Zeitraum)** wie erwartet konfiguriert sind. Die Einstellung **Aggregationstyp** bestimmt, wie Metrikwerte aggregiert werden ([weitere Informationen](./metrics-aggregation-explained.md#aggregation-types)). Die Einstellung **Aggregationsgranularität (Zeitraum)** steuert, wie weit die in die Auswertung einbezogenen Metrikwerte zurückreichen sollen, wenn die Warnungsregel ausgeführt wird.
+    -  Vergewissern Sie sich, dass die Optionen **Schwellenwert** bzw. **Sensibilität** wie erwartet konfiguriert sind.
+    - Überprüfen Sie bei einer Regel, für die dynamische Schwellwerte verwendet werden, ob die erweiterten Einstellungen konfiguriert sind. Der Grund ist, dass die **Anzahl von Verstößen** ggf. zu einer Filterung der Warnungen führt und die Option **Vor dem folgenden Datum liegende Daten ignorieren** sich darauf auswirken kann, wie die Schwellenwerte berechnet werden.
 
        > [!NOTE] 
        > Dynamische Schwellwerte werden erst nach mindestens 3 Tagen und 30 Metrikproben aktiv.

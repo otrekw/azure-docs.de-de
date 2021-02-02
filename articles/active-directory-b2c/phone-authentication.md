@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 09/01/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 8d41f8959d0a1ec0d6e48cf2fa4711a8ef8d8ae5
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: 2600ea3488c643bcf215b058425de42cd439dcff
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98178941"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98660266"
 ---
 # <a name="set-up-phone-sign-up-and-sign-in-with-custom-policies-in-azure-ad-b2c"></a>Einrichten von Telefonregistrierung und -anmeldung mit benutzerdefinierten Richtlinien in Azure AD B2C
 
@@ -39,12 +39,12 @@ Einmalkennwörter werden mithilfe von SMS-Textnachrichten an Ihre Benutzer gesen
 >
 > *&lt;Einfügen: Link zu Ihrer Datenschutzerklärung&gt;*<br/>*&lt;Einfügen: Link zu Ihren Vertragsbedingungen&gt;*
 
-Wenn Sie Ihre eigenen Zustimmungsinformationen hinzufügen möchten, passen Sie das folgende Beispiel an. Fügen Sie den entsprechenden Inhalt in die „LocalizedResources“-Elemente für die Inhaltsdefinition (ContentDefinition) ein, die von der selbstbestätigten Seite mit dem Anzeigesteuerelement verwendet wird (Datei *Phone_Email_Base.xml* im [Starter Pack für die Telefonregistrierung und -anmeldung][starter-pack-phone]):
+Passen Sie das folgende Beispiel entsprechend an, um Ihre eigenen Informationen für die Einwilligung hinzuzufügen. Fügen Sie sie unter `LocalizedResources` für das „ContentDefinition“-Element ein, das von der selbstbestätigten Seite mit dem Anzeigesteuerelement (Datei *Phone_Email_Base.xml* im [Starter Pack für die Telefonregistrierung und -anmeldung][starter-pack-phone]) verwendet wird:
 
 ```xml
 <LocalizedResources Id="phoneSignUp.en">        
     <LocalizedStrings>
-    <LocalizedString ElementType="DisplayControl" ElementId="phoneControl" StringId="disclaimer_msg_intro">By providing your phone number, you consent to receiving a one-time passcode sent by text message to help you sign into {insert your application name}. Standard messsage and data rates may apply.</LocalizedString>          
+    <LocalizedString ElementType="DisplayControl" ElementId="phoneControl" StringId="disclaimer_msg_intro">By providing your phone number, you consent to receiving a one-time passcode sent by text message to help you sign into {insert your application name}. Standard message and data rates may apply.</LocalizedString>          
     <LocalizedString ElementType="DisplayControl" ElementId="phoneControl" StringId="disclaimer_link_1_text">Privacy Statement</LocalizedString>                
     <LocalizedString ElementType="DisplayControl" ElementId="phoneControl" StringId="disclaimer_link_1_url">{insert your privacy statement URL}</LocalizedString>          
     <LocalizedString ElementType="DisplayControl" ElementId="phoneControl" StringId="disclaimer_link_2_text">Terms and Conditions</LocalizedString>             
@@ -64,7 +64,7 @@ Ein Einmalprüfcode wird an die Telefonnummer des Benutzers gesendet. Der Benutz
 
 ![Überprüfung des Codes während der Telefonregistrierung durch den Benutzer](media/phone-authentication/phone-signup-verify-code.png)
 
- Der Benutzer gibt auf der Registrierungsseite alle weiteren erforderlichen Informationen ein, z. B. den **Anzeigenamen**, den **Vornamen** und den **Nachnamen** (das Land/die Region und die Telefonnummer sind bereits eingefügt). Wenn der Benutzer eine andere Telefonnummer verwenden möchte, kann er **Nummer ändern** auswählen, um die Registrierung neu zu starten. Wenn der Benutzer fertig ist, wählt er **Weiter** aus.
+Der Benutzer gibt auf der Registrierungsseite alle weiteren erforderlichen Informationen ein. Beispiele hierfür sind **Anzeigename**, **Vorname** und **Nachname** („Land“ und „Telefonnummer“ sind weiterhin bereits ausgefüllt). Wenn der Benutzer eine andere Telefonnummer verwenden möchte, kann er **Nummer ändern** auswählen, um die Registrierung neu zu starten. Wenn der Benutzer fertig ist, wählt er **Weiter** aus.
 
 ![Der Benutzer gibt zusätzliche Informationen an.](media/phone-authentication/phone-signup-additional-info.png)
 
@@ -100,8 +100,6 @@ Vor dem Einrichten von OTP benötigen Sie die folgenden Ressourcen.
 
 Aktualisieren Sie zunächst die benutzerdefinierten Richtliniendateien für die Telefonregistrierung und -anmeldung, damit diese mit Ihrem Azure AD B2C-Mandanten funktionieren.
 
-In den folgenden Schritten wird davon ausgegangen, dass Sie die [Voraussetzungen](#prerequisites) abgeschlossen und das Repository für das [benutzerdefinierte Richtlinien-Starter Pack][starter-pack] auf Ihren lokalen Computer geklont haben.
-
 1. Suchen Sie die [benutzerdefinierten Richtliniendateien für die Telefonregistrierung und -anmeldung][starter-pack-phone] in Ihrem lokalen Klon des Starter Pack-Repositorys, oder laden Sie sie direkt herunter. Die XML-Richtliniendateien befinden sich im folgenden Verzeichnis:
 
     `active-directory-b2c-custom-policy-starterpack/scenarios/`**`phone-number-passwordless`**
@@ -136,9 +134,9 @@ Beim Hochladen der einzelnen Dateien fügt Azure das Präfix `B2C_1A_` hinzu.
 
 ## <a name="get-user-account-by-phone-number"></a>Abrufen von Benutzerkonten anhand der Telefonnummer
 
-Ein Benutzer, der sich mit einer Telefonnummer anmeldet, aber keine E-Mail-Adresse für die Wiederherstellung bereitstellt, wird in Ihrem Azure AD B2C-Verzeichnis mit seiner Telefonnummer als Anmeldename erfasst. Wenn der Benutzer seine Telefonnummer später ändern möchte, muss das Helpdesk- oder Supportteam zunächst sein Konto ermitteln und dann seine Telefonnummer aktualisieren.
+Ein Benutzer, der sich mit einer Telefonnummer und ohne E-Mail-Adresse für die Wiederherstellung registriert, wird in Ihrem Azure AD B2C-Verzeichnis mit seiner Telefonnummer als Anmeldename erfasst. Um die Telefonnummer ändern zu können, muss das Helpdesk- oder Supportteam zunächst sein Konto ermitteln und dann seine Telefonnummer aktualisieren.
 
-Sie können einen Benutzer anhand der Telefonnummer (Anmeldename) mithilfe von [Microsoft Graph](manage-user-accounts-graph-api.md) ermitteln:
+Sie können einen Benutzer anhand der Telefonnummer (Anmeldename) mithilfe von [Microsoft Graph](microsoft-graph-operations.md) ermitteln:
 
 ```http
 GET https://graph.microsoft.com/v1.0/users?$filter=identities/any(c:c/issuerAssignedId eq '+{phone number}' and c/issuer eq '{tenant name}.onmicrosoft.com')

@@ -1,23 +1,25 @@
 ---
-title: Vorgehensweise bei Azure-Dienstunterbrechung mit Auswirkungen auf Azure Cloud Services
-titleSuffix: Azure Cloud Services
+title: Behandeln einer Azure-Dienstunterbrechung mit Auswirkungen auf Azure Cloud Services (klassisch)
 description: Erfahren Sie, wie Sie im Fall einer Azure-Dienstunterbrechung mit Auswirkungen auf Azure-Clouddienste vorgehen.
-services: cloud-services
-documentationcenter: ''
-author: mmccrory
-ms.service: cloud-services
-ms.workload: cloud-services
 ms.topic: article
-ms.date: 04/04/2017
-ms.author: memccror
-ms.openlocfilehash: 6ae1509d552de1d5473c7d995af2db68d7113e79
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.service: cloud-services
+ms.date: 10/14/2020
+ms.author: tagore
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: cdd6c9da5a1895d4aadd73133734cd4c8204ecf1
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92077523"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98742164"
 ---
-# <a name="what-to-do-in-the-event-of-an-azure-service-disruption-that-impacts-azure-cloud-services"></a>Vorgehensweise bei einer Azure-Dienstunterbrechung mit Auswirkungen auf Azure-Clouddienste
+# <a name="what-to-do-in-the-event-of-an-azure-service-disruption-that-impacts-azure-cloud-services-classic"></a>Vorgehensweise im Falle einer Azure-Dienstunterbrechung mit Auswirkungen auf Azure Cloud Services (klassisch)
+
+> [!IMPORTANT]
+> [Azure Cloud Services (erweiterter Support)](../cloud-services-extended-support/overview.md) ist ein neues Azure Resource Manager-basiertes Bereitstellungsmodell für Azure Cloud Services. Im Zuge dieser Änderung wurden Azure Cloud Services-Instanzen, die unter dem Azure Service Manager-basierten Bereitstellungsmodell ausgeführt werden, in „Cloud Services (klassisch)“ umbenannt. Für alle neuen Bereitstellungen wird [Azure Cloud Services (erweiterter Support)](../cloud-services-extended-support/overview.md) verwendet.
+
 Bei Microsoft setzen wir uns mit großem Engagement dafür ein, dass unsere Dienste immer verfügbar sind, wenn Sie sie benötigen. Aufgrund von höherer Gewalt können jedoch gelegentlich ungeplante Dienstausfälle auftreten.
 
 Microsoft stellt für seine Dienste Vereinbarungen zum Servicelevel (Service Level Agreements, SLAs) bereit, um dem Engagement für Verfügbarkeit und Konnektivität Nachdruck zu verleihen. Die SLAs für einzelne Azure-Dienste finden Sie unter [Vereinbarungen zum Servicelevel (SLAs)](https://azure.microsoft.com/support/legal/sla/).

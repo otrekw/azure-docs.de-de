@@ -1,21 +1,25 @@
 ---
-title: Häufige Starttasks für Clouddienste | Microsoft-Dokumentation
+title: Allgemeine Starttasks für Cloud Services (klassisch) | Microsoft-Dokumentation
 description: Enthält einige Beispiele für häufige Starttasks, die Sie vielleicht in der Web- oder Workerrolle des Clouddiensts ausführen möchten.
-services: cloud-services
-documentationcenter: ''
-author: tgore03
-ms.service: cloud-services
 ms.topic: article
-ms.date: 07/18/2017
+ms.service: cloud-services
+ms.date: 10/14/2020
 ms.author: tagore
-ms.openlocfilehash: 77cea7ebd333b958675438aaeb5e0e2a326a5866
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: f55b225e615a3e7a5fbcf56b405054883d3b5413
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92075177"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98741195"
 ---
-# <a name="common-cloud-service-startup-tasks"></a>Allgemeine Starttasks für Clouddienste
+# <a name="common-cloud-service-classic-startup-tasks"></a>Allgemeine Starttasks für Cloud Services (klassisch)
+
+> [!IMPORTANT]
+> [Azure Cloud Services (erweiterter Support)](../cloud-services-extended-support/overview.md) ist ein neues Azure Resource Manager-basiertes Bereitstellungsmodell für Azure Cloud Services. Im Zuge dieser Änderung wurden Azure Cloud Services-Instanzen, die unter dem Azure Service Manager-basierten Bereitstellungsmodell ausgeführt werden, in „Cloud Services (klassisch)“ umbenannt. Für alle neuen Bereitstellungen wird [Azure Cloud Services (erweiterter Support)](../cloud-services-extended-support/overview.md) verwendet.
+
 Dieser Artikel enthält einige Beispiele für häufiger ausgeführte Starttasks, die Sie vielleicht im Clouddienst ausführen möchten. Mit Startaufgaben können Sie Vorgänge ausführen, bevor eine Rolle gestartet wird. Zu den Vorgängen, die Sie vielleicht ausführen möchten, gehören das Installieren von Komponenten, das Registrieren von COM-Komponenten, das Festlegen von Registrierungsschlüsseln und das Starten eines lang andauernden Prozesses. 
 
 In [diesem Artikel](cloud-services-startup-tasks.md) erfahren Sie etwas über die Funktionsweise von Starttasks und insbesondere darüber, wie die Einträge zum Definieren einer Starttask erstellt werden.
@@ -52,7 +56,7 @@ Variablen können auch einen [gültigen Azure XPath-Wert](cloud-services-role-co
 
 
 ## <a name="configure-iis-startup-with-appcmdexe"></a>Konfigurieren des IIS-Startvorgangs mit "AppCmd.exe"
-Das Befehlszeilentool [AppCmd.exe](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj635852(v=ws.11)) kann zum Verwalten von IIS-Einstellungen beim Start von Azure verwendet werden. *AppCmd.exe* bietet einen praktischen Zugriff über die Befehlszeile auf Konfigurationseinstellungen in den Azure-Starttasks. Mit *AppCmd.exe*können Einstellungen von Websites für Anwendungen und Websites hinzugefügt, geändert oder entfernt werden.
+Das Befehlszeilentool [AppCmd.exe](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj635852(v=ws.11)) kann zum Verwalten von IIS-Einstellungen beim Start von Azure verwendet werden. *AppCmd.exe* bietet einen praktischen Zugriff über die Befehlszeile auf Konfigurationseinstellungen in den Azure-Starttasks. Mit *AppCmd.exe* können Einstellungen von Websites für Anwendungen und Websites hinzugefügt, geändert oder entfernt werden.
 
 Es gibt jedoch einige Dinge, die bei der Verwendung von *AppCmd.exe* als Starttask zu beachten sind:
 
@@ -83,7 +87,7 @@ Die relevanten Abschnitte der Datei [ServiceDefinition.csdef] werden hier gezeig
 Die Batchdatei *Startup.cmd* verwendet *AppCmd.exe*, um in der Datei *Web.config* einen Komprimierungsabschnitt und einen Komprimierungseintrag für JSON hinzuzufügen. Der erwartete **errorlevel**-Wert 183 wird mithilfe des Befehlszeilenprogramms VERIFY.EXE auf Null (0) festgelegt. Unerwartete Errorlevel werden in "StartupErrorLog.txt" protokolliert.
 
 ```cmd
-REM   *** Add a compression section to the Web.config file. ***
+REM   **_ Add a compression section to the Web.config file. _*_
 %windir%\system32\inetsrv\appcmd set config /section:urlCompression /doDynamicCompression:True /commit:apphost >> "%TEMP%\StartupLog.txt" 2>&1
 
 REM   ERRORLEVEL 183 occurs when trying to add a section that already exists. This error is expected if this
@@ -98,7 +102,7 @@ IF %ERRORLEVEL% NEQ 0 (
     GOTO ErrorExit
 )
 
-REM   *** Add compression for json. ***
+REM   _*_ Add compression for json. _*_
 %windir%\system32\inetsrv\appcmd set config  -section:system.webServer/httpCompression /+"dynamicTypes.[mimeType='application/json; charset=utf-8',enabled='True']" /commit:apphost >> "%TEMP%\StartupLog.txt" 2>&1
 IF %ERRORLEVEL% EQU 183 VERIFY > NUL
 IF %ERRORLEVEL% NEQ 0 (
@@ -106,10 +110,10 @@ IF %ERRORLEVEL% NEQ 0 (
     GOTO ErrorExit
 )
 
-REM   *** Exit batch file. ***
+REM   _*_ Exit batch file. _*_
 EXIT /b 0
 
-REM   *** Log error and exit ***
+REM   _*_ Log error and exit _*_
 :ErrorExit
 REM   Report the date, time, and ERRORLEVEL of the error.
 DATE /T >> "%TEMP%\StartupLog.txt" 2>&1
@@ -125,7 +129,7 @@ Die zweite Firewall kontrolliert Verbindungen zwischen einem virtuellen Computer
 
 Azure erstellt Firewallregeln für die in den Rollen gestarteten Prozesse. Wenn Sie beispielsweise einen Dienst oder ein Programm starten, erstellt Azure automatisch die erforderlichen Firewallregeln, die diesem Dienst das Kommunizieren mit dem Internet ermöglichen. Wenn Sie einen Dienst erstellen, der durch einen Prozess außerhalb Ihrer Rolle gestartet wird (z.B. einen COM+-Dienst oder einen geplanten Windows-Task), müssen Sie manuell eine Firewallregel für den Zugriff auf diesen Dienst erstellen. Diese Firewallregeln können unter Verwendung einer Starttask erstellt werden.
 
-Ein Starttask, der eine Firewallregel erstellt, muss einen [executionContext][aufgabe] mit der Einstellung **elevated** zurückgeben. Fügen Sie folgenden Starttask der Datei [ServiceDefinition.csdef] hinzu.
+Ein Starttask, der eine Firewallregel erstellt, muss über einen Ausführungskontext ([executionContext][Task]) vom Typ **elevated** verfügen. Fügen Sie folgenden Starttask der Datei [ServiceDefinition.csdef] hinzu.
 
 ```xml
 <ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">

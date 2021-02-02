@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: troubleshooting
-ms.date: 04/19/2019
+ms.date: 01/25/2021
 ms.author: alkohli
-ms.openlocfilehash: b950f80ba8c2bdbaf7a515dc1ce127b934723177
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 17b8d6de198746a79a50c4fbda805b364212e3c4
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85558556"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98796050"
 ---
 # <a name="troubleshoot-issues-related-to-azure-data-box-blob-storage"></a>Erfahren Sie mehr über das Behandeln von Problemen mit Azure Data Box-Blobspeicher.
 
@@ -65,6 +65,7 @@ Diese Fehler sind nicht für eine Anwendung spezifisch.
 |Fehlermeldung  |Empfohlene Maßnahme |
 |---------|---------|
 |Bei der Verbindung ist eine Zeitüberschreitung aufgetreten. |Melden Sie sich bei dem Data Box-Gerät an, und vergewissern Sie sich, dass es nicht gesperrt ist. Bei jedem Neustart des Geräts bleibt es gesperrt, bis sich ein Benutzer anmeldet.|
+|Für die REST-API-Authentifizierung tritt der folgende Fehler auf: Server konnte die Anforderung nicht authentifizieren. Stellen Sie sicher, dass der Wert des Autorisierungsheaders, einschließlich der Signatur, korrekt ist. ErrorCode:AuthenticationFailed. |Ein möglicher Grund für diesen Fehler ist eine fehlende Synchronisierung der Gerätezeit mit der Zeit von Azure. Bei einer größeren zeitlichen Abweichung kommt es bei der REST-API-Authentifizierung zu einem Fehler, wenn Sie versuchen, Daten über die REST-API auf die Data Box zu kopieren. In dieser Situation können Sie den ausgehenden UDP-Port 123 öffnen, um den Zugriff auf `time.windows.com` zuzulassen. Nachdem die Gerätezeit mit der Zeit in Azure synchronisiert wurde, sollte der Authentifizierungsvorgang erfolgreich sein. |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

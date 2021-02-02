@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 01/08/2021
+ms.date: 01/25/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: a0751e7e4c90f04cd5e28610e2c62dbec6a7adcf
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: bedb152a8fecfdb1ee699f431e4e43ef3ceed564
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98051195"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98806135"
 ---
 |Name<br /><sub>(Azure-Portal)</sub> |BESCHREIBUNG |Auswirkungen |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
@@ -19,3 +19,4 @@ ms.locfileid: "98051195"
 |[Virtuelles Netzwerk mit verwaltetem Arbeitsbereich in Azure Synapse-Arbeitsbereichen muss aktiviert sein](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F2d9dbfa3-927b-4cf0-9d0f-08747f971650) |Durch Aktivieren eines virtuellen Netzwerks mit verwaltetem Arbeitsbereich wird sichergestellt, dass Ihr Arbeitsbereich im Netzwerk von anderen Arbeitsbereichen isoliert ist. Datenintegration und in diesem Netzwerk bereitgestellte Spark-Ressourcen bieten zudem Isolierung auf Benutzerebene für Spark-Aktivitäten. |Audit, Deny, Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Synapse/SynapseWorkspaceManagedVnet_Audit.json) |
 |[Für Azure Synapse-Arbeitsbereiche müssen private Endpunktverbindungen aktiviert sein](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F72d11df1-dd8a-41f7-8925-b05b960ebafc) |Private Endpunkte können so konfiguriert werden, dass sie eine private Verbindung mit einem Azure Synapse-Arbeitsbereich herstellen. Auf diese Weise lässt sich ein sicherer Kommunikationskanal zum Azure Synapse-Arbeitsbereich erzwingen. |Audit, Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Synapse/SynapseWorkspaceUsePrivateLinks_Audit.json) |
 |[Von Synapse verwaltete private Endpunkte dürfen nur eine Verbindung mit Ressourcen in genehmigten Azure Active Directory-Mandanten herstellen](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F3a003702-13d2-4679-941b-937e58c443f0) |Schützen Sie Ihren Synapse-Arbeitsbereich, indem Sie nur Verbindungen mit Ressourcen in genehmigten Azure AD-Mandanten zulassen. Die genehmigten Azure AD-Mandanten können während der Richtlinienzuweisung definiert werden. |Audit, Disabled, Deny |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Synapse/Workspace_DataExfiltrationPrevention_Deny.json) |
+|[Für Ihre Synapse-Arbeitsbereiche muss eine Sicherheitsrisikobewertung aktiviert sein.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0049a6b3-a662-4f3e-8635-39cf44ace45a) |Erkennen, verfolgen und behandeln Sie potenzielle Sicherheitsrisiken, indem Sie regelmäßige SQL-Sicherheitsrisikobewertungen für Ihre Synapse-Arbeitsbereiche konfigurieren. |AuditIfNotExists, Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Synapse/ASC_SQLVulnerabilityAssessmentOnSynapse_Audit.json) |

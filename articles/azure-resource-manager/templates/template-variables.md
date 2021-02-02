@@ -2,13 +2,13 @@
 title: Variablen in Vorlagen
 description: Beschreibt, wie Variablen in einer Azure Resource Manager-Vorlage (ARM-Vorlage) definiert werden.
 ms.topic: conceptual
-ms.date: 11/24/2020
-ms.openlocfilehash: 7f782f9c7d3107472a74fcab73290c4cebf73693
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.date: 01/26/2021
+ms.openlocfilehash: feecc4b5df77e6a3bf51294cb12aabf44899dde5
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97934661"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98874433"
 ---
 # <a name="variables-in-arm-template"></a>Variablen in ARM-Vorlagen
 
@@ -16,9 +16,11 @@ Dieser Artikel beschreibt, wie Sie Variablen in Ihrer Azure Resource Manager-Vor
 
 Resource Manager löst Variablen vor Beginn der Bereitstellungsvorgänge auf. Jedes Vorkommen der Variablen in der Vorlage wird von Resource Manager durch den aufgelösten Wert ersetzt.
 
-Das Format der einzelnen Variablen muss jeweils einem der [Datentypen](template-syntax.md#data-types) entsprechen.
-
 ## <a name="define-variable"></a>Definieren einer Variablen
+
+Geben Sie beim Definieren einer Variablen einen Wert oder einen Vorlagenausdruck an, der in einen [Datentyp](template-syntax.md#data-types) aufgelöst wird. Sie können beim Erstellen der Variablen den Wert eines Parameters oder einer anderen Variablen verwenden.
+
+In der Variablendeklaration können Sie [Vorlagenfunktionen](template-functions.md) verwenden, aber nicht die Funktion [reference](template-functions-resource.md#reference) oder die [list](template-functions-resource.md#list)-Funktionen. Diese Funktionen rufen den Laufzeitstatus einer Ressource ab und können nicht vor der Bereitstellung ausgeführt werden, wenn Variablen aufgelöst werden.
 
 Im folgenden Beispiel wird eine Variablendefinition gezeigt. Dabei wird ein Zeichenfolgenwert für einen Speicherkontonamen erstellt. Es werden mehrere Vorlagenfunktionen verwendet, um einen Parameterwert abzurufen und zu einer eindeutigen Zeichenfolge zu verketten.
 
@@ -27,8 +29,6 @@ Im folgenden Beispiel wird eine Variablendefinition gezeigt. Dabei wird ein Zeic
   "storageName": "[concat(toLower(parameters('storageNamePrefix')), uniqueString(resourceGroup().id))]"
 },
 ```
-
-Im Abschnitt `variables` kann weder die [reference](template-functions-resource.md#reference)-Funktion noch eine der [list](template-functions-resource.md#list)-Funktionen verwendet werden. Diese Funktionen rufen den Laufzeitstatus einer Ressource ab und können nicht vor der Bereitstellung ausgeführt werden, wenn Variablen aufgelöst werden.
 
 ## <a name="use-variable"></a>Verwenden einer Variablen
 
@@ -44,56 +44,20 @@ In der Vorlage verweisen Sie mithilfe der [variables](template-functions-deploym
 ]
 ```
 
+## <a name="example-template"></a>Beispielvorlage
+
+Von der folgenden Vorlage werden keine Ressourcen bereitgestellt. Es werden nur einige Möglichkeiten zum Deklarieren von Variablen angegeben.
+
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/variables.json":::
+
 ## <a name="configuration-variables"></a>Konfigurationsvariablen
 
-Sie können Variablen definieren, die zugehörige Werte zum Konfigurieren einer Umgebung enthalten. Die Variable wird als ein Objekt mit den Werten definiert. Das folgende Beispiel zeigt ein Objekt, das Werte für zwei Umgebungen enthält: **test** und **prod**.
+Sie können Variablen definieren, die zugehörige Werte zum Konfigurieren einer Umgebung enthalten. Die Variable wird als ein Objekt mit den Werten definiert. Das folgende Beispiel zeigt ein Objekt, das Werte für zwei Umgebungen enthält: **test** und **prod**. Sie übergeben einen dieser Werte während der Bereitstellung.
 
-```json
-"variables": {
-  "environmentSettings": {
-    "test": {
-      "instanceSize": "Small",
-      "instanceCount": 1
-    },
-    "prod": {
-      "instanceSize": "Large",
-      "instanceCount": 4
-    }
-  }
-},
-```
-
-Unter `parameters` erstellen Sie einen Wert, der angibt, welche Konfigurationswerte verwendet werden sollen.
-
-```json
-"parameters": {
-  "environmentName": {
-    "type": "string",
-    "allowedValues": [
-      "test",
-      "prod"
-    ]
-  }
-},
-```
-
-Verwenden Sie die Variable und den Parameter zusammen, um Einstellungen für die angegebene Umgebung abzurufen.
-
-```json
-"[variables('environmentSettings')[parameters('environmentName')].instanceSize]"
-```
-
-## <a name="example-templates"></a>Beispielvorlagen
-
-In den folgenden Beispielen werden Szenarien für die Verwendung von Variablen veranschaulicht.
-
-|Vorlage  |BESCHREIBUNG  |
-|---------|---------|
-| [Variablendefinitionen](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/variables.json) | Zeigt die verschiedenen Typen von Variablen. Die Vorlage stellt keine Ressourcen bereit. Sie erstellt Variablenwerte und gibt diese Werte zurück. |
-| [Konfigurationsvariable](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/variablesconfigurations.json) | Zeigt die Verwendung einer Variablen, die Konfigurationswerte definiert. Die Vorlage stellt keine Ressourcen bereit. Sie erstellt Variablenwerte und gibt diese Werte zurück. |
-| [Netzwerksicherheitsregeln](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.json) und [Parameterdatei](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.parameters.json) | Generiert ein Array im richtigen Format zum Zuweisen von Sicherheitsregeln zu einer Netzwerksicherheitsgruppe. |
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/variablesconfigurations.json":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Weitere Informationen zu den verfügbaren Eigenschaften für Variablen finden Sie unter [Verstehen der Struktur und Syntax von ARM-Vorlagen](template-syntax.md).
 * Empfehlungen zum Erstellen von Variablen finden Sie unter [Bewährte Methoden: Variablen](template-best-practices.md#variables).
+* Eine Beispielvorlage, mit der Sicherheitsregeln einer Netzwerksicherheitsgruppe zugewiesen werden, finden Sie unter [Netzwerksicherheitsregeln](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.json) und [Parameterdatei](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.parameters.json).

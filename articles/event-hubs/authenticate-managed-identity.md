@@ -2,14 +2,14 @@
 title: Authentifizieren einer verwalteten Identität mit Azure Active Directory
 description: Dieser Artikel enthält Informationen zur Authentifizierung einer verwalteten Identität mit Azure Active Directory, um auf Azure Event Hubs-Ressourcen zuzugreifen.
 ms.topic: conceptual
-ms.date: 06/23/2020
+ms.date: 01/25/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c6b43cc48663be28d12fa788d92286be6f47ef08
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 2070cfd94b39a08afb86ffd3579f1116faac72d5
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95993532"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98805298"
 ---
 # <a name="authenticate-a-managed-identity-with-azure-active-directory-to-access-event-hubs-resources"></a>Authentifizieren einer verwalteten Identität mit Azure Active Directory für den Zugriff auf Event Hubs-Ressourcen
 Azure Event Hubs unterstützt die Azure AD-Authentifizierung (Azure Active Directory) mit [verwalteten Identitäten für Azure-Ressourcen](../active-directory/managed-identities-azure-resources/overview.md). Sie können verwaltete Identitäten für Azure-Ressourcen verwenden, um den Zugriff auf Event Hubs-Ressourcen mithilfe von Azure AD-Anmeldeinformationen über Anwendungen zu autorisieren, die auf virtuellen Azure-Computern, in Funktions-Apps, in VM-Skalierungsgruppen und anderen Diensten ausgeführt werden. Durch Verwendung von verwalteten Identitäten für Azure-Ressourcen zusammen mit der Azure AD-Authentifizierung können Sie vermeiden, dass Anmeldeinformationen mit den in der Cloud ausgeführten Anwendungen gespeichert werden.
@@ -41,11 +41,12 @@ Führen Sie nach der Erstellung der Anwendung die folgenden Schritte aus:
 1. Legen Sie den **Status** auf **Ein** fest. 
 1. Klicken Sie auf **Speichern**, um die Einstellung zu speichern. 
 
-    ![Verwaltete Identität für eine Web-App](./media/authenticate-managed-identity/identity-web-app.png)
+    :::image type="content" source="./media/authenticate-managed-identity/identity-web-app.png" alt-text="Verwaltete Identität für eine Web-App":::
+4. Wählen Sie in der Bestätigungsmeldung die Option **Ja** aus. 
 
-Nachdem Sie diese Einstellung aktiviert haben, wird in Ihrer Azure AD-Instanz (Azure Active Directory) eine neue Dienstidentität erstellt und auf dem App Service-Host konfiguriert.
+    Nachdem Sie diese Einstellung aktiviert haben, wird in Ihrer Azure AD-Instanz (Azure Active Directory) eine neue Dienstidentität erstellt und auf dem App Service-Host konfiguriert.
 
-Weisen Sie dieser Dienstidentität jetzt eine Rolle im erforderlichen Bereich in Ihren Event Hubs-Ressourcen zu.
+    Weisen Sie dieser Dienstidentität jetzt eine Rolle im erforderlichen Bereich in Ihren Event Hubs-Ressourcen zu.
 
 ### <a name="to-assign-azure-roles-using-the-azure-portal"></a>So weisen Sie Azure-Rollen mit dem Azure-Portal zu
 Navigieren Sie im Azure-Portal zur jeweiligen Ressource, um Event Hubs-Ressourcen eine Rolle zuzuweisen. Zeigen Sie die Einstellungen für die Zugriffssteuerung (IAM) für die Ressource an, und befolgen Sie diese Anleitung zum Verwalten von Rollenzuweisungen:
@@ -56,15 +57,20 @@ Navigieren Sie im Azure-Portal zur jeweiligen Ressource, um Event Hubs-Ressource
 1. Navigieren Sie im Azure-Portal zu Ihrem Event Hubs-Namespace, und zeigen Sie die **Übersicht** für den Namespace an. 
 1. Wählen Sie im linken Menü die Option **Zugriffssteuerung (IAM)** aus, um Zugriffssteuerungseinstellungen für den Event Hub anzuzeigen.
 1.  Wählen Sie die Registerkarte **Rollenzuweisungen** aus, um die Liste mit den Rollenzuweisungen anzuzeigen.
-3.  Klicken Sie auf **Hinzufügen**, um eine neue Rolle hinzuzufügen.
-4.  Wählen Sie auf der Seite **Rollenzuweisung hinzufügen** die Event Hubs-Rollen aus, die Sie zuweisen möchten. Suchen Sie dann nach der Dienstidentität, die Sie registriert haben, um die Rolle zuzuweisen.
+3.  Wählen Sie **Hinzufügen** und dann **Rollenzuweisung hinzufügen** aus.
+4.  Führen Sie auf der Seite _ *Rollenzuweisung hinzufügen** die folgenden Schritte aus:
+    1. Wählen Sie unter **Rolle** die Event Hubs-Rolle aus, die Sie zuweisen möchten. In diesem Beispiel ist dies **Azure Event Hubs-Datenbesitzer**.
+    1. Wählen Sie für das Feld **Zugriff zuweisen zu** unter **Systemseitig zugewiesene verwaltete Identität** die Option **App Service** aus. 
+    1. Wählen Sie das **Abonnement** aus, in dem die verwaltete Identität für die Web-App erstellt wurde.
+    1. Wählen Sie die **verwaltete Identität** für die Web-App aus, die Sie erstellt haben. Der Standardname für die Identität ist identisch mit dem Namen der Web-App. 
+    1. Wählen Sie anschließend **Speichern** aus. 
     
-    ![Seite „Rollenzuweisung hinzufügen“](./media/authenticate-managed-identity/add-role-assignment-page.png)
-5.  Wählen Sie **Speichern** aus. Die Identität, der Sie die Rolle zugewiesen haben, wird unter dieser Rolle angezeigt. Die folgende Abbildung zeigt, dass für die Dienstidentität der Besitzer „Event Hubs-Daten“ verwendet wird.
-    
-    ![Identität, die einer Rolle zugewiesen ist](./media/authenticate-managed-identity/role-assigned.png)
+        ![Seite „Rollenzuweisung hinzufügen“](./media/authenticate-managed-identity/add-role-assignment-page.png)
 
-Nachdem Sie die Rolle zugewiesen haben, verfügt die Webanwendung über Zugriff auf die Event Hubs-Ressourcen unter dem definierten Bereich. 
+    Nachdem Sie die Rolle zugewiesen haben, verfügt die Webanwendung über Zugriff auf die Event Hubs-Ressourcen unter dem definierten Bereich. 
+
+    > [!NOTE]
+    > Eine Liste mit den Diensten, die verwaltete Identitäten unterstützen, finden Sie unter [Dienste, die verwaltete Identitäten für Azure-Ressourcen unterstützen](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md).
 
 ### <a name="test-the-web-application"></a>Testen der Webanwendung
 1. Erstellen Sie einen Event Hubs-Namespace und einen Event Hub. 

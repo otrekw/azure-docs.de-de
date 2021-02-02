@@ -1,27 +1,25 @@
 ---
-title: Häufige Ursachen für Zustandswechsel bei Clouddienstrollen | Microsoft Docs
+title: Häufige Ursachen für Zustandswechsel bei Clouddienstrollen (klassisch) | Microsoft-Dokumentation
 description: Eine Clouddienstrolle, die plötzlich zyklisch ausgeführt wird, kann zu erheblichen Ausfallzeiten führen. Hier sind einige allgemeine Probleme aufgeführt, die zum zyklischen Ausführen von Rollen führen. Diese können Ihnen dabei helfen, Ausfallzeiten zu verringern.
-services: cloud-services
-documentationcenter: ''
-author: simonxjx
-manager: dcscontentpm
-editor: ''
-tags: top-support-issue
-ms.assetid: 533930d1-8035-4402-b16a-cf887b2c4f85
+ms.topic: article
 ms.service: cloud-services
-ms.topic: troubleshooting
-ms.tgt_pltfrm: na
-ms.workload: tbd
-ms.date: 06/15/2018
-ms.author: v-six
-ms.openlocfilehash: 0484eb919a9de11b64dcc3334c5a9a942d875ca6
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.date: 10/14/2020
+ms.author: tagore
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 9610b32207f8367b9415c0881e49b54e24c49ad7
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92075126"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98741161"
 ---
-# <a name="common-issues-that-cause-roles-to-recycle"></a>Allgemeine Probleme, durch die Rollen zyklisch ausgeführt werden
+# <a name="common-issues-that-cause-azure-cloud-service-classic-roles-to-recycle"></a>Allgemeine Probleme, durch die Azure Cloud Service-Rollen (klassisch) zyklisch ausgeführt werden
+
+> [!IMPORTANT]
+> [Azure Cloud Services (erweiterter Support)](../cloud-services-extended-support/overview.md) ist ein neues Azure Resource Manager-basiertes Bereitstellungsmodell für Azure Cloud Services. Im Zuge dieser Änderung wurden Azure Cloud Services-Instanzen, die unter dem Azure Service Manager-basierten Bereitstellungsmodell ausgeführt werden, in „Cloud Services (klassisch)“ umbenannt. Für alle neuen Bereitstellungen wird [Azure Cloud Services (erweiterter Support)](../cloud-services-extended-support/overview.md) verwendet.
+
 In diesem Artikel sind einige der allgemeinen Ursachen für Bereitstellungsprobleme sowie Tipps zur Problembehandlung aufgeführt, mit denen Sie diese Probleme beheben können. Wenn die Rolleninstanz nicht gestartet wird oder zwischen den Zuständen „Initialisieren“, „Ausgelastet“ und „Beenden“ wechselt, weist dies auf ein Problem mit einer Anwendung hin.
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]

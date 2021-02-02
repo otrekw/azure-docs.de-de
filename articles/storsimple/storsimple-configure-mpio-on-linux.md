@@ -7,12 +7,12 @@ ms.service: storsimple
 ms.topic: how-to
 ms.date: 06/12/2019
 ms.author: alkohli
-ms.openlocfilehash: 6584b2ecc54efd257bb30c479fd0f22150e8d9e1
-ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
+ms.openlocfilehash: 2b7ddf6423db4c471ee2065635f4e3e89f7eb7b2
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96608587"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98745732"
 ---
 # <a name="configure-mpio-on-a-storsimple-host-running-centos"></a>Konfigurieren von MPIO auf einem StorSimple-Host mit CentOS
 In diesem Artikel werden die Schritte erläutert, die zum Konfigurieren von Multipfad-E/A (Multipathing IO, MPIO) auf Ihrem CentOS 6.6-Hostserver ausgeführt werden müssen. Der Hostserver ist zur Gewährleistung von Hochverfügbarkeit über iSCSI-Initiatoren mit Ihrem Microsoft Azure StorSimple-Gerät verbunden. Nachfolgend wird im Detail beschrieben, wie Multipfadgeräte automatisch erkannt und wie die Einrichtung für StorSimple-Volumes durchgeführt wird.
@@ -21,10 +21,6 @@ Dieses Verfahren kann auf alle Modelle der StorSimple 8000-Geräteserie angewen
 
 > [!NOTE]
 > Dieses Verfahren gilt nicht für StorSimple Cloud Appliances. Weitere Informationen zu diesem Thema finden Sie in den Abschnitten zur Konfiguration von Hostservern für Ihre Cloud Appliance.
-
-> [!NOTE]
-> Dieser Artikel enthält Verweise auf den Begriff *Blacklist*, der von Microsoft nicht mehr verwendet wird. Sobald der Begriff aus der Software entfernt wurde, wird er auch aus diesem Artikel entfernt.
-
 
 ## <a name="about-multipathing"></a>Grundlegendes zu Multipfad
 Mit dem Multipfadfeature können Sie mehrere E/A-Pfade zwischen einem Hostserver und einem Speichergerät konfigurieren. Diese E/A-Pfade sind physische SAN-Verbindungen, die separate Kabel, Switches, Netzwerkschnittstellen und Controller umfassen können. Multipfad aggregiert die E/A-Pfade, um ein neues Gerät zu konfigurieren, dem sämtliche dieser aggregierten Pfade zugeordnet sind.
@@ -54,7 +50,7 @@ Die Datei "multipath.conf" enthält fünf Abschnitte:
 
 - **Standardwerte auf Systemebene** *(defaults)* : Sie können die Standardwerte auf Systemebene überschreiben.
 - **Gesperrte Geräte** *(blacklist)* : Sie können eine Liste der Geräte angeben, die nicht über „device-mapper“ gesteuert werden sollen.
-- **Blacklistausnahmen** *(blacklist_exceptions)* : Sie können festlegen, dass bestimmte Geräte als Multipfadgeräte behandelt werden sollen, selbst wenn sie in der Blacklist aufgeführt sind.
+- **Blacklistausnahmen** *(blacklist_exceptions)* : Sie können festlegen, dass bestimmte Geräte als Multipfadgeräte behandelt werden sollen, selbst wenn sie in der Sperrliste aufgeführt sind.
 - **Einstellungen für den Speichercontroller** *(devices)* : Sie können Konfigurationseinstellungen festlegen, die auf Geräte mit Hersteller- und Produktinformationen angewendet werden.
 - **Gerätespezifische Einstellungen** *(multipaths)* : Sie können diesen Abschnitt dazu verwenden, die Konfigurationseinstellungen für einzelne LUNs zu optimieren.
 
@@ -215,12 +211,12 @@ Geräte mit Unterstützung für Multipfad können automatisch erkannt und konfig
     ```
 
 ### <a name="step-2-configure-multipathing-for-storsimple-volumes"></a>Schritt 2: Konfigurieren von Multipfad für StorSimple-Volumes
-Standardmäßig werden in der Datei "multipath.conf" alle Geräte auf die schwarze Liste gesetzt und umgangen. Sie müssen Ausnahmen für die schwarze Liste definieren, um Multipfad für Volumes auf StorSimple-Geräten verwenden zu können.
+Standardmäßig werden alle Geräte in der Datei „multipath.conf“ in die Sperrliste aufgenommen und umgangen. Sie müssen Ausnahmen für die Sperrliste definieren, um Multipfad für Volumes auf StorSimple-Geräten verwenden zu können.
 
 1. Bearbeiten Sie die Datei `/etc/mulitpath.conf` . Typ:
    
     `vi /etc/multipath.conf`
-1. Suchen Sie in der Datei "multipath.con" nach dem Abschnitt "blacklist_exceptions". Ihr StorSimple-Gerät muss in diesem Abschnitt als Ausnahme für die schwarze Liste aufgeführt sein. Sie können die Auskommentierung der relevanten Zeilen in dieser Datei aufheben, um die Datei wie nachfolgend gezeigt zu ändern (verwenden Sie nur das für Sie spezifische Gerätemodell):
+1. Suchen Sie in der Datei "multipath.con" nach dem Abschnitt "blacklist_exceptions". Ihr StorSimple-Gerät muss in diesem Abschnitt als Sperrlistenausnahme aufgeführt sein. Sie können die Auskommentierung der relevanten Zeilen in dieser Datei aufheben, um die Datei wie nachfolgend gezeigt zu ändern (verwenden Sie nur das für Sie spezifische Gerätemodell):
    
     ```config
     blacklist_exceptions {

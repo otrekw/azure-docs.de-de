@@ -1,24 +1,24 @@
 ---
-title: Erstellen und Bereitstellen einer Node.js-Express-App in Azure Cloud Services
-titleSuffix: Azure Cloud Services
+title: Erstellen und Bereitstellen einer Node.js-Express-App in Azure Cloud Services (klassisch)
 description: Nutzen Sie dieses Tutorial, um eine neue Anwendung mit dem Express-Modul zu erstellen, das ein MVC-Framework zum Erstellen von Node.js-Webanwendungen bereitstellt.
-services: cloud-services
-documentationcenter: nodejs
-author: tgore03
-ms.service: cloud-services
-ms.devlang: nodejs
 ms.topic: article
-ms.date: 08/17/2017
+ms.service: cloud-services
+ms.date: 10/14/2020
 ms.author: tagore
-ms.custom: devx-track-js
-ms.openlocfilehash: 7ecaccf36988e94d0cb1114bd04c5d571d4fe86d
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: e15af589b3a3c496738c97c0c2c6429ba708ba7e
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92071862"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98743337"
 ---
-# <a name="build-and-deploy-a-nodejs-web-application-using-express-on-an-azure-cloud-services"></a>Erstellen und Bereitstellen einer Node.js-Webanwendung mit Express in Azure Cloud Services
+# <a name="build-and-deploy-a-nodejs-web-application-using-express-on-an-azure-cloud-services-classic"></a>Erstellen und Bereitstellen einer Node.js-Webanwendung mit Express in Azure Cloud Services (klassisch)
+
+> [!IMPORTANT]
+> [Azure Cloud Services (erweiterter Support)](../cloud-services-extended-support/overview.md) ist ein neues auf Azure Resource Manager basierendes Bereitstellungsmodell für Azure Cloud Services. Im Zuge dieser Änderung wurden Azure Cloud Services-Instanzen, die unter dem Azure Service Manager-basierten Bereitstellungsmodell ausgeführt werden, in „Cloud Services (klassisch)“ umbenannt. Für alle neuen Bereitstellungen sollte [Azure Cloud Services (erweiterter Support)](../cloud-services-extended-support/overview.md) verwendet werden.
 
 Die Core Runtime von Node.js umfasst eine Reihe elementarer Funktionen.
 Entwickler verwenden bei der Entwicklung einer Node.js-Anwendung häufig Module von Drittanbietern, die über zusätzliche Funktionen verfügen. In diesem Tutorial erstellen Sie eine neue Anwendung mit dem Modul [Express](https://github.com/expressjs/express), das ein MVC-Framework zum Erstellen von Node.js-Webanwendungen bereitstellt.
@@ -114,7 +114,7 @@ Führen Sie die folgenden Schritte aus, um ein neues Cloud-Dienst-Projekt namens
    ![Inhalt der Datei index.jade](./media/cloud-services-nodejs-develop-deploy-express-app/getting-started-19.png)
 
    Jade ist die Standard-Anzeige-Engine, die von Express-Anwendungen verwendet wird. Weitere Informationen zur Anzeige-Engine Jade finden Sie unter [http://jade-lang.com][http://jade-lang.com].
-2. Ändern Sie die letzte Textzeile, indem Sie **in Azure**anhängen.
+2. Ändern Sie die letzte Textzeile, indem Sie **in Azure** anhängen.
 
    ![Die letzte Zeile in der Datei „index.jade“ lautet „p Welcome to \#{title} in Azure“.](./media/cloud-services-nodejs-develop-deploy-express-app/node31.png)
 3. Speichern Sie die Datei, und beenden Sie den Editor.

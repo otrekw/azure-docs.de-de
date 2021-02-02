@@ -2,13 +2,13 @@
 title: Einschränkungen bei Ressourcennamen
 description: Zeigt die Benennungsregeln und -einschränkungen für Azure-Ressourcen
 ms.topic: conceptual
-ms.date: 12/29/2020
-ms.openlocfilehash: 59babd9298fdca96b450b2dc67832c86c043c49c
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.date: 01/26/2021
+ms.openlocfilehash: d298688dbd13cc32c9cca078b5e20e6a5f054450
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98132748"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98806876"
 ---
 # <a name="naming-rules-and-restrictions-for-azure-resources"></a>Benennungsregeln und -einschränkungen für Azure-Ressourcen
 
@@ -633,7 +633,7 @@ In den folgenden Tabellen bezieht sich der Begriff alphanumerisch auf:
 > [!div class="mx-tableFixed"]
 > | Entität | `Scope` | Länge | Gültige Zeichen |
 > | --- | --- | --- | --- |
-> | managedInstances | Global | 1 - 63 | Kleinbuchstaben, Zahlen und Bindestriche.<br><br>Darf nicht mit einem Bindestrich beginnen oder enden. |
+> | managedInstances | Global | 1 - 63 | Kleinbuchstaben, Zahlen und Bindestriche.<br><br>Darf nicht mit einem Bindestrich beginnen oder enden. <br><br> Darf keine Sonderzeichen wie etwa `@` enthalten. |
 > | servers | Global | 1 - 63 | Kleinbuchstaben, Zahlen und Bindestriche.<br><br>Darf nicht mit einem Bindestrich beginnen oder enden. |
 > | servers/administrators | server |  | Muss `ActiveDirectory`lauten. |
 > | servers/databases | server | 1–128 | Verwendung nicht möglich:<br>`<>*%&:\/?`<br><br>Darf nicht mit einem Punkt oder Leerzeichen enden. |

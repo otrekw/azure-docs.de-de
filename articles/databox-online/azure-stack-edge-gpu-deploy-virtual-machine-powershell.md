@@ -1,23 +1,23 @@
 ---
 title: Bereitstellen von VMs auf Ihrem Azure Stack Edge Pro-GPU-Gerät über Azure PowerShell
-description: Hier erfahren Sie, wie virtuelle Computer (VMs) auf einem Azure Stack Edge Pro-GPU-Gerät mit Azure PowerShell erstellt und verwaltet werden.
+description: Es wird beschrieben, wie Sie virtuelle Computer (VMs) auf einem Azure Stack Edge Pro-GPU-Gerät mit Azure PowerShell erstellen und verwalten.
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 12/23/2020
+ms.date: 01/22/2021
 ms.author: alkohli
-ms.openlocfilehash: 32685207f8d6e81d03c90d01b186337ce79f843a
-ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
+ms.openlocfilehash: 1d286e7661fa14dd63bd55b133c39414e04decc6
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97763681"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98802993"
 ---
 # <a name="deploy-vms-on-your-azure-stack-edge-pro-gpu-device-via-azure-powershell"></a>Bereitstellen von VMs auf Ihrem Azure Stack Edge Pro-GPU-Gerät über Azure PowerShell
 
-In diesem Artikel wird beschrieben, wie Sie eine VM auf Ihrem Azure Stack Edge Pro-Gerät mit Azure PowerShell erstellen und verwalten. Dieser Artikel bezieht sich auf Geräte des Typs „Azure Stack Edge Pro GPU“, „Azure Stack Edge Pro R“ und „Azure Stack Edge Mini R“.
+In diesem Artikel wird beschrieben, wie Sie eine VM auf Ihrem Azure Stack Edge Pro-Gerät mit Azure PowerShell erstellen und verwalten. Dieser Artikel bezieht sich auf Geräte vom Typ „Azure Stack Edge Pro-GPU“, „Azure Stack Edge Pro R“ und „Azure Stack Edge Mini R“.
 
 ## <a name="vm-deployment-workflow"></a>VM-Bereitstellungsworkflow
 
@@ -32,7 +32,7 @@ Der Bereitstellungsworkflow ist im folgenden Diagramm dargestellt.
 
 ## <a name="query-for-built-in-subscription-on-the-device"></a>Abfrage für integriertes Abonnement auf dem Gerät
 
-Für Azure Resource Manager wird nur ein einziges für Benutzer sichtbares festes Abonnement unterstützt. Dieses Abonnement ist pro Gerät eindeutig, und dieser Abonnementname oder die Abonnement-ID kann nicht geändert werden.
+Für Azure Resource Manager wird nur ein einziges für Benutzer sichtbares festes Abonnement unterstützt. Dieses Abonnement ist pro Gerät eindeutig, und der Abonnementname oder die Abonnement-ID kann nicht geändert werden.
 
 Dieses Abonnement enthält alle Ressourcen, die für die VM-Erstellung erforderlich sind. 
 
@@ -118,7 +118,7 @@ Successfully created Resource Group:rg191113014333
 
 ## <a name="create-a-storage-account"></a>Speicherkonto erstellen
 
-Erstellen Sie unter Verwendung der im vorherigen Schritt erstellten Ressourcengruppe ein neues Speicherkonto. Dabei handelt es sich um ein **lokales Speicherkonto**, das zum Hochladen des virtuellen Datenträgerimages für die VM verwendet wird.
+Erstellen Sie unter Verwendung der im vorherigen Schritt erstellten Ressourcengruppe ein neues Speicherkonto. Bei diesem Konto handelt es sich um ein **lokales Speicherkonto**, das zum Hochladen des virtuellen Datenträgerimages für die VM verwendet wird.
 
 ```powershell
 New-AzureRmStorageAccount -Name <Storage account name> -ResourceGroupName <Resource group name> -Location DBELocal -SkuName Standard_LRS
@@ -177,7 +177,7 @@ key2 gd34TcaDzDgsY9JtDNMUgLDOItUU0Qur3CBo6Q...
 
 ## <a name="add-blob-uri-to-hosts-file"></a>Hinzufügen eines Blob-URI zur Datei „hosts“
 
-Sie haben bereits in der Datei „hosts“ den Blob-URI für den Client hinzugefügt, den Sie zum Herstellen der Verbindung mit Blob Storage im Abschnitt [Ändern der Hostdatei für die Endpunktnamensauflösung](azure-stack-edge-j-series-connect-resource-manager.md#step-5-modify-host-file-for-endpoint-name-resolution) verwenden. Dies war der Eintrag für den Blob-URI:
+Sie haben bereits in der Datei „hosts“ den Blob-URI für den Client hinzugefügt, den Sie zum Herstellen der Verbindung mit Blob Storage im Abschnitt [Ändern der Hostdatei für die Endpunktnamensauflösung](azure-stack-edge-j-series-connect-resource-manager.md#step-5-modify-host-file-for-endpoint-name-resolution) verwenden. Dieser Eintrag wurde verwendet, um den BLOB-URI hinzuzufügen:
 
 \<Azure consistent network services VIP \> \<storage name\>.blob.\<appliance name\>.\<dnsdomain\>
 
@@ -256,7 +256,7 @@ $DiskConfig = New-AzureRmDiskConfig -Location DBELocal -CreateOption Import –S
 New-AzureRMDisk -ResourceGroupName <Resource group name> -DiskName <Disk name> -Disk $DiskConfig
 ```
 
-Nachfolgend sehen Sie eine Beispielausgabe. Weitere Informationen zu diesem Cmdlet finden Sie unter [New-AzureRmDisk](/powershell/module/azurerm.compute/new-azurermdisk?view=azurermps-6.13.0).
+Nachfolgend sehen Sie eine Beispielausgabe. Weitere Informationen zu diesem Cmdlet finden Sie unter [New-AzureRmDisk](/powershell/module/azurerm.compute/new-azurermdisk?view=azurermps-6.13.0&preserve-view=true).
 
 ```powershell
 Tags               :
@@ -296,7 +296,7 @@ Set-AzureRmImageOsDisk -Image $imageConfig -OsType 'Linux' -OsState 'Generalized
 New-AzureRmImage -Image $imageConfig -ImageName <Image name>  -ResourceGroupName <Resource group name>
 ```
 
-Nachfolgend sehen Sie eine Beispielausgabe. Weitere Informationen zu diesem Cmdlet finden Sie unter [New-AzureRmImage](/powershell/module/azurerm.compute/new-azurermimage?view=azurermps-6.13.0).
+Nachfolgend sehen Sie eine Beispielausgabe. Weitere Informationen zu diesem Cmdlet finden Sie unter [New-AzureRmImage](/powershell/module/azurerm.compute/new-azurermimage?view=azurermps-6.13.0&preserve-view=true).
 
 ```powershell
 New-AzureRmImage -Image Microsoft.Azure.Commands.Compute.Automation.Models.PSImage -ImageName ig191113014333  -ResourceGroupName rg191113014333
@@ -319,8 +319,8 @@ Sie müssen ein virtuelles Netzwerk erstellen und eine virtuelle Netzwerkschnitt
 > [!IMPORTANT]
 > Beim Erstellen des virtuellen Netzwerks und der virtuellen Netzwerkschnittstelle gelten die folgenden Regeln:
 > - Es kann (auch Ressourcengruppen übergreifend) nur ein VNET erstellt werden, und es muss im Hinblick auf den Adressraum genau mit dem logischen Netzwerk übereinstimmen.
-> -   Im VNET ist nur ein Subnetz zulässig. Der Adressraum des Subnetzes muss exakt dem VNET-Adressraum entsprechen.
-> -   Während der VNIC-Erstellung ist nur eine Methode der statischen Belegung zulässig, und der Benutzer muss eine private IP-Adresse bereitstellen.
+> - Im VNET ist nur ein Subnetz zulässig. Der Adressraum des Subnetzes muss exakt dem VNET-Adressraum entsprechen.
+> - Während der VNIC-Erstellung ist nur eine Methode der statischen Belegung zulässig, und der Benutzer muss eine private IP-Adresse bereitstellen.
 
  
 **Abfragen des automatisch erstellten VNET**
@@ -498,7 +498,7 @@ Führen Sie das folgende Cmdlet aus, um einen virtuellen Computer einzuschalten,
 `Start-AzureRmVM [-Name] <String> [-ResourceGroupName] <String>`
 
 
-Weitere Informationen zu diesem Cmdlet finden Sie unter [Start-AzureRmVM](/powershell/module/azurerm.compute/start-azurermvm?view=azurermps-6.13.0).
+Weitere Informationen zu diesem Cmdlet finden Sie unter [Start-AzureRmVM](/powershell/module/azurerm.compute/start-azurermvm?view=azurermps-6.13.0&preserve-view=true).
 
 ### <a name="suspend-or-shut-down-the-vm"></a>Anhalten oder Herunterfahren des virtuellen Computers
 
@@ -510,7 +510,7 @@ Stop-AzureRmVM [-Name] <String> [-StayProvisioned] [-ResourceGroupName] <String>
 ```
 
 
-Weitere Informationen zu diesem Cmdlet finden Sie unter [Stop-AzureRmVM](/powershell/module/azurerm.compute/stop-azurermvm?view=azurermps-6.13.0).
+Weitere Informationen zu diesem Cmdlet finden Sie unter [Stop-AzureRmVM](/powershell/module/azurerm.compute/stop-azurermvm?view=azurermps-6.13.0&preserve-view=true).
 
 ### <a name="add-a-data-disk"></a>Hinzufügen eines Datenträgers
 
@@ -530,10 +530,10 @@ Führen Sie das folgende Cmdlet aus, um einen virtuellen Computer von Ihrem Ger�
 Remove-AzureRmVM [-Name] <String> [-ResourceGroupName] <String>
 ```
 
-Weitere Informationen zu diesem Cmdlet finden Sie unter [Remove-AzureRmVm](/powershell/module/azurerm.compute/remove-azurermvm?view=azurermps-6.13.0).
+Weitere Informationen zu diesem Cmdlet finden Sie unter [Remove-AzureRmVm](/powershell/module/azurerm.compute/remove-azurermvm?view=azurermps-6.13.0&preserve-view=true).
 
 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Azure Resource Manager-Cmdlets](/powershell/module/azurerm.resources/?view=azurermps-6.13.0)
+[Azure Resource Manager-Cmdlets](/powershell/module/azurerm.resources/?view=azurermps-6.13.0&preserve-view=true)

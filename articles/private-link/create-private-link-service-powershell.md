@@ -1,178 +1,317 @@
 ---
-title: Erstellen eines Azure Private Link-Diensts mit Azure PowerShell | Microsoft-Dokumentation
+title: 'Schnellstart: Erstellen eines Azure Private Link-Diensts mit Azure PowerShell'
 description: Informationen zum Erstellen eines Azure Private Link-Diensts mit Azure PowerShell
 services: private-link
-author: malopMSFT
+author: asudbring
 ms.service: private-link
 ms.topic: how-to
-ms.date: 09/16/2019
+ms.date: 01/24/2021
 ms.author: allensu
-ms.openlocfilehash: 3c808623269b8fabc32134a165b964a3b0747d4b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d48903a05a4e9b530dcd3e83e0c14c37dcc74797
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88505613"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98757524"
 ---
 # <a name="create-a-private-link-service-using-azure-powershell"></a>Erstellen eines Private Link-Diensts mit Azure PowerShell
-In diesem Artikel erfahren Sie, wie Sie mit Azure PowerShell einen Private Link-Dienst in Azure erstellen.
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+Führen Sie die ersten Schritte zum Erstellen eines Private Link-Diensts für Ihren Dienst aus.  Gewähren Sie für Private Link den Zugriff auf Ihren Dienst oder Ihre Ressource hinter Azure Load Balancer Standard.  Benutzer Ihres Diensts verfügen über privaten Zugriff aus ihrem virtuellen Netzwerk.
 
-Wenn Sie PowerShell lokal installieren und verwenden möchten, müssen Sie für diesen Artikel die aktuelle Version des Azure PowerShell-Moduls verwenden. Führen Sie `Get-Module -ListAvailable Az` aus, um die installierte Version zu ermitteln. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-Az-ps) Informationen dazu. Wenn Sie PowerShell lokal ausführen, müssen Sie auch `Connect-AzAccount` ausführen, um eine Verbindung mit Azure herzustellen.
+## <a name="prerequisites"></a>Voraussetzungen
+
+- Ein Azure-Konto mit einem aktiven Abonnement. Sie können [kostenlos ein Konto erstellen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+- Azure PowerShell (lokal installiert) oder Azure Cloud Shell
+
+Wenn Sie PowerShell lokal installieren und verwenden möchten, müssen Sie für diesen Artikel mindestens Version 5.4.1 des Azure PowerShell-Moduls verwenden. Führen Sie `Get-Module -ListAvailable Az` aus, um die installierte Version zu ermitteln. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-Az-ps) Informationen dazu. Wenn Sie PowerShell lokal ausführen, müssen Sie auch `Connect-AzAccount` ausführen, um eine Verbindung mit Azure herzustellen.
 
 ## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 
-Bevor Sie Ihre Private Link-Instanz erstellen können, müssen Sie mit [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) eine Ressourcengruppe erstellen. Im folgenden Beispiel wird am Speicherort *WestCentralUS* eine Ressourcengruppe namens *myResourceGroup* erstellt:
+Eine Azure-Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden.
 
-```azurepowershell
-$location = "westcentralus"
-$rgName = "myResourceGroup"
-New-AzResourceGroup `
-  -ResourceGroupName $rgName `
-  -Location $location
+Erstellen Sie mit [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) eine Ressourcengruppe:
+
+```azurepowershell-interactive
+New-AzResourceGroup -Name 'CreatePrivLinkService-rg' -Location 'eastus2'
+
 ```
-## <a name="create-a-virtual-network"></a>Erstellen eines virtuellen Netzwerks
-Erstellen Sie mit [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) ein virtuelles Netzwerk für Ihre Private Link-Instanz. Im folgenden Beispiel wird ein virtuelles Netzwerk mit dem Namen *myvnet* mit Subnetz für Front-End (*frontendSubnet*), Back-End (*backendSubnet*), Private Link (*otherSubnet*) erstellt:
 
-```azurepowershell
-$virtualNetworkName = "myvnet"
+## <a name="create-an-internal-load-balancer"></a>Erstellen eines internen Load Balancers
 
+In diesem Abschnitt erstellen Sie ein virtuelles Netzwerk und eine interne Azure Load Balancer-Instanz.
 
-# Create subnet config
+### <a name="virtual-network"></a>Virtuelles Netzwerk
 
-$frontendSubnet = New-AzVirtualNetworkSubnetConfig `
--Name frontendSubnet `
--AddressPrefix "10.0.1.0/24"
+In diesem Abschnitt erstellen Sie ein virtuelles Netzwerk und das Subnetz zum Hosten des Lastenausgleichs, der auf Ihren Private Link-Dienst zugreift.
 
-$backendSubnet = New-AzVirtualNetworkSubnetConfig `
--Name backendSubnet `
--AddressPrefix "10.0.2.0/24"
+* Erstellen Sie mit [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) ein virtuelles Netzwerk.
 
-$otherSubnet = New-AzVirtualNetworkSubnetConfig `
--Name otherSubnet `
--AddressPrefix "10.0.3.0/24" `
--PrivateLinkServiceNetworkPolicies "Disabled"
+```azurepowershell-interactive
+## Create backend subnet config ##
+$subnet = @{
+    Name = 'mySubnet'
+    AddressPrefix = '10.1.0.0/24'
+    PrivateLinkServiceNetworkPolicies = 'Disabled'
+}
+$subnetConfig = New-AzVirtualNetworkSubnetConfig @subnet 
 
-# Create the virtual network
-$vnet = New-AzVirtualNetwork `
--Name $virtualNetworkName `
--ResourceGroupName $rgName `
--Location $location `
--AddressPrefix "10.0.0.0/16" `
--Subnet $frontendSubnet,$backendSubnet,$otherSubnet
+## Create the virtual network ##
+$net = @{
+    Name = 'myVNet'
+    ResourceGroupName = 'CreatePrivLinkService-rg'
+    Location = 'eastus2'
+    AddressPrefix = '10.1.0.0/16'
+    Subnet = $subnetConfig
+}
+$vnet = New-AzVirtualNetwork @net
+
 ```
-## <a name="create-internal-load-balancer"></a>Erstellen eines internen Lastenausgleichs
-Erstellen Sie mit dem Befehl [New-AzLoadBalancer](/powershell/module/az.network/new-azloadbalancer) einen internen Load Balancer Standard-Lastenausgleich. Im folgenden Beispiel wird mithilfe von Front-End-IP-Konfiguration, Test, Regel und Back-End-Pool, die Sie in den vorherigen Schritten erstellt haben, ein interner Load Balancer Standard-Lastenausgleich erstellt:
 
-```azurepowershell
+### <a name="create-standard-load-balancer"></a>Erstellen eines Standard-Lastenausgleichs
 
-$lbBackendName = "LB-backend"
-$lbFrontName = "LB-frontend"
-$lbName = "lb"
+In diesem Abschnitt erfahren Sie, wie Sie die folgenden Komponenten des Lastenausgleichs erstellen und konfigurieren:
 
-#Create Internal Load Balancer
-$frontendIP = New-AzLoadBalancerFrontendIpConfig -Name $lbFrontName -PrivateIpAddress 10.0.1.5 -SubnetId $vnet.subnets[0].Id
-$beaddresspool= New-AzLoadBalancerBackendAddressPoolConfig -Name $lbBackendName
-$probe = New-AzLoadBalancerProbeConfig -Name 'myHealthProbe' -Protocol Http -Port 80 `
-  -RequestPath / -IntervalInSeconds 360 -ProbeCount 5
-$rule = New-AzLoadBalancerRuleConfig -Name HTTP -FrontendIpConfiguration $frontendIP -BackendAddressPool  $beaddresspool -Probe $probe -Protocol Tcp -FrontendPort 80 -BackendPort 80
-$NRPLB = New-AzLoadBalancer -ResourceGroupName $rgName -Name $lbName -Location $location -FrontendIpConfiguration $frontendIP -BackendAddressPool $beAddressPool -Probe $probe -LoadBalancingRule $rule -Sku Standard
+* Erstellen Sie mit [New-AzLoadBalancerFrontendIpConfig](/powershell/module/az.network/new-azloadbalancerfrontendipconfig) eine Front-End-IP-Adresse für den Front-End-IP-Pool. An dieser IP-Adresse wird der eingehende Datenverkehr für den Lastenausgleich empfangen.
+
+* Erstellen Sie mit [New-AzLoadBalancerBackendAddressPoolConfig](/powershell/module/az.network/new-azloadbalancerbackendaddresspoolconfig) einen Back-End-Adresspool für Datenverkehr, der vom Front-End des Lastenausgleichs gesendet wird. In diesem Pool werden Ihre virtuellen Back-End-Computer bereitgestellt.
+
+* Erstellen Sie mit [Add-AzLoadBalancerProbeConfig](/powershell/module/az.network/add-azloadbalancerprobeconfig) einen Integritätstest, der die Integrität der Back-End-VM-Instanzen ermittelt.
+
+* Erstellen Sie mit [Add-AzLoadBalancerRuleConfig](/powershell/module/az.network/add-azloadbalancerruleconfig) eine Lastenausgleichsregel, die die Verteilung von Datenverkehr an die virtuellen Computer definiert.
+
+* Erstellen Sie mit [New-AzLoadBalancer](/powershell/module/az.network/new-azloadbalancer) einen öffentlichen Lastenausgleich.
+
+
+```azurepowershell-interactive
+## Place virtual network created in previous step into a variable. ##
+$vnet = Get-AzVirtualNetwork -Name 'myVNet' -ResourceGroupName 'CreatePrivLinkService-rg'
+
+## Create load balancer frontend configuration and place in variable. ##
+$lbip = @{
+    Name = 'myFrontEnd'
+    PrivateIpAddress = '10.1.0.4'
+    SubnetId = $vnet.subnets[0].Id
+}
+$feip = New-AzLoadBalancerFrontendIpConfig @lbip
+
+## Create backend address pool configuration and place in variable. ##
+$bepool = New-AzLoadBalancerBackendAddressPoolConfig -Name 'myBackEndPool'
+
+## Create the health probe and place in variable. ##
+$probe = @{
+    Name = 'myHealthProbe'
+    Protocol = 'http'
+    Port = '80'
+    IntervalInSeconds = '360'
+    ProbeCount = '5'
+    RequestPath = '/'
+}
+$healthprobe = New-AzLoadBalancerProbeConfig @probe
+
+## Create the load balancer rule and place in variable. ##
+$lbrule = @{
+    Name = 'myHTTPRule'
+    Protocol = 'tcp'
+    FrontendPort = '80'
+    BackendPort = '80'
+    IdleTimeoutInMinutes = '15'
+    FrontendIpConfiguration = $feip
+    BackendAddressPool = $bePool
+}
+$rule = New-AzLoadBalancerRuleConfig @lbrule -EnableTcpReset
+
+## Create the load balancer resource. ##
+$loadbalancer = @{
+    ResourceGroupName = 'CreatePrivLinkService-rg'
+    Name = 'myLoadBalancer'
+    Location = 'eastus2'
+    Sku = 'Standard'
+    FrontendIpConfiguration = $feip
+    BackendAddressPool = $bePool
+    LoadBalancingRule = $rule
+    Probe = $healthprobe
+}
+New-AzLoadBalancer @loadbalancer
+
 ```
+
 ## <a name="create-a-private-link-service"></a>Erstellen eines Private Link-Diensts
-Erstellen Sie einen Private Link-Dienst mit [New-AzPrivateLinkService](/powershell/module/az.network/new-azloadbalancer).  Bei diesem Beispiel wird ein Private Link-Dienst mit dem Namen *myPLS* unter Verwendung einer Load Balancer Standard-Instanz in der Ressourcengruppe mit dem Namen *myResourceGroup* erstellt.
+
+In diesem Abschnitt erstellen Sie eine Instanz des Private Link-Diensts, für die der im vorherigen Schritt erstellte Azure Load Balancer Standard verwendet wird.
+
+* Erstellen Sie die IP-Konfiguration für den Private Link-Dienst mit [New-AzPrivateLinkServiceIpConfig](/powershell/module/az.network/new-azprivatelinkserviceipconfig).
+
+* Erstellen Sie den Private Link-Dienst mit [New-AzPrivateLinkService](/powershell/module/az.network/new-azprivatelinkservice).
+
 ```azurepowershell
+## Place the virtual network into a variable. ##
+$vnet = Get-AzVirtualNetwork -Name 'myVNet' -ResourceGroupName 'CreatePrivLinkService-rg'
 
-$plsIpConfigName = "PLS-ipconfig"
-$plsName = "pls"
-$peName = "pe"
- 
-$IPConfig = New-AzPrivateLinkServiceIpConfig `
--Name $plsIpConfigName `
--Subnet $vnet.subnets[2] `
--PrivateIpAddress 10.0.3.5
+## Create the IP configuration for the private link service. ##
+$ipsettings = @{
+    Name = 'myIPconfig'
+    PrivateIpAddress = '10.1.0.5'
+    Subnet = $vnet.subnets[0]
+}
+$ipconfig = New-AzPrivateLinkServiceIpConfig @ipsettings
 
-$fe = Get-AzLoadBalancer -Name $lbName | Get-AzLoadBalancerFrontendIpConfig
+## Place the load balancer frontend configuration into a variable. ##
+$par = @{
+    Name = 'myLoadBalancer'
+    ResourceGroupName = 'CreatePrivLinkService-rg'
+}
+$fe = Get-AzLoadBalancer @par | Get-AzLoadBalancerFrontendIpConfig
 
-$privateLinkService = New-AzPrivateLinkService `
--ServiceName $plsName `
--ResourceGroupName $rgName `
--Location $location `
--LoadBalancerFrontendIpConfiguration $frontendIP `
--IpConfiguration $IPConfig
+## Create the private link service for the load balancer. ##
+$privlinksettings = @{
+    Name = 'myPrivateLinkService'
+    ResourceGroupName = 'CreatePrivLinkService-rg'
+    Location = 'eastus2'
+    LoadBalancerFrontendIpConfiguration = $fe
+    IpConfiguration = $ipconfig
+}
+New-AzPrivateLinkService @privlinksettings
+
 ```
 
-### <a name="get-private-link-service"></a>Abrufen des Private Link-Diensts
-Rufen Sie mit [Get-AzPrivateLinkService](/powershell/module/az.network/get-azprivatelinkservice) wie folgt nähere Informationen zu Ihrem Private Link-Dienst ab:
+Ihr Private Link-Dienst wird erstellt und kann Datenverkehr empfangen. Konfigurieren Sie Ihre Anwendung hinter Ihrer Instanz von Load Balancer Standard, falls Sie den Datenverkehrsfluss anzeigen möchten.
 
-```azurepowershell
-$pls = Get-AzPrivateLinkService -Name $plsName -ResourceGroupName $rgName
+## <a name="create-private-endpoint"></a>Erstellen eines privaten Endpunkts
+
+In diesem Abschnitt ordnen Sie den Private Link-Dienst einem privaten Endpunkt zu. Ein virtuelles Netzwerk enthält den privaten Endpunkt für den Private Link-Dienst. In diesem virtuellen Netzwerk sind die Ressourcen enthalten, die auf Ihren Private Link-Dienst zugreifen.
+
+### <a name="create-private-endpoint-virtual-network"></a>Erstellen eines virtuellen Netzwerks des privaten Endpunkts
+
+* Erstellen Sie mit [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) ein virtuelles Netzwerk.
+
+```azurepowershell-interactive
+## Create backend subnet config ##
+$subnet = @{
+    Name = 'mySubnetPE'
+    AddressPrefix = '11.1.0.0/24'
+    PrivateEndpointNetworkPolicies = 'Disabled'
+}
+$subnetConfig = New-AzVirtualNetworkSubnetConfig @subnet 
+
+## Create the virtual network ##
+$net = @{
+    Name = 'myVNetPE'
+    ResourceGroupName = 'CreatePrivLinkService-rg'
+    Location = 'eastus2'
+    AddressPrefix = '11.1.0.0/16'
+    Subnet = $subnetConfig
+}
+$vnetpe = New-AzVirtualNetwork @net
+
 ```
 
-In dieser Phase ist Ihr Private Link-Dienst erfolgreich erstellt und bereit, den Datenverkehr zu empfangen. Beachten Sie, dass das obige Beispiel nur zur Veranschaulichung der Erstellung des Private Link-Diensts mit PowerShell dient.  Wir haben weder die Load Balancer-Back-End-Pools noch Anwendungen in den Back-End-Pools konfiguriert, um auf den Datenverkehr zu lauschen. Wenn Sie den gesamten Datenverkehrsfluss verfolgen möchten, sollten Sie Ihre Anwendung unbedingt hinter Ihrer Load Balancer Standard-Instanz konfigurieren.
+### <a name="create-endpoint-and-connection"></a>Erstellen eines Endpunkts und einer Verbindung
 
-Als Nächstes veranschaulichen wir, wie dieser Dienst mit PowerShell einem privaten Endpunkt in einem anderen VNET zugeordnet wird. Wiederum ist das Beispiel auf die Erstellung des privaten Endpunkts und das Herstellen einer Verbindung mit dem zuvor erstellten Private Link-Dienst beschränkt. Sie können im virtuellen Netzwerk virtuelle Computer zum Senden/Empfangen von Datenverkehr an den privaten Endpunkt erstellen, um Ihr Szenario einzurichten.
+* Verwenden Sie [Get-AzPrivateLinkService](/powershell/module/az.network/get-azprivatelinkservice), um die Konfiguration des zuvor erstellten Private Link-Diensts zur späteren Verwendung in einer Variablen anzuordnen.
 
-## <a name="create-a-private-endpoint"></a>Erstellen eines privaten Endpunkts
-### <a name="create-a-virtual-network"></a>Erstellen eines virtuellen Netzwerks
-Erstellen Sie mit [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) ein virtuelles Netzwerk für Ihren privaten Endpunkt. In diesem Beispiel wird ein virtuelles Netzwerk mit dem Namen  *vnetPE* in der Ressourcengruppe *myResourceGroup* erstellt:
+* Verwenden Sie [New-AzPrivateLinkServiceConnection](/powershell/module/az.network/new-azprivatelinkserviceconnection) zum Erstellen der Verbindungskonfiguration.
 
-```azurepowershell
-$virtualNetworkNamePE = "vnetPE"
+* Verwenden Sie [New-AzPrivateEndpoint](/powershell/module/az.network/new-azprivateendpoint) zum Erstellen des Endpunkts.
 
-# Create VNet for private endpoint
-$peSubnet = New-AzVirtualNetworkSubnetConfig `
--Name peSubnet `
--AddressPrefix "11.0.1.0/24" `
--PrivateEndpointNetworkPolicies "Disabled"
 
-$vnetPE = New-AzVirtualNetwork `
--Name $virtualNetworkNamePE `
--ResourceGroupName $rgName `
--Location $location `
--AddressPrefix "11.0.0.0/16" `
--Subnet $peSubnet
-```
 
-### <a name="create-a-private-endpoint"></a>Erstellen eines privaten Endpunkts
-Erstellen Sie einen privaten Endpunkt zur Nutzung des Private Link-Diensts, der zuvor in Ihrem virtuellen Netzwerk erstellt wurde:
+```azurepowershell-interactive
+## Place the private link service configuration into variable. ##
+$par1 = @{
+    Name = 'myPrivateLinkService'
+    ResourceGroupName = 'CreatePrivLinkService-rg'
+}
+$pls = Get-AzPrivateLinkService @par1
 
-```azurepowershell
+## Create the private link configuration and place in variable. ##
+$par2 = @{
+    Name = 'myPrivateLinkConnection'
+    PrivateLinkServiceId = $pls.Id
+}
+$plsConnection = New-AzPrivateLinkServiceConnection @par2
 
-$plsConnection= New-AzPrivateLinkServiceConnection `
--Name plsConnection `
--PrivateLinkServiceId  $privateLinkService.Id
+## Place the virtual network into a variable. ##
+$par3 = @{
+    Name = 'myVNetPE'
+    ResourceGroupName = 'CreatePrivLinkService-rg'
+}
+$vnetpe = Get-AzVirtualNetwork @par3
 
-$privateEndpoint = New-AzPrivateEndpoint -ResourceGroupName $rgName -Name $peName -Location $location -Subnet $vnetPE.subnets[0] -PrivateLinkServiceConnection $plsConnection -ByManualRequest
-```
-
-### <a name="get-private-endpoint"></a>Abrufen privater Endpunkte
-Rufen Sie die IP-Adresse des privaten Endpunkts mit `Get-AzPrivateEndpoint` wie folgt ab:
-
-```azurepowershell
-# Get Private Endpoint and its IP Address
-$pe =  Get-AzPrivateEndpoint `
--Name $peName `
--ResourceGroupName $rgName  `
--ExpandResource networkinterfaces
-
-$pe.NetworkInterfaces[0].IpConfigurations[0].PrivateIpAddress
-
+## Create private endpoint ##
+$par4 = @{
+    Name = 'MyPrivateEndpoint'
+    ResourceGroupName = 'CreatePrivLinkService-rg'
+    Location = 'eastus2'
+    Subnet = $vnetpe.subnets[0]
+    PrivateLinkServiceConnection = $plsConnection
+}
+New-AzPrivateEndpoint @par4 -ByManualRequest
 ```
 
 ### <a name="approve-the-private-endpoint-connection"></a>Genehmigen der Verbindung mit einem privaten Endpunkt
-Genehmigen Sie das Herstellen der Verbindung des privaten Endpunkts mit dem Private Link-Dienst mit „Approve-AzPrivateEndpointConnection“.
 
-```azurepowershell
+In diesem Abschnitt genehmigen Sie die Verbindung, die Sie in den vorherigen Schritten erstellt haben.
 
-$pls = Get-AzPrivateLinkService `
--Name $plsName `
--ResourceGroupName $rgName
+* Verwenden Sie [Approve-AzPrivateEndpointConnection](/powershell/module/az.network/approve-azprivateendpointconnection), um die Verbindung zu genehmigen.
 
-Approve-AzPrivateEndpointConnection -ResourceId $pls.PrivateEndpointConnections[0].Id -Description "Approved"
+```azurepowershell-interactive
+## Place the private link service configuration into variable. ##
+$par1 = @{
+    Name = 'myPrivateLinkService'
+    ResourceGroupName = 'CreatePrivLinkService-rg'
+}
+$pls = Get-AzPrivateLinkService @par1
+
+$par2 = @{
+    Name = $pls.PrivateEndpointConnections[0].Name
+    ServiceName = 'myPrivateLinkService'
+    ResourceGroupName = 'CreatePrivLinkService-rg'
+    Description = 'Approved'
+}
+Approve-AzPrivateEndpointConnection @par2
 
 ```
 
+### <a name="ip-address-of-private-endpoint"></a>IP-Adresse des privaten Endpunkts
+
+In diesem Abschnitt finden Sie die IP-Adresse des privaten Endpunkts, die zum Lastenausgleich und Private Link-Dienst gehört.
+
+* Verwenden Sie [Get-AzPrivateEndpoint](/powershell/module/az.network/get-azprivateendpoint), um die IP-Adresse abzurufen.
+
+```azurepowershell-interactive
+## Get private endpoint and the IP address and place in a variable for display. ##
+$par1 = @{
+    Name = 'myPrivateEndpoint'
+    ResourceGroupName = 'CreatePrivLinkService-rg'
+    ExpandResource = 'networkinterfaces'
+}
+$pe = Get-AzPrivateEndpoint @par1
+
+## Display the IP address by expanding the variable. ##
+$pe.NetworkInterfaces[0].IpConfigurations[0].PrivateIpAddress
+```
+
+```bash
+❯ $pe.NetworkInterfaces[0].IpConfigurations[0].PrivateIpAddress
+11.1.0.4
+```
+
+## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
+
+Wenn Sie die Ressourcen nicht mehr benötigen, führen Sie den Befehl [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) aus, um die Ressourcengruppe, den Lastenausgleich und alle übrigen Ressourcen zu löschen.
+
+```azurepowershell-interactive
+Remove-AzResourceGroup -Name 'CreatePrivLinkService-rg'
+```
+
 ## <a name="next-steps"></a>Nächste Schritte
-- Weitere Informationen zu [Azure Private Link](private-link-overview.md).
+
+In dieser Schnellstartanleitung haben Sie Folgendes durchgeführt:
+
+* Erstellen eines virtuellen Netzwerks und einer internen Azure Load Balancer-Instanz
+* Erstellen eines Private Link-Diensts
+
+Weitere Informationen zu privaten Azure-Endpunkten finden Sie unter:
+> [!div class="nextstepaction"]
+> [Schnellstart: Erstellen eines privaten Endpunkts mit Azure PowerShell](create-private-endpoint-powershell.md)
 

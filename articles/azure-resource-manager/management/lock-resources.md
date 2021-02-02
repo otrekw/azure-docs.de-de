@@ -4,12 +4,12 @@ description: Verhindern Sie, dass Benutzer Azure-Ressourcen aktualisieren oder l
 ms.topic: conceptual
 ms.date: 11/11/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 7efeb8a073a04f78f77046c07c107abf0c7526f4
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
+ms.openlocfilehash: 0e8fc74b2da0c253ec9c5bf34ec7543398aea48f
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98602205"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98802445"
 ---
 # <a name="lock-resources-to-prevent-unexpected-changes"></a>Sperren von Ressourcen, um unerwartete Änderungen zu verhindern
 
@@ -38,7 +38,7 @@ Das Anwenden von Sperren kann zu unerwarteten Ergebnissen führen, da einige Vor
 
 * Eine Löschschutzsperre für eine **Ressourcengruppe** verhindert, dass mit Azure Resource Manager automatisch Bereitstellungen aus dem Verlauf [gelöscht](../templates/deployment-history-deletions.md) werden. Wenn im Verlauf 800 Bereitstellungen erreicht werden, treten bei weiteren Bereitstellungen Fehler auf.
 
-* Eine vom **Azure Backup-Dienst** erstellte Löschschutzsperre für die **Ressourcengruppe** führt dazu, dass Sicherungen fehlschlagen. Der Dienst unterstützt maximal 18 Wiederherstellungspunkte. Bei einer Sperrung kann der Sicherungsdienst Wiederherstellungspunkte nicht bereinigen. Weitere Informationen finden Sie unter [Häufig gestellte Fragen zum Sichern von Azure-VMs](../../backup/backup-azure-vm-backup-faq.md).
+* Eine vom **Azure Backup-Dienst** erstellte Löschschutzsperre für die **Ressourcengruppe** führt dazu, dass Sicherungen fehlschlagen. Der Dienst unterstützt maximal 18 Wiederherstellungspunkte. Bei einer Sperrung kann der Sicherungsdienst Wiederherstellungspunkte nicht bereinigen. Weitere Informationen finden Sie unter [Häufig gestellte Fragen zum Sichern von Azure-VMs](../../backup/backup-azure-vm-backup-faq.yml).
 
 * Eine Schreibschutzsperre für ein **Abonnement** verhindert, dass **Azure Advisor** ordnungsgemäß funktioniert. Advisor kann die Ergebnisse seiner Abfragen nicht speichern.
 
@@ -254,10 +254,17 @@ Rufen Sie alle Sperren für eine Ressourcengruppe mit dem folgenden Befehl ab:
 Get-AzResourceLock -ResourceGroupName exampleresourcegroup
 ```
 
-Eine Sperre löschen Sie folgendermaßen:
+Mit dem folgenden Befehl können Sie eine Sperre für eine Ressource löschen:
 
 ```azurepowershell-interactive
 $lockId = (Get-AzResourceLock -ResourceGroupName exampleresourcegroup -ResourceName examplesite -ResourceType Microsoft.Web/sites).LockId
+Remove-AzResourceLock -LockId $lockId
+```
+
+Mit dem folgenden Befehl können Sie eine Sperre für eine Ressourcengruppe löschen:
+
+```azurepowershell-interactive
+$lockId = (Get-AzResourceLock -ResourceGroupName exampleresourcegroup).LockId
 Remove-AzResourceLock -LockId $lockId
 ```
 
@@ -295,10 +302,17 @@ Rufen Sie alle Sperren für eine Ressourcengruppe mit dem folgenden Befehl ab:
 az lock list --resource-group exampleresourcegroup
 ```
 
-Eine Sperre löschen Sie folgendermaßen:
+Mit dem folgenden Befehl können Sie eine Sperre für eine Ressource löschen:
 
 ```azurecli
 lockid=$(az lock show --name LockSite --resource-group exampleresourcegroup --resource-type Microsoft.Web/sites --resource-name examplesite --output tsv --query id)
+az lock delete --ids $lockid
+```
+
+Mit dem folgenden Befehl können Sie eine Sperre für eine Ressourcengruppe löschen:
+
+```azurecli
+lockid=$(az lock show --name LockSite --resource-group exampleresourcegroup  --output tsv --query id)
 az lock delete --ids $lockid
 ```
 

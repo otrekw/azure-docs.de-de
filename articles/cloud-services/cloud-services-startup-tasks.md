@@ -1,20 +1,25 @@
 ---
-title: Ausführen von Startaufgaben in Azure Cloud Services | Microsoft Docs
+title: Ausführen von Startaufgaben in Azure Cloud Services (klassisch) | Microsoft-Dokumentation
 description: Startaufgaben helfen dabei, die Clouddienstumgebung für die App vorbereiten. Erfahren Sie, wie Startaufgaben funktionieren und erstellt werden.
-services: cloud-services
-author: tgore03
-ms.service: cloud-services
 ms.topic: article
-ms.date: 07/05/2017
+ms.service: cloud-services
+ms.date: 10/14/2020
 ms.author: tagore
-ms.openlocfilehash: f2417389de98f9998c189e7cbbbcdae77fbb8840
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 25190075bdd13bd4b75dd82c97ee06ee60f4c26c
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96020703"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98743184"
 ---
-# <a name="how-to-configure-and-run-startup-tasks-for-a-cloud-service"></a>Konfigurieren und Ausführen von Startaufgaben für einen Clouddienst
+# <a name="how-to-configure-and-run-startup-tasks-for-an-azure-cloud-service-classic"></a>Konfigurieren und Ausführen von Startaufgaben für einen Azure-Clouddienst (klassisch)
+
+> [!IMPORTANT]
+> [Azure Cloud Services (erweiterter Support)](../cloud-services-extended-support/overview.md) ist ein neues Azure Resource Manager-basiertes Bereitstellungsmodell für Azure Cloud Services. Im Zuge dieser Änderung wurden Azure Cloud Services-Instanzen, die unter dem Azure Service Manager-basierten Bereitstellungsmodell ausgeführt werden, in „Cloud Services (klassisch)“ umbenannt. Für alle neuen Bereitstellungen wird [Azure Cloud Services (erweiterter Support)](../cloud-services-extended-support/overview.md) verwendet.
+
 Mit Startaufgaben können Sie Vorgänge ausführen, bevor eine Rolle gestartet wird. Zu den Vorgängen, die Sie vielleicht ausführen möchten, gehören das Installieren von Komponenten, das Registrieren von COM-Komponenten, das Festlegen von Registrierungsschlüsseln und das Starten eines lang andauernden Prozesses.
 
 > [!NOTE]
@@ -23,7 +28,7 @@ Mit Startaufgaben können Sie Vorgänge ausführen, bevor eine Rolle gestartet w
 > 
 
 ## <a name="how-startup-tasks-work"></a>Funktionsweise von Startaufgaben
-Startaufgaben sind Aktionen, die ausgeführt werden, bevor die Rollen beginnen. Sie werden in der Datei [ServiceDefinition.csdef] mithilfe des [Aufgabe]-Elements im[Startup]-Element definiert. Häufig sind Startaufgaben Batchdateien, aber es kann sich auch um Konsolenanwendungen handeln, oder um Batchdateien, die PowerShell-Skripts starten.
+Startaufgaben sind Aktionen, die ausgeführt werden, bevor die Rollen beginnen. Sie werden in der Datei [ServiceDefinition.csdef] mithilfe des [Task]-Elements im[Start]-Element definiert. Häufig sind Startaufgaben Batchdateien, aber es kann sich auch um Konsolenanwendungen handeln, oder um Batchdateien, die PowerShell-Skripts starten.
 
 Startaufgaben erhalten ihre Informationen aus Umgebungsvariablen, und mit lokalem Speicher können Informationen aus einer Startaufgabe heraus übergeben werden. Eine Umgebungsvariable kann beispielsweise den Pfad zu einem Programm festlegen, das Sie installieren möchten, und Dateien können in den lokalen Speicher geschrieben werden, aus dem sie später von den Rollen gelesen werden können.
 
@@ -39,8 +44,8 @@ Im Folgenden werden die Schritte beim Starten einer Rolle in Azure aufgeführt:
 1. Die Instanz wird mit **Starting** markiert und empfängt keinen Datenverkehr.
 2. Alle Startaufgaben werden gemäß ihres **taskType** -Attributs ausgeführt.
    
-   * Die mit **simple** gekennzeichneten Aufgaben werden synchron, nacheinander ausgeführt.
-   * Die **background**- und **foreground**-Aufgaben werden asynchron, parallel zur Startaufgabe gestartet.  
+   * Die **simple**-Tasks werden synchron nacheinander ausgeführt.
+   * Die **background**-Tasks und **foreground**-Tasks werden asynchron parallel zum Starttask gestartet.  
      
      > [!WARNING]
      > IIS ist während der Startaufgabephase des Startprozesses möglicherweise nicht vollständig konfiguriert, sodass rollenspezifische Daten möglicherweise nicht verfügbar sind. Startaufgaben, die rollenspezifische Daten erfordern, sollten [Microsoft.WindowsAzure.ServiceRuntime.RoleEntryPoint.OnStart](/previous-versions/azure/reference/ee772851(v=azure.100))verwenden.
@@ -93,9 +98,9 @@ Im Folgenden werden die Attribute des **Task** -Elements in der Datei [ServiceDe
 **executionContext** – Legt die Berechtigungsstufe für die Startaufgabe fest. Die Berechtigungsstufe kann eingeschränkt oder mit erhöhten Rechten sein:
 
 * **limited**  
-  – Die Startaufgabe wird mit den gleichen Berechtigungen wie die Rolle ausgeführt. Wenn das **executionContext**-Attribut für das [Laufzeit]-Element ebenfalls **eingeschränkt** ist, werden Benutzerberechtigungen verwendet.
+   – Die Startaufgabe wird mit den gleichen Berechtigungen wie die Rolle ausgeführt. Wenn das **executionContext**-Attribut für das [Runtime]-Element ebenfalls **eingeschränkt** ist, werden Benutzerberechtigungen verwendet.
 * **elevated**  
-  Die Startaufgabe wird mit Administratorrechten ausgeführt. Dadurch können Startaufgaben Programme installieren, IIS-Konfigurationsänderungen oder Registrierungsänderungen durchführen, ohne die Berechtigungsstufe der Rolle selbst zu erhöhen.  
+   Die Startaufgabe wird mit Administratorrechten ausgeführt. Dadurch können Startaufgaben Programme installieren, IIS-Konfigurationsänderungen oder Registrierungsänderungen durchführen, ohne die Berechtigungsstufe der Rolle selbst zu erhöhen.  
 
 > [!NOTE]
 > Die Berechtigungsstufe einer Startaufgabe muss nicht mit derjenigen der Rolle selbst identisch sein.
@@ -121,7 +126,7 @@ Im Folgenden werden die Attribute des **Task** -Elements in der Datei [ServiceDe
 ## <a name="environment-variables"></a>Umgebungsvariablen
 Umgebungsvariablen sind eine Möglichkeit zur Datenübergabe an eine Startaufgabe. Beispielsweise können Sie dort den Pfad auf ein Blob mit einem zu installierenden Programm, die von der Rolle zu verwendenden Portnummern oder Einstellungen zur Steuerung der Startaufgabe festlegen.
 
-Es gibt zwei Arten von Umgebungsvariablen für Startaufgaben: statische Umgebungsvariablen und Umgebungsvariablen basierend auf Mitgliedern der [RoleEnvironment] -Klasse. Beide befinden sich im [Umgebung]-Abschnitt der Datei [ServiceDefinition.csdef], und beide verwenden das [Variable]-Element und das **name**-Attribut.
+Es gibt zwei Arten von Umgebungsvariablen für Startaufgaben: statische Umgebungsvariablen und Umgebungsvariablen basierend auf Mitgliedern der [RoleEnvironment] -Klasse. Beide befinden sich im [Environment]-Abschnitt der Datei [ServiceDefinition.csdef], und beide verwenden das [Variable]-Element und das **name**-Attribut.
 
 Statische Umgebungsvariablen verwenden das **value** -Attribut des [Variable] -Elements. Im obigen Beispiel wird die Umgebungsvariable **MyVersionNumber** erstellt, die den statischen Wert „**1.0.0.0**“ erhält. Ein weiteres Beispiel wäre das Erstellen einer **StagingOrProduction**-Umgebungsvariable, die Sie manuell auf die Werte „**staging**“ oder „**production**“ setzen können, um anhand des Werts der **StagingOrProduction**-Umgebungsvariablen verschiedene Startvorgänge auszuführen.
 

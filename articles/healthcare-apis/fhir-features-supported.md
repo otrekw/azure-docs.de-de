@@ -2,18 +2,18 @@
 title: Unterstützte FHIR-Features in Azure – Azure API for FHIR
 description: In diesem Artikel wird erläutert, welche Features der FHIR-Spezifikation in Azure API for FHIR implementiert sind.
 services: healthcare-apis
-author: matjazl
+author: caitlinv39
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: reference
-ms.date: 02/07/2019
+ms.date: 1/21/2021
 ms.author: cavoeg
-ms.openlocfilehash: 9a4c331d82695aecb53990fd604ade82f3361959
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 28c01e99c0e8708750341b445b4a31f6eaeab3ce
+ms.sourcegitcommit: 3c8964a946e3b2343eaf8aba54dee41b89acc123
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96452923"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98747524"
 ---
 # <a name="features"></a>Features
 
@@ -86,7 +86,7 @@ Es werden alle Suchparametertypen unterstützt.
 | `_id`                   | Ja       | Ja       | Ja       |         |
 | `_lastUpdated`          | Ja       | Ja       | Ja       |         |
 | `_tag`                  | Ja       | Ja       | Ja       |         |
-| `_profile`              | Ja       | Ja       | Ja       |         |
+| `_profile`              | Teilweise   | Teilweise   | Teilweise   | Nur in STU3 unterstützt, nicht in R4 |
 | `_security`             | Ja       | Ja       | Ja       |         |
 | `_text`                 | Nein        | Nein        | Nein        |         |
 | `_content`              | Nein        | Nein        | Nein        |         |
@@ -98,11 +98,11 @@ Es werden alle Suchparametertypen unterstützt.
 
 | Suchergebnisparameter | Unterstützt: PaaS | Unterstützt: OSS (SQL) | Unterstützt: OSS (Cosmos DB) | Comment |
 |-------------------------|-----------|-----------|-----------|---------|
-| `_sort`                 | Partial        | Teilweise   | Teilweise        |   `_sort=_lastUpdated` wird unterstützt       |
+| `_sort`                 | Teilweise        | Teilweise   | Teilweise        |   `_sort=_lastUpdated` wird unterstützt       |
 | `_count`                | Ja       | Ja       | Ja       | `_count` ist auf 100 Zeichen beschränkt. Wenn er auf einen höheren Wert als 100 festgelegt ist, werden nur 100 zurückgegeben, und im Paket wird eine Warnung zurückgegeben. |
 | `_include`              | Ja       | Ja       | Ja       |Enthaltene Elemente sind auf 100 beschränkt. Einschließen in PaaS und OSS in Cosmos DB umfasst keine Unterstützung von :iterate.|
 | `_revinclude`           | Ja       | Ja       | Ja       | Enthaltene Elemente sind auf 100 beschränkt. Einschließen in PaaS und OSS in Cosmos DB umfasst keine Unterstützung von :iterate.|
-| `_summary`              | Partial   | Partial   | Partial   | `_summary=count` wird unterstützt |
+| `_summary`              | Partial   | Partial   | Teilweise   | `_summary=count` wird unterstützt |
 | `_total`                | Partial   | Partial   | Partial   | _total=non und _total=accurate      |
 | `_elements`             | Ja       | Ja       | Ja       |         |
 | `_contained`            | Nein        | Nein        | Nein        |         |
@@ -135,9 +135,9 @@ Derzeit werden die zulässigen Aktionen für eine bestimmte Rolle *global* auf d
 
 ## <a name="service-limits"></a>Diensteinschränkungen
 
-* [**Anforderungseinheiten (Request Units, RUs):** ](../cosmos-db/concepts-limits.md) Sie können bis zu 10.000 RUs im Portal für Azure API for FHIR konfigurieren. Sie benötigen mindestens 400 RUs oder 10 RUs/GB (je nachdem, welcher Wert größer ist). Wenn Sie mehr als 10.000 RUs benötigen, können Sie über ein Supportticket eine Erhöhung des Werts anfordern. Maximal sind 1.000.000 RUs verfügbar.
+* [**Anforderungseinheiten (Request Units, RUs):**](../cosmos-db/concepts-limits.md) Sie können bis zu 10.000 RUs im Portal für Azure API for FHIR konfigurieren. Sie benötigen mindestens 400 RUs oder 10 RUs/GB (je nachdem, welcher Wert größer ist). Wenn Sie mehr als 10.000 RUs benötigen, können Sie über ein Supportticket eine Erhöhung des Werts anfordern. Maximal sind 1.000.000 RUs verfügbar.
 
-* **Gleichzeitige Verbindungen** und **Instanzen**: Standardmäßig verfügen Sie über fünf gleichzeitige Verbindungen auf zwei Instanzen im Cluster (und somit insgesamt 10 gleichzeitige Anforderungen). Wenn Sie weitere gleichzeitige Anforderungen benötigen, öffnen Sie ein Supportticket mit Details zu Ihren Anforderungen.
+* **Gleichzeitige Verbindungen** und **Instanzen**: Standardmäßig stehen Ihnen fünf gleichzeitige Verbindungen in zwei Instanzen im Cluster (und somit insgesamt zehn gleichzeitige Anforderungen) zur Verfügung. Wenn Sie weitere gleichzeitige Anforderungen benötigen, öffnen Sie ein Supportticket mit Details zu Ihren Anforderungen.
 
 * **Paketgröße:** Jedes Paket ist auf 500 Elemente beschränkt.
 
@@ -147,12 +147,14 @@ Derzeit werden die zulässigen Aktionen für eine bestimmte Rolle *global* auf d
 
 Die Leistung des Systems hängt von der Anzahl der RUs, den gleichzeitigen Verbindungen und der Art der ausgeführten Vorgänge ab (PUT, POST usw.). Im Folgenden finden Sie einige allgemeine Bereiche, die auf der Grundlage der konfigurierten RUs zu erwarten sind. Im Allgemeinen wird die Leistung linear mit einer Erhöhung der RUs skaliert:
 
-| Anzahl der RUs | Ressourcen/s |
-|----------|---------------|
-| 400      | 5-10          |
-| 1\.000    | 100–150       |
-| 10.000   | 225–400       |
-| 100.000  | 2\.500–4.000   |
+| Anzahl der RUs | Ressourcen/s |    Max. Speicher (GB)*    |
+|----------|---------------|--------|                 
+| 400      | 5-10          |     40   |
+| 1\.000    | 100–150       |      100  |
+| 10.000   | 225–400       |      1\.000  |
+| 100.000  | 2\.500–4.000   |      10.000  |
+
+Hinweis: Für Cosmos DB muss mindestens ein Durchsatz von 10 RU/s pro GB Speicher erreicht werden. Weitere Informationen finden Sie unter [Kontingente im Azure Cosmos DB-Dienst](../cosmos-db/concepts-limits.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

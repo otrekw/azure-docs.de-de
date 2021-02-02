@@ -2,13 +2,13 @@
 title: Häufig gestellte Fragen (FAQ) – Azure Event Hubs | Microsoft-Dokumentation
 description: Dieser Artikel enthält eine Liste häufig gestellter Fragen (FAQ) zu Azure Event Hubs sowie die zugehörigen Antworten.
 ms.topic: article
-ms.date: 10/27/2020
-ms.openlocfilehash: e7a34fe0f2ef04fffeeddc5615d3ac1749467902
-ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
+ms.date: 01/20/2021
+ms.openlocfilehash: e6fd4814e771d03827e51f1cd5ee182c9e432cc5
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97955415"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98696107"
 ---
 # <a name="event-hubs-frequently-asked-questions"></a>Häufig gestellte Fragen zu Event Hubs
 
@@ -55,8 +55,8 @@ Sie können den Aufbewahrungszeitraum für die erfassten Daten in Ihrem Speicher
 ### <a name="how-do-i-monitor-my-event-hubs"></a>Wie überwache ich Event Hubs?
 Event Hubs gibt umfassende Metriken aus, die den Zustand Ihrer Ressourcen in [Azure Monitor](../azure-monitor/overview.md) angeben. Mit den Metriken können Sie zudem die allgemeine Integrität des Event Hubs-Diensts nicht nur auf Namespaceebene, sondern auch auf Entitätsebene bewerten. Erfahren Sie mehr über die angebotene Überwachung für [Azure Event Hubs](event-hubs-metrics-azure-monitor.md).
 
-### <a name="where-does-azure-event-hubs-store-customer-data"></a><a name="in-region-data-residency"></a>Wo speichert Azure Event Hubs Kundendaten?
-Azure Event Hubs speichert Kundendaten. Diese Daten werden von Event Hubs automatisch in einer einzigen Region gespeichert, sodass dieser Dienst in der Region automatisch die Anforderungen an Datenresidenz erfüllt, einschließlich der im [Trust Center](https://azuredatacentermap.azurewebsites.net/) angegebenen Anforderungen.
+### <a name="where-does-azure-event-hubs-store-data"></a><a name="in-region-data-residency"></a>Wo werden die Daten von Azure Event Hubs gespeichert?
+In Azure Event Hubs Standard und Dedicated werden Metadaten und Daten in den von Ihnen ausgewählten Regionen gespeichert. Wenn die georedundante Notfallwiederherstellung für einen Azure Event Hubs-Namespace eingerichtet wird, werden Metadaten in die von Ihnen ausgewählte sekundäre Region kopiert. Aus diesem Grund werden für diesen Dienst automatisch die Anforderungen an die Datenresidenz für die Regionen erfüllt. Dies gilt auch für die Anforderungen, die im [Trust Center](https://azuredatacentermap.azurewebsites.net/) angegeben sind.
 
 [!INCLUDE [event-hubs-connectivity](../../includes/event-hubs-connectivity.md)]
 

@@ -8,18 +8,18 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/15/2021
-ms.openlocfilehash: 4a9a6b61e392ed2efd68cdcb1cf7e53d6bde5ccd
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: 8d984a303234a24423ceae100bd139cb484d6495
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98249728"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98702784"
 ---
 # <a name="estimate-and-manage-capacity-of-an-azure-cognitive-search-service"></a>Schätzen und Verwalten der Kapazität eines Azure Cognitive Search-Diensts
 
 Nehmen Sie sich einige Minuten Zeit, bevor Sie [einen Suchdienst bereitstellen](search-create-service-portal.md) und einen bestimmten Tarif festlegen, um zu verstehen, wie die Kapazität funktioniert und wie Sie Replikate und Partitionen an Schwankungen der Workload anpassen können.
 
-Kapazität ist eine Funktion der [Dienstebene](search-sku-tier.md). Tarife unterscheiden sich durch die maximale Speichergröße, die Speicherkapazität pro Partition und die maximalen Grenzwerte für die Anzahl der Objekte, die Sie erstellen können. Der Tarif „Basic“ ist für Apps vorgesehen, die relativ geringe Speicheranforderungen (nur eine Partition) haben, aber die Möglichkeit zur Ausführung in einer Konfiguration mit hoher Verfügbarkeit (3 Replikate) bieten. Andere Tarife sind für bestimmte Arbeitsauslastungen oder Muster, z. B. Mehrinstanzenfähigkeit, konzipiert. Intern profitieren auf diesen Tarifen erstellte Dienste von Hardware, die diese Szenarien unterstützt.
+Kapazität ist eine Funktion der [Dienstebene](search-sku-tier.md). Sie bestimmt die maximale Speichergröße pro Dienst und Partition sowie die Obergrenze für die Anzahl von Objekten, die Sie erstellen können. Der Tarif „Basic“ ist für Apps vorgesehen, die relativ geringe Speicheranforderungen (nur eine Partition) haben, aber die Möglichkeit zur Ausführung in einer Konfiguration mit hoher Verfügbarkeit (3 Replikate) bieten. Andere Tarife sind für bestimmte Arbeitsauslastungen oder Muster, z. B. Mehrinstanzenfähigkeit, konzipiert. Intern profitieren auf diesen Tarifen erstellte Dienste von Hardware, die diese Szenarien unterstützt.
 
 Die Skalierbarkeitsarchitektur in Azure Cognitive Search basiert auf flexiblen Kombinationen von Replikaten und Partitionen, sodass Sie die Kapazität variieren können – je nachdem, ob Sie mehr Abfrage- oder mehr Indizierungsleistung benötigen. Nach der Erstellung eines Diensts können Sie die Anzahl von Replikaten oder Partitionen unabhängig voneinander erhöhen oder verringern. Die Kosten erhöhen sich mit jeder zusätzlichen physischen Ressource. Nach Abschluss umfangreicher Workloads können Sie jedoch herunterskalieren, um Ihre Kosten zu senken. Je nach Tarif und Umfang der Anpassung kann das Hinzufügen oder Reduzieren von Kapazität zwischen 15 Minuten und mehreren Stunden dauern.
 
@@ -184,7 +184,7 @@ Alle Suchdienste vom Typ „Standard“ oder „Datenspeicheroptimiert“ könne
 | **4 Replikate** |4 SU |8 SU |12 SU |16 SU |24 SU |– |
 | **5 Replikate** |5 SU |10 SU |15 SU |20 SU |30 SU |– |
 | **6 Replikate** |6 SU |12 SU |18 SU |24 SU |36 SU |– |
-| **12 Replikate** |12 SU |24 SU |36 SU |– |Nicht zutreffend |– |
+| **12 Replikate** |12 SU |24 SU |36 SU |– |– |Nicht zutreffend |
 
 SUs, Preise und Kapazität werden auf der Azure-Website ausführlich erläutert. Weitere Informationen finden Sie unter [Preise](https://azure.microsoft.com/pricing/details/search/).
 

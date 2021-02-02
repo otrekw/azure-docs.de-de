@@ -1,28 +1,24 @@
 ---
 title: FAQ zu Konfigurations- und Verwaltungsproblemen
-titleSuffix: Azure Cloud Services
 description: Dieser Artikel behandelt häufig gestellte Fragen zur Konfiguration und Verwaltung von Microsoft Azure Cloud Services.
-services: cloud-services
-documentationcenter: ''
-author: genlin
-manager: dcscontentpm
-editor: ''
-tags: top-support-issue
-ms.assetid: 84985660-2cfd-483a-8378-50eef6a0151d
-ms.service: cloud-services
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 07/23/2018
-ms.author: genli
-ms.openlocfilehash: c4497805e64ef303c9d7340c48a49027b3a26bef
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.service: cloud-services
+ms.date: 10/14/2020
+ms.author: tagore
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: c5dd09292897d69f90606e8661b4e6cb28090612
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96011019"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98742589"
 ---
-# <a name="configuration-and-management-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Probleme mit der Konfiguration und Verwaltung von Microsoft Azure Cloud Services: Häufig gestellte Fragen (FAQs)
+# <a name="configuration-and-management-issues-for-azure-cloud-services-classic-frequently-asked-questions-faqs"></a>Probleme mit der Konfiguration und Verwaltung für Azure Cloud Services (klassisch): Häufig gestellte Fragen (FAQs)
+
+> [!IMPORTANT]
+> [Azure Cloud Services (erweiterter Support)](../cloud-services-extended-support/overview.md) ist ein neues auf Azure Resource Manager basierendes Bereitstellungsmodell für Azure Cloud Services. Im Zuge dieser Änderung wurden Azure Cloud Services-Instanzen, die unter dem Azure Service Manager-basierten Bereitstellungsmodell ausgeführt werden, in „Cloud Services (klassisch)“ umbenannt. Für alle neuen Bereitstellungen sollte [Azure Cloud Services (erweiterter Support)](../cloud-services-extended-support/overview.md) verwendet werden.
 
 Dieser Artikel enthält häufig gestellte Fragen zur Konfiguration und Verwaltung von [Microsoft Azure Cloud Services](https://azure.microsoft.com/services/cloud-services). Informationen zur Größe finden sie auch unter [Größen für Clouddienste](cloud-services-sizes-specs.md) .
 
@@ -62,7 +58,7 @@ Dieser Artikel enthält häufig gestellte Fragen zur Konfiguration und Verwaltun
 
 **Allgemein**
 
-- [Wie füge ich meiner Website „nosniff“ hinzu?](#how-do-i-add-nosniff-to-my-website)
+- [Wie kann ich `nosniff` meiner Website hinzufügen?](#how-do-i-add-nosniff-to-my-website)
 - [Wie passe ich IIS für eine Webrolle an?](#how-do-i-customize-iis-for-a-web-role)
 - [Wie hoch ist die Kontingentgrenze für meinen Clouddienst?](#what-is-the-quota-limit-for-my-cloud-service)
 - [Warum wird auf dem Laufwerk meiner Clouddienst-VM nur sehr wenig freier Speicherplatz angezeigt?](#why-does-the-drive-on-my-cloud-service-vm-show-very-little-free-disk-space)
@@ -128,7 +124,7 @@ $cert = New-SelfSignedCertificate -DnsName yourdomain.cloudapp.net -CertStoreLoc
 $password = ConvertTo-SecureString -String "your-password" -Force -AsPlainText
 Export-PfxCertificate -Cert $cert -FilePath ".\my-cert-file.pfx" -Password $password
 ```
-Die Option zum Auswählen eines Blobs oder eines lokalen Speicherorts als CSDEF- und CSCFG-Uploadspeicherort ist in Kürze verfügbar. Mit [New-AzureDeployment](/powershell/module/servicemanagement/azure.service/new-azuredeployment?view=azuresmps-4.0.0) können Sie jeden Speicherortwert festlegen.
+Die Option zum Auswählen eines Blobs oder eines lokalen Speicherorts als CSDEF- und CSCFG-Uploadspeicherort ist in Kürze verfügbar. Mit [New-AzureDeployment](/powershell/module/servicemanagement/azure.service/new-azuredeployment?view=azuresmps-4.0.0&preserve-view=true) können Sie jeden Speicherortwert festlegen.
 
 Option zum Überwachen von Metriken auf Instanzebene. Zusätzliche Überwachungsfunktionen stehen unter [Überwachung von Clouddiensten](cloud-services-how-to-monitor.md) zur Verfügung.
 
@@ -148,7 +144,7 @@ Sie können die Protokollierung durch die Windows Azure-Diagnose (WAD) über fol
 2. [Aktivieren über .NET-Code](./cloud-services-dotnet-diagnostics.md)
 3. [Aktivieren über PowerShell](./cloud-services-diagnostics-powershell.md)
 
-Um die aktuellen WAD-Einstellungen Ihres Clouddiensts abzurufen, können Sie das PS-Cmd [Get-AzureServiceDiagnosticsExtensions](./cloud-services-diagnostics-powershell.md#get-current-diagnostics-extension-configuration) verwenden oder sie über das Portal auf dem Blatt „Clouddienste--> Erweiterungen“ einsehen.
+Um die aktuellen WAD-Einstellungen Ihres Clouddiensts abzurufen, können Sie den PowerShell-Befehl [Get-AzureServiceDiagnosticsExtensions](./cloud-services-diagnostics-powershell.md#get-current-diagnostics-extension-configuration) verwenden oder im Portal über das Blatt „Clouddienste“ > „Erweiterungen“ darauf zugreifen.
 
 
 ## <a name="network-configuration"></a>Netzwerkkonfiguration
@@ -254,7 +250,7 @@ Weitere Informationen dazu, wie Sie die Azure-Diagnoseprotokollierung für Cloud
 
 ## <a name="generic"></a>Allgemein
 
-### <a name="how-do-i-add-nosniff-to-my-website"></a>Wie füge ich meiner Website „nosniff“ hinzu?
+### <a name="how-do-i-add-nosniff-to-my-website"></a>Wie kann ich `nosniff` meiner Website hinzufügen?
 Um zu verhindern, dass Clients die MIME-Typen abfangen, fügen Sie eine Einstellung in Ihre Datei *web.config* ein.
 
 ```xml
@@ -284,11 +280,11 @@ Weitere Informationen finden Sie unter [Dienstspezifische Grenzwerte](../azure-r
 ### <a name="why-does-the-drive-on-my-cloud-service-vm-show-very-little-free-disk-space"></a>Warum wird auf dem Laufwerk meiner Clouddienst-VM nur sehr wenig freier Speicherplatz angezeigt?
 Hierbei handelt es sich um erwartetes Verhalten, das kein Problem bei Ihrer Anwendung verursachen sollte. Für das Laufwerk %approot% auf virtuellen Azure PaaS-Computern ist das Journaling aktiviert, was praktisch doppelt so viel Speicherplatz verbraucht, wie Dateien normalerweise belegen. Es gibt jedoch einige Punkte zu beachten, durch die dieses Verhalten nicht zu einem Problem wird.
 
-Die Größe des %approot%-Laufwerks wird als \<size of .cspkg + max journal size + a margin of free space> oder 1,5 GB berechnet, je nachdem, welcher Wert größer ist. Die Größe Ihres virtuellen Computers hat keinen Einfluss auf diese Berechnung. (Die Größe des virtuellen Computers betrifft nur die Größe des temporären Laufwerks „C:“) 
+Die Größe des Laufwerks %aproot% beträgt 1,5 GB oder wird als <Größe von CSPKG + max. Journalgröße + Rand mit freiem Speicherplatz> berechnet, je nachdem welcher Wert größer ist. Die Größe Ihres virtuellen Computers hat keinen Einfluss auf diese Berechnung. (Die Größe des virtuellen Computers betrifft nur die Größe des temporären Laufwerks „C:“) 
 
 Schreibvorgänge in das Laufwerk %aproot% werden nicht unterstützt. Wenn Sie einen Schreibvorgang in den virtuellen Azure-Computer vornehmen, müssen Sie diesen in einer temporären LocalStorage-Ressource (oder einer anderen Option, z.B. Blob-Speicher, Azure Storage usw.) ausführen. Der freie Speicherplatz im Ordner %approot% ist also nicht von Bedeutung. Wenn Sie sich unsicher sind, ob Ihre Anwendung in das Laufwerk %aproot% schreibt, können Sie Ihren Dienst immer ein paar Tage lang ausführen lassen und anschließend die „Vorher/Nachher“-Größe vergleichen. 
 
-Azure wird nichts in das Laufwerk %approot% schreiben. Sobald die VHD-Datei aus CSPKG erstellt und in den virtuellen Azure-Computer eingebunden wurde, kann nur noch die Anwendung in dieses Laufwerk schreiben. 
+Azure wird nichts in das Laufwerk %approot% schreiben. Nachdem die VHD-Datei aus Ihrer `.cspkg`-Datei erstellt und in den virtuellen Azure-Computer eingebunden wurde, kann nur noch die Anwendung auf dieses Laufwerk schreiben. 
 
 Die Einstellungen für Journaling sind nicht konfigurierbar, also lässt es sich nicht deaktiveren.
 
@@ -297,7 +293,7 @@ Die Einstellungen für Journaling sind nicht konfigurierbar, also lässt es sich
 Sie können mithilfe des PowerShell-Skripts im Starttask die Antischadsoftware-Erweiterung aktivieren. Führen Sie die Schritte in den folgenden Artikeln aus, um sie zu implementieren: 
  
 - [Erstellen eines PowerShell-Starttasks](cloud-services-startup-tasks-common.md#create-a-powershell-startup-task)
-- [Set-AzureServiceAntimalwareExtension](/powershell/module/servicemanagement/azure.service/Set-AzureServiceAntimalwareExtension?view=azuresmps-4.0.0 )
+- [Set-AzureServiceAntimalwareExtension](/powershell/module/servicemanagement/azure.service/Set-AzureServiceAntimalwareExtension?view=azuresmps-4.0.0&preserve-view=true)
 
 Weitere Informationen zu den Antimalware-Bereitstellungsszenarien, und wie sie vom Portal aus aktiviert werden, finden Sie unter [Antimalware-Bereitstellungsszenarien](../security/fundamentals/antimalware.md#antimalware-deployment-scenarios).
 

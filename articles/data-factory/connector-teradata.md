@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 11/26/2020
+ms.date: 01/22/2021
 ms.author: jingwang
-ms.openlocfilehash: a48ac86e8f9814adef9be2360b2446335d368447
-ms.sourcegitcommit: 192f9233ba42e3cdda2794f4307e6620adba3ff2
+ms.openlocfilehash: 430b9a1e567d9a79093f50ae388b4b69119c057d
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96296555"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98695872"
 ---
 # <a name="copy-data-from-teradata-vantage-by-using-azure-data-factory"></a>Kopieren von Daten aus Teradata Vantage mithilfe von Azure Data Factory
 
@@ -72,6 +72,7 @@ Weitere Verbindungseigenschaften, die Sie abhängig von Ihrem Anwendungsfall in 
 
 | Eigenschaft | BESCHREIBUNG | Standardwert |
 |:--- |:--- |:--- |
+| TdmstPortNumber | Die Nummer des Ports für den Zugriff auf die Teradata-Datenbank.<br>Ändern Sie diesen Wert nur, wenn Sie vom technischen Support dazu aufgefordert werden. | 1025 |
 | UseDataEncryption | Mit dieser Eigenschaft wird angegeben, ob die gesamte Kommunikation mit der Teradata-Datenbank verschlüsselt werden soll. Zulässige Werte sind „0“ und „1“.<br><br/>- **0 (deaktiviert, Standardwert):** Nur Authentifizierungsinformationen werden verschlüsselt.<br/>- **1 (aktiviert):** Alle zwischen dem Treiber und der Datenbank übermittelten Daten werden verschlüsselt. | `0` |
 | CharacterSet | Der Zeichensatz, der für die Sitzung verwendet werden soll. Beispiel: `CharacterSet=UTF16`.<br><br/>Bei diesem Wert kann es sich um einen benutzerdefinierten Zeichensatz oder um einen der folgenden vordefinierten Zeichensätze handeln: <br/>- ASCII<br/>- UTF8<br/>- UTF16<br/>- LATIN1252_0A<br/>- LATIN9_0A<br/>- LATIN1_0A<br/>- Shift-JIS (Windows, DOS-kompatibel, KANJISJIS_0S)<br/>- EUC (Unix-kompatibel, KANJIEC_0U)<br/>- IBM Mainframe (KANJIEBCDIC5035_0I)<br/>- KANJI932_1S0<br/>- BIG5 (TCHBIG5_1R0)<br/>- GB (SCHGB2312_1T0)<br/>- SCHINESE936_6R0<br/>- TCHINESE950_8R0<br/>- NetworkKorean (HANGULKSC5601_2R4)<br/>- HANGUL949_7R0<br/>- ARABIC1256_6A0<br/>- CYRILLIC1251_2A0<br/>- HEBREW1255_5A0<br/>- LATIN1250_1A0<br/>- LATIN1254_7A0<br/>- LATIN1258_8A0<br/>- THAI874_4A0 | `ASCII` |
 | MaxRespSize |Die maximale Größe des Antwortpuffers für SQL-Anforderungen in Kilobytes (KB). Beispiel: `MaxRespSize=‭10485760‬`.<br/><br/>Ab der Teradata Database-Version 16.00 beträgt der Höchstwert „7361536“. Bei Verbindungen mit älteren Versionen beträgt der Höchstwert „1048576“. | `65536` |
@@ -167,7 +168,7 @@ Dieser Abschnitt enthält eine Liste der Eigenschaften, die vom Teradata-Dataset
 
 Beim Kopieren von Daten aus Teradata werden die folgenden Eigenschaften unterstützt:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die Eigenschaft „type“ des Datasets muss auf `TeradataTable` festgelegt werden. | Ja |
 | database | Der Name der Teradata-Instanz. | Nein (wenn „query“ in der Aktivitätsquelle angegeben ist) |
@@ -221,7 +222,7 @@ Dieser Abschnitt enthält eine Liste der Eigenschaften, die von der Quelle „Te
 
 Beim Kopieren von Daten aus Teradata werden die folgenden Eigenschaften im Abschnitt **source** der Copy-Aktivität unterstützt:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die Eigenschaft „type“ der Quelle der Kopieraktivität muss auf `TeradataSource` festgelegt werden. | Ja |
 | Abfrage | Verwendet die benutzerdefinierte SQL-Abfrage zum Lesen von Daten. z. B. `"SELECT * FROM MyTable"`.<br>Wenn Sie partitioniertes Laden aktivieren, müssen Sie die entsprechenden integrierten Partitionsparameter in Ihre Abfrage integrieren. Beispiele finden Sie im Abschnitt [Paralleles Kopieren aus Teradata](#parallel-copy-from-teradata). | Nein (wenn „table“ im Dataset angegeben ist) |

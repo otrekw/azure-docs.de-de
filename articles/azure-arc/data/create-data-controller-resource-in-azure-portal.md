@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 297efa83fb1563e3a360f652a6ac1bc2b1679998
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bd8c079e91a6765dff8ad347085c44d0aa2f8d82
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90931613"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737302"
 ---
 # <a name="create-an-azure-arc-data-controller-in-the-azure-portal"></a>Erstellen eines Azure Arc-Datencontrollers im Azure-Portal
 
@@ -40,12 +40,16 @@ Führen Sie die folgenden Schritte aus, um mithilfe des Azure-Portals und Azure 
 6. Klicken Sie auf die Schaltfläche **Data Controller Details** (Datencontroller-Details).
 7. Wählen Sie ein Abonnement, eine Ressourcengruppe und einen Azure-Standort wie für jede andere Ressource aus, die Sie im Azure-Portal erstellen würden. In diesem Fall entspricht der von Ihnen ausgewählte Azure-Standort dem Ort, an dem die Metadaten zur Ressource gespeichert werden.  Die Ressource selbst wird in der von Ihnen gewählten Infrastruktur erstellt. Dabei muss es sich nicht um eine Azure-Infrastruktur handeln.
 8. Geben Sie einen Namen für den Datencontroller ein.
-9. Derzeit wird in der Vorschau nur der Modus „Indirekt verbunden“ unterstützt.
-10. Wählen Sie ein Profil für die Bereitstellungskonfiguration aus.
-11. Klicken Sie auf die Schaltfläche **Open in Azure Studio** (In Azure Studio öffnen).
-12. Im nächsten Bildschirm werden eine Zusammenfassung Ihrer Auswahl und ein Notebook angezeigt, das generiert wird.  Sie können auf die Schaltfläche **Download provisioning notebook** (Bereitstellungsnotebook herunterladen) klicken, um das Notebook herunterzuladen.
-13. Öffnen Sie das Notebook in Azure Data Studio, und klicken Sie oben auf die Schaltfläche **Alle ausführen**.
-14. Befolgen Sie die Aufforderungen und Anweisungen im Notebook, um die Erstellung des Datencontrollers abzuschließen.
+9. Wählen Sie den Konnektivitätsmodus für den Datencontroller aus. Weitere Informationen zu Konnektivitätsmodi und -anforderungen finden Sie [hier](./connectivity.md). 
+
+   > [!NOTE] 
+   > Bei Verwendung des **direkten** Konnektivitätsmodus müssen die Anmeldeinformationen des Dienstprinzipals über Umgebungsvariablen festgelegt werden, wie unter [Erstellen eines Dienstprinzipals](upload-metrics-and-logs-to-azure-monitor.md#create-service-principal) beschrieben. 
+
+1. Wählen Sie ein Profil für die Bereitstellungskonfiguration aus.
+1. Klicken Sie auf die Schaltfläche **Open in Azure Studio** (In Azure Studio öffnen).
+1. Im nächsten Bildschirm werden eine Zusammenfassung Ihrer Auswahl und ein Notebook angezeigt, das generiert wird.  Sie können auf die Schaltfläche **Download provisioning notebook** (Bereitstellungsnotebook herunterladen) klicken, um das Notebook herunterzuladen.
+1. Öffnen Sie das Notebook in Azure Data Studio, und klicken Sie oben auf die Schaltfläche **Alle ausführen**.
+1. Befolgen Sie die Aufforderungen und Anweisungen im Notebook, um die Erstellung des Datencontrollers abzuschließen.
 
 ## <a name="monitoring-the-creation-status"></a>Überwachen des Erstellungsstatus
 

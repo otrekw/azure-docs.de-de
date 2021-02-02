@@ -1,28 +1,25 @@
 ---
 title: Verwenden der Dienstverwaltungs-API (Python) – Featureleitfaden
 description: Hier erfahren Sie, wie die programmgesteuerte Durchführung gängiger Dienstverwaltungsaufgaben aus Python funktioniert.
-services: cloud-services
-documentationcenter: python
-author: tanmaygore
-manager: vashan
-editor: ''
-ms.assetid: 61538ec0-1536-4a7e-ae89-95967fe35d73
-ms.service: cloud-services
-ms.workload: tbd
-ms.tgt_pltfrm: na
-ms.devlang: python
 ms.topic: article
-ms.date: 05/30/2017
+ms.service: cloud-services
+ms.date: 10/14/2020
 ms.author: tagore
-ms.custom: devx-track-python
-ms.openlocfilehash: ef155116904ee0d3ecab250a254010e2f7664757
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 02993f2b79e37e5e50c20c4ee07220bcbd36edb8
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92073987"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98741399"
 ---
 # <a name="use-service-management-from-python"></a>Verwenden der Dienstverwaltung aus Python
+
+> [!IMPORTANT]
+> [Azure Cloud Services (erweiterter Support)](../cloud-services-extended-support/overview.md) ist ein neues Azure Resource Manager-basiertes Bereitstellungsmodell für Azure Cloud Services. Im Zuge dieser Änderung wurden Azure Cloud Services-Instanzen, die unter dem Azure Service Manager-basierten Bereitstellungsmodell ausgeführt werden, in „Cloud Services (klassisch)“ umbenannt. Für alle neuen Bereitstellungen wird [Azure Cloud Services (erweiterter Support)](../cloud-services-extended-support/overview.md) verwendet.
+
 In diesem Leitfaden wird die programmgesteuerte Durchführung gängiger Dienstverwaltungsaufgaben aus Python erläutert. Die Klasse **ServiceManagementService** im [Azure SDK für Python](https://github.com/Azure/azure-sdk-for-python) unterstützt den programmgesteuerten Zugriff auf viele der Dienstverwaltungsfunktionen, die im [Azure-Portal][management-portal] zur Verfügung stehen. Sie können mit diesen Funktionen Clouddienste, Bereitstellungen, Datenverwaltungsdienste und virtuelle Computer erstellen, aktualisieren und löschen. Diese Funktionalität kann bei der Erstellung von Anwendungen hilfreich sein, die programmgesteuert auf Dienstverwaltungsfunktionen zugreifen müssen.
 
 ## <a name="what-is-service-management"></a><a name="WhatIs"> </a>Was ist die Dienstverwaltung?

@@ -6,13 +6,13 @@ ms.author: bagol
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
-ms.date: 12/03/2020
-ms.openlocfilehash: 003a71f962652b1a1436f5d9875835534090a77a
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.date: 01/19/2021
+ms.openlocfilehash: b376883ab7d8ef0ffd57a271e74862b684788ebd
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98196587"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98630275"
 ---
 # <a name="automatically-label-your-data-in-azure-purview"></a>Automatisches Bezeichnen Ihrer Daten in Azure Purview
 
@@ -32,10 +32,9 @@ In Purview ähneln Klassifizierungen Betrefftags und werden zum Kennzeichnen und
 
 Purview verwendet die gleichen Klassifizierungen, auch als vertrauliche Informationstypen bezeichnet, wie Microsoft 365.  Die MIP-Vertraulichkeitsbezeichnungen werden im Microsoft 365 Security and Compliance Center (SCC) erstellt. Dies ermöglicht Ihnen, Ihre vorhandenen Vertraulichkeitsbezeichnungen auf Ihre Azure Purview-Ressourcen auszuweiten.
 
-> [!NOTE]
-> Klassifizierungen werden direkt abgeglichen, z. B. eine Sozialversicherungsnummer, die über die Klassifizierung **Sozialversicherungsnummer** verfügt. 
->
-> Im Gegensatz dazu werden Vertraulichkeitsbezeichnungen angewendet, wenn eine oder mehrere Klassifizierungen und Bedingungen gleichzeitig gefunden werden. In diesem Kontext beziehen sich [Bedingungen](/microsoft-365/compliance/apply-sensitivity-label-automatically) auf alle Parameter, die Sie für unstrukturierte Daten definieren können, z. B. **Nähe zu einer anderen Klassifizierung** und **% Konfidenz**. 
+**Klassifizierungen** werden direkt abgeglichen, z. B. eine Sozialversicherungsnummer, die über die Klassifizierung **Sozialversicherungsnummer** verfügt. 
+
+Im Gegensatz dazu werden **Vertraulichkeitsbezeichnungen** angewendet, wenn eine oder mehrere Klassifizierungen und Bedingungen gleichzeitig gefunden werden. In diesem Kontext beziehen sich [Bedingungen](/microsoft-365/compliance/apply-sensitivity-label-automatically) auf alle Parameter, die Sie für unstrukturierte Daten definieren können, z. B. *Nähe zu einer anderen Klassifizierung* und *% Konfidenz*. 
 
 Vertraulichkeitsbezeichnungen in Azure Purview können zum automatischen Anwenden von Bezeichnungen auf Dateien und Datenbankspalten verwendet werden.
 
@@ -44,6 +43,7 @@ Weitere Informationen finden Sie unter
 - [Informationen zu Vertraulichkeitsbezeichnungen](/microsoft-365/compliance/sensitivity-labels) in der Microsoft 365-Dokumentation
 - [Was sind Regeln für die automatische Bezeichnung?](#what-are-autolabeling-rules)
 - [Unterstützte Datentypen für Vertraulichkeitsbezeichnungen in Azure Purview](#supported-data-types-for-sensitivity-labels-in-azure-purview)
+- [Bezeichnungen für Spalten von SQL-Datenbanken](#labeling-for-sql-database-columns)
 
 #### <a name="what-are-autolabeling-rules"></a>Was sind Regeln für die automatische Bezeichnung?
 
@@ -54,7 +54,6 @@ Die Regeln für die automatische Bezeichnung sind Bedingungen, mit denen Sie ang
 Stellen Sie beim Erstellen der Bezeichnungen sicher, dass Sie sowohl für [Dateien](#define-autolabeling-rules-for-files) als auch [Datenbankspalten](#define-autolabeling-rules-for-database-columns) Regeln für die automatische Bezeichnung definieren, um die Bezeichnungen automatisch mit jedem Datenscan anzuwenden. 
 
 Nachdem Sie Ihre Daten in Purview gescannt haben, können Sie die automatisch angewendeten Bezeichnungen im Purview Catalog und in den Erkenntnisse-Berichten anzeigen.
-
 #### <a name="supported-data-types-for-sensitivity-labels-in-azure-purview"></a>Unterstützte Datentypen für Vertraulichkeitsbezeichnungen in Azure Purview
 
 Vertraulichkeitsbezeichnungen werden in Azure Purview für die folgenden Datentypen unterstützt:
@@ -62,8 +61,16 @@ Vertraulichkeitsbezeichnungen werden in Azure Purview für die folgenden Datenty
 |Datentyp  |Quellen  |
 |---------|---------|
 |Automatische Bezeichnung für Dateien     |      : Azure Blob Storage  </br>– Azure Data Lake Storage Gen 1 und Gen 2  |
-|Automatische Bezeichnung für Datenbankspalten     |  – SQL Server </br>– Azure SQL-Datenbank </br>– Verwaltete Azure SQL-Datenbank-Instanz   <br> – Azure Synapse  <br>: Azure Cosmos DB   |
+|Automatische Bezeichnung für Datenbankspalten     |  – SQL Server </br>– Azure SQL-Datenbank </br>– Verwaltete Azure SQL-Datenbank-Instanz   <br> – Azure Synapse  <br>: Azure Cosmos DB <br><br>Weitere Informationen finden Sie im Anschluss unter [Bezeichnungen für Spalten von SQL-Datenbanken](#labeling-for-sql-database-columns).  |
 | | |
+
+#### <a name="labeling-for-sql-database-columns"></a>Bezeichnungen für Spalten von SQL-Datenbanken
+
+Zusätzlich zu Purview-Bezeichnungen für Datenbankspalten unterstützt Microsoft auch Bezeichnungen für die Spalten von SQL-Datenbanken, indem die SQL-Datenklassifizierung in [SQL Server Management Studio (SSMS)](/sql/ssms/sql-server-management-studio-ssms) verwendet wird. Während in Purview die globalen [MIP-Vertraulichkeitsbezeichnungen](/microsoft-365/compliance/sensitivity-labels) verwendet werden, werden in SSMS nur lokal definierte Bezeichnungen genutzt.
+
+Bei den Bezeichnungen in Purview und in SSMS handelt es sich um separate Prozesse, die derzeit nicht miteinander interagieren. Aus diesem Grund werden in SSMS angewendete Bezeichnungen in Purview nicht angezeigt (und umgekehrt). Für Bezeichnungen in SQL-Datenbanken empfehlen wir Azure Purview, da hierbei globale MIP-Bezeichnungen genutzt werden, die übergreifend für mehrere Plattformen angewendet werden können.
+
+Weitere Informationen finden Sie unter [SQL-Datenermittlung und -klassifizierung](/sql/relational-databases/security/sql-data-discovery-and-classification).
 
 ## <a name="how-to-create-sensitivity-labels-in-microsoft-365"></a>Erstellen von Vertraulichkeitsbezeichnungen in Microsoft 365
 
@@ -86,7 +93,7 @@ Standardmäßig sind MIP-Vertraulichkeitsbezeichnungen nur für Ressourcen in Mi
 
 Zum Anwenden von MIP-Vertraulichkeitsbezeichnungen auf Azure-Ressourcen in Azure Purview müssen Sie der Erweiterung der Bezeichnungen ausdrücklich zustimmen und die spezifischen Bezeichnungen auswählen, die in Purview verfügbar sein sollen.
 
-Durch die Erweiterung der MIP-Vertraulichkeitsbezeichnungen mit Azure Purview können Organisationen nun die Vertraulichkeit in einer breiteren Palette von Datenquellen erkennen, klassifizieren und Erkenntnisse darüber erhalten. Dies minimiert das Compliancerisiko.
+Durch die Erweiterung der MIP-Vertraulichkeitsbezeichnungen mit Azure Purview können Organisationen die Vertraulichkeit nun für eine breitere Palette von Datenquellen erkennen und klassifizieren und Erkenntnisse dazu erhalten. Dies minimiert das Risiko in Bezug auf die Compliance.
 
 > [!NOTE]
 > Da Microsoft 365 und Azure Purview separate Dienste sind, werden sie möglicherweise in verschiedenen Regionen bereitgestellt. Bezeichnungsnamen und Namen benutzerdefinierter Vertraulichkeitsinformationstypen werden als Kundendaten betrachtet und standardmäßig am gleichen geografischen Standort aufbewahrt, um die Vertraulichkeit Ihrer Daten zu schützen und die Vorschriften der DSGVO einzuhalten.
@@ -123,7 +130,7 @@ Nachdem Sie die Bezeichnung auf Ressourcen in Azure Purview erweitert haben, kö
 
     Weitere Informationen zu den Optionen des Assistenten finden Sie unter [Wirkung von Vertraulichkeitsbezeichnungen](/microsoft-365/compliance/sensitivity-labels#what-sensitivity-labels-can-do) in der Microsoft 365-Dokumentation.
 
-1. Wiederholen Sie die oben aufgeführten Schritte, um zusätzliche Bezeichnungen zu erstellen. 
+1. Wiederholen Sie die oben aufgeführten Schritte, um weitere Bezeichnungen zu erstellen. 
 
     Um eine untergeordnete Bezeichnung zu erstellen, wählen Sie die übergeordnete Bezeichnung und dann **...**  > **Weitere Aktionen** > **Untergeordnete Bezeichnung hinzufügen**.
 

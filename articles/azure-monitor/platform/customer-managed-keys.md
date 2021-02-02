@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 01/10/2021
-ms.openlocfilehash: 889ee48c43119086047d6f52737266f4c611fc8d
-ms.sourcegitcommit: 61d2b2211f3cc18f1be203c1bc12068fc678b584
+ms.openlocfilehash: b6836eee7e0e6ccbfa2628e0e371152f31ddf9d2
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98562742"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98757541"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Kundenseitig verwaltete Schlüssel in Azure Monitor 
 
@@ -125,11 +125,33 @@ Diese Einstellungen können in Key Vault über die CLI und PowerShell aktualisie
 
 ## <a name="create-cluster"></a>Cluster erstellen
 
-> [!NOTE]
-> Cluster unterstützen zwei [Typen verwalteter Identitäten](../../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types): systemseitig zugewiesen und benutzerseitig zugewiesen. Jeder Typ wird abhängig vom jeweiligen Szenario eingesetzt. Die systemseitig zugewiesene verwaltete Identität ist einfacher und wird automatisch bei der Clustererstellung erstellt, wenn der `type` der Identität als *SystemAssigned* festgelegt ist. Diese Identität kann später verwendet werden, um dem Cluster Zugriff auf Ihre Key Vault-Instanz zu gewähren. Wenn Sie einen Cluster erstellen möchten, während der kundenseitig verwaltete Schlüssel definiert ist, müssen Sie im Voraus einen Schlüssel definiert und eine benutzerseitig zugewiesene Identität in Ihrer Key Vault-Instanz zugewiesen haben. Erstellen Sie dann den Cluster mit den folgenden Einstellungen: Legen Sie `type` für die Identität als *userassigned*, `UserAssignedIdentities` mit der Ressourcen-ID der Identität und `keyVaultProperties` mit Schlüsseldetails fest.
+Cluster unterstützen zwei [Typen verwalteter Identitäten](../../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types): systemseitige Zuweisung und benutzerseitige Zuweisung. Hierbei kann je nach Szenario eine einzelne Identität in einem Cluster definiert werden. 
+- Die Verwendung einer systemseitig zugewiesenen verwalteten Identität ist einfacher. Sie wird bei der Erstellung des Clusters automatisch generiert, wenn `type` für die Identität auf *SystemAssigned* festgelegt ist. Diese Identität kann später genutzt werden, um Zugriff auf Ihre Key Vault-Instanz zu gewähren, damit Vorgänge zum Umschließen bzw. Aufheben der Umschließung durchgeführt werden können. 
+  
+  Identitätseinstellungen im Cluster für systemseitig zugewiesene verwaltete Identität
+  ```json
+  {
+    "identity": {
+      "type": "SystemAssigned"
+      }
+  }
+  ```
+
+- Wenn Sie beim Erstellen des Clusters einen kundenseitig verwalteten Schlüssel konfigurieren möchten, sollten Sie in Ihrer Key Vault-Instanz im Voraus über einen Schlüssel und eine benutzerseitig zugewiesene Identität verfügen und den Cluster dann mit den folgenden Einstellungen erstellen: Legen Sie `type` für die Identität auf *UserAssigned* und `UserAssignedIdentities` auf die *Ressourcen-ID* Ihrer Identität fest.
+
+  Identitätseinstellungen im Cluster für benutzerseitig zugewiesene verwaltete Identität
+  ```json
+  {
+  "identity": {
+  "type": "UserAssigned",
+    "userAssignedIdentities": {
+      "subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft. ManagedIdentity/UserAssignedIdentities/<cluster-assigned-managed-identity>"
+      }
+  }
+  ```
 
 > [!IMPORTANT]
-> Derzeit ist es nicht möglich, den kundenseitig verwalteten Schlüssel mit einer benutzerseitig zugewiesenen verwalteten Identität zu definieren, wenn sich Ihre Key Vault-Instanz in einer Private Link-Instanz (VNet) befindet. In diesem Fall können Sie die systemseitig zugewiesene verwaltete Identität verwenden.
+> Sie können die benutzerseitig zugewiesene verwaltete Identität nicht verwenden, wenn Ihre Key Vault-Instanz unter einer privaten Verbindung (VNET) angeordnet ist. Für dieses Szenario können Sie die systemseitig zugewiesene verwaltete Identität verwenden.
 
 Folgen Sie dem im [Artikel zu dedizierten Clustern](../log-query/logs-dedicated-clusters.md#creating-a-cluster) beschriebenen Verfahren. 
 
@@ -243,15 +265,13 @@ Folgen Sie dem im [Artikel zu dedizierten Clustern](../log-query/logs-dedicated-
 
 ## <a name="key-revocation"></a>Schlüsselsperrung
 
-Sie können den Zugriff auf Daten widerrufen, indem Sie den Schlüssel deaktivieren oder die Zugriffsrichtlinie für den Cluster in Ihrer Key Vault-Instanz löschen. 
-
 > [!IMPORTANT]
-> - Wenn für Ihren Cluster die benutzerseitig zugewiesene verwaltete Identität festgelegt ist, wird durch das Festlegen von `UserAssignedIdentities` auf `None` der Cluster angehalten und der Zugriff auf Ihre Daten verhindert. Sie können die Sperrung nur zurücksetzen und den Cluster aktivieren, indem Sie eine Supportanfrage öffnen. Diese Einschränkung gilt nicht für die systemseitig zugewiesene verwaltete Identität.
-> - Die empfohlene Aktion zur Schlüsselsperrung besteht darin, den Schlüssel in Ihrer Key Vault-Instanz zu deaktivieren.
+> - Die empfohlene Vorgehensweise zum Widerrufen des Zugriffs auf Ihre Daten besteht darin, Ihren Schlüssel zu deaktivieren oder die Zugriffsrichtlinie auf Ihrer Key Vault-Instanz zu löschen.
+> - Wenn Sie für das `identity`-Element Ihres Clusters unter `type` die Option „None“ angeben, wird auch der Zugriff auf Ihre Daten widerrufen. Dieser Ansatz ist aber nicht zu empfehlen, da Sie den Widerruf nicht einfach rückgängig machen können, indem Sie `identity` im Cluster wieder angeben. Sie müssen hierfür eine Supportanfrage erstellen.
 
-Im Clusterspeicher werden Änderungen der Schlüsselberechtigungen immer innerhalb einer Stunde berücksichtigt, und der Speicher steht dann nicht mehr zur Verfügung. Neue Daten, die in den mit Ihrem Cluster verknüpften Arbeitsbereichen erfasst wurden, werden gelöscht und können nicht wiederhergestellt werden. Der Zugriff auf die Daten und Abfragen in diesen Arbeitsbereichen sind nicht mehr möglich. Zuvor erfasste Daten verbleiben im Speicher, solange der Cluster und Ihre Arbeitsbereiche nicht gelöscht werden. Daten, auf die nicht zugegriffen werden kann, unterliegen der Datenaufbewahrungsrichtlinie und werden bereinigt, sobald der Aufbewahrungszeitraum abgelaufen ist. Die in den letzten 14 Tagen erfassten Daten werden für einen effizienten Betrieb der Abfrage-Engine auch im Hot-Cache (SSD-gestützt) aufbewahrt. Diese werden beim Schlüsselsperrungsvorgang gelöscht, und es kann dann ebenfalls nicht mehr darauf zugegriffen werden.
+Im Clusterspeicher werden Änderungen der Schlüsselberechtigungen immer innerhalb einer Stunde berücksichtigt, und der Speicher steht dann nicht mehr zur Verfügung. Neue Daten, die in den mit Ihrem Cluster verknüpften Arbeitsbereichen erfasst wurden, werden gelöscht und können nicht wiederhergestellt werden. Der Zugriff auf die Daten und Abfragen in diesen Arbeitsbereichen sind nicht mehr möglich. Zuvor erfasste Daten verbleiben im Speicher, solange der Cluster und Ihre Arbeitsbereiche nicht gelöscht werden. Daten, auf die nicht zugegriffen werden kann, unterliegen der Datenaufbewahrungsrichtlinie und werden bereinigt, sobald der Aufbewahrungszeitraum abgelaufen ist. Die in den letzten 14 Tagen erfassten Daten werden für einen effizienten Betrieb der Abfrage-Engine auch im Hot-Cache (SSD-gestützt) aufbewahrt. Diese werden beim Schlüsselsperrungsvorgang gelöscht, und es kann dann nicht mehr darauf zugegriffen werden.
 
-Der Clusterspeicher fragt Ihre Key Vault-Instanz in regelmäßigen Abständen ab und versucht, den Verschlüsselungsschlüssel zu entpacken. Sobald der Zugriff erfolgt, werden Datenerfassung und Abfrage innerhalb von 30 Minuten fortgesetzt.
+Der Clusterspeicher überprüft Ihre Key Vault-Instanz in regelmäßigen Abständen und versucht, den Verschlüsselungsschlüssel zu entpacken. Sobald der Zugriff erfolgt, werden die Vorgänge für die Datenerfassung und die Abfrage innerhalb von 30 Minuten fortgesetzt.
 
 ## <a name="key-rotation"></a>Schlüsselrotation
 
@@ -259,7 +279,7 @@ Die Rotation des kundenseitig verwalteten Schlüssels erfordert eine explizite A
 
 Nach der Schlüsselrotation kann auf alle Ihre Daten weiter zugegriffen werden, da Daten immer mit dem Kontoverschlüsselungsschlüssel (Account Encryption Key, AEK) verschlüsselt werden, während AEK nun mit der neuen Version des Schlüsselverschlüsselungsschlüssels (Key Encryption Key, KEK) in Key Vault verschlüsselt wird.
 
-## <a name="customer-managed-key-for-queries"></a>Kundenseitig verwalteter Schlüssel für Abfragen
+## <a name="customer-managed-key-for-saved-queries"></a>Kundenseitig verwalteter Schlüssel für gespeicherte Abfragen
 
 Die in Log Analytics verwendete Abfragesprache ist ausdrucksstark und kann vertrauliche Informationen in Kommentaren enthalten, die Sie Abfragen oder in der Abfragesyntax hinzufügen. Einige Organisationen verlangen, dass diese Informationen als Teil der Richtlinie für kundenseitig verwaltete Schlüssel geschützt werden, und Sie müssen Ihre Abfragen mit Ihrem Schlüssel verschlüsselt speichern. Azure Monitor ermöglicht Ihnen das Speichern von Abfragen für *gespeicherter Suchvorgänge* und *Protokollwarnungen* mit Verschlüsselung mit Ihrem Schlüssel in Ihrem eigenen Speicherkonto, sofern Sie mit Ihrem Arbeitsbereich verbunden sind. 
 
@@ -386,15 +406,11 @@ Der kundenseitig verwaltete Schlüssel wird im dedizierten Cluster bereitgestell
 
 ## <a name="limitations-and-constraints"></a>Einschränkungen
 
-- Ein kundenseitig verwalteter Schlüssel wird auf dedizierten Log Analytics-Clustern unterstützt und eignet sich für Kunden, die 1 TB oder mehr pro Tag senden.
-
 - Die maximale Anzahl von Clustern pro Region und Abonnement beträgt 2.
 
-- Das Maximum der verknüpften Arbeitsbereiche für den Cluster beträgt 1000.
+- Die maximale Anzahl von Arbeitsbereichen, die mit einem Cluster verknüpft werden können, beträgt 1.000.
 
 - Sie können einen Arbeitsbereich mit Ihrem Cluster verknüpfen und dann die Verknüpfung aufheben. Die Anzahl der Verknüpfungen in einem bestimmten Arbeitsbereich ist innerhalb eines Zeitraums von 30 Tagen auf 2 begrenzt.
-
-- Die Arbeitsbereichverknüpfung mit einem Cluster sollte NUR ausgeführt werden, nachdem Sie sichergestellt haben, dass die Log Analytics-Clusterbereitstellung abgeschlossen wurde. Daten, die vor dem Abschluss an Ihren Arbeitsbereich gesendet wurden, werden gelöscht und können nicht wiederhergestellt werden.
 
 - Die Verschlüsselung mit kundenseitig verwaltetem Schlüssel gilt für Daten, die nach dem Konfigurationszeitpunkt neu erfasst werden. Daten, die vor der Konfiguration erfasst wurden, bleiben mit dem Microsoft-Schlüssel verschlüsselt. Sie können vor und nach der Konfiguration des kundenseitig verwalteten Schlüssels erfasste Daten nahtlos abfragen.
 
@@ -404,19 +420,17 @@ Der kundenseitig verwaltete Schlüssel wird im dedizierten Cluster bereitgestell
 
 - Das Verschieben eines Clusters in eine andere Ressourcengruppe oder ein anderes Abonnement wird derzeit nicht unterstützt.
 
-- Azure Key Vault, Cluster und verknüpfte Arbeitsbereiche müssen sich in derselben Region und in demselben Azure Active Directory (Azure AD)-Mandanten befinden, können jedoch in unterschiedlichen Abonnements enthalten sein.
-
-- Die Arbeitsbereichverknüpfung mit dem Cluster schlägt fehl, wenn er mit einem anderen Cluster verknüpft ist.
+- Azure Key Vault, Cluster und Arbeitsbereiche müssen sich in derselben Region und in demselben Azure AD-Mandanten (Azure Active Directory) befinden, aber sie können in unterschiedlichen Abonnements enthalten sein.
 
 - Lockbox ist in China derzeit nicht verfügbar. 
 
-- [Doppelte Verschlüsselung](../../storage/common/storage-service-encryption.md#doubly-encrypt-data-with-infrastructure-encryption) wird automatisch für Cluster konfiguriert, die ab Oktober 2020 in unterstützten Regionen erstellt werden. Sie können überprüfen, ob Ihr Cluster für doppelte Verschlüsselung konfiguriert ist. Dazu verwenden Sie eine GET-Anforderung für den Cluster und beobachten den Wert der Eigenschaft `"isDoubleEncryptionEnabled"`. Bei Clustern mit aktivierter doppelter Verschlüsselung lautet dieser `true`. 
-  - Wenn Sie einen Cluster erstellen und die Fehlermeldung „Die doppelte Verschlüsselung für Cluster wird von <Regionsname> nicht unterstützt.“ erhalten, können Sie den Cluster trotzdem ohne doppelte Verschlüsselung erstellen. Fügen Sie die Eigenschaft `"properties": {"isDoubleEncryptionEnabled": false}` im REST-Anforderungstext hinzu.
+- [Doppelte Verschlüsselung](../../storage/common/storage-service-encryption.md#doubly-encrypt-data-with-infrastructure-encryption) wird automatisch für Cluster konfiguriert, die ab Oktober 2020 in unterstützten Regionen erstellt werden. Sie können überprüfen, ob Ihr Cluster für die doppelte Verschlüsselung konfiguriert ist. Hierfür senden Sie eine GET-Anforderung für den Cluster und sehen sich dann an, ob der `isDoubleEncryptionEnabled`-Wert für Cluster mit aktivierter doppelter Verschlüsselung `true` lautet. 
+  - Wenn Sie einen Cluster erstellen und die Fehlermeldung „Die doppelte Verschlüsselung für Cluster wird von <Regionsname> nicht unterstützt.“ erhalten, können Sie den Cluster trotzdem ohne doppelte Verschlüsselung erstellen, indem Sie `"properties": {"isDoubleEncryptionEnabled": false}` im REST-Anforderungstext hinzufügen.
   - Die Einstellung für doppelte Verschlüsselung kann nach dem Erstellen des Clusters nicht mehr geändert werden.
 
   - Wenn für Ihren Cluster die benutzerseitig zugewiesene verwaltete Identität festgelegt ist, wird durch das Festlegen von `UserAssignedIdentities` auf `None` der Cluster angehalten und der Zugriff auf Ihre Daten verhindert. Sie können die Sperrung nur zurücksetzen und den Cluster aktivieren, indem Sie eine Supportanfrage öffnen. Diese Einschränkung gilt nicht für die systemseitig zugewiesene verwaltete Identität.
 
-  - Derzeit ist es nicht möglich, den kundenseitig verwalteten Schlüssel mit einer benutzerseitig zugewiesenen verwalteten Identität zu definieren, wenn sich Ihre Key Vault-Instanz in einer Private Link-Instanz (VNet) befindet. In diesem Fall können Sie die systemseitig zugewiesene verwaltete Identität verwenden.
+  - Sie können einen kundenseitig verwalteten Schlüssel mit benutzerseitig zugewiesener verwalteter Identität nicht verwenden, wenn Ihre Key Vault-Instanz unter einer privaten Verbindung (VNET) angeordnet ist. Für dieses Szenario können Sie die systemseitig zugewiesene verwaltete Identität verwenden.
 
 ## <a name="troubleshooting"></a>Problembehandlung
 
@@ -429,13 +443,15 @@ Der kundenseitig verwaltete Schlüssel wird im dedizierten Cluster bereitgestell
 
   - Key Vault-Zugriffsrate: Die Häufigkeit, mit der Azure Monitor Storage für Pack- und Entpackvorgänge auf Key Vault zugreift, liegt zwischen 6 und 60 Sekunden.
 
-- Wenn Sie einen Cluster erstellen und „KeyVaultProperties“ sofort angeben, tritt bei dem Vorgang möglicherweise ein Fehler auf, da die Zugriffsrichtlinie erst definiert werden kann, nachdem die Systemidentität des Clusters zugewiesen wurde.
-
-- Wenn Sie einen vorhandenen Cluster mit „KeyVaultProperties“ aktualisieren und die Zugriffsrichtlinie für den Schlüsselabruf in Key Vault nicht vorhanden ist, schlägt der Vorgang fehl.
+- Wenn Sie den Cluster aktualisieren, während der Cluster bereitgestellt oder bereits aktualisiert wird, tritt bei der Aktualisierung ein Fehler auf.
 
 - Wenn beim Erstellen eines Clusters ein Konfliktfehler auftritt, haben Sie Ihren Cluster möglicherweise in den letzten 14 Tagen gelöscht und dieser befindet sich nun im Zeitraum des vorläufigen Löschens. Der Clustername bleibt während des Zeitraums des vorläufigen Löschens reserviert, und Sie können keinen neuen Cluster mit diesem Namen erstellen. Der Name wird nach Ablauf des Zeitraums des vorläufigen Löschens freigegeben, wenn der Cluster dauerhaft gelöscht wird.
 
-- Wenn Sie den Cluster aktualisieren, während ein Vorgang läuft, schlägt der Vorgang fehl.
+- Die Arbeitsbereichverknüpfung mit dem Cluster schlägt fehl, wenn er mit einem anderen Cluster verknüpft ist.
+
+- Wenn Sie einen Cluster erstellen und „KeyVaultProperties“ sofort angeben, tritt bei dem Vorgang möglicherweise ein Fehler auf, da die Zugriffsrichtlinie erst definiert werden kann, nachdem die Systemidentität des Clusters zugewiesen wurde.
+
+- Wenn Sie einen vorhandenen Cluster mit „KeyVaultProperties“ aktualisieren und die Zugriffsrichtlinie für den Schlüsselabruf in Key Vault nicht vorhanden ist, schlägt der Vorgang fehl.
 
 - Wenn Sie den Cluster nicht bereitstellen, vergewissern Sie sich, dass sich Azure Key Vault, Cluster und verknüpfte Log Analytics-Arbeitsbereiche in der gleichen Region befinden. Sie können in unterschiedlichen Abonnements enthalten sein.
 

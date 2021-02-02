@@ -1,20 +1,20 @@
 ---
-title: Überwachen von geplanten Ereignissen für Windows-VMs in Azure
+title: Überwachen geplanter Ereignisse für Ihre virtuellen Computer in Azure
 description: Erfahren Sie, wie Sie Ihre virtuellen Azure-Computer für geplante Ereignisse überwachen.
 author: mysarn
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
 ms.subservice: monitoring
 ms.date: 08/20/2019
 ms.author: sarn
 ms.topic: how-to
-ms.openlocfilehash: 0d1edde5ac1b83feab458eb5d12d524163d3ffb1
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: e3e44019d09927ff700e74b713a1b02136fedbc1
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96483299"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98702269"
 ---
-# <a name="monitoring-scheduled-events"></a>Überwachen von geplanten Ereignissen
+# <a name="monitor-scheduled-events-for-your-azure-vms"></a>Überwachen geplanter Ereignisse für Ihre virtuellen Azure-Computer
 
 Updates werden täglich auf verschiedene Teile von Azure angewendet, damit die Dienste, die auf ihnen ausgeführt werden, sicher und auf dem neuesten Stand bleiben. Zusätzlich zu geplanten Updates können auch ungeplante Ereignisse auftreten. Wenn beispielsweise eine Hardwarebeeinträchtigung oder ein Hardwarefehler erkannt wird, müssen die Azure-Dienste möglicherweise nicht geplante Wartung ausführen. Durch Verwenden von Livemigration und speichererhaltende Updates sowie grundsätzliches Beachten einer strengen Begrenzung der Auswirkungen von Updates sind diese Ereignisse in den meisten Fällen für Kunden weitestgehend transparent, und die Ereignisse haben entweder keine Auswirkung oder verursachen höchstens für einige Sekunden ein Einfrieren des virtuellen Computers. Es gibt jedoch Anwendungen, bei denen sich bereits wenige Sekunden eines Einfrierens des virtuellen Computers negativ auswirken. Es ist wichtig, im Voraus über eine bevorstehende Azure-Wartung informiert zu sein, um das beste Betriebsverhalten für solche Anwendungen sicherzustellen. Der [Scheduled Events-Dienst](scheduled-events.md) stellt Ihnen eine befehlsorientierte Benutzerschnittstelle zur Verfügung, um über bevorstehende Wartung benachrichtigt zu werden, und ermöglicht es Ihnen, die Wartung reibungslos abzuwickeln. 
 
@@ -39,7 +39,7 @@ Außerdem müssen Sie einen [Log Analytics-Arbeitsbereich](../../azure-monitor/l
 
 ## <a name="set-up-the-environment"></a>Einrichten der Umgebung
 
-Sie sollten jetzt zwei erste virtuelle Computer in einer Verfügbarkeitsgruppe haben. Nun muss in derselben Verfügbarkeitsgruppe ein dritter virtueller Computer erstellt werden, der den Namen „myCollectorVM“ hat. 
+Sie sollten jetzt zwei erste virtuelle Computer in einer Verfügbarkeitsgruppe haben. Nun muss in der gleichen Verfügbarkeitsgruppe ein dritter virtueller Computer mit dem Namen `myCollectorVM` erstellt werden. 
 
 ```azurepowershell-interactive
 New-AzVm `
@@ -150,7 +150,7 @@ Sobald die Ereignisse an Log Analytics übermittelt wurden, können Sie die folg
     | project-away RenderedDescription,ReqJson
     ```
 
-1. Wählen Sie **Speichern** aus, geben Sie dann *logQuery* für den Namen ein, belassen Sie **Abfrage** als Typ, geben Sie *VMLogs* als **Kategorie** ein, und wählen Sie dann **Speichern** aus. 
+1. Wählen Sie **Speichern** aus, geben Sie dann `ogQuery` für den Namen ein, belassen Sie **Abfrage** als Typ, geben Sie `VMLogs` als **Kategorie** ein, und wählen Sie dann **Speichern** aus. 
 
     ![Speichern der Abfrage](./media/notifications/save-query.png)
 
@@ -160,7 +160,7 @@ Sobald die Ereignisse an Log Analytics übermittelt wurden, können Sie die folg
 1. Geben Sie unter **Schwellenwert** den Wert *0* ein, und wählen Sie dann **Fertig** aus.
 1. Wählen Sie unter **Aktionen** die Option **Aktionsgruppe erstellen** aus. Die Seite **Aktionsgruppe hinzufügen** wird geöffnet.
 1. Geben Sie in **Name der Aktionsgruppe** den Namen *myActionGroup* ein.
-1. Geben Sie in **Kurzname** den Namen **myActionGroup** ein.
+1. Geben Sie in **Kurzname** den Namen *myActionGroup* ein.
 1. Wählen Sie unter **Ressourcengruppe** den Eintrag **myResourceGroupAvailability** aus.
 1. Geben Sie in **AKTIONSNAME** den Namen **E-Mail** ein, und wählen Sie dann **E-Mail/SMS/Push/Sprache** aus. Die Seite **E-Mail/SMS/Push/Sprache** wird geöffnet.
 1. Wählen Sie **E-Mail** aus, geben Sie Ihre E-Mail-Adresse ein, und wählen Sie dann **OK** aus.

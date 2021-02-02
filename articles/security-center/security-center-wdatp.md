@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/20/2020
 ms.author: memildin
-ms.openlocfilehash: 553151aebeadf4ad4764e747b1bf6dcd8c552721
-ms.sourcegitcommit: 02b1179dff399c1aa3210b5b73bf805791d45ca2
+ms.openlocfilehash: 519285f2bad352aa16bdc8d9a1db7a63c2eb04e5
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98126851"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98876392"
 ---
 # <a name="protect-your-endpoints-with-security-centers-integrated-edr-solution-microsoft-defender-for-endpoint"></a>Schützen Sie Ihre Endpunkte mit der in Security Center integrierten EDR-Lösung: Microsoft Defender für den Endpunkt
 
@@ -43,7 +43,8 @@ Microsoft Defender für den Endpunkt ist eine ganzheitliche, cloudbasierte Lösu
 | Status des Release:                  | Allgemein verfügbar (Generally Available, GA)                                                                                                                                                                                                                                                                                      |
 | Preise:                        | Erfordert [Azure Defender für Server](security-center-pricing.md)                                                                                                                                                                                                                                             |
 | Unterstützte Plattformen:            | Azure-Computer unter Windows<br>Azure Arc-Computer unter Windows|
-| Unterstützte Windows-Versionen:  |  • Security Center unterstützt die Erkennung unter Windows Server 2016, 2012 R2 und 2008 R2 SP1.<br> • Die Serverendpunktüberwachung, die diese Integration verwendet, wurde für Office 365-GCC-Kunden deaktiviert.<br> • Keine Unterstützung für Windows Server 2019, Windows 10 1703 (und höher) oder Linux|
+| Unterstützte Windows-Versionen:  |  • Security Center unterstützt die Erkennung unter Windows Server 2016, 2012 R2 und 2008 R2 SP1.<br> • Die Serverendpunktüberwachung, die diese Integration verwendet, wurde für Office 365-GCC-Kunden deaktiviert.|
+| Nicht unterstützte Betriebssysteme:  |  • Windows Server 2019<br> • Windows 10<br> • Linux|
 | Erforderliche Rollen und Berechtigungen: | So aktivieren/deaktivieren Sie die Integration: **Sicherheitsadministrator** oder **Besitzer**<br>So zeigen Sie MDATP-Warnungen in Security Center an: **Sicherheitsleseberechtigter**, **Leser**, **Ressourcengruppenmitwirkender**, **Ressourcengruppenbesitzer**, **Sicherheitsadministrator**, **Abonnementbesitzer** oder **Abonnementmitwirkender**|
 | Clouds:                         | ![Ja](./media/icons/yes-icon.png) Kommerzielle Clouds<br>![Ja](./media/icons/yes-icon.png) US Gov<br>![Nein](./media/icons/no-icon.png) China Gov/andere Gov-Clouds<br>![Nein](./media/icons/no-icon.png) GCC-Kunden, die Workloads in globalen Azure-Clouds ausführen                                                        |
 |                                 |                                                                                                                                                                                                                                                                                                               |
@@ -61,7 +62,7 @@ Microsoft Defender für den Endpunkt bietet folgende Features:
 
 Durch die Integration von Defender für den Endpunkt in Security Center können Sie von den folgenden zusätzlichen Funktionen profitieren:
 
-- **Automatisiertes Onboarding**. Security Center aktiviert automatisch den Sensor von Microsoft Defender für Endpunkte für alle Windows-Server, die von Security Center überwacht werden. Dies gilt nicht für Server, auf denen Windows Server 2019 ausgeführt wird. Für diese muss über ein lokales Skript, ein Gruppenrichtlinienobjekt (Group Policy Object, GPO) oder [Microsoft Endpoint Configuration Manager](https://docs.microsoft.com/mem/configmgr/) (früher SCCM) ein Onboarding durchgeführt werden.
+- **Automatisiertes Onboarding**. Security Center aktiviert automatisch den Sensor von Microsoft Defender für Endpunkte für alle Windows-Server, die von Security Center überwacht werden. Dies gilt nicht für Server, auf denen Windows Server 2019 ausgeführt wird. Für diese muss über ein lokales Skript, ein Gruppenrichtlinienobjekt (Group Policy Object, GPO) oder [Microsoft Endpoint Configuration Manager](/mem/configmgr/) (früher SCCM) ein Onboarding durchgeführt werden.
 
 - **Zentralisierte Benutzeroberfläche**. Die Security Center-Konsole zeigt Warnungen aus Microsoft Defender für den Endpunkt an. Zur weiteren Untersuchung verwenden Sie die speziellen Portalseiten von Microsoft Defender für den Endpunkt, auf denen Sie zusätzliche Informationen wie die Warnungsprozessstruktur und das Incidentdiagramm finden. Sie können auch eine detaillierte Computerzeitachse verwenden, die jedes Verhalten über einen historischen Zeitraum von bis zu sechs Monaten anzeigt.
 
@@ -105,7 +106,7 @@ Nachdem Sie den Speicherort konfiguriert haben, kann dieser nicht mehr geändert
 So generieren Sie eine unbedenkliche Testwarnung in Microsoft Defender für den Endpunkt
 
 1. Erstellen Sie einen Ordner „C:\test-MDATP-test“.
-1. Verwenden Sie Remotedesktop, um auf eine Windows Server 2012 R2-VM oder eine Windows Server 2016-VM zuzugreifen.
+1. Verwenden Sie Remotedesktop, um auf Ihren Computer zuzugreifen.
 1. Öffnen Sie ein Befehlszeilenfenster.
 1. Kopieren Sie an der Eingabeaufforderung den folgenden Befehl, und führen Sie ihn aus. Das Eingabeaufforderungsfenster wird automatisch geschlossen.
 
@@ -118,6 +119,8 @@ So generieren Sie eine unbedenkliche Testwarnung in Microsoft Defender für den 
 1. Um die Warnung in Security Center zu überprüfen, navigieren Sie zu **Sicherheitswarnungen** > **Verdächtige PowerShell-Befehlszeile**.
 1. Wählen Sie im Untersuchungsfenster den Link aus, um zum Portal von Microsoft Defender für den Endpunkt zu navigieren.
 
+    > [!TIP]
+    > Die Warnung wird mit dem Schweregrad **Info** ausgelöst.
 
 ## <a name="faq-for-security-centers-integrated-microsoft-defender-for-endpoint"></a>Häufig gestellte Fragen zum in Security Center integrierten Microsoft Defender für den Endpunkt
 

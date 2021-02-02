@@ -2,13 +2,13 @@
 title: Bereitstellen von Ressourcen mit PowerShell und Vorlagen
 description: Verwenden Sie Azure Resource Manager und Azure PowerShell, um Ressourcen in Azure bereitzustellen. Die Ressourcen werden in einer Resource Manager-Vorlage definiert.
 ms.topic: conceptual
-ms.date: 01/15/2021
-ms.openlocfilehash: d895c6e029b0b4a70333dde987706549609c8bd3
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.date: 01/26/2021
+ms.openlocfilehash: efefb6706794bc2488aa4d4fef6c4ecc082b41a7
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98251021"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881264"
 ---
 # <a name="deploy-resources-with-arm-templates-and-azure-powershell"></a>Bereitstellen von Ressourcen mit ARM-Vorlagen und Azure PowerShell
 
@@ -61,48 +61,6 @@ Sie können als Ziel für Ihre Bereitstellung eine Ressourcengruppe, ein Abonnem
 
 Der Benutzer, der die Vorlage bereitstellt, muss für jeden Bereich über die erforderlichen Berechtigungen zum Erstellen von Ressourcen verfügen.
 
-## <a name="deploy-local-template"></a>Bereitstellen einer lokalen Vorlage
-
-Sie können eine Vorlage bereitstellen, die auf Ihrem lokalen Computer oder extern gespeichert ist. In diesem Abschnitt wird die Bereitstellung einer lokalen Vorlage beschrieben.
-
-Wenn eine Bereitstellung in einer Ressourcengruppe erfolgen soll, die nicht vorhanden ist, erstellen Sie zunächst die Ressourcengruppe. Der Name einer Ressourcengruppe darf nur alphanumerische Zeichen, Punkte, Unterstriche, Bindestriche und Klammern enthalten. Der Name kann bis zu 90 Zeichen umfassen. Der Name darf nicht mit einem Punkt enden.
-
-```azurepowershell
-New-AzResourceGroup -Name ExampleGroup -Location "Central US"
-```
-
-Verwenden Sie zum Bereitstellen einer lokalen Vorlage im Bereitstellungsbefehl den Parameter `-TemplateFile`. Das folgende Beispiel zeigt auch, wie ein Parameterwert festgelegt wird, der aus der Vorlage stammt.
-
-```azurepowershell
-New-AzResourceGroupDeployment `
-  -Name ExampleDeployment `
-  -ResourceGroupName ExampleGroup `
-  -TemplateFile c:\MyTemplates\azuredeploy.json
-```
-
-Die Bereitstellung kann einige Minuten dauern.
-
-## <a name="deploy-remote-template"></a>Bereitstellen einer Remotevorlage
-
-Anstatt ARM-Vorlagen auf dem lokalen Computer zu speichern, könnten Sie sie auch an einem externen Speicherort speichern. Sie können Vorlagen in einem Quellcodeverwaltungs-Repository (z.B. GitHub) speichern. Für den gemeinsamen Zugriff in Ihrer Organisation können Sie sie auch in einem Azure-Speicherkonto speichern.
-
-Wenn eine Bereitstellung in einer Ressourcengruppe erfolgen soll, die nicht vorhanden ist, erstellen Sie zunächst die Ressourcengruppe. Der Name einer Ressourcengruppe darf nur alphanumerische Zeichen, Punkte, Unterstriche, Bindestriche und Klammern enthalten. Der Name kann bis zu 90 Zeichen umfassen. Der Name darf nicht mit einem Punkt enden.
-
-```azurepowershell
-New-AzResourceGroup -Name ExampleGroup -Location "Central US"
-```
-
-Verwenden Sie zum Bereitstellen einer externen Vorlage den `-TemplateUri`-Parameter.
-
-```azurepowershell
-New-AzResourceGroupDeployment `
-  -Name ExampleDeployment `
-  -ResourceGroupName ExampleGroup `
-  -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json
-```
-
-Das obige Beispiel erfordert einen URI mit öffentlichem Zugriff für die Vorlage, was in den meisten Szenarien funktioniert, da die Vorlage keine vertraulichen Daten enthalten sollte. Wenn Sie vertrauliche Daten (z.B. ein Administratorkennwort) angeben müssen, übergeben Sie diesen Wert als sicheren Parameter. Wenn Sie jedoch den Zugriff auf die Vorlage verwalten möchten, erwägen Sie den Einsatz von [Vorlagenspezifikationen](#deploy-template-spec).
-
 ## <a name="deployment-name"></a>„Deployment name“ (Bereitstellungsname)
 
 Wenn Sie eine ARM-Vorlage bereitstellen, können Sie der Bereitstellung einen Namen geben. Dieser Name kann das Abrufen der Bereitstellung aus dem Bereitstellungsverlauf vereinfachen. Wenn Sie keinen Namen für die Bereitstellung angeben, wird der Name der Vorlagendatei verwendet. Wenn Sie beispielsweise eine Vorlage mit dem Namen `azuredeploy.json` bereitstellen und keinen Bereitstellungsnamen angeben, erhält die Bereitstellung den Namen `azuredeploy`.
@@ -130,6 +88,60 @@ Führen Sie jedoch eine Bereitstellung mit dem Namen `newStorage` aus, die ein S
 Wenn Sie für jede Bereitstellung einen eindeutigen Namen angeben, können Sie diese ohne Konflikt gleichzeitig ausführen. Wenn Sie eine Bereitstellung namens `newStorage1` ausführen, die ein Speicherkonto namens `storage1` bereitstellt, und gleichzeitig eine andere Bereitstellung namens `newStorage2` ausführen, die ein Speicherkonto namens `storage2` bereitstellt, erhalten Sie zwei Speicherkonten und zwei Einträge im Bereitstellungsverlauf.
 
 Um Konflikte mit gleichzeitigen Bereitstellungen zu vermeiden und eindeutige Einträge im Bereitstellungsverlauf zu gewährleisten, geben Sie jeder Bereitstellung einen eindeutigen Namen.
+
+## <a name="deploy-local-template"></a>Bereitstellen einer lokalen Vorlage
+
+Sie können eine Vorlage bereitstellen, die auf Ihrem lokalen Computer oder extern gespeichert ist. In diesem Abschnitt wird die Bereitstellung einer lokalen Vorlage beschrieben.
+
+Wenn eine Bereitstellung in einer Ressourcengruppe erfolgen soll, die nicht vorhanden ist, erstellen Sie zunächst die Ressourcengruppe. Der Name einer Ressourcengruppe darf nur alphanumerische Zeichen, Punkte, Unterstriche, Bindestriche und Klammern enthalten. Der Name kann bis zu 90 Zeichen umfassen. Der Name darf nicht mit einem Punkt enden.
+
+```azurepowershell
+New-AzResourceGroup -Name ExampleGroup -Location "Central US"
+```
+
+Verwenden Sie zum Bereitstellen einer lokalen Vorlage im Bereitstellungsbefehl den Parameter `-TemplateFile`. Das folgende Beispiel zeigt auch, wie ein Parameterwert festgelegt wird, der aus der Vorlage stammt.
+
+```azurepowershell
+New-AzResourceGroupDeployment `
+  -Name ExampleDeployment `
+  -ResourceGroupName ExampleGroup `
+  -TemplateFile c:\MyTemplates\azuredeploy.json
+```
+
+Die Bereitstellung kann mehrere Minuten dauern.
+
+## <a name="deploy-remote-template"></a>Bereitstellen einer Remotevorlage
+
+Anstatt ARM-Vorlagen auf dem lokalen Computer zu speichern, könnten Sie sie auch an einem externen Speicherort speichern. Sie können Vorlagen in einem Quellcodeverwaltungs-Repository (z.B. GitHub) speichern. Für den gemeinsamen Zugriff in Ihrer Organisation können Sie sie auch in einem Azure-Speicherkonto speichern.
+
+Wenn eine Bereitstellung in einer Ressourcengruppe erfolgen soll, die nicht vorhanden ist, erstellen Sie zunächst die Ressourcengruppe. Der Name einer Ressourcengruppe darf nur alphanumerische Zeichen, Punkte, Unterstriche, Bindestriche und Klammern enthalten. Der Name kann bis zu 90 Zeichen umfassen. Der Name darf nicht mit einem Punkt enden.
+
+```azurepowershell
+New-AzResourceGroup -Name ExampleGroup -Location "Central US"
+```
+
+Verwenden Sie zum Bereitstellen einer externen Vorlage den `-TemplateUri`-Parameter.
+
+```azurepowershell
+New-AzResourceGroupDeployment `
+  -Name remoteTemplateDeployment `
+  -ResourceGroupName ExampleGroup `
+  -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json
+```
+
+Das obige Beispiel erfordert einen URI mit öffentlichem Zugriff für die Vorlage, was in den meisten Szenarien funktioniert, da die Vorlage keine vertraulichen Daten enthalten sollte. Wenn Sie vertrauliche Daten (z.B. ein Administratorkennwort) angeben müssen, übergeben Sie diesen Wert als sicheren Parameter. Wenn Sie jedoch den Zugriff auf die Vorlage verwalten möchten, erwägen Sie den Einsatz von [Vorlagenspezifikationen](#deploy-template-spec).
+
+Wenn Sie remoteverknüpfte Vorlagen mit einem relativen Pfad bereitstellen möchten, die in einem Speicherkonto gespeichert sind, verwenden Sie `QueryString`, um das SAS-Token anzugeben:
+
+```azurepowershell
+New-AzResourceGroupDeployment `
+  -Name linkedTemplateWithRelativePath `
+  -ResourceGroupName "myResourceGroup" `
+  -TemplateUri "https://stage20210126.blob.core.windows.net/template-staging/mainTemplate.json" `
+  -QueryString $sasToken
+```
+
+Weitere Informationen finden Sie unter [Verknüpfte Vorlage](./linked-templates.md#linked-template).
 
 ## <a name="deploy-template-spec"></a>Bereitstellen der Vorlagenspezifikationen
 

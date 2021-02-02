@@ -1,21 +1,24 @@
 ---
-title: Skalieren eines Azure-Clouddiensts in Windows PowerShell | Microsoft-Dokumentation
+title: Skalieren eines Azure-Clouddiensts (klassisch) in Windows PowerShell | Microsoft-Dokumentation
 description: (Klassisch) Hier erfahren Sie, wie Sie mithilfe von PowerShell eine Web- oder Workerrolle in Azure horizontal herunter- oder hochskalieren.
-services: cloud-services
-author: mmccrory
-ms.service: cloud-services
 ms.topic: article
-ms.date: 12/01/2016
-ms.author: memccror
-ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: c2cec08d86760694ec3c41a98af62c6b86e0a4c9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.service: cloud-services
+ms.date: 10/14/2020
+ms.author: tagore
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: a090da1933b0fcd6edb5b2415c773f9efcb27387
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89071090"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98743303"
 ---
-# <a name="how-to-scale-a-cloud-service-in-powershell"></a>Skalieren eines Clouddiensts in PowerShell
+# <a name="how-to-scale-an-azure-cloud-service-classic-in-powershell"></a>Skalieren eines Azure-Clouddiensts (klassisch) in PowerShell
+
+> [!IMPORTANT]
+> [Azure Cloud Services (erweiterter Support)](../cloud-services-extended-support/overview.md) ist ein neues Azure Resource Manager-basiertes Bereitstellungsmodell für Azure Cloud Services. Im Zuge dieser Änderung wurden Azure Cloud Services-Instanzen, die unter dem Azure Service Manager-basierten Bereitstellungsmodell ausgeführt werden, in „Cloud Services (klassisch)“ umbenannt. Für alle neuen Bereitstellungen wird [Azure Cloud Services (erweiterter Support)](../cloud-services-extended-support/overview.md) verwendet.
 
 Sie können Windows PowerShell verwenden, um eine Web- oder Workerrolle durch Hinzuzufügen oder Entfernen von Instanzen horizontal hoch- oder herunterzuskalieren.  
 
@@ -51,9 +54,9 @@ Daraufhin sollten Sie Informationen zur Rolle erhalten (einschließlich der aktu
 
 ![Informationen zur Rolle](./media/cloud-services-how-to-scale-powershell/get-azure-role.png)
 
-## <a name="scale-out-the-role-by-adding-more-instances"></a>Aufskalieren der Rolle durch Hinzufügen weiterer Instanzen
+## <a name="scale-out-the-role-by-adding-more-instances"></a>Horizontales Hochskalieren der Rolle durch Hinzufügen weiterer Instanzen
 
-Wenn Sie die Rolle aufskalieren möchten, übergeben Sie die gewünschte Anzahl von Instanzen als **Count**-Parameter an das **Set-AzureRole**-Cmdlet:
+Wenn Sie die Rolle horizontal hochskalieren möchten, übergeben Sie die gewünschte Anzahl von Instanzen als **Count**-Parameter an das **Set-AzureRole**-Cmdlet:
 
 ```powershell
 Set-AzureRole -ServiceName '<your_service_name>' -RoleName '<your_role_name>' -Slot <target_slot> -Count <desired_instances>
@@ -67,9 +70,9 @@ Sobald die neuen Instanzen gestartet wurden, wird die Blockierung des Cmdlets wi
 
 ![Erfolgreiche Erhöhung der Anzahl von Rolleninstanzen](./media/cloud-services-how-to-scale-powershell/set-azure-role-success.png)
 
-## <a name="scale-in-the-role-by-removing-instances"></a>Abskalieren der Rolle durch Entfernen von Instanzen
+## <a name="scale-in-the-role-by-removing-instances"></a>Horizontales Herunterskalieren der Rolle durch Entfernen von Instanzen
 
-Sie können eine Rolle auf die gleiche Weise abskalieren, indem Sie Instanzen entfernen. Legen Sie den **Count**-Parameter für **Set-AzureRole** auf die Anzahl von Instanzen fest, die nach Abschluss des Abskalierens vorhanden sein soll.
+Sie können eine Rolle auf die gleiche Weise horizontal herunterskalieren, indem Sie Instanzen entfernen. Legen Sie den **Count**-Parameter für **Set-AzureRole** auf die Anzahl von Instanzen fest, die nach Abschluss des horizontalen Herunterskalierens vorhanden sein soll.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

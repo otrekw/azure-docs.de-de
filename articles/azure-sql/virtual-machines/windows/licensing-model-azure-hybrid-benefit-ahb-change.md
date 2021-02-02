@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 11/13/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: da136c1f3ce36bf85592c3c73c9e8f92c41c7442
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: ea274914ac70540d5763884bbd01e41e349a530d
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97357907"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98879829"
 ---
 # <a name="change-the-license-model-for-a-sql-virtual-machine-in-azure"></a>Ändern des Lizenzierungsmodells für einen virtuellen SQL-Computer in Azure
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -37,7 +37,7 @@ Es gibt drei Lizenzierungsmodelle für eine Azure-VM, die SQL Server hostet: nu
 
 Beim Azure-Hybridvorteil können Sie SQL Server-Lizenzen mit Software Assurance („qualifizierte Lizenz“) auf Azure-VMs verwenden. Beim Azure-Hybridvorteil wird Kunden nicht die Verwendung einer SQL Server-Lizenz auf einem virtuellen Computer in Rechnung gestellt. Sie müssen jedoch weiterhin die Kosten des zugrunde liegenden Cloudcomputings (d. h. den Basistarif), des Speichers und der Sicherungen bezahlen. Außerdem müssen sie für die E/A-Vorgänge bezahlen, die mit der Nutzung der Dienste in Verbindung stehen (sofern zutreffend).
 
-Gemäß den Microsoft-Produktbestimmungen: „...müssen Kunden beim Konfigurieren von Workloads in Azure angeben, dass sie Azure SQL-Datenbank (verwaltete Instanz, Pool für elastische Datenbanken und Einzeldatenbank), Azure Data Factory, SQL Server Integration Services oder SQL Server-VMs im Rahmen des Azure-Hybridvorteils für SQL Server verwenden“.
+Gemäß den Microsoft-[Produktbestimmungen](https://www.microsoft.com/licensing/terms/productoffering/MicrosoftAzureServices/EAEAS): „...müssen Kunden beim Konfigurieren von Workloads in Azure angeben, dass sie Azure SQL-Datenbank (verwaltete Instanz, Pool für elastische Datenbanken und Einzeldatenbank), Azure Data Factory, SQL Server Integration Services oder SQL Server-VMs im Rahmen des Azure-Hybridvorteils für SQL Server verwenden“.
 
 Um die Verwendung des Azure-Hybridvorteils für SQL Server auf einer Azure-VM anzugeben und die Konformität zu wahren, stehen drei Optionen für Sie zur Auswahl:
 

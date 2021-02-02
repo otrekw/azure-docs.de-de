@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: b9a41f4d4bb10599d50e58ad6f08d61aaba7ecfc
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: cd41f740d3cdb8130199a5dda6e73209637d5142
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97608781"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98745933"
 ---
 # <a name="create-the-azure-arc-data-controller"></a>Erstellen des Azure Arc-Datencontrollers
 
@@ -54,7 +54,7 @@ Unabhängig von der gewählten Option müssen Sie während der Erstellung die fo
 - **Data controller username** (Benutzername für Datencontroller): Ein Benutzername für den Datencontrolleradministrator.
 - **Data controller password** (Kennwort für Datencontroller): Ein Kennwort für den Datencontrolleradministrator.
 - **Name of your Kubernetes namespace** (Name des Kubernetes-Namespace): Der Name des Kubernetes-Namespace, in dem Sie den Datencontroller erstellen möchten.
-- **Connectivity mode** (Konnektivitätsmodus): Der [Konnektivitätsmodus](./connectivity.md) Ihres Clusters. Derzeit wird nur der indirekte Modus unterstützt.
+- **Connectivity mode** (Konnektivitätsmodus): Der Konnektivitätsmodus bestimmt den Grad der Konnektivität zwischen Ihrer Azure Arc-fähigen Datendienstumgebung und Azure. Von der Vorschauversion werden aktuell nur Modi mit indirekter oder direkter Verbindung unterstützt.  Weitere Informationen finden Sie unter [Konnektivitätsmodi und -anforderungen](./connectivity.md). 
 - **Azure subscription ID** (Azure-Abonnement-ID): Die Azure-Abonnement-GUID für den Ort, an dem die Datencontrollerressource in Azure erstellt werden soll.
 - **Azure resource group name** (Azure-Ressourcengruppenname): Der Name der Ressourcengruppe, in der die Datencontrollerressource in Azure erstellt werden soll.
 - **Azure Location** (Azure-Standort): Der Azure-Standort, an dem die Metadaten der Datencontrollerressource in Azure gespeichert werden. Eine Liste der verfügbaren Regionen finden Sie unter [Globale Azure-Infrastruktur/Produkte nach Region](https://azure.microsoft.com/global-infrastructure/services/?products=azure-arc).

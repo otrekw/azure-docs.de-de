@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 03/25/2019
 ms.author: genli
-ms.openlocfilehash: 2f242de3bfa6a2bc95dc46b4ca5c10222b755a2f
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 720d25079e1350315c9f403a8215f650db49ceb7
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98200922"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98743082"
 ---
 # <a name="reset-remote-desktop-services-or-its-administrator-password-in-a-windows-vm"></a>Zurücksetzen von Remotedesktopdienste oder dem zugehörigen Administratorkennwort auf einer Windows-VM
 Wenn Sie keine Verbindung mit einem virtuellen Windows-Computer herstellen können, können Sie Ihr lokales Administratorkennwort oder die Konfiguration von Remotedesktopdienste zurücksetzen (für Windows-Domänencontroller nicht unterstützt). Verwenden Sie zum Zurücksetzen des Kennworts entweder das Azure-Portal oder die VM-Zugriffserweiterung in Azure PowerShell. Setzen Sie das Kennwort für diesen lokalen Administrator zurück, nachdem Sie sich am virtuellen Computer angemeldet haben.  
@@ -90,10 +90,14 @@ Stellen Sie zunächst mit dem Cmdlet [Connect-AzAccount](/powershell/module/az.a
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Falls die Erweiterung für den Zugriff auf virtuelle Computer nicht reagiert und Sie das Kennwort nicht zurücksetzen können, können Sie [das lokale Windows-Kennwort offline zurücksetzen](reset-local-password-without-agent.md). Dies ist eine anspruchsvollere Methode, bei der Sie die virtuelle Festplatte des problematischen virtuellen Computers mit einem anderen virtuellen Computer verbinden müssen. Führen Sie zunächst die in diesem Artikel dokumentierten Schritte aus. Die Methode zur Offlinezurücksetzung des Kennworts sollte nur genutzt werden, wenn diese Schritte nicht funktionieren.
+
+- Sollte die Installation der Erweiterung für den Zugriff auf virtuelle Azure-Computer nicht erfolgreich sein, finden Sie [hier](../extensions/troubleshoot.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) Informationen zur Problembehandlung.
+
+- Falls Sie das Kennwort nicht mithilfe der Erweiterung für den Zugriff auf virtuelle Computer zurücksetzen können, können Sie [das lokale Windows-Kennwort offline zurücksetzen](reset-local-password-without-agent.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Dies ist eine anspruchsvollere Methode, bei der Sie die virtuelle Festplatte des problematischen virtuellen Computers mit einem anderen virtuellen Computer verbinden müssen. Führen Sie zunächst die in diesem Artikel dokumentierten Schritte aus. Die Methode zur Offlinezurücksetzung des Kennworts sollte nur genutzt werden, wenn diese Schritte nicht funktionieren.
 
 - [Informationen zu Azure-VM-Erweiterungen und -Features](../extensions/features-windows.md)
 
 - [Herstellen einer Verbindung mit einem virtuellen Azure-Computer über RDP oder SSH](/previous-versions/azure/dn535788(v=azure.100))
 
-- [Problembehandlung bei Remotedesktopverbindungen mit einem Windows-basierten virtuellen Azure-Computer](troubleshoot-rdp-connection.md)
+
+- [Problembehandlung bei Remotedesktopverbindungen mit einem Windows-basierten virtuellen Azure-Computer](troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)

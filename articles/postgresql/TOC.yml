@@ -611,6 +611,8 @@
           items:
             - name: Überwachen und Optimieren
               href: concepts-hyperscale-monitoring.md
+            - name: Überwachungsprotokolle
+              href: concepts-hyperscale-audit.md
         - name: Konfigurationsoptionen
           href: concepts-hyperscale-configuration-options.md
         - name: Vorauszahlen für eine reservierte Kapazität

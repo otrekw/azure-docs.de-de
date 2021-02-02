@@ -2,13 +2,13 @@
 title: Azure Event Grid – Begriffe
 description: In diesem Artikel werden Azure Event Grid und die zugehörigen Begriffe beschrieben. Zudem werden verschiedene Schlüsselkomponenten von Event Grid definiert.
 ms.topic: conceptual
-ms.date: 10/29/2020
-ms.openlocfilehash: 6cfb8b3aaf16a0080b9864ce5198b8a7232e8bc8
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.date: 01/21/2021
+ms.openlocfilehash: 6edc8a3980bfea15f28cfb7114bb9f8350a47a3f
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93075108"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98685702"
 ---
 # <a name="concepts-in-azure-event-grid"></a>Begriffe in Azure Event Grid
 
@@ -18,10 +18,7 @@ Dieser Artikel beschreibt die zentralen Begriffe in Azure Event Grid.
 
 Ein Ereignis ist die kleinste Informationsmenge, die einen Vorgang im System umfassend beschreibt. Jedes Ereignis enthält allgemeine Informationen wie Quelle des Ereignisses, Zeitpunkt, an dem das Ereignis aufgetreten ist, und den eindeutigen Bezeichner. Jedes Ereignis enthält auch spezielle Informationen, die nur für den jeweiligen Ereignistyp relevant sind. Beispielsweise enthält ein Ereignis zu einer neuen Datei, die in Azure Storage erstellt wird, Details über die Datei, z.B. den Wert von `lastTimeModified`. Alternativ dazu enthält ein Event Hubs-Ereignis die URL der Erfassungsdatei. 
 
-Ein Ereignis mit einer Größe von bis zu 64 KB wird von der Vereinbarung zum Servicelevel (SLA) für die allgemeine Verfügbarkeit (GA) abgedeckt. Die Unterstützung für ein Ereignis von einer Größe bis zu 1 MB ist derzeit in der Vorschauversion verfügbar. Ereignisse, die größer als 64 KB sind, werden in Schritten von 64 KB in Rechnung gestellt. 
-
-
-Die gesendeten Ereigniseigenschaften finden Sie unter [Azure Event Grid-Ereignisschema](event-schema.md).
+Die maximal zulässige Größe für ein Ereignis beträgt 1 MB. Ereignisse, die größer als 64 KB sind, werden in Schritten von 64 KB in Rechnung gestellt. Die gesendeten Ereigniseigenschaften finden Sie unter [Azure Event Grid-Ereignisschema](event-schema.md).
 
 ## <a name="publishers"></a>Herausgeber
 
@@ -41,7 +38,7 @@ Das Event Grid-Thema stellt einen Endpunkt bereit, an den die Ereignisquelle Ere
 
 **Benutzerdefinierte Themen** sind Anwendungs- und Drittanbieterthemen. Wenn Sie ein benutzerdefiniertes Thema erstellen oder Zugriff darauf erhalten, wird das benutzerdefinierte Thema in Ihrem Abonnement angezeigt. Weitere Informationen finden Sie unter [Benutzerdefinierte Themen](custom-topics.md). Beim Entwerfen Ihrer Anwendung können Sie flexibel entscheiden, wie viele Themen erstellt werden sollen. Erstellen Sie für große Lösungen ein benutzerdefiniertes Thema für jede Kategorie von verwandten Ereignissen. Denken Sie beispielsweise an eine Anwendung, die Ereignisse im Zusammenhang mit der Änderung von Benutzerkonten und der Verarbeitung von Bestellungen sendet. Es ist unwahrscheinlich, dass ein Ereignishandler beide Ereigniskategorien benötigt. Erstellen Sie zwei benutzerdefinierte Themen, und lassen Sie Ereignishandler das jeweils relevante Thema abonnieren. Für kleine Lösungen empfiehlt es sich ggf., alle Ereignisse an ein Thema zu senden. Ereignisabonnenten können nach den gewünschten Ereignistypen filtern.
 
-Es gibt eine weitere Art von Thema: das **Partnerthema**. Mit dem Feature [Partnerereignisse](partner-events-overview.md) kann ein SaaS-Drittanbieter Ereignisse aus seinen Diensten veröffentlichen, um Sie für Consumer verfügbar zu machen, die diese Ereignisse abonnieren können. Der SaaS-Anbieter stellt einen Thementyp bereit (ein **Partnerthema** ), der von Abonnenten verwendet wird, um Ereignisse zu verarbeiten. Außerdem bietet dieser Typ ein sauberes Pub-Sub-Modell, indem es die Belange und den Besitz von Ressourcen trennt, die von Ereignisherausgebern und -abonnenten verwendet werden.
+Es gibt eine weitere Art von Thema: das **Partnerthema**. Mit dem Feature [Partnerereignisse](partner-events-overview.md) kann ein SaaS-Drittanbieter Ereignisse aus seinen Diensten veröffentlichen, um Sie für Consumer verfügbar zu machen, die diese Ereignisse abonnieren können. Der SaaS-Anbieter stellt einen Thementyp bereit (ein **Partnerthema**), der von Abonnenten verwendet wird, um Ereignisse zu verarbeiten. Außerdem bietet dieser Typ ein sauberes Pub-Sub-Modell, indem es die Belange und den Besitz von Ressourcen trennt, die von Ereignisherausgebern und -abonnenten verwendet werden.
 
 ## <a name="event-subscriptions"></a>Ereignisabonnements
 
@@ -76,10 +73,7 @@ Wenn Event Grid nicht bestätigen kann, dass ein Ereignis beim Endpunkt des Abon
 
 ## <a name="batching"></a>Batching
 
-Wenn Sie ein benutzerdefiniertes Thema verwenden, müssen die Ereignisse immer in einem Array veröffentlicht werden. Dies kann für Szenarien mit geringem Durchsatz ein Batch mit nur einem Element sein. Für Anwendungsfälle mit hohem Volumen wird aber empfohlen, pro Veröffentlichung mehrere Ereignisse zu Batches zusammenzufassen, um eine höhere Effizienz zu erzielen. Batches können eine Größe von bis zu 1 MB haben. Für die einzelnen Ereignisse sollte trotzdem eine Größe von 64 KB (Allgemeine Verfügbarkeit) bzw. 1 MB (Vorschauversion) nicht überschritten werden.
-
-> [!NOTE]
-> Ein Ereignis mit einer Größe von bis zu 64 KB wird von der Vereinbarung zum Servicelevel (SLA) für die allgemeine Verfügbarkeit (GA) abgedeckt. Die Unterstützung für ein Ereignis von einer Größe bis zu 1 MB ist derzeit in der Vorschauversion verfügbar. Ereignisse, die größer als 64 KB sind, werden in Schritten von 64 KB in Rechnung gestellt. 
+Wenn Sie ein benutzerdefiniertes Thema verwenden, müssen die Ereignisse immer in einem Array veröffentlicht werden. Dies kann für Szenarien mit geringem Durchsatz ein Batch mit nur einem Element sein. Für Anwendungsfälle mit hohem Volumen wird aber empfohlen, pro Veröffentlichung mehrere Ereignisse zu Batches zusammenzufassen, um eine höhere Effizienz zu erzielen. Batches können bis zu 1 MB groß sein, und die maximal zulässige Größe eines Ereignisses beträgt 1 MB. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

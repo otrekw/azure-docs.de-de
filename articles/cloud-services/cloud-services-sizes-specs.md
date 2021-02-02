@@ -1,21 +1,25 @@
 ---
-title: Größen virtueller Computer und Azure-Clouddienste | Microsoft-Dokumentation
+title: VM-Größen für Azure Cloud Services (klassisch) | Microsoft-Dokumentation
 description: Führt die verschiedenen VM-Größen (und IDs) für Web-und Workerrollen von Azure-Clouddiensten auf.
-services: cloud-services
-documentationcenter: ''
-author: tgore03
-ms.service: cloud-services
 ms.topic: article
-ms.date: 07/18/2017
+ms.service: cloud-services
+ms.date: 10/14/2020
 ms.author: tagore
-ms.openlocfilehash: b617ba8db8f9dbb1c25ac34aa879613c29c723b7
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 55fa3ab4e5bd4472f7dae9692ae3ac9bcfa8e2b6
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96340287"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98743167"
 ---
-# <a name="sizes-for-cloud-services"></a>Größen für Clouddienste
+# <a name="sizes-for-cloud-services-classic"></a>Größen für Cloud Services (klassisch)
+
+> [!IMPORTANT]
+> [Azure Cloud Services (erweiterter Support)](../cloud-services-extended-support/overview.md) ist ein neues Azure Resource Manager-basiertes Bereitstellungsmodell für Azure Cloud Services. Im Zuge dieser Änderung wurden Azure Cloud Services-Instanzen, die unter dem Azure Service Manager-basierten Bereitstellungsmodell ausgeführt werden, in „Cloud Services (klassisch)“ umbenannt. Für alle neuen Bereitstellungen wird [Azure Cloud Services (erweiterter Support)](../cloud-services-extended-support/overview.md) verwendet.
+
 In diesem Thema werden die verfügbaren Größen und Optionen für Cloud Service-Rolleninstanzen (Web- und Workerrollen) beschrieben. Darüber hinaus werden Überlegungen zur Bereitstellung angestellt, die Sie berücksichtigen sollten, wenn Sie eine Verwendung dieser Ressourcen planen. Jede Größe besitzt eine ID, die Sie in Ihre [Dienstdefinitionsdatei](cloud-services-model-and-package.md#csdef) einfügen. Preise für jede Größe sind auf der Seite [Cloud Services Preise](https://azure.microsoft.com/pricing/details/cloud-services/) verfügbar.
 
 > [!NOTE]

@@ -1,29 +1,31 @@
 ---
-title: Unterstützte Microsoft Graph-Vorgänge
+title: Verwalten von Ressourcen mit Microsoft Graph
 titleSuffix: Azure AD B2C
-description: Index der Microsoft Graph-Vorgänge, die für die Verwaltung von Azure AD B2C-Ressourcen unterstützt werden (einschließlich Benutzern, Benutzerflows, Identitätsanbietern, benutzerdefinierten Richtlinien, Richtlinienschlüsseln und mehr).
+description: Erfahren Sie mehr zum Verwalten von Ressourcen in einem Azure AD B2C-Mandanten durch das Aufrufen der Microsoft Graph-API und Automatisieren des Vorgangs mithilfe einer Anwendungsidentität.
 services: B2C
 author: msmimart
 manager: celestedg
 ms.service: active-directory
 ms.workload: identity
-ms.topic: reference
-ms.date: 10/15/2020
+ms.topic: how-to
+ms.date: 01/21/2021
+ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.custom: fasttrack-edit
-ms.openlocfilehash: fed1e31380381b864530b3fa0b9e8c0886737d04
-ms.sourcegitcommit: c4c554db636f829d7abe70e2c433d27281b35183
+ms.openlocfilehash: 96772020e70aeb32fa1a8ae18bf3818396887877
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98033607"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98805232"
 ---
-# <a name="microsoft-graph-operations-available-for-azure-ad-b2c"></a>Microsoft Graph-Vorgänge, die für Azure AD B2C verfügbar sind
+# <a name="manage-azure-ad-b2c-with-microsoft-graph"></a>Verwalten von Azure AD B2C mit Microsoft Graph
 
-In der Microsoft Graph-API werden die folgenden Vorgänge für die Verwaltung von Azure AD B2C-Ressourcen unterstützt (einschließlich Benutzern, Identitätsanbietern, Benutzerflows, benutzerdefinierten Richtlinien und Richtlinienschlüsseln).
+Mit Microsoft Graph können Sie Ressourcen in Ihrem Azure AD B2C-Verzeichnis verwalten. In der Microsoft Graph-API werden die folgenden Vorgänge für die Verwaltung von Azure AD B2C-Ressourcen unterstützt (einschließlich Benutzern, Identitätsanbietern, Benutzerflows, benutzerdefinierten Richtlinien und Richtlinienschlüsseln). Jeder Link in den folgenden Abschnitten bezieht sich auf die entsprechende Seite in der Referenz zur Microsoft Graph-API für diesen Vorgang. 
 
-Jeder Link in den folgenden Abschnitten bezieht sich auf die entsprechende Seite in der Referenz zur Microsoft Graph-API für diesen Vorgang.
+## <a name="prerequisites"></a>Voraussetzungen
+
+Zum Verwenden der MS Graph-API und Interagieren mit Ressourcen auf Ihrem Azure AD B2C-Mandanten benötigen Sie eine Anwendungsregistrierung, bei der die erforderlichen Berechtigungen gewährt werden. Führen Sie die Schritte im Artikel [Verwalten von Azure AD B2C mit Microsoft Graph](microsoft-graph-get-started.md) aus, um eine Anwendungsregistrierung zu erstellen, die von Ihrer Verwaltungsanwendung genutzt werden kann. 
 
 ## <a name="user-management"></a>Benutzerverwaltung
 
@@ -33,8 +35,6 @@ Jeder Link in den folgenden Abschnitten bezieht sich auf die entsprechende Seite
 - [Aktualisieren eines Benutzers](/graph/api/user-update)
 - [Löschen eines Benutzers](/graph/api/user-delete)
 
-Weitere Informationen zum Verwalten von Azure AD B2C-Benutzerkonten mit der Microsoft Graph-API finden Sie unter [Verwalten von Azure AD B2C-Benutzerkonten mit Microsoft Graph](manage-user-accounts-graph-api.md).
-
 ## <a name="user-phone-number-management"></a>Verwaltung der Telefonnummer des Benutzers
 
 - [Add (Hinzufügen)](/graph/api/authentication-post-phonemethods)
@@ -42,7 +42,7 @@ Weitere Informationen zum Verwalten von Azure AD B2C-Benutzerkonten mit der Micr
 - [Aktualisieren](/graph/api/b2cauthenticationmethodspolicy-update)
 - [Löschen](/graph/api/phoneauthenticationmethod-delete)
 
-Weitere Informationen zum Verwalten der Telefonnummer für die Anmeldung eines Benutzers mit der Microsoft Graph-API finden Sie unter [b2cAuthenticationMethodsPolicy-Ressourcentyp](/graph/api/resources/b2cauthenticationmethodspolicy).
+Weitere Informationen zum Verwalten der Telefonnummer für die Anmeldung eines Benutzers finden Sie unter [b2cAuthenticationMethodsPolicy-Ressourcentyp](/graph/api/resources/b2cauthenticationmethodspolicy).
 
 ## <a name="identity-providers-user-flow"></a>Identitätsanbieter (Benutzerflow)
 
@@ -77,7 +77,7 @@ Mit den folgenden Vorgängen können Sie Ihre Azure AD B2C-Vertrauensframeworkri
 
 Das Identity Experience Framework speichert die Geheimnisse, auf die in einer benutzerdefinierten Richtlinie verwiesen wird, um Vertrauen zwischen den Komponenten herzustellen. Diese Geheimnisse können symmetrische oder asymmetrische Schlüssel/Werte sein. Im Azure-Portal werden diese Entitäten als **Richtlinienschlüssel** angezeigt.
 
-Die vorrangige Ressource für Richtlinienschlüssel in der Microsoft Graph-API ist das [Vertrauensframework-Keyset](/graph/api/resources/trustframeworkkeyset). Jedes **Keyset** enthält mindestens einen **Schlüssel**. Zum Erstellen eines Schlüssels müssen Sie zunächst ein leeres Keyset erstellen und anschließend darin einen Schlüssel generieren. Sie können ein manuelles Geheimnis erstellen, ein Zertifikat hochladen oder einen PKCS12-Schlüssel erstellen. Der Schlüssel kann ein generiertes Geheimnis, eine von Ihnen definierte Zeichenfolge (z. B. der geheime Facebook-Anwendungsschlüssel) oder ein von Ihnen hochgeladenes Zertifikat sein. Wenn ein Keyset mehrere Schlüssel enthält, ist immer nur einer der Schlüssel aktiv.
+Die vorrangige Ressource für Richtlinienschlüssel in der Microsoft Graph-API ist das [Vertrauensframework-Keyset](/graph/api/resources/trustframeworkkeyset). Jedes **Keyset** enthält mindestens einen **Schlüssel**. Zum Erstellen eines Schlüssels müssen Sie zunächst ein leeres Keyset erstellen und anschließend darin einen Schlüssel generieren. Sie können ein manuelles Geheimnis erstellen, ein Zertifikat hochladen oder einen PKCS12-Schlüssel erstellen. Der Schlüssel kann ein generiertes Geheimnis, eine Zeichenfolge (z. B. der geheime Facebook-Anwendungsschlüssel) oder ein von Ihnen hochgeladenes Zertifikat sein. Wenn ein Keyset mehrere Schlüssel enthält, ist immer nur einer der Schlüssel aktiv.
 
 ### <a name="trust-framework-policy-keyset"></a>Vertrauensframeworkrichtlinie – Keyset
 
@@ -114,4 +114,93 @@ Azure AD B2C stellt ein Verzeichnis bereit, das 100 benutzerdefinierte Attribute
 
 - [Auflisten von Überwachungsprotokollen](/graph/api/directoryaudit-list)
 
-Weitere Informationen zum Zugriff auf Azure AD B2C-Überwachungsprotokolle mit der Microsoft Graph-API finden Sie unter [Zugriff auf Azure AD B2C-Überwachungsprotokolle](view-audit-logs.md).
+Weitere Informationen zum Zugriff auf Azure AD B2C-Überwachungsprotokolle finden Sie unter [Zugriff auf Azure AD B2C-Überwachungsprotokolle](view-audit-logs.md).
+
+## <a name="code-sample-how-to-programmatically-manage-user-accounts"></a>Codebeispiel: Programmgesteuertes Verwalten von Benutzerkonten
+
+Dieses Codebeispiel ist eine .NET Core-Konsolenanwendung, die das [Microsoft Graph SDK](/graph/sdks/sdks-overview) für die Interaktion mit der Microsoft Graph-API verwendet. Der Code veranschaulicht, wie die API aufgerufen wird, um Benutzer in einem Azure AD B2C-Mandanten programmgesteuert zu verwalten.
+Sie können das [Beispielarchiv herunterladen](https://github.com/Azure-Samples/ms-identity-dotnetcore-b2c-account-management/archive/master.zip) (*.zip), das Repository auf GitHub [durchsuchen](https://github.com/Azure-Samples/ms-identity-dotnetcore-b2c-account-management) oder das Repository klonen:
+
+```cmd
+git clone https://github.com/Azure-Samples/ms-identity-dotnetcore-b2c-account-management.git
+```
+
+Nachdem Sie das Codebeispiel abgerufen haben, konfigurieren Sie es für Ihre Umgebung, und erstellen Sie dann das Projekt:
+
+1. Öffnen Sie das Projekt in [Visual Studio](https://visualstudio.microsoft.com) oder [Visual Studio Code](https://code.visualstudio.com).
+1. Öffnen Sie `src/appsettings.json`.
+1. Ersetzen Sie im Abschnitt `appSettings` die Zeichenfolge `your-b2c-tenant` durch den Namen Ihres Mandanten und `Application (client) ID` und `Client secret` durch die Werte für Ihre Registrierung der Verwaltungsanwendung. Weitere Informationen finden Sie unter [Registrieren einer Microsoft Graph-Anwendung](microsoft-graph-get-started.md).
+1. Öffnen Sie in Ihrem lokalen Klon des Repositorys ein Konsolenfenster, wechseln Sie in das Verzeichnis `src`, und erstellen Sie dann das Projekt:
+
+    ```console
+    cd src
+    dotnet build
+    ```
+    
+1. Führen Sie die Anwendung mit Befehl `dotnet` aus:
+
+    ```console
+    dotnet bin/Debug/netcoreapp3.1/b2c-ms-graph.dll
+    ```
+
+Die Anwendung zeigt eine Liste der Befehle an, die Sie ausführen können. Beispielsweise können Sie alle Benutzer oder einen einzelnen Benutzer abrufen, einen Benutzer löschen, das Kennwort eines Benutzers aktualisieren und einen Massenimport ausführen.
+
+### <a name="code-discussion"></a>Überlegungen zum Code
+
+Der Beispielcode verwendet das [Microsoft Graph SDK](/graph/sdks/sdks-overview), das entwickelt wurde, um das Entwickeln hochwertiger, effizienter und robuster Anwendungen mit Zugriff auf Microsoft Graph zu vereinfachen.
+
+Alle Anforderungen an die Microsoft Graph-API erfordern ein Zugriffstoken für die Authentifizierung. Die Lösung nutzt das NuGet-Paket [Microsoft.Graph.Auth](https://www.nuget.org/packages/Microsoft.Graph.Auth/), das einen auf einem Authentifizierungsszenario basierenden Wrapper der Microsoft Authentication Library (MSAL) für die Verwendung mit dem Microsoft Graph SDK bereitstellt.
+
+Die `RunAsync`-Methode in der Datei _Program.cs_ führt Folgendes aus:
+
+1. Sie liest Anwendungseinstellungen aus der Datei _appsettings.json_
+1. Sie initialisiert den Authentifizierungsanbieter unter Verwendung des [Gewährungsflows für OAuth 2.0-Clientanmeldeinformationen](../active-directory/develop/v2-oauth2-client-creds-grant-flow.md). Mit dem Gewährungsflow für Clientanmeldeinformationen kann die App ein Zugriffstoken abrufen, um die Microsoft Graph-API aufzurufen.
+1. Sie richtet den Microsoft Graph-Dienstclient mit dem Authentifizierungsanbieter ein:
+
+    ```csharp
+    // Read application settings from appsettings.json (tenant ID, app ID, client secret, etc.)
+    AppSettings config = AppSettingsFile.ReadFromJsonFile();
+
+    // Initialize the client credential auth provider
+    IConfidentialClientApplication confidentialClientApplication = ConfidentialClientApplicationBuilder
+        .Create(config.AppId)
+        .WithTenantId(config.TenantId)
+        .WithClientSecret(config.ClientSecret)
+        .Build();
+    ClientCredentialProvider authProvider = new ClientCredentialProvider(confidentialClientApplication);
+
+    // Set up the Microsoft Graph service client with client credentials
+    GraphServiceClient graphClient = new GraphServiceClient(authProvider);
+    ```
+
+Der initialisierte *GraphServiceClient* wird dann in _UserService.cs_ verwendet, um die Vorgänge zur Benutzerverwaltung auszuführen. Beispielsweise können Sie eine Liste der Benutzerkonten im Mandanten abrufen:
+
+```csharp
+public static async Task ListUsers(GraphServiceClient graphClient)
+{
+    Console.WriteLine("Getting list of users...");
+
+    // Get all users (one page)
+    var result = await graphClient.Users
+        .Request()
+        .Select(e => new
+        {
+            e.DisplayName,
+            e.Id,
+            e.Identities
+        })
+        .GetAsync();
+
+    foreach (var user in result.CurrentPage)
+    {
+        Console.WriteLine(JsonConvert.SerializeObject(user));
+    }
+}
+```
+
+Das [Ausführen von API-Aufrufen mithilfe der Microsoft Graph-SDKs](/graph/sdks/create-requests) umfasst Informationen zum Lesen und Schreiben von Informationen aus Microsoft Graph. Verwenden Sie `$select`, um die zurückgegebenen Eigenschaften zu steuern, benutzerdefinierte Abfrageparameter bereitzustellen und die Abfrageparameter `$filter` und `$orderBy` zu verwenden.
+
+<!-- LINK -->
+
+[graph-objectIdentity]: /graph/api/resources/objectidentity
+[graph-user]: (https://docs.microsoft.com/graph/api/resources/user)

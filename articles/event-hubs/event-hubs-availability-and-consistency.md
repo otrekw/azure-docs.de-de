@@ -2,45 +2,38 @@
 title: 'Verfügbarkeit und Konsistenz: Azure Event Hubs | Microsoft-Dokumentation'
 description: Hier erfahren Sie, wie Sie maximale Verfügbarkeit und Konsistenz in Azure Event Hubs mit Partitionen erzielen.
 ms.topic: article
-ms.date: 06/23/2020
+ms.date: 01/25/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 81bacd5507396352bb814310979498234ee35347
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 2fdb62e953230a38a26d22e136789fea52c8ee8c
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96902900"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98882194"
 ---
 # <a name="availability-and-consistency-in-event-hubs"></a>Verfügbarkeit und Konsistenz in Event Hubs
-
-## <a name="overview"></a>Übersicht
-Azure Event Hubs verwendet ein [Partitionierungsmodell](event-hubs-scalability.md#partitions) zur Verbesserung der Verfügbarkeit und Parallelisierung innerhalb eines einzelnen Event Hubs. Wenn ein Event Hub z.B. über vier Partitionen verfügt und eine dieser Partitionen im Rahmen eines Lastenausgleichsvorgangs von einem Server zu einem anderen verschoben wird, können Sie weiterhin an drei andere Partitionen Daten senden und von dort empfangen. Darüber hinaus ermöglichen mehr Partitionen, dass mehr gleichzeitige Leser Ihre Daten verarbeiten können, wodurch sich der aggregierte Durchsatz verbessert. Die Kenntnis der Auswirkungen von Partitionierung und Reihenfolge in einem verteilten System ist ein wichtiger Aspekt des Lösungsentwurfs.
-
-Um den Kompromiss zwischen Reihenfolge und Verfügbarkeit zu erklären, betrachten Sie das [CAP-Theorem](https://en.wikipedia.org/wiki/CAP_theorem), auch bekannt als Brewers Theorem. Dieses Theorem erörtert die Wahl zwischen Konsistenz, Verfügbarkeit und Ausfalltoleranz. Es besagt, dass bei Systemen, die durch ein Netzwerk partitioniert werden, immer Kompromisse zwischen Konsistenz und Verfügbarkeit gemacht werden müssen.
-
-Brewers Theorem definiert Konsistenz und Verfügbarkeit wie folgt:
-* Ausfalltoleranz: Die Fähigkeit eines Datenverarbeitungssystems, die Datenverarbeitung auch dann fortzusetzen, wenn ein Partitionsausfall auftritt.
-* Verfügbarkeit: Von einem nicht fehlerhaften Knoten erfolgt innerhalb eines akzeptablen Zeitraums eine angemessene Reaktion (ohne Fehler oder Timeouts).
-* Konsistenz: Ein Lesevorgang gibt garantiert den letzten Schreibvorgang eines bestimmten Clients zurück.
-
-## <a name="partition-tolerance"></a>Ausfalltoleranz
-Event Hubs basiert auf einem partitionierten Datenmodell. Sie können die Anzahl der Partitionen in Ihrem Event Hub während des Setups konfigurieren, aber Sie können diesen Wert später nicht ändern. Da Sie Partitionen mit Event Hubs verwenden müssen, müssen Sie nur eine Entscheidung hinsichtlich Verfügbarkeit und Konsistenz der Anwendung treffen.
+Dieser Artikel enthält Informationen zur Unterstützung der Verfügbarkeit und Konsistenz für Azure Event Hubs. 
 
 ## <a name="availability"></a>Verfügbarkeit
-Die einfachste Möglichkeit, erste Schritte mit Event Hubs auszuführen, ist die Verwendung des Standardverhaltens. 
+Mit Azure Event Hubs wird das Risiko von katastrophalen Ausfällen einzelner Computer oder sogar ganzer Racks auf Cluster verteilt, die sich über mehrere Fehlerdomänen in einem Rechenzentrum erstrecken. Außerdem werden vom Dienst transparente Fehlererkennungs- und Failovermechanismen implementiert. Daher kann er auch bei den oben erwähnten Ausfällen weiterhin innerhalb der garantierten Servicelevel und in der Regel ohne spürbare Unterbrechungen ausgeführt werden. Wenn ein Event Hubs-Namespace mit aktivierter Option für [Verfügbarkeitszonen](../availability-zones/az-overview.md) erstellt wurde, wird das Ausfallrisiko noch weiter auf drei physisch getrennte Einrichtungen verteilt. Der Dienst verfügt dann über genügend Kapazitätsreserven, um den vollständigen, katastrophalen Ausfall einer gesamten Einrichtung sofort bewältigen zu können. Weitere Informationen finden Sie unter [Azure Event Hubs: Georedundante Notfallwiederherstellung](event-hubs-geo-dr.md).
 
-#### <a name="azuremessagingeventhubs-500-or-later"></a>[Azure.Messaging.EventHubs (5.0.0 oder höher](#tab/latest))
-Wenn Sie ein neues **[EventHubProducerClient](/dotnet/api/azure.messaging.eventhubs.producer.eventhubproducerclient?view=azure-dotnet)** -Objekt erstellen und die **[SendAsync](/dotnet/api/azure.messaging.eventhubs.producer.eventhubproducerclient.sendasync?view=azure-dotnet)** -Methode verwenden, werden die Ereignisse automatisch auf die Partitionen Ihres Event Hubs verteilt. Dieses Verhalten ermöglicht das größte Maß an Betriebszeit.
-
-#### <a name="microsoftazureeventhubs-410-or-earlier"></a>[Microsoft.Azure.EventHubs (4.1.0 oder früher)](#tab/old)
-Wenn Sie ein neues **[EventHubClient](/dotnet/api/microsoft.azure.eventhubs.eventhubclient)** -Objekt erstellen und die **[Send](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.sendasync?view=azure-dotnet#Microsoft_Azure_EventHubs_EventHubClient_SendAsync_Microsoft_Azure_EventHubs_EventData_)** -Methode verwenden, werden die Ereignisse automatisch auf die Partitionen Ihres Event Hubs verteilt. Dieses Verhalten ermöglicht das größte Maß an Betriebszeit.
-
----
-
-Für Anwendungsfälle, die maximale Betriebszeit erfordern, wird dieses Modell bevorzugt.
+Wenn eine Clientanwendung Ereignisse an einen Event Hub sendet, werden diese automatisch auf die Partitionen Ihres Event Hubs verteilt. Falls eine Partition nicht verfügbar sein sollte, werden die Ereignisse auf die restlichen Partitionen verteilt. Dieses Verhalten ermöglicht das größte Maß an Betriebszeit. Für Anwendungsfälle, für die eine maximale Betriebszeit Voraussetzung ist, wird dieses Modell bevorzugt, anstatt Ereignisse an eine bestimmte Partition zu senden. Weitere Informationen finden Sie unter [Partitionen](event-hubs-scalability.md#partitions).
 
 ## <a name="consistency"></a>Konsistenz
-In manchen Szenarios kann die Reihenfolge der Ereignisse wichtig sein. Nehmen Sie beispielsweise an, dass Ihr Back-End-System einen Updatebefehl vor einem Löschbefehl ausführen soll. In diesem Fall können Sie entweder den Partitionsschlüssel für ein Ereignis festlegen oder ein `PartitionSender`-Objekt verwenden (wenn Sie die alte Microsoft.Azure.Messaging-Bibliothek nutzen), um nur Ereignisse an eine bestimmte Partition zu senden. Auf diese Weise wird sichergestellt, dass diese Ereignisse ggf. in der richtigen Reihenfolge aus der Partition gelesen werden. 
+In manchen Szenarios kann die Reihenfolge der Ereignisse wichtig sein. Nehmen Sie beispielsweise an, dass Ihr Back-End-System einen Updatebefehl vor einem Löschbefehl ausführen soll. Bei diesem Szenario sendet eine Clientanwendung Ereignisse an eine bestimmte Partition, damit die Reihenfolge beibehalten wird. Wenn eine Consumeranwendung diese auf der Partition vorhandenen Ereignisse nutzt, werden sie in der richtigen Reihenfolge gelesen. 
+
+Bedenken Sie bei dieser Konfiguration, dass Sie eine Fehlerantwort erhalten, wenn die Partition, an die Sie senden, nicht verfügbar ist. Zum Vergleich: Wenn Sie keine bestimmte Partition bevorzugen, sendet der Event Hubs-Dienst das Ereignis an die nächste verfügbare Partition.
+
+Eine mögliche Lösung, um die Reihenfolge sicherzustellen und dabei auch die Betriebszeit zu maximieren, wäre das Aggregieren der Ereignisse als Teil Ihrer Anwendung zur Ereignisverarbeitung. Dies kann am einfachsten erreicht werden, indem das Ereignis mit einer benutzerdefinierten Sequenznummerneigenschaft gestempelt wird.
+
+Bei diesem Szenario sendet der Producerclient Ereignisse an eine verfügbare Partition in Ihrem Event Hub und legt die entsprechende Sequenznummer aus Ihrer Anwendung fest. Diese Lösung erfordert, dass der Status von der Verarbeitungsanwendung beibehalten werden muss, aber sie bietet Ihren Absendern einen Endpunkt, dessen Verfügbarkeit wahrscheinlicher ist.
+
+## <a name="appendix"></a>Anhang
+
+### <a name="net-examples"></a>.NET-Beispiele
+
+#### <a name="send-events-to-a-specific-partition"></a>Senden von Ereignissen an eine bestimmte Partition
+Legen Sie entweder den Partitionsschlüssel für ein Ereignis fest, oder verwenden Sie ein `PartitionSender`-Objekt (bei Nutzung der alten Microsoft.Azure.Messaging-Bibliothek), um Ereignisse nur an eine bestimmte Partition zu senden. Auf diese Weise wird sichergestellt, dass diese Ereignisse ggf. in der richtigen Reihenfolge aus der Partition gelesen werden. 
 
 Wenn Sie die neuere **Azure.Messaging.EventHubs**-Bibliothek verwenden, finden Sie weitere Informationen unter [Migrieren von Code von PartitionSender zu EventHubProducerClient zum Veröffentlichen von Ereignissen in einer Partition](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/MigrationGuide.md#migrating-code-from-partitionsender-to-eventhubproducerclient-for-publishing-events-to-a-partition).
 
@@ -87,9 +80,8 @@ finally
 
 ---
 
-Bedenken Sie bei dieser Konfiguration, dass Sie eine Fehlerantwort erhalten, wenn die Partition, an die Sie senden, nicht verfügbar ist. Zum Vergleich: Wenn Sie keine bestimmte Partition bevorzugen, sendet der Event Hubs-Dienst das Ereignis an die nächste verfügbare Partition.
-
-Eine mögliche Lösung, um die Reihenfolge sicherzustellen und dabei auch die Betriebszeit zu maximieren, wäre das Aggregieren der Ereignisse als Teil Ihrer Anwendung zur Ereignisverarbeitung. Die einfachste Möglichkeit, dies zu erreichen, besteht darin, das Ereignis mit einer benutzerdefinierten Sequenznummerneigenschaft zu stempeln. Der folgende Code zeigt ein Beispiel:
+### <a name="set-a-sequence-number"></a>Festlegen einer Sequenznummer
+Im folgenden Beispiel wird Ihr Ereignis mit einer Eigenschaft für eine benutzerdefinierte Sequenznummer gestempelt. 
 
 #### <a name="azuremessagingeventhubs-500-or-later"></a>[Azure.Messaging.EventHubs (5.0.0 oder höher](#tab/latest))
 

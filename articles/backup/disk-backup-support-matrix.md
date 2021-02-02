@@ -4,12 +4,12 @@ description: Enthält eine Zusammenfassung der Unterstützungseinstellungen und 
 ms.topic: conceptual
 ms.date: 01/07/2021
 ms.custom: references_regions
-ms.openlocfilehash: 950651148237c7b9374c378e27ef5cd76697ae9e
-ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
+ms.openlocfilehash: 5281a5f0b833759c2594b6748cf06f2e12c03822
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98556758"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98757473"
 ---
 # <a name="azure-disk-backup-support-matrix-in-preview"></a>Supportmatrix für Azure Disk Backup (Vorschau)
 
@@ -18,11 +18,11 @@ ms.locfileid: "98556758"
 >
 >[Füllen Sie dieses Formular aus](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR1vE8L51DIpDmziRt_893LVUNFlEWFJBN09PTDhEMjVHS05UWFkxUlUzUS4u), wenn Sie sich für die Vorschau registrieren möchten.
 
-Sie können [Azure Backup](https://docs.microsoft.com/azure/backup/backup-overview) zum Schutz von Azure-Datenträgern verwenden. In diesem Artikel werden regionale Verfügbarkeit, unterstützte Szenarien und Einschränkungen zusammengefasst.
+Sie können [Azure Backup](./backup-overview.md) zum Schutz von Azure-Datenträgern verwenden. In diesem Artikel werden regionale Verfügbarkeit, unterstützte Szenarien und Einschränkungen zusammengefasst.
 
 ## <a name="supported-regions"></a>Unterstützte Regionen
 
-Azure Disk Backup ist als Vorschau in den folgenden Regionen verfügbar: USA, Westen-Mitte. 
+Azure Disk Backup ist als Vorschau in den folgenden Regionen verfügbar: „USA, Westen-Mitte“, „USA, Osten 2“, „Südkorea, Mitte“, „Südkorea, Süden“, „Japan, Westen“ und „VAE, Norden“. 
 
 Weitere Regionen werden angekündigt, sobald sie verfügbar werden.
 
@@ -36,9 +36,9 @@ Weitere Regionen werden angekündigt, sobald sie verfügbar werden.
 
 - Derzeit wird die Wiederherstellung am ursprünglichen Speicherort (Original-Location Recovery, OLR) nicht unterstützt. Bei dieser Wiederherstellungsoption werden die vorhandenen Quelldatenträger, von denen die Sicherungen erstellt wurden, ersetzt. Sie können eine Wiederherstellung aus einem Wiederherstellungspunkt vornehmen, um einen neuen Datenträger entweder in der Ressourcengruppe des Quelldatenträgers, von dem die Sicherungen erstellt wurden, oder in einer beliebigen anderen Ressourcengruppe zu erstellen. Dies wird als Wiederherstellung an einem alternativen Speicherort (Alternate-Location Recovery, ALR) bezeichnet.
 
-- Azure Backup für Managed Disks verwendet inkrementelle Momentaufnahmen, die auf 200 Momentaufnahmen pro Datenträger beschränkt sind. Um zusätzlich zu den geplanten Sicherungen noch bedarfsgesteuerte Sicherungen zu ermöglichen, schränkt die Sicherungsrichtlinie die Gesamtzahl der Sicherungen auf 180 ein. Weitere Informationen finden Sie unter [Inkrementelle Momentaufnahmen](https://docs.microsoft.com/azure/virtual-machines/windows/disks-incremental-snapshots-portal#restrictions) für verwaltete Datenträger.
+- Azure Backup für Managed Disks verwendet inkrementelle Momentaufnahmen, die auf 200 Momentaufnahmen pro Datenträger beschränkt sind. Um zusätzlich zu den geplanten Sicherungen noch bedarfsgesteuerte Sicherungen zu ermöglichen, schränkt die Sicherungsrichtlinie die Gesamtzahl der Sicherungen auf 180 ein. Weitere Informationen finden Sie unter [Inkrementelle Momentaufnahmen](../virtual-machines/disks-incremental-snapshots.md#restrictions) für verwaltete Datenträger.
 
-- [Grenzwerte für Azure-Abonnements und -Dienste](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#virtual-machine-disk-limits) gelten für die Gesamtzahl der Datenträgermomentaufnahmen pro Region und Abonnement.
+- [Grenzwerte für Azure-Abonnements und -Dienste](../azure-resource-manager/management/azure-subscription-service-limits.md#virtual-machine-disk-limits) gelten für die Gesamtzahl der Datenträgermomentaufnahmen pro Region und Abonnement.
 
 - Zeitpunktmomentaufnahmen von mehreren an eine VM angefügten Datenträgern werden nicht unterstützt.
 
@@ -56,13 +56,15 @@ Weitere Regionen werden angekündigt, sobald sie verfügbar werden.
 
 - Derzeit ist das Azure-Portal zum Konfigurieren der Datenträgersicherung auf maximal 20 Datenträger aus demselben Abonnement beschränkt.
 
-- Beim Konfigurieren der Sicherung müssen der für die Sicherung ausgewählte Datenträger und die Ressourcengruppe für Momentaufnahmen, in der die Momentaufnahmen gespeichert werden sollen, demselben Abonnement angehören. Sie können keine inkrementelle Momentaufnahme für einen bestimmten Datenträger außerhalb des Abonnements dieses Datenträgers erstellen. Weitere Informationen finden Sie unter [Inkrementelle Momentaufnahmen](https://docs.microsoft.com/azure/virtual-machines/windows/disks-incremental-snapshots-portal#restrictions) für verwaltete Datenträger. Weitere Informationen zum Auswählen einer Ressourcengruppe für Momentaufnahmen finden Sie unter [Konfigurieren der Sicherung](backup-managed-disks.md#configure-backup).
+- Aktuell (also während der Vorschauphase) können PowerShell und die Azure CLI nicht zum Konfigurieren der Sicherung und Wiederherstellung von Datenträgern verwendet werden.
+
+- Beim Konfigurieren der Sicherung müssen der für die Sicherung ausgewählte Datenträger und die Ressourcengruppe für Momentaufnahmen, in der die Momentaufnahmen gespeichert werden sollen, demselben Abonnement angehören. Sie können keine inkrementelle Momentaufnahme für einen bestimmten Datenträger außerhalb des Abonnements dieses Datenträgers erstellen. Weitere Informationen finden Sie unter [Inkrementelle Momentaufnahmen](../virtual-machines/windows/disks-incremental-snapshots-portal.md#restrictions) für verwaltete Datenträger. Weitere Informationen zum Auswählen einer Ressourcengruppe für Momentaufnahmen finden Sie unter [Konfigurieren der Sicherung](backup-managed-disks.md#configure-backup).
 
 - Für erfolgreiche Sicherungs- und Wiederherstellungsvorgänge sind für die verwaltete Identität des Sicherungstresors Rollenzuweisungen erforderlich. Verwenden Sie nur die in der Dokumentation angegebenen Rollendefinitionen. Die Verwendung anderer Rollen wie z. B. „Besitzer“ oder „Mitwirkender“ wird nicht unterstützt. Wenn Sie kurz nach der Rollenzuweisung mit dem Konfigurieren von Sicherungs- oder Wiederherstellungsvorgängen beginnen, treten möglicherweise Probleme mit Berechtigungen auf. Dies liegt daran, dass die Rollenzuweisungen erst nach einigen Minuten in Kraft treten.
 
-- Bei verwalteten Datenträgern kann die Leistungsstufe bei der Bereitstellung oder danach geändert werden, ohne die Größe des Datenträgers anzupassen. Die Azure Disk Backup-Lösung unterstützt die Leistungsstufenänderungen auf dem zu sichernden Quelldatenträger. Während der Wiederherstellung ist die Leistungsstufe des wiederhergestellten Datenträgers mit der des Quelldatenträgers zum Zeitpunkt der Sicherung identisch. Befolgen Sie die [hier](https://docs.microsoft.com/azure/virtual-machines/disks-performance-tiers-portal) aufgeführte Dokumentation, um die Leistungsstufe Ihres Datenträgers nach dem Wiederherstellungsvorgang zu ändern.
+- Bei verwalteten Datenträgern kann die Leistungsstufe bei der Bereitstellung oder danach geändert werden, ohne die Größe des Datenträgers anzupassen. Die Azure Disk Backup-Lösung unterstützt die Leistungsstufenänderungen auf dem zu sichernden Quelldatenträger. Während der Wiederherstellung ist die Leistungsstufe des wiederhergestellten Datenträgers mit der des Quelldatenträgers zum Zeitpunkt der Sicherung identisch. Befolgen Sie die [hier](../virtual-machines/disks-performance-tiers-portal.md) aufgeführte Dokumentation, um die Leistungsstufe Ihres Datenträgers nach dem Wiederherstellungsvorgang zu ändern.
 
-- Die Unterstützung für [private Verbindungen](https://docs.microsoft.com/azure/virtual-machines/disks-enable-private-links-for-import-export-portal) für verwaltete Datenträger ermöglicht es Ihnen, den Export und Import von verwalteten Datenträgern einzuschränken, sodass diese Vorgänge nur in Ihrem virtuellen Azure-Netzwerk stattfinden. Azure Disk Backup unterstützt die Sicherung von Datenträgern, auf denen private Endpunkte aktiviert sind. Dies bedeutet nicht, dass die Sicherungsdaten oder Momentaufnahmen über den privaten Endpunkt zugänglich sind.
+- Die Unterstützung für [private Verbindungen](../virtual-machines/disks-enable-private-links-for-import-export-portal.md) für verwaltete Datenträger ermöglicht es Ihnen, den Export und Import von verwalteten Datenträgern einzuschränken, sodass diese Vorgänge nur in Ihrem virtuellen Azure-Netzwerk stattfinden. Azure Disk Backup unterstützt die Sicherung von Datenträgern, auf denen private Endpunkte aktiviert sind. Dies bedeutet nicht, dass die Sicherungsdaten oder Momentaufnahmen über den privaten Endpunkt zugänglich sind.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

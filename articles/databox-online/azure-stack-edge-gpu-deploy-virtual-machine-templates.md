@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 11/16/2020
+ms.date: 01/25/2021
 ms.author: alkohli
-ms.openlocfilehash: 69d5a0a69bcd820fd59da0a18b3838b65a6a0460
-ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
+ms.openlocfilehash: 66d537b79819aecab4ce88a56ed465679363f421
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97763427"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98805204"
 ---
 # <a name="deploy-vms-on-your-azure-stack-edge-pro-gpu-device-via-templates"></a>Bereitstellen von VMs auf Ihrem Azure Stack Edge Pro-GPU-Gerät über Vorlagen
 
@@ -29,7 +29,7 @@ Für die Bereitstellung von Azure Stack Edge Pro-VMs auf einer Vielzahl von Ger�
 
 Nachfolgend finden Sie eine allgemeine Übersicht über den Bereitstellungsworkflow bei Verwendung von Vorlagen:
 
-1. **Konfigurieren der Voraussetzungen**: Um die Bereitstellungsvoraussetzungen zu erfüllen, müssen entsprechende Einstellungen für das Gerät, den Client und die VM konfiguriert werden.
+1. **Konfigurieren der Voraussetzungen**: Voraussetzungen müssen in drei Bereichen erfüllt sein: Gerät, Client und VM.
 
     1. **Voraussetzungen auf dem Gerät**
 
@@ -71,7 +71,7 @@ Konfigurieren Sie diese Voraussetzungen auf dem Client, über den auf das Azure 
 
 ## <a name="vm-prerequisites"></a>VM-Voraussetzungen
 
-Konfigurieren Sie diese Voraussetzungen, um die erforderlichen Ressourcen für die VM-Erstellung zu erstellen. 
+Konfigurieren Sie diese Voraussetzungen, um die für die VM-Erstellung benötigten Ressourcen zu erstellen. 
 
     
 ### <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
@@ -101,7 +101,7 @@ PS C:\windows\system32>
 
 ### <a name="create-a-storage-account"></a>Speicherkonto erstellen
 
-Erstellen Sie unter Verwendung der im vorherigen Schritt erstellten Ressourcengruppe ein neues Speicherkonto. Dabei handelt es sich um ein **lokales Speicherkonto**, das zum Hochladen des virtuellen Datenträgerimages für die VM verwendet wird.
+Erstellen Sie unter Verwendung der im vorherigen Schritt erstellten Ressourcengruppe ein neues Speicherkonto. Bei diesem Konto handelt es sich um ein **lokales Speicherkonto**, das zum Hochladen des virtuellen Datenträgerimages für die VM verwendet wird.
 
 ```powershell
 New-AzureRmStorageAccount -Name <Storage account name> -ResourceGroupName <Resource group name> -Location DBELocal -SkuName Standard_LRS
@@ -195,7 +195,7 @@ Kopieren Sie die zu verwendenden Datenträgerimages in Seitenblobs im lokalen Sp
 
 7. Überprüfen Sie die **Verbindungszusammenfassung**, und wählen Sie **Verbinden** aus.
 
-8. Das Speicherkonto wird auf der linken Seite angezeigt. Erweitern Sie das Speicherkonto. Wählen Sie **Blobcontainer** aus, klicken Sie mit der rechten Maustaste, und wählen Sie **Blobcontainer erstellen** aus. Geben Sie einen Namen für Ihren Blobcontainer ein.
+8. Das Speicherkonto wird auf der linken Seite angezeigt. Erweitern Sie das Speicherkonto. Wählen Sie die Option **Blobcontainer** aus, klicken Sie mit der rechten Maustaste darauf, und wählen Sie **Blobcontainer erstellen** aus. Geben Sie einen Namen für Ihren Blobcontainer ein.
 
 9. Wählen Sie den soeben erstellten Container aus, und wählen Sie dann im rechten Bereich **Hochladen > Dateien hochladen** aus. 
 
@@ -209,7 +209,7 @@ Kopieren Sie die zu verwendenden Datenträgerimages in Seitenblobs im lokalen Sp
 
     ![Hochladen der VHD-Datei 3](media/azure-stack-edge-gpu-deploy-virtual-machine-templates/upload-vhd-file-3.png)
 
-12. Kopieren und speichern Sie den **URI**, da Sie ihn in späteren Schritten erneut benötigen.
+12. Kopieren und speichern Sie den **URI** für die Verwendung in den weiteren Schritten.
 
     ![Kopieren des URI](media/azure-stack-edge-gpu-deploy-virtual-machine-templates/copy-uri-1.png)
 
@@ -237,7 +237,7 @@ Die Datei `CreateImage.parameters.json` kann die folgenden Parameter enthalten:
     }
 ```
 
-Bearbeiten Sie die Datei `CreateImage.parameters.json`, und fügen Sie folgende Informationen für Ihr Azure Stack Edge Pro-Gerät hinzu:
+Bearbeiten Sie die Datei `CreateImage.parameters.json`, und fügen Sie die folgenden Werte für Ihr Azure Stack Edge Pro-Gerät hinzu:
 
 1. Geben Sie den Betriebssystemtyp der VHD an, die Sie hochladen. Dies kann Windows oder Linux sein.
 
@@ -250,16 +250,17 @@ Bearbeiten Sie die Datei `CreateImage.parameters.json`, und fügen Sie folgende 
 
 2. Ändern Sie den Image-URI in den URI des Images, das Sie im vorherigen Schritt hochgeladen haben:
 
-    ```json
-    "imageUri": {
-        "value": "https://myasegpusavm.blob.myasegpu1.wdshcsso.com/windows/WindowsServer2016Datacenter.vhd"
-        },
-    ```
-    Wenn Sie *http* mit dem Storage-Explorer verwenden, ändern Sie den URI in einen *http*-URI.
+   ```json
+   "imageUri": {
+       "value": "https://myasegpusavm.blob.myasegpu1.wdshcsso.com/windows/WindowsServer2016Datacenter.vhd"
+       },
+   ```
+
+   Wenn Sie *http* mit dem Storage-Explorer verwenden, müssen Sie den URI in einen *http*-URI ändern.
 
 3. Geben Sie einen eindeutigen Imagenamen an. Dieses Image wird später zum Erstellen des virtuellen Computers verwendet. 
 
-    Nachfolgend ist die JSON-Beispieldatei gezeigt, die in diesem Artikel verwendet wird.
+   Nachfolgend ist die JSON-Beispieldatei gezeigt, die in diesem Artikel verwendet wird.
 
     ```json
     {
@@ -278,6 +279,7 @@ Bearbeiten Sie die Datei `CreateImage.parameters.json`, und fügen Sie folgende 
       }
     }
     ```
+
 5. Speichern Sie die Parameterdatei.
 
 
@@ -588,4 +590,4 @@ Führen Sie diese Schritte aus, um eine Verbindung mit einer Linux-VM herzustell
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Azure Resource Manager-Cmdlets](/powershell/module/azurerm.resources/?view=azurermps-6.13.0)
+[Azure Resource Manager-Cmdlets](/powershell/module/azurerm.resources/?view=azurermps-6.13.0&preserve-view=true)

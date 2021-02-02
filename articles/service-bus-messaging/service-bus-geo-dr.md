@@ -3,12 +3,12 @@ title: Georedundante Notfallwiederherstellung in Azure Service Bus | Microsoft-D
 description: Verwenden von geografischen Regionen für das Failover und zum Durchführen der Notfallwiederherstellung in Azure Service Bus
 ms.topic: article
 ms.date: 01/04/2021
-ms.openlocfilehash: c07721c07923a40da9fe28e0e3116bfd6a52210f
-ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
+ms.openlocfilehash: b25fd1befded253c79267b1b016cef979005d01e
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97862351"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98676454"
 ---
 # <a name="azure-service-bus-geo-disaster-recovery"></a>Georedundante Notfallwiederherstellung in Azure Service Bus
 
@@ -48,6 +48,8 @@ In diesem Artikel werden die folgenden Begriffe verwendet:
 
 -  *Primärer/sekundärer Namespace*: Die Namespaces, die dem Alias entsprechen. Der primäre Namespace ist aktiv und empfängt Nachrichten. (Dies kann ein bereits vorhandener oder ein neuer Namespace sein.) Der sekundäre Namespace ist passiv und empfängt keine Nachrichten. Die Metadaten zwischen beiden Namespaces werden synchronisiert, sodass beide nahtlos und ohne Änderung des Anwendungscodes oder der Verbindungszeichenfolge Nachrichten entgegennehmen können. Um sicherzustellen, dass nur der aktive Namespace Nachrichten empfängt, müssen Sie den Alias verwenden. 
 
+    > [!IMPORTANT]
+    > Für die georedundante Notfallwiederherstellung müssen das Abonnement und die Ressourcengruppe für den primären und sekundären Namespace identisch sein.
 -  *Metadaten*: Entitäten, z.B. Warteschlangen, Themen und Abonnements und die dazugehörigen Eigenschaften des Diensts, die dem Namespace zugeordnet sind. Beachten Sie, dass nur Entitäten und ihre Einstellungen automatisch repliziert werden. Nachrichten werden nicht repliziert.
 
 -  *Failover*: Der Vorgang zum Aktivieren des sekundären Namespace.

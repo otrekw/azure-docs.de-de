@@ -9,24 +9,27 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/15/2021
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 1a1fc0ce634282ffd4fcf374138fe97a04f32062
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: 320f02f6ece106b4d0e14293f95533aa5b4e0743
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98539589"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98693450"
 ---
 # <a name="choose-a-pricing-tier-for-azure-cognitive-search"></a>Auswählen eines Tarifs für die kognitive Azure-Suche
 
-Beim [Erstellen eines Suchdiensts](search-create-service-portal.md) wählen Sie einen Tarif (oder eine SKU) aus, der für die Lebensdauer des Diensts festgelegt wurde. Die geschätzten monatlichen Kosten werden im Portal auf der Seite **Tarif auswählen** angezeigt. Wenn Sie stattdessen einen Dienst über PowerShell oder Azure CLI erstellen, wird der Tarif durch den Parameter **`-Sku`** angegeben.
+Beim [Erstellen eines Suchdiensts](search-create-service-portal.md) müssen Sie auch einen Tarif (oder eine SKU) auswählen, der für die Lebensdauer des Diensts festgelegt wird. Die Preise (bzw. die geschätzten monatlichen Kosten für die Ausführung des Diensts) werden im Portal auf der Seite **Tarif auswählen** angezeigt, wenn Sie den Dienst erstellen. Falls Sie die Bereitstellung stattdessen mit PowerShell oder der Azure CLI durchführen, wird der Tarif mit dem Parameter **`-Sku`** angegeben. In diesem Fall sollten Sie sich unter [Azure Cognitive Search – Preise](https://azure.microsoft.com/pricing/details/search/) über die geschätzten Kosten informieren.
 
 Der ausgewählte Tarif bestimmt:
 
-+ Die maximale Anzahl von Indizes und anderen Objekten, die Sie für den Dienst erstellen können
++ Maximale Anzahl von Indizes und anderen Objekten, die im Dienst zulässig sind
 + Größe und Geschwindigkeit von Partitionen (physischer Speicher)
 + Die abrechenbare Rate als eine festgelegte monatliche Gebühr, aber auch als inkrementelle Kosten, wenn Sie Kapazität hinzufügen
 
 In einigen Fällen bestimmt der von Ihnen gewählte Tarif die Verfügbarkeit von [Premium-Features](#premium-features).
+
+> [!NOTE]
+> Suchen Sie nach Informationen zu „Azure-SKUs“? Beginnen Sie mit [Azure-Preise](https://azure.microsoft.com/pricing/), und scrollen Sie dann nach unten, um die Links zu den Preisseiten für die einzelnen Dienste anzuzeigen.
 
 ## <a name="tier-descriptions"></a>Tarifbeschreibungen
 
@@ -67,7 +70,7 @@ Tarife bestimmen den maximalen Speicherplatz des Diensts selbst sowie die maxima
 
 ## <a name="partition-size-and-speed"></a>Partitionsgröße und Geschwindigkeit
 
-Der Tarifpreis enthält Details zum partitionsweisen Speicher, der von 2 GB für „Basic“ bis zu 2 TB für datenspeicheroptimierte Tarife (L2) reicht. Andere Hardwaremerkmale, wie z. B. die Geschwindigkeit von Vorgängen, die Latenz und die Übertragungsraten, werden nicht veröffentlicht, aber die für bestimmte Lösungsarchitekturen vorgesehenen Tarife basieren auf Hardware mit den Features zur Unterstützung dieser Szenarien.
+Der Tarifpreis enthält Details zum partitionsweisen Speicher, der von 2 GB für „Basic“ bis zu 2 TB für datenspeicheroptimierte Tarife (L2) reicht. Andere Hardwaremerkmale, wie z. B. die Geschwindigkeit von Vorgängen, die Latenz und die Übertragungsraten, werden nicht veröffentlicht, aber die für bestimmte Lösungsarchitekturen vorgesehenen Tarife basieren auf Hardware mit den Features zur Unterstützung dieser Szenarien. Weitere Informationen zu Partitionen finden Sie unter [Schätzen und Verwalten der Kapazität](search-capacity-planning.md) und [Skalieren zur Verbesserung der Leistung](search-performance-optimization.md).
 
 ## <a name="billing-rates"></a>Abrechnungsraten
 

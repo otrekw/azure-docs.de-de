@@ -1,25 +1,25 @@
 ---
 title: Integrierte Richtliniendefinitionen für Azure Security Center
 description: Hier finden Sie eine Liste der integrierten Azure Policy-Richtliniendefinitionen für Azure Security Center. Diese integrierten Richtliniendefinitionen bieten allgemeine Ansätze für die Verwaltung von Azure-Ressourcen.
-ms.date: 01/08/2021
+ms.date: 01/25/2021
 ms.topic: reference
 author: memildin
 ms.author: memildin
 ms.service: security-center
 ms.custom: subject-policy-reference
-ms.openlocfilehash: c8d52f08cbf1d2c3ad0e910dbb2d7688abb6dea9
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 568b8761f2b528b1f5d8e3971503834ab5321ed5
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98051441"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98806969"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-security-center"></a>Integrierte Azure Policy-Definitionen für Azure Security Center
 
 Diese Seite enthält einen Index der integrierten [Azure Policy](../governance/policy/overview.md)-Richtliniendefinitionen im Zusammenhang mit Azure Security Center. Die folgenden Gruppierungen von Richtliniendefinitionen sind verfügbar:
 
 - Die Gruppe [Initiativen](#azure-security-center-initiatives) listet die Azure Policy-Initiativdefinitionen in der Kategorie „Security Center“ auf.
-- Die Gruppe [Standardinitiative](#azure-security-center-initiatives) listet alle Azure Policy-Definitionen auf, die Teil der [Azure Security Center](./index.yml)-Standardinitiative sind.
+- In der Gruppe [Standardinitiative](#azure-security-center-initiatives) werden alle Azure Policy-Definitionen aufgeführt, die Teil der Security Center-Standardinitiative [Azure-Sicherheitsvergleichstest](../security/benchmarks/introduction.md) sind. Diese von Microsoft erstellte, weit verbreitete Benchmark basiert auf Kontrollen des [Center for Internet Security (CIS)](https://www.cisecurity.org/benchmark/azure/) und des [National Institute of Standards and Technology (NIST)](https://www.nist.gov/) und konzentriert sich auf cloudzentrierte Sicherheit.
 - Die Gruppe [Kategorie](#azure-security-center-category) listet alle Azure Policy-Definitionen in der Kategorie „Security Center“ auf.
 
 Weitere Informationen zu Sicherheitsrichtlinien finden Sie unter [Arbeiten mit Sicherheitsrichtlinien](./tutorial-security-policy.md). Weitere Azure Policy-Integrationen für andere Dienste finden Sie unter [Integrierte Azure Policy-Richtliniendefinitionen](../governance/policy/samples/built-in-policies.md).

@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 09/25/2020
 ms.author: pepogors
-ms.openlocfilehash: 0876891e42ce629a3b088d8068c74386d690492d
-ms.sourcegitcommit: e0ec3c06206ebd79195d12009fd21349de4a995d
+ms.openlocfilehash: 3767a16656ac4d11511c0928be8b2703c4e94c7c
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97683195"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98680602"
 ---
 # <a name="deploy-an-azure-service-fabric-cluster-with-stateless-only-node-types-preview"></a>Bereitstellen eines Azure Service Fabric-Clusters mit ausschließlich zustandslosen Knotentypen (Vorschau)
 Für Service Fabric-Knotentypen gilt die Annahme, dass zu einem bestimmten Zeitpunkt ggf. zustandsbehaftete Dienste auf den Knoten platziert werden. Zustandslose Knotentypen lockern diese Annahme für einen Knotentyp und ermöglichen so die Nutzung anderer Funktionen wie schnellere Aufskalierungsvorgänge, Unterstützung für automatische Betriebssystemupgrades bei Bronze-Dauerhaftigkeit und horizontales Skalieren auf mehr als 100 Knoten in einer einzigen VM-Skalierungsgruppe.
@@ -253,6 +253,8 @@ Damit Sie beginnen können, müssen Sie die neuen Ressourcen zu Ihrer bestehende
 
 Nachdem die Bereitstellung der Ressourcen abgeschlossen wurde, können Sie beginnen, die Knoten im Knotentyp zu deaktivieren, den Sie aus dem ursprünglichen Cluster entfernen möchten.
 
+>[!NOTE]
+> Bei Verwendung der automatischen Skalierung mit zustandslosen Knotentypen mit Bronze-Dauerhaftigkeit wird der Knotenzustand nach dem Herunterskalieren nicht automatisch bereinigt. Um den Knotenzustand ausgefallener Knoten während der automatischen Skalierung zu bereinigen, empfiehlt sich die Verwendung der [Service Fabric-Hilfsanwendung für die Autoskalierung](https://github.com/Azure/service-fabric-autoscale-helper).
 
 ## <a name="next-steps"></a>Nächste Schritte 
 * [Reliable Services](service-fabric-reliable-services-introduction.md)

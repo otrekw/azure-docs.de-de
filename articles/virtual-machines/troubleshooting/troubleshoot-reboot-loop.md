@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/15/2018
 ms.author: genli
-ms.openlocfilehash: 4c336fe9a65d7bcc44790a4bfb02bed44f028733
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ad0ed7e9619f0b789bf8949fe398aa27bc36b9e0
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86500921"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98629639"
 ---
 # <a name="windows-reboot-loop-on-an-azure-vm"></a>Windows-Neustartschleife auf einem virtuellen Azure-Computer
 In diesem Artikel wird die Neustartschleife beschrieben, die auf einem virtuellen Windows-Computer (Virtual Machine, VM) in Microsoft Azure auftreten kann.
@@ -50,6 +50,9 @@ Eine Beschädigung des Dateisystems kann die Ursache dafür sein. Die Änderung,
 
 ## <a name="solution"></a>Lösung
 
+> [!TIP]
+> Wenn Sie über eine aktuelle Sicherung des virtuellen Computers verfügen, können Sie versuchen, den [virtuellen Computer aus der Sicherung wiederherzustellen](../../backup/backup-azure-arm-restore-vms.md), um das Startproblem zu beheben.
+
 Um dieses Problem zu lösen, können Sie [den Betriebssystemdatenträger sichern](../windows/snapshot-copy-managed-disk.md), [den Betriebssystemdatenträger an einen virtuellen Wiederherstellungscomputer anfügen](./troubleshoot-recovery-disks-portal-windows.md) und dann den Lösungsoptionen entsprechend folgen oder die einzelnen Lösungen nacheinander ausprobieren.
 
 ### <a name="solution-for-cause-1"></a>Lösung für Ursache 1
@@ -66,7 +69,7 @@ Um dieses Problem zu lösen, können Sie [den Betriebssystemdatenträger sichern
 
 6. Navigieren Sie im Ordner **\Windows\System32\config** zur Datei „SYSTEM“.
 
-7. Wählen Sie **Öffnen** aus, geben Sie den Namen **BROKENSYSTEM** ein, und erweitern Sie den Schlüssel **HKEY_LOCAL_MACHINE**. Dann wird ein zusätzlicher Schlüssel namens **BROKENSYSTEM**  angezeigt.
+7. Wählen Sie **Öffnen** aus, geben Sie den Namen **BROKENSYSTEM** ein, und erweitern Sie den Schlüssel **HKEY_LOCAL_MACHINE**. Dann wird ein zusätzlicher Schlüssel namens **BROKENSYSTEM** angezeigt.
 
 8. Überprüfen Sie, über welchen ControlSet-Schlüssel der Computer gestartet wird. Die zugehörige Schlüsselnummer wird im folgenden Registrierungsschlüssel angezeigt.
 

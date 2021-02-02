@@ -6,12 +6,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: amgowda
-ms.openlocfilehash: b4b6c04a1e35031387a006b6350ebf6cbe502fee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 51e2095b0df8fdc965926c6c612c45f582c9b9d2
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90993524"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98874483"
 ---
 # <a name="frequently-asked-questions-about-confidential-computing-nodes-on-azure-kubernetes-service-aks"></a>Häufig gestellte Fragen zu Confidential Computing-Knoten in Azure Kubernetes Service (AKS)
 
@@ -24,6 +24,10 @@ SLA wird während der Produktvorschau nicht bereitgestellt, wie [hier](https://a
 ## <a name="what-is-attestation-and-how-can-we-do-attestation-of-apps-running-in-enclaves"></a>Was ist ein Nachweis, und wie können wir einen Nachweis von Apps in Enklaven führen? 
 
 Nachweis ist der Prozess zur Veranschaulichung und Überprüfung, dass ein Softwareelement auf der jeweiligen Hardwareplattform ordnungsgemäß instanziiert wurde. Außerdem stellt er sicher, dass sein Beweis überprüft werden kann, um zu gewährleisten, dass er auf einer sicheren Plattform ausgeführt wird und nicht manipuliert wurde. [Informieren Sie sich genauer](attestation.md) dazu, wie ein Nachweis bei Enklaven-Apps geführt wird.
+
+## <a name="can-i-enable-accelerated-networking-with-azure-confidential-computing-aks-clusters"></a>Kann ich den beschleunigten Netzwerkbetrieb mit AKS-Clustern für Azure Confidential Computing aktivieren? 
+
+Nein. Der beschleunigte Netzwerkbetrieb wird für Confidential Computing-Knoten in AKS nicht unterstützt. Stellen Sie sicher, dass der beschleunigte Netzwerkbetrieb in Ihrer Bereitstellung deaktiviert ist. 
 
 ## <a name="can-i-bring-my-existing-containerized-applications-and-run-it-on-aks-with-azure-confidential-computing"></a>Kann ich meine vorhandenen Containeranwendungen in AKS mit Azure Confidential Computing ausführen? 
 

@@ -1,25 +1,24 @@
 ---
-title: Aktivieren von Remotedesktop für eine Rolle mithilfe von Visual Studio (Azure Cloud Services)
+title: Aktivieren von Remotedesktop für eine Rolle mithilfe von Visual Studio (Azure Cloud Services (klassisch))
 description: Konfigurieren einer Azure-Clouddienstanwendung für Remotedesktopverbindungen
-services: cloud-services
-author: ghogen
-manager: jillfra
-ms.assetid: f5727ebe-9f57-4d7d-aff1-58761e8de8c1
-ms.prod: visual-studio-dev15
-ms.technology: vs-azure
-ms.custom: vs-azure
-ms.topic: conceptual
-ms.workload: azure-vs
-ms.date: 03/06/2018
-ms.author: ghogen
-ms.openlocfilehash: f4622e44c795182ee68c617f335c9e1651d3adcc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.topic: article
+ms.service: cloud-services
+ms.date: 10/14/2020
+ms.author: tagore
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: ad95cefbdf839c28b0979b051e217a1dfec76eea
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80294386"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98743235"
 ---
-# <a name="enable-remote-desktop-connection-for-a-role-in-azure-cloud-services-using-visual-studio"></a>Aktivieren einer Remotedesktopverbindung für eine Rolle in Azure Cloud Services mit Visual Studio
+# <a name="enable-remote-desktop-connection-for-a-role-in-azure-cloud-services-classic-using-visual-studio"></a>Aktivieren einer Remotedesktopverbindung für eine Rolle in Azure Cloud Services (klassisch) mithilfe von Visual Studio
+
+> [!IMPORTANT]
+> [Azure Cloud Services (erweiterter Support)](../cloud-services-extended-support/overview.md) ist ein neues Azure Resource Manager-basiertes Bereitstellungsmodell für Azure Cloud Services. Im Zuge dieser Änderung wurden Azure Cloud Services-Instanzen, die unter dem Azure Service Manager-basierten Bereitstellungsmodell ausgeführt werden, in „Cloud Services (klassisch)“ umbenannt. Für alle neuen Bereitstellungen wird [Azure Cloud Services (erweiterter Support)](../cloud-services-extended-support/overview.md) verwendet.
 
 > [!div class="op_single_selector"]
 > * [Azure portal](cloud-services-role-enable-remote-desktop-new-portal.md)
@@ -59,7 +58,7 @@ Wenn Sie Visual Studio 2017 Version 15.4 und früher verwenden, können Sie die 
 
 ## <a name="configure-remote-desktop-when-using-visual-studio-2017-version-155-and-later"></a>Konfigurieren von Remotedesktop bei Verwendung von Visual Studio 2017 Version 15.5 und früher
 
-Mit Visual Studio 2017 Version 15.5 und höher können Sie weiterhin den Veröffentlichungs-Assistenten mit einem Clouddienstprojekt verwenden. Sie können auch die Option**Remotedesktop für alle Rollen aktivieren** verwenden, wenn Sie nur als einzelner Entwickler arbeiten.
+Mit Visual Studio 2017 Version 15.5 und höher können Sie weiterhin den Veröffentlichungs-Assistenten mit einem Clouddienstprojekt verwenden. Sie können auch die Option **Remotedesktop für alle Rollen aktivieren** verwenden, wenn Sie nur als einzelner Entwickler arbeiten.
 
 Wenn Sie als Teil eines Teams arbeiten, sollten Sie stattdessen Remotedesktop entweder im [Azure-Portal](cloud-services-role-enable-remote-desktop-new-portal.md) oder mittels [PowerShell](cloud-services-role-enable-remote-desktop-powershell.md) auf dem Azure-Clouddienst aktivieren.
 
@@ -95,7 +94,7 @@ Um die RDP-Erweiterung von Azure DevOps Services zu verwenden, schließen Sie di
 
 1. Fügen Sie nach Ihren Buildschritten den Schritt **Azure Cloud Service-Bereitstellung** hinzu, und legen Sie seine Eigenschaften fest.
 
-1. Fügen Sie nach dem Bereitstellungsschritt einen **Azure Powershell**-Schritt hinzu, legen Sie für seine Eigenschaft **Anzeigename** den Namen „Azure-Bereitstellung: RDP-Erweiterung aktivieren“ (oder einen anderen geeigneten Namen) fest, und wählen Sie das entsprechende Azure-Abonnement aus.
+1. Fügen Sie nach dem Bereitstellungsschritt einen **Azure Powershell**-Schritt hinzu, legen Sie für seine Eigenschaft **Anzeigename** „Azure-Bereitstellung: RDP-Erweiterung aktivieren“ (oder einen anderen geeigneten Namen) fest, und wählen Sie das entsprechende Azure-Abonnement aus.
 
 1. Legen Sie für **Skripttyp** „Inline“ fest, und fügen Sie den folgenden Code in das Feld **Inlineskript** ein. (Sie können mit diesem Skript auch eine `.ps1`-Datei in Ihrem Projekt erstellen, für **Skripttyp** „Skriptdateipfad“ festlegen und in **Skriptpfad** den Pfad zur Datei angeben.)
 
