@@ -12,14 +12,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 07/10/2017
+ms.date: 01/11/2021
 ms.author: timlt
-ms.openlocfilehash: f9c7a2df83e9d630ce2b4635a830fb941180c758
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 286f00318715764a5943387e6b362b3c8e69a82e
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96021832"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98808139"
 ---
 # <a name="storsimple-8000-series-a-hybrid-cloud-storage-solution"></a>StorSimple 8000-Serie: eine Hybridcloud-Speicherlösung
 
@@ -44,7 +44,7 @@ In der folgenden Tabelle werden einige der wichtigsten Vorteile von Microsoft Az
 | Transparente Integration |Verwendet das iSCSI-Protokoll, um Datenspeicher unsichtbar miteinander zu verknüpfen. Dies sorgt dafür, dass Daten, die in der Cloud, im Datencenter oder auf Remoteservern gespeichert sind, dem Anschein nach an einem zentralen Speicherort gespeichert werden. |
 | Reduzierte Speicherkosten |Reserviert ausreichend lokalen oder Cloudspeicher, um aktuelle Anforderungen zu erfüllen, und erweitert Cloudspeicher nur bei Bedarf. Außerdem werden Speicheranforderungen und -kosten durch die Beseitigung redundanter Versionen der gleichen Daten (Deduplizierung) und eine Komprimierung noch weiter verringert. |
 | Vereinfachte Speicherverwaltung |Stellt Systemverwaltungstools bereit, mit denen Sie lokal, auf einem Remoteserver und in der Cloud gespeicherte Daten konfigurieren und verwalten können. Darüber hinaus können Sie Backup- und Wiederherstellungsfunktionen über ein Microsoft Management Console-Snap-In verwalten.|
-| Verbesserte Notfallwiederherstellung und Vorschrifteneinhaltung |Weist keine verlängerte Wiederherstellungszeit auf. Stattdessen stellt die Lösung Daten nach Bedarf wieder her. Dies bedeutet, dass normale Vorgänge mit minimaler Unterbrechung fortgesetzt werden können. Darüber hinaus können Sie Richtlinien zum Angeben von Sicherungszeitplänen und zur Aufbewahrung von Daten konfigurieren. |
+| Verbesserte Notfallwiederherstellung und Vorschrifteneinhaltung |Weist keine verlängerte Wiederherstellungszeit auf. Stattdessen werden die Daten bei Bedarf wiederhergestellt, damit der normale Betrieb mit minimaler Unterbrechung fortgesetzt werden kann. Darüber hinaus können Sie Richtlinien zum Angeben von Sicherungszeitplänen und zur Aufbewahrung von Daten konfigurieren. |
 | Datenmobilität |Auf in Microsoft Azure Cloud Services hochgeladene Daten kann für Wiederherstellungs- und Migrationszwecke von anderen Standorten aus zugegriffen werden. Darüber hinaus können Sie mithilfe von StorSimple auch StorSimple Cloud Appliances auf virtuellen Computern (VMs) konfigurieren, die in Microsoft Azure ausgeführt werden. Die virtuellen Computer nutzen dann für Test-oder Wiederherstellungszwecke virtuelle Geräte für den Zugriff auf gespeicherte Daten. |
 | Geschäftskontinuität |Erlaubt Benutzern der StorSimple-Serien 5000–7000, ihre Daten zu einem Gerät der StorSimple 8000-Serie zu migrieren. |
 | Verfügbarkeit im Azure-Portal für Behörden |StorSimple ist im Azure Government-Portal verfügbar. Weitere Informationen finden Sie unter [Bereitstellen lokaler StorSimple-Geräte im Government-Portal](storsimple-8000-deployment-walkthrough-gov-u2.md). |
@@ -60,7 +60,7 @@ Die Microsoft Azure StorSimple-Lösung umfasst die folgenden Komponenten:
 * **StorSimple Cloud Appliance:** Dies ist eine auch als virtuelles StorSimple-Gerät bezeichnete Softwareversion des StorSimple-Geräts, die die Architektur und die meisten Funktionen des physischen Hybridspeichergeräts repliziert. Die StorSimple Cloud Appliance wird auf einem einzelnen Knoten auf einem virtuellen Azure-Computer ausgeführt. Virtuelle Premium-Geräte, die Azure-Premium-Speicher nutzen, stehen in Update 2 und höher zur Verfügung.
 * **StorSimple-Geräte-Manager-Dienst:** eine Erweiterung des Azure-Portals, mit der Sie ein StorSimple-Gerät oder eine StorSimple Cloud Appliance über eine gemeinsame Weboberfläche verwalten können. Sie können den StorSimple-Geräte-Manager-Dienst nutzen, um Dienste zu erstellen und zu verwalten, Geräte anzuzeigen und zu verwalten, Warnungen anzuzeigen, Volumes zu verwalten und Sicherungsrichtlinien und den Sicherungskatalog anzuzeigen und zu verwalten.
 * **Windows PowerShell für StorSimple** – Eine Befehlszeilenschnittstelle, mit der Sie das StorSimple-Gerät verwalten können. Windows PowerShell für StorSimple bietet Features, mit denen Sie Ihr StorSimple-Gerät registrieren, die Netzwerkschnittstelle Ihres Geräts konfigurieren, bestimmte Arten von Updates installieren, Probleme Ihres Geräts durch Zugriff auf eine Supportsitzung beheben und den Gerätestatus ändern können. Sie können auf Windows PowerShell für StorSimple zugreifen, indem Sie eine Verbindung mit der seriellen Konsole herstellen oder Windows PowerShell-Remoting verwenden.
-* **Azure PowerShell-Cmdlets für StorSimple** – eine Auflistung von Windows PowerShell-Cmdlets, die es Ihnen ermöglichen, Servicelevel- und Migrationsaufgaben über die Befehlszeile zu automatisieren. Weitere Informationen zu den Azure PowerShell-Cmdlets für StorSimple finden Sie unter [Cmdlet-Referenz](/powershell/module/servicemanagement/azure.service/?view=azuresmps-3.7.0#azure).
+* **Azure PowerShell-Cmdlets für StorSimple** – eine Auflistung von Windows PowerShell-Cmdlets, die es Ihnen ermöglichen, Servicelevel- und Migrationsaufgaben über die Befehlszeile zu automatisieren. Weitere Informationen zu den Azure PowerShell-Cmdlets für StorSimple finden Sie unter [Cmdlet-Referenz](/powershell/module/servicemanagement/azure.service/?view=azuresmps-3.7.0&preserve-view=true#azure).
 * **StorSimple Snapshot Manager** – Ein MMC-Snap-In, das Volumegruppen und den Volumeschattenkopie-Dienst von Windows verwendet, um anwendungskonsistente Backups zu generieren. Darüber hinaus können Sie den StorSimple-Momentaufnahmen-Manager zum Erstellen von Sicherungszeitplänen und Klonen oder Wiederherstellen von Volumes einsetzen.
 * **StorSimple-Adapter für SharePoint** – Ein Tool, das den Microsoft Azure StorSimple-Speicher und den Datenschutz auf SharePoint Server-Farmen transparent erweitert, während der StorSimple-Speicher über das Portal der SharePoint-Zentraladministration angezeigt und verwaltet werden kann.
 
@@ -73,7 +73,7 @@ In den folgenden Abschnitten wird jede dieser Komponenten ausführlicher beschri
 ## <a name="storsimple-device"></a>StorSimple-Gerät
 Das Microsoft Azure StorSimple-Gerät ist ein lokales Hybridspeicherarray, das primären Speicher und iSCSI den Zugriff auf die darauf gespeicherten Daten ermöglicht. Es verwaltet die Kommunikation mit Cloudspeicher und gewährleistet die Sicherheit und Vertraulichkeit aller Daten, die in der Microsoft Azure StorSimple-Lösung gespeichert sind.
 
-Zum StorSimple-Gerät gehören SSDs und HDDs sowie Unterstützung für Clustering und automatisches Failover. Das Gerät enthält einen gemeinsam genutzten Prozessor, gemeinsam genutzten Speicher sowie zwei gespiegelte Controller. Jeder Controller stellt Folgendes bereit:
+Zum StorSimple-Gerät gehören SSDs und Festplattenlaufwerke (HDDs) sowie Unterstützung für Clustering und automatisches Failover. Das Gerät enthält einen gemeinsam genutzten Prozessor, gemeinsam genutzten Speicher sowie zwei gespiegelte Controller. Jeder Controller stellt Folgendes bereit:
 
 * Verbindung mit einem Hostcomputer
 * Bis zu sechs Netzwerkanschlüsse zum Herstellen einer Verbindung mit dem lokalen Netzwerk (LAN)
@@ -95,7 +95,7 @@ Die Cloud Appliance weist folgende Merkmale auf:
 * Sie können eine unbegrenzte Anzahl von Cloud Appliances in der Cloud erstellen und sie nach Bedarf aktivieren und deaktivieren.
 * Mit dem virtuellen Gerät können lokale Umgebungen bei der Notfallwiederherstellung und in Entwicklungs- oder Testszenarios simuliert sowie der Abruf aus Sicherungen auf Elementebene unterstützt werden.
 
-Die StorSimple Cloud Appliance steht in zwei Modellen zur Verfügung: dem 8010-Gerät (früher als Modell 1100 bekannt) und dem 8020-Gerät. Das 8010-Gerät bietet eine maximale Kapazität von 30 TB. Das 8020-Gerät nutzt Azure-Premium-Speicher und umfasst eine maximale Kapazität von 64 TB. (In lokalen Ebenen speichert der Azure-Premium-Speicher Daten auf SSDs. Beim Standardspeicher werden Daten auf HDDs gespeichert.) Beachten Sie, dass Sie zur Verwendung von Premium-Speicher ein Azure-Premium-Speicherkonto benötigen.
+Die StorSimple Cloud Appliance steht in zwei Modellen zur Verfügung: dem 8010-Gerät (früher als Modell 1100 bekannt) und dem 8020-Gerät. Das 8010-Gerät bietet eine maximale Kapazität von 30 TB. Das 8020-Gerät nutzt Azure-Premium-Speicher und umfasst eine maximale Kapazität von 64 TB. (In lokalen Ebenen speichert der Azure-Premium-Speicher Daten auf SSDs. Beim Standardspeicher werden Daten auf HDDs gespeichert.) Beachten Sie, dass Sie zur Verwendung von Storage Premium ein Azure-Premium-Speicherkonto benötigen.
 
 Weitere Informationen zu StorSimple Cloud Appliances finden Sie unter [Bereitstellen und Verwalten einer StorSimple Cloud Appliance in Azure](storsimple-8000-cloud-appliance-u2.md).
 
@@ -124,12 +124,12 @@ Windows PowerShell für StorSimple stellt eine Befehlszeilen-Schnittstelle zur V
 * Beheben von Geräteproblemen durch Zugreifen auf die Supportsitzung
 * Ändern des Gerätezustands
 
-Sie können auf Windows PowerShell für StorSimple über eine serielle Konsole (auf einem Hostcomputer, der direkt mit dem Gerät verbunden ist) oder remote mithilfe von Windows PowerShell-Remoting zugreifen. Beachten Sie, dass einige der Windows PowerShell für StorSimple-Aufgaben (z. B. die anfängliche Registrierung des Geräts) nur in der seriellen Konsole erfolgen können.
+Sie können auf Windows PowerShell für StorSimple über eine serielle Konsole (auf einem Hostcomputer, der direkt mit dem Gerät verbunden ist) oder remote mithilfe von Windows PowerShell-Remoting zugreifen. Einige der Windows PowerShell für StorSimple-Aufgaben (z. B. die anfängliche Registrierung des Geräts) können nur in der seriellen Konsole erfolgen.
 
 Weitere Informationen finden Sie unter [Verwenden von Windows PowerShell für StorSimple zum Verwalten eines StorSimple-Geräts](storsimple-8000-windows-powershell-administration.md).
 
 ## <a name="azure-powershell-storsimple-cmdlets"></a>Azure PowerShell-Cmdlets für StorSimple
-Die Azure PowerShell-Cmdlets für StorSimple sind eine Sammlung von Windows PowerShell-Cmdlets, mit denen Sie Servicelevel- und Migrationsaufgaben über die Befehlszeile automatisieren können. Weitere Informationen zu den Azure PowerShell-Cmdlets für StorSimple finden Sie unter [Cmdlet-Referenz](/powershell/module/servicemanagement/azure.service/?view=azuresmps-3.7.0).
+Die Azure PowerShell-Cmdlets für StorSimple sind eine Sammlung von Windows PowerShell-Cmdlets, mit denen Sie Servicelevel- und Migrationsaufgaben über die Befehlszeile automatisieren können. Weitere Informationen zu den Azure PowerShell-Cmdlets für StorSimple finden Sie unter [Cmdlet-Referenz](/powershell/module/servicemanagement/azure.service/?view=azuresmps-3.7.0&preserve-view=true).
 
 ## <a name="storsimple-snapshot-manager"></a>StorSimple Snapshot Manager
 StorSimple Snapshot Manager ist ein MMC-Snap-In (Microsoft Management Console), das Sie zum Erstellen konsistenter zeitpunktbezogener Sicherungskopien von lokalen und Clouddaten verwenden können. Das Snap-In wird auf einem auf Windows Server basierenden Host ausgeführt. Sie können StorSimple Snapshot Manager für die folgenden Aufgaben verwenden:
@@ -139,7 +139,7 @@ StorSimple Snapshot Manager ist ein MMC-Snap-In (Microsoft Management Console), 
 * Verwalten von Sicherungsrichtlinien, damit Daten gemäß einem vordefinierten Zeitplan gesichert und an einem festgelegten Speicherort (lokal oder in der Cloud) gespeichert werden
 * Wiederherstellen von Volumes und einzelnen Dateien
 
-Sicherungen werden als Momentaufnahmen erfasst, die nur die Änderungen seit der letzen Erstellung einer Momentaufnahme aufzeichnen und weit weniger Speicherplatz als vollständige Sicherungen erfordern. Sie können Sicherungspläne erstellen oder bei Bedarf sofortige Sicherungen vornehmen. Außerdem können Sie StorSimple Snapshot Manager zum Einrichten von Aufbewahrungsrichtlinien verwenden, die steuern, wie viele Momentaufnahmen gespeichert werden. Wenn Sie anschließend Daten aus einer Sicherung wiederherstellen müssen, ermöglicht StorSimple Snapshot Manager Ihnen die Auswahl aus in einem Katalog mit lokalen oder Cloudmomentaufnahmen. 
+Sicherungen werden als Momentaufnahmen erfasst, die nur die Änderungen seit der letzen Erstellung einer Momentaufnahme aufzeichnen und weit weniger Speicherplatz als vollständige Sicherungen erfordern. Sie können Sicherungspläne erstellen oder bei Bedarf sofortige Sicherungen vornehmen. Außerdem können Sie StorSimple Snapshot Manager zum Einrichten von Aufbewahrungsrichtlinien verwenden, die steuern, wie viele Momentaufnahmen gespeichert werden. Wenn Sie später Daten aus einer Sicherung wiederherstellen müssen, ermöglicht StorSimple Snapshot Manager Ihnen die Auswahl aus einem Katalog mit lokalen oder Cloudmomentaufnahmen. 
 
 Wenn ein Notfall eintritt oder Daten aus anderen Gründen wiederhergestellt werden müssen, stellt StorSimple Snapshot Manager diese nach Bedarf inkrementell wieder her. Für die Datenwiederherstellung ist es nicht erforderlich, das gesamte System herunterzufahren, während eine Datei wiederhergestellt, Hardware ausgetauscht oder der Betrieb an einen anderen Standort verlagert wird.
 
@@ -148,7 +148,7 @@ Weitere Informationen finden Sie unter [Was ist der StorSimple Snapshot Manager?
 ## <a name="storsimple-adapter-for-sharepoint"></a>StorSimple-Adapter für SharePoint
 Microsoft Azure StorSimple enthält den StorSimple-Adapter für SharePoint – eine optionale Komponente, die die Speicher- und Datenschutzfunktionen von StorSimple transparent auf SharePoint-Serverfarmen erweitert. Der Adapter arbeitet mit dem RBS-Anbieter (Remote Blob Storage) und der RBS-Funktion von SQL Server zusammen und ermöglicht das Verschieben von BLOBs auf einen Server, der durch das Microsoft Azure StorSimple-System gesichert wird. Microsoft Azure StorSimple speichert die BLOB-Daten dann basierend auf ihrer Verwendung lokal oder in der Cloud.
 
-Der StorSimple-Adapter für SharePoint wird im Portal der SharePoint-Zentraladministration verwaltet. Aus diesem Grund bleibt die SharePoint-Verwaltung zentralisiert, und der gesamte Speicher scheint sich in der SharePoint-Farm zu befinden.
+Der StorSimple-Adapter für SharePoint wird im Portal der SharePoint-Zentraladministration verwaltet. So bleibt die SharePoint-Verwaltung zentralisiert, und der gesamte Speicher scheint sich in der SharePoint-Farm zu befinden.
 
 Weitere Informationen finden Sie unter [StorSimple-Adapter für SharePoint](storsimple-adapter-for-sharepoint.md). 
 
@@ -241,7 +241,7 @@ Nachfolgend finden Sie eine Liste der von StorSimple unterstützten Infrastruktu
 | Allgemein |DataCore FC |Ja* |Unterstützt mit DataCore SANsymphony |Alle Versionen |
 | Allgemein |DFSR |Ja* |Nur mit lokalen Volumes unterstützt |Alle Versionen |
 | Allgemein |Indizierung |Ja* |Bei mehrstufigen Volumes wird nur die Indizierung der Metadaten unterstützt (nicht der Daten).<br>Bei lokalen Volumes wird eine vollständige Indizierung unterstützt. |Alle Versionen |
-| Allgemein |Virenschutz |Ja* |Bei mehrstufigen Volumes wird das Scannen nur beim Öffnen und Schließen unterstützt.<br> Bei lokalen Volumes wird ein vollständiger Scan unterstützt. |Alle Versionen |
+| Allgemein |Virenschutz |Ja* |Bei mehrstufigen Volumes wird das Scannen nur beim Öffnen und Schließen unterstützt.<br>  Bei lokalen Volumes wird ein vollständiger Scan unterstützt. |Alle Versionen |
 
 *Ja&#42; – Lösungsrichtlinien und -einschränkungen sollten angewendet werden.*
 
@@ -258,7 +258,7 @@ Im Folgenden finden Sie eine Liste von Software, die mit StorSimple zum Erstelle
 Vor dem Bereitstellen Ihrer Microsoft Azure StorSimple-Projektmappe, empfehlen wir, sich mit den folgenden Begriffen und Definitionen vertraut zu machen.
 
 ### <a name="key-terms-and-definitions"></a>Wichtige Begriffe und Definitionen
-| Begriff (Akronym oder Abkürzung) | BESCHREIBUNG |
+| Begriff (Akronym oder Abkürzung) | Beschreibung |
 | --- | --- |
 | Zugriffssteuerungsdatensätze (Access Control Record, ACR) |Ein Datensatz, der einem Volume auf dem Microsoft Azure StorSimple-Gerät zugeordnet ist, durch den festgelegt wird, welche Hosts eine Verbindung mit diesem herstellen können. Die Feststellung basiert auf den qualifizierten iSCSI-Namen (IQN) der Hosts (im ACR enthalten), die eine Verbindung mit dem StorSimple-Gerät herstellen. |
 | AES-256 |Ein erweiterter 256-Bit-Verschlüsselungsalgorithmus (Advanced Encryption Standard, AES) zum Verschlüsseln von Daten, die aus der und in die Cloud verschoben werden. |
@@ -269,7 +269,7 @@ Vor dem Bereitstellen Ihrer Microsoft Azure StorSimple-Projektmappe, empfehlen w
 | Sicherungsrichtlinie |Eine Auswahl von Volumes, Sicherungstypen und Zeitplänen, mit der Sie Sicherungen nach einem vordefinierten Zeitplan erstellen können. |
 | BLOBs (Binary Large Objects) |Eine Sammlung von Binärdaten in einem Datenbankverwaltungssystem, die als eine Einheit gespeichert werden. BLOBs sind in der Regel Bilder, Audiodaten oder andere Multimediaobjekte. Es kann jedoch gelegentlich auch ausführbarer Binärcode in einem BLOB gespeichert werden. |
 | CHAP (Challenge Handshake Authentication Protocol) |Ein Protokoll, das zum Authentifizieren des Peers einer Verbindung basierend auf dem Peer verwendet wird, der ein Kennwort oder einen geheimen Schlüssel freigibt. CHAP kann unidirektional oder bidirektional sein. Bei unidirektionalem CHAP authentifiziert das Ziel einen Initiator. Beim bidirektionalen CHAP ist es erforderlich, dass das Ziel den Initiator und der Initiator wiederum das Ziel authentifiziert. |
-| Klon |Ein Duplikat eines Volumes. |
+| clone |Ein Duplikat eines Volumes. |
 | Cloud als Ebene (CaaT, Cloud as a Tier) |Cloudspeicherung, die als Ebene innerhalb der Speicherarchitektur integriert ist, sodass alle Speicher als Teil eines Unternehmensspeichernetzwerks angezeigt werden. |
 | Clouddienstanbieter (Cloud Service Provider, CSP) |Ein Anbieter von Cloudcomputingdiensten. |
 | Cloudmomentaufnahme |Eine Kopie von in der Cloud gespeicherten Volumedaten zu einem bestimmten Zeitpunkt. Eine Cloudmomentaufnahme entspricht einer Momentaufnahme, die auf einem anderen, externen Speichersystem repliziert wird. Cloudmomentaufnahmen sind besonders nützlich für Notfallwiederherstellungszenarios. |
@@ -292,7 +292,7 @@ Vor dem Bereitstellen Ihrer Microsoft Azure StorSimple-Projektmappe, empfehlen w
 | Lokales Volume |Ein Volume, das sich auf dem Gerät befindet und niemals in die Cloud ausgelagert wird. |
 | Lokale Momentaufnahme |Lokale Momentaufnahmen sind Zeitpunktkopien der Volumedaten, die auf dem Microsoft Azure StorSimple-Gerät gespeichert sind. |
 | Microsoft Azure StorSimple |Eine leistungsstarke Lösung aus einem Rechenzentrums-Speichergerät und Software, die IT-Organisationen für Cloudspeicher nutzen, der wie Rechenzentrumsspeicher verwendet werden kann. StorSimple vereinfacht den Schutz von Daten und die Datenverwaltung bei gleichzeitigen Kosteneinsparungen. Die Lösung konsolidiert primären Speicher, Archiv, Backup und Notfallwiederherstellung durch nahtlose Integration in die Cloud. Durch die Kombination von SAN-Speicher und Clouddatenverwaltung auf einer Unternehmensplattform ermöglichen StorSimple-Geräte, hohe Geschwindigkeit, einfache Verwendung und Zuverlässigkeit für alle speicherbezogenen Anforderungen. |
-| Stromversorgungs- und Kühleinheiten (Power and Cooling Modules, PCMs) |Hardwarekomponenten des StorSimple-Geräts bestehend aus Netzteilen und Lüfter. Das primäre Gehäuse des Geräts verfügt über zwei PCMs mit 764 W Leistung, während das EBOD-Gehäuse zwei PCMs mit 580 W Leistung besitzt. |
+| Stromversorgungs- und Kühleinheiten (Power and Cooling Modules, PCMs) |Hardwarekomponenten des StorSimple-Geräts bestehend aus Netzteilen und Lüftern; darum werden sie als Stromversorgungs- und Kühleinheiten bezeichnet. Das primäre Gehäuse des Geräts verfügt über zwei PCMs mit 764 W Leistung, während das EBOD-Gehäuse zwei PCMs mit 580 W Leistung besitzt. |
 | Primäres Gehäuse |Hauptgehäuse des StorSimple-Geräts, das die Controller der Anwendungsplattform enthält. |
 | RTO (Recovery Time Objective) |Die maximale Zeit, die die vollständige Wiederherstellung eines Geschäftsprozesses oder des Systems nach einem Notfall dauern sollte. |
 | SAS (Serial Attached SCSI) |Ein Festplattenlaufwerkstyp (HDD). |

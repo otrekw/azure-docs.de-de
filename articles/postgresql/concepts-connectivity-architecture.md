@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 05/23/2019
-ms.openlocfilehash: d5476bf1bfe2e222e115146c13f46e776d4bb497
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: 23847c164ba59a8c46c2fdd5fb954b76ea251148
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97657191"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98877678"
 ---
 # <a name="connectivity-architecture-in-azure-database-for-postgresql"></a>Verbindungsarchitektur in Azure Database for PostgreSQL
 In diesem Artikel wird die Verbindungsarchitektur von Azure Database for PostgreSQL beschrieben, und Sie erfahren, wie Datenverkehr von Clients innerhalb und außerhalb von Azure an Ihre Azure Database for PostgreSQL-Datenbankinstanz weitergeleitet wird.
@@ -28,7 +28,7 @@ Wenn der Client eine Verbindung mit der Datenbank herstellt, wird die Verbindung
 
 Der Gatewaydienst wird in einer Gruppe von zustandslosen Serverknoten gehostet, deren IP-Adresse der Client beim Herstellen einer Verbindung mit einem Azure Database for PostgreSQL-Server zuerst erreichen würde. 
 
-Im Rahmen der kontinuierlichen Dienstwartung wird die Computehardware, auf der die Gateways gehostet werden, regelmäßig aktualisiert, um eine möglichst sichere und leistungsfähige Umgebung bereitzustellen. Bei einer Aktualisierung der Gatewayhardware wird zuerst ein neuer Ring von Serverknoten erstellt. Dieser neue Ring dient dem Datenverkehr für alle neu erstellten Azure Database for PostgreSQL-Server. Er verfügt über eine andere IP-Adresse als frühere Gatewayringe in derselben Region, damit der Datenverkehr unterschieden werden kann. Sobald der neue Ring voll funktionsfähig ist, wird für die ältere Gatewayhardware, die für die vorhandenen Server genutzt wurde, die Außerbetriebnahme geplant. Kunden, die ihre Server auf der Gatewayhardware ausführen und eine Verbindung mit älteren Gatewayringen herstellen, werden drei Monate vor der Außerbetriebnahme der Gatewayhardware per E-Mail und im Azure-Portal benachrichtigt. Die Außerbetriebnahme von Gateways kann sich in den folgenden Fällen auf die Konnektivität Ihrer Server auswirken: 
+Im Rahmen der kontinuierlichen Dienstwartung wird die Computehardware, auf der die Gateways gehostet werden, regelmäßig aktualisiert, um eine möglichst sichere und leistungsfähige Konnektivitätsumgebung bereitzustellen. Bei einer Aktualisierung der Gatewayhardware wird zuerst ein neuer Ring von Serverknoten erstellt. Dieser neue Ring dient dem Datenverkehr für alle neu erstellten Azure Database for PostgreSQL-Server. Er verfügt über eine andere IP-Adresse als frühere Gatewayringe in derselben Region, damit der Datenverkehr unterschieden werden kann. Die ältere Gatewayhardware ist weiterhin mit vorhandenen Servern einsetzbar, soll aber zukünftig außer Betrieb genommen werden. Kunden, die ihre Server auf der Gatewayhardware ausführen und eine Verbindung mit älteren Gatewayringen herstellen, werden drei Monate vor der Außerbetriebnahme der Gatewayhardware per E-Mail und im Azure-Portal benachrichtigt. Die Außerbetriebnahme von Gateways kann sich in den folgenden Fällen auf die Konnektivität Ihrer Server auswirken: 
 
 * Sie codieren die Gateway-IP-Adressen fest in die Verbindungszeichenfolgen Ihrer Anwendung ein. Davon wird **abgeraten**. Sie sollten den vollqualifizierten Domänennamen (FQDN) Ihres Servers im Format „<servername>.postgres.database.azure.com“ in der Verbindungszeichenfolge für Ihre Anwendung verwenden. 
 * Sie aktualisieren die neuen Gateway-IP-Adressen nicht in der clientseitigen Firewall, sodass ausgehender Datenverkehr die neuen Gatewayringe nicht erreichen kann.

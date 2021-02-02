@@ -1,5 +1,5 @@
 ---
-title: 'Datenstichproben in SQLServer in Azure: Team Data Science-Prozess'
+title: 'Datenstichproben in Azure Blob Storage: Team Data Science-Prozess'
 description: Erstellen von Stichproben aus Daten in Azure Blob Storage durch programmgesteuertes Herunterladen, um dann mit Prozeduren in Python-Code Stichproben zu erstellen.
 services: machine-learning
 author: marktab
@@ -11,14 +11,14 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: b190bf0c474640c07d84971069072d3af2faa66d
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: c5827a0e07e537b66684f852d8f3e1500cd9febb
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93321901"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98788840"
 ---
-# <a name="sample-data-in-azure-blob-storage"></a><a name="heading"></a>Datenstichproben im Azure-Blob-Speicher
+# <a name="sample-data-in-azure-blob-storage"></a><a name="heading"></a>Datenstichproben in Azure Blob Storage
 
 Dieser Artikel behandelt das Erstellen von Stichproben aus Daten in Azure Blob Storage durch programmgesteuertes Herunterladen, um dann mit Prozeduren in Python-Code Stichproben zu erstellen.
 

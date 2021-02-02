@@ -4,12 +4,12 @@ description: Hier erfahren Sie, wie Sie mithilfe von Python hochleistungsfähige
 ms.topic: article
 ms.date: 10/13/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: baa362f029678f266f154df912a9178a6626667d
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: e3bbdb8819062d45d071633e0208fb58a003da54
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97935868"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98786105"
 ---
 # <a name="improve-throughput-performance-of-python-apps-in-azure-functions"></a>Verbessern der Durchsatzleistung von Python-Apps in Azure Functions
 
@@ -22,10 +22,10 @@ Standardmäßig überwacht Azure Functions automatisch die Auslastung Ihrer Anwe
 
 Die Standardkonfigurationen sind für die meisten Azure Functions-Anwendungen geeignet. Allerdings können Sie die Leistung des Durchsatzes Ihrer Anwendungen verbessern, indem Sie Konfigurationen einsetzen, die zu Ihrem Workloadprofil passen. Daher besteht der erste Schritt darin, zu verstehen, was für ein Typ von Workload ausgeführt wird.
 
-|| E/A-gebundene Workload | CPU-gebundene Workload |
-|--| -- | -- |
-|Merkmale der Funktions-App| <ul><li>Die App muss viele gleichzeitige Aufrufe verarbeiten.</li> <li> Die App verarbeitet eine große Anzahl von E/A-Ereignissen, wie z. B. Netzwerkaufrufe und Lese-/Schreibvorgänge auf Datenträgern.</li> </ul>| <ul><li>Die App führt Langzeitberechnungen durch, wie z. B. die Größenänderung von Bildern.</li> <li>Die App führt Datentransformationen durch.</li> </ul> |
-|Beispiele| <ul><li>Web-APIs</li><ul> | <ul><li>Datenverarbeitung</li><li> Machine Learning-Rückschluss</li><ul>|
+| Workloadtyp | Merkmale der Funktions-App       | Beispiele                                          |
+| ------------- | ---------------------------------- | ------------------------------------------------- |
+| **E/A-Bindung**     | • Die App muss viele gleichzeitige Aufrufe verarbeiten.<br>• Die App verarbeitet eine große Anzahl von E/A-Ereignissen, wie z. B. Netzwerkaufrufe und Lese-/Schreibvorgänge auf Datenträgern. | • Web-APIs                                          |
+| **CPU-Bindung**     | • Die App führt Langzeitberechnungen durch, wie z. B. die Größenänderung von Bildern.<br>• Die App führt Datentransformationen durch.                                                | • Datenverarbeitung<br>• Machine Learning-Rückschluss<br> |
 
  
 Da Funktionsworkloads in der Praxis üblicherweise eine Mischung aus E/A- und CPU-gebundenen Workloads sind, sollten Sie das Profil der App unter realistischen Produktionslasten erstellen.

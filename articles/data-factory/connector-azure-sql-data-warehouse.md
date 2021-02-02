@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 01/11/2021
-ms.openlocfilehash: a411f4ce261ee6d203e274efe3cf23ca23203453
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.date: 01/22/2021
+ms.openlocfilehash: 48450218975f2c6ee14e12af8d722942e8db1347
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98070897"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98695847"
 ---
 # <a name="copy-and-transform-data-in-azure-synapse-analytics-by-using-azure-data-factory"></a>Kopieren und Transformieren von Daten in Azure Synapse Analytics mithilfe von Azure Data Factory
 
@@ -76,6 +76,9 @@ Weitere Voraussetzungen und JSON-Beispiele für die verschiedenen Authentifizier
 - [SQL-Authentifizierung](#sql-authentication)
 - Azure AD-Anwendungstokenauthentifizierung: [Dienstprinzipal](#service-principal-authentication)
 - Azure AD-Anwendungstokenauthentifizierung: [Verwaltete Identitäten für Azure-Ressourcen](#managed-identity)
+
+>[!TIP]
+>Wenn Sie den verknüpften Dienst für den **serverlosen** Azure Synapse-SQL-Pool über die Benutzeroberfläche erstellen, wählen Sie „manuell eingeben“, anstatt vom Abonnement aus zu suchen.
 
 >[!TIP]
 >Wenn ein Fehler mit dem Fehlercode „UserErrorFailedToConnectToSqlServer“ auftritt und eine Meldung wie „Das Sitzungslimit für die Datenbank ist XXX und wurde erreicht“ angezeigt wird, fügen Sie `Pooling=false` zu Ihrer Verbindungszeichenfolge hinzu, und versuchen Sie es erneut.
@@ -222,7 +225,7 @@ Eine vollständige Liste mit den Abschnitten und Eigenschaften, die zum Definier
 
 Die folgenden Eigenschaften werden beim Dataset von Azure Synapse Analytics unterstützt:
 
-| Eigenschaft  | BESCHREIBUNG                                                  | Erforderlich                    |
+| Eigenschaft  | Beschreibung                                                  | Erforderlich                    |
 | :-------- | :----------------------------------------------------------- | :-------------------------- |
 | type      | Die **type**-Eigenschaft des Datasets muss auf **AzureSqlDWTable** festgelegt sein. | Ja                         |
 | schema | Name des Schemas. |Quelle: Nein, Senke: Ja  |
@@ -261,7 +264,7 @@ Eine vollständige Liste mit den Abschnitten und Eigenschaften zum Definieren vo
 
 Legen Sie zum Kopieren von Daten aus Azure Synapse Analytics die Eigenschaft **type** der Quelle der Kopieraktivität auf **SqlDWSource** fest. Die folgenden Eigenschaften werden im Abschnitt **source** der Kopieraktivität unterstützt:
 
-| Eigenschaft                     | BESCHREIBUNG                                                  | Erforderlich |
+| Eigenschaft                     | Beschreibung                                                  | Erforderlich |
 | :--------------------------- | :----------------------------------------------------------- | :------- |
 | type                         | Die **type**-Eigenschaft der Quelle der Kopieraktivität muss auf **SqlDWSource** festgelegt sein. | Ja      |
 | sqlReaderQuery               | Verwendet die benutzerdefinierte SQL-Abfrage zum Lesen von Daten. Beispiel: `select * from MyTable`. | Nein       |
@@ -380,7 +383,7 @@ Azure Data Factory unterstützt drei Methoden zum Laden von Daten in Azure Synap
 
 Legen Sie zum Kopieren von Daten in Azure Synapse Analytics den Senkentyp in der Kopieraktivität auf **SqlDWSink** fest. Die folgenden Eigenschaften werden im Abschnitt **sink** der Kopieraktivität unterstützt:
 
-| Eigenschaft          | BESCHREIBUNG                                                  | Erforderlich                                      |
+| Eigenschaft          | Beschreibung                                                  | Erforderlich                                      |
 | :---------------- | :----------------------------------------------------------- | :-------------------------------------------- |
 | type              | Die **type**-Eigenschaft der Senke der Kopieraktivität muss auf **SqlDWSink** festgelegt sein. | Ja                                           |
 | allowPolyBase     | Gibt an, ob PolyBase zum Laden von Daten in Azure Synapse Analytics verwendet werden soll. `allowCopyCommand` und `allowPolyBase` können nicht beide auf „true“ festgelegt sein. <br/><br/>Einschränkungen und Einzelheiten finden Sie im Abschnitt [Verwenden von PolyBase zum Laden von Daten in Azure Synapse Analytics](#use-polybase-to-load-data-into-azure-synapse-analytics).<br/><br/>Zulässige Werte sind **true** und **false** (Standard). | Nein.<br/>Beim Verwenden von PolyBase anwenden.     |
@@ -486,7 +489,7 @@ Mit [PolyBase](/sql/relational-databases/polybase/polybase-guide) lassen sich gr
 
 Die folgenden PolyBase-Eigenschaften werden unter `polyBaseSettings` in der Kopieraktivität unterstützt:
 
-| Eigenschaft          | BESCHREIBUNG                                                  | Erforderlich                                      |
+| Eigenschaft          | Beschreibung                                                  | Erforderlich                                      |
 | :---------------- | :----------------------------------------------------------- | :-------------------------------------------- |
 | rejectValue       | Gibt die Anzahl oder den Prozentsatz von Zeilen an, die abgelehnt werden können, bevor für die Abfrage ein Fehler auftritt.<br/><br/>Weitere Informationen zu den PolyBase-Ablehnungsoptionen finden Sie im Abschnitt „Argumente“ in [CREATE EXTERNAL TABLE (Transact-SQL)](/sql/t-sql/statements/create-external-table-transact-sql). <br/><br/>Zulässige Werte sind „0“ (Standard), „1“, „2“ usw. | Nein                                            |
 | rejectType        | Gibt an, ob die **rejectValue**-Option als Literalwert oder Prozentsatz angegeben ist.<br/><br/>Zulässige Werte sind **Value** (Standard) und **Percentage**. | Nein                                            |
@@ -714,7 +717,7 @@ Das Verwenden der COPY-Anweisung unterstützt die folgende Konfiguration:
 
 Die folgenden Einstellungen der COPY-Anweisung werden unter `allowCopyCommand` in der Kopieraktivität unterstützt:
 
-| Eigenschaft          | BESCHREIBUNG                                                  | Erforderlich                                      |
+| Eigenschaft          | Beschreibung                                                  | Erforderlich                                      |
 | :---------------- | :----------------------------------------------------------- | :-------------------------------------------- |
 | defaultValues | Gibt die Standardwerte für die einzelnen Zielspalten in Azure Synapse Analytics an.  Die Standardwerte in der Eigenschaft überschreiben die in Data Warehouse festgelegte DEFAULT-Einschränkung, und die Identitätsspalte darf keinen Standardwert haben. | Nein |
 | additionalOptions | Zusätzliche Optionen, die direkt in der WITH-Klausel in der [COPY-Anweisung](/sql/t-sql/statements/copy-into-transact-sql) an eine COPY-Anweisung in Azure Synapse Analytics übergeben werden. Geben Sie den Wert so an, wie er gemäß den Anforderungen der COPY-Anweisung erforderlich ist. | Nein |
@@ -780,6 +783,7 @@ Spezifische Einstellungen für Azure Synapse Analytics sind auf der Registerkart
 
 - Wenn Sie die Authentifizierung per verwalteter Identität für den mit dem Speicher verknüpften Dienst verwenden, machen Sie sich jeweils mit den erforderlichen Konfigurationen für [Azure Blob](connector-azure-blob-storage.md#managed-identity) und [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#managed-identity) vertraut.
 - Wenn Ihre Azure Storage-Instanz mit einem VNET-Dienstendpunkt konfiguriert ist, müssen Sie die Authentifizierung per verwalteter Identität mit für das Speicherkonto aktivierter Option „Vertrauenswürdigen Microsoft-Diensten den Zugriff auf dieses Speicherkonto erlauben“ verwenden. Informationen hierzu finden Sie unter [Auswirkungen der Verwendung von VNET-Dienstendpunkten mit Azure Storage](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-virtual-network-service-endpoints-with-azure-storage).
+- Wenn Sie den **serverlosen** Azure Synapse-SQL-Pool als Quelle verwenden, wird das Aktivieren des Stagings nicht unterstützt.
 
 **Query** (Abfrage): Wenn Sie im Eingabefeld „Abfrage“ auswählen, geben Sie eine SQL-Abfrage für die Quelle ein. Diese Einstellung überschreibt jede Tabelle, die Sie im Dataset ausgewählt haben. **Order By**-Klauseln werden hier nicht unterstützt. Sie können aber eine vollständige SELECT FROM-Anweisung festlegen. Sie können auch benutzerdefinierte Tabellenfunktionen verwenden. **select * from udfGetData()** ist eine benutzerdefinierte Funktion in SQL, die eine Tabelle zurückgibt. Diese Abfrage generiert eine Quelltabelle, die Sie in Ihrem Datenfluss verwenden können. Die Verwendung von Abfragen stellt auch eine gute Möglichkeit dar, um die Zeilen für Tests oder Suchvorgänge zu verringern.
 

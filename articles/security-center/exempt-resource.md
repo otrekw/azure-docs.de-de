@@ -1,30 +1,32 @@
 ---
-title: Ausschließen einer Ressource aus Azure Security Center-Sicherheitsempfehlungen und der Sicherheitsbewertung
-description: Es wird beschrieben, wie Sie eine Ressource aus den Sicherheitsempfehlungen und der Sicherheitsbewertung ausschließen.
+title: Ausschließen einer Ressource, eines Abonnements, einer Verwaltungsgruppe und einer Sicherheitsbewertung aus einer Azure Security Center-Empfehlung
+description: Erfahren Sie, wie Sie Regeln erstellen, um Abonnements oder Verwaltungsgruppen aus Sicherheitsempfehlungen auszuschließen, und wie Sie verhindern, dass sie sich auf Ihre Sicherheitsbewertung auswirken.
 author: memildin
 ms.author: memildin
-ms.date: 9/22/2020
+ms.date: 01/22/2021
 ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: b7780a0ef70a89a88070d5883cc840319a67fa3d
-ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
+ms.openlocfilehash: 4012c7417345678717800f4fdede95947e00b828
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96122361"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98756742"
 ---
-# <a name="exempt-a-resource-from-recommendations-and-secure-score"></a>Ausschließen einer Ressource aus Empfehlungen und der Sicherheitsbewertung
+# <a name="exempting-resources-and-recommendations-from-your-secure-score"></a>Ausschließen von Ressource und Empfehlungen aus der Sicherheitsbewertung 
 
-Für jedes Sicherheitsteam hat die Sicherstellung, dass sich die Analysten auf die für die Organisation wichtigen Aufgaben und Incidents konzentrieren können, eine sehr hohe Priorität. Security Center verfügt über viele Features zum Anpassen der Informationen, die die höchste Priorität haben. Hiermit können Sie sicherstellen, dass Ihre Sicherheitsbewertung die Sicherheitsentscheidungen Ihrer Organisation angemessen widerspiegelt. Eines dieser Features ist das Ausschließen von Ressourcen.
+Für jedes Sicherheitsteam hat die Sicherstellung, dass sich die Analysten auf die für die Organisation wichtigen Aufgaben und Incidents konzentrieren können, eine sehr hohe Priorität. Security Center verfügt über viele Features zum Anpassen der Informationen, und um sicherzustellen, dass Ihre Sicherheitsbewertung die Sicherheitsprioritäten Ihrer Organisation angemessen widerspiegelt. Die Option **Ausnahme** ist ein solches Feature.
 
-Wenn Sie in Azure Security Center eine Sicherheitsempfehlung untersuchen, überprüfen Sie unter anderem zunächst die Liste mit den betroffenen Ressourcen.
+Wenn Sie in Azure Security Center Ihre Sicherheitsempfehlungen untersuchen, überprüfen Sie unter anderem zunächst die Liste mit den betroffenen Ressourcen.
 
-Es kann gelegentlich vorkommen, dass eine Ressource aufgeführt ist, die Ihrer Meinung nach nicht enthalten sein sollte. Unter Umständen wurde dafür eine Lösungsmaßnahme mit einem Prozess durchgeführt, der von Security Center nicht nachverfolgt wird. Es kann auch sein, dass Ihre Organisation die Entscheidung getroffen hat, das Risiko für die entsprechende Ressource zu akzeptieren. 
+Es kann gelegentlich vorkommen, dass eine Ressource aufgeführt ist, die Ihrer Meinung nach nicht enthalten sein sollte. Auch kann es bisweilen passieren, dass eine Empfehlung in einem Bereich angezeigt wird, zu dem sie Ihrer Meinung nach nicht gehört. Die Ressource könnte mit einem Prozess korrigiert worden sein, der von Security Center nicht nachverfolgt wird. Möglicherweise ist die Empfehlung für ein bestimmtes Abonnement nicht geeignet. Oder vielleicht hat Ihr Unternehmen einfach beschlossen, die Risiken im Zusammenhang mit der jeweiligen Ressource oder Empfehlung zu akzeptieren.
 
-In diesen Fällen können Sie eine Ausnahmeregel erstellen und sicherstellen, dass die Ressource in Zukunft nicht mehr in der Liste mit den fehlerhaften Ressourcen enthalten ist und keine Auswirkung mehr auf Ihre Sicherheitsbewertung hat. 
+In solchen Fällen können Sie eine Ausnahme für eine Empfehlung erstellen:
 
-Die Ressource wird als nicht zutreffend aufgeführt, und als Grund wird „Ausgenommen“ mit der von Ihnen ausgewählten Begründung angezeigt.
+- Sie können **eine Ressource ausnehmen**, um sicherzustellen, dass sie in Zukunft nicht mehr als fehlerhafte Ressource aufgeführt wird und keine Auswirkung auf Ihre Sicherheitsbewertung hat. Die Ressource wird als nicht anwendbar aufgeführt, und als Grund wird „Ausgenommen“ mit der spezifischen, von Ihnen ausgewählten Begründung angezeigt.
+
+- Sie können **ein Abonnement oder eine Verwaltungsgruppe ausnehmen**, um sicherzustellen, dass die Empfehlung keine Auswirkung auf Ihre Sicherheitsbewertung hat und in Zukunft nicht mehr für das Abonnement oder die Verwaltungsgruppe angezeigt wird. Das gilt sowohl für bereits vorhandene Ressourcen als auch für alle zukünftig erstellten Ressourcen. Die Empfehlung wird mit der spezifischen Begründung gekennzeichnet, die Sie für den ausgewählten Bereich auswählen.
 
 ## <a name="availability"></a>Verfügbarkeit
 
@@ -36,29 +38,55 @@ Die Ressource wird als nicht zutreffend aufgeführt, und als Grund wird „Ausge
 |Clouds:|![Ja](./media/icons/yes-icon.png) Kommerzielle Clouds<br>![Nein](./media/icons/no-icon.png) National/Sovereign (US Gov, China Gov, andere Gov)|
 |||
 
+## <a name="define-an-exemption"></a>Definieren einer Ausnahme
 
-## <a name="create-an-exemption-rule"></a>Erstellen einer Ausnahmeregel
+Zur Feinabstimmung der Sicherheitsempfehlungen, die Security Center für Ihre Abonnements, Verwaltungsgruppe oder Ressourcen bereitstellt, können Sie eine Ausnahmeregel erstellen:
 
-1. Wählen Sie in der Liste mit den fehlerhaften Ressourcen für die Ressource, die Sie ausschließen möchten, das Menü über die Auslassungszeichen („...“) aus.
+- Markieren Sie eine bestimmte **Empfehlung** als „Gemindert“ oder „Risiko akzeptiert“. Sie können Empfehlungsausnahmen für ein Abonnement, mehrere Abonnements oder eine gesamte Verwaltungsgruppe erstellen.
+- Markieren Sie **eine oder mehrere Ressourcen** für eine bestimmte Empfehlung als „Gemindert“ oder „Risiko akzeptiert“.
 
-    :::image type="content" source="./media/exempt-resource/create-exemption.png" alt-text="Option „Ausnahme erstellen“ im Kontextmenü":::
+> [!TIP]
+> Sie können auch Ausnahmen mithilfe der API erstellen. Ein JSON-Beispiel und eine Erläuterung der relevanten Strukturen finden Sie unter [Azure Policy-Ausnahmenstruktur](../governance/policy/concepts/exemption-structure.md).
 
-    Der Bereich „Ausnahme erstellen“ wird geöffnet.
+So erstellen Sie eine Ausnahmeregel:
 
-    :::image type="content" source="./media/exempt-resource/exemption-rule-options.png" alt-text="Bereich „Ausnahme erstellen“":::
+1. Öffnen Sie die Seite mit den Empfehlungsdetails für die jeweilige Empfehlung.
 
-1. Geben Sie Ihre Kriterien ein, und wählen Sie ein Kriterium als Grund aus, warum die Ressource ausgeschlossen werden soll:
-    - **Entschärft**: Dieses Problem ist für die Ressource nicht relevant, weil es mit einem anderen als dem vorgeschlagenen Tool oder Prozess verarbeitet wurde.
-    - **Verzicht**: Sie akzeptieren das Risiko für die Ressource.
-1. Wählen Sie **Speichern** aus.
-1. Nach Ablauf des Wartezeitraums (kann bis zu 24 Stunden dauern):
-    - Die Ressource wirkt sich nicht mehr auf Ihre Sicherheitsbewertung aus.
-    - Die Ressource ist auf der Seite mit den Empfehlungsdetails auf der Registerkarte **Nicht anwendbar** aufgeführt.
-    - In der Informationsleiste am oberen Rand der Seite mit den Empfehlungsdetails ist die Anzahl von ausgeschlossenen Ressourcen angegeben:
+1. Wählen Sie auf der Symbolleiste am oberen Rand der Seite **Ausnahme** aus.
+
+    :::image type="content" source="media/exempt-resource/exempting-recommendation.png" alt-text="Erstellen Sie eine Ausnahmeregel für eine Empfehlung, von der ein Abonnement oder eine Verwaltungsgruppe ausgenommen werden soll.":::
+
+1. Im Bereich **Ausnahme**:
+    1. Wählen Sie den Bereich für diese Ausnahmeregel aus:
+        - Wenn Sie eine Verwaltungsgruppe auswählen, werden alle Abonnements innerhalb dieser Gruppe von der Empfehlung ausgenommen.
+        - Wenn Sie diese Regel erstellen, um eine oder mehrere Ressourcen von der Empfehlung auszuschließen, wählen Sie „Ausgewählte Ressourcen“ und die relevanten Ressourcen in der Liste aus.
+
+    1. Geben Sie einen Namen für diese Ausnahmeregel ein.
+    1. Legen Sie optional ein Ablaufdatum fest.
+    1. Wählen Sie die Kategorie für die Ausnahme aus:
+        - **Gelöst durch Drittanbieter (Gemindert)** : Wenn Sie einen Drittanbieterdienst verwenden, den Security Center nicht identifiziert hat. 
+
+            > [!NOTE]
+            > Wenn Sie eine Empfehlung als gemindert ausnehmen, erhalten Sie keine Punkte für Ihre Sicherheitsbewertung. Da jedoch für die fehlerhaften Ressourcen keine Punkte *entfernt* werden, ist das Ergebnis, dass Ihre Bewertung steigt.
+
+        - **Risiko akzeptiert (Verzicht)** : Wenn Sie sich entschieden haben, das Risiko zu akzeptieren, diese Empfehlung nicht zu mindern.
+    1. Geben Sie optional eine Beschreibung ein.
+    1. Wählen Sie **Erstellen** aus.
+
+    :::image type="content" source="media/exempt-resource/defining-recommendation-exemption.png" alt-text="Schritte zum Erstellen einer Ausnahmeregel, um Ihr Abonnement oder Ihre Verwaltungsgruppe von einer Empfehlung auszuschließen.":::
+
+    Wenn die Ausnahme wirksam wird (dies kann bis zu 30 Minuten dauern):
+    - Die Empfehlung oder Ressourcen haben keine Auswirkungen auf Ihre Sicherheitsbewertung.
+    - Wenn Sie bestimmte Ressourcen ausgenommen haben, werden sie auf der Registerkarte **Nicht anwendbar** der Seite mit den Empfehlungsdetails aufgelistet.
+    - Wenn Sie eine Empfehlung ausgenommen haben, wird sie standardmäßig auf der Empfehlungenseite in Security Center ausgeblendet. Dies liegt daran, dass die Standardoptionen des Filters **Empfehlungsstatus** auf dieser Seite **Nicht anwendbar**-Empfehlungen ausschließen sollen. Dasselbe gilt, wenn Sie alle Empfehlungen in einer Sicherheitssteuerung ausschließen.
+
+        :::image type="content" source="media/exempt-resource/recommendations-filters-hiding-not-applicable.png" alt-text="Standardfilter auf der Azure Security Center-Empfehlungenseite blenden die nicht anwendbaren Empfehlungen und Sicherheitssteuerungen aus.":::
+
+    - In der Informationsleiste am oberen Rand der Seite mit den Empfehlungsdetails wird die Anzahl von ausgeschlossenen Ressourcen aktualisiert:
         
         :::image type="content" source="./media/exempt-resource/info-banner.png" alt-text="Anzahl von ausgeschlossenen Ressourcen":::
 
-1. Öffnen Sie die Registerkarte **Nicht anwendbar**, um Ihre ausgeschlossenen Ressourcen anzuzeigen.
+1. Öffnen Sie die Registerkarte **Nicht anwendbar**, um Ihre ausgeschlossenen Ressourcen anzuzeigen:
 
     :::image type="content" source="./media/exempt-resource/modifying-exemption.png" alt-text="Ändern einer Ausnahme":::
 
@@ -66,15 +94,90 @@ Die Ressource wird als nicht zutreffend aufgeführt, und als Grund wird „Ausge
 
     Wählen Sie über die Auslassungszeichen („...“) das Menü aus (wie unter Punkt 2 dargestellt), um eine Ausnahme zu ändern oder zu löschen.
 
+1. Wenn Sie alle Ausnahmeregeln für Ihr Abonnement überprüfen möchten, wählen Sie in der Informationsleiste **Ausnahmen anzeigen** aus:
 
-## <a name="review-all-of-the-exemption-rules-on-your-subscription"></a>Überprüfen aller Ausnahmeregeln Ihres Abonnements
+    > [!IMPORTANT]
+    > Um die spezifischen Ausnahmen anzuzeigen, die für eine Empfehlung relevant sind, filtern Sie die Liste nach dem relevanten Bereich und dem Namen der Empfehlung.
 
-Für Ausnahmeregeln wird Azure Policy verwendet, um in der Richtlinienzuweisung eine Ausnahme für die Ressource zu erstellen.
+    :::image type="content" source="./media/exempt-resource/policy-page-exemption.png" alt-text="Azure Policy-Seite „Ausnahme“":::
 
-Mit Azure Policy können Sie Ihre gesamten Ausnahmen über die Seite **Ausnahme** nachverfolgen:
+    > [!TIP]
+    > Alternativ [können Sie mit Azure Resource Graph Empfehlungen mit Ausnahmen](#find-recommendations-with-exemptions-using-azure-resource-graph) finden.
 
-:::image type="content" source="./media/exempt-resource/policy-page-exemption.png" alt-text="Azure Policy-Seite „Ausnahme“":::
+## <a name="monitor-exemptions-created-in-your-subscriptions"></a>Überwachen von in Ihren Abonnements erstellten Ausnahmen
 
+Wie bereits auf dieser Seite erläutert, sind Ausnahmeregeln ein leistungsfähiges Tool, das eine präzise Kontrolle über die Empfehlungen bietet, die sich auf Ressourcen in Ihren Abonnements und Verwaltungsgruppen auswirken. 
+
+Damit Sie nachverfolgen können, wie Ihre Benutzer diese Funktion nutzen, haben wir eine Azure Resource Manager-Vorlage (ARM) erstellt, die ein Logik-App-Playbook und alle notwendigen API-Verbindungen bereitstellt, um Sie zu benachrichtigen, wenn eine Ausnahme erstellt wurde.
+
+- Weitere Informationen zum Playbook finden Sie in diesem Beitrag in den [Tech Community-Blogs.](https://techcommunity.microsoft.com/t5/azure-security-center/how-to-keep-track-of-resource-exemptions-in-azure-security/ba-p/1770580)
+- Sie finden die ARM-Vorlage im [Azure Security Center-GitHub-Repository](https://github.com/Azure/Azure-Security-Center/tree/master/Workflow%20automation/Notify-ResourceExemption).
+- Um alle erforderlichen Komponenten bereitzustellen, können Sie [hier](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2FAzure-Security-Center%2Fmaster%2FWorkflow%2520automation%2FNotify-ResourceExemption%2Fazuredeploy.json) klicken. 
+
+
+## <a name="find-recommendations-with-exemptions-using-azure-resource-graph"></a>Suchen von Empfehlungen mit Ausnahmen mit Azure Resource Graph
+
+Azure Resource Graph (ARG) bietet mit zuverlässigen Funktionen zum Filtern, Gruppieren und Sortieren sofortigen Zugriff auf Ressourceninformationen in Ihren Cloudumgebungen. Es ist eine schnelle und effiziente Möglichkeit, Informationen über Azure-Abonnements programmgesteuert oder aus dem Azure-Portal heraus abzufragen.
+
+So zeigen Sie alle Empfehlungen mit Ausnahmeregeln an:
+
+1. Öffnen Sie den **Azure Resource Graph-Explorer**.
+
+    :::image type="content" source="./media/security-center-identity-access/opening-resource-graph-explorer.png" alt-text="Die Empfehlungsseite des Azure Resource Graph-Explorer** wird gestartet." :::
+
+1. Geben Sie die folgende Abfrage ein, und wählen Sie **Abfrage ausführen** aus.
+
+    ```kusto
+    securityresources
+    | where type == "microsoft.security/assessments"
+    // Get recommendations in useful format
+    | project
+    ['TenantID'] = tenantId,
+    ['SubscriptionID'] = subscriptionId,
+    ['AssessmentID'] = name,
+    ['DisplayName'] = properties.displayName,
+    ['ResourceType'] = tolower(split(properties.resourceDetails.Id,"/").[7]),
+    ['ResourceName'] = tolower(split(properties.resourceDetails.Id,"/").[8]),
+    ['ResourceGroup'] = resourceGroup,
+    ['ContainsNestedRecom'] = tostring(properties.additionalData.subAssessmentsLink),
+    ['StatusCode'] = properties.status.code,
+    ['StatusDescription'] = properties.status.description,
+    ['PolicyDefID'] = properties.metadata.policyDefinitionId,
+    ['Description'] = properties.metadata.description,
+    ['RecomType'] = properties.metadata.assessmentType,
+    ['Remediation'] = properties.metadata.remediationDescription,
+    ['Severity'] = properties.metadata.severity,
+    ['Link'] = properties.links.azurePortal
+    | where StatusDescription contains "Exempt"    
+    ```
+
+
+Weitere Informationen finden Sie auf den folgenden Seiten:
+- [Erfahren Sie mehr über Azure Resource Graph](../governance/resource-graph/index.yml).
+- [Schnellstart: Ausführen Ihrer ersten Resource Graph-Abfrage mithilfe des Azure Resource Graph-Explorers](../governance/resource-graph/first-query-portal.md)
+- [Kusto-Abfragesprache (KQL)](/azure/data-explorer/kusto/query/)
+
+
+
+
+
+## <a name="exemption-rule-faq"></a>Häufig gestellte Fragen zu Ausnahmeregeln
+
+### <a name="what-happens-when-one-recommendation-is-in-multiple-policy-initiatives"></a>Was geschieht, wenn eine Empfehlung in mehreren Richtlinieninitiativen vorliegt?
+
+Manchmal liegt eine Sicherheitsempfehlung in mehreren Richtlinieninitiativen vor. Wenn mehrere Instanzen derselben Empfehlung demselben Abonnement zugewiesen sind, und Sie eine Ausnahme für die Empfehlung erstellen, wirkt sich dies auf alle Initiativen aus, für die Sie die Berechtigung zum Bearbeiten haben. 
+
+Beispielsweise ist die Empfehlung **** Teil der Standardrichtlinieninitiative, die allen Azure-Abonnements von Azure Security Center zugewiesen wird. Sie liegt also auch in xxxxx vor.
+
+Wenn Sie versuchen, eine Ausnahme für diese Empfehlung zu erstellen, wird eine der beiden folgenden Meldungen angezeigt:
+
+- Wenn Sie für beide Initiativen über die erforderlichen Berechtigungen zum Bearbeiten verfügen, sehen Sie Folgendes:
+
+    *Diese Empfehlung ist in mehreren Richtlinieninitiativen enthalten: [durch Kommas getrennte Initiativennamen]. Ausnahmen werden für alle erstellt.*  
+
+- Wenn Sie nicht für beide Initiativen über die erforderlichen Berechtigungen verfügen, wird stattdessen diese Meldung angezeigt:
+
+    *Sie verfügen über eingeschränkte Berechtigungen zum Anwenden der Ausnahme auf alle Richtlinieninitiativen. Die Ausnahmen werden nur für die Initiativen mit ausreichenden Berechtigungen erstellt.*
 
 
 ## <a name="next-steps"></a>Nächste Schritte

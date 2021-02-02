@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/28/2019
+ms.date: 01/24/2021
 ms.author: terrylan
-ms.openlocfilehash: 038f30ee186a5b3a9d87d64054726324051c37b4
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: d85b1fdd433c372bb41adec6e3d33013f19363f0
+ms.sourcegitcommit: 3c8964a946e3b2343eaf8aba54dee41b89acc123
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94842752"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98747172"
 ---
 # <a name="azure-security-management-and-monitoring-overview"></a>Azure-Sicherheitsverwaltung und -Überwachung – Übersicht
 Dieser Artikel enthält eine Übersicht über die Sicherheitsfeatures und -dienste in Azure, die als Hilfe bei der Verwaltung und Überwachung von Azure-Clouddiensten und virtuellen Azure-Computern dienen.
@@ -117,15 +117,18 @@ Weitere Informationen:
 
 ## <a name="security-center"></a>Security Center
 
-Mit Azure Security Center können Sie Bedrohungen verhindern, erkennen und beheben. Security Center sorgt für eine größere Transparenz und bessere Kontrolle der Sicherheit Ihrer Azure-Ressourcen. Es bietet eine integrierte Sicherheitsüberwachung und Richtlinienverwaltung für Ihre Azure-Abonnements. Es hilft bei der Erkennung von Bedrohungen, die andernfalls möglicherweise unbemerkt bleiben, und kann gemeinsam mit einem breiten Spektrum von Sicherheitslösungen verwendet werden.
+Mit Azure Security Center können Sie Bedrohungen verhindern, erkennen und beheben. Security Center sorgt für eine größere Transparenz und bessere Kontrolle der Sicherheit Ihrer Azure-Ressourcen sowie der Ressourcen in Ihrer Hybrid Cloud-Umgebung. 
+
+Security Center führt kontinuierliche Sicherheitsbewertungen Ihrer verbundenen Ressourcen durch und vergleicht ihre Konfiguration und Bereitstellung mit dem [Azure-Sicherheitsvergleichstest](../benchmarks/introduction.md), um detaillierte, auf Ihre Umgebung zugeschnittene Sicherheitsempfehlungen zu geben.
 
 Mit Security Center können Sie die Sicherheit Ihrer Azure-Ressourcen wie folgt optimieren und überwachen:
 
-* Sie können Richtlinien für die Ressourcen Ihres Azure-Abonnements definieren:
-  * Entsprechend den Sicherheitsanforderungen Ihres Unternehmens
-  * Entsprechend den Anwendungstypen oder der Vertraulichkeit der Daten in den einzelnen Abonnements
-* Sie können den Status Ihrer virtuellen Azure-Computer, -Netzwerke und -Anwendungen überwachen.
-* Es wird eine Liste mit priorisierten Sicherheitswarnungen bereitgestellt, z.B. Warnungen integrierter Partnerlösungen. Zudem werden Informationen bereitgestellt, die Sie zum schnellen Untersuchen von Problemen benötigen. Darüber hinaus werden Empfehlungen zum Reagieren auf einen Angriff gegeben.
+- Sie können Richtlinien für die Ressourcen Ihres Azure-Abonnements definieren:
+    - Die Sicherheitsanforderungen Ihrer Organisation.
+    - Entsprechend den Anwendungstypen oder der Vertraulichkeit der Daten in den einzelnen Abonnements
+    - Alle Branchen- oder gesetzlichen Standards oder Benchmarks, die Sie auf Ihre Abonnements anwenden. 
+- Sie können den Status Ihrer virtuellen Azure-Computer, -Netzwerke und -Anwendungen überwachen.
+- Es wird eine Liste mit priorisierten Sicherheitswarnungen bereitgestellt, z.B. Warnungen integrierter Partnerlösungen. Zudem werden Informationen bereitgestellt, die Sie zum schnellen Untersuchen von Problemen benötigen. Darüber hinaus werden Empfehlungen zum Reagieren auf einen Angriff gegeben.
 
 Weitere Informationen:
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 09/04/2020
 ms.author: deanwe
 ms.custom: references_regions
-ms.openlocfilehash: ab056e0685264b03d35ee6b95afad7c6362f9db6
-ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
+ms.openlocfilehash: 0d8ce501b951f3543e1baf54c8a52648b13f6e66
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/19/2020
-ms.locfileid: "97695790"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98695669"
 ---
 # <a name="azure-automanage-for-virtual-machines"></a>Automatische Azure-Verwaltung für virtuelle Computer
 
@@ -43,16 +43,16 @@ Es gibt mehrere Voraussetzungen zu beachten, bevor Sie versuchen, die automatisc
 
 - Nur Windows Server-VMs
 - VMs müssen aktiv sein
-- VMs müssen sich in einer unterstützten Region befinden
+- VMs müssen sich in einer unterstützten Region befinden (siehe folgender Absatz)
 - Benutzer muss über die richtigen (im folgenden Absatz beschriebenen) Berechtigungen verfügen.
 - Automatische Verwaltung unterstützt zurzeit keine Sandboxabonnements.
 
-Sie müssen über die Rolle **Mitwirkender** für die Ressourcengruppe verfügen, die Ihre VMs enthält, um Automanage auf virtuellen Computern mit einem vorhandenen Automanage-Konto zu aktivieren. Wenn Sie Automanage mit einem neuen Automanage-Konto aktivieren, benötigen Sie die folgenden Berechtigungen in Ihrem Abonnement: Rolle **Besitzer** oder **Mitwirkender** sowie Rollen vom Typ **Benutzerzugriffsadministrator** 
+Es ist auch wichtig zu beachten, dass die automatische Verwaltung nur Windows-VMs unterstützt, die sich in den folgenden Regionen befinden: „Europa, Westen“, „USA, Osten“, „USA, Westen 2“, „Kanada, Mitte“, „USA, Westen-Mitte“, „Japan, Osten“.
+
+Sie müssen über die Rolle **Mitwirkender** für die Ressourcengruppe verfügen, die Ihre VMs enthält, um Automanage auf virtuellen Computern mit einem vorhandenen Automanage-Konto zu aktivieren. Wenn Sie Automanage mit einem neuen Automanage-Konto aktivieren, benötigen Sie die folgenden Berechtigungen in Ihrem Abonnement: Rolle **Besitzer** oder **Mitwirkender** sowie Rollen vom Typ **Benutzerzugriffsadministrator**
 
 > [!NOTE]
 > Wenn Sie Automanage auf einem virtuellen Computer verwenden möchten, der mit einem Arbeitsbereich in einem anderen Abonnement verbunden ist, müssen Sie in jedem Abonnement über die oben beschriebenen Berechtigungen verfügen.
-
-Es ist auch wichtig zu beachten, dass die automatische Verwaltung nur Windows-VMs unterstützt, die sich in den folgenden Regionen befinden: „Europa, Westen“, „USA, Osten“, „USA, Westen 2“, „Kanada, Mitte“, „USA, Westen-Mitte“, „Japan, Osten“.
 
 ## <a name="participating-services"></a>Beteiligte Dienste
 
@@ -102,12 +102,20 @@ Sie können die Einstellungen eines Standardkonfigurationsprofils über Voreinst
 
 ## <a name="automanage-account"></a>Konto für die automatische Verwaltung
 
-Das Konto für die automatische Verwaltung ist der Sicherheitskontext oder die Identität, unter der die automatisierten Vorgänge auftreten. Normalerweise brauchen Sie die Option für die automatische Verwaltung nicht auszuwählen, aber wenn es ein Delegierungsszenario gab, in dem Sie die automatische Verwaltung aufteilen wollten (vielleicht zwischen zwei Systemadministratoren), können Sie mit dieser Option eine Azure-Identität für jeden dieser Administratoren definieren.
+Das Konto für die automatische Verwaltung ist der Sicherheitskontext oder die Identität, unter der die automatisierten Vorgänge auftreten. Normalerweise müssen Sie die Automanage-Kontooption nicht auswählen, aber wenn Sie in einem Delegierungsszenario die automatische Verwaltung Ihrer Ressourcen aufteilen möchten (vielleicht zwischen zwei Systemadministratoren), können Sie mit dieser Option für jeden dieser Administratoren eine Azure-Identität definieren.
 
 Wenn Sie in der Azure-Portalerfahrung die automatische Verwaltung auf Ihren VMs aktivieren, gibt es eine Dropdownliste „Erweitert“ auf dem Blatt **Bewährte Methode zum Aktivieren einer Azure-VM**, mit der Sie das Konto für die automatische Verwaltung zuweisen oder manuell erstellen können.
 
+Dem Automanage-Konto wird sowohl die Rolle **Mitwirkender** als auch **Mitwirkender bei Ressourcenrichtlinien** zu den Abonnements gewährt, die die Computer enthalten, die Sie in Automanage integrieren. Sie können das gleiche Automanage-Konto über mehrere Abonnements hinweg auf Computern verwenden. Dadurch werden diesem Automanage-Konto die Rollen **Mitwirkender** und **Mitwirkender bei Ressourcenrichtlinien** für alle Abonnements erteilt.
+
+Wenn Ihr virtueller Computer mit einem Log Analytics-Arbeitsbereich in einem anderen Abonnement verbunden ist, wird dem Automanage-Konto sowohl die Rolle **Mitwirkender** als auch **Mitwirkender bei Ressourcenrichtlinien** in diesem anderen Abonnement gewährt.
+
+Wenn Sie Automanage mit einem neuen Automanage-Konto aktivieren, benötigen Sie die folgenden Berechtigungen in Ihrem Abonnement: Rolle **Besitzer** oder **Mitwirkender** sowie Rollen vom Typ **Benutzerzugriffsadministrator**
+
+Wenn Sie Automanage mit einem vorhandenen Automanage-Konto aktivieren, müssen Sie über die Rolle **Mitwirkender** für die Ressourcengruppe verfügen, die Ihre virtuellen Computer enthält.
+
 > [!NOTE]
-> Sie müssen über die Rolle **Mitwirkender** für die Ressourcengruppe verfügen, die Ihre VMs enthält, um Automanage auf virtuellen Computern mit einem vorhandenen Automanage-Konto zu aktivieren. Wenn Sie Automanage mit einem neuen Automanage-Konto aktivieren, benötigen Sie die folgenden Berechtigungen in Ihrem Abonnement: Rolle **Besitzer** oder **Mitwirkender** sowie Rollen vom Typ **Benutzerzugriffsadministrator**
+> Wenn Sie bewährte Methoden für Automanage deaktivieren, bleiben die Berechtigungen des Automanage-Kontos für alle zugeordneten Abonnements erhalten. Entfernen Sie die Berechtigungen manuell, indem Sie die IAM-Seite des Abonnements aufrufen oder das Automanage-Konto löschen. Das Automanage-Konto kann nicht gelöscht werden, wenn es noch Computer verwaltet.
 
 
 ## <a name="status-of-vms"></a>Status von VMs
@@ -122,6 +130,7 @@ Die Spalte **Status** kann die folgenden Zustände anzeigen:
 - *In Bearbeitung* – Die VM wurde gerade aktiviert und wird konfiguriert
 - *Konfiguriert* – Die VM ist konfiguriert und es wurde kein Datendrift erkannt
 - *Fehler* – Die VM weist einen Datendrift auf und wir konnten das Problem nicht beheben
+- *Ausstehend*: Der virtuelle Computer wird zurzeit nicht ausgeführt, und bei der nächsten Ausführung des virtuellen Computers wird Automanage versuchen, die VM zu integrieren oder zu korrigieren
 
 Wenn der **Status** *Fehler* angezeigt wird, können Sie die Bereitstellung über die Ressourcengruppe beheben, in der sich Ihre VM befindet. Wechseln Sie zu **Ressourcengruppen**, wählen Sie Ihre Ressourcengruppe aus, klicken Sie auf **Bereitstellungen**, und beachten Sie dort den Status *Fehler* zusammen mit Fehlerdetails.
 
@@ -145,7 +154,6 @@ Lesen Sie die Meldung im angezeigten Popupelement sorgfältig durch, bevor Sie d
 
 
 In erster Linie werden wir den virtuellen Computer nicht von einem der Dienste trennen, auf dem wir das Onboarding für ihn durchgeführt und ihn konfiguriert haben. Somit bleiben alle durch diese Dienste entstandenen Kosten weiterhin abrechenbar. Sie müssen ggf. das Onboarding aufheben. Jegliches Verhalten der automatischen Verwaltung wird sofort beendet. Wir werden z. B. die VM nicht mehr auf Datendrift überwachen.
-
 
 ## <a name="next-steps"></a>Nächste Schritte
 

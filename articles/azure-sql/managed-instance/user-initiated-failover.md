@@ -9,13 +9,13 @@ ms.topic: how-to
 author: danimir
 ms.author: danil
 ms.reviewer: douglas, sstein
-ms.date: 12/16/2020
-ms.openlocfilehash: 4b1c98d8621267b300a82b697bce66a6b94e82f3
-ms.sourcegitcommit: e7179fa4708c3af01f9246b5c99ab87a6f0df11c
+ms.date: 01/26/2021
+ms.openlocfilehash: 7588ce055ce0df89a7dca87a75a38c8acccf6d46
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97825925"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98806085"
 ---
 # <a name="user-initiated-manual-failover-on-sql-managed-instance"></a>Vom Benutzer initiiertes manuelles Failover für SQL Managed Instance
 
@@ -125,7 +125,7 @@ Der Status des Vorgangs kann anhand der API-Antworten in Antwortheadern nachverf
 
 ## <a name="monitor-the-failover"></a>Überwachen des Failovers
 
-Um den Fortschritt eines vom Benutzer initiierten manuellen Failovervorgangs zu überwachen, führen Sie die folgende T-SQL-Abfrage in der SQL Managed Instance in Ihrem bevorzugten Client aus (z. B. in SSMS). Die Abfrage liest die Systemsicht „sys.dm_hadr_fabric_replica_states“ und meldet die in der Instanz verfügbaren Replikate. Führen Sie dieselbe Abfrage nach dem Initiieren des manuellen Failovers erneut aus.
+Um den Fortschritt eines vom Benutzer initiierten Failovervorgangs für Ihre unternehmenskritische Instanz zu überwachen, führen Sie die folgende T-SQL-Abfrage in der SQL Managed Instance in Ihrem bevorzugten Client aus (z. B. in SSMS). Die Abfrage liest die Systemsicht „sys.dm_hadr_fabric_replica_states“ und meldet die in der Instanz verfügbaren Replikate. Führen Sie dieselbe Abfrage nach dem Initiieren des manuellen Failovers erneut aus.
 
 ```T-SQL
 SELECT DISTINCT replication_endpoint_url, fabric_replica_role_desc FROM sys.dm_hadr_fabric_replica_states
@@ -133,7 +133,13 @@ SELECT DISTINCT replication_endpoint_url, fabric_replica_role_desc FROM sys.dm_h
 
 Vor dem Initiieren des Failovers gibt die Ausgabe das aktuelle primäre Replikat in der Dienstebene „Unternehmenskritisch“ an, die ein primäres und drei sekundäre Replikate in der Always On-Verfügbarkeitsgruppe enthält. Nach einem Failover müsste bei der erneuten Ausführung der Abfrage eine Änderung des primären Knotens angezeigt werden.
 
-In der Dienstebene „Universell“ erhalten Sie eine andere Ausgabe als in der Dienstebene „Unternehmenskritisch“. Das liegt daran, dass die Dienstebene „Universell“ auf einem einzelnen Knoten basiert. Die Ausgabe einer T-SQL-Abfrage in der Dienstebene „Universell“ zeigt vor und nach dem Failover nur einen einzelnen Knoten. Der Verlust der Konnektivität mit Ihrem Client während des Failovers, der in aller Regel weniger als eine Minute dauert, ist ein Hinweis auf die Ausführung des Failovers.
+In der Dienstebene „Universell“ erhalten Sie eine andere Ausgabe als in der Dienstebene „Unternehmenskritisch“. Das liegt daran, dass die Dienstebene „Universell“ auf einem einzelnen Knoten basiert. Sie können eine alternative T-SQL-Abfrage verwenden, die den Zeitpunkt anzeigt, zu dem der SQL-Prozess auf dem Knoten für die Instanz der Dienstebene „Universell“ begonnen hat:
+
+```T-SQL
+SELECT sqlserver_start_time, sqlserver_start_time_ms_ticks FROM sys.dm_os_sys_info
+```
+
+Der kurze Verlust der Konnektivität mit Ihrem Client während des Failovers, der in aller Regel weniger als eine Minute dauert, ist unabhängig von der Dienstebene ein Hinweis auf die Ausführung des Failovers.
 
 > [!NOTE]
 > Bei Workloads mit **hoher Intensität** kann die vollständige Ausführung eines Failovervorgangs (nicht die kurze Nichtverfügbarkeit) mehrere Minuten dauern. Das liegt daran, dass die Instanz-Engine alle aktuellen Transaktionen auf dem primären Knoten ausführen und den sekundären Knoten auf den neuesten Stand bringen muss, bevor das Failover ausgeführt werden kann.
@@ -143,6 +149,7 @@ In der Dienstebene „Universell“ erhalten Sie eine andere Ausgabe als in der 
 > - Auf ein und derselben Managed Instance kann alle **15 Minuten** immer nur ein (1) Failover initiiert werden.
 > - Bei unternehmenskritischen Instanzen muss ein Quorum mit Replikaten vorhanden sein, damit die Failoveranforderung akzeptiert wird.
 > - Bei unternehmenskritischen Instanzen kann nicht angegeben werden, auf welchem lesbaren sekundären Replikat das Failover initiiert werden soll.
+> - Das Failover ist erst zulässig, wenn die erste vollständige Sicherung für eine neue Datenbank durch automatisierte Sicherungssysteme abgeschlossen ist.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

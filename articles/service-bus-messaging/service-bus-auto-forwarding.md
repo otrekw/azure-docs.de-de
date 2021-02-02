@@ -2,18 +2,21 @@
 title: Automatische Weiterleitung von Azure Service Bus-Messagingentitäten
 description: In diesem Artikel wird beschrieben, wie Sie eine Azure Service Bus-Warteschlange oder ein Abonnement mit einer anderen Warteschlange oder einem anderen Thema verketten.
 ms.topic: article
-ms.date: 06/23/2020
+ms.date: 01/20/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 8f5f93f65871c0b9658a75264ab959dbae7fefe7
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 80bef52d568130fa800a1da661f4867abb3df02c
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91819582"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98678987"
 ---
 # <a name="chaining-service-bus-entities-with-autoforwarding"></a>Verketten von Service Bus-Entitäten mit automatischer Weiterleitung
 
 Mit dem Service Bus-Feature *Automatische Weiterleitung* können Sie eine Warteschlange oder ein Abonnement mit einer weiteren Warteschlange oder einem Thema aus dem selben Namespace verketten. Wenn die automatische Weiterleitung aktiviert ist, entfernt Service Bus die Nachrichten automatisch, die in der ersten Warteschlange oder dem Abonnement (Quelle) platziert wurden, und fügt sie in die zweite Warteschlange oder das Thema (Ziel) ein. Es ist weiterhin möglich, eine Nachricht direkt an die Zielentität zu senden.
+
+> [!NOTE]
+> Der Basic-Tarif von Service Bus unterstützt die automatische Weiterleitung nicht. Die Standard- und Premium-Tarife unterstützen das Feature. Informationen zu den Unterschieden zwischen diesen Tarifen finden Sie unter [Service Bus-Preise](https://azure.microsoft.com/pricing/details/service-bus/).
 
 ## <a name="using-autoforwarding"></a>Die Verwendung der automatischen Weiterleitung
 

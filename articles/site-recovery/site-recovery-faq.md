@@ -4,12 +4,12 @@ description: In diesem Artikel werden häufig gestellte allgemeine Fragen zu Azu
 ms.topic: conceptual
 ms.date: 7/14/2020
 ms.author: raynew
-ms.openlocfilehash: add5874dc828f05c7c51f0f378988c94cbd42486
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: ca30f9ba190dfa3c7e224e47b90be4d3bc5d47ae
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97109554"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98746474"
 ---
 # <a name="general-questions-about-azure-site-recovery"></a>Allgemeine Fragen zu Azure Site Recovery
 
@@ -344,6 +344,14 @@ Ja, Sie können über die Wiederherstellung an einem alternativen Speicherort ei
 
 * [Für virtuelle VMware-Computer](concepts-types-of-failback.md#alternate-location-recovery-alr)
 * [Für virtuelle Hyper-V-Computer](hyper-v-azure-failback.md#fail-back-to-an-alternate-location)
+
+### <a name="what-is-the-difference-between-complete-migration-commit-and-disable-replication"></a>Worin besteht der Unterschied zwischen „Migration abschließen“, „Commit“ und „Replikation deaktivieren“?
+
+Wenn ein Failover eines Computer vom Quellspeicherort zum Zielspeicherort ausgeführt wurde, stehen Ihnen drei Optionen zur Auswahl. Alle drei dienen unterschiedlichen Zwecken:
+
+1.  **Migration abschließen** bedeutet, dass Sie nicht mehr zum Quellspeicherort zurückkehren. Sie haben zu der Zielregion migriert und sind nun fertig. Durch Klicken auf „Migration abschließen“ werden intern „Commit“ und dann „Replikation deaktivieren“ ausgelöst. 
+2.  **Commit** bedeutet, dass es sich hierbei nicht um das Ende des Replikationsprozesses handelt. Das Replikationselement und die gesamte Konfiguration bleiben erhalten, und Sie können zu einem späteren Zeitpunkt **Erneut schützen** wählen, um die Replikation ihrer Computer zurück in die Quellregion zu ermöglichen. 
+3.  **Replikation deaktivieren** deaktiviert die Replikation und entfernt alle zugehörigen Konfigurationen. Dies wirkt sich nicht auf den bereits vorhandenen Computer in der Zielregion aus.
 
 ## <a name="automation"></a>Automation
 

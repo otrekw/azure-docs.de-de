@@ -1,27 +1,26 @@
 ---
-title: Erstellen, Bereitstellen und Erweitern der IoT Plug & Play-Bridge | Microsoft-Dokumentation
-description: Identifizieren Sie die IoT Plug & Play-Bridge-Komponenten. Hier erfahren Sie, wie Sie die Bridge erweitern und wie Sie sie auf IoT-Geräten, -Gateways und als IoT Edge-Modul ausführen.
+title: Erstellen und Bereitstellen der IoT Plug & Play-Bridge | Microsoft-Dokumentation
+description: Identifizieren Sie die IoT Plug & Play-Bridge-Komponenten. Hier erfahren Sie, wie Sie sie auf IoT-Geräten, -Gateways und als IoT Edge-Modul ausführen.
 author: usivagna
 ms.author: ugans
-ms.date: 12/11/2020
+ms.date: 1/20/2021
 ms.topic: how-to
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: ece9f62e64eb64b1f34af46b42d57ec583f8f214
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: 4612e1236af5fbe47db9a3569e2f4da2378017e2
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97675720"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98784896"
 ---
-# <a name="build-deploy-and-extend-the-iot-plug-and-play-bridge"></a>Erstellen, Bereitstellen und Erweitern der IoT Plug & Play-Bridge
+# <a name="build-and-deploy-the-iot-plug-and-play-bridge"></a>Erstellen und Bereitstellen der IoT Plug & Play-Bridge
 
-Mit der IoT Plug & Play-Bridge können Sie die vorhandenen Geräte, die an ein Gateway angeschlossen sind, an Ihre IoT-Hub-Instanz anschließen. Mit der Bridge ordnen Sie angeschlossenen Geräten IoT Plug & Play-Schnittstellen zu. Mit einer IoT Plug & Play-Schnittstelle werden die Telemetriedaten, die ein Gerät sendet, die Eigenschaften, die zwischen dem Gerät und der Cloud synchronisiert werden, und die Befehle, auf die das Gerät reagiert, definiert. Die Open-Source-Bridge-Anwendung kann auf Windows- oder Linux-Gateways installiert und konfiguriert werden.
+Mit der [IoT Plug & Play-Bridge](concepts-iot-pnp-bridge.md#iot-plug-and-play-bridge-architecture) können Sie eine Verbindung der vorhandenen Geräte, die an ein Gateway angeschlossen sind, mit Ihrer IoT-Hub-Instanz herstellen. Mit der Bridge ordnen Sie angeschlossenen Geräten IoT Plug & Play-Schnittstellen zu. Mit einer IoT Plug & Play-Schnittstelle werden die Telemetriedaten, die ein Gerät sendet, die Eigenschaften, die zwischen dem Gerät und der Cloud synchronisiert werden, und die Befehle, auf die das Gerät reagiert, definiert. Die Open-Source-Bridge-Anwendung kann auf Windows- oder Linux-Gateways installiert und konfiguriert werden. Außerdem kann die Bridge als Azure IoT Edge-Runtimemodul ausgeführt werden.
 
 In diesem Artikel wird Folgendes ausführlich erläutert:
 
 - Konfigurieren einer Bridge
-- Erweitern einer Bridge durch Erstellen neuer Adapter
 - Erstellen und Ausführen der Bridge in verschiedenen Umgebungen
 
 Ein einfaches Beispiel für die Verwendung der Bridge finden Sie unter [Herstellen einer Verbindung eines IoT Plug & Play-Bridge-Beispiels unter Linux oder Windows mit IoT-Hub](howto-use-iot-pnp-bridge.md).
@@ -78,97 +77,6 @@ Das [Schema der Konfigurationsdatei](https://github.com/Azure/iot-plug-and-play-
 
 Wenn die Bridge als IoT Edge-Modul in einer IoT Edge-Runtime ausgeführt wird, wird die Konfigurationsdatei als Update aus der Cloud an die gewünschte `PnpBridgeConfig`-Eigenschaft gesendet. Die Adapter und Komponenten werden von der Bridge erst nach dieser Eigenschaftsaktualisierung konfiguriert.
 
-## <a name="extend-the-bridge"></a>Erweitern der Bridge
-
-Zur Erweiterung der Bridge-Funktionen können Sie eigene Bridge-Adapter erstellen.
-
-Adapter werden von der Bridge für Folgendes verwendet:
-
-- Herstellen einer Verbindung zwischen einem Gerät und der Cloud
-- Aktivieren des Datenflusses zwischen einem Gerät und der Cloud
-- Aktivieren der Geräteverwaltung über die Cloud
-
-Für alle Bridge-Adapter müssen folgende Aktionen durchgeführt werden:
-
-- Erstellen einer Schnittstelle für digitale Zwillinge
-- Verwenden der Schnittstelle zum Binden von geräteseitigen Funktionen an cloudbasierte Funktionen wie Telemetriedaten, Eigenschaften und Befehle
-- Herstellen einer Steuerungs- und Datenverbindung mit der Gerätehardware oder -firmware.
-
-Jeder Bridge-Adapter interagiert mit einem bestimmten Gerätetyp, je nachdem, wie der Adapter die Verbindung herstellt und mit dem Gerät interagiert. Auch wenn für die Kommunikation mit einem Gerät ein Handshakeprotokoll verwendet wird, gibt es für einen Bridge-Adapter mehrere Möglichkeiten, die vom Gerät stammenden Daten zu interpretieren. In diesem Szenario werden vom Bridge-Adapter Informationen für den Adapter in der Konfigurationsdatei verwendet, um die *Schnittstellenkonfiguration* zu bestimmen, die vom Adapter zum Analysieren der Daten verwendet werden soll.
-
-Für die Interaktion mit dem Gerät werden vom Bridge-Adapter neben einem vom Gerät unterstützten Kommunikationsprotokoll auch APIs verwendet, die entweder vom zugrunde liegenden Betriebssystem oder vom Gerätehersteller bereitgestellt werden.
-
-Für die Interaktion mit der Cloud werden vom Bridge-Adapter APIs verwendet, die vom C SDK des Azure IoT-Geräts bereitgestellt werden, um Telemetriedaten zu senden, Schnittstellen für digitale Zwillinge zu erstellen, Eigenschaftsaktualisierungen zu senden und Rückruffunktionen für Eigenschaftsaktualisierungen und Befehle zu erstellen.
-
-### <a name="create-a-bridge-adapter"></a>Erstellen eines Bridge-Adapters
-
-Von der Bridge wird erwartet, dass die in der [_PNP_ADAPTER](https://github.com/Azure/iot-plug-and-play-bridge/blob/9964f7f9f77ecbf4db3b60960b69af57fd83a871/pnpbridge/src/pnpbridge/inc/pnpadapter_api.h#L296)-Schnittstelle definierten APIs vom Bridge-Adapter implementiert werden:
-
-```c
-typedef struct _PNP_ADAPTER {
-  // Identity of the IoT Plug and Play adapter that is retrieved from the config
-  const char* identity;
-
-  PNPBRIDGE_ADAPTER_CREATE createAdapter;
-  PNPBRIDGE_COMPONENT_CREATE createPnpComponent;
-  PNPBRIDGE_COMPONENT_START startPnpComponent;
-  PNPBRIDGE_COMPONENT_STOP stopPnpComponent;
-  PNPBRIDGE_COMPONENT_DESTROY destroyPnpComponent;
-  PNPBRIDGE_ADAPTER_DESTOY destroyAdapter;
-} PNP_ADAPTER, * PPNP_ADAPTER;
-```
-
-Bei dieser Schnittstelle gilt Folgendes:
-
-- Mit `PNPBRIDGE_ADAPTER_CREATE` werden der Adapter erstellt und die Verwaltungsressourcen der Schnittstelle eingerichtet. Ein Adapter kann bei der Adaptererstellung auch auf globale Adapterparameter zurückgreifen. Diese Funktion wird für einen einzelnen Adapter einmal aufgerufen.
-- Mit `PNPBRIDGE_COMPONENT_CREATE` werden die Clientschnittstellen des digitalen Zwillings erstellt und die Rückruffunktionen gebunden. Der Kommunikationskanal zum Gerät wird vom Gerät initiiert. Die Ressourcen können vom Adapter eingerichtet werden, um den Telemetriedatenfluss zu aktivieren. Mit dem Melden von Telemetriedaten wird jedoch erst begonnen, nachdem `PNPBRIDGE_COMPONENT_START` aufgerufen wurde. Diese Funktion wird für jede Schnittstellenkomponente in der Konfigurationsdatei einmal aufgerufen.
-- `PNPBRIDGE_COMPONENT_START` wird aufgerufen, damit vom Bridge-Adapter mit dem Weiterleiten von Telemetriedaten vom Gerät an den Client des digitalen Zwillings begonnen wird. Diese Funktion wird für jede Schnittstellenkomponente in der Konfigurationsdatei einmal aufgerufen.
-- Mit `PNPBRIDGE_COMPONENT_STOP` wird der Telemetriedatenfluss beendet.
-- Mit `PNPBRIDGE_COMPONENT_DESTROY` wird der Client des digitalen Zwillings zusammen mit den entsprechenden Schnittstellenressourcen zerstört. Diese Funktion wird für jede Schnittstellenkomponente in der Konfigurationsdatei einmal aufgerufen, wenn die Bridge abgebrochen wird oder ein schwerwiegender Fehler auftritt.
-- Mit `PNPBRIDGE_ADAPTER_DESTROY` werden die Bridge-Adapterressourcen bereinigt.
-
-### <a name="bridge-core-interaction-with-bridge-adapters"></a>Bridge-Kerninteraktion mit Bridge-Adaptern
-
-In der folgenden Liste wird beschrieben, was geschieht, wenn die Bridge gestartet wird:
-
-1. Wenn die Bridge gestartet wird, durchsucht der Bridge-Adapter-Manager alle in der Konfigurationsdatei definierten Schnittstellenkomponenten und ruft `PNPBRIDGE_ADAPTER_CREATE` auf dem entsprechenden Adapter auf. Vom Adapter können globale Parameter für die Adapterkonfiguration verwendet werden, um Ressourcen so einzurichten, dass die verschiedenen *Schnittstellenkonfigurationen* unterstützt werden.
-1. Für jedes Gerät in der Konfigurationsdatei wird vom Bridge-Manager durch Aufrufen von `PNPBRIDGE_COMPONENT_CREATE` auf dem entsprechenden Bridge-Adapter eine Schnittstellenerstellung initiiert.
-1. Vom Adapter werden optionale Adapterkonfigurationseinstellungen für die Schnittstellenkomponente empfangen und mit diesen Informationen eine Verbindung mit dem Gerät eingerichtet.
-1. Vom Adapter werden die Clientschnittstellen des digitalen Zwillings erstellt und die Rückruffunktionen für Eigenschaftenaktualisierungen und Befehle gebunden. Durch das Einrichten von Geräteverbindungen sollte die Rückgabe der Rückrufe nach dem Erstellen der Schnittstelle des digitalen Zwillings nicht blockiert werden. Die aktive Geräteverbindung ist unabhängig vom aktiven Schnittstellenclient, der von der Bridge erstellt wird. Wenn eine Verbindung nicht hergestellt werden kann, geht der Adapter davon aus, dass das Gerät inaktiv ist. Der Bridge-Adapter kann erneut versuchen, diese Verbindung herzustellen.
-1. Nachdem alle in der Konfigurationsdatei angegebenen Schnittstellenkomponenten vom Bridge-Adapter-Manager erstellt wurden, werden alle Schnittstellen bei Azure IoT Hub registriert. Bei der Registrierung handelt es sich um einen blockierenden, asynchronen Aufruf. Nach Abschluss des Aufrufs wird im Bridge-Adapter ein Rückruf ausgelöst, durch den dann die Verarbeitung von Eigenschafts- und Befehlsrückrufen aus der Cloud begonnen werden kann.
-1. Anschließend wird vom Bridge-Adapter-Manager auf jeder Komponente `PNPBRIDGE_INTERFACE_START` aufgerufen, und vom Bridge-Adapter wird mit dem Melden von Telemetriedaten an den Client des digitalen Zwillings begonnen.
-
-### <a name="design-guidelines"></a>Entwurfsrichtlinien
-
-Beachten Sie beim Entwickeln eines neuen Bridge-Adapters die folgenden Richtlinien:
-
-- Legen Sie fest, welche Gerätefunktionen unterstützt werden und wie die Schnittstellendefinition der Komponenten, die diesen Adapter nutzen, aussieht.
-- Legen Sie fest, welche Schnittstelle und globalen Parameter für Ihren Adapter in der Konfigurationsdatei definiert werden müssen.
-- Entscheiden Sie, welche Low-Level-Gerätekommunikation zur Unterstützung der Komponenteneigenschaften und Befehle erforderlich ist.
-- Legen Sie fest, wie der Adapter die Rohdaten vom Gerät analysieren und in die Telemetriedatentypen konvertieren soll, die in der IoT Plug & Play-Schnittstellendefinition angegeben sind.
-- Implementieren Sie die weiter oben beschriebene Bridge-Adapterschnittstelle.
-- Fügen Sie dem Adaptermanifest den neuen Adapter hinzu, und erstellen Sie die Bridge.
-
-### <a name="enable-a-new-bridge-adapter"></a>Aktivieren des neuen Bridge-Adapters
-
-Adapter werden in der Bridge durch Hinzufügen eines Verweises in [adapter_manifest.c](https://github.com/Azure/iot-plug-and-play-bridge/blob/master/pnpbridge/src/adapters/src/shared/adapter_manifest.c) aktiviert:
-
-```c
-  extern PNP_ADAPTER MyPnpAdapter;
-  PPNP_ADAPTER PNP_ADAPTER_MANIFEST[] = {
-    .
-    .
-    &MyPnpAdapter
-  }
-```
-
-> [!IMPORTANT]
-> Bridge-Adapterrückrufe werden nacheinander aufgerufen. Rückrufe dürfen von einem Adapter nicht blockiert werden, da dadurch verhindert wird, dass der Bridge-Kern Fortschritte macht.
-
-### <a name="sample-camera-adapter"></a>Beispiel für einen Kameraadapter
-
-In der [Infodatei zum Kameraadapter](https://github.com/Azure/iot-plug-and-play-bridge/blob/master/pnpbridge/src/adapters/src/Camera/readme.md) wird ein Beispiel für einen Kameraadapter beschrieben, den Sie aktivieren können.
-
 ## <a name="build-and-run-the-bridge-on-an-iot-device-or-gateway"></a>Erstellen und Ausführen der Bridge auf einem IoT-Gerät oder -Gateway
 
 | Plattform | Unterstützt |
@@ -188,7 +96,7 @@ Für diesen Abschnitt müssen Sie auf Ihrem lokalen Computer folgende Software i
 
 Klonen Sie das Repository [IoT Plug & Play-Bridge](https://github.com/Azure/iot-plug-and-play-bridge) auf Ihren lokalen Computer:
 
-```cmd/sh
+```console
 git clone https://github.com/Azure/iot-plug-and-play-bridge.git
 
 cd iot-plug-and-play-bridge
@@ -205,7 +113,7 @@ Rechnen Sie damit, dass die Ausführung dieses Befehls einige Minuten dauern kan
 
 Öffnen Sie die **Developer-Eingabeaufforderung für VS 2019**, navigieren Sie zu dem Ordner mit dem geklonten Repository, und führen Sie die folgenden Befehle aus:
 
-```cmd
+```console
 cd pnpbridge\scripts\windows
 
 build.cmd
@@ -279,7 +187,7 @@ Verschaffen Sie sich einen Überblick über die restlichen Konfigurationsdateien
 
 Starten Sie die Bridge, indem Sie sie an der Eingabeaufforderung ausführen:
 
-```cmd
+```console
 cd iot-plug-and-play-bridge\pnpbridge\cmake\pnpbridge_x86\src\pnpbridge\samples\console
 
 Debug\pnpbridge_bin.exe
@@ -304,7 +212,7 @@ Für diesen Abschnitt benötigen Sie einen IoT-Hub in Azure im Tarif „Free“ 
 
 Bei den Schritten in diesem Abschnitt wird davon ausgegangen, dass sich auf einem Windows 10-Computer die folgende Entwicklungsumgebung befindet. Mit den folgenden Tools können Sie ein IoT Edge-Modul erstellen und auf Ihrem IoT Edge-Gerät bereitstellen:
 
-- Windows-Subsystem für Linux (WSL) 2, auf dem Ubuntu 18.04 LTS ausgeführt wird. Weitere Informationen hierzu finden Sie unter [Windows-Subsystem für Linux: Installationsleitfaden für Windows 10](https://docs.microsoft.com/windows/wsl/install-win10).
+- Windows-Subsystem für Linux (WSL) 2, auf dem Ubuntu 18.04 LTS ausgeführt wird. Weitere Informationen hierzu finden Sie unter [Windows-Subsystem für Linux: Installationsleitfaden für Windows 10](/windows/wsl/install-win10).
 - Docker Desktop für Windows, konfiguriert für die Verwendung von WSL 2. Weitere Informationen finden Sie unter [Docker Desktop WSL 2 backend](https://docs.docker.com/docker-for-windows/wsl/) (Docker Desktop WSL 2-Back-End).
 - [Visual Studio Code in der Windows-Umgebung](https://code.visualstudio.com/docs/setup/windows) mit den folgenden drei Erweiterungen installiert:
 
@@ -330,13 +238,13 @@ Mit diesen Befehlen können Sie ein IoT Edge-Gerät erstellen, das auf einem vir
 
 Führen Sie die folgenden Befehle in der WSL 2-Umgebung aus, um eine IoT Edge-Geräteregistrierung zu erstellen. Verwenden Sie den Befehl `az login`, um sich bei Ihrem Azure-Abonnement anzumelden:
 
-```bash
+```azurecli
 az iot hub device-identity create --device-id bridge-edge-device --edge-enabled true --hub-name {your IoT hub name}
 ```
 
 Führen Sie die folgenden Befehle aus, um einen virtuellen Azure-Computer zu erstellen, auf dem IoT Edge-Runtime installiert ist. Aktualisieren Sie die Platzhalter mit geeigneten Werten:
 
-```bash
+```azurecli
 az group create --name bridge-edge-resources --location eastus
 az deployment group create \
 --resource-group bridge-edge-resources \
@@ -350,7 +258,7 @@ az deployment group create \
 
 Nun wird IoT Edge-Runtime auf einem virtuellen Computer ausgeführt. Mit dem folgenden Befehl können Sie sich vergewissern, dass **$edgeAgent** und **$edgeHub** auf dem Gerät ausgeführt werden:
 
-```bash
+```azurecli
 az iot hub module-identity list --device-id bridge-edge-device -o table --hub-name {your IoT hub name}
 ```
 
@@ -378,7 +286,6 @@ Starten Sie VS Code, öffnen Sie die Befehlspalette, geben Sie *Remote WSL: Open
 Öffnen Sie die Datei *pnpbridge\Dockerfile.amd64*. Bearbeiten Sie die Definitionen der Umgebungsvariablen wie folgt:
 
 ```dockerfile
-ENV IOTHUB_DEVICE_CONNECTION_STRING="{Add your device connection string here}"
 ENV PNP_BRIDGE_ROOT_MODEL_ID="dtmi:com:example:RootPnpBridgeSampleDevice;1"
 ENV PNP_BRIDGE_HUB_TRACING_ENABLED="false"
 ENV IOTEDGE_WORKLOADURI="something"
@@ -405,7 +312,7 @@ Auf einem IoT Edge-Gerät wird das entsprechende Modulimage aus einer Containerr
 
 Erstellen Sie zunächst in der Ressourcengruppe **bridge-edge-resources** eine Azure-Containerregistrierung. Aktivieren Sie anschließend den Administratorzugriff auf Ihre Containerregistrierung, und rufen Sie die Anmeldeinformationen ab, die erforderlich sind, damit die Modulimages durch das IoT Edge-Gerät heruntergeladen werden können:
 
-```bash
+```azurecli
 az acr create -g bridge-edge-resources --sku Basic -n {your container registry name}
 az acr update --admin-enabled true -n {your container registry name}
 az acr credential show -n {your container registry name}
@@ -517,7 +424,7 @@ Klicken Sie in VS Code mit der rechten Maustaste auf die Datei *pnpbridge/config
 
 Führen Sie den folgenden Befehl aus, um auf Ihrem Gerät den Status der Module anzuzeigen:
 
-```bash
+```azurecli
 az iot hub module-identity list --device-id bridge-edge-device -o table --hub-name {your IoT hub name}
 ```
 
@@ -527,7 +434,7 @@ In der Liste der ausgeführten Module ist nun das Modul **ModulePnpBridge** enth
 
 Führen Sie den folgenden Befehl aus, um den virtuellen Computer und die Containerregistrierung aus dem Azure-Abonnement zu entfernen:
 
-```bash
+```azurecli
 az group delete -n bridge-edge-resources
 ```
 

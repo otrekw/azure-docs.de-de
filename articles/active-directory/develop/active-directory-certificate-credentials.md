@@ -13,18 +13,18 @@ ms.date: 12/3/2020
 ms.author: hirsin
 ms.reviewer: nacanuma, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: f3222c790ccd0cee936b246253a16b5c434c61c8
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: 22352f6d0c7dc48b98be5fcb4101f262adc480d6
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96602205"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98795624"
 ---
 # <a name="microsoft-identity-platform-application-authentication-certificate-credentials"></a>Microsoft Identity Platform-Zertifikatanmeldeinformationen für die Anwendungsauthentifizierung
 
-Microsoft Identity Platform ermöglicht es einer Anwendung, sich überall dort mit ihren eigenen Anmeldeinformationen zu authentifizieren, wo ein geheimer Clientschlüssel verwendet werden kann, also beispielsweise im OAuth 2.0-Flow zum [Gewähren von Clientanmeldeinformationen](v2-oauth2-client-creds-grant-flow.md) und im [On-Behalf-Of](v2-oauth2-on-behalf-of-flow.md)-Flow (OBO).
+Die Microsoft Identity Platform ermöglicht einer Anwendung, sich überall dort mit ihren eigenen Anmeldeinformationen zu authentifizieren, wo ein geheimer Clientschlüssel verwendet werden kann, also beispielsweise im OAuth 2.0-Flow zum [Gewähren von Clientanmeldeinformationen](v2-oauth2-client-creds-grant-flow.md) und im [On-Behalf-Of](v2-oauth2-on-behalf-of-flow.md)-Flow (OBO).
 
-Eine Form von Anmeldeinformationen, die eine Anwendung zur Authentifizierung verwenden kann, ist eine [JSON Web Token (JWT)-Assertion](./security-tokens.md#json-web-tokens-jwts-and-claims), die mit einem zur Anwendung gehörigen Zertifikat signiert ist.
+Eine Form von Anmeldeinformationen, die eine Anwendung zur Authentifizierung verwenden kann, ist eine [JSON Web Token (JWT)-Assertion](./security-tokens.md#json-web-tokens-and-claims), die mit einem zur Anwendung gehörigen Zertifikat signiert ist.
 
 ## <a name="assertion-format"></a>Assertionformat
 
@@ -89,7 +89,7 @@ Gh95kHCOEGq5E_ArMBbDXhwKR577scxYaoJ1P{a lot of characters here}KKJDEg"
 
 ## <a name="register-your-certificate-with-microsoft-identity-platform"></a>Registrieren Ihres Zertifikats bei Microsoft Identity Platform
 
-Über das Azure-Portal können Sie die Zertifikatanmeldeinformationen mit der Clientanwendung in Microsoft Identity Platform verknüpfen. Dazu haben Sie folgende Möglichkeiten:
+Über das Azure-Portal können Sie die Zertifikatanmeldeinformationen mit der Clientanwendung in der Microsoft Identity Platform verknüpfen. Dazu haben Sie folgende Möglichkeiten:
 
 ### <a name="uploading-the-certificate-file"></a>Hochladen der Zertifikatdatei
 

@@ -3,12 +3,12 @@ title: Grenzwerte und Kontingente von Azure-Abonnements
 description: Stellt eine Liste allgemeiner Azure-Abonnements und Diensteinschränkungen, Kontingenten und Einschränkungen bereit. Dieser Artikel enthält Informationen zum Erhöhen von Grenzwerten und Höchstwerten.
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: 20de08ee30deae74954f2857b4de756b8cf46f08
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.openlocfilehash: baef641a741d12185029436e5a74039427c69f68
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97964189"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98802900"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen
 
@@ -402,7 +402,7 @@ Weitere Informationen finden Sie unter [Größen virtueller Computer](../../virt
 
 #### <a name="disk-encryption-sets"></a>Datenträgerverschlüsselungssätze
 
-Pro Region und Abonnement können maximal 50 Datenträgerverschlüsselungssätze erstellt werden. Weitere Informationen finden Sie in der Dokumentation zur Verschlüsselung für [Linux](../../virtual-machines/disk-encryption.md#restrictions)- oder [Windows](../../virtual-machines/disk-encryption.md#restrictions)-VMs. Wenn Sie das Kontingent erhöhen müssen, wenden Sie sich an den Azure-Support.
+Pro Region und Abonnement können maximal 1.000 Datenträgerverschlüsselungssätze erstellt werden. Weitere Informationen finden Sie in der Dokumentation zur Verschlüsselung für [Linux](../../virtual-machines/disk-encryption.md#restrictions)- oder [Windows](../../virtual-machines/disk-encryption.md#restrictions)-VMs. Wenn Sie das Kontingent erhöhen müssen, wenden Sie sich an den Azure-Support.
 
 ### <a name="managed-virtual-machine-disks"></a>Verwaltete VM-Datenträger
 

@@ -6,12 +6,12 @@ ms.service: virtual-machines-linux
 ms.topic: how-to
 ms.date: 01/25/2019
 ms.author: cynthn
-ms.openlocfilehash: 56d2aa9f7aa36808774876ac0f5cfc596887ff26
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 8954ad03bd5f539e9dcfbb4249f4e7cc1cf0bc7f
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96906385"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98685122"
 ---
 # <a name="find-linux-vm-images-in-the-azure-marketplace-with-the-azure-cli"></a>Suchen nach Linux-VM-Images im Azure Marketplace mit der Azure CLI
 
@@ -19,10 +19,11 @@ Dieses Thema beschreibt, wie Sie mit der Azure-Befehlszeilenschnittstelle im Azu
 
 Suchen Sie über die [Azure Marketplace](https://azuremarketplace.microsoft.com/) Storefront, das [Azure-Portal](https://portal.azure.com) oder [Azure PowerShell](../windows/cli-ps-findimage.md) nach den verfügbaren Images und Angeboten. 
 
-Stellen Sie sicher, dass Sie die aktuelle Version der [Azure-Befehlszeilenschnittstelle](/cli/azure/install-azure-cli) installiert haben und bei einem Azure-Konto (`az login`) angemeldet sind.
+Stellen Sie sicher, dass Sie bei einem Azure-Konto (`az login`) angemeldet sind.
 
 [!INCLUDE [virtual-machines-common-image-terms](../../../includes/virtual-machines-common-image-terms.md)]
 
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../../includes/azure-cli-prepare-your-environment.md)]
 
 ## <a name="deploy-from-a-vhd-using-purchase-plan-parameters"></a>Bereitstellen von einer VHD mithilfe von Erwerbsplanparametern
 
@@ -72,7 +73,7 @@ az vm image list --output table
 
 Die Ausgabe enthält den Image-URN (Wert in der Spalte *Urn*). Beim Erstellen eines virtuellen Computers mit einem der beliebten Marketplace-Images können Sie alternativ das *UrnAlias*-Element angeben, eine Kurzform wie etwa *UbuntuLTS*.
 
-```
+```output
 You are viewing an offline list of images, use --all to retrieve an up-to-date list
 Offer          Publisher               Sku                 Urn                                                             UrnAlias             Version
 -------------  ----------------------  ------------------  --------------------------------------------------------------  -------------------  ---------
@@ -99,7 +100,7 @@ az vm image list --offer Debian --all --output table
 
 Hier sehen Sie einen Teil der Ausgabe: 
 
-```
+```output
 Offer              Publisher    Sku                  Urn                                                    Version
 -----------------  -----------  -------------------  -----------------------------------------------------  --------------
 Debian             credativ     7                    credativ:Debian:7:7.0.201602010                        7.0.201602010
@@ -149,7 +150,7 @@ az vm image list --location westeurope --offer Deb --publisher credativ --sku 8 
 
 Hier sehen Sie einen Teil der Ausgabe:
 
-```
+```output
 Offer    Publisher    Sku                Urn                                              Version
 -------  -----------  -----------------  -----------------------------------------------  -------------
 Debian   credativ     8                  credativ:Debian:8:8.0.201602010                  8.0.201602010
@@ -197,7 +198,7 @@ az vm image list-publishers --location westus --output table
 
 Hier sehen Sie einen Teil der Ausgabe:
 
-```
+```output
 Location    Name
 ----------  ----------------------------------------------------
 westus      128technology
@@ -233,7 +234,7 @@ az vm image list-offers --location westus --publisher Canonical --output table
 
 Ausgabe:
 
-```
+```output
 Location    Name
 ----------  -------------------------
 westus      Ubuntu15.04Snappy
@@ -250,7 +251,7 @@ az vm image list-skus --location westus --publisher Canonical --offer UbuntuServ
 
 Ausgabe:
 
-```
+```output
 Location    Name
 ----------  -----------------
 westus      12.04.3-LTS
@@ -281,7 +282,7 @@ az vm image list --location westus --publisher Canonical --offer UbuntuServer --
 
 Hier sehen Sie einen Teil der Ausgabe:
 
-```
+```output
 Offer         Publisher    Sku        Urn                                               Version
 ------------  -----------  ---------  ------------------------------------------------  ---------------
 UbuntuServer  Canonical    18.04-LTS  Canonical:UbuntuServer:18.04-LTS:18.04.201804262  18.04.201804262
@@ -325,7 +326,7 @@ az vm image show --location westus --urn Canonical:UbuntuServer:18.04-LTS:latest
 
 Ausgabe:
 
-```
+```output
 {
   "dataDiskImages": [],
   "id": "/Subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/Providers/Microsoft.Compute/Locations/westus/Publishers/Canonical/ArtifactTypes/VMImage/Offers/UbuntuServer/Skus/18.04-LTS/Versions/18.04.201901220",
@@ -346,7 +347,7 @@ az vm image show --location westus --urn bitnami:rabbitmq:rabbitmq:latest
 ```
 Ausgabe:
 
-```
+```output
 {
   "dataDiskImages": [],
   "id": "/Subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/Providers/Microsoft.Compute/Locations/westus/Publishers/bitnami/ArtifactTypes/VMImage/Offers/rabbitmq/Skus/rabbitmq/Versions/3.7.1901151016",
@@ -374,7 +375,7 @@ az vm image accept-terms --urn bitnami:rabbitmq:rabbitmq:latest
 
 Die Ausgabe enthält ein `licenseTextLink`-Element für die Lizenzbedingungen und gibt an, dass für `accepted` der Wert `true` angegeben ist:
 
-```
+```output
 {
   "accepted": true,
   "additionalProperties": {},

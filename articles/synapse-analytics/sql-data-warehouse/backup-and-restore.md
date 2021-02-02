@@ -11,12 +11,12 @@ ms.date: 11/13/2020
 ms.author: joanpo
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019"
-ms.openlocfilehash: b033fd9c0a7f752cf08d6e679facc9fa27b44037
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 842f2f92133664f58ca60d6d30181d48d63271eb
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98120205"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98736304"
 ---
 # <a name="backup-and-restore-in-azure-synapse-dedicated-sql-pool"></a>Sichern und Wiederherstellen in einem dedizierten Azure Synapse SQL-Pool
 
@@ -71,8 +71,16 @@ Wenn Sie einen dedizierten SQL-Pool löschen, wird eine abschließende Momentauf
 
 Eine Geosicherung wird einmal täglich in einem [gekoppelten Rechenzentrum](../../best-practices-availability-paired-regions.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) erstellt. Die RPO für eine Geowiederherstellung beträgt 24 Stunden. Sie können die Geosicherung auf einem Server in einer beliebigen anderen Region wiederherstellen, in der dedizierte SQL-Pools unterstützt werden. Mit einer Geosicherung wird sichergestellt, dass Sie ein Data Warehouse wiederherstellen können, wenn Sie nicht auf die Wiederherstellungspunkte in Ihrer primären Region zugreifen können.
 
+Wenn Sie keine Geosicherungen für Ihren dedizierten SQL-Pool benötigen, können Sie sie deaktivieren und die Speicherkosten für die Notfallwiederherstellung einsparen. Informationen hierzu finden Sie unter [Schrittanleitung: Deaktivieren von Geosicherungen für einen dedizierten SQL-Pool (früher SQL Data Warehouse)](disable-geo-backup.md). Beachten Sie: Wenn Sie Geosicherungen deaktivieren, können Sie Ihren dedizierten SQL-Pool nicht in der gekoppelten Azure-Region wiederherstellen, wenn Ihr primäres Azure-Rechenzentrum nicht verfügbar ist. 
+
 > [!NOTE]
 > Wenn Sie eine kürzere RPO für Geosicherungen benötigen, stimmen Sie [hier](https://feedback.azure.com/forums/307516-sql-data-warehouse) für diese Funktion ab. Sie können auch einen benutzerdefinierten Wiederherstellungspunkt erstellen und auf der Grundlage dieses neuen Wiederherstellungspunkts ein neues Data Warehouse in einer anderen Region wiederherstellen. Nach der Wiederherstellung ist das Data Warehouse online, und Sie können es unbegrenzt anhalten, um Computekosten zu sparen. Für die angehaltene Datenbank fallen Speichergebühren nach dem Azure Storage Premium-Tarif an. Falls Sie eine aktive Kopie des Data Warehouse benötigen, können Sie die Datenbank fortsetzen. Dies sollte nur wenige Minuten dauern.
+
+## <a name="data-residency"></a>Datenresidenz 
+
+Wenn sich das gekoppelte Rechenzentrum außerhalb ihrer geografischen Grenzen befindet, können Sie sicherstellen, dass Ihre Daten innerhalb Ihrer geografischen Grenze verbleiben, indem Sie den georedundanten Speicher deaktivieren. Dies kann geschehen, wenn Sie Ihren dedizierten SQL-Pool (ehemals SQL DW) über die Option „georedundanter Speicher“ bereitstellen, wenn Sie einen dedizierten SQL-Pool (früher SQL DW) erstellen oder wiederherstellen. 
+
+Unter [Business Continuity & Disaster Recovery (BCDR): Azure-Regionspaare](../../best-practices-availability-paired-regions.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) können Sie überprüfen, ob sich das gekoppelte Rechenzentrum in einem anderen Land befindet.
 
 ## <a name="backup-and-restore-costs"></a>Kosten für Sicherung und Wiederherstellung
 
@@ -88,7 +96,7 @@ Weitere Informationen zu den Preisen von Azure Synapse finden Sie unter [Azure S
 
 Jede Momentaufnahme erstellt einen Wiederherstellungspunkt, der den Zeitpunkt zu Beginn der Momentaufnahme darstellt. Um ein Data Warehouse wiederherzustellen, wählen Sie einen Wiederherstellungspunkt aus und geben einen Wiederherstellungsbefehl aus.  
 
-Sie können entweder das wiederhergestellte Data Warehouse und das aktuelle beibehalten oder eines davon löschen. Wenn Sie das aktuelle Data Warehouse durch das wiederhergestellte Data Warehouse ersetzen möchten, können Sie es über [„ALTER DATABASE“](/sql/t-sql/statements/alter-database-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) mit der Option „MODIFY NAME“ umbenennen.
+Sie können entweder das wiederhergestellte Data Warehouse und das aktuelle beibehalten oder eines davon löschen. Wenn Sie das aktuelle Data Warehouse durch das wiederhergestellte Data Warehouse ersetzen möchten, können Sie es über [„ALTER DATABASE“](/sql/t-sql/statements/alter-database-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) mit der Option „MODIFY NAME“ umbenennen.
 
 Informationen zum Wiederherstellen eines Data Warehouse finden Sie unter [Wiederherstellen eines dedizierten SQL-Pools](sql-data-warehouse-restore-points.md#create-user-defined-restore-points-through-the-azure-portal).
 

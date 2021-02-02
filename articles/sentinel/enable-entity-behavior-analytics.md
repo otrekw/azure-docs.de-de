@@ -12,25 +12,20 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/28/2020
+ms.date: 01/25/2021
 ms.author: yelevin
-ms.openlocfilehash: 140228a65be166bc172e81267c4449b49621e02c
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: 0dccd8ac4f852688bf7e59e7ed96c4458c08d18b
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94425778"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98784727"
 ---
 # <a name="enable-user-and-entity-behavior-analytics-ueba-in-azure-sentinel"></a>Aktivieren von User and Entity Behavior Analytics (UEBA) in Azure Sentinel 
 
 > [!IMPORTANT]
 >
-> - Die Features UEBA und Entitätsseiten sind nun in den folgenden Azure Sentinel-Regionen **allgemein verfügbar**:
->    - in den US-amerikanischen Regionen
->    - in der Region Europa, Westen
->    - in den australischen Regionen
->
-> - In allen anderen Geografien und Regionen bleiben diese Features bis auf Weiteres in der **Vorschau**. Die [zusätzlichen Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) enthalten zusätzliche rechtliche Bedingungen, die für Azure-Features gelten, die sich in der Beta- oder Vorschauversion befinden bzw. anderweitig noch nicht zur allgemeinen Verfügbarkeit freigegeben sind.
+> - Die Features UEBA und Entitätsseiten sind nun in **_allen_* _ Azure Sentinel-Regionen **allgemein verfügbar**.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -38,7 +33,7 @@ So aktivieren oder deaktivieren Sie dieses Feature (diese Voraussetzungen müsse
 
 - Der Benutzer muss Mitglied des Azure Active Directory Ihrer Organisation und darf kein Gastbenutzer sein.
 
-- Ihrem Benutzer muss die Rolle **Globaler Administrator** oder **Sicherheitsadministrator** in Azure AD zugewiesen sein.
+- Ihrem Benutzer muss die Rolle _ *Globaler Administrator** oder **Sicherheitsadministrator** in Azure AD zugewiesen sein.
 
 - Ihrem Benutzer muss mindestens eine der folgenden **Azure-Rollen**  zugewiesen sein ([Weitere Informationen zu Azure RBAC](roles.md)):
     - **Azure Sentinel-Mitwirkender** auf Arbeitsbereichs -oder Ressourcengruppenebene.

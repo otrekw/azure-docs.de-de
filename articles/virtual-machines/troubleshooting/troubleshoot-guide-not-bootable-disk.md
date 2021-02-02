@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: troubleshooting
 ms.date: 03/25/2020
 ms.author: v-mibufo
-ms.openlocfilehash: 16f6919577955bda5b04db26deb9fe78a467e364
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 14da41815e177ece64c72ac27a7cb126e69fdc62
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86509034"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98633187"
 ---
 # <a name="boot-error--this-is-not-a-bootable-disk"></a>Startfehler – This is not a Bootable Disk
 
@@ -41,6 +41,9 @@ Diese Fehlermeldung bedeutet, dass der Betriebssystemstartprozess keine aktive S
 
 ### <a name="process-overview"></a>Prozessübersicht
 
+> [!TIP]
+> Wenn Sie über eine aktuelle Sicherung der VM verfügen, können Sie versuchen, die [VM aus der Sicherung wiederherzustellen](../../backup/backup-azure-arm-restore-vms.md), um das Startproblem zu beheben.
+
 1. Erstellen Sie eine Reparatur-VM, und greifen Sie darauf zu.
 2. Legen Sie Partitionsstatus auf „Active“ fest.
 3. Korrigieren Sie die Datenträgerpartition.
@@ -60,7 +63,7 @@ Diese Fehlermeldung bedeutet, dass der Betriebssystemstartprozess keine aktive S
 Virtuelle Computer der Generation 1 sollten zunächst überprüfen, ob die Betriebssystempartition, die den BCD-Speicher enthält, als *Active* gekennzeichnet ist. Wenn Sie über einen virtuellen Computer der Generation 2 verfügen, fahren Sie mit [Korrigieren der Datenträgerpartition](#fix-the-disk-partition) fort, da das *Status*-Flag in der späteren Generation nicht mehr verwendet wird.
 
 1. Öffnen Sie eine Eingabeaufforderung mit erhöhten Rechten *(cmd.exe)* .
-2. Geben Sie *diskpart* ein, um das DISKPART-Tool zu starten.
+2. Geben Sie *diskpart* ein, um das Tool DiskPart zu starten.
 3. Geben Sie *list disk* ein, um die Datenträger im System aufzulisten und die angefügte Betriebssystem-VHD zu ermitteln.
 4. Geben Sie *sel disk <Nr.>* ein, nachdem die angefügte Betriebssystem-VHD ermittelt wurde, um den Datenträger auszuwählen.  Siehe Abbildung 2, wobei Disk 1 die angefügte Betriebssystem-VHD ist.
 

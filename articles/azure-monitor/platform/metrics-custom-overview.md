@@ -1,18 +1,18 @@
 ---
 title: Benutzerdefinierte Metriken in Azure Monitor (Vorschau)
 description: Erfahren Sie mehr zu benutzerdefinierten Metriken in Azure Monitor und wie diese modelliert werden.
-author: ancav
+author: anirudhcavale
 ms.author: ancav
 services: azure-monitor
 ms.topic: conceptual
-ms.date: 06/01/2020
+ms.date: 01/25/2021
 ms.subservice: metrics
-ms.openlocfilehash: 73c9b2bf8cf88ca5e8576c451c9d9ac5f0eae8a3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ce081896292ec92c41dabc735df828ed167d86e7
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88639901"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98788501"
 ---
 # <a name="custom-metrics-in-azure-monitor-preview"></a>Benutzerdefinierte Metriken in Azure Monitor (Vorschau)
 
@@ -105,7 +105,6 @@ Wenn z. B. innerhalb einer bestimmten Minute vier Anmeldetransaktionen für Ihr
 |Transaktion 1|Transaktion 2|Transaktion 3|Transaktion 4|
 |---|---|---|---|
 |7 ms|4 ms|13 ms|16 ms|
-|
 
 Als Ergebnis würde die folgende Metrik an Azure Monitor gemeldet werden:
 * Min: 4
@@ -134,7 +133,8 @@ Im folgenden Beispiel erstellen Sie eine benutzerdefinierte Metrik namens **Memo
         "metric": "Memory Bytes in Use",
         "namespace": "Memory Profile",
         "dimNames": [
-          "Process"        ],
+          "Process"
+        ],
         "series": [
           {
             "dimValues": [
@@ -174,7 +174,7 @@ Es ist nicht erforderlich, eine benutzerdefinierte Metrik in Azure Monitor vorab
 Nachdem benutzerdefinierte Metriken an Azure Monitor übermittelt wurden, können Sie sie über das Azure-Portal durchsuchen und über die Azure Monitor-REST-APIs abfragen. Sie können auch Warnungen erstellen, damit Sie benachrichtigt werden, wenn bestimmte Bedingungen erfüllt sind.
 
 > [!NOTE]
-> Zum Anzeigen von benutzerdefinierten Metriken wird eine Rolle vom Typ „Leser“ oder „Mitwirkender“ benötigt.
+> Zum Anzeigen von benutzerdefinierten Metriken wird eine Rolle vom Typ „Leser“ oder „Mitwirkender“ benötigt. Siehe [Überwachungsleser](../../role-based-access-control/built-in-roles.md#monitoring-reader). 
 
 ### <a name="browse-your-custom-metrics-via-the-azure-portal"></a>Durchsuchen Ihrer benutzerdefinierten Metriken über das Azure-Portal
 1.    Öffnen Sie das [Azure-Portal](https://portal.azure.com).
@@ -184,34 +184,19 @@ Nachdem benutzerdefinierte Metriken an Azure Monitor übermittelt wurden, könne
 5.    Wählen Sie den Namespace Ihrer benutzerdefinierten Metrik aus.
 6.    Wählen Sie die benutzerdefinierte Metrik aus.
 
+> [!NOTE]
+> Weitere Informationen zum Anzeigen von Metriken im Azure-Portal finden Sie unter [Erste Schritte mit dem Azure-Metrik-Explorer](./metrics-getting-started.md).
+
 ## <a name="supported-regions"></a>Unterstützte Regionen
-Während der öffentlichen Vorschau ist die Möglichkeit, benutzerdefinierte Metriken zu veröffentlichen, nur in einigen Azure-Regionen verfügbar. Das bedeutet, dass Metriken nur für Ressourcen in einer der unterstützten Regionen veröffentlicht werden können. Die folgende Tabelle enthält die unterstützten Azure-Regionen für benutzerdefinierte Metriken. Außerdem werden die zugehörigen Endpunkte aufgeführt, an denen Metriken für Ressourcen in diesen Regionen veröffentlicht werden sollten:
+Während der öffentlichen Vorschau ist die Möglichkeit, benutzerdefinierte Metriken zu veröffentlichen, nur in einigen Azure-Regionen verfügbar. Das bedeutet, dass Metriken nur für Ressourcen in einer der unterstützten Regionen veröffentlicht werden können. Weitere Informationen zu Azure-Regionen finden Sie unter [Azure-Geografien](https://azure.microsoft.com/global-infrastructure/geographies/). Der Azure-Regionscode, der in den folgenden Endpunkten verwendet wird, ist nur der Name der Region mit entfernten Leerzeichen. In der folgenden Tabelle sind die unterstützten Azure-Regionen für benutzerdefinierte Metriken aufgeführt. Außerdem werden die zugehörigen Endpunkte aufgeführt, an denen Metriken für Ressourcen in diesen Regionen veröffentlicht werden sollten:
 
 |Azure-Region |Präfix des regionalen Endpunkts|
 |---|---|
-| **USA und Kanada** | |
-|USA, Westen-Mitte | https:\//westcentralus.monitoring.azure.com |
-|USA, Westen 2       | https:\//westus2.monitoring.azure.com |
-|USA Nord Mitte | https:\//northcentralus.monitoring.azure.com
-|USA Süd Mitte| https:\//southcentralus.monitoring.azure.com |
-|USA (Mitte)      | https:\//centralus.monitoring.azure.com |
-|Kanada, Mitte | https:\//canadacentral.monitoring.azure.com |
-|East US| https:\//eastus.monitoring.azure.com |
-|USA (Ost) 2 | https:\//eastus2.monitoring.azure.com |
-| **Europa** | |
-|Nordeuropa    | https:\//northeurope.monitoring.azure.com |
-|Europa, Westen     | https:\//westeurope.monitoring.azure.com |
-|UK, Süden | https:\//uksouth.monitoring.azure.com
-|Frankreich, Mitte | https:\//francecentral.monitoring.azure.com |
-| **Afrika** | |
-|Südafrika, Norden | https:\//southafricanorth.monitoring.azure.com |
-| **Asien** | |
-|Indien, Mitte | https:\//centralindia.monitoring.azure.com |
-|Australien (Osten) | https:\//australiaeast.monitoring.azure.com |
-|Japan, Osten | https:\//japaneast.monitoring.azure.com |
-|Asien, Südosten  | https:\//southeastasia.monitoring.azure.com |
-|Asien, Osten | https:\//eastasia.monitoring.azure.com |
-|Korea, Mitte   | https:\//koreacentral.monitoring.azure.com |
+| Alle öffentlichen Cloudregionen | https://<Azure-Regionscode>.monitoring.azure.com |
+| **Azure Government** | |
+| US Gov Arizona | https:\//usgovarizona.monitoring.azure.us |
+| **China** | |
+| China, Osten 2 | https:\//chinaeast2.monitoring.azure.cn |
 
 ## <a name="latency-and-storage-retention"></a>Latenz und Aufbewahrungsdauer im Speicher
 

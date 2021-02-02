@@ -1,23 +1,24 @@
 ---
-title: Erste Schritte mit Python und Azure Cloud Services | Microsoft-Dokumentation
+title: Erste Schritte mit Python und Azure Cloud Services (klassisch) | Microsoft-Dokumentation
 description: Übersicht über die Verwendung von Python-Tools für Visual Studio für die Erstellung von Azure-Cloud-Diensten, einschließlich Webrollen und Workerrollen.
-services: cloud-services
-documentationcenter: python
-author: tgore03
+ms.topic: article
 ms.service: cloud-services
-ms.devlang: python
-ms.topic: conceptual
-ms.date: 07/18/2017
+ms.date: 10/14/2020
 ms.author: tagore
-ms.custom: devx-track-python
-ms.openlocfilehash: 955498c663560351c01f1894fb348b89f72d549b
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 16aa6918c0f4b0df5ebf23f28268f8cbe5223fce
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92079240"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98743286"
 ---
 # <a name="python-web-and-worker-roles-with-python-tools-for-visual-studio"></a>Python-Web- und -Workerrollen mit Python-Tools für Visual Studio
+
+> [!IMPORTANT]
+> [Azure Cloud Services (erweiterter Support)](../cloud-services-extended-support/overview.md) ist ein neues auf Azure Resource Manager basierendes Bereitstellungsmodell für Azure Cloud Services. Im Zuge dieser Änderung wurden Azure Cloud Services-Instanzen, die unter dem Azure Service Manager-basierten Bereitstellungsmodell ausgeführt werden, in „Cloud Services (klassisch)“ umbenannt. Für alle neuen Bereitstellungen wird [Azure Cloud Services (erweiterter Support)](../cloud-services-extended-support/overview.md) verwendet.
 
 Dieser Artikel enthält eine Übersicht über die Verwendung von Python-Web- und -Workerrollen mit [Python-Tools für Visual Studio][Python Tools for Visual Studio]. Sie erfahren, wie Sie mit Visual Studio einen einfachen Clouddienst, für den Python verwendet wird, erstellen und bereitstellen.
 
@@ -32,7 +33,7 @@ Dieser Artikel enthält eine Übersicht über die Verwendung von Python-Web- und
 [!INCLUDE [create-account-and-websites-note](../../includes/create-account-and-websites-note.md)]
 
 ## <a name="what-are-python-web-and-worker-roles"></a>Was sind Python-Web- und Workerrollen?
-Azure stellt drei Computemodelle bereit, die Sie zum Ausführen von Anwendungen verwenden können: [Web-Apps-Feature in Azure App Service][execution model-web sites], [Azure Virtual Machines][execution model-vms] und [Azure Cloud Services][execution model-cloud services]. Alle drei Modelle unterstützen Python. Cloud Services, die auch Web- und Workerrollen umfassen, ermöglichen *Platform as a Service (PaaS)* . In einem Clouddienst bietet eine Webrolle einen speziellen IIS-Webserver (Internet Information Services), um Front-End-Webanwendungen zu hosten, während eine Workerrolle asynchrone, langfristige oder fortwährende Aufgaben ausführen kann, die unabhängig von einer Benutzerinteraktion oder -eingabe sind.
+Azure bietet drei Computemodelle für das Ausführen von Anwendungen: [Web-Apps-Feature in Azure App Service][execution model-web sites], [Azure Virtual Machines][execution model-vms] und [Azure Cloud Services][execution model-cloud services]. Alle drei Modelle unterstützen Python. Cloud Services, die auch Web- und Workerrollen umfassen, ermöglichen *Platform as a Service (PaaS)*. In einem Clouddienst bietet eine Webrolle einen speziellen IIS-Webserver (Internet Information Services), um Front-End-Webanwendungen zu hosten, während eine Workerrolle asynchrone, langfristige oder fortwährende Aufgaben ausführen kann, die unabhängig von einer Benutzerinteraktion oder -eingabe sind.
 
 Weitere Informationen finden Sie unter [Was ist ein Clouddienst?].
 

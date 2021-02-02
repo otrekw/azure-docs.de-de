@@ -13,15 +13,15 @@ ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 11/26/2020
+ms.date: 01/23/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8c4aa608e892867daaf954284a9dfce997a9ae1f
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 01c6a2eb53e82965dd96deaa1a09afb1e70dda24
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96484276"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98746746"
 ---
 # <a name="sap-hana-azure-virtual-machine-storage-configurations"></a>SAP HANA: Speicherkonfigurationen für virtuelle Azure-Computer
 
@@ -63,10 +63,22 @@ Einige Leitprinzipien bei der Auswahl Ihrer Speicherkonfiguration für HANA kön
 - Entscheiden Sie sich für den Speichertyp auf der Grundlage von [Azure Storage-Typen für die SAP-Workload](./planning-guide-storage.md) und [Auswählen eines Datenträgertyps](../../disks-types.md).
 - Beachten Sie den E/A-Gesamtdurchsatz und die IOPS-Grenzwerte eines virtuellen Computers, wenn Sie die Größe festlegen oder sich für einen virtuellen Computer entscheiden. Der VM-Gesamtspeicherdurchsatz ist im Artikel [Arbeitsspeicheroptimierte Größen virtueller Computer](../../sizes-memory.md) beschrieben.
 - Versuchen Sie bei der Entscheidung für die Speicherkonfiguration mit Ihrer **/hana/data**-Volumenkonfiguration unter dem Gesamtdurchsatz des virtuellen Computers zu bleiben. Beim Schreiben von Sicherungspunkten kann SAP HANA bei der E/A-Ausgabe aggressiv sein. Es ist leicht möglich, beim Schreiben eines Sicherungspunkts bis an die Durchsatzgrenzen Ihres **/hana/data**-Volumens zu gehen. Wenn Ihre Datenträger, die das **/hana/data**-Volume bilden, einen höheren Durchsatz aufweisen, als Ihre VM zulässt, könnten Sie in Situationen geraten, in denen der vom Sicherungspunkt verwendete Durchsatz die Durchsatzanforderungen der Schreibvorgänge für das Wiederholungsprotokoll stört. Eine Situation, die sich auf den Durchsatz der Anwendung auswirken kann.
-- Wenn Sie Azure Storage Premium verwenden, ist die kostengünstigste Konfiguration die Verwendung von logischen Volume-Managern zur Erstellung von Stripesets für die Volumes **/hana/data** und **/hana/log**.
+
 
 > [!IMPORTANT]
 > Die Vorschläge für die Speicherkonfigurationen sind als Anleitung für den Einstieg gedacht. Wenn Sie die Workload ausführen und Speicherauslastungsmuster analysieren, stellen Sie möglicherweise fest, dass Sie nicht die gesamte zur Verfügung gestellte Speicherbandbreite oder IOPS nutzen. Sie könnten dann eine Verkleinerung des Speichers in Betracht ziehen. Oder aber Ihre Workload benötigt bei diesen Konfigurationen möglicherweise mehr Speicherdurchsatz als vorgeschlagen. Infolgedessen müssen Sie möglicherweise mehr Kapazität, IOPS oder Durchsatz bereitstellen. Im Spannungsbereich zwischen erforderlicher Speicherkapazität, erforderlicher Speicherlatenz, erforderlichem Speicherdurchsatz und IOPS und der kostengünstigsten Konfiguration bietet Azure genügend verschiedene Speichertypen mit unterschiedlichen Fähigkeiten und Preisen, um den richtigen Kompromiss für Sie und Ihre HANA-Workload zu finden und anzupassen.
+
+
+## <a name="stripe-sets-versus-sap-hana-data-volume-partitioning"></a>Stripesets im Vergleich zur SAP HANA-Datenvolumepartitionierung
+Mit Azure Storage Premium erzielen Sie das beste Preis-/Leistungsverhältnis, wenn Sie das **/hana/data**- und/oder **/hana/log**-Volume über mehrere Azure-Datenträger verteilen. Dies ist die Alternative zum Bereitstellen größerer Datenträgervolumes, die den zusätzlichen Bedarf an IOPS oder Durchsatz decken. Bisher wurde dies mit LVM- und MDADM-Volume-Managern erreicht, die Teil von Linux sind. Die Methode des Datenträgerstripings ist Jahrzehnte alt und wohlbekannt. So vorteilhaft diese Stripesetvolumes sind, um Ihren IOPS- oder Durchsatzbedarf zu erfüllen, sie erhöhen auch die Komplexität der Verwaltung. Dies gilt insbesondere, wenn die Kapazität der Volumes erweitert werden muss. Zumindest für **/hana/data** hat SAP eine alternative Methode eingeführt, mit der Sie das gleiche Ziel erreichen wie mit dem Striping über mehrere Azure-Datenträger. Seit SAP Hana 2.0 SPS03 kann der HANA-Indexserver seine E/A-Aktivität auf mehrere HANA-Datendateien verteilen, die sich auf verschiedenen Azure-Datenträgern befinden. Der Vorteil ist, dass Sie kein Stripesetvolume erstellen und verwalten müssen, dass sich über verschiedene Azure-Datenträger erstreckt. Die SAP HANA-Funktionalität der Datenvolumepartitionierung wird hier ausführlich beschrieben:
+
+- [HANA-Administratorhandbuch](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.05/en-US/40b2b2a880ec4df7bac16eae3daef756.html?q=hana%20data%20volume%20partitioning)
+- [Blog zu SAP HANA-Datenvolumepartitionierung](https://blogs.sap.com/2020/10/07/sap-hana-partitioning-data-volumes/)
+- [SAP Note 2400005](https://launchpad.support.sap.com/#/notes/2400005)
+- [SAP Note 2700123](https://launchpad.support.sap.com/#/notes/2700123)
+
+Wenn Sie die Details lesen, wird Ihnen klar, dass die Nutzung dieser Funktionalität der Komplexität von Stripesets auf Volume-Manager-Basis ein Ende bereitet. Sie werden auch feststellen, dass die HANA-Datenvolumepartitionierung nicht nur bei Azure-Blockspeicher wie Azure Storage Premium funktioniert. Sie können diese Funktionalität auch zur Verteilung auf NFS-Freigaben verwenden, falls für diese Freigaben IOPS- oder Durchsatzeinschränkungen bestehen.  
+
 
 ## <a name="linux-io-scheduler-mode"></a>E/A-Scheduler-Modus für Linux
 Linux verfügt über mehrere verschiedene E/A-Scheduling-Modi. Linux-Anbieter und SAP empfehlen im Allgemeinen, den E/A-Schedulermodus für Datenträgervolumes von **mq-deadline** oder **kyber** in **noop** (Non-Multiqueue) oder **none** (Multiqueue) zu ändern. Details finden Sie im [SAP-Hinweis 1984787](https://launchpad.support.sap.com/#/notes/1984787). 
@@ -112,7 +124,7 @@ Die Kumulierung einer Reihe von Azure-VHDs unter einem Stripeset ist für den IO
 
 
 ### <a name="azure-burst-functionality-for-premium-storage"></a>Azure-Burstfunktionalität für Storage Premium
-Für Azure Premium-Datenträger mit einer Kapazität kleiner oder gleich 512 GiB wird eine Burstfunktionalität angeboten. Die genaue Funktionsweise des Datenträgerbursting wird in dem Artikel [Datenträgerbursting](../../disk-bursting.md) beschrieben. Wenn Sie den Artikel lesen, verstehen Sie das Konzept des Anfallens von IOPS und Durchsatz in den Zeiten, in denen Ihre E/A-Workload unter den nominalen IOPS und unter dem Durchsatz der Datenträger liegt (Einzelheiten zum nominalen Durchsatz finden Sie unter [Verwaltete Datenträger – Preise](https://azure.microsoft.com/pricing/details/managed-disks/)). Sie werden das Delta von IOPS und Durchsatz zwischen Ihrer aktuellen Nutzung und den Nennwerten des Datenträgers ansammeln. Die Bursts sind auf maximal 30 Minuten begrenzt.
+Für Azure Premium-Datenträger mit einer Kapazität bis 512 GiB wird eine Burstfunktionalität angeboten. Die genaue Funktionsweise des Datenträgerbursting wird in dem Artikel [Datenträgerbursting](../../disk-bursting.md) beschrieben. Wenn Sie den Artikel lesen, verstehen Sie das Konzept des Anfallens von IOPS und Durchsatz in den Zeiten, in denen Ihre E/A-Workload unter den nominalen IOPS und unter dem Durchsatz der Datenträger liegt (Einzelheiten zum nominalen Durchsatz finden Sie unter [Verwaltete Datenträger – Preise](https://azure.microsoft.com/pricing/details/managed-disks/)). Sie werden das Delta von IOPS und Durchsatz zwischen Ihrer aktuellen Nutzung und den Nennwerten des Datenträgers ansammeln. Die Bursts sind auf maximal 30 Minuten begrenzt.
 
 Die idealen Fälle, in denen diese Burstfunktionalität eingeplant werden kann, werden wahrscheinlich die Volumes oder Datenträger sein, die Datendateien für die verschiedenen DBMS enthalten. Die für diese Volumen zu erwartende E/A-Workload, insbesondere bei kleinen bis mittleren Systemen, wird voraussichtlich wie folgt aussehen:
 

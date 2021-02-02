@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/07/2020
 ms.author: memildin
-ms.openlocfilehash: d03177e3224bbd3f53320871efc6a0d6b3ea479d
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 5b257e45a86a7b22e9064fcfc6092b3c946ae99b
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96922752"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98757638"
 ---
 # <a name="organize-management-groups-subscriptions-and-tenant-wide-visibility"></a>Organisieren von Verwaltungsgruppen, Abonnements und mandantenweiter Sichtbarkeit
 
@@ -107,6 +107,36 @@ So weisen Sie sich selbst Berechtigungen auf Mandantenebene zu:
 
 1. Wenn Sie erhöhte Zugriffsrechte besitzen, können Sie Azure Security Center öffnen bzw. aktualisieren, um sicherzustellen, dass die Sichtbarkeit für alle Abonnements Ihres Azure AD-Mandanten erzielt wurde. 
 
+
+## <a name="request-tenant-wide-permissions-when-yours-are-insufficient"></a>Anfordern mandantenweiter Berechtigungen, wenn die eigenen Berechtigungen nicht ausreichen
+
+Wenn Sie sich bei Security Center anmelden und ein Banner sehen, das Sie darüber informiert, dass Ihre Ansicht eingeschränkt ist, können Sie durchklicken, um eine Anforderung an den globalen Administrator Ihrer Organisation zu senden. In die Anforderung können Sie die Rolle einschließen, deren Zuweisung Sie wünschen, und der globale Administrator entscheidet, welche Rolle gewährt wird. 
+
+Der globale Administrator entscheidet, ob er diese Anforderungen annimmt oder ablehnt. 
+
+> [!IMPORTANT]
+> Sie können nur alle sieben Tage eine Anforderung übermitteln.
+
+So fordern Sie von ihrem globalen Administrator erhöhte Berechtigungen an:
+
+1. Öffnen Sie Azure Security Center über das Azure-Portal.
+
+1. Wenn das Banner „Sie sehen eingeschränkte Informationen.“ angezeigt wird, wählen Sie es aus.
+
+    :::image type="content" source="media/security-center-management-groups/request-tenant-permissions.png" alt-text="Banner mit der Information, dass der Benutzer mandantenweite Berechtigungen anfordern kann":::
+
+1. Wählen Sie im ausführlichen Anforderungsformular die gewünschte Rolle und die Begründung aus, warum Sie diese Berechtigungen benötigen.
+
+    :::image type="content" source="media/security-center-management-groups/request-tenant-permissions-details.png" alt-text="Detailseite zum Anfordern mandantenweiter Berechtigungen von ihrem globalen Azure-Administrator":::
+
+1. Wählen Sie **Zugriff anfordern** aus.
+
+    Eine E-Mail wird an den globalen Administrator gesendet. Die E-Mail enthält einen Link zu Security Center, wo die Anforderung genehmigt oder abgelehnt werden kann.
+
+    :::image type="content" source="media/security-center-management-groups/request-tenant-permissions-email.png" alt-text="Bezüglich neuer Berechtigungen an den globalen Administrator gesendete E-Mail":::
+
+    Sobald der globale Administrator **Anforderung überprüfen** auswählt und den Prozess abschließt, wird die Entscheidung per E-Mail an den anfordernden Benutzer gesendet. 
+
 ## <a name="assign-azure-roles-to-other-users"></a>Zuweisen von Azure-Rollen zu anderen Benutzern
 
 ### <a name="assign-azure-roles-to-users-through-the-azure-portal"></a>Weisen Sie Benutzern Azure-Rollen über das Azure-Portal zu: 
@@ -149,6 +179,7 @@ So weisen Sie sich selbst Berechtigungen auf Mandantenebene zu:
     ```
 
 ## <a name="remove-elevated-access"></a>Entfernen der erhöhten Zugriffsrechte 
+
 Nachdem den Benutzern die Azure-Rollen zugewiesen wurden, sollte der Mandantenadministrator für sich selbst die Rolle „Benutzerzugriffsadministrator“ entfernen.
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) oder [Azure Active Directory Admin Center](https://aad.portal.azure.com) an.

@@ -5,19 +5,19 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: mijos, rarayudu, logicappspm
 ms.topic: conceptual
-ms.date: 11/20/2020
-ms.openlocfilehash: 0057a4671dbc63bf53bafa8d2d742d4edcda1e5e
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.date: 01/20/2021
+ms.openlocfilehash: d31fbd813f0c5d63ee9eddbff5b299209618626b
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96741047"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98629673"
 ---
 # <a name="set-up-customer-managed-keys-to-encrypt-data-at-rest-for-integration-service-environments-ises-in-azure-logic-apps"></a>Einrichten von kundenseitig verwalteten Schlüsseln zum Verschlüsseln von ruhenden Daten für Integrationsdienstumgebungen (Integration Service Environment, ISE) in Azure Logic Apps
 
 Azure Logic Apps nutzt Azure Storage zum Speichern und automatischen [Verschlüsseln von ruhenden Daten](../storage/common/storage-service-encryption.md). Diese Verschlüsselung schützt Ihre Daten und unterstützt Sie beim Einhalten der Sicherheits- und Complianceanforderungen Ihrer Organisation. Azure Storage verwendet standardmäßig von Microsoft verwaltete Schlüssel, um Ihre Daten zu verschlüsseln. Weitere Informationen zur Funktionsweise der Azure Storage-Verschlüsselung finden Sie unter [Azure Storage-Verschlüsselung für ruhende Daten](../storage/common/storage-service-encryption.md) und [Azure-Datenverschlüsselung ruhender Daten](../security/fundamentals/encryption-atrest.md).
 
-Wenn Sie eine [Integrationsdienstumgebung (Integration Service Environment, ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) zum Hosten Ihrer Logik-Apps erstellen und mehr Kontrolle über die von Azure Storage verwendeten Verschlüsselungsschlüssel haben möchten, können Sie mit [Azure Key Vault](../key-vault/general/overview.md) Ihren eigenen Schlüssel einrichten, verwenden und verwalten. Diese Funktion wird auch als „Bring Your Own Key“ (BYOK) bezeichnet, und Ihr Schlüssel wird als „vom Kunden verwalteter Schlüssel“ bezeichnet.
+Wenn Sie eine [Integrationsdienstumgebung (Integration Service Environment, ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) zum Hosten Ihrer Logik-Apps erstellen und mehr Kontrolle über die von Azure Storage verwendeten Verschlüsselungsschlüssel haben möchten, können Sie mit [Azure Key Vault](../key-vault/general/overview.md) Ihren eigenen Schlüssel einrichten, verwenden und verwalten. Diese Funktion wird als „Bring Your Own Key“ (BYOK) bezeichnet, und Ihr Schlüssel wird als „vom Kunden verwalteter Schlüssel“ bezeichnet. Mit dieser Funktion ermöglicht Azure Storage automatisch die [doppelte Verschlüsselung oder *Infrastrukturverschlüsselung* mit plattformseitig verwalteten Schlüsseln](../security/fundamentals/double-encryption.md) für Ihren Schlüssel. Weitere Informationen finden Sie unter [Doppelte Verschlüsselung von Daten mit Infrastrukturverschlüsselung](../storage/common/storage-service-encryption.md#doubly-encrypt-data-with-infrastructure-encryption).
 
 In diesem Thema erfahren Sie, wie Sie Ihren eigenen Verschlüsselungsschlüssel einrichten und angeben, der verwendet wird, wenn Sie Ihre ISE mithilfe der Logic Apps-REST-API erstellen. Die allgemeinen Schritte zum Erstellen einer ISE mithilfe der Logic Apps-REST-API finden Sie unter [Erstellen einer Integrationsdienstumgebung (Integration Service Environment, ISE) mithilfe der Logic Apps-REST-API](../logic-apps/create-integration-service-environment-rest-api.md).
 
@@ -35,7 +35,7 @@ In diesem Thema erfahren Sie, wie Sie Ihren eigenen Verschlüsselungsschlüssel 
 
   * **Systemseitig zugewiesene verwaltete Identität**: Innerhalb von *30 Minuten nach* dem Senden der HTTPS PUT-Anforderung zum Erstellen Ihrer ISE müssen Sie dem [Schlüsseltresor Zugriff auf die verwaltete Identität Ihrer ISE gewähren](#identity-access-to-key-vault). Andernfalls tritt bei der ISE-Erstellung ein Fehler auf und ein Berechtigungsfehler wird ausgegeben.
 
-  * **Benutzerseitig zugewiesene verwaltete Identität**: Vor dem Senden der HTTPS PUT-Anforderung zum Erstellen Ihrer ISE [gewähren Sie dem Schlüsseltresor Zugriff auf die verwaltete Identität Ihrer ISE ](#identity-access-to-key-vault).
+  * **Benutzerseitig zugewiesene verwaltete Identität**: Vor dem Senden der HTTPS PUT-Anforderung zum Erstellen Ihrer ISE [gewähren Sie dem Schlüsseltresor Zugriff auf die verwaltete Identität Ihrer ISE](#identity-access-to-key-vault).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

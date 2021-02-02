@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 08/28/2020
+ms.date: 01/25/2021
 ms.author: alkohli
-ms.openlocfilehash: 6bf0da8716233178889d47ec3d57e9b29bc2658f
-ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
+ms.openlocfilehash: 54aad90cf86f1a20d76f04f3a829f29c47023558
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97763216"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98805795"
 ---
 # <a name="connect-to-azure-resource-manager-on-your-azure-stack-edge-pro-device"></a>Herstellen einer Verbindung mit Azure Resource Manager auf Ihrem Azure Stack Edge Pro-Gerät
 
@@ -138,9 +138,9 @@ Der Windows-Client muss die folgenden Voraussetzungen erfüllen:
 
     Prüfen Sie, ob die **Hauptversion** 5.0 oder höher verwendet wird.
 
-    Falls Sie über eine veraltete Version verfügen, helfen Ihnen die Informationen unter [Aktualisieren einer vorhandenen Windows PowerShell](/powershell/scripting/install/installing-windows-powershell?view=powershell-6#upgrading-existing-windows-powershell) weiter.
+    Falls Sie über eine veraltete Version verfügen, helfen Ihnen die Informationen unter [Aktualisieren einer vorhandenen Windows PowerShell](/powershell/scripting/install/installing-windows-powershell?view=powershell-6&preserve-view=true#upgrading-existing-windows-powershell) weiter.
 
-    Wenn PowerShell 5.0 nicht installiert ist, führen Sie die Schritte unter [Installieren von Windows PowerShell](/powershell/scripting/install/installing-windows-powershell?view=powershell-6) aus.
+    Wenn PowerShell 5.0 nicht installiert ist, führen Sie die Schritte unter [Installieren von Windows PowerShell](/powershell/scripting/install/installing-windows-powershell?view=powershell-6&preserve-view=true) aus.
 
     Nachfolgend sehen Sie eine Beispielausgabe.
 
@@ -156,7 +156,7 @@ Der Windows-Client muss die folgenden Voraussetzungen erfüllen:
     
 2. Sie können auf den PowerShell-Katalog zugreifen.
 
-    Führen Sie PowerShell als Administrator aus. Überprüfen Sie, ob PSGallery als Repository registriert ist.
+    Führen Sie PowerShell als Administrator aus. Überprüfen Sie, ob `PSGallery` als Repository registriert ist.
 
     ```powershell
     Import-Module -Name PowerShellGet -ErrorAction Stop
@@ -175,7 +175,7 @@ Der Windows-Client muss die folgenden Voraussetzungen erfüllen:
     PSGallery                 Trusted              https://www.powershellgallery.com/api/v2
     ```
     
-Wenn das Repository nicht vertrauenswürdig ist oder Sie weitere Informationen benötigen, finden Sie weitere Informationen unter [Überprüfen der Verfügbarkeit des PowerShell-Katalogs](/azure-stack/operator/azure-stack-powershell-install?view=azs-1908#2-validate-the-powershell-gallery-accessibility).
+Wenn das Repository nicht vertrauenswürdig ist oder Sie weitere Informationen benötigen, finden Sie weitere Informationen unter [Überprüfen der Verfügbarkeit des PowerShell-Katalogs](/azure-stack/operator/azure-stack-powershell-install?view=azs-1908&preserve-view=true&preserve-view=true#2-validate-the-powershell-gallery-accessibility).
 
 ## <a name="step-4-set-up-azure-powershell-on-the-client"></a>Schritt 4: Einrichten von Azure PowerShell auf dem Client 
 
@@ -327,7 +327,7 @@ Legen Sie die Azure Resource Manager-Umgebung fest, und überprüfen Sie, ob die
     Set-AzureRMEnvironment -Name <Environment Name>
     ```
     
-    Weitere Informationen finden Sie unter [Set-AzureRMEnvironment](/powershell/module/azurerm.profile/set-azurermenvironment?view=azurermps-6.13.0).
+    Weitere Informationen finden Sie unter [Set-AzureRMEnvironment](/powershell/module/azurerm.profile/set-azurermenvironment?view=azurermps-6.13.0&preserve-view=true).
 
     - Definieren Sie die Inlineumgebung für jedes ausgeführte Cmdlet. Dadurch wird sichergestellt, dass alle API-Aufrufe die richtige Umgebung durchlaufen. Standardmäßig durchlaufen die Aufrufe die öffentliche Azure-Umgebung, sie sollen stattdessen jedoch die Umgebung durchlaufen, die Sie für das Azure Stack Edge Pro-Gerät festgelegt haben.
 

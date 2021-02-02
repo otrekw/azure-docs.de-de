@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/07/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 36db1b23d8fb17cec4fe981c938f8c7003543b4d
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 73eb693ab9f06535fd523eb386969e2cce961eef
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97836062"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624590"
 ---
 # <a name="manage-sensors-from-the-management-console"></a>Verwalten von Sensoren über die Verwaltungskonsole
 
@@ -150,7 +150,7 @@ Sensoren werden von fünf Defender für IoT-Engines geschützt. Sie können die 
 | Richtlinienverletzungs-Engine | Eine Richtlinienverletzung tritt ein, wenn eine Abweichung von dem in der gelernten oder konfigurierten Richtlinie definierten Baselineverhalten auftritt. | Warnung „Unauthorized HTTP User Agent“ (Nicht autorisierter HTTP-Benutzeragent). Diese Warnung zeigt an, dass eine Anweisung, die nicht gelernt oder durch die Richtlinie genehmigt wurde, als HTTP-Client auf einem Gerät verwendet wird. Dabei kann es sich um einen neuen Webbrowser oder eine Anwendung auf diesem Gerät handeln. |
 | Schadsoftware-Engine | Die Schadsoftware-Engine erkennt böswillige Netzwerkaktivitäten. | Warnung „Suspicion of Malicious Activity (Stuxnet)“ (Verdacht auf böswillige Aktivität (Stuxnet)). Diese Warnung weist darauf hin, dass der Sensor verdächtige Netzwerkaktivität erkannt hat, von der bekannt ist, dass sie im Zusammenhang mit der Schadsoftware Stuxnet steht. Dies stellt eine fortgeschrittene ständige Bedrohung dar, die Industriesteuerungs- und SCADA-Netzwerke als Ziel hat. |
 | Anomalie-Engine | Die Anomalie-Engine erkennt eine Anomalie im Netzwerkverhalten. | Warnung „Periodic Behavior in Communication Channel“ (Periodisches Verhalten im Kommunikationskanal). Hierbei handelt es sich um eine Komponente, die Netzwerkverbindungen überprüft und periodisches oder zyklisches Verhalten bei der Datenübertragung erkennt, das in Industrienetzwerken häufig vorkommt. |
-| Betriebs-Engine | Diese Engine erkennt Betriebsvorfälle oder Entitäten mit Funktionsfehlern. | Warnung „Asset is Suspected to be Disconnected (Unresponsive)“ („Die Ressource steht im Verdacht, getrennt zu sein (nicht zu reagieren)). Diese Warnung wird ausgelöst, wenn ein Gerät für einen vordefinierten Zeitraum auf keine Anforderungen reagiert. Sie kann auf einen Ausfall, eine Trennung oder eine Fehlfunktion des Geräts hindeuten.
+| Betriebs-Engine | Diese Engine erkennt Betriebsvorfälle oder Entitäten mit Funktionsfehlern. | `Device is Suspected to be Disconnected (Unresponsive)`Warnung. Diese Warnung wird ausgelöst, wenn ein Gerät für einen vordefinierten Zeitraum auf keine Anforderungen reagiert. Sie kann auf einen Ausfall, eine Trennung oder eine Fehlfunktion des Geräts hindeuten.
 |
 
 Zum Aktivieren oder Deaktivieren von Engines für verbundene Sensoren gehen Sie folgendermaßen vor:

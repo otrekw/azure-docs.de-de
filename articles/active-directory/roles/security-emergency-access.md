@@ -1,10 +1,10 @@
 ---
-title: Verwalten von Administratorkonto für den Notfallzugriff – Azure AD | Microsoft-Dokumentation
+title: 'Verwalten von Administratorkonten für den Notfallzugriff: Azure AD'
 description: In diesem Artikel wird beschrieben, wie Sie mithilfe von Konten für den Notfallzugriff verhindern können, versehentlich aus Ihrer Azure Active Directory-Organisation (Azure AD) ausgeschlossen zu werden.
 services: active-directory
 author: markwahl-msft
 manager: daveba
-ms.author: curtand
+ms.author: rolyon
 ms.date: 11/05/2020
 ms.topic: conceptual
 ms.service: active-directory
@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 10d93b92f3bb0adfe734ad439079afdfcaa6270e
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: d6a1e4b3b44004ec6d03c293bbd10617b3d3af69
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94834437"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98740821"
 ---
 # <a name="manage-emergency-access-accounts-in-azure-ad"></a>Verwalten von Konten für den Notfallzugriff in Azure AD
 
@@ -60,7 +60,7 @@ In einem Notfall soll eine Richtlinie Ihren Zugriff nicht potenziell blockieren,
 
 ## <a name="federation-guidance"></a>Verbundleitfaden
 
-Eine weitere Option für Organisationen, die Active Directory Domain Services und AD FS oder einen ähnlichen Identitätsanbieter für den Verbund mit Azure AD verwenden, ist das Konfigurieren eines Kontos für den Notfallzugriff, dessen MFA-Anspruch von diesem Identitätsanbieter angegeben werden könnte.  Das Konto für den Notfallzugriff könnte z. B. durch ein Zertifikat und ein Schlüsselpaar gesichert werden, wie beispielsweise eines, das auf einer Smartcard gespeichert ist.  Wenn der Benutzer für Azure Active Directory authentifiziert wird, kann AD FS einen Anspruch für Azure AD angeben, der darauf hinweist, dass der Benutzer die MFA-Anforderungen erfüllt.  Auch bei diesem Ansatz müssen Organisationen für den Fall, dass kein Verbund hergestellt werden kann, weiterhin über cloudbasierte Konten für den Notfallzugriff verfügen. 
+Einige Organisationen verwenden AD-Domänendienste und ADFS oder einen ähnlichen Identitätsanbieter, um einen Verbund mit Azure AD zu bilden. [Es sollten keine lokalen Konten mit Administratorrechten vorhanden sein](../fundamentals/protect-m365-from-on-premises-attacks.md). Das Kontrollieren und/oder Bereitstellen der Authentifizierung für Konten mit Administratorrechten außerhalb Azure AD schafft unnötige Risiken im Falle eines Ausfalls oder einer Gefährdung dieser Systeme.
 
 ## <a name="store-account-credentials-safely"></a>Sicheres Speichern der Anmeldeinformationen für Konten
 

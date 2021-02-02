@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 01/11/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 15b4b61fd250dfb7d68c563f9f42c7d288a0019c
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: 6af68f51e76f60c807be2008ae61e27879ebbb11
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98070863"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98703206"
 ---
 # <a name="azure-active-directory-b2c-isv-partners"></a>Azure Active Directory B2C-ISV-Partner
 
@@ -51,6 +51,7 @@ Microsoft arbeitet für MFA und kennwortlose Authentifizierung mit den folgenden
 |:-------------------------|:--------------|
 | ![Screenshot eines HYPR-Logos](./media/partner-gallery/hypr-logo.png) | [HYPR](./partner-hypr.md) ist ein Anbieter für die kennwortlose Authentifizierung, bei der Kennwörter durch eine Verschlüsselung mit öffentlichen Schlüsseln ersetzt werden. Dadurch lassen sich Betrug, Phishing und die Wiederverwendung von Anmeldeinformationen vermeiden. |
 | ![Screenshot eines itsme-Logos](./media/partner-gallery/itsme-logo.png) | [itsme](./partner-itsme.md) ist eine eiDAS-konforme digitale ID-Lösung (Electronic Identification, Authentication and Trust Services), die es Benutzern ermöglicht, sich ohne Kartenleser, Kennwörter, zweistufige Authentifizierung und mehrere PIN-Codes sicher anzumelden. |
+|![Screenshot eines Keyless-Logos.](./media/partner-gallery/keyless-logo.png) | [Keyless](./partner-keyless.md) ist ein Anbieter der kennwortlosen Authentifizierung, der die Authentifizierung in Form eines biometrischen Gesichtsscans ermöglicht, um Betrug, Phishing und die Wiederverwendung von Anmeldeinformationen zu vermeiden.
 | ![Screenshot eines Nevis-Logos](./media/partner-gallery/nevis-logo.png) | [Nevis](./partner-nevis.md) ermöglicht die kennwortlose Authentifizierung und bietet mit der Nevis Access-App eine vollständig markentreue Endbenutzerumgebung an, die auf Mobilgeräte abzielt. So wird eine starke Kundenauthentifizierung bereitgestellt, die den Transaktionsanforderungen der Zahlungsdiensterichtlinie 2 (Payment Services Directive 2, PSD2) entspricht. |
 | ![Screenshot eines Trusona-Logos](./media/partner-gallery/trusona-logo.png) | Die Integration von [Trusona](./partner-trusona.md) hilft Ihnen bei der sicheren Anmeldung und ermöglicht kennwortlose Authentifizierung, mehrstufige Authentifizierung (MFA) und das Scannen digitaler Lizenzen. |
 | ![Screenshot eines Twilio-Logos](./media/partner-gallery/twilio-logo.png) | Die [Twilio Verify-App](./partner-twilio.md) bietet mehrere Lösungen, um die mehrstufige Authentifizierung (MFA) durch SMS OTP (One-Time-Password, Einmalkennwort), TOTP (Time Based One-Time-Password, zeitbasiertes Einmalkennwort) und Push-Benachrichtigungen zu aktivieren und die SCA-Anforderungen der PSD2 zu erfüllen. |
@@ -78,9 +79,9 @@ Microsoft arbeitet für die Sicherheit mit den folgenden ISVs zusammen.
 
 ## <a name="additional-information"></a>Zusätzliche Informationen
 
-- [Benutzerdefinierte Richtlinien in Azure AD B2C](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-overview)
+- [Benutzerdefinierte Richtlinien in Azure AD B2C](./custom-policy-overview.md)
 
-- [Erste Schritte mit benutzerdefinierten Richtlinien in Azure AD B2C](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started?tabs=applications)
+- [Erste Schritte mit benutzerdefinierten Richtlinien in Azure AD B2C](./custom-policy-get-started.md?tabs=applications)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -5,14 +5,14 @@ services: data-factory
 author: lrtoyou1223
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 11/17/2020
+ms.date: 01/25/2021
 ms.author: lle
-ms.openlocfilehash: ccebdbf428180f8ff4ab10dc6007c3ec35a66362
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: e81a12f4c5d817670fe1f7968184bcc97e78a53c
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97503572"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98757677"
 ---
 # <a name="troubleshoot-self-hosted-integration-runtime"></a>Problembehandlung bei der selbstgehosteten Integration Runtime
 
@@ -67,31 +67,6 @@ Eine neue Aktivität kann einen OOM-Fehler auslösen, wenn auf dem IR-Computer e
 #### <a name="resolution"></a>Lösung
 
 Überprüfen Sie die Ressourcennutzung und gleichzeitige Aktivitätsausführung auf dem IR-Knoten. Passen Sie die interne und die Auslösezeit von Aktivitätsausführungen an, um zu viele gleichzeitige Ausführungen auf einem einzelnen IR-Knoten zu vermeiden.
-
-
-### <a name="ssltls-certificate-issue"></a>Problem mit dem SSL/TLS-Zertifikat
-
-#### <a name="symptoms"></a>Symptome
-
-Wenn Sie nach Auswahl von **Configuration Manager für selbstgehostete IR** > **Remotezugriff vom Intranet** versuchen, durch Auswahl eines Zertifikats das SSL/TLS-Zertifikat (erweitert) (Secure Sockets Layer/Transport Layer Security) zu aktivieren, wird der folgende Fehler ausgegeben:
-
-„Einstellungen für den Remotezugriff sind ungültig. Fehler bei der Identitätsprüfung für ausgehende Nachricht. Die erwartete DNS-Identität des Remoteendpunkts war ‚abc.microsoft.com‘, aber der Remoteendpunkt hat den DNS-Anspruch ‚Microsoft.com‘ bereitgestellt. Wenn es sich hierbei um einen rechtmäßigen Remoteendpunkt handelt, können Sie das Problem beheben, indem Sie ausdrücklich die DNS-Identität ‚microsoft.com‘ als Identity-Eigenschaft von EndpointAddress angeben, wenn Sie einen Kanalproxy erstellen.“
-
-Im vorherigen Beispiel wurde „microsoft.com“ an das ausgewählte Zertifikat angehängt.
-
-#### <a name="cause"></a>Ursache
-
-Dies ist ein bekanntes Problem in Windows Communication Foundation (WCF). Die WCF-SSL/TLS-Prüfung überprüft nur den letzten „DNSName“ im Feld **Alternativer Antragstellername**. 
-
-#### <a name="resolution"></a>Lösung
-
-In der selbstgehosteten IR von Azure Data Factory v2 wird ein Platzhalterzertifikat unterstützt. Dieses Problem tritt in der Regel auf, weil das SSL-Zertifikat falsch ist. Der letzte DNS-Name (DNSName) im alternativen Antragstellernamen muss gültig sein. 
-
-Gehen Sie folgendermaßen vor, um den DNS-Namen zu überprüfen und zu korrigieren: 
-
-1. Öffnen Sie die Verwaltungskonsole.
-1. Überprüfen Sie unter **Zertifikatdetails** die Werte in den Feldern **Antragsteller** und **Alternativer Antragstellername**. „DNS Name= microsoft.com.com“ beispielsweise ist kein gültiger Name.
-1. Wenden Sie sich an den Zertifikataussteller, damit er den fehlerhaften DNS-Namen entfernt.
 
 ### <a name="concurrent-jobs-limit-issue"></a>Problem beim Limit für gleichzeitige Aufträge
 

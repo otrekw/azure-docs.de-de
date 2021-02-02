@@ -1,21 +1,25 @@
 ---
 title: Allgemeine Verwaltungsaufgaben für Clouddienste | Microsoft-Dokumentation
 description: Hier erfahren Sie mehr über die Verwaltung von Clouddiensten im Azure-Portal. In diesen Beispielen wird das Azure-Portal verwendet.
-services: cloud-services
-documentationcenter: ''
-author: tgore03
-ms.service: cloud-services
 ms.topic: article
-ms.date: 07/05/2017
+ms.service: cloud-services
+ms.date: 10/14/2020
 ms.author: tagore
-ms.openlocfilehash: 84e450a55f9482c3a713943adfcc4d7940ab873f
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 306da8dae31c2bbdb487e7128e3a2e24424c239d
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92076707"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98743388"
 ---
-# <a name="manage-cloud-services-in-the-azure-portal"></a>Verwalten von Clouddiensten im Azure-Portal
+# <a name="manage-cloud-services-classic-in-the-azure-portal"></a>Verwalten von Cloud Services (klassisch) im Azure-Portal
+
+> [!IMPORTANT]
+> [Azure Cloud Services (erweiterter Support)](../cloud-services-extended-support/overview.md) ist ein neues auf Azure Resource Manager basierendes Bereitstellungsmodell für Azure Cloud Services. Im Zuge dieser Änderung wurden Azure Cloud Services-Instanzen, die unter dem auf Azure Service Manager basierenden Bereitstellungsmodell ausgeführt werden, in „Cloud Services (klassisch)“ umbenannt. Für alle neuen Bereitstellungen wird [Azure Cloud Services (erweiterter Support)](../cloud-services-extended-support/overview.md) verwendet.
+
 Im Bereich **Clouddienste** des Azure-Portals haben Sie folgende Möglichkeiten:
 
 * Aktualisieren einer Dienstrolle oder -bereitstellung
@@ -77,7 +81,7 @@ Es gibt zwei wichtige Voraussetzungen für einen erfolgreichen Austausch von Ber
 
 - Wenn Sie eine statische IP-Adresse für Ihren Produktionsslot verwenden möchten, müssen Sie auch eine IP für den Stagingslot reservieren. Andernfalls tritt bei dem Austausch ein Fehler auf.
 
-- Alle Instanzen Ihrer Rollen müssen ausgeführt werden, bevor Sie den Austausch durchführen können. Sie können den Status Ihrer Instanzen im Azure-Portal auf dem Blatt **Übersicht** überprüfen. Alternativ können Sie den Befehl [Get-AzureRole](/powershell/module/servicemanagement/azure.service/get-azurerole?view=azuresmps-3.7.0) in Windows PowerShell verwenden.
+- Alle Instanzen Ihrer Rollen müssen ausgeführt werden, bevor Sie den Austausch durchführen können. Sie können den Status Ihrer Instanzen im Azure-Portal auf dem Blatt **Übersicht** überprüfen. Alternativ können Sie den Befehl [Get-AzureRole](/powershell/module/servicemanagement/azure.service/get-azurerole?view=azuresmps-3.7.0&preserve-view=true) in Windows PowerShell verwenden.
 
 Beachten Sie, dass Updates von Gastbetriebssystemen und Dienstreparaturvorgänge auch dazu führen können, dass beim Austausch von Bereitstellungen ein Fehler auftritt. Weitere Informationen finden Sie unter [Behandeln von Problemen mit der Clouddienstbereitstellung](cloud-services-troubleshoot-deployment-problems.md).
 
@@ -98,7 +102,7 @@ Gehen Sie folgendermaßen vor, um eine Bereitstellung oder Ihren Cloud-Dienst zu
 
     ![Schaltfläche zum Löschen von Clouddiensten](./media/cloud-services-how-to-manage-portal/delete-button.png)
 
-3. Um den gesamten Clouddienst zu löschen, aktivieren Sie das Kontrollkästchen **Clouddienst und zugehörige Bereitstellungen**. Alternativ können Sie entweder das Kontrollkästchen **Produktionsbereitstellung** oder das Kontrollkästchen**Stagingbereitstellung** aktivieren.
+3. Um den gesamten Clouddienst zu löschen, aktivieren Sie das Kontrollkästchen **Clouddienst und zugehörige Bereitstellungen**. Alternativ können Sie entweder das Kontrollkästchen **Produktionsbereitstellung** oder das Kontrollkästchen **Stagingbereitstellung** aktivieren.
 
     ![Löschen von Clouddiensten](./media/cloud-services-how-to-manage-portal/delete-blade.png)
 

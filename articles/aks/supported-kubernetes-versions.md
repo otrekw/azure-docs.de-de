@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 09/08/2020
 author: palma21
 ms.author: jpalma
-ms.openlocfilehash: ecea9dcd28aede92ef255bf002b9195ded43c68b
-ms.sourcegitcommit: 192f9233ba42e3cdda2794f4307e6620adba3ff2
+ms.openlocfilehash: 587078f1f084d002e4d725ca3be64bcec36b4c45
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96296113"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98734646"
 ---
 # <a name="supported-kubernetes-versions-in-azure-kubernetes-service-aks"></a>Unterstützte Kubernetes-Versionen in Azure Kubernetes Service (AKS)
 
@@ -107,7 +107,7 @@ Bei neuen **Nebenversionen** von Kubernetes:
 1. AKS veröffentlicht mindestens 30 Tage vor dem Entfernen einer Version in den [AKS-Versionshinweisen](https://aka.ms/aks/releasenotes) eine Vorankündigung mit dem geplanten Datum der neuen Version und der Entfernung der entsprechenden alten Version.
 2. AKS veröffentlicht eine [Benachrichtigung zur Dienstintegrität](../service-health/service-health-overview.md), die für alle Benutzer mit Zugriff auf AKS und das Portal verfügbar ist. Außerdem sendet AKS eine E-Mail an die Abonnementadministratoren mit den geplanten Daten für die Entfernung von Versionen.
 ````
-To find out who is your subscription administrators or to change it, please refer to [manage Azure subscriptions](https://docs.microsoft.com/azure/cost-management-billing/manage/add-change-subscription-administrator#assign-a-subscription-administrator).
+To find out who is your subscription administrators or to change it, please refer to [manage Azure subscriptions](../cost-management-billing/manage/add-change-subscription-administrator.md#assign-a-subscription-administrator).
 ````
 3. Benutzer haben nach der Entfernung einer Version **30** Tage lang Zeit, ein Upgrade auf eine unterstützte Nebenversion durchzuführen, um sicherzustellen, dass sie weiterhin Support erhalten.
 
@@ -138,13 +138,14 @@ Den Verlauf der letzten Versionen finden Sie unter [Kubernetes](https://en.wikip
 
 |  Kubernetes-Version | Upstreamrelease  | AKS – Vorschau  | AKS – allgemeine Verfügbarkeit (GA)  | Ende der Lebensdauer |
 |--------------|-------------------|--------------|---------|-------------|
-| 1.16  | Sep-19-19  | Januar 2019   | März 2020  | Jan 2021* | 
+| 1.16  | Sep-19-19  | Januar 2019   | März 2020  | Jan 2021| 
 | 1.17  | 09. Dezember 2019  | Januar 2019   | Juli 2020  | 1.20 GA | 
 | 1.18  | 23. März 2020  | Mai 2020   | August 2020  | 1.21 GA | 
 | 1.19  | 04. August 2020  | Sep 2020   | November 2020  | 1.22 GA | 
 | 1.20  | Dec-08-20  | Jan 2021   | März 2021  | 1.23 GA |
+| 1.21  | 08. April 21* | Mai 2021   | Juni 2021  | 1.24: Allgemeine Verfügbarkeit |
 
-\* Aufgrund der Weihnachtszeit verlängert AKS die Lebensdauer von Version 1.16 von November 2020 bis Januar 2021. [Weitere Informationen](https://github.com/Azure/AKS/releases/tag/2020-10-12).
+\* Das Kubernetes 1.21 Upstream-Release unterliegt Änderungen, da der Upstream-Kalender noch nicht abgeschlossen ist.
 
 
 ## <a name="faq"></a>Häufig gestellte Fragen
@@ -184,7 +185,7 @@ Beim Upgrade eines unterstützten AKS-Clusters können Nebenversionen von Kubern
 
 Zum Durchführen eines Upgrades von *1.12.x* -> *1.14.x* müssen Sie zuerst ein Upgrade von *1.12.x* -> *1.13.x* und dann ein Upgrade von *1.13.x* -> *1.14.x* durchführen.
 
-Das Überspringen mehrerer Versionen ist nur möglich, wenn ein Upgrade von einer nicht unterstützten Version zurück auf eine unterstützte Version erfolgt. Beispielsweise kann ein Upgrade von einer nicht unterstützten Version *1.10.x* --> auf eine unterstützte Version *1.15.x* durchgeführt werden.
+Das Überspringen mehrerer Versionen ist nur möglich, wenn ein Upgrade von einer nicht unterstützten Version auf eine unterstützte Version erfolgt. Beispielsweise kann ein Upgrade von einer nicht unterstützten Version *1.10.x* --> auf eine unterstützte Version *1.15.x* durchgeführt werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

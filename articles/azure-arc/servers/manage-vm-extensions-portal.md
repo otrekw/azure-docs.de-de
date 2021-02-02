@@ -1,14 +1,14 @@
 ---
 title: Entfernen von VM-Erweiterungen über das Azure-Portal
 description: In diesem Artikel wird beschrieben, wie Sie über das Azure-Portal VM-Erweiterungen auf Azure Arc-fähigen Servern bereitstellen, die in Hybrid Cloud-Umgebungen ausgeführt werden.
-ms.date: 11/06/2020
+ms.date: 01/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: 48d7d4085dce893d94436fe0c6be32cfeea9cda3
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 43bbcef28b77e7c7112880fdac1bbd4809791cef
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94359084"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98728947"
 ---
 # <a name="enable-azure-vm-extensions-from-the-azure-portal"></a>Aktivieren von Azure-VM-Erweiterungen über das Azure-Portal
 
@@ -39,6 +39,18 @@ VM-Erweiterungen können über das Azure-Portal auf Ihren mit Arc für Server ve
 
 >[!NOTE]
 >Zwar können mehrere Erweiterungen in einem Batch zusammengefasst und verarbeitet werden, die Installation erfolgt jedoch nacheinander. Sobald die Installation der ersten Erweiterung abgeschlossen ist, wird die Installation der nächsten Erweiterung versucht.
+
+## <a name="list-extensions-installed"></a>Auflisten der Installierten Erweiterungen
+
+Sie können eine Liste der VM-Erweiterungen auf dem Arc-fähigen Server im Azure-Portal abrufen. Führen Sie zu Ihrer Anzeige die folgenden Schritte aus.
+
+1. Navigieren Sie in Ihrem Browser zum [Azure-Portal](https://portal.azure.com).
+
+2. Navigieren Sie im Portal zu **Server - Azure Arc**, und wählen Sie in der Liste Ihren Hybridcomputer aus.
+
+3. Wählen Sie **Erweiterungen** aus, und die Liste der installierten Erweiterungen wird zurückgegeben.
+
+    ![Auflisten der auf dem ausgewählten Computer bereitgestellten VM-Erweiterungen](./media/manage-vm-extensions/list-vm-extensions.png)
 
 ## <a name="uninstall-extension"></a>Deinstallieren der Erweiterung
 

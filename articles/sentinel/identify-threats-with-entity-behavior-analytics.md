@@ -12,25 +12,20 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/19/2020
+ms.date: 01/25/2021
 ms.author: yelevin
-ms.openlocfilehash: 2326746d274c68225cd4c8569df6a20d6050ec1a
-ms.sourcegitcommit: 5e762a9d26e179d14eb19a28872fb673bf306fa7
+ms.openlocfilehash: 7944ea48feaca1eb8312e01d876bf9627af429d1
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97900891"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98784794"
 ---
 # <a name="identify-advanced-threats-with-user-and-entity-behavior-analytics-ueba-in-azure-sentinel"></a>Erkennen komplexerer Bedrohungen mit User and Entity Behavior Analytics (UEBA) in Azure Sentinel
 
 > [!IMPORTANT]
 >
-> - Die Features UEBA und Entitätsseiten sind nun in den folgenden Azure Sentinel-Regionen **allgemein verfügbar**:
->    - in den US-amerikanischen Regionen
->    - in der Region Europa, Westen
->    - in den australischen Regionen
->
-> - In allen anderen Geografien und Regionen bleiben diese Features bis auf Weiteres in der **Vorschau**. Die [**zusätzlichen Nutzungsbestimmungen für Microsoft Azure-Vorschauen**](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) enthalten zusätzliche rechtliche Bedingungen, die für Azure-Features gelten, die sich in der Beta- oder Vorschauversion befinden bzw. anderweitig noch nicht zur allgemeinen Verfügbarkeit freigegeben sind.
+> - Die Features UEBA und Entitätsseiten sind nun in **_allen_* _ Azure Sentinel-Geografien **allgemein verfügbar**.
 
 ## <a name="what-is-user-and-entity-behavior-analytics-ueba"></a>Was ist User and Entity Behavior Analytics (UEBA)?
 
@@ -50,7 +45,7 @@ Azure Sentinel sammelt peergruppenübergreifend und über einen bestimmten Zeitr
 
 Angeregt durch das Paradigma von Gartner für UEBA-Lösungen wird bei Azure Sentinel auf ein „Von außen nach innen“-Konzept gesetzt, das auf den folgenden drei Bezugsrahmen basiert:
 
-- **Anwendungsfälle:** Azure Sentinel priorisiert relevante Angriffsvektoren und Szenarios, die auf Sicherheitsuntersuchungen basieren, die sich am MITRE ATT&CK-Framework für Taktiken, Techniken und Subtechniken orientieren, bei denen verschiedene Entitäten als Opfer, Täter oder Zentren in einer Kill Chain gelten. Somit konzentriert sich Azure Sentinel speziell auf die wertvollsten Protokolle, die eine Datenquelle liefern kann.
+- _ *Anwendungsfälle:* * Azure Sentinel priorisiert relevante Angriffsvektoren und Szenarios, die auf Sicherheitsuntersuchungen basieren, die sich am MITRE ATT&CK-Framework für Taktiken, Techniken und Subtechniken orientieren, bei denen verschiedene Entitäten als Opfer, Täter oder Zentren in einer Kill Chain gelten. Somit konzentriert sich Azure Sentinel speziell auf die wertvollsten Protokolle, die eine Datenquelle liefern kann.
 
 - **Datenquellen:** Azure Sentinel unterstützt in erster Linie Azure-Datenquellen. Datenquellen von Drittanbietern, die unseren Bedrohungsszenarios entsprechen, werden sehr sorgfältig ausgewählt.
 

@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie einen privaten Azure Kubernetes Service-Clust
 services: container-service
 ms.topic: article
 ms.date: 7/17/2020
-ms.openlocfilehash: 87966a9bd2f83916998a724fc6c1c26a91609665
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 66072032b3fd1ac33bef60922c62f73a8cfb11bd
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98133394"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98734663"
 ---
 # <a name="create-a-private-azure-kubernetes-service-cluster"></a>Erstellen eines privaten Azure Kubernetes Service-Clusters
 
@@ -66,23 +66,23 @@ Dabei gilt: `--enable-private-cluster` ist ein obligatorisches Flag für einen p
 > [!NOTE]
 > Wenn CIDR der Docker-Bridge-Adresse (172.17.0.1/16) mit der Subnetz-CIDR in Konflikt steht, ändern Sie die Docker-Bridge-Adresse entsprechend.
 
-### <a name="configure-private-dns-zone"></a>Konfigurieren einer privaten DNS-Zone
+## <a name="configure-private-dns-zone"></a>Konfigurieren einer privaten DNS-Zone
 
 Zum Konfigurieren einer privaten DNS-Zone können die folgenden Parameter verwendet werden.
 
 1. „System“ ist der Standardwert. Wenn das Argument „--private-dns-zone“ weggelassen wird, erstellt AKS eine private DNS-Zone in der Knotenressourcengruppe.
 2. „None“ bedeutet, dass AKS keine private DNS-Zone erstellt.  Dies erfordert, dass Sie selbst einen DNS-Server bereitstellen und die DNS-Auflösung für den privaten FQDN konfigurieren.  Wenn Sie keine DNS-Auflösung konfigurieren, kann DNS nur innerhalb der Agent-Knoten aufgelöst werden; dies führt nach der Bereitstellung zu Clusterproblemen.
-3. Der benutzerdefinierte Name der privaten DNS-Zone sollte für die globale Azure-Cloud im folgenden Format angegeben werden: `privatelink.<region>.azmk8s.io`. Der benutzerseitig zugewiesenen Identität oder dem benutzerseitig zugewiesenen Dienstprinzipal muss mindestens die Rolle `private dns zone contributor` in der benutzerdefinierten privaten DNS-Zone zugewiesen sein.
+3. Der benutzerdefinierte Name der privaten DNS-Zone sollte für die globale Azure-Cloud im folgenden Format angegeben werden: `privatelink.<region>.azmk8s.io`. Sie benötigen die Ressourcen-ID dieser privaten DNS Zone.  Außerdem benötigen Sie eine benutzerseitig zugewiesene Identität oder einen benutzerseitig zugewiesenen Dienstprinzipal, der/dem in der benutzerdefinierten privaten DNS-Zone mindestens die Rolle `private dns zone contributor` zugewiesen ist.
 
-## <a name="no-private-dns-zone-prerequisites"></a>Voraussetzungen für No Private DNS Zone
+### <a name="prerequisites"></a>Voraussetzungen
 
-* Azure CLI, Version 0.4.71 oder höher
+* AKS-Vorschauversion 0.4.71 oder höher
 * API-Version 2020-11-01 oder höher
 
-## <a name="create-a-private-aks-cluster-with-private-dns-zone"></a>Erstellen eines privaten AKS-Clusters mit privater DNS-Zone
+### <a name="create-a-private-aks-cluster-with-private-dns-zone"></a>Erstellen eines privaten AKS-Clusters mit privater DNS-Zone
 
 ```azurecli-interactive
-az aks create -n <private-cluster-name> -g <private-cluster-resource-group> --load-balancer-sku standard --enable-private-cluster --private-dns-zone [none|system|custom private dns zone]
+az aks create -n <private-cluster-name> -g <private-cluster-resource-group> --load-balancer-sku standard --enable-private-cluster --enable-managed-identity --assign-identity <ResourceId> --private-dns-zone [none|system|custom private dns zone ResourceId]
 ```
 ## <a name="options-for-connecting-to-the-private-cluster"></a>Optionen zum Herstellen einer Verbindung mit dem privaten Cluster
 
@@ -121,18 +121,18 @@ Wie bereits erwähnt, ist das Peering virtueller Netzwerke eine Möglichkeit fü
 3. In Szenarien, in denen das virtuelle Netzwerk, das Ihren Cluster enthält, über benutzerdefinierte DNS-Einstellungen verfügt (4), schlägt die Clusterbereitstellung fehl, es sei denn, die private DNS-Zone ist mit dem virtuellen Netzwerk verknüpft, das die benutzerdefinierten DNS-Auflösungen enthält (5). Diese Verknüpfung kann manuell erstellt werden, nachdem die private Zone während der Clusterbereitstellung erstellt wurde, oder über die Automatisierung bei Erkennung der Erstellung der Zone mithilfe von ereignisbasierten Bereitstellungsmechanismen (z. B. Azure Event Grid und Azure Functions).
 
 > [!NOTE]
-> Wenn Sie [Bring Your Own Route Table with kubenet](https://docs.microsoft.com/azure/aks/configure-kubenet#bring-your-own-subnet-and-route-table-with-kubenet) (Verwenden einer eigenen Routingtabelle mit kubenet) und Bring Your Own DNS with Private Cluster (Verwenden eines eigenen DNS-Servers mit Private Cluster) verwenden, tritt bei der Clustererstellung ein Fehler auf. Nach dem Fehler bei der Clustererstellung müssen Sie dem Subnetz die [Routingtabelle](https://docs.microsoft.com/azure/aks/configure-kubenet#bring-your-own-subnet-and-route-table-with-kubenet) in der Knotenressourcengruppe zuordnen, um die Erstellung zu einem Erfolg zu machen.
+> Wenn Sie [Bring Your Own Route Table with kubenet](./configure-kubenet.md#bring-your-own-subnet-and-route-table-with-kubenet) (Verwenden einer eigenen Routingtabelle mit kubenet) und Bring Your Own DNS with Private Cluster (Verwenden eines eigenen DNS-Servers mit Private Cluster) verwenden, tritt bei der Clustererstellung ein Fehler auf. Nach dem Fehler bei der Clustererstellung müssen Sie dem Subnetz die [Routingtabelle](./configure-kubenet.md#bring-your-own-subnet-and-route-table-with-kubenet) in der Knotenressourcengruppe zuordnen, um die Erstellung zu einem Erfolg zu machen.
 
 ## <a name="limitations"></a>Einschränkungen 
 * IP-autorisierte Bereiche können nicht auf den privaten API-Serverendpunkt angewandt werden, sie gelten nur für den öffentlichen API-Server.
 * [Die Einschränkungen des Azure Private Link-Diensts][private-link-service] gelten für private Cluster.
-* Keine Unterstützung für Azure DevOps Microsoft-gehostete Agents mit privaten Clustern. Erwägen Sie die Verwendung von [selbstgehosteten Agents](https://docs.microsoft.com/azure/devops/pipelines/agents/agents?view=azure-devops&tabs=browser&preserve-view=true). 
+* Keine Unterstützung für Azure DevOps Microsoft-gehostete Agents mit privaten Clustern. Erwägen Sie die Verwendung von [selbstgehosteten Agents](/azure/devops/pipelines/agents/agents?preserve-view=true&tabs=browser&view=azure-devops). 
 * Für Kunden, die Azure Container Registry für die Arbeit mit privatem AKS aktivieren müssen, muss ein Peering des virtuellen Netzwerks der Container Registry mit dem virtuellen Netzwerk des Agent-Clusters ausgeführt werden.
 * Keine Unterstützung für das Konvertieren vorhandener AKS-Cluster in private Cluster
 * Das Löschen oder Ändern des privaten Endpunkts im Kundensubnetz führt dazu, dass der Cluster nicht mehr funktioniert. 
 * Azure Monitor wird für Livedaten von Containern derzeit nicht unterstützt.
 * Nachdem Kunden den A-Eintrag auf ihren eigenen DNS-Servern aktualisiert haben, würden diese Pods den apiserver-FQDN nach der Migration bis zu einem Neustart immer noch zu der älteren IP auflösen. Kunden müssen hostNetwork-Pods und default-DNSPolicy-Pods nach dem Migrieren der Steuerungsebene erneut starten.
-* Im Fall einer Wartung der Steuerungsebene ändert sich möglicherweise Ihre [AKS-IP](https://docs.microsoft.com/azure/aks/limit-egress-traffic#:~:text=By%20default%2C%20AKS%20clusters%20have%20unrestricted%20outbound%20%28egress%29,be%20accessible%20to%20maintain%20healthy%20cluster%20maintenance%20tasks.). In diesem Fall müssen Sie auf Ihrem benutzerdefinierten DNS-Server den A-Eintrag aktualisieren, der auf die private IP des API-Servers verweist, und alle benutzerdefinierten Pods oder Bereitstellungen mithilfe von hostNetwork neu starten.
+* Im Fall einer Wartung der Steuerungsebene ändert sich möglicherweise Ihre [AKS-IP](./limit-egress-traffic.md). In diesem Fall müssen Sie auf Ihrem benutzerdefinierten DNS-Server den A-Eintrag aktualisieren, der auf die private IP des API-Servers verweist, und alle benutzerdefinierten Pods oder Bereitstellungen mithilfe von hostNetwork neu starten.
 
 <!-- LINKS - internal -->
 [az-provider-register]: /cli/azure/provider?view=azure-cli-latest#az-provider-register

@@ -1,6 +1,6 @@
 ---
-title: Anwendungstypen für Microsoft Identity Platform | Azure
-description: Die Typen von Apps und Szenarien, die vom Microsoft Identity Platform-Endpunkt unterstützt werden.
+title: Anwendungstypen für die Microsoft Identity Platform | Azure
+description: Die Typen von Apps und Szenarien, die von der Microsoft Identity Platform unterstützt werden.
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -12,20 +12,20 @@ ms.date: 11/13/2020
 ms.author: ryanwi
 ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev, fasttrack-edit, contperf-fy21q2
-ms.openlocfilehash: fd1fc59fd1ade6036c57f15415afccfc693f7bff
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 7ec309f016e73642262399bd75e7b5146bc5e497
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97029752"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98752772"
 ---
-# <a name="application-types-for-microsoft-identity-platform"></a>Anwendungstypen für Microsoft Identity Platform
+# <a name="application-types-for-the-microsoft-identity-platform"></a>Anwendungstypen für die Microsoft Identity Platform
 
-Der Microsoft Identity Platform-Endpunkt unterstützt die Authentifizierung für eine Vielzahl moderner App-Architekturen, die alle auf den branchenüblichen Standardprotokollen [OAuth 2.0 oder OpenID Connect](active-directory-v2-protocols.md) basieren. Dieser Artikel beschreibt die App-Typen, die Sie unabhängig von der bevorzugten Sprache oder Plattform mithilfe von Microsoft Identity Platform erstellen können. Die Informationen dienen Ihrem Verständnis allgemeiner Szenarien, bevor Sie beginnen, in den [Anwendungsszenarios](authentication-flows-app-scenarios.md#application-scenarios) mit Code zu arbeiten.
+Die Microsoft Identity Platform unterstützt die Authentifizierung für eine Vielzahl moderner App-Architekturen, die alle auf den branchenüblichen Standardprotokollen [OAuth 2.0 oder OpenID Connect](active-directory-v2-protocols.md) basieren. Dieser Artikel beschreibt die App-Typen, die Sie unabhängig von der bevorzugten Sprache oder Plattform mithilfe von Microsoft Identity Platform erstellen können. Die Informationen dienen Ihrem Verständnis allgemeiner Szenarien, bevor Sie beginnen, in den [Anwendungsszenarios](authentication-flows-app-scenarios.md#application-scenarios) mit Code zu arbeiten.
 
 ## <a name="the-basics"></a>Grundlagen
 
-Sie müssen jede App, die den Microsoft Identity Platform-Endpunkt verwendet, im Azure-Portal in [App-Registrierungen](https://go.microsoft.com/fwlink/?linkid=2083908) registrieren. Beim App-Registrierungsvorgang werden die folgenden Werte für die App erfasst und zugewiesen:
+Sie müssen jede App, die die Microsoft Identity Platform verwendet, im Azure-Portal in [App-Registrierungen](https://go.microsoft.com/fwlink/?linkid=2083908) registrieren. Beim App-Registrierungsvorgang werden die folgenden Werte für die App erfasst und zugewiesen:
 
 * Eine **Anwendungs- (bzw. Client-) ID**, die Ihre App eindeutig identifiziert
 * Ein **Umleitungs-URI**, der zum Umleiten von Antworten zurück an die App verwendet werden kann
@@ -33,7 +33,7 @@ Sie müssen jede App, die den Microsoft Identity Platform-Endpunkt verwendet, im
 
 Nähere Informationen finden Sie im Artikel zum [Registrieren einer App](quickstart-register-app.md).
 
-Nach der Registrierung der App erfolgt die Kommunikation zwischen der App und Microsoft Identity Plattform durch Senden von Anforderungen an den Endpunkt. Wir stellen Open-Source-Frameworks und -Bibliotheken bereit, über die die Details dieser Anforderungen verarbeitet werden. Zudem können Sie auch selbst die Authentifizierungslogik implementieren, indem Sie Anforderungen an diese Endpunkte erstellen:
+Nach der Registrierung der App erfolgt die Kommunikation zwischen der App und der Microsoft Identity Plattform durch Senden von Anforderungen an den Endpunkt. Wir stellen Open-Source-Frameworks und -Bibliotheken bereit, über die die Details dieser Anforderungen verarbeitet werden. Zudem können Sie auch selbst die Authentifizierungslogik implementieren, indem Sie Anforderungen an diese Endpunkte erstellen:
 
 ```HTTP
 https://login.microsoftonline.com/common/oauth2/v2.0/authorize
@@ -42,7 +42,7 @@ https://login.microsoftonline.com/common/oauth2/v2.0/token
 
 ## <a name="single-page-apps-javascript"></a>Single-Page-Apps (JavaScript)
 
-Viele moderne Apps verfügen über ein Single-Page-Webanwendungs-Front-End, das in erster Linie in JavaScript geschrieben ist, häufig mit einem Framework wie Angular, React oder Vue. Der Microsoft Identity Platform-Endpunkt unterstützt diese Apps durch Verwendung des [OpenID Connect](v2-protocols-oidc.md)-Protokolls zur Authentifizierung und entweder des [OAuth 2.0-Flows zur impliziten Genehmigung](v2-oauth2-implicit-grant-flow.md) oder des neueren [OAuth 2.0-Autorisierungscodes + PKCE-Flows](v2-oauth2-auth-code-flow.md) zur Autorisierung (siehe unten).
+Viele moderne Apps verfügen über ein Single-Page-Webanwendungs-Front-End, das in erster Linie in JavaScript geschrieben ist, häufig mit einem Framework wie Angular, React oder Vue. Die Microsoft Identity Platform unterstützt diese Apps durch Verwendung des [OpenID Connect](v2-protocols-oidc.md)-Protokolls zur Authentifizierung und entweder des [OAuth 2.0-Flows zur impliziten Genehmigung](v2-oauth2-implicit-grant-flow.md) oder des neueren [OAuth 2.0-Autorisierungscodes + PKCE-Flows](v2-oauth2-auth-code-flow.md) zur Autorisierung (siehe unten).
 
 Das folgende Flussdiagramm veranschaulicht die OAuth 2.0-Autorisierungscodegenehmigung (ohne Details zu PKCE), bei der die App einen Code vom Endpunkt `authorize` der Microsoft Identity Platform erhält und diesen gegen Token und Aktualisierungstoken unter Verwendung von standortübergreifenden Webanforderungen einlöst. Das Aktualisierungstoken läuft nach jeweils 24 Stunden ab, und die App muss einen weiteren Code anfordern. Zusätzlich zum Zugriffstoken wird normalerweise über denselben Flow und/oder eine separate OpenID Connect-Anforderung (hier nicht dargestellt) auch ein `id_token` angefordert, das den bei der Clientanwendung angemeldeten Benutzer repräsentiert.
 
@@ -73,13 +73,13 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6ImtyaU1QZG1Cd...
 }
 ```
 
-Weitere Informationen zu verschiedenen Tokentypen, die im Microsoft Identity Plattform-Endpunkt verwendet werden, finden Sie in der Referenz zu [Zugriffstoken](access-tokens.md) und zu [id_token](id-tokens.md).
+Weitere Informationen zu verschiedenen Tokentypen, die in der Microsoft Identity Plattform verwendet werden, finden Sie in der Referenz zu [Zugriffstoken](access-tokens.md) und zu [id_token](id-tokens.md).
 
 In Webserver-Apps werden beim Authentifizierungsablauf für die Anmeldung folgende allgemeine Schritte ausgeführt:
 
 ![Zeigt den Authentifizierungsflow für Web-Apps](./media/v2-app-types/convergence-scenarios-webapp.svg)
 
-Sie können die Identität des Benutzers validieren, indem Sie das ID-Token mit einem öffentlichen Signaturschlüssel überprüfen, der vom Microsoft Identity Plattform-Endpunkt empfangen wird. Ein Sitzungscookie wird festgelegt, das zur Identifizierung des Benutzers in nachfolgenden Seitenanforderungen verwendet werden kann.
+Sie können die Identität des Benutzers validieren, indem Sie das ID-Token mit einem öffentlichen Signaturschlüssel überprüfen, der von der Microsoft Identity Plattform empfangen wird. Ein Sitzungscookie wird festgelegt, das zur Identifizierung des Benutzers in nachfolgenden Seitenanforderungen verwendet werden kann.
 
 Um dieses Szenario in Aktion zu sehen, testen Sie die Codebeispiele in [Szenario: Web-App, die Benutzer anmeldet](scenario-web-app-sign-user-overview.md).
 
@@ -87,7 +87,7 @@ Neben der einfachen Anmeldung benötigt eine Webserver-App möglicherweise Zugri
 
 ## <a name="web-apis"></a>Web-APIs
 
-Mit dem Microsoft Identity Plattform-Endpunkt können Sie Webdienste schützen, z. B. die RESTful-Web-API Ihrer App. Web-APIs können auf zahlreichen Plattformen und in vielen Sprachen implementiert werden. Sie können auch mithilfe von HTTP-Triggern in Azure Functions implementiert werden. Anstelle von ID-Token und Sitzungscookies verwendet eine Web-API ein OAuth 2.0-Zugriffstoken zum Schutz der zugehörigen Daten und zum Authentifizieren eingehender Anforderungen. Der Aufrufer einer Web-API fügt ein Zugriffstoken wie folgt im Autorisierungsheader einer HTTP-Anforderung an:
+Mit der Microsoft Identity Plattform können Sie Webdienste schützen, z. B. die RESTful-Web-API Ihrer App. Web-APIs können auf zahlreichen Plattformen und in vielen Sprachen implementiert werden. Sie können auch mithilfe von HTTP-Triggern in Azure Functions implementiert werden. Anstelle von ID-Token und Sitzungscookies verwendet eine Web-API ein OAuth 2.0-Zugriffstoken zum Schutz der zugehörigen Daten und zum Authentifizieren eingehender Anforderungen. Der Aufrufer einer Web-API fügt ein Zugriffstoken wie folgt im Autorisierungsheader einer HTTP-Anforderung an:
 
 ```HTTP
 GET /api/items HTTP/1.1
@@ -97,9 +97,9 @@ Accept: application/json
 ...
 ```
 
-Die Web-API verwendet das Zugriffstoken zum Überprüfen der Identität des API-Aufrufers und zum Extrahieren von Informationen über den Aufrufer aus Ansprüchen, die im Zugriffstoken codiert sind. Weitere Informationen zu verschiedenen Tokentypen, die im Microsoft Identity Plattform-Endpunkt verwendet werden, finden Sie in der Referenz zu [Zugriffstoken](access-tokens.md) und zu [id_token](id-tokens.md).
+Die Web-API verwendet das Zugriffstoken zum Überprüfen der Identität des API-Aufrufers und zum Extrahieren von Informationen über den Aufrufer aus Ansprüchen, die im Zugriffstoken codiert sind. Weitere Informationen zu verschiedenen Tokentypen, die in der Microsoft Identity Plattform verwendet werden, finden Sie in der Referenz zu [Zugriffstoken](access-tokens.md) und zu [id_token](id-tokens.md).
 
-Eine Web-API kann Benutzern die Möglichkeit geben, sich für oder gegen bestimmte Funktionen oder Daten zu entscheiden, indem sie Berechtigungen erhalten, die auch [Bereiche](v2-permissions-and-consent.md) genannt werden. Damit eine aufrufende App Berechtigungen für einen Bereich erhält, muss der Benutzer während eines Ablaufs seine Zustimmung für den Bereich erteilen. Der Microsoft Identity Plattform-Endpunkt fragt die Zustimmung des Benutzers ab und zeichnet dann die Berechtigungen in allen Zugriffstoken auf, die die Web-API empfängt. Die Web-API überprüft das Zugriffstoken, das bei jedem Aufruf empfangen wird, und führt Autorisierungsprüfungen durch.
+Eine Web-API kann Benutzern die Möglichkeit geben, sich für oder gegen bestimmte Funktionen oder Daten zu entscheiden, indem sie Berechtigungen erhalten, die auch [Bereiche](v2-permissions-and-consent.md) genannt werden. Damit eine aufrufende App Berechtigungen für einen Bereich erhält, muss der Benutzer während eines Ablaufs seine Zustimmung für den Bereich erteilen. Die Microsoft Identity Plattform fragt die Zustimmung des Benutzers ab und zeichnet dann die Berechtigungen in allen Zugriffstoken auf, die die Web-API empfängt. Die Web-API überprüft das Zugriffstoken, das bei jedem Aufruf empfangen wird, und führt Autorisierungsprüfungen durch.
 
 Eine Web-API kann Zugriffstoken von allen App-Typen empfangen, z. B. von Webserver-Apps, Desktop-Apps, mobilen Apps, Single Page-Apps, serverseitigen Daemons und selbst von anderen Web-APIs. Der allgemeine Ablauf für eine Web-API sieht folgendermaßen aus:
 
@@ -113,7 +113,7 @@ Oftmals müssen Web-APIs auch ausgehende Anforderungen an nachgelagerte Web-APIs
 
 Auf Geräten installierte Apps, z. B. mobile Apps und Desktop-Apps, benötigen häufig Zugriff auf Back-End-Dienste oder Web-APIs, die im Auftrag eines Benutzers Daten speichern und Funktionen ausführen. Diese Apps können sich mithilfe des [OAuth 2.0-Autorisierungscodeflusses](v2-oauth2-auth-code-flow.md) bei Back-End-Diensten anmelden und die Autorisierung hinzufügen.
 
-Bei diesem Fluss empfängt die App bei der Anmeldung des Benutzers vom Microsoft Identity Platform-Endpunkt einen Autorisierungscode. Der Autorisierungscode stellt die Berechtigung der App zum Aufrufen von Back-End-Diensten im Namen des angemeldeten Benutzers dar. Die App kann den Autorisierungscode im Hintergrund gegen ein OAuth 2.0-Zugriffstoken und ein Aktualisierungstoken austauschen. Die App kann mithilfe des Zugriffstokens Web-APIs in HTTP-Anforderungen authentifizieren und mithilfe des Aktualisierungstokens neue Zugriffstoken abrufen, wenn die älteren Zugriffstoken abgelaufen sind.
+Bei diesem Fluss empfängt die App bei der Anmeldung des Benutzers von der Microsoft Identity Platform einen Autorisierungscode. Der Autorisierungscode stellt die Berechtigung der App zum Aufrufen von Back-End-Diensten im Namen des angemeldeten Benutzers dar. Die App kann den Autorisierungscode im Hintergrund gegen ein OAuth 2.0-Zugriffstoken und ein Aktualisierungstoken austauschen. Die App kann mithilfe des Zugriffstokens Web-APIs in HTTP-Anforderungen authentifizieren und mithilfe des Aktualisierungstokens neue Zugriffstoken abrufen, wenn die älteren Zugriffstoken abgelaufen sind.
 
 ![Zeigt den Authentifizierungsflow für native Apps](./media/v2-app-types/convergence-scenarios-native.svg)
 

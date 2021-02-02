@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
-ms.date: 07/24/2020
+ms.date: 01/20/2021
 ms.author: justinha
-ms.openlocfilehash: c078117baf84d7dbfaaaa2b569abb8a5f5c67e6d
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 04c611b8a902d27f40893a05f301898c0111748f
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96619010"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98660948"
 ---
 # <a name="configure-scoped-synchronization-from-azure-ad-to-azure-active-directory-domain-services-using-azure-ad-powershell"></a>Konfigurieren der bereichsbezogenen Synchronisierung von Azure AD für Azure Active Directory Domain Services mithilfe von PowerShell in Azure AD
 
@@ -41,15 +41,14 @@ Für diesen Artikel benötigen Sie die folgenden Ressourcen und Berechtigungen:
 
 Standardmäßig werden alle Benutzer und Gruppen aus einem Azure AD-Verzeichnis in einer verwalteten Domäne synchronisiert. Wenn nur wenige Benutzer auf die verwaltete Domäne zugreifen müssen, können Sie nur diese Benutzerkonten synchronisieren. Diese bereichsbezogene Synchronisierung ist gruppenbasiert. Wenn Sie eine gruppenbasierte bereichsbezogene Synchronisierung konfigurieren, werden nur die Benutzerkonten, die zu den angegebenen Gruppen gehören, mit der verwalteten Domäne synchronisiert. Geschachtelte Gruppen werden nicht synchronisiert, nur die von Ihnen ausgewählten.
 
-Sie können den Synchronisierungsbereich ändern, wenn Sie die verwaltete Domäne erstellen, oder nach erfolgter Bereitstellung. Sie können nun auch den Synchronisierungsbereich für eine vorhandene verwaltete Domäne ändern, ohne dass Sie sie dafür neu erstellen müssen.
+Sie können den Synchronisierungsbereich vor oder nach dem Erstellen der verwalteten Domäne ändern. Der Synchronisierungsbereich wird von einem Dienstprinzipal mit dem Anwendungsbezeichner 2565bd9d-da50-47d4-8b85-4c97f669dc36 definiert. Um einen Bereichsverlust zu verhindern, löschen oder ändern Sie den Dienstprinzipal nicht. Wenn der Synchronisierungsbereich versehentlich gelöscht wird, kann er nicht wiederhergestellt werden. 
+
+Beachten Sie die folgenden Einschränkungen, wenn Sie den Synchronisierungsbereich ändern:
+
+- Eine vollständige Synchronisierung wird durchgeführt.
+- Objekte, die in der verwalteten Domäne nicht mehr erforderlich sind, werden gelöscht. Neue Objekte werden in der verwalteten Domäne erstellt.
 
 Weitere Informationen zum Synchronisierungsvorgang finden Sie unter [Grundlegendes zur Synchronisierung in Azure AD Domain Services.][concepts-sync]
-
-> [!WARNING]
-> Wenn Sie den Bereich der Synchronisierung ändern, werden alle Daten in der verwalteten Domäne neu synchronisiert. Es gelten die folgenden Bedingungen:
->
->  * Wenn Sie den Synchronisierungsbereich für eine verwaltete Domäne ändern, erfolgt eine vollständige Neusynchronisierung.
->  * Objekte, die in der verwalteten Domäne nicht mehr erforderlich sind, werden gelöscht. Neue Objekte werden in der verwalteten Domäne erstellt.
 
 ## <a name="powershell-script-for-scoped-synchronization"></a>PowerShell-Skript für die bereichsbezogene Synchronisierung
 

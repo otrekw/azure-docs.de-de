@@ -1,22 +1,24 @@
 ---
-title: Rollenschema in Azure Cloud Services | Microsoft-Dokumentation
+title: Rollenschema in Azure Cloud Services (klassisch) | Microsoft-Dokumentation
 description: Durch das Rollenelement einer Dienstkonfigurationsdatei wird angegeben, wie viele Rolleninstanzen für die einzelnen Rollen, Konfigurationswerte und Zertifikatfingerabdrücke bereitgestellt werden sollen.
-ms.custom: ''
-ms.date: 12/07/2016
-services: cloud-services
+ms.topic: article
 ms.service: cloud-services
-ms.topic: reference
-caps.latest.revision: 12
-author: tgore03
+ms.date: 10/14/2020
 ms.author: tagore
-ms.openlocfilehash: b64f9d27e382a39b132593502fed32c565af473a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 2dc8e14a4e4d8855abb615632bb7d43b9034d360
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "79528420"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98743439"
 ---
-# <a name="azure-cloud-services-config-role-schema"></a>Rollenschema der Azure Cloud Services-Konfiguration
+# <a name="azure-cloud-services-classic-config-role-schema"></a>Rollenschema der Azure Cloud Services-Konfiguration (klassisch)
+
+> [!IMPORTANT]
+> [Azure Cloud Services (erweiterter Support)](../cloud-services-extended-support/overview.md) ist ein neues auf Azure Resource Manager basierendes Bereitstellungsmodell für Azure Cloud Services. Im Zuge dieser Änderung wurden Azure Cloud Services-Instanzen, die unter dem Azure Service Manager-basierten Bereitstellungsmodell ausgeführt werden, in „Cloud Services (klassisch)“ umbenannt. Für alle neuen Bereitstellungen wird [Azure Cloud Services (erweiterter Support)](../cloud-services-extended-support/overview.md) verwendet.
 
 Das `Role`-Element der Konfigurationsdatei gibt die Anzahl der Rolleninstanzen, die für jede Rolle im Dienst bereitgestellt werden, die Werte aller Konfigurationseinstellungen und die Fingerabdrücke für alle einer Rolle zugeordneten Zertifikate an.
 
@@ -41,14 +43,14 @@ Das folgende Beispiel zeigt das `Role`-Element und seine untergeordneten Element
 
 In der folgenden Tabelle sind die Attribute des `Role`-Elements beschrieben.
 
-| attribute | BESCHREIBUNG |
+| Attribut | Beschreibung |
 | --------- | ----------- |
 | name   | Erforderlich. Gibt den Namen der Rolle an. Der Name muss mit dem in der Dienstdefinitionsdatei angegebenen Namen für die Rolle übereinstimmen.|
 | vmName | Optional. Gibt den DNS-Namen für einen virtuellen Computer an. Der Name darf höchstens 10 Zeichen enthalten.|
 
 Die folgende Tabelle beschreibt die untergeordneten Elemente des `Role`-Elements.
 
-| Element | BESCHREIBUNG |
+| Element | Beschreibung |
 | ------- | ----------- |
 | Instanzen | Erforderlich. Gibt die Anzahl von Instanzen an, die für die Rolle bereitgestellt werden sollen. Die Anzahl von Instanzen wird durch ein Integer für das `count`-Attribut definiert.|
 | Einstellung   | Optional. Gibt einen Einstellungsnamen und -Wert in einer Auflistung von Einstellungen für eine Rolle an. Der Name der Einstellung wird durch eine Zeichenfolge für das `name`-Attribut und der Wert der Einstellung durch eine Zeichenfolge für das `value`-Attribut definiert.|

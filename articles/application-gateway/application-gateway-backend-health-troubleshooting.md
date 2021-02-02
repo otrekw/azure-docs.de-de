@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: troubleshooting
 ms.date: 06/09/2020
 ms.author: surmb
-ms.openlocfilehash: 05df2144b892aed764f9606fb19bd6a3242b97f3
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 5e5be79371b640431603409a34b1a7812ed5c2a3
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97934899"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98746103"
 ---
 <a name="troubleshoot-backend-health-issues-in-application-gateway"></a>Behandeln von Problemen mit der Back-End-Integrität in Application Gateway
 ==================================================
@@ -21,9 +21,6 @@ ms.locfileid: "97934899"
 --------
 
 Standardmäßig testet Application Gateway Back-End-Server, um deren Integritätsstatus zu überprüfen und zu prüfen, ob sie bereit sind, Anforderungen zu verarbeiten. Benutzer können auch benutzerdefinierte Tests erstellen, um den Hostnamen, den zu überprüfenden Pfad und die Statuscodes, die als fehlerfrei akzeptiert werden sollen, anzugeben. Wenn der Back-End-Server nicht erfolgreich antwortet, wird der Server von Application Gateway in jedem Fall als fehlerhaft markiert, und die Anforderung wird nicht mehr an den Server weitergeleitet. Nachdem der Server erfolgreich reagiert hat, setzt Application Gateway das Weiterleiten der Anforderungen fort.
-
-> [!NOTE]
-> Dieser Artikel enthält Verweise auf den Begriff *Whitelist*, den Microsoft nicht länger verwendet. Sobald der Begriff aus der Software entfernt wurde, wird er auch aus diesem Artikel entfernt.
 
 ### <a name="how-to-check-backend-health"></a>Überprüfen der Back-End-Integrität
 
@@ -245,7 +242,7 @@ Weitere Informationen zum Extrahieren und Hochladen vertrauenswürdiger Stammzer
 
 #### <a name="trusted-root-certificate-mismatch"></a>Konflikt eines vertrauenswürdigen Stammzertifikats
 
-**Nachricht:** The root certificate of the server certificate used by the backend does not match the trusted root certificate added to the application gateway. (Das Stammzertifikat des Serverzertifikats, das vom Back-End verwendet wird, stimmt nicht mit dem vertrauenswürdigen Stammzertifikat überein, das Application Gateway hinzugefügt wurde.) Ensure that you add the correct root certificate to whitelist the backend. (Stellen Sie sicher, dass Sie das richtige Stammzertifikat hinzufügen, um das Back-End in die Whitelist aufzunehmen.)
+**Nachricht:** The root certificate of the server certificate used by the backend does not match the trusted root certificate added to the application gateway. (Das Stammzertifikat des Serverzertifikats, das vom Back-End verwendet wird, stimmt nicht mit dem vertrauenswürdigen Stammzertifikat überein, das Application Gateway hinzugefügt wurde.) Ensure that you add the correct root certificate to allowlist the backend. (Stellen Sie sicher, dass Sie das richtige Stammzertifikat hinzufügen, um das Back-End in die Zulassungsliste aufzunehmen.)
 
 **Ursache:** End-to-End-SSL mit Application Gateway v2 erfordert, dass das Zertifikat des Back-End-Servers überprüft wird, damit der Server als fehlerfrei angesehen wird.
 Damit ein TLS/SSL-Zertifikat als vertrauenswürdig eingestuft wird, muss das Zertifikat des Back-End-Servers von einer Zertifizierungsstelle ausgestellt werden, die im vertrauenswürdigen Speicher von Application Gateway enthalten ist. Wenn das Zertifikat nicht von einer vertrauenswürdigen Zertifizierungsstelle ausgestellt wurde (z. B. bei Verwendung eines selbstsignierten Zertifikats), sollten Benutzer das Zertifikat des Ausstellers in Application Gateway hochladen.

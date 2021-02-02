@@ -8,22 +8,18 @@ ms.topic: conceptual
 ms.date: 11/20/2020
 ms.author: liud
 ms.reviewer: pimorano
-ms.openlocfilehash: 1f1a74f3a26a079039e68eb8e59fac4c18ff0c32
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 3564609d869bef090f0a3db5e6040ba0f5ad80b0
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98219741"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98796960"
 ---
 # <a name="source-control-in-azure-synapse-studio"></a>Quellcodeverwaltung in Azure Synapse Studio
 
-Standardmäßig sind Bearbeitungen in Azure Synapse Studio direkt im Synapse-Dienst verfügbar. Für diese Erfahrung gelten jedoch die folgenden Einschränkungen:
+Standardmäßig sind Bearbeitungen in Azure Synapse Studio direkt im Synapse-Dienst verfügbar. Wenn eine Zusammenarbeit unter Verwendung von Git für die Quellcodeverwaltung erforderlich ist, ermöglicht Ihnen Synapse Studio, Ihren Arbeitsbereich einem Git-Repository, Azure DevOps oder GitHub zuzuordnen. 
 
-- Synapse Studio enthält keinen temporären Speicher zum Speichern der Änderungen. Änderungen können nur über die Schaltfläche **Veröffentlichen** gespeichert und freigegeben werden, und sämtliche Änderungen werden direkt im Synapse-Dienst veröffentlicht.
-
-- Synapse Studio ist nicht für Zusammenarbeit und Versionskontrolle optimiert.
-
-Um die Quellcodeverwaltungs-Funktion bereitzustellen, ermöglicht Ihnen Synapse Studio, Ihren Arbeitsbereich einem Git-Repository, Azure DevOps oder GitHub zuzuordnen. In diesem Artikel wird erläutert, wie Sie in einem Synapse-Arbeitsbereich mit aktiviertem Git-Repository Konfigurationen vornehmen und arbeiten. Außerdem werden einige bewährte Methoden und eine Anleitung zur Problembehandlung vorgestellt.
+In diesem Artikel wird erläutert, wie Sie in einem Synapse-Arbeitsbereich mit aktiviertem Git-Repository Konfigurationen vornehmen und arbeiten. Außerdem werden einige bewährte Methoden und eine Anleitung zur Problembehandlung vorgestellt.
 
 > [!NOTE]
 > Die Git-Integration von Azure Synapse Studio ist in der Azure Government-Cloud nicht verfügbar.
@@ -61,7 +57,7 @@ Wenn Sie eine Verbindung mit dem Git-Repository herstellen, wählen Sie zuerst A
 
 Im Konfigurationsbereich werden die folgenden Azure DevOps-Git-Einstellungen angezeigt:
 
-| Einstellung | BESCHREIBUNG | Wert |
+| Einstellung | Beschreibung | Wert |
 |:--- |:--- |:--- |
 | **Repositorytyp** | Der Typ des Coderepositorys für Azure Repos.<br/> | Azure DevOps Git oder GitHub |
 | **Azure Active Directory** | Ihr Name des Azure AD-Mandanten. | `<your tenant name>` |

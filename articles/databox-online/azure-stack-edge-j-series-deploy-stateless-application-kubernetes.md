@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 08/28/2020
+ms.date: 01/22/2021
 ms.author: alkohli
-ms.openlocfilehash: 6356089daed02270a14903639afee8001153b195
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: b199fdbac4aca7637e07a18383cc7e254f702019
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96447378"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98804842"
 ---
 # <a name="deploy-a-kubernetes-stateless-application-via-kubectl-on-your-azure-stack-edge-pro-gpu-device"></a>Bereitstellen einer zustandslosen Kubernetes-Anwendung auf einem Azure Stack Edge Pro-GPU-Gerät mit kubectl
 
@@ -25,7 +25,7 @@ Bevor Sie einen Kubernetes-Cluster erstellen und das `kubectl`-Befehlszeilentool
 
 - Sie verfügen über Anmeldeinformationen für ein Azure Stack Edge Pro-Gerät mit einem Knoten.
 
-- Windows PowerShell 5.0 oder höher ist auf einem Windows-Clientsystem installiert, um auf das Azure Stack Edge Pro-Gerät zuzugreifen. Sie können auch einen anderen Client mit einem unterstützten Betriebssystem verwenden. In diesem Artikel wird die Vorgehensweise bei Verwendung eines Windows-Clients beschrieben. Informationen zum Herunterladen der neuesten Version von Windows PowerShell finden Sie unter [Installieren von Windows PowerShell](/powershell/scripting/install/installing-windows-powershell?view=powershell-7).
+- Windows PowerShell 5.0 oder höher ist auf einem Windows-Clientsystem installiert, um auf das Azure Stack Edge Pro-Gerät zuzugreifen. Sie können auch einen anderen Client mit einem unterstützten Betriebssystem verwenden. In diesem Artikel wird die Vorgehensweise bei Verwendung eines Windows-Clients beschrieben. Informationen zum Herunterladen der neuesten Version von Windows PowerShell finden Sie unter [Installieren von Windows PowerShell](/powershell/scripting/install/installing-windows-powershell?view=powershell-7&preserve-view=true).
 
 - Compute ist auf dem Azure Stack Edge Pro-Gerät aktiviert. Wechseln Sie zur Seite **Compute** der lokalen Benutzeroberfläche des Geräts, um den Computevorgang zu aktivieren. Wählen Sie dann eine Netzwerkschnittstelle aus, die Sie für Compute aktivieren möchten. Wählen Sie **Aktivieren** aus. Das Aktivieren des Computevorgangs führt zur Erstellung eines virtuellen Switches auf Ihrem Gerät für diese Netzwerkschnittstelle. Weitere Informationen finden Sie unter [Aktivieren des Computingnetzwerks auf Ihrem Azure Stack Edge Pro-Gerät](azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy.md).
 
@@ -55,7 +55,7 @@ So prüfen Sie die Version von `kubectl`
    kubectl version
    ```
     
-   Beispiel für die Ausgabe:
+   Ein Beispiel für die Ausgabe ist unten dargestellt:
     
    ```powershell
    PS C:\WINDOWS\system32> C:\windows\system32\kubectl.exe version
@@ -71,7 +71,7 @@ So prüfen Sie die Version von `kubectl`
    kubectl get pods -n <namespace-string>
    ```
     
-   Hier ist ein Beispiel für die Verwendung des Befehls angegeben:
+   Hier ist ein Beispiel für die Verwendung des Befehls:
     
    ```powershell
    PS C:\WINDOWS\system32> kubectl get pods -n "test1"
@@ -123,7 +123,7 @@ Befolgen Sie diese Schritte, um eine nginx-Bereitstellung zu erstellen:
 
    In diesem Beispiel ist der Pfad zur YAML-Datei der Anwendung eine externe Quelle.
 
-   Hier folgt ein Beispiel für die Verwendung des Befehls und der Ausgabe:
+   Hier folgt ein Beispiel für die Verwendung des Befehls und seine Ausgabe:
 
    ```powershell
    PS C:\WINDOWS\system32> kubectl apply -f https://k8s.io/examples/application/deployment.yaml -n "test1"
@@ -131,7 +131,7 @@ Befolgen Sie diese Schritte, um eine nginx-Bereitstellung zu erstellen:
    deployment.apps/nginx-deployment created
    ```
 
-   Alternativ können Sie das folgende Markdown auf Ihrem lokalen Computer speichern und den Pfad und Dateinamen im Parameter *-f* ersetzen. Beispiel: „C:\Kubernetes\deployment.yaml“. Hier folgt die Konfiguration für die Bereitstellung der Anwendung:
+   Alternativ können Sie das folgende Markdown auf Ihrem lokalen Computer speichern und den Pfad und Dateinamen im Parameter *-f* ersetzen. Beispiel: „C:\Kubernetes\deployment.yaml“. Die Konfiguration für die Bereitstellung der Anwendung wäre:
 
    ```markdown
    apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
@@ -163,7 +163,7 @@ Befolgen Sie diese Schritte, um eine nginx-Bereitstellung zu erstellen:
    kubectl describe deployment nginx-deployment -n <namespace-string>
    ```
 
-   Hier folgt ein Beispiel für die Verwendung des Befehls und der Ausgabe:
+   Ein Beispiel für die Nutzung des Befehls mit Ausgabe sehen Sie unten:
     
    ```powershell
    PS C:\Users\user> kubectl describe deployment nginx-deployment -n "test1"
@@ -203,13 +203,13 @@ Befolgen Sie diese Schritte, um eine nginx-Bereitstellung zu erstellen:
      Normal  ScalingReplicaSet  2m22s  deployment-controller  Scaled up replica set nginx-deployment-5754944d6c to 2
    ```
 
-   Wenn Sie sich die Einstellung *Replikate* genau ansehen, werden Sie Folgendes feststellen:
+   Für die Einstellung *Replicas* sehen Sie:
     
    ```powershell
    Replicas:               2 desired | 2 updated | 2 total | 2 available | 0 unavailable
    ```
 
-   Die Einstellung *Replikate* zeigt an, dass Ihre Bereitstellungsspezifikation zwei Pods erforderte, dass diese Pods erstellt und aktualisiert wurden und dass sie für Sie einsatzbereit sind.
+   Die Einstellung *Replicas* zeigt an, dass Ihre Bereitstellungsspezifikation zwei Pods erfordert, dass diese Pods erstellt und aktualisiert wurden und für Sie einsatzbereit sind.
 
    > [!NOTE]
    > Eine Replikatgruppe ersetzt Pods, die aus einem bestimmten Grund gelöscht oder beendet werden, z. B. bei einem Ausfall des Geräteknotens oder einem störenden Geräteupgrade. Aus diesem Grund empfiehlt es sich, eine Replikatgruppe auch dann zu verwenden, wenn in der Anwendung nur ein einziger Pod erforderlich ist.
@@ -220,7 +220,7 @@ Befolgen Sie diese Schritte, um eine nginx-Bereitstellung zu erstellen:
    kubectl get pods -l app=nginx -n <namespace-string>
    ```
     
-   Hier folgt ein Beispiel für die Verwendung des Befehls und der Ausgabe:
+   Ein Beispiel für die Nutzung des Befehls mit Ausgabe sehen Sie unten:
     
    ```powershell
    PS C:\Users\user> kubectl get pods -l app=nginx -n "test1"
@@ -238,7 +238,7 @@ Befolgen Sie diese Schritte, um eine nginx-Bereitstellung zu erstellen:
    kubectl describe pod <podname-string> -n <namespace-string>
    ```
 
-   Hier folgt ein Beispiel für die Verwendung des Befehls und der Ausgabe:
+  Ein Beispiel für die Nutzung des Befehls mit Ausgabe sehen Sie unten:
 
    ```powershell
    PS C:\Users\user> kubectl describe pod "nginx-deployment-5754944d6c-7wqjd" -n "test1"
@@ -295,14 +295,14 @@ Befolgen Sie diese Schritte, um eine nginx-Bereitstellung zu erstellen:
 
 ### <a name="rescale-the-application-deployment-by-increasing-the-replica-count"></a>Neuskalieren der Anwendungsbereitstellung durch Erhöhen der Replikatanzahl
 
-Jeder Pods ist dazu bestimmt, eine einzelne Instanz einer bestimmten Anwendung auszuführen. Wenn Sie die Anwendung horizontal skalieren möchten, um mehrere Instanzen auszuführen, können Sie die Anzahl der Pods erhöhen, d. h. einen für jede Instanz. In Kubernetes wird dies als Replikation bezeichnet.
+Jeder Pods ist dazu bestimmt, eine einzelne Instanz einer bestimmten Anwendung auszuführen. Wenn Sie die Anwendung horizontal skalieren möchten, um mehrere Instanzen auszuführen, können Sie die Anzahl der Pods auf einen für jede Instanz erhöhen. In Kubernetes wird dies als Replikation bezeichnet.
 Sie können die Anzahl der Pods in Ihrer Anwendungsbereitstellung erhöhen, indem Sie eine neue YAML-Datei anwenden. Die YAML-Datei ändert die Einstellung der Replikate auf 4, wodurch sich die Anzahl der Pods in Ihrer Bereitstellung auf vier Pods erhöht. So erhöhen Sie die Anzahl von Pods von 2 auf 4
 
 ```powershell
 PS C:\WINDOWS\system32> kubectl apply -f https://k8s.io/examples/application/deployment-scale.yaml -n "test1"
 ```
 
-Alternativ können Sie das folgende Markdown auf Ihrem lokalen Computer speichern und den Pfad und Dateinamen für den Parameter *-f* für `kubectl apply` ersetzen. Beispiel: „C:\Kubernetes\deployment-scale.yaml“. Hier folgt die Konfiguration für die Skalierung der Anwendungsbereitstellung:
+Alternativ können Sie das folgende Markdown auf Ihrem lokalen Computer speichern und den Pfad und Dateinamen für den Parameter *-f* für `kubectl apply` ersetzen. Beispiel: „C:\Kubernetes\deployment-scale.yaml“. Die Konfiguration für die Skalierung der Anwendungsbereitstellung wäre:
 
 ```markdown
 apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
@@ -354,7 +354,7 @@ Um die Bereitstellung einschließlich aller Pods zu löschen, müssen Sie `kubec
    kubectl delete deployment nginx-deployment -n <namespace-string>
    ```
 
-Hier ist ein Beispiel für die Verwendung und Ausgabe des Befehls angegeben:
+Hier ist ein Beispiel für die Verwendung des Befehls mit Ausgabe:
 
 ```powershell
 PS C:\Users\user> kubectl delete deployment nginx-deployment -n "test1"

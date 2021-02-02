@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 01/05/2021
+ms.date: 01/25/2021
 ms.author: alkohli
-ms.openlocfilehash: d601c6191da9d555e54c1d58c122420510d288fc
-ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
+ms.openlocfilehash: 8b233211f47250d4742d35cd0782cdd241839496
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97955551"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98804859"
 ---
 # <a name="deploy-custom-script-extension-on-vms-running-on-your-azure-stack-edge-pro-device"></a>Bereitstellen von benutzerdefinierten Skripterweiterungen auf VMs, die auf Ihrem Azure Stack Edge Pro-Gerät ausgeführt werden
 
@@ -62,13 +62,13 @@ If your script is on a local server, then you may still need additional firewall
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-1. [Laden Sie die VM-Vorlagen und Parameterdateien](https://aka.ms/ase-vm-templates) auf Ihrem Clientcomputer herunter. Entpacken Sie die Vorlagen und Dateien in einem Verzeichnis, das Sie als Arbeitsverzeichnis verwenden.
+1. [Laden Sie die VM-Vorlagen und Parameterdateien](https://aka.ms/ase-vm-templates) auf Ihrem Clientcomputer herunter. Entpacken Sie den Download in einem Verzeichnis, das Sie als Arbeitsverzeichnis verwenden.
 
 1. Sie sollten bereits eine VM erstellt und auf Ihrem Gerät bereitgestellt haben. Führen Sie zum Erstellen von VMs alle Schritte unter [Bereitstellen von VMs auf Ihrem Azure Stack Edge Pro-Gerät mithilfe von Vorlagen](azure-stack-edge-gpu-deploy-virtual-machine-templates.md) aus.
 
     Wenn Sie ein Skript von einem externen Speicherort wie GitHub oder Azure Storage herunterladen müssen, aktivieren Sie beim Konfigurieren des Computenetzwerks den Port, der mit dem Internet verbunden ist, für Compute. Dies ermöglicht es Ihnen, das Skript herunterzuladen.
 
-    Im folgenden Beispiel ist Port 2 mit dem Internet verbunden und wird zum Aktivieren des Computenetzwerks verwendet. Wenn Sie im vorausgehenden Schritt festgestellt haben, dass Kubernetes nicht benötigt wird, können Sie die IP-Adresse des Kubernetes-Knotens und die IP-Zuweisung für externe Dienste überspringen.    
+    Im folgenden Beispiel ist Port 2 mit dem Internet verbunden und wird zum Aktivieren des Computenetzwerks verwendet. Wenn Sie im vorausgehenden Schritt festgestellt haben, dass Kubernetes nicht benötigt wird, können Sie die IP-Adresse des Kubernetes-Knotens und die IP-Zuweisung für externe Dienste überspringen.
 
     ![Aktivieren von Computeeinstellungen für den mit dem Internet verbundenen Port](media/azure-stack-edge-gpu-deploy-gpu-virtual-machine/enable-compute-network-1.png)
 
@@ -115,7 +115,7 @@ Die Datei `addCSExtWindowsVM.parameters.json` kann die folgenden Parameter entha
 ```
 Geben Sie den Namen Ihrer VM, den Namen für die Erweiterung und den auszuführenden Befehl an.
 
-Im Folgenden finden Sie die Beispielparameterdatei, die in diesem Artikel verwendet wurde. 
+Im Folgenden finden Sie die Beispielparameterdatei, die in diesem Artikel verwendet wurde.
 
 ```powershell
 {
@@ -396,4 +396,4 @@ RequestId IsSuccessStatusCode StatusCode ReasonPhrase
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Azure Resource Manager-Cmdlets](/powershell/module/azurerm.resources/?view=azurermps-6.13.0)
+[Azure Resource Manager-Cmdlets](/powershell/module/azurerm.resources/?view=azurermps-6.13.0&preserve-view=true)

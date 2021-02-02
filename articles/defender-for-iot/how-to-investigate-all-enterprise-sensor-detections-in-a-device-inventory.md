@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/02/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 47e3833fe9f35467c1d16945a9b336d4014b2efd
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 9da5c8c89ee124e527584164b21b096ac815e5ca
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97836047"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98625463"
 ---
 # <a name="investigate-all-enterprise-sensor-detections-in-the-device-inventory"></a>Untersuchen aller Unternehmenssensorerkennungen im Gerätebestand
 
@@ -67,7 +67,7 @@ Sie können diese Informationen verwenden, um sich ein umfassenderes Bild zu mac
 
 - Benutzer, die sich bei Geräten angemeldet haben
 
-:::image type="content" source="media/how-to-work-with-asset-inventory-information/asset-inventory-screen-with-items-highlighted-v2.png" alt-text="Datentabelle auf dem Bildschirm „Ressourcenbestand“":::
+:::image type="content" source="media/how-to-work-with-asset-inventory-information/asset-inventory-screen-with-items-highlighted-v2.png" alt-text="Datentabelle auf dem Gerätebestandbildschirm.":::
 
 Sie können Daten wie folgt integrieren:
 
@@ -131,13 +131,13 @@ Verwenden Sie API-Befehle für Defender für IoT, um diese Informationen abzuruf
 
 Der Gerätebestand lässt sich filtern, um relevante Spalten anzuzeigen. So können Sie sich zum Beispiel PLC-Geräteinformationen anzeigen lassen.
 
-:::image type="content" source="media/how-to-work-with-asset-inventory-information/asset-inventory-view-v2.png" alt-text="Screenshot: Ressourcenbestand":::
+:::image type="content" source="media/how-to-work-with-asset-inventory-information/asset-inventory-view-v2.png" alt-text="Screenshot des Gerätebestands.":::
 
 Der Filter wird gelöscht, wenn Sie das Fenster schließen.
 
 Wenn Sie einen Filter mehrmals verwenden möchten, können Sie diesen Filter oder eine Kombination von Filtern speichern. Im linken Bereich können Sie die gespeicherten Filter anzeigen:
 
-:::image type="content" source="media/how-to-work-with-asset-inventory-information/view-your-asset-inventories-v2.png" alt-text="Bildschirm: Ressourcenbestände":::
+:::image type="content" source="media/how-to-work-with-asset-inventory-information/view-your-asset-inventories-v2.png" alt-text="Bildschirm: Gerätebestände.":::
 
 So filtern Sie den Gerätebestand
 
@@ -187,7 +187,7 @@ Die folgenden Tools sind verfügbar, um Geräte und Geräteinformationen aus der
 
 - **Anzeigen von Geräteeigenschaften:** Beispielsweise der Sensor, der die Geräte- und grundlegenden Geräteeigenschaften überwacht. Klicken Sie mit der rechten Maustaste auf das Gerät, um die Geräteeigenschaften anzuzeigen.
 
-  :::image type="content" source="media/how-to-work-with-asset-inventory-information/asset-properties-v2.png" alt-text="Screenshot: Ansicht „Ressourceneigenschaften“":::
+  :::image type="content" source="media/how-to-work-with-asset-inventory-information/asset-properties-v2.png" alt-text="Screenshot: Ansicht „Geräteeigenschaften“.":::
 
 - **Einem Gerät zugeordnete Warnungen:** Klicken Sie mit der rechten Maustaste auf das Gerät, um die damit verbundenen Warnungen anzuzeigen.
 

@@ -3,12 +3,12 @@ title: Neuerungen in Azure Backup
 description: Erfahren Sie mehr über die neuen Features in Azure Backup.
 ms.topic: conceptual
 ms.date: 11/11/2020
-ms.openlocfilehash: 62a6146990863c339917777b2624fee76ebe60d8
-ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
+ms.openlocfilehash: 5343ec2ae04853492abbaace2432cf94c9fb5a07
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98569418"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98762377"
 ---
 # <a name="whats-new-in-azure-backup"></a>Neuerungen in Azure Backup
 
@@ -19,25 +19,25 @@ Weitere Informationen zu den neuen Releases erhalten Sie, indem Sie diese Seite 
 ## <a name="updates-summary"></a>Übersicht über Updates
 
 - Januar 2021
-  - [Azure Disk Backup (Vorschau)](disk-backup-overview.md)
-  - [Verschlüsselung ruhender Daten mit von Kunden verwalteten Schlüsseln jetzt allgemein verfügbar](encryption-at-rest-with-cmk.md)
+  - [Azure Disk Backup (Vorschau)](#azure-disk-backup-in-preview)
+  - [Verschlüsselung ruhender Daten mit von Kunden verwalteten Schlüsseln (allgemeine Verfügbarkeit)](#encryption-at-rest-using-customer-managed-keys)
 - November 2020
   - [Azure Resource Manager-Vorlage für die Sicherung der Azure-Dateifreigabe](#azure-resource-manager-template-for-afs-backup)
-  - [Inkrementelle Sicherungen für SAP HANA-Datenbanken auf Azure-VMs](#incremental-backups-for-sap-hana-databases)
+  - [Inkrementelle Sicherungen für SAP HANA-Datenbanken auf Azure-VMs (in der Vorschau)](#incremental-backups-for-sap-hana-databases-in-preview)
 - September 2020
-  - [Backup Center](#backup-center)
-  - [Sichern von Azure Database for PostgreSQL](#backup-azure-database-for-postgresql)
+  - [Backup Center (in der Vorschau)](#backup-center-in-preview)
+  - [Sichern von Azure Database for PostgreSQL (in der Vorschau)](#backup-azure-database-for-postgresql-in-preview)
   - [Selektive Datenträgersicherung und -wiederherstellung](#selective-disk-backup-and-restore)
-  - [Regionsübergreifende Wiederherstellung für SQL Server- und SAP HANA-Datenbanken auf Azure-VMs](#cross-region-restore-for-sql-server-and-sap-hana)
-  - [Unterstützung für die Sicherung von VMs mit bis zu 32 Datenträgern](#support-for-backup-of-vms-with-up-to-32-disks)
+  - [Regionsübergreifende Wiederherstellung für SQL Server- und SAP HANA-Datenbanken auf Azure-VMs (in der Vorschau)](#cross-region-restore-for-sql-server-and-sap-hana-in-preview)
+  - [Unterstützung für die Sicherung von VMs mit bis zu 32 Datenträgern (allgemeine Verfügbarkeit)](#support-for-backup-of-vms-with-up-to-32-disks)
   - [Vereinfachte Konfiguration von Sicherungen für SQL auf Azure-VMs](#simpler-backup-configuration-for-sql-in-azure-vms)
-  - [Sichern von SAP HANA in Azure Virtual Machines unter RHEL](#backup-sap-hana-in-rhel-azure-virtual-machines)
-  - [Zonenredundanter Speicher (ZRS) für Sicherungsdaten](#zone-redundant-storage-zrs-for-backup-data)
+  - [Sichern von SAP HANA in Azure Virtual Machines unter RHEL (in der Vorschau)](#backup-sap-hana-in-rhel-azure-virtual-machines-in-preview)
+  - [Zonenredundanter Speicher (ZRS) für Sicherungsdaten (in der Vorschau)](#zone-redundant-storage-zrs-for-backup-data-in-preview)
   - [Vorläufiges Löschen für SQL Server- und SAP HANA-Workloads auf Azure-VMs](#soft-delete-for-sql-server-and-sap-hana-workloads)
 
 ## <a name="azure-disk-backup-in-preview"></a>Azure Disk Backup (Vorschau)
 
-Azure Disk Backup bietet eine schlüsselfertige Lösung, die eine Verwaltung des Lebenszyklus von Momentaufnahmen für [Azure Managed Disks](https://docs.microsoft.com/azure/virtual-machines/managed-disks-overview) durch Automatisierung einer periodischen Erstellung von Momentaufnahmen und Aufbewahrung der Momentaufnahmen für eine konfigurierte Dauer unter Verwendung der Sicherungsrichtlinie bereitstellt. Sie können die Datenträgermomentaufnahmen ohne Infrastrukturkosten und ohne die Notwendigkeit von benutzerdefinierten Skripts oder jeglichem Verwaltungsaufwand verwalten. Es handelt sich um eine absturzsichere Sicherungslösung, die eine zeitpunktgenaue Sicherung eines verwalteten Datenträgers mit [inkrementellen Momentaufnahmen](https://docs.microsoft.com/azure/virtual-machines/windows/disks-incremental-snapshots) mit Unterstützung für mehrere Sicherungen pro Tag vornimmt. Es handelt sich außerdem um eine Lösung ohne Agent, die die Leistung der Produktionsanwendung nicht beeinträchtigt. Sie unterstützt die Sicherung und Wiederherstellung der Betriebssystem- und regulären Datenträger (einschließlich gemeinsam genutzter Datenträger), unabhängig davon, ob sie derzeit mit einem ausgeführten virtuellen Azure-Computer verbunden sind oder nicht.
+Azure Disk Backup bietet eine schlüsselfertige Lösung, die eine Verwaltung des Lebenszyklus von Momentaufnahmen für [Azure Managed Disks](../virtual-machines/managed-disks-overview.md) durch Automatisierung einer periodischen Erstellung von Momentaufnahmen und Aufbewahrung der Momentaufnahmen für eine konfigurierte Dauer unter Verwendung der Sicherungsrichtlinie bereitstellt. Sie können die Datenträgermomentaufnahmen ohne Infrastrukturkosten und ohne die Notwendigkeit von benutzerdefinierten Skripts oder jeglichem Verwaltungsaufwand verwalten. Es handelt sich um eine absturzsichere Sicherungslösung, die eine zeitpunktgenaue Sicherung eines verwalteten Datenträgers mit [inkrementellen Momentaufnahmen](../virtual-machines/disks-incremental-snapshots.md) mit Unterstützung für mehrere Sicherungen pro Tag vornimmt. Es handelt sich außerdem um eine Lösung ohne Agent, die die Leistung der Produktionsanwendung nicht beeinträchtigt. Sie unterstützt die Sicherung und Wiederherstellung der Betriebssystem- und regulären Datenträger (einschließlich gemeinsam genutzter Datenträger), unabhängig davon, ob sie derzeit mit einem ausgeführten virtuellen Azure-Computer verbunden sind oder nicht.
 
 Weitere Informationen finden Sie unter [Azure Disk Backup (Vorschau)](disk-backup-overview.md).
 
@@ -53,13 +53,13 @@ Azure Backup unterstützt jetzt das Konfigurieren von Sicherungen für bestehend
 
 Weitere Informationen finden Sie unter [Azure Resource Manager-Vorlagen für Azure Backup](backup-rm-template-samples.md).
 
-## <a name="incremental-backups-for-sap-hana-databases"></a>Inkrementelle Sicherungen für SAP HANA-Datenbanken
+## <a name="incremental-backups-for-sap-hana-databases-in-preview"></a>Inkrementelle Sicherungen für SAP HANA-Datenbanken (in der Vorschau)
 
 Azure Backup unterstützt jetzt inkrementelle Sicherungen für SAP HANA-Datenbanken, die auf Azure-VMs gehostet werden. Dies ermöglicht schnellere und kostengünstigere Sicherungen Ihrer SAP HANA-Daten.
 
 Weitere Informationen finden Sie unter den [verschiedenen Optionen, die während der Erstellung einer Sicherungsrichtlinie verfügbar sind](sap-hana-faq-backup-azure-vm.md#policy), und unter [Erstellen einer Sicherungsrichtlinie für SAP HANA-Datenbanken](tutorial-backup-sap-hana-db.md#creating-a-backup-policy).
 
-## <a name="backup-center"></a>Backup Center
+## <a name="backup-center-in-preview"></a>Backup Center (in der Vorschau)
 
 Azure Backup bietet eine neue native Verwaltungsfunktion, mit der Sie die gesamte Sicherungsumgebung über eine zentrale Konsole verwalten können. Backup Center bietet Ihnen die Möglichkeit, den Schutz von Daten im großen Stil und auf einheitliche Weise zu überwachen, auszuführen, zu steuern und zu optimieren, und zwar konsistent mit den nativen Verwaltungsfunktionen von Azure.
 
@@ -67,7 +67,7 @@ Mit Backup Center erhalten Sie eine aggregierte Ansicht Ihres Bestands über Abo
 
 Weitere Informationen finden Sie in der [Übersicht über Backup Center](backup-center-overview.md).
 
-## <a name="backup-azure-database-for-postgresql"></a>Sichern von Azure Database for PostgreSQL
+## <a name="backup-azure-database-for-postgresql-in-preview"></a>Sichern von Azure Database for PostgreSQL (in der Vorschau)
 
 Azure Backup und die Azure-Datenbankdienste wurden zusammengeführt, um eine Sicherungslösung für Unternehmen mit Azure PostgreSQL zu entwickeln (jetzt in der Vorschauphase). Jetzt können Sie Ihre Datenschutz- und Complianceanforderungen mit einer vom Kunden gesteuerten Sicherungsrichtlinie erfüllen, die die Beibehaltung von Sicherungen für bis zu 10 Jahre ermöglicht. Damit können Sie die Sicherungs- und Wiederherstellungsvorgänge auf der Ebene der einzelnen Datenbanken präzise steuern. Ebenso können Sie problemlos Wiederherstellungen verschiedener PostgreSQL-Versionen oder Wiederherstellungen in Blob Storage durchführen.
 
@@ -79,7 +79,7 @@ Azure Backup unterstützt die Sicherung aller Datenträger (Betriebssystem und D
 
 Weitere Informationen finden Sie unter [Selektives Sichern und Wiederherstellen von Datenträgern auf Azure-VMs](selective-disk-backup-restore.md).
 
-## <a name="cross-region-restore-for-sql-server-and-sap-hana"></a>Regionsübergreifende Wiederherstellung für SQL Server und SAP HANA
+## <a name="cross-region-restore-for-sql-server-and-sap-hana-in-preview"></a>Regionsübergreifende Wiederherstellung für SQL Server und SAP HANA (in der Vorschau)
 
 Mit der Einführung der regionsübergreifenden Wiederherstellung können Sie nun beliebig Wiederherstellungen in einer sekundären Region initiieren. So können Sie tatsächliche Probleme aufgrund von Ausfällen in einer primären Region für Ihre Umgebung verringern. Dadurch werden die Wiederherstellungen in der sekundären Region vollständig vom Kunden gesteuert. Azure Backup verwendet für solche Wiederherstellungen die gesicherten Daten, die in die sekundäre Region repliziert wurden.
 
@@ -99,13 +99,13 @@ Das Konfigurieren von Sicherungen für Ihre SQL Server-Instanzen auf Azure-VMs 
 
 Weitere Informationen finden Sie unter [Sichern einer SQL Server-Instanz über den VM-Bereich](backup-sql-server-vm-from-vm-pane.md).
 
-## <a name="backup-sap-hana-in-rhel-azure-virtual-machines"></a>Sichern von SAP HANA in Azure Virtual Machines unter RHEL
+## <a name="backup-sap-hana-in-rhel-azure-virtual-machines-in-preview"></a>Sichern von SAP HANA in Azure Virtual Machines unter RHEL (in der Vorschau)
 
 Azure Backup ist die native Sicherungslösung für Azure und von SAP als BackInt zertifiziert. Azure Backup bietet jetzt Unterstützung für Red Hat Enterprise Linux (RHEL), eines der am häufigsten verwendeten Linux-Betriebssysteme, auf denen SAP HANA ausgeführt wird.
 
 Weitere Informationen finden Sie in der [Unterstützungsmatrix für die Sicherung von SAP HANA-Datenbanken auf virtuellen Azure-Computern](sap-hana-backup-support-matrix.md#scenario-support).
 
-## <a name="zone-redundant-storage-zrs-for-backup-data"></a>Zonenredundanter Speicher (ZRS) für Sicherungsdaten
+## <a name="zone-redundant-storage-zrs-for-backup-data-in-preview"></a>Zonenredundanter Speicher (ZRS) für Sicherungsdaten (in der Vorschau)
 
 Azure Storage bietet über verschiedene Redundanzoptionen eine hervorragende Balance zwischen hoher Leistung, Hochverfügbarkeit und hoher Datenresilienz. Mit Azure Backup können Sie diese Vorteile auch auf die Sicherungsdaten ausweiten. So haben Sie z. B. die Möglichkeit, Ihre Sicherungen in lokal redundantem Speicher (LRS) und georedundantem Speicher (GRS) zu speichern. Darüber hinaus gibt es nun zusätzliche Dauerhaftigkeitsoptionen mit zusätzlicher Unterstützung für zonenredundanten Speicher (ZRS).
 

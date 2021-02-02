@@ -11,14 +11,14 @@ ms.date: 07/13/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: da80af9fe598186fa25d59601c9fa4faccb4286a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d67460c654c854c5a855560dde1d67732fa818c7
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87447045"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98681954"
 ---
-# <a name="import-and-export-azure-ad-connect-configuration-settings-public-preview"></a>Importieren und Exportieren von Azure AD Connect-Konfigurationseinstellungen (öffentliche Vorschau)
+# <a name="import-and-export-azure-ad-connect-configuration-settings"></a>Importieren und Exportieren von Azure AD Connect-Konfigurationseinstellungen 
 
 Azure Active Directory (Azure AD) Connect-Bereitstellungen variieren von Installationen im Express-Modus mit einer einzigen Gesamtstruktur bis zu komplexen Bereitstellungen, die mithilfe benutzerdefinierter Synchronisierungsregeln über mehrere Gesamtstrukturen synchronisiert werden. Aufgrund der großen Anzahl von Konfigurationsoptionen und -mechanismen ist es von entscheidender Bedeutung, dass Sie verstehen, welche Einstellungen aktiv sind, und schnell in der Lage sind, einen Server mit einer identischen Konfiguration bereitzustellen. Mit diesem Feature wird die Möglichkeit eingeführt, die Konfiguration eines bestimmten Synchronisierungsservers zu katalogisieren und die Einstellungen in eine neue Bereitstellung zu importieren. Unterschiedliche Momentaufnahmen der Synchronisierungseinstellungen können verglichen werden, um die Unterschiede zwischen zwei Servern oder zwischen zwei Zuständen desselben Servers zu unterschiedlichen Zeitpunkten zu visualisieren.
 
@@ -77,10 +77,10 @@ Gehen Sie wie folgt vor, um die Einstellungen zu migrieren:
 
    ![Screenshot: Azure AD Connect-Verzeichnisse](media/how-to-connect-import-export-config/migrate1.png)
 
-1. Führen Sie das Skript wie nachfolgend dargestellt aus, und speichern Sie das gesamte Serverkonfigurationsverzeichnis. Kopieren Sie dieses Verzeichnis auf den neuen Stagingserver. Sie müssen den gesamten Ordner **Exported-ServerConfiguration-** * auf den neuen Server kopieren.
+1. Führen Sie das Skript wie nachfolgend dargestellt aus, und speichern Sie das gesamte Serverkonfigurationsverzeichnis. Kopieren Sie dieses Verzeichnis auf den neuen Stagingserver. Sie müssen den gesamten Ordner **Exported-ServerConfiguration-** _ auf den neuen Server kopieren.
 
-   ![Screenshot eines Skripts in Windows PowerShell](media/how-to-connect-import-export-config/migrate2.png)
-   ![Screenshot des Vorgangs zum Kopieren des Ordners „Exported-ServerConfiguration-*“](media/how-to-connect-import-export-config/migrate3.png)
+   ![Screenshot eines Skripts in Windows PowerShell.](media/how-to-connect-import-export-config/migrate2.png)
+   ![Screenshot des Vorgangs zum Kopieren des Ordners „Exported-ServerConfiguration“_.](media/how-to-connect-import-export-config/migrate3.png)
 
 1. Starten Sie **Azure AD Connect**, indem Sie auf dem Desktop auf das entsprechende Symbol doppelklicken. Akzeptieren Sie die Microsoft-Software-Lizenzbedingungen, und wählen Sie dann auf der nächsten Seite die Option **Anpassen** aus.
 1. Aktivieren Sie das Kontrollkästchen **Synchronisierungseinstellungen importieren**. Wählen Sie **Durchsuchen** aus, um nach dem kopierten Ordner „Exported-ServerConfiguration-*“ zu suchen. Wählen Sie die Datei „MigratedPolicy.json“ aus, um die migrierten Einstellungen zu importieren.
@@ -91,7 +91,7 @@ Gehen Sie wie folgt vor, um die Einstellungen zu migrieren:
 
 Der Vergleich der ursprünglich importierten Einstellungsdatei mit der exportierten Einstellungsdatei des neu bereitgestellten Servers ist ein wichtiger Schritt, um die Unterschiede zwischen der beabsichtigten und der resultierenden Bereitstellung zu verstehen. Mit Ihrer bevorzugten Anwendung zum Textvergleich erhalten Sie sofort eine Darstellung, in der alle gewünschten oder versehentlichen Änderungen hervorgehoben sind.
 
-Auch wenn viele ehemals manuelle Konfigurationsschritte jetzt nicht mehr nötig sind, müssen Sie weiterhin den Zertifizierungsprozess Ihrer Organisation befolgen, um sicherzustellen, dass keine zusätzliche Konfiguration erforderlich ist. Eine solche Konfiguration muss möglicherweise erfolgen, wenn Sie erweiterte Einstellungen verwenden, die derzeit nicht im öffentlichen Vorschaurelease der Einstellungsverwaltung erfasst werden.
+Auch wenn viele ehemals manuelle Konfigurationsschritte jetzt nicht mehr nötig sind, müssen Sie weiterhin den Zertifizierungsprozess Ihrer Organisation befolgen, um sicherzustellen, dass keine zusätzliche Konfiguration erforderlich ist. Eine solche Konfiguration könnte erfolgen, wenn Sie erweiterte Einstellungen verwenden, die derzeit nicht in diesem Release der Einstellungsverwaltung erfasst werden.
 
 Folgende Einschränkungen sind bekannt:
 - **Synchronisierungsregeln**: Die Rangfolge für eine benutzerdefinierte Regel muss im reservierten Bereich zwischen 0 und 99 liegen, um Konflikte mit den Standardregeln von Microsoft zu vermeiden. Wenn Sie eine benutzerdefinierte Regel außerhalb des reservierten Bereichs einfügen, wird Ihre benutzerdefinierte Regel beim Hinzufügen von Standardregeln zur Konfiguration möglicherweise verschoben. Ein ähnliches Problem tritt auf, wenn Ihre Konfiguration geänderte Standardregeln enthält. Es wird davon abgeraten, Änderungen an einer Standardregel vorzunehmen, weil Regeln dadurch wahrscheinlich falsch angeordnet werden.

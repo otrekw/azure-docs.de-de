@@ -7,14 +7,14 @@ ms.subservice: azure-arc-data
 author: twright-msft
 ms.author: twright
 ms.reviewer: mikeray
-ms.date: 09/22/2020
+ms.date: 12/09/2020
 ms.topic: how-to
-ms.openlocfilehash: 208c9b4172719b876766f0c4d07a17caa24bfd63
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 22ad2d65710a3fc149f5a83fb511244ac3be2203
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92310946"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98733238"
 ---
 # <a name="create-data-controller-in-azure-data-studio"></a>Erstellen eines Datencontrollers in Azure Data Studio
 
@@ -34,33 +34,37 @@ Führen Sie die folgenden Schritte aus, um mithilfe des Bereitstellungs-Assisten
 
 1. Klicken Sie in Azure Data Studio im linken Navigationsbereich auf die Registerkarte „Verbindungen“.
 2. Klicken Sie oben im Bereich „Verbindungen“ auf die Schaltfläche mit den drei Auslassungspunkten **...** , und wählen Sie **Neue Bereitstellung** aus.
-3. Wählen Sie im Assistenten für neue Bereitstellungen **Azure Arc Data Controller** (Azure Arc-Datencontroller) aus, aktivieren Sie das Kontrollkästchen für die Zustimmung zur Lizenz, und klicken Sie dann unten auf die Schaltfläche **Auswählen** .
-4. Verwenden Sie die standardmäßige kubeconfig-Datei, oder wählen Sie eine andere aus.  Klicken Sie auf **Weiter** .
-5. Wählen Sie einen Kubernetes-Clusterkontext aus. Klicken Sie auf **Weiter** .
-6. Wählen Sie abhängig von Ihrem Kubernetes-Zielcluster eine Datei für das Bereitstellungskonfigurationsprofil aus. **Klicken Sie auf „Weiter“** .
-8. Wählen Sie das gewünschte Abonnement und die gewünschte Ressourcengruppe aus.
-9. Geben Sie einen Namen für den Datencontroller und für den Namespace ein, in dem der Datencontroller erstellt wird.  
+3. Wählen Sie im neuen Bereitstellungs-Assistenten **Azure Arc-Datencontroller** aus, und klicken Sie dann unten auf die Schaltfläche **Auswählen**.
+4. Stellen Sie sicher, dass die notwendigen Tools in den erforderlichen Versionen verfügbar sind. **Klicken Sie auf „Weiter“**.
+5. Verwenden Sie die standardmäßige kubeconfig-Datei, oder wählen Sie eine andere aus.  Klicken Sie auf **Weiter**.
+6. Wählen Sie einen Kubernetes-Clusterkontext aus. Klicken Sie auf **Weiter**.
+7. Wählen Sie abhängig von Ihrem Kubernetes-Zielcluster ein Bereitstellungskonfigurationsprofil aus. **Klicken Sie auf „Weiter“**.
+8. Wenn Sie die Azure Red Hat OpenShift- oder Red Hat OpenShift-Containerplattform verwenden, wenden Sie Einschränkungen beim Sicherheitskontext an. Befolgen Sie die Anweisungen unter [Anwenden einer Einschränkung beim Sicherheitskontext auf Azure Arc-fähige Datendienste in OpenShift](how-to-apply-security-context-constraint.md).
 
-> [!NOTE]
-> Wenn der Namespace bereits vorhanden ist, wird er verwendet, wenn er noch keine anderen Kubernetes-Objekte (Pods usw.) enthält.  Wenn der Namespace nicht vorhanden ist, wird versucht, den Namespace zu erstellen.  Zum Erstellen eines Namespace in einem Kubernetes-Cluster sind Administratorrechte für den Kubernetes-Cluster erforderlich.  Wenn Sie keine Administratorrechte für den Kubernetes-Cluster besitzen, bitten Sie den Kubernetes-Clusteradministrator, die ersten Schritte im Artikel zum [Erstellen eines Datencontrollers mithilfe nativer Kubernetes-Tools](./create-data-controller-using-kubernetes-native-tools.md) auszuführen. Diese Schritte müssen von einem Kubernetes-Administrator ausgeführt werden, bevor Sie diesen Assistenten abschließen.
+   >[!IMPORTANT]
+   >Auf der Azure Red Hat OpenShift- oder Red Hat OpenShift-Containerplattform müssen Sie die Einschränkung beim Sicherheitskontext anwenden, bevor Sie den Datencontroller erstellen.
 
-> [!NOTE]
-> Hinweis: Der Datencontroller- und Namespacename werden verwendet, um eine benutzerdefinierte Ressource im Kubernetes-Cluster zu erstellen. Daher müssen sie den [Namenskonventionen von Kubernetes](https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names) entsprechen.
-
-10. Wählen Sie einen Azure-Standort aus.
+1. Wählen Sie das gewünschte Abonnement und die gewünschte Ressourcengruppe aus.
+1. Wählen Sie einen Azure-Standort aus.
    
-> [!NOTE]
-> Der hier ausgewählte Azure-Standort ist der Ort, an dem die *Metadaten* zum Datencontroller und die davon verwalteten Datenbankinstanzen in Azure gespeichert werden.  Der Datencontroller und die Datenbankinstanzen werden tatsächlich an diesem Ort für Ihren Kubernetes-Cluster erstellt.
+   Der hier ausgewählte Azure-Standort ist der Ort, an dem die *Metadaten* zum Datencontroller und die davon verwalteten Datenbankinstanzen in Azure gespeichert werden. Der Datencontroller und die Datenbankinstanzen werden tatsächlich an diesem Ort für Ihren Kubernetes-Cluster erstellt.
 
-11.  Geben Sie einen Benutzernamen und ein Kennwort ein, und bestätigen Sie das Kennwort für das Konto des Datencontrolleradministrators.
+10. Wählen Sie den entsprechenden Konnektivitätsmodus aus. Weitere Informationen finden Sie unter [Konnektivitätsmodi](https://docs.microsoft.com/azure/azure-arc/data/connectivity). **Klicken Sie auf „Weiter“**.
 
-> [!NOTE]
-> Das Kennwort muss mindestens 8 Zeichen umfassen.
+    Bei Verwendung des direkten Konnektivitätsmodus müssen die Anmeldeinformationen des Dienstprinzipals wie unter [Erstellen eines Dienstprinzipals](upload-metrics-and-logs-to-azure-monitor.md#create-service-principal) beschrieben festgelegt werden.
 
-1.  Klicken Sie auf **Weiter** .
-2.  Überprüfen Sie dieses, und klicken Sie auf **Skript in Notebook schreiben** .
-3.  **Überprüfen Sie das generierte Notebook** .  Nehmen Sie alle erforderlichen Änderungen vor, z. B. an Namen von Speicherklassen oder Diensttypen.
-4.  Klicken Sie oben im Notebook auf **Alle ausführen** .
+11. Geben Sie einen Namen für den Datencontroller und für den Namespace ein, in dem der Datencontroller erstellt wird.
+
+    Der Datencontroller- und Namespacename werden verwendet, um eine benutzerdefinierte Ressource im Kubernetes-Cluster zu erstellen. Daher müssen sie den [Namenskonventionen von Kubernetes](https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names) entsprechen.
+    
+    Wenn der Namespace bereits vorhanden ist, wird er verwendet, wenn er noch keine anderen Kubernetes-Objekte (Pods usw.) enthält.  Wenn der Namespace nicht vorhanden ist, wird versucht, den Namespace zu erstellen.  Zum Erstellen eines Namespace in einem Kubernetes-Cluster sind Administratorrechte für den Kubernetes-Cluster erforderlich.  Wenn Sie keine Administratorrechte für den Kubernetes-Cluster besitzen, bitten Sie den Kubernetes-Clusteradministrator, die ersten Schritte im Artikel zum [Erstellen eines Datencontrollers mithilfe nativer Kubernetes-Tools](./create-data-controller-using-kubernetes-native-tools.md) auszuführen. Diese Schritte müssen von einem Kubernetes-Administrator ausgeführt werden, bevor Sie diesen Assistenten abschließen.
+
+
+12. Wählen Sie die Speicherklasse aus, in der der Datencontroller bereitgestellt wird. 
+13.  Geben Sie einen Benutzernamen und ein Kennwort ein, und bestätigen Sie das Kennwort für das Konto des Datencontrolleradministrators. Klicken Sie auf **Weiter**.
+
+14. Überprüfen Sie die Bereitstellungskonfiguration.
+15. Klicken Sie auf **Bereitstellen**, um die gewünschte Konfiguration bereitzustellen, oder **Skript in Notebook**, um die Bereitstellungsanweisungen zu überprüfen bzw. erforderliche Änderungen z. B. an Speicherklassennamen oder Diensttypen vorzunehmen. Klicken Sie oben im Notebook auf **Alle ausführen**.
 
 ## <a name="monitoring-the-creation-status"></a>Überwachen des Erstellungsstatus
 

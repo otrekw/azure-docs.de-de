@@ -1,22 +1,26 @@
 ---
-title: Konfigurieren eines benutzerdefinierten Domänennamens in Cloud Services | Microsoft Docs
+title: Konfigurieren eines benutzerdefinierten Domänennamens in Cloud Services (klassisch) | Microsoft-Dokumentation
 description: Hier erfahren Sie, wie Sie Ihre Azure-Anwendung oder -Daten durch das Konfigurieren von DNS-Einstellungen auf einer benutzerdefinierten Domäne im Internet verfügbar machen.  In diesen Beispielen wird das Azure-Portal verwendet.
-services: cloud-services
-documentationcenter: .net
-author: tgore03
-ms.service: cloud-services
 ms.topic: article
-ms.date: 07/05/2017
+ms.service: cloud-services
+ms.date: 10/14/2020
 ms.author: tagore
-ms.openlocfilehash: 012801d0aada8ee55bb0eb05eaf75caa95878765
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: bced2345473dbcbb5b9adf0269de0bef0549e862
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92069924"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98742368"
 ---
-# <a name="configuring-a-custom-domain-name-for-an-azure-cloud-service"></a>Konfigurieren eines benutzerdefinierten Domänennamens für einen Azure-Clouddienst
-Wenn Sie einen Clouddienst erstellen, weist Azure diesen einer Unterdomäne von **cloudapp.net**zu. Wenn der Clouddienst beispielsweise den Namen „contoso“ hat, können Ihre Benutzer auf die Anwendung über eine URL wie `http://contoso.cloudapp.net` zugreifen. Darüber hinaus weist Azure eine virtuelle IP-Adresse zu.
+# <a name="configuring-a-custom-domain-name-for-an-azure-cloud-service-classic"></a>Konfigurieren eines benutzerdefinierten Domänennamens für einen Azure-Clouddienst (klassisch)
+
+> [!IMPORTANT]
+> [Azure Cloud Services (erweiterter Support)](../cloud-services-extended-support/overview.md) ist ein neues auf Azure Resource Manager basierendes Bereitstellungsmodell für Azure Cloud Services. Im Zuge dieser Änderung wurden Azure Cloud Services-Instanzen, die unter dem Azure Service Manager-basierten Bereitstellungsmodell ausgeführt werden, in „Cloud Services (klassisch)“ umbenannt. Für alle neuen Bereitstellungen wird [Azure Cloud Services (erweiterter Support)](../cloud-services-extended-support/overview.md) verwendet.
+
+Wenn Sie einen Clouddienst erstellen, weist Azure diesen einer Unterdomäne von **cloudapp.net** zu. Wenn der Clouddienst beispielsweise den Namen „contoso“ hat, können Ihre Benutzer auf die Anwendung über eine URL wie `http://contoso.cloudapp.net` zugreifen. Darüber hinaus weist Azure eine virtuelle IP-Adresse zu.
 
 Sie können Ihre Anwendung jedoch auch unter Ihrem eigenen Domänennamen zur Verfügung stellen, beispielsweise **contoso.com**. In diesem Artikel erfahren Sie, wie Sie einen benutzerdefinierten Domänennamen für Clouddienst-Webrollen reservieren oder konfigurieren.
 
@@ -44,7 +48,7 @@ Ein CNAME-Eintrag ordnet einem kanonischen Domänennamen eine *spezifische* Dom�
 > Bei einigen Domänenregistrierungen können Sie Unterdomänen nur mit einem CNAME-Eintrag wie „www\.contoso.com“ zuweisen und nicht mit einem Stammnamen wie „contoso.com“. Weitere Informationen zu CNAME-Datensätzen finden Sie in der durch Ihre Registrierung zur Verfügung gestellten Dokumentation, [dem Wikipedia-Eintrag "CNAME Resource Record"](https://en.wikipedia.org/wiki/CNAME_record) oder dem Dokument [IETF Domain Names - Implementation and Specification](https://tools.ietf.org/html/rfc1035) (IEFT-Domänennamen – Implementierung und Spezifizierung, in englischer Sprache).
 
 ### <a name="a-record"></a>A-Eintrag
-Ein *A*-Eintrag weist einer IP-Adresse eine Domäne wie **contoso.com** oder **www\..contoso.com**, *oder eine Domäne mit Platzhalter* wie **\*.contoso.com** zu. Im Falle eines Azure Cloud Service ist dies die virtuelle IP des Service. Der Vorteil eines A-Eintrags gegenüber einem CNAME-Eintrag ist, dass Sie einen Eintrag mit einem Platzhalter verwenden können, beispielsweise \* **.contoso.com**, der Anfragen für mehrere Unterdomänen verarbeiten kann, beispielsweise **mail.contoso.com**, **login.contoso.com** oder **www\..contoso.com**.
+Ein *A*-Eintrag weist einer IP-Adresse eine Domäne wie **contoso.com** oder **www\..contoso.com**, *oder eine Domäne mit Platzhalter* wie **\*.contoso.com** zu. Im Falle eines Azure Cloud Service ist dies die virtuelle IP des Service. Der Vorteil eines A-Eintrags gegenüber einem CNAME-Eintrag ist, dass Sie einen Eintrag mit einem Platzhalter verwenden können, beispielsweise \**_.contoso.com_*, der Anfragen für mehrere Unterdomänen verarbeiten kann, beispielsweise **mail.contoso.com**, **login.contoso.com** oder **www\..contoso.com**.
 
 > [!NOTE]
 > Da ein A-Datensatz einer statischen IP-Adresse zugeordnet ist, kann er Änderungen an der IP-Adresse des Clouddiensts nicht automatisch auflösen. Die von Ihrem Clouddienst verwendete IP-Adresse wird zum ersten Mal zugewiesen, wenn Sie sie an einem leeren Steckplatz bereitstellen (entweder Produktion oder Staging). Wenn Sie die Bereitstellung für den Steckplatz löschen, wird die IP-Adresse von Azure freigegeben und zukünftigen Bereitstellungen an dem Steckplatz wird eine neue IP-Adresse zugewiesen.

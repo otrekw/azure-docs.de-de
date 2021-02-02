@@ -12,12 +12,12 @@ ms.date: 12/14/2020
 ms.author: kenwith
 ms.reviewer: jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 37d9c24d58e0dd9fb10db607ef1b96de0a44eb78
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: 8f5324e967c5a67ee77559087a02c3421611d8f3
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97399365"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98752869"
 ---
 # <a name="publish-your-app-to-the-azure-ad-app-gallery"></a>Veröffentlichen Ihrer App im Azure AD-App-Katalog
 
@@ -175,7 +175,7 @@ Die Unterstützung der [SCIM](https://aka.ms/scimoverview)-Bereitstellung ist ei
 Weitere Informationen zu den SCIM-Standards und den Vorteilen für Ihre Kunden finden Sie unter [Provisioning with SCIM – getting started](https://aka.ms/scimoverview) (Erste Schritte bei der Bereitstellung mit SCIM).
 
 ### <a name="understand-the-azure-ad-scim-implementation"></a>Verstehen der Azure AD-SCIM-Implementierung
-Weitere Informationen zur Azure AD-Implementierung von SCIM finden Sie unter [Erstellen eines SCIM-Endpunkts und Konfigurieren der Benutzerbereitstellung mit Azure AD](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups).
+Weitere Informationen zur Azure AD-Implementierung von SCIM finden Sie unter [Erstellen eines SCIM-Endpunkts und Konfigurieren der Benutzerbereitstellung mit Azure AD](../app-provisioning/use-scim-to-provision-users-and-groups.md).
 
 ### <a name="implement-scim"></a>Implementieren von SCIM
 Azure AD stellt [Referenzcode](https://aka.ms/scimoverview) bereit, um Sie beim Erstellen eines SCIM-Endpunkts zu unterstützen. Es gibt auch viele Bibliotheken/Referenzen von Drittanbietern, die Sie auf GitHub finden können.  
@@ -186,7 +186,7 @@ Sie benötigen einen Azure AD Mandanten, um Ihre App zu testen. Informationen z
 
 Alternativ wird zusammen mit jedem Microsoft 365-Abonnement ein Azure AD-Mandant eingerichtet. Informationen zum Einrichten einer kostenlosen Microsoft 365-Entwicklungsumgebung finden Sie unter [Teilnehmen am Microsoft 365-Entwicklerprogramm](/office/developer-program/microsoft-365-developer-program).
 
-Wenn Sie über einen Mandanten verfügen, müssen Sie das einmalige Anmelden und die [Bereitstellung](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups#step-4-integrate-your-scim-endpoint-with-the-azure-ad-scim-client) testen. 
+Wenn Sie über einen Mandanten verfügen, müssen Sie das einmalige Anmelden und die [Bereitstellung](../app-provisioning/use-scim-to-provision-users-and-groups.md#step-4-integrate-your-scim-endpoint-with-the-azure-ad-scim-client) testen. 
 
 Im Fall von **OIDC- oder OATH-Anwendungen**[registrieren Sie Ihre Anwendung](quickstart-register-app.md) als mehrinstanzenfähige Anwendung. ‎Wählen Sie unter „Unterstützte Kontotypen“ die Option „Konten in allen Organisationsverzeichnissen und persönliche Microsoft-Konten“ aus.
 
@@ -274,7 +274,7 @@ Wenn Sie Ihre im Katalog aufzulistende Anwendung mithilfe von Kennwort-SSO hinzu
 
 ![Auflisten einer Kennwort-SSO-Anwendung im Katalog](./media/howto-app-gallery-listing/passwordsso.png)
 
-Wenn Sie einen [SCIM](../app-provisioning/use-scim-to-provision-users-and-groups.md) 2.0-Endpunkt für die Benutzerbereitstellung implementieren, wählen Sie die dargestellte Option aus. Wenn Sie in der Onboardinganforderung das Schema bereitstellen, befolgen Sie [diese Anweisungen](https://docs.microsoft.com/azure/active-directory/app-provisioning/export-import-provisioning-configuration), um Ihr Schema herunterzuladen. Wir verwenden das konfigurierte Schema beim Testen der nicht aus dem Katalog stammenden Anwendung zum Erstellen der Kataloganwendung. 
+Wenn Sie einen [SCIM](../app-provisioning/use-scim-to-provision-users-and-groups.md) 2.0-Endpunkt für die Benutzerbereitstellung implementieren, wählen Sie die dargestellte Option aus. Wenn Sie in der Onboardinganforderung das Schema bereitstellen, befolgen Sie [diese Anweisungen](../app-provisioning/export-import-provisioning-configuration.md), um Ihr Schema herunterzuladen. Wir verwenden das konfigurierte Schema beim Testen der nicht aus dem Katalog stammenden Anwendung zum Erstellen der Kataloganwendung. 
 
    ![Anfordern der Benutzerbereitstellung](./media/howto-app-gallery-listing/user-provisioning.png)
 

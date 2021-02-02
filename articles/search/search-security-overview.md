@@ -7,22 +7,22 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 12/15/2020
+ms.date: 01/22/2020
 ms.custom: references_regions
-ms.openlocfilehash: ffb5a78c13413a46565a9c57c87dc8273742fd24
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 49364681f0c5b4b6cc4d5f20778edb61e9f6f5b3
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97563448"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98695779"
 ---
 # <a name="security-in-azure-cognitive-search---overview"></a>Sicherheit in Azure Cognitive Search: Übersicht
 
-In diesem Artikel werden die wichtigsten Sicherheitsfeatures in Azure Cognitive Search beschrieben, mit denen Inhalte und Vorgänge geschützt werden können.
+In diesem Artikel werden die Sicherheitsfeatures in Azure Cognitive Search beschrieben, mit denen Inhalte und Vorgänge geschützt werden.
 
-+ Auf Speicherebene ist die Verschlüsselung ruhender Daten für alle vom Dienst verwalteten Inhalte, die auf Datenträgern gespeichert werden, integriert: Indizes, Synonymzuordnungen und die Definitionen von Indexern, Datenquellen und Skillsets. Azure Cognitive Search unterstützt auch das Hinzufügen von kundenseitig verwalteten Schlüsseln (Customer-Managed Keys, CMK) zur zusätzlichen Verschlüsselung indexierter Inhalte. Bei Diensten, die nach dem 1. August 2020 erstellt wurden, erstreckt sich die CMK-Verschlüsselung auch auf Daten auf temporären Datenträgern, um eine vollständige doppelte Verschlüsselung der indexierten Inhalte zu erreichen.
++ Auf Speicherebene ist die Datenverschlüsselung für alle vom Dienst verwalteten Inhalte, die auf Datenträgern gespeichert werden, integriert: Indizes, Synonymzuordnungen und die Definitionen von Indexern, Datenquellen und Skillsets. Optional können Sie kundenseitig verwaltete Schlüssel (Customer-Managed Keys CMK) zur zusätzlichen Verschlüsselung indizierter Inhalte hinzufügen. Bei Diensten, die nach dem 1. August 2020 erstellt wurden, erstreckt sich die CMK-Verschlüsselung auch auf Daten auf temporären Datenträgern, um eine vollständige doppelte Verschlüsselung der indexierten Inhalte zu erreichen.
 
-+ Die Eingangssicherheit schützt den Endpunkt des Suchdiensts mit steigendem Sicherheitsniveau: von API-Schlüsseln in der Anforderung über Eingangsregeln in der Firewall bis zu privaten Endpunkten, die Ihren Dienst vollständig vom öffentlichen Internet abschirmen.
++ Die Eingangssicherheit betrifft den Schutz des Endpunkts des Suchdiensts mit steigendem Sicherheitsniveau: von API-Schlüsseln in der Anforderung über Eingangsregeln in der Firewall bis zu privaten Endpunkten, die Ihren Dienst vollständig vom öffentlichen Internet abschirmen.
 
 + Die Ausgangssicherheit betrifft Indexer, die Inhalte aus externen Quellen abrufen. Richten Sie für ausgehende Anforderungen eine verwaltete Identität ein, um die Suche zu einem vertrauenswürdigen Dienst zu machen, wenn auf Daten aus Azure Storage, Azure SQL, Cosmos DB oder anderen Azure-Datenquellen zugegriffen wird. Eine verwaltete Identität stellt einen Ersatz für Anmeldeinformationen oder Zugriffsschlüssel für die Verbindung dar. Ausgehende Sicherheit wird in diesem Artikel nicht behandelt. Weitere Informationen zu dieser Funktion finden Sie unter [Herstellen einer Verbindung mit einer Datenquelle mithilfe einer verwalteten Identität](search-howto-managed-identities-data-sources.md).
 

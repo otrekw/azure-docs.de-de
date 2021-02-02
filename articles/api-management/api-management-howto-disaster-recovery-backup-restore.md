@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 12/05/2020
 ms.author: apimpm
-ms.openlocfilehash: 25356e7101293fc27d4107b3a618cfc481aee969
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: 223d119786d99eac611ece597fc0e8de4fcaf6bd
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96779582"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98762405"
 ---
 # <a name="how-to-implement-disaster-recovery-using-service-backup-and-restore-in-azure-api-management"></a>So implementieren Sie die Notfallwiederherstellung mit Sichern und Wiederherstellen von Diensten in Azure API Management
 
@@ -221,7 +221,7 @@ Die Wiederherstellung ist ein länger anhaltender Vorgang, der bis zum Abschluss
 
 ## <a name="what-is-not-backed-up"></a>Nicht gesicherte Elemente
 -   **Nutzungsdaten** zum Erstellen von Analyseberichten sind in der Sicherung **nicht enthalten**. Verwenden Sie [Azure API Management REST API][azure api management rest api] , um regelmäßig Analyseberichte zur Aufbewahrung abzurufen.
--   [TLS/SSL-Zertifikate für die benutzerdefinierte Domäne](configure-custom-domain.md)
+-   [TLS/SSL-Zertifikate für die benutzerdefinierte Domäne](configure-custom-domain.md).
 -   [Benutzerdefiniertes Zertifizierungsstellenzertifikat](api-management-howto-ca-certificates.md), wozu Zwischen- oder Stammzertifikate gehören, die vom Kunden hochgeladen wurden.
 -   Integrationseinstellungen für [virtuelle Netzwerke](api-management-using-with-vnet.md)
 -   Konfiguration der [verwalteten Identität](api-management-howto-use-managed-service-identity.md)

@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 09/22/2020
+ms.date: 01/25/2021
 ms.author: alkohli
-ms.openlocfilehash: c2a14c12baac29d73754bb17e3ca386cc48e1ba0
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 5704f88d8099966eedcb7143085130ad1376d742
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96449225"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98804903"
 ---
 # <a name="use-kubectl-to-run-a-kubernetes-stateful-application-with-a-persistentvolume-on-your-azure-stack-edge-pro-device"></a>Verwenden von kubectl zum Ausführen einer zustandsbehafteten Kubernetes-Anwendung mit PersistentVolume auf einem Azure Stack Edge Pro-Gerät
 
@@ -26,18 +26,18 @@ Azure Stack Edge Pro unterstützt auch das Ausführen von Azure SQL Edge-Contain
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Stellen Sie vor der Bereitstellung der zustandsbehafteten Anwendung sicher, dass die folgenden Voraussetzungen auf Ihrem Gerät und dem Client erfüllt sind, den Sie für den Zugriff auf das Gerät verwenden:
+Erfüllen Sie vor der Bereitstellung der zustandsbehafteten Anwendung die folgenden Voraussetzungen auf Ihrem Gerät und dem Client, den Sie für den Zugriff auf das Gerät verwenden:
 
 ### <a name="for-device"></a>Für das Gerät
 
 - Sie verfügen über Anmeldeinformationen für ein Azure Stack Edge Pro-Gerät mit einem Knoten.
-    - Das Gerät ist aktiviert. Weitere Informationen finden Sie unter [Aktivieren des Geräts](azure-stack-edge-gpu-deploy-activate.md).
-    - Auf dem Gerät wurde die Computerolle über das Azure-Portal konfiguriert, und es verfügt über einen Kubernetes-Cluster. Weitere Informationen finden Sie unter [Konfigurieren von Compute](azure-stack-edge-gpu-deploy-configure-compute.md).
+    - Das Gerät ist aktiviert. Siehe [Aktivieren des Geräts](azure-stack-edge-gpu-deploy-activate.md).
+    - Das Gerät verfügt über die über das Azure-Portal konfigurierte Computerolle und umfasst einen Kubernetes-Cluster. Weitere Informationen finden Sie unter [Konfigurieren von Compute](azure-stack-edge-gpu-deploy-configure-compute.md).
 
 ### <a name="for-client-accessing-the-device"></a>Für den Client, der auf das Gerät zugreift
 
 - Sie verfügen über ein Windows-Clientsystem, das für den Zugriff auf das Azure Stack Edge Pro-Gerät verwendet wird.
-    - Auf dem Client wird Windows PowerShell 5.0 oder höher ausgeführt. Informationen zum Herunterladen der neuesten Version von Windows PowerShell finden Sie unter [Installieren von Windows PowerShell](/powershell/scripting/install/installing-windows-powershell?view=powershell-7).
+    - Auf dem Client wird Windows PowerShell 5.0 oder höher ausgeführt. Informationen zum Herunterladen der neuesten Version von Windows PowerShell finden Sie unter [Installieren von Windows PowerShell](/powershell/scripting/install/installing-windows-powershell?view=powershell-7&preserve-view=true).
     
     - Sie können auch einen anderen Client mit einem [unterstützten Betriebssystem](azure-stack-edge-gpu-system-requirements.md#supported-os-for-clients-connected-to-device) verwenden. In diesem Artikel wird die Vorgehensweise bei Verwendung eines Windows-Clients beschrieben. 
     
@@ -49,8 +49,8 @@ Stellen Sie vor der Bereitstellung der zustandsbehafteten Anwendung sicher, dass
     
     - Stellen Sie sicher, dass die `kubectl`-Clientversion um nicht mehr als eine Version von der Kubernetes-Masterversion abweicht, die auf dem Azure Stack Edge Pro-Gerät ausgeführt wird. 
         - Verwenden Sie `kubectl version`, um die kubectl-Version zu überprüfen, die auf dem Client ausgeführt wird. Notieren Sie sich den gesamten Versionsnamen.
-        - Wechseln Sie auf der lokalen Benutzeroberfläche des Azure Stack Edge Pro-Geräts zu **Übersicht**, und notieren Sie sich die Kubernetes-Softwarenummer. 
-        - Überprüfen Sie anhand der Zuordnungen in der Liste der unterstützten Kubernetes-Versionen, ob diese beiden Versionen kompatibel sind. <!-- insert link-->. 
+        - Navigieren Sie auf der lokalen Benutzeroberfläche des Azure Stack Edge Pro-Geräts zu **Übersicht**, und notieren Sie sich die Kubernetes-Softwarenummer. 
+        - Überprüfen Sie anhand der Zuordnungen in der Liste der unterstützten Kubernetes-Versionen, ob diese beiden Versionen kompatibel sind.<!-- insert link--> 
 
 
 Sie können nun eine zustandsbehaftete Anwendung auf dem Azure Stack Edge Pro-Gerät bereitstellen. 
@@ -327,7 +327,7 @@ kubectl delete deployment <deployment-name>,svc <service-name> -n <your-namespac
 kubectl delete pvc <your-pvc-name> -n <your-namespace>
 ```
 
-Hier ist eine Beispielausgabe, wenn Bereitstellung und Dienst gelöscht werden.
+Hier ist eine Beispielausgabe für den Fall, dass Bereitstellung und Dienst gelöscht werden.
 
 ```powershell
 C:\Users\user>kubectl delete deployment,svc mysql -n userns1
@@ -335,13 +335,13 @@ deployment.apps "mysql" deleted
 service "mysql" deleted
 C:\Users\user>
 ```
-Hier sehen Sie eine Beispielausgabe, wenn Sie den PVC löschen.
+Hier ist eine Beispielausgabe für den Fall, dass Sie den PVC löschen.
 
 ```powershell
 C:\Users\user>kubectl delete pvc mysql-pv-claim -n userns1
 persistentvolumeclaim "mysql-pv-claim" deleted
 C:\Users\user>
-```                                                                                         
+```
 
 Das PV ist nicht mehr an den PVC gebunden, weil der PVC gelöscht wurde. Da das PV bei der Erstellung der Freigabe bereitgestellt wurde, müssen Sie die Freigabe löschen. Folgen Sie diesen Schritten:
 

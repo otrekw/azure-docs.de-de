@@ -3,75 +3,72 @@ title: Problembehandlung bei der Azure VM-Dateiwiederherstellung
 description: Erfahren Sie, wie Sie Probleme bei der Wiederherstellung von Dateien und Ordnern aus einer Azure-VM-Sicherung beheben.
 ms.topic: troubleshooting
 ms.date: 07/12/2020
-ms.openlocfilehash: bd369577e320cf6dca510183948f41e6cf91779b
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: c4d0d233237cb477d72efea0b91d4e5288e2a302
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97605291"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98735876"
 ---
-# <a name="troubleshooting-issues-in-file-recovery-of-azure-vm-backup"></a>Behandlung von Problemen bei der Dateiwiederherstellung aus einer Azure VM-Sicherung
+# <a name="troubleshoot-issues-in-file-recovery-of-an-azure-vm-backup"></a>Behandlung von Problemen bei der Dateiwiederherstellung aus einer Azure VM-Sicherung
 
-Dieser Artikel enthält Schritte zur Problembehandlung, die Ihnen helfen können, Azure Backup-Fehler im Zusammenhang mit Problemen beim Wiederherstellen von Dateien und Ordnern aus einer Azure-VM-Sicherung zu beheben.
+Dieser Artikel enthält Schritte zur Problembehandlung, die Ihnen helfen können, Probleme beim Wiederherstellen von Dateien und Ordnern aus einer Azure-VM-Sicherung (Virtual Machine, virtueller Computer) zu beheben.
 
 ## <a name="common-error-messages"></a>Häufige Fehlermeldungen
 
-### <a name="exception-caught-while-connecting-to-target"></a>Ausnahme beim Herstellen einer Verbindung mit dem Ziel
+Dieser Abschnitt enthält Schritte zum Beheben von Problemen, wenn Fehlermeldungen auftreten.
+
+### <a name="exception-caught-while-connecting-to-target"></a>„Ausnahme beim Herstellen einer Verbindung mit dem Ziel“
 
 **Mögliche Ursache:** Das Skript kann nicht auf den Wiederherstellungspunkt zugreifen.
 
-**Empfohlene Maßnahme:** Überprüfen Sie, ob der Computer alle [Zugriffsanforderungen](https://docs.microsoft.com/azure/backup/backup-azure-restore-files-from-vm#step-4-access-requirements-to-successfully-run-the-script) erfüllt.
+**Empfohlene Maßnahme:** Um dieses Problem zu beheben, führen Sie die Schritte unter [Das Skript wird ausgeführt, aber bei der Verbindung zum iSCSI-Ziel ist ein Fehler aufgetreten](#the-script-runs-but-the-connection-to-the-iscsi-target-failed) aus.
 
-### <a name="the-target-has-already-been-logged-in-via-an-iscsi-session"></a>Das Ziel wurde bereits über eine iSCSI-Sitzung angemeldet.
+### <a name="the-target-has-already-been-logged-in-via-an-iscsi-session"></a>„Das Ziel wurde bereits über eine iSCSI-Sitzung angemeldet“
 
 **Mögliche Ursache:** Das Skript wurde bereits auf demselben Computer ausgeführt, und die Laufwerke wurden angefügt.
 
-**Empfohlene Maßnahme:** Die Volumes des Wiederherstellungspunkts wurden bereits angefügt. Sie wurden ggf. nicht mit denselben Laufwerkbuchstaben des ursprünglichen virtuellen Computers eingebunden. Durchsuchen Sie im Datei-Explorer alle verfügbaren Volumes.
+**Empfohlene Maßnahme:** Die Volumes des Wiederherstellungspunkts wurden bereits angefügt. Sie können nicht mit denselben Laufwerkbuchstaben des ursprünglichen virtuellen Computers eingebunden werden. Durchsuchen Sie im Datei-Explorer die verfügbaren Volumes.
 
-### <a name="this-script-is-invalid-because-the-disks-have-been-dismounted-via-portalexceeded-the-12-hr-limit-download-a-new-script-from-the-portal"></a>Dieses Skript ist ungültig, da die Bereitstellung der Datenträger über das Portal aufgehoben bzw. das 12-Stunden-Limit überschritten wurde. Herunterladen eines neuen Skripts aus dem Portal
+### <a name="this-script-is-invalid-because-the-disks-have-been-dismounted-via-portalexceeded-the-12-hr-limit-download-a-new-script-from-the-portal"></a>„Dieses Skript ist ungültig, da die Bereitstellung der Datenträger über das Portal aufgehoben bzw. das 12-Stunden-Limit überschritten wurde. Laden Sie ein neues Skript aus dem Portal herunter“
 
 **Mögliche Ursache:** Die Bereitstellung der Datenträger über das Portal wurde aufgehoben, oder das 12-Stunden-Limit wurde überschritten.
 
-**Empfohlene Maßnahme:** Das Skript wird 12 Stunden nach dem Zeitpunkt des Downloads ungültig und kann nicht mehr ausgeführt werden. Besuchen Sie das Portal, und laden Sie ein neues Skript herunter, um die Dateiwiederherstellung fortzusetzen.
+**Empfohlene Maßnahme:** 12 Stunden nach dem Herunterladen wird das Skript ungültig und kann nicht ausgeführt werden. Laden Sie im Portal ein neues Skript herunter, um die Dateiwiederherstellung fortzusetzen.
 
-## <a name="troubleshooting-common-scenarios"></a>AKS-Problembehandlung
+### <a name="iscsi_tcp-module-cant-be-loaded-or-iscsi_tcp_module-not-found"></a>iscsi_tcp_module kann nicht geladen werden (oder) iscsi_tcp_module kann nicht gefunden werden
 
-Dieser Abschnitt enthält Schritte zum Beheben von Problemen, die beim Herunterladen und Ausführen des Skripts für Dateiwiederherstellung auftreten können.
+**Empfohlene Maßnahme:** Um dieses Problem zu beheben, führen Sie die Schritte in [Das Skript wird erfolgreich heruntergeladen, aber bei der Ausführung tritt ein Fehler auf](#the-script-downloads-successfully-but-fails-to-run) aus.
 
-### <a name="cant-download-the-script"></a>Skript kann nicht heruntergeladen werden
+## <a name="common-problems"></a>Häufige Probleme
 
-Empfohlene Maßnahme:
+Dieser Abschnitt enthält Schritte zum Beheben häufig auftretender Probleme, die beim Herunterladen und Ausführen des Skripts für die Dateiwiederherstellung auftreten können.
 
-1. Sorgen Sie dafür, dass Sie alle [erforderlichen Berechtigungen zum Herunterladen des Skripts](https://docs.microsoft.com/azure/backup/backup-azure-restore-files-from-vm#select-recovery-point-who-can-generate-script) haben.
-1. Vergewissern Sie sich, dass eine Verbindung mit den Ziel-IP-Adressen in Azure besteht.
+### <a name="you-cant-download-the-script"></a>Sie können das Skript nicht herunterladen
 
-Führen Sie zum Überprüfen der Verbindung einen der folgenden Befehl an einer Eingabeaufforderung mit erhöhten Rechten aus.
+1. Sorgen Sie dafür, dass Sie die [erforderlichen Berechtigungen zum Herunterladen des Skripts](./backup-azure-restore-files-from-vm.md#select-recovery-point-who-can-generate-script) haben.
+1. Überprüfen Sie die Verbindung mit den Azure-Ziel-APIs. Führen Sie einen der folgenden Befehle in einer Eingabeaufforderung mit erhöhten Rechten aus:
 
-`nslookup download.microsoft.com`
+   `nslookup download.microsoft.com`
 
-oder
+    oder
 
-`ping download.microsoft.com`
+    `ping download.microsoft.com`
 
 ### <a name="the-script-downloads-successfully-but-fails-to-run"></a>Das Skript wird erfolgreich heruntergeladen, aber bei der Ausführung tritt ein Fehler auf.
 
-#### <a name="for-sles-12-sp4-os-linux"></a>Bei SLES 12 SP4 OS (Linux)
+Während der Ausführung des Python-Skripts für die Wiederherstellung auf Elementebene (Item Level Recovery, ILR) unter SUSE Linux Enterprise Server 12 SP4 tritt ein Fehler „iscsi_tcp_module kann nicht geladen werden“ oder „iscsi_tcp_module kann nicht gefunden werden“ auf.
 
-**Fehler:** „iscsi_tcp_module“ nicht gefunden
+**Mögliche Ursache:** Das ILR-Modul verwendet **iscsi_tcp**, um eine TCP-Verbindung mit dem Backup-Dienst herzustellen. Als Teil von SLES 12 SP4 entfernte SUSE **iscsi_tcp** aus dem open-iscsi-Paket, sodass der ILR-Vorgang zu einem Fehler führt.
 
-**Mögliche Ursache:** Während der Ausführung des Python-Skripts für die Wiederherstellung auf Elementebene (Item Level Recovery, ILR) unter der SUSE Linux-Betriebssystemversion 12sp4 tritt ein Fehler des Typs **_iscsi_tcp-Modul kann nicht geladen werden_* _ auf.
+**Empfohlene Maßnahme:**  Die Ausführung des Dateiwiederherstellungsskripts wird auf VMs mit SUSE 12 SP4 nicht unterstützt. Wiederholen Sie den Wiederherstellungsvorgang unter einer älteren Version als SUSE 12 SP4.
 
-Das ILR-Modul verwendet _ *iscsi_tcp**, um eine TCP-Verbindung mit dem Backup-Dienst herzustellen. Als Teil von Release 12SP4 entfernte SUSE **iscsi_tcp** aus dem open-iscsi-Paket, sodass der ILR-Vorgang zu einem Fehler führt.
+### <a name="the-script-runs-but-the-connection-to-the-iscsi-target-failed"></a>Das Skript wird ausgeführt, aber beim Herstellen der Verbindung mit dem iSCSI-Ziel ist ein Fehler aufgetreten
 
-**Empfohlene Maßnahme:**  Die Ausführung des Dateiwiederherstellungsskripts wird auf VMs mit SUSE 12SP4 nicht unterstützt. Wiederholen Sie den Wiederherstellungsvorgang unter einer älteren Version als SUSE 12SP4.
+Möglicherweise wird die Fehlermeldung „Ausnahme beim Herstellen einer Verbindung mit dem Ziel“ angezeigt.
 
-### <a name="the-script-runs-but-connection-to-iscsi-target-failed"></a>Das Skript wird ausgeführt, aber bei der Verbindung zum iSCSI-Ziel ist ein Fehler aufgetreten.
-
-**Fehler:** Ausnahme beim Herstellen einer Verbindung mit dem Ziel
-
-1. Stellen Sie sicher, dass der Computer, auf dem das Skript ausgeführt wird, alle [Zugriffsanforderungen](https://docs.microsoft.com/azure/backup/backup-azure-restore-files-from-vm#step-4-access-requirements-to-successfully-run-the-script) erfüllt.
-1. Überprüfen Sie die Konnektivität mit den Ziel-IP-Adressen in Azure.
-Führen Sie zum Überprüfen der Verbindung einen der folgenden Befehl an einer Eingabeaufforderung mit erhöhten Rechten aus.
+1. Stellen Sie sicher, dass der Computer, auf dem das Skript ausgeführt wird, die [Zugriffsanforderungen](./backup-azure-restore-files-from-vm.md#step-4-access-requirements-to-successfully-run-the-script) erfüllt.
+1. Überprüfen Sie die Verbindung mit den Azure-Ziel-APIs. Führen Sie einen der folgenden Befehle in einer Eingabeaufforderung mit erhöhten Rechten aus:
 
    `nslookup download.microsoft.com`
 
@@ -79,95 +76,98 @@ Führen Sie zum Überprüfen der Verbindung einen der folgenden Befehl an einer 
 
    `ping download.microsoft.com`
 1. Stellen Sie sicher, dass auf den ausgehenden iSCSI-Port 3260 zugegriffen werden kann.
-1. Stellen Sie sicher, dass es keine Firewall oder NSG gibt, die den Datenverkehr an Azure-Ziel-IP-Adressen oder Wiederherstellungsdienst-URLs blockiert.
-1. Überprüfen Sie, ob Antivirensoftware die Ausführung des Skripts blockiert.
+1. Überprüfen Sie, ob eine Firewall oder NSG den Datenverkehr zu Azure-Ziel-IP-Adressen oder Wiederherstellungsdienst-URLs blockiert.
+1. Stellen Sie sicher, dass Ihre Antivirussoftware die Ausführung des Skripts nicht blockiert.
 
-### <a name="connected-to-recovery-point-but-disks-didnt-get-attached"></a>Mit dem Wiederherstellungspunkt verbunden, aber Datenträger wurden nicht angefügt
+### <a name="youre-connected-to-the-recovery-point-but-the-disks-werent-attached"></a>Sie sind mit dem Wiederherstellungspunkt verbunden, aber die Datenträger wurden nicht angefügt
 
-Sorgen Sie dafür, dass Sie den [richtigen Computer zum Ausführen des Skripts](https://docs.microsoft.com/azure/backup/backup-azure-restore-files-from-vm#step-2-ensure-the-machine-meets-the-requirements-before-executing-the-script) haben.
+Beheben Sie dieses Problem mit den Schritten für Ihr Betriebssystem.
 
-#### <a name="on-a-windows-vm"></a>Auf einer Windows-VM
+#### <a name="windows-file-recovery-fails-on-server-with-storage-pools"></a>Fehler bei der Windows-Dateiwiederherstellung auf einem Server mit Speicherpools
 
-**Der Speicherpool auf der VM wird im schreibgeschützten Modus angefügt:**  Unter Windows 2012 R2 und Windows 2016 (mit den Speicherpools) wechselt der an die VM angefügte Speicherpool während der erstmaligen Ausführung des Skripts möglicherweise in den schreibgeschützten Zustand.
+Während der erstmaligen Ausführung des Skripts unter Windows Server 2012 R2 und Windows Server 2016 (mit Speicherpools) wird der Speicherpool der VM möglicherweise im schreibgeschützten Zustand angefügt.
 
-Zur Behebung dieses Problems müssen Sie den Lese-/Schreibzugriff auf den Speicherpool zum ersten Mal manuell festlegen und die virtuellen Datenträger anfügen. Führen Sie diese Schritte aus:
+>[!Tip]
+> Sorgen Sie dafür, dass Sie den [richtigen Computer zum Ausführen des Skripts](https://docs.microsoft.com/azure/backup/backup-azure-restore-files-from-vm#step-2-ensure-the-machine-meets-the-requirements-before-executing-the-script) haben.
 
-1. Legen Sie „Lese-/Schreibzugriff“ fest.
+Zur Behebung dieses Problems nehmen Sie die Zuweisung des Lese-/Schreibzugriffs für den Speicherpool und das Anfügen der virtuellen Datenträger manuell vor:
 
-   Navigieren Sie nacheinander zu **Server-Manager** > **Datei- und Speicherdienste** > **Volumes** > **Speicherpools**.
+1. Gehen Sie zu **Server-Manager** > **Datei- und Speicherdienste** > **Volumes** > **Speicherpools**.
 
-   ![Windows Storage](./media/backup-azure-restore-files-from-vm/windows-storage-1.png)
+   ![Screenshot der Optionen für Speicherpools.](./media/backup-azure-restore-files-from-vm/windows-storage-1.png)
 
-1. Klicken Sie im Fenster **Speicherpool** mit der rechten Maustaste auf den verfügbaren Speicherpool, und wählen Sie die Option **Lese-/Schreibzugriff festlegen** aus.
+1. Klicken Sie im Fenster **Speicherpool** mit der rechten Maustaste auf den verfügbaren Speicherpool, und wählen Sie **Lese-/Schreibzugriff festlegen** aus.
 
-   ![Lese-/Schreibzugriff unter Windows Storage](./media/backup-azure-restore-files-from-vm/windows-storage-read-write-2.png)
+   ![Screenshot, der Kontextmenüoptionen für einen Speicherpool zeigt.](./media/backup-azure-restore-files-from-vm/windows-storage-read-write-2.png)
 
-1. Fügen Sie, nachdem für den Speicherpool Lese-/Schreibzugriff zugewiesen wurde, den virtuellen Datenträger an.
+1. Nach dem Zuweisen des Lese-/Schreibzugriffs für den Speicherpool klicken Sie mit der rechten Maustaste auf den Abschnitt **Virtuelle Datenträger**, und wählen Sie dann **Virtuellen Datenträger anfügen** aus.
 
-   Navigieren Sie zur **Server-Manager-Benutzeroberfläche**. Klicken Sie im Abschnitt **Virtuelle Datenträger** mit der rechten Maustaste, und wählen Sie die Option **Virtuellen Datenträger anfügen** aus.
+   ![Screenshot, der Kontextmenüoptionen für einen virtuellen Datenträger zeigt.](./media/backup-azure-restore-files-from-vm/server-manager-virtual-disk-3.png)
 
-   ![Virtueller Datenträger des Server-Managers](./media/backup-azure-restore-files-from-vm/server-manager-virtual-disk-3.png)
+#### <a name="linux-file-recovery-fails-to-auto-mount-because-the-disk-doesnt-contain-volumes"></a>Bei der Linux-Dateiwiederherstellung kann keine automatische Einbindung erfolgen, da der Datenträger keine Volumes enthält
 
-#### <a name="on-a-linux-vm"></a>Auf einer Linux-VM
+Während der Ausführung der Dateiwiederherstellung erkennt der Sicherungsdienst Volumes und automatische Einbindungen. Wenn die gesicherten Datenträger aber unformatierte Partitionen enthalten, werden diese Datenträger nicht automatisch eingebunden, und der Datenträger wird bei der Wiederherstellung nicht angezeigt.
 
-##### <a name="file-recovery-fails-to-auto-mount-because-disk-doesnt-contain-volumes"></a>Bei der Dateiwiederherstellung kann keine automatische Einbindung erfolgen, da der Datenträger keine Volumes enthält.
+Um dieses Problem zu lösen, gehen Sie zu [Wiederherstellen von Dateien aus einer Sicherung von virtuellen Azure-Computern](https://docs.microsoft.com/azure/backup/backup-azure-restore-files-from-vm#lvmraid-arrays-for-linux-vms).
 
-Während der Ausführung der Dateiwiederherstellung erkennt der Backup-Dienst Volumes und automatische Einbindungen. Wenn die gesicherten Datenträger aber unformatierte Partitionen enthalten, werden diese Datenträger nicht automatisch eingebunden, und der Datenträger wird bei der Wiederherstellung nicht angezeigt.
+#### <a name="linux-file-recovery-fails-because-the-os-couldnt-identify-the-file-system"></a>Bei der Linux-Dateiwiederherstellung tritt ein Fehler auf, weil das Betriebssystem das Dateisystem nicht identifizieren konnte
 
-Führen Sie zur Behebung dieses Problems die Schritte in [diesem Artikel](https://docs.microsoft.com/azure/backup/backup-azure-restore-files-from-vm#lvmraid-arrays-for-linux-vms) aus.
-
-##### <a name="the-os-couldnt-identify-the-filesystem-causing-linux-file-recovery-to-fail-while-mountings-disks"></a>Das Betriebssystem konnte das Dateisystem nicht identifizieren, wodurch die Linux-Dateiwiederherstellung beim Einbinden von Datenträgern einen Fehler verursacht hat.
-
-Während der Ausführung des Skripts zur Dateiwiederherstellung trat beim Anfügen des Datenträgers dieser Fehler auf:
-
-„Die folgenden Partitionen konnten nicht eingebunden werden, da das Betriebssystem das Dateisystem nicht identifizieren konnte.“
+Wenn Sie das Skript zur Dateiwiederherstellung ausführen, kann der Datenträger nicht angefügt werden. Sie sehen die Fehlermeldung: „Die folgenden Partitionen konnten nicht eingebunden werden, da das Betriebssystem das Dateisystem nicht identifizieren konnte.“
 
 Überprüfen Sie zur Behebung dieses Problems, ob das Volume mit einer Drittanbieteranwendung verschlüsselt wurde. Wenn es verschlüsselt wurde, wird der Datenträger oder die VM im Portal nicht als verschlüsselt angezeigt.
 
 1. Melden Sie sich auf der gesicherten VM an, und führen Sie den folgenden Befehl aus:
 
-   `*lsblk -f*`
+   `lsblk -f`
 
-   ![Datenträger ohne Volume](./media/backup-azure-restore-files-from-vm/disk-without-volume-5.png)
+   ![Screenshot, der die Ergebnisse des Befehls zeigt, mit dem Geräte blockiert werden.](./media/backup-azure-restore-files-from-vm/disk-without-volume-5.png)
 
-2. Überprüfen Sie das Dateisystem und die Verschlüsselung.
-3. Wenn das Volume verschlüsselt wurde, wird die Dateiwiederherstellung nicht unterstützt. [Weitere Informationen](https://docs.microsoft.com/azure/backup/backup-support-matrix-iaas#support-for-file-level-restore)
+1. Überprüfen Sie das Dateisystem und die Verschlüsselung. Wenn das Volume verschlüsselt wurde, wird die Dateiwiederherstellung nicht unterstützt. Weitere Informationen finden Sie unter [Unterstützungsmatrix für die Sicherung virtueller Azure-Computer](https://docs.microsoft.com/azure/backup/backup-support-matrix-iaas#support-for-file-level-restore).
 
-### <a name="disks-are-attached-but-unable-to-mount-volumes"></a>Datenträger werden angefügt, können aber keine Volumes einbinden
+### <a name="disks-are-attached-but-the-volumes-arent-mounted"></a>Datenträger werden angefügt, aber die Volumes nicht eingebunden
 
-- Sorgen Sie dafür, dass Sie den [richtigen Computer zum Ausführen des Skripts](https://docs.microsoft.com/azure/backup/backup-azure-restore-files-from-vm#step-2-ensure-the-machine-meets-the-requirements-before-executing-the-script) haben.
+Beheben Sie dieses Problem mit den Schritten für Ihr Betriebssystem.
 
-#### <a name="on-windows-vms"></a>Auf Windows-VMs
+#### <a name="windows"></a>Windows
 
-Beim Ausführen des Dateiwiederherstellungsskripts unter Windows wird eine Meldung angezeigt, dass ***0 Volumes angefügt sind** _. Die Datenträger werden jedoch in der Datenträgerverwaltungskonsole erkannt. Beim Anfügen von Volumes über iSCSI wechseln einige erkannte Volumes in den Offlinestatus. Wenn der iSCSI-Kanal zwischen der VM und dem Dienst kommuniziert, erkennt er diese Volumes und schaltet sie online, aber sie werden nicht eingebunden.
+Wenn Sie das Skript zur Dateiwiederherstellung für Windows ausführen, wird die Meldung „0 Wiederherstellungsvolumes angefügt“ angezeigt. Die Datenträger werden jedoch in der Datenträgerverwaltungskonsole erkannt.
 
-   ![Datenträger nicht angefügt](./media/backup-azure-restore-files-from-vm/disk-not-attached-6.png)
+**Mögliche Ursache:** Beim Anfügen von Volumes über iSCSI wechselten einige erkannte Volumes in den Offlinestatus. Wenn der iSCSI-Kanal zwischen der VM und dem Dienst kommuniziert, erkennt er diese Volumes und schaltet sie online, aber sie werden nicht eingebunden.
+
+   ![Screenshot mit „0 Wiederherstellungsvolumes angefügt“.](./media/backup-azure-restore-files-from-vm/disk-not-attached-6.png)
 
 Führen Sie zum Identifizieren und Beheben dieses Problems die folgenden Schritte aus:
 
-1. Wechseln Sie zu _ *Datenträgerverwaltung**, indem Sie im Befehlsfenster den Befehl **diskmgmt** ausführen.
-1. Überprüfen Sie, ob zusätzliche Datenträger angezeigt werden. Im folgenden Beispiel ist „Datenträger 2“ ein zusätzlicher Datenträger.
+>[!Tip]
+>Sorgen Sie dafür, dass Sie den [richtigen Computer zum Ausführen des Skripts](https://docs.microsoft.com/azure/backup/backup-azure-restore-files-from-vm#step-2-ensure-the-machine-meets-the-requirements-before-executing-the-script) haben.
 
-   ![Datenträgerverwaltung0](./media/backup-azure-restore-files-from-vm/disk-management-7.png)
+1. Führen Sie im Fenster **cmd** den Befehl **diskmgmt** aus, um die **Datenträgerverwaltung** zu öffnen.
+1. Suchen Sie nach zusätzlichen Datenträgern. Im folgenden Beispiel ist **Datenträger 2** ein zusätzlicher Datenträger.
+
+   ![Screenshot des Fensters „Datenträgerverwaltung“ mit zusätzlichem Datenträger.](./media/backup-azure-restore-files-from-vm/disk-management-7.png)
 
 1. Klicken Sie mit der rechten Maustaste auf **Neues Volume**, und wählen Sie **Laufwerkbuchstaben und -pfade ändern** aus.
 
-   ![Datenträgerverwaltung1](./media/backup-azure-restore-files-from-vm/disk-management-8.png)
+   ![Screenshot mit den Kontextmenüoptionen auf dem zusätzlichen Datenträger.](./media/backup-azure-restore-files-from-vm/disk-management-8.png)
 
-1. Wählen Sie im Fenster **Laufwerkbuchstabe oder -pfad hinzufügen** die Option **Folgenden Laufwerkbuchstaben zuweisen** aus, weisen Sie ein verfügbares Laufwerk zu, und wählen Sie **OK** aus.
+1. Wählen Sie im Fenster **Laufwerkbuchstabe oder -pfad ändern** die Option **Folgenden Laufwerkbuchstaben zuweisen** aus, weisen Sie ein verfügbares Laufwerk zu, und wählen Sie **OK** aus.
 
-   ![Datenträgerverwaltung2](./media/backup-azure-restore-files-from-vm/disk-management-9.png)
+   ![Screenshot des Fensters „Laufwerkbuchstabe oder -pfad ändern“.](./media/backup-azure-restore-files-from-vm/disk-management-9.png)
 
-1. Zeigen Sie im Datei-Explorer den ausgewählten Laufwerkbuchstaben an, und untersuchen Sie die Dateien.
+1. Öffnen Sie den Datei-Explorer, um das ausgewählte Laufwerk anzuzeigen, und untersuchen Sie die Dateien.
 
-#### <a name="on-linux-vms"></a>Auf Linux-VMs
+#### <a name="linux"></a>Linux
 
-- Sorgen Sie dafür, dass Sie den [richtigen Computer zum Ausführen des Skripts](https://docs.microsoft.com/azure/backup/backup-azure-restore-files-from-vm#step-2-ensure-the-machine-meets-the-requirements-before-executing-the-script) haben.
-- Wenn die geschützte Linux-VM LVM- oder RAID-Arrays verwendet, führen Sie die in [diesem Artikel](https://docs.microsoft.com/azure/backup/backup-azure-restore-files-from-vm#lvmraid-arrays-for-linux-vms) aufgeführten Schritte aus.
+>[!Tip]
+>Sorgen Sie dafür, dass Sie den [richtigen Computer zum Ausführen des Skripts](https://docs.microsoft.com/azure/backup/backup-azure-restore-files-from-vm#step-2-ensure-the-machine-meets-the-requirements-before-executing-the-script) haben.
 
-### <a name="cant-copy-the-files-from-mounted-volumes"></a>Dateien aus eingebundenen Volumes können nicht kopiert werden
+Wenn der geschützte virtuelle Linux-Computer LVM- oder RAID-Arrays verwendet, befolgen Sie die Schritte unter [LVM/RAID-Arrays (für virtuelle Linux-Computer)](https://docs.microsoft.com/azure/backup/backup-azure-restore-files-from-vm#lvmraid-arrays-for-linux-vms).
 
-Der Kopiervorgang verursacht möglicherweise den Fehler **0x80070780: Das System kann auf die Datei nicht zugreifen**. Überprüfen Sie in diesem Fall, ob beim Quellserver die Datenträgerdeduplizierung aktiviert wurde. Vergewissern Sie sich anschließend, dass beim Wiederherstellungsserver die Deduplizierung auf den Laufwerken ebenfalls aktiviert wurde. Sie können die Deduplizierungsrolle unkonfiguriert beibehalten und damit die Laufwerke auf dem Wiederherstellungsserver nicht deduplizieren.
+### <a name="you-cant-copy-the-files-from-mounted-volumes"></a>Sie können Dateien aus eingebundenen Volumes nicht kopieren
+
+Der Kopiervorgang verursacht möglicherweise den Fehler „0x80070780: Das System kann auf die Datei nicht zugreifen.“ 
+
+Überprüfen Sie, ob beim Quellserver die Datenträgerdeduplizierung aktiviert wurde. Falls ja, vergewissern Sie sich, dass beim Wiederherstellungsserver die Deduplizierung auf den Laufwerken ebenfalls aktiviert wurde. Sie können die Deduplizierung unkonfiguriert lassen, sodass Sie die Laufwerke auf dem Wiederherstellungsserver nicht deduplizieren.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

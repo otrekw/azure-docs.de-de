@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/13/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 1747af77468ebe41f59892dea4bb49ce24757f37
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 9c976671bccb420ae24d8def7a6574098d86ce6d
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97836163"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98803573"
 ---
 # <a name="enhance-port-and-vlan-name-resolution"></a>Verbessern der Port- und VLAN-Namensauflösung
 
@@ -84,7 +84,8 @@ So konfigurieren Sie VLANs:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Ausführlichere Informationen zu Geräten finden Sie in den Artikeln zum Gerätebestand und Data Mining:
+Anzeigen von angereicherten Geräteinformationen in verschiedenen Berichten:
 
 - [Grundlagen zu Sensorerkennungen in einem Gerätebestand](how-to-investigate-sensor-detections-in-a-device-inventory.md)
-- [Generieren von Berichten](how-to-generate-reports.md)
+- [Sensortrend- und Statistikberichte](how-to-create-trends-and-statistics-reports.md)
+- [Data Mining-Abfragen für Sensoren](how-to-create-data-mining-queries.md)

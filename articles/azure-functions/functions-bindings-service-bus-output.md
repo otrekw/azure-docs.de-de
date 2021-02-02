@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 02/19/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: 2d0b66d2b4d89b512b34cb33a5607b471b7d1e84
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: 12e57361b9e275fc441df27a3a1381989d48751c
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93040941"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98788569"
 ---
 # <a name="azure-service-bus-output-binding-for-azure-functions"></a>Azure Service Bus-Ausgabebindung für Azure Functions
 
@@ -40,7 +40,7 @@ public static string ServiceBusOutput([HttpTrigger] dynamic input, ILogger log)
 
 Das folgende Beispiel zeigt eine Service Bus-Ausgabebindung in einer Datei vom Typ *function.json* sowie eine [C#-Skriptfunktion](functions-reference-csharp.md), die die Bindung verwendet. Die Funktion verwendet einen Timertrigger, um alle 15 Sekunden eine Warteschlangennachricht zu senden.
 
-Bindungsdaten in der Datei *function.json* :
+Bindungsdaten in der Datei *function.json*:
 
 ```json
 {
@@ -87,11 +87,46 @@ public static async Task Run(TimerInfo myTimer, ILogger log, IAsyncCollector<str
 }
 ```
 
+# <a name="java"></a>[Java](#tab/java)
+
+Das folgende Beispiel zeigt eine Java-Funktion, die eine Nachricht an die Service Bus-Warteschlange `myqueue` sendet, wenn sie durch eine HTTP-Anforderung ausgelöst wird.
+
+```java
+@FunctionName("httpToServiceBusQueue")
+@ServiceBusQueueOutput(name = "message", queueName = "myqueue", connection = "AzureServiceBusConnection")
+public String pushToQueue(
+  @HttpTrigger(name = "request", methods = {HttpMethod.POST}, authLevel = AuthorizationLevel.ANONYMOUS)
+  final String message,
+  @HttpOutput(name = "response") final OutputBinding<T> result ) {
+      result.setValue(message + " has been sent.");
+      return message;
+ }
+```
+
+ Verwenden Sie die `@QueueOutput`-Anmerkung in der [Laufzeitbibliothek für Java-Funktionen](/java/api/overview/azure/functions/runtime) für Funktionsparameter, deren Wert in eine Service Bus-Warteschlange geschrieben wird.  Der Parametertyp sollte `OutputBinding<T>` lauten, wobei „T“ für einen beliebigen nativen Java-Typ eines POJO steht.
+
+Java-Funktionen können auch in ein Service Bus-Thema schreiben. Im folgenden Beispiel wird die `@ServiceBusTopicOutput`-Anmerkung verwendet, um die Konfiguration für die Ausgabebindung zu beschreiben. 
+
+```java
+@FunctionName("sbtopicsend")
+    public HttpResponseMessage run(
+            @HttpTrigger(name = "req", methods = {HttpMethod.GET, HttpMethod.POST}, authLevel = AuthorizationLevel.ANONYMOUS) HttpRequestMessage<Optional<String>> request,
+            @ServiceBusTopicOutput(name = "message", topicName = "mytopicname", subscriptionName = "mysubscription", connection = "ServiceBusConnection") OutputBinding<String> message,
+            final ExecutionContext context) {
+        
+        String name = request.getBody().orElse("Azure Functions");
+
+        message.setValue(name);
+        return request.createResponseBuilder(HttpStatus.OK).body("Hello, " + name).build();
+        
+    }
+```
+
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Das folgende Beispiel zeigt eine Service Bus-Ausgabebindung in einer Datei vom Typ *function.json* sowie eine [JavaScript-Funktion](functions-reference-node.md), die die Bindung verwendet. Die Funktion verwendet einen Timertrigger, um alle 15 Sekunden eine Warteschlangennachricht zu senden.
 
-Bindungsdaten in der Datei *function.json* :
+Bindungsdaten in der Datei *function.json*:
 
 ```json
 {
@@ -137,6 +172,39 @@ module.exports = function (context, myTimer) {
     context.bindings.outputSbQueue.push("2 " + message);
     context.done();
 };
+```
+
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+Das folgende Beispiel zeigt eine Service Bus-Ausgabebindung in einer Datei *function.json* sowie eine [PowerShell-Funktion](functions-reference-powershell.md), die die Bindung verwendet. 
+
+Bindungsdaten in der Datei *function.json*:
+
+```json
+{
+  "bindings": [
+    {
+      "type": "serviceBus",
+      "direction": "out",
+      "connection": "AzureServiceBusConnectionString",
+      "name": "outputSbMsg",
+      "queueName": "outqueue",
+      "topicName": "outtopic"
+    }
+  ]
+}
+```
+
+Hier ist das PowerShell-Skript, das eine Nachricht als Ausgabe der Funktion erstellt.
+
+```powershell
+param($QueueItem, $TriggerMetadata) 
+
+Push-OutputBinding -Name outputSbMsg -Value @{ 
+    name = $QueueItem.name 
+    employeeId = $QueueItem.employeeId 
+    address = $QueueItem.address 
+} 
 ```
 
 # <a name="python"></a>[Python](#tab/python)
@@ -189,41 +257,6 @@ def main(req: func.HttpRequest, msg: func.Out[str]) -> func.HttpResponse:
     return 'OK'
 ```
 
-# <a name="java"></a>[Java](#tab/java)
-
-Das folgende Beispiel zeigt eine Java-Funktion, die eine Nachricht an die Service Bus-Warteschlange `myqueue` sendet, wenn sie durch eine HTTP-Anforderung ausgelöst wird.
-
-```java
-@FunctionName("httpToServiceBusQueue")
-@ServiceBusQueueOutput(name = "message", queueName = "myqueue", connection = "AzureServiceBusConnection")
-public String pushToQueue(
-  @HttpTrigger(name = "request", methods = {HttpMethod.POST}, authLevel = AuthorizationLevel.ANONYMOUS)
-  final String message,
-  @HttpOutput(name = "response") final OutputBinding<T> result ) {
-      result.setValue(message + " has been sent.");
-      return message;
- }
-```
-
- Verwenden Sie die `@QueueOutput`-Anmerkung in der [Laufzeitbibliothek für Java-Funktionen](/java/api/overview/azure/functions/runtime) für Funktionsparameter, deren Wert in eine Service Bus-Warteschlange geschrieben wird.  Der Parametertyp sollte `OutputBinding<T>` lauten, wobei „T“ für einen beliebigen nativen Java-Typ eines POJO steht.
-
-Java-Funktionen können auch in ein Service Bus-Thema schreiben. Im folgenden Beispiel wird die `@ServiceBusTopicOutput`-Anmerkung verwendet, um die Konfiguration für die Ausgabebindung zu beschreiben. 
-
-```java
-@FunctionName("sbtopicsend")
-    public HttpResponseMessage run(
-            @HttpTrigger(name = "req", methods = {HttpMethod.GET, HttpMethod.POST}, authLevel = AuthorizationLevel.ANONYMOUS) HttpRequestMessage<Optional<String>> request,
-            @ServiceBusTopicOutput(name = "message", topicName = "mytopicname", subscriptionName = "mysubscription", connection = "ServiceBusConnection") OutputBinding<String> message,
-            final ExecutionContext context) {
-        
-        String name = request.getBody().orElse("Azure Functions");
-
-        message.setValue(name);
-        return request.createResponseBuilder(HttpStatus.OK).body("Hello, " + name).build();
-        
-    }
-```
-
 ---
 
 ## <a name="attributes-and-annotations"></a>Attribute und Anmerkungen
@@ -262,17 +295,21 @@ Mit dem Attribut `ServiceBusAccount` können Sie das zu verwendende Service Bus-
 
 Attribute werden von C#-Skript nicht unterstützt.
 
+# <a name="java"></a>[Java](#tab/java)
+
+Die Anmerkungen `ServiceBusQueueOutput` und `ServiceBusTopicOutput` sind zum Schreiben einer Nachricht als Funktionsausgabe verfügbar. Der mit diesen Anmerkungen ergänzte Parameter muss als `OutputBinding<T>` deklariert werden, wobei `T` der Typ ist, der dem Typ der Nachricht entspricht.
+
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Attribute werden von JavaScript nicht unterstützt.
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+Attribute werden von PowerShell nicht unterstützt.
+
 # <a name="python"></a>[Python](#tab/python)
 
 Attribute werden von Python nicht unterstützt.
-
-# <a name="java"></a>[Java](#tab/java)
-
-Die Anmerkungen `ServiceBusQueueOutput` und `ServiceBusTopicOutput` sind zum Schreiben einer Nachricht als Funktionsausgabe verfügbar. Der mit diesen Anmerkungen ergänzte Parameter muss als `OutputBinding<T>` deklariert werden, wobei `T` der Typ ist, der dem Typ der Nachricht entspricht.
 
 ---
 
@@ -330,15 +367,19 @@ Beim Arbeiten mit C# Funktionen:
 
 * Um auf die Sitzungs-ID zuzugreifen, erstellen Sie eine Bindung an einen [`Message`](/dotnet/api/microsoft.azure.servicebus.message)-Typ und verwenden die Eigenschaft `sessionId`.
 
+# <a name="java"></a>[Java](#tab/java)
+
+Verwenden Sie das [Azure Service Bus SDK](../service-bus-messaging/index.yml) anstelle der integrierten Ausgabebindung.
+
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 Greifen Sie auf die Warteschlange oder das Thema mithilfe von `context.bindings.<name from function.json>` zu. Sie können `context.binding.<name>` eine Zeichenfolge, ein Bytearray oder ein JavaScript-Objekt (deserialisiert in JSON) zuweisen.
 
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+Die Ausgabe an den Service Bus ist über das `Push-OutputBinding`-Cmdlet verfügbar. Dort übergeben Sie Argumente, die dem Namen entsprechen, der durch den Namensparameter der Bindung in der Datei *function.json* festgelegt wird.
+
 # <a name="python"></a>[Python](#tab/python)
-
-Verwenden Sie das [Azure Service Bus SDK](../service-bus-messaging/index.yml) anstelle der integrierten Ausgabebindung.
-
-# <a name="java"></a>[Java](#tab/java)
 
 Verwenden Sie das [Azure Service Bus SDK](../service-bus-messaging/index.yml) anstelle der integrierten Ausgabebindung.
 
@@ -388,7 +429,7 @@ Wenn Sie `isSessionsEnabled` auf `true` festgelegt haben, werden die `sessionHan
 |---------|---------|---------|
 |prefetchCount|0|Ruft die Anzahl der Nachrichten ab, die der Nachrichtenempfänger gleichzeitig anfordern kann, oder legt sie fest.|
 |maxAutoRenewDuration|00:05:00|Die maximale Zeitspanne, in der die Nachrichtensperre automatisch erneuert wird.|
-|autoComplete|true|Gibt an, ob der Trigger nach der Verarbeitung automatisch „complete“ aufrufen soll oder ob der Funktionscode „complete“ manuell aufruft.<br><br>Das Festlegen auf `false` wird nur in C# unterstützt.<br><br>Wenn der Wert auf `true` festgelegt ist, wird die Nachricht automatisch durch den Triggervorgang abgeschlossen, sofern die Ausführung der Funktion erfolgreich war, andernfalls wird die Meldung verworfen.<br><br>Wenn der Wert auf `false` festgelegt ist, müssen Sie selbst die [MessageReceiver](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver?view=azure-dotnet)-Methoden aufrufen, um die Nachricht abzuschließen, zu verwerfen oder in die Warteschlange für unzustellbare Nachrichten zu verschieben. Wenn eine Ausnahme ausgelöst wird (und keine der `MessageReceiver`-Methoden aufgerufen wird), bleibt die Sperre erhalten. Nachdem die Sperre abgelaufen ist, wird die Nachricht erneut in die Warteschlange eingereiht, wobei `DeliveryCount` erhöht und die Sperre automatisch erneuert wird.<br><br>Bei Nicht-C#-Funktionen führen Ausnahmen in der Funktion dazu, dass die Runtime `abandonAsync` im Hintergrund aufruft. Wenn keine Ausnahme auftritt, wird `completeAsync` im Hintergrund aufgerufen. |
+|autoComplete|true|Gibt an, ob der Trigger nach der Verarbeitung automatisch „complete“ aufrufen soll oder ob der Funktionscode „complete“ manuell aufruft.<br><br>Das Festlegen auf `false` wird nur in C# unterstützt.<br><br>Wenn der Wert auf `true` festgelegt ist, wird die Nachricht automatisch durch den Triggervorgang abgeschlossen, sofern die Ausführung der Funktion erfolgreich war, andernfalls wird die Meldung verworfen.<br><br>Wenn der Wert auf `false` festgelegt ist, müssen Sie selbst die [MessageReceiver](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver?view=azure-dotnet&preserve-view=true)-Methoden aufrufen, um die Nachricht abzuschließen, zu verwerfen oder in die Warteschlange für unzustellbare Nachrichten zu verschieben. Wenn eine Ausnahme ausgelöst wird (und keine der `MessageReceiver`-Methoden aufgerufen wird), bleibt die Sperre erhalten. Nachdem die Sperre abgelaufen ist, wird die Nachricht erneut in die Warteschlange eingereiht, wobei `DeliveryCount` erhöht und die Sperre automatisch erneuert wird.<br><br>Bei Nicht-C#-Funktionen führen Ausnahmen in der Funktion dazu, dass die Runtime `abandonAsync` im Hintergrund aufruft. Wenn keine Ausnahme auftritt, wird `completeAsync` im Hintergrund aufgerufen. |
 |maxConcurrentCalls|16|Die maximale Anzahl gleichzeitiger Aufrufe für den Rückruf, der vom Nachrichtensystem pro skalierter Instanz initiiert werden soll. Die Functions-Runtime verarbeitet standardmäßig mehrere Nachrichten gleichzeitig.|
 |maxConcurrentSessions|2000|Die maximale Anzahl von Sitzungen, die parallel pro skalierter Instanz verarbeitet werden können.|
 

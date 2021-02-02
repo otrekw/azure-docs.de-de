@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 07/06/2020
 ms.author: danis
 ms.reviewer: cynthn
-ms.openlocfilehash: 2a17825d062496e6600966dc7c90b14749507e4d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0fea82c376a178de0be8ede6c0393e1de21de614
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86494512"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98675803"
 ---
 # <a name="disable-or-remove-the-linux-agent-from-vms-and-images"></a>Deaktivieren oder Entfernen des Linux-Agents aus VMs und Images
 
@@ -31,9 +31,9 @@ Auf der Azure-Plattform werden Erweiterungen für viele Zwecke gehostet, z.B. VM
 
 ## <a name="disabling-extension-processing"></a>Deaktivieren von Erweiterungsverarbeitung
 
-Je nach Ihren Anforderungen gibt es mehrere Möglichkeiten, die Erweiterungsverarbeitung zu deaktivieren. Aber bevor Sie fortfahren, **MÜSSEN** Sie alle Erweiterungen entfernen, die auf der VM bereitgestellt werden. Dazu können Sie z. B. die AZ-CLI verwenden, um [aufzulisten](/cli/azure/vm/extension?view=azure-cli-latest#az-vm-extension-list) und zu [löschen](/cli/azure/vm/extension?view=azure-cli-latest#az-vm-extension-delete):
+Je nach Ihren Anforderungen gibt es mehrere Möglichkeiten, die Erweiterungsverarbeitung zu deaktivieren. Aber bevor Sie fortfahren, **MÜSSEN** Sie alle Erweiterungen entfernen, die auf der VM bereitgestellt werden. Dazu können Sie z. B. die Azure CLI verwenden, um [aufzulisten](/cli/azure/vm/extension#az-vm-extension-list) und zu [löschen](/cli/azure/vm/extension#az-vm-extension-delete):
 
-```bash
+```azurecli
 az vm extension delete -g MyResourceGroup --vm-name MyVm -n extension_name
 ```
 > [!Note]
@@ -43,7 +43,7 @@ az vm extension delete -g MyResourceGroup --vm-name MyVm -n extension_name
 ### <a name="disable-at-the-control-plane"></a>Deaktivieren auf der Steuerungsebene
 Wenn Sie nicht sicher sind, ob Sie in Zukunft Erweiterungen benötigen, können Sie den installierten Linux-Agent auf der VM belassen, aber die Funktionalität für die Erweiterungsverarbeitung auf der Plattform deaktivieren. Diese Option ist in der `Microsoft.Compute`-API-Version `2018-06-01` oder höher verfügbar und ist unabhängig von der installierten Linux-Agent-Version.
 
-```bash
+```azurecli
 az vm update -g <resourceGroup> -n <vmName> --set osProfile.allowExtensionOperations=false
 ```
 Mit dem obigen Befehl können Sie diese Erweiterungsverarbeitung problemlos wieder auf der Plattform aktivieren, wobei Sie die Option aber auf „true“ festlegen.
@@ -132,7 +132,7 @@ Nachdem Sie die zuvor aufgeführten Punkte abgeschlossen haben, können Sie das 
 
 
 **Erstellen eines regulären verwalteten Images**
-```bash
+```azurecli
 az vm deallocate -g <resource_group> -n <vm_name>
 az vm generalize -g <resource_group> -n <vm_name>
 az image create -g <resource_group> -n <image_name> --source <vm_name>
@@ -140,7 +140,7 @@ az image create -g <resource_group> -n <image_name> --source <vm_name>
 
 **Erstellen einer Imageversion in einer Shared Image Gallery-Instanz**
 
-```bash
+```azurecli
 az sig image-version create \
     -g $sigResourceGroup 
     --gallery-name $sigName 
@@ -157,7 +157,7 @@ Wenn Sie die VM aus einem Image erstellen, das keinen Linux-Agent hat, müssen S
 
 Um die VM mit deaktivierten Erweiterungen bereitzustellen, können Sie die Azure CLI mit [--enable-agent](/cli/azure/vm#az-vm-create) verwenden.
 
-```bash
+```azurecli
 az vm create \
     --resource-group $resourceGroup \
     --name $prodVmName \

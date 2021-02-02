@@ -1,14 +1,14 @@
 ---
 title: Verwalten des Agents für Azure Arc-fähige Server
 description: In diesem Artikel werden die verschiedenen Verwaltungsaufgaben beschrieben, die Sie typischerweise während des Lebenszyklus des Connected Machine-Agents für Azure Arc-fähige Server ausführen.
-ms.date: 12/21/2020
+ms.date: 01/21/2021
 ms.topic: conceptual
-ms.openlocfilehash: f408048f61f76d6b258ea8e063630b4e2aa841af
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: 27712dcd30857ca8c677de4f99dc4ed7e2e7b292
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97724373"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98662125"
 ---
 # <a name="managing-and-maintaining-the-connected-machine-agent"></a>Verwalten des Connected Machine-Agent
 
@@ -34,7 +34,74 @@ Für Server oder Computer, die nicht mehr über Azure Arc-fähige Server verwalt
 
     * Mithilfe der [Azure CLI](../../azure-resource-manager/management/delete-resource-group.md?tabs=azure-cli#delete-resource) oder mithilfe von [Azure PowerShell](../../azure-resource-manager/management/delete-resource-group.md?tabs=azure-powershell#delete-resource) Verwenden Sie `Microsoft.HybridCompute/machines` für den Parameter `ResourceType`.
 
-3. Deinstallieren Sie den Agent auf dem Computer oder Server. Führen Sie die folgenden Schritte aus.
+3. [Deinstallieren Sie den Agent](#remove-the-agent) auf dem Computer oder Server mit den folgenden Schritten.
+
+## <a name="renaming-a-machine"></a>Umbenennen eines Computers
+
+Wenn Sie den Namen des mit Azure Arc-fähigen Servern verbundenen Linux- oder Windows-Computers ändern, wird der neue Name nicht automatisch erkannt, da der Ressourcenname in Azure unveränderlich ist. Wie bei anderen Azure-Ressourcen müssen Sie die Ressource löschen und neu erstellen, um den neuen Namen zu verwenden.
+
+Bei Azure Arc-fähigen Servern müssen vor dem Umbenennen des Computers die VM-Erweiterungen entfernt werden.
+
+> [!NOTE]
+> Installierte Erweiterungen werden zwar weiterhin ausgeführt und setzen nach Abschluss dieses Verfahrens ihren normalen Betrieb fort, aber Sie können sie nicht mehr verwalten. Wenn Sie versuchen, die Erweiterungen auf dem Computer erneut bereitzustellen, tritt möglicherweise ein unvorhersehbares Verhalten auf.
+
+> [!WARNING]
+> Sie sollten den Computer nicht umbenennen und dieses Verfahren nur ausführen, wenn es unbedingt erforderlich ist.
+
+In den folgenden Schritten wird der Vorgang der Computerumbenennung zusammengefasst.
+
+1. Überwachen Sie die auf dem Computer installierten VM-Erweiterungen, und notieren Sie ihre Konfiguration. Verwenden Sie dazu [Azure CLI](manage-vm-extensions-cli.md#list-extensions-installed) oder [Azure PowerShell](manage-vm-extensions-powershell.md#list-extensions-installed).
+
+2. Entfernen Sie die VM-Erweiterungen mithilfe von PowerShell, Azure CLI oder Azure-Portal.
+
+    > [!NOTE]
+    > Wenn Sie den „Azure Monitor für VMs (Insights)“-Agent oder den Log Analytics-Agent mithilfe einer Azure Policy-Gastkonfigurationsrichtlinie bereitgestellt haben, werden die Agents nach dem nächsten [Auswertungszyklus](../../governance/policy/how-to/get-compliance-data.md#evaluation-triggers), und nachdem der umbenannte Computer bei Azure Arc-fähigen Servern registriert ist, erneut bereitgestellt.
+
+3. Trennen Sie den Computer mithilfe von PowerShell, Azure CLI oder über das Portal von Azure Arc-fähigen Servern.
+
+4. Benennen Sie den Computer um.
+
+5. Stellen Sie eine Verbindung des Computers mit Azure Arc-fähigen Servern her, indem Sie mit dem `Azcmagent`-Tool eine neue Ressource in Azure erstellen und registrieren.
+
+6. Stellen Sie zuvor auf dem Zielcomputer installierte VM-Erweiterungen bereit.
+
+Führen Sie die folgenden Schritte aus, um diese Aufgabe abzuschließen.
+
+1. Entfernen Sie mithilfe von [Azure CLI](manage-vm-extensions-cli.md#remove-an-installed-extension) oder [Azure PowerShell](manage-vm-extensions-powershell.md#remove-an-installed-extension) installierte VM-Erweiterungen aus dem [Azure-Portal](manage-vm-extensions-portal.md#uninstall-extension).
+
+2. Trennen Sie die Verbindung zwischen dem Computer und Azure Arc mit einer der folgenden Methoden. Wenn Sie den Computer von Azure Arc-fähigen Servern trennen, wird der Connected Machine-Agent nicht entfernt, und Sie müssen den Agent nicht als Teil dieses Prozesses entfernen. Alle VM-Erweiterungen, die dem Computer bereitgestellt sind, funktionieren während dieses Vorgangs weiterhin.
+
+    # <a name="azure-portal"></a>[Azure portal](#tab/azure-portal)
+
+    1. Navigieren Sie in Ihrem Browser zum [Azure-Portal](https://portal.azure.com).
+    1. Navigieren Sie im Portal zu **Server - Azure Arc**, und wählen Sie in der Liste Ihren Hybridcomputer aus.
+    1. Wählen Sie auf dem ausgewählten registrierten Arc-fähigen Server in der oberen Leiste **Löschen** aus, um die Ressource in Azure zu löschen.
+
+    # <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+    
+    ```azurecli
+    az resource delete \
+      --resource-group ExampleResourceGroup \
+      --name ExampleArcMachine \
+      --resource-type "Microsoft.HybridCompute/machines"
+    ```
+
+    # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
+
+    ```powershell
+    Remove-AzResource `
+     -ResourceGroupName ExampleResourceGroup `
+     -ResourceName ExampleArcMachine `
+     -ResourceType Microsoft.HybridCompute/machines
+    ```
+
+3. Benennen Sie den Computer um.
+
+### <a name="after-renaming-operation"></a>Nach der Umbenennung
+
+Nachdem ein Computer umbenannt wurde, muss der Connected Machine-Agent bei Azure Arc-fähigen Servern erneut registriert werden. Führen Sie das `azcmagent`-Tool mit dem Parameter [Connect](#connect) aus, um diesen Schritt abzuschließen.
+
+Stellen Sie die VM-Erweiterungen, die dem Computer ursprünglich bereitgestellt wurden, von Arc-fähigen Servern aus erneut bereit. Wenn Sie den „Azure Monitor für VMs (Insights)“-Agent oder den Log Analytics-Agent mithilfe einer Azure Policy-Gastkonfigurationsrichtlinie bereitgestellt haben, werden die Agents nach dem nächsten [Auswertungszyklus](../../governance/policy/how-to/get-compliance-data.md#evaluation-triggers) erneut bereitgestellt.
 
 ## <a name="upgrading-agent"></a>Aktualisierung des Agent
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: delhan
-ms.openlocfilehash: d7e56fe36af3d841cfd888dd6c1bf05502837cdd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f3e4d51b4d41fa0dc23e9b12ac0251c14215de5c
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87079841"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98633009"
 ---
 # <a name="vm-startup-is-stuck-on-getting-windows-ready-dont-turn-off-your-computer-in-azure"></a>VM-Start bleibt in Azure bei „Windows wird vorbereitet. Computer nicht ausschalten.“ hängen.
 
@@ -39,6 +39,9 @@ Ein virtueller Windows-Computer startet nicht. Wenn Sie die **Startdiagnose** ve
 Dieses Problem tritt in der Regel auf, wenn der Server nach einer Änderung der Konfiguration den letzten Neustart ausführt. Die Konfigurationsänderung wurde möglicherweise durch Windows-Updates oder durch Änderungen an den Rollen/Features des Servers initiiert. Bei großen Windows-Updates benötigt das Betriebssystem mehr Zeit, um die Änderungen neu zu konfigurieren.
 
 ## <a name="collect-an-os-memory-dump"></a>Erfassen eines Betriebssystemspeicherabbilds
+
+> [!TIP]
+> Wenn Sie über eine aktuelle Sicherung der VM verfügen, können Sie versuchen, die [VM aus der Sicherung wiederherzustellen](../../backup/backup-azure-arm-restore-vms.md), um das Startproblem zu beheben.
 
 Wenn Sie auf die Verarbeitung der Änderungen gewartet haben und das Problem trotzdem bestehen bleibt, müssen Sie sich mit einer Speicherabbilddatei an den Support wenden. Um die Sicherungsdatei zu sammeln, gehen Sie folgendermaßen vor:
 

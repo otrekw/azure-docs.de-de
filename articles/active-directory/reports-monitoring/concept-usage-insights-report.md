@@ -16,12 +16,12 @@ ms.subservice: report-monitor
 ms.date: 05/13/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 2c7cc68c84cc9f137ba5b51206526ff96111fe9a
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 54bce5e839786862a6dac9aeb685dd364547a09a
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93122740"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98685026"
 ---
 # <a name="usage-and-insights-report-in-the-azure-active-directory-portal"></a>Bericht „Nutzung & Erkenntnisse“ im Azure Active Directory-Portal
 
@@ -43,22 +43,24 @@ Sie benötigen Folgendes, um auf die Daten des Berichts „Nutzung & Erkenntni
 
 1. Navigieren Sie zum [Azure-Portal](https://portal.azure.com).
 2. Wählen Sie das richtige Verzeichnis aus, und wählen Sie dann auf **Azure Active Directory** gefolgt von **Unternehmensanwendungen** aus.
-3. Klicken Sie im Abschnitt **Aktivität** auf **Nutzung & Erkenntnisse** , um den Bericht zu öffnen. 
+3. Klicken Sie im Abschnitt **Aktivität** auf **Nutzung & Erkenntnisse**, um den Bericht zu öffnen. 
 
 ![Screenshot der im Abschnitt „Aktivität“ ausgewählten Option „Nutzung & Erkenntnisse“](./media/concept-usage-insights-report/main-menu.png)
                                      
 
 ## <a name="use-the-report"></a>Verwenden des Berichts
 
-Der Bericht „Nutzung & Erkenntnisse“ zeigt eine Liste der Anwendungen mit mindestens einem Anmeldungsversuch an. Sie können die Liste nach der Anzahl erfolgreicher Anmeldungen, der Anzahl fehlgeschlagener Anmeldungen und der Erfolgsrate sortieren.
+Der Bericht „Nutzung & Erkenntnisse“ zeigt eine Liste der Anwendungen mit mindestens einem Anmeldungsversuch an. Sie können die Liste nach der Anzahl erfolgreicher Anmeldungen, der Anzahl von Anmeldungen, bei denen Fehler aufgetreten sind, und der Erfolgsrate sortieren.
 
-Sie können weitere Anwendungen auf der Seite anzeigen, indem Sie unten in der Liste auf „Weitere laden“ klicken. Sie können den Zeitraum auswählen, um alle Anwendungen anzuzeigen, die in diesem Zeitraum verwendet wurden.
+Sie können weitere Anwendungen auf der Seite anzeigen, indem Sie unten in der Liste auf **Weitere laden** klicken. Sie können den Zeitraum auswählen, um alle Anwendungen anzuzeigen, die in diesem Zeitraum verwendet wurden.
 
-Sie können den Fokus auch auf eine bestimmte Anwendung festlegen. Klicken Sie auf **Anmeldeaktivität anzeigen** , um die Anmeldeaktivität im Laufe der Zeit und die häufigsten Fehler der Anwendung anzuzeigen.  
+![Screenshot der Seite „Nutzung & Erkenntnisse“ für eine Anwendungsaktivität, auf dem Sie einen Datumsbereich auswählen und Anmeldeaktivitäten für verschiedene Apps anzeigen können](./media/concept-usage-insights-report/usage-and-insights-report.png)
+
+Sie können den Fokus auch auf eine bestimmte Anwendung festlegen. Wählen Sie **Anmeldeaktivität anzeigen** aus, um die Anmeldeaktivität im Laufe der Zeit und die häufigsten Fehler der Anwendung anzuzeigen.  
 
 Wenn Sie einen Tag im Anwendungsnutzungsgraph auswählen, wird eine ausführliche Liste der Anmeldeaktivitäten für die Anwendung angezeigt.  
 
-![Screenshot der Seite „Nutzung & Erkenntnisse“ für eine Anwendungsaktivität, auf dem Sie einen Datumsbereich auswählen und Anmeldeaktivitäten für verschiedene Apps anzeigen können](./media/concept-usage-insights-report/usage-and-insights-report.png)
+:::image type="content" source="./media/concept-usage-insights-report/usage-and-insights-application-report.png" alt-text="Screenshot zeigt „Nutzung & Erkenntnisse“ für eine bestimmte Anwendung, wo Sie ein Diagramm für die Anmeldeaktivität sehen können.":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 

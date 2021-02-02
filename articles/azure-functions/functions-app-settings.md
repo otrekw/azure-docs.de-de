@@ -3,12 +3,12 @@ title: Referenz zu App-Einstellungen für Azure Functions
 description: Referenzdokumentation für die App-Einstellungen für Azure Functions oder Umgebungsvariablen.
 ms.topic: conceptual
 ms.date: 09/22/2018
-ms.openlocfilehash: 72b42e392f350a8693ca8a052bdec1d5fd337234
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: a28530fd4e4731065c4ddcc2f39e9a4660529921
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97937109"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881922"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Referenz zu App-Einstellungen für Azure Functions
 
@@ -229,15 +229,17 @@ Der Wert für diesen Schlüssel wird im Format `<DESTINATION>:<VERBOSITY>` berei
 
 ## <a name="website_contentazurefileconnectionstring"></a>WEBSITE\_CONTENTAZUREFILECONNECTIONSTRING
 
-Nur für Verbrauchs- und Premium-Tarife. Die Verbindungszeichenfolge für das Speicherkonto, in dem der Code der Funktionen-App und die Konfiguration gespeichert werden. Weitere Informationen finden Sie unter [Erstellen einer Funktionen-App](functions-infrastructure-as-code.md#create-a-function-app).
+Die Verbindungszeichenfolge für das Speicherkonto, in dem der Code der Funktions-App und die Konfiguration in ereignisgesteuerten, unter Windows ausgeführten Skalierungsplänen gespeichert werden. Weitere Informationen finden Sie unter [Erstellen einer Funktions-App](functions-infrastructure-as-code.md#windows).
 
 |Schlüssel|Beispielwert|
 |---|------------|
 |WEBSITE_CONTENTAZUREFILECONNECTIONSTRING|DefaultEndpointsProtocol=https;AccountName=[Name];AccountKey=[Schlüssel]|
 
+Wird nur bei der Bereitstellung für einen Verbrauchs- oder Premium-Plan verwendet, der unter Windows ausgeführt wird. Wird nicht für Linux unterstützt. Das Ändern oder Entfernen dieser Einstellung kann dazu führen, dass Ihre Funktions-App nicht gestartet wird. Weitere Informationen finden Sie in [diesem Artikel zur Problembehandlung](functions-recover-storage-account.md#storage-account-application-settings-were-deleted). 
+
 ## <a name="website_contentovervnet"></a>WEBSITE\_CONTENTOVERVNET
 
-Nur für Premium-Pläne. Der Wert `1` ermöglicht die Skalierung Ihrer Funktions-App, wenn Sie Ihr Speicherkonto auf ein virtuelles Netzwerk beschränken. Sie sollten diese Einstellung aktivieren, wenn Sie Ihr Speicherkonto auf ein virtuelles Netzwerk einschränken. Weitere Informationen finden Sie unter [Einschränken Ihres Speicherkontos auf ein virtuelles Netzwerk](functions-networking-options.md#restrict-your-storage-account-to-a-virtual-network-preview). 
+Nur für Premium-Pläne. Der Wert `1` ermöglicht die Skalierung Ihrer Funktions-App, wenn Sie Ihr Speicherkonto auf ein virtuelles Netzwerk beschränken. Sie sollten diese Einstellung aktivieren, wenn Sie Ihr Speicherkonto auf ein virtuelles Netzwerk einschränken. Weitere Informationen finden Sie unter [Einschränken Ihres Speicherkontos auf ein virtuelles Netzwerk](functions-networking-options.md#restrict-your-storage-account-to-a-virtual-network).
 
 |Schlüssel|Beispielwert|
 |---|------------|
@@ -245,11 +247,15 @@ Nur für Premium-Pläne. Der Wert `1` ermöglicht die Skalierung Ihrer Funktions
 
 ## <a name="website_contentshare"></a>WEBSITE\_CONTENTSHARE
 
-Nur für Verbrauchs- und Premium-Tarife. Der Dateipfad zum Code der Funktionen-App und zur Konfiguration. Wird mit WEBSITE_CONTENTAZUREFILECONNECTIONSTRING verwendet. Standardmäßig wird eine eindeutige Zeichenfolge verwendet, die mit dem Namen der Funktionen-App beginnt. Weitere Informationen finden Sie unter [Erstellen einer Funktionen-App](functions-infrastructure-as-code.md#create-a-function-app).
+Der Dateipfad für den Funktions-App-Code und die Konfiguration in einem ereignisgesteuerten Skalierungsplan unter Windows. Wird mit WEBSITE_CONTENTAZUREFILECONNECTIONSTRING verwendet. Standardmäßig wird eine eindeutige Zeichenfolge verwendet, die mit dem Namen der Funktionen-App beginnt. Weitere Informationen finden Sie unter [Erstellen einer Funktionen-App](functions-infrastructure-as-code.md#windows).
 
 |Schlüssel|Beispielwert|
 |---|------------|
 |WEBSITE_CONTENTSHARE|functionapp091999e2|
+
+Wird nur von Funktions-Apps in einem Verbrauchs- oder Premium-Plan verwendet, der unter Windows ausgeführt wird. Wird nicht für Linux unterstützt. Das Ändern oder Entfernen dieser Einstellung kann dazu führen, dass Ihre Funktions-App nicht gestartet wird. Weitere Informationen finden Sie in [diesem Artikel zur Problembehandlung](functions-recover-storage-account.md#storage-account-application-settings-were-deleted).
+
+Wenn Sie während der Bereitstellung Azure Resource Manager zum Erstellen einer Funktions-App verwenden, schließen Sie WEBSITE_CONTENTSHARE nicht in die Vorlage ein. Diese Anwendungseinstellung wird während der Bereitstellung generiert. Weitere Informationen finden Sie unter [Automatisieren der Ressourcenbereitstellung für Ihre Funktions-App in Azure Functions](functions-infrastructure-as-code.md#windows).   
 
 ## <a name="website_max_dynamic_application_scale_out"></a>WEBSITE\_MAX\_DYNAMIC\_APPLICATION\_SCALE\_OUT
 

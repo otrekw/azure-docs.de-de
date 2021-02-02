@@ -4,12 +4,12 @@ description: Enthält eine Zusammenfassung der Unterstützungseinstellungen und 
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.custom: references_regions
-ms.openlocfilehash: ade92e445897e36139e74353fa703ddf50d3f9b3
-ms.sourcegitcommit: 61d2b2211f3cc18f1be203c1bc12068fc678b584
+ms.openlocfilehash: d3329d9cac9547fbe9ec971bb8944f50971732b5
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98562725"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98757405"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Unterstützungsmatrix für die Sicherung virtueller Azure-Computer
 
@@ -81,6 +81,7 @@ Für Sicherungen von virtuellen Linux-Azure-Computern unterstützt Azure Backup 
 - Azure Backup unterstützt keine 32-Bit-Betriebssysteme.
 - Andere Bring-Your-Own-Linux-Distributionen sollten funktionieren, sofern der [Azure-VM-Agent für Linux](../virtual-machines/extensions/agent-linux.md) auf der VM verfügbar ist und Python unterstützt wird.
 - Azure Backup unterstützt keine über Proxy konfigurierte Linux-VM, wenn darauf nicht die Python-Version 2.7 installiert ist.
+- Azure Backup unterstützt keine Sicherung von NFS-Dateien, die aus dem Speicher oder von einem anderen NFS-Server in Linux- oder Windows-Computer eingebunden werden. Es werden nur Datenträger gesichert, die dem virtuellen Computer lokal angefügt sind.
 
 ## <a name="backup-frequency-and-retention"></a>Sicherungshäufigkeit und -aufbewahrung
 
@@ -144,10 +145,11 @@ Sicherung von über ein benutzerdefiniertes Image bereitgestellten VMs (Drittanb
 Sicherung von zu Azure migrierten VMs| Unterstützt.<br/><br/> Für die Sicherung des virtuellen Computers muss der VM-Agent auf dem migrierten Computer installiert werden.
 Sichern der Konsistenz mehrerer virtueller Computer | Azure Backup bietet keine mehrere VMs übergreifende Konsistenz von Daten und Anwendungen.
 Sichern mit [Diagnoseeinstellungen](../azure-monitor/platform/platform-logs-overview.md)  | Nicht unterstützt. <br/><br/> Wenn die Wiederherstellung der Azure-VM mit Diagnoseeinstellungen mithilfe der Option [Neu erstellen](backup-azure-arm-restore-vms.md#create-a-vm) ausgelöst wird, tritt bei der Wiederherstellung ein Fehler auf.
-Wiederherstellen von an Zonen angehefteten virtuellen Computern | Unterstützt (für VMs, die nach Januar 2019 gesichert wurden und bei denen es [Verfügbarkeitszonen](https://azure.microsoft.com/global-infrastructure/availability-zones/) gibt).<br/><br/>Wir unterstützen derzeit die Wiederherstellung in derselben Zone, die in virtuellen Computern angeheftet ist. Wenn aber die Zone nicht verfügbar ist, schlägt die Wiederherstellung fehl.
+Wiederherstellen von an Zonen angehefteten virtuellen Computern | Unterstützt (für VMs, die nach Januar 2019 gesichert wurden und bei denen es [Verfügbarkeitszonen](https://azure.microsoft.com/global-infrastructure/availability-zones/) gibt).<br/><br/>Wir unterstützen derzeit die Wiederherstellung in derselben Zone, die in virtuellen Computern angeheftet ist. Wenn die Zone jedoch aufgrund eines Ausfalls nicht verfügbar ist, tritt bei der Wiederherstellung ein Fehler auf.
 Gen2-VMS | Unterstützt <br> Azure Backup unterstützt die Sicherung und Wiederherstellung von [Gen2-VMS](https://azure.microsoft.com/updates/generation-2-virtual-machines-in-azure-public-preview/). Bei Wiederherstellung über einen Wiederherstellungspunkt werden diese VMs als [Gen2-VMs](https://azure.microsoft.com/updates/generation-2-virtual-machines-in-azure-public-preview/) wiederhergestellt.
 Sicherung virtueller Azure-Computer mit Sperren | Wird für nicht verwaltete virtuelle Computer nicht unterstützt. <br><br> Wird für verwaltete virtuelle Computer unterstützt.
 [Spot-VMs](../virtual-machines/spot-vms.md) | Nicht unterstützt. Azure Backup stellt Spot-VMs als reguläre Azure-VMs wieder her.
+[Azure Dedicated Host](https://docs.microsoft.com/azure/virtual-machines/dedicated-hosts) | Unterstützt
 
 ## <a name="vm-storage-support"></a>Unterstützung für VM-Speicher
 
@@ -165,6 +167,7 @@ Hinzufügen eines Datenträgers zu geschütztem virtuellen Computer | Unterstüt
 Freigegebener Speicher| Das Sichern von VMs mit freigegebenem Clustervolume (Cluster Shared Volume, CSV) oder Dateiservern mit horizontaler Skalierung wird nicht unterstützt. Bei CSV-Schreibern treten während der Sicherung voraussichtlich Fehler auf. Bei der Wiederherstellung werden Datenträger, die CSV-Volumes enthalten, möglicherweise nicht hochgefahren.
 [Freigegebene Datenträger](../virtual-machines/disks-shared-enable.md) | Wird nicht unterstützt.
 SSD Ultra-Datenträger | Wird nicht unterstützt. Weitere Einzelheiten finden Sie unter diesen [Einschränkungen](selective-disk-backup-restore.md#limitations).
+[Temporäre Datenträger](https://docs.microsoft.com/azure/virtual-machines/managed-disks-overview#temporary-disk) | Temporäre Datenträger werden nicht von Azure Backup gesichert.
 
 ## <a name="vm-network-support"></a>Netzwerkunterstützung bei virtuellen Computern
 

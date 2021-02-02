@@ -7,12 +7,12 @@ ms.author: lagayhar
 ms.date: 06/07/2019
 ms.reviewer: sergkanz
 ms.custom: devx-track-python, devx-track-csharp
-ms.openlocfilehash: 20e9ed7e83ff3359651acebc11a939a998f2889d
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: 50b858d0bf05aa46ea20a6cf9e088376be2996e3
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97607914"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98693425"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Telemetriekorrelation in Application Insights
 
@@ -233,6 +233,54 @@ Bei Ausführung dieses Codes wird Folgendes in der Konsole ausgegeben:
 Beachten Sie, dass für die Protokollnachricht, die innerhalb der Spanne liegt, eine `spanId` vorhanden ist. Diese entspricht der `spanId`, die zur Spanne mit dem Namen `hello` gehört.
 
 Sie können die Protokolldaten mithilfe von `AzureLogHandler`exportieren. [hier finden Sie weitere Informationen](./opencensus-python.md#logs)
+
+Wir können auch Ablaufverfolgungsinformationen zur ordnungsgemäßen Korrelation von einer Komponente an eine andere übergeben. Stellen Sie sich beispielsweise ein Szenario mit zwei Komponenten `module1` und `module2` vor. Module1 ruft Funktionen in Module2 auf, und um Protokolle von `module1` und `module2` in einer einzelnen Ablaufverfolgung zu erhalten, verwenden wir folgende Methode:
+
+```python
+# module1.py
+import logging
+
+from opencensus.trace import config_integration
+from opencensus.trace.samplers import AlwaysOnSampler
+from opencensus.trace.tracer import Tracer
+from module2 import function_1
+
+config_integration.trace_integrations(['logging'])
+logging.basicConfig(format='%(asctime)s traceId=%(traceId)s spanId=%(spanId)s %(message)s')
+tracer = Tracer(sampler=AlwaysOnSampler())
+
+logger = logging.getLogger(__name__)
+logger.warning('Before the span')
+with tracer.span(name='hello'):
+   logger.warning('In the span')
+   function_1(tracer)
+logger.warning('After the span')
+
+
+# module2.py
+
+import logging
+
+from opencensus.trace import config_integration
+from opencensus.trace.samplers import AlwaysOnSampler
+from opencensus.trace.tracer import Tracer
+
+config_integration.trace_integrations(['logging'])
+logging.basicConfig(format='%(asctime)s traceId=%(traceId)s spanId=%(spanId)s %(message)s')
+tracer = Tracer(sampler=AlwaysOnSampler())
+
+def function_1(parent_tracer=None):
+    if parent_tracer is not None:
+        tracer = Tracer(
+                    span_context=parent_tracer.span_context,
+                    sampler=AlwaysOnSampler(),
+                )
+    else:
+        tracer = Tracer(sampler=AlwaysOnSampler())
+
+    with tracer.span("function_1"):
+        logger.info("In function_1")
+```
 
 ## <a name="telemetry-correlation-in-net"></a>Telemetriekorrelation in .NET
 

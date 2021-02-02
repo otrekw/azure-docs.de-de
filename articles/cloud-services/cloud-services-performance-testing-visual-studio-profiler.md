@@ -1,27 +1,25 @@
 ---
-title: Lokale Profilerstellung eines Clouddiensts im Serveremulator | Microsoft-Dokumentation
-services: cloud-services
+title: Lokale Profilerstellung eines Clouddiensts (klassisch) im Serveremulator | Microsoft-Dokumentation
 description: Untersuchen von Leistungsproblemen in Clouddiensten mit der Visual Studio-Profilerstellung
-documentationcenter: ''
-author: mikejo
-manager: jillfra
-editor: ''
-tags: ''
-ms.assetid: 25e40bf3-eea0-4b0b-9f4a-91ffe797f6c3
-ms.service: cloud-services
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 11/18/2016
-ms.author: mikejo
-ms.openlocfilehash: 6b5707405879c462a1d919e04730d368332ba68c
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.service: cloud-services
+ms.date: 10/14/2020
+ms.author: tagore
+author: tanmaygore
+ms.reviewer: mimckitt
+ms.custom: ''
+ms.openlocfilehash: 2f924d84967c1a1928a47b59fd3a8c28da091130
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92077154"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98743558"
 ---
-# <a name="testing-the-performance-of-a-cloud-service-locally-in-the-azure-compute-emulator-using-the-visual-studio-profiler"></a>Lokales Testen der Leistung eines Clouddiensts im Azure-Serveremulator mithilfe des Visual Studio-Profiler
+# <a name="testing-the-performance-of-a-cloud-service-classic-locally-in-the-azure-compute-emulator-using-the-visual-studio-profiler"></a>Lokales Testen der Leistung eines Clouddiensts (klassisch) im Azure-Serveremulator mithilfe des Visual Studio-Profiler
+
+> [!IMPORTANT]
+> [Azure Cloud Services (erweiterter Support)](../cloud-services-extended-support/overview.md) ist ein neues auf Azure Resource Manager basierendes Bereitstellungsmodell für Azure Cloud Services. Im Zuge dieser Änderung wurden Azure Cloud Services-Instanzen, die unter dem Azure Service Manager-basierten Bereitstellungsmodell ausgeführt werden, in „Cloud Services (klassisch)“ umbenannt. Für alle neuen Bereitstellungen wird [Azure Cloud Services (erweiterter Support)](../cloud-services-extended-support/overview.md) verwendet.
+
 Für das Testen der Leistung von Clouddiensten stehen zahlreiche Tools und Techniken zur Verfügung.
 Wenn Sie einen Clouddienst in Azure veröffentlichen, können Sie Visual Studio zum Erfassen von Profildaten und zum lokalen Analysieren dieser Daten verwenden, wie in [Erstellen eines Profils für eine Azure-Anwendung][1] beschrieben.
 Sie können zudem Diagnosen verwenden, um unterschiedliche Leistungsindikatoren nachzuverfolgen, wie in [Verwenden von Leistungsindikatoren in Azure][2] beschrieben.

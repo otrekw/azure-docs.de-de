@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 12/28/2020
+ms.date: 01/15/2021
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 7bd85c60025475e8208847a12ccc2729743a975a
-ms.sourcegitcommit: 7e97ae405c1c6c8ac63850e1b88cf9c9c82372da
+ms.openlocfilehash: f550f96a8bd2e402556089061604654b11d47844
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/29/2020
-ms.locfileid: "97803917"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98762903"
 ---
 # <a name="perform-a-point-in-time-restore-on-block-blob-data"></a>Durchführen einer Point-in-Time-Wiederherstellung von Blockblobdaten
 
@@ -23,7 +23,7 @@ Sie können die Point-in-Time-Wiederherstellung verwenden, um Blockblobs in eine
 Weitere Informationen zur Point-in-Time-Wiederherstellung finden Sie unter [Point-in-Time-Wiederherstellung für Blockblobs](point-in-time-restore-overview.md).
 
 > [!CAUTION]
-> Point-in-Time-Wiederherstellung unterstützt nur Wiederherstellungsvorgänge für Blockblobs. Vorgänge für Container können nicht wiederhergestellt werden. Wenn Sie einen Container aus dem Speicherkonto löschen, indem Sie den Vorgang [Container löschen](/rest/api/storageservices/delete-container) aufrufen, kann dieser Container nicht mit einem Wiederherstellungsvorgang wiederhergestellt werden. Löschen Sie die einzelnen Blobs, anstatt einen ganzen Container zu löschen, wenn Sie sie möglicherweise später wiederherstellen möchten.
+> Point-in-Time-Wiederherstellung unterstützt nur Wiederherstellungsvorgänge für Blockblobs. Vorgänge für Container können nicht wiederhergestellt werden. Wenn Sie einen Container aus dem Speicherkonto löschen, indem Sie den Vorgang [Container löschen](/rest/api/storageservices/delete-container) aufrufen, kann dieser Container nicht mit einem Wiederherstellungsvorgang wiederhergestellt werden. Löschen Sie die einzelnen Blobs, anstatt einen ganzen Container zu löschen, wenn Sie sie möglicherweise später wiederherstellen möchten. Außerdem empfiehlt Microsoft das Aktivieren des vorläufigen Löschens für Container und Blobs zum Schutz vor versehentlichem Löschen. Weitere Informationen finden Sie unter [Vorläufiges Löschen für Container (Vorschau)](soft-delete-container-overview.md) und [Vorläufiges Löschen für Blobs](soft-delete-blob-overview.md).
 
 ## <a name="enable-and-configure-point-in-time-restore"></a>Aktivieren und Konfigurieren von Point-in-Time-Wiederherstellung
 
@@ -52,19 +52,16 @@ Die folgende Abbildung zeigt ein Speicherkonto, das für die Point-in-Time-Wiede
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-Um die Point-in-Time-Wiederherstellung mit PowerShell zu konfigurieren, installieren Sie zunächst mindestens Version 2.6.0 des Moduls [Az.Storage](https://www.powershellgallery.com/packages/Az.Storage). Rufen Sie dann den Befehl Enable-AzStorageBlobRestorePolicy auf, um die Point-in-Time-Wiederherstellung für das Speicherkonto zu aktivieren.
+Um die Point-in-Time-Wiederherstellung mit PowerShell zu konfigurieren, installieren Sie zunächst mindestens Version 2.6.0 des Moduls [Az.Storage](https://www.powershellgallery.com/packages/Az.Storage). Rufen Sie dann den Befehl [Enable-AzStorageBlobRestorePolicy](/powershell/module/az.storage/enable-azstorageblobrestorepolicy) auf, um die Point-in-Time-Wiederherstellung für das Speicherkonto zu aktivieren.
 
-Im folgenden Beispiel wird vorläufiges Löschen aktiviert, die Beibehaltungsdauer für vorläufiges Löschen festgelegt, der Änderungsfeed und die Versionsverwaltung aktiviert und dann die Point-in-Time-Wiederherstellung aktiviert.    Denken Sie daran, die Platzhalterwerte in eckigen Klammern durch Ihre eigenen Werte zu ersetzen, wenn Sie das Beispiel ausführen:
+Im folgenden Beispiel wird vorläufiges Löschen aktiviert, die Beibehaltungsdauer für vorläufiges Löschen festgelegt, der Änderungsfeed und die Versionsverwaltung aktiviert und dann die Point-in-Time-Wiederherstellung aktiviert. Denken Sie daran, die Platzhalterwerte in eckigen Klammern durch Ihre eigenen Werte zu ersetzen, wenn Sie das Beispiel ausführen:
 
 ```powershell
-# Sign in to your Azure account.
-Connect-AzAccount
-
 # Set resource group and account variables.
 $rgName = "<resource-group>"
 $accountName = "<storage-account>"
 
-# Enable soft delete with a retention of 14 days.
+# Enable blob soft delete with a retention of 14 days.
 Enable-AzStorageBlobDeleteRetentionPolicy -ResourceGroupName $rgName `
     -StorageAccountName $accountName `
     -RetentionDays 14
@@ -87,11 +84,33 @@ Get-AzStorageBlobServiceProperty -ResourceGroupName $rgName `
     -StorageAccountName $accountName
 ```
 
+# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+
+Um die Point-in-Time-Wiederherstellung mit Azure CLI zu konfigurieren, installieren Sie zunächst mindestens Azure CLI Version 2.2.0. Aktivieren Sie dann den Befehl [az storage account blob-service-properties update](/cli/azure/ext/storage-blob-preview/storage/account/blob-service-properties#ext_storage_blob_preview_az_storage_account_blob_service_properties_update), um die Point-in-Time-Wiederherstellung und die anderen erforderlichen Datenschutzeinstellungen für das Speicherkonto zu aktivieren.
+
+Im folgenden Beispiel wird vorläufiges Löschen aktiviert und die Beibehaltungsdauer für vorläufiges Löschen auf 14 Tage festgelegt, der Änderungsfeed und die Versionsverwaltung aktiviert und dann die Point-in-Time-Wiederherstellung mit einer Wiederherstellungsdauer von 7 Tagen aktiviert. Denken Sie daran, die Platzhalterwerte in eckigen Klammern durch Ihre eigenen Werte zu ersetzen, wenn Sie das Beispiel ausführen:
+
+```azurecli
+az storage account blob-service-properties update \
+    --resource-group <resource_group> \
+    --account-name <storage-account> \
+    --enable-delete-retention true \
+    --delete-retention-days 14 \
+    --enable-versioning true \
+    --enable-change-feed true \
+    --enable-restore-policy true \
+    --restore-days 7
+```
+
 ---
 
-## <a name="perform-a-restore-operation"></a>Ausführen eines Wiederherstellungsvorgangs
+## <a name="choose-a-restore-point"></a>Auswählen eines Wiederherstellungspunkts
 
-Wenn Sie einen Wiederherstellungsvorgang ausführen, müssen Sie den Wiederherstellungspunkt als **DateTime**-Wert in UTC angeben. Container und Blobs werden in ihrem Zustand zu diesem Datum und dieser Uhrzeit wiederhergestellt. Der Wiederherstellungsvorgang kann mehrere Minuten dauern.
+Der Wiederherstellungspunkt ist ein Zeitpunkt mit Angabe von Datum und Uhrzeit. Der zu diesem Zeitpunkt bestehende Datenzustand wird wiederhergestellt. Azure Storage verwendet immer einen UTC-Datums-/Uhrzeitwert als Wiederherstellungspunkt. Allerdings können Sie im Azure-Portal den Wiederherstellungspunkt in der Ortszeit angeben, und dann wird dieser Datums-/Uhrzeitwert in einen UTC-Datums-/Uhrzeitwert konvertiert, um den Wiederherstellungsvorgang auszuführen.
+
+Wenn Sie einen Wiederherstellungsvorgang mit PowerShell oder Azure CLI ausführen, sollten Sie den Wiederherstellungspunkt als UTC-Datums-/Uhrzeitwert angeben. Wenn der Wiederherstellungspunkt mit einem lokalen Uhrzeitwert anstelle eines UTC-Zeitwerts angegeben wird, verhält sich der Wiederherstellungsvorgang in einigen Fällen möglicherweise dennoch wie erwartet. Wenn die Ortszeit z. B. UTC minus fünf Stunden beträgt, führt die Angabe eines lokalen Zeitwerts zu einem Wiederherstellungspunkt, der fünf Stunden vor dem Wert liegt, den Sie angegeben haben. Wenn während dieses Zeitraums von fünf Stunden keine Änderungen an den Daten in dem wiederherzustellenden Bereich vorgenommen wurden, hat der Wiederherstellungsvorgang unabhängig davon, welcher Zeitwert angegeben wurde, dieselben Ergebnisse. Die Angabe einer UTC-Zeit für den Wiederherstellungspunkt wird empfohlen, um unerwartete Ergebnisse zu vermeiden.
+
+## <a name="perform-a-restore-operation"></a>Ausführen eines Wiederherstellungsvorgangs
 
 Sie können alle Container im Speicherkonto wiederherstellen, oder Sie können einen Bereich von Blobs in einem oder mehreren Containern wiederherstellen. Ein Bereich von Blobs wird lexikografisch definiert, also in der Wörterbuchreihenfolge. Pro Wiederherstellungsvorgang werden bis zu zehn lexikografische Bereiche unterstützt. Der Anfang des Bereichs ist inklusiv, das Ende des Bereichs ist exklusiv.
 
@@ -108,7 +127,7 @@ Es werden nur Blockblobs wiederhergestellt. Seitenblobs und Anfügeblobs sind in
 >
 > Lesevorgänge aus dem sekundären Speicherort können während des Wiederherstellungsvorgangs fortgesetzt werden, wenn das Speicherkonto georepliziert wird.
 >
-> Die erforderliche Zeit zum Wiederherstellen mehrerer Datensätze ist von der Anzahl der Schreib- und Löschvorgänge abhängig, die während des Wiederherstellungszeitraums vorgenommen werden. Beispielsweise dauert bei einem Konto mit 1 Million Objekten, in dem pro Tag 3.000 Objekte hinzugefügt und 1.000 Objekte gelöscht werden, die Wiederherstellung zu einem Zeitpunkt 30 Tage in der Vergangenheit ungefähr zwei Stunden. Bei einem Konto mit einer solchen Änderungsrate wird davon abgeraten, einen Aufbewahrungszeitraum mit einer Wiederherstellung, die mehr als 90 Tage in der Vergangenheit liegt, anzuwenden.
+> Die erforderliche Zeit zum Wiederherstellen mehrerer Datensätze ist von der Anzahl der Schreib- und Löschvorgänge abhängig, die während des Wiederherstellungszeitraums vorgenommen werden. Beispielsweise dauert bei einem Konto mit 1 Million Objekten, in dem pro Tag 3.000 Objekte hinzugefügt und 1.000 Objekte gelöscht werden, die Wiederherstellung zu einem 30 Tage in der Vergangenheit liegenden Zeitpunkt ungefähr zwei Stunden. Bei einem Konto mit einer solchen Änderungsrate wird davon abgeraten, einen Aufbewahrungszeitraum mit einer Wiederherstellung, die mehr als 90 Tage in der Vergangenheit liegt, anzuwenden.
 
 ### <a name="restore-all-containers-in-the-account"></a>Wiederherstellen aller Container im Konto
 
@@ -128,7 +147,7 @@ Führen Sie die folgenden Schritte aus, um alle Container und Blobs im Speicherk
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-Wenn Sie alle Container und Blobs im Speicherkonto mit PowerShell wiederherstellen möchten, rufen Sie den Befehl **Restore-AzStorageBlobRange** auf. Standardmäßig wird der Befehl **Restore-AzStorageBlobRange** asynchron ausgeführt, und er gibt ein Objekt vom Typ **PSBlobRestoreStatus** zurück, mit dem Sie den Status des Wiederherstellungsvorgangs überprüfen können.
+Wenn Sie alle Container und Blobs im Speicherkonto mit PowerShell wiederherstellen möchten, rufen Sie den Befehl **Restore-AzStorageBlobRange** auf und geben Sie den Wiederherstellungspunkt als UTC-Datums-/Uhrzeitwert an. Standardmäßig wird der Befehl **Restore-AzStorageBlobRange** asynchron ausgeführt, und er gibt ein Objekt vom Typ **PSBlobRestoreStatus** zurück, mit dem Sie den Status des Wiederherstellungsvorgangs überprüfen können.
 
 Im folgenden Beispiel werden Container im Speicherkonto auf ihren Zustand 12 Stunden vor dem aktuellen Zeitpunkt asynchron wiederhergestellt. Außerdem werden einige der Eigenschaften des Wiederherstellungsvorgangs überprüft:
 
@@ -136,7 +155,7 @@ Im folgenden Beispiel werden Container im Speicherkonto auf ihren Zustand 12 St
 # Specify -TimeToRestore as a UTC value
 $restoreOperation = Restore-AzStorageBlobRange -ResourceGroupName $rgName `
     -StorageAccountName $accountName `
-    -TimeToRestore (Get-Date).AddHours(-12)
+    -TimeToRestore (Get-Date).ToUniversalTime().AddHours(-12)
 
 # Get the status of the restore operation.
 $restoreOperation.Status
@@ -153,6 +172,22 @@ Restore-AzStorageBlobRange -ResourceGroupName $rgName `
     -StorageAccountName $accountName `
     -TimeToRestore (Get-Date).AddHours(-12) -WaitForComplete
 ```
+
+# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+
+Wenn Sie alle Container und Blobs im Speicherkonto mit der Azure CLI wiederherstellen möchten, rufen Sie den Befehl [az storage blob restore](/cli/azure/storage/blob#az_storage_blob_restore) auf und geben Sie den Wiederherstellungspunkt als UTC-Datums-/Uhrzeitwert an.
+
+Im folgenden Beispiel wird der Zustand aller Container im Speicherkonto 12 Stunden vor einem angegebenen Datums-/Uhrzeitwert asynchron wiederhergestellt. Um den Status des Wiederherstellungsvorgangs zu überprüfen, rufen Sie [az storage account show](/cli/azure/storage/account#az_storage_account_show) auf:
+
+```azurecli
+az storage blob restore \
+    --resource-group <resource_group> \
+    --account-name <storage-account> \
+    --time-to-restore 2021-01-14T06:31:22Z \
+    --no-wait
+```
+
+Um den Befehl **az storage blob restore** synchron auszuführen und die Ausführung zu blockieren, bis der Wiederherstellungsvorgang abgeschlossen ist, lassen Sie den `--no-wait`-Parameter weg.
 
 ---
 
@@ -244,6 +279,25 @@ $restoreOperation.Parameters.BlobRanges
 ```
 
 Um den Wiederherstellungsvorgang synchron auszuführen und die Ausführung bis zum Abschluss zu blockieren, schließen Sie den Parameter **-WaitForComplete** in den Befehl ein.
+
+# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+
+Um einen Bereich von Blobs wiederherzustellen, rufen Sie den Befehl [az storage blob restore](/cli/azure/storage/blob#az_storage_blob_restore) auf, und geben Sie einen lexikografischen Bereich von Container- und Blobnamen für den Parameter `--blob-range` an. Wenn Sie mehrere Bereiche angeben möchten, geben Sie den `--blob-range`-Parameter für jeden einzelnen Bereich an.
+
+Wenn Sie z. B. die Blobs in einem einzelnen Container mit dem Namen *container1* wiederherstellen möchten, können Sie einen Bereich angeben, der mit *container1* beginnt und mit *container2* endet. Es ist nicht erforderlich, dass die in den Anfangs- und Endbereichen genannten Container vorhanden sind. Da das Ende des Bereichs exklusiv ist, wird nur der Container mit dem Namen *container1* wiederhergestellt, auch wenn das Speicherkonto einen Container mit dem Namen *container2* enthält.
+
+Um eine Teilmenge der Blobs in einem Container für die Wiederherstellung anzugeben, verwenden Sie einen Schrägstrich (/), um den Containernamen vom Blobpräfixmuster zu trennen. Im unten gezeigten Beispiel wird ein Bereich von Blobs in einem Container, deren Namen mit den Buchstaben `d` bis `f` beginnen, asynchron wiederhergestellt.
+
+```azurecli
+az storage blob restore \
+    --account-name <storage-account> \
+    --time-to-restore 2021-01-14T06:31:22Z \
+    --blob-range container1 container2
+    --blob-range container3/d container3/g
+    --no-wait
+```
+
+Um den Befehl **az storage blob restore** synchron auszuführen und die Ausführung zu blockieren, bis der Wiederherstellungsvorgang abgeschlossen ist, lassen Sie den `--no-wait`-Parameter weg.
 
 ---
 

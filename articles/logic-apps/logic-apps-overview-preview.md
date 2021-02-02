@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm, az-logic-apps-dev
 ms.topic: conceptual
-ms.date: 12/07/2020
-ms.openlocfilehash: 7c15b3a854b533d93bc05f7e5302671711da75c2
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.date: 01/22/2021
+ms.openlocfilehash: a4d1543c5c4ce7a44825a879b838e7829b8c84fd
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97936123"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98760631"
 ---
 # <a name="overview-azure-logic-apps-preview"></a>Übersicht: Vorschauversion von Azure Logic Apps
 
@@ -138,6 +138,8 @@ Azure Logic Apps (Vorschau) umfasst viele aktuelle und zusätzliche Funktionen, 
 * Veröffentlichen Sie Ihre Logik-Apps und die zugehörigen Workflows aus Visual Studio Code, oder stellen Sie sie direkt in verschiedenen Hostumgebungen bereit, z. B. in Azure und in [Docker-Containern](/dotnet/core/docker/introduction).
 
 * Aktivieren Sie die Funktionen zur Diagnoseprotokollierung und Ablaufverfolgung für Ihre Logik-App, indem Sie [Application Insights](../azure-monitor/app/app-insights-overview.md) verwenden, sofern dies von Ihrem Azure-Abonnement und den Einstellungen der Logik-App unterstützt wird.
+
+* Generieren Sie Zugriffsschlüssel für verwaltete Verbindungen erneut, die von einzelnen Workflows in einer **Logik-App (Vorschau)** -Ressource verwendet werden. [Führen Sie die gleichen Schritte wie für die **Logic Apps**-Ressource, aber auf der individuellen Workflowebene](logic-apps-securing-a-logic-app.md#regenerate-access-keys), nicht auf der Logik-App-Ressourcenebene, für diese Aufgabe aus.
 
 > [!NOTE]
 > Informationen zu aktuellen bekannten Problemen finden Sie in GitHub unter [Logic Apps Public Preview Known Issues](https://github.com/Azure/logicapps/blob/master/articles/logic-apps-public-preview-known-issues.md) (Bekannte Probleme der öffentlichen Vorschauversion von Logic Apps).

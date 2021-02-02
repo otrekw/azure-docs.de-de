@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/07/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: b2f95ddb13896ed461a20f1948fef34569586d1f
-ms.sourcegitcommit: 8f0803d3336d8c47654e119f1edd747180fe67aa
+ms.openlocfilehash: bfe3e00c4930ba57c930eb1bc2f2dd4ed11886e0
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97977070"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624683"
 ---
 # <a name="control-what-traffic-is-monitored"></a>Steuern, welcher Datenverkehr überwacht wird
 
@@ -186,11 +186,11 @@ So legen Sie einen DHCP-Adressbereich fest:
 
 ## <a name="configure-dns-servers-for-reverse-lookup-resolution"></a>Konfigurieren von DNS-Servern für die Reverse Lookup-Auflösung
 
-Zur Verbesserung der Anlagenerweiterung können Sie mehrere DNS-Server für die Ausführung von Reverse Lookups konfigurieren. Sie können Hostnamen oder FQDNs auflösen, die den in Netzwerksubnetzen erkannten IP-Adressen zugeordnet sind. Wenn beispielsweise ein Sensor eine IP-Adresse ermittelt, fragt er möglicherweise mehrere DNS-Server ab, um den Hostnamen aufzulösen.
+Zur Verbesserung der Geräteerweiterung können Sie mehrere DNS-Server für die Ausführung von Reverse Lookups konfigurieren. Sie können Hostnamen oder FQDNs auflösen, die den in Netzwerksubnetzen erkannten IP-Adressen zugeordnet sind. Wenn beispielsweise ein Sensor eine IP-Adresse ermittelt, fragt er möglicherweise mehrere DNS-Server ab, um den Hostnamen aufzulösen.
 
 Alle CIDR-Formate werden unterstützt.
 
-Der Hostname wird im Inventar und der Geräteübersicht sowie in Berichten angezeigt.
+Der Hostname wird im Gerätebestand, der Gerätezuordnung und in Berichten angezeigt.
 
 Sie können Zeitpläne für die Reverse Lookup-Auflösung für bestimmte stündliche Intervalle planen, beispielsweise alle 12 Stunden. Oder Sie können eine bestimmte Uhrzeit planen.
 

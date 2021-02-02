@@ -10,12 +10,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 07/01/2019
-ms.openlocfilehash: 0542d7e0ea204d1e9279e89c9f36b9bc6c6c88fa
-ms.sourcegitcommit: 16887168729120399e6ffb6f53a92fde17889451
+ms.openlocfilehash: c34410fcb5e1992f8b7a358801a354a1e1cf190c
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98165857"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98808009"
 ---
 # <a name="azure-sql-database-traffic-migration-to-newer-gateways"></a>Migration des Azure SQL-Datenbank-Datenverkehrs zu neueren Gateways
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -27,6 +27,13 @@ Kunden werden per E-Mail und im Azure-Portal rechtzeitig vor jeder Änderung der
 ## <a name="status-updates"></a>Statusaktualisierungen
 
 # <a name="in-progress"></a>[Vorgang wird ausgeführt](#tab/in-progress-ip)
+## <a name="february-2021"></a>Februar 2021
+Neue SQL-Gateways werden den folgenden Regionen hinzugefügt:
+
+- USA, Mitte: 13.89.169.20
+
+Diese SQL-Gateways sollen ab dem 28. Februar 2021 Kundendatenverkehr akzeptieren.
+
 ## <a name="january-2021"></a>Januar 2021
 Neue SQL-Gateways werden den folgenden Regionen hinzugefügt:
 

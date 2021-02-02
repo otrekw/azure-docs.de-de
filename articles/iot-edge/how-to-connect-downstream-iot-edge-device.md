@@ -12,12 +12,12 @@ ms.custom:
 - amqp
 - mqtt
 monikerRange: '>=iotedge-2020-11'
-ms.openlocfilehash: 37c237cdaf6c0d4f766d4b2e39c10e3e96215463
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 1258fd4b5c69b399b70d1f2db1be63765771e631
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96187832"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98629402"
 ---
 # <a name="connect-a-downstream-iot-edge-device-to-an-azure-iot-edge-gateway-preview"></a>Verbinden eines nachgeschalteten IoT Edge-Geräts mit einem Azure IoT Edge-Gateway (Vorschau)
 
@@ -118,7 +118,7 @@ Damit die Gatewayermittlung möglich ist, muss jedes IoT Edge-Gatewaygerät mit 
 
 Für sichere Verbindungen muss jedes IoT Edge-Gerät in einem Gatewayszenario mit einem eindeutigen Gerätezertifizierungsstellenzertifikat und einer Kopie des Stammzertifizierungsstellenzertifikats konfiguriert werden, das von allen Geräten in der Gatewayhierarchie genutzt wird.
 
-Auf Ihrem Gerät sollte IoT Edge bereits installiert sein. Ist dies nicht der Fall, befolgen Sie die Schritte zum [Installieren der Azure IoT Edge-Runtime](how-to-install-iot-edge.md), und stellen Sie dann Ihr Gerät entweder mit [Authentifizierung mit symmetrischen Schlüsseln](how-to-manual-provision-symmetric-key.md) oder mit [X.509-Zertifikatauthentifizierung](how-to-manual-provision-x509.md) bereit.
+Auf Ihrem Gerät sollte IoT Edge bereits installiert sein. Wenn nicht, führen Sie die Schritte zum [Registrieren eines IoT Edge-Geräts in IoT Hub](how-to-register-device.md) aus, und dann [installieren Sie die Azure IoT Edge-Runtime](how-to-install-iot-edge.md).
 
 Die Schritte in diesem Abschnitt verweisen auf das **Zertifikat der Stammzertifizierungsstelle** und auf das **Gerätezertifizierungsstellenzertifikat und den privaten Schlüssel**, die in diesem Artikel an früherer Stelle bereits erläutert wurden. Wenn Sie diese Zertifikate auf einem anderen Gerät erstellt haben, sorgen Sie dafür, dass sie auf diesem Gerät verfügbar sind. Sie können die Dateien physisch übertragen, z. B. mit einem USB-Datenträger, mit einem Dienst wie [Azure Key Vault](../key-vault/general/overview.md) oder mit einer Funktion zum [sicheren Kopieren von Dateien](https://www.ssh.com/ssh/scp/).
 
