@@ -8,20 +8,22 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/10/2020
+ms.date: 01/20/2021
 ms.author: kenwith
 ms.reviewer: japere
-ms.custom: contperf-fy21q2
-ms.openlocfilehash: bcb484d62b7c4add7e1ab5562c19417a90cfb7e1
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.custom: contperf-fy21q3
+ms.openlocfilehash: 6f8fdb23222944eab4742d1e972280e1e27e30a3
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97587552"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98728513"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>Tutorial: Hinzufügen einer lokalen Anwendung für den Remotezugriff über den Anwendungsproxy in Azure Active Directory
 
 Mit einem Anwendungsproxydienst in Azure Active Directory (Azure AD) können Benutzer auf lokale Anwendungen zugreifen, indem sie sich mit ihrem Azure AD-Konto anmelden. In diesem Tutorial wird Ihre Umgebung auf die Verwendung des Anwendungsproxys vorbereitet. Wenn Ihre Umgebung bereit ist, fügen Sie im Azure-Portal Ihrem Azure AD-Mandanten eine lokale Anwendung hinzu.
+
+:::image type="content" source="./media/application-proxy-add-on-premises-application/app-proxy-diagram.png" alt-text="Übersichtsdiagramm für den Anwendungsproxy" lightbox="./media/application-proxy-add-on-premises-application/app-proxy-diagram.png":::
 
 Connectors sind ein wichtiger Bestandteil des Anwendungsproxys. Weitere Informationen zu Connectors finden Sie unter [Grundlegendes zu Azure AD-Anwendungsproxyconnectors](application-proxy-connectors.md).
 
@@ -95,7 +97,7 @@ So aktivieren Sie TLS 1.2
 1. Starten Sie den Server neu.
 
 > [!Note]
-> Microsoft aktualisiert Azure-Dienste für die Verwendung von TLS-Zertifikaten aus einer anderen Gruppe von Stammzertifizierungsstellen (Certificate Authorities, CAs). Diese Änderung wird vorgenommen, da die aktuellen Zertifizierungsstellenzertifikate eine der grundlegenden Anforderungen des Zertifizierungsstellen-/Browserforums nicht erfüllen. Weitere Informationen finden Sie unter [TLS-Zertifikatänderungen für Azure](https://docs.microsoft.com/azure/security/fundamentals/tls-certificate-changes).
+> Microsoft aktualisiert Azure-Dienste für die Verwendung von TLS-Zertifikaten aus einer anderen Gruppe von Stammzertifizierungsstellen (Certificate Authorities, CAs). Diese Änderung wird vorgenommen, da die aktuellen Zertifizierungsstellenzertifikate eine der grundlegenden Anforderungen des Zertifizierungsstellen-/Browserforums nicht erfüllen. Weitere Informationen finden Sie unter [TLS-Zertifikatänderungen für Azure](../../security/fundamentals/tls-certificate-changes.md).
 
 ## <a name="prepare-your-on-premises-environment"></a>Vorbereiten Ihrer lokalen Umgebung
 
@@ -126,7 +128,11 @@ Lassen Sie den Zugriff auf die folgenden URLs zu:
 | login.windows.net<br>secure.aadcdn.microsoftonline-p.com<br>&ast;.microsoftonline.com<br>&ast;.microsoftonline-p.com<br>&ast;.msauth.net<br>&ast;.msauthimages.net<br>&ast;.msecnd.net<br>&ast;.msftauth.net<br>&ast;.msftauthimages.net<br>&ast;.phonefactor.net<br>enterpriseregistration.windows.net<br>management.azure.com<br>policykeyservice.dc.ad.msft.net<br>ctldl.windowsupdate.com<br>www.microsoft.com/pkiops | 443/HTTPS |Der Connector verwendet diese URLs während der Registrierung. |
 | ctldl.windowsupdate.com | 80/HTTP |Der Connector verwendet diese URL während der Registrierung. |
 
-Sie können Verbindungen mit „&ast;.msappproxy.net“, „&ast;.servicebus.windows.net“ und anderen URLs zulassen, wenn für Ihre Firewall oder Ihren Proxy die Konfiguration von DNS-Zulassungslisten möglich ist. Andernfalls müssen Sie den Zugriff auf die Datei [Azure IP Ranges and Service Tags – Public Cloud](https://www.microsoft.com/download/details.aspx?id=56519) zulassen. Die IP-Adressbereiche werden wöchentlich aktualisiert.
+Sie können Verbindungen mit „&ast;.msappproxy.net“, „&ast;.servicebus.windows.net“ und anderen URLs zulassen, wenn Ihre Firewall oder Ihr Proxy die Konfiguration von Zugriffsregeln auf der Grundlage von Domänensuffixen ermöglicht. Andernfalls müssen Sie den Zugriff auf die Datei [Azure IP Ranges and Service Tags – Public Cloud](https://www.microsoft.com/download/details.aspx?id=56519) zulassen. Die IP-Adressbereiche werden wöchentlich aktualisiert.
+
+### <a name="dns-name-resolution-for-azure-ad-application-proxy-endpoints"></a>DNS-Namensauflösung für Azure AD-Anwendungsproxy-Endpunkte
+
+Öffentliche DNS-Einträge für Azure AD-Anwendungsproxy-Endpunkte sind verkettete CNAME-Einträge, die auf einen A-Eintrag verweisen. Das sorgt für Fehlertoleranz und Flexibilität. Es ist sichergestellt, dass der Azure AD-Anwendungsproxyconnector immer auf Hostnamen mit dem Domänensuffix _*.msappproxy.net_ oder _*.servicebus.windows.net_ zugreift. Bei der Namensauflösung können die CNAME-Einträge allerdings DNS-Einträge mit anderen Hostnamen und Suffixen enthalten.  Daher muss sichergestellt werden, dass das Gerät (abhängig von Ihrem Setup: Connectorserver, Firewall, Proxy für ausgehenden Datenverkehr) alle Einträge in der Kette auflösen kann und eine Verbindung mit den aufgelösten IP-Adressen zulässt. Da die DNS-Einträge in der Kette ggf. gelegentlich geändert werden, können wir keine Liste mit DNS-Einträgen bereitstellen.
 
 ## <a name="install-and-register-a-connector"></a>Installieren und Registrieren eines Connectors
 

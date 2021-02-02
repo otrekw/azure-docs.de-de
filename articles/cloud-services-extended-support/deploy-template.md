@@ -1,0 +1,457 @@
+---
+title: 'Bereitstellen eines Azure-Clouddiensts (erweiterter Support): Vorlagen'
+description: Bereitstellen eines Azure-Clouddiensts (erweiterter Support) mithilfe von ARM-Vorlagen
+ms.topic: tutorial
+ms.service: cloud-services-extended-support
+author: gachandw
+ms.author: gachandw
+ms.reviewer: mimckitt
+ms.date: 10/13/2020
+ms.custom: ''
+ms.openlocfilehash: f86b2a50040704aac2827c463a362a04f78ba34f
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881821"
+---
+# <a name="deploy-a-cloud-service-extended-support-using-arm-templates"></a>Bereitstellen eines Clouddiensts (erweiterter Support) mithilfe von ARM-Vorlagen
+
+In diesem Tutorial erfahren Sie, wie Sie mithilfe von [ARM-Vorlagen](https://docs.microsoft.com/azure/azure-resource-manager/templates/overview) eine Clouddienstbereitstellung mit erweitertem Support erstellen. 
+
+> [!IMPORTANT]
+> Cloud Services (erweiterter Support) befindet sich derzeit in der Public Preview-Phase.
+> Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+
+## <a name="before-you-begin"></a>Vorbereitung
+1. Informieren Sie sich über die [Bereitstellungsvoraussetzungen](deploy-prerequisite.md) für Cloud Services (erweiterter Support), und erstellen Sie die entsprechenden Ressourcen. 
+
+2. Erstellen Sie über das [Azure-Portal](https://docs.microsoft.com/azure/azure-resource-manager/management/manage-resource-groups-portal) oder mithilfe von [PowerShell](https://docs.microsoft.com/azure/azure-resource-manager/management/manage-resource-groups-powershell) eine neue Ressourcengruppe. Bei Verwendung einer vorhandenen Ressourcengruppe ist dieser Schritt optional. 
+ 
+3. Erstellen Sie über das [Azure-Portal](https://docs.microsoft.com/azure/storage/common/storage-account-create?tabs=azure-portal) oder mithilfe von [PowerShell](https://docs.microsoft.com/azure/storage/common/storage-account-create?tabs=azure-powershell) ein neues Speicherkonto. Bei Verwendung eines vorhandenen Speicherkontos ist dieser Schritt optional. 
+
+4. Laden Sie die Dienstdefinitionsdatei (.csdef) und die Dienstkonfigurationsdatei (.cscfg) per [Azure-Portal](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal#upload-a-block-blob), [AzCopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-blobs-upload?toc=/azure/storage/blobs/toc.json) oder [PowerShell](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-powershell#upload-blobs-to-the-container) in das Speicherkonto hoch. Rufen Sie die SAS-URIs der beiden Dateien ab. Sie werden später in diesem Tutorial der ARM-Vorlage hinzugefügt. 
+
+5. Optional: Erstellen Sie einen Schlüsseltresor, und laden Sie die Zertifikate hoch. 
+    -  Zertifikate können an Clouddienste angefügt werden, um eine sichere Kommunikation mit dem Dienst zu ermöglichen. Um Zertifikate verwenden zu können, muss deren Fingerabdruck in Ihrer Dienstkonfigurationsdatei (.cscfg) angegeben und in einen Schlüsseltresor hochgeladen werden. Eine Key Vault-Instanz kann über das [Azure-Portal](https://docs.microsoft.com/azure/key-vault/general/quick-create-portal) oder mithilfe von [PowerShell](https://docs.microsoft.com/azure/key-vault/general/quick-create-powershell) erstellt werden. 
+    - Die zugeordnete Key Vault-Instanz muss in der gleichen Region und im gleichen Abonnement erstellt werden wie der Clouddienst.   
+    - Für die zugeordnete Key Vault-Instanz müssen außerdem geeignete Berechtigungen aktiviert werden, damit die Ressource vom Typ „Cloud Services (erweiterter Support)“ das Zertifikat aus Key Vault abrufen kann. Weitere Informationen finden Sie unter [Verwenden von Zertifikaten mit Azure Cloud Services (erweiterter Support)](certificates-and-key-vault.md).
+    - Auf den Schlüsseltresor muss im Abschnitt „OsProfile“ der ARM-Vorlage verwiesen werden, wie in den folgenden Schritten gezeigt.
+
+## <a name="deploy-a-cloud-service-extended-support"></a>Bereitstellen eines Clouddiensts (erweiterter Support) 
+1. Erstellen Sie ein virtuelles Netzwerk. Der Name des virtuellen Netzwerks muss den Verweisen in der Dienstkonfigurationsdatei (.cscfg) entsprechen. Sollten Sie ein vorhandenes virtuelles Netzwerk verwenden, überspringen Sie diesen Abschnitt in der ARM-Vorlage.
+
+    ```json
+    "resources": [ 
+        { 
+          "apiVersion": "2019-08-01", 
+          "type": "Microsoft.Network/virtualNetworks", 
+          "name": "[parameters('vnetName')]", 
+          "location": "[parameters('location')]", 
+          "properties": { 
+            "addressSpace": { 
+              "addressPrefixes": [ 
+                "10.0.0.0/16" 
+              ] 
+            }, 
+            "subnets": [ 
+              { 
+                "name": "WebTier", 
+                "properties": { 
+                  "addressPrefix": "10.0.0.0/24" 
+                } 
+              } 
+            ] 
+          } 
+        } 
+    ] 
+    ```
+    
+     Wenn Sie ein neues virtuelles Netzwerk erstellen, fügen Sie dem Abschnitt `dependsOn` Folgendes hinzu, um sicherzustellen, dass das virtuelle Netzwerk vor der Erstellung des Clouddiensts erstellt wird: 
+
+    ```json
+    "dependsOn": [ 
+            "[concat('Microsoft.Network/virtualNetworks/', parameters('vnetName'))]" 
+     ] 
+    ```
+ 
+2. Erstellen Sie eine öffentliche IP-Adresse, und legen Sie (optional) die DNS-Bezeichnungseigenschaft der öffentlichen IP-Adresse fest. Wenn Sie eine statische IP-Adresse verwenden, muss darauf in der Dienstkonfigurationsdatei (.cscfg) als reservierte IP verwiesen werden. Wenn Sie eine vorhandene IP-Adresse verwenden, überspringen Sie diesen Schritt, und fügen Sie die IP-Adressinformationen in Ihrer ARM-Vorlage direkt den Konfigurationseinstellungen für den Lastenausgleich hinzu.
+ 
+    ```json
+    "resources": [ 
+        { 
+          "apiVersion": "2019-08-01", 
+          "type": "Microsoft.Network/publicIPAddresses", 
+          "name": "[parameters('publicIPName')]", 
+          "location": "[parameters('location')]", 
+          "properties": { 
+            "publicIPAllocationMethod": "Dynamic", 
+            "idleTimeoutInMinutes": 10, 
+            "publicIPAddressVersion": "IPv4", 
+            "dnsSettings": { 
+              "domainNameLabel": "[variables('dnsName')]" 
+            } 
+          }, 
+          "sku": { 
+            "name": "Basic" 
+          } 
+        } 
+    ] 
+    ```
+     
+     Wenn Sie eine neue IP-Adresse erstellen, fügen Sie dem Abschnitt `dependsOn` Folgendes hinzu, um sicherzustellen, dass die IP-Adresse vor der Erstellung des Clouddiensts erstellt wird: 
+    
+    ```json
+    "dependsOn": [ 
+            "[concat('Microsoft.Network/publicIPAddresses/', parameters('publicIPName'))]" 
+          ] 
+    ```
+ 
+3. Erstellen Sie ein Netzwerkprofilobjekt, und ordnen Sie die öffentliche IP-Adresse dem Front-End des Lastenausgleichs zu. Ein Lastenausgleich wird automatisch von der Plattform erstellt.  
+
+    ```json
+    "networkProfile": { 
+        "loadBalancerConfigurations": [ 
+          { 
+            "id": "[concat(variables('resourcePrefix'), 'Microsoft.Network/loadBalancers/', variables('lbName'))]", 
+            "name": "[variables('lbName')]", 
+            "properties": { 
+              "frontendIPConfigurations": [ 
+                { 
+                  "name": "[variables('lbFEName')]", 
+                  "properties": { 
+                    "publicIPAddress": { 
+                      "id": "[concat(variables('resourcePrefix'), 'Microsoft.Network/publicIPAddresses/', parameters('publicIPName'))]" 
+                    } 
+                  } 
+                } 
+              ] 
+            } 
+          } 
+        ] 
+      } 
+    ```
+ 
+
+4. Fügen Sie im Abschnitt `OsProfile` der ARM-Vorlage Ihren Schlüsseltresorverweis hinzu. Key Vault wird zum Speichern von Zertifikaten verwendet, die Cloud Services (erweiterter Support) zugeordnet sind. Fügen Sie Key Vault die Zertifikate hinzu, und verweisen Sie dann in der Dienstkonfigurationsdatei (.cscfg) auf die Zertifikatfingerabdrücke. Außerdem müssen Sie Key Vault für entsprechende Berechtigungen aktivieren, damit Cloud Services (erweiterter Support) als Geheimnisse gespeicherte Zertifikate aus Key Vault abrufen kann. Weitere Informationen finden Sie unter [Verwenden von Zertifikaten mit Azure Cloud Services (erweiterter Support)](certificates-and-key-vault.md).
+     
+    ```json
+    "osProfile": { 
+          "secrets": [ 
+            { 
+              "sourceVault": { 
+                "id": "/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.KeyVault/vaults/{keyvault-name}" 
+              }, 
+              "vaultCertificates": [ 
+                { 
+                  "certificateUrl": "https://{keyvault-name}.vault.azure.net:443/secrets/ContosoCertificate/{secret-id}" 
+                } 
+              ] 
+            } 
+          ] 
+        } 
+    ```
+  
+    > [!NOTE]
+    > „SourceVault“ ist die ARM-Ressourcen-ID für Ihre Key Vault-Instanz. Sie finden diese Informationen, indem Sie im Eigenschaftenabschnitt Ihrer Key Vault-Instanz nach der Ressourcen-ID suchen. 
+    > - „certificateUrl“ finden Sie, indem Sie im Schlüsseltresor mit dem Bezeichner **Geheimnis-ID** zu dem Zertifikat navigieren.  
+   >  - „certificateUrl“ muss folgendes Format haben: https://{Schlüsseltresor-Endpunkt}/secrets/{Geheimnisname}/{Geheimnis-ID}.
+
+5. Erstellen Sie ein Rollenprofil. Stellen Sie sicher, dass die Anzahl von Rollen, Rollennamen und Instanzen in den einzelnen Rollen sowie die Größen in der Dienstkonfiguration (.cscfg), in der Dienstdefinition (.csdef) und im Rollenprofilabschnitt der ARM-Vorlage jeweils identisch sind. 
+    
+    ```json
+    "roleProfile": { 
+          "roles": { 
+          "value": [ 
+            { 
+              "name": "WebRole1", 
+              "sku": { 
+                "name": "Standard_D1_v2", 
+                "capacity": "1" 
+              } 
+            }, 
+            { 
+              "name": "WorkerRole1", 
+              "sku": { 
+                "name": "Standard_D1_v2", 
+                "capacity": "1" 
+              } 
+            } 
+        }
+    }   
+    ```
+
+6. Optional: Erstellen Sie ein Erweiterungsprofil, um Ihrem Clouddienst Erweiterungen hinzuzufügen. In diesem Beispiel fügen wir die Erweiterung für Remotedesktop und für die Windows Azure-Diagnose hinzu. 
+    
+    ```json
+        "extensionProfile": {
+              "extensions": [
+                {
+                  "name": "RDPExtension",
+                  "properties": {
+                    "autoUpgradeMinorVersion": true,
+                    "publisher": "Microsoft.Windows.Azure.Extensions",
+                    "type": "RDP",
+                    "typeHandlerVersion": "1.2.1",
+                    "settings": "<PublicConfig>\r\n <UserName>[Insert Username]</UserName>\r\n <Expiration>1/21/2022 12:00:00 AM</Expiration>\r\n</PublicConfig>",
+                    "protectedSettings": "<PrivateConfig>\r\n <Password>[Insert Password]</Password>\r\n</PrivateConfig>"
+                  }
+                },
+                {
+                  "name": "Microsoft.Insights.VMDiagnosticsSettings_WebRole1",
+                  "properties": {
+                    "autoUpgradeMinorVersion": true,
+                    "publisher": "Microsoft.Azure.Diagnostics",
+                    "type": "PaaSDiagnostics",
+                    "typeHandlerVersion": "1.5",
+                    "settings": "[parameters('wadPublicConfig_WebRole1')]",
+                    "protectedSettings": "[parameters('wadPrivateConfig_WebRole1')]",
+                    "rolesAppliedTo": [
+                      "WebRole1"
+              ]
+            }
+          }
+        ]
+      }
+
+  
+    ```    
+
+7. Überprüfen Sie die gesamte Vorlage. 
+
+    ```json
+    {
+      "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+      "contentVersion": "1.0.0.0",
+      "parameters": {
+        "cloudServiceName": {
+          "type": "string",
+          "metadata": {
+            "description": "Name of the cloud service"
+          }
+        },
+        "location": {
+          "type": "string",
+          "metadata": {
+            "description": "Location of the cloud service"
+          }
+        },
+        "deploymentLabel": {
+          "type": "string",
+          "metadata": {
+            "description": "Label of the deployment"
+          }
+        },
+        "packageSasUri": {
+          "type": "securestring",
+          "metadata": {
+            "description": "SAS Uri of the CSPKG file to deploy"
+          }
+        },
+        "configurationSasUri": {
+          "type": "securestring",
+          "metadata": {
+            "description": "SAS Uri of the service configuration (.cscfg)"
+          }
+        },
+        "roles": {
+          "type": "array",
+          "metadata": {
+            "description": "Roles created in the cloud service application"
+          }
+        },
+        "wadPublicConfig_WebRole1": {
+          "type": "string",
+          "metadata": {
+             "description": "Public configuration of Windows Azure Diagnostics extension"
+          }
+         },
+        "wadPrivateConfig_WebRole1": {
+          "type": "securestring",
+          "metadata": {
+            "description": "Private configuration of Windows Azure Diagnostics extension"
+         }
+        },
+        "vnetName": {
+          "type": "string",
+          "defaultValue": "[concat(parameters('cloudServiceName'), 'VNet')]",
+          "metadata": {
+            "description": "Name of vitual network"
+          }
+        },
+        "publicIPName": {
+          "type": "string",
+          "defaultValue": "contosocsIP",
+          "metadata": {
+            "description": "Name of public IP address"
+          }
+        },
+        "upgradeMode": {
+          "type": "string",
+          "defaultValue": "Auto",
+          "metadata": {
+            "UpgradeMode": "UpgradeMode of the CloudService"
+          }
+        }
+      },
+      "variables": {
+        "cloudServiceName": "[parameters('cloudServiceName')]",
+        "subscriptionID": "[subscription().subscriptionId]",
+        "dnsName": "[variables('cloudServiceName')]",
+        "lbName": "[concat(variables('cloudServiceName'), 'LB')]",
+        "lbFEName": "[concat(variables('cloudServiceName'), 'LBFE')]",
+        "resourcePrefix": "[concat('/subscriptions/', variables('subscriptionID'), '/resourceGroups/', resourceGroup().name, '/providers/')]"
+      },
+      "resources": [
+        {
+          "apiVersion": "2019-08-01",
+          "type": "Microsoft.Network/virtualNetworks",
+          "name": "[parameters('vnetName')]",
+          "location": "[parameters('location')]",
+          "properties": {
+            "addressSpace": {
+              "addressPrefixes": [
+                "10.0.0.0/16"
+              ]
+            },
+            "subnets": [
+              {
+                "name": "WebTier",
+                "properties": {
+                  "addressPrefix": "10.0.0.0/24"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "apiVersion": "2019-08-01",
+          "type": "Microsoft.Network/publicIPAddresses",
+          "name": "[parameters('publicIPName')]",
+          "location": "[parameters('location')]",
+          "properties": {
+            "publicIPAllocationMethod": "Dynamic",
+            "idleTimeoutInMinutes": 10,
+            "publicIPAddressVersion": "IPv4",
+            "dnsSettings": {
+              "domainNameLabel": "[variables('dnsName')]"
+            }
+          },
+          "sku": {
+            "name": "Basic"
+          }
+        },
+        {
+          "apiVersion": "2020-10-01-preview",
+          "type": "Microsoft.Compute/cloudServices",
+          "name": "[variables('cloudServiceName')]",
+          "location": "[parameters('location')]",
+          "tags": {
+            "DeploymentLabel": "[parameters('deploymentLabel')]",
+            "DeployFromVisualStudio": "true"
+          },
+          "dependsOn": [
+            "[concat('Microsoft.Network/virtualNetworks/', parameters('vnetName'))]",
+            "[concat('Microsoft.Network/publicIPAddresses/', parameters('publicIPName'))]"
+          ],
+          "properties": {
+            "packageUrl": "[parameters('packageSasUri')]",
+            "configurationUrl": "[parameters('configurationSasUri')]",
+            "upgradeMode": "[parameters('upgradeMode')]",
+            "roleProfile": {
+              "roles": [
+                {
+                  "name": "WebRole1",
+                  "sku": {
+                    "name": "Standard_D1_v2",
+                    "capacity": "1"
+                  }
+                },
+                {
+                  "name": "WorkerRole1",
+                  "sku": {
+                    "name": "Standard_D1_v2",
+                    "capacity": "1"
+                  }
+                }
+              ]
+            },
+            "networkProfile": {
+              "loadBalancerConfigurations": [
+                {
+                  "id": "[concat(variables('resourcePrefix'), 'Microsoft.Network/loadBalancers/', variables('lbName'))]",
+                  "name": "[variables('lbName')]",
+                  "properties": {
+                    "frontendIPConfigurations": [
+                      {
+                        "name": "[variables('lbFEName')]",
+                        "properties": {
+                          "publicIPAddress": {
+                            "id": "[concat(variables('resourcePrefix'), 'Microsoft.Network/publicIPAddresses/', parameters('publicIPName'))]"
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            "osProfile": {
+              "secrets": [
+                {
+                  "sourceVault": {
+                    "id": "/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.KeyVault/vaults/{keyvault-name}"
+                  },
+                  "vaultCertificates": [
+                    {
+                      "certificateUrl": "https://{keyvault-name}.vault.azure.net:443/secrets/ContosoCertificate/{secret-id}"
+                    }
+                  ]
+                }
+              ]
+            },
+        "extensionProfile": {
+              "extensions": [
+                {
+                  "name": "RDPExtension",
+                  "properties": {
+                    "autoUpgradeMinorVersion": true,
+                    "publisher": "Microsoft.Windows.Azure.Extensions",
+                    "type": "RDP",
+                    "typeHandlerVersion": "1.2.1",
+                    "settings": "<PublicConfig>\r\n <UserName>[Insert Username]</UserName>\r\n <Expiration>1/21/2022 12:00:00 AM</Expiration>\r\n</PublicConfig>",
+                    "protectedSettings": "<PrivateConfig>\r\n <Password>[Insert Password]</Password>\r\n</PrivateConfig>"
+                  }
+                },
+                {
+                  "name": "Microsoft.Insights.VMDiagnosticsSettings_WebRole1",
+                  "properties": {
+                    "autoUpgradeMinorVersion": true,
+                    "publisher": "Microsoft.Azure.Diagnostics",
+                    "type": "PaaSDiagnostics",
+                    "typeHandlerVersion": "1.5",
+                    "settings": "[parameters('wadPublicConfig_WebRole1')]",
+                    "protectedSettings": "[parameters('wadPrivateConfig_WebRole1')]",
+                    "rolesAppliedTo": [
+                      "WebRole1"
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      }
+    }
+    ```
+ 
+8. Stellen Sie die Vorlage bereit, und erstellen Sie die Clouddienstbereitstellung mit erweitertem Support. 
+
+    ```powershell
+    New-AzResourceGroupDeployment -ResourceGroupName “ContosOrg -TemplateFile "file path to your template file”  
+    ```
+ 
+## <a name="next-steps"></a>Nächste Schritte 
+- Sehen Sie sich die [häufig gestellten Fragen](faq.md) zu Cloud Services (erweiterter Support) an.
+- Stellen Sie einen Clouddienst (erweiterter Support) über das [Azure-Portal](deploy-portal.md), per [PowerShell](deploy-powershell.md), per [Vorlage](deploy-template.md) oder mithilfe von [Visual Studio](deploy-visual-studio.md) bereit.
+- Besuchen Sie das [Beispielrepository zu Cloud Services (erweiterter Support)](https://github.com/Azure-Samples/cloud-services-extended-support).

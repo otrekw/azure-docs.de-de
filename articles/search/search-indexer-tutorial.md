@@ -7,14 +7,14 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 09/25/2020
+ms.date: 01/23/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 960657d27be4b9dab9f242428592bbb404a49d86
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: e2ca5f42120661b887d07e697596f41cb7a7fce4
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94697168"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98745766"
 ---
 # <a name="tutorial-index-azure-sql-data-using-the-net-sdk"></a>Tutorial: Indizieren von Azure SQL-Daten mithilfe des .NET SDK
 
@@ -107,14 +107,14 @@ Für API-Aufrufe benötigen Sie die Dienst-URL und einen Zugriffsschlüssel. Ein
 
 1. Öffnen Sie im Projektmappen-Explorer die Datei **appsettings.json**, um Verbindungsinformationen anzugeben.
 
-1. Wenn für `searchServiceName` die vollständige URL „https://my-demo-service.search.windows.net“ lautet, muss als Dienstname „my-demo-service“ angegeben werden.
+1. Wenn die vollständige URL auf der Dienstübersichtsseite „https://my-demo-service.search.windows.net“ lautet, muss als Wert für `SearchServiceEndPoint` diese URL angegeben werden.
 
 1. Für `AzureSqlConnectionString` lautet das Zeichenfolgenformat in etwa wie folgt: `"Server=tcp:{your_dbname}.database.windows.net,1433;Initial Catalog=hotels-db;Persist Security Info=False;User ID={your_username};Password={your_password};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"`
 
     ```json
     {
-      "SearchServiceName": "<placeholder-Azure-Search-service-name>",
-      "SearchServiceAdminApiKey": "<placeholder-admin-key-for-Azure-Search>",
+      "SearchServiceEndPoint": "<placeholder-search-url>",
+      "SearchServiceAdminApiKey": "<placeholder-admin-key-for-search-service>",
       "AzureSqlConnectionString": "<placeholder-ADO.NET-connection-string",
     }
     ```
@@ -130,11 +130,12 @@ Für Indexer werden ein Datenquellenobjekt und ein Index benötigt. Der relevant
 
 ### <a name="in-hotelcs"></a>hotel.cs
 
-Das Indexschema definiert die Sammlung „fields“ einschließlich Attributen zur Angabe zulässiger Vorgänge (beispielsweise, ob in einem Feld eine Volltextsuche möglich ist oder ob es gefiltert oder sortiert werden kann), wie in der folgenden Felddefinition für „HotelName“ zu sehen. 
+Das Indexschema definiert die Sammlung „fields“ einschließlich Attributen zur Angabe zulässiger Vorgänge (beispielsweise, ob in einem Feld eine Volltextsuche möglich ist oder ob es gefiltert oder sortiert werden kann), wie in der folgenden Felddefinition für „HotelName“ zu sehen. Ein durchsuchbares Feld ([SearchableField](/dotnet/api/azure.search.documents.indexes.models.searchablefield)) kann definitionsgemäß für die Volltextsuche verwendet werden. Andere Attribute werden explizit zugewiesen.
 
 ```csharp
 . . . 
-[IsSearchable, IsFilterable, IsSortable]
+[SearchableField(IsFilterable = true, IsSortable = true)]
+[JsonPropertyName("hotelName")]
 public string HotelName { get; set; }
 . . .
 ```
@@ -143,59 +144,73 @@ Ein Schema kann auch andere Elemente enthalten. Hierzu zählen beispielsweise Be
 
 ### <a name="in-programcs"></a>Program.cs
 
-Das Hauptprogramm enthält Logik zum Erstellen eines Clients, eines Index, einer Datenquelle und eines Indexers. Der Code sucht und löscht vorhandene Ressourcen mit dem gleichen Namen (unter der Annahme, dass Sie dieses Programm ggf. mehrmals ausführen).
+Das Hauptprogramm enthält Logik zum Erstellen eines [Indexerclients](/dotnet/api/azure.search.documents.indexes.models.searchindexer), eines Index, einer Datenquelle und eines Indexers. Der Code sucht und löscht vorhandene Ressourcen mit dem gleichen Namen (unter der Annahme, dass Sie dieses Programm ggf. mehrmals ausführen).
 
-Das Datenquellenobjekt wird mit Einstellungen konfiguriert, die speziell für Ressourcen von Azure SQL-Datenbank gelten, z. B. [partielle oder inkrementelle Indizierung](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#capture-new-changed-and-deleted-rows) zur Nutzung der integrierten [Features für die Erkennung von Änderungen](/sql/relational-databases/track-changes/about-change-tracking-sql-server) von Azure SQL. Die Demodatenbank „hotels“ in Azure SQL enthält eine Spalte für Vorläufiges Löschen mit dem Namen **IsDeleted**. Wenn diese Spalte in der Datenbank auf „true“ festgelegt ist, entfernt der Indexer das entsprechende Dokument aus dem Azure Cognitive Search-Index.
+Das Datenquellenobjekt wird mit Einstellungen konfiguriert, die speziell für Ressourcen von Azure SQL-Datenbank gelten, z. B. [partielle oder inkrementelle Indizierung](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#capture-new-changed-and-deleted-rows) zur Nutzung der integrierten [Features für die Erkennung von Änderungen](/sql/relational-databases/track-changes/about-change-tracking-sql-server) von Azure SQL. Die Demoquelldatenbank „hotels“ in Azure SQL enthält eine Spalte für vorläufiges Löschen mit dem Namen **IsDeleted**. Wenn diese Spalte in der Datenbank auf „true“ festgelegt ist, entfernt der Indexer das entsprechende Dokument aus dem Azure Cognitive Search-Index.
 
-  ```csharp
-  Console.WriteLine("Creating data source...");
+```csharp
+Console.WriteLine("Creating data source...");
 
-  DataSource dataSource = DataSource.AzureSql(
-      name: "azure-sql",
-      sqlConnectionString: configuration["AzureSQLConnectionString"],
-      tableOrViewName: "hotels",
-      deletionDetectionPolicy: new SoftDeleteColumnDeletionDetectionPolicy(
-          softDeleteColumnName: "IsDeleted",
-          softDeleteMarkerValue: "true"));
-  dataSource.DataChangeDetectionPolicy = new SqlIntegratedChangeTrackingPolicy();
+var dataSource =
+      new SearchIndexerDataSourceConnection(
+         "hotels-sql-ds",
+         SearchIndexerDataSourceType.AzureSql,
+         configuration["AzureSQLConnectionString"],
+         new SearchIndexerDataContainer("hotels"));
 
-  searchService.DataSources.CreateOrUpdateAsync(dataSource).Wait();
-  ```
+indexerClient.CreateOrUpdateDataSourceConnection(dataSource);
+```
 
-Ein Indexerobjekt ist plattformagnostisch. Dies bedeutet, dass die Konfiguration, die Zeitplanung und das Aufrufen unabhängig von der Quelle gleich sind. Dieses Indexerbeispiel enthält einen Zeitplan und eine Zurücksetzungsoption, mit der der Verlauf des Indexers gelöscht wird. Außerdem wird eine Methode zum sofortigen Erstellen und Ausführen des Indexers aufgerufen.
+Ein Indexerobjekt ist plattformagnostisch. Dies bedeutet, dass die Konfiguration, die Zeitplanung und das Aufrufen unabhängig von der Quelle gleich sind. Dieses Indexerbeispiel enthält einen Zeitplan und eine Zurücksetzungsoption, mit der der Verlauf des Indexers gelöscht wird. Außerdem wird eine Methode zum sofortigen Erstellen und Ausführen des Indexers aufgerufen. Verwenden Sie [CreateOrUpdateIndexerAsync](/dotnet/api/azure.search.documents.indexes.searchindexerclient.createorupdateindexerasync), um einen Indexer zu erstellen oder zu aktualisieren.
 
-  ```csharp
-  Console.WriteLine("Creating Azure SQL indexer...");
-  Indexer indexer = new Indexer(
-      name: "azure-sql-indexer",
-      dataSourceName: dataSource.Name,
-      targetIndexName: index.Name,
-      schedule: new IndexingSchedule(TimeSpan.FromDays(1)));
-  // Indexers contain metadata about how much they have already indexed
-  // If we already ran the sample, the indexer will remember that it already
-  // indexed the sample data and not run again
-  // To avoid this, reset the indexer if it exists
-  exists = await searchService.Indexers.ExistsAsync(indexer.Name);
-  if (exists)
-  {
-      await searchService.Indexers.ResetAsync(indexer.Name);
-  }
+```csharp
+Console.WriteLine("Creating Azure SQL indexer...");
 
-  await searchService.Indexers.CreateOrUpdateAsync(indexer);
+var schedule = new IndexingSchedule(TimeSpan.FromDays(1))
+{
+      StartTime = DateTimeOffset.Now
+};
 
-  // We created the indexer with a schedule, but we also
-  // want to run it immediately
-  Console.WriteLine("Running Azure SQL indexer...");
+var parameters = new IndexingParameters()
+{
+      BatchSize = 100,
+      MaxFailedItems = 0,
+      MaxFailedItemsPerBatch = 0
+};
 
-  try
-  {
-      await searchService.Indexers.RunAsync(indexer.Name);
-  }
-  catch (CloudException e) when (e.Response.StatusCode == (HttpStatusCode)429)
-  {
+// Indexer declarations require a data source and search index.
+// Common optional properties include a schedule, parameters, and field mappings
+// The field mappings below are redundant due to how the Hotel class is defined, but 
+// we included them anyway to show the syntax 
+var indexer = new SearchIndexer("hotels-sql-idxr", dataSource.Name, searchIndex.Name)
+{
+      Description = "Data indexer",
+      Schedule = schedule,
+      Parameters = parameters,
+      FieldMappings =
+      {
+         new FieldMapping("_id") {TargetFieldName = "HotelId"},
+         new FieldMapping("Amenities") {TargetFieldName = "Tags"}
+      }
+};
+
+await indexerClient.CreateOrUpdateIndexerAsync(indexer);
+```
+
+Indexerausführungen sind in der Regel geplant. Im Rahmen der Entwicklung kann der Indexer mithilfe von [RunIndexerAsync](/dotnet/api/azure.search.documents.indexes.searchindexerclient.runindexerasync) aber auch sofort ausgeführt werden.
+
+```csharp
+Console.WriteLine("Running Azure SQL indexer...");
+
+try
+{
+      await indexerClient.RunIndexerAsync(indexer.Name);
+}
+catch (CloudException e) when (e.Response.StatusCode == (HttpStatusCode)429)
+{
       Console.WriteLine("Failed to run indexer: {0}", e.Response.Content);
-  }
-  ```
+}
+```
 
 ## <a name="4---build-the-solution"></a>4\. Erstellen der Projektmappe
 
@@ -205,9 +220,9 @@ Drücken Sie F5, um die Lösung zu erstellen und auszuführen. Das Programm wird
 
 Der Code wird lokal in Visual Studio ausgeführt und stellt eine Verbindung mit Ihrem Suchdienst in Azure her, der wiederum eine Verbindung mit Azure SQL-Datenbank herstellt und das Dataset abruft. Die hohe Anzahl von Vorgängen hat mehrere potenzielle Fehlerquellen zur Folge. Überprüfen Sie im Falle eines Fehlers zunächst Folgendes:
 
-+ Die Angabe der Suchdienst-Verbindungsinformationen beschränkt sich in diesem Tutorial auf den Dienstnamen. Wenn Sie die vollständige URL eingegeben haben, werden die Vorgänge bei der Indexerstellung mit einem Verbindungsfehler beendet.
++ Bei den von Ihnen angegebenen Verbindungsinformationen für den Suchdienst handelt es sich um die vollständige URL. Falls Sie lediglich den Dienstnamen eingegeben haben, werden die Vorgänge bei der Indexerstellung mit einem Verbindungsfehler beendet.
 
-+ Datenbank-Verbindungsinformationen in **appsettings.json**: Hierbei muss es sich um die ADO.NET-Verbindungszeichenfolge aus dem Portal handeln, die mit einem gültigen Benutzernamen und Kennwort für die Datenbank versehen wurde. Das Benutzerkonto muss über Datenabrufberechtigungen verfügen. Ihre lokale Client-IP-Adresse muss zugriffsberechtigt sein.
++ Datenbank-Verbindungsinformationen in **appsettings.json**: Hierbei muss es sich um die ADO.NET-Verbindungszeichenfolge aus dem Portal handeln, die mit einem gültigen Benutzernamen und Kennwort für die Datenbank versehen wurde. Das Benutzerkonto muss über Datenabrufberechtigungen verfügen. Ihrer lokalen Client-IP-Adresse muss über die Firewall eingehender Zugriff gewährt worden sein.
 
 + Ressourceneinschränkungen: Bedenken Sie, dass für den Free-Tarif eine Obergrenze von drei Indizes, Indexern und Datenquellen gilt. Ist die Obergrenze für einen Dienst erreicht, können keine neuen Objekte mehr erstellt werden.
 

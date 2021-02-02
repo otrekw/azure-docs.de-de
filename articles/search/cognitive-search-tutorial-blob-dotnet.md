@@ -7,14 +7,14 @@ author: MarkHeff
 ms.author: maheff
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 10/05/2020
+ms.date: 01/23/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: da7a80842bec68fde8cc44401bb04c2dd061741f
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 4bda56f3037469477ddfe059dd20c14cd34586d8
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92787957"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98745716"
 ---
 # <a name="tutorial-ai-generated-searchable-content-from-azure-blobs-using-the-net-sdk"></a>Tutorial: Durch KI generierter durchsuchbarer Inhalt aus Azure-Blobs mit dem .NET SDK
 
@@ -24,7 +24,7 @@ In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
 > * Einrichten einer Entwicklungsumgebung
-> * Definieren einer Pipeline für Suchen über Blobs mithilfe der optischen Zeichenerkennung, Spracherkennung sowie Entitäts- und Schlüsselworterkennung
+> * Definieren einer Pipeline mit optischer Zeichenerkennung und Sprachenerkennung sowie mit Entitäts- und Schlüsselworterkennung
 > * Ausführen der Pipeline zum Aufrufen von Transformationen sowie zum Erstellen und Laden eines Suchindexes
 > * Erkunden Sie Ergebnisse per Volltextsuche und umfangreicher Abfragesyntax.
 
@@ -32,9 +32,11 @@ Sollten Sie über kein Azure-Abonnement verfügen, können Sie ein [kostenloses 
 
 ## <a name="overview"></a>Übersicht
 
-In diesem Tutorial werden C# und die Clientbibliothek **Azure.Search.Documents** verwendet, um eine Datenquelle, einen Index, einen Indexer und ein Skillset zu erstellen.
+In diesem Tutorial werden C# und die [Clientbibliothek **Azure.Search.Documents**](/dotnet/api/overview/azure/search.documents-readme) verwendet, um eine Datenquelle, einen Index, einen Indexer und ein Skillset zu erstellen.
 
-Das Skillset verwendet integrierte Skills, die auf Cognitive Services-APIs basieren. Die Schritte in der Pipeline umfassen die optische Zeichenerkennung (OCR) für Bilder, die Spracherkennung für Text sowie die Schlüsselwortextraktion und die Entitätserkennung (Organisationen). Neue Informationen werden in neuen Feldern gespeichert, die Sie in Abfragen, Facets und Filtern nutzen können.
+Der Indexer stellt eine Verbindung mit einem Blobcontainer her, der im Datenquellenobjekt angegeben ist, und sendet alle indizierten Inhalte an einen bereits vorhandenen Suchindex.
+
+Das Skillset wird an den Indexer angefügt. Es werden integrierte Skills von Microsoft verwendet, um Informationen zu suchen und zu extrahieren. Die Schritte in der Pipeline umfassen die optische Zeichenerkennung (OCR) für Bilder, die Spracherkennung für Text sowie die Schlüsselwortextraktion und die Entitätserkennung (Organisationen). Neue, durch die Pipeline erstellte Informationen werden in neuen Feldern in einem Index gespeichert. Nachdem der Index aufgefüllt wurde, können die Felder in Abfragen, Facetten und Filtern verwendet werden.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -50,7 +52,7 @@ Das Skillset verwendet integrierte Skills, die auf Cognitive Services-APIs basie
 
 Die Beispieldaten bestehen aus 14 Dateien mit gemischten Inhaltstypen, die Sie in einem späteren Schritt in Azure Blob Storage hochladen.
 
-1. Öffnen Sie [diesen OneDrive-Ordner](https://1drv.ms/f/s!As7Oy81M_gVPa-LCb5lC_3hbS-4), und klicken Sie links oben auf **Herunterladen** , um die Dateien auf Ihren Computer zu kopieren. 
+1. Öffnen Sie [diesen OneDrive-Ordner](https://1drv.ms/f/s!As7Oy81M_gVPa-LCb5lC_3hbS-4), und klicken Sie links oben auf **Herunterladen**, um die Dateien auf Ihren Computer zu kopieren. 
 
 1. Klicken Sie mit der rechten Maustaste auf die ZIP-Datei, und wählen Sie **Alle extrahieren** aus. Es stehen 14 Dateien verschiedener Art zur Verfügung. In dieser Übung werden sieben davon verwendet.
 
@@ -64,31 +66,31 @@ Erstellen Sie diese beiden Dienste nach Möglichkeit in derselben Region und Res
 
 ### <a name="start-with-azure-storage"></a>Azure Storage
 
-1. [Melden Sie sich beim Azure-Portal](https://portal.azure.com/) an, und klicken Sie auf **+ Ressource erstellen** .
+1. [Melden Sie sich beim Azure-Portal](https://portal.azure.com/) an, und klicken Sie auf **+ Ressource erstellen**.
 
-1. Suchen Sie nach *Speicherkonto* , und wählen Sie das Speicherkonto-Angebot von Microsoft aus.
+1. Suchen Sie nach *Speicherkonto*, und wählen Sie das Speicherkonto-Angebot von Microsoft aus.
 
    ![Erstellen eines Speicherkontos](media/cognitive-search-tutorial-blob/storage-account.png "Speicherkonto erstellen")
 
 1. Auf der Registerkarte „Grundlagen“ sind folgende Angaben erforderlich. Übernehmen Sie bei allen anderen Optionen die Standardeinstellungen.
 
-   * **Ressourcengruppe** . Sie können entweder eine vorhandene Ressourcengruppe auswählen oder eine neue Ressourcengruppe erstellen. Verwenden Sie jedoch für alle Dienste die gleiche Gruppe, um die Dienste gemeinsam verwalten zu können.
+   * **Ressourcengruppe**. Sie können entweder eine vorhandene Ressourcengruppe auswählen oder eine neue Ressourcengruppe erstellen. Verwenden Sie jedoch für alle Dienste die gleiche Gruppe, um die Dienste gemeinsam verwalten zu können.
 
-   * **Speicherkontoname** : Falls Sie über mehrere Ressourcen des gleichen Typs verfügen, geben Sie zur Unterscheidung den Typ und die Region an (Beispiel: *blobstoragewestus* ). 
+   * **Speicherkontoname**: Falls Sie über mehrere Ressourcen des gleichen Typs verfügen, geben Sie zur Unterscheidung den Typ und die Region an (Beispiel: *blobstoragewestus*). 
 
-   * **Standort** . Wählen Sie nach Möglichkeit den gleichen Standort aus, der auch für Azure Cognitive Search und Cognitive Services verwendet wird. Bei Verwendung eines einzelnen Standorts fallen keine Bandbreitengebühren an.
+   * **Standort**. Wählen Sie nach Möglichkeit den gleichen Standort aus, der auch für Azure Cognitive Search und Cognitive Services verwendet wird. Bei Verwendung eines einzelnen Standorts fallen keine Bandbreitengebühren an.
 
-   * **Kontoart** : Verwenden Sie die Standardeinstellung *StorageV2 (allgemein, Version 2)* .
+   * **Kontoart**: Verwenden Sie die Standardeinstellung *StorageV2 (allgemein, Version 2)* .
 
-1. Klicken Sie zum Erstellen des Diensts auf **Überprüfen + erstellen** .
+1. Klicken Sie zum Erstellen des Diensts auf **Überprüfen + erstellen**.
 
 1. Klicken Sie nach der Erstellung auf **Go to the resource** (Zur Ressource), um die Übersichtsseite zu öffnen.
 
-1. Klicken Sie auf den Dienst **Blobs** .
+1. Klicken Sie auf den Dienst **Blobs**.
 
-1. Klicken Sie auf **+ Container** , um einen Container zu erstellen, und nennen Sie ihn *cog-search-demo* .
+1. Klicken Sie auf **+ Container**, um einen Container zu erstellen, und nennen Sie ihn *cog-search-demo*.
 
-1. Wählen Sie *cog-search-demo* aus, und klicken Sie auf **Hochladen** , um den Ordner zu öffnen, in dem Sie die Downloaddateien gespeichert haben. Wählen Sie alle 14 Dateien aus, und klicken Sie auf **OK** , um den Upload durchzuführen.
+1. Wählen Sie *cog-search-demo* aus, und klicken Sie auf **Hochladen**, um den Ordner zu öffnen, in dem Sie die Downloaddateien gespeichert haben. Wählen Sie alle 14 Dateien aus, und klicken Sie auf **OK**, um den Upload durchzuführen.
 
    ![Hochladen der Beispieldateien](media/cognitive-search-quickstart-blob/sample-data.png "Hochladen der Beispieldateien")
 
@@ -146,7 +148,7 @@ Installieren Sie für dieses Projekt Version 11 oder höher von `Azure.Search.D
 
 1. Suchen Sie nach [Azure.Search.Document](https://www.nuget.org/packages/Azure.Search.Documents).
 
-1. Wählen Sie die neueste Version aus, und klicken Sie auf **Installieren** .
+1. Wählen Sie die neueste Version aus, und klicken Sie auf **Installieren**.
 
 1. Wiederholen Sie die vorherigen Schritte, um [Microsoft.Extensions.Configuration](https://www.nuget.org/packages/Microsoft.Extensions.Configuration) und [Microsoft.Extensions.Configuration.Json](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.Json) zu installieren.
 
@@ -158,7 +160,7 @@ Installieren Sie für dieses Projekt Version 11 oder höher von `Azure.Search.D
 
 1. Fügen Sie diese Datei in Ihr Ausgabeverzeichnis ein.
     1. Klicken Sie mit der rechten Maustaste auf `appsettings.json`, und wählen Sie **Eigenschaften** aus. 
-    1. Ändern Sie den Wert von **In Ausgabeverzeichnis kopieren** in **Kopieren, wenn neuer** .
+    1. Ändern Sie den Wert von **In Ausgabeverzeichnis kopieren** in **Kopieren, wenn neuer**.
 
 1. Kopieren Sie den folgenden JSON-Code in die neue JSON-Datei.
 
@@ -338,7 +340,7 @@ private static OcrSkill CreateOcrSkill()
 
 ### <a name="merge-skill"></a>Qualifikation: Zusammenführung
 
-In diesem Abschnitt erstellen Sie einen Skill für das **Zusammenführen** , mit dem das Feld mit dem Dokumentinhalt mit dem vom OCR-Skill erstellten Text zusammengeführt wird.
+In diesem Abschnitt erstellen Sie einen Skill für das **Zusammenführen**, mit dem das Feld mit dem Dokumentinhalt mit dem vom OCR-Skill erstellten Text zusammengeführt wird.
 
 ```csharp
 private static MergeSkill CreateMergeSkill()
@@ -377,7 +379,7 @@ private static MergeSkill CreateMergeSkill()
 
 ### <a name="language-detection-skill"></a>Qualifikation „Sprachenerkennung“
 
-Die Qualifikation **Sprachenerkennung** erkennt die Sprache von Eingabetexten und meldet einen einzigen Sprachcode für jedes Dokument, das mit der Anforderung übermittelt wurde. Wir verwenden die Ausgabe der Qualifikation **Sprachenerkennung** als Teil der Eingabe für die Qualifikation **Textaufteilung** .
+Die Qualifikation **Sprachenerkennung** erkennt die Sprache von Eingabetexten und meldet einen einzigen Sprachcode für jedes Dokument, das mit der Anforderung übermittelt wurde. Wir verwenden die Ausgabe der Qualifikation **Sprachenerkennung** als Teil der Eingabe für die Qualifikation **Textaufteilung**.
 
 ```csharp
 private static LanguageDetectionSkill CreateLanguageDetectionSkill()
@@ -826,7 +828,7 @@ In den Azure Cognitive Search-Tutorials für Konsolen-Apps wird in der Regel ein
 
 Die einfachste Option ist der [Such-Explorer](search-explorer.md) im Portal. Sie können zuerst eine leere Abfrage, die alle Dokumente zurückgibt, oder eine gezieltere Suche durchführen, die neuen, von der Pipeline erstellten Feldinhalt zurückgibt. 
 
-1. Klicken Sie im Azure-Portal auf der Übersichtsseite für die Suche auf **Indizes** .
+1. Klicken Sie im Azure-Portal auf der Übersichtsseite für die Suche auf **Indizes**.
 
 1. Suchen Sie in der Liste nach **`demoindex`** . Diese sollte 14 Dokumente enthalten. Wenn die Anzahl der Dokumente 0 (null) ist, wird der Indexer entweder noch ausgeführt, oder die Seite wurde noch nicht aktualisiert. 
 

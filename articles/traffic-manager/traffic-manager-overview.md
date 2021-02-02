@@ -1,28 +1,27 @@
 ---
 title: Azure Traffic Manager | Microsoft Docs
-description: Dieser Artikel enthält eine Übersicht zu Azure Traffic Manager. Erfahren Sie, ob dies die richtige Wahl für den Lastenausgleich des Benutzerdatenverkehrs für Ihre Anwendung ist.
+description: Dieser Artikel enthält eine Übersicht zu Azure Traffic Manager. Hier erfahren Sie, ob dieser Dienst die richtige Wahl für den Lastenausgleich des Benutzerdatenverkehrs für Ihre Anwendung ist.
 services: traffic-manager
 author: duongau
-manager: twooley
 ms.service: traffic-manager
 customer intent: As an IT admin, I want to learn about Traffic Manager and what I can use it for.
 ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/23/2019
+ms.date: 01/19/2021
 ms.author: duau
-ms.openlocfilehash: e2a4db1404709dadb2500df29f3f7acf8787c2b2
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: 09b82eed5ad6a9ad121ca56d197eb9c003d027f5
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98185730"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624908"
 ---
 # <a name="what-is-traffic-manager"></a>Was ist Traffic Manager?
-Azure Traffic Manager ist ein DNS-basierter Lastenausgleich für Datenverkehr, der es Ihnen ermöglicht, den Datenverkehr optimal auf Dienste in den globalen Azure-Regionen zu verteilen, und gleichzeitig Hochverfügbarkeit und Reaktionsfähigkeit sicherzustellen.
+Azure Traffic Manager ist ein auf DNS basierender Lastenausgleichsdienst. Dieser Dienst ermöglicht die Verteilung des Datenverkehrs an Ihre öffentlichen Anwendungen in den globalen Azure-Regionen. Darüber hinaus bietet Traffic Manager Hochverfügbarkeit und kurze Reaktionszeiten für Ihre öffentlichen Endpunkte.
 
-Traffic Manager verwendet DNS, um Clientanforderungen auf der Grundlage einer Datenverkehrsrouting-Methode und der Integrität der Endpunkte an den optimalen Endpunkt weiterzuleiten. Ein Endpunkt ist ein Dienst mit Internetzugriff, der innerhalb oder außerhalb von Azure gehostet wird. Traffic Manager bietet eine Reihe von [Datenverkehrsrouting-Methoden](traffic-manager-routing-methods.md) und [Endpunktüberwachungsoptionen](traffic-manager-monitoring.md), die verschiedene Anwendungsanforderungen erfüllen sowie automatisches Failover ermöglichen. Traffic Manager zeichnet sich durch eine geringe Fehleranfälligkeit aus, selbst wenn es zu einem Ausfall einer ganzen Azure-Region kommt.
+Traffic Manager verwendet DNS, um die Clientanforderungen auf der Grundlage einer Datenverkehrsrouting-Methode an den passenden Dienstendpunkt weiterzuleiten. Des Weiteren bietet Traffic Manager auch eine Integritätsüberwachung für jeden Endpunkt. Der Endpunkt kann ein beliebiger Dienst mit Internetzugriff sein, der innerhalb oder außerhalb von Azure gehostet wird. Traffic Manager bietet eine Reihe von [Datenverkehrsrouting-Methoden](traffic-manager-routing-methods.md) und [Endpunktüberwachungsoptionen](traffic-manager-monitoring.md), die verschiedene Anwendungsanforderungen erfüllen sowie automatisches Failover ermöglichen. Traffic Manager zeichnet sich durch eine geringe Fehleranfälligkeit aus, selbst wenn es zu einem Ausfall einer ganzen Azure-Region kommt.
 
 >[!NOTE]
 > Azure stellt eine Sammlung aus vollständig verwalteten Lastenausgleichslösungen für Ihre Szenarios bereit. Wenn Sie nach Informationen zur Beendigung der Transport Layer Security-Protokollierung oder zur Verarbeitung der Anwendungsschicht pro HTTP/HTTPS-Anforderung suchen, lesen Sie den Artikel [Application Gateway](../application-gateway/overview.md). Informationen zum regionalen Lastenausgleich finden Sie unter [Load Balancer](../load-balancer/load-balancer-overview.md). Für Ihre End-to-End-Szenarios kann es von Vorteil sein, diese Lösungen nach Bedarf zu kombinieren.
@@ -37,11 +36,11 @@ Mit Traffic Manager können Sie die Hochverfügbarkeit wichtiger Anwendungen gew
     
 ## <a name="improve-application-performance"></a>Verbessern der Anwendungsleistung
 
-Azure ermöglicht die Ausführung von Cloud-Diensten oder Websites in Datencentern auf der ganzen Welt. Traffic Manager kann die Reaktionsfähigkeit Ihrer Anwendungen verbessern und Endbenutzer an den Endpunkt mit der niedrigsten Netzwerklatenz für den Client weiterleiten.
+Azure ermöglicht die Ausführung von Clouddiensten und Websites in Rechenzentren auf der ganzen Welt. Traffic Manager kann Datenverkehr an den Endpunkt mit der kürzesten Wartezeit weiterleiten und so die Reaktionsfähigkeit Ihrer Website verbessern.
 
-## <a name="perform-service-maintenance-without-downtime"></a>Ausführen von Dienstwartungsarbeiten ohne Ausfallzeiten
+## <a name="service-maintenance-without-downtime"></a>Dienstwartung ohne Downtime
 
-Geplante Wartungsarbeiten für Ihre Anwendungen können ohne Ausfallzeiten für Ihre Anwendungen durchgeführt werden. Hierzu kann Traffic Manager den Datenverkehr während der Wartung an andere Endpunkte weiterleiten.
+Für Ihre Anwendungen können geplante Wartungsarbeiten ohne Downtime durchgeführt werden. Hierzu kann Traffic Manager den Datenverkehr während der Wartung an andere Endpunkte weiterleiten.
 
 ## <a name="combine-hybrid-applications"></a>Kombinieren von Hybridanwendungen
 

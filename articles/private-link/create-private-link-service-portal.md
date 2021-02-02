@@ -8,12 +8,12 @@ ms.service: private-link
 ms.topic: quickstart
 ms.date: 01/18/2021
 ms.author: allensu
-ms.openlocfilehash: 3e9ade329d2b26d36763db579b0fcec03e938aad
-ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
+ms.openlocfilehash: d394a475c5121607f70c03437382e104a5d0cbee
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98555456"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98746406"
 ---
 # <a name="quickstart-create-a-private-link-service-by-using-the-azure-portal"></a>Schnellstart: Erstellen eines Private Link-Diensts über das Azure-Portal
 
@@ -217,6 +217,112 @@ In diesem Abschnitt erstellen Sie einen Private Link-Dienst hinter einem Standa
 
 12. Wählen Sie auf der Registerkarte **Überprüfen und erstellen** die Option **Erstellen** aus.
 
+Ihr Private Link-Dienst wird erstellt und kann Datenverkehr empfangen. Konfigurieren Sie Ihre Anwendung hinter Ihrer Instanz von Load Balancer Standard, falls Sie den Datenverkehrsfluss anzeigen möchten.
+
+
+## <a name="create-private-endpoint"></a>Erstellen eines privaten Endpunkts
+
+In diesem Abschnitt ordnen Sie den Private Link-Dienst einem privaten Endpunkt zu. Ein virtuelles Netzwerk enthält den privaten Endpunkt für den Private Link-Dienst. In diesem virtuellen Netzwerk sind die Ressourcen enthalten, die auf Ihren Private Link-Dienst zugreifen.
+
+### <a name="create-private-endpoint-virtual-network"></a>Erstellen eines virtuellen Netzwerks des privaten Endpunkts
+
+1. Wählen Sie links oben auf dem Bildschirm **Ressource erstellen > Netzwerk > Virtuelles Netzwerk** aus, oder suchen Sie über das Suchfeld nach **Virtuelles Netzwerk**.
+
+2. Geben Sie unter **Virtuelles Netzwerk erstellen** auf der Registerkarte **Grundlegende Einstellungen** die folgenden Informationen ein, oder wählen Sie sie aus:
+
+    | **Einstellung**          | **Wert**                                                           |
+    |------------------|-----------------------------------------------------------------|
+    | **Projektdetails**  |                                                                 |
+    | Subscription     | Auswählen des Azure-Abonnements                                  |
+    | Ressourcengruppe   | Wählen Sie **CreatePrivLinkService-rg** aus. |
+    | **Instanzendetails** |                                                                 |
+    | Name             | Geben Sie **myVNetPE** ein.                                    |
+    | Region           | Wählen Sie **USA, Osten 2** aus. |
+
+3. Wählen Sie die Registerkarte **IP-Adressen** oder die Schaltfläche **Weiter: IP-Adressen** am unteren Seitenrand aus.
+
+4. Geben Sie auf der Registerkarte **IP-Adressen** die folgenden Informationen ein:
+
+    | Einstellung            | Wert                      |
+    |--------------------|----------------------------|
+    | IPv4-Adressraum | Geben Sie **11.1.0.0/16** ein. |
+
+5. Wählen Sie unter **Subnetzname** das Wort **Standard** aus.
+
+6. Geben Sie unter **Subnetz bearbeiten** die folgenden Informationen ein:
+
+    | Einstellung            | Wert                      |
+    |--------------------|----------------------------|
+    | Subnetzname | Geben Sie **mySubnetPE** ein. |
+    | Subnetzadressbereich | Geben Sie **11.1.0.0/24** ein. |
+
+7. Wählen Sie **Speichern** aus.
+
+8. Wählen Sie die Registerkarte **Überprüfen + erstellen** oder die Schaltfläche **Überprüfen + erstellen** aus.
+
+9. Klicken Sie auf **Erstellen**.
+
+### <a name="create-private-endpoint"></a>Erstellen eines privaten Endpunkts
+
+1. Wählen Sie auf der oberen linken Seite des Bildschirms im Portal die Option **Ressource erstellen** > **Netzwerk** > **Private Link** aus, oder geben Sie im Suchfeld **Private Link** ein.
+
+2. Wählen Sie **Erstellen** aus.
+
+3. Wählen Sie in **Private Link-Center** im linken Menü **Private Endpunkte** aus.
+
+4. Wählen Sie unter **Private Endpunkte** die Option **+ Hinzufügen** aus.
+
+5. Geben Sie auf der Registerkarte **Grundlagen** unter **Privaten Endpunkt erstellen** die folgenden Informationen ein, oder wählen Sie sie aus:
+
+    | Einstellung | Wert |
+    | ------- | ----- |
+    | **Projektdetails** | |
+    | Subscription | Wählen Sie Ihr Abonnement aus. |
+    | Resource group | Wählen Sie **CreatePrivLinkService-rg** aus. Diese Ressourcengruppe wurde im vorherigen Abschnitt erstellt.|
+    | **Instanzendetails** |  |
+    | Name  | Geben Sie **myPrivateEndpoint** ein. |
+    | Region | Wählen Sie **USA, Osten 2** aus. |
+
+6. Wählen Sie die Registerkarte **Ressource** oder unten auf der Seite **Weiter: Ressource** aus.
+    
+7. Geben Sie in **Ressource** diese Informationen ein, oder wählen Sie sie aus:
+
+    | Einstellung | Wert |
+    | ------- | ----- |
+    | Verbindungsmethode | Wählen Sie **Hiermit wird eine Verbindung mit einer Azure-Ressource im eigenen Verzeichnis hergestellt** aus. |
+    | Subscription | Wählen Sie Ihr Abonnement aus. |
+    | Ressourcentyp | Wählen Sie **Microsoft.Network/privateLinkServices** aus. |
+    | Resource | Wählen Sie **myPrivateLinkService** aus. |
+
+8. Wählen Sie die Registerkarte **Konfiguration** oder die Schaltfläche **Weiter: Konfiguration** am unteren Bildschirmrand aus.
+
+9. Geben Sie diese Informationen in **Konfiguration** ein oder wählen Sie sie aus:
+
+    | Einstellung | Wert |
+    | ------- | ----- |
+    | **Netzwerk** |  |
+    | Virtual Network | Wählen Sie **myVNetPE** aus. |
+    | Subnet | Wählen Sie **mySubnetPE** aus. |
+
+10. Wählen Sie die Registerkarte **Überprüfen + erstellen** oder am unteren Bildschirmrand die Schaltfläche **Überprüfen + erstellen** aus.
+
+11. Wählen Sie **Erstellen** aus.
+
+### <a name="ip-address-of-private-endpoint"></a>IP-Adresse des privaten Endpunkts
+
+In diesem Abschnitt finden Sie die IP-Adresse des privaten Endpunkts, die zum Lastenausgleich und Private Link-Dienst gehört.
+
+1. Wählen Sie in der linken Spalte des Azure-Portals die Option **Ressourcengruppen** aus.
+
+2. Wählen Sie die Ressourcengruppe **CreatePrivLinkService-rg** aus.
+
+3. Wählen Sie in der Ressourcengruppe **CreatePrivLinkService-rg** die Option **myPrivateEndpoint** aus.
+
+4. Wählen Sie auf der Seite **Übersicht** von **myPrivateEndpoint** den Namen der Netzwerkschnittstelle aus, die dem privaten Endpunkt zugeordnet ist.  Der Name der Netzwerkschnittstelle beginnt mit **myPrivateEndpoint.nic**.
+
+5. Auf der Seite **Übersicht** der NIC des privaten Endpunkts wird unter **Private IP-Adresse** die IP-Adresse des Endpunkts angezeigt.
+    
+
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
 Wenn Sie den Private Link-Dienst nicht mehr benötigen, löschen Sie die Ressourcengruppe, um die im Rahmen dieser Schnellstartanleitung verwendeten Ressourcen zu bereinigen.
@@ -231,7 +337,8 @@ Wenn Sie den Private Link-Dienst nicht mehr benötigen, löschen Sie die Ressou
 In dieser Schnellstartanleitung haben Sie Folgendes durchgeführt:
 
 * Erstellen eines virtuellen Netzwerks und einer internen Azure Load Balancer-Instanz
-* Erstellen eines Private Link-Diensts
+* Erstellen eines Private Link-Diensts
+* Erstellen eines virtuellen Netzwerks und eines privaten Endpunkts für den Private Link-Dienst
 
 Weitere Informationen zu privaten Azure-Endpunkten finden Sie unter:
 > [!div class="nextstepaction"]

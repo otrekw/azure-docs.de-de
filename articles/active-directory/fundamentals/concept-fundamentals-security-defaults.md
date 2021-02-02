@@ -125,13 +125,13 @@ Diese kostenlosen Sicherheitsstandards ermöglichen die Registrierung für und V
 | Methode | Standardwerte für die Sicherheit | Bedingter Zugriff |
 | --- | --- | --- |
 | Benachrichtigung über mobile App | X | X |
-| Prüfcode aus mobiler App oder Hardwaretoken | X* | X |
+| Prüfcode aus mobiler App oder Hardwaretoken | X** | X |
 | Textnachricht an Telefon |   | X |
 | Auf Telefon anrufen |   | X |
-| App-Kennwörter |   | X**_ |
+| App-Kennwörter |   | X*** |
 
-- _* Benutzer können Prüfcodes von der Microsoft Authenticator-App verwenden, können sich jedoch nur mit der Benachrichtigungsoption registrieren.
-- **_ App-Kennwörter sind nur in Szenarien mit benutzerbasierter MFA mit Legacyauthentifizierung verfügbar, wenn diese Methode von Administratoren aktiviert wurde.
+- ** Benutzer können Prüfcodes von der Microsoft Authenticator-App verwenden, können sich jedoch nur mit der Benachrichtigungsoption registrieren.
+- *** App-Kennwörter sind nur in Szenarien mit benutzerbasierter MFA mit Legacyauthentifizierung verfügbar, wenn diese Methode von Administratoren aktiviert wurde.
 
 ### <a name="disabled-mfa-status"></a>Deaktivierter MFA-Status
 

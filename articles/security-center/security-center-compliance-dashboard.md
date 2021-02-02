@@ -11,18 +11,24 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/11/2020
+ms.date: 01/28/2021
 ms.author: memildin
-ms.openlocfilehash: bbc36dbb2a17d379d31a9a235898500aea36247d
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: f8d92ff0835948637761d7d2a98ec95a1c6dfccd
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96533909"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944216"
 ---
 # <a name="tutorial-improve-your-regulatory-compliance"></a>Tutorial: Verbessern der Einhaltung gesetzlicher Vorschriften
 
-Mit Azure Security Center kann der Prozess zur Einhaltung von Anforderungen gesetzlicher Bestimmungen optimiert werden, indem das **Dashboard zur Einhaltung gesetzlicher Bestimmungen** verwendet wird. Im Dashboard werden über Security Center basierend auf fortlaufenden Bewertungen Ihrer Azure-Umgebung Informationen zu Ihrem Konformitätsstatus (Compliance) bereitgestellt. Mit Security Center werden Risikofaktoren in Ihrer Hybrid Cloud-Umgebung anhand der bewährten Methoden für die Sicherheit analysiert. Diese Bewertungen sind Konformitätskontrollen zugeordnet, die aus dem unterstützten Standardsatz stammen. Im Dashboard für die Einhaltung gesetzlicher Bestimmungen wird der Status aller Bewertungen in Ihrer Umgebung im Kontext eines bestimmten Standards oder einer Bestimmung angezeigt. Wenn Sie aufgrund der Empfehlungen Maßnahmen ergreifen und die Risikofaktoren Ihrer Umgebung reduzieren, verbessert sich Ihr Konformitätsstatus.
+Mit Azure Security Center kann der Prozess zur Einhaltung von Anforderungen gesetzlicher Bestimmungen optimiert werden, indem das **Dashboard zur Einhaltung gesetzlicher Bestimmungen** verwendet wird. 
+
+Security Center bewertet kontinuierlich Ihre Hybrid Cloud-Umgebung, um die Risikofaktoren gemäß den Kontrollen und bewährten Methoden in den Standards zu analysieren, die auf Ihre Abonnements angewendet wurden. Das Dashboard gibt den Status Ihrer Einhaltung dieser Standards wieder. 
+
+Wenn Sie Security Center für ein Azure-Abonnement aktivieren, wird ihm automatisch der [Azure-Sicherheitsvergleichstest](../security/benchmarks/introduction.md) zugewiesen. Diese weit verbreitete Benchmark basiert auf den Kontrollen des [Center for Internet Security (CIS)](https://www.cisecurity.org/benchmark/azure/) und des [National Institute of Standards and Technology (NIST)](https://www.nist.gov/) und konzentriert sich auf cloudzentrierte Sicherheit.
+
+Im Dashboard für die Einhaltung gesetzlicher Bestimmungen wird der Status aller Bewertungen in Ihrer Umgebung im Kontext eines bestimmten Standards oder einer Bestimmung angezeigt. Wenn Sie aufgrund der Empfehlungen Maßnahmen ergreifen und die Risikofaktoren Ihrer Umgebung reduzieren, verbessert sich Ihr Konformitätsstatus.
 
 In diesem Tutorial lernen Sie Folgendes:
 
@@ -41,17 +47,13 @@ Zum Durchlaufen der in diesem Tutorial behandelten Features müssen folgende Vor
 
 ##  <a name="assess-your-regulatory-compliance"></a>Bewerten der Einhaltung gesetzlicher Bestimmungen
 
-Security Center bewertet die Konfiguration Ihrer Ressourcen fortlaufend, um die Sicherheitsprobleme und Sicherheitsrisiken zu identifizieren. Diese Bewertungen werden als Empfehlungen angezeigt, bei denen es hauptsächlich um die Verbesserung der Sicherheit geht. Im Dashboard zur Einhaltung gesetzlicher Bestimmungen können Sie die Konformitätsstandards mit allen Anforderungen anzeigen. Die unterstützten Anforderungen sind hierbei jeweils den entsprechenden Sicherheitsbewertungen zugeordnet. Auf diese Weise können Sie Ihren Konformitätsstatus in Bezug auf den Standard anzeigen, der auf dem Status dieser Bewertungen basiert.
+Auf dem Dashboard zur Einhaltung gesetzlicher Bestimmungen werden Ihre ausgewählten Konformitätsstandards mit allen zugehörigen Anforderungen angezeigt. Die unterstützten Anforderungen sind hierbei jeweils den entsprechenden Sicherheitsbewertungen zugeordnet. Der Status dieser Bewertungen spiegelt Ihre Einhaltung des Standards wider.
 
-Das Dashboard zur Einhaltung gesetzlicher Bestimmungen kann Ihr Augenmerk auf die Konformitätslücken lenken, die für einen wichtigen Standard oder eine Bestimmung bestehen. Aufgrund dieser genauen Anzeige können Sie Ihre Compliancebewertung in dynamischen Cloud- und Hybridumgebungen ständig überwachen.
+Verwenden Sie das Dashboard zur Einhaltung gesetzlicher Bestimmungen, um sich auf Konformitätslücken im Zusammenhang mit Standards und Bestimmung zu konzentrieren, die für Sie relevant sind. Diese fokussierte Ansicht ermöglicht auch eine kontinuierliche Überwachung Ihrer Compliance in dynamischen Cloud- und Hybridumgebungen.
 
->[!NOTE]
-> Standardmäßig unterstützt Security Center die folgenden gesetzlichen Standards: Azure CIS, PCI-DSS 3.2, ISO 27001 und SOC TSP. 
->
-> Das Feature [Dynamische Compliancepakete (Vorschauversion)](update-regulatory-compliance-packages.md) ermöglicht Ihnen ein Upgrade der Standards, die in Ihrem Dashboard für die Einhaltung gesetzlicher Bestimmungen angezeigt werden, auf die neuen *dynamischen* Pakete. Dieselbe Previewfunktion können Sie auch nutzen, um neue Compliancepakete hinzuzufügen und Ihre Compliance mit zusätzlichen Standards zu überwachen. 
+1. Wählen Sie im Security Center-Menü die Option **Einhaltung gesetzlicher Bestimmungen** aus.
 
-1. Wählen Sie im Security Center-Menü die Option **Einhaltung gesetzlicher Bestimmungen** aus. <br>
-Am oberen Rand des Bildschirms wird ein Dashboard angezeigt, das eine Übersicht über Ihren Konformitätsstatus mit den unterstützten Bestimmungen enthält. Es sind Ihr Gesamtstatus der Konformität und die Anzahl von bestandenen und nicht bestandenen Bewertungen der einzelnen Standards angegeben.
+    Im oberen Bildschirmbereich befindet sich ein Dashboard mit einer Übersicht über Ihren Konformitätsstatus mit den unterstützten Bestimmungen. Es sind Ihr Gesamtstatus der Konformität und die Anzahl von bestandenen und nicht bestandenen Bewertungen der einzelnen Standards angegeben.
 
     :::image type="content" source="./media/security-center-compliance-dashboard/compliance-dashboard.png" alt-text="Dashboard für die Einhaltung gesetzlicher Bestimmungen":::
 
@@ -59,7 +61,7 @@ Am oberen Rand des Bildschirms wird ein Dashboard angezeigt, das eine Übersicht
 
     :::image type="content" source="./media/security-center-compliance-dashboard/compliance-drilldown.png" alt-text="Erkunden der Compliancedetails für einen bestimmten Standard":::
 
-1. Klicken Sie auf **Bericht herunterladen**, um einen PDF-Bericht zum aktuellen Compliancestatus für einen bestimmten Standard zu generieren und herunterzuladen.
+1. Wählen Sie **Bericht herunterladen** aus, um einen PDF-Bericht mit einer Zusammenfassung Ihres aktuellen Compliancestatus für einen bestimmten Standard zu generieren.
 
     Der Bericht enthält eine allgemeine Zusammenfassung des Compliancestatus für den ausgewählten Standard auf der Grundlage von Security Center-Bewertungsdaten. Der Bericht ist nach den Kontrollen dieses bestimmten Standards gegliedert. Der Bericht kann an Stakeholder weitergegeben und als Nachweis bei internen und externen Prüfungen genutzt werden.
 
@@ -71,7 +73,7 @@ Mit den Informationen im Dashboard für die Einhaltung gesetzlicher Bestimmungen
 
 1.  Klicken Sie durch die nicht bestandenen Bewertungen, die im Dashboard angezeigt werden, um jeweils die Details zu einer Empfehlung anzuzeigen. Jede Empfehlung enthält verschiedene Lösungsschritte, die ausgeführt werden müssen, um das Problem zu beheben.
 
-1.  Sie können eine bestimmte Ressource auswählen, um weitere Details anzuzeigen und die Empfehlung für diese Ressource zu lösen. <br>Beim **Standard Azure CIS 1.1.0 (Neu)** können Sie beispielsweise die Empfehlung **Auf VMs muss die Datenträgerverschlüsselung angewendet werden** auswählen.
+1.  Sie können eine bestimmte Ressource auswählen, um weitere Details anzuzeigen und die Empfehlung für diese Ressource zu lösen. <br>Im Standard **Azure CIS 1.1.0** können Sie beispielsweise die Empfehlung **Datenträgerverschlüsselung sollte auf virtuelle Computer angewendet werden** auswählen.
 
     :::image type="content" source="./media/security-center-compliance-dashboard/sample-recommendation.png" alt-text="Auswahl einer Empfehlung aus einem Standard führt direkt zur Seite mit den Details der Empfehlung":::
 

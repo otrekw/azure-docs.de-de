@@ -10,12 +10,12 @@ ms.workload: infrastructure
 ms.date: 08/04/2020
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 22993e8a1513ae34b3752ebd80c60761467f396e
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 963a84c55a5433a204f387d1936eb7ceee60d913
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97912664"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98730039"
 ---
 # <a name="tutorial-create-and-manage-azure-virtual-networks-for-windows-virtual-machines-with-azure-powershell"></a>Tutorial: Erstellen und Verwalten virtueller Azure-Netzwerke für virtuelle Windows-Computer mit Azure PowerShell
 
@@ -127,7 +127,7 @@ $frontendNic = New-AzNetworkInterface `
   -PublicIpAddressId $pip.Id
 ```
 
-Legen Sie mit [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential?view=powershell-5.1&preserve-view=true) den Benutzernamen und das Kennwort für das Administratorkonto auf dem virtuellen Computer fest. Diese Anmeldeinformationen benötigen Sie, um in weiteren Schritten eine Verbindung mit der VM herzustellen:
+Legen Sie mit [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential) den Benutzernamen und das Kennwort für das Administratorkonto auf dem virtuellen Computer fest. Diese Anmeldeinformationen benötigen Sie, um in weiteren Schritten eine Verbindung mit der VM herzustellen:
 
 ```azurepowershell-interactive
 $cred = Get-Credential
@@ -280,7 +280,4 @@ In diesem Tutorial haben Sie Azure-Netzwerke in Bezug auf virtuelle Computer ers
 > * Netzwerkdatenverkehr absichern
 > * Erstellen eines virtuellen Back-End-Computers
 
-Im nächsten Tutorial erhalten Sie Informationen zum Überwachen der Sicherung von Daten auf virtuellen Computern mit Azure Backup.
-
-> [!div class="nextstepaction"]
-> [Back up Windows virtual machines in Azure (Sichern virtueller Windows-Computer in Azure)](./tutorial-backup-vms.md)
+Informationen zum Schützen Ihrer VM-Datenträger finden Sie unter [Sicherung und Notfallwiederherstellung für Azure IaaS-Datenträger](backup-and-disaster-recovery-for-azure-iaas-disks.md).

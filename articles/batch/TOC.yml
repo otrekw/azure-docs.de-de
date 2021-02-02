@@ -118,9 +118,8 @@
         - name: Azure AD mit Batch Management
           href: batch-aad-auth-management.md
         - name: Sicherer Zugriff auf Key Vault mit Batch
+          displayName: 'credential, certificate'
           href: credential-access-key-vault.md
-        - name: Verwenden von Zertifikaten mit Batch
-          href: batch-certificates.md
     - name: Kopieren von Dateien und Anwendungen auf Poolknoten
       items:
         - name: Kopieren von Anwendungen und Daten auf Poolknoten

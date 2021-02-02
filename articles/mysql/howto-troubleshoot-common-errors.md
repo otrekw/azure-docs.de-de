@@ -7,16 +7,28 @@ ms.author: pariks
 ms.custom: mvc
 ms.topic: overview
 ms.date: 8/20/2020
-ms.openlocfilehash: 986bc5ef24855ac0014975edc0a26a11a82ec6ca
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: ca75416a66bcf2c90028c7f1dc11fbe23a9a9bd9
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97510961"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98631366"
 ---
 # <a name="common-errors"></a>Häufige Fehler
 
 Azure Database for MySQL ist ein vollständig verwalteter Dienst, der auf der Communityversion von MySQL basiert. Die MySQL-Umgebung in einer verwalteten Dienstumgebung kann sich von der MySQL-Ausführung in Ihrer eigenen Umgebung unterscheiden. Dieser Artikel enthält Informationen zu einigen der häufigen Fehler, die bei Benutzern auftreten können, die zu Azure Database for MySQL migrieren oder zum ersten Mal mit Azure Database for MySQL entwickeln.
+
+## <a name="common-connection-errors"></a>Allgemeine Verbindungsfehler
+
+#### <a name="error-1184-08s01-aborted-connection-22-to-db-db-name-user-user-host-hostip-init_connect-command-failed"></a>FEHLER 1184 (08S01): Aborted connection 22 to db: 'db-name' user: 'user' host: 'hostIP' (init_connect command failed) (Verbindung 22 mit DB "<Datenbankname>" abgebrochen. Benutzer: <Benutzer>, Host: <Host-IP-Adresse>. (Fehler beim Befehl "init_connect".))
+Der obige Fehler tritt nach erfolgreicher Anmeldung, aber vor Ausführung eines Befehls nach Einrichtung der Sitzung auf. Die obige Meldung gibt an, dass ein falscher Wert für den Serverparameter von „init_connect“ festgelegt wurde, was dazu führt, dass die Sitzung nicht erfolgreich initialisiert werden kann.
+
+Es gibt einige Serverparameter wie etwa „require_secure_transport“, die auf Sitzungsebene nicht unterstützt werden. Daher kann der Versuch, die Werte dieser Parameter mithilfe von „init_connect“ zu ändern, bei der Verbindungsherstellung mit dem MySQL-Server zum Fehler 1184 führen:
+
+mysql> show databases; ERROR 2006 (HY000): MySQL server has gone away No connection. Trying to reconnect... Connection id:    64897 Current database: *** NONE **_ ERROR 1184 (08S01): Aborted connection 22 to db: 'db-name' user: 'user' host: 'hostIP' (init_connect command failed) (mysql> show databases; FEHLER 2006 (HY000): MySQL-Server nicht mehr verfügbar. Keine Verbindung. Es wird versucht, die Verbindung wiederherzustellen... Verbindungs-ID: 64897 Aktuelle Datenbank: *** KEINE **_ FEHLER 1184 (08S01): Verbindung 22 mit DB "<Datenbankname>" abgebrochen. Benutzer: <Benutzer>, Host: <Host-IP-Adresse>. (Fehler beim Befehl "init_connect".))
+
+**Resolution**: Setzen Sie den Wert von „init_connect“ im Azure-Portal auf der Registerkarte „Serverparameter“ zurück, und legen Sie mit „init_connect“ nur unterstützte Serverparameter fest. 
+
 
 ## <a name="errors-due-to-lack-of-super-privilege-and-dba-role"></a>Fehler aufgrund fehlender SUPER-Berechtigung und DBA-Rolle
 
