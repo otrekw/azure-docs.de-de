@@ -5,18 +5,17 @@ services: data-factory
 documentationcenter: ''
 author: linda33wj
 manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: quickstart
 ms.date: 12/14/2020
 ms.author: jingwang
-ms.openlocfilehash: 76a490ed28f940620db7835c4cec145740f48503
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 0f22d4695a6324b0f0cde466e252b1a3a504f433
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97509018"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632748"
 ---
 # <a name="quickstart-create-a-data-factory-by-using-the-azure-data-factory-ui"></a>Schnellstart: Erstellen einer Data Factory über die Azure Data Factory-Benutzeroberfläche 
 
@@ -26,7 +25,7 @@ ms.locfileid: "97509018"
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-Diese Schnellstartanleitung beschreibt, wie Sie mithilfe der Azure Data Factory-Benutzeroberfläche eine Data Factory erstellen und überwachen. Die in dieser Data Factory erstellte Pipeline *kopiert* Daten aus einem Ordner in einen anderen Ordner in Azure Blob Storage. Informationen zum *Transformieren* von Daten mithilfe von Azure Data Factory finden Sie unter [Was sind Zuordnungsdatenflüsse?](concepts-data-flow-overview.md) und [Wranglingdatenfluss (Vorschau)](wrangling-data-flow-overview.md).
+Diese Schnellstartanleitung beschreibt, wie Sie mithilfe der Azure Data Factory-Benutzeroberfläche eine Data Factory erstellen und überwachen. Die in dieser Data Factory erstellte Pipeline *kopiert* Daten aus einem Ordner in einen anderen Ordner in Azure Blob Storage. Informationen zum *Transformieren* von Daten mithilfe von Azure Data Factory finden Sie unter [Zuordnungsdatenflüsse in Azure Data Factory](concepts-data-flow-overview.md).
 
 > [!NOTE]
 > Wenn Sie mit Azure Data Factory nicht vertraut sind, lesen Sie vor der Durchführung dieses Schnellstarts die Informationen unter [Einführung in Azure Data Factory](introduction.md). 

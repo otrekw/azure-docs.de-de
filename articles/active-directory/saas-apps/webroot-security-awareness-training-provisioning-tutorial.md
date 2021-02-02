@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 07/06/2020
 ms.author: Zhchia
-ms.openlocfilehash: d374043235d6c09243ea5ecdacccf141a2d4f8b4
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: f015718c59178b8094f535280edadd641d22a806
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96181337"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98741892"
 ---
 # <a name="tutorial-configure-webroot-security-awareness-training-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Webroot Security Awareness Training für die automatische Benutzerbereitstellung
 
@@ -120,7 +120,8 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
    |attribute|type|Unterstützung für das Filtern|
    |---|---|---|
-   |externalId|String|&check;|
+   |userName|String|&check;|
+   |externalId|String|
    |name.givenName|String|
    |name.familyName|String|
    |emails[type eq "work"].value|String|
@@ -129,7 +130,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 11. Überprüfen Sie im Abschnitt **Attributzuordnungen** die Gruppenattribute, die von Azure AD mit Webroot Security Awareness Training synchronisiert werden. Die als **übereinstimmende** Eigenschaften ausgewählten Attribute werden verwendet, um die Gruppen in Webroot Security Awareness Training für Updatevorgänge abzugleichen. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
 
-      |attribute|type|Unterstützung für das Filtern|
+      |Attribut|type|Unterstützung für das Filtern|
       |---|---|---|
       |displayName|String|&check;|
       |members|Verweis|
@@ -156,7 +157,10 @@ Nachdem Sie die Bereitstellung konfiguriert haben, können Sie mit den folgenden
 
 1. Mithilfe der [Bereitstellungsprotokolle](../reports-monitoring/concept-provisioning-logs.md) können Sie ermitteln, welche Benutzer erfolgreich bzw. nicht erfolgreich bereitgestellt wurden.
 2. Anhand der [Fortschrittsleiste](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md) können Sie den Status des Bereitstellungszyklus überprüfen und den Fortschritt der Bereitstellung verfolgen.
-3. Wenn sich die Bereitstellungskonfiguration in einem fehlerhaften Zustand zu befinden scheint, wird die Anwendung unter Quarantäne gestellt. Weitere Informationen zu den verschiedenen Quarantänestatus finden Sie [hier](../app-provisioning/application-provisioning-quarantine-status.md).  
+3. Wenn sich die Bereitstellungskonfiguration in einem fehlerhaften Zustand zu befinden scheint, wird die Anwendung unter Quarantäne gestellt. Weitere Informationen zu den verschiedenen Quarantänestatus finden Sie [hier](../app-provisioning/application-provisioning-quarantine-status.md).
+
+## <a name="change-log"></a>Änderungsprotokoll
+* 21.01.2021: Unterstützung für das Attribut „userName“ für Benutzer wurde hinzugefügt.
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

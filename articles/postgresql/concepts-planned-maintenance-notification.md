@@ -6,12 +6,12 @@ ms.author: ambhatna
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/21/2020
-ms.openlocfilehash: 0691411f57944f8203120ec2a6ed19013135458c
-ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
+ms.openlocfilehash: 8db556709f68a1184046989a15fad147542a05a7
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94920252"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98735740"
 ---
 # <a name="planned-maintenance-notification-in-azure-database-for-postgresql---single-server"></a>Benachrichtigung über geplante Wartungen in Azure Database for PostgreSQL (Einzelserver)
 
@@ -25,7 +25,7 @@ Eine geplante Wartung ist ein Wartungsfenster, in dem diese Dienstupdates auf Se
 
 ## <a name="planned-maintenance---duration-and-customer-impact"></a>Geplante Wartung: Dauer und Beeinträchtigung für Kunden
 
-Eine geplante Wartung für eine bestimmte Azure-Region dauert in der Regel 15 Stunden. Das Fenster umfasst auch Pufferzeit zum Ausführen eines Rollbackplans, falls dies erforderlich wird. Während einer geplanten Wartung können Datenbankserver neu gestartet oder Failover ausgeführt werden. Dies kann dazu führen, dass die Datenbankserver kurzzeitig nicht für Endbenutzer verfügbar sind. Azure Database for PostgreSQL-Server werden in Containern ausgeführt, sodass Neustarts von Datenbankservern meist schnell abgeschlossen sind – in der Regel innerhalb von 60–120 Sekunden. Das gesamte geplante Wartungsereignis, einschließlich der einzelnen Serverneustarts, wird vom Technikerteam sorgfältig überwacht. Die Zeit für Serverfailover hängt von der Wiederherstellungszeit der Datenbank ab. Es kann daher länger dauern, die Datenbank wieder online zu schalten, wenn während des Failovers auf dem Server extrem viele Transaktionsaktivitäten auftreten. Um längere Neustarts zu vermeiden, empfiehlt es sich, zeitintensive Transaktionen (Massenladen) während geplanter Wartungsereignisse zu vermeiden.
+Eine geplante Wartung für eine bestimmte Azure-Region wird in der Regel innerhalb von 15 Stunden abgeschlossen. Dieses Zeitfenster umfasst auch Pufferzeit zum Ausführen eines Rollbackplans, falls dies erforderlich wird. Azure Database for PostgreSQL-Server werden in Containern ausgeführt, sodass ein Neustart des Datenbankservers in der Regel 60-120 Sekunden dauert, aber es gibt keine deterministische Möglichkeit zu erfahren, wann Ihr Server innerhalb dieses Zeitfensters von 15 Stunden betroffen sein wird. Das gesamte geplante Wartungsereignis, einschließlich der einzelnen Serverneustarts, wird vom Technikerteam sorgfältig überwacht. Die Zeit für den Serverfailover hängt von der Wiederherstellung der Datenbank ab. Es kann daher länger dauern, die Datenbank wieder online zu schalten, wenn während des Failovers auf dem Server extrem viele Transaktionsaktivitäten auftreten. Um längere Neustarts zu vermeiden, empfiehlt es sich, zeitintensive Transaktionen (Massenladen) während geplanter Wartungsereignisse zu vermeiden.
 
 Zusammenfassend gilt: Auch wenn das geplante Wartungsereignis 15 Stunden dauert, sind die einzelnen Server in der Regel je nach den Transaktionsaktivitäten auf dem Server nur etwa 60 Sekunden lang beeinträchtigt. 72 Stunden vor dem Start der geplanten Wartung wird eine Benachrichtigung gesendet. Eine weitere Benachrichtigung erfolgt, wenn die Wartung für eine bestimmte Region ausgeführt wird.
 

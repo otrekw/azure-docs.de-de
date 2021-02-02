@@ -12,18 +12,19 @@ ms.date: 01/12/2021
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 646c47920d87fe1d11bc991838ba767b8569a6c9
-ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: bf1057276a543c18b746bb60b7e7a54bf28dec6f
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98246756"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98892563"
 ---
-# <a name="tutorial---build-a-scim-endpoint-and-configure-user-provisioning-with-azure-ad"></a>Tutorial: Erstellen eines SCIM-Endpunkts und Konfigurieren der Benutzerbereitstellung mit Azure AD
+# <a name="tutorial-develop-and-plan-provisioning-for-a-scim-endpoint"></a>Tutorial: Entwickeln eines SCIM-Endpunkts und Planen seiner Bereitstellung
 
 Als Anwendungsentwickler können Sie die SCIM-Benutzerverwaltungs-API (System for Cross-Domain Identity Management, System für die domänenübergreifende Identitätsverwaltung) verwenden, um die automatische Bereitstellung von Benutzern und Gruppen zwischen Ihrer Anwendung und Azure AD zu aktivieren. In diesem Artikel wird beschrieben, wie ein SCIM-Endpunkt erstellt und in den Azure AD-Bereitstellungsdienst integriert wird. Die SCIM-Spezifikation bietet ein allgemeines Benutzerschema für die Bereitstellung. Bei der Verwendung mit Verbundstandards wie SAML oder OpenID Connect bietet SCIM Administratoren eine auf Standards basierende End-to-End-Lösung für die Zugriffsverwaltung.
 
-SCIM ist eine standardisierte Definition von zwei Endpunkten: einem „/Users“- und einem „/Group“-Endpunkt. Es verwendet allgemeine REST-Verben zum Erstellen, Aktualisieren und Löschen von Objekten und ein vordefiniertes Schema für allgemeine Attribute wie Gruppenname, Benutzername, Vorname, Nachname und E-Mail-Adresse. Apps, die eine SCIM 2.0 REST-API bieten, können den Aufwand für die Arbeit mit einer proprietären Benutzerverwaltungs-API reduzieren oder eliminieren. So ist z. B. jeder konforme SCIM-Client in der Lage, ein HTTP POST für ein JSON-Objekt an den „/Users“-Endpunkt zu senden, um einen neuen Benutzereintrag zu erstellen. Anstatt eine leicht abweichende API für dieselben grundlegenden Aktionen zu benötigen, können Apps, die dem SCIM-Standard entsprechen, sofort die Vorteile bereits vorhandener Clients, Tools und Codes nutzen. 
+SCIM ist eine standardisierte Definition von zwei Endpunkten: einem `/Users`- und einem `/Groups`-Endpunkt. Es verwendet allgemeine REST-Verben zum Erstellen, Aktualisieren und Löschen von Objekten und ein vordefiniertes Schema für allgemeine Attribute wie Gruppenname, Benutzername, Vorname, Nachname und E-Mail-Adresse. Apps, die eine SCIM 2.0 REST-API bieten, können den Aufwand für die Arbeit mit einer proprietären Benutzerverwaltungs-API reduzieren oder eliminieren. So ist beispielsweise jeder konforme SCIM-Client in der Lage, eine HTTP POST-Anforderung für ein JSON-Objekt an den `/Users`-Endpunkt zu senden, um einen neuen Benutzereintrag zu erstellen. Anstatt eine leicht abweichende API für dieselben grundlegenden Aktionen zu benötigen, können Apps, die dem SCIM-Standard entsprechen, sofort die Vorteile bereits vorhandener Clients, Tools und Codes nutzen. 
 
 ![Bereitstellen von Azure AD für eine App mit SCIM](media/use-scim-to-provision-users-and-groups/scim-provisioning-overview.png)
 
@@ -56,7 +57,7 @@ Jede Anwendung erfordert unterschiedliche Attribute, um einen Benutzer oder eine
 |loginName|userName|userPrincipalName|
 |firstName|name.givenName|givenName|
 |lastName|name.lastName|lastName|
-|workMail|Emails[type eq “work”].value|E-Mail|
+|workMail|emails[type eq “work”].value|E-Mail|
 |manager|manager|manager|
 |tag|urn:ietf:params:scim:schemas:extension:2.0:CustomExtension:tag|extensionAttribute1|
 |status|aktiv|isSoftDeleted (berechneter Wert, wird für Benutzer nicht gespeichert)|
@@ -748,7 +749,9 @@ Der Azure AD-Bereitstellungsdienst wird zurzeit unter den IP-Bereichen für Azur
 
 Nachdem Sie das Schema entworfen und die Azure AD-SCIM-Implementierung verstanden haben, können Sie mit der Entwicklung Ihres SCIM-Endpunkts beginnen. Anstatt bei Null anzufangen und die Implementierung komplett selbst zu erstellen, können Sie auf eine Reihe von Open-Source-SCIM-Bibliotheken zurückgreifen, die von der SCIM-Community veröffentlicht werden.
 
-Der Open-Source-[Referenzcode](https://aka.ms/SCIMReferenceCode) für .NET Core, der vom Azure AD-Bereitstellungsteam veröffentlicht wird, ist eine solche Ressource, die Ihnen einen schnellen Einstieg in die Entwicklung ermöglicht. Nachdem Sie den SCIM-Endpunkt erstellt haben, sollten Sie ihn testen. Sie können die Sammlung von [Postman-Tests](https://github.com/AzureAD/SCIMReferenceCode/wiki/Test-Your-SCIM-Endpoint) verwenden, die als Teil des Referenzcodes bereitgestellt werden, oder die [oben](#user-operations) aufgeführten Beispielanforderungen/-antworten ausführen.  
+Eine Anleitung zum Erstellen eines SCIM-Endpunkts, einschließlich Beispielen, finden Sie unter [Tutorial: Entwickeln eines SCIM-Beispielendpunkts](use-scim-to-build-users-and-groups-endpoints.md).
+
+Das Open-Source-[Referenzcodebeispiel](https://aka.ms/SCIMReferenceCode) für .NET Core, das vom Azure AD-Bereitstellungsteam veröffentlicht wird, ist eine solche Ressource, die Ihnen einen schnellen Einstieg in die Entwicklung ermöglicht. Nachdem Sie den SCIM-Endpunkt erstellt haben, sollten Sie ihn testen. Sie können die Sammlung von [Postman-Tests](https://github.com/AzureAD/SCIMReferenceCode/wiki/Test-Your-SCIM-Endpoint) verwenden, die als Teil des Referenzcodes bereitgestellt werden, oder die [oben](#user-operations) aufgeführten Beispielanforderungen/-antworten ausführen.  
 
    > [!Note]
    > Der Referenzcode soll Ihnen den Einstieg in das Erstellen des SCIM-Endpunkts erleichtern und wird in unveränderter Form zur Verfügung gestellt. Beiträge aus der Community sind stets willkommen, um den Code weiter auszubauen und zu pflegen.
@@ -1127,11 +1130,17 @@ Anwendungen, die das SCIM-Profil wie in diesem Artikel beschrieben erfüllen, k�
 
 1. Melden Sie sich beim [Azure Active Directory-Portal](https://aad.portal.azure.com) an. Beachten Sie, dass Sie auf eine kostenlose Testversion für Azure Active Directory mit P2-Lizenzen zugreifen können, indem Sie sich für das [Entwicklerprogramm](https://developer.microsoft.com/office/dev-program) registrieren.
 2. Wählen Sie im linken Bereich die Option **Unternehmensanwendungen** aus. Eine Liste mit allen konfigurierten Apps wird angezeigt, einschließlich Apps, die aus dem Katalog hinzugefügt wurden.
-3. Wählen Sie **+ Neue Anwendung** > **Alle** > **Nicht-Kataloganwendung**.
-4. Geben Sie einen Namen für Ihre Anwendung ein, und wählen Sie **Hinzufügen**, um ein App-Objekt zu erstellen. Die neue App wird der Liste mit den Unternehmensanwendungen hinzugefügt und mit dem App-Verwaltungsbildschirm geöffnet.
+3. Wählen Sie **+ Neue Anwendung** >  **+ Eigene Anwendung erstellen** aus.
+4. Geben Sie einen Namen für Ihre Anwendung ein, und wählen Sie die Option *Beliebige andere, nicht im Katalog zu findende Anwendung integrieren* und dann **Hinzufügen** aus, um ein App-Objekt zu erstellen. Die neue App wird der Liste mit den Unternehmensanwendungen hinzugefügt und mit dem App-Verwaltungsbildschirm geöffnet.
 
-   ![Screenshot des Azure AD-Anwendungskatalogs](media/use-scim-to-provision-users-and-groups/scim-figure-2a.png)<br/>
-   *Azure AD-Anwendungskatalog*
+   ![Screenshot des Azure AD-Anwendungskatalogs](media/use-scim-to-provision-users-and-groups/scim-figure-2b-1.png)
+   *Azure AD-Anwendungskatalog*
+
+   > [!NOTE]
+   > Wenn Sie den alten App-Katalog verwenden, befolgen Sie die Anweisungen auf dem folgenden Bildschirm.
+   
+   ![Screenshot: Alter Azure AD-App-Katalog](media/use-scim-to-provision-users-and-groups/scim-figure-2a.png)
+   *Alter Azure AD-App-Katalog*
 
 5. Wählen Sie auf dem App-Verwaltungsbildschirm im linken Bereich die Option **Bereitstellung**.
 6. Wählen Sie im Menü **Bereitstellungsmodus** die Option **Automatisch** aus.
@@ -1235,6 +1244,7 @@ Es empfiehlt sich, die vorhandene Dokumentation zu aktualisieren und unsere geme
 
 ## <a name="related-articles"></a>Verwandte Artikel
 
+* [Entwickeln eines SCIM-Beispielendpunkts](use-scim-to-build-users-and-groups-endpoints.md)
 * [Automatisieren der Bereitstellung und Bereitstellungsaufhebung von Benutzern für SaaS-Apps](user-provisioning.md)
 * [Anpassen von Attributzuordnungen für die Benutzerbereitstellung für SaaS-Anwendungen in Azure Active Directory](customize-application-attributes.md)
 * [Schreiben von Ausdrücken für Attributzuordnungen](functions-for-customizing-application-data.md)

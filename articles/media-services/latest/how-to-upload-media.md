@@ -1,24 +1,10 @@
 ---
-title: Hochladen von Medien
-titleSuffix: Azure Media Services
-description: Hier erfahren Sie, wie Sie Medien für Streaming und Codierung hochladen.
-services: media-services
-documentationcenter: ''
-author: IngridAtMicrosoft
-manager: femila
-editor: ''
-ms.service: media-services
-ms.workload: ''
-ms.topic: how-to
-ms.date: 08/31/2020
-ms.author: inhenkel
-ms.openlocfilehash: 3040369e655ab91f56f271313dc4d2613f02be06
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
-ms.translationtype: HT
-ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92015846"
+Titel: Hochladen von Medien : Azure Media Services description: Hier erfahren Sie, wie Sie Medien für Streaming und Codierung hochladen.
+services: media-services documentationcenter: '' author: IngridAtMicrosoft manager: femila editor: ''
+
+ms.service: media-services ms.workload: ms.topic: how-to ms.date: 08/31/2020 ms.author: inhenkel
 ---
+
 # <a name="upload-media-for-streaming-or-encoding"></a>Hochladen von Medien für Streaming und Codierung
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]

@@ -1,6 +1,6 @@
 ---
-title: Anzeigen von Ergebnissen des Azure IoT Hub-Nachrichtenroutings (.NET) | Microsoft-Dokumentation
-description: Nachdem Sie im Teil 1 des Tutorials alle Ressourcen eingerichtet haben, fügen Sie die Möglichkeit hinzu, Nachrichten an Azure Stream Analytics weiterzuleiten und die Ergebnisse in Power BI anzuzeigen.
+title: 'Tutorial: Anzeigen von Ergebnissen des Azure IoT Hub-Nachrichtenroutings (.NET) | Microsoft-Dokumentation'
+description: 'Tutorial: Nachdem Sie in Teil 1 des Tutorials alle Ressourcen eingerichtet haben, fügen Sie die Möglichkeit hinzu, Nachrichten an Azure Stream Analytics weiterzuleiten und die Ergebnisse in Power BI anzuzeigen.'
 author: robinsh
 manager: philmea
 ms.service: iot-hub
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/25/2018
 ms.author: robinsh
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: 14f6fc685e99060474a17503cb13ba09a61a5a9a
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: fdfb2470e83cefaeb6df35115f7bb46149d8ffe6
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92149216"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98734003"
 ---
 # <a name="tutorial-part-2---view-the-routed-messages"></a>Tutorial: Teil 2: Anzeigen der weitergeleiteten Nachrichten
 
@@ -48,7 +48,7 @@ Die Service Bus-Warteschlange sollte zum Empfangen von als kritisch eingestuften
 
    **Standort**: Verwenden Sie Ihren Standort. In diesem Tutorial wird **USA, Westen** verwendet.
 
-   **Log Analytics**: Diese Option sollte deaktiviert werden.
+   **Enable Log Analytics** (Log Analytics aktivieren): Diese Option sollte deaktiviert werden.
 
    ![Bildschirm „Logik-App erstellen“](./media/tutorial-routing-view-message-routing-results/create-logic-app.png)
 
@@ -151,6 +151,8 @@ Um die Daten in einer Power BI-Visualisierung anzuzeigen, richten Sie zuerst ein
    **Datasetname**: Name des Datasets, das in Power BI verwendet werden soll. In diesem Tutorial wird **contosodataset** verwendet. 
 
    **Tabellenname**: Name der Tabelle, die in Power BI verwendet werden soll. In diesem Tutorial wird **contosotable** verwendet.
+
+  **Authentifizierungsmodus**: Wählen Sie den zu verwendenden Modus aus.
 
    Übernehmen Sie in den restlichen Feldern die Standardwerte.
 
@@ -280,7 +282,7 @@ Melden Sie sich bei Ihrem [Power BI](https://powerbi.microsoft.com/)-Konto an. W
 
 ### <a name="use-the-azure-cli-to-clean-up-resources"></a>Verwenden der Azure CLI zum Bereinigen von Ressourcen
 
-Um die Ressourcengruppe zu entfernen, verwenden Sie den Befehl [az group delete](/cli/azure/group?view=azure-cli-latest#az-group-delete). `$resourceGroup` wurde zu Beginn dieses Tutorials auf **ContosoResources** festgelegt.
+Um die Ressourcengruppe zu entfernen, verwenden Sie den Befehl [az group delete](/cli/azure/group?view=azure-cli-latest#az-group-delete&preserve-view=true). `$resourceGroup` wurde zu Beginn dieses Tutorials auf **ContosoResources** festgelegt.
 
 ```azurecli-interactive
 az group delete --name $resourceGroup

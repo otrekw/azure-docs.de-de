@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 08/06/2020
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40, devx-track-js
-ms.openlocfilehash: 51b548beae57ce1da32006b61dfd222b0a4e6218
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 874488e5de7888edad5310afce1afd1baec4ece0
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98015860"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98753071"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-a-javascript-single-page-application-spa"></a>Tutorial: Anmelden von Benutzern und Aufrufen der Microsoft Graph-API aus einer JavaScript-SPA (Single-Page-Webanwendung)
 
@@ -45,7 +45,7 @@ Dieses Tutorial umfasst folgende Punkte:
 
 ![Zeigt, wie die in diesem Tutorial generierte Beispiel-App funktioniert](media/active-directory-develop-guidedsetup-javascriptspa-introduction/javascriptspa-intro.svg)
 
-Die über diesen Leitfaden erstellte Beispiel-App ermöglicht einer JavaScript-SPA das Abfragen der Microsoft Graph-API oder einer Web-API, die Token vom Microsoft Identity Platform-Endpunkt akzeptiert. In diesem Szenario wird nach der Benutzeranmeldung ein Zugriffstoken angefordert und den HTTP-Anforderungen über den Autorisierungsheader hinzugefügt. Dieses Token wird verwendet, um das Profil und die E-Mails des Benutzers über die **MS Graph-API** abzurufen.
+Die über diesen Leitfaden erstellte Beispiel-App ermöglicht einer JavaScript-SPA das Abfragen der Microsoft Graph-API oder einer Web-API, die Token von Microsoft Identity Platform akzeptiert. In diesem Szenario wird nach der Benutzeranmeldung ein Zugriffstoken angefordert und den HTTP-Anforderungen über den Autorisierungsheader hinzugefügt. Dieses Token wird verwendet, um das Profil und die E-Mails des Benutzers über die **MS Graph-API** abzurufen.
 
 Tokenabruf und -verlängerung werden von der [Microsoft Authentication Library (MSAL) für JavaScript](https://github.com/AzureAD/microsoft-authentication-library-for-js) verarbeitet.
 
@@ -413,13 +413,13 @@ Die in diesem Leitfaden generierte SPA ruft `acquireTokenSilent` bzw. `acquireTo
 
 #### <a name="get-a-user-token-interactively"></a>Interaktives Abrufen eines Benutzertokens
 
-Nach der erstmaligen Anmeldung sollen die Benutzer nicht jedes Mal erneut zur Authentifizierung aufgefordert werden, wenn sie ein Token für den Zugriff auf eine Ressource anfordern müssen. Aus diesem Grund sollten Token in den meisten Fällen mit *acquireTokenSilent* bezogen werden. Es gibt jedoch Situationen, in denen Sie die Interaktion mit dem Microsoft Identity Platform-Endpunkt erzwingen müssen. Beispiele:
+Nach der erstmaligen Anmeldung sollen die Benutzer nicht jedes Mal erneut zur Authentifizierung aufgefordert werden, wenn sie ein Token für den Zugriff auf eine Ressource anfordern müssen. Aus diesem Grund sollten Token in den meisten Fällen mit *acquireTokenSilent* bezogen werden. Es gibt jedoch Situationen, in denen Sie die Interaktion der Benutzer mit Microsoft Identity Platform erzwingen müssen. Beispiele:
 
 - Benutzer müssen ihre Anmeldeinformationen erneut eingeben, da das Kennwort abgelaufen ist.
 - Ihre Anwendung fordert Zugriff auf eine Ressource an, und die Zustimmung des Benutzers ist erforderlich.
 - Die zweistufige Authentifizierung ist erforderlich.
 
-Durch Aufrufen von *acquireTokenPopup* wird ein Popupfenster geöffnet. (Mit *acquireTokenRedirect* werden Benutzer zum Microsoft Identity Platform-Endpunkt umgeleitet.) In diesem Fenster müssen Benutzer ihre Anmeldeinformationen bestätigen, ihre Zustimmung für die erforderliche Ressource geben oder die zweistufige Authentifizierung durchführen.
+Durch Aufrufen von *acquireTokenPopup* wird ein Popupfenster geöffnet. (Mit *acquireTokenRedirect* werden Benutzer zu Microsoft Identity Platform umgeleitet.) In diesem Fenster müssen Benutzer ihre Anmeldeinformationen bestätigen, ihre Zustimmung für die erforderliche Ressource geben oder die zweistufige Authentifizierung durchführen.
 
 #### <a name="get-a-user-token-silently"></a>Automatisches Abrufen eines Benutzertokens
 
@@ -483,7 +483,7 @@ In der Beispielanwendung aus diesem Leitfaden wird die Methode `callMSGraph()` v
    ```
 1. Geben Sie in Ihrem Browser **http://localhost:3000** oder **http://localhost:{port}** ein, wobei *port* der Port ist, an dem der Webserver lauscht. Der Inhalt der Datei *index.html* und die Schaltfläche **Anmelden** sollten angezeigt werden.
 
-Nachdem der Browser die Datei *index.html* geladen hat, klicken Sie auf **Anmelden**. Sie werden aufgefordert, sich mit dem Microsoft Identity Platform-Endpunkt anzumelden:
+Nachdem der Browser die Datei *index.html* geladen hat, klicken Sie auf **Anmelden**. Sie werden aufgefordert, sich mit Microsoft Identity Platform anzumelden:
 
 ![Das Fenster zum Anmelden bei Ihrem JavaScript SPA-Konto](media/active-directory-develop-guidedsetup-javascriptspa-test/javascriptspascreenshot1.png)
 

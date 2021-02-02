@@ -8,26 +8,30 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: overview
-ms.date: 12/03/2020
+ms.date: 01/20/2021
 ms.author: justinha
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 765aa10e57c472d7a1af0952364783bb1d711078
-ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
+ms.openlocfilehash: 194a5420f38e99d45f74241f67ae8cfbbaaee8f4
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97861510"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98660996"
 ---
 # <a name="what-is-azure-active-directory-domain-services"></a>Was ist Azure Active Directory Domain Services?
 
-Azure Active Directory Domain Services (AD DS) verfügt über verwaltete Domänendienste wie Domänenbeitritt, Gruppenrichtlinien, Lightweight Directory Access Protocol (LDAP) und Kerberos/NTLM-Authentifizierung. Sie können diese Domänendienste nutzen, ohne Domänencontroller (DCs) in der Cloud bereitstellen, verwalten und patchen zu müssen.
+Azure Active Directory Domain Services (AD DS) verfügt über verwaltete Domänendienste wie Domänenbeitritt, Gruppenrichtlinien, Lightweight Directory Access Protocol (LDAP) und Kerberos-/NTLM-Authentifizierung. Sie können diese Domänendienste nutzen, ohne Domänencontroller (DCs) in der Cloud bereitstellen, verwalten und patchen zu müssen.
 
 Mit einer verwalteten Azure AD DS-Domäne können Sie Legacyanwendungen in der Cloud ausführen, für die keine modernen Authentifizierungsmethoden genutzt werden können oder bei denen Sie nicht möchten, dass Verzeichnissuchen immer in einer lokalen AD DS-Umgebung durchgeführt werden. Sie können diese Legacyanwendungen per Lift & Shift-Vorgang aus Ihrer lokalen Umgebung in eine verwaltete Domäne verschieben, ohne dass Sie die AD DS-Umgebung in der Cloud verwalten müssen.
 
-Azure AD DS lässt sich in Ihren vorhandenen Azure AD-Mandanten integrieren. Diese Integration ermöglicht Benutzern, sich bei Diensten und Anwendungen, die mit der verwalteten Domäne verbunden sind, mit ihren vorhandenen Anmeldeinformationen anzumelden. Sie können auch vorhandene Gruppen und Benutzerkonten verwenden, um den Zugriff auf Ressourcen abzusichern. So können Sie für eine reibungslosere Lift & Shift-Migration lokaler Ressourcen zu Azure sorgen.
+Azure AD DS lässt sich in Ihren vorhandenen Azure AD-Mandanten integrieren. Diese Integration ermöglicht es Benutzern, sich bei Diensten und Anwendungen, die mit der verwalteten Domäne verbunden sind, mithilfe ihrer vorhandenen Anmeldeinformationen anzumelden. Sie können auch vorhandene Gruppen und Benutzerkonten verwenden, um den Zugriff auf Ressourcen abzusichern. So können Sie für eine reibungslosere Lift & Shift-Migration lokaler Ressourcen zu Azure sorgen.
 
 > [!div class="nextstepaction"]
 > [Im ersten Schritt erstellen Sie im Azure-Portal eine verwaltete Azure AD DS-Domäne][tutorial-create].
+
+Sehen Sie sich unser kurzes Video an, um mehr über Azure AD DS zu erfahren.
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4LblD]
 
 ## <a name="how-does-azure-ad-ds-work"></a>Wie funktioniert Azure AD DS?
 

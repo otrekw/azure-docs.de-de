@@ -1,7 +1,7 @@
 ---
 title: 'Schnellstart: Aufrufen von Microsoft Graph über einen Python-Daemon | Azure'
 titleSuffix: Microsoft identity platform
-description: In dieser Schnellstartanleitung erfahren Sie, wie ein Python-Prozess unter Verwendung der App-eigenen Identität ein Zugriffstoken abrufen und eine API aufrufen kann, die durch einen Microsoft Identity Platform-Endpunkt geschützt ist.
+description: In dieser Schnellstartanleitung erfahren Sie, wie ein Python-Prozess unter Verwendung der App-eigenen Identität ein Zugriffstoken abrufen und eine API aufrufen kann, die durch Microsoft Identity Platform geschützt ist.
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 10/22/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, devx-track-python, scenarios:getting-started, languages:Python
-ms.openlocfilehash: 47aaf67c9ae2402e0445de60de439b77242bd87d
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: 04c3497e41aba301d5cf16cd6cc723409d1f4175
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98178227"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98754064"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-python-console-app-using-apps-identity"></a>Schnellstart: Abrufen eines Tokens und Aufrufen der Microsoft Graph-API über eine Python-Konsolen-App unter Verwendung der Identität der App
 

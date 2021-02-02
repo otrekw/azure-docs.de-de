@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: sstein
-ms.date: 09/03/2020
-ms.openlocfilehash: 9c09a54daa482d738ded9f7aca1c95c2b640617e
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.date: 01/20/2021
+ms.openlocfilehash: 5f9e7e1c96db2b60e41fe0ded69ea562cf8fcea6
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92790269"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98663984"
 ---
 # <a name="use-read-only-replicas-to-offload-read-only-query-workloads"></a>Verwenden von schreibgeschützten Replikaten zum Lesen schreibgeschützter Abfrageworkloads
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -115,12 +115,12 @@ Wenn eine Transaktion mit Momentaufnahmeisolation auf Objektmetadaten zugreift, 
 
 ### <a name="long-running-queries-on-read-only-replicas"></a>Abfragen mit langer Ausführungszeit für schreibgeschützte Replikate
 
-Abfragen, die für schreibgeschützte Replikate ausgeführt werden, müssen auf die Metadaten für die in der Abfrage referenzierten Objekte (Tabellen, Indizes, Statistiken usw.) zugreifen. Wenn ein Metadatenobjekt für das primäre Replikat geändert wird, während eine Abfrage eine Sperre für dasselbe Objekt im schreibgeschützten Replikat enthält, kann die Abfrage in seltenen Fällen den Prozess, der Änderungen vom primären Replikat auf das schreibgeschützte Replikat anwendet, [blockieren](/sql/database-engine/availability-groups/windows/troubleshoot-primary-changes-not-reflected-on-secondary#BKMK_REDOBLOCK). Wenn eine solche Abfrage über einen längeren Zeitraum ausgeführt wird, führt dies dazu, dass das schreibgeschützte Replikat mit dem primären Replikat nicht mehr synchronisiert ist. 
+Abfragen, die für schreibgeschützte Replikate ausgeführt werden, müssen auf die Metadaten für die in der Abfrage referenzierten Objekte (Tabellen, Indizes, Statistiken usw.) zugreifen. Wenn ein Metadatenobjekt für das primäre Replikat geändert wird, während eine Abfrage eine Sperre für dasselbe Objekt im schreibgeschützten Replikat enthält, kann die Abfrage in seltenen Fällen den Prozess, der Änderungen vom primären Replikat auf das schreibgeschützte Replikat anwendet, [blockieren](/sql/database-engine/availability-groups/windows/troubleshoot-primary-changes-not-reflected-on-secondary#BKMK_REDOBLOCK). Wenn eine solche Abfrage über einen längeren Zeitraum ausgeführt wird, führt dies dazu, dass das schreibgeschützte Replikat mit dem primären Replikat nicht mehr synchronisiert ist.
 
-Wenn eine Abfrage mit langer Ausführungszeit auf einem schreibgeschützten Replikat diese Art von Blockierung bewirkt, wird sie automatisch beendet, und die Sitzung empfängt den Fehler 1219: „Die Sitzung wurde aufgrund eines DDL-Vorgangs hoher Priorität getrennt“.
+Wenn eine Abfrage mit langer Ausführungszeit für ein schreibgeschützten Replikat diese Art von Blockierung verursacht, wird sie automatisch beendet. Die Sitzung erhält den Fehler 1219, „Die Sitzung wurde aufgrund eines DDL-Vorgangs hoher Priorität getrennt“ oder den Fehler 3947, „Die Transaktion wurde abgebrochen, da die sekundäre Compute-Instanz die Wiederholung nicht aufholen konnte. Wiederholen Sie die Transaktion.“
 
 > [!NOTE]
-> Wenn beim Ausführen von Abfragen für ein schreibgeschütztes Replikat einer der Fehler 3961 oder 1219 angezeigt wird, wiederholen Sie die Abfrage.
+> Wenn beim Ausführen von Abfragen für ein schreibgeschütztes Replikat einer der Fehler 3961, 1219 oder 3947 angezeigt wird, wiederholen Sie die Abfrage.
 
 > [!TIP]
 > Wenn eine Verbindung mit einem schreibgeschützten Replikat besteht, können auf den Dienstebenen Premium und Unternehmenskritisch die Spalten `redo_queue_size` und `redo_rate` in der DMV [sys.dm_database_replica_states](/sql/relational-databases/system-dynamic-management-views/sys-dm-database-replica-states-azure-sql-database) zum Überwachen der Datensynchronisierung verwendet werden und dadurch als Indikatoren für die Datenlatenz auf dem schreibgeschützten Replikat herangezogen werden.
@@ -137,7 +137,7 @@ Sie können die horizontale Leseskalierung für Singletons und Pools für elasti
 
 ### <a name="azure-portal"></a>Azure-Portal
 
-Sie verwalten die Einstellung für die horizontale Leseskalierung auf dem Datenbankblatt **Konfigurieren** .
+Sie verwalten die Einstellung für die horizontale Leseskalierung auf dem Datenbankblatt **Konfigurieren**.
 
 ### <a name="powershell"></a>PowerShell
 

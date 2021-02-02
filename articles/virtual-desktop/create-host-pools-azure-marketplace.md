@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 09/14/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 2830d8b82f5b53300d0af3f48e55b573d78ad295
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 268f1c4bff84a2c9ef67c3f6b5749bc8d0b90e85
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91287388"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98735180"
 ---
 # <a name="tutorial-create-a-host-pool-with-the-azure-portal"></a>Tutorial: Erstellen eines Hostpools mit dem Azure-Portal
 
@@ -118,7 +118,7 @@ So richten Sie Ihre VM im Rahmen des Einrichtungsprozesses für den Hostpool ein
       - Windows 10 Enterprise (mehrere Sitzungen), Version 2004
       - Windows 10 Enterprise (mehrere Sitzungen), Version 2004 + Microsoft 365 Apps
 
-     Falls das gewünschte Image nicht angezeigt wird, wählen Sie **Alle Images und Datenträger durchsuchen** aus. Sie können dann ein anderes Image in Ihrem Katalog oder ein von Microsoft und anderen Herausgebern bereitgestelltes Image auswählen.
+     Falls das gewünschte Image nicht angezeigt wird, wählen Sie **Alle Images und Datenträger durchsuchen** aus. Sie können dann ein anderes Image in Ihrem Katalog oder ein von Microsoft und anderen Herausgebern bereitgestelltes Image auswählen. Wählen Sie unbedingt eines der [unterstützten Betriebssystemimages](overview.md#supported-virtual-machine-os-images) aus.
 
      > [!div class="mx-imgBorder"]
      > ![Screenshot des Marketplace mit einer Liste von Images von Microsoft.](media/marketplace-images.png)

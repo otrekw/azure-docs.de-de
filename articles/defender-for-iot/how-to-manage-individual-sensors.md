@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 1/12/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 68fa3ea15199ec1d9cc99f92f497847fb029acd6
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: 16031c3d67b075e962c73fbb38ada36c7efeddad
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98539572"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98621213"
 ---
 # <a name="manage-individual-sensors"></a>Verwalten einzelner Sensoren
 
@@ -315,7 +315,7 @@ Führen Sie die folgenden Befehle aus, um Zertifikate und Schlüssel in untersch
 
 ## <a name="connect-a-sensor-to-the-management-console"></a>Verbinden eines Sensors mit der Verwaltungskonsole
 
-In diesem Abschnitt wird beschrieben, wie die Verbindung zwischen dem Sensor und der lokalen Verwaltungskonsole sichergestellt wird. Gehen Sie entsprechend vor, wenn Sie in einem Air-Gap-Netzwerk arbeiten und Ressourcen- und Warnungsinformationen vom Sensor an die Verwaltungskonsole senden möchten. Diese Verbindung ermöglicht der Verwaltungskonsole außerdem das Übertragen von Systemeinstellungen per Push an den Sensor und das Ausführen anderer Verwaltungsaufgaben auf dem Sensor.
+In diesem Abschnitt wird beschrieben, wie die Verbindung zwischen dem Sensor und der lokalen Verwaltungskonsole sichergestellt wird. Sie müssen dies tun, wenn Sie in einem Air-Gap-Netzwerk arbeiten und Geräte- und Warnungsinformationen vom Sensor an die Verwaltungskonsole senden möchten. Diese Verbindung ermöglicht der Verwaltungskonsole außerdem das Übertragen von Systemeinstellungen per Push an den Sensor und das Ausführen anderer Verwaltungsaufgaben auf dem Sensor.
 
 Zum Herstellen einer Verbindung gehen Sie folgendermaßen vor:
 

@@ -12,18 +12,18 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/09/2020
-ms.openlocfilehash: 13f9e2271dd18121ba740c843e99fae86c76821d
-ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
+ms.openlocfilehash: 5b4ab207462955be3876dc1a25fae491e48a9cd2
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/01/2021
-ms.locfileid: "97845410"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98621709"
 ---
 # <a name="welcome-to-azure-defender-for-iot"></a>Willkommen bei Azure Defender für IoT
 
 OT-Netzwerke (Operational Technology) finden Verwendung für viele besonders kritische Aspekte unserer Gesellschaft. Eine ganze Reihe dieser Technologien wurde jedoch nicht unter Sicherheitsgesichtspunkten entwickelt und kann nicht mit herkömmlichen IT-Sicherheitskontrollen geschützt werden. Mittlerweile sorgt das Internet der Dinge (IoT) mit Milliarden verbundener Geräte für eine neue Innovationswelle, wodurch sich Angriffsflächen und Risiko erhöhen.  
 
-Azure Defender für IoT ist eine einheitliche Sicherheitslösung zum Identifizieren von IoT/OT-Ressourcen, Sicherheitsrisiken und Bedrohungen. Diese Lösung bietet Schutz für Ihre gesamte IoT/OT-Umgebung. Dabei spielt es keine Rolle, ob Sie vorhandene IoT/OT-Geräte schützen oder Sicherheit in IoT-Innovationen integrieren müssen.  
+Azure Defender für IoT ist eine einheitliche Sicherheitslösung zum Identifizieren von IoT/OT-Geräten, Sicherheitsrisiken und Bedrohungen. Diese Lösung bietet Schutz für Ihre gesamte IoT/OT-Umgebung. Dabei spielt es keine Rolle, ob Sie vorhandene IoT/OT-Geräte schützen oder Sicherheit in IoT-Innovationen integrieren müssen.  
 
 Azure Defender für IoT stellt für die Anforderungen in Ihrer Umgebung zwei Gruppen von Funktionen bereit.
 
@@ -47,7 +47,7 @@ Die Überwachungsfunktionen ohne Agent in Azure Defender für IoT sorgen für Si
 
 ### <a name="automatic-device-discovery"></a>Automatische Geräteerkennung  
 
-Verwenden Sie die passive Netzwerküberwachung ohne Agent, um ohne jegliche Beeinträchtigung des IoT/OT-Netzwerks den vollständigen Bestand aller IoT/OT-Ressourcen, die zugehörigen Details und die Kommunikation untereinander zu ermitteln.  
+Verwenden Sie die passive Netzwerküberwachung ohne Agent, um ohne jegliche Beeinträchtigung des IoT/OT-Netzwerks den vollständigen Bestand aller IoT/OT-Geräte, die zugehörigen Details und die Kommunikation untereinander zu ermitteln.  
 
 ### <a name="proactive-visibility-into-risk-and-vulnerabilities"></a>Proaktive Sichtbarkeit von Risiken und Sicherheitsrisiken
  

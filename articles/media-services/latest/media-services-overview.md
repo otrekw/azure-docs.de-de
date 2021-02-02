@@ -1,29 +1,11 @@
 ---
-title: 'Azure Media Services v3: Übersicht'
-titleSuffix: Azure Media Services
-description: Eine allgemeine Übersicht über Azure Media Services v3 mit Links zu Schnellstarts, Tutorials und Codebeispielen.
-services: media-services
-documentationcenter: na
-author: IngridAtMicrosoft
-manager: femila
-editor: ''
-tags: ''
-keywords: azure media services, streamen, übertragen, live, offline
-ms.service: media-services
-ms.devlang: multiple
-ms.topic: overview
-ms.tgt_pltfrm: multiple
-ms.workload: media
-ms.date: 08/31/2020
-ms.author: inhenkel
-ms.custom: mvc
-ms.openlocfilehash: 01ec0c7c0d2d060bbd930a099fe3db54de6cb150
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
-ms.translationtype: HT
-ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93308958"
+Titel: Azure Media Services v3 overview : Azure Media Services description: Eine allgemeine Übersicht über Azure Media Services v3 mit Links zu Schnellstarts, Tutorials und Codebeispielen.
+services: media-services documentationcenter: na author: IngridAtMicrosoft manager: femila editor: '' tags: '' keywords: azure media services, stream, broadcast, live, offline
+
+ms.service: media-services ms.devlang: multiple ms.topic: overview ms.tgt_pltfrm: multiple ms.workload: media ms.date: 08/31/2020 ms.author: inhenkel ms.custom: mvc
+#<a name="customer-intent-as-a-developer-or-a-content-provider-i-want-to-encode-stream-on-demand-or-live-analyze-my-media-content-so-that-my-customers-can-view-the-content-on-a-wide-variety-of-browsers-and-devices-gain-valuable-insights-from-recorded-content"></a>Kundenabsicht: Als Entwickler oder Inhaltsanbieter möchte ich meine Medieninhalte codieren, (bedarfsgesteuert oder live) streamen und analysieren, damit meine Kunden die Inhalte in verschiedenen Browsern und auf zahlreichen Geräten anzeigen und wertvolle Erkenntnisse aus aufgezeichneten Inhalten gewinnen können.
 ---
+
 # <a name="azure-media-services-v3-overview"></a>Azure Media Services v3: Übersicht
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]

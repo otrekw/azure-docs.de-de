@@ -13,16 +13,16 @@ ms.date: 11/26/2019
 ms.author: hahamil
 ms.reviewer: brandwe
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 7bdb36566d7c501dc5ca5604f8c6963258aa951c
-ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
+ms.openlocfilehash: f3dee72180d0850ce6d920c7e3180cebcbe2f4b4
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98208538"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98753031"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-an-android-application"></a>Tutorial: Anmelden von Benutzern und Aufrufen der Microsoft Graph-API aus einer Android-Anwendung
 
-In diesem Tutorial erstellen Sie eine Android-App, die in die Microsoft Identity Platform eingebunden wird, um Benutzer anzumelden und ein Zugriffstoken abzurufen, mit dem die Microsoft Graph-API aufgerufen werden kann.
+In diesem Tutorial erstellen Sie eine Android-App, die in Microsoft Identity Platform eingebunden wird, um Benutzer anzumelden und ein Zugriffstoken abzurufen, mit dem die Microsoft Graph-API aufgerufen werden kann.
 
 Am Ende dieses Tutorials akzeptiert Ihre Anwendung Anmeldungen von persönlichen Microsoft-Konten (outlook.com, live.com u. a.) sowie von Geschäfts,- Schul- oder Unikonten von allen Unternehmen oder Organisationen, die Azure Active Directory nutzen.
 

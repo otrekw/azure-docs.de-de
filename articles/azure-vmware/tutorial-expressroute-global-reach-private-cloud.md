@@ -2,13 +2,13 @@
 title: 'Tutorial: Zusammenfassen lokaler Umgebungen mittels Peering zu einer privaten Cloud'
 description: Erfahren Sie, wie Sie ExpressRoute Global Reach-Peering mit einer privaten Cloud in einer Azure VMware Solution-Instanz erstellen.
 ms.topic: tutorial
-ms.date: 1/5/2021
-ms.openlocfilehash: 613aece6ed548f70840349e017de4416883d6cf3
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.date: 01/27/2021
+ms.openlocfilehash: e7b1e349f67fe63f63183c0ff6d1522498c65f8c
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97913157"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98918720"
 ---
 # <a name="tutorial-peer-on-premises-environments-to-a-private-cloud"></a>Tutorial: Zusammenfassen lokaler Umgebungen mittels Peering zu einer privaten Cloud
 
@@ -33,7 +33,7 @@ Lesen Sie zunächst die Dokumentation zum [Aktivieren der Konnektivität zwische
 - Eine eingerichtete Verbindung mit einer privaten Azure VMware Solution-Cloud, deren ExpressRoute-Leitung mittels Peering mit einem ExpressRoute-Gateway in einem virtuellen Azure-Netzwerk (VNET) verbunden ist. Dies ist _Circuit 2_ aus den Peeringvorgängen.  
 - Eine separate, funktionierende ExpressRoute-Leitung für die Verbindungsherstellung zwischen lokalen Umgebungen und Azure. Dies ist _Circuit 1_ aus Sicht der Peeringvorgänge.
 - Ein [Netzwerkadressblock](../expressroute/expressroute-routing.md#ip-addresses-used-for-peerings) vom Typ „/29“ ohne Überschneidungen für das ExpressRoute Global Reach-Peering.
-- Stellen Sie sicher, dass alle Router mit dem Dienst des ExpressRoute-Anbieters eine ASN (Autonomous System Number, autonome Systemnummer) mit 4 Bytes unterstützen. Azure VMware Solution verwendet öffentliche ASNs mit 4 Bytes zum Ankündigen von Routen.
+- Stellen Sie sicher, dass alle Gateways mit dem Dienst des ExpressRoute-Anbieters eine ASN (Autonomous System Number, autonome Systemnummer) mit 4 Bytes unterstützen. Azure VMware Solution verwendet öffentliche ASNs mit 4 Bytes zum Ankündigen von Routen.
 
 > [!TIP]
 > Im Kontext dieser Voraussetzungen ist _Circuit 1_ Ihre lokale ExpressRoute-Leitung. Die ExpressRoute-Leitung Ihrer privaten Cloud befindet sich in einem anderen Abonnement und heißt _Circuit 2_. 

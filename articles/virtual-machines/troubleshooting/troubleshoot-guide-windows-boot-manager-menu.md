@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: troubleshooting
 ms.date: 03/26/2020
 ms.author: v-mibufo
-ms.openlocfilehash: 2457952051f575306de46e3e8145cc26678a1ef8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5f83f4871d5cde23194ff51a90a22031b526cf91
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86526537"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632562"
 ---
 # <a name="windows-vm-cannot-boot-due-to-windows-boot-manager"></a>Der virtuelle Windows-Computer kann aufgrund des Windows-Start-Managers nicht gestartet werden.
 
@@ -40,6 +40,9 @@ Abbildung 1
 Der Fehler ist auf das BCD-Flag *displaybootmenu* im Windows-Start-Manager zurückzuführen. Wenn das Flag aktiviert ist, wird der Benutzer während des Startvorgangs vom Windows-Start-Manager aufgefordert, das auszuführende Ladeprogramm auszuwählen, was zu einer Startverzögerung führt. In Azure kann dieses Feature die Startzeit eines virtuellen Computers verlängern.
 
 ## <a name="solution"></a>Lösung
+
+> [!TIP]
+> Wenn Sie über eine aktuelle Sicherung der VM verfügen, können Sie versuchen, die [VM aus der Sicherung wiederherzustellen](../../backup/backup-azure-arm-restore-vms.md), um das Startproblem zu beheben.
 
 Prozessübersicht:
 
@@ -75,7 +78,7 @@ Wenn Sie Zugriff auf die serielle Konsole haben, gibt es zwei Möglichkeiten, k�
       > [!NOTE]
       > Wenn Sie die serielle Konsole nicht verwenden konnten, um in den obigen Schritten eine kürzere Startzeit zu konfigurieren, können Sie stattdessen mit den folgenden Schritten fortfahren. Sie führen die Problembehandlung nun im Offlinemodus durch, um dieses Problem zu beheben.
 
-### <a name="create-and-access-a-repair-vm"></a>Erstellen einer Reparatur-VM und Zugriff darauf
+### <a name="create-and-access-a-repair-vm"></a>Erstellen einer Reparatur-VM und Zugreifen darauf
 
 1. Führen Sie die [Schritte 1-3 der VM-Reparaturbefehle](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md) aus, um eine Reparatur-VM vorzubereiten.
 2. Stellen Sie über eine Remotedesktopverbindung eine Verbindung mit der Reparatur-VM her.
@@ -107,11 +110,11 @@ Wenn Sie Zugriff auf die serielle Konsole haben, gibt es zwei Möglichkeiten, k�
 
    Ersetzen Sie alle „größer als“- oder „kleiner als“-Symbole und den darin enthaltenen Text, z. B. „<Text hier>“.
 
-### <a name="recommended-before-you-rebuild-the-vm-enable-serial-console-and-memory-dump-collection"></a>Empfohlen: Aktivieren Sie vor der Neuerstellung des virtuellen Computers die serielle Konsole und die Speicherabbildsammlung.
+### <a name="recommended-before-you-rebuild-the-vm-enable-serial-console-and-memory-dump-collection"></a>Empfohlen: Aktivieren der seriellen Konsole und der Speicherabbildsammlung vor der Neuerstellung der VM
 
-Um die Speicherabbildsammlung und die serielle Konsole zu aktivieren, führen Sie das folgende Skript aus:
+Führen Sie das folgende Skript aus, um die Speicherabbildsammlung und die serielle Konsole zu aktivieren:
 
-1. Öffnen Sie eine Eingabeaufforderungssitzung mit erhöhten Rechten (Als Administrator ausführen).
+1. Öffnen Sie eine Eingabeaufforderungssitzung mit erhöhten Rechten („Als Administrator ausführen“).
 2. Führen Sie die folgenden Befehle aus:
 
    Aktivieren der seriellen Konsole
@@ -120,19 +123,19 @@ Um die Speicherabbildsammlung und die serielle Konsole zu aktivieren, führen Si
 
    `bcdedit /store <VOLUME LETTER WHERE THE BCD FOLDER IS>:\boot\bcd /emssettings EMSPORT:1 EMSBAUDRATE:115200`
 
-   Ersetzen Sie alle „größer als“- oder „kleiner als“-Symbole und den darin enthaltenen Text, z. B. „<Text hier>“.
+   Ersetzen Sie die Symbole „Größer als“ oder „Kleiner als“ und den darin enthaltenen Text (z. B. „<Text hier>“) durch die entsprechenden Angaben.
 
-3. Vergewissern Sie sich, dass der freie Speicherplatz auf dem Betriebssystemdatenträger der Größe des Arbeitsspeichers (RAM) auf der VM entspricht.
+3. Überprüfen Sie, ob der freie Speicherplatz auf dem Betriebssystemdatenträger der Größe des Arbeitsspeichers (RAM) auf der VM entspricht.
 
-   Wenn nicht genügend Speicherplatz auf dem Betriebssystemdatenträger vorhanden ist, sollten Sie den Speicherort, wo die Speicherabbilddatei erstellt wird, ändern und sie auf einem der VM angefügten Datenträger ablegen, der genügend freien Speicherplatz bietet. Um den Speicherort zu ändern, ersetzen Sie „%SystemRoot%“ in den folgenden Befehlen durch den Laufwerksbuchstaben (z. B. „F:“) des Datenträgers.
+   Wenn nicht genügend Speicherplatz auf dem Betriebssystemdatenträger vorhanden ist, sollten Sie den Speicherort für das Erstellen der Speicherabbilddatei ändern und auf einen an die VM angefügten Datenträger verweisen, der über genügend freien Speicherplatz verfügt. Um den Speicherort zu ändern, ersetzen Sie „%SystemRoot%“ in den folgenden Befehlen durch den Laufwerkbuchstaben (z. B. „F:“) des Datenträgers.
 
-#### <a name="suggested-configuration-to-enable-os-dump"></a>Empfohlene Konfiguration zum Aktivieren des Betriebssystemabbilds
+#### <a name="suggested-configuration-to-enable-os-dump"></a>Empfohlene Konfiguration für das Aktivieren des Betriebssystemabbilds
 
-**Beschädigten Betriebssystemdatenträger laden**:
+**Laden des beschädigten Betriebssystemdatenträgers**:
 
 `REG LOAD HKLM\BROKENSYSTEM <VOLUME LETTER OF BROKEN OS DISK>:\windows\system32\config\SYSTEM`
 
-**Aktivieren für ControlSet001**:
+**Aktivieren für „ControlSet001“** :
 
 `REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\CrashControl" /v CrashDumpEnabled /t REG_DWORD /d 1 /f`
 
@@ -140,7 +143,7 @@ Um die Speicherabbildsammlung und die serielle Konsole zu aktivieren, führen Si
 
 `REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\CrashControl" /v NMICrashDump /t REG_DWORD /d 1 /f`
 
-**Aktivieren für ControlSet002**:
+**Aktivieren für „ControlSet002“** :
 
 `REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\CrashControl" /v CrashDumpEnabled /t REG_DWORD /d 1 /f`
 
@@ -148,10 +151,10 @@ Um die Speicherabbildsammlung und die serielle Konsole zu aktivieren, führen Si
 
 `REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\CrashControl" /v NMICrashDump /t REG_DWORD /d 1 /f`
 
-**Beschädigten Betriebssystemdatenträger entladen**:
+**Entladen des beschädigten Betriebssystemdatenträgers**:
 
 `REG UNLOAD HKLM\BROKENSYSTEM`
 
-### <a name="rebuild-the-original-vm"></a>Neuerstellung der ursprünglichen VM
+### <a name="rebuild-the-original-vm"></a>Neuerstellen der ursprünglichen VM
 
 Führen Sie [Schritt 5 der VM-Reparaturbefehle](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md#repair-process-example) aus, um die VM zu reassemblieren.

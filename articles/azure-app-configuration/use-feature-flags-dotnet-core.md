@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.date: 09/17/2020
 ms.author: alkemper
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: 8c0dd9713c673ad676058acc7dbbb3cb5a65362e
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 2f141b896ef11fecdf156d062a78252ce6f7ffb3
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96929190"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98734982"
 ---
 # <a name="tutorial-use-feature-flags-in-an-aspnet-core-app"></a>Tutorial: Verwenden von Featureflags in einer ASP.NET Core-App
 
@@ -37,7 +37,6 @@ In diesem Tutorial lernen Sie Folgendes:
 ## <a name="set-up-feature-management"></a>Einrichten der Featureverwaltung
 
 Fügen Sie einen Verweis auf die NuGet-Pakete `Microsoft.FeatureManagement.AspNetCore` und `Microsoft.FeatureManagement` hinzu, um den .NET Core-Feature-Manager zu nutzen.
-    
 Der .NET Core-Feature-Manager `IFeatureManager` ruft Featureflags aus dem nativen Konfigurationssystem des Frameworks ab. Dadurch können Sie die Featureflags Ihrer Anwendung mit einer beliebigen, von .NET Core unterstützten Konfigurationsquelle konfigurieren – unter anderem mit der lokalen Datei *appsettings.json* oder mit Umgebungsvariablen. `IFeatureManager` basiert auf der .NET Core-Abhängigkeitsinjektion. Die Featureverwaltungsdienste können unter Verwendung von Standardkonventionen registriert werden:
 
 ```csharp
@@ -106,16 +105,23 @@ Die Verbindung zwischen Ihrer ASP.NET Core-Anwendung und App Configuration läs
               .UseStartup<Startup>();
    ```
 
-2. Öffnen Sie *Startup.cs*, und aktualisieren Sie die `Configure`-Methode, um die integrierte Middleware namens `UseAzureAppConfiguration` hinzuzufügen. Diese Middleware gestattet die regelmäßige Aktualisierung der Featureflagwerte, während die ASP.NET Core-Web-App weiterhin Anforderungen empfängt.
+2. Öffnen Sie *Startup.cs*, und aktualisieren Sie die Methoden `Configure` und `ConfigureServices`, um die integrierte Middleware namens `UseAzureAppConfiguration` hinzuzufügen. Diese Middleware gestattet die regelmäßige Aktualisierung der Featureflagwerte, während die ASP.NET Core-Web-App weiterhin Anforderungen empfängt.
 
    ```csharp
-   public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+   public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
    {
        app.UseAzureAppConfiguration();
        app.UseMvc();
    }
    ```
 
+   ```csharp
+   public void ConfigureServices(IServiceCollection services)
+   {
+       services.AddAzureAppConfiguration();
+   }
+   ```
+   
 Die Werte von Featureflags ändern sich üblicherweise im Laufe der Zeit. Standardmäßig werden die Featureflagwerte für einen Zeitraum von 30 Sekunden zwischengespeichert, daher würde ein Aktualisierungsvorgang, der ausgelöst wird, wenn die Middleware eine Anforderung empfängt, den Wert erst nach Ablauf des zwischengespeicherten Werts aktualisieren. Der folgende Code zeigt, wie Sie die Cacheablaufzeit oder das Abrufintervall im Aufruf `options.UseFeatureFlags()` in einen Wert von fünf Minuten ändern.
 
 ```csharp
@@ -189,6 +195,8 @@ if (await featureManager.IsEnabledAsync(nameof(MyFeatureFlags.FeatureA)))
 In ASP.NET Core MVC kann auf den Feature-Manager `IFeatureManager` mittels Abhängigkeitsinjektion zugegriffen werden:
 
 ```csharp
+using Microsoft.FeatureManagement;
+
 public class HomeController : Controller
 {
     private readonly IFeatureManager _featureManager;

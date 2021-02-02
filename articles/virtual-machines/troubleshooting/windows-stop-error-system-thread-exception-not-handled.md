@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: troubleshooting
 ms.date: 11/04/2020
 ms.author: v-mibufo
-ms.openlocfilehash: 1ce594d9e3ffddf781c61717ae4534f0c7bd40f8
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: beb658474e49f9b47900d8481dab0424dae8c5be
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94681889"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98661390"
 ---
 # <a name="windows-stop-error---0x0000007e-system-thread-exception-not-handled"></a>Windows: kritischer Fehler 0x0000007E – Systemthreadausnahme nicht behandelt
 
@@ -35,6 +35,10 @@ Die Ursache kann erst bestimmt werden, wenn eine Speicherabbilddatei analysiert 
 
 ## <a name="solution"></a>Lösung
 
+> [!TIP]
+> Wenn Sie über eine aktuelle Sicherung der VM verfügen, können Sie versuchen, die [VM aus der Sicherung wiederherzustellen](../../backup/backup-azure-arm-restore-vms.md), um das Startproblem zu beheben.
+
+
 Um dieses Problem zu behandeln, müssen Sie zunächst die Speicherabbilddatei für den Absturz erstellen und die Datei dann an den Microsoft-Support senden. Zum Erstellen der Speicherabbilddatei für den Absturz befolgen Sie die Anweisungen in den nächsten beiden Abschnitten.
 
 ### <a name="attach-the-os-disk-to-a-new-repair-vm"></a>Anfügen des Betriebssystemdatenträgers an eine neue Reparatur-VM
@@ -46,7 +50,7 @@ Um dieses Problem zu behandeln, müssen Sie zunächst die Speicherabbilddatei f�
 
 1. Navigieren Sie auf der Reparatur-VM zum Windows-Ordner auf dem angefügten Betriebssystemdatenträger. Wenn dem angefügten Betriebssystemdatenträger beispielsweise der Laufwerkbuchstabe *F* zugeordnet ist, rufen Sie `F:\Windows` auf.
 1. Suchen Sie nach der Datei *memory.dmp*, und [senden Sie dann ein Supportticket](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) mit der Speicherabbilddatei als Anhang.
-1. Wenn Sie Probleme beim Auffinden der Datei *memory.dmp* haben, befolgen Sie die Anweisungen im Leitfaden zum [Generieren einer Absturzabbilddatei mithilfe von NMI-Aufrufen (nicht maskierbarer Interrupt)](/windows/client-management/generate-kernel-or-complete-crash-dump).
+1. Wenn Sie Probleme beim Auffinden der Datei *memory.dmp* haben, sollten Sie die Anweisungen im Leitfaden zum [Generieren einer Absturzabbilddatei mithilfe von NMI-Aufrufen (nicht maskierbarer Interrupt)](/windows/client-management/generate-kernel-or-complete-crash-dump) befolgen.
 
 Weitere Informationen zu NMI-Aufrufen finden Sie im Benutzerhandbuch zu [NMI-Aufrufen in der seriellen Azure-Konsole](./serial-console-windows.md#use-the-serial-console-for-nmi-calls).
 

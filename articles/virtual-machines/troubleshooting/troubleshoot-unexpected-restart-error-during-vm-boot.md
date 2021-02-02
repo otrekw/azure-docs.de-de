@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 06/22/2020
 ms.author: v-mibufo
-ms.openlocfilehash: cfeb040893ae2be5842959ed8458bd713bebe6ee
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: d8d2ab2bb3f24e1faa4791ebdc1ce3852f6a790e
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96512136"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632689"
 ---
 # <a name="os-start-up--computer-restarted-unexpectedly-or-encountered-an-unexpected-error"></a>Betriebssystemstart: Computer wurde unerwartet neu gestartet, oder es ist ein unerwarteter Fehler aufgetreten
 
@@ -52,6 +52,9 @@ Dieses Problem tritt in der Regel auf, wenn Sie „sysprep“ mit einem lokalen 
 ## <a name="solution"></a>Lösung
 
 ### <a name="do-not-use-unattendxml"></a>Verwenden Sie nicht „Unattend.xml“.
+
+> [!TIP]
+> Wenn Sie über eine aktuelle Sicherung der VM verfügen, können Sie versuchen, die [VM aus der Sicherung wiederherzustellen](../../backup/backup-azure-arm-restore-vms.md), um das Startproblem zu beheben.
 
 Um dieses Problem zu beheben, befolgen Sie [die Azure-Anleitung zum Vorbereiten/Erfassen eines Image](../windows/upload-generalized-managed.md), und bereiten Sie ein neues generalisiertes Image vor. Verwenden Sie beim Ausführen von „sysprep“ **nicht das Flag `/unattend:<your file’s name>`** . Verwenden Sie stattdessen nur die folgenden Flags:
 

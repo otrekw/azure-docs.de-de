@@ -10,14 +10,14 @@ ms.topic: conceptual
 author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
-ms.date: 08/04/2020
+ms.date: 01/25/2021
 tags: azure-synpase
-ms.openlocfilehash: f8d352dac98f953f7f6d8033d0d9e1376c4da313
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: 0f92d8dbfe423efa58231831fe012a27e45f9208
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96532243"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98787687"
 ---
 # <a name="dynamic-data-masking"></a>Dynamische Datenmaskierung 
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -26,15 +26,11 @@ Azure SQL-Datenbank, Azure SQL Managed Instance und Azure Synapse Analytics unte
 
 Die dynamische Datenmaskierung hilft beim Verhindern des unbefugten Zugriffs auf sensible Daten, indem Kunden festlegen dürfen, welcher Anteil der sensiblen Daten mit minimalen Auswirkungen auf die Anwendungsschicht offengelegt wird. Es handelt sich um eine richtlinienbasierte Sicherheitsfunktion, die die sensiblen Daten im Resultset einer Abfrage in festgelegten Datenbankfeldern ausblendet, während die Daten in der Datenbank nicht geändert werden.
 
-Ein Servicemitarbeiter in einem Callcenter kann Anrufer beispielsweise anhand mehrerer Ziffern ihrer Kreditkartennummer identifizieren, wobei diese Datenelemente dem Servicemitarbeiter jedoch nicht vollständig angezeigt werden sollen. Es kann eine Maskierungsregel definiert werden, mit der die Kreditkartennummer im Resultset einer Abfrage bis auf die letzten vier Ziffern ausgeblendet wird. In einem weiteren Beispiel kann eine entsprechende Datenmaske zum Schutz personenbezogener Daten definiert werden, damit ein Entwickler Produktionsumgebungen zu Problembehandlungszwecken abfragen kann, ohne gegen Vorschriften zu verstoßen.
+Ein Servicemitarbeiter in einem Callcenter kann Anrufer beispielsweise anhand mehrerer Ziffern ihrer E-Mail-Adresse identifizieren, wobei diese Datenelemente dem Servicemitarbeiter jedoch nicht vollständig angezeigt werden sollen. Es kann eine Maskierungsregel definiert werden, die alle E-Mail-Adressen im Resultset einer beliebigen Abfrage maskiert. In einem weiteren Beispiel kann eine entsprechende Datenmaske zum Schutz personenbezogener Daten definiert werden, damit ein Entwickler Produktionsumgebungen zu Problembehandlungszwecken abfragen kann, ohne gegen Vorschriften zu verstoßen.
 
 ## <a name="dynamic-data-masking-basics"></a>Grundlegendes zur dynamischen Datenmaskierung
 
 Sie richten eine Richtlinie für die dynamische Datenmaskierung im Azure-Portal durch Auswählen des Blatts **Dynamische Datenmaskierung** unter **Sicherheit** im Konfigurationsbereich Ihrer SQL-Datenbank-Instanz ein. Dieses Feature kann nicht über das Portal für SQL Managed Instance festgelegt werden. (Verwenden Sie stattdessen PowerShell oder die REST-API.) Weitere Informationen finden Sie unter [Dynamic Data Masking](/sql/relational-databases/security/dynamic-data-masking).
-
-### <a name="dynamic-data-masking-permissions"></a>Berechtigungen für die dynamische Datenmaskierung
-
-Die dynamische Datenmaskierung kann von den Rollen „Azure SQL-Datenbank-Administrator“, „Serveradministrator“ oder [SQL-Sicherheits-Manager](../../role-based-access-control/built-in-roles.md#sql-security-manager) konfiguriert werden.
 
 ### <a name="dynamic-data-masking-policy"></a>Richtlinie für die dynamische Datenmaskierung
 
@@ -83,3 +79,11 @@ Sie können die REST-API verwenden, um Datenmaskierungsrichtlinien und -regeln p
 
 - [Erstellen oder aktualisieren:](/rest/api/sql/datamaskingrules/createorupdate) Erstellt oder aktualisiert eine Datenbank-Datenmaskierungsregel.
 - [Nach Datenbank auflisten](/rest/api/sql/datamaskingrules/listbydatabase): Ruft eine Liste von Datenbank-Datenmaskierungsregeln ab.
+
+## <a name="permissions"></a>Berechtigungen
+
+Die dynamische Datenmaskierung kann von den Rollen „Azure SQL-Datenbank-Administrator“, „Serveradministrator“ oder die RBAC-Rolle [SQL-Sicherheits-Manager](../../role-based-access-control/built-in-roles.md#sql-security-manager) konfiguriert werden.
+
+## <a name="next-steps"></a>Nächste Schritte
+
+[Dynamische Datenmaskierung](/sql/relational-databases/security/dynamic-data-masking)

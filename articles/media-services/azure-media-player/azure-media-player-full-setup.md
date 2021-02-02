@@ -7,21 +7,20 @@ ms.service: media-services
 ms.topic: how-to
 ms.date: 04/20/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 15f5918748df80cec01ccf89835a0ef51da64529
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b6b239f44311424db2e80c59e2aba639ae3c0000
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91296245"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98797451"
 ---
 # <a name="azure-media-player-full-setup"></a>Vollständiges Setup von Azure Media Player #
 
 Die Einrichtung von Azure Media Player ist einfach. Es dauert nur einige Augenblicke, bis die einfache Wiedergabe von Medieninhalten direkt über Ihr Azure Media Services-Konto möglich ist. Außerdem stehen [Beispiele](https://github.com/Azure-Samples/azure-media-player-samples) im Beispielverzeichnis des Release zur Verfügung.
 
-
 ## <a name="step-1-include-the-javascript-and-css-files-in-the-head-of-your-page"></a>Schritt 1: Fügen Sie die JavaScript- und CSS-Dateien in den Header Ihrer Seite ein. ##
 
-Mithilfe von Azure Media Player können Sie auf die Skripts der gehosteten CDN-Version zugreifen. Es wird in letzter Zeit häufig empfohlen, JavaScript vor dem Endtag des Hauptteils `<body>` anstelle von `<head>` einzufügen, Azure Media Player enthält jedoch eine 'HTML5 Shiv', die im Header platziert werden muss, damit ältere IE-Versionen das Videotag als gültiges Element anerkennen.
+Mithilfe von Azure Media Player können Sie auf die Skripts der gehosteten CDN-Version zugreifen. Es wird in letzter Zeit häufig empfohlen, JavaScript vor dem Endtag des Hauptteils `<body>` anstelle von `<head>` einzufügen, Azure Media Player enthält jedoch eine „HTML5 Shiv“, die im Header platziert werden muss, damit ältere IE-Versionen das Videotag als gültiges Element anerkennen.
 
 > [!NOTE]
 > Wenn Sie bereits eine HTML5-Shiv wie [Modernizr](https://modernizr.com/) verwenden, können Sie das JavaScript von Azure Media Player an jeder beliebigen Position einfügen. Vergewissern Sie sich aber, dass Ihre Version von Modernizr die Shiv für Video enthält.

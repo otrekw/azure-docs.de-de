@@ -1,6 +1,6 @@
 ---
 title: 'Schnellstart: Anmelden von Benutzern und Aufrufen von Microsoft Graph in einer Desktop-App für Universelle Windows-Plattform | Azure'
-description: In dieser Schnellstartanleitung erfahren Sie, wie eine Windows Desktop .NET-Anwendung (XAML-Anwendung) ein Zugriffstoken abrufen und eine API aufrufen kann, die durch einen Microsoft Identity Platform-Endpunkt geschützt ist.
+description: In dieser Schnellstartanleitung erfahren Sie, wie eine Windows Desktop .NET-Anwendung (XAML-Anwendung) ein Zugriffstoken abrufen und eine API aufrufen kann, die durch Microsoft Identity Platform geschützt ist.
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 1cac8ab4ccf23047bd5eb2d15c174a2009f2864a
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: b54438441b0e34cccda7fbec37dc1d1740101e9e
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98178295"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98753993"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-windows-desktop-app"></a>Schnellstart: Abrufen eines Tokens und Aufrufen der Microsoft Graph-API von einer Windows Desktop-App aus
 
@@ -145,7 +145,7 @@ MSAL verfügt über zwei Methoden zum Abrufen von Token: `AcquireTokenInteractiv
 
 #### <a name="get-a-user-token-interactively"></a>Interaktives Abrufen eines Benutzertokens
 
-In bestimmten Situationen müssen Benutzer über ein Popupfenster mit dem Microsoft Identity Platform-Endpunkt interagieren, um entweder ihre Anmeldeinformationen zu bestätigen oder ihre Zustimmung zu geben. Beispiele hierfür sind:
+In bestimmten Situationen müssen Benutzer über ein Popupfenster mit Microsoft Identity Platform interagieren, um entweder ihre Anmeldeinformationen zu bestätigen oder ihre Zustimmung zu geben. Beispiele hierfür sind:
 
 - Erstmaliges Anmelden von Benutzern bei der Anwendung.
 - Benutzer müssen ihre Anmeldeinformationen erneut eingeben, weil das Kennwort abgelaufen ist.

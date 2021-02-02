@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 09/25/2020
-ms.openlocfilehash: 7c88aea6aff942cdcf5cbc022df8f07cfe0d4cce
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.date: 01/25/2021
+ms.openlocfilehash: a7a010e3c60d6b96947597878fcd870e9845b2b3
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94701278"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98746136"
 ---
 # <a name="tutorial-index-json-blobs-from-azure-storage-using-rest"></a>Tutorial: Indizieren von JSON-Blobs aus Azure Storage per REST
 
@@ -98,7 +98,7 @@ Für REST-Aufrufe sind die Dienst-URL und ein Zugriffsschlüssel für jede Anfor
 
 1. Rufen Sie unter **Einstellungen** > **Schlüssel** einen Administratorschlüssel ab, um Vollzugriff auf den Dienst zu erhalten. Es gibt zwei austauschbare Administratorschlüssel – diese wurden zum Zweck der Geschäftskontinuität bereitgestellt, falls Sie einen Rollover für einen Schlüssel durchführen müssen. Für Anforderungen zum Hinzufügen, Ändern und Löschen von Objekten können Sie den primären oder den sekundären Schlüssel verwenden.
 
-:::image type="content" source="media/search-get-started-rest/get-url-key.png" alt-text="Abrufen eines HTTP-Endpunkts und eines Zugriffsschlüssels" border="false":::
+   :::image type="content" source="media/search-get-started-rest/get-url-key.png" alt-text="Abrufen eines HTTP-Endpunkts und eines Zugriffsschlüssels" border="false":::
 
 Für alle an Ihren Dienst gesendeten Anforderungen ist ein API-Schlüssel erforderlich. Ein gültiger Schlüssel stellt anforderungsbasiert eine Vertrauensstellung her zwischen der Anwendung, die die Anforderung versendet, und dem Dienst, der sie verarbeitet.
 
@@ -158,7 +158,7 @@ Die [API zum Erstellen einer Datenquelle](/rest/api/searchservice/create-data-so
     ```
 
 ## <a name="4---create-an-index"></a>4\. Erstellen eines Index
-    
+
 Beim zweiten Aufruf wird die [API zum Erstellen eines Index](/rest/api/searchservice/create-index) aufgerufen, die einen Azure Cognitive Search-Index mit allen durchsuchbaren Daten erstellt. Ein Index gibt alle Parameter und die dazugehörigen Attribute an.
 
 1. Legen Sie den Endpunkt dieses Aufrufs auf `https://[service name].search.windows.net/indexes?api-version=2020-06-30` fest. Ersetzen Sie `[service name]` durch den Namen Ihres Suchdiensts.

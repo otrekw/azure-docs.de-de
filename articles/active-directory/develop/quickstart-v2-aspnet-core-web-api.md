@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/22/2020
 ms.author: jmprieur
 ms.custom: devx-track-csharp, scenarios:getting-started, languages:aspnet-core
-ms.openlocfilehash: ca22d4f1ff48222b33030eb44d7feb62b1d154cd
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 7d38ee1782987afce703fbd8b4203186bbcbb505
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98011883"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98754485"
 ---
 # <a name="quickstart-protect-an-aspnet-core-web-api-with-microsoft-identity-platform"></a>Schnellstart: Schützen einer ASP.NET Core-Web-API mit Microsoft Identity Platform
 
@@ -96,7 +96,7 @@ Von der Middleware *Microsoft.AspNetCore.Authentication* wird eine Klasse vom Ty
 
 Durch die Methode `AddAuthentication()` wird der Dienst konfiguriert, um die JwtBearer-basierte Authentifizierung hinzuzufügen.
 
-Durch die Zeile mit `.AddMicrosoftIdentityWebApi` wird Ihrer Web-API die Microsoft Identity Platform-Autorisierung hinzugefügt. Diese wird anschließend für die Überprüfung von Zugriffstoken konfiguriert, die vom Microsoft Identity Platform-Endpunkt ausgegeben werden – basierend auf den Informationen im Abschnitt `AzureAD` der Konfigurationsdatei *appsettings.json*:
+Durch die Zeile mit `.AddMicrosoftIdentityWebApi` wird Ihrer Web-API die Microsoft Identity Platform-Autorisierung hinzugefügt. Diese wird anschließend für die Überprüfung von Zugriffstoken konfiguriert, die von Microsoft Identity Platform ausgegeben werden – basierend auf den Informationen im Abschnitt `AzureAD` der Konfigurationsdatei *appsettings.json*:
 
 | *appsettings.json* (Schlüssel) | Beschreibung                                                                                                                                                          |
 |------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------|

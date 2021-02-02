@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/13/2021
 ms.author: shhazam
-ms.openlocfilehash: f3239434a7ba737bc9323bc4f383afd794800db1
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 66b960bf874cc46985230e488c749663eff0b835
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98201473"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98621096"
 ---
 # <a name="azure-defender-for-iot-architecture"></a>Architektur von Azure Defender für IoT
 
@@ -81,7 +81,7 @@ Die Verwaltung von Azure Defender für IoT in Hybridumgebungen erfolgt über zwe
 - Das Azure-Portal
 
 ### <a name="sensor-console"></a>Sensorkonsole
-Sensorerkennungen werden in der Sensorkonsole angezeigt. Dort können sie in einer Netzwerkübersicht, im Ressourcenbestand und in einer umfangreichen Palette von Berichten (z. B. Risikobewertungsberichten, Data Mining-Abfragen und Angriffsvektoren) angezeigt, untersucht und analysiert werden. Sie können die Konsole auch verwenden, um von Sensormodulen erkannte Bedrohungen anzuzeigen und zu behandeln, Informationen an Partnersysteme weiterzuleiten, Benutzer zu verwalten u. v. m.
+Sensorerkennungen werden in der Sensorkonsole angezeigt. Dort können sie in einer Netzwerkübersicht, im Gerätebestand und in einer umfangreichen Palette von Berichten (z. B. Risikobewertungsberichten, Data Mining-Abfragen und Angriffsvektoren) angezeigt, untersucht und analysiert werden. Sie können die Konsole auch verwenden, um von Sensormodulen erkannte Bedrohungen anzuzeigen und zu behandeln, Informationen an Partnersysteme weiterzuleiten, Benutzer zu verwalten u. v. m.
 
 :::image type="content" source="./media/architecture/sensor-console-v2.png" alt-text="Defender für IoT-Sensorkonsole":::
 
@@ -96,7 +96,7 @@ Die Verwaltungskonsole kann für eine Konfiguration mit hoher Verfügbarkeit ber
 
 Die enge Integration in Ihre SOC-Workflows und Runbooks ermöglicht eine einfache Priorisierung von Entschärfungsaktivitäten und standortübergreifende Korrelation von Bedrohungen.
 
-- Ganzheitlich – Reduzieren der Komplexität mit einer einzigen vereinheitlichten Plattform für Ressourcenverwaltung, Verwaltung von Risiken und Sicherheitsrisiken sowie Bedrohungsüberwachung mit Reaktion auf Vorfälle.
+- Ganzheitlich – Reduzieren der Komplexität mit einer einzigen vereinheitlichten Plattform für Geräteverwaltung, Verwaltung von Risiken und Sicherheitsrisiken sowie Bedrohungsüberwachung mit Reaktion auf Vorfälle.
 
 - Aggregation und Korrelation – Anzeigen, Aggregieren und Analysieren von Daten und Warnungen, die an allen Standorten gesammelt wurden.
 

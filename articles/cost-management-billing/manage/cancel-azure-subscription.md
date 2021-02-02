@@ -9,12 +9,12 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 12/14/2020
 ms.author: banders
-ms.openlocfilehash: 662e1bf721c93ee1d59946d2fd603551f3f88ad3
-ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
+ms.openlocfilehash: 0d0dd5342cfc57da776e38ddef3df3b9c2199ac2
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97503793"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98735774"
 ---
 # <a name="cancel-your-azure-subscription"></a>Kündigen Ihres Azure-Abonnements
 
@@ -79,7 +79,7 @@ Wenn Sie über ein kostenloses Testabonnement verfügen, müssen Sie nicht 30 T
 
 ## <a name="reactivate-a-subscription"></a>Reaktivieren eines Abonnements
 
-Wenn Sie Ihr Abonnement mit nutzungsbasierter Bezahlung versehentlich gekündigt haben, können Sie es [im Kontocenter reaktivieren](subscription-disabled.md).
+Wenn Sie Ihr Abonnement mit nutzungsbasierter Bezahlung versehentlich gekündigt haben, können Sie es [im Azure-Portal reaktivieren](subscription-disabled.md).
 
 Wenn es sich bei Ihrem Abonnement nicht um ein Abonnement mit nutzungsbasierter Bezahlung handelt, nehmen Sie bitte innerhalb von 90 Tagen nach der Kündigung Kontakt zum Support auf, um Ihr Abonnement zu reaktivieren.
 
@@ -101,4 +101,4 @@ Weitere Informationen finden Sie im Artikel [Verlängerung und Kündigung](/visu
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Bei Bedarf können Sie ein Abonnement mit nutzungsbasierter Bezahlung im [Azure-Kontocenter](subscription-disabled.md) reaktivieren.
+- Bei Bedarf können Sie ein Abonnement mit nutzungsbasierter Bezahlung im [Azure-Portal](subscription-disabled.md) reaktivieren.

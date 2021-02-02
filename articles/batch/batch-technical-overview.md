@@ -3,12 +3,12 @@ title: Ausführen von großen parallelen Aufträge in der Cloud mit Azure Batch
 description: Hier erhalten Sie Informationen über den Azure Batch-Dienst für umfangreiche parallele Workloads und HPC-Workloads.
 ms.topic: overview
 ms.date: 07/30/2020
-ms.openlocfilehash: 93dcf19b3b6af0f369fe19b7823bf43d597a9c21
-ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
+ms.openlocfilehash: dbd27dc1a00966a2d71952335cfb47c7ca55bc24
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97106647"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98743099"
 ---
 # <a name="what-is-azure-batch"></a>Was ist Azure Batch?
 
@@ -74,6 +74,9 @@ Im folgenden Diagramm sind die Schritte eines gängigen Batch-Workflows dargeste
 Beachten Sie, dass der oben beschriebene Workflow nur eine Möglichkeit zur Verwendung von Batch ist und es noch viele weitere Features und Optionen gibt. Beispielsweise können Sie auf jedem Computeknoten [mehrere Aufgaben parallel](batch-parallel-node-tasks.md) ausführen. Alternativ können Sie [Tasks für die Vorbereitung und den Abschluss von Aufträgen](batch-job-prep-release.md) verwenden, um die Knoten für Ihre Aufträge vorzubereiten, und führen Sie anschließend die Bereinigung durch.
 
 Eine Übersicht über Features wie Pools, Knoten, Aufträge und Tasks finden Sie unter [Workflow des Batch-Diensts und Ressourcen](batch-service-workflow-features.md). Siehe auch die aktuellen [Batchdienstupdates](https://azure.microsoft.com/updates/?product=batch).
+
+## <a name="in-region-data-residency"></a>Data Residency in der Region
+Azure Batch speichert Kundendaten in der Region, in der sie bereitgestellt werden, und verschiebt sie nicht aus dieser Region. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

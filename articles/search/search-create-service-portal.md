@@ -7,19 +7,19 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 10/14/2020
-ms.openlocfilehash: 3f55e2a7d62d2f32173d382dc9be0d6eb4f83fae
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.date: 01/23/2021
+ms.openlocfilehash: 57867cc4fb539b07fc1e4117f6e956078c41e2c6
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98249753"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98746695"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-service-in-the-portal"></a>Schnellstart: Erstellen eines Azure Cognitive Search-Diensts im Portal
 
-Azure Cognitive Search ist eine eigenständige Ressource, die zum Hinzufügen einer Suchoberfläche zu benutzerdefinierten Apps verwendet wird. Cognitive Search kann problemlos in andere Azure-Dienste integriert werden, aber auch mit auf Netzwerkservern gehosteten Apps oder mit auf anderen Cloudplattformen ausgeführter Software verwendet werden.
+[Azure Cognitive Search](search-what-is-azure-search.md) ist eine Azure-Ressource, die zum Hinzufügen einer Oberfläche für die Volltextsuche zu benutzerdefinierten Apps verwendet wird. Sie können Azure Cognitive Search problemlos in andere Azure-Dienste integrieren, die Datenverarbeitung oder weitere Verarbeitung mit auf Netzwerkservern gehosteten Apps oder mit auf anderen Cloudplattformen ausgeführter Software bereitstellen.
 
-In diesem Artikel erfahren Sie, wie Sie eine Ressource im [Azure-Portal](https://portal.azure.com/) erstellen.
+In diesem Artikel erfahren Sie, wie Sie einen Suchdienst im [Azure-Portal](https://portal.azure.com/) erstellen.
 
 [![Animiertes GIF](./media/search-create-service-portal/AnimatedGif-AzureSearch-small.gif)](./media/search-create-service-portal/AnimatedGif-AzureSearch.gif#lightbox)
 
@@ -31,7 +31,7 @@ Die folgenden Diensteigenschaften sind für die Lebensdauer des Diensts festgele
 
 * Der Dienstname wird Teil des URL-Endpunkts. (Hilfreiche Informationen zu Dienstnamen finden Sie unter [Benennen des Diensts](#name-the-service).)
 * Die [Dienstebene](search-sku-tier.md) wirkt sich auf die Abrechnung aus und legt eine Obergrenze für die Kapazität fest. Einige Features sind im Free-Tarif nicht verfügbar.
-* Die Dienstregion kann die Verfügbarkeit bestimmter Szenarien bestimmen. Wenn Sie [Features für hohe Sicherheit](search-security-overview.md) oder [KI-Anreicherung](cognitive-search-concept-intro.md) benötigen, müssen Sie Azure Cognitive Search in derselben Region wie andere Dienste oder in Regionen platzieren, in denen das betreffende Feature bereitgestellt wird. 
+* Die Dienstregion kann die Verfügbarkeit bestimmter Szenarien bestimmen. Wenn Sie [Features für hohe Sicherheit](search-security-overview.md) oder [KI-Anreicherung](cognitive-search-concept-intro.md) benötigen, müssen Sie Azure Cognitive Search in derselben Region wie andere Dienste oder in Regionen erstellen, in denen das betreffende Feature bereitgestellt wird. 
 
 ## <a name="subscribe-free-or-paid"></a>Abonnieren (kostenlos oder kostenpflichtig)
 
@@ -43,7 +43,7 @@ Alternativ dazu können Sie Ihre [Vorteile für MSDN-Abonnenten aktivieren](http
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 
-1. Klicken Sie in der oberen linken Ecke auf das Pluszeichen („+ Ressource erstellen“).
+1. Klicken Sie in der oberen linken Ecke auf das Pluszeichen ( **+ Ressource erstellen**).
 
 1. Suchen Sie mithilfe der Suchleiste nach „kognitive Azure-Suche“, oder navigieren über **Web** > **Azure Cognitive Search** (Kognitive Azure-Suche) zu der Ressource.
 

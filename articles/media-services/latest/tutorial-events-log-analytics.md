@@ -1,24 +1,8 @@
 ---
-title: Speichern von Azure Media Services-Ereignissen in Azure Log Analytics
-titleSuffix: Azure Media Services
-description: Erfahren Sie, wie Azure Media Services-Ereignisse in Azure Log Analytics gespeichert werden.
-services: media-services
-documentationcenter: ''
-author: IngridAtMicrosoft
-manager: femila
-editor: ''
-ms.service: media-services
-ms.workload: ''
-ms.topic: tutorial
-ms.date: 08/24/2020
-ms.author: inhenkel
-ms.openlocfilehash: cc3060c9253b23b97089ea35625aceb26737baba
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
-ms.translationtype: HT
-ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92016994"
+Titel: Speichern von Azure Media Services-Ereignissen in Azure Log Analytics : Azure Media Services description: Erfahren Sie, wie Azure Media Services-Ereignisse in Azure Log Analytics gespeichert werden.
+services: media-services documentationcenter: '' author: IngridAtMicrosoft manager: femila editor: '' ms.service: media-services ms.workload: ms.topic: tutorial ms.date: 08/24/2020 ms.author: inhenkel
 ---
+
 # <a name="tutorial-store-azure-media-services-events-in-azure-log-analytics"></a>Tutorial: Speichern von Azure Media Services-Ereignissen in Azure Log Analytics
 
 ## <a name="azure-media-services-events"></a>Azure Media Services-Ereignisse
@@ -172,7 +156,7 @@ Um die tatsächliche Funktionsweise zu testen, erstellen Sie in Azure Media Serv
     > [!div class="mx-imgBorder"]
     > ![Einstellungen für Liveereignis](media/tutorial-events-log-analytics/live-event-settings.png)
 
-1. Aktivieren Sie das Kontrollkästchen**Ich verfüge über alle Rechte zur Verwendung der Inhalte/Dateien...** .
+1. Aktivieren Sie das Kontrollkästchen **Ich verfüge über alle Rechte zur Verwendung der Inhalte/Dateien...** .
 
 1. Klicken Sie auf **Überprüfen + erstellen**.
 

@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 04/11/2019
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:JavaScript, devx-track-js
-ms.openlocfilehash: 532fcc7db849af192ceddb1c239e99f31a2a3088
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: b475d8072c4103e8a532cdf703e2d75b0c8aafa2
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98178465"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98754156"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-javascript-spa"></a>Schnellstart: Anmelden von Benutzern und Abrufen eines Zugriffstokens in einer JavaScript-SPA
 
@@ -54,7 +54,7 @@ Eine Abbildung finden Sie unter [Funktionsweise des Beispiels](#how-the-sample-w
 > 1. Geben Sie einen **Namen** für Ihre Anwendung ein. Benutzern Ihrer App wird wahrscheinlich dieser Namen angezeigt. Sie können ihn später ändern.
 > 1. Wählen Sie unter **Unterstützte Kontotypen** **Konten in allen Organisationsverzeichnissen und persönliche Microsoft-Konten** aus.
 > 1. Wählen Sie **Registrieren**. Notieren Sie sich für die spätere Verwendung auf der Seite **Übersicht** den Wert von **Anwendungs-ID (Client)** .
-> 1. Für diesen Schnellstart muss der [Flow zur impliziten Genehmigung](v2-oauth2-implicit-grant-flow.md) aktiviert werden. Wählen Sie im linken Bereich der registrierten Anwendung die Option **Authentifizierung** aus.
+> 1. Für diesen Schnellstart muss der [Flow zur impliziten Genehmigung](v2-oauth2-implicit-grant-flow.md) aktiviert werden. Wählen Sie unter **Verwalten** die Option **Authentifizierung** aus.
 > 1. Wählen Sie unter **Plattformkonfigurationen** die Option **Plattform hinzufügen** aus. Daraufhin wird auf der linken Seite ein Bereich geöffnet. Wählen Sie dort die Region **Webanwendungen** aus.
 > 1. Legen Sie den Wert für den **Umleitungs-URI** auf `http://localhost:3000/` fest (ebenfalls im linken Bereich). Wählen Sie anschließend **Zugriffstoken** und **ID-Token** aus.
 > 1. Wählen Sie **Konfigurieren** aus.
@@ -266,14 +266,14 @@ myMSALObj.acquireTokenSilent(tokenRequest)
 
 #### <a name="get-a-user-token-interactively"></a>Interaktives Abrufen eines Benutzertokens
 
-In manchen Fällen müssen Sie die Interaktion der Benutzer mit dem Microsoft Identity Platform-Endpunkt erzwingen. Beispiel:
+Es gibt jedoch Situationen, in denen Sie die Interaktion der Benutzer mit Microsoft Identity Platform erzwingen müssen. Beispiel:
 * Benutzer müssen ihre Anmeldeinformationen gegebenenfalls erneut eingeben, weil ihr Kennwort abgelaufen ist.
 * Ihre Anwendung fordert Zugriff auf zusätzliche Ressourcenbereiche an, für die der Benutzer seine Zustimmung erteilen muss.
 * Die zweistufige Authentifizierung ist erforderlich.
 
 Das übliche empfohlene Muster für die meisten Anwendungen ist zuerst das Aufrufen von `acquireTokenSilent`, das anschließende Abfangen der Ausnahme und dann das Aufrufen von `acquireTokenPopup` (oder `acquireTokenRedirect`), um eine interaktive Anforderung zu starten.
 
-Durch Aufrufen von `acquireTokenPopup` wird ein Popupfenster für die Anmeldung angezeigt. (Über `acquireTokenRedirect` werden Benutzer an den Microsoft Identity Platform-Endpunkt umgeleitet.) In diesem Fenster müssen Benutzer interagieren, indem sie ihre Anmeldeinformationen bestätigen, ihre Zustimmung zur erforderlichen Ressource erteilen oder die zweistufige Authentifizierung durchführen.
+Durch Aufrufen von `acquireTokenPopup` wird ein Popupfenster für die Anmeldung angezeigt. (Über `acquireTokenRedirect` werden Benutzer an Microsoft Identity Platform umgeleitet.) In diesem Fenster müssen Benutzer interagieren, indem sie ihre Anmeldeinformationen bestätigen, ihre Zustimmung zur erforderlichen Ressource erteilen oder die zweistufige Authentifizierung durchführen.
 
 ```javascript
 // Add here scopes for access token to be used at MS Graph API endpoints.

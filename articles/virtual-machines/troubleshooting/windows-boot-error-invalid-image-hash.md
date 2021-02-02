@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 09/03/2020
 ms.author: v-miegge
-ms.openlocfilehash: e58e349d7b7385ec913986c39462c17deadcb61d
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 22db9c7966b6f988ca0ea799104275f3f86c77ea
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91969601"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98629571"
 ---
 # <a name="windows-boot-manager-error---0xc0000428-status-invalid-image-hash"></a>Windows-Start-Manager-Fehler – Status 0xC0000428: ungültiger Imagehash
 
@@ -65,6 +65,9 @@ Sie können das Ablaufdatum eines Vorschauversionsimages nicht verlängern. Nach
 - In Azure enthält die Beschreibung aller Images für Windows, bei denen es sich um Vorschauversionen handelt, einen Hinweis, aus dem hervorgeht, dass sich die Images nicht für Produktionsumgebungen eignen und nur für einen festgelegten Testzeitraum bzw. als Vorschaurelease verwendet werden können.
 
 ## <a name="solution"></a>Lösung
+
+> [!TIP]
+> Wenn Sie über eine aktuelle Sicherung der VM verfügen, können Sie versuchen, die [VM aus der Sicherung wiederherzustellen](../../backup/backup-azure-arm-restore-vms.md), um das Startproblem zu beheben.
 
 Wenn es sich bei Ihrem Image um ein Vorschauimage handelt, kann der Testzeitraum für dieses Image nicht verlängert werden. Sie müssen [eine neue VM mit einem Image bereitstellen](../windows/quick-create-portal.md), bei dem es sich nicht um ein Vorschauimage handelt. Über die folgenden Schritte können Sie ermitteln, ob Sie ein Vorschauimage verwendet haben. Außerdem erhalten Sie Unterstützung beim Verschieben von Daten von dieser VM zu einer neuen VM. Wenn Sie herausgefunden haben, dass es sich bei Ihrem Image um ein Vorschauimage handelt, ist das Image abgelaufen und kann nicht wiederhergestellt werden.
 

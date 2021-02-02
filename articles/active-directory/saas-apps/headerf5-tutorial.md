@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: jeedes
-ms.openlocfilehash: 6bf21205c028eaff08eef91757424f8b52764ada
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: ba58af8d3d28efcc7f97be01a96202a2203a3459
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97936140"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98796929"
 ---
 # <a name="tutorial-configure-single-sign-on-sso-between-azure-active-directory-and-f5"></a>Tutorial: Konfigurieren des einmaligen Anmeldens (Single Sign-On, SSO) zwischen Azure Active Directory und F5
 
@@ -466,3 +466,9 @@ Wenn Sie im Zugriffsbereich auf die Kachel „F5“ klicken, sollten Sie automat
 - [Konfigurieren des einmaligen Anmeldens von F5 für eine Kerberos-Anwendung](kerbf5-tutorial.md)
 
 - [Konfigurieren des einmaligen Anmeldens von F5 für eine Advanced Kerberos-Anwendung](advance-kerbf5-tutorial.md)
+
+- [F5 BIG-IP APM und Azure AD-Integration für sicheren Hybridzugriff](https://docs.microsoft.com/azure/active-directory/manage-apps/f5-aad-integration)
+
+- [Tutorial zum Bereitstellen von VMs mit F5 BIG-IP Virtual Edition in Azure IaaS für sicheren Hybridzugriff](https://docs.microsoft.com/azure/active-directory/manage-apps/f5-bigip-deployment-guide)
+
+- [Tutorial für die Integration des einmaligen Anmeldens von Azure Active Directory mit F5 BIG-IP für ein VPN ohne Kennwort](https://docs.microsoft.com/azure/active-directory/manage-apps/f5-aad-password-less-vpn) 

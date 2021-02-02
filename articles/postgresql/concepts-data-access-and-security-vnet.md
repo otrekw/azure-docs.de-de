@@ -6,12 +6,12 @@ ms.author: nlarin
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 07/17/2020
-ms.openlocfilehash: d45ab771f90c0174f24d5f0d39921f93f72be850
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: b875936e13edfe0eff12f253836b093796951308
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96451061"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98876325"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-database-for-postgresql---single-server"></a>Verwenden von VNET-Dienstendpunkten und -Regeln für Azure Database for PostgreSQL – Einzelserver
 
@@ -32,9 +32,9 @@ Sie können auch die Verwendung [Private Link](concepts-data-access-and-security
 
 **Virtuelles Netzwerk:** Sie können Ihrem Azure-Abonnement virtuelle Netzwerke zuordnen.
 
-**Subnetz:** Ein virtuelles Netzwerk enthält **Subnetze**. Ihre virtuellen Azure-Computer (VMs) sind Subnetzen zugewiesen. Ein Subnetz kann mehrere VMs oder andere Computeknoten enthalten. Computeknoten, die sich außerhalb Ihres virtuellen Netzwerks befinden, können nicht auf Ihr virtuelles Netzwerk zugreifen, es sei denn, Sie konfigurieren für sie den sicheren Zugriff.
+**Subnetz:** Ein virtuelles Netzwerk enthält **Subnetze**. Alle virtuellen Azure-Computer (VMs) innerhalb des VNet werden einem Subnetz zugewiesen. Ein Subnetz kann mehrere VMs und/oder andere Computeknoten enthalten. Computeknoten, die sich außerhalb Ihres virtuellen Netzwerks befinden, können nicht auf Ihr virtuelles Netzwerk zugreifen, es sei denn, Sie konfigurieren für sie den sicheren Zugriff.
 
-**Virtual Network-Dienstendpunkt:** Ein [VNET-Dienstendpunkt][vm-virtual-network-service-endpoints-overview-649d] ist ein Subnetz, dessen Eigenschaftswerte mindestens einen formalen Azure-Diensttypnamen enthalten. In diesem Artikel beschäftigen wir uns mit dem Typnamen **Microsoft.Sql**, der auf einen Azure-Dienst mit dem Namen „SQL-Datenbank“ verweist. Dieses Diensttag gilt auch für die Azure Database for PostgreSQL- und Azure Database for MySQL-Dienste. Bitte beachten Sie: Wenn Sie das Diensttag **Microsoft.Sql** auf einen VNET-Dienstendpunkt anwenden, wird der Dienstendpunkt-Datenverkehr für alle Azure SQL-Datenbank-, Azure Database for PostgreSQL- und Azure Database for MySQL-Server im Subnetz konfiguriert. 
+**Virtual Network-Dienstendpunkt:** Ein [VNET-Dienstendpunkt][vm-virtual-network-service-endpoints-overview-649d] ist ein Subnetz, dessen Eigenschaftswerte mindestens einen formalen Azure-Diensttypnamen enthalten. In diesem Artikel beschäftigen wir uns mit dem Typnamen **Microsoft.Sql**, der auf einen Azure-Dienst mit dem Namen „SQL-Datenbank“ verweist. Dieses Diensttag gilt auch für die Azure Database for PostgreSQL- und Azure Database for MySQL-Dienste. Es ist wichtig zu beachten, dass beim Anwenden des Diensttags **Microsoft.Sql** auf einen VNet-Dienstendpunkt der Datenverkehr des Dienstendpunkts für Azure-Datenbankdienste konfiguriert wird: SQL-Datenbank-, Azure Synapse Analytics-, Azure Database for PostgreSQL- und Azure Database for MySQL-Server im Subnetz. 
 
 **VNET-Regel:** Eine VNET-Regel für Ihren Azure Database for PostgreSQL-Server ist ein Subnetz, das in der Zugriffssteuerungsliste Ihres Azure Database for PostgreSQL-Servers aufgeführt wird. Das Subnetz muss den Typnamen **Microsoft.Sql** enthalten, um in der Zugriffssteuerungsliste für Ihren Azure Database for PostgreSQL-Server zu sein.
 
@@ -46,11 +46,11 @@ Eine VNET-Regel weist Ihren Azure Database for PostgreSQL-Server an, Nachrichten
 
 Die virtuellen Computer in Ihren Subnetzen können nicht mit Ihrem Azure Database for PostgreSQL-Server kommunizieren, bis Sie dies einrichten. Eine Aktion zum Herstellen der Kommunikation stellt die Erstellung einer VNET-Regel dar. Die Begründung der Entscheidung für eine VNET-Regel erfordert eine Erörterung der Vor- und Nachteile, die die von der Firewall gebotenen konkurrierenden Sicherheitsoptionen berücksichtigt.
 
-### <a name="a-allow-access-to-azure-services"></a>A. Zugriff auf Azure-Dienste erlauben
+### <a name="allow-access-to-azure-services"></a>Zugriff auf Azure-Dienste erlauben
 
 Der Verbindungssicherheitsbereich hat eine **EIN/AUS** Schaltfläche mit der Bezeichnung **Zugriff auf Azure-Dienste erlauben**. Die Einstellung **EIN** lässt Nachrichten von allen Azure IP-Adressen und aus allen Azure-Subnetzen zu. Diese Azure-IP-Adressen oder -Subnetze gehören möglicherweise nicht Ihnen. Diese Einstellung **EIN** lässt wahrscheinlich einen umfassenderen Zugriff auf Ihre Azure Database for PostgreSQL-Datenbank zu, als von Ihnen gewünscht. Eine VNET-Regel ermöglicht eine präzisere Steuerung.
 
-### <a name="b-ip-rules"></a>B. IP-Regeln
+### <a name="ip-rules"></a>IP-Regeln
 
 Mit der Azure Database for PostgreSQL-Firewall können Sie IP-Adressbereiche bestimmen, aus denen Nachrichten an die Azure Database for PostgreSQL-Datenbank gesendet werden dürfen. Dieser Ansatz eignet sich gut für statische IP-Adressen, die sich außerhalb des privaten Azure-Netzwerks befinden. Doch viele Knoten innerhalb des privaten Azure-Netzwerks sind mit *dynamischen* IP-Adressen konfiguriert. Dynamische IP-Adressen können sich ändern, z.B. wenn Ihre VM neu gestartet wird. Es wäre töricht, eine dynamische IP-Adresse in einer Firewallregel in einer Produktionsumgebung anzugeben.
 
@@ -86,7 +86,7 @@ Bei der Verwaltung der VNET-Dienstendpunkte erfolgt eine Trennung von Sicherheit
 
 Die Rollen „Netzwerkadministrator“ und „Datenbankadministrator“ haben mehr Zugriffsrechte, als für die Verwaltung von VNET-Regeln erforderlich ist. Es wird nur eine Teilmenge der Zugriffsrechte benötigt.
 
-Sie können die [rollenbasierte Zugriffssteuerung in Azure (Azure Role-Based Access Control, Azure RBAC)][rbac-what-is-813s] verwenden, um eine einzelne benutzerdefinierte Rolle zu erstellen, die nur über die erforderliche Teilmenge von Berechtigungen verfügt. Die benutzerdefinierte Rolle kann definiert werden, anstatt den Netzwerk- oder Datenbankadministrator einzubeziehen. Die auf die Sicherheit bezogene Angriffsfläche ist kleiner, wenn Sie einen Benutzer einer benutzerdefinierte Rolle hinzufügen und ihn nicht den beiden anderen wichtigen Administratorrollen hinzufügen.
+Sie können die [rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC)][rbac-what-is-813s] in Azure verwenden, um eine einzelne benutzerdefinierte Rolle zu erstellen, die nur über die erforderliche Teilmenge von Berechtigungen verfügt. Die benutzerdefinierte Rolle kann definiert werden, anstatt den Netzwerk- oder Datenbankadministrator einzubeziehen. Die auf die Sicherheit bezogene Angriffsfläche ist kleiner, wenn Sie einen Benutzer einer benutzerdefinierte Rolle hinzufügen und ihn nicht den beiden anderen wichtigen Administratorrollen hinzufügen.
 
 > [!NOTE]
 > In einigen Fällen befinden sich Azure Database for PostgreSQL und das VNET-Subnetz in unterschiedlichen Abonnements. In diesen Fällen müssen Sie folgende Konfigurationen sicherstellen:

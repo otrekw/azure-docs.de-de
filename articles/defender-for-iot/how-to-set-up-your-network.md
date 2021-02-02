@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 01/03/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 2053632f24504f896d1045f99d581b9aa6050b55
-ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
+ms.openlocfilehash: a71ea75eb603b141c4b28cff5f2b4aa957583bcd
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98573138"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98621311"
 ---
 # <a name="about-azure-defender-for-iot-network-setup"></a>Azure Defender für IoT: Netzwerkeinrichtung
 
@@ -94,35 +94,36 @@ Die folgenden Browser werden für die Sensoren und Webanwendungen der lokalen Ve
 
 Überprüfen Sie, ob die Sicherheitsrichtlinie Ihrer Organisation den Zugriff auf Folgendes zulässt:
 
-| **Zweck** | **Protokoll** | **Transport** | **ein oder aus** | **Port** | **Kategorie** |
-| ----------- | ----------- | ------------ | ---------- | -------- | ------------ |
-| **Zugriff auf die Webkonsole** | HTTPS | TCP | ein oder aus | 443 | Lokale Verwaltungskonsole für die Defender für IoT-Plattform |
-| **Zugriff auf die CLI** | SSH | TCP | ein oder aus | 22 | Befehlszeilenschnittstelle (CLI) |
-| **Verbindung zwischen der Defender für IoT-Plattform und der lokalen Verwaltungskonsole** | SSL | TCP | ein oder aus | 443 | Sensor und lokale Verwaltungskonsole|
-| **Lokale Verwaltungskonsole, die als NTP für den Sensor verwendet wird** | NTP | UDP| Eingehend in CM | 123 | Zeitsynchronisierung | 
-| **Mit externem NTP-Server verbundener Sensor (falls relevant)** | NTP | UDP | ein oder aus| 123 | Zeitsynchronisierung |
-| **Verbindung zwischen der Defender für IoT-Plattform, Verwaltungsplattform und dem Mailserver (falls relevant)** | SMTP | TCP | Ausgehend aus Sensorverwaltung | 25 | Email |
-| **Protokolle, die von der lokalen Verwaltungskonsole an den Syslog-Server senden (falls relevant)** | syslog | UDP | Ausgehend aus Sensorverwaltung| 514 | LEEF |
-| **DNS-Serverport (falls relevant)** | DNS | – | ein oder aus| 53 | DNS |
-| **Verbindung zwischen der Defender für IoT-Plattform und der lokalen Verwaltungskonsole mit Active Directory (falls relevant)** | LDAPS | TCP | ein oder aus | 636 <br />389 | Active Directory |
-| **SNMP-Remotesammler (falls relevant)** | SNMP | UDP | Ausgehend aus Sensorverwaltung| 161 | Überwachung |
-| **Windows-Endpunktüberwachung (falls relevant)** | WMI | UDP | Ausgehend aus Sensorverwaltung| 135 | Überwachung |
-| **Windows-Endpunktüberwachung (falls relevant)** | WMI | TCP | Ausgehend aus Sensorverwaltung| 1024 und höher | Überwachung |
-| **Tunneln (falls relevant)** | Tunneling | TCP | Eingehend in CM | 9000<br />zusätzlich zu Port 443<br />Vom Endbenutzer zur lokalen Verwaltungskonsole <br />Port 22 vom Sensor zur lokalen Verwaltungskonsole | Überwachung |
-| **Ausgehend zum Defender für IoT-Hub** | HTTPS | TCP | Ausgehend aus Sensorverwaltung| **URL**<br />*.azure-devices.net:443<br />oder falls keine Platzhalterzeichen unterstützt werden<br />{Name Ihres IoT-Hubs}.azure-devices.net:443 |
+| Protokoll | Transport | Ein/Aus | Port | Verwendet | Zweck | `Source` | Destination |
+|--|--|--|--|--|--|--|--|
+| HTTPS | TCP | EIN/AUS | 443 | Sensor und lokale Verwaltungskonsole/Webkonsole | Zugriff auf die Webkonsole | Client | Sensor und lokale Verwaltungskonsole |
+| SSH | TCP | EIN/AUS | 22 | Befehlszeilenschnittstelle (CLI) | Zugriff auf die CLI | Client | Sensor und lokale Verwaltungskonsole |
+| SSL | TCP | EIN/AUS | 443 | Sensor und lokale Verwaltungskonsole | Verbindung zwischen der CyberX-Plattform und der zentralen Verwaltungsplattform | Sensor | Lokale Verwaltungskonsole |
+| NTP | UDP | IN | 123 | Uhrzeitsynchronisierung | Lokale Verwaltungskonsole, die als NTP für den Sensor verwendet wird | Sensor | Lokale Verwaltungskonsole |
+| NTP | UDP | EIN/AUS | 123 | Uhrzeitsynchronisierung | Mit externem NTP-Server verbundener Sensor, wenn keine lokale Verwaltungskonsole installiert ist | Sensor | NTP |
+| SMTP | TCP | OUT | 25 | Email | Die Verbindung zwischen der CyberX-Plattform und der Verwaltungsplattform und dem Mailserver | Sensor und lokale Verwaltungskonsole | E-Mail-Server |
+| syslog | UDP | OUT | 514 | LEEF | Protokolle, die von der lokalen Verwaltungskonsole an den Syslog-Server senden | Lokale Verwaltungskonsole und Sensor | Syslog-Server |
+| DNS |  | EIN/AUS | 53 | DNS | DNS-Serverport | Lokale Verwaltungskonsole und Sensor | DNS-Server |
+| LDAP | TCP | EIN/AUS | 389 | Active Directory | Die Verbindung zwischen der CyberX-Plattform und der Verwaltungsplattform zu Active Directory | Lokale Verwaltungskonsole und Sensor | LDAP-Server |
+| LDAPS | TCP | EIN/AUS | 636 | Active Directory | Die Verbindung zwischen der CyberX-Plattform und der Verwaltungsplattform zu Active Directory | Lokale Verwaltungskonsole und Sensor | LDAPS-Server |
+| SNMP | UDP | OUT | 161 | Überwachung | Remote-SNMP-Collectors | Lokale Verwaltungskonsole und Sensor | SNMP-Server |
+| WMI | UDP | OUT | 135 | Überwachung | Windows-Endpunktüberwachung | Sensor | Relevantes Netzwerkelement |
+| Tunneling | TCP | IN | 9000 <br /><br />- zusätzlich zum Port 443 <br /><br />Vom Endbenutzer zur lokalen Verwaltungskonsole <br /><br />- Port 22 vom Sensor zur lokalen Verwaltungskonsole  | Überwachung | Tunneling | Sensor | Lokale Verwaltungskonsole |
 
 ### <a name="planning-rack-installation"></a>Planen der Rackinstallation
 
 So planen Sie Ihre Rackinstallation:
 
 1. Bereiten Sie einen Monitor und eine Tastatur die Netzwerkeinstellungen Ihrer Appliance vor.
-2. Weisen Sie den Platz im Rack für die Appliance zu.
-3. Stellen Sie die Netzstromversorgung für die Appliance bereit.
-4. Bereiten Sie das LAN-Kabel zum Verbinden der Verwaltungslösung mit dem Netzwerkswitch vor.
-5. Bereiten Sie die LAN-Kabel zum Verbinden der SPAN-Ports (gespiegelten Ports) und/oder der Netzwerkanzapfungen mit der Defender für IoT-Appliance vor. 
-6. Konfigurieren, verbinden und überprüfen Sie die SPAN-Ports in den gespiegelten Switches, wie in der Sitzung zur Architekturüberprüfung beschrieben.
-7. Verbinden Sie den konfigurierten SPAN-Port mit einem Computer, auf dem Wireshark ausgeführt wird, und überprüfen Sie, ob der Port ordnungsgemäß konfiguriert ist.
-8. Öffnen Sie alle relevanten Firewallports.
+
+1. Weisen Sie den Platz im Rack für die Appliance zu.
+
+1. Stellen Sie die Netzstromversorgung für die Appliance bereit.
+1. Bereiten Sie das LAN-Kabel zum Verbinden der Verwaltungslösung mit dem Netzwerkswitch vor.
+1. Bereiten Sie die LAN-Kabel zum Verbinden der SPAN-Ports (gespiegelten Ports) und/oder der Netzwerkanzapfungen mit der Defender für IoT-Appliance vor. 
+1. Konfigurieren, verbinden und überprüfen Sie die SPAN-Ports in den gespiegelten Switches, wie in der Sitzung zur Architekturüberprüfung beschrieben.
+1. Verbinden Sie den konfigurierten SPAN-Port mit einem Computer, auf dem Wireshark ausgeführt wird, und überprüfen Sie, ob der Port ordnungsgemäß konfiguriert ist.
+1. Öffnen Sie alle relevanten Firewallports.
 
 ## <a name="about-passive-network-monitoring"></a>Informationen zur passiven Netzwerküberwachung
 
@@ -141,6 +142,7 @@ In den folgenden Abschnitten sind Purdue-Ebenen beschrieben.
 Ebene 0 besteht aus einer Vielzahl von Sensoren, Aktoren und Geräten, die am grundlegenden Fertigungsprozess beteiligt sind. Diese Geräte führen die grundlegenden Funktionen des Industrie-Automatisierungs- und Steuerungssystems aus, wie etwa:
 
 - Steuern eines Motors.
+
 - Messen von Variablen.
 - Festlegen einer Ausgabe.
 - Ausführen von wichtigen Funktionen wie Lackieren, Schweißen und Biegen.
@@ -227,7 +229,7 @@ Dies sind einige Empfehlungen für das Bereitstellen mehrerer Sensoren:
 |--|--|--|--|
 | Der maximale Abstand zwischen Switches | 80 Meter | Vorbereitetes Ethernet-Kabel | Mehr als 1 |
 | Anzahl der OT-Netzwerke | Mehr als 1 | Keine physische Verbindung | Mehr als 1 |
-| Anzahl der Switches | Kann RSPAN-Konfiguration verwenden | Bis zu 8 Switches mit lokaler Reichweite in Sensornähe nach Verkabelungsentfernung | Mehr als 1 |
+| Anzahl der Switches | Kann RSPAN-Konfiguration verwenden | Bis zu acht Switches mit lokaler Reichweite in Sensornähe nach Verkabelungsentfernung | Mehr als 1 |
 
 #### <a name="traffic-mirroring"></a>Datenverkehrsspiegelung  
 
@@ -353,7 +355,7 @@ Ein aktiver oder passiver Aggregations-TAP wird inline im Netzwerkkabel installi
 
 Der Terminalzugangspunkt (Terminal Access Point, TAP) ist ein Hardwaregerät, das den Fluss von Netzwerkdatenverkehr von Port A ohne Unterbrechung an Port B erlaubt und umgekehrt. Es erstellt fortlaufend eine genaue Kopie beider Seiten des Datenverkehrsflusses, ohne die Netzwerkintegrität zu beschädigen. Einige TAPs aggregieren übertragenen und empfangenen Datenverkehr bei Bedarf mithilfe von Switcheinstellungen. Wenn Aggregation nicht unterstützt wird, verwendet jeder TAP zwei Sensorports zum Überwachen von Sende- und Empfangsverkehr.
 
-TAPs sind auf mehreren Gründen vorteilhaft. Sie sind hardwarebasiert und können nicht kompromittiert werden. Sie geben den gesamten Datenverkehr weiter, selbst beschädigte Nachrichten, die von Switches oftmals verworfen werden. Sie sind nicht prozessorabhängig, daher ist das Pakettiming exakt, während Switches die Spiegelfunktion oftmals als Aufgabe geringer Priorität behandeln, was sich auf das Timing der gespiegelten Pakete auswirken kann. Für forensische Zwecke ist ein TAP die beste Vorrichtung.
+TAPs sind aus verschiedenen Gründen vorteilhaft. Sie sind hardwarebasiert und können nicht kompromittiert werden. Sie geben den gesamten Datenverkehr weiter, selbst beschädigte Nachrichten, die von Switches oftmals verworfen werden. Sie sind nicht prozessorabhängig, daher ist das Pakettiming exakt, während Switches die Spiegelfunktion oftmals als Aufgabe geringer Priorität behandeln, was sich auf das Timing der gespiegelten Pakete auswirken kann. Für forensische Zwecke ist ein TAP die beste Vorrichtung.
 
 TAP-Aggregatoren können ebenfalls zur Portüberwachung verwendet werden. Diese Geräte basieren auf Prozessoren und sind nicht so immanent sicher wie Hardware-TAPs. Sie geben das Pakettiming möglicherweise nicht exakt wieder.
 
@@ -364,10 +366,10 @@ TAP-Aggregatoren können ebenfalls zur Portüberwachung verwendet werden. Diese 
 Diese Modelle wurden auf Kompatibilität getestet. Andere Hersteller und Modelle sind möglicherweise ebenfalls kompatibel.
 
 | Image | Modell |
-| -- | -- |
-| :::image type="content" source="media/how-to-set-up-your-network/garland-p1gccas-v2.png" alt-text="Screenshot von Garland P1GCCAS.":::  | Garland P1GCCAS  |
-| :::image type="content" source="media/how-to-set-up-your-network/ixia-tpa2-cu3-v2.png" alt-text="Screenshot von IXIA TPA2-CU3.":::  | IXIA TPA2-CU3  |
-| :::image type="content" source="media/how-to-set-up-your-network/us-robotics-usr-4503-v2.png" alt-text="Screenshot von US Robotics USR 4503.":::  | US Robotics USR 4503  |
+|--|--|
+| :::image type="content" source="media/how-to-set-up-your-network/garland-p1gccas-v2.png" alt-text="Screenshot von Garland P1GCCAS."::: | Garland P1GCCAS |
+| :::image type="content" source="media/how-to-set-up-your-network/ixia-tpa2-cu3-v2.png" alt-text="Screenshot von IXIA TPA2-CU3."::: | IXIA TPA2-CU3 |
+| :::image type="content" source="media/how-to-set-up-your-network/us-robotics-usr-4503-v2.png" alt-text="Screenshot von US Robotics USR 4503."::: | US Robotics USR 4503 |
 
 ##### <a name="special-tap-configuration"></a>Besondere TAP-Konfiguration
 
@@ -425,7 +427,7 @@ Relevante Informationen:
 
 - Wenn die Defender für IoT-Appliance mit diesem betreffenden Switch verbunden werden soll, gibt es im betreffenden Schrank einen freien physischen Regalplatz?
 
-#### <a name="additional-considerations"></a>Weitere Überlegungen
+#### <a name="other-considerations"></a>Andere Aspekte
 
 Der Zweck der Defender für IoT-Appliance ist die Überwachung des Datenverkehrs aus den Schichten 1 und 2.
 
@@ -562,7 +564,7 @@ Gehen Sie diese Liste vor der Bereitstellung durch:
 
 Mithilfe einer Übersicht des Industrienetzwerkdiagramms können Sie den richtigen Standort für die Defender für IoT-Ausrüstung bestimmen.
 
-1.  Sehen Sie sich ein globales Netzwerkdiagramm der industriellen OT-Umgebung an. Zum Beispiel:
+1.  Sehen Sie sich ein globales Netzwerkdiagramm der industriellen OT-Umgebung an. Beispiel:
 
     :::image type="content" source="media/how-to-set-up-your-network/ot-global-network-diagram.png" alt-text="Diagramm der industriellen OT-Umgebung für das globale Netzwerk.":::
 
@@ -604,7 +606,7 @@ Mithilfe einer Übersicht des Industrienetzwerkdiagramms können Sie den richtig
 
     Wie lautet die Richtlinie des Anbieters? __________________________________ 
 
-    Zum Beispiel:
+    Beispiel:
 
     - Siemens
 
@@ -671,7 +673,7 @@ Geben Sie Zugriffsdetails für das Sensor-NIC an, das mit dem Unternehmensnetzwe
 | Geheimer Schlüssel | |
 | SNMP v2-Community String |
 
-### <a name="cm-ssl-certificate"></a>CM-SSL-Zertifikat
+### <a name="on-premises-management-console-ssl-certificate"></a>SSL-Zertifikat für die lokale Verwaltungskonsole
 
 Planen Sie die Verwendung eines SSL-Zertifikats? Ja oder Nein
 

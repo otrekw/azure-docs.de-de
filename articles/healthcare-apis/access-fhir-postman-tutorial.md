@@ -9,12 +9,12 @@ ms.reviewer: dseven
 ms.author: matjazl
 author: matjazl
 ms.date: 02/07/2019
-ms.openlocfilehash: 37086a925d65a80f219c8e0a3358c834a2691701
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: b0acfbf9636c2ad1df7df3197a0a1a83ec91b5c3
+ms.sourcegitcommit: 3c8964a946e3b2343eaf8aba54dee41b89acc123
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93145649"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98747339"
 ---
 # <a name="access-azure-api-for-fhir-with-postman"></a>Zugreifen auf Azure API for FHIR mit Postman
 
@@ -32,7 +32,7 @@ Um Postman verwenden zu können, sind die folgenden Informationen erforderlich:
 
 - Die URL Ihres URL-Servers, z. B. `https://MYACCOUNT.azurehealthcareapis.com`.
 - Der Identitätsanbieter `Authority` für Ihren FHIR-Server, z. B. `https://login.microsoftonline.com/{TENANT-ID}`.
-- Die konfigurierte Zielgruppe (`audience`). Dabei handelt es sich normalerweise um die URL des FHIR-Servers, z. B. `https://MYACCOUNT.azurehealthcareapis.com` oder nur `https://azurehealthcareapis.com`.
+- Die konfigurierte Zielgruppe (`audience`). Dabei handelt es sich normalerweise um die URL des FHIR-Servers, z. B. `https://<FHIR-SERVER-NAME>.azurehealthcareapis.com` oder nur `https://azurehealthcareapis.com`.
 - Die `client_id` (oder Anwendungs-ID) der [Clientanwendung](register-confidential-azure-ad-client-app.md), mit der Sie auf den FHIR-Dienst zugreifen.
 - Das `client_secret` (oder Anwendungsgeheimnis) der Clientanwendung.
 

@@ -1,24 +1,24 @@
 ---
-title: Grundlegendes zur Nutzung von Azure-Reservierungen für Enterprise Agreements
-description: In diesem Artikel erfahren Sie, wie die Azure-Reservierung für den Konzernbeitritt angewendet wird.
+title: Grundlegendes zur Nutzung von Azure-Reservierungen für Enterprise Agreement und Microsoft-Kundenvereinbarung
+description: Hier erfahren Sie, wie Sie anhand Ihrer Nutzungsinformationen nachvollziehen, wie eine Azure-Registrierung auf die Nutzung des Enterprise Agreement und der Microsoft-Kundenvereinbarung angewendet wird.
 author: bandersmsft
 ms.reviewer: yashar
 tags: billing
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: conceptual
-ms.date: 12/02/2020
+ms.date: 01/19/2020
 ms.author: banders
-ms.openlocfilehash: 874d5cb022a38b172bb37009bd86b5e6988f3204
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 0c69e9533130d6ca70c57422c7cdd5fc75adff72
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96545603"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98683716"
 ---
-# <a name="get-enterprise-agreement-reservation-costs-and-usage"></a>Abrufen von Reservierungskosten und Nutzung laut Enterprise Agreement
+# <a name="get-enterprise-agreement-and-microsoft-customer-agreement-reservation-costs-and-usage"></a>Abrufen der Reservierungskosten und -nutzung für Enterprise Agreement und Microsoft-Kundenvereinbarung
 
-Reservierungskosten und Verwendungsdaten stehen für Enterprise Agreement-Kunden im Azure-Portal und in den REST-APIs zur Verfügung. Dieser Artikel hilft Ihnen bei Folgendem:
+In Cost Management stehen erweiterte Daten zu Reservierungskosten und -nutzung für die Nutzung des Enterprise Agreement (EA) und der Microsoft-Kundenvereinbarung (Microsoft Customer Agreement, MCA) zur Verfügung. Dieser Artikel hilft Ihnen bei Folgendem:
 
 - Abrufen von Reservierungseinkaufsdaten
 - Ermitteln des Abonnements bzw. der Ressourcengruppe oder Ressource, von dem bzw. von der die Reservierung verwendet wurde
@@ -61,9 +61,7 @@ Weitere in den Azure-Nutzungsdaten verfügbare Informationen haben sich geänder
 
 Sie können die Daten mithilfe der API abrufen oder aus dem Azure-Portal herunterladen.
 
-Sie rufen die [Nutzungsdetails-API](/rest/api/consumption/usagedetails/list) auf, um die neuen Daten zu erhalten. Detailinformationen zur Terminologie finden Sie unter [Nutzungsbedingungen](../understand/understand-usage.md). Der Aufrufer sollte ein Unternehmensadministrator für das Enterprise Agreement sein, der das [EA-Portal](https://ea.azure.com) verwendet. Unternehmensadministratoren mit „Nur Lesen“-Berechtigung können die Daten auch abrufen.
-
-Beachten Sie, dass diese Daten in [Berichterstellungs-APIs für Unternehmenskunden – Verwendungsdetails](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail) nicht verfügbar sind.
+Sie rufen die [Nutzungsdetails-API](/rest/api/consumption/usagedetails/list) auf, um die neuen Daten zu erhalten. Detailinformationen zur Terminologie finden Sie unter [Nutzungsbedingungen](../understand/understand-usage.md).
 
 Hier sehen Sie einen Beispielaufruf der Nutzungsdetails-API:
 
@@ -87,7 +85,7 @@ Die Informationen in der folgenden Tabelle zu Metrik und Filter können bei der 
 
 ## <a name="download-the-usage-csv-file-with-new-data"></a>Herunterladen der CSV-Nutzungsdatei mit neuen Daten
 
-Wenn Sie ein EA-Administrator sind, können Sie die CSV-Datei aus dem Azure-Portal herunterladen, die neue Nutzungsdaten enthält. Diese Daten sind über das EA-Portal (ea.azure.com) nicht verfügbar. Sie müssen die Nutzungsdatei vom Azure-Portal (portal.azure.com) herunterladen, um die neuen Daten anzuzeigen.
+Als EA-Administrator können Sie die CSV-Datei, die neue Nutzungsdaten enthält, aus dem Azure-Portal herunterladen. Diese Daten sind über das EA-Portal (ea.azure.com) nicht verfügbar. Sie müssen die Nutzungsdatei vom Azure-Portal (portal.azure.com) herunterladen, um die neuen Daten anzuzeigen.
 
 Navigieren Sie im Azure-Portal zu [Kostenverwaltung + Abrechnung](https://portal.azure.com/#blade/Microsoft_Azure_Billing/ModernBillingMenuBlade/BillingAccounts).
 
@@ -150,7 +148,7 @@ Reservierungskosten sind in der [Kostenanalyse](https://aka.ms/costanalysis) ver
 
 Gruppieren Sie nach Gebührentyp, um eine Aufschlüsselung von Verbrauch, Einkäufen und Erstattungen aufzurufen; Sie können auch nach Reservierung gruppieren, um eine Aufschlüsselung von Reservierungskosten und Kosten für die bedarfsgesteuerte Bereitstellung zu erhalten. Beachten Sie, dass bei der Anzeige von tatsächlichen Kosten die einzigen aufgeführten Reservierungskosten Einkäufe sind; bei der Anzeige von amortisierten Kosten werden jedoch die Kosten den einzelnen Ressourcen zugeordnet, die den Nutzen in Anspruch genommen haben. Zudem wird bei der Anzeige von amortisierten Kosten der neue Gebührentyp **UnusedReservation** aufgeführt.
 
-## <a name="need-help-contact-us"></a>Sie brauchen Hilfe? Wenden Sie sich an uns.
+## <a name="need-help-contact-us"></a>Sie brauchen Hilfe? Kontakt
 
 Wenn Sie weitere Fragen haben oder Hilfe benötigen, [erstellen Sie eine Supportanfrage](https://go.microsoft.com/fwlink/?linkid=2083458).
 

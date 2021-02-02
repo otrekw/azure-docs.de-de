@@ -1,5 +1,5 @@
 ---
-title: Kommunizieren mit einer Geräte-App in Node.js über Azure IoT Hub-Gerätestreams
+title: 'Schnellstart: Kommunizieren mit einer Geräte-App in Node.js über Azure IoT Hub-Gerätestreams'
 description: In dieser Schnellstartanleitung führen Sie eine dienstseitige Node.js-Anwendung aus, die über einen Gerätestream mit einem IoT-Gerät kommuniziert.
 author: robinsh
 ms.service: iot-hub
@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc, devx-track-js, devx-track-azurecli
 ms.date: 03/14/2019
 ms.author: robinsh
-ms.openlocfilehash: 678955970f3eeb87a10c43cd43effc3464db7794
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 335014f032162866e4780bf1294ddcd108b4fd03
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94832006"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624387"
 ---
 # <a name="quickstart-communicate-to-a-device-application-in-nodejs-via-iot-hub-device-streams-preview"></a>Schnellstart: Kommunizieren mit einer Geräteanwendung in Node.js über IoT Hub-Gerätestreams (Vorschauversion)
 
@@ -79,7 +79,7 @@ Ein Gerät muss bei Ihrer IoT Hub-Instanz registriert sein, um eine Verbindung h
     **YourIoTHubName**: Ersetzen Sie diesen Platzhalter unten durch den Namen, den Sie für Ihren IoT-Hub ausgewählt haben.
 
     ```azurecli-interactive
-    az iot hub show-connection-string --policy-name service --name {YourIoTHubName} --output table
+    az iot hub connection-string show --policy-name service --name {YourIoTHubName} --output table
     ```
 
     Notieren Sie sich die zurückgegebene Verbindungszeichenfolge des Diensts zur späteren Verwendung in dieser Schnellstartanleitung. Dies sieht in etwa wie im folgenden Beispiel aus:
@@ -154,4 +154,4 @@ In dieser Schnellstartanleitung haben Sie einen IoT-Hub eingerichtet, ein Gerät
 Weitere Informationen zu Gerätestreams finden Sie hier:
 
 > [!div class="nextstepaction"]
-> [Übersicht über Gerätestreams](./iot-hub-device-streams-overview.md) 
+> [Übersicht über Gerätestreams](./iot-hub-device-streams-overview.md)

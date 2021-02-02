@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 09/07/2020
+ms.date: 01/22/2021
 ms.author: alkohli
-ms.openlocfilehash: 8ea0c27fdd64bae1e6fe9443df76c86e0eb89a75
-ms.sourcegitcommit: 799f0f187f96b45ae561923d002abad40e1eebd6
+ms.openlocfilehash: daf44afbb322cb30ab3a663dce4e935aefa7be13
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/24/2020
-ms.locfileid: "97762916"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98808057"
 ---
 # <a name="deploy-vms-on-your-azure-stack-edge-pro-gpu-device-using-azure-cli-and-python"></a>Bereitstellen von VMs auf Ihrem Azure Stack Edge Pro-GPU-Gerät mit der Azure CLI und Python
 
@@ -70,9 +70,9 @@ Bevor Sie mit dem Erstellen und Verwalten eines virtuellen Computers auf Ihrem A
 
 3. Sie haben alle Zertifikate auf Ihrem Azure Stack Edge Pro-Gerät und im vertrauenswürdigen Speicher des Clients erstellt und installiert. Führen Sie das unter [Schritt 2: Erstellen und Installieren von Zertifikaten](azure-stack-edge-j-series-connect-resource-manager.md#step-2-create-and-install-certificates) beschriebene Verfahren aus.
 
-4. Sie haben ein Base-64-codiertes *CER*-Zertifikat (PEM-Format) für Ihr Azure Stack Edge Pro-Gerät erstellt. Dieses wurde bereits als Signaturkette auf das Gerät hochgeladen und im vertrauenswürdigen Stammspeicher auf dem Client installiert. Dieses Zertifikat ist auch im *PEM*-Format erforderlich, damit Python auf diesem Client funktioniert.
+4. Sie haben ein Base-64-codiertes *CER*-Zertifikat (PEM-Format) für Ihr Azure Stack Edge Pro-Gerät erstellt. Dieses Zertifikat wurde bereits als Signaturkette auf das Gerät hochgeladen und im vertrauenswürdigen Stammspeicher auf dem Client installiert. Dieses Zertifikat ist auch im *PEM*-Format erforderlich, damit Python auf diesem Client funktioniert.
 
-    Konvertieren Sie dieses Zertifikat mit dem Befehl `certutil` in das PEM-Format. Sie müssen diesen Befehl in dem Verzeichnis ausführen, das Ihr Zertifikat enthält.
+    Konvertieren Sie dieses Zertifikat mit dem Befehl `pem` in das `certutil`-Format. Sie müssen diesen Befehl in dem Verzeichnis ausführen, das Ihr Zertifikat enthält.
 
     ```powershell
     certutil.exe <SourceCertificateName.cer> <DestinationCertificateName.pem>
@@ -86,9 +86,9 @@ Bevor Sie mit dem Erstellen und Verwalten eines virtuellen Computers auf Ihrem A
     CertUtil: -encode command completed successfully.
     PS C:\Certificates>
     ```    
-    Sie fügen dieses PEM-Zertifikat später auch zum Python-Speicher hinzu.
+    Sie fügen dieses `pem`-Zertifikat später auch zum Python-Speicher hinzu.
 
-5. Sie haben die IP-Adresse des Geräts auf der Seite **Netzwerk** in der lokalen Webbenutzeroberfläche des Geräts zugewiesen. Sie müssen diese IP-Adresse zu Folgendem hinzufügen:
+5. Sie haben die IP-Adresse des Geräts auf der Seite **Netzwerk** in der lokalen Webbenutzeroberfläche des Geräts zugewiesen. Fügen Sie diese IP-Adresse folgenden Elementen hinzu:
 
     - Der Hostdatei auf dem Client ODER
     - Der DNS-Serverkonfiguration
@@ -117,13 +117,13 @@ Bevor Sie mit dem Erstellen und Verwalten eines virtuellen Computers auf Ihrem A
 
 ### <a name="verify-profile-and-install-azure-cli"></a>Überprüfen des Profils und Installieren der Azure CLI
 
-<!--1. Verify the API profile of the client and identify which version of the modules and libraries to include on your client. In this example, the client system will be running Azure Stack 1904 or later. For more information, see [Azure Resource Manager API profiles](/azure-stack/user/azure-stack-version-profiles?view=azs-1908#azure-resource-manager-api-profiles).-->
+<!--1. Verify the API profile of the client and identify which version of the modules and libraries to include on your client. In this example, the client system will be running Azure Stack 1904 or later. For more information, see [Azure Resource Manager API profiles](/azure-stack/user/azure-stack-version-profiles?view=azs-1908&preserve-view=true#azure-resource-manager-api-profiles).-->
 
 1. Installieren Sie die Azure CLI auf Ihrem Client. In diesem Beispiel wurde die Azure CLI 2.0.80 installiert. Führen Sie den Befehl `az --version` aus, um die Version der Azure CLI zu überprüfen.
 
-    Nachfolgend sehen Sie eine Beispielausgabe des o. g. Befehls:
+    Nachfolgend sehen Sie eine Beispielausgabe des obigen Befehls:
 
-    ```powershell
+    ```output
     PS C:\windows\system32> az --version
     azure-cli                         2.0.80
     
@@ -147,9 +147,9 @@ Bevor Sie mit dem Erstellen und Verwalten eines virtuellen Computers auf Ihrem A
     PS C:\windows\system32>
     ```
 
-    Wenn Sie nicht über die Azure CLI verfügen, laden Sie die Azure CLI herunter, und [installieren Sie sie unter Windows](/cli/azure/install-azure-cli-windows?view=azure-cli-latest). Sie können die Azure CLI mithilfe der Windows-Eingabeaufforderung oder über Windows PowerShell ausführen.
+    Wenn Sie nicht über die Azure CLI verfügen, laden Sie die Azure CLI herunter, und [installieren Sie sie unter Windows](/cli/azure/install-azure-cli-windows). Sie können die Azure CLI mithilfe der Windows-Eingabeaufforderung oder über Windows PowerShell ausführen.
 
-2. Notieren Sie sich den Python-Speicherort der CLI. Er ist erforderlich, damit Sie den Speicherort des vertrauenswürdigen Stammzertifikatspeichers für die Azure CLI bestimmen können.
+2. Notieren Sie sich den Python-Speicherort der CLI. Sie benötigen den Python-Speicherort, damit Sie den Speicherort des vertrauenswürdigen Stammzertifikatspeichers für die Azure CLI bestimmen können.
 
 3. Zum Ausführen des Beispielskripts, das in diesem Artikel verwendet wird, benötigen Sie die folgenden Versionen der Python-Bibliothek:
 
@@ -171,7 +171,7 @@ Bevor Sie mit dem Erstellen und Verwalten eines virtuellen Computers auf Ihrem A
 
     Die folgende Beispielausgabe zeigt die Installation von Haikunator:
 
-    ```powershell
+    ```output
     PS C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2> .\python.exe -m pip install haikunator
 
     Collecting haikunator
@@ -187,7 +187,7 @@ Bevor Sie mit dem Erstellen und Verwalten eines virtuellen Computers auf Ihrem A
 
     Die folgende Beispielausgabe zeigt die Installation von PIP für `msrestazure`: 
     
-    ```powershell
+    ```output
     PS C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2> .\python.exe -m pip install msrestazure==0.6.2
     Requirement already satisfied: msrestazure==0.6.2 in c:\program files (x86)\microsoft sdks\azure\cli2\lib\site-packages (0.6.2)
     Requirement already satisfied: msrest<2.0.0,>=0.6.0 in c:\program files (x86)\microsoft sdks\azure\cli2\lib\site-packages (from msrestazure==0.6.2) (0.6.10)
@@ -211,7 +211,7 @@ Bevor Sie mit dem Erstellen und Verwalten eines virtuellen Computers auf Ihrem A
     
     Das Cmdlet gibt den Speicherort des Zertifikats zurück, wie unten gezeigt:  
         
-    ```powershell
+    ```output
     PS C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2> .\python -c "import certifi; print(certifi.where())"
     C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2\lib\site-packages\certifi\cacert.pem
     PS C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2>
@@ -266,7 +266,7 @@ Bevor Sie mit dem Erstellen und Verwalten eines virtuellen Computers auf Ihrem A
     $ENV:ADAL_PYTHON_SSL_NO_VERIFY = 1
     ```
 
-2. Legen Sie Umgebungsvariablen für das Skript für den Azure Resource Manager-Endpunkt, den Speicherort, an dem die Ressourcen erstellt werden, und den Pfad zum Speicherort der Quell-VHD fest. Der Speicherort für die Ressourcen wird auf allen Azure Stack Edge Pro-Geräten korrigiert und auf `dbelocal` festgelegt. Sie müssen auch die Adresspräfixe und die private IP-Adresse angeben. Alle folgenden Umgebungsvariablen sind Werte, die auf Ihren Werten basieren, mit Ausnahme von `AZURE_RESOURCE_LOCATION`, was mit `"dbelocal"`hartcodiert wird.
+2. Legen Sie Umgebungsvariablen für das Skript für den Azure Resource Manager-Endpunkt, den Speicherort, an dem die Ressourcen erstellt werden, und den Pfad zum Speicherort der Quell-VHD fest. Der Speicherort für die Ressourcen wird auf allen Azure Stack Edge Pro-Geräten korrigiert und auf `dbelocal` festgelegt. Sie müssen auch die Adresspräfixe und die private IP-Adresse angeben. Alle folgenden Umgebungsvariablen sind Werte, die auf Ihren Werten basieren, mit Ausnahme von `AZURE_RESOURCE_LOCATION`, was mit `"dbelocal"` hartcodiert wird.
 
     ```powershell
     $ENV:ARM_ENDPOINT = "https://management.team3device.teatraining1.com"
@@ -323,7 +323,7 @@ Bevor Sie mit dem Erstellen und Verwalten eines virtuellen Computers auf Ihrem A
 
    Das folgende Beispiel zeigt die Ausgabe einer erfolgreichen Anmeldung nach Angabe des Kennworts:  
    
-   ```powershell
+   ```output
    PS C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2> az login -u EdgeARMuser
    Password:
    [

@@ -9,12 +9,12 @@ author: rolyon
 ms.author: rolyon
 ms.date: 01/15/2021
 ms.custom: generated
-ms.openlocfilehash: 8f44de679c9b0280652b0020d1e454a70f7114a3
-ms.sourcegitcommit: fc23b4c625f0b26d14a5a6433e8b7b6fb42d868b
+ms.openlocfilehash: 39385a3ea9dc06875806ac85c06c0df6d5db2698
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/17/2021
-ms.locfileid: "98538528"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98683792"
 ---
 # <a name="azure-built-in-roles"></a>Integrierte Azure-Rollen
 
@@ -7413,7 +7413,7 @@ Anzeigen und Aktualisieren von Berechtigungen für Security Center. Gleiche Rech
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | Lesen von Rollen und Rollenzuweisungen |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/policyAssignments/* | Erstellen und Verwalten von Richtlinienzuweisungen |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/policyDefinitions/* | Erstellen und Verwalten von Richtliniendefinitionen |
-> | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/policyExemptions/* |  |
+> | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/policyExemptions/* | Erstellen und Verwalten von Richtlinienausnahmen |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/policySetDefinitions/* | Erstellen und Verwalten von Richtliniensätzen |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | Erstellen und Verwalten einer klassischen Metrikwarnung |
 > | [Microsoft.Management](resource-provider-operations.md#microsoftmanagement)/managementGroups/read | Listet die Verwaltungsgruppen für den authentifizierten Benutzer auf. |
@@ -9171,7 +9171,7 @@ Benutzer mit Rechten zum Erstellen/Ändern der Ressourcenrichtlinie, zum Erstell
 > | */Lesen | Lesen von Ressourcen aller Typen mit Ausnahme geheimer Schlüssel |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/policyassignments/* | Erstellen und Verwalten von Richtlinienzuweisungen |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/policydefinitions/* | Erstellen und Verwalten von Richtliniendefinitionen |
-> | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/policyexemptions/* |  |
+> | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/policyexemptions/* | Erstellen und Verwalten von Richtlinienausnahmen |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/policysetdefinitions/* | Erstellen und Verwalten von Richtliniensätzen |
 > | [Microsoft.PolicyInsights](resource-provider-operations.md#microsoftpolicyinsights)/* |  |
 > | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/* | Erstellen und Aktualisieren eines Supporttickets |

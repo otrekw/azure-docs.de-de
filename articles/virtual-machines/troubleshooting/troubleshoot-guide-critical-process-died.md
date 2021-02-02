@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: troubleshooting
 ms.date: 03/26/2020
 ms.author: v-mibufo
-ms.openlocfilehash: c04f3b27c7214dcf821c7698796bfaea399b947d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8279aee4a0df8155b23e6f984d259bf92555dc95
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86509102"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632832"
 ---
 # <a name="windows-stop-error---0x000000ef-critical-process-died"></a>Windows-kritischer Fehler – #0x000000EF „Critical Process Died“
 
@@ -39,7 +39,10 @@ Dies ist in der Regel darauf zurückzuführen, dass während des Starts ein krit
 
 ### <a name="process-overview"></a>Übersicht über den Prozess:
 
-1. Erstellen Sie eine Reparatur-VM (Repair-VM), und greifen Sie darauf zu.
+> [!TIP]
+> Wenn Sie über eine aktuelle Sicherung der VM verfügen, können Sie versuchen, die [VM aus der Sicherung wiederherzustellen](../../backup/backup-azure-arm-restore-vms.md), um das Startproblem zu beheben.
+
+1. Erstellen Sie eine Reparatur-VM, und greifen Sie darauf zu.
 2. Beheben Sie Beschädigungen des Betriebssystems.
 3. **Empfohlen:** Aktivieren Sie vor der Neuerstellung des virtuellen Computers die serielle Konsole und die Speicherabbildsammlung.
 4. Erstellen Sie den virtuellen Computer neu.
@@ -126,6 +129,6 @@ Wenn nicht genügend Speicherplatz auf dem Betriebssystemdatenträger vorhanden 
 
 `REG UNLOAD HKLM\BROKENSYSTEM`
 
-### <a name="rebuild-the-original-vm"></a>Neuerstellung der ursprünglichen VM
+### <a name="rebuild-the-original-vm"></a>Neuerstellen der ursprünglichen VM
 
 Führen Sie [Schritt 5 der VM-Reparaturbefehle](./repair-windows-vm-using-azure-virtual-machine-repair-commands.md#repair-process-example) aus, um die VM zu reassemblieren.

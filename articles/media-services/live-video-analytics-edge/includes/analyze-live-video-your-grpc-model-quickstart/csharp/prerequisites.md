@@ -1,12 +1,14 @@
 ---
-ms.openlocfilehash: f8c43602e722231d0e5bd31bbc6b94d04c4d225c
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.openlocfilehash: 077c2fb25c4e765cec5976da3428f483da890d17
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2021
-ms.locfileid: "98061198"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98633450"
 ---
 * Ein Azure-Konto das ein aktives Abonnement beinhaltet. Sie können ein [kostenloses Konto erstellen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), falls Sie noch keins besitzen.
+  > [!NOTE]
+  > Sie benötigen ein Azure-Abonnement mit Berechtigungen zum Erstellen von Dienstprinzipalen. (Die **Rolle „Besitzer“** stellt diese Berechtigungen bereit.) Wenn Sie nicht über die richtigen Berechtigungen verfügen, wenden Sie sich an Ihren Kontoadministrator, damit er Ihnen die richtigen Berechtigungen erteilt. 
 * [Visual Studio Code](https://code.visualstudio.com/) mit den folgenden Erweiterungen:
     * [Azure IoT-Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)
         > [!TIP]

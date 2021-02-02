@@ -1,19 +1,19 @@
 ---
-title: Übersicht über Sicherungsoptionen für Linux-VMs
-description: Übersicht über Sicherungsoptionen für virtuelle Linux Azure-Computer
+title: Übersicht über Sicherungsoptionen für VMs
+description: Übersicht über Sicherungsoptionen für virtuelle Azure-Computer
 author: cynthn
 ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 8/03/2020
 ms.author: cynthn
-ms.openlocfilehash: c56adc852b504d3a0663a9607b3472cb3348e7a5
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 5a093de0a27c8379cb6eff9c2bc3867dfdc20db5
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91972355"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98787806"
 ---
-# <a name="backup-and-restore-options-for-linux-virtual-machines-in-azure"></a>Sicherungs- und Wiederherstellungsoptionen für virtuelle Linux-Computer in Azure
+# <a name="backup-and-restore-options-for-virtual-machines-in-azure"></a>Sicherungs- und Wiederherstellungsoptionen für virtuelle Computer in Azure
 
 Sie können Ihre Daten schützen, indem Sie in regelmäßigen Abständen Sicherungen erstellen. Abhängig von Ihrem Anwendungsfall stehen mehrere Sicherungsoptionen für VMs zur Verfügung.
 
@@ -21,7 +21,7 @@ Sie können Ihre Daten schützen, indem Sie in regelmäßigen Abständen Sicheru
 
 Verwenden Sie Azure Backup zum Sichern von Azure-VMs, auf denen Produktionsworkloads ausgeführt werden. Azure Backup unterstützt anwendungskonsistente Sicherungen für virtuelle Windows- und Linux-Computer. Azure Backup erstellt Wiederherstellungspunkte, die in geografisch redundanten Recovery-Tresoren gespeichert werden. Wenn Sie eine Wiederherstellung von einem Wiederherstellungspunkt durchführen, können Sie den gesamten virtuellen Computer oder nur bestimmte Dateien wiederherstellen. 
 
-Eine einfache praktische Einführung in Azure Backup für Azure-VMs finden Sie im Tutorial zum Sichern virtueller Azure-Computer für [Linux](./linux/tutorial-backup-vms.md) oder [Windows](./windows/tutorial-backup-vms.md).
+Eine einfache, praktische Einführung in Azure Backup für Azure-VMs finden Sie im [Schnellstart zu Azure Backup](../backup/quick-backup-vm-portal.md).
 
 Weitere Informationen dazu, wie Azure Backup funktioniert, finden Sie unter [Planen der Sicherungsinfrastruktur für virtuelle Computer in Azure](../backup/backup-azure-vms-introduction.md).
 
@@ -46,4 +46,4 @@ Weitere Informationen zum Erstellen von Momentaufnahmen finden Sie unter:
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-Sie können Azure Backup ausprobieren, indem Sie das Tutorial „Sichern virtueller Windows-Computer in Azure“ für [Linux](./linux/tutorial-backup-vms.md) oder [Windows](./windows/tutorial-backup-vms.md) durcharbeiten.
+Sie können Azure Backup testen, indem Sie den [Schnellstart zu Azure Backup](../backup/quick-backup-vm-portal.md) befolgen.

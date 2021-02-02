@@ -1,25 +1,11 @@
 ---
-title: 'Media Services-Konto: ARM-Vorlage'
-titleSuffix: Azure Media Services
-description: In diesem Artikel wird beschrieben, wie Sie mithilfe einer ARM-Vorlage ein Media Services-Konto erstellen.
-services: media-services
-documentationcenter: ''
-author: IngridAtMicrosoft
-manager: femila
-editor: ''
-ms.service: media-services
-ms.workload: ''
-ms.topic: quickstart
-ms.date: 11/24/2020
-ms.author: inhenkel
-ms.custom: subject-armqs
-ms.openlocfilehash: 6a23c3a20e79fe6fff7de8faccf4e4ef78f02585
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
-ms.translationtype: HT
-ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96185034"
+Titel: Media Services-Konto: ARM-Vorlage: Azure Media Services description: In diesem Artikel wird beschrieben, wie Sie mithilfe einer ARM-Vorlage ein Media Services-Konto erstellen.
+services: media-services documentationcenter: '' author: IngridAtMicrosoft manager: femila editor: ''
+
+ms.service: media-services ms.workload: ms.topic: quickstart ms.date: 11/24/2020 ms.author: inhenkel ms.custom: subject-armqs
+
 ---
+
 # <a name="quickstart-media-services-account-arm-template"></a>Schnellstart: Media Services-Konto: ARM-Vorlage
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
@@ -41,7 +27,7 @@ Leser, die mit ARM-Vorlagen vertraut sind, können mit dem Abschnitt [Bereitstel
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
-Wenn Sie noch nie eine ARM-Vorlage bereitgestellt haben, ist es hilfreich, sich über [Azure ARM-Vorlagen](https://docs.microsoft.com/azure/azure-resource-manager/templates/) zu informieren und das [Tutorial](https://docs.microsoft.com/azure/azure-resource-manager/templates/template-tutorial-create-first-template?tabs=azure-powershell) durchzuarbeiten.
+Wenn Sie noch nie eine ARM-Vorlage bereitgestellt haben, ist es hilfreich, sich über [Azure ARM-Vorlagen](../../azure-resource-manager/templates/index.yml) zu informieren und das [Tutorial](../../azure-resource-manager/templates/template-tutorial-create-first-template.md?tabs=azure-powershell) durchzuarbeiten.
 
 ## <a name="review-the-template"></a>Überprüfen der Vorlage
 
@@ -118,8 +104,8 @@ The syntax for the JSON code fence is:
 
 In der Vorlage sind drei Azure-Ressourcentypen definiert:
 
-- [Microsoft.Media/mediaservices](https://docs.microsoft.com/azure/templates/microsoft.media/mediaservices): Dient zum Erstellen eines Media Services-Kontos.
-- [Microsoft.Storage/storageAccounts](https://docs.microsoft.com/azure/templates/microsoft.storage/storageaccounts): Dient zum Erstellen eines Speicherkontos.
+- [Microsoft.Media/mediaservices](/azure/templates/microsoft.media/mediaservices): Dient zum Erstellen eines Media Services-Kontos.
+- [Microsoft.Storage/storageAccounts](/azure/templates/microsoft.storage/storageaccounts): Dient zum Erstellen eines Speicherkontos.
 
 ## <a name="set-the-account"></a>Festlegen des Kontos
 
@@ -277,4 +263,4 @@ az group delete --name {name of the resource group}
 Weitere Informationen zur Verwendung einer ARM-Vorlage durch Befolgen des Prozesses zum Erstellen einer Vorlage mit Parametern, Variablen usw. finden Sie im folgenden Artikel:
 
 > [!div class="nextstepaction"]
-> [Tutorial: Erstellen und Bereitstellen Ihrer ersten ARM-Vorlage](/azure/azure-resource-manager/templates/template-tutorial-create-first-template)
+> [Tutorial: Erstellen und Bereitstellen Ihrer ersten ARM-Vorlage](../../azure-resource-manager/templates/template-tutorial-create-first-template.md)

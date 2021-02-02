@@ -1,6 +1,6 @@
 ---
 title: Verknüpfen von Windows-Sicherheitsereignisdaten mit Azure Sentinel | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie mit dem Connector für sicherheitsrelevante Ereignisse alle sicherheitsrelevanten Ereignisse von Ihren Windows-Systemen an Ihren Azure Sentinel-Arbeitsbereich streamen. 
+description: Erfahren Sie, wie Sie mit dem Connector für sicherheitsrelevante Ereignisse alle sicherheitsrelevanten Ereignisse von Ihren Windows-Systemen an Ihren Azure Sentinel-Arbeitsbereich streamen.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/16/2020
 ms.author: yelevin
-ms.openlocfilehash: a16afcafa03ef2ab8642316db560e30a473a526b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 226d5a46482d6611fdecf214d040fc27af9ac586
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90883705"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632045"
 ---
 # <a name="connect-windows-security-events"></a>Herstellen einer Verbindung mit Windows-Sicherheitsereignissen 
 
@@ -54,7 +54,7 @@ Gehen Sie wie folgt vor, um sicherheitsrelevante Windows-Ereignisse in Azure Sen
 
 1. Klicken Sie im Azure Sentinel-Navigationsmenü auf **Data connectors** (Datenconnectors). Klicken Sie in der Liste mit Connectors auf **Sicherheitsereignisse** und dann auf die Schaltfläche **Open connector page** (Connectorseite öffnen) unten rechts. Folgen Sie anschließend wie im Rest dieses Abschnitts beschrieben den Anweisungen auf dem Bildschirm auf der Registerkarte **Anweisungen**.
 
-1. Stellen Sie sicher, dass Sie über die erforderlichen Berechtigungen verfügen, die unter **Voraussetzungen** erläutert werden.
+1. Vergewissern Sie sich, dass Sie über die entsprechenden Berechtigungen verfügen, wie im Abschnitt **Voraussetzungen** auf der Seite „Connector“ beschrieben.
 
 1. Laden Sie auf den Computern, für die Sie sicherheitsrelevante Ereignisse an Azure Sentinel streamen wollen, den [Log Analytics-Agent](../azure-monitor/platform/log-analytics-agent.md) (auch als Microsoft Monitoring Agent oder MMA bezeichnet) herunter, und installieren Sie ihn dort.
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/11/2019
 ms.author: jeedes
-ms.openlocfilehash: 8d24ed014dd66235383b58cbcb7404aaf00f863e
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 217872586d09531926b43a13d826efe559c70597
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92308960"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98796751"
 ---
 # <a name="tutorial-azure-active-directory-ad-single-sign-on-sso-integration-with-f5"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory (AD) mit F5
 
@@ -314,7 +314,7 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 ### <a name="create-f5-test-user"></a>Erstellen eines F5-Testbenutzers
 
-In diesem Abschnitt erstellen Sie in F5 einen Benutzer namens B. Simon. Wenden Sie sich an das  [Supportteam für den F5-Client](https://support.f5.com/csp/knowledge-center/software/BIG-IP?module=BIG-IP%20APM45), um die Benutzer auf der F5-Plattform hinzuzufügen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können. 
+In diesem Abschnitt erstellen Sie in F5 einen Benutzer namens B. Simon. Wenden Sie sich an das [Supportteam für den F5-Client](https://support.f5.com/csp/knowledge-center/software/BIG-IP?module=BIG-IP%20APM45), um die Benutzer auf der F5-Plattform hinzuzufügen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können. 
 
 ## <a name="test-sso"></a>Testen des einmaligen Anmeldens 
 
@@ -335,3 +335,9 @@ Wenn Sie im Zugriffsbereich auf die Kachel „F5“ klicken, sollten Sie automat
 - [Konfigurieren des einmaligen Anmeldens von F5 für eine headerbasierte Anwendung](headerf5-tutorial.md)
 
 - [Konfigurieren des einmaligen Anmeldens von F5 für eine Kerberos-Anwendung](kerbf5-tutorial.md)
+
+- [F5 BIG-IP APM und Azure AD-Integration für sicheren Hybridzugriff](https://docs.microsoft.com/azure/active-directory/manage-apps/f5-aad-integration)
+
+- [Tutorial zum Bereitstellen von VMs mit F5 BIG-IP Virtual Edition in Azure IaaS für sicheren Hybridzugriff](https://docs.microsoft.com/azure/active-directory/manage-apps/f5-bigip-deployment-guide)
+
+- [Tutorial für die Integration des einmaligen Anmeldens von Azure Active Directory mit F5 BIG-IP für ein VPN ohne Kennwort](https://docs.microsoft.com/azure/active-directory/manage-apps/f5-aad-password-less-vpn)

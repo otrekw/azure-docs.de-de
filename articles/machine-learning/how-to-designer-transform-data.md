@@ -10,12 +10,12 @@ ms.author: peterlu
 ms.date: 06/28/2020
 ms.topic: conceptual
 ms.custom: how-to, designer
-ms.openlocfilehash: be2921f88ad2ecf88c555daf8385f1bd6733e836
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: 70f5e17c4cc42201e9aa3d36c9937f6ceb9527d0
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94554014"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880202"
 ---
 # <a name="transform-data-in-azure-machine-learning-designer"></a>Transformieren von Daten in Azure Machine Learning-Designer
 
@@ -52,11 +52,7 @@ Führen Sie die folgenden Schritte aus, um das Beispieldataset zu importieren.
 
 1. Ziehen Sie das Dataset **Adult Census Income Binary classification** (Binäres Klassifizierungsdataset der Einkommenserhebung für Erwachsene) per Drag & Drop auf die Canvas.
 
-1. Wählen Sie das Datasetmodul **Adult Census Income** (Einkommen von Erwachsenen) aus.
-
-1. Wählen Sie rechts neben der Canvas im Bereich mit den Details die Option **Ausgaben** aus.
-
-1. Wählen Sie das ![Symbol „Visualisieren“ aus](media/how-to-designer-transform-data/visualize-icon.png)erforderlich.
+1. Klicken Sie mit der rechten Maustaste auf das Datasetmodul **Adult Census Income** (Einkommen von Erwachsenen), und wählen Sie **Visualisieren** > **Datasetausgabe** aus.
 
 1. Verwenden Sie das Fenster „Datenvorschau“, um das Dataset zu untersuchen. Beachten Sie besonders die Werte in der Spalte „native-country“.
 
@@ -95,7 +91,7 @@ Nachdem die Pipeline nun so eingerichtet ist, dass die Daten aufgeteilt werden, 
 
     Ihre Pipeline sollte in etwa wie folgt aussehen:
 
-    ![Screenshot: Verbinden der Module zum Exportieren von Daten](media/how-to-designer-transform-data/export-data-pipeline.png)erforderlich.
+    ![Screenshot: Verbinden der Module zum Exportieren von Daten](media/how-to-designer-transform-data/export-data-pipeline.png).
 
 1. Wählen Sie das Modul **Export Data** (Daten exportieren) aus, das mit dem Port ganz *links* des Moduls zum Aufteilen von Dateien (**Split Data**) verbunden ist.
 
@@ -134,7 +130,7 @@ Nachdem die Pipeline nun so eingerichtet ist, dass die Daten aufgeteilt werden, 
 
     Die Pipeline und die Einstellungen sollten wie folgt aussehen:
     
-    ![Screenshot: Konfigurieren der Module zum Exportieren von Daten](media/how-to-designer-transform-data/us-income-export-data.png)erforderlich.
+    ![Screenshot: Konfigurieren der Module zum Exportieren von Daten](media/how-to-designer-transform-data/us-income-export-data.png).
 
 ### <a name="submit-the-run"></a>Übermitteln der Ausführung
 

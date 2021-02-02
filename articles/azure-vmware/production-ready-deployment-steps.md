@@ -3,12 +3,12 @@ title: Planen der Azure VMware Solution-Bereitstellung
 description: In diesem Artikel wird der Workflow für die Bereitstellung einer Azure VMware Solution-Instanz beschrieben.  Das Endergebnis ist eine Umgebung, die für die Erstellung und Migration von virtuellen Computern (VMs) vorbereitet ist.
 ms.topic: tutorial
 ms.date: 10/16/2020
-ms.openlocfilehash: 2cc4d40fd8088a632e0c24e3c4b770ebdc9de2e8
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 8b1d69f3f953b43177a3b1d0611b51ca2cfb1a75
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97912732"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98762867"
 ---
 # <a name="planning-the-azure-vmware-solution-deployment"></a>Planen der Azure VMware Solution-Bereitstellung
 
@@ -93,28 +93,36 @@ Bedenken Sie Folgendes:
 - Wenn Sie die Erweiterung von Netzwerken aus der lokalen Umgebung planen, muss für diese Netzwerke eine Verbindung mit einem [vSphere Distributed Switch (vDS)](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.networking.doc/GUID-B15C6A13-797E-4BCB-B9D9-5CBC5A60C3A6.html) in Ihrer lokalen VMware-Umgebung bestehen.  
 - Falls die zu erweiternden Netzwerke auf einem [vSphere Standard Switch](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.networking.doc/GUID-350344DE-483A-42ED-B0E2-C811EE927D59.html) angeordnet sind, können sie nicht erweitert werden.
 
-## <a name="azure-virtual-network-to-attach-azure-vmware-solution"></a>Anfügen von Azure VMware Solution an ein Azure Virtual Network
+## <a name="attach-virtual-network-to-azure-vmware-solution"></a>Anfügen eines virtuellen Netzwerks an Azure VMware Solution
 
-Zum Zugreifen auf Ihre private Azure VMware Solution-Cloud muss die ExpressRoute-Leitung, die Teil von Azure VMware Solution ist, an ein Azure Virtual Network angefügt werden.  Während der Bereitstellung können Sie ein neues virtuelles Netzwerk definieren oder ein vorhandenes auswählen.
+In diesem Schritt identifizieren Sie ein ExpressRoute-Gateway für virtuelle Netzwerke und eine unterstützende Azure Virtual Network-Instanz, die zum Herstellen einer Verbindung mit der ExpressRoute-Leitung von Azure VMware Solution verwendet wird.  Die ExpressRoute-Leitung ermöglicht Konnektivität zwischen der privaten Azure VMware Solution-Cloud und anderen Azure-Diensten, Azure-Ressourcen und lokalen Umgebungen.
 
-Für die ExpressRoute-Leitung von Azure VMware Solution wird eine Verbindung mit einem ExpressRoute-Gateway im Azure Virtual Network hergestellt, das Sie in diesem Schritt definieren.  
-
->[!IMPORTANT]
->Sie können ein vorhandenes ExpressRoute-Gateway verwenden, um eine Verbindung mit Azure VMware Solution herzustellen, sofern es nicht den Grenzwert von vier ExpressRoute-Leitungen pro virtuellem Netzwerk überschreitet.  Für den lokalen Zugriff auf Azure VMware Solution über ExpressRoute benötigen Sie ExpressRoute Global Reach, da das ExpressRoute-Gateway kein transitives Routing zwischen den verbundenen Leitungen unterstützt.  
-
-Falls Sie für die ExpressRoute-Leitung eine Verbindung von Azure VMware Solution mit einem vorhandenen ExpressRoute-Gateway herstellen möchten, können Sie dies nach der Bereitstellung durchführen.  
-
-Die Frage lautet also: Möchten Sie für Azure VMware Solution eine Verbindung mit einem vorhandenen ExpressRoute-Gateway herstellen?  
-
-* **Ja**: Identifizieren Sie das virtuelle Netzwerk, das während der Bereitstellung nicht verwendet wird.
-* **Nein**: Identifizieren Sie ein vorhandenes virtuelles Netzwerk, oder erstellen Sie während der Bereitstellung ein neues.
-
-Dokumentieren Sie in beiden Fällen, was Sie in diesem Schritt tun möchten.
-
->[!NOTE]
->Dieses virtuelle Netzwerk wird von Ihrer lokalen Umgebung und von Azure VMware Solution erkannt. Stellen Sie daher sicher, dass sich das in diesem virtuellen Netzwerk verwendete IP-Segment und die Subnetze nicht überlappen.
+Sie können ein *vorhandenes* ODER ein *neues* ExpressRoute-Gateway für virtuelle Netzwerke verwenden.
 
 :::image type="content" source="media/pre-deployment/azure-vmware-solution-expressroute-diagram.png" alt-text="Identifizieren: Azure Virtual Network zum Anfügen von Azure VMware Solution" border="false":::
+
+### <a name="use-an-existing-expressroute-virtual-network-gateway"></a>Verwenden eines vorhandenen ExpressRoute-Gateways für virtuelle Netzwerke
+
+Wenn Sie ein *vorhandenes* ExpressRoute-Gateway für virtuelle Netzwerke verwenden, wird die ExpressRoute-Leitung von Azure VMware Solution nach dem Bereitstellen der privaten Cloud eingerichtet. Lassen Sie in diesem Fall das Feld **Virtual Network** leer.  
+
+Notieren Sie sich, welches ExpressRoute-Gateway für virtuelle Netzwerke verwendet wird, und fahren Sie mit dem nächsten Schritt fort.
+
+### <a name="create-a-new-expressroute-virtual-network-gateway"></a>Erstellen eines neuen ExpressRoute-Gateways für virtuelle Netzwerke
+
+Wenn Sie ein *neues* ExpressRoute-Gateway für virtuelle Netzwerke erstellen, können Sie eine vorhandene Azure Virtual Network-Instanz verwenden oder eine neue erstellen.  
+
+- Vorhandene Azure Virtual Network-Instanz:
+   1. Vergewissern Sie sich, dass im virtuellen Netzwerk nicht bereits ExpressRoute-Gateways für virtuelle Netzwerke vorhanden sind. 
+   1. Wählen Sie in der Liste **Virtual Network** die vorhandene Azure Virtual Network-Instanz aus.
+
+- Für eine neue Azure Virtual Network-Instanz können Sie diese im Voraus oder während der Bereitstellung erstellen. Wählen Sie unter der Liste **Virtual Network** den Link **Neu erstellen** aus.
+
+Die folgende Abbildung zeigt den Bereitstellungsbildschirm **Erstellen einer privaten Cloud**, auf dem das Feld **Virtual Network** hervorgehoben ist.
+
+:::image type="content" source="media/pre-deployment/azure-vmware-solution-deployment-screen-vnet-circle.png" alt-text="Screenshot: Azure VMware Solution-Bereitstellungsbildschirm mit hervorgehobenem Feld „Virtual Network“":::
+
+>[!NOTE]
+>Ein virtuelles Netzwerk, das verwendet oder erstellt wird, kann von Ihrer lokalen Umgebung und von Azure VMware Solution erkannt werden. Stellen Sie daher sicher, dass sich das in diesem virtuellen Netzwerk verwendete IP-Segment und die Subnetze nicht überlappen.
 
 ## <a name="vmware-hcx-network-segments"></a>VMware HCX-Netzwerksegmente
 

@@ -11,12 +11,12 @@ ms.author: amsaied
 ms.reviewer: sgilley
 ms.date: 09/15/2020
 ms.custom: tracking-python
-ms.openlocfilehash: ab497dee35afdd60247d156d0f30bbf003ea1210
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: c08d9ee6704203d0634d7a1b90a57de9c6a99d31
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98072155"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98622794"
 ---
 # <a name="tutorial-use-your-own-data-part-4-of-4"></a>Tutorial: Verwenden eigener Daten (Teil 4 von 4)
 
@@ -99,6 +99,20 @@ tutorial
 ```
 
 Wenn Sie `train.py` im vorherigen Tutorial nicht lokal ausgeführt haben, ist das `data/`-Verzeichnis nicht vorhanden. Führen Sie in diesem Fall die `torchvision.datasets.CIFAR10` -Methode lokal mit `download=True` im `train.py`-Skript aus.
+
+Beenden Sie bei der lokalen Ausführung außerdem die Tutorialumgebung, und aktivieren Sie die neue Conda-Umgebung:
+
+```bash
+conda deactivate                # If you are still using the tutorial environment, exit it
+```
+
+```bash
+conda env create -f .azureml/pytorch-env.yml    # create the new conda environment with updated dependencies
+```
+
+```bash
+conda activate pytorch-aml-env          # activate new conda environment
+```
 
 Zum lokalen Ausführen des geänderten Trainingsskripts nehmen Sie den folgenden Aufruf vor:
 

@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: troubleshooting
 ms.date: 02/20/2020
-ms.openlocfilehash: 1d5c79a141dbe1310762dc90b447fe78848ac10d
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 46c5f5995c7a1d4eb074f6c1b25ecaad7e2da37e
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94962483"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98695531"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-to-azure-sql-managed-instance"></a>Bekannte Probleme/Einschränkungen bei Onlinemigrationsvorgängen zu verwalteten Azure SQL-Instanzen
 
@@ -31,7 +31,7 @@ Im Folgenden werden bekannte Probleme und Einschränkungen in Bezug auf Onlinemi
 
     Azure Database Migration Service verwendet die Sicherungs- und Wiederherstellungsmethode, um Ihre lokalen Datenbanken zur verwalteten SQL-Instanz zu migrieren. Azure Database Migration Service unterstützt nur Sicherungen, die mit einer Prüfsumme erstellt wurden.
 
-    [Aktivieren oder Deaktivieren von Sicherungsprüfsummen während der Sicherung oder Wiederherstellung (SQL Server)](/sql/relational-databases/backup-restore/enable-or-disable-backup-checksums-during-backup-or-restore-sql-server?view=sql-server-2017)
+    [Aktivieren oder Deaktivieren von Sicherungsprüfsummen während der Sicherung oder Wiederherstellung (SQL Server)](/sql/relational-databases/backup-restore/enable-or-disable-backup-checksums-during-backup-or-restore-sql-server).
 
     > [!NOTE]
     > Wenn Sie die Datenbanksicherungen mit Komprimierung durchführen, wird die Prüfsumme standardmäßig ausgeführt, sofern Sie sie nicht explizit deaktiviert haben.
@@ -65,3 +65,29 @@ Im Folgenden werden bekannte Probleme und Einschränkungen in Bezug auf Onlinemi
     Verwaltete SQL-Instanzen sind ein PaaS-Dienst mit automatischen Patches und Versionsupdates. Während der Migration von SQL Managed Instance werden nicht kritische Updates bis zu 36 Stunden zurückgehalten. Danach (und bei kritischen Updates) wird der Prozess bei einer Unterbrechung der Migration auf den vollständigen Wiederherstellungszustand zurückgesetzt.
 
     Die Migrationsübernahme kann erst nach der Wiederherstellung der vollständigen Sicherung aufgerufen werden, wobei dann auch alle Protokollsicherungen erfasst werden. Wenden Sie sich an den [Azure DMS-Feedbackalias](mailto:dmsfeedback@microsoft.com), wenn Migrationsübernahmen aus der Produktion betroffen sind.
+
+## <a name="smb-file-share-connectivity"></a>SMB-Dateifreigabekonnektivität
+
+Probleme bei der Verbindung mit der SMB-Dateifreigabe werden wahrscheinlich durch ein Berechtigungsproblem verursacht. 
+
+Führen Sie die folgenden Schritte aus, um die SMB-Dateifreigabekonnektivität zu testen: 
+
+1. Speichern Sie eine Sicherung auf der SMB-Dateifreigabe. 
+1. Überprüfen Sie die Netzwerkkonnektivität zwischen dem Subnetz von Azure Database Migration Service und der SQL Server-Quelle. Am einfachsten ist es, einen virtuellen Computer mit SQL Server im DMS-Subnetz bereitzustellen und mithilfe von SQL Server Management Studio eine Verbindung mit der SQL Server-Quelle herzustellen. 
+1. Stellen Sie den Header auf der SQL Server-Quelle aus der Sicherung auf der Dateifreigabe wieder her: 
+
+   ```sql
+   RESTORE HEADERONLY   
+   FROM DISK = N'\\<SMB file share path>\full.bak'
+   ```
+
+Wenn Sie keine Verbindung mit der Dateifreigabe herstellen können, konfigurieren Sie die Berechtigungen mit den folgenden Schritten: 
+
+1. Navigieren Sie im Datei-Explorer zu Ihrer Dateifreigabe. 
+1. Klicken Sie mit der rechten Maustaste auf die Dateifreigabe, und wählen Sie „Eigenschaften“ aus. 
+1. Wählen Sie die Registerkarte **Freigabe** und dann **Erweiterte Freigabe** aus. 
+1. Fügen Sie das für die Migration verwendete Windows-Konto hinzu, und weisen Sie ihm den Vollzugriff zu. 
+1. Fügen Sie das Konto für den SQL Server-Dienst hinzu, und weisen Sie ihm den Vollzugriff zu. Überprüfen Sie im **SQL Server-Konfigurations-Manager** das Konto für den SQL Server-Dienst, wenn Sie nicht sicher sind, welches Konto verwendet wird. 
+
+   :::image type="content" source="media/known-issues-azure-sql-db-managed-instance-online/assign-fileshare-permissions.png" alt-text="Erteilen Sie den für die Migration verwendeten Windows-Konten und dem SQL Server-Dienstkonto den Vollzugriff. ":::
+

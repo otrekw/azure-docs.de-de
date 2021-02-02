@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/17/2020
 ms.author: hahamil
 ms.custom: aaddev, devx-track-js
-ms.openlocfilehash: b7d14ee321a1160420d106151276ae6aef513c5b
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: 1ec046ca6b42a5ca8f33b0347c562c85abd42684
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98064401"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98756163"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-a-javascript-single-page-app-spa-using-auth-code-flow"></a>Tutorial: Anmelden von Benutzern und Aufrufen der Microsoft Graph-API aus einer JavaScript-Single-Page-Webanwendung (SPA) mithilfe des Autorisierungscodeflusses
 
@@ -28,7 +28,7 @@ Dieses Tutorial umfasst folgende Punkte:
 > * Ausführen des OAuth 2.0-Autorisierungscodeflusses mit PKCE
 > * Anmelden von persönlichen Microsoft-Konten sowie von Geschäfts-, Schul- oder Unikonten
 > * Abrufen eines Zugriffstokens
-> * Aufrufen der Microsoft Graph-API oder Ihrer eigenen API, für die Zugriffstoken vom Microsoft Identity Platform-Endpunkt abgerufen werden müssen.
+> * Aufrufen der Microsoft Graph-API oder Ihrer eigenen API, für die Zugriffstoken aus Microsoft Identity Platform abgerufen werden müssen.
 
 MSAL.js 2.0 verbessert MSAL.js 1.0 durch Unterstützung des Autorisierungscodeflusses im Browser anstelle des impliziten Genehmigungsflusses. MSAL.js 2.0 unterstütz den impliziten Fluss **NICHT**.
 
@@ -41,7 +41,7 @@ MSAL.js 2.0 verbessert MSAL.js 1.0 durch Unterstützung des Autorisierungscode
 
 :::image type="content" source="media/tutorial-v2-javascript-auth-code/diagram-01-auth-code-flow.png" alt-text="Diagramm, das den Autorisierungscodefluss in einer Single-Page-Webanwendung darstellt.":::
 
-Die in diesem Tutorial erstellte Anwendung ermöglicht einer JavaScript-SPA das Abfragen der Microsoft Graph-API, indem Sicherheitstoken vom Microsoft Identity Platform-Endpunkt abgerufen werden. In diesem Szenario wird nach einer Benutzeranmeldung ein Zugriffstoken angefordert und den HTTP-Anforderungen im Autorisierungsheader hinzugefügt. Tokenabruf und -verlängerung werden von der Microsoft Authentication Library für JavaScript (MSAL.js) verarbeitet.
+Die in diesem Tutorial erstellte Anwendung ermöglicht einer JavaScript-SPA das Abfragen der Microsoft Graph-API, indem Sicherheitstoken aus Microsoft Identity Platform abgerufen werden. In diesem Szenario wird nach einer Benutzeranmeldung ein Zugriffstoken angefordert und den HTTP-Anforderungen im Autorisierungsheader hinzugefügt. Tokenabruf und -verlängerung werden von der Microsoft Authentication Library für JavaScript (MSAL.js) verarbeitet.
 
 In diesem Tutorial wird die folgende Bibliothek verwendet:
 
@@ -558,13 +558,13 @@ Die SPA, die Sie in diesem Tutorial erstellt haben, ruft `acquireTokenSilent` bz
 
 #### <a name="get-a-user-token-interactively"></a>Interaktives Abrufen eines Benutzertokens
 
-Nach der erstmaligen Anmeldung sollte Ihr App die Benutzer nicht jedes Mal erneut zur Authentifizierung auffordern, wenn sie auf eine geschützte Ressource zugreifen müssen (d. h. ein Token anzufordern). Rufen Sie `acquireTokenSilent` auf, um diese Aufforderungen zur erneuten Authentifizierung zu verhindern. Es gibt aber einige Situationen, in denen Sie die Interaktion mit dem Microsoft Identity Platform-Endpunkt ggf. erzwingen müssen. Beispiel:
+Nach der erstmaligen Anmeldung sollte Ihr App die Benutzer nicht jedes Mal erneut zur Authentifizierung auffordern, wenn sie auf eine geschützte Ressource zugreifen müssen (d. h. ein Token anzufordern). Rufen Sie `acquireTokenSilent` auf, um diese Aufforderungen zur erneuten Authentifizierung zu verhindern. Es gibt aber einige Situationen, in denen Sie die Interaktion mit Microsoft Identity Platform ggf. erzwingen müssen. Beispiel:
 
 - Benutzer müssen ihre Anmeldeinformationen erneut eingeben, weil das Kennwort abgelaufen ist.
 - Ihre Anwendung fordert Zugriff auf eine Ressource an, und die Einwilligung des Benutzers ist erforderlich.
 - Die zweistufige Authentifizierung ist erforderlich.
 
-Beim Aufrufen von `acquireTokenPopup` wird ein Popupfenster geöffnet (oder Benutzer werden über `acquireTokenRedirect` an den Microsoft Identity Platform-Endpunkt umgeleitet). In diesem Fenster müssen Benutzer ihre Anmeldeinformationen bestätigen, ihre Zustimmung für die erforderliche Ressource geben oder die zweistufige Authentifizierung durchführen.
+Beim Aufrufen von `acquireTokenPopup` wird ein Popupfenster geöffnet (oder Benutzer werden über `acquireTokenRedirect` an Microsoft Identity Platform umgeleitet). In diesem Fenster müssen Benutzer ihre Anmeldeinformationen bestätigen, ihre Zustimmung für die erforderliche Ressource geben oder die zweistufige Authentifizierung durchführen.
 
 #### <a name="get-a-user-token-silently"></a>Automatisches Abrufen eines Benutzertokens
 
@@ -618,7 +618,7 @@ Sie haben die Erstellung der Anwendung abgeschlossen und sind nun bereit, den No
 
 ### <a name="sign-in-to-the-application"></a>Anmelden bei der Anwendung
 
-Nachdem der Browser die Datei *index.html* geladen hat, klicken Sie auf **Anmelden**. Sie werden aufgefordert, sich mit dem Microsoft Identity Platform-Endpunkt anzumelden:
+Nachdem der Browser die Datei *index.html* geladen hat, klicken Sie auf **Anmelden**. Sie werden aufgefordert, sich mit Microsoft Identity Platform anzumelden:
 
 :::image type="content" source="media/tutorial-v2-javascript-auth-code/spa-01-signin-dialog.png" alt-text="Webbrowser mit dem Anmeldedialogfeld.":::
 

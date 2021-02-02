@@ -12,14 +12,14 @@ ms.topic: overview
 ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 1/14/2020
+ms.date: 1/25/2021
 ms.author: allensu
-ms.openlocfilehash: e8d0afab14d02ffe16db535f173456b55ab53d69
-ms.sourcegitcommit: aeba98c7b85ad435b631d40cbe1f9419727d5884
+ms.openlocfilehash: d5d2f83ddb4f37e1379bb7d60a76ddc70d61f99a
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2021
-ms.locfileid: "97860924"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98785836"
 ---
 # <a name="what-is-azure-load-balancer"></a>Was versteht man unter Azure Load Balancer?
 
@@ -56,7 +56,7 @@ Im Anschluss finden Sie einige Schlüsselszenarien für Load Balancer Standard:
 
 - Aktivieren der Unterstützung für den **[Lastenausgleich](../virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md)** für **[IPv6](../virtual-network/ipv6-overview.md)**
 
-- Load Balancer Standard stellt mehrdimensionale Metriken über [Azure Monitor](../azure-monitor/overview.md) bereit.  Diese Metriken können für eine bestimmte Dimension gefiltert, gruppiert und unterteilt werden.  Sie liefern aktuelle und vergangenheitsbezogene Einblicke in die Leistung und Integrität Ihres Diensts.  Resource Health (Ressourcenintegrität) wird ebenfalls unterstützt. Ausführlichere Informationen finden Sie unter **[Load Balancer Standard-Diagnose mit Metriken, Warnungen und Ressourcenintegrität](load-balancer-standard-diagnostics.md)** .
+- Load Balancer Standard stellt mehrdimensionale Metriken über [Azure Monitor](../azure-monitor/overview.md) bereit.  Diese Metriken können für eine bestimmte Dimension gefiltert, gruppiert und unterteilt werden.  Sie liefern aktuelle und vergangenheitsbezogene Einblicke in die Leistung und Integrität Ihres Diensts. Die [Erkenntnisse für Azure Load Balancer] (https://docs.microsoft.com/azure/load-balancer/load-balancer-insights) bieten ein vorkonfiguriertes Dashboard mit nützlichen Visualisierungen für diese Metriken.  Resource Health (Ressourcenintegrität) wird ebenfalls unterstützt. Ausführlichere Informationen finden Sie unter **[Load Balancer Standard-Diagnose mit Metriken, Warnungen und Ressourcenintegrität](load-balancer-standard-diagnostics.md)** .
 
 - Vornehmen eines Lastausgleichs für Dienste an **[mehreren Ports, mehreren IP-Adressen oder beidem](./load-balancer-multivip-overview.md)**
 

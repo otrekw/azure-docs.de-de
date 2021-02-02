@@ -1,14 +1,14 @@
 ---
 title: 'Schnellstart: Erstellen einer Blaupause mit Azure CLI'
 description: In dieser Schnellstartanleitung verwenden Sie Azure Blueprint, um Artefakte mithilfe der Azure CLI zu erstellen, zu definieren und bereitzustellen.
-ms.date: 10/14/2020
+ms.date: 01/26/2021
 ms.topic: quickstart
-ms.openlocfilehash: 88ccd3fe6271a79d201007954e7997b68d2dc69b
-ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
+ms.openlocfilehash: a0e44925bdec78b8b02a50c8b3f91db0bb764976
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94920558"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98875193"
 ---
 # <a name="quickstart-define-and-assign-an-azure-blueprint-with-azure-cli"></a>Schnellstart: Definieren und Zuweisen einer Azure-Blaupause mit der Azure CLI
 
@@ -16,7 +16,8 @@ Wenn Sie mit der Erstellung und Zuweisung von Blaupausen vertraut sind, können 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free) erstellen, bevor Sie beginnen.
+- Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free) erstellen, bevor Sie beginnen.
+- Wenn Sie Azure Blueprints noch nicht verwendet haben, registrieren Sie den Ressourcenanbieter über die Azure CLI mit `az provider register --namespace Microsoft.Blueprint`.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 

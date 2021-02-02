@@ -14,12 +14,12 @@ ms.custom:
 - devx-track-azurecli
 ms.date: 06/21/2019
 ms.author: wesmc
-ms.openlocfilehash: 969ae6dc1e3667bc360890c292371a0a9b1ba2dc
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 345b82d8120be52066ce6f834b7f2338b6c3bfd0
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94844590"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98623297"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-iot-hub-android"></a>Schnellstart: Steuern eines mit einem IoT-Hub verbundenen Geräts (Android)
 
@@ -73,7 +73,7 @@ Ein Gerät muss bei Ihrer IoT Hub-Instanz registriert sein, um eine Verbindung h
    **YourIoTHubName**: Ersetzen Sie diesen Platzhalter unten durch den Namen, den Sie für Ihren IoT-Hub wählen.
 
     ```azurecli-interactive
-    az iot hub device-identity show-connection-string \
+    az iot hub device-identity connection-string show\
       --hub-name {YourIoTHubName} \
       --device-id MyAndroidDevice \
       --output table
@@ -133,7 +133,7 @@ Diese App muss während der Ausführung des Dienst-SDK-Beispiels weiter auf eine
 
 ## <a name="read-the-telemetry-from-your-hub"></a>Lesen der Telemetriedaten aus Ihrem Hub
 
-In diesem Abschnitt verwenden Sie Azure Cloud Shell mit der [IoT-Erweiterung](/cli/azure/ext/azure-iot/iot?view=azure-cli-latest), um die Nachrichten zu überwachen, die vom Android-Gerät gesendet werden.
+In diesem Abschnitt verwenden Sie Azure Cloud Shell mit der [IoT-Erweiterung](/cli/azure/ext/azure-iot/iot?view=azure-cli-latest&preserve-view=true), um die Nachrichten zu überwachen, die vom Android-Gerät gesendet werden.
 
 1. Führen Sie über Azure Cloud Shell den folgenden Befehl aus, um eine Verbindung mit Ihrem IoT-Hub herzustellen und Nachrichten zu lesen:
 

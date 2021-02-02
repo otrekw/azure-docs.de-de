@@ -1,29 +1,28 @@
 ---
 title: Referenztabelle für alle Azure Security Center-Empfehlungen
-description: In diesem Artikel sind die Azure Security Center-Sicherheitsempfehlungen aufgeführt, die Ihnen beim Schützen Ihrer Ressourcen helfen.
+description: In diesem Artikel sind die Azure Security Center-Sicherheitsempfehlungen aufgeführt, die Ihnen beim Härten und Schützen Ihrer Ressourcen helfen.
 author: memildin
 ms.service: security-center
 ms.topic: reference
-ms.date: 01/12/2021
+ms.date: 01/26/2021
 ms.author: memildin
 ms.custom: generated
-ms.openlocfilehash: 11d4830908b4e86da12cd5e40cc26b1c1b1aecbd
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: f6d881036b0ebaa79d1052e41b8ec649bb1e8d6d
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98133044"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98797178"
 ---
 # <a name="security-recommendations---a-reference-guide"></a>Sicherheitsempfehlungen: Referenzhandbuch
 
 In diesem Artikel sind die Empfehlungen aufgeführt, die in Azure Security Center angezeigt werden können. Welche Empfehlungen in Ihrer Umgebung angezeigt werden, hängt von den geschützten Ressourcen und Ihrer angepassten Konfiguration ab.
 
-Security Center-Empfehlungen beruhen auf Best Practices. Zum Teil orientieren sie sich am **Azure-Sicherheitsvergleichstest**. Dabei handelt es sich um von Microsoft erstellte Azure-spezifische Richtlinien zu den Best Practices für Sicherheit und Compliance, die auf allgemeinen Complianceframeworks basieren.
-[Weitere Informationen zum Azure-Sicherheitsvergleichstest](../security/benchmarks/introduction.md)
+Security Center-Empfehlungen beruhen auf dem [Azure-Sicherheitsvergleichstest](../security/benchmarks/introduction.md). Beim Azure-Sicherheitsvergleichstest handelt es sich um einen von Microsoft erstellten Satz Azure-spezifischer Richtlinien zu bewährten Methoden für Sicherheit und Compliance, die auf allgemeinen Complianceframeworks basieren. Diese weit verbreitete Benchmark basiert auf den Kontrollen des [Center for Internet Security (CIS)](https://www.cisecurity.org/benchmark/azure/) und des [National Institute of Standards and Technology (NIST)](https://www.nist.gov/) und konzentriert sich auf cloudzentrierte Sicherheit.
 
 Informationen zum Umgang mit diesen Empfehlungen finden Sie unter [Umsetzen von Empfehlungen in Azure Security Center](security-center-remediate-recommendations.md).
 
-Ihre Sicherheitsbewertung basiert auf der Anzahl der Security Center-Empfehlungen, die Sie umgesetzt haben. Sehen Sie sich den Schweregrad jeder einzelnen Empfehlung und deren mögliche Auswirkung auf Ihre Sicherheitsbewertung an, um zu entscheiden, welche Empfehlungen zuerst umgesetzt werden sollten.
+Ihre Sicherheitsbewertung basiert auf der Anzahl der Security Center-Empfehlungen, die Sie umgesetzt haben. Sehen Sie sich den Schweregrad jeder einzelnen Empfehlung und deren mögliche Auswirkung auf Ihre Sicherheitsbewertung an, um zu entscheiden, welche Empfehlungen zuerst umgesetzt werden sollten.
 
 > [!TIP]
 > Wenn es in der Beschreibung einer Empfehlung heißt: „Keine zugehörige Richtlinie“, so liegt das normalerweise daran, dass diese Empfehlung von einer anderen Empfehlung und _deren_ Richtlinie abhängig ist. Die Empfehlung „Endpoint Protection-Integritätsfehler sollten behoben werden...“ stützt sich beispielsweise auf die Empfehlung, die prüft, ob _überhaupt_ eine Endpoint Protection-Lösung installiert ist. („Endpoint Protection-Lösung sollte installiert werden...“). Die zugrunde liegende Empfehlung _verfügt_ über eine Richtlinie.

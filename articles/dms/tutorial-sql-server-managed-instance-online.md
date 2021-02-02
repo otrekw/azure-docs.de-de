@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 08/04/2020
-ms.openlocfilehash: 0041779abcd97901fb9315125a287a1d45cff133
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 02adb6f47b907fea402f8b312b3f4e8e117927ed
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96350108"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98693679"
 ---
 # <a name="tutorial-migrate-sql-server-to-an-azure-sql-managed-instance-online-using-dms"></a>Tutorial: Onlinemigration von SQL Server zu Azure SQL Managed Instance mithilfe von DMS
 
@@ -211,7 +211,7 @@ Nachdem eine Instanz des Diensts erstellt wurde, suchen Sie diesen im Azure-Port
 
     | | |
     |--------|---------|
-    |**SMB-Netzwerkadressfreigabe** | Die lokale SMB-Netzwerkfreigabe oder Azure-Dateifreigabe, die alle vollständigen Datenbanksicherungsdateien sowie Sicherungsdateien des Transaktionsprotokolls enthält, die Azure Database Migration Service für die Migration verwenden kann. Das Dienstkonto, unter dem die SQL Server-Quellinstanz ausgeführt wird, muss über Lese-/Schreibberechtigungen für diese Netzwerkfreigabe verfügen. Geben Sie in der Netzwerkfreigabe einen FQDN oder IP-Adressen des Servers an, wie z.B. „\\\servername.domainname.com\backupfolder\\“ oder „\IP address\backupfolder“. Zur Verbesserung der Leistung wird empfohlen, für jede zu migrierende Datenbank einen eigenen Ordner zu verwenden. Sie können den Dateifreigabepfad auf Datenbankebene mithilfe der Option **Erweiterte Einstellungen** angeben. |
+    |**SMB-Netzwerkadressfreigabe** | Die lokale SMB-Netzwerkfreigabe oder Azure-Dateifreigabe, die alle vollständigen Datenbanksicherungsdateien sowie Sicherungsdateien des Transaktionsprotokolls enthält, die Azure Database Migration Service für die Migration verwenden kann. Das Dienstkonto, unter dem die SQL Server-Quellinstanz ausgeführt wird, muss über Lese-/Schreibberechtigungen für diese Netzwerkfreigabe verfügen. Geben Sie in der Netzwerkfreigabe einen FQDN oder IP-Adressen des Servers an, wie z.B. „\\\servername.domainname.com\backupfolder\\“ oder „\IP address\backupfolder“. Zur Verbesserung der Leistung wird empfohlen, für jede zu migrierende Datenbank einen eigenen Ordner zu verwenden. Sie können den Dateifreigabepfad auf Datenbankebene mithilfe der Option **Erweiterte Einstellungen** angeben. Wenn beim Herstellen einer Verbindung mit der SMB-Freigabe Probleme auftreten, finden Sie weitere Informationen unter [Bekannte Probleme/Einschränkungen bei Onlinemigrationsvorgängen zu verwalteten Azure SQL-Instanzen](known-issues-azure-sql-db-managed-instance-online.md#smb-file-share-connectivity). |
     |**Benutzername** | Achten Sie darauf, dass der Windows-Benutzer eine Berechtigung für Vollzugriff auf die von Ihnen angegebene Netzwerkfreigabe besitzt. Azure Database Migration Service nimmt die Anmeldeinformationen des Benutzers an, um die Sicherungsdateien für Wiederherstellungsvorgänge in den Azure Storage-Container hochzuladen. Verwenden Sie bei der Nutzung der Azure-Dateifreigabe als Benutzernamen den Speicherkontonamen, dem „AZURE\“ vorangestellt ist. |
     |**Kennwort** | Kennwort für den Benutzer Verwenden Sie bei Nutzung der Azure-Dateifreigabe einen Speicherkontoschlüssel als Kennwort. |
     |**Abonnement des Azure Storage-Kontos** | Wählen Sie das Abonnement aus, das das Azure Storage-Konto enthält. |

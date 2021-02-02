@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 19451fb09919238a04ac953c9c38fc70b4744d16
-ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
+ms.openlocfilehash: 3d2652d2f6c1bb56dd009a9e4de375c42786986d
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97955296"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98734998"
 ---
 # <a name="create-azure-arc-data-controller-using-the-azure-data-cli-azdata"></a>Erstellen eines Azure Arc-Datencontrollers mithilfe von [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)]
 
@@ -59,7 +59,7 @@ kubectl config current-context
 
 ### <a name="connectivity-modes"></a>Konnektivitätsmodi
 
-Wie in [Konnektivitätsmodi und Anforderungen](https://docs.microsoft.com/azure/azure-arc/data/connectivity) beschrieben, kann der Azure Arc-Datencontroller mit dem Konnektivitätsmodus `direct` oder `indirect` bereitgestellt werden. Mit dem Konnektivitätsmodus `direct` werden Verwendungsdaten automatisch und kontinuierlich an Azure gesendet. In diesen Artikeln geben die Beispiele den Konnektivitätsmodus `direct` wie folgt an:
+Wie in [Konnektivitätsmodi und Anforderungen](./connectivity.md) beschrieben, kann der Azure Arc-Datencontroller mit dem Konnektivitätsmodus `direct` oder `indirect` bereitgestellt werden. Mit dem Konnektivitätsmodus `direct` werden Verwendungsdaten automatisch und kontinuierlich an Azure gesendet. In diesen Artikeln geben die Beispiele den Konnektivitätsmodus `direct` wie folgt an:
 
    ```console
    --connectivity-mode direct
@@ -266,34 +266,11 @@ Nachdem Sie den Befehl ausgeführt haben, fahren Sie mit [Überwachen des Erstel
 
 ### <a name="create-on-azure-red-hat-openshift-aro"></a>Erstellen in Azure Red Hat OpenShift (ARO)
 
-#### <a name="apply-the-scc"></a>Anwenden von Sicherheitskontexteinschränkungen
+Azure Red Hat OpenShift erfordert eine Einschränkung des Sicherheitskontexts.
 
-Bevor Sie den Datencontroller in Azure Red Hat OpenShift erstellen, müssen Sie bestimmte Sicherheitskontexteinschränkungen (Security Context Constraints, SCC) anwenden. Für das Vorschaurelease lockern diese die Sicherheitseinschränkungen. In zukünftigen Releases werden aktualisierte Sicherheitskontexteinschränkungen bereitgestellt.
+#### <a name="apply-the-security-context"></a>Wenden Sie den Sicherheitskontext an.
 
-1. Laden Sie die benutzerdefinierte Sicherheitskontexteinschränkung (Security Context Constraint, SCC) herunter. Verwenden Sie einen der folgenden Werte: 
-   - [GitHub](https://github.com/microsoft/azure_arc/tree/main/arc_data_services/deploy/yaml/arc-data-scc.yaml) 
-   - ([Raw](https://raw.githubusercontent.com/microsoft/azure_arc/main/arc_data_services/deploy/yaml/arc-data-scc.yaml))
-   - `curl` Mit dem folgenden Befehl wird „arc-data-scc.yaml“ heruntergeladen:
-
-      ```console
-      curl https://raw.githubusercontent.com/microsoft/azure_arc/main/arc_data_services/deploy/yaml/arc-data-scc.yaml -o arc-data-scc.yaml
-      ```
-
-1. Create SCC (SCC erstellen).
-
-   ```console
-   oc create -f arc-data-scc.yaml
-   ```
-
-1. Wenden Sie die Sicherheitskontexteinschränkung auf das Dienstkonto an.
-
-   > [!NOTE]
-   > Verwenden Sie hier und im Befehl `azdata arc dc create` unten denselben Namespace. Beispiel: `arc`.
-
-   ```console
-   oc adm policy add-scc-to-user arc-data-scc --serviceaccount default --namespace arc
-   ```
-
+[!INCLUDE [apply-security-context-constraint](includes/apply-security-context-constraint.md)]
 
 #### <a name="create-custom-deployment-profile"></a>Erstellen eines benutzerdefinierten Bereitstellungsprofils
 
@@ -324,33 +301,11 @@ Nachdem Sie den Befehl ausgeführt haben, fahren Sie mit [Überwachen des Erstel
 > [!NOTE]
 > Bei Verwendung der Red Hat OpenShift Container Platform in Azure empfiehlt es sich, die neueste verfügbare Version zu verwenden.
 
-#### <a name="apply-the-scc"></a>Anwenden von Sicherheitskontexteinschränkungen
+Bevor Sie den Datencontroller in Red Hat OCP erstellen, müssen Sie bestimmte Sicherheitskontexteinschränkungen anwenden. 
 
-Bevor Sie den Datencontroller in Red Hat OCP erstellen, müssen Sie bestimmte Sicherheitskontexteinschränkungen (Security Context Constraints, SCC) anwenden. Für das Vorschaurelease lockern diese die Sicherheitseinschränkungen. In zukünftigen Releases werden aktualisierte Sicherheitskontexteinschränkungen bereitgestellt.
+#### <a name="apply-the-security-context-constraint"></a>Anwenden der Einschränkung beim Sicherheitskontext
 
-1. Laden Sie die benutzerdefinierte Sicherheitskontexteinschränkung (Security Context Constraint, SCC) herunter. Verwenden Sie einen der folgenden Werte: 
-   - [GitHub](https://github.com/microsoft/azure_arc/tree/main/arc_data_services/deploy/yaml/arc-data-scc.yaml) 
-   - ([Raw](https://raw.githubusercontent.com/microsoft/azure_arc/main/arc_data_services/deploy/yaml/arc-data-scc.yaml))
-   - `curl` Mit dem folgenden Befehl wird „arc-data-scc.yaml“ heruntergeladen:
-
-      ```console
-      curl https://raw.githubusercontent.com/microsoft/azure_arc/main/arc_data_services/deploy/yaml/arc-data-scc.yaml -o arc-data-scc.yaml
-      ```
-
-1. Create SCC (SCC erstellen).
-
-   ```console
-   oc create -f arc-data-scc.yaml
-   ```
-
-1. Wenden Sie die Sicherheitskontexteinschränkung auf das Dienstkonto an.
-
-   > [!NOTE]
-   > Verwenden Sie hier und im Befehl `azdata arc dc create` unten denselben Namespace. Beispiel: `arc`.
-
-   ```console
-   oc adm policy add-scc-to-user arc-data-scc --serviceaccount default --namespace arc
-   ```
+[!INCLUDE [apply-security-context-constraint](includes/apply-security-context-constraint.md)]
 
 #### <a name="determine-storage-class"></a>Bestimmen der Speicherklasse
 

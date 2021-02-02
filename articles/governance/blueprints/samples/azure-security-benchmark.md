@@ -1,18 +1,18 @@
 ---
 title: Blaupausenbeispiel für den Vergleichstest für die Azure-Sicherheit – Übersicht
 description: Übersicht über das Blaupausenbeispiel für den Vergleichstest für die Azure-Sicherheit Dieses Blaupausenbeispiel unterstützt Kunden bei der Bewertung spezifischer Kontrollen.
-ms.date: 10/14/2020
+ms.date: 01/27/2021
 ms.topic: sample
-ms.openlocfilehash: 6b147ffd4efbf814b6119f5d7e90dc7af2ea2687
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: 38a50970999965b6a86b8ce8882006c169f2dc5a
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92057585"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98919238"
 ---
 # <a name="azure-security-benchmark-blueprint-sample"></a>Blaupausenbeispiel für den Azure-Sicherheitsvergleichstest
 
-Das Blaupausenbeispiel für den Vergleichstest für die Azure-Sicherheit bietet mithilfe von [Azure Policy](../../policy/overview.md) Schutzmaßnahmen für Governance, die Ihnen beim Bewerten bestimmter Steuerungen des [Vergleichstests für die Azure-Sicherheit](../../../security/benchmarks/overview.md) helfen. Diese Blaupause hilft Kunden bei der Bereitstellung eines Kernsatzes von Richtlinien für jede in Azure bereitgestellte Architektur, in der sie die Implementierung von Steuerungen des Vergleichstests für die Azure-Sicherheit beabsichtigen.
+Das Blaupausenbeispiel für den Azure-Sicherheitsvergleichstest bietet mithilfe von [Azure Policy](../../policy/overview.md) Schutzmaßnahmen für Governance, die Ihnen beim Bewerten bestimmter Steuerungen des [Azure-Sicherheitsvergleichstest v1](../../../security/benchmarks/overview.md) helfen. Diese Blaupause hilft Kunden bei der Bereitstellung eines Kernsatzes von Richtlinien für jede in Azure bereitgestellte Architektur, in der sie die Implementierung von Steuerungen des Vergleichstests für die Azure-Sicherheit beabsichtigen.
 
 ## <a name="control-mapping"></a>Steuerungszuordnung
 
@@ -37,7 +37,7 @@ Implementieren Sie zuerst das Blaupausenbeispiel, indem Sie mithilfe des Beispie
 
 1. Klicken Sie links auf der Seite **Erste Schritte** unter _Blaupause erstellen_ auf die Schaltfläche **Erstellen**.
 
-1. Suchen Sie unter _Weitere Beispiele_ nach dem Blaupausenbeispiel **Azure-Sicherheitsvergleichstest**, und wählen Sie zum Auswählen dieses Beispiels den Namen aus.
+1. Suchen Sie unter _Weitere Beispiele_ nach dem Blaupausenbeispiel **Azure-Sicherheitsvergleichstest v1**, und wählen Sie zum Auswählen dieses Beispiels den Namen aus.
 
 1. Geben Sie die _Grundlagen_ des Blaupausenbeispiels ein:
 

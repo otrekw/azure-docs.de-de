@@ -2,15 +2,15 @@
 title: 'Bereitstellen einer Vorlage: Azure-Portal'
 description: Hier erfahren Sie, wie Sie über das Azure-Portal Ihre erste Azure Resource Manager-Vorlage (ARM-Vorlage) erstellen und bereitstellen.
 author: mumian
-ms.date: 06/29/2020
+ms.date: 01/26/2021
 ms.topic: quickstart
 ms.author: jgao
-ms.openlocfilehash: bdbcecc247a4b5318ba44b92befa7e90ac47aa8c
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 946156caa7252a89cab006d604eb6b441e09c643
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96349621"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98892496"
 ---
 # <a name="quickstart-create-and-deploy-arm-templates-by-using-the-azure-portal"></a>Schnellstart: Erstellen und Bereitstellen von ARM-Vorlagen über das Azure-Portal
 
@@ -33,9 +33,11 @@ Viele erfahrene Vorlagenentwickler verwenden diese Methode, um Vorlagen zu gener
 
     ![Auswählen von „Ressource erstellen“ im Menü des Azure-Portals](./media/quickstart-create-templates-use-the-portal/azure-resource-manager-template-tutorial-create-a-resource.png)
 
-1. Wählen Sie **Storage** > **Speicherkonto** aus.
+1. Geben Sie im Suchfeld den Suchbegriff **Speicherkonto** ein, und drücken Sie die **[EINGABETASTE]** .
+1. Wählen Sie **Erstellen** aus.
 
     ![Erstellen eines Azure-Speicherkontos](./media/quickstart-create-templates-use-the-portal/azure-resource-manager-template-tutorial-create-storage-account-portal.png)
+
 1. Geben Sie Folgendes ein:
 
     |Name|Wert|

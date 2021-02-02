@@ -5,12 +5,12 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 04/16/2019
 ms.custom: mvc, devx-track-azurepowershell
-ms.openlocfilehash: 5e83c599ceed76927f2a313f78c83638d708f1bb
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 81005a3032355f566aef2a6794cf2ec5038b0dd8
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90985133"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98737115"
 ---
 # <a name="back-up-a-virtual-machine-in-azure-with-powershell"></a>Sichern eines virtuellen Computers in Azure mit PowerShell
 
@@ -18,7 +18,7 @@ Mit dem [Azure PowerShell Az](/powershell/azure/new-azureps-module-az)-Modul kö
 
 Mit [Azure Backup](backup-overview.md) können Sie lokale Computer und Apps sowie virtuelle Azure-Computer sichern. In diesem Artikel wird beschrieben, wie Sie mit dem Az-Modul einen virtuellen Azure-Computer sichern. Alternativ können Sie einen virtuellen Computer mithilfe der [Azure-Befehlszeilenschnittstelle](quick-backup-vm-cli.md) oder im [Azure-Portal](quick-backup-vm-portal.md) sichern.
 
-In dieser Schnellstartanleitung wird die Sicherung für einen vorhandenen virtuellen Azure-Computer aktiviert. Wenn Sie eine VM erstellen müssen, können Sie die [Erstellung mit Azure PowerShell durchführen](../virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm.md?toc=%2fpowershell%2fmodule%2ftoc.json).
+In dieser Schnellstartanleitung wird die Sicherung für einen vorhandenen virtuellen Azure-Computer aktiviert. Wenn Sie eine VM erstellen müssen, können Sie die [Erstellung mit Azure PowerShell durchführen](/previous-versions/azure/virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm?toc=%2fpowershell%2fmodule%2ftoc.json).
 
 Für diese Schnellstartanleitung ist Version 1.0.0 oder höher des Azure PowerShell Az-Moduls erforderlich. Führen Sie `Get-Module -ListAvailable Az` aus, um die Version zu finden. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Install and configure Azure PowerShell](/powershell/azure/install-az-ps) (Installieren des Azure PowerShell-Moduls) Informationen dazu.
 
@@ -45,7 +45,7 @@ Ein [Recovery Services-Tresor](backup-azure-recovery-services-vault-overview.md)
 Beachten Sie beim Erstellen des Tresors die folgenden Punkte:
 
 - Geben Sie für die Ressourcengruppe und den Speicherort die Ressourcengruppe und den Speicherort des zu sichernden virtuellen Computers an.
-- Wenn Sie dieses [Beispielskript](../virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm.md?toc=%2fpowershell%2fmodule%2ftoc.json) zum Erstellen des virtuellen Computers (Virtual Machine, VM) verwendet haben, heißt die Ressourcengruppe **myResourceGroup**, der VM **myVM**, und die Ressourcen befinden sich in der Region **WestEurope**.
+- Wenn Sie dieses [Beispielskript](/previous-versions/azure/virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm?toc=%2fpowershell%2fmodule%2ftoc.json) zum Erstellen des virtuellen Computers verwendet haben, heißt die Ressourcengruppe **myResourceGroup**, der virtuelle Computer **_myVM_*, und die Ressourcen befinden sich in der Region **WestEurope**.
 - Azure Backup übernimmt automatisch die Speicherung der gesicherten Daten. Der Tresor verwendet standardmäßig den [georedundanten Speicher (GRS)](../storage/common/storage-redundancy.md#geo-redundant-storage). Durch Georedundanz wird sichergestellt, dass die gesicherten Daten in einer sekundären Azure-Region repliziert werden, die Hunderte von Kilometern von der primären Region entfernt ist.
 
 Erstellen Sie jetzt einen Tresor:

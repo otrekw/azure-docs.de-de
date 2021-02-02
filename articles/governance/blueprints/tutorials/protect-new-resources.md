@@ -1,14 +1,14 @@
 ---
 title: 'Tutorial: Schützen neuer Ressourcen mit Sperren'
 description: In diesem Tutorial verwenden Sie die Ressourcensperrenoptionen „Schreibgeschützt“ und „Nicht löschen“ von Azure Blueprints, um neu bereitgestellte Ressourcen zu schützen.
-ms.date: 08/27/2020
+ms.date: 01/27/2021
 ms.topic: tutorial
-ms.openlocfilehash: 3ed75a1dee925f2a55ac46705a171bec5fc1d30e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c671d641982ba833b54586c1b33979a97747396b
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89048569"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98915406"
 ---
 # <a name="tutorial-protect-new-resources-with-azure-blueprints-resource-locks"></a>Tutorial: Schützen neuer Ressourcen mit Azure Blueprints-Ressourcensperren
 
@@ -187,7 +187,7 @@ Die Zuweisung erstellt die Ressourcengruppe _TestingBPLocks_ und das vom ARM-Vor
 
 1. Wählen Sie die Ablehnungszuweisung und dann links die Seite **Abgelehnte Berechtigungen** aus.
 
-   Die Ablehnungszuweisung verhindert alle Vorgänge mit der Konfiguration **\*** und **Aktion**, erlaubt aber den Lesezugriff, indem **\*/read** über **NotActions** ausgeschlossen wird.
+   Die Ablehnungszuweisung verhindert alle Vorgänge mit der Konfiguration **\* *_ und _* Aktion**, erlaubt aber den Lesezugriff, indem **\*/read** über **NotActions** ausgeschlossen wird.
 
 1. Wählen Sie auf der Breadcrumb-Leiste im Azure-Portal **TestingBPLocks – Zugriffssteuerung (IAM)** aus. Wählen Sie dann links die Seite **Übersicht** aus, und klicken Sie anschließend auf die Schaltfläche **Ressourcengruppe löschen**. Geben Sie den Namen **TestingBPLocks** ein, um den Löschvorgang zu bestätigen, und wählen Sie am unteren Rand des Bereichs die Option **Löschen** aus.
 

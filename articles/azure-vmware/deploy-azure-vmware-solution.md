@@ -2,17 +2,20 @@
 title: Bereitstellen und Konfigurieren von Azure VMware Solution
 description: Erfahren Sie, wie Sie die in der Planungsphase gesammelten Informationen verwenden, um die private Azure VMware Solution-Cloud bereitzustellen.
 ms.topic: tutorial
-ms.date: 11/09/2020
-ms.openlocfilehash: 7e31b9236a3c75009d15bde35019036b6db55cab
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.date: 12/24/2020
+ms.openlocfilehash: f2b6f3c4ad82117fee96e0c2e5973a7011384d48
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96861516"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98760876"
 ---
 # <a name="deploy-and-configure-azure-vmware-solution"></a>Bereitstellen und Konfigurieren von Azure VMware Solution
 
-In diesem Artikel verwenden Sie die Informationen aus dem [Planungsprozess](production-ready-deployment-steps.md), um Azure VMware Solution bereitzustellen. Wenn Sie die Informationen noch nicht definiert haben, wechseln Sie zurück zum [Planungsprozess](production-ready-deployment-steps.md), bevor Sie den Vorgang fortsetzen.
+In diesem Artikel verwenden Sie die Informationen aus dem [Planungsprozess](production-ready-deployment-steps.md), um Azure VMware Solution bereitzustellen. 
+
+>[!IMPORTANT]
+>Wenn Sie die Informationen noch nicht definiert haben, wechseln Sie zurück zum [Planungsprozess](production-ready-deployment-steps.md), bevor Sie den Vorgang fortsetzen.
 
 ## <a name="register-the-resource-provider"></a>Registrieren des Ressourcenanbieters
 
@@ -40,15 +43,16 @@ Nachdem Sie Azure VMware Solution bereitgestellt haben, erstellen Sie die Jumpbo
 
 :::image type="content" source="media/pre-deployment/jump-box-diagram.png" alt-text="Die Azure VMware Solution-Jumpbox erstellen" border="false" lightbox="media/pre-deployment/jump-box-diagram.png":::
 
-Gehen Sie wie folgt vor, um einen virtuellen Computer (Virtual Machine, VM) in dem virtuellen Netzwerk zu erstellen, das Sie [im Rahmen des Bereitstellungsprozesses bestimmt oder erstellt haben](production-ready-deployment-steps.md#azure-virtual-network-to-attach-azure-vmware-solution): 
+Gehen Sie wie folgt vor, um einen virtuellen Computer (Virtual Machine, VM) in dem virtuellen Netzwerk zu erstellen, das Sie [im Rahmen des Bereitstellungsprozesses bestimmt oder erstellt haben](production-ready-deployment-steps.md#attach-virtual-network-to-azure-vmware-solution): 
 
 [!INCLUDE [create-avs-jump-box-steps](includes/create-jump-box-steps.md)]
 
 ## <a name="connect-to-a-virtual-network-with-expressroute"></a>Herstellen einer Verbindung mit einem virtuellen Netzwerk über ExpressRoute
 
-Wenn Sie im Bereitstellungsschritt kein virtuelles Netzwerk definiert und die Absicht haben, die ExpressRoute-Leitung von Azure VMware Solution mit einem vorhandenen ExpressRoute-Gateway zu verbinden, führen Sie die folgenden Schritte aus.
+>[!IMPORTANT]
+>Wenn Sie bereits ein virtuelles Netzwerk auf der Bereitstellungsseite in Azure definiert haben, springen Sie zum nächsten Abschnitt.
 
-Wenn Sie bereits ein virtuelles Netzwerk auf der Bereitstellungsseite in Azure definiert haben, springen Sie zum nächsten Abschnitt.
+Wenn Sie im Bereitstellungsschritt kein virtuelles Netzwerk definiert und die Absicht haben, die ExpressRoute-Leitung von Azure VMware Solution mit einem vorhandenen ExpressRoute-Gateway zu verbinden, führen Sie die folgenden Schritte aus:
 
 [!INCLUDE [connect-expressroute-to-vnet](includes/connect-expressroute-vnet.md)]
 
@@ -120,11 +124,10 @@ Stellen Sie die VM wie in jeder beliebigen vSphere-Umgebung bereit.  Ordnen Sie 
 Melden Sie sich bei der im vorherigen Schritt erstellten VM an, und überprüfen Sie die Konnektivität.
 
 1. Pingen Sie eine IP-Adresse im Internet.
-2. Navigieren Sie über einen Webbrowser zu einer Internet-Website.
+2. Navigieren Sie in einem Webbrowser zu einer Internetwebsite.
 3. Pingen Sie die Jumpbox, die sich im virtuellen Azure-Netzwerk befindet.
 
->[!IMPORTANT]
->An diesem Punkt ist Azure VMware Solution einsatzbereit, und Sie haben erfolgreich eine Verbindung zwischen dem virtuellen Azure-Netzwerk und dem Internet hergestellt.
+Azure VMware Solution ist nun einsatzbereit, und Sie haben erfolgreich eine Verbindung zwischen dem virtuellen Azure-Netzwerk und dem Internet hergestellt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

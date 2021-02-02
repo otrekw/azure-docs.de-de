@@ -10,21 +10,19 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: a5b995fd273fcfa231e101bc77b11d268be728fb
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 294870d3448886b9cea573a0e79b3ac436941f89
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94359134"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98696488"
 ---
 # <a name="tutorial-configuring-netsuite-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von NetSuite für die automatische Benutzerbereitstellung
 
 In diesem Tutorial werden die Schritte beschrieben, die Sie in NetSuite OneWorld und Azure AD ausführen müssen, um Benutzerkonten von Azure AD automatisch in NetSuite bereitzustellen bzw. deren Bereitstellung automatisch aufzuheben.
 
-> [!NOTE]
-> Bei dieser Integration erfolgt die Authentifizierung derzeit mithilfe der Standardauthentifizierung (Benutzername und Kennwort). NetSuite implementiert eine Anforderung für die mehrstufige Authentifizierung, die Kunden daran hindert, diese Integration zu verwenden, sofern sie nicht durch eine Ausnahme von dieser Anforderung befreit sind. Wir arbeiten mit NetSuite zusammen, um diese Integration auf eine neuere Authentifizierungsmethode zu aktualisieren, damit Kunden ohne eine Ausnahme sie wieder verwenden können. Wir aktualisieren dieses Dokument mit einer ETA, sobald eine verfügbar ist.
-
-Empfohlene Maßnahme: Warten Sie, bis wir ein Update des Authentifizierungsverhaltens für diese Integration veröffentlichen, oder wenden Sie sich an den NetSuite-Support, um eine Ausnahme von der Anforderung für die mehrstufige Authentifizierung zu erhalten.
+> [!WARNING]
+> Diese Bereitstellungsintegration funktioniert ab Februar 2020 aufgrund einer Änderung an den NetSuite-APIs, die von Microsoft zum Bereitstellen von Benutzern in NetSuite verwendet werden, nicht mehr. Infolgedessen werden die Bereitstellungsfunktionen der NetSuite-Anwendung im Azure Active Directory-Katalog für Unternehmens-Apps in Kürze entfernt. Die SSO-Funktionalität der Anwendung bleibt erhalten. Microsoft arbeitet zusammen mit NetSuite an der Entwicklung einer neuen modernisierten Bereitstellungsintegration, derzeit kann jedoch noch keine Aussage zum Bereitstellungszeitpunkt gemacht werden.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -76,7 +74,7 @@ In diesem Abschnitt wird erläutert, wie Sie die Bereitstellung von Active Dire
    
     b. Geben Sie im Textfeld **Administratorkennwort** das Kennwort für dieses Konto ein.
       
-1. Klicken Sie im Azure-Portal auf **Verbindung testen** , um sicherzustellen, dass Azure AD eine Verbindung mit Ihrer NetSuite-App herstellen kann.
+1. Klicken Sie im Azure-Portal auf **Verbindung testen**, um sicherzustellen, dass Azure AD eine Verbindung mit Ihrer NetSuite-App herstellen kann.
 
 1. Geben Sie im Feld **Benachrichtigungs-E-Mail** die E-Mail-Adresse einer Person oder einer Gruppe ein, die Benachrichtigungen zu Bereitstellungsfehlern erhalten soll, und aktivieren Sie das Kontrollkästchen.
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 204cdc689d5a117df428bb314a81a35081f7b13c
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 8e155a253910cc5ee3f4fc71cf9ea66ced5cb46f
+ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94357639"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98742113"
 ---
 # <a name="tutorial-configure-bluejeans-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von BlueJeans für die automatische Benutzerbereitstellung
 
@@ -46,15 +46,15 @@ Bevor Sie BlueJeans für die automatische Benutzerbereitstellung mit Azure AD ko
 
     ![Schaltfläche „Azure Active Directory“](common/select-azuread.png)
 
-2. Navigieren Sie zu **Unternehmensanwendungen** , und wählen Sie die Option **Alle Anwendungen**.
+2. Navigieren Sie zu **Unternehmensanwendungen**, und wählen Sie die Option **Alle Anwendungen**.
 
     ![Blatt „Unternehmensanwendungen“](common/enterprise-applications.png)
 
-3. Klicken Sie oben im Bereich auf die Schaltfläche **Neue Anwendung** , um eine neue Anwendung hinzuzufügen.
+3. Klicken Sie oben im Bereich auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
 
     ![Schaltfläche „Neue Anwendung“](common/add-new-app.png)
 
-4. Geben Sie im Suchfeld **BlueJeans** ein, wählen Sie im Ergebnisbereich **BlueJeans** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen** , um die Anwendung hinzuzufügen.
+4. Geben Sie im Suchfeld **BlueJeans** ein, wählen Sie im Ergebnisbereich **BlueJeans** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
 
     ![BlueJeans in der Ergebnisliste](common/search-new-app.png)
 
@@ -81,7 +81,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 ### <a name="to-configure-automatic-user-provisioning-for-bluejeans-in-azure-ad"></a>So konfigurieren Sie die automatische Benutzerbereitstellung für BlueJeans in Azure AD
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und wählen Sie **Unternehmensanwendungen** , **Alle Anwendungen** und dann **BlueJeans** aus.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und wählen Sie **Unternehmensanwendungen**, **Alle Anwendungen** und dann **BlueJeans** aus.
 
     ![Blatt „Unternehmensanwendungen“](common/enterprise-applications.png)
 
@@ -91,49 +91,51 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 3. Wählen Sie die Registerkarte **Bereitstellung**.
 
-    ![Screenshot der Randleiste der BlueJeans-Unternehmensanwendung mit hervorgehobener und aufgerufener Option „Bereitstellung“](./media/bluejeans-provisioning-tutorial/BluejeansProvisioningTab.png)
+    ![Registerkarte „Bereitstellung“](common/provisioning.png)
 
 4. Legen Sie den **Bereitstellungsmodus** auf **Automatisch** fest.
 
-    ![Screenshot der Seite „Bereitstellung“ mit den aufgerufenen Abschnitten „Bereitstellungsmodus“ und „Administratoranmeldeinformationen“](./media/bluejeans-provisioning-tutorial/Bluejeans1.png)
+    ![Registerkarte „Bereitstellung“, Bereitstellungsmodus „Automatisch“](common/provisioning-automatic.png)
 
-5. Geben Sie im Abschnitt **Administratoranmeldeinformationen** einen Wert für **Administratorbenutzername** und **Administratorkennwort** Ihres BlueJeans-Kontos ein. Beispiele für diese Werte:
+5. Geben Sie im Abschnitt **Administratoranmeldeinformationen** die Mandanten-URL und das geheime Token für BlueJeans ein. Klicken Sie auf **Verbindung testen**, um sicherzustellen, dass Azure AD eine Verbindung mit BlueJeans herstellen kann. Wenn die Verbindung nicht möglich ist, stellen Sie sicher, dass Ihr BlueJeans-Konto über Administratorrechte verfügt, und wiederholen Sie den Vorgang.
 
-   * Geben Sie im Feld **Administratorbenutzername** den Benutzernamen des Administratorkontos im BlueJeans-Mandanten ein. Beispiel: admin@contoso.com.
+    ![Token](common/provisioning-testconnection-tenanturltoken.png)
 
-   * Geben Sie im Feld **Administratorkennwort** das Kennwort für den Administratorbenutzernamen ein.
 
-6. Klicken Sie nach dem Auffüllen der in Schritt 5 gezeigten Felder auf **Verbindung testen** , um sicherzustellen, dass Azure AD eine Verbindung mit BlueJeans herstellen kann. Wenn die Verbindung nicht möglich ist, stellen Sie sicher, dass Ihr BlueJeans-Konto über Administratorrechte verfügt, und wiederholen Sie den Vorgang.
+6. Geben Sie im Feld **Benachrichtigungs-E-Mail** die E-Mail-Adresse einer Person oder einer Gruppe ein, die Benachrichtigungen zu Bereitstellungsfehlern erhalten soll, und aktivieren Sie das Kontrollkästchen **Bei Fehler E-Mail-Benachrichtigung senden**.
 
-    ![Screenshot des Abschnitts „Administratoranmeldeinformationen“ mit der aufgerufenen Option „Verbindung testen“](./media/bluejeans-provisioning-tutorial/BluejeansTestConnection.png)
+    ![Benachrichtigungs-E-Mail](common/provisioning-notification-email.png)
 
-7. Geben Sie im Feld **Benachrichtigungs-E-Mail** die E-Mail-Adresse einer Person oder einer Gruppe ein, die Benachrichtigungen zu Bereitstellungsfehlern erhalten soll, und aktivieren Sie das Kontrollkästchen **Bei Fehler E-Mail-Benachrichtigung senden**.
+7. Klicken Sie auf **Speichern**.
 
-    ![Screenshot des Textfelds „Benachrichtigungs-E-Mail“](./media/bluejeans-provisioning-tutorial/BluejeansNotificationEmail.png)
+8. Wählen Sie im Abschnitt **Zuordnungen** die Option **Azure Active Directory-Benutzer mit BlueJeans synchronisieren** aus.
 
-8. Klicken Sie auf **Speichern**.
+9. Überprüfen Sie im Abschnitt **Attributzuordnung** die Benutzerattribute, die von Azure AD mit BlueJeans synchronisiert werden. Die als **übereinstimmende** Eigenschaften ausgewählten Attribute werden für den Abgleich der Benutzerkonten in BlueJeans für Updatevorgänge verwendet. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
 
-9. Wählen Sie im Abschnitt **Zuordnungen** die Option **Azure Active Directory-Benutzer mit BlueJeans synchronisieren** aus.
+|Attribut|type|Unterstützung für das Filtern|
+|---|---|---|
+|userName|String|&check;|
+|aktiv|Boolean|
+|title|String|
+|emails[type eq "work"].value|String|
+|name.givenName|String|
+|name.familyName|String|
+|phoneNumbers[type eq "work"].value|String|
+|urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:manager|String|
 
-    ![Screenshot des Abschnitts „Zuordnungen“ mit hervorgehobener Option „Azure Active Directory-Benutzer mit BlueJeans synchronisieren“](./media/bluejeans-provisioning-tutorial/BluejeansMapping.png)
+10. Wenn Sie Bereichsfilter konfigurieren möchten, lesen Sie die Anweisungen unter [Attributbasierte Anwendungsbereitstellung mit Bereichsfiltern](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
 
-10. Überprüfen Sie im Abschnitt **Attributzuordnung** die Benutzerattribute, die von Azure AD mit BlueJeans synchronisiert werden. Die als **übereinstimmende** Eigenschaften ausgewählten Attribute werden für den Abgleich der Benutzerkonten in BlueJeans für Updatevorgänge verwendet. Wählen Sie die Schaltfläche **Speichern** , um alle Änderungen zu übernehmen.
+11. Um den Azure AD-Bereitstellungsdienst für BlueJeans zu aktivieren, ändern Sie im Abschnitt **Einstellungen** den **Bereitstellungsstatus** in **Ein**.
 
-    ![Screenshot: Abschnitt „Attributzuordnungen“ mit sieben Zuordnungen](./media/bluejeans-provisioning-tutorial/BluejeansUserMappingAtrributes.png)
+    ![Aktivierter Bereitstellungsstatus](common/provisioning-toggle-on.png)
 
-11. Wenn Sie Bereichsfilter konfigurieren möchten, lesen Sie die Anweisungen unter [Attributbasierte Anwendungsbereitstellung mit Bereichsfiltern](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
+12. Legen Sie die Benutzer und/oder Gruppen fest, die in BlueJeans bereitgestellt werden sollen. Wählen Sie dazu im Abschnitt **Einstellungen** unter **Bereich** die gewünschten Werte aus.
 
-12. Um den Azure AD-Bereitstellungsdienst für BlueJeans zu aktivieren, ändern Sie im Abschnitt **Einstellungen** den **Bereitstellungsstatus** in **Ein**.
+    ![Bereitstellungsbereich](common/provisioning-scope.png)
 
-    ![Screenshot des Abschnitts „Einstellungen“, in dem die Option „Bereitstellungsstatus“ auf „Ein“ festgelegt ist](./media/bluejeans-provisioning-tutorial/BluejeansProvisioningStatus.png)
+13. Wenn Sie fertig sind, klicken Sie auf **Speichern**.
 
-13. Legen Sie die Benutzer und/oder Gruppen fest, die in BlueJeans bereitgestellt werden sollen. Wählen Sie dazu im Abschnitt **Einstellungen** unter **Bereich** die gewünschten Werte aus.
-
-    ![Screenshot der Einstellung „Bereich“ mit hervorgehobener Option „Nur zugewiesene Benutzer und Gruppen synchronisieren“](./media/bluejeans-provisioning-tutorial/UserGroupSelection.png)
-
-14. Wenn Sie fertig sind, klicken Sie auf **Speichern**.
-
-    ![Screenshot der Randleiste der BlueJeans-Unternehmensanwendung mit aufgerufener Option „Speichern“](./media/bluejeans-provisioning-tutorial/SaveProvisioning.png)
+    ![Speichern der Bereitstellungskonfiguration](common/provisioning-configuration-save.png)
 
 Dadurch wird die Erstsynchronisierung aller Benutzer und/oder Gruppen gestartet, die im Abschnitt **Einstellungen** unter **Bereich** definiert sind. Die Erstsynchronisierung dauert länger als nachfolgende Synchronisierungen, die ungefähr alle 40 Minuten erfolgen, solange der Azure AD-Bereitstellungsdienst ausgeführt wird. Im Abschnitt **Synchronisierungsdetails** können Sie den Fortschritt überwachen und Links zu Berichten zur Bereitstellungsaktivität aufrufen. Darin sind alle Aktionen aufgeführt, die vom Azure AD-Bereitstellungsdienst in BlueJeans ausgeführt werden.
 
@@ -141,7 +143,7 @@ Weitere Informationen zum Lesen von Azure AD-Bereitstellungsprotokollen finden S
 
 ## <a name="connector-limitations"></a>Connector-Einschränkungen
 
-* In BlueJeans sind Benutzernamen mit mehr als 30 Zeichen nicht zulässig.
+* In BlueJeans sind Benutzernamen mit mehr als 30 Zeichen nicht zulässig.
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie eine hostbasierte Verschlüsselung in einem A
 services: container-service
 ms.topic: article
 ms.date: 07/10/2020
-ms.openlocfilehash: 14ec39272bf2f434aaa57217a90667a62e82901a
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 531d1dc4169b5f4adecfb29c3e116049cb99c3c9
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96183293"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98787823"
 ---
 # <a name="host-based-encryption-on-azure-kubernetes-service-aks-preview"></a>Hostbasierte Verschlüsselung in Azure Kubernetes Service (AKS) (Vorschau)
 
@@ -26,34 +26,32 @@ Diese Funktion kann nur bei der Erstellung des Clusters oder bei der Erstellung 
 ### <a name="prerequisites"></a>Voraussetzungen
 
 - Stellen Sie sicher, dass die `aks-preview`-CLI-Erweiterung v0.4.55 oder höher installiert ist.
-- Stellen Sie sicher, dass das `EncryptionAtHost`-Featureflag unter `Microsoft.Compute` aktiviert ist.
 - Stellen Sie sicher, dass das `EnableEncryptionAtHostPreview`-Featureflag unter `Microsoft.ContainerService` aktiviert ist.
 
+Sie müssen das Feature für Ihr Abonnement aktivieren lassen, um die Verschlüsselung auf dem Host für Ihre virtuellen Computer oder VM-Skalierungsgruppen verwenden zu können. Senden Sie eine E-Mail mit Ihren Abonnement-IDs an encryptionAtHost@microsoft.com, um das Feature für Ihre Abonnements aktivieren zu lassen.
+
 ### <a name="register-encryptionathost--preview-features"></a>Registrieren der `EncryptionAtHost`-Vorschaufunktionen
+
+> [!IMPORTANT]
+> Sie müssen eine E-Mail an encryptionAtHost@microsoft.com mit Ihren Abonnement-IDs senden, damit das Feature für Computeressourcen aktiviert wird. Sie können es für diese Ressourcen nicht selbst aktivieren. Sie können es selbst für den Containerdienst aktivieren.
 
 Sie müssen die Featureflags `EnableEncryptionAtHostPreview` und `EncryptionAtHost` in Ihrem Abonnement aktivieren, um einen AKS-Cluster zu erstellen, der eine hostbasierte Verschlüsselung verwendet.
 
 Registrieren Sie das `EncryptionAtHost`-Featureflag mit dem Befehl [az feature register][az-feature-register], wie im folgenden Beispiel gezeigt:
 
 ```azurecli-interactive
-az feature register --namespace "Microsoft.Compute" --name "EncryptionAtHost"
-
 az feature register --namespace "Microsoft.ContainerService"  --name "EnableEncryptionAtHostPreview"
 ```
 
 Es dauert einige Minuten, bis der Status *Registered (Registriert)* angezeigt wird. Sie können den Registrierungsstatus mithilfe des Befehls [az feature list][az-feature-list] überprüfen:
 
 ```azurecli-interactive
-az feature list -o table --query "[?contains(name, 'Microsoft.Compute/EncryptionAtHost')].{Name:name,State:properties.state}"
-
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/EnableEncryptionAtHostPreview')].{Name:name,State:properties.state}"
 ```
 
 Wenn Sie fertig sind, aktualisieren Sie die Registrierung des `Microsoft.ContainerService`- und `Microsoft.Compute`-Ressourcenanbieters mit dem Befehl [az provider register][az-provider-register]:
 
 ```azurecli-interactive
-az provider register --namespace Microsoft.Compute
-
 az provider register --namespace Microsoft.ContainerService
 ```
 

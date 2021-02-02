@@ -1,20 +1,20 @@
 ---
-title: 'Azure IoT Hub-Gerätestreams: C#-Schnellstartanleitung für SSH und RDP'
+title: 'Schnellstart: Azure IoT Hub-Gerätestreams: C#-Schnellstartanleitung für SSH und RDP'
 description: In dieser Schnellstartanleitung führen Sie zwei C#-Beispielanwendungen aus, die SSH- und RDP-Szenarien über einen IoT Hub-Gerätestream ermöglichen.
 author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: csharp
 ms.topic: quickstart
-ms.custom: mvc, devx-track-azurecli
+ms.custom: references_regions
 ms.date: 03/14/2019
 ms.author: robinsh
-ms.openlocfilehash: adf0f42b34a4bd7e5df2d2994408dbc175c5e01b
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 12e26818f86fc4abdc1873d031182fd994c04687
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94831921"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624370"
 ---
 # <a name="quickstart-enable-ssh-and-rdp-over-an-iot-hub-device-stream-by-using-a-c-proxy-application-preview"></a>Schnellstart: Ermöglichen von SSH und RDP über einen IoT Hub-Gerätestream unter Verwendung einer C#-Proxyanwendung (Vorschauversion)
 
@@ -25,25 +25,6 @@ Microsoft Azure IoT Hub unterstützt derzeit Gerätestreams als [Previewfunktion
 Über [IoT Hub-Gerätestreams](iot-hub-device-streams-overview.md) können Dienst- und Geräteanwendungen sicher und firewallfreundlich kommunizieren. In dieser Schnellstartanleitung werden zwei C#-Anwendungen verwendet, die es ermöglichen, Anwendungsdatenverkehr von Clients/Servern (etwa SSH [Secure Shell] und RDP [Remotedesktopprotokoll]) über einen per IoT-Hub eingerichteten Gerätestream zu senden. Eine Übersicht über das Setup finden Sie in den [Beispielen mit lokalen Proxyanwendungen für SSH und RDP](iot-hub-device-streams-overview.md#local-proxy-sample-for-ssh-or-rdp).
 
 Dieser Artikel beschreibt zunächst das Setup für SSH (unter Verwendung von Port 22) und anschließend, wie der Port für RDP geändert wird. Gerätestreams sind anwendungs- und protokollunabhängig. Das gleiche Beispiel kann daher für andere Arten von Anwendungsdatenverkehr angepasst werden. In der Regel wird dabei nur der Kommunikationsport in den von der gewünschten Anwendung verwendeten Port geändert.
-
-## <a name="how-it-works"></a>Funktionsweise
-
-Die folgende Abbildung zeigt, wie die lokalen Geräte- und Dienstproxyanwendungen in diesem Beispiel eine End-to-End-Konnektivität zwischen den SSH-Clientprozessen und SSH-Daemonprozessen ermöglichen. Hierbei wird davon ausgegangen, dass der Daemon auf dem gleichen Gerät ausgeführt wird wie die lokale Geräteproxyanwendung.
-
-![Setup der lokalen Proxyanwendung](./media/quickstart-device-streams-proxy-csharp/device-stream-proxy-diagram.png)
-
-1. Die lokale Dienstproxyanwendung stellt eine Verbindung mit dem IoT-Hub her und initiiert einen Gerätestream an das Zielgerät.
-
-1. Die lokale Geräteproxyanwendung schließt den Handshake für die Streaminitiierung ab und richtet über den Streamingendpunkt des IoT-Hubs einen End-to-End-Streamingtunnel mit der Dienstseite ein.
-
-1. Die lokale Geräteproxyanwendung stellt eine Verbindung mit dem SSH-Daemon her, der an Port 22 auf dem Gerät lauscht. Diese Einstellung ist konfigurierbar, wie im Abschnitt „Ausführen der lokalen Geräteproxyanwendung“ beschrieben.
-
-1. Die lokale Dienstproxyanwendung wartet auf neue SSH-Verbindungen des Benutzers, indem er am angegebenen Port (in diesem Fall Port 2222) lauscht. Diese Einstellung ist konfigurierbar, wie im Abschnitt „Ausführen der lokalen Dienstproxyanwendung“ beschrieben. Wenn der Benutzer eine Verbindung über den SSH-Client herstellt, ermöglicht der Tunnel die Übertragung von SSH-Anwendungsdatenverkehr zwischen SSH-Client und Serveranwendung.
-
-> [!NOTE]
-> Über einen Gerätestream gesendeter SSH-Datenverkehr wird nicht direkt zwischen Dienst und Gerät gesendet, sondern über den Streamingendpunkt des IoT-Hubs getunnelt. Weitere Informationen finden Sie in der Beschreibung der [Vorteile der Verwendung von IoT Hub-Gerätestreams](iot-hub-device-streams-overview.md#benefits).
-
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -72,6 +53,25 @@ Die folgende Abbildung zeigt, wie die lokalen Geräte- und Dienstproxyanwendunge
 
 [!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 
+## <a name="how-it-works"></a>Funktionsweise
+
+Die folgende Abbildung zeigt, wie die lokalen Geräte- und Dienstproxyanwendungen in diesem Beispiel eine End-to-End-Konnektivität zwischen den SSH-Clientprozessen und SSH-Daemonprozessen ermöglichen. Hierbei wird davon ausgegangen, dass der Daemon auf dem gleichen Gerät ausgeführt wird wie die lokale Geräteproxyanwendung.
+
+![Setup der lokalen Proxyanwendung](./media/quickstart-device-streams-proxy-csharp/device-stream-proxy-diagram.png)
+
+1. Die lokale Dienstproxyanwendung stellt eine Verbindung mit dem IoT-Hub her und initiiert einen Gerätestream an das Zielgerät.
+
+1. Die lokale Geräteproxyanwendung schließt den Handshake für die Streaminitiierung ab und richtet über den Streamingendpunkt des IoT-Hubs einen End-to-End-Streamingtunnel mit der Dienstseite ein.
+
+1. Die lokale Geräteproxyanwendung stellt eine Verbindung mit dem SSH-Daemon her, der an Port 22 auf dem Gerät lauscht. Diese Einstellung ist konfigurierbar, wie im Abschnitt „Ausführen der lokalen Geräteproxyanwendung“ beschrieben.
+
+1. Die lokale Dienstproxyanwendung wartet auf neue SSH-Verbindungen des Benutzers, indem er am angegebenen Port (in diesem Fall Port 2222) lauscht. Diese Einstellung ist konfigurierbar, wie im Abschnitt „Ausführen der lokalen Dienstproxyanwendung“ beschrieben. Wenn der Benutzer eine Verbindung über den SSH-Client herstellt, ermöglicht der Tunnel die Übertragung von SSH-Anwendungsdatenverkehr zwischen SSH-Client und Serveranwendung.
+
+> [!NOTE]
+> Über einen Gerätestream gesendeter SSH-Datenverkehr wird nicht direkt zwischen Dienst und Gerät gesendet, sondern über den Streamingendpunkt des IoT-Hubs getunnelt. Weitere Informationen finden Sie in der Beschreibung der [Vorteile der Verwendung von IoT Hub-Gerätestreams](iot-hub-device-streams-overview.md#benefits).
+
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+
 ## <a name="create-an-iot-hub"></a>Erstellen eines IoT-Hubs
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
@@ -96,7 +96,7 @@ Ein Gerät muss bei Ihrer IoT Hub-Instanz registriert sein, um eine Verbindung h
    > Ersetzen Sie den Platzhalter *YourIoTHubName* durch den Namen, den Sie für Ihren IoT-Hub ausgewählt haben.
 
     ```azurecli-interactive
-    az iot hub device-identity show-connection-string --hub-name {YourIoTHubName} --device-id MyDevice --output table
+    az iot hub device-identity connection-string show --hub-name {YourIoTHubName} --device-id MyDevice --output table
     ```
 
     Notieren Sie sich die zurückgegebene Verbindungszeichenfolge des Geräts zur späteren Verwendung in dieser Schnellstartanleitung. Dies sieht in etwa wie im folgenden Beispiel aus:

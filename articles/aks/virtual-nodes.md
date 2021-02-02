@@ -6,12 +6,12 @@ services: container-service
 ms.topic: conceptual
 ms.date: 09/21/2020
 ms.custom: references_regions
-ms.openlocfilehash: 2dd91e5c506f229d653fdf98bc0549c173cec793
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 1e5a53c80aed90e44ba594dcff3c8ca23afc2c4f
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93351839"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98684773"
 ---
 # <a name="create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes"></a>Erstellen und Konfigurieren eines AKS-Clusters zur Verwendung von virtuellen Knoten
 
@@ -48,6 +48,7 @@ Die Funktionalität der virtuellen Knoten ist stark abhängig von den ACI-Featur
 * Virtuelle Knoten mit privaten Clustern
 * Verwenden von vom API-Server autorisierten IP-Adressbereichen für AKS
 * Bei der Volumeeinbindung von Azure Files-Freigaben wird [Universell V1](../storage/common/storage-account-overview.md#types-of-storage-accounts) unterstützt. Befolgen Sie die Anweisungen zum Einbinden [eines Volumes mit einer Azure Files-Freigabe](azure-files-volume.md).
+* Die Verwendung von IPv6 wird nicht unterstützt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

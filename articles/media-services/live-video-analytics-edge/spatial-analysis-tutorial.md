@@ -3,12 +3,12 @@ title: Analysieren von Livevideos mit maschinellem Sehen für die räumliche Ana
 description: In diesem Tutorial wird gezeigt, wie Sie Live Video Analytics zusammen mit dem KI-Feature Maschinelles Sehen für die räumliche Analyse aus Azure Cognitive Services verwenden, um einen Livevideofeed von einer (simulierten) IP-Kamera zu analysieren.
 ms.topic: tutorial
 ms.date: 09/08/2020
-ms.openlocfilehash: 5b979bfeb6961b285cfeb2287888d8f157608d96
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.openlocfilehash: 1c6fe6e10a91034d794437f31d495b85ef086848
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2021
-ms.locfileid: "98060179"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632942"
 ---
 # <a name="analyze-live-video-with-computer-vision-for-spatial-analysis-preview"></a>Analysieren von Livevideos mit maschinellem Sehen für die räumliche Analyse (Vorschau)
 
@@ -23,7 +23,8 @@ In diesem Lernprogramm führen Sie folgende Schritte aus:
 > * Überwachen von Ereignissen
  
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
-
+  > [!NOTE]
+  > Sie benötigen ein Azure-Abonnement mit Berechtigungen zum Erstellen von Dienstprinzipalen. (Die **Rolle „Besitzer“** stellt diese Berechtigungen bereit.) Wenn Sie nicht über die richtigen Berechtigungen verfügen, wenden Sie sich an Ihren Kontoadministrator, damit er Ihnen die richtigen Berechtigungen erteilt. 
 ## <a name="suggested-pre-reading"></a>Empfohlene Lektüre zur Vorbereitung
 
 Lesen Sie diese Artikel, bevor Sie beginnen:
@@ -136,10 +137,10 @@ Bei der Bereitstellungsvorlagendatei sind einige Aspekte zu beachten:
 1. `IpcMode` sollte in den „createOptions“ der Module „lvaEdge“ und „spatial-analysis“ identisch und auf „host“ festgelegt sein.
 1. Damit der RTSP-Simulator ausgeführt wird, müssen Sie Volumebindungen eingerichtet haben. Weitere Informationen finden Sie unter [Einrichten von Docker-Volumebereitstellungen](deploy-azure-stack-edge-how-to.md#optional-setup-docker-volume-mounts).
 
-    1. [Stellen Sie eine Verbindung mit der SMB-Freigabe her](../../databox-online/azure-stack-edge-deploy-add-shares.md#connect-to-an-smb-share), und kopieren Sie die [Beispielvideodatei „bulldozer“](https://lvamedia.blob.core.windows.net/public/bulldozer.mkv) in die lokale Freigabe.
+    1. [Stellen Sie eine Verbindung mit der SMB-Freigabe her](../../databox-online/azure-stack-edge-deploy-add-shares.md#connect-to-an-smb-share), und kopieren Sie die [Beispielvideodatei „bulldozer“](https://lvamedia.blob.core.windows.net/public/bulldozer.mkv) in die lokale Freigabe.  
+        > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4Mesi]  
     1. Das Modul „rtspsim“ muss folgende Konfiguration aufweisen:
-        
-        ```json
+        ```
         "createOptions": {
                             "HostConfig": {
                               "Mounts": [
@@ -159,6 +160,8 @@ Bei der Bereitstellungsvorlagendatei sind einige Aspekte zu beachten:
                             }
                           }
         ```
+        
+
 ## <a name="generate-and-deploy-the-deployment-manifest"></a>Generieren und Bereitstellen des Bereitstellungsmanifests
 
 Mit dem Bereitstellungsmanifest wird definiert, welche Module auf einem Edgegerät bereitgestellt werden. Darüber hinaus werden auch die Konfigurationseinstellungen für diese Module definiert.
@@ -201,7 +204,7 @@ Anschließend befinden sich in „Geräte/Module“ die Module `lvaEdge`, `rtsps
 Führen Sie zum Anzeigen dieser Ereignisse die folgenden Schritte aus:
 
 1. Öffnen Sie in Visual Studio Code die Registerkarte **Erweiterungen** (oder drücken Sie STRG+UMSCHALT+X), und suchen Sie nach Azure IoT Hub.
-1. Klicken Sie mit der rechten Maustaste, um das Kontextmenü zu öffnen, und wählen Sie **Erweiterungseinstellungen** aus.
+1. Klicken Sie mit der rechten Maustaste, und wählen Sie **Erweiterungseinstellungen** aus.
 
     > [!div class="mx-imgBorder"]
     > :::image type="content" source="./media/run-program/extensions-tab.png" alt-text="Erweiterungseinstellungen":::

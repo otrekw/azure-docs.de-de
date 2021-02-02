@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 09/21/2020
 ms.author: v-mibufo
-ms.openlocfilehash: b13b61aff819271ed1722572f251f9a6d14b17ab
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 8af656e00c457dfa3d438f0cb104d85ccc687745
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91976996"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98661237"
 ---
 # <a name="windows-stop-error---0xc000021a-status-system-process-terminated"></a>Windows-kritischer Fehler: 0xC000021A – Status System Process Terminated
 
@@ -47,6 +47,10 @@ Dieser Fehler tritt auf, wenn ein kritischer Prozess, z. B. WinLogon („winlog
 ## <a name="solution"></a>Lösung
 
 ### <a name="collect-the-memory-dump-file"></a>Erfassen der Speicherabbilddatei
+
+> [!TIP]
+> Wenn Sie über eine aktuelle Sicherung der VM verfügen, können Sie versuchen, die [VM aus der Sicherung wiederherzustellen](../../backup/backup-azure-arm-restore-vms.md), um das Startproblem zu beheben.
+
 
 Um dieses Problem zu beheben, muss das Speicherabbild analysiert werden. Erfassen Sie die Speicherabbilddatei für den Absturz, und wenden Sie sich an den Support. Gehen Sie wie folgt vor, um die Speicherabbilddatei zu erfassen:
 

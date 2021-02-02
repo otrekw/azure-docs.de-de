@@ -14,12 +14,12 @@ ms.custom:
 - 'Role: Cloud Development'
 - devx-track-azurecli
 ms.date: 03/04/2020
-ms.openlocfilehash: 39cfa64b756ef6bf20f8cbf3d6e8f8a25e81c674
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 88b818a25a0888cc74783a210cc7a1c0acb455ac
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97092872"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98623263"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-iot-hub-net"></a>Schnellstart: Steuern eines mit einer IoT Hub-Instanz verbundenen Geräts (.NET)
 
@@ -82,7 +82,7 @@ Ein Gerät muss bei Ihrer IoT Hub-Instanz registriert sein, um eine Verbindung h
    **YourIoTHubName**: Ersetzen Sie diesen Platzhalter unten durch den Namen, den Sie für Ihren IoT-Hub ausgewählt haben.
 
     ```azurecli-interactive
-    az iot hub device-identity show-connection-string \
+    az iot hub device-identity connection-string show \
       --hub-name {YourIoTHubName} \
       --device-id MyDotnetDevice \
       --output table

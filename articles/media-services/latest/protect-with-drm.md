@@ -1,26 +1,9 @@
 ---
-title: DRM-Verschlüsselung und Lizenzübermittlungsdienst von Azure Media Services
-titleSuffix: Azure Media Services
-description: Hier erfahren Sie, wie Sie mit der dynamischen DRM-Verschlüsselung und dem Lizenzbereitstellungsdienst Streams bereitstellen, die mit Microsoft PlayReady-, Google Widevine- oder Apple FairPlay-Lizenzen verschlüsselt sind.
-services: media-services
-documentationcenter: ''
-author: IngridAtMicrosoft
-manager: femila
-editor: ''
-ms.service: media-services
-ms.workload: media
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: tutorial
-ms.date: 08/31/2020
-ms.author: inhenkel
-ms.custom: seodec18
-ms.openlocfilehash: abaa82d6f5f33a3dc29db50ae6d029dacd3f7c13
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: HT
-ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89289357"
+Titel: DRM-Verschlüsselung und Lizenzübermittlungsdienst von Azure Media Services service: Azure Media Services description: Hier erfahren Sie, wie Sie mit der dynamischen DRM-Verschlüsselung und dem Lizenzbereitstellungsdienst Streams bereitstellen, die mit Microsoft PlayReady-, Google Widevine- oder Apple FairPlay-Lizenzen verschlüsselt sind.
+services: media-services documentationcenter: '' author: IngridAtMicrosoft manager: femila editor: ''
+
+ms.service: media-services ms.workload: media ms.tgt_pltfrm: na ms.devlang: na ms.topic: tutorial ms.date: 08/31/2020 ms.author: inhenkel ms.custom: seodec18
+
 ---
 # <a name="tutorial-use-drm-dynamic-encryption-and-license-delivery-service"></a>Tutorial: Verwenden der dynamischen DRM-Verschlüsselung und des Lizenzbereitstellungsdiensts
 
@@ -96,7 +79,7 @@ Vor dem Erstellen einer neuen **Transformation** sollten Sie zunächst mit der *
 
 ## <a name="submit-job"></a>Auftrag übermitteln
 
-Wie bereits erwähnt, ist das **Transformations**objekt die Anleitung und ein [Auftrag](transforms-jobs-concept.md) die tatsächliche Anforderung an Media Services, diese **Transformation** auf ein bestimmtes Eingabevideo oder einen Audioinhalt anzuwenden. Der **Auftrag** gibt Informationen wie den Speicherort des Eingabevideos und den Speicherort für die Ausgabe an.
+Wie bereits erwähnt, ist das **Transformations** objekt die Anleitung und ein [Auftrag](transforms-jobs-concept.md) die tatsächliche Anforderung an Media Services, diese **Transformation** auf ein bestimmtes Eingabevideo oder einen Audioinhalt anzuwenden. Der **Auftrag** gibt Informationen wie den Speicherort des Eingabevideos und den Speicherort für die Ausgabe an.
 
 In diesem Tutorial wird die Auftragseingabe basierend auf einer Datei erstellt, die direkt aus einer [HTTPS-Quell-URL](job-input-from-http-how-to.md) erfasst wird.
 

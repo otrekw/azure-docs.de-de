@@ -17,12 +17,12 @@ ms.date: 11/07/2020
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 3fe87f94ce05efa4a784ba7e3f65e53abb00fd05
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 481a4ff21c361e4cf82a21d9e98357a4c8b7b1b4
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97914245"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98663671"
 ---
 # <a name="automate-management-with-the-sql-server-iaas-agent-extension"></a>Automatisieren der Verwaltung mit der SQL Server-IaaS-Agent-Erweiterung
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -34,7 +34,7 @@ Dieser Artikel bietet eine Übersicht über die Erweiterung. Informationen zum I
 
 ## <a name="overview"></a>Übersicht
 
-Die Erweiterung für den SQL Server-IaaS-Agent bietet für SQL Server auf Azure-VMs zahlreiche Vorteile: 
+Die Erweiterung für SQL Server-IaaS-Agent ermöglicht die Integration mit dem Azure-Portal und schaltet je nach Verwaltungsmodus eine Reihe von Featurevorteilen für SQL Server auf virtuellen Azure-Computern frei: 
 
 - **Featurevorteile:** Die Erweiterung macht verschiedene Automatisierungsfeatures wie Portalverwaltung, flexible Lizenzierung, automatisierte Sicherungen und Patches und andere verfügbar. Weitere Informationen finden Sie unter [Featurevorteile](#feature-benefits) weiter unten in diesem Artikel. 
 
@@ -74,12 +74,13 @@ Diese Vorteile werden in der folgenden Tabelle genauer erläutert:
 
 | Funktion | Beschreibung |
 | --- | --- |
-| **Portalverwaltung** | Ermöglicht die [Verwaltung im Portal](manage-sql-vm-portal.md), sodass Sie alle Ihre SQL Server-VMs an einem Ort anzeigen und SQL-spezifische Features direkt über das Portal aktivieren und deaktivieren können. 
-| **Automatisierte Sicherung** |Automatisiert die Planung von Sicherungen für alle Datenbanken entweder der Standardinstanz oder einer [ordnungsgemäß installierten](frequently-asked-questions-faq.md#administration) benannten Instanz von SQL Server in der VM. Weitere Informationen finden Sie unter [Automatisierte Sicherung für SQL Server auf virtuellen Azure-Computern (Resource Manager)](automated-backup-sql-2014.md). |
-| **Automatisiertes Patchen** |Mit diesem Feature können Sie ein Wartungsfenster konfigurieren, in dem wichtige Windows- und SQL Server-Sicherheitsupdates für die VM ausgeführt werden. Auf diese Weise werden Updates für Ihre Workload während der Spitzenzeiten vermieden. Weitere Informationen finden Sie unter [Automatisiertes Patchen für SQL Server auf virtuellen Azure-Computern (Resource Manager)](automated-patching.md). |
-| **Azure Key Vault-Integration** |Mit diesem Dienst können Sie Azure Key Vault auf Ihrem virtuellen SQL Server-Computer automatisch installieren und konfigurieren. Weitere Informationen finden Sie unter [Konfigurieren der Azure Key Vault-Integration für SQL Server auf virtuellen Azure-Computern (Resource Manager)](azure-key-vault-integration-configure.md). |
-| **Flexible Lizenzierung** | Durch einen [nahtlosen Wechsel](licensing-model-azure-hybrid-benefit-ahb-change.md) zwischen den Lizenzmodellen „Bring-Your-Own-License“ (BYOL, auch als „Azure-Hybridvorteil“ bezeichnet) und „Nutzungsbasierte Bezahlung“ können Sie Kosten sparen. | 
-| **Flexible Version/Edition** | Wenn Sie die [Version](change-sql-server-version.md) oder [Edition](change-sql-server-edition.md) von SQL Server ändern möchten, können Sie einfach die Metadaten im Azure-Portal aktualisieren, ohne die gesamte SQL Server-VM erneut bereitstellen zu müssen.  | 
+| **Portalverwaltung** | Ermöglicht die [Verwaltung im Portal](manage-sql-vm-portal.md), sodass Sie alle Ihre SQL Server-VMs an einem Ort anzeigen und SQL-spezifische Features direkt über das Portal aktivieren und deaktivieren können. <br/> Verwaltungsmodus: Lightweight und vollständig|  
+| **Automatisierte Sicherung** |Automatisiert die Planung von Sicherungen für alle Datenbanken entweder der Standardinstanz oder einer [ordnungsgemäß installierten](frequently-asked-questions-faq.md#administration) benannten Instanz von SQL Server in der VM. Weitere Informationen finden Sie unter [Automatisierte Sicherung für SQL Server auf virtuellen Azure-Computern (Resource Manager)](automated-backup-sql-2014.md). <br/> Verwaltungsmodus: Vollständig|
+| **Automatisiertes Patchen** |Mit diesem Feature können Sie ein Wartungsfenster konfigurieren, in dem wichtige Windows- und SQL Server-Sicherheitsupdates für die VM ausgeführt werden. Auf diese Weise werden Updates für Ihre Workload während der Spitzenzeiten vermieden. Weitere Informationen finden Sie unter [Automatisiertes Patchen für SQL Server auf virtuellen Azure-Computern (Resource Manager)](automated-patching.md). <br/> Verwaltungsmodus: Vollständig|
+| **Azure Key Vault-Integration** |Mit diesem Dienst können Sie Azure Key Vault auf Ihrem virtuellen SQL Server-Computer automatisch installieren und konfigurieren. Weitere Informationen finden Sie unter [Konfigurieren der Azure Key Vault-Integration für SQL Server auf virtuellen Azure-Computern (Resource Manager)](azure-key-vault-integration-configure.md). <br/> Verwaltungsmodus: Vollständig|
+| **Anzeigen der Datenträgerauslastung im Portal** | Ermöglicht eine grafische Darstellung der Datenträgerauslastung Ihrer SQL-Datendateien im Azure-Portal.  <br/> Verwaltungsmodus: Vollständig | 
+| **Flexible Lizenzierung** | Durch einen [nahtlosen Wechsel](licensing-model-azure-hybrid-benefit-ahb-change.md) zwischen den Lizenzmodellen „Bring-Your-Own-License“ (BYOL, auch als „Azure-Hybridvorteil“ bezeichnet) und „Nutzungsbasierte Bezahlung“ können Sie Kosten sparen. <br/> Verwaltungsmodus: Lightweight und vollständig| 
+| **Flexible Version/Edition** | Wenn Sie die [Version](change-sql-server-version.md) oder [Edition](change-sql-server-edition.md) von SQL Server ändern möchten, können Sie einfach die Metadaten im Azure-Portal aktualisieren, ohne die gesamte SQL Server-VM erneut bereitstellen zu müssen.  <br/> Verwaltungsmodus: Lightweight und vollständig| 
 
 
 ## <a name="management-modes"></a>Verwaltungsmodi
@@ -115,7 +116,7 @@ Es gibt drei Möglichkeiten, VMs mit der Erweiterung zu registrieren:
 
 ### <a name="named-instance-support"></a>Unterstützung für benannte Instanzen
 
-Die SQL Server-IaaS-Agent-Erweiterung funktioniert mit einer benannten Instanz von SQL Server, wenn es sich dabei um die einzige SQL Server-Instanz handelt, die auf der VM verfügbar ist. Die Erweiterung kann nicht auf VMs installiert werden, auf denen sich mehrere SQL Server-Instanzen befinden. 
+Die SQL Server-IaaS-Agent-Erweiterung funktioniert mit einer benannten Instanz von SQL Server, wenn es sich dabei um die einzige SQL Server-Instanz handelt, die auf der VM verfügbar ist. Die Erweiterung kann nicht auf virtuellen Computern installiert werden, die mehrere benannte SQL Server-Instanzen aufweisen, wenn es keine Standardinstanz auf dem virtuellen Computer gibt. 
 
 Wenn Sie eine benannte Instanz von SQL Server verwenden möchten, stellen Sie eine Azure-VM bereit, installieren Sie eine einzelne benannte SQL Server-Instanz darauf, und registrieren Sie die SQL Server-VM dann mit der [SQL-IaaS-Erweiterung](sql-agent-extension-manually-register-single-vm.md).
 
@@ -228,7 +229,7 @@ Nein. Die VM muss mindestens eine SQL Server-Instanz (Datenbank-Engine) aufweis
 
 **Kann ich eine VM mit der SQL-IaaS-Agent-Erweiterung registrieren, wenn mehrere SQL Server-Instanzen vorhanden sind?**
 
-Ja. Die SQL-IaaS-Agent-Erweiterung registriert nur eine SQL Server-Instanz (Datenbank-Engine). Wenn mehrere Instanzen vorhanden sind, registriert die SQL-IaaS-Agent-Erweiterung die SQL Server-Standardinstanz. Gibt es keine Standardinstanz, wird nur die Registrierung im Lightweight-Modus unterstützt. Für ein Upgrade vom Verwaltbarkeitsmodus „Lightweight“ auf „Vollständig“ sollte entweder die SQL Server-Standardinstanz vorhanden sein, oder die VM sollte nur eine benannte SQL Server-Instanz aufweisen.
+Ja, sofern eine Standardinstanz auf dem virtuellen Computer vorhanden ist. Die SQL-IaaS-Agent-Erweiterung registriert nur eine SQL Server-Instanz (Datenbank-Engine). Wenn mehrere Instanzen vorhanden sind, registriert die SQL-IaaS-Agent-Erweiterung die SQL Server-Standardinstanz.
 
 **Kann ich eine SQL Server-Failoverclusterinstanz mit der SQL-IaaS-Agent-Erweiterung registrieren?**
 

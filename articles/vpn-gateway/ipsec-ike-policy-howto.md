@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/18/2020
 ms.author: yushwang
-ms.openlocfilehash: eda920640667abc6620c5c90ee7d04a44789353e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2b298185866d16da02fe8d3b3fdb41f0b0b1f726
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90992913"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98878543"
 ---
 # <a name="configure-ipsecike-policy-for-s2s-vpn-or-vnet-to-vnet-connections-azure-portal"></a>Konfigurieren der IPsec/IKE-Richtlinie für S2S-VPN- oder VNet-zu-VNet-Verbindungen: Azure-Portal
 
@@ -28,10 +28,8 @@ Dieser Artikel enthält Anweisungen zum Erstellen und Konfigurieren einer IPsec-
 ### <a name="considerations"></a>Überlegungen
 
 * Die IPsec-/IKE-Richtlinie kann nur für folgende Gateway-SKUs verwendet werden:
-  * ***VpnGw1–5 und VpnGw1AZ–5AZ***
-  * ***Standard*** und ***HighPerformance***
-* Pro Verbindung kann jeweils nur ***eine*** Richtlinienkombination angegeben werden.
-* Sie müssen alle Algorithmen und Parameter für IKE (Hauptmodus) und IPsec (Schnellmodus) angeben. Partielle Richtlinien sind nicht zulässig.
+  * ***VpnGw1~5 und VpnGw1AZ~5AZ** _ _ ***Standard** _ und _*_HighPerformance_*_ _ Sie können nur ***eine** _ Richtlinienkombination für eine angegebene Verbindung festlegen.
+  _ Sie müssen alle Algorithmen und Parameter für IKE (Hauptmodus) und IPsec (Schnellmodus) angeben. Partielle Richtlinien sind nicht zulässig.
 * Vergewissern Sie sich in den Spezifikationen Ihres VPN-Geräteanbieters, dass die Richtlinie von Ihren lokalen VPN-Geräten unterstützt wird. S2S- bzw. VNet-zu-VNet-Verbindungen können nicht hergestellt werden, wenn die Richtlinien inkompatibel sind.
 
 ## <a name="workflow"></a><a name ="workflow"></a>Workflow
@@ -116,27 +114,27 @@ Ausführlichere Informationen finden Sie unter [RFC3526](https://tools.ietf.org/
 
 In diesem Abschnitt werden die Schritte zum Erstellen einer Site-to-Site-VPN-Verbindung mit einer IPsec-/IKE-Richtlinie beschrieben. Mit den folgenden Schritten wird die Verbindung erstellt, wie im folgenden Diagramm dargestellt:
 
-:::image type="content" source="./media/ipsec-ike-policy-howto/site-to-site-diagram.png" alt-text="Diagramm zur IPsec-/IKE-Richtlinie" border="false":::
+:::image type="content" source="./media/ipsec-ike-policy-howto/site-to-site-diagram.png" alt-text="Site-to-Site-Richtlinie" border="false":::
 
 ### <a name="step-1---create-the-virtual-network-vpn-gateway-and-local-network-gateway"></a><a name="createvnet1"></a>Schritt 1: Erstellen des virtuellen Netzwerks, VPN-Gateways und Gateways des lokalen Netzwerks
 
-Erstellen Sie die folgenden Ressourcen, wie in den folgenden Screenshots gezeigt. Die einzelnen Schritte finden Sie unter [Erstellen einer Site-to-Site-VPN-Verbindung](vpn-gateway-howto-site-to-site-resource-manager-portal.md).
+Erstellen Sie die folgenden Ressourcen, wie in den folgenden Screenshots gezeigt. Die einzelnen Schritte finden Sie unter [Erstellen einer Site-to-Site-VPN-Verbindung](./tutorial-site-to-site-portal.md).
 
 * **Virtuelles Netzwerk:**  TestVNet1
 
-   :::image type="content" source="./media/ipsec-ike-policy-howto/testvnet-1.png" alt-text="Diagramm zur IPsec-/IKE-Richtlinie":::
+   :::image type="content" source="./media/ipsec-ike-policy-howto/testvnet-1.png" alt-text="VNET":::
 
 * **VPN-Gateway:** VNet1GW
 
-   :::image type="content" source="./media/ipsec-ike-policy-howto/vnet-1-gateway.png" alt-text="Diagramm zur IPsec-/IKE-Richtlinie":::
+   :::image type="content" source="./media/ipsec-ike-policy-howto/vnet-1-gateway.png" alt-text="Gateway":::
 
 * **Lokales Netzwerkgateway:** Site6
 
-   :::image type="content" source="./media/ipsec-ike-policy-howto/lng-site-6.png" alt-text="Diagramm zur IPsec-/IKE-Richtlinie":::
+   :::image type="content" source="./media/ipsec-ike-policy-howto/lng-site-6.png" alt-text="Website":::
 
 * **Connection:** VNet1 zu Site6
 
-    :::image type="content" source="./media/ipsec-ike-policy-howto/connection-site-6.png" alt-text="Diagramm zur IPsec-/IKE-Richtlinie":::
+    :::image type="content" source="./media/ipsec-ike-policy-howto/connection-site-6.png" alt-text="Connection":::
 
 ### <a name="step-2---configure-ipsecike-policy-on-the-s2s-vpn-connection"></a><a name="s2sconnection"></a>Schritt 2: Konfigurieren der IPsec-/IKE-Richtlinie für die S2S-VPN-Verbindung
 
@@ -147,15 +145,15 @@ In diesem Abschnitt konfigurieren Sie eine IPsec-/IKE-Richtlinie mit den folgend
 
 1. Navigieren Sie im Azure-Portal zur Verbindungsressource **VNet1toSite6**. Wählen Sie die Seite **Konfiguration** und dann für die IPsec-/IKE-Richtlinie **Benutzerdefiniert** aus, um alle Konfigurationsoptionen anzuzeigen. Der nachstehende Screenshot zeigt die Konfiguration entsprechend der Liste:
 
-    :::image type="content" source="./media/ipsec-ike-policy-howto/policy-site-6.png" alt-text="Diagramm zur IPsec-/IKE-Richtlinie":::
+    :::image type="content" source="./media/ipsec-ike-policy-howto/policy-site-6.png" alt-text="Site6":::
 
 1. Wenn Sie GCMAES für IPsec verwenden, müssen für die IPsec-Verschlüsselung und -Integrität derselbe GCMAES-Algorithmus und dieselbe Schlüssellänge verwendet werden. Der folgende Screenshot gibt z. B. sowohl für IPsec-Verschlüsselung als auch für IPsec-Integrität „GCMAES128“ an:
 
-   :::image type="content" source="./media/ipsec-ike-policy-howto/gcmaes.png" alt-text="Diagramm zur IPsec-/IKE-Richtlinie":::
+   :::image type="content" source="./media/ipsec-ike-policy-howto/gcmaes.png" alt-text="GCMAES für IPsec":::
 
 1. Optional können Sie **Aktivieren** für die Option **Use policy based traffic selectors** (Richtlinienbasierte Datenverkehrsselektoren verwenden) auswählen, um wie oben beschrieben dem Azure-VPN-Gateway das lokale Verbinden mit richtlinienbasierten VPN-Geräten zu ermöglichen.
 
-   :::image type="content" source="./media/ipsec-ike-policy-howto/policy-based-selector.png" alt-text="Diagramm zur IPsec-/IKE-Richtlinie":::
+   :::image type="content" source="./media/ipsec-ike-policy-howto/policy-based-selector.png" alt-text="Richtlinienbasierter Datenverkehrsselektor":::
 
 1. Nachdem Sie alle Optionen ausgewählt haben, wählen Sie **Speichern** aus, um die Änderungen an der Verbindungsressource zu übernehmen. Die Richtlinie wird in ungefähr einer Minute erzwungen.
 
@@ -170,13 +168,13 @@ In diesem Abschnitt konfigurieren Sie eine IPsec-/IKE-Richtlinie mit den folgend
 
 Die Schritte zum Erstellen einer VNET-zu-VNET-Verbindung mit einer IPsec-/IKE-Richtlinie ähneln denen für eine S2S-VPN-Verbindung.
 
-:::image type="content" source="./media/ipsec-ike-policy-howto/vnet-policy.png" alt-text="Diagramm zur IPsec-/IKE-Richtlinie" border="false":::
+:::image type="content" source="./media/ipsec-ike-policy-howto/vnet-policy.png" alt-text="Diagramm für VNET-zu-VNET-Richtlinie" border="false":::
 
 1. Erstellen Sie die VNET-zu-VNET-Verbindung über die Schritte im Artikel [Erstellen einer VNET-zu-VNET-Verbindung](vpn-gateway-vnet-vnet-rm-ps.md).
 
 2. Nach Abschluss der Schritte sehen Sie zwei VNET-zu-VNET-Verbindungen, wie im folgenden Screenshot der VNet2GW-Ressource dargestellt:
 
-   :::image type="content" source="./media/ipsec-ike-policy-howto/vnet-vnet-connections.png" alt-text="Diagramm zur IPsec-/IKE-Richtlinie":::
+   :::image type="content" source="./media/ipsec-ike-policy-howto/vnet-vnet-connections.png" alt-text="VNET-to-VNET-Verbindungen":::
 
 3. Navigieren Sie zu der Verbindungsressource, und wechseln Sie im Portal zur Seite **Konfiguration**. Wählen Sie **Benutzerdefiniert** für die **IPsec-/IKE-Richtlinie** aus, um die benutzerdefinierten Richtlinienoptionen anzuzeigen. Wählen Sie die Kryptografiealgorithmen mit den entsprechenden Schlüssellängen aus.
 
@@ -184,7 +182,7 @@ Die Schritte zum Erstellen einer VNET-zu-VNET-Verbindung mit einer IPsec-/IKE-Ri
    * IKE: AES128, SHA1, DHGroup14, DPD-Timeout: 45 Sekunden
    * IPsec: GCMAES128, GCMAES128, PFS14, SA-Gültigkeitsdauer 14.400 Sekunden und 102.400.000 KB
 
-   :::image type="content" source="./media/ipsec-ike-policy-howto/vnet-vnet-policy.png" alt-text="Diagramm zur IPsec-/IKE-Richtlinie":::
+   :::image type="content" source="./media/ipsec-ike-policy-howto/vnet-vnet-policy.png" alt-text="Verbindungsrichtlinie":::
 
 4. Wählen Sie **Speichern** aus, um die Richtlinienänderungen auf die Verbindungsressource anzuwenden.
 
@@ -203,7 +201,7 @@ Die Schritte zum Erstellen einer VNET-zu-VNET-Verbindung mit einer IPsec-/IKE-Ri
 
 2. Wählen Sie **Standard** als **IPsec-/IKE-Richtlinie** aus. Dadurch werden alle zuvor für die Verbindung angegebenen benutzerdefinierten Richtlinien entfernt und die IPsec-/IKE-Standardeinstellungen für diese Verbindung wieder hergestellt:
 
-   :::image type="content" source="./media/ipsec-ike-policy-howto/delete-policy.png" alt-text="Diagramm zur IPsec-/IKE-Richtlinie":::
+   :::image type="content" source="./media/ipsec-ike-policy-howto/delete-policy.png" alt-text="Richtlinie löschen":::
 
 3. Wählen Sie **Speichern** aus, um die benutzerdefinierte Richtlinie zu entfernen und die IPsec-/IKE-Standardeinstellungen für die Verbindung wiederherzustellen.
 

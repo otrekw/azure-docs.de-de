@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 641117414c855a044d3ed55004b6e6ea15b259ac
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: dab938a526aa89f6fe5a014e10869bd8da8b475d
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "96004737"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98802364"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v12-with-xamarin"></a>Schnellstart: Azure Blob Storage-Clientbibliothek v12 mit Xamarin
 

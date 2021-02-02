@@ -13,15 +13,15 @@ ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 01/18/2021
+ms.date: 01/23/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2c7ea804e9e85578076969f0ec6bdf90b571bb75
-ms.sourcegitcommit: 9d9221ba4bfdf8d8294cf56e12344ed05be82843
+ms.openlocfilehash: 906879c44a2d7a3248f3d3ac0c9fec7ced7f2a4f
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98570081"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98746542"
 ---
 # <a name="nfs-v41-volumes-on-azure-netapp-files-for-sap-hana"></a>NFS v4.1-Volumes unter Azure NetApp Files für SAP HANA
 
@@ -62,7 +62,13 @@ Es ist wichtig, die Leistungsbeziehung und die Größe zu kennen, und zu wissen,
 
 Die folgende Tabelle zeigt, dass es sinnvoll sein kann, ein großes „Standard“-Volume zum Speichern von Sicherungen zu erstellen, und dass es nicht sinnvoll ist, ein „Ultra“-Volume zu erstellen, das größer als 12 TB ist, da die physikalische Bandbreitenkapazität einer einzelnen LIF überschritten würde. 
 
-Der maximale Durchsatz für eine LIF und eine einzelne Linux-Sitzung liegt zwischen 1,2 und 1,4 GB/s. 
+Der maximale Durchsatz für eine LIF und eine einzelne Linux-Sitzung liegt zwischen 1,2 und 1,4 GB/s. Wenn Sie mehr Durchsatz für /hana/data benötigen, können Sie die SAP HANA-Partitionierung für Datenvolumes verwenden, um für die E/A-Aktivität während des erneuten Ladens von Daten oder HANA-Sicherungspunkten über mehrere HANA-Datendateien ein Striping vorzunehmen, die sich auf mehreren NFS-Freigaben befinden. Weitere Informationen zum Striping von HANA-Datenvolumen finden Sie in diesen Artikeln:
+
+- [HANA-Administratorhandbuch](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.05/en-US/40b2b2a880ec4df7bac16eae3daef756.html?q=hana%20data%20volume%20partitioning)
+- [Blog zu SAP HANA-Datenvolumepartitionierung](https://blogs.sap.com/2020/10/07/sap-hana-partitioning-data-volumes/)
+- [SAP-Hinweis 2400005](https://launchpad.support.sap.com/#/notes/2400005)
+- [SAP-Hinweis 2700123](https://launchpad.support.sap.com/#/notes/2700123)
+
 
 | Size  | Durchsatz Standard | Durchsatz Premium | Durchsatz Ultra |
 | --- | --- | --- | --- |

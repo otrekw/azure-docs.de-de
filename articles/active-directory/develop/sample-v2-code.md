@@ -1,6 +1,6 @@
 ---
 title: Codebeispiele für die Microsoft Identity Platform
-description: Dieser Artikel enthält einen Index der verfügbaren Microsoft Identity Platform-Codebeispiele (v2.0-Endpunkt), geordnet nach Szenario.
+description: Dieser Artikel enthält einen Index der verfügbaren Microsoft Identity Platform-Codebeispiele, geordnet nach Szenario.
 services: active-directory
 author: mmacy
 manager: CelesteDG
@@ -12,23 +12,23 @@ ms.date: 11/04/2020
 ms.author: marsma
 ms.reviewer: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 3baeb87bf3fe1cdcd5e9f27aed2587eed060c5a8
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: 368a1acdfda66c3714979d27037737a75bbada5a
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98064520"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98756652"
 ---
 # <a name="microsoft-identity-platform-code-samples-v20-endpoint"></a>Microsoft Identity Platform – Codebesipiele (V2.0-Endpunkt)
 
-Sie können mit der Microsoft Identity Platform folgende Aktionen ausführen:
+Sie können mit Microsoft Identity Platform folgende Aktionen ausführen:
 
 - Hinzufügen von Authentifizierungs- und Autorisierungsfeatures zu Ihren Webanwendungen und Web-APIs
 - Anfordern eines Zugriffstokens für den Zugriff auf eine geschützte Web-API
 
-In diesem Artikel wird der Microsoft Identity Platform-Endpunkt kurz erläutert, und es werden Links zu Beispielen für den Endpunkt angegeben. Anhand dieser Beispiele wird die Vorgehensweise erläutert, und es werden Codeausschnitte bereitgestellt, die Sie in Ihren Anwendungen verwenden können. Auf der Seite mit den Codebeispielen finden Sie ausführliche Infothemen mit hilfreichen Angaben zu Anforderungen, Installation und Einrichtung. Außerdem enthält der Code Kommentare, die die wichtigsten Abschnitte besser verständlich machen.
+In diesem Artikel werden Links und Beispiele für Microsoft Identity Platform bereitgestellt und kurz erläutert. Anhand dieser Beispiele wird die Vorgehensweise erläutert, und es werden Codeausschnitte bereitgestellt, die Sie in Ihren Anwendungen verwenden können. Auf der Seite mit den Codebeispielen finden Sie ausführliche Infothemen mit hilfreichen Angaben zu Anforderungen, Installation und Einrichtung. Außerdem enthält der Code Kommentare, die die wichtigsten Abschnitte besser verständlich machen.
 
-Informationen zum grundlegenden Szenario für die einzelnen Beispieltypen finden Sie unter [App-Typen für den Microsoft Identity Platform-Endpunkt](v2-app-types.md).
+Informationen zum grundlegenden Szenario für die einzelnen Beispieltypen finden Sie unter [Anwendungstypen für Microsoft Identity Platform](v2-app-types.md).
 
 Sie können auch Beiträge zu den Beispielen auf GitHub schreiben. Wie das geht, erfahren Sie unter [Microsoft Azure Active Directory – Beispiele und Dokumentation](https://github.com/Azure-Samples?page=3&query=active-directory).
 
@@ -121,7 +121,7 @@ In den folgenden Beispielen wird gezeigt, wie Sie Ihre Anwendung so konfiguriere
 
 ## <a name="web-apis"></a>Web-APIs
 
-Die folgenden Beispiele veranschaulichen, wie Sie eine Web-API mit dem Microsoft Identity-Plattform-Endpunkt schützen und wie Sie eine nachgeschaltete API von der Web-API aus aufrufen.
+Die folgenden Beispiele veranschaulichen, wie Sie eine Web-API mit Microsoft Identity Platform schützen und wie Sie eine nachgeschaltete API von der Web-API aus aufrufen.
 
 | Plattform | Beispiel |
 | -------- | ------------------- |
@@ -133,7 +133,7 @@ Die folgenden Beispiele veranschaulichen, wie Sie eine Web-API mit dem Microsoft
 
 ## <a name="azure-functions-as-web-apis"></a>Azure Functions als Web-APIs
 
-Die folgenden Beispiele veranschaulichen, wie Sie mit „HttpTrigger“ eine Azure-Funktion schützen, mit dem Microsoft Identity-Plattform-Endpunkt eine Web-API verfügbar machen und über die Web-API eine nachgeschaltete API aufrufen.
+Die folgenden Beispiele veranschaulichen, wie Sie mit „HttpTrigger“ eine Azure-Funktion schützen, mit Microsoft Identity Platform eine Web-API verfügbar machen und über die Web-API eine nachgeschaltete API aufrufen.
 
 | Plattform | Beispiel |
 | -------- | ------------------- |

@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 12/10/2020
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, scenarios:getting-started, languages:aspnet-core
-ms.openlocfilehash: ae80ddd9efe8274a29a4b8dd91b7a3c391eefc3a
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: 8e54f71ef58b3ea76a5fe55347a1caa173046320
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98178686"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98754488"
 ---
 # <a name="quickstart-aspnet-core-web-app-that-signs-in-users-and-calls-microsoft-graph-on-their-behalf"></a>Schnellstart: ASP.NET Core-Web-App zum Anmelden von Benutzern und Aufrufen von Microsoft Graph in deren Namen
 
@@ -166,7 +166,7 @@ Von der Middleware *Microsoft.AspNetCore.Authentication* wird eine Klasse vom Ty
 
 Die Methode `AddAuthentication()` konfiguriert den Dienst, um eine cookiebasierte Authentifizierung hinzuzufügen, die in Browserszenarien zum Einsatz kommt und dazu dient, die Aufforderung auf OpenID Connect festzulegen.
 
-Durch die Zeile mit `.AddMicrosoftIdentityWebApp` wird Ihrer Anwendung die Microsoft Identity Platform-Authentifizierung hinzugefügt. Diese wird von [Microsoft.Identity.Web](microsoft-identity-web.md) bereitgestellt. Diese wird anschließend für die Anmeldung unter Verwendung des Microsoft Identity Platform-Endpunkts konfiguriert – basierend auf den Informationen im Abschnitt `AzureAD` der Konfigurationsdatei *appsettings.json*:
+Die Zeile, die `.AddMicrosoftIdentityWebApp` enthält, fügt Ihrer Anwendung die Microsoft Identity Platform-Authentifizierung hinzu. Diese wird von [Microsoft.Identity.Web](microsoft-identity-web.md) bereitgestellt. Sie wird anschließend für die Anmeldung unter Verwendung von Microsoft Identity Platform konfiguriert – basierend auf den Informationen im Abschnitt `AzureAD` der Konfigurationsdatei *appsettings.json*:
 
 | *appsettings.json* (Schlüssel) | Beschreibung                                                                                                                                                          |
 |------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------|

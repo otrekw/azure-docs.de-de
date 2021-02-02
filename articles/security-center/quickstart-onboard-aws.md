@@ -3,16 +3,16 @@ title: Herstellen einer Verbindung zwischen Ihrem AWS-Konto und Azure Security C
 description: Überwachen von AWS-Ressourcen über Azure Security Center
 author: memildin
 ms.author: memildin
-ms.date: 12/29/2020
+ms.date: 01/24/2021
 ms.topic: quickstart
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 4c919115efb39a8e8c008eab69dc087792f7b105
-ms.sourcegitcommit: 1140ff2b0424633e6e10797f6654359947038b8d
+ms.openlocfilehash: 2ad3ab8c39d9f9a29e74bd139fb5ddd1e5faeff9
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97814311"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98755146"
 ---
 #  <a name="connect-your-aws-accounts-to-azure-security-center"></a>Herstellen einer Verbindung zwischen Ihren AWS-Konten und Azure Security Center
 
@@ -33,13 +33,13 @@ Beim Onboarding Ihres AWS-Kontos in Security Center werden AWS Security Hub und 
 
 Im folgenden Screenshot sehen Sie AWS-Konten, die auf dem Übersichtsdashboard von Security Center angezeigt werden.
 
-:::image type="content" source="./media/quickstart-onboard-aws/aws-account-in-overview.png" alt-text="3 GCP-Projekte, die auf dem Übersichtsdashboard von Security Center aufgeführt sind" lightbox="./media/quickstart-onboard-gcp/gcp-account-in-overview.png":::
+:::image type="content" source="./media/quickstart-onboard-aws/aws-account-in-overview.png" alt-text="3 GCP-Projekte, die auf dem Übersichtsdashboard von Security Center aufgeführt sind" lightbox="./media/quickstart-onboard-gcp/gcp-account-in-overview.png":::
 
 ## <a name="availability"></a>Verfügbarkeit
 
 |Aspekt|Details|
 |----|:----|
-|Status des Release:|Vorschau<br>[!INCLUDE [Legalese](../../includes/security-center-preview-legal-text.md)] |
+|Status des Release:|Allgemeine Verfügbarkeit (General Availability, GA)|
 |Preise:|Erfordert [Azure Defender für Server](defender-for-servers-introduction.md)|
 |Erforderliche Rollen und Berechtigungen:|**Besitzer** des relevanten Azure-Abonnements<br>**Mitwirkender**: Kann auch eine Verbindung mit einem AWS-Konto herstellen, wenn er von einem Besitzer die Dienstprinzipaldetails erhält|
 |Clouds:|![Ja](./media/icons/yes-icon.png) Kommerzielle Clouds<br>![Nein](./media/icons/no-icon.png) National/Sovereign (US Gov, China Gov, andere Gov)|
@@ -164,7 +164,7 @@ AWS Systems Manager ist für die Automatisierung von Aufgaben in Ihren AWS-Resso
 
 ### <a name="step-6-confirmation"></a>Schritt 6. Bestätigung
 
-Wenn der Connector erfolgreich erstellt und der AWS Security Hub ordnungsgemäß konfiguriert wurde:
+Wenn der Connector erfolgreich erstellt und AWS Security Hub ordnungsgemäß konfiguriert wurde:
 
 - Security Center scannt die Umgebung auf AWS EC2-Instanzen, führt für sie ein Onboarding in Azure Arc durch und ermöglicht die Installation des Log Analytics-Agents sowie die Bereitstellung von Bedrohungsschutz und Sicherheitsempfehlungen. 
 - Der ASC-Dienst sucht alle sechs Stunden nach neuen AWS EC2-Instanzen und führt der Konfiguration entsprechend automatisch ein Onboarding für sie durch.

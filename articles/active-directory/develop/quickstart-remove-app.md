@@ -13,16 +13,16 @@ ms.date: 11/15/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: marsma, aragra, lenalepa, sureshja
-ms.openlocfilehash: 033d5cfa5dbe5e0010bc1182f54643ec04db3ce3
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 24c29d34c14e6237bc79e38741ea244da5429e9e
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98017611"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98754547"
 ---
 # <a name="how-to-remove-an-application-registered-with-the-microsoft-identity-platform"></a>Entfernen einer Anwendung, die bei der Microsoft Identity Platform registriert ist
 
-Unternehmensentwickler und SaaS-Anbieter (Software-as-a-Service), die Anwendungen bei der Microsoft Identity Platform registriert haben, müssen die Registrierung einer Anwendung unter Umständen entfernen.
+Unternehmensentwickler und SaaS-Anbieter (Software-as-a-Service), die Anwendungen bei Microsoft Identity Platform registriert haben, müssen die Registrierung einer Anwendung unter Umständen entfernen.
 
 In diesen Abschnitten wird Folgendes vermittelt:
 

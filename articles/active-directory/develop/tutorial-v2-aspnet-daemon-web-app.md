@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 12/10/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: 5f2560cdc062edb41ecda935eb9b8efe630949dc
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 984b85ff831146060f1642b9eeec7079ff966db3
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98015945"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98937834"
 ---
 # <a name="tutorial-build-a-multi-tenant-daemon-that-uses-the-microsoft-identity-platform"></a>Tutorial: Erstellen eines mehrinstanzenfähigen Daemons, der Microsoft Identity Platform verwendet
 
@@ -49,7 +49,7 @@ Da es sich bei der App um eine mehrinstanzenfähige App für Microsoft-Geschäft
 
 ![Diagramm: UserSync-App mit drei lokalen Elementen, die eine Verbindung mit Azure herstellen. Dabei erwirbt Start.Auth interaktiv ein Token für die Verbindungsherstellung mit Azure AD, AccountController holt die Administratoreinwilligung für die Verbindungsherstellung mit Azure AD ein, und SyncController liest die Benutzer für die Verbindungsherstellung mit Microsoft Graph.](./media/tutorial-v2-aspnet-daemon-webapp/topology.png)
 
-Weitere Informationen zu den Konzepten in diesem Beispiel finden Sie unter [Microsoft Identity Platform und der Fluss von OAuth 2.0-Clientanmeldeinformationen](v2-oauth2-client-creds-grant-flow.md).
+Weitere Informationen zu den Konzepten in diesem Beispiel finden Sie unter [Microsoft Identity Platform und der Fluss von OAuth 2.0-Clientanmeldeinformationen](v2-oauth2-client-creds-grant-flow.md).
 
 ## <a name="clone-or-download-this-repository"></a>Klonen oder Herunterladen des Repositorys
 
@@ -109,7 +109,7 @@ Falls Sie die Automatisierung nicht verwenden möchten, führen Sie die Schritte
 1. Wählen Sie **Registrieren** aus, um die Anwendung zu erstellen.
 1. Suchen Sie auf der Seite **Übersicht** der App den Wert **Anwendungs-ID (Client)** , und notieren Sie ihn zur späteren Verwendung. Sie benötigen diesen Wert, um die Visual Studio-Konfigurationsdatei für dieses Projekt zu konfigurieren.
 1. Wählen Sie unter **Verwalten** die Option **Authentifizierung** aus.
-1. Legen Sie `https://localhost:44316/Account/EndSession` als **Abmelde-URL** fest.
+1. Legen Sie **URL für Front-Channel-Abmeldung** auf `https://localhost:44316/Account/EndSession` fest.
 1. Wählen Sie im Abschnitt **Implizite Gewährung** die Optionen **Zugriffstoken** und **ID-Token** aus. Für dieses Beispiel muss der [Flow zur impliziten Gewährung](v2-oauth2-implicit-grant-flow.md) aktiviert werden, um den Benutzer anzumelden und eine API aufzurufen.
 1. Wählen Sie **Speichern** aus.
 1. Wählen Sie unter **Verwalten** die Option **Zertifikate und Geheimnisse** aus.
@@ -227,7 +227,7 @@ Visual Studio veröffentlicht das Projekt und öffnet die Projekt-URL automatisc
 1. Wechseln Sie zurück zum <a href="https://portal.azure.com/" target="_blank">Azure-Portal<span class="docon docon-navigate-external x-hidden-focus"></span></a>.
 1. Wählen Sie im linken Bereich den Dienst **Azure Active Directory** und anschließend **App-Registrierungen** aus.
 1. Wählen Sie die Anwendung **dotnet-web-daemon-v2** aus.
-1. Aktualisieren Sie auf der Seite **Authentifizierung** für Ihre Anwendung die Felder vom Typ **Abmelde-URL** mit der Adresse Ihres Diensts. Verwenden Sie z. B. `https://dotnet-web-daemon-v2-contoso.azurewebsites.net`.
+1. Aktualisieren Sie auf der Seite **Authentifizierung** für Ihre Anwendung die Felder vom Typ **URL für Front-Channel-Abmeldung** mit der Adresse Ihres Diensts. Verwenden Sie z. B. `https://dotnet-web-daemon-v2-contoso.azurewebsites.net/Account/EndSession`.
 1. Aktualisieren Sie im Menü **Branding** die **URL der Startseite** auf die Adresse Ihres Diensts. Verwenden Sie z. B. `https://dotnet-web-daemon-v2-contoso.azurewebsites.net`.
 1. Speichern Sie die Konfiguration.
 1. Fügen Sie die gleiche URL der Werteliste unter **Authentifizierung** > **Umleitungs-URIs** hinzu. Falls Sie über mehrere Umleitungs-URLs verfügen, muss für jede ein neuer Eintrag mit dem URI des App-Diensts vorhanden sein.

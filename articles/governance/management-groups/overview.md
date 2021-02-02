@@ -1,15 +1,15 @@
 ---
 title: Organisieren Ihrer Ressourcen mit Verwaltungsgruppen – Azure Governance
 description: Informationen zu Verwaltungsgruppen und ihrer Verwendung sowie zur Funktionsweise ihrer Berechtigungen
-ms.date: 11/17/2020
+ms.date: 01/22/2021
 ms.topic: overview
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 9f23a279733169f17f0f82cb80aa08bfafcd45d0
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: e86501527ff68319fc8d2e942e7ffa977dcecbe6
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97030670"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98736321"
 ---
 # <a name="what-are-azure-management-groups"></a>Was sind Azure-Verwaltungsgruppen?
 
@@ -162,16 +162,16 @@ Es gibt verschiedene Optionen, um dieses Szenario zu beheben:
 - Entfernen Sie die Rollenzuweisung aus dem Abonnement, bevor Sie das Abonnement in eine neue übergeordnete Verwaltungsgruppe verschieben.
 - Fügen Sie das Abonnement dem zuweisbaren Bereich der Rollendefinition hinzu.
 - Ändern Sie den zuweisbaren Bereich innerhalb der Rollendefinition. Im obigen Beispiel können Sie die Bereiche von „Marketing“ aktualisieren, die der „Root Management Group“ zuweisbar sind, damit die Definition von beiden Verzweigungen der Hierarchie erreicht werden kann.  
-- Erstellen Sie eine zusätzliche benutzerdefinierte Rolle, die in der anderen Verzweigung definiert wird. Diese neue Rolle erfordert, dass die Rollenzuweisung auch für das Abonnement geändert wird.  
+- Erstellen Sie eine weitere benutzerdefinierte Rolle, die in der anderen Verzweigung definiert wird. Diese neue Rolle erfordert, dass die Rollenzuweisung auch für das Abonnement geändert wird.  
 
 ### <a name="limitations"></a>Einschränkungen  
 
 Es bestehen Einschränkungen für die Verwendung benutzerdefinierter Rollen für Verwaltungsgruppen. 
 
  - Sie können nur eine Verwaltungsgruppe in den zuweisbaren Bereichen einer neuen Rolle definieren. Diese Einschränkung soll die Anzahl der Situationen verringern, in denen Rollendefinitionen und Rollenzuweisungen getrennt werden. Diese Situation tritt auf, wenn ein Abonnement oder eine Verwaltungsgruppe mit einer Rollenzuweisung in ein anderes übergeordnetes Element verschoben wird, das nicht über die Rollendefinition verfügt.  
- - Aktionen der Datenebene des Ressourcenanbieters können in benutzerdefinierten Rollen für Verwaltungsgruppen nicht definiert werden. Diese Einschränkung besteht, weil beim Aktualisieren der Ressourcenanbieter für die Datenebene ein Latenzproblem auftritt.
-   An diesem Latenzproblem wird gearbeitet, und diese Aktionen werden bei der Rollendefinition deaktiviert, um Risiken zu verringern.
+ - Aktionen der Datenebene des Ressourcenanbieters können in benutzerdefinierten Rollen für Verwaltungsgruppen nicht definiert werden. Diese Einschränkung besteht, weil beim Aktualisieren der Ressourcenanbieter für die Datenebene ein Latenzproblem auftritt. An diesem Latenzproblem wird gearbeitet, und diese Aktionen werden bei der Rollendefinition deaktiviert, um Risiken zu verringern.
  - Der Azure Resource Manager überprüft nicht, ob die Verwaltungsgruppe im zuweisbaren Bereich der Rollendefinition vorhanden ist. Wenn ein Tippfehler vorhanden oder eine falsche Verwaltungsgruppen-ID aufgelistet ist, wird die Rollendefinition dennoch erstellt.
+ - Die Rollenzuweisung für eine Rolle mit _dataActions_ wird nicht unterstützt. Erstellen Sie die Rollenzuweisung stattdessen auf der Abonnementebene.
 
 > [!IMPORTANT]
 > Das Hinzufügen einer Verwaltungsgruppe zu `AssignableScopes` befindet sich derzeit in der Vorschauphase. Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen.

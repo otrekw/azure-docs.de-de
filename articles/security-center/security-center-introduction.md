@@ -12,18 +12,16 @@ ms.topic: overview
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/22/2020
+ms.date: 01/26/2021
 ms.author: memildin
-ms.openlocfilehash: b52fbd820c4b4603481f585ea0b0983720cabb22
-ms.sourcegitcommit: d488a97dc11038d9cef77a0235d034677212c8b3
+ms.openlocfilehash: 9f39988375f58f75dad2b623cd3d937022a072e7
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2020
-ms.locfileid: "97709083"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98806179"
 ---
 # <a name="what-is-azure-security-center"></a>Was ist Azure Security Center?
-
-[!INCLUDE [Solorigate banner](../../includes/security-center-solorigate.md)]
 
 Azure Security Center ist ein vereinheitlichtes Sicherheitsverwaltungssystem für Infrastrukturen, mit dem der Sicherheitsstatus Ihrer Rechenzentren gestärkt wird und ein erweiterter Schutz vor Bedrohungen für Ihre Hybridworkloads in der Cloud (in Azure oder anderswo) und in der lokalen Umgebung bereitgestellt wird.
 
@@ -74,7 +72,7 @@ Mit Security Center können Sie **Schatten-IT-Abonnements identifizieren**. Inde
 
 ### <a name="continuous-assessments"></a>Fortlaufende Bewertungen
 
-Mit Security Center werden ständig neue Ressourcen erkannt, die für Ihre Workloads bereitgestellt werden, und es wird bewertet, ob diese gemäß den bewährten Sicherheitsmethoden konfiguriert sind. Wenn nicht, werden sie gekennzeichnet, und Sie erhalten eine nach Priorität sortierte Liste mit Empfehlungen zu den Schritten, die zum Schützen Ihrer Computer ausgeführt werden müssen.
+Mit Security Center werden ständig neue Ressourcen erkannt, die für Ihre Workloads bereitgestellt werden, und es wird bewertet, ob diese gemäß den bewährten Sicherheitsmethoden konfiguriert sind. Wenn nicht, werden sie gekennzeichnet, und Sie erhalten eine nach Priorität sortierte Liste mit Empfehlungen zu den Schritten, die zum Schützen Ihrer Computer ausgeführt werden müssen. Diese Liste mit Empfehlungen wird vom [Azure-Sicherheitsvergleichstest](../security/benchmarks/introduction.md) aktiviert und unterstützt. Dabei handelt es sich um von Microsoft erstellte Azure-spezifische Richtlinien zu bewährten Methoden für Sicherheit und Compliance, die auf allgemeinen Complianceframeworks basieren. Diese weit verbreitete Benchmark basiert auf den Kontrollen des [Center for Internet Security (CIS)](https://www.cisecurity.org/benchmark/azure/) und des [National Institute of Standards and Technology (NIST)](https://www.nist.gov/) und konzentriert sich auf cloudzentrierte Sicherheit.
 
 Damit Sie besser nachvollziehen können, wie wichtig die einzelnen Empfehlungen für den gesamten Sicherheitsstatus sind, werden die Empfehlungen von Security Center in Sicherheitskontrollelemente gruppiert, und jedem Sicherheitskontrollelement wird eine **Sicherheitsbewertung** hinzugefügt. Dies ist ein entscheidender Faktor beim **Priorisieren Ihrer Sicherheitsmaßnahmen**.
 
@@ -107,9 +105,8 @@ Der Bedrohungsschutz von Security Center enthält eine Fusion-Schrittfolgenanaly
 
 ### <a name="integration-with-microsoft-defender-for-endpoint"></a>Integration in Microsoft Defender für Endpunkt
 
-Security Center beinhaltet die automatische native Integration in Microsoft Defender für Endpunkt. Dies bedeutet, dass Ihre virtuellen Windows- und Linux-Computer ohne Konfigurationsaufwand vollständig in die Empfehlungen und Bewertungen von Security Center integriert sind.
+Azure Defender für Server beinhaltet die automatische native Integration in Microsoft Defender für Endpunkt. Weitere Informationen finden Sie unter [Schützen Sie Ihre Endpunkte mit der in Security Center integrierten EDR-Lösung: Microsoft Defender für den Endpunkt](security-center-wdatp.md).
 
-Außerdem können Sie mit Security Center die Anwendungssteuerungsrichtlinien in Serverumgebungen automatisieren. Mit den adaptiven Anwendungssteuerungen in Security Center können Sie das End-to-End-App-Genehmigungslisting für Ihre Windows-Server nutzen. Sie müssen keine Regeln erstellen und keine Prüfung auf Verstöße durchführen. Dies wird alles automatisch für Sie erledigt.
 
 ### <a name="protect-paas"></a>Schützen von PaaS
 

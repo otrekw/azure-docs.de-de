@@ -6,12 +6,12 @@ ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/14/2020
-ms.openlocfilehash: 16e60b5015107c5f99e63f15bb21c5a375f05340
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 74d2654c54d1ab2ac5d47aa24449c41c20a90b74
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92123251"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791137"
 ---
 # <a name="pricing-tiers-in-azure-database-for-postgresql---single-server"></a>Tarife in Azure Database for PostgreSQL – Einzelserver
 
@@ -51,7 +51,7 @@ Der von Ihnen bereitgestellte Speicher definiert die Speicherkapazität, die fü
 | IOPS | Variable |3 IOPS/GB<br/>Min. 100 IOPS<br/>Max. 20.000 IOPS | 3 IOPS/GB<br/>Min. 100 IOPS<br/>Max. 20.000 IOPS |
 
 > [!NOTE]
-> In den folgenden Regionen wird die Speicherung von bis zu 16 TB und 20.000 IOPS unterstützt: „USA, Osten“, „USA, Osten 2“, „Brasilien, Süden“, „USA, Mitte“, „USA, Westen“, „USA, Norden-Mitte“, „USA, Süden-Mitte“, „Europa, Norden“, „Europa, Westen“, „Vereinigtes Königreich, Süden“, „Vereinigtes Königreich, Westen“, „Asien, Südosten“, „Asien, Osten“, „Japan, Osten“, „Japan, Westen“, „Südkorea, Mitte“, „Südkorea, Süden“, „Australien, Osten“, „Australien, Südosten“, „USA, Westen 2“, „USA, Westen-Mitte“, „Kanada, Osten“ und „Kanada, Mitte“.
+> In den folgenden Regionen wird die Speicherung von bis zu 16 TB und 20.000 IOPS unterstützt: „Australien, Osten“, „Australien, Südosten“, „Brasilien, Süden“, „Kanada, Mitte“, „Kanada, Osten“, „USA, Mitte“, „China, Osten 2“, „China, Norden 2“, „Asien, Osten“, „USA, Osten“, „USA, Osten 1“, „USA, Osten 2“, „Japan, Osten“, „Japan, Westen“, „Korea, Mitte“, „Korea, Süden“, „USA, Norden-Mitte“, „Europa, Norden“, „USA, Süden-Mitte“, „Asien, Südosten“, „Schweiz, Norden“, „Schweiz, Westen“, „US Gov, Osten“, „US Gov, Süden-Mitte“, „US Gov, Süden-Westen“, „Vereinigtes Königreich, Süden“, „Vereinigtes Königreich, Westen“, „Europa, Westen“, „USA, Westen-Mitte“, „USA, Westen“ und „USA, Westen 2“.
 >
 > Alle anderen Regionen unterstützen bis zu 4 TB Speicherplatz und 6000 IOPS.
 >
@@ -102,7 +102,7 @@ Das Skalieren des Speichers und das Ändern der Aufbewahrungsdauer für Sicherun
 
 ## <a name="pricing"></a>Preise
 
-Aktuelle Preisinformationen finden Sie auf der Seite [Azure-Datenbank für MySQL – Preise](https://azure.microsoft.com/pricing/details/PostgreSQL/). Informationen zu den Kosten der gewünschten Konfiguration können Sie im [Azure-Portal](https://portal.azure.com/#create/Microsoft.PostgreSQLServer) anzeigen. Die monatlichen Kosten für die von Ihnen ausgewählten Optionen werden auf der Registerkarte **Tarif** angegeben. Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie den Azure-Preisrechner verwenden, um einen geschätzten Preis zu erhalten. Wählen Sie auf der Website des [Azure-Preisrechners](https://azure.microsoft.com/pricing/calculator/) die Option **Elemente hinzufügen** aus, erweitern Sie die Kategorie **Datenbanken** , und wählen Sie **Azure Database for PostgreSQL** aus, um die Optionen anzupassen.
+Aktuelle Preisinformationen finden Sie auf der Seite [Azure-Datenbank für MySQL – Preise](https://azure.microsoft.com/pricing/details/PostgreSQL/). Informationen zu den Kosten der gewünschten Konfiguration können Sie im [Azure-Portal](https://portal.azure.com/#create/Microsoft.PostgreSQLServer) anzeigen. Die monatlichen Kosten für die von Ihnen ausgewählten Optionen werden auf der Registerkarte **Tarif** angegeben. Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie den Azure-Preisrechner verwenden, um einen geschätzten Preis zu erhalten. Wählen Sie auf der Website des [Azure-Preisrechners](https://azure.microsoft.com/pricing/calculator/) die Option **Elemente hinzufügen** aus, erweitern Sie die Kategorie **Datenbanken**, und wählen Sie **Azure Database for PostgreSQL** aus, um die Optionen anzupassen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 04/10/2020
+ms.date: 01/27/2021
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 84a3ef7b41b17e85c594213246211d45911ac56a
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: a39230cc65db6ef12b6fa4364454aeb434efddf6
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94953048"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98918211"
 ---
 # <a name="tutorial-register-a-web-application-in-azure-active-directory-b2c"></a>Tutorial: Registrieren einer Webanwendung in Azure Active Directory B2C
 
@@ -71,7 +71,7 @@ Zum Registrieren einer Webanwendung in Ihrem Azure AD B2C-Mandanten können Sie
 
     Für Umleitungs-URIs gelten die folgenden Einschränkungen:
 
-    * Die Antwort-URL muss mit dem Schema `https` beginnen, sofern Sie nicht `localhost` verwenden.
+    * Die Antwort-URL muss mit dem Schema `https` beginnen, es sei denn, Sie verwenden `localhost`.
     * Bei der Antwort-URL muss die Groß-/Kleinschreibung beachtet werden. Die Groß-/Kleinschreibung muss der Groß-/Kleinschreibung des URL-Pfads Ihrer ausgeführten Anwendung entsprechen. Wenn Ihre Anwendung z. B. als Teil des Pfads `.../abc/response-oidc` enthält, geben Sie in der Antwort-URL nicht `.../ABC/response-oidc` an. Weil der Webbrowser bei Pfaden die Groß-/Kleinschreibung beachtet, werden Cookies, die `.../abc/response-oidc` zugeordnet sind, möglicherweise ausgeschlossen, wenn eine Umleitung an die anders geschriebene (nicht übereinstimmende) URL `.../ABC/response-oidc` erfolgt.
 
 1. Wählen Sie **Erstellen** aus, um die Anwendungsregistrierung abzuschließen.
@@ -98,6 +98,14 @@ Für eine Webanwendung müssen Sie ein Anwendungsgeheimnis erstellen. Dieses Geh
 1. Wählen Sie **Speichern**, um den Schlüssel anzuzeigen. Notieren Sie sich den Wert für **App-Schlüssel**. Sie verwenden diesen Wert als Anwendungsgeheimnis im Code Ihrer Anwendung.
 
 * * *
+
+## <a name="enable-id-token-implicit-grant"></a>Aktivieren der impliziten Genehmigung von ID-Token
+
+Das definierende Merkmal der impliziten Genehmigung ist, dass Token (etwa ID-Token oder Zugriffstoken) direkt über Azure AD B2C an die Anwendung zurückgegeben werden. Aktivieren Sie für Web-Apps wie ASP.NET Core-Web-Apps und [https://jwt.ms](https://jwt.ms), die ein ID-Token direkt vom Autorisierungsendpunkt erfordern, den Flow für implizite Genehmigung in der App-Registrierung.
+
+1. Wählen Sie im linken Menü unter **Verwalten** die Option **Authentifizierung** aus.
+1. Aktivieren Sie unter „Implizite Genehmigung“ die Kontrollkästchen **Zugriffstoken** und **ID-Token**.
+1. Wählen Sie **Speichern** aus.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

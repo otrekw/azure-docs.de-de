@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/30/2020
 ms.author: radeltch
 ms.reviewer: cynthn
-ms.openlocfilehash: bcb912a24dfb2a5e78719cf9010fd23afe0df185
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 1c33011d947d6dc9dd9ee4dd6331c24c06d99b38
+ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96484395"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98693823"
 ---
 # <a name="azure-monitor-for-sap-solutions-preview"></a>Azure Monitor für SAP-Lösungen (Vorschauversion)
 
@@ -35,7 +35,7 @@ Unterstützte Datenbanken:
 - SAP HANA-Datenbank
 - Microsoft SQL Server
 
-Azure Monitor für SAP-Lösungen nutzt die Leistungsfähigkeit bestehender [Azure Monitor](../../../azure-monitor/overview.md)-Funktionen wie Log Analytics und [Arbeitsmappen](../../../azure-monitor/platform/workbooks-overview.md), um zusätzliche Überwachungsfunktionen anzubieten. Kunden können [benutzerdefinierte Visualisierungen](../../../azure-monitor/platform/workbooks-overview.md#getting-started) erstellen, indem sie die von Azure Monitor für SAP-Lösungen bereitgestellten Standardarbeitsmappen bearbeiten, [benutzerdefinierte Abfragen](../../../azure-monitor/log-query/log-analytics-tutorial.md) und [benutzerdefinierte Warnungen](../../../azure-monitor/learn/tutorial-response.md) erstellen, indem sie den Azure Log Analytics-Arbeitsbereich verwenden, die Vorteile der [flexiblen Beibehaltungsdauer](../../../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period) nutzen und Überwachungsdaten mit ihrem Ticketsystem verbinden.
+Azure Monitor für SAP-Lösungen nutzt die Leistungsfähigkeit bestehender [Azure Monitor](../../../azure-monitor/overview.md)-Funktionen wie Log Analytics und [Arbeitsmappen](../../../azure-monitor/platform/workbooks-overview.md), um weitere Überwachungsfunktionen anzubieten. Kunden können [benutzerdefinierte Visualisierungen](../../../azure-monitor/platform/workbooks-overview.md#getting-started) erstellen, indem sie die von Azure Monitor für SAP-Lösungen bereitgestellten Standardarbeitsmappen bearbeiten, [benutzerdefinierte Abfragen](../../../azure-monitor/log-query/log-analytics-tutorial.md) und [benutzerdefinierte Warnungen](../../../azure-monitor/learn/tutorial-response.md) erstellen, indem sie den Azure Log Analytics-Arbeitsbereich verwenden, die Vorteile der [flexiblen Beibehaltungsdauer](../../../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period) nutzen und Überwachungsdaten mit ihrem Ticketsystem verbinden.
 
 ## <a name="what-data-does-azure-monitor-for-sap-solutions-collect"></a>Welche Daten sammelt Azure Monitor für SAP-Lösungen?
 
@@ -60,8 +60,17 @@ Microsoft SQL Server-Telemetrie:
 - Batchanforderungen, Kompilierungen und Seitenlebenserwartung im Zeitverlauf
 - Die zehn aufwendigsten SQL-Anweisungen im Zeitverlauf
 - Die 12 größten Tabelle im SAP-System
-- In den SQL Server-Fehlerprotokollen aufgezeichnete Probleme
+- Im SQL Server-Fehlerprotokoll aufgezeichnete Probleme
 - Blockieren von Prozessen und SQL-Wartestatistiken im Zeitverlauf
+
+Telemetrie des Betriebssystems (Linux) 
+- CPU-Auslastung, Forkanzahl, aktive und blockierte Prozesse 
+- Arbeitsspeicherauslastung und -verteilung auf „genutzt“, „zwischengespeichert“ und „gepuffert“ 
+- Auslagerungsauslastung, Paging und Auslagerungsrate 
+- Dateisystemauslastung, Anzahl der pro Blockgerät gelesenen und geschriebenen Bytes 
+- Latenz von Lese-/Schreibvorgängen pro Blockgerät 
+- Anzahl laufender E/A-Vorgänge, gelesene/geschriebene Bytes für persistenten Speicher 
+- Netzwerkpakete eingehend/ausgehend, Netzwerkbytes eingehend/ausgehend 
 
 ## <a name="data-sharing-with-microsoft"></a>Datenfreigabe mit Microsoft
 
@@ -96,9 +105,9 @@ Die Hauptkomponenten der Architektur sind:
 
 Im Folgenden sind die wichtigsten Highlights der Architektur aufgeführt:
  - **Mehrere Instanzen** – Kunden können einen Monitor für mehrere Instanzen eines bestimmten Komponententyps (z. B. HANA DB, HA-Cluster, Microsoft SQL Server) über mehrere SAP-SIDs innerhalb eines VNETs mit einer einzelnen Ressource von Azure Monitor für SAP-Lösungen erstellen.
- - **Mehrere Anbieter** – Das obige Architekturdiagramm zeigt als Beispiel den Anbieter „SAP HANA“. Ebenso können Kunden zusätzliche Anbieter für entsprechende Komponenten konfigurieren (z. B. HANA DB, HA-Cluster, Microsoft SQL Server), um Daten von diesen Komponenten zu sammeln.
+ - **Mehrere Anbieter** – Das obige Architekturdiagramm zeigt als Beispiel den Anbieter „SAP HANA“. Ebenso können Kunden weitere Anbieter für entsprechende Komponenten konfigurieren (z. B. HANA DB, HA-Cluster, Microsoft SQL Server), um Daten von diesen Komponenten zu sammeln.
  - **Open Source** – Der Quellcode von Azure Monitor für SAP-Lösungen ist in [GitHub](https://github.com/Azure/AzureMonitorForSAPSolutions) verfügbar. Kunden können auf den Anbietercode verweisen und mehr über das Produkt erfahren, Beiträge leisten oder Feedback senden.
- - **Erweiterbares Abfrageframework** – SQL-Abfragen zur Erfassung von Telemetriedaten werden in [JSON](https://github.com/Azure/AzureMonitorForSAPSolutions/blob/master/sapmon/content/SapHana.json) geschrieben. Es können leicht zusätzliche SQL-Abfragen zur Erfassung weiterer Telemetriedaten hinzugefügt werden. Kunden können spezifische Telemetriedaten anfordern, die zu Azure Monitor für SAP-Lösungen hinzugefügt werden sollen, indem sie Feedback über den Link am Ende dieses Dokuments senden oder ihr Kontoteam kontaktieren.
+ - **Erweiterbares Abfrageframework** – SQL-Abfragen zur Erfassung von Telemetriedaten werden in [JSON](https://github.com/Azure/AzureMonitorForSAPSolutions/blob/master/sapmon/content/SapHana.json) geschrieben. Es können leicht weitere SQL-Abfragen zur Erfassung weiterer Telemetriedaten hinzugefügt werden. Kunden können spezifische Telemetriedaten anfordern, die zu Azure Monitor für SAP-Lösungen hinzugefügt werden sollen, indem sie Feedback über den Link am Ende dieses Dokuments senden oder ihr Kontoteam kontaktieren.
 
 ## <a name="pricing"></a>Preise
 Azure Monitor für SAP-Lösungen ist ein kostenloses Produkt (keine Lizenzgebühr). Kunden sind dafür verantwortlich, die Kosten für die zugrundeliegenden Komponenten in der verwalteten Ressourcengruppe zu bezahlen.

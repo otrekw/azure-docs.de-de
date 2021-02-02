@@ -3,12 +3,12 @@ title: 'Versionshinweise zu Live Video Analytics in IoT Edge: Azure'
 description: Dieses Thema enthält Versionshinweise zu Releases, Verbesserungen, Fehlerbehebungen und bekannten Problemen von Video Analytics in IoT Edge.
 ms.topic: conceptual
 ms.date: 08/19/2020
-ms.openlocfilehash: 7f8957d1ec93259cf6defe7980f19298f782ea5e
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 328fe97c4e03f039a1224d13ce6712ccff06b3b7
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98121242"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98629775"
 ---
 # <a name="live-video-analytics-on-iot-edge-release-notes"></a>Versionshinweise zu Live Video Analytics in IoT Edge
 
@@ -51,9 +51,12 @@ Dieses Release ist eine Aktualisierung der öffentlichen Vorschauversion von Liv
 * Unterstützung für die Speicherplatzverwaltung für Senkenknoten hinzugefügt.
 * Der `MediaGraphGrpcExtension`-Knoten unterstützt jetzt die [extensionConfiguration](grpc-extension-protocol.md)-Eigenschaft für die Verwendung mehrerer KI-Modelle auf einem einzelnen gRPC-Server.
 * Unterstützung für das Sammeln von Metriken für das Live Video Analytics-Modul im [Prometheus-Format](https://prometheus.io/docs/practices/naming/) wurde hinzugefügt. Erfahren Sie mehr über das [Erfassen und Anzeigen von Metriken in Azure Monitor](monitoring-logging.md#azure-monitor-collection-via-telegraf). 
+* Die Möglichkeit zum Filtern der Ausgabeauswahl wurde hinzugefügt. Sie können **reine Audiodaten** oder **reine Videodaten** oder **Audio- und Videodaten** mit `outputSelectors` an einen beliebigen MediaGraph-Knoten weitergeben. 
 * Der Verarbeitungsknoten für Bildfrequenzfilter wurde als **veraltet** gekennzeichnet.  
     * Die Verwaltung der Bildfrequenz ist jetzt auf den Knoten des Graph-Erweiterungsprozessors selbst verfügbar.
 
+### <a name="visual-studio-code-extension"></a>Visual Studio Code-Erweiterung
+* [Live Video Analytics auf IoT Edge](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.live-video-analytics-edge) wurde veröffentlicht: Eine Visual Studio Code-Erweiterung, die Sie beim Verwalten von LVA-Mediengraphen unterstützt. Diese Erweiterung arbeitet mit dem **LVA 2.0-Modul** und bietet die Bearbeitung und Verwaltung von Mediengraphen mit einer sehr schlanken und benutzerfreundlichen grafischen Oberfläche.
 ## <a name="september-22-2020"></a>22. September 2020
 
 Dieses Releasetag gilt für die Aktualisierung des Moduls vom September 2020 und lautet:

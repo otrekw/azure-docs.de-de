@@ -1,19 +1,16 @@
 ---
 title: 'Tutorial: Verwenden von Apache HBase in Azure HDInsight'
 description: Folgen Sie diesem Apache HBase-Tutorial für die ersten Schritte mit Hadoop in HDInsight. Erstellen Sie über die HBase-Shell Tabellen und fragen Sie diese mit Hive ab.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: hdinsightactive,hdiseo17may2017
-ms.date: 04/14/2020
-ms.openlocfilehash: d24c63e3a2989173e718cd27fa43cecc50181047
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.date: 01/22/2021
+ms.openlocfilehash: 05e40dd38fc7111521b600908cda38084249e4de
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92533494"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98936048"
 ---
 # <a name="tutorial-use-apache-hbase-in-azure-hdinsight"></a>Tutorial: Verwenden von Apache HBase in Azure HDInsight
 
@@ -50,14 +47,14 @@ Im folgenden Verfahren wird eine Azure Resource Manager-Vorlage verwendet, um ei
     |Resource group|Erstellen Sie eine neue Azure Resource Management-Gruppe, oder verwenden Sie eine vorhandene Ressourcengruppe.|
     |Position|Geben Sie den Standort der Ressourcengruppe an. |
     |ClusterName|Geben Sie einen Namen für den HBase-Cluster ein.|
-    |Clusteranmeldename und Kennwort|Der Standardanmeldename lautet **admin** .|
-    |SSH-Benutzername und Kennwort|Der Standardbenutzername lautet **sshuser** .|
+    |Clusteranmeldename und Kennwort|Der Standardanmeldename lautet **admin**.|
+    |SSH-Benutzername und Kennwort|Der Standardbenutzername lautet **sshuser**.|
 
     Andere Parameter sind optional.  
 
     Jeder Cluster verfügt über eine Abhängigkeit von einem Azure Storage-Konto. Nach dem Löschen eines Clusters verbleiben die Daten im Speicherkonto. Zur Bildung des Standardnamens für das Speicherkonto des Clusters wird „store“ an den Clusternamen angehängt. Er ist im Variablenabschnitt der Vorlage hartcodiert.
 
-3. Wählen Sie **Ich stimme den oben genannten Geschäftsbedingungen zu** , und wählen Sie anschließend **Kaufen** aus. Das Erstellen eines Clusters dauert ca. 20 Minuten.
+3. Wählen Sie **Ich stimme den oben genannten Geschäftsbedingungen zu**, und wählen Sie anschließend **Kaufen** aus. Das Erstellen eines Clusters dauert ca. 20 Minuten.
 
 Nachdem Sie den HBase-Cluster gelöscht haben, können Sie im gleichen Standardblobcontainer einen neuen HBase-Cluster erstellen. Der neue Cluster übernimmt die im vorherigen Cluster erstellten HBase-Tabellen. Es wird empfohlen, die HBase-Tabellen vor dem Löschen des Clusters zu deaktivieren, um Inkonsistenzen zu vermeiden.
 
@@ -332,7 +329,7 @@ HBase in HDInsight wird mit einer Web-Benutzeroberfläche ausgeliefert, über di
 
 1. Wählen Sie im linken Menü **HBase** aus.
 
-1. Klicken Sie am oberen Rand der Seite auf **Quicklinks** , zeigen Sie auf den aktiven Zookeeper-Knotenlink, und klicken Sie anschließend auf **HBase Master-Benutzeroberfläche** .  Die Benutzeroberfläche wird in einer anderen Browserregisterkarte geöffnet:
+1. Klicken Sie am oberen Rand der Seite auf **Quicklinks**, zeigen Sie auf den aktiven Zookeeper-Knotenlink, und klicken Sie anschließend auf **HBase Master-Benutzeroberfläche**.  Die Benutzeroberfläche wird in einer anderen Browserregisterkarte geöffnet:
 
    ![Benutzeroberfläche von HDInsight Apache HBase HMaster](./media/apache-hbase-tutorial-get-started-linux/hdinsight-hbase-hmaster-ui.png)
 
@@ -344,15 +341,21 @@ HBase in HDInsight wird mit einer Web-Benutzeroberfläche ausgeliefert, über di
    - Tasks
    - Softwareattribute
 
+## <a name="cluster-recreation"></a>Neuerstellung des Clusters
+
+Nachdem Sie den HBase-Cluster gelöscht haben, können Sie im gleichen Standardblobcontainer einen neuen HBase-Cluster erstellen. Der neue Cluster übernimmt die im vorherigen Cluster erstellten HBase-Tabellen. Es wird jedoch empfohlen, die HBase-Tabellen vor dem Löschen des Clusters zu deaktivieren, um Inkonsistenzen zu vermeiden. 
+
+Sie können den HBase-Befehl `disable 'Contacts'` verwenden. 
+
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Es wird empfohlen, die HBase-Tabellen vor dem Löschen des Clusters zu deaktivieren, um Inkonsistenzen zu vermeiden. Sie können den HBase-Befehl `disable 'Contacts'` verwenden. Wenn Sie diese Anwendung nicht mehr benötigen, gehen Sie wie folgt vor, um den erstellten HBase-Cluster zu löschen:
+Wenn Sie diese Anwendung nicht mehr benötigen, gehen Sie wie folgt vor, um den erstellten HBase-Cluster zu löschen:
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 1. Geben Sie oben im **Suchfeld** den Suchbegriff **HDInsight** ein.
 1. Wählen Sie unter **Dienste** die Option **HDInsight-Cluster** aus.
 1. Klicken Sie in der daraufhin angezeigten Liste mit den HDInsight-Clustern neben dem Cluster, den Sie für dieses Tutorial erstellt haben, auf die Auslassungspunkte ( **...** ).
-1. Klicken Sie auf **Löschen** . Klicken Sie auf **Ja** .
+1. Klicken Sie auf **Löschen**. Klicken Sie auf **Ja**.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

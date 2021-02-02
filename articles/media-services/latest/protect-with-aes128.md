@@ -1,25 +1,9 @@
 ---
-title: Verschlüsseln von Videos mit AES-128
-titleSuffix: Azure Media Services
-description: Erfahren Sie, wie Sie Videos mit der Bit-Verschlüsselung AES-128 verschlüsseln, und wie Sie den Schlüsselübermittlungsdienst in Azure Media Services verwenden.
-services: media-services
-documentationcenter: ''
-author: IngridAtMicrosoft
-manager: femila
-editor: ''
-ms.service: media-services
-ms.workload: media
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: tutorial
-ms.date: 08/31/2020
-ms.author: inhenkel
-ms.openlocfilehash: 5347479d32dc9f4909483dc63891e8057fd7ff86
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: HT
-ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89289326"
+Titel: Verschlüsseln von Videos mit AES-128 : Azure Media Services description: Erfahren Sie, wie Sie Videos mit der Bit-Verschlüsselung AES-128 verschlüsseln, und wie Sie den Schlüsselübermittlungsdienst in Azure Media Services verwenden.
+services: media-services documentationcenter: '' author: IngridAtMicrosoft manager: femila editor: ''
+
+ms.service: media-services ms.workload: media ms.tgt_pltfrm: na ms.devlang: na ms.topic: tutorial ms.date: 08/31/2020 ms.author: inhenkel
+
 ---
 # <a name="tutorial-encrypt-video-with-aes-128-and-use-the-key-delivery-service"></a>Tutorial: Verschlüsseln von Videos mit AES-128 und Verwenden des Schlüsselübermittlungsdienstes
 

@@ -7,14 +7,14 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 10/02/2020
+ms.date: 01/26/2021
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 5a55a330f6f4fefb86f2c056cd0ca3b2ba5f4b29
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 1f8100dd6340383eadec5d10b7f23db59ba0ebdf
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96499593"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98786384"
 ---
 # <a name="tutorial-order-search-results-using-the-net-sdk"></a>Tutorial: Sortieren von Suchergebnissen mithilfe des .NET SDK
 
@@ -24,7 +24,6 @@ In diesem Tutorial lernen Sie Folgendes:
 > [!div class="checklist"]
 > * Sortieren von Ergebnissen basierend auf einer Eigenschaft
 > * Sortieren von Ergebnissen basierend auf mehreren Eigenschaften
-> * Filtern von Ergebnissen basierend auf der Entfernung von einem geografischen Punkt
 > * Sortieren von Ergebnissen basierend auf einem Bewertungsprofil
 
 ## <a name="overview"></a>Übersicht
@@ -51,14 +50,14 @@ Zum Aktivieren der Sortierung muss keines der Modelle geändert werden. Nur die 
 
 ### <a name="add-the-orderby-property-to-the-search-parameters"></a>Hinzufügen der OrderBy-Eigenschaft zu den Suchparametern
 
-1. Fügen Sie die **OrderBy**-Option dem Namen der Eigenschaft hinzu. Fügen Sie in der Methode **Index(SearchData model)** den Suchparametern die folgende Zeile hinzu.
+1. Fügen Sie in der Datei „HomeController.cs“ die Option **OrderBy** hinzu, und fügen Sie die Bewertungseigenschaft mit absteigender Sortierreihenfolge ein. Fügen Sie in der Methode **Index(SearchData model)** den Suchparametern die folgende Zeile hinzu.
 
     ```cs
-    OrderBy = new[] { "Rating desc" },
+    options.OrderBy.Add("Rating desc");
     ```
 
     >[!Note]
-    > Die Standardreihenfolge ist aufsteigend, aber Sie können der Eigenschaft **asc** hinzufügen, um dies deutlich zu machen. Die absteigende Reihenfolge wird durch Hinzufügen von **desc** festgelegt.
+    > Die Standardreihenfolge ist aufsteigend, aber Sie können der Eigenschaft `asc` hinzufügen, um dies deutlich zu machen. Die absteigende Reihenfolge wird durch Hinzufügen von `desc` festgelegt.
 
 1. Führen Sie nun die App aus, und geben Sie einen beliebigen Suchbegriff ein. Die Ergebnisse können in der richtigen Reihenfolge sein oder auch nicht, da weder Sie als Entwickler noch der Benutzer eine einfache Möglichkeit haben, die Ergebnisse zu überprüfen!
 
@@ -129,75 +128,79 @@ Zum Aktivieren der Sortierung muss keines der Modelle geändert werden. Nur die 
     >
     > Aktualisieren Sie die Versionsnummer, wenn Sie glauben, dass eine alte CSS-Datei von Ihrem Browser verwendet wird.
 
-1. Fügen Sie die Eigenschaft **Rating** dem Parameter **Select** in der Methode **Index(SearchData model)** hinzu.
+1. Fügen Sie in der Methode **Index(SearchData model)** dem Parameter **Select** die Eigenschaft **Rating** hinzu, sodass die Ergebnisse die folgenden drei Felder enthalten:
 
     ```cs
-    Select = new[] { "HotelName", "Description", "Rating"},
+    options.Select.Add("HotelName");
+    options.Select.Add("Description");
+    options.Select.Add("Rating");
     ```
 
 1. Öffnen Sie die Ansicht (index.cshtml), und ersetzen Sie die Renderingschleife ( **&lt;!-- Show the hotel data. --&gt;** ) durch den folgenden Code.
 
     ```cs
-                <!-- Show the hotel data. -->
-                @for (var i = 0; i < Model.resultList.Results.Count; i++)
-                {
-                    var ratingText = $"Rating: {Model.resultList.Results[i].Document.Rating}";
+    <!-- Show the hotel data. -->
+    @for (var i = 0; i < result.Count; i++)
+    {
+        var ratingText = $"Rating: {result[i].Document.Rating}";
 
-                    // Display the hotel details.
-                    @Html.TextArea($"name{i}", Model.resultList.Results[i].Document.HotelName, new { @class = "box1A" })
-                    @Html.TextArea($"rating{i}", ratingText, new { @class = "box1B" })
-                    @Html.TextArea($"desc{i}", Model.resultList.Results[i].Document.Description, new { @class = "box3" })
-                }
+        // Display the hotel details.
+        @Html.TextArea($"name{i}", result[i].Document.HotelName, new { @class = "box1A" })
+        @Html.TextArea($"rating{i}", ratingText, new { @class = "box1B" })
+        @Html.TextArea($"desc{i}", fullDescription, new { @class = "box3" })
+    }
     ```
 
 1. Die Bewertung muss sowohl auf der ersten angezeigten Seite als auch auf den folgenden Seiten verfügbar sein, die über unendliches Scrollen aufgerufen werden. Für die letztgenannte dieser beiden Situationen müssen wir sowohl die Aktion **Next** im Controller als auch die Funktion **scrolled** in der Ansicht aktualisieren. Ändern Sie zunächst im Controller die Methode **Next** in den folgenden Code. Dieser Code erstellt und kommuniziert den Bewertungstext.
 
     ```cs
-        public async Task<ActionResult> Next(SearchData model)
+    public async Task<ActionResult> Next(SearchData model)
+    {
+        // Set the next page setting, and call the Index(model) action.
+        model.paging = "next";
+        await Index(model);
+
+        // Create an empty list.
+        var nextHotels = new List<string>();
+
+        // Add a hotel details to the list.
+        await foreach (var result in model.resultList.GetResultsAsync())
         {
-            // Set the next page setting, and call the Index(model) action.
-            model.paging = "next";
-            await Index(model);
-
-            // Create an empty list.
-            var nextHotels = new List<string>();
-
-            // Add a hotel details to the list.
-            for (int n = 0; n < model.resultList.Results.Count; n++)
-            {
-                var ratingText = $"Rating: {model.resultList.Results[n].Document.Rating}";
-
-                // Add three strings to the list.
-                nextHotels.Add(model.resultList.Results[n].Document.HotelName);
-                nextHotels.Add(ratingText);
-                nextHotels.Add(model.resultList.Results[n].Document.Description);
-            }
-
-            // Rather than return a view, return the list of data.
-            return new JsonResult(nextHotels);
+            var ratingText = $"Rating: {result.Document.Rating}";
+            var rateText = $"Rates from ${result.Document.cheapest} to ${result.Document.expensive}";
+    
+            string fullDescription = result.Document.Description;
+    
+            // Add strings to the list.
+            nextHotels.Add(result.Document.HotelName);
+            nextHotels.Add(ratingText);
+            nextHotels.Add(fullDescription);
         }
+
+        // Rather than return a view, return the list of data.
+        return new JsonResult(nextHotels);
+    }
     ```
 
 1. Aktualisieren Sie nun die Funktion **scrolled** in der Ansicht, um den Bewertungstext anzuzeigen.
 
     ```javascript
-            <script>
-                function scrolled() {
-                    if (myDiv.offsetHeight + myDiv.scrollTop >= myDiv.scrollHeight) {
-                        $.getJSON("/Home/Next", function (data) {
-                            var div = document.getElementById('myDiv');
+    <script>
+        function scrolled() {
+            if (myDiv.offsetHeight + myDiv.scrollTop >= myDiv.scrollHeight) {
+                $.getJSON("/Home/Next", function (data) {
+                    var div = document.getElementById('myDiv');
 
-                            // Append the returned data to the current list of hotels.
-                            for (var i = 0; i < data.length; i += 3) {
-                                div.innerHTML += '\n<textarea class="box1A">' + data[i] + '</textarea>';
-                                div.innerHTML += '\n<textarea class="box1B">' + data[i + 1] + '</textarea>';
-                                div.innerHTML += '\n<textarea class="box3">' + data[i + 2] + '</textarea>';
-                            }
-                        });
+                    // Append the returned data to the current list of hotels.
+                    for (var i = 0; i < data.length; i += 3) {
+                        div.innerHTML += '\n<textarea class="box1A">' + data[i] + '</textarea>';
+                        div.innerHTML += '\n<textarea class="box1B">' + data[i + 1] + '</textarea>';
+                        div.innerHTML += '\n<textarea class="box3">' + data[i + 2] + '</textarea>';
                     }
-                }
-            </script>
-
+                });
+            }
+        }
+    </script>
     ```
 
 1. Führen Sie die App nun erneut aus. Suchen Sie nach einem gängigen Begriff wie „WiFi“ und vergewissern Sie sich, dass die Ergebnisse in absteigender Reihenfolge nach Hotelbewertung geordnet sind.
@@ -213,115 +216,118 @@ Zum Aktivieren der Sortierung muss keines der Modelle geändert werden. Nur die 
 1. Fügen Sie dem Modell „Hotel.cs“ Eigenschaften mit den günstigsten und teuersten Zimmerpreisen hinzu.
 
     ```cs
-        // Room rate range
-        public double cheapest { get; set; }
-        public double expensive { get; set; }
+    // Room rate range
+    public double cheapest { get; set; }
+    public double expensive { get; set; }
     ```
 
 1. Berechnen Sie die Zimmerpreise am Ende der Aktion **Index(SearchData model)** im Home-Controller. Fügen Sie die Berechnungen nach dem Speichern von temporären Daten hinzu.
 
     ```cs
-                // Ensure TempData is stored for the next call.
-                TempData["page"] = page;
-                TempData["searchfor"] = model.searchText;
+    // Ensure TempData is stored for the next call.
+    TempData["page"] = page;
+    TempData["searchfor"] = model.searchText;
 
-                // Calculate the room rate ranges.
-                for (int n = 0; n < model.resultList.Results.Count; n++)
-                {
-                    // Calculate room rates.
-                    var cheapest = 0d;
-                    var expensive = 0d;
+    // Calculate the room rate ranges.
+    await foreach (var result in model.resultList.GetResultsAsync())
+    {
+        var cheapest = 0d;
+        var expensive = 0d;
 
-                    for (var r = 0; r < model.resultList.Results[n].Document.Rooms.Length; r++)
-                    {
-                        var rate = model.resultList.Results[n].Document.Rooms[r].BaseRate;
-                        if (rate < cheapest || cheapest == 0)
-                        {
-                            cheapest = (double)rate;
-                        }
-                        if (rate > expensive)
-                        {
-                            expensive = (double)rate;
-                        }
-                    }
-                    model.resultList.Results[n].Document.cheapest = cheapest;
-                    model.resultList.Results[n].Document.expensive = expensive;
-                }
+        foreach (var room in result.Document.Rooms)
+        {
+            var rate = room.BaseRate;
+            if (rate < cheapest || cheapest == 0)
+            {
+                cheapest = (double)rate;
+            }
+            if (rate > expensive)
+            {
+                expensive = (double)rate;
+            }
+        }
+        model.resultList.Results[n].Document.cheapest = cheapest;
+        model.resultList.Results[n].Document.expensive = expensive;
+    }
     ```
 
 1. Fügen Sie die Eigenschaft **Rooms** dem Parameter **Select** in der Aktionsmethode **Index(SearchData model)** des Controllers hinzu.
 
     ```cs
-     Select = new[] { "HotelName", "Description", "Rating", "Rooms" },
+    options.Select.Add("Rooms");
     ```
 
 1. Ändern Sie die Renderingschleife in der Ansicht, um den Preisbereich für die erste Seite der Ergebnisse anzuzeigen.
 
     ```cs
-                <!-- Show the hotel data. -->
-                @for (var i = 0; i < Model.resultList.Results.Count; i++)
-                {
-                    var rateText = $"Rates from ${Model.resultList.Results[i].Document.cheapest} to ${Model.resultList.Results[i].Document.expensive}";
-                    var ratingText = $"Rating: {Model.resultList.Results[i].Document.Rating}";
+    <!-- Show the hotel data. -->
+    @for (var i = 0; i < result.Count; i++)
+    {
+        var rateText = $"Rates from ${result[i].Document.cheapest} to ${result[i].Document.expensive}";
+        var ratingText = $"Rating: {result[i].Document.Rating}";
 
-                    // Display the hotel details.
-                    @Html.TextArea($"name{i}", Model.resultList.Results[i].Document.HotelName, new { @class = "box1A" })
-                    @Html.TextArea($"rating{i}", ratingText, new { @class = "box1B" })
-                    @Html.TextArea($"rates{i}" , rateText, new { @class = "box2A" })
-                    @Html.TextArea($"desc{i}", Model.resultList.Results[i].Document.Description, new { @class = "box3" })
-                }
+        string fullDescription = result[i].Document.Description;
+
+        // Display the hotel details.
+        @Html.TextArea($"name{i}", result[i].Document.HotelName, new { @class = "box1A" })
+        @Html.TextArea($"rating{i}", ratingText, new { @class = "box1B" })
+        @Html.TextArea($"rates{i}", rateText, new { @class = "box2A" })
+        @Html.TextArea($"desc{i}", fullDescription, new { @class = "box3" })
+    }
     ```
 
 1. Ändern Sie die Methode **Next** im Home-Controller, um den Preisbereich für nachfolgende Ergebnisseiten zu kommunizieren.
 
     ```cs
-        public async Task<ActionResult> Next(SearchData model)
+    public async Task<ActionResult> Next(SearchData model)
+    {
+        // Set the next page setting, and call the Index(model) action.
+        model.paging = "next";
+        await Index(model);
+
+        // Create an empty list.
+        var nextHotels = new List<string>();
+
+        // Add a hotel details to the list.
+        await foreach (var result in model.resultList.GetResultsAsync())
         {
-            // Set the next page setting, and call the Index(model) action.
-            model.paging = "next";
-            await Index(model);
+            var ratingText = $"Rating: {result.Document.Rating}";
+            var rateText = $"Rates from ${result.Document.cheapest} to ${result.Document.expensive}";
 
-            // Create an empty list.
-            var nextHotels = new List<string>();
+            string fullDescription = result.Document.Description;
 
-            // Add a hotel details to the list.
-            for (int n = 0; n < model.resultList.Results.Count; n++)
-            {
-                var ratingText = $"Rating: {model.resultList.Results[n].Document.Rating}";
-                var rateText = $"Rates from ${model.resultList.Results[n].Document.cheapest} to ${model.resultList.Results[n].Document.expensive}";
-
-                // Add strings to the list.
-                nextHotels.Add(model.resultList.Results[n].Document.HotelName);
-                nextHotels.Add(ratingText);
-                nextHotels.Add(rateText);
-                nextHotels.Add(model.resultList.Results[n].Document.Description);
-            }
-
-            // Rather than return a view, return the list of data.
-            return new JsonResult(nextHotels);
+            // Add strings to the list.
+            nextHotels.Add(result.Document.HotelName);
+            nextHotels.Add(ratingText);
+            nextHotels.Add(rateText);
+            nextHotels.Add(fullDescription);
         }
+
+        // Rather than return a view, return the list of data.
+        return new JsonResult(nextHotels);
+    }
     ```
 
 1. Aktualisieren Sie die Funktion **scrolled** in der Ansicht, um den Text der Zimmerpreise zu bearbeiten.
 
     ```javascript
-            <script>
-                function scrolled() {
-                    if (myDiv.offsetHeight + myDiv.scrollTop >= myDiv.scrollHeight) {
-                        $.getJSON("/Home/Next", function (data) {
-                            var div = document.getElementById('myDiv');
+    <script>
+        function scrolled() {
+            if (myDiv.offsetHeight + myDiv.scrollTop >= myDiv.scrollHeight) {
+                $.getJSON("/Home/Next", function (data) {
+                    var div = document.getElementById('myDiv');
 
-                            // Append the returned data to the current list of hotels.
-                            for (var i = 0; i < data.length; i += 4) {
-                                div.innerHTML += '\n<textarea class="box1A">' + data[i] + '</textarea>';
-                                div.innerHTML += '\n<textarea class="box1B">' + data[i + 1] + '</textarea>';
-                                div.innerHTML += '\n<textarea class="box2A">' + data[i + 2] + '</textarea>';
-                                div.innerHTML += '\n<textarea class="box3">' + data[i + 4] + '</textarea>';
-                            }
-                        });
+                    // Append the returned data to the current list of hotels.
+                    for (var i = 0; i < data.length; i += 4) {
+                        div.innerHTML += '\n<textarea class="box1A">' + data[i] + '</textarea>';
+                        div.innerHTML += '\n<textarea class="box1B">' + data[i + 1] + '</textarea>';
+                        div.innerHTML += '\n<textarea class="box2A">' + data[i + 2] + '</textarea>';
+                        div.innerHTML += '\n<textarea class="box3">' + data[i + 4] + '</textarea>';
                     }
-                }
-            </script>
+                });
+            }
+        }
+    </script>
     ```
 
 1. Führen Sie die App aus, und vergewissern Sie sich, dass die Zimmerpreisbereiche angezeigt werden.
@@ -332,35 +338,38 @@ Die **OrderBy**-Eigenschaft der Suchparameter akzeptiert keinen Eintrag wie **Ro
 
 ## <a name="order-results-based-on-multiple-values"></a>Sortieren von Ergebnissen basierend auf mehreren Werten
 
-Die Frage ist nun, wie zwischen Hotels mit gleicher Bewertung unterschieden wird. Eine gute Methode wäre die Sortierung auf Grundlage der letzten Renovierung des Hotels. Mit anderen Worten, je neuer die Renovierung des Hotels ist, desto höher erscheint es in den Ergebnissen.
+Die Frage ist nun, wie zwischen Hotels mit gleicher Bewertung unterschieden wird. Ein Ansatz kann eine sekundäre Sortierung sein, die auf dem Zeitpunkt basiert, zu dem das Hotel zuletzt renoviert wurde, sodass mehr zuletzt renovierte Hotels weiter oben in den Ergebnissen angezeigt werden.
 
-1. Zum Hinzufügen einer zweiten Sortierebene ändern Sie die Eigenschaften **OrderBy** und **Select** in der Methode **Index(SearchData model)** , um die Eigenschaft **LastRenovationDate** aufzunehmen.
+1. Fügen Sie zum Hinzufügen einer zweiten Ebene für die Sortierung **LastRenovationDate** zu den Suchergebnissen und zu **OrderBy** in der Methode **Index(SearchData model)** hinzu.
 
     ```cs
-    OrderBy = new[] { "Rating desc", "LastRenovationDate desc" },
-    Select = new[] { "HotelName", "Description", "Rating", "Rooms", "LastRenovationDate" },
+    options.Select.Add("LastRenovationDate");
+
+    options.OrderBy.Add("LastRenovationDate desc");
     ```
 
     >[!Tip]
-    >In die Liste **OrderBy** können beliebig viele Eigenschaften eingegeben werden. Wenn Hotels die gleiche Bewertung und das gleiche Renovierungsdatum hätten, könnte eine dritte Eigenschaft zur Unterscheidung eingegeben werden.
+    > In die Liste **OrderBy** können beliebig viele Eigenschaften eingegeben werden. Wenn Hotels die gleiche Bewertung und das gleiche Renovierungsdatum hätten, könnte eine dritte Eigenschaft zur Unterscheidung eingegeben werden.
 
-1. Auch hier müssen wir das Renovierungsdatum in der Ansicht sehen, nur um sicherzugehen, dass die Reihenfolge korrekt ist. Für eine Eigenschaft wie Renovierung wird wahrscheinlich nur das Jahr benötigt. Ändern Sie die Renderingschleife in der Ansicht in den folgenden Code.
+1. Auch hier müssen wir das Renovierungsdatum in der Ansicht sehen, nur um sicherzugehen, dass die Reihenfolge korrekt ist. Für eine Eigenschaft wie Renovierung ist wahrscheinlich nur das Jahr ausreichend. Ändern Sie die Renderingschleife in der Ansicht in den folgenden Code.
 
     ```cs
-                <!-- Show the hotel data. -->
-                @for (var i = 0; i < Model.resultList.Results.Count; i++)
-                {
-                    var rateText = $"Rates from ${Model.resultList.Results[i].Document.cheapest} to ${Model.resultList.Results[i].Document.expensive}";
-                    var lastRenovatedText = $"Last renovated: { Model.resultList.Results[i].Document.LastRenovationDate.Value.Year}";
-                    var ratingText = $"Rating: {Model.resultList.Results[i].Document.Rating}";
+    <!-- Show the hotel data. -->
+    @for (var i = 0; i < result.Count; i++)
+    {
+        var rateText = $"Rates from ${result[i].Document.cheapest} to ${result[i].Document.expensive}";
+        var lastRenovatedText = $"Last renovated: { result[i].Document.LastRenovationDate.Value.Year}";
+        var ratingText = $"Rating: {result[i].Document.Rating}";
 
-                    // Display the hotel details.
-                    @Html.TextArea($"name{i}", Model.resultList.Results[i].Document.HotelName, new { @class = "box1A" })
-                    @Html.TextArea($"rating{i}", ratingText, new { @class = "box1B" })
-                    @Html.TextArea($"rates{i}" , rateText, new { @class = "box2A" })
-                    @Html.TextArea($"renovation{i}", lastRenovatedText, new { @class = "box2B" })
-                    @Html.TextArea($"desc{i}", Model.resultList.Results[i].Document.Description, new { @class = "box3" })
-                }
+        string fullDescription = result[i].Document.Description;
+
+        // Display the hotel details.
+        @Html.TextArea($"name{i}", result[i].Document.HotelName, new { @class = "box1A" })
+        @Html.TextArea($"rating{i}", ratingText, new { @class = "box1B" })
+        @Html.TextArea($"rates{i}", rateText, new { @class = "box2A" })
+        @Html.TextArea($"renovation{i}", lastRenovatedText, new { @class = "box2B" })
+        @Html.TextArea($"desc{i}", fullDescription, new { @class = "box3" })
+    }
     ```
 
 1. Ändern Sie die Methode **Next** im Home-Controller, um die Jahreskomponente des letzten Renovierungsdatums weiterzuleiten.
@@ -376,18 +385,20 @@ Die Frage ist nun, wie zwischen Hotels mit gleicher Bewertung unterschieden wird
             var nextHotels = new List<string>();
 
             // Add a hotel details to the list.
-            for (int n = 0; n < model.resultList.Results.Count; n++)
+            await foreach (var result in model.resultList.GetResultsAsync())
             {
-                var ratingText = $"Rating: {model.resultList.Results[n].Document.Rating}";
-                var rateText = $"Rates from ${model.resultList.Results[n].Document.cheapest} to ${model.resultList.Results[n].Document.expensive}";
-                var lastRenovatedText = $"Last renovated: {model.resultList.Results[n].Document.LastRenovationDate.Value.Year}";
+                var ratingText = $"Rating: {result.Document.Rating}";
+                var rateText = $"Rates from ${result.Document.cheapest} to ${result.Document.expensive}";
+                var lastRenovatedText = $"Last renovated: {result.Document.LastRenovationDate.Value.Year}";
+
+                string fullDescription = result.Document.Description;
 
                 // Add strings to the list.
-                nextHotels.Add(model.resultList.Results[n].Document.HotelName);
+                nextHotels.Add(result.Document.HotelName);
                 nextHotels.Add(ratingText);
                 nextHotels.Add(rateText);
                 nextHotels.Add(lastRenovatedText);
-                nextHotels.Add(model.resultList.Results[n].Document.Description);
+                nextHotels.Add(fullDescription);
             }
 
             // Rather than return a view, return the list of data.
@@ -398,156 +409,117 @@ Die Frage ist nun, wie zwischen Hotels mit gleicher Bewertung unterschieden wird
 1. Ändern Sie die Funktion **scrolled** in der Ansicht, um den Renovierungstext anzuzeigen.
 
     ```javascript
-            <script>
-                function scrolled() {
-                    if (myDiv.offsetHeight + myDiv.scrollTop >= myDiv.scrollHeight) {
-                        $.getJSON("/Home/Next", function (data) {
-                            var div = document.getElementById('myDiv');
+    <script>
+        function scrolled() {
+            if (myDiv.offsetHeight + myDiv.scrollTop >= myDiv.scrollHeight) {
+                $.getJSON("/Home/Next", function (data) {
+                    var div = document.getElementById('myDiv');
 
-                            // Append the returned data to the current list of hotels.
-                            for (var i = 0; i < data.length; i += 5) {
-                                div.innerHTML += '\n<textarea class="box1A">' + data[i] + '</textarea>';
-                                div.innerHTML += '\n<textarea class="box1B">' + data[i + 1] + '</textarea>';
-                                div.innerHTML += '\n<textarea class="box2A">' + data[i + 2] + '</textarea>';
-                                div.innerHTML += '\n<textarea class="box2B">' + data[i + 3] + '</textarea>';
-                                div.innerHTML += '\n<textarea class="box3">' + data[i + 4] + '</textarea>';
-                            }
-                        });
+                    // Append the returned data to the current list of hotels.
+                    for (var i = 0; i < data.length; i += 5) {
+                        div.innerHTML += '\n<textarea class="box1A">' + data[i] + '</textarea>';
+                        div.innerHTML += '\n<textarea class="box1B">' + data[i + 1] + '</textarea>';
+                        div.innerHTML += '\n<textarea class="box2A">' + data[i + 2] + '</textarea>';
+                        div.innerHTML += '\n<textarea class="box2B">' + data[i + 3] + '</textarea>';
+                        div.innerHTML += '\n<textarea class="box3">' + data[i + 4] + '</textarea>';
                     }
-                }
-            </script>
+                });
+            }
+        }
+    </script>
     ```
 
 1. Führen Sie die App aus. Suchen Sie nach einem gängigen Begriff wie „Pool“ oder „Aussicht“, und vergewissern Sie sich, dass Hotels mit der gleichen Bewertung nun in absteigender Reihenfolge des Renovierungsdatums angezeigt werden.
 
     ![Sortieren nach Renovierungsdatum](./media/tutorial-csharp-create-first-app/azure-search-orders-renovation.png)
 
-## <a name="filter-results-based-on-a-distance-from-a-geographical-point"></a>Filtern von Ergebnissen basierend auf der Entfernung von einem geografischen Punkt
-
-Bewertung und Renovierungsdatum sind Beispiele für Eigenschaften, die am besten in absteigender Reihenfolge angezeigt werden. Eine alphabetische Auflistung wäre ein Beispiel für eine gute Verwendung der aufsteigenden Reihenfolge (z. B. wenn es nur eine **OrderBy**-Eigenschaft gäbe und diese auf **HotelName** festgelegt wäre, dann würde eine alphabetische Reihenfolge angezeigt). Für unsere Beispieldaten wäre jedoch die Entfernung von einem geografischen Punkt besser geeignet.
-
-Zum Anzeigen von Ergebnissen basierend auf der geografischen Entfernung sind mehrere Schritte erforderlich.
-
-1. Filtern Sie alle Hotels heraus, die sich außerhalb eines bestimmten Radius um den angegebenen Punkt befinden, indem Sie einen Filter mit Längengrad-, Breitengrad- und Radiusparametern eingeben. Der Längengrad wird zuerst an die POINT-Funktion übergeben. Der Radius ist in Kilometern angegeben.
-
-    ```cs
-        // "Location" must match the field name in the Hotel class.
-        // Distance (the radius) is in kilometers.
-        // Point order is Longitude then Latitude.
-        Filter = $"geo.distance(Location, geography'POINT({model.lon} {model.lat})') le {model.radius}",
-    ```
-
-1. Mit dem obigen Filter werden die Ergebnisse _nicht_ nach Entfernung geordnet, sondern nur die Ausreißer entfernt. Zum Sortieren der Ergebnisse geben Sie eine **OrderBy**-Einstellung ein, die die geoDistance-Methode angibt.
-
-    ```cs
-    OrderBy = new[] { $"geo.distance(Location, geography'POINT({model.lon} {model.lat})') asc" },
-    ```
-
-1. Obwohl die Ergebnisse von Azure Cognitive Search mit einem Entfernungsfilter zurückgegeben wurden, wird die berechnete Entfernung zwischen den Daten und dem angegebenen Punkt _nicht_ zurückgegeben. Berechnen Sie diesen Wert in der Ansicht oder im Controller neu, wenn Sie ihn in den Ergebnissen anzeigen möchten.
-
-    Der folgende Code berechnet die Entfernung zwischen zwei Lat-/Lng-Punkten.
-
-    ```cs
-        const double EarthRadius = 6371;
-
-        public static double Degrees2Radians(double deg)
-        {
-            return deg * Math.PI / 180;
-        }
-
-        public static double DistanceInKm( double lat1,  double lon1, double lat2, double lon2)
-        {
-            double dlon = Degrees2Radians(lon2 - lon1);
-            double dlat = Degrees2Radians(lat2 - lat1);
-
-            double a = (Math.Sin(dlat / 2) * Math.Sin(dlat / 2)) + Math.Cos(Degrees2Radians(lat1)) * Math.Cos(Degrees2Radians(lat2)) * (Math.Sin(dlon / 2) * Math.Sin(dlon / 2));
-            double angle = 2 * Math.Atan2(Math.Sqrt(a), Math.Sqrt(1 - a));
-            return angle * EarthRadius;
-        }
-    ```
-
-1. Nun müssen Sie diese Konzepte miteinander verbinden. Unser Tutorial behandelt jedoch nur diese Codeausschnitte, die Erstellung einer kartenbasierten App wird dem Leser als Übung überlassen. Um dieses Beispiel weiter zu vertiefen, sollten Sie entweder einen Städtenamen mit einem Radius eingeben oder einen Punkt auf einer Karte lokalisieren und einen Radius auswählen. Um diese Optionen weiter zu erkunden, beachten Sie die folgenden Ressourcen:
-
-* [Dokumentation zu Azure Location Based Services (Vorschauversion)](../azure-maps/index.yml)
-* [Suchen nach einer Adresse mit dem Suchdienst von Azure Maps](../azure-maps/how-to-search-for-address.md)
-
 ## <a name="order-results-based-on-a-scoring-profile"></a>Sortieren von Ergebnissen basierend auf einem Bewertungsprofil
 
-Die bisherigen Beispiele im Tutorial zeigen, wie man nach Zahlenwerten (Bewertung, Renovierungsdatum, geografische Entfernung) ordnet, was einen _genauen_ Sortierprozess bietet. Einige Suchen und einige Daten bieten sich jedoch nicht für einen solch einfachen Vergleich zwischen zwei Datenelementen an. Azure Cognitive Search beinhaltet das Konzept von _Bewertung_. _Bewertungsprofile_ können für einen Datensatz angegeben werden, der verwendet werden kann, um komplexere und qualitativere Vergleiche zu ermöglichen. Diese sollten am nützlichsten sein, wenn man beispielsweise textbasierte Daten vergleicht, um zu entscheiden, welche zuerst angezeigt werden sollen.
+Die bisherigen Beispiele im Tutorial zeigen, wie Sie nach Zahlenwerten (Bewertung und Renovierungsdatum) ordnen, was eine _genaue_ Sortierungssequenz ermöglicht. Einige Suchen und einige Daten bieten sich jedoch nicht für einen solch einfachen Vergleich zwischen zwei Datenelementen an. Bei Volltextsuchabfragen beinhaltet Cognitive Search das Konzept der _Rangfolge_. _Bewertungsprofile_ können angegeben werden, um die Rangfolge der Ergebnisse zu beeinflussen und dadurch komplexere und qualitativ hochwertigere Vergleiche zu ermöglichen.
 
-Bewertungsprofile werden nicht von Benutzern definiert, sondern in der Regel von Administratoren eines Datensatzes. Für die Hoteldaten wurden mehrere Bewertungsprofile erstellt. Wir sehen uns an, wie ein Bewertungsprofil definiert ist, und versuchen dann, Code zu schreiben, um nach ihm zu suchen.
+[Bewertungsprofile](index-add-scoring-profiles.md) werden im Indexschema definiert. Für die Hoteldaten wurden mehrere Bewertungsprofile erstellt. Wir sehen uns an, wie ein Bewertungsprofil definiert ist, und versuchen dann, Code zu schreiben, um nach ihm zu suchen.
 
 ### <a name="how-scoring-profiles-are-defined"></a>So werden Bewertungsprofile definiert
 
-Betrachten wir drei Beispiele für Bewertungsprofile und überlegen uns, wie sich jedes einzelne davon auf die Reihenfolge der Ergebnisse auswirken _sollte_. Als App-Entwickler schreiben Sie diese Profile nicht, sie werden vom Datenadministrator geschrieben. Es ist jedoch hilfreich, sich die Syntax anzusehen.
+Bewertungsprofile werden zur Entwurfszeit in einem Suchindex definiert. Der von Microsoft gehostete schreibgeschützte Hotelindex enthält drei Bewertungsprofile. In diesem Abschnitt werden die Bewertungsprofile sowie ihre Verwendung im Code erläutert.
 
-1. Dies ist das Standardbewertungsprofil für den Hoteldatensatz, der verwendet wird, wenn Sie keine **OrderBy**- oder **ScoringProfile**-Parameter angeben. Dieses Profil erhöht die _Bewertung_ für ein Hotel, wenn der Suchtext im Hotelnamen, in der Beschreibung oder in der Liste der Tags (Ausstattung) enthalten ist. Beachten Sie, wie bestimmte Felder von den Gewichtungen der Bewertung bevorzugt werden. Wenn der Suchtext in einem anderen Feld angezeigt wird, das unten nicht aufgeführt ist, hat er die Gewichtung 1. Je höher die Bewertung, desto eher wird ein Ergebnis natürlich in der Ansicht angezeigt.
+1. Nachfolgend sehen Sie das Standardbewertungsprofil für den Hoteldatensatz, der verwendet wird, wenn Sie keine **OrderBy**- oder **ScoringProfile**-Parameter angeben. Dieses Profil erhöht die _Bewertung_ für ein Hotel, wenn der Suchtext im Hotelnamen, in der Beschreibung oder in der Liste der Tags (Ausstattung) enthalten ist. Beachten Sie, wie bestimmte Felder von den Gewichtungen der Bewertung bevorzugt werden. Wenn der Suchtext in einem anderen Feld angezeigt wird, das unten nicht aufgeführt ist, hat er die Gewichtung 1. Je höher die Bewertung, desto weiter oben wird ein Ergebnis natürlich in der Ansicht angezeigt.
 
      ```cs
     {
-            "name": "boostByField",
-            "text": {
-                "weights": {
-                    "HotelName": 2,
-                    "Description": 1.5,
-                    "Description_fr": 1.5,
-                    "Tags": 3
-                }
+        "name": "boostByField",
+        "text": {
+            "weights": {
+                "Tags": 3,
+                "HotelName": 2,
+                "Description": 1.5,
+                "Description_fr": 1.5,
             }
         }
-
+    }
     ```
 
-1. Das folgende Bewertungsprofil steigert die Bewertung erheblich, wenn ein übergebener Parameter eines oder mehrere der Tags (die wir als „Ausstattungen“ bezeichnen) enthält. Der wichtigste Aspekt dieses Profils ist, dass ein Parameter mit Text angegeben werden _muss_. Wenn der Parameter leer oder nicht angegeben ist, wird ein Fehler ausgegeben.
- 
-    ```cs
-            {
-            "name": "boostAmenities",
-            "functions": [
-                {
-                    "type": "tag",
-                    "fieldName": "Tags",
-                    "boost": 5,
-                    "tag": {
-                        "tagsParameter": "amenities"
-                    }
-                }
-            ]
-        }
-    ```
-
-1. In diesem dritten Beispiel bedeutet die Bewertung eine deutliche Steigerung der Punktzahl. Das Datum der letzten Renovierung erhöht auch die Punktzahl, allerdings nur, wenn diese Daten innerhalb von 730 Tagen (2 Jahren) ab dem aktuellen Datum liegen.
+1. Das folgende alternative Bewertungsprofil steigert die Bewertung erheblich, wenn ein übergebener Parameter mindestens eins der Tags (die wir als „Ausstattungen“ bezeichnen) enthält. Der wichtigste Aspekt dieses Profils ist, dass ein Parameter mit Text angegeben werden _muss_. Wenn der Parameter leer oder nicht angegeben ist, wird ein Fehler ausgegeben.
 
     ```cs
+    {
+        "name":"boostAmenities",
+        "functions":[
             {
-            "name": "renovatedAndHighlyRated",
-            "functions": [
-                {
-                    "type": "magnitude",
-                    "fieldName": "Rating",
-                    "boost": 20,
-                    "interpolation": "linear",
-                    "magnitude": {
-                        "boostingRangeStart": 0,
-                        "boostingRangeEnd": 5,
-                        "constantBoostBeyondRange": false
-                    }
-                },
-                {
-                    "type": "freshness",
-                    "fieldName": "LastRenovationDate",
-                    "boost": 10,
-                    "interpolation": "quadratic",
-                    "freshness": {
-                        "boostingDuration": "P730D"
-                    }
-                }
-            ]
-        }
-
+            "fieldName":"Tags",
+            "freshness":null,
+            "interpolation":"linear",
+            "magnitude":null,
+            "distance":null,
+            "tag":{
+                "tagsParameter":"amenities"
+            },
+            "type":"tag",
+            "boost":5
+            }
+        ],
+        "functionAggregation":0
+    },
     ```
 
-    Nun lassen Sie uns sehen, ob diese Profile so funktionieren, wie wir es für richtig halten!
+1. In diesem dritten Profil bedeutet die Hotelbewertung eine deutliche Steigerung der Punktzahl. Das Datum der letzten Renovierung erhöht auch die Punktzahl, allerdings nur, wenn diese Daten innerhalb von 730 Tagen (2 Jahren) ab dem aktuellen Datum liegen.
+
+    ```cs
+    {
+        "name":"renovatedAndHighlyRated",
+        "functions":[
+            {
+            "fieldName":"Rating",
+            "freshness":null,
+            "interpolation":"linear",
+            "magnitude":{
+                "boostingRangeStart":0,
+                "boostingRangeEnd":5,
+                "constantBoostBeyondRange":false
+            },
+            "distance":null,
+            "tag":null,
+            "type":"magnitude",
+            "boost":20
+            },
+            {
+            "fieldName":"LastRenovationDate",
+            "freshness":{
+                "boostingDuration":"P730D"
+            },
+            "interpolation":"quadratic",
+            "magnitude":null,
+            "distance":null,
+            "tag":null,
+            "type":"freshness",
+            "boost":10
+            }
+        ],
+        "functionAggregation":0
+    }
+    ```
+
+    Sehen Sie sich nun an, ob diese Profile so funktionieren, wie sie sollen.
 
 ### <a name="add-code-to-the-view-to-compare-profiles"></a>Hinzufügen von Code zur Ansicht, um Profile zu vergleichen
 
@@ -736,13 +708,11 @@ Betrachten wir drei Beispiele für Bewertungsprofile und überlegen uns, wie sic
             InitSearch();
 
             // Set up the facets call in the search parameters.
-            SearchParameters sp = new SearchParameters()
-            {
-                // Search for up to 20 amenities.
-                Facets = new List<string> { "Tags,count:20" },
-            };
+            SearchOptions options = new SearchOptions();
+            // Search for up to 20 amenities.
+            options.Facets.Add("Tags,count:20");
 
-            DocumentSearchResult<Hotel> searchResult = await _indexClient.Documents.SearchAsync<Hotel>("*", sp);
+            SearchResults<Hotel> searchResult = await _searchClient.SearchAsync<Hotel>("*", options);
 
             // Convert the results to a list that can be displayed in the client.
             List<string> facets = searchResult.Facets["Tags"].Select(x => x.Value.ToString()).ToList();
@@ -799,155 +769,152 @@ Betrachten wir drei Beispiele für Bewertungsprofile und überlegen uns, wie sic
 1. Wir müssen die Parameter **OrderBy** und **ScoringProfile** nach Bedarf festlegen. Ersetzen Sie die vorhandene Methode **Index(SearchData model)** durch die folgende.
 
     ```cs
-        public async Task<ActionResult> Index(SearchData model)
+    public async Task<ActionResult> Index(SearchData model)
+    {
+        try
         {
-            try
+            InitSearch();
+
+            int page;
+
+            if (model.paging != null && model.paging == "next")
             {
-                InitSearch();
+                // Recover the facet text, and the facet check box settings.
+                RecoverFacets(model, true);
 
-                int page;
+                // Increment the page.
+                page = (int)TempData["page"] + 1;
 
-                if (model.paging != null && model.paging == "next")
+                // Recover the search text.
+                model.searchText = TempData["searchfor"].ToString();
+            }
+            else
+            {
+                // First search with text. 
+                // Recover the facet text, but ignore the check box settings, and use the current model settings.
+                RecoverFacets(model, false);
+
+                // First call. Check for valid text input, and valid scoring profile.
+                if (model.searchText == null)
                 {
-                    // Recover the facet text, and the facet check box settings.
-                    RecoverFacets(model, true);
-
-                    // Increment the page.
-                    page = (int)TempData["page"] + 1;
-
-                    // Recover the search text.
-                    model.searchText = TempData["searchfor"].ToString();
+                    model.searchText = "";
                 }
-                else
+                if (model.scoring == null)
                 {
-                    // First search with text. 
-                    // Recover the facet text, but ignore the check box settings, and use the current model settings.
-                    RecoverFacets(model,false);
-
-                    // First call. Check for valid text input, and valid scoring profile.
-                    if (model.searchText == null)
-                    {
-                        model.searchText = "";
-                    }
-                    if (model.scoring == null)
-                    {
-                        model.scoring = "Default";
-                    }
-                    page = 0;
+                    model.scoring = "Default";
                 }
+                page = 0;
+            }
 
-                // Set empty defaults for ordering and scoring parameters.
-                var orderby = new List<string>();
-                string profile = "";
-                var scoringParams = new List<ScoringParameter>();
+            // Setup the search parameters.
+            var options = new SearchOptions
+            {
+                SearchMode = SearchMode.All,
 
-                // Set the ordering based on the user's radio button selection.
-                switch (model.scoring)
-                {
-                    case "RatingRenovation":
-                        orderby.Add("Rating desc");
-                        orderby.Add("LastRenovationDate desc");
-                        break;
+                // Skip past results that have already been returned.
+                Skip = page * GlobalVariables.ResultsPerPage,
 
-                    case "boostAmenities":
-                        {
-                            profile = model.scoring;
-                            var setAmenities = new List<string>();
+                // Take only the next page worth of results.
+                Size = GlobalVariables.ResultsPerPage,
 
-                            // Create a string list of amenities that have been clicked.
-                            for (int a = 0; a < model.facetOn.Length; a++)
-                            {
-                                if (model.facetOn[a])
-                                {
-                                    setAmenities.Add(model.facetText[a]);
-                                }
-                            }
-                            if (setAmenities.Count > 0)
-                            {
-                                // Only set scoring parameters if there are any.
-                                var sp = new ScoringParameter("amenities", setAmenities);
-                                scoringParams.Add(sp);
-                            }
-                            else
-                            {
-                                // No amenities selected, so set profile back to default.
-                                profile = "";
-                            }
-                        }
-                        break;
+                // Include the total number of results.
+                IncludeTotalCount = true,
+            };
+            // Select the data properties to be returned.
+            options.Select.Add("HotelName");
+            options.Select.Add("Description");
+            options.Select.Add("Tags");
+            options.Select.Add("Rooms");
+            options.Select.Add("Rating");
+            options.Select.Add("LastRenovationDate");
 
-                    case "renovatedAndHighlyRated":
-                        profile = model.scoring;
-                        break;
-
-                    default:
-                        break;
-                }
-
-                // Setup the search parameters.
-                var parameters = new SearchParameters
-                {
+            List<string> parameters = new List<string>();
+            // Set the ordering based on the user's radio button selection.
+            switch (model.scoring)
+            {
+                case "RatingRenovation":
                     // Set the ordering/scoring parameters.
-                    OrderBy = orderby,
-                    ScoringProfile = profile,
-                    ScoringParameters = scoringParams,
+                    options.OrderBy.Add("Rating desc");
+                    options.OrderBy.Add("LastRenovationDate desc");
+                    break;
 
-                    // Select the data properties to be returned.
-                    Select = new[] { "HotelName", "Description", "Tags", "Rooms", "Rating", "LastRenovationDate" },
-                    SearchMode = SearchMode.All,
-
-                    // Skip past results that have already been returned.
-                    Skip = page * GlobalVariables.ResultsPerPage,
-
-                    // Take only the next page worth of results.
-                    Top = GlobalVariables.ResultsPerPage,
-
-                    // Include the total number of results.
-                    IncludeTotalResultCount = true,
-                };
-
-                // For efficiency, the search call should be asynchronous, so use SearchAsync rather than Search.
-                model.resultList = await _indexClient.Documents.SearchAsync<Hotel>(model.searchText, parameters);
-
-                // Ensure TempData is stored for the next call.
-                TempData["page"] = page;
-                TempData["searchfor"] = model.searchText;
-                TempData["scoring"] = model.scoring;
-                SaveFacets(model,true);
-
-                // Calculate the room rate ranges.
-                for (int n = 0; n < model.resultList.Results.Count; n++)
-                {
-                    var cheapest = 0d;
-                    var expensive = 0d;
-
-                    for (var r = 0; r < model.resultList.Results[n].Document.Rooms.Length; r++)
+                case "boostAmenities":
                     {
-                        var rate = model.resultList.Results[n].Document.Rooms[r].BaseRate;
-                        if (rate < cheapest || cheapest == 0)
+                        options.ScoringProfile = model.scoring;
+
+                        // Create a string list of amenities that have been clicked.
+                        for (int a = 0; a < model.facetOn.Length; a++)
                         {
-                            cheapest = (double)rate;
+                            if (model.facetOn[a])
+                            {
+                                parameters.Add(model.facetText[a]);
+                            }
                         }
-                        if (rate > expensive)
+
+                        if (parameters.Count > 0)
                         {
-                            expensive = (double)rate;
+                            options.ScoringParameters.Add($"amenities-{ string.Join(',', parameters)}");
+                        }
+                        else
+                        {
+                            // No amenities selected, so set profile back to default.
+                            options.ScoringProfile = "";
                         }
                     }
-                    model.resultList.Results[n].Document.cheapest = cheapest;
-                    model.resultList.Results[n].Document.expensive = expensive;
-                }
+                    break;
+
+                case "renovatedAndHighlyRated":
+                    options.ScoringProfile = model.scoring;
+                    break;
+
+                default:
+                    break;
             }
-            catch
+
+            // For efficiency, the search call should be asynchronous, so use SearchAsync rather than Search.
+            model.resultList = await _searchClient.SearchAsync<Hotel>(model.searchText, options);
+
+            // Ensure TempData is stored for the next call.
+            TempData["page"] = page;
+            TempData["searchfor"] = model.searchText;
+            TempData["scoring"] = model.scoring;
+            SaveFacets(model, true);
+
+            // Calculate the room rate ranges.
+            await foreach (var result in model.resultList.GetResultsAsync())
             {
-                return View("Error", new ErrorViewModel { RequestId = "1" });
+                var cheapest = 0d;
+                var expensive = 0d;
+
+                foreach (var room in result.Document.Rooms)
+                {
+                    var rate = room.BaseRate;
+                    if (rate < cheapest || cheapest == 0)
+                    {
+                        cheapest = (double)rate;
+                    }
+                    if (rate > expensive)
+                    {
+                        expensive = (double)rate;
+                    }
+                }
+
+                result.Document.cheapest = cheapest;
+                result.Document.expensive = expensive;
             }
-            return View("Index", model);
         }
+        catch
+        {
+            return View("Error", new ErrorViewModel { RequestId = "1" });
+        }
+
+        return View("Index", model);
+    }
     ```
 
     Lesen Sie die Kommentare für jede der **switch**-Auswahlen durch.
 
-5. Wir müssen keine Änderungen an der Aktion **Next** vornehmen, wenn Sie den zusätzlichen Code für den vorherigen Abschnitt über die Sortierung basierend mehreren Eigenschaften abgeschlossen haben.
+1. Wir müssen keine Änderungen an der Aktion **Next** vornehmen, wenn Sie den zusätzlichen Code für den vorherigen Abschnitt über die Sortierung basierend mehreren Eigenschaften abgeschlossen haben.
 
 ### <a name="run-and-test-the-app"></a>Ausführen und Testen der App
 

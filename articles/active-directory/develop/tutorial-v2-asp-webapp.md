@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 08/28/2019
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40
-ms.openlocfilehash: dcb8675350442274418920bb9439b65643f1b046
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: 8b12df62a7080e57e47b52cb79ed8a67e12bd526
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98178244"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98753101"
 ---
 # <a name="tutorial-add-sign-in-to-microsoft-to-an-aspnet-web-app"></a>Tutorial: Hinzufügen der Anmeldung bei Microsoft zu einer ASP.NET-Web-App
 
@@ -119,7 +119,7 @@ Die folgenden Schritte dienen zum Erstellen der Startup-Klasse der OWIN-Middlewa
         // Tenant is the tenant ID (e.g. contoso.onmicrosoft.com, or 'common' for multi-tenant)
         static string tenant = System.Configuration.ConfigurationManager.AppSettings["Tenant"];
 
-        // Authority is the URL for authority, composed by Microsoft identity platform endpoint and the tenant name (e.g. https://login.microsoftonline.com/contoso.onmicrosoft.com/v2.0)
+        // Authority is the URL for authority, composed of the Microsoft identity platform and the tenant name (e.g. https://login.microsoftonline.com/contoso.onmicrosoft.com/v2.0)
         string authority = String.Format(System.Globalization.CultureInfo.InvariantCulture, System.Configuration.ConfigurationManager.AppSettings["Authority"], tenant);
 
         /// <summary>
@@ -406,9 +406,8 @@ Wenn Sie Ihren Test ausführen möchten, verwenden Sie für die Anmeldung ein Az
 <br/><br/>
 ![Mit einem Microsoft-Konto anmelden](media/active-directory-develop-guidedsetup-aspnetwebapp-test/aspnetbrowsersignin2.png)
 
-#### <a name="permissions-and-consent-in-the-microsoft-identity-platform-endpoint"></a>Berechtigungen und Zustimmung im Microsoft Identity Platform-Endpunkt
-
-Anwendungen, die sich in die Microsoft Identity Platform integrieren lassen, folgen einem bestimmten Autorisierungsmodell, mit dem Benutzer und Administratoren den Zugriff auf Daten steuern können. Nachdem sich ein Benutzer mit Microsoft Identity Platform für den Zugriff auf diese Anwendung authentifiziert hat, wird er aufgefordert, seine Zustimmung für die von der Anwendung angeforderten Berechtigungen zu erteilen („Ihr grundlegendes Profil anzeigen“ und „Zugriff auf Daten beibehalten, für die Sie Zugriff erteilt haben“). Wenn der Benutzer diese Berechtigungen akzeptiert hat, wird er zu den Anwendungsergebnissen weitergeleitet. In folgenden Fällen wird dem Benutzer jedoch unter Umständen stattdessen die Seite **Need admin consent** (Administratoreinwilligung erforderlich) angezeigt:
+#### <a name="permissions-and-consent-in-the-microsoft-identity-platform"></a>Berechtigungen und Zustimmung im Microsoft Identity Platform-Endpunkt
+In Microsoft Identity Platform integrierte Anwendungen folgen einem Autorisierungsmodell, mit dem Benutzer und Administratoren den Zugriff auf Daten steuern können. Nachdem sich ein Benutzer mit Microsoft Identity Platform für den Zugriff auf diese Anwendung authentifiziert hat, wird er aufgefordert, seine Zustimmung für die von der Anwendung angeforderten Berechtigungen zu erteilen („Ihr grundlegendes Profil anzeigen“ und „Zugriff auf Daten beibehalten, für die Sie Zugriff erteilt haben“). Wenn der Benutzer diese Berechtigungen akzeptiert hat, wird er zu den Anwendungsergebnissen weitergeleitet. In folgenden Fällen wird dem Benutzer jedoch unter Umständen stattdessen die Seite **Need admin consent** (Administratoreinwilligung erforderlich) angezeigt:
 
 - Der Anwendungsentwickler fügt zusätzliche Berechtigungen hinzu, für die die **Administratoreinwilligung** erforderlich ist.
 - Der Mandant wurde (unter **Unternehmensanwendungen > Benutzereinstellungen**) so konfiguriert, dass Benutzer Apps den Zugriff auf Unternehmensdaten in ihrem Namen nicht gestatten können.

@@ -3,7 +3,7 @@ title: 'Tutorial: Erstellen eines Zugriffspakets – Azure AD-Berechtigungsver
 description: Schritt-für-Schritt-Tutorial zum Erstellen Ihres ersten Zugriffspakets in der Azure Active Directory-Berechtigungsverwaltung
 services: active-directory
 documentationCenter: ''
-author: barclayn
+author: ajburnle
 manager: daveba
 editor: markwahl-msft
 ms.service: active-directory
@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.subservice: compliance
 ms.date: 09/30/2020
-ms.author: barclayn
+ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2e8d68643b5cc0002467f738dd60343fb2c42dc6
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: 2625b1e0ccc4c3129f412eff144f47d9dc97b961
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97631283"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98937889"
 ---
 # <a name="tutorial-create-your-first-access-package-in-azure-ad-entitlement-management"></a>Tutorial: Erstellen Ihres ersten Zugriffspakets in der Azure AD-Berechtigungsverwaltung
 
@@ -119,7 +119,7 @@ Bei einem *Zugriffspaket* handelt es sich um eine Gruppe von Ressourcen, die von
     ![Neues Zugriffspaket, Registerkarte „Ressourcenrollen“](./media/entitlement-management-access-package-first/resource-roles.png)
 
     >[!IMPORTANT]
-    >Die einem Zugriffspaket hinzugefügten Gruppen, denen Rollen zugewiesen werden können, werden mit dem Untertyp **Rolle zuweisbar** angegeben. Weitere Informationen zu Gruppen, die Azure AD-Rollen zugewiesen werden können, finden Sie unter [Erstellen einer Gruppe in Azure Active Directory für das Zuweisen von Rollen](../roles/groups-create-eligible.md). Wenn eine Gruppe, der Rollen zugewiesen werden können und die Sie hinzufügen möchten, nicht angezeigt wird, oder wenn Sie eine solche Gruppe nicht hinzufügen können, stellen Sie sicher, dass Sie über die erforderliche Azure AD-Rolle und -Berechtigungsverwaltungsrolle zum Ausführen dieses Vorgangs verfügen. Möglicherweise müssen Sie jemanden mit den erforderlichen Rollen beauftragen, die Ressource Ihrem Katalog hinzuzufügen. Weitere Informationen finden Sie unter [Erforderliche Rollen, um einem Katalog Ressourcen hinzuzufügen](entitlement-management-delegate.md#required-roles-to-add-resources-to-a-catalog).
+    >Die einem Zugriffspaket hinzugefügten Gruppen, denen Rollen zugewiesen werden können, werden mit dem Untertyp **Rolle zuweisbar** angegeben. Weitere Informationen zu Gruppen, die Azure AD-Rollen zugewiesen werden können, finden Sie unter [Erstellen einer Gruppe in Azure Active Directory für das Zuweisen von Rollen](../roles/groups-create-eligible.md). Beachten Sie Folgendes: Wenn eine Gruppe, der Rollen zugeordnet werden können, in einem Zugriffspaketkatalog vorhanden ist, können Administratoren, die Verwaltungsaufgaben in der Berechtigungsverwaltung ausführen können (einschließlich globaler Administratoren, Benutzeradministratoren und Katalogbesitzer des Katalogs), die Zugriffspakete im Katalog steuern. So können sie auswählen, wer zu diesen Gruppen hinzugefügt werden kann. Wenn eine Gruppe, der Rollen zugewiesen werden können und die Sie hinzufügen möchten, nicht angezeigt wird, oder wenn Sie eine solche Gruppe nicht hinzufügen können, stellen Sie sicher, dass Sie über die erforderliche Azure AD-Rolle und -Berechtigungsverwaltungsrolle zum Ausführen dieses Vorgangs verfügen. Möglicherweise müssen Sie jemanden mit den erforderlichen Rollen beauftragen, die Ressource Ihrem Katalog hinzuzufügen. Weitere Informationen finden Sie unter [Erforderliche Rollen, um einem Katalog Ressourcen hinzuzufügen](entitlement-management-delegate.md#required-roles-to-add-resources-to-a-catalog).
 
     >[!NOTE]
     > Bei der Verwendung von [dynamischen Gruppen](../enterprise-users/groups-create-rule.md) sind außer „Besitzer“ keine anderen Rollen verfügbar. Dies ist beabsichtigt.

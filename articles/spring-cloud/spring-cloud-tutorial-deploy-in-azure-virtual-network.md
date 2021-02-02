@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Bereitstellen von Azure Spring Cloud in einem virtuellen Netzwerk'
+title: Bereitstellen von Azure Spring Cloud in einem virtuellen Netzwerk
 description: Bereitstellen von Azure Spring Cloud in einem virtuellen Netzwerk (VNET-Einschleusung)
 author: MikeDodaro
 ms.author: brendm
@@ -7,14 +7,14 @@ ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 07/21/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: 9d72d60bd3a1ef23b8122b2bc5ba4f0c5c701254
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: 73dd60dba50d3bd29cda0f538462884822054cf9
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97587722"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880597"
 ---
-# <a name="tutorial-deploy-azure-spring-cloud-in-a-virtual-network"></a>Tutorial: Bereitstellen von Azure Spring Cloud in einem virtuellen Netzwerk
+# <a name="deploy-azure-spring-cloud-in-a-virtual-network"></a>Bereitstellen von Azure Spring Cloud in einem virtuellen Netzwerk
 
 **Dieser Artikel gilt für:** ✔️ Java ✔️ C#
 
@@ -25,6 +25,9 @@ Die Bereitstellung ermöglicht Folgendes:
 * Isolierung von Azure Spring Cloud-Apps und der Dienstruntime vom Internet in Ihrem Unternehmensnetzwerk.
 * Azure Spring Cloud-Interaktion mit Systemen in lokalen Rechenzentren oder Azure-Diensten in anderen virtuellen Netzwerken.
 * Befähigung von Kunden zum Steuern der eingehenden und ausgehenden Netzwerkkommunikation für Azure Spring Cloud.
+
+> [!Note]
+> Sie können Ihr virtuelles Azure-Netzwerk nur auswählen, wenn Sie eine neue Azure Spring Cloud-Dienstinstanz erstellen. Nach dem Erstellen der Azure Spring Cloud-Instanz können Sie nicht mehr zu einem anderen virtuellen Netzwerk wechseln.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -77,6 +80,7 @@ Wenn Sie bereits über ein virtuelles Netzwerk zum Hosten einer Azure Spring Clo
 1. Klicken Sie auf **Überprüfen + erstellen**. Übernehmen Sie die übrigen Standardeinstellungen, und wählen Sie **Erstellen** aus.
 
 ## <a name="grant-service-permission-to-the-virtual-network"></a>Erteilen der Dienstberechtigung für das virtuelle Netzwerk
+Azure Spring Cloud erfordert die Berechtigung vom Typ **Besitzer** für Ihr virtuelles Netzwerk, damit ein dedizierter und dynamischer Dienstprinzipal im virtuellen Netzwerk für die weitere Bereitstellung und Wartung gewährt werden kann.
 
 Wählen Sie das virtuelle Netzwerk **azure-spring-cloud-vnet** aus, das Sie zuvor erstellt haben.
 
@@ -160,9 +164,9 @@ Diese Netzwerkressourcen sind mit dem in der vorherigen Abbildung erstellten vir
    > [!Important]
    > Die Ressourcengruppen werden vollständig vom Azure Spring Cloud-Dienst verwaltet. Löschen oder ändern Sie die Ressourcen darin *nicht* manuell.
 
-## <a name="limitations"></a>Einschränkungen
+## <a name="using-smaller-subnet-ranges"></a>Verwenden kleinerer Subnetzbereiche
 
-Ein kleiner Subnetzbereich speichert IP-Adressen, führt jedoch zu Einschränkungen der maximalen Anzahl von App-Instanzen, die die Azure Spring Cloud-Instanz enthalten kann.
+Diese Tabelle enthält die maximale Anzahl von App-Instanzen, die Azure Spring Cloud mit kleineren Subnetzbereichen unterstützt:
 
 | App-Subnetz-CIDR | IP-Adressen gesamt | Verfügbare IP-Adressen | Maximale Anzahl App-Instanzen                                        |
 | --------------- | --------- | ------------- | ------------------------------------------------------------ |

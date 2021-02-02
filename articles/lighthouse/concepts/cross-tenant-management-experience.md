@@ -1,14 +1,14 @@
 ---
 title: Mandantenübergreifende Verwaltungsmöglichkeiten
 description: Die delegierte Azure-Ressourcenverwaltung ermöglicht eine mandantenübergreifende Verwaltungserfahrung.
-ms.date: 01/07/2020
+ms.date: 01/26/2021
 ms.topic: conceptual
-ms.openlocfilehash: a550655b8076a1e3946ff015239715ddf0712236
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: 9af90e10d889c3d30375e001891ce0dc70767ab4
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98131762"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881400"
 ---
 # <a name="cross-tenant-management-experiences"></a>Mandantenübergreifende Verwaltungsmöglichkeiten
 
@@ -97,7 +97,7 @@ Die meisten Aufgaben und Dienste können auf delegierten Ressourcen über verwal
 
 - Anzeigen von Warnungen für delegierte Abonnements mit der Möglichkeit, Warnungen in allen Abonnements anzuzeigen und zu aktualisieren
 - Anzeigen von Aktivitätsprotokolldetails für delegierte Abonnements
-- Log Analytics: Abfragen von Daten aus Remotearbeitsbereichen in mehreren Mandanten. (Beachten Sie, dass Automation-Konten, die für den Zugriff auf Daten aus Arbeitsbereichen in Kundenmandanten verwendet werden, im selben Mandanten erstellt werden müssen.)
+- [Protokollanalyse](../../azure-monitor/platform/service-providers.md): Abfragen von Daten aus Remotearbeitsbereichen in mehreren Mandanten. (Beachten Sie, dass Automation-Konten, die für den Zugriff auf Daten aus Arbeitsbereichen in Kundenmandanten verwendet werden, im selben Mandanten erstellt werden müssen.)
 - Erstellen von Warnungen in Kundenmandanten, die eine Automatisierung auslösen, wie z. B. Azure Automation-Runbooks oder Azure Functions im verwaltenden Mandanten über Webhooks
 - Erstellen von [Diagnoseeinstellungen](../..//azure-monitor/platform/diagnostic-settings.md) in Kundenmandanten zum Senden von Ressourcenprotokollen an Arbeitsbereiche im verwaltenden Mandanten
 - Für SAP-Workloads sollten Sie [die Metriken von SAP-Lösungen mit einer aggregierten Sicht über Kundenmandanten hinweg überwachen](https://techcommunity.microsoft.com/t5/running-sap-applications-on-the/using-azure-lighthouse-and-azure-monitor-for-sap-solutions-to/ba-p/1537293).
@@ -173,6 +173,7 @@ Beachten Sie bei allen Szenarios die folgenden aktuellen Einschränkungen:
 - Rollenzuweisungen müssen [integrierte Azure-Rollen](../../role-based-access-control/built-in-roles.md) verwenden. Alle integrierten Rollen werden derzeit mit der delegierten Azure-Ressourcenverwaltung unterstützt, ausgenommen „Besitzer“ und alle integrierten Rollen mit der Berechtigung [`DataActions`](../../role-based-access-control/role-definitions.md#dataactions). Die Rolle „Benutzerzugriffsadministrator“ wird nur für die eingeschränkte Verwendung beim [Zuweisen von Rollen zu verwalteten Identitäten](../how-to/deploy-policy-remediation.md#create-a-user-who-can-assign-roles-to-a-managed-identity-in-the-customer-tenant) unterstützt.  Benutzerdefinierte Rollen und [klassische Abonnementadministratorrollen](../../role-based-access-control/classic-administrators.md) werden nicht unterstützt.
 - Sie können Abonnements, die Azure Databricks verwenden, zwar integrieren, Benutzer im Verwaltungsmandanten können jedoch derzeit keine Azure Databricks-Arbeitsbereiche für ein delegiertes Abonnement starten.
 - Sie können zwar ein Onboarding für Abonnements und Ressourcengruppen mit Ressourcensperren durchführen, diese Sperren verhindern jedoch nicht die Ausführung von Aktionen durch Benutzer im Verwaltungsmandanten. [Ablehnungszuweisungen](../../role-based-access-control/deny-assignments.md), die systemseitig verwaltete Ressourcen schützen – beispielsweise solche, die von verwalteten Azure-Anwendungen oder von Azure Blueprints erstellt wurden (systemseitig zugewiesene Ablehnungszuweisungen) –, verhindern, dass Benutzer im Verwaltungsmandanten Aktionen für diese Ressourcen ausführen. Benutzer im Kundenmandanten können gegenwärtig allerdings keine eigenen Ablehnungszuweisungen (benutzerseitig zugewiesene Ablehnungszuweisungen) erstellen.
+- Die Delegierung von Abonnements auf eine [nationale Cloud](../../active-directory/develop/authentication-national-cloud.md) und die öffentliche Azure-Cloud oder zwei separate nationale Clouds wird nicht unterstützt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

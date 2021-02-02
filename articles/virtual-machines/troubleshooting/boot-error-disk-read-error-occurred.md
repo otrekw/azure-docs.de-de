@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 06/01/2020
 ms.author: v-miegge
-ms.openlocfilehash: f59903ed111be1fe414f4b3ded250d754c91d323
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 75d1cf8638f922bb0275322568eb1399db4f49e8
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87069156"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98629724"
 ---
 # <a name="troubleshoot-boot-error---disk-read-error-occurred"></a>Behandeln von Startfehlern: Fehler beim Lesen des Datenträgers
 
@@ -38,6 +38,9 @@ Diese Fehlermeldung gibt an, dass die Datenträgerstruktur beschädigt und nicht
 ## <a name="solution"></a>Lösung
 
 ### <a name="process-overview"></a>Übersicht über den Prozess
+
+> [!TIP]
+> Wenn Sie über eine aktuelle Sicherung der VM verfügen, können Sie versuchen, die [VM aus der Sicherung wiederherzustellen](../../backup/backup-azure-arm-restore-vms.md), um das Startproblem zu beheben.
 
 1. Erstellen Sie eine Reparatur-VM, und greifen Sie darauf zu.
 1. Wählen Sie eine Lösung:

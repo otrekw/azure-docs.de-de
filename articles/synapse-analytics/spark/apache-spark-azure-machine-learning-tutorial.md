@@ -9,12 +9,12 @@ ms.subservice: machine-learning
 ms.date: 06/30/2020
 ms.author: midesa
 ms.reviewer: jrasnick
-ms.openlocfilehash: 2594e25bff3ca949b329f8b66f4427eb1f6950b0
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: fc9909614a9d557c19a22e215b7513a038f88c33
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98118709"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98942335"
 ---
 # <a name="tutorial-train-a-model-in-python-with-automated-machine-learning"></a>Tutorial: Trainieren eines Modells in Python mit automatisiertem maschinellem Lernen
 
@@ -24,7 +24,7 @@ In diesem Tutorial verwenden Sie [automatisiertes maschinelles Lernen](../../mac
 
 In diesem Tutorial lernen Sie Folgendes:
 - Herunterladen der Daten unter Verwendung von Apache Spark und Azure Open Datasets
-- Transformieren und Bereinigen von Daten unter Verwendung von Azure Spark-Dataframes
+- Transformieren und Bereinigen von Daten unter Verwendung von Azure Spark-Datenrahmen
 - Trainieren eines Regressionsmodells mit automatisiertem maschinellem Lernen
 - Berechnen der Modellgenauigkeit
 
@@ -53,7 +53,7 @@ Gehen Sie dabei folgendermaßen vor:
     > [!Note]
     > Durch den PySpark-Kernel müssen Sie keine Kontexte explizit erstellen. Der Spark-Kontext wird automatisch für Sie erstellt, wenn Sie die erste Codezelle ausführen.
   
-2. Da die Rohdaten im Parquet-Format vorliegen, können Sie den Spark-Kontext verwenden, um die Datei als Dataframe direkt in den Arbeitsspeicher zu lesen. Erstellen Sie ein Spark-Dataframe, indem Sie die Daten über die Open Datasets-API abrufen. Hier verwenden Sie die Spark-Dataframe-Eigenschaften vom Typ `schema on read`, um die Datentypen und das Schema abzuleiten. 
+2. Da die Rohdaten im Parquet-Format vorliegen, können Sie den Spark-Kontext verwenden, um die Datei als Datenrahmen direkt in den Arbeitsspeicher zu lesen. Erstellen Sie einen Spark-Datenrahmen, indem Sie die Daten über die Open Datasets-API abrufen. Hier verwenden Sie die Spark-Datenrahmeneigenschaften vom Typ `schema on read`, um die Datentypen und das Schema abzuleiten. 
    
     ```python
     blob_account_name = "azureopendatastorage"
@@ -61,16 +61,16 @@ Gehen Sie dabei folgendermaßen vor:
     blob_relative_path = "yellow"
     blob_sas_token = r""
 
-    # Allow Spark to read from Blob remotely
+    # Allow Spark to read from the blob remotely
     wasbs_path = 'wasbs://%s@%s.blob.core.windows.net/%s' % (blob_container_name, blob_account_name, blob_relative_path)
     spark.conf.set('fs.azure.sas.%s.%s.blob.core.windows.net' % (blob_container_name, blob_account_name),blob_sas_token)
 
-    # Spark read parquet, note that it won't load any data yet by now
+    # Spark read parquet; note that it won't load any data yet
     df = spark.read.parquet(wasbs_path)
 
     ```
 
-3. Je nach Größe Ihres Spark-Pools können die Rohdaten zu umfangreich sein oder zu viel Verarbeitungszeit in Anspruch nehmen. Sie können diese Daten zu einer kleineren Menge filtern, indem Sie die Filter ```start_date``` und ```end_date``` verwenden. Hierdurch wird ein Filter angewendet, der Daten eines Monats zurückgibt. Sobald Sie das gefilterte Dataframe haben, führen Sie auch die ```describe()```-Funktion für das neue Dataframe aus, um zusammenfassende Statistiken für jedes Feld anzuzeigen. 
+3. Je nach Größe Ihres Spark-Pools können die Rohdaten zu umfangreich sein oder zu viel Verarbeitungszeit in Anspruch nehmen. Sie können nach einer kleineren Menge dieser Daten filtern (etwa den Daten eines Monats), indem Sie die Filter ```start_date``` und ```end_date``` verwenden. Nach dem Filtern nach einem Datenrahmen führen Sie auch die ```describe()```-Funktion für den neuen Datenrahmen aus, um zusammenfassende Statistiken für jedes Feld anzuzeigen. 
 
    Basierend auf den Zusammenfassungsstatistiken können Sie erkennen, dass es einige Unregelmäßigkeiten in den Daten gibt. Beispielsweise zeigt die Statistik, dass die minimale Fahrtstrecke kleiner als 0 ist. Diese unregelmäßigen Datenpunkte müssen herausgefiltert werden.
    
@@ -84,13 +84,13 @@ Gehen Sie dabei folgendermaßen vor:
    filtered_df.describe().show()
    ```
 
-4. Als Nächstes generieren Sie Merkmale aus dem Dataset, indem Sie eine Gruppe von Spalten auswählen und verschiedene zeitbasierte Merkmale aus dem DateTime-Feld für die Abholung erstellen. Filtern Sie die Ausreißer heraus, die im vorherigen Schritt identifiziert wurden, und entfernen Sie dann die letzten Spalten, da diese für das Training unnötig sind.
+4. Generieren Sie Merkmale aus dem Dataset, indem Sie eine Gruppe von Spalten auswählen und verschiedene zeitbasierte Merkmale aus dem Feld `datetime` für die Abholung erstellen. Filtern Sie die Ausreißer heraus, die im vorherigen Schritt identifiziert wurden, und entfernen Sie dann die letzten Spalten, da diese für das Training unnötig sind.
    
    ```python
    from datetime import datetime
    from pyspark.sql.functions import *
 
-   # To make development easier, faster and less expensive down sample for now
+   # To make development easier, faster, and less expensive, downsample for now
    sampled_taxi_df = filtered_df.sample(True, 0.001, seed=1234)
 
    taxi_df = sampled_taxi_df.select('vendorID', 'passengerCount', 'tripDistance',  'startLon', 'startLat', 'endLon' \
@@ -110,16 +110,16 @@ Gehen Sie dabei folgendermaßen vor:
    taxi_df.show(10)
    ```
    
-   Wie Sie sehen können, wird dadurch ein neuer Dataframe mit zusätzlichen Spalten für den Tag des Monats, die Stunde der Abholung, den Wochentag und die Gesamtfahrtzeit erstellt. 
+   Wie Sie sehen können, wird dadurch ein neuer Datenrahmen mit zusätzlichen Spalten für den Tag des Monats, die Stunde der Abholung, den Wochentag und die Gesamtfahrtzeit erstellt. 
 
-   ![Abbildung des Taxi-Dataframes.](./media/azure-machine-learning-spark-notebook/dataset.png#lightbox)
+   ![Abbildung des Taxidatenrahmens](./media/azure-machine-learning-spark-notebook/dataset.png#lightbox)
 
 ## <a name="generate-test-and-validation-datasets"></a>Generieren von Datasets für Test und Validierung
 
-Nachdem Sie das endgültige Dataset haben, können Sie die Daten mithilfe der Funktion ```random_ split ``` in Spark in Trainings- und Testsätze aufteilen. Unter Verwendung der bereitgestellten Gewichtungen teilt diese Funktion die Daten in das Trainingsdataset für das Modelltraining und das Validierungsdataset zum Testen auf.
+Nachdem Sie das endgültige Dataset haben, können Sie die Daten mithilfe der Funktion ```random_ split ``` in Spark in Trainings- und Testsätze aufteilen. Unter Verwendung der bereitgestellten Gewichtungen teilt diese Funktion die Daten nach dem Zufallsprinzip in das Trainingsdataset für das Modelltraining und das Validierungsdataset zum Testen auf.
 
 ```python
-# Random split dataset using Spark, convert Spark to Pandas
+# Random split dataset using Spark; convert Spark to pandas
 training_data, validation_data = taxi_df.randomSplit([0.8,0.2], 223)
 
 ```
@@ -143,20 +143,20 @@ ws = Workspace(workspace_name = workspace_name,
 
 ```
 
-## <a name="convert-a-dataframe-to-an-azure-machine-learning-dataset"></a>Konvertieren eines Dataframes in ein Azure Machine Learning-Dataset
-Um ein Remoteexperiment zu übermitteln, müssen Sie das Dataset in ein Azure Machine Learning-Element vom Typ ```TabularDatset``` konvertieren. Ein [TabularDataset](/python/api/azureml-core/azureml.data.tabulardataset?preserve-view=true&view=azure-ml-py) stellt Daten in einem tabellarischen Format dar, indem die bereitgestellten Dateien analysiert werden.
+## <a name="convert-a-dataframe-to-an-azure-machine-learning-dataset"></a>Konvertieren eines Datenrahmens in ein Azure Machine Learning-Dataset
+Um ein Remoteexperiment zu übermitteln, müssen Sie das Dataset in eine Azure Machine Learning-Instanz vom Typ ```TabularDatset``` konvertieren. [TabularDataset](/python/api/azureml-core/azureml.data.tabulardataset?preserve-view=true&view=azure-ml-py) stellt Daten in einem tabellarischen Format dar, indem die bereitgestellten Dateien analysiert werden.
 
-Mit dem folgenden Code werden der vorhandene Arbeitsbereich und der Azure Machine Learning-Standarddatenspeicher abgerufen. Anschließend werden der Datenspeicher und die Dateispeicherorte an den Pfadparameter übergeben, um ein neues ```TabularDataset``` zu erstellen. 
+Mit dem folgenden Code werden der vorhandene Arbeitsbereich und der Azure Machine Learning-Standarddatenspeicher abgerufen. Anschließend werden der Datenspeicher und die Dateispeicherorte an den Pfadparameter übergeben, um eine neue ```TabularDataset```-Instanz zu erstellen. 
 
 ```python
 import pandas 
 from azureml.core import Dataset
 
-# Get the Azure Machine Learning Default Datastore
+# Get the Azure Machine Learning default datastore
 datastore = ws.get_default_datastore()
 training_pd = training_data.toPandas().to_csv('training_pd.csv', index=False)
 
-# Convert into Azure Machine Learning Tabular Dataset
+# Convert into an Azure Machine Learning tabular dataset
 datastore.upload_files(files = ['training_pd.csv'],
                        target_path = 'train-dataset/tabular/',
                        overwrite = True,
@@ -215,7 +215,7 @@ local_run = experiment.submit(automl_config, show_output=True, tags = tags)
 # Use the get_details function to retrieve the detailed output for the run.
 run_details = local_run.get_details()
 ```
-Wenn das Experiment abgeschlossen ist, gibt die Ausgabe Details zu den abgeschlossenen Iterationen zurück. Für die einzelnen Iterationen werden jeweils die Art des Modells, die Ausführungsdauer und die Trainingsgenauigkeit angezeigt. Im Feld **BEST** wird die beste Trainingsbewertung auf der Grundlage Ihres Metriktyps nachverfolgt.
+Wenn das Experiment beendet ist, gibt die Ausgabe Details zu den abgeschlossenen Iterationen zurück. Für die einzelnen Iterationen werden jeweils die Art des Modells, die Ausführungsdauer und die Trainingsgenauigkeit angezeigt. Im Feld `BEST` wird die beste Trainingsbewertung auf der Grundlage Ihres Metriktyps nachverfolgt.
 
 ![Screenshot der Modellausgabe.](./media/azure-machine-learning-spark-notebook/model-output.png)
 
@@ -231,7 +231,7 @@ best_run, fitted_model = local_run.get_output()
 ```
 
 ### <a name="test-model-accuracy"></a>Testen der Modellgenauigkeit
-1. Um die Modellgenauigkeit zu testen, verwenden Sie das beste Modell, um Vorhersagen für die Preise von Taxifahrten mit dem Testdataset auszuführen. Die Funktion ```predict``` verwendet das beste Modell und sagt die Werte von „y“ (Fahrtkosten) aus dem Validierungsdataset voraus. 
+1. Um die Modellgenauigkeit zu testen, verwenden Sie das beste Modell, um Vorhersagen für die Preise von Taxifahrten mit dem Testdataset auszuführen. Die Funktion ```predict``` verwendet das beste Modell und sagt die Werte von `y` (Fahrtkosten) aus dem Validierungsdataset voraus. 
 
    ```python
    # Test best model accuracy
@@ -240,7 +240,7 @@ best_run, fitted_model = local_run.get_output()
    y_predict = fitted_model.predict(validation_data_pd)
    ```
 
-1. Die mittlere quadratische Gesamtabweichung ist ein häufig verwendetes Maß für die Unterschiede zwischen den von einem Modell vorhergesagten Stichprobenwerten und den beobachteten Werten. Sie berechnen die mittlere quadratische Gesamtabweichung der Ergebnisse, indem wir den `y_test`-Dataframe mit den vom Modell vorhergesagten Werten vergleichen. 
+1. Die mittlere quadratische Gesamtabweichung ist ein häufig verwendetes Maß für die Unterschiede zwischen den von einem Modell vorhergesagten Stichprobenwerten und den beobachteten Werten. Sie berechnen die mittlere quadratische Gesamtabweichung der Ergebnisse, indem Sie den `y_test`-Datenrahmen mit den vom Modell vorhergesagten Werten vergleichen. 
 
    Die Funktion ```mean_squared_error``` akzeptiert zwei Arrays und berechnet den durchschnittlichen quadratischen Fehler zwischen den Arrays. Danach ziehen Sie die Quadratwurzel aus dem Ergebnis. Diese Metrik gibt Aufschluss darüber, wie weit die Vorhersagen des Preises für Taxifahrten ungefähr von den tatsächlichen Werten der Preise entfernt sind.
 
@@ -248,7 +248,7 @@ best_run, fitted_model = local_run.get_output()
    from sklearn.metrics import mean_squared_error
    from math import sqrt
 
-   # Calculate Root Mean Square Error
+   # Calculate root-mean-square error
    y_actual = y_test.values.flatten().tolist()
    rmse = sqrt(mean_squared_error(y_actual, y_predict))
 
@@ -265,7 +265,7 @@ best_run, fitted_model = local_run.get_output()
 1. Führen Sie den folgenden Code aus, um den mittleren absoluten Fehler in Prozent zu berechnen. Diese Metrik drückt die Genauigkeit als Prozentsatz des Fehlers aus. Hierzu wird eine absolute Differenz zwischen jedem vorhergesagten und tatsächlichen Wert berechnet, und anschließend werden alle Differenzen summiert. Die Summe wird dann als Prozentsatz der gesamten tatsächlichen Werte ausgedrückt.
 
    ```python
-   # Calculate MAPE and Model Accuracy 
+   # Calculate mean-absolute-percent error and model accuracy 
    sum_actuals = sum_errors = 0
 
    for actual_val, predict_val in zip(y_actual, y_predict):
@@ -301,26 +301,26 @@ best_run, fitted_model = local_run.get_output()
    import numpy as np
    from sklearn.metrics import mean_squared_error, r2_score
 
-   # Calculate the R2 score using the predicted and actual fare prices
+   # Calculate the R2 score by using the predicted and actual fare prices
    y_test_actual = y_test["fareAmount"]
    r2 = r2_score(y_test_actual, y_predict)
 
-   # Plot the Actual vs Predicted Fare Amount Values
+   # Plot the actual versus predicted fare amount values
    plt.style.use('ggplot')
    plt.figure(figsize=(10, 7))
    plt.scatter(y_test_actual,y_predict)
    plt.plot([np.min(y_test_actual), np.max(y_test_actual)], [np.min(y_test_actual), np.max(y_test_actual)], color='lightblue')
    plt.xlabel("Actual Fare Amount")
    plt.ylabel("Predicted Fare Amount")
-   plt.title("Actual vs Predicted Fare Amont R^2={}".format(r2))
+   plt.title("Actual vs Predicted Fare Amount R^2={}".format(r2))
    plt.show()
 
    ```
-   ![Screenshot des Regressionsplots.](./media/azure-machine-learning-spark-notebook/fare-amount.png)
+   ![Screenshot: Regressionsplot](./media/azure-machine-learning-spark-notebook/fare-amount.png)
 
    Anhand der Ergebnisse können Sie sehen, dass das Bestimmtheitsmaß 95 Prozent der Varianz abdeckt. Dies wird auch durch den Plot der tatsächlichen gegen die beobachteten Werte bestätigt. Je mehr der Varianz durch das Regressionsmodell abgedeckt wird, desto näher werden die Datenpunkte an der angepassten Regressionslinie liegen.  
 
-## <a name="register-model-to-azure-machine-learning"></a>Registrieren des Modells in Azure Machine Learning
+## <a name="register-the-model-to-azure-machine-learning"></a>Registrieren des Modells in Azure Machine Learning
 Nachdem Sie das beste Modell überprüft haben, können Sie es bei Azure Machine Learning registrieren. Anschließend können Sie das registrierte Modell herunterladen oder bereitstellen und alle Dateien empfangen, die Sie registriert haben.
 
 ```python
@@ -333,9 +333,9 @@ print(model.name, model.version)
 NYCGreenTaxiModel 1
 ```
 ## <a name="view-results-in-azure-machine-learning"></a>Anzeigen von Ergebnissen in Azure Machine Learning
-Als Letztes können Sie auch auf die Ergebnisse der Iterationen zugreifen, indem Sie in Ihrem Azure Machine Learning-Arbeitsbereich zu dem Experiment navigieren. Hier können Sie zusätzliche Details zum Status ihrer Ausführung, zu ausprobierten Modellen und anderen Modellmetriken untersuchen. 
+Sie können auch auf die Ergebnisse der Iterationen zugreifen, indem Sie in Ihrem Azure Machine Learning-Arbeitsbereich zu dem Experiment navigieren. Hier können Sie zusätzliche Details zum Status Ihrer Ausführung, zu ausprobierten Modellen und anderen Modellmetriken abrufen. 
 
-![Screenshot eines Azure Machine Learning-Arbeitsbereichs](./media/azure-machine-learning-spark-notebook/azure-machine-learning-workspace.png)
+![Screenshot: Azure Machine Learning-Arbeitsbereich](./media/azure-machine-learning-spark-notebook/azure-machine-learning-workspace.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 - [Azure Synapse Analytics](../index.yml)

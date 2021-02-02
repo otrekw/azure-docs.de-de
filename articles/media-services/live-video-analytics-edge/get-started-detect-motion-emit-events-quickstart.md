@@ -3,12 +3,12 @@ title: 'Erste Schritte mit Live Video Analytics in IoT Edge: Azure'
 description: In dieser Schnellstartanleitung wird veranschaulicht, wie Sie in die Nutzung von Live Video Analytics in IoT Edge einsteigen. Es wird beschrieben, wie Sie in einem Livevideostream Bewegung erkennen.
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: 276c2ceaa9e0bef254c70f91541a3a3db7c02d47
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.openlocfilehash: cbe4b1280897064938222680fc932cfe289d2f32
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2021
-ms.locfileid: "98060400"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98631935"
 ---
 # <a name="quickstart-get-started---live-video-analytics-on-iot-edge"></a>Schnellstart: Erste Schritte: Live Video Analytics in IoT Edge
 
@@ -26,6 +26,10 @@ Sie können sich das folgende Video mit ausführlichen Schritten für den Einsti
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * Ein Azure-Konto mit einem aktiven Abonnement. Sie können ein [kostenloses Konto erstellen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), falls Sie noch keins besitzen.
+
+  > [!NOTE]
+  > Sie benötigen ein Azure-Abonnement mit Berechtigungen zum Erstellen von Dienstprinzipalen. (Die **Rolle „Besitzer“** stellt diese Berechtigungen bereit.) Wenn Sie nicht über die richtigen Berechtigungen verfügen, wenden Sie sich an Ihren Kontoadministrator, damit er Ihnen die richtigen Berechtigungen erteilt.  
+
 * Installation von [Visual Studio Code](https://code.visualstudio.com/) auf Ihrem Entwicklungscomputer. Stellen Sie sicher, dass Sie über die [Azure IoT Tools-Erweiterung](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) verfügen.
 * Vergewissern Sie sich, dass für das Netzwerk, mit dem Ihr Entwicklungscomputer verbunden ist, AMQP (Advanced Message Queueing Protocol) über Port 5671 zulässig ist. Dieses Setup ermöglicht die Kommunikation zwischen Azure IoT Tools und Azure IoT Hub.
 
@@ -43,7 +47,7 @@ Für dieses Tutorial werden die folgenden Azure-Ressourcen benötigt:
 
 Für diese Schnellstartanleitung wird die Verwendung des [Setupskripts für Live Video Analytics-Ressourcen](https://github.com/Azure/live-video-analytics/tree/master/edge/setup) zum Bereitstellen der erforderlichen Ressourcen in Ihrem Azure-Abonnement empfohlen. Gehen Sie dazu folgendermaßen vor:
 
-1. Navigieren Sie zum [Azure-Portal](https://portal.azure.com), und wählen Sie das Cloud Shell-Symbol aus.
+1. Navigieren Sie zum [Azure-Portal](https://portal.azure.com), und wählen Sie das Cloud Shell-Symbol aus.
 1. Wenn Sie Cloud Shell zum ersten Mal verwenden, werden Sie aufgefordert, ein Abonnement auszuwählen, um ein Speicherkonto und eine Microsoft Azure Files-Freigabe zu erstellen. Wählen Sie **Speicher erstellen** aus, um ein Speicherkonto für die Cloud Shell-Sitzungsinformationen zu erstellen. Dieses Speicherkonto ist von dem Konto getrennt, das vom Skript für die Verwendung mit Ihrem Azure Media Services-Konto erstellt wird.
 1. Wählen Sie auf der linken Seite des Cloud Shell-Fensters im Dropdownmenü **Bash** als Option für die Umgebung aus.
 
@@ -85,7 +89,7 @@ Nun werden die Module bereitgestellt, aber es sind keine Mediengraphen aktiv.
 Befolgen Sie die unten angegebene Anleitung, um mit der Azure IoT Tools-Erweiterung eine Verbindung mit Ihrem IoT-Hub herzustellen.
 
 1. Öffnen Sie in Visual Studio Code die Registerkarte **Erweiterungen** (oder drücken Sie STRG+UMSCHALT+X), und suchen Sie nach Azure IoT Hub.
-1. Klicken Sie mit der rechten Maustaste, um das Kontextmenü zu öffnen, und wählen Sie **Erweiterungseinstellungen** aus.
+1. Klicken Sie mit der rechten Maustaste, und wählen Sie **Erweiterungseinstellungen** aus.
 
     > [!div class="mx-imgBorder"]
     > :::image type="content" source="./media/run-program/extensions-tab.png" alt-text="Erweiterungseinstellungen":::

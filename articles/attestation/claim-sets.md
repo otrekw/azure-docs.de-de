@@ -7,12 +7,12 @@ ms.service: attestation
 ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
-ms.openlocfilehash: afe2cf288cd4a15091e8278309b3ecf74a2d35a4
-ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
+ms.openlocfilehash: eb08bb262806cb662822a75898196546a5c1058e
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98572747"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98762539"
 ---
 # <a name="claim-sets"></a>Anspruchsätze
 
@@ -55,6 +55,12 @@ Die folgenden Ansprüche werden vom [IETF-JWT](https://tools.ietf.org/html/rfc75
 Die folgenden Ansprüche werden vom [IETF-EAT](https://tools.ietf.org/html/draft-ietf-rats-eat-03#page-9) definiert und können von Azure Attestation im Antwortobjekt verwendet werden:
 - **Anspruch „Nonce“ (Nonce)**
 
+Folgende Ansprüche werden basierend auf den eingehenden Ansprüchen standardmäßig generiert:
+- **x-ms-ver**: JWT-Schemaversion („1.0“ wird erwartet)
+- **x-ms-attestation-type**: Zeichenfolgenwert für Nachweistyp 
+- **x-ms-policy-hash**: Zeichenfolgenwert, der den SHA256-Hash des Richtlinientexts enthält, der von BASE64URL(SHA256(UTF8(BASE64URL(UTF8(policy text))))) berechnet wurde
+- **x-ms-policy-signer**: Enthält ein JWK mit dem öffentlichen Schlüssel oder der Zertifikatkette, die im Header der signierten Richtlinie vorhanden ist. „x-ms-policy-signer“ wird nur hinzugefügt, wenn die Richtlinie signiert wird.
+
 ## <a name="claims-specific-to-sgx-enclaves"></a>Spezifische Ansprüche für SGX-Enklaven
 
 ### <a name="incoming-claims-specific-to-sgx-attestation"></a>Spezifische eingehende Ansprüche für SGX-Nachweis
@@ -71,7 +77,6 @@ Die folgenden Ansprüche werden vom Dienst für den SGX-Nachweis generiert und k
 Die unten angegebenen Ansprüche werden vom Dienst generiert und in das Antwortobjekt für den SGX-Nachweis eingefügt:
 - **x-ms-sgx-is-debuggable**: ein boolescher Wert, der angibt, ob Debugging für die Enclave aktiviert ist oder nicht
 - **x-ms-sgx-product-id**
-- **x-ms-ver**
 - **x-ms-sgx-mrsigner**: Hexadezimal codierter Wert des Felds „mrsigner“ des Angebots
 - **x-ms-sgx-mrenclave**: Hexadezimal codierter Wert des Felds „mrenclave“ des Angebots
 - **x-ms-sgx-svn**: Im Angebot codierte Sicherheitsversionsnummer 
@@ -99,36 +104,39 @@ maa-ehd | x-ms-sgx-ehd
 aas-ehd | x-ms-sgx-ehd
 maa-attestationcollateral | x-ms-sgx-collateral
 
-## <a name="claims-issued-specific-to-trusted-platform-module-tpm-attestation"></a>Spezifisch ausgestellte Ansprüche für den TPM-Nachweis (Trusted Platform Module)
+## <a name="claims-specific-to-trusted-platform-module-tpm-vbs-attestation"></a>Spezifische Ansprüche für den TPM-Nachweis (Trusted Platform Module)/VBS-Nachweis
 
-### <a name="incoming-claims-can-also-be-used-as-outgoing-claims"></a>Eingehende Ansprüche (können auch als ausgehende Ansprüche verwendet werden)
+### <a name="incoming-claims-for-tpm-attestation"></a>Eingehende Ansprüche für den TPM-Nachweis
 
-- **aikValidated**:  Ein boolescher Wert, der Informationen dazu enthält, ob das Zertifikat des Nachweisidentitätsschlüssels (Attestation Identity Key, AIK) überprüft wurde
+Von Azure Attestation ausgestellte Ansprüche für den TPM-Nachweis. Die Verfügbarkeit der Ansprüche ist abhängig von dem für den Nachweis bereitgestellten Beweis.
+
+- **aikValidated**: Ein boolescher Wert, der Informationen dazu enthält, ob das Zertifikat des Nachweisidentitätsschlüssels (Attestation Identity Key, AIK) überprüft wurde
 - **aikPubHash**:  Eine Zeichenfolge mit base64 (SHA256 (öffentlicher AIK-Schlüssel im DER-Format))
 - **tpmVersion**:   Ein ganzzahliger Wert, der die Hauptversion des Trusted Platform Module (TPM) enthält
 - **secureBootEnabled**: Ein boolescher Wert, der angibt, ob der sichere Start aktiviert ist
-- **iommuEnabled**:  Ein boolescher Wert, der angibt, ob die Input-output memory management unit (Iommu) aktiviert ist
+- **iommuEnabled**:  Ein boolescher Wert, der angibt, ob IOMMU (Input-Output Memory Management Unit) aktiviert ist
 - **bootDebuggingDisabled**: Ein boolescher Wert, der angibt, ob das Startdebugging deaktiviert ist
-- **notSafeMode**:  Ein boolescher Wert, der angibt, wenn das Fenster nicht im abgesicherten Modus ausgeführt wird
-- **notWinPE**:  Ein boolescher Wert, der angibt, wenn das Fenster nicht im WinPE-Modus ausgeführt wird
+- **notSafeMode**:  Ein boolescher Wert, der angibt, wenn Windows nicht im abgesicherten Modus ausgeführt wird
+- **notWinPE**:  Ein boolescher Wert, der angibt, wenn Windows nicht im WinPE-Modus ausgeführt wird
 - **vbsEnabled**:  Ein boolescher Wert, der angibt, ob VBS aktiviert ist
 - **vbsReportPresent**:  Ein boolescher Wert, der angibt, ob der VBS-Enclavebericht verfügbar ist
-- **enclaveAuthorId**:  Ein Zeichenfolgenwert, der den Base64Url-codierten Wert der Enclave-Autor-ID enthält – den Autorenbezeichner des primären Moduls für die Enclave
-- **enclaveImageId**:  Ein Zeichenfolgenwert, der den Base64Url-codierten Wert der Enclave-Image-ID enthält – den Imagebezeichner des primären Moduls für die Enclave
-- **enclaveOwnerId**:  Ein Zeichenfolgenwert, der den Base64Url-codierten Wert der Enclave-Besitzer-ID enthält – den Bezeichner des Besitzers des primären Moduls für die Enclave
-- **enclaveFamilyId**:  Ein Zeichenfolgenwert, der den Base64Url-codierten Wert der Enclave-Familien-ID enthält – der Familienbezeichner des primären Moduls für die Enclave
+
+### <a name="incoming-claims-for-vbs-attestation"></a>Eingehende Ansprüche für den VBS-Nachweis
+
+Von Azure Attestation werden neben den Ansprüchen, die für den TPM-Nachweis verfügbar gemacht werden, auch Ansprüche für den VBS-Nachweis ausgestellt. Die Verfügbarkeit der Ansprüche ist abhängig von dem für den Nachweis bereitgestellten Beweis.
+
+- **enclaveAuthorId**:  Ein Zeichenfolgenwert, der den Base64Url-codierten Wert der Enclave-Autor-ID enthält. Der Autorenbezeichner des primären Moduls für die Enclave
+- **enclaveImageId**:  Ein Zeichenfolgenwert, der den Base64Url-codierten Wert der Enclave-Image-ID enthält. Der Imagebezeichner des primären Moduls für die Enclave
+- **enclaveOwnerId**:  Ein Zeichenfolgenwert, der den Base64Url-codierten Wert der Enclave-Besitzer-ID enthält. Der Bezeichner des Besitzers des primären Moduls für die Enclave
+- **enclaveFamilyId**:  Ein Zeichenfolgenwert, der den Base64Url-codierten Wert der Enclave-Familien-ID enthält – Der Familienbezeichner des primären Moduls für die Enclave
 - **enclaveSvn**:  Ein ganzzahliger Wert, der die Sicherheitsversionsnummer des primären Moduls für die Enclave enthält
 - **enclavePlatformSvn**:  Ein ganzzahliger Wert, der die Sicherheitsversionsnummer der Plattform enthält, die die Enclave hostet
 - **enclaveFlags**:  Der enclaveFlags-Anspruch ist ein ganzzahliger Wert, der Flags enthält, die die Runtimerichtlinie für die Enclave beschreiben
-  
-### <a name="outgoing-claims-specific-to-tpm-attestation"></a>Spezifische ausgehende Ansprüche für TPM-Nachweis
 
-- **policy_hash**:  Zeichenfolgenwert, der den SHA256-Hash des Richtlinientexts enthält, der von BASE64URL(SHA256(BASE64URL(UTF8(Policy text)))) berechnet wurde
-- **policy_signer**:  Enthält ein JWK mit dem öffentlichen Schlüssel oder der Zertifikatkette, die im Header der signierten Richtlinie vorhanden ist.
-- **ver (Version)** :  Zeichenfolgenwert, der eine Version des Berichts enthält. Derzeit 1.0.
-- **Anspruch „cnf“ (Bestätigung)** :  Der Anspruch „cnf“ wird verwendet, um den Eigentumsnachweisschlüssel zu identifizieren. Bestätigungsansprüche wie in RFC 7800 definiert, enthält den öffentlichen Teil des nachgewiesenen Enclaveschlüssels, der als JSON Web Key-Objekt (JWK) dargestellt ist (RFC 7517).
-- **rp_data (Daten der vertrauenden Seite)** :  Die Daten der vertrauenden Seite, sofern in der Anforderung angegeben, die von der vertrauenden Seite als Nonce verwendet wird, um sicherzustellen, dass der Bericht aktuell ist
-- **Anspruch „jti“ (JWT-ID)** : Der Anspruch "jti" (JWT-ID) stellt einen eindeutigen Bezeichner für das JWT bereit. Der Bezeichnerwert wird auf eine Art und Weise zugewiesen, die sicherstellt, dass eine geringe Wahrscheinlichkeit besteht, dass der gleiche Wert versehentlich einem anderen Datenobjekt zugewiesen ist.
+### <a name="outgoing-claims-specific-to-tpm-and-vbs-attestation"></a>Spezifische ausgehende Ansprüche für TPM- und VBS-Nachweis
+
+- **cnf (Bestätigung):** Der Anspruch „cnf“ wird verwendet, um den Eigentumsnachweisschlüssel zu identifizieren. Bestätigungsanspruch wie in RFC 7800 definiert, enthält den öffentlichen Teil des nachgewiesenen Enclaveschlüssel, der als JSON Web Key-Objekt (JWK) dargestellt ist (RFC 7517)
+- **rp_data (Daten der vertrauenden Seite)** : Die Daten der vertrauenden Seite, sofern in der Anforderung angegeben, die von der vertrauenden Seite als Nonce verwendet wird, um sicherzustellen, dass der Bericht aktuell ist rp_data wird nur hinzugefügt, wenn rp_data vorhanden ist.
 
 ### <a name="property-claims"></a>Eigenschaftsansprüche
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 08/24/2020
 ms.author: v-miegge
-ms.openlocfilehash: ff21975c34c28d7476635467e0c1abb8e6575e35
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: f286542c91ba473d13595d8e8299b1bbd8c93856
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91977951"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632604"
 ---
 # <a name="virtual-machine-is-unresponsive-while-applying-audit-policy-configuration-policy"></a>Der virtuelle Computer reagiert nicht, während die Richtlinie zur Überwachungsrichtlinienkonfiguration angewendet wird
 
@@ -45,6 +45,9 @@ Dies ist die problematische Richtlinie: *Computerkonfiguration\Richtlinien\Admin
 ## <a name="solution"></a>Lösung
 
 ### <a name="process-overview"></a>Übersicht über den Prozess
+
+> [!TIP]
+> Wenn Sie über eine aktuelle Sicherung der VM verfügen, können Sie versuchen, die [VM aus der Sicherung wiederherzustellen](../../backup/backup-azure-arm-restore-vms.md), um das Startproblem zu beheben.
 
 1. Erstellen Sie eine Reparatur-VM, und greifen Sie darauf zu.
 1. Deaktivieren der Richtlinie

@@ -1,19 +1,21 @@
 ---
-title: Szenarien der Notfallwiederherstellung
+title: Azure-Dienstunterbrechungen
 description: Hier erhalten Sie Informationen zur Vorgehensweise bei einer Azure-Dienstunterbrechung mit Auswirkungen auf virtuelle Azure-Computer.
 author: cynthn
 ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 05/31/2017
 ms.author: cynthn
-ms.openlocfilehash: 0d659f0bc65d3dbe7cbb656d505275a52a9742eb
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.reviewer: ''
+ms.openlocfilehash: 5c6036a65fa449986f5c085202fefa752e3a414a
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91976622"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98701032"
 ---
 # <a name="what-if-an-azure-service-disruption-impacts-azure-vms"></a>Was passiert, wenn sich die Störung eines Azure-Diensts auf Azure-VMs auswirkt?
+
 Bei Microsoft setzen wir uns mit großem Engagement dafür ein, dass unsere Dienste immer verfügbar sind, wenn Sie sie benötigen. Aufgrund von höherer Gewalt können jedoch gelegentlich ungeplante Dienstausfälle auftreten.
 
 Microsoft stellt für seine Dienste Vereinbarungen zum Servicelevel (Service Level Agreements, SLAs) bereit, um dem Engagement für Verfügbarkeit und Konnektivität Nachdruck zu verleihen. Die SLAs für einzelne Azure-Dienste finden Sie unter [Vereinbarungen zum Servicelevel (SLAs)](https://azure.microsoft.com/support/legal/sla/).

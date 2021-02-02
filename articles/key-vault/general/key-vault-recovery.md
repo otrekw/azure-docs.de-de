@@ -8,12 +8,12 @@ ms.author: mbaldwin
 author: msmbaldwin
 manager: rkarlin
 ms.date: 09/30/2020
-ms.openlocfilehash: 4a6b3e4c6354c292d000a307bc25f8532aa9a096
-ms.sourcegitcommit: 25d1d5eb0329c14367621924e1da19af0a99acf1
+ms.openlocfilehash: a8e8e791f0dbe18322ad43364ae4ffd09b430caf
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2021
-ms.locfileid: "98250790"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98790383"
 ---
 # <a name="azure-key-vault-recovery-management-with-soft-delete-and-purge-protection"></a>Azure Key Vault-Wiederherstellungsverwaltung mit Schutz durch vorläufiges Löschen und Bereinigungsschutz
 
@@ -26,10 +26,15 @@ Weitere Informationen zu Key Vault finden Sie unter
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * Azure-Abonnement: [Kostenloses Azure-Konto](https://azure.microsoft.com/free/dotnet)
-* [PowerShell-Modul](https://docs.microsoft.com/powershell/azure/install-az-ps).
+* [PowerShell-Modul](/powershell/azure/install-az-ps).
 * [Azure-Befehlszeilenschnittstelle](/cli/azure/install-azure-cli)
 * Eine Key Vault-Instanz. Diese kann über das [Azure-Portal](../general/quick-create-portal.md), mithilfe der [Azure CLI](../general/quick-create-cli.md) oder per [Azure PowerShell](../general/quick-create-powershell.md) erstellt werden.
-* Der Benutzer benötigt die folgenden Berechtigungen (auf Abonnementebene), um Vorgänge für vorläufig gelöschte Tresore auszuführen: |Microsoft.KeyVault/locations/deletedVaults/read|Anzeigen der Eigenschaften eines vorläufig gelöschten Schlüsseltresors| |Microsoft.KeyVault/locations/deletedVaults/purge/action|Bereinigen eines vorläufig gelöschten Schlüsseltresors|
+* Der Benutzer benötigt die folgenden Berechtigungen (auf Abonnementebene), um Vorgänge an vorläufig gelöschten Tresoren durchzuführen:
+
+  | Berechtigung | BESCHREIBUNG |
+  |---|---|
+  |Microsoft.KeyVault/locations/deletedVaults/read|Dient zum Anzeigen der Eigenschaften eines vorläufig gelöschten Schlüsseltresors.|
+  |Microsoft.KeyVault/locations/deletedVaults/purge/action|Dient zum endgültigen Löschen eines vorläufig gelöschten Schlüsseltresors.|
 
 
 ## <a name="what-are-soft-delete-and-purge-protection"></a>Vorläufiges Löschen und Löschschutz
@@ -390,8 +395,8 @@ Weitere Informationen zum vorläufigen Löschen finden Sie unter [Übersicht üb
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [PowerShell-Cmdlets für Azure Key Vault](https://docs.microsoft.com/powershell/module/az.keyvault)
-- [Azure CLI-Befehle für Key Vault](https://docs.microsoft.com/cli/azure/keyvault)
+- [PowerShell-Cmdlets für Azure Key Vault](/powershell/module/az.keyvault)
+- [Azure CLI-Befehle für Key Vault](/cli/azure/keyvault)
 - [Sicherung in Azure Key Vault](backup.md)
 - [Aktivieren der Protokollierung in Key Vault](howto-logging.md)
 - [Sicherer Zugriff auf einen Schlüsseltresor](secure-your-key-vault.md)

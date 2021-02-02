@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 01/06/2021
+ms.date: 01/22/2021
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to prepare the portal to deploy Azure Stack Edge Pro so I can use it to transfer data to Azure.
-ms.openlocfilehash: aabc141666fe5c9fb52a3eac5ee1866f390e4551
-ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
+ms.openlocfilehash: 07b526d443b5f1b41bc6f811b7cccc0fbc6165ee
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97968494"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98761711"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-stack-edge-pro"></a>Tutorial: Vorbereiten der Bereitstellung von Azure Stack Edge Pro  
 
@@ -91,7 +91,7 @@ Stellen Sie Folgendes sicher, bevor Sie beginnen:
 
 Falls Sie bereits über eine Azure Stack Edge-Ressource für die Verwaltung Ihres physischen Geräts verfügen, überspringen Sie diesen Schritt, und fahren Sie mit [Abrufen des Aktivierungsschlüssels](#get-the-activation-key) fort.
 
-Um eine Azure Stack Edge-Ressource zu erstellen, führen Sie die folgenden Schritte im Azure-Portal aus:
+Um eine Azure Stack Edge-Ressource zu erstellen, führen Sie im Azure-Portal die folgenden Schritte aus.
 
 1. Melden Sie sich mit Ihren Microsoft Azure-Anmeldeinformationen bei einem der folgenden Portale an: 
 
@@ -118,14 +118,14 @@ Um eine Azure Stack Edge-Ressource zu erstellen, führen Sie die folgenden Schri
 
     |Einstellung  |Wert  |
     |---------|---------|
-    |Name   | Ein Anzeigename, der die Ressource identifiziert.<br>Der Name muss 2 bis 50 Zeichen lang sein und darf nur Buchstaben, Zahlen und Bindestriche enthalten.<br> Der Name muss mit einem Buchstaben oder einer Zahl beginnen und enden.        |
+    |Name   | Ein Anzeigename, der die Ressource identifiziert.<br>Der Name muss 2 bis 50 Zeichen lang sein und darf nur Buchstaben, Zahlen und Bindestriche enthalten.<br> Der Name muss mit einem Buchstaben oder einer Zahl beginnen und enden.        |
     |Region     |Eine Liste aller Regionen, in denen die Azure Stack Edge-Ressource verfügbar ist, finden Sie unter [Verfügbare Produkte nach Region](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all). Die für Azure Government verfügbaren Regionen finden Sie bei Bedarf unter [Azure-Regionen](https://azure.microsoft.com/global-infrastructure/regions/).<br> Wählen Sie den Standort aus, der der geografischen Region, in der Ihr Gerät bereitgestellt werden soll, am nächsten ist.|
 
     ![Projekt- und Instanzendetails](media/azure-stack-edge-deploy-prep/data-box-edge-resource.png)
 
 5. Klicken Sie auf **Weiter: Lieferanschrift**.
 
-    - Falls Sie bereits über ein Gerät verfügen, aktivieren Sie das Kombinationsfeld für **I have a Azure Stack Edge Pro device** (Ich habe ein Azure Stack Edge Pro-Gerät).
+    - Falls Sie bereits über ein Gerät verfügen, aktivieren Sie das Kombinationsfeld **I have a Azure Stack Edge device** (Ich habe ein Azure Stack Edge-Gerät.).
     - Handelt es sich um das neue Gerät, das Sie bestellen möchten, geben Sie Kontaktname, Unternehmen, Lieferadresse für das Gerät sowie Kontaktinformationen ein.
 
     ![Lieferadresse für neues Gerät](media/azure-stack-edge-deploy-prep/data-box-edge-resource1.png)
@@ -138,13 +138,17 @@ Um eine Azure Stack Edge-Ressource zu erstellen, führen Sie die folgenden Schri
 
 8. Klicken Sie auf **Erstellen**.
 
-Die Erstellung der Ressource dauert einige Minuten. Nachdem die Ressource erfolgreich erstellt und bereitgestellt wurde, erhalten Sie eine Benachrichtigung. Wählen Sie **Zu Ressource wechseln** aus.
+   Die Erstellung der Ressource dauert einige Minuten. Nachdem die Ressource erfolgreich erstellt und bereitgestellt wurde, erhalten Sie eine Benachrichtigung. Wählen Sie **Zu Ressource wechseln** aus.
 
-![Navigieren zur Azure Stack Edge-Ressource](media/azure-stack-edge-deploy-prep/data-box-edge-resource3.png)
+   ![Navigieren zur Azure Stack Edge-Ressource](media/azure-stack-edge-deploy-prep/data-box-edge-resource3.png)
 
 Nach der Bestellung wird diese von Microsoft geprüft, und Sie erhalten eine E-Mail mit den Versanddetails.
 
 ![Benachrichtigung zur Überprüfung der Azure Stack Edge Pro-Bestellung](media/azure-stack-edge-deploy-prep/data-box-edge-resource4.png)
+
+
+> [!NOTE]
+> Wenn Sie mehrere Bestellungen gleichzeitig erstellen oder eine vorhandene Bestellung klonen möchten, können Sie die [Skripts in den Azure-Beispielen](https://github.com/Azure-Samples/azure-stack-edge-order) verwenden. Weitere Informationen finden Sie in der Infodatei.
 
 ## <a name="get-the-activation-key"></a>Abrufen des Aktivierungsschlüssels
 

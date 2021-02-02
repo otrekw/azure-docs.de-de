@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 09/08/2020
 ms.author: v-miegge
-ms.openlocfilehash: 4f181a6dee7ed182150bd0cad2b51690b6c77d7a
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 6c139398182ca9d875de0d3b21c58afe503bd8a5
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91963124"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632273"
 ---
 # <a name="vm-is-unresponsive-while-applying-default-domain-controllers-policy"></a>Der virtuelle Computer reagiert nicht, während die Standarddomänencontroller-Richtlinie angewendet wird.
 
@@ -37,6 +37,9 @@ Wenn Sie die [Startdiagnose](./boot-diagnostics.md) verwenden, um den Screenshot
 Dieses Problem ist möglicherweise auf kürzlich erfolgte Änderungen an der Standarddomänencontroller-Richtlinie zurückzuführen. Wenn dies nicht zutrifft, muss eine Analyse der Speicherabbilddatei durchgeführt werden, um die Grundursache zu ermitteln.
 
 ## <a name="solution"></a>Lösung
+
+> [!TIP]
+> Wenn Sie über eine aktuelle Sicherung der VM verfügen, können Sie versuchen, die [VM aus der Sicherung wiederherzustellen](../../backup/backup-azure-arm-restore-vms.md), um das Startproblem zu beheben.
 
 Wenn Sie vor Kurzem Änderungen an der Standarddomänencontroller-Richtlinie vorgenommen haben, können Sie diese Änderungen rückgängig machen, um das Problem zu beheben. Wenn Sie sich über die Ursache des Problems nicht sicher sind, erfassen Sie ein Speicherabbild, und senden Sie ein Supportticket.
 

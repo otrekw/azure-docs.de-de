@@ -14,12 +14,12 @@ ms.custom:
 - devx-track-python
 - devx-track-azurecli
 ms.date: 09/14/2020
-ms.openlocfilehash: 5db51e78a6770a642728cc058f425baf7c7e095b
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 7ee30398ccfdad3ea7b28f277e45c2224de827e8
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94832159"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624658"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-iot-hub-python"></a>Schnellstart: Steuern eines mit einer IoT Hub-Instanz verbundenen Geräts (Python)
 
@@ -68,7 +68,7 @@ Ein Gerät muss bei Ihrer IoT Hub-Instanz registriert sein, um eine Verbindung h
     **YourIoTHubName**: Ersetzen Sie diesen Platzhalter unten durch den Namen, den Sie für Ihren IoT-Hub ausgewählt haben.
 
     ```azurecli-interactive
-    az iot hub device-identity show-connection-string --hub-name {YourIoTHubName} --device-id MyPythonDevice --output table
+    az iot hub device-identity connection-string show --hub-name {YourIoTHubName} --device-id MyPythonDevice --output table
     ```
 
     Notieren Sie sich die Geräteverbindungszeichenfolge, die wie folgt aussieht:

@@ -12,20 +12,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/23/2019
+ms.date: 01/25/2021
 ms.author: yelevin
-ms.openlocfilehash: aa9160f01ed0040123bd8ac932cfd2443f557bb6
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: 8853f3774bb35361746c8b706f38bc54079d74f7
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96511728"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98790985"
 ---
 # <a name="tutorial-investigate-incidents-with-azure-sentinel"></a>Tutorial: Untersuchen von Vorfällen mit Azure Sentinel
 
 > [!IMPORTANT]
-> Das Untersuchungsdiagramm ist derzeit in der **VORSCHAU** verfügbar. Die [zusätzlichen Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) enthalten zusätzliche rechtliche Bedingungen, die für Azure-Features gelten, die sich in der Beta- oder Vorschauversion befinden bzw. anderweitig noch nicht zur allgemeinen Verfügbarkeit freigegeben sind.
-
+> Das Untersuchungsdiagramm weist jetzt den Status **Allgemeine Verfügbarkeit** (GA) auf. 
 
 In diesem Tutorial erfahren Sie, wie Sie Vorfälle mit Azure Sentinel untersuchen. Nachdem Sie Ihre Datenquellen mit Azure Sentinel verbunden haben, möchten Sie gewarnt werden, wenn etwas Verdächtiges geschieht. Damit Sie dies tun können, können Sie in Azure Sentinel erweiterte Warnungsregeln erstellen, die Vorfälle generieren, die Sie zuweisen und untersuchen können.
 

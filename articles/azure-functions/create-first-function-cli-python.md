@@ -6,12 +6,12 @@ ms.topic: quickstart
 ms.custom:
 - devx-track-python
 - devx-track-azurecli
-ms.openlocfilehash: 5e2d21a5f9f764f260695f17c93d5a615fc62efa
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 664a43dee635fa202f69927569fc1a5297bd1997
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97937211"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880809"
 ---
 # <a name="quickstart-create-a-python-function-in-azure-from-the-command-line"></a>Schnellstart: Erstellen einer Python-Funktion über die Befehlszeile in Azure
 
@@ -35,9 +35,9 @@ Bevor Sie mit diesem Lernprogramm beginnen können, benötigen Sie Folgendes:
 
     + [Azure CLI, Version  2.4 oder höher](/cli/azure/install-azure-cli).
 
-    + [Azure PowerShell](/powershell/azure/install-az-ps), Version 5.0 oder höher.
+    + [Azure PowerShell](/powershell/azure/install-az-ps), Version 5.0 oder höher.
 
-+ [Python 3.8 (64 Bit)](https://www.python.org/downloads/release/python-382/), [Python 3.7 (64 Bit)](https://www.python.org/downloads/release/python-375/), [Python 3.6 (64 Bit)](https://www.python.org/downloads/release/python-368/). Diese Versionen werden alle von Version 3.x von Azure Functions unterstützt.
++ [Von Azure Functions unterstützte Python-Versionen](supported-languages.md#languages-by-runtime-version)
 
 ### <a name="prerequisite-check"></a>Prüfen der Voraussetzungen
 

@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 05/10/2017
 ms.author: cynthn
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 72c7f1dd6652a51a960c80829a697b97fd74f8de
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c806e5d1d9c9242b6ba57496327c672d7fed0654
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87500026"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98704489"
 ---
 # <a name="tutorial-create-and-manage-azure-virtual-networks-for-linux-virtual-machines-with-the-azure-cli"></a>Tutorial: Erstellen und Verwalten virtueller Azure-Netzwerke für virtuelle Linux-Computer mit der Azure-Befehlszeilenschnittstelle
 
@@ -300,7 +300,4 @@ In diesem Tutorial haben Sie Azure-Netzwerke in Bezug auf virtuelle Computer ers
 > * Netzwerkdatenverkehr absichern
 > * Erstellen des virtuellen Back-End-Computers
 
-Im nächsten Tutorial erhalten Sie Informationen zum Sichern von Daten auf virtuellen Computern mit Azure Backup. 
-
-> [!div class="nextstepaction"]
-> [Back up Linux virtual machines in Azure](./tutorial-backup-vms.md) (Sichern virtueller Linux-Computer in Azure)
+Informationen zum Schützen Ihrer VM-Datenträger finden Sie unter [Sicherung und Notfallwiederherstellung für Azure IaaS-Datenträger](backup-and-disaster-recovery-for-azure-iaas-disks.md).

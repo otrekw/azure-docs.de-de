@@ -6,16 +6,16 @@ ms.author: sumuth
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 03/10/2020
-ms.openlocfilehash: a864ce42888aace385cf60a4122f204c8f76831d
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.openlocfilehash: e0d1789d61bbe57c735f4dd2a70a1c2a8f183d90
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93240425"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98881060"
 ---
 # <a name="private-link-for-azure-database-for-postgresql-single-server"></a>Private Link für Azure Database for PostgreSQL-Einzelserver
 
-Private Link ermöglicht Ihnen das Erstellen privater Endpunkte für Azure Database for PostgreSQL-Einzelserver und integriert so Azure-Dienste in Ihr privates virtuelles Netzwerk (VNET). Der private Endpunkt macht eine private IP-Adresse verfügbar, die Sie verwenden können, um mit Ihrem Datenbankserver wie mit jeder anderen Ressource im VNET eine Verbindung herzustellen.
+Private Link ermöglicht Ihnen das Erstellen privater Endpunkte für Azure Database for PostgreSQL-Einzelserver, um sie in Ihr privates virtuelles Netzwerk (VNet) zu integrieren. Der private Endpunkt macht eine private IP-Adresse in einem Subnetz verfügbar, die Sie verwenden können, um mit Ihrem Datenbankserver wie mit jeder anderen Ressource im VNet eine Verbindung herzustellen.
 
 Eine Liste der PaaS-Dienste, die die Private Link-Funktion unterstützen, finden Sie in der [Dokumentation](../private-link/index.yml) zu Private Link. Ein privater Endpunkt ist eine private IP-Adresse in einem bestimmten [VNET](../virtual-network/virtual-networks-overview.md) und Subnetz.
 
@@ -113,7 +113,7 @@ Folgende Fälle und Ergebnisse sind bei Verwendung von Private Link in Verbindun
 
 ## <a name="deny-public-access-for-azure-database-for-postgresql-single-server"></a>Verweigern des öffentlichen Zugriffs auf Azure Database for PostgreSQL-Einzelserver
 
-Wenn Sie sich für den Zugriff auf Ihren Azure Database for PostgreSQL-Einzelserver nur auf private Endpunkte verlassen möchten, können Sie das Festlegen aller öffentlichen Endpunkte ( [Firewallregeln](concepts-firewall-rules.md) und [VNET-Dienstendpunkte](concepts-data-access-and-security-vnet.md)) deaktivieren, indem Sie die Konfiguration **Zugriff auf öffentliches Netzwerk verweigern** auf dem Datenbankserver festlegen. 
+Wenn Sie sich für den Zugriff auf Ihren Azure Database for PostgreSQL-Einzelserver nur auf private Endpunkte verlassen möchten, können Sie das Festlegen aller öffentlichen Endpunkte ([Firewallregeln](concepts-firewall-rules.md) und [VNET-Dienstendpunkte](concepts-data-access-and-security-vnet.md)) deaktivieren, indem Sie die Konfiguration **Zugriff auf öffentliches Netzwerk verweigern** auf dem Datenbankserver festlegen. 
 
 Wenn diese Einstellung auf *JA* festgelegt ist, sind nur Verbindungen über private Endpunkte mit Ihrer Azure Database for PostgreSQL-Instanz zulässig. Wenn diese Einstellung auf *NEIN* festgelegt ist, können Clients basierend auf Ihrer Firewall- oder VNET-Dienstendpunkt-Einstellung eine Verbindung mit Ihrer Azure Database for PostgreSQL-Instanz herstellen. Sobald der Wert des privaten Netzwerkzugriffs festgelegt ist, können Kunden außerdem weder Firewall- oder VNET-Dienstendpunkt-Regeln hinzufügen noch vorhandene aktualisieren.
 

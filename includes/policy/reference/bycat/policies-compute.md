@@ -2,21 +2,22 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 01/08/2021
+ms.date: 01/25/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 359247af3c2ce9e4fd350da57f6367f1d1c6ecd0
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: fd77bd985d118ddad500c99dc8edbd6b54fc643f
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98047256"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98807692"
 ---
 |Name<br /><sub>(Azure-Portal)</sub> |BESCHREIBUNG |Auswirkungen |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
 |[Zulässige SKUs für VM-Größen](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fcccc23c7-8427-4f53-ad12-b6a63eb452b3) |Über diese Richtlinie können Sie einen Satz von SKUs für VM-Größen angeben, die Ihre Organisation bereitstellen kann. |Verweigern |[1.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Compute/VMSkusAllowed_Deny.json) |
 |[VMs überwachen, für die keine Notfallwiederherstellung konfiguriert ist](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0015ea4d-51ff-4ce3-8d8c-f3f8f0179a56) |Hiermit werden VMs überwacht, für die keine Notfallwiederherstellung konfiguriert ist. Weitere Informationen zur Notfallwiederherstellung finden Sie unter [https://aka.ms/asr-doc](https://aka.ms/asr-doc). |auditIfNotExists |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Compute/RecoveryServices_DisasterRecovery_Audit.json) |
 |[Virtuelle Computer überwachen, die keine verwalteten Datenträger verwenden](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F06a78e20-9358-41c9-923c-fb736d382a4d) |Diese Richtlinie überwacht virtuelle Computer, die keine verwalteten Datenträger verwenden. |Überwachung |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Compute/VMRequireManagedDisk_Audit.json) |
+|[Bereitstellen: Konfigurieren der Notfallwiederherstellung für virtuelle Computer durch Aktivieren der Replikation](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fac34a73f-9fa5-4067-9247-a3ecae514468) |Virtuelle Computer ohne Notfallwiederherstellungskonfigurationen sind anfällig für Ausfälle und andere Unterbrechungen. Wenn für den virtuellen Computer noch keine Notfallwiederherstellung konfiguriert ist, wird dies durch Aktivieren der Replikation unter Verwendung vordefinierter Konfigurationen initiiert, um die Geschäftskontinuität zu gewährleisten. Weitere Informationen zur Notfallwiederherstellung finden Sie unter [https://aka.ms/asr-doc](https://aka.ms/asr-doc). |deployIfNotExists |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Compute/AzureSiteRecovery-Replication-Policy.json) |
 |[Microsoft IaaSAntimalware-Standarderweiterung für Windows Server bereitstellen](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F2835b622-407b-4114-9198-6f7064cbe0dc) |Mit dieser Richtlinie wird eine Microsoft IaaSAntimalware-Erweiterung mit einer Standardkonfiguration bereitgestellt, wenn eine VM nicht mit der Antischadsoftware-Erweiterung konfiguriert ist. |deployIfNotExists |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Compute/VMAntimalwareExtension_Deploy.json) |
 |[In VM-Skalierungsgruppen sollten Diagnoseprotokolle aktiviert sein](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7c1b1214-f927-48bf-8882-84f0af6588b1) |Es wird empfohlen, die Protokollierung zu aktivieren. So können Sie Aktivitäten nachvollziehen, wenn bei einem Incident oder einer Beeinträchtigung Untersuchungen durchgeführt werden müssen. |AuditIfNotExists, Disabled |[2.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Compute/ServiceFabric_and_VMSS_AuditVMSSDiagnostics.json) |
 |[Microsoft Antimalware für Azure muss für die automatische Aktualisierung von Schutzsignaturen konfiguriert sein](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fc43e4a30-77cb-48ab-a4dd-93f175c63b57) |Diese Richtlinie überwacht alle virtuellen Windows-Computer, die nicht für die automatische Aktualisierung von Microsoft Antimalware-Schutzsignaturen konfiguriert sind. |AuditIfNotExists, Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Compute/VirtualMachines_AntiMalwareAutoUpdate_AuditIfNotExists.json) |

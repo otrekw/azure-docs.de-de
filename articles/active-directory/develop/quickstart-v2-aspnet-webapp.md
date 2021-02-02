@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/25/2020
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET, contperf-fy21q1
-ms.openlocfilehash: dbddf35b0aa1494ef719803fa84cafae04f3ec50
-ms.sourcegitcommit: c136985b3733640892fee4d7c557d40665a660af
+ms.openlocfilehash: e2a71313294457e09e2bb152dea98c84b7730236
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/13/2021
-ms.locfileid: "98178584"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98754417"
 ---
 # <a name="quickstart-add-microsoft-identity-platform-sign-in-to-an-aspnet-web-app"></a>Schnellstart: Hinzufügen der Microsoft Identity Platform-Anmeldung zu einer ASP.NET-Web-App
 
@@ -169,7 +169,7 @@ public void Configuration(IAppBuilder app)
 > |---------|---------|
 > | `ClientId`     | Die Anwendungs-ID der im Azure-Portal registrierten Anwendung. |
 > | `Authority`    | Der STS-Endpunkt für den zu authentifizierenden Benutzer. Normalerweise `https://login.microsoftonline.com/{tenant}/v2.0` für die öffentliche Cloud, wobei {tenant} der Name Ihres Mandanten, Ihre Mandanten-ID oder *common* für einen Verweis auf den allgemeinen Endpunkt (verwendet für mehrinstanzenfähige Anwendungen) ist. |
-> | `RedirectUri`  | Die URL, an die Benutzer nach der Authentifizierung über den Microsoft Identity Platform-Endpunkt umgeleitet werden. |
+> | `RedirectUri`  | Die URL, an die Benutzer nach der Authentifizierung über Microsoft Identity Platform umgeleitet werden |
 > | `PostLogoutRedirectUri`     | Die URL, an die Benutzer nach der Abmeldung umgeleitet werden. |
 > | `Scope`     | Die Liste der angeforderten Bereiche, getrennt durch Leerzeichen. |
 > | `ResponseType`     | Die Anforderung, dass die Antwort von der Authentifizierung ein ID-Token enthält. |

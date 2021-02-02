@@ -6,16 +6,16 @@ ms.author: krishmam
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/06/2018
-ms.openlocfilehash: 8d01f43dd6e404bb8f8ae0898625ae1ea9d09fd6
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: dc590593b9bff8f646ee6155d32a2ce3f9790f6e
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98020433"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98625247"
 ---
 # <a name="introduction-to-stream-analytics-geospatial-functions"></a>Einführung in Stream Analytics-Geofunktionen
 
-Geofunktionen in Azure Stream Analytics ermöglichen die Echtzeitanalyse von gestreamten Geodaten. Mit nur wenigen Codezeilen können Sie eine Lösung auf Produktionsniveau für komplexe Szenarien entwickeln. 
+Geofunktionen in Azure Stream Analytics ermöglichen die Echtzeitanalyse von gestreamten Geodaten. Mit nur wenigen Codezeilen können Sie eine Lösung auf Produktionsniveau für komplexe Szenarien entwickeln. Diese Funktionen unterstützen alle WKT-Typen und GeoJSON Point, Polygon und LineString.
 
 Einige Beispiele für Szenarien, die von Geofunktionen profitieren können:
 
@@ -110,7 +110,7 @@ Weitere Informationen finden Sie in der Referenz zu [CreatePolygon](/stream-anal
 
 
 ## <a name="st_distance"></a>ST_DISTANCE
-Die `ST_DISTANCE`-Funktion gibt den Abstand zwischen zwei Punkten in Metern zurück. 
+Die `ST_DISTANCE`-Funktion gibt den Abstand zwischen zwei Geometrien in Metern zurück. 
 
 Die folgende Abfrage verwendet `ST_DISTANCE` zum Generieren eines Ereignisses, wenn sich eine Tankstelle näher als 10 km vom Auto befindet.
 
@@ -123,7 +123,7 @@ JOIN Station s ON ST_DISTANCE(c.Location, s.Location) < 10 * 1000
 Weitere Informationen finden Sie in der Referenz zu [ST_DISTANCE](/stream-analytics-query/st-distance).
 
 ## <a name="st_overlaps"></a>ST_OVERLAPS
-Die `ST_OVERLAPS`-Funktion vergleicht zwei Polygone. Wenn sich die Polygone überschneiden, gibt die Funktion 1 zurück. Die Funktion gibt 0 zurück, wenn sich die Polygone nicht überschneiden. 
+Die `ST_OVERLAPS`-Funktion vergleicht zwei Geometrien. Wenn sich die Geometrien überschneiden, gibt die Funktion 1 zurück. Die Funktion gibt 0 zurück, wenn sich die Geometrien nicht überschneiden. 
 
 Die folgende Abfrage verwendet `ST_OVERLAPS` zum Generieren eines Ereignisses, wenn ein Gebäude sich in einer Zone mit Überflutungsrisiko befindet.
 
@@ -144,7 +144,7 @@ JOIN Storm s ON ST_OVERLAPS(c.Location, s.Course)
 Weitere Informationen finden Sie in der Referenz zu [ST_OVERLAPS](/stream-analytics-query/st-overlaps).
 
 ## <a name="st_intersects"></a>ST_INTERSECTS
-Die `ST_INTERSECTS`-Funktion vergleicht zwei LineStrings. Wenn sich die LineStrings überschneiden, gibt die Funktion 1 zurück. Die Funktion gibt 0 zurück, wenn sich die LineStrings nicht überschneiden.
+Die `ST_INTERSECTS`-Funktion vergleicht zwei Geometrien. Wenn sich die Geometrien überschneiden, gibt die Funktion 1 zurück. Die Funktion gibt 0 zurück, wenn die Geometrien sich nicht überschneiden.
 
 Die folgende Beispielabfrage verwendet `ST_INTERSECTS`, um zu ermitteln, ob eine asphaltierte Straße eine unbefestigte Straße kreuzt.
 
@@ -170,7 +170,7 @@ FROM input
 Weitere Informationen finden Sie in der Referenz zu [ST_INTERSECTS](/stream-analytics-query/st-intersects).
 
 ## <a name="st_within"></a>ST_WITHIN
-Die `ST_WITHIN`-Funktion ermittelt, ob sich ein Punkt oder Polygon innerhalb eines Polygons befindet. Wenn das Polygon den Punkt oder das Polygon enthält, gibt die Funktion 1 zurück. Die Funktion gibt 0 zurück, wenn sich der Punkt oder das Polygon nicht im deklarierten Polygon befindet.
+Die `ST_WITHIN`-Funktion ermittelt, ob sich eine Geometrie innerhalb einer anderen Geometrie befindet. Wenn die erste Geometrie in der letzten enthalten ist, gibt die Funktion 1 zurück. Die Funktion gibt 0 zurück, wenn sich die erste Geometrie nicht innerhalb der letzten Geometrie befindet.
 
 Die folgende Beispielabfrage verwendet `ST_WITHIN`, um zu ermitteln, ob sich der Zielpunkt für eine Lieferung im Polygon des angegebenen Lagers befindet.
 

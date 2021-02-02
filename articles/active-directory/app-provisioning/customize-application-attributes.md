@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 11/10/2020
+ms.date: 1/25/2021
 ms.author: kenwith
-ms.openlocfilehash: 012038399796a0f2dc87acfb350043542268379a
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: 2a27124ea76d6e5aaa7ec4b8ca36c388718ffb94
+ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96936980"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98761303"
 ---
 # <a name="tutorial---customize-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>Tutorial: Anpassen von Attributzuordnungen für die Benutzerbereitstellung für SaaS-Anwendungen in Azure Active Directory
 
@@ -75,7 +75,7 @@ Zusätzlich zu dieser Eigenschaft unterstützen Attributzuordnungen auch die fol
   - **Nur während der Erstellung**: Wenden Sie diese Zuordnung nur bei der Aktion zum Erstellen eines Benutzers an.
 
 ## <a name="matching-users-in-the-source-and-target--systems"></a>Abgleichen von Benutzern im Quell- und Zielsystem
-Der Azure AD-Bereitstellungsdienst kann sowohl in „Greenfield“-Szenarien (Benutzer sind im Zielsystem nicht vorhanden) als auch in „Brownfield“-Szenarien (Benutzer sind im Zielsystem bereits vorhanden) bereitgestellt werden. Zur Unterstützung beider Szenarien verwendet der Bereitstellungsdienst das Konzept des Attributabgleichs. Anhand eines oder mehrerer übereinstimmender Attribute können Sie bestimmen, wie ein Benutzer im Quellsystem eindeutig identifiziert und mit dem Benutzer im Zielsystem abgeglichen wird. Identifizieren Sie im Rahmen der Planung Ihrer Bereitstellung das Attribut, das zur eindeutigen Identifizierung eines Benutzers im Quell-und Zielsystem verwendet werden kann. Hinweise:
+Der Azure AD-Bereitstellungsdienst kann sowohl in Greenfield-Szenarien (Benutzer sind im Zielsystem nicht vorhanden) als auch in Brownfield-Szenarien (Benutzer sind im Zielsystem bereits vorhanden) bereitgestellt werden. Zur Unterstützung beider Szenarien verwendet der Bereitstellungsdienst das Konzept des Attributabgleichs. Anhand eines oder mehrerer übereinstimmender Attribute können Sie bestimmen, wie ein Benutzer im Quellsystem eindeutig identifiziert und mit dem Benutzer im Zielsystem abgeglichen wird. Identifizieren Sie im Rahmen der Planung Ihrer Bereitstellung das Attribut, das zur eindeutigen Identifizierung eines Benutzers im Quell-und Zielsystem verwendet werden kann. Hinweise:
 
 - **Übereinstimmende Attribute sollten eindeutig sein:** Kunden verwenden häufig Attribute wie „userPrincipalName“, „mail“ oder „objectID“ als übereinstimmendes Attribut.
 - **Als übereinstimmende Attribute können auch mehrere Attribute verwendet werden:** Sie können mehrere Attribute festlegen, die beim Abgleich von Benutzern ausgewertet werden sollen, und auch die Auswertungsreihenfolge angeben (auf der Benutzeroberfläche als „Rangfolge für Abgleich“ definiert). Wenn Sie z. B. drei Attribute als übereinstimmende Attribute definieren und ein Benutzer nach der Auswertung der ersten beiden Attribute eindeutig zugeordnet werden kann, wertet der Dienst das dritte Attribut nicht mehr aus. Der Dienst wertet übereinstimmende Attribute in der angegebenen Reihenfolge aus und beendet die Auswertung, wenn eine Übereinstimmung gefunden wird.  
@@ -115,7 +115,7 @@ Folgende Anwendungen und Systeme unterstützen die Anpassung der Attributliste:
 
 
 > [!NOTE]
-> Das Bearbeiten der Liste unterstützter Attribute wird nur für Administratoren empfohlen, die das Schema ihrer Anwendungen und Systeme angepasst haben und aus erster Hand wissen, wie ihre benutzerdefinierten Attribute definiert wurden. Dies erfordert mitunter Kenntnisse der von einer Anwendung oder einem System bereitgestellten APIs und Entwicklertools. Die Möglichkeit zum Bearbeiten der Liste unterstützter Attribute ist standardmäßig gesperrt, aber Kunden können die Funktion aktivieren, indem sie zur folgenden URL navigieren: https://portal.azure.com/?Microsoft_AAD_IAM_forceSchemaEditorEnabled=true. Anschließend können Sie zu Ihrer Anwendung navigieren, um die Attributliste wie [oben](https://docs.microsoft.com/azure/active-directory/app-provisioning/customize-application-attributes#editing-the-list-of-supported-attributes) beschrieben anzuzeigen. 
+> Das Bearbeiten der Liste unterstützter Attribute wird nur für Administratoren empfohlen, die das Schema ihrer Anwendungen und Systeme angepasst haben und aus erster Hand wissen, wie ihre benutzerdefinierten Attribute definiert wurden. Dies erfordert mitunter Kenntnisse der von einer Anwendung oder einem System bereitgestellten APIs und Entwicklertools. Die Möglichkeit zum Bearbeiten der Liste unterstützter Attribute ist standardmäßig gesperrt, aber Kunden können die Funktion aktivieren, indem sie zur folgenden URL navigieren: https://portal.azure.com/?Microsoft_AAD_IAM_forceSchemaEditorEnabled=true. Anschließend können Sie zu Ihrer Anwendung navigieren, um die Attributliste wie [oben](#editing-the-list-of-supported-attributes) beschrieben anzuzeigen. 
 
 Beim Bearbeiten der Liste unterstützter Attribute sind die folgenden Eigenschaften verfügbar:
 
@@ -156,6 +156,7 @@ Benutzerdefinierte Attribute können keine referenziellen Attribute, komplexe At
       "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User",
       "urn:ietf:params:scim:schemas:extension:CustomExtensionName:2.0:User"],
      "userName":"bjensen",
+     "id": "48af03ac28ad4fb88478",
      "externalId":"bjensen",
      "name":{
        "formatted":"Ms. Barbara J Jensen III",

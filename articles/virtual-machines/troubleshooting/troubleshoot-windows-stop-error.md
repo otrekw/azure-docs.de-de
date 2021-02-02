@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 06/26/2020
 ms.author: v-mibufo
-ms.openlocfilehash: 33b4c59e14301e496d0eddafa7bdfdf201b7aa29
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5d6e738152e542617046834980d3e7c58e497093
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87005904"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98664680"
 ---
 # <a name="windows-stop-error---status-no-memory"></a>Windows-kritischer Fehler: Status „Nicht genügend Arbeitsspeicher“
 
@@ -44,6 +44,9 @@ Der Datenträger mit dem Betriebssystem ist entweder zu voll oder zu sehr fragme
 ## <a name="solution"></a>Lösung
 
 ### <a name="process-overview"></a>Prozessübersicht:
+
+> [!TIP]
+> Wenn Sie über eine aktuelle Sicherung der VM verfügen, können Sie versuchen, die [VM aus der Sicherung wiederherzustellen](../../backup/backup-azure-arm-restore-vms.md), um das Startproblem zu beheben.
 
 1. Erstellen einer Reparatur-VM und Zugreifen darauf
 1. Freigeben von Speicherplatz auf der Festplatte

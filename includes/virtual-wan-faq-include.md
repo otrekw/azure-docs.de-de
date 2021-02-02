@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/02/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 5aab11b31756ee8430e8ae4d54a2b3de5ea2e136
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: af0082ef04416d6b3700bbcd96995a154614e0d6
+ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97612708"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98798539"
 ---
 ### <a name="is-azure-virtual-wan-in-ga"></a>Ist Azure Virtual WAN allgemein verfügbar?
 
@@ -199,6 +199,9 @@ VPN-Standorte stellen die Konnektivität mit einem Hub über Verbindungen her. V
 
 Der VPN-Gesamtdurchsatz eines Hubs beträgt basierend auf der ausgewählten Skalierungseinheit des VPN-Gateways bis zu 20 GBit/s. Der Durchsatz wird von allen vorhandenen Verbindungen gemeinsam genutzt. Jeder Tunnel einer Verbindung kann bis zu 1 GBit/s unterstützen.
 
+### <a name="can-i-use-nat-t-on-my-vpn-connections"></a>Kann ich NAT-T für meine VPN-Verbindungen verwenden?
+Ja, NAT Traversal (NAT-T) wird unterstützt. Virtual WAN VPN Gateway setzt KEINE NAT-ähnliche Funktionalität für die inneren Pakete ein, die bei den IPSec-Tunneln ein-/ausgehen. Stellen Sie in dieser Konfiguration sicher, dass das lokale Gerät den IPSec-Tunnel initiiert.
+
 ### <a name="i-dont-see-the-20-gbps-setting-for-the-virtual-hub-in-portal-how-do-i-configure-that"></a>Die 20 GBit/s-Einstellung für den virtuellen Hub wird im Portal nicht angezeigt. Wie konfiguriere ich dies?
 
 Navigieren Sie im Portal zum VPN-Gateway innerhalb eines Hubs, und klicken Sie auf die Skalierungseinheit, um die entsprechende Einstellung festzulegen.
@@ -221,7 +224,7 @@ Ja. Eine Internetverbindung und ein physisches Gerät, das IPsec unterstützt �
 
 ### <a name="how-do-i-enable-default-route-00000-in-a-connection-vpn-expressroute-or-virtual-network"></a>Wie aktiviere ich die Standardroute (0.0.0.0/0) für eine Verbindung (VPN, ExpressRoute oder Virtual Network)?
 
-Ein virtueller Hub kann eine erlernte Standardroute an eine Verbindung vom Typ „Virtuelles Netzwerk“, „Site-to-Site-VPN“ oder „ExpressRoute“ weitergeben, wenn das Flag für die Verbindung auf „Aktiviert“ festgelegt ist. Dieses Flag ist sichtbar, wenn der Benutzer eine VNET-Verbindung, eine VPN-Verbindung oder eine ExpressRoute-Verbindung bearbeitet. Das Flag ist standardmäßig deaktiviert, wenn für eine Site oder eine ExpressRoute-Leitung eine Verbindung mit einem Hub besteht. Es ist standardmäßig aktiviert, wenn eine VNET-Verbindung hinzugefügt wird, um ein VNET mit einem virtuellen Hub zu verbinden. Der Ursprung der Standardroute liegt nicht auf dem Virtual WAN-Hub. Sie wird weitergegeben, wenn sie dem Virtual WAN-Hub bereits bekannt ist, weil darin eine Firewall bereitgestellt wurde, oder wenn für eine andere verbundene Site die Tunnelerzwingung aktiviert ist.
+Ein virtueller Hub kann eine erlernte Standardroute an eine Verbindung vom Typ „Virtuelles Netzwerk“, „Site-to-Site-VPN“ oder „ExpressRoute“ weitergeben, wenn das Flag für die Verbindung auf „Aktiviert“ festgelegt ist. Dieses Flag ist sichtbar, wenn der Benutzer eine VNET-Verbindung, eine VPN-Verbindung oder eine ExpressRoute-Verbindung bearbeitet. Das Flag ist standardmäßig deaktiviert, wenn für eine Site oder eine ExpressRoute-Leitung eine Verbindung mit einem Hub besteht. Es ist standardmäßig aktiviert, wenn eine VNET-Verbindung hinzugefügt wird, um ein VNET mit einem virtuellen Hub zu verbinden. Der Ursprung der Standardroute liegt nicht auf dem Virtual WAN-Hub. Sie wird weitergegeben, wenn sie dem Virtual WAN-Hub bereits bekannt ist, weil darin eine Firewall bereitgestellt wurde, oder wenn für eine andere verbundene Site die Tunnelerzwingung aktiviert ist. Eine Standardroute wird nicht zwischen Hubs weitergegeben.
 
 ### <a name="how-does-the-virtual-hub-in-a-virtual-wan-select-the-best-path-for-a-route-from-multiple-hubs"></a>Wie wählt der virtuelle Hub in einer Virtual WAN-Instanz den besten Pfad für eine Route von mehreren Hubs aus?
 

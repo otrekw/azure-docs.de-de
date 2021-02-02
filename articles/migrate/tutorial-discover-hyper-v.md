@@ -7,12 +7,12 @@ ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: mvc
-ms.openlocfilehash: eb10001436d3184b89aa064ec82fcd1f56bea931
-ms.sourcegitcommit: ca215fa220b924f19f56513fc810c8c728dff420
+ms.openlocfilehash: 7c3bca9e5ad87c681fc38a5c618331a3f7a97ae1
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98566933"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98897509"
 ---
 # <a name="tutorial-discover-hyper-v-vms-with-server-assessment"></a>Tutorial: Ermitteln virtueller Hyper-V-Computer mit der Serverbewertung
 
@@ -83,7 +83,7 @@ Sie können Hyper-V-Hosts manuell oder mithilfe eines Skripts vorbereiten. Die V
 
 **Schritt** | **Skript** | **Manuell**
 --- | --- | ---
-Überprüfen der Hostanforderungen | Das Skript überprüft, ob auf dem Host eine unterstützte Hyper-V-Version und die Hyper-V-Rolle ausgeführt werden.<br/><br/>Es aktiviert den WinRM-Dienst und öffnet die Ports 5985 (HTTP) und 5986 (HTTPS) auf dem Host (erforderlich für die Metadatensammlung). | Der Host muss unter Windows Server 2019, Windows Server 2016 oder Windows Server 2012 R2 ausgeführt werden.<br/><br/> Überprüfen Sie, ob eingehende Verbindungen an WinRM-Port 5985 (HTTP) zugelassen sind, damit die Appliance mithilfe einer CIM-Sitzung (Common Information Model) eine Verbindung herstellen und VM-Metadaten und Leistungsdaten pullen kann.
+Überprüfen der Hostanforderungen | Das Skript überprüft, ob auf dem Host eine unterstützte Hyper-V-Version und die Hyper-V-Rolle ausgeführt werden.<br/><br/>Es aktiviert den WinRM-Dienst und öffnet die Ports 5985 (HTTP) und 5986 (HTTPS) auf dem Host (erforderlich für die Metadatensammlung). | Der Host muss unter Windows Server 2019, Windows Server 2016 oder Windows Server 2012 R2 ausgeführt werden.<br/><br/> Überprüfen Sie, ob eingehende Verbindungen an WinRM-Port 5985 (HTTP) zugelassen sind, damit die Appliance mithilfe einer CIM-Sitzung (Common Information Model) eine Verbindung herstellen und VM-Metadaten und Leistungsdaten pullen kann.<br/><br/> Das Skript wird derzeit nicht auf Hosts mit einem nicht englischen Gebietsschema unterstützt.  
 Überprüfen der PowerShell-Version | Es wird überprüft, ob das Skript unter einer unterstützten PowerShell-Version ausgeführt wird. | Überprüfen Sie, ob Sie PowerShell, Version 4.0 oder höher, auf dem Hyper-V-Host ausführen.
 Erstellen eines Kontos | Es wird überprüft, ob Sie über die richtigen Berechtigungen für den Hyper-V-Host verfügen.<br/><br/> Ermöglicht das Erstellen eines lokalen Benutzerkontos mit den richtigen Berechtigungen. | Option 1: Bereiten Sie ein Konto mit Administratorzugriff auf den Hyper-V-Hostcomputer vor.<br/><br/> Option 2: Bereiten Sie ein lokales Administratorkonto oder ein Domänenadministratorkonto vor, und fügen Sie das Konto den folgenden Gruppen hinzu: „Remoteverwaltungsbenutzer“, „Hyper-V-Administratoren“ und „Systemmonitorbenutzer“.
 Aktivieren von PowerShell-Remoting | Aktivieren Sie auf dem Host PowerShell-Remoting, sodass die Azure Migrate-Appliance über eine WinRM-Verbindung darauf PowerShell-Befehle ausführen kann. | Zum Einrichten auf jedem Host öffnen Sie eine PowerShell-Konsole als Administrator und führen den folgenden Befehl aus: ``` powershell Enable-PSRemoting -force ```

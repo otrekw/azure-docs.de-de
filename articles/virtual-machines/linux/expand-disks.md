@@ -7,19 +7,19 @@ ms.topic: how-to
 ms.date: 10/15/2018
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: bbb959b6b1d71c81f7b920b3962f693716041e16
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: d1d433c7db36a3f4fe5f528b7fbd17549bc08e4a
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96016232"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98791492"
 ---
 # <a name="expand-virtual-hard-disks-on-a-linux-vm-with-the-azure-cli"></a>Erweitern von virtuellen Festplatten auf virtuellen Linux-Computern mit der Azure-CLI
 
 Dieser Artikel erläutert, wie verwaltete Datenträger für einen virtuellen Linux-Computer mit der Azure CLI erweitert werden können. Sie können [Datenträger hinzufügen](add-disk.md), um zusätzlichen Speicherplatz zur Verfügung zu stellen, und Sie können auch einen vorhandenen Datenträger für Daten erweitern. Die Standardgröße der virtuellen Festplatte für das Betriebssystem beträgt normalerweise 30 GB auf einem virtuellen Linux-Computer in Azure. 
 
 > [!WARNING]
-> Achten Sie immer darauf, dass Ihr Dateisystem in einem fehlerfreien Zustand ist und dass Ihre Datenträgerpartitionstabelle die neue Größe unterstützt. Vergewissern Sie sich außerdem, dass Ihre Daten gesichert sind, bevor Sie Vorgänge zur Größenänderung von Datenträgern ausführen. Weitere Informationen finden Sie unter [Sichern virtueller Linux-Computer in Azure](tutorial-backup-vms.md). 
+> Achten Sie immer darauf, dass Ihr Dateisystem in einem fehlerfreien Zustand ist und dass Ihre Datenträgerpartitionstabelle die neue Größe unterstützt. Vergewissern Sie sich außerdem, dass Ihre Daten gesichert sind, bevor Sie Vorgänge zur Größenänderung von Datenträgern ausführen. Weitere Informationen finden Sie im [Schnellstart zu Azure Backup](../../backup/quick-backup-vm-portal.md). 
 
 ## <a name="expand-an-azure-managed-disk"></a>Erweitern eines verwalteten Azure-Datenträgers
 Überprüfen Sie, ob Sie die neueste Version der [Azure CLI](/cli/azure/install-az-cli2) installiert haben und mit [az login](/cli/azure/reference-index#az-login) bei einem Azure-Konto angemeldet sind.

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 05/11/2020
 ms.author: v-miegge
-ms.openlocfilehash: ff7d5a4e1181dccedc3584d958038a1d695c57ca
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: a91add684d7b7aaee67e7dd4f4f2d0c6df078132
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97657123"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632223"
 ---
 # <a name="troubleshoot-windows-boot-manager-error----0xc0000225-status-not-found"></a>Problembehandlung beim Windows-Start-Manager-Fehler 0xC0000225 „Status not found“
  
@@ -79,6 +79,9 @@ Eine Beschädigung der Registrierungsstruktur kann folgende Ursachen haben:
 ## <a name="solution"></a>Lösung
 
 ### <a name="process-overview"></a>Prozessübersicht
+
+> [!TIP]
+> Wenn Sie über eine aktuelle Sicherung der VM verfügen, können Sie versuchen, die [VM aus der Sicherung wiederherzustellen](../../backup/backup-azure-arm-restore-vms.md), um das Startproblem zu beheben.
 
 1. Erstellen Sie eine Reparatur-VM, und greifen Sie darauf zu.
 1. Wählen Sie eine Lösung:

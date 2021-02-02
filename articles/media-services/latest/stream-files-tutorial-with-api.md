@@ -1,25 +1,10 @@
 ---
-title: Hochladen, Codieren und Streamen mit Media Services v3
-titleSuffix: Azure Media Services
-description: Tutorial zum Hochladen einer Datei, Codieren eines Videos und Streamen von Inhalten mit Media Services v3
-services: media-services
-documentationcenter: ''
-author: IngridAtMicrosoft
-manager: femila
-editor: ''
-ms.service: media-services
-ms.workload: ''
-ms.topic: tutorial
-ms.custom: mvc
-ms.date: 08/31/2020
-ms.author: inhenkel
-ms.openlocfilehash: eedbb63f4928c0397150b40a47fdc7c3e87d1991
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
-ms.translationtype: HT
-ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89256768"
+Titel: Hochladen, Codieren und Streamen mit Media Services v3 : Azure Media Services description: Tutorial zum Hochladen einer Datei, Codieren eines Videos und Streamen von Inhalten mit Media Services v3
+services: media-services documentationcenter: '' author: IngridAtMicrosoft manager: femila editor: ''
+
+ms.service: media-services ms.workload: ms.topic: tutorial ms.custom: mvc ms.date: 08/31/2020 ms.author: inhenkel
 ---
+
 # <a name="tutorial-upload-encode-and-stream-videos-with-media-services-v3"></a>Tutorial: Hochladen, Codieren und Streamen von Videos mit Media Services v3
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]

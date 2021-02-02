@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 09/25/2020
-ms.openlocfilehash: b69feec7249c80fc63d803a14f360614bcf880fa
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.date: 01/23/2021
+ms.openlocfilehash: 590afe4c396942c5179826cd831908e37f48c3e4
+ms.sourcegitcommit: 4d48a54d0a3f772c01171719a9b80ee9c41c0c5d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91399821"
+ms.lasthandoff: 01/24/2021
+ms.locfileid: "98745749"
 ---
 # <a name="quickstart-create-a-demo-app-in-the-portal-azure-cognitive-search"></a>Schnellstart: Erstellen einer Demo-App im Portal (Azure Cognitive Search)
 
@@ -61,7 +61,7 @@ Der Assistent bietet ein einfaches Layout für gerenderte Suchergebnisse mit Pla
 
 1. Wählen Sie unter „Beschreibung“ ein Feld mit Details aus, auf deren Grundlage Benutzer ggf. besser entscheiden können, ob sie zu diesem speziellen Dokument navigieren möchten.
 
-   :::image type="content" source="media/search-create-app-portal/configure-results.png" alt-text="Datenquellenseite für Beispieldaten" border="false":::
+   :::image type="content" source="media/search-create-app-portal/configure-results.png" alt-text="Konfigurieren von Ergebnissen für Beispieldaten" border="false":::
 
 ## <a name="add-a-sidebar"></a>Hinzufügen einer Randleiste
 
@@ -72,8 +72,9 @@ Die Facettennavigation in Azure Cognitive Search ist eine kumulative Filterfunkt
 > [!TIP]
 > Das vollständige Indexschema kann im Portal angezeigt werden. Suchen Sie auf der Übersichtsseite des jeweiligen Index nach dem Link **Indexdefinition (JSON)** . Für die Facettennavigation geeignete Felder verfügen über die Attribute „filterable: true“ und „facetable: true“.
 
-Akzeptieren Sie die aktuelle Facettenauswahl, und wechseln Sie zur nächsten Seite.
+1. Wählen Sie im Assistenten oben auf der Seite die Registerkarte **Seitenleiste** aus. Eine Liste aller Felder wird angezeigt, die im Index durch Attribute als filterbar und facettenreich gekennzeichnet sind.
 
+1. Akzeptieren Sie die aktuelle Auswahl von Facettenfeldern, und wechseln Sie zur nächsten Seite.
 
 ## <a name="add-typeahead"></a>Hinzufügen von Typeahead
 
@@ -83,20 +84,44 @@ Vorschläge werden für bestimmte Felddefinitionen aktiviert. Der Assistent biet
 
 Im folgenden Screenshot werden die Optionen im Assistenten einer gerenderten Seite in der App gegenübergestellt. Sie sehen, wie die Feldauswahl verwendet und wie mithilfe von „Feldname anzeigen“ gesteuert wird, ob die Beschriftung in den Vorschlag einbezogen wird.
 
-:::image type="content" source="media/search-create-app-portal/suggestions.png" alt-text="Datenquellenseite für Beispieldaten":::
+:::image type="content" source="media/search-create-app-portal/suggestions.png" alt-text="Konfiguration von Abfragevorschlägen":::
+
+## <a name="add-suggestions"></a>Hinzufügen von Vorschlägen
+
+Vorschläge beziehen sich auf automatisierte Abfrageaufforderungen, die an das Suchfeld angefügt sind. Cognitive Search unterstützt zwei davon: *automatische Vervollständigung* eines teilweise eingegebenen Suchbegriffs und *Vorschläge* für eine Dropdownliste möglicherweise übereinstimmender Dokumente.
+
+Der Assistent unterstützt Vorschläge, und die Felder, die vorgeschlagene Ergebnisse bereitstellen können, werden von einem [`Suggesters`](index-add-suggesters.md)-Konstrukt im Index abgeleitet:
+
+```JSON
+  "suggesters": [
+    {
+      "name": "sg",
+      "searchMode": "analyzingInfixMatching",
+      "sourceFields": [
+        "number",
+        "street",
+        "city",
+        "region",
+        "postCode",
+        "tags"
+      ]
+```
+
+1. Wählen Sie im Assistenten oben auf der Seite die Registerkarte **Vorschläge** aus. Eine Liste aller Felder wird angezeigt, die im Indexschema als Vorschlagsanbieter festgelegt sind.
+
+1. Akzeptieren Sie die aktuelle Auswahl, und wechseln Sie zur nächsten Seite.
 
 ## <a name="create-download-and-execute"></a>Erstellen, Herunterladen und Ausführen
 
-1. Wählen Sie **Demo-App erstellen** aus, um die HTML-Datei zu generieren.
+1. Wählen Sie unten auf der Seite **Demo-App erstellen** aus, um die HTML-Datei zu generieren.
 
 1. Wählen Sie nach entsprechender Aufforderung die Option **Download your app** (App herunterladen) aus, um die Datei herunterzuladen.
 
-1. Öffnen Sie die Datei. Die daraufhin angezeigte Seite sollte in etwa wie auf dem folgenden Screenshot aussehen. Geben Sie einen Begriff ein, und grenzen Sie die Ergebnisse mithilfe von Filtern ein. 
+1. Öffnen Sie die Datei, und klicken Sie auf die Schaltfläche „Suchen“. Mit dieser Aktion wird eine Abfrage ausgeführt. Dabei kann es sich um eine leere Abfrage (`*`) handeln, die ein beliebiges Resultset zurückgibt. Die Seite sollte in etwa dem folgenden Screenshot entsprechen. Geben Sie einen Begriff ein, und grenzen Sie die Ergebnisse mithilfe von Filtern ein. 
 
 Der zugrunde liegende Index besteht aus fiktiven, generierten, dokumentübergreifend duplizierten Daten, und die Beschreibungen passen manchmal nicht zum Bild. Wenn Sie eine App auf der Grundlage Ihrer eigenen Indizes erstellen, können Sie ein stimmigeres Ergebnis erwarten.
 
-:::image type="content" source="media/search-create-app-portal/run-app.png" alt-text="Datenquellenseite für Beispieldaten":::
-
+:::image type="content" source="media/search-create-app-portal/run-app.png" alt-text="Ausführen der App":::
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
@@ -108,7 +133,7 @@ Denken Sie bei Verwendung eines kostenlosen Diensts an die Beschränkung auf max
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Die Standard-App eignet sich zwar für eine erste Erkundung und kleinere Aufgaben, Sie sollten sich jedoch frühzeitig mit den APIs vertraut machen, um die Konzepte und den Workflow besser zu verstehen:
+Die Demo-App eignet sich für das Erstellen von Prototypen, da Sie eine Endbenutzerumgebung simulieren können, ohne JavaScript- oder Front-End-Code schreiben zu müssen. Wenn Sie weitere Informationen zu Front-End-Funktionen benötigen, beginnen Sie mit der Facettennavigation:
 
 > [!div class="nextstepaction"]
-> [Erstellen eines Index mit dem .NET SDK](./search-get-started-dotnet.md)
+> [Erstellen eines Facettenfilters in der kognitiven Azure-Suche](search-filters-facets.md)

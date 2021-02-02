@@ -8,17 +8,15 @@ ms.topic: quickstart
 ms.date: 12/16/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: f85a76a7ce01c11255f54c6b956088f9328dfc9f
-ms.sourcegitcommit: 67b44a02af0c8d615b35ec5e57a29d21419d7668
+ms.openlocfilehash: 55f0d2e8df36cc11f26c5ff6259ebe2215aaffc6
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97918464"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98880541"
 ---
 # <a name="quickstartconnect-an-azure-purview-account-to-a-synapse-workspace"></a>Schnellstart: Herstellen einer Verbindung zwischen einem Azure Purview-Konto und einem Synapse-Arbeitsbereich 
 
-> [!IMPORTANT]
-> Die Integration zwischen Azure Synapse Analytics und Azure Purview befindet sich derzeit in der Vorschauphase. Wenn Sie Azure Purview in Synapse ausprobieren möchten, wenden Sie sich an einen Microsoft-Vertriebsmitarbeiter.
 
 In dieser Schnellstartanleitung registrieren Sie ein Azure Purview-Konto in einem Synapse-Arbeitsbereich. Dank dieser Verbindung können Sie Azure Purview-Ressourcen ermitteln und mit ihnen über Synapse-Funktionen interagieren. 
 
@@ -34,11 +32,11 @@ Sie können die folgenden Aufgaben in Synapse ausführen:
 
 ## <a name="signin-toa-synapse-workspace"></a>Anmelden bei einem Synapse-Arbeitsbereich 
 
-Navigieren Sie zu https://web.azuresynapse.net, und melden Sie sich bei Ihrem Arbeitsbereich an. 
+Navigieren Sie zu  [https://web.azuresynapse.net](https://web.azuresynapse.net), und melden Sie sich bei Ihrem Arbeitsbereich an. 
 
 ## <a name="permissions-for-connecting-an-azure-purview-account"></a>Berechtigungen zum Herstellen einer Verbindung mit einem Azure Purview-Konto 
 
-- Zum Herstellen einer Verbindung zwischen einem Azure Purview-Konto und einem Synapse-Arbeitsbereich benötigen Sie die Rolle **Mitwirkender** im Synapse-Arbeitsbereich (über das IAM im Azure-Portal) sowie Zugriff auf das entsprechende Azure Purview-Konto.
+- Zum Herstellen einer Verbindung zwischen einem Azure Purview-Konto und einem Synapse-Arbeitsbereich benötigen Sie die Rolle **Mitwirkender** im Synapse-Arbeitsbereich (über das IAM im Azure-Portal) sowie Zugriff auf das entsprechende Azure Purview-Konto. Weitere Informationen finden Sie unter [Rollenbasierte Zugriffssteuerung auf der Datenebene von Azure Purview](../../purview/catalog-permissions.md).
 
 ## <a name="connect-an-azure-purview-account"></a>Herstellen einer Verbindung mit einem Azure Purview-Konto  
 

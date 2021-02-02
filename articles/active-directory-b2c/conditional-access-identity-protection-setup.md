@@ -10,12 +10,12 @@ ms.author: mimart
 author: msmimart
 manager: celested
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2472183673e5f06f5664a306a69d14c2eaf5f82d
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 654206bccd25bf09fcdc5c3e7ee72ba97c75af2a
+ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94949767"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98785480"
 ---
 # <a name="set-up-identity-protection-and-conditional-access-in-azure-ad-b2c"></a>Einrichten von Identity Protection und bedingtem Zugriff in Azure AD B2C
 
@@ -94,9 +94,7 @@ Wenn Sie eine Richtlinie für bedingten Zugriff hinzufügen möchten, die auf Id
 
 1. Wählen Sie unter **Sicherheit** die Option **Conditional Access (Preview)** (Bedingter Zugriff (Vorschau)) aus. Daraufhin wird die Seite **Richtlinien für bedingten Zugriff** angezeigt. 
 
-1. Wählen Sie **Neue Richtlinie** aus, und folgen Sie der Dokumentation für bedingten Azure AD-Zugriff, um eine neue Richtlinie zu erstellen. Es folgt ein Beispiel:
-
-   - [Risikobasierter bedingter Zugriff beim Anmelden: Aktivieren mit einer Richtlinie für bedingten Zugriff](../active-directory/conditional-access/howto-conditional-access-policy-risk.md#enable-with-conditional-access-policy)
+1. Wählen Sie **Neue Richtlinie** aus, und folgen Sie der Dokumentation für bedingten Azure AD-Zugriff, um eine neue Richtlinie zu erstellen. Bei risikobasierten Richtlinien müssen Sie separate Richtlinien basierend auf [Benutzerrisiko](../active-directory/conditional-access/howto-conditional-access-policy-risk-user.md#enable-with-conditional-access-policy) oder [Anmelderisiko](../active-directory/conditional-access/howto-conditional-access-policy-risk.md#enable-with-conditional-access-policy) konfigurieren, abhängig davon, welchen Risikotyp Sie als Bedingung verwenden möchten. Es wird nicht empfohlen, beide Risikotypen in einer einzelnen Richtlinie zu verwenden.
 
    > [!IMPORTANT]
    > Wählen Sie beim Auswählen der Benutzer, auf die Sie die Richtlinie anwenden möchten, nicht nur **Alle Benutzer** aus. Andernfalls wird unter Umständen auch Ihre eigene Anmeldung blockiert.

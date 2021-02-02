@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 10/22/2020
 ms.author: v-mibufo
-ms.openlocfilehash: 8af8d7695c48c6ac682109bb38935e98921fa9e4
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: fc3bd5d2590e969db07e9dffa61b4902ea4604c3
+ms.sourcegitcommit: 484f510bbb093e9cfca694b56622b5860ca317f7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94681906"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98632545"
 ---
 # <a name="vm-is-unresponsive-while-waiting-for-the-local-session-manager-service"></a>VM reagiert nicht, während auf den Dienst „Lokaler Sitzungs-Manager“ gewartet wird
 
@@ -34,6 +34,9 @@ Wenn Sie die [Startdiagnose](./boot-diagnostics.md) zum Anzeigen eines Screensho
 Es kann mehrere Gründe geben, warum ein virtueller Computer beim Warten auf „Lokaler Sitzungs-Manager“ nicht mehr reagiert. Falls dieses Problem weiterhin besteht, sollten Sie zu Analysezwecken ein Speicherabbild erfassen.
 
 ## <a name="solution"></a>Lösung
+
+> [!TIP]
+> Wenn Sie über eine aktuelle Sicherung der VM verfügen, können Sie versuchen, die [VM aus der Sicherung wiederherzustellen](../../backup/backup-azure-arm-restore-vms.md), um das Startproblem zu beheben.
 
 In einigen Fällen kann das Problem behoben werden, indem einfach auf den Abschluss des Prozesses gewartet wird. Wenn Ihre VM nicht mehr reagiert und der Wartebildschirm länger als eine Stunde angezeigt wird, sollten Sie ein Speicherabbild des Arbeitsspeichers erfassen und sich dann an den Microsoft-Support wenden.
 

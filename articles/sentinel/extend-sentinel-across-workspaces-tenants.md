@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/11/2020
 ms.author: yelevin
-ms.openlocfilehash: 60e86c7c849bf09b3a5577453a6935466ab447f6
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: 4312a819f8fd41805dca095556efdc6189f23af9
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95483912"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98757118"
 ---
 # <a name="extend-azure-sentinel-across-workspaces-and-tenants"></a>Erweitern von Azure Sentinel auf Arbeitsbereiche und Mandanten
 
@@ -94,18 +94,18 @@ Durch eine Funktion kann auch eine häufig verwendete Union vereinfacht werden. 
 
 Anschließend können Sie eine Abfrage über beide Arbeitsbereiche schreiben, indem Sie mit `unionSecurityEvent | where ...` beginnen.
 
-#### <a name="scheduled-alerts"></a>Geplante Benachrichtigungen
+#### <a name="cross-workspace-analytics-rules"></a>Arbeitsbereichsübergreifende Analyseregeln<a name="scheduled-alerts"></a>
+<!-- Bookmark added for backward compatibility with old heading -->
+Arbeitsbereiche übergreifende Abfragen können jetzt in geplante Analyseregeln einbezogen werden, unterliegen aber den folgenden Beschränkungen:
 
-Arbeitsbereiche übergreifende Abfragen können jetzt in geplante Benachrichtigungen in Analyseregeln einbezogen werden, unterliegen aber den folgenden Beschränkungen:
-
-- Es können bis zu 10 Arbeitsbereiche in einer einzelnen Abfrage enthalten sein.
+- Es können bis zu 15 Arbeitsbereiche in einer einzelnen Abfrage enthalten sein.
 - Azure Sentinel muss in jedem Arbeitsbereich bereitgestellt sein, auf den in der Abfrage verwiesen wird.
 
 > [!NOTE] 
 > Werden in derselben Abfrage mehrere Arbeitsbereiche abgefragt, kann sich dies negativ auf die Leistung auswirken. Diese Vorgehensweise wird daher nur empfohlen, wenn diese Funktionalität von der Logik vorausgesetzt wird.
 
-### <a name="using-cross-workspace-workbooks"></a>Verwenden arbeitsbereichsübergreifender Arbeitsmappen
-
+#### <a name="cross-workspace-workbooks"></a>Arbeitsbereichsübergreifende Arbeitsmappen<a name="using-cross-workspace-workbooks"></a>
+<!-- Bookmark added for backward compatibility with old heading -->
 Über [Arbeitsmappen](./overview.md#workbooks) werden Dashboards und Apps für Azure Sentinel bereitgestellt. Beim Arbeiten mit mehreren Arbeitsbereichen werden Überwachung und weitere Aktionen arbeitsbereichsübergreifend bereitgestellt.
 
 Arbeitsmappen können arbeitsbereichsübergreifende Abfragen mit einer von drei Methoden bereitstellen. Je nach Methode werden unterschiedliche Fachkenntnisse der Endbenutzer berücksichtigt:
@@ -117,7 +117,7 @@ Arbeitsmappen können arbeitsbereichsübergreifende Abfragen mit einer von drei 
 | Arbeitsmappe interaktiv bearbeiten | Ein fortgeschrittener Benutzer, der eine bestehende Arbeitsmappe ändert, kann die darin enthaltenen Abfragen bearbeiten, indem er die Zielarbeitsbereiche mithilfe des Arbeitsbereichsselektors im Editor auswählt. | Über diese Option kann ein Hauptbenutzer bestehende Arbeitsmappen problemlos ändern, um mit mehreren Arbeitsbereichen arbeiten zu können. |
 |
 
-### <a name="cross-workspace-hunting"></a>Arbeitsbereichsübergreifendes Hunting
+#### <a name="cross-workspace-hunting"></a>Arbeitsbereichsübergreifendes Hunting
 
 Azure Sentinel bietet vorab geladene Abfragebeispiele, um Ihnen die ersten Schritte zu vereinfachen und Sie mit den Tabellen und der Abfragesprache vertraut zu machen. Diese integrierten Bedrohungssuchabfragen werden von Microsoft-Sicherheitsexperten kontinuierlich entwickelt. Dies geschieht sowohl durch Hinzufügen neuer Abfragen als auch Optimieren vorhandener Abfragen, um Ihnen einen Einstiegspunkt zu bieten, ab dem Sie nach neuen Erkennungen suchen und Anzeichen von Eindringversuchen identifizieren können, die von Ihren Sicherheitstools möglicherweise unentdeckt geblieben sind.  
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/30/2020
 ms.author: Zhchia
-ms.openlocfilehash: 881309c040f6c1bdff758d17ab7f51e935437192
-ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
+ms.openlocfilehash: a49258208f7a5945ac71c8f17db56fccfdcd6515
+ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97607880"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98661999"
 ---
 # <a name="tutorial-configure-mediusflow-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von MediusFlow für die automatische Benutzerbereitstellung
 
@@ -155,24 +155,32 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 9. Überprüfen Sie im Abschnitt **Attributzuordnung** die Benutzerattribute, die von Azure AD mit MediusFlow synchronisiert werden. Beachten Sie, dass die als **übereinstimmende** Eigenschaften ausgewählten Attribute zum Abgleichen der Benutzerkonten in MediusFlow bei Updatevorgängen verwendet werden. Wenn Sie sich dafür entscheiden, das [übereinstimmende Zielattribut](../app-provisioning/customize-application-attributes.md) zu ändern, müssen Sie sicherstellen, dass die MediusFlow-API das Filtern von Benutzern anhand dieses Attributs unterstützt. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
 
-   |attribute|type|
-   |---|---|
-   |userName|String|
+   |attribute|type|Unterstützung für das Filtern|
+   |---|---|---|
+   |userName|String|&check;|
    |emails[type eq "work"].value|String|
    |name.displayName|String|
    |aktiv|Boolean|
    |name.givenName|String|
    |name.familyName|String|
    |name.formatted|String|
-   |externalID|String|
+   |externalId|String|
    |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:manager|Verweis|
+   |urn:ietf:params:scim:schemas:extension:medius:2.0:User:configurationFilter|String|
+   |urn:ietf:params:scim:schemas:extension:medius:2.0:User:identityProvider|String|
+   |urn:ietf:params:scim:schemas:extension:medius:2.0:User:nameIdentifier|String|
+   |urn:ietf:params:scim:schemas:extension:medius:2.0:User:customFieldText1|String|
+   |urn:ietf:params:scim:schemas:extension:medius:2.0:User:customFieldText2|String|
+   |urn:ietf:params:scim:schemas:extension:medius:2.0:User:customFieldText3|String|
+   |urn:ietf:params:scim:schemas:extension:medius:2.0:User:customFieldText4|String|
+   |urn:ietf:params:scim:schemas:extension:medius:2.0:User:customFieldText5|String|
 
 
 10. Wählen Sie im Abschnitt **Zuordnungen** die Option **Azure Active Directory-Gruppen mit MediusFlow synchronisieren** aus.
 
 11. Überprüfen Sie im Abschnitt **Gruppenattribute** die Benutzerattribute, die von Azure AD mit MediusFlow synchronisiert werden. Die als **übereinstimmende** Eigenschaften ausgewählten Attribute werden für den Abgleich der Gruppen in MediusFlow für Updatevorgänge verwendet. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
 
-    | attribute | type |
+    | Attribut | type |
     |--|--|
     | displayName | String |
     | externalID | String |
@@ -200,6 +208,10 @@ Nachdem Sie die Bereitstellung konfiguriert haben, können Sie mit den folgenden
 1. Mithilfe der [Bereitstellungsprotokolle](../reports-monitoring/concept-provisioning-logs.md) können Sie ermitteln, welche Benutzer erfolgreich bzw. nicht erfolgreich bereitgestellt wurden.
 2. Anhand der [Fortschrittsleiste](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md) können Sie den Status des Bereitstellungszyklus überprüfen und den Fortschritt der Bereitstellung verfolgen.
 3. Wenn sich die Bereitstellungskonfiguration in einem fehlerhaften Zustand zu befinden scheint, wird die Anwendung unter Quarantäne gestellt. Weitere Informationen zu den verschiedenen Quarantänestatus finden Sie [hier](../app-provisioning/application-provisioning-quarantine-status.md).
+
+## <a name="change-log"></a>Änderungsprotokoll
+
+* 21.01.2021: Die benutzerdefinierten Erweiterungsattribute **configurationFilter**, **identityProvider**, **nameIdentifier**, **customFieldText1**, **customFieldText2**, **customFieldText3**, **customFieldText3** und **customFieldText5** wurden hinzugefügt.
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

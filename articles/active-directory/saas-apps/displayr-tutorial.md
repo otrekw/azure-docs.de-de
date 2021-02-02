@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/20/2019
 ms.author: jeedes
-ms.openlocfilehash: 13edc0280f1a6f7e962e8e4593d8a17990dd9e6f
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 3cb6ee3162c70d2d07c4868ae90ecc54bd489966
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92454744"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98622490"
 ---
 # <a name="tutorial-integrate-displayr-with-azure-active-directory"></a>Tutorial: Integrieren von Displayr in Azure Active Directory
 
@@ -45,14 +45,14 @@ Zum Konfigurieren der Integration von Displayr in Azure AD müssen Sie Displayr 
 
 1. Melden Sie sich mit einem Geschäfts-, Schul- oder Unikonto oder mit einem persönlichen Microsoft-Konto beim [Azure-Portal](https://portal.azure.com) an.
 1. Wählen Sie im linken Navigationsbereich den Dienst **Azure Active Directory** aus.
-1. Navigieren Sie zu **Unternehmensanwendungen** , und wählen Sie dann **Alle Anwendungen** aus.
+1. Navigieren Sie zu **Unternehmensanwendungen**, und wählen Sie dann **Alle Anwendungen** aus.
 1. Wählen Sie zum Hinzufügen einer neuen Anwendung **Neue Anwendung** aus.
 1. Geben Sie im Abschnitt **Aus Katalog hinzufügen** den Suchbegriff **Displayr** in das Suchfeld ein.
 1. Wählen Sie **Displayr** im Ergebnisbereich aus, und fügen Sie dann die App hinzu. Warten Sie einige Sekunden, während die App Ihrem Mandanten hinzugefügt wird.
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurieren und Testen des einmaligen Anmeldens in Azure AD
 
-Konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit Displayr mithilfe eines Testbenutzers mit dem Namen **Britta Simon** . Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Displayr eingerichtet werden.
+Konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit Displayr mithilfe eines Testbenutzers mit dem Namen **Britta Simon**. Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Displayr eingerichtet werden.
 
 Zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD mit Displayr müssen Sie die folgenden Schritte ausführen:
 
@@ -67,9 +67,9 @@ Zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD mit Displayr 
 
 Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal zu aktivieren.
 
-1. Navigieren Sie im [Azure-Portal](https://portal.azure.com/) auf der Anwendungsintegrationsseite für **Displayr** zum Abschnitt **Verwalten** , und wählen Sie **Einmaliges Anmelden** aus.
+1. Navigieren Sie im [Azure-Portal](https://portal.azure.com/) auf der Anwendungsintegrationsseite für **Displayr** zum Abschnitt **Verwalten**, und wählen Sie **Einmaliges Anmelden** aus.
 1. Wählen Sie auf der Seite **SSO-Methode auswählen** die Methode **SAML** aus.
-1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Bearbeitungs- bzw. Stiftsymbol für **Grundlegende SAML-Konfiguration** , um die Einstellungen zu bearbeiten.
+1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Bearbeitungs- bzw. Stiftsymbol für **Grundlegende SAML-Konfiguration**, um die Einstellungen zu bearbeiten.
 
    ![Bearbeiten der SAML-Basiskonfiguration](common/edit-urls.png)
 
@@ -78,6 +78,10 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
     a. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<YOURDOMAIN>.displayr.com`
 
     b. Geben Sie im Textfeld **Bezeichner (Entitäts-ID)** eine URL im folgenden Format ein: `<YOURDOMAIN>.displayr.com`.
+    
+    c. Geben Sie im Textfeld **Antwort-URL** die URL `https://app.displayr.com/Login/ProcessSamlResponse` ein.
+    
+    d. Klicken Sie auf **Speichern**.
 
     >[!NOTE]
     >Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächliche Anmelde-URL und den tatsächlichen Bezeichner. Diese Werte erhalten Sie vom [Supportteam für den Displayr-Client](mailto:support@displayr.com). Sie können sich auch die Muster im Abschnitt „Grundlegende SAML-Konfiguration“ im Azure-Portal ansehen.
@@ -86,27 +90,25 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
    ![Downloadlink für das Zertifikat](common/certificatebase64.png)
 
-1. Die Displayr-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Daher müssen Sie Ihrer Konfiguration der SAML-Tokenattribute benutzerdefinierte Attributzuordnungen hinzufügen. Der folgende Screenshot zeigt die Liste der Standardattribute. Klicken Sie auf das Symbol **Bearbeiten** , um das Dialogfeld „Benutzerattribute“ zu öffnen.
+1. Die Displayr-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Daher müssen Sie Ihrer Konfiguration der SAML-Tokenattribute benutzerdefinierte Attributzuordnungen hinzufügen. Der folgende Screenshot zeigt die Liste der Standardattribute. Klicken Sie auf das Symbol **Bearbeiten**, um das Dialogfeld „Benutzerattribute“ zu öffnen.
 
-    ![Screenshot: Abschnitt „User Attributes“ (Benutzerattribute) mit dem Symbol „Bearbeiten“ hervorgehoben](common/edit-attribute.png)
+   ![Screenshot: Abschnitt „User Attributes“ (Benutzerattribute) mit dem Symbol „Bearbeiten“ hervorgehoben](common/edit-attribute.png)
 
 1. Darüber hinaus wird von der Displayr-Anwendung erwartet, dass in der SAML-Antwort noch einige weitere Attribute zurückgegeben werden. Führen Sie im Dialogfeld **Gruppenansprüche (Vorschau)** im Abschnitt **Benutzerattribute und Ansprüche** die folgenden Schritte aus:
 
-    a. Klicken Sie auf den **Stift** neben **Im Anspruch zurückgegebene Gruppen** .
+   a. Klicken Sie auf **Gruppenanspruch hinzufügen**.
 
-    ![Screenshot des Abschnitts „Benutzerattribute und Ansprüche“, in dem das Symbol „Stift“ neben „Im Anspruch zurückgegebene Gruppen“ ausgewählt ist](./media/displayr-tutorial/config04.png)
+      ![Screenshot des Fensters „Gruppenansprüche (Vorschau)“ mit ausgewählten Einstellungen](./media/displayr-tutorial/config05.png)
 
-    ![Screenshot des Fensters „Gruppenansprüche (Vorschau)“ mit ausgewählten Einstellungen](./media/displayr-tutorial/config05.png)
+   b. Wählen Sie **Alle Gruppen** aus der Optionsfeldliste aus.
 
-    b. Wählen Sie **Alle Gruppen** aus der Optionsfeldliste aus.
+   c. Wählen Sie **Quellattribut** von **Gruppen-ID** aus.
 
-    c. Wählen Sie **Quellattribut** von **Gruppen-ID** aus.
+   d. Aktivieren Sie **Name des Gruppenanspruchs anpassen**.
 
-    d. Aktivieren Sie **Name des Gruppenanspruchs anpassen** .
+   e. Aktivieren Sie **Gruppen als Rollenanspruch ausgeben**.
 
-    e. Aktivieren Sie **Gruppen als Rollenanspruch ausgeben** .
-
-    f. Klicken Sie auf **Speichern** .
+   f. Klicken Sie auf **Speichern**.
 
 1. Kopieren Sie im Abschnitt **Displayr einrichten** die entsprechenden URLs gemäß Ihren Anforderungen.
 
@@ -118,17 +120,17 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
     ![Erweiterung „Meine Apps“](common/install-myappssecure-extension.png)
 
-2. Klicken Sie nach dem Hinzufügen der Erweiterung zum Browser auf **Displayr einrichten** , um zur Anwendung Displayr weitergeleitet zu werden. Geben Sie dort die Administratoranmeldeinformationen ein, um sich bei Displayr anzumelden. Die Browsererweiterung konfiguriert die Anwendung automatisch für Sie und automatisiert die Schritte 3 bis 6.
+2. Klicken Sie nach dem Hinzufügen der Erweiterung zum Browser auf **Displayr einrichten**, um zur Anwendung Displayr weitergeleitet zu werden. Geben Sie dort die Administratoranmeldeinformationen ein, um sich bei Displayr anzumelden. Die Browsererweiterung konfiguriert die Anwendung automatisch für Sie und automatisiert die Schritte 3 bis 6.
 
     ![Einrichtungskonfiguration](common/setup-sso.png)
 
 3. Wenn Sie Displayr manuell einrichten möchten, öffnen Sie ein neues Webbrowserfenster, melden Sie sich bei der Displayr-Unternehmenswebsite als Administrator an, und führen Sie die folgenden Schritte aus:
 
-4. Klicken Sie auf **Einstellungen** , und navigieren Sie dann zu **Konto** .
+4. Klicken Sie auf **Einstellungen**, und navigieren Sie dann zu **Konto**.
 
     ![Screenshot, in dem das Symbol „Einstellungen“ und „Konto“ ausgewählt sind](./media/displayr-tutorial/config01.png)
 
-5. Wechseln Sie aus dem Hauptmenü zu **Einstellungen** , und scrollen Sie nach unten, um auf  **Einmaliges Anmelden konfigurieren (SAML)** zu klicken.
+5. Wechseln Sie aus dem Hauptmenü zu **Einstellungen**, und scrollen Sie nach unten, um auf  **Einmaliges Anmelden konfigurieren (SAML)** zu klicken.
 
     ![Screenshot, in dem die Registerkarte „Einstellungen“ und die Aktion „Einmaliges Anmelden (S A M L)“ ausgewählt sind](./media/displayr-tutorial/config02.png)
 
@@ -138,7 +140,7 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
     a. Aktivieren Sie das Kontrollkästchen **Einmaliges Anmelden aktivieren (SAML)** .
 
-    b. Kopieren Sie in Azure AD im Abschnitt **Grundlegende SAML-Konfiguration** den tatsächlichen Wert für **Bezeichner** , und fügen Sie ihn ins Textfeld **Issuer** (Aussteller) ein.
+    b. Kopieren Sie in Azure AD im Abschnitt **Grundlegende SAML-Konfiguration** den tatsächlichen Wert für **Bezeichner**, und fügen Sie ihn ins Textfeld **Issuer** (Aussteller) ein.
 
     c. Fügen Sie in das Textfeld **Anmelde-URL** den Wert der **Anmelde-URL** ein, den Sie aus dem Azure-Portal kopiert haben.
 
@@ -148,7 +150,7 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
     f. **Gruppenzuordnungen** sind optional.
 
-    g. Klicken Sie auf **Speichern** .  
+    g. Klicken Sie auf **Speichern**.  
 
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 
@@ -159,16 +161,16 @@ In diesem Abschnitt erstellen Sie im Azure-Portal eine Testbenutzerin mit dem Na
 1. Führen Sie unter den Eigenschaften für **Benutzer** die folgenden Schritte aus:
    1. Geben Sie im Feld **Name** die Zeichenfolge `Britta Simon` ein.  
    1. Geben Sie im Feld **Benutzername** die Zeichenfolge username@companydomain.extension ein. Beispiel: `BrittaSimon@contoso.com`.
-   1. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen** , und notieren Sie sich den Wert aus dem Feld **Kennwort** .
-   1. Klicken Sie auf **Erstellen** .
+   1. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert aus dem Feld **Kennwort**.
+   1. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
 In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie ihr Zugriff auf Displayr gewähren.
 
-1. Wählen Sie im Azure-Portal **Unternehmensanwendungen**  > **Alle Anwendungen** aus.
+1. Wählen Sie im Azure-Portal **Unternehmensanwendungen** > **Alle Anwendungen** aus.
 1. Wählen Sie in der Anwendungsliste **Displayr** aus.
-1. Navigieren Sie auf der Übersichtsseite der App zum Abschnitt **Verwalten** , und wählen Sie **Benutzer und Gruppen** aus.
+1. Navigieren Sie auf der Übersichtsseite der App zum Abschnitt **Verwalten**, und wählen Sie **Benutzer und Gruppen** aus.
 
    ![Link „Benutzer und Gruppen“](common/users-groups-blade.png)
 
@@ -176,9 +178,9 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
     ![Link „Benutzer hinzufügen“](common/add-assign-user.png)
 
-1. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Benutzerliste den Eintrag **Britta Simon** aus, und klicken Sie anschließend im unteren Bildschirmbereich auf die Schaltfläche **Auswählen** .
-1. Wenn Sie einen beliebigen Rollenwert in der SAML-Assertion erwarten, wählen Sie im Dialogfeld **Rolle auswählen** die entsprechende Rolle für den Benutzer in der Liste aus, und klicken Sie dann im unteren Bildschirmbereich auf die Schaltfläche **Auswählen** .
-1. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen** .
+1. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Benutzerliste den Eintrag **Britta Simon** aus, und klicken Sie anschließend im unteren Bildschirmbereich auf die Schaltfläche **Auswählen**.
+1. Wenn Sie einen beliebigen Rollenwert in der SAML-Assertion erwarten, wählen Sie im Dialogfeld **Rolle auswählen** die entsprechende Rolle für den Benutzer in der Liste aus, und klicken Sie dann im unteren Bildschirmbereich auf die Schaltfläche **Auswählen**.
+1. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen**.
 
 ### <a name="create-displayr-test-user"></a>Erstellen eines Displayr-Testbenutzers
 
@@ -188,11 +190,11 @@ Damit sich Azure AD-Benutzer bei Displayr anmelden können, müssen sie in Displ
 
 1. Melden Sie sich bei Displayr als Administrator an.
 
-2. Klicken Sie auf **Einstellungen** , und navigieren Sie dann zu **Konto** .
+2. Klicken Sie auf **Einstellungen**, und navigieren Sie dann zu **Konto**.
 
     ![Screenshot des Symbols „Einstellungen“ (Zahnrad), bei dem „Konto“ ausgewählt ist](./media/displayr-tutorial/config01.png)
 
-3. Wechseln Sie aus dem Hauptmenü zu **Einstellungen** , scrollen Sie nach unten, bis zum Abschnitt **Benutzer** , und klicken Sie auf **Neuer Benutzer** .
+3. Wechseln Sie aus dem Hauptmenü zu **Einstellungen**, scrollen Sie nach unten, bis zum Abschnitt **Benutzer**, und klicken Sie auf **Neuer Benutzer**.
 
     ![Screenshot der Registerkarte „Einstellungen“, auf der „Benutzer“ hervorgehoben und die Schaltfläche „Neuer Benutzer“ ausgewählt ist](./media/displayr-tutorial/config07.png)
 
@@ -200,13 +202,13 @@ Damit sich Azure AD-Benutzer bei Displayr anmelden können, müssen sie in Displ
 
     ![Displayr-Konfiguration](./media/displayr-tutorial/config06.png)
 
-    a. Geben Sie im Textfeld **Name** den Namen des Benutzers ein, z. B. **Brittasimon** .
+    a. Geben Sie im Textfeld **Name** den Namen des Benutzers ein, z. B. **Brittasimon**.
 
     b. Geben Sie im Textfeld **Email** (E-Mail-Adresse) die E-Mail-Adresse des Benutzers ein, z.B. `Brittasimon@contoso.com`.
 
     c. Wählen Sie Ihre entsprechende **Gruppenmitgliedschaft** aus.
 
-    d. Klicken Sie auf **Speichern** .
+    d. Klicken Sie auf **Speichern**.
 
 ### <a name="test-sso"></a>Testen des einmaligen Anmeldens
 

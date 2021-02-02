@@ -9,12 +9,12 @@ author: samkemp
 ms.author: samkemp
 ms.topic: conceptual
 ms.date: 07/17/2020
-ms.openlocfilehash: 17418b0255182934045acc9174b34cff2aefff99
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 7726fce7ac69ebfaabf44049abc49c53f8175718
+ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93307448"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98704539"
 ---
 # <a name="track-experiments-and-deploy-models-in-azure-machine-learning"></a>Nachverfolgen von Experimenten und Bereitstellen von Modellen in Azure Machine Learning
 
@@ -30,7 +30,7 @@ Im folgenden Diagramm ist dargestellt, wie Sie mit MLflow-Tracking die Ausführu
 
 ## <a name="create-a-new-notebook"></a>Erstellen eines neuen Notebooks
 
-Das Azure Machine Learning und das MLFlow SDK sind auf der Data Science-VM vorinstalliert und sind in der * *azureml_py36_\** _-Conda-Umgebung zugänglich. Klicken Sie in Jupyterlab auf das Startprogramm, und wählen Sie den folgenden Kernel aus:
+Das Azure Machine Learning und das MLFlow SDK sind auf der Data Science-VM vorinstalliert und sind in der **azureml_py36_\** _-Conda-Umgebung zugänglich. Klicken Sie in JupyterLab auf das Startprogramm, und wählen Sie den folgenden Kernel aus:
 
 ![Kernelauswahl](./media/how-to-track-experiments/experiment-tracking-1.png)
 
@@ -131,7 +131,7 @@ In diesem Abschnitt zeigen wir, wie Modelle, die auf einer DSVM trainiert wurden
 
 ### <a name="step-1-create-inference-compute"></a>Schritt 1: Erstellen von Rückschlusscompute
 
-Klicken Sie im Menü auf der linken Seite in [AzureML Studio](https://ml.azure.com) auf __Compute__ und dann auf die Registerkarte __Rückschlusscluster__. Klicken Sie als nächstes auf __+ Neu__ , wie unten besprochen:
+Klicken Sie im Menü auf der linken Seite in [AzureML Studio](https://ml.azure.com) auf __Compute__ und dann auf die Registerkarte __Rückschlusscluster__. Klicken Sie als nächstes auf __+ Neu__, wie unten besprochen:
 
 ![Erstellen von Rückschlusscompute](./media/how-to-track-experiments/mlflow-experiments-6.png)
 
@@ -163,7 +163,7 @@ Um das Diabetes-Modell bereitzustellen, navigieren Sie in [Azure Machine Learnin
 
 ![Auswählen des Modells](./media/how-to-track-experiments/mlflow-experiments-3.png)
 
-Klicken Sie anschließend im Modelldetailbereich auf die Schaltfläche __Bereitstellen__ :
+Klicken Sie anschließend im Modelldetailbereich auf die Schaltfläche __Bereitstellen__:
 
 ![Bereitstellen](./media/how-to-track-experiments/mlflow-experiments-4.png)
 

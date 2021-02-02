@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/21/2020
+ms.date: 01/18/2021
 ms.author: jeedes
-ms.openlocfilehash: d7cafdcbbf44f3f501d54c13d1b4549c446ed8c8
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: 03f2ec7aef1faadcb72d6c7a5a058c7d06596539
+ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97723965"
+ms.lasthandoff: 01/23/2021
+ms.locfileid: "98729675"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-citrix-sharefile"></a>Tutorial: Azure Active Directory-Integration mit Citrix ShareFile
 
@@ -31,8 +31,8 @@ Die Integration von Citrix ShareFile in Azure AD bietet die folgenden Vorteile:
 
 Um die Azure AD-Integration mit Citrix ShareFile konfigurieren zu können, benötigen Sie Folgendes:
 
-* Ein Azure AD-Abonnement Wenn Sie keine Azure AD-Umgebung besitzen, können Sie [hier](https://azure.microsoft.com/pricing/free-trial/) eine einmonatige Testversion anfordern.
-* Citrix ShareFile-Abonnement, für das einmaliges Anmelden aktiviert ist
+* Ein Azure AD-Abonnement Sollten Sie über keine Azure AD-Umgebung verfügen, können Sie [hier](https://azure.microsoft.com/pricing/free-trial/) eine einmonatige Testversion anfordern.
+* Citrix ShareFile-Abonnement, für das einmaliges Anmelden aktiviert ist
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
 
@@ -126,7 +126,7 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 1. Navigieren Sie auf der Übersichtsseite der App zum Abschnitt **Verwalten**, und wählen Sie **Benutzer und Gruppen** aus.
 1. Wählen Sie **Benutzer hinzufügen** und anschließend im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
 1. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Liste „Benutzer“ den Eintrag **B. Simon** aus, und klicken Sie dann unten auf dem Bildschirm auf die Schaltfläche **Auswählen**.
-Wenn den Benutzern eine Rolle zugewiesen werden soll, können Sie sie im Dropdownmenü **Rolle auswählen** auswählen. Wurde für diese App keine Rolle eingerichtet, ist die Rolle „Standardzugriff“ ausgewählt.
+1. Wenn den Benutzern eine Rolle zugewiesen werden soll, können Sie sie im Dropdownmenü **Rolle auswählen** auswählen. Wurde für diese App keine Rolle eingerichtet, ist die Rolle „Standardzugriff“ ausgewählt.
 1. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen**.
 
 ## <a name="configure-citrix-sharefile-sso"></a>Konfigurieren des einmaligen Anmeldens für Citrix ShareFile
@@ -165,7 +165,9 @@ Wenn den Benutzern eine Rolle zugewiesen werden soll, können Sie sie im Dropdow
     
     f. Fügen Sie in das Textfeld **Logout URL** (Abmelde-URL) den Wert der **Abmelde-URL** ein, den Sie aus dem Azure-Portal kopiert haben.
 
-5. Klicken Sie im Citrix ShareFile-Verwaltungsportal auf **Speichern**.
+    g. Wählen Sie unter **Optional Settings** (Optionale Einstellungen) für **SP-Initiated Auth Context** (SP-initiierter Authentifizierungskontext) die Optionen **User Name and Password** (Benutzername und Kennwort) und **Exact** (Genau) aus.
+
+5. Klicken Sie auf **Speichern**.
 
 ## <a name="create-citrix-sharefile-test-user"></a>Erstellen eines Citrix ShareFile-Testbenutzers
 
@@ -198,7 +200,7 @@ In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmel
 
 * Rufen Sie direkt die Citrix ShareFile-Anmelde-URL auf, und initiieren Sie den Anmeldeflow.
 
-* Sie können „Meine Apps“ von Microsoft verwenden. Wenn Sie unter „Meine Apps“ auf die Kachel „Citrix ShareFile“ klicken, werden Sie zur Anmelde-URL für Citrix ShareFile umgeleitet. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+* Sie können „Meine Apps“ von Microsoft verwenden. Wenn Sie unter „Meine Apps“ auf die Kachel „Citrix ShareFile“ klicken, werden Sie zur Anmelde-URL für Citrix ShareFile umgeleitet. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](../user-help/my-apps-portal-end-user-access.md).
 
 
 ## <a name="next-steps"></a>Nächste Schritte

@@ -1,30 +1,30 @@
 ---
 title: Ändern des Azure-Abonnementangebots
-description: Erfahren Sie, wie Sie Ihr Azure-Abonnement ändern und über das Azure-Kontocenter zu einem anderen Angebot wechseln.
+description: Hier erfahren Sie, wie Sie Ihr Azure-Abonnement ändern und zu einem anderen Angebot wechseln.
 author: bandersmsft
 ms.reviewer: amberb
 tags: billing,top-support-issue
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: conceptual
-ms.date: 08/20/2020
+ms.date: 01/20/2021
 ms.author: banders
-ms.openlocfilehash: e62ea7052420e2d0c20b99935659a5443540a942
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: dd8040effc5972d86e620793e437f5b185e12603
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88686818"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98685459"
 ---
 # <a name="change-your-azure-subscription-to-a-different-offer"></a>Ändern Ihres Azure-Abonnements in ein anderes Angebot
 
-Als Kunde mit einem [einzelnen Abonnement mit Preisen für nutzungsbasierte Bezahlung](https://azure.microsoft.com/offers/ms-azr-0003p/) können Sie Ihr Azure-Abonnement im [Kontocenter](https://account.windowsazure.com/Subscriptions) auf ein anderes Angebot umstellen. Mithilfe dieses Features können Sie beispielsweise von den [monatlichen Gutschriften für Visual Studio-Abonnenten](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) profitieren.
+Als Kunde mit einem [Abonnement mit nutzungsbasierter Bezahlung](https://azure.microsoft.com/offers/ms-azr-0003p/) können Sie Ihr Azure-Abonnement im Azure-Portal auf ein anderes Angebot umstellen. Mithilfe dieses Features können Sie beispielsweise von den [monatlichen Gutschriften für Visual Studio-Abonnenten](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) profitieren.
 
 **Sie möchten nur Ihre kostenlose Testversion aktualisieren?** Siehe [Upgrade Sie Ihr Abonnement](upgrade-azure-subscription.md).
 
 ## <a name="whats-supported"></a>Unterstützte Umstellungen:
 
-Sie können ein einzelnes Abonnement mit Preisen für nutzungsbasierte Bezahlung wie folgt umstellen:
+Sie können von einem Abonnement mit nutzungsbasierter Zahlung zu einem der folgenden Angebote wechseln:
 
 - [Pay-As-You-Go Dev/Test](https://azure.microsoft.com/offers/ms-azr-0023p/)
 - [Visual Studio Professional](https://azure.microsoft.com/offers/ms-azr-0059p/)
@@ -35,43 +35,31 @@ Sie können ein einzelnes Abonnement mit Preisen für nutzungsbasierte Bezahlung
 
 > [!NOTE]
 > Um Informationen zu weiteren Angebotsänderungen zu erhalten, [wenden Sie sich an den Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
->
->
 
 ## <a name="switch-subscription-offer"></a>Umstellen des Abonnementangebots
 
-> [!VIDEO https://channel9.msdn.com/Series/Microsoft-Azure-Tutorials/Switch-to-a-different-Azure-offer/player]
->
->
-
-1. Melden Sie sich beim [Azure-Kontocenter](https://account.windowsazure.com/Subscriptions)an.
-1. Wählen Sie Ihr einzelnes Abonnement mit Preisen für nutzungsbasierte Bezahlung aus.
-1. Klicken Sie auf **Zu einem anderen Angebot wechseln**. Die Option ist nur verfügbar, wenn Sie über ein individuelles Abonnement mit Preisen für nutzungsbasierte Bezahlung verfügen und Ihren ersten Abrechnungszeitraum abgeschlossen haben.
-
-   ![Beachten Sie rechts auf der Seite die Schaltfläche „Angebot wechseln“.](./media/switch-azure-offer/switchbutton.png)
-1. **Wählen Sie das gewünschte Angebot** aus der Liste der Angebote aus, auf die Ihr Abonnement umgestellt werden kann. Diese Liste variiert je nach den Mitgliedschaften, denen Ihr Konto zugeordnet ist. Ist kein Angebot verfügbar, sehen Sie sich die [Liste mit verfügbaren Angeboten an, auf die Sie umstellen können](#whats-supported), und vergewissern Sie sich, dass Sie über die richtigen Mitgliedschaften verfügen.
-
-   ![Wählen Sie ein Angebot, zu dem Sie wechseln möchten.](./media/switch-azure-offer/selectoffer.png)
-1. Abhängig von dem Angebot, zu dem Sie wechseln möchten, wird möglicherweise ein Hinweis zu den Auswirkungen dieses Wechsels angezeigt. Lesen Sie die Liste aufmerksam durch, und befolgen Sie die Anweisungen, bevor Sie fortfahren.
-
-   ![Lesen Sie die Hinweise.](./media/switch-azure-offer/thingstonote.png)
-1. Sie können Ihr Abonnement umbenennen. Es wird nicht standardmäßig der Name des neuen Angebots verwendet. Klicken Sie auf **Angebot wechseln** , um den Vorgang abzuschließen.
-
-   ![Klicken Sie auf die grüne Schaltfläche.](./media/switch-azure-offer/confirmpage.png)
-1. Erfolg! Ihr Abonnement wird jetzt auf das neue Angebot umgestellt.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
+1. Navigieren Sie zu **Abonnements**, und wählen Sie dann Ihr Abonnement mit nutzungsbasierter Bezahlung aus.
+1. Wählen Sie am oberen Rand der Seite **Angebot wechseln** aus. Die Option ist nur verfügbar, wenn Sie über ein Abonnement mit nutzungsbasierter Bezahlung verfügen und Ihren ersten Abrechnungszeitraum abgeschlossen haben.  
+    :::image type="content" source="./media/switch-azure-offer/switch-offer.png" alt-text="ALTImage: Abonnementdetails mit der Option „Angebot wechseln“TEXT" lightbox="./media/switch-azure-offer/switch-offer.png" :::
+1. Wählen Sie das gewünschte Angebot in der Liste der Angebote aus, auf die Ihr Abonnement umgestellt werden kann. Diese Liste variiert je nach den Mitgliedschaften, denen Ihr Konto zugeordnet ist. Ist kein Angebot verfügbar, sehen Sie sich die [Liste mit verfügbaren Angeboten an, auf die Sie umstellen können](#whats-supported), und vergewissern Sie sich, dass Sie über die richtigen Mitgliedschaften verfügen. Klicken Sie dann auf **Weiter**.
+    :::image type="content" source="./media/switch-azure-offer/select-offer.png" alt-text="Wählen Sie ein Angebot, zu dem Sie wechseln möchten." lightbox="./media/switch-azure-offer/select-offer.png" :::
+    Abhängig von dem Angebot, zu dem Sie wechseln möchten, wird möglicherweise ein Hinweis zu den Auswirkungen dieses Wechsels angezeigt. Lesen Sie die Liste aufmerksam durch, und befolgen Sie die Anweisungen, bevor Sie fortfahren. Möglicherweise müssen Sie auch Ihre Telefonnummer bestätigen.
+1. Wählen Sie nach dem Überprüfen der Hinweise oder dem Bestätigen Ihrer Telefonnummer die Option **Angebot wechseln** aus.
+1. Ihr Abonnement wird jetzt auf das neue Angebot umgestellt.
 
 ## <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
 Die folgenden Abschnitte enthalten Antworten auf häufig gestellte Fragen.
 
 ### <a name="what-is-an-azure-offer"></a>Was ist ein Azure-Angebot?
 
-Ein Azure-Angebot ist der *Typ* von Azure-Abonnement, das Sie besitzen. Bei [einem Abonnement mit Preisen für nutzungsbasierte Bezahlung](https://azure.microsoft.com/offers/ms-azr-0003p/), [Azure in Open](https://azure.microsoft.com/offers/ms-azr-0111p/) und [Visual Studio Enterprise](https://azure.microsoft.com/offers/ms-azr-0063p/) handelt es sich beispielsweise um Azure-Angebote. Für jedes Angebot gelten andere [Bedingungen](https://azure.microsoft.com/support/legal/offer-details/), und einige weisen besondere Vorteile auf. Das Angebot für Ihr Abonnement finden Sie auf der Abonnementseite des Kontocenters. Klicken Sie auf den Angebotsnamen, um weitere Details anzuzeigen.
+Ein Azure-Angebot ist der *Typ* von Azure-Abonnement, das Sie besitzen. Bei [einem Abonnement mit Preisen für nutzungsbasierte Bezahlung](https://azure.microsoft.com/offers/ms-azr-0003p/), [Azure in Open](https://azure.microsoft.com/offers/ms-azr-0111p/) und [Visual Studio Enterprise](https://azure.microsoft.com/offers/ms-azr-0063p/) handelt es sich beispielsweise um Azure-Angebote. Für jedes Angebot gelten andere [Bedingungen](https://azure.microsoft.com/support/legal/offer-details/), und einige weisen besondere Vorteile auf. Das Angebot Ihres Abonnements wird auf der Seite mit den Abonnementdetails angezeigt.
 
-   ![Klicken Sie im Kontocenter auf den Link für Angebote, um weitere Details anzuzeigen](./media/switch-azure-offer/offerlink01.png)
+:::image type="content" source="./media/switch-azure-offer/subscription-details.png" alt-text="Abonnementdetailseite mit dem Angebotstyp" lightbox="./media/switch-azure-offer/subscription-details.png" :::
 
 ### <a name="why-dont-i-see-the-button"></a>Warum wird die Schaltfläche nicht angezeigt?
 
-Wenn die Option **Zu einem anderen Angebot wechseln** nicht angezeigt wird, kommen folgende Gründe infrage:
+Die Option **Angebot wechseln** wird in den folgenden Fällen unter Umständen nicht angezeigt:
 
 * Sie verfügen nicht über ein [Abonnement mit Preisen für nutzungsbasierte Bezahlung](https://azure.microsoft.com/offers/ms-azr-0003p/). Derzeit können nur Abonnements mit Preisen für nutzungsbasierte Bezahlung auf ein anderes Angebot umgestellt werden.
   * Wenn Sie eine [kostenlose Testversion](https://azure.microsoft.com/free/) besitzen, können Sie sich darüber informieren, wie Sie ein [Upgrade auf eine nutzungsbasierte Version](upgrade-azure-subscription.md) durchführen.
@@ -85,7 +73,7 @@ Wenn die Option **Zu einem anderen Angebot wechseln** nicht angezeigt wird, komm
 
 ### <a name="what-does-switching-azure-offers-do-to-my-service-and-billing"></a>Welche Auswirkungen hat ein Wechsel zwischen Azure-Angeboten auf meinen Dienst und meine Abrechnung?
 
-Hier wird ausführlich erläutert, was geschieht, wenn Sie Azure-Angebote im Kontocenter wechseln.
+Hier wird ausführlich erläutert, was geschieht, wenn Sie Azure-Angebote wechseln.
 
 #### <a name="no-service-downtime"></a>Keine Dienstunterbrechung
 
@@ -102,7 +90,7 @@ An dem Tag, an dem Sie das Angebot wechseln, wird für alle ausstehenden Gebühr
 ### <a name="can-i-migrate-from-a-subscription-with-pay-as-you-go-rates-to-cloud-solution-provider-csp-or-enterprise-agreement-ea"></a>Kann ich von einem Abonnement mit Preisen für nutzungsbasierte Bezahlung zu Cloudlösungsanbieter (Cloud Solution Provider, CSP) oder Enterprise Agreement (EA) migrieren?
 
 * Informationen zum Migrieren zu CSP finden Sie unter [Übertragen von Azure-Abonnements zwischen Abonnenten und CSPs](transfer-subscriptions-subscribers-csp.md).
-* Um zu EA zu migrieren, muss Ihr Registrierungsadministrator Ihr Konto in EA hinzufügen. Führen Sie die Anweisungen in der Einladungs-E-Mail aus, um Ihre Abonnements in die EA-Registrierung zu verschieben. Weitere Informationen finden Sie unter [Associate an Existing Account](https://ea.azure.com/helpdocs/associateExistingAccount) (Zuordnen eines vorhandenen Kontos) im EA-Portal.
+* Um zu EA zu migrieren, muss Ihr Registrierungsadministrator Ihr Konto in EA hinzufügen. Führen Sie die Anweisungen in der Einladungs-E-Mail aus, um Ihre Abonnements in die EA-Registrierung zu verschieben.
 
 ### <a name="can-i-migrate-data-and-services-to-a-new-subscription"></a>Kann ich Daten und Dienste in ein neues Abonnement migrieren?
 

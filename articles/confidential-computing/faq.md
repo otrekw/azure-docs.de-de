@@ -8,12 +8,12 @@ ms.service: virtual-machines
 ms.subservice: workloads
 ms.date: 4/17/2020
 ms.author: jencook
-ms.openlocfilehash: 9df3d9771029e6d72e9d0092a129cddc27be6cd7
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 38bf12b46002e767bba50cf833637e2c8ace078f
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94564105"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98872331"
 ---
 # <a name="frequently-asked-questions-for-azure-confidential-computing"></a>Häufig gestellte Fragen zum Azure Confidential Computing
 
@@ -44,6 +44,14 @@ Basierend auf der Informationssprechblase neben der VM können verschiedene Maß
 **DCsv2-VMs werden nicht angezeigt, wenn ich nach ihnen in der Größenauswahl des Portals suche**
 
 Stellen Sie sicher, dass Sie eine [verfügbare Region](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines) ausgewählt haben. Stellen Sie außerdem sicher, dass Sie in der Größenauswahl „Alle Filter löschen“ ausgewählt haben. 
+
+**Kann ich den beschleunigten Netzwerkbetrieb mit Azure Confidential Computing aktivieren?**
+
+ Nein. Beschleunigter Netzwerkbetrieb wird auf virtuellen Computern der DC-Serie oder der DCsv2-Serie nicht unterstützt. Der beschleunigte Netzwerkbetrieb kann nicht für die Bereitstellung von virtuellen Computern mit Confidential Computing oder für die Bereitstellung von Azure Kubernetes Service-Clustern für Confidential Computing aktiviert werden.
+
+**Kann ich Azure Dedicated Host mit diesen Computern verwenden?**
+
+Ja. Azure Dedicated Host unterstützt virtuelle Computer der DCsv2-Serie. Azure Dedicated Host bietet einen physischen Server mit einem einzelnen Mandanten, auf dem Ihre virtuellen Computer ausgeführt werden. Benutzer verwenden Azure Dedicated Host in der Regel, um Complianceanforderungen in Bezug auf physische Sicherheit, Datenintegrität und Überwachung zu erfüllen. 
 
 **Ich erhalte eine Fehlermeldung bezüglich der Azure Resource Manager-Vorlagenbereitstellung: „Der Vorgang konnte nicht abgeschlossen werden, weil er zu einer Überschreitung des genehmigten Kontingents für Kerne der Standard DCsv2-Familie führt.“**
 

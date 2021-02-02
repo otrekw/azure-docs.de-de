@@ -4,12 +4,12 @@ ms.service: application-gateway
 ms.topic: include
 ms.date: 03/04/2020
 ms.author: victorh
-ms.openlocfilehash: ff97aa6c6f04ad41ba6e1b986f3cc0734ec7a326
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 4c7c68bf690097004f2f3310a8d89ce954d7f87f
+ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92526136"
+ms.lasthandoff: 01/20/2021
+ms.locfileid: "98612897"
 ---
 | Resource | Begrenzung | Hinweis |
 | --- | --- | --- |
@@ -32,6 +32,9 @@ ms.locfileid: "92526136"
 | URL-Zuordnungen pro Listener |1 | |
 | Maximale Anzahl pfadbasierter Regeln pro URL-Zuordnung|100||
 | Umleitungskonfiguration |100<sup>1</sup>| |
+| Anzahl von Regelsätzen für das erneute Generieren |400| |
+| Anzahl von Header- oder URL-Konfigurationen pro Regelsatz für das erneute Generieren|40| |
+| Anzahl von Bedingungen pro Regelsatz für das erneute Generieren|40| |
 | Gleichzeitige WebSocket-Verbindungen |Mittelgroße Gateways 20K<br> Große Gateways 50K| |
 | Maximale URL-Länge|32 KB| |
 | Maximale Headergröße für HTTP/2 |4 KB| |

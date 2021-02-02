@@ -8,18 +8,18 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 07/06/2020
+ms.date: 01/21/2021
 ms.author: justinha
-ms.openlocfilehash: faa46178262777454d4d67d23bbd0bb013974ab5
-ms.sourcegitcommit: f5b8410738bee1381407786fcb9d3d3ab838d813
+ms.openlocfilehash: e381c80dddc4484d541f5f81de6b5df712cff69b
+ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98208487"
+ms.lasthandoff: 01/22/2021
+ms.locfileid: "98673467"
 ---
 # <a name="tutorial-create-an-outbound-forest-trust-to-an-on-premises-domain-in-azure-active-directory-domain-services"></a>Tutorial: Erstellen einer ausgehenden Gesamtstruktur-Vertrauensstellung zu einer lokalen Domäne in Azure Active Directory Domain Services
 
-In Umgebungen, in denen Sie keine Kennworthashes synchronisieren können, oder wenn Sie Benutzer haben, die sich ausschließlich mit Smartcards anmelden, sodass sie ihre Kennwörter nicht wissen, können Sie eine Ressourcengesamtstruktur in Azure Active Directory Domain Services (Azure AD DS) verwenden. Eine Ressourcengesamtstruktur verwendet eine unidirektionale ausgehende Vertrauensstellung von Azure AD DS zu mindestens einer lokalen AD DS-Umgebung. Diese Vertrauensstellung ermöglicht es Benutzern, Anwendungen und Computern, sich aus der verwalteten Azure AD DS-Domäne bei einer lokalen Domäne zu authentifizieren. In einer Ressourcengesamtstruktur werden lokale Kennworthashes nie synchronisiert.
+In Umgebungen, in denen Sie keine Kennworthashes synchronisieren können oder sich Benutzer ausschließlich mit Smartcards anmelden und ihre Kennwörter nicht wissen, können Sie eine Ressourcengesamtstruktur in Azure Active Directory Domain Services (Azure AD DS) verwenden. Eine Ressourcengesamtstruktur verwendet eine unidirektionale ausgehende Vertrauensstellung von Azure AD DS zu mindestens einer lokalen AD DS-Umgebung. Diese Vertrauensstellung ermöglicht es Benutzern, Anwendungen und Computern, sich aus der verwalteten Azure AD DS-Domäne bei einer lokalen Domäne zu authentifizieren. In einer Ressourcengesamtstruktur werden lokale Kennworthashes nie synchronisiert.
 
 ![Darstellung einer Gesamtstruktur-Vertrauensstellung von Azure AD DS zu lokalem AD DS](./media/concepts-resource-forest/resource-forest-trust-relationship.png)
 
@@ -61,7 +61,7 @@ Bevor Sie eine Gesamtstruktur-Vertrauensstellung in Azure AD DS konfigurieren, s
 
 * Es werden private IP-Adressen verwendet. Sie sollten sich nicht auf DHCP mit dynamischer Zuweisung von IP-Adressen verlassen.
 * Überlappende IP-Adressräume sollten vermieden werden, damit Peering und Routing von virtuellen Netzwerken ermöglicht wird, um eine erfolgreiche Kommunikation zwischen Azure und lokalen Ressourcen zu erreichen.
-* Ein virtuelles Azure-Netzwerk erfordert ein Gatewaysubnetz, um eine [S2S-VPN][vpn-gateway]-Verbindung (Site-to-Site) oder [ExpressRoute][expressroute]-Verbindung zu konfigurieren.
+* Ein virtuelles Azure-Netzwerk erfordert ein Gatewaysubnetz, um eine [Azure-S2S-VPN][vpn-gateway]-Verbindung (Site-to-Site) oder [ExpressRoute][expressroute]-Verbindung zu konfigurieren.
 * Es wurden Subnetze mit genügend IP-Adressen erstellt, um Ihr Szenario zu unterstützen.
 * Vergewissern Sie sich, dass Azure AD DS ein eigenes Subnetz hat. Dieses Subnetz des virtuellen Netzwerks sollte nicht gemeinsam mit Anwendungs-VMs und Diensten verwendet werden.
 * Über Peering verbundene virtuelle Netzwerke sind nicht transitiv.
@@ -84,7 +84,7 @@ Für die lokale AD DS-Domäne ist eine eingehende Gesamtstruktur-Vertrauensstel
 
 Um die eingehende Vertrauensstellung in der lokalen AD DS-Domäne zu konfigurieren, führen Sie für die lokale AD DS-Domäne die folgenden Schritte auf einer Verwaltungsarbeitsstation aus:
 
-1. Wählen Sie **Start | Verwaltung | Active Directory-Domänen und -Vertrauensstellungen** aus.
+1. Wählen Sie **Start** > **Verwaltung** > **Active Directory-Domänen und -Vertrauensstellungen** aus.
 1. Klicken Sie mit der rechten Maustaste auf eine Domäne (beispielsweise *onprem.contoso.com*), und wählen Sie anschließend **Eigenschaften** aus.
 1. Wählen Sie die Registerkarte **Vertrauensstellungen** und dann **Neue Vertrauensstellung** aus.
 1. Geben Sie einen Namen für die Azure AD DS-Domäne ein (beispielsweise *aaddscontoso.com*), und wählen Sie anschließend **Weiter** aus.
@@ -93,6 +93,14 @@ Um die eingehende Vertrauensstellung in der lokalen AD DS-Domäne zu konfigurier
 1. Wählen Sie die Option zum Verwenden von **Gesamtstrukturweite Authentifizierung** aus, und geben Sie dann ein Vertrauensstellungskennwort ein. Dasselbe Kennwort wird auch im Azure-Portal im nächsten Abschnitt eingegeben.
 1. Durchlaufen Sie die nächsten Fenster mit Standardoptionen, und aktivieren Sie dann die Option **Nein, ausgehende Vertrauensstellung nicht bestätigen**.
 1. Wählen Sie **Fertig stellen** aus.
+
+Wird die Gesamtstruktur-Vertrauensstellung für eine Umgebung nicht mehr benötigt, führen Sie die folgenden Schritte aus, um sie aus der lokalen Domäne zu entfernen:
+
+1. Wählen Sie **Start** > **Verwaltung** > **Active Directory-Domänen und -Vertrauensstellungen** aus.
+1. Klicken Sie mit der rechten Maustaste auf eine Domäne (beispielsweise *onprem.contoso.com*), und wählen Sie anschließend **Eigenschaften** aus.
+1. Wählen Sie die Registerkarte **Vertrauensstellungen** und anschließend **Domänen, die dieser Domäne vertrauen (eingehende Vertrauensstellungen)** aus, und klicken Sie auf die zu entfernende Vertrauensstellung und dann auf **Entfernen**.
+1. Wählen Sie auf der Registerkarte „Vertrauensstellungen“ unter **Domänen, denen diese Domäne vertraut (ausgehende Vertrauensstellungen)** aus, und klicken Sie auf die zu entfernende Vertrauensstellung und dann auf „Entfernen“.
+1. Klicken Sie auf **Nein, die Vertrauensstellung nur aus der lokalen Domäne entfernen**.
 
 ## <a name="create-outbound-forest-trust-in-azure-ad-ds"></a>Erstellen einer ausgehenden Gesamtstruktur-Vertrauensstellung in Azure AD DS
 
@@ -107,11 +115,17 @@ Führen Sie die folgenden Schritte aus, um die ausgehende Vertrauensstellung fü
    > Wenn die Menüoption **Vertrauensstellungen** nicht angezeigt wird, suchen Sie unter **Eigenschaften** nach dem *Gesamtstrukturtyp*. Nur *Ressourcengesamtstrukturen* können Vertrauensstellungen erstellen. Wenn der Gesamtstrukturtyp *Benutzer* lautet, können Sie keine Vertrauensstellungen erstellen. Es gibt derzeit keine Möglichkeit, den Gesamtstrukturtyp einer verwalteten Domäne zu ändern. Sie müssen die verwaltete Domäne löschen und als eine Ressourcengesamtstruktur neu erstellen.
 
 1. Geben Sie einen Anzeigenamen, der Ihre Vertrauensstellung kennzeichnet, und dann den lokalen DNS-Namen der vertrauenswürdigen Gesamtstruktur ein, z. B. *onprem.contoso.com*.
-1. Geben Sie dasselbe Vertrauensstellungskennwort an, das beim Konfigurieren der eingehenden Gesamtstruktur-Vertrauensstellung für die lokale AD DS-Domäne im vorherigen Abschnitt verwendet wurde.
+1. Geben Sie dasselbe Vertrauensstellungskennwort an, das beim Konfigurieren der eingehenden Gesamtstruktur-Vertrauensstellung für die lokale AD DS-Domäne im vorherigen Abschnitt verwendet wurde.
 1. Geben Sie mindestens zwei DNS-Server für die lokale AD DS-Domäne an, z. B. *10.1.1.4* und *10.1.1.5*.
 1. Wählen Sie dann **Speichern** aus, um die ausgehende Gesamtstruktur-Vertrauensstellung zu speichern.
 
     ![Erstellen einer ausgehenden Gesamtstruktur-Vertrauensstellung im Azure-Portal](./media/tutorial-create-forest-trust/portal-create-outbound-trust.png)
+
+Wird die Gesamtstruktur-Vertrauensstellung für eine Umgebung nicht mehr benötigt, führen Sie die folgenden Schritte aus, um sie aus Azure AD DS zu entfernen:
+
+1. Suchen Sie im Azure-Portal nach **Azure AD Domain Services**, und wählen Sie den entsprechenden Eintrag und dann Ihre verwaltete Domäne aus, z. B. *aaddscontoso.com*.
+1. Wählen Sie im Menü auf der linken Seite der verwalteten Domäne die Option **Vertrauensstellungen** und dann die Vertrauensstellung aus, und klicken Sie auf **Entfernen**.
+1. Geben Sie das gleiche Vertrauensstellungskennwort an, das auch zum Konfigurieren der Gesamtstruktur-Vertrauensstellung verwendet wurde, und klicken Sie auf **OK**.
 
 ## <a name="validate-resource-authentication"></a>Überprüfen der Ressourcenauthentifizierung
 

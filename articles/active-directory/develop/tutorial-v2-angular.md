@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 03/05/2020
 ms.author: hahamil
 ms.custom: aaddev, identityplatformtop40, devx-track-js
-ms.openlocfilehash: c4c7d021c7c3a5a32d537a50fa45449fdee7e817
-ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
+ms.openlocfilehash: 105353598a2af60c407bacf02b4527b2de84e450
+ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94979928"
+ms.lasthandoff: 01/25/2021
+ms.locfileid: "98756156"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-an-angular-single-page-application"></a>Tutorial: Anmelden von Benutzern und Aufrufen der Microsoft Graph-API aus einer Angular-SPA (Single-Page-Webanwendung)
 
@@ -271,7 +271,7 @@ Beispiel:
 
 #### <a name="get-a-user-token-interactively"></a>Interaktives Abrufen eines Benutzertokens
 
-Es kann erforderlich sein, dass der Benutzer mit dem Microsoft Identity Platform-Endpunkt interagiert. Beispiel:
+Es kann erforderlich sein, dass der Benutzer mit Microsoft Identity Platform interagiert. Beispiel:
 
 * Benutzer müssen ihre Anmeldeinformationen gegebenenfalls erneut eingeben, weil ihr Kennwort abgelaufen ist.
 * Ihre Anwendung fordert Zugriff auf zusätzliche Ressourcenbereiche an, für die der Benutzer seine Zustimmung erteilen muss.
@@ -279,7 +279,7 @@ Es kann erforderlich sein, dass der Benutzer mit dem Microsoft Identity Platform
 
 Das empfohlene Muster für die meisten Anwendungen ist zuerst das Aufrufen von `acquireTokenSilent`, das anschließende Abfangen der Ausnahme und dann das Aufrufen von `acquireTokenPopup` (oder `acquireTokenRedirect`), um eine interaktive Anforderung zu starten.
 
-Durch den Aufruf von `acquireTokenPopup` wird ein Popupfenster für die Anmeldung geöffnet. Mit `acquireTokenRedirect` werden Benutzer an den Microsoft Identity Platform-Endpunkt weitergeleitet. In diesem Fenster müssen Benutzer ihre Anmeldeinformationen bestätigen, ihre Zustimmung zur erforderlichen Ressource erteilen oder die zweistufige Authentifizierung durchführen.
+Durch den Aufruf von `acquireTokenPopup` wird ein Popupfenster für die Anmeldung geöffnet. Mit `acquireTokenRedirect` werden Benutzer an Microsoft Identity Platform weitergeleitet. In diesem Fenster müssen Benutzer ihre Anmeldeinformationen bestätigen, ihre Zustimmung zur erforderlichen Ressource erteilen oder die zweistufige Authentifizierung durchführen.
 
 ```javascript
   const requestObj = {

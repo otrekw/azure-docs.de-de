@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 09/14/2020
 ms.author: philmea
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 857ae8d824443e9a8abdac7c4a66e2b014be2be0
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 3772988e9bf4f733323adae6c0527c8b811c4d04
+ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94566349"
+ms.lasthandoff: 01/21/2021
+ms.locfileid: "98624455"
 ---
 # <a name="tutorial-send-email-notifications-about-azure-iot-hub-events-using-event-grid-and-logic-apps"></a>Tutorial: Senden von E-Mail-Benachrichtigungen zu Azure IoT Hub-Ereignissen mit Event Grid und Logic Apps
 
@@ -242,4 +242,7 @@ Löschen Sie die Ressourcengruppe, falls Sie alle für dieses Tutorial erstellte
 * [Erfahren Sie, wie Sie Ereignisse im Zusammenhang mit der Herstellung und Trennung von Geräteverbindungen sortieren.](../iot-hub/iot-hub-how-to-order-connection-state-events.md)
 * Erfahren Sie mehr über die Möglichkeiten mit [Event Grid](overview.md).
 
-Eine vollständige Liste der unterstützten Logic App-Connectors finden Sie in der [Übersicht über Connectors](/connectors/).
+Eine vollständige Liste der unterstützten Logic App-Connectors finden Sie in der 
+
+> [!div class="nextstepaction"]
+> [Übersicht über Connectors](/connectors/).
