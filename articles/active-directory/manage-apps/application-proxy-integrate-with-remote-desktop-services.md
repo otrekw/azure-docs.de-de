@@ -3,7 +3,7 @@ title: Veröffentlichen des Remotedesktops per Azure Active Directory-Anwendungs
 description: Erläutert das Konfigurieren des Anwendungsproxys mit Remotedesktopdiensten (Remote Desktop Services, RDS).
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 11/30/2020
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 666b3c609224c1665c150718b2b89c4bac72577e
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: b6879d4869604af5232088063a6153a01208e7d0
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97882227"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99259337"
 ---
 # <a name="publish-remote-desktop-with-azure-ad-application-proxy"></a>Veröffentlichen des Remotedesktops per Azure AD-Anwendungsproxy
 

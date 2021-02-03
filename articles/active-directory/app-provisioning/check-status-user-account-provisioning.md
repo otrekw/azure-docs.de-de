@@ -3,7 +3,7 @@ title: Berichterstellung zur automatischen Benutzerkontobereitstellung für SaaS
 description: In diesem Artikel erfahren Sie, wie Sie den Status von Aufträgen zu automatischen Benutzerkontobereitstellungen überprüfen und Probleme bei der Bereitstellung einzelner Benutzer behandeln.
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 09/09/2018
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 3dcbb2567b9a92ea7d806acedb5d1cc6a31a966e
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: e6839026c83a10a4acebd7b7a6ab55b210e7ef14
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92069805"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99256676"
 ---
 # <a name="tutorial-reporting-on-automatic-user-account-provisioning"></a>Tutorial: Berichterstellung zur automatischen Benutzerkontobereitstellung
 
@@ -57,7 +57,7 @@ Die [Statusanzeige für die Bereitstellung](application-provisioning-when-will-p
 
 Um die Betriebsintegrität des Bereitstellungsauftrags zu überprüfen, sollten Administratoren zuerst den **Aktuellen Status** anzeigen.
 
- ![Zusammenfassungsbericht](./media/check-status-user-account-provisioning/provisioning-progress-bar-section.png)
+ ![Zusammenfassungsbericht](./media/check-status-user-account-provisioning/provisioning-progress-bar-section.png)
 
 ## <a name="provisioning-logs-preview"></a>Bereitstellungsprotokolle (Vorschau)
 

@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/28/2020
 ms.author: blehr
-ms.openlocfilehash: 70fb502e45a6cdcc196f5fb97ee4c8c59ba6c27d
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 2c469324db11d2e65f8eb958e68f77fd77020865
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98223532"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99491046"
 ---
 # <a name="quickstart-create-a-public-ip-address-using-azure-cli"></a>Schnellstart: Erstellen einer öffentlichen IP-Adresse mithilfe der Azure CLI
 
@@ -30,7 +30,7 @@ In diesem Artikel wird gezeigt, wie Sie mithilfe der Azure CLI eine öffentliche
 
 Eine Azure-Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden.
 
-Erstellen Sie mit [az group create](/cli/azure/group?view=azure-cli-latest#az-group-create) eine Ressourcengruppe namens **myResourceGroup** am Speicherort **eastus2**.
+Erstellen Sie mit [az group create](/cli/azure/group#az-group-create) eine Ressourcengruppe namens **myResourceGroup** am Speicherort **eastus2**.
 
 ```azurecli-interactive
   az group create \
@@ -46,14 +46,14 @@ Erstellen Sie mit [az group create](/cli/azure/group?view=azure-cli-latest#az-gr
 >[!NOTE]
 >Der folgende Befehl funktioniert für die API-Version 2020-08-01 oder höher.  Weitere Informationen zur derzeit verwendeten API-Version finden Sie unter [Ressourcenanbieter und -typen](../azure-resource-manager/management/resource-providers-and-types.md).
 
-Verwenden Sie [az network public-ip create](/cli/azure/network/public-ip?view=azure-cli-latest#az-network-public-ip-create), um in **myResourceGroup** eine zonenredundante öffentliche Standard-IP-Adresse namens **myStandardZRPublicIP** zu erstellen.
+Verwenden Sie [az network public-ip create](/cli/azure/network/public-ip#az-network-public-ip-create), um in **myResourceGroup** eine zonenredundante öffentliche Standard-IP-Adresse namens **myStandardZRPublicIP** zu erstellen.
 
 ```azurecli-interactive
   az network public-ip create \
     --resource-group myResourceGroup \
     --name myStandardZRPublicIP \
     --sku Standard
-    --zone 1,2,3
+    --zone 1 2 3
 ```
 > [!IMPORTANT]
 > Führen Sie für Versionen der API, die älter als 2020-08-01 ist, den oben genannten Befehl aus, ohne einen Zonenparameter anzugeben, um eine zonenredundante IP-Adresse zu erstellen. 
@@ -76,7 +76,7 @@ Beachten Sie, dass die oben genannten Optionen für Zonen nur eine gültige Ausw
 >[!NOTE]
 >Der folgende Befehl funktioniert für die API-Version 2020-08-01 oder höher.  Weitere Informationen zur derzeit verwendeten API-Version finden Sie unter [Ressourcenanbieter und -typen](../azure-resource-manager/management/resource-providers-and-types.md).
 
-Verwenden Sie [az network public-ip create](/cli/azure/network/public-ip?view=azure-cli-latest#az-network-public-ip-create), um eine öffentliche Standard-IP-Adresse als nicht zonale Ressource namens **myStandardPublicIP** in **myResourceGroup** zu erstellen.
+Verwenden Sie [az network public-ip create](/cli/azure/network/public-ip#az-network-public-ip-create), um eine öffentliche Standard-IP-Adresse als nicht zonale Ressource namens **myStandardPublicIP** in **myResourceGroup** zu erstellen.
 
 ```azurecli-interactive
   az network public-ip create \
@@ -88,7 +88,7 @@ Diese Auswahl ist in allen Regionen gültig und die Standardauswahl für öffent
 
 # <a name="basic-sku"></a>[**Basic-SKU**](#tab/option-create-public-ip-basic)
 
-Verwenden Sie [az network public-ip create](/cli/azure/network/public-ip?view=azure-cli-latest#az-network-public-ip-create), um in **myResourceGroupLB** eine statische öffentliche IP-Adresse des Typs „Basic“ namens **myBasicPublicIP** zu erstellen.  Öffentliche IP-Adressen des Typs „Basic“ verwenden nicht das Konzept von Verfügbarkeitszonen.
+Verwenden Sie [az network public-ip create](/cli/azure/network/public-ip#az-network-public-ip-create), um in **myResourceGroupLB** eine statische öffentliche IP-Adresse des Typs „Basic“ namens **myBasicPublicIP** zu erstellen.  Öffentliche IP-Adressen des Typs „Basic“ verwenden nicht das Konzept von Verfügbarkeitszonen.
 
 ```azurecli-interactive
   az network public-ip create \

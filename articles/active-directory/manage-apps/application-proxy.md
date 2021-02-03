@@ -3,7 +3,7 @@ title: Remotezugriff auf lokale Apps – Azure AD-Anwendungsproxy
 description: Der Azure Active Directory-Anwendungsproxy ermöglicht den sicheren Remotezugriff auf lokal gehostete Webanwendungen. Nach dem einmaligen Anmelden in Azure AD können Benutzer über eine externe URL oder ein internes Anwendungsportal auf Cloudanwendungen und lokale Anwendungen zugreifen. Der Anwendungsproxy kann z.B. Remotezugriff und einmaliges Anmelden bei Remotedesktop, SharePoint, Teams, Tableau, Qlik und Branchenanwendungen (LOB) bereitstellen.
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 07/14/2020
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 9d620342d53bdae0b3a520000f6d240eb0e28d15
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 40472dc2446133ec23d1d62343a93d2d69fc90cd
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96180591"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99260145"
 ---
 # <a name="remote-access-to-on-premises-applications-through-azure-ad-application-proxy"></a>Remotezugriff auf lokale Anwendungen über den Azure AD-Anwendungsproxy
 

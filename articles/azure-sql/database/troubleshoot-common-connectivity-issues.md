@@ -12,12 +12,12 @@ author: dalechen
 ms.author: ninarn
 ms.reviewer: sstein, vanto
 ms.date: 01/14/2020
-ms.openlocfilehash: f8c94e36a1a6d1f675e9d6a7dde456dbf6eb8897
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 9f2e755047910aefa89c2f187cda956aca608b98
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791357"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99093756"
 ---
 # <a name="troubleshoot-transient-connection-errors-in-sql-database-and-sql-managed-instance"></a>Behandeln vorübergehender Verbindungsfehler in SQL-Datenbank und SQL Managed Instance
 
@@ -31,7 +31,7 @@ In diesem Artikel wird beschrieben, wie Sie Verbindungsfehler und vorübergehend
 
 Bei einem vorübergehenden Fehler liegt ein Problem zugrunde, das sich nach kurzer Zeit von selbst löst. Wenn das Azure-System Hardwareressourcen für einen besseren Lastenausgleich bei verschiedenen Workloads rasch verschiebt, treten gelegentlich vorübergehende Fehler auf. Die meisten dieser Neukonfigurationsereignisse dauern weniger als 60 Sekunden. Während der Neukonfiguration kann es beim Herstellen von Verbindungen mit der Datenbank in SQL-Datenbank zu Problemen kommen. Anwendungen, die eine Verbindung mit der Datenbank herstellen, sollten dafür ausgelegt sein, vorübergehende Fehler zu tolerieren. Behandeln Sie diese Fehler, indem Sie Wiederholungslogik im Code implementieren und vermeiden, dass sie Benutzern als Anwendungsfehler gemeldet werden.
 
-Wenn Ihr Clientprogramm ADO.NET verwendet, wird eine **SqlException** -Ausnahme ausgelöst, um das Programm über den vorübergehenden Fehler zu informieren.
+Wenn Ihr Clientprogramm ADO.NET verwendet, wird eine **SqlException**-Ausnahme ausgelöst, um das Programm über den vorübergehenden Fehler zu informieren.
 
 <a id="connection-versus-command" name="connection-versus-command"></a>
 
@@ -132,11 +132,11 @@ Wenn Ihr Clientprogramm mithilfe der .NET Framework-Klasse **System.Data.SqlClie
 2015-11-30, FwLink 393996 points to dn632678.aspx, which links to a downloadable .docx related to SqlClient and SQL Server 2014.
 -->
 
-Beim Erstellen der [Verbindungszeichenfolge](/dotnet/api/system.data.sqlclient.sqlconnection.connectionstring) für Ihr **SqlConnection** -Objekt sollten Sie die Werte der folgenden Parameter abstimmen:
+Beim Erstellen der [Verbindungszeichenfolge](/dotnet/api/system.data.sqlclient.sqlconnection.connectionstring) für Ihr **SqlConnection**-Objekt sollten Sie die Werte der folgenden Parameter abstimmen:
 
-- **ConnectRetryCount** :&nbsp;&nbsp;Standardwert 1 im Bereich von 0 bis 255
-- **ConnectRetryInterval** :&nbsp;&nbsp;Standardwert 10 Sekunden im Bereich von 1 bis 60
-- **Verbindungstimeout** :&nbsp;&nbsp;Standardwert 15 Sekunden im Bereich von 0 bis 2147483647
+- **ConnectRetryCount**:&nbsp;&nbsp;Standardwert 1 im Bereich von 0 bis 255
+- **ConnectRetryInterval**:&nbsp;&nbsp;Standardwert 10 Sekunden im Bereich von 1 bis 60
+- **Verbindungstimeout**:&nbsp;&nbsp;Standardwert 15 Sekunden im Bereich von 0 bis 2147483647
 
 Insbesondere sollte für Ihre ausgewählten Werte die folgende Gleichung gelten: Verbindungstimeout = ConnectRetryCount * ConnectionRetryInterval
 
@@ -146,12 +146,12 @@ Beispiel: Wenn die Anzahl 3 ist und das Intervall 10 Sekunden beträgt, hätte d
 
 ## <a name="connection-vs-command"></a>Vorübergehende Fehler beim Herstellen einer Verbindung und bei Befehlen
 
-Mit den Parametern **ConnectRetryCount** und **ConnectRetryInterval** kann Ihr **SqlConnection** -Objekt den Verbindungsversuch wiederholen, ohne Ihr Programm zu unterbrechen, sodass das Programm die Steuerung behält. Die Wiederholungen können in folgenden Situationen auftreten:
+Mit den Parametern **ConnectRetryCount** und **ConnectRetryInterval** kann Ihr **SqlConnection**-Objekt den Verbindungsversuch wiederholen, ohne Ihr Programm zu unterbrechen, sodass das Programm die Steuerung behält. Die Wiederholungen können in folgenden Situationen auftreten:
 
 - SqlConnection.Open-Methodenaufruf
 - SqlConnection.Execute-Methodenaufruf
 
-Es gibt eine Besonderheit. Wenn ein vorübergehender Fehler auftritt, während Ihre *Abfrage* ausgeführt wird, wiederholt das **SqlConnection** -Objekt weder den Verbindungsversuch noch Ihre Abfrage. Allerdings überprüft **SqlConnection** sehr schnell die Verbindung, bevor die Abfrage für die Ausführung gesendet wird. Wenn bei der schnellen Überprüfung ein Verbindungsproblem festgestellt wird, wiederholt **SqlConnection** den Verbindungsvorgang. Ist die Wiederholung erfolgreich, wird die Abfrage zur Ausführung gesendet.
+Es gibt eine Besonderheit. Wenn ein vorübergehender Fehler auftritt, während Ihre *Abfrage* ausgeführt wird, wiederholt das **SqlConnection**-Objekt weder den Verbindungsversuch noch Ihre Abfrage. Allerdings überprüft **SqlConnection** sehr schnell die Verbindung, bevor die Abfrage für die Ausführung gesendet wird. Wenn bei der schnellen Überprüfung ein Verbindungsproblem festgestellt wird, wiederholt **SqlConnection** den Verbindungsvorgang. Ist die Wiederholung erfolgreich, wird die Abfrage zur Ausführung gesendet.
 
 ### <a name="should-connectretrycount-be-combined-with-application-retry-logic"></a>Sollte „ConnectRetryCount“ mit der Wiederholungslogik der Anwendung kombiniert werden?
 
@@ -207,7 +207,7 @@ Wenn Ihr Programm ADO.NET-Klassen wie **System.Data.SqlClient.SqlConnection** f�
 
 #### <a name="starting-with-adonet-461"></a>Ab ADO.NET 4.6.1
 
-- Die Zuverlässigkeit von SQL-Datenbank lässt sich verbessern, wenn Sie eine Verbindung mit der **SqlConnection.Open** -Methode öffnen. Die **Open** -Methode umfasst jetzt bestmögliche Wiederholungsmechanismen, die bei bestimmten vorübergehenden Fehlern innerhalb des Verbindungstimeouts ausgeführt werden.
+- Die Zuverlässigkeit von SQL-Datenbank lässt sich verbessern, wenn Sie eine Verbindung mit der **SqlConnection.Open**-Methode öffnen. Die **Open**-Methode umfasst jetzt bestmögliche Wiederholungsmechanismen, die bei bestimmten vorübergehenden Fehlern innerhalb des Verbindungstimeouts ausgeführt werden.
 - Das Verbindungspooling wird unterstützt und umfasst einen effizienten Mechanismus, der überprüft, ob das für Ihr Programm bereitgestellte Verbindungsobjekt funktionsfähig ist.
 
 Bei Verwendung eines Verbindungsobjekts aus einem Verbindungspool sollte Ihr Programm die Verbindung vorübergehend schließen, wenn diese nicht umgehend verwendet wird. Eine Verbindung erneut zu öffnen, ist nicht aufwendig, eine neue Verbindung zu erstellen, schon.
@@ -331,7 +331,7 @@ Bei Enterprise Library 6 (EntLib60) handelt es sich um ein Framework aus .NET-Kl
 EntLib60 kann beispielsweise für Wiederholungslogik zur Behandlung von vorübergehenden Fehlern hilfreich sein. Weitere Informationen finden Sie unter [4 – Hartnäckigkeit, das Geheimnis aller Erfolge: Anwendungsblock zum Behandeln vorübergehender Fehler](/previous-versions/msp-n-p/dn440719(v=pandp.60)).
 
 > [!NOTE]
-> Der Quellcode für EntLib60 steht im [Download Center](https://go.microsoft.com/fwlink/p/?LinkID=290898) zum öffentlichen Download bereit. Microsoft plant keine weiteren Funktions- oder Wartungsupdates für EntLib.
+> Der Quellcode für EntLib60 steht im [Download Center](https://github.com/MicrosoftArchive/enterprise-library) zum öffentlichen Download bereit. Microsoft plant keine weiteren Funktions- oder Wartungsupdates für EntLib.
 
 <a id="entlib60-classes-for-transient-errors-and-retry" name="entlib60-classes-for-transient-errors-and-retry"></a>
 
@@ -339,7 +339,7 @@ EntLib60 kann beispielsweise für Wiederholungslogik zur Behandlung von vorüber
 
 Die folgenden EntLib60-Klassen sind besonders nützlich für Wiederholungslogik. All diese Klassen befinden sich im Namespace **Microsoft.Practices.EnterpriseLibrary.TransientFaultHandling** oder einem untergeordneten Namespace.
 
-Im Namespace **Microsoft.Practices.EnterpriseLibrary.TransientFaultHandling** :
+Im Namespace **Microsoft.Practices.EnterpriseLibrary.TransientFaultHandling**:
 
 - **RetryPolicy**
   - **ExecuteAction**
@@ -348,7 +348,7 @@ Im Namespace **Microsoft.Practices.EnterpriseLibrary.TransientFaultHandling** :
 - **ReliableSqlConnection**
   - **ExecuteCommand**
 
-Im Namespace **Microsoft.Practices.EnterpriseLibrary.TransientFaultHandling.TestSupport** :
+Im Namespace **Microsoft.Practices.EnterpriseLibrary.TransientFaultHandling.TestSupport**:
 
 - **AlwaysTransientErrorDetectionStrategy**
 - **NeverTransientErrorDetectionStrategy**

@@ -3,19 +3,19 @@ title: Anzeigen von Apps mithilfe Ihres Azure Active Directory-Mandanten für di
 description: Hier erfahren Sie, wie Sie alle Anwendungen mithilfe Ihres Azure Active Directory-Mandanten für die Identitätsverwaltung anzeigen.
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: reference
 ms.date: 01/07/2021
 ms.author: kenwith
-ms.openlocfilehash: 18e29ce8bf744cabb31c5634c9b0ca547bca5acc
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 443e8c83ec29f9f0478e3881b9e6d6a8eb0bf403
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98020671"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99259785"
 ---
 # <a name="viewing-apps-using-your-azure-ad-tenant-for-identity-management"></a>Anzeigen von Apps mithilfe Ihres Azure AD-Mandanten für die Identitätsverwaltung
 Die [Schnellstartserie zur Anwendungsverwaltung](view-applications-portal.md) enthält grundlegende Informationen. Darin erfahren Sie, wie Sie alle Apps anzeigen, die Ihren Azure AD-Mandanten für die Identitätsverwaltung verwenden. In diesem Artikel wird etwas ausführlicher auf die angezeigten App-Typen eingegangen.

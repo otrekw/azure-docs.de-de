@@ -10,15 +10,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 01/11/2021
-ms.openlocfilehash: 755346c1da38f66c0c0fef6144d34eea62735273
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.date: 02/02/2021
+ms.openlocfilehash: 91ab6ca1350a1c6964daeae401bf7b08c6b1cd91
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98072076"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99430763"
 ---
 # <a name="copy-data-from-and-to-salesforce-service-cloud-by-using-azure-data-factory"></a>Kopieren von Daten aus und in Salesforce Service Cloud mit Azure Data Factory
+
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 In diesem Artikel wird beschrieben, wie Sie die Kopieraktivität in Azure Data Factory verwenden, um Daten aus und in Salesforce Service Cloud zu kopieren. Er baut auf dem Artikel zur [Übersicht über die Kopieraktivität](copy-activity-overview.md) auf, der eine allgemeine Übersicht über die Kopieraktivität enthält.
@@ -70,10 +71,7 @@ Folgende Eigenschaften werden für den mit Salesforce verknüpften Dienst unters
 | password |Geben Sie ein Kennwort für das Benutzerkonto an.<br/><br/>Markieren Sie dieses Feld als SecureString, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). |Ja |
 | securityToken |Geben Sie ein Sicherheitstoken für das Benutzerkonto an. <br/><br/>Allgemeine Informationen zu Sicherheitstoken finden Sie unter [Security and the API](https://developer.salesforce.com/docs/atlas.en-us.api.meta/api/sforce_api_concepts_security.htm)(Sicherheit und die API). Das Sicherheits Token kann nur übersprungen werden, wenn Sie die IP-Adresse der Integration Runtime zur Liste [vertrauenswürdige IP-Adressen](https://developer.salesforce.com/docs/atlas.en-us.securityImplGuide.meta/securityImplGuide/security_networkaccess.htm) in Salesforce hinzufügen. Weitere Informationen zur Verwendung von Azure Integration Runtime (Azure IR) finden Sie unter [IP-Adressen von Azure Integration Runtime](azure-integration-runtime-ip-addresses.md).<br/><br/>Anleitungen zum Abrufen und Zurücksetzen eines Sicherheitstokens finden Sie unter [Get a security token](https://help.salesforce.com/apex/HTViewHelpDoc?id=user_security_token.htm) (Abrufen eines Sicherheitstokens). Markieren Sie dieses Feld als SecureString, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). |Nein |
 | apiVersion | Geben Sie die zu verwendende Salesforce REST/Bulk-API-Version an, z. B. `48.0`. Standardmäßig verwendet der Connector [v45](https://developer.salesforce.com/docs/atlas.en-us.218.0.api_rest.meta/api_rest/dome_versions.htm) zum Kopieren von Daten aus Salesforce und [v40](https://developer.salesforce.com/docs/atlas.en-us.208.0.api_asynch.meta/api_asynch/asynch_api_intro.htm) zum Kopieren von Daten in Salesforce. | Nein |
-| connectVia | Die [Integration Runtime](concepts-integration-runtime.md), die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden soll. Wenn keine Option angegeben ist, wird die standardmäßige Azure Integration Runtime verwendet. | Nein für die Quelle. Ja für die Senke, wenn der mit der Quelle verknüpfte Dienst keine Integration Runtime aufweist. |
-
->[!IMPORTANT]
->Beim Kopieren von Daten in Salesforce Service Cloud kann die standardmäßige Azure Integration Runtime nicht zum Ausführen des Kopiervorgangs verwendet werden. Mit anderen Worten, wenn für den mit der Quelle verknüpften Dienst keine Integration Runtime festgelegt wurde, [erstellen Sie explizit eine Azure Integration Runtime](create-azure-integration-runtime.md#create-azure-ir) in der Nähe Ihrer Salesforce Service Cloud-Instanz. Ordnen Sie den mit Salesforce Service Cloud verknüpften Dienst wie im folgenden Beispiel zu.
+| connectVia | Die [Integration Runtime](concepts-integration-runtime.md), die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden soll. Wenn keine Option angegeben ist, wird die standardmäßige Azure Integration Runtime verwendet. | Nein |
 
 **Beispiel: Speichern von Anmeldeinformationen in Data Factory**
 

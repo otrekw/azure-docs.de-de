@@ -6,12 +6,12 @@ ms.author: ebnkruma
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/10/2020
-ms.openlocfilehash: 8105988cd2036f44d214befad3365cf9ee96ee0d
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 07df391e664fe04b9c7d2eda34960666c44a2e06
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98015979"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99094081"
 ---
 # <a name="compatibility-level-for-azure-stream-analytics-jobs"></a>Kompatibilitätsgrad für Azure Stream Analytics-Aufträge
 
@@ -43,7 +43,7 @@ So aktualisieren Sie den Kompatibilitätsgrad des Auftrags im Azure-Portal
 4. Wählen Sie den gewünschten Wert für den Kompatibilitätsgrad aus.
 5. Wählen Sie unten auf der Seite **Speichern** aus.
 
-![Kompatibilitätsgrad von Stream Analytics im Azure-Portal](media/stream-analytics-compatibility-level/stream-analytics-compatibility.png)
+![Kompatibilitätsgrad von Stream Analytics im Azure-Portal](media/stream-analytics-compatibility-level/stream-analytics-compat-level-1-2.png)
 
 Wenn Sie den Kompatibilitätsgrad aktualisieren, überprüft der T-Compiler den Auftrag mit der Syntax, die dem ausgewählten Kompatibilitätsgrad entspricht.
 

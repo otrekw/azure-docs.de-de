@@ -3,7 +3,7 @@ title: Verwalten von Benutzerzuweisungen für eine App in Azure Active Directory
 description: Erfahren Sie, wie Sie Benutzer und Gruppen für eine App zuweisen und deren Zuweisung aufheben, indem Sie Azure Active Directory für die Identitätsverwaltung verwenden.
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 02/21/2020
 ms.author: kenwith
 ms.reviewer: luleon
-ms.openlocfilehash: 22acfc5095b1ffcad382fa2b665a86d382645e7a
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: 50dcde478b708cd53d8229d70a9ddf4b1ff271be
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96861676"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99259733"
 ---
 # <a name="manage-user-assignment-for-an-app-in-azure-active-directory"></a>Verwalten von Benutzerzuweisungen für eine App in Azure Active Directory
 
@@ -148,7 +148,7 @@ In diesem Beispiel wird die Benutzerin Britta Simon mithilfe von PowerShell der 
 ## <a name="related-articles"></a>Verwandte Artikel
 
 - [Weitere Informationen zum Endbenutzerzugriff auf Anwendungen](end-user-experiences.md)
-- [Planen einer Bereitstellung über „Meine Apps“ in Azure AD](access-panel-deployment-plan.md)
+- [Planen einer Bereitstellung über „Meine Apps“ in Azure AD](my-apps-deployment-plan.md)
 - [Verwalten des Zugriffs auf Apps](what-is-access-management.md)
  
 ## <a name="next-steps"></a>Nächste Schritte

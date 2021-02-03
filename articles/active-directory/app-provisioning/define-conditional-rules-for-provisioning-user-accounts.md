@@ -3,19 +3,19 @@ title: Bereitstellen von Apps mit Bereichsfiltern | Microsoft-Dokumentation
 description: Hier erfahren Sie, wie Sie mithilfe von Bereichsfiltern verhindern, dass Objekte in Apps mit automatisierter Benutzerbereitstellung bereitgestellt werden, wenn ein Objekt Ihre Geschäftsanforderungen nicht erfüllt.
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: how-to
 ms.date: 06/08/2020
 ms.author: kenwith
-ms.openlocfilehash: 88d004836d5311fc3a971df81a3dc6e6ab605ca9
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: 7fff456b7ad6e980fc3c9bda36cfcab02e2ed863
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96861390"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99255830"
 ---
 # <a name="attribute-based-application-provisioning-with-scoping-filters"></a>Attributbasierte Anwendungsbereitstellung mit Bereichsfiltern
 In diesem Artikel wird die Verwendung von Bereichsfiltern zum Definieren attributbasierter Regeln beschrieben, die festlegen, welche Benutzer für eine Anwendung bereitgestellt werden.

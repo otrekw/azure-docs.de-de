@@ -2,20 +2,20 @@
 author: roygara
 ms.service: storage
 ms.topic: include
-ms.date: 09/16/2020
+ms.date: 01/27/2021
 ms.author: rogarana
-ms.openlocfilehash: e7b7fae094ad15bc1732778b6a4a3259fb4dd3b5
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 7da7c2fbb49a9dd936762b23f3c251d2142c52fd
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96028084"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99221783"
 ---
 | Resource | Standarddateifreigaben\* | Premium-Dateifreigaben |
 |----------|---------------|------------------------------------------|
 | Mindestgröße einer Dateifreigabe | Keine Mindestgröße, nutzungsbasierte Bezahlung | 100 GiB; bereitgestellt |
 | Maximale Größe einer Dateifreigabe | 100 TiB\*\*, 5 TiB | ca. 100 TiB |
-| Maximale Größe einer Datei in einer Dateifreigabe | 1 TiB | 4 TiB |
+| Maximale Größe einer Datei in einer Dateifreigabe | 4 TiB | 4 TiB |
 | Maximale Anzahl an Dateien in einer Dateifreigabe | Keine Begrenzung | Keine Begrenzung |
 | Maximale Anzahl IOPS pro Freigabe | 10.000 IOPS\*\*, 1.000 IOPS oder 100 Anforderungen in 100 ms | 100.000 IOPS |
 | Maximale Anzahl gespeicherter Zugriffsrichtlinien pro Dateifreigabe | 5 | 5 |

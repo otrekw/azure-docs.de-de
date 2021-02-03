@@ -4,7 +4,7 @@ description: Hier finden Sie grundlegende Informationen zu Azure AD-Anwendungspr
 services: active-directory
 documentationcenter: ''
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -16,12 +16,12 @@ ms.author: kenwith
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 155a91ded6c814e2d868e8edd4572459460d006f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ebef93455414c114fb60df9af8ebc629769a33e6
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88642060"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99254427"
 ---
 # <a name="set-a-custom-home-page-for-published-apps-by-using-azure-ad-application-proxy"></a>Festlegen einer benutzerdefinierten Startseite für veröffentlichte Apps mithilfe eines Azure AD-Anwendungsproxys
 
@@ -75,7 +75,7 @@ Um die Homepage einer App über PowerShell zu konfigurieren, gehen Sie folgender
 
 ### <a name="install-the-azure-ad-powershell-module"></a>Installieren des Azure AD PowerShell-Moduls
 
-Bevor Sie mithilfe von PowerShell eine benutzerdefinierte Homepage-URL definieren, installieren Sie das Azure AD PowerShell-Modul. Das entsprechende Paket können Sie aus dem [PowerShell-Katalog](https://www.powershellgallery.com/packages/AzureAD/2.0.2.16) herunterladen. Dieser verwendet den Graph-API-Endpunkt.
+Bevor Sie mithilfe von PowerShell eine benutzerdefinierte Homepage-URL definieren, installieren Sie das Azure AD PowerShell-Modul.  Das entsprechende Paket können Sie aus dem [PowerShell-Katalog](https://www.powershellgallery.com/packages/AzureAD/2.0.2.16) herunterladen. Dieser verwendet den Graph-API-Endpunkt.
 
 Führen Sie diese Schritte aus, um das Paket zu installieren:
 
@@ -115,8 +115,8 @@ Sie erhalten die Objekt-ID der App, indem Sie nach dem Anzeigenamen oder der Hom
 
    ```console
    DisplayName : SharePoint
-   Homepage    : https://sharepoint-iddemo.msappproxy.net/
-   ObjectId    : 8af89bfa-eac6-40b0-8a13-c2c4e3ee22a4
+   Homepage    : https://sharepoint-iddemo.msappproxy.net/
+   ObjectId    : 8af89bfa-eac6-40b0-8a13-c2c4e3ee22a4
    ```
 
    Alternativ können Sie auch einfach die Liste aller Apps abrufen, die Liste nach der App mit einem bestimmten Anzeigenamen oder einer bestimmten Homepage durchsuchen und die Objekt-ID der App anschließend kopieren.
@@ -169,8 +169,8 @@ Erstellen Sie die URL der Startseite, und aktualisieren Sie die App mit diesem W
 
    ```console
    DisplayName : SharePoint
-   Homepage    : https://sharepoint-iddemo.msappproxy.net/hybrid/
-   ObjectId    : 8af89bfa-eac6-40b0-8a13-c2c4e3ee22a4
+   Homepage    : https://sharepoint-iddemo.msappproxy.net/hybrid/
+   ObjectId    : 8af89bfa-eac6-40b0-8a13-c2c4e3ee22a4
    ```
 
 1. Starten Sie die App neu, um zu bestätigen, dass die Homepage wie erwartet als erster Bildschirm angezeigt wird.

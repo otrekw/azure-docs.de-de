@@ -4,7 +4,7 @@ description: Hier finden Sie bewährte Methoden und Empfehlungen für das Verwal
 services: active-directory
 documentationcenter: ''
 author: kenwith
-manager: celestedg
+manager: daveba
 editor: ''
 ms.assetid: ''
 ms.service: active-directory
@@ -16,12 +16,12 @@ ms.date: 11/13/2019
 ms.subservice: app-mgmt
 ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d7a570fb322d24bf0d32efcb6f1a2ee515862755
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 23c688d9b2e118ef29303d435bb83ef02ad36105
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98736968"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99259133"
 ---
 # <a name="application-management-best-practices"></a>Bewährte Methoden für die Anwendungsverwaltung
 
@@ -34,7 +34,7 @@ Dieser Artikel enthält Empfehlungen und bewährte Methoden für das Verwalten v
 | Verwenden von SAML-basiertem Verbund-SSO  | Verwenden Sie SAML-basiertes Verbund-SSO mit Azure AD anstelle von kennwortbasiertem SSO und ADFS, wenn eine Anwendung dies unterstützt.  | 
 | Verwenden von SHA-256 für die Zertifikatsignatur  | Azure AD verwendet standardmäßig den Algorithmus SHA-256 zum Signieren der SAML-Antwort. Verwenden Sie SHA-256, sofern die Anwendung nicht SHA-1 erfordert. (Weitere Informationen finden Sie unter [Optionen für die Zertifikatsignatur](certificate-signing-options.md) und [Problem bei der Anwendungsanmeldung](application-sign-in-problem-application-error.md).)  | 
 | Erfordern der Benutzerzuweisung  | Standardmäßig können Benutzer auf Ihre Unternehmensanwendungen zugreifen, ohne diesen zugewiesen zu sein. Falls die Anwendung jedoch Rollen verfügbar macht oder Sie möchten, dass die Anwendung unter „Meine Apps“ für einen Benutzer angezeigt wird, müssen Sie Benutzerzuweisungen erforderlich machen.  | 
-| Bereitstellen von „Meine Apps“ für Ihre Benutzer | [Meine Apps](end-user-experiences.md) unter `https://myapps.microsoft.com` ist ein webbasiertes Portal, das Benutzern einen einzigen Einstiegspunkt für die ihnen zugewiesenen cloudbasierten Anwendungen bietet. Wenn zusätzliche Funktionen wie Gruppenverwaltung und Self-Service-Kennwortzurücksetzung hinzugefügt werden, können Benutzer diese in „Meine Apps“ finden. Informationen finden Sie unter [Planen einer Bereitstellung von „Meine Apps“](access-panel-deployment-plan.md).
+| Bereitstellen von „Meine Apps“ für Ihre Benutzer | [Meine Apps](end-user-experiences.md) unter `https://myapps.microsoft.com` ist ein webbasiertes Portal, das Benutzern einen einzigen Einstiegspunkt für die ihnen zugewiesenen cloudbasierten Anwendungen bietet. Wenn zusätzliche Funktionen wie Gruppenverwaltung und Self-Service-Kennwortzurücksetzung hinzugefügt werden, können Benutzer diese in „Meine Apps“ finden. Informationen finden Sie unter [Planen einer Bereitstellung von „Meine Apps“](my-apps-deployment-plan.md).
 | Verwenden der Gruppenzuweisung  | Wenn die Option in Ihrem Abonnement enthalten ist, weisen Sie einer Anwendung Gruppen zu, damit Sie die laufende Zugriffsverwaltung an den Gruppenbesitzer delegieren können.  | 
 | Einrichten eines Prozesses für das Verwalten von Zertifikaten | Die maximale Lebensdauer eines Signaturzertifikats beträgt drei Jahre. Um Ausfälle aufgrund eines ablaufenden Zertifikats zu verhindern oder zu minimieren, verwenden Sie Rollen und E-Mail-Verteilerlisten, damit sichergestellt werden kann, dass zertifikatbezogene Änderungsbenachrichtigungen genau überwacht werden. |
 

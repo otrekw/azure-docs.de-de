@@ -10,12 +10,12 @@ ms.author: mhopkins
 ms.reviewer: yzheng
 ms.subservice: blobs
 ms.custom: references_regions
-ms.openlocfilehash: 86ded3dea819702631b1fa04dbc56f727566fc98
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: a41966c2b3ba73d7b68399b1b99d14313e220833
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96602681"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99257810"
 ---
 # <a name="use-azure-storage-blob-inventory-to-manage-blob-data-preview"></a>Verwalten von Blobdaten mit dem Azure Storage-Blobbestand (Vorschau)
 
@@ -32,6 +32,8 @@ Die Vorschauversion des Blobbestands ist für Speicherkonten in den folgenden Re
 - Frankreich, Mitte
 - Kanada, Mitte
 - Kanada, Osten
+- East US
+- USA (Ost 2)
 
 ### <a name="pricing-and-billing"></a>Preise und Abrechnung
 

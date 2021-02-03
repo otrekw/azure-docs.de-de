@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/29/2019
 ms.author: steveesp
-ms.openlocfilehash: f8f167a7947c42ce837ec83b336ae636f593f2e4
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 7dc8aac730fdf46cab47a3297b8c001cb0b8e314
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98219257"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99226404"
 ---
 # <a name="test-vm-network-latency"></a>Testen der VM-Netzwerklatenz
 
@@ -45,7 +45,7 @@ Sie können diesen Ansatz verwenden, um die Netzwerklatenz zwischen zwei VMs ode
 ### <a name="tools-for-testing"></a>Tools zum Testen
 Beim Messen der Latenz haben Sie zwei Tooloptionen:
 
-* Für Windows-basierte Systeme: [latte.exe (Windows)](https://gallery.technet.microsoft.com/Latte-The-Windows-tool-for-ac33093b)
+* Für Windows-basierte Systeme: [latte.exe (Windows)](https://github.com/microsoft/latte/releases/download/v0/latte.exe)
 * Für Linux-basierte Systeme: [SockPerf (Linux)](https://github.com/mellanox/sockperf)
 
 Mit der Verwendung dieser Tools stellen Sie sicher, dass nur die Bereitstellungszeiten für TCP- oder UDP-Nutzlasten gemessen werden – nicht ICMP (Ping) oder andere Pakettypen, die nicht von Anwendungen verwendet werden und keine Auswirkung auf deren Leistung haben.

@@ -3,7 +3,7 @@ title: Bedarfsorientierte Bereitstellung von Benutzern mithilfe von Azure Active
 description: Synchronisierung erzwingen
 services: active-directory
 author: msmimart
-manager: CelesteDG
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 10/01/2020
 ms.author: mimart
 ms.reviewer: arvinh
-ms.openlocfilehash: f7cbe9e9f81b3b71ee7da2feac2908c36f1777e5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: be03a149f34c16621905081a2f9bb663d85bc53c
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91629011"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99255660"
 ---
 # <a name="on-demand-provisioning"></a>Bedarfsorientierte Bereitstellung
 Mit der bedarfsorientierten Bereitstellung können Sie einen Benutzer innerhalb von Sekunden in einer Anwendung bereitstellen. Unter anderem können Sie dieses Feature für Folgendes verwenden:
@@ -124,7 +124,7 @@ Schließlich führt der Bereitstellungsdienst eine Aktion (z. B. Erstellen, Akt
 
 Hier sehen Sie ein Beispiel für die Anzeige nach der erfolgreichen bedarfsorientierten Bereitstellung eines Benutzers:
 
-:::image type="content" source="media/provision-on-demand/success-on-demand-provision.jpg" alt-text="Screenshot: Benutzeroberfläche des Azure-Portals für die bedarfsorientierte Benutzerbereitstellung":::
+:::image type="content" source="media/provision-on-demand/success-on-demand-provision.jpg" alt-text="Screenshot: erfolgreiche bedarfsorientierte Bereitstellung eines Benutzers":::
 
 #### <a name="view-details"></a>Anzeigen der Details
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/26/2018
 ms.author: genli
-ms.openlocfilehash: 18f2128b6869b4047cc6f35e1638aca81233a014
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: fe4c17b74cd786d03bd19257dea190a21ecaa9f5
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98219245"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99095640"
 ---
 # <a name="network-virtual-appliance-issues-in-azure"></a>Probleme mit virtuellen Netzwerkappliances in Azure
 
@@ -30,7 +30,7 @@ Bei der Verwendung einer virtuellen Netzwerkappliance (Network Virtual Appliance
 Technischer Support für NVAs von Drittanbietern und deren Integration in die Azure-Plattform wird vom NVA-Anbieter bereitgestellt.
 
 > [!NOTE]
-> Bei einem Konnektivitäts- oder Routingproblem, das eine NVA betrifft, sollten Sie [sich direkt an den Anbieter der NVA](https://support.microsoft.com/help/2984655/support-for-azure-market-place-for-virtual-machines) wenden.
+> Bei einem Konnektivitäts- oder Routingproblem, das eine NVA betrifft, sollten Sie [sich direkt an den Anbieter der NVA](https://mskb.pkisolutions.com/kb/2984655) wenden.
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
@@ -52,7 +52,7 @@ Technischer Support für NVAs von Drittanbietern und deren Integration in die Az
 
 ## <a name="check-the-minimum-configuration-requirements-for-nvas-on-azure"></a>Überprüfen der Mindestanforderungen für die Konfiguration von NVAs in Azure
 
-Für jede NVA müssen grundlegende Konfigurationsanforderungen erfüllt werden, damit sie ordnungsgemäß in Azure ausgeführt werden kann. Der folgende Abschnitt enthält die Schritte zum Überprüfen dieser grundlegenden Konfigurationen. Weitere Informationen [erhalten Sie beim Anbieter der NVA](https://support.microsoft.com/help/2984655/support-for-azure-market-place-for-virtual-machines).
+Für jede NVA müssen grundlegende Konfigurationsanforderungen erfüllt werden, damit sie ordnungsgemäß in Azure ausgeführt werden kann. Der folgende Abschnitt enthält die Schritte zum Überprüfen dieser grundlegenden Konfigurationen. Weitere Informationen [erhalten Sie beim Anbieter der NVA](https://mskb.pkisolutions.com/kb/2984655).
 
 **Überprüfen, ob die IP-Weiterleitung für die NVA aktiviert ist**
 
@@ -112,17 +112,17 @@ Verwenden von PowerShell
     ```console
    netstat -an | grep -i listen
     ```
-2. Wenn der TCP-Port, der von der in den Ergebnissen aufgeführten NVA-Software verwendet wird, nicht angezeigt wird, müssen Sie die Anwendung in der NVA und auf der VM so konfigurieren, dass sie auf Datenverkehr, der auf diesen Ports eingeht, lauscht und antwortet. [Wenden Sie sich an den NVA-Anbieter, wenn Sie Unterstützung benötigen sollten](https://support.microsoft.com/help/2984655/support-for-azure-market-place-for-virtual-machines).
+2. Wenn der TCP-Port, der von der in den Ergebnissen aufgeführten NVA-Software verwendet wird, nicht angezeigt wird, müssen Sie die Anwendung in der NVA und auf der VM so konfigurieren, dass sie auf Datenverkehr, der auf diesen Ports eingeht, lauscht und antwortet. [Wenden Sie sich an den NVA-Anbieter, wenn Sie Unterstützung benötigen sollten](https://mskb.pkisolutions.com/kb/2984655).
 
 ## <a name="check-nva-performance"></a>Überprüfen der NVA-Leistung
 
 ### <a name="validate-vm-cpu"></a>Überprüfen der VM-CPU
 
-Wenn die CPU-Auslastung nahezu 100 Prozent erreicht, kann es zu Problemen kommen, die sich auf die Netzwerkpaketverluste auswirken. Ihre VM meldet eine durchschnittliche CPU-Auslastung für einen bestimmten Zeitraum im Azure-Portal. Untersuchen Sie während einer CPU-Spitze, welcher Prozess auf der Gast-VM für die hohe CPU-Auslastung verantwortlich ist, und beheben Sie dies, wenn möglich. Eventuell müssen Sie auch die Größe der VM in eine größere SKU-Größe ändern oder bei VM-Skalierungsgruppen die Anzahl der Instanzen erhöhen bzw. auf die automatische Skalierung der CPU-Auslastung festlegen. [Wenden Sie sich an den NVA-Anbieter](https://support.microsoft.com/help/2984655/support-for-azure-market-place-for-virtual-machines), wenn Sie Unterstützung zu einem dieser Probleme benötigen sollten.
+Wenn die CPU-Auslastung nahezu 100 Prozent erreicht, kann es zu Problemen kommen, die sich auf die Netzwerkpaketverluste auswirken. Ihre VM meldet eine durchschnittliche CPU-Auslastung für einen bestimmten Zeitraum im Azure-Portal. Untersuchen Sie während einer CPU-Spitze, welcher Prozess auf der Gast-VM für die hohe CPU-Auslastung verantwortlich ist, und beheben Sie dies, wenn möglich. Eventuell müssen Sie auch die Größe der VM in eine größere SKU-Größe ändern oder bei VM-Skalierungsgruppen die Anzahl der Instanzen erhöhen bzw. auf die automatische Skalierung der CPU-Auslastung festlegen. [Wenden Sie sich an den NVA-Anbieter](https://mskb.pkisolutions.com/kb/2984655), wenn Sie Unterstützung zu einem dieser Probleme benötigen sollten.
 
 ### <a name="validate-vm-network-statistics"></a>Überprüfen der VM-Netzwerkstatistik
 
-Wenn das VM-Netzwerk Spitzen oder Zeiträume mit hoher Auslastung aufweist, müssen Sie möglicherweise auch die SKU-Größe der VM erhöhen, um von einem höherem Durchsatz zu profitieren. Sie können die VM auch erneut bereitstellen, indem Sie „Beschleunigter Netzwerkbetrieb“ aktivieren. Um zu überprüfen, ob die NVA das Feature „Beschleunigter Netzwerkbetrieb“ unterstützt, [wenden Sie sich an den NVA-Anbieter, um ggf. weitere Unterstützung zu erhalten](https://support.microsoft.com/help/2984655/support-for-azure-market-place-for-virtual-machines).
+Wenn das VM-Netzwerk Spitzen oder Zeiträume mit hoher Auslastung aufweist, müssen Sie möglicherweise auch die SKU-Größe der VM erhöhen, um von einem höherem Durchsatz zu profitieren. Sie können die VM auch erneut bereitstellen, indem Sie „Beschleunigter Netzwerkbetrieb“ aktivieren. Um zu überprüfen, ob die NVA das Feature „Beschleunigter Netzwerkbetrieb“ unterstützt, [wenden Sie sich an den NVA-Anbieter, um ggf. weitere Unterstützung zu erhalten](https://mskb.pkisolutions.com/kb/2984655).
 
 ## <a name="advanced-network-administrator-troubleshooting"></a>Erweiterte Behandlung von Problemen mit Netzwerkadministratoren
 
@@ -146,4 +146,4 @@ Erfassen Sie während der Ausführung von **[PsPing](/sysinternals/downloads/psp
 
 Falls die bei der Ablaufverfolgung der Back-End-VM eingehenden Pakete nicht zu sehen sind, liegt wahrscheinlich ein Konflikt mit einer fehlerhaften NSG oder UDR oder fehlerhaften NVA-Routingtabellen vor.
 
-Wenn Sie den Eingang der Pakete beobachten, aber keine Antwort erfolgt, müssen Sie möglicherweise ein Problem mit der VM-Anwendung oder der Firewall beheben. [Wenden Sie sich an den NVA-Anbieter](https://support.microsoft.com/help/2984655/support-for-azure-market-place-for-virtual-machines), wenn Sie Unterstützung zu einem dieser Probleme benötigen sollten.
+Wenn Sie den Eingang der Pakete beobachten, aber keine Antwort erfolgt, müssen Sie möglicherweise ein Problem mit der VM-Anwendung oder der Firewall beheben. [Wenden Sie sich an den NVA-Anbieter](https://mskb.pkisolutions.com/kb/2984655), wenn Sie Unterstützung zu einem dieser Probleme benötigen sollten.

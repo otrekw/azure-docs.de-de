@@ -3,19 +3,19 @@ title: Beheben von Problemen mit dem SAML-basierten einmaligen Anmelden in Azure
 description: Beheben von Problemen bei einer Azure AD-App, die für SAML-basiertes einmaliges Anmelden konfiguriert wurde.
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 07/11/2017
 ms.author: kenwith
-ms.openlocfilehash: 2e8508d4fceb1e7fb580350c726dd70eeaea31c6
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: b169616042892c379196dd1d38c2343704aa1030
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94658875"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99257525"
 ---
 # <a name="troubleshoot-saml-based-single-sign-on-in-azure-active-directory"></a>Beheben von Problemen mit dem SAML-basierten einmaligen Anmelden in Azure Active Directory
 Wenn beim Konfigurieren einer Anwendung ein Problem auftritt: Stellen Sie sicher, dass Sie alle Schritte im Lernprogramm für die Anwendung ausgeführt haben. Die Konfiguration der Anwendung umfasst eine Inlinedokumentation zum Konfigurieren der Anwendung. Darüber hinaus finden Sie in der [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](../saas-apps/tutorial-list.md) ausführliche schrittweise Anweisungen.

@@ -3,12 +3,12 @@ title: Bereitstellen von Ressourcen für einen Mandanten
 description: Hier erfahren Sie, wie Sie Ressourcen im Mandantenbereich in einer Azure Resource Manager-Vorlage bereitstellen.
 ms.topic: conceptual
 ms.date: 01/13/2021
-ms.openlocfilehash: 0b3ddc63e49b272c93349ada91e9a1599ea4be4f
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: fd5a9ae60c578a3be7f70d82baae0a15e406b9db
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98186208"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99491485"
 ---
 # <a name="tenant-deployments-with-arm-templates"></a>Mandantenbereitstellungen mit ARM-Vorlagen
 
@@ -133,7 +133,7 @@ Ausführlichere Informationen über Bereitstellungsbefehle und -optionen für di
 
 Für Bereitstellungen auf der Mandantenebene müssen Sie einen Speicherort für die Bereitstellung angeben. Der Speicherort der Bereitstellung ist vom Speicherort der Ressourcen getrennt, die Sie bereitstellen. Der Bereitstellungsspeicherort gibt an, wo Bereitstellungsdaten gespeichert werden sollen. [Abonnement](deploy-to-subscription.md)- und [Verwaltungsgruppen](deploy-to-management-group.md)bereitstellungen erfordern ebenfalls einen Speicherort. Für [Ressourcengruppe](deploy-to-resource-group.md)nbereitstellungen wird der Speicherort der Ressourcengruppe zum Speichern der Bereitstellungsdaten verwendet.
 
-Sie können einen Namen für die Bereitstellung angeben oder den Bereitstellungsstandardnamen verwenden. Der Standardname ist der Name der Vorlagendatei. Wenn Sie z.B. eine Vorlage mit dem Namen **azuredeploy.json** bereitstellen, wird **azuredeploy** als Standardname für die Bereitstellung erstellt.
+Sie können einen Namen für die Bereitstellung angeben oder den Bereitstellungsstandardnamen verwenden. Der Standardname ist der Name der Vorlagendatei. Wenn Sie z.B. eine Vorlage mit dem Namen _azuredeploy.json_ bereitstellen, wird **azuredeploy** als Standardname für die Bereitstellung erstellt.
 
 Der Speicherort für jeden Bereitstellungsnamen ist unveränderlich. Sie können keine Bereitstellung an einem Speicherort erstellen, wenn bereits eine Bereitstellung mit demselben Namen an einem anderen Speicherort vorhanden ist. Wenn Sie z. B. eine Mandantenbereitstellung mit dem Namen **deployment1** in **centralus** erstellen, können Sie später keine weitere Bereitstellung mit dem Namen **deployment1**, aber einen Speicherort **westus** erstellen. Wenn Sie den Fehlercode `InvalidDeploymentLocation` erhalten, verwenden Sie entweder einen anderen Namen oder denselben Speicherort wie bei der vorherigen Bereitstellung für diesen Namen.
 

@@ -2,7 +2,7 @@
 title: Behandeln von Problemen beim kennwortbasierten einmaligen Anmelden bei Azure Active Directory
 description: Hier erfahren Sie, wie Sie Probleme mit einer Azure AD-App beheben, die für kennwortbasiertes einmaliges Anmelden konfiguriert wurde.
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -10,19 +10,19 @@ ms.topic: troubleshooting
 ms.date: 07/11/2017
 ms.author: kenwith
 ms.reviewer: asteen
-ms.openlocfilehash: d122cedbad41d6984614a0edccb2fd98269710f2
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: fdbbc6c53e43d3ecc9fd4ecb563bd7ec798f8888
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96618075"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99257577"
 ---
 # <a name="troubleshoot-password-based-single-sign-on-in-azure-ad"></a>Behandeln von Problemen beim kennwortbasierten einmaligen Anmelden in Azure AD
 
 Wenn Sie kennwortbasiertes einmaliges Anmelden (Single Sign-on, SSO) in „Meine Apps“ verwenden möchten, muss die Browsererweiterung installiert sein. Die Erweiterung wird automatisch heruntergeladen, wenn Sie eine App auswählen, die für kennwortbasiertes SSO konfiguriert ist. Informationen zur Verwendung von „Meine Apps“ aus der Sicht eines Endbenutzers finden Sie unter [Hilfe zum Portal „Meine Apps“](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="my-apps-browser-extension-not-installed"></a>Browsererweiterung für „Meine Apps“ nicht installiert
-Vergewissern Sie sich, dass die Browsererweiterung installiert wurde. Weitere Informationen finden Sie unter [Planen einer Bereitstellung von „Meine Apps“ in Azure Active Directory](access-panel-deployment-plan.md). 
+Vergewissern Sie sich, dass die Browsererweiterung installiert wurde. Weitere Informationen finden Sie unter [Planen einer Bereitstellung von „Meine Apps“ in Azure Active Directory](my-apps-deployment-plan.md). 
 
 ## <a name="single-sign-on-not-configured"></a>Einmaliges Anmelden nicht konfiguriert
 Vergewissern Sie sich, dass das kennwortbasierte einmalige Anmelden konfiguriert wurde. Weitere Informationen finden Sie unter [Konfigurieren von kennwortbasiertem einmaligem Anmelden](configure-password-single-sign-on-non-gallery-applications.md).
@@ -247,4 +247,4 @@ In den folgenden Informationen wird erläutert, was die einzelnen Elemente der B
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Schnellstartserie zur Anwendungsverwaltung](view-applications-portal.md)
-* [Planen einer Bereitstellung von „Meine Apps“](access-panel-deployment-plan.md)
+* [Planen einer Bereitstellung von „Meine Apps“](my-apps-deployment-plan.md)

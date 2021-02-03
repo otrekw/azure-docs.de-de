@@ -3,12 +3,12 @@ title: Details der Struktur von Richtliniendefinitionen
 description: Beschreibt, wie Richtliniendefinitionen verwendet werden, um Konventionen für Azure-Ressourcen in Ihrer Organisation einzurichten.
 ms.date: 10/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: 6e04551a2ef2f890844693fec71d2d3232a456f2
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 607d1d85dbb370305d0337cc311433c37e36c4c0
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98220812"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99493310"
 ---
 # <a name="azure-policy-definition-structure"></a>Struktur von Azure Policy-Definitionen
 
@@ -348,7 +348,7 @@ Im folgenden Beispiel wird mit `concat` eine Tagfeldsuche nach dem Tag erstellt,
                 "value": "[resourcegroup().tags[parameters('tagName')]]"
             }],
             "roleDefinitionIds": [
-                "/providers/microsoft.authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c"
+                "/providers/microsoft.authorization/roleDefinitions/4a9ae827-6dc8-4573-8ac7-8239d42aa03f"
             ]
         }
     }

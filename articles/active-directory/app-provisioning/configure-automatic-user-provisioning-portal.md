@@ -4,7 +4,7 @@ description: Erfahren Sie, wie Sie mithilfe von Azure Active Directory die Benut
 services: active-directory
 documentationcenter: ''
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: how-to
@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 11/25/2019
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 9c42a83b4f7f3c6b5ff501525a04ebd96c2a692a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8ee18043f0485ae6290b1b323648ba9b2b83258b
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88234838"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99255915"
 ---
 # <a name="managing-user-account-provisioning-for-enterprise-apps-in-the-azure-portal"></a>Verwalten der Benutzerkontobereitstellung für Unternehmens-Apps im Azure-Portal
 

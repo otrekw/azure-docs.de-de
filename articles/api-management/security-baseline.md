@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 1825767d8140421d4f0e22f9ebfde42f8262da5e
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 8a572221ca8899c5e4f4cf76e4b89c995952a2f3
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98201075"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99258556"
 ---
 # <a name="azure-security-baseline-for-api-management"></a>Azure-Sicherheitsbaseline für API Management
 
@@ -90,15 +90,11 @@ Die Kombination aus einer Bereitstellung von API Management in einem internen VN
 
 Hinweis: Diese Funktion ist auf den Ebenen „Premium“ und „Developer“ von API Management verfügbar.
 
-Aktivieren Sie Azure DDoS Protection Standard in dem VNET, das Ihrer API Management-Bereitstellung zugeordnet ist, um für den Schutz vor verteilten Denial-of-Service-Angriffen (DDoS) zu sorgen.
-
 Verwenden Sie die in Azure Security Center integrierte Threat Intelligence, um die Kommunikation mit bekannten schädlichen oder nicht genutzten IP-Adressen zu verweigern.
 
 * [Integrieren von API Management in ein internes VNET mit Application Gateway](./api-management-howto-integrate-internal-vnet-appgateway.md)
 
 * [Dokumentation zu Azure Application Gateway](../application-gateway/index.yml)
-
-* [Verwalten von Azure DDoS Protection Standard mithilfe des Azure-Portals](../ddos-protection/manage-ddos-protection.md)
 
 * [Grundlegendes zur integrierten Threat Intelligence in Azure Security Center](../security-center/azure-defender.md)
 
@@ -184,8 +180,7 @@ Vorsicht: Beim Konfigurieren einer NSG im API Management-Subnetz müssen einige 
 
 ### <a name="19-maintain-standard-security-configurations-for-network-devices"></a>1.9: Beibehalten von Standardsicherheitskonfigurationen für Netzwerkgeräte
 
-**Leitfaden**: Definieren und implementieren Sie Standardsicherheitskonfigurationen für die Netzwerkeinstellungen Ihrer Azure API Management-Bereitstellungen. Verwenden Sie Azure Policy-Aliase in den Namespaces „Microsoft.ApiManagement“ und „Microsoft.Network“, um benutzerdefinierte Richtlinien für die Überprüfung oder Erzwingung der Netzwerkkonfiguration Ihrer Azure API Management-Bereitstellungen und der zugehörigen Ressourcen zu erstellen. Sie können auch die integrierten Richtliniendefinitionen für virtuelle Azure-Netzwerke verwenden, z. B.:
-- DDoS Protection Standard sollte aktiviert sein.
+**Leitfaden**: Definieren und implementieren Sie Standardsicherheitskonfigurationen für die Netzwerkeinstellungen Ihrer Azure API Management-Bereitstellungen. Verwenden Sie Azure Policy-Aliase in den Namespaces „Microsoft.ApiManagement“ und „Microsoft.Network“, um benutzerdefinierte Richtlinien für die Überprüfung oder Erzwingung der Netzwerkkonfiguration Ihrer Azure API Management-Bereitstellungen und der zugehörigen Ressourcen zu erstellen. 
 
 Sie können auch Azure Blueprints verwenden, um umfangreiche Azure-Bereitstellungen zu vereinfachen. Dabei werden wichtige Umgebungsartefakte, z. B. Azure Resource Manager-Vorlagen, rollenbasierte Zugriffssteuerung von Azure (Azure RBAC) und Richtlinien, gemeinsam in einer Blaupausendefinition gepackt. Sie können die Blaupause ganz einfach auf neue Abonnements und Umgebungen anwenden und die Steuerung und Verwaltung durch die Versionsverwaltung optimieren.
 

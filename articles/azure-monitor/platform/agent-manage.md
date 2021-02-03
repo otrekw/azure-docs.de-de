@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/14/2019
-ms.openlocfilehash: 4d0ceacd37748e9761903d02fd7e052d70b10e15
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 15d01a8ac21264bf57ee7e65147e3989cd631b15
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96011879"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99095555"
 ---
 # <a name="managing-and-maintaining-the-log-analytics-agent-for-windows-and-linux"></a>Verwalten und Warten des Log Analytics-Agents für Windows und Linux
 
@@ -243,7 +243,7 @@ Die heruntergeladene Datei für den Agent ist ein eigenständiges Installationsp
 
 1. Melden Sie sich auf dem Computer mit einem Konto an, das über Administratorrechte verfügt.
 
-2. Um die Installationsdateien des Agent zu extrahieren, führen Sie `extract MMASetup-<platform>.exe` von einer Eingabeaufforderung mit erhöhten Rechten aus. Sie werden dann nach dem Pfad gefragt, in den die Dateien extrahiert werden sollen. Alternativ können Sie den Pfad angeben, indem Sie die Argumente `extract MMASetup-<platform>.exe /c:<Path> /t:<Path>` übergeben. Weitere Informationen zu den von IExpress unterstützten Befehlszeilenschaltern finden Sie unter [Befehlszeilenoptionen für IExpress-Softwareupdatepakete](https://support.microsoft.com/help/197147/command-line-switches-for-iexpress-software-update-packages). Sie können anschließend das Beispiel aktualisieren, um es an Ihre Bedürfnisse anzupassen.
+2. Um die Installationsdateien des Agent zu extrahieren, führen Sie `extract MMASetup-<platform>.exe` von einer Eingabeaufforderung mit erhöhten Rechten aus. Sie werden dann nach dem Pfad gefragt, in den die Dateien extrahiert werden sollen. Alternativ können Sie den Pfad angeben, indem Sie die Argumente `extract MMASetup-<platform>.exe /c:<Path> /t:<Path>` übergeben. Weitere Informationen zu den von IExpress unterstützten Befehlszeilenschaltern finden Sie unter [Befehlszeilenoptionen für IExpress-Softwareupdatepakete](https://www.betaarchive.com/wiki/index.php?title=Microsoft_KB_Archive/197147). Sie können anschließend das Beispiel aktualisieren, um es an Ihre Bedürfnisse anzupassen.
 
 3. Geben Sie an der Eingabeaufforderung `%WinDir%\System32\msiexec.exe /x <Path>:\MOMAgent.msi /qb` ein.
 

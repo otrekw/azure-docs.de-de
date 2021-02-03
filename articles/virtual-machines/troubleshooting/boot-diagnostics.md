@@ -10,12 +10,12 @@ ms.service: virtual-machines
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: delhan
-ms.openlocfilehash: fa133e7c62b7970a1c48c7fd86c877bcf699e034
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: 9030adb9904095ac9b909e650ec6f11dcdf85ed3
+ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98201602"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99475521"
 ---
 # <a name="how-to-use-boot-diagnostics-to-troubleshoot-virtual-machines-in-azure"></a>Es wird beschrieben, wie Sie die Startdiagnose zum Beheben von Problemen mit virtuellen Computern in Azure verwenden.
 
@@ -52,7 +52,7 @@ Stellen Sie auf der Registerkarte **Verwaltung** im Bereich **Überwachung** sic
 ![Erstellen eines virtuellen Computers](./media/virtual-machines-common-boot-diagnostics/enable-boot-diagnostics-vm.png)
 
 > [!NOTE]
-> Das Feature „Startdiagnose“ unterstützt keine Storage Premium-Konten oder zonenredundanten Speicherkontotypen. Wenn Sie ein Premium-Speicherkontos für die Startdiagnose verwenden, erhalten Sie beim Starten der VM möglicherweise den Fehler „StorageAccountTypeNotSupported“.
+> Das Feature „Startdiagnose“ unterstützt keine Storage Premium-Konten oder zonenredundanten Speicherkontotypen. Wenn Sie ein Premium-Speicherkontos für die Startdiagnose verwenden, erhalten Sie beim Starten der VM möglicherweise den Fehler „StorageAccountTypeNotSupported“. 
 >
 
 ### <a name="deploying-from-an-azure-resource-manager-template"></a>Bereitstellen aus einer Azure Resource Manager-Vorlage

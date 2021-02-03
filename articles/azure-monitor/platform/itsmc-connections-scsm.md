@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 12/21/2020
-ms.openlocfilehash: 79706b66dba46253843b1f53a26481170d6ff723
-ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
+ms.openlocfilehash: 907a78b15cca4718308f79bc6be2e6258bc04d19
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97729545"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99492670"
 ---
 # <a name="connect-system-center-service-manager-with-it-service-management-connector"></a>Verbinden von System Center Service Manager mit dem ITSM-Connector
 
@@ -32,7 +32,7 @@ Stellen Sie sicher, dass die folgenden Voraussetzungen erfüllt werden:
 
 > [!NOTE]
 > - Der ITSM-Connector kann nur eine Verbindung mit cloudbasierten ServiceNow-Instanzen. Lokale ServiceNow-Instanzen werden derzeit nicht unterstützt.
-> - Um benutzerdefinierte [Vorlagen](./itsmc-definition.md#template-definitions) als Teil der Aktionen zu verwenden, muss der Parameter „ProjectionType“ in der SCSM-Vorlage „IncidentManagement!System.WorkItem.Incident.ProjectionType“ zugeordnet werden.
+> - Um benutzerdefinierte [Vorlagen](./itsmc-definition.md#define-a-template) als Teil der Aktionen zu verwenden, muss der Parameter „ProjectionType“ in der SCSM-Vorlage „IncidentManagement!System.WorkItem.Incident.ProjectionType“ zugeordnet werden.
 
 ## <a name="connection-procedure"></a>Verbindungsverfahren
 

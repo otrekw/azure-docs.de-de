@@ -4,15 +4,15 @@ description: Beheben von häufigen Problemen in einer Bereitstellung in der Azur
 author: jeffpatt24
 ms.service: storage
 ms.topic: troubleshooting
-ms.date: 1/15/2021
+ms.date: 2/1/2021
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 49184778c7d6592f074e04df535b9bc221f3162e
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 65a1f8ef82ba9ec35e01a61d9682ebed0b9ba04c
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98878798"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99428333"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Problembehandlung für Azure-Dateisynchronisierung
 Mit der Azure-Dateisynchronisierung können Sie die Dateifreigaben Ihrer Organisation in Azure Files zentralisieren, ohne auf die Flexibilität, Leistung und Kompatibilität eines lokalen Dateiservers verzichten zu müssen. Mit der Azure-Dateisynchronisierung werden Ihre Windows Server-Computer zu einem schnellen Cache für Ihre Azure-Dateifreigabe. Sie können ein beliebiges Protokoll verwenden, das unter Windows Server verfügbar ist, um lokal auf Ihre Daten zuzugreifen, z.B. SMB, NFS und FTPS. Sie können weltweit so viele Caches wie nötig nutzen.
@@ -210,18 +210,10 @@ Dieses Problem kann auftreten, wenn der Überwachungsprozess für die Speichersy
         - Informationen zur Verwendung von TLS-Cmdlets finden Sie unter [Konfigurieren der Reihenfolge von TLS-Verschlüsselungssammlungen mithilfe von TLS-Cmdlets in PowerShell](/windows-server/security/tls/manage-tls#configuring-tls-cipher-suite-order-by-using-tls-powershell-cmdlets).
     
         Die Azure-Dateisynchronisierung unterstützt derzeit die folgenden Verschlüsselungssammlungen für das TLS 1.2-Protokoll:  
-        - TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384_P384  
-        - TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256_P256  
-        - TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384_P384  
-        - TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256_P256  
         - TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384_P256  
         - TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256  
         - TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA_P256  
         - TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA_P256  
-        - TLS_RSA_WITH_AES_256_GCM_SHA384  
-        - TLS_RSA_WITH_AES_128_GCM_SHA256  
-        - TLS_RSA_WITH_AES_256_CBC_SHA256  
-        - TLS_RSA_WITH_AES_128_CBC_SHA256  
 
 - Wenn **GetNextJob abgeschlossen mit dem Status: -2134347764** protokolliert ist, kann der Server aufgrund eines abgelaufenen oder gelöschten Zertifikats nicht mit dem Azure-Dateisynchronisierungsdienst kommunizieren.  
     - Führen Sie den folgenden PowerShell-Befehl auf dem Server aus, um das für die Authentifizierung verwendete Zertifikat zurückzusetzen:

@@ -3,7 +3,7 @@ title: Probleme beim Anmelden bei für SAML-basiertes einmaliges Anmelden konfig
 description: Leitfaden zu möglichen Fehlern beim Anmelden bei einer Anwendung, die für SAML-basiertes einmaliges Anmelden im Verbund mit Azure Active Directory konfiguriert wurde
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -12,17 +12,17 @@ ms.date: 02/18/2019
 ms.author: kenwith
 ms.reviewer: luleon, asteen
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 596af29fe72a41b5a86a09e4e6d5072d63b6ac71
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.openlocfilehash: d5a90909345599b2389d1752e00a7bc917d06822
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97586345"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99430410"
 ---
 # <a name="problems-signing-in-to-saml-based-single-sign-on-configured-apps"></a>Probleme beim Anmelden bei für SAML-basiertes einmaliges Anmelden konfigurierten Apps
 Zur Behandlung der unten aufgeführten Anmeldeprobleme werden folgende Vorgehensweisen empfohlen, um bessere Diagnosen zu erzielen und Lösungsschritte zu automatisieren:
 
-- Installieren Sie die [Browsererweiterung zur sicheren Anmeldung für„Meine Apps“](./access-panel-deployment-plan.md), um Azure Active Directory (Azure AD) dabei zu unterstützen, bessere Diagnosen und Lösungen bereitzustellen, wenn Sie die Testumgebung im Azure-Portal nutzen.
+- Installieren Sie die [Browsererweiterung zur sicheren Anmeldung für„Meine Apps“](my-apps-deployment-plan.md), um Azure Active Directory (Azure AD) dabei zu unterstützen, bessere Diagnosen und Lösungen bereitzustellen, wenn Sie die Testumgebung im Azure-Portal nutzen.
 - Reproduzieren Sie den Fehler mithilfe der Testfunktionen auf der App-Konfigurationsseite im Azure-Portal. Weitere Informationen finden Sie unter [Debuggen von SAML-basierten Anwendungen für einmaliges Anmelden](./debug-saml-sso-issues.md).
 
 Wenn Sie die [Testumgebung](./debug-saml-sso-issues.md) im Azure-Portal mit der sicheren Browsererweiterung für „Meine Apps“ verwenden, müssen Sie die folgenden Schritte nicht manuell ausführen, um die Seite zur Konfiguration des SAML-basierten einmaligen Anmeldens zu öffnen.
@@ -54,7 +54,7 @@ Stellen Sie sicher, dass das `Issuer`-Attribut in der SAML-Anforderung mit dem i
 Überprüfen Sie auf der Konfigurationsseite für das SAML-basierte einmalige Anmelden im Abschnitt **Grundlegende SAML-Konfiguration**, ob der Wert im Textfeld „Bezeichner“ mit dem im Fehler angezeigten Bezeichnerwert übereinstimmt.
 
 ## <a name="the-reply-address-does-not-match-the-reply-addresses-configured-for-the-application"></a>Die Antwortadresse stimmt nicht mit den für die Anwendung konfigurierten Antwortadressen überein
-`Error AADSTS50011: The reply address 'https:\//contoso.com' does not match the reply addresses configured for the application.`
+`Error AADSTS50011: The reply URL specified in the request does not match the reply URLs configured for the application: '{application identifier}'.`
 
 **Mögliche Ursache**
 

@@ -11,15 +11,16 @@ author: linda33wj
 manager: shwang
 ms.reviewer: douglasl
 ms.custom: seo-lt-2019
-ms.date: 09/23/2020
-ms.openlocfilehash: 204399186ae229324f9dc478e0ef58a173060013
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.date: 02/02/2021
+ms.openlocfilehash: 63816a40aa710d26dc036dfe82018883e917beb6
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92638175"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99428469"
 ---
 # <a name="copy-data-from-and-to-dynamics-365-common-data-service-or-dynamics-crm-by-using-azure-data-factory"></a>Kopieren von Daten aus und nach Dynamics 365 (Common Data Service) oder Dynamics CRM mithilfe von Azure Data Factory
+
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 In diesem Artikel wird beschrieben, wie Sie mit einer Kopieraktivität in Azure Data Factory Daten aus und nach Microsoft Dynamics 365 oder Dynamics CRM kopieren. Er baut auf dem Artikel [Kopieraktivität in Azure Data Factory](copy-activity-overview.md) auf, der eine allgemeine Übersicht über eine Kopieraktivität enthält.
@@ -56,10 +57,10 @@ Für Dynamics 365 werden insbesondere die folgenden Anwendungstypen unterstützt
 
 Andere Anwendungstypen wie Dynamics 365 Finance, Dynamics 365 for Operations und Dynamics 365 Talent werden von diesem Connector nicht unterstützt.
 
-Dieser Dynamics-Connector basiert auf [Dynamics XRM-Tools](/dynamics365/customer-engagement/developer/build-windows-client-applications-xrm-tools).
-
 >[!TIP]
 >Mit dem [Dynamics AX-Connector](connector-dynamics-ax.md) können Sie Daten aus Dynamics 365 Finance und Dynamics 365 for Operations kopieren.
+
+Dieser Dynamics-Connector basiert auf [Dynamics XRM-Tools](/dynamics365/customer-engagement/developer/build-windows-client-applications-xrm-tools).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -88,7 +89,7 @@ Die folgenden Eigenschaften werden für den mit Dynamics verknüpften Dienst unt
 | servicePrincipalCredential | Die Anmeldeinformationen für den Dienstprinzipal. <br/><br/>Wenn Sie "ServicePrincipalKey" als Anmeldeinformationstyp verwenden, kann `servicePrincipalCredential` eine Zeichenfolge sein, die Azure Data Factory bei der Bereitstellung eines verknüpften Diensts verschlüsselt. Alternativ kann es sich um einen Verweis auf ein Geheimnis in Azure Key Vault handeln. <br/><br/>Wenn Sie "ServicePrincipalCert" als Anmeldeinformation verwenden, muss `servicePrincipalCredential` ein Verweis auf ein Zertifikat in Azure Key Vault sein. | Ja, wenn "AADServicePrincipal" für authenticationType festgelegt ist |
 | username | Der Benutzername, mit dem die Verbindung zu Dynamics hergestellt wird | Ja, wenn "Office365" für authenticationType festgelegt ist |
 | password | Das Kennwort für das Benutzerkonto, das Sie für „username“ angegeben haben. Markieren Sie dieses Feld mit "SecureString", um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). | Ja, wenn "Office365" für authenticationType festgelegt ist |
-| connectVia | Die [Integration Runtime](concepts-integration-runtime.md), die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden soll. Ohne Angabe eines Wertes verwendet diese Eigenschaft automatisch Azure Integration Runtime. | Nein für die Quelle. Ja für die Senke, wenn der mit der Quelle verknüpfte Dienst keine Integration Runtime aufweist. |
+| connectVia | Die [Integration Runtime](concepts-integration-runtime.md), die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden soll. Ohne Angabe eines Wertes verwendet diese Eigenschaft automatisch Azure Integration Runtime. | Nein |
 
 >[!NOTE]
 >Der Dynamics-Connector hat zum Identifizieren Ihrer Dynamics CRM- oder Dynamics 365-Onlineinstanz früher die optionale Eigenschaft **organizationName** verwendet. Diese Eigenschaft funktioniert zwar immer noch, es wird jedoch empfohlen, stattdessen die neue Eigenschaft **serviceUri** anzugeben, um eine bessere Leistung bei der Instanzermittlung zu erzielen.
@@ -172,7 +173,7 @@ Die folgenden Eigenschaften werden für den mit Dynamics verknüpften Dienst unt
 
 ### <a name="dynamics-365-and-dynamics-crm-on-premises-with-ifd"></a>Dynamics 365 und Dynamics CRM lokal mit IFD
 
-Die zusätzlichen Eigenschaften im Vergleich zur Onlineversion von Dynamics lauten **hostName** und **port** .
+Die zusätzlichen Eigenschaften im Vergleich zur Onlineversion von Dynamics lauten **hostName** und **port**.
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
@@ -184,7 +185,7 @@ Die zusätzlichen Eigenschaften im Vergleich zur Onlineversion von Dynamics laut
 | authenticationType | Der Authentifizierungstyp für die Herstellung der Verbindung mit dem Dynamics-Server. Geben Sie für eine lokale Dynamics-Bereitstellung mit IFD "Ifd" an. | Ja. |
 | username | Der Benutzername, mit dem die Verbindung zu Dynamics hergestellt wird. | Ja. |
 | password | Das Kennwort für das Benutzerkonto, das Sie bei „username“ angegeben haben. Sie können dieses Feld mit "SecureString" markieren, um es sicher in Data Factory zu speichern. Alternativ können Sie das Kennwort auch in Azure Key Vault speichern und es über die Kopieraktivität pullen lassen, wenn die Daten kopiert werden. Weitere Informationen finden Sie unter [Speichern von Anmeldeinformationen in Key Vault](store-credentials-in-key-vault.md). | Ja. |
-| connectVia | Die [Integration Runtime](concepts-integration-runtime.md), die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden soll. Ohne Angabe eines Wertes verwendet diese Eigenschaft automatisch Azure Integration Runtime. | Nein für die Quelle, ja für die Senke |
+| connectVia | Die [Integration Runtime](concepts-integration-runtime.md), die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden soll. Ohne Angabe eines Wertes verwendet diese Eigenschaft automatisch Azure Integration Runtime. | Nein |
 
 #### <a name="example-dynamics-on-premises-with-ifd-using-ifd-authentication"></a>Beispiel: Dynamics (lokal) mit IFD und IFD-Authentifizierung
 
@@ -326,7 +327,7 @@ Beim Kopieren von Daten nach Dynamics werden die folgenden Eigenschaften im Absc
 | writeBehavior | Das Schreibverhalten des Vorgangs. Der Wert muss "Upsert" lauten. | Ja |
 | alternateKeyName | Der alternative Schlüsselname, der zum Ausführen eines upsert-Vorgangs für Ihre Entität definiert wurde | Nein. |
 | writeBatchSize | Die Zeilenanzahl der Daten, die in jedem Batch in Dynamics geschrieben werden. | Nein. Der Standardwert ist 10. |
-| ignoreNullValues | Gibt an, ob NULL-Werte aus anderen Eingabedaten als Schlüsselfeldern während eines Schreibvorgangs ignoriert werden sollen.<br/><br/>Gültige Werte sind **TRUE** und **FALSE** .<ul><li>**TRUE** : Daten im Zielobjekt bleiben unverändert, wenn Sie einen upsert- oder update-Vorgang ausführen. Fügt beim Ausführen eines insert-Vorgangs einen definierten Standardwert ein.</li><li>**FALSE** : Aktualisieren Sie die Daten im Zielobjekt auf einen NULL-Wert, wenn Sie einen upsert- oder update-Vorgang ausführen. Fügen Sie beim Ausführen eines insert-Vorgangs einen NULL-Wert ein.</li></ul> | Nein. Der Standardwert ist **FALSE** . |
+| ignoreNullValues | Gibt an, ob NULL-Werte aus anderen Eingabedaten als Schlüsselfeldern während eines Schreibvorgangs ignoriert werden sollen.<br/><br/>Gültige Werte sind **TRUE** und **FALSE**.<ul><li>**TRUE**: Daten im Zielobjekt bleiben unverändert, wenn Sie einen upsert- oder update-Vorgang ausführen. Fügt beim Ausführen eines insert-Vorgangs einen definierten Standardwert ein.</li><li>**FALSE**: Aktualisieren Sie die Daten im Zielobjekt auf einen NULL-Wert, wenn Sie einen upsert- oder update-Vorgang ausführen. Fügen Sie beim Ausführen eines insert-Vorgangs einen NULL-Wert ein.</li></ul> | Nein. Der Standardwert ist **FALSE**. |
 
 >[!NOTE]
 >Sowohl für die Senke **writeBatchSize** als auch für die Kopieraktivität **[parallelCopies](copy-activity-performance-features.md#parallel-copy)** für die Dynamics-Senke lautet der Standardwert 10. Daher werden standardmäßig 100 Datensätze gleichzeitig an Dynamics übermittelt.
@@ -397,7 +398,7 @@ Konfigurieren Sie anhand der folgenden Zuordnungstabelle den entsprechenden Data
 | AttributeType.Status | Int32 | ✓ | ✓ |
 
 > [!NOTE]
-> Die Dynamics-Datentypen **AttributeType.CalendarRules** , **AttributeType.MultiSelectPicklist** und **AttributeType.PartyList** werden nicht unterstützt.
+> Die Dynamics-Datentypen **AttributeType.CalendarRules**, **AttributeType.MultiSelectPicklist** und **AttributeType.PartyList** werden nicht unterstützt.
 
 ## <a name="writing-data-to-a-lookup-field"></a>Schreiben von Daten in ein Nachschlagefeld
 
@@ -420,8 +421,8 @@ Sie möchten nun solche Daten für die Senke in das Dynamics-Entitätsfeld **Cus
 
 Ordnen Sie die beiden Spalten in der Spaltenzuordnung für die Kopieraktivität wie folgt zu:
 
-- **CustomerField** zu **CustomerField** . Bei dieser Zuordnung handelt es sich um die normale Feldzuordnung.
-- **Target** zu **CustomerField\@EntityReference** . Die Senkenspalte ist virtuell und stellt den Entitätsverweis dar. Sie müssen solche Feldnamen in einer Zuordnung eingeben, da diese nach einem Schemaimport nicht angezeigt werden.
+- **CustomerField** zu **CustomerField**. Bei dieser Zuordnung handelt es sich um die normale Feldzuordnung.
+- **Target** zu **CustomerField\@EntityReference**. Die Senkenspalte ist virtuell und stellt den Entitätsverweis dar. Sie müssen solche Feldnamen in einer Zuordnung eingeben, da diese nach einem Schemaimport nicht angezeigt werden.
 
 ![Spaltenzuordnung für Dynamics-Nachschlagefelder](./media/connector-dynamics-crm-office-365/connector-dynamics-lookup-field-column-mapping.png)
 

@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/24/2020
-ms.openlocfilehash: c7e8f96e7917173aaec308b8ae5218684a722483
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: e32b93c669bffd382b1eb648111f9b8931b07eac
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97507471"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99221141"
 ---
 # <a name="copy-data-to-and-from-azure-databricks-delta-lake-by-using-azure-data-factory"></a>Kopieren von Daten in und aus Azure Databricks Delta Lake mithilfe von Azure Data Factory
 
@@ -41,8 +41,8 @@ Im Allgemeinen bietet Azure Data Factory Unterstützung für Delta Lake mit den 
 
 Um diesen Azure Databricks Delta Lake-Connector zu verwenden, müssen Sie einen Cluster in Azure Databricks einrichten.
 
-- Zum Kopieren von Daten nach Delta Lake ruft die Kopieraktivität den Azure Databricks-Cluster auf, um Daten aus einem Azure Storage zu lesen, bei dem es sich entweder um Ihre ursprüngliche Quelle oder einen Stagingbereich handelt, in den Data Factory die Quelldaten zunächst über eine integrierte gestaffelte Kopie schreibt. Weitere Informationen finden Sie unter [Delta Lake als Quelle](#delta-lake-as-source).
-- Ähnlich verhält es sich mit dem Kopieren von Daten aus Delta Lake, wobei die Kopieraktivität den Azure Databricks-Cluster aufruft, um Daten in einen Azure Storage zu schreiben, bei dem es sich entweder um Ihre ursprüngliche Senke oder einen Stagingbereich handelt, von dem aus Data Factory weiterhin Daten über eine integrierte gestaffelte Kopie in die endgültige Senke schreibt. Weitere Informationen finden Sie unter [Delta Lake als Senke](#delta-lake-as-sink).
+- Zum Kopieren von Daten nach Delta Lake ruft die Kopieraktivität den Azure Databricks-Cluster auf, um Daten aus einem Azure Storage zu lesen, bei dem es sich entweder um Ihre ursprüngliche Quelle oder einen Stagingbereich handelt, in den Data Factory die Quelldaten zunächst über eine integrierte gestaffelte Kopie schreibt. Weitere Informationen finden Sie unter [Delta Lake als Senke](#delta-lake-as-sink).
+- Ähnlich verhält es sich mit dem Kopieren von Daten aus Delta Lake, wobei die Kopieraktivität den Azure Databricks-Cluster aufruft, um Daten in einen Azure Storage zu schreiben, bei dem es sich entweder um Ihre ursprüngliche Senke oder einen Stagingbereich handelt, von dem aus Data Factory weiterhin Daten über eine integrierte gestaffelte Kopie in die endgültige Senke schreibt. Weitere Informationen finden Sie unter [Delta Lake als Quelle](#delta-lake-as-source).
 
 Der Databricks-Cluster muss Zugriff auf das Azure Blob- oder Azure Data Lake Storage Gen2-Konto haben, sowohl auf den Speichercontainer/das Dateisystem, der/das für Quelle/Senke/Staging verwendet wird, als auch auf den Container/das Dateisystem, in den/das Sie die Delta Lake-Tabellen schreiben möchten.
 
@@ -79,7 +79,7 @@ Die folgenden Abschnitte enthalten Details zu Eigenschaften, die zum Definieren 
 
 Die folgenden Eigenschaften werden für einen mit Azure Databricks Delta Lake verknüpften Dienst unterstützt.
 
-| Eigenschaft    | Beschreibung                                                  | Erforderlich |
+| Eigenschaft    | BESCHREIBUNG                                                  | Erforderlich |
 | :---------- | :----------------------------------------------------------- | :------- |
 | type        | Die type-Eigenschaft muss auf **AzureDatabricksDeltaLake** festgelegt werden. | Ja      |
 | Domäne      | Geben Sie die Azure Databricks-Arbeitsbereichs-URL an, z. B. `https://adb-xxxxxxxxx.xx.azuredatabricks.net`. |          |
@@ -112,7 +112,7 @@ Eine vollständige Liste mit den Abschnitten und Eigenschaften, die zum Definier
 
 Folgende Eigenschaften werden für das Azure Databricks Delta Lake-Dataset unterstützt.
 
-| Eigenschaft  | Beschreibung                                                  | Erforderlich                    |
+| Eigenschaft  | BESCHREIBUNG                                                  | Erforderlich                    |
 | :-------- | :----------------------------------------------------------- | :-------------------------- |
 | type      | Die „type“-Eigenschaft des Datasets muss auf **AzureDatabricksDeltaLakeDataset** festgelegt werden. | Ja                         |
 | database | Der Name der Datenbank. |Quelle: Nein, Senke: Ja  |
@@ -146,7 +146,7 @@ Eine vollständige Liste mit den Abschnitten und Eigenschaften zum Definieren vo
 
 Beim Kopieren von Daten aus Azure Databricks Delta Lake werden die folgenden Eigenschaften im Abschnitt **source** der Kopieraktivität unterstützt.
 
-| Eigenschaft                     | Beschreibung                                                  | Erforderlich |
+| Eigenschaft                     | BESCHREIBUNG                                                  | Erforderlich |
 | :--------------------------- | :----------------------------------------------------------- | :------- |
 | type                         | Die type-Eigenschaft der Quelle der Kopieraktivität muss auf **AzureDatabricksDeltaLakeSource** festgelegt werden. | Ja      |
 | Abfrage          | Geben Sie die SQL-Abfrage an, um Daten zu lesen. Für die Zeitreisesteuerung folgen Sie dem folgenden Muster:<br>- `SELECT * FROM events TIMESTAMP AS OF timestamp_expression`<br>- `SELECT * FROM events VERSION AS OF version` | Nein       |
@@ -260,7 +260,7 @@ Um dieses Feature verwenden zu können, erstellen Sie einen [mit Azure Blob Stor
 
 Beim Kopieren von Daten in Azure Databricks Delta Lake werden die folgenden Eigenschaften im Abschnitt **sink** der Kopieraktivität unterstützt.
 
-| Eigenschaft      | Beschreibung                                                  | Erforderlich |
+| Eigenschaft      | BESCHREIBUNG                                                  | Erforderlich |
 | :------------ | :----------------------------------------------------------- | :------- |
 | type          | Die type-Eigenschaft der Senke der Kopieraktivität ist auf **AzureDatabricksDeltaLakeSink** festgelegt. | Ja      |
 | preCopyScript | Geben Sie eine SQL-Abfrage an, die bei jeder Ausführung von der Kopieraktivität ausgeführt werden soll, bevor Daten in die Databricks-Delta-Tabelle geschrieben werden. Sie können diese Eigenschaft verwenden, um die vorinstallierten Daten zu bereinigen oder eine „truncate table“- oder „Vacuum“-Anweisung hinzuzufügen. | Nein       |

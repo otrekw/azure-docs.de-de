@@ -10,12 +10,12 @@ ms.service: storage
 ms.subservice: common
 services: storage
 tags: ''
-ms.openlocfilehash: 5f04a20b347e2672d9699551885f5dd16ceaa99c
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 1e6033f9a8f4cecd2429eca67a3d58e54d7ae1f6
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92785594"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99221107"
 ---
 # <a name="troubleshoot-latency-using-storage-analytics-logs"></a>Behandeln von Latenzproblemen mithilfe von Storage Analytics-Protokollen
 
@@ -27,7 +27,7 @@ In den folgenden Schritten wird veranschaulicht, wie Sie Latenzprobleme mithilfe
 
 ## <a name="recommended-steps"></a>Empfohlene Schritte
 
-1. Laden Sie die [Storage Analytics-Protokolle](./storage-analytics-logging.md#download-storage-logging-log-data) herunter.
+1. Laden Sie die [Storage Analytics-Protokolle](./manage-storage-analytics-logs.md#download-storage-logging-log-data) herunter.
 
 2. Verwenden Sie das folgende PowerShell-Skript, um die Protokolle im Rohdatenformat in ein Tabellenformat zu konvertieren:
 

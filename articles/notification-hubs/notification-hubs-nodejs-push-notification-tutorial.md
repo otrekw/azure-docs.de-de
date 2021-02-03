@@ -18,12 +18,12 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.custom: devx-track-js
-ms.openlocfilehash: 34962686ae36764a6dc16b164e91004be9ef038d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a7ef6ef85ea9d256303852e4b281071da455ebb0
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91250418"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99097672"
 ---
 # <a name="sending-push-notifications-with-azure-notification-hubs-and-nodejs"></a>Senden von Pushbenachrichtigungen mit Azure Notification Hubs und Node.js
 
@@ -84,7 +84,7 @@ Führen Sie die folgenden Schritte aus, um den Wert für `connectionstring` aus 
 
 1. Klicken Sie im linken Navigationsbereich auf **Durchsuchen**.
 2. Wählen Sie **Notification Hubs**, und wählen Sie den gewünschten Hub für das Beispiel aus. Hilfe zum Erstellen eines neuen Notification Hubs finden Sie im [Tutorial für die ersten Schritte mit dem Windows Store](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md).
-3. Wählen Sie **Settings**aus.
+3. Wählen Sie **Settings** aus.
 4. Klicken Sie auf **Zugriffsrichtlinien**. Beide Verbindungszeichenfolgen für Freigabe und Vollzugriff werden angezeigt.
 
 ![Azure-Portal – Notification Hubs](./media/notification-hubs-nodejs-how-to-use-notification-hubs/notification-hubs-portal.png)
@@ -109,7 +109,7 @@ Das `GcmService`-Objekt enthält eine `send`-Methode, mit der Sie Pushbenachrich
 - **Payload:** die Nutzlast der Nachricht als JSON oder unformatierte Zeichenfolge.
 - **Callback:** die Rückruffunktion.
 
-Weitere Informationen zum Nutzlastformat finden Sie in der [Nutzlastdokumentation](https://distriqt.github.io/ANE-PushNotifications/m.FCM-GCM%20Payload).
+Weitere Informationen zum Nutzlastformat finden Sie in der [Nutzlastdokumentation](https://payload.readthedocs.io/en/latest/).
 
 Der folgende Code verwendet die `GcmService`-Instanz, die vom `NotificationHubService` verfügbar gemacht wurde, um eine Pushbenachrichtigung an alle registrierten Clients zu senden.
 

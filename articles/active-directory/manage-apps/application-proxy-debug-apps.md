@@ -3,7 +3,7 @@ title: 'Debuggen von Anwendungsproxyanwendungen: Azure Active Directory | Micro
 description: Informationen zum Debuggen von Problemen mit Azure Active Directory-Anwendungsproxyanwendungen (Azure AD).
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -11,12 +11,12 @@ ms.topic: troubleshooting
 ms.date: 05/21/2019
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: e61ea30f01e8ae141d24c9bd91b08edef4dbe74e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2066030b04feae4e50fee3442a663209801d5875
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85555062"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99253390"
 ---
 # <a name="debug-application-proxy-application-issues"></a>Debuggen von Problemen mit Anwendungsproxyanwendungen 
 

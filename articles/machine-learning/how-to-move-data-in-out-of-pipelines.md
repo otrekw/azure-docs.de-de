@@ -7,18 +7,17 @@ ms.service: machine-learning
 ms.subservice: core
 ms.author: laobri
 author: lobrien
-ms.date: 01/11/2021
+ms.date: 02/01/2021
 ms.topic: conceptual
 ms.custom: how-to, contperf-fy20q4, devx-track-python, data4ml
-ms.openlocfilehash: 80a995b488f335ac2eb60ae18621acb2b1df58e2
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 894b0fcddaead6ce60e1becc7221c4f5e608de48
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98871535"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99492296"
 ---
 # <a name="moving-data-into-and-between-ml-pipeline-steps-python"></a>Verschieben von Daten in ML-Pipelineschritte und zwischen ML-Pipelineschritten (Python)
-
 
 
 Dieser Artikel enthält Code zum Importieren, Transformieren und Verschieben von Daten zwischen Schritten in einer Azure Machine Learning-Pipeline. Eine Übersicht über die Funktionsweise von Daten in Azure Machine Learning finden Sie unter [Zugreifen auf Daten in Azure Storage-Diensten](how-to-access-data.md). Informationen zu den Vorteilen und zur Struktur von Azure Machine Learning-Pipelines finden Sie unter [Beschreibung von Azure Machine Learning-Pipelines](concept-ml-pipelines.md).
@@ -176,7 +175,7 @@ Sie können den Inhalt des `OutputFileDatasetConfig`-Objekts am Ende einer Ausf�
 ```python
 #get blob datastore already registered with the workspace
 blob_store= ws.datastores['my_blob_store']
-OutputFileDatasetConfig(name="clean_data", destination=blob_store).as_upload(overwrite=False)
+OutputFileDatasetConfig(name="clean_data", destination=(blob_store, 'outputdataset')).as_upload(overwrite=False)
 ```
 
 > [!NOTE]
@@ -210,7 +209,7 @@ Im folgenden Code
 ```python
 # get adls gen 2 datastore already registered with the workspace
 datastore = workspace.datastores['my_adlsgen2']
-step1_output_data = OutputFileDatasetConfig(name="processed_data", destination=datastore).as_upload()
+step1_output_data = OutputFileDatasetConfig(name="processed_data", destination=(datastore, "mypath/{run-id}/{output-name}")).as_upload()
 
 step1 = PythonScriptStep(
     name="generate_data",

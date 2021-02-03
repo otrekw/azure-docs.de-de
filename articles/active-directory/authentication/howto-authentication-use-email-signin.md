@@ -10,12 +10,12 @@ ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: calui
-ms.openlocfilehash: 0ca5f6a853852acbb4ef97adfce2364592bae270
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 4e39d7f15e3ca3c6e241c767a5f881d7170c6379
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97559839"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99255966"
 ---
 # <a name="sign-in-to-azure-active-directory-using-email-as-an-alternate-login-id-preview"></a>Anmelden bei Azure Active Directory per E-Mail-Adresse als alternative Anmelde-ID (Vorschauversion)
 
@@ -113,7 +113,7 @@ Während der Vorschauphase können Sie die Funktion zur Anmeldung per E-Mail-Adr
 1. Überprüfen Sie, ob die Richtlinie *HomeRealmDiscoveryPolicy* in Ihrem Mandanten bereits vorhanden ist, indem Sie das Cmdlet [Get-AzureADPolicy][Get-AzureADPolicy] wie folgt ausführen:
 
     ```powershell
-    Get-AzureADPolicy | where-object {$_.Type -eq "HomeRealmDiscoveryPolicy"} | fl *
+    Get-AzureADPolicy | Where-Object Type -eq "HomeRealmDiscoveryPolicy" | Format-List *
     ```
 
 1. Wenn derzeit keine Richtlinie konfiguriert ist, gibt der Befehl nichts zurück. Wenn eine Richtlinie zurückgegeben wird, können Sie diesen Schritt überspringen und mit dem nächsten Schritt fortfahren, um eine vorhandene Richtlinie zu aktualisieren.
@@ -121,10 +121,22 @@ Während der Vorschauphase können Sie die Funktion zur Anmeldung per E-Mail-Adr
     Um die Richtlinie *HomeRealmDiscoveryPolicy* dem Mandanten hinzuzufügen, verwenden Sie das Cmdlet [New-AzureADPolicy][New-AzureADPolicy], und legen Sie das *AlternateIdLogin*-Attribut auf *"Enabled": true* wie im folgenden Beispiel fest:
 
     ```powershell
-    New-AzureADPolicy -Definition @('{"HomeRealmDiscoveryPolicy" :{"AlternateIdLogin":{"Enabled": true}}}') `
-        -DisplayName "BasicAutoAccelerationPolicy" `
-        -IsOrganizationDefault $true `
-        -Type "HomeRealmDiscoveryPolicy"
+    $AzureADPolicyDefinition = @(
+      @{
+         "HomeRealmDiscoveryPolicy" = @{
+            "AlternateIdLogin" = @{
+               "Enabled" = $true
+            }
+         }
+      } | ConvertTo-JSON -Compress
+    )
+    $AzureADPolicyParameters = @{
+      Definition            = $AzureADPolicyDefinition
+      DisplayName           = "BasicAutoAccelerationPolicy"
+      IsOrganizationDefault = $true
+      Type                  = "HomeRealmDiscoveryPolicy"
+    }
+    New-AzureADPolicy @AzureADPolicyParameters
     ```
 
     Wenn die Richtlinie erfolgreich erstellt wurde, gibt der Befehl die Richtlinien-ID zurück, wie in der folgenden Beispielausgabe dargestellt:
@@ -156,17 +168,31 @@ Während der Vorschauphase können Sie die Funktion zur Anmeldung per E-Mail-Adr
     Im folgenden Beispiel wird das  *AlternateIdLogin*-Attribut hinzugefügt und das möglicherweise bereits festgelegte  *AllowCloudPasswordValidation*-Attribut beibehalten:
 
     ```powershell
-    Set-AzureADPolicy -id b581c39c-8fe3-4bb5-b53d-ea3de05abb4b `
-        -Definition @('{"HomeRealmDiscoveryPolicy" :{"AllowCloudPasswordValidation":true,"AlternateIdLogin":{"Enabled": true}}}') `
-        -DisplayName "BasicAutoAccelerationPolicy" `
-        -IsOrganizationDefault $true `
-        -Type "HomeRealmDiscoveryPolicy"
+    $AzureADPolicyDefinition = @(
+      @{
+         "HomeRealmDiscoveryPolicy" = @{
+            "AllowCloudPasswordValidation" = $true
+            "AlternateIdLogin" = @{
+               "Enabled" = $true
+            }
+         }
+      } | ConvertTo-JSON -Compress
+    )
+    $AzureADPolicyParameters = @{
+      ID                    = "b581c39c-8fe3-4bb5-b53d-ea3de05abb4b"
+      Definition            = $AzureADPolicyDefinition
+      DisplayName           = "BasicAutoAccelerationPolicy"
+      IsOrganizationDefault = $true
+      Type                  = "HomeRealmDiscoveryPolicy"
+    }
+    
+    Set-AzureADPolicy @AzureADPolicyParameters
     ```
 
     Vergewissern Sie sich, dass die aktualisierte Richtlinie ihre Änderungen aufweist und dass das *AlternateIdLogin*-Attribut jetzt aktiviert ist:
 
     ```powershell
-    Get-AzureADPolicy | where-object {$_.Type -eq "HomeRealmDiscoveryPolicy"} | fl *
+    Get-AzureADPolicy | Where-Object Type -eq "HomeRealmDiscoveryPolicy" | Format-List *
     ```
 
 Nachdem die Richtlinie angewendet wurde, kann es bis zu einer Stunde dauern, bis Benutzer sich mit Ihrer alternativen Anmelde-ID anmelden können.
@@ -207,7 +233,12 @@ Sie benötigen die Berechtigungen als *Mandantenadministrator*, um die folgenden
 4. Wenn für dieses Feature keine Richtlinien für gestaffelte Rollouts vorhanden sind, erstellen Sie eine neue Richtlinie für gestaffelte Rollouts, und notieren Sie sich die Richtlinien-ID:
 
    ```powershell
-   New-AzureADMSFeatureRolloutPolicy -Feature EmailAsAlternateId -DisplayName "EmailAsAlternateId Rollout Policy" -IsEnabled $true
+   $AzureADMSFeatureRolloutPolicy = @{
+      Feature    = "EmailAsAlternateId"
+      DisplayName = "EmailAsAlternateId Rollout Policy"
+      IsEnabled   = $true
+   }
+   New-AzureADMSFeatureRolloutPolicy @AzureADMSFeatureRolloutPolicy
    ```
 
 5. Suchen Sie die directoryObject-ID für die Gruppe, die der Richtlinie für gestaffelte Rollouts hinzugefügt werden soll. Notieren Sie sich den Wert, der für den *Id*-Parameter zurückgegeben wird, da Sie ihn im nächsten Schritt benötigen.
@@ -250,7 +281,7 @@ Wenn Benutzer Probleme mit Anmeldeereignissen mit Ihrer E-Mail-Adresse haben, ve
 1. Vergewissern Sie sich, dass für die Azure AD-Richtlinie *HomeRealmDiscoveryPolicy* das *AlternateIdLogin*-Attribut auf *"Enabled": true* festgelegt ist:
 
     ```powershell
-    Get-AzureADPolicy | where-object {$_.Type -eq "HomeRealmDiscoveryPolicy"} | fl *
+    Get-AzureADPolicy | Where-Object Type -eq "HomeRealmDiscoveryPolicy" | Format-List *
     ```
 
 ## <a name="next-steps"></a>Nächste Schritte

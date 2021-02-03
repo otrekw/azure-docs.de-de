@@ -3,7 +3,7 @@ title: Headerbasiertes einmaliges Anmelden für lokale Apps mit dem Azure AD-Anw
 description: Es wird beschrieben, wie Sie einmaliges Anmelden für lokale Anwendungen bereitstellen, die per headerbasierter Authentifizierung geschützt sind.
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 10/05/2020
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: c30d8a66cf9deffaa32e5ec0356a9067575b77e8
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: d4cd69a90c4af2f996bd965ffaa145dce761018f
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98660701"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99259535"
 ---
 # <a name="header-based-single-sign-on-for-on-premises-apps-with-azure-ad-app-proxy-preview"></a>Headerbasiertes einmaliges Anmelden für lokale Apps mit dem Azure AD-Anwendungsproxy (Vorschau)
 

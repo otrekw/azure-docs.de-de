@@ -3,7 +3,7 @@ title: Ausblenden einer Unternehmensanwendung auf der Benutzeroberfläche in Azu
 description: Ausblenden einer Unternehmensanwendung auf der Benutzeroberfläche in Zugriffsbereichen von Azure Active Directory oder Microsoft 365-Anwendungsstartern.
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -12,12 +12,12 @@ ms.date: 03/25/2020
 ms.author: kenwith
 ms.reviewer: kasimpso
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ef1abd1d72e4435aa59bbb9a99f3cc423f11268e
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: 8469b48b92f3f9a645a0c05441e6c1943b02e16f
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96858297"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99258879"
 ---
 # <a name="hide-enterprise-applications-from-end-users-in-azure-active-directory"></a>Ausblenden von Unternehmensanwendung für Endbenutzer in Azure Active Directory
 

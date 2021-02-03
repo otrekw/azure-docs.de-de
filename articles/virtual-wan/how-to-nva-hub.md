@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to create a Network Virtual Appliance (NVA) in my Virtual WAN hub.
-ms.openlocfilehash: 7a52d3971e4ec0cb8ec104a57ba7fb4057c23b72
-ms.sourcegitcommit: f6f928180504444470af713c32e7df667c17ac20
+ms.openlocfilehash: 1f80da4014d4b6b27155db17d32800e54b51f40d
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97964642"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99258064"
 ---
 # <a name="how-to-create-a-network-virtual-appliance-in-an-azure-virtual-wan-hub-preview"></a>Erstellen eines virtuellen Netzwerkgeräts in einem Azure Virtual WAN-Hub (Vorschau)
 
@@ -21,8 +21,7 @@ In diesem Artikel wird veranschaulicht, wie Sie mit Virtual WAN über ein **virt
 
 Die Schritte in diesem Artikel unterstützen Sie bei der Erstellung eines virtuellen **Barracuda CloudGen-WAN**-Netzwerkgeräts im Virtual WAN-Hub. Um diese Übung abzuschließen, benötigen Sie ein lokales Barracuda-Gerät (Barracuda Cloud Premise Device, CPE) und eine Lizenz für das Barracuda CloudGen-WAN-Gerät, das Sie im Hub bereitstellen, bevor Sie beginnen.
 
-Eine Dokumentation zur Bereitstellung von **Cisco SD-WAN** innerhalb von Azure Virtual WAN finden Sie unter [Cisco Cloud OnRamp für Multi-Cloud](https://www.cisco.com/c/en/us/td/docs/routers/sdwan/configuration/cloudonramp/ios-xe-17/cloud-onramp-book-xe/cloud-onramp-multi-cloud.html#Cisco_Concept.dita_c61e0e7a-fff8-4080-afee-47b81e8df701). Um Ihr Konto zu registrieren und die erforderlichen Cisco SD-WAN-Lizenzen zu erhalten, senden Sie eine E-Mail an Cisco: vwan_public_preview@external.cisco.com.
-
+Eine Dokumentation zur Bereitstellung von **Cisco SD-WAN** innerhalb von Azure Virtual WAN finden Sie unter [Cisco Cloud OnRamp für Multi-Cloud](https://www.cisco.com/c/en/us/td/docs/routers/sdwan/configuration/cloudonramp/ios-xe-17/cloud-onramp-book-xe/cloud-onramp-multi-cloud.html#Cisco_Concept.dita_c61e0e7a-fff8-4080-afee-47b81e8df701). 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

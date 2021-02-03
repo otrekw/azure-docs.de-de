@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 3d2652d2f6c1bb56dd009a9e4de375c42786986d
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 50ab5a0d47292e36216a565a5bd39fbe7e850131
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98734998"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99494011"
 ---
 # <a name="create-azure-arc-data-controller-using-the-azure-data-cli-azdata"></a>Erstellen eines Azure Arc-Datencontrollers mithilfe von [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)]
 
@@ -269,6 +269,8 @@ Nachdem Sie den Befehl ausgeführt haben, fahren Sie mit [Überwachen des Erstel
 Azure Red Hat OpenShift erfordert eine Einschränkung des Sicherheitskontexts.
 
 #### <a name="apply-the-security-context"></a>Wenden Sie den Sicherheitskontext an.
+
+Bevor Sie den Datencontroller in Azure Red Hat OpenShift erstellen, müssen Sie bestimmte Sicherheitskontexteinschränkungen (Security Context Constraints, SCC) anwenden. Für das Vorschaurelease lockern diese die Sicherheitseinschränkungen. In zukünftigen Releases werden aktualisierte Sicherheitskontexteinschränkungen bereitgestellt.
 
 [!INCLUDE [apply-security-context-constraint](includes/apply-security-context-constraint.md)]
 

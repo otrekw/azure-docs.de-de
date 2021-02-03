@@ -3,7 +3,7 @@ title: Problem beim Konfigurieren der Benutzerbereitstellung für eine Azure AD-
 description: Problembehandlung für häufige Probleme beim Konfigurieren der Benutzerbereitstellung für eine bereits im Azure AD-Anwendungskatalog aufgeführte Anwendung
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
@@ -11,12 +11,12 @@ ms.topic: troubleshooting
 ms.date: 09/03/2019
 ms.author: kenwith
 ms.reviewer: asteen
-ms.openlocfilehash: 306c3771c0392bbc97260a726e153cfd385cebcd
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 651bc199a43881add7faa00a9d1cf78000de6944
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95994790"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99256271"
 ---
 # <a name="problem-configuring-user-provisioning-to-an-azure-ad-gallery-application"></a>Problem beim Konfigurieren der Benutzerbereitstellung für eine Azure AD-Kataloganwendung
 

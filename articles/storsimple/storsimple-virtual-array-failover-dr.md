@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 509a3ac383cebd91821e9c4b872c253ab3b0a947
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 6a321b2eb79ea01bbf94e1a413c189ac7f4614ad
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96005859"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99096422"
 ---
 # <a name="disaster-recovery-and-device-failover-for-your-storsimple-virtual-array-via-azure-portal"></a>Notfallwiederherstellung und Gerätefailover für StorSimple Virtual Array über das Azure-Portal
 
@@ -156,7 +156,7 @@ Führen Sie die folgenden Schritte aus, um Ihr Gerät auf einem virtuellen StorS
     1. Wählen Sie das StorSimple-Gerät aus, das Sie als Zielgerät für das Failover verwendet haben, und klicken Sie darauf.
     2. Wechseln Sie zu **Einstellungen > Verwaltung > Freigaben** (oder **Volumes**, wenn es sich um einen iSCSI-Server handelt). Auf dem Blatt **Freigaben** können Sie alle Freigaben (Volumes) des alten Geräts anzeigen.
         ![Screenshot des Blatts „Geräte“. Das Zielgerät wird mit dem Status „Online“ angezeigt.](./media/storsimple-virtual-array-failover-dr/failover9.png)
-14. Sie müssen [einen DNS-Alias-Eintrag erstellen](https://support.microsoft.com/kb/168322). Dadurch werden alle Anwendungen, die versuchen, eine Verbindung herzustellen, auf das neue Gerät umgeleitet.
+14. Sie müssen [einen DNS-Alias-Eintrag erstellen](https://web.archive.org/web/20150307000707/http://support.microsoft.com:80/kb/168322). Dadurch werden alle Anwendungen, die versuchen, eine Verbindung herzustellen, auf das neue Gerät umgeleitet.
 
 ## <a name="errors-during-dr"></a>Fehler bei der Notfallwiederherstellung
 

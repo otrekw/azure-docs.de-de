@@ -3,19 +3,19 @@ title: Grundlegendes zum kennwortbasierten einmaligen Anmelden (Single Sign-On, 
 description: Grundlegendes zum kennwortbasierten einmaligen Anmelden (Single Sign-On, SSO) für Apps bei Azure Active Directory
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/29/2020
 ms.author: kenwith
-ms.openlocfilehash: 7f9d29fee78c01dd3b1ee79d564297fa0cef14d3
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: bac04bd70469d7b9c4d9485b6a87fd7133967154
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98219877"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99255304"
 ---
 # <a name="understand-password-based-single-sign-on"></a>Grundlegendes zum kennwortbasierten einmaligen Anmelden
 
@@ -54,7 +54,7 @@ Die Verwendung von Azure AD als Identitätsanbieter und das Konfigurieren des e
 In der [Schnellstartserie](view-applications-portal.md) haben Sie erfahren, wie Sie eine App zu Ihrem Mandanten hinzufügen, sodass Azure AD weiß, dass es als Identitätsanbieter für die App verwendet wird. Einige Apps sind bereits vorkonfiguriert und werden im Azure AD-Katalog angezeigt. Andere Apps befinden sich nicht im Katalog, und Sie müssen eine generische App erstellen und manuell konfigurieren. Je nach App ist die Option für das kennwortbasierte einmalige Anmelden möglicherweise nicht verfügbar. Wenn die Option für das kennwortbasierte einmalige Anmelden auf der SSO-Seite für die App nicht aufgeführt ist, ist sie nicht verfügbar.
 
 > [!IMPORTANT]
-> Für kennwortbasiertes SSO ist die Browsererweiterung „Meine Apps“ erforderlich. Weitere Informationen finden Sie unter [Planen einer Bereitstellung von „Meine Apps“](access-panel-deployment-plan.md).
+> Für kennwortbasiertes SSO ist die Browsererweiterung „Meine Apps“ erforderlich. Weitere Informationen finden Sie unter [Planen einer Bereitstellung von „Meine Apps“](my-apps-deployment-plan.md).
 
 Die Konfigurationsseite für das kennwortbasierte einmalige Anmelden ist einfach. Sie enthält nur die URL der Anmeldeseite, die von der App verwendet wird. Bei dieser Zeichenfolge muss es sich um die Seite handeln, die das Eingabefeld für den Benutzernamen enthält.
 

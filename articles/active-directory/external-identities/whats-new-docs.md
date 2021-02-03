@@ -1,7 +1,7 @@
 ---
 title: Neuerungen bei externen Azure Active Directory-Identitäten
 description: Neue und aktualisierte Dokumentation für externe Azure Active Directory-Identitäten
-ms.date: 12/15/2020
+ms.date: 02/01/2021
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: reference
@@ -9,21 +9,27 @@ ms.workload: identity
 ms.author: kenwith
 author: kenwith
 manager: CelesteDG
-ms.openlocfilehash: e614507fbcfce5fc006983e0be7963223bb0b7ed
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 84adb08231589ae636c6a6926a4019a8a070a62e
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97562377"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99258862"
 ---
 # <a name="azure-active-directory-external-identities-whats-new"></a>Externe Azure Active Directory-Identitäten: Neuerungen
 
 Hier erfahren Sie mehr über die Neuerungen in der Dokumentation für die externen Azure Active Directory-Identitäten. In diesem Artikel werden neu hinzugefügte Dokumente aufgelistet sowie Dokumente, die in den letzten drei Monaten grundlegend überarbeitet wurden. Informationen zu den Neuerungen beim Dienst für externe Identitäten finden Sie unter [Neuerungen in Azure Active Directory](../fundamentals/whats-new.md).
 
+## <a name="january-2021"></a>Januar 2021
+
+### <a name="updated-articles"></a>Aktualisierte Artikel
+- [Zulassen oder Blockieren von Einladungen für B2B-Benutzer von bestimmten Organisationen](allow-deny-list.md)
+- [Beschreibt, wie Benutzer in Ihrer Organisation Gastbenutzer zu einer App einladen können.](add-users-information-worker.md)
+
+
 ## <a name="december-2020"></a>Dezember 2020
 
 ### <a name="updated-articles"></a>Aktualisierte Artikel
-
 - [Häufig gestellte Fragen zur Azure Active Directory B2B-Zusammenarbeit](faq.md)
 - [Hinzufügen von Google als Identitätsanbieter für B2B-Gastbenutzer](google-federation.md)
 - [Identitätsanbieter für externe Identitäten](identity-providers.md)
