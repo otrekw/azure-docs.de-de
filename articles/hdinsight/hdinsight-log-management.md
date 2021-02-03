@@ -1,19 +1,16 @@
 ---
 title: Verwalten von Protokollen für einen HDInsight-Cluster – Azure HDInsight
 description: Ermitteln Sie die Typen, Größen und Aufbewahrungsrichtlinien für HDInsight-Aktivitätsprotokolldateien.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 02/05/2020
-ms.openlocfilehash: c2aa33ac9e92f6763c0d89f0a049409c1a6a4049
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 0a6e837284917129bb56c6230e68927b79e95dac
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92546023"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945271"
 ---
 # <a name="manage-logs-for-an-hdinsight-cluster"></a>Verwalten von Protokollen für einen HDInsight-Cluster
 
@@ -75,9 +72,9 @@ Für einen typischen HDInsight-Cluster werden mehrere Dienste und Open-Source-So
 
 ### <a name="view-cluster-configuration-settings-with-the-ambari-ui"></a>Anzeigen von Einstellungen zur Clusterkonfiguration mit der Ambari-Benutzeroberfläche
 
-Mit Apache Ambari wird die Verwaltung, Konfiguration und Überwachung eines HDInsight-Clusters vereinfacht, indem eine Webbenutzeroberfläche und eine REST-API bereitgestellt werden. Ambari ist in Linux-basierten HDInsight-Clustern enthalten. Wählen Sie im Azure-Portal auf der Seite „HDInsight“ den Bereich **Clusterdashboard** , um die Linkseite **Clusterdashboards** zu öffnen.  Wählen Sie als Nächstes den Bereich **HDInsight-Cluster-Dashboard** , um die Ambari-Benutzeroberfläche zu öffnen.  Sie werden aufgefordert, Ihre Anmeldeinformationen für den Cluster einzugeben.
+Mit Apache Ambari wird die Verwaltung, Konfiguration und Überwachung eines HDInsight-Clusters vereinfacht, indem eine Webbenutzeroberfläche und eine REST-API bereitgestellt werden. Ambari ist in Linux-basierten HDInsight-Clustern enthalten. Wählen Sie im Azure-Portal auf der Seite „HDInsight“ den Bereich **Clusterdashboard**, um die Linkseite **Clusterdashboards** zu öffnen.  Wählen Sie als Nächstes den Bereich **HDInsight-Cluster-Dashboard**, um die Ambari-Benutzeroberfläche zu öffnen.  Sie werden aufgefordert, Ihre Anmeldeinformationen für den Cluster einzugeben.
 
-Wählen Sie zum Öffnen einer Liste mit den Dienstansichten im Azure-Portal auf der Seite „HDInsight“ den Bereich **Ambari Views** .  Der Inhalt der Liste variiert in Abhängigkeit davon, welche Bibliotheken Sie installiert haben.  Beispielsweise werden ggf. YARN Queue Manager, Hive View und Tez View angezeigt.  Wählen Sie einen beliebigen Dienstlink aus, um die Konfigurations- und Dienstinformationen anzuzeigen.  Die Seite **Stack and Versions** (Stapel und Versionen) der Ambari-Benutzeroberfläche enthält Informationen zur Konfiguration und zum Dienstversionsverlauf der Clusterdienste. Wählen Sie zum Navigieren dieses Abschnitts der Ambari-Benutzeroberfläche das Menü **Admin** und dann die Option **Stack and Versions** (Stapel und Versionen).  Wählen Sie die Registerkarte **Versions** (Versionen), um Informationen zur Dienstversion anzuzeigen.
+Wählen Sie zum Öffnen einer Liste mit den Dienstansichten im Azure-Portal auf der Seite „HDInsight“ den Bereich **Ambari Views**.  Der Inhalt der Liste variiert in Abhängigkeit davon, welche Bibliotheken Sie installiert haben.  Beispielsweise werden ggf. YARN Queue Manager, Hive View und Tez View angezeigt.  Wählen Sie einen beliebigen Dienstlink aus, um die Konfigurations- und Dienstinformationen anzuzeigen.  Die Seite **Stack and Versions** (Stapel und Versionen) der Ambari-Benutzeroberfläche enthält Informationen zur Konfiguration und zum Dienstversionsverlauf der Clusterdienste. Wählen Sie zum Navigieren dieses Abschnitts der Ambari-Benutzeroberfläche das Menü **Admin** und dann die Option **Stack and Versions** (Stapel und Versionen).  Wählen Sie die Registerkarte **Versions** (Versionen), um Informationen zur Dienstversion anzuzeigen.
 
 ![Apache Ambari – Admin – Stapel und Versionen](./media/hdinsight-log-management/ambari-stack-versions.png)
 
@@ -158,7 +155,7 @@ Sie verfügen jetzt über ausreichende Informationen zum Aufstellen einer Protok
 
 Nachdem Sie festgelegt haben, welche Protokolle gelöscht werden können, können Sie die Protokollierungsparameter für viele Hadoop-Dienste anpassen, um Protokolldateien nach einem bestimmten Zeitraum automatisch zu löschen.
 
-Für bestimmte Protokolldateien können Sie einen kostengünstigeren Ansatz zur Archivierung von Protokolldateien verwenden. Für Azure Resource Manager-Aktivitätsprotokolle können Sie diesen Ansatz über das Azure-Portal untersuchen.  Richten Sie die Archivierung der Resource Manager-Protokolle ein, indem Sie im Azure-Portal für Ihre HDInsight-Instanz den Link **Aktivitätsprotokoll** wählen.  Wählen Sie oben auf der Seite „Aktivitätsprotokoll“ das Menüelement **Exportieren** , um den Bereich **Aktivitätsprotokoll exportieren** zu öffnen.  Geben Sie an, welches Abonnement und welche Region verwendet werden sollen, ob der Export in ein Speicherkonto durchgeführt werden soll und wie viele Tage die Protokolle aufbewahrt werden sollen. In diesem Bereich können Sie auch angeben, ob ein Event Hub exportiert werden soll.
+Für bestimmte Protokolldateien können Sie einen kostengünstigeren Ansatz zur Archivierung von Protokolldateien verwenden. Für Azure Resource Manager-Aktivitätsprotokolle können Sie diesen Ansatz über das Azure-Portal untersuchen.  Richten Sie die Archivierung der Resource Manager-Protokolle ein, indem Sie im Azure-Portal für Ihre HDInsight-Instanz den Link **Aktivitätsprotokoll** wählen.  Wählen Sie oben auf der Seite „Aktivitätsprotokoll“ das Menüelement **Exportieren**, um den Bereich **Aktivitätsprotokoll exportieren** zu öffnen.  Geben Sie an, welches Abonnement und welche Region verwendet werden sollen, ob der Export in ein Speicherkonto durchgeführt werden soll und wie viele Tage die Protokolle aufbewahrt werden sollen. In diesem Bereich können Sie auch angeben, ob ein Event Hub exportiert werden soll.
 
 ![Azure-Portal – Exportieren des Aktivitätsprotokolls (Vorschau)](./media/hdinsight-log-management/hdi-export-log-files.png)
 

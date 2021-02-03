@@ -12,12 +12,12 @@ ms.date: 12/01/2020
 ms.author: baselden
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0ca2ade1775d7224ce55ee1c51dfdd2ae417151e
-ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
+ms.openlocfilehash: 4185ffd644d54c419f42c78326ca10bf100443c3
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2020
-ms.locfileid: "97672380"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99051429"
 ---
 # <a name="azure-active-directory-deployment-plans"></a>Azure Active Directory-Bereitstellungspläne
 Sie suchen nach umfassenden Anleitungen für die Bereitstellung von Azure Active Directory-Funktionen (Azure AD)? In Azure AD-Bereitstellungsplänen werden der Geschäftswert, Planungsüberlegungen und Betriebsverfahren erläutert, die Sie zur erfolgreichen Bereitstellung gängiger Azure AD-Funktionen benötigen.
@@ -39,7 +39,7 @@ Verwenden Sie auf einer der Planseiten die Funktion Ihres Browsers zum Drucken a
 | Funktion | BESCHREIBUNG|
 | -| - |
 | [Einmaliges Anmelden](../manage-apps/plan-sso-deployment.md)| Einmaliges Anmelden ermöglicht Ihren Benutzern mit nur einer Anmeldung den Zugriff auf sämtliche Apps und Ressourcen, die sie für ihre Geschäftsaktivitäten benötigen. Nachdem sie sich angemeldet haben, können sie von Microsoft Office zu Salesforce, zu Box und zu internen Anwendungen wechseln, ohne ihre Anmeldeinformationen ein zweites Mal eingeben zu müssen. |
-| [Zugriffsbereich](../manage-apps/access-panel-deployment-plan.md)| Stellen Sie für Ihre Benutzer einen einfachen zentralen Ort zur Verfügung, über den diese alle Anwendungen ermitteln und darauf zugreifen können. Steigern Sie ihre Produktivität mit Self-Service-Funktionen wie dem Anfordern des Zugriffs auf Apps und Gruppen oder dem Verwalten des Zugriffs auf Ressourcen im Namen von anderen Personen. |
+| [Meine Apps](../manage-apps/my-apps-deployment-plan.md)| Stellen Sie für Ihre Benutzer einen einfachen zentralen Ort zur Verfügung, über den diese alle Anwendungen ermitteln und darauf zugreifen können. Steigern Sie ihre Produktivität mit Self-Service-Funktionen wie dem Anfordern des Zugriffs auf Apps und Gruppen oder dem Verwalten des Zugriffs auf Ressourcen im Namen von anderen Personen. |
 | [Geräte](../devices/plan-device-deployment.md) | In diesem Artikel erfahren Sie, wie Sie die Methoden zur Integration Ihres Geräts in Azure AD auswerten, den Implementierungsplan auswählen und wichtige Links zu den unterstützten Geräteverwaltungstools bereitstellen. |
 
 

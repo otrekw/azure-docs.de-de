@@ -2,15 +2,16 @@
 title: Aktivieren der Azure Automation-Updateverwaltung über das Azure-Portal
 description: In diesem Artikel erfahren Sie, wie Sie die Updateverwaltung über das Azure-Portal aktivieren.
 services: automation
-ms.date: 04/11/2019
-ms.topic: article
+ms.subservice: update-management
+ms.date: 01/07/2021
+ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: ac402587c8346c14f34b683ba10832c7779b660b
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 089c5fea6ac4a6fc4fb25af2d631335ef51cf4cc
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96182766"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99054905"
 ---
 # <a name="enable-update-management-from-the-azure-portal"></a>Aktivieren der Updateverwaltung über das Azure-Portal
 
@@ -24,7 +25,7 @@ Die Anzahl von Ressourcengruppen, die für die Verwaltung Ihrer virtuellen Compu
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * Azure-Abonnement. Wenn Sie noch kein Abonnement haben, können Sie Ihre [MSDN-Abonnentenvorteile aktivieren](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) oder sich für ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) registrieren.
-* [Automation-Konto](../index.yml) zum Verwalten von Computern.
+* [Automation-Konto](../automation-security-overview.md) zum Verwalten von Computern.
 * Ein [virtueller Computer](../../virtual-machines/windows/quick-create-portal.md).
 
 ## <a name="sign-in-to-azure"></a>Anmelden bei Azure

@@ -3,12 +3,12 @@ title: Sichern von Workloads mithilfe von Azure Backup Server
 description: In diesem Artikel erfahren Sie, wie Sie Ihre Umgebung für den Schutz und die Sicherung von Workloads mithilfe von Microsoft Azure Backup Server (MABS) vorbereiten.
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.openlocfilehash: 1be2af43f4d923a27fd96c5c0888a234725775a3
-ms.sourcegitcommit: 1b47921ae4298e7992c856b82cb8263470e9e6f9
+ms.openlocfilehash: d476c228a619f03f798c1a2cd6854a8d603c3637
+ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92056700"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98987021"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>Installieren und Durchführen eines Upgrades für Azure Backup Server
 
@@ -98,7 +98,7 @@ So bearbeiten Sie die Einstellung für die Speicherreplikation:
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 2. Falls Sie bereits einen Recovery Services-Tresor geöffnet haben, fahren Sie mit Schritt 3 fort. Wenn Sie keinen Recovery Services-Tresor geöffnet haben, sich aber im Azure-Portal befinden, wählen Sie im Hauptmenü **Durchsuchen** aus.
 
-   * Geben Sie in der Liste mit den Ressourcen **Recovery Services**ein.
+   * Geben Sie in der Liste mit den Ressourcen **Recovery Services** ein.
    * Wenn Sie mit der Eingabe beginnen, wird die Liste anhand Ihrer Eingaben gefiltert. Wählen Sie **Recovery Services-Tresore**, wenn der Eintrag angezeigt wird.
 
      ![Erstellen eines Recovery Services-Tresors – Schritt 1](./media/backup-azure-microsoft-azure-backup/open-recovery-services-vault.png)
@@ -303,13 +303,18 @@ Nachdem Sie den Status der Azure-Verbindung und des Azure-Abonnements kennen, k�
 
 ### <a name="recovering-from-loss-of-connectivity"></a>Wiederherstellung nach Verbindungsverlust
 
-Wenn Sie über eine Firewall oder einen Proxy verfügen, die bzw. der den Zugriff auf Azure verhindert, müssen Sie im Profil der Firewall bzw. des Proxys die folgenden Domänenadressen zulassen:
+Wenn Ihr Computer über einen eingeschränkten Internetzugriff verfügt, stellen Sie sicher, dass die Firewalleinstellungen auf dem Computer oder Proxy die folgenden URLs und IP-Adressen zulassen:
 
-* `http://www.msftncsi.com/ncsi.txt`
-* \*.Microsoft.com
-* \*.WindowsAzure.com
-* \*.microsoftonline.com
-* \*.windows.net
+* URLs
+  * `www.msftncsi.com`
+  * `*.Microsoft.com`
+  * `*.WindowsAzure.com`
+  * `*.microsoftonline.com`
+  * `*.windows.net`
+  * `www.msftconnecttest.com`
+* IP-Adressen
+  * 20.190.128.0/18
+  * 40.126.0.0/18
 
 Wählen Sie bei Verwendung von ExpressRoute-Microsoft-Peering die folgenden Dienste/Regionen aus:
 
@@ -325,7 +330,7 @@ Nach dem Wiederherstellen der Verbindung mit Azure für den Azure Backup Server-
 
 Es ist möglich, den Status eines Azure-Abonnements von *Abgelaufen* oder *Bereitstellung aufgehoben* in *Aktiv* zu ändern. Dies ist aber mit Auswirkungen auf das Produktverhalten verbunden, solange der Status nicht *Aktiv* lautet:
 
-* Ein Abonnement mit dem Status *Bereitstellung aufgehoben* verliert für den Zeitraum der Aufhebung die Funktionalität. Beim Festlegen auf *Aktiv*wird die Produktfunktionalität für Sicherung/Wiederherstellung wieder aktiviert. Die Sicherungsdaten auf der lokalen Festplatte können auch abgerufen werden, sofern sie mit einer ausreichend langen Beibehaltungsdauer versehen sind. Die Sicherungsdaten in Azure gehen aber unwiederbringlich verloren, wenn das Abonnement in den Status *Bereitstellung aufgehoben* versetzt wird.
+* Ein Abonnement mit dem Status *Bereitstellung aufgehoben* verliert für den Zeitraum der Aufhebung die Funktionalität. Beim Festlegen auf *Aktiv* wird die Produktfunktionalität für Sicherung/Wiederherstellung wieder aktiviert. Die Sicherungsdaten auf der lokalen Festplatte können auch abgerufen werden, sofern sie mit einer ausreichend langen Beibehaltungsdauer versehen sind. Die Sicherungsdaten in Azure gehen aber unwiederbringlich verloren, wenn das Abonnement in den Status *Bereitstellung aufgehoben* versetzt wird.
 * Für ein Abonnement mit dem Status *Abgelaufen* geht die Funktionalität nur so lange verloren, bis es wieder in den Status *Aktiv* versetzt wird. Alle für den Zeitraum, in dem sich das Abonnement im Status *Abgelaufen* befindet, geplanten Sicherungen werden nicht ausgeführt.
 
 ## <a name="upgrade-mabs"></a>Durchführen eines Upgrades von MABS

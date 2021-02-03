@@ -1,25 +1,22 @@
 ---
 title: Hochverfügbarkeitskomponenten in Azure HDInsight
 description: Überblick über die verschiedenen Hochverfügbarkeitskomponenten, die von HDInsight-Clustern verwendet werden.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/07/2020
-ms.openlocfilehash: 1ff7932f0afb128f6e7568ecdae602c6471db0bd
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 336fe91174a8fc6d73d6e45c5fd1e2bf244eda52
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92539716"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945312"
 ---
 # <a name="high-availability-services-supported-by-azure-hdinsight"></a>Von Azure HDInsight unterstützte Hochverfügbarkeitsdienste
 
 HDInsight wurde mit einer einzigartigen Architektur entwickelt, um Hochverfügbarkeit (HA) wichtiger Dienste sicherzustellen und Ihnen ein optimales Maß an Verfügbarkeit für Ihre Analysekomponenten bereitzustellen. Einige Komponenten dieser Architektur wurden von Microsoft zur Bereitstellung eines automatischen Failovers entwickelt. Andere Komponenten sind standardmäßige Apache-Komponenten, die zur Unterstützung bestimmter Dienste bereitgestellt werden. In diesem Artikel wird die Architektur des Hochverfügbarkeitsdienst-Modells in HDInsight erläutert und erklärt, wie HDInsight Failover für Hochverfügbarkeitsdienste unterstützt. Außerdem werden bewährte Methoden für die Wiederherstellung nach anderen Dienstunterbrechungen vorgestellt.
 
 > [!NOTE]
-> Dieser Artikel enthält Verweise auf den Begriff *Slave* , einen Begriff, den Microsoft nicht mehr verwendet. Sobald der Begriff aus der Software entfernt wurde, wird er auch aus diesem Artikel entfernt.
+> Dieser Artikel enthält Verweise auf den Begriff *Slave*, einen Begriff, den Microsoft nicht mehr verwendet. Sobald der Begriff aus der Software entfernt wurde, wird er auch aus diesem Artikel entfernt.
 
 ## <a name="high-availability-infrastructure"></a>Hochverfügbarkeitsinfrastruktur
 

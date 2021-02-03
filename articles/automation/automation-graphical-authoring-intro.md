@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: 161272fe35ee9ea1e0880b991273e5d1a79eafb4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ec74ca19978a4164289276d44b34eb14b694687f
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90987329"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99051580"
 ---
 # <a name="author-graphical-runbooks-in-azure-automation"></a>Erstellen von grafischen Azure Automation-Runbooks
 
@@ -51,7 +51,7 @@ Das Steuerelement "Test" wird beim ersten Start des grafischen Editors nicht ang
 
 ## <a name="use-activities"></a>Verwenden von Aktivitäten
 
-Aktivitäten sind die Bausteine eines Runbooks. Bei einer Aktivität kann es sich um ein PowerShell-Cmdlet, um ein untergeordnetes Runbook oder einen Workflow handeln. Sie können dem Runbook eine Aktivität hinzufügen, indem Sie mit der rechten Maustaste im Steuerelement „Bibliothek“ auf das Runbook klicken und die Option **Zur Canvas hinzufügen**auswählen. Anschließend können Sie die Aktivität per Drag & Drop an einer beliebigen Stelle auf der Canvas platzieren. Die Position der Aktivität auf der Canvas hat keinen Einfluss auf den Vorgang im Runbook. Sie können das Layout Ihres Runbooks so gestalten, wie es Ihnen zur visuellen Darstellung der Vorgänge am geeignetsten erscheint.
+Aktivitäten sind die Bausteine eines Runbooks. Bei einer Aktivität kann es sich um ein PowerShell-Cmdlet, um ein untergeordnetes Runbook oder einen Workflow handeln. Sie können dem Runbook eine Aktivität hinzufügen, indem Sie mit der rechten Maustaste im Steuerelement „Bibliothek“ auf das Runbook klicken und die Option **Zur Canvas hinzufügen** auswählen. Anschließend können Sie die Aktivität per Drag & Drop an einer beliebigen Stelle auf der Canvas platzieren. Die Position der Aktivität auf der Canvas hat keinen Einfluss auf den Vorgang im Runbook. Sie können das Layout Ihres Runbooks so gestalten, wie es Ihnen zur visuellen Darstellung der Vorgänge am geeignetsten erscheint.
 
 ![Zum Zeichenbereich hinzufügen](media/automation-graphical-authoring-intro/add-to-canvas-cmdlet.png)
 
@@ -95,7 +95,7 @@ Wenn Sie eine Wiederholung für eine Aktivität aktivieren, können Sie eine Ver
 
 Die Wiederholungsbedingung ist ein PowerShell-Ausdruck, der nach jeder Ausführung der Aktivität ausgewertet wird. Wenn der Ausdruck „True“ ergibt, wird die Aktivität erneut ausgeführt. Wenn der Ausdruck „False“ ergibt, wird die Aktivität nicht erneut ausgeführt, und das Runbook fährt mit der nächsten Aktivität fort.
 
-:::image type="content" source="media/automation-graphical-authoring-intro/retry-condition.png" alt-text="Screenshot der Einstellungen für das Aktivieren der Wiederholungsfunktion.":::
+:::image type="content" source="media/automation-graphical-authoring-intro/retry-condition.png" alt-text="Der Screenshot zeigt das Feld „Wiederholen, bis diese Bedingung wahr ist“ und Beispiele von PowerShell-Ausdrücken, die in der Wiederholungsbedingung verwendet werden können.":::
 
 Die Wiederholungsbedingung kann eine Variable namens `RetryData` enthalten, die Zugriff auf Informationen zu den Aktivitätswiederholungen bereitstellt. Diese Variable weist die in der folgenden Tabelle aufgeführten Eigenschaften auf:
 
@@ -373,7 +373,7 @@ Im folgenden Beispiel wird die Ausgabe einer Aktivität mit dem Namen `Get Twitt
 
 ## <a name="authenticate-to-azure-resources"></a>Authentifizieren bei Azure-Ressourcen
 
-Zur Verwaltung von Azure-Ressourcen verwendete Runbooks in Azure Automation erfordern eine Authentifizierung bei Azure. Das [ausführende Konto](./manage-runas-account.md) (auch als Dienstprinzipal bezeichnet) ist der Standardmechanismus, mit dem ein Automation-Runbook in Ihrem Abonnement auf Azure Resource Manager-Ressourcen zugreift. Diese Funktion können Sie einem grafischen Runbook hinzufügen, indem Sie der Canvas das Verbindungsobjekt `AzureRunAsConnection` hinzufügen, das das PowerShell-Cmdlet [Get-AutomationConnection](/system-center/sma/manage-global-assets) verwendet. Sie können auch das Cmdlet [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) hinzufügen. Dieses Szenario ist im folgenden Beispiel dargestellt.
+Zur Verwaltung von Azure-Ressourcen verwendete Runbooks in Azure Automation erfordern eine Authentifizierung bei Azure. Das [ausführende Konto](./automation-security-overview.md) (auch als Dienstprinzipal bezeichnet) ist der Standardmechanismus, mit dem ein Automation-Runbook in Ihrem Abonnement auf Azure Resource Manager-Ressourcen zugreift. Diese Funktion können Sie einem grafischen Runbook hinzufügen, indem Sie der Canvas das Verbindungsobjekt `AzureRunAsConnection` hinzufügen, das das PowerShell-Cmdlet [Get-AutomationConnection](/system-center/sma/manage-global-assets) verwendet. Sie können auch das Cmdlet [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) hinzufügen. Dieses Szenario ist im folgenden Beispiel dargestellt.
 
 ![Authentifizierungsaktivitäten für „Ausführen als“](media/automation-graphical-authoring-intro/authenticate-run-as-account.png)
 

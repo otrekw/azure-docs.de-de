@@ -3,12 +3,12 @@ title: Verwaltete Identitäten für Azure-Ressourcen mit Service Bus
 description: In diesem Artikel wird beschrieben, wie Sie mit verwalteten Identitäten auf Azure Service Bus-Entitäten (Warteschlangen, Themen und Abonnements) zugreifen.
 ms.topic: article
 ms.date: 01/21/2021
-ms.openlocfilehash: dac12820adf863a7e51457d34f9180543089fc7b
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: bd985acd9b775d6baef0abf488952e28c17aef2a
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98881566"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954309"
 ---
 # <a name="authenticate-a-managed-identity-with-azure-active-directory-to-access-azure-service-bus-resources"></a>Authentifizieren einer verwalteten Identität mit Azure Active Directory für den Zugriff auf Azure Service Bus-Ressourcen
 [Verwaltete Identitäten für Azure-Ressourcen](../active-directory/managed-identities-azure-resources/overview.md) ist ein Azure-übergreifendes Feature, mit dem Sie eine sichere Identität für die Bereitstellung erstellen können, in der Ihr Anwendungscode ausgeführt wird. Sie können dieser Identität dann Zugriffssteuerungsrollen zuordnen, um benutzerdefinierte Berechtigungen für den Zugriff auf bestimmte Azure-Ressourcen zu gewähren, die Ihre Anwendung benötigt.
@@ -138,8 +138,6 @@ Um Nachrichten zu senden oder zu empfangen, geben Sie den Namen des Namespace un
 
 > [!NOTE]
 > - Die verwaltete Identität kann nur in der Azure-Umgebung, in App Services, auf virtuellen Azure-Computern und in Skalierungsgruppen verwendet werden. Für .NET-Anwendungen bietet die vom Service Bus-NuGet-Paket verwendete Bibliothek „Microsoft.Azure.Services.AppAuthentication“ eine Abstraktion über dieses Protokoll und unterstützt eine lokale Entwicklungsumgebung. Mithilfe dieser Bibliothek können Sie zudem Ihren Code lokal auf dem Entwicklungscomputer testen. Hierzu verwenden Sie Ihr Benutzerkonto aus Visual Studio, aus der Azure CLI 2.0 oder der integrierten Active Directory-Authentifizierung. Weitere Informationen zu Optionen für die lokale Entwicklung mit dieser Bibliothek finden Sie unter [Dienst-zu-Dienst-Authentifizierung in Azure Key Vault mithilfe von .NET](/dotnet/api/overview/azure/service-to-service-authentication).  
-> 
-> - Verwaltete Identitäten funktionieren zurzeit nicht mit App Service-Bereitstellungsslots.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

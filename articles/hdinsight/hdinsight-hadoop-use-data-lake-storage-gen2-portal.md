@@ -3,17 +3,16 @@ title: Erstellen einer Azure HDInsight-Instanz – Azure Data Lake Storage Gen2
 description: Hier erfahren Sie, wie Sie über das Portal Azure Data Lake Storage Gen2 mit Azure HDInsight-Clustern verwenden können.
 author: guyhay
 ms.author: guyhay
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 09/17/2020
-ms.openlocfilehash: 104424c1e3bd1df69106db7da45b744755b51e82
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d54c005ffb17571be172b5716723febb742253a3
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91858728"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945385"
 ---
 # <a name="create-a-cluster-with-data-lake-storage-gen2-using-the-azure-portal"></a>Erstellen eines Clusters mit Data Lake Storage Gen2 über das Azure-Portal
 

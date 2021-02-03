@@ -1,19 +1,16 @@
 ---
 title: Neustarten von VMs für Azure HDInsight-Cluster
 description: In diesem Artikel erfahren Sie, wie Sie nicht reagierende VMs für Azure HDInsight-Cluster neu starten.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 06/22/2020
-ms.openlocfilehash: 725b616fec9c2bc4a0540a7941098377e01732e2
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: a61735dba60860459d007eb54d4655f41d5ae51a
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92546465"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946867"
 ---
 # <a name="reboot-vms-for-hdinsight-clusters"></a>Neustarten von VMs für HDInsight-Cluster
 
@@ -32,7 +29,7 @@ Bei einem Neustart eines Knotens wird der Cluster möglicherweise fehlerhaft, un
 - Die Prozesstabelle auf der VM enthält viele Einträge, in denen der Prozess abgeschlossen wurde, jedoch mit dem Status „Beendet“ aufgeführt ist.
 
 > [!NOTE]
-> Das Neustarten von VMs wird für **HBase** - und **Kafka** -Cluster nicht unterstützt, da das Neustarten zu Datenverlusten führen kann.
+> Das Neustarten von VMs wird für **HBase**- und **Kafka**-Cluster nicht unterstützt, da das Neustarten zu Datenverlusten führen kann.
 
 ## <a name="use-powershell-to-reboot-vms"></a>Verwenden von PowerShell zum Neustarten von VMs
 
@@ -60,7 +57,7 @@ Sie können das Feature **Ausprobieren** in der API-Dokumentation verwenden, um 
     POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/listHosts?api-version=2018-06-01-preview
     ```
 
-1. Neustarten von Hosts. Nachdem Sie die Namen der Knoten abgerufen haben, die Sie neu starten möchten, starten Sie die Knoten neu, indem Sie dazu die REST-API verwenden. Für den Namen eines Knotens gilt folgendes Muster: *Knotentyp(wn/hn/zk/gw)*  + *x* + *erste sechs Zeichen des Clusternamens* . Weitere Informationen finden Sie unter [Virtuelle Computer: Neustarten von Hosts](/rest/api/hdinsight/virtualmachines/restarthosts).
+1. Neustarten von Hosts. Nachdem Sie die Namen der Knoten abgerufen haben, die Sie neu starten möchten, starten Sie die Knoten neu, indem Sie dazu die REST-API verwenden. Für den Namen eines Knotens gilt folgendes Muster: *Knotentyp(wn/hn/zk/gw)*  + *x* + *erste sechs Zeichen des Clusternamens*. Weitere Informationen finden Sie unter [Virtuelle Computer: Neustarten von Hosts](/rest/api/hdinsight/virtualmachines/restarthosts).
 
     ```
     POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HDInsight/clusters/{clusterName}/restartHosts?api-version=2018-06-01-preview

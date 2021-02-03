@@ -1,18 +1,15 @@
 ---
 title: Migrieren von Azure HDInsight 3.6 Apache Storm zu HDInsight 4.0 Apache Spark
 description: Die Unterschiede und der Ablauf beim Migrieren von Apache Storm-Workloads zu Spark Streaming oder Spark Structured Streaming
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 01/16/2019
-ms.openlocfilehash: e1262a4699bc42cb5b9a4398be2254854c5d5ff2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aa57c01558cfdcf069b17fad9e86f7640553dcfd
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86081195"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944792"
 ---
 # <a name="migrate-azure-hdinsight-36-apache-storm-to-hdinsight-40-apache-spark"></a>Migrieren von Azure HDInsight 3.6 Apache Storm zu HDInsight 4.0 Apache Spark
 

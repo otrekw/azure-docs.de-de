@@ -12,12 +12,12 @@ ms.date: 8/11/2020
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin
 ms.custom: aaddev
-ms.openlocfilehash: bd2bd67774eb55051e55e4433984c0fd1fda5240
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: f3bf9ffeb8da8e877a27ab8758572b2c8277146d
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98755583"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99090314"
 ---
 # <a name="signing-key-rollover-in-the-microsoft-identity-platform"></a>Rollover von Signaturschlüsseln in Microsoft Identity Platform
 In diesem Artikel wird erläutert, was Sie über die öffentlichen Schlüssel wissen müssen, die in Microsoft Identity Platform zum Signieren von Sicherheitstoken verwendet werden. Es sollte beachtet werden, dass für diese Schlüssel regelmäßig ein Rollover durchgeführt wird und dass in einem Notfall sofort ein Rollover erfolgen kann. Alle Anwendungen, die Microsoft Identity Platform verwenden, müssen den Schlüsselrollovervorgang programmgesteuert verarbeiten können. In diesem Artikel erfahren Sie, wie die Schlüssel funktionieren, wie Sie die Auswirkung des Rollovers auf Ihre Anwendung bewerten und wie Sie Ihre Anwendung bei Bedarf aktualisieren oder einen regelmäßigen manuellen Rolloverprozess für Schlüssel einrichten.
@@ -297,7 +297,7 @@ Wenn Sie eine Anwendung auf WIF v1. 0 erstellt haben, gibt es keine automatische
 
 Anweisungen zum Aktualisieren Ihrer Konfiguration mithilfe des FedUtil-Tools:
 
-1. Stellen Sie sicher, dass das WIF v1.0-SDK auf Ihrem Entwicklungscomputer für Visual Studio 2008 oder 2010 installiert ist. Falls es noch nicht installiert ist, können Sie es [hier herunterladen](https://www.microsoft.com/en-us/download/details.aspx?id=4451).
+1. Stellen Sie sicher, dass das WIF v1.0-SDK auf Ihrem Entwicklungscomputer für Visual Studio 2008 oder 2010 installiert ist. Falls es noch nicht installiert ist, können Sie es [hier herunterladen](https://www.softpedia.com/get/Programming/Other-Programming-Files/Windows-Identity-Foundation-SDK.shtml).
 2. Öffnen Sie die Projektmappe in Visual Studio, klicken Sie anschließend mit der rechten Maustaste auf das betreffende Projekt, und wählen Sie **Update federation metadata** (Verbundmetadaten aktualisieren) aus. Wenn diese Option nicht verfügbar ist, wurde FedUtil und/oder das WIF v1. 0 SDK nicht installiert.
 3. Wenn Sie dazu aufgefordert werden, wählen Sie **Aktualisieren** aus, um mit der Aktualisierung Ihrer Verbundmetadaten zu beginnen. Sofern Sie über Zugriff auf die Serverumgebung verfügen, in der die Anwendung gehostet wird, können Sie optional die [automatische Metadaten-Aktualisierungsplanung](/previous-versions/windows-identity-foundation/ee517272(v=msdn.10))von FedUtil verwenden.
 4. Klicken Sie auf **Fertig stellen** , um die Aktualisierung abzuschließen.

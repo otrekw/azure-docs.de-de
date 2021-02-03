@@ -5,12 +5,12 @@ services: automation
 ms.subservice: change-inventory-management
 ms.topic: conceptual
 ms.date: 10/14/2020
-ms.openlocfilehash: 842b0a92ba4a2cb6b3ceb54675ef95f9c8275311
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 9f7a37fa2101e4a386c9c6f2338f185b3ecdc986
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92209121"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99052616"
 ---
 # <a name="enable-change-tracking-and-inventory-from-a-runbook"></a>Aktivieren von Änderungsnachverfolgung und Bestand über ein Runbook
 
@@ -21,8 +21,8 @@ In diesem Artikel erfahren Sie, wie Sie [Änderungsnachverfolgung und Bestand](o
 
 Diese Methode verwendet zwei Runbooks:
 
-* **Enable-MultipleSolution** : Das primäre Runbook, das zur Eingabe von Konfigurationsinformationen auffordert, den angegebenen virtuellen Computer abfragt und andere Überprüfungen durchführt. Anschließend wird das Runbook **Enable-AutomationSolution** aufgerufen, um „Änderungsnachverfolgung und Bestand“ für jeden virtuellen Computer in der angegebenen Ressourcengruppe zu konfigurieren.
-* **Enable-AutomationSolution** : Aktiviert „Änderungsnachverfolgung und Bestand“ für mindestens einen in der Zielressourcengruppe angegebenen virtuellen Computer. Das Runbook überprüft, ob die Voraussetzungen erfüllt sind und die Log Analytics-VM-Erweiterung installiert ist, und installiert diese, sofern sie nicht gefunden wird. Darüber hinaus fügt es die virtuellen Computer zur Bereichskonfiguration im angegebenen Log Analytics-Arbeitsbereich hinzu, der mit dem Automation-Konto verknüpft ist.
+* **Enable-MultipleSolution**: Das primäre Runbook, das zur Eingabe von Konfigurationsinformationen auffordert, den angegebenen virtuellen Computer abfragt und andere Überprüfungen durchführt. Anschließend wird das Runbook **Enable-AutomationSolution** aufgerufen, um „Änderungsnachverfolgung und Bestand“ für jeden virtuellen Computer in der angegebenen Ressourcengruppe zu konfigurieren.
+* **Enable-AutomationSolution**: Aktiviert „Änderungsnachverfolgung und Bestand“ für mindestens einen in der Zielressourcengruppe angegebenen virtuellen Computer. Das Runbook überprüft, ob die Voraussetzungen erfüllt sind und die Log Analytics-VM-Erweiterung installiert ist, und installiert diese, sofern sie nicht gefunden wird. Darüber hinaus fügt es die virtuellen Computer zur Bereichskonfiguration im angegebenen Log Analytics-Arbeitsbereich hinzu, der mit dem Automation-Konto verknüpft ist.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -42,11 +42,11 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
 ## <a name="enable-change-tracking-and-inventory"></a>Aktivieren der Lösung für Änderungsnachverfolgung und Bestand
 
-1. Navigieren Sie im Azure-Portal zu **Automation-Konten** . Wählen Sie auf der Seite **Automation-Konten** Ihr Konto in der Liste aus.
+1. Navigieren Sie im Azure-Portal zu **Automation-Konten**. Wählen Sie auf der Seite **Automation-Konten** Ihr Konto in der Liste aus.
 
 1. Wählen Sie in Ihrem Automation-Konto unter **Konfigurationsverwaltung** die Option **Bestand** oder **Änderungsnachverfolgung** aus.
 
-1. Wählen Sie den Log Analytics-Arbeitsbereich aus, und klicken Sie dann auf **Aktivieren** . Während Bestand oder Änderungsnachverfolgung aktiviert wird, wird ein Banner angezeigt.
+1. Wählen Sie den Log Analytics-Arbeitsbereich aus, und klicken Sie dann auf **Aktivieren**. Während Bestand oder Änderungsnachverfolgung aktiviert wird, wird ein Banner angezeigt.
 
     ![Aktivieren der Lösung für Änderungsnachverfolgung und Bestand](media/enable-from-automation-account/enable-feature.png)
 
@@ -56,9 +56,9 @@ Für ein erfolgreiches Aktivieren der Updateverwaltung für Ihre virtuellen Comp
 
 1. Wählen Sie in Ihrem Automation-Konto unter **Freigegebene Ressourcen** die Option **Module** aus.
 
-2. Klicken Sie auf **Azure-Module aktualisieren** , um die Azure-Module auf die neueste Version zu aktualisieren.
+2. Klicken Sie auf **Azure-Module aktualisieren**, um die Azure-Module auf die neueste Version zu aktualisieren.
 
-3. Klicken Sie auf **Ja** , um alle vorhandenen Azure-Module auf die aktuelle Version zu aktualisieren.
+3. Klicken Sie auf **Ja**, um alle vorhandenen Azure-Module auf die aktuelle Version zu aktualisieren.
 
     ![Aktualisieren von Modulen](media/enable-from-runbook/update-modules.png)
 
@@ -76,9 +76,9 @@ Wenn „Änderungsnachverfolgung und Bestand“ aktiviert ist, können Sie einen
 
 1. Wählen Sie in Ihrem Automation-Konto unter **Konfigurationsverwaltung** die Option **Änderungsnachverfolgung** oder **Bestand** aus.
 
-2. Klicken Sie auf **Azure-VMs hinzufügen** , um Ihren virtuellen Computer hinzuzufügen.
+2. Klicken Sie auf **Azure-VMs hinzufügen**, um Ihren virtuellen Computer hinzuzufügen.
 
-3. Wählen Sie in der Liste Ihren virtuellen Computer aus, und klicken Sie auf **Aktivieren** . Dadurch wird „Änderungsnachverfolgung und Bestand“ für den virtuellen Computer aktiviert.
+3. Wählen Sie in der Liste Ihren virtuellen Computer aus, und klicken Sie auf **Aktivieren**. Dadurch wird „Änderungsnachverfolgung und Bestand“ für den virtuellen Computer aktiviert.
 
    ![Aktivieren von „Änderungsnachverfolgung und Bestand“ für einen virtuellen Computer](media/enable-from-runbook/enable-azure-vm.png)
 
@@ -89,42 +89,42 @@ Wenn „Änderungsnachverfolgung und Bestand“ aktiviert ist, können Sie einen
 
 1. Wählen Sie in Ihrem Automation-Konto unter **Prozessautomatisierung** die Option **Runbooks** aus.
 
-2. Klicken Sie auf **Katalog durchsuchen** .
+2. Klicken Sie auf **Katalog durchsuchen**.
 
-3. Suchen Sie nach **Update- und Änderungsnachverfolgung** .
+3. Suchen Sie nach **Update- und Änderungsnachverfolgung**.
 
-4. Wählen Sie das Runbook aus, und klicken Sie auf der Seite **Quelle anzeigen** auf **Importieren** .
+4. Wählen Sie das Runbook aus, und klicken Sie auf der Seite **Quelle anzeigen** auf **Importieren**.
 
-5. Klicken Sie auf **OK** , um das Runbook in das Automation-Konto zu importieren.
+5. Klicken Sie auf **OK**, um das Runbook in das Automation-Konto zu importieren.
 
    ![Importieren eines Runbooks für Setup](media/enable-from-runbook/import-from-gallery.png)
 
-6. Wählen Sie auf der Seite **Runbook** das Runbook **Enable-MultipleSolution** aus, und klicken Sie dann auf **Bearbeiten** . Wählen Sie im Text-Editor die Option **Veröffentlichen** aus.
+6. Wählen Sie auf der Seite **Runbook** das Runbook **Enable-MultipleSolution** aus, und klicken Sie dann auf **Bearbeiten**. Wählen Sie im Text-Editor die Option **Veröffentlichen** aus.
 
-7. Wenn Sie zum Bestätigen aufgefordert werden, klicken Sie auf **Ja** , um das Runbook zu veröffentlichen.
+7. Wenn Sie zum Bestätigen aufgefordert werden, klicken Sie auf **Ja**, um das Runbook zu veröffentlichen.
 
 ## <a name="start-the-runbook"></a>Starten des Runbooks
 
 „Änderungsnachverfolgung und Bestand“ muss für einen virtuellen Azure-Computer aktiviert sein, um dieses Runbook starten zu können. Hierfür sind ein vorhandener virtueller Computer und eine vorhandene Ressourcengruppe mit dem aktivierten Feature erforderlich, um mindestens einen virtuellen Computer in der Zielressourcengruppe zu konfigurieren.
 
-1. Öffnen Sie das Runbook **Enable-MultipleSolution** .
+1. Öffnen Sie das Runbook **Enable-MultipleSolution**.
 
    ![Runbook für mehrere Lösungen](media/enable-from-runbook/runbook-overview.png)
 
 2. Klicken Sie auf die Schaltfläche „Start“, und geben Sie die Parameterwerte in die folgenden Felder ein:
 
-   * **VMNAME** : Der Name eines vorhandenen virtuellen Computers, der „Änderungsnachverfolgung und Bestand“ hinzugefügt werden soll. Lassen Sie dieses Feld leer, um alle virtuellen Computer in der Ressourcengruppe hinzuzufügen.
-   * **VMRESOURCEGROUP** : Der Name der Ressourcengruppe für die zu aktivierenden VMs.
-   * **SUBSCRIPTIONID** : Die Abonnement-ID der zu aktivierenden neuen VM. Lassen Sie dieses Feld leer, um das Abonnement des Arbeitsbereichs zu verwenden. Wenn Sie eine andere Abonnement-ID verwenden, fügen Sie das ausführende Konto für das Automation-Konto als Mitwirkender für das Abonnement hinzu.
-   * **ALREADYONBOARDEDVM** : Der Name der VM, die bereits manuell für Updates aktiviert ist.
-   * **ALREADYONBOARDEDVMRESOURCEGROUP** : Der Name der Ressourcengruppe, der die VM angehört.
-   * **SOLUTIONTYPE** : Geben Sie **ChangeTracking** ein.
+   * **VMNAME**: Der Name eines vorhandenen virtuellen Computers, der „Änderungsnachverfolgung und Bestand“ hinzugefügt werden soll. Lassen Sie dieses Feld leer, um alle virtuellen Computer in der Ressourcengruppe hinzuzufügen.
+   * **VMRESOURCEGROUP**: Der Name der Ressourcengruppe für die zu aktivierenden VMs.
+   * **SUBSCRIPTIONID**: Die Abonnement-ID der zu aktivierenden neuen VM. Lassen Sie dieses Feld leer, um das Abonnement des Arbeitsbereichs zu verwenden. Wenn Sie eine andere Abonnement-ID verwenden, fügen Sie das ausführende Konto für das Automation-Konto als Mitwirkender für das Abonnement hinzu.
+   * **ALREADYONBOARDEDVM**: Der Name der VM, die bereits manuell für Updates aktiviert ist.
+   * **ALREADYONBOARDEDVMRESOURCEGROUP**: Der Name der Ressourcengruppe, der die VM angehört.
+   * **SOLUTIONTYPE**: Geben Sie **ChangeTracking** ein.
 
    ![Parameter für das Enable-MultipleSolution-Runbook](media/enable-from-runbook/runbook-parameters.png)
 
-3. Klicken Sie auf **OK** , um den Runbookauftrag zu starten.
+3. Klicken Sie auf **OK**, um den Runbookauftrag zu starten.
 
-4. Überwachen Sie den Status des Runbookauftrags und etwaige Fehler auf der Seite **Aufträge** .
+4. Überwachen Sie den Status des Runbookauftrags und etwaige Fehler auf der Seite **Aufträge**.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

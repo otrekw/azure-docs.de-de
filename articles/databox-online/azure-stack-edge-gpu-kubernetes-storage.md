@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 11/04/2020
+ms.date: 01/28/2021
 ms.author: alkohli
-ms.openlocfilehash: 34165071238ca3edf78ab9cca43639c23ce5ed2a
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 2d079f2fa3e67f1ec915a02de3e195ccac538209
+ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96448695"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99063309"
 ---
 # <a name="kubernetes-storage-management-on-your-azure-stack-edge-pro-gpu-device"></a>Kubernetes-Speicherverwaltung auf dem Azure Stack Edge Pro-GPU-Gerät
 
@@ -79,11 +79,11 @@ Dabei werden die folgenden Schritte ausgeführt:
 
 Auf dem Azure Stack Edge Pro-Gerät werden statisch bereitgestellte `PersistentVolumes` mithilfe der Speicherfunktionen des Geräts erstellt. Wenn Sie eine Freigabe bereitstellen und die Option **Freigabe mit Edgecomputing verwenden** aktiviert ist, wird durch diese Aktion automatisch eine PV-Ressource im Kubernetes-Cluster erstellt.
 
-![Erstellen einer lokalen Freigabe im Azure-Portal für die statische Bereitstellung](./media/azure-stack-edge-gpu-kubernetes-storage/static-provisioning-azure-portal-2.png)
+![Erstellen einer lokalen Freigabe im Azure-Portal für die statische Bereitstellung](./media/azure-stack-edge-gpu-kubernetes-storage/static-provisioning-azure-portal-1.png)
 
 Damit Sie Cloudtiering verwenden können, erstellen Sie eine Edge-Cloudfreigabe, bei der die Option „Freigabe mit Edgecomputing verwenden“ aktiviert ist. Für diese Freigabe wird automatisch ein PV erstellt. Alle Anwendungsdaten, die Sie in die Edge-Freigabe schreiben, werden per Tiering in die Cloud übertragen. 
 
-![Erstellen von Cloudfreigaben im Azure-Portal für die statische Bereitstellung](./media/azure-stack-edge-gpu-kubernetes-storage/static-provisioning-azure-portal-1.png)
+![Erstellen von Cloudfreigaben im Azure-Portal für die statische Bereitstellung](./media/azure-stack-edge-gpu-kubernetes-storage/static-provisioning-azure-portal-2.png)
 
 Sie können sowohl SMB- als auch NFS-Freigaben erstellen, um PVs statisch auf einem Azure Stack Edge Pro-Gerät bereitzustellen. Nachdem die PV-Bereitstellung erfolgt ist, übermitteln Sie ein PVC, um diesen Speicher zu beanspruchen. Im Folgenden finden Sie ein Beispiel für eine `yaml`-Datei für die PVC-Bereitstellung, die den Speicher beansprucht und die von Ihnen bereitgestellten Freigaben verwendet.
 

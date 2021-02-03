@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/06/2017
+ms.date: 01/29/2021
 ms.author: barclayn
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: e1383fc6cca34cac141ce9f1316b4df0879900aa
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: e3b06ce76ae77aa62b20b707a736e8e20e5f6c45
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92891997"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99090043"
 ---
 # <a name="assign-a-managed-identity-access-to-a-resource-using-azure-cli"></a>Zuweisen des Zugriffs auf eine Ressource für eine verwaltete Identität mithilfe der Azure CLI
 
@@ -33,7 +33,7 @@ Wenn Sie noch kein Azure-Konto haben, sollten Sie sich [für ein kostenloses Kon
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Lesen Sie [Was sind verwaltete Identitäten für Azure-Ressourcen?](overview.md), wenn Sie noch nicht mit verwalteten Identitäten für Azure-Ressourcen vertraut sind. Lesen Sie [Arten von verwalteten Identitäten](overview.md#managed-identity-types), um mehr über systemseitig zugewiesene und benutzerseitig zugewiesene Typen verwalteter Identitäten zu erfahren.
+- Wenn Sie mit verwalteten Identitäten für Azure-Ressourcen noch nicht vertraut sind, lesen Sie [Was sind verwaltete Identitäten für Azure-Ressourcen?](overview.md). Lesen Sie [Arten von verwalteten Identitäten](overview.md#managed-identity-types), um mehr über systemseitig zugewiesene und benutzerseitig zugewiesene Typen verwalteter Identitäten zu erfahren.
 
 [!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../../includes/azure-cli-prepare-your-environment-no-header.md)]
 

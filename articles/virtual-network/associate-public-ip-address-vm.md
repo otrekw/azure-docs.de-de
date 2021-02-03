@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/21/2019
 ms.author: allensu
-ms.openlocfilehash: 76f92b5da2331748fbbbfc68f1e456fd50dd71ee
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 6ea16da3844b8098d87d65e1016f92c69ae34067
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98223022"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945161"
 ---
 # <a name="associate-a-public-ip-address-to-a-virtual-machine"></a>Zuordnen einer öffentlichen IP-Adresse zu einem virtuellen Computer
 
@@ -65,7 +65,7 @@ Sie können das [Azure-Portal](#azure-portal), die [Azure CLI](#azure-cli) oder 
 Installieren Sie die [Azure CLI](/cli/azure/install-azure-cli?toc=%2fazure%2fvirtual-network%2ftoc.json), oder verwenden Sie Azure Cloud Shell. Azure Cloud Shell ist eine kostenlose Bash-Shell, die Sie direkt im Azure-Portal ausführen können. Die Azure CLI ist vorinstalliert und für die Verwendung mit Ihrem Konto konfiguriert. Klicken Sie in den folgenden CLI-Beispielen auf die Schaltfläche **Jetzt testen**. Durch den Klick auf **Jetzt testen** wird eine Cloud Shell aufgerufen, bei der Sie sich mit Ihrem Azure-Konto anmelden können.
 
 1. Wenn Sie die CLI lokal in Bash verwenden, melden Sie sich mit `az login` bei Azure an.
-2. Eine öffentliche IP-Adresse ist der IP-Konfiguration einer Netzwerkschnittstelle zugeordnet, die an einen virtuellen Computer angefügt ist. Verwenden Sie den Befehl [az network nic-ip-config update](/cli/azure/network/nic/ip-config?view=azure-cli-latest#az-network-nic-ip-config-update), um einer IP-Konfiguration eine öffentliche IP-Adresse zuzuordnen. Das folgende Beispiel ordnet die vorhandene öffentliche IP-Adresse *myVMPublicIP* zur IP-Konfiguration *ipconfigmyVM* der vorhandenen Netzwerkschnittstelle *myVMVMNic* zu, die sich in der Ressourcengruppe *myResourceGroup* befindet.
+2. Eine öffentliche IP-Adresse ist der IP-Konfiguration einer Netzwerkschnittstelle zugeordnet, die an einen virtuellen Computer angefügt ist. Verwenden Sie den Befehl [az network nic-ip-config update](/cli/azure/network/nic/ip-config#az-network-nic-ip-config-update), um einer IP-Konfiguration eine öffentliche IP-Adresse zuzuordnen. Das folgende Beispiel ordnet die vorhandene öffentliche IP-Adresse *myVMPublicIP* zur IP-Konfiguration *ipconfigmyVM* der vorhandenen Netzwerkschnittstelle *myVMVMNic* zu, die sich in der Ressourcengruppe *myResourceGroup* befindet.
   
    ```azurecli-interactive
    az network nic ip-config update \
@@ -75,7 +75,7 @@ Installieren Sie die [Azure CLI](/cli/azure/install-azure-cli?toc=%2fazure%2fvir
      --public-ip-address myVMPublicIP
    ```
 
-   - Wenn Sie nicht über eine vorhandene öffentliche IP-Adresse verfügen, verwenden Sie den Befehl [az network public-ip create](/cli/azure/network/public-ip?view=azure-cli-latest#az-network-public-ip-create), um eine solche Adresse zu erstellen. Der folgende Befehl beispielsweise erstellt eine öffentliche IP-Adresse mit dem Namen *myVMPublicIP* in der Ressourcengruppe *myResourceGroup*.
+   - Wenn Sie nicht über eine vorhandene öffentliche IP-Adresse verfügen, verwenden Sie den Befehl [az network public-ip create](/cli/azure/network/public-ip#az-network-public-ip-create), um eine solche Adresse zu erstellen. Der folgende Befehl beispielsweise erstellt eine öffentliche IP-Adresse mit dem Namen *myVMPublicIP* in der Ressourcengruppe *myResourceGroup*.
   
      ```azurecli-interactive
      az network public-ip create --name myVMPublicIP --resource-group myResourceGroup
@@ -84,7 +84,7 @@ Installieren Sie die [Azure CLI](/cli/azure/install-azure-cli?toc=%2fazure%2fvir
      > [!NOTE]
      > Dieser Befehl erstellt eine öffentliche IP-Adresse mit Standardwerten für verschiedene Einstellungen, die Sie möglicherweise anpassen möchten. Weitere Informationen zu den Einstellungen für öffentliche IP-Adressen finden Sie unter [Erstellen einer öffentlichen IP-Adresse](virtual-network-public-ip-address.md#create-a-public-ip-address). Die Adresse wird aus einem Pool mit öffentlichen IP-Adressen zugewiesen, der für die jeweilige Azure-Region verwendet wird. Eine Liste der in den einzelnen Regionen verwendeten Adresspools finden Sie hier: [Microsoft Azure Datacenter IP Ranges](https://www.microsoft.com/download/details.aspx?id=41653) (IP-Adressbereiche für Microsoft Azure-Rechenzentren).
 
-   - Wenn Sie die Namen der an Ihren virtuellen Computer angefügten Netzwerkschnittstellen nicht kennen, verwenden Sie den Befehl [az vm nic list](/cli/azure/vm/nic?view=azure-cli-latest#az-vm-nic-list), um die Netzwerkschnittstellen anzuzeigen. Der folgende Befehl listet z.B. die Namen der Netzwerkschnittstellen auf, die an den virtuellen Computer namens *myVM* in der Ressourcengruppe namens *myResourceGroup* angefügt sind:
+   - Wenn Sie die Namen der an Ihren virtuellen Computer angefügten Netzwerkschnittstellen nicht kennen, verwenden Sie den Befehl [az vm nic list](/cli/azure/vm/nic#az-vm-nic-list), um die Netzwerkschnittstellen anzuzeigen. Der folgende Befehl listet z.B. die Namen der Netzwerkschnittstellen auf, die an den virtuellen Computer namens *myVM* in der Ressourcengruppe namens *myResourceGroup* angefügt sind:
 
      ```azurecli-interactive
      az vm nic list --vm-name myVM --resource-group myResourceGroup
@@ -98,13 +98,13 @@ Installieren Sie die [Azure CLI](/cli/azure/install-azure-cli?toc=%2fazure%2fvir
 
      Im oben genannten Beispiel lautet der Name der Netzwerkschnittstelle *myVMVMNic*.
 
-   - Wenn Sie die Namen der IP-Konfigurationen für eine Netzwerkschnittstelle nicht kennen, verwenden Sie den Befehl [az network nic ip-config list](/cli/azure/network/nic/ip-config?view=azure-cli-latest#az-network-nic-ip-config-list), um die Konfigurationen abzurufen. Der folgende Befehl listet z.B. die Namen der IP-Konfigurationen auf, die für die Netzwerkschnittstelle namens *myVMVMNic* in der Ressourcengruppe namens *myResourceGroup* vorhanden sind:
+   - Wenn Sie die Namen der IP-Konfigurationen für eine Netzwerkschnittstelle nicht kennen, verwenden Sie den Befehl [az network nic ip-config list](/cli/azure/network/nic/ip-config#az-network-nic-ip-config-list), um die Konfigurationen abzurufen. Der folgende Befehl listet z.B. die Namen der IP-Konfigurationen auf, die für die Netzwerkschnittstelle namens *myVMVMNic* in der Ressourcengruppe namens *myResourceGroup* vorhanden sind:
 
      ```azurecli-interactive
      az network nic ip-config list --nic-name myVMVMNic --resource-group myResourceGroup --out table
      ```
 
-3. Verwenden Sie den Befehl [az vm list-ip-addresses](/cli/azure/vm?view=azure-cli-latest#az-vm-list-ip-addresses), um die öffentlichen IP-Adressen anzuzeigen, die der IP-Konfiguration zugewiesen sind. Das folgende Beispiel zeigt die IP-Adressen, die dem vorhandenen virtuellen Computer *myVM* in der Ressourcengruppe namens *myResourceGroup* zugewiesen sind.
+3. Verwenden Sie den Befehl [az vm list-ip-addresses](/cli/azure/vm#az-vm-list-ip-addresses), um die öffentlichen IP-Adressen anzuzeigen, die der IP-Konfiguration zugewiesen sind. Das folgende Beispiel zeigt die IP-Adressen, die dem vorhandenen virtuellen Computer *myVM* in der Ressourcengruppe namens *myResourceGroup* zugewiesen sind.
 
    ```azurecli-interactive
    az vm list-ip-addresses --name myVM --resource-group myResourceGroup --out table

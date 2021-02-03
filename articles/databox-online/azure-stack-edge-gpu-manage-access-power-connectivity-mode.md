@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 11/04/2020
+ms.date: 01/28/2021
 ms.author: alkohli
-ms.openlocfilehash: 38dcb32b2993838f8c3f13334e0bc44e9146f113
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: b1b5c236c147f060ca1c05e8ed9de12e7e88cf68
+ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96448595"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99061805"
 ---
 # <a name="manage-access-power-and-connectivity-mode-for-your-azure-stack-edge-pro-gpu"></a>Verwalten des Zugriffs, der Energieeinstellungen und des Konnektivitätsmodus für Ihr Azure Stack Edge Pro-GPU-Gerät
 
@@ -54,7 +54,7 @@ Beim Workflow zum Zurücksetzen muss der Benutzer das alte Kennwort nicht kennen
 
 1. Navigieren Sie im Azure-Portal zu **Übersicht > Administratorkennwort zurücksetzen**.
 
-    ![Screenshot für das Gerät mit ausgewählter Option „Gerätekennwort zurücksetzen“](media/azure-stack-edge-manage-access-power-connectivity-mode/reset-password-1.png)
+    ![Screenshot für das Gerät mit ausgewählter Option „Gerätekennwort zurücksetzen“](media/azure-stack-edge-gpu-manage-access-power-connectivity-mode/reset-password-1.png)
 
 
 2. Geben Sie das neue Kennwort ein, und bestätigen Sie es. Das angegebene Kennwort muss zwischen 8 und 16 Zeichen umfassen. Das Kennwort muss drei der folgenden Zeichen enthalten: Großbuchstaben, Kleinbuchstaben, Ziffern und Sonderzeichen. Klicken Sie auf **Zurücksetzen**.

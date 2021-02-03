@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 04/06/2020
 ms.author: sudbalas
 Customer intent: As a key vault administrator, I want to learn the options available to monitor the health of my vaults
-ms.openlocfilehash: 5946a5d6d1adb5f609f497b4c2194582f624fe24
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 1b447e907bca3f8d21f522d888632aa687fd0f91
+ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97934593"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99070660"
 ---
 # <a name="monitoring-and-alerting-for-azure-key-vault"></a>Überwachung und Warnungen für Azure Key Vault
 
@@ -203,12 +203,13 @@ Beachten Sie die folgenden Konfigurationsparameter.
 
 7. Erstellen der Warnung 
 
+### <a name="example-email-alert"></a>Beispiel-E-Mail-Warnung 
+
+> [!div class="mx-imgBorder"]
+> ![Screenshot: Hervorgehobene Informationen, die zum Konfigurieren einer E-Mail-Warnung erforderlich sind](../media/alert-20.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Glückwunsch! Sie haben erfolgreich ein Überwachungsdashboard erstellt und Warnungen für Ihren Schlüsseltresor konfiguriert! Nachdem Sie alle oben aufgeführten Schritte ausgeführt haben, sollten Sie jetzt E-Mail-Benachrichtigungen erhalten, wenn Ihr Schlüsseltresor die konfigurierten Warnungskriterien erfüllt. Ein entsprechendes Beispiel ist nachfolgend dargestellt. Verwenden Sie die in diesem Artikel eingerichteten Tools, um die Integrität Ihres Schlüsseltresors zu überwachen. 
 
-### <a name="example-email-alert"></a>Beispiel-E-Mail-Warnung 
 
-> [!div class="mx-imgBorder"]
-> ![Screenshot: Hervorgehobene Informationen, die zum Konfigurieren einer E-Mail-Warnung erforderlich sind](../media/alert-20.png)

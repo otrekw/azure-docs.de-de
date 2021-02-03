@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 09/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: 3210aa5ae2ff94ba2c7dda673fbb60847c4dfd0b
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 89566bdfb56ca662813b586b2203eec7e7e5566b
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92372156"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99055380"
 ---
 # <a name="startstop-vms-during-off-hours-overview"></a>VMs außerhalb der Geschäftszeiten starten/beenden – Übersicht
 
@@ -37,7 +37,7 @@ Die aktuelle Funktion hat folgende Einschränkungen:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Die Runbooks für die Funktion „VMs außerhalb der Geschäftszeiten starten/beenden“ funktionieren mit einem [ausführenden Azure-Konto](./manage-runas-account.md). Das ausführende Konto ist die bevorzugte Authentifizierungsmethode, da anstelle eines Kennworts, das ablaufen oder sich häufig ändern kann, eine Zertifikatauthentifizierung verwendet wird.
+- Die Runbooks für die Funktion „VMs außerhalb der Geschäftszeiten starten/beenden“ funktionieren mit einem [ausführenden Azure-Konto](./automation-security-overview.md#run-as-accounts). Das ausführende Konto ist die bevorzugte Authentifizierungsmethode, da anstelle eines Kennworts, das ablaufen oder sich häufig ändern kann, eine Zertifikatauthentifizierung verwendet wird.
 
 - Das verknüpfte Automation-Konto und der Log Analytics-Arbeitsbereich müssen sich in der gleichen Ressourcengruppe befinden.
 
@@ -53,7 +53,7 @@ Wenn Sie Mitwirkender im Abonnement und globaler Administrator in Ihrem Azure Ac
 
 Um VMs für die Funktion „VMs außerhalb der Geschäftszeiten starten/beenden“ unter Verwendung eines vorhandenen Automation-Kontos und eines vorhandenen Log Analytics-Arbeitsbereichs zu aktivieren, benötigen Sie die folgenden Berechtigungen für den Gültigkeitsbereich der Ressourcengruppe. Weitere Informationen zu Rollen finden Sie unter [Benutzerdefinierte Azure-Rollen](../role-based-access-control/custom-roles.md).
 
-| Berechtigung | Bereich|
+| Berechtigung | `Scope`|
 | --- | --- |
 | Microsoft.Automation/automationAccounts/read | Ressourcengruppe |
 | Microsoft.Automation/automationAccounts/variables/write | Ressourcengruppe |
@@ -79,7 +79,7 @@ Um VMs für die Funktion „VMs außerhalb der Geschäftszeiten starten/beenden�
 Sie können VMs für die Funktion „VMs außerhalb der Geschäftszeiten starten/beenden“ unter Verwendung eines neuen Automation-Kontos sowie eines neuen Log Analytics-Arbeitsbereichs aktivieren. In diesem Fall benötigen Sie die im vorherigen Abschnitt definierten Berechtigungen und darüber hinaus die in diesem Abschnitt definierten Berechtigungen. Außerdem benötigen Sie die folgenden Rollen:
 
 - Co-Administrator für das Abonnement. Diese Rolle ist erforderlich, um das klassische ausführende Konto zu erstellen, wenn Sie klassische VMs verwalten möchten. [Klassische ausführende Konten](automation-create-standalone-account.md#create-a-classic-run-as-account) werden nicht mehr standardmäßig erstellt.
-- Mitglied der Rolle „Anwendungsentwickler“ in [Azure AD](../active-directory/roles/permissions-reference.md). Weitere Informationen zum Konfigurieren von ausführenden Konten finden Sie unter [Berechtigungen zum Konfigurieren von ausführenden Konten](manage-runas-account.md#permissions).
+- Mitglied der Rolle „Anwendungsentwickler“ in [Azure AD](../active-directory/roles/permissions-reference.md). Weitere Informationen zum Konfigurieren von ausführenden Konten finden Sie unter [Berechtigungen zum Konfigurieren von ausführenden Konten](automation-security-overview.md#permissions).
 - Mitwirkender im Abonnement oder die folgenden Berechtigungen.
 
 | Berechtigung |`Scope`|
@@ -117,7 +117,7 @@ Alle übergeordneten Runbooks enthalten den Parameter `WhatIf`. Bei der Festlegu
 |ScheduledStartStop_Child | VMName <br> Aktion: Starten oder Beenden <br> ResourceGroupName | Wird über das übergeordnete Runbook aufgerufen. Führt für den geplanten Beendigungsvorgang eine Aktion zum Starten oder Beenden aus.|
 |ScheduledStartStop_Child_Classic | VMName<br> Aktion: Starten oder Beenden<br> ResourceGroupName | Wird über das übergeordnete Runbook aufgerufen. Führt für den geplanten Beendigungsvorgang eine Aktion zum Starten oder Beenden für klassische VMs aus. |
 |ScheduledStartStop_Parent | Aktion: Starten oder Beenden <br>VMList <br> WhatIf: „true“ oder „false“ | Das Starten oder Beenden wirkt sich auf alle virtuellen Computer im Abonnement aus. Bearbeiten Sie die Variablen `External_Start_ResourceGroupNames` und `External_Stop_ResourceGroupNames` so, dass sie nur für diese Zielressourcengruppen ausgeführt werden. Sie können zudem bestimmte VMs ausschließen, indem Sie die Variable `External_ExcludeVMNames` aktualisieren.|
-|SequencedStartStop_Parent | Aktion: Starten oder Beenden <br> WhatIf: „true“ oder „false“<br>VMList| Erstellen Sie auf jeder VM, für die Sie die Aktivität zum Starten/Beenden verwenden möchten, Tags mit den Namen **sequencestart** und **sequencestop** . Bei diesen Tagnamen wird zwischen Groß- und Kleinschreibung unterschieden. Der Wert des Tags muss eine Liste positiver ganzer Zahlen (etwa `1,2,3`) sein, die der Reihenfolge entspricht, in der das Starten oder Beenden durchgeführt werden soll. <br>**Hinweis** : Die VMs müssen sich innerhalb von Ressourcengruppen befinden, die in den Variablen `External_Start_ResourceGroupNames`, `External_Stop_ResourceGroupNames` und `External_ExcludeVMNames` definiert sind. Diese müssen über die entsprechenden Tags verfügen, damit Aktionen wirksam werden.|
+|SequencedStartStop_Parent | Aktion: Starten oder Beenden <br> WhatIf: „true“ oder „false“<br>VMList| Erstellen Sie auf jeder VM, für die Sie die Aktivität zum Starten/Beenden verwenden möchten, Tags mit den Namen **sequencestart** und **sequencestop**. Bei diesen Tagnamen wird zwischen Groß- und Kleinschreibung unterschieden. Der Wert des Tags muss eine Liste positiver ganzer Zahlen (etwa `1,2,3`) sein, die der Reihenfolge entspricht, in der das Starten oder Beenden durchgeführt werden soll. <br>**Hinweis**: Die VMs müssen sich innerhalb von Ressourcengruppen befinden, die in den Variablen `External_Start_ResourceGroupNames`, `External_Stop_ResourceGroupNames` und `External_ExcludeVMNames` definiert sind. Diese müssen über die entsprechenden Tags verfügen, damit Aktionen wirksam werden.|
 
 ### <a name="variables"></a>Variables
 
@@ -150,21 +150,21 @@ In der folgenden Tabelle sind die in Ihrem Automation-Konto erstellten Variablen
 >[!NOTE]
 >Der Standardwert für die Variable `External_WaitTimeForVMRetryInSeconds` wurde von 600 auf 2.100 aktualisiert. 
 
-In allen Szenarien sind die Variablen `External_Start_ResourceGroupNames`, `External_Stop_ResourceGroupNames` und `External_ExcludeVMNames` für die Ziel-VMs erforderlich. Ausgenommen sind die VMs in den durch Trennzeichen getrennten Listen für die Runbooks **AutoStop_CreateAlert_Parent** , **SequencedStartStop_Parent** und **ScheduledStartStop_Parent** . Dies bedeutet, dass sich die VMs in Zielressourcengruppen befinden müssen, damit Aktionen zum Starten und Beenden durchgeführt werden. Die Logik ähnelt der von Azure Policy, da Sie das Abonnement oder die Ressourcengruppe als Ziel verwenden können und neu erstellte VMs Aktionen erben. Hierdurch wird vermieden, dass für jeden virtuellen Computer jeweils ein separater Zeitplan gepflegt werden muss und dass Aktionen zum Starten und Beenden für die Skalierung verwaltet werden müssen.
+In allen Szenarien sind die Variablen `External_Start_ResourceGroupNames`, `External_Stop_ResourceGroupNames` und `External_ExcludeVMNames` für die Ziel-VMs erforderlich. Ausgenommen sind die VMs in den durch Trennzeichen getrennten Listen für die Runbooks **AutoStop_CreateAlert_Parent**, **SequencedStartStop_Parent** und **ScheduledStartStop_Parent**. Dies bedeutet, dass sich die VMs in Zielressourcengruppen befinden müssen, damit Aktionen zum Starten und Beenden durchgeführt werden. Die Logik ähnelt der von Azure Policy, da Sie das Abonnement oder die Ressourcengruppe als Ziel verwenden können und neu erstellte VMs Aktionen erben. Hierdurch wird vermieden, dass für jeden virtuellen Computer jeweils ein separater Zeitplan gepflegt werden muss und dass Aktionen zum Starten und Beenden für die Skalierung verwaltet werden müssen.
 
 ### <a name="schedules"></a>Zeitpläne
 
-In der folgenden Tabelle sind die einzelnen in Ihrem Automation-Konto erstellten Standardzeitpläne aufgeführt.  Sie können sie ändern oder Ihre eigenen benutzerdefinierten Zeitpläne erstellen.  Standardmäßig sind alle Zeitpläne deaktiviert, mit Ausnahme von **Scheduled_StartVM** und **Scheduled_StopVM** .
+In der folgenden Tabelle sind die einzelnen in Ihrem Automation-Konto erstellten Standardzeitpläne aufgeführt.  Sie können sie ändern oder Ihre eigenen benutzerdefinierten Zeitpläne erstellen.  Standardmäßig sind alle Zeitpläne deaktiviert, mit Ausnahme von **Scheduled_StartVM** und **Scheduled_StopVM**.
 
 Aktivieren Sie nicht alle Zeitpläne, da dies zu sich überlappenden Zeitplanaktionen führen kann. Am besten ermitteln Sie, welche Optimierungen Sie ausführen möchten, und nehmen dann die entsprechenden Änderungen vor. Weitere Erläuterungen finden Sie in den Beispielszenerien im Übersichtsabschnitt.
 
 |Zeitplanname | Häufigkeit | BESCHREIBUNG|
 |--- | --- | ---|
 |Schedule_AutoStop_CreateAlert_Parent | Alle 8 Stunden | Führt das Runbook **AutoStop_CreateAlert_Parent** alle 8 Stunden aus. Damit werden wiederum die VM-basierten Werte in den Variablen `External_Start_ResourceGroupNames`, `External_Stop_ResourceGroupNames` und `External_ExcludeVMNames` beendet. Alternativ können Sie mithilfe des Parameters `VMList` eine durch Kommas getrennte Liste mit VMs angeben.|
-|Scheduled_StopVM | Benutzerdefiniert, täglich | Führt das Runbook **ScheduledStopStart_Parent** mit dem Parameter `Stop` jeden Tag zum angegebenen Zeitpunkt aus.  Beendet automatisch alle VMs, für die die Regeln der Variablenressourcen erfüllt sind.  Aktivieren Sie den zugehörigen Zeitplan ( **Scheduled-StartVM** ).|
-|Scheduled_StartVM | Benutzerdefiniert, täglich | Führt das Runbook **ScheduledStopStart_Parent** mit dem Parameterwert `Start` jeden Tag zum angegebenen Zeitpunkt aus. Startet automatisch alle VMs, für die die Regeln der Variablenressourcen erfüllt sind.  Aktivieren Sie den zugehörigen Zeitplan ( **Scheduled-StopVM** ).|
-|Sequenced-StopVM | 01:00 Uhr (UTC), jeden Freitag | Führt das Runbook **Sequenced_StopStop_Parent** mit dem Parameterwert `Stop` jeden Freitag zum angegebenen Zeitpunkt aus.  Beendet der Reihe nach (in aufsteigender Reihenfolge) alle VMs mit dem in den jeweiligen Variablen definierten Tag **SequenceStop** . Weitere Informationen zu Tagwerten und Objektvariablen finden Sie unter [Runbooks](#runbooks).  Aktivieren Sie den dazugehörigen Zeitplan ( **Sequenced-StartVM** ).|
-|Sequenced-StartVM | 13:00 Uhr (UTC), jeden Montag | Führt das Runbook **SequencedStopStart_Parent** mit dem Parameterwert `Start` jeden Montag zum angegebenen Zeitpunkt aus. Startet der Reihe nach (in absteigender Reihenfolge) alle VMs mit dem in den jeweiligen Variablen definierten Tag **SequenceStart** . Weitere Informationen zu Tagwerten und Variablenobjekten finden Sie unter [Runbooks](#runbooks). Aktivieren Sie den dazugehörigen Zeitplan ( **Sequenced-StopVM** ).
+|Scheduled_StopVM | Benutzerdefiniert, täglich | Führt das Runbook **ScheduledStopStart_Parent** mit dem Parameter `Stop` jeden Tag zum angegebenen Zeitpunkt aus.  Beendet automatisch alle VMs, für die die Regeln der Variablenressourcen erfüllt sind.  Aktivieren Sie den zugehörigen Zeitplan (**Scheduled-StartVM**).|
+|Scheduled_StartVM | Benutzerdefiniert, täglich | Führt das Runbook **ScheduledStopStart_Parent** mit dem Parameterwert `Start` jeden Tag zum angegebenen Zeitpunkt aus. Startet automatisch alle VMs, für die die Regeln der Variablenressourcen erfüllt sind.  Aktivieren Sie den zugehörigen Zeitplan (**Scheduled-StopVM**).|
+|Sequenced-StopVM | 01:00 Uhr (UTC), jeden Freitag | Führt das Runbook **Sequenced_StopStop_Parent** mit dem Parameterwert `Stop` jeden Freitag zum angegebenen Zeitpunkt aus.  Beendet der Reihe nach (in aufsteigender Reihenfolge) alle VMs mit dem in den jeweiligen Variablen definierten Tag **SequenceStop**. Weitere Informationen zu Tagwerten und Objektvariablen finden Sie unter [Runbooks](#runbooks).  Aktivieren Sie den dazugehörigen Zeitplan (**Sequenced-StartVM**).|
+|Sequenced-StartVM | 13:00 Uhr (UTC), jeden Montag | Führt das Runbook **SequencedStopStart_Parent** mit dem Parameterwert `Start` jeden Montag zum angegebenen Zeitpunkt aus. Startet der Reihe nach (in absteigender Reihenfolge) alle VMs mit dem in den jeweiligen Variablen definierten Tag **SequenceStart**. Weitere Informationen zu Tagwerten und Variablenobjekten finden Sie unter [Runbooks](#runbooks). Aktivieren Sie den dazugehörigen Zeitplan (**Sequenced-StopVM**).
 
 ## <a name="use-the-feature-with-classic-vms"></a>Verwenden der Funktion mit klassischen VMs
 
@@ -174,7 +174,7 @@ Wenn Sie diese Funktion mit klassischen VMs verwenden möchten, benötigen Sie e
 
 Wenn Sie über mehr als 20 VMs pro Clouddienst verfügen, beachten Sie folgende Empfehlungen:
 
-* Erstellen Sie mehrere Zeitpläne mit dem übergeordneten Runbook **ScheduledStartStop_Parent** , und geben Sie pro Zeitplan 20 VMs an. 
+* Erstellen Sie mehrere Zeitpläne mit dem übergeordneten Runbook **ScheduledStartStop_Parent**, und geben Sie pro Zeitplan 20 VMs an. 
 * Geben Sie die VM-Namen in den Zeitplaneigenschaften mithilfe des Parameters `VMList` als durch Trennzeichen getrennte Liste (ohne Leerzeichen) an. 
 
 Wenn andernfalls der Automatisierungsauftrag für diese Funktion mehr als drei Stunden ausgeführt wird, wird er gemäß dem Limit für [gleichmäßige Verteilung](automation-runbook-execution.md#fair-share) vorübergehend entladen oder angehalten.
@@ -195,7 +195,7 @@ Sie können über eine der folgenden Vorgehensweisen auf die aktivierte Funktion
 
 * Navigieren Sie zu dem Log Analytics-Arbeitsbereich, der mit Ihrem Automation-Konto verknüpft ist. Nachdem Sie den Arbeitsbereich ausgewählt haben, wählen Sie im linken Bereich **Lösungen** aus. Wählen Sie auf der Seite „Lösungen“ in der Liste **Start-Stop-VM[Arbeitsbereich]** aus.  
 
-Nach dem Auswählen der Funktion wird die Seite „Start-Stop-VM[Arbeitsbereich]“ angezeigt. Hier können Sie wichtige Details überprüfen, z. B. die Informationen auf der Kachel **StartStopVM** . Wie in Ihrem Log Analytics-Arbeitsbereich auch, werden auf dieser Kachel die Anzahl und eine grafische Darstellung der Runbookaufträge für die Funktion angezeigt, die gestartet und erfolgreich abgeschlossen wurden.
+Nach dem Auswählen der Funktion wird die Seite „Start-Stop-VM[Arbeitsbereich]“ angezeigt. Hier können Sie wichtige Details überprüfen, z. B. die Informationen auf der Kachel **StartStopVM**. Wie in Ihrem Log Analytics-Arbeitsbereich auch, werden auf dieser Kachel die Anzahl und eine grafische Darstellung der Runbookaufträge für die Funktion angezeigt, die gestartet und erfolgreich abgeschlossen wurden.
 
 ![Automation-Seite „Updateverwaltung“](media/automation-solution-vm-management/azure-portal-vmupdate-solution-01.png)
 
@@ -213,9 +213,9 @@ So löschen Sie „VMs außerhalb der Geschäftszeiten starten/beenden“
 
 1. Wählen Sie in Ihrem Automation-Konto unter **Verwandte Ressourcen** die Option **Verknüpfter Arbeitsbereich** aus.
 
-2. Klicken Sie auf **Zu Arbeitsbereich wechseln** .
+2. Klicken Sie auf **Zu Arbeitsbereich wechseln**.
 
-3. Klicken Sie unter **Allgemein** auf **Lösungen** . 
+3. Klicken Sie unter **Allgemein** auf **Lösungen**. 
 
 4. Wählen Sie auf der Seite „Lösungen“ **Start-Stop-VM[Arbeitsbereich]** aus. 
 
@@ -227,7 +227,7 @@ So löschen Sie „VMs außerhalb der Geschäftszeiten starten/beenden“
 
 8. Das Automation-Konto und der Log Analytics-Arbeitsbereich werden bei diesem Vorgang nicht gelöscht. Wenn Sie den Log Analytics-Arbeitsbereich nicht beibehalten möchten, müssen Sie ihn manuell im Azure-Portal löschen:
 
-    1. Suchen Sie nach **Log Analytics-Arbeitsbereiche** , und wählen Sie diese Option aus.
+    1. Suchen Sie nach **Log Analytics-Arbeitsbereiche**, und wählen Sie diese Option aus.
 
     2. Wählen Sie auf der Seite „Log Analytics-Arbeitsbereich“ den Arbeitsbereich aus.
 

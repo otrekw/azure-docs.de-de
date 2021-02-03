@@ -5,12 +5,12 @@ services: automation
 ms.subservice: change-inventory-management
 ms.date: 10/14/2020
 ms.topic: conceptual
-ms.openlocfilehash: 9b14dcb9ce2f2426d8d1496541022602a114cb6e
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 61b45d6f6414b1e8e1f48f6d46957b21b9b8c58b
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92209103"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99052497"
 ---
 # <a name="enable-change-tracking-and-inventory-from-an-azure-vm"></a>Aktivieren von Änderungsnachverfolgung und Bestand über einen virtuellen Azure-Computer
 
@@ -22,7 +22,7 @@ In diesem Artikel wird beschrieben, wie Sie mit einem virtuellen Azure-Computer 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * Azure-Abonnement. Wenn Sie noch kein Abonnement haben, können Sie Ihre [MSDN-Abonnentenvorteile aktivieren](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) oder sich für ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) registrieren.
-* [Automation-Konto](../index.yml) zum Verwalten von Computern.
+* [Automation-Konto](../automation-security-overview.md) zum Verwalten von Computern.
 * Ein [virtueller Computer](../../virtual-machines/windows/quick-create-portal.md).
 
 ## <a name="sign-in-to-azure"></a>Anmelden bei Azure
@@ -31,7 +31,7 @@ Melden Sie sich unter https://portal.azure.com beim Azure-Portal an.
 
 ## <a name="enable-change-tracking-and-inventory"></a>Aktivieren der Lösung für Änderungsnachverfolgung und Bestand
 
-1. Wählen Sie im [Azure-Portal](https://portal.azure.com) die Option **Virtuelle Computer** aus, oder suchen Sie auf der Startseite nach **Virtuelle Computer** , und wählen Sie die entsprechende Option aus.
+1. Wählen Sie im [Azure-Portal](https://portal.azure.com) die Option **Virtuelle Computer** aus, oder suchen Sie auf der Startseite nach **Virtuelle Computer**, und wählen Sie die entsprechende Option aus.
 
 2. Wählen Sie den virtuellen Computer aus, für den Sie „Änderungsnachverfolgung und Bestand“ aktivieren möchten. Virtuelle Computer können sich unabhängig vom Standort Ihres Automation-Kontos in einer beliebigen Region befinden.
 
@@ -39,7 +39,7 @@ Melden Sie sich unter https://portal.azure.com beim Azure-Portal an.
 
 4. Sie müssen über die Berechtigung `Microsoft.OperationalInsights/workspaces/read` verfügen, um zu bestimmen, ob der virtuelle Computer für einen Arbeitsbereich aktiviert ist. Informationen zu weiteren erforderlichen Berechtigungen finden Sie unter [Berechtigungen für die Featureeinrichtung](../automation-role-based-access-control.md#feature-setup-permissions). Informationen zum gleichzeitigen Aktivieren mehrerer Computer finden Sie unter [Aktivieren von Änderungsnachverfolgung und Bestand über ein Automation-Konto](enable-from-automation-account.md).
 
-5. Wählen Sie den Log Analytics-Arbeitsbereich und das Automation-Konto aus, und klicken Sie auf **Aktivieren** , um „Änderungsnachverfolgung und Bestand“ für den virtuellen Computer zu aktivieren. Die Einrichtung dauert bis zu 15 Minuten.
+5. Wählen Sie den Log Analytics-Arbeitsbereich und das Automation-Konto aus, und klicken Sie auf **Aktivieren**, um „Änderungsnachverfolgung und Bestand“ für den virtuellen Computer zu aktivieren. Die Einrichtung dauert bis zu 15 Minuten.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

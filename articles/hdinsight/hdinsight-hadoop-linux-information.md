@@ -1,19 +1,16 @@
 ---
 title: Tipps zur Verwendung von Hadoop unter Linux-basiertem HDInsight – Azure
 description: Hier erhalten Sie Implementierungstipps für die Verwendung von Linux-basierten HDInsight (Hadoop)-Clustern in einer vertrauten Linux-Umgebung, die in der Azure-Cloud ausgeführt wird.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,seoapr2020
 ms.topic: conceptual
 ms.date: 04/29/2020
-ms.openlocfilehash: 0f0073c72c28395d89cec74a489cbc36a8f3ffe7
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 2d2619c7bd7bc09eeab3845599758db7134b4134
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92546108"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945640"
 ---
 # <a name="information-about-using-hdinsight-on-linux"></a>Informationen zur Verwendung von HDInsight unter Linux
 
@@ -24,9 +21,9 @@ Azure HDInsight-Cluster stellen Apache Hadoop in einer vertrauten Linux-Umgebung
 In vielen Schritten in diesem Dokument werden die folgenden Hilfsprogramme verwendet. Sie müssen diese also möglicherweise auf Ihrem System installieren.
 
 * [cURL](https://curl.haxx.se/) – wird für die Kommunikation mit webbasierten Diensten verwendet.
-* **jq** , ein JSON-Befehlszeilenprozessor.  Siehe [https://stedolan.github.io/jq/](https://stedolan.github.io/jq/).
+* **jq**, ein JSON-Befehlszeilenprozessor.  Siehe [https://stedolan.github.io/jq/](https://stedolan.github.io/jq/).
 * [Azure-Befehlszeilenschnittstelle](/cli/azure/install-azure-cli) – wird zur Remoteverwaltung von Azure-Diensten verwendet.
-* **SSH-Client** . Weitere Informationen finden Sie unter [Herstellen einer Verbindung mit HDInsight (Hadoop) per SSH](hdinsight-hadoop-linux-use-ssh-unix.md).
+* **SSH-Client**. Weitere Informationen finden Sie unter [Herstellen einer Verbindung mit HDInsight (Hadoop) per SSH](hdinsight-hadoop-linux-use-ssh-unix.md).
 
 ## <a name="users"></a>Benutzer
 
@@ -38,7 +35,7 @@ In die Domäne eingebundenes HDInsight bietet Unterstützung mehrerer Benutzer s
 
 Der vollqualifizierte Domänenname (FQDN), der beim Herstellen einer Verbindung mit dem Cluster über das Internet verwendet wird, lautet `CLUSTERNAME.azurehdinsight.net` oder `CLUSTERNAME-ssh.azurehdinsight.net` (nur für SSH).
 
-Intern verfügt jeder Knoten im Cluster über einen Namen, der während der Konfiguration des Clusters zugewiesen wird. Die Clusternamen finden Sie auf der Ambari-Webbenutzeroberfläche auf der Seite **Hosts** . Sie können auch Folgendes verwenden, um eine Liste mit Hosts aus der Ambari-REST-API abzurufen:
+Intern verfügt jeder Knoten im Cluster über einen Namen, der während der Konfiguration des Clusters zugewiesen wird. Die Clusternamen finden Sie auf der Ambari-Webbenutzeroberfläche auf der Seite **Hosts**. Sie können auch Folgendes verwenden, um eine Liste mit Hosts aus der Ambari-REST-API abzurufen:
 
 ```console
 curl -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/hosts" | jq '.items[].Hosts.host_name'
@@ -92,8 +89,8 @@ Weitere Informationen finden Sie im Dokument [Ports für Apache Hadoop-Dienste i
 
 Zu Hadoop zugehörige Dateien befinden sich auf den Clusterknoten in `/usr/hdp`. Dieses Verzeichnis enthält die folgenden Unterverzeichnisse:
 
-* **2.6.5.3009-43** : Der Name des Verzeichnisses ist die Version der in HDInsight verwendeten Hadoop-Plattform. Der Wert Ihres Clusters unterscheidet sich möglicherweise vom hier aufgeführten.
-* **current** : Dieses Verzeichnis enthält Links zu den Unterverzeichnissen im Verzeichnis **2.6.5.3009-43** . Da dieses Verzeichnis vorhanden ist, müssen Sie sich nicht die Versionsnummer merken.
+* **2.6.5.3009-43**: Der Name des Verzeichnisses ist die Version der in HDInsight verwendeten Hadoop-Plattform. Der Wert Ihres Clusters unterscheidet sich möglicherweise vom hier aufgeführten.
+* **current**: Dieses Verzeichnis enthält Links zu den Unterverzeichnissen im Verzeichnis **2.6.5.3009-43**. Da dieses Verzeichnis vorhanden ist, müssen Sie sich nicht die Versionsnummer merken.
 
 Beispieldaten und JAR-Dateien finden Sie im Hadoop Distributed File System unter `/example` und `/HdiSamples`.
 

@@ -3,12 +3,12 @@ title: Installieren von Azure Backup Server in Azure Stack
 description: In diesem Artikel erfahren Sie, wie Sie Azure Backup Server verwenden, um Workloads in Azure Stack zu schützen oder zu sichern.
 ms.topic: conceptual
 ms.date: 01/31/2019
-ms.openlocfilehash: 7153e2ff03a4f78ee1cc92ca04054fb2955d11a5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 12dfd15c2bd43816dd361fdf45995bcbcd6fba56
+ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90970236"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98987004"
 ---
 # <a name="install-azure-backup-server-on-azure-stack"></a>Installieren von Azure Backup Server in Azure Stack
 
@@ -335,13 +335,19 @@ Nachdem Sie den Status der Azure-Verbindung und des Azure-Abonnements kennen, k�
 
 ### <a name="recovering-from-loss-of-connectivity"></a>Wiederherstellung nach Verbindungsverlust
 
-Wenn eine Firewall oder ein Proxy den Zugriff auf Azure verhindert, setzen Sie im Profil der Firewall bzw. des Proxys die folgenden Domänenadressen auf die Positivliste:
+Wenn Ihr Computer über einen eingeschränkten Internetzugriff verfügt, stellen Sie sicher, dass die Firewalleinstellungen auf dem Computer oder Proxy die folgenden URLs und IP-Adressen zulassen:
 
-- `http://www.msftncsi.com/ncsi.txt`
-- \*.Microsoft.com
-- \*.WindowsAzure.com
-- \*.microsoftonline.com
-- \*.windows.net
+* URLs
+  * `www.msftncsi.com`
+  * `*.Microsoft.com`
+  * `*.WindowsAzure.com`
+  * `*.microsoftonline.com`
+  * `*.windows.net`
+  * `www.msftconnecttest.com`
+* IP-Adressen
+  * 20.190.128.0/18
+  * 40.126.0.0/18
+
 
 Sobald die Verbindung mit Azure für den Computer mit Azure Backup Server wiederhergestellt ist, bestimmt der Azure-Abonnementzustand, welche Vorgänge ausgeführt werden können. Wenn für den Server **Verbunden** angezeigt wird, verwenden Sie die Tabelle in [Netzwerkkonnektivität](backup-mabs-install-azure-stack.md#network-connectivity), um die verfügbaren Vorgänge zu sichten.
 

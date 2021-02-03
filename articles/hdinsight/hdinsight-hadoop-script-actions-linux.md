@@ -1,18 +1,15 @@
 ---
 title: Entwickeln von Skriptaktionen zum Anpassen von Azure HDInsight-Clustern
 description: Erfahren Sie, wie Sie Bash-Skripts verwenden, um HDInsight-Cluster anzupassen. Mit Skriptaktionen können Sie Skripts während oder nach der Clustererstellung ausführen, um die Konfigurationseinstellungen der Cluster zu ändern oder zusätzliche Software zu installieren.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 11/28/2019
-ms.openlocfilehash: f7959b639b75d912d44670c8b00a7327cb7857d6
-ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
+ms.openlocfilehash: b6705728fddc9a5a3c9cb8eb2f1811412fb3a290
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92629441"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945470"
 ---
 # <a name="script-action-development-with-hdinsight"></a>Entwickeln von Skriptaktionen mit HDInsight
 
@@ -286,13 +283,13 @@ echo "HADOOP_CONF_DIR=/etc/hadoop/conf" | sudo tee -a /etc/environment
 
 Skripts zum Anpassen eines Clusters müssen an einem der folgenden Speicherorte gespeichert werden:
 
-* Ein __Azure-Speicherkonto__ , das dem Cluster zugeordnet ist.
+* Ein __Azure-Speicherkonto__, das dem Cluster zugeordnet ist.
 
-* __Zusätzliches Speicherkonto__ , das dem Cluster zugeordnet ist
+* __Zusätzliches Speicherkonto__, das dem Cluster zugeordnet ist
 
 * Ein __öffentlich lesbarer URI__ Beispielsweise eine Daten-URL, die in OneDrive, Dropbox oder in einem anderen Dateihostingdienst gespeichert ist
 
-* __Azure Data Lake Storage__ -Konto, das dem HDInsight-Cluster zugeordnet ist. Weitere Informationen zur Verwendung von Azure Data Lake Storage mit HDInsight finden Sie unter [Schnellstart: Einrichten von Clustern in HDInsight](./hdinsight-hadoop-provision-linux-clusters.md).
+* __Azure Data Lake Storage__-Konto, das dem HDInsight-Cluster zugeordnet ist. Weitere Informationen zur Verwendung von Azure Data Lake Storage mit HDInsight finden Sie unter [Schnellstart: Einrichten von Clustern in HDInsight](./hdinsight-hadoop-provision-linux-clusters.md).
 
     > [!NOTE]  
     > Der Dienstprinzipal, der von HDInsight zum Zugreifen auf Data Lake Storage genutzt wird, muss über Lesezugriff auf das Skript verfügen.
@@ -332,7 +329,7 @@ Microsoft bietet Beispielskripts für die Installation von Komponenten in einem 
 
 Bei der Verwendung der von Ihnen entwickelten Skripts können die folgenden Fehler auftreten:
 
-**Fehler** : `$'\r': command not found`. Manchmal gefolgt von `syntax error: unexpected end of file`.
+**Fehler**: `$'\r': command not found`. Manchmal gefolgt von `syntax error: unexpected end of file`.
 
 *Ursache:* Dieser Fehler tritt auf, wenn die Zeilen in einem Skript mit CR-LF enden. In UNIX-Systemen wird als Zeilenende nur LF erwartet.
 
@@ -350,7 +347,7 @@ Dieses Problem tritt am häufigsten auf, wenn das Skript in einer Windows-Umgebu
 | `perl -pi -e 's/\r\n/\n/g' INFILE` | Modifiziert die Datei direkt |
 | ```sed 's/$'"/`echo \\\r`/" INFILE > OUTFILE``` |OUTFILE enthält eine Version, die ausschließlich LF-Zeilenenden umfasst. |
 
-**Fehler** : `line 1: #!/usr/bin/env: No such file or directory`.
+**Fehler**: `line 1: #!/usr/bin/env: No such file or directory`.
 
 *Ursache:* Dieser Fehler tritt auf, wenn das Skript im Format UTF-8 mit einer Bytereihenfolge-Marke (BOM) gespeichert wurde.
 

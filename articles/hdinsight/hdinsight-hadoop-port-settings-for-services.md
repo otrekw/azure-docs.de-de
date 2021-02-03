@@ -1,19 +1,16 @@
 ---
 title: Ports für Hadoop-Dienste in HDInsight – Azure
 description: Dieser Artikel enthält eine Liste mit Ports, die von Apache Hadoop-Diensten in Azure HDInsight verwendet werden.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/28/2020
-ms.openlocfilehash: d0d990bc273c33e94b82b597753b29361b1665e1
-ms.sourcegitcommit: 28c93f364c51774e8fbde9afb5aa62f1299e649e
+ms.openlocfilehash: b5dadb886078f701bb01447efd606c862ee73073
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/30/2020
-ms.locfileid: "97821858"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945535"
 ---
 # <a name="ports-used-by-apache-hadoop-services-on-hdinsight"></a>Ports für Apache Hadoop-Dienste in HDInsight
 

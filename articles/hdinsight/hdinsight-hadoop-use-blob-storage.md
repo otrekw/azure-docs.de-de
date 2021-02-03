@@ -1,19 +1,16 @@
 ---
 title: 'Abfragen von Daten aus HDFS-kompatiblem Azure-Speicher: Azure HDInsight'
 description: Es wird beschrieben, wie Sie Daten in Azure-Speicher und Azure Data Lake Storage abfragen, um die Ergebnisse Ihrer Analyse zu speichern.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/21/2020
-ms.openlocfilehash: ead9b775b8c61d0d89abd4821bef2b1aaaea0d76
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: cedc0ff1b3c2aa64f32445eabc800748a753981d
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547434"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945428"
 ---
 # <a name="use-azure-storage-with-azure-hdinsight-clusters"></a>Verwenden von Azure Storage mit Azure HDInsight-Clustern
 
@@ -44,7 +41,7 @@ Das Freigeben eines Blobcontainers als Standarddateisystem für mehrere Cluster 
 
 ## <a name="access-files-from-within-cluster"></a>Zugreifen auf Dateien von innerhalb des Clusters
 
-Es gibt mehrere Möglichkeiten, wie Sie auf die Dateien in Data Lake Storage über einen HDInsight-Cluster zugreifen können. Das URI-Schema bietet unverschlüsselten Zugriff (mit dem Präfix *wasb:* ) wie auch TLS-verschlüsselten Zugriff (mit *wasbs* ). Wir empfehlen die Verwendung von *wasbs* , und zwar auch für den Zugriff auf Daten, die sich in Azure in derselben Region befinden.
+Es gibt mehrere Möglichkeiten, wie Sie auf die Dateien in Data Lake Storage über einen HDInsight-Cluster zugreifen können. Das URI-Schema bietet unverschlüsselten Zugriff (mit dem Präfix *wasb:* ) wie auch TLS-verschlüsselten Zugriff (mit *wasbs*). Wir empfehlen die Verwendung von *wasbs* , und zwar auch für den Zugriff auf Daten, die sich in Azure in derselben Region befinden.
 
 * **Verwenden des vollqualifizierten Namens** Bei diesem Ansatz geben Sie den vollständigen Pfad zu der Datei an, auf die Sie zugreifen möchten.
 
@@ -141,11 +138,11 @@ Microsoft bietet die folgenden Tools für die Arbeit mit Azure Storage:
 
 * Um den vollständigen Pfad zum konfigurierten Standardspeicher zu ermitteln, navigieren Sie zu:
 
-    **HDFS** > **Configs** , und geben Sie in das Filtereingabefeld `fs.defaultFS` ein.
+    **HDFS** > **Configs**, und geben Sie in das Filtereingabefeld `fs.defaultFS` ein.
 
 * Um zu überprüfen, ob der WASB-Speicher als sekundärer Speicher konfiguriert ist, navigieren Sie zu:
 
-    **HDFS** > **Configs** , und geben Sie in das Filtereingabefeld `blob.core.windows.net` ein.
+    **HDFS** > **Configs**, und geben Sie in das Filtereingabefeld `blob.core.windows.net` ein.
 
 Informationen zum Abrufen des Pfads mit der Ambari-REST-API finden Sie unter [Abrufen des Standardspeichers](./hdinsight-hadoop-manage-ambari-rest-api.md#get-the-default-storage).
 

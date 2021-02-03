@@ -1,23 +1,20 @@
 ---
 title: Hinzufügen zusätzlicher Azure-Speicherkonten zu HDInsight
 description: Erfahren Sie, wie Sie einem vorhandenen HDInsight-Cluster zusätzliche Azure-Speicherkonten hinzufügen.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/27/2020
-ms.openlocfilehash: 51977c00dc8c9932def89d54ec1b6ec34afad652
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 11852046442901c70112b5e80fef371671546412
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92541994"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945941"
 ---
 # <a name="add-additional-storage-accounts-to-hdinsight"></a>Hinzufügen zusätzlicher Speicherkonten zu HDInsight
 
-Erfahren Sie, wie Sie Skriptaktionen verwenden, um in HDInsight zusätzliche Azure Storage- *Konten* hinzuzufügen. Mit den Schritten in diesem Dokument fügen Sie einem vorhandenen HDInsight-Cluster ein Azure Storage- *Konto* hinzu. Dieser Artikel bezieht sich auf *Speicherkonten* und nicht auf das Standardclusterspeicherkonto oder weitere Speicher wie [`Azure Data Lake Storage Gen1`](hdinsight-hadoop-use-data-lake-storage-gen1.md) und [`Azure Data Lake Storage Gen2`](hdinsight-hadoop-use-data-lake-storage-gen2.md).
+Erfahren Sie, wie Sie Skriptaktionen verwenden, um in HDInsight zusätzliche Azure Storage-*Konten* hinzuzufügen. Mit den Schritten in diesem Dokument fügen Sie einem vorhandenen HDInsight-Cluster ein Azure Storage-*Konto* hinzu. Dieser Artikel bezieht sich auf *Speicherkonten* und nicht auf das Standardclusterspeicherkonto oder weitere Speicher wie [`Azure Data Lake Storage Gen1`](hdinsight-hadoop-use-data-lake-storage-gen1.md) und [`Azure Data Lake Storage Gen2`](hdinsight-hadoop-use-data-lake-storage-gen2.md).
 
 > [!IMPORTANT]  
 > Die Informationen in diesem Dokument beziehen sich auf das Hinzufügen zusätzlicher Speicherkonten zu einem Cluster, nachdem dieser erstellt wurde. Informationen zum Hinzufügen von Speicherkonten während der Clustererstellung finden Sie unter [Einrichten von Clustern in HDInsight mit Apache Hadoop, Apache Spark, Apache Kafka und anderen](hdinsight-hadoop-provision-linux-clusters.md).
@@ -119,13 +116,13 @@ Nachdem Sie diese Schlüssel entfernt und die Konfiguration gespeichert haben, m
 
 ### <a name="storage-firewall"></a>Speicherfirewall
 
-Denken Sie daran, die Ausnahme **Vertrauenswürdige Microsoft-Dienste zulassen** zu aktivieren, damit HDInsight auf Ihr Speicherkonto zugreifen kann, wenn Sie Ihr Speicherkonto mit den **Firewalls und virtuelle Netzwerke** -Einschränkungen für **Ausgewählte Netzwerke** schützen.
+Denken Sie daran, die Ausnahme **Vertrauenswürdige Microsoft-Dienste zulassen** zu aktivieren, damit HDInsight auf Ihr Speicherkonto zugreifen kann, wenn Sie Ihr Speicherkonto mit den **Firewalls und virtuelle Netzwerke**-Einschränkungen für **Ausgewählte Netzwerke** schützen.
 
 ### <a name="unable-to-access-storage-after-changing-key"></a>Zugriff auf den Speicher ist nach dem Ändern des Schlüssels nicht möglich
 
 Wenn Sie den Schlüssel für ein Speicherkonto ändern, kann HDInsight nicht mehr auf das Speicherkonto zugreifen. HDInsight verwendet eine zwischengespeicherte Kopie des Schlüssels in der Datei „core-site.xml“ für den Cluster. Diese zwischengespeicherte Kopie muss mit dem neuen Schlüssel aktualisiert werden.
 
-Das wiederholte Ausführen der Skriptaktion aktualisiert den Schlüssel **nicht** , da das Skript überprüft, ob bereits ein Eintrag für das Speicherkonto vorhanden ist. Wenn bereits ein Eintrag vorhanden ist, werden keine Änderungen vorgenommen.
+Das wiederholte Ausführen der Skriptaktion aktualisiert den Schlüssel **nicht**, da das Skript überprüft, ob bereits ein Eintrag für das Speicherkonto vorhanden ist. Wenn bereits ein Eintrag vorhanden ist, werden keine Änderungen vorgenommen.
 
 So umgehen Sie dieses Problem:  
 1. Entfernen Sie das Speicherkonto.

@@ -1,18 +1,19 @@
 ---
 title: Regionen und Verfügbarkeitszonen in Azure
 description: In diesem Artikel erhalten Sie Informationen zu Regionen und Verfügbarkeitszonen in Azure, um technische und gesetzliche Anforderungen erfüllen zu können.
-author: cynthn
+author: prsandhu
 ms.service: azure
-ms.topic: article
-ms.date: 08/27/2020
-ms.author: cynthn
+ms.topic: conceptual
+ms.date: 01/26/2021
+ms.author: prsandhu
+ms.reviewer: cynthn
 ms.custom: fasttrack-edit, mvc
-ms.openlocfilehash: b19f5c3ae0666a0b0e9b0255f848f5924d9d3910
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: dae5319e6c8b87d6a9eef98875ad7e8da623e65c
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98874738"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98955799"
 ---
 # <a name="regions-and-availability-zones-in-azure"></a>Regionen und Verfügbarkeitszonen in Azure
 

@@ -2,19 +2,15 @@
 title: Verschieben Ihres Azure Automation-Kontos in ein anderes Abonnement
 description: In diesem Artikel erfahren Sie, wie Sie Ihr Automation-Konto in ein anderes Abonnement verschieben.
 services: automation
-ms.service: automation
 ms.subservice: process-automation
-author: mgoedtel
-ms.author: magoedte
-ms.date: 03/11/2019
+ms.date: 01/07/2021
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: 562ea5e0e9e4851ed59bd3ef917be2f9c48cd2a7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a86d876a723c89eb8dcdf18c8318f2a9c740a229
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86185550"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99051023"
 ---
 # <a name="move-your-azure-automation-account-to-another-subscription"></a>Verschieben Ihres Azure Automation-Kontos in ein anderes Abonnement
 
@@ -41,7 +37,7 @@ Um die Verknüpfung Ihres Arbeitsbereichs mit Ihrem Automation-Konto aufzuheben,
 
     ![Screenshot: Löschen von Featureressourcen über das Azure-Portal](../media/move-account/delete-solutions.png)
 
-Alternativ können die Ressourcen auch mithilfe des Cmdlets [Remove-AzResource](/powershell/module/Az.Resources/Remove-AzResource?view=azps-3.7.0) gelöscht werden:
+Alternativ können die Ressourcen auch mithilfe des Cmdlets [Remove-AzResource](/powershell/module/Az.Resources/Remove-AzResource) gelöscht werden:
 
 ```azurepowershell-interactive
 $workspaceName = <myWorkspaceName>
@@ -80,7 +76,7 @@ Für „VMs außerhalb der Geschäftszeiten starten/beenden“ müssen auch die 
 
     ![Screenshot: Seite „Aktionsgruppe“](../media/move-account/delete-action-group.png)
 
-Alternativ kann die Aktionsgruppe auch mithilfe des Cmdlets [Remove-AzActionGroup](/powershell/module/az.monitor/remove-azactiongroup?view=azps-3.7.0) gelöscht werden:
+Alternativ kann die Aktionsgruppe auch mithilfe des Cmdlets [Remove-AzActionGroup](/powershell/module/az.monitor/remove-azactiongroup) gelöscht werden:
 
 ```azurepowershell-interactive
 Remove-AzActionGroup -ResourceGroupName <myResourceGroup> -Name StartStop_VM_Notification
@@ -108,7 +104,7 @@ Jetzt können Sie Ihr Automation-Konto und dessen Runbooks verschieben.
 
 ## <a name="re-create-run-as-accounts"></a>Erneutes Erstellen von ausführenden Konten
 
-Mit [ausführenden Konten](../manage-runas-account.md) wird in Azure Active Directory ein Dienstprinzipal für die Authentifizierung mit Azure-Ressourcen erstellt. Wenn Sie Abonnements ändern, werden die vorhandenen ausführenden Konten nicht mehr für das Automation-Konto verwendet. So erstellen Sie die ausführenden Konten neu:
+Mit [ausführenden Konten](../automation-security-overview.md#run-as-accounts) wird in Azure Active Directory ein Dienstprinzipal für die Authentifizierung mit Azure-Ressourcen erstellt. Wenn Sie Abonnements ändern, werden die vorhandenen ausführenden Konten nicht mehr für das Automation-Konto verwendet. So erstellen Sie die ausführenden Konten neu:
 
 1. Navigieren Sie unter dem neuen Abonnement zu Ihrem Automation-Konto, und wählen Sie unter **Kontoeinstellungen** die Option **Ausführende Konten** aus. Sie sehen, dass die ausführenden Konten jetzt als unvollständig angezeigt werden.
 
@@ -117,7 +113,7 @@ Mit [ausführenden Konten](../manage-runas-account.md) wird in Azure Active Dire
 2. Löschen Sie die ausführenden Konten einzeln, indem Sie auf der Seite **Eigenschaften** die Schaltfläche **Löschen** auswählen. 
 
     > [!NOTE]
-    > Wenn Sie keine Berechtigungen zum Erstellen oder Anzeigen der ausführenden Konten haben, wird die folgende Meldung angezeigt: `You do not have permissions to create an Azure Run As account (service principal) and grant the Contributor role to the service principal.` Weitere Informationen finden Sie unter [Berechtigungen zum Konfigurieren von ausführenden Konten](../manage-runas-account.md#permissions).
+    > Wenn Sie keine Berechtigungen zum Erstellen oder Anzeigen der ausführenden Konten haben, wird die folgende Meldung angezeigt: `You do not have permissions to create an Azure Run As account (service principal) and grant the Contributor role to the service principal.` Weitere Informationen finden Sie unter [Berechtigungen zum Konfigurieren von ausführenden Konten](../automation-security-overview.md#permissions).
 
 3. Wählen Sie nach dem Löschen der ausführenden Konten unter **Ausführendes Azure-Konto** die Option **Erstellen** aus. 
 

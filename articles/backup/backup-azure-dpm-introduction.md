@@ -3,12 +3,12 @@ title: Vorbereiten des DPM-Servers zum Sichern von Workloads
 description: In diesem Artikel erfahren Sie, wie Sie System Center Data Protection Manager-Sicherungen (DPM) in Azure mithilfe des Azure Backup-Diensts vorbereiten.
 ms.topic: conceptual
 ms.date: 06/11/2020
-ms.openlocfilehash: 0089c3d86eb36b82287570ecdfd6e8c782e6fb8a
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 823b23d99959df5f2eed20cf4136254e1702fe89
+ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96002857"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98985630"
 ---
 # <a name="prepare-to-back-up-workloads-to-azure-with-system-center-dpm"></a>Vorbereiten der Sicherung von Workloads in Azure mit System Center DPM
 
@@ -48,7 +48,7 @@ Unterstützte Dateitypen | Diese Dateitypen können mit Azure Backup gesichert w
 Nicht unterstützte Dateitypen | <li>Server auf Dateisystemen, bei denen Groß-/Kleinschreibung unterschieden wird<li> feste Links (übersprungen)<li> Analysepunkte (übersprungen)<li> verschlüsselt und komprimiert (übersprungen)<li> verschlüsselt und platzsparend (übersprungen)<li> Komprimierter Stream<li> Stream analysieren
 Lokaler Speicher | Jeder Computer, den Sie sichern möchten, muss mindestens 5 % der zu sichernden Datengröße als freien lokalen Speicher aufweisen. Beispielsweise erfordert das Sichern von 100GB an Daten mindestens 5GB freien Speicherplatz im Scratchverzeichnis.
 Tresorspeicher | Es gibt keine Beschränkung der Datenmenge, die Sie in einem Azure Backup-Tresor sichern, aber die Größe einer Datenquelle (beispielsweise ein virtueller Computer oder eine Datenbank) darf 54.400 GB nicht überschreiten.
-Azure ExpressRoute | Sie können Ihre Daten über Azure ExpressRoute mit öffentlichem Peering (verfügbar für alte Verbindungen) und Microsoft-Peering sichern. Die Sicherung über privates Peering wird nicht unterstützt.<br/><br/> **Bei öffentlichem Peering**: Stellen Sie den Zugriff auf die folgenden Domänen/Adressen sicher:<br/><br/>- `http://www.msftncsi.com/ncsi.txt` <br/><br/>- `microsoft.com` <br/><br/>-`.WindowsAzure.com`<br/><br/>-`.microsoftonline.com`<br/><br/>-`.windows.net`<br/><br/> **Mit Microsoft-Peering**: Wählen Sie die folgenden Dienste, Regionen und relevanten Communitywerte aus:<br/><br/>– Azure Active Directory (12076:5060)<br/><br/>– Microsoft Azure-Region (entsprechend dem Standort Ihres Recovery Services-Tresors)<br/><br/>– Azure Storage (entsprechend dem Standort Ihres Recovery Services-Tresors)<br/><br/>Weitere Informationen finden Sie unter [ExpressRoute-Routinganforderungen](../expressroute/expressroute-routing.md).<br/><br/>**Hinweis**: Öffentliches Peering gilt für neue Leitungen als veraltet.
+Azure ExpressRoute | Sie können Ihre Daten über Azure ExpressRoute mit öffentlichem Peering (verfügbar für alte Verbindungen) und Microsoft-Peering sichern. Die Sicherung über privates Peering wird nicht unterstützt.<br/><br/> **Bei öffentlichem Peering**: Stellen Sie den Zugriff auf die folgenden Domänen/Adressen sicher:<br/><br/> URLs:<br> `www.msftncsi.com` <br> .Microsoft.com <br> .WindowsAzure.com <br> .microsoftonline.com <br> .windows.net <br>`www.msftconnecttest.com`<br><br>IP-Adressen<br>  20.190.128.0/18 <br>  40.126.0.0/18<br> <br/>**Mit Microsoft-Peering**: Wählen Sie die folgenden Dienste, Regionen und relevanten Communitywerte aus:<br/><br/>– Azure Active Directory (12076:5060)<br/><br/>– Microsoft Azure-Region (entsprechend dem Standort Ihres Recovery Services-Tresors)<br/><br/>– Azure Storage (entsprechend dem Standort Ihres Recovery Services-Tresors)<br/><br/>Weitere Informationen finden Sie unter [ExpressRoute-Routinganforderungen](../expressroute/expressroute-routing.md).<br/><br/>**Hinweis**: Öffentliches Peering gilt für neue Leitungen als veraltet.
 Azure Backup-Agent | Wenn DPM in System Center 2012 SP1 ausgeführt wird, installieren Sie mindestens Updaterollup 2 für DPM SP1. Dies ist für die Installation des Agents erforderlich.<br/><br/> In diesem Artikel wird beschrieben, wie Sie die neueste Version des Azure Backup-Agents, auch als MARS-Agent (Microsoft Azure Recovery Service) bezeichnet, bereitstellen. Wenn Sie eine frühere Version bereitgestellt haben, aktualisieren Sie sie auf die neueste Version, um sicherzustellen, dass die Sicherung wie erwartet funktioniert.
 
 Vor dem Beginn benötigen Sie ein Azure-Konto mit aktiviertem Azure Backup-Feature. Wenn Sie über kein Konto verfügen, können Sie in nur wenigen Minuten ein kostenloses Testkonto erstellen. Erfahren Sie mehr über [Preisgestaltung von Azure Backup](https://azure.microsoft.com/pricing/details/backup/).

@@ -1,19 +1,16 @@
 ---
 title: Überwachen und Verwalten von Hadoop mit der Ambari-REST-API – Azure HDInsight
 description: Erfahren Sie, wie Sie Ambari zum Überwachen und Verwalten von Hadoop-Clustern in Azure HDInsight verwenden. In diesem Dokument erfahren Sie, wie Sie die in HDInsight-Clustern enthaltene Ambari-REST-API verwenden.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/29/2020
-ms.openlocfilehash: 6ba1d1e15b1dbb3efb24219b6c09a6827e701d46
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 1d4e6f0d6a0242cda919364965a61e4314927d87
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92546074"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945586"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-apache-ambari-rest-api"></a>Verwalten von HDInsight-Clustern mithilfe der Apache Ambari-REST-API
 
@@ -41,7 +38,7 @@ Apache Ambari vereinfacht die Verwaltung und Überwachung von Hadoop-Clustern du
 
 ## <a name="authentication"></a>Authentifizierung
 
-Zum Herstellen einer Verbindung mit Ambari in HDInsight ist HTTPS erforderlich. Verwenden Sie den Administratorkontonamen (Standardname: **Administrator** ) und das Kennwort, die Sie während der Clustererstellung bereitgestellt haben.
+Zum Herstellen einer Verbindung mit Ambari in HDInsight ist HTTPS erforderlich. Verwenden Sie den Administratorkontonamen (Standardname: **Administrator**) und das Kennwort, die Sie während der Clustererstellung bereitgestellt haben.
 
 Verwenden Sie für Enterprise-Sicherheitspaketcluster anstelle von `admin` einen vollqualifizierten Benutzernamen wie `username@domain.onmicrosoft.com`.
 
@@ -269,7 +266,7 @@ $respObj = Invoke-WebRequest -Uri "https://$clusterName.azurehdinsight.net/api/v
 $respObj.Content
 ```
 
-In diesem Beispiel wird ein JSON-Dokument zurückgegeben, das die aktuelle Konfiguration für installierte Komponenten enthält. Siehe den Wert *tag* . Das folgende Beispiel ist ein Datenauszug aus der Rückgabe eines Spark-Clustertyps:
+In diesem Beispiel wird ein JSON-Dokument zurückgegeben, das die aktuelle Konfiguration für installierte Komponenten enthält. Siehe den Wert *tag*. Das folgende Beispiel ist ein Datenauszug aus der Rückgabe eines Spark-Clustertyps:
 
 ```json
 "jupyter-site" : {
@@ -335,7 +332,7 @@ In diesem Beispiel wird ein JSON-Dokument zurückgegeben, das die aktuelle Konfi
 
    * Ein Stammdokument für die neue Konfiguration wird erstellt.
 
-   * Der Inhalt des `.items[]`-Arrays wird abgerufen und unter dem **desired_config** -Element hinzugefügt.
+   * Der Inhalt des `.items[]`-Arrays wird abgerufen und unter dem **desired_config**-Element hinzugefügt.
 
    * Die Elemente `href`, `version` und `Config` werden gelöscht, da sie zum Übermitteln einer neuen Konfiguration nicht benötigt werden.
 
@@ -387,7 +384,7 @@ In diesem Beispiel wird ein JSON-Dokument zurückgegeben, das die aktuelle Konfi
     $resp.Content
     ```  
 
-    Diese Befehle übermitteln den Inhalt der Datei **newconfig.json** als neue Konfiguration an den Cluster. Die Anforderung gibt ein JSON-Dokument zurück. Das **versionTag** -Element in diesem Dokument sollte mit der von Ihnen übermittelten Version übereinstimmen, und das Objekt **configs** enthält die Konfigurationsänderungen, die Sie angefordert haben.
+    Diese Befehle übermitteln den Inhalt der Datei **newconfig.json** als neue Konfiguration an den Cluster. Die Anforderung gibt ein JSON-Dokument zurück. Das **versionTag**-Element in diesem Dokument sollte mit der von Ihnen übermittelten Version übereinstimmen, und das Objekt **configs** enthält die Konfigurationsänderungen, die Sie angefordert haben.
 
 ### <a name="restart-a-service-component"></a>Neustarten einer Dienstkomponente
 

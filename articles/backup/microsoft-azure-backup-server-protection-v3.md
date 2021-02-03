@@ -3,12 +3,12 @@ title: Mit Azure Backup Server V3 RTM sicherbare Elemente
 description: Dieser Artikel bietet eine Schutzmatrix aller Workloads, Datentypen und Installationen, die von Azure Backup Server V3 RTM geschützt werden.
 ms.date: 11/13/2018
 ms.topic: conceptual
-ms.openlocfilehash: c1a1a876a9249a32c87c50d7f320a62b9c478caf
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 1ec8240844061b9b250a3cbf92ffcc5f2b3f474b
+ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96752378"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98986886"
 ---
 # <a name="azure-backup-server-v3-rtm-protection-matrix"></a>Azure Backup Server V3 RTM-Schutzmatrix
 
@@ -86,11 +86,16 @@ Sie können Ihre Daten über Azure ExpressRoute mit öffentlichem Peering (verf�
 
 Bei öffentlichem Peering: Stellen Sie den Zugriff auf die folgenden Domänen/Adressen sicher:
 
-* `http://www.msftncsi.com/ncsi.txt`
-* `microsoft.com`
-* `.WindowsAzure.com`
-* `.microsoftonline.com`
-* `.windows.net`
+* URLs
+  * `www.msftncsi.com`
+  * `*.Microsoft.com`
+  * `*.WindowsAzure.com`
+  * `*.microsoftonline.com`
+  * `*.windows.net`
+  * `www.msftconnecttest.com`
+* IP-Adressen
+  * 20.190.128.0/18
+  * 40.126.0.0/18
 
 Mit Microsoft-Peering: Wählen Sie die folgenden Dienste, Regionen und relevanten Communitywerte aus:
 

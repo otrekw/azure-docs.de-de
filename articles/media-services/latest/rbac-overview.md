@@ -1,5 +1,5 @@
 ---
-title: Rollenbasierte Zugriffssteuerung in Azure für Media Services-Konten – Azure | Microsoft-Dokumentation
+title: Rollenbasierte Zugriffssteuerung für Media Services-Konten
 description: In diesem Artikel wird die rollenbasierte Zugriffssteuerung (RBAC) in Azure für Azure Media Services-Konten erläutert.
 services: media-services
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 8fba3db14c2a950dd230a4721841b4baa9f64636
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 7c9edce71e0d0565de80153bfd5b3d5f1edb2e8f
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92426804"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98955155"
 ---
 # <a name="azure-role-based-access-control-azure-rbac-for-media-services-accounts"></a>Rollenbasierte Zugriffssteuerung (RBAC) in Azure für Media Services-Konten
 
@@ -27,7 +27,7 @@ Derzeit definiert Azure Media Services keine benutzerdefinierten dienstspezifisc
 
 ## <a name="design-principles"></a>Entwurfsprinzipien
 
-Eines der wichtigsten Entwurfsprinzipien der v3-API ist es, die API sicherer zu machen. v3-APIs geben bei einem **Get** - oder **List** -Vorgang keine geheimen Schlüssel oder Anmeldeinformationen zurück. Die Schlüssel sind immer NULL, leer oder aus der Antwort bereinigt. Der Benutzer muss eine separate Aktionsmethode zum Abrufen von Geheimnissen oder Anmeldeinformationen aufrufen. Die **Leser** -Rolle kann keine Vorgänge wie „Asset.ListContainerSas“, „StreamingLocator.ListContentKeys“ oder „ContentKeyPolicies.GetPolicyPropertiesWithSecrets“ aufrufen. Getrennte Aktionen ermöglichen Ihnen, bei Bedarf noch genauer abgestimmte Azure RBAC-Sicherheitsberechtigungen in einer benutzerdefinierten Rolle festzulegen.
+Eines der wichtigsten Entwurfsprinzipien der v3-API ist es, die API sicherer zu machen. v3-APIs geben bei einem **Get**- oder **List**-Vorgang keine geheimen Schlüssel oder Anmeldeinformationen zurück. Die Schlüssel sind immer NULL, leer oder aus der Antwort bereinigt. Der Benutzer muss eine separate Aktionsmethode zum Abrufen von Geheimnissen oder Anmeldeinformationen aufrufen. Die **Leser**-Rolle kann keine Vorgänge wie „Asset.ListContainerSas“, „StreamingLocator.ListContentKeys“ oder „ContentKeyPolicies.GetPolicyPropertiesWithSecrets“ aufrufen. Getrennte Aktionen ermöglichen Ihnen, bei Bedarf noch genauer abgestimmte Azure RBAC-Sicherheitsberechtigungen in einer benutzerdefinierten Rolle festzulegen.
 
 So listen Sie die von Media Services unterstützten Vorgänge auf
 

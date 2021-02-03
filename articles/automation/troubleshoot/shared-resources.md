@@ -2,18 +2,15 @@
 title: Behandeln von Problemen bei freigegebenen Azure Automation-Ressourcen
 description: In diesem Artikel erfahren Sie, wie Sie Probleme mit freigegebenen Azure Automation-Ressourcen beheben.
 services: automation
-author: mgoedtel
-ms.author: magoedte
-ms.date: 03/12/2019
-ms.topic: conceptual
-ms.service: automation
-manager: carmonm
-ms.openlocfilehash: c6bdc09d37cf29458346eaea360b4cd9e0d1226f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.subservice: ''
+ms.date: 01/27/2021
+ms.topic: troubleshooting
+ms.openlocfilehash: 1a822166ae4c2bf793e0fa50e93018f499fcc27a
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86187165"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99053618"
 ---
 # <a name="troubleshoot-shared-resource-issues"></a>Behandeln von Problemen bei freigegebenen Ressourcen
 
@@ -33,7 +30,7 @@ Da das Importieren von PowerShell-Modulen ein komplexer Prozess mit vielen Schri
 
 #### <a name="resolution"></a>Lösung
 
-Um dieses Problem zu beheben, müssen Sie das Modul, das hängen geblieben ist, mithilfe des Cmdlets [Remove-AzAutomationModule](/powershell/module/Az.Automation/Remove-AzAutomationModule?view=azps-3.7.0) entfernen. Sie können dann das Importieren des Moduls erneut versuchen.
+Um dieses Problem zu beheben, müssen Sie das Modul, das hängen geblieben ist, mithilfe des Cmdlets [Remove-AzAutomationModule](/powershell/module/Az.Automation/Remove-AzAutomationModule) entfernen. Sie können dann das Importieren des Moduls erneut versuchen.
 
 ```azurepowershell-interactive
 Remove-AzAutomationModule -Name ModuleName -ResourceGroupName ExampleResourceGroup -AutomationAccountName ExampleAutomationAccount -Force
@@ -70,7 +67,7 @@ Es folgen häufige Ursachen, warum ein Modul nicht erfolgreich in Azure Automati
 * Die Struktur stimmt nicht mit der Struktur überein, die für Automation erforderlich ist.
 * Das Modul hängt von einem anderen Modul ab, das für Ihr Automation-Konto nicht bereitgestellt wurde.
 * Für das Modul fehlen die Abhängigkeiten im Ordner.
-* Das Cmdlet [New-AzAutomationModule](/powershell/module/Az.Automation/New-AzAutomationModule?view=azps-3.7.0) wird zum Hochladen des Moduls verwendet, und Sie haben nicht den vollständigen Speicherpfad angegeben oder das Modul nicht mit einer öffentlich zugänglichen URL geladen.
+* Das Cmdlet [New-AzAutomationModule](/powershell/module/Az.Automation/New-AzAutomationModule) wird zum Hochladen des Moduls verwendet, und Sie haben nicht den vollständigen Speicherpfad angegeben oder das Modul nicht mit einer öffentlich zugänglichen URL geladen.
 
 #### <a name="resolution"></a>Lösung
 
@@ -134,7 +131,7 @@ Sie haben keine Berechtigungen zum Erstellen oder Aktualisieren des ausführende
 
 #### <a name="resolution"></a>Lösung
 
-Um ein ausführendes Konto zu erstellen oder zu aktualisieren, müssen Sie über geeignete [Berechtigungen](../manage-runas-account.md#permissions) für die verschiedenen Ressourcen verfügen, die vom ausführenden Konto verwendet werden. 
+Um ein ausführendes Konto zu erstellen oder zu aktualisieren, müssen Sie über geeignete [Berechtigungen](../automation-security-overview.md#permissions) für die verschiedenen Ressourcen verfügen, die vom ausführenden Konto verwendet werden.
 
 Wenn das Problem durch eine Sperre verursacht wird, überprüfen Sie, ob die Sperre entfernt werden kann. Navigieren Sie im Azure-Portal zu der gesperrten Ressource, klicken Sie mit der rechten Maustaste auf das Schlosssymbol, und wählen Sie **Löschen** aus.
 
@@ -150,7 +147,7 @@ Unable to find an entry point named 'GetPerAdapterInfo' in DLL 'iplpapi.dll'
 
 #### <a name="cause"></a>Ursache
 
-Dieser Fehler wird wahrscheinlich durch ein falsch konfiguriertes [ausführendes Konto](../manage-runas-account.md) verursacht.
+Dieser Fehler wird wahrscheinlich durch ein falsch konfiguriertes [ausführendes Konto](../automation-security-overview.md) verursacht.
 
 #### <a name="resolution"></a>Lösung
 
@@ -169,4 +166,3 @@ Wenn Sie Ihr Problem nicht mit diesem Artikel lösen konnten, besuchen Sie einen
 * Erhalten Sie Antworten von Azure-Experten über [Azure-Foren](https://azure.microsoft.com/support/forums/).
 * Wenden Sie sich an [@AzureSupport](https://twitter.com/azuresupport) – Dies ist das offizielle Microsoft Azure-Konto, über das die Azure-Community Zugriff auf die richtigen Ressourcen erhält: Antworten, Support und Experten.
 * Erstellen Sie einen Azure-Supportfall. Wechseln Sie zur [Azure-Supportwebsite](https://azure.microsoft.com/support/options/), und wählen Sie **Support erhalten** aus.
-

@@ -3,16 +3,16 @@ title: Partner-Engagement für Co-Selling – kommerzieller Microsoft Marketplac
 description: Das Co-Selling-Programm von Microsoft Partner Center für Partner kann Ihnen helfen, einen sehr großen Kundenstamm zu erreichen und neue Verkäufe zu generieren.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
-ms.topic: conceptual
+ms.topic: how-to
 author: vamahtan
 ms.author: vamahtan
-ms.date: 12/2/2020
-ms.openlocfilehash: 7969f5ffd3064a5af97a101185b6229c81c7613d
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.date: 1/29/2021
+ms.openlocfilehash: 84d37def6aa519eabf26a72ded7b0ab70994c430
+ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98880286"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99063078"
 ---
 # <a name="co-sell-partner-engagement"></a>Partner-Engagement für Co-Selling
 
@@ -22,7 +22,7 @@ Das Co-Selling-Programm ist für **Software, die mit Ihrem geistigen Eigentum (I
 
 - **Co-Sell Ready**-Angebote werden für Microsoft-Verkäufer im Außendienst bereitgestellt. Bei der Arbeit mit Microsoft-Verkäufern hilft Ihnen das Co-Selling-Programm, eine umfangreiche Gemeinschaft von Kunden zu erreichen, die von Microsoft verwaltet werden. So können Sie an Verkaufschancen zusammenarbeiten, die Ihr Geschäftswachstum beschleunigen.
 
-    ![Diagramm mit dem Ablauf des Co-Sellings, wenn Vertriebsleads für von Microsoft verwaltete Kunden freigegeben, akzeptiert und gewonnen werden.](./media/marketplace-publishers-guide/marketplace-co-sell-v2.png)
+    :::image type="content" source="./media/marketplace-publishers-guide/marketplace-co-sell-v2.png" alt-text="Diagramm mit dem Ablauf des Co-Sellings, wenn Vertriebsleads für von Microsoft verwaltete Kunden freigegeben, akzeptiert und gewonnen werden.":::
 
 - Wenn **Co-Sell Incentivized**-IP-Angebote in Zusammenarbeit mit Microsoft-Vertriebsteams verkauft werden, können neben den unten aufgeführten Marketplace-Vorteilen Incentives für Microsoft-Verkäufer im Außendienst gesammelt werden.</li></ul>
 
@@ -63,7 +63,7 @@ Starten Sie Ihre Co-Selling-Aktivitäten direkt im Partner Center, indem Sie die
 
 1. Wählen Sie im Menü auf der linken Seite **Co-Selling mit Microsoft** aus.
 
-    :::image type="content" source="media/co-sell/co-sell-with-microsoft-tab.png" alt-text="Diese Abbildung zeigt, wo sich die Registerkarte „Co-Selling mit Microsoft“ befindet.":::
+    [![Diese Abbildung zeigt, wo sich die Registerkarte „Co-Selling mit Microsoft“ befindet.](media/co-sell/co-sell-with-microsoft-tab.png)](media/co-sell/co-sell-with-microsoft-tab.png#lightbox)
 
 1. Stellen Sie grundlegende Auflistungsdetails bereit, um Microsoft-Verkäufern zu helfen, Ihr Angebot im **Auflistungsabschnitt** schnell zu sortieren und zu ermitteln. (*Erforderlich: alle Felder*)
 
@@ -71,29 +71,20 @@ Starten Sie Ihre Co-Selling-Aktivitäten direkt im Partner Center, indem Sie die
 
 1. Geben Sie Details zu Ihrem Angebot an, und laden Sie im Abschnitt **Dokumente** Begleitmaterialien hoch. Diese Informationen werden von Microsoft-Verkäufern verwendet, um Ihr Angebot zu empfehlen und zu verkaufen. *(Erforderlich: Einseitiges Lösungs-/Angebotsdokument und Lösungs-/Angebotspräsentation. Zum Erreichen des Azure IP-Co-Sell Incentivized-Status erforderlich: Diagramm zur Referenzarchitektur.)*
 
-    :::image type="content" source="media/co-sell/co-sell-documents-section.png" alt-text="In dieser Abbildung ist der Abschnitt „Dokumente“ auf der Registerkarte „Co-Selling“ dargestellt.":::
+    [![In dieser Abbildung ist der Abschnitt „Dokumente“ auf der Registerkarte „Co-Selling“ dargestellt.](media/co-sell/co-sell-documents-section.png)](media/co-sell/co-sell-documents-section.png#lightbox)
 
 1. Laden Sie im Abschnitt **Kontakte** Informationen zum Verkaufskontakt hoch. Microsoft-Verkäufer können sich an diese Kontakte wenden, um zusätzliche Informationen zu Ihrem Angebot anzufordern. (*Erforderlich: ein Kontakt für jede Geografie, in der Ihr Angebot verfügbar ist*)
 
-    :::image type="content" source="media/co-sell/co-sell-contacts-section.png" alt-text="In dieser Abbildung ist der Abschnitt „Kontakte“ auf der Registerkarte „Co-Selling“ dargestellt.":::
+    [![In dieser Abbildung ist der Abschnitt „Kontakte“ auf der Registerkarte „Co-Selling“ dargestellt.](media/co-sell/co-sell-contacts-section.png)](media/co-sell/co-sell-contacts-section.png#lightbox)
 
 1. Speichern Sie den Entwurf, bevor Sie fortfahren.
 1. Nachdem Sie alle erforderlichen Abschnitte des Angebots abgeschlossen haben, können Sie es zum Überprüfen und Veröffentlichen übermitteln. Wählen Sie in der rechten oberen Ecke **Überprüfen und veröffentlichen** aus. Überprüfen Sie die Angebotsdetails, und wählen Sie dann **Veröffentlichen** aus.
-1. Nachdem Sie sich vergewissert haben, dass Sie die [Kriterien für den von Ihnen angestrebten Co-Selling-Status erfüllen](#co-sell-publishing-steps-and-requirements), befolgen Sie die nachfolgenden Richtlinien, um Ihr Angebot für Co-Selling zu nominieren:
-    1. **Wenn Sie über einen Microsoft Partner-Manager (z. B. PDM) verfügen**, wenden Sie sich an Ihren Partnermanager, um Unterstützung zu erhalten. Sie führen Sie durch den Nominierungsprozess für den Co-Selling-Status „Ready“ und Azure-IP-Co-Selling oder Business Applications – Co-Sell Incentivized (falls zutreffend).
-
-    1. **Wenn Sie keinen Microsoft Partner-Manager (z. B. PDM) haben,** [nominieren Sie sich über Cloud Enablement Desk (CED) selbst](https://aka.ms/cednominate). Wählen Sie in der Dropdownliste „Desired CED Services“ die Option „Becoming Co-sell ready“ aus:
-
-        :::image type="content" source="media/co-sell/co-sell-request-review.png" alt-text="Diese Abbildung zeigt die Dropdownliste „CED“ zum Beantragen einer Co-Selling-Prüfung":::
-
-    Das CED wird sich an Sie wenden, um den Vorgang abzuschließen.
 
 ## <a name="see-your-offers-co-sell-status"></a>Anzeigen des Co-Selling-Status Ihres Angebots
 
 Für Angebote mit der [Co-Selling-Option im kommerziellen Marketplace](commercial-marketplace-co-sell.md) ist der aktuelle Co-Selling-Status auf der Übersichtsseite des Angebots zu sehen:
 
- :::image type="content" source="media/co-sell/co-sell-status.png" alt-text="Diese Abbildung zeigt den aktuellen Co-Selling-Status von Angeboten.":::
-
+[![Diese Abbildung zeigt den aktuellen Co-Selling-Status von Angeboten.](media/co-sell/co-sell-status.png)](media/co-sell/co-sell-status.png#lightbox)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

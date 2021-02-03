@@ -1,19 +1,16 @@
 ---
 title: Einrichten von Clustern in HDInsight mit Apache Hadoop, Apache Spark, Apache Kafka usw.
 description: Richten Sie Hadoop-, Kafka-, Spark-, HBase-, R Server- oder Storm-Cluster für HDInsight über einen Browser, die klassische Azure-Befehlszeilenschnittstelle, Azure PowerShell, REST oder ein SDK ein.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017,seodec18
 ms.date: 08/06/2020
-ms.openlocfilehash: 6ce5de354583da04905f9f889cfabe36e6da6667
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 4e81ccb541b188fedfefd150233082e9cb1f8c22
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92546125"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945547"
 ---
 # <a name="set-up-clusters-in-hdinsight-with-apache-hadoop-apache-spark-apache-kafka-and-more"></a>Einrichten von Clustern in HDInsight mit Apache Hadoop, Apache Spark, Apache Kafka usw.
 
@@ -92,7 +89,7 @@ Wählen Sie die Version von HDInsight für diesen Cluster aus. Weitere Informati
 
 Während der Clustererstellung ermöglichen die HDInsight-Cluster Ihnen das Konfigurieren von zwei Benutzerkonten:
 
-* Benutzername für Clusteranmeldung: Der Standard-Benutzername lautet *admin* . Für ihn gilt im Azure-Portal die Standardkonfiguration. Er wird manchmal auch als „Clusterbenutzer“ oder „HTTP-Benutzer“ bezeichnet.
+* Benutzername für Clusteranmeldung: Der Standard-Benutzername lautet *admin*. Für ihn gilt im Azure-Portal die Standardkonfiguration. Er wird manchmal auch als „Clusterbenutzer“ oder „HTTP-Benutzer“ bezeichnet.
 * Secure Shell-Benutzername (SSH): Wird verwendet, um die Verbindung mit dem Cluster über SSH herzustellen. Weitere Informationen finden Sie unter [Verwenden von SSH mit Linux-basiertem Hadoop in HDInsight unter Linux, Unix oder OS X](hdinsight-hadoop-linux-use-ssh-unix.md).
 
 Für den HTTP-Benutzernamen gelten folgende Einschränkungen:
@@ -120,7 +117,7 @@ HDInsight-Cluster können die folgenden Speicheroptionen verwenden:
 * Azure Data Lake Storage Gen1
 * Azure Storage vom Typ „Allgemein v2“
 * Azure Storage vom Typ „Allgemein v1“
-* Azure Storage-Blockblob ( **nur als sekundärer Speicher unterstützt** )
+* Azure Storage-Blockblob (**nur als sekundärer Speicher unterstützt**)
 
 Weitere Informationen zu Speicheroptionen mit HDInsight finden Sie unter [Vergleich der Speicheroptionen für die Verwendung mit Azure HDInsight-Clustern](hdinsight-hadoop-compare-storage-options.md).
 
@@ -246,7 +243,7 @@ Wählen Sie bei der Bereitstellung von Clustern die Computeressourcen basierend 
 * VMs der Serien A und D1–4: [Größen universeller Linux-VMs](../virtual-machines/sizes-general.md)
 * VMs der Serien D11–14: [Größen speicheroptimierter Linux-VMs](../virtual-machines/sizes-memory.md)
 
-Wenn Sie wissen möchten, welchen Wert Sie beim Erstellen eines Clusters mithilfe unterschiedlicher SDKs oder von Azure PowerShell als VM-Größe angeben sollten, lesen Sie unter [VM-Größen für HDInsight-Cluster](../cloud-services/cloud-services-sizes-specs.md#size-tables) nach. Verwenden Sie im verknüpften Artikel in den Tabellen den Wert in der Spalte **Größe** .
+Wenn Sie wissen möchten, welchen Wert Sie beim Erstellen eines Clusters mithilfe unterschiedlicher SDKs oder von Azure PowerShell als VM-Größe angeben sollten, lesen Sie unter [VM-Größen für HDInsight-Cluster](../cloud-services/cloud-services-sizes-specs.md#size-tables) nach. Verwenden Sie im verknüpften Artikel in den Tabellen den Wert in der Spalte **Größe**.
 
 > [!IMPORTANT]  
 > Wenn Sie mehr als 32 Workerknoten in einem Cluster benötigen, müssen Sie eine Hauptknotengröße von mindestens 8 Kernen und 14 GB Arbeitsspeicher (RAM) auswählen.

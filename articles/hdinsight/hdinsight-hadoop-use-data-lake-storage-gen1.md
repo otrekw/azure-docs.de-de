@@ -1,19 +1,16 @@
 ---
 title: Verwenden von Data Lake Storage Gen1 mit Hadoop in Azure HDInsight
 description: Erfahren Sie, wie Sie Daten in Azure Data Lake Storage Gen1 abfragen und die Ergebnisse Ihrer Analyse speichern.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020
 ms.date: 04/24/2020
-ms.openlocfilehash: 5949bab7bdf11b11e0ff71f9054098ed83d95ab4
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 35941f585a0ae5c0d3915c769db5b18737b299f0
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92539835"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945411"
 ---
 # <a name="use-data-lake-storage-gen1-with-azure-hdinsight-clusters"></a>Verwenden von Data Lake Storage Gen1 mit Azure HDInsight-Clustern
 
@@ -112,7 +109,7 @@ Sie können Data Lake Storage Gen1 zudem als zusätzlichen Speicher für den Clu
 
 `adl://mydatalakestore.azuredatalakestore.net/<file_path>`
 
-Die URL enthält jetzt keinen **cluster_root_path** . Dies liegt daran, dass Data Lake Storage in diesem Fall kein Standardspeicher ist. Sie müssen daher nur den Pfad zu den Dateien angeben.
+Die URL enthält jetzt keinen **cluster_root_path**. Dies liegt daran, dass Data Lake Storage in diesem Fall kein Standardspeicher ist. Sie müssen daher nur den Pfad zu den Dateien angeben.
 
 Um Data Lake Storage Gen1 als zusätzlichen Speicher zu verwenden, gewähren Sie dem Dienstprinzipal Zugriff auf die Pfade, in denen Ihre Dateien gespeichert sind.  Beispiel:
 
@@ -214,7 +211,7 @@ LOCATION '/example/data/';
 
 ## <a name="identify-storage-path-from-ambari"></a>Bestimmen des Speicherpfads aus Ambari
 
-Um den vollständigen Pfad zum konfigurierten Standardspeicher zu ermitteln, navigieren Sie zu **HDFS** > **Konfigurationen** , und geben Sie `fs.defaultFS` in das Filtereingabefeld ein.
+Um den vollständigen Pfad zum konfigurierten Standardspeicher zu ermitteln, navigieren Sie zu **HDFS** > **Konfigurationen**, und geben Sie `fs.defaultFS` in das Filtereingabefeld ein.
 
 ## <a name="create-hdinsight-clusters-with-access-to-data-lake-storage-gen1"></a>Erstellen von HDInsight-Clustern mit Zugriff auf Data Lake Storage Gen1
 

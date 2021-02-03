@@ -2,19 +2,15 @@
 title: Behandeln von Problemen bei Hybrid Runbook Workern in Azure Automation
 description: In diesem Artikel erfahren Sie, wie Sie Probleme beheben, die bei Hybrid Runbook Workern in Azure Automation auftreten.
 services: automation
-ms.service: automation
 ms.subservice: ''
-author: mgoedtel
-ms.author: magoedte
 ms.date: 11/25/2019
-ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: 1386dd820b10b63862ddab38c441f251bea1d83d
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.topic: troubleshooting
+ms.openlocfilehash: 7f034f5043c3cb88ec705b42b06887c5ba56bd6d
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92428399"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99055330"
 ---
 # <a name="troubleshoot-hybrid-runbook-worker-issues"></a>Beheben von Hybrid Runbook Worker-Problemen
 
@@ -58,7 +54,7 @@ Prüfen Sie, ob im Ereignisprotokoll **Microsoft-SMA** ein entsprechendes Ereign
 
 #### <a name="issue"></a>Problem
 
-Der Hybrid Runbook Worker empfängt das Ereignis 15011, das darauf hinweist, dass ein Abfrageergebnis nicht gültig ist. Die folgende Fehlermeldung wird angezeigt, wenn der Worker versucht, eine Verbindung mit dem [SignalR-Server](/aspnet/core/signalr/introduction?view=aspnetcore-3.1) zu öffnen.
+Der Hybrid Runbook Worker empfängt das Ereignis 15011, das darauf hinweist, dass ein Abfrageergebnis nicht gültig ist. Die folgende Fehlermeldung wird angezeigt, wenn der Worker versucht, eine Verbindung mit dem [SignalR-Server](/aspnet/core/signalr/introduction) zu öffnen.
 
 ```error
 [AccountId={c7d22bd3-47b2-4144-bf88-97940102f6ca}]
@@ -110,7 +106,7 @@ At line:3 char:1
 ```
 #### <a name="cause"></a>Ursache
 
-Dieser Fehler tritt auf, wenn Sie versuchen, ein [ausführendes Konto](../manage-runas-account.md) in einem Runbook zu verwenden, das auf einem Hybrid Runbook Worker ausgeführt wird, auf dem das Zertifikat des ausführenden Kontos nicht vorhanden ist. Der Hybrid Runbook Worker enthält das Zertifikatobjekt nicht standardmäßig lokal. Dieses Objekt ist aber für die ordnungsgemäße Funktion des ausführenden Kontos erforderlich.
+Dieser Fehler tritt auf, wenn Sie versuchen, ein [ausführendes Konto](../automation-security-overview.md#run-as-accounts) in einem Runbook zu verwenden, das auf einem Hybrid Runbook Worker ausgeführt wird, auf dem das Zertifikat des ausführenden Kontos nicht vorhanden ist. Der Hybrid Runbook Worker enthält das Zertifikatobjekt nicht standardmäßig lokal. Dieses Objekt ist aber für die ordnungsgemäße Funktion des ausführenden Kontos erforderlich.
 
 #### <a name="resolution"></a>Lösung
 
@@ -156,13 +152,13 @@ Wenn Sie den Befehl `sudo` für einen Linux-Hybrid Runbook Worker ausführen, wi
 
 #### <a name="cause"></a>Ursache
 
-Das **nxautomationuser** -Konto für den Log Analytics-Agent für Linux ist in der **sudoers** -Datei nicht ordnungsgemäß konfiguriert. Der Hybrid Runbook Worker benötigt die entsprechende Konfiguration der Kontobenachrichtigungen und anderer Daten, damit Runbooks auf dem Linux-Runbook Worker signiert werden können.
+Das **nxautomationuser**-Konto für den Log Analytics-Agent für Linux ist in der **sudoers**-Datei nicht ordnungsgemäß konfiguriert. Der Hybrid Runbook Worker benötigt die entsprechende Konfiguration der Kontobenachrichtigungen und anderer Daten, damit Runbooks auf dem Linux-Runbook Worker signiert werden können.
 
 #### <a name="resolution"></a>Lösung
 
 * Stellen Sie sicher, dass der Hybrid Runbook Worker auf dem Computer über die ausführbare Datei „GnuPG (GPG)“ verfügt.
 
-* Überprüfen Sie die Konfiguration des **nxautomationuser** -Kontos in der **sudoers** -Datei. Lesen Sie sich den Artikel [Ausführen von Runbooks auf einem Hybrid Runbook Worker](../automation-hrw-run-runbooks.md) durch.
+* Überprüfen Sie die Konfiguration des **nxautomationuser**-Kontos in der **sudoers**-Datei. Lesen Sie sich den Artikel [Ausführen von Runbooks auf einem Hybrid Runbook Worker](../automation-hrw-run-runbooks.md) durch.
 
 ### <a name="scenario-log-analytics-agent-for-linux-isnt-running"></a><a name="oms-agent-not-running"></a>Szenario: Der Log Analytics-Agent für Linux wird nicht ausgeführt
 
@@ -238,7 +234,7 @@ Hybrid Worker senden [Runbookausgabe und -meldungen](../automation-runbook-outpu
 
 #### <a name="issue"></a>Problem
 
-Ein auf einem Windows-Hybrid Runbook Worker ausgeführtes Skript kann nicht erwartungsgemäß mit Microsoft 365 in einer Orchestrator-Sandbox verbunden werden. Das Skript verwendet für die Verbindung [Connect-MsolService](/powershell/module/msonline/connect-msolservice?view=azureadps-1.0). 
+Ein auf einem Windows-Hybrid Runbook Worker ausgeführtes Skript kann nicht erwartungsgemäß mit Microsoft 365 in einer Orchestrator-Sandbox verbunden werden. Das Skript verwendet für die Verbindung [Connect-MsolService](/powershell/module/msonline/connect-msolservice). 
 
 Wenn Sie **Orchestrator.Sandbox.exe.config** anpassen und den Proxy und die Umgehungsliste festlegen, wird weiterhin keine ordnungsgemäße Verbindung mit der Sandbox hergestellt. Eine Datei **Powershell_ise.exe.config** mit denselben Einstellungen für Proxy und Umgehungsliste scheint erwartungsgemäß zu funktionieren. SMA- (Service Management Automation) und PowerShell-Protokolle bieten keine Informationen zum Proxy.
 
@@ -250,7 +246,7 @@ Die Verbindung mit den Active Directory-Verbunddiensten (AD FS) auf dem Server 
 
 Sie können das Problem für die Orchestrator-Sandbox beheben, indem Sie Ihr Skript migrieren, sodass die Azure Active Directory-Module anstelle des MSOnline-Moduls für PowerShell-Cmdlets verwendet werden. Weitere Informationen finden Sie unter [Migrieren von Orchestrator zu Azure Automation (Beta)](../automation-orchestrator-migration.md).
 
-Wenn Sie die Cmdlets des MSOnline-Moduls weiterhin verwenden möchten, ändern Sie das Skript so, dass [Invoke-Command](/powershell/module/microsoft.powershell.core/invoke-command?view=powershell-7) verwendet wird. Geben Sie Werte für die Parameter `ComputerName` und `Credential` an. 
+Wenn Sie die Cmdlets des MSOnline-Moduls weiterhin verwenden möchten, ändern Sie das Skript so, dass [Invoke-Command](/powershell/module/microsoft.powershell.core/invoke-command) verwendet wird. Geben Sie Werte für die Parameter `ComputerName` und `Credential` an. 
 
 ```powershell
 $Credential = Get-AutomationPSCredential -Name MyProxyAccessibleCredential

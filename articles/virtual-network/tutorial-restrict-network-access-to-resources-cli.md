@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 03/14/2018
 ms.author: kumud
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: b4f9dcf6fd43749cdf71098b3cd0da8a42020f6d
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 5c23259a9cb1f3c409ad437a1e91151b5f401129
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98221764"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946285"
 ---
 # <a name="restrict-network-access-to-paas-resources-with-virtual-network-service-endpoints-using-the-azure-cli"></a>Einschränken des Netzwerkzugriffs auf PaaS-Ressourcen mit VNET-Dienstendpunkten mithilfe der Azure CLI
 
@@ -326,7 +326,7 @@ Der Zugriff wird verweigert, und Sie erhalten einen `mount error(13): Permission
 
 Beenden Sie die SSH-Sitzung mit dem virtuellen Computer *myVmPublic*.
 
-Versuchen Sie von Ihrem Computer aus, die Freigaben in Ihrem Speicherkonto mit [az storage share list](/cli/azure/storage/share?view=azure-cli-latest) anzuzeigen. Ersetzen Sie `<account-name>` und `<account-key>` durch den Namen des Speicherkontos und den Schlüssel aus [Erstellen eines Speicherkontos](#create-a-storage-account):
+Versuchen Sie von Ihrem Computer aus, die Freigaben in Ihrem Speicherkonto mit [az storage share list](/cli/azure/storage/share) anzuzeigen. Ersetzen Sie `<account-name>` und `<account-key>` durch den Namen des Speicherkontos und den Schlüssel aus [Erstellen eines Speicherkontos](#create-a-storage-account):
 
 ```azurecli-interactive
 az storage share list \

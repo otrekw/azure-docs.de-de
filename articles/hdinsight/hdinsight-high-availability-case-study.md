@@ -1,19 +1,16 @@
 ---
 title: Fallstudie für eine hochverfügbare Lösungsarchitektur für Azure HDInsight
 description: Dieser Artikel ist eine fiktive Fallstudie für eine mögliche hochverfügbare Lösungsarchitektur für Azure HDInsight.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 keywords: Hochverfügbarkeit, Hadoop
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/08/2020
-ms.openlocfilehash: 4b98b03c2d7eb4a0403b4595c1376656ed42511b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0616694d05e3fc9d2255ad97647ebe3bce545a93
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91855037"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945360"
 ---
 # <a name="azure-hdinsight-highly-available-solution-architecture-case-study"></a>Fallstudie für eine hochverfügbare Lösungsarchitektur für Azure HDInsight
 
@@ -68,7 +65,7 @@ Es ist wichtig, die minimale Geschäftsfunktionalität zu ermitteln, die Sie bei
 
 Die folgende Abbildung zeigt die Architektur von Contoso Retail für Notfallwiederherstellung mit Hochverfügbarkeit.
 
-:::image type="content" source="./media/hdinsight-high-availability-case-study/contoso-solution.png" alt-text="Architektur von Contoso Retail":::
+:::image type="content" source="./media/hdinsight-high-availability-case-study/contoso-solution.png" alt-text="Lösung von Contoso":::
 
 **Kafka** verwendet [Aktiv-Passiv-Replikation](hdinsight-business-continuity-architecture.md#apache-kafka) zum Spiegeln von Kafka-Themen aus der primären in die sekundäre Region. Eine Alternative zur Kafka-Replikation könnte darin bestehen, in beiden Regionen Daten an Kafka zu senden.
 
@@ -86,6 +83,6 @@ Für die interne Berichterstellung muss keine Failoverlösung entworfen werden, 
 
 Weitere Informationen zu den in diesem Artikel erörterten Themen finden Sie unter:
 
-* [Geschäftskontinuität in Azure HDInsight](./hdinsight-business-continuity.md)
+* [Geschäftskontinuität von Azure HDInsight](./hdinsight-business-continuity.md)
 * [Architekturen zur Geschäftskontinuität von Azure HDInsight](./hdinsight-business-continuity-architecture.md)
 * [Was sind Apache Hive und HiveQL in Azure HDInsight?](./hadoop/hdinsight-use-hive.md)

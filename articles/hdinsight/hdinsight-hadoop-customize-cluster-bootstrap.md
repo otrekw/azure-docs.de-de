@@ -1,19 +1,16 @@
 ---
 title: Anpassen von Azure HDInsight-Clusterkonfigurationen mithilfe von Bootstrap
 description: Erfahren Sie, wie Sie die HDInsight-Clusterkonfiguration mithilfe von .NET-, PowerShell- und Resource Manager-Vorlagen programmgesteuert anpassen können.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 04/01/2020
-ms.openlocfilehash: 246c5600da3b554ba65872780f0719a58f3f4be2
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 306ebcf7db3c11f783af8cf4c1779bd3d1a013a4
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547485"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945748"
 ---
 # <a name="customize-hdinsight-clusters-using-bootstrap"></a>Anpassen von HDInsight-Clustern mithilfe von Bootstrap
 
@@ -86,9 +83,9 @@ Ein vollständiges funktionierendes PowerShell-Skript finden Sie im [Anhang](#ap
 **So überprüfen Sie die Änderung:**
 
 1. Navigieren Sie zu `https://CLUSTERNAME.azurehdinsight.net/`, wobei `CLUSTERNAME` der Name Ihres Clusters ist.
-1. Navigieren Sie im Menü auf der linken Seite zu **Hive** > **Configs** > **Advanced** .
-1. Erweitern Sie **Advanced hive-site** .
-1. Suchen Sie **hive.metastore.client.socket.timeout** , und vergewissern Sie sich, dass der Wert **90s** lautet.
+1. Navigieren Sie im Menü auf der linken Seite zu **Hive** > **Configs** > **Advanced**.
+1. Erweitern Sie **Advanced hive-site**.
+1. Suchen Sie **hive.metastore.client.socket.timeout**, und vergewissern Sie sich, dass der Wert **90s** lautet.
 
 Weitere Beispiele zum Anpassen anderer Konfigurationsdateien:
 

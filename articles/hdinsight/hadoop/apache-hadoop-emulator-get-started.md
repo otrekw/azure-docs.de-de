@@ -2,19 +2,16 @@
 title: Anleitung zur Verwendung einer Apache Hadoop-Sandbox, Emulator – Azure HDInsight
 description: 'Um sich mit dem Apache Hadoop-Ökosystem vertraut zu machen, können Sie eine Hadoop-Sandbox von Hortonworks auf einem virtuellen Azure-Computer einrichten. '
 keywords: hadoop emulator,hadoop sandbox
-ms.reviewer: jasonh
-author: hrasheed-msft
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: how-to
 ms.date: 05/29/2019
-ms.author: hrasheed
-ms.openlocfilehash: 4f19797fa1c79261dc3459e2b924ed45d0b7e36e
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: eb286adfd7267a78fcf80bcf5ad34f8f1cc9f493
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547961"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946611"
 ---
 # <a name="get-started-with-an-apache-hadoop-sandbox-an-emulator-on-a-virtual-machine"></a>Erste Schritte mit einer Apache Hadoop-Sandbox, einem Emulator auf einem virtuellen Computer
 
@@ -28,7 +25,7 @@ Hier erfahren Sie, wie Sie die Apache Hadoop-Sandbox von Hortonworks auf einem v
 
 1. Navigieren Sie zu den [Cloudera-Downloads](https://www.cloudera.com/downloads/hortonworks-sandbox/hdp.html).
 
-1. Klicken Sie unter **Choose Installation Type** (Installationsart auswählen) auf **VIRTUALBOX** , um die aktuelle Hortonworks Sandbox auf eine VM herunterzuladen. Melden Sie sich an, oder füllen Sie das Produktinteresse-Formular aus.
+1. Klicken Sie unter **Choose Installation Type** (Installationsart auswählen) auf **VIRTUALBOX**, um die aktuelle Hortonworks Sandbox auf eine VM herunterzuladen. Melden Sie sich an, oder füllen Sie das Produktinteresse-Formular aus.
 
 1. Klicken Sie auf die Schaltfläche **HDP SANDBOX (LATEST)** , um den Download zu starten.
 

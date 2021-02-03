@@ -1,19 +1,16 @@
 ---
 title: Anpassen von Azure HDInsight-Clustern mithilfe von Skriptaktionen
 description: Hier erfahren Sie, wie Sie HDInsight-Clustern mithilfe von Skriptaktionen benutzerdefinierte Komponenten hinzufügen. Skriptaktionen sind Bash-Skripts, die zum Anpassen der Clusterkonfiguration verwendet werden können. Sie können auch zusätzliche Dienste und Hilfsprogramme wie Hue, Solr oder R hinzufügen.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020, devx-track-azurecli, contperf-fy21q2
 ms.date: 09/02/2020
-ms.openlocfilehash: 70918d1dc829ff0114a8c1019524feb934c9f915
-ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
+ms.openlocfilehash: 46be3349490f04660d4fc8b69e4cdc295d8ecc1c
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97630937"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98945799"
 ---
 # <a name="customize-azure-hdinsight-clusters-by-using-script-actions"></a>Anpassen von Azure HDInsight-Clustern mithilfe von Skriptaktionen
 

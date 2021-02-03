@@ -6,12 +6,12 @@ ms.author: sngun
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/28/2019
-ms.openlocfilehash: a105df6b27be943b14a29bb25fd048bfd294c867
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 7fe0817abfac3070f77303bb0d2d662d18010862
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93097429"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99090485"
 ---
 # <a name="azure-cosmos-db-nosql-migration-and-application-development-partners"></a>Azure Cosmos DB NoSQL-Migration und Anwendungsentwicklungspartner
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -31,7 +31,7 @@ Von der NoSQL-Migration bis hin zur Anwendungsentwicklung können Sie aus einer 
 | [Capgemini](https://www.capgemini.com/) | Einzelhandel (Bestand), IoT, operative Analyse (Spark), App-Entwicklung | USA, Frankreich, Vereinigtes Königreich, Niederlande, Finnland  |
 | [Cognizant](https://www.cognizant.com/) | IoT, Personalisierung, Einzelhandel (Bestand), operative Analyse (Spark), App-Entwicklung |USA, Kanada, Vereinigtes Königreich, Dänemark, Niederlande, Schweiz, Australien, Japan |
 |[Infosys](https://www.infosys.com/)     | App-Entwicklung      |    USA    |  
-| [Lagash Systems](https://www.lagash.com/) | IoT, serverlose Architektur, App-Entwicklung | Argentinien, Chile, Kolumbien, Mexiko|
+| [Lagash Systems](https://www.devex.com/organizations/lagash-systems-131346) | IoT, serverlose Architektur, App-Entwicklung | Argentinien, Chile, Kolumbien, Mexiko|
 | [Lambda3 Informatics](https://www.lambda3.com.br/) | Echtzeitpersonalisierung, Einzelhandel (Bestand), App-Entwicklung | Brasilien|
 |[Neal Analytics](https://www.nealanalytics.com/)    |     Personalisierung, Einzelhandel (Bestand), operative Analyse (Spark), App-Entwicklung  |    USA     |  
 |[Pragmatic Works Software Inc](https://www.pragmaticworks.com/)    |   NoSQL-Migration      |   USA      |

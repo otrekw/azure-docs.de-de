@@ -3,12 +3,12 @@ title: Installieren des Microsoft Azure Recovery Services-Agents (MARS)
 description: Hier erfahren Sie, wie Sie den MARS-Agent (Microsoft Azure Recovery Services) zum Sichern von Windows-Computern installieren.
 ms.topic: conceptual
 ms.date: 03/03/2020
-ms.openlocfilehash: fb59c245c469791233ce973b00426a127b116535
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: acf38fdf338fcdd0cd7902d4295f0f03310543a8
+ms.sourcegitcommit: 04297f0706b200af15d6d97bc6fc47788785950f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90975302"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98986869"
 ---
 # <a name="install-the-azure-backup-mars-agent"></a>Installieren des Azure Backup-MARS-Agents
 
@@ -88,6 +88,9 @@ Um öffentliches Peering zu verwenden, stellen Sie zunächst sicher, dass Sie au
 * `.WindowsAzure.com`
 * `.microsoftonline.com`
 * `.windows.net`
+* IP-Adressen
+  * 20.190.128.0/18
+  * 40.126.0.0/18
 
 Um Microsoft-Peering zu verwenden, wählen Sie die folgenden Dienste, Regionen und relevanten Communitywerte aus:
 
@@ -136,13 +139,13 @@ Wenn Sie den Agent bereits auf einem Computer installiert haben, stellen Sie sic
 ## <a name="install-and-register-the-agent"></a>Installieren und Registrieren des Agents
 
 1. Führen Sie die Datei *MARSagentinstaller.exe* auf den Computern aus, die Sie sichern möchten.
-1. Wählen Sie im Setup-Assistenten des MARS-Agents die Option **Installationseinstellungen** aus. Wählen Sie dort den Installationsort für den Agent und einen Speicherort für den Cache aus. Wählen Sie **Weiter**aus.
+1. Wählen Sie im Setup-Assistenten des MARS-Agents die Option **Installationseinstellungen** aus. Wählen Sie dort den Installationsort für den Agent und einen Speicherort für den Cache aus. Wählen Sie **Weiter** aus.
    * Azure Backup verwendet den Cache, um Datenmomentaufnahmen zu speichern, bevor sie an Azure gesendet werden.
    * Der verfügbare Speicherplatz im Cachespeicherort sollte mindestens fünf Prozent der Größe der zu sichernden Daten entsprechen.
 
     ![Auswählen der Installationseinstellungen im Setup-Assistenten des MARS-Agents](./media/backup-configure-vault/mars1.png)
 
-1. Geben Sie für **Proxykonfiguration** an, wie der Agent, der auf dem Windows-Computer ausgeführt wird, eine Verbindung mit dem Internet herstellen soll. Wählen Sie **Weiter**aus.
+1. Geben Sie für **Proxykonfiguration** an, wie der Agent, der auf dem Windows-Computer ausgeführt wird, eine Verbindung mit dem Internet herstellen soll. Wählen Sie **Weiter** aus.
 
    * Wenn Sie einen benutzerdefinierten Proxy verwenden, geben Sie alle erforderlichen Proxyeinstellungen und Anmeldeinformationen an.
    * Denken Sie daran dass der MARS-Agent Zugriff auf [bestimmte URLs](#before-you-start) benötigt.
@@ -151,7 +154,7 @@ Wenn Sie den Agent bereits auf einem Computer installiert haben, stellen Sie sic
 
 1. Überprüfen Sie die Voraussetzungen für die **Installation**, und wählen Sie **Installieren** aus.
 1. Wählen Sie nach der Installation des Agents die Option **Mit Registrierung fortfahren** aus.
-1. Navigieren Sie unter **Assistent zum Registrieren von Servern** > **Tresoridentifikation** zu der Datei mit den Anmeldeinformationen, die Sie heruntergeladen haben, und wählen Sie die Datei aus. Wählen Sie **Weiter**aus.
+1. Navigieren Sie unter **Assistent zum Registrieren von Servern** > **Tresoridentifikation** zu der Datei mit den Anmeldeinformationen, die Sie heruntergeladen haben, und wählen Sie die Datei aus. Wählen Sie **Weiter** aus.
 
     ![Hinzufügen von Tresoranmeldeinformationen mithilfe des Assistenten zum Registrieren von Servern](./media/backup-configure-vault/register1.png)
 

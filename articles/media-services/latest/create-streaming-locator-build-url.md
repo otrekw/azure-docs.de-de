@@ -1,5 +1,5 @@
 ---
-title: Erstellen eines Streaminglocators und von URLs – Azure Media Services
+title: Erstellen eines Streaminglocators und von URLs
 description: In diesem Artikel wird gezeigt, wie ein Streaminglocator und URLs erstellt werden können.
 services: media-services
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 916defd652ff9f4b3f372c609055d2a974126916
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ecbc42237326cb895c47e96eda13bbddcdeb558f
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89295715"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98956122"
 ---
 # <a name="create-a-streaming-locator-and-build-urls"></a>Erstellen eines Streaminglocators und von URLs
 

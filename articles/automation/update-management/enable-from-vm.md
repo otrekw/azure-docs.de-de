@@ -2,15 +2,16 @@
 title: Aktivieren der Azure Automation-Updateverwaltung von einer Azure-VM aus
 description: In diesem Artikel erfahren Sie, wie Sie die Updateverwaltung von einer Azure-VM aus aktivieren.
 services: automation
+ms.subservice: update-management
 ms.date: 11/04/2020
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: 35feb136ca1fd7ea0be16a906f7d5193cf8570c7
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 39b5b1f988a118e609015f19a086fda434797356
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96183548"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99050261"
 ---
 # <a name="enable-update-management-from-an-azure-vm"></a>Aktivieren der Updateverwaltung über einen virtuellen Azure-Computer
 
@@ -22,7 +23,7 @@ In diesem Artikel erfahren Sie, wie Sie das Feature [Updateverwaltung](overview.
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * Azure-Abonnement. Wenn Sie noch kein Abonnement haben, können Sie Ihre [MSDN-Abonnentenvorteile aktivieren](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) oder sich für ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) registrieren.
-* [Automation-Konto](../index.yml) zum Verwalten von Computern.
+* [Automation-Konto](../automation-security-overview.md) zum Verwalten von Computern.
 * Ein [virtueller Computer](../../virtual-machines/windows/quick-create-portal.md).
 
 ## <a name="sign-in-to-azure"></a>Anmelden bei Azure

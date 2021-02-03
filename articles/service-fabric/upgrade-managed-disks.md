@@ -3,12 +3,12 @@ title: Upgraden von Clusterknoten für die Verwendung verwalteter Azure-Datentr�
 description: Im diesem Artikel wird erläutert, wie Sie einen vorhandenen Service Fabric-Cluster mit geringer oder gar keiner Downtime so upgraden, dass dieser verwaltete Azure-Datenträger verwendet.
 ms.topic: how-to
 ms.date: 4/07/2020
-ms.openlocfilehash: 36896a6cf471ff0c9312ab454465419471bb164d
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: c374c4536309a13abcf8c882b041a9c5357878e5
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92316161"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99090653"
 ---
 # <a name="upgrade-cluster-nodes-to-use-azure-managed-disks"></a>Upgraden von Clusterknoten für die Verwendung verwalteter Azure-Datenträger
 
@@ -30,11 +30,11 @@ In diesem Artikel wird beschrieben, mit welchen Schritten Sie den primären Knot
 > [!CAUTION]
 > Bei diesem Verfahren treten nur dann Ausfälle auf, wenn im Cluster-DNS Abhängigkeiten bestehen (z. B. beim Zugriff auf [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md)). Zu den [bewährten Architekturmethoden für Front-End-Dienste](/azure/architecture/microservices/design/gateway) zählt das Implementieren eines [Lastenausgleichs](/azure/architecture/guide/technology-choices/load-balancing-overview), der Ihren Knotentypen vorgeschaltet ist und den Knotenaustausch ohne Dienstausfälle ermöglicht.
 
-Unter folgendem Link finden Sie die [Vorlagen und Cmdlets](https://github.com/microsoft/service-fabric-scripts-and-templates/tree/master/templates/nodetype-upgrade-no-outage) für Azure Resource Manager, mit denen Sie das Upgradeszenario abschließen. Die Vorlagenänderungen werden weiter unten im Abschnitt [Bereitstellen einer upgegradeten Skalierungsgruppe für den primären Knotentyp](#deploy-an-upgraded-scale-set-for-the-primary-node-type) erläutert.
+Unter folgendem Link finden Sie die [Vorlagen und Cmdlets](https://github.com/microsoft/service-fabric-scripts-and-templates/tree/master/templates/nodetype-upgrade) für Azure Resource Manager, mit denen Sie das Upgradeszenario abschließen. Die Vorlagenänderungen werden weiter unten im Abschnitt [Bereitstellen einer upgegradeten Skalierungsgruppe für den primären Knotentyp](#deploy-an-upgraded-scale-set-for-the-primary-node-type) erläutert.
 
 ## <a name="set-up-the-test-cluster"></a>Einrichten des Testclusters
 
-Richten Sie zunächst Ihren Service Fabric-Testcluster ein. [Laden Sie dazu die Azure Resource Manager-Beispielvorlagen herunter](https://github.com/microsoft/service-fabric-scripts-and-templates/tree/master/templates/nodetype-upgrade-no-outage), die Sie für dieses Szenario benötigen.
+Richten Sie zunächst Ihren Service Fabric-Testcluster ein. [Laden Sie dazu die Azure Resource Manager-Beispielvorlagen herunter](https://github.com/microsoft/service-fabric-scripts-and-templates/tree/master/templates/nodetype-upgrade), die Sie für dieses Szenario benötigen.
 
 Melden Sie sich anschließend bei Ihrem Azure-Konto an.
 
@@ -373,6 +373,6 @@ In diesem Artikel werden folgende Themen erläutert:
 
 Weitere Informationen:
 
-* [Beispiel: Upgraden von Clusterknoten für die Verwendung verwalteter Azure-Datenträger](https://github.com/microsoft/service-fabric-scripts-and-templates/tree/master/templates/nodetype-upgrade-no-outage)
+* [Beispiel: Upgraden von Clusterknoten für die Verwendung verwalteter Azure-Datenträger](https://github.com/microsoft/service-fabric-scripts-and-templates/tree/master/templates/nodetype-upgrade)
 
 * [Überlegungen zur vertikalen Skalierung](service-fabric-best-practices-capacity-scaling.md#vertical-scaling-considerations)

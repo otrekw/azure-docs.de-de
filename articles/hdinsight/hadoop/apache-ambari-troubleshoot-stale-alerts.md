@@ -1,18 +1,15 @@
 ---
 title: Veraltete Apache Ambari-Warnungen in Azure HDInsight
 description: Erörterung und Analyse möglicher Ursachen und Lösungen für veraltete Apache Ambari-Warnungen in Azure HDInsight.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 01/22/2020
-ms.openlocfilehash: 9564e149055dcabf205694b3cf6c3ddc03163037
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: e31e5d5a5b27f4dcb267905eae6329666fc3292c
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92533834"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98946709"
 ---
 # <a name="scenario-apache-ambari-stale-alerts-in-azure-hdinsight"></a>Szenario: Veraltete Apache Ambari-Warnungen in Azure HDInsight
 
@@ -84,6 +81,6 @@ Falls Ihr Problem hier nicht erwähnt wurde oder Sie es nicht lösen konnten, be
 
 * Nutzen Sie [@AzureSupport](https://twitter.com/azuresupport) auf Twitter. das offizielle Microsoft Azure-Konto zur Verbesserung der Benutzerfreundlichkeit. Hierüber hat die Azure-Community Zugriff auf die richtigen Ressourcen: Antworten, Support und Experten.
 
-* Sollten Sie weitere Unterstützung benötigen, senden Sie eine Supportanfrage über das [Azure-Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Wählen Sie hierzu im Menü des Portals die Hilfeoption ( **?** ) aus, oder öffnen Sie den Bereich **Hilfe und Support** . Weitere Informationen finden Sie unter [Gewusst wie: Erstellen einer Azure-Supportanfrage](../../azure-portal/supportability/how-to-create-azure-support-request.md). 
+* Sollten Sie weitere Unterstützung benötigen, senden Sie eine Supportanfrage über das [Azure-Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Wählen Sie hierzu im Menü des Portals die Hilfeoption ( **?** ) aus, oder öffnen Sie den Bereich **Hilfe und Support**. Weitere Informationen finden Sie unter [Gewusst wie: Erstellen einer Azure-Supportanfrage](../../azure-portal/supportability/how-to-create-azure-support-request.md). 
 
   Support für die Abonnementverwaltung und Abrechnung ist in Ihrem Microsoft Azure-Abonnement inbegriffen. Technischer Support ist über die [Azure-Supportpläne](https://azure.microsoft.com/support/plans/) verfügbar.
