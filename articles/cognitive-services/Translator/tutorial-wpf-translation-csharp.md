@@ -3,24 +3,24 @@ title: 'Tutorial: Erstellen einer Übersetzungs-App mit WPF, C# – Translator'
 titleSuffix: Azure Cognitive Services
 description: In diesem Tutorial erstellen Sie eine WPF-App, um Textübersetzung, Spracherkennung und Rechtschreibprüfung mit einem einzelnen Abonnementschlüssel durchzuführen.
 services: cognitive-services
-author: swmachan
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: tutorial
 ms.date: 05/26/2020
-ms.author: swmachan
+ms.author: lajanuar
 ms.custom: devx-track-csharp
-ms.openlocfilehash: d239b89aaf0bc140916d38583f4263f7bf660f1a
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: dd5b83908ae7c6d62acd3391933028685facf755
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95023615"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98927471"
 ---
 # <a name="tutorial-create-a-translation-app-with-wpf"></a>Tutorial: Erstellen einer Übersetzungs-App mit WPF
 
-In diesem Tutorial erstellen Sie eine WPF-App ([Windows Presentation Foundation](/visualstudio/designers/getting-started-with-wpf?view=vs-2019)), bei der Azure Cognitive Services für die Textübersetzung, Spracherkennung und Rechtschreibprüfung mit nur einem Abonnementschlüssel verwendet werden. Ihre App ruft APIs für Translator und die [Bing-Rechtschreibprüfung](https://azure.microsoft.com/services/cognitive-services/spell-check/) auf.
+In diesem Tutorial erstellen Sie eine WPF-App ([Windows Presentation Foundation](/visualstudio/designers/getting-started-with-wpf)), bei der Azure Cognitive Services für die Textübersetzung, Spracherkennung und Rechtschreibprüfung mit nur einem Abonnementschlüssel verwendet werden. Ihre App ruft APIs für Translator und die [Bing-Rechtschreibprüfung](https://azure.microsoft.com/services/cognitive-services/spell-check/) auf.
 
 Was ist WPF? Hierbei handelt es sich um ein Framework für Benutzeroberflächen, mit dem Desktopclient-Apps erstellt werden. Die WPF-Entwicklungsplattform unterstützt viele verschiedene Features für die App-Entwicklung, z. B. ein App-Modell, Ressourcen, Steuerelemente, Grafiken, Layout, Datenbindung, Dokumente und Sicherheit. Hierbei handelt es sich um eine Teilmenge von .NET Framework. Falls Sie also bereits Apps mit .NET Framework unter Verwendung von ASP.NET oder Windows Forms entwickelt haben, sollte Ihnen die Programmierumgebung vertraut sein. Für WPF wird XAML (Extensible App Markup Language) genutzt, um ein deklaratives Modell für die App-Programmierung bereitzustellen. Dieses Modell wird in den nächsten Abschnitten beschrieben.
 
@@ -90,7 +90,7 @@ Wir fügen unserem Projekt Assemblys hinzu, um Objekte zu serialisieren und zu d
 1. Nachdem Sie diese Verweise Ihrem Projekt hinzugefügt haben, können Sie auf **OK** klicken, um den **Verweis-Manager** zu schließen.
 
 > [!NOTE]
-> Weitere Informationen zu Assemblyverweisen finden Sie unter [Vorgehensweise: Hinzufügen und Entfernen von Verweisen mit dem Verweis-Manager](/visualstudio/ide/how-to-add-or-remove-references-by-using-the-reference-manager?view=vs-2019).
+> Weitere Informationen zu Assemblyverweisen finden Sie unter [Vorgehensweise: Hinzufügen und Entfernen von Verweisen mit dem Verweis-Manager](/visualstudio/ide/how-to-add-or-remove-references-by-using-the-reference-manager).
 
 ### <a name="install-newtonsoftjson"></a>Installieren von NewtonSoft.Json
 
