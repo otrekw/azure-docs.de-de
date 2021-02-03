@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/14/2020
-ms.openlocfilehash: 6201a4e0551f0f75dde65b2bc4b8b560a0f5ea20
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4d424a22a26119dcb3ef6a0e5c4f3dc0c13b1aa4
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87007995"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98927586"
 ---
 # <a name="azure-diagnostics-extension-overview"></a>Übersicht zur Azure-Diagnoseerweiterung
 Die Azure-Diagnoseerweiterung ist ein [Agent in Azure Monitor](agents-overview.md), der Überwachungsdaten vom Gastbetriebssystem von Azure-Computeressourcen inklusive VMs sammelt. Dieser Artikel bietet eine Übersicht zur Azure-Diagnoseerweiterung einschließlich spezifischer Funktionen, die unterstützt werden, sowie Optionen für die Installation und Konfiguration. 
@@ -50,7 +50,7 @@ In den folgenden Tabellen sind die Daten aufgeführt, die von der Windows- und L
 | Leistungsindikatoren | Numerische Werte, die die Leistung verschiedener Aspekte von Betriebssystem und Workloads messen. |
 | IIS-Protokolle             | Nutzungsinformationen für IIS-Websites, die unter dem Gastbetriebssystem ausgeführt werden. |
 | Anwendungsprotokolle     | Von Ihrer Anwendung geschriebene Ablaufverfolgungsmeldungen. |
-| .NET EventSource-Protokolle |Code zum Schreiben von Ereignissen mit der .NET-Klasse [EventSource](/dotnet/api/system.diagnostics.tracing.eventsource?view=netcore-3.1) |
+| .NET EventSource-Protokolle |Code zum Schreiben von Ereignissen mit der .NET-Klasse [EventSource](/dotnet/api/system.diagnostics.tracing.eventsource) |
 | [Manifestbasierte ETW-Protokolle](/windows/desktop/etw/about-event-tracing) |Von einem beliebigen Prozess generierte Ereignisse der Ereignisablaufverfolgung für Windows. |
 | Absturzabbilder (Protokolle)   | Informationen zum Status des Prozesses bei Absturz einer Anwendung. |
 | Dateibasierte Protokolle    | Von Ihrer Anwendung oder Ihrem Dienst erstellte Protokolle |

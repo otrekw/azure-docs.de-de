@@ -7,12 +7,12 @@ ms.date: 01/25/2021
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 200e1fd7bfffef403fa459d3de13dc31145b8a33
-ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
+ms.openlocfilehash: 99da711038e1fcea3e14584fde09ccd1f79feffa
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98796629"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98916711"
 ---
 # <a name="introduction-to-azure-defender-for-app-service"></a>Einführung in Azure Defender für App Service
 
@@ -25,7 +25,7 @@ Azure App Service ist eine vollständig verwaltete Plattform zum Entwickeln und 
 
 |Aspekt|Details|
 |----|:----|
-|Status des Release:|Allgemein verfügbar (Generally Available, GA)|
+|Status des Release:|Allgemeine Verfügbarkeit (General Availability, GA)|
 |Preise:|[Azure Defender für App Service](azure-defender.md) wird gemäß den Angaben in der [Preisübersicht](security-center-pricing.md) abgerechnet.<br>Auf der Seite „Preise und Einstellungen“ ist die Anzahl von Instanzen für Ihre **Ressourcenmenge** angegeben. Diese Anzahl ist die Gesamtanzahl von Compute-Instanzen in allen App Service-Plänen für dieses Abonnement, die in dem Moment ausgeführt werden, in dem Sie die Seite mit den Tarifen geöffnet haben.<br>Öffnen Sie zum Überprüfen der Anzahl im Azure-Portal den Bereich **App Service-Pläne**, und sehen Sie sich die Anzahl von Compute-Instanzen an, die von den einzelnen Plänen verwendet werden.|
 |Unterstützte App Service-Pläne:|![Ja:](./media/icons/yes-icon.png) Basic, Standard, Premium, Isolated oder Linux<br>![Nein:](./media/icons/no-icon.png) Free, Shared oder Verbrauch<br>[Weitere Informationen zu App Service-Plänen](https://azure.microsoft.com/pricing/details/app-service/plans/)|
 |Clouds:|![Ja](./media/icons/yes-icon.png) Kommerzielle Clouds<br>![Nein](./media/icons/no-icon.png) National/Sovereign (US Gov, China Gov, andere Gov)|

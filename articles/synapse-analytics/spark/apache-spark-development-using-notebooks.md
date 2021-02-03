@@ -10,12 +10,12 @@ ms.date: 10/19/2020
 ms.author: ruxu
 ms.reviewer: ''
 ms.custom: devx-track-python
-ms.openlocfilehash: 7bb0b9b4645be7e548fe116d9e9a2c92fae7dc96
-ms.sourcegitcommit: aacbf77e4e40266e497b6073679642d97d110cda
+ms.openlocfilehash: 57999ce53e536d422e6502a77aaccdc66b4c5077
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98120953"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98898493"
 ---
 # <a name="create-develop-and-maintain-synapse-studio-notebooks-in-azure-synapse-analytics"></a>Erstellen, Entwickeln und Verwalten von Synapse Studio-Notebooks in Azure Synapse Analytics
 
@@ -303,6 +303,8 @@ Wird nicht unterstützt.
 # <a name="preview-notebook"></a>[Notebook der Vorschau](#tab/preview)
 
 Sie können den Magic-Befehl ```%run <notebook path>``` verwenden, um im Kontext des aktuellen Notebooks auf ein anderes Notebook zu verweisen. Alle im Referenznotebook definierten Variablen sind im aktuellen Notebook verfügbar. Der Magic-Befehl ```%run``` unterstützt geschachtelte Aufrufe, aber keine rekursiven Aufrufe. Sie erhalten eine Ausnahme, wenn die Anweisungstiefe größer als fünf ist. Der Befehl ```%run``` unterstützt derzeit nur die Übergabe eines Notebookpfads als Parameter. 
+
+Beispiel: ``` %run /path/notebookA ```.
 
 ---
 

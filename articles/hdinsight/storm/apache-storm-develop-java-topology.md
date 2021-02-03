@@ -1,19 +1,16 @@
 ---
 title: Apache Storm-Beispiel, Java-Topologie – Azure HDInsight
 description: Erfahren Sie, wie Sie Apache Storm-Topologien in Java erstellen, indem Sie eine Beispieltopologie zur Wortzählung erstellen.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017,seoapr2020,devx-track-java
 ms.date: 04/27/2020
-ms.openlocfilehash: 881ec4aa36261958b566dc2d7c4d06475a76bad4
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 620a4e1627b25af22db68173f35924376e26f5f8
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92545496"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98929119"
 ---
 # <a name="create-an-apache-storm-topology-in-java"></a>Erstellen einer Apache Storm-Topologie in Java
 
@@ -237,11 +234,11 @@ Dieses Beispiel fügt dem Verzeichnis „resources“ im Stammverzeichnis des Pr
 
 Eine Java-basierte Apache Storm-Topologie besteht aus drei Komponenten, die Sie als Abhängigkeit erstellen (oder referenzieren) müssen.
 
-* **Spouts** : Liest Daten aus externen Quellen und gibt Datenströme in die Topologie aus.
+* **Spouts**: Liest Daten aus externen Quellen und gibt Datenströme in die Topologie aus.
 
-* **Bolts** : Mit dieser Komponente werden Datenströme verarbeitet, die von Spouts oder anderen Bolts ausgegeben werden, und ein oder mehrere Datenströme ausgegeben.
+* **Bolts**: Mit dieser Komponente werden Datenströme verarbeitet, die von Spouts oder anderen Bolts ausgegeben werden, und ein oder mehrere Datenströme ausgegeben.
 
-* **Topology** : Definiert die Anordnung der Spouts und Bolts und stellt den Einstiegspunkt für die Topologie bereit.
+* **Topology**: Definiert die Anordnung der Spouts und Bolts und stellt den Einstiegspunkt für die Topologie bereit.
 
 ### <a name="create-the-spout"></a>Erstellen des Spouts
 
@@ -327,9 +324,9 @@ public class RandomSentenceSpout extends BaseRichSpout {
 
 Bolts übernehmen die Datenverarbeitung. Bolts können alle Aufgaben übernehmen, beispielsweise Berechnungen, Persistenz oder Kommunikation mit externen Komponenten. Diese Topologie verwendet zwei Bolts:
 
-* **SplitSentence** : Unterteilt die von **RandomSentenceSpout** ausgegebenen Sätze in einzelne Wörter.
+* **SplitSentence**: Unterteilt die von **RandomSentenceSpout** ausgegebenen Sätze in einzelne Wörter.
 
-* **WordCount** : Zählt das Vorkommen der einzelnen Wörter.
+* **WordCount**: Zählt das Vorkommen der einzelnen Wörter.
 
 #### <a name="splitsentence"></a>SplitSentence
 
@@ -617,7 +614,7 @@ Während der Ausführung zeigt die Topologie zunächst Startinformationen an. De
 
 Dieses Beispielprotokoll gibt an, dass das Wort „und“ 113 Mal ausgegeben wurde. Die Anzahl nimmt weiterhin zu, solange die Topologie ausgeführt wird. Diese Zunahme ist darauf zurückzuführen, dass der Spout fortlaufend die gleichen Sätze ausgibt.
 
-Zwischen der Ausgabe von Wörtern und der Anzahl liegt außerdem ein Intervall von fünf Sekunden. Die **WordCount** -Komponente wird so konfiguriert, dass nur Informationen ausgegeben werden, wenn ein „Tick“-Tupel eingeht. Es wird angefordert, dass „Tick“-Tupel nur alle fünf Sekunden zugestellt werden.
+Zwischen der Ausgabe von Wörtern und der Anzahl liegt außerdem ein Intervall von fünf Sekunden. Die **WordCount**-Komponente wird so konfiguriert, dass nur Informationen ausgegeben werden, wenn ein „Tick“-Tupel eingeht. Es wird angefordert, dass „Tick“-Tupel nur alle fünf Sekunden zugestellt werden.
 
 ## <a name="convert-the-topology-to-flux"></a>Konvertieren der Topologie in Flux
 

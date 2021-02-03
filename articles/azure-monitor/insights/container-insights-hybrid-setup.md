@@ -3,12 +3,12 @@ title: Konfigurieren von Kubernetes-Hybridclustern mit Azure Monitor für Contai
 description: In diesem Artikel wird beschrieben, wie Sie Azure Monitor für Container zum Überwachen von Kubernetes-Clustern konfigurieren können, die in Azure Stack oder einer anderen Umgebung gehostet werden.
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: d481af07013c0a5b4c5a381527c6f555400a2559
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 12901b1d2d7edd85fbe1650600856d09105c15b2
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92890461"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98936402"
 ---
 # <a name="configure-hybrid-kubernetes-clusters-with-azure-monitor-for-containers"></a>Konfigurieren von Kubernetes-Hybridclustern mit Azure Monitor für Container
 
@@ -21,7 +21,7 @@ Folgende Konfigurationen werden offiziell für Azure Monitor für Container unte
 - Umgebungen:
 
     - Lokales Kubernetes
-    - AKS-Engine in Azure und Azure Stack Weitere Informationen finden Sie unter [AKS-Engine in Azure Stack](/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1908&preserve-view=true).
+    - AKS-Engine in Azure und Azure Stack Weitere Informationen finden Sie unter [AKS-Engine in Azure Stack](/azure-stack/user/azure-stack-kubernetes-aks-engine-overview).
     - [Openshift](https://docs.openshift.com/container-platform/4.3/welcome/index.html) Version 4 und höher, lokale oder andere Cloudumgebungen.
 
 - Die Versionen von Kubernetes und die Supportrichtlinie entsprechen den unterstützten Versionen von [AKS](../../aks/supported-kubernetes-versions.md).
@@ -44,7 +44,7 @@ Stellen Sie zunächst sicher, dass Sie über Folgendes verfügen:
     >Die Aktivierung der Überwachung mehrerer Cluster mit dem gleichen Clusternamen im gleichen Log Analytics-Arbeitsbereich ist nicht möglich. Clusternamen müssen eindeutig sein.
     >
 
-- Sie müssen der **Rolle „Log Analytics-Mitwirkender“ angehören** , um die Containerüberwachung aktivieren zu können. Weitere Informationen zum Steuern des Zugriffs auf einen Log Analytics-Arbeitsbereich finden Sie unter [Verwalten des Zugriffs auf Arbeitsbereich und Logdaten](../platform/manage-access.md).
+- Sie müssen der **Rolle „Log Analytics-Mitwirkender“ angehören**, um die Containerüberwachung aktivieren zu können. Weitere Informationen zum Steuern des Zugriffs auf einen Log Analytics-Arbeitsbereich finden Sie unter [Verwalten des Zugriffs auf Arbeitsbereich und Logdaten](../platform/manage-access.md).
 
 - Sie müssen über die Rolle [*Log Analytics-Leser*](../platform/manage-access.md#manage-access-using-azure-permissions) im mit Azure Monitor für Container konfigurierten Log Analytics-Arbeitsbereich verfügen, um die Überwachungsdaten anzeigen zu können.
 
@@ -202,7 +202,7 @@ Führen Sie die folgenden Schritte aus, um zunächst die für den Wert des `work
     }
     ```
 
-7. Ändern Sie nach dem Ausführen des Azure CLI-Befehls [az monitor log-analytics workspace show](/cli/azure/monitor/log-analytics/workspace?view=azure-cli-latest#az-monitor-log-analytics-workspace-list&preserve-view=true) die Werte für **workspaceResourceId** in den Wert, den Sie in Schritt 3 kopiert haben, und kopieren Sie für **workspaceRegion** den Wert **Region**.
+7. Ändern Sie nach dem Ausführen des Azure CLI-Befehls [az monitor log-analytics workspace show](/cli/azure/monitor/log-analytics/workspace#az-monitor-log-analytics-workspace-list&preserve-view=true) die Werte für **workspaceResourceId** in den Wert, den Sie in Schritt 3 kopiert haben, und kopieren Sie für **workspaceRegion** den Wert **Region**.
 
 8. Speichern Sie diese Datei als „containerSolutionParams.json“ in einem lokalen Ordner.
 
@@ -258,13 +258,13 @@ In diesem Abschnitt installieren Sie den Container-Agent für Azure Monitor für
 
     `az monitor log-analytics workspace list --resource-group <resourceGroupName>`
 
-    Suchen Sie in der Ausgabe den Namen des Arbeitsbereichs im Feld **name** , und kopieren Sie die Arbeitsbereichs-ID dieses Log Analytics-Arbeitsbereichs dann in das Feld **customerID**.
+    Suchen Sie in der Ausgabe den Namen des Arbeitsbereichs im Feld **name**, und kopieren Sie die Arbeitsbereichs-ID dieses Log Analytics-Arbeitsbereichs dann in das Feld **customerID**.
 
 2. Führen Sie den folgenden Befehl aus, um den Primärschlüssel für den Arbeitsbereich zu ermitteln:
 
     `az monitor log-analytics workspace get-shared-keys --resource-group <resourceGroupName> --workspace-name <logAnalyticsWorkspaceName>`
 
-    Suchen Sie in der Ausgabe den Primärschlüssel im Feld **primarySharedKey** , und kopieren Sie den Wert.
+    Suchen Sie in der Ausgabe den Primärschlüssel im Feld **primarySharedKey**, und kopieren Sie den Wert.
 
 >[!NOTE]
 >Die folgenden Befehle gelten nur für die Helm-Version 2. Die Verwendung des Parameters `--name` gilt nicht für die Helm-Version 3. 
@@ -303,7 +303,7 @@ In diesem Abschnitt installieren Sie den Container-Agent für Azure Monitor für
 
 Sie können ein Add-On in der JSON-Datei mit der Clusterspezifikation der AKS-Engine angeben, das auch als API-Modell bezeichnet wird. Stellen Sie in diesem Add-On die Base64-codierte Version von `WorkspaceGUID` und `WorkspaceKey` des Log Analytics-Arbeitsbereichs bereit, in dem die gesammelten Überwachungsdaten gespeichert werden. `WorkspaceGUID` und `WorkspaceKey` ermitteln Sie mit den Schritten 1 und 2 im vorherigen Abschnitt.
 
-Unterstützte API-Definitionen für den Azure Stack Hub-Cluster finden Sie in diesem Beispiel: [kubernetes-container-monitoring_existing_workspace_id_and_key.json](https://github.com/Azure/aks-engine/blob/master/examples/addons/container-monitoring/kubernetes-container-monitoring_existing_workspace_id_and_key.json). Suchen Sie nach der **addons** -Eigenschaft im Abschnitt **kubernetesConfig** :
+Unterstützte API-Definitionen für den Azure Stack Hub-Cluster finden Sie in diesem Beispiel: [kubernetes-container-monitoring_existing_workspace_id_and_key.json](https://github.com/Azure/aks-engine/blob/master/examples/addons/container-monitoring/kubernetes-container-monitoring_existing_workspace_id_and_key.json). Suchen Sie nach der **addons**-Eigenschaft im Abschnitt **kubernetesConfig**:
 
 ```json
 "orchestratorType": "Kubernetes",

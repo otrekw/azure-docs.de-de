@@ -1,6 +1,5 @@
 ---
 title: Schützen Sie Ihren Inhalt mit der dynamischen Verschlüsselung von Media Services v3
-titleSuffix: Azure Media Services
 description: Erfahren Sie mehr über den Schutz von Inhalten mit dynamischer Verschlüsselung, Streamingprotokollen und Verschlüsselungstypen in Azure Media Services.
 services: media-services
 documentationcenter: ''
@@ -15,12 +14,12 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 5d6530cf7b8d8611ff23a3517112cb0aa7442d6d
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: edea46e86475f1731ecfae465f969ca45d63f0a2
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95971181"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98897627"
 ---
 # <a name="protect-your-content-with-media-services-dynamic-encryption"></a>Schützen Sie Ihren Inhalt mit der dynamischen Verschlüsselung von Media Services
 

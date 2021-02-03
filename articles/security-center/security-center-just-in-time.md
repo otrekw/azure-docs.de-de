@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 07/12/2020
 ms.author: memildin
-ms.openlocfilehash: 55e9d2d1af863084b080c2de7833712413221050
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 60ae36d80e34f27ed68c679f47edacf3e402417c
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96445651"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98916149"
 ---
 # <a name="secure-your-management-ports-with-just-in-time-access"></a>Sichern Ihrer Verwaltungsports mit Just-in-Time-Zugriff (JIT)
 
@@ -33,7 +33,7 @@ Auf dieser Seite erfahren Sie, wie Sie JIT in Ihr Sicherheitsprogramm einbinden.
 
 |Aspekt|Details|
 |----|:----|
-|Status des Release:|Allgemein verfügbar (Generally Available, GA)|
+|Status des Release:|Allgemeine Verfügbarkeit (General Availability, GA)|
 |Preise:|Erfordert [Azure Defender für Server](defender-for-servers-introduction.md)|
 |Unterstützte VMs:|![Ja](./media/icons/yes-icon.png) Durch Azure Resource Manager bereitgestellte VMs.<br>![Nein](./media/icons/no-icon.png) Mit klassischen Bereitstellungsmodellen bereitgestellte VMs. [Erfahren Sie mehr über diese Bereitstellungsmodelle](../azure-resource-manager/management/deployment-models.md).<br>![Nein](./media/icons/no-icon.png) Durch Azure Firewall-Instanzen geschützte VMs, die von [Azure Firewall Manager](../firewall-manager/overview.md) gesteuert werden.|
 |Erforderliche Rollen und Berechtigungen:|Die Rollen **Reader** und **SecurityReader** können sowohl den JIT-Status als auch die Parameter anzeigen.<br>Informationen zur Erstellung benutzerdefinierter Rollen, die mit JIT arbeiten können, finden Sie unter [Welche Berechtigungen sind erforderlich, um JIT zu konfigurieren und zu verwenden?](just-in-time-explained.md#what-permissions-are-needed-to-configure-and-use-jit).<br>Verwenden Sie das Skript [Set-JitLeastPrivilegedRole](https://github.com/Azure/Azure-Security-Center/tree/master/Powershell%20scripts/JIT%20Custom%20Role) von den GitHub-Communityseiten des Security Center, um für Benutzer, die JIT-Zugriff auf eine VM anfordern und keine anderen JIT-Operationen durchführen müssen, eine Rolle mit den geringsten Berechtigungen zu erstellen.|

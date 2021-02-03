@@ -1,18 +1,16 @@
 ---
 title: Netzwerksicherheitsgruppen-Diensttags (NSG) für Azure HDInsight
 description: Verwenden Sie HDInsight-Diensttags, um eingehenden Datenverkehr von Integritäts- und Verwaltungsdienstknoten zu Ihrem Cluster zuzulassen, ohne dass Ihren Netzwerksicherheitsgruppen IP-Adressen hinzugefügt werden.
-author: hrasheed-msft
-ms.author: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 08/11/2020
-ms.openlocfilehash: 1a90bc6636dcb3aa81f09b0489850c1a95b3256d
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: d17d067b88add3006bc5c7fb10caa6b80a80a827
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96022750"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98931765"
 ---
 # <a name="nsg-service-tags-for-azure-hdinsight"></a>Diensttags von Netzwerksicherheitsgruppen für Azure HDInsight
 

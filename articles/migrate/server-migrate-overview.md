@@ -6,12 +6,12 @@ ms.author: anvar
 ms.manager: bsiva
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: 130fcaacedc8aaea7790f6aa9ca7463b4e378e02
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: cf3a3d3fdfcd03f068224c93643d364cd2646290
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98070710"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98895627"
 ---
 # <a name="select-a-vmware-migration-option"></a>Auswählen einer VMware-Migrationsoption
 
@@ -43,7 +43,7 @@ Nachdem Sie sich über die Einschränkungen informiert haben, hilft Ihnen die Ke
 **Aufgabe** | **Details** |**Ohne Agent** | **Agent-basiert**
 --- | --- | --- | ---
 **Bereitstellen der Azure Migrate-Appliance** | Eine Lightweight-Appliance, die auf einer VMware-VM ausgeführt wird.<br/><br/> Die Appliance dient zum Ermitteln und Bewerten von Computern und zum Migrieren von Computern mithilfe der Migration ohne Agent. | Erforderlich.<br/><br/> Wenn Sie die Appliance bereits für die Bewertung eingerichtet haben, können Sie dieselbe Appliance auch für die Migration ohne Agent verwenden. | Nicht erforderlich.<br/><br/> Wenn Sie eine Appliance für die Bewertung eingerichtet haben, können Sie sie nach Abschluss der Bewertung an Ort und Stelle belassen oder entfernen.
-**Verwenden des Serverbewertungstools** | Bewerten Sie Computer mit dem Tool „Azure Migrate: Serverbewertung“. | Sie können die Computer bewerten, bevor Sie sie migrieren, aber Sie müssen nicht so vorgehen. | Die Bewertung ist optional.
+**Verwenden des Serverbewertungstools** | Bewerten Sie Computer mit dem Tool „Azure Migrate: Serverbewertung“. | Die Bewertung ist optional. | Die Bewertung ist optional.
 **Verwenden des Tools für die Servermigration** | Fügen Sie das Tool für die Azure Migrate-Servermigration im Azure Migrate-Projekt hinzu. | Erforderlich | Erforderlich
 **Vorbereiten von VMware auf die Migration** | Konfigurieren Sie Einstellungen für VMware-Server und -VMs. | Erforderlich | Erforderlich
 **Installieren des Mobilitätsdiensts auf VMs** | Der Mobilitätsdienst wird auf jeder VM ausgeführt, die Sie replizieren möchten. | Nicht erforderlich | Erforderlich

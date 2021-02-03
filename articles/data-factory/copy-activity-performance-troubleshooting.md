@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 01/07/2021
-ms.openlocfilehash: ee6105376f5e8dc884f13e04db51126c039328e9
-ms.sourcegitcommit: 9514d24118135b6f753d8fc312f4b702a2957780
+ms.openlocfilehash: 203782ef2d95cd2b47082f630fa12531a110d49e
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/07/2021
-ms.locfileid: "97968890"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98933928"
 ---
 # <a name="troubleshoot-copy-activity-performance"></a>Problembehandlung für die Leistung der Kopieraktivität
 
@@ -194,7 +194,7 @@ Die Ausführungszeit für Aktivitäten variiert je nachdem, auf welcher Integrat
 
     - Die Azure SQL-Datenbank wird auf einer zu niedrigen Ebene ausgeführt.
 
-    - Der DTU-Verbrauch der Azure SQL-Datenbank beträgt nahezu 100 %. Sie können [die Leistung überwachen](https://docs.microsoft.com/azure/azure-sql/database/monitor-tune-overview) und ein Upgrade der Ebene der Azure SQL-Datenbank in Erwägung ziehen.
+    - Der DTU-Verbrauch der Azure SQL-Datenbank beträgt nahezu 100 %. Sie können [die Leistung überwachen](../azure-sql/database/monitor-tune-overview.md) und ein Upgrade der Ebene der Azure SQL-Datenbank in Erwägung ziehen.
 
     - Die Indizes sind nicht ordnungsgemäß festgelegt. Entfernen Sie vor dem Laden der Daten alle Indizes, und erstellen Sie sie nach Abschluss des Ladevorgangs neu.
 
@@ -202,7 +202,6 @@ Die Ausführungszeit für Aktivitäten variiert je nachdem, auf welcher Integrat
 
     - Anstelle einer Masseneinfügung wird eine gespeicherte Prozedur verwendet, bei der eine geringere Leistung zu erwarten ist. 
 
-- **Lösung:** Informieren Sie sich unter [Problembehandlung für die Leistung der Kopieraktivität](https://docs.microsoft.com/azure/data-factory/copy-activity-performance-troubleshooting).
 
 ### <a name="timeout-or-slow-performance-when-parsing-large-excel-file"></a>Timeout oder geringe Leistung beim Analysieren einer großen Excel-Datei
 

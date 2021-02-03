@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/11/2020
 ms.author: memildin
-ms.openlocfilehash: e2b17e15c5548b4c9b93a62a7d4dfe62ff44404c
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: ca60d5afa38a560492c8574aadd43d6170eca253
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92341752"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98916183"
 ---
 # <a name="adaptive-network-hardening-in-azure-security-center"></a>Adaptive Netzwerkhärtung in Azure Security Center
 Hier erfahren Sie, wie Sie die adaptive Netzwerkhärtung in Security Center konfigurieren.
@@ -26,7 +26,7 @@ Hier erfahren Sie, wie Sie die adaptive Netzwerkhärtung in Security Center konf
 ## <a name="availability"></a>Verfügbarkeit
 |Aspekt|Details|
 |----|:----|
-|Status des Release:|Allgemein verfügbar (Generally Available, GA)|
+|Status des Release:|Allgemeine Verfügbarkeit (General Availability, GA)|
 |Preise:|Erfordert [Azure Defender für Server](defender-for-servers-introduction.md)|
 |Erforderliche Rollen und Berechtigungen:|Schreibberechtigungen für die NSGs des Computers|
 |Clouds:|![Ja](./media/icons/yes-icon.png) Kommerzielle Clouds<br>![Nein](./media/icons/no-icon.png) National/Sovereign (US Gov, China Gov, andere Gov-Clouds)|
@@ -60,7 +60,7 @@ Ein Beispiel: Angenommen, die vorhandene NSG-Regel lässt Datenverkehr von 140.2
       * **Nicht genügend Daten verfügbar:** Security Center benötigt mindestens Datenverkehrsdaten eines Zeitraums von 30 Tagen, um fundierte Härtungsempfehlungen abgeben zu können.
       * **Virtueller Computer nicht durch Azure Defender geschützt:** Nur virtuelle Computer, die mit [Azure Defender für Server](defender-for-servers-introduction.md) geschützt sind, können dieses Feature nutzen.
 
-    :::image type="content" source="./media/security-center-adaptive-network-hardening/recommendation-details-page.png" alt-text="Zugriff auf die Tools für die adaptive Netzwerkhärtung":::
+    :::image type="content" source="./media/security-center-adaptive-network-hardening/recommendation-details-page.png" alt-text="Detailseite der Empfehlung „Auf VMs mit Internetausrichtung müssen Empfehlungen zur adaptiven Netzwerkhärtung angewendet werden“":::
 
 1. Wählen Sie auf der Registerkarte **Fehlerhafte Ressourcen** einen virtuellen Computer aus, um dessen Warnungen und die empfohlenen Härtungsregeln anzuzeigen.
 
@@ -78,7 +78,7 @@ Ein Beispiel: Angenommen, die vorhandene NSG-Regel lässt Datenverkehr von 140.2
     > [!TIP]
     > Wenn die zulässigen Quell-IP-Adressbereiche als „Keine“ angezeigt werden, bedeutet dies, dass die empfohlene Regel eine *Ablehnungsregel* ist. Andernfalls handelt es sich um eine *Zulassungsregel*.
 
-    :::image type="content" source="./media/security-center-adaptive-network-hardening/hardening-alerts.png" alt-text="Zugriff auf die Tools für die adaptive Netzwerkhärtung":::
+    :::image type="content" source="./media/security-center-adaptive-network-hardening/hardening-alerts.png" alt-text="Verwalten der Regeln der adaptiven Netzwerkhärtung":::
 
       > [!NOTE]
       > Die erzwungenen Regeln werden den Netzwerksicherheitsgruppen hinzugefügt, die den virtuellen Computer schützen. (Ein virtueller Computer kann durch eine Netzwerksicherheitsgruppe geschützt werden, die der Schnittstellenkarte zugeordnet ist, oder das Subnetz, in dem der virtuelle Computer befindet, oder beides.)

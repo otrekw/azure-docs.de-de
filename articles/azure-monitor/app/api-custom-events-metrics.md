@@ -4,12 +4,12 @@ description: Fügen Sie einige Codezeilen in Ihrer Geräte- oder Desktop-App, We
 ms.topic: conceptual
 ms.date: 05/11/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 8fecca4875ba291da093bf1eea596eef290f80c8
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 72e79ff90422a6f055d5b883ba208555244687b3
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98678111"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98927812"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>Application Insights-API für benutzerdefinierte Ereignisse und Metriken
 
@@ -1098,8 +1098,8 @@ Informationen dazu, wie lange Daten aufbewahrt werden, finden Sie unter [Datensp
 
 ## <a name="reference-docs"></a>Referenz
 
-* [ASP.NET-Referenz](/dotnet/api/overview/azure/insights?view=azure-dotnet)
-* [Java-Referenz](/java/api/overview/azure/appinsights?view=azure-java-stable/)
+* [ASP.NET-Referenz](/dotnet/api/overview/azure/insights)
+* [Java-Referenz](/java/api/overview/azure/appinsights)
 * [JavaScript-Referenz](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md)
 
 ## <a name="sdk-code"></a>SDK-Code

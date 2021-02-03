@@ -6,12 +6,12 @@ ms.author: harelbr
 ms.topic: troubleshooting
 ms.date: 01/21/2021
 ms.subservice: alerts
-ms.openlocfilehash: 11dc71578b3d94ce41fe040557184ff32bcf3240
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: f7425e1cf34348b7742b739ef5440a5cb0355077
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98661796"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98942105"
 ---
 # <a name="troubleshooting-problems-in-azure-monitor-metric-alerts"></a>Behandeln von Problemen mit Azure Monitor-Metrikwarnungen 
 
@@ -107,7 +107,7 @@ Wenn eine Azure-Ressource gelöscht wird, werden die zugehörigen Metrikwarnungs
 
 ## <a name="make-metric-alerts-occur-every-time-my-condition-is-met"></a>Metrikwarnungen immer anzeigen, wenn meine Bedingung erfüllt wird
 
-Metrikwarnungen sind in der Standardeinstellung zustandsbehaftet. Daher werden keine zusätzlichen Warnungen ausgelöst, wenn für eine angegebene Zeitreihe bereits eine Warnung ausgelöst wurde. Wenn Sie eine bestimmte Metrikwarnungsregel als zustandslos konfigurieren und bei jeder Auswertung, bei der die Warnungsbedingung erfüllt ist, eine Warnung erhalten möchten, erstellen Sie die Warnungsregel programmgesteuert (also beispielsweise per [Resource Manager](./alerts-metric-create-templates.md), [PowerShell](/powershell/module/az.monitor/?view=azps-3.6.1), [REST](/rest/api/monitor/metricalerts/createorupdate), [CLI](/cli/azure/monitor/metrics/alert?view=azure-cli-latest)), und legen Sie die Eigenschaft *autoMitigate* auf FALSE fest.
+Metrikwarnungen sind in der Standardeinstellung zustandsbehaftet. Daher werden keine zusätzlichen Warnungen ausgelöst, wenn für eine angegebene Zeitreihe bereits eine Warnung ausgelöst wurde. Wenn Sie eine bestimmte Metrikwarnungsregel als zustandslos konfigurieren und bei jeder Auswertung, bei der die Warnungsbedingung erfüllt ist, eine Warnung erhalten möchten, erstellen Sie die Warnungsregel programmgesteuert (also beispielsweise per [Resource Manager](./alerts-metric-create-templates.md), [PowerShell](/powershell/module/az.monitor/), [REST](/rest/api/monitor/metricalerts/createorupdate), [CLI](/cli/azure/monitor/metrics/alert)), und legen Sie die Eigenschaft *autoMitigate* auf FALSE fest.
 
 > [!NOTE] 
 > Durch die Konfiguration einer Metrikwarnungsregel als zustandslos wird verhindert, dass ausgelöste Warnungen gelöst werden. Daher verbleiben die ausgelösten Warnungen, selbst wenn die Bedingung nicht mehr erfüllt ist, bis zum Ablauf der Beibehaltungsdauer von 30 Tagen im ausgelösten Zustand.
@@ -175,9 +175,9 @@ Führen Sie die folgenden Schritte durch, um den derzeitigen Verbrauch durch Met
 
 ### <a name="from-api"></a>Über eine API
 
-- PowerShell: [Get-AzMetricAlertRuleV2](/powershell/module/az.monitor/get-azmetricalertrulev2?view=azps-3.7.0)
+- PowerShell: [Get-AzMetricAlertRuleV2](/powershell/module/az.monitor/get-azmetricalertrulev2)
 - REST-API: [Auflisten nach Abonnement](/rest/api/monitor/metricalerts/listbysubscription)
-- Azure CLI: [az monitor metrics alert list](/cli/azure/monitor/metrics/alert?view=azure-cli-latest#az-monitor-metrics-alert-list)
+- Azure CLI: [az monitor metrics alert list](/cli/azure/monitor/metrics/alert#az-monitor-metrics-alert-list)
 
 ## <a name="managing-alert-rules-using-resource-manager-templates-rest-api-powershell-or-azure-cli"></a>Verwalten von Warnungsregeln mithilfe von Resource Manager-Vorlagen, der REST-API, PowerShell oder der Azure CLI
 
@@ -196,14 +196,14 @@ Wenn beim Erstellen, Aktualisieren, Abrufen oder Löschen von Metrikwarnungen mi
 
 Stellen Sie sicher, dass Sie die richtigen PowerShell-Cmdlets für Metrikwarnungen verwenden:
 
-- PowerShell-Cmdlets für Metrikwarnungen sind im [Az.Monitor-Modul](/powershell/module/az.monitor/?view=azps-3.6.1) verfügbar.
-- Stellen Sie sicher, dass Sie die auf „V2“ endenden Cmdlets für neue (nicht klassische) Metrikwarnungen verwenden (z. B. [Add-AzMetricAlertRuleV2](/powershell/module/az.monitor/add-azmetricalertrulev2?view=azps-3.6.1)).
+- PowerShell-Cmdlets für Metrikwarnungen sind im [Az.Monitor-Modul](/powershell/module/az.monitor/) verfügbar.
+- Stellen Sie sicher, dass Sie die auf „V2“ endenden Cmdlets für neue (nicht klassische) Metrikwarnungen verwenden (z. B. [Add-AzMetricAlertRuleV2](/powershell/module/az.monitor/add-azmetricalertrulev2)).
 
 ### <a name="azure-cli"></a>Azure CLI
 
 Stellen Sie sicher, dass Sie die richtigen CLI-Befehle für Metrikwarnungen verwenden:
 
-- CLI-Befehle für Metrikwarnungen beginnen mit `az monitor metrics alert`. Informationen zur Syntax finden Sie in der [Azure CLI-Referenz](/cli/azure/monitor/metrics/alert?view=azure-cli-latest).
+- CLI-Befehle für Metrikwarnungen beginnen mit `az monitor metrics alert`. Informationen zur Syntax finden Sie in der [Azure CLI-Referenz](/cli/azure/monitor/metrics/alert).
 - Sie können sich das [Beispiel zur Nutzung der CLI für Metrikwarnungen](./alerts-metric.md#with-azure-cli) ansehen.
 - Stellen Sie zum Verwenden von Warnungen für benutzerdefinierte Metriken sicher, dass Sie dem Metriknamen den relevanten Metriknamespace als Präfix voranstellen: NAMESPACE.METRIK
 

@@ -6,12 +6,12 @@ services: automation
 ms.subservice: dsc
 ms.date: 08/21/2018
 ms.topic: conceptual
-ms.openlocfilehash: 9c5524d2847f59dda1f2c24f67e1e18f18d49b1f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1b1bbb12412deec6ecac8cf1ffd47a00f778862e
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86185567"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98894727"
 ---
 # <a name="compose-dsc-configurations"></a>Erstellen von DSC-Konfigurationen
 
@@ -31,7 +31,7 @@ Bevor Sie eine aus zusammengesetzten Ressourcen erstellte Konfiguration im Azure
    ![Screenshot: Schritt „Grundlagen“ der Seite „Konfiguration zusammenstellen“](./media/compose-configurationwithcompositeresources/compose-configuration-basics.png)
 1. Im Schritt **Quellcode** wird angezeigt, wie die zusammengestellte Konfiguration der ausgewählten zusammengesetzten Ressourcen aussieht. Sie sehen, wie alle Parameter zusammengeführt und an die zusammengesetzte Ressource übergeben werden. Wenn Sie den neuen Quellcode geprüft haben, können Sie auf **Weiter** oder auf den Schritt **Parameter** klicken.
    ![Screenshot: Schritt „Quellcode“ der Seite „Konfiguration zusammenstellen“](./media/compose-configurationwithcompositeresources/compose-configuration-sourcecode.png)
-1. Im Schritt **Parameter** wird der Parameter für jede einzelne zusammengesetzte Ressource verfügbar gemacht, damit Werte angegeben werden können. Wenn ein Parameter über eine Beschreibung verfügt, wird diese neben dem Parameterfeld angezeigt. Wenn ein Parameter vom Typ `PSCredential` ist, bietet das Dropdown eine Liste der **Anmeldeinformations**objekte im aktuellen Automation-Konto. Außerdem ist die Option **+ Anmeldeinformationen hinzufügen** verfügbar. Nachdem alle erforderlichen Parameter angegeben wurden, können Sie auf **Save and compile** (Speichern und kompilieren) klicken.
+1. Im Schritt **Parameter** wird der Parameter für jede einzelne zusammengesetzte Ressource verfügbar gemacht, damit Werte angegeben werden können. Wenn ein Parameter über eine Beschreibung verfügt, wird diese neben dem Parameterfeld angezeigt. Wenn ein Parameter vom Typ `PSCredential` ist, bietet das Dropdown eine Liste der **Anmeldeinformations** objekte im aktuellen Automation-Konto. Außerdem ist die Option **+ Anmeldeinformationen hinzufügen** verfügbar. Nachdem alle erforderlichen Parameter angegeben wurden, können Sie auf **Save and compile** (Speichern und kompilieren) klicken.
    ![Screenshot: Schritt „Parameter“ der Seite „Konfiguration zusammenstellen“](./media/compose-configurationwithcompositeresources/compose-configuration-parameters.png)
 
 ## <a name="submit-the-configuration-for-compilation"></a>Übermitteln der Konfiguration für die Kompilierung
@@ -46,4 +46,4 @@ Nachdem die Kompilierung erfolgreich abgeschlossen wurde, wird die neue Konfigur
 - Wie Sie DSC-Konfigurationen kompilieren und sie anschließend Zielknoten zuweisen, erfahren Sie unter [Kompilieren von DSC-Konfigurationen in Azure Automation State Configuration](automation-dsc-compile.md).
 - Ein Anwendungsbeispiel für Azure Automation State Configuration in einer Continuous Deployment-Pipeline finden Sie unter [Einrichten von Continuous Deployment mit Chocolatey](automation-dsc-cd-chocolatey.md).
 - Eine Preisübersicht finden Sie unter [Automation – Preise](https://azure.microsoft.com/pricing/details/automation/).
-- Eine Referenz zu den PowerShell-Cmdlets finden Sie unter [Az.Automation](/powershell/module/az.automation/?view=azps-3.7.0#automation).
+- Eine Referenz zu den PowerShell-Cmdlets finden Sie unter [Az.Automation](/powershell/module/az.automation).

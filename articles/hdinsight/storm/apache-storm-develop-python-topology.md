@@ -1,19 +1,16 @@
 ---
 title: Apache Storm mit Python-Komponenten – Azure HDInsight
 description: Erfahren Sie, wie Sie eine Apache Storm-Topologie erstellen, die Python-Komponenten in Azure HDInsight verwendet.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017, devx-track-python
 ms.date: 12/16/2019
-ms.openlocfilehash: e62e2583f8a4d3872a1342f0f702a1913f733e7f
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: e28d21ed71cf5f485165c639a8bd519b3a2736e1
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92545462"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98928984"
 ---
 # <a name="develop-apache-storm-topologies-using-python-on-hdinsight"></a>Entwickeln von Apache Storm-Topologien mit Python in HDInsight
 
@@ -141,7 +138,7 @@ Sobald die Topologie startet, gibt er Informationen über die lokale Konsole aus
 24303 [Thread-17-log-executor[3 3]] INFO  o.a.s.f.w.b.LogInfoBolt - {word=four, count=160}
 ```
 
-Verwenden Sie zum Beenden der Topologie __STRG+C__ .
+Verwenden Sie zum Beenden der Topologie __STRG+C__.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

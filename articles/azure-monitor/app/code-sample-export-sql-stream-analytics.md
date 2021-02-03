@@ -3,12 +3,12 @@ title: Exportieren aus Application Insights nach SQL | Microsoft-Dokumentation
 description: Exportiere Sie Application Insights-Daten kontinuierlich in SQL mit Stream Analytics.
 ms.topic: conceptual
 ms.date: 09/11/2017
-ms.openlocfilehash: 90aab1794a9b412de2498edcc4d221f4bcc86968
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5fb7093dd9945893b17f1b8f5e596cfe5181c3b6
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90979459"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98942413"
 ---
 # <a name="walkthrough-export-to-sql-from-application-insights-using-stream-analytics"></a>Exemplarische Vorgehensweise: Exportieren aus Application Insights in SQL mit Stream Analytics
 In diesem Artikel wird veranschaulicht, wie Sie Telemetriedaten aus [Azure Application Insights][start] mithilfe von [fortlaufendem Export][export] und [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) in Azure SQL-Datenbank verschieben. 
@@ -82,7 +82,7 @@ Stellen Sie sicher, dass der Server Zugriff auf Azure-Dienste ermöglicht:
 ![Durchsuchen, Server, Ihr Server, Einstellungen, Firewall, Zugriff auf Azure erlauben](./media/code-sample-export-sql-stream-analytics/100-sqlaccess.png)
 
 ## <a name="create-a-table-in-azure-sql-database"></a>Erstellen einer Tabelle in Azure SQL-Datenbank
-Stellen Sie über Ihr bevorzugtes Verwaltungstool eine Verbindung mit der Datenbank her, die Sie im vorherigen Abschnitt erstellt haben. In dieser exemplarischen Vorgehensweise verwenden wir die [SQL Server-Verwaltungstools](/sql/ssms/sql-server-management-studio-ssms?view=sql-server-ver15) .
+Stellen Sie über Ihr bevorzugtes Verwaltungstool eine Verbindung mit der Datenbank her, die Sie im vorherigen Abschnitt erstellt haben. In dieser exemplarischen Vorgehensweise verwenden wir die [SQL Server-Verwaltungstools](/sql/ssms/sql-server-management-studio-ssms) .
 
 ![Herstellen einer Verbindung mit Azure SQL-Datenbank](./media/code-sample-export-sql-stream-analytics/31-sql-table.png)
 

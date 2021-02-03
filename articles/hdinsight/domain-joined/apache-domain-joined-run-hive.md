@@ -3,17 +3,16 @@ title: 'Apache Hive-Richtlinien in Apache Ranger: Azure HDInsight'
 description: Erfahren Sie, wie Sie Apache Ranger-Richtlinien für Hive in einem Azure HDInsight-Dienst mit dem Enterprise-Sicherheitspaket konfigurieren.
 author: omidm1
 ms.author: omidm
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/27/2019
-ms.openlocfilehash: f2d9c96a616f05c22c8b999fdc6cab2505c27485
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 8ebc03d0847414730c51b899be4cf6586d064696
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92544935"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98932225"
 ---
 # <a name="configure-apache-hive-policies-in-hdinsight-with-enterprise-security-package"></a>Konfigurieren von Apache Hive-Richtlinien in HDInsight mit dem Enterprise-Sicherheitspaket
 
@@ -87,15 +86,15 @@ Die Anleitung finden Sie unter [Erstellen einer Hive ODBC-Datenquelle](../hadoop
  | --- | --- |
  | Datenquellenname | Geben Sie einen Namen für die Datenquelle an. |
  | Host | Geben Sie „CLUSTERNAME.azurehdinsight.net“ ein. Beispiel: myHDICluster.azurehdinsight.net |
- | Port | Verwenden Sie **443** . (Dieser Port wurde von 563 in 443 geändert.) |
- | Datenbank | Verwenden Sie **Standard** . |
+ | Port | Verwenden Sie **443**. (Dieser Port wurde von 563 in 443 geändert.) |
+ | Datenbank | Verwenden Sie **Standard**. |
  | Hive-Servertyp | Wählen Sie **Hive Server 2** aus. |
  | Mechanismus | Wählen Sie **Azure HDInsight Service** aus. |
  | HTTP-Pfad | Lassen Sie dieses Feld leer. |
  | Benutzername | Geben Sie hiveuser1@contoso158.onmicrosoft.com ein. Aktualisieren Sie den Domänennamen, falls er abweicht. |
  | Kennwort | Geben Sie das Kennwort für „hiveuser1“ ein. |
 
-Klicken Sie vor dem Speichern der Datenquelle auf **Testen** .
+Klicken Sie vor dem Speichern der Datenquelle auf **Testen**.
 
 ## <a name="import-data-into-excel-from-hdinsight"></a>Importieren von Daten aus HDInsight in Excel
 
@@ -103,13 +102,13 @@ Im letzten Abschnitt haben Sie zwei Richtlinien konfiguriert.  „hiveuser1“ v
 
 1. Öffnen Sie eine neue oder bereits vorhandene Arbeitsmappe in Excel.
 
-1. Navigieren Sie auf der Registerkarte **Daten** zu **Daten abrufen** > **Aus anderen Quellen** > **Aus ODBC** , um das Fenster **Aus ODBC** zu öffnen.
+1. Navigieren Sie auf der Registerkarte **Daten** zu **Daten abrufen** > **Aus anderen Quellen** > **Aus ODBC**, um das Fenster **Aus ODBC** zu öffnen.
 
     ![Öffnen Sie den Datenverbindungs-Assistenten.](./media/apache-domain-joined-run-hive/simbahiveodbc-excel-dataconnection1.png)
 
-1. Wählen Sie in der Dropdownliste den im letzten Abschnitt erstellten Datenquellennamen aus, und wählen Sie anschließend **OK** .
+1. Wählen Sie in der Dropdownliste den im letzten Abschnitt erstellten Datenquellennamen aus, und wählen Sie anschließend **OK**.
 
-1. Bei der ersten Verwendung wird das Dialogfeld **ODBC-Treiber** geöffnet. Wählen Sie im Menü auf der linken Seite die Option **Windows** . Wählen Sie anschließend **Verbinden** , um das Fenster **Navigator** zu öffnen.
+1. Bei der ersten Verwendung wird das Dialogfeld **ODBC-Treiber** geöffnet. Wählen Sie im Menü auf der linken Seite die Option **Windows**. Wählen Sie anschließend **Verbinden**, um das Fenster **Navigator** zu öffnen.
 
 1. Warten Sie, bis sich der Dialog **Datenbank und Tabelle wählen** öffnet. Dies kann einige Zeit dauern.
 
@@ -131,7 +130,7 @@ Im letzten Abschnitt haben Sie zwei Richtlinien konfiguriert.  „hiveuser1“ v
 
 1. Wählen Sie **OK** aus, um das Dialogfeld **Daten importieren** zu schließen.  
 
-1. Geben Sie erneut das Kennwort für „hiveuser1“ ein, und klicken Sie auf **OK** . Es dauert einige Zeit, bis die Daten in Excel importiert werden. Nach Abschluss des Vorgangs werden 11 Datenspalten angezeigt.
+1. Geben Sie erneut das Kennwort für „hiveuser1“ ein, und klicken Sie auf **OK**. Es dauert einige Zeit, bis die Daten in Excel importiert werden. Nach Abschluss des Vorgangs werden 11 Datenspalten angezeigt.
 
 So testen Sie die zweite Richtlinie (read-hivesampletable-devicemake), die Sie im vorherigen Abschnitt erstellt haben
 

@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 02/14/2019
 ms.topic: conceptual
-ms.openlocfilehash: 84e2eaf71326f59102800428479768aeba9ef9ab
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 73e4dbb24b4e7c0c651f7d082c75b0f4a17158b5
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87042160"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98890880"
 ---
 # <a name="configure-runbook-input-parameters"></a>Konfigurieren von Runbookeingabeparametern
 
@@ -75,7 +75,7 @@ Um die Konfiguration von Eingabeparametern für ein grafisches Runbook zu illust
 Ein grafisches Runbook verwendet diese wesentlichen Runbook-Aktivitäten:
 
 * Konfiguration des ausführenden Azure-Kontos für die Authentifizierung bei Azure. 
-* Definition eines [Get-AzVM](/powershell/module/az.compute/get-azvm?view=azps-3.5.0)-Cmdlets, um VM-Eigenschaften abzurufen.
+* Definition eines [Get-AzVM](/powershell/module/az.compute/get-azvm)-Cmdlets, um VM-Eigenschaften abzurufen.
 * Verwenden Sie die Aktivität [Write-Output](/powershell/module/microsoft.powershell.utility/write-output), um die Namen der virtuellen Computer auszugeben. 
 
 Die Aktivität `Get-AzVM` definiert zwei Eingaben: den VM-Namen und den Namen der Ressourcengruppe. Da diese Namen bei jedem Start des Runbooks unterschiedlich sein können, müssen Sie Ihrem Runbook Eingabeparameter hinzufügen, um diese Eingaben zu akzeptieren. Siehe [Grafische Erstellung in Azure Automation](automation-graphical-authoring-intro.md).
@@ -140,7 +140,7 @@ In der Bezeichnung unterhalb des Eingabefelds können Sie die Eigenschaften sehe
 
 #### <a name="start-a-published-runbook-using-powershell-cmdlets-and-assign-parameters"></a>Starten eines veröffentlichten Runbooks mit PowerShell-Cmdlets und Zuweisen von Parametern
 
-* **Azure Resource Manager-Cmdlets**: Sie können ein Automation-Runbook, das in einer Ressourcengruppe erstellt wurde, mit [Start-AzAutomationRunbook](/powershell/module/Az.Automation/Start-AzAutomationRunbook?view=azps-3.5.0) starten.
+* **Azure Resource Manager-Cmdlets**: Sie können ein Automation-Runbook, das in einer Ressourcengruppe erstellt wurde, mit [Start-AzAutomationRunbook](/powershell/module/Az.Automation/Start-AzAutomationRunbook) starten.
 
    ```powershell
      $params = @{"VMName"="WSVMClassic";"resourceGroupeName"="WSVMClassicSG"}
@@ -272,7 +272,7 @@ Wenn Sie einen Webhook verwenden, um ein Runbook auszuführen, wird der vordefin
 
 Es kann hilfreich sein, Daten, die Sie an ein Runbook übergeben möchten, in einer JSON-Datei zu speichern. Sie können z. B. eine JSON-Datei erstellen, die alle Parameter enthält, die an ein Runbook übergeben werden sollen. Zu diesem Zweck müssen Sie den JSON-Code in eine Zeichenfolge und diese dann in ein PowerShell-Objekt konvertieren, bevor Sie es anschließend an das Runbook übergeben.
 
-Dieser Abschnitt verwendet ein Beispiel, bei dem ein PowerShell-Skript[Start-AzAutomationRunbook](/powershell/module/az.automation/start-azautomationrunbook?view=azps-3.5.0) aufruft, um ein PowerShell-Runbook zu starten, mit dem der Inhalt der JSON-Datei an das Runbook übergeben wird. Das PowerShell-Runbook startet einen virtuellen Azure-Computer, indem die Parameter für den virtuellen Computer aus dem JSON-Objekt abgerufen werden.
+Dieser Abschnitt verwendet ein Beispiel, bei dem ein PowerShell-Skript[Start-AzAutomationRunbook](/powershell/module/az.automation/start-azautomationrunbook) aufruft, um ein PowerShell-Runbook zu starten, mit dem der Inhalt der JSON-Datei an das Runbook übergeben wird. Das PowerShell-Runbook startet einen virtuellen Azure-Computer, indem die Parameter für den virtuellen Computer aus dem JSON-Objekt abgerufen werden.
 
 ### <a name="create-the-json-file"></a>Erstellen der JSON-Datei
 
@@ -327,7 +327,7 @@ Jetzt können Sie das Runbook auf dem lokalen Computer mithilfe von Azure PowerS
 1. Rufen Sie den Inhalt der gespeicherten JSON-Datei ab, und konvertieren Sie ihn in eine Zeichenfolge. `JsonPath` gibt den Pfad an, unter dem Sie die JSON-Datei gespeichert haben.
 
    ```powershell
-   $json =  (Get-content -path 'JsonPath\test.json' -Raw) | Out-string
+   $json =  (Get-content -path 'JsonPath\test.json' -Raw) | Out-string
    ```
 
 1. Konvertieren Sie den Zeichenfolgeninhalt von `$json` in ein PowerShell-Objekt.

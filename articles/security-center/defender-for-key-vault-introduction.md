@@ -8,24 +8,24 @@ ms.topic: overview
 ms.service: security-center
 ms.custom: references_regions
 manager: rkarlin
-ms.openlocfilehash: 91a0ea19f53d1da7631154cb71f96e495cc93857
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: b1dd559db2d736fa27de2884d2fe82edaaeaaf3c
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92788994"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98916641"
 ---
 # <a name="introduction-to-azure-defender-for-key-vault"></a>Einführung in Azure Defender für Key Vault
 
 Der Azure Key Vault-Clouddienst schützt Verschlüsselungsschlüssel und Geheimnisse (wie Zertifikate, Verbindungszeichenfolgen und Kennwörter). 
 
-Aktivieren Sie **Azure Defender für Key Vault** , um in Azure nativen erweiterten Bedrohungsschutz für Azure Key Vault zu erhalten und dadurch eine zusätzliche Ebene der Sicherheitsintelligenz zu erzielen. 
+Aktivieren Sie **Azure Defender für Key Vault**, um in Azure nativen erweiterten Bedrohungsschutz für Azure Key Vault zu erhalten und dadurch eine zusätzliche Ebene der Sicherheitsintelligenz zu erzielen. 
 
 ## <a name="availability"></a>Verfügbarkeit
 
 |Aspekt|Details|
 |----|:----|
-|Status des Release:|Allgemein verfügbar (Generally Available, GA)|
+|Status des Release:|Allgemeine Verfügbarkeit (General Availability, GA)|
 |Preise:|**Azure Defender für Key Vault** wird gemäß den Angaben in der [Preisübersicht](security-center-pricing.md) abgerechnet.|
 |Clouds:|![Ja](./media/icons/yes-icon.png) Kommerzielle Clouds<br>![Nein](./media/icons/no-icon.png) National/Sovereign (US Gov, China Gov, andere Gov)|
 |||

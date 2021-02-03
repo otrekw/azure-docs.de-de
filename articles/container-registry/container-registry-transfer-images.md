@@ -4,12 +4,12 @@ description: Übertragen von Sammlungen von Images oder anderen Artefakten aus e
 ms.topic: article
 ms.date: 10/07/2020
 ms.custom: ''
-ms.openlocfilehash: fd2cee972ef173853572b871bc80b92b28c505cd
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: ab6657ecd335a6de8c6c93e3c2ff392ac54c487c
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91932599"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98935339"
 ---
 # <a name="transfer-artifacts-to-another-registry"></a>Übertragen von Artefakten in eine andere Registrierung
 
@@ -312,7 +312,7 @@ az storage blob list \
 
 ## <a name="transfer-blob-optional"></a>Übertragen des Blobs (optional) 
 
-Verwenden Sie das AzCopy-Tool oder andere Methoden, um Blobdaten aus dem Quellspeicherkonto in das Zielspeicherkonto zu [übertragen](../storage/common/storage-use-azcopy-blobs.md#copy-blobs-between-storage-accounts).
+Verwenden Sie das AzCopy-Tool oder andere Methoden, um Blobdaten aus dem Quellspeicherkonto in das Zielspeicherkonto zu [übertragen](../storage/common/storage-use-azcopy-v10.md#transfer-data).
 
 Beispielsweise kopiert der folgende [`azcopy copy`](../storage/common/storage-ref-azcopy-copy.md)-Befehl „myblob“ aus dem Container *transfer* des Quellkontos in den Container *transfer* im Zielkonto. Wenn das Blob im Zielkonto vorhanden ist, wird es überschrieben. Bei der Authentifizierung werden SAS-Token mit den entsprechenden Berechtigungen für die Quell- und Zielcontainer verwendet. (Die Schritte zum Erstellen von Token werden nicht gezeigt.)
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/31/2020
 ms.author: kumud
-ms.openlocfilehash: 04f50396ea9ced4b4377f264b4952efa7a75d170
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 9a321687a755f8a3d6e6d9139138d61c58764ef4
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98223498"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98932602"
 ---
 # <a name="add-ipv6-to-an-ipv4-application-in-azure-virtual-network---azure-cli"></a>Hinzufügen von IPv6 zu einer IPv4-Anwendung in Azure Virtual Network – Azure-Befehlszeilenschnittstelle
 
@@ -48,7 +48,7 @@ az network public-ip create \
 
 ## <a name="configure-ipv6-load-balancer-frontend"></a>Konfigurieren des Front-Ends für den IPv6-Lastenausgleich
 
-Konfigurieren Sie den Lastenausgleich mit der neuen IPv6-IP-Adresse, indem Sie [az network lb frontend-ip create](/cli/azure/network/lb/frontend-ip?view=azure-cli-latest#az-network-lb-frontend-ip-create) wie folgt ausführen:
+Konfigurieren Sie den Lastenausgleich mit der neuen IPv6-IP-Adresse, indem Sie [az network lb frontend-ip create](/cli/azure/network/lb/frontend-ip#az-network-lb-frontend-ip-create) wie folgt ausführen:
 
 ```azurecli-interactive
 az network lb frontend-ip create \
@@ -60,7 +60,7 @@ az network lb frontend-ip create \
 
 ## <a name="configure-ipv6-load-balancer-backend-pool"></a>Konfigurieren des Back-End-Pools für den IPv6-Lastenausgleich
 
-Erstellen Sie den Back-End-Pool für Netzwerkadapter mit IPv6-Adressen, indem Sie [az network lb address-pool create](/cli/azure/network/lb/address-pool?view=azure-cli-latest#az-network-lb-address-pool-create) wie folgt ausführen:
+Erstellen Sie den Back-End-Pool für Netzwerkadapter mit IPv6-Adressen, indem Sie [az network lb address-pool create](/cli/azure/network/lb/address-pool#az-network-lb-address-pool-create) wie folgt ausführen:
 
 ```azurecli-interactive
 az network lb address-pool create \
@@ -71,7 +71,7 @@ az network lb address-pool create \
 
 ## <a name="configure-ipv6-load-balancer-rules"></a>Konfigurieren von Regeln für den IPv6-Lastenausgleich
 
-Erstellen Sie mit [az network lb rule create](/cli/azure/network/lb/rule?view=azure-cli-latest#az-network-lb-rule-create) Regeln für den IPv6-Lastenausgleich.
+Erstellen Sie mit [az network lb rule create](/cli/azure/network/lb/rule#az-network-lb-rule-create) Regeln für den IPv6-Lastenausgleich.
 
 ```azurecli-interactive
 az network lb rule create \
@@ -104,7 +104,7 @@ az network vnet subnet update \
 
 ## <a name="add-ipv6-configuration-to-nics"></a>Hinzufügen der IPv6-Konfiguration zu Netzwerkadaptern
 
-Konfigurieren Sie die Netzwerkadapter der virtuellen Computer mit einer IPv6-Adresse, indem Sie [az network nic ip-config create](/cli/azure/network/nic/ip-config?view=azure-cli-latest#az-network-nic-ip-config-create) wie folgt ausführen:
+Konfigurieren Sie die Netzwerkadapter der virtuellen Computer mit einer IPv6-Adresse, indem Sie [az network nic ip-config create](/cli/azure/network/nic/ip-config#az-network-nic-ip-config-create) wie folgt ausführen:
 
 ```azurecli-interactive
 az network nic ip-config create \

@@ -4,15 +4,15 @@ description: Azure-Sicherheitsbaseline für Automation
 author: msmbaldwin
 ms.service: security
 ms.topic: conceptual
-ms.date: 06/22/2020
+ms.date: 01/07/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: ea984e527eb526e49c87ce5385ba5715803cc72d
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 79282e99894bccad4f3c265cdffe4bee2e465950
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98737251"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99052752"
 ---
 # <a name="azure-security-baseline-for-automation"></a>Azure-Sicherheitsbaseline für Automation
 
@@ -336,11 +336,11 @@ Wenn Sie jedoch die Hybrid Runbook Worker-Funktion verwenden, stellt Azure Secur
 
 **Leitfaden**: Verwenden Sie die integrierten Administratorrollen in Azure Active Directory, die explizit zugewiesen und abgefragt werden können. Verwenden Sie das Azure AD PowerShell-Modul, um Ad-hoc-Abfragen zum Ermitteln von Konten auszuführen, die Mitglieder von administrativen Gruppen sind. Stellen Sie bei der Verwendung von ausführenden Automation-Konten für Ihre Runbooks sicher, dass diese Dienstprinzipale auch im Bestand nachverfolgt werden, da sie häufig über erweiterte Berechtigungen verfügen. Löschen Sie nicht verwendete ausführende Konten, um die Angriffsfläche zu minimieren.
 
-* [Abrufen einer Verzeichnisrolle in Azure AD mit PowerShell](/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
+* [Abrufen einer Verzeichnisrolle in Azure AD mit PowerShell](/powershell/module/azuread/get-azureaddirectoryrole)
 
-* [Abrufen von Mitgliedern einer Verzeichnisrolle in Azure AD mit PowerShell](/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
+* [Abrufen von Mitgliedern einer Verzeichnisrolle in Azure AD mit PowerShell](/powershell/module/azuread/get-azureaddirectoryrolemember)
 
-* [Löschen eines ausführenden Kontos oder klassischen ausführenden Kontos](./manage-runas-account.md#delete-a-run-as-or-classic-run-as-account)
+* [Löschen eines ausführenden Kontos oder klassischen ausführenden Kontos](./delete-run-as-account.md)
 
 * [Verwalten eines ausführenden Azure Automation-Kontos](./manage-runas-account.md)
 
@@ -364,7 +364,7 @@ Sie können außerdem einen Just-in-Time- oder Just-Enough-Zugriff aktivieren, i
 
 * [Weitere Informationen zu Privileged Identity Management](../active-directory/privileged-identity-management/index.yml)
 
-* [Löschen eines ausführenden Kontos oder klassischen ausführenden Kontos](./manage-runas-account.md#delete-a-run-as-or-classic-run-as-account)
+* [Löschen eines ausführenden Kontos oder klassischen ausführenden Kontos](./delete-run-as-account.md)
 
 * [Verwalten eines ausführenden Azure Automation-Kontos](./manage-runas-account.md)
 
@@ -454,7 +454,7 @@ Sie können außerdem einen Just-in-Time- oder Just-Enough-Zugriff aktivieren, i
 
 * [Was sind Azure AD-Zugriffsüberprüfungen?](../active-directory/governance/access-reviews-overview.md)
 
-* [Löschen eines ausführenden Kontos oder klassischen ausführenden Kontos](./manage-runas-account.md#delete-a-run-as-or-classic-run-as-account)
+* [Löschen eines ausführenden Kontos oder klassischen ausführenden Kontos](./delete-run-as-account.md)
 
 * [Verwalten eines ausführenden Azure Automation-Kontos](./manage-runas-account.md)
 
@@ -696,7 +696,7 @@ Wenn Sie Hybrid Runbook Worker-Instanzen verwenden, die von Azure-VMs unterstüt
 
 * [Erstellen von Abfragen mit Azure Resource Graph](../governance/resource-graph/first-query-portal.md)
 
-* [Anzeigen Ihrer Azure-Abonnements](/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
+* [Anzeigen Ihrer Azure-Abonnements](/powershell/module/az.accounts/get-azsubscription)
 
 * [Grundlegendes zu Azure RBAC](../role-based-access-control/overview.md)
 
@@ -724,7 +724,7 @@ Wenn Sie Hybrid Runbook Worker-Instanzen verwenden, die von Azure-VMs unterstüt
 
 * [Erstellen und Verwenden von Tags](../azure-resource-manager/management/tag-resources.md)
 
-* [Löschen eines ausführenden Kontos oder klassischen ausführenden Kontos](./manage-runas-account.md#delete-a-run-as-or-classic-run-as-account)
+* [Löschen eines ausführenden Kontos oder klassischen ausführenden Kontos](./delete-run-as-account.md)
 
 * [Verwalten eines ausführenden Azure Automation-Kontos](./manage-runas-account.md)
 
@@ -836,7 +836,7 @@ Die adaptive Anwendungssteuerung ist eine intelligente, automatisierte End-to-En
 
 **Leitfaden**: Wenn Sie die Hybrid Runbook Worker-Funktion verwenden, können Sie abhängig vom Skripttyp betriebssystemspezifische Konfigurationen oder Ressourcen von Drittanbietern verwenden, um die Möglichkeit der Benutzer zur Skriptausführung innerhalb von Azure-Computeressourcen einzuschränken. Sie können auch die adaptiven Anwendungssteuerungen in Azure Security Center nutzen, um sicherzustellen, dass nur autorisierte Software ausgeführt und die Ausführung jeglicher nicht autorisierter Software in Azure Virtual Machines blockiert wird.
 
-* [Steuern der PowerShell-Skriptausführung in Windows-Umgebungen](/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-6)
+* [Steuern der PowerShell-Skriptausführung in Windows-Umgebungen](/powershell/module/microsoft.powershell.security/set-executionpolicy)
 
 * [Verwenden der adaptiven Anwendungssteuerungen in Azure Security Center](../security-center/security-center-adaptive-application.md)
 
@@ -878,7 +878,7 @@ Außerdem hat Azure Resource Manager die Möglichkeit, die Vorlage in JSON-Code 
 
 Sie können auch Empfehlungen von Azure Security Center als sichere Konfigurationsbaseline für Ihre Azure-Ressourcen verwenden.
 
-* [Anzeigen verfügbarer Azure Policy-Aliase](/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
+* [Anzeigen verfügbarer Azure Policy-Aliase](/powershell/module/az.resources/get-azpolicyalias)
 
 * [Tutorial: Erstellen und Verwalten von Richtlinien zur Konformitätserzwingung](../governance/policy/tutorials/create-and-manage.md)
 
@@ -942,7 +942,7 @@ In den meisten Fällen sind die Microsoft-Basisvorlagen in Kombination mit Azure
 
 * [Informationen zum Erstellen von ARM-Vorlagen](../virtual-machines/windows/ps-template.md)
 
-* [Hochladen einer benutzerdefinierten VM-VHD in Azure](/azure-stack/operator/azure-stack-add-vm-image?view=azs-1910)
+* [Hochladen einer benutzerdefinierten VM-VHD in Azure](/azure-stack/operator/azure-stack-add-vm-image)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -952,7 +952,7 @@ In den meisten Fällen sind die Microsoft-Basisvorlagen in Kombination mit Azure
 
 **Leitfaden**: Verwenden Sie Azure DevOps, um Ihren Code sicher zu speichern und zu verwalten, z. B. benutzerdefinierte Azure-Richtlinien, Azure Resource Manager-Vorlagen und Desired State Configuration-Skripts. Um auf die Ressourcen zuzugreifen, die Sie in Azure DevOps verwalten, können Sie bestimmten Benutzern, integrierten Sicherheitsgruppen oder in Azure Active Directory definierten Gruppen (falls in Azure DevOps integriert) oder in Active Directory definierte Gruppen (falls in TFS integriert), Berechtigungen gewähren oder verweigern. Halten Sie die Runbooks mit der Funktion zur Integration der Quellcodeverwaltung in Ihrem Automation-Konto auf demselben aktuellen Stand wie die Skripts in Ihrem Quellcodeverwaltungrepository.
 
-* [Speichern von Code in Azure DevOps](/azure/devops/repos/git/gitworkflow?view=azure-devops)
+* [Speichern von Code in Azure DevOps](/azure/devops/repos/git/gitworkflow)
 
 * [Informationen über Berechtigungen und Gruppen in Azure DevOps](/azure/devops/organizations/security/about-permissions)
 
@@ -1134,7 +1134,7 @@ Halten Sie die Runbooks mit der Funktion zur Integration der Quellcodeverwaltung
 
 * [Einführung in Azure Automation](./automation-intro.md)
 
-* [Sichern von Schlüsseltresorschlüsseln in Azure](/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0)
+* [Sichern von Schlüsseltresorschlüsseln in Azure](/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey)
 
 * [Verwenden von kundenseitig verwalteten Schlüsseln für ein Automation-Konto](./automation-secure-asset-encryption.md#use-of-customer-managed-keys-for-an-automation-account)
 
@@ -1160,7 +1160,7 @@ Halten Sie die Runbooks mit der Funktion zur Integration der Quellcodeverwaltung
 
 * [Einführung in Azure Automation](./automation-intro.md)
 
-* [Sichern von Schlüsseltresorschlüsseln in Azure](/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0)
+* [Sichern von Schlüsseltresorschlüsseln in Azure](/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey)
 
 * [Verwenden von kundenseitig verwalteten Schlüsseln für ein Automation-Konto](./automation-secure-asset-encryption.md#use-of-customer-managed-keys-for-an-automation-account)
 
@@ -1176,7 +1176,7 @@ Halten Sie die Runbooks mit der Funktion zur Integration der Quellcodeverwaltung
 
 * [Bereitstellen von Ressourcen mit ARM-Vorlagen und dem Azure-Portal](../azure-resource-manager/templates/deploy-portal.md)
 
-* [Wiederherstellen von Schlüsseltresorschlüsseln in Azure](/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-6.13.0)
+* [Wiederherstellen von Schlüsseltresorschlüsseln in Azure](/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey)
 
 * [Verwenden von kundenseitig verwalteten Schlüsseln für ein Automation-Konto](./automation-secure-asset-encryption.md#use-of-customer-managed-keys-for-an-automation-account)
 
@@ -1190,7 +1190,7 @@ Halten Sie die Runbooks mit der Funktion zur Integration der Quellcodeverwaltung
 
 Halten Sie die Runbooks mit der Funktion zur Integration der Quellcodeverwaltung in Ihrem Automation-Konto auf demselben aktuellen Stand wie die Skripts in Ihrem Quellcodeverwaltungrepository.
 
-* [Speichern von Code in Azure DevOps](/azure/devops/repos/git/gitworkflow?view=azure-devops)
+* [Speichern von Code in Azure DevOps](/azure/devops/repos/git/gitworkflow)
 
 * [Informationen über Berechtigungen und Gruppen in Azure DevOps](/azure/devops/organizations/security/about-permissions)
 

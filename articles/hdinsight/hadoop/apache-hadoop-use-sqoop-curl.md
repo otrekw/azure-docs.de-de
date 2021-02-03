@@ -1,18 +1,15 @@
 ---
 title: Verwenden von Curl zum Exportieren von Daten mit Apache Sqoop in Azure HDInsight
 description: Erfahren Sie, wie Sie Apache Sqoop-Aufträge mithilfe von Curl remote an Azure HDInsight übermitteln.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 01/06/2020
-ms.openlocfilehash: 9104be9975568c52f6a96994a0afb782a406fe4e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4de42bf30824fd71228aa27cc478a54ec3741da9
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86076265"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98928364"
 ---
 # <a name="run-apache-sqoop-jobs-in-hdinsight-with-curl"></a>Ausführen von Apache Sqoop-Aufträgen in HDInsight mit Curl
 
@@ -99,7 +96,7 @@ Die REST-API wird durch [Standardauthentifizierung](https://en.wikipedia.org/wik
     curl -G -u %USERNAME%:%PASSWORD% -d user.name=%USERNAME% https://%CLUSTERNAME%.azurehdinsight.net/templeton/v1/jobs/%JOBID% | C:\HDI\jq-win64.exe .status.state
     ```
 
-    Wenn der Auftrag abgeschlossen ist, wird der Status **ERFOLGREICH**angezeigt.
+    Wenn der Auftrag abgeschlossen ist, wird der Status **ERFOLGREICH** angezeigt.
 
    > [!NOTE]  
    > Diese Curl-Anforderung gibt ein JSON-Dokument (JavaScript Object Notation) mit Informationen zum Auftrag zurück. Mithilfe von "jq" wird nur der Statuswert abgerufen.

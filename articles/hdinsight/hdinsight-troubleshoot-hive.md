@@ -3,17 +3,14 @@ title: Problembehandlung bei Hive mit Azure HDInsight
 description: Hier erhalten Sie Antworten auf häufig gestellte Fragen zum Arbeiten mit Apache Hive und Azure HDInsight.
 keywords: Azure HDInsight, HIVE, FAQ, Problembehandlungshandbuch, häufig gestellte Fragen
 ms.service: hdinsight
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.topic: troubleshooting
 ms.date: 08/15/2019
-ms.openlocfilehash: f1a26e3323e4d1db2e9b2bda9afaa2756307749b
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: a76974b8daddf225b0d9b8b581475d657322847e
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93288955"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98931452"
 ---
 # <a name="troubleshoot-apache-hive-by-using-azure-hdinsight"></a>Behandeln von Problemen mit Apache Hive unter Verwendung von Azure HDInsight
 
@@ -120,17 +117,17 @@ Für den Code in den Schritten zur Behebung wird davon ausgegangen, dass die Dat
    Ein Beispielprogramm muss als erstes Argument angegeben werden.
 
    Gültige Programmnamen:
-    - **ContainerReuseAnalyzer** : Ausgeben von Details zum Wiederverwenden von Containern in einem gerichteten azyklischen Graph
-    - **CriticalPath** : Suchen des kritischen Pfads eines gerichteten azyklischen Graphs
-    - **LocalityAnalyzer** : Ausgeben von Ortsdetails in einem gerichteten azyklischen Graph
-    - **ShuffleTimeAnalyzer** : Analysieren von Durchmischungszeitdetails in einem gerichteten azyklischen Graph
-    - **SkewAnalyzer** : Analysieren der Neigungsdetails in einem gerichteten azyklischen Graph
-    - **SlowNodeAnalyzer** : Ausgeben von Knotendetails in einem gerichteten azyklischen Graph
-    - **SlowTaskIdentifier** : Ausgeben von Details zu langsamen Aufgaben in einem gerichteten azyklischen Graph
-    - **SlowestVertexAnalyzer** : Ausgeben von Details zu den langsamsten Scheitelpunkten in einem gerichteten azyklischen Graph
-    - **SpillAnalyzer** : Ausgeben von Details zum Überlauf in einem gerichteten azyklischen Graph
-    - **TaskConcurrencyAnalyzer** : Ausgeben von Details zur Parallelität von Aufgaben in einem gerichteten azyklischen Graph
-    - **VertexLevelCriticalPathAnalyzer** : Suchen des kritischen Pfads auf Scheitelpunktebene in einem gerichteten azyklischen Graph
+    - **ContainerReuseAnalyzer**: Ausgeben von Details zum Wiederverwenden von Containern in einem gerichteten azyklischen Graph
+    - **CriticalPath**: Suchen des kritischen Pfads eines gerichteten azyklischen Graphs
+    - **LocalityAnalyzer**: Ausgeben von Ortsdetails in einem gerichteten azyklischen Graph
+    - **ShuffleTimeAnalyzer**: Analysieren von Durchmischungszeitdetails in einem gerichteten azyklischen Graph
+    - **SkewAnalyzer**: Analysieren der Neigungsdetails in einem gerichteten azyklischen Graph
+    - **SlowNodeAnalyzer**: Ausgeben von Knotendetails in einem gerichteten azyklischen Graph
+    - **SlowTaskIdentifier**: Ausgeben von Details zu langsamen Aufgaben in einem gerichteten azyklischen Graph
+    - **SlowestVertexAnalyzer**: Ausgeben von Details zu den langsamsten Scheitelpunkten in einem gerichteten azyklischen Graph
+    - **SpillAnalyzer**: Ausgeben von Details zum Überlauf in einem gerichteten azyklischen Graph
+    - **TaskConcurrencyAnalyzer**: Ausgeben von Details zur Parallelität von Aufgaben in einem gerichteten azyklischen Graph
+    - **VertexLevelCriticalPathAnalyzer**: Suchen des kritischen Pfads auf Scheitelpunktebene in einem gerichteten azyklischen Graph
 
 ### <a name="additional-reading"></a>Zusätzliche Lektüre
 

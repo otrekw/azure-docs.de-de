@@ -1,19 +1,16 @@
 ---
 title: Geschäftskontinuität in Azure HDInsight
 description: Dieser Artikel bietet einen Überblick über bewährte Methoden, Verfügbarkeit bei einer einzelnen Region und Optimierungsmöglichkeiten für die Geschäftskontinuitätsplanung in Azure HDInsight.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 keywords: Hochverfügbarkeit, Hadoop
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/08/2020
-ms.openlocfilehash: f83f5aec264aeae1a729e81932843825a0ce6673
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 74f8bdd26e000b89bfae84102077c241f85abf7e
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92546941"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98933323"
 ---
 # <a name="azure-hdinsight-business-continuity"></a>Geschäftskontinuität in Azure HDInsight
 
@@ -53,7 +50,7 @@ Ein einfaches HDInsight-System verfügt über die folgenden Komponenten. Alle Ko
 
 Es können auch weitere, optionale Dienste verwendet werden, z. B. Azure Key Vault und Azure Data Factory.
 
-:::image type="content" source="media/hdinsight-business-continuity/hdinsight-components.png" alt-text="Datentransformations- und -bereitstellungsebene":::
+:::image type="content" source="media/hdinsight-business-continuity/hdinsight-components.png" alt-text="HDInsight-Komponenten":::
 
 ### <a name="azure-hdinsight-cluster-compute"></a>Azure HDInsight-Cluster (Compute)
 
@@ -129,5 +126,5 @@ Für eine Verbesserung der Geschäftskontinuität mithilfe von regionsübergreif
 Weitere Informationen zu den in diesem Artikel erörterten Themen finden Sie unter:
 
 * [Architekturen zur Geschäftskontinuität von Azure HDInsight](./hdinsight-business-continuity-architecture.md)
-* [Fallstudie für eine hochverfügbare Lösungsarchitektur für Azure HDInsight](./hdinsight-high-availability-case-study.md)
+* [Fallstudie für hochverfügbare Lösungsarchitektur für Azure HDInsight](./hdinsight-high-availability-case-study.md)
 * [Was sind Apache Hive und HiveQL in Azure HDInsight?](./hadoop/hdinsight-use-hive.md)

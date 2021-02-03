@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/14/2020
-ms.openlocfilehash: ab0ed536bd23aaf15d85af85e4f924bc2f51f3d4
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: bdbb4307f46566d1cac259cbdc4c81d1dfba5c7e
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "96006626"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98927787"
 ---
 # <a name="send-log-data-to-azure-monitor-with-the-http-data-collector-api-public-preview"></a>Senden von Protokolldaten an Azure Monitor mit der HTTP-Datensammler-API (Public Preview)
 In diesem Artikel wird gezeigt, wie Sie die HTTP-Datensammler-API verwenden, um Protokolldaten von einem REST-API-Client an Azure Monitor zu senden.  Es wird beschrieben, wie die von Ihrem Skript oder Ihrer Anwendung gesammelten Daten formatiert und in eine Anforderung eingefügt werden müssen, um diese dann von Azure Monitor autorisieren zu lassen.  Die Beispiele werden für PowerShell, C# und Python angegeben.
@@ -66,7 +66,7 @@ Dies ist das Format für den „Authorization“-Header:
 Authorization: SharedKey <WorkspaceID>:<Signature>
 ```
 
-*WorkspaceID* ist der eindeutige Bezeichner des Log Analytics-Arbeitsbereichs. Die *Signatur* ist ein [HMAC (Hash-based Message Authentication Code)](/dotnet/api/system.security.cryptography.hmacsha256?view=netcore-3.1), der aus der Anforderung erstellt und dann mit dem [SHA256-Algorithmus](/dotnet/api/system.security.cryptography.sha256?view=netcore-3.1) berechnet wird. Anschließend codieren Sie ihn mit der Base64-Codierung.
+*WorkspaceID* ist der eindeutige Bezeichner des Log Analytics-Arbeitsbereichs. Die *Signatur* ist ein [HMAC (Hash-based Message Authentication Code)](/dotnet/api/system.security.cryptography.hmacsha256), der aus der Anforderung erstellt und dann mit dem [SHA256-Algorithmus](/dotnet/api/system.security.cryptography.sha256) berechnet wird. Anschließend codieren Sie ihn mit der Base64-Codierung.
 
 Verwenden Sie dieses Format zum Codieren der **SharedKey**-Signaturzeichenfolge:
 

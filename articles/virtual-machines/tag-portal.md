@@ -7,12 +7,12 @@ author: cynthn
 ms.service: virtual-machines
 ms.date: 11/11/2020
 ms.author: cynthn
-ms.openlocfilehash: 7c3e779c152a967452f86b55f06d38076102085c
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: 9c220814ae1f714e9eac0c0c11a50d9cf68a621d
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94594871"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98897407"
 ---
 # <a name="tagging-a-vm-using-the-portal"></a>Markieren eines virtuellen Computers über das Portal
 
@@ -28,9 +28,7 @@ In diesem Artikel wird das Hinzufügen von Tags zu einer VM über das Portal bes
 
     :::image type="content" source="media/tag/key-value.png" alt-text="Screenshot der Seite zum Hinzufügen eines Schlüssel-Wert-Paars als Tag.":::
 
-
-
-**Nächste Schritte**
+### <a name="next-steps"></a>Nächste Schritte
 
 - Weitere Informationen zum Markieren Ihrer Azure-Ressourcen finden Sie unter [Übersicht über den Azure Resource Manager](../azure-resource-manager/management/overview.md) und [Verwenden von Tags zum Organisieren von Azure-Ressourcen](../azure-resource-manager/management/tag-resources.md).
-- Informationen dazu, wie Tags Ihnen helfen können, die Verwendung Ihrer Azure-Ressourcen zu verwalten, finden Sie unter [Informationen zu Ihrer Rechnung für Microsoft Azure](../cost-management-billing/understand/review-individual-bill.md) und [Gewinnen von Einblicken in den Ressourcenverbrauch unter Microsoft Azure](../cost-management-billing/manage/usage-rate-card-overview.md).
+- Unter [Grundlegendes zu Ihrer Microsoft Azure-Rechnung und „Verwenden der Azure-Abrechnungs-APIs, um programmgesteuerte Einblicke in die Nutzung Ihrer Azure-Ressourcen zu erlangen“ erfahren Sie, wie Tags Sie bei der Verwaltung Ihrer Azure-Ressourcenverwendung unterstützen können.](../cost-management-billing/understand/review-individual-bill.md)

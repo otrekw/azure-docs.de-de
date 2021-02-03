@@ -3,12 +3,12 @@ title: Ausführen von Schnelltasks mit einer Vorlage
 description: Einstellen einer ACR-Taskausführung in die Warteschlange, um ein Image mithilfe einer Azure Resource Manager-Vorlage zu erstellen
 ms.topic: article
 ms.date: 04/22/2020
-ms.openlocfilehash: 7ad40d2e925d5e1443af9bce4115d45b0e8c06e1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6e8023c088ac328c2b6e95fccd0230c4d40325c1
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82927767"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98916064"
 ---
 # <a name="run-acr-tasks-using-resource-manager-templates"></a>Ausführen von ACR Tasks mithilfe von Resource Manager-Vorlagen
 
@@ -58,7 +58,7 @@ az deployment group create \
     registryName=mycontainerregistry \
     repository=helloworld-node \
     taskRunName=testrun \
-    sourceLocation=https://github.com/Azure-Samples/acr-build-helloworld-node.git
+    sourceLocation=https://github.com/Azure-Samples/acr-build-helloworld-node.git#main
  ```
 
 Der vorherige Befehl übergibt die Parameter in der Befehlszeile. Übergeben Sie sie bei Bedarf in einer [Parameterdatei](../azure-resource-manager/templates/parameter-files.md).
@@ -204,7 +204,7 @@ az deployment group create \
     taskRunName=basetask \
     userAssignedIdentity=$resourceID \
     customRegistryIdentity=$clientID \
-    sourceLocation=https://github.com/<your-GitHub-ID>/acr-build-helloworld-node.git \
+    sourceLocation=https://github.com/<your-GitHub-ID>/acr-build-helloworld-node.git#main \
     dockerFilePath=Dockerfile-test \
     customRegistry=mybaseregistry.azurecr.io
 ```

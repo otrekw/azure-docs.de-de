@@ -2,15 +2,15 @@
 title: Beheben von Problemen bei der Azure Automation-Updateverwaltung
 description: In diesem Artikel erfahren Sie, wie Sie Probleme mit der Azure Automation-Updateverwaltung beheben.
 services: automation
+ms.subservice: update-management
 ms.date: 01/13/2021
-ms.topic: conceptual
-ms.service: automation
-ms.openlocfilehash: 55e58c92004f4f4cf4ba6a96620b4f037c80cdb4
-ms.sourcegitcommit: 08458f722d77b273fbb6b24a0a7476a5ac8b22e0
+ms.topic: troubleshooting
+ms.openlocfilehash: 9ccaddec73a9c74123471c34b1b973b78eacfff8
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98246263"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98890780"
 ---
 # <a name="troubleshoot-update-management-issues"></a>Beheben von Problemen bei der Updateverwaltung
 

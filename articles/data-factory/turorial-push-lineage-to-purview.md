@@ -13,12 +13,12 @@ ms.custom:
 - seo-lt-2019
 - references_regions
 ms.date: 12/3/2020
-ms.openlocfilehash: 6b50c9440a958bc1398e79ddf3c5a0984816ec45
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: e87a9d677fee94d410099db1da80a56b5539048c
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96602984"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98935467"
 ---
 # <a name="push-data-factory-lineage-data-to-azure-purview-preview"></a>Pushen von Data Factory-Herkunftsdaten an Azure Purview (Vorschau)
 
@@ -29,7 +29,7 @@ In diesem Tutorial erstellen Sie auf der Data Factory-Benutzeroberfläche eine P
 ## <a name="prerequisites"></a>Voraussetzungen
 * **Azure-Abonnement**. Wenn Sie über kein Azure-Abonnement verfügen, können Sie ein [kostenloses Azure-Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 * **Azure Data Factory** Wenn Sie nicht über eine Azure Data Factory-Instanz verfügen, finden Sie weitere Informationen unter [Erstellen einer Azure Data Factory-Instanz](./quickstart-create-data-factory-portal.md).
-* **Azure Purview-Konto.** Das Purview-Konto erfasst alle von der Data Factory generierten Herkunftsdaten. Falls Sie noch nicht über ein Azure Purview-Konto verfügen, lesen Sie den Schnellstart [Erstellen eines Azure Purview-Kontos im Azure-Portal](https://docs.microsoft.com/azure/purview/create-catalog-portal).
+* **Azure Purview-Konto.** Das Purview-Konto erfasst alle von der Data Factory generierten Herkunftsdaten. Falls Sie noch nicht über ein Azure Purview-Konto verfügen, lesen Sie den Schnellstart [Erstellen eines Azure Purview-Kontos im Azure-Portal](../purview/create-catalog-portal.md).
 
 
 ## <a name="run-data-factory-activities-and-push-lineage-data-to-azure-purview"></a>Ausführen von Data Factory-Aktivitäten und Pushen von Herkunftsdaten an Azure Purview
@@ -76,6 +76,6 @@ Sie können auch Herkunftsdaten für die Aktivität „SSIS-Paket ausführen“ 
 > Bei den Herkunftsdaten der Aktivität „SSIS-Paket ausführen“ werden nur Quelle und Ziel unterstützt. Herkunftsdaten der Transformation werden noch nicht unterstützt.
 
 ## <a name="next-steps"></a>Nächste Schritte
-[Benutzerhandbuch zur Katalogherkunft](https://docs.microsoft.com/azure/purview/catalog-lineage-user-guide)
+[Benutzerhandbuch zur Katalogherkunft](../purview/catalog-lineage-user-guide.md)
 
 [Herstellen einer Verbindung zwischen einer Data Factory und Azure Purview](connect-data-factory-to-azure-purview.md)

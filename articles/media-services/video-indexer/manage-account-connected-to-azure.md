@@ -8,14 +8,14 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 12/16/2019
+ms.date: 01/14/2021
 ms.author: juliako
-ms.openlocfilehash: 5b9ec1c04dd90af9d9380a1f4d30386c8f9cc3ed
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 25025efe5254442c4862563ce329cfae69e7d033
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "79499673"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98898442"
 ---
 # <a name="manage-a-video-indexer-account-connected-to-azure"></a>Verwalten eines Video Indexer-Kontos mit Azure-Verbindung
 
@@ -28,7 +28,7 @@ In diesem Artikel wird veranschaulicht, wie Sie ein Video Indexer-Konto verwalte
 
 Verbinden Sie Ihr Video Indexer-Konto mit Azure, wie in [Erstellen eines Video Indexer-Kontos mit Azure-Verbindung](connect-to-azure.md) beschrieben.
 
-Beachten Sie die [Voraussetzungen](connect-to-azure.md#prerequisites), und machen Sie sich mit den [Überlegungen](connect-to-azure.md#considerations) in diesem Artikel vertraut.
+Beachten Sie die [Voraussetzungen](connect-to-azure.md#prerequisites-for-connecting-to-azure), und machen Sie sich mit den [Überlegungen](connect-to-azure.md#azure-media-services-considerations) in diesem Artikel vertraut.
 
 ## <a name="examine-account-settings"></a>Untersuchen der Kontoeinstellungen
 

@@ -3,12 +3,12 @@ title: Anzeigen des monatlichen geschätzten Labkostentrends in Azure DevTest La
 description: Dieser Artikel enthält Informationen zum Nachverfolgen der Kosten Ihres Labs (monatliches geschätztes Kostentrenddiagramm) in Azure DevTest Labs.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 220cbd1bc793e4bcfdf03a184d7463114506e6e0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6a2a9bef9e54ef7deda123aad34cf0c576fd158f
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87283825"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98892336"
 ---
 # <a name="track-costs-associated-with-a-lab-in-azure-devtest-labs"></a>Verfolgen von Kosten eines Labs in Azure DevTest Labs
 Dieser Artikel enthält Informationen dazu, wie Sie die Kosten Ihres Labs nachverfolgen. Sie erfahren darin, wie Sie den geschätzten Kostentrend des Labs für den aktuellen Kalendermonat anzeigen. Außerdem erfahren Sie, wie Sie pro Ressource im Lab die Kosten für den bisherigen Kalendermonat anzeigen.
@@ -38,7 +38,7 @@ Führen Sie folgende Schritte aus, um das Diagramm „Monatlicher geschätzter K
 
      Bei der Kostenkalkulation werden folgende Kosten *nicht* berücksichtigt:
 
-   * CSP- und Dreamspark-Abonnements werden derzeit nicht unterstützt, da Azure DevTest Labs die [Azure-Abrechnungs-APIs](../cost-management-billing/manage/usage-rate-card-overview.md) zum Berechnen der Labkosten verwendet und diese APIs keine CSP- oder Dreamspark-Abonnements unterstützen.
+   * CSP- und Dreamspark-Abonnements werden derzeit nicht unterstützt, da Azure DevTest Labs die Azure-Abrechnungs-APIs zum Berechnen der Labkosten verwendet und diese APIs keine CSP- oder Dreamspark-Abonnements unterstützen.
    * Sonderpreise. Zurzeit können Sie keine Sonderpreise (wie in Ihrem Abonnement angezeigt) verwenden, die Sie mit Microsoft oder Microsoft-Partnern vereinbart haben. Es werden nur Preise für die nutzungsbasierte Bezahlung verwendet.
    * Steuern.
    * Rabatte.

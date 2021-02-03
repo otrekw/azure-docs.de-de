@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 10/05/2020
+ms.date: 01/27/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy20q4
-ms.openlocfilehash: 980e830716b66b63c8f2dc6e641a88af26d44871
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 80be5ca22f3dfb673f09327108e66fccc9de6ddd
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97027063"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98918042"
 ---
 # <a name="password-policies-and-account-restrictions-in-azure-active-directory"></a>Kennwortrichtlinien und Kontoeinschränkungen in Azure Active Directory
 
@@ -75,6 +75,7 @@ Eine Zwei-Gate-Richtlinie erfordert Authentifizierungsdaten, die aus zwei Elemen
   * Partnersupport der Ebene 1
   * Partnersupport der Ebene 2
   * Exchange-Administrator
+  * Postfachadministrator
   * Skype for Business-Administrator
   * Benutzeradministrator
   * Verzeichnis schreiben
@@ -85,10 +86,12 @@ Eine Zwei-Gate-Richtlinie erfordert Authentifizierungsdaten, die aus zwei Elemen
   * Sicherheitsadministrator
   * Administrator für privilegierte Rollen
   * Intune-Administrator
+  * Lokaler Administrator für in Azure AD eingebundenes Gerät
   * Anwendungsproxy-Dienstadministrator
   * Dynamics 365-Administrator
   * Power BI-Dienstadministrator
   * Authentifizierungsadministrator
+  * Kennwortadministrator
   * Privilegierter Authentifizierungsadministrator
 
 * Wenn 30 Tage in einem Testabonnement abgelaufen sind, oder

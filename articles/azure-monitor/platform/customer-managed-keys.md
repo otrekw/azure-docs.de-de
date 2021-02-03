@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 01/10/2021
-ms.openlocfilehash: b6836eee7e0e6ccbfa2628e0e371152f31ddf9d2
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 9d8d37e1b161dfc8344d7ff03bc0093d23f86101
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98757541"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98917831"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Kundenseitig verwaltete Schlüssel in Azure Monitor 
 
@@ -30,9 +30,6 @@ Kundenseitig verwaltete Schlüssel werden auf [dedizierten Clustern](../log-quer
 Daten, die in den letzten 14 Tagen erfasst wurden, werden für einen effizienten Betrieb der Abfrage-Engine auch im Hot-Cache (SSD-gestützt) aufbewahrt. Unabhängig von der Konfiguration kundenseitig verwalteter Schlüssel bleiben diese Daten mit Microsoft-Schlüsseln verschlüsselt, aber Ihre Kontrolle über SSD-Daten entspricht der [Schlüsselsperrung](#key-revocation). Wir arbeiten daran, dass SSD-Daten in der ersten Hälfte des Jahres 2021 mit kundenseitig verwalteten Schlüsseln verschlüsselt werden.
 
 Für dedizierte Log Analytics-Cluster gilt ein [Preismodell](../log-query/logs-dedicated-clusters.md#cluster-pricing-model) für Kapazitätsreservierungen ab 1.000 GB/Tag.
-
-> [!IMPORTANT]
-> Aufgrund temporärer Kapazitätseinschränkungen ist vor dem Erstellen eines Clusters eine Vorabregistrierung erforderlich. Verwenden Sie Ihre Kontakte zu Microsoft, oder öffnen Sie eine Supportanfrage zum Registrieren Ihrer Abonnements-IDs.
 
 ## <a name="how-customer-managed-key-works-in-azure-monitor"></a>Funktionsweise von kundenseitig verwalteten Schlüsseln in Azure Monitor
 
@@ -68,7 +65,6 @@ Es gelten die folgenden Regeln:
 
 ### <a name="customer-managed-key-provisioning-steps"></a>Bereitstellungsschritte für kundenseitig verwaltete Schlüssel
 
-1. Registrieren Ihres Abonnements, um die Clustererstellung zu ermöglichen
 1. Erstellen von Azure Key Vault und Speichern des Schlüssels
 1. Erstellen eines Clusters
 1. Gewähren von Berechtigungen für Key Vault
@@ -107,10 +103,6 @@ Authorization: Bearer <token>
 ```
 
 ---
-
-### <a name="allowing-subscription"></a>Zulassen eines Abonnements
-
-Kontaktieren Sie für die Bereitstellung Ihrer Abonnement-IDs Ihren Ansprechpartner bei Microsoft, oder stellen Sie eine Supportanfrage in Log Analytics.
 
 ## <a name="storing-encryption-key-kek"></a>Speichern des Verschlüsselungsschlüssels (KEK)
 
@@ -424,8 +416,8 @@ Der kundenseitig verwaltete Schlüssel wird im dedizierten Cluster bereitgestell
 
 - Lockbox ist in China derzeit nicht verfügbar. 
 
-- [Doppelte Verschlüsselung](../../storage/common/storage-service-encryption.md#doubly-encrypt-data-with-infrastructure-encryption) wird automatisch für Cluster konfiguriert, die ab Oktober 2020 in unterstützten Regionen erstellt werden. Sie können überprüfen, ob Ihr Cluster für die doppelte Verschlüsselung konfiguriert ist. Hierfür senden Sie eine GET-Anforderung für den Cluster und sehen sich dann an, ob der `isDoubleEncryptionEnabled`-Wert für Cluster mit aktivierter doppelter Verschlüsselung `true` lautet. 
-  - Wenn Sie einen Cluster erstellen und die Fehlermeldung „Die doppelte Verschlüsselung für Cluster wird von <Regionsname> nicht unterstützt.“ erhalten, können Sie den Cluster trotzdem ohne doppelte Verschlüsselung erstellen, indem Sie `"properties": {"isDoubleEncryptionEnabled": false}` im REST-Anforderungstext hinzufügen.
+- [Doppelte Verschlüsselung](../../storage/common/storage-service-encryption.md#doubly-encrypt-data-with-infrastructure-encryption) wird automatisch für Cluster konfiguriert, die ab Oktober 2020 in unterstützten Regionen erstellt werden. Sie können überprüfen, ob Ihr Cluster für doppelte Verschlüsselung konfiguriert ist. Dazu senden Sie eine GET-Anforderung für den Cluster und beobachten, ob der `isDoubleEncryptionEnabled`-Wert für Cluster mit aktivierter doppelter Verschlüsselung `true` ist. 
+  - Wenn Sie einen Cluster erstellen und die Fehlermeldung „Die doppelte Verschlüsselung für Cluster wird von <Regionsname> nicht unterstützt.“ erhalten, können Sie den Cluster immer noch ohne doppelte Verschlüsselung erstellen, indem Sie `"properties": {"isDoubleEncryptionEnabled": false}` im REST-Anforderungstext hinzufügen.
   - Die Einstellung für doppelte Verschlüsselung kann nach dem Erstellen des Clusters nicht mehr geändert werden.
 
   - Wenn für Ihren Cluster die benutzerseitig zugewiesene verwaltete Identität festgelegt ist, wird durch das Festlegen von `UserAssignedIdentities` auf `None` der Cluster angehalten und der Zugriff auf Ihre Daten verhindert. Sie können die Sperrung nur zurücksetzen und den Cluster aktivieren, indem Sie eine Supportanfrage öffnen. Diese Einschränkung gilt nicht für die systemseitig zugewiesene verwaltete Identität.

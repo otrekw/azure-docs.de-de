@@ -4,12 +4,12 @@ description: In diesem Artikel wird beschrieben, wie Sie Azure AD in Azure Autom
 services: automation
 ms.date: 03/30/2020
 ms.topic: conceptual
-ms.openlocfilehash: bbd1f977b548c2b8e7980709ea125c07e22b1fa2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 41eaab7be66d446109e1052948a29ad4723b191c
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91400671"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98894659"
 ---
 # <a name="use-azure-ad-to-authenticate-to-azure"></a>Authentifizieren bei Azure mithilfe von Azure AD
 
@@ -39,9 +39,9 @@ Vor dem Installieren der Azure AD-Module auf Ihrem Computer:
 >[!NOTE]
 >Um mit diesen Modulen arbeiten zu können, müssen Sie PowerShell, Version 5.1 oder höher, mit einer 64-Bit-Version von Windows verwenden. 
 
-1. Installieren Sie Windows Management Framework 5.1 (WMF). Siehe [Installieren und Konfigurieren von WMF 5.1](/powershell/scripting/wmf/setup/install-configure?view=powershell-7).
+1. Installieren Sie Windows Management Framework 5.1 (WMF). Siehe [Installieren und Konfigurieren von WMF 5.1](/powershell/scripting/wmf/setup/install-configure).
 
-2. Verwenden Sie zum Installieren von AzureRM und/oder Az die Anweisungen unter [Installieren von Azure PowerShell unter Windows mit PowerShellGet](/powershell/azure/azurerm/install-azurerm-ps?view=azurermps-6.13.0).
+2. Verwenden Sie zum Installieren von AzureRM und/oder Az die Anweisungen unter [Installieren von Azure PowerShell unter Windows mit PowerShellGet](/powershell/azure/azurerm/install-azurerm-ps).
 
 ### <a name="install-the-msonline-module"></a>Installieren des MSOnline-Moduls
 
@@ -62,7 +62,7 @@ Vor dem Installieren der Azure AD-Module auf Ihrem Computer:
 
 ### <a name="install-support-for-pscredential"></a>Installieren der Unterstützung für „PSCredential“"
 
-Azure Automation verwendet die [PSCredential](/dotnet/api/system.management.automation.pscredential?view=pscore-6.2.0)-Klasse, um ein Anmeldeinformationsobjekt darzustellen. Ihr Skripts rufen `PSCredential`-Objekte mithilfe des `Get-AutomationPSCredential`-Cmdlets ab. Weitere Informationen finden Sie unter [Anmeldeinformationsobjekte in Azure Automation](shared-resources/credentials.md).
+Azure Automation verwendet die [PSCredential](/dotnet/api/system.management.automation.pscredential)-Klasse, um ein Anmeldeinformationsobjekt darzustellen. Ihr Skripts rufen `PSCredential`-Objekte mithilfe des `Get-AutomationPSCredential`-Cmdlets ab. Weitere Informationen finden Sie unter [Anmeldeinformationsobjekte in Azure Automation](shared-resources/credentials.md).
 
 ## <a name="assign-a-subscription-administrator"></a>Zuweisen eines Abonnementadministrators
 
@@ -80,7 +80,7 @@ So ändern Sie das Kennwort des Azure AD-Benutzers
 
 ## <a name="configure-azure-automation-to-manage-the-azure-subscription"></a>Konfigurieren von Azure Automation für die Verwaltung des Azure-Abonnements
 
-Damit Azure Automation mit Azure AD kommunizieren kann, müssen Sie die Anmeldeinformationen abrufen, die der Azure-Verbindung mit Azure AD zugeordnet sind. Beispiele für diese Anmeldeinformationen sind Mandanten-ID, Abonnement-ID und Ähnliches. Weitere Informationen zu der Verbindung zwischen Azure und Azure AD finden Sie unter [Verbinden Ihrer Organisation mit Azure Active Directory](/azure/devops/organizations/accounts/connect-organization-to-azure-ad?view=azure-devops).
+Damit Azure Automation mit Azure AD kommunizieren kann, müssen Sie die Anmeldeinformationen abrufen, die der Azure-Verbindung mit Azure AD zugeordnet sind. Beispiele für diese Anmeldeinformationen sind Mandanten-ID, Abonnement-ID und Ähnliches. Weitere Informationen zu der Verbindung zwischen Azure und Azure AD finden Sie unter [Verbinden Ihrer Organisation mit Azure Active Directory](/azure/devops/organizations/accounts/connect-organization-to-azure-ad).
 
 ## <a name="create-a-credential-asset"></a>Erstellen eines Anmeldeinformationsobjekts
 
@@ -92,11 +92,11 @@ Sie können das Azure-Portal zum Erstellen des Anmeldeinformationsobjekts verwen
 
 ### <a name="create-the-credential-asset-with-windows-powershell"></a>Erstellen des Anmeldeinformationsobjekts mithilfe von Windows PowerShell
 
-Zum Vorbereiten eines neuen Anmeldeinformationsobjekts in Windows PowerShell erstellt Ihr Skript zunächst ein `PSCredential`-Objekt mithilfe des zugewiesenen Benutzernamens und Kennworts. Das Skript verwendet dann dieses Objekt, um das Objekt durch einen Aufruf des Cmdlets [New-AzureAutomationCredential](/powershell/module/servicemanagement/azure.service/new-azureautomationcredential?view=azuresmps-4.0.0) zu erstellen. Alternativ kann das Skript das Cmdlet [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential?view=powershell-7) aufrufen, um den Benutzer zur Eingabe eines Namens und Kennworts aufzufordern. Siehe [Anmeldeinformationsobjekte in Azure Automation](shared-resources/credentials.md). 
+Zum Vorbereiten eines neuen Anmeldeinformationsobjekts in Windows PowerShell erstellt Ihr Skript zunächst ein `PSCredential`-Objekt mithilfe des zugewiesenen Benutzernamens und Kennworts. Das Skript verwendet dann dieses Objekt, um das Objekt durch einen Aufruf des Cmdlets [New-AzureAutomationCredential](/powershell/module/servicemanagement/azure.service/new-azureautomationcredential) zu erstellen. Alternativ kann das Skript das Cmdlet [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential) aufrufen, um den Benutzer zur Eingabe eines Namens und Kennworts aufzufordern. Siehe [Anmeldeinformationsobjekte in Azure Automation](shared-resources/credentials.md). 
 
 ## <a name="manage-azure-resources-from-an-azure-automation-runbook"></a>Verwalten von Azure-Ressourcen über ein Azure Automation-Runbook
 
-Sie können Azure-Ressourcen unter Verwendung des Anmeldeinformationsobjekts aus Azure Automation-Runbooks heraus verwalten. Im Folgenden finden Sie ein PowerShell-Beispielrunbook, das Anmeldeinformationsobjekt erfasst, um es zum Beenden und Starten virtueller Computer in einem Azure-Abonnement zu verwenden. Dieses Runbook verwendet zunächst `Get-AutomationPSCredential`, um die Anmeldeinformationen abzurufen, die für die Authentifizierung bei Azure verwendet werden sollen. Danach ruft es das Cmdlet [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount?view=azps-3.6.1) auf, um eine Verbindung mit Azure mit diesen Anmeldeinformationen herzustellen. Das Skript verwendet das Cmdlet [Select-AzureSubscription](/powershell/module/servicemanagement/azure.service/select-azuresubscription?view=azuresmps-4.0.0), um das Abonnement auszuwählen, mit dem Sie arbeiten möchten. 
+Sie können Azure-Ressourcen unter Verwendung des Anmeldeinformationsobjekts aus Azure Automation-Runbooks heraus verwalten. Im Folgenden finden Sie ein PowerShell-Beispielrunbook, das Anmeldeinformationsobjekt erfasst, um es zum Beenden und Starten virtueller Computer in einem Azure-Abonnement zu verwenden. Dieses Runbook verwendet zunächst `Get-AutomationPSCredential`, um die Anmeldeinformationen abzurufen, die für die Authentifizierung bei Azure verwendet werden sollen. Danach ruft es das Cmdlet [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) auf, um eine Verbindung mit Azure mit diesen Anmeldeinformationen herzustellen. Das Skript verwendet das Cmdlet [Select-AzureSubscription](/powershell/module/servicemanagement/azure.service/select-azuresubscription), um das Abonnement auszuwählen, mit dem Sie arbeiten möchten. 
 
 ```azurepowershell
 Workflow Stop-Start-AzureVM 

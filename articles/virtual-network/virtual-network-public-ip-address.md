@@ -17,12 +17,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/06/2019
 ms.author: kumud
-ms.openlocfilehash: 36b7c5caf54001abba1f17500c680f96934657eb
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: d52430c87d99f8837c78fcff89d8b214e45350ff
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98216783"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98934945"
 ---
 # <a name="manage-public-ip-addresses"></a>Verwalten öffentlicher IP-Adressen
 
@@ -92,14 +92,14 @@ Weitere Details zu den spezifischen Attributen einer öffentlichen IP-Adresse w�
 |Resource|Azure-Portal|Azure PowerShell|Azure CLI|
 |---|---|---|---|
 |[Virtueller Computer](./remove-public-ip-address-vm.md)|Wählen Sie **Trennen** aus, um die IP-Adresse von der NIC-Konfiguration zu trennen, und wählen Sie dann **Löschen** aus.|[Set-AzPublicIpAddress](/powershell/module/az.network/set-azpublicipaddress), um die IP-Adresse von der NIC-Konfiguration zu trennen, [Remove-AzPublicIpAddress](/powershell/module/az.network/remove-azpublicipaddress) zum Löschen.|[az network public-ip update --remove](/cli/azure/network/public-ip#az-network-public-ip-update), um die IP-Adresse von der NIC-Konfiguration zu trennen, [az network public-ip delete](/cli/azure/network/public-ip#az-network-public-ip-delete) zum Löschen. |
-|Load Balancer-Front-End | Navigieren Sie zu einer nicht verwendeten öffentlichen IP-Adresse, wählen Sie **Zuordnen** aus, und wählen Sie den Load Balancer mit der relevanten Front-End-IP-Konfiguration aus, um ihn zu ersetzen (die alte IP-Adresse kann dann mit derselben Methode wie für die VM gelöscht werden).  | [Set-AzLoadBalancerFrontendIpConfig](/powershell/module/az.network/set-azloadbalancerfrontendipconfig), um eine neue Front-End-IP-Konfiguration mit dem öffentlichen Load Balancer zu verknüpfen, [Remove-AzPublicIpAddress](/powershell/module/az.network/remove-azpublicipaddress) zum Löschen. Es kann auch [Remove-AzLoadBalancerFrontendIpConfig](/powershell/module/az.network/remove-azloadbalancerfrontendipconfig) verwendet werden, um eine Front-End-IP-Konfiguration zu entfernen, wenn es mehr als eine Konfiguration gibt. |[az network lb frontend-ip update](/cli/azure/network/lb/frontend-ip?view=azure-cli-latest#az_network_lb_frontend_ip_update), um eine neue Front-End-IP-Konfiguration dem öffentlichen Load Balancer zuzuordnen, [Remove-AzPublicIpAddress](/powershell/module/az.network/remove-azpublicipaddress) zum Löschen. Es kann auch [AZ network lb frontend-ip delete](/cli/azure/network/lb/frontend-ip?view=azure-cli-latest#az_network_lb_frontend_ip_delete) verwendet werden, um die Front-End-IP-Konfiguration zu entfernen, wenn mehrere Konfigurationen vorhanden sind.|
+|Load Balancer-Front-End | Navigieren Sie zu einer nicht verwendeten öffentlichen IP-Adresse, wählen Sie **Zuordnen** aus, und wählen Sie den Load Balancer mit der relevanten Front-End-IP-Konfiguration aus, um ihn zu ersetzen (die alte IP-Adresse kann dann mit derselben Methode wie für die VM gelöscht werden).  | [Set-AzLoadBalancerFrontendIpConfig](/powershell/module/az.network/set-azloadbalancerfrontendipconfig), um eine neue Front-End-IP-Konfiguration mit dem öffentlichen Load Balancer zu verknüpfen, [Remove-AzPublicIpAddress](/powershell/module/az.network/remove-azpublicipaddress) zum Löschen. Es kann auch [Remove-AzLoadBalancerFrontendIpConfig](/powershell/module/az.network/remove-azloadbalancerfrontendipconfig) verwendet werden, um eine Front-End-IP-Konfiguration zu entfernen, wenn es mehr als eine Konfiguration gibt. |[az network lb frontend-ip update](/cli/azure/network/lb/frontend-ip#az_network_lb_frontend_ip_update), um eine neue Front-End-IP-Konfiguration dem öffentlichen Load Balancer zuzuordnen, [Remove-AzPublicIpAddress](/powershell/module/az.network/remove-azpublicipaddress) zum Löschen. Es kann auch [AZ network lb frontend-ip delete](/cli/azure/network/lb/frontend-ip#az_network_lb_frontend_ip_delete) verwendet werden, um die Front-End-IP-Konfiguration zu entfernen, wenn mehrere Konfigurationen vorhanden sind.|
 |Firewall|–| [Deallocate()](../firewall/firewall-faq.yml#how-can-i-stop-and-start-azure-firewall), um die Zuordnung der Firewall aufzuheben und alle IP-Konfigurationen zu entfernen | [az network firewall ip-config delete](/cli/azure/ext/azure-firewall/network/firewall/ip-config#ext_azure_firewall_az_network_firewall_ip_config_delete), um IP-Adressen zu entfernen (zuvor muss aber PowerShell zum Aufheben der Zuordnung verwendet werden)|
 
 ## <a name="virtual-machine-scale-sets"></a>Virtual Machine Scale Sets
 
 Bei Verwendung einer VM-Skalierungsgruppe mit öffentlichen IP-Adressen sind den einzelnen VM-Instanzen keine separaten öffentlichen IP-Objekte zugeordnet. Allerdings kann ein öffentliches IP-Präfixobjekt verwendet werden, um die [Instanz-IPs zu generieren](https://azure.microsoft.com/resources/templates/101-vmms-with-public-ip-prefix/).
 
-Um die öffentlichen IP-Adressen für eine VM-Skalierungsgruppe aufzulisten, können Sie PowerShell ([Get-AzPublicIpAddress -VirtualMachineScaleSetName](/powershell/module/az.network/get-azpublicipaddress)) oder die CLI ([az vmss list-instance-public-ips](/cli/azure/vmss?view=azure-cli-latest#az_vmss_list_instance_public_ips)) verwenden.
+Um die öffentlichen IP-Adressen für eine VM-Skalierungsgruppe aufzulisten, können Sie PowerShell ([Get-AzPublicIpAddress -VirtualMachineScaleSetName](/powershell/module/az.network/get-azpublicipaddress)) oder die CLI ([az vmss list-instance-public-ips](/cli/azure/vmss#az_vmss_list_instance_public_ips)) verwenden.
 
 Weitere Informationen finden Sie unter [Netzwerk für Azure-VM-Skalierungsgruppen](../virtual-machine-scale-sets/virtual-machine-scale-sets-networking.md#public-ipv4-per-virtual-machine).
 

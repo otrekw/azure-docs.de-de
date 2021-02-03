@@ -1,19 +1,16 @@
 ---
 title: Verwenden von Azure Kubernetes Service mit Kafka in HDInsight
 description: Hier erfahren Sie, wie Sie über Containerimages, die in Azure Kubernetes Service (AKS) gehostet werden, Kafka in HDInsight verwenden.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/04/2019
-ms.openlocfilehash: ab87f181f78158d2ea0dd6575a30e6087600f60c
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: d807b591229644984f6658cdacd0bf447759f292
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92485680"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98933024"
 ---
 # <a name="use-azure-kubernetes-service-with-apache-kafka-on-hdinsight"></a>Verwenden von Azure Kubernetes Service mit Apache Kafka in HDInsight
 
@@ -58,14 +55,14 @@ Wenn Sie nicht bereits über einen AKS-Cluster verfügen, verwenden Sie eines de
 * [Bereitstellen eines Azure Kubernetes Service-Clusters (AKS): CLI](../../aks/kubernetes-walkthrough.md)
 
 > [!IMPORTANT]  
-> Während der Installation erstellt AKS ein virtuelles Netzwerk in einer **zusätzlichen** Ressourcengruppe. Die zusätzliche Ressourcengruppe entspricht der Namenskonvention **MC_resourceGroup_AKSclusterName_location** .  
+> Während der Installation erstellt AKS ein virtuelles Netzwerk in einer **zusätzlichen** Ressourcengruppe. Die zusätzliche Ressourcengruppe entspricht der Namenskonvention **MC_resourceGroup_AKSclusterName_location**.  
 > Dieses Netzwerk wird im nächsten Abschnitt über Peering mit dem für HDInsight erstellten Netzwerk verbunden.
 
 ## <a name="configure-virtual-network-peering"></a>Konfigurieren des VNET-Peerings
 
 ### <a name="identify-preliminary-information"></a>Ermitteln vorläufiger Informationen
 
-1. Suchen Sie im [Azure-Portal](https://portal.azure.com) die zusätzliche **Ressourcengruppe** , die das virtuelle Netzwerk für Ihren AKS-Cluster enthält.
+1. Suchen Sie im [Azure-Portal](https://portal.azure.com) die zusätzliche **Ressourcengruppe**, die das virtuelle Netzwerk für Ihren AKS-Cluster enthält.
 
 2. Wählen Sie in der Ressourcengruppe die Ressource __Virtuelles Netzwerk__ aus. Notieren Sie sich den Namen für die spätere Verwendung.
 
@@ -73,7 +70,7 @@ Wenn Sie nicht bereits über einen AKS-Cluster verfügen, verwenden Sie eines de
 
 ### <a name="create-virtual-network"></a>Virtuelles Netzwerk erstellen
 
-1. Navigieren Sie zum Erstellen eines virtuellen Netzwerks für HDInsight zu __+ Ressource erstellen__ > __Netzwerk__ > __Virtuelles Netzwerk__ .
+1. Navigieren Sie zum Erstellen eines virtuellen Netzwerks für HDInsight zu __+ Ressource erstellen__ > __Netzwerk__ > __Virtuelles Netzwerk__.
 
 1. Erstellen Sie das Netzwerk gemäß der folgenden Richtlinien für bestimmte Eigenschaften:
 
@@ -136,19 +133,19 @@ In den folgenden Schritten konfigurieren Sie Kafka so, dass anstelle von Domäne
 
 7. Um Kafka zum Lauschen an allen Netzwerkschnittstellen zu konfigurieren, ändern Sie den Wert im Feld __Listener__ in `PLAINTEXT://0.0.0.0:9092`.
 
-8. Klicken Sie auf die Schaltfläche __Speichern__ , um die Konfigurationsänderungen zu speichern. Geben Sie eine Textnachricht ein, die die Änderungen beschreibt. Wählen Sie __OK__ aus, nachdem die Änderungen gespeichert wurden.
+8. Klicken Sie auf die Schaltfläche __Speichern__, um die Konfigurationsänderungen zu speichern. Geben Sie eine Textnachricht ein, die die Änderungen beschreibt. Wählen Sie __OK__ aus, nachdem die Änderungen gespeichert wurden.
 
     ![Apache Ambari – Speichern der Konfiguration](./media/apache-kafka-azure-container-services/save-configuration-button.png)
 
-9. Um Fehler beim Neustart von Kafka zu vermeiden, verwenden Sie die Schaltfläche __Dienstaktionen__ , und wählen Sie __Wartungsmodus aktivieren__ aus. Wählen Sie „OK“ aus, um diesen Vorgang abzuschließen.
+9. Um Fehler beim Neustart von Kafka zu vermeiden, verwenden Sie die Schaltfläche __Dienstaktionen__, und wählen Sie __Wartungsmodus aktivieren__ aus. Wählen Sie „OK“ aus, um diesen Vorgang abzuschließen.
 
     ![Dienstaktionen, „Wartungsmodus aktivieren“ hervorgehoben](./media/apache-kafka-azure-container-services/turn-on-maintenance-mode.png)
 
-10. Verwenden Sie zum Neustarten von Kafka die Schaltfläche __Neu starten__ , und wählen Sie __Alle betroffenen Instanzen neu starten__ aus. Bestätigen Sie den Neustart, und verwenden Sie dann die Schaltfläche __OK__ , wenn der Vorgang abgeschlossen ist.
+10. Verwenden Sie zum Neustarten von Kafka die Schaltfläche __Neu starten__, und wählen Sie __Alle betroffenen Instanzen neu starten__ aus. Bestätigen Sie den Neustart, und verwenden Sie dann die Schaltfläche __OK__, wenn der Vorgang abgeschlossen ist.
 
     ![Schaltfläche „Neu starten“, Funktion zum Neustarten aller betroffenen Instanzen hervorgehoben](./media/apache-kafka-azure-container-services/restart-required-button.png)
 
-11. Um den Wartungsmodus zu deaktivieren, verwenden die Schaltfläche __Dienstaktionen__ , und wählen Sie __Wartungsmodus deaktivieren__ aus. Wählen Sie **OK** aus, um diesen Vorgang abzuschließen.
+11. Um den Wartungsmodus zu deaktivieren, verwenden die Schaltfläche __Dienstaktionen__, und wählen Sie __Wartungsmodus deaktivieren__ aus. Wählen Sie **OK** aus, um diesen Vorgang abzuschließen.
 
 ## <a name="test-the-configuration"></a>Testen der Konfiguration
 
@@ -212,7 +209,7 @@ An diesem Punkt kommunizieren Kafka und Azure Kubernetes Service über die durch
     kubectl get service kafka-aks-test --watch
     ```
 
-    Nachdem Sie eine externe IP-Adresse zugewiesen haben, verwenden Sie __STRG+C__ , um die Überwachung zu beenden.
+    Nachdem Sie eine externe IP-Adresse zugewiesen haben, verwenden Sie __STRG+C__, um die Überwachung zu beenden.
 
 11. Öffnen Sie einen Webbrowser, und geben Sie die externe IP-Adresse für den Dienst ein. Sie gelangen zu einer Seite, die der folgenden Abbildung ähnelt:
 

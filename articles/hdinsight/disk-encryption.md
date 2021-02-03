@@ -2,18 +2,15 @@
 title: Doppelte Verschlüsselung für ruhende Daten
 titleSuffix: Azure HDInsight
 description: In diesem Artikel werden die beiden Verschlüsselungsebenen beschrieben, die in Azure HDInsight-Clustern für ruhende Daten zur Verfügung stehen.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/10/2020
-ms.openlocfilehash: 4e895cdba1bfc16eac0450bd05271f0e41985b7b
-ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
+ms.openlocfilehash: c9e50885a7283d3f7fcd231bf222415389212a93
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2020
-ms.locfileid: "97359758"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98927320"
 ---
 # <a name="azure-hdinsight-double-encryption-for-data-at-rest"></a>Doppelte Verschlüsselung für ruhende Daten in Azure HDInsight
 

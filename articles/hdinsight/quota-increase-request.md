@@ -1,19 +1,16 @@
 ---
 title: Anfordern einer Erhöhung des Kontingents für CPU-Kerne – Azure HDInsight
 description: Erfahren Sie, wie Sie eine Erhöhung für die Ihrem Abonnement zugewiesenen CPU-Kerne anfordern können.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 05/07/2020
-ms.openlocfilehash: 93c07b47e03bde20d494feb1c86179cd9a24ba26
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: a539acc423feeab500830fb33262d1b824101072
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92539410"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98935828"
 ---
 # <a name="requesting-quota-increases-for-azure-hdinsight"></a>Anfordern einer Erhöhung von Kontingenten für Azure HDInsight
 
@@ -42,9 +39,9 @@ Gehen Sie wie folgt vor, um eine Kontingenterhöhung anzufordern:
 1. Wählen Sie **Neue Supportanfrage** aus.
 1. Wählen Sie auf der Seite **Neue Supportanfrage** unter der Registerkarte **Grundlagen** die folgenden Optionen aus:
 
-   - **Problemtyp** : **Grenzwerte für Dienste und Abonnements (Kontingente)**
-   - **Abonnement** : Das zu ändernde Abonnement.
-   - **Kontingenttyp** : **HDInsight**
+   - **Problemtyp**: **Grenzwerte für Dienste und Abonnements (Kontingente)**
+   - **Abonnement**: Das zu ändernde Abonnement.
+   - **Kontingenttyp**: **HDInsight**
 
      ![Erstellen einer Supportanfrage zur Erhöhung des HDInsight-Kernkontingents](./media/quota-increase-request/hdinsight-quota-support-request.png)
 
