@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 1/30/2021
 ms.author: cavoeg
-ms.openlocfilehash: 0ee32d37ca8e3a32ba603fd84cee81890ddac98b
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: e75cf8d6660bf6f2630b83e0c2c812fa7cf59057
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 02/02/2021
-ms.locfileid: "99252116"
+ms.locfileid: "99430241"
 ---
 # <a name="features"></a>Features
 
@@ -89,7 +89,7 @@ Es werden alle Suchparametertypen unterstützt.
 | `_list`                 | Ja       | Ja       | Ja       |         |
 | `_type`                 | Ja       | Ja       | Ja       | Problem [Nr. 1562](https://github.com/microsoft/fhir-server/issues/1562)        |
 | `_security`             | Ja       | Ja       | Ja       |         |
-| `_profile`              | Teilweise   | Teilweise   | Teilweise   | Nur in STU3 unterstützt, nicht in R4 |
+| `_profile`              | Teilweise   | Partial   | Teilweise   | Nur in STU3 unterstützt, nicht in R4 |
 | `_text`                 | Nein        | Nein        | Nein        |         |
 | `_content`              | Nein        | Nein        | Nein        |         |
 | `_has`                  | Nein        | Nein        | Nein        |         |
@@ -103,8 +103,8 @@ Es werden alle Suchparametertypen unterstützt.
 | `_include`              | Ja       | Ja       | Ja       |Enthaltene Elemente sind auf 100 beschränkt. Einschließen in PaaS und OSS in Cosmos DB umfasst keine Unterstützung von :iterate.|
 | `_revinclude`           | Ja       | Ja       | Ja       | Enthaltene Elemente sind auf 100 beschränkt. Einschließen in PaaS und OSS in Cosmos DB umfasst [keine Unterstützung von :iterate](https://github.com/microsoft/fhir-server/issues/1313). Problem [Nr. 1319](https://github.com/microsoft/fhir-server/issues/1319)|
 | `_summary`              | Teilweise   | Partial   | Partial   | `_summary=count` wird unterstützt |
-| `_total`                | Partial   | Teilweise   | Teilweise   | `_total=none` und `_total=accurate`      |
-| `_sort`                 | Teilweise   | Teilweise   | Teilweise   |   `_sort=_lastUpdated` wird unterstützt       |
+| `_total`                | Partial   | Partial   | Partial   | `_total=none` und `_total=accurate`      |
+| `_sort`                 | Partial   | Partial   | Partial   |   `_sort=_lastUpdated` wird unterstützt       |
 | `_contained`            | Nein        | Nein        | Nein        |         |
 | `containedType`         | Nein        | Nein        | Nein        |         |
 | `_score`                | Nein        | Nein        | Nein        |         |
@@ -118,6 +118,8 @@ Alle unterstützten Vorgänge zur Erweiterung der RESTful-API.
 | $export (gesamtes System) | Ja       | Ja       | Ja       |         |
 | Patient/$export        | Ja       | Ja       | Ja       |         |
 | Gruppe/$export          | Ja       | Ja       | Ja       |         |
+| $convert-data          | Ja       | Ja       | Ja       |         |
+
 
 ## <a name="persistence"></a>Persistenz
 

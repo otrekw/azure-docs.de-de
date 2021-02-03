@@ -1,19 +1,16 @@
 ---
 title: Azure HDInsight-Verwaltungs-IP-Adressen
 description: Erfahren Sie, von welchen IP-Adressen Sie eingehenden Datenverkehr zulassen müssen, um Netzwerksicherheitsgruppen und benutzerdefinierte Routen für virtuelle Netzwerke mit Azure HDInsight richtig zu konfigurieren.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 08/11/2020
-ms.openlocfilehash: 9fa38e045bbe29e5d45587adf0d277c1414fee4c
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 5f694dec6deffde9efb32fefbab91ae3b7a44a2c
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96549037"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99490859"
 ---
 # <a name="hdinsight-management-ip-addresses"></a>HDInsight-Verwaltungs-IP-Adressen
 
@@ -82,6 +79,7 @@ Lassen Sie Datenverkehr von den IP-Adressen zu, die für Azure HDInsight-Integri
 | &nbsp; | UK, Süden | 51.140.47.39</br>51.140.52.16 | \*:443 | Eingehend |
 | USA | USA (Mitte) | 13.89.171.122</br>13.89.171.124 | \*:443 | Eingehend |
 | &nbsp; | East US | 13.82.225.233</br>40.71.175.99 | \*:443 | Eingehend |
+| &nbsp; | USA (Ost 2) | 20.44.16.8/29</br>20.49.102.48/29 | \*:443 | Eingehend |
 | &nbsp; | USA Nord Mitte | 157.56.8.38</br>157.55.213.99 | \*:443 | Eingehend |
 | &nbsp; | USA, Westen-Mitte | 52.161.23.15</br>52.161.10.167 | \*:443 | Eingehend |
 | &nbsp; | USA (Westen) | 13.64.254.98</br>23.101.196.19 | \*:443 | Eingehend |
