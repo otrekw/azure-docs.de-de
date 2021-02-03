@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 743710ea0d40eb31375236d4e59b0b138a217518
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 8174529def5e3924086e49f36c225f07a4da2648
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92895544"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99051650"
 ---
 # <a name="best-practices-for-azure-maps-route-service"></a>Bewährte Methoden für den Azure Maps-Routendienst
 
@@ -59,10 +59,10 @@ Dieser Vergleich zeigt einige Funktionen der Wegbeschreibungs- und Matrix-APIs:
 
 | Azure Maps-API | Maximale Anzahl Abfragen in der Anforderung | Vermeiden von Gebieten | Wegführung für LKW und Elektromobile | Optimierung für Wegpunkte und Handlungsreisenden-Problem | Unterstützungspunkte |
 | :--------------: |  :--------------: |  :--------------: | :--------------: | :--------------: | :--------------: |
-| Abrufen von Wegbeschreibungen | 1 | | X | X | |
-| Veröffentlichen von Wegbeschreibungen | 1 | X | X | X | X |
-| Batchveröffentlichung von Wegbeschreibungen | 700 | | X | X | |
-| Veröffentlichen der Routenmatrix | 700 | | X | | |
+| Abrufen von Wegbeschreibungen | 1 | | ✔ | ✔ | |
+| Veröffentlichen von Wegbeschreibungen | 1 | ✔ | ✔ | ✔ | ✔ |
+| Batchveröffentlichung von Wegbeschreibungen | 700 | | ✔ | ✔ | |
+| Veröffentlichen der Routenmatrix | 700 | | ✔ | | |
 
 Weitere Informationen zu den Funktionen für die Wegführung von Elektrofahrzeugen finden Sie in unserem Tutorial zur [Wegführung von Elektrofahrzeugen mithilfe von Azure Notebooks mit Python](tutorial-ev-routing.md).
 
@@ -90,7 +90,7 @@ Im ersten Beispiel unten wird die Abfahrtzeit auf eine Zeit in der Zukunft festg
 https://atlas.microsoft.com/route/directions/json?subscription-key=<Your-Azure-Maps-Primary-Subscription-Key>&api-version=1.0&query=51.368752,-0.118332:51.385426,-0.128929&travelMode=car&traffic=true&departAt=2025-03-29T08:00:20&computeTravelTimeFor=all
 ```
 
-Die Antwort enthält ein Zusammenfassungselement, wie unten dargestellt. Da die Abfahrtszeit auf einen zukünftigen Zeitpunkt festgelegt ist, ist der Wert von **trafficDelayInSeconds** gleich 0 (null). Der Wert von **travelTimeInSeconds** wird anhand zeitabhängiger historischer Verkehrsdaten berechnet. In diesem Fall ist daher der Wert von **travelTimeInSeconds** gleich dem Wert von **historicTrafficTravelTimeInSeconds** .
+Die Antwort enthält ein Zusammenfassungselement, wie unten dargestellt. Da die Abfahrtszeit auf einen zukünftigen Zeitpunkt festgelegt ist, ist der Wert von **trafficDelayInSeconds** gleich 0 (null). Der Wert von **travelTimeInSeconds** wird anhand zeitabhängiger historischer Verkehrsdaten berechnet. In diesem Fall ist daher der Wert von **travelTimeInSeconds** gleich dem Wert von **historicTrafficTravelTimeInSeconds**.
 
 ```json
 "summary": {
@@ -113,7 +113,7 @@ Im zweiten Beispiel unten haben wir eine Echtzeit-Wegführungsanforderung mit de
 https://atlas.microsoft.com/route/directions/json?subscription-key=<Your-Azure-Maps-Primary-Subscription-Key>&api-version=1.0&query=47.6422356,-122.1389797:47.6641142,-122.3011268&travelMode=car&traffic=true&computeTravelTimeFor=all
 ```
 
-Die Antwort enthält eine Zusammenfassung, wie unten dargestellt. Aufgrund von Staus ist der Wert von **trafficDelaysInSeconds** größer als null. Er ist außerdem größer als **historicTrafficTravelTimeInSeconds** .
+Die Antwort enthält eine Zusammenfassung, wie unten dargestellt. Aufgrund von Staus ist der Wert von **trafficDelaysInSeconds** größer als null. Er ist außerdem größer als **historicTrafficTravelTimeInSeconds**.
 
 ```json
 "summary": {
@@ -140,7 +140,7 @@ Erweitern Sie das `point`-Element, um die Liste der Koordinaten für den Weg anz
 
 ![Erweitertes Points-Element](media/how-to-use-best-practices-for-routing/points-list-img.png)
 
-Die Wegbeschreibungs-APIs unterstützen verschiedene Formate von Anweisungen, die durch Angeben des **instructionsType** -Parameters verwendet werden können. Um Anweisungen für die einfache Verarbeitung im Computer zu formatieren, verwenden Sie **instructionsType=coded** . Verwenden Sie **instructionsType=tagged** , um die Anweisungen als Text für den Benutzer anzuzeigen. Ferner können Anweisungen als Text formatiert werden, wobei einige Elemente der Anweisungen gekennzeichnet werden und die Anweisung mit einer besonderen Formatierung dargestellt wird. Weitere Informationen finden Sie unter [Liste der unterstützten Anweisungstypen](/rest/api/maps/route/postroutedirections#routeinstructionstype).
+Die Wegbeschreibungs-APIs unterstützen verschiedene Formate von Anweisungen, die durch Angeben des **instructionsType**-Parameters verwendet werden können. Um Anweisungen für die einfache Verarbeitung im Computer zu formatieren, verwenden Sie **instructionsType=coded**. Verwenden Sie **instructionsType=tagged**, um die Anweisungen als Text für den Benutzer anzuzeigen. Ferner können Anweisungen als Text formatiert werden, wobei einige Elemente der Anweisungen gekennzeichnet werden und die Anweisung mit einer besonderen Formatierung dargestellt wird. Weitere Informationen finden Sie unter [Liste der unterstützten Anweisungstypen](/rest/api/maps/route/postroutedirections#routeinstructionstype).
 
 Wenn Anweisungen angefordert werden, gibt die Antwort ein neues Element mit dem Namen `guidance` zurück. Das `guidance`-Element enthält zwei Informationsarten: Streckenabschnitts-Wegbeschreibungen und zusammengefasste Anweisungen.
 

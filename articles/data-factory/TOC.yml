@@ -223,6 +223,8 @@
           href: source-control.md
         - name: Continuous Integration und Continuous Delivery
           href: continuous-integration-deployment.md
+        - name: Automatisierte Veröffentlichung
+          href: continuous-integration-deployment-improvements.md
     - name: Connectors
       items:
         - name: Übersicht über Connectors

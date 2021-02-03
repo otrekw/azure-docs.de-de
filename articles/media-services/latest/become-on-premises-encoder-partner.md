@@ -1,5 +1,5 @@
 ---
-title: Partner für lokale Encoder werden – Azure Media Services
+title: Partner für lokale Encoder werden
 description: In diesem Artikel wird erläutert, wie Sie Ihre lokalen Livestreamingencoder überprüfen.
 services: media-services
 author: johndeu
@@ -8,12 +8,12 @@ ms.author: johndeu
 ms.date: 08/31/2020
 ms.topic: how-to
 ms.service: media-services
-ms.openlocfilehash: 1383b6afac9ad2332169328ef71981e23e86bdcc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e07831ce4a016d49e0343da66efc0345effafd94
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89297449"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954360"
 ---
 # <a name="how-to-verify-your-on-premises-live-streaming-encoder"></a>Überprüfen der lokalen Livestreamingencoder
 

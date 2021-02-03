@@ -129,7 +129,7 @@
           href: platform/personal-data-mgmt.md
         - name: 'Anwendungsdatensammlung, -vermerkdauer und -speicherung'
           href: app/data-retention-privacy.md
-    - name: Warnungen
+    - name: Alerts
       items:
         - name: Übersicht
           href: platform/alerts-overview.md
@@ -329,6 +329,8 @@
               href: platform/data-sources-linux-applications.md
             - name: IIS-Protokolle
               href: platform/data-sources-iis-logs.md
+            - name: Ereignisablaufverfolgung für Windows-Daten
+              href: platform/data-sources-event-tracing-windows.md
             - name: Benutzerdefinierte Protokolle
               href: platform/data-sources-custom-logs.md
             - name: Benutzerdefinierte Felder

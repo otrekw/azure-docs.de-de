@@ -49,6 +49,8 @@
           href: scenario-isolate-vnets.md
         - name: 'Isolieren von virtuellen Netzwerken: benutzerdefiniert'
           href: scenario-isolate-vnets-custom.md
+        - name: Isolieren von virtuellen Netzwerken und Branches
+          href: scenario-isolate-virtual-networks-branches.md
         - name: VNETs für gemeinsam genutzte Dienste
           href: scenario-shared-services-vnet.md
         - name: Weiterleiten über ein NVA

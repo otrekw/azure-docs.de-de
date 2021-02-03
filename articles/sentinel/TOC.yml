@@ -2,6 +2,8 @@
   href: index.yml
 - name: Übersicht
   href: overview.md
+- name: Neuerungen in Azure Sentinel
+  href: whats-new.md
 - name: Schnellstarts
   expanded: true
   items:

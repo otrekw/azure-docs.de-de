@@ -43,6 +43,8 @@
   items:
     - name: Erstellen eines vertrauenswürdigen Authentifizierungsdiensts mithilfe von Azure Functions
       href: tutorials/trusted-service-tutorial.md
+    - name: Vorbereiten einer Web-App für Communication Services (Node.js)
+      href: tutorials/building-app-start.md
 - name: Konzepte
   expanded: false
   items:

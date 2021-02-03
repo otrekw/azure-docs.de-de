@@ -6,14 +6,14 @@ author: caitlinv39
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: reference
-ms.date: 1/21/2021
+ms.date: 1/30/2021
 ms.author: cavoeg
-ms.openlocfilehash: 28c01e99c0e8708750341b445b4a31f6eaeab3ce
-ms.sourcegitcommit: 3c8964a946e3b2343eaf8aba54dee41b89acc123
+ms.openlocfilehash: 0ee32d37ca8e3a32ba603fd84cee81890ddac98b
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98747524"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99252116"
 ---
 # <a name="features"></a>Features
 
@@ -41,8 +41,8 @@ Derzeit ebenfalls unterstützte vorherige Versionen: `3.0.2`
 | create                         | Ja       | Ja       | Ja       | Unterstützung für POST/PUT                               |
 | create (bedingt)           | Ja       | Ja       | Ja       | Issue [#1382](https://github.com/microsoft/fhir-server/issues/1382) |
 | search                         | Partial   | Teilweise   | Teilweise   | Siehe unten                                           |
-| Verkettete Suche                 | Nein        | Ja       | Nein        |                                           |
-| Umgekehrte verkettete Suche         | Nein        | Nein        | Nein        |                                            |
+| Verkettete Suche                 | Nein        | Ja       | Nein        |                                                     |
+| Umgekehrte verkettete Suche         | Nein        | Ja       | Nein        |                                                     |
 | capabilities                   | Ja       | Ja       | Ja       |                                                     |
 | Batch                          | Ja       | Ja       | Ja       |                                                     |
 | transaction                    | Nein        | Ja       | Nein        |                                                     |
@@ -72,39 +72,39 @@ Es werden alle Suchparametertypen unterstützt.
 |`:exact`               | Ja       | Ja       | Ja       |         |
 |`:contains`            | Ja       | Ja       | Ja       |         |
 |`:text`                | Ja       | Ja       | Ja       |         |
+|`:[type]` (Referenz)  | Ja       | Ja       | Ja       |         |
+|`:not`                 | Ja       | Ja       | Ja       |         |
+|`:below` (URI)         | Ja       | Ja       | Ja       |         |
+|`:above` (URI)         | Nein        | Nein        | Nein        | Problem [#158](https://github.com/Microsoft/fhir-server/issues/158) |
 |`:in` (Token)          | Nein        | Nein        | Nein        |         |
 |`:below` (Token)       | Nein        | Nein        | Nein        |         |
 |`:above` (Token)       | Nein        | Nein        | Nein        |         |
 |`:not-in` (Token)      | Nein        | Nein        | Nein        |         |
-|`:[type]` (Referenz)  | Nein        | Nein        | Nein        |         |
-|`:below` (URI)         | Ja       | Ja       | Ja       |         |
-|`:not`                 | Nein        | Nein        | Nein        |         |
-|`:above` (URI)         | Nein        | Nein        | Nein        | Problem [#158](https://github.com/Microsoft/fhir-server/issues/158) |
 
 | Allgemeiner Suchparameter | Unterstützt: PaaS | Unterstützt: OSS (SQL) | Unterstützt: OSS (Cosmos DB) | Comment |
 |-------------------------| ----------| ----------| ----------|---------|
 | `_id`                   | Ja       | Ja       | Ja       |         |
 | `_lastUpdated`          | Ja       | Ja       | Ja       |         |
 | `_tag`                  | Ja       | Ja       | Ja       |         |
-| `_profile`              | Teilweise   | Teilweise   | Teilweise   | Nur in STU3 unterstützt, nicht in R4 |
+| `_list`                 | Ja       | Ja       | Ja       |         |
+| `_type`                 | Ja       | Ja       | Ja       | Problem [Nr. 1562](https://github.com/microsoft/fhir-server/issues/1562)        |
 | `_security`             | Ja       | Ja       | Ja       |         |
+| `_profile`              | Teilweise   | Teilweise   | Teilweise   | Nur in STU3 unterstützt, nicht in R4 |
 | `_text`                 | Nein        | Nein        | Nein        |         |
 | `_content`              | Nein        | Nein        | Nein        |         |
-| `_list`                 | Ja       | Ja       | Ja       |         |
 | `_has`                  | Nein        | Nein        | Nein        |         |
-| `_type`                 | Ja       | Ja       | Ja       |         |
 | `_query`                | Nein        | Nein        | Nein        |         |
 | `_filter`               | Nein        | Nein        | Nein        |         |
 
 | Suchergebnisparameter | Unterstützt: PaaS | Unterstützt: OSS (SQL) | Unterstützt: OSS (Cosmos DB) | Comment |
 |-------------------------|-----------|-----------|-----------|---------|
-| `_sort`                 | Teilweise        | Teilweise   | Teilweise        |   `_sort=_lastUpdated` wird unterstützt       |
+| `_elements`             | Ja       | Ja       | Ja       | Problem [Nr. 1256](https://github.com/microsoft/fhir-server/issues/1256)        |
 | `_count`                | Ja       | Ja       | Ja       | `_count` ist auf 100 Zeichen beschränkt. Wenn er auf einen höheren Wert als 100 festgelegt ist, werden nur 100 zurückgegeben, und im Paket wird eine Warnung zurückgegeben. |
 | `_include`              | Ja       | Ja       | Ja       |Enthaltene Elemente sind auf 100 beschränkt. Einschließen in PaaS und OSS in Cosmos DB umfasst keine Unterstützung von :iterate.|
-| `_revinclude`           | Ja       | Ja       | Ja       | Enthaltene Elemente sind auf 100 beschränkt. Einschließen in PaaS und OSS in Cosmos DB umfasst keine Unterstützung von :iterate.|
-| `_summary`              | Partial   | Partial   | Teilweise   | `_summary=count` wird unterstützt |
-| `_total`                | Partial   | Partial   | Partial   | _total=non und _total=accurate      |
-| `_elements`             | Ja       | Ja       | Ja       |         |
+| `_revinclude`           | Ja       | Ja       | Ja       | Enthaltene Elemente sind auf 100 beschränkt. Einschließen in PaaS und OSS in Cosmos DB umfasst [keine Unterstützung von :iterate](https://github.com/microsoft/fhir-server/issues/1313). Problem [Nr. 1319](https://github.com/microsoft/fhir-server/issues/1319)|
+| `_summary`              | Teilweise   | Partial   | Partial   | `_summary=count` wird unterstützt |
+| `_total`                | Partial   | Teilweise   | Teilweise   | `_total=none` und `_total=accurate`      |
+| `_sort`                 | Teilweise   | Teilweise   | Teilweise   |   `_sort=_lastUpdated` wird unterstützt       |
 | `_contained`            | Nein        | Nein        | Nein        |         |
 | `containedType`         | Nein        | Nein        | Nein        |         |
 | `_score`                | Nein        | Nein        | Nein        |         |

@@ -1,18 +1,15 @@
 ---
 title: Verwenden der Apache Hive-Replikation in Azure HDInsight-Clustern
 description: Erfahren Sie, wie Sie mithilfe der Hive-Replikation in HDInsight-Clustern den Hive-Metastore und den Azure Data Lake Storage Gen 2 Data Lake replizieren können.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/08/2020
-ms.openlocfilehash: af74392b3368a25e5d238f774292c80de5f91c65
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3dd894a46b666703f64e44336c0bf022da8a063a
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91857740"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98941337"
 ---
 # <a name="how-to-use-apache-hive-replication-in-azure-hdinsight-clusters"></a>Verwenden der Apache Hive-Replikation in Azure HDInsight-Clustern
 
@@ -140,7 +137,7 @@ Die inkrementelle Replikation folgt demselben Prozess und sie erfordert die zule
 
 Die Replikation wird normalerweise in einer unidirektionalen Weise zwischen dem primären und dem sekundären Cluster konfiguriert, wobei der primäre Cluster die Lese- und Schreibanforderungen erfüllt. Der sekundäre Cluster dient nur zum Lesen von Anforderungen. Im Notfall sind Schreibvorgänge auf dem sekundären Cluster zulässig, aber die umgekehrte Replikation muss auf dem primären Cluster konfiguriert werden.
 
-:::image type="content" source="media/apache-hive-replication/replication-pattern.png" alt-text="Hive-Replikationsdiagramm":::
+:::image type="content" source="media/apache-hive-replication/replication-pattern.png" alt-text="Hive-Replikationsmuster":::
 
 Es gibt viele Muster, die sich für die Hive-Replikation eignen, darunter „Primär – Sekundär“, „Hub-and-Spoke“ sowie „Relay“.
 
