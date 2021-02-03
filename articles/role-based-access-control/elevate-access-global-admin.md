@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 06/09/2020
 ms.author: rolyon
-ms.openlocfilehash: 6e57e495d34a265b5e0691106996206029656c5a
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 850d50bc9e427ff559782d587d74b33089332a8d
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92371119"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99091662"
 ---
 # <a name="elevate-access-to-manage-all-azure-subscriptions-and-management-groups"></a>Erhöhen der Zugriffsrechte zum Verwalten aller Azure-Abonnements und Verwaltungsgruppen
 
@@ -33,7 +33,7 @@ Wenn Sie globaler Administrator sind, müssen Sie unter Umständen folgende Akti
 
 ## <a name="how-does-elevated-access-work"></a>Wie erhöhe ich den Zugriff?
 
-Azure AD und Azure-Ressourcen werden unabhängig voneinander geschützt. Das bedeutet, dass Azure AD-Rollenzuweisungen keinen Zugriff auf Azure-Ressourcen gewähren und Azure-Rollenzuweisungen keinen Zugriff auf Azure AD. Wenn Sie jedoch [globaler Administrator](../active-directory/roles/permissions-reference.md#company-administrator-permissions) in Azure AD sind, können Sie sich selbst Zugriff auf alle Azure-Abonnements und Verwaltungsgruppen in Ihrem Verzeichnis zuweisen. Verwenden Sie diese Funktion, wenn Sie keinen Zugriff auf Azure-Abonnementressourcen wie virtuelle Computer oder Speicherkonten haben und Sie Ihre globalen Administratorrechte verwenden möchten, um Zugriff auf diese Ressourcen zu erhalten.
+Azure AD und Azure-Ressourcen werden unabhängig voneinander geschützt. Das bedeutet, dass Azure AD-Rollenzuweisungen keinen Zugriff auf Azure-Ressourcen gewähren und Azure-Rollenzuweisungen keinen Zugriff auf Azure AD. Wenn Sie jedoch [globaler Administrator](../active-directory/roles/permissions-reference.md#global-administrator-permissions) in Azure AD sind, können Sie sich selbst Zugriff auf alle Azure-Abonnements und Verwaltungsgruppen in Ihrem Verzeichnis zuweisen. Verwenden Sie diese Funktion, wenn Sie keinen Zugriff auf Azure-Abonnementressourcen wie virtuelle Computer oder Speicherkonten haben und Sie Ihre globalen Administratorrechte verwenden möchten, um Zugriff auf diese Ressourcen zu erhalten.
 
 Wenn Sie Ihre Zugriffsrechte erhöhen, wird Ihnen die Rolle [Benutzerzugriffsadministrator](built-in-roles.md#user-access-administrator) in Azure für den Stammbereich (`/`) zugewiesen. Auf diese Weise können Sie alle Ressourcen anzeigen und den Zugriff in jeder Abonnement- oder Verwaltungsgruppe im Verzeichnis zuweisen. Die Rollenzuweisung „Benutzerzugriffsadministrator“ kann mit Azure PowerShell, der Azure-Befehlszeilenschnittstelle oder der REST-API entfernt werden.
 
@@ -51,13 +51,13 @@ Führen Sie diese Schritte aus, um die Zugriffsrechte für einen globalen Admini
 
     Wenn Sie Azure AD Privileged Identity Management verwenden, [aktivieren Sie Ihre Rollenzuweisung „Globaler Administrator“](../active-directory/privileged-identity-management/pim-how-to-activate-role.md).
 
-1. Öffnen Sie **Azure Active Directory** .
+1. Öffnen Sie **Azure Active Directory**.
 
 1. Wählen Sie unter **Verwalten** die Option **Eigenschaften** aus.
 
    ![Auswählen des Azure Active Directory-Fensters „Eigenschaften“ (Screenshot)](./media/elevate-access-global-admin/azure-active-directory-properties.png)
 
-1. Wählen Sie unter **Zugriffsverwaltung für Azure-Ressourcen** die Option **Ja** .
+1. Wählen Sie unter **Zugriffsverwaltung für Azure-Ressourcen** die Option **Ja**.
 
    ![Zugriffsverwaltung für Azure-Ressourcen – Screenshot](./media/elevate-access-global-admin/aad-properties-global-admin-setting.png)
 
@@ -66,9 +66,9 @@ Führen Sie diese Schritte aus, um die Zugriffsrechte für einen globalen Admini
    Wenn Sie **Nein** festlegen, wird die Rolle „Benutzerzugriffsadministrator“ in Azure RBAC aus Ihrem Benutzerkonto entfernt. Sie können dann keine Rollen mehr in allen Azure-Abonnements und Verwaltungsgruppen zuweisen, die diesem Azure AD-Verzeichnis zugeordnet sind. Sie können nur die Azure-Abonnements und Verwaltungsgruppen anzeigen und verwalten, für die Ihnen der Zugriff gewährt wurde.
 
     > [!NOTE]
-    > Wenn Sie [Privileged Identity Management](../active-directory/privileged-identity-management/pim-configure.md) verwenden, ändert die Deaktivierung Ihrer Rollenzuweisung den Umschalter **Zugriffsverwaltung für Azure-Ressourcen** nicht in **Nein** . Um den Zugriff mit den geringsten Rechten zu gewähren, empfehlen wir Ihnen das Festlegen dieses Umschalters auf **Nein** , bevor Sie Ihre Rollenzuweisung deaktivieren.
+    > Wenn Sie [Privileged Identity Management](../active-directory/privileged-identity-management/pim-configure.md) verwenden, ändert die Deaktivierung Ihrer Rollenzuweisung den Umschalter **Zugriffsverwaltung für Azure-Ressourcen** nicht in **Nein**. Um den Zugriff mit den geringsten Rechten zu gewähren, empfehlen wir Ihnen das Festlegen dieses Umschalters auf **Nein**, bevor Sie Ihre Rollenzuweisung deaktivieren.
     
-1. Klicken Sie auf **Speichern** , um Ihre Einstellung zu speichern.
+1. Klicken Sie auf **Speichern**, um Ihre Einstellung zu speichern.
 
    Diese Einstellung ist keine globale Eigenschaft und gilt nur für den aktuell angemeldeten Benutzer. Sie können den Zugriff nicht für alle Mitglieder der globalen Administratorrolle erhöhen.
 
@@ -90,9 +90,9 @@ Führen Sie die folgenden Schritte aus, um die Zuweisung der Rolle „Benutzerzu
 
 1. Melden Sie sich als derselbe Benutzer an, mit dem der Zugriff erhöht wurde.
 
-1. Klicken Sie in der Navigationsliste auf **Azure Active Directory** und dann auf **Eigenschaften** .
+1. Klicken Sie in der Navigationsliste auf **Azure Active Directory** und dann auf **Eigenschaften**.
 
-1. Ändern Sie die Option **Zugriffsverwaltung für Azure-Ressourcen** wieder in **Nein** . Da es sich um eine benutzerspezifische Einstellung handelt, müssen Sie als der Benutzer angemeldet sein, der den Zugriff erhöht hat.
+1. Ändern Sie die Option **Zugriffsverwaltung für Azure-Ressourcen** wieder in **Nein**. Da es sich um eine benutzerspezifische Einstellung handelt, müssen Sie als der Benutzer angemeldet sein, der den Zugriff erhöht hat.
 
     Wenn Sie versuchen, die Rollenzuweisung „Benutzerzugriffsadministrator“ im Bereich „Zugriffssteuerung (IAM)“ zu entfernen, wird die folgende Meldung angezeigt. Um die Rollenzuweisung zu entfernen, müssen Sie den Umschalter wieder auf **Nein** festlegen oder Azure PowerShell, die Azure-Befehlszeilenschnittstelle oder die REST-API verwenden.
 
@@ -103,7 +103,7 @@ Führen Sie die folgenden Schritte aus, um die Zuweisung der Rolle „Benutzerzu
     Wenn Sie Privileged Identity Management verwenden, aktivieren Sie Ihre Rollenzuweisung „Globaler Administrator“.
 
     > [!NOTE]
-    > Wenn Sie [Privileged Identity Management](../active-directory/privileged-identity-management/pim-configure.md) verwenden, ändert die Deaktivierung Ihrer Rollenzuweisung den Umschalter **Zugriffsverwaltung für Azure-Ressourcen** nicht in **Nein** . Um den Zugriff mit den geringsten Rechten zu gewähren, empfehlen wir Ihnen das Festlegen dieses Umschalters auf **Nein** , bevor Sie Ihre Rollenzuweisung deaktivieren.
+    > Wenn Sie [Privileged Identity Management](../active-directory/privileged-identity-management/pim-configure.md) verwenden, ändert die Deaktivierung Ihrer Rollenzuweisung den Umschalter **Zugriffsverwaltung für Azure-Ressourcen** nicht in **Nein**. Um den Zugriff mit den geringsten Rechten zu gewähren, empfehlen wir Ihnen das Festlegen dieses Umschalters auf **Nein**, bevor Sie Ihre Rollenzuweisung deaktivieren.
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 

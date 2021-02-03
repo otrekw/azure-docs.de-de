@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: jrasnick, sstein
 ms.date: 12/22/2020
-ms.openlocfilehash: 08cab806d6ad8b75821a92994dde0fa07db8b960
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.openlocfilehash: 7bb754b892715adffc6ead99f3d866f9f9d8af9b
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98233592"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99096490"
 ---
 # <a name="manage-file-space-for-databases-in-azure-sql-database"></a>Verwalten von Dateispeicherplatz für Datenbanken in Azure SQL-Datenbank
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -219,7 +219,7 @@ Verkleinerungsbefehle können während der Ausführung der Datenbank zu einer Be
 
 Sie sollten sich auch über die möglichen negativen Auswirkungen auf die Leistung bewusst sein, die sich bei einer Verkleinerung von Datenbankdateien ergeben können. Informationen hierzu finden Sie unten im Abschnitt [**Neuerstellen von Indizes**](#rebuild-indexes).
 
-Weitere Informationen zu diesem Befehl finden Sie unter [SHRINKDATABASE](/sql/t-sql/database-console-commands/dbcc-shrinkdatabase-transact-sql.md).
+Weitere Informationen zu diesem Befehl finden Sie unter [SHRINKDATABASE](/sql/t-sql/database-console-commands/dbcc-shrinkdatabase-transact-sql).
 
 ### <a name="auto-shrink"></a>Automatisches Verkleinern
 

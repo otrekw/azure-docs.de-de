@@ -12,12 +12,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sstein
 ms.date: 04/20/2020
-ms.openlocfilehash: 76bb4ffb4ebeb01baf8236d6be84c900b23ffbc0
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 3e4b4fc3d4a6c9529c7c0ac0daef8a28173e0bf3
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92790813"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99225342"
 ---
 # <a name="transactional-replication-with-azure-sql-managed-instance-preview"></a>Transaktionsreplikation mit Azure SQL Managed Instance (Vorschau)
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -39,7 +39,7 @@ Sie können Transaktionsreplikation auch verwenden, um Änderungen an Azure SQL 
 
 ### <a name="components"></a>Komponenten
 
-Die wichtigsten Komponenten der Transaktionsreplikation ( **Verleger** , **Verteiler** und **Abonnent** ) sind in der folgenden Abbildung dargestellt:  
+Die wichtigsten Komponenten der Transaktionsreplikation (**Verleger**, **Verteiler** und **Abonnent**) sind in der folgenden Abbildung dargestellt:  
 
 ![Replikation zu SQL-Datenbank](./media/replication-transactional-overview/replication-to-sql-database.png)
 
@@ -109,7 +109,7 @@ Die Transaktionsreplikation ist in den folgenden Szenarien nützlich:
 | Category | Datensynchronisierung | Transaktionsreplikation |
 |---|---|---|
 | Vorteile | – Aktiv/Aktiv-Unterstützung<br/>– Bidirektional zwischen lokaler und Azure SQL-Datenbank | – Niedrigere Latenzzeiten<br/>– Transaktionskonsistenz<br/>– Wiederverwendung vorhandener Topologie nach der Migration |
-| Nachteile | – Latenzzeiten von 5 Minuten und mehr<br/>– Keine Transaktionskonsistenz<br/>– Größere Auswirkung auf die Leistung | – Keine Veröffentlichung aus Azure SQL-Datenbank <br/>– Hohe Wartungskosten |
+| Nachteile | – Keine Transaktionskonsistenz<br/>– Größere Auswirkung auf die Leistung | – Keine Veröffentlichung aus Azure SQL-Datenbank <br/>– Hohe Wartungskosten |
 
 ## <a name="common-configurations"></a>Häufig verwendete Konfigurationen
 
@@ -197,7 +197,7 @@ Weitere Informationen zum Konfigurieren von Transaktionsreplikation finden Sie i
 - [Konfigurieren der Replikation zwischen einem SQL Managed Instance-Verleger und -Abonnenten](../managed-instance/replication-between-two-instances-configure-tutorial.md)
 - [Konfigurieren der Replikation zwischen einem SQL Managed Instance-Verleger, SQL Managed Instance-Verteiler und SQL Server-Abonnenten](../managed-instance/replication-two-instances-and-sql-server-configure-tutorial.md)
 - [Erstellen Sie eine Veröffentlichung](/sql/relational-databases/replication/publish/create-a-publication).
-- [Erstellen Sie ein Pushabonnement](/sql/relational-databases/replication/create-a-push-subscription) mit dem Servernamen als Abonnent (z. B. `N'azuresqldbdns.database.windows.net` und dem Namen der Datenbank in Azure SQL-Datenbank als Zieldatenbank, z. B. **AdventureWorks** . )
+- [Erstellen Sie ein Pushabonnement](/sql/relational-databases/replication/create-a-push-subscription) mit dem Servernamen als Abonnent (z. B. `N'azuresqldbdns.database.windows.net` und dem Namen der Datenbank in Azure SQL-Datenbank als Zieldatenbank, z. B. **AdventureWorks**. )
 
 ## <a name="see-also"></a>Weitere Informationen  
 

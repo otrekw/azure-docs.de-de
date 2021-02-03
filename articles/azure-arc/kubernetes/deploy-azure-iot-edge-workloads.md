@@ -8,12 +8,12 @@ author: mlearned
 ms.author: mlearned
 description: Bereitstellen von Azure IoT Edge-Workloads
 keywords: Kubernetes, Arc, Azure, K8s, Container
-ms.openlocfilehash: bfaa43a03ddd98616b22fc3fc7b4dccb4c38f44c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 88c480f93bfe28a424441a1c5857c623efb4e1d3
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86103975"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99091646"
 ---
 # <a name="deploy-azure-iot-edge-workloads-preview"></a>Bereitstellen von Azure IoT Edge-Workloads (Vorschauversion)
 
@@ -29,7 +29,7 @@ Azure Arc und Azure IoT Edge ergänzen sich in ihren Funktionen sehr gut. Azure
 
 * Verwenden Sie die [IoT Edge-Unterstützung für Kubernetes](https://aka.ms/edgek8sdoc), um die Bereitstellung über den Flux-Operator von Azure Arc auszuführen.
 
-* Laden Sie die Datei [**values.yaml**](https://github.com/Azure/iotedge/blob/master/kubernetes/charts/edge-kubernetes/values.yaml) für das IoT Edge-Helm-Chart herunter, und ersetzen Sie den Platzhalter **deviceConnectionString** am Ende der Datei durch den in Schritt 1 notierten Wert. Sie können entsprechend Ihren Anforderungen auch andere unterstützte Optionen für die Chartinstallation festlegen. Erstellen Sie einen Namespace für die IoT Edge-Workload, und erstellen Sie darin ein Geheimnis:
+* Laden Sie die Datei [**values.yaml**](https://github.com/Azure/iotedge/blob/preview/iiot/kubernetes/charts/edge-kubernetes/values.yaml) für das IoT Edge-Helm-Chart herunter, und ersetzen Sie den Platzhalter **deviceConnectionString** am Ende der Datei durch den in Schritt 1 notierten Wert. Sie können entsprechend Ihren Anforderungen auch andere unterstützte Optionen für die Chartinstallation festlegen. Erstellen Sie einen Namespace für die IoT Edge-Workload, und erstellen Sie darin ein Geheimnis:
 
     ```
     $ kubectl create ns iotedge

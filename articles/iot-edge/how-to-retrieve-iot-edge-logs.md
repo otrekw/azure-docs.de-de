@@ -10,12 +10,12 @@ ms.reviewer: veyalla
 ms.service: iot-edge
 ms.custom: devx-track-azurecli
 services: iot-edge
-ms.openlocfilehash: abd30c22aa2b4df20cdb795013768cd175cfef4c
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: 69f7ec5114ad650f33eae740a54a3821b76ef2ac
+ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96780738"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99475538"
 ---
 # <a name="retrieve-logs-from-iot-edge-deployments"></a>Abrufen von Protokollen aus IoT Edge-Bereitstellungen
 
@@ -51,8 +51,8 @@ Diese Methode akzeptiert eine JSON-Nutzlast mit dem folgenden Schema:
              "id": "regex string",
              "filter": {
                 "tail": "int",
-                "since": "int",
-                "until": "int",
+                "since": "string",
+                "until": "string",
                 "loglevel": "int",
                 "regex": "regex string"
              }
@@ -70,8 +70,8 @@ Diese Methode akzeptiert eine JSON-Nutzlast mit dem folgenden Schema:
 | id | Zeichenfolge | Ein regulärer Ausdruck, der den Modulnamen bereitstellt. Er kann mehreren Modulen auf einem Edgegerät entsprechen. Das Format [Reguläre Ausdrücke von .NET](/dotnet/standard/base-types/regular-expressions) wird erwartet. |
 | filter | JSON-Abschnitt | Protokollfilter, die auf die Module angewendet werden, die mit dem regulären Ausdruck `id` im Tupel übereinstimmen |
 | tail | integer | Die Anzahl der abzurufenden Protokollzeilen in der Vergangenheit, beginnend mit der neuesten OPTIONAL. |
-| since | integer | Nur Protokolle seit diesem Zeitpunkt werden zurückgegeben, als Dauer (1 Tag, 90 Minuten, 2 Tage 3 Stunden 2 Minuten), als rfc3339-Zeitstempel oder als UNIX-Zeitstempel.  Wenn sowohl `tail` als auch `since` angegeben werden, werden die Protokolle zuerst mit dem Wert `since` abgerufen. Anschließend wird der Wert `tail` auf das Ergebnis angewendet, und das Endergebnis wird zurückgegeben. OPTIONAL. |
-| until | integer | Nur Protokolle vor dem angegebenen Zeitpunkt werden zurückgegeben, als rfc3339-Zeitstempel, als UNIX-Zeitstempel oder als Dauer (1 Tag, 90 Minuten, 2 Tage 3 Stunden 2 Minuten). OPTIONAL. |
+| since | Zeichenfolge | Nur Protokolle seit diesem Zeitpunkt werden zurückgegeben, als Dauer (1 Tag, 90 Minuten, 2 Tage 3 Stunden 2 Minuten), als rfc3339-Zeitstempel oder als UNIX-Zeitstempel.  Wenn sowohl `tail` als auch `since` angegeben werden, werden die Protokolle zuerst mit dem Wert `since` abgerufen. Anschließend wird der Wert `tail` auf das Ergebnis angewendet, und das Endergebnis wird zurückgegeben. OPTIONAL. |
+| until | Zeichenfolge | Nur Protokolle vor dem angegebenen Zeitpunkt werden zurückgegeben, als rfc3339-Zeitstempel, als UNIX-Zeitstempel oder als Dauer (1 Tag, 90 Minuten, 2 Tage 3 Stunden 2 Minuten). OPTIONAL. |
 | log level | integer | Filtert Protokollzeilen, die kleiner oder gleich der angegebenen Protokollebene sind. Protokollzeilen sollten dem empfohlenen Protokollierungsformat entsprechen und den [Syslog-Schweregradstandard](https://en.wikipedia.org/wiki/Syslog#Severity_level) verwenden. OPTIONAL. |
 | regex | Zeichenfolge | Filtert Protokollzeilen mithilfe des Formats [Reguläre Ausdrücke von .NET](/dotnet/standard/base-types/regular-expressions) mit Inhalten, die dem angegebenen regulären Ausdruck entsprechen. OPTIONAL. |
 | encoding | Zeichenfolge | Entweder `gzip` oder `none` Der Standardwert ist `none`. |
@@ -160,8 +160,8 @@ Diese Methode akzeptiert eine JSON-Nutzlast, die **GetModuleLogs** ähnelt, wobe
              "id": "regex string",
              "filter": {
                 "tail": "int",
-                "since": "int",
-                "until": "int",
+                "since": "string",
+                "until": "string",
                 "loglevel": "int",
                 "regex": "regex string"
              }
@@ -293,8 +293,8 @@ Diese Methode akzeptiert eine JSON-Nutzlast mit dem folgenden Schema:
 |-|-|-|
 | schemaVersion | Zeichenfolge | Legen Sie den Wert `1.0` |
 | sasURL | Zeichenfolge (URI) | [Shared Access Signature-URL mit Schreibzugriff auf den Azure Blob Storage-Container](/archive/blogs/jpsanders/easily-create-a-sas-to-download-a-file-from-azure-storage-using-azure-storage-explorer) |
-| since | integer | Nur Protokolle seit diesem Zeitpunkt werden zurückgegeben, als Dauer (1 Tag, 90 Minuten, 2 Tage 3 Stunden 2 Minuten), als rfc3339-Zeitstempel oder als UNIX-Zeitstempel. OPTIONAL. |
-| until | integer | Nur Protokolle vor dem angegebenen Zeitpunkt werden zurückgegeben, als rfc3339-Zeitstempel, als UNIX-Zeitstempel oder als Dauer (1 Tag, 90 Minuten, 2 Tage 3 Stunden 2 Minuten). OPTIONAL. |
+| since | Zeichenfolge | Nur Protokolle seit diesem Zeitpunkt werden zurückgegeben, als Dauer (1 Tag, 90 Minuten, 2 Tage 3 Stunden 2 Minuten), als rfc3339-Zeitstempel oder als UNIX-Zeitstempel. OPTIONAL. |
+| until | Zeichenfolge | Nur Protokolle vor dem angegebenen Zeitpunkt werden zurückgegeben, als rfc3339-Zeitstempel, als UNIX-Zeitstempel oder als Dauer (1 Tag, 90 Minuten, 2 Tage 3 Stunden 2 Minuten). OPTIONAL. |
 | edgeRuntimeOnly | boolean | Bei „true“ werden nur Protokolle von Edge Agent, Edge Hub und dem Edge-Sicherheitsdaemon zurückgegeben. Standardwert: false.  OPTIONAL. |
 
 > [!IMPORTANT]

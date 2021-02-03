@@ -4,12 +4,12 @@ description: Sie können die Standardeinstellungen des Azure-Portals ändern, um
 keywords: Einstellungen, Timeout, Sprache, regional
 ms.date: 08/05/2020
 ms.topic: how-to
-ms.openlocfilehash: 07dd3eb5cb132adf87852f29d867be772294d189
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 5a108f1cd3b5af6655b592e7283192d4d54498ac
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96745637"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99094109"
 ---
 # <a name="manage-azure-portal-settings-and-preferences"></a>Verwalten von Einstellungen und Voreinstellungen im Azure-Portal
 
@@ -91,7 +91,7 @@ Wenn Ihr Administrator eine Richtlinie für das Inaktivitätstimeout aktiviert h
 
 ### <a name="change-the-directory-timeout-setting-admin"></a>Ändern der Timeouteinstellung auf Verzeichnisebene (Administrator)
 
-Administratoren in der [globalen Administratorrolle](../active-directory/roles/permissions-reference.md#global-administrator--company-administrator) können die maximale Leerlaufzeit erzwingen, nach der eine Sitzung abgemeldet wird. Die Einstellung für das Inaktivitätstimeout wird auf Verzeichnisebene angewandt. Diese Einstellung ist für neue Sitzungen wirksam. Für Benutzer, die bereits angemeldet sind, wird sie nicht sofort angewandt. Weitere Informationen zu Verzeichnissen finden Sie unter [Übersicht über Active Directory Domain Services](/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview).
+Administratoren in der [globalen Administratorrolle](../active-directory/roles/permissions-reference.md#global-administrator) können die maximale Leerlaufzeit erzwingen, nach der eine Sitzung abgemeldet wird. Die Einstellung für das Inaktivitätstimeout wird auf Verzeichnisebene angewandt. Diese Einstellung ist für neue Sitzungen wirksam. Für Benutzer, die bereits angemeldet sind, wird sie nicht sofort angewandt. Weitere Informationen zu Verzeichnissen finden Sie unter [Übersicht über Active Directory Domain Services](/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview).
 
 Wenn Sie ein globaler Administrator sind und eine Einstellung für das Leerlauftimeout für alle Benutzer des Azure-Portals erzwingen möchten, führen Sie die folgenden Schritte aus:
 

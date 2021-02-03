@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
-ms.openlocfilehash: c0426c5359e4d82d0316613586b9298596d82605
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 74d06d3d4aaa0d76b80257d2148fb62f71c3fdb0
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87009763"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99093194"
 ---
 # <a name="disable-the-guest-os-firewall-in-azure-vm"></a>Deaktivieren der Firewall des Gastbetriebssystems eines virtuellen Azure-Computers
 
@@ -47,7 +47,7 @@ Mit einem Azure-Agent können Sie das Feature [Benutzerdefinierte Skripterweiter
 >   ```
 > * Wenn die Firewall über eine Active Directory-Richtlinie eingerichtet ist, können Sie das folgende Skript für temporären Zugriff ausführen. 
 >   ```
->   Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile' -name "EnableFirewall" -Value 0
+>   Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile' -name "EnableFirewall" -Value 0
 >   Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\WindowsFirewall\PublicProfile' -name "EnableFirewall" -Value 0
 >   Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\WindowsFirewall\StandardProfile' -name "EnableFirewall" -Value 0
 >   Restart-Service -Name mpssvc
@@ -88,7 +88,7 @@ Mit einem Azure-Agent können Sie das Feature [Benutzerdefinierte Skripterweiter
 
 #### <a name="mitigation-4-remote-registry"></a>Lösung 4: Remoteregistrierung 
 
-Gehen Sie zur Verwendung der [Remoteregistrierung](https://support.microsoft.com/help/314837/how-to-manage-remote-access-to-the-registry) wie folgt vor.
+Gehen Sie zur Verwendung der [Remoteregistrierung](https://www.betaarchive.com/wiki/index.php?title=Microsoft_KB_Archive/314837) wie folgt vor.
 
 1.  Starten Sie auf dem virtuellen Computer, der zur Problembehandlung dient, den Registrierungs-Editor, und wählen Sie **Datei** > **Mit Netzwerkregistrierung verbinden** aus.
 
@@ -124,9 +124,9 @@ Wenn Sie den virtuellen Computer mit keiner Methode erreichen können, ist die �
 
 3.  Stellen Sie sicher, dass der Datenträger in der Datenträgerverwaltungskonsole als „Online“ gekennzeichnet ist. Achten Sie auf den Laufwerkbuchstaben, der dem angefügten Betriebssystemdatenträger zugewiesen ist.
 
-4.  Bevor Sie Änderungen vornehmen, erstellen Sie eine Kopie des Ordners „\Windows\system32\config“ für den Fall, dass ein Rollback der Änderungen erforderlich ist.
+4.  Bevor Sie Änderungen vornehmen, erstellen Sie eine Kopie des Ordners „\windows\system32\config“ für den Fall, dass ein Rollback der Änderungen erforderlich ist.
 
-5.  Starten Sie auf dem virtuellen Computer, der zur Problembehandlung dient, den Registrierungs-Editor (regedit.exe). 
+5.  Starten Sie auf dem virtuellen Computer, der zur Problembehandlung dient, den Registrierungs-Editor (regedit.exe). 
 
 6.  Für dieses Verfahren zur Problembehandlung werden die Strukturen als BROKENSYSTEM und BROKENSOFTWARE eingebunden.
 

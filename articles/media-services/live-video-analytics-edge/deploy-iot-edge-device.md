@@ -3,12 +3,12 @@ title: 'Bereitstellen von Live Video Analytics auf einem IoT Edge-Gerät: Azure'
 description: In diesem Artikel werden Schritte aufgelistet, die Sie bei der Bereitstellung von Live Video Analytics auf Ihrem IoT Edge-Gerät unterstützen. Dies können Sie beispielsweise tun, wenn Sie Zugriff auf einen lokalen Linux-Computer besitzen und/oder zuvor ein Azure Media Services-Konto erstellt haben.
 ms.topic: how-to
 ms.date: 09/09/2020
-ms.openlocfilehash: 38d138b43441016e06fca5003bc09c940cb23efe
-ms.sourcegitcommit: 6d6030de2d776f3d5fb89f68aaead148c05837e2
+ms.openlocfilehash: ff5dbc8e643137008aa7819b455adcf97c05bfc9
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97883315"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99491789"
 ---
 # <a name="deploy-live-video-analytics-on-an-iot-edge-device"></a>Bereitstellen von Live Video Analytics auf einem IoT Edge-Gerät
 
@@ -240,7 +240,7 @@ Als nächstes testen Sie das Beispiel, indem Sie eine direkte Methode aufrufen. 
     
     ```
     {
-        "@apiVersion" : "1.0"
+        "@apiVersion" : "2.0"
     }
     ```
 1. Klicken Sie oben auf der Seite auf die Option „Methode aufrufen“.

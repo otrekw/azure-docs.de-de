@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie einen privaten Azure Kubernetes Service-Clust
 services: container-service
 ms.topic: article
 ms.date: 7/17/2020
-ms.openlocfilehash: 66072032b3fd1ac33bef60922c62f73a8cfb11bd
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 56d3b36d17ee044ce7aba2337429c45123801ca5
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98734663"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99254511"
 ---
 # <a name="create-a-private-azure-kubernetes-service-cluster"></a>Erstellen eines privaten Azure Kubernetes Service-Clusters
 
@@ -130,7 +130,6 @@ Wie bereits erwähnt, ist das Peering virtueller Netzwerke eine Möglichkeit fü
 * Für Kunden, die Azure Container Registry für die Arbeit mit privatem AKS aktivieren müssen, muss ein Peering des virtuellen Netzwerks der Container Registry mit dem virtuellen Netzwerk des Agent-Clusters ausgeführt werden.
 * Keine Unterstützung für das Konvertieren vorhandener AKS-Cluster in private Cluster
 * Das Löschen oder Ändern des privaten Endpunkts im Kundensubnetz führt dazu, dass der Cluster nicht mehr funktioniert. 
-* Azure Monitor wird für Livedaten von Containern derzeit nicht unterstützt.
 * Nachdem Kunden den A-Eintrag auf ihren eigenen DNS-Servern aktualisiert haben, würden diese Pods den apiserver-FQDN nach der Migration bis zu einem Neustart immer noch zu der älteren IP auflösen. Kunden müssen hostNetwork-Pods und default-DNSPolicy-Pods nach dem Migrieren der Steuerungsebene erneut starten.
 * Im Fall einer Wartung der Steuerungsebene ändert sich möglicherweise Ihre [AKS-IP](./limit-egress-traffic.md). In diesem Fall müssen Sie auf Ihrem benutzerdefinierten DNS-Server den A-Eintrag aktualisieren, der auf die private IP des API-Servers verweist, und alle benutzerdefinierten Pods oder Bereitstellungen mithilfe von hostNetwork neu starten.
 

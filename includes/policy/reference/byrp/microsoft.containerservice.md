@@ -2,20 +2,20 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 01/25/2021
+ms.date: 01/29/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: a8499b2695f32917619c94defc06738de925db04
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: 58789b0e132a850165b67789aef95340ec3dcc7f
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98805521"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99214135"
 ---
-|Name<br /><sub>(Azure-Portal)</sub> |Beschreibung |Auswirkungen |Version<br /><sub>(GitHub)</sub> |
+|Name<br /><sub>(Azure-Portal)</sub> |BESCHREIBUNG |Auswirkungen |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
 |[In Kubernetes Services müssen autorisierte IP-Adressbereiche definiert werden.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0e246bcf-5f6f-4f87-bc6f-775d4712c7ea) |Hiermit schränken Sie den Zugriff auf die Kubernetes Service-Verwaltungs-API ein, indem Sie den API-Zugriff nur auf IP-Adressen in bestimmten Bereichen gewähren. Es wird empfohlen, den Zugriff auf autorisierte IP-Adressbereiche einzuschränken, um sicherzustellen, dass nur Anwendungen aus zugelassenen Netzwerken auf den Cluster zugreifen können. |Audit, Disabled |[2.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_EnableIpRanges_KubernetesService_Audit.json) |
-|[Das Azure Policy-Add-On für den Kubernetes-Dienst (AKS) muss auf Ihren Clustern installiert und aktiviert sein.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0a15ec92-a229-4763-bb14-0ea34a568f8d) |Das Azure Policy-Add-On für den Kubernetes-Dienst (AKS) erweitert Gatekeeper v3, einen OPA-Webhook (Open Policy Agent) für die Zugangssteuerung, um umfassende Durchsetzungen und Schutzvorrichtungen für Ihre Cluster zentral und konsistent anzuwenden. |Audit, Disabled |[1.0.1-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/AKS_AzurePolicyAddOn_Audit.json) |
+|[Das Azure Policy-Add-On für den Kubernetes-Dienst (AKS) muss auf Ihren Clustern installiert und aktiviert sein.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0a15ec92-a229-4763-bb14-0ea34a568f8d) |Das Azure Policy-Add-On für den Kubernetes-Dienst (AKS) erweitert Gatekeeper v3, einen OPA-Webhook (Open Policy Agent) für die Zugangssteuerung, um umfassende Durchsetzungen und Schutzvorrichtungen für Ihre Cluster zentral und konsistent anzuwenden. |Audit, Disabled |[1.0.2](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/AKS_AzurePolicyAddOn_Audit.json) |
 |[Datenträger für Betriebssysteme und Daten in Azure Kubernetes Service-Clustern müssen mithilfe von kundenseitig verwalteten Schlüsseln verschlüsselt werden](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7d7be79c-23ba-4033-84dd-45e2a5ccdd67) |Das Verschlüsseln von Datenträgern für Betriebssystem und Daten mithilfe von kundenseitig verwalteten Schlüsseln bietet mehr Kontrolle und größere Flexibilität bei der Schlüsselverwaltung. Diese Verschlüsselung ist eine gängige Anforderung in vielen gesetzlichen und branchenspezifischen Konformitätsstandards. |Audit, Deny, Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/AKS_CMK_Deny.json) |
 |[Azure Policy-Add-On für Azure Kubernetes Service-Cluster bereitstellen](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fa8eff44f-8c92-45c3-a3fb-9880802d67a7) |Verwenden Sie das Azure Policy-Add-On, um den Konformitätsstatus Ihrer AKS-Cluster (Azure Kubernetes Service) zu verwalten und zu melden. Weitere Informationen finden Sie unter [https://aka.ms/akspolicydoc](https://aka.ms/akspolicydoc). |deployIfNotExists |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/AKS_AzurePolicyAddOn_Deploy.json) |
 |[GitOps für Kubernetes-Cluster bereitstellen](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1d61c4d2-aef2-432b-87fc-7f96b019b7e1) |Diese Richtlinie stellt „sourceControlConfiguration“ für Kubernetes-Cluster bereit, um sicherzustellen, dass die Cluster ihre SSOT (Single Source of Truth) aus dem definierten Git-Repository abrufen. Anweisungen zur Verwendung dieser Richtlinie finden Sie unter [https://aka.ms/K8sGitOpsPolicy](https://aka.ms/K8sGitOpsPolicy). |Auswirkung „DeployIfNotExists“ |[1.0.0-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/Deploy-GitOps-to-Kubernetes-cluster_DINE.json) |

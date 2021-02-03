@@ -2,13 +2,13 @@
 title: Azure Service Bus-Nachrichten, -Nutzlasten und -Serialisierung | Microsoft-Dokumentation
 description: Dieser Artikel bietet eine Übersicht über Azure Service Bus-Nachrichten, Nutzlasten, Nachrichtenrouting und Serialisierung.
 ms.topic: article
-ms.date: 06/23/2020
-ms.openlocfilehash: d426489776dff652cbf72d640f3e74b1bc8e30d4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 01/29/2021
+ms.openlocfilehash: db1989004e60c305341e54e62e42f31e40e47487
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85341673"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99219178"
 ---
 # <a name="messages-payloads-and-serialization"></a>Nachrichten, Nutzlasten und Serialisierung
 
@@ -70,8 +70,6 @@ Im Gegensatz zu den Java- oder. NET Standard-Varianten unterstützt die. NET Fra
 Bei Verwendung des alten SBMP-Protokolls werden diese Objekte dann mit dem standardmäßigen binären Serialisierer oder mit einem extern bereitgestellten Serialisierer serialisiert. Bei Verwendung des AMQP-Protokolls wird das Objekt in ein AMQP-Objekt serialisiert. Der Empfänger kann diese Objekte mit der [GetBody\<T>()](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.getbody#Microsoft_ServiceBus_Messaging_BrokeredMessage_GetBody__1)-Methode abrufen und den erwarteten Typ bereitstellen. Bei AMQP werden die Objekte in ein AMQP-Diagramm aus **ArrayList**- und **IDictionary<string,object>** -Objekten serialisiert und können von jedem AMQP-Client decodiert werden. 
 
 Wenngleich diese Methode der versteckten Serialisierung praktisch ist, sollten Anwendungen die explizite Steuerung der Objektserialisierung übernehmen und ihre Objektgraphen in Streams umwandeln, bevor sie diese in eine Nachricht einbinden, und auf Empfängerseite das Gegenteil tun. Dies führt zu interoperablen Ergebnissen. Es sollte auch darauf hingewiesen werden, dass AMQP zwar über ein leistungsfähiges binäres Codierungsmodell verfügt, aber an das AMQP-Messaging-Ökosystem gebunden ist. HTTP-Clients werden Probleme haben, solche Nutzdaten zu decodieren. 
-
-Im Allgemeinen werden JSON und Apache Avro als Nutzlastformate für strukturierte Daten empfohlen.
 
 Die .NET Standard- und Java-API-Varianten akzeptieren nur Bytearrays, was bedeutet, dass die Anwendung die Steuerung der Objektserialisierung übernehmen muss. 
 

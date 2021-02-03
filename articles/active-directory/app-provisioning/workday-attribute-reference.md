@@ -3,7 +3,7 @@ title: Workday-Attributreferenz
 description: Hier erfahren Sie, welche Attribute Sie mithilfe von XPATH-Abfragen aus Workday abrufen können.
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: reference
@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 05/25/2020
 ms.author: kenwith
 ms.reviewer: celested
-ms.openlocfilehash: 5892100140c6022763453a4141d87e6a7ba4ed75
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 0ff9b3d4cc3bee28c8e5e95d8854f64eaa546b0c
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91266563"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99255473"
 ---
 # <a name="workday-attribute-reference"></a>Workday-Attributreferenz
 
@@ -117,7 +117,7 @@ Die folgende Tabelle enthält die Liste der Workday-Attribute sowie die entsprec
 
 Wenn Sie in der Verbindungs-URL eine WWS-API ab Version 30.0 verwenden, wie unten dargestellt:
 
-:::image type="content" source="../saas-apps/media/workday-inbound-tutorial/workday-url-version-info.png" alt-text="Workday ohne Versionsinformationen":::
+:::image type="content" source="../saas-apps/media/workday-inbound-tutorial/workday-url-version-info.png" alt-text="Workday-Versionsinformationen":::
 
 ... müssen Sie vor dem Aktivieren des Bereitstellungsauftrags unter **Attributzuordnung > Erweiterte Optionen > Attributliste für Workday bearbeiten** die **XPATH-API-Ausdrücke** anhand der in der Tabelle aufgeführten Werte aktualisieren. 
 

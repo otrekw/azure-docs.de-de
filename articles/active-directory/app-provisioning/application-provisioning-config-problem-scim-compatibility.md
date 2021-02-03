@@ -3,7 +3,7 @@ title: 'Bekannte Complianceprobleme im Zusammenhang mit dem SCIM 2.0-Protokoll 
 description: Erfahren Sie, wie Sie häufige Kompatibilitätsprobleme mit dem Protokoll beim Hinzufügen einer Anwendung, die nicht aus dem Katalog stammt und die SCIM 2.0 unterstützt, in Azure AD beheben.
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 08/05/2020
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 7f400d6959a40361ea3beff8bd21c2fa9ef2996a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d13629b4cb05995b9652e862f769a0ffcae30a8c
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90052629"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99256897"
 ---
 # <a name="known-issues-and-resolutions-with-scim-20-protocol-compliance-of-the-azure-ad-user-provisioning-service"></a>Bekannte Probleme und Lösungen bei der Einhaltung des SCIM 2.0-Protokolls des Azure AD-Benutzerbereitstellungsdiensts
 
@@ -48,7 +48,7 @@ Bei Elementen, die in der folgenden Tabelle als korrigiert markiert sind, weist 
 ## <a name="flags-to-alter-the-scim-behavior"></a>Flags zum Ändern des SCIM-Verhaltens
 Verwenden Sie die weiter unten angegebenen Flags in der Mandanten-URL Ihrer Anwendung, um das Standardverhalten des SCIM-Clients zu ändern.
 
-:::image type="content" source="media/application-provisioning-config-problem-scim-compatibility/scim-flags.jpg" alt-text="SCIM-Flags zum Ändern des Verhaltens&quot;:::
+:::image type="content" source="media/application-provisioning-config-problem-scim-compatibility/scim-flags.jpg" alt-text="SCIM-Flags zum Ändern des Verhaltens":::
 
 * Verwenden Sie die folgende URL, um das PATCH-Verhalten zu aktualisieren und SCIM-Konformität sicherzustellen (z. B. aktiv als boolescher Wert und ordnungsgemäßes Entfernen von Gruppenmitgliedschaften). Dieses Verhalten ist derzeit nur verfügbar, wenn Sie das Flag verwenden, wird jedoch in den nächsten Monaten zum Standardverhalten. Beachten Sie, dass dieses Vorschauflag bei bedarfsgesteuerter Bereitstellung nicht funktioniert. 
   * **URL (SCIM-konform):** AzureAdScimPatch062020
@@ -58,29 +58,29 @@ Verwenden Sie die weiter unten angegebenen Flags in der Mandanten-URL Ihrer Anwe
   ```json
    PATCH https://[...]/Groups/ac56b4e5-e079-46d0-810e-85ddbd223b09
    {
-    &quot;schemas&quot;: [
-        &quot;urn:ietf:params:scim:api:messages:2.0:PatchOp&quot;
+    "schemas": [
+        "urn:ietf:params:scim:api:messages:2.0:PatchOp"
     ],
-    &quot;Operations&quot;: [
+    "Operations": [
         {
-            &quot;op&quot;: &quot;remove&quot;,
-            &quot;path&quot;: &quot;members[value eq \&quot;16b083c0-f1e8-4544-b6ee-27a28dc98761\&quot;]&quot;
+            "op": "remove",
+            "path": "members[value eq \"16b083c0-f1e8-4544-b6ee-27a28dc98761\"]"
         }
     ]
    }
 
     PATCH https://[...]/Groups/ac56b4e5-e079-46d0-810e-85ddbd223b09
     {
-    &quot;schemas&quot;: [
-        &quot;urn:ietf:params:scim:api:messages:2.0:PatchOp&quot;
+    "schemas": [
+        "urn:ietf:params:scim:api:messages:2.0:PatchOp"
     ],
-    &quot;Operations&quot;: [
+    "Operations": [
         {
-            &quot;op&quot;: &quot;add&quot;,
-            &quot;path&quot;: &quot;members&quot;,
-            &quot;value&quot;: [
+            "op": "add",
+            "path": "members",
+            "value": [
                 {
-                    &quot;value&quot;: &quot;10263a6910a84ef9a581dd9b8dcc0eae&quot;
+                    "value": "10263a6910a84ef9a581dd9b8dcc0eae"
                 }
             ]
         }
@@ -89,25 +89,25 @@ Verwenden Sie die weiter unten angegebenen Flags in der Mandanten-URL Ihrer Anwe
 
     PATCH https://[...]/Users/ac56b4e5-e079-46d0-810e-85ddbd223b09
     {
-    &quot;schemas&quot;: [
-        &quot;urn:ietf:params:scim:api:messages:2.0:PatchOp&quot;
+    "schemas": [
+        "urn:ietf:params:scim:api:messages:2.0:PatchOp"
     ],
-    &quot;Operations&quot;: [
+    "Operations": [
         {
-            &quot;op&quot;: &quot;replace&quot;,
-            &quot;path&quot;: &quot;emails[type eq \&quot;work\&quot;].value&quot;,
-            &quot;value&quot;: &quot;someone@contoso.com&quot;
+            "op": "replace",
+            "path": "emails[type eq \"work\"].value",
+            "value": "someone@contoso.com"
         },
         {
-            &quot;op&quot;: &quot;replace&quot;,
-            &quot;path&quot;: &quot;emails[type eq \&quot;work\&quot;].primary&quot;,
-            &quot;value&quot;: true
+            "op": "replace",
+            "path": "emails[type eq \"work\"].primary",
+            "value": true
         },
         {
-            &quot;op&quot;: &quot;replace&quot;,
-            &quot;value&quot;: {
-                &quot;active&quot;: false,
-                &quot;userName&quot;: &quot;someone&quot;
+            "op": "replace",
+            "value": {
+                "active": false,
+                "userName": "someone"
             }
         }
     ]
@@ -115,28 +115,28 @@ Verwenden Sie die weiter unten angegebenen Flags in der Mandanten-URL Ihrer Anwe
 
     PATCH https://[...]/Users/ac56b4e5-e079-46d0-810e-85ddbd223b09
     {
-    &quot;schemas&quot;: [
-        &quot;urn:ietf:params:scim:api:messages:2.0:PatchOp&quot;
+    "schemas": [
+        "urn:ietf:params:scim:api:messages:2.0:PatchOp"
     ],
-    &quot;Operations&quot;: [
+    "Operations": [
         {
-            &quot;op&quot;: &quot;replace&quot;,
-            &quot;path&quot;: &quot;active&quot;,
-            &quot;value&quot;: false
+            "op": "replace",
+            "path": "active",
+            "value": false
         }
     ]
     }
 
     PATCH https://[...]/Users/ac56b4e5-e079-46d0-810e-85ddbd223b09
     {
-    &quot;schemas&quot;: [
-        &quot;urn:ietf:params:scim:api:messages:2.0:PatchOp&quot;
+    "schemas": [
+        "urn:ietf:params:scim:api:messages:2.0:PatchOp"
     ],
-    &quot;Operations&quot;: [
+    "Operations": [
         {
-            &quot;op&quot;: &quot;add&quot;,
-            &quot;path&quot;: &quot;urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:department&quot;,
-            &quot;value&quot;: &quot;Tech Infrastructure"
+            "op": "add",
+            "path": "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:department",
+            "value": "Tech Infrastructure"
         }
     ]
     }

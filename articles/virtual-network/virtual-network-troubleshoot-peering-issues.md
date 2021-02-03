@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/28/2019
 ms.author: kaushika
-ms.openlocfilehash: 75b62eb00b1a1a534be01f9f118b4d5066e44a37
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: cb5ce421b6a38edcb8d92866f749a544eff927d6
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98222886"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99096388"
 ---
 # <a name="troubleshoot-virtual-network-peering-issues"></a>Beheben von Problemen mit dem Peering virtueller Netzwerke
 
@@ -87,7 +87,7 @@ Führen Sie die Schritte aus, die im folgenden Artikel aufgeführt sind: [Konfig
 Weitere Informationen finden Sie unter [Dienstverkettung](./virtual-network-peering-overview.md#service-chaining).
 
 > [!Note]
-> Wenn Sie Hilfe für das Einrichten einer NVA benötigen, [wenden Sie sich an den NVA-Anbieter](https://support.microsoft.com/help/2984655/support-for-azure-market-place-for-virtual-machines).
+> Wenn Sie Hilfe für das Einrichten einer NVA benötigen, [wenden Sie sich an den NVA-Anbieter](https://mskb.pkisolutions.com/kb/2984655).
 
 Informationen zur Problembehandlung beim Einrichten einer NVA und zum Routing finden Sie unter [Probleme mit virtuellen Netzwerkappliances in Azure](./virtual-network-troubleshoot-nva.md).
 
@@ -190,7 +190,7 @@ Für Punkt-zu-Standort-Verbindungen:
 
 Ein Hub-Netzwerk muss ein virtuelles Netzwerkgerät (Network Virtual Appliance, NVA) enthalten. Konfigurieren Sie UDRs in Spokes, für die eine NVA als nächster Hop festgelegt ist, und aktivieren Sie **Weitergeleiteten Datenverkehr zulassen** im virtuellen Hub-Netzwerk.
 
-Weitere Informationen finden Sie unter [Dienstverkettung](./virtual-network-peering-overview.md#service-chaining), und besprechen Sie diese Anforderungen mit dem jeweiligen [NVA-Anbieter](https://support.microsoft.com/help/2984655/support-for-azure-market-place-for-virtual-machines).
+Weitere Informationen finden Sie unter [Dienstverkettung](./virtual-network-peering-overview.md#service-chaining), und besprechen Sie diese Anforderungen mit dem jeweiligen [NVA-Anbieter](https://mskb.pkisolutions.com/kb/2984655).
 
 ## <a name="troubleshoot-a-hub-spoke-network-connectivity-issue-between-spoke-virtual-networks-in-different-regions"></a>Beheben eines Hub-Spoke-Netzwerkverbindungsproblems zwischen virtuellen Spoke-Netzwerken in unterschiedlichen Regionen
 

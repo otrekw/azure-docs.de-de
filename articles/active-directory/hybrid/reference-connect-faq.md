@@ -15,12 +15,12 @@ ms.date: 08/23/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ff2651d2fed9c307bbb90623572b4a74d750d3a4
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 1fa195fd8d40c6b67a9c446f0b2320fe47d75259
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94836069"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99092665"
 ---
 # <a name="azure-active-directory-connect-faq"></a>Häufig gestellte Fragen zu Azure Active Directory Connect
 
@@ -162,8 +162,8 @@ Synchronisierte Benutzer können lokal erstellt oder gemastert werden. Wenn das 
 **F: Warum entspricht das userPrincipalName-Attribut (UPN) in Azure AD nicht dem lokalen UPN?**  
 Informationen finden Sie in diesen Artikeln:
 
-* [Benutzernamen in Microsoft 365, Azure oder Intune entsprechen nicht dem lokalen UPN oder der alternativen Anmelde-ID](https://support.microsoft.com/kb/2523192)
-* [Änderungen werden nicht mehr vom Azure Active Directory-Synchronisierungstool synchronisiert, wenn der UPN eines Benutzerkontos für die Verbindung mit einer anderen Verbunddomäne geändert wird](https://support.microsoft.com/kb/2669550)
+* [Benutzernamen in Microsoft 365, Azure oder Intune entsprechen nicht dem lokalen UPN oder der alternativen Anmelde-ID](https://mskb.pkisolutions.com/kb/2523192)
+* [Änderungen werden nicht mehr vom Azure Active Directory-Synchronisierungstool synchronisiert, wenn der UPN eines Benutzerkontos für die Verbindung mit einer anderen Verbunddomäne geändert wird](https://mskb.pkisolutions.com/kb/2669550)
 
 Sie können Azure AD auch so konfigurieren, dass das Synchronisierungsmodul den UPN wie unter [Features des Azure AD Connect-Synchronisierungsdiensts](how-to-connect-syncservice-features.md)beschrieben aktualisiert.
 

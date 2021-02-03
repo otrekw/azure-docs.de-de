@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
-ms.openlocfilehash: 17616a223292ec07186b0a3fba264400423977ac
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9ee27f429dbfd1e550a45bbc26413a1c259c4fbe
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87058754"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99092367"
 ---
 # <a name="enable-or-disable-a-firewall-rule-on-an-azure-vm-guest-os"></a>Aktivieren oder Deaktivieren einer Firewallregel unter einem Gastbetriebssystem in Azure VM
 
@@ -95,7 +95,7 @@ Wenn der virtuelle Computer online ist und ein anderer virtueller Computer im gl
 
 #### <a name="mitigation-4-remote-registry"></a>Lösung 4: Remoteregistrierung
 
-Wenn der virtuelle Computer online ist und ein anderer virtueller Computer im gleichen virtuellen Netzwerk darauf zugreifen kann, können Sie die [Remoteregistrierung](https://support.microsoft.com/help/314837/how-to-manage-remote-access-to-the-registry) auf dem anderen virtuellen Computer verwenden.
+Wenn der virtuelle Computer online ist und ein anderer virtueller Computer im gleichen virtuellen Netzwerk darauf zugreifen kann, können Sie die [Remoteregistrierung](https://www.betaarchive.com/wiki/index.php?title=Microsoft_KB_Archive/314837) auf dem anderen virtuellen Computer verwenden.
 
 1.  Starten Sie auf dem virtuellen Computer, der zur Problembehandlung dient, den Registrierungs-Editor (regedit.exe), und wählen Sie **Datei** > **Mit Netzwerkregistrierung verbinden** aus.
 

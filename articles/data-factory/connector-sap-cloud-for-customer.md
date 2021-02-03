@@ -11,15 +11,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 06/12/2020
-ms.openlocfilehash: 3874d3b2b0938b6fd0f763b42ef15f8250b42f1d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 02/02/2021
+ms.openlocfilehash: 9578b87e16f418a7923cd71aa0638fa4e9279cfd
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87529618"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99430881"
 ---
 # <a name="copy-data-from-sap-cloud-for-customer-c4c-using-azure-data-factory"></a>Kopieren von Daten aus SAP Cloud for Customer (C4C) mithilfe von Azure Data Factory
+
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 In diesem Artikel wird beschrieben, wie Sie die Kopieraktivität in Azure Data Factory verwenden, um Daten aus und in SAP Cloud for Customer (C4C) kopieren. Er baut auf dem Artikel zur [Übersicht über die Kopieraktivität](copy-activity-overview.md) auf, der eine allgemeine Übersicht über die Kopieraktivität enthält.
@@ -54,10 +55,7 @@ Folgende Eigenschaften werden für den mit SAP Cloud for Customer verknüpften D
 | url | Die URL des SAP C4C OData-Diensts. | Ja |
 | username | Geben Sie den Benutzernamen für die Verbindung mit dem SAP C4C-Server an. | Ja |
 | password | Geben Sie das Kennwort für das Benutzerkonto an, das Sie für „username“ angegeben haben. Markieren Sie dieses Feld als SecureString, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). | Ja |
-| connectVia | Die [Integrationslaufzeit](concepts-integration-runtime.md), die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden muss. Wenn keine Option angegeben ist, wird die standardmäßige Azure Integration Runtime verwendet. | Quelle: Nein, Senke: Ja |
-
->[!IMPORTANT]
->Um Daten in SAP Cloud for Customer zu kopieren, erstellen Sie explizit [eine Azure IR](create-azure-integration-runtime.md#create-azure-ir) mit einem Standort in der Nähe Ihres SAP Cloud for Customer-Standorts, und nehmen Sie eine Zuordnung im verknüpften Dienst wie im folgenden Beispiel vor:
+| connectVia | Die [Integrationslaufzeit](concepts-integration-runtime.md), die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden muss. Wenn keine Option angegeben ist, wird die standardmäßige Azure Integration Runtime verwendet. | Nein |
 
 **Beispiel:**
 
@@ -167,8 +165,8 @@ Legen Sie zum Kopieren von Daten in SAP Cloud for Customer den Senkentyp in der 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft muss auf Folgendes festgelegt werden: **SapCloudForCustomerSink**  | Ja |
-| writeBehavior | Das Schreibverhalten des Vorgangs. Optionen: „Insert“, „Update“. | Nein. Standard: „Insert“. |
-| writeBatchSize | Die Batchgröße des Schreibvorgangs. Die Batchgröße zum Erzielen der besten Leistung kann für verschiedene Tabellen oder Server unterschiedlich sein. | Nein. Standardwert: 10 |
+| writeBehavior | Das Schreibverhalten des Vorgangs. Optionen: „Insert“, „Update“. | Nein. Standard: „Insert“. |
+| writeBatchSize | Die Batchgröße des Schreibvorgangs. Die Batchgröße zum Erzielen der besten Leistung kann für verschiedene Tabellen oder Server unterschiedlich sein. | Nein. Standardwert: 10 |
 
 **Beispiel:**
 
@@ -215,14 +213,14 @@ Beim Kopieren von Daten aus SAP Cloud for Customer werden die folgenden Zuordnun
 
 | SAP C4C OData-Datentyp | Data Factory-Zwischendatentyp |
 |:--- |:--- |
-| Edm.Binary | Byte[] |
+| Edm.Binary | Byte[] |
 | Edm.Boolean | Bool |
-| Edm.Byte | Byte[] |
+| Edm.Byte | Byte[] |
 | Edm.DateTime | Datetime |
 | Edm.Decimal | Decimal |
 | Edm.Double | Double |
 | Edm.Single | Single |
-| Edm.Guid | Guid |
+| Edm.Guid | Guid |
 | Edm.Int16 | Int16 |
 | Edm.Int32 | Int32 |
 | Edm.Int64 | Int64 |

@@ -3,7 +3,7 @@ title: Planen der HR-Cloudanwendung für die Azure Active Directory-Benutzerbere
 description: In diesem Artikel wird der Bereitstellungsprozess für die Integration von HR-Cloudsystemen wie Workday und Sucessfactors mit Azure Active Directory beschrieben. Die Integration von Azure AD in Ihr HR-Cloudsystem führt zu einem vollständigen Identity Lifecycle Management-System.
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: conceptual
@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 11/22/2019
 ms.author: kenwith
 ms.reviewer: arvindha, celested
-ms.openlocfilehash: 64418a727ecb9a300912a4766a9ea2066328ad31
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 9c896d4cccf898b8818b4c363c5bc891a8734ca5
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96174899"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99256710"
 ---
 # <a name="plan-cloud-hr-application-to-azure-active-directory-user-provisioning"></a>Planen der HR-Cloudanwendung für die Azure Active Directory-Benutzerbereitstellung
 

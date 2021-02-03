@@ -4,12 +4,12 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 9/1/2020
 ms.author: mikben
-ms.openlocfilehash: c51316b445471c58ae88237b370f5a25fdedf373
-ms.sourcegitcommit: 65cef6e5d7c2827cf1194451c8f26a3458bc310a
+ms.openlocfilehash: 2c894ea4bcb9701b8b65bcb9cd0b4b82c1898448
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2021
-ms.locfileid: "98605071"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99500219"
 ---
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -510,7 +510,7 @@ await deviceManager.setSpeaker(AudioDeviceInfo);
 Sie können `DeviceManager` und `Renderer` verwenden, um mit dem Rendern von Streams über Ihre lokale Kamera zu beginnen. Dieser Stream wird nicht an andere Teilnehmer gesendet. Es handelt sich um einen lokalen Vorschaufeed. Dies ist ein asynchroner Vorgang.
 
 ```js
-const localVideoDevice = deviceManager().getCameraList()[0];
+const localVideoDevice = deviceManager.getCameraList()[0];
 const localCameraStream = new LocalVideoStream(localVideoDevice);
 const renderer = new Renderer(localCameraStream);
 const view = await renderer.createView();
