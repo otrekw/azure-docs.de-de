@@ -10,12 +10,12 @@ ms.subservice: anomaly-detector
 ms.topic: conceptual
 ms.date: 01/22/2021
 ms.author: mbullwin
-ms.openlocfilehash: b0869335c386712e6b759bb0ced459ebd1bf383c
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: 43ccde054a9630b251aa6c206028d29c7c699316
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98702725"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98936196"
 ---
 # <a name="best-practices-for-using-the-anomaly-detector-api"></a>Best Practices bei der Verwendung der Anomalieerkennungs-API
 
@@ -52,7 +52,7 @@ Nachfolgend ist dasselbe Dataset unter Verwendung der Batchanomalieerkennung auf
 
 ## <a name="data-preparation"></a>Datenaufbereitung
 
-Die Anomalieerkennungs-API akzeptiert als JSON-Anforderungsobjekt formatierte Zeitreihendaten. Eine Zeitreihe kann aus beliebigen numerischen Daten bestehen, die über die Zeit sequenziell erfasst werden. Sie können Fenster Ihrer Zeitreihendaten an den Anomalieerkennungs-API-Endpunkt senden, um die Leistung der API zu verbessern. Dabei können zwischen 12 (Minimum) und 8640 (Maximum) Datenpunkten gesendet werden. Die [Granularität](/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.granularity?view=azure-dotnet-preview) wird als die Rate definiert, mit der Stichproben für die Daten erstellt werden. 
+Die Anomalieerkennungs-API akzeptiert als JSON-Anforderungsobjekt formatierte Zeitreihendaten. Eine Zeitreihe kann aus beliebigen numerischen Daten bestehen, die über die Zeit sequenziell erfasst werden. Sie können Fenster Ihrer Zeitreihendaten an den Anomalieerkennungs-API-Endpunkt senden, um die Leistung der API zu verbessern. Dabei können zwischen 12 (Minimum) und 8640 (Maximum) Datenpunkten gesendet werden. Die [Granularität](/dotnet/api/microsoft.azure.cognitiveservices.anomalydetector.models.granularity) wird als die Rate definiert, mit der Stichproben für die Daten erstellt werden. 
 
 Datenpunkte, die an die Anomalieerkennungs-API gesendet werden, müssen einen gültigen Zeitstempel der koordinierten Weltzeit (UTC) und einen numerischen Wert aufweisen. 
 

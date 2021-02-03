@@ -2,19 +2,19 @@
 title: Glossar – Custom Translator
 titleSuffix: Azure Cognitive Services
 description: Das Glossar des benutzerdefinierten Translators hilft Ihnen, die in den Artikeln verwendeten Begriffe zu verstehen, während Sie erfahren, wie Sie den Dienst nutzen.
-author: swmachan
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.date: 08/17/2020
-ms.author: swmachan
+ms.author: lajanuar
 ms.topic: reference
-ms.openlocfilehash: 67af6ab9ae5c60ee8291f38ea58b3b3d9744dbc9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4043eb83e931184371bdf4e0bcdcf4c874262d99
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88506650"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98895814"
 ---
 # <a name="custom-translator-glossary"></a>Glossar für Custom Translator
 

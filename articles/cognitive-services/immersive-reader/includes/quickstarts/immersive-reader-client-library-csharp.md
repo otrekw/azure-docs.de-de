@@ -11,12 +11,12 @@ ms.topic: include
 ms.date: 09/14/2020
 ms.author: nitinme
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: cef5aaae58797e38745b3f5164c171581a005562
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 080b9dac8dad099f2901f2b820da58501310471b
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94371964"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98948106"
 ---
 [Plastischer Reader](https://www.onenote.com/learningtools) ist ein inklusiv konzipiertes Tool, das bewährte Techniken implementiert, um das Leseverständnis von Leseanfängern, Sprachenlernenden und Personen mit Lernunterschieden, wie z. B. Dyslexie, zu verbessern. Sie können den plastischen Reader in Ihren Anwendungen verwenden, um Text zu isolieren, den Fokus zu verbessern, Bilder für häufig verwendete Wörter anzuzeigen, Wortarten hervorzuheben, markierten Text laut vorzulesen, Wörter und Ausdrücke in Echtzeit zu übersetzen und vieles mehr.
 
@@ -42,7 +42,7 @@ Erstellen Sie mit der Vorlage für ASP.NET Core-Webanwendungen mit dem integrier
 
 ### <a name="configure-authentication-values"></a>Konfigurieren der Authentifizierungswerte
 
-Klicken Sie im _Projektmappen-Explorer_ mit der rechten Maustaste auf das Projekt, und wählen Sie anschließend **Geheimen Benutzerschlüssel verwalten** aus. Damit wird eine Datei namens _secrets.json_ geöffnet. Diese Datei ist nicht in die Quellcodeverwaltung eingecheckt. [Hier](/aspnet/core/security/app-secrets?preserve-view=true&tabs=windows&view=aspnetcore-3.1)erhalten Sie weitere Informationen. Ersetzen Sie den Inhalt der Datei _secrets.json_ durch Folgendes. Verwenden Sie dabei die Werte, die beim Erstellen der Ressource des plastischen Readers angegeben wurden.
+Klicken Sie im _Projektmappen-Explorer_ mit der rechten Maustaste auf das Projekt, und wählen Sie anschließend **Geheimen Benutzerschlüssel verwalten** aus. Damit wird eine Datei namens _secrets.json_ geöffnet. Diese Datei ist nicht in die Quellcodeverwaltung eingecheckt. [Hier](/aspnet/core/security/app-secrets?tabs=windows)erhalten Sie weitere Informationen. Ersetzen Sie den Inhalt der Datei _secrets.json_ durch Folgendes. Verwenden Sie dabei die Werte, die beim Erstellen der Ressource des plastischen Readers angegeben wurden.
 
 ```json
 {
@@ -55,9 +55,9 @@ Klicken Sie im _Projektmappen-Explorer_ mit der rechten Maustaste auf das Projek
 
 ### <a name="install-active-directory-nuget-package"></a>Installieren des Active Directory-NuGet-Pakets
 
-Der folgende Code verwendet Objekte aus dem NuGet-Paket **Microsoft.IdentityModel.Clients.ActiveDirectory** , sodass Sie einen Verweis auf dieses Paket in Ihrem Projekt hinzufügen müssen.
+Der folgende Code verwendet Objekte aus dem NuGet-Paket **Microsoft.IdentityModel.Clients.ActiveDirectory**, sodass Sie einen Verweis auf dieses Paket in Ihrem Projekt hinzufügen müssen.
 
-Öffnen Sie die NuGet-Paket-Manager-Konsole über **Tools > NuGet-Paket-Manager > Paket-Manager-Konsole** , und führen Sie den folgenden Befehl aus:
+Öffnen Sie die NuGet-Paket-Manager-Konsole über **Tools > NuGet-Paket-Manager > Paket-Manager-Konsole**, und führen Sie den folgenden Befehl aus:
 
 ```powershell
     Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory -Version 5.2.0
@@ -65,7 +65,7 @@ Der folgende Code verwendet Objekte aus dem NuGet-Paket **Microsoft.IdentityMode
 
 ### <a name="update-the-controller-to-acquire-the-token"></a>Aktualisieren des Controllers zum Abrufen des Tokens 
 
-Öffnen Sie _Controllers\HomeController.cs_ , und fügen Sie nach den _using_ -Anweisungen am Anfang der Datei den folgenden Code ein:
+Öffnen Sie _Controllers\HomeController.cs_, und fügen Sie nach den _using_-Anweisungen am Anfang der Datei den folgenden Code ein:
 
 ```csharp
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
@@ -148,7 +148,7 @@ public async Task<JsonResult> GetTokenAndSubdomain()
 @RenderSection("Styles", required: false)
 ```
 
-Nun fügen Sie dieser Web-App Beispielinhalte hinzu. Öffnen Sie _Views\Home\Index.cshtml_ , und ersetzen Sie den gesamten automatisch generierten Code durch dieses Beispiel:
+Nun fügen Sie dieser Web-App Beispielinhalte hinzu. Öffnen Sie _Views\Home\Index.cshtml_, und ersetzen Sie den gesamten automatisch generierten Code durch dieses Beispiel:
 
 ```html
 @{
@@ -292,7 +292,7 @@ Fügen Sie am Ende von _Views\Home\Index.cshtml_ den folgenden Code hinzu:
 
 ## <a name="build-and-run-the-app"></a>Erstellen und Ausführen der App
 
-Wählen Sie auf der Menüleiste **Debuggen > Debuggen starten** aus, oder drücken Sie **F5** , um die Anwendung zu starten.
+Wählen Sie auf der Menüleiste **Debuggen > Debuggen starten** aus, oder drücken Sie **F5**, um die Anwendung zu starten.
 
 In Ihrem Browser sollte Folgendes angezeigt werden:
 

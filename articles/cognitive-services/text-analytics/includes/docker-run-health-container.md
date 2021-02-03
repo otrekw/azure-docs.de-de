@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 11/12/2020
 ms.author: aahi
-ms.openlocfilehash: 82c33c038a1f8eaba540c9906efcffa0a9214762
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: af8fec56c32b52e2af584e59f08db6cc7129c9c5
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98690035"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98948287"
 ---
 ## <a name="install-the-container"></a>Installieren des Containers
 
@@ -112,7 +112,7 @@ az webapp config appsettings set -g $resource_group_name -n $appservice_name --s
 
 Sie können auch eine Azure-Containerinstanz (ACI) verwenden, um die Bereitstellung zu vereinfachen. ACI ist eine Ressource, die Ihnen das Ausführen von Docker-Containern nach Bedarf in einer verwalteten, serverlosen Azure-Umgebung ermöglicht. 
 
-Schritte zum Bereitstellen einer ACI-Ressource mithilfe des Azure-Portals finden Sie unter [Verwenden von Azure Container Instances](../how-tos/text-analytics-how-to-use-container-instances.md). Alternativ können Sie das unten dargestellte PowerShell-Skript an der Azure CLI verwenden, das eine ACI in Ihrem Abonnement erstellt und dazu das Containerimage verwendet.  Warten Sie, bis das Skript abgeschlossen wurde (ungefähr 25–30 Minuten), bevor Sie die erste Anforderung absenden.  Wählen Sie wegen des Limits für die Maximalanzahl von CPUs pro ACI-Ressource diese Option nicht aus, wenn Sie davon ausgehen, dass Sie mehr als 5 große Dokumente (jeweils ca. 5000 Zeichen) pro Anforderung übermitteln werden.
+Schritte zum Bereitstellen einer ACI-Ressource mithilfe des Azure-Portals finden Sie unter [Verwenden von Azure Container Instances](../../containers/azure-container-instance-recipe.md). Alternativ können Sie das unten dargestellte PowerShell-Skript an der Azure CLI verwenden, das eine ACI in Ihrem Abonnement erstellt und dazu das Containerimage verwendet.  Warten Sie, bis das Skript abgeschlossen wurde (ungefähr 25–30 Minuten), bevor Sie die erste Anforderung absenden.  Wählen Sie wegen des Limits für die Maximalanzahl von CPUs pro ACI-Ressource diese Option nicht aus, wenn Sie davon ausgehen, dass Sie mehr als 5 große Dokumente (jeweils ca. 5000 Zeichen) pro Anforderung übermitteln werden.
 Informationen zur Verfügbarkeit finden Sie im Artikel [Regionale ACI-Unterstützung](../../../container-instances/container-instances-region-availability.md). 
 
 > [!NOTE] 
@@ -213,4 +213,3 @@ docker-compose up
 ```
 
 Weitere Informationen finden Sie in der NGINX-Dokumentation unter [NGINX SSL Termination](https://docs.nginx.com/nginx/admin-guide/security-controls/terminating-ssl-http/) (NGINX SSL-Terminierung).
-

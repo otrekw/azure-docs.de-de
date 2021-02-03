@@ -111,6 +111,8 @@
         - name: Verwaltete Identitäten und Mediendienste
           displayName: content protection
           href: concept-managed-identities.md
+        - name: Vertrauenswürdiger Speicher
+          href: concept-trusted-storage.md
         - name: Vom Kunden verwaltete Schlüssel
           href: concept-use-customer-managed-keys-byok.md
     - name: Objekte
@@ -431,7 +433,7 @@
       displayName: schema
     - name: REST
       href: /rest/api/media/
-    - name: Azure-Befehlszeilenschnittstelle
+    - name: Azure CLI
       href: /cli/azure/ams
     - name: SDKs
       items:
@@ -469,7 +471,7 @@
       href: 'https://aka.ms/ams-v3-rest-sdk'
     - name: SDKs/Tools
       items:
-        - name: Azure-Befehlszeilenschnittstelle
+        - name: Azure CLI
           href: /cli/azure/install-azure-cli
         - name: .NET
           href: 'https://aka.ms/ams-v3-dotnet-sdk'

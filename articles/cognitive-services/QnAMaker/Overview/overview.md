@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 01/22/2021
 ms.custom: cog-serv-seo-aug-2020
 keywords: QnA Maker, Chatbots mit wenig Code, Konversationen mit Mehrfachdurchläufen
-ms.openlocfilehash: 16f30801d52aa46184c4eb394f3d1cfebecd4be6
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: a75b5939e8848ca898d7279b55ab2c4faa4ed72a
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98700714"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98919560"
 ---
 # <a name="what-is-qna-maker"></a>Was ist QnA Maker?
 
@@ -22,14 +22,14 @@ QnA Maker wird häufig mithilfe von Clientanwendungen für die Konversation ers
 
 ## <a name="when-to-use-qna-maker"></a>Einsatzgebiete von QnA Maker
 
-* **Statische Informationen:** Verwenden Sie QnA Maker, wenn Ihre Antwort-Wissensdatenbank statische Informationen enthält. Diese Wissensdatenbank ist speziell auf Ihre Anforderungen zugeschnitten und wurde anhand von Dokumenten wie [PDFs und URLs](../index.yml) erstellt.
+* **Statische Informationen:** Verwenden Sie QnA Maker, wenn Ihre Antwort-Wissensdatenbank statische Informationen enthält. Diese Wissensdatenbank ist speziell auf Ihre Anforderungen zugeschnitten und wurde anhand von Dokumenten wie [PDFs und URLs](../Concepts/data-sources-and-content.md) erstellt.
 * **Bereitstellung der gleichen Antwort für eine Anforderung, eine Frage oder einen Befehl:** Wenn verschiedene Benutzer die gleiche Frage stellen, erhalten sie die gleiche Antwort.
 * **Filterung statischer Informationen auf der Grundlage von Metainformationen:** Fügen Sie [Metadatentags](../how-to/metadata-generateanswer-usage.md) hinzu, um zusätzliche Filteroptionen bereitzustellen, die für die Benutzer Ihrer Clientanwendung und die Informationen relevant sind. Zu den gängigen Metadateninformationen zählen [Geplauder](../how-to/chit-chat-knowledge-base.md), Inhaltstyp oder -format, Inhaltszweck und Inhaltsaktualität.
 * **Verwaltung einer Botkonversation, die statische Informationen beinhaltet:** Ihre Wissensdatenbank liefert eine Antwort für den Konversationstext oder Befehl eines Benutzers. Ist die Antwort Teil eines vordefinierten Konversationsablaufs (dargestellt in Ihrer Wissensdatenbank mit [Mehrfachdurchlauf-Kontext](../how-to/multiturn-conversation.md)), kann der Bot diesen Ablauf problemlos bereitstellen.
 
 ## <a name="what-is-a-knowledge-base"></a>Was ist eine Wissensdatenbank?
 
-QnA Maker [importiert Ihre Inhalte](../index.yml) in eine Wissensdatenbank, die aus Frage-Antwort-Paaren besteht. Im Zuge des Importvorgangs werden Informationen zur Beziehung zwischen den Teilen Ihrer strukturierten und teilweise strukturierten Inhalte extrahiert, um Beziehungen zwischen den Frage-Antwort-Paaren zu implizieren. Sie können diese Frage-Antwort-Paare bearbeiten oder neue hinzufügen.
+QnA Maker [importiert Ihre Inhalte](../Concepts/plan.md) in eine Wissensdatenbank, die aus Frage-Antwort-Paaren besteht. Im Zuge des Importvorgangs werden Informationen zur Beziehung zwischen den Teilen Ihrer strukturierten und teilweise strukturierten Inhalte extrahiert, um Beziehungen zwischen den Frage-Antwort-Paaren zu implizieren. Sie können diese Frage-Antwort-Paare bearbeiten oder neue hinzufügen.
 
 Der Inhalt des Frage-Antwort-Paars umfasst Folgendes:
 * Alle alternativen Formen der Frage

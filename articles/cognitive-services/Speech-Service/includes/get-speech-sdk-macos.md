@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/27/2020
 ms.author: trbye
-ms.openlocfilehash: 963405f0874e23553a118081b080a0f30e1942eb
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: e7714dcc3e14e3659ca1943507d55d20dfb28fa6
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93135547"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99214340"
 ---
 Für die Entwicklung für macOS sind drei Speech SDKs verfügbar.
 
@@ -28,7 +28,7 @@ Für die Entwicklung für macOS sind drei Speech SDKs verfügbar.
 
 :::row:::
     :::column span="3":::
-        Das macOS-CocoaPod-Paket steht zum Download zur Verfügung und kann mit der integrierten Entwicklungsumgebung (Integrated Development Environment, IDE) <a href="https://apps.apple.com/us/app/xcode/id497799835" target="_blank">Xcode 9.4.1 (oder höher) <span class="docon docon-navigate-external x-hidden-focus"></span></a> verwendet werden. Laden Sie zunächst die <a href="https://aka.ms/csspeech/macosbinary" target="_blank">Binärdatei für CocoaPod <span class="docon docon-navigate-external x-hidden-focus"></span></a> herunter. Extrahieren Sie den Pod in dem Verzeichnis, in dem Sie ihn verwenden möchten, erstellen Sie eine *Podfile* , und listen Sie den `pod` als `target` auf.
+        Das macOS-CocoaPod-Paket steht zum Download zur Verfügung und kann mit der integrierten Entwicklungsumgebung (Integrated Development Environment, IDE) <a href="https://apps.apple.com/us/app/xcode/id497799835" target="_blank">Xcode 9.4.1 (oder höher) <span class="docon docon-navigate-external x-hidden-focus"></span></a> verwendet werden. Laden Sie zunächst die <a href="https://aka.ms/csspeech/macosbinary" target="_blank">Binärdatei für CocoaPod <span class="docon docon-navigate-external x-hidden-focus"></span></a> herunter. Extrahieren Sie den Pod in dem Verzeichnis, in dem Sie ihn verwenden möchten, erstellen Sie eine *Podfile*, und listen Sie den `pod` als `target` auf.
     :::column-end:::
     :::column:::
         <br>
@@ -43,7 +43,7 @@ platform :ios, '9.3'
 use_frameworks!
 
 target 'MyApp' do
-  pod 'MicrosoftCognitiveServicesSpeech', '~> 1.14.0'
+  pod 'MicrosoftCognitiveServicesSpeech', '~> 1.15.0'
 end
 ```
 

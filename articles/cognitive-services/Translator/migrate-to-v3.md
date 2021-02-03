@@ -3,19 +3,19 @@ title: 'Migrieren zu V3: Translator'
 titleSuffix: Azure Cognitive Services
 description: Dieser Artikel enthält die Schritte für die Migration von V2 zu V3 für Azure Cognitive Services Translator.
 services: cognitive-services
-author: swmachan
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 05/26/2020
-ms.author: swmachan
-ms.openlocfilehash: baaf907d2fafe23805e6b49582ecc7592ee05e0b
-ms.sourcegitcommit: e46f9981626751f129926a2dae327a729228216e
+ms.author: lajanuar
+ms.openlocfilehash: 13c4d39284fad293c945f8b7e31076dccee84fda
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98028232"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98896832"
 ---
 # <a name="translator-v2-to-v3-migration"></a>Translator-Migration von V2 zu V3
 

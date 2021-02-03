@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 09/14/2020
 ms.author: aahi
 ms.custom: subject-armqs, devx-track-azurecli
-ms.openlocfilehash: 4afaad77fdff7a1ba80a385e9f2c3d8ddef8ab96
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 856fd86b08dfe74925e682661df0d20692839bd5
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94842106"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98928648"
 ---
 # <a name="quickstart-create-a-cognitive-services-resource-using-an-arm-template"></a>Schnellstart: Erstellen einer Cognitive Services-Ressource mithilfe einer ARM-Vorlage
 
@@ -57,7 +57,7 @@ In der Vorlage ist eine einzelne Azure-Ressource definiert:
 
 2. Geben Sie die folgenden Werte ein.
 
-    |Wert  |Beschreibung  |
+    |Wert  |BESCHREIBUNG  |
     |---------|---------|
     | **Abonnement** | Wählen Sie ein Azure-Abonnement aus. |
     | **Ressourcengruppe** | Wählen Sie die Option **Neu erstellen** aus, geben Sie einen eindeutigen Namen für die Ressourcengruppe ein, und klicken Sie dann auf **OK**. |
@@ -75,7 +75,7 @@ In der Vorlage ist eine einzelne Azure-Ressource definiert:
 > [!NOTE]
 > Zum Erstellen von `az deployment group` ist Azure CLI, Version 2.6 oder höher, erforderlich. Verwenden Sie den Befehl `az --version`, um den Versionstyp anzuzeigen. Weitere Informationen finden Sie in der [Dokumentation](/cli/azure/deployment/group).
 
-Führen Sie das folgende Skript an der Azure-Befehlszeilenschnittstelle (CLI) [auf dem lokalen Computer](/cli/azure/install-azure-cli?view=azure-cli-latest) oder in einem Browser über die Schaltfläche **Ausprobieren** aus. Geben Sie einen Namen und einen Speicherort (beispielsweise `centralus`) für eine neue Ressourcengruppe ein, dann wird die ARM-Vorlage verwendet, um darin eine Cognitive Services-Ressource bereitzustellen. Merken Sie sich den verwendeten Namen. Sie benötigen ihn später, um die Bereitstellung zu überprüfen.
+Führen Sie das folgende Skript an der Azure-Befehlszeilenschnittstelle (CLI) [auf dem lokalen Computer](/cli/azure/install-azure-cli) oder in einem Browser über die Schaltfläche **Ausprobieren** aus. Geben Sie einen Namen und einen Speicherort (beispielsweise `centralus`) für eine neue Ressourcengruppe ein, dann wird die ARM-Vorlage verwendet, um darin eine Cognitive Services-Ressource bereitzustellen. Merken Sie sich den verwendeten Namen. Sie benötigen ihn später, um die Bereitstellung zu überprüfen.
 
 
 ```azurecli-interactive

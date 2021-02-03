@@ -103,6 +103,8 @@
       href: How-To/change-default-answer.md
     - name: Dienstkonfiguration
       href: reference-app-service.md
+    - name: Richtlinien zum Inhaltsformat
+      href: reference-document-format-guidelines.md
     - name: Inhalts- und Datenformate
       items:
         - name: Richtlinien zum Inhaltsformat
@@ -171,7 +173,7 @@
       href: ../cognitive-services-support-options.md?context=/azure/cognitive-services/qnamaker/context/context
     - name: Regionale Verfügbarkeit
       href: 'https://azure.microsoft.com/global-infrastructure/services/'
-    - name: Compliance
+    - name: Kompatibilität
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: Azure-Roadmap
       href: 'https://azure.microsoft.com/roadmap/'

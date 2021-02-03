@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 08/20/2020
+ms.date: 02/01/2021
 ms.author: panosper
-ms.openlocfilehash: a6f75a80fd73844c975b332db8a0e8919cde9f0d
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: 61768991fc4e72b44568bd92278427e6af398d52
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98072172"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99226555"
 ---
 # <a name="speech-to-text-frequently-asked-questions"></a>Häufig gestellte Fragen zur Spracherkennung
 
@@ -83,7 +83,7 @@ Sowohl Basismodelle als auch benutzerdefinierte Modelle werden nach einiger Zeit
 
 **F: Werden meine Anforderungen protokolliert?**
 
-**A:** Standardmäßig werden Anforderungen nicht protokolliert (weder Audio noch Transkription). Bei Bedarf können Sie die Option *Log content from this endpoint* (Inhalte von diesem Endpunkt protokollieren) verwenden, wenn Sie [einen benutzerdefinierten Endpunkt erstellen](./how-to-custom-speech-train-model.md). Im [Speech SDK](speech-sdk.md) können Sie auch die Audioprotokollierung auf Grundlage von Anforderungen aktivieren, ohne dass Sie einen benutzerdefinierten Endpunkt erstellen müssen. In beiden Fällen werden die Audio- und Erkennungsergebnisse von Anforderungen in einem sicheren Speicher gespeichert. Bei Abonnements mit Speicherressourcen von Microsoft werden die Ergebnisse 30 Tage lang aufbewahrt.
+**A:** Standardmäßig werden Anforderungen nicht protokolliert (weder Audio noch Transkription). Bei Bedarf können Sie die Option *Log content from this endpoint* (Inhalte von diesem Endpunkt protokollieren) verwenden, wenn Sie [einen benutzerdefinierten Endpunkt erstellen](how-to-custom-speech-train-model.md#deploy-a-custom-model). Im [Speech SDK](how-to-use-logging.md) können Sie auch die Audioprotokollierung auf Grundlage von Anforderungen aktivieren, ohne dass Sie einen benutzerdefinierten Endpunkt erstellen müssen. In beiden Fällen werden die Audio- und Erkennungsergebnisse von Anforderungen in einem sicheren Speicher gespeichert. Bei Abonnements mit Speicherressourcen von Microsoft werden die Ergebnisse 30 Tage lang aufbewahrt.
 
 Sie können die protokollierten Dateien auf der Bereitstellungsseite in Speech Studio exportieren, wenn Sie einen benutzerdefinierten Endpunkt mit der Option *Log content from this endpoint* (Inhalte von diesem Endpunkt protokollieren) verwenden. Wenn die Audioprotokollierung über das SDK aktiviert ist, rufen Sie die [API](https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/GetBaseModelLogs) auf, um auf die Dateien zuzugreifen.
 

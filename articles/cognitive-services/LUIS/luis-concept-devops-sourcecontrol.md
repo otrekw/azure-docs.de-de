@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 11/18/2020
-ms.openlocfilehash: 0466105ab99d191b5dd9beab1d5d5b61f4b3225e
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 68d88ef667da9f22d3e3a17f10036693fcca0c3f
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98790883"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98932513"
 ---
 # <a name="devops-practices-for-luis"></a>DevOps-Methoden für LUIS
 
@@ -18,7 +18,7 @@ Softwareentwickler, die eine Language Understanding-App (LUIS) entwickeln, könn
 
 ## <a name="source-control-and-branch-strategies-for-luis"></a>Quellcodeverwaltungs- und Branchstrategien für LUIS
 
-Einer der wichtigsten Faktoren für den Erfolg von DevOps ist die [Quellcodeverwaltung](/azure/devops/user-guide/source-control?view=azure-devops). Ein Quellcodeverwaltungssystem ermöglicht Entwicklern die Zusammenarbeit an Code und das Nachverfolgen von Änderungen. Durch die Verwendung von Branches können Entwickler zwischen verschiedenen Versionen der Codebasis wechseln und unabhängig von anderen Mitgliedern des Teams arbeiten. Wenn Entwickler einen [Pull Request](https://help.github.com/github/collaborating-with-issues-and-pull-requests/about-pull-requests) (PR) auslösen, um Updates aus einem Branch für andere Branches vorzuschlagen, oder wenn Änderungen zusammengeführt werden, können diese Vorgänge [automatisierte Builds](luis-concept-devops-automation.md) auslösen, um Code zu erstellen und fortlaufend zu testen.
+Einer der wichtigsten Faktoren für den Erfolg von DevOps ist die [Quellcodeverwaltung](/azure/devops/user-guide/source-control). Ein Quellcodeverwaltungssystem ermöglicht Entwicklern die Zusammenarbeit an Code und das Nachverfolgen von Änderungen. Durch die Verwendung von Branches können Entwickler zwischen verschiedenen Versionen der Codebasis wechseln und unabhängig von anderen Mitgliedern des Teams arbeiten. Wenn Entwickler einen [Pull Request](https://help.github.com/github/collaborating-with-issues-and-pull-requests/about-pull-requests) (PR) auslösen, um Updates aus einem Branch für andere Branches vorzuschlagen, oder wenn Änderungen zusammengeführt werden, können diese Vorgänge [automatisierte Builds](luis-concept-devops-automation.md) auslösen, um Code zu erstellen und fortlaufend zu testen.
 
 Mithilfe der in diesem Dokument beschriebenen Konzepte und Anleitungen können Sie eine LUIS-App entwickeln, gleichzeitig Änderungen in einem Quellcodeverwaltungssystem nachverfolgen und dabei die folgenden bewährten Methoden für die Softwareentwicklung befolgen:
 
@@ -42,7 +42,7 @@ Mithilfe der in diesem Dokument beschriebenen Konzepte und Anleitungen können S
 
 ## <a name="source-control"></a>Quellcodeverwaltung
 
-Um die [App-Schemadefinition](./app-schema-definition.md) einer LUIS-App in einem Quellcodeverwaltungssystem zu verwalten, verwenden Sie die Darstellung der App im [LUDown-Format (`.lu`)](/azure/bot-service/file-format/bot-builder-lu-file-format?view=azure-bot-service-4.0). Das `.lu`-Format ist dem `.json`-Format vorzuziehen, da es für Menschen lesbar ist, sodass das Erstellen und Überprüfen von Änderungen in PRs vereinfacht wird.
+Um die [App-Schemadefinition](./app-schema-definition.md) einer LUIS-App in einem Quellcodeverwaltungssystem zu verwalten, verwenden Sie die Darstellung der App im [LUDown-Format (`.lu`)](/azure/bot-service/file-format/bot-builder-lu-file-format). Das `.lu`-Format ist dem `.json`-Format vorzuziehen, da es für Menschen lesbar ist, sodass das Erstellen und Überprüfen von Änderungen in PRs vereinfacht wird.
 
 ### <a name="save-a-luis-app-using-the-ludown-format"></a>Speichern einer LUIS-App im LUDown-Format
 
@@ -81,7 +81,7 @@ Schließen Sie keine Abonnementschlüssel oder ähnliche vertrauliche Werte in d
 - LUIS-Schlüssel für Erstellung und Vorhersage
 - LUIS-Endpunkte für Erstellung und Vorhersage
 - Azure-Abonnementschlüssel
-- Zugriffstoken, z. B. das Token für einen Azure-[Dienstprinzipal](/cli/azure/ad/sp?view=azure-cli-latest) für die Automation-Authentifizierung
+- Zugriffstoken, z. B. das Token für einen Azure-[Dienstprinzipal](/cli/azure/ad/sp) für die Automation-Authentifizierung
 
 #### <a name="strategies-for-securely-managing-secrets"></a>Strategien für die sichere Verwaltung von Geheimnissen
 
@@ -183,7 +183,7 @@ Eine LUIS-App im LUDown-Format ist für Menschen lesbar. Damit unterstützt sie 
 
 ## <a name="versioning"></a>Versionsverwaltung
 
-Eine Anwendung besteht aus mehreren Komponenten. Dies kann z. B. ein Bot sein, der in [Azure Bot Service](/azure/bot-service/bot-service-overview-introduction?view=azure-bot-service-4.0), [QnA Maker](https://www.qnamaker.ai/), [Azure Speech Service](../speech-service/overview.md) usw. ausgeführt wird. Um das Ziel von lose gekoppelten Anwendungen zu erreichen, verwenden Sie eine [Versionskontrolle](/azure/devops/learn/git/what-is-version-control), damit jede Komponente einer Anwendung unabhängig versioniert wird. Auf diese Weise können Entwickler Breaking Changes oder Updates erkennen, indem sie einfach die Versionsnummer überprüfen. Es ist einfacher, die LUIS-App unabhängig von anderen Komponenten zu versionieren, wenn Sie sie in einem eigenen Repository verwalten.
+Eine Anwendung besteht aus mehreren Komponenten. Dies kann z. B. ein Bot sein, der in [Azure Bot Service](/azure/bot-service/bot-service-overview-introduction), [QnA Maker](https://www.qnamaker.ai/), [Azure Speech Service](../speech-service/overview.md) usw. ausgeführt wird. Um das Ziel von lose gekoppelten Anwendungen zu erreichen, verwenden Sie eine [Versionskontrolle](/azure/devops/learn/git/what-is-version-control), damit jede Komponente einer Anwendung unabhängig versioniert wird. Auf diese Weise können Entwickler Breaking Changes oder Updates erkennen, indem sie einfach die Versionsnummer überprüfen. Es ist einfacher, die LUIS-App unabhängig von anderen Komponenten zu versionieren, wenn Sie sie in einem eigenen Repository verwalten.
 
 Auf die LUIS-App im Mainbranch sollte ein Versionsverwaltungsschema angewendet werden. Wenn Sie Updates an der `.lu`-Datei für eine LUIS-App im Mainbranch zusammenführen, importieren Sie dann diese aktualisierte Quelle in eine neue Version der LUIS-App für den Mainbranch.
 

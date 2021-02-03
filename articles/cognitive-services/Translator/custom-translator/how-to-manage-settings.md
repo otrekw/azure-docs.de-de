@@ -2,19 +2,19 @@
 title: Verwalten von Einstellungen – Custom Translator
 titleSuffix: Azure Cognitive Services
 description: Hier erfahren Sie, wie Sie in Custom Translator Einstellungen verwalten, Arbeitsbereiche erstellen und freigeben sowie Abonnementschlüssel verwalten.
-author: swmachan
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.date: 08/17/2020
-ms.author: swmachan
+ms.author: lajanuar
 ms.topic: conceptual
-ms.openlocfilehash: e556ca2051fd75eb9bf6411c5479e63554606d48
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 49801eddd748a88109bb7f6d075def03cd798754
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94368337"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98895780"
 ---
 # <a name="how-to-manage-settings"></a>Verwalten von Einstellungen
 
@@ -89,11 +89,11 @@ In Custom Translator können Sie Ihren Arbeitsbereich für andere freigeben, z.B
 
 ## <a name="sharing-permissions"></a>Freigabeberechtigungen
 
-1. **Leser** : Benutzer mit dieser Freigabeberechtigung können alle Informationen im Arbeitsbereich anzeigen.
+1. **Leser**: Benutzer mit dieser Freigabeberechtigung können alle Informationen im Arbeitsbereich anzeigen.
 
-2. **Bearbeiter** : Benutzer mit dieser Freigabeberechtigung können im Arbeitsbereich Dokumente hinzufügen, Modelle trainieren sowie Dokumente und Projekte löschen. Außerdem haben sie die Möglichkeit, einen Abonnementschlüssel hinzuzufügen. Allerdings können diese Benutzer nicht ändern, für wen der Arbeitsbereich freigegeben ist, den Arbeitsbereich löschen oder den Arbeitsbereichsnamen ändern.
+2. **Bearbeiter**: Benutzer mit dieser Freigabeberechtigung können im Arbeitsbereich Dokumente hinzufügen, Modelle trainieren sowie Dokumente und Projekte löschen. Außerdem haben sie die Möglichkeit, einen Abonnementschlüssel hinzuzufügen. Allerdings können diese Benutzer nicht ändern, für wen der Arbeitsbereich freigegeben ist, den Arbeitsbereich löschen oder den Arbeitsbereichsnamen ändern.
 
-3. **Besitzer** : Benutzer mit dieser Freigabeberechtigung verfügen über uneingeschränkte Berechtigungen für den Arbeitsbereich.
+3. **Besitzer**: Benutzer mit dieser Freigabeberechtigung verfügen über uneingeschränkte Berechtigungen für den Arbeitsbereich.
 
 ## <a name="change-sharing-permission"></a>Ändern der Freigabeberechtigung
 

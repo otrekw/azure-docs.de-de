@@ -5,12 +5,12 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 12/04/2020
 ms.author: baanders
-ms.openlocfilehash: e06e660a43aaa0ff5eb79bc00bd8a5d2c61c6580
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: d93f484e318c10489eb1db3e9c65c6e0c7479c90
+ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98045313"
+ms.lasthandoff: 01/26/2021
+ms.locfileid: "98859622"
 ---
 | Filtername | BESCHREIBUNG | Filtertextschema | Unterstützte Werte | 
 | --- | --- | --- | --- |
@@ -22,10 +22,6 @@ ms.locfileid: "98045313"
 | Inhaltstyp | Der Inhaltstyp des Datenwerts. | `datacontenttype = '<contentType>'` | Der Inhaltstyp lautet `application/json`. |
 | Spezifikationsversion | Die Version des von Ihnen verwendeten Ereignisschemas. | `specversion = '<version>'` | Die Version muss `1.0` sein. Dies gibt das CloudEvents-Schema, Version 1.0, an. |
 | Benachrichtigungstext | Verweisen auf eine beliebige Eigenschaft im Feld `data` einer Benachrichtigung. | `$body.<property>` | Weitere Informationen finden Sie unter [*Vorgehensweise: Informationen zu Ereignisdaten*](../articles/digital-twins/how-to-interpret-event-data.md) für Beispiele von Benachrichtigungen. Auf jede Eigenschaft im Feld `data` kann mit `$body` verwiesen werden.
-
-Beachten Sie, dass Sie einer solchen Anforderung wie folgt mehrere Filter hinzufügen können: 
-
-:::code language="json" source="~/digital-twins-docs-samples/api-requests/filter-multiple.json":::
 
 Die folgenden Datentypen werden als Werte unterstützt, die von Verweisen auf die oben aufgeführten Daten zurückgegeben werden:
 

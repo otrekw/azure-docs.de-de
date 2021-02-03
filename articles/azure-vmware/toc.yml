@@ -36,7 +36,7 @@
   items:
     - name: Private Clouds und Cluster
       href: concepts-private-clouds-clusters.md
-    - name: Private Cloudnetzwerke und Konnektivität
+    - name: Private Cloudnetzwerke und Interkonnektivität
       href: concepts-networking.md
     - name: Speicher in privaten Clouds
       href: concepts-storage.md

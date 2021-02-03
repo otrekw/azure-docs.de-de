@@ -3,19 +3,19 @@ title: Translator-Methode „Translate“
 titleSuffix: Azure Cognitive Services
 description: Hier finden Sie Informationen zu den Parametern, Headern und Textnachrichten für die Methode „Translate“ von Azure Cognitive Services Translator zur Übersetzung von Text.
 services: cognitive-services
-author: swmachan
+author: laujan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
 ms.date: 08/06/2020
-ms.author: swmachan
-ms.openlocfilehash: 15f20bab91a4feab056a9f8cd6b012792f036be2
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.author: lajanuar
+ms.openlocfilehash: d46fef0159b983f2685be40e2a0ab5471b96883b
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95016546"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98895440"
 ---
 # <a name="translator-30-translate"></a>Translator 3.0: Translate
 

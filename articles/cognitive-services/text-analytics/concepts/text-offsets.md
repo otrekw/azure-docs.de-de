@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 03/09/2020
 ms.author: aahi
 ms.reviewer: jdesousa
-ms.openlocfilehash: c587bb042601b947b71658bf790e9acdfbdbf742
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: f5b63503792b13e089568004ba67e5be8a3d0c7f
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94363781"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98932374"
 ---
 # <a name="text-offsets-in-the-text-analytics-api-output"></a>Textversätze in der Ausgabe der Textanalyse-API
 
@@ -34,9 +34,9 @@ Bedenken Sie Folgendes, wenn Versätze in der API-Antwort zurückgegeben werden,
 
 ## <a name="extracting-substrings-from-text-with-offsets"></a>Extrahieren von Teilzeichenfolgen aus Text mit Versätzen
 
-Versätze können Probleme verursachen, wenn zeichenbasierte substring-Methoden verwendet werden, z. B. die .NET-Methode [substring()](/dotnet/api/system.string.substring?view=netframework-4.8). Eines dieser Probleme ist, dass eine substring-Methode aufgrund eines Versatzes in der Mitte einer Graphemcodierung mit mehreren Zeichen beendet werden kann und nicht an deren Ende.
+Versätze können Probleme verursachen, wenn zeichenbasierte substring-Methoden verwendet werden, z. B. die .NET-Methode [substring()](/dotnet/api/system.string.substring). Eines dieser Probleme ist, dass eine substring-Methode aufgrund eines Versatzes in der Mitte einer Graphemcodierung mit mehreren Zeichen beendet werden kann und nicht an deren Ende.
 
-Verwenden Sie in .NET ggf. die [StringInfo](/dotnet/api/system.globalization.stringinfo?view=netframework-4.8)-Klasse. Sie ermöglicht es Ihnen, eine Zeichenfolge nicht als einzelne Zeichenobjekte, sondern als eine Reihe von Textelementen zu verarbeiten. Sie können auch nach Graphem-Splitter-Bibliotheken in Ihrer bevorzugten Softwareumgebung suchen. 
+Verwenden Sie in .NET ggf. die [StringInfo](/dotnet/api/system.globalization.stringinfo)-Klasse. Sie ermöglicht es Ihnen, eine Zeichenfolge nicht als einzelne Zeichenobjekte, sondern als eine Reihe von Textelementen zu verarbeiten. Sie können auch nach Graphem-Splitter-Bibliotheken in Ihrer bevorzugten Softwareumgebung suchen. 
 
 Die Textanalyse-API gibt diese Textelemente aus Gründen der Einfachheit ebenfalls zurück.
 

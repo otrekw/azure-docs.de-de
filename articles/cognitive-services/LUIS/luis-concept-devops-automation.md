@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 06/5/2020
-ms.openlocfilehash: 1ce78e02c652777b524964559b579530f3e022fa
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 215399e4b131162097e54c15b84cb6fa7dac72e3
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97561306"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98932540"
 ---
 # <a name="continuous-integration-and-continuous-delivery-workflows-for-luis-devops"></a>Continuous Integration- und Continuous Delivery-Workflows für LUIS DevOps
 
@@ -41,7 +41,7 @@ Verwenden Sie die folgenden Tools, um Automatisierungs-Workflows für LUIS zu er
 
 * [LUIS CLI mit Bot Framework-Tools](https://github.com/microsoft/botbuilder-tools/tree/master/packages/LUIS) zum Arbeiten mit LUIS-Apps und -Versionen, und zum Trainieren, Testen und Veröffentlichen der Apps und Versionen im LUIS-Dienst.
 
-* [Azure CLI](/cli/azure/?view=azure-cli-latest), um Azure-Abonnements abzufragen, LUIS-Schlüssel für Erstellung und Vorhersage abzurufen und einen Azure-[Dienstprinzipal](/cli/azure/ad/sp?view=azure-cli-latest) für die Automation-Authentifizierung zu erstellen.
+* [Azure CLI](/cli/azure/), um Azure-Abonnements abzufragen, LUIS-Schlüssel für Erstellung und Vorhersage abzurufen und einen Azure-[Dienstprinzipal](/cli/azure/ad/sp) für die Automation-Authentifizierung zu erstellen.
 
 * [NLU.DevOps](https://github.com/microsoft/NLU.DevOps)-Tool zum [Testen einer LUIS-App](luis-concept-devops-testing.md) und zum Analysieren der Testergebnisse.
 

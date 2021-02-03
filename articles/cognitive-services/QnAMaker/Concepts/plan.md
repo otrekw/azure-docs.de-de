@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: 048b53186aa0be388d9d801cd6590d4295a4faa7
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: e523b35afca33213a40060819a1293e94d413b00
+ms.sourcegitcommit: 8c8c71a38b6ab2e8622698d4df60cb8a77aa9685
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96353169"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99222864"
 ---
 # <a name="plan-your-qna-maker-app"></a>Planen Ihrer QnA Maker-App
 
@@ -94,13 +94,13 @@ Sie haben jetzt die Möglichkeit, Wissensdatenbanken in verschiedenen Sprachen i
 
 ### <a name="ingest-data-sources"></a>Erfassen von Datenquellen
 
-Sie können eine der folgenden erfassten [Datenquellen](../index.yml) verwenden, um eine Wissensdatenbank zu erstellen:
+Sie können eine der folgenden erfassten [Datenquellen](../Concepts/data-sources-and-content.md) verwenden, um eine Wissensdatenbank zu erstellen:
 
 * Öffentliche URL
 * Private SharePoint-URL
 * Datei
 
-Beim Erfassungsprozess werden [unterstützte Inhaltstypen](../index.yml) in Markdown konvertiert. Die weitere Bearbeitung der *Antwort* erfolgt mit Markdown. Nachdem Sie eine Wissensdatenbank erstellt haben, können Sie [QnA-Paare](question-answer-set.md) im QnA Maker-Portal mit [Rich Text Authoring](../how-to/edit-knowledge-base.md#rich-text-editing-for-answer) bearbeiten.
+Beim Erfassungsprozess werden [unterstützte Inhaltstypen](../reference-document-format-guidelines.md) in Markdown konvertiert. Die weitere Bearbeitung der *Antwort* erfolgt mit Markdown. Nachdem Sie eine Wissensdatenbank erstellt haben, können Sie [QnA-Paare](question-answer-set.md) im QnA Maker-Portal mit [Rich Text Authoring](../how-to/edit-knowledge-base.md#rich-text-editing-for-answer) bearbeiten.
 
 ### <a name="data-format-considerations"></a>Überlegungen zum Datenformat
 
@@ -124,7 +124,7 @@ Sie sollten beim Entwurf Ihres Konversationsflusses an eine Schleife denken, dam
 
 Projektmitarbeiter sind möglicherweise andere Entwickler, für die der vollständige Entwicklungsstapel der Wissensdatenbankanwendung freigeben ist, oder die nur auf die Erstellung der Wissensdatenbank beschränkt sind.
 
-Die Erstellung der Wissensdatenbank unterstützt mehrere [rollenbasierte Zugriffsberechtigungen](../index.yml), die Sie im Azure-Portal anwenden, um den Handlungsspielraum eines Projektmitarbeiters einzuschränken.
+Die Erstellung der Wissensdatenbank unterstützt mehrere [rollenbasierte Zugriffsberechtigungen](../reference-role-based-access-control.md), die Sie im Azure-Portal anwenden, um den Handlungsspielraum eines Projektmitarbeiters einzuschränken.
 
 ## <a name="integration-with-client-applications"></a>Integration in Clientanwendungen
 

@@ -10,12 +10,12 @@ ms.topic: include
 ms.date: 12/15/2020
 ms.author: pafarley
 ms.custom: devx-track-js
-ms.openlocfilehash: 8fd7c820a25f098799f1c2fa69ba700a334e932d
-ms.sourcegitcommit: 77afc94755db65a3ec107640069067172f55da67
+ms.openlocfilehash: 13017424c1b9f0406ad60dc25f61f198f3655323
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98697934"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98947339"
 ---
 <a name="HOLTop"></a>
 
@@ -24,7 +24,7 @@ Verwenden Sie die Clientbibliothek für maschinelles Sehen für Folgendes:
 * Analysieren eines Bilds auf Tags, Textbeschreibungen, Gesichter, nicht jugendfreie Inhalte usw.
 * Lesen von gedrucktem und handschriftlichem Text mit der Lese-API
 
-[Referenzdokumentation](/javascript/api/@azure/cognitiveservices-computervision/?view=azure-node-latest) | [Quellcode der Bibliothek](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-computervision) | [Paket (npm)](https://www.npmjs.com/package/@azure/cognitiveservices-computervision) | [Beispiele](https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=vision&sort=0)
+[Referenzdokumentation](/javascript/api/@azure/cognitiveservices-computervision/) | [Quellcode der Bibliothek](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-computervision) | [Paket (npm)](https://www.npmjs.com/package/@azure/cognitiveservices-computervision) | [Beispiele](https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=vision&sort=0)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -91,8 +91,8 @@ Die folgenden Klassen und Schnittstellen dienen zum Verarbeiten einiger Hauptfun
 
 |Name|BESCHREIBUNG|
 |---|---|
-| [ComputerVisionClient](/javascript/api/@azure/cognitiveservices-computervision/computervisionclient?view=azure-node-latest) | Diese Klasse wird für alle Funktionen der Maschinelles Sehen-API benötigt. Sie instanziieren sie mit Ihren Abonnementinformationen und verwenden sie für die meisten Bildvorgänge.|
-|[VisualFeatureTypes](/javascript/api/@azure/cognitiveservices-computervision/visualfeaturetypes?view=azure-node-latest)| Diese Enumeration definiert die verschiedenen Typen der Bildanalyse, die bei einem standardmäßigen Analysevorgang ausgeführt werden können. Sie geben abhängig von Ihren Anforderungen verschiedene **VisualFeatureTypes**-Werte an. |
+| [ComputerVisionClient](/javascript/api/@azure/cognitiveservices-computervision/computervisionclient) | Diese Klasse wird für alle Funktionen der Maschinelles Sehen-API benötigt. Sie instanziieren sie mit Ihren Abonnementinformationen und verwenden sie für die meisten Bildvorgänge.|
+|[VisualFeatureTypes](/javascript/api/@azure/cognitiveservices-computervision/visualfeaturetypes)| Diese Enumeration definiert die verschiedenen Typen der Bildanalyse, die bei einem standardmäßigen Analysevorgang ausgeführt werden können. Sie geben abhängig von Ihren Anforderungen verschiedene **VisualFeatureTypes**-Werte an. |
 
 ## <a name="code-examples"></a>Codebeispiele
 
@@ -105,7 +105,7 @@ Diese Codeausschnitte veranschaulichen, wie die folgenden Aufgaben mit der Clien
 ## <a name="authenticate-the-client"></a>Authentifizieren des Clients
 
 
-Instanziieren Sie einen Client mit Ihrem Endpunkt und Schlüssel. Erstellen Sie ein [ApiKeyCredentials](/python/api/msrest/msrest.authentication.apikeycredentials?view=azure-python)-Objekt mit Ihrem Schlüssel und Endpunkt, und verwenden Sie es zum Erstellen eines [ComputerVisionClient](/javascript/api/@azure/cognitiveservices-computervision/computervisionclient?view=azure-node-latest)-Objekts.
+Instanziieren Sie einen Client mit Ihrem Endpunkt und Schlüssel. Erstellen Sie ein [ApiKeyCredentials](/python/api/msrest/msrest.authentication.apikeycredentials)-Objekt mit Ihrem Schlüssel und Endpunkt, und verwenden Sie es zum Erstellen eines [ComputerVisionClient](/javascript/api/@azure/cognitiveservices-computervision/computervisionclient)-Objekts.
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_client)]
 
@@ -120,10 +120,10 @@ Definieren Sie anschließend die Funktion `computerVision`, und deklarieren Sie 
 
 ## <a name="analyze-an-image"></a>Analysieren von Bildern
 
-Mit dem Code in diesem Abschnitt werden Remotebilder analysiert, um verschiedene visuelle Merkmale zu extrahieren. Sie können diese Vorgänge im Rahmen der **analyzeImage**-Methode des Clientobjekts durchführen, oder Sie können sie mit individuellen Methoden aufrufen. Ausführlichere Informationen finden Sie in der [Referenzdokumentation](/javascript/api/@azure/cognitiveservices-computervision/?view=azure-node-latest).
+Mit dem Code in diesem Abschnitt werden Remotebilder analysiert, um verschiedene visuelle Merkmale zu extrahieren. Sie können diese Vorgänge im Rahmen der **analyzeImage**-Methode des Clientobjekts durchführen, oder Sie können sie mit individuellen Methoden aufrufen. Ausführlichere Informationen finden Sie in der [Referenzdokumentation](/javascript/api/@azure/cognitiveservices-computervision/).
 
 > [!NOTE]
-> Sie können auch ein lokales Bild analysieren. Sehen Sie sich die [ComputerVisionClient](/javascript/api/@azure/cognitiveservices-computervision/computervisionclient?view=azure-node-latest)-Methoden an, etwa **analyzeImageInStream**. Alternativ finden Sie im Beispielcode auf [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/ComputerVision/ComputerVisionQuickstart.js) Szenarien zu lokalen Bildern.
+> Sie können auch ein lokales Bild analysieren. Sehen Sie sich die [ComputerVisionClient](/javascript/api/@azure/cognitiveservices-computervision/computervisionclient)-Methoden an, etwa **analyzeImageInStream**. Alternativ finden Sie im Beispielcode auf [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/ComputerVision/ComputerVisionQuickstart.js) Szenarien zu lokalen Bildern.
 
 ### <a name="get-image-description"></a>Abrufen der Bildbeschreibung
 
@@ -245,7 +245,7 @@ Speichern Sie einen Verweis auf die URL der Bilder, aus denen Sie Text extrahier
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_read_images)]
 
 > [!NOTE]
-> Sie können auch Text aus einem lokalen Bild auslesen. Sehen Sie sich die [ComputerVisionClient](/javascript/api/@azure/cognitiveservices-computervision/computervisionclient?view=azure-node-latest)-Methoden an, etwa **readInStream**. Alternativ finden Sie im Beispielcode auf [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/ComputerVision/ComputerVisionQuickstart.js) Szenarien zu lokalen Bildern.
+> Sie können auch Text aus einem lokalen Bild auslesen. Sehen Sie sich die [ComputerVisionClient](/javascript/api/@azure/cognitiveservices-computervision/computervisionclient)-Methoden an, etwa **readInStream**. Alternativ finden Sie im Beispielcode auf [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/ComputerVision/ComputerVisionQuickstart.js) Szenarien zu lokalen Bildern.
 
 ### <a name="call-the-read-api"></a>Aufrufen der Lese-API
 
@@ -292,7 +292,7 @@ Wenn Sie ein Cognitive Services-Abonnement bereinigen und entfernen möchten, k�
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
->[Referenz zur Maschinelles Sehen-API (Node.js)](/javascript/api/@azure/cognitiveservices-computervision/?view=azure-node-latest)
+>[Referenz zur Maschinelles Sehen-API (Node.js)](/javascript/api/@azure/cognitiveservices-computervision/)
 
 
 * [Worum handelt es sich bei maschinellem Sehen?](../../overview.md)

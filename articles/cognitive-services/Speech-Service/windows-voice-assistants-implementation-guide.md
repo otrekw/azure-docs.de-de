@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: travisw
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 0503e0bf2fe152296ca6890e14503d05bd3bbeef
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 92ab043d4fccbe0764e361eac6f71ef69a5963cb
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95024771"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98939868"
 ---
 # <a name="implementing-voice-assistants-on-windows"></a>Implementieren von Sprachassistenten unter Windows
 
@@ -30,7 +30,7 @@ Nachdem Sie die [Umgebung eingerichtet](how-to-windows-voice-assistants-get-star
 
 #### <a name="ensure-that-the-microphone-is-available-and-accessible-then-monitor-its-state"></a>Sicherstellen der Verfügbarkeit und Zugänglichkeit des Mikrofons und Überwachen des Status
 
-Bei MVA muss ein Mikrofon vorhanden und zugänglich sein, damit eine Sprachaktivierung erkannt werden kann. Verwenden Sie die Klassen [AppCapability](/uwp/api/windows.security.authorization.appcapabilityaccess.appcapability?view=winrt-18362), [DeviceWatcher](/uwp/api/windows.devices.enumeration.devicewatcher?view=winrt-18362) und [MediaCapture](/uwp/api/windows.media.capture.mediacapture?view=winrt-18362), um den Datenschutz in Bezug auf den Zugriff auf das Mikrofon, das Vorhandensein des Geräts und den Gerätestatus (z. B. Lautstärke und Stummschaltung) zu überprüfen.
+Bei MVA muss ein Mikrofon vorhanden und zugänglich sein, damit eine Sprachaktivierung erkannt werden kann. Verwenden Sie die Klassen [AppCapability](/uwp/api/windows.security.authorization.appcapabilityaccess.appcapability), [DeviceWatcher](/uwp/api/windows.devices.enumeration.devicewatcher) und [MediaCapture](/uwp/api/windows.media.capture.mediacapture), um den Datenschutz in Bezug auf den Zugriff auf das Mikrofon, das Vorhandensein des Geräts und den Gerätestatus (z. B. Lautstärke und Stummschaltung) zu überprüfen.
 
 ### <a name="register-the-application-with-the-background-service"></a>Registrieren der Anwendung beim Hintergrunddienst
 
@@ -38,7 +38,7 @@ Damit MVA die Anwendung im Hintergrund starten kann, muss sie beim Hintergrunddi
 
 ### <a name="unlock-the-limited-access-feature"></a>Entsperren des Features für eingeschränkten Zugriff
 
-Verwenden Sie den von Microsoft bereitgestellten Schlüssel für das Feature für eingeschränkten Zugriff, um die Funktion für den Sprachassistenten zu entsperren. Nutzen Sie hierfür die [LimitedAccessFeature](/uwp/api/windows.applicationmodel.limitedaccessfeatures?view=winrt-18362)-Klasse aus dem Windows SDK.
+Verwenden Sie den von Microsoft bereitgestellten Schlüssel für das Feature für eingeschränkten Zugriff, um die Funktion für den Sprachassistenten zu entsperren. Nutzen Sie hierfür die [LimitedAccessFeature](/uwp/api/windows.applicationmodel.limitedaccessfeatures)-Klasse aus dem Windows SDK.
 
 ### <a name="register-the-keyword-for-the-application"></a>Registrieren des Schlüsselworts für die Anwendung
 
@@ -86,7 +86,7 @@ Nachdem eine Sprach-Agent-Anwendung per Sprache aktiviert wurde, wird im nächst
 
 ### <a name="retrieve-activation-audio"></a>Abrufen der Audiodaten für die Aktivierung
 
-Erstellen Sie ein [AudioGraph](/uwp/api/windows.media.audio.audiograph)-Element, und übergeben Sie es an das `CreateAudioDeviceInputNodeAsync`-Element von `ConversationalAgentSession`. Der Audiopuffer des Graphen wird geladen, und die Audiodaten *beginnen ca. drei Sekunden vor der Erkennung des Schlüsselworts*. Dieser Vorabzeitraum wird für die Audiodaten verwendet, um unterschiedliche Schlüsselwortlängen und Sprechgeschwindigkeiten abzudecken. Verarbeiten Sie anschließend das [QuantumStarted](/uwp/api/windows.media.audio.audiograph.quantumstarted?view=winrt-18362)-Ereignis des Audiographen, um die Audiodaten abzurufen.
+Erstellen Sie ein [AudioGraph](/uwp/api/windows.media.audio.audiograph)-Element, und übergeben Sie es an das `CreateAudioDeviceInputNodeAsync`-Element von `ConversationalAgentSession`. Der Audiopuffer des Graphen wird geladen, und die Audiodaten *beginnen ca. drei Sekunden vor der Erkennung des Schlüsselworts*. Dieser Vorabzeitraum wird für die Audiodaten verwendet, um unterschiedliche Schlüsselwortlängen und Sprechgeschwindigkeiten abzudecken. Verarbeiten Sie anschließend das [QuantumStarted](/uwp/api/windows.media.audio.audiograph.quantumstarted)-Ereignis des Audiographen, um die Audiodaten abzurufen.
 
 ```csharp
 var inputNode = await agentSession.CreateAudioDeviceInputNodeAsync(audioGraph);
