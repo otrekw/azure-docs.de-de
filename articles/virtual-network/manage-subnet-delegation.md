@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/06/2019
 ms.author: kumud
-ms.openlocfilehash: bc43dc7afb234d410eb17d20beb13cd5cb44bb18
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 2bb80ba421617d5fd1699826deda00e56f1e43af
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98222512"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943671"
 ---
 # <a name="add-or-remove-a-subnet-delegation"></a>Hinzufügen oder Entfernen einer Subnetzdelegierung
 
@@ -113,7 +113,7 @@ Die integrierte Rolle [Netzwerkmitwirkender](../role-based-access-control/built-
 
 In diesem Abschnitt delegieren Sie das Subnetz, das Sie im vorhergehenden Abschnitt erstellt haben, an einen Azure-Dienst. 
 
-Verwenden Sie [az network vnet subnet update](/cli/azure/network/vnet/subnet?view=azure-cli-latest#az-network-vnet-subnet-update), um das Subnetz namens **mySubnet** mit Delegierung an einen Azure-Dienst zu aktualisieren.  In diesem Beispiel wird **Microsoft.DBforPostgreSQL/serversv2** für die exemplarische Delegierung verwendet:
+Verwenden Sie [az network vnet subnet update](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-update), um das Subnetz namens **mySubnet** mit Delegierung an einen Azure-Dienst zu aktualisieren.  In diesem Beispiel wird **Microsoft.DBforPostgreSQL/serversv2** für die exemplarische Delegierung verwendet:
 
 ```azurecli-interactive
   az network vnet subnet update \
@@ -123,7 +123,7 @@ Verwenden Sie [az network vnet subnet update](/cli/azure/network/vnet/subnet?vie
   --delegations Microsoft.DBforPostgreSQL/serversv2
 ```
 
-Um zu überprüfen, ob die Delegierung angewendet wurde, verwenden Sie [az network vnet subnet show](/cli/azure/network/vnet/subnet?view=azure-cli-latest#az-network-vnet-subnet-show). Überprüfen Sie unter der Eigenschaft **serviceName**, ob der Dienst an das Subnetz delegiert wurde:
+Um zu überprüfen, ob die Delegierung angewendet wurde, verwenden Sie [az network vnet subnet show](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-show). Überprüfen Sie unter der Eigenschaft **serviceName**, ob der Dienst an das Subnetz delegiert wurde:
 
 ```azurecli-interactive
   az network vnet subnet show \
@@ -152,7 +152,7 @@ Um zu überprüfen, ob die Delegierung angewendet wurde, verwenden Sie [az netwo
 
 ### <a name="remove-subnet-delegation-from-an-azure-service"></a>Entfernen einer Subnetzdelegierung aus einem Azure-Dienst
 
-Verwenden Sie [az network vnet subnet update](/cli/azure/network/vnet/subnet?view=azure-cli-latest#az-network-vnet-subnet-update), um die Delegierung aus dem Subnetz **mySubnet** zu entfernen:
+Verwenden Sie [az network vnet subnet update](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-update), um die Delegierung aus dem Subnetz **mySubnet** zu entfernen:
 
 ```azurecli-interactive
   az network vnet subnet update \
@@ -161,7 +161,7 @@ Verwenden Sie [az network vnet subnet update](/cli/azure/network/vnet/subnet?vie
   --vnet-name myVnet \
   --remove delegations
 ```
-Um zu überprüfen, ob die Delegierung entfernt wurde, verwenden Sie [az network vnet subnet show](/cli/azure/network/vnet/subnet?view=azure-cli-latest#az-network-vnet-subnet-show). Überprüfen Sie unter der Eigenschaft **serviceName**, ob der Dienst aus dem Subnetz entfernt wurde:
+Um zu überprüfen, ob die Delegierung entfernt wurde, verwenden Sie [az network vnet subnet show](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-show). Überprüfen Sie unter der Eigenschaft **serviceName**, ob der Dienst aus dem Subnetz entfernt wurde:
 
 ```azurecli-interactive
   az network vnet subnet show \
@@ -195,7 +195,7 @@ Im folgenden Beispiel wird eine Ressourcengruppe mit dem Namen *myResourceGroup*
 ```
 ### <a name="create-virtual-network"></a>Virtuelles Netzwerk erstellen
 
-Erstellen Sie ein virtuelles Netzwerk namens **myVnet** mit einem Subnetz namens **mySubnet** mit [New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig?view=latest) in **myResourceGroup**, indem Sie [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork?view=latest) verwenden. Der IP-Adressraum für das virtuelle Netzwerk ist **10.0.0.0/16**. Das Subnetz im virtuellen Netzwerk ist **10.0.0.0/24**.  
+Erstellen Sie ein virtuelles Netzwerk namens **myVnet** mit einem Subnetz namens **mySubnet** mit [New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig) in **myResourceGroup**, indem Sie [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) verwenden. Der IP-Adressraum für das virtuelle Netzwerk ist **10.0.0.0/16**. Das Subnetz im virtuellen Netzwerk ist **10.0.0.0/24**.  
 
 ```azurepowershell-interactive
   $subnet = New-AzVirtualNetworkSubnetConfig -Name mySubnet -AddressPrefix "10.0.0.0/24"
@@ -212,7 +212,7 @@ Die integrierte Rolle [Netzwerkmitwirkender](../role-based-access-control/built-
 
 In diesem Abschnitt delegieren Sie das Subnetz, das Sie im vorhergehenden Abschnitt erstellt haben, an einen Azure-Dienst. 
 
-Verwenden Sie [Add-AzDelegation](/powershell/module/az.network/add-azdelegation?view=latest), um das Subnetz namens **mySubnet** mit einer Delegierung namens **myDelegation** an einen Azure-Dienst zu aktualisieren.  In diesem Beispiel wird **Microsoft.DBforPostgreSQL/serversv2** für die exemplarische Delegierung verwendet:
+Verwenden Sie [Add-AzDelegation](/powershell/module/az.network/add-azdelegation), um das Subnetz namens **mySubnet** mit einer Delegierung namens **myDelegation** an einen Azure-Dienst zu aktualisieren.  In diesem Beispiel wird **Microsoft.DBforPostgreSQL/serversv2** für die exemplarische Delegierung verwendet:
 
 ```azurepowershell-interactive
   $vnet = Get-AzVirtualNetwork -Name "myVNet" -ResourceGroupName "myResourceGroup"
@@ -220,7 +220,7 @@ Verwenden Sie [Add-AzDelegation](/powershell/module/az.network/add-azdelegation?
   $subnet = Add-AzDelegation -Name "myDelegation" -ServiceName "Microsoft.DBforPostgreSQL/serversv2" -Subnet $subnet
   Set-AzVirtualNetwork -VirtualNetwork $vnet
 ```
-Verwenden Sie [Get-AzDelegation](/powershell/module/az.network/get-azdelegation?view=latest), um die Delegierung zu überprüfen:
+Verwenden Sie [Get-AzDelegation](/powershell/module/az.network/get-azdelegation), um die Delegierung zu überprüfen:
 
 ```azurepowershell-interactive
   $subnet = Get-AzVirtualNetwork -Name "myVnet" -ResourceGroupName "myResourceGroup" | Get-AzVirtualNetworkSubnetConfig -Name "mySubnet"
@@ -236,7 +236,7 @@ Verwenden Sie [Get-AzDelegation](/powershell/module/az.network/get-azdelegation?
 ```
 ### <a name="remove-subnet-delegation-from-an-azure-service"></a>Entfernen einer Subnetzdelegierung aus einem Azure-Dienst
 
-Verwenden Sie [Remove-AzDelegation](/powershell/module/az.network/remove-azdelegation?view=latest), um die Delegierung aus dem Subnetz **mySubnet** zu entfernen:
+Verwenden Sie [Remove-AzDelegation](/powershell/module/az.network/remove-azdelegation), um die Delegierung aus dem Subnetz **mySubnet** zu entfernen:
 
 ```azurepowershell-interactive
   $vnet = Get-AzVirtualNetwork -Name "myVnet" -ResourceGroupName "myResourceGroup"
@@ -244,7 +244,7 @@ Verwenden Sie [Remove-AzDelegation](/powershell/module/az.network/remove-azdeleg
   $subnet = Remove-AzDelegation -Name "myDelegation" -Subnet $subnet
   Set-AzVirtualNetwork -VirtualNetwork $vnet
 ```
-Verwenden Sie [Get-AzDelegation](/powershell/module/az.network/get-azdelegation?view=latest), um zu überprüfen, ob die Delegierung entfernt wurde:
+Verwenden Sie [Get-AzDelegation](/powershell/module/az.network/get-azdelegation), um zu überprüfen, ob die Delegierung entfernt wurde:
 
 ```azurepowershell-interactive
   $subnet = Get-AzVirtualNetwork -Name "myVnet" -ResourceGroupName "myResourceGroup" | Get-AzVirtualNetworkSubnetConfig -Name "mySubnet"

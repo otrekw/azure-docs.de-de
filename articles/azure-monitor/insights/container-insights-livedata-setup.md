@@ -4,12 +4,12 @@ description: In diesem Artikel wird beschrieben, wie Sie die Echtzeitansicht von
 ms.topic: conceptual
 ms.date: 01/08/2020
 ms.custom: references_regions
-ms.openlocfilehash: d5b978e7138e10ed88f5748b84ff62ddd22bebec
-ms.sourcegitcommit: 8dd8d2caeb38236f79fe5bfc6909cb1a8b609f4a
+ms.openlocfilehash: 3c176b2db659577d585ac077eebe0484203eb9cf
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98050781"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943862"
 ---
 # <a name="how-to-set-up-the-live-data-preview-feature"></a>Einrichten der Funktion für Livedaten (Vorschau)
 
@@ -19,7 +19,7 @@ Diese Funktion unterstützt die folgenden Methoden, um den Zugriff auf die Proto
 
 - AKS ohne aktivierte Kubernetes RBAC-Autorisierung
 - Mit Kubernetes RBAC-Autorisierung aktivierter AKS
-    - Mit Clusterrollenbindung **[clusterMonitoringUser](/rest/api/aks/managedclusters/listclustermonitoringusercredentials?view=azurermps-5.2.0&preserve-view=true)** konfigurierter AKS
+    - Mit Clusterrollenbindung **[clusterMonitoringUser](/rest/api/aks/managedclusters/listclustermonitoringusercredentials)** konfigurierter AKS
 - Mit auf SAML basiertem SSO in Azure Active Directory (AD) aktivierter AKS
 
 Für diese Anweisungen ist sowohl Administratorzugriff auf den Kubernetes-Cluster als auch Administratorzugriff auf Azure AD (wenn Azure Active Directory (AD) für die Benutzerauthentifizierung konfiguriert wird) erforderlich.

@@ -4,12 +4,12 @@ description: Suchen Sie nach mit Trace, NLog oder Log4Net generierten Protokolle
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 05/08/2019
-ms.openlocfilehash: 90777da4d0b67587afebaa7111e3503af2afcb9a
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: 083ddbd06561550f89e414d6c679cdc6433fa338
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96920350"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98937553"
 ---
 # <a name="explore-netnet-core-and-python-trace-logs-in-application-insights"></a>Untersuchen von .NET/.NET Core- und Python-Ablaufverfolgungsprotokollen in Application Insights
 
@@ -85,7 +85,7 @@ Wenn Sie log4net oder NLog bevorzugen, verwenden Sie:
 ```
 
 ## <a name="use-eventsource-events"></a>Verwenden von EventSource-Ereignissen
-Sie können [System.Diagnostics.Tracing.EventSource](/dotnet/api/system.diagnostics.tracing.eventsource?view=netcore-3.1)-Ereignisse so konfigurieren, dass Sie als Ablaufverfolgungen an Application Insights gesendet werden. Installieren Sie zunächst das `Microsoft.ApplicationInsights.EventSourceListener`-NuGet-Paket. Bearbeiten Sie anschließend den Abschnitt `TelemetryModules` der Datei [ApplicationInsights.config](./configuration-with-applicationinsights-config.md).
+Sie können [System.Diagnostics.Tracing.EventSource](/dotnet/api/system.diagnostics.tracing.eventsource)-Ereignisse so konfigurieren, dass Sie als Ablaufverfolgungen an Application Insights gesendet werden. Installieren Sie zunächst das `Microsoft.ApplicationInsights.EventSourceListener`-NuGet-Paket. Bearbeiten Sie anschließend den Abschnitt `TelemetryModules` der Datei [ApplicationInsights.config](./configuration-with-applicationinsights-config.md).
 
 ```xml
     <Add Type="Microsoft.ApplicationInsights.EventSourceListener.EventSourceTelemetryModule, Microsoft.ApplicationInsights.EventSourceListener">
@@ -203,7 +203,7 @@ Wenn Sie das Java-SDK verwenden, verwenden Sie die [Java-Protokolladapter](./jav
 
 ### <a name="theres-no-log-adapter-option-in-the-configuration-tool"></a>Es gibt keine Option für die Protokolladapter im Konfigurationstool.
 * Installieren Sie zunächst das Protokollierungsframework.
-* Wenn Sie „System.Diagnostics.Trace“ verwenden, müssen Sie sicherstellen, dass es [in *web.config*](/dotnet/api/system.diagnostics.eventlogtracelistener?view=dotnet-plat-ext-3.1) konfiguriert ist.
+* Wenn Sie „System.Diagnostics.Trace“ verwenden, müssen Sie sicherstellen, dass es [in *web.config*](/dotnet/api/system.diagnostics.eventlogtracelistener) konfiguriert ist.
 * Vergewissern Sie sich, dass die aktuelle Version von Application Insights installiert ist. Wählen Sie in Visual Studio im Menü **Extras** > **Erweiterungen und Updates** aus, und öffnen Sie die Registerkarte **Updates**. Wenn die **Developer Analytics-Tools** hier aufgeführt werden, wählen Sie sie aus, um sie zu aktualisieren.
 
 ### <a name="i-get-the-instrumentation-key-cannot-be-empty-error-message"></a><a name="emptykey"></a>Eine Fehlermeldung „Instrumentationsschlüssel darf nicht leer sein“ wird angezeigt.

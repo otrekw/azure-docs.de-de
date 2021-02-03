@@ -5,25 +5,25 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 01/19/2021
+ms.date: 01/27/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9442489efd2a84ac8a31dfb2efb5718e1fd4f594
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 112ad0714c84cd3be08788b3277f52372f6d0373
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98621792"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98938476"
 ---
 # <a name="combined-security-information-registration-for-azure-active-directory-overview"></a>Übersicht über die kombinierte Registrierung von Sicherheitsinformationen in Azure Active Directory
 
 Vor der kombinierten Registrierung registrierten Benutzer Authentifizierungsmethoden für Azure AD Multi-Factor Authentication (MFA) und die Self-Service-Kennwortzurücksetzung (Self-Service Password Reset, SSPR) getrennt voneinander. Benutzer waren verwirrt, dass ähnliche Methoden für Multi-Factor Authentication und für SSPR verwendet wurden, sie sich jedoch für beide Funktionen registrieren mussten. Mit der kombinierten Registrierung können sich Benutzer jetzt einmalig registrieren und die Vorteile von mehrstufiger Authentifizierung und SSPR nutzen.
 
 > [!NOTE]
-> Ab dem 15. August 2020 werden alle neuen Azure AD-Mandanten automatisch für die kombinierte Registrierung aktiviert. Ab dem 14. Dezember 2020 werden alle neuen Azure AD-Mandanten mit einem Benutzer automatisch für die kombinierte Registrierung aktiviert.
+> Ab dem 15. August 2020 werden alle neuen Azure AD-Mandanten automatisch für die kombinierte Registrierung aktiviert. 
 
 In diesem Artikel wird beschrieben, was die kombinierte Registrierung von Sicherheitsinformationen ist. Erste Informationen zur kombinierten Registrierung von Sicherheitsinformationen finden Sie im folgenden Artikel:
 

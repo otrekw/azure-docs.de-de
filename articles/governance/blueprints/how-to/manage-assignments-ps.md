@@ -1,14 +1,14 @@
 ---
 title: 'Gewusst wie: Verwalten von Zuweisungen mit PowerShell'
 description: Es wird beschrieben, wie Sie Blaupausenzuweisungen mit dem offiziellen PowerShell-Modul „Az.Blueprint“ von Azure Blueprints verwalten.
-ms.date: 08/27/2020
+ms.date: 01/27/2021
 ms.topic: how-to
-ms.openlocfilehash: 3bcb3731bd1270497945fa86406d08b2f9750c85
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d60fb887e07b4697b8e86a4e2fd74a735ac0bb58
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89051405"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98919375"
 ---
 # <a name="how-to-manage-assignments-with-powershell"></a>Gewusst wie: Verwalten von Zuweisungen mit PowerShell
 

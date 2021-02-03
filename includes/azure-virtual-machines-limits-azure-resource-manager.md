@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 02/10/2020
 ms.author: cynthn
-ms.openlocfilehash: cd3ff3fce80e66d7cd61636b4416cb2fc28f5e77
-ms.sourcegitcommit: 19ffdad48bc4caca8f93c3b067d1cf29234fef47
+ms.openlocfilehash: 61af1f1a97e0ffad0332a34034f5dd1d007d1a5c
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97956554"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98900949"
 ---
 | Resource | Begrenzung |
 | --- | --- |
@@ -19,13 +19,13 @@ ms.locfileid: "97956554"
 | VM-Kerne pro Serie (z. B. Dv2 und F) pro [Abonnement](https://azure.microsoft.com/pricing/) |20<sup>1</sup> pro Region Wenden Sie sich an den Support, um diesen Grenzwert heraufzusetzen. |
 | [Verfügbarkeitsgruppen](../articles/virtual-machines/manage-availability.md#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy) pro Abonnement |2\.500 pro Region |
 | Virtuelle Computer pro Verfügbarkeitsgruppe | 200 |
-| [Näherungsplatzierungsgruppen](https://docs.microsoft.com/azure/virtual-machines/windows/proximity-placement-groups-portal) pro [Ressourcengruppe](../articles/azure-resource-manager/management/overview.md#resource-groups) | 800 | 
+| [Näherungsplatzierungsgruppen](../articles/virtual-machines/windows/proximity-placement-groups-portal.md) pro [Ressourcengruppe](../articles/azure-resource-manager/management/overview.md#resource-groups) | 800 | 
 | Zertifikate pro Verfügbarkeitsgruppe | 199<sup>2</sup> |
 | Zertifikate pro Abonnement |Unbegrenzt<sup>3</sup> |
 
 <sup>1</sup> Standardgrenzwerte variieren nach angebotenem Kategorietyp, z. B. kostenlose Testversion oder nutzungsbasierte Bezahlung, und nach Serie, z. B. Dv2, F und G. Der Standardgrenzwert für Enterprise Agreement-Abonnements ist beispielsweise 350.
 
-<sup>2</sup> Eigenschaften wie öffentliche SSH-Schlüssel werden ebenfalls als Zertifikate gepusht und zur Ermittlung des Grenzwerts gezählt. Verwenden Sie zum Umgehen dieses Grenzwerts die [Azure Key Vault-Erweiterung für Windows](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-windows) oder die [Azure Key Vault-Erweiterung für Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-linux), um Zertifikate zu installieren.
+<sup>2</sup> Eigenschaften wie öffentliche SSH-Schlüssel werden ebenfalls als Zertifikate gepusht und zur Ermittlung des Grenzwerts gezählt. Verwenden Sie zum Umgehen dieses Grenzwerts die [Azure Key Vault-Erweiterung für Windows](../articles/virtual-machines/extensions/key-vault-windows.md) oder die [Azure Key Vault-Erweiterung für Linux](../articles/virtual-machines/extensions/key-vault-linux.md), um Zertifikate zu installieren.
 
 <sup>3</sup> Beim Azure Resource Manager werden Zertifikate unter Azure Key Vault gespeichert. Die Anzahl der Zertifikate für ein Abonnement ist unbegrenzt. Es besteht ein Grenzwert von 1 MB an Zertifikaten pro Bereitstellung, die entweder aus einer einzelnen VM oder einer Verfügbarkeitsgruppe besteht.
 

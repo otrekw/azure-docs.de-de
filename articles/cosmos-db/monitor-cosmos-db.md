@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 12/01/2020
 ms.author: sngun
 ms.custom: subject-monitoring
-ms.openlocfilehash: f7cc9d4062ad9a49ff84db6ac035ff53934ae0a0
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: d5cfdca24193b899926bd30995063ed55b3dd3eb
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96532056"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943453"
 ---
 # <a name="monitor-azure-cosmos-db"></a>Überwachen von Microsoft Azure Cosmos DB
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -129,7 +129,7 @@ Daten in Azure Monitor-Protokollen werden in Tabellen gespeichert, wobei jede Ta
 
 Alle Ressourcenprotokolle in Azure Monitor enthalten dieselben Felder, gefolgt von dienstspezifischen Feldern. Das allgemeine Schema wird in [Azure Monitor-Ressourcenprotokollschema](../azure-monitor/platform/resource-logs-schema.md#top-level-common-schema) beschrieben. Eine Liste der für Azure Cosmos DB erfassten Typen von Ressourcenprotokollen finden Sie im Artikel [Ressourcenprotokolle](monitor-cosmos-db-reference.md#resource-logs).
 
-Das [Aktivitätsprotokoll](/azure/azure-monitor/platform/activity-log) ist ein Plattformprotokoll in Azure, das einen Einblick in Ereignisse auf Abonnementebene ermöglicht. Sie können es unabhängig anzeigen oder an Azure Monitor-Protokolle weiterleiten, in denen Sie mithilfe von Log Analytics viel komplexere Abfragen durchführen können.  
+Das [Aktivitätsprotokoll](../azure-monitor/platform/activity-log.md) ist ein Plattformprotokoll in Azure, das einen Einblick in Ereignisse auf Abonnementebene ermöglicht. Sie können es unabhängig anzeigen oder an Azure Monitor-Protokolle weiterleiten, in denen Sie mithilfe von Log Analytics viel komplexere Abfragen durchführen können.  
 
 In Azure Cosmos DB werden Daten in den folgenden Tabellen gespeichert.
 

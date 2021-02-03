@@ -1,18 +1,15 @@
 ---
 title: Azure HDInsight Accelerated Writes für Apache HBase
 description: Bietet eine Übersicht über das Azure HDInsight Accelerated Writes-Feature, das verwaltete Premium-Datenträger zum Verbessern der Leistung des Apache HBase-Write-Ahead-Protokolls verwendet.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 01/24/2020
-ms.openlocfilehash: 27b0485fdd7b3c352a85fe7eb39fba33c53bf727
-ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
+ms.openlocfilehash: 1f5a9f05b94f43db9e1d883ef5e86f8621f39251
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96519211"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943038"
 ---
 # <a name="azure-hdinsight-accelerated-writes-for-apache-hbase"></a>Azure HDInsight Accelerated Writes für Apache HBase
 

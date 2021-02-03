@@ -1,19 +1,16 @@
 ---
 title: Analysieren und Verarbeiten von JSON mit Apache Hive – Azure HDInsight
 description: Informationen zum Verwenden und Analysieren von JSON-Dokumenten mithilfe von Apache Hive in Azure HDInsight
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/20/2020
-ms.openlocfilehash: 9a7d3992ecd2c74947eaa1071b97b2032000c749
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 5bc9acea219e5d111700840149a26c127b47514d
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547604"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943069"
 ---
 # <a name="process-and-analyze-json-documents-by-using-apache-hive-in-azure-hdinsight"></a>Analysieren und Verarbeiten von JSON-Dokumenten mithilfe von Apache Hive in Azure HDInsight
 
@@ -90,11 +87,11 @@ Die unformatierte JSON-Datei befindet sich unter `wasb://processjson@hditutorial
 
 Die Hive-Tabelle **StudentsOneLine** speichert die Daten im HDInsight-Standarddateisystem unter dem Pfad **/json/students/** .
 
-Die **INSERT** -Anweisung füllt die Tabelle **StudentOneLine** mit den vereinfachten JSON-Daten.
+Die **INSERT**-Anweisung füllt die Tabelle **StudentOneLine** mit den vereinfachten JSON-Daten.
 
-Die **SELECT** -Anweisung gibt nur eine Zeile zurück.
+Die **SELECT**-Anweisung gibt nur eine Zeile zurück.
 
-Dies ist die Ausgabe der **SELECT** -Anweisung:
+Dies ist die Ausgabe der **SELECT**-Anweisung:
 
 ![Vereinfachen des JSON-Dokuments mit HDInsight](./media/using-json-in-hive/hdinsight-flatten-json.png)
 
@@ -154,7 +151,7 @@ SerDe ist die beste Wahl für das Analysieren von geschachtelten JSON-Dokumenten
 
 ## <a name="summary"></a>Zusammenfassung
 
-Der Typ des JSON-Operators in Hive, den Sie auswählen, hängt vom Szenario ab. Wählen Sie für die Suche nach einem einzigen Feld in einem einfachen JSON-Dokument die Hive-UDF **get_json_object** aus. Wenn mehrere Suchschlüssel vorliegen, können Sie die UDF **json_tuple** verwenden. Verwenden Sie für geschachtelte Dokumente das **JSON-SerDe** .
+Der Typ des JSON-Operators in Hive, den Sie auswählen, hängt vom Szenario ab. Wählen Sie für die Suche nach einem einzigen Feld in einem einfachen JSON-Dokument die Hive-UDF **get_json_object** aus. Wenn mehrere Suchschlüssel vorliegen, können Sie die UDF **json_tuple** verwenden. Verwenden Sie für geschachtelte Dokumente das **JSON-SerDe**.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

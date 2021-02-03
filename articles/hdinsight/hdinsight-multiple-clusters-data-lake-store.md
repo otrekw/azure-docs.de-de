@@ -1,19 +1,16 @@
 ---
 title: Mehrere HDInsight-Cluster und ein Azure Data Lake Storage-Konto
 description: Erfahren Sie, wie Sie mehr als ein HDInsight-Cluster mit einem einzigen Data Lake Storage-Konto verwenden können
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/18/2019
-ms.openlocfilehash: df28374d0f124ceb46d2f97d55218d428275deca
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 6e220592f53103320c3bdb586fcbd0106219bfed
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92533086"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98939545"
 ---
 # <a name="use-multiple-hdinsight-clusters-with-an-azure-data-lake-storage-account"></a>Verwenden von mehreren HDInsight-Clustern mit einem Azure Data Lake Storage-Konto
 
@@ -28,7 +25,7 @@ Im weiteren Verlauf dieses Artikels wird davon ausgegangen, dass Sie über ausre
 
 ## <a name="data-lake-storage-setup-for-multiple-hdinsight-clusters"></a>Einrichten von mehreren HDInsight-Clustern mit Data Lake Storage
 
-Anhand einer Hierarchie mit zwei Ebenen werden die Empfehlungen für mehrere HDInsight-Cluster mit einem Data Lake Storage-Konto erklärt. Stellen Sie sich vor, dass Sie ein Data Lake Storage-Konto mit der Ordnerstruktur **/clusters/finance** haben. Mit dieser Struktur können alle für die Organisation „Finanzen“ erforderlichen Cluster „/clusters/finance“ als Speicherort verwenden. Wenn zukünftig eine andere Organisation, z.B. „Marketing“, ein HDInsight-Cluster mit einem Data Lake Storage-Konto erstellen möchte, kann sie „/clusters/marketing“ erstellen. Verwenden Sie für den Moment **/clusters/finance** .
+Anhand einer Hierarchie mit zwei Ebenen werden die Empfehlungen für mehrere HDInsight-Cluster mit einem Data Lake Storage-Konto erklärt. Stellen Sie sich vor, dass Sie ein Data Lake Storage-Konto mit der Ordnerstruktur **/clusters/finance** haben. Mit dieser Struktur können alle für die Organisation „Finanzen“ erforderlichen Cluster „/clusters/finance“ als Speicherort verwenden. Wenn zukünftig eine andere Organisation, z.B. „Marketing“, ein HDInsight-Cluster mit einem Data Lake Storage-Konto erstellen möchte, kann sie „/clusters/marketing“ erstellen. Verwenden Sie für den Moment **/clusters/finance**.
 
 Der Data Lake Storage-Administrator muss die entsprechenden Berechtigungen (wie in der Tabelle beschrieben) zuweisen, damit diese Ordnerstruktur effektiv von HDInsight-Clustern verwendet werden kann. Die in der Tabelle aufgelisteten Berechtigungen entsprechen einer Zugriffs-ACL, und nicht einer Standard-ACL.
 
@@ -87,7 +84,7 @@ Wie im bereits verlinkten JIRA von YARN angegeben, überprüft der Lokalisierer 
 
 #### <a name="workaround"></a>Problemumgehung
 
-Legen Sie die Lese- und Ausführberechtigungen für **andere** über die Hierarchie fest, beispielsweise über **/** , **/clusters** und **/clusters/finance** , wie in oben stehender Tabelle gezeigt.
+Legen Sie die Lese- und Ausführberechtigungen für **andere** über die Hierarchie fest, beispielsweise über **/** , **/clusters** und **/clusters/finance**, wie in oben stehender Tabelle gezeigt.
 
 ## <a name="see-also"></a>Weitere Informationen
 

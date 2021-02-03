@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 06/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: db4f49c1b788cd7a55fd6fbbd48f845f2c94d757
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: df19f32be41b17e13a9da575e828830e29da4e55
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92073528"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98894761"
 ---
 # <a name="start-a-runbook-from-a-webhook"></a>Starten eines Runbooks über einen Webhook
 
@@ -151,7 +151,7 @@ Sie können einen Webhook verlängern, der seine Ablaufzeit noch nicht erreicht 
 Das folgende Beispiel-Runbook akzeptiert Webhook-Daten und startet die im Anforderungstext angegebenen virtuellen Computer. Wenn Sie dieses Runbook testen möchten, klicken Sie in Ihrem Automation-Konto unter **Runbooks** auf **Runbook erstellen**. Sollten Sie nicht wissen, wie man ein Runbook erstellt, finden Sie unter [Erstellen eines Azure Automation-Runbooks](automation-quickstart-create-runbook.md) weitere Informationen.
 
 > [!NOTE]
-> Für nicht grafische PowerShell-Runbooks sind `Add-AzAccount` und `Add-AzureRMAccount` Aliase für [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount?view=azps-3.5.0). Sie können diese Cmdlets verwenden, oder Sie können Ihre Module in Ihrem Automation-Konto auf die aktuellen Versionen [aktualisieren](automation-update-azure-modules.md). Möglicherweise müssen Sie Ihre Module auch dann aktualisieren, wenn Sie gerade ein neues Automation-Konto erstellt haben.
+> Für nicht grafische PowerShell-Runbooks sind `Add-AzAccount` und `Add-AzureRMAccount` Aliase für [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount). Sie können diese Cmdlets verwenden, oder Sie können Ihre Module in Ihrem Automation-Konto auf die aktuellen Versionen [aktualisieren](automation-update-azure-modules.md). Möglicherweise müssen Sie Ihre Module auch dann aktualisieren, wenn Sie gerade ein neues Automation-Konto erstellt haben.
 
 ```powershell
 param

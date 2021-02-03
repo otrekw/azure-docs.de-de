@@ -1,19 +1,16 @@
 ---
 title: 'Ausführen der Apache Hadoop MapReduce-Beispiele in HDInsight: Azure'
 description: Lernen Sie die ersten Schritte mit MapReduce-Beispielen in JAR-Dateien in HDInsight kennen. Verwenden Sie SSH, um eine Verbindung mit dem Cluster herzustellen, und verwenden Sie dann den Hadoop-Befehl, um Beispielaufträge auszuführen.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 12/12/2019
-ms.openlocfilehash: cc0918f3d9739a214e682d7faa460b6cc519cb0b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5e75a39b1f9e8503097914b0c9e735915f9ae667
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86207849"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943218"
 ---
 # <a name="run-the-mapreduce-examples-included-in-hdinsight"></a>Ausführen von MapReduce-Beispielen in HDInsight
 
@@ -180,7 +177,7 @@ Dieses Beispiel verwendet drei Sätze von MapReduce-Programmen:
 
 * **TeraGen**: Ein MapReduce-Programm, das Zeilen mit zu sortierenden Daten generiert
 
-* **TeraSort**prüft die Eingangsdaten und verwendet MapReduce, um die Daten in eine Gesamtreihenfolge zu bringen.
+* **TeraSort** prüft die Eingangsdaten und verwendet MapReduce, um die Daten in eine Gesamtreihenfolge zu bringen.
 
     TeraSort ist eine MapReduce-Standardsortierung, die zusätzlich einen eigenen Partitionierer bietet. Der Partitionierer verwendet eine sortierte Liste mit N-1 Stichprobenschlüsseln, um den Schlüsselbereich für die einzelnen Reduce-Vorgänge zu definieren. Speziell werden alle Schlüssel mit Probe[i-1] <= Schlüssel < Probe[i] an Reduce-Vorgang i gesendet. Durch den Partitionierer wird sichergestellt, dass die Ausgaben der Reduce-Vorgänge i immer kleiner sind als die Ausgabe des Reduce-Vorgangs i + 1.
 

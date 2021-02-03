@@ -1,18 +1,15 @@
 ---
 title: Apache Spark-Richtlinien zu Azure HDInsight
 description: Hier finden Sie Richtlinien für die Verwendung von Apache Spark in Azure HDInsight.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/28/2020
-ms.openlocfilehash: a93b3e0da7b881b80f7613907e40af509bffadbd
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: f81435abbedec25cb8abe0b958065a493c15ce4c
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92545564"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98938814"
 ---
 # <a name="apache-spark-guidelines"></a>Apache Spark-Richtlinien
 

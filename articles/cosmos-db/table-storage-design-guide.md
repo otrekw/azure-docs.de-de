@@ -8,12 +8,12 @@ ms.date: 06/19/2020
 author: sakash279
 ms.author: akshanka
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 709b83ad3e71a932202cebb9c9cb6187feae4ed7
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 812d4976a0c6afe646c329ee483be20c33416381
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93080004"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943888"
 ---
 # <a name="azure-table-storage-table-design-guide-scalable-and-performant-tables"></a>Azure-Tabellenspeicher – Entwurfshandbuch: Skalierbare und leistungsfähige Tabellen
 [!INCLUDE[appliesto-table-api](includes/appliesto-table-api.md)]
@@ -823,7 +823,7 @@ Bei diesem Entwurf können Sie mit einem Zusammenführungsvorgang den Meldungsz�
 Beachten Sie die folgenden Punkte bei der Entscheidung, wie dieses Muster implementiert werden soll:  
 
 * Wenn eine vollständige Datenreihe nicht in eine einzelne Entität passt (eine Entität kann bis zu 252 Eigenschaften haben), verwenden Sie einen alternativen Datenspeicher, z. B ein Blob.  
-* Wenn bei Ihnen mehrere Clients gleichzeitig eine Entität aktualisieren, verwenden Sie das **ETag** , um vollständige optimistische Nebenläufigkeit zu implementieren. Wenn Sie viele Clients haben, können eine Vielzahl von Konflikten auftreten.  
+* Wenn bei Ihnen mehrere Clients gleichzeitig eine Entität aktualisieren, verwenden Sie das **ETag**, um vollständige optimistische Nebenläufigkeit zu implementieren. Wenn Sie viele Clients haben, können eine Vielzahl von Konflikten auftreten.  
 
 #### <a name="when-to-use-this-pattern"></a>Verwendung dieses Musters
 Verwenden Sie dieses Muster, wenn Sie eine Datenreihe aktualisieren und abrufen müssen, die einer einzelnen Entität zugeordnet ist.  
@@ -979,7 +979,7 @@ if (retrieveResult.Result != null)
 Beachten Sie, dass in diesem Beispiel erwartet wird, dass die abgerufene Entität den Typ `EmployeeEntity` hat.  
 
 #### <a name="retrieve-multiple-entities-by-using-linq"></a>Abrufen von mehreren Entitäten mithilfe von LINQ
-Sie können mehrere Entitäten abrufen, indem Sie LINQ mit der Speicherclientbibliothek verwenden und eine Abfrage mit einer **where** -Klausel angeben. Um einen Tabellenscan zu vermeiden, sollten Sie immer den `PartitionKey`-Wert in die where-Klausel einschließen (und möglichst auch den `RowKey`-Wert, um Tabellen- und Partitionsscans zu vermeiden). Der Tabellenspeicher unterstützt eine begrenzte Anzahl von Vergleichsoperatoren (größer als, größer als oder gleich, kleiner als, kleiner als oder gleich, gleich und ungleich) zur Verwendung in der WHERE-Klausel. Der folgende C#-Codeausschnitt sucht alle Mitarbeiter, deren Nachname mit „B“ beginnt (vorausgesetzt, in `RowKey` ist der Nachname gespeichert) und die der Vertriebsabteilung angehören (vorausgesetzt, in `PartitionKey` ist der Name der Abteilung gespeichert):  
+Sie können mehrere Entitäten abrufen, indem Sie LINQ mit der Speicherclientbibliothek verwenden und eine Abfrage mit einer **where**-Klausel angeben. Um einen Tabellenscan zu vermeiden, sollten Sie immer den `PartitionKey`-Wert in die where-Klausel einschließen (und möglichst auch den `RowKey`-Wert, um Tabellen- und Partitionsscans zu vermeiden). Der Tabellenspeicher unterstützt eine begrenzte Anzahl von Vergleichsoperatoren (größer als, größer als oder gleich, kleiner als, kleiner als oder gleich, gleich und ungleich) zur Verwendung in der WHERE-Klausel. Der folgende C#-Codeausschnitt sucht alle Mitarbeiter, deren Nachname mit „B“ beginnt (vorausgesetzt, in `RowKey` ist der Nachname gespeichert) und die der Vertriebsabteilung angehören (vorausgesetzt, in `PartitionKey` ist der Name der Abteilung gespeichert):  
 
 ```csharp
 TableQuery<EmployeeEntity> employeeQuery = employeeTable.CreateQuery<EmployeeEntity>();
@@ -1109,7 +1109,7 @@ Wenn die Speicherclientbibliothek eine EGT ausführt, werden Ausnahmen ausgelös
 Sie sollten auch berücksichtigen, wie Ihr Design beeinflusst wird und wie Ihre Anwendung Nebenläufigkeit und Aktualisierungsvorgänge handhabt.  
 
 #### <a name="managing-concurrency"></a>Verwalten von Nebenläufigkeit
-Der Tabellenspeicher implementiert standardmäßig Prüfungen der optimistischen Nebenläufigkeit auf der Ebene der einzelnen Entitäten für die Vorgänge „Einfügen“, „Zusammenführen“ und „Löschen“, obwohl es für einen Client möglich ist, das Umgehen dieser Prüfungen durch den Tabellenspeicher zu erzwingen. Weitere Informationen finden Sie unter [Verwalten von Nebenläufigkeit in Microsoft Azure Storage](../storage/common/storage-concurrency.md).  
+Der Tabellenspeicher implementiert standardmäßig Prüfungen der optimistischen Nebenläufigkeit auf der Ebene der einzelnen Entitäten für die Vorgänge „Einfügen“, „Zusammenführen“ und „Löschen“, obwohl es für einen Client möglich ist, das Umgehen dieser Prüfungen durch den Tabellenspeicher zu erzwingen. Weitere Informationen finden Sie unter [Verwalten von Nebenläufigkeit in Microsoft Azure Storage](../storage/blobs/concurrency-manage.md).  
 
 #### <a name="merge-or-replace"></a>Zusammenführen oder ersetzen
 Die Methode `Replace` der Klasse `TableOperation` ersetzt immer die komplette Entität im Tabellenspeicher. Wenn Sie keine Eigenschaft in die Anforderung einschließen und diese Eigenschaft in der gespeicherten Entität existiert, entfernt die Anforderung diese Eigenschaft von der gespeicherten Entität. Sie müssen alle Eigenschaften in die Anforderung mit einschließen, wenn Sie nicht möchten, dass eine Eigenschaft aus einer gespeicherten Entität explizit entfernen wird.  

@@ -1,19 +1,16 @@
 ---
 title: Verwenden von Apache Maven zum Erstellen eines Java-HBase-Clients für Azure HDInsight
 description: Erfahren Sie, wie Sie mit Apache Maven eine Java-basierte Apache HBase-Anwendung erstellen und anschließend in HBase unter Azure HDInsight bereitstellen können.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seodec18, devx-track-java
 ms.date: 12/24/2019
-ms.openlocfilehash: 61b8aaf9ea61ebe85eac6708d7390c386dea2696
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 13616cf99db39ec4dac1d13e3dcd2cefc5a44614
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547910"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98942954"
 ---
 # <a name="build-java-applications-for-apache-hbase"></a>Erstellen von Java-Anwendungen für die Apache-HBase
 

@@ -4,12 +4,12 @@ description: Überwachen von .NET Core- und .NET Framework-Apps ohne HTTP mit Az
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 05/11/2020
-ms.openlocfilehash: 3d02b6e70d0832b92ae88db237b4c554b92e7f3b
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: 155a0963146860431cb44c255e1e1d1aca3ae344
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91875069"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943876"
 ---
 # <a name="application-insights-for-worker-service-applications-non-http-applications"></a>Application Insights für Workerdienstanwendungen (Anwendungen ohne HTTP)
 
@@ -19,7 +19,7 @@ Das neue SDK sammelt keine Telemetriedaten. Stattdessen nutzt es andere bekannte
 
 ## <a name="supported-scenarios"></a>Unterstützte Szenarios
 
-Das [Application Insights SDK für Workerdienstanwendungen](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService) eignet sich perfekt für Anwendungen ohne HTTP, unabhängig davon, wo und wie sie ausgeführt werden. Wenn Ihre Anwendung ausgeführt wird und über eine Netzwerkverbindung mit Azure verfügt, können Telemetriedaten erfasst werden. Die Application Insights-Überwachung wird in allen Umgebungen unterstützt, in denen auch .NET Core unterstützt wird. Dieses Paket kann in den neu eingeführten [.NET Core 3.0-Workerdienst](https://devblogs.microsoft.com/aspnet/dotnet-core-workers-in-azure-container-instances), [-Hintergrundaufgaben in ASP.NET Core 2.1/2.2](/aspnet/core/fundamentals/host/hosted-services?view=aspnetcore-2.2&preserve-view=true), Konsolen-Apps (.NET Core/.NET Framework) usw. verwendet werden.
+Das [Application Insights SDK für Workerdienstanwendungen](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService) eignet sich perfekt für Anwendungen ohne HTTP, unabhängig davon, wo und wie sie ausgeführt werden. Wenn Ihre Anwendung ausgeführt wird und über eine Netzwerkverbindung mit Azure verfügt, können Telemetriedaten erfasst werden. Die Application Insights-Überwachung wird in allen Umgebungen unterstützt, in denen auch .NET Core unterstützt wird. Dieses Paket kann in den neu eingeführten [.NET Core 3.0-Workerdienst](https://devblogs.microsoft.com/aspnet/dotnet-core-workers-in-azure-container-instances), [-Hintergrundaufgaben in ASP.NET Core 2.1/2.2](/aspnet/core/fundamentals/host/hosted-services), Konsolen-Apps (.NET Core/.NET Framework) usw. verwendet werden.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -134,7 +134,7 @@ In der Regel wird mit `APPINSIGHTS_INSTRUMENTATIONKEY` der Instrumentierungsschl
 
 ## <a name="aspnet-core-background-tasks-with-hosted-services"></a>ASP.NET Core-Hintergrundaufgaben mit gehosteten Diensten
 
-In [diesem Dokument](/aspnet/core/fundamentals/host/hosted-services?tabs=visual-studio&view=aspnetcore-2.2&preserve-view=true) wird das Erstellen von Hintergrundaufgaben in einer ASP.NET Core 2.1/2.2-Anwendung beschrieben.
+In [diesem Dokument](/aspnet/core/fundamentals/host/hosted-services?tabs=visual-studio) wird das Erstellen von Hintergrundaufgaben in einer ASP.NET Core 2.1/2.2-Anwendung beschrieben.
 
 Das vollständige Beispiel finden Sie [hier](https://github.com/microsoft/ApplicationInsights-dotnet/tree/develop/examples/WorkerServiceSDK/BackgroundTasksWithHostedService).
 
@@ -563,9 +563,9 @@ using Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel;
 
 [.NET Core-Konsolenanwendung](https://github.com/microsoft/ApplicationInsights-dotnet/tree/develop/examples/WorkerServiceSDK/ConsoleAppWithApplicationInsights) Nutzen Sie dieses Beispiel, wenn Sie eine Konsolenanwendung verwenden, die in .NET Core (2.0 oder höher) oder .NET Framework (4.7.2 oder höher) geschrieben ist.
 
-[ASP .NET Core-Hintergrundaufgaben mit gehosteten Diensten](https://github.com/microsoft/ApplicationInsights-dotnet/tree/develop/examples/WorkerServiceSDK/BackgroundTasksWithHostedService) Nutzen Sie dieses Beispiel, wenn Sie in ASP.NET Core 2.1/2.2 Hintergrundaufgaben gemäß der offiziellen Anleitung[(hier) ](/aspnet/core/fundamentals/host/hosted-services?view=aspnetcore-2.2&preserve-view=true) erstellen.
+[ASP .NET Core-Hintergrundaufgaben mit gehosteten Diensten](https://github.com/microsoft/ApplicationInsights-dotnet/tree/develop/examples/WorkerServiceSDK/BackgroundTasksWithHostedService) Nutzen Sie dieses Beispiel, wenn Sie in ASP.NET Core 2.1/2.2 Hintergrundaufgaben gemäß der offiziellen Anleitung[(hier) ](/aspnet/core/fundamentals/host/hosted-services) erstellen.
 
-[.NET Core 3.0-Workerdienst](https://github.com/microsoft/ApplicationInsights-dotnet/tree/develop/examples/WorkerServiceSDK/WorkerServiceSampleWithApplicationInsights) Nutzen Sie dieses Beispiel, wenn Sie über eine .NET Core 3.0-Workerdienstanwendung gemäß der offiziellen Anleitung [(hier)](/aspnet/core/fundamentals/host/hosted-services?tabs=visual-studio&view=aspnetcore-3.0&preserve-view=true#worker-service-template) verfügen.
+[.NET Core 3.0-Workerdienst](https://github.com/microsoft/ApplicationInsights-dotnet/tree/develop/examples/WorkerServiceSDK/WorkerServiceSampleWithApplicationInsights) Nutzen Sie dieses Beispiel, wenn Sie über eine .NET Core 3.0-Workerdienstanwendung gemäß der offiziellen Anleitung [(hier)](/aspnet/core/fundamentals/host/hosted-services?tabs=visual-studio#worker-service-template) verfügen.
 
 ## <a name="open-source-sdk"></a>Open Source SDK
 

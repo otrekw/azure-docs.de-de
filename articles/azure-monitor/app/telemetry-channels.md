@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 05/14/2019
 ms.custom: devx-track-csharp
 ms.reviewer: mbullwin
-ms.openlocfilehash: fec7bfc16e2cc36d19c84b93b5b93c3c1365b166
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a22a0d112671019d73eb4c9a3853462e4e9c8c75
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90564014"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98937350"
 ---
 # <a name="telemetry-channels-in-application-insights"></a>Telemetriekanäle in Application Insights
 
@@ -18,7 +18,7 @@ Telemetriekanäle sind ein integraler Bestandteil der [Azure Application Insight
 
 ## <a name="what-are-telemetry-channels"></a>Was sind Telemetriekanäle?
 
-Telemetriekanäle sind für das Puffern und Senden von Telemetrieelementen an den Application Insights-Dienst verantwortlich, wo sie für Abfragen und Analysen gespeichert werden. Ein Telemetriekanal ist jede Klasse, die die Schnittstelle [`Microsoft.ApplicationInsights.ITelemetryChannel`](/dotnet/api/microsoft.applicationinsights.channel.itelemetrychannel?view=azure-dotnet) implementiert.
+Telemetriekanäle sind für das Puffern und Senden von Telemetrieelementen an den Application Insights-Dienst verantwortlich, wo sie für Abfragen und Analysen gespeichert werden. Ein Telemetriekanal ist jede Klasse, die die Schnittstelle [`Microsoft.ApplicationInsights.ITelemetryChannel`](/dotnet/api/microsoft.applicationinsights.channel.itelemetrychannel) implementiert.
 
 Die `Send(ITelemetry item)`-Methode eines Telemetriekanals wird aufgerufen, nachdem alle Telemetrieinitialisierer und Telemetrieprozessoren aufgerufen wurden. Daher erreichen Elemente, die von einem Telemetrieprozessor verworfen wurden, den Kanal nicht. Mit `Send()` werden die Elemente in der Regel nicht sofort an das Back-End gesendet. Normalerweise werden Sie im Arbeitsspeicher gepufferten und für eine effiziente Übertragung in Batches gesendet.
 

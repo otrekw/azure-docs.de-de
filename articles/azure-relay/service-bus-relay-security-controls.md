@@ -3,12 +3,12 @@ title: Sicherheitskontrollen für Azure Relay
 description: In diesem Artikel wird eine Checkliste mit integrierten Sicherheitskontrollen für die Überprüfung von Azure Relay bereitgestellt.
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 5d55026bfb6e3d6fe955a540b7596a85707398d6
-ms.sourcegitcommit: 431bf5709b433bb12ab1f2e591f1f61f6d87f66c
+ms.openlocfilehash: ce5053366ac1d3536a152610d8ed7f76fad62b84
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2021
-ms.locfileid: "98133343"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98919577"
 ---
 # <a name="security-controls-for-azure-relay"></a>Sicherheitskontrollen für Azure Relay
 
@@ -20,8 +20,8 @@ In diesem Artikel werden die in Azure Relay integrierten Sicherheitskontrollen b
 
 | Sicherheitskontrolle | Ja/Nein | Notizen | Dokumentation |
 |---|---|--|--|
-| Unterstützung für private Endpunkte| Nein |  |   |
-| Unterstützung von Netzwerkisolation und Firewall| Nein |  |   |
+| Unterstützung für private Endpunkte| Ja |  |   |
+| Unterstützung von Netzwerkisolation und Firewall| Ja |  |   |
 | Unterstützung der Tunnelerzwingung| – | Relay ist der TLS-Tunnel  |   |
 
 ## <a name="monitoring--logging"></a>Überwachung und Protokollierung

@@ -1,19 +1,16 @@
 ---
 title: Was sind Apache Hive und HiveQL? – Azure HDInsight
 description: Apache Hive ist ein Data Warehouse-System für Apache Hadoop. Sie können in Hive gespeicherte Daten mithilfe von HiveQL abrufen, die Transact-SQL ähnelt. Erfahren Sie in diesem Dokument, wie Sie Hive und HiveQL mit Azure HDInsight verwenden.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 02/28/2020
-ms.openlocfilehash: d2e59b35a30bd838eab2b05dcacf83d8b2c21236
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 4e8c6b25055dfc38d56509e1744b8c7fcac40700
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92540396"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944284"
 ---
 # <a name="what-is-apache-hive-and-hiveql-on-azure-hdinsight"></a>Was sind Apache Hive und HiveQL in Azure HDInsight?
 
@@ -34,7 +31,7 @@ HDInsight bietet verschiedene Clustertypen, die für bestimmte Workloads optimie
 
 In der folgenden Tabelle finden Sie Informationen zu unterschiedlichen Methoden der Verwendung von Hive mit HDInsight:
 
-| **Verwenden Sie diese Methode** für ... | ... **interaktive** Abfragen | ... **Batchverarbeitung** | ...von diesem **Clusterbetriebssystem** |
+| **Verwenden Sie diese Methode** für ... | ...**interaktive** Abfragen | ...**Batchverarbeitung** | ...von diesem **Clusterbetriebssystem** |
 |:--- |:---:|:---:|:--- |:--- |
 | [HDInsight Tools for Visual Studio Code](../hdinsight-for-vscode.md) |✔ |✔ | Linux, Unix, Mac OS X oder Windows |
 | [HDInsight-Tools für Visual Studio](../hadoop/apache-hadoop-use-hive-visual-studio.md) |✔ |✔ |Windows |
@@ -166,7 +163,7 @@ Diese Anweisungen führen die folgenden Aktionen aus:
 
 |-Anweisung. |BESCHREIBUNG |
 |---|---|
-|CREATE TABLE IF NOT EXISTS|Erstellt die Tabelle, wenn sie nicht vorhanden ist. Da das **EXTERNAL** -Schlüsselwort nicht verwendet wird, erstellt diese Anweisung eine interne Tabelle. Die Tabelle wird im Hive-Data Warehouse gespeichert und vollständig von Hive verwaltet.|
+|CREATE TABLE IF NOT EXISTS|Erstellt die Tabelle, wenn sie nicht vorhanden ist. Da das **EXTERNAL**-Schlüsselwort nicht verwendet wird, erstellt diese Anweisung eine interne Tabelle. Die Tabelle wird im Hive-Data Warehouse gespeichert und vollständig von Hive verwaltet.|
 |STORED AS ORC|Speichert die Daten im ORC-Format (Optimized Row Columnar). ORC ist ein stark optimiertes und effizientes Format zum Speichern von Hive-Daten.|
 |INSERT OVERWRITE ... SELECT|Wählt Zeilen in der Tabelle **log4jLogs** aus, die **[ERROR]** enthalten, und fügt die Daten in die Tabelle **errorLogs** ein.|
 

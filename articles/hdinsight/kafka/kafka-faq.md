@@ -1,18 +1,15 @@
 ---
 title: Häufig gestellte Fragen zu Apache Kafka in Azure HDInsight
 description: Hier erhalten Sie Antworten zu häufig gestellten Fragen zu Apache Kafka in Azure HDInsight, einem verwalteten Hadoop-Clouddienst.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/14/2019
-ms.openlocfilehash: 84c48f14ae57cfa4aa3290924d3d170c075fe3a6
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 851d7ceb44d2466ed31e26c1442fde9acea9fd22
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92532549"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98939095"
 ---
 # <a name="frequently-asked-questions-about-apache-kafka-in-azure-hdinsight"></a>Häufig gestellte Fragen zu Apache Kafka in Azure HDInsight
 
@@ -42,7 +39,7 @@ Ja, HDInsight verwendet native Kafka-APIs. Ihr Clientanwendungscode muss nicht g
 
 ## <a name="can-i-change-cluster-configurations"></a>Kann ich Clusterkonfigurationen ändern?
 
-Ja, über das Ambari-Portal. Jede Komponente im Portal hat einen **configs** -Abschnitt, in dem Komponentenkonfigurationen geändert werden können. Einige Änderungen bedingen möglicherweise Brokerneustarts.
+Ja, über das Ambari-Portal. Jede Komponente im Portal hat einen **configs**-Abschnitt, in dem Komponentenkonfigurationen geändert werden können. Einige Änderungen bedingen möglicherweise Brokerneustarts.
 
 ## <a name="what-type-of-authentication-does-hdinsight-support-for-apache-kafka"></a>Welchen Authentifizierungstyp unterstützt HDInsight für Apache Kafka?
 
@@ -78,7 +75,7 @@ Datendauerhaftigkeit ermöglicht es Ihnen, das niedrigste Risiko von Nachrichten
 * Verwenden Sie in Regionen mit nur zwei Fehlerdomänen einen Mindestreplikationsfaktor von 4.
 * Deaktivieren Sie unklare Koordinatorauswahlen (Leader Elections).
 * Legen Sie **min.insync.replicas** auf mindestens „2“ fest. Hierdurch wird die Anzahl der Replikate geändert, die vollständig mit dem Koordinator synchronisiert sein müssen, bevor ein Schreibvorgang ausgeführt werden kann.
-* Legen Sie die **ack** -Eigenschaft auf **all** fest. Diese Eigenschaft erfordert, dass alle Replikate alle Meldungen bestätigen.
+* Legen Sie die **ack**-Eigenschaft auf **all** fest. Diese Eigenschaft erfordert, dass alle Replikate alle Meldungen bestätigen.
 
 Das Konfigurieren von Kafka für eine höhere Datenkonsistenz wirkt sich auf die Verfügbarkeit von Brokern aus, die Anforderungen erstellen.
 

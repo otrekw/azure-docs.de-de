@@ -1,19 +1,17 @@
 ---
 title: 'Sicherheit: Migrieren lokaler Apache Hadoop-Cluster zu Azure HDInsight'
 description: Erfahren Sie mehr über bewährte Methoden für Sicherheit und DevOps bei der Migration von lokalen Hadoop-Clustern zu Azure HDInsight.
-author: hrasheed-msft
-ms.author: hrasheed
 ms.reviewer: ashishth
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/19/2019
-ms.openlocfilehash: 6fd59a346a36a304f699894c493d8ba9800489b2
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: fa6a4a8686fe5a33a6f240a8e972a687e872732a
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92545258"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98939739"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---security-and-devops-best-practices"></a>Migrieren lokaler Apache Hadoop-Cluster zu Azure HDInsight – bewährte Methoden für Sicherheit und DevOps
 
@@ -116,9 +114,9 @@ Weitere Informationen finden Sie im Artikel: [Patchen des Betriebssystems für H
 
 ## <a name="post-migration"></a>Aufgaben nach der Migration
 
-1. **Korrigieren von Anwendungen** : Führen Sie iterativ die erforderlichen Änderungen an den Aufträgen, Prozessen und Skripts durch.
-2. **Durchführen von Tests** : Führen Sie iterativ Funktions- und Leistungstests durch.
-3. **Optimieren** : Beheben Sie Leistungsprobleme basierend auf den Ergebnissen der oben genannten Tests, und führen Sie dann erneut Tests durch, um die Leistungsverbesserungen zu überprüfen.
+1. **Korrigieren von Anwendungen**: Führen Sie iterativ die erforderlichen Änderungen an den Aufträgen, Prozessen und Skripts durch.
+2. **Durchführen von Tests**: Führen Sie iterativ Funktions- und Leistungstests durch.
+3. **Optimieren**: Beheben Sie Leistungsprobleme basierend auf den Ergebnissen der oben genannten Tests, und führen Sie dann erneut Tests durch, um die Leistungsverbesserungen zu überprüfen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

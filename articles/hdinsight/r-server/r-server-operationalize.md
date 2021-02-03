@@ -1,19 +1,16 @@
 ---
 title: Operationalisieren von ML Services in HDInsight – Azure
 description: Erfahren Sie, wie Sie Ihr Datenmodell operationalisieren, um Vorhersagen mit ML Services in Azure HDInsight zu treffen.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 06/27/2018
-ms.openlocfilehash: 20159cf911670eb70fd5757991c07b63b3f1776b
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: c90642e58c026c78ce854e7fe74dd36963d48b67
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92536265"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944009"
 ---
 # <a name="operationalize-ml-services-cluster-on-azure-hdinsight"></a>Operationalisieren eines ML Services-Clusters in Azure HDInsight
 
@@ -54,7 +51,7 @@ Nachdem Sie mit dem ML Services-Cluster Ihre Datenmodellierung in HDInsight vorg
         sudo dotnet Microsoft.DeployR.Utils.AdminUtil/Microsoft.DeployR.Utils.AdminUtil.dll
         ```
 
-1. Die Optionen werden zur Auswahl angezeigt. Wählen Sie die erste Option wie im folgenden Screenshot gezeigt aus, um **ML Server für die Operationalisierung zu konfigurieren** .
+1. Die Optionen werden zur Auswahl angezeigt. Wählen Sie die erste Option wie im folgenden Screenshot gezeigt aus, um **ML Server für die Operationalisierung zu konfigurieren**.
 
     ![R Server-Verwaltungshilfsprogramm – Auswählen](./media/r-server-operationalize/admin-util-one-box-1.png)
 
@@ -86,7 +83,7 @@ Nachdem Sie mit dem ML Services-Cluster Ihre Datenmodellierung in HDInsight vorg
 
 ### <a name="long-delays-when-consuming-web-service-on-apache-spark"></a>Lange Verzögerungen bei der Nutzung des Webdiensts in Apache Spark
 
-Wenn bei der Nutzung eines Webdiensts, der mit mrsdeploy-Funktionen in einem Apache Spark-Computekontext erstellt wurde, lange Verzögerungen auftreten, müssen Sie unter Umständen einige fehlende Ordner hinzufügen. Wenn die Spark-Anwendung von einem Webdienst mit mrsdeploy-Funktionen aufgerufen wird, gehört sie zu einem Benutzer namens *rserve2* . So können Sie dieses Problem umgehen:
+Wenn bei der Nutzung eines Webdiensts, der mit mrsdeploy-Funktionen in einem Apache Spark-Computekontext erstellt wurde, lange Verzögerungen auftreten, müssen Sie unter Umständen einige fehlende Ordner hinzufügen. Wenn die Spark-Anwendung von einem Webdienst mit mrsdeploy-Funktionen aufgerufen wird, gehört sie zu einem Benutzer namens *rserve2*. So können Sie dieses Problem umgehen:
 
 ```r
 # Create these required folders for user 'rserve2' in local and hdfs:
@@ -151,19 +148,19 @@ Der ML Services-Cluster wird nicht über [Apache Hadoop YARN](https://hadoop.apa
 
 Führen Sie folgende Schritte zur Außerbetriebnahme der Workerknoten aus:
 
-1. Melden Sie sich bei der Ambari-Konsole des Clusters an, und klicken Sie auf die Registerkarte **Hosts** .
+1. Melden Sie sich bei der Ambari-Konsole des Clusters an, und klicken Sie auf die Registerkarte **Hosts**.
 
 1. Wählen Sie (außer Betrieb zu setzende) Workerknoten aus.
 
-1. Klicken Sie auf **Aktionen** > **Ausgewählte Hosts** > **Hosts** > **Wartungsmodus EINSCHALTEN** . In der folgenden Abbildung haben wir z.B. „wn3“ und „wn4“ für die Außerbetriebnahme ausgewählt.  
+1. Klicken Sie auf **Aktionen** > **Ausgewählte Hosts** > **Hosts** > **Wartungsmodus EINSCHALTEN**. In der folgenden Abbildung haben wir z.B. „wn3“ und „wn4“ für die Außerbetriebnahme ausgewählt.  
 
    ![Apache Ambari – Aktivieren des Wartungsmodus](./media/r-server-operationalize/get-started-operationalization.png)  
 
-* Wählen Sie **Aktionen** > **Ausgewählte Hosts** > **DataNodes** aus, und klicken Sie auf **Außer Betrieb setzen** .
-* Wählen Sie **Aktionen** > **Ausgewählte Hosts** > **NodeManagers** aus, und klicken Sie auf **Außer Betrieb setzen** .
-* Wählen Sie **Aktionen** > **Ausgewählte Hosts** > **DataNodes** aus, und klicken Sie auf **Beenden** .
-* Wählen Sie **Aktionen** > **Ausgewählte Hosts** > **NodeManagers** aus, und klicken Sie auf **Beenden** .
-* Wählen Sie **Aktionen** > **Ausgewählte Hosts** > **Hosts** aus, und klicken Sie auf **Alle Komponenten beenden** .
+* Wählen Sie **Aktionen** > **Ausgewählte Hosts** > **DataNodes** aus, und klicken Sie auf **Außer Betrieb setzen**.
+* Wählen Sie **Aktionen** > **Ausgewählte Hosts** > **NodeManagers** aus, und klicken Sie auf **Außer Betrieb setzen**.
+* Wählen Sie **Aktionen** > **Ausgewählte Hosts** > **DataNodes** aus, und klicken Sie auf **Beenden**.
+* Wählen Sie **Aktionen** > **Ausgewählte Hosts** > **NodeManagers** aus, und klicken Sie auf **Beenden**.
+* Wählen Sie **Aktionen** > **Ausgewählte Hosts** > **Hosts** aus, und klicken Sie auf **Alle Komponenten beenden**.
 * Heben Sie die Auswahl der Workerknoten auf, und wählen Sie die Hauptknoten aus.
 * Wählen Sie **Aktionen** > **Ausgewählte Hosts** > **Hosts** > **Alle Komponenten beenden** aus.
 

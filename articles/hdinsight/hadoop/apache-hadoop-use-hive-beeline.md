@@ -1,19 +1,16 @@
 ---
 title: 'Verwenden von Apache Beeline mit Apache Hive: Azure HDInsight'
 description: Erfahren Sie, wie Sie den Beeline-Client verwenden, um Hive-Abfragen mit Hadoop in HDInsight auszuführen. Beeline ist ein Dienstprogramm zum Arbeiten mit HiveServer2 über JDBC.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 10/28/2020
 ms.custom: contperf-fy21q1, contperf-fy21q2
-ms.openlocfilehash: 70fbbdfc5d8f1bac5fa27175ea25be1503a77594
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: e8b7478ba64da0f99a9b7a710222ff2953795adf
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97031894"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943199"
 ---
 # <a name="use-the-apache-beeline-client-with-apache-hive"></a>Verwenden des Apache Beeline-Clients mit Apache Hive
 

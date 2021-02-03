@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/05/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: ff777f079116942eba32e49f359c7f7e0b99f65d
-ms.sourcegitcommit: 6628bce68a5a99f451417a115be4b21d49878bb2
+ms.openlocfilehash: 690dcca23aedb129090b3bf4f0da8874705b5fcc
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/18/2021
-ms.locfileid: "98555779"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98941466"
 ---
 # <a name="azure-security-baseline-for-azure-data-factory"></a>Azure-Sicherheitsbaseline für Azure Data Factory
 
@@ -960,7 +960,7 @@ Beachten Sie, dass das nur gilt, wenn Ihre Integration Runtime auf einer Azure-V
 
 In den meisten Fällen sind die Microsoft-Basisvorlagen in Kombination mit Azure Automation Desired State Configuration beim Erfüllen und Verwalten der Sicherheitsanforderungen nützlich.
 
-* [Herunterladen einer Vorlage für einen virtuellen Computer](../virtual-machines/windows/download-template.md)
+* [Herunterladen einer Vorlage für einen virtuellen Computer](/previous-versions/azure/virtual-machines/windows/download-template)
 
 * [Erstellen von Azure Resource Manager-Vorlagen](../virtual-machines/windows/ps-template.md)
 

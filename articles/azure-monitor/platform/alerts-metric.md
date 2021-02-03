@@ -6,12 +6,12 @@ ms.author: harelbr
 ms.topic: conceptual
 ms.date: 01/11/2021
 ms.subservice: alerts
-ms.openlocfilehash: 0518d3a2e1b67b33b9cb6bceb9754df302710f70
-ms.sourcegitcommit: 3af12dc5b0b3833acb5d591d0d5a398c926919c8
+ms.openlocfilehash: 6919040308dcd3a80c3c0b05ec729744099b6d8f
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98071033"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944499"
 ---
 # <a name="create-view-and-manage-metric-alerts-using-azure-monitor"></a>Erstellen, Anzeigen und Verwalten von Metrikwarnungen mit Azure Monitor
 
@@ -91,7 +91,7 @@ Sie können Metrikwarnungsregeln anzeigen und verwalten, indem Sie das Blatt „
 
 ## <a name="with-azure-cli"></a>Mit der Azure-Befehlszeilenschnittstelle
 
-In den vorangegangenen Abschnitten wurde beschrieben, wie Sie über das Azure-Portal Metrikwarnungsregeln erstellen, anzeigen und verwalten. In diesem Abschnitt wird beschrieben, wie Sie dasselbe mit der plattformübergreifenden [Azure-Befehlszeilenschnittstelle](/cli/azure/get-started-with-azure-cli?view=azure-cli-latest) (Azure CLI) erreichen können. Die schnellste Möglichkeit, mit der Verwendung der Azure CLI zu beginnen, ist über [Azure Cloud Shell](../../cloud-shell/overview.md?view=azure-cli-latest). In diesem Artikel verwendeten wir Cloud Shell.
+In den vorangegangenen Abschnitten wurde beschrieben, wie Sie über das Azure-Portal Metrikwarnungsregeln erstellen, anzeigen und verwalten. In diesem Abschnitt wird beschrieben, wie Sie dasselbe mit der plattformübergreifenden [Azure-Befehlszeilenschnittstelle](/cli/azure/get-started-with-azure-cli) (Azure CLI) erreichen können. Die schnellste Möglichkeit, mit der Verwendung der Azure CLI zu beginnen, ist über [Azure Cloud Shell](../../cloud-shell/overview.md). In diesem Artikel verwendeten wir Cloud Shell.
 
 1. Wechseln Sie zum Azure-Portal, und klicken Sie auf **Cloud Shell**.
 

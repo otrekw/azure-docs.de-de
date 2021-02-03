@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 12/12/2020
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: b487dcad83ccbc31adf2d7ec2dd77c490db2c68e
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 9bc641d680d927c44814f6814ebf6a6dde958c9e
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97935194"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98900943"
 ---
 Azure Functions ermöglicht das Erstellen von auf Konfigurationen beschränkten Replikationsaufgaben, die auf einem vordefinierten Einstiegspunkt basieren. Die [konfigurationsbasierten Replikationsbeispiele für Azure Functions](https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/functions/config) veranschaulichen, wie [vorgefertigte Hilfsprogramme](https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/src/Azure.Messaging.Replication) in Ihrem eigenen Code genutzt werden können, oder wie damit vermieden werden kann, Code überhaupt anfassen zu müssen und nur die Konfiguration zu verwenden.
 
@@ -218,13 +218,12 @@ In der folgenden Tabelle finden Sie die richtigen Werte für Kombinationen aus Q
 
 ### <a name="retry-policy"></a>Wiederholungsrichtlinie
 
-Informationen zum Konfigurieren der Wiederholungsrichtlinie finden Sie in der [Azure Functions-Dokumentation zu Wiederholungen](/azure/azure-functions/functions-bindings-error-pages). Die in allen Projekten in diesem Repository gewählten Richtlinieneinstellungen konfigurieren eine exponentielle Backoff-Strategie mit Wiederholungsintervallen zwischen 5 Sekunden und 5 Minuten mit unendlichen Wiederholungen, um Datenverluste zu vermeiden.
+Informationen zum Konfigurieren der Wiederholungsrichtlinie finden Sie in der [Azure Functions-Dokumentation zu Wiederholungen](../articles/azure-functions/functions-bindings-error-pages.md). Die in allen Projekten in diesem Repository gewählten Richtlinieneinstellungen konfigurieren eine exponentielle Backoff-Strategie mit Wiederholungsintervallen zwischen 5 Sekunden und 5 Minuten mit unendlichen Wiederholungen, um Datenverluste zu vermeiden.
 
-Um die Interaktion zwischen Triggern und der für die Warteschlange definierten maximalen Zustellungsanzahl in Service Bus zu verstehen, lesen Sie den Abschnitt [„Verwenden der Wiederholungsunterstützung zusätzlich zur Ausfallsicherheit des Auslösers“](/azure/azure-functions/functions-bindings-error-pages#using-retry-support-on-top-of-trigger-resilience).
+Um die Interaktion zwischen Triggern und der für die Warteschlange definierten maximalen Zustellungsanzahl in Service Bus zu verstehen, lesen Sie den Abschnitt [„Verwenden der Wiederholungsunterstützung zusätzlich zur Ausfallsicherheit des Auslösers“](../articles/azure-functions/functions-bindings-error-pages.md#using-retry-support-on-top-of-trigger-resilience).
 
 ### <a name="build-deploy-and-configure"></a>Erstellen, Bereitstellen und Konfigurieren
 
 Während Sie sich auf die Konfiguration konzentrieren, erfordern die Aufgaben weiterhin das Erstellen einer bereitstellbaren Anwendung und das Konfigurieren der Azure Functions-Hosts in einer Form, dass sie über alle erforderlichen Informationen zum Herstellen einer Verbindung mit den angegebenen Endpunkten verfügen. 
 
 Dies wird in Verbindung mit wiederverwendbaren Skripts in den [konfigurationsbasierten Replikationsbeispielen für Azure Functions](https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/functions/config) veranschaulicht.
-

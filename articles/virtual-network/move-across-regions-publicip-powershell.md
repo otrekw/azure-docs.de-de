@@ -7,12 +7,12 @@ ms.subservice: ip-services
 ms.topic: how-to
 ms.date: 08/29/2019
 ms.author: allensu
-ms.openlocfilehash: 0a3fdb776643e2cf817c50fb9b716f7315151e21
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: a21d088680855b74e7259028ed7ef55165707c56
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98223396"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98938686"
 ---
 # <a name="move-azure-public-ip-configuration-to-another-region-using-azure-powershell"></a>Verschieben einer öffentlichen Azure-IP-Konfiguration in eine andere Region mithilfe von Azure PowerShell
 
@@ -44,19 +44,19 @@ In den folgenden Schritten wird gezeigt, wie Sie die öffentliche IP-Adresse fü
 
 ### <a name="export-the-template-and-deploy-from-a-script"></a>Exportieren der Vorlage und Bereitstellen über ein Skript
 
-1. Melden Sie sich mit dem Befehl [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount?view=azps-2.5.0) bei Ihrem Azure-Abonnement an, und befolgen Sie die Anweisungen auf dem Bildschirm:
+1. Melden Sie sich mit dem Befehl [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) bei Ihrem Azure-Abonnement an, und befolgen Sie die Anweisungen auf dem Bildschirm:
     
     ```azurepowershell-interactive
     Connect-AzAccount
     ```
 
-2. Rufen Sie die Ressourcen-ID der öffentlichen IP-Adresse ab, die Sie in die Zielregion verschieben möchten, und platzieren Sie sie mithilfe von [Get-AzPublicIPAddress](/powershell/module/az.network/get-azpublicipaddress?view=azps-2.6.0) in einer Variablen:
+2. Rufen Sie die Ressourcen-ID der öffentlichen IP-Adresse ab, die Sie in die Zielregion verschieben möchten, und platzieren Sie sie mithilfe von [Get-AzPublicIPAddress](/powershell/module/az.network/get-azpublicipaddress) in einer Variablen:
 
     ```azurepowershell-interactive
     $sourcePubIPID = (Get-AzPublicIPaddress -Name <source-public-ip-name> -ResourceGroupName <source-resource-group-name>).Id
 
     ```
-3. Exportieren Sie das virtuelle Quellnetzwerk in eine JSON-Datei in dem Verzeichnis, in dem Sie den Befehl [Export-AzResourceGroup](/powershell/module/az.resources/export-azresourcegroup?view=azps-2.6.0) ausführen:
+3. Exportieren Sie das virtuelle Quellnetzwerk in eine JSON-Datei in dem Verzeichnis, in dem Sie den Befehl [Export-AzResourceGroup](/powershell/module/az.resources/export-azresourcegroup) ausführen:
    
    ```azurepowershell-interactive
    Export-AzResourceGroup -ResourceGroupName <source-resource-group-name> -Resource $sourceVNETID -IncludeParameterDefaultValue
@@ -109,7 +109,7 @@ In den folgenden Schritten wird gezeigt, wie Sie die öffentliche IP-Adresse fü
              ]             
     ```
   
-7. Zum Abrufen von Regionsstandortcodes können Sie das Azure PowerShell-Cmdlet [Get-AzLocation](/powershell/module/az.resources/get-azlocation?view=azps-1.8.0) verwenden, indem Sie den folgenden Befehl ausführen:
+7. Zum Abrufen von Regionsstandortcodes können Sie das Azure PowerShell-Cmdlet [Get-AzLocation](/powershell/module/az.resources/get-azlocation) verwenden, indem Sie den folgenden Befehl ausführen:
 
     ```azurepowershell-interactive
 
@@ -165,12 +165,12 @@ In den folgenden Schritten wird gezeigt, wie Sie die öffentliche IP-Adresse fü
 
 9. Speichern Sie die Datei **\<resource-group-name>.json**.
 
-10. Erstellen Sie mithilfe von [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup?view=azps-2.6.0) eine Ressourcengruppe in der Zielregion für die öffentliche IP-Zieladresse, die bereitgestellt werden soll.
+10. Erstellen Sie mithilfe von [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) eine Ressourcengruppe in der Zielregion für die öffentliche IP-Zieladresse, die bereitgestellt werden soll.
     
     ```azurepowershell-interactive
     New-AzResourceGroup -Name <target-resource-group-name> -location <target-region>
     ```
-11. Stellen Sie die bearbeitete Datei **\<resource-group-name>.json** in der Ressourcengruppe bereit, die Sie im vorherigen Schritt mit [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment?view=azps-2.6.0) erstellt haben:
+11. Stellen Sie die bearbeitete Datei **\<resource-group-name>.json** in der Ressourcengruppe bereit, die Sie im vorherigen Schritt mit [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) erstellt haben:
 
     ```azurepowershell-interactive
 
@@ -178,7 +178,7 @@ In den folgenden Schritten wird gezeigt, wie Sie die öffentliche IP-Adresse fü
     
     ```
 
-12. Um zu überprüfen, ob die Ressourcen in der Zielregion erstellt wurden, verwenden Sie [Get-AzResourceGroup](/powershell/module/az.resources/get-azresourcegroup?view=azps-2.6.0) und [Get-AzPublicIPAddress](/powershell/module/az.network/get-azpublicipaddress?view=azps-2.6.0):
+12. Um zu überprüfen, ob die Ressourcen in der Zielregion erstellt wurden, verwenden Sie [Get-AzResourceGroup](/powershell/module/az.resources/get-azresourcegroup) und [Get-AzPublicIPAddress](/powershell/module/az.network/get-azpublicipaddress):
     
     ```azurepowershell-interactive
 
@@ -193,7 +193,7 @@ In den folgenden Schritten wird gezeigt, wie Sie die öffentliche IP-Adresse fü
     ```
 ## <a name="discard"></a>Verwerfen 
 
-Wenn Sie nach der Bereitstellung neu starten oder die öffentliche IP-Adresse im Ziel verwerfen möchten, löschen Sie die im Ziel erstellte Ressourcengruppe. Die verschobene öffentliche IP-Adresse wird dann gelöscht.  Um die Ressourcengruppe zu entfernen, verwenden Sie [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup?view=azps-2.6.0):
+Wenn Sie nach der Bereitstellung neu starten oder die öffentliche IP-Adresse im Ziel verwerfen möchten, löschen Sie die im Ziel erstellte Ressourcengruppe. Die verschobene öffentliche IP-Adresse wird dann gelöscht.  Um die Ressourcengruppe zu entfernen, verwenden Sie [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup):
 
 ```azurepowershell-interactive
 
@@ -203,7 +203,7 @@ Remove-AzResourceGroup -Name <target-resource-group-name>
 
 ## <a name="clean-up"></a>Bereinigung
 
-Um die Änderungen zu übernehmen und die Verschiebung des virtuellen Netzwerks abzuschließen, löschen Sie das virtuelle Quellnetzwerk oder die Quellressourcengruppe mit [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup?view=azps-2.6.0) oder [Remove-AzPublicIPAddress](/powershell/module/az.network/remove-azpublicipaddress?view=azps-2.6.0):
+Um die Änderungen zu übernehmen und die Verschiebung des virtuellen Netzwerks abzuschließen, löschen Sie das virtuelle Quellnetzwerk oder die Quellressourcengruppe mit [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) oder [Remove-AzPublicIPAddress](/powershell/module/az.network/remove-azpublicipaddress):
 
 ```azurepowershell-interactive
 

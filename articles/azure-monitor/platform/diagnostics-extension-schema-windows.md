@@ -6,12 +6,12 @@ ms.topic: reference
 author: bwren
 ms.author: bwren
 ms.date: 01/20/2020
-ms.openlocfilehash: d2b1afea746410e966b43bef01a039a8471d4ae7
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: eccd4010d796e541e4a0a2c0b0c485b5f18f0366
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96008819"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943712"
 ---
 # <a name="windows-diagnostics-extension-schema"></a>Schema der Diagnoseerweiterung für Windows
 Die Azure-Diagnoseerweiterung ist ein Agent in Azure Monitor, der Überwachungsdaten vom Gastbetriebssystem und den Workloads von Azure-Computeressourcen sammelt. In diesem Artikel wird das Schema erläutert, das zur Konfiguration der Diagnoseerweiterung auf virtuellen Windows-Computern und anderen Computeressourcen verwendet wird.
@@ -157,7 +157,7 @@ Das Element der obersten Ebene der Diagnosekonfigurationsdatei
 
 |Untergeordnete Elemente|BESCHREIBUNG|  
 |--------------------|-----------------|  
-|**EtwEventSourceProviderConfiguration**|Konfiguriert die Erfassung von Ereignissen, die über die [EventSource-Klasse](/dotnet/api/system.diagnostics.tracing.eventsource?view=netcore-3.1) generiert wurden. Erforderliches Attribut:<br /><br /> **provider**: Der Klassenname des EventSource-Ereignisses<br /><br /> Optionale Attribute sind:<br /><br /> - **scheduledTransferLogLevelFilter**: Der minimale Schweregrad, der in Ihr Speicherkonto übertragen wird<br /><br /> - **scheduledTransferPeriod**: Das Intervall zwischen geplanten Datenübertragungen an den Speicher (minutengenau gerundet). Der Wert ist ein [Dauer-Datentyp im XML-Format](https://www.w3schools.com/xml/schema_dtypes_date.asp). |  
+|**EtwEventSourceProviderConfiguration**|Konfiguriert die Erfassung von Ereignissen, die über die [EventSource-Klasse](/dotnet/api/system.diagnostics.tracing.eventsource) generiert wurden. Erforderliches Attribut:<br /><br /> **provider**: Der Klassenname des EventSource-Ereignisses<br /><br /> Optionale Attribute sind:<br /><br /> - **scheduledTransferLogLevelFilter**: Der minimale Schweregrad, der in Ihr Speicherkonto übertragen wird<br /><br /> - **scheduledTransferPeriod**: Das Intervall zwischen geplanten Datenübertragungen an den Speicher (minutengenau gerundet). Der Wert ist ein [Dauer-Datentyp im XML-Format](https://www.w3schools.com/xml/schema_dtypes_date.asp). |  
 |**EtwManifestProviderConfiguration**|Erforderliches Attribut:<br /><br /> **provider**: Die GUID des Ereignisanbieters<br /><br /> Optionale Attribute sind:<br /><br /> - **scheduledTransferLogLevelFilter**: Der minimale Schweregrad, der in Ihr Speicherkonto übertragen wird<br /><br /> - **scheduledTransferPeriod**: Das Intervall zwischen geplanten Datenübertragungen an den Speicher (minutengenau gerundet). Der Wert ist ein [Dauer-Datentyp im XML-Format](https://www.w3schools.com/xml/schema_dtypes_date.asp). |  
 
 
@@ -165,7 +165,7 @@ Das Element der obersten Ebene der Diagnosekonfigurationsdatei
 ## <a name="etweventsourceproviderconfiguration-element"></a>EtwEventSourceProviderConfiguration-Element  
  *Tree: Root – DiagnosticsConfiguration – PublicConfig – WadCFG – DiagnosticMonitorConfiguration – EtwProviders – EtwEventSourceProviderConfiguration*
 
- Konfiguriert die Erfassung von Ereignissen, die über die [EventSource-Klasse](/dotnet/api/system.diagnostics.tracing.eventsource?view=netcore-3.1) generiert wurden.  
+ Konfiguriert die Erfassung von Ereignissen, die über die [EventSource-Klasse](/dotnet/api/system.diagnostics.tracing.eventsource) generiert wurden.  
 
 |Untergeordnete Elemente|BESCHREIBUNG|  
 |--------------------|-----------------|  
@@ -208,7 +208,7 @@ Das Element der obersten Ebene der Diagnosekonfigurationsdatei
 
 |Untergeordnetes Element|BESCHREIBUNG|  
 |-------------------|-----------------|  
-|**PerformanceCounterConfiguration**|Die folgenden Attribute sind erforderlich:<br /><br /> - **counterSpecifier**: Der Name des Leistungsindikators Beispiel: `\Processor(_Total)\% Processor Time`. Führen Sie zum Abrufen einer Liste der Leistungsindikatoren auf Ihrem Host den Befehl `typeperf` aus.<br /><br /> - **sampleRate**: Gibt an, wie oft Stichproben für den Indikator erstellt werden.<br /><br /> Optionales Attribut:<br /><br /> **unit**: Die Maßeinheit des Indikators Die Werte sind in der [UnitType-Klasse](/dotnet/api/microsoft.azure.management.sql.models.unittype?view=azure-dotnet) verfügbar. |
+|**PerformanceCounterConfiguration**|Die folgenden Attribute sind erforderlich:<br /><br /> - **counterSpecifier**: Der Name des Leistungsindikators Beispiel: `\Processor(_Total)\% Processor Time`. Führen Sie zum Abrufen einer Liste der Leistungsindikatoren auf Ihrem Host den Befehl `typeperf` aus.<br /><br /> - **sampleRate**: Gibt an, wie oft Stichproben für den Indikator erstellt werden.<br /><br /> Optionales Attribut:<br /><br /> **unit**: Die Maßeinheit des Indikators Die Werte sind in der [UnitType-Klasse](/dotnet/api/microsoft.azure.management.sql.models.unittype) verfügbar. |
 |**Senken** | Hinzugefügt in 1.5. Optional. Verweist auf einen Senkenspeicherort, um auch Diagnosedaten zu senden. Beispiel: Azure Monitor oder Event Hubs. Beachten Sie, dass Sie die Eigenschaft *resourceId* unter dem Element *Metrics* hinzufügen müssen, wenn in Event Hubs hochgeladene Ereignisse über eine Ressourcen-ID verfügen sollen.|    
 
 

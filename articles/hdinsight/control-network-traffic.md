@@ -1,18 +1,15 @@
 ---
 title: Steuern des Netzwerkdatenverkehrs in Azure HDInsight
 description: Lernen Sie Verfahren zum Steuern von ein- und ausgehendem Datenverkehr für Azure HDInsight-Cluster kennen.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: 348b9b80c74f085ce31ecce93753a253782fe3ea
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 0cbda0b533a64e627bfeef9589ab95c4163ae73e
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92543167"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943371"
 ---
 # <a name="control-network-traffic-in-azure-hdinsight"></a>Steuern des Netzwerkdatenverkehrs in Azure HDInsight
 
@@ -40,7 +37,7 @@ Wenn Sie planen, **Netzwerksicherheitsgruppen** zum Steuern des Netzwerkdatenver
 
 3. Erstellen oder ändern Sie die Netzwerksicherheitsgruppen für das Subnetz, in dem Sie HDInsight installieren möchten.
 
-    * __Netzwerksicherheitsgruppen__ : Lassen Sie __eingehenden__ Datenverkehr über Port __443__ für die IP-Adressen zu. Dadurch wird sichergestellt, dass HDInsight-Verwaltungsdienste den Cluster außerhalb des virtuellen Netzwerks erreichen können. Gestatten Sie für den __Kafka REST-Proxy__ den __eingehenden__ Datenverkehr auch an Port __9400__ . Dadurch wird sichergestellt, dass der Kafka REST-Proxyserver erreichbar ist.
+    * __Netzwerksicherheitsgruppen__: Lassen Sie __eingehenden__ Datenverkehr über Port __443__ für die IP-Adressen zu. Dadurch wird sichergestellt, dass HDInsight-Verwaltungsdienste den Cluster außerhalb des virtuellen Netzwerks erreichen können. Gestatten Sie für den __Kafka REST-Proxy__ den __eingehenden__ Datenverkehr auch an Port __9400__. Dadurch wird sichergestellt, dass der Kafka REST-Proxyserver erreichbar ist.
 
 Weitere Informationen zu Netzwerksicherheitsgruppen finden Sie in der [Übersicht über Netzwerksicherheitsgruppen](../virtual-network/network-security-groups-overview.md).
 

@@ -3,24 +3,23 @@ title: 'Azure HDInsight: Erstellen eines Wörterbuchs für Clusterfehler'
 description: Erfahren Sie, wie Sie Fehler beheben können, die beim Erstellen von Azure HDInsight-Clustern auftreten.
 author: karkrish
 ms.author: v-todmc
-ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 08/24/2020
-ms.openlocfilehash: 97cad12ad1854df37b54ff663385fe79ca15b7c2
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 6b8c0069d619d3ebd87e3c54b4f653812199f590
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92543099"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943342"
 ---
 # <a name="azure-hdinsight-cluster-creation-errors"></a>Azure HDInsight: Fehler bei der Clustererstellung
 
 In diesem Artikel werden Lösungen für Fehler beschrieben, die beim Erstellen von Clustern auftreten können.
 
 > [!NOTE]
-> Bei den ersten drei Fehlern, die in diesem Artikel beschrieben werden, handelt es sich um Überprüfungsfehler. Sie können auftreten, wenn ein Azure HDInsight-Produkt die **CsmDocument_2_0** -Klasse verwendet.
+> Bei den ersten drei Fehlern, die in diesem Artikel beschrieben werden, handelt es sich um Überprüfungsfehler. Sie können auftreten, wenn ein Azure HDInsight-Produkt die **CsmDocument_2_0**-Klasse verwendet.
 
 ## <a name="error-codedeploymentdocument-csmdocument_2_0-failed-the-validation"></a>Fehlercode: Fehler beim Überprüfen von DeploymentDocument „CsmDocument_2_0“
 
@@ -82,11 +81,11 @@ Der bei der Clustererstellung angegebene Wert für **VirtualNetworkId** weist ni
 
 ### <a name="resolution"></a>Lösung
 
-Stellen Sie sicher, dass **VirtualNetworkId** und die Subnetzwerte im richtigen Format angegeben sind. So erhalten Sie den Wert für **VirtualNetworkId** :
+Stellen Sie sicher, dass **VirtualNetworkId** und die Subnetzwerte im richtigen Format angegeben sind. So erhalten Sie den Wert für **VirtualNetworkId**:
 
 1. Öffnen Sie das Azure-Portal.
 1. Wählen Sie Ihr virtuelles Netzwerk aus.
-1. Wählen Sie das Menüelement **Eigenschaften** aus. Der **ResourceID** -Eigenschaftswert entspricht dem Wert für **VirtualNetworkId** .
+1. Wählen Sie das Menüelement **Eigenschaften** aus. Der **ResourceID**-Eigenschaftswert entspricht dem Wert für **VirtualNetworkId**.
 
 Hier ein Beispiel für die ID eines virtuellen Netzwerks:
 

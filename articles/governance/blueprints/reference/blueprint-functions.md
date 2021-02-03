@@ -1,14 +1,14 @@
 ---
 title: Azure Blueprints-Funktionen
 description: Beschreibt die Funktionen, die mit Blaupausenartefakten in Azure Blueprints-Definitionen und -Zuweisungen verwendet werden können.
-ms.date: 08/27/2020
+ms.date: 01/27/2021
 ms.topic: reference
-ms.openlocfilehash: fe984ee7664b0d50fb891d946f9f40a200ccce09
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 92cb906e87179073b7a69aa0bd4eab22c77087f9
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89050759"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98919273"
 ---
 # <a name="functions-for-use-with-azure-blueprints"></a>Funktionen für die Verwendung mit Azure Blueprints
 
@@ -40,7 +40,7 @@ Gibt ein Objekt von Eigenschaften zurück, die mit den Ausgaben dieses Blaupause
 
 ### <a name="return-value"></a>Rückgabewert
 
-Ein Objekt von Ausgabeeigenschaften. Die **Ausgaben**eigenschaften sind abhängig vom Typ des Blaupausenartefakts, auf das verwiesen wird. Alle Typen halten folgendes Format ein:
+Ein Objekt von Ausgabeeigenschaften. Die **Ausgaben** eigenschaften sind abhängig vom Typ des Blaupausenartefakts, auf das verwiesen wird. Alle Typen halten folgendes Format ein:
 
 ```json
 {
@@ -62,7 +62,7 @@ Ein Objekt von Ausgabeeigenschaften. Die **Ausgaben**eigenschaften sind abhängi
 
 #### <a name="arm-template-artifact"></a>ARM-Vorlagenartefakt
 
-Die **Ausgaben**eigenschaften des zurückgegebenen Objekts sind in der ARM-Vorlage definiert und werden von der Bereitstellung zurückgegeben.
+Die **Ausgaben** eigenschaften des zurückgegebenen Objekts sind in der ARM-Vorlage definiert und werden von der Bereitstellung zurückgegeben.
 
 #### <a name="role-assignment-artifact"></a>Rollenzuweisungsartefakt
 

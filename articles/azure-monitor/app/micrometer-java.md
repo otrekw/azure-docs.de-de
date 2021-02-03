@@ -6,12 +6,12 @@ author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
 ms.date: 11/01/2018
-ms.openlocfilehash: bb5caafea944d21547a904b99f9043aef63a6ffa
-ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
+ms.openlocfilehash: df3ed451776f30e8b7c13b95618f1a7f0c7688db
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/17/2020
-ms.locfileid: "97656465"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98937540"
 ---
 # <a name="how-to-use-micrometer-with-azure-application-insights-java-sdk-not-recommended"></a>Verwenden von Micrometer mit dem Azure Application Insights Java SDK (nicht empfohlen)
 
@@ -281,4 +281,4 @@ Fügen Sie den folgenden Bindungscode zur Konfigurationsdatei hinzu:
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Weitere Informationen zu Micrometer finden Sie in der offiziellen [Micrometer-Dokumentation](https://micrometer.io/docs).
-* Informationen zu Spring in Azure finden Sie in der offiziellen [Dokumentation zu Spring in Azure](/java/azure/spring-framework/?view=azure-java-stable).
+* Informationen zu Spring in Azure finden Sie in der offiziellen [Dokumentation zu Spring in Azure](/java/azure/spring-framework/).

@@ -1,6 +1,5 @@
 ---
 title: Filtern von Manifesten mithilfe von Dynamic Packager
-titleSuffix: Azure Media Services
 description: Erfahren Sie, wie Sie Filter mithilfe von Dynamic Packager erstellen, um Ihre Manifeste zu filtern und selektiv zu streamen.
 services: media-services
 documentationcenter: ''
@@ -14,12 +13,12 @@ ms.devlang: ne
 ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: acb30c1659c4c29e0af83da5594bdd9a7e3465d8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3ffdb41752630e0e5e22303ff58ecd798595a890
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89299030"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98897661"
 ---
 # <a name="filter-your-manifests-using-dynamic-packager"></a>Filtern von Manifesten mithilfe von Dynamic Packager
 

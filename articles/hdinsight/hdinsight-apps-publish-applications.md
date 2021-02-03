@@ -1,19 +1,16 @@
 ---
 title: Veröffentlichen von Azure HDInsight-Anwendungen
 description: Informationen zum Erstellen einer HDInsight-Anwendung und deren anschließender Veröffentlichung im Azure Marketplace.
-author: hrasheed-msft
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 05/14/2018
-ms.author: hrasheed
-ms.openlocfilehash: ca84cb6cdd6b47976eadbc5298701a46fe677426
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 73d291fd76d9adbe2a095406b56bd879d497d3b5
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96007136"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98942651"
 ---
 # <a name="publish-an-hdinsight-application-in-the-azure-marketplace"></a>Veröffentlichen von HDInsight-Anwendungen im Azure Marketplace
 Sie können eine Azure HDInsight-Anwendung auf einem Linux-basierten HDInsight-Cluster installieren. In diesem Artikel erfahren Sie, wie Sie eine HDInsight-Anwendung im Azure Marketplace veröffentlichen. Allgemeine Informationen zum Veröffentlichen im Azure Marketplace finden Sie unter [Veröffentlichen eines Angebots im Azure Marketplace](../marketplace/overview.md).

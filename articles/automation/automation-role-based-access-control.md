@@ -6,12 +6,12 @@ services: automation
 ms.subservice: shared-capabilities
 ms.date: 07/21/2020
 ms.topic: conceptual
-ms.openlocfilehash: efdb195ad41b036f7f470884b3a441de1db7f7f4
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 320668f9596376cf7aa12ed97872671404a07658
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96003700"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98895916"
 ---
 # <a name="manage-role-permissions-and-security"></a>Verwalten von Berechtigungen und Sicherheit für Rollen
 
@@ -319,7 +319,7 @@ Sie können die Zugriffsberechtigung eines Benutzers, der selbst nicht das Autom
 
 Sie können den rollenbasierten Zugriff für ein Automation-Konto auch mit den folgenden [Azure PowerShell-Cmdlets](../role-based-access-control/role-assignments-powershell.md) konfigurieren:
 
-[Get-AzRoleDefinition](/powershell/module/Az.Resources/Get-AzRoleDefinition?view=azps-3.7.0) listet alle in Azure Active Directory verfügbaren Azure-Rollen auf. Sie können dieses Cmdlet mit dem Parameter `Name` verwenden, um alle Aktionen aufzulisten, die eine bestimmte Rolle ausführen kann.
+[Get-AzRoleDefinition](/powershell/module/Az.Resources/Get-AzRoleDefinition) listet alle in Azure Active Directory verfügbaren Azure-Rollen auf. Sie können dieses Cmdlet mit dem Parameter `Name` verwenden, um alle Aktionen aufzulisten, die eine bestimmte Rolle ausführen kann.
 
 ```azurepowershell-interactive
 Get-AzRoleDefinition -Name 'Automation Operator'
@@ -338,7 +338,7 @@ NotActions       : {}
 AssignableScopes : {/}
 ```
 
-[Get-AzRoleAssignment](/powershell/module/az.resources/get-azroleassignment?view=azps-3.7.0) listet die Azure-Rollenzuweisungen für den angegebenen Bereich auf. Ohne Parameter gibt dieses Cmdlet alle Rollenzuweisungen zurück, die in diesem Abonnement erstellt wurden. Verwenden Sie den `ExpandPrincipalGroups`-Parameter, um die Zugriffszuweisungen für den festgelegten Benutzer sowie die Gruppen, denen der Benutzer angehört, aufzulisten.
+[Get-AzRoleAssignment](/powershell/module/az.resources/get-azroleassignment) listet die Azure-Rollenzuweisungen für den angegebenen Bereich auf. Ohne Parameter gibt dieses Cmdlet alle Rollenzuweisungen zurück, die in diesem Abonnement erstellt wurden. Verwenden Sie den `ExpandPrincipalGroups`-Parameter, um die Zugriffszuweisungen für den festgelegten Benutzer sowie die Gruppen, denen der Benutzer angehört, aufzulisten.
 
 **Beispiel:** Verwenden Sie das folgende Cmdlet, um alle Benutzer innerhalb eines Automation-Kontos mit ihren Rollen aufzulisten.
 
@@ -360,7 +360,7 @@ ObjectId           : 15f26a47-812d-489a-8197-3d4853558347
 ObjectType         : User
 ```
 
-Verwenden Sie [New-AzRoleAssignment](/powershell/module/Az.Resources/New-AzRoleAssignment?view=azps-3.7.0), um Benutzern, Gruppen und Anwendungen die Zugriffsberechtigung für einen bestimmten Bereich zuzuweisen.
+Verwenden Sie [New-AzRoleAssignment](/powershell/module/Az.Resources/New-AzRoleAssignment), um Benutzern, Gruppen und Anwendungen die Zugriffsberechtigung für einen bestimmten Bereich zuzuweisen.
 
 **Beispiel:** Verwenden Sie den folgenden Befehl, um einem Benutzer die Rolle „Operator für Automation“ im Geltungsbereich des Automation-Kontos zuzuweisen.
 
@@ -382,7 +382,7 @@ ObjectId           : f5ecbe87-1181-43d2-88d5-a8f5e9d8014e
 ObjectType         : User
 ```
 
-Verwenden Sie [Remove-AzRoleAssignment](/powershell/module/Az.Resources/Remove-AzRoleAssignment?view=azps-3.7.0), um den Zugriff eines angegebenen Benutzers, einer Gruppe oder einer Anwendung für einen bestimmten Bereich zu entfernen.
+Verwenden Sie [Remove-AzRoleAssignment](/powershell/module/Az.Resources/Remove-AzRoleAssignment), um den Zugriff eines angegebenen Benutzers, einer Gruppe oder einer Anwendung für einen bestimmten Bereich zu entfernen.
 
 **Beispiel:** Verwenden Sie den folgenden Befehl, um den Benutzer aus der Rolle „Operator für Automation“ im Geltungsbereich des Automation-Kontos zu entfernen.
 

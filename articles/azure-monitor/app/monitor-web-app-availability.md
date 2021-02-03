@@ -4,12 +4,12 @@ description: Richten Sie Webtests in Application Insights ein. Erhalten Sie Bena
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.reviewer: sdash
-ms.openlocfilehash: 1b51c70dcebbfad5417a8478f4a956fb5d0608b1
-ms.sourcegitcommit: 2bd0a039be8126c969a795cea3b60ce8e4ce64fc
+ms.openlocfilehash: b0f66608c6e0f23b861e207d0dea07a546b41c2a
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98198661"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98937414"
 ---
 # <a name="monitor-the-availability-of-any-website"></a>Überwachen der Verfügbarkeit von Websites
 
@@ -23,12 +23,12 @@ Es gibt drei Arten von Verfügbarkeitstests:
 
 * [URL-Pingtest](#create-a-url-ping-test): Dies ist ein einfacher Test, den Sie im Azure-Portal erstellen können.
 * [Multi-step web test (Mehrstufiger Webtest):](availability-multistep.md) Eine Aufzeichnung einer Sequenz von Webanforderungen, die wiedergegeben werden kann, um komplexere Szenarios zu testen. Mehrstufige Webtests werden in Visual Studio Enterprise erstellt und zur Ausführung im Portal hochgeladen.
-* [Custom Track Availability Tests (Benutzerdefinierte Tests zum Nachverfolgen der Verfügbarkeit):](/dotnet/api/microsoft.applicationinsights.telemetryclient.trackavailability?view=azure-dotnet) Wenn Sie eine benutzerdefinierte Anwendung zum Ausführen von Verfügbarkeitstests erstellen möchten, können Sie die `TrackAvailability()`-Methode verwenden, um die Ergebnisse an Application Insights zu senden.
+* [Custom Track Availability Tests (Benutzerdefinierte Tests zum Nachverfolgen der Verfügbarkeit):](/dotnet/api/microsoft.applicationinsights.telemetryclient.trackavailability) Wenn Sie eine benutzerdefinierte Anwendung zum Ausführen von Verfügbarkeitstests erstellen möchten, können Sie die `TrackAvailability()`-Methode verwenden, um die Ergebnisse an Application Insights zu senden.
 
 **Sie können bis zu 100 Verfügbarkeitstests pro Application Insights-Ressource erstellen.**
 
 > [!IMPORTANT]
-> Sowohl der [URL-Pingtest](#create-a-url-ping-test) als auch der [mehrstufige Webtest](availability-multistep.md) basieren auf der DNS-Infrastruktur des öffentlichen Internet, um die Domänennamen der getesteten Endpunkte aufzulösen. Wenn Sie privates DNS verwenden, müssen Sie daher sicherstellen, dass jeder Domänenname des Tests auch durch die öffentlichen Domänennamenserver aufgelöst werden kann. Wenn dies nicht möglich ist, können Sie stattdessen [benutzerdefinierte Tests zum Nachverfolgen der Verfügbarkeit](/dotnet/api/microsoft.applicationinsights.telemetryclient.trackavailability?view=azure-dotnet) verwenden.
+> Sowohl der [URL-Pingtest](#create-a-url-ping-test) als auch der [mehrstufige Webtest](availability-multistep.md) basieren auf der DNS-Infrastruktur des öffentlichen Internet, um die Domänennamen der getesteten Endpunkte aufzulösen. Wenn Sie privates DNS verwenden, müssen Sie daher sicherstellen, dass jeder Domänenname des Tests auch durch die öffentlichen Domänennamenserver aufgelöst werden kann. Wenn dies nicht möglich ist, können Sie stattdessen [benutzerdefinierte Tests zum Nachverfolgen der Verfügbarkeit](/dotnet/api/microsoft.applicationinsights.telemetryclient.trackavailability) verwenden.
 
 ## <a name="create-an-application-insights-resource"></a>Erstellen einer Application Insights-Ressource
 

@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: pepogors
-ms.openlocfilehash: 3db31431c24edd3377f6299046cc31067310b2ef
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: ff7de678e40a02b364451e7c88d661d2e38ed9d4
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 01/27/2021
-ms.locfileid: "98876209"
+ms.locfileid: "98918922"
 ---
 # <a name="deploy-an-azure-service-fabric-cluster-across-availability-zones"></a>Bereitstellen eines Azure Service Fabric-Clusters über Verfügbarkeitszonen hinweg
 Verfügbarkeitszonen sind in Azure ein Hochverfügbarkeitsangebot, das Anwendungen und Daten vor Ausfällen von Rechenzentren schützt. Eine Verfügbarkeitszone ist ein eindeutiger physischer Standort, der mit unabhängiger Stromversorgung, Kühlung und Netzwerk innerhalb einer Azure-Region ausgestattet ist.
@@ -393,6 +393,7 @@ Der Service Fabric-NodeType muss aktiviert werden, um mehrere Verfügbarkeitszon
         "[concat('Microsoft.Storage/storageAccounts/', parameters('supportLogStorageAccountName'))]"
     ],
     "properties": {
+        "reliabilityLevel": "Platinum",
         "SFZonalUpgradeMode": "Hierarchical",
         "VMSSZonalUpgradeMode": "Parallel",
         "nodeTypes": [

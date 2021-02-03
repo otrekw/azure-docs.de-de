@@ -1,19 +1,16 @@
 ---
 title: Computekontextoptionen für ML Services in HDInsight – Azure
 description: Informieren Sie sich über die verschiedenen Computekontextoptionen, die Benutzern mit ML Services in HDInsight zur Verfügung stehen.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/02/2020
-ms.openlocfilehash: 21781015aa91c9c953d716b9b3399851f25be9b5
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 71ce0d87faa33bd7d533242edfcf3b131c8f7e47
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92536333"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98943956"
 ---
 # <a name="compute-context-options-for-ml-services-on-hdinsight"></a>Computekontextoptionen für ML Services in HDInsight
 
@@ -29,12 +26,12 @@ Der Edgeknoten eines Clusters ist ein praktischer Ort für die Verbindungsherste
 
 Im Allgemeinen wird ein R-Skript, das in einem ML Services-Cluster auf dem Edgeknoten ausgeführt wird, im R-Interpreter auf diesem Knoten ausgeführt. Bei Schritten, in denen eine RevoScaleR-Funktion aufgerufen wird, ist dies nicht der Fall. Die RevoScaleR-Aufrufe werden in einer Compute-Umgebung ausgeführt, die dadurch bestimmt wird, wie Sie den RevoScaleR-Computekontext festlegen.  Wenn Sie Ihr R-Skript auf einem Edgeknoten ausführen, sind für den Computekontext folgende Werte möglich:
 
-- lokal sequenziell ( *local* )
-- lokal parallel ( *localpar* )
+- lokal sequenziell (*local*)
+- lokal parallel (*localpar*)
 - Map Reduce
 - Spark
 
-Die Optionen *local* und *localpar* unterscheiden sich nur darin, wie **rxExec** -Aufrufe ausgeführt werden. Beide führen andere Aufrufe vom Typ „rx-function“ auf allen verfügbaren Knoten parallel aus, es sei denn, über die RevoScaleR-Option **numCoresToUse** ist etwas anderes angegeben. Beispiel: `rxOptions(numCoresToUse=6)`. Optionen für die parallele Ausführung ermöglichen eine optimale Leistung.
+Die Optionen *local* und *localpar* unterscheiden sich nur darin, wie **rxExec**-Aufrufe ausgeführt werden. Beide führen andere Aufrufe vom Typ „rx-function“ auf allen verfügbaren Knoten parallel aus, es sei denn, über die RevoScaleR-Option **numCoresToUse** ist etwas anderes angegeben. Beispiel: `rxOptions(numCoresToUse=6)`. Optionen für die parallele Ausführung ermöglichen eine optimale Leistung.
 
 In der folgenden Tabelle werden die verschiedenen Optionen für den Computekontext zur Ausführung von Aufrufen zusammengefasst:
 

@@ -13,12 +13,12 @@ ms.custom:
 - mqtt
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
-ms.openlocfilehash: 1792535fab79ed20bdf77f96b4fc39f13b0c7bbb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e2578b47d27ef062d83ba8621a49e9a8f439897c
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90015998"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98919024"
 ---
 # <a name="reference---choose-a-communication-protocol"></a>Referenz – Auswählen eines Kommunikationsprotokolls
 
@@ -42,7 +42,7 @@ Die folgende Tabelle enthält allgemeine Ratschläge für Ihre Protokollauswahl:
 
 Beachten Sie bei der Auswahl des Protokolls für die geräteseitige Kommunikation folgende Punkte:
 
-* **C2D-Muster**. HTTPS bietet keine effiziente Methode zum Implementieren von Serverpushvorgängen. Daher fragen Geräte bei Verwendung von HTTPS IoT Hub nach C2D-Nachrichten ab. Dieser Ansatz ist für das Gerät und auch für IoT Hub sehr ineffizient. Gemäß den aktuellen HTTPS-Richtlinien muss jedes Gerät mindestens alle 25 Minuten eine Abfrage nach Nachrichten durchführen. MQTT und AMQP unterstützen Serverpush beim Empfangen von C2D-Nachrichten. Sie ermöglichen sofortiges Nachrichtenpushen von IoT Hub zum Gerät. Wenn die Übermittlungslatenz eine wichtige Rolle spielt, sind MQTT oder AMQP die zu bevorzugenden Protokolle. Bei nur selten verbundenen Geräten funktioniert auch HTTPS.
+* **C2D-Muster**. HTTPS bietet keine effiziente Methode zum Implementieren von Serverpushvorgängen. Daher fragen Geräte bei Verwendung von HTTPS IoT Hub nach C2D-Nachrichten ab. Dieser Ansatz ist für das Gerät und auch für IoT Hub sehr ineffizient. Gemäß den aktuellen HTTPS-Richtlinien muss jedes Gerät mindestens alle 25 Minuten eine Abfrage nach Nachrichten durchführen. Die Ausgabe von mehr HTTPS-Empfangsvorgängen führt dazu, dass die Anforderungen von IoT Hub gedrosselt werden. MQTT und AMQP unterstützen Serverpush beim Empfangen von C2D-Nachrichten. Sie ermöglichen sofortiges Nachrichtenpushen von IoT Hub zum Gerät. Wenn die Übermittlungslatenz eine wichtige Rolle spielt, sind MQTT oder AMQP die zu bevorzugenden Protokolle. Bei nur selten verbundenen Geräten funktioniert auch HTTPS.
 
 * **Bereichsgateways**. MQTT und HTTPS unterstützen nur eine einzelne Geräteidentität (Geräte-ID plus Anmeldeinformationen) pro TLS-Verbindung. Aus diesem Grund werden diese Protokolle bei [Szenarien mit Bereichsgateways](iot-hub-devguide-endpoints.md#field-gateways) nicht unterstützt, die ein Multiplexing von Nachrichten unter Verwendung mehrerer Geräteidentitäten über einzelne oder mehrere Upstreamverbindungen mit IoT Hub erfordern. Solche Gateways können für den Upstreamdatenverkehr ein Protokoll verwenden, das mehrere Geräteidentitäten pro Verbindung unterstützt, wie z. B. AMQP.
 

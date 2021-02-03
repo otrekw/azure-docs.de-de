@@ -1,18 +1,15 @@
 ---
 title: Problembehandlung für Apache Oozie in Azure HDInsight
 description: Behandeln Sie Probleme für bestimmte Apache Oozie-Fehler in Azure HDInsight.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 04/27/2020
-ms.openlocfilehash: edbe5274de8576fccb29e1e69d260a6531d4ab05
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 2cdd20a5d639f74916657edc3f73183a403204a5
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93287400"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944658"
 ---
 # <a name="troubleshoot-apache-oozie-in-azure-hdinsight"></a>Problembehandlung für Apache Oozie in Azure HDInsight
 
@@ -93,7 +90,7 @@ Bei Verwendung von Sqoop in einem Oozie-Auftrag müssen Sie den Datenbanktreiber
 
 Für das Auftragsbeispiel aus [Verwenden von Hadoop Oozie-Workflows](hdinsight-use-oozie-linux-mac.md) würden Sie z. B. die folgenden Schritte verwenden:
 
-1. Kopieren Sie die Datei `mssql-jdbc-7.0.0.jre8.jar` in das Verzeichnis **/tutorials/useoozie** :
+1. Kopieren Sie die Datei `mssql-jdbc-7.0.0.jre8.jar` in das Verzeichnis **/tutorials/useoozie**:
 
     ```bash
     hdfs dfs -put /usr/share/java/sqljdbc_7.0/enu/mssql-jdbc-7.0.0.jre8.jar /tutorials/useoozie/mssql-jdbc-7.0.0.jre8.jar

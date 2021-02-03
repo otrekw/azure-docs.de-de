@@ -1,19 +1,16 @@
 ---
 title: Verwenden leerer Edgeknoten in Apache Hadoop-Clustern in Azure HDInsight
 description: Erfahren Sie, wie Sie einem HDInsight-Cluster einen leeren Edgeknoten hinzufügen. Wird als Client verwendet und testet oder hostet dann Ihre HDInsight-Anwendungen.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 04/16/2020
-ms.openlocfilehash: ddd1a6fa2fc25add30664da5b739338e87e7e74f
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 4061df2dfcfb4cf993e2312fb3438de66863a476
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96010111"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98942679"
 ---
 # <a name="use-empty-edge-nodes-on-apache-hadoop-clusters-in-hdinsight"></a>Verwenden leerer Edgeknoten in Apache Hadoop-Clustern in HDInsight
 

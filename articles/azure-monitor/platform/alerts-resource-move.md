@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.date: 06/26/2020
 ms.subservice: alerts
-ms.openlocfilehash: 4ea5c8552d35db67a1d2caf20c0143c74cdd642e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 36cf5882913426062e281194b61a8c760141512a
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86505481"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98944152"
 ---
 # <a name="how-to-update-alert-rules-or-action-rules-when-their-target-resource-moves-to-a-different-azure-region"></a>Aktualisieren von Warnungs- oder Aktionsregeln beim Verschieben der entsprechenden Zielressource in eine andere Azure-Region
 
@@ -106,7 +106,7 @@ Wenn **nur ein paar** der Ressourcen im Bereich verschoben wurden, müssen Sie d
 
 ### <a name="change-the-scope-of-a-rule-using-azure-cli"></a>Ändern des Bereichs einer Regel über die Azure CLI
 
-1.  Rufen Sie die vorhandene Regel ab ([Metrikwarnungen](/cli/azure/monitor/metrics/alert?view=azure-cli-latest#az-monitor-metrics-alert-show), [Aktivitätsprotokollwarnungen](/cli/azure/monitor/activity-log/alert#az-monitor-activity-log-alert-list)).
+1.  Rufen Sie die vorhandene Regel ab ([Metrikwarnungen](/cli/azure/monitor/metrics/alert#az-monitor-metrics-alert-show), [Aktivitätsprotokollwarnungen](/cli/azure/monitor/activity-log/alert#az-monitor-activity-log-alert-list)).
 2.  Aktualisieren Sie den Regelbereich direkt ([Metrikwarnungen](/cli/azure/monitor/metrics/alert#az-monitor-metrics-alert-update), [Aktivitätsprotokollwarnungen](/cli/azure/monitor/activity-log/alert/scope)).
 3.  Teilen Sie die Regel ggf. in zwei Regeln auf (bei Metrikwarnungen in einigen Fällen relevant, siehe oben).
 

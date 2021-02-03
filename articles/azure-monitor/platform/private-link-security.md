@@ -6,12 +6,12 @@ ms.author: noakuper
 ms.topic: conceptual
 ms.date: 10/05/2020
 ms.subservice: ''
-ms.openlocfilehash: 5008da99b63cabba41dade9a745fbd5853345737
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 637e66956eadf57199d2e5191368d6355e2cd118
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98734965"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98941893"
 ---
 # <a name="use-azure-private-link-to-securely-connect-networks-to-azure-monitor"></a>Verwenden von Azure Private Link zum sicheren Verbinden von Netzwerken mit Azure Monitor
 
@@ -217,13 +217,13 @@ Der auf diese Weise eingeschränkte Zugriff gilt nur für Daten in der Applicati
 
 Sie können den oben beschriebenen Prozess mithilfe von Azure Resource Manager-Vorlagen, REST- und Befehlszeilenschnittstellen automatisieren.
 
-Zum Erstellen und Verwalten von Private Link-Bereichen verwenden Sie die [REST-API](/rest/api/monitor/private%20link%20scopes%20(preview)) oder die [Azure CLI (az monitor private-link-scope)](/cli/azure/monitor/private-link-scope?view=azure-cli-latest).
+Zum Erstellen und Verwalten von Private Link-Bereichen verwenden Sie die [REST-API](/rest/api/monitor/private%20link%20scopes%20(preview)) oder die [Azure CLI (az monitor private-link-scope)](/cli/azure/monitor/private-link-scope).
 
-Verwenden Sie zum Verwalten des Netzwerkzugriffs die Flags `[--ingestion-access {Disabled, Enabled}]` und `[--query-access {Disabled, Enabled}]`in [Log Analytics-Arbeitsbereichen](/cli/azure/monitor/log-analytics/workspace?view=azure-cli-latest) oder [Application Insights-Komponenten](/cli/azure/ext/application-insights/monitor/app-insights/component?view=azure-cli-latest).
+Verwenden Sie zum Verwalten des Netzwerkzugriffs die Flags `[--ingestion-access {Disabled, Enabled}]` und `[--query-access {Disabled, Enabled}]`in [Log Analytics-Arbeitsbereichen](/cli/azure/monitor/log-analytics/workspace) oder [Application Insights-Komponenten](/cli/azure/ext/application-insights/monitor/app-insights/component).
 
 ## <a name="collect-custom-logs-over-private-link"></a>Erfassen von benutzerdefinierten Protokollen über Private Link
 
-Beim Erfassungsprozess für benutzerdefinierte Protokolle werden Speicherkonten verwendet. Standardmäßig sind dies dienstseitig verwaltete Speicherkonten. Um jedoch benutzerdefinierte Protokolle in Private Links zu erfassen, müssen Sie Ihre eigenen Speicherkonten verwenden und sie Log Analytics-Arbeitsbereichen zuordnen. Informieren Sie sich in diesem Artikel zur [Befehlszeile](/cli/azure/monitor/log-analytics/workspace/linked-storage?view=azure-cli-latest), wie Sie solche Konten einrichten.
+Beim Erfassungsprozess für benutzerdefinierte Protokolle werden Speicherkonten verwendet. Standardmäßig sind dies dienstseitig verwaltete Speicherkonten. Um jedoch benutzerdefinierte Protokolle in Private Links zu erfassen, müssen Sie Ihre eigenen Speicherkonten verwenden und sie Log Analytics-Arbeitsbereichen zuordnen. Informieren Sie sich in diesem Artikel zur [Befehlszeile](/cli/azure/monitor/log-analytics/workspace/linked-storage), wie Sie solche Konten einrichten.
 
 Weitere Informationen zum Einbinden Ihres eigenen Speicherkontos finden Sie unter [Kundeneigene Speicherkonten für die Protokollerfassung](private-storage.md).
 
@@ -252,7 +252,7 @@ Um Azure Monitor-Portalfunktionalität wie Application Insights und Log Analytic
 
 ### <a name="programmatic-access"></a>Programmgesteuerter Zugriff
 
-Um die REST-API, die [CLI](/cli/azure/monitor?view=azure-cli-latest) oder PowerShell mit Azure Monitor in private Netzwerken zu verwenden, fügen Sie die [Diensttags](../../virtual-network/service-tags-overview.md) für **AzureActiveDirectory** und **AzureResourceManager** zu Ihrer Firewall hinzu.
+Um die REST-API, die [CLI](/cli/azure/monitor) oder PowerShell mit Azure Monitor in private Netzwerken zu verwenden, fügen Sie die [Diensttags](../../virtual-network/service-tags-overview.md) für **AzureActiveDirectory** und **AzureResourceManager** zu Ihrer Firewall hinzu.
 
 Durch Hinzufügen dieser Tags können Sie Aktionen wie das Abfragen von Protokolldaten sowie das Erstellen und Verwalten von Log Analytics-Arbeitsbereichen und Application Insights-Komponenten ausführen.
 

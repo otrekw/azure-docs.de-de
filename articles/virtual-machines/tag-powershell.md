@@ -7,17 +7,16 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 11/11/2020
 ms.author: cynthn
-ms.openlocfilehash: 1efb512923caed97126bdb4ee6267c6a9b57f251
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: bf13d5c0caeb0bf31a383cd23155a6856c81c53b
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94594861"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98897390"
 ---
 # <a name="how-to-tag-a-virtual-machine-in-azure-using-powershell"></a>Kennzeichnen eines virtuellen Computers in Azure mithilfe von PowerShell
 
 In diesem Artikel wird das Markieren einer VM in Azure mit PowerShell beschrieben. Tags sind benutzerdefinierte Schlüssel-Wert-Paare, die direkt auf einer Ressource oder einer Ressourcengruppe platziert werden können. Azure unterstützt derzeit bis zu 50 Tags pro Ressource und Ressourcengruppe. Tags können zum Zeitpunkt der Erstellung auf einer Ressource platziert werden oder zu einer vorhandenen Ressource hinzugefügt werden. Wenn Sie einen virtuellen Computer mit der Azure-Befehlszeilenschnittstelle kennzeichnen möchten, finden Sie weitere Informationen unter [Kennzeichnen eines virtuellen Computers in Azure über die Azure-Befehlszeilenschnittstelle](tag-cli.md).
-
 
 Verwenden Sie das Cmdlet `Get-AzVM`, um die aktuelle Liste der Tags für Ihre VM anzuzeigen.
 
@@ -84,8 +83,7 @@ Environment   Production
 Location      MyLocation
 ```
 
-
-**Nächste Schritte**
+### <a name="next-steps"></a>Nächste Schritte
 
 - Weitere Informationen zum Markieren Ihrer Azure-Ressourcen finden Sie unter [Übersicht über den Azure Resource Manager](../azure-resource-manager/management/overview.md) und [Verwenden von Tags zum Organisieren von Azure-Ressourcen](../azure-resource-manager/management/tag-resources.md).
-- Informationen dazu, wie Tags Ihnen helfen können, die Verwendung Ihrer Azure-Ressourcen zu verwalten, finden Sie unter [Informationen zu Ihrer Rechnung für Microsoft Azure](../cost-management-billing/understand/review-individual-bill.md) und [Gewinnen von Einblicken in den Ressourcenverbrauch unter Microsoft Azure](../cost-management-billing/manage/usage-rate-card-overview.md).
+- Unter [Grundlegendes zu Ihrer Microsoft Azure-Rechnung und „Verwenden der Azure-Abrechnungs-APIs, um programmgesteuerte Einblicke in die Nutzung Ihrer Azure-Ressourcen zu erlangen“ erfahren Sie, wie Tags Sie bei der Verwaltung Ihrer Azure-Ressourcenverwendung unterstützen können.](../cost-management-billing/understand/review-individual-bill.md)

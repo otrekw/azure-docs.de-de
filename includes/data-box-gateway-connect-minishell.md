@@ -4,12 +4,12 @@ ms.service: databox
 ms.topic: include
 ms.date: 10/15/2020
 ms.author: alkohli
-ms.openlocfilehash: 258f0137d630f95fb7dd5dd17072bb77c1388be9
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: c0ba6aee0e23dc0c68348c59c8ca8acdcd606435
+ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96581047"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98900935"
 ---
 Je nach Betriebssystem des Clients unterscheiden sich die Verfahren zum Herstellen von Remoteverbindungen mit dem Gerät.
 
@@ -58,11 +58,11 @@ Befolgen Sie die folgenden Schritte, um eine Remoteverbindung von einem Windows-
 
 Gehen Sie auf dem Linux-Client, den Sie für die Verbindung verwenden, folgendermaßen vor:
 
-- [Installieren Sie die neueste Version von PowerShell Core für Linux](https://docs.microsoft.com/powershell/scripting/install/installing-powershell-core-on-linux?view=powershell-6&preserve-view=true) von GitHub, um das Feature SSH-Remoting zu erhalten. 
+- [Installieren Sie die neueste Version von PowerShell Core für Linux](/powershell/scripting/install/installing-powershell-core-on-linux?preserve-view=true&view=powershell-6) von GitHub, um das Feature SSH-Remoting zu erhalten. 
 - [Installieren Sie nur das Paket `gss-ntlmssp` aus dem NTLM-Modul](https://github.com/Microsoft/omi/blob/master/Unix/doc/setup-ntlm-omi.md). Führen Sie bei Ubuntu-Clients den folgenden Befehl aus:
     - `sudo apt-get install gss-ntlmssp`
 
-Weitere Informationen finden Sie unter [PowerShell-Remoting über SSH](https://docs.microsoft.com/powershell/scripting/learn/remoting/ssh-remoting-in-powershell-core?view=powershell-6&preserve-view=true).
+Weitere Informationen finden Sie unter [PowerShell-Remoting über SSH](/powershell/scripting/learn/remoting/ssh-remoting-in-powershell-core?preserve-view=true&view=powershell-6).
 
 Befolgen Sie die folgenden Schritte, um eine Remoteverbindung von einem NFS-Client aus herzustellen.
 
