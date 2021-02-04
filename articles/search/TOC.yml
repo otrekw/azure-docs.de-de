@@ -302,10 +302,10 @@
               href: knowledge-store-projections-examples.md
     - name: Abfragen
       items:
-        - name: Abfragetypen und Komposition
-          href: search-query-overview.md
         - name: Erstellen einer einfachen Abfrage
           href: search-query-create.md
+        - name: Abfragetypen und Komposition
+          href: search-query-overview.md
         - name: Verwenden von einfacher Syntax (Beispiele)
           href: search-query-simple-examples.md
         - name: Verwenden der vollständigen Lucene-Syntax (Beispiele)
