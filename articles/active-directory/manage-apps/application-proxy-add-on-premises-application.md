@@ -3,7 +3,7 @@ title: 'Tutorial: Hinzufügen einer lokalen App – Anwendungsproxy in Azure AD'
 description: Mit einem Anwendungsproxydienst in Azure Active Directory (Azure AD) können Benutzer auf lokale Anwendungen zugreifen, indem sie sich mit ihrem Azure AD-Konto anmelden. In diesem Tutorial wird veranschaulicht, wie Sie Ihre Umgebung für die Nutzung mit einem Anwendungsproxy vorbereiten. Anschließend wird das Azure-Portal verwendet, um Ihrem Azure AD-Mandanten eine lokale Anwendung hinzuzufügen.
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -12,12 +12,12 @@ ms.date: 01/20/2021
 ms.author: kenwith
 ms.reviewer: japere
 ms.custom: contperf-fy21q3
-ms.openlocfilehash: 6f8fdb23222944eab4742d1e972280e1e27e30a3
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 04b3dd51aab9686d102b6b94324f89396a268e7d
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98728513"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99260078"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>Tutorial: Hinzufügen einer lokalen Anwendung für den Remotezugriff über den Anwendungsproxy in Azure Active Directory
 
@@ -56,7 +56,8 @@ Für hohe Verfügbarkeit in Ihrer Produktionsumgebung sollten Sie mehrere Window
 > ```
 > Windows Registry Editor Version 5.00
 > 
-> HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings\WinHttp\EnableDefaultHttp2 Value: 0
+> [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings\WinHttp]
+> "EnableDefaultHTTP2"=dword:00000000
 > ```
 >
 > Der Schlüssel kann über PowerShell mit dem folgenden Befehl festgelegt werden:

@@ -1,18 +1,18 @@
 ---
 title: Kontrollen zur Einhaltung gesetzlicher Bestimmungen in Azure Policy für Azure Stream Analytics
 description: Listet Kontrollen zur Einhaltung gesetzlicher Bestimmungen auf, die für Azure Policy für Azure Stream Analytics verfügbar sind. Diese integrierten Richtliniendefinitionen bieten allgemeine Ansätze für die Verwaltung der Compliance Ihrer Azure-Ressourcen.
-ms.date: 01/25/2021
+ms.date: 01/29/2021
 ms.topic: sample
 author: sidramadoss
 ms.author: sidram
 ms.service: stream-analytics
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: 6067a3d1bd1da3d541622b87098db6f781aa737e
-ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
+ms.openlocfilehash: 65bc4ac346021505db658f5e063b81f388d660d8
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98796976"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99093103"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-stream-analytics"></a>Kontrollen zur Einhaltung gesetzlicher Bestimmungen in Azure Policy für Azure Stream Analytics
 
