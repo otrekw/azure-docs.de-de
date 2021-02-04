@@ -7,16 +7,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: quickstart
-ms.date: 09/30/2020
+ms.date: 01/29/2021
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: Verarbeiten von Dokumenten
-ms.openlocfilehash: a1cf919e17e22cb6280dce27faceb7cd034a6962
-ms.sourcegitcommit: 5ef018fdadd854c8a3c360743245c44d306e470d
+ms.openlocfilehash: 813f5a06915ca7f5dfc0f4cc9a3f9b3e232ca31a
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/01/2021
-ms.locfileid: "97845551"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99221090"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-the-sample-labeling-tool"></a>Trainieren eines Formularerkennungsmodells mit Beschriftungen mithilfe des Tools für die Beschriftung von Beispielen
 
@@ -202,7 +202,7 @@ Als Nächstes erstellen Sie Beschriftungen (Tags) und wenden sie auf die Textele
    1. Klicken Sie auf **+** , um ein neues Tag zu erstellen.
    1. Geben Sie den Tagnamen ein.
    1. Drücken Sie die EINGABETASTE, um das Tag zu speichern.
-1. Klicken Sie im Hauptbereich des Editors, um Wörter in den markierten Textelementen auszuwählen. In _v2.1 preview.2_ können Sie auch klicken, um _Auswahlmarkierungen_ wie Optionsfelder und Kontrollkästchen als Schlüssel-Wert-Paare auszuwählen. Die Formularerkennung ermittelt, ob für die Auswahlmarkierung der Wert „ausgewählt“ oder „nicht ausgewählt“ angegeben ist.
+1. Klicken Sie im Hauptbereich des Editors, um Wörter in den markierten Textelementen auszuwählen. In der API _v2.1 preview.2_ können Sie auch klicken, um _Auswahlmarkierungen_ wie Optionsfelder und Kontrollkästchen als Schlüssel-Wert-Paare auszuwählen. Die Formularerkennung ermittelt, ob für die Auswahlmarkierung der Wert „ausgewählt“ oder „nicht ausgewählt“ angegeben ist.
 1. Klicken Sie auf das Tag, das Sie anwenden möchten, oder drücken Sie die entsprechende Taste auf der Tastatur. Die Zifferntasten sind als Schnellzugriffstasten für die ersten zehn Tags zugewiesen. Sie können die Beschriftungen mithilfe der nach oben und unten weisenden Pfeilsymbole im Bearbeitungsbereich neu anordnen.
     > [!Tip]
     > Beachten Sie beim Beschriften Ihrer Formulare die folgenden Tipps.
@@ -290,7 +290,7 @@ Dieses Feature ist derzeit in der Vorschauversion v2.1 verfügbar.
 
 Mit der Modellerstellung können Sie bis zu 100 Modelle mit einer einzelnen Modell-ID erstellen. Wenn Sie mit dieser zusammengesetzten Modell-ID die Option zum Analysieren aufrufen, klassifiziert die Formularerkennung zunächst das übermittelte Formular, gleicht es mit dem am ehesten übereinstimmenden Modell ab und gibt dann Ergebnisse für dieses Modell zurück. Dies ist nützlich, wenn eingehende Formulare zu einer von mehreren Vorlagen gehören können.
 
-Um Modelle im Tool für die Beschriftung von Beispielen zu erstellen, klicken Sie auf der linken Seite auf das Symbol zum Erstellen von Modellen (zusammengeführter Pfeil). Wählen Sie auf der linken Seite die Modelle aus, die Sie zusammen erstellen möchten. Modelle mit dem Pfeilsymbol sind bereits zusammengesetzte Modelle. Klicken Sie auf die Schaltfläche „Erstellen“. Geben Sie im Popupfenster einen Namen für das neue erstellte Modell ein, und klicken Sie auf „Erstellen“. Nach Abschluss des Vorgangs sollte das neue erstellte Modell in der Liste angezeigt werden. 
+Um Modelle im Tool für die Beschriftung von Beispielen zu erstellen, klicken Sie auf der linken Seite auf das Symbol zum Erstellen von Modellen (zusammengeführter Pfeil). Wählen Sie auf der linken Seite die Modelle aus, die Sie zusammen erstellen möchten. Modelle mit dem Pfeilsymbol sind bereits zusammengesetzte Modelle. Klicken Sie auf die Schaltfläche „Erstellen“. Geben Sie im Popupfenster einen Namen für Ihr neu erstelltes Modell ein, und klicken Sie auf „Erstellen“. Nach Abschluss des Vorgangs sollte das neue erstellte Modell in der Liste angezeigt werden. 
 
 :::image type="content" source="../media/label-tool/model-compose.png" alt-text="Benutzeroberflächenansicht für die Modellerstellung":::
 

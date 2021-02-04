@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: overview
 ms.date: 01/13/2021
 ms.author: pafarley
-ms.openlocfilehash: d59826ba0e53c4b4146c13b354a85a124ac29b23
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: f10319de67a105b4b5e4641c4171ccd0a6e63440
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98738100"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99490876"
 ---
 # <a name="whats-new-in-computer-vision"></a>Neuerungen beim maschinellen Sehen
 
@@ -30,6 +30,12 @@ Für den [Container für die räumliche Analyse](spatial-analysis-container.md) 
 * [Vorgänge für räumliche Analysen](spatial-analysis-operations.md) können jetzt so konfiguriert werden, dass erkannt wird, ob eine Person eine schützende Gesichtsbedeckung (beispielsweise eine Maske) trägt. 
     * Durch Konfigurieren des Parameters `ENABLE_FACE_MASK_CLASSIFIER` kann für die Vorgänge `personcount`, `personcrossingline` und `personcrossingpolygon` ein Maskenklassifizierer aktiviert werden.
     * Die Attribute `face_mask` und `face_noMask` werden als Metadaten mit Zuverlässigkeitsbewertung für jede im Videostream erkannte Person zurückgegeben.
+* Der Vorgang *personcrossingpolygon* wurde erweitert, um die Berechnung der Wartezeit einer Person in einer Zone zu ermöglichen. Sie können den Parameter `type` in der Zonenkonfiguration für den Vorgang auf `zonedwelltime` festlegen, und ein neues Ereignis vom Typ *personZoneDwellTimeEvent* enthält das Feld `durationMs` mit der Anzahl von Millisekunden, die die Person in der Zone verbracht hat.
+* **Breaking Change:** Das Ereignis *personZoneEvent* wurde in *personZoneEnterExitEvent* umbenannt. Dieses Ereignis wird durch den Vorgang *personcrossingpolygon* ausgelöst, wenn eine Person die Zone betritt oder verlässt. Außerdem werden Richtungsinformationen in Form der nummerierten Seite der durchquerten Zone bereitgestellt.
+* Die Video-URL kann in allen Vorgängen als „Private Parameter/obfuscated“ (Privater Parameter/verschleiert) bereitgestellt werden. Die Verschleierung ist jetzt optional und funktioniert nur, wenn `KEY` und `IV` als Umgebungsvariablen bereitgestellt werden.
+* Die Kalibrierung ist für alle Vorgänge standardmäßig aktiviert. Legen Sie `do_calibration: false` fest, um sie zu deaktivieren.
+* Unterstützung der automatischen Neukalibrierung über den Parameter `enable_recalibration` wurde hinzugefügt (standardmäßig deaktiviert). Ausführliche Informationen finden Sie unter [Vorgänge der räumlichen Analyse](https://docs.microsoft.com/azure/cognitive-services/computer-vision/spatial-analysis-operations).
+* Kamerakalibrierungsparameter für `DETECTOR_NODE_CONFIG`. Ausführliche Informationen finden Sie unter [Vorgänge der räumlichen Analyse](https://docs.microsoft.com/azure/cognitive-services/computer-vision/spatial-analysis-operations).
 
 
 ## <a name="october-2020"></a>Oktober 2020
