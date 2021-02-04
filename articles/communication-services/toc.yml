@@ -38,6 +38,14 @@
           href: quickstarts/voice-video-calling/calling-client-samples.md
         - name: Beitreten mit einer Telefonie-App zu einer Teams-Besprechung
           href: quickstarts/voice-video-calling/get-started-teams-interop.md
+    - name: Benutzeroberflächen-Framework
+      items:
+        - name: Erste Schritte mit zusammengesetzten Komponenten
+          href: quickstarts/ui-framework/get-started-with-composites.md
+        - name: Erste Schritte mit Basiskomponenten
+          href: quickstarts/ui-framework/get-started-with-components.md
+        - name: Erstellen einer eigenen Komponente für das Benutzeroberflächen-Framework
+          href: quickstarts/ui-framework/create-your-own-components.md
 - name: Tutorials
   expanded: false
   items:
@@ -70,6 +78,12 @@
           href: concepts/voice-video-calling/about-call-types.md
         - name: Teams-Interoperabilität
           href: concepts/voice-video-calling/teams-interop.md
+    - name: Benutzeroberflächen-Framework
+      items:
+        - name: Übersicht über das Benutzeroberflächen-Framework
+          href: concepts/ui-framework/ui-sdk-overview.md
+        - name: Funktionen des Benutzeroberflächen-Frameworks
+          href: concepts/ui-framework/ui-sdk-features.md
     - name: Client- und Serverarchitektur
       href: concepts/client-and-server-architecture.md
     - name: Anrufflows

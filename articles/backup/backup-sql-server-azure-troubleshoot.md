@@ -3,12 +3,12 @@ title: Problembehandlung für SQL Server-Datenbanksicherungen
 description: Informationen zur Problembehandlung beim Sichern von SQL Server-Datenbanken auf virtuellen Azure-Computern mit Azure Backup
 ms.topic: troubleshooting
 ms.date: 06/18/2019
-ms.openlocfilehash: d702959be70716f0c2bc85920bdb7aa3e061aff1
-ms.sourcegitcommit: f7084d3d80c4bc8e69b9eb05dfd30e8e195994d8
+ms.openlocfilehash: d502a4188b4f9f383188804f86abbb9a6d05d146
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/22/2020
-ms.locfileid: "97733922"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99429465"
 ---
 # <a name="troubleshoot-sql-server-database-backup-by-using-azure-backup"></a>Problembehandlung für die SQL Server-Datenbanksicherung mit Azure Backup
 
@@ -217,7 +217,7 @@ Die VM kann den Azure Backup-Dienst aufgrund von Problemen mit der Internetverbi
 
   - Fehlende Berechtigung zur Durchführung von sicherungsbezogenen Vorgängen auf der VM
   - Herunterfahren des virtuellen Computers, sodass keine Sicherungen durchgeführt werden können
-  - Netzwerkfehler
+  - [Netzwerkprobleme](#usererrorvminternetconnectivityissue)
 
    ![Wiederkehrende Registrierung der VM](./media/backup-azure-sql-database/re-register-vm.png)
 
