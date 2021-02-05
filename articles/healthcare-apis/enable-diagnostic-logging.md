@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.reviewer: dseven
 ms.author: cavoeg
 author: CaitlinV39
-ms.date: 11/01/2019
-ms.openlocfilehash: 54119585d4f1377b60b85fbad01fe90f097a304f
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.date: 02/03/2021
+ms.openlocfilehash: 8dc87ae5b296f322d9d5a4d59c0a8c9b1c50d5da
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95905173"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99575437"
 ---
 # <a name="enable-diagnostic-logging-in-azure-api-for-fhir"></a>Aktivieren der Diagnoseprotokollierung in Azure API for FHIR
 
@@ -35,9 +35,9 @@ In diesem Artikel erfahren Sie, wie Sie die Diagnoseprotokollierung in Azure API
     2. **Streamen Sie die Protokolle zu Event Hub**, damit sie von einem Dienst eines Drittanbieters oder einer benutzerdefinierten Analyselösung erfasst werden können. Sie müssen einen Event Hub-Namespace und eine Event Hub-Richtlinie erstellen, ehe Sie diesen Schritt konfigurieren können.
     3. **Streamen Sie die Protokolle zum Log Analytics-Arbeitsbereich** in Azure Monitor. Sie müssen zuvor Ihren Log Analytics-Arbeitsbereich erstellen, bevor Sie diese Option auswählen können.
 
-6. Wählen Sie **AuditLogs** und alle Metriken aus, die Sie erfassen möchten. Wenn Sie den Azure IoT-Konnektor für FHIR verwenden, stellen Sie sicher, dass Sie als Metriken **Fehler, Datenverkehr und Wartezeit** auswählen. 
+6. Wählen Sie **AuditLogs** und/oder **AllMetrics** aus. Die Metriken umfassen Dienstname, Verfügbarkeit, Datengröße, Gesamtwartezeit, Gesamtanzahl der Anforderungen, Gesamtanzahl der Fehler und Zeitstempel.
 
-   :::image type="content" source="media/iot-metrics-export/diagnostic-setting-add.png" alt-text="IoT-Konnektor2" lightbox="media/iot-metrics-export/diagnostic-setting-add.png":::
+   :::image type="content" source="media/diagnostic-logging/fhir-diagnostic-setting.png" alt-text="Azure FHIR-Diagnoseeinstellungen. Auswählen von „AuditLogs“ und/oder „AllMetrics“" lightbox="media/diagnostic-logging/fhir-diagnostic-setting.png":::
 
 7. Wählen Sie **Speichern** aus.
 

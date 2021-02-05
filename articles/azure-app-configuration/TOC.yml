@@ -17,7 +17,7 @@
           href: quickstart-aspnet-core-app.md
         - name: .NET Core
           href: quickstart-dotnet-core-app.md
-        - name: ".NET\_Framework"
+        - name: .NET Framework
           href: quickstart-dotnet-app.md
         - name: Azure Functions in .NET Core
           href: quickstart-azure-functions-csharp.md
@@ -122,7 +122,7 @@
       href: howto-import-export-data.md
     - name: Verwenden des JSON-Inhaltstyps für Schlüsselwerte
       href: howto-leverage-json-content-type.md
-    - name: Routing von Ereignissen an einen benutzerdefinierten Endpunkt
+    - name: Verwenden von Event Grid für Datenänderungsbenachrichtigungen
       href: howto-app-configuration-event.md
     - name: Konfigurationsspeicher automatisch sichern
       href: howto-backup-config-store.md
