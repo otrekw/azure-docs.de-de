@@ -4,12 +4,12 @@ description: In diesem Artikel erfahren Sie, wie Sie Recovery Services-Tresore z
 ms.topic: conceptual
 ms.date: 05/30/2019
 ms.custom: references_regions
-ms.openlocfilehash: 3ba9f47da4a4c9719c313ba196ca121f8cde54ad
-ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
+ms.openlocfilehash: 51d095ab68bc9277cb610bd226039ffbde8d7ddf
+ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97387733"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98915725"
 ---
 # <a name="create-and-configure-a-recovery-services-vault"></a>Erstellen und Konfigurieren von Recovery Services-Tresoren
 
@@ -46,9 +46,9 @@ Die Wiederherstellungsoption **Regionsübergreifende Wiederherstellung** ermögl
 
 Sie unterstützt die folgenden Datenquellen:
 
-- Virtuelle Azure-Computer
-- Auf Azure-VMs gehostete SQL-Datenbanken
-- Auf Azure-VMs gehostete SAP HANA-Datenbanken
+- Azure Virtual Machines (allgemeine Verfügbarkeit)
+- Auf Azure-VMs gehostete SQL-Datenbanken (Vorschau)
+- Auf Azure-VMs gehostete SAP HANA-Datenbanken (Vorschau)
 
 Die regionsübergreifende Wiederherstellung bietet folgende Möglichkeiten:
 
@@ -65,11 +65,12 @@ Da dieser Prozess auf Speicherebene erfolgt, hat er [Auswirkungen auf den Preis]
 >Vorbereitungen
 >
 >- Machen Sie sich anhand der [Unterstützungsmatrix](backup-support-matrix.md#cross-region-restore) mit der Liste unterstützter verwalteter Typen und Regionen vertraut.
->- Das Feature der bereichsübergreifenden Wiederherstellung (CRR) ist nun in allen öffentlichen Azure-Regionen in der Vorschau verfügbar.
+>- Die Funktion für die regionsübergreifende Wiederherstellung (Cross Region Restore, CRR) für Azure-VMs ist jetzt in allen öffentlichen Azure-Regionen öffentlich verfügbar.
+>- Die regionsübergreifende Wiederherstellung für SQL- und SAP HANA-Datenbanken befindet sich für alle öffentlichen Azure-Regionen in der Vorschauphase.
 >- CRR ist ein optionales Feature auf Tresorebene für beliebige GRS-Tresore und standardmäßig deaktiviert.
 >- Nach der Aktivierung kann es bis zu 48 Stunden dauern, bis die Sicherungselemente in sekundären Regionen verfügbar sind.
 >- CRR für Azure-VMs wird zurzeit nur für Azure Resource Manager-VMs in Azure unterstützt. Klassische Azure-VMs werden nicht unterstützt.  Wenn CRR von weiteren Verwaltungstypen unterstützt wird, werden diese **automatisch** registriert.
->- Die bereichsübergreifende Wiederherstellung kann zurzeit nicht auf GRS oder LRS zurückgesetzt werden, sobald der Schutz zum ersten Mal initiiert wurde.
+>- Die regionsübergreifende Wiederherstellung **kann zurzeit nicht auf GRS oder LRS zurückgesetzt werden**, nachdem der Schutz zum ersten Mal initiiert wurde.
 
 ### <a name="configure-cross-region-restore"></a>Konfigurieren der bereichsübergreifenden Wiederherstellung
 
