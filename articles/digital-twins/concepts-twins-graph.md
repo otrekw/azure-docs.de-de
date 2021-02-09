@@ -7,16 +7,16 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: a4875c2c75b133f0ab4046266d6aac36d5478fe4
-ms.sourcegitcommit: 52e3d220565c4059176742fcacc17e857c9cdd02
+ms.openlocfilehash: 105128af60b90324e93bcad1bd9900a55461378f
+ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98664043"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99071714"
 ---
 # <a name="understand-digital-twins-and-their-twin-graph"></a>Grundlegendes zu digitalen Zwillingen und zum zugehörigen Zwillingsgraphen
 
-In einer Azure Digital Twins-Lösung werden die Entitäten in Ihrer Umgebung durch **digitale Azure-Zwillinge** dargestellt. Ein digitaler Zwilling ist eine Instanz eines Ihrer benutzerdefinierten [Modelle](concepts-models.md). Er kann mit anderen digitalen Zwillingen über **Beziehungen** verbunden werden, um einen **Zwillingsgraphen** zu erhalten. Dieser Zwillingsgraph ist die Darstellung Ihrer gesamten Umgebung.
+In einer Azure Digital Twins-Lösung werden die Entitäten in Ihrer Umgebung durch **digitale Zwillinge** dargestellt. Ein digitaler Zwilling ist eine Instanz eines Ihrer benutzerdefinierten [Modelle](concepts-models.md). Er kann mit anderen digitalen Zwillingen über **Beziehungen** verbunden werden, um einen **Zwillingsgraphen** zu erhalten. Dieser Zwillingsgraph ist die Darstellung Ihrer gesamten Umgebung.
 
 > [!TIP]
 > „Azure Digital Twins“ ist der Name dieses Azure-Diensts. „Digitale Zwillinge“ oder einfach „Zwillinge“ bezieht sich einzelne Zwillingsknoten auf Ihrer Instanz des Diensts.

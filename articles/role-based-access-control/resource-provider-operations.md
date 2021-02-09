@@ -9,12 +9,12 @@ author: rolyon
 ms.author: rolyon
 ms.date: 01/15/2021
 ms.custom: generated
-ms.openlocfilehash: a521623447f4415e35a06c5c60e3723a69b4aa15
-ms.sourcegitcommit: 75041f1bce98b1d20cd93945a7b3bd875e6999d0
+ms.openlocfilehash: 72735dad6a52fffd6e6e94ad4fb0fb7a9558b4c4
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98700600"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99430078"
 ---
 # <a name="azure-resource-provider-operations"></a>Vorgänge für Azure-Ressourcenanbieter
 
@@ -82,6 +82,7 @@ Klicken Sie in der folgenden Tabelle auf den Namen des Ressourcenanbieters, um d
 | [Microsoft.PowerBIDedicated](#microsoftpowerbidedicated) |
 | [Microsoft.Purview](#microsoftpurview) |
 | [Microsoft.StreamAnalytics](#microsoftstreamanalytics) |
+| [Microsoft.Synapse](#microsoftsynapse) |
 | **Blockchain** |
 | [Microsoft.Blockchain](#microsoftblockchain) |
 | **KI und Machine Learning** |
@@ -4765,6 +4766,169 @@ Azure-Dienst: [Stream Analytics](../stream-analytics/index.yml)
 > | Microsoft.StreamAnalytics/streamingjobs/transformations/Delete | Dient zum Löschen von Stream Analytics-Auftragstransformationen. |
 > | Microsoft.StreamAnalytics/streamingjobs/transformations/Read | Dient zum Lesen von Stream Analytics-Auftragstransformationen. |
 > | Microsoft.StreamAnalytics/streamingjobs/transformations/Write | Dient zum Schreiben von Stream Analytics-Auftragstransformationen. |
+
+### <a name="microsoftsynapse"></a>Microsoft.Synapse
+
+Azure-Dienst: [Synapse Analytics](../synapse-analytics/index.yml)
+
+> [!div class="mx-tableFixed"]
+> | Aktion | BESCHREIBUNG |
+> | --- | --- |
+> | Microsoft.Synapse/checkNameAvailability/action | Überprüft die Verfügbarkeit des Arbeitsbereichsnamens. |
+> | Microsoft.Synapse/register/action | Registriert den Ressourcenanbieter für Azure Synapse Analytics (Arbeitsbereiche) und aktiviert die Erstellung von Arbeitsbereichen. |
+> | Microsoft.Synapse/unregister/action | Hebt die Registrierung des Ressourcenanbieters für Azure Synapse Analytics (Arbeitsbereiche) auf und deaktiviert die Erstellung von Arbeitsbereichen. |
+> | Microsoft.Synapse/workspaces/integrationRuntimes/read | Dient zum Abrufen einer beliebigen Integration Runtime. |
+> | Microsoft.Synapse/workspaces/integrationruntimes/write | Dient zum Erstellen oder Aktualisieren beliebiger Integration Runtimes. |
+> | Microsoft.Synapse/workspaces/integrationRuntimes/delete | Dient zum Löschen einer beliebigen Integration Runtime. |
+> | Microsoft.Synapse/workspaces/integrationRuntimes/getStatus/action | Dient zum Abrufen des Status einer beliebigen Integration Runtime. |
+> | Microsoft.Synapse/workspaces/integrationRuntimes/createExpressSHIRInstallLink/action | Dient zum Erstellen eines Installationslinks für eine Integration Runtime. |
+> | Microsoft.Synapse/workspaces/integrationRuntimes/start/action | Dient zum Starten einer beliebigen Integration Runtime. |
+> | Microsoft.Synapse/workspaces/integrationRuntimes/stop/action | Dient zum Beenden einer beliebigen Integration Runtime. |
+> | Microsoft.Synapse/workspaces/integrationRuntimes/getConnectionInfo/action | Dient zum Abrufen von Verbindungsinformationen einer beliebigen Integration Runtime. |
+> | Microsoft.Synapse/workspaces/integrationRuntimes/regenerateAuthKey/action | Dient zum erneuten Generieren des Authentifizierungsschlüssels einer beliebigen Integration Runtime. |
+> | Microsoft.Synapse/workspaces/integrationRuntimes/listAuthKeys/action | Dient zum Auflisten der Authentifizierungsschlüssel einer beliebigen Integration Runtime. |
+> | Microsoft.Synapse/workspaces/integrationRuntimes/removeNode/action | Dient zum Entfernen eines beliebigen Integration Runtime-Knotens. |
+> | Microsoft.Synapse/workspaces/integrationRuntimes/monitoringData/action | Dient zum Abrufen der Überwachungsdaten einer beliebigen Integration Runtime. |
+> | Microsoft.Synapse/workspaces/integrationRuntimes/syncCredentials/action | Dient zum Synchronisieren von Anmeldeinformationen für eine beliebige Integration Runtime. |
+> | Microsoft.Synapse/workspaces/integrationRuntimes/upgrade/action | Dient zum Upgraden einer beliebigen Integration Runtime. |
+> | Microsoft.Synapse/workspaces/integrationRuntimes/removeLinks/action | Dient zum Entfernen eines beliebigen Integration Runtime-Links. |
+> | Microsoft.Synapse/workspaces/integrationRuntimes/enableInteractiveQuery/action | Dient zum Aktivieren interaktiver Abfragen für eine beliebige Integration Runtime. |
+> | Microsoft.Synapse/workspaces/integrationRuntimes/disableInteractiveQuery/action | Dient zum Deaktivieren interaktiver Abfragen für eine beliebige Integration Runtime. |
+> | Microsoft.Synapse/workspaces/integrationRuntimes/refreshObjectMetadata/action | Dient zum Aktualisieren von Objektmetadaten für eine beliebige Intergration Runtime. |
+> | Microsoft.Synapse/workspaces/integrationRuntimes/getObjectMetadata/action | Dient zum Abrufen von Objektmetadaten für eine beliebige Intergration Runtime. |
+> | Microsoft.Synapse/workspaces/managedIdentitySqlControlSettings/write | Dient zum Aktualisieren von SQL-Steuerungseinstellungen für eine verwaltete Identität im Arbeitsbereich. |
+> | Microsoft.Synapse/workspaces/managedIdentitySqlControlSettings/read | Dient zum Abrufen von SQL-Steuerungseinstellungen für eine verwaltete Identität. |
+> | Microsoft.Synapse/workspaces/scopePools/write | Dient zum Erstellen oder Aktualisieren beliebiger Bereichspools. |
+> | Microsoft.Synapse/workspaces/scopePools/read | Dient zum Lesen beliebiger Bereichspools. |
+> | Microsoft.Synapse/workspaces/scopePools/delete | Dient zum Löschen beliebiger Bereichspools. |
+> | Microsoft.Synapse/operations/read | Dient zum Lesen der verfügbaren Vorgänge aus dem Azure Synapse Analytics-Ressourcenanbieter. |
+> | Microsoft.Synapse/workspaces/integrationRuntimes/nodes/read | Dient zum Abrufen eines beliebigen Integration Runtime-Knotens. |
+> | Microsoft.Synapse/workspaces/integrationRuntimes/nodes/delete | Dient zum Löschen eines beliebigen Integration Runtime-Knotens. |
+> | Microsoft.Synapse/workspaces/integrationRuntimes/nodes/write | Dient zum Patchen eines beliebigen Integration Runtime-Knotens. |
+> | Microsoft.Synapse/workspaces/integrationRuntimes/nodes/ipAddress/action | Dient zum Abrufen der IP-Adresse der Integration Runtime. |
+> | Microsoft.Synapse/workspaces/firewallRules/write | Dient zum Erstellen oder Aktualisieren einer beliebigen IP-Firewallregel. |
+> | Microsoft.Synapse/workspaces/firewallRules/read | Dient zum Lesen der IP-Firewallregel. |
+> | Microsoft.Synapse/workspaces/firewallRules/delete | Dient zum Löschen einer beliebigen IP-Firewallregel. |
+> | Microsoft.Synapse/workspaces/replaceAllIpFirewallRules/action | Ersetzt alle IP-Firewallregeln für den Arbeitsbereich. |
+> | Microsoft.Synapse/workspaces/write | Dient zum Erstellen oder Aktualisieren beliebiger Arbeitsbereiche. |
+> | Microsoft.Synapse/workspaces/read | Dient zum Lesen beliebiger Arbeitsbereiche. |
+> | Microsoft.Synapse/workspaces/delete | Dient zum Löschen beliebiger Arbeitsbereiche. |
+> | Microsoft.Synapse/workspaces/checkDefaultStorageAccountStatus/action | Überprüft den Status des Standardspeicherkontos. |
+> | Microsoft.Synapse/workspaces/sqlPools/write | Dient zum Erstellen oder Aktualisieren beliebiger SQL-Analyse-Pools. |
+> | Microsoft.Synapse/workspaces/sqlPools/read | Dient zum Lesen beliebiger SQL-Analyse-Pools. |
+> | Microsoft.Synapse/workspaces/sqlPools/delete | Dient zum Löschen beliebiger SQL-Analyse-Pools. |
+> | Microsoft.Synapse/workspaces/sqlPools/pause/action | Dient zum Anhalten beliebiger SQL-Analyse-Pools. |
+> | Microsoft.Synapse/workspaces/sqlPools/resume/action | Dient zum Fortsetzen beliebiger SQL-Analyse-Pools. |
+> | Microsoft.Synapse/workspaces/sqlPools/restorePoints/action | Dient zum Erstellen eines Wiederherstellungspunkts für einen SQL-Analyse-Pool. |
+> | Microsoft.Synapse/workspaces/sqlPools/move/action | Dient zum Umbenennen beliebiger SQL-Analyse-Pools. |
+> | Microsoft.Synapse/workspaces/sqlPools/dataWarehouseQueries/read | Dient zum Lesen von Abfragen für einen beliebigen SQL-Analyse-Pool. |
+> | Microsoft.Synapse/workspaces/sqlPools/geoBackupPolicies/read | Dient zum Lesen von Geosicherungsrichtlinien für einen beliebigen SQL-Analyse-Pool. |
+> | Microsoft.Synapse/workspaces/sqlPools/dataWarehouseUserActivities/read | Dient zum Lesen von Benutzeraktivitäten für einen beliebigen SQL-Analyse-Pool. |
+> | Microsoft.Synapse/workspaces/sqlPools/restorePoints/read | Dient zum Lesen von Wiederherstellungspunkten für einen beliebigen SQL-Analyse-Pool. |
+> | Microsoft.Synapse/workspaces/sqlPools/restorePoints/delete | Löscht einen Wiederherstellungspunkt. |
+> | Microsoft.Synapse/workspaces/sqlPools/dataWarehouseQueries/dataWarehouseQuerySteps/read | Dient zum Lesen von Abfrageschritten für einen beliebigen SQL-Analyse-Pool. |
+> | Microsoft.Synapse/workspaces/sqlPools/maintenanceWindows/read | Dient zum Lesen von Wartungsfenstern für einen beliebigen SQL-Analyse-Pool. |
+> | Microsoft.Synapse/workspaces/sqlPools/maintenanceWindows/write | Dient zum Lesen von Wartungsfenstern für einen beliebigen SQL-Analyse-Pool. |
+> | Microsoft.Synapse/workspaces/sqlPools/maintenanceWindowOptions/read | Dient zum Lesen von Wartungsfensteroptionen für einen beliebigen SQL-Analyse-Pool. |
+> | Microsoft.Synapse/workspaces/sqlPools/replicationLinks/read | Dient zum Lesen von Replikationslinks für einen beliebigen SQL-Analyse-Pool. |
+> | Microsoft.Synapse/workspaces/sqlPools/transparentDataEncryption/read | Dient zum Lesen der TDE-Konfiguration (Transparent Data Encryption) für einen beliebigen SQL-Analyse-Pool. |
+> | Microsoft.Synapse/workspaces/sqlPools/transparentDataEncryption/write | Dient zum Erstellen oder Aktualisieren der TDE-Konfiguration (Transparent Data Encryption) für einen beliebigen SQL-Analyse-Pool. |
+> | Microsoft.Synapse/workspaces/sqlPools/transparentDataEncryption/operationResults/read | Dient zum Lesen der Ergebnisse des TDE-Konfigurationsvorgangs (Transparent Data Encryption) für einen beliebigen SQL-Analyse-Pool. |
+> | Microsoft.Synapse/workspaces/sqlPools/auditingSettings/read | Dient zum Lesen der Überwachungseinstellungen für einen beliebigen SQL-Analyse-Pool. |
+> | Microsoft.Synapse/workspaces/sqlPools/auditingSettings/write | Dient zum Erstellen oder Aktualisieren der Überwachungseinstellungen für einen beliebigen SQL-Analyse-Pool. |
+> | Microsoft.Synapse/workspaces/sqlPools/operations/read | Dient zum Lesen von Vorgängen für einen beliebigen SQL-Analyse-Pool. |
+> | Microsoft.Synapse/workspaces/sqlPools/usages/read | Dient zum Lesen der Nutzung eines beliebigen SQL-Analyse-Pools. |
+> | Microsoft.Synapse/workspaces/sqlPools/currentSensitivityLabels/read | Dient zum Lesen der aktuellen Vertraulichkeitsbezeichnungen für einen beliebigen SQL-Analyse-Pool. |
+> | Microsoft.Synapse/workspaces/sqlPools/currentSensitivityLabels/write | Dient zum Durchführen eines Batchupdates für aktuelle Vertraulichkeitsbezeichnungen. |
+> | Microsoft.Synapse/workspaces/sqlPools/recommendedSensitivityLabels/read | Dient zum Lesen der empfohlenen Vertraulichkeitsbezeichnungen für einen beliebigen SQL-Analyse-Pool. |
+> | Microsoft.Synapse/workspaces/sqlPools/recommendedSensitivityLabels/write | Batchupdate von empfohlenen Vertraulichkeitsbezeichnungen |
+> | Microsoft.Synapse/workspaces/sqlPools/schemas/read | Dient zum Lesen der Schemas für einen beliebigen SQL-Analyse-Pool. |
+> | Microsoft.Synapse/workspaces/sqlPools/schemas/tables/read | Dient zum Lesen der Schematabellen für einen beliebigen SQL-Analyse-Pool. |
+> | Microsoft.Synapse/workspaces/sqlPools/schemas/tables/columns/read | Dient zum Lesen der Schemaspalten für einen beliebigen SQL-Analyse-Pool. |
+> | Microsoft.Synapse/workspaces/sqlPools/connectionPolicies/read | Dient zum Lesen von Verbindungsrichtlinien für einen beliebigen SQL-Analyse-Pool. |
+> | Microsoft.Synapse/workspaces/sqlPools/vulnerabilityAssessments/read | Dient zum Lesen der Sicherheitsrisikobewertung für einen beliebigen SQL-Analyse-Pool. |
+> | Microsoft.Synapse/workspaces/sqlPools/vulnerabilityAssessments/write | Erstellt oder aktualisiert die Sicherheitsrisikobewertung für den SQL-Pool. |
+> | Microsoft.Synapse/workspaces/sqlPools/vulnerabilityAssessments/delete | Dient zum Löschen der Sicherheitsrisikobewertung für einen beliebigen SQL-Analyse-Pool. |
+> | Microsoft.Synapse/workspaces/sqlPools/vulnerabilityAssessments/scans/read | Dient zum Lesen der Überprüfungsdatensätze der Sicherheitsrisikobewertung für einen beliebigen SQL-Analyse-Pool. |
+> | Microsoft.Synapse/workspaces/sqlPools/vulnerabilityAssessments/scans/initiateScan/action | Dient zum Initiieren der Überprüfungsdatensätze der Sicherheitsrisikobewertung für einen beliebigen SQL-Analyse-Pool. |
+> | Microsoft.Synapse/workspaces/sqlPools/vulnerabilityAssessments/scans/export/action | Dient zum Exportieren der Überprüfungsdatensätze der Sicherheitsrisikobewertung für einen beliebigen SQL-Analyse-Pool. |
+> | Microsoft.Synapse/workspaces/sqlPools/securityAlertPolicies/read | Dient zum Lesen von Bedrohungserkennungsrichtlinien für einen beliebigen SQL-Analyse-Pool. |
+> | Microsoft.Synapse/workspaces/sqlPools/securityAlertPolicies/write | Dient zum Erstellen oder Aktualisieren von Bedrohungserkennungsrichtlinien für einen beliebigen SQL-Analyse-Pool. |
+> | Microsoft.Synapse/workspaces/sqlPools/schemas/tables/columns/sensitivityLabels/read | Ruft die Vertraulichkeitsbezeichnung einer bestimmten Spalte ab. |
+> | Microsoft.Synapse/workspaces/sqlPools/schemas/tables/columns/sensitivityLabels/enable/action | Dient zum Aktivieren der Vertraulichkeitsbezeichnungen für einen beliebigen SQL-Analyse-Pool. |
+> | Microsoft.Synapse/workspaces/sqlPools/schemas/tables/columns/sensitivityLabels/disable/action | Dient zum Deaktivieren der Vertraulichkeitsbezeichnungen für einen beliebigen SQL-Analyse-Pool. |
+> | Microsoft.Synapse/workspaces/sqlPools/schemas/tables/columns/sensitivityLabels/write | Dient zum Erstellen oder Aktualisieren der Vertraulichkeitsbezeichnungen für einen beliebigen SQL-Analyse-Pool. |
+> | Microsoft.Synapse/workspaces/sqlPools/schemas/tables/columns/sensitivityLabels/delete | Dient zum Löschen der Vertraulichkeitsbezeichnungen für einen beliebigen SQL-Analyse-Pool. |
+> | Microsoft.Synapse/workspaces/sqlPools/vulnerabilityAssessments/rules/baselines/read | Dient zum Abrufen der Baseline für die Regel zur Sicherheitsrisikobewertung für einen beliebigen SQL-Analyse-Pool. |
+> | Microsoft.Synapse/workspaces/sqlPools/vulnerabilityAssessments/rules/baselines/write | Dient zum Erstellen oder Aktualisieren der Baseline für die Regel zur Sicherheitsrisikobewertung für einen beliebigen SQL-Analyse-Pool. |
+> | Microsoft.Synapse/workspaces/sqlPools/vulnerabilityAssessments/rules/baselines/delete | Dient zum Löschen der Baseline für die Regel zur Sicherheitsrisikobewertung für einen beliebigen SQL-Analyse-Pool. |
+> | Microsoft.Synapse/workspaces/operationStatuses/read | Dient zum Lesen des Status eines beliebigen asynchronen Vorgangs. |
+> | Microsoft.Synapse/workspaces/operationResults/read | Dient zum Lesen des Ergebnisses eines beliebigen asynchronen Vorgangs. |
+> | Microsoft.Synapse/workspaces/sqlPools/operationResults/read | Dient zum Lesen des Ergebnisses eines beliebigen asynchronen Vorgangs. |
+> | Microsoft.Synapse/workspaces/bigDataPools/write | Dient zum Erstellen oder Aktualisieren beliebiger Spark-Pools. |
+> | Microsoft.Synapse/workspaces/bigDataPools/read | Dient zum Lesen beliebiger Spark-Pools. |
+> | Microsoft.Synapse/workspaces/bigDataPools/delete | Dient zum Löschen beliebiger Spark-Pools. |
+> | Microsoft.Synapse/workspaces/sqlPools/metadataSync/write | Dient zum Erstellen oder Aktualisieren der Konfiguration für die Synchronisierung von Metadaten für SQL-Analysepools. |
+> | Microsoft.Synapse/workspaces/sqlPools/metadataSync/read | Dient zum Lesen der Konfiguration für die Synchronisierung von Metadaten für SQL-Analysepools. |
+> | Microsoft.Synapse/workspaces/recoverableSqlpools/read | Ruft wiederherstellbare SQL-Analysepools ab. Hierbei handelt es sich um die Ressourcen, die Geosicherungen von SQL-Analysepools darstellen. |
+> | Microsoft.Synapse/workspaces/administrators/write | Dient zum Festlegen des Active Directory-Administrators für den Arbeitsbereich. |
+> | Microsoft.Synapse/workspaces/administrators/read | Dient zum Abrufen des Active Directory-Administrators für den Arbeitsbereich. |
+> | Microsoft.Synapse/workspaces/administrators/delete | Dient zum Löschen des Active Directory-Administrators für den Arbeitsbereich. |
+> | Microsoft.Synapse/workspaces/privateEndpointConnections/write | Erstellt oder aktualisiert die private Endpunktverbindung. |
+> | Microsoft.Synapse/workspaces/privateEndpointConnections/read | Liest die Verbindung für einen privaten Endpunkt. |
+> | Microsoft.Synapse/workspaces/privateEndpointConnections/delete | Löscht eine Verbindung mit privatem Endpunkt |
+> | Microsoft.Synapse/workspaces/privateLinkResources/read | Dient zum Abrufen einer Liste mit Private Link-Ressourcen. |
+> | Microsoft.Synapse/workspaces/sqlPools/extensions/read | Dient zum Abrufen der SQL-Analyse-Poolerweiterung. |
+> | Microsoft.Synapse/workspaces/sqlPools/extensions/write | Dient zum Ändern der Erweiterung für einen bestimmten SQL-Analyse-Pool. |
+> | Microsoft.Synapse/privateLinkHubs/write | Dient zum Erstellen beliebiger Private Link-Hubs. |
+> | Microsoft.Synapse/privateLinkHubs/read | Dient zum Lesen beliebiger Private Link-Hubs. |
+> | Microsoft.Synapse/privateLinkHubs/delete | Dient zum Löschen von Private Link-Hubs. |
+> | Microsoft.Synapse/locations/operationStatuses/read | Dient zum Lesen des Status eines beliebigen asynchronen Vorgangs. |
+> | Microsoft.Synapse/locations/operationResults/read | Dient zum Lesen des Ergebnisses eines beliebigen asynchronen Vorgangs. |
+> | Microsoft.Synapse/privateLinkHubs/privateLinkResources/read | Dient zum Abrufen einer Liste mit Private Link-Ressourcen. |
+> | Microsoft.Synapse/privateLinkHubs/privateEndpointConnections/write | Dient zum Erstellen oder Aktualisieren der Verbindung mit einem privaten Endpunkt für einen Private Link-Hub. |
+> | Microsoft.Synapse/privateLinkHubs/privateEndpointConnections/read | Dient zum Lesen einer beliebigen Verbindung mit einem privaten Endpunkt für einen Private Link-Hub. |
+> | Microsoft.Synapse/privateLinkHubs/privateEndpointConnections/delete | Dient zum Löschen einer Verbindung mit einem privaten Endpunkt für einen Private Link-Hub. |
+> | Microsoft.Synapse/workspaces/sqlPools/operationStatuses/read | Dient zum Lesen des Ergebnisses eines beliebigen asynchronen Vorgangs. |
+> | Microsoft.Synapse/workspaces/keys/write | Dient zum Erstellen oder Aktualisieren von Arbeitsbereichsschlüsseln. |
+> | Microsoft.Synapse/workspaces/keys/read | Dient zum Lesen einer beliebigen Arbeitsbereichsschlüsseldefinition. |
+> | Microsoft.Synapse/workspaces/keys/delete | Dient zum Löschen eines beliebigen Arbeitsbereichsschlüssels. |
+> | Microsoft.Synapse/workspaces/libraries/read | Dient zum Lesen von Bibliothekartefakten. |
+> | Microsoft.Synapse/workspaces/sqlPools/workloadGroups/read | Listet die Arbeitsauslastungsgruppen für einen ausgewählten SQL-Pool auf. |
+> | Microsoft.Synapse/workspaces/sqlPools/workloadGroups/write | Legt die Eigenschaften für eine bestimmte Arbeitsauslastungsgruppe fest. |
+> | Microsoft.Synapse/workspaces/sqlPools/workloadGroups/delete | Löscht eine bestimmte Arbeitsauslastungsgruppe. |
+> | Microsoft.Synapse/workspaces/sqlPools/workloadGroups/workloadClassifiers/read | Listet die Arbeitsauslastungsklassifizierer für einen ausgewählten SQL-Analyse-Pool auf. |
+> | Microsoft.Synapse/workspaces/sqlPools/workloadGroups/workloadClassifiers/write | Legt die Eigenschaften für einen bestimmten Arbeitsauslastungsklassifizierer fest. |
+> | Microsoft.Synapse/workspaces/sqlPools/workloadGroups/workloadClassifiers/delete | Löscht einen bestimmten Arbeitsauslastungsklassifizierer. |
+> | Microsoft.Synapse/workspaces/sqlPools/extendedAuditingSettings/read | Dient zum Lesen der erweiterten Überwachungseinstellungen für einen beliebigen SQL-Analyse-Pool. |
+> | Microsoft.Synapse/workspaces/sqlPools/extendedAuditingSettings/write | Dient zum Erstellen oder Aktualisieren der erweiterten Überwachungseinstellungen für einen beliebigen SQL-Analyse-Pool. |
+> | Microsoft.Synapse/workspaces/sqlPools/dataMaskingPolicies/read | Dient zum Zurückgeben der Liste mit Datenmaskierungsrichtlinien für SQL-Analyse-Pools. |
+> | Microsoft.Synapse/workspaces/sqlPools/dataMaskingPolicies/write | Dient zum Erstellen oder Aktualisieren einer Datenmaskierungsrichtlinie für SQL-Analyse-Pools. |
+> | Microsoft.Synapse/workspaces/sqlPools/dataMaskingPolicies/rules/read | Ruft eine Liste mit Datenmaskierungsregeln für SQL-Analyse-Pools ab. |
+> | Microsoft.Synapse/workspaces/sqlPools/dataMaskingPolicies/rules/write | Dient zum Erstellen oder Aktualisieren einer Datenmaskierungsregel für SQL-Analyse-Pools. |
+> | Microsoft.Synapse/workspaces/sqlPools/columns/read | Dient zum Zurückgeben einer Liste mit Spalten für einen SQL-Analyse-Pool. |
+> | Microsoft.Synapse/workspaces/sqlPools/sensitivityLabels/read | Ruft die Vertraulichkeitsbezeichnung einer bestimmten Spalte ab. |
+> | Microsoft.Synapse/workspaces/sqlPools/auditRecords/read | Dient zum Abrufen von Blobüberwachungsdatensätzen für SQL-Pools. |
+> | Microsoft.Synapse/resourceGroups/operationStatuses/read | Dient zum Lesen des Status eines beliebigen asynchronen Vorgangs. |
+> | Microsoft.Synapse/workspaces/extendedAuditingSettings/write | Dient zum Erstellen oder Aktualisieren erweiterter Überwachungseinstellungen für SQL Server. |
+> | Microsoft.Synapse/workspaces/extendedAuditingSettings/read | Dient zum Lesen erweiterter Überwachungseinstellungen für SQL Server. |
+> | Microsoft.Synapse/workspaces/auditingSettings/write | Dient zum Erstellen oder Aktualisieren von Überwachungseinstellungen für SQL Server. |
+> | Microsoft.Synapse/workspaces/auditingSettings/read | Dient zum Lesen von Überwachungseinstellungen für SQL Server. |
+> | Microsoft.Synapse/workspaces/securityAlertPolicies/write | Dient zum Erstellen und Aktualisieren von Richtlinien für Sicherheitswarnungen von SQL Server. |
+> | Microsoft.Synapse/workspaces/securityAlertPolicies/read | Dient zum Lesen von Standardrichtlinien für Sicherheitswarnungen von SQL Server. |
+> | Microsoft.Synapse/workspaces/vulnerabilityAssessments/write | Dient zum Erstellen oder Aktualisieren des Berichts zur Sicherheitsrisikobewertung von SQL Server. |
+> | Microsoft.Synapse/workspaces/vulnerabilityAssessments/read | Dient zum Lesen des Standardberichts zur Sicherheitsrisikobewertung von SQL Server. |
+> | Microsoft.Synapse/workspaces/vulnerabilityAssessments/delete | Dient zum Löschen des Berichts zur Sicherheitsrisikobewertung von SQL Server. |
+> | Microsoft.Synapse/workspaces/restorableDroppedSqlPools/read | Ruft einen gelöschten SQL-Pool ab, der wiederhergestellt werden kann. |
+> | Microsoft.Synapse/workspaces/sqlPools/dataWarehouseQueries/Steps/read | Dient zum Lesen von Abfrageschritten für einen beliebigen SQL-Analyse-Pool. |
+> | Microsoft.Synapse/workspaces/sqlPools/workloadGroups/operationStatuses/read | Vorgangsstatus einer Arbeitsauslastungsgruppe eines SQL-Analyse-Pools |
+> | Microsoft.Synapse/workspaces/sqlPools/workloadGroups/workloadClassifiers/operationStatuses/read | Vorgangsstatus eines Arbeitsauslastungsklassifizierers eines SQL-Analyse-Pools |
+> | Microsoft.Synapse/workspaces/sqlPools/workloadGroups/workloadClassifiers/operationResults/read | Vorgangsergebnis eines Arbeitsauslastungsklassifizierers eines SQL-Analyse-Pools |
+> | Microsoft.Synapse/workspaces/sqlUsages/read | Ruft verfügbare Nutzungseinschränkungen für SQL-Analyse-Pools ab. |
+> | Microsoft.Synapse/workspaces/auditingSettings/operationResults/read | SQL Server-Überwachungseinstellungen |
+> | Microsoft.Synapse/workspaces/sqlAdministrators/write | Dient zum Festlegen des Active Directory-Administrators für den Arbeitsbereich. |
+> | Microsoft.Synapse/workspaces/sqlAdministrators/read | Dient zum Abrufen des Active Directory-Administrators für den Arbeitsbereich. |
+> | Microsoft.Synapse/workspaces/sqlAdministrators/delete | Dient zum Löschen des Active Directory-Administrators für den Arbeitsbereich. |
 
 ## <a name="blockchain"></a>Blockchain
 

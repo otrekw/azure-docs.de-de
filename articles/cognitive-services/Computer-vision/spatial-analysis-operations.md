@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 01/12/2021
 ms.author: aahi
-ms.openlocfilehash: d19190723ebc415e9cf3053b929788dff68aeb0e
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 4e389114dc873d067a32389b288e1bb98d497850
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98734538"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99226049"
 ---
 # <a name="spatial-analysis-operations"></a>Vorgänge der räumlichen Analyse
 
@@ -61,7 +61,7 @@ Hier sind die Parameter angegeben, die von diesen Vorgängen der räumlichen Ana
 |---------|---------|
 | Vorgangs-ID | Der Vorgangsbezeichner aus der obigen Tabelle.|
 | enabled | Boolesch: „true“ oder „false“|
-| VIDEO_URL| Dies ist die RTSP-URL für das Kameragerät (Beispiel: `rtsp://username:password@url`). Bei der räumlichen Analyse wird der Datenstrom mit H.264-Codierung entweder über RTSP, HTTP oder mp4 unterstützt. Video_URL kann mithilfe der AES-Verschlüsselung als verschleierter base64-Zeichenfolgenwert bereitgestellt werden. Wenn die Video-URL verschleiert ist, müssen `KEY_ENV` und `IV_ENV` als Umgebungsvariablen bereitgestellt werden. Das Beispielhilfsprogramm zum Generieren von Schlüsseln und Verschlüsselungen finden Sie [hier](/dotnet/api/system.security.cryptography.aesmanaged?preserve-view=true&view=net-5.0). |
+| VIDEO_URL| Dies ist die RTSP-URL für das Kameragerät (Beispiel: `rtsp://username:password@url`). Bei der räumlichen Analyse wird der Datenstrom mit H.264-Codierung entweder über RTSP, HTTP oder mp4 unterstützt. Video_URL kann mithilfe der AES-Verschlüsselung als verschleierter base64-Zeichenfolgenwert bereitgestellt werden. Wenn die Video-URL verschleiert ist, müssen `KEY_ENV` und `IV_ENV` als Umgebungsvariablen bereitgestellt werden. Das Beispielhilfsprogramm zum Generieren von Schlüsseln und Verschlüsselungen finden Sie [hier](/dotnet/api/system.security.cryptography.aesmanaged). |
 | VIDEO_SOURCE_ID | Ein Anzeigename für das Kameragerät oder den Videostream. Dies wird zusammen mit der JSON-Ausgabe des Ereignisses zurückgegeben.|
 | VIDEO_IS_LIVE| „true“ für Kamerageräte, „false“ für Videoaufzeichnungen|
 | VIDEO_DECODE_GPU_INDEX| Gibt an, welche GPU zum Decodieren des Videoframes verwendet werden soll. Standardmäßig ist „0“ angegeben. Diese Angabe sollte dem `gpu_index` in einer anderen Knotenkonfiguration entsprechen, z. B. `VICA_NODE_CONFIG`, `DETECTOR_NODE_CONFIG`.|
@@ -130,7 +130,7 @@ Dies ist ein Beispiel für die DETECTOR_NODE_CONFIG-Parameter für alle Vorgäng
 | `threshold` | float| Ereignisse werden ausgegeben, wenn der Vertrauenswert der KI-Modelle größer oder gleich diesem Wert ist. |
 | `type` | Zeichenfolge| Für **cognitiveservices.vision.spatialanalysis-personcount** sollte dies `count` lauten.|
 | `trigger` | Zeichenfolge| Der Typ des Triggers für das Senden eines Ereignisses. Unterstützte Werte sind `event` zum Senden von Ereignissen, wenn sich die Anzahl ändert, oder `interval` zum regelmäßigen Senden von Ereignissen unabhängig davon, ob sich die Anzahl geändert hat.
-| `interval` | Zeichenfolge| Ein Zeitraum in Sekunden, in dem die Personenzahl aggregiert wird, bevor ein Ereignis ausgelöst wird. Der Vorgang setzt die Analyse der Szene mit konstanter Geschwindigkeit fort und gibt die häufigste Anzahl für dieses Intervall zurück. Das Aggregationsintervall gilt sowohl für `event` als auch für `interval`.|
+| `output_frequency` | INT | Die Rate, mit der Ereignisse ausgegeben werden. Bei `output_frequency` = X wird jedes x-te Ereignis ausgegeben. Beispiel: `output_frequency` = 2 bedeutet, dass jedes zweite Ereignis ausgegeben wird. `output_frequency` gilt sowohl für `event` als auch für `interval`. |
 | `focus` | Zeichenfolge| Dies ist die Punktposition innerhalb des Begrenzungsrahmens der Person, die zum Berechnen von Ereignissen verwendet wird. Der Wert für den Fokus kann `footprint` (Fußabdruck der Person), `bottom_center` (untere Mitte des Begrenzungsrahmens der Person) oder `center` (Mitte des Begrenzungsrahmens der Person) sein.|
 
 ### <a name="line-configuration-for-cognitiveservicesvisionspatialanalysis-personcrossingline"></a>Linienkonfiguration für cognitiveservices.vision.spatialanalysis-personcrossingline
@@ -255,8 +255,7 @@ Dies ist ein Beispiel für eine JSON-Eingabe für den SPACEANALYTICS_CONFIG-Para
 | `threshold` | float| Ereignisse werden ausgegeben, wenn der Vertrauenswert der KI-Modelle größer oder gleich diesem Wert ist. |
 | `type` | Zeichenfolge| Für **cognitiveservices.vision.spatialanalysis-persondistance** sollte dies `people_distance` lauten.|
 | `trigger` | Zeichenfolge| Der Typ des Triggers für das Senden eines Ereignisses. Unterstützte Werte sind `event` zum Senden von Ereignissen, wenn sich die Anzahl ändert, oder `interval` zum regelmäßigen Senden von Ereignissen unabhängig davon, ob sich die Anzahl geändert hat.
-| `interval` | Zeichenfolge | Ein Zeitraum in Sekunden, in dem die Verstöße aggregiert werden, bevor ein Ereignis ausgelöst wird. Das Aggregationsintervall gilt sowohl für `event` als auch für `interval`.|
-| `output_frequency` | INT | Die Rate, mit der Ereignisse ausgegeben werden. Bei `output_frequency` = X wird jedes x-te Ereignis ausgegeben. Beispiel: `output_frequency` = 2 bedeutet, dass jedes zweite Ereignis ausgegeben wird. Die Ausgabehäufigkeit (output_frequency) gilt für `event` und für `interval`.|
+| `output_frequency` | INT | Die Rate, mit der Ereignisse ausgegeben werden. Bei `output_frequency` = X wird jedes x-te Ereignis ausgegeben. Beispiel: `output_frequency` = 2 bedeutet, dass jedes zweite Ereignis ausgegeben wird. `output_frequency` gilt sowohl für `event` als auch für `interval`.|
 | `minimum_distance_threshold` | float| Ein Abstand in Fuß, bei dem das Ereignis „TooClose“ ausgelöst wird, wenn Personen weniger als den angegebenen Abstand voneinander aufweisen.|
 | `maximum_distance_threshold` | float| Ein Abstand in Fuß, bei dem das Ereignis „TooFar“ ausgelöst wird, wenn Personen mehr als den angegebenen Abstand voneinander aufweisen.|
 | `focus` | Zeichenfolge| Dies ist die Punktposition innerhalb des Begrenzungsrahmens der Person, die zum Berechnen von Ereignissen verwendet wird. Der Wert für den Fokus kann `footprint` (Fußabdruck der Person), `bottom_center` (untere Mitte des Begrenzungsrahmens der Person) oder `center` (Mitte des Begrenzungsrahmens der Person) sein.|

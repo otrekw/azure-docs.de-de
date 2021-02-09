@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: roles
 ms.topic: reference
-ms.date: 11/05/2020
+ms.date: 02/01/2020
 ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 535b49cb20d60bd9ab294543b82bdb24b040eb7b
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: da85c80dd6450fd4427f83586e75cf1e9d62a605
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98879476"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99428773"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Berechtigungen der Administratorrolle in Azure Active Directory
 
@@ -27,7 +27,7 @@ Mithilfe von Azure Active Directory (Azure AD) können Sie Administratoren mit e
 
 ## <a name="limit-use-of-global-administrator"></a>Einschränken der Verwendung der Rolle „Globaler Administrator“
 
-Benutzer, denen die Rolle „Globaler Administrator“ zugewiesen ist, können alle administrativen Einstellungen in Ihrer Azure AD-Organisation lesen und ändern. Wenn ein Benutzer sich für einen Microsoft-Clouddienst registriert, wird standardmäßig ein Azure AD-Mandant erstellt, und der Benutzer wird Mitglied der Rolle „Globaler Administrator“. Wenn Sie einem vorhandenen Mandanten ein Abonnement hinzufügen, werden Sie nicht der Rolle „Globaler Administrator“ zugewiesen. Nur globale Administratoren und Administratoren für privilegierte Rollen können Administratorrollen delegieren. Um das Risiko für Ihr Unternehmen zu verringern, wird empfohlen, diese Rolle möglichst wenigen Personen in Ihrer Organisation zuzuweisen.
+Benutzer, denen die Rolle „Globaler Administrator“ zugewiesen ist, können alle administrativen Einstellungen in Ihrer Azure AD-Organisation lesen und ändern. Wenn ein Benutzer sich für einen Microsoft-Clouddienst registriert, wird standardmäßig ein Azure AD-Mandant erstellt, und der Benutzer wird Mitglied der Rolle „Globaler Administrator“. Wenn Sie einem vorhandenen Mandanten ein Abonnement hinzufügen, werden Sie nicht der Rolle „Globaler Administrator“ zugewiesen. Nur globale Administratoren und Administratoren für privilegierte Rollen können Administratorrollen delegieren. Um das Risiko für Ihr Unternehmen zu verringern, wird empfohlen, diese Rolle möglichst wenigen Personen in Ihrer Organisation zuzuweisen.
 
 Als bewährte Methode wird empfohlen, diese Rolle weniger als fünf Personen in Ihrer Organisation zuzuweisen. Im Folgenden finden Sie einige Möglichkeiten zum Verringern der Verwendung der Rolle „Globaler Administrator“, die Sie nutzen können, wenn diese Rolle in Ihrer Organisation mehr als fünf Adminisratoren zugewiesen ist.
 
@@ -35,9 +35,9 @@ Als bewährte Methode wird empfohlen, diese Rolle weniger als fünf Personen in 
 
 Es kann frustrierend sein, eine umfangreiche Rollenliste nach der benötigten Rolle zu durchsuchen. Azure AD kann daher anhand von Rollenkategorien eine Teilmenge der Rollen anzeigen. Sehen Sie sich unseren neuen Filter **Typ** für [Rollen und Administratoren](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RolesAndAdministrators) in Azure AD an, mit dem Sie nur die Rollen im ausgewählten Typ anzeigen können.
 
-### <a name="a-role-exists-now-that-didnt-exist-when-you-assigned-the-global-administrator-role"></a>Jetzt ist eine Rolle vorhanden, die noch nicht verfügbar war, als Sie die Rolle „Globaler Administrator“ zugewiesen haben
+### <a name="a-role-exists-now-that-didnt-exist-when-you-assigned-the-global-administrator-role"></a>Jetzt ist eine Rolle vorhanden, die noch nicht verfügbar war, als Sie die Rolle „Globaler Administrator“ zugewiesen haben.
 
-Es ist möglich, dass Azure AD Rollen hinzugefügt wurden, die differenziertere Berechtigungen bieten, die nicht zur Verfügung standen, als Sie einige Benutzer auf die Rolle „Globaler Administrator“ heraufgestuft haben. Im Laufe der Zeit stellen wir zusätzliche Rollen bereit, die das Ausführen von Aufgaben ermöglichen, die zuvor nur von einem globalen Administrator ausgeführt werden konnten. Diese werden nachstehend im Abschnitt [Verfügbare Rollen](#available-roles) aufgeführt.
+Es ist möglich, dass Azure AD Rollen hinzugefügt wurden, die differenziertere Berechtigungen bieten, die nicht zur Verfügung standen, als Sie einige Benutzer auf die Rolle „Globaler Administrator“ heraufgestuft haben. Im Lauf der Zeit stellen wir zusätzliche Rollen bereit, die das Ausführen von Aufgaben ermöglichen, die zuvor nur von einem globalen Administrator ausgeführt werden konnten. Diese werden nachstehend im Abschnitt [Verfügbare Rollen](#available-roles) aufgeführt.
 
 ## <a name="assign-or-remove-administrator-roles"></a>Zuweisen oder Entfernen von Administratorrollen
 
@@ -69,13 +69,7 @@ Benutzer mit dieser Rolle können Anwendungsregistrierungen erstellen, wenn die 
 
 ### <a name="authentication-administrator"></a>[Authentifizierungsadministrator](#authentication-administrator-permissions)
 
-Benutzer mit dieser Rolle können Anmeldeinformationen ohne Kennwort für einige Benutzer festlegen oder zurücksetzen und Kennwörter für alle Benutzer aktualisieren. Authentifizierungsadministratoren können Benutzer, die keine Administratoren sind, oder die Rollen zugewiesen sind, auffordern, ihre vorhandenen Anmeldeinformationen ohne Kennwort (z. B. MFA oder FIDO) erneut zu registrieren, und können auch **Speichern der MFA auf dem Gerät** widerrufen. Dann werden Benutzer bei der nächsten Anmeldung zur Eingabe ihrer MFA-Anmeldeinformationen aufgefordert. Diese Aktionen gelten nur für Benutzer, die nicht Administratoren sind oder denen eine oder mehrere der folgenden Rollen zugewiesen sind:
-
-* Authentifizierungsadministrator
-* Rolle „Verzeichnis lesen“
-* Gasteinladender
-* Nachrichtencenter-Leser
-* Meldet Reader
+Benutzer mit dieser Rolle können Anmeldeinformationen ohne Kennwort für einige Benutzer festlegen oder zurücksetzen und Kennwörter für alle Benutzer aktualisieren. Authentifizierungsadministratoren können Benutzer, die keine Administratoren sind, oder die Rollen zugewiesen sind, auffordern, ihre vorhandenen Anmeldeinformationen ohne Kennwort (z. B. MFA oder FIDO) erneut zu registrieren, und können auch **Speichern der MFA auf dem Gerät** widerrufen. Dann werden Benutzer bei der nächsten Anmeldung zur Eingabe ihrer MFA-Anmeldeinformationen aufgefordert. Ob ein Authentifizierungsadministrator das Kennwort eines Benutzers zurücksetzen kann, hängt von der Rolle ab, die dem Benutzer zugewiesen ist. Eine Liste der Rollen, für die ein Authentifizierungsadministrator Kennwörter zurücksetzen kann, finden Sie unter [Berechtigungen für die Kennwortzurücksetzung](#password-reset-permissions).
 
 Die Rolle [Privilegierter Authentifizierungsadministrator](#privileged-authentication-administrator) verfügt über die Berechtigung zum Erzwingen der erneuten Registrierung und der Multi-Factor Authentication für alle Benutzer.
 
@@ -166,7 +160,7 @@ Benutzer mit dieser Rolle können Azure Active Directory-Einstellungen für den 
 
 ### <a name="customer-lockbox-access-approver"></a>[Genehmiger für Kunden-Lockboxzugriff](#customer-lockbox-access-approver-permissions)
 
-Verwaltet [Kunden-Lockbox-Anforderungen](/office365/admin/manage/customer-lockbox-requests) in Ihrer Organisation. Sie erhalten E-Mail-Benachrichtigungen für Kunden-Lockbox-Anforderungen und können Anforderungen über das Microsoft 365 Admin Center genehmigen und ablehnen. Außerdem können sie das Feature Kunden-Lockbox aktivieren und deaktivieren. Nur globale Administratoren können die Kennwörter von Personen, die dieser Rolle zugewiesen sind, zurücksetzen.
+Verwaltet [Kunden-Lockbox-Anforderungen](/office365/admin/manage/customer-lockbox-requests) in Ihrer Organisation. Sie erhalten E-Mail-Benachrichtigungen für Kunden-Lockbox-Anforderungen und können Anforderungen über das Microsoft 365 Admin Center genehmigen und ablehnen. Außerdem können sie das Feature Kunden-Lockbox aktivieren und deaktivieren. Nur globale Administratoren können die Kennwörter von Personen zurücksetzen, die dieser Rolle zugewiesen sind.
 
 ### <a name="desktop-analytics-administrator"></a>[Desktop Analytics-Administrator](#desktop-analytics-administrator-permissions)
 
@@ -222,14 +216,9 @@ Dieser Administrator verwaltet den Verbund zwischen Azure AD-Organisationen und
 * Azure AD-Organisationen für Mitarbeiter und Partner: Das Hinzufügen eines Verbunds (z. B. mit Gmail) hat sofortige Auswirkungen auf Einladungen für Gäste, die noch nicht eingelöst wurden. Weitere Informationen finden Sie unter [Hinzufügen von Google als Identitätsanbieter für B2B-Gastbenutzer](../external-identities/google-federation.md).
 * Azure Active Directory B2C-Organisationen: Das Hinzufügen eines Verbunds (z. B. bei Facebook oder einer anderen Azure AD-Organisation) wirkt sich nicht sofort auf die Endbenutzerflows aus, sondern erst, wenn der Identitätsanbieter in einem Benutzerflow als Option hinzugefügt wird (auch bezeichnet als „integrierte Richtlinie“). Ein Beispiel finden Sie unter [Konfigurieren eines Microsoft-Kontos als Identitätsanbieter](../../active-directory-b2c/identity-provider-microsoft-account.md).  Um Benutzerflows zu ändern, ist die Rolle „B2C-Benutzerflowadministrator“ mit eingeschränkten Rechen erforderlich.
 
-### <a name="global-administrator--company-administrator"></a>[Globaler Administrator/Unternehmensadministrator](#company-administrator-permissions)
+### <a name="global-administrator"></a>[Globaler Administrator](#global-administrator-permissions)
 
 Benutzer mit dieser Rolle besitzen Zugriff auf alle administrativen Features in Azure Active Directory sowie Dienste, die Azure Active Directory-Identitäten nutzen, z.B. Microsoft 365 Security Center, Microsoft 365 Compliance Center, Exchange Online, SharePoint Online oder Skype for Business Online. Zudem können globale Administratoren ihre [Zugriffsrechte erhöhen](../../role-based-access-control/elevate-access-global-admin.md), um alle Azure-Abonnements und Verwaltungsgruppen zu verwalten. Dadurch erhalten sie mithilfe des entsprechenden Azure AD-Mandanten Vollzugriff auf alle Azure-Ressourcen. Die Person, die die Anmeldung für die Azure AD-Organisation vornimmt, wird ein globaler Administrator. In Ihrem Unternehmen können mehrere globale Administratoren vorhanden sein. Globale Administratoren können das Kennwort für alle Benutzer und alle anderen Administratoren zurücksetzen.
-
-> [!NOTE]
-> In Microsoft Graph-API und Azure AD PowerShell wird diese Rolle als „Unternehmensadministrator“ bezeichnet. Im [Azure-Portal](https://portal.azure.com)ist dies der „globale Administrator“.
->
->
 
 ### <a name="global-reader"></a>[Globaler Leser](#global-reader-permissions)
 
@@ -258,14 +247,7 @@ Wenn die Benutzereinstellung **Mitglieder können einladen** auf „Nein“ fest
 
 ### <a name="helpdesk-administrator"></a>[Helpdeskadministrator](#helpdesk-administrator-permissions)
 
-Benutzer mit dieser Rolle können Kennwörter ändern, Aktualisierungstoken für ungültig erklären, Dienstanforderungen verwalten und die Dienstintegrität überwachen. Wenn ein Aktualisierungstoken für ungültig erklärt wird, muss sich der Benutzer erneut anmelden. Helpdeskadministratoren können Kennwörter zurücksetzen und Aktualisierungstoken anderer Benutzer annullieren, die keine Administratoren sind oder denen nur die folgenden Rollen zugewiesen wurden:
-
-* Rolle „Verzeichnis lesen“
-* Gasteinladender
-* Helpdeskadministrator
-* Nachrichtencenter-Leser
-* Kennwortadministrator
-* Meldet Reader
+Benutzer mit dieser Rolle können Kennwörter ändern, Aktualisierungstoken für ungültig erklären, Dienstanforderungen verwalten und die Dienstintegrität überwachen. Wenn ein Aktualisierungstoken für ungültig erklärt wird, muss sich der Benutzer erneut anmelden. Ob ein Helpdeskadministrator das Kennwort eines Benutzers zurücksetzen und Aktualisierungstoken ungültig machen kann, hängt von der Rolle ab, die dem Benutzer zugewiesen ist. Eine Liste der Rollen, für die ein Helpdeskadministrator Kennwörter zurücksetzen und Aktualisierungstoken ungültig machen kann, finden Sie unter [Berechtigungen für die Kennwortzurücksetzung](#password-reset-permissions).
 
 > [!IMPORTANT]
 > Benutzer mit dieser Rolle können Kennwörter für Benutzer ändern, die Zugriff auf vertrauliche oder private Informationen bzw. kritische Konfigurationen innerhalb und außerhalb von Azure Active Directory haben. Benutzer, die Kennwörter ändern können, können ggf. auch die Identität und die Berechtigungen des betreffenden Benutzers annehmen. Beispiel:
@@ -276,7 +258,7 @@ Benutzer mit dieser Rolle können Kennwörter ändern, Aktualisierungstoken für
 >- Administratoren in anderen Diensten außerhalb von Azure AD wie Exchange Online, Office Security and Compliance Center und Personalwesen.
 >- Nichtadministratoren wie Führungskräfte, Rechtsberater und Mitarbeiter der Personalabteilung mit Zugriff auf vertrauliche oder private Informationen.
 
-Das Delegieren von administrativen Berechtigungen für Teilmengen von Benutzern und das Anwenden von Richtlinien auf eine Benutzerteilmenge kann über [Verwaltungseinheiten (jetzt in der öffentlichen Vorschau verfügbar)](administrative-units.md) erfolgen.
+Das Delegieren von administrativen Berechtigungen für Teilmengen von Benutzern und das Anwenden von Richtlinien auf eine Teilmenge der Benutzer kann über [Verwaltungseinheiten](administrative-units.md) erfolgen.
 
 Im [Azure-Portal](https://portal.azure.com/) hieß diese Rolle früher „Kennwortadministrator“. Der Name „Helpdeskadministrator“ in Azure AD entspricht jetzt dem Namen in Azure AD PowerShell und Microsoft Graph-API.
 
@@ -327,7 +309,7 @@ Benutzer mit der Rolle „Modern Commerce User“ verfügen in der Regel über a
 
 * **Self-Service-Käufe in Microsoft 365 Admin Center**: Self-Service-Käufe bieten Benutzern die Möglichkeit, neue Produkte zu testen, indem sie sich diese Produkte selbst kaufen oder sich dafür registrieren. Diese Produkte werden in Admin Center verwaltet. Benutzern, die einen Self-Service-Kauf tätigen, werden eine Rolle im Commercesystem und die Rolle „Modern Commerce User“ zugewiesen, damit sie ihre Käufe in Admin Center verwalten können. Administratoren können über [PowerShell](/microsoft-365/commerce/subscriptions/allowselfservicepurchase-powershell) Self-Service-Käufe (für Power BI, Power Apps, Power Automate) blockieren. Weitere Informationen finden Sie unter [Häufig gestellte Fragen zu Self-Service-Einkäufen](/microsoft-365/commerce/subscriptions/self-service-purchase-faq).  
 * **Käufe über den kommerziellen Microsoft Marketplace:** Wenn ein Benutzer ein Produkt oder einen Dienst von Microsoft AppSource oder im Azure Marketplace kauft, wird ähnlich wie beim Self-Service-Kauf die Rolle „Modern Commerce User“ zugewiesen, wenn er nicht über die Rollen „Globaler Administrator“ oder „Abrechnungsadministrator“ verfügt. In einigen Fällen werden Benutzer möglicherweise daran gehindert, diese Käufe durchzuführen. Weitere Informationen finden Sie unter [Kommerzieller Microsoft Marketplace](../../marketplace/marketplace-faq-publisher-guide.md#what-could-block-a-customer-from-completing-a-purchase).
-* **Vorschläge von Microsoft**: Ein Vorschlag ist ein formales Angebot von Microsoft für Ihre Organisation, Microsoft-Produkte und -Dienste zu erwerben. Wenn die Person, die den Vorschlag annimmt, nicht in Azure AD über eine globale Administrator- oder Abrechnungsadministratorrolle verfügt, wird ihr eine commercespezifische Rolle zugewiesen, um den Vorschlag abzuschließen, sowie die Rolle „Modern Commerce User“ für den Zugriff auf Admin Center. Wenn diese Person auf Admin Center zugreifen, kann sie nur Funktionen verwenden, die von ihrer commercespezifischen Rolle autorisiert werden.
+* **Vorschläge von Microsoft**: Ein Vorschlag ist ein formales Angebot von Microsoft für Ihre Organisation, Microsoft-Produkte und -Dienste zu erwerben. Wenn die Person, die den Vorschlag annimmt, nicht in Azure AD über eine der Rollen „Globaler Administrator“ oder „Abrechnungsadministrator“ verfügt, wird ihr eine commercespezifische Rolle zugewiesen, um den Vorschlag abzuschließen, sowie die Rolle „Modern Commerce User“ für den Zugriff auf Admin Center. Wenn diese Person auf Admin Center zugreifen, kann sie nur Funktionen verwenden, die von ihrer commercespezifischen Rolle autorisiert werden.
 * **Commercespezifische Rollen**: Einigen Benutzern werden commercespezifische Rollen zugewiesen. Wenn ein Benutzer kein globaler Administrator oder Abrechnungsadministrator ist, erhält er die Rolle „Modern Commerce User“, damit er auf Admin Center zugreifen kann.  
 
 Wenn die Zuweisung der Rolle „Modern Commerce User“ für einen Benutzer aufgehoben wird, verliert er den Zugriff auf Microsoft 365 Admin Center. Wenn er Produkte entweder für sich selbst oder für Ihre Organisation verwaltet hat, kann er die Verwaltung nicht fortsetzen. Dies kann das Zuweisen von Lizenzen, das Ändern von Zahlungsmethoden, das Bezahlen von Rechnungen oder andere Aufgaben zum Verwalten von Abonnements umfassen.
@@ -349,11 +331,7 @@ Darf nicht verwendet werden. Diese Rolle wurde als veraltet markiert und wird au
 
 ### <a name="password-administrator"></a>[Kennwortadministrator](#password-administrator-permissions)
 
-Benutzer mit dieser Rolle haben eingeschränkte Möglichkeiten zum Verwalten von Kennwörtern. Mit dieser Rolle werden keine Berechtigungen zum Verwalten von Dienstanforderungen oder zum Überwachen der Dienstintegrität gewährt. Kennwortadministratoren können Kennwörter anderer Benutzer zurücksetzen, die nicht als Administratoren fungieren oder Mitglieder der folgenden Rollen sind:
-
-* Rolle „Verzeichnis lesen“
-* Gasteinladender
-* Kennwortadministrator
+Benutzer mit dieser Rolle haben eingeschränkte Möglichkeiten zum Verwalten von Kennwörtern. Mit dieser Rolle werden keine Berechtigungen zum Verwalten von Dienstanforderungen oder zum Überwachen der Dienstintegrität gewährt. Ob ein Kennwortadministrator das Kennwort eines Benutzers zurücksetzen kann, hängt von der Rolle ab, die dem Benutzer zugewiesen ist. Eine Liste der Rollen, für die ein Kennwortadministrator Kennwörter zurücksetzen kann, finden Sie unter [Berechtigungen für die Kennwortzurücksetzung](#password-reset-permissions).
 
 ### <a name="power-bi-administrator"></a>[Power BI-Administrator](#power-bi-service-administrator-permissions)
 
@@ -376,13 +354,7 @@ Benutzer mit dieser Rolle können Drucker registrieren und den Druckerstatus in 
 
 ### <a name="privileged-authentication-administrator"></a>[Privilegierter Authentifizierungsadministrator](#privileged-authentication-administrator-permissions)
 
-Benutzer mit dieser Rolle können Anmeldeinformationen ohne Kennwort für alle Benutzer (einschließlich globaler Administratoren) festlegen oder zurücksetzen und Kennwörter für alle Benutzer aktualisieren. Privilegierte Authentifizierungsadministratoren können eine erneute Registrierung von Benutzern anhand von vorhandenen Anmeldeinformationen ohne Kennwort (z. B. MFA oder FIDO) erzwingen und die Einstellung „Speichern der MFA auf dem Gerät“ widerrufen, sodass alle Benutzer beim nächsten Anmeldevorgang zur mehrstufigen Authentifizierung aufgefordert werden. Die Rolle [Authentifizierungsadministrator](#authentication-administrator) kann die erneute Registrierung und MFA nur für Nicht-Administratoren und Benutzer erzwingen, die den folgenden Azure AD-Rollen zugewiesen sind:
-
-* Authentifizierungsadministrator
-* Rolle „Verzeichnis lesen“
-* Gasteinladender
-* Nachrichtencenter-Leser
-* Meldet Reader
+Benutzer mit dieser Rolle können Anmeldeinformationen ohne Kennwort für alle Benutzer (einschließlich globaler Administratoren) festlegen oder zurücksetzen und Kennwörter für alle Benutzer aktualisieren. Privilegierte Authentifizierungsadministratoren können eine erneute Registrierung von Benutzern anhand von vorhandenen Anmeldeinformationen ohne Kennwort (z. B. MFA oder FIDO) erzwingen und die Einstellung „Speichern der MFA auf dem Gerät“ widerrufen, sodass alle Benutzer beim nächsten Anmeldevorgang zur mehrstufigen Authentifizierung aufgefordert werden.
 
 ### <a name="privileged-role-administrator"></a>[Administrator für privilegierte Rollen](#privileged-role-administrator-permissions)
 
@@ -445,7 +417,7 @@ Geben Sie in | Möglich
 --- | ---
 [Microsoft 365 Security Center](https://protection.office.com) | Anzeigen von sicherheitsrelevanten Richtlinien in Microsoft 365-Diensten<br>Anzeigen von Sicherheitsbedrohungen und Warnungen<br>Berichte anzeigen
 Identity Protection Center | Lesen von allen Sicherheitsberichten und Einstellungsinformationen für die Sicherheitsfunktionen<br><ul><li>Antispam<li>Verschlüsselung<li>Verhindern von Datenverlusten<li>Antischadsoftware<li>Erweiterter Schutz vor Bedrohungen<li>Antiphishing<li>Nachrichtenflussregeln
-[Privileged Identity Management](../privileged-identity-management/pim-configure.md) | Verfügt über schreibgeschützten Zugriff auf alle eingeblendeten Informationen in Azure AD Privileged Identity Management: Richtlinien und Berichte für Azure AD-Rollenzuweisungen und Sicherheitsüberprüfungen.<br>Kann sich **nicht** für Azure AD Privileged Identity Management registrieren oder Änderungen daran vornehmen. Im Privileged Identity Management-Portal oder über PowerShell können Personen mit dieser Rolle zusätzliche Rollen (z. B. „Globaler Administrator“ oder „Administrator für privilegierte Rollen“) aktivieren, wenn der Benutzer dafür geeignet ist.
+[Privileged Identity Management](../privileged-identity-management/pim-configure.md) | Verfügt über schreibgeschützten Zugriff auf alle eingeblendeten Informationen in Azure AD Privileged Identity Management: Richtlinien und Berichte für Azure AD-Rollenzuweisungen und Sicherheitsüberprüfungen.<br>Kann sich **nicht** für Azure AD Privileged Identity Management registrieren oder Änderungen daran vornehmen. Im Privileged Identity Management-Portal oder über PowerShell können Personen mit dieser Rolle zusätzliche Rollen (z. B. „Globaler Administrator“ oder „Administrator für privilegierte Rollen“) aktivieren, wenn der Benutzer dazu berechtigt ist.
 [Office 365 Security & Compliance Center](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d) | Anzeigen von Sicherheitsrichtlinien<br>Anzeigen und Untersuchen von Sicherheitsbedrohungen<br>Berichte anzeigen
 Windows Defender ATP und EDR | Anzeigen und Untersuchen von Warnungen. Wenn Sie in Windows Defender ATP die rollenbasierte Zugriffssteuerung aktivieren, verlieren Benutzer mit reinen Leseberechtigungen (wie die Rolle „Azure AD-Sicherheitsleseberechtigter“) den Zugriff, bis ihnen eine Windows Defender ATP-Rolle zugewiesen wird.
 [Intune](/intune/role-based-access-control) | Anzeigen von Benutzern, Geräten, Registrierung, Konfiguration und Anwendungsinformationen Kann keine Änderungen an Intune vornehmen
@@ -505,11 +477,12 @@ Benutzer mit dieser Rolle können zur Nutzungs- und Produktivitätsbewertung im 
 
 Benutzer mit dieser Rolle können Benutzer erstellen und alle Aspekte von Benutzern verwalten (mit einigen Einschränkungen, siehe Tabelle). Außerdem können sie Richtlinien für den Kennwortablauf aktualisieren. Außerdem können Benutzer mit dieser Rolle Gruppen erstellen und verwalten. Zudem haben sie die Möglichkeit, Benutzeransichten und Supporttickets zu verwalten sowie die Dienstintegrität zu überwachen. Benutzeradministratoren haben keine Berechtigungen zum Verwalten bestimmter Benutzereigenschaften für Benutzer in den meisten Administratorrollen. Benutzer mit dieser Rolle verfügen nicht über Berechtigungen zum Verwalten von MFA. Die Rollen, die von dieser Einschränkung ausgenommen sind, sind in der folgenden Tabelle aufgeführt.
 
-| **Berechtigung** | **Möglich** |
+| Berechtigung von Benutzeradministratoren | Notizen |
 | --- | --- |
-|Allgemeine Berechtigungen|<p>Erstellen von Benutzern und Gruppen</p><p>Erstellen und Verwalten von Benutzeransichten</p><p>Verwalten von Office-Supporttickets<p>Aktualisieren von Richtlinien für den Kennwortablauf|
-| <p>Für alle Benutzer einschließlich aller Administratoren</p>|<p>Verwalten von Lizenzen</p><p>Verwalten aller Benutzereigenschaften mit Ausnahme des Benutzerprinzipalnamens</p>
-| Nur für Benutzer, die keine Administratoren sind und keine der folgenden eingeschränkten Administratorrollen haben:<ul><li>Rolle „Verzeichnis lesen“<li>Gruppenadministrator<li>Gasteinladender<li>Helpdeskadministrator<li>Nachrichtencenter-Leser<li>Kennwortadministrator<li>Meldet Reader<li>Benutzeradministrator|<p>Löschen und Wiederherstellen</p><p>Deaktivieren und Aktivieren</p><p>Annullieren von Aktualisierungstoken</p><p>Verwalten aller Benutzereigenschaften einschließlich des Benutzerprinzipalnamens</p><p>Kennwort zurücksetzen</p><p>Aktualisieren von Geräteschlüsseln (FIDO)</p>|
+| Erstellen von Benutzern und Gruppen<br/>Erstellen und Verwalten von Benutzeransichten<br/>Verwalten von Office-Supporttickets<br/>Aktualisieren von Richtlinien für den Kennwortablauf |  |
+| Verwalten von Lizenzen<br/>Verwalten aller Benutzereigenschaften mit Ausnahme des Benutzerprinzipalnamens | Gilt für alle Benutzer einschließlich aller Administratoren |
+| Löschen und Wiederherstellen<br/>Deaktivieren und Aktivieren<br/>Verwalten aller Benutzereigenschaften einschließlich des Benutzerprinzipalnamens<br/>Aktualisieren von Geräteschlüsseln (FIDO) | Gilt nur für Benutzer, die keine Administratoren sind und keine der folgenden Rollen haben:<ul><li>Helpdeskadministrator</li><li>Benutzer ohne Rolle</li><li>Benutzeradministrator</li></ul> |
+| Annullieren von Aktualisierungstoken<br/>Kennwort zurücksetzen | Eine Liste der Rollen, für die ein Benutzeradministrator Kennwörter zurücksetzen und Aktualisierungstoken ungültig machen kann, finden Sie unter [Berechtigungen für die Kennwortzurücksetzung](#password-reset-permissions). |
 
 > [!IMPORTANT]
 > Benutzer mit dieser Rolle können Kennwörter für Benutzer ändern, die Zugriff auf vertrauliche oder private Informationen bzw. kritische Konfigurationen innerhalb und außerhalb von Azure Active Directory haben. Benutzer, die Kennwörter ändern können, können ggf. auch die Identität und die Berechtigungen des betreffenden Benutzers annehmen. Beispiel:
@@ -577,6 +550,7 @@ Kann alle Aspekte von App-Registrierungen und Enterprise-Apps erstellen und verw
 | microsoft.azure.supportTickets/allEntities/allTasks | Erstellen und Verwalten von Azure-Supporttickets |
 | microsoft.office365.serviceHealth/allEntities/allTasks | Lesen und Konfigurieren des Microsoft 365-Dienststatus. |
 | microsoft.office365.supportTickets/allEntities/allTasks | Erstellen und Verwalten von Office 365-Supporttickets. |
+| microsoft.office365.webPortal/allEntities/standard/read | Lesen der Basiseigenschaften für alle Ressourcen in microsoft.office365.webPortal. |
 
 ### <a name="application-developer-permissions"></a>Berechtigungen von Anwendungsentwicklern
 
@@ -652,6 +626,7 @@ Verwalten sämtlicher Aspekte des Azure Information Protection-Diensts.
 | microsoft.azure.supportTickets/allEntities/allTasks | Erstellen und Verwalten von Azure-Supporttickets |
 | microsoft.office365.serviceHealth/allEntities/allTasks | Lesen und Konfigurieren des Microsoft 365-Dienststatus. |
 | microsoft.office365.supportTickets/allEntities/allTasks | Erstellen und Verwalten von Office 365-Supporttickets. |
+| microsoft.office365.webPortal/allEntities/standard/read | Lesen der Basiseigenschaften für alle Ressourcen in microsoft.office365.webPortal. |
 
 ### <a name="b2c-ief-keyset-administrator-permissions"></a>Berechtigungen von B2C-IEF-Schlüsselsatzadministratoren
 
@@ -730,6 +705,7 @@ Erstellen und Verwalten sämtlicher Aspekte von App-Registrierungen und Enterpri
 | microsoft.azure.supportTickets/allEntities/allTasks | Erstellen und Verwalten von Azure-Supporttickets |
 | microsoft.office365.serviceHealth/allEntities/allTasks | Lesen und Konfigurieren des Microsoft 365-Dienststatus. |
 | microsoft.office365.supportTickets/allEntities/allTasks | Erstellen und Verwalten von Office 365-Supporttickets. |
+| microsoft.office365.webPortal/allEntities/standard/read | Lesen der Basiseigenschaften für alle Ressourcen in microsoft.office365.webPortal. |
 
 ### <a name="cloud-device-administrator-permissions"></a>Berechtigungen von Cloudgeräteadministratoren
 
@@ -747,9 +723,9 @@ Vollzugriff zum Verwalten von Geräten in Azure AD.
 | microsoft.azure.serviceHealth/allEntities/allTasks | Lesen und Konfigurieren von Azure Service Health |
 | microsoft.office365.serviceHealth/allEntities/allTasks | Lesen und Konfigurieren des Microsoft 365-Dienststatus. |
 
-### <a name="company-administrator-permissions"></a>Berechtigungen von Unternehmensadministratoren
+### <a name="global-administrator-permissions"></a>Berechtigungen von globalen Administratoren
 
-Verwalten sämtlicher Aspekte von Azure AD und Microsoft-Diensten, die Azure AD-Identitäten verwenden. Diese Rolle wird auch als „Globaler Administrator“ bezeichnet. 
+Verwalten sämtlicher Aspekte von Azure AD und Microsoft-Diensten, die Azure AD-Identitäten verwenden.
 
 > [!NOTE]
 > Diese Rolle verfügt über zusätzliche Berechtigungen außerhalb von Azure Active Directory. Weitere Informationen finden Sie in der Rollenbeschreibung oben.
@@ -1749,10 +1725,12 @@ Erstellt und verwaltet Sicherheitsereignisse.
 | microsoft.directory/cloudAppSecurity/allProperties/allTasks | Lesen und Konfigurieren von Microsoft Cloud App Security-Daten. |
 | microsoft.directory/identityProtection/allProperties/read | Lesen aller Ressourcen in microsoft.aad.identityProtection |
 | microsoft.directory/privilegedIdentityManagement/allProperties/read | Lesen aller Ressourcen in microsoft.aad.privilegedIdentityManagement |
+| microsoft.directory/provisioningLogs/allProperties/read | Alle Eigenschaften der Bereitstellungsprotokolle lesen |
 | microsoft.intune/allEntities/allTasks | Verwalten sämtlicher Aspekte von Intune. |
 | microsoft.office365.securityComplianceCenter/allEntities/allTasks | Lesen und Konfigurieren von Security & Compliance Center. |
 | microsoft.office365.supportTickets/allEntities/allTasks | Erstellen und Verwalten von Office 365-Supporttickets. |
 | microsoft.windows.defenderAdvancedThreatProtection/allEntities/read | Lesen und Konfigurieren von Windows Defender Advanced Threat Protection. |
+
 
 ### <a name="security-reader-permissions"></a>Berechtigungen von Benutzern mit Leseberechtigung für Sicherheitsfunktionen
 
@@ -2067,6 +2045,31 @@ Partnersupport der Ebene 2 | Nicht angezeigt, da keine Verwendung erfolgen soll 
 Eingeschränkter Gastbenutzer | Nicht angezeigt, weil keine Verwendung erfolgen kann | Nicht verfügbar
 Benutzer | Nicht angezeigt, weil keine Verwendung erfolgen kann | Nicht verfügbar
 Geräteeinbindung am Arbeitsplatz | Als veraltet markiert | [Dokumentation zu veralteten Rollen](permissions-reference.md#deprecated-roles)
+
+## <a name="password-reset-permissions"></a>Berechtigungen für die Kennwortzurücksetzung
+
+Spaltenüberschriften stellen die Rollen dar, die Kennwörter zurücksetzen können. Tabellenzeilen enthalten die Rollen, für die das Kennwort zurückgesetzt werden kann.
+
+Kennwort kann zurückgesetzt werden | Authentifizierungsadministrator | Helpdeskadministrator | Kennwortadministrator | Benutzeradministrator | Privilegierter Authentifizierungsadministrator | Globaler Administrator
+------ | ------ | ------ | ------ | ------ | ------ | ------
+Authentifizierungsadministrator | :heavy_check_mark: | &nbsp; | &nbsp; | &nbsp; | :heavy_check_mark: | :heavy_check_mark:
+Rolle „Verzeichnis lesen“ | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:
+Globaler Administrator | &nbsp; | &nbsp; | &nbsp; | &nbsp; | :heavy_check_mark: | :heavy_check_mark:\*
+Gruppenadministrator | &nbsp; | &nbsp; | &nbsp; | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:
+Gast | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:
+Gasteinladender | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:
+Helpdeskadministrator | &nbsp; | :heavy_check_mark: | &nbsp; | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:
+Nachrichtencenter-Leser | :heavy_check_mark: | :heavy_check_mark: | &nbsp; | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:
+Kennwortadministrator | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:
+Privilegierter Authentifizierungsadministrator | &nbsp; | &nbsp; | &nbsp; | &nbsp; | :heavy_check_mark: | :heavy_check_mark:
+Administrator für privilegierte Rollen | &nbsp; | &nbsp; | &nbsp; | &nbsp; | :heavy_check_mark: | :heavy_check_mark:
+Meldet Reader | :heavy_check_mark: | :heavy_check_mark: | &nbsp; | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:
+Eingeschränkter Gastbenutzer | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:
+Benutzer (keine Administratorrolle) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:
+Benutzeradministrator | &nbsp; | &nbsp; | &nbsp; | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:
+Leseberechtigter für Berichte mit Nutzungszusammenfassung | :heavy_check_mark: | :heavy_check_mark: | &nbsp; | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark:
+
+\* Ein globaler Administrator kann seine eigene Zuweisung als globaler Administrator nicht aufheben. Dadurch wird verhindert, dass eine Organisation über keine globalen Administratoren verfügt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -4,15 +4,15 @@ description: Beschreibt Datenquellen und Connectors, die für tabellarische Date
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 01/21/2021
+ms.date: 02/02/2021
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: b778cf55ea485d7b3b4d3730d3659750f27b2697
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 6e558962ad8a84b5f44abe21bc7c0ab67a4861ba
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98685594"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99493819"
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>In Azure Analysis Services unterstützte Datenquellen
 
@@ -128,7 +128,9 @@ Provider=MSOLEDBSQL;Data Source=[server];Initial Catalog=[database];Authenticati
 
 ## <a name="oauth-credentials"></a>OAuth-Anmeldeinformationen
 
-Für tabellarische Modelle mit dem Kompatibilitätsgrad 1400 und höher, die den In-Memory-Modus verwenden, bieten Azure SQL-Datenbank, Azure Synapse, Dynamics 365 und SharePoint-Listen Unterstützung für OAuth-Anmeldeinformationen. Azure Analysis Services verwaltet die Tokenaktualisierung für OAuth-Datenquellen, um Timeouts für Aktualisierungsvorgänge mit langer Laufzeit zu vermeiden. Legen Sie Anmeldeinformationen mithilfe von Power Query fest, um gültige Token zu generieren.
+Für tabellarische Modelle mit dem Kompatibilitätsgrad 1.400 und höher, die den *In-Memory*-Modus verwenden, bieten Azure SQL-Datenbank, Azure Synapse, Dynamics 365 und SharePoint Unterstützung für Listen mit OAuth-Anmeldeinformationen. Legen Sie Anmeldeinformationen mithilfe von Power Query fest, um gültige Token zu generieren. Azure Analysis Services verwaltet die Tokenaktualisierung für OAuth-Datenquellen, um Timeouts für Aktualisierungsvorgänge mit langer Laufzeit zu vermeiden. 
+> [!NOTE]
+> Die Aktualisierung verwalteter Token wird nicht für Datenquellen unterstützt, auf die über ein Gateway zugegriffen wird. Dies trifft z. B. zu, wenn der Zugriff auf Datenquellen für Mashupabfragen über ein Gateway erfolgt oder wenn die [ASPaaS\AlwaysUseGateway](analysis-services-vnet-gateway.md)-Eigenschaft auf **true** festgelegt ist. 
 
 Der Direktabfragemodus wird mit OAuth-Anmeldeinformationen nicht unterstützt.
 

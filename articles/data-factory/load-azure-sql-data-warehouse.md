@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 12/09/2020
-ms.openlocfilehash: 12630e5e4b332d875a75c59d2fdafecd23be0b17
-ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
+ms.date: 01/29/2020
+ms.openlocfilehash: 8071b0fb08f6456b4eb59a3dae875ab0c90ab64d
+ms.sourcegitcommit: 8c8c71a38b6ab2e8622698d4df60cb8a77aa9685
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97005428"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99223496"
 ---
 # <a name="load-data-into-azure-synapse-analytics-by-using-azure-data-factory"></a>Laden von Daten in Azure Synapse Analytics mithilfe von Azure Data Factory
 
@@ -126,7 +126,7 @@ In diesem Artikel erfahren Sie, wie Sie das Tool zum Kopieren von Daten in Data 
 
     b. Wählen Sie auf der Seite **Neuer verknüpfter Dienst** Ihr Speicherkonto und dann **Erstellen** aus, um den verknüpften Dienst bereitzustellen.
 
-    c. Deaktivieren Sie im Abschnitt **Erweiterte Einstellungen** die Option **Use type default** (Typstandard verwenden), und wählen Sie dann **Weiter** aus.
+    c. Deaktivieren Sie die Option **Typstandard verwenden**, und wählen Sie dann **Weiter** aus.
 
     ![Konfigurieren von PolyBase](./media/load-azure-sql-data-warehouse/configure-polybase.png)
 

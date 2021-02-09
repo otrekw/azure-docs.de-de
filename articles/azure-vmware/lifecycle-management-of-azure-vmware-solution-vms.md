@@ -3,12 +3,12 @@ title: Lebenszyklusverwaltung von Azure VMware Solution-VMs
 description: Erfahren Sie, wie Sie alle Aspekte des Lebenszyklus Ihrer Azure VMware Solution-VMs mit nativen Tools in Microsoft Azure verwalten.
 ms.topic: conceptual
 ms.date: 09/11/2020
-ms.openlocfilehash: ff1032900fa936895f3adfcb0d8a872f24948aca
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: 5bba9cbbc8783cc285ff09f790ee1b35b20ba358
+ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96326810"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99062895"
 ---
 # <a name="lifecycle-management-of-azure-vmware-solution-vms"></a>Lebenszyklusverwaltung von Azure VMware Solution-VMs
 
@@ -81,13 +81,13 @@ Azure Security Center muss nicht bereitgestellt werden. Weitere Informationen fi
 
 Azure Arc erweitert die Azure-Verwaltung auf jede Infrastruktur, einschließlich Azure VMware Solution, der lokalen Infrastruktur oder anderer Cloudplattformen.
 
-- Weitere Informationen zum Aktivieren von Servern mit Azure Arc-Unterstützung für mehrere Windows- oder Linux-VMs finden Sie unter [Verbinden von Hybridcomputern mit Azure im großen Stil](../azure-arc/servers/onboard-service-principal.md).
+- Informationen zum Aktivieren von Servern mit Azure Arc-Unterstützung für mehrere virtuelle Windows- oder Linux-Computer finden Sie unter [Verbinden von Hybridcomputern mit Azure im großen Stil](../azure-arc/servers/onboard-service-principal.md).
 
 ### <a name="onboard-hybrid-kubernetes-clusters-with-arc-enabled-kubernetes"></a>Durchführen des Onboardings für Kubernetes-Hybridcluster mit Kubernetes mit Arc-Aktivierung
 
 Sie können einen Kubernetes-Cluster, der in Ihrer Azure VMware Solution-Umgebung gehostet wird, mithilfe von Kubernetes mit Arc-Aktivierung anfügen. 
 
-- Weitere Informationen finden Sie unter [Erstellen eines Azure Arc-fähigen Onboardingdienstprinzipals](../azure-arc/kubernetes/create-onboarding-service-principal.md).
+- Weitere Informationen finden Sie unter [Erstellen eines Azure Arc-fähigen Onboardingdienstprinzipals (Vorschauversion)](../azure-arc/kubernetes/create-onboarding-service-principal.md).
 
 ### <a name="deploy-the-log-analytics-agent"></a>Bereitstellen des Log Analytics-Agents
 

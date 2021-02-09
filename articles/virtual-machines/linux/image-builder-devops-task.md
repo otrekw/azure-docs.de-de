@@ -3,16 +3,16 @@ title: DevOps-Task des Azure Image Builder-Diensts
 description: Mit diesem Azure DevOps-Task zum Einfügen von Buildartefakten in ein VM-Image können Sie Ihre Anwendung und Ihr Betriebssystem installieren und konfigurieren.
 author: danielsollondon
 ms.author: danis
-ms.date: 08/10/2020
+ms.date: 01/27/2021
 ms.topic: article
 ms.service: virtual-machines
 ms.subservice: imaging
-ms.openlocfilehash: 634fc183cc27db1ae949959c3ae7fae8eda5b644
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: df97ecd1668dcc0e21408b7d39b0973e8f0d8fbf
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98684541"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98934292"
 ---
 # <a name="azure-image-builder-service-devops-task"></a>DevOps-Task des Azure Image Builder-Diensts
 
@@ -154,6 +154,12 @@ Das folgende Beispiel veranschaulicht die Funktionsweise:
     & 'c:\buildArtifacts\webapp\webconfig.ps1'
     ```
 
+   Sie können auf mehrere Skripte verweisen oder weitere Befehle hinzufügen. Beispiel:
+
+       ```PowerShell
+       & 'c:\buildArtifacts\webapp\webconfig.ps1'
+       & 'c:\buildArtifacts\webapp\installAgent.ps1'
+       ```
 * Linux: Die Buildartefakte sind im `/tmp`-Verzeichnis abgelegt. Bei vielen Linux-Betriebssystemen wird der Inhalt des /tmp-Verzeichnisses jedoch bei einem Neustart gelöscht. Wenn Sie möchten, dass die Artefakte im Image vorhanden sind, müssen Sie ein weiteres Verzeichnis erstellen, die Artefakte kopieren und in das neue Verzeichnis einfügen.  Beispiel:
 
     ```bash

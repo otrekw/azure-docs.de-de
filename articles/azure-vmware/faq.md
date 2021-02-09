@@ -2,13 +2,13 @@
 title: Häufig gestellte Fragen
 description: Hier finden Sie Antworten auf einige der häufig gestellten Fragen zu Azure VMware Solution.
 ms.topic: conceptual
-ms.date: 1/14/2021
-ms.openlocfilehash: 8245cd8da983ce48ba88d7faef76ab9b7ceb8c26
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.date: 1/27/2021
+ms.openlocfilehash: 3ef3d1b9e6fc76b5f09acf8c300dbea901b4aef2
+ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98218585"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99072267"
 ---
 # <a name="frequently-asked-questions-about-azure-vmware-solution"></a>Häufig gestellte Fragen zu Azure VMware Solution
 
@@ -79,6 +79,12 @@ Nein. Azure Load Balancer unterstützt intern nur Azure-IaaS-VMs. Azure Load Bal
 
 ### <a name="can-an-existing-expressroute-gateway-be-used-to-connect-to-azure-vmware-solution"></a>Kann ein vorhandenes ExpressRoute Gateway verwendet werden, um eine Verbindung mit Azure VMware Solution herzustellen?
 Ja. Verwenden Sie ein vorhandenes ExpressRoute-Gateway, um eine Verbindung mit Azure VMware Solution herzustellen, sofern der Grenzwert von vier ExpressRoute-Verbindungen pro virtuellem Netzwerk nicht überschritten wird. Für den lokalen Zugriff auf Azure VMware Solution über ExpressRoute benötigen Sie ExpressRoute Global Reach, da das ExpressRoute-Gateway kein transitives Routing zwischen den verbundenen Leitungen unterstützt.
+
+### <a name="why-does-azure-vmware-solution-use-a-public-4-byte-autonomous-system-number-asn"></a>Warum verwendet Azure VMware Solution eine öffentliche 4-Byte-ASN (Autonomous System Number)?
+Azure VMware Solution verwendet die offiziell registrierten öffentlichen 4-Byte-ASNs, um sicherzustellen, dass kein Konflikt mit Ihren lokal verwendeten privaten ASNs im Routingpfad des Kunden zu Azure VMware Solution auftreten.
+ 
+### <a name="how-can-i-use-expressroute-to-connect-to-azure-vmware-solution-if-the-on-premises-expressroute-carrier-partnersisps-dont-support-4-byte-asn"></a>Wie kann ich mit ExpressRoute eine Verbindung mit Azure VMware Solution herstellen, wenn die lokalen Netzbetreiber/ISPs für ExpressRoute keine 4-Byte-ASNs unterstützen?
+Die einzige Möglichkeit zum Herstellen einer Verbindung mit Azure VMware Solution über ExpressRoute besteht darin, dass Ihre Umgebung und die lokalen ExpressRoute-Netzbetreiber/-ISPs 4-Byte-ASNs unterstützen oder zumindest Abwärtskompatibilität zu 2-Byte-ASNs im BGP-Präfix des ASN-Pfads der Ankündigung besteht.
 
 ## <a name="compute-network-storage-and-backup"></a>Compute, Netzwerk, Speicher und Sicherung
 
@@ -258,7 +264,7 @@ VMware HCX Enterprise ist mit Azure VMware Solution als *Vorschau*-Funktion/-Die
 
 ### <a name="how-do-i-request-a-host-quota-increase-for-azure-vmware-solution"></a>Wie beantrage ich eine Erhöhung des Hostkontingents für eine Azure-VMware-Lösung?
 
-Für CSP-verwaltete Abonnements muss der Kunde die Anfrage an den Partner senden. Das Partnerteam setzt sich dann mit Microsoft in Verbindung, um das Kontingent für das Abonnement zu erhöhen. Ausführliche Informationen finden Sie unter [Aktivieren einer Azure VMware Solution-Ressource](enable-azure-vmware-solution.md). 
+Für CSP-verwaltete Abonnements muss der Kunde die Anfrage an den Partner senden. Das Partnerteam setzt sich dann mit Microsoft in Verbindung, um das Kontingent für das Abonnement zu erhöhen. Weitere Informationen finden Sie unter [Aktivieren einer Azure VMware Solution-Ressource](enable-azure-vmware-solution.md). 
 
 Verwenden Sie für EA-Abonnements das folgende Verfahren. Voraussetzungen:
 

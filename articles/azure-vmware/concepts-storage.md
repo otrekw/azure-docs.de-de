@@ -3,12 +3,12 @@ title: 'Konzepte: Speicher'
 description: Erfahren Sie mehr über die wichtigsten Speicherfunktionen in privaten Clouds in Azure VMware Solution.
 ms.topic: conceptual
 ms.date: 11/03/2020
-ms.openlocfilehash: 394b755f5dc8fdbcaa6092419e9451ae1691aa67
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 8ad1fc3ff2e514330a9ffc680494b5564b1184e4
+ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93289244"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99062794"
 ---
 #  <a name="azure-vmware-solution-storage-concepts"></a>Speicherkonzepte von Azure VMware Solution
 
@@ -32,7 +32,7 @@ vSAN-Datenspeicher verwenden standardmäßig Verschlüsselung ruhender Daten. Di
 
 ## <a name="scaling"></a>Skalierung
 
-Die native Clusterspeicherkapazität wird durch Hinzufügen von Hosts zu einem Cluster skaliert. Für Cluster, die HE-Hosts verwenden, wird die clusterweite Rohkapazität um 15,4 TB mit jedem zusätzlichen Host erhöht. Cluster, die GP-Hosts erstellt werden, wird die Rohkapazität um 7,7 TB mit jedem zusätzlichen Host erhöht. Bei beiden Clustertypen dauert es ungefähr 10 Minuten, bis Hosts einem Cluster hinzugefügt werden. Anweisungen zum Skalieren von Clustern finden Sie im [Tutorial zum Skalieren von privaten Clouds][tutorial-scale-private-cloud].
+Die native Clusterspeicherkapazität wird durch Hinzufügen von Hosts zu einem Cluster skaliert. Für Cluster, die HE-Hosts verwenden, wird die clusterweite Rohkapazität um 15,4 TB mit jedem zusätzlichen Host erhöht. Cluster, die GP-Hosts erstellt werden, wird die Rohkapazität um 7,7 TB mit jedem zusätzlichen Host erhöht. Bei beiden Clustertypen dauert es ungefähr 10 Minuten, bis Hosts einem Cluster hinzugefügt werden. Eine Anleitung zum Skalieren von Clustern finden Sie im [Tutorial zum Skalieren privater Clouds][tutorial-scale-private-cloud].
 
 ## <a name="azure-storage-integration"></a>Azure-Speicherintegration
 

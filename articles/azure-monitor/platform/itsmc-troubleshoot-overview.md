@@ -1,87 +1,97 @@
 ---
-title: Problembehandlung in ITSM-Connector
-description: Problembehandlung im ITSM-Connector
+title: Behandeln von Problemen im ITSM-Connector
+description: Hier erfahren Sie, wie Sie allgemeine Probleme im ITSM-Connector beheben.
 ms.subservice: alerts
 ms.topic: conceptual
 author: nolavime
 ms.author: nolavime
 ms.date: 04/12/2020
-ms.openlocfilehash: e43c5fb36c5395e12fd0b9c2c67b787a1137f5d0
-ms.sourcegitcommit: 3c3ec8cd21f2b0671bcd2230fc22e4b4adb11ce7
+ms.openlocfilehash: e8ae306a4900bc6e5815f6fc251dfa1b8b22964d
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98761979"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99492415"
 ---
-# <a name="troubleshooting-problems-in-itsm-connector"></a>Problembehandlung in ITSM-Connector
+# <a name="troubleshoot-problems-in-it-service-management-connector"></a>Behandeln von Problemen im ITSM-Connector
 
-In diesem Artikel werden häufige Probleme mit dem ITSM-Connector und das Beheben dieser Probleme erläutert.
+Dieser Artikel enthält Informationen zu allgemeinen Problemen im ITSM-Connector sowie zu deren Behandlung.
 
-Azure Monitor-Warnungen informieren Sie proaktiv, wenn wichtige Bedingungen in Ihren Überwachungsdaten gefunden werden. Sie ermöglichen es Ihnen, Probleme zu identifizieren und zu beheben, bevor die Benutzer Ihres Systems sie bemerken. Weitere Informationen über Warnungen finden Sie unter Überblick über Warnungen in Microsoft Azure.
-Der Kunde kann auswählen, wie er über die Warnung benachrichtigt werden möchte, sei es per E-Mail, SMS, Webhook oder sogar zur Automatisierung einer Lösung. Eine weitere Option für Benachrichtigungen ist die Verwendung von ITSM.
-ITSM bietet Ihnen die Möglichkeit, die Warnungen an ein externes Ticketsystem wie ServiceNow zu senden.
+Azure Monitor informiert Sie proaktiv mithilfe von Warnungen, wenn wichtige Bedingungen in Ihren Überwachungsdaten gefunden werden. Diese Warnungen ermöglichen es Ihnen, Probleme zu identifizieren und zu behandeln, bevor sie von Benutzern Ihres Systems bemerkt werden.
 
-## <a name="visualize-and-analyze-the-incident-and-change-request-data"></a>Visualisieren und Analysieren der Incident- und Änderungsanforderungsdaten
+Sie können auswählen, wie Sie Warnungen erhalten möchten. Dazu können Sie zwischen E-Mail, SMS und Webhook wählen oder sogar eine Lösung automatisieren. 
 
-Basierend auf Ihrer Konfiguration, die Sie beim Einrichten einer Verbindung vorgenommenen haben, kann der ITSM-Connector bis zu 120 Tage an Incident- und Änderungsanforderungsdaten synchronisieren. Das Schema für den Protokolldatensatz dieser Daten finden Sie im [Abschnitt „Zusätzliche Informationen“](./itsmc-synced-data.md) dieses Artikels.
+Alternativ können Sie sich auch über den ITSM-Connector benachrichtigen lassen. Mit dem ITSM-Connector können die Warnungen an ein externes Ticketsystem wie ServiceNow gesendet werden.
+
+## <a name="use-the-dashboard-to-analyze-incident-and-change-request-data"></a>Analysieren von Incident- und Änderungsanforderungsdaten mithilfe des Dashboards
+
+Basierend auf Ihrer Konfiguration, die Sie beim Einrichten einer Verbindung vorgenommenen haben, kann der ITSM-Connector bis zu 120 Tage an Incident- und Änderungsanforderungsdaten synchronisieren. Informationen zum Ermitteln des Protokolldatensatzschemas für diese Daten finden Sie im Artikel [Aus dem ITSM-Produkt synchronisierte Daten](./itsmc-synced-data.md).
 
 Sie können die Incident- und die Änderungsanforderungsdaten über das Dashboard des ITSM-Connectors visualisieren:
 
 ![Screenshot des Dashboards des ITSM-Connectors](media/itsmc-overview/itsmc-overview-sample-log-analytics.png)
 
-Das Dashboard bietet darüber hinaus Informationen zum Connectorstatus, die als Ausgangspunkt bei der Analyse von Verbindungsproblemen verwendet werden können.
+Das Dashboard enthält auch Informationen zum Connectorstatus. Diese Informationen können als Ausgangspunkt für die Analyse von Verbindungsproblemen verwenden. Weitere Informationen finden Sie unter [Untersuchung von Fehlern auf dem Dashboard](./itsmc-dashboard.md).
 
-Weitere Informationen zur Dashboarduntersuchung finden Sie unter [Untersuchung von Fehlern auf dem Dashboard](./itsmc-dashboard.md).
-
-### <a name="service-map"></a>Dienstzuordnung
+## <a name="use-service-map-to-visualize-incidents"></a>Visualisieren von Vorfällen mithilfe der Dienstzuordnung
 
 Zudem lassen sich die mit den betroffenen Computern synchronisierten Incidents innerhalb der Dienstzuordnungslösung visuell darstellen.
 
-Service Map ermittelt automatisch die Anwendungskomponenten auf Windows- und Linux-Systemen und stellt die Kommunikation zwischen Diensten dar. In dieser Lösung können Sie die Server nach ihrer Funktion anzeigen: als verbundene Systeme, die wichtige Dienste bereitstellen. Die Dienstzuordnungslösung zeigt Verbindungen zwischen Servern, Prozessen und Ports über die gesamte TCP-Verbindungsarchitektur an. Außer der Installation eines Agents ist keine Konfiguration erforderlich. Weitere Informationen finden Sie unter [Verwenden der Dienstzuordnung](../insights/service-map.md).
+Service Map ermittelt automatisch die Anwendungskomponenten auf Windows- und Linux-Systemen und stellt die Kommunikation zwischen Diensten dar. In dieser Lösung können Sie die Server nach ihrer Funktion anzeigen: als verbundene Systeme, die wichtige Dienste bereitstellen. 
 
-Wenn Sie die Dienstzuordnungslösung verwenden, können Sie die in ITSM-Lösungen erstellten Service Desk-Elemente wie im Folgenden gezeigt anzeigen:
+Die Dienstzuordnungslösung zeigt Verbindungen zwischen Servern, Prozessen und Ports über die gesamte TCP-Verbindungsarchitektur an. Außer der Installation eines Agents ist keine Konfiguration erforderlich. Weitere Informationen finden Sie unter [Verwenden der Dienstzuordnung](../insights/service-map.md).
+
+Mithilfe der Dienstzuordnung können Sie die in ITSM-Lösungen erstellten Service Desk-Elemente wie im folgenden Beispiel anzeigen:
 
 ![Screenshot des Log Analytics-Bildschirms](media/itsmc-overview/itsmc-overview-integrated-solutions.png)
 
-## <a name="common-symptoms---how-should-it-be-resolved"></a>Allgemeine Symptome und mögliche Problemlösung
+## <a name="resolve-problems"></a>Lösen von Problemen
 
-Die folgende Liste enthält allgemeine Symptome und mögliche Lösungen des Problems:
+In den folgenden Abschnitten werden allgemeine Symptome, mögliche Ursachen und Lösungen beschrieben. 
 
-* **Symptom**: Wenn beim Herstellen der Verbindung mit dem ITSM-System ein Fehler auftritt und die Meldung **Fehler beim Speichern der Verbindung** angezeigt wird.
+### <a name="a-connection-to-the-itsm-system-fails-and-you-get-an-error-in-saving-connection-message"></a>Fehler bei einer Verbindung mit dem ITSM-System und der Meldung „Fehler beim Speichern der Verbindung“
 
-    **Ursache**: Es kann eine der folgenden Ursachen vorliegen:
-    * Falsche Anmeldeinformationen
-     * Keine ausreichenden Berechtigungen
-     * Die Web-App sollte richtig bereitgestellt sein
+**Ursache:** Es kann eine der folgenden Ursachen vorliegen:
 
-    **Lösung:**
-    * Bei ServiceNow-, Cherwell- und Provance-Verbindungen:
-        * Stellen Sie sicher, dass Sie Benutzername, Kennwort, Client-ID und geheimen Clientschlüssel für jede der Verbindungen richtig eingegeben haben.  
-        * Bei ServiceNow: Stellen Sie sicher, dass Sie über ausreichende Berechtigungen für das entsprechende ITSM-Produkt verfügen, um die Verbindung wie [angegeben](itsmc-connections-servicenow.md#install-the-user-app-and-create-the-user-role) herzustellen.
-  * Bei Service Manager-Verbindungen:  
-      * Stellen Sie sicher, dass die Web-App erfolgreich bereitgestellt und die Hybridverbindung erstellt wird. Um zu überprüfen, ob die Verbindung mit dem lokalen Service Manager-Computer erfolgreich hergestellt wird, navigieren Sie zur Web-App-URL, wie in der Dokumentation zum Herstellen der [Hybridverbindung](./itsmc-connections-scsm.md#configure-the-hybrid-connection) erläutert.  
-* **Symptom**: Doppelte Arbeitselemente werden erstellt.
+* Die Anmeldeinformationen sind nicht korrekt.
+* Die Berechtigungen sind unzureichend.
+* Die Web-App wurde nicht ordnungsgemäß bereitgestellt.
 
-    **Ursache**: Es können zwei Ursachen vorliegen:
-    * Für die Warnung ist mehr als eine ITSM-Aktion definiert.
-    * Die Warnung wurde aufgelöst.
+**Lösung:**
 
-    **Lösung:** Es gibt zwei mögliche Lösungen:
-    * Stellen Sie sicher, dass pro Warnung nur eine einzige ITSM-Aktionsgruppe vorhanden ist.
-    * Der ITSM-Connector unterstützt Statusaktualisierungen bei übereinstimmenden Arbeitselementen nicht, wenn eine Warnung aufgelöst wurde. Es wird ein neues Arbeitselement erstellt.
-* **Symptom**: Es werden keine Arbeitselemente erstellt.
+* Bei ServiceNow-, Cherwell- und Provance-Verbindungen:
+  * Vergewissern Sie sich, dass Sie Benutzername, Kennwort, Client-ID und geheimen Clientschlüssel für jede der Verbindungen richtig eingegeben haben.  
+  * Stellen Sie für ServiceNow sicher, dass Sie im entsprechenden ITSM-Produkt über [ausreichende Berechtigungen](itsmc-connections-servicenow.md#install-the-user-app-and-create-the-user-role) verfügen.
 
-    **Ursache:** Für dieses Symptom kann es eine Reihe von Gründen geben:
-    * Der Code wurde seitens ServiceNow geändert.
-    * Berechtigungen sind fehlerhaft konfiguriert.
-    * ServiceNow-Ratenbegrenzungen sind zu hoch oder zu niedrig.
-    * Das Aktualisierungstoken ist abgelaufen.
-    * Der ITSM-Connector wurde gelöscht.
+* Bei Service Manager-Verbindungen:  
+  * Stellen Sie sicher, dass die Web-App erfolgreich bereitgestellt und die Hybridverbindung erstellt wird. Navigieren Sie zur Web-App-URL, wie in der [Dokumentation zum Herstellen einer Hybridverbindung](./itsmc-connections-scsm.md#configure-the-hybrid-connection) erläutert, um zu überprüfen, ob die Verbindung mit dem lokalen Service Manager-Computer erfolgreich hergestellt wird.  
 
-    **Lösung:** Sie können die Fehler im Abschnitt zum Connectorstatus auf dem [Dashboard](itsmc-dashboard.md) überprüfen. Sehen Sie sich die [allgemeinen Fehler](itsmc-dashboard-errors.md) an, und finden Sie heraus, wie der Fehler behoben werden kann.
+### <a name="duplicate-work-items-are-created"></a>Doppelte Arbeitselemente werden erstellt.
 
-* **Symptom**: Für eine Aktionsgruppe kann keine ITSM-Aktion erstellt werden.
+**Ursache:** Es kann eine der beiden folgenden Ursachen vorliegen:
 
-    **Ursache**: Für einen neu erstellten ITSM-Connector muss die anfängliche Synchronisierung noch abgeschlossen werden.
+* Für die Warnung sind mehrere ITSM-Aktionen definiert.
+* Die Warnung wurde behandelt.
 
-    **Lösung**: Sehen Sie sich die [allgemeinen Benutzeroberflächenfehler](itsmc-dashboard-errors.md#ui-common-errors) an, und finden Sie heraus, wie der Fehler behoben werden kann.
+**Lösung:** Es gibt zwei mögliche Lösungen:
+
+* Stellen Sie sicher, dass pro Warnung nur eine einzige ITSM-Aktionsgruppe vorhanden ist.
+* Vom ITSM-Connector werden keine Statusaktualisierungen bei übereinstimmenden Arbeitselementen unterstützt, wenn eine Warnung aufgelöst wurde. Erstellen Sie ein neues behandeltes Arbeitselement.
+
+### <a name="work-items-are-not-created"></a>Es werden keine Arbeitselemente erstellt.
+
+**Ursache:** Für dieses Symptom kann es eine Reihe von Gründen geben:
+
+* Der Code wurde aufseiten von ServiceNow-Seite geändert.
+* Die Berechtigungen sind nicht korrekt konfiguriert.
+* Die ServiceNow-Ratenbegrenzungen sind zu hoch oder zu niedrig.
+* Ein Aktualisierungstoken ist abgelaufen.
+* Der ITSM-Connector wurde gelöscht.
+
+**Lösung:** Überprüfen Sie auf dem [Dashboard](itsmc-dashboard.md) die Fehler im Abschnitt für den Connectorstatus. Überprüfen Sie anschließend die [allgemeinen Fehler und deren Lösungen](itsmc-dashboard-errors.md).
+
+### <a name="you-cant-create-an-itsm-action-for-an-action-group"></a>Erstellen einer ITSM-Aktion für eine Aktionsgruppe nicht möglich
+
+**Ursache:** Für eine neu erstellte ITSM-Connectorinstanz muss die Erstsynchronisierung noch abgeschlossen werden.
+
+**Lösung:** Überprüfen Sie die [allgemeinen Fehler und deren Lösungen](itsmc-dashboard-errors.md).

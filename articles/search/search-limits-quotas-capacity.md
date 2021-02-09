@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 12/15/2020
-ms.openlocfilehash: 5d265fe02d801cf0d2d66be37a8dc2a220e19b34
-ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
+ms.date: 02/02/2021
+ms.openlocfilehash: 9e43521e26a6292141e1bbae7b39db3656df962c
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97591343"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99493040"
 ---
 # <a name="service-limits-in-azure-cognitive-search"></a>Dienstgrenzwerte in der kognitiven Azure-Suche
 
@@ -139,7 +139,7 @@ Für eine [KI-Anreicherungspipeline](cognitive-search-concept-intro.md), die Auf
 
 ## <a name="throttling-limits"></a>Drosselungslimits
 
-Suchabfrage- und Indizierungsanforderungen werden gedrosselt, wenn das System sich der Spitzenkapazität nähert. Die Drosselung verhält sich für verschiedene APIs unterschiedlich. Abfrage-APIs (Suchen/Vorschlagen/AutoVervollständigen) und Indizierungs-APIs drosseln dynamisch basierend auf der Last des Diensts. Index-APIs verfügen über statische Grenzwerte für Anforderungsraten. 
+API-Anforderungen werden gedrosselt, wenn das System sich der Spitzenkapazität nähert. Die Drosselung verhält sich für verschiedene APIs unterschiedlich. Abfrage-APIs (Suchen/Vorschlagen/AutoVervollständigen) und Indizierungs-APIs drosseln dynamisch basierend auf der Last des Diensts. Index-APIs und Dienstvorgangs-APIs verfügen über statische Grenzwerte für Anforderungsraten. 
 
 Statische Grenzwerte für Anforderungsraten für Indexvorgänge:
 
@@ -148,6 +148,10 @@ Statische Grenzwerte für Anforderungsraten für Indexvorgänge:
 + Index erstellen (POST /indexes): 12 pro Minute pro Sucheinheit
 + Index erstellen oder aktualisieren (PUT /indexes/myindex): 6 pro Sekunde pro Sucheinheit
 + Index löschen (DELETE /indexes/myindex): 12 pro Minute pro Sucheinheit 
+
+Statische Grenzwerte für Anforderungsraten für Vorgänge in Bezug auf einen Dienst:
+
++ Dienststatistiken (GET /servicestats): 4 pro Sekunde pro Sucheinheit
 
 ## <a name="api-request-limits"></a>API-Anforderungsgrenzwerte
 * Maximal 16 MB pro Anforderung <sup>1</sup>

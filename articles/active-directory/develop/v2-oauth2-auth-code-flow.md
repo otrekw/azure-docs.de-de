@@ -13,12 +13,12 @@ ms.date: 01/11/2021
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: a313633c6c1799136b8b8911ae780ca13be5d2c3
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 5b3f7f8016d9b5da70d76322aead551613b8d9c3
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98756130"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99090220"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-authorization-code-flow"></a>Microsoft Identity Platform und der OAuth 2.0-Autorisierungscodeflow
 
@@ -48,7 +48,7 @@ Dann müssen Sie Ihre App-Registrierung aufrufen und den Umleitungs-URI für Ihr
 
 ## <a name="request-an-authorization-code"></a>Anfordern eines Autorisierungscodes
 
-Der Autorisierungscodefluss beginnt damit, dass der Client den Benutzer auf den `/authorize` -Endpunkt leitet. In dieser Anforderung fordert der Client die Berechtigungen `openid`, `offline_access` und `https://graph.microsoft.com/mail.read ` vom Benutzer an.  Einige Berechtigungen sind auf Administratoren beschränkt, z. B. das Schreiben von Daten in das Verzeichnis einer Organisation mithilfe von `Directory.ReadWrite.All`. Wenn Ihre Anwendung von einem Organisationsbenutzer Zugriff auf eine dieser Berechtigungen anfordert, wird dem Benutzer in einer Fehlermeldung mitgeteilt, dass er nicht befugt ist, den Berechtigungen Ihrer App zuzustimmen. Zugriff auf Bereiche, die auf Administratoren beschränkt sind, sollten Sie direkt von einem Unternehmensadministrator anfordern.  Weitere Informationen finden Sie unter [Auf Administratoren beschränkte Berechtigungen](v2-permissions-and-consent.md#admin-restricted-permissions).
+Der Autorisierungscodefluss beginnt damit, dass der Client den Benutzer auf den `/authorize` -Endpunkt leitet. In dieser Anforderung fordert der Client die Berechtigungen `openid`, `offline_access` und `https://graph.microsoft.com/mail.read ` vom Benutzer an.  Einige Berechtigungen sind auf Administratoren beschränkt, z. B. das Schreiben von Daten in das Verzeichnis einer Organisation mithilfe von `Directory.ReadWrite.All`. Wenn Ihre Anwendung von einem Organisationsbenutzer Zugriff auf eine dieser Berechtigungen anfordert, wird dem Benutzer in einer Fehlermeldung mitgeteilt, dass er nicht befugt ist, den Berechtigungen Ihrer App zuzustimmen. Zugriff auf Bereiche, die auf Administratoren beschränkt sind, sollten Sie direkt von einem globalen Administrator anfordern.  Weitere Informationen finden Sie unter [Auf Administratoren beschränkte Berechtigungen](v2-permissions-and-consent.md#admin-restricted-permissions).
 
 ```
 // Line breaks for legibility only

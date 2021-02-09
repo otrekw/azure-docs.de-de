@@ -3,12 +3,12 @@ title: Azure NetApp Files mit Azure VMware Solution
 description: Verwenden Sie Azure NetApp Files mit Azure VMware Solution-VMs, um Daten zwischen lokalen Servern, Azure VMware Solution-VMs und Cloudinfrastrukturen zu migrieren und zu synchronisieren.
 ms.topic: how-to
 ms.date: 01/20/2021
-ms.openlocfilehash: 97a9172dfbed2722d4af0abbd6231a0367dc4e3c
-ms.sourcegitcommit: 95c2cbdd2582fa81d0bfe55edd32778ed31e0fe8
+ms.openlocfilehash: b4ffea23606e1829fbf713488f08bc5618180072
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98798023"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99430061"
 ---
 # <a name="azure-netapp-files-with-azure-vmware-solution"></a>Azure NetApp Files mit Azure VMware Solution
 
@@ -102,7 +102,10 @@ Hier sind einige interessante Anwendungsfälle für Azure NetApp Files aufgefüh
 - Dateifreigaben unter Azure VMware Solution
 
 ## <a name="next-steps"></a>Nächste Schritte
-- Informieren Sie sich über [Ressourcenlimits für Azure NetApp Files](../azure-netapp-files/azure-netapp-files-resource-limits.md#resource-limits).
-- Lesen Sie den Artikel mit den [Richtlinien für die Azure NetApp Files-Netzwerkplanung](../azure-netapp-files/azure-netapp-files-network-topologies.md).
-- Erfahren Sie mehr zur [regionsübergreifenden Replikation von Azure NetApp Files-Volumes](../azure-netapp-files/cross-region-replication-introduction.md). 
-- Lesen Sie den Artikel mit den [häufig gestellten Fragen zu Azure NetApp Files](../azure-netapp-files/azure-netapp-files-faqs.md).
+
+Nach der Integration von Azure NetApp Files in Ihre Azure VMware Solution-Workloads können Sie sich mit Folgendem vertraut machen:
+
+- [Ressourceneinschränkungen](../azure-netapp-files/azure-netapp-files-resource-limits.md#resource-limits)
+- [Richtlinien für die Azure NetApp Files-Netzwerkplanung](../azure-netapp-files/azure-netapp-files-network-topologies.md)
+- [Regionsübergreifende Replikation von Azure NetApp Files-Volumes](../azure-netapp-files/cross-region-replication-introduction.md) 
+- [Häufig gestellte Fragen zu Azure NetApp Files](../azure-netapp-files/azure-netapp-files-faqs.md)

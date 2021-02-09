@@ -3,12 +3,12 @@ title: Schützen von Azure VMware Solution-VMs mit Azure Security Center-Integra
 description: Erfahren Sie, wie Sie Ihre Azure VMware Solution-VMs über ein einziges Dashboard in Azure Security Center mit den nativen Sicherheitstools von Azure schützen.
 ms.topic: how-to
 ms.date: 11/06/2020
-ms.openlocfilehash: e461e7e49619f7063c0583975f36a2e3dfe5a724
-ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
+ms.openlocfilehash: 66270c5abef48f9d9f30ed1b262a6b4f2f8144c8
+ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96937337"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99061463"
 ---
 # <a name="protect-your-azure-vmware-solution-vms-with-azure-security-center-integration"></a>Schützen von Azure VMware Solution-VMs mit Azure Security Center-Integration
 
@@ -45,7 +45,7 @@ Sie können den Log Analytics-Arbeitsbereich mit Azure Sentinel für Folgendes k
 
 ## <a name="create-a-log-analytics-workspace"></a>Erstellen eines Log Analytics-Arbeitsbereichs
 
-Sie benötigen einen Log Analytics-Arbeitsbereich, um Daten aus verschiedenen Quellen zu sammeln. Näheres hierzu erfahren Sie unter [Erstellen eines Log Analytics-Arbeitsbereichs im Azure-Portal](../azure-monitor/learn/quick-create-workspace.md). 
+Sie benötigen einen Log Analytics-Arbeitsbereich, um Daten aus verschiedenen Quellen zu sammeln. Weitere Informationen finden Sie unter [Erstellen eines Log Analytics-Arbeitsbereichs im Azure-Portal](../azure-monitor/learn/quick-create-workspace.md). 
 
 ## <a name="deploy-security-center-and-configure-azure-vmware-solution-vms"></a>Bereitstellen von Security Center und Konfigurieren von Azure VMware Solution-VMs
 

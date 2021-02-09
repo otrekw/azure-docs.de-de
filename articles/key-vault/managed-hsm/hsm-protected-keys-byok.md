@@ -6,14 +6,14 @@ author: amitbapat
 tags: azure-resource-manager
 ms.service: key-vault
 ms.topic: conceptual
-ms.date: 09/17/2020
+ms.date: 02/01/2021
 ms.author: ambapat
-ms.openlocfilehash: 3c727b75e0d1b1e05638617d6e460dade15fc3c5
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 444f279f8e96486bd6ad61a2ea2640a18b491c9c
+ms.sourcegitcommit: 983eb1131d59664c594dcb2829eb6d49c4af1560
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94413478"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99222233"
 ---
 # <a name="import-hsm-protected-keys-to-managed-hsm-byok"></a>Importieren von durch HSM geschützten Schlüsseln in verwaltetes HSM (BYOK)
 
@@ -69,6 +69,7 @@ Weitere Informationen zu den Anmeldeoptionen für die Befehlszeilenschnittstelle
 |Cryptomathic|ISV (Enterprise Key Management System)|Mehrere HSM-Marken und -Modelle, einschließlich<ul><li>nCipher</li><li>Thales</li><li>Utimaco</li></ul>Weitere Informationen finden Sie auf der [Cryptomathic-Website](https://www.cryptomathic.com/azurebyok).|[Cryptomathic – BYOK-Tool und -Dokumentation](https://www.cryptomathic.com/azurebyok)|
 |Securosys SA|Hersteller, HSM-as-a-Service|Primus-HSM-Familie, Securosys Clouds HSM|[Primus – BYOK-Tool und -Dokumentation](https://www.securosys.com/primus-azure-byok)|
 |StorMagic|ISV (Enterprise Key Management System)|Mehrere HSM-Marken und -Modelle, einschließlich<ul><li>Utimaco</li><li>Thales</li><li>nCipher</li></ul>Weitere Informationen finden Sie auf der [StorMagic-Website](https://stormagic.com/doc/svkms/Content/Integrations/Azure_KeyVault_BYOK.htm).|[SvKMS und Azure Key Vault BYOK](https://stormagic.com/doc/svkms/Content/Integrations/Azure_KeyVault_BYOK.htm)|
+|IBM|Hersteller|IBM 476x, CryptoExpress|[IBM Enterprise Key Management Foundation](https://www.ibm.com/security/key-management/ekmf-bring-your-own-key-azure)|
 ||||
 
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 09/16/2020
-ms.openlocfilehash: a5cbbed3881433121f5ab811082969bc3c6c4f7f
-ms.sourcegitcommit: 8a74ab1beba4522367aef8cb39c92c1147d5ec13
+ms.openlocfilehash: 1222108694ff7274e5d8fd063635b70a76ffc59c
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98609943"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954748"
 ---
 # <a name="azure-monitor-logs-dedicated-clusters"></a>Dedizierte Azure Monitor-Protokollcluster
 
@@ -25,9 +25,6 @@ Folgende Funktionen erfordern dedizierte Cluster:
 - **[Mehrere Arbeitsbereiche](../log-query/cross-workspace-query.md)** : Wenn ein Kunde mehr als einen Arbeitsbereich für die Produktion verwendet, ist es möglicherweise sinnvoll, einen dedizierten Cluster zu verwenden. Arbeitsbereichsübergreifende Abfragen werden schneller ausgeführt, wenn sich alle Arbeitsbereiche im selben Cluster befinden. Möglicherweise ist die Verwendung eines dedizierten Clusters auch kostengünstiger, da die zugewiesenen Tarife für die Kapazitätsreservierung die gesamte Clustererfassung berücksichtigen und auf alle Arbeitsbereiche angewendet werden, auch wenn einige davon klein sind und nicht für den Kapazitätsreservierungsrabatt berechtigt sind.
 
 Dedizierte Cluster erfordern es, dass sich Kunden zur Verwendung einer Datenerfassung von mindestens 1 TB pro Tag verpflichten. Die Migration zu einem dedizierten Cluster ist einfach. Es gibt keinen Datenverlust und keine Dienstunterbrechung. 
-
-> [!IMPORTANT]
-> Dedizierte Cluster werden genehmigt und für Produktionsbereitstellungen vollständig unterstützt. Aufgrund temporärer Kapazitätseinschränkungen ist es jedoch erforderlich, dass Ihre Vorabregistrierung das Feature verwendet. Verwenden Sie Ihre Kontakte zu Microsoft zum Angeben Ihrer Abonnement-IDs.
 
 ## <a name="management"></a>Verwaltung 
 
@@ -84,10 +81,12 @@ Die folgenden Eigenschaften müssen angegeben werden:
 
 Nachdem Sie die *Clusterressource* erstellt haben, können Sie sie mit *sku*, *keyVaultProperties oder *billingType* aktualisieren. Weitere Einzelheiten finden Sie unten.
 
+Pro Abonnement und Region können bis zu zwei aktive Cluster vorhanden sein. Wenn ein Cluster gelöscht wird, ist er weiterhin für 14 Tage reserviert. Pro Abonnement und Region können bis zu vier reservierte Cluster (aktiv oder kürzlich gelöscht) vorhanden sein.
+
 > [!WARNING]
 > Die Clustererstellung löst die Ressourcenzuordnung und -bereitstellung aus. Es kann bis zu einer Stunde dauern, bis dieser Vorgang abgeschlossen ist. Es wird empfohlen, ihn asynchron auszuführen.
 
-Das Benutzerkonto, mit dem die Cluster erstellt werden, muss über die Standardberechtigung für die Erstellung von Azure-Ressourcen verfügen: `Microsoft.Resources/deployments/*` und die Clusterschreibberechtigung `(Microsoft.OperationalInsights/clusters/write)`.
+Das Benutzerkonto, mit dem die Cluster erstellt werden, muss über die Standardberechtigung für die Erstellung von Azure-Ressourcen verfügen: `Microsoft.Resources/deployments/*` und die Clusterschreibberechtigung `Microsoft.OperationalInsights/clusters/write`. Dazu muss in seinen Rollenzuweisungen diese spezifische Aktion, `Microsoft.OperationalInsights/*` oder `*/write` angegeben sein.
 
 ### <a name="create"></a>Erstellen 
 
@@ -506,7 +505,9 @@ Verwenden Sie den folgenden REST-Aufruf zum Löschen eines Clusters:
 
 ## <a name="limits-and-constraints"></a>Grenzen und Einschränkungen
 
-- Die maximale Anzahl von Clustern pro Region und Abonnement beträgt 2.
+- Die maximale Anzahl aktiver Cluster pro Region und Abonnement beträgt 2.
+
+- Die maximale Anzahl reservierter Cluster (aktiv oder kürzlich gelöscht) pro Region und Abonnement beträgt 4. 
 
 - Das Maximum der verknüpften Arbeitsbereiche für den Cluster beträgt 1000.
 

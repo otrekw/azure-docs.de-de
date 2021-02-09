@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/08/2020
 ms.author: jingwang
-ms.openlocfilehash: 1b3ab569666ea413ba36da0dc00f6c37336c4443
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 3fc567b7d4b2efab03e5d93adda62839d47f7522
+ms.sourcegitcommit: 8c8c71a38b6ab2e8622698d4df60cb8a77aa9685
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96931301"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99223092"
 ---
 # <a name="copy-data-from-and-to-a-rest-endpoint-by-using-azure-data-factory"></a>Kopieren von Daten von und zu einem REST-Endpunkt mithilfe von Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -26,7 +26,7 @@ In diesem Artikel wird beschrieben, wie Sie die Kopieraktivität in Azure Data F
 Dies sind die Unterschiede zwischen diesem REST-Connector, dem [HTTP-Connector](connector-http.md) und dem [Webtabellenconnector](connector-web-table.md):
 
 - **REST-Connector:** Dieser unterstützt insbesondere das Kopieren von Daten aus RESTful-APIs. 
-- **HTTP-Connector:** Dieser dient allgemein dazu, Daten von jedem HTTP-Endpunkt abzurufen, z. B. um Dateien herunterzuladen. Solange der REST-Connector noch nicht verfügbar ist, verwenden Sie möglicherweise den HTTP-Connector, um Daten aus RESTful-APIs zu kopieren. Dieser wird unterstützt, verfügt jedoch über weniger Funktionen als der REST-Connector.
+- **HTTP-Connector:** Dieser dient allgemein dazu, Daten von jedem HTTP-Endpunkt abzurufen, z. B. um Dateien herunterzuladen. Vor diesem REST-Connector mussten Sie möglicherweise mit dem HTTP-Connector Daten aus RESTful-APIs kopieren. Dieser wird unterstützt, verfügt jedoch über weniger Funktionen als der REST-Connector.
 - **Webtabellenconnector:** Dieser extrahiert Tabelleninhalte aus einer HTML-Webseite.
 
 ## <a name="supported-capabilities"></a>Unterstützte Funktionen

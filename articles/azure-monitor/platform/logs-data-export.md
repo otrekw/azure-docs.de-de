@@ -7,18 +7,18 @@ ms.custom: references_regions, devx-track-azurecli
 author: bwren
 ms.author: bwren
 ms.date: 10/14/2020
-ms.openlocfilehash: bb4987550e4962ba044e0a6aafbfd00145319e94
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: bc369b072f90e675cf882d52b2edae30530f1c18
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98804942"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98895967"
 ---
 # <a name="log-analytics-workspace-data-export-in-azure-monitor-preview"></a>Datenexport im Log Analytics-Arbeitsbereich in Azure Monitor (Vorschau)
 Der Datenexport im Log Analytics-Arbeitsbereich in Azure Monitor ermöglicht es Ihnen, Daten aus ausgewählten Tabellen in Ihrem Log Analytics-Arbeitsbereich bei der Sammlung fortlaufend in ein Azure Storage-Konto oder in Azure Event Hubs zu exportieren. In diesem Artikel werden dieses Feature und die Schritte zum Konfigurieren des Datenexports in Ihren Arbeitsbereichen ausführlich beschrieben.
 
 ## <a name="overview"></a>Übersicht
-Nachdem der Datenexport für den Log Analytics-Arbeitsbereich konfiguriert wurde, werden alle neuen Daten, die an die ausgewählten Tabellen im Arbeitsbereich gesendet werden, automatisch in Ihr Speicherkonto oder nahezu in Echtzeit in Ihren Event Hub exportiert.
+Nachdem der Datenexport für den Log Analytics-Arbeitsbereich konfiguriert wurde, werden alle neuen Daten, die an die ausgewählten Tabellen im Arbeitsbereich gesendet werden, automatisch in stündlichen Anfügeblobs in Ihr Speicherkonto oder nahezu in Echtzeit in Ihren Event Hub exportiert.
 
 ![Übersicht über den Datenexport](media/logs-data-export/data-export-overview.png)
 
@@ -67,7 +67,7 @@ Für die Datenexportfunktion fallen zurzeit keine zusätzlichen Gebühren an. Di
 ## <a name="export-destinations"></a>Exportziele
 
 ### <a name="storage-account"></a>Speicherkonto
-Daten werden, sobald sie Azure Monitor erreichen, nahezu in Echtzeit an Speicherkonten gesendet. Die Datenexportkonfiguration erstellt für jede Tabelle im Speicherkonto einen Container mit dem Namen *am-* , gefolgt vom Namen der Tabelle. Beispielsweise würde die Tabelle *SecurityEvent* an einen Container mit dem Namen *am-SecurityEvent* gesendet.
+Daten werden an Speicherkonten gesendet, wenn sie Azure Monitor erreichen, und in stündlichen Anfügeblobs gespeichert. Die Datenexportkonfiguration erstellt für jede Tabelle im Speicherkonto einen Container mit dem Namen *am-* , gefolgt vom Namen der Tabelle. Beispielsweise würde die Tabelle *SecurityEvent* an einen Container mit dem Namen *am-SecurityEvent* gesendet.
 
 Der Blobpfad im Speicherkonto lautet *WorkspaceResourceId=/subscriptions/subscription-id/resourcegroups/\<resource-group\>/providers/microsoft.operationalinsights/workspaces/\<workspace\>/y=\<four-digit numeric year\>/m=\<two-digit numeric month\>/d=\<two-digit numeric day\>/h=\<two-digit 24-hour clock hour\>/m=00/PT1H.json*. Da Anfügeblobs auf 50.000 Schreibvorgänge im Speicher beschränkt sind, kann sich die Anzahl der exportierten Blobs erhöhen, wenn die Anzahl der Anfügevorgänge hoch ist. Das Benennungsmuster für Blobs ist in diesem Fall „PT1H_#.json“, wobei # die inkrementelle Blobanzahl ist.
 

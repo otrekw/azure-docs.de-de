@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 09/02/2020
+ms.date: 02/02/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d04075b415bace4104a58e8221d764355d3318d0
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 3315500e0d8ce090b058cbe0cb11d9ab8e56e193
+ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96744277"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99474997"
 ---
 # <a name="authentication-methods-in-azure-active-directory---oath-tokens"></a>Authentifizierungsmethoden in Azure Active Directory – OATH-Token
 
@@ -41,21 +41,21 @@ OATH-Hardwaretoken werden in der öffentlichen Vorschau unterstützt. Weitere In
 
 ![Hochladen von OATH-Token auf das Blatt „MFA > OATH-Token“](media/concept-authentication-methods/mfa-server-oath-tokens-azure-ad.png)
 
-Sobald Sie Token erworben haben, müssen Sie diese in einem Format mit kommagetrennten Werten (CSV) einschließlich UPN, Seriennummer, geheimem Schlüssel, Zeitintervall, Hersteller und Modell hochladen, wie im folgenden Beispiel gezeigt:
+Nachdem Sie Token erworben haben, müssen Sie diese in einem Format mit durch Trennzeichen getrennten Werten (CSV) einschließlich UPN, Seriennummer, geheimem Schlüssel, Zeitintervall, Hersteller und Modell hochladen, wie im folgenden Beispiel gezeigt:
 
 ```csv
 upn,serial number,secret key,time interval,manufacturer,model
 Helga@contoso.com,1234567,1234567abcdef1234567abcdef,60,Contoso,HardwareKey
-```
+```  
 
 > [!NOTE]
-> Stellen Sie sicher, dass Sie die Kopfzeile in Ihre CSV-Datei einschließen.
+> Stellen Sie sicher, dass Sie die Kopfzeile in Ihre CSV-Datei einschließen. Wenn ein UPN ein einzelnes Anführungszeichen enthält, versehen Sie es mit einem weiteren einfachen Anführungszeichen als Escapezeichen. Wenn der UPN beispielsweise „my’user@domain.com“ lautet, ändern Sie ihn beim Hochladen der Datei in „my’’user@domain.com“.
 
 Nach der ordnungsgemäßen Formatierung als CSV-Datei kann sich ein Administrator im Azure-Portal anmelden, zu **Azure Active Directory > Sicherheit > MFA > OATH-Token** navigieren und die resultierende CSV-Datei hochladen.
 
-Je nach Größe der CSV-Datei kann die Verarbeitung ein paar Minuten dauern. Wählen Sie die Schaltfläche **Aktualisieren** aus, um den aktuellen Status abzurufen. Wenn die Datei Fehler enthält, können Sie eine CSV-Datei herunterladen, in der alle zu behebenden Fehler aufgeführt sind. Die Feldnamen in der heruntergeladenen CSV-Datei unterscheiden sich von der hochgeladenen Version.
+Je nach Größe der CSV-Datei kann die Verarbeitung ein paar Minuten dauern. Wählen Sie die Schaltfläche **Aktualisieren** aus, um den aktuellen Status abzurufen. Wenn die Datei Fehler enthält, können Sie eine CSV-Datei herunterladen, in der alle zu behebenden Fehler aufgeführt sind. Die Feldnamen in der heruntergeladenen CSV-Datei unterscheiden sich von der hochgeladenen Version.  
 
-Sobald alle Fehler behoben sind, kann der Administrator die einzelnen Schlüssel aktivieren, indem er für das Token **Aktivieren** auswählt und das in dem Token angezeigte Einmalkennwort eingibt.
+Sobald alle Fehler behoben sind, kann der Administrator die einzelnen Schlüssel aktivieren, indem er für das Token **Aktivieren** auswählt und das in dem Token angezeigte Einmalkennwort eingibt. Sie können maximal 200 OATH-Token alle 5 Minuten aktivieren. 
 
 Benutzer verfügen möglicherweise über eine Kombination aus bis zu fünf OATH-Hardwaretoken oder Authentifizierungsanwendungen wie die Microsoft Authenticator-App, die für die jederzeitige Verwendung konfiguriert sind.
 

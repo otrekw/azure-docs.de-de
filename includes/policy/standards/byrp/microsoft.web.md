@@ -2,15 +2,15 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 01/25/2021
+ms.date: 01/29/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 5f879a936670cc4e36150fe97def8bcb9f196a93
-ms.sourcegitcommit: fc8ce6ff76e64486d5acd7be24faf819f0a7be1d
+ms.openlocfilehash: e87d37a3b70b55fdcafd05fa75d9ad09340dba13
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98860180"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99089450"
 ---
 ## <a name="azure-security-benchmark"></a>Vergleichstest für die Azure-Sicherheit
 
@@ -262,6 +262,17 @@ Weitere Informationen zu diesem Konformitätsstandard finden Sie unter [HIPAA HI
 |Onlinetransaktionen |0949.09y2Organizational.5 - 09.y |Die für die Kommunikation verwendeten Protokolle werden jeweils verbessert, um alle neue Sicherheitsrisiken abzudecken, und die aktualisierten Versionen der Protokolle werden so schnell wie möglich bereitgestellt. |[Funktions-App muss neueste TLS-Version verwenden](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff9d614c5-c173-4d56-95a7-b4437057d193) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_RequireLatestTls_FunctionApp_Audit.json) |
 |Onlinetransaktionen |0949.09y2Organizational.5 - 09.y |Die für die Kommunikation verwendeten Protokolle werden jeweils verbessert, um alle neue Sicherheitsrisiken abzudecken, und die aktualisierten Versionen der Protokolle werden so schnell wie möglich bereitgestellt. |[Web-App muss neueste TLS-Version verwenden](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff0e6e85b-9b9f-4a4b-b67b-f730d42f1b0b) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppService_RequireLatestTls_WebApp_Audit.json) |
 |Onlinetransaktionen |0949.09y2Organizational.5 - 09.y |Die für die Kommunikation verwendeten Protokolle werden jeweils verbessert, um alle neue Sicherheitsrisiken abzudecken, und die aktualisierten Versionen der Protokolle werden so schnell wie möglich bereitgestellt. |[Zugriff auf Webanwendung nur über HTTPS gestatten](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fa4af4a39-4135-47fb-b175-47fbdf85311d) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppServiceWebapp_AuditHTTP_Audit.json) |
+
+## <a name="iso-270012013"></a>ISO 27001:2013
+
+Weitere Informationen dazu, wie die verfügbaren Azure Policy-Integrationen für alle Azure-Dienste diesem Konformitätsstandard entsprechen, finden Sie unter [Einhaltung gesetzlicher Bestimmungen in Azure Policy: ISO 27001:2013](../../../../articles/governance/policy/samples/iso-27001.md).
+Weitere Informationen zu diesem Compliancestandard finden Sie unter [ISO 27001:2013](https://www.iso.org/isoiec-27001-information-security.html).
+
+|Domain |Steuerungs-ID |Steuerungstitel |Richtlinie<br /><sub>(Azure-Portal)</sub> |Version der Richtlinie<br /><sub>(GitHub)</sub>  |
+|---|---|---|---|---|
+|Kryptografie |10.1.1 |Richtlinie zur Verwendung von kryptografischen Steuerungen |[Auf API-Apps sollte nur über HTTPS zugegriffen werden können](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fb7ddfbdc-1260-477d-91fd-98bd9be789a6) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppServiceApiApp_AuditHTTP_Audit.json) |
+|Kryptografie |10.1.1 |Richtlinie zur Verwendung von kryptografischen Steuerungen |[Zugriff auf Funktions-App nur über HTTPS gestatten](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F6d555dd1-86f2-4f1c-8ed7-5abae7c6cbab) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppServiceFunctionApp_AuditHTTP_Audit.json) |
+|Kryptografie |10.1.1 |Richtlinie zur Verwendung von kryptografischen Steuerungen |[Zugriff auf Webanwendung nur über HTTPS gestatten](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fa4af4a39-4135-47fb-b175-47fbdf85311d) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AppServiceWebapp_AuditHTTP_Audit.json) |
 
 ## <a name="nist-sp-800-171-r2"></a>NIST SP 800-171 R2
 

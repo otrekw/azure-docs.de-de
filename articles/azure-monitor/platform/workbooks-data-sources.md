@@ -8,12 +8,12 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 06/29/2020
-ms.openlocfilehash: d41629dd9a56272af89a06cb55e9bd88b604baee
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: 3d94aca51d3d305b70c8c555e2b41e3d0ab857b3
+ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92927905"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99061947"
 ---
 # <a name="azure-monitor-workbooks-data-sources"></a>Datenquellen für Azure Monitor-Arbeitsmappen
 
@@ -59,7 +59,7 @@ Damit ein Abfragesteuerelement diese Datenquelle verwendet, wählen Sie über di
 
 ## <a name="azure-data-explorer"></a>Azure-Daten-Explorer
 
-Arbeitsmappen unterstützen jetzt das Abfragen von [Azure Data Explorer](/azure/data-explorer/)-Clustern mit der leistungsstarken [Kusto](/azure/kusto/query/index)-Abfragesprache.   
+Arbeitsmappen unterstützen jetzt das Abfragen von [Azure Data Explorer](/azure/data-explorer/)-Clustern mit der leistungsstarken [Kusto](/azure/kusto/query/index)-Abfragesprache.
 
 ![Screenshot des Kusto-Abfragefensters](./media/workbooks-overview/data-explorer.png)
 
@@ -79,9 +79,43 @@ Damit ein Abfragesteuerelement diese Datenquelle verwendet, wählen Sie über di
 
 ![Screenshot der Warnungsabfrage mit den Listen für Integritätsfilter](./media/workbooks-overview/resource-health.png)
 
+## <a name="change-analysis-preview"></a>Änderungsanalyse (Vorschau)
+
+Wenn Sie ein Abfragesteuerelement mithilfe der [Anwendungsänderungsanalyse](../app/change-analysis.md) als Datenquelle erstellen möchten, verwenden Sie die Dropdownliste *Datenquelle*. Wählen Sie *Änderungsanalyse (Vorschau)* und dann eine einzelne Ressource aus. Es können Änderungen für maximal die letzten 14 Tage angezeigt werden. Mithilfe der Dropdownliste *Ebene* können Sie zwischen wichtigen, normalen und überflüssigen Änderungen filtern. Diese Dropdownliste unterstützt Arbeitsmappenparameter vom Typ [Dropdown](workbooks-dropdowns.md).
+
+> [!div class="mx-imgBorder"]
+> ![Screenshot einer Arbeitsmappe mit Änderungsanalyse](./media/workbooks-data-sources/change-analysis-data-source.png)
+
+## <a name="merge-data-from-different-sources"></a>Zusammenführen von Daten aus unterschiedlichen Quellen
+
+Es ist häufig erforderlich, Daten aus verschiedenen Quellen zusammenzuführen, um die Erkenntnisse zu verbessern. Ein Beispiel ist das Erweitern von aktiven Warnungsinformationen durch zugehörige Metrikdaten. Damit können Benutzer nicht nur die Auswirkung (eine aktive Warnung), sondern auch mögliche Ursachen (z. B. hohe CPU-Auslastung) anzeigen. Die Überwachungsdomäne enthält zahlreiche verwandten Datenquellen dieser Art, die häufig sehr wichtig für die Selektierung und den Diagnoseworkflow sind.
+
+Arbeitsmappen ermöglichen nicht nur die Abfrage verschiedener Datenquellen, sondern sie bieten auch einfache Steuerelemente, mit denen Sie die Daten zusammenführen oder verknüpfen können, um umfassende Erkenntnisse bereitzustellen. Zu diesem Zweck können Sie das Steuerelement `merge` verwenden.
+
+Im folgenden Beispiel werden die Warnungsinformationen mit den Leistungsdaten der Log Analytics-VM kombiniert, um ein aussagekräftiges Erkenntnisraster zu erstellen.
+
+> [!div class="mx-imgBorder"]
+> ![Screenshot einer Arbeitsmappe mit einem merge-Steuerelement, das Warnungs- und Log Analytics-Daten kombiniert](./media/workbooks-data-sources/merge-control.png)
+
+Arbeitsmappen unterstützen eine Vielzahl von Zusammenführungen:
+
+* Innerer eindeutiger Join
+* Vollständiger innerer Join
+* Vollständiger äußerer Join
+* Left Outer Join
+* Rechte äußere Verknüpfung
+* Linker Semi-Join
+* Rechter Semi-Join
+* Linker Anti-Join
+* Rechter Anti-Join
+* Union
+* Duplizieren der Tabelle
+
 ## <a name="json"></a>JSON
 
 Der JSON-Anbieter ermöglicht Ihnen das Erstellen eines Abfrageergebnisses aus statischem JSON-Inhalt. Er wird am häufigsten in Parametern verwendet, um Dropdownparameter statischer Werte zu erstellen. Einfache JSON-Arrays oder -Objekte werden automatisch in Rasterzeilen und -spalten konvertiert.  Für spezifischere Verhalten können Sie die Registerkarte „Ergebnisse“ und JSONPath-Einstellungen verwenden, um Spalten zu konfigurieren.
+
+Dieser Anbieter unterstützt [JSONPath](workbooks-jsonpath.md).
 
 ## <a name="alerts-preview"></a>Warnungen (Vorschau)
 
@@ -94,7 +128,7 @@ Der JSON-Anbieter ermöglicht Ihnen das Erstellen eines Abfrageergebnisses aus s
 
 Arbeitsmappen ermöglichen es Benutzern, die aktiven Warnungen in Bezug auf Ressourcen visuell darzustellen. Einschränkungen: Die Warnungsdatenquelle erfordert Lesezugriff auf das Abonnement, um Ressourcen abzufragen, und zeigt möglicherweise keine neueren Arten von Warnungen an. 
 
-Damit ein Abfragesteuerelement diese Datenquelle verwendet, wählen Sie über die Dropdownliste _Datenquelle_ die Option _Warnungen (Vorschau)_ aus, und wählen Sie dann die als Ziel zu verwendenden Abonnements, Ressourcengruppen und Ressourcen aus. Verwenden Sie die Dropdownlisten für Warnungsfilter, um eine interessante Teilmenge von Warnungen für Ihre Analyseanforderungen auszuwählen.
+Damit ein Abfragesteuerelement diese Datenquelle verwendet, wählen Sie über die Dropdownliste _Datenquelle_ die Option _Warnungen (Vorschau)_ und dann die als Ziel zu verwendenden Abonnements, Ressourcengruppen und Ressourcen aus. Verwenden Sie die Dropdownlisten für Warnungsfilter, um eine interessante Teilmenge von Warnungen für Ihre Analyseanforderungen auszuwählen.
 
 ## <a name="custom-endpoint"></a>Benutzerdefinierter Endpunkt
 
@@ -102,10 +136,12 @@ Arbeitsmappen unterstützen das Abrufen von Daten aus einer beliebigen externen 
 
 Damit ein Abfragesteuerelement diese Datenquelle verwendet, wählen Sie über die Dropdownliste _Datenquelle_ die Option _Benutzerdefinierter Endpunkt_ aus. Geben Sie die entsprechenden Parameter an, z. B. `Http method`, `url`, `headers`, `url parameters` und/oder `body`. Stellen Sie sicher, dass Ihre Datenquelle [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) unterstützt, da andernfalls bei der Anforderung ein Fehler auftritt.
 
-Um zu vermeiden, dass bei Verwendung von Vorlagen nicht vertrauenswürdige Hosts automatisch aufgerufen werden, muss der Benutzer die verwendeten Hosts als vertrauenswürdig kennzeichnen. Klicken Sie dazu auf die Schaltfläche _Als vertrauenswürdig hinzufügen_ , oder fügen Sie den Host als vertrauenswürdigen Host in den Arbeitsmappeneinstellungen hinzu. Diese Einstellungen werden in Browsern gespeichert, die IndexDb mit Web-Workern unterstützen. Weitere Informationen finden Sie [hier](https://caniuse.com/#feat=indexeddb).
+Um zu vermeiden, dass bei Verwendung von Vorlagen nicht vertrauenswürdige Hosts automatisch aufgerufen werden, muss der Benutzer die verwendeten Hosts als vertrauenswürdig kennzeichnen. Klicken Sie dazu auf die Schaltfläche _Als vertrauenswürdig hinzufügen_, oder fügen Sie den Host als vertrauenswürdigen Host in den Arbeitsmappeneinstellungen hinzu. Diese Einstellungen werden in [Browsern gespeichert, die IndexDb mit Workern unterstützen](https://caniuse.com/#feat=indexeddb).
 
 > [!NOTE]
 > Schreiben Sie keine geheimen Schlüssel in eines der Felder (`headers`, `parameters`, `body`, `url`), da diese für alle Arbeitsmappenbenutzer sichtbar sind.
+
+Dieser Anbieter unterstützt [JSONPath](workbooks-jsonpath.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

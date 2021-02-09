@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/25/2018
 ms.author: mimckitt
-ms.openlocfilehash: 24d1992db5f1826045fdb47397e44dc2e2fbdaf9
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 94506c4107a157c2b3265a28ffdf5d1eedddd256
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94962160"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954765"
 ---
 # <a name="use-the-azure-custom-script-extension-version-2-with-linux-virtual-machines"></a>Verwenden von Version 2 der Azure-Erweiterung für benutzerdefinierte Skripts mit virtuellen Linux-Computern
 Version 2 der Erweiterung für benutzerdefinierte Skripts lädt Skripts auf virtuelle Azure-Computer herunter und führt sie dort aus. Diese Erweiterung ist hilfreich bei der Konfiguration nach der Bereitstellung, bei der Softwareinstallation oder bei anderen Konfigurations-/Verwaltungsaufgaben. Sie können Skripts von Azure Storage oder einem anderen zugänglichen Speicherort im Internet herunterladen oder sie für die Erweiterungsruntime bereitstellen. 
@@ -59,7 +59,7 @@ Befindet sich Ihr Skript auf einem lokalen Server, müssen gegebenenfalls noch w
 * Es wird nicht empfohlen, ein Skript auszuführen, das bewirkt, dass der VM-Agent angehalten oder aktualisiert wird. Das kann dazu führen, dass die Erweiterung in einem Übergangszustand verbleibt und ein Timeout verursacht wird.
 * Wenn Sie über ein Skript verfügen, das einen Neustart des Systems bewirkt, installieren Sie Anwendungen, und führen Sie Skripts usw. aus. Planen Sie den Neustart des Systems mithilfe eines Cron-Auftrags oder mit einem Tool wie DSC oder Chef oder mit Puppet-Erweiterungen.
 * Die Erweiterung führt jedes Skript nur einmal aus. Soll ein Skript bei jedem Neustart des Systems ausgeführt werden, können Sie [cloud-init image](../linux/using-cloud-init.md) und ein Modul vom Typ [Scripts Per Boot](https://cloudinit.readthedocs.io/en/latest/topics/modules.html#scripts-per-boot) (Skripts pro Boot) verwenden. Alternativ können Sie mithilfe des Skripts eine systemd-Diensteinheit erstellen.
-* Es kann nur eine Version einer Erweiterung auf die VM angewendet werden. Um ein zweites benutzerdefiniertes Skript auszuführen, müssen Sie die benutzerdefinierte Skripterweiterung entfernen und sie mit dem aktualisierten Skript erneut anwenden. 
+* Es kann nur eine Version einer Erweiterung auf die VM angewendet werden. Um ein zweites benutzerdefiniertes Skript auszuführen, können Sie die vorhandene Erweiterung mit der neuen Konfiguration aktualisieren. Alternativ können Sie die benutzerdefinierte Skripterweiterung entfernen und sie mit dem aktualisierten Skript erneut anwenden.
 * Wenn Sie den Ausführungszeitpunkt eines Skripts planen möchten, erstellen Sie mithilfe der Erweiterung einen Cron-Auftrag. 
 * Während der Skriptausführung wird im Azure-Portal sowie in der CLI nur ein Übergangsstatus für die Erweiterung angezeigt. Sollten Sie häufigere Statusaktualisierungen für ein ausgeführtes Skript benötigen, müssen Sie eine eigene Lösung erstellen.
 * Die Erweiterung für benutzerdefinierte Skripts verfügt über keine native Proxyserverunterstützung. Sie können innerhalb Ihres Skripts jedoch ein Dateiübertragungstool mit Proxyserverunterstützung verwenden (beispielsweise *cURL*). 

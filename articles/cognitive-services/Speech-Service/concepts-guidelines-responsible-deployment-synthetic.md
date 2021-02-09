@@ -10,21 +10,33 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/11/2019
 ms.author: benoah
-ms.openlocfilehash: 7d80ffb575c6aa15695279584b58288cbc16be43
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 715c09ef65358b21e78cfde204b4819db0c7875d
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95024975"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99428418"
 ---
 # <a name="guidelines-for-responsible-deployment-of-synthetic-voice-technology"></a>Richtlinien für die verantwortungsvolle Bereitstellung von Technologien mit künstlicher Sprache
+
+## <a name="general-considerations-to-keep-in-mind-when-implementing-ai-systems"></a>Allgemeine zu beachtende Aspekte der Implementierung von KI-Systemen 
+
+Dieser Artikel befasst sich speziell mit synthetischer Sprache und der benutzerdefinierten neuronalen Stimme sowie mit den wichtigsten Aspekten zur verantwortungsbewussten Verwendung dieser Technologie. Im Allgemeinen gibt es jedoch einige Dinge, die Sie unbedingt berücksichtigen müssen, wenn Sie Entscheidungen zur Verwendung und Implementierung von KI-basierten Produkten und Features treffen: 
+
+* Wird dieses Produkt oder Feature gut in meinem Szenario funktionieren? Bevor Sie KI in Ihrem Szenario bereitstellen, müssen Sie mithilfe von echten Daten testen, welche Leistung die KI erzielen kann. Außerdem müssen Sie sicherstellen, dass sie die erforderliche Genauigkeit erzielen kann. 
+* Sind Sie für die Identifikation und Reaktion auf Fehler gewappnet? KI-basierte Produkte und Features sind nicht immer 100 % genau, überlegen Sie sich also, wie Sie mögliche Fehler identifizieren und auf diese reagieren können. 
+
+## <a name="general-guidelines-for-using-synthetic-voice-technology"></a>Allgemeine Richtlinien zur Verwendung der synthetischen Stimme 
 Hier folgen die allgemeinen Entwurfsrichtlinien von Microsoft für den Einsatz der Technologien mit künstlicher Sprache. Diese wurden in Studien entwickelt, die Microsoft mit Sprechern, Verbrauchern sowie Personen mit Sprachstörungen durchführte, um die verantwortungsvolle Entwicklung der künstlichen Sprache zu steuern.
 
-## <a name="general-considerations"></a>Allgemeine Hinweise
 Für die Bereitstellung synthetischer Speech-Technologie gelten die folgenden Richtlinien für die meisten Szenarien.
 
 ### <a name="disclose-when-the-voice-is-synthetic"></a>Offenlegung, wenn die Stimme synthetisch ist.
 Die Angabe, dass eine Stimme computergeneriert ist, minimiert nicht nur das Risiko schädlicher Ergebnisse durch Täuschung, sondern erhöht auch das Vertrauen in das Unternehmen, das die Stimme bereitstellt. Erfahren Sie mehr über die [Vorgehensweise zum Offenlegen](concepts-disclosure-guidelines.md).
+
+Microsoft erfordert von Kunden, dass sie den künstlichen Ursprung benutzerdefinierter neuronaler Stimmen für Benutzer offenlegen. 
+* Stellen Sie sicher, dass Sie ausreichen Informationen für Benutzer bereitstellen, insbesondere, wenn es sich um die Stimme einer bekannten Person handelt. Benutzer treffen ihre Entscheidungen zu Informationen auf Grundlage der Person, die die Informationen übermittelt, unabhängig davon, ob dies bewusst oder unbewusst geschieht.  Diese Informationen könnten beispielsweise zu Beginn einer Aufnahme verbal geäußert werden. Weitere Informationen finden Sie unter [Entwurfsmuster für die Offenlegung](concepts-disclosure-patterns.md).   
+* Ziehen Sie eine ordnungsgemäße Offenlegung für Eltern oder andere Parteien bei Anwendungsfällen in Betracht, die für Minderjährige und Kinder konzipiert sind. Wenn Ihr Anwendungsfall für Minderjährige oder Kinder konzipiert ist, müssen Sie sicherstellen, dass Eltern und Erziehungsberechtigte die Informationen zur Verwendung von künstlichen Medien verstehen können und eine fundierte Entscheidung dazu treffen können, ob Minderjährige oder Kinder die Funktion verwenden dürfen. 
 
 ### <a name="select-appropriate-voice-types-for-your-scenario"></a>Auswählen geeigneter Sprachtypen für Ihr Szenario
 Berücksichtigen Sie sorgfältig den Kontext der Verwendung und die möglichen Schäden, die mit der Verwendung synthetischer Stimmen verbunden sind. So sind z. B. realitätsnahe synthetische Stimmen in Szenarien mit hohem Risiko, wie persönliches Messaging, Finanztransaktionen oder komplexe Situationen, die menschliche Anpassungsfähigkeit oder Empathie erfordern, möglicherweise nicht geeignet. Benutzer können auch unterschiedliche Erwartungen an die Stimmtypen haben. Wenn z. B. vertrauliche Nachrichten von einer synthetischen Stimme gelesen werden, bevorzugen einige Benutzer eine einfühlsamere und menschlichere Wiedergabe der Nachrichten, während andere eine monotonere, unvoreingenommene Stimme bevorzugen. Erwägen Sie, Ihre Anwendung zu testen, um die Benutzerpräferenzen besser zu verstehen.
@@ -39,8 +51,9 @@ In mehrdeutigen, transaktionalen Szenarien (z. B. beim Support eines Callcenters
 Bei der Arbeit mit Sprechern, z. B. Synchronsprechern, zum Erzeugen synthetischer Stimmen, gilt die folgende Richtlinie.
 
 ### <a name="obtain-meaningful-consent-from-voice-talent"></a>Einholen einer zweckdienlichen Einwilligung von Sprechern
-Sprecher erwarten, dass sie die Kontrolle über ihr Voicefont haben (wie und wo es verwendet wird) und für jede Verwendung vergütet werden. Systembesitzer sollten daher eine ausdrückliche schriftliche Genehmigung von Sprechern einholen und über klare vertragliche Vorgaben zu Anwendungsfällen, Nutzungsdauer, Vergütung usw. verfügen. Einige Sprecher sind sich der potenziellen böswilligen Verwendung der Technologie nicht bewusst und sollten von Systembesitzern über die Funktionen der Technologie informiert werden. Weitere Informationen zu Sprechern und zur Einwilligung finden Sie in unserer [Offenlegung für Sprecher](/legal/cognitive-services/speech-service/disclosure-voice-talent).
+Sprecher sollten über Kontrolle über ihr Stimmmodell verfügen (wie und wo es verwendet wird) und für die Verwendung des Modells kompensiert werden. Microsoft erfordert, dass Custom Voice-Kunden eine explizite schriftliche Berechtigung zum Erstellen einer synthetischen Stimme vom Sprecher erhalten und dass die Vereinbarung mit einem Sprecher Informationen zur Dauer, Verwendung und jeglichen Einschränkungen bezüglich Inhalten enthalten.  Wenn Sie eine synthetische Stimme einer bekannten Person erstellen, müssen Sie der Person mit der Stimme eine Möglichkeit bieten, die Inhalte zu bearbeiten oder zu genehmigen.
 
+Einige Sprecher sind sich der potenziellen böswilligen Verwendung der Technologie nicht bewusst und sollten von Systembesitzern über die Funktionen der Technologie informiert werden. Microsoft verlangt, dass Kunden die [Offenlegung für Sprecher](/legal/cognitive-services/speech-service/disclosure-voice-talent) für Sprecher direkt oder für autorisierte Vertreter der Sprecher zur Verfügung stellen. Darin wird beschrieben, wie synthetische Stimmen entwickelt werden und mit Sprachsynthesediensten eingesetzt werden.
 
 ## <a name="considerations-for-those-with-speech-disorders"></a>Überlegungen zu Personen mit Sprachstörungen
 Bei der Arbeit mit Personen mit Sprachstörungen, der Entwicklung oder dem Einsatz synthetischer Sprachtechnologie gelten die folgenden Richtlinien.

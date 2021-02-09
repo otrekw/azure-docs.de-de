@@ -7,12 +7,12 @@ ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 02/19/2020
 ms.author: alkemper
-ms.openlocfilehash: 4e19574e5848d1ee86d13aa02a9cf583b92eff02
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 39ad20bd57e3da6345c63d4601f34b19e640c1d6
+ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96929564"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99256474"
 ---
 # <a name="azure-app-configuration-faq"></a>Häufig gestellte Fragen zu Azure App Configuration
 
@@ -105,7 +105,7 @@ Ein Downgrade vom Standard-Tarif in den Free-Tarif ist nicht möglich. Sie könn
 
 ## <a name="are-there-any-limits-on-the-number-of-requests-made-to-app-configuration"></a>Gibt es Beschränkungen hinsichtlich der Anzahl von Anforderungen, die an die App-Konfiguration gerichtet werden?
 
-Konfigurationsspeicher im Free-Tarif sind auf 1.000 Anforderungen pro Tag beschränkt. Für Konfigurationsspeicher im Standard-Tarif kann eine temporäre Drosselung auftreten, wenn die Anforderungsrate 20.000 Anforderungen pro Stunde überschreitet.
+Beim Lesen von Schlüsselwerten werden die Daten in App Configuration paginiert, und jede Anforderung kann bis zu 100 Schlüsselwerte lesen. Beim Schreiben von Schlüsselwerten kann jede Anforderung einen Schlüsselwert erstellen oder aktualisieren. Dies wird über die REST-API, App Configuration-SDKs und Konfigurationsanbieter unterstützt. Konfigurationsspeicher im Free-Tarif sind auf 1.000 Anforderungen pro Tag beschränkt. Für Konfigurationsspeicher im Standard-Tarif kann eine temporäre Drosselung auftreten, wenn die Anforderungsrate 20.000 Anforderungen pro Stunde überschreitet.
 
 Wenn ein Speicher seine Grenze erreicht, wird der HTTP-Statuscode 429 für alle Anforderungen zurückgegeben, die bis zum Ablauf des Zeitraums vorgenommen wurden. Der `retry-after-ms`-Header in der Antwort gibt eine vorgeschlagene Wartezeit (in Millisekunden) vor der Wiederholung der Anforderung an.
 

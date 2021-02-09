@@ -11,12 +11,12 @@ ms.author: peterlu
 author: peterclu
 ms.date: 07/16/2020
 ms.custom: contperf-fy20q4, tracking-python, contperf-fy21q1
-ms.openlocfilehash: 131feaf6ff01659b7d126604a5d081275e64508f
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 9ef339fb0ccd14314a65d03b59e501069446c870
+ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97029565"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99493836"
 ---
 # <a name="secure-an-azure-machine-learning-training-environment-with-virtual-networks"></a>Schützen einer Azure Machine Learning-Trainingsumgebung mit virtuellen Netzwerken
 
@@ -62,16 +62,19 @@ Wenn Sie ein [verwaltetes Azure Machine Learning-__Computeziel__](concept-comput
 > * Wenn die Azure Storage-Konten für den Arbeitsbereich ebenfalls in einem virtuellen Netzwerk geschützt sind, müssen sie sich im selben virtuellen Netzwerk befinden wie die Azure Machine Learning Compute-Instanz oder der Cluster. 
 > * Damit die Jupyter-Funktionen für Computeinstanzen eingesetzt werden können, stellen Sie sicher, dass die Websocketkommunikation nicht deaktiviert ist. Stellen Sie sicher, dass Ihr Netzwerk WebSocket-Verbindungen mit *.instances.azureml.net und *.instances.azureml.ms zulässt. 
 > * Wenn eine Compute-Instanz in einem Private Link-Arbeitsbereich bereitgestellt wird, kann nur im virtuellen Netzwerk darauf zugegriffen werden. Wenn Sie benutzerdefiniertes DNS oder HOSTS-Dateien verwenden, fügen Sie einen Eintrag für `<instance-name>.<region>.instances.azureml.ms` mit der privaten IP-Adresse des privaten Endpunkts des Arbeitsbereichs hinzu. Weitere Informationen finden Sie im Artikel [Benutzerdefiniertes DNS](./how-to-custom-dns.md).
+> * Das zum Bereitstellen des Computeclusters/der Compute-Instanz verwendete Subnetz darf nicht an einen anderen Dienst (beispielsweise ACI) delegiert werden.
+> * VNET-Dienstendpunktrichtlinien funktionieren für Systemspeicherkonten des Computeclusters/der Compute-Instanz nicht.
+
     
 > [!TIP]
 > Die Machine Learning-Compute-Instanz bzw. der Cluster ordnet __in der Ressourcengruppe mit dem virtuellen Netzwerk__ automatisch zusätzliche Netzwerkressourcen zu. Für alle Compute-Instanzen und -cluster ordnet der Dienst folgende Ressourcen zu:
 > 
 > * Eine Netzwerksicherheitsgruppe
-> * Eine öffentliche IP-Adresse
+> * Eine öffentliche IP-Adresse. Sollte die Erstellung einer öffentlichen IP-Adresse durch eine Azure-Richtlinie verhindert werden, ist die Cluster-/Instanzenbereitstellung nicht erfolgreich.
 > * Ein Lastenausgleichsmodul
 > 
 > Bei Clustern werden diese Ressourcen jedes Mal, wenn der Cluster auf 0 Knoten herunterskaliert wird, gelöscht (und neu erstellt). Die Ressourcen werden jedoch noch einen Moment lang beibehalten, bis die Instanz vollständig gelöscht ist (durch Beenden werden die Ressourcen nicht entfernt). 
-> Diese Ressourcen werden durch die [Ressourcenkontingente](../azure-resource-manager/management/azure-subscription-service-limits.md) des Abonnements beschränkt.
+> Diese Ressourcen werden durch die [Ressourcenkontingente](../azure-resource-manager/management/azure-subscription-service-limits.md) des Abonnements beschränkt. Ist die Ressourcengruppe des virtuellen Netzwerks gesperrt, kann der Computecluster/die Compute-Instanz nicht erfolgreich gelöscht werden. Der Lastenausgleich kann erst nach dem Löschen des Computeclusters/der Compute-Instanz gelöscht werden.
 
 
 ### <a name="required-ports"></a><a id="mlcports"></a>Erforderliche Ports

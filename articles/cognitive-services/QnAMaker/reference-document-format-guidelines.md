@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: reference
 ms.date: 04/06/2020
-ms.openlocfilehash: 1bf6eebcfc43452dd9a62e4a49f9aacbcd517ffc
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 76b33d0c09df87196b8fc1f3cbbb0fd06bd30ce1
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96352234"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99430644"
 ---
 # <a name="format-guidelines-for-imported-documents-and-urls"></a>Formatierungsrichtlinien für importierte Dokumente und URLs
 
@@ -32,6 +32,9 @@ QnA Maker identifiziert Abschnitte und Unterabschnitte sowie Beziehungen in der 
 * Schriftstil
 * Nummerierung
 * Farben
+
+> [!NOTE]
+> Das Extrahieren von Bildern aus hochgeladenen Dokumenten wird derzeit nicht unterstützt.
 
 ## <a name="product-manuals"></a>Produkthandbücher
 

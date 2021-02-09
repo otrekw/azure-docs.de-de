@@ -3,13 +3,13 @@ title: 'Azure Monitor-Ressourcenprotokolle: unterstützte Dienste und Kategorien
 description: 'Referenz zu Azure Monitor: Erläuterung der unterstützten Dienste und Ereignisschemas für Azure-Ressourcenprotokolle.'
 ms.subservice: logs
 ms.topic: reference
-ms.date: 12/09/2020
-ms.openlocfilehash: aeac069b4e9382867664a82af62e29e72da7585e
-ms.sourcegitcommit: c7153bb48ce003a158e83a1174e1ee7e4b1a5461
+ms.date: 01/29/2021
+ms.openlocfilehash: 02488e1a3ff26acf9ff318a2d5c09115aaba8df9
+ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2021
-ms.locfileid: "98232246"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99070745"
 ---
 # <a name="supported-categories-for-azure-resource-logs"></a>Unterstützte Kategorien für Azure-Ressourcenprotokolle
 
@@ -23,7 +23,9 @@ Ein Schema wird mit einer Kombination aus dem Ressourcentyp (in der `resourceId`
 
 ## <a name="costs"></a>Kosten
 
-Das Senden und Speichern von Daten an und in Log Analytics, Azure Storage und/oder Event Hub ist mit Kosten verbunden. Sie können die Kosten bezahlen, um die Daten an diese Speicherorte zu senden und dort zu speichern.  Ressourcenprotokolle sind ein Datentyp, den Sie an diese Speicherorte senden können. Es entstehen zusätzliche [Kosten, um einige Kategorien von Ressourcenprotokollen](https://azure.microsoft.com/pricing/details/monitor/) nach diesen Speicherorten zu exportieren, während bei anderen keine Exportkosten entstehen. Spezifische Exportkosten sind in der folgenden Tabelle aufgeführt.
+Das Senden und Speichern von Daten an und in Log Analytics, Azure Storage und/oder Event Hub ist mit Kosten verbunden. Sie können die Kosten bezahlen, um die Daten an diese Speicherorte zu senden und dort zu speichern.  Ressourcenprotokolle sind ein Datentyp, den Sie an diese Speicherorte senden können. 
+
+Beim Exportieren einiger Kategorien von Ressourcenprotokollen an diese Speicherorte entstehen zusätzliche Kosten. Die Protokolle, die Exportkosten verursachen, sind in der folgenden Tabelle aufgeführt. Weitere Informationen zu den Preisen finden Sie im Abschnitt „Plattformprotokolle“ auf der Seite [Azure Monitor – Preise](https://azure.microsoft.com/pricing/details/monitor/).
 
 ## <a name="supported-log-categories-per-resource-type"></a>Unterstützte Protokollkategorien pro Ressourcentyp
 
@@ -31,859 +33,950 @@ Es folgt eine Liste der Arten von Protokollen, die für jeden Ressourcentyp verf
 
 Einige Kategorien werden möglicherweise nur für bestimmte Ressourcentypen unterstützt. Wenn Sie der Meinung sind, dass eine Ressource fehlt, lesen Sie die ressourcenspezifische Dokumentation. Beispielsweise sind Kategorien des Typs „Microsoft.Sql/servers/databases“ nicht für alle Datenbanktypen verfügbar. Weitere Informationen finden Sie unter den [Informationen zur SQL-Datenbank-Diagnoseprotokollierung](../../azure-sql/database/metrics-diagnostic-telemetry-logging-streaming-export-configure.md). 
 
-Wenn Sie noch etwas vermissen, können Sie unten in diesem Artikel einen GitHub-Kommentar öffnen.
+Wenn Sie der Meinung sind, dass noch etwas fehlt, können Sie unten in diesem Artikel einen GitHub-Kommentar öffnen.
+## <a name="microsoftaaddomainservices"></a>Microsoft.AAD/domainServices
+
+|Category|Anzeigename der Kategorie|Exportkosten|
+|---|---|---|
+|AccountLogon|AccountLogon|Nein|
+|AccountManagement|AccountManagement|Nein|
+|DetailTracking|DetailTracking|Nein|
+|DirectoryServiceAccess|DirectoryServiceAccess|Nein|
+|LogonLogoff|LogonLogoff|Nein|
+|ObjectAccess|ObjectAccess|Nein|
+|PolicyChange|PolicyChange|Nein|
+|PrivilegeUse|PrivilegeUse|Nein|
+|SystemSecurity|SystemSecurity|Nein|
+
+
 ## <a name="microsoftanalysisservicesservers"></a>Microsoft.AnalysisServices/servers
 
-Exportkosten: Kostenlos 
-
-|Category |Anzeigename der Kategorie|
-|---|---|
-|Engine|Engine|
-|Dienst|Dienst|
+|Category|Anzeigename der Kategorie|Exportkosten|
+|---|---|---|
+|Engine|Engine|Nein|
+|Dienst|Dienst|Nein|
 
 
 ## <a name="microsoftapimanagementservice"></a>Microsoft.ApiManagement/service
 
-Exportkosten: Kostenlos 
+|Category|Anzeigename der Kategorie|Exportkosten|
+|---|---|---|
+|GatewayLogs|Protokolle im Zusammenhang mit dem ApiManagement-Gateway|Nein|
 
-|Category |Anzeigename der Kategorie|
-|---|---|
-|GatewayLogs|Protokolle im Zusammenhang mit dem ApiManagement-Gateway|
+
+## <a name="microsoftappconfigurationconfigurationstores"></a>Microsoft.AppConfiguration/configurationStores
+
+|Category|Anzeigename der Kategorie|Exportkosten|
+|---|---|---|
+|HttpRequest|HTTP-Anforderungen|Ja|
 
 
 ## <a name="microsoftappplatformspring"></a>Microsoft.AppPlatform/Spring
 
-Exportkosten: Kostenlos 
+|Category|Anzeigename der Kategorie|Exportkosten|
+|---|---|---|
+|ApplicationConsole|Anwendungskonsole|Nein|
+|SystemLogs|Systemprotokolle|Nein|
 
-|Category |Anzeigename der Kategorie|
-|---|---|
-|ApplicationConsole|Anwendungskonsole|
-|SystemLogs|Systemprotokolle|
+
+## <a name="microsoftattestationattestationproviders"></a>Microsoft.Attestation/attestationProviders
+
+|Category|Anzeigename der Kategorie|Exportkosten|
+|---|---|---|
+|AuditEvent|Protokollkategorie für AuditEvent-Meldungen|Nein|
+|ERR|Protokollkategorie für Fehlermeldungen|Nein|
+|INF|Protokollkategorie für Informationsmeldungen|Nein|
+|WRN|Protokollkategorie für Warnmeldungen|Nein|
 
 
 ## <a name="microsoftautomationautomationaccounts"></a>Microsoft.Automation/automationAccounts
 
-Exportkosten: Kostenlos 
-
-|Category |Anzeigename der Kategorie|
-|---|---|
-|DscNodeStatus|DSC-Knotenstatus|
-|JobLogs|Auftragsprotokolle|
-|JobStreams|Auftragsdatenströme|
+|Category|Anzeigename der Kategorie|Exportkosten|
+|---|---|---|
+|DscNodeStatus|DSC-Knotenstatus|Nein|
+|JobLogs|Auftragsprotokolle|Nein|
+|JobStreams|Auftragsdatenströme|Nein|
 
 
 ## <a name="microsoftbatchbatchaccounts"></a>Microsoft.Batch/batchAccounts
 
-Exportkosten: Kostenlos 
-
-|Category |Anzeigename der Kategorie|
-|---|---|
-|ServiceLog|Dienstprotokolle|
+|Category|Anzeigename der Kategorie|Exportkosten|
+|---|---|---|
+|ServiceLog|Dienstprotokolle|Nein|
 
 
 ## <a name="microsoftbatchaiworkspaces"></a>Microsoft.BatchAI/workspaces
 
-Exportkosten: Kostenlos 
-
-|Category |Anzeigename der Kategorie|
-|---|---|
-|BaiClusterEvent|BaiClusterEvent|
-|BaiClusterNodeEvent|BaiClusterNodeEvent|
-|BaiJobEvent|BaiJobEvent|
+|Category|Anzeigename der Kategorie|Exportkosten|
+|---|---|---|
+|BaiClusterEvent|BaiClusterEvent|Nein|
+|BaiClusterNodeEvent|BaiClusterNodeEvent|Nein|
+|BaiJobEvent|BaiJobEvent|Nein|
 
 
 ## <a name="microsoftblockchainblockchainmembers"></a>Microsoft.Blockchain/blockchainMembers
 
-Exportkosten: Kostenlos 
-
-|Category |Anzeigename der Kategorie|
-|---|---|
-|BlockchainApplication|Blockchainanwendung|
-|FabricOrderer|Fabric-Orderer|
-|FabricPeer|Fabric-Peer|
-|Proxy|Proxy|
+|Category|Anzeigename der Kategorie|Exportkosten|
+|---|---|---|
+|BlockchainApplication|Blockchainanwendung|Nein|
+|FabricOrderer|Fabric-Orderer|Nein|
+|FabricPeer|Fabric-Peer|Nein|
+|Proxy|Proxy|Nein|
 
 
 ## <a name="microsoftblockchaincordamembers"></a>Microsoft.Blockchain/cordaMembers
 
-Exportkosten: Kostenlos 
+|Category|Anzeigename der Kategorie|Exportkosten|
+|---|---|---|
+|BlockchainApplication|Blockchainanwendung|Nein|
 
-|Category |Anzeigename der Kategorie|
-|---|---|
-|BlockchainApplication|Blockchainanwendung|
+
+## <a name="microsoftbotservicebotservices"></a>microsoft.botservice/botservices
+
+|Category|Anzeigename der Kategorie|Exportkosten|
+|---|---|---|
+|BotRequest|Anforderungen von den Kanälen an den Bot|Nein|
+|DependencyRequest|Anforderungen von Abhängigkeiten|Nein|
 
 
 ## <a name="microsoftcdncdnwebapplicationfirewallpolicies"></a>Microsoft.Cdn/cdnwebapplicationfirewallpolicies
 
-Exportkosten: Kostenlos 
-
-|Category |Anzeigename der Kategorie|
-|---|---|
-|WebApplicationFirewallLogs|Web Application Firewall-Protokolle|
+|Category|Anzeigename der Kategorie|Exportkosten|
+|---|---|---|
+|WebApplicationFirewallLogs|Web Application Firewall-Protokolle|Nein|
 
 
 ## <a name="microsoftcdnprofiles"></a>Microsoft.Cdn/profiles
 
-Exportkosten: Kostenlos 
-
-|Category |Anzeigename der Kategorie|
-|---|---|
-|AzureCdnAccessLog|Azure CDN-Zugriffsprotokoll|
+|Category|Anzeigename der Kategorie|Exportkosten|
+|---|---|---|
+|AzureCdnAccessLog|Azure CDN-Zugriffsprotokoll|Nein|
+|FrontDoorAccessLog|FrontDoor-Zugriffsprotokoll|Ja|
+|FrontDoorHealthProbeLog|FrontDoor-Integritätstestprotokoll|Ja|
+|FrontDoorWebApplicationFirewallLog|FrontDoor-Web Application Firewall-Protokoll|Ja|
 
 
 ## <a name="microsoftcdnprofilesendpoints"></a>Microsoft.Cdn/profiles/endpoints
 
-Exportkosten: Kostenlos 
-
-|Category |Anzeigename der Kategorie|
-|---|---|
-|CoreAnalytics|Ruft die Metriken des Endpunkts ab, z.B. Bandbreite, ausgehenden Datenverkehr usw.|
+|Category|Anzeigename der Kategorie|Exportkosten|
+|---|---|---|
+|CoreAnalytics|Ruft die Metriken des Endpunkts ab, z.B. Bandbreite, ausgehenden Datenverkehr usw.|Nein|
 
 
 ## <a name="microsoftclassicnetworknetworksecuritygroups"></a>Microsoft.ClassicNetwork/networksecuritygroups
 
-Exportkosten: Kostenlos 
-
-|Category |Anzeigename der Kategorie|
-|---|---|
-|Regelflussereignis der Netzwerksicherheitsgruppe|Regelflussereignis der Netzwerksicherheitsgruppe|
+|Category|Anzeigename der Kategorie|Exportkosten|
+|---|---|---|
+|Regelflussereignis der Netzwerksicherheitsgruppe|Regelflussereignis der Netzwerksicherheitsgruppe|Nein|
 
 
 ## <a name="microsoftcognitiveservicesaccounts"></a>Microsoft.CognitiveServices/accounts
 
-Exportkosten: Kostenlos 
+|Category|Anzeigename der Kategorie|Exportkosten|
+|---|---|---|
+|Audit|Überwachungsprotokolle|Nein|
+|RequestResponse|Anforderungs- und Antwortprotokolle|Nein|
+|Trace|Ablaufverfolgungsprotokolle|Nein|
 
-|Category |Anzeigename der Kategorie|
-|---|---|
-|Audit|Überwachungsprotokolle|
-|RequestResponse|Anforderungs- und Antwortprotokolle|
-|Trace|Ablaufverfolgungsprotokolle|
+
+## <a name="microsoftcommunicationcommunicationservices"></a>Microsoft.Communication/CommunicationServices
+
+|Category|Anzeigename der Kategorie|Exportkosten|
+|---|---|---|
+|ChatOperational|Protokolle zum Chatbetrieb|Nein|
+|SMSOperational|Protokolle zum SMS-Betrieb|Nein|
+|Verwendung|Verwendungsdatensätze|Nein|
 
 
 ## <a name="microsoftcontainerregistryregistries"></a>Microsoft.ContainerRegistry/registries
 
-Exportkosten: Kostenlos 
-
-|Category |Anzeigename der Kategorie|
-|---|---|
-|ContainerRegistryLoginEvents|Anmeldeereignisse|
-|ContainerRegistryRepositoryEvents|RepositoryEvent-Protokolle|
+|Category|Anzeigename der Kategorie|Exportkosten|
+|---|---|---|
+|ContainerRegistryLoginEvents|Anmeldeereignisse|Nein|
+|ContainerRegistryRepositoryEvents|RepositoryEvent-Protokolle|Nein|
 
 
 ## <a name="microsoftcontainerservicemanagedclusters"></a>Microsoft.ContainerService/managedClusters
 
-Exportkosten: Kostenlos 
-
-|Category |Anzeigename der Kategorie|
-|---|---|
-|cluster-autoscaler|Automatische Kubernetes-Clusterskalierung|
-|kube-apiserver|Kubernetes-API-Server|
-|kube-audit|Kubernetes-Überwachung|
-|kube-controller-manager|Kubernetes-Controller-Manager|
-|kube-scheduler|Kubernetes-Scheduler|
+|Category|Anzeigename der Kategorie|Exportkosten|
+|---|---|---|
+|cluster-autoscaler|Automatische Kubernetes-Clusterskalierung|Nein|
+|guard|guard|Nein|
+|kube-apiserver|Kubernetes-API-Server|Nein|
+|kube-audit|Kubernetes-Überwachung|Nein|
+|kube-audit-admin|Protokolle des Kubernetes-Überwachungsadministrators|Nein|
+|kube-controller-manager|Kubernetes-Controller-Manager|Nein|
+|kube-scheduler|Kubernetes-Scheduler|Nein|
 
 
 ## <a name="microsoftcustomprovidersresourceproviders"></a>Microsoft.CustomProviders/resourceproviders
 
-Exportkosten: Kostenlos 
+|Category|Anzeigename der Kategorie|Exportkosten|
+|---|---|---|
+|AuditLogs|Überwachungsprotokolle für MiniRP-Aufrufe|Nein|
 
-|Category |Anzeigename der Kategorie|
-|---|---|
-|AuditLogs|Überwachungsprotokolle für MiniRP-Aufrufe|
+
+## <a name="microsoftd365customerinsightsinstances"></a>Microsoft.D365CustomerInsights/instances
+
+|Category|Anzeigename der Kategorie|Exportkosten|
+|---|---|---|
+|Audit|Überwachen von Ereignissen|Nein|
+|Bei Betrieb|Betriebsereignisse|Nein|
 
 
 ## <a name="microsoftdatabricksworkspaces"></a>Microsoft.Databricks/workspaces
 
-Exportkosten: Kostenlos 
+|Category|Anzeigename der Kategorie|Exportkosten|
+|---|---|---|
+|accounts|Databricks-Konten|Nein|
+|clusters|Databricks-Cluster|Nein|
+|dbfs|Databricks-Dateisystem|Nein|
+|instancePools|Instanzenpools|Nein|
+|jobs|Databricks-Aufträge|Nein|
+|Notebook|Databricks-Notebook|Nein|
+|secrets|Databricks-Geheimnisse|Nein|
+|sqlPermissions|Databricks-SQL-Berechtigungen|Nein|
+|ssh|Databricks-SSH|Nein|
+|Arbeitsbereich|Databricks-Arbeitsbereich|Nein|
 
-|Category |Anzeigename der Kategorie|
-|---|---|
-|accounts|Databricks-Konten|
-|clusters|Databricks-Cluster|
-|dbfs|Databricks-Dateisystem|
-|instancePools|Instanzenpools|
-|jobs|Databricks-Aufträge|
-|Notebook|Databricks-Notebook|
-|secrets|Databricks-Geheimnisse|
-|sqlPermissions|Databricks-SQL-Berechtigungen|
-|ssh|Databricks-SSH|
-|Arbeitsbereich|Databricks-Arbeitsbereich|
+
+## <a name="microsoftdatacollaborationworkspaces"></a>Microsoft.DataCollaboration/workspaces
+
+|Category|Anzeigename der Kategorie|Exportkosten|
+|---|---|---|
+|CollaborationAudit|Zusammenarbeitsüberwachung|Ja|
+|DataAssets|Datenressourcen|Nein|
+|Pipelines|Pipelines|Nein|
+|Proposals|Vorschläge|Nein|
+|Skripts|Skripts|Nein|
 
 
 ## <a name="microsoftdatafactoryfactories"></a>Microsoft.DataFactory/factories
 
-Exportkosten: Kostenlos 
+|Category|Anzeigename der Kategorie|Exportkosten|
+|---|---|---|
+|ActivityRuns|Pipeline-Aktivitätsausführungsprotokoll|Nein|
+|PipelineRuns|Pipelineausführungsprotokoll|Nein|
+|SSISIntegrationRuntimeLogs|SSIS Integration Runtime-Protokolle|Nein|
+|SSISPackageEventMessageContext|Kontext von SSIS-Paketereignismeldungen|Nein|
+|SSISPackageEventMessages|SSIS-Paketereignismeldungen|Nein|
+|SSISPackageExecutableStatistics|Statistiken zu ausführbaren Dateien in SSIS-Paketen|Nein|
+|SSISPackageExecutionComponentPhases|Komponentenphasen von SSIS-Paketausführungen|Nein|
+|SSISPackageExecutionDataStatistics|Statistiken von SSIS-Paketausführungsdaten|Nein|
+|TriggerRuns|Triggerausführungsprotokoll|Nein|
 
-|Category |Anzeigename der Kategorie|
-|---|---|
-|ActivityRuns|Pipeline-Aktivitätsausführungsprotokoll|
-|PipelineRuns|Pipelineausführungsprotokoll|
-|TriggerRuns|Triggerausführungsprotokoll|
+
+## <a name="microsoftdatalakeanalyticsaccounts"></a>Microsoft.DataLakeAnalytics/accounts
+
+|Category|Anzeigename der Kategorie|Exportkosten|
+|---|---|---|
+|Audit|Überwachungsprotokolle|Nein|
+|Requests|Anforderungsprotokolle|Nein|
 
 
 ## <a name="microsoftdatalakestoreaccounts"></a>Microsoft.DataLakeStore/accounts
 
-Exportkosten: Kostenlos 
-
-|Category |Anzeigename der Kategorie|
-|---|---|
-|Audit|Überwachungsprotokolle|
-|Requests|Anforderungsprotokolle|
+|Category|Anzeigename der Kategorie|Exportkosten|
+|---|---|---|
+|Audit|Überwachungsprotokolle|Nein|
+|Requests|Anforderungsprotokolle|Nein|
 
 
 ## <a name="microsoftdatashareaccounts"></a>Microsoft.DataShare/accounts
 
-Exportkosten: Kostenlos 
-
-|Category |Anzeigename der Kategorie|
-|---|---|
-|ReceivedShareSnapshots|Empfangene Freigabemomentaufnahmen|
-|SentShareSnapshots|Gesendete Freigabemomentaufnahmen|
-|Freigaben|Freigaben|
-|ShareSubscriptions|Freigabeabonnements|
+|Category|Anzeigename der Kategorie|Exportkosten|
+|---|---|---|
+|ReceivedShareSnapshots|Empfangene Freigabemomentaufnahmen|Nein|
+|SentShareSnapshots|Gesendete Freigabemomentaufnahmen|Nein|
+|Freigaben|Freigaben|Nein|
+|ShareSubscriptions|Freigabeabonnements|Nein|
 
 
 ## <a name="microsoftdbformariadbservers"></a>Microsoft.DBforMariaDB/servers
 
-Exportkosten: Kostenlos 
-
-|Category |Anzeigename der Kategorie|
-|---|---|
-|MySqlAuditLogs|MariaDB-Überwachungsprotokolle|
-|MySqlSlowLogs|MariaDB-Serverprotokolle|
+|Category|Anzeigename der Kategorie|Exportkosten|
+|---|---|---|
+|MySqlAuditLogs|MariaDB-Überwachungsprotokolle|Nein|
+|MySqlSlowLogs|MariaDB-Serverprotokolle|Nein|
 
 
 ## <a name="microsoftdbformysqlflexibleservers"></a>Microsoft.DBforMySQL/flexibleServers
 
-Exportkosten: Kostenlos 
-
-|Category |Anzeigename der Kategorie|
-|---|---|
-|MySqlAuditLogs|MySQL-Überwachungsprotokolle|
-|MySqlSlowLogs|Protokolle zu langsamen MySQL-Abfragen|
+|Category|Anzeigename der Kategorie|Exportkosten|
+|---|---|---|
+|MySqlAuditLogs|MySQL-Überwachungsprotokolle|Nein|
+|MySqlSlowLogs|Protokolle zu langsamen MySQL-Abfragen|Nein|
 
 
 ## <a name="microsoftdbformysqlservers"></a>Microsoft.DBforMySQL/servers
 
-Exportkosten: Kostenlos 
-
-|Category |Anzeigename der Kategorie|
-|---|---|
-|MySqlAuditLogs|MySQL-Überwachungsprotokolle|
-|MySqlSlowLogs|MySQL Server-Protokolle|
+|Category|Anzeigename der Kategorie|Exportkosten|
+|---|---|---|
+|MySqlAuditLogs|MySQL-Überwachungsprotokolle|Nein|
+|MySqlSlowLogs|MySQL Server-Protokolle|Nein|
 
 
 ## <a name="microsoftdbforpostgresqlflexibleservers"></a>Microsoft.DBforPostgreSQL/flexibleServers
 
-Exportkosten: Kostenlos 
-
-|Category |Anzeigename der Kategorie|
-|---|---|
-|PostgreSQLLogs|PostgreSQL-Serverprotokolle|
+|Category|Anzeigename der Kategorie|Exportkosten|
+|---|---|---|
+|PostgreSQLLogs|PostgreSQL-Serverprotokolle|Nein|
 
 
 ## <a name="microsoftdbforpostgresqlservers"></a>Microsoft.DBforPostgreSQL/servers
 
-Exportkosten: Kostenlos 
-
-|Category |Anzeigename der Kategorie|
-|---|---|
-|PostgreSQLLogs|PostgreSQL-Serverprotokolle|
-|QueryStoreRuntimeStatistics|Laufzeitstatistik des PostgreSQL-Abfragespeichers|
-|QueryStoreWaitStatistics|Wartestatistik des PostgreSQL-Abfragespeichers|
+|Category|Anzeigename der Kategorie|Exportkosten|
+|---|---|---|
+|PostgreSQLLogs|PostgreSQL-Serverprotokolle|Nein|
+|QueryStoreRuntimeStatistics|Laufzeitstatistik des PostgreSQL-Abfragespeichers|Nein|
+|QueryStoreWaitStatistics|Wartestatistik des PostgreSQL-Abfragespeichers|Nein|
 
 
 ## <a name="microsoftdbforpostgresqlserversv2"></a>Microsoft.DBforPostgreSQL/serversv2
 
-Exportkosten: Kostenlos 
-
-|Category |Anzeigename der Kategorie|
-|---|---|
-|PostgreSQLLogs|PostgreSQL-Serverprotokolle|
+|Category|Anzeigename der Kategorie|Exportkosten|
+|---|---|---|
+|PostgreSQLLogs|PostgreSQL-Serverprotokolle|Nein|
 
 
 ## <a name="microsoftdesktopvirtualizationapplicationgroups"></a>Microsoft.DesktopVirtualization/applicationgroups
 
-Exportkosten: Kostenlos 
-
-|Category |Anzeigename der Kategorie|
-|---|---|
-|Prüfpunkt|Prüfpunkt|
-|Fehler|Fehler|
-|Verwaltung|Verwaltung|
+|Category|Anzeigename der Kategorie|Exportkosten|
+|---|---|---|
+|Prüfpunkt|Prüfpunkt|Nein|
+|Fehler|Fehler|Nein|
+|Verwaltung|Verwaltung|Nein|
 
 
 ## <a name="microsoftdesktopvirtualizationhostpools"></a>Microsoft.DesktopVirtualization/hostpools
 
-Exportkosten: Kostenlos 
-
-|Category |Anzeigename der Kategorie|
-|---|---|
-|Prüfpunkt|Prüfpunkt|
-|Verbindung|Verbindung|
-|Fehler|Fehler|
-|HostRegistration|HostRegistration|
-|Verwaltung|Verwaltung|
+|Category|Anzeigename der Kategorie|Exportkosten|
+|---|---|---|
+|AgentHealthStatus|AgentHealthStatus|Nein|
+|Prüfpunkt|Prüfpunkt|Nein|
+|Verbindung|Verbindung|Nein|
+|Fehler|Fehler|Nein|
+|HostRegistration|HostRegistration|Nein|
+|Verwaltung|Verwaltung|Nein|
 
 
 ## <a name="microsoftdesktopvirtualizationworkspaces"></a>Microsoft.DesktopVirtualization/workspaces
 
-Exportkosten: Kostenlos 
+|Category|Anzeigename der Kategorie|Exportkosten|
+|---|---|---|
+|Prüfpunkt|Prüfpunkt|Nein|
+|Fehler|Fehler|Nein|
+|Feed|Feed|Nein|
+|Verwaltung|Verwaltung|Nein|
 
-|Category |Anzeigename der Kategorie|
-|---|---|
-|Prüfpunkt|Prüfpunkt|
-|Fehler|Fehler|
-|Feed|Feed|
-|Verwaltung|Verwaltung|
+
+## <a name="microsoftdeviceselasticpoolsiothubtenants"></a>Microsoft.Devices/ElasticPools/IotHubTenants
+
+|Category|Anzeigename der Kategorie|Exportkosten|
+|---|---|---|
+|C2DCommands|C2D-Befehle|Nein|
+|C2DTwinOperations|C2D-Zwillingsvorgänge|Nein|
+|Configurations|Configurations|Nein|
+|Verbindungen|Verbindungen|Nein|
+|D2CTwinOperations|D2CTwinOperations|Nein|
+|DeviceIdentityOperations|Geräteidentitätsvorgänge|Nein|
+|DeviceStreams|Gerätestreams (Vorschau)|Nein|
+|DeviceTelemetry|Gerätetelemetrie|Nein|
+|DirectMethods|Direkte Methoden|Nein|
+|DistributedTracing|Verteilte Ablaufverfolgung (Vorschauversion)|Nein|
+|FileUploadOperations|Dateiuploadvorgänge|Nein|
+|JobsOperations|Auftragsvorgänge|Nein|
+|Routen|Routen|Nein|
+|TwinQueries|Zwillingsabfragen|Nein|
 
 
 ## <a name="microsoftdevicesiothubs"></a>Microsoft.Devices/IotHubs
 
-Exportkosten: Kostenlos 
-
-|Category |Anzeigename der Kategorie|
-|---|---|
-|C2DCommands|C2D-Befehle|
-|C2DTwinOperations|C2D-Zwillingsvorgänge|
-|Configurations|Configurations|
-|Verbindungen|Verbindungen|
-|D2CTwinOperations|D2CTwinOperations|
-|DeviceIdentityOperations|Geräteidentitätsvorgänge|
-|DeviceStreams|Gerätestreams (Vorschau)|
-|DeviceTelemetry|Gerätetelemetrie|
-|DirectMethods|Direkte Methoden|
-|DistributedTracing|Verteilte Ablaufverfolgung (Vorschauversion)|
-|FileUploadOperations|Dateiuploadvorgänge|
-|JobsOperations|Auftragsvorgänge|
-|Routen|Routen|
-|TwinQueries|Zwillingsabfragen|
+|Category|Anzeigename der Kategorie|Exportkosten|
+|---|---|---|
+|C2DCommands|C2D-Befehle|Nein|
+|C2DTwinOperations|C2D-Zwillingsvorgänge|Nein|
+|Configurations|Configurations|Nein|
+|Verbindungen|Verbindungen|Nein|
+|D2CTwinOperations|D2CTwinOperations|Nein|
+|DeviceIdentityOperations|Geräteidentitätsvorgänge|Nein|
+|DeviceStreams|Gerätestreams (Vorschau)|Nein|
+|DeviceTelemetry|Gerätetelemetrie|Nein|
+|DirectMethods|Direkte Methoden|Nein|
+|DistributedTracing|Verteilte Ablaufverfolgung (Vorschauversion)|Nein|
+|FileUploadOperations|Dateiuploadvorgänge|Nein|
+|JobsOperations|Auftragsvorgänge|Nein|
+|Routen|Routen|Nein|
+|TwinQueries|Zwillingsabfragen|Nein|
 
 
 ## <a name="microsoftdevicesprovisioningservices"></a>Microsoft.Devices/provisioningServices
 
-Exportkosten: Kostenlos 
+|Category|Anzeigename der Kategorie|Exportkosten|
+|---|---|---|
+|DeviceOperations|Gerätevorgänge|Nein|
+|ServiceOperations|Dienstoperationen|Nein|
 
-|Category |Anzeigename der Kategorie|
-|---|---|
-|DeviceOperations|Gerätevorgänge|
-|ServiceOperations|Dienstoperationen|
+
+## <a name="microsoftdigitaltwinsdigitaltwinsinstances"></a>Microsoft.DigitalTwins/digitalTwinsInstances
+
+|Category|Anzeigename der Kategorie|Exportkosten|
+|---|---|---|
+|DigitalTwinsOperation|DigitalTwinsOperation|Nein|
+|EventRoutesOperation|EventRoutesOperation|Nein|
+|ModelsOperation|ModelsOperation|Nein|
+|QueryOperation|QueryOperation|Nein|
 
 
 ## <a name="microsoftdocumentdbdatabaseaccounts"></a>Microsoft.DocumentDB/databaseAccounts
 
-Exportkosten: Kostenlos 
-
-|Category |Anzeigename der Kategorie|
-|---|---|
-|CassandraRequests|CassandraRequests|
-|ControlPlaneRequests|ControlPlaneRequests|
-|DataPlaneRequests|DataPlaneRequests|
-|GremlinRequests|GremlinRequests|
-|MongoRequests|MongoRequests|
-|PartitionKeyRUConsumption|PartitionKeyRUConsumption|
-|PartitionKeyStatistics|PartitionKeyStatistics|
-|QueryRuntimeStatistics|QueryRuntimeStatistics|
+|Category|Anzeigename der Kategorie|Exportkosten|
+|---|---|---|
+|CassandraRequests|CassandraRequests|Nein|
+|ControlPlaneRequests|ControlPlaneRequests|Nein|
+|DataPlaneRequests|DataPlaneRequests|Nein|
+|GremlinRequests|GremlinRequests|Nein|
+|MongoRequests|MongoRequests|Nein|
+|PartitionKeyRUConsumption|PartitionKeyRUConsumption|Nein|
+|PartitionKeyStatistics|PartitionKeyStatistics|Nein|
+|QueryRuntimeStatistics|QueryRuntimeStatistics|Nein|
 
 
 ## <a name="microsofteventgriddomains"></a>Microsoft.EventGrid/domains
 
-Exportkosten: Kostenlos 
+|Category|Anzeigename der Kategorie|Exportkosten|
+|---|---|---|
+|DeliveryFailures|Protokolle für Zustellungsfehler|Nein|
+|PublishFailures|Protokolle für Veröffentlichungsfehler|Nein|
 
-|Category |Anzeigename der Kategorie|
-|---|---|
-|DeliveryFailures|Protokolle für Zustellungsfehler|
-|PublishFailures|Protokolle für Veröffentlichungsfehler|
+
+## <a name="microsofteventgridpartnernamespaces"></a>Microsoft.EventGrid/partnerNamespaces
+
+|Category|Anzeigename der Kategorie|Exportkosten|
+|---|---|---|
+|DeliveryFailures|Protokolle für Zustellungsfehler|Nein|
+|PublishFailures|Protokolle für Veröffentlichungsfehler|Nein|
+
+
+## <a name="microsofteventgridpartnertopics"></a>Microsoft.EventGrid/partnerTopics
+
+|Category|Anzeigename der Kategorie|Exportkosten|
+|---|---|---|
+|DeliveryFailures|Protokolle für Zustellungsfehler|Nein|
 
 
 ## <a name="microsofteventgridsystemtopics"></a>Microsoft.EventGrid/systemTopics
 
-Exportkosten: Kostenlos 
-
-|Category |Anzeigename der Kategorie|
-|---|---|
-|DeliveryFailures|Protokolle für Zustellungsfehler|
+|Category|Anzeigename der Kategorie|Exportkosten|
+|---|---|---|
+|DeliveryFailures|Protokolle für Zustellungsfehler|Nein|
 
 
 ## <a name="microsofteventgridtopics"></a>Microsoft.EventGrid/topics
 
-Exportkosten: Kostenlos 
-
-|Category |Anzeigename der Kategorie|
-|---|---|
-|DeliveryFailures|Protokolle für Zustellungsfehler|
-|PublishFailures|Protokolle für Veröffentlichungsfehler|
+|Category|Anzeigename der Kategorie|Exportkosten|
+|---|---|---|
+|DeliveryFailures|Protokolle für Zustellungsfehler|Nein|
+|PublishFailures|Protokolle für Veröffentlichungsfehler|Nein|
 
 
 ## <a name="microsofteventhubnamespaces"></a>Microsoft.EventHub/namespaces
 
-Exportkosten: Kostenlos 
+|Category|Anzeigename der Kategorie|Exportkosten|
+|---|---|---|
+|ArchiveLogs|Archivprotokolle|Nein|
+|AutoScaleLogs|Protokolle zur automatischen Skalierung|Nein|
+|CustomerManagedKeyUserLogs|Protokolle für kundenseitig verwalteten Schlüssel|Nein|
+|EventHubVNetConnectionEvent|VNet/IP-Filterung-Verbindungsprotokolle|Nein|
+|KafkaCoordinatorLogs|Kafka-Koordinatorprotokolle|Nein|
+|KafkaUserErrorLogs|Kafka-Benutzerfehlerprotokolle|Nein|
+|OperationalLogs|Betriebsprotokolle|Nein|
 
-|Category |Anzeigename der Kategorie|
-|---|---|
-|ArchiveLogs|Archivprotokolle|
-|AutoScaleLogs|Protokolle zur automatischen Skalierung|
-|CustomerManagedKeyUserLogs|Protokolle für kundenseitig verwalteten Schlüssel|
-|EventHubVNetConnectionEvent|VNet/IP-Filterung-Verbindungsprotokolle|
-|KafkaCoordinatorLogs|Kafka-Koordinatorprotokolle|
-|KafkaUserErrorLogs|Kafka-Benutzerfehlerprotokolle|
-|OperationalLogs|Betriebsprotokolle|
+
+## <a name="microsoftexperimentationexperimentworkspaces"></a>microsoft.experimentation/experimentWorkspaces
+
+|Category|Anzeigename der Kategorie|Exportkosten|
+|---|---|---|
+|Anforderung|Anforderung|Nein|
 
 
 ## <a name="microsofthealthcareapisservices"></a>Microsoft.HealthcareApis/services
 
-Exportkosten: Kostenlos 
-
-|Category |Anzeigename der Kategorie|
-|---|---|
-|AuditLogs|Überwachungsprotokolle|
+|Category|Anzeigename der Kategorie|Exportkosten|
+|---|---|---|
+|AuditLogs|Überwachungsprotokolle|Nein|
 
 
-## <a name="microsoftinsightsautoscalesettings"></a>Microsoft.Insights/AutoscaleSettings
+## <a name="microsoftinsightsautoscalesettings"></a>microsoft.insights/autoscalesettings
 
-Exportkosten: Kostenlos 
-
-|Category |Anzeigename der Kategorie|
-|---|---|
-|AutoscaleEvaluations|Bewertungen der Autoskalierung|
-|AutoscaleScaleActions|Skalierungsaktionen der Autoskalierung|
+|Category|Anzeigename der Kategorie|Exportkosten|
+|---|---|---|
+|AutoscaleEvaluations|Bewertungen der Autoskalierung|Nein|
+|AutoscaleScaleActions|Skalierungsaktionen der Autoskalierung|Nein|
 
 
 ## <a name="microsoftinsightscomponents"></a>Microsoft.Insights/Components
 
-Exportkosten: Kostenlos 
+|Category|Anzeigename der Kategorie|Exportkosten|
+|---|---|---|
+|AppAvailabilityResults|Verfügbarkeitsergebnisse|Nein|
+|AppBrowserTimings|Browserzeiten|Nein|
+|AppDependencies|Abhängigkeiten|Nein|
+|AppEvents|Ereignisse|Nein|
+|AppExceptions|Ausnahmen|Nein|
+|AppMetrics|Metriken|Nein|
+|AppPageViews|Seitenaufrufe|Nein|
+|AppPerformanceCounters|Leistungsindikatoren|Nein|
+|AppRequests|Requests|Nein|
+|AppSystemEvents|Systemereignisse|Nein|
+|AppTraces|Traces|Nein|
 
-|Category |Anzeigename der Kategorie|
-|---|---|
-|AppAvailabilityResults|Verfügbarkeitsergebnisse|
-|AppBrowserTimings|Browserzeiten|
-|AppDependencies|Abhängigkeiten|
-|AppEvents|Events|
-|AppExceptions|Ausnahmen|
-|AppMetrics|Metriken|
-|AppPageViews|Seitenaufrufe|
-|AppPerformanceCounters|Leistungsindikatoren|
-|AppRequests|Requests|
-|AppSystemEvents|Systemereignisse|
-|AppTraces|Traces|
+
+## <a name="microsoftiotspacesgraph"></a>Microsoft.IoTSpaces/Graph
+
+|Category|Anzeigename der Kategorie|Exportkosten|
+|---|---|---|
+|Audit|Audit|Nein|
+|Ausgehende Daten|Ausgehende Daten|Nein|
+|Eingehende Daten|Eingehende Daten|Nein|
+|Bei Betrieb|Bei Betrieb|Nein|
+|Trace|Trace|Nein|
+|UserDefinedFunction|UserDefinedFunction|Nein|
+
+
+## <a name="microsoftkeyvaultmanagedhsms"></a>microsoft.keyvault/managedhsms
+
+|Category|Anzeigename der Kategorie|Exportkosten|
+|---|---|---|
+|AuditEvent|Überwachungsereignis|Nein|
 
 
 ## <a name="microsoftkeyvaultvaults"></a>Microsoft.KeyVault/vaults
 
-Exportkosten: Kostenlos 
-
-|Category |Anzeigename der Kategorie|
-|---|---|
-|AuditEvent|Überwachungsprotokolle|
+|Category|Anzeigename der Kategorie|Exportkosten|
+|---|---|---|
+|AuditEvent|Überwachungsprotokolle|Nein|
 
 
 ## <a name="microsoftkustoclusters"></a>Microsoft.Kusto/Clusters
 
-Exportkosten: Kostenlos 
-
-|Category |Anzeigename der Kategorie|
-|---|---|
-|Befehl|Befehl|
-|FailedIngestion|Fehlgeschlagene Erfassungsvorgänge|
-|IngestionBatching|Batchverarbeitung der Datenerfassung|
-|Abfrage|Abfrage|
-|SucceededIngestion|Erfolgreiche Erfassungsvorgänge|
-|TableDetails|Tabellendetails|
-|TableUsageStatistics|Tabellenverwendungsstatistik|
+|Category|Anzeigename der Kategorie|Exportkosten|
+|---|---|---|
+|Befehl|Befehl|Nein|
+|FailedIngestion|Fehlgeschlagene Erfassungsvorgänge|Nein|
+|IngestionBatching|Batchverarbeitung der Datenerfassung|Nein|
+|Abfrage|Abfrage|Nein|
+|SucceededIngestion|Erfolgreiche Erfassungsvorgänge|Nein|
+|TableDetails|Tabellendetails|Nein|
+|TableUsageStatistics|Tabellenverwendungsstatistik|Nein|
 
 
 ## <a name="microsoftlogicintegrationaccounts"></a>Microsoft.Logic/integrationAccounts
 
-Exportkosten: Kostenlos 
-
-|Category |Anzeigename der Kategorie|
-|---|---|
-|IntegrationAccountTrackingEvents|Integrationskonto –Nachverfolgen von Ereignissen|
+|Category|Anzeigename der Kategorie|Exportkosten|
+|---|---|---|
+|IntegrationAccountTrackingEvents|Integrationskonto –Nachverfolgen von Ereignissen|Nein|
 
 
 ## <a name="microsoftlogicworkflows"></a>Microsoft.Logic/workflows
 
-Exportkosten: Kostenlos 
-
-|Category |Anzeigename der Kategorie|
-|---|---|
-|WorkflowRuntime|Diagnoseereignisse zur Workflowlaufzeit|
+|Category|Anzeigename der Kategorie|Exportkosten|
+|---|---|---|
+|WorkflowRuntime|Diagnoseereignisse zur Workflowlaufzeit|Nein|
 
 
 ## <a name="microsoftmachinelearningservicesworkspaces"></a>Microsoft.MachineLearningServices/workspaces
 
-Exportkosten: Kostenlos 
-
-|Category |Anzeigename der Kategorie|
-|---|---|
-|AmlComputeClusterEvent|AmlComputeClusterEvent|
-|AmlComputeClusterNodeEvent|AmlComputeClusterNodeEvent|
-|AmlComputeCpuGpuUtilization|AmlComputeCpuGpuUtilization|
-|AmlComputeJobEvent|AmlComputeJobEvent|
-|AmlRunStatusChangedEvent|AmlRunStatusChangedEvent|
+|Category|Anzeigename der Kategorie|Exportkosten|
+|---|---|---|
+|AmlComputeClusterEvent|AmlComputeClusterEvent|Nein|
+|AmlComputeClusterNodeEvent|AmlComputeClusterNodeEvent|Nein|
+|AmlComputeCpuGpuUtilization|AmlComputeCpuGpuUtilization|Nein|
+|AmlComputeJobEvent|AmlComputeJobEvent|Nein|
+|AmlRunStatusChangedEvent|AmlRunStatusChangedEvent|Nein|
 
 
 ## <a name="microsoftmediamediaservices"></a>Microsoft.Media/mediaservices
 
-Exportkosten: Kostenlos 
-
-|Category |Anzeigename der Kategorie|
-|---|---|
-|KeyDeliveryRequests|Schlüsselübermittlungsanforderungen|
+|Category|Anzeigename der Kategorie|Exportkosten|
+|---|---|---|
+|KeyDeliveryRequests|Schlüsselübermittlungsanforderungen|Nein|
 
 
 ## <a name="microsoftnetworkapplicationgateways"></a>Microsoft.Network/applicationGateways
 
-Exportkosten: Kostenlos 
-
-|Category |Anzeigename der Kategorie|
-|---|---|
-|ApplicationGatewayAccessLog|Application Gateway-Zugriffsprotokoll|
-|ApplicationGatewayFirewallLog|Application Gateway-Firewallprotokoll|
-|ApplicationGatewayPerformanceLog|Application Gateway-Leistungsprotokoll|
+|Category|Anzeigename der Kategorie|Exportkosten|
+|---|---|---|
+|ApplicationGatewayAccessLog|Application Gateway-Zugriffsprotokoll|Nein|
+|ApplicationGatewayFirewallLog|Application Gateway-Firewallprotokoll|Nein|
+|ApplicationGatewayPerformanceLog|Application Gateway-Leistungsprotokoll|Nein|
 
 
 ## <a name="microsoftnetworkazurefirewalls"></a>Microsoft.Network/azurefirewalls
 
-Exportkosten: Kostenlos 
-
-|Category |Anzeigename der Kategorie|
-|---|---|
-|AzureFirewallApplicationRule|Azure Firewall-Anwendungsregel|
-|AzureFirewallNetworkRule|Azure Firewall-Netzwerkregel|
+|Category|Anzeigename der Kategorie|Exportkosten|
+|---|---|---|
+|AzureFirewallApplicationRule|Azure Firewall-Anwendungsregel|Nein|
+|AzureFirewallDnsProxy|Azure Firewall-DNS-Proxy|Nein|
+|AzureFirewallNetworkRule|Azure Firewall-Netzwerkregel|Nein|
 
 
 ## <a name="microsoftnetworkbastionhosts"></a>Microsoft.Network/bastionHosts
 
-Exportkosten: Kostenlos 
-
-|Category |Anzeigename der Kategorie|
-|---|---|
-|BastionAuditLogs|Bastion-Überwachungsprotokolle|
+|Category|Anzeigename der Kategorie|Exportkosten|
+|---|---|---|
+|BastionAuditLogs|Bastion-Überwachungsprotokolle|Nein|
 
 
 ## <a name="microsoftnetworkexpressroutecircuits"></a>Microsoft.Network/expressRouteCircuits
 
-Exportkosten: Kostenlos 
-
-|Category |Anzeigename der Kategorie|
-|---|---|
-|PeeringRouteLog|Routentabellenprotokolle zum Peering|
+|Category|Anzeigename der Kategorie|Exportkosten|
+|---|---|---|
+|PeeringRouteLog|Routentabellenprotokolle zum Peering|Nein|
 
 
 ## <a name="microsoftnetworkfrontdoors"></a>Microsoft.Network/frontdoors
 
-Exportkosten: Kostenlos 
-
-|Category |Anzeigename der Kategorie|
-|---|---|
-|FrontdoorAccessLog|Frontdoor-Zugriffsprotokoll|
-|FrontdoorWebApplicationFirewallLog|Frontdoor-Web Application Firewall-Protokoll|
+|Category|Anzeigename der Kategorie|Exportkosten|
+|---|---|---|
+|FrontdoorAccessLog|Frontdoor-Zugriffsprotokoll|Nein|
+|FrontdoorWebApplicationFirewallLog|Frontdoor-Web Application Firewall-Protokoll|Nein|
 
 
 ## <a name="microsoftnetworkloadbalancers"></a>Microsoft.Network/loadBalancers
 
-Exportkosten: Kostenlos 
-
-|Category |Anzeigename der Kategorie|
-|---|---|
-|LoadBalancerAlertEvent|Load Balancer-Warnereignisse|
-|LoadBalancerProbeHealthStatus|Integritätsstatus der Load Balancer-Stichprobe|
+|Category|Anzeigename der Kategorie|Exportkosten|
+|---|---|---|
+|LoadBalancerAlertEvent|Load Balancer-Warnereignisse|Nein|
+|LoadBalancerProbeHealthStatus|Integritätsstatus der Load Balancer-Stichprobe|Nein|
 
 
 ## <a name="microsoftnetworknetworksecuritygroups"></a>Microsoft.Network/networksecuritygroups
 
-Exportkosten: Kostenlos 
+|Category|Anzeigename der Kategorie|Exportkosten|
+|---|---|---|
+|NetworkSecurityGroupEvent|Ereignis der Netzwerksicherheitsgruppe|Nein|
+|NetworkSecurityGroupFlowEvent|Regelflussereignis der Netzwerksicherheitsgruppe|Nein|
+|NetworkSecurityGroupRuleCounter|Regelzähler der Netzwerksicherheitsgruppe|Nein|
 
-|Category |Anzeigename der Kategorie|
-|---|---|
-|NetworkSecurityGroupEvent|Ereignis der Netzwerksicherheitsgruppe|
-|NetworkSecurityGroupFlowEvent|Regelflussereignis der Netzwerksicherheitsgruppe|
-|NetworkSecurityGroupRuleCounter|Regelzähler der Netzwerksicherheitsgruppe|
+
+## <a name="microsoftnetworkp2svpngateways"></a>Microsoft.Network/p2sVpnGateways
+
+|Category|Anzeigename der Kategorie|Exportkosten|
+|---|---|---|
+|GatewayDiagnosticLog|Gatewaydiagnoseprotokolle|Nein|
+|IKEDiagnosticLog|IKE-Diagnoseprotokolle|Nein|
+|P2SDiagnosticLog|P2S-Diagnoseprotokolle|Nein|
 
 
 ## <a name="microsoftnetworkpublicipaddresses"></a>Microsoft.Network/publicIPAddresses
 
-Exportkosten: Kostenlos 
-
-|Category |Anzeigename der Kategorie|
-|---|---|
-|DDoSMitigationFlowLogs|Datenflussprotokolle von Entscheidungen zur DDoS-Risikominderung|
-|DDoSMitigationReports|Berichte zur DDoS-Risikominderung|
-|DDoSProtectionNotifications|DDoS-Schutz-Benachrichtigungen|
+|Category|Anzeigename der Kategorie|Exportkosten|
+|---|---|---|
+|DDoSMitigationFlowLogs|Datenflussprotokolle von Entscheidungen zur DDoS-Risikominderung|Nein|
+|DDoSMitigationReports|Berichte zur DDoS-Risikominderung|Nein|
+|DDoSProtectionNotifications|DDoS-Schutz-Benachrichtigungen|Nein|
 
 
 ## <a name="microsoftnetworktrafficmanagerprofiles"></a>Microsoft.Network/trafficManagerProfiles
 
-Exportkosten: Kostenlos 
-
-|Category |Anzeigename der Kategorie|
-|---|---|
-|ProbeHealthStatusEvents|Traffic Manager-Testintegritätsergebnisse (Ereignis)|
+|Category|Anzeigename der Kategorie|Exportkosten|
+|---|---|---|
+|ProbeHealthStatusEvents|Traffic Manager-Testintegritätsergebnisse (Ereignis)|Nein|
 
 
 ## <a name="microsoftnetworkvirtualnetworkgateways"></a>Microsoft.Network/virtualNetworkGateways
 
-Exportkosten: Kostenlos 
-
-|Category |Anzeigename der Kategorie|
-|---|---|
-|GatewayDiagnosticLog|Gatewaydiagnoseprotokolle|
-|IKEDiagnosticLog|IKE-Diagnoseprotokolle|
-|P2SDiagnosticLog|P2S-Diagnoseprotokolle|
-|RouteDiagnosticLog|Routendiagnoseprotokolle|
-|TunnelDiagnosticLog|Tunneldiagnoseprotokolle|
+|Category|Anzeigename der Kategorie|Exportkosten|
+|---|---|---|
+|GatewayDiagnosticLog|Gatewaydiagnoseprotokolle|Nein|
+|IKEDiagnosticLog|IKE-Diagnoseprotokolle|Nein|
+|P2SDiagnosticLog|P2S-Diagnoseprotokolle|Nein|
+|RouteDiagnosticLog|Routendiagnoseprotokolle|Nein|
+|TunnelDiagnosticLog|Tunneldiagnoseprotokolle|Nein|
 
 
 ## <a name="microsoftnetworkvirtualnetworks"></a>Microsoft.Network/virtualNetworks
 
-Exportkosten: Kostenlos 
+|Category|Anzeigename der Kategorie|Exportkosten|
+|---|---|---|
+|VMProtectionAlerts|VM-Schutz-Warnungen|Nein|
 
-|Category |Anzeigename der Kategorie|
-|---|---|
-|VMProtectionAlerts|VM-Schutz-Warnungen|
+
+## <a name="microsoftnetworkvpngateways"></a>Microsoft.Network/vpnGateways
+
+|Category|Anzeigename der Kategorie|Exportkosten|
+|---|---|---|
+|GatewayDiagnosticLog|Gatewaydiagnoseprotokolle|Nein|
+|IKEDiagnosticLog|IKE-Diagnoseprotokolle|Nein|
+|RouteDiagnosticLog|Routendiagnoseprotokolle|Nein|
+|TunnelDiagnosticLog|Tunneldiagnoseprotokolle|Nein|
+
+
+## <a name="microsoftnotificationhubsnamespaces"></a>Microsoft.NotificationHubs/namespaces
+
+|Category|Anzeigename der Kategorie|Exportkosten|
+|---|---|---|
+|OperationalLogs|Betriebsprotokolle|Nein|
+
+
+## <a name="microsoftoperationalinsightsworkspaces"></a>Microsoft.OperationalInsights/workspaces
+
+|Category|Anzeigename der Kategorie|Exportkosten|
+|---|---|---|
+|Audit|Überwachungsprotokolle|Nein|
+
+
+## <a name="microsoftpowerbitenants"></a>Microsoft.PowerBI/tenants
+
+|Category|Anzeigename der Kategorie|Exportkosten|
+|---|---|---|
+|Engine|Engine|Nein|
+
+
+## <a name="microsoftpowerbitenantsworkspaces"></a>Microsoft.PowerBI/tenants/workspaces
+
+|Category|Anzeigename der Kategorie|Exportkosten|
+|---|---|---|
+|Engine|Engine|Nein|
 
 
 ## <a name="microsoftpowerbidedicatedcapacities"></a>Microsoft.PowerBIDedicated/capacities
 
-Exportkosten: Kostenlos 
+|Category|Anzeigename der Kategorie|Exportkosten|
+|---|---|---|
+|Engine|Engine|Nein|
 
-|Category |Anzeigename der Kategorie|
-|---|---|
-|Engine|Engine|
+
+## <a name="microsoftprojectbabylonaccounts"></a>Microsoft.ProjectBabylon/accounts
+
+|Category|Anzeigename der Kategorie|Exportkosten|
+|---|---|---|
+|ScanStatusLogEvent|ScanStatus|Nein|
+
+
+## <a name="microsoftpurviewaccounts"></a>microsoft.purview/accounts
+
+|Category|Anzeigename der Kategorie|Exportkosten|
+|---|---|---|
+|ScanStatusLogEvent|ScanStatus|Nein|
 
 
 ## <a name="microsoftrecoveryservicesvaults"></a>Microsoft.RecoveryServices/Vaults
 
-Exportkosten: Kostenlos 
-
-|Category |Anzeigename der Kategorie|
-|---|---|
-|AddonAzureBackupAlerts|Add-On: Azure Backup-Warnungsdaten|
-|AddonAzureBackupJobs|Add-On: Azure Backup-Auftragsdaten|
-|AddonAzureBackupPolicy|Add-On: Azure Backup-Richtliniendaten|
-|AddonAzureBackupProtectedInstance|Add-On: Azure Backup-Daten für geschützte Instanz|
-|AddonAzureBackupStorage|Add-On: Azure Backup-Speicherdaten|
-|AzureBackupReport|Azure Backup-Berichtsdaten|
-|AzureSiteRecoveryEvents|Azure Site Recovery-Ereignisse|
-|AzureSiteRecoveryJobs|Azure Site Recovery-Aufträge|
-|AzureSiteRecoveryProtectedDiskDataChurn|Datenänderungen auf mit Azure Site Recovery geschützten Datenträgern|
-|AzureSiteRecoveryRecoveryPoints|Azure Site Recovery-Wiederherstellungspunkte|
-|AzureSiteRecoveryReplicatedItems|Replizierte Azure Site Recovery-Elemente|
-|AzureSiteRecoveryReplicationDataUploadRate|Uploadrate für Azure Site Recovery-Replikationsdaten|
-|AzureSiteRecoveryReplicationStats|Azure Site Recovery-Replikationsstatistiken|
-|CoreAzureBackup|Kern: Azure Backup-Daten|
+|Category|Anzeigename der Kategorie|Exportkosten|
+|---|---|---|
+|AddonAzureBackupAlerts|Add-On: Azure Backup-Warnungsdaten|Nein|
+|AddonAzureBackupJobs|Add-On: Azure Backup-Auftragsdaten|Nein|
+|AddonAzureBackupPolicy|Add-On: Azure Backup-Richtliniendaten|Nein|
+|AddonAzureBackupProtectedInstance|Add-On: Azure Backup-Daten für geschützte Instanz|Nein|
+|AddonAzureBackupStorage|Add-On: Azure Backup-Speicherdaten|Nein|
+|AzureBackupReport|Azure Backup-Berichtsdaten|Nein|
+|AzureSiteRecoveryEvents|Azure Site Recovery-Ereignisse|Nein|
+|AzureSiteRecoveryJobs|Azure Site Recovery-Aufträge|Nein|
+|AzureSiteRecoveryProtectedDiskDataChurn|Datenänderungen auf mit Azure Site Recovery geschützten Datenträgern|Nein|
+|AzureSiteRecoveryRecoveryPoints|Azure Site Recovery-Wiederherstellungspunkte|Nein|
+|AzureSiteRecoveryReplicatedItems|Replizierte Azure Site Recovery-Elemente|Nein|
+|AzureSiteRecoveryReplicationDataUploadRate|Uploadrate für Azure Site Recovery-Replikationsdaten|Nein|
+|AzureSiteRecoveryReplicationStats|Azure Site Recovery-Replikationsstatistiken|Nein|
+|CoreAzureBackup|Kern: Azure Backup-Daten|Nein|
 
 
 ## <a name="microsoftrelaynamespaces"></a>Microsoft.Relay/namespaces
 
-Exportkosten: Kostenlos 
-
-|Category |Anzeigename der Kategorie|
-|---|---|
-|HybridConnectionsEvent|HybridConnections Events|
+|Category|Anzeigename der Kategorie|Exportkosten|
+|---|---|---|
+|HybridConnectionsEvent|HybridConnections Events|Nein|
+|HybridConnectionsLogs|HybridConnectionsLogs|Nein|
 
 
 ## <a name="microsoftsearchsearchservices"></a>Microsoft.Search/searchServices
 
-Exportkosten: Kostenlos 
-
-|Category |Anzeigename der Kategorie|
-|---|---|
-|OperationLogs|Vorgangsprotokolle|
+|Category|Anzeigename der Kategorie|Exportkosten|
+|---|---|---|
+|OperationLogs|Vorgangsprotokolle|Nein|
 
 
 ## <a name="microsoftservicebusnamespaces"></a>Microsoft.ServiceBus/namespaces
 
-Exportkosten: Kostenlos 
-
-|Category |Anzeigename der Kategorie|
-|---|---|
-|OperationalLogs|Betriebsprotokolle|
+|Category|Anzeigename der Kategorie|Exportkosten|
+|---|---|---|
+|OperationalLogs|Betriebsprotokolle|Nein|
 
 
 ## <a name="microsoftsignalrservicesignalr"></a>Microsoft.SignalRService/SignalR
 
-Exportkosten: Kostenlos 
-
-|Category |Anzeigename der Kategorie|
-|---|---|
-|AllLogs|Protokolle für Azure SignalR Service|
+|Category|Anzeigename der Kategorie|Exportkosten|
+|---|---|---|
+|AllLogs|Protokolle für Azure SignalR Service|Nein|
 
 
 ## <a name="microsoftsqlmanagedinstances"></a>Microsoft.Sql/managedInstances
 
-Exportkosten: Kostenlos 
-
-|Category |Anzeigename der Kategorie|
-|---|---|
-|DevOpsOperationsAudit|Überwachungsprotokolle für DevOps-Vorgänge|
-|ResourceUsageStats|Nutzungsstatistiken zu Ressourcen|
-|SQLSecurityAuditEvents|SQL-Sicherheitsüberwachungsereignis|
+|Category|Anzeigename der Kategorie|Exportkosten|
+|---|---|---|
+|DevOpsOperationsAudit|Überwachungsprotokolle für DevOps-Vorgänge|Nein|
+|ResourceUsageStats|Nutzungsstatistiken zu Ressourcen|Nein|
+|SQLSecurityAuditEvents|SQL-Sicherheitsüberwachungsereignis|Nein|
 
 
 ## <a name="microsoftsqlmanagedinstancesdatabases"></a>Microsoft.Sql/managedInstances/databases
 
-Exportkosten: Kostenlos 
-
-|Category |Anzeigename der Kategorie|
-|---|---|
-|Errors|Errors|
-|QueryStoreRuntimeStatistics|Laufzeitstatistik des Abfragespeichers|
-|QueryStoreWaitStatistics|Wartestatistik des Abfragespeichers|
-|SQLInsights|SQL-Informationen|
+|Category|Anzeigename der Kategorie|Exportkosten|
+|---|---|---|
+|Errors|Errors|Nein|
+|QueryStoreRuntimeStatistics|Laufzeitstatistik des Abfragespeichers|Nein|
+|QueryStoreWaitStatistics|Wartestatistik des Abfragespeichers|Nein|
+|SQLInsights|SQL-Informationen|Nein|
 
 
 ## <a name="microsoftsqlserversdatabases"></a>Microsoft.Sql/servers/databases
 
-Exportkosten: Kostenlos 
-
-|Category |Anzeigename der Kategorie|
-|---|---|
-|AutomaticTuning|Automatische Optimierung|
-|Blöcke|Blöcke|
-|DatabaseWaitStatistics|Wartestatistik der Datenbank|
-|Deadlocks|Deadlocks|
-|DevOpsOperationsAudit|Überwachungsprotokolle für DevOps-Vorgänge|
-|DmsWorkers|DMS-Worker|
-|Errors|Errors|
-|ExecRequests|Ausführungsanforderungen|
-|QueryStoreRuntimeStatistics|Laufzeitstatistik des Abfragespeichers|
-|QueryStoreWaitStatistics|Wartestatistik des Abfragespeichers|
-|RequestSteps|Anforderungsschritte|
-|SQLInsights|SQL-Informationen|
-|SqlRequests|SQL-Anforderungen|
-|SQLSecurityAuditEvents|SQL-Sicherheitsüberwachungsereignis|
-|Zeitlimits|Zeitlimits|
-|Wartevorgänge|Wartevorgänge|
+|Category|Anzeigename der Kategorie|Exportkosten|
+|---|---|---|
+|AutomaticTuning|Automatische Optimierung|Nein|
+|Blöcke|Blöcke|Nein|
+|DatabaseWaitStatistics|Wartestatistik der Datenbank|Nein|
+|Deadlocks|Deadlocks|Nein|
+|DevOpsOperationsAudit|Überwachungsprotokolle für DevOps-Vorgänge|Nein|
+|DmsWorkers|DMS-Worker|Nein|
+|Errors|Errors|Nein|
+|ExecRequests|Ausführungsanforderungen|Nein|
+|QueryStoreRuntimeStatistics|Laufzeitstatistik des Abfragespeichers|Nein|
+|QueryStoreWaitStatistics|Wartestatistik des Abfragespeichers|Nein|
+|RequestSteps|Anforderungsschritte|Nein|
+|SQLInsights|SQL-Informationen|Nein|
+|SqlRequests|SQL-Anforderungen|Nein|
+|SQLSecurityAuditEvents|SQL-Sicherheitsüberwachungsereignis|Nein|
+|Zeitlimits|Zeitlimits|Nein|
+|Wartevorgänge|Wartevorgänge|Nein|
 
 
 ## <a name="microsoftstoragestorageaccountsblobservices"></a>Microsoft.Storage/storageAccounts/blobServices
 
-Exportkosten: Dies wird wie im Abschnitt „Plattformprotokolle“ der Seite [Azure Monitor – Preise](https://azure.microsoft.com/pricing/details/monitor/) beschrieben bezahlt. 
-
-|Category |Anzeigename der Kategorie|
-|---|---|
-|StorageDelete|StorageDelete|
-|StorageRead|StorageRead|
-|StorageWrite|StorageWrite|
+|Category|Anzeigename der Kategorie|Exportkosten|
+|---|---|---|
+|StorageDelete|StorageDelete|Ja|
+|StorageRead|StorageRead|Ja|
+|StorageWrite|StorageWrite|Ja|
 
 
 ## <a name="microsoftstoragestorageaccountsfileservices"></a>Microsoft.Storage/storageAccounts/fileServices
 
-Exportkosten: Dies wird wie im Abschnitt „Plattformprotokolle“ der Seite [Azure Monitor – Preise](https://azure.microsoft.com/pricing/details/monitor/) beschrieben bezahlt. 
-
-|Category |Anzeigename der Kategorie|
-|---|---|
-|StorageDelete|StorageDelete|
-|StorageRead|StorageRead|
-|StorageWrite|StorageWrite|
+|Category|Anzeigename der Kategorie|Exportkosten|
+|---|---|---|
+|StorageDelete|StorageDelete|Ja|
+|StorageRead|StorageRead|Ja|
+|StorageWrite|StorageWrite|Ja|
 
 
 ## <a name="microsoftstoragestorageaccountsqueueservices"></a>Microsoft.Storage/storageAccounts/queueServices
 
-Exportkosten: Dies wird wie im Abschnitt „Plattformprotokolle“ der Seite [Azure Monitor – Preise](https://azure.microsoft.com/pricing/details/monitor/) beschrieben bezahlt. 
- 
-|Category |Anzeigename der Kategorie|
-|---|---|
-|StorageDelete|StorageDelete|
-|StorageRead|StorageRead|
-|StorageWrite|StorageWrite|
+|Category|Anzeigename der Kategorie|Exportkosten|
+|---|---|---|
+|StorageDelete|StorageDelete|Ja|
+|StorageRead|StorageRead|Ja|
+|StorageWrite|StorageWrite|Ja|
 
 
 ## <a name="microsoftstoragestorageaccountstableservices"></a>Microsoft.Storage/storageAccounts/tableServices
 
-Exportkosten: Dies wird wie im Abschnitt „Plattformprotokolle“ der Seite [Azure Monitor – Preise](https://azure.microsoft.com/pricing/details/monitor/) beschrieben bezahlt. 
- 
-|Category |Anzeigename der Kategorie|
-|---|---|
-|StorageDelete|StorageDelete|
-|StorageRead|StorageRead|
-|StorageWrite|StorageWrite|
+|Category|Anzeigename der Kategorie|Exportkosten|
+|---|---|---|
+|StorageDelete|StorageDelete|Ja|
+|StorageRead|StorageRead|Ja|
+|StorageWrite|StorageWrite|Ja|
 
 
 ## <a name="microsoftstreamanalyticsstreamingjobs"></a>Microsoft.StreamAnalytics/streamingjobs
 
-Exportkosten: Kostenlos 
-
-|Category |Anzeigename der Kategorie|
-|---|---|
-|Erstellen|Erstellen|
-|Ausführung|Ausführung|
+|Category|Anzeigename der Kategorie|Exportkosten|
+|---|---|---|
+|Erstellen|Erstellen|Nein|
+|Ausführung|Ausführung|Nein|
 
 
 ## <a name="microsoftsynapseworkspaces"></a>Microsoft.Synapse/workspaces
 
-Exportkosten: Kostenlos 
-
-|Category |Anzeigename der Kategorie|
-|---|---|
-|BuiltinSqlReqsEnded|Integrierter SQL-Pool, beendete Anforderungen|
-|GatewayApiRequests|Synapse-Gateway-API-Anforderungen|
-|SQLSecurityAuditEvents|SQL-Sicherheitsüberwachungsereignis|
-|SynapseRbacOperations|Synapse-RBAC-Vorgänge|
+|Category|Anzeigename der Kategorie|Exportkosten|
+|---|---|---|
+|BuiltinSqlReqsEnded|Integrierter SQL-Pool, beendete Anforderungen|Nein|
+|GatewayApiRequests|Synapse-Gateway-API-Anforderungen|Nein|
+|SQLSecurityAuditEvents|SQL-Sicherheitsüberwachungsereignis|Nein|
+|SynapseRbacOperations|Synapse-RBAC-Vorgänge|Nein|
 
 
 ## <a name="microsoftsynapseworkspacesbigdatapools"></a>Microsoft.Synapse/workspaces/bigDataPools
 
-Exportkosten: Kostenlos 
-
-|Category |Anzeigename der Kategorie|
-|---|---|
-|BigDataPoolAppsEnded|Big Data-Pool, beendete Anwendungen|
+|Category|Anzeigename der Kategorie|Exportkosten|
+|---|---|---|
+|BigDataPoolAppsEnded|Big Data-Pool, beendete Anwendungen|Nein|
 
 
 ## <a name="microsoftsynapseworkspacessqlpools"></a>Microsoft.Synapse/workspaces/sqlPools
 
-Exportkosten: Kostenlos 
+|Category|Anzeigename der Kategorie|Exportkosten|
+|---|---|---|
+|DmsWorkers|DMS-Worker|Nein|
+|ExecRequests|Ausführungsanforderungen|Nein|
+|RequestSteps|Anforderungsschritte|Nein|
+|SqlRequests|SQL-Anforderungen|Nein|
+|SQLSecurityAuditEvents|SQL-Sicherheitsüberwachungsereignis|Nein|
+|Wartevorgänge|Wartevorgänge|Nein|
 
-|Category |Anzeigename der Kategorie|
-|---|---|
-|DmsWorkers|DMS-Worker|
-|ExecRequests|Ausführungsanforderungen|
-|RequestSteps|Anforderungsschritte|
-|SqlRequests|SQL-Anforderungen|
-|SQLSecurityAuditEvents|SQL-Sicherheitsüberwachungsereignis|
-|Wartevorgänge|Wartevorgänge|
+
+## <a name="microsofttimeseriesinsightsenvironments"></a>Microsoft.TimeSeriesInsights/environments
+
+|Category|Anzeigename der Kategorie|Exportkosten|
+|---|---|---|
+|Eingehende Daten|Eingehende Daten|Nein|
+|Verwaltung|Verwaltung|Nein|
+
+
+## <a name="microsofttimeseriesinsightsenvironmentseventsources"></a>Microsoft.TimeSeriesInsights/environments/eventsources
+
+|Category|Anzeigename der Kategorie|Exportkosten|
+|---|---|---|
+|Eingehende Daten|Eingehende Daten|Nein|
+|Verwaltung|Verwaltung|Nein|
 
 
 ## <a name="microsoftwebhostingenvironments"></a>microsoft.web/hostingenvironments
 
-Exportkosten: Kostenlos 
-
-|Category |Anzeigename der Kategorie|
-|---|---|
-|AppServiceEnvironmentPlatformLogs|Plattformprotokolle der App Service-Umgebung|
+|Category|Anzeigename der Kategorie|Exportkosten|
+|---|---|---|
+|AppServiceEnvironmentPlatformLogs|Plattformprotokolle der App Service-Umgebung|Nein|
 
 
 ## <a name="microsoftwebsites"></a>microsoft.web/sites
 
-Exportkosten: Kostenlos 
-
-
-|Category |Anzeigename der Kategorie|
-|---|---|
-|AppServiceAppLogs|App Service-Anwendungsprotokolle|
-|AppServiceAuditLogs|Zugriffsüberwachungsprotokolle|
-|AppServiceConsoleLogs|App Service-Konsolenprotokolle|
-|AppServiceFileAuditLogs|Überwachungsprotokolle für Website-Inhaltsänderungen|
-|AppServiceHTTPLogs|HTTP-Protokolle|
-|FunctionAppLogs|Funktionsanwendungsprotokolle|
+|Category|Anzeigename der Kategorie|Exportkosten|
+|---|---|---|
+|AppServiceAntivirusScanAuditLogs|Antivirenbericht-Überwachungsprotokolle|Nein|
+|AppServiceAppLogs|App Service-Anwendungsprotokolle|Nein|
+|AppServiceAuditLogs|Zugriffsüberwachungsprotokolle|Nein|
+|AppServiceConsoleLogs|App Service-Konsolenprotokolle|Nein|
+|AppServiceFileAuditLogs|Überwachungsprotokolle für Website-Inhaltsänderungen|Nein|
+|AppServiceHTTPLogs|HTTP-Protokolle|Nein|
+|AppServiceIPSecAuditLogs|IPSecurity-Überwachungsprotokolle|Nein|
+|AppServicePlatformLogs|App Service-Plattformprotokolle|Nein|
+|FunctionAppLogs|Funktionsanwendungsprotokolle|Nein|
 
 
 ## <a name="microsoftwebsitesslots"></a>microsoft.web/sites/slots
 
-Exportkosten: Kostenlos 
+|Category|Anzeigename der Kategorie|Exportkosten|
+|---|---|---|
+|AppServiceAntivirusScanAuditLogs|Antivirenbericht-Überwachungsprotokolle|Nein|
+|AppServiceAppLogs|App Service-Anwendungsprotokolle|Nein|
+|AppServiceAuditLogs|Zugriffsüberwachungsprotokolle|Nein|
+|AppServiceConsoleLogs|App Service-Konsolenprotokolle|Nein|
+|AppServiceFileAuditLogs|Überwachungsprotokolle für Website-Inhaltsänderungen|Nein|
+|AppServiceHTTPLogs|HTTP-Protokolle|Nein|
+|AppServiceIPSecAuditLogs|IPSecurity-Überwachungsprotokolle|Nein|
+|AppServicePlatformLogs|App Service-Plattformprotokolle|Nein|
+|FunctionAppLogs|Funktionsanwendungsprotokolle|Nein|
 
-
-|Category |Anzeigename der Kategorie|
-|---|---|
-|AppServiceAppLogs|App Service-Anwendungsprotokolle|
-|AppServiceAuditLogs|Zugriffsüberwachungsprotokolle|
-|AppServiceConsoleLogs|App Service-Konsolenprotokolle|
-|AppServiceFileAuditLogs|Überwachungsprotokolle für Website-Inhaltsänderungen|
-|AppServiceHTTPLogs|HTTP-Protokolle|
-|FunctionAppLogs|Funktionsanwendungsprotokolle|
 
 
 ## <a name="next-steps"></a>Nächste Schritte

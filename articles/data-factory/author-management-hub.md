@@ -8,13 +8,13 @@ ms.topic: conceptual
 author: dcstwh
 ms.author: weetok
 manager: anandsub
-ms.date: 06/02/2020
-ms.openlocfilehash: aa1246a65dc6971107abe35f4a418b0bbb05641b
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.date: 02/01/2021
+ms.openlocfilehash: c3366b7ba0eb0b49d4d5b89481b7bed843e52c8e
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96486129"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99428995"
 ---
 # <a name="management-hub-in-azure-data-factory"></a>Verwaltungshub in Azure Data Factory
 
@@ -40,7 +40,11 @@ Eine Integration Runtime ist eine Computeinfrastruktur, mit der Azure Data Facto
 
 ### <a name="git-configuration"></a>Git-Konfiguration
 
-Zeigen Sie die konfigurierten Git-Repository-Einstellungen im Verwaltungshub an, und bearbeiten Sie sie dort. Weitere Informationen finden Sie unter [Quellcodeverwaltung in Azure Data Factory](source-control.md).
+Sie können alle Git-bezogenen Informationen unter den Git-Konfigurationseinstellungen im Verwaltungshub anzeigen/bearbeiten. 
+
+Die Informationen zum zuletzt veröffentlichten Commit sind ebenfalls aufgeführt und können zum besseren Verständnis des genauen Commits beitragen, der zuletzt in Umgebungen veröffentlicht/bereitgestellt wurde. Außerdem können sie bei Hotfixes in der Produktionsumgebung hilfreich sein.
+
+Weitere Informationen finden Sie unter [Quellcodeverwaltung in Azure Data Factory](source-control.md).
 
 ![Verwalten des Git-Repositorys](media/author-management-hub/management-hub-git.png)
 

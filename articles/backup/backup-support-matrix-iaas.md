@@ -4,12 +4,12 @@ description: Enthält eine Zusammenfassung der Unterstützungseinstellungen und 
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.custom: references_regions
-ms.openlocfilehash: d3329d9cac9547fbe9ec971bb8944f50971732b5
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 3d1238bffd785a47b6e0ffab70366a15dfff0ef3
+ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98757405"
+ms.lasthandoff: 01/31/2021
+ms.locfileid: "99218110"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Unterstützungsmatrix für die Sicherung virtueller Azure-Computer
 
@@ -150,6 +150,7 @@ Gen2-VMS | Unterstützt <br> Azure Backup unterstützt die Sicherung und Wiederh
 Sicherung virtueller Azure-Computer mit Sperren | Wird für nicht verwaltete virtuelle Computer nicht unterstützt. <br><br> Wird für verwaltete virtuelle Computer unterstützt.
 [Spot-VMs](../virtual-machines/spot-vms.md) | Nicht unterstützt. Azure Backup stellt Spot-VMs als reguläre Azure-VMs wieder her.
 [Azure Dedicated Host](https://docs.microsoft.com/azure/virtual-machines/dedicated-hosts) | Unterstützt
+Konfiguration von „Windows-Speicherplätze“ für eigenständige virtuelle Azure-Computer | Unterstützt 
 
 ## <a name="vm-storage-support"></a>Unterstützung für VM-Speicher
 

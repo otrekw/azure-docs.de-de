@@ -3,12 +3,12 @@ title: Beheben von Netzwerkproblemen mit der Registrierung
 description: Enthält eine Beschreibung der Symptome, Ursachen und Lösungen häufiger Probleme, die beim Zugreifen auf eine Azure-Containerregistrierung in einem virtuellen Netzwerk oder hinter einer Firewall auftreten.
 ms.topic: article
 ms.date: 10/01/2020
-ms.openlocfilehash: 95b32b839d1b3b804a2035b797e1146a09d5236a
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 2f15eb8a830ce93ecf942663fc8a44b9df86d6d6
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96351792"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99052160"
 ---
 # <a name="troubleshoot-network-issues-with-registry"></a>Beheben von Netzwerkproblemen mit der Registrierung
 
@@ -39,7 +39,9 @@ Beispiele für Symptome sind:
 
 Führen Sie den Befehl [az acr check-health](/cli/azure/acr#az-acr-check-health) aus, um weitere Informationen zur Integrität der Registrierungsumgebung abzurufen und optional Zugriff auf eine Zielregistrierung zu erhalten. Diagnostizieren Sie beispielsweise bestimmte Probleme mit der Netzwerkkonnektivität oder -konfiguration. 
 
-Befehlsbeispiele finden Sie unter [Überprüfen der Integrität einer Azure-Containerregistrierung](container-registry-check-health.md). Wenn Fehler gemeldet werden, sollten Sie die [Fehlerreferenz](container-registry-health-error-reference.md) und die folgenden Abschnitte auf empfohlene Lösungen überprüfen.
+Befehlsbeispiele finden Sie unter [Überprüfen der Integrität einer Azure-Containerregistrierung](container-registry-check-health.md). Wenn Fehler gemeldet werden, überprüfen Sie die [Fehlerreferenz](container-registry-health-error-reference.md) und die folgenden Abschnitte für empfohlene Lösungen.
+
+Wenn Sie Probleme bei Verwendung der Registrierung mit Azure Kubernetes Service haben, führen Sie den Befehl [az aks check-acr](/cli/azure/aks#az_aks_check_acr) aus, um zu überprüfen, ob der Zugriff auf die Registrierung vom AKS-Cluster aus möglich ist.
 
 > [!NOTE]
 > Einige Symptome in Bezug auf die Netzwerkkonnektivität können auch auftreten, wenn es Probleme mit der Authentifizierung oder Autorisierung der Registrierung gibt. Weitere Informationen finden Sie unter [Beheben von Problemen mit der Registrierungsanmeldung](container-registry-troubleshoot-login.md).
@@ -121,7 +123,7 @@ Verwandte Links:
 
 ## <a name="advanced-troubleshooting"></a>Erweiterte Problembehandlung
 
-Wenn die [Sammlung mit Ressourcenprotokollen](container-registry-diagnostics-audit-logs.md) in der Registrierung aktiviert ist, sollten Sie das Protokoll „ContainterRegistryLoginEvents“ überprüfen. In diesem Protokoll werden Authentifizierungsereignisse und der zugehörige Status gespeichert, z. B. eingehende Identität und IP-Adresse. Fragen Sie das Protokoll nach [Authentifizierungsfehlern für die Registrierung](container-registry-diagnostics-audit-logs.md#registry-authentication-failures) ab. 
+Wenn [Sammlung von Ressourcenprotokollen](container-registry-diagnostics-audit-logs.md) in der Registrierung aktiviert ist, überprüfen Sie das Protokoll „ContainterRegistryLoginEvents“. In diesem Protokoll werden Registrierungauthentifizierungsereignisse und der -status gespeichert, einschließlich der eingehenden Identität und IP-Adresse. Fragen Sie das Protokoll nach [Authentifizierungsfehlern für die Registrierung](container-registry-diagnostics-audit-logs.md#registry-authentication-failures) ab. 
 
 Verwandte Links:
 
@@ -132,9 +134,9 @@ Verwandte Links:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sehen Sie sich die folgenden Optionen an, falls Sie Ihr Problem hier nicht lösen können.
+Wenn Sie Ihr Problem hier nicht lösen können, sehen Sie sich die folgenden Optionen an.
 
-* Weitere Themen zur Problembehandlung für die Registrierung sind:
+* Weitere Themen zur Problembehandlung der Registrierung sind:
   * [Beheben von Problemen mit der Registrierungsanmeldung](container-registry-troubleshoot-login.md) 
   * [Beheben von Problemen mit der Registrierungsleistung](container-registry-troubleshoot-performance.md)
 * [Optionen für Support durch die Community](https://azure.microsoft.com/support/community/)

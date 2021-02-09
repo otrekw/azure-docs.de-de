@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 06/28/2019
 ms.author: ryanwi
 ROBOTS: NOINDEX
-ms.openlocfilehash: 222c961f9e5587cd5526778e6ef1c800f5085a69
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: 6da6187e59bf028101eac2ea6f09fb1530821bfd
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98064299"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98937859"
 ---
 # <a name="azure-portal-registration-fields-for-custom-developed-apps"></a>Registrierungsfelder im Azure-Portal für benutzerdefiniert entwickelte Apps
 
@@ -61,7 +61,7 @@ Wenn Sie die oben aufgeführten Felder ausgefüllt haben, wird Ihre Anwendung im
 
 | Feld           | BESCHREIBUNG        |
 |-----------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Abmelde-URL      | Dies ist die Abmelde-URL für das einmalige Abmelden. Azure AD sendet eine Abmeldeanforderung an diese URL, wenn ein Benutzer seine Azure AD-Sitzung über eine beliebige andere registrierte Anwendung löscht.|
+| URL für Front-Channel-Abmeldung      | Dies ist die Abmelde-URL für das einmalige Abmelden. Azure AD sendet eine Abmeldeanforderung an diese URL, wenn ein Benutzer seine Azure AD-Sitzung über eine beliebige andere registrierte Anwendung löscht.|
 | Unterstützte Kontotypen  | Diese Option gibt an, ob die Anwendung von mehreren Mandanten verwendet werden kann. Dies bedeutet in der Regel, dass externe Organisationen Ihre Anwendung nutzen können, indem sie die Anwendung in ihrem Mandanten registrieren und ihr Zugriff auf die Organisationsdaten gewähren.|
 | Umleitungs-URLs      | Die Umleitungs- oder Antwort-URLs sind die Endpunkte, an die Azure AD die von Ihrer Anwendung angeforderten Token zurückgibt. Bei nativen Anwendungen werden Benutzer nach erfolgreicher Autorisierung an diese URIs weitergeleitet. Azure AD prüft, ob der Umleitungs-URI, den Ihre Anwendung in der OAuth 2.0-Anforderung bereitstellt, mit einem der im Portal registrierten Werte übereinstimmt.|
 
