@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 08/06/2020
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40, devx-track-js
-ms.openlocfilehash: 874488e5de7888edad5310afce1afd1baec4ece0
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: d790b466f669ed067863b6643c8f59662eb628a7
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98753071"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99226437"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-a-javascript-single-page-application-spa"></a>Tutorial: Anmelden von Benutzern und Aufrufen der Microsoft Graph-API aus einer JavaScript-SPA (Single-Page-Webanwendung)
 
@@ -275,7 +275,7 @@ Bevor Sie mit der Authentifizierung fortfahren, registrieren Sie die Anwendung i
 1. Wählen Sie **Registrieren**.
 1. Notieren Sie sich für die spätere Verwendung auf der Seite **Übersicht** den Wert von **Anwendungs-ID (Client)** .
 1. Wählen Sie unter **Verwalten** die Option **Authentifizierung** aus.
-1. Wählen Sie im Abschnitt **Implizite Genehmigungen** die Optionen **ID-Token** und **Zugriffstoken** aus. ID- und Zugriffstoken sind erforderlich, da diese App Benutzer anmelden und eine API aufrufen muss.
+1. Wählen Sie im Abschnitt **Implizite Genehmigung und Hybridflows** die Optionen **ID-Token** und **Zugriffstoken** aus. ID- und Zugriffstoken sind erforderlich, da diese App Benutzer anmelden und eine API aufrufen muss.
 1. Wählen Sie **Speichern** aus.
 
 > ### <a name="set-a-redirect-url-for-nodejs"></a>Festlegen einer Umleitungs-URL für Node.js

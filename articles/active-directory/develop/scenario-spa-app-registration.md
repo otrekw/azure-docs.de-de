@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 05/19/2020
 ms.author: hahamil
 ms.custom: aaddev
-ms.openlocfilehash: d4189e466d5e9b41247723165ce2a5c14c4a8dfa
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 39a675ff4947e7eca64298e1e68160cd6149f081
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98756409"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99226337"
 ---
 # <a name="single-page-application-app-registration"></a>Single-Page-Webanwendung: App-Registrierung
 
@@ -47,7 +47,7 @@ Führen Sie die folgenden Schritte aus, um einen Umleitungs-URI für eine App hi
 1. Wählen Sie im Azure-Portal die App-Registrierung aus, die Sie zuvor im Abschnitt [Erstellen der App-Registrierung](#create-the-app-registration) erstellt haben.
 1. Wählen Sie unter **Verwalten** die Optionen **Authentifizierung** > **Plattform hinzufügen** aus.
 1. Wählen Sie unter **Webanwendungen** die Kachel **Single-Page-Webanwendung** aus.
-1. Geben Sie unter **Umleitungs-URIs** einen [Umleitungs-URI](reply-url.md) ein. Aktivieren Sie **KEINES** der beiden Kontrollkästchen unter **Implizite Genehmigung**.
+1. Geben Sie unter **Umleitungs-URIs** einen [Umleitungs-URI](reply-url.md) ein. Aktivieren Sie **KEINES** der beiden Kontrollkästchen unter **Implizite Genehmigung und hybride Flows**.
 1. Wählen Sie **Konfigurieren** aus, um den Vorgang zum Hinzufügen des Umleitungs-URIs abzuschließen.
 
 Sie haben jetzt die Registrierung Ihrer Single-Page-Webanwendung (Single-Page Application, SPA) abgeschlossen und einen Umleitungs-URI konfiguriert, an den der Client umgeleitet wird und alle Sicherheitstoken gesendet werden. Wenn Sie Ihren Umleitungs-URI über die Kachel **Single-Page-Webanwendung** im Bereich **Plattform hinzufügen** konfigurieren, wird Ihre Anwendungsregistrierung für die Unterstützung des Autorisierungscodeflows mit PKCE und CORS konfiguriert.
@@ -62,7 +62,7 @@ Führen Sie die folgenden Schritte aus, um einen Umleitungs-URI für eine Single
 1. Wählen Sie unter **Verwalten** die Optionen **Authentifizierung** > **Plattform hinzufügen** aus.
 1. Wählen Sie unter **Webanwendungen** die Kachel **Single-Page-Webanwendung** aus.
 1. Geben Sie unter **Umleitungs-URIs** einen [Umleitungs-URI](reply-url.md) ein.
-1. Aktivieren Sie den **impliziten Flow**:
+1. Aktivieren Sie die Option **Implizite Genehmigung und hybride Flows**:
     - Wenn Ihre Anwendung Benutzer anmeldet, wählen Sie **ID-Token** aus.
     - Wenn Ihre Anwendung auch eine geschützte Web-API aufrufen muss, wählen Sie **Zugriffstoken** aus. Weitere Informationen zu diesen Tokentypen finden Sie unter [ID-Token](id-tokens.md) und [Zugriffstoken](access-tokens.md).
 1. Wählen Sie **Konfigurieren** aus, um den Vorgang zum Hinzufügen des Umleitungs-URIs abzuschließen.

@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 01/26/2020
 ms.author: mbaldwin
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 61e1e729ab0aeac1f7b8e5ee6787da38c5fef108
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: cd90043c8f03361244d3500f83f6df5347f1d867
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98020144"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99539399"
 ---
 # <a name="automate-the-rotation-of-a-secret-for-resources-that-use-one-set-of-authentication-credentials"></a>Automatisieren der Rotation eines Geheimnisses für Ressourcen mit einem Satz mit Anmeldeinformationen für die Authentifizierung
 
@@ -45,7 +45,7 @@ Sie können den unten angegebenen Bereitstellungslink verwenden, falls Sie nicht
 
 [![Bild einer Schaltfläche mit der Bezeichnung „Bereitstellung in Azure“](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2FKeyVault-Rotation-SQLPassword-Csharp%2Fmain%2FARM-Templates%2FInitial-Setup%2Fazuredeploy.json)
 
-1. Wählen Sie unter **Ressourcengruppe** die Option **Neu erstellen** aus. Geben Sie der Gruppe den Namen **akvrotation**.
+1. Wählen Sie unter **Ressourcengruppe** die Option **Neu erstellen** aus. Geben Sie einen Namen für die Gruppe ein. In diesem Tutorial wird **akvrotation** verwendet.
 1. Geben Sie unter **SQL-Administratoranmeldung** den Anmeldenamen des SQL-Administrators ein. 
 1. Klicken Sie auf **Überprüfen + erstellen**.
 1. Klicken Sie auf **Erstellen**

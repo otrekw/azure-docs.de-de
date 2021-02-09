@@ -3,12 +3,12 @@ title: 'Fortlaufende Videoaufzeichnung in der Cloud und Wiedergabe aus der Cloud
 description: In diesem Tutorial erfahren Sie, wie Sie Azure Live Video Analytics in Azure IoT Edge für die fortlaufende Videoaufzeichnung in der Cloud verwenden und einen beliebigen Teil dieses Videos mit Azure Media Services streamen.
 ms.topic: tutorial
 ms.date: 05/27/2020
-ms.openlocfilehash: 8fa2b65416499e58235fa312ffdcd2d71c3cfb39
-ms.sourcegitcommit: 31cfd3782a448068c0ff1105abe06035ee7b672a
+ms.openlocfilehash: 6956539595c5997569dc92b5c62e2396cb5fdd9c
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2021
-ms.locfileid: "98060145"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99524396"
 ---
 # <a name="tutorial-continuous-video-recording-to-the-cloud-and-playback-from-the-cloud"></a>Tutorial: Fortlaufende Videoaufzeichnung in der Cloud und Wiedergabe aus der Cloud
 
@@ -108,8 +108,8 @@ Sie benötigen die Dateien, um diese Schritte auszuführen:
     AAD_TENANT_ID="<AAD Tenant ID>"  
     AAD_SERVICE_PRINCIPAL_ID="<AAD SERVICE_PRINCIPAL ID>"  
     AAD_SERVICE_PRINCIPAL_SECRET="<AAD SERVICE_PRINCIPAL ID>"  
-    INPUT_VIDEO_FOLDER_ON_DEVICE="/home/lvaadmin/samples/input"  
-    OUTPUT_VIDEO_FOLDER_ON_DEVICE="/home/lvaadmin/samples/output"  
+    VIDEO_INPUT_FOLDER_ON_DEVICE="/home/lvaadmin/samples/input"  
+    VIDEO_OUTPUT_FOLDER_ON_DEVICE="/home/lvaadmin/samples/output"  
     APPDATA_FOLDER_ON_DEVICE="/var/local/mediaservices"
     CONTAINER_REGISTRY_USERNAME_myacr="<your container registry username>"  
     CONTAINER_REGISTRY_PASSWORD_myacr="<your container registry username>"      
@@ -163,9 +163,15 @@ Wenn Sie das Modul „Live Video Analytics in IoT Edge“ verwenden, um den Liv
 
     ![Überwachung des integrierten Ereignisendpunkts starten](./media/quickstarts/start-monitoring-iothub-events.png)
 
+> [!NOTE]
+> Unter Umständen werden Sie aufgefordert, für die IoT Hub-Instanz die Informationen zum integrierten Endpunkt anzugeben. Sie erhalten diese Informationen, indem Sie im Azure-Portal zu Ihrer IoT Hub-Instanz navigieren und im linken Navigationsbereich nach der Option **Integrierte Endpunkte** suchen. Klicken Sie darauf, und suchen Sie im Abschnitt **Event Hub-kompatibler Endpunkt** nach dem **Event Hub-kompatiblen Endpunkt**. Kopieren und verwenden Sie den im Feld enthaltenen Text. Der Endpunkt sieht in etwa wie folgt aus:  
+    ```
+    Endpoint=sb://iothub-ns-xxx.servicebus.windows.net/;SharedAccessKeyName=iothubowner;SharedAccessKey=XXX;EntityPath=<IoT Hub name>
+    ```
+
 ## <a name="run-the-program"></a>Ausführen des Programms 
 
-1. Öffnen Sie in Visual Studio Code die Registerkarte **Erweiterungen** (oder drücken Sie STRG+UMSCHALT+X), und suchen Sie nach Azure IoT Hub.
+1. Öffnen Sie in Visual Studio Code die Registerkarte **Erweiterungen** (oder drücken Sie STRG + UMSCHALT + X), und suchen Sie nach Azure IoT Hub.
 1. Klicken Sie mit der rechten Maustaste, um das Kontextmenü zu öffnen, und wählen Sie **Erweiterungseinstellungen** aus.
 
     > [!div class="mx-imgBorder"]
@@ -177,7 +183,7 @@ Wenn Sie das Modul „Live Video Analytics in IoT Edge“ verwenden, um den Liv
 1. Navigieren Sie zu „src/cloud-to-device-console-app/operations.json“.
 1. Bearbeiten Sie unter dem Knoten **GraphTopologySet** Folgendes:
 
-    `"topologyUrl" : "https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/cvr-asset/topology.json" `
+    `"topologyUrl" : "https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/cvr-asset/2.0/topology.json" `
 1. Vergewissern Sie sich anschließend unter den Knoten **GraphInstanceSet** und **GraphTopologyDelete**, dass der Wert für **topologyName** dem Wert der Eigenschaft **name** in der vorherigen Graphtopologie entspricht:
 
     `"topologyName" : "CVRToAMSAsset"`  

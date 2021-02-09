@@ -3,38 +3,41 @@
 - name: Übersicht
   href: overview.md
   items:
-    - name: Lösungsarchitektur
-      href: architecture.md
     - name: Neuigkeiten
       href: release-notes.md
-    - name: Schnellstarts
-      expanded: true
+    - name: Architektur einer Lösung ohne Agent
+      href: architecture.md
+    - name: Architektur einer Agent-basierten Lösung
+      href: architecture-agent-based.md
+- name: Schnellstarts
+  expanded: true
+  items:
     - name: Lösung ohne Agent für Organisationen
       items:
         - name: Systemanforderungen
           href: quickstart-system-prerequisites.md
         - name: Erste Schritte mit Azure Defender für IoT
           href: getting-started.md
-    - name: Agent-basierte Lösung für Geräteentwickler
+    - name: Agent-basierte Lösung für Gerätehersteller
       items:
         - name: Konfigurieren des Sicherheitsmoduls für Azure RTOS
           href: quickstart-azure-rtos-security-module.md
-        - name: IoT Hub
-          href: quickstart-iot-hub-integration.md
-        - name: "Durchführen des Onboardings für Azure Defender für IoT in IoT\_Hub"
+        - name: Durchführen des Onboardings für eine Agent-basierte Lösung für Azure Defender für IoT
           href: quickstart-onboard-iot-hub.md
-        - name: Sicherheits-Agents
-          href: security-agent-architecture.md
-        - name: Konfigurieren Ihrer Lösung
+        - name: Erstellen eines IoT-Micro-Agent-Modulzwillings für Defender (Vorschau)
+          href: quickstart-create-micro-agent-module-twin.md
+        - name: Installieren eines Micro-Agents für Defender für IoT (Vorschau)
+          href: quickstart-standalone-agent-binary-installation.md
+        - name: Erstellen eines Micro-Agents für Defender für IoT aus dem Quellcode (Vorschau)
+          href: quickstart-building-the-defender-micro-agent-from-source.md
+        - name: Hinzufügen von Azure-Ressourcen zu Ihrer IoT-Lösung
           href: quickstart-configure-your-solution.md
-        - name: Erstellen eines Modulzwillings für Azure Defender für IoT
-          href: quickstart-create-security-twin.md
-        - name: Untersuchen von Sicherheitsempfehlungen
-          href: quickstart-investigate-security-recommendations.md
-        - name: Erstellen benutzerdefinierter Sicherheitswarnungen
-          href: quickstart-create-custom-alerts.md
-        - name: Untersuchen von Sicherheitswarnungen
-          href: quickstart-investigate-security-alerts.md
+        - name: Klassisch
+          items:
+            - name: Übersicht über Sicherheits-Agents
+              href: security-agent-architecture.md
+            - name: Erstellen eines Azure IoT-Sicherheitsmodulzwillings
+              href: quickstart-create-security-twin.md
 - name: Konzepte
   items:
     - name: Lösung ohne Agent für Organisationen
@@ -43,35 +46,38 @@
           href: concept-key-concepts.md
     - name: Agent-basierte Lösung für Geräteentwickler
       items:
-        - name: Sicherheitsmodul für Azure RTOS
-          href: iot-security-azure-rtos.md
-          items:
-            - name: Grundlegendes zum Sicherheitsmodul für Azure RTOS
-              href: concept-rtos-security-module.md
-            - name: 'Sicherheitsmodul für Azure RTOS: Warnungen und Empfehlungen'
-              href: concept-rtos-security-alerts-recommendations.md
-        - name: Edge-Sicherheitsmodul
-          href: security-edge-architecture.md
-        - name: Sicherheits-Agents
-          href: overview-security-agents.md
-        - name: Authentifizierung von Sicherheits-Agents
-          href: concept-security-agent-authentication-methods.md
-        - name: Sicherheitsmodul
-          href: concept-security-module.md
+        - name: Agent-Portfolioübersicht und Betriebssystemunterstützung (Vorschau)
+          href: concept-agent-portfolio-overview-os-support.md
+        - name: Übersicht über den eigenständigen Micro-Agent (Vorschau)
+          href: concept-standalone-micro-agent-overview.md
+        - name: Authentifizierung des Sicherheits-Agents (Vorschau)
+          href: concept-security-agent-authentication.md
+        - name: 'Sicherheitsstatus: CIS-Benchmark'
+          href: concept-security-posture.md
+        - name: Ereignisaggregation (Vorschau)
+          href: concept-event-aggregation.md
         - name: Sicherheitswarnungen
           href: concept-security-alerts.md
-        - name: Anpassbare Sicherheitswarnungen
+        - name: Benutzerdefinierte Sicherheitswarnungen
           href: concept-customizable-security-alerts.md
-        - name: Sicherheit
+        - name: Sicherheitsempfehlungen
+          href: concept-recommendations.md
+        - name: Klassisch
           items:
-            - name: Sicherheitsempfehlungen
-              href: concept-recommendations.md
-            - name: Sicherheitsbaseline
+            - name: Sicherheitsmodul
+              href: concept-security-module.md
+            - name: Edge-Sicherheitsmodul
+              href: security-edge-architecture.md
+            - name: Sicherheits-Agents
+              href: overview-security-agents.md
+            - name: Authentifizierung von Sicherheits-Agents
+              href: concept-security-agent-authentication-methods.md
+            - name: Grundwert
+              href: concept-baseline.md
+            - name: Azure-Sicherheitsbaseline für Azure Defender für IoT
               href: security-baseline.md
-        - name: Grundwert
-          href: concept-baseline.md
-        - name: Ereignisaggregation
-          href: event-aggregation.md
+            - name: Klassische Ereignisaggregation für Sicherheitsmodule
+              href: event-aggregation.md
 - name: Anleitungen
   items:
     - name: Lösung ohne Agent für Organisationen
@@ -147,8 +153,10 @@
               href: how-to-manage-the-alert-event.md
             - name: Beschleunigen der Reaktion auf Warnungsvorfälle
               href: how-to-accelerate-alert-incident-response.md
+              displayName: 'custom, alerts, comments, groups'
             - name: Weiterleiten von Warnungsinformation
               href: how-to-forward-alert-information-to-partners.md
+              displayName: 'integration, partners, vendor, Syslog server, NetWitness,CEF, LEEF, email'
         - name: 'Gewinnen von Erkenntnissen zu globalen, regionalen und lokalen Bedrohungen'
           href: how-to-gain-insight-into-global-regional-and-local-threats.md
         - name: Arbeiten mit Warnungen auf der lokalen Verwaltungskonsole
@@ -176,11 +184,12 @@
               displayName: 'import, enrich'
         - name: Nachverfolgen der Sensoraktivität
           href: how-to-track-sensor-activity.md
-          displayName: 'timeline, time line, time-line, event'
+          displayName: 'timeline, time line, time-line, event, audit'
         - name: Behandeln von Problemen mit dem Sensor und der lokalen Verwaltungskonsole
           href: how-to-troubleshoot-the-sensor-and-on-premises-management-console.md
         - name: Einrichten der SNMP-MIB-Überwachung
           href: how-to-set-up-snmp-mib-monitoring.md
+          displayName: health
         - name: Integrieren von Partnern
           items:
             - name: Cisco ISE pxGrid-Integration
@@ -195,42 +204,67 @@
               href: integration-servicenow.md
             - name: Splunk-Integration
               href: integration-splunk.md
-    - name: Agent-basierte Lösung für Geräteentwickler
+    - name: Agent-basierte Lösung für Gerätehersteller
       items:
-        - name: Arbeiten mit dem Sicherheitsmodul für Azure RTOS
-          href: how-to-azure-rtos-security-module.md
-        - name: Welchen Agent sollte ich bereitstellen?
+        - name: Sicherheitsmodul für Azure RTOS
+          href: iot-security-azure-rtos.md
           items:
-            - name: Auswählen eines Agents für die Bereitstellung
-              href: how-to-deploy-agent.md
-            - name: Bereitstellen eines C#-basierten Sicherheits-Agents auf einem Windows-Gerät
-              href: how-to-deploy-windows-cs.md
-            - name: Bereitstellen eines C#-basierten Sicherheits-Agents auf einem Linux-Gerät
-              href: how-to-deploy-linux-cs.md
-            - name: Bereitstellen eines C-basierten Sicherheits-Agents auf einem Linux-Gerät
-              href: how-to-deploy-linux-c.md
-        - name: Beheben von Problemen mit einem Sicherheits-Agent
-          items:
-            - name: Behandeln von Problemen mit dem Linux-Sicherheits-Agent von Azure Defender für IoT
-              href: troubleshoot-agent.md
-            - name: Lokale Konfiguration (C)
-              href: azure-iot-security-local-configuration-c.md
-            - name: Lokale Konfiguration (C#)
-              href: azure-iot-security-local-configuration-csharp.md
-        - name: Bereitstellen des Edge-Sicherheitsmoduls
-          href: how-to-deploy-edge.md
-        - name: Konfigurieren von Sicherheits-Agents
-          href: how-to-agent-configuration.md
-        - name: Senden von eigenen Sicherheitsmeldungen
-          href: how-to-send-security-messages.md
-        - name: Zugreifen auf Sicherheitsrohdaten
-          href: how-to-security-data-access.md
-        - name: Untersuchen eines Geräts
-          href: how-to-investigate-device.md
+            - name: Arbeiten mit dem Sicherheitsmodul für Azure RTOS
+              href: how-to-azure-rtos-security-module.md
+            - name: Grundlegendes zum Sicherheitsmodul für Azure RTOS
+              href: concept-rtos-security-module.md
+            - name: 'Sicherheitsmodul für Azure RTOS: Warnungen und Empfehlungen'
+              href: concept-rtos-security-alerts-recommendations.md
         - name: Verbinden mit Azure Sentinel
           href: how-to-configure-with-sentinel.md
-        - name: Anpassen Ihres Agents
-          href: how-to-customize-solution.md
+        - name: Konfigurieren einer Agent-basierten Lösung für Azure Defender für IoT
+          href: how-to-configure-agent-based-solution.md
+        - name: Untersuchen der CIS-Vergleichstest-Empfehlung
+          href: how-to-investigate-cis-benchmark.md
+        - name: Untersuchen von Sicherheitsempfehlungen
+          href: quickstart-investigate-security-recommendations.md
+        - name: Untersuchen von Sicherheitswarnungen
+          href: quickstart-investigate-security-alerts.md
+        - name: Erstellen benutzerdefinierter Benachrichtigungen
+          href: quickstart-create-custom-alerts.md
+        - name: Klassisch
+          items:
+            - name: Welchen Agent sollte ich bereitstellen?
+              items:
+                - name: Auswählen eines Agents für die Bereitstellung
+                  href: how-to-deploy-agent.md
+                - name: Bereitstellen eines C#-basierten Sicherheits-Agents auf einem Windows-Gerät
+                  href: how-to-deploy-windows-cs.md
+                - name: Bereitstellen eines C#-basierten Sicherheits-Agents auf einem Linux-Gerät
+                  href: how-to-deploy-linux-cs.md
+                - name: Bereitstellen eines C-basierten Sicherheits-Agents auf einem Linux-Gerät
+                  href: how-to-deploy-linux-c.md
+            - name: Beheben von Problemen mit einem Sicherheits-Agent
+              items:
+                - name: Behandeln von Problemen mit dem Linux-Sicherheits-Agent von Azure Defender für IoT
+                  href: troubleshoot-agent.md
+                - name: Lokale Konfiguration (C)
+                  href: azure-iot-security-local-configuration-c.md
+                - name: Lokale Konfiguration (C#)
+                  href: azure-iot-security-local-configuration-csharp.md
+            - name: Bereitstellen des Edge-Sicherheitsmoduls
+              href: how-to-deploy-edge.md
+            - name: Konfigurieren von Sicherheits-Agents
+              href: how-to-agent-configuration.md
+            - name: Senden von eigenen Sicherheitsmeldungen
+              href: how-to-send-security-messages.md
+            - name: Zugreifen auf Sicherheitsrohdaten
+              href: how-to-security-data-access.md
+            - name: Untersuchen eines Geräts
+              href: how-to-investigate-device.md
+- name: Problembehandlung
+  items:
+    - name: Problembehandlung für den Defender-IoT-Micro-Agent (Vorschau)
+      href: troubleshoot-defender-micro-agent.md
+- name: Funktionsunterstützung und -einstellung
+  items:
+    - name: Funktionsunterstützung und -einstellung
+      href: edge-security-module-deprecation.md
 - name: Referenzen
   items:
     - name: Lösung ohne Agent für Organisationen

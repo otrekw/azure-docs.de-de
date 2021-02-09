@@ -1044,6 +1044,8 @@
               href: insights/container-insights-enable-new-cluster.md
             - name: Aktivieren für einen vorhandenen AKS-Cluster
               href: insights/container-insights-enable-existing-clusters.md
+            - name: Aktivieren für AKS mit Azure Policy
+              href: containers/container-insights-enable-aks-policy.md
             - name: Aktivieren für einen Cluster mit Arc-Aktivierung
               href: insights/container-insights-enable-arc-enabled-clusters.md
             - name: Aktivieren für einen Hybridcluster

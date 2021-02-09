@@ -3,14 +3,14 @@ title: 'Azure Automation-Updateverwaltung: Übersicht'
 description: Dieser Artikel bietet eine Übersicht über die Updateverwaltungsfunktion, die Updates für Ihre Windows- und Linux-Computer implementiert.
 services: automation
 ms.subservice: update-management
-ms.date: 01/13/2021
+ms.date: 01/22/2021
 ms.topic: conceptual
-ms.openlocfilehash: d66d4d32c788317d8b0781f9f24120fbce2f6f8f
-ms.sourcegitcommit: 0aec60c088f1dcb0f89eaad5faf5f2c815e53bf8
+ms.openlocfilehash: 718e812a8193797ad350fa61444bb05fe5a4b724
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98185613"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98896900"
 ---
 # <a name="update-management-overview"></a>Übersicht über die Updateverwaltung
 
@@ -185,16 +185,7 @@ Die durchschnittliche Datennutzung von Azure Monitor-Protokollen für einen Com
 
 ## <a name="network-planning"></a><a name="ports"></a>Netzwerkplanung
 
-Die folgenden Adressen sind speziell für die Updateverwaltung erforderlich. Die Kommunikation mit diesen Adressen erfolgt über Port 443.
-
-|Azure – Öffentlich  |Azure Government  |
-|---------|---------|
-|`*.ods.opinsights.azure.com`    | `*.ods.opinsights.azure.us`        |
-|`*.oms.opinsights.azure.com`     | `*.oms.opinsights.azure.us`        |
-|`*.blob.core.windows.net` | `*.blob.core.usgovcloudapi.net`|
-|`*.azure-automation.net` | `*.azure-automation.us`|
-
-Wenn Sie Netzwerkgruppen-Sicherheitsregeln erstellen oder Azure Firewall so konfigurieren, dass Datenverkehr an den Automation-Dienst und den Log Analytics-Arbeitsbereich zulässig ist, verwenden Sie die [Diensttags](../../virtual-network/service-tags-overview.md#available-service-tags) **GuestAndHybridManagement** und **AzureMonitor**. Dies vereinfacht die laufende Verwaltung Ihrer Netzwerksicherheitsregeln. Wenn Sie von Ihren virtuellen Azure-Computern aus sicher und privat eine Verbindung mit dem Automation-Dienst herstellen möchten, lesen Sie [Verwenden von Azure Private Link](../how-to/private-link-security.md). Um die aktuellen Informationen zu Diensttag und Bereich abzurufen, um sie als Teil Ihrer lokalen Firewallkonfigurationen einzuschließen, sehen Sie die [herunterladbaren JSON-Dateien](../../virtual-network/service-tags-overview.md#discover-service-tags-by-using-downloadable-json-files).
+Überprüfen Sie die [Netzwerkkonfiguration von Azure Automation](../automation-network-configuration.md#hybrid-runbook-worker-and-state-configuration), um ausführliche Informationen zu den Ports, URLs und anderen Netzwerkdetails zu erhalten, die für die Updateverwaltung erforderlich sind.
 
 Bei Windows-Computern müssen Sie auch Datenverkehr zu allen Endpunkten zulassen, die für Windows Update erforderlich sind. Sie finden eine aktualisierte Liste der erforderlichen Endpunkte unter [Probleme im Zusammenhang mit HTTP/Proxy](/windows/deployment/update/windows-update-troubleshooting#issues-related-to-httpproxy). Wenn Sie über einen lokalen [Windows Update-Server](/windows-server/administration/windows-server-update-services/plan/plan-your-wsus-deployment) verfügen, müssen Sie auch Datenverkehr zu dem in Ihrem [WSUS-Schlüssel](/windows/deployment/update/waas-wu-settings#configuring-automatic-updates-by-editing-the-registry) angegebenen Server zulassen.
 
@@ -227,11 +218,14 @@ In der nächsten Tabelle sind die für Linux-Updates unterstützten Klassifizier
 |Andere Updates     | Alle anderen Updates, die nicht kritisch sind oder bei denen es sich nicht um Sicherheitsupdates handelt.        |
 
 >[!NOTE]
->Die Updateklassifizierung für Linux-Computer ist nur verfügbar, wenn sie in den unterstützten öffentlichen Azure-Cloudregionen verwendet wird. Wenn Sie die Updateverwaltung in den folgenden nationalen Cloudregionen verwenden:
+>Die Updateklassifizierung für Linux-Computer ist nur verfügbar, wenn sie in den unterstützten öffentlichen Azure-Cloudregionen verwendet wird. Es gibt keine Klassifizierung von Linux-Updates bei Verwendung der Updateverwaltung in den folgenden Regionen mit nationalen Clouds:
+>
 >* Azure US Government
 >* 21Vianet in China
 >
-> gibt es keine Klassifizierung von Linux-Updates, und diese werden unter der Kategorie **Andere Updates** aufgeführt. Die Updateverwaltung verwendet Daten, die von den unterstützten Verteilungen veröffentlicht werden, insbesondere in deren veröffentlichten [OVAL](https://oval.mitre.org/)-Dateien (Open Vulnerability and Assessment Language). Da der Internetzugriff aus diesen nationalen Clouds eingeschränkt ist, kann die Updateverwaltung nicht auf diese Dateien zugreifen und diese nicht verwenden.
+> Anstatt klassifiziert zu werden, werden Updates unter der Kategorie **Andere Updates** gemeldet.
+>
+> Die Updateverwaltung verwendet Daten, die von den unterstützten Verteilungen veröffentlicht werden, insbesondere in deren veröffentlichten [OVAL](https://oval.mitre.org/)-Dateien (Open Vulnerability and Assessment Language). Da der Internetzugriff aus diesen nationalen Clouds eingeschränkt ist, kann die Updateverwaltung nicht auf diese Dateien zugreifen.
 
 Für Linux kann die Updateverwaltung bei der Anzeige von Bewertungsdaten dank der Datenanreicherung in der Cloud zwischen kritischen Updates und Sicherheitsupdates in der Cloud unter der Klassifizierung **Sicherheit** und **Sonstiges** unterscheiden. Für das Patchen verwendet die Updateverwaltung Klassifizierungsdaten, die auf dem Computer verfügbar sind. Im Gegensatz zu anderen Distributionen verfügt CentOS in der RTM-Version standardmäßig nicht über diese Informationen. Wenn Sie CentOS-Computer so konfiguriert haben, dass für den folgenden Befehl Sicherheitsdaten zurückgegeben werden, kann die Updateverwaltung basierend auf Klassifizierungen Patchvorgänge ausführen.
 

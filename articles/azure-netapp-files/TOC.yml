@@ -63,6 +63,8 @@
       href: azure-netapp-files-faqs.md
     - name: Worum handelt es sich beim Tool für konsistente Momentaufnahmen in Azure-Anwendungen?
       href: azacsnap-introduction.md
+    - name: Bedeutung der Umstellung auf harte Kontingentgrenzen für Volumes
+      href: volume-hard-quota-guidelines.md
 - name: Anleitungen
   items:
     - name: Registrieren für Azure NetApp Files

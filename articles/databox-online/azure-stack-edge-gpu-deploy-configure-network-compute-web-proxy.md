@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 12/07/2020
+ms.date: 01/27/2021
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to connect and activate Azure Stack Edge Pro so I can use it to transfer data to Azure.
-ms.openlocfilehash: 640098e118db87214d7364132a5119e35cb94c0a
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: ac64233467166ca6567f1601c3b90f80fdba3dcf
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96778715"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98954647"
 ---
 # <a name="tutorial-configure-network-for-azure-stack-edge-pro-with-gpu"></a>Tutorial: Konfigurieren des Netzwerks für Azure Stack Edge Pro mit GPU
 
@@ -132,7 +132,8 @@ Dies ist eine optionale Konfiguration.
 
 > [!IMPORTANT]
 > * Wenn Sie Compute aktivieren und ein IoT Edge-Modul auf Ihrem Azure Stack Edge Pro-Gerät verwenden, sollten Sie für „Webproxyauthentifizierung“ die Option **Keine** festlegen. NTLM wird nicht unterstützt.
->* Dateien für die automatische Proxykonfiguration (Proxy Auto Config, PAC) werden nicht unterstützt. Eine PAC-Datei definiert, wie Webbrowser und andere Benutzer-Agents automatisch den entsprechenden Proxyserver (Zugriffsmethode) zum Abrufen einer bestimmten URL auswählen können. Proxys, die versuchen, den gesamten Datenverkehr abzufangen und zu lesen (und anschließend alles mit eigener Zertifizierung neu zu signieren), sind nicht kompatibel, da das Zertifikat des Proxys nicht vertrauenswürdig ist. In der Regel funktionieren transparente Proxys gut mit Azure Stack Edge Pro. Nicht transparente Webproxys werden nicht unterstützt.
+> * Dateien für die automatische Proxykonfiguration (Proxy Auto Config, PAC) werden nicht unterstützt. Eine PAC-Datei definiert, wie Webbrowser und andere Benutzer-Agents automatisch den entsprechenden Proxyserver (Zugriffsmethode) zum Abrufen einer bestimmten URL auswählen können. 
+> * Transparente Proxys funktionieren gut mit Azure Stack Edge Pro. Für nicht transparente Proxys, die den gesamten Datenverkehr (über ihre eigenen auf dem Proxyserver installierten Zertifikate) abfangen und lesen, laden Sie den öffentlichen Schlüssel des Proxyzertifikats als Signaturkette auf Ihrem Azure Stack Edge Pro-Gerät hoch. Anschließend können Sie die Proxyservereinstellungen auf Ihrem Azure Stack Edge-Gerät konfigurieren. Weitere Informationen finden Sie unter [Bereitstellen eigener Zertifikate](azure-stack-edge-gpu-deploy-configure-certificates.md#bring-your-own-certificates).  
 
 <!--1. Go to the **Get started** page in the local web UI of your device.
 2. On the **Network** tile, configure your web proxy server settings. Although web proxy configuration is optional, if you use a web proxy, you can configure it on this page only.

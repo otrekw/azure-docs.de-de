@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: 8bfa7c164f5b974a8cf8974b3ff346f3401dd218
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: d6d988b4dd71fadccba056e501ba7c799b46d0d9
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98880219"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99508895"
 ---
 # <a name="deploy-a-cloud-service-extended-support-using-azure-powershell"></a>Bereitstellen eines Clouddiensts (erweiterter Support) mithilfe von Azure PowerShell
 
@@ -88,7 +88,7 @@ Informieren Sie sich über die [Bereitstellungsvoraussetzungen](deploy-prerequis
     $networkProfile = @{loadBalancerConfiguration = $loadBalancerConfig} 
     ```
  
-9. Erstellen einer Key Vault-Instanz Diese Key Vault-Instanz wird zum Speichern von Zertifikaten verwendet, die den Rollen des Clouddiensts (erweiterter Support) zugeordnet sind. Die Key Vault-Instanz muss in der gleichen Region und im gleichen Abonnement erstellt werden wie der Clouddienst und einen eindeutigen Namen besitzen. Weitere Informationen finden Sie unter [Verwenden von Zertifikaten mit Azure Cloud Services (erweiterter Support)](certificates-and-key-vault.md).
+9. Erstellen einer Key Vault-Instanz Diese Key Vault-Instanz wird zum Speichern von Zertifikaten verwendet, die den Rollen des Clouddiensts (erweiterter Support) zugeordnet sind. Vergewissern Sie sich, dass Sie „Zugriffsrichtlinien“ (im Portal) für den Zugriff auf „Azure Virtual Machines für Bereitstellung“ und „Azure Resource Manager für Vorlagenbereitstellung“ aktiviert haben. Die Key Vault-Instanz muss in der gleichen Region und im gleichen Abonnement erstellt werden wie der Clouddienst und einen eindeutigen Namen besitzen. Weitere Informationen finden Sie unter [Verwenden von Zertifikaten mit Azure Cloud Services (erweiterter Support)](certificates-and-key-vault.md).
 
     ```powershell
     New-AzKeyVault -Name "ContosKeyVault” -ResourceGroupName “ContosoOrg” -Location “East US” 
@@ -138,6 +138,8 @@ Informieren Sie sich über die [Bereitstellungsvoraussetzungen](deploy-prerequis
     $expiration = (Get-Date).AddYears(1) 
     $extension = New-AzCloudServiceRemoteDesktopExtensionObject -Name 'RDPExtension' -Credential $credential -Expiration $expiration -TypeHandlerVersion '1.2.1' 
 
+    $storageAccountKey = Get-AzStorageAccountKey -ResourceGroupName "ContosOrg" -Name "contosostorageaccount"
+    $configFile = "<WAD public configuration file path>"
     $wadExtension = New-AzCloudServiceDiagnosticsExtension -Name "WADExtension" -ResourceGroupName "ContosOrg" -CloudServiceName "ContosCS" -StorageAccountName "ContosSA" -StorageAccountKey $storageAccountKey[0].Value -DiagnosticsConfigurationPath $configFile -TypeHandlerVersion "1.5" -AutoUpgradeMinorVersion $true 
     $extensionProfile = @{extension = @($rdpExtension, $wadExtension)} 
     ```

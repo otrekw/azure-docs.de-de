@@ -1,19 +1,16 @@
 ---
 title: Anmerkungen zu dieser Version von Azure HDInsight
 description: Die neuesten Versionshinweise für Azure HDInsight. Rufen Sie Tipps zur Entwicklung und Details für Hadoop, Spark, R Server, Hive und mehr ab.
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 11/12/2020
-ms.openlocfilehash: 5c414a11085a6a37dee6be522dcf513e8990e5e2
-ms.sourcegitcommit: a055089dd6195fde2555b27a84ae052b668a18c7
+ms.openlocfilehash: 88e2161cfddf95f7f250b8b76c067d045f1529da
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/26/2021
-ms.locfileid: "98786350"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99092233"
 ---
 # <a name="azure-hdinsight-release-notes"></a>Versionshinweise zu Azure HDInsight
 
@@ -53,6 +50,9 @@ HDInsight hat die Überprüfung von Netzwerksicherheitsgruppen (NSGs) und benutz
 ## <a name="upcoming-changes"></a>Bevorstehende Änderungen
 Die folgenden Änderungen werden in kommenden Versionen durchgeführt.
 
+### <a name="breaking-change-for-net-for-apache-spark-100"></a>Breaking Change für .NET für Apache Spark 1.0.0
+HDInsight führt die erste offizielle Hauptversion von .NET für Apache Spark in der nächsten Version ein. Sie stellt neben anderen Features DataFrame-API-Vollständigkeit für Spark 2.4.x und Spark 3.0.x bereit. Es gibt Breaking Changes für diese Hauptversion. Informationen zu den Schritten zum Aktualisieren von Code und Pipelines finden Sie in [diesem Migrationsleitfaden](https://github.com/dotnet/spark/blob/master/docs/migration-guide.md#upgrading-from-microsoftspark-0x-to-10). [Hier](https://docs.microsoft.com/azure/hdinsight/spark/spark-dotnet-version-update#using-net-for-apache-spark-v10-in-hdinsight)erhalten Sie weitere Informationen.
+
 ### <a name="default-cluster-vm-size-will-be-changed-to-ev3-family"></a>Standardgrößen für Cluster-VMs werden in Ev3-Familie geändert
 Ab dem nächsten Release (ca. Ende Januar), ändern sich die Standardgrößen für Cluster-VMs von der D-Familie zur Ev3-Familie. Diese Änderung gilt für Hauptknoten und Workerknoten. Um diese Änderung zu verhindern, geben Sie die VM-Größen, die Sie verwenden möchten, in der ARM-Vorlage an.
 
@@ -74,7 +74,7 @@ Für dieses Release gibt es keine Änderung der Komponentenversion. Die aktuelle
 ## <a name="known-issues"></a>Bekannte Probleme
 ### <a name="prevent-hdinsight-cluster-vms-from-rebooting-periodically"></a>Verhindern, dass HDInsight-Cluster-VMs regelmäßig neu gestartet werden
 
-Seit Mitte November 2020 ist Ihnen möglicherweise aufgefallen, dass HDInsight-Cluster-VMs in regelmäßigen Abständen neu gestartet werden. Dies könnte folgende Ursachen haben:
+Es ist Ihnen möglicherweise aufgefallen, dass seit Mitte November 2020 HDInsight-Cluster-VMs in regelmäßigen Abständen neu gestartet werden. Dies könnte folgende Ursachen haben:
 
 1.  ClamAV ist in Ihrem Cluster aktiviert. Das neue azsec-clamav-Paket beansprucht sehr viel Arbeitsspeicher, wodurch ein Neustart des Knotens ausgelöst wird. 
 2.  Es wurde ein täglicher Cronjob geplant, der Änderungen an der von Azure-Diensten verwendeten Liste der Zertifizierungsstellen überwacht. Wenn ein neues Zertifizierungsstellenzertifikat verfügbar ist, fügt das Skript das Zertifikat dem JDK-Vertrauensspeicher hinzu und plant einen Neustart.

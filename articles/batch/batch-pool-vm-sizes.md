@@ -4,12 +4,12 @@ description: 'Vorgehensweise: Auswahl aus den verfügbaren VM-Größen und Betri
 ms.topic: conceptual
 ms.date: 11/24/2020
 ms.custom: seodec18
-ms.openlocfilehash: 8bb54a4db62f56f442f7cec81e6768241a05ffee
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 59218361c5fff51b33131fdd2455c599dd12b06a
+ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95895229"
+ms.lasthandoff: 01/27/2021
+ms.locfileid: "98897492"
 ---
 # <a name="choose-a-vm-size-and-image-for-compute-nodes-in-an-azure-batch-pool"></a>Auswählen einer VM-Größe und eines Images für Computeknoten in einem Azure Batch-Pool
 
@@ -35,40 +35,38 @@ Batch-Pools in der Konfiguration des virtuellen Computers unterstützen nahezu a
 | SL | Nicht unterstützt |
 | Dv2, DSv2 | Alle Größen |
 | Dv3, Dsv3 | Alle Größen |
-| Dav4<sup>1</sup> | Alle Größen |
-| Dasv4<sup>1</sup> | Alle Größen |
+| Dav4 | Alle Größen |
+| Dasv4 | Alle Größen |
 | Ddv4, Ddsv4 |  Alle Größen |
 | Dv4, Dsv4 | Nicht unterstützt |
 | Ev3, Esv3 | Alle Größen außer E64is_v3 |
-| Eav4<sup>1</sup> | Alle Größen |
-| Easv4<sup>1</sup> | Alle Größen |
+| Eav4 | Alle Größen |
+| Easv4 | Alle Größen |
 | Edv4, Edsv4 |  Alle Größen |
 | Ev4, Esv4 | Nicht unterstützt |
 | F, Fs | Alle Größen |
 | Fsv2 | Alle Größen |
 | G, Gs | Alle Größen |
 | H | Alle Größen |
-| HB<sup>1</sup> | Alle Größen |
-| HBv2<sup>1</sup> | Alle Größen |
-| HC<sup>1</sup> | Alle Größen |
+| HB | Alle Größen |
+| HBv2 | Alle Größen |
+| HC | Alle Größen |
 | Ls | Alle Größen |
-| Lsv2<sup>1</sup> | Alle Größen |
-| M<sup>1</sup> | Alle Größen |
-| Mv2<sup>1, 2</sup> | Alle Größen |
+| Lsv2 | Alle Größen |
+| M | Alle Größen |
+| Mv2<sup>1</sup> | Alle Größen |
 | NC | Alle Größen |
-| NCv2<sup>1</sup> | Alle Größen |
-| NCv3<sup>1</sup> | Alle Größen |
+| NCv2 | Alle Größen |
+| NCv3 | Alle Größen |
 | NCasT4_v3 | Keine: Noch nicht verfügbar |
-| ND<sup>1</sup> | Alle Größen |
-| NDv2<sup>1</sup> | Keine: Noch nicht verfügbar |
+| ND | Alle Größen |
+| NDv2 | Keine: Noch nicht verfügbar |
 | SH | Alle Größen |
-| NVv3<sup>1</sup> | Alle Größen |
-| NVv4<sup>1</sup> | Alle Größen |
+| NVv3 | Alle Größen |
+| NVv4 | Alle Größen |
 | SAP HANA | Nicht unterstützt |
 
-<sup>1</sup> Diese VM-Serien können bei der Konfiguration des virtuellen Computers in Batch-Pools zugewiesen werden. Sie müssen aber ein neues Batch-Konto erstellen und eine bestimmte [Kontingenterhöhung](batch-quota-limit.md#increase-a-quota) anfordern. Diese Einschränkung wird aufgehoben, sobald das vCPU-Kontingent pro VM-Serie für Batch-Konten vollständig unterstützt wird.
-
-<sup>2</sup> Diese VM-Serien können nur mit VM-Images der zweiten Generation verwendet werden.
+<sup>1</sup> Diese VM-Serien können nur mit VM-Images der 2. Generation verwendet werden.
 
 ### <a name="using-generation-2-vm-images"></a>Verwenden von VM-Images der zweiten Generation
 

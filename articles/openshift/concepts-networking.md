@@ -6,16 +6,16 @@ ms.author: suvetriv
 ms.topic: tutorial
 ms.service: container-service
 ms.date: 11/23/2020
-ms.openlocfilehash: 9cfe8c7e7d2484649bf458524032365b692c9243
-ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
+ms.openlocfilehash: 07b0dd38b616525728c264bd315c5cb8ddcaa79a
+ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97093518"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99072051"
 ---
 # <a name="network-concepts-for-azure-red-hat-openshift-aro"></a>Netzwerkkonzepte für Azure Red Hat OpenShift (ARO)
 
-Dieser Leitfaden enthält eine Übersicht über Netzwerke in Azure Red Hat OpenShift für OpenShift 4-Cluster sowie ein Diagramm und eine Liste wichtiger Endpunkte. Weitere Informationen zu wichtigen OpenShift-Netzwerkkonzepten finden Sie in der [Netzwerkdokumentation für Azure Red Hat OpenShift 4](https://docs.openshift.com/aro/4/networking/understanding-networking.html).
+Dieser Leitfaden enthält eine Übersicht über Netzwerke in Azure Red Hat OpenShift für OpenShift 4-Cluster sowie ein Diagramm und eine Liste wichtiger Endpunkte. Weitere Informationen zu wichtigen OpenShift-Netzwerkkonzepten finden Sie in der [Netzwerkdokumentation für Azure Red Hat OpenShift 4](https://docs.openshift.com/container-platform/4.6/networking/understanding-networking.html).
 
 ![Azure Red Hat OpenShift 4: Netzwerkdiagramm](./media/concepts-networking/aro4-networking-diagram.png)
 
@@ -64,19 +64,22 @@ Die folgende Liste enthält wichtige Netzwerkkomponenten in einem Azure Red Hat 
 
 ## <a name="networking-basics-in-openshift"></a>Netzwerkgrundlagen in OpenShift
 
-OpenShift Software Defined Networking [(SDN)](https://docs.openshift.com/container-platform/4.5/networking/openshift_sdn/about-openshift-sdn.html) wird verwendet, um ein Overlaynetzwerk mithilfe von Open vSwitch ([OVS](https://www.openvswitch.org/)) zu konfigurieren. Hierbei handelt es sich um eine OpenFlow-Implementierung, die auf der CNI-Spezifikation (Container Network Interface, Containernetzwerkschnittstelle) basiert. Von SDN werden verschiedene Plug-Ins unterstützt. In Azure Red Hat OpenShift 4 wird das Plug-In „Network Policy“ (Netzwerkrichtlinie) verwendet. Da die gesamte Netzwerkkommunikation durch SDN verwaltet wird, sind für die Kommunikation zwischen Pods keine zusätzlichen Routen in Ihren virtuellen Netzwerken erforderlich.
+OpenShift Software Defined Networking [(SDN)](https://docs.openshift.com/container-platform/4.6/networking/openshift_sdn/about-openshift-sdn.html) wird verwendet, um ein Overlaynetzwerk mithilfe von Open vSwitch ([OVS](https://www.openvswitch.org/)) zu konfigurieren. Hierbei handelt es sich um eine OpenFlow-Implementierung, die auf der CNI-Spezifikation (Container Network Interface, Containernetzwerkschnittstelle) basiert. Von SDN werden verschiedene Plug-Ins unterstützt. In Azure Red Hat OpenShift 4 wird das Plug-In „Network Policy“ (Netzwerkrichtlinie) verwendet. Da die gesamte Netzwerkkommunikation durch SDN verwaltet wird, sind für die Kommunikation zwischen Pods keine zusätzlichen Routen in Ihren virtuellen Netzwerken erforderlich.
 
 ## <a name="networking--for-azure-red-hat-openshift"></a>Netzwerk für Azure Red Hat OpenShift
 
-Bei den folgenden Punkten handelt es sich um spezifische Netzwerkfeatures für Azure Red Hat OpenShift:
+Bei den folgenden Punkten handelt es sich um spezifische Netzwerkfeatures für Azure Red Hat OpenShift:  
 * Benutzer können Ihren ARO-Cluster in einem vorhandenen virtuellen Netzwerk erstellen oder im Rahmen der ARO-Clustererstellung ein virtuelles Netzwerk erstellen.
 * Pod- und Dienstnetzwerk-CIDRs sind konfigurierbar.
 * Knoten und Master befinden sich in unterschiedlichen Subnetzen.
 * Die VNET-Subnetze von Knoten und Mastern müssen eine Mindestgröße von /27 haben.
+* Standardpod-CIDR ist 10.128.0.0/14.
+* Standarddienst-CIDR ist 172.30.0.0/16.
+* Pod- und Dienstnetzwerk-CIDRs dürfen sich nicht mit anderen Adressbereichen in Ihrem Netzwerk überschneiden und dürfen nicht innerhalb des IP-Adressbereichs des virtuellen Netzwerks Ihres Clusters liegen.
 * Pod-CIDR muss eine Mindestgröße von /18 haben. (Beim Podnetzwerk handelt es sich um nicht routingfähige IP-Adressen, und es wird ausschließlich innerhalb von OpenShift SDN verwendet.)
 * Jedem Knoten wird ein Subnetz vom Typ „/23“ (512 IP-Adressen) für die zugehörigen Pods zugewiesen. Dieser Wert kann nicht geändert werden.
 * Ein Pod kann nicht an mehrere Netzwerke angefügt werden.
-* Es kann keine statische IP-Adresse für ausgehenden Datenverkehr konfiguriert werden. (Hierbei handelt es sich um ein OpenShift-Feature. Weitere Informationen finden Sie unter [Konfigurieren von IP-Adressen für ausgehenden Datenverkehr](https://docs.openshift.com/container-platform/4.5/networking/openshift_sdn/assigning-egress-ips.html).)
+* Es kann keine statische IP-Adresse für ausgehenden Datenverkehr konfiguriert werden. (Hierbei handelt es sich um ein OpenShift-Feature. Weitere Informationen finden Sie unter [Konfigurieren von IP-Adressen für ausgehenden Datenverkehr](https://docs.openshift.com/container-platform/4.6/networking/openshift_sdn/assigning-egress-ips.html).)
 
 ## <a name="network-settings"></a>Netzwerkeinstellungen
 
@@ -95,7 +98,7 @@ Netzwerksicherheitsgruppen werden in der (für Benutzer gesperrten) Ressourcengr
 Mit einem öffentlich sichtbaren API-Server können keine Netzwerksicherheitsgruppen erstellt und den NICs zugewiesen werden.
 
 ## <a name="domain-forwarding"></a>Domänenweiterleitung
-Von Azure Red Hat OpenShift wird CoreDNS verwendet. Die Domänenweiterleitung kann konfiguriert werden. In Ihren virtuellen Netzwerken kann kein eigenes DNS verwendet werden. Weitere Informationen finden Sie in der Dokumentation zur [Verwendung der DNS-Weiterleitung](https://docs.openshift.com/aro/4/networking/dns-operator.html#nw-dns-forward_dns-operator).
+Von Azure Red Hat OpenShift wird CoreDNS verwendet. Die Domänenweiterleitung kann konfiguriert werden. In Ihren virtuellen Netzwerken kann kein eigenes DNS verwendet werden. Weitere Informationen finden Sie in der Dokumentation zur [Verwendung der DNS-Weiterleitung](https://docs.openshift.com/container-platform/4.6/networking/dns-operator.html#nw-dns-forward_dns-operator).
 
 ## <a name="whats-new-in-openshift-45"></a>Neues in OpenShift 4.5
 

@@ -7,12 +7,12 @@ ms.service: load-balancer
 ms.topic: article
 ms.date: 04/22/2020
 ms.author: errobin
-ms.openlocfilehash: e9f46b11d9c0b5251ee4d52f64d657926f6f9c5e
-ms.sourcegitcommit: d59abc5bfad604909a107d05c5dc1b9a193214a8
+ms.openlocfilehash: 38054d983b0a9f01f396b7379fec37de452d03b7
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2021
-ms.locfileid: "98222988"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99051871"
 ---
 # <a name="load-balancer-frequently-asked-questions"></a>Häufig gestellte Fragen zu Load Balancer
 
@@ -48,6 +48,10 @@ Mit dem Befehl „nslookup“ können Sie eine DNS-Abfrage für den Namen „myi
  
 ## <a name="can-i-add-a-vm-from-the-same-availability-set-to-different-backend-pools-of-a-load-balancer"></a>Kann ich einen virtuellen Computer aus derselben Verfügbarkeitsgruppe zu anderen Back-End-Pools eines Load Balancers hinzufügen?
 Nein, das ist nicht möglich.
+
+## <a name="what-is-the-maximum-data-throughput-that-can-be-achieved-via-an-azure-load-balancer"></a>Wie hoch ist der maximale Datendurchsatz, der über eine Azure Load Balancer-Instanz erreicht werden kann?
+Da Azure Load Balancer ein Passthrough-Lastenausgleich für das Netzwerk ist, werden die Durchsatzbeschränkungen vom im Back-End-Pool verwendeten VM-Typ vorgegeben. Weitere Informationen zum Netzwerkdurchsatz finden Sie unter [VM-Netzwerkdurchsatz](../virtual-network/virtual-machine-network-throughput.md).
+
 
 ## <a name="how-do-connections-to-azure-storage-in-the-same-region-work"></a>Wie funktionieren Verbindungen mit Azure Storage in derselben Region?
 Eine ausgehende Konnektivität mithilfe der oben genannten Szenarios ist nicht erforderlich, um eine Verbindung mit Azure Storage in derselben Region wie die VM herzustellen. Alternativ können Sie NSGs (Netzwerksicherheitsgruppen) verwenden, wenn Sie dies nicht möchten. Für Verbindungen mit Azure Storage in anderen Regionen ist die ausgehende Konnektivität erforderlich. Beachten Sie, dass es sich bei der Quell-IP-Adresse in den Azure Storage-Diagnoseprotokollen um eine interne Anbieteradresse handelt und nicht um die öffentliche IP-Adresse Ihrer VM, wenn Sie eine Verbindung mit Azure Storage über eine VM in derselben Region herstellen. Wenn Sie den Zugriff auf Ihr Azure Storage-Konto für VMs in mindestens einem Subnetz des virtuellen Netzwerks innerhalb derselben Region einschränken möchten, sollten Sie [VNET-Dienstendpunkte](../virtual-network/virtual-network-service-endpoints-overview.md) anstelle Ihrer öffentlichen IP-Adresse verwenden, wenn Sie die Firewall für Ihr Speicherkonto konfigurieren. Sobald die Dienstendpunkte konfiguriert wurden, wird Ihre private VNET-IP-Adresse in Ihren Azure Storage-Diagnoseprotokollen anstelle der internen Anbieteradresse angezeigt.
