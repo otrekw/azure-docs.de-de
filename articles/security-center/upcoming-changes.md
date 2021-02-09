@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/25/2021
 ms.author: memildin
-ms.openlocfilehash: 99dadea37a519289120fcf30e394df1e0f7af5e7
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: d5de16c8156762a229d6c707080bc197dc206a7c
+ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98757710"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99475589"
 ---
 # <a name="important-upcoming-changes-to-azure-security-center"></a>Wichtige bevorstehende Änderungen an Azure Security Center
 
@@ -38,7 +38,7 @@ Die neuesten Versionshinweise finden Sie unter [Neuerungen in Azure Security Cen
 
 ### <a name="kubernetes-workload-protection-recommendations-will-soon-be-released-for-general-availability-ga"></a>Empfehlungen zum Schutz von Kubernetes-Workloads bald allgemein verfügbar
 
-**Geschätztes Datum für die Änderung:** Januar 2021
+**Geschätztes Datum für die Änderung:** Februar 2021
 
 Die unter [Schützen Ihrer Kubernetes-Workloads](kubernetes-workload-protections.md) beschriebenen Empfehlungen zum Schutz von Kubernetes-Workloads befinden sich derzeit in der Vorschauphase. Während der Vorschauphase einer Empfehlung werden Ressourcen durch diese Empfehlung nicht in einen fehlerhaften Zustand versetzt, und sie wird nicht in die Berechnungen Ihrer Sicherheitsbewertung einbezogen.
 
@@ -83,7 +83,7 @@ Weitere Informationen zu diesen Empfehlungen finden Sie auf der [Referenzseite z
 
 **Geschätztes Datum für die Änderung:** Q2 2021
 
-Die aktuelle Version der Empfehlung **Sensible Daten in Ihren SQL-Datenbanken müssen klassifiziert werden** in der Sicherheitskontrolle **Datenklassifizierung anwenden** werden als veraltet eingestuft und durch eine neue Version ersetzt, die stärker an der Microsoft-Strategie zur Datenklassifizierung ausgerichtet ist. Infolgedessen:
+Die aktuelle Version der Empfehlung **Sensible Daten in Ihren SQL-Datenbanken müssen klassifiziert werden** in der Sicherheitskontrolle **Datenklassifizierung anwenden** wird durch eine neue Version ersetzt, die stärker an der Microsoft-Strategie zur Datenklassifizierung ausgerichtet ist. Infolgedessen:
 
 - Die Empfehlung geht nicht mehr in Ihre Sicherheitsbewertung ein.
 - Die Sicherheitskontrolle („Datenklassifizierung anwenden“) geht nicht mehr in Ihre Sicherheitsbewertung ein.

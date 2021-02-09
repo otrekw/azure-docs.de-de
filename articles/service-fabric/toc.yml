@@ -713,8 +713,6 @@
                   href: service-fabric-cluster-security-update-certs-azure.md
                 - name: Herstellen einer Remoteverbindung mit dem virtuellen Clusterknotencomputer
                   href: service-fabric-cluster-remote-connect-to-azure-cluster-node.md
-                - name: Upgraden von Clusterknoten für die Verwendung verwalteter Datenträger
-                  href: upgrade-managed-disks.md
         - name: Eigenständige Cluster
           items:
             - name: Erstellen

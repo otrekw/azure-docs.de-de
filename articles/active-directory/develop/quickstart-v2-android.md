@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 10/15/2019
 ms.author: marsma
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:Android
-ms.openlocfilehash: 42a054f211d2509dee4e9e55eeb3ea82fa46da9d
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 6d05c4ba6af860616e5afdfba2378ad9b17fcc77
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98754581"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98938257"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-android-app"></a>Schnellstart: Benutzeranmeldung und Aufrufen der Microsoft Graph-API aus einer Android-App
 
@@ -35,7 +35,7 @@ Anwendungen müssen durch ein App-Objekt in Azure Active Directory dargestellt w
 
 > [!div class="sxs-lookup" renderon="portal"]
 > ### <a name="step-1-configure-your-application-in-the-azure-portal"></a>Schritt 1: Konfigurieren Ihrer Anwendung im Azure-Portal
->  Damit das Codebeispiel für diese Schnellstartanleitung funktioniert, müssen Sie einen mit dem Authentifizierungsbroker kompatiblen Umleitungs-URI hinzufügen.
+>  Für den Beispielcode dieser Schnellstartanleitung ist ein Umleitungs-URI erforderlich, der mit dem Authentifizierungsbroker kompatibel ist.
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [Make these changes for me]() (Diese Änderungen für mich vornehmen)
 >

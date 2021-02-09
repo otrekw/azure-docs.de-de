@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 08/28/2019
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40
-ms.openlocfilehash: 8b12df62a7080e57e47b52cb79ed8a67e12bd526
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 17cff66d3f8c816099bcc61322a1d331bfe58872
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98753101"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99226303"
 ---
 # <a name="tutorial-add-sign-in-to-microsoft-to-an-aspnet-web-app"></a>Tutorial: Hinzufügen der Anmeldung bei Microsoft zu einer ASP.NET-Web-App
 
@@ -383,7 +383,7 @@ Führen Sie die folgenden Schritte aus, um Ihre Anwendung zu registrieren und Ih
 1. Fügen Sie die in Schritt 1 aus Visual Studio kopierte SSL-URL (z. B. `https://localhost:44368/`) unter **Umleitungs-URI** hinzu.
 1. Wählen Sie **Registrieren**.
 1. Wählen Sie unter **Verwalten** die Option **Authentifizierung** aus.
-1. Wählen Sie im Abschnitt **Implizite Genehmigung** die Option **ID-Token** aus, und wählen Sie dann **Speichern** aus.
+1. Wählen Sie im Abschnitt **Implizite Genehmigung und Hybridflows** die Option **ID-Token** und dann **Speichern** aus.
 1. Fügen Sie im Stammordner der Datei „web.config“ im Abschnitt `configuration\appSettings` Folgendes hinzu:
 
     ```xml

@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: security-center
 ms.custom: references_regions
 manager: rkarlin
-ms.openlocfilehash: 81ae46a7b6c19557eeadd2d5b28ad2fa46e77115
-ms.sourcegitcommit: aaa65bd769eb2e234e42cfb07d7d459a2cc273ab
+ms.openlocfilehash: 28ec6659430cfdbc81533f05863ccb0ddc560e32
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98881366"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99508031"
 ---
 # <a name="introduction-to-azure-defender-for-sql"></a>Einführung in Azure Defender für SQL
 
@@ -72,7 +72,6 @@ Warnungen enthalten Details zum Incident, durch den sie ausgelöst wurden, sowie
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Artikel haben Sie mehr über Azure Defender für SQL erfahren.
+In diesem Artikel haben Sie mehr über Azure Defender für SQL erfahren. Gehen Sie wie folgt vor, um die beschriebenen Dienste zu nutzen:
 
-> [!div class="nextstepaction"]
-> [Überprüfen der SQL Server-Instanzen auf Sicherheitsrisiken mit Azure Defender](defender-for-sql-usage.md)
+- Verwenden Sie Azure Defender für SQL-Server auf Computern, um Ihre [SQL Server-Instanzen auf Sicherheitsrisiken zu überprüfen](defender-for-sql-usage.md).

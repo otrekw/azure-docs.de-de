@@ -8,14 +8,14 @@ tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: keys
 ms.topic: tutorial
-ms.date: 05/29/2020
+ms.date: 02/01/2021
 ms.author: ambapat
-ms.openlocfilehash: a1c6b054a9caac8ba223bc81e164e7ebf34bd267
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 98da8057fb09cf43a59b921694386cbf3fa8ca21
+ms.sourcegitcommit: 983eb1131d59664c594dcb2829eb6d49c4af1560
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94413325"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99222216"
 ---
 # <a name="import-hsm-protected-keys-to-key-vault-byok"></a>Importieren von durch HSM geschützten Schlüsseln in Key Vault (BYOK)
 
@@ -63,8 +63,9 @@ In der folgenden Tabelle sind die Voraussetzungen für die Verwendung von BYOK i
 |Fortanix|Hersteller,<br/>HSM als Dienst|<ul><li>Self-Defending Key Management Service (SDKMS, selbstverteidigender Schlüsselverwaltungsdienst)</li><li>Equinix SmartKey</li></ul>|[Exportieren von SDKMS-Schlüsseln nach Cloudanbietern für BYOK – Azure Key Vault](https://support.fortanix.com/hc/en-us/articles/360040071192-Exporting-SDKMS-keys-to-Cloud-Providers-for-BYOK-Azure-Key-Vault)|
 |Marvell|Hersteller|Alle Liquid Security-HSMs mit<ul><li>Firmwareversion 2.0.4 oder höher</li><li>Firmwareversion 3.2 oder höher</li></ul>|[Marvell – BYOK-Tool und -Dokumentation](https://www.marvell.com/products/security-solutions/nitrox-hs-adapters/exporting-marvell-hsm-keys-to-cloud-azure-key-vault.html)|
 |Cryptomathic|ISV (Enterprise Key Management System)|Mehrere HSM-Marken und -Modelle, einschließlich<ul><li>nCipher</li><li>Thales</li><li>Utimaco</li></ul>Weitere Informationen finden Sie auf der [Cryptomathic-Website](https://www.cryptomathic.com/azurebyok).|[Cryptomathic – BYOK-Tool und -Dokumentation](https://www.cryptomathic.com/azurebyok)|
-|Securosys SA|Hersteller, HSM als Dienst|Primus-HSM-Familie, Securosys Clouds HSM|[Primus – BYOK-Tool und -Dokumentation](https://www.securosys.com/primus-azure-byok)|
+|Securosys SA|Hersteller, HSM-as-a-Service|Primus-HSM-Familie, Securosys Clouds HSM|[Primus – BYOK-Tool und -Dokumentation](https://www.securosys.com/primus-azure-byok)|
 |StorMagic|ISV (Enterprise Key Management System)|Mehrere HSM-Marken und -Modelle, einschließlich<ul><li>Utimaco</li><li>Thales</li><li>nCipher</li></ul>Weitere Informationen finden Sie auf der [StorMagic-Website](https://stormagic.com/doc/svkms/Content/Integrations/Azure_KeyVault_BYOK.htm).|[SvKMS und Azure Key Vault BYOK](https://stormagic.com/doc/svkms/Content/Integrations/Azure_KeyVault_BYOK.htm)|
+|IBM|Hersteller|IBM 476x, CryptoExpress|[IBM Enterprise Key Management Foundation](https://www.ibm.com/security/key-management/ekmf-bring-your-own-key-azure)|
 ||||
 
 

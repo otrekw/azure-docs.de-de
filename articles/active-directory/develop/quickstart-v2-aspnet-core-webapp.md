@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/11/2020
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:aspnet-core
-ms.openlocfilehash: c20685c0c392ece68dc80b57afc6680f2efd9e35
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: b2e42dcaeb72a053f20afa47439d1825445b0ad8
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98754516"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99225832"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-core-web-app"></a>Schnellstart: Hinzufügen von „Bei Microsoft anmelden“ zu einer ASP.NET Core-Web-App
 
@@ -56,13 +56,13 @@ Eine Abbildung finden Sie unter [Funktionsweise des Beispiels](#how-the-sample-w
 > 1. Wählen Sie **Registrieren**.
 > 1. Wählen Sie unter **Verwalten** die Option **Authentifizierung** aus.
 > 1. Wählen Sie unter **Umleitungs-URIs** die Option **URI hinzufügen** aus, und geben Sie dann `https://localhost:44321/signin-oidc` ein.
-> 1. Geben Sie unter **Abmelde-URL** die URL `https://localhost:44321/signout-oidc` ein.
-> 1. Wählen Sie unter **Implizite Genehmigung** die Option **ID-Token** aus.
+> 1. Geben Sie `https://localhost:44321/signout-oidc` als **URL für Front-Channel-Abmeldung** an.
+> 1. Wählen Sie für **Implizite Genehmigung und Hybridflows** die Option **ID-Token** aus.
 > 1. Wählen Sie **Speichern** aus.
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-1-configure-your-application-in-the-azure-portal"></a>Schritt 1: Konfigurieren Ihrer Anwendung im Azure-Portal
-> Damit das Codebeispiel in dieser Schnellstartanleitung funktioniert, müssen Sie die Antwort-URLs `https://localhost:44321/` und `https://localhost:44321/signin-oidc` und die Abmelde-URL `https://localhost:44321/signout-oidc` hinzufügen und die Ausstellung von ID-Token durch den Autorisierungsendpunkt anfordern.
+> Für den Beispielcode dieser Schnellstartanleitung werden die **Umleitungs-URIs** `https://localhost:44321/`und `https://localhost:44321/signin-oidc` sowie `https://localhost:44321/signout-oidc` als **URL für Front-Channel-Abmeldung** benötigt. Anforderungs-ID-Token werden vom Autorisierungsendpunkt ausgestellt.
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [Diese Änderung für mich vornehmen]()
 >

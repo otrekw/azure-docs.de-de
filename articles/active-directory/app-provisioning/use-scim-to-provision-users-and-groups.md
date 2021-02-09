@@ -3,30 +3,29 @@ title: 'Tutorial: Entwickeln eines SCIM-Endpunkts für die Benutzerbereitstellun
 description: Das System für die domänenübergreifende Identitätsverwaltung (System for Cross-domain Identity Management, SCIM) standardisiert die automatische Benutzerbereitstellung. In diesem Tutorial erfahren Sie, wie Sie einen SCIM-Endpunkt entwickeln, Ihre SCIM-API mit Azure Active Directory integrieren und mit der Automatisierung der Bereitstellung von Benutzern und Gruppen in Ihren Cloudanwendungen beginnen.
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 01/12/2021
+ms.date: 02/01/2021
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.custom: contperf-fy21q2
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: bf1057276a543c18b746bb60b7e7a54bf28dec6f
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: ba000fd4cf79f2bb4a176bd7d5c33fc2dfff3781
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98892563"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99428401"
 ---
 # <a name="tutorial-develop-and-plan-provisioning-for-a-scim-endpoint"></a>Tutorial: Entwickeln eines SCIM-Endpunkts und Planen seiner Bereitstellung
 
 Als Anwendungsentwickler können Sie die SCIM-Benutzerverwaltungs-API (System for Cross-Domain Identity Management, System für die domänenübergreifende Identitätsverwaltung) verwenden, um die automatische Bereitstellung von Benutzern und Gruppen zwischen Ihrer Anwendung und Azure AD zu aktivieren. In diesem Artikel wird beschrieben, wie ein SCIM-Endpunkt erstellt und in den Azure AD-Bereitstellungsdienst integriert wird. Die SCIM-Spezifikation bietet ein allgemeines Benutzerschema für die Bereitstellung. Bei der Verwendung mit Verbundstandards wie SAML oder OpenID Connect bietet SCIM Administratoren eine auf Standards basierende End-to-End-Lösung für die Zugriffsverwaltung.
 
-SCIM ist eine standardisierte Definition von zwei Endpunkten: einem `/Users`- und einem `/Groups`-Endpunkt. Es verwendet allgemeine REST-Verben zum Erstellen, Aktualisieren und Löschen von Objekten und ein vordefiniertes Schema für allgemeine Attribute wie Gruppenname, Benutzername, Vorname, Nachname und E-Mail-Adresse. Apps, die eine SCIM 2.0 REST-API bieten, können den Aufwand für die Arbeit mit einer proprietären Benutzerverwaltungs-API reduzieren oder eliminieren. So ist beispielsweise jeder konforme SCIM-Client in der Lage, eine HTTP POST-Anforderung für ein JSON-Objekt an den `/Users`-Endpunkt zu senden, um einen neuen Benutzereintrag zu erstellen. Anstatt eine leicht abweichende API für dieselben grundlegenden Aktionen zu benötigen, können Apps, die dem SCIM-Standard entsprechen, sofort die Vorteile bereits vorhandener Clients, Tools und Codes nutzen. 
-
 ![Bereitstellen von Azure AD für eine App mit SCIM](media/use-scim-to-provision-users-and-groups/scim-provisioning-overview.png)
+
+SCIM ist eine standardisierte Definition von zwei Endpunkten: einem `/Users`- und einem `/Groups`-Endpunkt. Es verwendet allgemeine REST-Verben zum Erstellen, Aktualisieren und Löschen von Objekten und ein vordefiniertes Schema für allgemeine Attribute wie Gruppenname, Benutzername, Vorname, Nachname und E-Mail-Adresse. Apps, die eine SCIM 2.0 REST-API bieten, können den Aufwand für die Arbeit mit einer proprietären Benutzerverwaltungs-API reduzieren oder eliminieren. So ist beispielsweise jeder konforme SCIM-Client in der Lage, eine HTTP POST-Anforderung für ein JSON-Objekt an den `/Users`-Endpunkt zu senden, um einen neuen Benutzereintrag zu erstellen. Anstatt eine leicht abweichende API für dieselben grundlegenden Aktionen zu benötigen, können Apps, die dem SCIM-Standard entsprechen, sofort die Vorteile bereits vorhandener Clients, Tools und Codes nutzen. 
 
 Das in SCIM 2.0 definierte Standard-Benutzerobjektschema und die REST-APIs für die Verwaltung (RFC [7642](https://tools.ietf.org/html/rfc7642), [7643](https://tools.ietf.org/html/rfc7643), [7644](https://tools.ietf.org/html/rfc7644)) ermöglichen eine einfachere Integration von Identitätsanbietern und Apps. Anwendungsentwickler, die einen SCIM-Endpunkt erstellen, können die Integration mit jedem SCIM-konformen Client durchführen, ohne selbst Anpassungen vornehmen zu müssen.
 
@@ -56,7 +55,7 @@ Jede Anwendung erfordert unterschiedliche Attribute, um einen Benutzer oder eine
 |--|--|--|
 |loginName|userName|userPrincipalName|
 |firstName|name.givenName|givenName|
-|lastName|name.lastName|lastName|
+|lastName|name.familyName|surName|
 |workMail|emails[type eq “work”].value|E-Mail|
 |manager|manager|manager|
 |tag|urn:ietf:params:scim:schemas:extension:2.0:CustomExtension:tag|extensionAttribute1|
@@ -69,7 +68,8 @@ Das oben definierte Schema kann mit den nachstehenden JSON-Nutzdaten dargestellt
      "schemas": ["urn:ietf:params:scim:schemas:core:2.0:User",
       "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User",
       "urn:ietf:params:scim:schemas:extension:CustomExtensionName:2.0:User"],
-     "userName":"bjensen",
+     "userName":"bjensen@testuser.com",
+     "id": "48af03ac28ad4fb88478",
      "externalId":"bjensen",
      "name":{
        "familyName":"Jensen",
@@ -914,7 +914,7 @@ Senden Sie eine GET-Anforderung an den Tokencontroller, um ein gültiges Bearert
 
 ### <a name="handling-provisioning-and-deprovisioning-of-users"></a>Vorgehensweise beim Bereitstellen und beim Aufheben der Bereitstellung von Benutzern
 
-***Beispiel 1. Abfragen des Diensts nach einem passenden Benutzer** _
+***Beispiel 1: Abfragen des Diensts nach einem passenden Benutzer***
 
 Azure Active Directory fragt den Dienst nach einem Benutzer mit einem `externalId`-Attributwert ab, der mit dem mailNickname-Attributwert eines Benutzers in Azure AD übereinstimmt. Die Abfrage wird als Hypertext Transfer-Protokoll-Anforderung (HTTP-Anforderung) wie in diesem Beispiel ausgedrückt, wobei „jyoung“ ein Beispiel für ein mailNickname-Attribut eines Benutzers in Azure Active Directory ist.
 
@@ -942,12 +942,12 @@ Im Beispielcode wird die Anforderung in einen Aufruf der QueryAsync-Methode des 
 
 In der Beispielabfrage für einen Benutzer mit einem bestimmten Wert für das Attribut `externalId` lauten die Werte der Argumente, die an die QueryAsync-Methode übergeben werden, wie folgt:
 
-_ parameters.AlternateFilters.Count: 1
+* parameters.AlternateFilters.Count: 1
 * parameters.AlternateFilters.ElementAt(0).AttributePath: "externalId"
 * parameters.AlternateFilters.ElementAt(0).ComparisonOperator: ComparisonOperator.Equals
 * parameters.AlternateFilter.ElementAt(0).ComparisonValue: "jyoung"
 
-***Beispiel 2. Bereitstellen eines Benutzers** _
+***Beispiel 2: Bereitstellen eines Benutzers***
 
 Wenn in der Antwort auf eine Abfrage an den Webdienst für einen Benutzer mit einem `externalId`-Attributwert, der mit dem mailNickname-Attributwert eines Benutzers übereinstimmt, keine Benutzer zurückgegeben werden, stellt Azure Active Directory die folgende Anforderung: Der Dienst muss einen Benutzer bereitstellen, der dem Benutzer in Azure Active Directory entspricht.  Dies ist ein Beispiel für eine Anforderung dieser Art: 
 
@@ -961,7 +961,7 @@ Wenn in der Antwort auf eine Abfrage an den Webdienst für einen Benutzer mit ei
      "urn:ietf:params:scim:schemas:core:2.0:User",
      "urn:ietf:params:scim:schemas:extension:enterprise:2.0User"],
    "externalId":"jyoung",
-   "userName":"jyoung",
+   "userName":"jyoung@testuser.com",
    "active":true,
    "addresses":null,
    "displayName":"Joy Young",
@@ -996,7 +996,7 @@ Im Beispielcode wird die Anforderung in einen Aufruf der CreateAsync-Methode des
 
 In der Anforderung einer Benutzerbereitstellung entspricht der Wert des Ressourcenarguments einer Instanz der Klasse „Microsoft.SCIM.Core2EnterpriseUser“, die in der Microsoft.SCIM.Schemas-Bibliothek definiert ist.  Wenn die Anforderung der Benutzerbereitstellung erfolgreich ist, soll die Implementierung der Methode eine Instanz der Klasse „Microsoft.SCIM.Core2EnterpriseUser“ zurückgeben. Dabei muss der Wert der Eigenschaft „Identifier“ auf den eindeutigen Bezeichner des neu bereitgestellten Benutzers eingestellt sein.  
 
-_*_Beispiel 3: Abfragen des aktuellen Status eines Benutzers_*_ 
+***Beispiel 3: Abfragen des aktuellen Status eines Benutzers*** 
 
 Zum Aktualisieren eines Benutzers, der in einem Identitätsspeicher mit vorgelagertem SCIM vorhanden ist, geht Azure Active Directory so vor, dass der aktuelle Status dieses Benutzers vom Dienst per Anforderung abgefragt wird. Die Anforderung hierzu sieht wie folgt aus: 
 
@@ -1020,14 +1020,14 @@ Im Beispielcode wird die Anforderung in einen Aufruf der RetrieveAsync-Methode d
 
 Im Beispiels für eine Anforderung zum Abrufen des aktuellen Status eines Benutzers lauten die Werte der Eigenschaften des Objekts, das als Wert des parameters-Arguments angegeben wird, wie folgt: 
   
-_ Identifier: „54D382A4-2050-4C03-94D1-E769F1D15682“
+* Bezeichner: „54D382A4-2050-4C03-94D1-E769F1D15682“
 * SchemaIdentifier: "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User"
 
-***Beispiel 4. Abfragen des Werts eines zu aktualisierenden Referenzattributs** _ 
+***Beispiel 4: Abfragen des Werts eines zu aktualisierenden Referenzattributs*** 
 
 Wenn ein Verweisattribut aktualisiert werden soll, fragt Azure Active Directory den Dienst ab, um zu ermitteln, ob der aktuelle Wert des Verweisattributs im Identitätsspeicher mit vorgelagertem Dienst bereits mit dem Wert dieses Attributs in Azure Active Directory übereinstimmt. Bei Benutzern ist das einzige Attribut, für das der aktuelle Wert auf diese Weise abgefragt wird, das manager-Attribut. Dies ist ein Beispiel für eine Anforderung, mit der ermittelt wird, ob das „manager“-Attribut eines Benutzerobjekts derzeit über einen bestimmten Wert verfügt: Im Beispielcode wird die Anforderung in einen Aufruf der QueryAsync-Methode des Dienstanbieters übersetzt. Der Wert der Eigenschaften des Objekts, das als Wert des parameters-Arguments angegeben wird, lautet wie folgt: 
   
-_ parameters.AlternateFilters.Count: 2
+* parameters.AlternateFilters.Count: 2
 * parameters.AlternateFilters.ElementAt(x).AttributePath: „ID“
 * parameters.AlternateFilters.ElementAt(x).ComparisonOperator: ComparisonOperator.Equals
 * parameters.AlternateFilter.ElementAt(x).ComparisonValue: „54D382A4-2050-4C03-94D1-E769F1D15682“
@@ -1039,7 +1039,7 @@ _ parameters.AlternateFilters.Count: 2
 
 Hier kann der Wert von Index x „0“ und der Wert von Index y „1“ lauten, oder der Wert von x kann „1“ und der Wert von y „0“ lauten. Dies hängt von der Reihenfolge bei den Ausdrücken des Filterabfrageparameters ab.   
 
-***Beispiel 5. Anforderung von Azure AD an einen SCIM-Dienst zur Aktualisierung eines Benutzers** _ 
+***Beispiel 5: Anforderung von Azure AD an einen SCIM-Dienst zur Aktualisierung eines Benutzers*** 
 
 Dies ist ein Beispiel für eine Anforderung von Azure Active Directory an einen SCIM-Dienst zum Aktualisieren eines Benutzers: 
 
@@ -1078,7 +1078,7 @@ Im Beispielcode wird die Anforderung in einen Aufruf der UpdateAsync-Methode des
 
 Im Beispiel für eine Anforderung zum Aktualisieren eines Benutzers verfügt das Objekt, das als Wert des patch-Arguments angegeben wird, über diese Eigenschaftswerte: 
   
-_ ResourceIdentifier.Identifier: „54D382A4-2050-4C03-94D1-E769F1D15682“
+* ResourceIdentifier.Identifier: „54D382A4-2050-4C03-94D1-E769F1D15682“
 * ResourceIdentifier.SchemaIdentifier: "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User"
 * (PatchRequest as PatchRequest2).Operations.Count: 1
 * (PatchRequest as PatchRequest2).Operations.ElementAt(0).OperationName: OperationName.Add
@@ -1087,7 +1087,7 @@ _ ResourceIdentifier.Identifier: „54D382A4-2050-4C03-94D1-E769F1D15682“
 * (PatchRequest as PatchRequest2).Operations.ElementAt(0).Value.ElementAt(0).Reference: http://.../scim/Users/2819c223-7f76-453a-919d-413861904646
 * (PatchRequest as PatchRequest2).Operations.ElementAt(0).Value.ElementAt(0).Value: 2819c223-7f76-453a-919d-413861904646
 
-***Beispiel 6. Aufheben der Bereitstellung eines Benutzers** _
+***Beispiel 6: Aufheben der Bereitstellung eines Benutzers***
 
 Um die Bereitstellung für einen Benutzer aus einem Identitätsspeicher mit vorgelagertem SCIM-Dienst aufzuheben, sendet Azure AD eine Anforderung der folgenden Art:
 
@@ -1110,7 +1110,7 @@ Im Beispielcode wird die Anforderung in einen Aufruf der DeleteAsync-Methode des
 
 Im Beispiel für eine Anforderung zum Aufheben der Bereitstellung eines Benutzers verfügt das Objekt, das als Wert des resourceIdentifier-Arguments angegeben wird, über diese Eigenschaftswerte: 
 
-_ ResourceIdentifier.Identifier: „54D382A4-2050-4C03-94D1-E769F1D15682“
+* ResourceIdentifier.Identifier: „54D382A4-2050-4C03-94D1-E769F1D15682“
 * ResourceIdentifier.SchemaIdentifier: "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User"
 
 ## <a name="step-4-integrate-your-scim-endpoint-with-the-azure-ad-scim-client"></a>Schritt 4: Integrieren Ihres SCIM-Endpunkts mit dem Azure AD SCIM-Client
@@ -1151,8 +1151,8 @@ Anwendungen, die das SCIM-Profil wie in diesem Artikel beschrieben erfüllen, k�
 7. Geben Sie im Feld **Mandanten-URL** die URL des SCIM-Endpunkts der Anwendung ein. Beispiel: `https://api.contoso.com/scim/`
 8. Wenn der SCIM-Endpunkt ein OAuth-Bearertoken benötigt, das von einem anderen Aussteller als Azure AD stammt, kopieren Sie das erforderliche OAuth-Bearertoken in das optionale Feld **Geheimes Token**. Wird dieses Feld leer gelassen, fügt Azure AD in jede Anforderung ein von Azure AD ausgestelltes OAuth-Bearertoken ein. Apps, die Azure AD als Identitätsanbieter verwenden, können dieses von Azure AD ausgestellte Token überprüfen. 
    > [!NOTE]
-   > Es wird **_nicht_* _ empfohlen, dieses Feld leer zu lassen und sich auf ein von Azure AD generiertes Token zu verlassen. Diese Option steht in erster Linie zu Testzwecken zur Verfügung.
-9. Wählen Sie die Option _ *Verbindung testen**, damit Azure Active Directory versucht, eine Verbindung mit dem SCIM-Endpunkt herzustellen. Wenn der Versuch nicht erfolgreich ist, werden Fehlerinformationen angezeigt.  
+   > Es wird ***nicht*** empfohlen, dieses Feld leer zu lassen und sich auf ein von Azure AD generiertes Token zu verlassen. Diese Option steht in erster Linie zu Testzwecken zur Verfügung.
+9. Wählen Sie die Option **Verbindung testen**, damit Azure Active Directory versucht, eine Verbindung mit dem SCIM-Endpunkt herzustellen. Wenn der Versuch nicht erfolgreich ist, werden Fehlerinformationen angezeigt.  
 
     > [!NOTE]
     > Die Option **Verbindung testen** fragt den SCIM-Endpunkt nach einem Benutzer ab, der nicht vorhanden ist, und verwendet dabei einen zufälligen global eindeutigen Bezeichner (Globally Unique Identifier, GUID) als entsprechende Eigenschaft, die in der Azure AD-Konfiguration ausgewählt wurde. Die erwartete richtige Antwort ist „HTTP 200 OK“ mit einer leeren SCIM ListResponse-Meldung.
@@ -1198,7 +1198,7 @@ Die SCIM-Spezifikation definiert kein SCIM-spezifisches Schema für die Authenti
 |--|--|--|--|
 |Benutzername und Kennwort (von Azure AD nicht empfohlen oder unterstützt)|Einfache Implementierung|Unsicher – [Ihr KeNNwort ist unwichtig](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/your-pa-word-doesn-t-matter/ba-p/731984)|Unterstützt von Fall zu Fall für Katalog-Apps. Nicht unterstützt für Nicht-Katalog-Apps.|
 |Langlebiges Bearertoken|Bei langlebigen Token muss kein Benutzer anwesend sein. Admins können sie beim Einrichten der Bereitstellung leicht verwenden.|Langlebige Token können nur schwer mit einem Administrator geteilt werden, ohne unsichere Methoden wie E-Mail zu verwenden. |Unterstützt für Katalog- und Nicht-Katalog-Apps. |
-|OAuth-Autorisierungscodegenehmigung|Zugriffstoken sind sehr viel kurzlebiger als Kennwörter und verfügen über einen automatischen Aktualisierungsmechanismus, den langlebige Bearertoken nicht haben.  Bei der ersten Autorisierung muss ein echter Benutzer anwesend sein, was einen gewissen Grad an Verantwortlichkeit bedeutet. |Ein Benutzer muss anwesend sein. Wenn der Benutzer das Unternehmen verlässt, wird das Token ungültig, und die Autorisierung muss erneut erfolgen.|Wird nur für Katalog-Apps unterstützt. Sie können über die Benutzeroberfläche jedoch ein Zugriffstoken als geheimes Token für kurzfristige Testzwecke bereitstellen. An der Unterstützung für Autorisierung über OAuth-Code für nicht im Katalog enthaltenen Anwendungen wird noch gearbeitet.|
+|OAuth-Autorisierungscodegenehmigung|Zugriffstoken sind sehr viel kurzlebiger als Kennwörter und verfügen über einen automatischen Aktualisierungsmechanismus, den langlebige Bearertoken nicht haben.  Bei der ersten Autorisierung muss ein echter Benutzer anwesend sein, was einen gewissen Grad an Verantwortlichkeit bedeutet. |Ein Benutzer muss anwesend sein. Wenn der Benutzer das Unternehmen verlässt, wird das Token ungültig, und die Autorisierung muss erneut erfolgen.|Wird nur für Katalog-Apps unterstützt. Sie können über die Benutzeroberfläche jedoch ein Zugriffstoken als geheimes Token für kurzfristige Testzwecke bereitstellen. An der Unterstützung für die Autorisierung über OAuth-Code für nicht im Katalog enthaltene Anwendungen wird noch gearbeitet – zusätzlich zur Unterstützung für konfigurierbare Authentifizierungs-/Token-URLs in der Katalog-App.|
 |Genehmigung von OAuth-Clientanmeldeinformationen|Zugriffstoken sind sehr viel kurzlebiger als Kennwörter und verfügen über einen automatischen Aktualisierungsmechanismus, den langlebige Bearertoken nicht haben. Sowohl die Autorisierungscodegenehmigung als auch die Genehmigung von Clientanmeldeinformationen gehören zum gleichen Typ Zugriffstoken. Ein Wechsel zwischen diesen beiden Methoden ist daher für die API transparent.  Die Bereitstellung kann vollständig automatisiert werden. Neue Token können ohne Benutzerinteraktion und im Hintergrund angefordert werden. ||Nicht unterstützt für Katalog- und Nicht-Katalog-Apps. Diese Unterstützung befindet sich in unserem Backlog.|
 
 > [!NOTE]

@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 03/18/2020
 ms.author: janutter
-ms.openlocfilehash: 161b7fcf4660ddb9515f0b82887f416d83598bdc
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 56359ba07513ac648c682b8114001e251b0ee44c
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98754425"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99225798"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-an-angular-single-page-application"></a>Schnellstart: Anmelden von Benutzern und Abrufen eines Zugriffstokens in einer Angular-Single-Page-Webanwendung
 
@@ -49,11 +49,11 @@ In diesem Schnellstart laden Sie ein Codebeispiel herunter und führen es aus, d
 > 1. Sollte Ihr Konto Zugriff auf mehrere Mandanten haben, wählen Sie rechts oben Ihr Konto aus, und legen Sie Ihre Portalsitzung auf den gewünschten Azure AD-Mandanten fest.
 > 1. Befolgen Sie die Anleitung zum [Registrieren einer Single-Page-Webanwendung](./scenario-spa-app-registration.md) im Azure-Portal.
 > 1. Fügen Sie im Bereich **Authentifizierung** Ihrer App-Registrierung eine neue Plattform hinzu, und registrieren Sie den Umleitungs-URI: `http://localhost:4200/`.
-> 1. In dieser Schnellstartanleitung wird der [Flow zur impliziten Genehmigung](v2-oauth2-implicit-grant-flow.md) verwendet. Wählen Sie die Einstellungen vom Typ **Implizite Genehmigung** für **ID-Token** und **Zugriffstoken** aus. ID- und Zugriffstoken sind erforderlich, da diese App Benutzer anmeldet und eine API aufruft.
+> 1. In dieser Schnellstartanleitung wird der [Flow zur impliziten Genehmigung](v2-oauth2-implicit-grant-flow.md) verwendet. Wählen Sie im Abschnitt **Implizite Genehmigung und Hybridflows** die Optionen **ID-Token** und **Zugriffstoken** aus. ID- und Zugriffstoken sind erforderlich, da diese App Benutzer anmeldet und eine API aufruft.
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-1-configure-the-application-in-the-azure-portal"></a>Schritt 1: Konfigurieren der Anwendung im Azure-Portal
-> Damit das Codebeispiel für diesen Schnellstart funktioniert, müssen Sie den Umleitungs-URI **http://localhost:4200/** hinzufügen und **Implizite Genehmigung** aktivieren.
+> Damit das Codebeispiel für diese Schnellstartanleitung funktioniert, müssen Sie den Umleitungs-URI **http://localhost:4200/** hinzufügen und die Option „Implizite Genehmigung“ aktivieren.
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [Make these changes for me]() (Diese Änderungen für mich vornehmen)
 >

@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 304f62def117d1b1a803b2f604151c5e52dbe7be
-ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
+ms.openlocfilehash: 48c6e1141a00635dd1fd82ef9053b2e77168e5e8
+ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/15/2020
-ms.locfileid: "97531916"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98956287"
 ---
 ### <a name="examine-and-edit-the-sample-files"></a>Untersuchen und Bearbeiten der Beispieldateien
 
@@ -48,6 +48,13 @@ Als Teil der Voraussetzungen haben Sie den Beispielcode in einen Ordner herunter
     Wählen Sie andernfalls in der Nähe des Bereichs **AZURE IOT HUB** in der unteren linken Ecke das Symbol **Weitere Aktionen** und dann **Festlegen der IoT Hub-Verbindungszeichenfolge** aus. Sie können die Zeichenfolge aus der Datei *appsettings.json* kopieren. Um sicherzustellen, dass Sie den richtigen IoT Hub in Visual Studio Code konfiguriert haben, verwenden Sie alternativ den Befehl [IoT Hub auswählen](https://github.com/Microsoft/vscode-azure-iot-toolkit/wiki/Select-IoT-Hub).
     
     ![Festlegen der IoT Hub-Verbindungszeichenfolge](../../../media/quickstarts/set-iotconnection-string.png)
+
+> [!NOTE]
+> Unter Umständen werden Sie aufgefordert, für die IoT Hub-Instanz die Informationen zum integrierten Endpunkt anzugeben. Sie erhalten diese Informationen, indem Sie im Azure-Portal zu Ihrer IoT Hub-Instanz navigieren und im linken Navigationsbereich nach der Option **Integrierte Endpunkte** suchen. Klicken Sie darauf, und suchen Sie im Abschnitt **Event Hub-kompatibler Endpunkt** nach dem **Event Hub-kompatiblen Endpunkt**. Kopieren und verwenden Sie den im Feld enthaltenen Text. Der Endpunkt sieht in etwa wie folgt aus:  
+    ```
+    Endpoint=sb://iothub-ns-xxx.servicebus.windows.net/;SharedAccessKeyName=iothubowner;SharedAccessKey=XXX;EntityPath=<IoT Hub name>
+    ```
+
 1. Klicken Sie mit der rechten Maustaste auf *src/edge/config/ deployment.yolov3.amd64.json*, und wählen Sie **Bereitstellung für einzelnes Gerät erstellen** aus. 
 
     ![Create Deployment for Single Device (Bereitstellung für einzelnes Gerät erstellen)](../../../media/quickstarts/create-deployment-single-device.png)
@@ -58,7 +65,7 @@ Als Teil der Voraussetzungen haben Sie den Beispielcode in einen Ordner herunter
     * Das Modul `rtspsim`, das einen RTSP-Server simuliert und als Quelle eines Livevideofeeds fungiert
 
         > [!NOTE]
-        > Wenn Sie anstelle des vom Setupskript bereitgestellten Edgegeräts Ihr eigenes Edgegerät verwenden, navigieren Sie zu diesem Gerät, und führen Sie die folgenden Befehle mit **Administratorrechten** aus, um die für diese Schnellstartanleitung verwendete Beispielvideodatei zu pullen und zu speichern.  
+        > In den obigen Schritten wird vorausgesetzt, dass Sie den mit dem Setupskript erstellten virtuellen Computer verwenden. Gehen Sie wie folgt vor, falls Sie stattdessen Ihr eigenes Edgegerät verwenden: Navigieren Sie zum Gerät, und führen Sie die folgenden Befehle mit **Administratorrechten** aus, um die für diese Schnellstartanleitung verwendete Beispielvideodatei zu pullen und zu speichern:  
         
         ```
         mkdir /home/lvaadmin/samples

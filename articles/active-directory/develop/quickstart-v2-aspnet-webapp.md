@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/25/2020
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET, contperf-fy21q1
-ms.openlocfilehash: e2a71313294457e09e2bb152dea98c84b7730236
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 420415cc3bc2228a104ccf054098543bf04847b0
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98754417"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99225764"
 ---
 # <a name="quickstart-add-microsoft-identity-platform-sign-in-to-an-aspnet-web-app"></a>Schnellstart: Hinzufügen der Microsoft Identity Platform-Anmeldung zu einer ASP.NET-Web-App
 
@@ -54,12 +54,13 @@ Eine Abbildung finden Sie unter [Funktionsweise des Beispiels](#how-the-sample-w
 > 1. Geben Sie unter **Name** einen Namen für Ihre Anwendung ein (beispielsweise `ASPNET-Quickstart`). Benutzern Ihrer App wird wahrscheinlich dieser Namen angezeigt. Sie können ihn später ändern.
 > 1. Fügen Sie unter `https://localhost:44368/` **Umleitungs-URI** hinzu, und wählen Sie **Registrieren** aus.
 > 1. Wählen Sie unter **Verwalten** die Option **Authentifizierung** aus.
-> 1. Wählen Sie im Unterabschnitt **Implizite Genehmigung** die Option **ID-Token** aus.
+> 1. Wählen Sie im Abschnitt **Implizite Genehmigung und Hybridflows** die Option **ID-Token** aus.
 > 1. Wählen Sie **Speichern** aus.
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-1-configure-your-application-in-azure-portal"></a>Schritt 1: Konfigurieren Ihrer Anwendung im Azure-Portal
-> Damit das Codebeispiel für diesen Schnellstart funktioniert, müssen Sie einen Antwort-URI als `https://localhost:44368/` hinzufügen.
+> Für den Beispielcode dieser Schnellstartanleitung ist der **Umleitungs-URI** `https://localhost:44368/` erforderlich.
+
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [Diese Änderung für mich vornehmen]()
 >

@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 12/10/2020
+ms.date: 02/02/2020
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 9b40ff3a5c9ce2103cde00b26543711d4c05efb0
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
+ms.openlocfilehash: 228f837a8826612bbbadf2ca8c5ef339ab248397
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97028375"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99524991"
 ---
 ::: zone target="docs"
 
@@ -322,7 +322,7 @@ Once the upload to Azure is complete, the Data Box erases the data on its disks 
 
 ## <a name="self-managed"></a>[Selbst verwalteter Versand](#tab/in-selfmanaged)
 
-Wenn Sie Data Box in US Government, Japan, Singapur, Südkorea, Indien, Südafrika oder Westeuropa verwenden und bei der Auftragserstellung die Option für selbst verwalteten Versand ausgewählt haben, gehen Sie wie folgt vor.
+Gehen Sie wie folgt vor, wenn Sie Data Box in den Regionen „US Government“, „Japan“, „Singapur“, „Südkorea“, „Indien“, „Südafrika“, „Vereinigtes Königreich“, „Europa, Westen“ oder „Australien“ verwenden und bei der Auftragserstellung die Option für selbst verwalteten Versand ausgewählt haben.
 
 1. Notieren Sie sich den Autorisierungscode, der auf der Seite **Versandvorbereitung** der lokalen Webbenutzeroberfläche von Data Box angezeigt wird, nachdem dieser Schritt erfolgreich abgeschlossen wurde.
 2. Schalten Sie das Gerät aus, und entfernen Sie die Kabel. Wickeln Sie das mitgelieferte Netzkabel auf, und befestigen Sie es sicher an der Rückseite des Geräts.

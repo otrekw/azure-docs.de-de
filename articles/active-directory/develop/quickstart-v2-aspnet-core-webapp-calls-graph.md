@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 12/10/2020
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, scenarios:getting-started, languages:aspnet-core
-ms.openlocfilehash: 8e54f71ef58b3ea76a5fe55347a1caa173046320
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 675a5526bfd741876de16fe41c969c09a4ed0ad7
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98754488"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98938228"
 ---
 # <a name="quickstart-aspnet-core-web-app-that-signs-in-users-and-calls-microsoft-graph-on-their-behalf"></a>Schnellstart: ASP.NET Core-Web-App zum Anmelden von Benutzern und Aufrufen von Microsoft Graph in deren Namen
 
@@ -55,7 +55,7 @@ Eine Abbildung finden Sie unter [Funktionsweise des Beispiels](#how-the-sample-w
 > 1. Geben Sie als **Umleitungs-URI** den URI `https://localhost:44321/signin-oidc` ein.
 > 1. Wählen Sie **Registrieren**.
 > 1. Wählen Sie unter **Verwalten** die Option **Authentifizierung** aus.
-> 1. Geben Sie unter **Abmelde-URL** die URL `https://localhost:44321/signout-oidc` ein.
+> 1. Geben Sie `https://localhost:44321/signout-oidc` als **URL für Front-Channel-Abmeldung** an.
 > 1. Wählen Sie **Speichern** aus.
 > 1. Wählen Sie unter **Verwalten** Folgendes aus: **Zertifikate und Geheimnisse** > **Neuer geheimer Clientschlüssel**.
 > 1. Geben Sie eine **Beschreibung** ein, zum Beispiel `clientsecret1`.
@@ -64,7 +64,7 @@ Eine Abbildung finden Sie unter [Funktionsweise des Beispiels](#how-the-sample-w
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-1-configure-your-application-in-the-azure-portal"></a>Schritt 1: Konfigurieren Ihrer Anwendung im Azure-Portal
-> Damit das Codebeispiel für diesen Schnellstart funktioniert, müssen Sie den Antwort-URI `https://localhost:44321/signin-oidc` und die Abmelde-URL `https://localhost:44321/signout-oidc` hinzufügen.
+> Für den Beispielcode dieser Schnellstartanleitung werden für die App-Registrierung der **Umleitungs-URI** `https://localhost:44321/signin-oidc` und `https://localhost:44321/signout-oidc` als **URL für Front-Channel-Abmeldung** benötigt.
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [Diese Änderung für mich vornehmen]()
 >

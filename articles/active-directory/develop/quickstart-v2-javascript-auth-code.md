@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/17/2020
 ms.author: hahamil
 ms.custom: aaddev, scenarios:getting-started, languages:JavaScript, devx-track-js
-ms.openlocfilehash: f9c9cb3b1891383d4c1f0d579cf5990eee9f7826
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 98110723063ee2a2c9deb75fc931655e18e5bc95
+ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98754174"
+ms.lasthandoff: 01/28/2021
+ms.locfileid: "98938067"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-javascript-spa-using-the-auth-code-flow"></a>Schnellstart: Anmelden von Benutzern und Abrufen eines Zugriffstokens in einer JavaScript-SPA mithilfe des Autorisierungscodeflows
 
@@ -63,7 +63,7 @@ In dieser Schnellstartanleitung wird MSAL.js 2.0 mit dem Autorisierungscodeflow
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-1-configure-your-application-in-the-azure-portal"></a>Schritt 1: Konfigurieren Ihrer Anwendung im Azure-Portal
-> Damit das Codebeispiel in dieser Schnellstartanleitung funktioniert, muss `http://localhost:3000/` als Umleitungs-URI (`redirectUri`) hinzugefügt werden.
+> Für den Beispielcode dieser Schnellstartanleitung ist der **Umleitungs-URI** `http://localhost:3000/` erforderlich.
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [Make these changes for me]() (Diese Änderungen für mich vornehmen)
 >

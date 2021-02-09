@@ -7,22 +7,26 @@ ms.service: attestation
 ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 3ab1e6011a1c127c9ac5a2c7652a4bf458372e1e
-ms.sourcegitcommit: 78ecfbc831405e8d0f932c9aafcdf59589f81978
+ms.openlocfilehash: 86adac557c6de133e95e97bfedbd302cc6a2b27e
+ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98733936"
+ms.lasthandoff: 02/02/2021
+ms.locfileid: "99429156"
 ---
 # <a name="quickstart-set-up-azure-attestation-with-azure-portal"></a>Schnellstart: Einrichten von Azure Attestation über das Azure-Portal
 
+## <a name="prerequisites"></a>Voraussetzungen
+
+Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+
 Führen Sie die folgenden Schritte aus, um einen Nachweisanbieter über das Azure-Portal zu verwalten.
 
-## <a name="attestation-provider"></a>Nachweisanbieter
+## <a name="1-attestation-provider"></a>1. Nachweisanbieter
 
-### <a name="create-an-attestation-provider"></a>Erstellen eines Nachweisanbieters
+### <a name="11-create-an-attestation-provider"></a>1.1 Erstellen eines Nachweisanbieters
 
-#### <a name="to-configure-the-provider-with-unsigned-policies"></a>Konfigurieren des Anbieters mit unsignierten Richtlinien
+#### <a name="111-to-configure-the-provider-with-unsigned-policies"></a>1.1.1 Konfigurieren des Anbieters mit unsignierten Richtlinien
 
 1.  Wählen Sie im Menü des Azure-Portals oder auf der Startseite die Option **Ressource erstellen** aus.
 2.  Geben Sie im Suchfeld **Attestation** ein.
@@ -42,7 +46,7 @@ Führen Sie die folgenden Schritte aus, um einen Nachweisanbieter über das Azur
 6.  Klicken Sie auf **Überprüfen und erstellen**, nachdem Sie die erforderlichen Daten eingegeben haben.
 7.  Beheben Sie die Probleme bei der Überprüfung, falls vorhanden, und klicken Sie auf **Erstellen**.
 
-#### <a name="to-configure-the-provider-with-signed-policies"></a>Konfigurieren des Anbieters mit signierten Richtlinien
+#### <a name="112-to-configure-the-provider-with-signed-policies"></a>1.1.2 Konfigurieren des Anbieters mit signierten Richtlinien
 
 1.  Wählen Sie im Menü des Azure-Portals oder auf der Startseite die Option **Ressource erstellen** aus.
 2.  Geben Sie im Suchfeld **Attestation** ein.
@@ -62,12 +66,12 @@ Führen Sie die folgenden Schritte aus, um einen Nachweisanbieter über das Azur
 6.  Klicken Sie auf **Überprüfen und erstellen**, nachdem Sie die erforderlichen Daten eingegeben haben.
 7.  Beheben Sie die Probleme bei der Überprüfung, falls vorhanden, und klicken Sie auf **Erstellen**.
 
-### <a name="view-attestation-provider"></a>Anzeigen des Nachweisanbieters
+### <a name="12-view-attestation-provider"></a>1.2 Anzeigen des Nachweisanbieters
 
 1.  Wählen Sie im Azure-Portal im Menü oder auf der Startseite die Option **Alle Ressourcen** aus.
 2.  Geben Sie im Filterfeld den Namen des Nachweisanbieters ein, und wählen Sie ihn aus.
 
-### <a name="delete-attestation-provider"></a>Löschen des Nachweisanbieters
+### <a name="13-delete-attestation-provider"></a>1.3 Löschen des Nachweisanbieters
 
 1.  Wählen Sie im Azure-Portal im Menü oder auf der Startseite die Option **Alle Ressourcen** aus.
 2.  Geben Sie im Filterfeld den Namen des Nachweisanbieters ein.
@@ -79,9 +83,9 @@ Führen Sie die folgenden Schritte aus, um einen Nachweisanbieter über das Azur
 4.  Klicken Sie im obersten Menü auf **Löschen** und dann auf **Ja**.
 
 
-## <a name="attestation-policy-signers"></a>Nachweisrichtlinien-Signaturgeber
+## <a name="2-attestation-policy-signers"></a>2. Nachweisrichtlinien-Signaturgeber
 
-### <a name="view-policy-signer-certificates"></a>Anzeigen von Richtlinien-Signaturgeberzertifikaten
+### <a name="21-view-policy-signer-certificates"></a>2.1 Anzeigen von Richtlinien-Signaturgeberzertifikaten
 
 1.  Wählen Sie im Azure-Portal im Menü oder auf der Startseite die Option **Alle Ressourcen** aus.
 2.  Geben Sie im Filterfeld den Namen des Nachweisanbieters ein.
@@ -91,7 +95,7 @@ Führen Sie die folgenden Schritte aus, um einen Nachweisanbieter über das Azur
 6.  Die heruntergeladene Textdatei enthält alle Zertifikate im JWS-Format.
 a.  Überprüfen Sie die Anzahl von Zertifikaten und die heruntergeladenen Zertifikate.
 
-### <a name="add-policy-signer-certificate"></a>Hinzufügen eines Richtlinien-Signaturgeberzertifikats
+### <a name="22-add-policy-signer-certificate"></a>2.2 Hinzufügen eines Richtlinien-Signaturgeberzertifikats
 
 1.  Wählen Sie im Azure-Portal im Menü oder auf der Startseite die Option **Alle Ressourcen** aus.
 2.  Geben Sie im Filterfeld den Namen des Nachweisanbieters ein.
@@ -100,7 +104,7 @@ a.  Überprüfen Sie die Anzahl von Zertifikaten und die heruntergeladenen Zerti
 5.  Klicken Sie im obersten Menü auf **Hinzufügen**. (Für Nachweisanbieter, die ohne obligatorische Signierung von Richtlinien erstellt wurden, ist die Schaltfläche deaktiviert.)
 6.  Laden Sie die Datei für Richtlinien-Signaturgeberzertifikate hoch, und klicken Sie auf **Hinzufügen**. Hilfreiche Beispiele finden Sie [hier](./policy-signer-examples.md).
 
-### <a name="delete-policy-signer-certificate"></a>Löschen des Richtlinien-Signaturgeberzertifikats
+### <a name="23-delete-policy-signer-certificate"></a>2.3 Löschen des Richtlinien-Signaturgeberzertifikats
 
 1.  Wählen Sie im Azure-Portal im Menü oder auf der Startseite die Option **Alle Ressourcen** aus.
 2.  Geben Sie im Filterfeld den Namen des Nachweisanbieters ein.
@@ -109,9 +113,9 @@ a.  Überprüfen Sie die Anzahl von Zertifikaten und die heruntergeladenen Zerti
 5.  Klicken Sie im obersten Menü auf **Löschen**. (Für Nachweisanbieter, die ohne obligatorische Signierung von Richtlinien erstellt wurden, ist die Schaltfläche deaktiviert.)
 6.  Laden Sie die Datei für Richtlinien-Signaturgeberzertifikate hoch, und klicken Sie auf **Löschen**. Hilfreiche Beispiele finden Sie [hier](./policy-signer-examples.md). 
 
-## <a name="attestation-policy"></a>Nachweisrichtlinie
+## <a name="3-attestation-policy"></a>3. Nachweisrichtlinie
 
-### <a name="view-attestation-policy"></a>Anzeigen der Nachweisrichtlinie
+### <a name="31-view-attestation-policy"></a>3.1 Anzeigen der Nachweisrichtlinie
 
 1.  Wählen Sie im Azure-Portal im Menü oder auf der Startseite die Option **Alle Ressourcen** aus.
 2.  Geben Sie im Filterfeld den Namen des Nachweisanbieters ein.
@@ -119,9 +123,9 @@ a.  Überprüfen Sie die Anzahl von Zertifikaten und die heruntergeladenen Zerti
 4.  Klicken Sie links im Ressourcenmenü oder im unteren Bereich auf **Richtlinie**.
 5.  Wählen Sie den gewünschten **Nachweistyp** aus, und zeigen Sie die **Aktuelle Richtlinie** an.
 
-### <a name="configure-attestation-policy"></a>Konfigurieren der Nachweisrichtlinie
+### <a name="32-configure-attestation-policy"></a>3.2 Konfigurieren der Nachweisrichtlinie
 
-#### <a name="when-attestation-provider-is-created-without-policy-signing-requirement"></a>Erstellung des Nachweisanbieters ohne obligatorische Signierung von Richtlinien
+#### <a name="321-when-attestation-provider-is-created-without-policy-signing-requirement"></a>3.2.1 Erstellung des Nachweisanbieters ohne obligatorische Signierung von Richtlinien
 
 ##### <a name="upload-policy-in-jwt-format"></a>Laden Sie die Richtlinie im JWT-Format hoch.
 
@@ -153,7 +157,7 @@ a.  Überprüfen Sie die Anzahl von Zertifikaten und die heruntergeladenen Zerti
 
 8.  Klicken Sie auf **Aktualisieren**, um die konfigurierte Richtlinie anzuzeigen.
 
-#### <a name="when-attestation-provider-is-created-with-policy-signing-requirement"></a>Erstellung des Nachweisanbieters mit obligatorischer Signierung von Richtlinien
+#### <a name="322-when-attestation-provider-is-created-with-policy-signing-requirement"></a>3.2.2 Erstellung des Nachweisanbieters mit obligatorischer Signierung von Richtlinien
 
 ##### <a name="upload-policy-in-jwt-format"></a>Laden Sie die Richtlinie im JWT-Format hoch.
 
@@ -168,4 +172,9 @@ a.  Überprüfen Sie die Anzahl von Zertifikaten und die heruntergeladenen Zerti
     Bei der Option zum Hochladen von Dateien wird die Richtlinienvorschau im Textformat angezeigt und kann nicht bearbeitet werden.
     
 8.  Klicken Sie auf **Aktualisieren**, um die konfigurierte Richtlinie anzuzeigen.
+
+## <a name="next-steps"></a>Nächste Schritte
+
+- [Erstellen und Signieren einer Nachweisrichtlinie](author-sign-policy.md)
+- [Erbringen eines Nachweises für eine SGX-Enclave mithilfe von Codebeispielen](/samples/browse/?expanded=azure&terms=attestation)
 

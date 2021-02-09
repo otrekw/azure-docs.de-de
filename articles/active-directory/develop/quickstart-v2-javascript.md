@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 04/11/2019
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:JavaScript, devx-track-js
-ms.openlocfilehash: b475d8072c4103e8a532cdf703e2d75b0c8aafa2
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: b2ae48c76ccba80d274e7463b31782b4fbc6a976
+ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98754156"
+ms.lasthandoff: 02/01/2021
+ms.locfileid: "99225713"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-javascript-spa"></a>Schnellstart: Anmelden von Benutzern und Abrufen eines Zugriffstokens in einer JavaScript-SPA
 
@@ -55,13 +55,14 @@ Eine Abbildung finden Sie unter [Funktionsweise des Beispiels](#how-the-sample-w
 > 1. Wählen Sie unter **Unterstützte Kontotypen** **Konten in allen Organisationsverzeichnissen und persönliche Microsoft-Konten** aus.
 > 1. Wählen Sie **Registrieren**. Notieren Sie sich für die spätere Verwendung auf der Seite **Übersicht** den Wert von **Anwendungs-ID (Client)** .
 > 1. Für diesen Schnellstart muss der [Flow zur impliziten Genehmigung](v2-oauth2-implicit-grant-flow.md) aktiviert werden. Wählen Sie unter **Verwalten** die Option **Authentifizierung** aus.
-> 1. Wählen Sie unter **Plattformkonfigurationen** die Option **Plattform hinzufügen** aus. Daraufhin wird auf der linken Seite ein Bereich geöffnet. Wählen Sie dort die Region **Webanwendungen** aus.
-> 1. Legen Sie den Wert für den **Umleitungs-URI** auf `http://localhost:3000/` fest (ebenfalls im linken Bereich). Wählen Sie anschließend **Zugriffstoken** und **ID-Token** aus.
+> 1. Wählen Sie **Plattformkonfigurationen** > **Plattform hinzufügen** aus. Wählen Sie **Web** aus.
+> 1. Legen Sie den Wert für **Umleitungs-URI** auf `http://localhost:3000/` fest. 
+> 1. Treffen Sie unter **Implizite Genehmigung und Hybridflows** eine Auswahl für **Zugriffstoken** und **ID-Token**.
 > 1. Wählen Sie **Konfigurieren** aus.
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-1-configure-your-application-in-the-azure-portal"></a>Schritt 1: Konfigurieren Ihrer Anwendung im Azure-Portal
-> Damit das Codebeispiel in dieser Schnellstartanleitung funktioniert, muss `http://localhost:3000/` als Umleitungs-URI (`redirectUri`) hinzugefügt und **Implizite Genehmigung** aktiviert werden.
+> Für den Beispielcode dieser Schnellstartanleitung ist der **Umleitungs-URI** `http://localhost:3000/` erforderlich, und die Option **Implizite Genehmigung** muss aktiviert sein.
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [Make these changes for me]() (Diese Änderungen für mich vornehmen)
 >

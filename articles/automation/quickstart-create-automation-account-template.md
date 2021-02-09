@@ -3,22 +3,18 @@ title: 'Schnellstart: Erstellen eines Automation-Kontos – Azure-Vorlage'
 titleSuffix: Azure Automation
 description: In dieser Schnellstartanleitung erfahren Sie, wie Sie ein Automation-Konto per Azure Resource Manager-Vorlage erstellen.
 services: automation
-documentationcenter: na
-author: mgoedtel
 Customer intent: I want to create an Automation account by using an Azure Resource Manager template so that I can automate processes with runbooks.
-ms.service: automation
-ms.devlang: na
 ms.topic: quickstart
 ms.workload: infrastructure-services
-ms.date: 07/23/2020
+ms.date: 01/07/2021
 ms.author: magoedte
 ms.custom: mvc,subject-armqs
-ms.openlocfilehash: 9315b898e290dc758c300f9b74006b4b08888e9e
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: d0582876a08b433a10106b97179ab603d4ec5762
+ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92078951"
+ms.lasthandoff: 01/29/2021
+ms.locfileid: "99050667"
 ---
 # <a name="quickstart-create-an-automation-account-by-using-arm-template"></a>Schnellstart: Erstellen eines Automation-Kontos mithilfe einer ARM-Vorlage
 
@@ -44,7 +40,7 @@ Diese Beispielvorlage führt Folgendes aus:
 * Hinzufügen von Automation-Beispielrunbooks zum Konto.
 
 >[!NOTE]
->Die Erstellung des ausführenden Automation-Kontos wird bei Verwendung einer ARM-Vorlage nicht unterstützt. Informationen zum Erstellen eines ausführenden Kontos über das Portal oder mit PowerShell finden Sie unter [Verwalten von ausführenden Azure Automation-Konten](manage-runas-account.md).
+>Die Erstellung des ausführenden Automation-Kontos wird bei Verwendung einer ARM-Vorlage nicht unterstützt. Informationen zum Erstellen eines ausführenden Kontos über das Portal oder mit PowerShell finden Sie unter [Erstellen eines ausführenden Kontos](create-run-as-account.md).
 
 Nachdem Sie diese Schritte ausgeführt haben, müssen Sie [Diagnoseeinstellungen konfigurieren](automation-manage-send-joblogs-log-analytics.md), damit Ihr Automation-Konto Auftragsstatus und Auftragsdatenströme von Runbooks an den verknüpften Log Analytics Arbeitsbereich sendet.
 

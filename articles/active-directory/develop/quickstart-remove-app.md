@@ -13,12 +13,12 @@ ms.date: 11/15/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: marsma, aragra, lenalepa, sureshja
-ms.openlocfilehash: 24c29d34c14e6237bc79e38741ea244da5429e9e
-ms.sourcegitcommit: 5cdd0b378d6377b98af71ec8e886098a504f7c33
+ms.openlocfilehash: 8953f9ca174414c55e6e06774167d3951d0bbd41
+ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/25/2021
-ms.locfileid: "98754547"
+ms.lasthandoff: 01/30/2021
+ms.locfileid: "99090237"
 ---
 # <a name="how-to-remove-an-application-registered-with-the-microsoft-identity-platform"></a>Entfernen einer Anwendung, die bei der Microsoft Identity Platform registriert ist
 
@@ -49,7 +49,7 @@ Zum Löschen einer Anwendung müssen Sie als Besitzer der Anwendung angegeben se
 
 Wenn Sie **App-Registrierungen** im Kontext eines Mandanten anzeigen, stammt ein Teil der Anwendungen, die auf der Registerkarte **Alle Apps** angegeben sind, von einem anderen Mandanten. Sie wurden während des Zustimmungsprozesses unter Ihrem Mandanten registriert. Genauer gesagt: Sie werden unter Ihrem Mandanten nur von einem Dienstprinzipalobjekt ohne entsprechendes Anwendungsobjekt repräsentiert. Weitere Informationen zu den Unterschieden zwischen Anwendungs- und Dienstprinzipalobjekten finden Sie unter [Anwendungs- und Dienstprinzipalobjekte in Azure AD](./app-objects-and-service-principals.md).
 
-Der Administrator des Unternehmens muss seinen Dienstprinzipal entfernen, um für eine Anwendung den Zugriff auf Ihr Verzeichnis zu entfernen (nachdem die Zustimmung erteilt wurde). Der Administrator muss über globalen Administratorzugriff verfügen und kann die Anwendung über das Azure-Portal entfernen oder die [Azure AD-PowerShell-Cmdlets](/previous-versions/azure/jj151815(v=azure.100)) zum Entfernen des Zugriffs verwenden.
+Der Administrator des Unternehmens muss seinen Dienstprinzipal entfernen, um für eine Anwendung den Zugriff auf Ihr Verzeichnis zu entfernen (nachdem die Zustimmung erteilt wurde). Der Administrator muss über Zugriffsberechtigungen vom Typ „Globaler Administrator“ verfügen und kann die Anwendung über das Azure-Portal entfernen oder die [Azure AD-PowerShell-Cmdlets](/previous-versions/azure/jj151815(v=azure.100)) zum Entfernen des Zugriffs verwenden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
