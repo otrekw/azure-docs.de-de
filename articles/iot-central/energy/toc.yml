@@ -5,6 +5,7 @@
     - name: Erstellen von Lösungen für die Energiebranche mit Azure IoT Central
       href: overview-iot-central-energy.md
 - name: Tutorials
+  expanded: true
   items:
     - name: Erstellen einer App für die Überwachung von intelligenten Stromzählern
       href: tutorial-smart-meter-app.md

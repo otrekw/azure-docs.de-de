@@ -5,6 +5,7 @@
     - name: Erstellen von Lösungen für den Einzelhandel mit Azure IoT Central
       href: overview-iot-central-retail.md
 - name: Tutorials
+  expanded: true
   items:
     - name: In-Store-Analyse – Auschecken
       items:

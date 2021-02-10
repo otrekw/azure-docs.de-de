@@ -30,6 +30,8 @@
       href: Concepts/azure-resources.md
     - name: Datenquellen und Inhalte
       href: Concepts/data-sources-and-content.md
+    - name: "Rollenbasierte Zugriffssteuerung von Azure (Azure\_RBAC)"
+      href: Concepts/role-based-access-control.md
     - name: Einstufungsprozess
       displayName: 'DefaultAnswer, Default answer'
       href: Concepts/query-knowledge-base.md
@@ -46,7 +48,7 @@
     - name: Verwalten von Azure-Ressourcen
       href: How-To/set-up-qnamaker-service-azure.md
       displayName: 'azure, resource, key, upgrade, pricing, tier,'
-    - name: Verwalten der QnA Maker-App
+    - name: "Verwalten des QnA\_Maker-Ressourcenzugriffs"
       href: How-To/manage-qna-maker-app.md
     - name: Aktivieren des Features für aktives Lernen
       href: How-To/use-active-learning.md
@@ -92,8 +94,6 @@
       href: Concepts/confidence-score.md
     - name: Problembehandlung
       href: troubleshooting.md
-    - name: Frage-Antwort-Paare
-      href: Concepts/question-answer-set.md
     - name: Präzise Antworten
       href: reference-precise-answering.md
     - name: Hinzufügen von gesicherten SharePoint-Dateien
@@ -105,14 +105,6 @@
       href: reference-app-service.md
     - name: Richtlinien zum Inhaltsformat
       href: reference-document-format-guidelines.md
-    - name: Inhalts- und Datenformate
-      items:
-        - name: Richtlinien zum Inhaltsformat
-          href: reference-document-format-guidelines.md
-        - name: URLs
-          href: reference-document-type-url.md
-        - name: Richtlinien zum Importieren und Exportieren von Daten
-          href: reference-data-guidelines.md
     - name: Anzeigeformat
       href: reference-markdown-format.md
     - name: Private Links

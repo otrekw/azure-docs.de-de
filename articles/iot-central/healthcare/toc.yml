@@ -5,9 +5,12 @@
     - name: Entwickeln von Lösungen für das Gesundheitswesen mit Azure IoT Central
       href: overview-iot-central-healthcare.md
 - name: Tutorials
+  expanded: true
   items:
     - name: Erstellen einer App für die ständige Überwachung von Patienten
       href: tutorial-continuous-patient-monitoring.md
+    - name: Erstellen eines Dashboards für die Selektierung von Integritätsdaten
+      href: howto-health-data-triage.md
 - name: Konzepte
   items:
     - name: Architektur für die ständige Überwachung von Patienten
@@ -18,8 +21,6 @@
       href: ../core/concepts-app-templates.md?toc=/azure/iot-central/healthcare/toc.json&bc=/azure/iot-central/healthcare/breadcrumb/toc.json
 - name: Anleitungen
   items:
-    - name: Erstellen eines Dashboards für die Selektierung von Integritätsdaten
-      href: howto-health-data-triage.md
     - name: Verbinden und Entwickeln von Geräten
       items:
         - name: "Vorbereiten und Verbinden einer Rigado Cascade\_500-Einheit"

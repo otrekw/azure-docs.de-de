@@ -17,7 +17,7 @@
           href: quickstart-aspnet-core-app.md
         - name: .NET Core
           href: quickstart-dotnet-core-app.md
-        - name: .NET Framework
+        - name: ".NET\_Framework"
           href: quickstart-dotnet-app.md
         - name: Azure Functions in .NET Core
           href: quickstart-azure-functions-csharp.md
@@ -40,7 +40,7 @@
           href: quickstart-feature-flag-spring-boot.md
 - name: Tutorials
   items:
-    - name: Aktivieren der dynamischen Konfiguration
+    - name: Aktivieren der dynamischen Konfiguration mithilfe eines Abfragemodells
       items:
         - name: ASP.NET Core
           href: enable-dynamic-configuration-aspnet-core.md
@@ -52,6 +52,10 @@
           href: enable-dynamic-configuration-azure-functions-csharp.md
         - name: Spring Boot
           href: enable-dynamic-configuration-java-spring-app.md
+    - name: Aktivieren der dynamischen Konfiguration mithilfe eines Pushmodells
+      items:
+        - name: .NET Core
+          href: enable-dynamic-configuration-dotnet-core-push-refresh.md
     - name: Verwenden von Featureflags
       items:
         - name: ASP.NET Core

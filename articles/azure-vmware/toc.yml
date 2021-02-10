@@ -107,7 +107,7 @@
         - name: Öffnen einer Supportanfrage für Bereitstellungsfehler
           href: fix-deployment-provisioning-failures.md
     - name: Häufig gestellte Fragen
-      href: faq.md
+      href: faq.yml
 - name: Verweis
   items:
     - name: Azure CLI

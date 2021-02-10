@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/15/2020
 ms.author: v-demjoh
-ms.openlocfilehash: d6ae9585ce5b5a6f666a96ae8c5e7e9e3c5e248a
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: d94b83dd658193069f24202b978d32389eb82ac1
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99427407"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99580386"
 ---
 ## <a name="download-and-install"></a>Herunterladen und Installieren
 
@@ -19,7 +19,7 @@ ms.locfileid: "99427407"
 Führen Sie diese Schritte aus, um die Speech-Befehlszeilenschnittstelle unter Windows zu installieren:
 
 1. Unter Windows benötigen Sie [Microsoft Visual C++ Redistributable für Visual Studio 2019](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads) für Ihre Plattform. Bei der Erstinstallation ist möglicherweise ein Neustart erforderlich.
-1. Installieren Sie [.NET Core 3.1](/dotnet/core/install/linux.md).
+1. Installieren Sie [.NET Core 3.1](/dotnet/core/install/linux).
 2. Installieren Sie die Speech-Befehlszeilenschnittstelle mithilfe von NuGet durch Eingabe des folgenden Befehls:
 
     `dotnet tool install --global Microsoft.CognitiveServices.Speech.CLI --version 1.15.0`
@@ -41,7 +41,7 @@ Bei der Ausgabe einer Datei können in einem Text-Editor wie Notepad oder einem 
 
 Führen Sie diese Schritte aus, um die Speech-Befehlszeilenschnittstelle unter Linux auf einer x64-CPU zu installieren:
 
-1. Installieren Sie [.NET Core 3.1](/dotnet/core/install/linux.md).
+1. Installieren Sie [.NET Core 3.1](/dotnet/core/install/linux).
 2. Installieren Sie die Speech-Befehlszeilenschnittstelle mithilfe von NuGet durch Eingabe des folgenden Befehls:
 
     `dotnet tool install --global Microsoft.CognitiveServices.Speech.CLI --version 1.15.0`

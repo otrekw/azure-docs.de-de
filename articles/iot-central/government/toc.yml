@@ -5,6 +5,7 @@
     - name: Erstellen von Lösungen für Behörden mit Azure IoT Central
       href: overview-iot-central-government.md
 - name: Tutorials
+  expanded: true
   items:
     - name: Erstellen einer App für die vernetzte Abfallwirtschaft
       href: tutorial-connected-waste-management.md
