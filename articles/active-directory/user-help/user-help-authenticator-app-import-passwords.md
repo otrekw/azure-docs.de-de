@@ -11,12 +11,12 @@ ms.topic: end-user-help
 ms.date: 01/28/2021
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: b0d7eeeb840a3efc560c20310b38bee93a038795
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: ecc6580148dfba92077336a26ff9160fbe88eb2c
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99056867"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99806154"
 ---
 # <a name="import-passwords-into-the-microsoft-authenticator-app"></a>Importieren von Kennwörtern in die Microsoft Authenticator-App
 
@@ -39,21 +39,21 @@ Google Chrome-Benutzer können ihre Kennwörter mit wenigen einfachen Schritten 
 
 1. Tippen Sie oben rechts (unter Android) bzw. unten rechts (unter iOS) auf das ![Google Chrome-Menü mit den Auslassungspunkten (...)](./media/user-help-authenticator-app-import-passwords/ellipsis-chrome.png) und dann auf **Einstellungen**.
 
-   &nbsp; | &nbsp;
+   Plattform | Link
    ---------- | --------
    Android | ![Menü für Google Chrome-Einstellungen](./media/user-help-authenticator-app-import-passwords/android-settings-menu.png)
    iOS | ![Menüsymbol der Google Chrome-Einstellungen](./media/user-help-authenticator-app-import-passwords/apple-settings-menu.png)
 
 1. Tippen Sie auf **Einstellungen** und dann auf **Kennwörter**.
 
-   &nbsp; | &nbsp;
+   Plattform | Link
    ---------- | --------
    Android | ![Option für Chrome-Kennwörter (Android)](./media/user-help-authenticator-app-import-passwords/android-passwords-location.png)
    iOS | ![Option für Chrome-Kennwörter (iOS)](./media/user-help-authenticator-app-import-passwords/apple-passwords-location.png)
 
 1. Tippen Sie oben rechts (unter Android) bzw. unten rechts (unter iOS) auf das ![Google Chrome-Menü mit den Auslassungspunkten (...)](./media/user-help-authenticator-app-import-passwords/ellipsis-chrome.png) und dann auf **Kennwörter exportieren**.
 
-   &nbsp; | &nbsp;
+   Plattform | Link
    ---------- | --------
    Android | ![Option zum Exportieren von Chrome-Kennwörtern (Android)](./media/user-help-authenticator-app-import-passwords/android-export-passwords-location.png)
    iOS | ![Option zum Exportieren von Chrome-Kennwörtern (iOS)](./media/user-help-authenticator-app-import-passwords/apple-export-passwords-location.png)
@@ -62,7 +62,7 @@ Google Chrome-Benutzer können ihre Kennwörter mit wenigen einfachen Schritten 
 
 1. Nach dem Exportieren der Kennwörter werden Sie von Chrome aufgefordert auszuwählen, in welche App sie importiert werden sollen. Wählen Sie **Authenticator** aus, um die Kennwörter zu importieren. Sie werden informiert, wenn der Importgang abgeschlossen ist.
 
-   &nbsp; | &nbsp;
+   Plattform | Link
    ---------- | --------
    Android | ![Option zum Importieren von Chrome-Kennwörtern (Android)](./media/user-help-authenticator-app-import-passwords/android-chrome-import.png)
    iOS | ![Option zum Importieren von Chrome-Kennwörtern (iOS)](./media/user-help-authenticator-app-import-passwords/apple-chrome-import.png)
@@ -105,7 +105,7 @@ Firefox ermöglicht das Exportieren von Kennwörtern nur aus dem Desktopbrowser.
 
       1. Übermitteln Sie die exportierte CSV-Datei auf Ihr Android- oder iOS-Smartphone mit der bevorzugten sicheren Methode, und laden Sie sie herunter. Geben Sie als Nächstes die CSV-Datei für die Authenticator-App frei, um den Importvorgang zu starten.
 
-         &nbsp; | &nbsp;
+         Plattform | Link
          ---------- | --------
          Android | ![Option zum Importieren von Chrome-Kennwörtern (Android)](./media/user-help-authenticator-app-import-passwords/android-chrome-import.png)
          iOS | ![Option zum Importieren von Chrome-Kennwörtern (iOS)](./media/user-help-authenticator-app-import-passwords/apple-chrome-import.png)
@@ -134,7 +134,7 @@ LastPass unterstützt das Exportieren von Kennwörtern nur über einen Desktopbr
 
       1. Übermitteln Sie die exportierte CSV-Datei an Ihr Smartphone mit der bevorzugten sicheren Methode, und laden Sie sie herunter. Geben Sie dann die CSV-Datei für die Authenticator-App frei, um den Importvorgang zu starten.
 
-         &nbsp; | &nbsp;
+         Plattform | Link
          ---------- | --------
          Android | ![Option zum Importieren von Kennwörtern in LastPass (Android)](./media/user-help-authenticator-app-import-passwords/android-chrome-import.png)
          iOS | ![Option zum Importieren von Kennwörtern in LastPass (iOS)](./media/user-help-authenticator-app-import-passwords/apple-chrome-import.png)
@@ -153,7 +153,7 @@ Bitwarden unterstützt das Exportieren von Kennwörtern nur über einen Desktopb
 
       1. Übermitteln Sie die exportierte CSV-Datei an Ihr Smartphone mit der bevorzugten sicheren Methode, und laden Sie sie herunter. Geben Sie dann die CSV-Datei für die Authenticator-App frei, um den Importvorgang zu starten.
 
-         &nbsp; | &nbsp;
+         Plattform | Link
          ---------- | --------
          Android | ![Option zum Importieren von Kennwörtern in Bitwarden (Android)](./media/user-help-authenticator-app-import-passwords/android-chrome-import.png)
          iOS | ![Option zum Importieren von Kennwörtern in Bitwarden (iOS)](./media/user-help-authenticator-app-import-passwords/apple-chrome-import.png)
@@ -186,7 +186,7 @@ RoboForm ermöglicht das Exportieren von Kennwörtern nur aus der Desktop-App. S
 
       1. Übermitteln Sie die exportierte CSV-Datei an Ihr Smartphone mit der bevorzugten sicheren Methode, und laden Sie sie herunter. Geben Sie dann die CSV-Datei für die Authenticator-App frei, um den Importvorgang zu starten.
 
-         &nbsp; | &nbsp;
+         Plattform | Link
          ---------- | --------
          Android | ![Option zum Importieren von Kennwörtern in RoboForm (Android)](./media/user-help-authenticator-app-import-passwords/android-chrome-import.png)
          iOS | ![Option zum Importieren von Kennwörtern in RoboForm (iOS)](./media/user-help-authenticator-app-import-passwords/apple-chrome-import.png)
@@ -209,7 +209,7 @@ Wenn in diesem Artikel die Schritte zum Importieren von Kennwörtern aus Ihrem K
 
       1. Übermitteln Sie die exportierte CSV-Datei an Ihr Smartphone mit der bevorzugten sicheren Methode, und laden Sie sie herunter. Geben Sie dann die CSV-Datei für die Authenticator-App frei, um den Importvorgang zu starten.
 
-         &nbsp; | &nbsp;
+         Plattform | Link
          ---------- | --------
          Android | ![Option zum Importieren von Kennwörtern mit CSV-Datei (Android)](./media/user-help-authenticator-app-import-passwords/android-chrome-import.png)
          iOS | ![Option zum Importieren von Kennwörtern mit CSV-Datei (iOS)](./media/user-help-authenticator-app-import-passwords/apple-chrome-import.png)
