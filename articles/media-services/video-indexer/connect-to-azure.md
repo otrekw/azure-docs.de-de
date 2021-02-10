@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 01/14/2021
 ms.author: juliako
-ms.openlocfilehash: 8e110ba9818b48d66c5f17bb524bada567d808ab
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 4174e63ed12faf5d10029db5b4eb9bf9a40b9b5b
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98897155"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99576277"
 ---
 # <a name="create-a-video-indexer-account"></a>Erstellen eines Video Indexer-Kontos
 
@@ -195,7 +195,7 @@ Die Automatisierung des Erstellens des Kontos ist ein Prozess in zwei Schritten:
 1. Verwenden von Azure Resource Manager zum Erstellen eines Azure Media Services-Kontos und einer Azure AD-Anwendung.
 
     Ein Beispiel für die Vorlage zum Erstellen eines Media Services-Kontos finden Sie [hier](https://github.com/Azure-Samples/media-services-v3-arm-templates).
-1. Aufrufen von [Create-Account mit Media Services und der Azure AD-Anwendung](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Create-Paid-Account).
+1. Aufrufen von [Create-Account mit Media Services und der Azure AD-Anwendung](https://videoindexer.ai.azure.us/account/login?source=apim).
 
 ## <a name="video-indexer-in-azure-government"></a>Video Indexer in Azure Government
 
@@ -222,7 +222,7 @@ So erstellen Sie ein kostenpflichtiges Konto über das Video Indexer-Portal
     
 ### <a name="create-new-account-via-the-api-on-azure-government"></a>Erstellen eines neuen Kontos über die API in Azure Government
 
-Um ein kostenpflichtiges Konto in Azure Government zu erstellen, folgen Sie den Anweisungen zum [Erstellen eines kostenpflichtigen Kontos](https://api-portal.videoindexer.ai.azure.us/docs/services/Operations/operations/Create-Paid-Account). Dieser API-Endpunkt umfasst nur Government-Cloudregionen.
+Um ein kostenpflichtiges Konto in Azure Government zu erstellen, folgen Sie den Anweisungen zum [Erstellen eines kostenpflichtigen Kontos](/azure/media-services/video-indexer/connect-to-azure). Dieser API-Endpunkt umfasst nur Government-Cloudregionen.
 
 ### <a name="limitations-of-video-indexer-on-azure-government"></a>Einschränkungen von Video Indexer in Azure Government
 

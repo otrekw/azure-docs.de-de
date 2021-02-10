@@ -5,12 +5,12 @@ services: container-service
 ms.custom: fasttrack-edit, references_regions, devx-track-azurecli
 ms.topic: article
 ms.date: 09/04/2020
-ms.openlocfilehash: 9953b51dc93738093ef56f9dbc64b4e1165cc40c
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 319e56f5cec6df07230ded22277bc74c2a430133
+ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99091394"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99561975"
 ---
 # <a name="create-an-azure-kubernetes-service-aks-cluster-that-uses-availability-zones"></a>Erstellen eines Azure Kubernetes Service-Clusters (AKS), der Verfügbarkeitszonen verwendet
 
@@ -34,9 +34,11 @@ AKS-Cluster können derzeit über Verfügbarkeitszonen in den folgenden Regionen
 * East US 
 * USA (Ost) 2
 * Frankreich, Mitte
+* Deutschland, Westen-Mitte
 * Japan, Osten
 * Nordeuropa
 * Asien, Südosten
+* USA Süd Mitte
 * UK, Süden
 * Europa, Westen
 * USA, Westen 2

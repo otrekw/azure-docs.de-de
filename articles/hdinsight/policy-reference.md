@@ -1,18 +1,18 @@
 ---
 title: Integrierte Richtliniendefinitionen für Azure HDInsight
 description: Hier finden Sie eine Liste der integrierten Azure Policy-Richtliniendefinitionen für Azure HDInsight. Diese integrierten Richtliniendefinitionen bieten allgemeine Ansätze für die Verwaltung von Azure-Ressourcen.
-ms.date: 01/29/2021
+ms.date: 02/04/2021
 ms.topic: reference
 author: hrasheed-msft
 ms.author: hrasheed
 ms.service: hdinsight
 ms.custom: subject-policy-reference
-ms.openlocfilehash: c2886792f651ba2bade09b717727e20d8dbafc2f
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.openlocfilehash: 36aa79e76c76bf110301df1a51a4c4252bf110f5
+ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99219510"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99556445"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-hdinsight"></a>Integrierte Azure Policy-Definitionen für Azure HDInsight
 

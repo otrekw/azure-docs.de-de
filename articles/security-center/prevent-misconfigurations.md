@@ -6,14 +6,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: how-to
-ms.date: 09/08/2020
+ms.date: 02/04/2021
 ms.author: memildin
-ms.openlocfilehash: 19e9a33350b6a1a67986dc35a372f737e45ab39a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a3da9cdea543894aa7aec66112e28658beac84b5
+ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90906399"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99558190"
 ---
 # <a name="prevent-misconfigurations-with-enforcedeny-recommendations"></a>Verhindern von Fehlkonfigurationen mit den Optionen zum Erzwingen/Ablehnen für Empfehlungen
 
@@ -41,18 +41,18 @@ Sie finden diese Option oben auf der Seite mit den Ressourcendetails für ausgew
     > [!TIP]
     > Sie können die drei Punkte am Ende der Zeile verwenden, um ein Abonnement zu ändern, oder über die Kontrollkästchen mehrere Abonnements oder Gruppen und dann die Option **In „Ablehnen“ ändern** auswählen.
 
-    :::image type="content" source="./media/security-center-remediate-recommendations/recommendation-prevent-resource-creation.png" alt-text="Empfehlungsseite mit hervorgehobener Schaltfläche „Ablehnen“":::
+    :::image type="content" source="./media/security-center-remediate-recommendations/recommendation-prevent-resource-creation.png" alt-text="Festlegen des Bereichs für „Ablehnen“ von Azure Policy":::
 
 
 ## <a name="enforce-a-secure-configuration"></a>Erzwingen einer sicheren Konfiguration
 
 1. Öffnen Sie die Empfehlung, für die Sie eine Vorlagenbereitstellung durchführen möchten, falls die Anforderungen der Empfehlung von neuen Ressourcen nicht erfüllt werden. Wählen Sie anschließend oben auf der Seite die Schaltfläche **Erzwingen** aus.
 
-    :::image type="content" source="./media/security-center-remediate-recommendations/recommendation-enforce-button.png" alt-text="Empfehlungsseite mit hervorgehobener Schaltfläche „Ablehnen“":::
+    :::image type="content" source="./media/security-center-remediate-recommendations/recommendation-enforce-button.png" alt-text="Empfehlungsseite mit hervorgehobener Schaltfläche „Erzwingen“":::
 
     Der Konfigurationsbereich wird geöffnet, und alle Optionen der Richtlinienkonfiguration werden angezeigt. 
 
-    :::image type="content" source="./media/security-center-remediate-recommendations/recommendation-enforce-config.png" alt-text="Empfehlungsseite mit hervorgehobener Schaltfläche „Ablehnen“":::
+    :::image type="content" source="./media/security-center-remediate-recommendations/recommendation-enforce-config.png" alt-text="Erzwingen von Konfigurationsoptionen":::
 
 1. Legen Sie den Bereich, den Zuweisungsnamen und andere relevante Optionen fest.
 
@@ -62,32 +62,51 @@ Sie finden diese Option oben auf der Seite mit den Ressourcendetails für ausgew
 
 Diese Empfehlungen können mit der Option **Ablehnen** verwendet werden:
 
-- VMs sollten zu neuen Azure Resource Manager-Ressourcen migriert werden
-- Speicherkonten sollten zu neuen Azure Resource Manager-Ressourcen migriert werden.
-- Alle Autorisierungsregeln außer RootManageSharedAccessKey sollten aus dem Event Hub-Namespace entfernt werden.
-- Alle Autorisierungsregeln außer RootManageSharedAccessKey sollten aus dem Service Bus-Namespace entfernt werden.
-- Sichere Übertragung in Speicherkonten sollte aktiviert werden.
+- Der Zugriff auf Speicherkonten mit Konfiguration für Firewall und virtuelle Netzwerke sollte eingeschränkt werden.
+- Azure Cache for Redis muss sich in einem virtuellen Netzwerk befinden.
+- Azure Cosmos DB-Konten sollten kundenseitig verwaltete Schlüssel zur Verschlüsselung ruhender Daten verwenden.
+- Azure Machine Learning-Arbeitsbereiche müssen mit einem kundenseitig verwalteten Schlüssel (CMK) verschlüsselt werden
+- Azure Spring Cloud muss Netzwerkinjektion verwenden
+- Cognitive Services-Konten müssen eine Datenverschlüsselung mit einem kundenseitig verwalteten Schlüssel (CMK) aktivieren
+- Für Container müssen CPU- und Arbeitsspeicherlimits erzwungen werden
+- Containerimages dürfen nur aus vertrauenswürdigen Registrierungen bereitgestellt werden
+- Containerregistrierungen müssen mit einem kundenseitig verwalteten Schlüssel (CMK) verschlüsselt werden
+- Container mit Rechteausweitung müssen vermieden werden
+- Container mit Freigabe sensibler Hostnamespaces vermeiden
+- Container dürfen nur an zulässigen Ports lauschen
+- Unveränderliches (schreibgeschütztes) Stammdateisystem für Container erzwingen
+- Key Vault-Schlüssel sollten ein Ablaufdatum aufweisen.
+- Key Vault-Geheimnisse sollten ein Ablaufdatum aufweisen.
+- Für Schlüsseltresore sollte der Löschschutz aktiviert sein.
+- Für Schlüsseltresore sollte vorläufiges Löschen aktiviert sein.
+- Linux-Funktionen mit den niedrigsten Berechtigungen für Container erzwingen
 - Nur sichere Verbindungen mit Ihrer Redis Cache-Instanz sollten aktiviert werden
-- Automation-Kontovariablen sollten verschlüsselt werden.
-- Service Fabric-Cluster sollten nur Azure Active Directory für die Clientauthentifizierung verwenden.
+- Überschreiben oder Deaktivieren des AppArmor-Profils für Container einschränken
+- Privilegierte Container müssen vermieden werden
+- Das Ausführen von Containern als Root-Benutzer muss vermieden werden
+- Sichere Übertragung in Speicherkonten sollte aktiviert werden.
 - Service Fabric Cluster sollten die Eigenschaft ClusterProtectionLevel auf EncryptAndSign setzen
-- Nicht eingeschränkten Netzwerkzugriff auf Speicherkonten überwachen
-
+- Service Fabric-Cluster sollten nur Azure Active Directory für die Clientauthentifizierung verwenden.
+- Dienste dürfen nur an zulässigen Ports lauschen
+- Speicherkonten sollten zu neuen Azure Resource Manager-Ressourcen migriert werden.
+- Speicherkonten müssen den Netzwerkzugriff mithilfe von VNET-Regeln einschränken
+- Verwendung von Hostnetzwerken und -ports einschränken
+- Verwendung von HostPath-Volumeeinbindungen von Pods sollte auf eine bekannte Liste beschränkt sein, um den Knotenzugriff von kompromittierten Containern zu begrenzen
+- Gültigkeitszeitraum für in Azure Key Vault gespeicherte Zertifikate sollte zwölf Monate nicht überschreiten
+- VMs sollten zu neuen Azure Resource Manager-Ressourcen migriert werden
+- Web Application Firewall (WAF) muss für Application Gateway aktiviert sein.
+- Web Application Firewall (WAF) muss für Azure Front Door Service aktiviert sein
 
 Diese Empfehlungen können mit der Option **Erzwingen** verwendet werden:
 
-- In Logic Apps müssen Diagnoseprotokolle aktiviert sein
-- In Data Lake Analytics sollten Diagnoseprotokolle aktiviert sein.
-- In IoT Hub sollten Diagnoseprotokolle aktiviert sein.
-- Diagnoseprotokolle in Batch-Konten sollten aktiviert sein.
-- Diagnoseprotokolle in Azure Stream Analytics sollten aktiviert werden.
-- In Service Bus sollten Diagnoseprotokolle aktiviert sein.
-- In den Suchdiensten müssen Diagnoseprotokolle aktiviert sein
-- In Event Hub sollten Diagnoseprotokolle aktiviert sein
-- In Virtual Machine Scale Sets sollten Diagnoseprotokolle aktiviert sein.
-- Diagnoseprotokolle in Key Vault sollten aktiviert sein.
 - Die Überwachung in SQL Server muss aktiviert werden.
-- Advanced Data Security muss für Ihre SQL-Server aktiviert werden.
-
-
-
+- Azure Backup sollte für virtuelle Computer aktiviert sein
+- Auf Ihren SQL-Server sollte Azure Defender für SQL aktiviert sein
+- Diagnoseprotokolle in Azure Stream Analytics sollten aktiviert werden.
+- Diagnoseprotokolle in Batch-Konten sollten aktiviert sein.
+- In Data Lake Analytics sollten Diagnoseprotokolle aktiviert sein.
+- In Event Hub sollten Diagnoseprotokolle aktiviert sein
+- Diagnoseprotokolle in Key Vault sollten aktiviert sein.
+- In Logic Apps müssen Diagnoseprotokolle aktiviert sein
+- In den Suchdiensten müssen Diagnoseprotokolle aktiviert sein
+- In Service Bus sollten Diagnoseprotokolle aktiviert sein.

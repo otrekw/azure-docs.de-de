@@ -9,16 +9,16 @@ ms.topic: conceptual
 ms.date: 01/27/2021
 ms.author: cherylmc
 ms.custom: fasttrack-edit
-ms.openlocfilehash: a866c21e067293481a52dd563873892de8b5444c
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: 3b5002873160490dfb7b8d3ad9790f9c6f1e8ae6
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98955274"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99525787"
 ---
 # <a name="scenario-any-to-any"></a>Szenario: Any-to-Any
 
-Wenn Sie mit Virtual WAN-Routing für virtuelle Hubs arbeiten, stehen Ihnen eine ganze Reihe von Szenarien zur Verfügung. In einem Any-to-Any-Szenario kann jeder Spoke einen anderen Spoke erreichen. Wenn mehrere Hubs vorhanden sind, ist das Hub-zu-Hub-Routing (auch als Routing zwischen Hubs bezeichnet) im virtuellen Standard-WAN standardmäßig aktiviert. Sie können diese Konfiguration mit einer Vielzahl verschiedener Methoden erstellen, z. B. über das Azure-Portal oder mit einer [Azure-Schnellstartvorlage](https://azure.microsoft.com/resources/templates/201-virtual-wan-with-all-gateways/). Weitere Informationen zum Routing für virtuelle Hubs finden Sie unter [Informationen zum Routing virtueller Hubs](about-virtual-hub-routing.md). 
+Wenn Sie mit Virtual WAN-Routing für virtuelle Hubs arbeiten, stehen Ihnen eine ganze Reihe von Szenarien zur Verfügung. In einem Any-to-Any-Szenario kann jeder Spoke einen anderen Spoke erreichen. Wenn mehrere Hubs vorhanden sind, ist das Hub-zu-Hub-Routing (auch als Routing zwischen Hubs bezeichnet) im virtuellen Standard-WAN standardmäßig aktiviert. Sie können diese Konfiguration mit einer Vielzahl verschiedener Methoden erstellen, z. B. über das Azure-Portal oder mit einer [Azure-Schnellstartvorlage](quickstart-any-to-any-template.md). Weitere Informationen zum Routing für virtuelle Hubs finden Sie unter [Informationen zum Routing virtueller Hubs](about-virtual-hub-routing.md). 
 
 ## <a name="design"></a><a name="design"></a>Entwurf
 

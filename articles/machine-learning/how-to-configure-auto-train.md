@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 09/29/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python,contperf-fy21q1, automl
-ms.openlocfilehash: 6971d67204beb39ff0afa6c68dbecf278d86b299
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: 8ac69e6961af4991b250320b7af7cf5a345d3efb
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98954714"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99526465"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Konfigurieren automatisierter ML-Experimente in Python
 
@@ -420,7 +420,7 @@ Allgemeine Informationen dazu, wie Modellerklärungen und Featurewichtigkeit in 
   * Attributfehler: Ex. `AttributeError: 'SimpleImputer' object has no attribute 'add_indicator`
   
   Um dieses Problem zu umgehen, führen Sie je nach Ihrer `AutoML` SDK-Trainingsversion einen der beiden folgenden Schritte aus:
-    * Wenn Ihre `AutoML` SDK-Trainingsversion höher als 1.13.0 ist, benötigen Sie `pandas == 0.25.1` und `sckit-learn==0.22.1`. Wenn die Version nicht übereinstimmt, führen Sie ein Upgrade von scikit-learn oder Pandas auf die richtige Version durch, wie nachstehend dargestellt:
+    * Wenn Ihre `AutoML` SDK-Trainingsversion höher als 1.13.0 ist, benötigen Sie `pandas == 0.25.1` und `scikit-learn==0.22.1`. Wenn die Version nicht übereinstimmt, führen Sie ein Upgrade von scikit-learn oder Pandas auf die richtige Version durch, wie nachstehend dargestellt:
       
       ```bash
          pip install --upgrade pandas==0.25.1

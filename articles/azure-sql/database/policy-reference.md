@@ -1,18 +1,18 @@
 ---
 title: Integrierte Richtliniendefinitionen für Azure SQL-Datenbank
 description: Hier finden Sie eine Liste der integrierten Azure Policy-Richtliniendefinitionen für Azure SQL-Datenbank und verwaltete SQL-Instanzen. Diese integrierten Richtliniendefinitionen bieten allgemeine Ansätze für die Verwaltung von Azure-Ressourcen.
-ms.date: 01/29/2021
+ms.date: 02/04/2021
 ms.topic: reference
 author: stevestein
 ms.author: sstein
 ms.service: sql-database
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 4b74dc7890ced4d6ad37075dadf533c2f407ece7
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.openlocfilehash: 85fe29d4941f438581ea6f1cbb49274ea0096549
+ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99219739"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99556827"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-sql-database--sql-managed-instance"></a>Integrierte Azure Policy-Richtliniendefinitionen für Azure SQL-Datenbank und SQL Managed Instance
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]

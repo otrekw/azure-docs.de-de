@@ -1,18 +1,18 @@
 ---
 title: Integrierte Richtliniendefinitionen für Azure Database for MariaDB
 description: Hier finden Sie eine Liste der integrierten Azure Policy-Richtliniendefinitionen für Azure Database for MariaDB. Diese integrierten Richtliniendefinitionen bieten allgemeine Ansätze für die Verwaltung von Azure-Ressourcen.
-ms.date: 01/29/2021
+ms.date: 02/04/2021
 ms.topic: reference
 author: savjani
 ms.author: pariks
 ms.service: mariadb
 ms.custom: subject-policy-reference
-ms.openlocfilehash: aea2c6ea131d08c6f070f37b8c32e4b4e73cd20d
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: aee2b7349ce339589756b637a8f9375c41acc0f9
+ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99095495"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99556552"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-database-for-mariadb"></a>Integrierte Azure Policy-Definitionen für Azure Database for MariaDB
 

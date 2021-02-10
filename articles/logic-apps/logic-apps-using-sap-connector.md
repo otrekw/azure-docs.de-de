@@ -9,12 +9,12 @@ ms.reviewer: estfan, daviburg, logicappspm
 ms.topic: article
 ms.date: 02/01/2021
 tags: connectors
-ms.openlocfilehash: edf4ce188c9239e697e2148d4fff51966d91f85a
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: cbbc0edf710b8823c1a36daa66bc01d89acf63da
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99252609"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99575482"
 ---
 # <a name="connect-to-sap-systems-from-azure-logic-apps"></a>Herstellen einer Verbindung zu SAP-Systemen: Azure Logic Apps
 
@@ -504,7 +504,7 @@ Wenn Sie keine IDoc-Pakete von SAP an den Trigger Ihrer Logik-App senden können
   * Damit diese Segmente von SAP freigegeben werden, wenden Sie sich an den ABAP-Techniker Ihres SAP-Systems.
 ### <a name="asynchronous-request-reply-for-triggers"></a>Asynchrone Anforderung/Antwort für Trigger
 
-Der SAP-Connector unterstützt das [asynchrone Anforderung/Antwort-Muster von Azure](/azure/architecture/patterns/async-request-reply.md) für Logic Apps-Trigger. Sie können dieses Muster verwenden, um erfolgreiche Anforderungen zu erstellen, die andernfalls mit dem standardmäßigen synchronen Anforderung/Antwort-Muster fehlschlagen würden. 
+Der SAP-Connector unterstützt das [asynchrone Anforderung/Antwort-Muster von Azure](/azure/architecture/patterns/async-request-reply) für Logic Apps-Trigger. Sie können dieses Muster verwenden, um erfolgreiche Anforderungen zu erstellen, die andernfalls mit dem standardmäßigen synchronen Anforderung/Antwort-Muster fehlschlagen würden. 
 
 > [!TIP]
 > In Logik-Apps mit mehreren Antwortaktionen müssen alle Antwortaktionen dasselbe Anforderung/Antwort-Muster verwenden. Wenn Ihre Logik-App z. B. ein Switch-Steuerelement mit mehreren möglichen Antwortaktionen verwendet, müssen Sie alle Antwortaktionen so konfigurieren, dass sie dasselbe Anforderung/Antwort-Muster verwenden, entweder synchron oder asynchron. 

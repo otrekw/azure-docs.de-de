@@ -1,18 +1,18 @@
 ---
 title: Integrierte Richtliniendefinitionen für Azure Machine Learning
 description: Hier finden Sie eine Liste der integrierten Azure Policy-Richtliniendefinitionen für Azure Machine Learning. Diese integrierten Richtliniendefinitionen bieten allgemeine Ansätze für die Verwaltung von Azure-Ressourcen.
-ms.date: 01/29/2021
+ms.date: 02/04/2021
 ms.author: larryfr
 author: BlackMist
 ms.topic: reference
 ms.service: machine-learning
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 65a5719b6f90aef6b30bac7e03138d5b7843def2
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: c3d433875f40e5bada974ef502b1baaeb876dbf1
+ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99097319"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99558974"
 ---
 # <a name="azure-policy-built-in-policy-definitions-for-azure-machine-learning"></a>Integrierte Azure Policy-Richtliniendefinitionen für Azure Machine Learning
 

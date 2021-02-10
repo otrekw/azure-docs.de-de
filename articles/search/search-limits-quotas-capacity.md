@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/02/2021
-ms.openlocfilehash: 9e43521e26a6292141e1bbae7b39db3656df962c
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: 994ed74750d159dfdb83259e9fe921f870ec2241
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 02/03/2021
-ms.locfileid: "99493040"
+ms.locfileid: "99509366"
 ---
 # <a name="service-limits-in-azure-cognitive-search"></a>Dienstgrenzwerte in der kognitiven Azure-Suche
 
@@ -124,14 +124,6 @@ Die maximale Anzahl der Synonymzuordnungen variiert je nach Tarif. Jede Regel ka
 | -------- | -----|------ |----|----|----|-------|---|----|
 | Maximale Synonymzuordnungen |3 |3|5 |10 |20 |20 | 10 | 10 |
 | Maximale Anzahl von Regeln pro Zuordnung |5.000 |20000|20000 |20000 |20000 |20000 | 20000 | 20000  |
-
-## <a name="queries-per-second-qps"></a>Abfragen pro Sekunde (QPS)
-
-QPS-Schätzungen müssen unabhängig von jedem Kunde erstellt werden. Indexgröße und Komplexität, Abfragegröße und Komplexität sowie der Umfang des Datenverkehrs sind Hauptentscheidungskriterium für den QPS-Wert. Es gibt keine Möglichkeit, sinnvolle Schätzungen abzugeben, wenn diese Faktoren unbekannt sind.
-
-Schätzungen sind besser vorhersagbar, wenn sie für Dienste berechnet werden, die auf dedizierten Ressourcen ausgeführt werden (Basic- und Standard-Tarife). Sie können den QPS-Wert genauer schätzen, da Sie die Kontrolle über mehr Parameter haben. Anleitungen zur Herangehensweise für Schätzungen finden Sie unter [Leistung und Optimierung der kognitiven Azure-Suche](search-performance-optimization.md).
-
-Für die Tarife vom Typ „Storage Optimized“ (L1 und L2) sollten Sie einen geringeren Abfragedurchsatz und eine höhere Latenz als für die Tarife vom Typ „Standard“ erwarten.
 
 ## <a name="data-limits-ai-enrichment"></a>Datengrenzwerte (KI-Anreicherung)
 

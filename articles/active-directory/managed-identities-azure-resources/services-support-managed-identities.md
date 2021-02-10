@@ -11,12 +11,12 @@ ms.subservice: msi
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.custom: references_regions
-ms.openlocfilehash: 520d572478074a86c9b5cececacd34d7cd41539d
-ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
+ms.openlocfilehash: 31ca126c75d5c2e3fa7fd91f3398202fad418183
+ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99071612"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99555602"
 ---
 # <a name="services-that-support-managed-identities-for-azure-resources"></a>Dienste, die verwaltete Identitäten für Azure-Ressourcen unterstützen
 
@@ -307,8 +307,8 @@ Typ der verwalteten Identität | Allgemein verfügbar<br>Globale Azure-Regionen 
 
 |Typ der verwalteten Identität | Allgemein verfügbar<br>Globale Azure-Regionen | Azure Government | Azure Deutschland | Azure China 21Vianet |
 | --- | :-: | :-: | :-: | :-: |
-| Vom System zugewiesen | ![Verfügbar][check] | ![Verfügbar][check] | Vorschau | ![Verfügbar][check] |
-| Vom Benutzer zugewiesen | ![Verfügbar][check] | ![Verfügbar][check] | Vorschau | ![Verfügbar][check] |
+| Vom System zugewiesen | ![Verfügbar][check] | ![Verfügbar][check] | ![Verfügbar][check] | ![Verfügbar][check] |
+| Vom Benutzer zugewiesen | ![Verfügbar][check] | ![Verfügbar][check] | ![Verfügbar][check] | ![Verfügbar][check] |
 
 Konfigurieren Sie die verwaltete Identität für Azure Virtual Machine Scale Sets anhand der folgenden Liste (in Regionen, in denen sie verfügbar ist):
 
@@ -324,8 +324,8 @@ Konfigurieren Sie die verwaltete Identität für Azure Virtual Machine Scale Set
 
 | Typ der verwalteten Identität | Allgemein verfügbar<br>Globale Azure-Regionen | Azure Government | Azure Deutschland | Azure China 21Vianet |
 | --- | :-: | :-: | :-: | :-: |
-| Vom System zugewiesen | ![Verfügbar][check] | ![Verfügbar][check] | Vorschau | ![Verfügbar][check] |
-| Vom Benutzer zugewiesen | ![Verfügbar][check] | ![Verfügbar][check] | Vorschau | ![Verfügbar][check] |
+| Vom System zugewiesen | ![Verfügbar][check] | ![Verfügbar][check] | ![Verfügbar][check] | ![Verfügbar][check] |
+| Vom Benutzer zugewiesen | ![Verfügbar][check] | ![Verfügbar][check] | ![Verfügbar][check] | ![Verfügbar][check] |
 
 Konfigurieren Sie die verwaltete Identität für Azure Virtual Machines anhand der folgenden Liste (in Regionen, in denen sie verfügbar ist):
 
