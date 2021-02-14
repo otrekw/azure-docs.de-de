@@ -10,16 +10,32 @@ ms.subservice: computer-vision
 ms.topic: overview
 ms.date: 01/13/2021
 ms.author: pafarley
-ms.openlocfilehash: f10319de67a105b4b5e4641c4171ccd0a6e63440
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: 31ca65099d645b7fdfee70275515f0a864cd905f
+ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99490876"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "100007396"
 ---
 # <a name="whats-new-in-computer-vision"></a>Neuerungen beim maschinellen Sehen
 
 Informieren Sie sich über die Neuerungen im Dienst. Dabei kann es sich um Versionshinweise, Videos, Blogbeiträge und andere Informationen handeln. Legen Sie ein Lesezeichen für diese Seite an, um über den Dienst auf dem Laufenden zu bleiben.
+
+## <a name="february-2021"></a>Februar 2021
+
+### <a name="read-api-v32-public-preview-with-ocr-support-for-73-languages"></a>Lese-API v3.2 (Public Preview) mit OCR-Unterstützung für 73 Sprachen
+Die Lese-API v3.2 (Public Preview) für maschinelles Sehen ist als Clouddienst und Docker-Container verfügbar und beinhaltet diese Updates:
+* [OCR für 73 Sprachen](./language-support.md#optical-character-recognition-ocr), einschließlich vereinfachtes und traditionelles Chinesisch, Japanisch, Koreanisch und lateinische Sprachen
+* Natürliche Leserichtung für die Textzeilenausgabe
+* Klassifizierung der Handschrift für Textzeilen zusammen mit einer Konfidenzbewertung (nur lateinische Sprachen)
+* Extrahieren von Text nur für ausgewählte Seiten bei mehrseitigen Dokumenten
+* Verfügbar als [Container ohne Distribution](./computer-vision-how-to-install-containers.md?tabs=version-3-2) für die lokale Bereitstellung
+
+[Hier](concept-recognizing-text.md) finden Sie weitere Informationen zur Lese-API.
+
+> [!div class="nextstepaction"]
+> [Verwenden der Lese-API v3.2 (Public Preview)](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-2/operations/5d986960601faab4bf452005)
+
 
 ## <a name="january-2021"></a>Januar 2021
 

@@ -4,16 +4,16 @@ description: Hier erfahren Sie, wie Sie das Azure-SDK verwenden, um große Menge
 author: roygara
 ms.service: storage
 ms.topic: tutorial
-ms.date: 01/26/2021
+ms.date: 02/04/2021
 ms.author: rogarana
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: acfaed10cf627e87691a3068ad0b8cffe9d3b2ee
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 0c029abd87e1b819cc4d96e906be8824c019f433
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99096287"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99584973"
 ---
 # <a name="download-large-amounts-of-random-data-from-azure-storage"></a>Herunterladen großer Mengen von Zufallsdaten von Azure Storage
 
