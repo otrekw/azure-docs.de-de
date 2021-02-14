@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/06/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 7cb805f60ba9feb0ae2d1483b2ab2df4e03639d8
-ms.sourcegitcommit: a0c1d0d0906585f5fdb2aaabe6f202acf2e22cfc
+ms.openlocfilehash: 333ffbf4107dfd005ba7e7fae6a079a618e0c645
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/21/2021
-ms.locfileid: "98625413"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99509434"
 ---
 # <a name="import-device-information-to-a-sensor"></a>Importieren von Geräteinformationen in einen Sensor
 
@@ -160,7 +160,7 @@ Zum Importieren von IP-Adresse, Betriebssystem und Patchebene gehen Sie folgende
 
    - **Betriebssystem:** Wählen Sie einen Eintrag in der Dropdownliste aus.
 
-   - **Letzte Aktualisierung**: Verwenden Sie das Format JJJJ-MM-TT.
+   - **Datum der letzten Aktualisierung**: Verwenden Sie das Format JJJJ-MM-TT.
 
     :::image type="content" source="media/how-to-import-device-information/last-update-screen.png" alt-text="Der Inhalt auf dem Bildschirm.":::
 
@@ -172,7 +172,7 @@ Zum Importieren von IP-Adresse, Betriebssystem und Patchebene gehen Sie folgende
 
 Zum Importieren des Autorisierungsstatus gehen Sie folgendermaßen vor:
 
-1. Laden Sie die Datei [authorized_devices.csv](https://cyberx-labs.zendesk.com/hc/en-us/articles/360008658272-How-To-Import-Data) aus dem Defender für IoT-Hilfecenter herunter, und speichern Sie sie. Vergewissern Sie sich, dass Sie die Datei als CSV-Datei gespeichert haben.
+1. Laden Sie die Datei [authorized_devices - examples.csv](https://cyberx-labs.zendesk.com/hc/en-us/articles/360008658272-How-To-Import-Data) aus dem Defender für IoT-Hilfecenter herunter, und speichern Sie sie. Vergewissern Sie sich, dass Sie die Datei als CSV-Datei gespeichert haben.
 
 2. Geben Sie die Informationen wie folgt ein:
 

@@ -31,7 +31,7 @@
   items:
     - name: Testen des Modells
       href: test-your-model.md
-    - name: Verbessern der Klassifizierung
+    - name: Verbessern Ihres Modells
       href: getting-started-improving-your-classifier.md
     - name: Domäne auswählen
       href: select-domain.md
