@@ -1,18 +1,18 @@
 ---
 title: Kontrollen zur Einhaltung gesetzlicher Bestimmungen in Azure Policy für Azure IoT Hub
 description: Listet Kontrollen zur Einhaltung gesetzlicher Bestimmungen in Azure Policy auf, die für Azure IoT Hub verfügbar sind. Diese integrierten Richtliniendefinitionen bieten allgemeine Ansätze für die Verwaltung der Compliance Ihrer Azure-Ressourcen.
-ms.date: 01/29/2021
+ms.date: 02/09/2021
 ms.topic: sample
 author: robinsh
 ms.author: robinsh
 ms.service: iot-hub
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: 429756d9f7850787c99f7035f4d272ed8e2b5961
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: c30dad83195948c898cd9f5f3e4c3ed4604ee1ed
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99096012"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100090536"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-iot-hub"></a>Kontrollen zur Einhaltung gesetzlicher Bestimmungen in Azure Policy für Azure IoT Hub
 
