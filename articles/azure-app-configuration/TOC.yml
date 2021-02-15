@@ -7,7 +7,7 @@
     - name: Bewährte Methoden
       href: howto-best-practices.md
     - name: Häufig gestellte Fragen
-      href: faq.md
+      href: faq.yml
 - name: Schnellstarts
   expanded: true
   items:
@@ -17,7 +17,7 @@
           href: quickstart-aspnet-core-app.md
         - name: .NET Core
           href: quickstart-dotnet-core-app.md
-        - name: ".NET\_Framework"
+        - name: .NET Framework
           href: quickstart-dotnet-app.md
         - name: Azure Functions in .NET Core
           href: quickstart-azure-functions-csharp.md
