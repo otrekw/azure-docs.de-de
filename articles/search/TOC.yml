@@ -212,6 +212,8 @@
       items:
         - name: Erstellen eines Indexers
           href: search-howto-create-indexers.md
+        - name: Ausführen oder Zurücksetzen von Indexern
+          href: search-howto-run-reset-indexers.md
         - name: Planen eines Indexers
           href: search-howto-schedule-indexers.md
         - name: Definieren von Feldzuordnungen
