@@ -3,12 +3,12 @@ title: 'Tutorial: Ereignisbasierte Videoaufzeichnung in der Cloud und Wiedergabe
 description: In diesem Tutorial erfahren Sie, wie Sie Azure Live Video Analytics in Azure IoT Edge verwenden, um eine ereignisbasierte Videoaufzeichnung in der Cloud durchzuführen und sie aus der Cloud wiederzugeben.
 ms.topic: tutorial
 ms.date: 05/27/2020
-ms.openlocfilehash: f54659cc279b68113150f2f49d18e938f2500030
-ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
+ms.openlocfilehash: fda727a1abb488910d52b756455d2b6843e0e8b1
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99526262"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99550251"
 ---
 # <a name="tutorial-event-based-video-recording-to-the-cloud-and-playback-from-the-cloud"></a>Tutorial: Ereignisbasierte Videoaufzeichnung in der Cloud und Wiedergabe aus der Cloud
 
@@ -195,6 +195,12 @@ Führen Sie die folgenden Schritte aus, um die Ereignisse vom Objektzählermodul
 
     > [!div class="mx-imgBorder"]
     > :::image type="content" source="./media/quickstarts/start-monitoring-iothub-events.png" alt-text="Überwachung des integrierten Ereignisendpunkts starten":::
+
+    > [!NOTE]
+    > Unter Umständen werden Sie aufgefordert, für die IoT Hub-Instanz die Informationen zum integrierten Endpunkt anzugeben. Sie erhalten diese Informationen, indem Sie im Azure-Portal zu Ihrer IoT Hub-Instanz navigieren und im linken Navigationsbereich nach der Option **Integrierte Endpunkte** suchen. Klicken Sie darauf, und suchen Sie im Abschnitt **Event Hub-kompatibler Endpunkt** nach dem **Event Hub-kompatiblen Endpunkt**. Kopieren und verwenden Sie den im Feld enthaltenen Text. Der Endpunkt sieht in etwa wie folgt aus:  
+        ```
+        Endpoint=sb://iothub-ns-xxx.servicebus.windows.net/;SharedAccessKeyName=iothubowner;SharedAccessKey=XXX;EntityPath=<IoT Hub name>
+        ```
     
 ## <a name="run-the-program"></a>Ausführen des Programms
 
@@ -210,7 +216,7 @@ Führen Sie die folgenden Schritte aus, um die Ereignisse vom Objektzählermodul
 1. <!--In Visual Studio Code, go-->Navigieren Sie zu „src/cloud-to-device-console-app/operations.json“.
 1. Bearbeiten Sie unter dem Knoten **GraphTopologySet** Folgendes:
 
-    `"topologyUrl" : "https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/evr-hubMessage-assets/topology.json"`
+    `"topologyUrl" : "https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/evr-hubMessage-assets/2.0/topology.json"`
     
 1. Bearbeiten Sie anschließend unter den Knoten **GraphInstanceSet** und **GraphTopologyDelete**:
 
