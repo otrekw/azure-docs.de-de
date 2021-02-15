@@ -51,7 +51,7 @@
     - name: Containerimagetags und Versionshinweise
       href: ./containers/container-image-tags.md
     - name: 'Container: Häufig gestellte Fragen'
-      href: ./containers/container-faq.md
+      href: ./containers/container-faq.yml
     - name: Containeranleitungen
       items:
         - name: Wiederverwendung von Containern
