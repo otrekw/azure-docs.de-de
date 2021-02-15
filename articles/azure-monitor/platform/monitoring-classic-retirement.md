@@ -7,20 +7,20 @@ ms.topic: conceptual
 ms.date: 2/7/2019
 ms.author: yalavi
 ms.subservice: alerts
-ms.openlocfilehash: 720a0e25f3486f32ffed897e54033fd4b68dace4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 368ab1bc6a1fc13c3001b437c3c2a8be2bbb9c04
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87848124"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99525990"
 ---
 # <a name="unified-alerting--monitoring-in-azure-monitor-replaces-classic-alerting--monitoring"></a>Einheitliche Benachrichtigung und Überwachung in Azure Monitor tritt an die Stelle von klassischer Benachrichtigung und Überwachung
 
 Azure Monitor hat sich zu einem vereinheitlichen, voll ausgestatteten Überwachungsdienst entwickelt, der nun ressourcenübergreifend einzelne Metriken und Benachrichtigungen unterstützt. Weitere Informationen finden Sie in unserem [Blogbeitrag zu Azure Monitor](https://azure.microsoft.com/blog/new-full-stack-monitoring-capabilities-in-azure-monitor/). Die neuen Überwachungs- und Benachrichtigungsplattformen von Azure sind schneller, intelligenter und erweiterbar. Dabei halten sie mit der zunehmenden Verbreitung von Cloud Computing Schritt und folgen der Philosophie der Microsoft Intelligent Cloud.
 
-Mit der neuen Azure-Plattform für Überwachung und Warnungen werden klassische Warnungen in Azure Monitor eingestellt. Für Ressourcen, die die neuen Warnungen noch nicht unterstützen, sind sie jedoch noch beschränkt im Einsatz. Das Deaktivierungsdatum für diese Warnungen wurde auf einen späteren Termin verschoben. In Kürze wird ein neues Datum für die Migration verbleibender Warnungen, [Azure Government-Cloud](../../azure-government/documentation-government-welcome.md) und [Azure China 21Vianet](https://docs.azure.cn/) bekannt gegeben.
+Mit der neuen Azure-Plattform für Überwachung und Warnungen werden klassische Warnungen in Azure Monitor für Benutzer der öffentlichen Cloud eingestellt. Für Ressourcen, die die neuen Warnungen noch nicht unterstützen, sind sie jedoch noch beschränkt im Einsatz. Das Deaktivierungsdatum für diese Warnungen wurde auf einen späteren Termin verschoben. In Kürze wird ein neues Datum für die Migration verbleibender Warnungen, [Azure Government-Cloud](../../azure-government/documentation-government-welcome.md) und [Azure China 21Vianet](https://docs.azure.cn/) bekannt gegeben.
 
- ![Klassische Warnung im Azure-Portal](media/monitoring-classic-retirement/monitor-alert-screen2.png) 
+ ![Klassische Warnung im Azure-Portal](media/monitoring-classic-retirement/monitor-alert-screen2.png) 
 
 Wir empfehlen Ihnen, sich mit der neuen Plattform vertraut zu machen und damit zu beginnen, Warnungen auf dieser neu zu erstellen.
 
@@ -48,7 +48,7 @@ Die neueren Metriken für Azure-Ressourcen sind in diesen Formen verfügbar:
 
 ## <a name="retirement-of-classic-monitoring-and-alerting-platform"></a>Einstellung der klassischen Überwachungs- und Benachrichtigungsplattform
 
-Wie bereits erwähnt, werden klassische Überwachungs- und Warnungsfeatures eingestellt. Das schließt zugehörige APIs, die Schnittstelle zum Azure-Portal und die enthaltenen Dienste ein. Für Ressourcen, die die neuen Warnungen noch nicht unterstützen, werden sie jedoch noch eingeschränkt verwendet. Insbesondere werden diese Funktionen als veraltet markiert:
+Wie bereits erwähnt, werden klassische Überwachungs- und Warnungsfeatures für Benutzer der öffentlichen Cloud eingestellt. Das schließt zugehörige APIs, die Schnittstelle zum Azure-Portal und die enthaltenen Dienste ein. Für Ressourcen, die die neuen Warnungen noch nicht unterstützen, werden sie jedoch noch eingeschränkt verwendet. Insbesondere werden diese Funktionen als veraltet markiert:
 
 - Alte (klassische) Metriken und Warnungen für Azure-Ressourcen, die aktuell im Abschnitt [Warnungen (klassisch)](./alerts-classic.overview.md) im Azure-Portal zur Verfügung stehen, auf die als Ressource unter [microsoft.insights/alertrules](/rest/api/monitor/alertrules) zugegriffen wird
 - Ältere (klassische) Plattform- und benutzerdefinierte Metriken für Application Insights sowie Benachrichtigungen für sie, die aktuell im Bereich [Warnungen (klassisch)](./alerts-classic.overview.md) im Azure-Portal verfügbar sind, auf die als Ressource unter [microsoft.insights/alertrules](/rest/api/monitor/alertrules) zugegriffen wird

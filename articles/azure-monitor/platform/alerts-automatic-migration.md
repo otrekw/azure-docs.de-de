@@ -4,16 +4,16 @@ description: Erfahren Sie, wie der automatische Migrationsprozess funktioniert.
 ms.topic: conceptual
 ms.date: 08/19/2019
 ms.subservice: alerts
-ms.openlocfilehash: 6a2d032c6aa33b72fe422638df45ca48bf8b1036
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9ce3550dcef174a4d970917fabfda3c4fd2a8df4
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87847281"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99526550"
 ---
 # <a name="understand-the-automatic-migration-process-for-your-classic-alert-rules"></a>Grundlegendes zur Funktionsweise des automatischen Migrationsprozesses für klassische Warnungen
 
-Wie [bereits angekündigt](monitoring-classic-retirement.md) werden klassische Warnungen in Azure Monitor eingestellt, sind jedoch weiterhin für Ressourcen, die die neuen Warnungen noch nicht unterstützen, beschränkt im Einsatz. Als Teil des Ausmusterungsprozesses steht ein [Migrationstool](alerts-using-migration-tool.md) im Azure-Portal für Kunden bereit, die die Migration selbst auslösen möchten.
+Wie [bereits angekündigt](monitoring-classic-retirement.md) werden klassische Warnungen in Azure Monitor für Benutzer der öffentlichen Cloud eingestellt, sind jedoch weiterhin für Ressourcen, die die neuen Warnungen noch nicht unterstützen, beschränkt im Einsatz. Als Teil des Ausmusterungsprozesses steht ein [Migrationstool](alerts-using-migration-tool.md) im Azure-Portal für Kunden bereit, die die Migration selbst auslösen möchten.
 Dieser Artikel führt Sie durch den automatischen Migrationsprozess und hilft Ihnen, Probleme zu beheben, die möglicherweise auftreten.
 
   > [!NOTE]
