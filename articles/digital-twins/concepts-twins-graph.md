@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 105128af60b90324e93bcad1bd9900a55461378f
-ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
+ms.openlocfilehash: 00058f75a2c4378371c427ff9ebabe7e2336b06a
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99071714"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99576547"
 ---
 # <a name="understand-digital-twins-and-their-twin-graph"></a>Grundlegendes zu digitalen Zwillingen und zum zugehörigen Zwillingsgraphen
 
@@ -58,9 +58,9 @@ Sie können auch eine Hilfsklasse namens `BasicDigitalTwin` verwenden, um Eigens
 
 ### <a name="create-relationships"></a>Erstellen von Beziehungen
 
-Hier ist ein Beispiel für Clientcode angegeben, in dem die [DigitalTwins-APIs](/rest/api/digital-twins/dataplane/twins) verwendet werden, um eine Beziehung zwischen einem digitalen Zwilling vom Typ *Floor* (Etage) mit dem Namen *GroundFloor* und einem digitalen Zwilling vom Typ *Room* (Zimmer) mit dem Namen *Cafe* zu erstellen.
+Im Folgenden finden Sie Beispielclientcode, der die [DigitalTwins-APIs](/rest/api/digital-twins/dataplane/twins) verwendet, um eine Beziehung von einem digitalen Zwilling (dem „Quellzwilling“) zu einem anderen digitalen Zwilling (dem „Zielzwilling“) herzustellen.
 
-:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_other.cs" id="CreateRelationship_3":::
+:::code language="csharp" source="~/digital-twins-docs-samples/sdks/csharp/graph_operations_other.cs" id="CreateRelationship_short":::
 
 ## <a name="json-representations-of-graph-elements"></a>JSON-Darstellungen von Graphelementen
 

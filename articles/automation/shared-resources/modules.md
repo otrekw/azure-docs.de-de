@@ -3,14 +3,14 @@ title: Verwalten von Modulen in Azure Automation
 description: In diesem Artikel erfahren Sie, wie Sie PowerShell-Module verwenden, um Cmdlets in Runbooks und DSC-Ressourcen in DSC-Konfigurationen zu aktivieren.
 services: automation
 ms.subservice: shared-capabilities
-ms.date: 01/25/2021
+ms.date: 02/01/2021
 ms.topic: conceptual
-ms.openlocfilehash: d62ed96f86078839e66a4cf2ce71f304de2abf4d
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: a784127cfd6019629f1c2714d0f36850406c3b9d
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98936636"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99548769"
 ---
 # <a name="manage-modules-in-azure-automation"></a>Verwalten von Modulen in Azure Automation
 
@@ -40,7 +40,11 @@ Dabei handelt es sich um bekannte Einschränkungen bei einer Sandbox. Zur Umgehu
 
 ## <a name="default-modules"></a>Standardmodule
 
-In der folgenden Tabelle sind Module aufgeführt, die Azure Automation standardmäßig importiert, wenn Sie Ihr Automation-Konto erstellen. Automation kann neuere Versionen dieser Module importieren. Sie können jedoch die ursprüngliche Version nicht aus Ihrem Automation-Konto entfernen, selbst wenn Sie eine neuere Version löschen. Beachten Sie, dass diese Standardmodule mehrere AzureRM-Module enthalten. 
+In der folgenden Tabelle sind Module aufgeführt, die Azure Automation standardmäßig importiert, wenn Sie Ihr Automation-Konto erstellen. Automation kann neuere Versionen dieser Module importieren. Sie können jedoch die ursprüngliche Version nicht aus Ihrem Automation-Konto entfernen, selbst wenn Sie eine neuere Version löschen. Beachten Sie, dass diese Standardmodule mehrere AzureRM-Module enthalten.
+
+Die Standardmodule werden auch als globale Module bezeichnet. Im Azure-Portal ist die Eigenschaft **Globales Modul** **true**, wenn Sie ein Modul anzeigen, das beim Erstellen des Kontos importiert wurde.
+
+![Screenshot der Eigenschaft „Globales Modul“ im Azure-Portal.](../media/modules/automation-global-modules.png)
 
 Automation importiert das Az-Stammmodul nicht automatisch in neue oder vorhandene Automation-Konten. Weitere Informationen zum Arbeiten mit diesen Modulen finden Sie unter [Migrieren zu Az-Modulen](#migrate-to-az-modules).
 
