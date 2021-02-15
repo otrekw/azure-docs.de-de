@@ -2,13 +2,13 @@
 title: 'Konzepte: Speicher'
 description: Erfahren Sie mehr über die wichtigsten Speicherfunktionen in privaten Clouds in Azure VMware Solution.
 ms.topic: conceptual
-ms.date: 11/03/2020
-ms.openlocfilehash: 8ad1fc3ff2e514330a9ffc680494b5564b1184e4
-ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
+ms.date: 02/02/2021
+ms.openlocfilehash: 522e4f651b36532ac0c144b3889b2b67c91dc77b
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99062794"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99536949"
 ---
 #  <a name="azure-vmware-solution-storage-concepts"></a>Speicherkonzepte von Azure VMware Solution
 
@@ -32,15 +32,19 @@ vSAN-Datenspeicher verwenden standardmäßig Verschlüsselung ruhender Daten. Di
 
 ## <a name="scaling"></a>Skalierung
 
-Die native Clusterspeicherkapazität wird durch Hinzufügen von Hosts zu einem Cluster skaliert. Für Cluster, die HE-Hosts verwenden, wird die clusterweite Rohkapazität um 15,4 TB mit jedem zusätzlichen Host erhöht. Cluster, die GP-Hosts erstellt werden, wird die Rohkapazität um 7,7 TB mit jedem zusätzlichen Host erhöht. Bei beiden Clustertypen dauert es ungefähr 10 Minuten, bis Hosts einem Cluster hinzugefügt werden. Eine Anleitung zum Skalieren von Clustern finden Sie im [Tutorial zum Skalieren privater Clouds][tutorial-scale-private-cloud].
+Die native Clusterspeicherkapazität wird durch Hinzufügen von Hosts zu einem Cluster skaliert. Für Cluster, die HE-Hosts verwenden, wird die clusterweite Rohkapazität mit jedem hinzugefügten Host um 15,4 TB erhöht. Für Cluster, die mit GP-Hosts erstellt werden, wird die Rohkapazität mit jedem hinzugefügten Host um 7,7 TB erhöht. Bei beiden Clustertypen dauert es ungefähr 10 Minuten, bis Hosts einem Cluster hinzugefügt werden. Eine Anleitung zum Skalieren von Clustern finden Sie im [Tutorial zum Skalieren privater Clouds][tutorial-scale-private-cloud].
 
 ## <a name="azure-storage-integration"></a>Azure-Speicherintegration
 
-Sie können Azure-Speicherdienste für Workloads verwenden, die in Ihrer privaten Cloud ausgeführt werden. Die Azure-Speicherdienste umfassen Speicherkonten, Table Storage und Blob Storage. Die Verbindung von Workloads mit Azure-Speicherdiensten durchläuft nicht das Internet. Diese Konnektivität bietet zusätzliche Sicherheit und ermöglicht Ihnen die Verwendung von SLA-basierten Azure Storage-Diensten in den Workloads Ihrer privaten Clouds.
+Sie können Azure-Speicherdienste für Workloads verwenden, die in Ihrer privaten Cloud ausgeführt werden. Die Azure-Speicherdienste umfassen Speicherkonten, Table Storage und Blob Storage. Die Verbindung von Workloads mit Azure-Speicherdiensten durchläuft nicht das Internet. Diese Konnektivität bietet mehr Sicherheit und ermöglicht Ihnen die Verwendung von SLA-basierten Azure Storage-Diensten in den Workloads Ihrer privaten Clouds.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Im nächsten Schritt erfahren Sie mehr über [Identitätskonzepte privater Clouds][concepts-identity].
+Nachdem Sie sich mit den Speicherkonzepten von Azure VMware Solution vertraut gemacht haben, informieren Sie sich über die folgenden Themen:
+
+- [Identitätskonzepte privater Clouds](concepts-identity.md)
+- [Rollenbasierte Zugriffssteuerung in vSphere für Azure VMware Solution](concepts-role-based-access-control.md)
+- [Aktivieren einer Azure VMware Solution-Ressource](enable-azure-vmware-solution.md)
 
 <!-- LINKS - external-->
 

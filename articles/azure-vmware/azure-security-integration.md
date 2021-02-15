@@ -2,13 +2,13 @@
 title: Schützen von Azure VMware Solution-VMs mit Azure Security Center-Integration
 description: Erfahren Sie, wie Sie Ihre Azure VMware Solution-VMs über ein einziges Dashboard in Azure Security Center mit den nativen Sicherheitstools von Azure schützen.
 ms.topic: how-to
-ms.date: 11/06/2020
-ms.openlocfilehash: 66270c5abef48f9d9f30ed1b262a6b4f2f8144c8
-ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
+ms.date: 02/04/2021
+ms.openlocfilehash: 58cfa1e8e7faa56675d966f86d3b390e52acec27
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99061463"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99584956"
 ---
 # <a name="protect-your-azure-vmware-solution-vms-with-azure-security-center-integration"></a>Schützen von Azure VMware Solution-VMs mit Azure Security Center-Integration
 
@@ -36,7 +36,12 @@ Sie können den Log Analytics-Arbeitsbereich mit Azure Sentinel für Folgendes k
 
 - Sie können die Sicherheit Ihrer aus Azure, Azure VMware Solution und lokalen Diensten bestehenden Hybridumgebung über native Azure-Dienste verwalten.
 - Mit einem Log Analytics-Arbeitsbereich können Sie die Daten oder Protokolle an einer zentralen Stelle sammeln und diese Daten dann an verschiedene native Azure-Dienste übermitteln.
-- Azure Security Center bietet Sicherheitsfeatures wie Überwachung der Dateiintegrität, Erkennung dateiloser Angriffe, Bewertung von Betriebssystempatches, Bewertung von Fehlkonfigurationen der Sicherheit sowie Bewertung des Endpunktschutzes.
+- Azure Security Center bietet eine Reihe von Features. Dazu gehören:
+    - Überwachung der Dateiintegrität
+    - Erkennung dateiloser Angriffe
+    - Bewertung von Patches für Betriebssysteme 
+    - Bewertung von Sicherheitsfehlkonfigurationen
+    - Bewertung von Endpoint Protection
 - Azure Sentinel ermöglicht Ihnen Folgendes:
     - Sammeln Sie Daten auf Cloudebene über alle Benutzer, Geräte, Anwendungen und Infrastrukturen hinweg, und zwar sowohl lokal als auch in verschiedenen Clouds.
     - Erkennen Sie bislang unbekannte Bedrohungen.
@@ -183,7 +188,7 @@ Nachdem Sie Datenquellen mit Azure Sentinel verbunden haben, können Sie Regeln 
 
 6. Aktivieren Sie auf der Registerkarte **Incidenteinstellungen** die Option **Incidents aus Warnungen erstellen, die von dieser Analyseregel ausgelöst werden**, und klicken Sie auf **Weiter: Automatisierte Antwort >** .
  
-    :::image type="content" source="media/azure-security-integration/create-new-analytic-rule-wizard.png" alt-text="Screenshot des Analyseregel-Assistenten zum Erstellen einer neuen Regel in Azure Sentinel; die Option „Incidents aus Warnungen erstellen, die von dieser Analyseregel ausgelöst werden“ ist aktiviert":::
+    :::image type="content" source="media/azure-security-integration/create-new-analytic-rule-wizard.png" alt-text="Screenshot des Analyseregel-Assistenten zum Erstellen einer neuen Regel in Azure Sentinel mit aktivierter Option „Incidents aus Warnungen erstellen, die von dieser Analyseregel ausgelöst werden“":::
 
 7. Klicken Sie auf **Weiter: Überprüfen >** .
 
@@ -235,6 +240,8 @@ Sie können Abfragen erstellen oder vordefinierte Abfragen in Azure Sentinel ver
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Erfahren Sie, wie Sie das [Azure Defender-Dashboard](../security-center/azure-defender-dashboard.md) verwenden.
-- Informieren Sie sich über alle von [Azure Defender](../security-center/azure-defender.md) angebotenen Schutzfunktionen.
-- Erfahren Sie mehr über die [Erweiterte Erkennung von mehrstufigen Angriffen in Azure Sentinel](../azure-monitor/learn/quick-create-workspace.md).
+Nachdem Sie sich mit dem Schützen Ihrer Azure VMware Solution-VMs vertraut gemacht haben, informieren Sie sich über die folgenden Themen:
+
+- Verwenden des [Azure Defender-Dashboards](../security-center/azure-defender-dashboard.md)
+- [Erweiterte Erkennung von mehrstufigen Angriffen in Azure Sentinel](../azure-monitor/learn/quick-create-workspace.md)
+- [Lebenszyklusverwaltung von Azure VMware Solution-VMs](lifecycle-management-of-azure-vmware-solution-vms.md)

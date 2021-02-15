@@ -6,16 +6,16 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 03/19/2018
 ms.subservice: alerts
-ms.openlocfilehash: d7bcf3e5c0b50d3d6eb8f71dc70f0ff064ff3465
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 4f17afc6fb5001b4bbee16fe84697b58d062b292
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95536029"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99526923"
 ---
 # <a name="use-the-voluntary-migration-tool-to-migrate-your-classic-alert-rules"></a>Verwenden des freiwilligen Migrationstools zum Migrieren Ihrer klassischen Warnungsregeln
 
-Wie [bereits angekündigt](monitoring-classic-retirement.md), werden klassische Warnungen in Azure Monitor eingestellt, sind jedoch weiterhin für Ressourcen, die die neuen Warnungen noch nicht unterstützen, beschränkt im Einsatz. Im Azure-Portal stand ein Migrationstool für Kunden bereit, die klassische Warnungsregeln verwendeten und die Migration selbst auslösen wollten. In diesem Artikel wird erläutert, wie Sie dieses Migrationstool verwenden, das bis zur weiteren Ankündigung auch für die verbleibenden Warnungen genutzt wird.
+Wie [bereits angekündigt](monitoring-classic-retirement.md) werden klassische Warnungen in Azure Monitor für Benutzer der öffentlichen Cloud eingestellt, sind jedoch weiterhin für Ressourcen, die die neuen Warnungen noch nicht unterstützen, beschränkt im Einsatz. Im Azure-Portal stand ein Migrationstool für Kunden bereit, die klassische Warnungsregeln verwendeten und die Migration selbst auslösen wollten. In diesem Artikel wird erläutert, wie Sie dieses Migrationstool verwenden, das bis zur weiteren Ankündigung auch für die verbleibenden Warnungen genutzt wird.
 
 ## <a name="benefits-of-new-alerts"></a>Vorteile der neuen Warnungen
 
