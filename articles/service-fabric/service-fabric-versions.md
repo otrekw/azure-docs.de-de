@@ -3,12 +3,12 @@ title: Ausführen eines Upgrades der Version des Azure Service Fabric-Clusters
 description: Erfahren Sie mehr über Clusterversionen in Azure Service Fabric, einschließlich eines Links zu den neuesten Releases des Service Fabric-Teamblogs.
 ms.topic: troubleshooting
 ms.date: 06/15/2020
-ms.openlocfilehash: a99b38a33a5bb83345898769b466ce0cab0a4d4d
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: 5abfe83fcb68fcab7df22f1fd266cc695f2b9c80
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98918108"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99549067"
 ---
 # <a name="upgrade-your-azure-service-fabric-cluster-version"></a>Ausführen eines Upgrades der Version des Azure Service Fabric-Clusters
 
@@ -40,7 +40,7 @@ Azure Service Fabric-Cluster, die unter Versionen zwischen 5.7 bis 6.3.63* ausge
 Führen Sie ein Upgrade auf eine unterstützte Service Fabric-Version aus, um Ausfallzeiten oder Funktionsverluste zu vermeiden, die durch diese Änderung auftreten. Stellen Sie sicher, dass auf Ihren Clustern mindestens die folgenden Versionen ausgeführt werden, um Probleme in Ihrer Umgebung zu vermeiden.
 
 > [!Note]
-> Alle veröffentlichten Versionen von 7.2 enthalten die erforderlichen Änderungen.
+> **Alle veröffentlichten Versionen von 7.2 enthalten die erforderlichen Änderungen**.
   
   | OS | Aktuelle Service Fabric-Runtime im Cluster | CU/Patchrelease |
   | --- | --- |--- |
@@ -75,9 +75,15 @@ Stellen Sie sicher, dass Ihre Cluster eine der folgenden Versionen ausführen, u
 Die Versionen von Service Fabric in der Tabelle enthalten die erforderlichen Änderungen, um Funktionsverluste zu verhindern. Stellen Sie sicher, dass Sie eine dieser Versionen verwenden.  
 
 > [!Note]
-> Alle Releaseversionen von 7.2 enthalten die erforderlichen Änderungen.
+> **Azure Service Fabric-Cluster, die mit Version 6.5 ausgeführt werden, müssen vor dem Infrastrukturwechsel mehrere Upgrades gleichzeitig durchführen, um Funktionsverluste des Clusters zu vermeiden**. 
+>   -   1. Upgrade auf 7.0.466. **Cluster, in denen das Windows-Betriebssystem mit aktiviertem Feature „Windows-Container“ ausgeführt wird, DÜRFEN diese Zwischenversion nicht verwenden. Sie müssen den unten aufgeführten nächsten Schritt (ii) ausführen (das Upgrade), um eine sicherere und kompatible Version zu verwenden, damit Dienstunterbrechungen vermieden werden.**
+>   -   2. Führen Sie ein Upgrade auf die neuesten Versionen im 7.0*-Release (7.0.478) oder auf eine der unten aufgeführten höheren Versionen durch.
 
-  | OS | Aktuelle Service Fabric-Runtime im Cluster | CU/Patchrelease |
+
+> [!Note]
+> **Alle Releaseversionen von 7.2 enthalten die erforderlichen Änderungen**.
+
+ | OS | Aktuelle Service Fabric-Runtime im Cluster | CU/Patchrelease |
   | --- | --- |--- |
   | Windows | 7.0.* | 7.0.478.9590 |
   | Windows | 7.1.* | 7.1.503.9590 |

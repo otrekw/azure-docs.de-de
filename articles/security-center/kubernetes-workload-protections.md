@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 09/12/2020
 ms.author: memildin
-ms.openlocfilehash: ce0808bc53ae663b80da793bf33b5b371d881961
-ms.sourcegitcommit: 983eb1131d59664c594dcb2829eb6d49c4af1560
+ms.openlocfilehash: 99e217c6d8065d19f7b03419306f4992735cb587
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99222182"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99526726"
 ---
 # <a name="protect-your-kubernetes-workloads"></a>Schützen Ihrer Kubernetes-Workloads
 
@@ -35,10 +35,10 @@ Security Center bietet noch weitere Features für die Containersicherheit, wenn 
 
 |Aspekt|Details|
 |----|:----|
-|Status des Release:|Vorschau<br>[!INCLUDE [Legalese](../../includes/security-center-preview-legal-text.md)] |
+|Status des Release:|Allgemeine Verfügbarkeit (General Availability, GA)|
 |Preise:|Kostenlos|
 |Erforderliche Rollen und Berechtigungen:|**Besitzer** oder **Sicherheitsadministrator** zum Bearbeiten einer Zuweisung<br>**Leser** zum Anzeigen der Empfehlungen|
-|Unterstützte Cluster:|Kubernetes Version 1.14 oder höher ist erforderlich.<br>Keine PodSecurityPolicy-Ressource (altes PSP-Modell) in den Clustern<br>Windows-Knoten werden nicht unterstützt.|
+|Umgebungsanforderungen:|Kubernetes Version 1.14 oder höher ist erforderlich.<br>Keine PodSecurityPolicy-Ressource (altes PSP-Modell) in den Clustern<br>Windows-Knoten werden nicht unterstützt.|
 |Clouds:|![Ja](./media/icons/yes-icon.png) Kommerzielle Clouds<br>![Nein](./media/icons/no-icon.png) National/Sovereign (US Gov, China Gov, andere Gov)|
 |||
 
@@ -52,6 +52,8 @@ Azure Security Center enthält einige Empfehlungen, die verfügbar sind, wenn Si
 Installieren Sie zum Konfigurieren der Empfehlungen das **Azure Policy-Add-On für Kubernetes**. 
 
 - Sie können dieses Add-On auch automatisch bereitstellen, wie unter [Aktivieren der automatischen Bereitstellung von Erweiterungen](security-center-enable-data-collection.md#enable-auto-provisioning-of-extensions) erläutert. Wenn die automatische Bereitstellung für das Add-On auf „Ein“ festgelegt ist, wird die Erweiterung standardmäßig in allen vorhandenen und zukünftigen Clustern aktiviert (sofern diese die Add-On-Installationsanforderungen erfüllen).
+
+    :::image type="content" source="media/defender-for-kubernetes-usage/policy-add-on-auto-provision.png" alt-text="Verwenden des Security Center-Tools zur automatischen Bereitstellung zur Installation des Richtlinien-Add-Ons für Kubernetes":::
 
 - Gehen Sie folgendermaßen vor, um das Add-On manuell bereitzustellen:
 

@@ -1,18 +1,18 @@
 ---
 title: Kontrollen zur Einhaltung gesetzlicher Bestimmungen in Azure Policy für Azure Key Vault
 description: Listet Kontrollen zur Einhaltung gesetzlicher Bestimmungen in Azure Policy auf, die für Azure Key Vault verfügbar sind. Diese integrierten Richtliniendefinitionen bieten allgemeine Ansätze für die Verwaltung der Compliance Ihrer Azure-Ressourcen.
-ms.date: 01/29/2021
+ms.date: 02/09/2021
 ms.topic: sample
 author: msmbaldwin
 ms.author: mbaldwin
 ms.service: key-vault
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: fd1d45878777eea5d662ef108c710d73dcdf5fb8
-ms.sourcegitcommit: b4e6b2627842a1183fce78bce6c6c7e088d6157b
+ms.openlocfilehash: 6802f65fdcedc5b5120d91c41fb11a3d7ea906de
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2021
-ms.locfileid: "99092173"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100095187"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-key-vault"></a>Kontrollen zur Einhaltung gesetzlicher Bestimmungen in Azure Policy für Azure Key Vault
 

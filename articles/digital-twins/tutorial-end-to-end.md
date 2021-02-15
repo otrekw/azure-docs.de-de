@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 4/15/2020
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 8933dd6655223db092597aedf839fd800119864a
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: 5ef06f2db487a3e6d897e26758da840f37c3ecaf
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98684004"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99575804"
 ---
 # <a name="tutorial-build-out-an-end-to-end-solution"></a>Tutorial: Erstellen einer End-to-End-Lösung
 
@@ -401,18 +401,15 @@ Hier wird das in diesem Tutorial erstellte Szenario noch einmal zusammengefasst.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Wenn Sie die in diesem Tutorial erstellten Ressourcen nicht mehr benötigen, können Sie die folgenden Schritte zum Löschen ausführen. 
+Nach Abschluss dieses Tutorials können Sie die zu entfernenden Ressourcen auswählen, abhängig davon, wie Sie weiter vorgehen möchten.
 
-Bei Verwendung von [Azure Cloud Shell](https://shell.azure.com) können Sie alle Azure-Ressourcen in einer Ressourcengruppe mit dem Befehl [az group delete](/cli/azure/group?preserve-view=true&view=azure-cli-latest#az-group-delete) löschen. Hierdurch werden die Ressourcengruppe, die Azure Digital Twins-Instanz, der IoT-Hub und die Registrierung des Hubgeräts, das Event Grid-Thema und die zugehörigen Abonnements sowie beide Azure Functions-Apps einschließlich beider Funktionen zugeordneter Ressourcen wie Speicher entfernt.
+[!INCLUDE [digital-twins-cleanup-basic.md](../../includes/digital-twins-cleanup-basic.md)]
 
-> [!IMPORTANT]
-> Das Löschen einer Ressourcengruppe kann nicht rückgängig gemacht werden. Die Ressourcengruppe und alle darin enthaltenen Ressourcen werden unwiderruflich gelöscht. Achten Sie daher darauf, dass Sie nicht versehentlich die falsche Ressourcengruppe oder die falschen Ressourcen löschen. 
+* **Wenn Sie die in diesem Artikel eingerichtete Azure Digital Twins-Instanz weiterhin verwenden, aber einige oder alle ihrer Modelle, Zwillinge und Beziehungen entfernen möchten**, können Sie die CLI-Befehle vom Typ [az dt](/cli/azure/ext/azure-iot/dt?view=azure-cli-latest&preserve-view=true) in einem [Azure Cloud Shell](https://shell.azure.com)-Fenster verwenden, um die gewünschten Elemente zu löschen.
 
-```azurecli-interactive
-az group delete --name <your-resource-group>
-```
+    Mit dieser Option werden keine der anderen in diesem Tutorial erstellten Azure-Ressourcen (IoT Hub, Azure Functions-App usw.) entfernt. Sie können diese einzeln mithilfe der entsprechenden [dt-Befehle](/cli/azure/reference-index?view=azure-cli-latest&preserve-view=true) für jeden Ressourcentyp löschen.
 
-Löschen Sie abschließend den Projektbeispielordner, den Sie auf Ihren lokalen Computer heruntergeladen haben.
+Löschen Sie ggf. auch den Projektordner von Ihrem lokalen Computer.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
