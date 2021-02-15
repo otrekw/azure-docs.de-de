@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/29/2020
-ms.openlocfilehash: e2b12d7a2206ab369328563af438c6ef1ea39327
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: d094e1760db1ddfcff520b0022a232735d21d355
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96184109"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99525821"
 ---
 # <a name="operationalinsights-api-version-retirement"></a>Deaktivierung der OperationalInsights-API-Version
 Wenn Microsoft eine API deaktiviert, werden Sie mindestens 12 Monate vorher benachrichtigt, um einen reibungslosen Übergang zu einer neueren/unterstützten Version zu gewährleisten. Wir haben eine neue Version (2020-08-01) für Ressourcenanbieter-APIs vom Typ **OperationalInsights** veröffentlicht. Alle älteren API-Versionen werden am 29. Februar 2024 eingestellt.
@@ -66,6 +66,15 @@ Je nach verwendeter Konfigurationsmethode sollten Sie die neue Version in **REST
     }
     ```
 
+
+### <a name="more-information"></a>Weitere Informationen
+Bei Fragen können Sie sich an [unsere Experten in der Tech Community]( https://techcommunity.microsoft.com/t5/azure-monitor/bd-p/AzureMonitor) wenden. Wenn Sie über einen Supportplan verfügen und technische Hilfe benötigen, erstellen Sie eine [Supportanfrage]( https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest): 
+1.  Wählen Sie unter *Problemtyp* die Option **Technisch** aus. 
+2.  Wählen Sie unter *Abonnement* Ihr Abonnement aus. 
+3.  Wählen Sie unter *Dienst* die Option **Meine Dienste** und dann **Log Analytics** aus. 
+4.  Geben Sie unter *Zusammenfassung* eine Beschreibung Ihres Problems ein. 
+5.  Wählen Sie unter *Problemtyp* die Option **Log Analytics-Arbeitsbereichsverwaltung** aus.  
+6.  Wählen Sie unter *Problemuntertyp* die Option **ARM-Vorlagen, PowerShell und CLI** aus. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

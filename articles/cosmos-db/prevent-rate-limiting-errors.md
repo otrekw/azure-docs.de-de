@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-mongo
 ms.topic: how-to
 ms.date: 01/13/2021
 ms.author: gahllevy
-ms.openlocfilehash: e1ccf55d38a9a3a5a1d0a3622c90dd7b51e5e477
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.openlocfilehash: 1e9062b111c30efa90b98c4ebcee710b1d975a1d
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99258489"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99507929"
 ---
 # <a name="prevent-rate-limiting-errors-for-azure-cosmos-db-api-for-mongodb-operations"></a>Verhindern von Ratenbegrenzungsfehlern bei Vorgängen der Azure Cosmos DB-API für MongoDB
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -45,9 +45,9 @@ az cosmosdb show --name accountname --resource-group resourcegroupname
 ```bash
 az cosmosdb update --name accountname --resource-group resourcegroupname --capabilities EnableMongo DisableRateLimitingResponses
 ```
-Der folgende Befehl dient zum **Deaktivieren** von SSR für alle Sammlungen in Ihrem Datenbankkonto. Es kann bis zu 15 Minuten dauern, bis diese Änderung wirksam wird.
+Mit dem folgenden Befehl wird SSR für alle Sammlungen in Ihrem Datenbankkonto **deaktiviert**, indem „DisableRateLimitingResponses“ aus der Funktionenliste entfernt wird. Es kann bis zu 15 Minuten dauern, bis diese Änderung wirksam wird.
 ```bash
-az cosmosdb update --name accountname --resource-group resourcegroupname --capabilities EnableMongo DisableRateLimitingResponses
+az cosmosdb update --name accountname --resource-group resourcegroupname --capabilities EnableMongo
 ```
 
 ## <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
