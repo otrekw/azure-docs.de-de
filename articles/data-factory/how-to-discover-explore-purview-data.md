@@ -11,12 +11,12 @@ ms.author: lle
 manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 01/15/2021
-ms.openlocfilehash: 1a8ed80daa4406f32909a6622b8649f37ec48063
-ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
+ms.openlocfilehash: accb9bbf195daa3d25e1aed109e36ef309083385
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99064348"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99805308"
 ---
 # <a name="discover-and-explore-data-in-adf-using-purview"></a>Ermitteln und Erkunden von Daten in ADF mithilfe von Purview
 
@@ -47,7 +47,7 @@ Zum Ermitteln von Daten, die von Azure Purview registriert und überprüft wurd
 ### <a name="actions-that-you-can-perform-over-datasets-with-data-factory-resources"></a>Aktionen, die Sie für Datasets mit Data Factory-Ressourcen ausführen können 
 Sie können einen verknüpften Dienst, ein Dataset oder einen Datenfluss für die Daten, die Sie nach Azure Purview durchsuchen, direkt erstellen.
 
-:::image type="content" source="./media/data-factory-purview/actions-over-purview-data.png" alt-text="Screenshot zur Ausführung für Datasets.":::
+:::image type="content" source="./media/data-factory-purview/actions-over-purview-data.png" alt-text="Screenshot, der zeigt, wie Sie einen verknüpften Dienst, ein Dataset oder einen Datenfluss für die Daten, die Sie nach Azure Purview durchsuchen, direkt erstellen können.":::
 
 ##  <a name="nextsteps"></a>Nächste Schritte 
 

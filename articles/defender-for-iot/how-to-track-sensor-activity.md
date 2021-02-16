@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/10/2020
 ms.topic: article
 ms.service: azure
-ms.openlocfilehash: 3895e01b1fbfcde79ff91bd1eade8d902c33b852
-ms.sourcegitcommit: 8be279f92d5c07a37adfe766dc40648c673d8aa8
+ms.openlocfilehash: 6dbe15da85a85303742ef28c7ca609755193f25e
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/31/2020
-ms.locfileid: "97836284"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99509098"
 ---
 # <a name="track-sensor-activity"></a>Nachverfolgen der Sensoraktivität
 
@@ -59,15 +59,15 @@ So filtern Sie die Zeitachse:
 
 2. Legen Sie Ereignisfilter wie folgt fest:
 
-   - **Include Address** (Adresse einschließen): Anzeigen bestimmter Ereignisgeräte
+   - **Include Address** (Adresse einschließen): Hiermit werden Ereignisse für bestimmte Geräte angezeigt.
 
-   - **Exclude Address** (Adresse ausschließen): Ausblenden bestimmter Ereignisgeräte
+   - **Exclude Address** (Adresse ausschließen): Hiermit werden Ereignisse für bestimmte Geräte ausgeblendet.
 
-   - **Include Event Types** (Ereignistypen einschließen): Anzeigen bestimmter Ereignistypen
+   - **Include Event Types** (Ereignistypen einschließen): Hiermit werden bestimmte Ereignistypen angezeigt.
 
-   - **Exclude Event Types** (Ereignistypen ausschließen): Ausblenden bestimmter Ereignistypen
+   - **Exclude Event Types** (Ereignistypen ausschließen): Hiermit werden bestimmte Ereignistypen ausgeblendet.
 
-   - **Device Group** (Gerätegruppe): Auswählen einer Gerätegruppe, so wie in der Gerätezuordnung definiert. Es werden nur die Ereignisse dieser Gruppe angezeigt.
+   - **Device Group** (Gerätegruppe): Auswählen einer Gerätegruppe, so wie in der Gerätezuordnung definiert. Es werden nur Ereignisse aus dieser Gruppe angezeigt.
 
 3. Wählen Sie **Clear All** (Auswahl aufheben) aus, um alle ausgewählten Filter zu löschen.
 
@@ -87,7 +87,7 @@ So filtern Sie die Zeitachse:
 
     - Wählen Sie **PCAP-Datei** aus, um die PCAP-Datei herunterladen (falls vorhanden), die eine Paketerfassung des gesamten Netzwerk zu einem bestimmten Zeitpunkt enthält. 
     
-      Die PCAP-Datei enthält technische Informationen, die Entwicklern dabei helfen können, genau zu bestimmen, wo das Ereignis aufgetreten ist und was dort passiert. Sie können die PCAP-Datei mit einem Tool zur Netzwerkprotokollanalyse wie Wireshark (kostenlose Anwendung) analysieren.
+      Die PCAP-Datei enthält technische Informationen, die Netzwerktechniker dabei helfen, die genauen Parameter des Ereignisses zu ermitteln. Sie können die PCAP-Datei mit einem Tool für die Netzwerkprotokollanalyse wie der Open-Source-Anwendung „Wireshark“ analysieren.
 
 ## <a name="see-also"></a>Weitere Informationen
 

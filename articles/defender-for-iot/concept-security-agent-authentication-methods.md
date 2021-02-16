@@ -4,21 +4,21 @@ description: Lernen Sie die verschiedenen Authentifizierungsmethoden kennen, die
 services: defender-for-iot
 ms.service: defender-for-iot
 documentationcenter: na
-author: mlottner
+author: shhazam-ms
 manager: rkarlin
 editor: ''
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/09/2020
-ms.author: mlottner
-ms.openlocfilehash: 896baa70fb6e18165a025459a063e33d705261ba
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 01/24/2021
+ms.author: shhazam
+ms.openlocfilehash: aa5a8a842a750e44d4beeb915008f86c6b5bbb70
+ms.sourcegitcommit: 4784fbba18bab59b203734b6e3a4d62d1dadf031
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90931445"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99809251"
 ---
 # <a name="security-agent-authentication-methods"></a>Authentifizierungsmethoden des Sicherheits-Agents
 
@@ -32,7 +32,7 @@ Für jedes Gerät, das im IoT Hub in Defender für IoT integriert ist, ist ein S
 
 ## <a name="authentication-methods"></a>Authentifizierungsmethoden
 
-Für den AzureIoTSecurity-Agent gibt es die beiden folgenden Authentifizierungsmethoden:
+Für den AzureIoTSecurity-Agent von Azure Defender für IoT gibt es die beiden folgenden Authentifizierungsmethoden:
 
 - Authentifizierungsmodus **SecurityModule**<br>
 Der Agent wird unabhängig von der Geräteidentität mithilfe der Sicherheitsmodulidentität authentifiziert.

@@ -5,14 +5,14 @@ author: bwren
 ms.author: bwren
 services: azure-monitor
 ms.topic: conceptual
-ms.date: 04/27/2020
+ms.date: 02/08/2021
 ms.subservice: logs
-ms.openlocfilehash: c25c53159fd0504956eed2cf7f968c573e9fc289
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 5e1a1c62cafd982d44be3e06b98fc8c30461021c
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98927730"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99979979"
 ---
 # <a name="create-diagnostic-settings-to-send-platform-logs-and-metrics-to-different-destinations"></a>Erstellen von Diagnoseeinstellungen zum Senden von Plattformprotokollen und Metriken an verschiedene Ziele
 [Plattformprotokolle](platform-logs-overview.md) in Azure, z. B. das Azure-Aktivitätsprotokoll und Ressourcenprotokolle, liefern ausführliche Diagnose- und Überwachungsinformationen für Azure-Ressourcen und die Azure-Plattform, von der sie abhängen. [Plattformmetriken](data-platform-metrics.md) werden standardmäßig gesammelt und in der Regel in der Azure Monitor-Metrikdatenbank gespeichert. Dieser Artikel enthält Details zum Erstellen und Konfigurieren von Diagnoseeinstellungen, um Plattformmetriken und -protokolle an verschiedene Ziele zu senden.
@@ -175,6 +175,24 @@ Informationen zum Erstellen oder Aktualisieren von Diagnoseeinstellungen mithilf
 
 ## <a name="create-using-azure-policy"></a>Erstellen mithilfe von Azure Policy
 Da für jede Azure-Ressource eine Diagnoseeinstellung erstellt werden muss, können Sie mit Azure Policy beim Erstellen der einzelnen Ressourcen automatisch eine Diagnoseeinstellung erstellen. Weitere Informationen finden Sie unter [Bedarfsorientiertes Bereitstellen von Azure Monitor mithilfe von Azure Policy](../deploy-scale.md).
+
+## <a name="metric-category-is-not-supported-error"></a>Fehler nicht unterstützter Metrikkategorien
+Beim Bereitstellen einer Diagnoseeinstellung können Sie die folgende Fehlermeldung erhalten:
+
+   „Die Metrikkategorie '*xxxx*' wird nicht unterstützt.“
+
+Beispiel: 
+
+   „Die Metrikkategorie 'ActionsFailed' wird nicht unterstützt.“
+
+Dies kann in Fällen auftreten, in denen Ihre Bereitstellung zuvor erfolgreich war. 
+
+Dieses Problem tritt auf, wenn eine Resource Manager-Vorlage, die REST-API für Diagnoseeinstellungen, die Azure CLI oder Azure PowerShell verwendet wird. Über das Azure-Portal erstellte Diagnoseeinstellungen sind nicht betroffen, da nur die unterstützten Kategorienamen angezeigt werden.
+
+Das Problem wird von einer vor Kurzem erfolgten Änderung an der zugrunde liegenden API verursacht. Alle anderen Metrikkategorien außer 'AllMetrics' werden nicht unterstützt und wurden nicht unterstützt, mit Ausnahme einiger weniger spezifischer Azure-Dienste. In der Vergangenheit wurden andere Kategorienamen beim Bereitstellen einer Diagnoseeinstellung ignoriert. Das Azure Monitor-Back-End hat diese Kategorien einfach zu 'AllMetrics' umgeleitet.  Im Februar 2021 wurde das Back-End aktualisiert, sodass speziell dafür gesorgt ist, dass die bereitgestellte Metrikkategorie korrekt ist. Diese Änderungen führt zu Fehlern bei einigen Bereitstellungen.
+
+Wenn Sie diesen Fehler erhalten, aktualisieren Sie Ihre Bereitstellungen, sodass alle Metrikkategorienamen durch 'AllMetrics' ersetzt werden, um das Problem zu beheben. Wenn bei der Bereitstellung zuvor mehrere Kategorien hinzugefügt wurden, sollten Sie nur den 'AllMetrics'-Verweis beibehalten. Wenn das Problem weiterhin auftritt, wenden Sie sich über das Azure-Portal an den Azure-Support. 
+
 
 
 ## <a name="next-steps"></a>Nächste Schritte

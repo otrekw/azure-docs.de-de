@@ -6,12 +6,12 @@ ms.author: bahusse
 ms.service: mysql
 ms.topic: how-to
 ms.date: 1/28/2021
-ms.openlocfilehash: 62faaed3672f721b26587d1bca3ddb0947f733e7
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.openlocfilehash: ea2dc877c7bc6db387985e7b5cd1153e195ab4f1
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99220835"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99509569"
 ---
 # <a name="major-version-upgrade-in-azure-database-for-mysql-single-server"></a>Hauptversionsupgrade in Azure Database for MySQL Single Server
 
@@ -121,15 +121,7 @@ Die allgemeine Verfügbarkeit dieses Features ist vor der Einstellung von MySQL 
 
 ### <a name="will-this-cause-downtime-of-the-server-and-if-so-how-long"></a>Führt dies zu einer Downtime des Servers und wenn ja, wie lange dauert dies?
 
-Ja, der Server wird während des Upgradeprozesses nicht verfügbar sein, sodass wir Ihnen empfehlen, diesen Vorgang während Ihres geplanten Wartungsfensters durchzuführen. Die geschätzte Downtime hängt von der Datenbankgröße, der bereitgestellten Speichergröße (bereitgestellte IOPs) und der Anzahl der Tabellen in der Datenbank ab. Die Upgradezeit verhält sich direkt proportional zur Anzahl der Tabellen auf dem Server. Die Upgrades von Basic-SKU-Servern werden voraussichtlich länger dauern, da es sich um eine Standardspeicherplattform handelt. Um die Downtime für Ihre Serverumgebung abzuschätzen, empfehlen wir, das Upgrade zunächst auf einer wiederhergestellten Kopie des Servers durchzuführen.  
-
-### <a name="it-is-noted-that-it-is-not-supported-on-replica-server-yet-what-does-that-mean-concrete"></a>Es wird darauf hingewiesen, dass es auf dem Replikatserver noch nicht unterstützt wird. Was bedeutet das konkret?
-
-Derzeit wird das Upgrade der Hauptversion für Replikatserver nicht unterstützt, was bedeutet, dass Sie es nicht für Server ausführen sollten, die an der Replikation beteiligt sind (weder Quell- noch Replikatserver). Wenn Sie das Upgrade der an der Replikation beteiligten Server testen möchten, bevor wir die Replikatunterstützung für das Upgrade-Feature hinzufügen, empfehlen wir folgende Schritte:
-
-1. Während Ihrer geplanten Wartung [beenden Sie die Replikation und löschen den Replikatserver](howto-read-replicas-portal.md), nachdem Sie seinen Namen und alle Konfigurationsinformationen (Firewalleinstellungen, Konfiguration der Serverparameter, falls sie sich vom Quellserver unterscheidet) erfasst haben.
-2. Führen Sie ein Upgrade des Quellservers durch.
-3. Stellen Sie einen neuen Lesereplikatserver mit demselben Namen und denselben Konfigurationseinstellungen bereit, die in Schritt 1 erfasst wurden. Der neue Replikatserver weist automatisch v5.7 auf, nachdem der Quellserver auf v5.7 aktualisiert wurde.
+Ja, der Server wird während des Upgradeprozesses nicht verfügbar sein, sodass wir Ihnen empfehlen, diesen Vorgang während Ihres geplanten Wartungsfensters durchzuführen. Die geschätzte Downtime hängt von der Datenbankgröße, der bereitgestellten Speichergröße (bereitgestellte IOPs) und der Anzahl der Tabellen in der Datenbank ab. Die Upgradezeit verhält sich direkt proportional zur Anzahl der Tabellen auf dem Server. Die Upgrades von Basic-SKU-Servern werden voraussichtlich länger dauern, da es sich um eine Standardspeicherplattform handelt. Um die Downtime für Ihre Serverumgebung abzuschätzen, empfehlen wir, das Upgrade zunächst auf einer wiederhergestellten Kopie des Servers durchzuführen. Ziehen Sie es in Betracht, [ein Hauptversionsupgrade von MySQL 5.6 auf MySQL 5.7 mit minimaler Ausfallzeit unter Verwendung von Lesereplikaten durchzuführen.](#perform-minimal-downtime-major-version-upgrade-from-mysql-56-to-mysql-57-using-read-replicas)
 
 ### <a name="what-will-happen-if-we-do-not-choose-to-upgrade-our-mysql-v56-server-before-february-5-2021"></a>Was passiert, wenn wir das Upgrade unseres MySQL v5.6-Servers nicht vor dem 5. Februar 2021 durchführen?
 

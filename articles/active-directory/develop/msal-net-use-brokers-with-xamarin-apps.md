@@ -12,12 +12,12 @@ ms.date: 09/08/2019
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: 73fbda9a3356e2877617391430a7f2b555b1a0e5
-ms.sourcegitcommit: 2488894b8ece49d493399d2ed7c98d29b53a5599
+ms.openlocfilehash: ee9f374d110115b224c48853f26037dc461e5fa0
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2021
-ms.locfileid: "98063483"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99583840"
 ---
 # <a name="use-microsoft-authenticator-or-intune-company-portal-on-xamarin-applications"></a>Verwenden von Microsoft Authenticator oder des Intune-Unternehmensportals für Xamarin-Anwendungen
 
@@ -91,7 +91,7 @@ Diese Methode wird jedes Mal aufgerufen, wenn die Anwendung gestartet wird. Sie 
 
 ### <a name="step-4-set-uiviewcontroller"></a>Schritt 4: Festlegen von „UIViewController()“
 
-Sie müssen in der Datei *AppDelegate.cs* ein Objektfenster festlegen. Normalerweise müssen Sie das Objektfenster bei Xamarin iOS nicht festlegen, aber Sie benötigen ein Objektfenster, um zu senden und Antworten von einem Broker zu empfangen.
+Legen Sie in der Datei *AppDelegate.cs* ein Objektfenster fest. Normalerweise müssen Sie das Objektfenster bei Xamarin iOS nicht festlegen, aber Sie benötigen ein Objektfenster, um zu senden und Antworten von einem Broker zu empfangen.
 
 So richten Sie das Objektfenster ein:
 
@@ -237,7 +237,7 @@ result = await app.AcquireTokenInteractive(scopes)
 
 ### <a name="step-4-add-a-redirect-uri-to-your-app-registration"></a>Schritt 4: Hinzufügen eines Umleitungs-URI zur App-Registrierung
 
-MSAL verwendet URLs, um den Broker aufzurufen und die Brokerantwort dann an Ihre App zurückzugeben. Um diesen Roundtrip abzuschließen, müssen Sie einen **Umleitungs-URI** für Ihre App mithilfe des [Azure-Portals](https://portal.azure.com) registrieren.
+MSAL verwendet URLs, um den Broker aufzurufen und die Brokerantwort dann an Ihre App zurückzugeben. Registrieren Sie über das [Azure-Portal](https://portal.azure.com) einen **Umleitungs-URI** für Ihre App, um diesen Roundtrip abzuschließen.
 
 Das Format des Umleitungs-URI für Ihre Anwendung hängt von dem Zertifikat ab, das zum Signieren des APK verwendet wird. Beispiel:
 

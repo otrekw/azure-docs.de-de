@@ -5,23 +5,23 @@ services: data-factory
 author: linda33wj
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 01/07/2021
+ms.date: 02/08/2021
 ms.author: jingwang
 ms.reviewer: craigg
 ms.custom: has-adal-ref
-ms.openlocfilehash: fdc4bbd463c45fecfc9e3961e42f81ed93d820ae
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: 2395e8e0027755357e65aab247185c02f7b1723d
+ms.sourcegitcommit: 706e7d3eaa27f242312d3d8e3ff072d2ae685956
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99054635"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99980710"
 ---
 # <a name="troubleshoot-azure-data-factory-connectors"></a>Problembehandlung für Azure Data Factory-Connectors
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 In diesem Artikel werden gängige Methoden zum Beheben von Problemen mit Azure Data Factory-Connectors behandelt.
-  
+
 ## <a name="azure-blob-storage"></a>Azure Blob Storage
 
 ### <a name="error-code-azurebloboperationfailed"></a>Fehlercode: AzureBlobOperationFailed
@@ -109,7 +109,7 @@ In diesem Artikel werden gängige Methoden zum Beheben von Problemen mit Azure D
             
 ## <a name="azure-cosmos-db-sql-api"></a>Azure Cosmos DB (SQL-API)
 
-### <a name="error-code--cosmosdbsqlapioperationfailed"></a>Fehlercode:  CosmosDbSqlApiOperationFailed
+### <a name="error-code-cosmosdbsqlapioperationfailed"></a>Fehlercode: CosmosDbSqlApiOperationFailed
 
 - **Meldung**: `CosmosDbSqlApi operation Failed. ErrorMessage: %msg;.`
 
@@ -161,17 +161,13 @@ In diesem Artikel werden gängige Methoden zum Beheben von Problemen mit Azure D
 
 - **Meldung**: `ADLS Gen2 operation failed for: %adlsGen2Message;.%exceptionData;.`
 
-- **Ursache:** Wenn Azure Data Lake Storage Gen2 diesen Fehler auslöst, ist der Vorgang fehlgeschlagen.
+- **Ursachen und Empfehlungen:** Dieser Fehler kann verschiedene Ursachen haben. In der Liste unten finden Sie mögliche Ursachenanalysen und Empfehlungen.
 
-- **Empfehlung**:  Überprüfen Sie die von Azure Data Lake Storage Gen2 ausgegebene detaillierte Fehlermeldung. Wenn der Fehler ein vorübergehender Fehler ist, wiederholen Sie den Vorgang. Um weitere Hilfe zu erhalten, wenden Sie sich an den Azure Storage-Support, und geben Sie die Anforderungs-ID in der Fehlermeldung an.
-
-- **Ursache:** Wenn die Fehlermeldung die Zeichenfolge „Forbidden“ (Verboten) enthält, verfügt der von Ihnen verwendete Dienstprinzipal oder die verwaltete Identität möglicherweise nicht über die erforderliche Berechtigung, um auf Azure Data Lake Storage Gen2 zuzugreifen.
-
-- **Empfehlung**:  Um diesen Fehler zu beheben, lesen Sie [Kopieren und Transformieren von Daten in Azure Data Lake Storage Gen2 mithilfe von Azure Data Factory](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#service-principal-authentication).
-
-- **Ursache:** Wenn die Fehlermeldung Die Zeichenfolge „InternalServerError“ enthält, wird der Fehler von Azure Data Lake Storage Gen2 zurückgegeben.
-
-- **Empfehlung**:  Dieser Fehler wird möglicherweise durch einen vorübergehenden Fehler verursacht. Wenn dies so ist, wiederholen Sie den Vorgang. Wenden Sie sich an den Azure Storage-Support, und geben Sie die Anforderungs-ID aus der Fehlermeldung an, wenn das Problem weiterhin besteht.
+  | Ursachenanalyse                                               | Empfehlung                                               |
+  | :----------------------------------------------------------- | :----------------------------------------------------------- |
+  | Wenn Azure Data Lake Storage Gen2 diesen Fehler auslöst, ist für einen Vorgang ein Fehler aufgetreten.| Überprüfen Sie die von Azure Data Lake Storage Gen2 ausgegebene detaillierte Fehlermeldung. Wenn der Fehler ein vorübergehender Fehler ist, wiederholen Sie den Vorgang. Um weitere Hilfe zu erhalten, wenden Sie sich an den Azure Storage-Support, und geben Sie die Anforderungs-ID in der Fehlermeldung an. |
+  | Wenn die Fehlermeldung die Zeichenfolge „Forbidden“ (Verboten) enthält, verfügt der von Ihnen verwendete Dienstprinzipal oder die verwaltete Identität möglicherweise nicht über die erforderliche Berechtigung, um auf Azure Data Lake Storage Gen2 zuzugreifen. | Um diesen Fehler zu beheben, lesen Sie [Kopieren und Transformieren von Daten in Azure Data Lake Storage Gen2 mithilfe von Azure Data Factory](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#service-principal-authentication). |
+  | Wenn die Fehlermeldung die Zeichenfolge „InternalServerError“ enthält, wird der Fehler von Azure Data Lake Storage Gen2 zurückgegeben. | Dieser Fehler wird möglicherweise durch einen vorübergehenden Fehler verursacht. Wenn dies so ist, wiederholen Sie den Vorgang. Wenden Sie sich an den Azure Storage-Support, und geben Sie die Anforderungs-ID aus der Fehlermeldung an, wenn das Problem weiterhin besteht. |
 
 ### <a name="request-to-azure-data-lake-storage-gen2-account-caused-a-timeout-error"></a>Timeoutfehler bei der Anforderung des Azure Data Lake Storage Gen2-Kontos
 
@@ -204,7 +200,7 @@ In diesem Artikel werden gängige Methoden zum Beheben von Problemen mit Azure D
                   
 ## <a name="azure-files-storage"></a>Azure Files-Speicher
 
-### <a name="error-code--azurefileoperationfailed"></a>Fehlercode:  AzureFileOperationFailed
+### <a name="error-code-azurefileoperationfailed"></a>Fehlercode: AzureFileOperationFailed
 
 - **Meldung**: `Azure File operation Failed. Path: %path;. ErrorMessage: %msg;.`
 
@@ -215,55 +211,34 @@ In diesem Artikel werden gängige Methoden zum Beheben von Problemen mit Azure D
 
 ## <a name="azure-synapse-analytics-azure-sql-database-and-sql-server"></a>Azure Synapse Analytics, Azure SQL-Datenbank und SQL Server
 
-### <a name="error-code--sqlfailedtoconnect"></a>Fehlercode:  SqlFailedToConnect
+### <a name="error-code-sqlfailedtoconnect"></a>Fehlercode: SqlFailedToConnect
 
 - **Meldung**: `Cannot connect to SQL Database: '%server;', Database: '%database;', User: '%user;'. Check the linked service configuration is correct, and make sure the SQL Database firewall allows the integration runtime to access.`
+- **Ursachen und Empfehlungen:** Dieser Fehler kann verschiedene Ursachen haben. In der Liste unten finden Sie mögliche Ursachenanalysen und Empfehlungen.
 
-- **Ursache:** Wenn die Fehlermeldung die Zeichenfolge „SqlErrorNumber=47073“ enthält, bedeutet dies für Azure SQL, dass der öffentliche Netzwerkzugriff in der Konnektivitätseinstellung verweigert wird.
-
-- **Empfehlung**: Legen Sie in der Azure SQL-Firewall die Option **Öffentlichen Netzwerkzugriff verweigern** auf *Nein* fest. Weitere Informationen finden Sie unter [Azure SQL-Konnektivitätseinstellungen](https://docs.microsoft.com/azure/azure-sql/database/connectivity-settings#deny-public-network-access).
-
-- **Ursache:** Wenn die Fehlermeldung bei Azure SQL einen SQL-Fehlercode wie „SqlErrorNumber=[errorcode]“ enthält, finden Sie weitere Informationen im Leitfaden zur Problembehandlung von Azure SQL.
-
-- **Empfehlung**: Eine Empfehlung finden Sie unter [Beheben von Konnektivitätsproblemen und anderen Fehlern mit Azure SQL-Datenbank und Azure SQL Managed Instance](https://docs.microsoft.com/azure/azure-sql/database/troubleshoot-common-errors-issues).
-
-- **Ursache:** Überprüfen Sie, ob Port 1433 in der Zulassungsliste der Firewall enthalten ist.
-
-- **Empfehlung**: Weitere Informationen finden Sie unter [Von SQL Server verwendete Ports](https://docs.microsoft.com/sql/sql-server/install/configure-the-windows-firewall-to-allow-sql-server-access#ports-used-by-).
-
-- **Ursache:** Wenn die Fehlermeldung die Zeichenfolge „SqlException“ enthält, löst SQL-Datenbank den Fehler aus, der angibt, dass ein bestimmter Vorgang fehlgeschlagen ist.
-
-- **Empfehlung**:  Um weitere Informationen dazu zu erhalten, suchen Sie in [Datenbank-Engine-Fehler](https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors) nach dem SQL-Fehlercode. Wenn Sie weitere Hilfe benötigen, wenden Sie sich an den Azure SQL-Support.
-
-- **Ursache:** Wenn dies ein vorübergehendes Problem ist (z. B. eine instabile Netzwerkverbindung), fügen Sie zur Behebung in der Aktivitätsrichtlinie einen Wiederholungsversuch hinzu.
-
-- **Empfehlung**:  Weitere Informationen finden Sie unter [Pipelines und Aktivitäten in Azure Data Factory](https://docs.microsoft.com/azure/data-factory/concepts-pipelines-activities#activity-policy).
-
-- **Ursache:** Wenn die Fehlermeldung die Zeichenfolge „Der Client mit der IP-Adresse [...] hat keine Zugriffsberechtigung für den Server“ enthält und Sie versuchen, eine Verbindung mit Azure SQL-Datenbank herzustellen, wird dieses Problem normalerweise durch ein Problem mit der Firewall von Azure SQL-Datenbank verursacht.
-
-- **Empfehlung**:  Aktivieren Sie in der Azure SQL Server-Firewallkonfiguration die Option **Azure-Diensten und -Ressourcen den Zugriff auf diesen Server gestatten**. Weitere Informationen finden Sie unter [IP-Firewallregeln für Azure SQL-Datenbank und Azure Synapse](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure).
-
-
-### <a name="error-code--sqloperationfailed"></a>Fehlercode:  SqlOperationFailed
+    | Ursachenanalyse                                               | Empfehlung                                               |
+    | :----------------------------------------------------------- | :----------------------------------------------------------- |
+    | Wenn die Fehlermeldung die Zeichenfolge „SqlErrorNumber=47073“ enthält, bedeutet dies für Azure SQL, dass der öffentliche Netzwerkzugriff in der Konnektivitätseinstellung verweigert wird. | Legen Sie in der Azure SQL-Firewall die Option **Öffentlichen Netzwerkzugriff verweigern** auf *Nein* fest. Weitere Informationen finden Sie unter [Azure SQL-Konnektivitätseinstellungen](https://docs.microsoft.com/azure/azure-sql/database/connectivity-settings#deny-public-network-access). |
+    | Wenn die Fehlermeldung bei Azure SQL einen SQL-Fehlercode wie „SqlErrorNumber=[errorcode]“ enthält, finden Sie weitere Informationen im Leitfaden zur Problembehandlung von Azure SQL. | Eine Empfehlung finden Sie unter [Beheben von Konnektivitätsproblemen und anderen Fehlern mit Azure SQL-Datenbank und Azure SQL Managed Instance](https://docs.microsoft.com/azure/azure-sql/database/troubleshoot-common-errors-issues). |
+    | Überprüfen Sie, ob Port 1433 in der Zulassungsliste der Firewall enthalten ist. | Weitere Informationen finden Sie unter [Von SQL Server verwendete Ports](https://docs.microsoft.com/sql/sql-server/install/configure-the-windows-firewall-to-allow-sql-server-access#ports-used-by-). |
+    | Wenn die Fehlermeldung die Zeichenfolge „SqlException“ enthält, bedeutet dies für SQL-Datenbank, dass für einen bestimmten Vorgang ein Fehler aufgetreten ist. | Um weitere Informationen dazu zu erhalten, suchen Sie in [Datenbank-Engine-Fehler](https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors) nach dem SQL-Fehlercode. Wenn Sie weitere Hilfe benötigen, wenden Sie sich an den Azure SQL-Support. |
+    | Wenn dies ein vorübergehendes Problem ist (z. B. eine instabile Netzwerkverbindung), fügen Sie zur Behebung in der Aktivitätsrichtlinie einen Wiederholungsversuch hinzu. | Weitere Informationen finden Sie unter [Pipelines und Aktivitäten in Azure Data Factory](https://docs.microsoft.com/azure/data-factory/concepts-pipelines-activities#activity-policy). |
+    | Wenn die Fehlermeldung die Zeichenfolge „Client with IP address '…' is not allowed to access the server“ enthält und Sie versuchen, eine Verbindung zu Azure SQL-Datenbank herzustellen, wird dieser Fehler in der Regel durch ein Problem mit der Firewall von Azure SQL-Datenbank verursacht. | Aktivieren Sie in der Azure SQL Server-Firewallkonfiguration die Option **Azure-Diensten und -Ressourcen den Zugriff auf diesen Server gestatten**. Weitere Informationen finden Sie unter [IP-Firewallregeln für Azure SQL-Datenbank und Azure Synapse](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure). |
+    
+### <a name="error-code-sqloperationfailed"></a>Fehlercode: SqlOperationFailed
 
 - **Meldung**: `A database operation failed. Please search error to get more details.`
 
-- **Ursache:** Wenn die Fehlermeldung die Zeichenfolge „SqlException“ enthält, löst SQL-Datenbank einen Fehler aus, der angibt, dass ein bestimmter Vorgang fehlgeschlagen ist.
+- **Ursachen und Empfehlungen:** Dieser Fehler kann verschiedene Ursachen haben. In der Liste unten finden Sie mögliche Ursachenanalysen und Empfehlungen.
 
-- **Empfehlung**:  Wenn der SQL-Fehler nicht eindeutig ist, versuchen Sie, die Datenbank auf den aktuellen Kompatibilitätsgrad „150“ zu ändern. Es können SQL-Fehler der neuesten Version ausgelöst werden. Weitere Informationen finden Sie in der [Dokumentation](/sql/t-sql/statements/alter-database-transact-sql-compatibility-level#backwardCompat).
-
-    Um weitere Informationen zur Problembehandlung von SQL-Problemen zu erhalten, suchen Sie in [Datenbank-Engine-Fehler](https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors) nach dem SQL-Fehlercode. Wenn Sie weitere Hilfe benötigen, wenden Sie sich an den Azure SQL-Support.
-
-- **Ursache:** Wenn die Fehlermeldung die Zeichenfolge „PdwManagedToNativeInteropException“ enthält, wird dies normalerweise durch einen Konflikt zwischen den Spaltengrößen von Quelle und Senke verursacht.
-
-- **Empfehlung**:  Überprüfen Sie die Größe der Quell- und Senkenspalten. Wenn Sie weitere Hilfe benötigen, wenden Sie sich an den Azure SQL-Support.
-
-- **Ursache:** Wenn die Fehlermeldung die Zeichenfolge „InvalidOperationException“ enthält, wird der Fehler normalerweise durch ungültige Eingabedaten verursacht.
-
-- **Empfehlung**:  Wenn Sie ermitteln möchten, in welcher Zeile das Problem auftritt, aktivieren Sie die Fehlertoleranzfunktion für die Kopieraktivität, die problematische Zeilen zur weiteren Untersuchung in den Speicher umleiten kann. Weitere Informationen finden Sie unter [Fehlertoleranz der Kopieraktivität in Azure Data Factory](https://docs.microsoft.com/azure/data-factory/copy-activity-fault-tolerance).
+    | Ursachenanalyse                                               | Empfehlung                                               |
+    | :----------------------------------------------------------- | :----------------------------------------------------------- |
+    | Wenn die Fehlermeldung die Zeichenfolge „SqlException“ enthält, löst SQL-Datenbank einen Fehler aus, der angibt, dass für einen bestimmten Vorgang ein Fehler aufgetreten ist. | Wenn der SQL-Fehler nicht eindeutig ist, versuchen Sie, die Datenbank auf den aktuellen Kompatibilitätsgrad „150“ zu ändern. Es können SQL-Fehler der neuesten Version ausgelöst werden. Weitere Informationen finden Sie in der [Dokumentation](/sql/t-sql/statements/alter-database-transact-sql-compatibility-level#backwardCompat). <br/> Um weitere Informationen zur Problembehandlung von SQL-Problemen zu erhalten, suchen Sie in [Datenbank-Engine-Fehler](https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors) nach dem SQL-Fehlercode. Wenn Sie weitere Hilfe benötigen, wenden Sie sich an den Azure SQL-Support. |
+    | Wenn die Fehlermeldung die Zeichenfolge „PdwManagedToNativeInteropException“ enthält, wird der Fehler in der Regel durch einen Konflikt zwischen den Spaltengrößen von Quelle und Senke verursacht. | Überprüfen Sie die Größe der Quell- und Senkenspalten. Wenn Sie weitere Hilfe benötigen, wenden Sie sich an den Azure SQL-Support. |
+    | Wenn die Fehlermeldung die Zeichenfolge „InvalidOperationException“ enthält, wird der Fehler normalerweise durch ungültige Eingabedaten verursacht. | Wenn Sie ermitteln möchten, in welcher Zeile das Problem auftritt, aktivieren Sie die Fehlertoleranzfunktion für die Kopieraktivität, die problematische Zeilen zur weiteren Untersuchung in den Speicher umleiten kann. Weitere Informationen finden Sie unter [Fehlertoleranz der Kopieraktivität in Azure Data Factory](https://docs.microsoft.com/azure/data-factory/copy-activity-fault-tolerance). |
 
 
-### <a name="error-code--sqlunauthorizedaccess"></a>Fehlercode:  SqlUnauthorizedAccess
+### <a name="error-code-sqlunauthorizedaccess"></a>Fehlercode: SqlUnauthorizedAccess
 
 - **Meldung**: `Cannot connect to '%connectorName;'. Detail Message: '%message;'`
 
@@ -272,7 +247,7 @@ In diesem Artikel werden gängige Methoden zum Beheben von Problemen mit Azure D
 - **Empfehlung**:  Überprüfen Sie, ob das Anmeldekonto über ausreichende Berechtigungen für den Zugriff auf die SQL-Datenbank verfügt.
 
 
-### <a name="error-code--sqlopenconnectiontimeout"></a>Fehlercode:  SqlOpenConnectionTimeout
+### <a name="error-code-sqlopenconnectiontimeout"></a>Fehlercode: SqlOpenConnectionTimeout
 
 - **Meldung**: `Open connection to database timeout after '%timeoutValue;' seconds.`
 
@@ -281,7 +256,7 @@ In diesem Artikel werden gängige Methoden zum Beheben von Problemen mit Azure D
 - **Empfehlung**:  Wiederholen Sie den Vorgang, um die Verbindungszeichenfolge für den verknüpften Dienst mit einem größeren Timeoutwert für die Verbindung zu aktualisieren.
 
 
-### <a name="error-code--sqlautocreatetabletypemapfailed"></a>Fehlercode:  SqlAutoCreateTableTypeMapFailed
+### <a name="error-code-sqlautocreatetabletypemapfailed"></a>Fehlercode: SqlAutoCreateTableTypeMapFailed
 
 - **Meldung**: `Type '%dataType;' in source side cannot be mapped to a type that supported by sink side(column name:'%columnName;') in autocreate table.`
 
@@ -290,7 +265,7 @@ In diesem Artikel werden gängige Methoden zum Beheben von Problemen mit Azure D
 - **Empfehlung**:  Aktualisieren Sie den Spaltentyp in *mappings* (Zuordnungen), oder erstellen Sie manuell die Senkentabelle auf dem Zielserver.
 
 
-### <a name="error-code--sqldatatypenotsupported"></a>Fehlercode:  SqlDataTypeNotSupported
+### <a name="error-code-sqldatatypenotsupported"></a>Fehlercode: SqlDataTypeNotSupported
 
 - **Meldung**: `A database operation failed. Check the SQL errors.`
 
@@ -303,7 +278,7 @@ In diesem Artikel werden gängige Methoden zum Beheben von Problemen mit Azure D
 - **Empfehlung**:  Aktualisieren Sie den entsprechenden Spaltentyp in der Senkentabelle auf den Typ *datetime2*.
 
 
-### <a name="error-code--sqlinvaliddbstoredprocedure"></a>Fehlercode:  SqlInvalidDbStoredProcedure
+### <a name="error-code-sqlinvaliddbstoredprocedure"></a>Fehlercode: SqlInvalidDbStoredProcedure
 
 - **Meldung**: `The specified Stored Procedure is not valid. It could be caused by that the stored procedure doesn't return any data. Invalid Stored Procedure script: '%scriptName;'.`
 
@@ -312,7 +287,7 @@ In diesem Artikel werden gängige Methoden zum Beheben von Problemen mit Azure D
 - **Empfehlung**:  Überprüfen Sie die gespeicherte Prozedur mithilfe von SQL-Tools. Stellen Sie sicher, dass die gespeicherte Prozedur Daten zurückgeben kann.
 
 
-### <a name="error-code--sqlinvaliddbquerystring"></a>Fehlercode:  SqlInvalidDbQueryString
+### <a name="error-code-sqlinvaliddbquerystring"></a>Fehlercode: SqlInvalidDbQueryString
 
 - **Meldung**: `The specified SQL Query is not valid. It could be caused by that the query doesn't return any data. Invalid query: '%query;'`
 
@@ -321,7 +296,7 @@ In diesem Artikel werden gängige Methoden zum Beheben von Problemen mit Azure D
 - **Empfehlung**:  Überprüfen Sie die SQL-Abfrage mithilfe von SQL-Tools. Stellen Sie sicher, dass die Abfrage Daten zurückgeben kann.
 
 
-### <a name="error-code--sqlinvalidcolumnname"></a>Fehlercode:  SqlInvalidColumnName
+### <a name="error-code-sqlinvalidcolumnname"></a>Fehlercode: SqlInvalidColumnName
 
 - **Meldung**: `Column '%column;' does not exist in the table '%tableName;', ServerName: '%serverName;', DatabaseName: '%dbName;'.`
 
@@ -330,7 +305,7 @@ In diesem Artikel werden gängige Methoden zum Beheben von Problemen mit Azure D
 - **Empfehlung**:  Überprüfen Sie die Spalte in der Abfrage: *structure* (Struktur) im Dataset und *mappings* (Zuordnungen) in der Aktivität.
 
 
-### <a name="error-code--sqlbatchwritetimeout"></a>Fehlercode:  SqlBatchWriteTimeout
+### <a name="error-code-sqlbatchwritetimeout"></a>Fehlercode: SqlBatchWriteTimeout
 
 - **Meldung**: `Timeouts in SQL write operation.`
 
@@ -339,7 +314,7 @@ In diesem Artikel werden gängige Methoden zum Beheben von Problemen mit Azure D
 - **Empfehlung**:  Wiederholen Sie den Vorgang. Sollte das Problem weiterhin bestehen, wenden Sie sich an den Azure SQL-Support.
 
 
-### <a name="error-code--sqlbatchwritetransactionfailed"></a>Fehlercode:  SqlBatchWriteTransactionFailed
+### <a name="error-code-sqlbatchwritetransactionfailed"></a>Fehlercode: SqlBatchWriteTransactionFailed
 
 - **Meldung**: `SQL transaction commits failed.`
 
@@ -352,7 +327,7 @@ In diesem Artikel werden gängige Methoden zum Beheben von Problemen mit Azure D
 - **Empfehlung**:  Wiederholen Sie die Aktivität, und überprüfen Sie die Metriken der SQL-Datenbank.
 
 
-### <a name="error-code--sqlbulkcopyinvalidcolumnlength"></a>Fehlercode:  SqlBulkCopyInvalidColumnLength
+### <a name="error-code-sqlbulkcopyinvalidcolumnlength"></a>Fehlercode: SqlBulkCopyInvalidColumnLength
 
 - **Meldung**: `SQL Bulk Copy failed due to receive an invalid column length from the bcp client.`
 
@@ -361,7 +336,7 @@ In diesem Artikel werden gängige Methoden zum Beheben von Problemen mit Azure D
 - **Empfehlung**:  Um zu ermitteln, in welcher Zeile das Problem aufgetreten ist, aktivieren Sie die Funktion für Fehlertoleranz für die Kopieraktivität. Dadurch können problematische Zeilen zur weiteren Untersuchung an den Speicher umgeleitet werden. Weitere Informationen finden Sie unter [Fehlertoleranz der Kopieraktivität in Azure Data Factory](https://docs.microsoft.com/azure/data-factory/copy-activity-fault-tolerance).
 
 
-### <a name="error-code--sqlconnectionisclosed"></a>Fehlercode:  SqlConnectionIsClosed
+### <a name="error-code-sqlconnectionisclosed"></a>Fehlercode: SqlConnectionIsClosed
 
 - **Meldung**: `The connection is closed by SQL Database.`
 
@@ -480,7 +455,7 @@ In diesem Artikel werden gängige Methoden zum Beheben von Problemen mit Azure D
 
 ## <a name="azure-table-storage"></a>Azure Table Storage
 
-### <a name="error-code--azuretableduplicatecolumnsfromsource"></a>Fehlercode:  AzureTableDuplicateColumnsFromSource
+### <a name="error-code-azuretableduplicatecolumnsfromsource"></a>Fehlercode: AzureTableDuplicateColumnsFromSource
 
 - **Meldung**: `Duplicate columns with same name '%name;' are detected from source. This is NOT supported by Azure Table Storage sink.`
 
@@ -493,18 +468,18 @@ In diesem Artikel werden gängige Methoden zum Beheben von Problemen mit Azure D
 
 ## <a name="db2"></a>DB2
 
-### <a name="error-code--db2driverrunfailed"></a>Fehlercode:  DB2DriverRunFailed
+### <a name="error-code-db2driverrunfailed"></a>Fehlercode: DB2DriverRunFailed
 
 - **Meldung**: `Error thrown from driver. Sql code: '%code;'`
 
-- **Ursache:** Wenn die Fehlermeldung die Zeichenfolge „SQLSTATE=51002 SQLCODE=-805“ enthält, verwenden Sie den „Tipp“ in [Kopieren von Daten aus DB2 mithilfe von Azure Data Factory](https://docs.microsoft.com/azure/data-factory/connector-db2#linked-service-properties).
+- **Ursache:** Wenn die Fehlermeldung die Zeichenfolge „SQLSTATE=51002 SQLCODE=-805“ enthält, verwenden Sie den „Tipp“ unter [Eigenschaften des verknüpften Diensts](https://docs.microsoft.com/azure/data-factory/connector-db2#linked-service-properties).
 
 - **Empfehlung**:  Versuchen Sie, „NULLID“ in der `packageCollection`-Eigenschaft festzulegen.
 
 
 ## <a name="delimited-text-format"></a>Textformat mit Trennzeichen
 
-### <a name="error-code--delimitedtextcolumnnamenotallownull"></a>Fehlercode:  DelimitedTextColumnNameNotAllowNull
+### <a name="error-code-delimitedtextcolumnnamenotallownull"></a>Fehlercode: DelimitedTextColumnNameNotAllowNull
 
 - **Meldung**: `The name of column index %index; is empty. Make sure column name is properly specified in the header row.`
 
@@ -513,26 +488,22 @@ In diesem Artikel werden gängige Methoden zum Beheben von Problemen mit Azure D
 - **Empfehlung**:  Überprüfen Sie die erste Zeile, und korrigieren Sie den Wert, wenn ein leerer Wert vorhanden ist.
 
 
-### <a name="error-code--delimitedtextmorecolumnsthandefined"></a>Fehlercode:  DelimitedTextMoreColumnsThanDefined
+### <a name="error-code-delimitedtextmorecolumnsthandefined"></a>Fehlercode: DelimitedTextMoreColumnsThanDefined
 
 - **Meldung**: `Error found when processing '%function;' source '%name;' with row number %rowCount;: found more columns than expected column count: %expectedColumnCount;.`
 
-- **Ursache:** Die Spaltenanzahl der problematischen Zeile ist größer als die Spaltenanzahl der ersten Zeile. Dies kann durch ein Datenproblem oder falsche Einstellungen für Spaltentrennzeichen oder Anführungszeichen verursacht werden.
+- **Ursachen und Empfehlungen:** Dieser Fehler kann verschiedene Ursachen haben. In der Liste unten finden Sie mögliche Ursachenanalysen und Empfehlungen.
 
-- **Empfehlung**:  Rufen Sie die Zeilenanzahl aus der Fehlermeldung ab, überprüfen Sie die Spalte in der Zeile, und korrigieren Sie die Daten.
-
-- **Ursache:** Wenn die erwartete Spaltenanzahl in einer Fehlermeldung „1“ lautet, haben Sie möglicherweise falsche Komprimierungs- oder Formateinstellungen angegeben, sodass Azure Data Factory Ihre Dateien falsch analysiert hat.
-
-- **Empfehlung**:  Überprüfen Sie die Formateinstellungen, um sicherzustellen, dass sie mit Ihren Quelldateien übereinstimmen.
-
-- **Ursache:** Wenn Ihre Quelle ein Ordner ist, weisen die Dateien im angegebenen Ordner möglicherweise ein anderes Schema auf.
-
-- **Empfehlung**:  Stellen Sie sicher, dass die Dateien im angegebenen Ordner ein identisches Schema aufweisen.
+  | Ursachenanalyse                                               | Empfehlung                                               |
+  | :----------------------------------------------------------- | :----------------------------------------------------------- |
+  | Die Spaltenanzahl der problematischen Zeile ist größer als die Spaltenanzahl der ersten Zeile. Dies kann durch ein Datenproblem oder falsche Einstellungen für Spaltentrennzeichen oder Anführungszeichen verursacht werden. | Rufen Sie die Zeilenanzahl aus der Fehlermeldung ab, überprüfen Sie die Spalte in der Zeile, und korrigieren Sie die Daten. |
+  | Wenn die erwartete Spaltenanzahl in einer Fehlermeldung „1“ lautet, haben Sie möglicherweise falsche Komprimierungs- oder Formateinstellungen angegeben, sodass Azure Data Factory Ihre Dateien falsch analysiert hat. | Überprüfen Sie die Formateinstellungen, um sicherzustellen, dass sie mit Ihren Quelldateien übereinstimmen. |
+  | Wenn Ihre Quelle ein Ordner ist, weisen die Dateien im angegebenen Ordner möglicherweise ein anderes Schema auf. | Stellen Sie sicher, dass die Dateien im angegebenen Ordner ein identisches Schema aufweisen. |
 
 
 ## <a name="dynamics-365-common-data-service-and-dynamics-crm"></a>Dynamics 365, Common Data Service, Dynamics CRM
 
-### <a name="error-code--dynamicscreateserviceclienterror"></a>Fehlercode:  DynamicsCreateServiceClientError
+### <a name="error-code-dynamicscreateserviceclienterror"></a>Fehlercode: DynamicsCreateServiceClientError
 
 - **Meldung**: `This is a transient issue on Dynamics server side. Try to rerun the pipeline.`
 
@@ -550,7 +521,7 @@ In diesem Artikel werden gängige Methoden zum Beheben von Problemen mit Azure D
 - **Empfehlung**: Fügen Sie die Spalten auf der Registerkarte „Zuordnung“ manuell hinzu.
 
 
-### <a name="error-code--dynamicsmissingtargetformultitargetlookupfield"></a>Fehlercode:  DynamicsMissingTargetForMultiTargetLookupField
+### <a name="error-code-dynamicsmissingtargetformultitargetlookupfield"></a>Fehlercode: DynamicsMissingTargetForMultiTargetLookupField
 
 - **Meldung**: `Cannot find the target column for multi-target lookup field: '%fieldName;'.`
 
@@ -561,7 +532,7 @@ In diesem Artikel werden gängige Methoden zum Beheben von Problemen mit Azure D
   2. Fügen Sie die Zielspalte in der Spaltenzuordnung hinzu. Stellen Sie sicher, dass die Senkenspalte das Format *{fieldName}@EntityReference* aufweist.
 
 
-### <a name="error-code--dynamicsinvalidtargetformultitargetlookupfield"></a>Fehlercode:  DynamicsInvalidTargetForMultiTargetLookupField
+### <a name="error-code-dynamicsinvalidtargetformultitargetlookupfield"></a>Fehlercode: DynamicsInvalidTargetForMultiTargetLookupField
 
 - **Meldung**: `The provided target: '%targetName;' is not a valid target of field: '%fieldName;'. Valid targets are: '%validTargetNames;'`
 
@@ -570,7 +541,7 @@ In diesem Artikel werden gängige Methoden zum Beheben von Problemen mit Azure D
 - **Empfehlung**:  Geben Sie einen gültigen Entitätsnamen für das Nachschlagefeld mit mehreren Zielen an.
 
 
-### <a name="error-code--dynamicsinvalidtypeformultitargetlookupfield"></a>Fehlercode:  DynamicsInvalidTypeForMultiTargetLookupField
+### <a name="error-code-dynamicsinvalidtypeformultitargetlookupfield"></a>Fehlercode: DynamicsInvalidTypeForMultiTargetLookupField
 
 - **Meldung**: `The provided target type is not a valid string. Field: '%fieldName;'.`
 
@@ -579,18 +550,18 @@ In diesem Artikel werden gängige Methoden zum Beheben von Problemen mit Azure D
 - **Empfehlung**:  Geben Sie eine gültige Zeichenfolge in der Zielspalte für das Nachschlagen mit mehreren Zielen an.
 
 
-### <a name="error-code--dynamicsfailedtorequetserver"></a>Fehlercode:  DynamicsFailedToRequetServer
+### <a name="error-code-dynamicsfailedtorequetserver"></a>Fehlercode: DynamicsFailedToRequetServer
 
 - **Meldung**: `The Dynamics server or the network is experiencing issues. Check network connectivity or check Dynamics server log for more details.`
 
 - **Ursache:** Der Dynamics-Server ist instabil, es kann nicht darauf zugegriffen werden, oder im Netzwerk treten Probleme auf.
 
 - **Empfehlung**:  Überprüfen Sie die Netzwerkkonnektivität, oder suchen Sie im Dynamics-Serverprotokoll nach weiteren Details. Wenden Sie sich an den Dynamics-Support, um weitere Unterstützung zu erhalten.
-    
+  
 
 ## <a name="ftp"></a>FTP
 
-### <a name="error-code--ftpfailedtoconnecttoftpserver"></a>Fehlercode:  FtpFailedToConnectToFtpServer
+### <a name="error-code-ftpfailedtoconnecttoftpserver"></a>Fehlercode: FtpFailedToConnectToFtpServer
 
 - **Meldung**: `Failed to connect to FTP server. Please make sure the provided server information is correct, and try again.`
 
@@ -601,7 +572,7 @@ In diesem Artikel werden gängige Methoden zum Beheben von Problemen mit Azure D
 
 ## <a name="http"></a>HTTP
 
-### <a name="error-code--httpfilefailedtoread"></a>Fehlercode:  HttpFileFailedToRead
+### <a name="error-code-httpfilefailedtoread"></a>Fehlercode: HttpFileFailedToRead
 
 - **Meldung**: `Failed to read data from http server. Check the error from http server：%message;`
 
@@ -627,31 +598,20 @@ In diesem Artikel werden gängige Methoden zum Beheben von Problemen mit Azure D
 
 ## <a name="orc-format"></a>ORC-Format
 
-### <a name="error-code--orcjavainvocationexception"></a>Fehlercode:  OrcJavaInvocationException
+### <a name="error-code-orcjavainvocationexception"></a>Fehlercode: OrcJavaInvocationException
 
 - **Meldung**: `An error occurred when invoking Java, message: %javaException;.`
+- **Ursachen und Empfehlungen:** Dieser Fehler kann verschiedene Ursachen haben. In der Liste unten finden Sie mögliche Ursachenanalysen und Empfehlungen.
 
-- **Ursache:** Wenn die Fehlermeldung die Zeichenfolge „java.lang.OutOfMemory“, „Java heap space“ und „doubleCapacity“ enthält, liegt normalerweise ein Speicherverwaltungsproblem in der alten Version von Integration Runtime vor.
+    | Ursachenanalyse                                               | Empfehlung                                               |
+    | :----------------------------------------------------------- | :----------------------------------------------------------- |
+    | Wenn die Fehlermeldung die Zeichenfolge „java.lang.OutOfMemory“, „Java heap space“ und „doubleCapacity“ enthält, liegt normalerweise ein Speicherverwaltungsproblem in einer alten Version der Integration Runtime vor. | Wenn Sie die selbstgehostete Integration Runtime verwenden, empfiehlt es sich, ein Upgrade auf die neueste Version durchzuführen. |
+    | Wenn die Fehlermeldung die Zeichenfolge „java.lang.OutOfMemory“ enthält, verfügt die Integration Runtime nicht über genügend Ressourcen zum Verarbeiten der Dateien. | Begrenzen Sie die gleichzeitigen Ausführungen auf die Integration Runtime. Skalieren Sie für „Selbstgehostete IR“ auf einen leistungsfähigen Computer mit einem Arbeitsspeicher von mindestens 8 GB hoch. |
+    |Wenn die Fehlermeldung die Zeichenfolge „NullPointerReference“ enthält, ist die Ursache möglicherweise ein vorübergehender Fehler. | Wiederholen Sie den Vorgang. Wenden Sie sich an den Support, wenn das Problem weiterhin besteht. |
+    | Wenn die Fehlermeldung die Zeichenfolge „BufferOverflowException“ enthält, ist die Ursache möglicherweise ein vorübergehender Fehler. | Wiederholen Sie den Vorgang. Wenden Sie sich an den Support, wenn das Problem weiterhin besteht. |
+    | Wenn die Fehlermeldung die Zeichenfolge „java.lang.ClassCastException:org.apache.hadoop.hive.serde2.io.HiveCharWritable cannot be cast to org.apache.hadoop.io.Text“ enthält, ist die Ursache möglicherweise ein Typkonvertierungsproblem in der Java-Runtime. Normalerweise bedeutet dies, dass die Quelldaten in der Java-Laufzeit nicht ordnungsgemäß verarbeitet werden können. | Dies ist ein Datenproblem. Versuchen Sie, „string“ anstelle von „char“ oder „varchar“ in den Daten im ORC-Format zu verwenden. |
 
-- **Empfehlung**:  Wenn Sie die selbstgehostete Integration Runtime verwenden, empfiehlt es sich, ein Upgrade auf die neueste Version durchzuführen.
-
-- **Ursache:** Wenn die Fehlermeldung die Zeichenfolge „java.lang.OutOfMemory“ enthält, verfügt die Integration Runtime nicht über genügend Ressourcen zum Verarbeiten der Dateien.
-
-- **Empfehlung**:  Begrenzen Sie die gleichzeitigen Ausführungen auf die Integration Runtime. Skalieren Sie für „Selbstgehostete IR“ auf einen leistungsfähigen Computer mit einem Arbeitsspeicher von mindestens 8 GB hoch.
-
-- **Ursache:** Wenn die Fehlermeldung die Zeichenfolge „NullPointerReference“ enthält, ist die Ursache möglicherweise ein vorübergehender Fehler.
-
-- **Empfehlung**:  Wiederholen Sie den Vorgang. Wenden Sie sich an den Support, wenn das Problem weiterhin besteht.
-
-- **Ursache:** Wenn die Fehlermeldung die Zeichenfolge „BufferOverflowException“ enthält, ist die Ursache möglicherweise ein vorübergehender Fehler.
-
-- **Empfehlung**:  Wiederholen Sie den Vorgang. Wenden Sie sich an den Support, wenn das Problem weiterhin besteht.
-
-- **Ursache:** Wenn die Fehlermeldung die Zeichenfolge „java.lang.ClassCastException:org.apache.hadoop.hive.serde2.io.HiveCharWritable cannot be cast to org.apache.hadoop.io.Text“ enthält, ist die Ursache möglicherweise ein Typkonvertierungsproblem in Java Runtime. Normalerweise bedeutet dies, dass die Quelldaten in der Java-Laufzeit nicht ordnungsgemäß verarbeitet werden können.
-
-- **Empfehlung**:  Dies ist ein Datenproblem. Versuchen Sie, „string“ anstelle von „char“ oder „varchar“ in den Daten im ORC-Format zu verwenden.
-
-### <a name="error-code--orcdatetimeexceedlimit"></a>Fehlercode:  OrcDateTimeExceedLimit
+### <a name="error-code-orcdatetimeexceedlimit"></a>Fehlercode: OrcDateTimeExceedLimit
 
 - **Meldung**: `The Ticks value '%ticks;' for the datetime column must be between valid datetime ticks range -621355968000000000 and 2534022144000000000.`
 
@@ -662,24 +622,19 @@ In diesem Artikel werden gängige Methoden zum Beheben von Problemen mit Azure D
 
 ## <a name="parquet-format"></a>Parquet-Format
 
-### <a name="error-code--parquetjavainvocationexception"></a>Fehlercode:  ParquetJavaInvocationException
+### <a name="error-code-parquetjavainvocationexception"></a>Fehlercode: ParquetJavaInvocationException
 
 - **Meldung**: `An error occurred when invoking java, message: %javaException;.`
 
-- **Ursache:** Wenn die Fehlermeldung die Zeichenfolge „java.lang.OutOfMemory“, „Java heap space“ und „doubleCapacity“ enthält, liegt normalerweise ein Speicherverwaltungsproblem in der alten Version von Integration Runtime vor.
+- **Ursachen und Empfehlungen:** Dieser Fehler kann verschiedene Ursachen haben. In der Liste unten finden Sie mögliche Ursachenanalysen und Empfehlungen.
 
-- **Empfehlung**:  Wenn Sie selbstgehostete IR verwenden und die Version älter als 3.20.7159.1 ist, wird ein Upgrade auf die neueste Version empfohlen.
+    | Ursachenanalyse                                               | Empfehlung                                               |
+    | :----------------------------------------------------------- | :----------------------------------------------------------- |
+    | Wenn die Fehlermeldung die Zeichenfolge „java.lang.OutOfMemory“, „Java heap space“ und „doubleCapacity“ enthält, liegt normalerweise ein Speicherverwaltungsproblem in einer alten Version der Integration Runtime vor. | Wenn Sie selbstgehostete IR verwenden und die Version älter als 3.20.7159.1 ist, wird ein Upgrade auf die neueste Version empfohlen. |
+    | Wenn die Fehlermeldung die Zeichenfolge „java.lang.OutOfMemory“ enthält, verfügt die Integration Runtime nicht über genügend Ressourcen zum Verarbeiten der Dateien. | Begrenzen Sie die gleichzeitigen Ausführungen auf die Integration Runtime. Skalieren Sie für „Selbstgehostete IR“ auf einen leistungsfähigen Computer mit einem Arbeitsspeicher von mindestens 8 GB hoch. |
+    | Wenn die Fehlermeldung die Zeichenfolge „NullPointerReference“ enthält, handelt es sich möglicherweise um einem vorübergehenden Fehler. | Wiederholen Sie den Vorgang. Wenden Sie sich an den Support, wenn das Problem weiterhin besteht. |
 
-- **Ursache:** Wenn die Fehlermeldung die Zeichenfolge „java.lang.OutOfMemory“ enthält, verfügt die Integration Runtime nicht über genügend Ressourcen zum Verarbeiten der Dateien.
-
-- **Empfehlung**:  Begrenzen Sie die gleichzeitigen Ausführungen auf die Integration Runtime. Skalieren Sie für „Selbstgehostete IR“ auf einen leistungsfähigen Computer mit einem Arbeitsspeicher von mindestens 8 GB hoch.
-
-- **Ursache:** Wenn die Fehlermeldung die Zeichenfolge „NullPointerReference“ enthält, handelt es sich möglicherweise um einem vorübergehenden Fehler.
-
-- **Empfehlung**:  Wiederholen Sie den Vorgang. Wenden Sie sich an den Support, wenn das Problem weiterhin besteht.
-
-
-### <a name="error-code--parquetinvalidfile"></a>Fehlercode:  ParquetInvalidFile
+### <a name="error-code-parquetinvalidfile"></a>Fehlercode: ParquetInvalidFile
 
 - **Meldung**: `File is not a valid Parquet file.`
 
@@ -688,7 +643,7 @@ In diesem Artikel werden gängige Methoden zum Beheben von Problemen mit Azure D
 - **Empfehlung**:  Überprüfen Sie, ob die Eingabe eine gültige Parquet-Datei ist.
 
 
-### <a name="error-code--parquetnotsupportedtype"></a>Fehlercode:  ParquetNotSupportedType
+### <a name="error-code-parquetnotsupportedtype"></a>Fehlercode: ParquetNotSupportedType
 
 - **Meldung**: `Unsupported Parquet type. PrimitiveType: %primitiveType; OriginalType: %originalType;.`
 
@@ -697,7 +652,7 @@ In diesem Artikel werden gängige Methoden zum Beheben von Problemen mit Azure D
 - **Empfehlung**:  Überprüfen Sie die Quelldaten erneut anhand von [Von der Copy-Aktivität unterstützte Dateiformate und Komprimierungscodecs in Azure Data Factory](https://docs.microsoft.com/azure/data-factory/supported-file-formats-and-compression-codecs).
 
 
-### <a name="error-code--parquetmisseddecimalprecisionscale"></a>Fehlercode:  ParquetMissedDecimalPrecisionScale
+### <a name="error-code-parquetmisseddecimalprecisionscale"></a>Fehlercode: ParquetMissedDecimalPrecisionScale
 
 - **Meldung**: `Decimal Precision or Scale information is not found in schema for column: %column;.`
 
@@ -706,7 +661,7 @@ In diesem Artikel werden gängige Methoden zum Beheben von Problemen mit Azure D
 - **Empfehlung**:  Die Quelle gibt nicht die richtigen Genauigkeits- und Dezimalstelleninformationen zurück. Überprüfen Sie die Problemspalte auf diese Informationen.
 
 
-### <a name="error-code--parquetinvaliddecimalprecisionscale"></a>Fehlercode:  ParquetInvalidDecimalPrecisionScale
+### <a name="error-code-parquetinvaliddecimalprecisionscale"></a>Fehlercode: ParquetInvalidDecimalPrecisionScale
 
 - **Meldung**: `Invalid Decimal Precision or Scale. Precision: %precision; Scale: %scale;.`
 
@@ -715,7 +670,7 @@ In diesem Artikel werden gängige Methoden zum Beheben von Problemen mit Azure D
 - **Empfehlung**:  Überprüfen Sie die Problemspalte auf Genauigkeit und Dezimalstellen.
 
 
-### <a name="error-code--parquetcolumnnotfound"></a>Fehlercode:  ParquetColumnNotFound
+### <a name="error-code-parquetcolumnnotfound"></a>Fehlercode: ParquetColumnNotFound
 
 - **Meldung**: `Column %column; does not exist in Parquet file.`
 
@@ -724,7 +679,7 @@ In diesem Artikel werden gängige Methoden zum Beheben von Problemen mit Azure D
 - **Empfehlung**:  Überprüfen Sie die Zuordnungen in der Aktivität. Stellen Sie sicher, dass die Quellspalte der richtigen Senkenspalte zugeordnet werden kann.
 
 
-### <a name="error-code--parquetinvaliddataformat"></a>Fehlercode:  ParquetInvalidDataFormat
+### <a name="error-code-parquetinvaliddataformat"></a>Fehlercode: ParquetInvalidDataFormat
 
 - **Meldung**: `Incorrect format of %srcValue; for converting to %dstType;.`
 
@@ -733,7 +688,7 @@ In diesem Artikel werden gängige Methoden zum Beheben von Problemen mit Azure D
 - **Empfehlung**:  Überprüfen Sie die Quelldaten erneut, oder geben Sie den richtigen Datentyp für diese Spalte in der Spaltenzuordnung der Kopieraktivität an. Weitere Informationen finden Sie unter [Von der Copy-Aktivität unterstützte Dateiformate und Komprimierungscodecs in Azure Data Factory](https://docs.microsoft.com/azure/data-factory/supported-file-formats-and-compression-codecs).
 
 
-### <a name="error-code--parquetdatacountnotmatchcolumncount"></a>Fehlercode:  ParquetDataCountNotMatchColumnCount
+### <a name="error-code-parquetdatacountnotmatchcolumncount"></a>Fehlercode: ParquetDataCountNotMatchColumnCount
 
 - **Meldung**: `The data count in a row '%sourceColumnCount;' does not match the column count '%sinkColumnCount;' in given schema.`
 
@@ -742,7 +697,7 @@ In diesem Artikel werden gängige Methoden zum Beheben von Problemen mit Azure D
 - **Empfehlung**:  Überprüfen Sie erneut, ob die Anzahl der Quellspalten mit der Anzahl der Senkenspalten in „mapping“ übereinstimmt.
 
 
-### <a name="error-code--parquetdatatypenotmatchcolumntype"></a>Fehlercode:  ParquetDataTypeNotMatchColumnType
+### <a name="error-code-parquetdatatypenotmatchcolumntype"></a>Fehlercode: ParquetDataTypeNotMatchColumnType
 
 - **Meldung**: `The data type %srcType; is not match given column type %dstType; at column '%columnIndex;'.`
 
@@ -751,7 +706,7 @@ In diesem Artikel werden gängige Methoden zum Beheben von Problemen mit Azure D
 - **Empfehlung**:  Geben Sie in „mapping.sink“ einen richtigen Typ an.
 
 
-### <a name="error-code--parquetbridgeinvaliddata"></a>Fehlercode:  ParquetBridgeInvalidData
+### <a name="error-code-parquetbridgeinvaliddata"></a>Fehlercode: ParquetBridgeInvalidData
 
 - **Meldung**: `%message;`
 
@@ -760,7 +715,7 @@ In diesem Artikel werden gängige Methoden zum Beheben von Problemen mit Azure D
 - **Empfehlung**:  Wiederholen Sie den Vorgang. Wenden Sie sich an uns, wenn das Problem weiterhin besteht.
 
 
-### <a name="error-code--parquetunsupportedinterpretation"></a>Fehlercode:  ParquetUnsupportedInterpretation
+### <a name="error-code-parquetunsupportedinterpretation"></a>Fehlercode: ParquetUnsupportedInterpretation
 
 - **Meldung**: `The given interpretation '%interpretation;' of Parquet format is not supported.`
 
@@ -769,7 +724,7 @@ In diesem Artikel werden gängige Methoden zum Beheben von Problemen mit Azure D
 - **Empfehlung**:  „ParquetInterpretFor“ sollte nicht „sparkSql“ sein.
 
 
-### <a name="error-code--parquetunsupportfilelevelcompressionoption"></a>Fehlercode:  ParquetUnsupportFileLevelCompressionOption
+### <a name="error-code-parquetunsupportfilelevelcompressionoption"></a>Fehlercode: ParquetUnsupportFileLevelCompressionOption
 
 - **Meldung**: `File level compression is not supported for Parquet.`
 
@@ -778,7 +733,7 @@ In diesem Artikel werden gängige Methoden zum Beheben von Problemen mit Azure D
 - **Empfehlung**:  Entfernen Sie „CompressionType“ in der Nutzlast.
 
 
-### <a name="error-code--usererrorjniexception"></a>Fehlercode:  UserErrorJniException
+### <a name="error-code-usererrorjniexception"></a>Fehlercode: UserErrorJniException
 
 - **Meldung**: `Cannot create JVM: JNI return code [-6][JNI call failed: Invalid arguments.]`
 
@@ -818,7 +773,7 @@ In diesem Artikel werden gängige Methoden zum Beheben von Problemen mit Azure D
 
 ## <a name="rest"></a>REST
 
-### <a name="error-code--restsinkcallfailed"></a>Fehlercode:  RestSinkCallFailed
+### <a name="error-code-restsinkcallfailed"></a>Fehlercode: RestSinkCallFailed
 
 - **Meldung**: `Rest Endpoint responded with Failure from server. Check the error from server:%message;`
 
@@ -850,7 +805,7 @@ In diesem Artikel werden gängige Methoden zum Beheben von Problemen mit Azure D
 
 ## <a name="sftp"></a>SFTP
 
-#### <a name="error-code--sftpoperationfail"></a>Fehlercode:  SftpOperationFail
+#### <a name="error-code-sftpoperationfail"></a>Fehlercode: SftpOperationFail
 
 - **Meldung**: `Failed to '%operation;'. Check detailed error from SFTP.`
 
@@ -859,7 +814,7 @@ In diesem Artikel werden gängige Methoden zum Beheben von Problemen mit Azure D
 - **Empfehlung**:  Überprüfung Sie die Fehlerdetails aus SFTP.
 
 
-### <a name="error-code--sftprenameoperationfail"></a>Fehlercode:  SftpRenameOperationFail
+### <a name="error-code-sftprenameoperationfail"></a>Fehlercode: SftpRenameOperationFail
 
 - **Meldung**: `Failed to rename the temp file. Your SFTP server doesn't support renaming temp file, set "useTempFileRename" as false in copy sink to disable uploading to temp file.`
 
@@ -868,7 +823,7 @@ In diesem Artikel werden gängige Methoden zum Beheben von Problemen mit Azure D
 - **Empfehlung**:  Legen Sie „useTempFileRename“ in der Kopiersenke auf „false“ fest, um das Hochladen in die temporäre Datei zu deaktivieren.
 
 
-### <a name="error-code--sftpinvalidsftpcredential"></a>Fehlercode:  SftpInvalidSftpCredential
+### <a name="error-code-sftpinvalidsftpcredential"></a>Fehlercode: SftpInvalidSftpCredential
 
 - **Meldung**: `Invalid SFTP credential provided for '%type;' authentication type.`
 
@@ -932,11 +887,11 @@ In diesem Artikel werden gängige Methoden zum Beheben von Problemen mit Azure D
 - **Lösung:** Um zu ermitteln, ob die Spalte „accmngr“ vorhanden ist, überprüfen Sie die Datasetkonfiguration erneut, indem Sie die Zieldatasetspalte zuordnen.
 
 
-### <a name="error-code--sftpfailedtoconnecttosftpserver"></a>Fehlercode:  SftpFailedToConnectToSftpServer
+### <a name="error-code-sftpfailedtoconnecttosftpserver"></a>Fehlercode: SftpFailedToConnectToSftpServer
 
 - **Meldung**: `Failed to connect to SFTP server '%server;'.`
 
-- **Ursache:** Wenn die Fehlermeldung die Zeichenfolge „Socket read operation has timed out after 30000 milliseconds“ enthält, ist eine mögliche Ursache, dass ein falscher Typ von verknüpftem Dienst für den SFTP-Server verwendet wird. Beispielsweise wird mit einem verknüpften FTP-Dienst versucht, eine Verbindung mit dem SFTP-Server herzustellen.
+- **Ursache:** Wenn die Fehlermeldung die Zeichenfolge „Socket read operation has timed out after 30,000 milliseconds“ enthält, ist eine mögliche Ursache, dass ein falscher Typ von verknüpftem Dienst für den SFTP-Server verwendet wird. Beispielsweise wird mit einem verknüpften FTP-Dienst versucht, eine Verbindung mit dem SFTP-Server herzustellen.
 
 - **Empfehlung**:  Überprüfen Sie den Port des Zielservers. Standardmäßig verwendet SFTP Port 22.
 
@@ -953,7 +908,7 @@ In diesem Artikel werden gängige Methoden zum Beheben von Problemen mit Azure D
 
 ## <a name="sharepoint-online-list"></a>SharePoint Online-Liste
 
-### <a name="error-code--sharepointonlineauthfailed"></a>Fehlercode:  SharePointOnlineAuthFailed
+### <a name="error-code-sharepointonlineauthfailed"></a>Fehlercode: SharePointOnlineAuthFailed
 
 - **Meldung**: `The access token generated failed, status code: %code;, error message: %message;.`
 
@@ -964,7 +919,7 @@ In diesem Artikel werden gängige Methoden zum Beheben von Problemen mit Azure D
 
 ## <a name="xml-format"></a>XML-Format
 
-### <a name="error-code--xmlsinknotsupported"></a>Fehlercode:  XmlSinkNotSupported
+### <a name="error-code-xmlsinknotsupported"></a>Fehlercode: XmlSinkNotSupported
 
 - **Meldung**: `Write data in XML format is not supported yet, choose a different format!`
 
@@ -973,7 +928,7 @@ In diesem Artikel werden gängige Methoden zum Beheben von Problemen mit Azure D
 - **Empfehlung**:  Verwenden Sie ein Dataset in einem anderen Format als das Senkendataset.
 
 
-### <a name="error-code--xmlattributecolumnnameconflict"></a>Fehlercode:  XmlAttributeColumnNameConflict
+### <a name="error-code-xmlattributecolumnnameconflict"></a>Fehlercode: XmlAttributeColumnNameConflict
 
 - **Meldung**: `Column names %attrNames;' for attributes of element '%element;' conflict with that for corresponding child elements, and the attribute prefix used is '%prefix;'.`
 
@@ -982,7 +937,7 @@ In diesem Artikel werden gängige Methoden zum Beheben von Problemen mit Azure D
 - **Empfehlung**:  Legen Sie einen anderen Wert für die Eigenschaft „attributePrefix“ fest.
 
 
-### <a name="error-code--xmlvaluecolumnnameconflict"></a>Fehlercode:  XmlValueColumnNameConflict
+### <a name="error-code-xmlvaluecolumnnameconflict"></a>Fehlercode: XmlValueColumnNameConflict
 
 - **Meldung**: `Column name for the value of element '%element;' is '%columnName;' and it conflicts with the child element having the same name.`
 
@@ -991,7 +946,7 @@ In diesem Artikel werden gängige Methoden zum Beheben von Problemen mit Azure D
 - **Empfehlung**:  Legen Sie einen anderen Wert für die Eigenschaft „valueColumn“ fest.
 
 
-### <a name="error-code--xmlinvalid"></a>Fehlercode:  XmlInvalid
+### <a name="error-code-xmlinvalid"></a>Fehlercode: XmlInvalid
 
 - **Meldung**: `Input XML file '%file;' is invalid with parsing error '%error;'.`
 
@@ -1002,7 +957,7 @@ In diesem Artikel werden gängige Methoden zum Beheben von Problemen mit Azure D
 
 ## <a name="general-copy-activity-error"></a>Fehler bei allgemeiner Kopieraktivität
 
-### <a name="error-code--jrenotfound"></a>Fehlercode:  JreNotFound
+### <a name="error-code-jrenotfound"></a>Fehlercode: JreNotFound
 
 - **Meldung**: `Java Runtime Environment cannot be found on the Self-hosted Integration Runtime machine. It is required for parsing or writing to Parquet/ORC files. Make sure Java Runtime Environment has been installed on the Self-hosted Integration Runtime machine.`
 
@@ -1011,7 +966,7 @@ In diesem Artikel werden gängige Methoden zum Beheben von Problemen mit Azure D
 - **Empfehlung**:  Überprüfen Sie Ihre Integration Runtime-Umgebung. Informationen dazu finden Sie unter [Verwenden einer selbstgehosteten Integration Runtime](https://docs.microsoft.com/azure/data-factory/format-parquet#using-self-hosted-integration-runtime).
 
 
-### <a name="error-code--wildcardpathsinknotsupported"></a>Fehlercode:  WildcardPathSinkNotSupported
+### <a name="error-code-wildcardpathsinknotsupported"></a>Fehlercode: WildcardPathSinkNotSupported
 
 - **Meldung**: `Wildcard in path is not supported in sink dataset. Fix the path: '%setting;'.`
 

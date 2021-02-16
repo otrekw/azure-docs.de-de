@@ -8,14 +8,14 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/28/2021
-ms.openlocfilehash: ade5880a6b06f448df23eb77d81201a521f1d240
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: 5fc47599d09e5be60311dbda15868d87de4d91d2
+ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99430044"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99509383"
 ---
-# <a name="create-a-search-indexer"></a>Erstellen eines Suchindexers
+# <a name="creating-indexers-in-azure-cognitive-search"></a>Erstellen von Indexern in Azure Cognitive Search
 
 Ein Suchindexer bietet einen automatisierten Workflow, um Dokumente und Inhalte aus einer externen Datenquelle in einen Suchindex für Ihren Suchdienst zu übertragen. In seiner ursprünglichen Form extrahiert er Text und Metadaten aus einer Azure-Datenquelle, serialisiert Dokumente in JSON und übergibt die resultierenden Dokumente zur Indizierung an eine Suchmaschine. Inzwischen unterstützt er auch die [KI-Anreicherung](cognitive-search-concept-intro.md) für eine eingehende Inhaltsverarbeitung. 
 
@@ -99,7 +99,7 @@ Der folgende Screenshot zeigt, wo sich diese Features im Portal befinden:
 
 ### <a name="use-a-rest-client"></a>Verwenden eines REST-Clients
 
-Sowohl Postman als auch Visual Studio Code (mit einer Erweiterung für Azure Cognitive Search) kann als Indexerclient fungieren. Mit beiden Tools können Sie eine Verbindung mit Ihrem Suchdienst herstellen und Anforderungen zum Erstellen von Indexern und anderen Objekte senden. Die Objekterstellung mithilfe von REST-Clients wird in zahlreichen Tutorials und Beispielen veranschaulicht. 
+Sowohl Postman als auch Visual Studio Code (mit einer Erweiterung für Azure Cognitive Search) kann als Indexerclient fungieren. Mit beiden Tools können Sie eine Verbindung mit Ihrem Suchdienst herstellen und die Anforderung [Indexer erstellen (REST)](/rest/api/searchservice/create-indexer) senden. Die Objekterstellung mithilfe von REST-Clients wird in zahlreichen Tutorials und Beispielen veranschaulicht. 
 
 Weitere Informationen zum jeweiligen Client finden Sie in den folgenden Artikeln:
 
@@ -110,7 +110,7 @@ Hilfreiche Informationen zum Formulieren von Indexeranforderungen finden Sie unt
 
 ### <a name="use-an-sdk"></a>Verwenden eines SDK
 
-Für Cognitive Search werden von den Azure-SDKs allgemein verfügbare Features implementiert. Daher kann jedes der SDKs für die Erstellung indexerbezogener Objekte verwendet werden. Von allen wird ein Suchindexerclient (**SearchIndexerClient**) implementiert, der Methoden zum Erstellen von Indexern und zugehörigen Objekten (einschließlich Skillsets) bereitstellt.
+Für Cognitive Search werden von den Azure-SDKs allgemein verfügbare Features implementiert. Daher kann jedes der SDKs für die Erstellung indexerbezogener Objekte verwendet werden. Alle stellen die Klasse **SearchIndexerClient** bereit, die über Methoden zum Erstellen von Indexern und zugehörigen Objekten (einschließlich Skillsets) verfügt.
 
 | Azure SDK | Client | Beispiele |
 |-----------|--------|----------|

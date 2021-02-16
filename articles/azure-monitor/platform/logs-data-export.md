@@ -6,13 +6,13 @@ ms.topic: conceptual
 ms.custom: references_regions, devx-track-azurecli
 author: bwren
 ms.author: bwren
-ms.date: 10/14/2020
-ms.openlocfilehash: bc369b072f90e675cf882d52b2edae30530f1c18
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.date: 02/07/2021
+ms.openlocfilehash: 03061f71ee0cceaa39c7ab9b258f9d3a0a84f1be
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98895967"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99807885"
 ---
 # <a name="log-analytics-workspace-data-export-in-azure-monitor-preview"></a>Datenexport im Log Analytics-Arbeitsbereich in Azure Monitor (Vorschau)
 Der Datenexport im Log Analytics-Arbeitsbereich in Azure Monitor ermöglicht es Ihnen, Daten aus ausgewählten Tabellen in Ihrem Log Analytics-Arbeitsbereich bei der Sammlung fortlaufend in ein Azure Storage-Konto oder in Azure Event Hubs zu exportieren. In diesem Artikel werden dieses Feature und die Schritte zum Konfigurieren des Datenexports in Ihren Arbeitsbereichen ausführlich beschrieben.
@@ -29,7 +29,6 @@ Alle Daten aus eingeschlossenen Tabellen werden ohne Filter exportiert. Wenn Sie
 Mit dem Datenexport im Log Analytics-Arbeitsbereich werden kontinuierlich Daten aus einem Log Analytics Arbeitsbereich exportiert. Darüber hinaus gibt es die folgenden Möglichkeiten zum Exportieren von Daten für bestimmte Szenarien:
 
 - Geplanter Export aus einer Protokollabfrage mithilfe einer Logik-App. Dies ähnelt dem Datenexportfeature, ermöglicht Ihnen aber das Senden von gefilterten oder aggregierten Daten an Azure Storage. Diese Methode unterliegt jedoch [Beschränkungen für Protokollabfragen](../service-limits.md#log-analytics-workspaces). Informationen dazu finden Sie unter [Archivieren von Daten aus dem Log Analytics-Arbeitsbereich in Azure Storage mithilfe von Logic Apps](logs-export-logic-app.md).
-- Einmaliger Export mit einer Logik-App. Informationen hierzu finden Sie unter [Connector für Azure Monitor-Protokolle für Azure Logic Apps und Power Automate](logicapp-flow-connector.md).
 - Einmaliger Export auf lokalen Computer mit einem PowerShell-Skript. Informationen hierzu finden Sie unter [Invoke-AzOperationalInsightsQueryExport](https://www.powershellgallery.com/packages/Invoke-AzOperationalInsightsQueryExport).
 
 
@@ -47,16 +46,7 @@ Mit dem Datenexport im Log Analytics-Arbeitsbereich werden kontinuierlich Daten 
 - Sie können zwei Exportregeln in einem Arbeitsbereich erstellen: eine Regel für den Event Hub und eine Regel für das Speicherkonto.
 - Das Zielspeicherkonto oder der Ziel-Event Hub muss sich in derselben Region wie der Log Analytics-Arbeitsbereich befinden.
 - Die Namen der zu exportierenden Tabellen dürfen bei einem Speicherkonto nicht länger als 60 Zeichen und bei einem Event Hub nicht länger als 47 Zeichen sein. Tabellen mit längeren Namen werden nicht exportiert.
-
-> [!NOTE]
-> Der Log Analytics-Datenexport schreibt Daten als Anfügeblob, das sich zurzeit für Azure Data Lake Storage Gen2 in der Vorschauphase befindet. Sie müssen eine Supportanfrage erstellen, bevor Sie den Export in diesen Speicher konfigurieren. Machen Sie in der Anfrage die folgenden Angaben.
-> - Problemtyp: Technisch
-> - Abonnement: Ihr Abonnement
-> - Dienst: Data Lake Storage Gen2
-> - Ressource: Der Name Ihrer Ressource
-> - Zusammenfassung: Anforderung einer Abonnementregistrierung zum Akzeptieren von Daten aus dem Log Analytics-Datenexport.
-> - Problemtyp: Konnektivität
-> - Problemuntertyp: Konnektivitätsproblem
+- Die Unterstützung zum Anfügen von Blobs für Azure Data Lake Storage ist jetzt in der [eingeschränkten Public Preview](https://azure.microsoft.com/updates/append-blob-support-for-azure-data-lake-storage-preview/) verfügbar.
 
 ## <a name="data-completeness"></a>Datenvollständigkeit
 Der Datenexport versucht bis zu 30 Minuten lang, Daten zu senden, wenn das Ziel nicht verfügbar ist. Wenn es nach 30 Minuten immer noch nicht verfügbar ist, werden die Daten verworfen, bis das Ziel wieder verfügbar ist.
@@ -76,6 +66,9 @@ Das Speicherkonto-Datenformat ist [JSON Lines](./resource-logs-blob-format.md). 
 [![Speicherbeispieldaten](media/logs-data-export/storage-data.png)](media/logs-data-export/storage-data.png#lightbox)
 
 Durch den Log Analytics-Datenexport können Anfügeblobs in unveränderliche Speicherkonten geschrieben werden, wenn bei zeitbasierten Aufbewahrungsrichtlinien die Einstellung *allowProtectedAppendWrites* aktiviert ist. Dadurch wird das Schreiben neuer Blöcke in ein Anfügeblob ermöglicht, wobei gleichzeitig der Unveränderlichkeitsschutz und die Konformität aufrechterhalten bleiben. Weitere Informationen finden Sie unter [Zulassen von Schreibvorgängen in geschützten Anfügeblobs](../../storage/blobs/storage-blob-immutable-storage.md#allow-protected-append-blobs-writes).
+
+> [!NOTE]
+> Die Unterstützung zum Anfügen von Blobs für Azure Data Lake Storage ist jetzt in der Vorschauversion in allen Azure-Regionen verfügbar. [Registrieren Sie sich für die eingeschränkte Public Preview](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR4mEEwKhLjlBjU3ziDwLH-pURDk2NjMzUTVEVzU5UU1XUlRXSTlHSlkxQS4u), bevor Sie eine Exportregel für Azure Data Lage Storage erstellen. Der Exportvorgang funktioniert ohne diese Registrierung nicht.
 
 ### <a name="event-hub"></a>Event Hub
 Daten werden, sobald sie Azure Monitor erreichen, nahezu in Echtzeit an Event Hub gesendet. Für jeden Datentyp, den Sie exportieren, wird ein Event Hub mit dem Namen *am-* erstellt, gefolgt vom Namen der Tabelle. Beispielsweise würde die Tabelle *SecurityEvent* an einen Event Hub mit dem Namen *am-SecurityEvent* gesendet. Wenn für die exportierten Daten ein bestimmter Event Hub als Ziel verwendet werden soll oder Sie eine Tabelle mit einem Namen haben, der den Grenzwert von 47 Zeichen überschreitet, können Sie den Namen Ihrer eigenen Event Hub-Instanz angeben und alle Daten für definierte Tabelle in diese exportieren.
