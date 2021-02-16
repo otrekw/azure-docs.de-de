@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Hinzufügen einer lokalen App – Anwendungsproxy in Azure AD'
+title: 'Tutorial: Hinzufügen einer lokalen App – Anwendungsproxy in Azure Active Directory'
 description: Mit einem Anwendungsproxydienst in Azure Active Directory (Azure AD) können Benutzer auf lokale Anwendungen zugreifen, indem sie sich mit ihrem Azure AD-Konto anmelden. In diesem Tutorial wird veranschaulicht, wie Sie Ihre Umgebung für die Nutzung mit einem Anwendungsproxy vorbereiten. Anschließend wird das Azure-Portal verwendet, um Ihrem Azure AD-Mandanten eine lokale Anwendung hinzuzufügen.
 services: active-directory
 author: kenwith
@@ -8,22 +8,26 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 01/20/2021
+ms.date: 02/09/2021
 ms.author: kenwith
 ms.reviewer: japere
-ms.custom: contperf-fy21q3
-ms.openlocfilehash: 04b3dd51aab9686d102b6b94324f89396a268e7d
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.custom: contperf-fy21q3-portal
+ms.openlocfilehash: 6bd44ea0217f11a156598a1a6f3703e528dd82d4
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99260078"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100095170"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>Tutorial: Hinzufügen einer lokalen Anwendung für den Remotezugriff über den Anwendungsproxy in Azure Active Directory
 
-Mit einem Anwendungsproxydienst in Azure Active Directory (Azure AD) können Benutzer auf lokale Anwendungen zugreifen, indem sie sich mit ihrem Azure AD-Konto anmelden. In diesem Tutorial wird Ihre Umgebung auf die Verwendung des Anwendungsproxys vorbereitet. Wenn Ihre Umgebung bereit ist, fügen Sie im Azure-Portal Ihrem Azure AD-Mandanten eine lokale Anwendung hinzu.
+Mit einem Anwendungsproxydienst in Azure Active Directory (Azure AD) können Benutzer auf lokale Anwendungen zugreifen, indem sie sich mit ihrem Azure AD-Konto anmelden. Weitere Informationen zum Anwendungsproxy finden Sie unter [Veröffentlichen von lokalen Apps für Remotebenutzer mit dem Azure AD-Anwendungsproxy](what-is-application-proxy.md). In diesem Tutorial wird Ihre Umgebung auf die Verwendung des Anwendungsproxys vorbereitet. Wenn Ihre Umgebung bereit ist, fügen Sie im Azure-Portal Ihrem Azure AD-Mandanten eine lokale Anwendung hinzu. 
 
 :::image type="content" source="./media/application-proxy-add-on-premises-application/app-proxy-diagram.png" alt-text="Übersichtsdiagramm für den Anwendungsproxy" lightbox="./media/application-proxy-add-on-premises-application/app-proxy-diagram.png":::
+
+Vergewissern Sie sich zunächst, dass Sie mit den Konzepten der App-Verwaltung und des **einmaligen Anmeldens (Single Sign-On, SSO)** vertraut sind. Sehen Sie sich die Informationen unter den folgenden Links an:
+- [Schnellstartserie zur App-Verwaltung in Azure AD](view-applications-portal.md)
+- [Worum handelt es sich beim einmaligen Anmelden (Single Sign-On, SSO)?](what-is-single-sign-on.md)
 
 Connectors sind ein wichtiger Bestandteil des Anwendungsproxys. Weitere Informationen zu Connectors finden Sie unter [Grundlegendes zu Azure AD-Anwendungsproxyconnectors](application-proxy-connectors.md).
 

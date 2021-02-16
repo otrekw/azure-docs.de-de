@@ -8,19 +8,21 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: overview
 ms.workload: identity
-ms.date: 01/11/2021
+ms.date: 02/08/2021
 ms.author: kenwith
-ms.reviewer: arvinh, celested
-ms.openlocfilehash: cb2c168786ee4cb14f93544d4cd9632b86ba5156
-ms.sourcegitcommit: d49bd223e44ade094264b4c58f7192a57729bada
+ms.reviewer: arvinh
+ms.openlocfilehash: f899c4d67321482dab62729632fe031bb23f71ea
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99255524"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99830667"
 ---
 # <a name="what-is-automated-saas-app-user-provisioning-in-azure-ad"></a>Was ist die automatisierte Bereitstellung von SaaS-App-Benutzern in Azure AD?
 
 In Azure Active Directory (Azure AD) bezieht sich der Ausdruck **App-Bereitstellung** auf die automatische Erstellung von Benutzeridentitäten und Rollen in den Cloudanwendungen ([SaaS](https://azure.microsoft.com/overview/what-is-saas/)), auf die Benutzer Zugriff benötigen. Zusätzlich zur Erstellung von Benutzeridentitäten umfasst die automatische Bereitstellung auch die Wartung und Entfernung von Benutzeridentitäten, wenn sich der Status oder die Rollen ändern. Gängige Szenarien sind die Bereitstellung eines Azure AD-Benutzers in Anwendungen wie [Dropbox](../saas-apps/dropboxforbusiness-provisioning-tutorial.md), [Salesforce](../saas-apps/salesforce-provisioning-tutorial.md), [ServiceNow](../saas-apps/servicenow-provisioning-tutorial.md) und anderen.
+
+Sie machen sich gerade mit der App-Verwaltung und dem einmaligen Anmelden (Single Sign-On, SSO) in Azure AD vertraut? Sehen Sie sich die [Schnellstartreihe](../manage-apps/view-applications-portal.md) an.
 
 Weitere Informationen zu SCIM und zur Teilnahme an Diskussionen in der Tech Community finden Sie unter [Bereitstellung mit der SCIM Tech Community](https://aka.ms/scimoverview).
 

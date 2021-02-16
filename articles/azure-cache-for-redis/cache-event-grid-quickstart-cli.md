@@ -1,17 +1,17 @@
 ---
 title: 'Schnellstart: Weiterleiten von Azure Cache for Redis-Ereignissen an einen Webendpunkt mit der Azure CLI'
-description: Verwenden Sie Azure Event Grid, um Azure Cache for Redis-Ereignisse zu abonnieren, an einen Webhook zu senden und in einer Webanwendung zu verarbeiten.
+description: Mithilfe von Azure Event Grid können Sie Azure Cache for Redis-Ereignisse abonnieren, ein Ereignis auslösen und die Ergebnisse anzeigen.
 author: curib
 ms.author: cauribeg
 ms.date: 1/5/2021
 ms.topic: quickstart
 ms.service: cache
-ms.openlocfilehash: 55c4c6bb5352d70c9bc688b28c3e0ab6eccd34fd
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: 7f33ca0043400962054fabb1aadb1da612fe5426
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99056469"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99806425"
 ---
 # <a name="quickstart-route-azure-cache-for-redis-events-to-web-endpoint-with-azure-cli"></a>Schnellstart: Weiterleiten von Azure Cache for Redis-Ereignissen an einen Webendpunkt mit der Azure CLI
 

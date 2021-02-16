@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 01/27/2021
+ms.date: 02/04/2021
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to connect and activate Azure Stack Edge Pro so I can use it to transfer data to Azure.
-ms.openlocfilehash: ac64233467166ca6567f1601c3b90f80fdba3dcf
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: 07a4c06b840d41455beea9be4ed0343b4946ddb3
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98954647"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99594602"
 ---
 # <a name="tutorial-configure-network-for-azure-stack-edge-pro-with-gpu"></a>Tutorial: Konfigurieren des Netzwerks für Azure Stack Edge Pro mit GPU
 
@@ -56,8 +56,6 @@ Führen Sie diese Schritte aus, um das Netzwerk für Ihr Gerät zu konfigurieren
     
     ![Seite „Netzwerkeinstellungen“ der lokalen Webbenutzeroberfläche](./media/azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy/network-2a.png)
 
-
-   
 3. Um die Netzwerkeinstellungen zu ändern, wählen Sie einen Port aus. Ändern Sie im eingeblendeten rechten Bereich die IP-Adresse, das Subnetz, das Gateway, das primäre DNS und das sekundäre DNS. 
 
     - Wenn Sie Port 1 auswählen, sehen Sie, dass er als statisch vorkonfiguriert ist. 
@@ -73,7 +71,8 @@ Führen Sie diese Schritte aus, um das Netzwerk für Ihr Gerät zu konfigurieren
    * Falls DHCP in Ihrer Umgebung aktiviert ist, werden Netzwerkschnittstellen automatisch konfiguriert. IP-Adresse, Subnetz, Gateway und DNS werden automatisch zugewiesen.
    * Wenn DHCP nicht aktiviert ist, können Sie bei Bedarf statische IP-Adressen zuweisen.
    * Sie können die Netzwerkschnittstelle als IPv4 konfigurieren.
-   * Für die 25-Gbit/s-Schnittstellen können Sie den RDMA-Modus (Remote Direct Access Memory) auf iWarp oder RoCE (RDMA over Converged Ethernet) festlegen. Wenn niedrige Latenz die Hauptanforderung ist und Skalierbarkeit keine Rolle spielt, wählen Sie RoCE. Wenn Latenz eine Hauptanforderung ist, aber auch Benutzerfreundlichkeit und Skalierbarkeit hohe Priorität haben, ist iWARP die beste Wahl.
+   * Für die 25-GBit/s-Schnittstellen können Sie den RDMA-Modus (Remote Direct Access Memory) auf iWarp oder RoCE (RDMA over Converged Ethernet) festlegen. Wenn niedrige Latenz die Hauptanforderung ist und Skalierbarkeit keine Rolle spielt, wählen Sie RoCE. Wenn Latenz eine Hauptanforderung ist, aber auch Benutzerfreundlichkeit und Skalierbarkeit hohe Priorität haben, ist iWARP die beste Wahl.
+   * Der NIC-Teamvorgang (Network Interface Card, Netzwerkadapter) oder Linkaggregation wird bei Azure Stack Edge nicht unterstützt. 
    * Die Seriennummer eines beliebigen Ports entspricht der Seriennummer des Knotens.
 
     Sobald das Gerätenetz konfiguriert ist, wird die Seite wie unten dargestellt aktualisiert.
@@ -81,12 +80,11 @@ Führen Sie diese Schritte aus, um das Netzwerk für Ihr Gerät zu konfigurieren
     ![Seite „Netzwerkeinstellungen“ der lokalen Webbenutzeroberfläche 2](./media/azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy/network-2.png)
 
 
-     >[!NOTE]
-     >
-     > * Wir empfehlen, die lokale IP-Adresse der Netzwerkschnittstelle nicht von statisch auf DHCP umzustellen, es sei denn, Sie haben eine andere IP-Adresse für die Verbindung zum Gerät. Wenn Sie eine Netzwerkschnittstelle verwenden und zu DHCP wechseln, gibt es keine Möglichkeit, die DHCP-Adresse zu bestimmen. Wenn Sie zu einer DHCP-Adresse wechseln möchten, warten Sie, bis sich das Gerät im Dienst aktiviert hat, und nehmen Sie dann die Änderung vor. Sie können dann die IPs aller Adapter im Azure-Portal in den **Geräteeigenschaften** für Ihren Dienst anzeigen.
+     > [!NOTE]
+     > Wir empfehlen, die lokale IP-Adresse der Netzwerkschnittstelle nicht von statisch auf DHCP umzustellen, es sei denn, Sie haben eine andere IP-Adresse für die Verbindung zum Gerät. Wenn Sie eine Netzwerkschnittstelle verwenden und zu DHCP wechseln, gibt es keine Möglichkeit, die DHCP-Adresse zu bestimmen. Wenn Sie zu einer DHCP-Adresse wechseln möchten, warten Sie, bis sich das Gerät im Dienst aktiviert hat, und nehmen Sie dann die Änderung vor. Sie können dann die IPs aller Adapter im Azure-Portal in den **Geräteeigenschaften** für Ihren Dienst anzeigen.
 
 
-    Nachdem Sie die Netzwerkeinstellungen konfiguriert und angewendet haben, wählen Sie „Weiter: Compute“ aus, um das Computenetzwerk zu konfigurieren.
+    Nachdem Sie die Netzwerkeinstellungen konfiguriert und angewendet haben, können Sie **Weiter: Compute** auswählen, um das Computenetzwerk zu konfigurieren.
 
 ## <a name="enable-compute-network"></a>Computenetzwerk aktivieren
 

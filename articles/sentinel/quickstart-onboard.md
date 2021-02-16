@@ -1,6 +1,6 @@
 ---
 title: 'Schnellstart: Ausführen des Onboardings für Azure Sentinel'
-description: In dieser Schnellstartanleitung erfahren Sie, wie Sie das Onboarding von Azure Sentinel ausführen können, indem Sie zunächst Sentinel aktivieren und dann Datenquellen verbinden.
+description: In dieser Schnellstartanleitung erfahren Sie, wie Sie das Onboarding von Azure Sentinel ausführen können, indem Sie zunächst die Lösung aktivieren und dann Datenquellen verbinden.
 services: sentinel
 author: yelevin
 ms.author: yelevin
@@ -10,12 +10,12 @@ ms.subservice: azure-sentinel
 ms.topic: quickstart
 ms.date: 10/14/2020
 ms.custom: references_regions
-ms.openlocfilehash: 107806b6372360e501fe9cc0a21d25cff5cc35f9
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: 7cb8cb4d99ca8a63195eba21d82814fcd7820f5c
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95248644"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99807766"
 ---
 # <a name="quickstart-on-board-azure-sentinel"></a>Schnellstart: Ausführen des Onboardings für Azure Sentinel
 
@@ -41,7 +41,7 @@ Nachdem Sie die Datenquellen verbunden haben, steht Ihnen ein Katalog von profes
 
 ### <a name="geographical-availability-and-data-residency"></a>Geografische Verfügbarkeit und Data Residency
 
-- Azure Sentinel kann für Arbeitsbereiche in den meisten [GA-Regionen von Log Analytics](https://azure.microsoft.com/global-infrastructure/services/?products=monitor) mit Ausnahme der Regionen China und Deutschland (Sovereign) ausgeführt werden. Bisweilen kann das Onboarding des Sentinel-Diensts für neue Log Analytics-Regionen einige Zeit dauern. 
+- Azure Sentinel kann für Arbeitsbereiche in den meisten [GA-Regionen von Log Analytics](https://azure.microsoft.com/global-infrastructure/services/?products=monitor) mit Ausnahme der Regionen China und Deutschland (Sovereign) ausgeführt werden. Bisweilen kann das Onboarding des Azure Sentinel-Diensts für neue Log Analytics-Regionen einige Zeit dauern. 
 
 - Von Azure Sentinel generierte Daten, z. B. Incidents, Lesezeichen und Analyseregeln, enthalten ggf. Kundendaten, die aus den Log Analytics-Arbeitsbereichen des Kunden stammen. Diese von Azure Sentinel generierten Daten werden in einer der geografischen Regionen gespeichert, die in der folgenden Tabelle aufgeführt sind (basierend auf der Region, in der sich der Arbeitsbereich befindet):
 

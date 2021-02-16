@@ -5,12 +5,12 @@ ms.assetid: 94af2caf-a2ec-4415-a097-f60694b860b3
 ms.topic: overview
 ms.date: 07/06/2020
 ms.custom: devx-track-dotnet, mvc, seodec18
-ms.openlocfilehash: d59dfe5b0fe3268dcda20fbc83aa31bba8a8713b
-ms.sourcegitcommit: 2aa52d30e7b733616d6d92633436e499fbe8b069
+ms.openlocfilehash: 0bfacc4169de6b30272229283e9aef9a9d69fad5
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/06/2021
-ms.locfileid: "97936208"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99592329"
 ---
 # <a name="app-service-overview"></a>App Service: Übersicht
 
@@ -56,7 +56,7 @@ Wenn Sie eine weitere Web-App mit einer veralteten Runtimeversion erstellen müs
 
 - App Service für Linux wird im Tarif [Shared](https://azure.microsoft.com/pricing/details/app-service/plans/) nicht unterstützt. 
 - Windows- und Linux-Apps können nicht im gleichen App Service-Plan miteinander kombiniert werden.  
-- Innerhalb einer Ressourcengruppe können Windows- und Linux-Apps nicht in der gleichen Region miteinander kombiniert werden.
+- In der Vergangenheit konnten Windows- und Linux-Apps nicht in der gleichen Ressourcengruppe miteinander kombiniert werden. Allerdings unterstützen alle Ressourcengruppen, die am oder nach dem 21. Januar 2021 erstellt wurden, dieses Szenario. Für Ressourcengruppen, die vor dem 21. Januar 2021 erstellt wurden, wird die Möglichkeit zum Hinzufügen gemischter Plattformbereitstellungen in Azure-Regionen (einschließlich nationaler Cloudregionen) in Kürze eingeführt.
 - Im Azure-Portal werden nur Features angezeigt, die aktuell für Linux-Apps geeignet sind. Wenn neue Features hinzukommen, werden sie im Portal aktiviert.
 - Bei der Bereitstellung in integrierten Images wird Ihrem Code und Ihren Inhalten ein Azure Storage-basiertes Speichervolume für Webinhalte zugeordnet. Die Datenträgerwartezeit dieses Volumes ist höher und variabler als die Wartezeit des Containerdateisystems. Für Apps, die intensiven Lesezugriff auf Inhaltsdateien erfordern, ist unter Umständen die benutzerdefinierte Containeroption von Vorteil, da die Dateien hierbei im Containerdateisystem platziert werden und nicht auf dem Inhaltsvolume.
 

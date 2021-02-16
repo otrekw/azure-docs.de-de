@@ -15,17 +15,20 @@ ms.workload: infrastructure-services
 ms.date: 01/04/2021
 ms.author: damendo
 ms.custom: mvc
-ms.openlocfilehash: 24b1549b2e460bc0e72fb76f5437b15838604949
-ms.sourcegitcommit: d7d5f0da1dda786bda0260cf43bd4716e5bda08b
+ms.openlocfilehash: a4f3e0bbd282fb1253e206e71c2eb1667773248e
+ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/05/2021
-ms.locfileid: "97896361"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99834084"
 ---
 # <a name="tutorial-monitor-network-communication-between-two-virtual-machines-using-the-azure-portal"></a>Tutorial: Überwachen der Netzwerkkommunikation zwischen zwei virtuellen Computern über das Azure-Portal
 
 > [!NOTE]
 > In diesem Tutorial geht es um den Verbindungsmonitor (klassisch). Testen Sie den neuen und verbesserten [Verbindungsmonitor](connection-monitor-overview.md), um eine verbesserte Konnektivitätsüberwachung zu erhalten.
+
+> [!IMPORTANT]
+> Ab dem 1. Juli 2021 können Sie keine neuen Verbindungsmonitore in Verbindungsmonitor (klassisch) mehr hinzufügen, vorhandene Verbindungsmonitore, die vor dem 1. Juli 2021 erstellt wurden, können Sie jedoch weiterhin verwenden. [Migrieren Sie vor dem 29. Februar 2024 vom Verbindungsmonitor (klassisch) zum neuen Verbindungsmonitor](migrate-to-connection-monitor-from-connection-monitor-classic.md) in Azure Network Watcher, um Dienstunterbrechungen im Zusammenhang mit Ihren aktuellen Workloads zu minimieren.
 
 Erfolgreiche Kommunikation zwischen einem virtuellen Computer (VM) und einem Endpunkt, z.B. einer anderen VM, kann für Ihre Organisation wichtig sein. In manchen Fällen werden Konfigurationsänderungen eingeführt, die die Kommunikation unterbrechen können. In diesem Tutorial lernen Sie Folgendes:
 
