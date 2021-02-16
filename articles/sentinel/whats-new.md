@@ -7,13 +7,13 @@ ms.author: bagol
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: conceptual
-ms.date: 02/02/2021
-ms.openlocfilehash: 8154e1adff8d8c2bdfe7fedc9309f95e5c5880bd
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.date: 02/04/2021
+ms.openlocfilehash: 9136947767bffb7bea800cdd2a735794baf8f329
+ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99499458"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "100007362"
 ---
 # <a name="whats-new-in-azure-sentinel"></a>Neuerungen in Azure Sentinel
 
@@ -32,6 +32,7 @@ Entsprechend gekennzeichnete Features sind derzeit als VORSCHAUVERSION verfügba
 
 ## <a name="january-2021"></a>Januar 2021
 
+- [Analyseregel-Assistent: Verbesserte Abfragebearbeitungsfunktionen (öffentliche Vorschau)](#analytics-rule-wizard-improved-query-editing-experience-public-preview)
 - [PowerShell-Modul „Az.SecurityInsights“ (Public Preview)](#azsecurityinsights-powershell-module-public-preview)
 - [SQL-Datenbank-Connector](#sql-database-connector)
 - [Verbesserte Incidentkommentare](#improved-incident-comments)
@@ -40,13 +41,23 @@ Entsprechend gekennzeichnete Features sind derzeit als VORSCHAUVERSION verfügba
 - [Verbesserte Regeloptimierung mit den Vorschaudiagrammen für Analyseregeln](#improved-rule-tuning-with-the-analytics-rule-preview-graphs-public-preview)
 
 
+### <a name="analytics-rule-wizard-improved-query-editing-experience-public-preview"></a>Analyseregel-Assistent: Verbesserte Abfragebearbeitungsfunktionen (öffentliche Vorschau)
+
+Der Azure Sentinel-Assistent für geplante Analyseregeln bietet nun die folgenden Verbesserungen für das Erstellen und Bearbeiten von Abfragen:
+
+-   Ein erweiterbares Bearbeitungsfenster mit mehr Platz zum Anzeigen Ihrer Abfrage auf dem Bildschirm
+-   Hervorhebung von Schlüsselwörtern im Abfragecode
+-   Erweiterte Unterstützung für AutoVervollständigen
+-   Validierung von Echtzeitabfragen Fehler in Abfragen werden nun auf der Scrollleiste als roter Block und im Registerkartennamen **Regellogik festlegen** als roter Punkt angezeigt. Außerdem kann eine Abfrage mit Fehlern nicht gespeichert werden.
+
+Weitere Informationen finden Sie im [Tutorial: Standardmäßig verfügbare Erkennung von Bedrohungen](tutorial-detect-threats-built-in.md).
 ### <a name="azsecurityinsights-powershell-module-public-preview"></a>PowerShell-Modul „Az.SecurityInsights“ (Public Preview)
 
 Azure Sentinel unterstützt jetzt das neue PowerShell-Modul [Az.SecurityInsights](https://www.powershellgallery.com/packages/Az.SecurityInsights/).
 
 Das Modul **Az.SecurityInsights** unterstützt gängige Azure Sentinel-Anwendungsfälle wie etwa die Interaktion mit Incidents, um Dinge wie Status, Schweregrad oder Besitzer zu ändern, sowie das Hinzufügen von Kommentaren und Bezeichnungen zu Incidents und das Erstellen von Lesezeichen.
 
-Wir empfehlen zwar die Verwendung von ARM-Vorlagen ([Azure Resource Manager](/azure/azure-resource-manager/templates/)) für Ihre CI/CD-Pipeline, das Modul **Az.SecurityInsights** ist jedoch bei Aufgaben nach der Bereitstellung hilfreich und speziell für die SOC-Automatisierung vorgesehen.  Ihre SOC-Automatisierung kann beispielsweise Schritte zum Konfigurieren von Datenconnectors, zum Erstellen von Analyseregeln oder zum Hinzufügen von Automatisierungsaktionen zu Analyseregeln enthalten.
+Wir empfehlen zwar die Verwendung von ARM-Vorlagen ([Azure Resource Manager](/azure/azure-resource-manager/templates/)) für Ihre CI/CD-Pipeline, das Modul **Az.SecurityInsights** ist jedoch bei Aufgaben nach der Bereitstellung hilfreich und für die SOC-Automatisierung vorgesehen.  Ihre SOC-Automatisierung kann beispielsweise Schritte zum Konfigurieren von Datenconnectors, zum Erstellen von Analyseregeln oder zum Hinzufügen von Automatisierungsaktionen zu Analyseregeln enthalten.
 
 Weitere Informationen, einschließlich einer vollständigen Liste und einer Beschreibung der verfügbaren Cmdlets, sowie Parameterbeschreibungen und Beispiele finden Sie in der [PowerShell-Dokumentation zu „Az.SecurityInsights“](/powershell/module/az.securityinsights/).
 
@@ -78,7 +89,7 @@ Weitere Informationen finden Sie unter [Dedizierte Azure Monitor-Protokollclust
 
 ### <a name="logic-apps-managed-identities"></a>Verwaltete Identitäten für Logik-Apps
 
-Azure Sentinel unterstützt jetzt verwaltete Identitäten für den Logic Apps-Connector für Azure Sentinel. Dadurch können Sie einem bestimmten Playbook direkt Berechtigungen für die Verwendung in Azure Sentinel erteilen, anstatt zusätzliche Identitäten zu erstellen.
+Azure Sentinel unterstützt jetzt verwaltete Identitäten für den Logic Apps-Connector für Azure Sentinel. Dadurch können Sie einem bestimmten Playbook direkt Berechtigungen für die Verwendung in Azure Sentinel erteilen, anstatt zusätzliche Identitäten zu erstellen.
 
 - **Ohne verwaltete Identität** benötigt der Logic Apps-Connector eine separate Identität mit einer Azure Sentinel-RBAC-Rolle, damit er in Azure Sentinel verwendet werden kann. Bei der separaten Identität kann es sich um einen Azure AD-Benutzer oder um einen Dienstprinzipal (beispielsweise eine bei Azure AD registrierte Anwendung) handeln.
 
@@ -123,7 +134,7 @@ Dieses Update für Azure Sentinel umfasst neue Hunting-Abfragen mit Abdeckung de
 
 Die zusätzlichen Hunting-Abfragen unterstützen Sie bei der Ermittlung verdächtiger Aktivitäten in Ihrer Umgebung. Sie geben zwar unter Umständen auch legitime Aktivitäten und potenziell schädliche Aktivitäten zurück, können aber eine gute Orientierungshilfe bei der Bedrohungssuche sein. 
 
-Wenn Sie nach der Ausführung dieser Abfragen mit den Ergebnissen zufrieden sind, können Sie sie ggf. in Analyseregeln konvertieren oder Hunting-Ergebnisse zu vorhandenen oder neuen Incidents hinzufügen.
+Wenn Sie nach der Ausführung dieser Abfragen mit den Ergebnissen zufrieden sind, können Sie sie ggf. in Analyseregeln konvertieren oder vorhandenen oder neuen Incidents Hunting-Ergebnisse hinzufügen.
 
 Alle hinzugefügten Abfragen sind über die Azure Sentinel-Hunting-Seite verfügbar. Weitere Informationen finden Sie unter [Suchen nach Bedrohungen mit Azure Sentinel](hunting.md).
 

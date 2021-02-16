@@ -3,12 +3,12 @@ title: Aktivieren von Azure Monitor für Container | Microsoft-Dokumentation
 description: In diesem Artikel wird beschrieben, wie Sie Azure Monitor für Container aktivieren und konfigurieren, damit Sie erfahren, wie gut die Leistung Ihrer Container ist und welche leistungsbezogenen Probleme erkannt wurden.
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: f598b42f1a8d9fcb42f09d17e40850cf3a1282be
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 56f60b58cff351aa37e98cdba933c929aaaedab6
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98943829"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99806003"
 ---
 # <a name="enable-azure-monitor-for-containers"></a>Aktivieren von Azure Monitor für Container
 
@@ -35,6 +35,12 @@ Sie können Azure Monitor für Container für eine neue Bereitstellung oder für
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Bevor Sie beginnen, stellen Sie sicher, dass die folgenden Anforderungen erfüllt werden:
+
+> [!IMPORTANT]
+> Der Log Analytics-Agent für containerisiertes Linux (ReplicaSet-Pod) führt API-Aufrufe an alle Windows-Knoten am sicheren Kubelet-Port (10250) im Cluster aus, um Metriken zur Knoten- und Containerleistung zu erfassen. Der sichere Kubelet-Port (10250) sollte im virtuellen Netzwerk des Clusters ein- und ausgehend geöffnet sein, damit Metriken zur Leistung der Windows-Knoten und -Container erfasst werden können.
+>
+> Wenn Sie über einen Kubernetes-Cluster mit Windows-Knoten verfügen, überprüfen und konfigurieren Sie die Netzwerksicherheitsgruppe und Netzwerkrichtlinien, um sicherzustellen, dass der sichere Kubelet-Port (10250) für ein- und ausgehenden Datenverkehr im virtuellen Netzwerk des Clusters geöffnet ist.
+
 
 - Sie verfügen über einen Log Analytics-Arbeitsbereich.
 

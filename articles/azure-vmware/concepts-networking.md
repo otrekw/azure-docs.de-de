@@ -2,13 +2,13 @@
 title: Konzepte – Netzwerkinterkonnektivität
 description: Erfahren Sie mehr über wichtige Aspekte und Anwendungsfälle für Netzwerke und Interkonnektivität in Azure VMware Solution.
 ms.topic: conceptual
-ms.date: 09/21/2020
-ms.openlocfilehash: eb701a7fca2be08d70e603734b9c4d8e266959cd
-ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
+ms.date: 02/02/2021
+ms.openlocfilehash: bc8a2f8c07a2a4fe37c4899dc33d5173a99dc423
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99475419"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99538974"
 ---
 # <a name="azure-vmware-solution-networking-and-interconnectivity-concepts"></a>Azure VMware Solution – Netzwerk- und Interkonnektivitätskonzepte
 
@@ -59,10 +59,11 @@ Für eine vollständige Interkonnektivität mit Ihrer privaten Cloud aktivieren 
 
 ## <a name="next-steps"></a>Nächste Schritte 
 
-Nachdem Sie sich mit den Netzwerk- und Konnektivitätskonzepten vertraut gemacht haben, informieren Sie sich über die folgenden Themen:
+Nachdem Sie sich mit den Netzwerk- und Konnektivitätskonzepten bei Azure VMware Solution vertraut gemacht haben, informieren Sie sich über die folgenden Themen:
 
 - [Speicherkonzepte von Azure VMware Solution](concepts-storage.md)
 - [Identitätskonzepte von Azure VMware Solution](concepts-identity.md)
+- [Aktivieren einer Azure VMware Solution-Ressource](enable-azure-vmware-solution.md)
 
 <!-- LINKS - external -->
 [enable Global Reach]: ../expressroute/expressroute-howto-set-global-reach.md

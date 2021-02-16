@@ -4,12 +4,12 @@ description: 'Vorgehensweise: Auswahl aus den verfügbaren VM-Größen und Betri
 ms.topic: conceptual
 ms.date: 11/24/2020
 ms.custom: seodec18
-ms.openlocfilehash: 59218361c5fff51b33131fdd2455c599dd12b06a
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: de1f61bb2bdc83377887fda726a65c1900f36d55
+ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98897492"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99576700"
 ---
 # <a name="choose-a-vm-size-and-image-for-compute-nodes-in-an-azure-batch-pool"></a>Auswählen einer VM-Größe und eines Images für Computeknoten in einem Azure Batch-Pool
 
@@ -29,7 +29,7 @@ Batch-Pools in der Konfiguration des virtuellen Computers unterstützen nahezu a
 | VM-Serie  | Unterstützte Größen |
 |------------|---------|
 | Basic A | Alle Größen *außer* Basic_A0 (A0) |
-| Ein | Alle Größen *außer* Standard_A0 |
+| Ein | Alle Größen *außer* Standard_A0, Standard_A8, Standard_A9, Standard_A10, Standard_A11 |
 | Av2 | Alle Größen |
 | B | Nicht unterstützt |
 | SL | Nicht unterstützt |

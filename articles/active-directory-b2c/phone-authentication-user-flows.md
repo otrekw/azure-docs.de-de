@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 10/29/2020
+ms.date: 02/01/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 0ce9b60ead9aff792bf2e4e98841469d58620ccd
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 1ed0ca069f29413083356a3147d4b97f1b6ed981
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96754497"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99525194"
 ---
 # <a name="set-up-phone-sign-up-and-sign-in-for-user-flows-preview"></a>Einrichten der telefonischen Registrierung und Anmeldung für Benutzerflows (Vorschau)
 
@@ -89,7 +89,7 @@ Das folgende Beispiel zeigt, wie Sie die telefonische Registrierung zu einem neu
 9. Wählen Sie unter **Soziales Netzwerk als Identitätsanbieter** alle anderen Identitätsanbieter aus, die in diesem Benutzerflow zulässig sein sollen.
 
    > [!NOTE]
-   > Die mehrstufige Authentifizierung (Multi-Factor Authentication, MFA) ist standardmäßig deaktiviert. Sie können MFA für Benutzerflows mit telefonischer Registrierung zwar aktivieren. Als zweiter Authentifizierungsfaktor steht jedoch nur die Einmalkennung per E-Mail zur Verfügung, da die Telefonnummer als primärer Bezeichner verwendet wird.
+   > Die mehrstufige Authentifizierung (Multi-Factor Authentication, MFA) ist bei Benutzerflows für die Registrierung standardmäßig deaktiviert. Sie können MFA für Benutzerflows mit telefonischer Registrierung zwar aktivieren. Als zweiter Authentifizierungsfaktor steht jedoch nur die Einmalkennung per E-Mail zur Verfügung, da die Telefonnummer als primärer Bezeichner verwendet wird.
 
 1. Wählen Sie im Abschnitt **Benutzerattribute und Tokenansprüche** die Ansprüche und Attribute aus, die Sie bei der Benutzerregistrierung sammeln und senden möchten. Wählen Sie z.B. **Mehr anzeigen** und dann Attribute und Ansprüche für **Land/Region**, **Anzeigename** und **Postleitzahl** aus. Klicken Sie auf **OK**.
 

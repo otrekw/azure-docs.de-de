@@ -12,12 +12,12 @@ ms.date: 06/26/2020
 ms.author: ryanwi
 ms.reviewer: tomfitz
 ms.custom: aaddev, seoapril2019, identityplatformtop40
-ms.openlocfilehash: 284ab3a2aabb2395636982237159117a10151019
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: d20a363a0320ca45f22183e54bcc390d4733c8bc
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98014942"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99581753"
 ---
 # <a name="how-to-use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>Gewusst wie: Erstellen einer Azure AD-Anwendung und eines Dienstprinzipals mit Ressourcenzugriff über das Portal
 
@@ -115,7 +115,7 @@ Im nächsten Abschnitt wird veranschaulicht, wie Sie Werte abrufen, die beim pro
 
 ## <a name="get-tenant-and-app-id-values-for-signing-in"></a>Abrufen der Werte für Mandanten-ID und App-ID für die Anmeldung
 
-Beim programmgesteuerten Anmelden müssen Sie mit Ihrer Authentifizierungsanforderung und der Anwendungs-ID auch die Mandanten-ID übergeben.  Außerdem benötigen Sie ein Zertifikat oder einen Authentifizierungsschlüssel (im folgenden Abschnitt beschrieben). Führen Sie die folgenden Schritte aus, um diese Werte abzurufen:
+Beim programmgesteuerten Anmelden übergeben Sie mit Ihrer Authentifizierungsanforderung und der Anwendungs-ID auch die Mandanten-ID.  Außerdem benötigen Sie ein Zertifikat oder einen Authentifizierungsschlüssel (im folgenden Abschnitt beschrieben). Führen Sie die folgenden Schritte aus, um diese Werte abzurufen:
 
 1. Wählen Sie **Azure Active Directory** aus.
 1. Wählen Sie in Azure AD unter **App-Registrierungen** Ihre Anwendung aus.
@@ -162,7 +162,7 @@ So laden Sie das Zertifikat hoch:
 
 1. Wählen Sie **Hinzufügen**.
 
-Nach dem Registrieren des Zertifikats bei Ihrer Anwendung im Portal der Anwendungsregistrierung müssen Sie dem Code der Clientanwendung die Verwendung des Zertifikats ermöglichen.
+Nach dem Registrieren des Zertifikats bei Ihrer Anwendung im Portal der Anwendungsregistrierung ermöglichen Sie dem Code der Clientanwendung die Verwendung des Zertifikats.
 
 ### <a name="option-2-create-a-new-application-secret"></a>Option 2: Erstellen eines neuen Anwendungsgeheimnisses
 

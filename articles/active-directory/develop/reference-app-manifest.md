@@ -13,12 +13,12 @@ ms.date: 02/02/2021
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: sureshja
-ms.openlocfilehash: cb7acb2ab74cc3f1304e5278524918865185463f
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: 0291d2e6f0cee07bd7164b63dfd4ac8b02c42a01
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99491298"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99583042"
 ---
 # <a name="azure-active-directory-app-manifest"></a>Azure Active Directory-App-Manifest
 
@@ -27,7 +27,7 @@ Das Anwendungsmanifest enthält eine Definition aller Attribute eines Anwendungs
 Sie können die Attribute einer App über das Azure-Portal oder programmgesteuert mit der [REST-API](/graph/api/resources/application) oder [PowerShell](/powershell/module/azuread#applications) konfigurieren. Es gibt aber einige Szenarien, in denen Sie das App-Manifest bearbeiten müssen, um das Attribut einer App zu konfigurieren. Zu diesen Szenarien gehören:
 
 * Wenn Sie die App als mehrinstanzenfähige Azure AD-App und für persönliche Microsoft-Konten registriert haben, können Sie die unterstützten Microsoft-Konten nicht über die Benutzeroberfläche ändern. In diesem Fall müssen Sie den unterstützten Kontotyp mithilfe des Anwendungsmanifest-Editors ändern.
-* Wenn Sie Berechtigungen und Rollen definieren müssen, die von Ihrer App unterstützt werden, müssen Sie das Anwendungsmanifest ändern.
+* Zum Definieren der Berechtigungen und Rollen, die von Ihrer App unterstützt werden, müssen Sie das Anwendungsmanifest ändern.
 
 ## <a name="configure-the-app-manifest"></a>Konfigurieren des App-Manifests
 
@@ -173,7 +173,8 @@ Konfiguriert den in einem Benutzer- oder OAuth 2.0-Zugriffstoken ausgegebenen An
 - `"None"`
 - `"SecurityGroup"` (für Sicherheitsgruppen und Azure AD-Rollen)
 - `"ApplicationGroup"` (diese Option umfasst nur Gruppen, die der Anwendung zugewiesen sind)
-- `"All"` (damit werden alle Sicherheitsgruppen, Verteilergruppen und Azure AD-Verzeichnisrollen abgerufen, in denen der angemeldete Benutzer ein Mitglied ist)
+- `"DirectoryRole"` (ruft die Azure AD-Verzeichnisrollen ab, in denen der Benutzer Mitglied ist)
+- `"All"` (ruft alle Sicherheitsgruppen, Verteilergruppen und Azure AD-Verzeichnisrollen ab, in denen der angemeldete Benutzer ein Mitglied ist)
 
 Beispiel:
 

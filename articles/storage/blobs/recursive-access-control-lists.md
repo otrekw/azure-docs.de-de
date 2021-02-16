@@ -5,22 +5,25 @@ author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: how-to
-ms.date: 01/22/2021
+ms.date: 02/05/2021
 ms.author: normesta
 ms.reviewer: prishet
 ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: 626e626cbd8fa86bd0366516cbaf5a54789f3988
-ms.sourcegitcommit: 6272bc01d8bdb833d43c56375bab1841a9c380a5
+ms.openlocfilehash: 737608e4f83846187decb92b090f2385a8ff4ac6
+ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2021
-ms.locfileid: "98741042"
+ms.lasthandoff: 02/06/2021
+ms.locfileid: "99627339"
 ---
 # <a name="set-access-control-lists-acls-recursively-for-azure-data-lake-storage-gen2"></a>Rekursives Festlegen von Zugriffssteuerungslisten (ACLs) für Azure Data Lake Storage Gen2
 
 Die Vererbung von Zugriffssteuerungslisten (ACLs) ist für neue untergeordnete Elemente, die unter einem übergeordneten Verzeichnis erstellt werden, bereits verfügbar. Sie können ACLs nun auch rekursiv für die vorhandenen untergeordneten Elemente eines übergeordneten Verzeichnisses hinzufügen, aktualisieren und entfernen, ohne diese Änderungen für jedes untergeordnete Element einzeln vornehmen zu müssen.
 
 [Bibliotheken](#libraries) | [Beispiele](#code-samples) | [Bewährte Methoden](#best-practice-guidelines)
+
+> [!NOTE]
+> Azure Storage-Explorer unterstützt jetzt die Möglichkeit, ACLs rekursiv anzuwenden. Weitere Informationen finden Sie unter [Rekursives Anwenden von Zugriffssteuerungslisten in Azure Storage-Explorer](data-lake-storage-explorer.md#apply-acls-recursively). 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

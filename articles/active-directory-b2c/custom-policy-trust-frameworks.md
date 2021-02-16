@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 12/14/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 514ce0a43904048952f38edd6a9d38713f6ef8f3
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: cb33e11af26d5f5a2676f5b236ac142179bdb550
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98936666"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99592839"
 ---
 # <a name="azure-ad-b2c-custom-policy-overview"></a>Übersicht über Benutzerdefinierte Azure AD B2C-Richtlinien
 
@@ -115,7 +115,7 @@ Jedes Starter Pack enthält die folgenden Dateien:
 Das Vererbungsmodell lautet wie folgt:
 
 - Die untergeordnete Richtlinie kann auf jeder Ebene von der übergeordneten Richtlinie erben und diese durch Hinzufügen neuer Elemente erweitern.
-- In komplexeren Szenarien können Sie weitere Vererbungsebenen (insgesamt bis zu 5 Ebenen) hinzufügen.
+- In komplexeren Szenarien können Sie weitere Vererbungsebenen (bis zu insgesamt 10 Ebenen) hinzufügen.
 - Sie können auch zusätzliche Richtlinien der vertrauenden Seite hinzufügen. Dies können z. B. Richtlinien für das Löschen des eigenen Kontos, das Ändern einer Telefonnummer, eine SAML-Richtlinie der vertrauenden Seite usw. sein.
 
 Das folgende Diagramm zeigt die Beziehung zwischen den Richtliniendateien und den Anwendungen der vertrauenden Seite.

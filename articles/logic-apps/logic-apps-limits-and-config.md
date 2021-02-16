@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
-ms.date: 01/25/2021
-ms.openlocfilehash: 8e5b43383e0b49c0fe6fffdd9ffee6667fb540f8
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.date: 02/05/2021
+ms.openlocfilehash: 6c064acc44e180d3e99bdcf68d2e1e129d52fd5d
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99054753"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99805933"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Grenzwert- und Konfigurationsinformationen für Azure Logic Apps
 
@@ -427,6 +427,12 @@ In diesem Abschnitt sind nur die IP-Adressen des Azure Logic Apps-Diensts für d
 
 > [!TIP]
 > Zur Reduzierung der Komplexität beim Erstellen von Sicherheitsregeln können Sie optional das [Diensttag](../virtual-network/service-tags-overview.md) **LogicAppsManagement** verwenden, anstatt für jede Region Logic Apps-IP-Adresspräfixe für die eingehende Richtung anzugeben. Optional können Sie auch das Diensttag **AzureConnectors** für verwaltete Connectors verwenden, die eingehende Webhook-Rückrufe an den Logic Apps-Dienst senden, anstatt für jede Region IP-Adresspräfixe des verwalteten Connectors für die eingehende Richtung anzugeben. Diese Tags funktionieren in den Regionen, in denen der Logic Apps-Dienst verfügbar ist.
+>
+> Die folgenden Connectors führen eingehende Webhookrückrufe an den Logic Apps-Dienst durch:
+>
+> Adobe Creative Cloud, Adobe Sign, Adobe Sign Demo, Adobe Sign Preview, Adobe Sign Stage, Azure Sentinel, Business Central, Calendly, Common Data Service, DocuSign, DocuSign Demo, Dynamics 365 for Fin & Ops, LiveChat, Office 365 Outlook, Outlook.com, Parserr, SAP*, Shifts for Microsoft Teams, Teamwork Projects, Typeform
+>
+> \* **SAP:** Der Aufrufer der Rückgabe hängt davon ab, ob es sich bei der Bereitstellungsumgebung um eine mehrinstanzenfähige Azure-Umgebung oder eine ISE handelt. In einer mehrinstanzenfähigen Umgebung führt das lokale Datengateway den Rückruf an den Logic Apps-Dienst aus. In einer ISE führt der SAP-Connector den Rückruf an den Logic Apps-Dienst aus.
 
 <a name="multi-tenant-inbound"></a>
 

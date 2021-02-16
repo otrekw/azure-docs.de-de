@@ -6,14 +6,14 @@ author: amitbapat
 tags: azure-resource-manager
 ms.service: key-vault
 ms.topic: conceptual
-ms.date: 02/01/2021
+ms.date: 02/04/2021
 ms.author: ambapat
-ms.openlocfilehash: 444f279f8e96486bd6ad61a2ea2640a18b491c9c
-ms.sourcegitcommit: 983eb1131d59664c594dcb2829eb6d49c4af1560
+ms.openlocfilehash: 1a15ed6b92ade96dd2ed9ef6ffbbe17e2b1452ef
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99222233"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99581396"
 ---
 # <a name="import-hsm-protected-keys-to-managed-hsm-byok"></a>Importieren von durch HSM geschützten Schlüsseln in verwaltetes HSM (BYOK)
 
@@ -75,11 +75,14 @@ Weitere Informationen zu den Anmeldeoptionen für die Befehlszeilenschnittstelle
 
 ## <a name="supported-key-types"></a>Unterstützte Schlüsseltypen
 
-|Schlüsselname|Schlüsseltyp|Schlüsselgröße|Origin|BESCHREIBUNG|
+|Schlüsselname|Schlüsseltyp|Schlüsselgröße/Kurve|Origin|BESCHREIBUNG|
 |---|---|---|---|---|
 |Schlüsselaustauschschlüssel (Key Exchange Key, KEK)|RSA| 2\.048 Bit<br />3\.072 Bit<br />4\.096 Bit|Verwaltetes HSM|Dies ist ein durch HSM gestütztes RSA-Schlüsselpaar, das im verwalteten HSM generiert wurde.|
-|Zielschlüssel|RSA|2\.048 Bit<br />3\.072 Bit<br />4\.096 Bit|Anbieter-HSM|Der an das verwaltete HSM zu übertragende Schlüssel|
-
+|Zielschlüssel|
+||RSA|2\.048 Bit<br />3\.072 Bit<br />4\.096 Bit|Anbieter-HSM|Der an das verwaltete HSM zu übertragende Schlüssel|
+||EC|P-256<br />P-384<br />P-521|Anbieter-HSM|Der an das verwaltete HSM zu übertragende Schlüssel|
+||Symmetrischer Schlüssel (oct-HSM)|128 Bit<br />192 Bit<br />256 Bit|Anbieter-HSM|Der an das verwaltete HSM zu übertragende Schlüssel|
+||||
 ## <a name="generate-and-transfer-your-key-to-the-managed-hsm"></a>Generieren und Übertragen des Schlüssels an das verwaltete HSM
 
 So generieren und übertragen Sie den Schlüssel an das verwaltete HSM

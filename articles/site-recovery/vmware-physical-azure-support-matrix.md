@@ -3,12 +3,12 @@ title: Unterstützungsmatrix für VMware- oder physische Notfallwiederherstellun
 description: Fasst die Unterstützung der Notfallwiederherstellung von VMware-VMs und physische Server in Azure mit Azure Site Recovery zusammen.
 ms.topic: conceptual
 ms.date: 07/14/2020
-ms.openlocfilehash: 48eba42548287b54d99d1a2188786437f4b05a2b
-ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
+ms.openlocfilehash: 0b829955d931bd26b7d38c8cb282f55a6043562e
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99475470"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99550843"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>Unterstützungsmatrix für die Notfallwiederherstellung von virtuellen VMware-Computern und physischen Servern in Azure
 
@@ -141,19 +141,19 @@ Debian 9.1 | [9.37](https://support.microsoft.com/help/4582666/) | 4.9.0-3-amd64
 
 **Release** | **Mobility Service-Version** | **Kernelversion** |
 --- | --- | --- |
-SUSE Linux Enterprise Server 12 (SP1,SP2,SP3,SP4, SP5) | [9.40](https://support.microsoft.com/en-us/topic/update-rollup-53-for-azure-site-recovery-060268ef-5835-bb49-7cbc-e8c1e6c6e12a) | Alle [SUSE 12 SP1-, SP2-, SP3- und SP4-Stock-Kernel](https://www.suse.com/support/kb/doc/?id=000019587) werden unterstützt.</br></br> 4.4.138-4.7-azure bis 4.4.180-4.31-azure</br>4.12.14-6.3-azure bis 4.12.14-6.43-azure </br> 4.12.14-16.7-azure bis 4.12.14-16.38-azure|
-SUSE Linux Enterprise Server 12 (SP1,SP2,SP3,SP4, SP5) | [9.39](https://support.microsoft.com/help/4597409/) | Alle [SUSE 12 SP1-, SP2-, SP3- und SP4-Stock-Kernel](https://www.suse.com/support/kb/doc/?id=000019587) werden unterstützt.</br></br> 4.4.138-4.7-azure bis 4.4.180-4.31-azure</br>4.12.14-6.3-azure bis 4.12.14-6.43-azure </br> 4.12.14-16.7-azure bis 4.12.14-16.34-azure |
-SUSE Linux Enterprise Server 12 (SP1,SP2,SP3,SP4, SP5) | [9.38](https://support.microsoft.com/help/4590304/) | Alle [SUSE 12 SP1-, SP2-, SP3- und SP4-Stock-Kernel](https://www.suse.com/support/kb/doc/?id=000019587) werden unterstützt.</br></br> 4.4.138-4.7-azure bis 4.4.180-4.31-azure</br>4.12.14-6.3-azure bis 4.12.14-6.43-azure </br> 4.12.14-16.7-azure bis 4.12.14-16.28-azure |
-SUSE Linux Enterprise Server 12 (SP1,SP2,SP3,SP4, SP5) | [9.36](https://support.microsoft.com/help/4578241/), [9.37](https://support.microsoft.com/help/4582666/),  | Alle [SUSE 12 SP1-, SP2-, SP3- und SP4-Stock-Kernel](https://www.suse.com/support/kb/doc/?id=000019587) werden unterstützt.</br></br> 4.4.138-4.7-azure bis 4.4.180-4.31-azure</br>4.12.14-6.3-azure bis 4.12.14-6.43-azure </br> 4.12.14-16.7-azure bis 4.12.14-16.22-azure  |
+SUSE Linux Enterprise Server 12 (SP1,SP2,SP3,SP4, SP5) | [9.40](https://support.microsoft.com/en-us/topic/update-rollup-53-for-azure-site-recovery-060268ef-5835-bb49-7cbc-e8c1e6c6e12a) | Alle [SUSE 12 SP1-, SP2-, SP3-, SP4- und SP5-Stock-Kernels](https://www.suse.com/support/kb/doc/?id=000019587) werden unterstützt.</br></br> 4.4.138-4.7-azure bis 4.4.180-4.31-azure</br>4.12.14-6.3-azure bis 4.12.14-6.43-azure </br> 4.12.14-16.7-azure bis 4.12.14-16.38-azure|
+SUSE Linux Enterprise Server 12 (SP1,SP2,SP3,SP4, SP5) | [9.39](https://support.microsoft.com/help/4597409/) | Alle [SUSE 12 SP1-, SP2-, SP3-, SP4- und SP5-Stock-Kernels](https://www.suse.com/support/kb/doc/?id=000019587) werden unterstützt.</br></br> 4.4.138-4.7-azure bis 4.4.180-4.31-azure</br>4.12.14-6.3-azure bis 4.12.14-6.43-azure </br> 4.12.14-16.7-azure bis 4.12.14-16.34-azure |
+SUSE Linux Enterprise Server 12 (SP1,SP2,SP3,SP4, SP5) | [9.38](https://support.microsoft.com/help/4590304/) | Alle [SUSE 12 SP1-, SP2-, SP3-, SP4- und SP5-Stock-Kernels](https://www.suse.com/support/kb/doc/?id=000019587) werden unterstützt.</br></br> 4.4.138-4.7-azure bis 4.4.180-4.31-azure</br>4.12.14-6.3-azure bis 4.12.14-6.43-azure </br> 4.12.14-16.7-azure bis 4.12.14-16.28-azure |
+SUSE Linux Enterprise Server 12 (SP1,SP2,SP3,SP4, SP5) | [9.36](https://support.microsoft.com/help/4578241/), [9.37](https://support.microsoft.com/help/4582666/),  | Alle [SUSE 12 SP1-, SP2-, SP3-, SP4- und SP5-Stock-Kernels](https://www.suse.com/support/kb/doc/?id=000019587) werden unterstützt.</br></br> 4.4.138-4.7-azure bis 4.4.180-4.31-azure</br>4.12.14-6.3-azure bis 4.12.14-6.43-azure </br> 4.12.14-16.7-azure bis 4.12.14-16.22-azure  |
 
 ### <a name="suse-linux-enterprise-server-15-supported-kernel-versions"></a>SUSE Linux Enterprise Server 15 – unterstützte Kernelversionen
 
 **Release** | **Mobility Service-Version** | **Kernelversion** |
 --- | --- | --- |
-SUSE Linux Enterprise Server 15, SP1, SP2 | [9.40](https://support.microsoft.com/en-us/topic/update-rollup-53-for-azure-site-recovery-060268ef-5835-bb49-7cbc-e8c1e6c6e12a)  | Standardmäßig werden alle [SUSE 15- und 15-Stock-Kernel](https://www.suse.com/support/kb/doc/?id=000019587) unterstützt.</br></br> 4.12.14-5.5-azure bis 4.12.14-5.47-azure </br></br> 4.12.14-8.5-azure bis 4.12.14-8.55-azure </br> 5.3.18-16-azure </br> 5.3.18-18.5-azure bis 5.3.18-18.29-azure
-SUSE Linux Enterprise Server 15, SP1, SP2 | [9.39](https://support.microsoft.com/help/4597409/)  | Standardmäßig werden alle [SUSE 15- und 15-Stock-Kernel](https://www.suse.com/support/kb/doc/?id=000019587) unterstützt.</br></br> 4.12.14-5.5-azure bis 4.12.14-5.47-azure </br></br> 4.12.14-8.5-azure bis 4.12.14-8.47-azure </br> 5.3.18-16-azure </br> 5.3.18-18.5-azure bis 5.3.18-18.21-azure
-SUSE Linux Enterprise Server 15, SP1, SP2 | [9.38](https://support.microsoft.com/help/4590304/)  | Standardmäßig werden alle [SUSE 15- und 15-Stock-Kernel](https://www.suse.com/support/kb/doc/?id=000019587) unterstützt.</br></br> 4.12.14-5.5-azure bis 4.12.14-5.47-azure </br></br> 4.12.14-8.5-azure bis 4.12.14-8.44-azure </br> 5.3.18-16-azure </br> 5.3.18-18.5-azure bis 5.3.18-18.18-azure
-SUSE Linux Enterprise Server 15 und 15 SP1 | [9.36](https://support.microsoft.com/help/4578241/), [9.37](https://support.microsoft.com/help/4582666/)  | Standardmäßig werden alle [SUSE 15- und 15-Stock-Kernel](https://www.suse.com/support/kb/doc/?id=000019587) unterstützt.</br></br> 4.12.14-5.5-azure bis 4.12.14-5.47-azure </br></br> 4.12.14-8.5-azure bis 4.12.14-8.38-azure
+SUSE Linux Enterprise Server 15, SP1, SP2 | [9.40](https://support.microsoft.com/en-us/topic/update-rollup-53-for-azure-site-recovery-060268ef-5835-bb49-7cbc-e8c1e6c6e12a)  | Standardmäßig werden alle [SUSE 15 SP1- und SP2-Stock-Kernels](https://www.suse.com/support/kb/doc/?id=000019587) unterstützt.</br></br> 4.12.14-5.5-azure bis 4.12.14-5.47-azure </br></br> 4.12.14-8.5-azure bis 4.12.14-8.55-azure </br> 5.3.18-16-azure </br> 5.3.18-18.5-azure bis 5.3.18-18.29-azure
+SUSE Linux Enterprise Server 15, SP1, SP2 | [9.39](https://support.microsoft.com/help/4597409/)  | Standardmäßig werden alle [SUSE 15 SP1- und SP2-Stock-Kernels](https://www.suse.com/support/kb/doc/?id=000019587) unterstützt.</br></br> 4.12.14-5.5-azure bis 4.12.14-5.47-azure </br></br> 4.12.14-8.5-azure bis 4.12.14-8.47-azure </br> 5.3.18-16-azure </br> 5.3.18-18.5-azure bis 5.3.18-18.21-azure
+SUSE Linux Enterprise Server 15, SP1, SP2 | [9.38](https://support.microsoft.com/help/4590304/)  | Standardmäßig werden alle [SUSE 15 SP1- und SP2-Stock-Kernels](https://www.suse.com/support/kb/doc/?id=000019587) unterstützt.</br></br> 4.12.14-5.5-azure bis 4.12.14-5.47-azure </br></br> 4.12.14-8.5-azure bis 4.12.14-8.44-azure </br> 5.3.18-16-azure </br> 5.3.18-18.5-azure bis 5.3.18-18.18-azure
+SUSE Linux Enterprise Server 15 und 15 SP1 | [9.36](https://support.microsoft.com/help/4578241/), [9.37](https://support.microsoft.com/help/4582666/)  | Standardmäßig werden alle [SUSE 15 SP1- und SP2-Stock-Kernels](https://www.suse.com/support/kb/doc/?id=000019587) unterstützt.</br></br> 4.12.14-5.5-azure bis 4.12.14-5.47-azure </br></br> 4.12.14-8.5-azure bis 4.12.14-8.38-azure
 
 ## <a name="linux-file-systemsguest-storage"></a>Linux-Dateisysteme/-Gastspeicher
 
@@ -231,7 +231,7 @@ Gast-/Server-NFS | Nein
 Gast-/Server-iSCSI | Für Migration: Ja<br/>Für Notfallwiederherstellung: Nein, iSCSI führt ein Failback als angefügter Datenträger auf den virtuellen Computer aus
 Gast/Server-SMB 3.0 | Nein
 Gast-/Server-RDM | Ja<br/><br/> Nicht verfügbar für physische Server
-Gast-/Serverdatenträger > 1 TB | Ja, der Datenträger muss größer als 1024 MB sein.<br/><br/>Bis zu 32 TB bei der Replikation auf verwaltete Datenträger (ab Version 9.40)<br></br> Bis zu 4.095 GB bei der Replikation in Speicherkonten
+Gast-/Serverdatenträger > 1 TB | Ja, der Datenträger muss größer als 1024 MB sein.<br/><br/>Bis zu 8.192 GB bei der Replikation auf verwaltete Datenträger (ab Version 9.26)<br></br> Bis zu 4.095 GB bei der Replikation in Speicherkonten
 Gast-/Serverdatenträger mit einer logischen Sektorgröße von 4K und einer physischen Sektorgröße von 4k | Nein
 Gast-/Serverdatenträger mit einer logischen Sektorgröße von 4K und einer physischen Sektorgröße von 512 Bytes | Nein
 Gast-/Servervolume mit Stripesetdatenträgern > 4 TB | Ja
@@ -292,7 +292,7 @@ Architektur des Gastbetriebssystems | 64 Bit. | Beim Überprüfen tritt ein Feh
 Größe des Betriebssystem-Datenträgers | Bis zu 2.048 GB. | Beim Überprüfen tritt ein Fehler auf, wenn keine Unterstützung vorhanden ist.
 Anzahl von Betriebssystem-Datenträgern | 1 </br> Start- und Systempartition auf unterschiedlichen Datenträgern werden nicht unterstützt | Beim Überprüfen tritt ein Fehler auf, wenn keine Unterstützung vorhanden ist.
 Anzahl von Datenträgern für Daten | Maximal 64. | Beim Überprüfen tritt ein Fehler auf, wenn keine Unterstützung vorhanden ist.
-Datenträgergröße | Bis zu 32 TB bei der Replikation auf verwaltete Datenträger (ab Version 9.40)<br></br>Bis zu 4.095 GB bei der Replikation in Speicherkonten| Beim Überprüfen tritt ein Fehler auf, wenn keine Unterstützung vorhanden ist.
+Datenträgergröße | Bis zu 8.192 GB bei der Replikation auf verwaltete Datenträger (ab Version 9.26)<br></br>Bis zu 4.095 GB bei der Replikation in Speicherkonten| Beim Überprüfen tritt ein Fehler auf, wenn keine Unterstützung vorhanden ist.
 Netzwerkadapter | Es werden mehrere Adapter unterstützt. |
 Freigegebene VHD | Wird nicht unterstützt. | Beim Überprüfen tritt ein Fehler auf, wenn keine Unterstützung vorhanden ist.
 Fiber-Channel-Datenträger | Wird nicht unterstützt. | Beim Überprüfen tritt ein Fehler auf, wenn keine Unterstützung vorhanden ist.

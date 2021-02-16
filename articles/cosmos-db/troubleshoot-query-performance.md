@@ -8,12 +8,12 @@ ms.date: 02/02/2021
 ms.author: tisande
 ms.subservice: cosmosdb-sql
 ms.reviewer: sngun
-ms.openlocfilehash: d50893fc3bf5d890efbdc1f5b59cf52f35d91a15
-ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
+ms.openlocfilehash: 6875fc53a651b89fcfe88d3217ff86bd21204f6c
+ms.sourcegitcommit: ea822acf5b7141d26a3776d7ed59630bf7ac9532
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99475725"
+ms.lasthandoff: 02/03/2021
+ms.locfileid: "99524304"
 ---
 # <a name="troubleshoot-query-issues-when-using-azure-cosmos-db"></a>Behandeln von Problemen bei Verwendung von Azure Cosmos DB
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -206,12 +206,15 @@ Die meisten Systemfunktionen verwenden Indizes. Es folgt eine Liste einiger allg
 - Left
 - Teilzeichenfolge, aber nur, wenn die erste num_expr den Wert „0“ hat
 
-Nachstehend sind einige allgemeine Systemfunktionen aufgeführt, die den Index nicht verwenden und jedes Dokument laden müssen:
+Nachstehend sind einige allgemeine Systemfunktionen aufgeführt, die den Index nicht verwenden und jedes Dokument laden müssen, wenn sie in einer `WHERE`-Klausel verwendet werden:
 
 | **Systemfunktion**                     | **Vorschläge für Optimierungen**             |
 | --------------------------------------- |------------------------------------------------------------ |
-| UPPER/LOWER                             | Normalisieren Sie die Groß-/Kleinschreibung beim Einfügen, statt die Systemfunktion zum Normalisieren der Daten für Vergleiche zu verwenden. Eine Abfrage wie ```SELECT * FROM c WHERE UPPER(c.name) = 'BOB'``` wird zu ```SELECT * FROM c WHERE c.name = 'BOB'```. |
+| Upper/Lower                         | Normalisieren Sie die Groß-/Kleinschreibung beim Einfügen, statt die Systemfunktion zum Normalisieren der Daten für Vergleiche zu verwenden. Eine Abfrage wie ```SELECT * FROM c WHERE UPPER(c.name) = 'BOB'``` wird zu ```SELECT * FROM c WHERE c.name = 'BOB'```. |
+| GetCurrentDateTime/GetCurrentTimestamp/GetCurrentTicks | Berechnen Sie die aktuelle Zeit vor der Abfrageausführung, und verwenden Sie diesen Zeichenfolgenwert in der `WHERE`-Klausel. |
 | Mathematische Funktionen (Nicht-Aggregate) | Wenn Sie in der Abfrage einen Wert häufig berechnen müssen, sollten Sie diesen Wert als Eigenschaft in Ihrem JSON-Dokument speichern. |
+
+Wenn er in der `SELECT`-Klausel verwendet wird, wirken sich ineffiziente Systemfunktionen nicht auf die Verwendung von Indizes durch Abfragen aus.
 
 ### <a name="improve-string-system-function-execution"></a>Verbessern der Ausführung von Systemfunktionen mit Zeichenfolgen
 

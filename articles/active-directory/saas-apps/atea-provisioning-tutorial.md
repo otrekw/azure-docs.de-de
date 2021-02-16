@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/25/2021
 ms.author: Zhchia
-ms.openlocfilehash: 51410bd86fa9679aea76f6d5c48f267ddec79026
-ms.sourcegitcommit: eb546f78c31dfa65937b3a1be134fb5f153447d6
+ms.openlocfilehash: 67b114ac355b293db61d00b89816ab73aaa2e5b2
+ms.sourcegitcommit: 5b926f173fe52f92fcd882d86707df8315b28667
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99430695"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99550267"
 ---
 # <a name="tutorial-configure-atea-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Atea für die automatische Benutzerbereitstellung
 
@@ -48,7 +48,7 @@ Das diesem Tutorial zu Grunde liegende Szenario setzt voraus, dass Sie bereits �
 
 ## <a name="step-2-configure-atea-to-support-provisioning-with-azure-ad"></a>Schritt 2: Konfigurieren von Atea für die Unterstützung der Bereitstellung mit Azure AD
 
-Wenn Sie das Iris Intranet für die Unterstützung der Bereitstellung mit Azure AD konfigurieren möchten, benötigen Sie die **Mandanten-URL** und das **geheime Token**, die Sie per E-Mail vom [Atea-Supportteam](mailto:servicedesk@atea.dk) erfragen können. Diese Werte werden im Azure-Portal auf der Registerkarte „Bereitstellung“ für Ihre Atea-Anwendung im Feld **Geheimes Token** und **Mandanten-URL** eingegeben.
+Wenn Sie Atea für die Unterstützung der Bereitstellung mit Azure AD konfigurieren möchten, schreiben Sie eine E-Mail an das Atea-Supportteam (<SSO.Support@atea.com>).
 
 ## <a name="step-3-add-atea-from-the-azure-ad-application-gallery"></a>Schritt 3: Hinzufügen von Atea aus dem Azure AD-Anwendungskatalog
 

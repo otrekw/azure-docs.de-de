@@ -2,13 +2,13 @@
 title: Konzepte – Private Clouds und Cluster
 description: Hier erfahren Sie mehr über die wichtigsten Funktionen von softwaredefinierten Azure VMware Solution-Rechenzentren und vSphere-Clustern.
 ms.topic: conceptual
-ms.date: 10/27/2020
-ms.openlocfilehash: 234e705ad3b39a575c6f8c475bede4b81efa4b96
-ms.sourcegitcommit: 445ecb22233b75a829d0fcf1c9501ada2a4bdfa3
+ms.date: 02/02/2021
+ms.openlocfilehash: 960187629c5dc1120b720ec9009276fa3f313e5d
+ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/02/2021
-ms.locfileid: "99474912"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99538923"
 ---
 #  <a name="azure-vmware-solution-private-cloud-and-cluster-concepts"></a>Azure VMware Solution: Konzepte – Private Clouds und Cluster
 
@@ -66,10 +66,11 @@ Die vCenter- und NSX-T-Konfigurationen der privaten Cloud werden stündlich gesi
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nachdem Sie jetzt diese Konzepte der privaten Azure VMware Solution-Cloud kennengelernt haben, möchten Sie vielleicht mehr über Folgendes erfahren: 
+Nachdem Sie jetzt die Konzepte der privaten Azure VMware Solution-Cloud kennengelernt haben, möchten Sie vielleicht mehr über Folgendes erfahren: 
 
 - [Azure VMware Solution – Netzwerk- und Interkonnektivitätskonzepte](concepts-networking.md)
 - [Speicherkonzepte von Azure VMware Solution](concepts-storage.md)
+- [Aktivieren einer Azure VMware Solution-Ressource](enable-azure-vmware-solution.md)
 
 <!-- LINKS - internal -->
 

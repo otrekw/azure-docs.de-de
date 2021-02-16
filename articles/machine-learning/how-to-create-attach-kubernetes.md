@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 10/02/2020
-ms.openlocfilehash: e485c2f0a7deeffe68c932688658ef099fec510e
-ms.sourcegitcommit: 740698a63c485390ebdd5e58bc41929ec0e4ed2d
+ms.openlocfilehash: 97042479419cbc9d634a06e2dcbcccf9c8fde62b
+ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99492754"
+ms.lasthandoff: 02/04/2021
+ms.locfileid: "99560472"
 ---
 # <a name="create-and-attach-an-azure-kubernetes-service-cluster"></a>Erstellen und Anfügen eines Azure Kubernetes Service-Clusters
 
@@ -210,7 +210,7 @@ Weitere Informationen zum Erstellen eines AKS-Clusters im Portal finden Sie unte
 
 **Geschätzter Zeitaufwand:** Ca. fünf Minuten.
 
-Wenn Sie in Ihrem Azure-Abonnement bereits über einen AKS-Cluster verfügen und dieser maximal die Version 1.17.hat, können Sie ihn für die Bereitstellung Ihres Image verwenden.
+Wenn Sie in Ihrem Azure-Abonnement bereits über einen AKS-Cluster verfügen, können Sie diesen für Ihren Arbeitsbereich verwenden.
 
 > [!TIP]
 > Der vorhandene AKS-Cluster kann sich in einer anderen Azure-Region befinden als Ihr Azure Machine Learning-Arbeitsbereich.
