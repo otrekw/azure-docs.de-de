@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 11/16/2020
 ms.author: gunjanj
 ms.subservice: files
-ms.openlocfilehash: c3dbd76e76ad6e7bed0808278d4516992bc328f0
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: 54b92c24b5a50ef1674dcb47df555b27259a350b
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99574430"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100393852"
 ---
 # <a name="troubleshoot-azure-file-shares-performance-issues"></a>Problembehandlung bei Leistungsproblemen mit Azure-Dateifreigaben
 
@@ -22,7 +22,7 @@ In diesem Artikel sind einige allgemeine Probleme aufgeführt, die im Zusammenha
 
 ### <a name="cause-1-share-was-throttled"></a>Ursache 1: Freigabe wurde gedrosselt
 
-Anforderungen werden gedrosselt, wenn die E/A-Vorgänge pro Sekunde (I/O Operations Per Second, IOPS) und Grenzwerte für „eingehend“ oder „ausgehend“ für eine Dateifreigabe erreicht werden. Informationen zu den Grenzwerten für Standard- und Premium-Dateifreigaben finden Sie unter [Skalierungsziele für Dateifreigaben und Dateien](./storage-files-scale-targets.md#file-share-and-file-scale-targets).
+Anforderungen werden gedrosselt, wenn die E/A-Vorgänge pro Sekunde (I/O Operations Per Second, IOPS) und Grenzwerte für „eingehend“ oder „ausgehend“ für eine Dateifreigabe erreicht werden. Informationen zu den Grenzwerten für Standard- und Premium-Dateifreigaben finden Sie unter [Skalierungsziele für Dateifreigaben und Dateien](./storage-files-scale-targets.md#azure-file-share-scale-targets).
 
 Wenn Sie überprüfen möchten, ob Ihre Freigabe gerade gedrosselt wird, können Sie im Portal auf Azure-Metriken zugreifen und sie verwenden.
 

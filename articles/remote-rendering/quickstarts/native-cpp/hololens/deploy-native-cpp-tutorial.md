@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 06/08/2020
 ms.topic: quickstart
-ms.openlocfilehash: b469f0cae1e356c47bfe60af99c4fa2e73eab78d
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.openlocfilehash: b340a180927b3df9ad51295383b09b03dbbb2d98
+ms.sourcegitcommit: 7ec45b7325e36debadb960bae4cf33164176bc24
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99594026"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100530585"
 ---
 # <a name="quickstart-deploy-native-c-sample-to-hololens"></a>Schnellstart: Bereitstellen des nativen C++-Beispiels für HoloLens
 
@@ -81,7 +81,7 @@ Da die Kontoanmeldeinformationen im Quellcode des Tutorials hartcodiert sind, m�
 Ändern Sie die folgenden Werte:
 * `init.AccountId`, `init.AccountKey` und `init.AccountDomain`, damit Ihre Kontodaten verwendet werden. Informationen zum Abrufen von Kontoinformationen finden Sie [hier](../../../how-tos/create-an-account.md#retrieve-the-account-information).
 * Geben Sie an, wo die Remote Rendering-Sitzung erstellt werden soll, indem Sie den Regionsteil der Zeichenfolge `init.RemoteRenderingDomain` für andere Regionen als `westus2` ändern, z. B. `"westeurope.mixedreality.azure.com"`.
-* Darüber hinaus kann `m_sessionOverride` in eine vorhandene Sitzungs-ID geändert werden. Sitzungen können außerhalb dieses Beispiels erstellt werden, beispielsweise mit dem [PowerShell-Skript](../../../samples/powershell-example-scripts.md#script-renderingsessionps1) oder durch direkte Verwendung der [REST-API für Sitzungen](../../../how-tos/session-rest-api.md#create-a-session).
+* Darüber hinaus kann `m_sessionOverride` in eine vorhandene Sitzungs-ID geändert werden. Sitzungen können außerhalb dieses Beispiels erstellt werden, beispielsweise mit dem [PowerShell-Skript](../../../samples/powershell-example-scripts.md#script-renderingsessionps1) oder durch direkte Verwendung der [REST-API für Sitzungen](../../../how-tos/session-rest-api.md).
 Die Erstellung einer Sitzung außerhalb des Beispiels wird empfohlen, wenn das Beispiel mehrmals ausgeführt werden soll. Wird keine Sitzung übergeben, wird bei jedem Start eine neue Sitzung erstellt, was mehrere Minuten dauern kann.
 
 Nun kann die Anwendung kompiliert werden.

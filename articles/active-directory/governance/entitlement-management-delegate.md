@@ -16,12 +16,12 @@ ms.date: 12/23/2020
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7a5812d4dbbd1a63b16d5bee77bb018ea18dd1d6
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: c8e6c13600cb5940351d31b54af403584cc68a5f
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98937678"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100515647"
 ---
 # <a name="delegation-and-roles-in-azure-ad-entitlement-management"></a>Delegierung und Rollen in der Azure AD-Berechtigungsverwaltung
 
@@ -133,9 +133,6 @@ Damit ein Benutzer, der kein globaler Administrator oder Benutzeradministrator i
 | [Anwendungsadministrator](../roles/permissions-reference.md) | Katalogbesitzer |  |  | :heavy_check_mark: |  |
 | [Cloudanwendungsadministrator](../roles/permissions-reference.md) | Katalogbesitzer |  |  | :heavy_check_mark: |  |
 | Benutzer | Katalogbesitzer | Nur, wenn Gruppenbesitzer | Nur, wenn Gruppenbesitzer | Nur, wenn App-Besitzer |  |
-
-> [!NOTE]
-> Wenn ein Benutzer eine Sicherheitsgruppe oder eine Microsoft 365-Gruppe hinzufügt, können dieser Gruppe keine Rollen zugewiesen werden. Wenn der Benutzer beim Erstellen eines Zugriffspakets eine Gruppe hinzufügt, der Rollen zugewiesen werden können, muss er auch Besitzer dieser speziellen Gruppe sein. Weitere Informationen finden Sie unter [Erstellen einer Gruppe in Azure Active Directory für das Zuweisen von Rollen](../roles/groups-create-eligible.md).
 
 Wenn Sie die Rolle mit den geringsten Rechten für eine Aufgabe ermitteln möchten, können Sie auch [Administratorrollen nach Administratoraufgabe in Azure Active Directory](../roles/delegate-by-task.md#entitlement-management) zurate ziehen.
 

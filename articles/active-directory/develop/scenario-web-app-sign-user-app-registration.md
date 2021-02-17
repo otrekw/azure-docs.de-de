@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 07/14/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 7f7be27e67bfa266c368927227f1b8d1083a5124
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 96fbe676d4b929d2c1ee2efce0d10f3b5dc7c6ab
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98937876"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100103191"
 ---
 # <a name="web-app-that-signs-in-users-app-registration"></a>Web-App für Benutzeranmeldungen: App-Registrierung
 
@@ -42,7 +42,7 @@ Sie können diese Links für den Einstieg in die Erstellung Ihrer Webanwendung v
 > Welches Portal Sie verwenden müssen, hängt davon ab, ob Ihre Anwendung in der öffentlichen Cloud von Microsoft Azure oder in einer nationalen oder Sovereign Cloud ausgeführt wird. Weitere Informationen finden Sie unter [Nationale Clouds](./authentication-national-cloud.md#app-registration-endpoints).
 
 
-1. Melden Sie sich beim <a href="https://portal.azure.com/" target="_blank">Azure-Portal<span class="docon docon-navigate-external x-hidden-focus"></span></a> an. 
+1. Melden Sie sich beim <a href="https://portal.azure.com/" target="_blank">Azure-Portal</a> an. 
 1. Wenn Sie Zugriff auf mehrere Mandanten haben, verwenden Sie im Menü am oberen Rand den Filter **Verzeichnis + Abonnement** :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::, um den Mandanten auszuwählen, für den Sie eine Anwendung registrieren möchten.
 1. Suchen Sie nach **Azure Active Directory**, und wählen Sie diese Option aus.
 1. Wählen Sie unter **Verwalten** Folgendes aus: **App-Registrierungen** > **Neue Registrierung**.

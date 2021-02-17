@@ -6,14 +6,16 @@ author: kromerm
 ms.author: makromer
 ms.service: data-factory
 ms.date: 02/05/2021
-ms.openlocfilehash: 86ebbb46e8f3b5bb34dfe5789a17a2d63526f65c
-ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
+ms.openlocfilehash: d41646ef1ef964db38245009717554eaeb783824
+ms.sourcegitcommit: e3151d9b352d4b69c4438c12b3b55413b4565e2f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2021
-ms.locfileid: "99808024"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100526305"
 ---
 # <a name="save-costs-for-resources-with-reserved-capacity---azure-data-factory-data-flows"></a>Sparen von Kosten für Ressourcen mit reservierter Kapazität: Azure Data Factory-Datenflüsse
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Sparen Sie Kosten für Azure Data Factory-Datenflüsse im Vergleich zur nutzungsbasierten Bezahlung, indem Sie sich auf eine Reservierung für Computeressourcen festlegen. Mit reservierter Kapazität legen Sie sich für die Nutzung von ADF-Datenflüssen für einen Zeitraum von einem oder drei Jahren fest und profitieren dafür von einem erheblichen Rabatt bei den Computekosten. Sie müssen die Azure-Region, den Computetyp, die Kernanzahl und den Zeitraum angeben, um reservierte Kapazität zu erwerben.
 
