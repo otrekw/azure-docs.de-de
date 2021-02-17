@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: pafarley
-ms.openlocfilehash: f6d610db01b465306cdaaafa9b1308dba63ff9ca
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: a8eecabe71cb439949f7e0638c7339eb31b08500
+ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98936150"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99581260"
 ---
 # <a name="whats-new-in-form-recognizer"></a>Neuerungen in der Formularerkennung
 
@@ -209,7 +209,7 @@ Die JSON-Antworten für alle API-Aufrufe haben neue Formate. Es wurden einige Sc
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Durchlaufen Sie einen [Schnellstart](quickstarts/client-library.md) zu den ersten Schritten zum Schreiben einer Formularverarbeitungs-App mit der Formularerkennung in der Sprache Ihrer Wahl.
+Durchlaufen Sie einen [Schnellstart](quickstarts/client-library.md) zu den ersten Schritten zum Schreiben einer Formularverarbeitungs-App mit der Formularerkennung in der Entwicklungssprache Ihrer Wahl.
 
 ## <a name="see-also"></a>Weitere Informationen
 
