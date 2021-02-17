@@ -12,12 +12,12 @@ ms.date: 06/26/2020
 ms.author: ryanwi
 ms.reviewer: tomfitz
 ms.custom: aaddev, seoapril2019, identityplatformtop40
-ms.openlocfilehash: d20a363a0320ca45f22183e54bcc390d4733c8bc
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: 8a4a4153261b93b3b17641e8561962c274570bd0
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99581753"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100104211"
 ---
 # <a name="how-to-use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>Gewusst wie: Erstellen einer Azure AD-Anwendung und eines Dienstprinzipals mit Ressourcenzugriff über das Portal
 
@@ -75,7 +75,7 @@ So überprüfen Sie die Berechtigungen Ihres Abonnements:
 
 Wir beginnen gleich mit der Erstellung der Identität. Falls ein Problem auftritt, sollten Sie die [erforderlichen Berechtigungen](#permissions-required-for-registering-an-app) überprüfen, um sicherzustellen, dass die Identität mit Ihrem Konto erstellt werden kann.
 
-1. Melden Sie sich über das <a href="https://portal.azure.com/" target="_blank">Azure-Portal<span class="docon docon-navigate-external x-hidden-focus"></span></a> bei Ihrem Azure-Konto an.
+1. Melden Sie sich über das <a href="https://portal.azure.com/" target="_blank">Azure-Portal</a> bei Ihrem Azure-Konto an.
 1. Wählen Sie **Azure Active Directory** aus.
 1. Wählen Sie **App-Registrierungen** aus.
 1. Wählen Sie **Neue Registrierung** aus.
@@ -181,7 +181,7 @@ Wenn Sie sich entscheiden, kein Zertifikat zu verwenden, können Sie ein neues A
 ## <a name="configure-access-policies-on-resources"></a>Konfigurieren von Zugriffsrichtlinien für Ressourcen
 Beachten Sie, dass Sie möglicherweise zusätzliche Berechtigungen für Ressourcen konfigurieren müssen, auf die Ihre Anwendung zugreifen muss. Sie müssen beispielsweise auch die [Zugriffsrichtlinien eines Schlüsseltresors aktualisieren](../../key-vault/general/secure-your-key-vault.md#data-plane-and-access-policies), um der Anwendung Zugriff auf Schlüssel, Geheimnisse oder Zertifikate zu gewähren.
 
-1. Navigieren Sie im <a href="https://portal.azure.com/" target="_blank">Azure-Portal <span class="docon docon-navigate-external x-hidden-focus"></span></a> zu Ihrem Schlüsseltresor, und wählen Sie **Zugriffsrichtlinien** aus.
+1. Navigieren Sie im <a href="https://portal.azure.com/" target="_blank">Azure-Portal</a> zu Ihrem Schlüsseltresor, und wählen Sie **Zugriffsrichtlinien** aus.
 1. Wählen Sie **Zugriffsrichtlinie hinzufügen** und anschließend die Schlüssel-, Geheimnis- und Zertifikatberechtigungen aus, die Sie Ihrer Anwendung gewähren möchten.  Wählen Sie den zuvor erstellten Dienstprinzipal aus.
 1. Wählen Sie **Hinzufügen** aus, um die Zugriffsrichtlinie hinzuzufügen, und wählen Sie dann **Speichern** aus, um Ihre Änderungen zu übernehmen.
     ![Zugriffsrichtlinie hinzufügen](./media/howto-create-service-principal-portal/add-access-policy.png)

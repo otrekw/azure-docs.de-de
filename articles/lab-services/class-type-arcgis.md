@@ -5,12 +5,12 @@ author: nicolela
 ms.topic: article
 ms.date: 02/04/2021
 ms.author: nicolela
-ms.openlocfilehash: dbe4191b64773b71bc1ae04842d824fbfead8e55
-ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
+ms.openlocfilehash: 8d5356f7fd2661d9743d1058a147a0b20f62850e
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/06/2021
-ms.locfileid: "99628124"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100373707"
 ---
 # <a name="set-up-a-lab-for-arcmaparcgis-desktop"></a>Einrichten eines Labs für ArcMap\ArcGIS Desktop
 
@@ -55,7 +55,7 @@ Die Schritte in diesem Abschnitt zeigen, wie Sie die Vorlage für virtuelle Comp
 1.  Starten Sie die Vorlage für virtuelle Computer, und stellen Sie über RDP eine Verbindung mit dem Computer her.
 
 2.  Laden Sie die ArcGIS Desktop-Komponenten herunter, und installieren Sie sie mithilfe der Anweisungen des ESRI.  Diese Schritte umfassen die Zuweisung des Lizenz-Managers für die Lizenzierung der gleichzeitigen Verwendung: 
-    - [Einführung in das Installieren und Konfigurieren von ArcGIS Desktop](https://desktop.arcgis.com/arcmap/latest/get-started/installation-guide/introduction.htm)
+    - [Einführung in das Installieren und Konfigurieren von ArcGIS Desktop](https://desktop.arcgis.com/en/arcmap/latest/get-started/installation-guide/introduction.htm)
 
 3.  Richten Sie einen externen Sicherungsspeicher für Kursteilnehmer ein.  Die Kursteilnehmer können Dateien direkt auf der ihnen zugewiesenen VM speichern, da alle Änderungen, die sie vornehmen, sitzungsübergreifend gespeichert werden.  Wir empfehlen jedoch, dass die Kursteilnehmer ihre Arbeit in einem Speicher sichern, der sich außerhalb ihrer VM befindet, und zwar aus mehreren Gründen:
     - Damit die Kursteilnehmer nach dem Ende der Klasse und des Labs auf ihre Arbeit zugreifen können.  
