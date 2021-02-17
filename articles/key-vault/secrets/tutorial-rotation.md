@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 01/26/2020
 ms.author: mbaldwin
 ms.custom: devx-track-csharp
-ms.openlocfilehash: cd90043c8f03361244d3500f83f6df5347f1d867
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: 526c3d2d85a3f2877f82b3b764f395c51f7c05c0
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99539399"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99805229"
 ---
 # <a name="automate-the-rotation-of-a-secret-for-resources-that-use-one-set-of-authentication-credentials"></a>Automatisieren der Rotation eines Geheimnisses für Ressourcen mit einem Satz mit Anmeldeinformationen für die Authentifizierung
 
@@ -213,7 +213,7 @@ Wenn Sie ein Geheimnis mit einem kurzen Ablaufdatum erstellen, wird innerhalb vo
 
 Vergewissern Sie sich unter **Key Vault** > **Geheimnisse**, dass das Geheimnis rotiert wurde:
 
-:::image type="content" source="../media/rotate-8.png" alt-text="Navigieren zu „Geheimnisse“":::
+:::image type="content" source="../media/rotate-8.png" alt-text="Screenshot: Zugriff auf „Key Vault“ > „Geheimnisse“":::
 
 Öffnen Sie das Geheimnis **sqlPassword**, und überprüfen Sie die ursprüngliche sowie die rotierte Version:
 

@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 01/22/2021
 ms.topic: conceptual
-ms.openlocfilehash: 718e812a8193797ad350fa61444bb05fe5a4b724
-ms.sourcegitcommit: 100390fefd8f1c48173c51b71650c8ca1b26f711
+ms.openlocfilehash: 6e312d354a25113a764bca5e9492909d22af9873
+ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98896900"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "100007736"
 ---
 # <a name="update-management-overview"></a>Übersicht über die Updateverwaltung
 
@@ -74,7 +74,7 @@ Die folgende Tabelle enthält die unterstützten Betriebssysteme für Updatebewe
 
 |Betriebssystem  |Notizen  |
 |---------|---------|
-|Windows Server 2019 (Datacenter/Datacenter Core/Standard)<br>Windows Server 2016 (Datacenter/Datacenter Core/Standard)<br>Windows Server 2012 R2 (Datacenter/Standard)<br>Windows Server 2012 |
+|Windows Server 2019 (Datacenter/Standard mit Server Core)<br><br>Windows Server 2016 (Datacenter/Standard ohne Server Core)<br><br>Windows Server 2012 R2 (Datacenter/Standard)<br><br>Windows Server 2012 | |
 |Windows Server 2008 R2 (RTM und SP1 Standard)| Die Updateverwaltung unterstützt Bewertungen und Patching für dieses Betriebssystem. Der [Hybrid Runbook Worker](../automation-windows-hrw-install.md) wird für Windows Server 2008 R2 unterstützt. |
 |CentOS 6 und 7 (x64)      | Linux-Agents erfordern Zugriff auf ein Updaterepository. Für klassifizierungsbasiertes Patchen muss `yum` Sicherheitsdaten zurückgeben, über die CentOS in den RTM-Releases nicht verfügt. Weitere Informationen zu klassifizierungsbasiertem Patching unter CentOS finden Sie unter [Lösung für die Updateverwaltung in Azure](view-update-assessments.md#linux).          |
 |Red Hat Enterprise 6 und 7 (x64)     | Linux-Agents erfordern Zugriff auf ein Updaterepository.        |
