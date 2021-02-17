@@ -6,14 +6,14 @@ ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: conceptual
-ms.date: 02/01/2021
+ms.date: 02/12/2021
 ms.author: banders
-ms.openlocfilehash: debe02a89e10712ad8a0b8d61b0fdc3f8a4bd7b2
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: c599c64ce4b22bbf7bece77602b22fef6629d07c
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99577394"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100369729"
 ---
 # <a name="how-reservation-discounts-apply-to-azure-app-service-premium-v3-instances-and-isolated-stamps"></a>Anwendung von Reservierungsrabatten auf Azure App Service-Instanzen im Premium V3-Tarif sowie auf gesonderte Stempel
 
@@ -40,10 +40,6 @@ Der Rabatt für Azure-Reservierungen wird auf Stundenbasis auf ausgeführte Prem
 4.  In der vierten Stunde wird Instanz 1 für 0,5 Stunden und Instanz 2 für 1 Stunde ausgeführt. Instanz 1 wird vollständig durch die Reservierung abgedeckt. Außerdem sind 0,5 Stunden von Instanz 2 abgedeckt. Ihnen wird der Preis für die nutzungsbasierte Zahlung für die verbleibenden 0,5 Stunden in Rechnung gestellt.
 
 Wenn Sie grundlegende Informationen wünschen und die Anwendung Ihrer Azure-Reservierungen in Abrechnungsnutzungsberichten anzeigen möchten, lesen Sie [Grundlegendes zur Nutzung von Azure-Reservierungen für den Konzernbeitritt](understand-reserved-instance-usage-ea.md).
-
-### <a name="discount-can-apply-to-different-sizes"></a>Rabatt kann für verschiedene Größen gelten.
-
-Wenn Sie reservierte Premium V3-Instanzen erwerben und **Optimiert für: Flexibilität bei der Instanzgröße** auswählen, hängt die Abdeckung des Rabatts von der ausgewählten Größe der Premium V3-Instanz ab. Sie kann auch auf andere Instanzgrößen angewendet werden, die sich in der gleichen Gruppe für Instanzgrößenflexibilität der Serie befinden.
 
 ## <a name="how-reservation-discounts-apply-to-isolated-stamps"></a>Anwendung von Reservierungsrabatten auf gesonderte Stempel
 
