@@ -11,12 +11,12 @@ ms.date: 01/29/2021
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: Verarbeiten von Dokumenten
-ms.openlocfilehash: 0405ea116a1867ec75beff21637f18fb37565627
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: 9642f9ce51cd3eb90344f96bc099da7adea93022
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99584718"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100364789"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-the-sample-labeling-tool"></a>Trainieren eines Formularerkennungsmodells mit Beschriftungen mithilfe des Tools für die Beschriftung von Beispielen
 
@@ -228,7 +228,7 @@ Führen Sie die oben genannten Schritte aus, um mindestens fünf Ihrer Formulare
 Optional können Sie den erwarteten Datentyp für jedes Tag festlegen. Öffnen Sie das Kontextmenü rechts neben einem Tag, und wählen Sie im Menü einen Typ aus. Diese Funktion ermöglicht es dem Erkennungsalgorithmus, bestimmte Annahmen zu treffen, die die Genauigkeit der Texterkennung verbessern. Außerdem wird sichergestellt, dass die erkannten Werte in der endgültigen JSON-Ausgabe in einem standardisierten Format zurückgegeben werden. Informationen zum Werttyp werden in der Datei *fields.json* unter demselben Pfad wie Ihre Beschriftungsdateien gespeichert.
 
 > [!div class="mx-imgBorder"]
-> ![Werttypauswahl mit dem Tool für die Beschriftung von Beispielen](../media/whats-new/formre-value-type.png)
+> ![Werttypauswahl mit dem Tool für die Beschriftung von Beispielen](../media/whats-new/value-type.png)
 
 Derzeit werden die folgenden Werttypen und Variationen unterstützt:
 * `string`

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/28/2021
 ms.author: cholse
 ms.reviewer: dbakevlar
-ms.openlocfilehash: 3122b1c5d7ac8b9dca0e244a4b7e73a57c4c5fca
-ms.sourcegitcommit: dd24c3f35e286c5b7f6c3467a256ff85343826ad
+ms.openlocfilehash: ac045694e8975509635e03221a8cb9cc84446b55
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99072403"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99806408"
 ---
 # <a name="back-up-and-recover-an-oracle-database-19c-database-on-an-azure-linux-vm-using-azure-backup"></a>Sichern und Wiederherstellen einer Oracle Database 19c-Datenbank auf einer Azure Linux-VM mithilfe von Azure Backup
 
@@ -697,7 +697,7 @@ Führen Sie diese Schritte aus, um die gesamte VM wiederherzustellen:
 
    1. Wählen Sie im Azure-Portal **+ Ressource erstellen** aus. Suchen Sie nach **Speicherkonto**, und wählen Sie diese Option aus.
     
-      ![Seite „Speicherkonto hinzufügen“](./media/oracle-backup-recovery/storage-1.png)
+      ![Screenshot der Erstellung einer Ressource.](./media/oracle-backup-recovery/storage-1.png)
     
     
    1. Wählen Sie auf der Seite „Speicherkonto erstellen“ Ihre vorhandene Ressourcengruppe **rg-oracle** aus. Nennen Sie Ihr Speicherkonto **oracrestore**, und wählen Sie **Storage V2 (generalpurpose v2)** als „Kontotyp“. Ändern Sie „Replikation“ in **Lokal redundanter Speicher (LRS)** , und legen Sie „Leistung“ auf **Standard** fest. Stellen Sie sicher, dass der Standort auf die Region aller anderen Ressourcen in der Ressourcengruppe festgelegt ist. 
@@ -877,7 +877,7 @@ Nachdem die VM wiederhergestellt wurde, müssen Sie der neuen VM die ursprüngli
 
 5.  Nun müssen Sie die beim Wiederherstellungsvorgang der VM erstellte NIC trennen, da sie als primäre Schnittstelle konfiguriert ist. Klicken Sie auf **Netzwerkschnittstelle trennen**. Wählen Sie die neue NIC ähnlich wie **vmoracle19c-NIC-xxxxxxxxxxxx** aus, und klicken Sie dann auf **OK**.
 
-    ![Wert der IP-Adresse](./media/oracle-backup-recovery/create-ip-05.png)
+    ![Screenshot, der zeigt, wo „Netzwerkschnittstelle trennen“ ausgewählt werden soll](./media/oracle-backup-recovery/create-ip-05.png)
     
     Ihre neu erstellte VM verfügt nun über die ursprüngliche NIC, die mit der ursprünglichen IP-Adresse und den Regeln der Netzwerksicherheitsgruppe verknüpft ist.
     
