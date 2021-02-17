@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: sumuth
 ms.date: 10/23/2020
-ms.openlocfilehash: a7dc6a6b11d3bfacf0aac5472a872ffaa7acc92b
-ms.sourcegitcommit: 003ac3b45abcdb05dc4406661aca067ece84389f
+ms.openlocfilehash: 5be0bf21514dd92c2f980081bb57d873895bbb91
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96748704"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100099930"
 ---
 # <a name="quickstart-use-an-arm-template-to-create-an-azure-database-for-mysql---flexible-server-preview"></a>Schnellstart: Verwenden einer Resource Manager-Vorlage zum Erstellen einer Azure Database for MySQL Flexible Server-Instanz (Vorschau)
 
@@ -97,7 +97,7 @@ Erstellen Sie eine _mysql-flexible-server-template.json_-Datei, und kopieren Sie
       "location": "[parameters('location')]",
       "sku": {
         "name": "Standard_D4ds_v4",
-        "tier": "[parameters('serverEdition')]"        
+        "tier": "[parameters('serverEdition')]"
       },
       "tags": "[parameters('tags')]",
       "properties": {
@@ -204,6 +204,22 @@ read serverName &&
 echo "Enter the resource group where the Azure Database for MySQL server exists:" &&
 read resourcegroupName &&
 az resource show --resource-group $resourcegroupName --name $serverName --resource-type "Microsoft.DbForMySQL/flexibleServers"
+```
+## <a name="exporting-arm-template-from-the-portal"></a>Exportieren einer ARM-Vorlage über das Portal
+Sie können über das Azure-Portal [eine ARM-Vorlage exportieren](../../azure-resource-manager/templates/export-template-portal.md). Eine Vorlage kann auf zwei Arten exportiert werden:
+
+- [Export aus Ressourcengruppe oder Ressource](../../azure-resource-manager/templates/export-template-portal.md#export-template-from-a-resource). Diese Option generiert eine neue Vorlage aus vorhandenen Ressourcen. Die exportierte Vorlage ist eine „Momentaufnahme“ des aktuellen Zustands der Ressourcengruppe. Sie können eine gesamte Ressourcengruppe oder bestimmte Ressourcen innerhalb dieser Ressourcengruppe exportieren.
+- [Export vor der Bereitstellung oder über den Verlauf](../../azure-resource-manager/templates/export-template-portal.md#export-template-before-deployment). Diese Option ruft eine exakte Kopie einer für die Bereitstellung verwendeten Vorlage ab.
+
+Beim Exportieren der Vorlage sehen Sie im Abschnitt ```"parameters":{ }``` der Vorlage, dass ```administratorLogin``` und ```administratorLoginPassword``` aus Sicherheitsgründen nicht enthalten sind. Diese Parameter **MÜSSEN** Ihrer Vorlage vor der Bereitstellung hinzugefügt werden. Andernfalls tritt bei der Vorlage ein Fehler auf.
+
+```
+"administratorLogin": {
+      "type": "String"
+    },
+"administratorLoginPassword": {
+      "type": "SecureString"
+    },
 ```
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen

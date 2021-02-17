@@ -5,12 +5,12 @@ author: erscorms
 ms.author: erscor
 ms.date: 02/11/2020
 ms.topic: reference
-ms.openlocfilehash: 33f5314c80dc33dbec50dc21a71f4cb507979e12
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: 68c0c04feba2779598a500c84b2ba4a9086b104d
+ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94427427"
+ms.lasthandoff: 02/05/2021
+ms.locfileid: "99593946"
 ---
 # <a name="limitations"></a>Einschränkungen
 
@@ -19,8 +19,8 @@ Eine Reihe von Features besitzen Einschränkungen hinsichtlich Größe, Anzahl o
 ## <a name="azure-frontend"></a>Azure-Front-End
 
 Für die Front-End-API (C++ und C#) gelten die folgenden Einschränkungen:
-* Gesamtzahl der [AzureFrontend](/dotnet/api/microsoft.azure.remoterendering.azurefrontend)-Instanzen pro Prozess: 16.
-* Gesamtzahl der [AzureSession](/dotnet/api/microsoft.azure.remoterendering.azuresession)-Instanzen pro [AzureFrontend](/dotnet/api/microsoft.azure.remoterendering.azurefrontend): 16.
+* Gesamte [RemoteRenderingClient](/dotnet/api/microsoft.azure.remoterendering.remoterenderingclient)-Instanzen pro Prozess: 16.
+* Gesamte [RenderingSession](/dotnet/api/microsoft.azure.remoterendering.renderingsession)-Instanzen pro [RemoteRenderingClient](/dotnet/api/microsoft.azure.remoterendering.remoterenderingclient): 16.
 
 ## <a name="objects"></a>erzwingen
 
