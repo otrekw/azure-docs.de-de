@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/18/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: bf92765431ea6b0f80b96ab7d61e8e830220dc82
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: b589f98ee78d0709b2a74ba4e364cec0e486e968
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98934531"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100547161"
 ---
 # <a name="secure-azure-digital-twins"></a>Schützen von Azure Digital Twins
 
@@ -54,11 +54,6 @@ Azure bietet **zwei integrierte Azure-Rollen** für die Autorisierung des Zugrif
 | Azure Digital Twins Data Owner (Azure Digital Twins-Datenbesitzer) | Bietet Vollzugriff auf Azure Digital Twins-Ressourcen | bcd981a7-7f74-457b-83e1-cceb9e632ffe |
 | Azure Digital Twins Data Reader (Azure Digital Twins-Datenleser) | Bietet schreibgeschützten Zugriff auf Azure Digital Twins-Ressourcen | d57506d4-4c8d-48b1-8587-93c323f6a5a3 |
 
->[!NOTE]
-> Diese Rollen wurden kürzlich in der Vorschau umbenannt:
-> * *Azure Digital Twins Data Owner* (Azure Digital Twins-Datenbesitzer) war zuvor *Azure Digital Twins-Besitzer (Vorschau)* .
-> * *Azure Digital Twins Data Reader* (Azure Digital Twins-Datenleser) war zuvor *Azure Digital Twins-Leser (Vorschau)* .
-
 Rollen können auf zwei Arten zugewiesen werden:
 * Über den Bereich „Zugriffssteuerung (IAM)“ für Azure Digital Twins im Azure-Portal (weitere Informationen finden Sie unter [*Hinzufügen oder Entfernen von Azure-Rollenzuweisungen über das Azure-Portal*](../role-based-access-control/role-assignments-portal.md))
 * Mithilfe von CLI-Befehlen zum Hinzufügen oder Entfernen einer Rolle
@@ -91,13 +86,13 @@ Wenn ein Benutzer versucht, eine Aktion auszuführen, die für seine Rolle nicht
 
 ## <a name="managed-identity-for-accessing-other-resources-preview"></a>Verwaltete Identität für den Zugriff auf andere Ressourcen (Vorschau)
 
-Mithilfe einer eingerichteten **verwalteten Identität** von [Azure Active Directory (Azure AD)](../active-directory/fundamentals/active-directory-whatis.md) für eine Azure Digital Twins-Instanz kann die Instanz einfach auf andere von Azure AD geschützte Ressourcen zugreifen, z. B. auf [Azure Key Vault](../key-vault/general/overview.md). Die Identität wird von der Azure-Plattform verwaltet. Sie müssen keine Geheimnisse bereitstellen oder rotieren. Weitere Informationen zu verwalteten Identitäten in Azure AD finden Sie unter  [*Was sind verwaltete Identitäten für Azure-Ressourcen?* ](../active-directory/managed-identities-azure-resources/overview.md). 
+Mithilfe einer eingerichteten **verwalteten Identität** von [Azure Active Directory (Azure AD)](../active-directory/fundamentals/active-directory-whatis.md) für eine Azure Digital Twins-Instanz kann die Instanz einfach auf andere von Azure AD geschützte Ressourcen zugreifen, z. B. auf [Azure Key Vault](../key-vault/general/overview.md). Die Identität wird von der Azure-Plattform verwaltet. Sie müssen keine Geheimnisse bereitstellen oder rotieren. Weitere Informationen zu verwalteten Identitäten in Azure AD finden Sie unter  [*Was sind verwaltete Identitäten für Azure-Ressourcen?*](../active-directory/managed-identities-azure-resources/overview.md). 
 
 Azure unterstützt zwei Arten von verwalteten Identitäten: systemseitig zugewiesene und benutzerseitig zugewiesene. Aktuell unterstützt Azure Digital Twins nur **systemseitig zugewiesene Identitäten**. 
 
 Sie können eine systemseitig zugewiesene verwaltete Identität für Ihre Azure Digital Twins-Instanz für die Authentifizierung bei einem [benutzerdefinierten Endpunkt](concepts-route-events.md#create-an-endpoint) verwenden. Azure Digital Twins unterstützt die systemseitig zugewiesene identitätsbasierte Authentifizierung für Endpunkte für [Event Hub](../event-hubs/event-hubs-about.md)- und  [Service Bus](../service-bus-messaging/service-bus-messaging-overview.md)-Ziele sowie für einen Endpunkt für [Azure Storage-Container](../storage/blobs/storage-blobs-introduction.md) für [Ereignisse unzustellbarer Nachrichten](concepts-route-events.md#dead-letter-events). [Event Grid](../event-grid/overview.md)-Endpunkte werden für verwaltete Identitäten aktuell nicht unterstützt.
 
-Eine Anleitung zum Aktivieren einer vom System verwalteten Identität für Azure Digital Twins und ihrer Verwendung zum Weiterleiten von Ereignissen finden Sie unter [*Aktivieren einer verwalteten Identität für die Weiterleitung von Azure Digital Twins-Ereignissen (Vorschau)* ](how-to-enable-managed-identities.md).
+Eine Anleitung zum Aktivieren einer vom System verwalteten Identität für Azure Digital Twins und ihrer Verwendung zum Weiterleiten von Ereignissen finden Sie unter [*Aktivieren einer verwalteten Identität für die Weiterleitung von Azure Digital Twins-Ereignissen (Vorschau)*](how-to-enable-managed-identities.md).
 
 ## <a name="private-network-access-with-azure-private-link-preview"></a>Zugriff auf private Netzwerke mit Azure Private Link (Vorschau)
 
@@ -111,7 +106,7 @@ Der private Endpunkt verwendet eine IP-Adresse aus dem Adressraum Ihrer Azure Vi
 
 Das Konfigurieren eines privaten Endpunkts für Ihre Azure Digital Twins-Instanz ermöglicht es Ihnen, Ihre Azure Digital Twins-Instanz zu schützen und eine öffentliche Offenlegung zu vermeiden. Außerdem ist die Datenexfiltration aus Ihrem virtuellen Netzwerk so auch nicht möglich.
 
-Eine Anleitung zum Einrichten von Private Link für Azure Digital Twins finden Sie unter [*Aktivieren des privaten Zugriffs mit Private Link (Vorschau)* ](how-to-enable-private-link.md).
+Eine Anleitung zum Einrichten von Private Link für Azure Digital Twins finden Sie unter [*Aktivieren des privaten Zugriffs mit Private Link (Vorschau)*](how-to-enable-private-link.md).
 
 ### <a name="design-considerations"></a>Überlegungen zum Entwurf 
 

@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 12/06/2020
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: c15dc62cad796f5f74f2316d148e217052dc9678
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.openlocfilehash: 9dc6849c1b2ad5daa6142e894e36f351663ff9bd
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99508861"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100523990"
 ---
 # <a name="investigate-sensor-detections-in-a-device-inventory"></a>Grundlagen zu Sensorerkennungen in einem Gerätebestand
 
@@ -223,7 +223,7 @@ So exportieren Sie eine CSV-Datei:
 
 - Wählen Sie im Menü oben rechts im Gerätebestand das Symbol :::image type="icon" source="media/how-to-work-with-asset-inventory-information/csv-excel-export-icon.png" border="false"::: aus. Der CSV-Bericht wird generiert und heruntergeladen.
 
-## <a name="see-also"></a>Weitere Informationen
+## <a name="next-steps"></a>Nächste Schritte
 
 [Untersuchen aller Unternehmenssensorerkennungen in einem Gerätebestand](how-to-investigate-all-enterprise-sensor-detections-in-a-device-inventory.md)
 

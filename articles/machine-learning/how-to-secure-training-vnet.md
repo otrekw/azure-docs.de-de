@@ -11,12 +11,12 @@ ms.author: peterlu
 author: peterclu
 ms.date: 07/16/2020
 ms.custom: contperf-fy20q4, tracking-python, contperf-fy21q1
-ms.openlocfilehash: 02045c7ba2373c57213cc7fffb71a5e6bb5979e6
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: 9a937336e1628add54ab5f52cdd6ef475d463f7d
+ms.sourcegitcommit: e972837797dbad9dbaa01df93abd745cb357cde1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99537999"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100515987"
 ---
 # <a name="secure-an-azure-machine-learning-training-environment-with-virtual-networks"></a>Schützen einer Azure Machine Learning-Trainingsumgebung mit virtuellen Netzwerken
 
@@ -26,7 +26,7 @@ Der Artikel ist Teil 3 einer fünfteiligen Artikelreihe, in der Sie schrittweise
 
 Sehen Sie sich auch die anderen Artikel in dieser Reihe an:
 
-[1. Virtuelle Netzwerke im Überblick](how-to-network-security-overview.md) > [Schützen von Arbeitsbereichsressourcen](how-to-secure-workspace-vnet.md) > **3. Schützen der Trainingsumgebung** > [4. Schützen der Rückschlussumgebung](how-to-secure-inferencing-vnet.md)  > [5. Verwenden von Studio in einem virtuellen Netzwerk](how-to-enable-studio-virtual-network.md)
+[1. Übersicht zu VNETs](how-to-network-security-overview.md) > [2. Schützen des Arbeitsbereichs](how-to-secure-workspace-vnet.md) > **3. Schützen der Trainingsumgebung** > [4. Schützen der Rückschlussumgebung](how-to-secure-inferencing-vnet.md)  > [5. Verwenden von Studio in einem virtuellen Netzwerk](how-to-enable-studio-virtual-network.md)
 
 In diesem Artikel erfahren Sie, wie Sie die folgenden Trainingscomputeressourcen in einem virtuellen Netzwerk schützen:
 > [!div class="checklist"]
@@ -273,7 +273,7 @@ Damit Sie Azure Databricks in einem virtuellen Netzwerk mit Ihrem Arbeitsbereich
 > * Wenn die Azure Storage-Konten für den Arbeitsbereich ebenfalls in einem virtuellen Netzwerk geschützt sind, müssen sie sich im selben virtuellen Netzwerk befinden wie der Azure Databricks-Cluster.
 > * Zusätzlich zu den von Azure Databricks verwendeten Subnetzen __databricks-private__ und __databricks-public__ ist auch das für das virtuelle Netzwerk erstellte __standardmäßige__ Subnetz erforderlich.
 
-Weitere Informationen zur Verwendung von Azure Databricks mit einem virtuellen Netzwerk finden Sie unter [Bereitstellen von Azure Databricks in Ihrem Azure Virtual Network](https://docs.azuredatabricks.net/administration-guide/cloud-configurations/azure/vnet-inject.html).
+Weitere Informationen zur Verwendung von Azure Databricks mit einem virtuellen Netzwerk finden Sie unter [Bereitstellen von Azure Databricks in Ihrem Azure Virtual Network](/azure/databricks/administration-guide/cloud-configurations/azure/vnet-inject).
 
 <a id="vmorhdi"></a>
 

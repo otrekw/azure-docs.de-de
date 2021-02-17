@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/28/2021
 ms.author: cholse
 ms.reviewer: dbakevlar
-ms.openlocfilehash: 695f151e6d6cc0a677942f60c751567da0cfca7c
-ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
+ms.openlocfilehash: fce947c43e8559f4ea2a65645805e987a9015d3f
+ms.sourcegitcommit: 8245325f9170371e08bbc66da7a6c292bbbd94cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99064395"
+ms.lasthandoff: 02/07/2021
+ms.locfileid: "99806272"
 ---
 # <a name="back-up-and-recover-an-oracle-database-19c-database-on-an-azure-linux-vm-using-azure-storage"></a>Sichern und Wiederherstellen einer Oracle Database 19c-Datenbank auf einer Azure-Linux-VM mithilfe von Azure Storage
 
@@ -31,19 +31,19 @@ In diesem Artikel wird die Verwendung von Azure Storage als Medium zum Sichern u
    ssh azureuser@<publicIpAddress>
    ```
    
-2. Wechseln Sie zum Benutzer **_root_* _:
+2. Wechseln Sie zum Benutzer ***root***:
  
    ```bash
    sudo su -
    ```
     
-3. Fügen Sie den Benutzer „oracle“ in der Datei _*_ /etc/sudoers_*_ hinzu:
+3. Fügen Sie der Datei ***/etc/sudoers*** den Benutzer „oracle“ hinzu:
 
    ```bash
    echo "oracle   ALL=(ALL)      NOPASSWD: ALL" >> /etc/sudoers
    ```
 
-4. Dieser Schritt setzt voraus, dass Sie über eine Oracle-Instanz (test) verfügen, die auf der VM _vmoracle19c* ausgeführt wird.
+4. Dieser Schritt setzt voraus, dass Sie über eine Oracle-Instanz (test) verfügen, die auf der VM *vmoracle19c* ausgeführt wird.
 
    Ändern Sie den Benutzer in den Benutzer *oracle*:
 
@@ -182,31 +182,31 @@ Richten Sie zunächst das Speicherkonto ein.
 
 1. Konfigurieren von File Storage im Azure-Portal
 
-    Wählen Sie im Azure-Portal die Option * **+ Ressource erstellen** _ aus. Suchen Sie nach _*_Speicherkonto_*_, und wählen Sie diese Option aus.
+    Wählen Sie im Azure-Portal die Option * **+ Ressource erstellen** _ aus. Suchen Sie nach *_Speicherkonto_**, und wählen Sie diese Option aus.
     
-    ![Seite „Speicherkonto hinzufügen“](./media/oracle-backup-recovery/storage-1.png)
+    ![Screenshot, der zeigt, wo Sie eine Ressource erstellen und ein Speicherkonto auswählen.](./media/oracle-backup-recovery/storage-1.png)
     
-2. Wählen Sie auf der Seite „Speicherkonto erstellen“ Ihre vorhandene Ressourcengruppe _*_rg-oracle_*_ aus. Benennen Sie das Speicherkonto mit _*_oracbkup1_*_, und wählen Sie _*_Storage V2 (generalpurpose v2)_*_ unter „Kontoart“ aus. Wählen Sie unter „Replikation“ die Option _*_Lokal redundanter Speicher (LRS)_*_ aus, und legen Sie „Leistung“ auf _*_Standard_*_ fest. Stellen Sie sicher, dass der Standort auf die Region aller anderen Ressourcen in der Ressourcengruppe festgelegt ist. 
+2. Wählen Sie auf der Seite „Speicherkonto erstellen“ Ihre vorhandene Ressourcengruppe ***rg-oracle** _ aus. Benennen Sie das Speicherkonto mit _*_oracbkup1_*_, und wählen Sie _*_Storage V2 (generalpurpose v2)_*_ unter „Kontoart“ aus. Wählen Sie unter „Replikation“ die Option _*_Lokal redundanter Speicher (LRS)_*_ aus, und legen Sie „Leistung“ auf _*_Standard_** fest. Stellen Sie sicher, dass der Standort auf die Region aller anderen Ressourcen in der Ressourcengruppe festgelegt ist. 
     
-    ![Seite „Speicherkonto hinzufügen“](./media/oracle-backup-recovery/file-storage-1.png)
+    ![Screenshot, der zeigt, wo Sie Ihre vorhandene Ressourcengruppe auswählen können.](./media/oracle-backup-recovery/file-storage-1.png)
    
    
-3. Klicken Sie auf die Registerkarte _*_Erweitert_*_, und legen Sie unter „Azure Files“ die Einstellung _*_Große Dateifreigaben_*_ auf _*_Aktiviert_*_ fest. Klicken Sie auf Überprüfen + erstellen und dann auf Erstellen.
+3. Klicken Sie auf die Registerkarte ***Erweitert** _, und legen Sie unter „Azure Files“ die Einstellung _*_Große Dateifreigaben_*_ auf *_Aktiviert_** fest. Klicken Sie auf Überprüfen + erstellen und dann auf Erstellen.
     
-    ![Seite „Speicherkonto hinzufügen“](./media/oracle-backup-recovery/file-storage-2.png)
-    
-    
-4. Navigieren Sie nach dem Erstellen des Speicherkontos zu der Ressource, und wählen Sie _*_Dateifreigaben_*_ aus.
-    
-    ![Seite „Speicherkonto hinzufügen“](./media/oracle-backup-recovery/file-storage-3.png)
-    
-5. Klicken Sie auf _*_ + Dateifreigabe_ *_, und geben Sie auf dem Blatt _* _Neue Dateifreigabe_ *_ der Dateifreigabe den Namen _* _orabkup1_ *_. Legen Sie _* _Kontingent_ *_ auf _* _10240_ *_ GiB fest, und wählen Sie _* _Transaktion optimiert_ *_ als Ebene aus. Das Kontingent gibt die Obergrenze an, bis zu der die Dateifreigabe erweitert werden kann. Da Storage Standard verwendet wird, werden die Ressourcen nutzungsbasiert abgerechnet und nicht bereitgestellt, sodass durch die Festlegung auf 10 TiB keine Kosten über die Nutzung hinaus entstehen. Wenn Ihre Sicherungsstrategie mehr Speicher erfordert, müssen Sie das Kontingent auf eine entsprechende Ebene festlegen, um alle Sicherungen speichern zu können.   Wenn Sie alle Eingaben auf dem Blatt „Neue Dateifreigabe“ vorgenommen haben, klicken Sie auf _* _Erstellen_*_.
-    
-    ![Seite „Speicherkonto hinzufügen“](./media/oracle-backup-recovery/file-storage-4.png)
+    ![Screenshot, der zeigt, wo Sie „Große Dateifreigaben“ als „Aktiviert“ festlegen.](./media/oracle-backup-recovery/file-storage-2.png)
     
     
-6. Klicken Sie nach der Erstellung auf der Seite „Dateifreigabeeinstellungen“ auf _*_orabkup1_*_. 
-    Klicken Sie auf die Registerkarte _*_Verbinden_*_, um das Blatt „Verbinden“ zu öffnen. Klicken Sie dann auf die Registerkarte _*_Linux_*_. Kopieren Sie die angegebenen Befehle zum Einbinden der Dateifreigabe über das SMB-Protokoll. 
+4. Navigieren Sie nach dem Erstellen des Speicherkontos zu der Ressource, und wählen Sie ***Dateifreigaben*** aus.
+    
+    ![Screenshot, der zeigt, wo Sie die Dateifreigaben auswählen können.](./media/oracle-backup-recovery/file-storage-3.png)
+    
+5. Klicken Sie auf * **+ Dateifreigabe** _, und geben Sie auf dem Blatt _*_Neue Dateifreigabe_*_ der Dateifreigabe den Namen _*_orabkup1_*_. Legen Sie _*_Kontingent_*_ auf _*_10.240_*_  GiB fest, und wählen Sie _*_Transaktion optimiert_*_ als Ebene aus. Das Kontingent gibt die Obergrenze an, bis zu der die Dateifreigabe erweitert werden kann. Da Storage Standard verwendet wird, werden die Ressourcen nutzungsbasiert abgerechnet und nicht bereitgestellt, sodass durch die Festlegung auf 10 TiB keine Kosten über die Nutzung hinaus entstehen. Wenn Ihre Sicherungsstrategie mehr Speicher erfordert, müssen Sie das Kontingent auf eine entsprechende Ebene festlegen, um alle Sicherungen speichern zu können.   Wenn Sie alle Eingaben auf dem Blatt „Neue Dateifreigabe“ vorgenommen haben, klicken Sie auf _*_Erstellen_**.
+    
+    ![Screenshot, der zeigt, wo Sie eine neue Dateifreigabe hinzufügen können.](./media/oracle-backup-recovery/file-storage-4.png)
+    
+    
+6. Klicken Sie nach der Erstellung auf der Seite „Dateifreigabeeinstellungen“ auf ***orabkup1***. 
+    Klicken Sie auf die Registerkarte ***Verbinden** _, um das Blatt „Verbinden“ zu öffnen. Klicken Sie dann auf die Registerkarte _ *_Linux_**. Kopieren Sie die angegebenen Befehle zum Einbinden der Dateifreigabe über das SMB-Protokoll. 
     
     ![Seite „Speicherkonto hinzufügen“](./media/oracle-backup-recovery/file-storage-5.png)
 
@@ -371,7 +371,7 @@ Die Verwendung von RMAN und Azure File Storage für die Datenbanksicherung hat z
 
     ```bash
     cd /u02/oradata/TEST
-    rm -f _.dbf
+    rm -f *.dbf
     ```
 
 3. Bei den folgenden Befehlen wird RMAN verwendet, um die fehlenden Datendateien und die Datenbank wiederherzustellen:

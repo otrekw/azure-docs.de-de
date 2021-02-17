@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: 8a6189a613c9a6768428a13e35e0e009894b8b3f
-ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
+ms.openlocfilehash: 77d4a1cad4843578419be54465a06e87834dd186
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2021
-ms.locfileid: "99988047"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100104517"
 ---
 # <a name="best-practices-of-a-qna-maker-knowledge-base"></a>Best Practices für eine QnA Maker-Wissensdatenbank
 
@@ -147,7 +147,7 @@ QnA Maker ermöglicht Benutzern das Zusammenarbeiten an einer Knowledge Base. Be
 
 ## <a name="active-learning"></a>Aktives Lernen
 
-[Aktives Lernen](../How-to/use-active-learning.md) leistet die beste Arbeit beim Vorschlagen alternativer Fragen, wenn ein breites Spektrum an Qualität und Quantität von benutzerbezogenen Abfragen zur Verfügung steht. Es ist wichtig, dass die Benutzerabfragen von Clientanwendungen ohne Zensur an der Feedbackschleife des aktiven Lernens teilnehmen können. Sobald Fragen im QnA Maker-Portal vorgeschlagen werden, können Sie **[nach Vorschlägen filtern](../How-To/improve-knowledge-base.md#accept-an-active-learning-suggestion-in-the-knowledge-base)** und diese Vorschläge dann überprüfen, um sie zu akzeptieren oder abzulehnen.
+[Aktives Lernen](../How-to/use-active-learning.md) leistet die beste Arbeit beim Vorschlagen alternativer Fragen, wenn ein breites Spektrum an Qualität und Quantität von benutzerbezogenen Abfragen zur Verfügung steht. Es ist wichtig, dass die Benutzerabfragen von Clientanwendungen ohne Zensur an der Feedbackschleife des aktiven Lernens teilnehmen können. Sobald Fragen im QnA Maker-Portal vorgeschlagen werden, können Sie **[nach Vorschlägen filtern](../How-To/improve-knowledge-base.md)** und diese Vorschläge dann überprüfen, um sie zu akzeptieren oder abzulehnen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

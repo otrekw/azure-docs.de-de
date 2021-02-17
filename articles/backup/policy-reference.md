@@ -1,15 +1,15 @@
 ---
 title: Integrierte Richtliniendefinitionen für Azure Backup
 description: Hier finden Sie eine Liste der integrierten Azure Policy-Richtliniendefinitionen für Azure Backup. Diese integrierten Richtliniendefinitionen bieten allgemeine Ansätze für die Verwaltung von Azure-Ressourcen.
-ms.date: 02/04/2021
+ms.date: 02/09/2021
 ms.topic: reference
 ms.custom: subject-policy-reference
-ms.openlocfilehash: bbc293241557b6cb4c4c0212108156d12927d17a
-ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
+ms.openlocfilehash: 866750347109225e48f3913801b98d7f5c3e6a23
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99558073"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100097608"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-backup"></a>Integrierte Azure Policy-Definitionen für Azure Backup
 
