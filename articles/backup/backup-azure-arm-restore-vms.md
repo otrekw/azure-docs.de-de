@@ -4,12 +4,12 @@ description: Wiederherstellen eines virtuellen Azure-Computers mithilfe eines Wi
 ms.reviewer: geg
 ms.topic: conceptual
 ms.date: 08/02/2020
-ms.openlocfilehash: 56bd41aaa607a3bc0f319f46ce5d0c3f8c78d27a
-ms.sourcegitcommit: 436518116963bd7e81e0217e246c80a9808dc88c
+ms.openlocfilehash: 256998f2e687152bb63c9368af1a56f05bba7672
+ms.sourcegitcommit: 2501fe97400e16f4008449abd1dd6e000973a174
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/27/2021
-ms.locfileid: "98919600"
+ms.lasthandoff: 02/08/2021
+ms.locfileid: "99820567"
 ---
 # <a name="how-to-restore-azure-vm-data-in-azure-portal"></a>Wiederherstellen von Azure-VM-Daten im Azure-Portal
 
@@ -23,9 +23,8 @@ Azure Backup bietet eine Reihe von Möglichkeiten zum Wiederherstellen einer VM.
 --- | ---
 **Erstellen eines neuen virtuellen Computers** | Sie können schnell eine einfache VM erstellen und können Sie über einen Wiederherstellungspunkt betriebsbereit machen.<br/><br/> Sie können einen Namen für die VM angeben, die Ressourcengruppe und das virtuelle Netzwerk (VNet) auswählen, in dem sie platziert werden soll, und ein Speicherkonto für die wiederhergestellte VM angeben. Die neue VM muss in derselben Region wie die Quell-VM erstellt werden.<br><br>Wenn eine VM-Wiederherstellung fehlschlägt, weil in der angegebenen Region von Azure keine Azure-VM-SKU verfügbar war oder ein anderes Problem auftrat, stellt Azure Backup die Datenträger trotzdem in der angegebenen Ressourcengruppe wieder her.
 **Datenträger wiederherstellen** | Stellt einen VM-Datenträger wieder her, der dann zum Erstellen einer neuen VM verwendet werden kann.<br/><br/> Azure Backup bietet eine Vorlage, mit der Sie eine VM anpassen und erstellen können. <br/><br> Der Wiederherstellungsauftrag generiert eine Vorlage, die Sie herunterladen und verwenden können, um benutzerdefinierte VM-Einstellungen festzulegen und eine VM zu erstellen.<br/><br/> Die Datenträger werden in die von Ihnen angegebene Ressourcengruppe kopiert.<br/><br/> Alternativ können Sie den Datenträger an eine vorhandene VM anhängen oder mit PowerShell eine neue VM erstellen.<br/><br/> VM anpassen, Konfigurationseinstellungen hinzufügen möchten, die zum Zeitpunkt der Sicherung nicht vorhanden waren, oder Einstellungen hinzufügen möchten, die mithilfe der Vorlage oder von PowerShell konfiguriert werden müssen.
-**Vorhandene ersetzen** | Sie können einen Datenträger wiederherstellen und damit einen Datenträger auf der vorhandenen VM ersetzen.<br/><br/> Der aktuelle virtuelle Computer muss jedoch vorhanden sein. Wenn dieser gelöscht wurde, kann diese Option nicht verwendet werden.<br/><br/> Vor dem Ersetzen des Datenträgers erstellt Azure Backup eine Momentaufnahme der vorhandenen VM und speichert sie im von Ihnen Stagingspeicherort. Vorhandene Datenträger, die mit der VM verbunden sind, werden durch den ausgewählten Wiederherstellungspunkt ersetzt.<br/><br/> Die Momentaufnahme wird in den Tresor kopiert und entsprechend der Aufbewahrungsrichtlinie beibehalten. <br/><br/> Nach dem Ersetzungsvorgang für den Datenträger wird der ursprüngliche Datenträger in der Ressourcengruppe beibehalten. Sie können die ursprünglichen Datenträger manuell löschen, wenn sie nicht mehr benötigt werden. <br/><br/>„Vorhandene ersetzen“ wird für nicht verschlüsselte verwaltete VMs unterstützt, einschließlich VMs, [die mithilfe benutzerdefinierter Images erstellt wurden](https://azure.microsoft.com/resources/videos/create-a-custom-virtual-machine-image-in-azure-resource-manager-with-powershell/). Für klassische VMs wird die Option nicht unterstützt.<br/><br/> Wenn der Wiederherstellungspunkt mehr oder weniger Datenträger als die aktuelle VM aufweist, dann spiegelt die Anzahl der Datenträger im Wiederherstellungspunkt nur die VM-Konfiguration wieder.<br><br> „Vorhandene ersetzen“ wird auch für VMs mit verknüpften Ressourcen unterstützt, z. B. [benutzerseitig zugewiesene verwaltete Identität](../active-directory/managed-identities-azure-resources/overview.md) oder [Key Vault](../key-vault/general/overview.md).
+**Vorhandene ersetzen** | Sie können einen Datenträger wiederherstellen und damit einen Datenträger auf der vorhandenen VM ersetzen.<br/><br/> Der aktuelle virtuelle Computer muss jedoch vorhanden sein. Wenn dieser gelöscht wurde, kann diese Option nicht verwendet werden.<br/><br/> Vor dem Ersetzen des Datenträgers erstellt Azure Backup eine Momentaufnahme der vorhandenen VM und speichert sie im von Ihnen Stagingspeicherort. Vorhandene Datenträger, die mit der VM verbunden sind, werden durch den ausgewählten Wiederherstellungspunkt ersetzt.<br/><br/> Die Momentaufnahme wird in den Tresor kopiert und entsprechend der Aufbewahrungsrichtlinie beibehalten. <br/><br/> Nach dem Ersetzungsvorgang für den Datenträger wird der ursprüngliche Datenträger in der Ressourcengruppe beibehalten. Sie können die ursprünglichen Datenträger manuell löschen, wenn sie nicht mehr benötigt werden. <br/><br/>„Vorhandene ersetzen“ wird für nicht verschlüsselte verwaltete VMs unterstützt, einschließlich VMs, [die mithilfe benutzerdefinierter Images erstellt wurden](https://azure.microsoft.com/resources/videos/create-a-custom-virtual-machine-image-in-azure-resource-manager-with-powershell/). Für klassische und nicht verwaltete VMs wird die Option nicht unterstützt.<br/><br/> Wenn der Wiederherstellungspunkt mehr oder weniger Datenträger als die aktuelle VM aufweist, dann spiegelt die Anzahl der Datenträger im Wiederherstellungspunkt nur die VM-Konfiguration wieder.<br><br> „Vorhandene ersetzen“ wird auch für VMs mit verknüpften Ressourcen unterstützt, z. B. [benutzerseitig zugewiesene verwaltete Identität](../active-directory/managed-identities-azure-resources/overview.md) oder [Key Vault](../key-vault/general/overview.md).
 **Regionsübergreifend (sekundäre Region)** | Die regionsübergreifende Wiederherstellung kann verwendet werden, um virtuelle Azure-Computer in der sekundären Region wiederherzustellen, bei der es sich um eine [gepaarte Azure-Region](../best-practices-availability-paired-regions.md#what-are-paired-regions) handelt.<br><br> Wenn die Sicherung in der sekundären Region durchgeführt wird, können Sie alle Azure-VMs für den ausgewählten Wiederherstellungspunkt wiederherstellen.<br><br> Während der Sicherung werden Momentaufnahmen nicht in die sekundäre Region repliziert. Nur die im Tresor gespeicherten Daten werden repliziert. Wiederherstellungen in der sekundären Regionen sind also nur Wiederherstellungen auf [Tresorebene](about-azure-vm-restore.md#concepts). Die Wiederherstellungszeit für die sekundäre Region ist nahezu identisch mit der Wiederherstellungszeit auf Tresorebene für die primäre Region.  <br><br> Dieses Feature ist für die folgenden Optionen verfügbar:<br> <li> [Erstellen eines virtuellen Computers](#create-a-vm) <br> <li> [Wiederherstellen von Datenträgern](#restore-disks) <br><br> Die Option [Vorhandene Datenträger ersetzen](#replace-existing-disks) wird derzeit nicht unterstützt.<br><br> Berechtigungen<br> Der Wiederherstellungsvorgang in der sekundären Region kann von Sicherungsadministratoren und App-Administratoren durchgeführt werden.
-**Zonenübergreifende Wiederherstellung** | Mithilfe der zonenübergreifenden Wiederherstellen können [zonengebundene VMs in Azure](https://docs.microsoft.com/azure/virtual-machines/windows/create-portal-availability-zone) in beliebigen [Verfügbarkeitszonen](https://docs.microsoft.com/azure/availability-zones/az-overview) innerhalb derselben Region wiederhergestellt werden. <br> <br> Sie können sämtliche zonengebundenen Azure-VMs für den ausgewählten Wiederherstellungspunkt, die nach der Einführung dieses Features gesichert wurden, in einer Zone Ihrer Wahl wiederherstellen. Standardmäßig wird die Wiederherstellung in derselben Zone durchgeführt, in der die VM gesichert wurde. <br> <br> Diese Option kann in Notfallwiederherstellungsszenarien verwendet werden, wenn die angeheftete Zone der VM nicht mehr verfügbar ist.
 
 > [!NOTE]
 > Sie können auch bestimmte Dateien und Ordner auf einer Azure-VM wiederherstellen. [Weitere Informationen](backup-azure-restore-files-from-vm.md)
@@ -180,11 +179,9 @@ Aktuell beträgt die [RPO](azure-backup-glossary.md#rpo-recovery-point-objective
 >- Das Feature zur regionsübergreifenden Wiederherstellung stellt Azure VMs mit aktivierten CMKs (customer-managed keys, kundenseitig verwaltete Schlüssel), die nicht in einem Recovery Services-Tresor mit aktivierten CMKs gesichert sind, als VMs ohne aktivierte CMKs in der sekundären Region wieder her.
 >- Die für die Wiederherstellung in der Sekundärregion erforderlichen Azure-Rollen sind die gleichen wie in der Primärregion.
 
-## <a name="cross-zonal-restore"></a>Zonenübergreifende Wiederherstellung
+[An Azure-Zonen angeheftete VMs](https://docs.microsoft.com/azure/virtual-machines/windows/create-portal-availability-zone) können in beliebigen [Verfügbarkeitszonen](https://docs.microsoft.com/azure/availability-zones/az-overview) in derselben Region wiederhergestellt werden.
 
-Mithilfe der zonenübergreifenden Wiederherstellen können [zonengebundene VMs in Azure](https://docs.microsoft.com/azure/virtual-machines/windows/create-portal-availability-zone) in beliebigen [Verfügbarkeitszonen](https://docs.microsoft.com/azure/availability-zones/az-overview) innerhalb derselben Region wiederhergestellt werden.
-
-Bei der Wiederherstellung wird die Option **Verfügbarkeitszone** angezeigt. Als erster Eintrag erscheint Ihre Standardzone. Um eine andere Zone auszuwählen, wählen Sie die Nummer der gewünschten Zone aus. Wählen Sie eine andere Zone aus, wenn die standardmäßige Verfügbarkeitszone aufgrund eines Ausfalls nicht verfügbar ist, oder wenn Sie die Wiederherstellung aus einem anderen Grund in einer anderen Zone durchführen möchten.
+Bei der Wiederherstellung wird die Option **Verfügbarkeitszone** angezeigt. Als erster Eintrag erscheint Ihre Standardzone. Um eine andere Zone auszuwählen, wählen Sie die Nummer der gewünschten Zone aus. Wenn die angeheftete Zone nicht verfügbar ist, können Sie die Daten nicht in einer anderen Zone wiederherstellen, da die gesicherten Daten nicht zonenbezogen repliziert werden.
 
 ![Auswahl der Verfügbarkeitszone](./media/backup-azure-arm-restore-vms/cross-zonal-restore.png)
 
@@ -203,7 +200,7 @@ Während der Wiederherstellung erhalten Sie eine Option zum Wiederherstellen [ni
 
 ## <a name="restore-vms-with-special-configurations"></a>Wiederherstellen von VMs mit besonderen Konfigurationen
 
-Es gibt eine Reihe von häufigen Szenarien, in denen Sie möglicherweise VMs wiederherstellen müssen.
+Es gibt eine Reihe gängiger Szenarien, in denen Sie VMs möglicherweise wiederherstellen müssen.
 
 **Szenario** | **Leitfaden**
 --- | ---
@@ -247,7 +244,7 @@ Nachdem Sie den Wiederherstellungsvorgang ausgelöst haben, erstellt der Sicheru
 
 ## <a name="post-restore-steps"></a>Schritte nach der Wiederherstellung
 
-Nach dem Wiederherstellen einer VM gibt es eine Reihe von Dingen zu beachten:
+Nach dem Wiederherstellen einer VM gilt es, eine Reihe von Dingen zu beachten:
 
 - Erweiterungen, die während der Konfiguration der Sicherung installiert, aber nicht aktiviert sind. Falls ein Problem auftritt, installieren Sie die Erweiterungen neu.
 - Wenn die gesicherte VM eine statische IP-Adresse hatte, hat die wiederhergestellte VM eine dynamische IP-Adresse, um Konflikte zu vermeiden. Sie können [eine statische IP-Adresse zur wiederhergestellten VM hinzufügen](/powershell/module/az.network/set-aznetworkinterfaceipconfig#description).

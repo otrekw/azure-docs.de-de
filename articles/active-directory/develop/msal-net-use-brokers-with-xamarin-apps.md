@@ -12,12 +12,12 @@ ms.date: 09/08/2019
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: ee9f374d110115b224c48853f26037dc461e5fa0
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: 6958302a429fd88d4e26087b860b7f473bf4a1f9
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99583840"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100103990"
 ---
 # <a name="use-microsoft-authenticator-or-intune-company-portal-on-xamarin-applications"></a>Verwenden von Microsoft Authenticator oder des Intune-Unternehmensportals für Xamarin-Anwendungen
 
@@ -183,7 +183,7 @@ Fügen Sie den Umleitungs-URI der Registrierung der App im [Azure-Portal](https:
 
 **So generieren Sie den Umleitungs-URI:**
 
-1. Melden Sie sich beim <a href="https://portal.azure.com/" target="_blank">Azure-Portal<span class="docon docon-navigate-external x-hidden-focus"></span></a> an.
+1. Melden Sie sich beim <a href="https://portal.azure.com/" target="_blank">Azure-Portal</a> an.
 1. Wählen Sie unter **Azure Active Directory** > **App-Registrierungen** Ihre registrierte App aus.
 1. Wählen Sie **Authentifizierung** > **Plattform hinzufügen** > **IOS/macOS** aus.
 1. Geben Sie Ihre Bündel-ID ein, und wählen Sie dann **Konfigurieren** aus.

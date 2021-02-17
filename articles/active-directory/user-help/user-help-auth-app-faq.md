@@ -12,12 +12,12 @@ ms.topic: end-user-help
 ms.date: 01/28/2021
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: f4640bbd445b27942d757cc4e09aa7e673550ebc
-ms.sourcegitcommit: 2dd0932ba9925b6d8e3be34822cc389cade21b0d
+ms.openlocfilehash: 84dde96276414e98cbde05d6e046dce03227f60d
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99226521"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100547858"
 ---
 # <a name="frequently-asked-questions-faq-about-the-microsoft-authenticator-app"></a>Häufig gestellte Fragen zur Microsoft Authenticator-App
 
@@ -94,6 +94,7 @@ Die Microsoft Authenticator-App ersetzt die Azure Authenticator-App und ist die 
 ### <a name="device-registration"></a>Geräteregistrierung
 
 **F:** Was ist die Geräteregistrierung?
+
 **A:** Ihre Organisation kann Sie dazu auffordern, Ihr Gerät zu registrieren, um den Zugriff auf gesicherte Ressourcen wie Dateien und Apps nachverfolgen zu können. Sie kann außerdem den bedingten Zugriff aktivieren, um das Risiko des unberechtigten Zugriffs auf diese Ressourcen zu reduzieren. Sie können die Registrierung Ihres Geräts unter **Einstellungen** aufheben, aber dann verlieren Sie möglicherweise den Zugriff auf E-Mails in Outlook, Dateien in OneDrive und die Möglichkeit, die Anmeldung per Telefon zu verwenden.
 
 ### <a name="verification-codes-when-connected"></a>Prüfcodes bei Verbindung

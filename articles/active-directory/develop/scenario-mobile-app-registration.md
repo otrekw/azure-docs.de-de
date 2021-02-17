@@ -13,12 +13,12 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: 902348063a24b50d1de0a821d9d6e67931cc53cd
-ms.sourcegitcommit: 2817d7e0ab8d9354338d860de878dd6024e93c66
+ms.openlocfilehash: 6385f03556d155941139b77333d6f4a25081fe67
+ms.sourcegitcommit: 126ee1e8e8f2cb5dc35465b23d23a4e3f747949c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99582535"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100103157"
 ---
 # <a name="register-mobile-apps-that-call-web-apis"></a>Registrieren mobiler Apps, die Web-APIs aufrufen
 
@@ -83,7 +83,7 @@ Wenn Ihre App ausschließlich die Authentifizierung über Benutzernamen und Kenn
 
 Identifizieren Sie Ihre Anwendung als öffentliche Clientanwendung. Gehen Sie folgendermaßen vor:
 
-1. Wählen Sie im <a href="https://portal.azure.com/" target="_blank">Azure-Portal <span class="docon docon-navigate-external x-hidden-focus"></span></a> unter **App-Registrierungen** Ihre App und anschließend **Authentifizierung** aus.
+1. Wählen Sie im <a href="https://portal.azure.com/" target="_blank">Azure-Portal</a> unter **App-Registrierungen** Ihre App aus, und klicken Sie dann auf **Authentifizierung**.
 1. Wählen Sie unter **Erweiterte Einstellungen** > **Öffentliche Clientflows zulassen** > **Folgende Flows für Mobilgerät und Desktop aktivieren:** die Option **Ja** aus.
 
    :::image type="content" source="media/scenarios/default-client-type.png" alt-text="Aktivieren der Einstellung für die Behandlung als öffentlicher Client im Bereich „Authentifizierung“ im Azure-Portal":::

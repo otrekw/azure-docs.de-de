@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/25/2021
 ms.author: shhazam
-ms.openlocfilehash: d11154e26e2ffe97a1ea102a11dddb746db9433a
-ms.sourcegitcommit: 4784fbba18bab59b203734b6e3a4d62d1dadf031
+ms.openlocfilehash: 10246277715d23f42eb0bd17d19794b8d4503f3f
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99809268"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100521865"
 ---
 # <a name="security-recommendations"></a>Sicherheitsempfehlungen
 
@@ -60,7 +60,6 @@ Empfehlungsbenachrichtigungen bieten Einblicke und Vorschläge für Aktionen zum
 | Medium | Die Standard-IP-Filterrichtlinie muss auf „Verweigern“ festgelegt sein | IoT Hub | Die IP-Filterkonfiguration sollte Regeln für zulässigen Datenverkehr definieren und standardmäßig den gesamten übrigen Datenverkehr ablehnen. |
 | Medium | IP-Filterregel umfasst großen IP-Adressbereich | IoT Hub | Der Quell-IP-Adressbereich einer Filterregel für zulässige IP-Adressen ist zu groß. Durch zu wenig einschränkende Regeln ist Ihr IoT Hub möglicherweise böswilligen Akteuren ausgesetzt. |
 | Niedrig | Diagnoseprotokolle in IoT Hub aktivieren | IoT Hub | Aktivieren Sie Protokolle, und bewahren Sie sie bis zu ein Jahr lang auf. Durch Aufbewahrung der Protokolle können Sie vergangene Aktivitäten nachvollziehen, wenn Sie Sicherheitsincidents untersuchen oder Ihr Netzwerk gefährdet ist. |
-
 
 ## <a name="next-steps"></a>Nächste Schritte
 
