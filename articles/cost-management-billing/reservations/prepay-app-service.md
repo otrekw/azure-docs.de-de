@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 02/01/2021
 ms.author: banders
 ms.custom: references_regions
-ms.openlocfilehash: 89e0c62b580c0c354fc7277e61b452005a86e3d9
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: 92a315121ad8ae6fadcadbf6d531eb3e99ae69a9
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99577398"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100374540"
 ---
 # <a name="save-costs-with-azure-app-service-reserved-instances"></a>Sparen von Kosten mit reservierten Azure App Service-Instanzen
 
@@ -37,24 +37,12 @@ Sie können Reservierungsempfehlungen verwenden, um zu ermitteln, welche Reservi
 - Sie können die APIs verwenden, um Kaufempfehlungen für den Bereich „Freigegeben“ und den Bereich „Einzelabonnement“ abzurufen. Weitere Informationen finden Sie unter [Reserved instance purchase recommendation APIs for enterprise customers (Kaufempfehlungs-APIs zu reservierten Instanzen für Enterprise-Kunden)](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-recommendation).
 - Für EA-Kunden (Enterprise Agreement) und MCA-Kunden (Microsoft Customer Agreement, Microsoft-Kundenvereinbarung) sind Kaufempfehlungen zu den Bereichen „Freigegeben“ und „Einzelabonnement“ im Rahmen des [Azure Consumption Insights Power BI-Inhaltspakets](/power-bi/service-connect-to-azure-consumption-insights) verfügbar.
 
-#### <a name="instance-size-flexibility-setting"></a>Einstellung der Instanzgrößenflexibilität
-
-Die Einstellung der Instanzgrößenflexibilität bestimmt, welche Dienste reservierte Instanzrabatte erhalten.
-
-Unabhängig davon, ob die Einstellung ein- oder ausgeschaltet ist, gelten Reservierungsrabatte automatisch für jede Nutzung einer passenden reservierten Premium V3-Instanz.
-
 ### <a name="analyze-your-usage-information"></a>Analysieren Ihrer Nutzungsinformationen
 
 Analysieren Sie Ihre Nutzungsinformationen, um besser ermitteln zu können, welche Reservierungen Sie erwerben sollten. Nutzungsdaten sind in der Nutzungsdatendatei und in APIs verfügbar. Verwenden Sie beides gemeinsam, um zu ermitteln, welche Reservierung Sie erwerben sollten. Prüfen Sie, ob Premium V3-Instanzen vorhanden sind, die täglich stark genutzt werden, um die Menge der zu erwerbenden Reservierungen zu ermitteln.
 
 Die Nutzungsdatei enthält Ihre Gebühren nach Abrechnungszeitraum und Daten zur täglichen Nutzung. Weitere Informationen zum Herunterladen der Nutzungsdatei finden Sie unter [Anzeigen und Herunterladen der Azure-Nutzung und -Gebühren](../understand/download-azure-daily-usage.md). Anhand der Informationen in der Nutzungsdatei können Sie dann [die zu erwerbende Reservierung ermitteln](determine-reservation-purchase.md).
 
-### <a name="purchase-restriction-considerations"></a>Überlegungen zu Kaufeinschränkungen
-
-Rabatte für Reservierungen gelten nicht für folgende Premium V3-Instanzen:
-
-- **Vorschau- oder Promoinstanzen** – Jede Serie oder Größe von reservierten Premium V3-Instanzen, die sich in der Vorschauphase befindet oder Werbeverbrauchseinheiten verwendet.
-- **Clouds** – Reservierungen können in den Regionen Deutschland und China nicht käuflich erworben werden.
 
 ## <a name="buy-a-premium-v3-reserved-instance"></a>Erwerben einer reservierten Premium V3-Instanz
 
@@ -79,7 +67,6 @@ Wenn Sie über eine EA-Vereinbarung verfügen, können Sie die Option **Weitere 
 | `Scope` | Der Bereich der Reservierung kann ein Abonnement oder mehrere Abonnements (freigegebener Bereich) umfassen. Optionen: <ul><li>**Einzelne Ressourcengruppe**: Wendet den Reservierungsrabatt nur auf die entsprechenden Ressourcen in der ausgewählten Ressourcengruppe an. </li><li>**Einzelnes Abonnement**: Wendet den Reservierungsrabatt auf die entsprechenden Ressourcen im ausgewählten Abonnement an.</li><li>**Gemeinsam genutzt**: Wendet den Reservierungsrabatt auf die entsprechenden Ressourcen in berechtigten Abonnements innerhalb des Abrechnungskontexts an. Für EA-Kunden ist der Abrechnungskontext die Registrierung. Für Kunden mit individuellen Abonnements mit nutzungsbasierten Tarifen handelt es sich beim Abrechnungsbereich um alle berechtigten Abonnements, die vom Kontoadministrator erstellt wurden.</li></ul> |
 | Region | Die Azure-Region, die durch die Reservierung abgedeckt wird |
 | Größe der reservierten Premium V3-Instanz | Die Größe der reservierten Premium V3-Instanzen. |
-| Optimiert für | Die Instanzgrößenflexibilität für reservierte Premium V3-Instanzen ist standardmäßig ausgewählt. Klicken Sie auf **Erweiterte Einstellungen**, um den Wert der Instanzgrößenflexibilität zu ändern und den Reservierungsrabatt auf weitere reservierte Premium V3-Instanzen in der gleichen [Größengruppe für reservierte Premium V3-Instanzen](../../virtual-machines/reserved-vm-instance-size-flexibility.md) anzuwenden. Die Option „Kapazitätspriorität“ priorisiert Rechenzentrumskapazität für Ihre Bereitstellungen. So erhalten Sie zusätzliche Sicherheit, dass die reservierten Premium V3-Instanzen gestartet werden können, wenn Sie sie benötigen. Die Kapazitätspriorität ist nur für den Reservierungsumfang „Einzelabonnement“ verfügbar. |
 | Begriff | Ein Jahr oder drei Jahre Es ist auch eine Laufzeit von fünf Jahren verfügbar (allerdings nur für reservierte HBv2-Premium V3-Instanzen). |
 | Menge | Die Anzahl von Instanzen, die innerhalb der Reservierung erworben werden. Die Menge ist die Anzahl ausgeführter reservierter Premium V3-Instanzen, auf die der Abrechnungsrabatt angewendet werden kann. Wenn Sie also beispielsweise zehn reservierte Premium V3-Instanzen vom Typ „Standard\_D2“ in der Region „USA, Osten“ ausführen, geben Sie als Menge „10“ an, um den Vorteil für alle ausgeführten reservierten Premium V3-Instanzen zu maximieren. |
 
