@@ -2,13 +2,13 @@
 title: Lebenszyklusverwaltung von Azure VMware Solution-VMs
 description: Erfahren Sie, wie Sie alle Aspekte des Lebenszyklus Ihrer Azure VMware Solution-VMs mit nativen Tools in Microsoft Azure verwalten.
 ms.topic: conceptual
-ms.date: 09/11/2020
-ms.openlocfilehash: 5bba9cbbc8783cc285ff09f790ee1b35b20ba358
-ms.sourcegitcommit: 1a98b3f91663484920a747d75500f6d70a6cb2ba
+ms.date: 02/08/2021
+ms.openlocfilehash: d8224a37e46b336ebf889fe1c075930f34f10ca4
+ms.sourcegitcommit: 7e117cfec95a7e61f4720db3c36c4fa35021846b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99062895"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "99988531"
 ---
 # <a name="lifecycle-management-of-azure-vmware-solution-vms"></a>Lebenszyklusverwaltung von Azure VMware Solution-VMs
 
@@ -110,3 +110,11 @@ Azure Monitor ist eine umfassende Lösung für das Sammeln und Analysieren von T
     - [Erstellen, Anzeigen und Verwalten von Protokollwarnungen mithilfe von Azure Monitor](../azure-monitor/platform/alerts-log.md)
     - [Aktionsregeln](../azure-monitor/platform/alerts-action-rules.md) zum Festlegen automatisierter Aktionen und Benachrichtigungen
     - [Verbinden von Azure mit ITSM-Tools mithilfe des ITSM-Connectors](../azure-monitor/platform/itsmc-overview.md)
+    
+ ## <a name="next-steps"></a>Nächste Schritte
+
+Nachdem Sie sich mit der den nativen Tools von Azure zur Verwaltung Ihrer Azure VMware Solution-VMs während ihres gesamten Lebenszyklus beschäftigt haben, möchten Sie möglicherweise mehr über Folgendes erfahren:
+
+- [Schützen von Azure VMware Solution-VMs mit Azure Security Center](azure-security-integration.md)
+- [Einrichten von Azure Backup Server für Azure VMware Solution](set-up-backup-server-for-azure-vmware-solution.md)
+- [Integrieren von Azure VMware Solution in eine Hub-and-Spoke-Architektur](concepts-hub-and-spoke.md)

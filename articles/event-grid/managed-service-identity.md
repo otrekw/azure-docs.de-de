@@ -3,12 +3,12 @@ title: Ereignisbereitstellung, verwaltete Dienstidentität und private Verbindun
 description: In diesem Artikel wird beschrieben, wie Sie die verwaltete Dienstidentität für ein Azure Event Grid-Thema aktivieren. So können Sie Ereignisse an unterstützte Ziele weiterleiten.
 ms.topic: how-to
 ms.date: 01/28/2021
-ms.openlocfilehash: ca154c252976911627184a63386cba1544ed21e0
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: 3e643465db7cc918499ca962c4697cb61cb4b594
+ms.sourcegitcommit: 49ea056bbb5957b5443f035d28c1d8f84f5a407b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99054416"
+ms.lasthandoff: 02/09/2021
+ms.locfileid: "100007770"
 ---
 # <a name="event-delivery-with-a-managed-identity"></a>Ereignisübermittlung mit einer verwalteten Identität
 In diesem Artikel wird beschrieben, wie Sie die [verwaltete Dienstidentität](../active-directory/managed-identities-azure-resources/overview.md) für benutzerdefinierte Azure Event Grid-Themen oder -Domänen aktivieren. Verwenden Sie diese Methode, um Ereignisse an unterstützte Ziele wie Service Bus-Warteschlangen und -Themen, Event Hubs und Speicherkonten weiterzuleiten.
@@ -237,7 +237,7 @@ az eventgrid event-subscription create
 ```
 
 ### <a name="use-the-azure-cli---azure-storage-queue"></a>Verwenden der Azure-Befehlszeilenschnittstelle: Azure Storage-Warteschlange 
-In diesem Abschnitt erfahren Sie, wie Sie die vom System zugewiesene Identität zum Übermitteln von Ereignissen an eine Azure Storage-Warteschlange mit der Azure-Befehlszeilenschnittstelle aktivieren. Die Identität muss Mitglied der Rolle **Mitwirkender an Storage-Blobdaten** im Speicherkonto sein.
+In diesem Abschnitt erfahren Sie, wie Sie die vom System zugewiesene Identität zum Übermitteln von Ereignissen an eine Azure Storage-Warteschlange mit der Azure-Befehlszeilenschnittstelle aktivieren. Die Identität muss Mitglied der Rolle **Absender der Speicherwarteschlangen-Datennachricht** im Speicherkonto sein. Sie muss auch Mitglied der Rolle **Mitwirkender an Storage-Blobdaten** für das Speicherkonto sein, das für unzustellbare Nachrichten verwendet wird.
 
 #### <a name="define-variables"></a>Definieren von Variablen  
 

@@ -1,22 +1,18 @@
 ---
 title: Kopieren und Transformieren von Daten in Azure Database for PostgreSQL
 description: Erfahren Sie, wie Sie Daten mit Azure Data Factory in Azure Database for PostgreSQL kopieren und transformieren.
-services: data-factory
 ms.author: jingwang
 author: linda33wj
-manager: shwang
-ms.reviewer: douglasl
 ms.service: data-factory
-ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 02/01/2021
-ms.openlocfilehash: 8b1177278583bdb46f17119eb59235e70c58e806
-ms.sourcegitcommit: 8c8c71a38b6ab2e8622698d4df60cb8a77aa9685
+ms.openlocfilehash: 32c65a3e1063b29ab6458151aec42e4415a73b62
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2021
-ms.locfileid: "99223089"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100381323"
 ---
 # <a name="copy-and-transform-data-in-azure-database-for-postgresql-by-using-azure-data-factory"></a>Kopieren und Transformieren von Daten in Azure Database for PostgreSQL mit Azure Data Factory
 
@@ -73,7 +69,7 @@ Eine typische Verbindungszeichenfolge ist `Server=<server>.postgres.database.azu
 
 **Beispiel:**
 
-**_Speichern des Kennworts in Azure Key Vault_* _
+***Speichern des Kennworts in Azure Key Vault***
 
 ```json
 {
@@ -99,7 +95,7 @@ Eine typische Verbindungszeichenfolge ist `Server=<server>.postgres.database.azu
 
 Eine vollständige Liste mit den Abschnitten und Eigenschaften, die zum Definieren von Datasets zur Verfügung stehen, finden Sie unter [Datasets in Azure Data Factory](concepts-datasets-linked-services.md). Dieser Abschnitt enthält eine Liste mit den Eigenschaften, die Azure Database for PostgreSQL in Datasets unterstützt.
 
-Legen Sie die „type“-Eigenschaft des Datasets auf _*AzurePostgreSqlTable** fest, um Daten aus Azure Database for PostgreSQL zu kopieren. Folgende Eigenschaften werden unterstützt:
+Legen Sie die „type“-Eigenschaft des Datasets auf **AzurePostgreSQLTable** fest, um Daten aus Azure Database for PostgreSQL zu kopieren. Folgende Eigenschaften werden unterstützt:
 
 | Eigenschaft | Beschreibung | Erforderlich |
 |:--- |:--- |:--- |
