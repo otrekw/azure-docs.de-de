@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/04/2021
 ms.custom: references_regions
-ms.openlocfilehash: 954d08fa163b481393df28ae22016859badea694
-ms.sourcegitcommit: 44188608edfdff861cc7e8f611694dec79b9ac7d
+ms.openlocfilehash: 46f2035e5f8409cd38faeb9c327b88b06fc7d7a0
+ms.sourcegitcommit: 24f30b1e8bb797e1609b1c8300871d2391a59ac2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99537305"
+ms.lasthandoff: 02/10/2021
+ms.locfileid: "100097635"
 ---
 # <a name="security-overview-for-azure-cognitive-search"></a>Übersicht über die Sicherheit für Azure Cognitive Search
 
@@ -113,12 +113,6 @@ Für Suchdienstadministratoren sind [drei grundlegende Rollen](search-security-r
 
 > [!Note]
 > Mithilfe von Azure-weit gültigen Mechanismen können Sie ein Abonnement oder eine Ressource sperren, um die versehentliche oder nicht autorisierte Löschung Ihres Suchdiensts durch Benutzer mit Administratorrechten zu verhindern. Weitere Informationen finden Sie unter [Sperren von Ressourcen zum Verhindern der unerwarteten Löschung](../azure-resource-manager/management/lock-resources.md).
-
-## <a name="threat-protection"></a>Bedrohungsschutz
-
-Der Zugriff auf Inhalte eines Suchdiensts erfolgt ausschließlich über Abfragen. Ist Ihr Suchdienst das Ziel eines Abfrageangriffs, werden Abfragen vom System gelöscht, sobald sich das System der Spitzenkapazität nähert. 
-
-Die Drosselung verhält sich für verschiedene APIs unterschiedlich. Abfrage-APIs (Suchen/Vorschlagen/AutoVervollständigen) und Indizierungs-APIs drosseln dynamisch basierend auf der Last des Diensts. Index-APIs und Dienstvorgangs-APIs verfügen über statische Grenzwerte für Anforderungsraten. Sie können die statischen Grenzwerte für die Rate der Anforderung unter [Drosselungsgrenzen](search-limits-quotas-capacity.md#throttling-limits) überprüfen. Weitere Informationen zum Drosselungsverhalten finden Sie unter [Überwachen von Abfrageanforderungen](search-monitor-queries.md).
 
 <a name="encryption"></a>
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/04/2021
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: a1fb1c1be8a0203d9f36712fda8e30f0f9354091
-ms.sourcegitcommit: 1f1d29378424057338b246af1975643c2875e64d
+ms.openlocfilehash: 8fc3ad3e1597d9b38bd095875c8a6f11260e8711
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99576114"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100515167"
 ---
 Sie können Profile für Azure-VPN-Clients (Windows 10) mit Microsoft Intune bereitstellen. Dieser Artikel unterstützt Sie beim Erstellen eines Intune-Profils mit benutzerdefinierten Einstellungen.
 
@@ -46,21 +46,14 @@ Weitere unterstützte Optionen finden Sie im Artikel [VPNv2-Konfigurationsdienst
       <PluginProfile>
         <ServerUrlList>azuregateway-7cee0077-d553-4323-87df-069c331f58cb-053dd0f6af02.vpn.azure.com</ServerUrlList> 
         <CustomConfiguration>
+
         </CustomConfiguration>
         <PluginPackageFamilyName>Microsoft.AzureVpn_8wekyb3d8bbwe</PluginPackageFamilyName>
       </PluginProfile>
     </VPNProfile>
    ```
 1. Ändern Sie den Eintrag zwischen ```<ServerUrlList>``` und ```</ServerUrlList>``` mit dem Eintrag aus dem heruntergeladenen Profil (azurevpnconfig.xml). Ändern Sie den FQDN „TrustedNetworkDetection“, sodass er Ihrer Umgebung entspricht.
-1. Öffnen Sie das heruntergeladene Azure-Profil (azurevpnconfig.xml), und kopieren Sie den Inhalt in die Zwischenablage, indem Sie den Text markieren und <ctrl>+C drücken. Kopieren Sie alles zwischen den folgenden AzVPNProfile-Zeilen, allerdings nicht die AzVPNProfile-Zeilen selbst:
-
-   ```
-   <AzVpnProfile xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.datacontract.org/2004/07/">
-     <any xmlns:d2p1="http://schemas.datacontract.org/2004/07/System.Xml"
-       i:nil="true" />
-   For example - copy the text in your xml that is located here.
-   </AzVpnProfile>
-   ```
+1. Öffnen Sie das heruntergeladene Azure-Profil (azurevpnconfig.xml), und kopieren Sie den gesamten Inhalt in die Zwischenablage, indem Sie den Text markieren und STRG+C drücken. 
 1. Fügen Sie den kopierten Text aus dem vorherigen Schritt in die Datei ein, die Sie in Schritt 2 zwischen den ```<CustomConfiguration>  </CustomConfiguration>```-Tags erstellt haben. Speichern Sie die Datei mit der Erweiterung XML.
 1. Notieren Sie sich den Wert in den ```<name>  </name>```-Tags. Dies ist der Name des Profils. Sie benötigen diesen Namen, wenn Sie das Profil in Intune erstellen. Schließen Sie die Datei, und merken Sie sich ihren Speicherort.
 

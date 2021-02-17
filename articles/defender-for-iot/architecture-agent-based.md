@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/25/2021
 ms.author: shhazam
-ms.openlocfilehash: 1729a20825eb554a4fd2ee60141994e57e62f030
-ms.sourcegitcommit: 4784fbba18bab59b203734b6e3a4d62d1dadf031
+ms.openlocfilehash: 3a7dabfed86dab463b38ae45278ead7f5acb5ef9
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99809644"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100521950"
 ---
 # <a name="agent-based-solution-for-device-builders"></a>Agent-basierte Lösung für Gerätehersteller
 
@@ -44,7 +44,7 @@ Defender für IoT-Empfehlungen und -Warnungen (Ausgabe der Analysepipeline) werd
 
 :::image type="content" source="media/architecture/micro-agent-architecture.png" alt-text="Micro-Agent-Architektur":::
 
-## <a name="see-also"></a>Weitere Informationen
+## <a name="next-steps"></a>Nächste Schritte
 
 [Häufig gestellte Fragen zu Defender für IoT](resources-frequently-asked-questions.md)
 

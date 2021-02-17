@@ -7,12 +7,12 @@ ms.author: shhazam
 ms.date: 01/24/2021
 ms.topic: how-to
 ms.service: azure
-ms.openlocfilehash: 20b47204ea8f64bc430f436a9bcf1b2311409aa6
-ms.sourcegitcommit: b85ce02785edc13d7fb8eba29ea8027e614c52a2
+ms.openlocfilehash: c28e2f1c24d39ceb915be9f4f6f222d70de9ee73
+ms.sourcegitcommit: 27d616319a4f57eb8188d1b9d9d793a14baadbc3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/03/2021
-ms.locfileid: "99509485"
+ms.lasthandoff: 02/15/2021
+ms.locfileid: "100522222"
 ---
 # <a name="sensor-trends-and-statistics-reports"></a>Sensortrend- und Statistikberichte
 
@@ -93,7 +93,7 @@ Wählen Sie im Seitenmenü die Option **Trends und Statistiken** aus.
 
 Standardmäßig werden Ergebnisse für Erkennungen in den letzten 7 Tagen angezeigt. Sie können Filtertools verwenden, um diesen Bereich zu ändern. Beispielsweise eine Freitextsuche.
 
-## <a name="see-also"></a>Siehe auch
+## <a name="next-steps"></a>Nächste Schritte
 
 [Berichterstellung zur Risikobewertung](how-to-create-risk-assessment-reports.md)
 [Sensor-Data Mining-Abfragen](how-to-create-data-mining-queries.md)

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/04/2021
 ms.author: memildin
-ms.openlocfilehash: 7821d94ed032fd0fc52a756766e6a9af7c82cfde
-ms.sourcegitcommit: f82e290076298b25a85e979a101753f9f16b720c
+ms.openlocfilehash: c3a821156074727d02ab36cf88f3e998756b8cc4
+ms.sourcegitcommit: d4734bc680ea221ea80fdea67859d6d32241aefc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2021
-ms.locfileid: "99559233"
+ms.lasthandoff: 02/14/2021
+ms.locfileid: "100389449"
 ---
 # <a name="prevent-dangling-dns-entries-and-avoid-subdomain-takeover"></a>Verhindern verwaister DNS-Einträge und Vermeiden von Unterdomänenübernahmen
 
@@ -119,7 +119,7 @@ Wenn Sie ein globaler Administrator des Mandanten Ihrer Organisation sind, erhö
 
 ### <a name="run-the-script"></a>Ausführen des Skripts
 
-Unter https://aka.ms/DanglingDNSDomains können Sie das PowerShell-Skript **Get-DanglingDnsRecords.ps1** von GitHub herunterladen, und Sie erhalten weitere Informationen dazu.
+Unter https://aka.ms/Get-DanglingDnsRecords können Sie das PowerShell-Skript **Get-DanglingDnsRecords.ps1** von GitHub herunterladen, und Sie erhalten weitere Informationen dazu.
 
 ## <a name="remediate-dangling-dns-entries"></a>Behandeln verwaister DNS-Einträge 
 
