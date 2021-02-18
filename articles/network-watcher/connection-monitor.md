@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 01/04/2021
 ms.author: damendo
 ms.custom: mvc
-ms.openlocfilehash: a4f3e0bbd282fb1253e206e71c2eb1667773248e
-ms.sourcegitcommit: d1b0cf715a34dd9d89d3b72bb71815d5202d5b3a
+ms.openlocfilehash: b734c4cdec022f2bf43ee7123b06331f67c10390
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/08/2021
-ms.locfileid: "99834084"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100570845"
 ---
 # <a name="tutorial-monitor-network-communication-between-two-virtual-machines-using-the-azure-portal"></a>Tutorial: Überwachen der Netzwerkkommunikation zwischen zwei virtuellen Computern über das Azure-Portal
 
@@ -137,7 +137,7 @@ Warnungen werden von Warnungsregeln in Azure Monitor erstellt und können in reg
 2. Klicken Sie auf **Ziel auswählen**, und wählen Sie dann die gewünschten Ressourcen aus. Wählen Sie das **Abonnement** aus, und legen Sie **Ressourcentyp** fest, um nach dem zu verwendenden Verbindungsmonitor zu filtern.
 
     ![Fenster „Warnungen“ mit ausgewähltem Ziel](./media/connection-monitor/set-alert-rule.png)
-1. Nachdem Sie eine gewünschte Ressource ausgewählt haben, können Sie **Kriterien hinzufügen** wählen. Der Network Watcher enthält [Metriken zum Erstellen von Warnungen](../azure-monitor/platform/alerts-metric-near-real-time.md#metrics-and-dimensions-supported). Legen Sie **Verfügbare Signale** auf die Metriken ProbesFailedPercent und AverageRoundtripMs fest:
+1. Nachdem Sie eine gewünschte Ressource ausgewählt haben, können Sie **Kriterien hinzufügen** wählen. Der Network Watcher enthält [Metriken zum Erstellen von Warnungen](../azure-monitor/alerts/alerts-metric-near-real-time.md#metrics-and-dimensions-supported). Legen Sie **Verfügbare Signale** auf die Metriken ProbesFailedPercent und AverageRoundtripMs fest:
 
     ![Seite „Warnungen“ mit ausgewählten Signalen](./media/connection-monitor/set-alert-signals.png)
 1. Geben Sie die Warnungsdetails an, z.B. Name, Beschreibung und Schweregrad der Warnungsregel. Sie können der Warnung auch eine Aktionsgruppe hinzufügen, um die Antwort auf die Warnung zu automatisieren und anzupassen.
