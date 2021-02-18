@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: tutorial
 ms.date: 08/24/2020
 ms.author: inhenkel
-ms.openlocfilehash: 2bfd1064a02f0fb4982c9d2747b85707e98b5bcd
-ms.sourcegitcommit: 4e70fd4028ff44a676f698229cb6a3d555439014
+ms.openlocfilehash: c481daf73f916ede2e7063c75448ba4d09e553cc
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98954528"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100571871"
 ---
 # <a name="tutorial-store-azure-media-services-events-in-azure-log-analytics"></a>Tutorial: Speichern von Azure Media Services-Ereignissen in Azure Log Analytics
 
@@ -42,11 +42,11 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 > * [Ein Azure-Abonnement](how-to-set-azure-subscription.md)
 > * Ein [Media Services](create-account-howto.md)-Konto und eine Ressourcengruppe
 > * Eine Installation von [FFmpeg](https://ffmpeg.org/download.html) für Ihr Betriebssystem
-> * Ein [Log Analytics](../../azure-monitor/learn/quick-create-workspace.md)-Arbeitsbereich
+> * Ein [Log Analytics](../../azure-monitor/logs/quick-create-workspace.md)-Arbeitsbereich
 
 ## <a name="subscribe-to-a-media-services-event-with-logic-app"></a>Abonnieren von Media Services-Ereignissen mithilfe einer Logik-App
 
-1. Falls noch nicht geschehen, erstellen Sie im Azure-Portal einen [Log Analytics-Arbeitsbereich](../../azure-monitor/learn/quick-create-workspace.md). Sie benötigen die ID des Arbeitsbereichs und einen der Schlüssel, weshalb Sie das Browserfenster geöffnet lassen sollten. Öffnen Sie dann das Portal in einer anderen Registerkarte oder einem anderen Fenster.
+1. Falls noch nicht geschehen, erstellen Sie im Azure-Portal einen [Log Analytics-Arbeitsbereich](../../azure-monitor/logs/quick-create-workspace.md). Sie benötigen die ID des Arbeitsbereichs und einen der Schlüssel, weshalb Sie das Browserfenster geöffnet lassen sollten. Öffnen Sie dann das Portal in einer anderen Registerkarte oder einem anderen Fenster.
 
 1. Navigieren Sie zu Ihrem Azure Media Services-Konto, und wählen Sie **Ereignisse** aus. Dadurch werden alle Methoden zum Abonnieren von Azure Media Services-Ereignissen gezeigt.
     > [!div class="mx-imgBorder"]
@@ -230,4 +230,4 @@ Wenn Sie die Ressourcen, die Sie in diesem Tutorial erstellt haben, nicht weiter
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sie können unterschiedliche Abfragen erstellen und speichern. Diese können dem [Azure-Dashboard](../../azure-monitor/learn/tutorial-logs-dashboards.md) hinzugefügt werden.
+Sie können unterschiedliche Abfragen erstellen und speichern. Diese können dem [Azure-Dashboard](../../azure-monitor/visualize/tutorial-logs-dashboards.md) hinzugefügt werden.
