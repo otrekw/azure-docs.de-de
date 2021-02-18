@@ -2,13 +2,13 @@
 title: Übersicht über Azure Service Bus-Messaging | Microsoft-Dokumentation
 description: Dieser Artikel enthält eine allgemeine Übersicht über Azure Service Bus (ein vollständig verwalteter Nachrichtenbroker für die Unternehmensintegration).
 ms.topic: overview
-ms.date: 01/28/2021
-ms.openlocfilehash: 232f25ca94e9426a20755940caf284426502cfb3
-ms.sourcegitcommit: 54e1d4cdff28c2fd88eca949c2190da1b09dca91
+ms.date: 02/16/2021
+ms.openlocfilehash: 897729b9748d69ad3c6de507e800dbb3a1a3619c
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2021
-ms.locfileid: "99219161"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100570470"
 ---
 # <a name="what-is-azure-service-bus"></a>Was ist Azure Service Bus?
 Bei Microsoft Azure Service Bus handelt es sich um einen vollständig verwalteten Nachrichtenbroker für Unternehmen mit Nachrichtenwarteschlangen und Veröffentlichen-Abonnieren-Themen. Service Bus wird verwendet, um Anwendungen und Dienste voneinander zu entkoppeln und so die folgenden Vorteile zu erzielen:
@@ -118,11 +118,10 @@ Beim clientseitigen Batching kann ein Warteschlangen- oder Themenclient mehrere 
 Eine Transaktion fasst mehrere Vorgänge zu einem *Ausführungsbereich* zusammen. Service Bus ermöglicht Ihnen das Gruppieren von Vorgängen für mehrere Nachrichtenentitäten innerhalb einer Transaktion. Eine Nachrichtenentität kann eine Warteschlange, ein Thema oder ein Abonnement sein. Weitere Informationen finden Sie unter [Übersicht über die Service Bus-Transaktionsverarbeitung](service-bus-transactions.md).
 
 ### <a name="autodelete-on-idle"></a>Automatisches Löschen nach Leerlauf
-
-Automatisches Löschen nach Leerlauf ermöglicht die Angabe eines Leerlaufintervalls, nach dessen Ablauf ein Warteschlangen- oder Themenabonnement automatisch gelöscht wird. Die Mindestdauer ist fünf Minuten. Weitere Informationen finden Sie unter [Eigenschaft „QueueDescription.AutoDeleteOnIdle“](/dotnet/api/microsoft.servicebus.messaging.queuedescription.autodeleteonidle).
+Automatisches Löschen nach Leerlauf ermöglicht die Angabe eines Leerlaufintervalls, nach dessen Ablauf ein Warteschlangen- oder Themenabonnement automatisch gelöscht wird. Die Mindestdauer ist fünf Minuten. 
 
 ### <a name="duplicate-detection"></a>Duplikaterkennung
-Mit dem Feature „Duplikaterkennung“ kann der Absender die gleiche Nachricht erneut senden, und der Broker kann ein potenzielles Duplikat verwerfen. Die Duplikaterkennung basiert auf der Nachverfolgung der `message-id`-Eigenschaft einer Nachricht. Dies bedeutet, dass die Anwendung beim erneuten Senden der Nachricht darauf achten muss, dass der gleiche Wert verwendet wird. Dieser Wert kann ggf. direkt von einem anwendungsspezifischen Kontext abgeleitet sein. Weitere Informationen finden Sie unter [Duplikaterkennung](duplicate-detection.md).
+Mit dem Feature „Duplikaterkennung“ kann der Absender die gleiche Nachricht erneut senden, und der Broker kann ein potenzielles Duplikat verwerfen. Weitere Informationen finden Sie unter [Duplikaterkennung](duplicate-detection.md).
 
 ### <a name="geo-disaster-recovery"></a>Georedundante Notfallwiederherstellung
 
