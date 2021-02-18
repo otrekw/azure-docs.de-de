@@ -38,7 +38,7 @@
     - name: Containercompute
       expanded: true
       items:
-        - name: "Vertrauliche Container (Lift\_& Shift)"
+        - name: Vertrauliche Container
           items:
             - name: Erste Schritte
               href: confidential-containers.md

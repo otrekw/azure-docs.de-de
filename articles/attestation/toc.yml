@@ -65,3 +65,6 @@
       href: troubleshoot-guide.md
     - name: TPM- und VBS-Nachweisprotokoll
       href: virtualization-based-security-protocol.md
+    - name: Azure Policy-Integrationen
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
