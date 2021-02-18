@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 02/04/2021
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to connect and activate Azure Stack Edge Mini R so I can use it to transfer data to Azure.
-ms.openlocfilehash: 1cca747003a127371db7d110500e2b4168f10219
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.openlocfilehash: a202ee1d708feebc7643fa6f20aafa9d8603fc38
+ms.sourcegitcommit: 5a999764e98bd71653ad12918c09def7ecd92cf6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99594450"
+ms.lasthandoff: 02/16/2021
+ms.locfileid: "100546770"
 ---
 # <a name="tutorial-configure-network-for-azure-stack-edge-mini-r"></a>Tutorial: Konfigurieren des Netzwerks für Azure Stack Edge Mini R
 
@@ -50,7 +50,7 @@ Führen Sie diese Schritte aus, um das Netzwerk für Ihr Gerät zu konfigurieren
 
 2. Sollte ein Zero-Day-Update erforderlich sein, können Sie es hier durchführen, indem Sie einen Datenport mit einer Kabelverbindung konfigurieren. Weitere Informationen zur Einrichtung einer Kabelverbindung für dieses Gerät finden Sie unter [Verkabeln Ihres Geräts](azure-stack-edge-mini-r-deploy-install.md#cable-the-device). Nach Abschluss des Updates können Sie die Kabelverbindung entfernen.
 
-3. Erstellen Sie Zertifikate für WLAN und Signaturkette. Sowohl das Signaturkettenzertifikat als auch das WLAN-Zertifikat muss im DER-Format vorliegen und über die Dateierweiterung *.cer* verfügen. Eine entsprechende Anleitung finden Sie unter [Verwenden von Zertifikaten mit einem Azure Stack Edge Pro-GPU-Gerät](azure-stack-edge-j-series-manage-certificates.md).
+3. Erstellen Sie Zertifikate für WLAN und Signaturkette. Sowohl das Signaturkettenzertifikat als auch das WLAN-Zertifikat muss im DER-Format vorliegen und über die Dateierweiterung *.cer* verfügen. Eine entsprechende Anleitung finden Sie unter [Verwenden von Zertifikaten mit einem Azure Stack Edge Pro-GPU-Gerät](azure-stack-edge-gpu-manage-certificates.md).
 
 4. Wechseln Sie auf der lokalen Webbenutzeroberfläche zu **Erste Schritte**. Wählen Sie auf der Kachel **Sicherheit** die Option **Zertifikate** und anschließend **Konfigurieren** aus. 
 
