@@ -3,12 +3,12 @@ title: 'Bereitstellen des Blaupausenbeispiels „ISO 27001: Gemeinsame Dienste�
 description: 'Bereitstellungsschritte für das Blaupausenbeispiel „ISO 27001: Gemeinsame Dienste“, einschließlich Details zum Blaupausenartefaktparameter.'
 ms.date: 02/05/2021
 ms.topic: sample
-ms.openlocfilehash: 8b28954b6145a9e6c1827107cf11aa85326dcc1f
-ms.sourcegitcommit: 59cfed657839f41c36ccdf7dc2bee4535c920dd4
+ms.openlocfilehash: 2eb9ed2199b28ad7cb349e6088c3cc583d8f011d
+ms.sourcegitcommit: e559daa1f7115d703bfa1b87da1cf267bf6ae9e8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/06/2021
-ms.locfileid: "99627798"
+ms.lasthandoff: 02/17/2021
+ms.locfileid: "100577318"
 ---
 # <a name="deploy-the-iso-27001-shared-services-blueprint-sample"></a>Bereitstellen des Blaupausenbeispiels „ISO 27001: Gemeinsame Dienste“
 
@@ -110,7 +110,7 @@ Die folgende Tabelle enthält eine Aufstellung der Parameter des Blaupausenartef
 |Zulässige Ressourcentypen|Richtlinienzuweisung|Zulässige Ressourcentypen|Die Liste der Ressourcentypen, die bereitgestellt werden können. Diese Liste enthält alle drei Ressourcentypen, die in Shared Services bereitgestellt werden.|
 |Allowed storage account SKUs (Zulässige Speicherkonto-SKUs)|Richtlinienzuweisung|Zulässige Speicher-SKUs|Liste der zulässigen Speicherkonto-SKUs der Diagnoseprotokolle. Der Standardwert lautet _["Standard_LRS"]_ .|
 |Allowed virtual machine SKUs (Zulässige VM-SKUs)|Richtlinienzuweisung|Liste der für die Bereitstellung zulässigen VM-SKUs. Der Standardwert lautet _["Standard_DS1_v2", "Standard_DS2_v2"]_ .|
-|Blueprint Initiative für ISO 27001|Richtlinienzuweisung|Ressourcentyp zur Überprüfung von Diagnoseprotokollen|Liste der Ressourcentypen, die überprüfen sollen, ob die Einstellung für das Diagnoseprotokoll nicht aktiviert ist. Die zulässigen Werte finden Sie unter [Unterstützte Dienste, Schemas und Kategorien für Azure-Diagnoseprotokolle](../../../../azure-monitor/platform/resource-logs-schema.md#service-specific-schemas).|
+|Blueprint Initiative für ISO 27001|Richtlinienzuweisung|Ressourcentyp zur Überprüfung von Diagnoseprotokollen|Liste der Ressourcentypen, die überprüfen sollen, ob die Einstellung für das Diagnoseprotokoll nicht aktiviert ist. Die zulässigen Werte finden Sie unter [Unterstützte Dienste, Schemas und Kategorien für Azure-Diagnoseprotokolle](../../../../azure-monitor/essentials/resource-logs-schema.md#service-specific-schemas).|
 |Log Analytics-Ressourcengruppe|Resource group|Name|**Gesperrt:** Verkettet den **Namen der Organisation** mit `-sharedsvsc-log-rg`, sodass die Ressourcengruppe eindeutig ist.|
 |Log Analytics-Ressourcengruppe|Resource group|Standort|**Gesperrt:** Verwendet den Blaupausenparameter.|
 |Log Analytics-Vorlage|Resource Manager-Vorlage|Dienstebene|Legt den Tarif des Log Analytics-Arbeitsbereichs fest. Der Standardwert ist _PerNode_.|
