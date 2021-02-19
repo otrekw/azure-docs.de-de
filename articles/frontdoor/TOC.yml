@@ -36,6 +36,8 @@
       href: front-door-quickstart-template-samples.md
 - name: Konzepte
   items:
+    - name: Standard-/Premium-SKU
+      href: standard-premium/overview.md
     - name: Sicherheit
       items:
         - name: Sicherheitsbaseline
@@ -96,7 +98,7 @@
           href: front-door-troubleshoot-allowed-ca.md
 - name: Verweis
   items:
-    - name: Azure-Befehlszeilenschnittstelle
+    - name: Azure CLI
       href: /cli/azure/ext/front-door/
     - name: Azure PowerShell
       href: /powershell/module/az.frontdoor

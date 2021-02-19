@@ -1,0 +1,127 @@
+### YamlMime:Landing
+title: Dokumentation zu Azure Front Door Standard/Premium (Vorschau)
+summary: Azure Front Door Standard/Premium (Vorschau) ist eine moderne sichere Plattform für die Anwendungsbereitstellung, die skalierbare CDN-, DSA- und GLB-Umgebungen für Ihre globalen Webanwendungen bereitstellt.
+metadata:
+  title: Dokumentation zu Azure Front Door Standard/Premium
+  description: Mit Azure Front Door Standard/Premium (Vorschau) verfügen Sie über einen skalierbaren und sicheren Einstiegspunkt für die schnelle Bereitstellung Ihrer globalen Webanwendungen. Anhand unserer Schnellstartanleitungen, Tutorials und Beispiele erfahren Sie, wie Sie Front Door verwenden.
+  services: frontdoor
+  ms.service: frontdoor
+  ms.topic: landing-page
+  author: duongau
+  ms.author: duau
+  ms.date: 02/18/2020
+  ms.openlocfilehash: b11cf6b0fe8c0f1cdf711ee3b9ef6c92e5bc71bb
+  ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+  ms.translationtype: HT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 02/18/2021
+  ms.locfileid: "101097590"
+landingContent:
+- title: Informationen zu Azure Front Door Standard/Premium (Vorschau)
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Was ist Azure Front Door Standard/Premium (Vorschau)?
+      url: overview.md
+- title: Erstellen eines Front Door-Profils
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Erstellen eines Profils für Front Door Standard/Premium
+      url: create-front-door-portal.md
+- title: Konfigurieren von Endpoint Manager
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Endpoint Manager
+      url: concept-endpoint-manager.md
+    - text: Route
+      url: concept-route.md
+  - linkListType: how-to-guide
+    links:
+    - text: Konfigurieren von Endpoint Manager
+      url: how-to-configure-endpoint-manager.md
+- title: Hinzufügen benutzerdefinierter Domänen
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Hinzufügen einer benutzerdefinierten Domäne
+      url: how-to-add-custom-domain.md
+- title: Verwalten von Ursprungsgruppen
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Origin
+      url: concept-origin.md
+    - text: Integritätstests
+      url: concept-health-probes.md
+  - linkListType: how-to-guide
+    links:
+    - text: Konfigurieren einer Ursprungsgruppe
+      url: how-to-create-origin.md
+- title: Konfigurieren eines Regelsatzes
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Was ist ein Regelsatz?
+      url: concept-rule-set.md
+    - text: Vergleichsbedingungen für Regelsätze
+      url: concept-rule-set-match-conditions.md
+    - text: Regelsatzaktionen
+      url: concept-rule-set-actions.md
+  - linkListType: how-to-guide
+    links:
+    - text: Konfigurieren eines Regelsatzes
+      url: how-to-configure-rule-set.md
+- title: Anwendung schützen
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Private Link
+      url: concept-private-link.md
+    - text: WAF in Azure Front Door Standard/Premium
+      url: ../../web-application-firewall/afds/afds-overview.md
+    - text: DDoS-Schutz
+      url: concept-ddos.md
+  - linkListType: how-to-guide
+    links:
+    - text: Aktivieren von Private Link
+      url: how-to-enable-private-link.md
+    - text: Konfigurieren einer WAF-Richtlinie
+      url: ../../web-application-firewall/afds/waf-front-door-create-portal.md
+- title: Berichte, Metriken und Protokolle
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Berichte
+      url: how-to-reports.md
+    - text: Überwachungsmetriken und Warnungen
+      url: how-to-monitor-metrics.md
+    - text: Protokollierung
+      url: how-to-logs.md
+- title: Zwischenspeicherung und Optimierung
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Caching
+      url: concept-caching.md
+  - linkListType: how-to-guide
+    links:
+    - text: Cachebereinigung
+      url: how-to-cache-purge.md
+    - text: Komprimierung
+      url: how-to-compression.md
+- title: Problembehandlung in Azure Front Door
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Häufige Routingprobleme
+      url: troubleshoot-route-issues.md
+    - text: Zulässige Zertifizierungsstellen
+      url: troubleshoot-allowed-certificate-authority.md
+- title: Informationen zu Azure Front Door
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Was ist Azure Front Door?
+      url: ../front-door-overview.md
