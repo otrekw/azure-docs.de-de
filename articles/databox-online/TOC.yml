@@ -206,6 +206,8 @@
                   href: azure-stack-edge-gpu-deploy-arc-kubernetes-cluster.md
                 - name: Bereitstellen einer zustandslosen App über GitOps
                   href: azure-stack-edge-gpu-deploy-stateless-application-git-ops-guestbook.md
+                - name: "Bereitstellen eines Azure\_Arc-Datencontrollers"
+                  href: azure-stack-edge-gpu-deploy-arc-data-controller.md
         - name: Konfigurieren von Azure Resource Manager (Vorschau)
           items:
             - name: Herstellen einer Verbindung über Azure PowerShell
@@ -383,6 +385,8 @@
           href: azure-stack-edge-return-device.md
         - name: Gerät ersetzen
           href: azure-stack-edge-replace-device.md
+        - name: Migrieren zu einem GPU-Gerät
+          href: azure-stack-edge-migrate-fpga-gpu.md
     - name: Versionshinweise
       items:
         - name: '2101: Aktuell'
